@@ -1,4 +1,6 @@
 class ThreadMarkdownService
+  VOTE_LABEL_LENGTH_MAX = 20
+
   def self.render(topic:, user:)
     new(topic, user).render
   end
@@ -62,7 +64,7 @@ class ThreadMarkdownService
       poll = topic_item.itemable
       next event unless poll.is_a?(Poll) && anchored_poll_ids.include?(poll.id)
 
-      [event, poll_comments_markdown(poll_items.fetch(poll.id, []))].compact_blank.join("\n\n")
+      [event, poll_comments_markdown(poll, poll_items.fetch(poll.id, []))].compact_blank.join("\n\n")
     end
     content = ["_#{t(:no_activity)}._"] if content.empty?
     content.join("\n\n")
@@ -116,14 +118,16 @@ class ThreadMarkdownService
 
   # Compacts the poll's votes (stances) and the comments/replies on them into a
   # single "Comments" block beneath the poll's results.
-  def poll_comments_markdown(items)
+  def poll_comments_markdown(poll, items)
     nodes = items.filter_map { |topic_item| poll_comment_node(topic_item) }
     return if nodes.empty?
+
+    votes = poll_votes_by_author(poll, nodes)
 
     keys = nodes.to_set { |node| node[:key] }
     roots, replies = nodes.partition { |node| !keys.include?(node[:parent_key]) }
     children = replies.group_by { |node| node[:parent_key] }
-    entries = roots.flat_map { |root| comment_entries(root, children, 0) }
+    entries = roots.flat_map { |root| comment_entries(root, children, votes, 0) }
 
     "### #{t(:comments)}\n\n#{entries.join("\n\n")}"
   end
@@ -146,16 +150,28 @@ class ThreadMarkdownService
   end
 
   # Depth is capped at two nested levels.
-  def comment_entries(node, children, depth)
-    replies = children.fetch(node[:key], []).flat_map { |child| comment_entries(child, children, [depth + 1, 2].min) }
-    [comment_entry(node, depth), *replies]
+  def comment_entries(node, children, votes, depth)
+    replies = children.fetch(node[:key], []).flat_map { |child| comment_entries(child, children, votes, [depth + 1, 2].min) }
+    [comment_entry(node, votes[node[:itemable].author_id], depth), *replies]
   end
 
-  def comment_entry(node, depth)
+  # Latest visible votes in the poll by the entries' authors, keyed by author id.
+  def poll_votes_by_author(poll, nodes)
+    author_ids = nodes.map { |node| node[:itemable].author_id }.uniq
+    stances = poll.stances.latest.where(participant_id: author_ids).includes(:poll, stance_choices: :poll_option)
+    stances.select { |stance| stance_visible?(stance) }.index_by(&:participant_id)
+  end
+
+  def vote_label(stance)
+    "[#{stance_response_heading(stance).truncate(VOTE_LABEL_LENGTH_MAX, omission: '…')}]"
+  end
+
+  def comment_entry(node, vote, depth)
     itemable = node[:itemable]
     details = [heading_timestamp(node[:topic_item].created_at)]
     details << reply_context(node[:parent]) if depth.zero? && node[:parent]
-    header = "**#{author_name(itemable)}** (#{details.join(', ')}):"
+    author = ["**#{author_name(itemable)}**", vote && vote_label(vote)].compact.join(' ')
+    header = "#{author} (#{details.join(', ')}):"
     # indent replies to comments for a better visualization
     header = "&nbsp;&nbsp;&nbsp;&nbsp;" * depth + " ↳ " + header unless depth.zero?
     reactions = compact_reactions(itemable)

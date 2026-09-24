@@ -34,13 +34,13 @@ class ThreadMarkdownServiceTest < ActiveSupport::TestCase
       unrelated_index = markdown.index("Unrelated interjection.")
       assert_operator reply_index, :<, unrelated_index
       # The poll's votes and replies sit under a "Comments" heading right after
-      # the results, each prefixed with the author's name and time.
+      # the results, each prefixed with the author's name, vote and time.
       assert_operator markdown.index("### Current results"), :<, markdown.index("### Comments")
-      assert_includes markdown, "**#{@member.name}** (2026-07-15 10:00): It addresses the main concern."
+      assert_includes markdown, "**#{@member.name}** [Agree] (2026-07-15 10:00): It addresses the main concern."
       # A reply to a vote is nested under it, marked with ↳.
       assert_includes markdown, "&nbsp;&nbsp;&nbsp;&nbsp; ↳ **#{@admin.name}** (2026-07-15 10:00): I support this."
       # A reply to that comment nests one level deeper.
-      assert_includes markdown, "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ↳ **#{@member.name}** (2026-07-15 10:00): Me too."
+      assert_includes markdown, "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ↳ **#{@member.name}** [Agree] (2026-07-15 10:00): Me too."
       # A third-level reply is capped at the two nested levels, no deeper indent.
       assert_includes markdown, "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ↳ **#{@admin.name}** (2026-07-15 10:00): Way deeper."
       refute_includes markdown, "&nbsp;&nbsp;&nbsp;&nbsp;" * 3
@@ -64,7 +64,7 @@ class ThreadMarkdownServiceTest < ActiveSupport::TestCase
     markdown = render(discussion.topic)
 
     # The author line stands alone, so the vote's closing fence stays a fence.
-    assert_match(/^\*\*#{@member.name}\*\* \([^)]+\):\n\nSee below\.\n\n```\nx = 1\n```\n\n&nbsp;/, markdown)
+    assert_match(/^\*\*#{@member.name}\*\* \[Agree\] \([^)]+\):\n\nSee below\.\n\n```\nx = 1\n```\n\n&nbsp;/, markdown)
     # A multi-paragraph reply is quoted so every paragraph stays nested.
     assert_match(/↳ \*\*#{@admin.name}\*\* \([^)]+\):\n\n> First paragraph\.\n>\n> Second paragraph\.\n>\n> Reactions: 1 👍 \(#{@member.name}\)/, markdown)
   end
@@ -100,6 +100,33 @@ class ThreadMarkdownServiceTest < ActiveSupport::TestCase
     refute_includes markdown, "Removed later."
     assert_match(/^\*\*#{@admin.name}\*\* \([^)]+, in reply to a hidden vote\): Replying to that vote\.$/, markdown)
     assert_match(/^\*\*#{@admin.name}\*\* \([^)]+, in reply to #{@member.name}\): Answering the removed comment\.$/, markdown)
+  end
+
+  test "poll comments show the start of each author's visible vote" do
+    discussion = create_discussion
+    poll = create_poll(discussion, poll_option_names: ["Agree with the whole proposal", "Disagree"])
+    stance = cast_vote(poll, reason: "<p>Mostly convinced.</p>", choice: "Agree with the whole proposal")
+    reply = Comment.new(body: "<p>Why not fully?</p>", body_format: "html", parent: stance)
+    CommentService.create(comment: reply, actor: @admin)
+    CommentService.create(comment: Comment.new(body: "<p>Some doubts remain.</p>", body_format: "html", parent: reply), actor: @member)
+
+    markdown = render(discussion.topic)
+
+    assert_match(/^\*\*#{@member.name}\*\* \[Agree with the whol…\] \([^)]+\): Mostly convinced\.$/, markdown)
+    # The admin has not voted, so their reply carries no vote.
+    assert_match(/↳ \*\*#{@admin.name}\*\* \([^)]+\): Why not fully\?$/, markdown)
+    # A reply by a voter carries the voter's current vote too.
+    assert_match(/↳ \*\*#{@member.name}\*\* \[Agree with the whol…\] \([^)]+\): Some doubts remain\.$/, markdown)
+  end
+
+  test "poll comments do not show votes the reader cannot see" do
+    discussion = create_discussion
+    poll = create_poll(discussion, hide_results: "until_closed")
+    cast_vote(poll, reason: nil)
+    CommentService.create(comment: Comment.new(body: "<p>My view on the poll.</p>", body_format: "html", parent: poll), actor: @member)
+
+    assert_match(/^\*\*#{@member.name}\*\* \([^)]+\): My view on the poll\.$/, render(discussion.topic))
+    assert_match(/^\*\*#{@member.name}\*\* \[Agree\] \([^)]+\): My view on the poll\.$/, render(discussion.topic, user: @member))
   end
 
   test "renders thread context and chronological comments with reply context" do
@@ -165,7 +192,7 @@ class ThreadMarkdownServiceTest < ActiveSupport::TestCase
       assert_match(/\| Agree\s+\| 1\s+\| 100%\s+\| 10%\s+\| #{@member.name}\s+\|/, markdown)
       assert_match(/\| Undecided\s+\| 9\s+\|\s+\| 90%\s+\| .*#{@admin.name}.*\|/, markdown)
       assert_includes markdown, "### Comments"
-      assert_includes markdown, "**#{@member.name}** (2026-07-15 10:00): It addresses the main concern."
+      assert_includes markdown, "**#{@member.name}** [Agree] (2026-07-15 10:00): It addresses the main concern."
       refute_includes markdown, "## Vote:"
       refute_includes markdown, "\n- Agree\n"
       assert_operator markdown.index("### Current results"), :<, markdown.index("It addresses the main concern.")
@@ -414,9 +441,9 @@ class ThreadMarkdownServiceTest < ActiveSupport::TestCase
     )
   end
 
-  def cast_vote(poll, reason:, reason_format: "html")
+  def cast_vote(poll, reason:, reason_format: "html", choice: "Agree")
     stance = poll.stances.latest.find_by!(participant_id: @member.id)
-    stance.choice = "Agree"
+    stance.choice = choice
     stance.reason = reason
     stance.reason_format = reason_format
     StanceService.create(stance: stance, actor: @member)
