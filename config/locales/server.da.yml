@@ -180,6 +180,8 @@ da:
     deleted_user: Slettet bruger
     placeholder_name: Inviteret bruger (%{hostname})
     error:
+      email_change_requires_confirmation: Anmod om en ændring af e-mailadresse, og bekræft den fra den nye adresse
+      email_change_same: Indtast en anden e-mailadresse
       sign_in_required_html: Du skal være logget ind for at fortsætte. <a href="/dashboard" target="_blank">Log ind</a> og genindlæs siden for at fortsætte.
       recaptcha: Vi var ikke i stand til at bekræfte, at du ikke er en robot. Prøv igen!
       bad_login: Beklager, den adgangskode stemmer ikke overens med den, vi har registreret
@@ -262,6 +264,16 @@ da:
       complete_page:
         title: Sammenlægningen lykkedes!
         body_html: <p>Sammenlægningen af dine brugerkonti lykkedes. Du vil snart modtage en bekræftelses-e-mail på <strong>%{target_email}</strong> .</p><p> <a href="/contact" target="_blank">Kontakt os</a> venligst, hvis du har yderligere spørgsmål.</p>
+    email_change_confirmation:
+      subject: Bekræft din %{site_name} e-mailadresse
+      body: Bekræft %{email} som din nye konto-e-mailadresse. Din nuværende adresse forbliver aktiv, indtil du bekræfter denne ændring. Dette link udløber om 24 timer.
+      confirm: Bekræft e-mailadresse
+    email_change_requested:
+      subject: Ændring af e-mailadresse er anmodet for din %{site_name}-konto
+      body: Der blev anmodet om at ændre din konto-e-mail fra %{old_email} til %{new_email}. Din nuværende adresse forbliver aktiv, indtil den nye adresse er bekræftet. Hvis du ikke har anmodet om dette, skal du ændre din adgangskode.
+    email_change_completed:
+      subject: Din %{site_name} e-mailadresse er blevet ændret
+      body: Din konto-e-mailadresse er ændret fra %{old_email} til %{new_email}. Hvis du ikke har anmodet om dette, skal du kontakte support.
   email:
     common:
       or_enter_code: Eller indtast koden nedenfor
@@ -770,3 +782,9 @@ da:
     review_date: "**Gennemgangsdato:** %{value}"
   error:
     access_denied: Du har ikke tilladelse til at gøre det
+  email_changes:
+    confirm_title: Bekræft e-mailadresse
+    confirm_body: Vil du ændre din kontos e-mailadresse til %{email}?
+    confirm_action: Skift e-mailadresse
+    complete_title: E-mailadresse ændret
+    complete_body: Din kontos e-mailadresse er nu %{email}. Du kan logge ind med denne adresse.

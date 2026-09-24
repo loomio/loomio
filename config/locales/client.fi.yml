@@ -1656,6 +1656,13 @@ fi:
     updated_on_sign_in: Selaimesi tarjoaa ja päivitetään, kun kirjaudut sisään
     translate_content_automatically: Käännä sisältö kielelleni automaattisesti
     bot_account_warning: Bottitilejä ei kutsuta äänestämään kyselyissä tai osallistumaan keskusteluihin.
+    change_email: Vaihda sähköpostiosoite
+    change_email_help: Anna uusi sähköpostiosoite. Nykyinen osoitteesi pysyy aktiivisena, kunnes vahvistat muutoksen uudesta osoitteesta.
+    new_email_address: Uusi sähköpostiosoite
+    send_confirmation_email: Lähetä vahvistussähköposti
+    email_confirmation_sent: Vahvistussähköposti lähetetty
+    email_change_pending: Vahvistusta odotetaan sähköpostiosoitteelle %{email}
+    email_change_failed: Sähköpostiosoitteen muutosta ei voitu pyytää
   text_editor:
     x_of_y_characters: "%{x} / %{y} merkkiä"
     select_text_to_link: Valitse linkitettävä teksti ja yritä uudelleen
@@ -1675,6 +1682,7 @@ fi:
     set_password_helptext: Anna salasana - vähintään 8 merkkiä
     set_password: Aseta salasana
     password_changed: Salasanasi on päivitetty
+    sessions_and_api_keys: Salasanan vaihtaminen kirjaa ulos muut istunnot ja nollaa API-avaimesi. Tämä istunto pysyy kirjautuneena sisään.
   deactivation_modal:
     introduction: 'Kun poistat tilisi:'
     deactivate_introduction: 'Kun poistat tilisi käytöstä:'

@@ -1656,6 +1656,13 @@ tr:
     updated_on_sign_in: Tarayıcınız tarafından sağlanır ve oturum açtığınızda güncellenir
     translate_content_automatically: İçeriği otomatik olarak dilime çevir
     bot_account_warning: Bot hesapları anketlere oy vermeye veya tartışmalara katılmaya davet edilmeyecektir.
+    change_email: E-posta adresini değiştir
+    change_email_help: Yeni bir e-posta adresi girin. Yeni adresinizi onaylayana kadar mevcut adresiniz aktif kalacaktır.
+    new_email_address: Yeni e-posta adresi
+    send_confirmation_email: Onay e-postası gönder
+    email_confirmation_sent: Onay e-postası gönderildi
+    email_change_pending: "%{email} için onay bekleniyor."
+    email_change_failed: E-posta değişikliği talebi yapılamadı.
   text_editor:
     x_of_y_characters: "%{x} / %{y} karakter"
     select_text_to_link: Bağlanacak metni seçin ve tekrar deneyin
@@ -1675,6 +1682,7 @@ tr:
     set_password_helptext: Lütfen bir şifre girin - minimum 8 karakter
     set_password: Şifreyi belirle
     password_changed: şifreniz güncellenmiştir
+    sessions_and_api_keys: Parolanızı değiştirmek diğer oturumlarınızı kapatır ve API anahtarlarınızı sıfırlar. Bu oturum açık kalır.
   deactivation_modal:
     introduction: 'Hesabınızı sildiğinizde:'
     deactivate_introduction: 'Hesabınızı devre dışı bıraktığınızda:'

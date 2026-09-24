@@ -183,6 +183,8 @@ de:
     deleted_user: gelöschter Nutzer
     placeholder_name: eingeladener Nutzer (%{hostname})
     error:
+      email_change_requires_confirmation: Beantrage eine E-Mail-Änderung und bestätige sie über die neue Adresse.
+      email_change_same: Gib eine andere E-Mail-Adresse ein
       sign_in_required_html: |
         Du musst angemeldet sein, um fortfahren zu können.
         Bitte <a href="/dashboard" target="_blank">melde dich an</a>, dann lade diese Seite neu, um fortzufahren.
@@ -283,6 +285,16 @@ de:
           <p>Bitte <a href="/contact" target="_blank">kontaktiere uns </a> wenn du weitere Fragen hast.</p>
 
 
+    email_change_confirmation:
+      subject: Bestätige deine %{site_name}-E-Mail-Adresse
+      body: Bestätige %{email} als deine neue E-Mail-Adresse. Deine aktuelle Adresse bleibt aktiv, bis du die Änderung bestätigst. Dieser Link ist 24 Stunden gültig.
+      confirm: E-Mail-Adresse bestätigen
+    email_change_requested:
+      subject: Änderung der E-Mail-Adresse für dein %{site_name}-Konto angefordert
+      body: Eine Änderung deiner E-Mail-Adresse von %{old_email} auf %{new_email} wurde beantragt. Deine aktuelle Adresse bleibt aktiv, bis die neue Adresse bestätigt ist. Falls du diese Änderung nicht veranlasst hast, ändere dein Passwort.
+    email_change_completed:
+      subject: Deine %{site_name}-E-Mail-Adresse wurde geändert
+      body: Deine E-Mail-Adresse wurde von %{old_email} auf %{new_email} geändert. Falls du dies nicht veranlasst hast, wende dich an den Support.
   email:
     common:
       or_enter_code: oder gib den Code unten ein
@@ -796,3 +808,9 @@ de:
     review_date: "**Überprüfungsdatum:** %{value}"
   error:
     access_denied: Du hast keine Berechtigung dazu
+  email_changes:
+    confirm_title: E-Mail-Adresse bestätigen
+    confirm_body: Möchtest du die E-Mail-Adresse deines Kontos auf %{email} ändern?
+    confirm_action: E-Mail-Adresse ändern
+    complete_title: E-Mail-Adresse geändert
+    complete_body: Die E-Mail-Adresse deines Kontos lautet jetzt %{email}. Du kannst dich mit dieser Adresse anmelden.

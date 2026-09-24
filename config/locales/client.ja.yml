@@ -1655,6 +1655,13 @@ ja:
     delete_account_subtitle: アカウントを完全に削除し、過去の議論や決定からあなたの名前を削除します。
     translate_content_automatically: コンテンツを自動的に自分の言語に翻訳する
     bot_account_warning: ボットアカウントは、投票やディスカッションへの参加を招待されません。
+    change_email: メールアドレスを変更する
+    change_email_help: 新しいメールアドレスを入力してください。新しいアドレスで変更を確認するまで、現在のアドレスは有効なままです。
+    new_email_address: 新しいメールアドレス
+    send_confirmation_email: 確認メールを送信する
+    email_confirmation_sent: 確認メールが送信されました
+    email_change_pending: "%{email} の確認待ちです"
+    email_change_failed: メールアドレスの変更をリクエストできませんでした
   text_editor:
     x_of_y_characters: "%{x} / %{y} 文字"
     select_text_to_link: リンクするテキストを選択して再試行してください
@@ -1674,6 +1681,7 @@ ja:
     set_password_helptext: パスワードを入力してください - 8文字以上
     set_password: パスワードを設定してください
     password_changed: パスワードが更新されました
+    sessions_and_api_keys: パスワードを変更すると、他のセッションからログアウトされ、APIキーがリセットされます。このセッションはログイン状態を維持します。
   deactivation_modal:
     introduction: 'アカウントを削除すると:'
     submit_delete: 今すぐアカウントを削除してください

@@ -1656,6 +1656,13 @@ hr:
     updated_on_sign_in: Dostavlja vaš preglednik i ažurira se kada se prijavite
     translate_content_automatically: Automatski prevedi sadržaj na moj jezik
     bot_account_warning: Bot računi neće biti pozvani da glasaju na anketama ili sudjeluju u raspravama
+    change_email: Promjena adrese e-pošte
+    change_email_help: Unesite novu adresu e-pošte. Vaša trenutna adresa ostaje aktivna dok ne potvrdite promjenu s nove adrese.
+    new_email_address: Nova adresa e-pošte
+    send_confirmation_email: Pošalji e-poruku s potvrdom
+    email_confirmation_sent: E-poruka s potvrdom poslana
+    email_change_pending: Potvrda na čekanju za %{email}
+    email_change_failed: Nije moguće zatražiti promjenu e-pošte
   text_editor:
     x_of_y_characters: "%{x} / %{y} znakova"
     select_text_to_link: Odaberite tekst za povezivanje i pokušajte ponovno
@@ -1675,6 +1682,7 @@ hr:
     set_password_helptext: Unesite lozinku - minimalno 8 znakova
     set_password: Postavi lozinku
     password_changed: Vaša lozinka je ažurirana
+    sessions_and_api_keys: Promjenom lozinke odjavljujete se iz ostalih sesija i resetirate API ključeve. U ovoj sesiji ostajete prijavljeni.
   deactivation_modal:
     introduction: 'Kada izbrišete svoj račun:'
     deactivate_introduction: 'Kada deaktivirate svoj račun:'

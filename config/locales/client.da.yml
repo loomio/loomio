@@ -1656,6 +1656,13 @@ da:
     updated_on_sign_in: Leveres af din browser og opdateres, når du logger ind
     translate_content_automatically: Oversæt indhold automatisk til mit sprog
     bot_account_warning: Botkonti vil ikke blive inviteret til at stemme i afstemninger eller deltage i diskussioner
+    change_email: Skift e-mailadresse
+    change_email_help: Indtast en ny e-mailadresse. Din nuværende adresse forbliver aktiv, indtil du bekræfter ændringen fra den nye adresse.
+    new_email_address: Ny e-mailadresse
+    send_confirmation_email: Send bekræftelsesmail
+    email_confirmation_sent: Bekræftelsesmail sendt
+    email_change_pending: Bekræftelse afventer for %{email}
+    email_change_failed: Kunne ikke anmode om en ændring af e-mailadressen
   text_editor:
     x_of_y_characters: "%{x} / %{y} tegn"
     select_text_to_link: Vælg tekst, der skal linkes, og prøv igen
@@ -1675,6 +1682,7 @@ da:
     set_password_helptext: Indtast venligst en adgangskode - minimum 8 tegn
     set_password: Indstil adgangskode
     password_changed: Din adgangskode er blevet opdateret
+    sessions_and_api_keys: Ændring af din adgangskode logger dine andre sessioner ud og nulstiller dine API-nøgler. Denne session forbliver logget ind.
   deactivation_modal:
     introduction: 'Når du sletter din konto:'
     deactivate_introduction: 'Når du deaktiverer din konto:'

@@ -1656,6 +1656,13 @@ sv:
     updated_on_sign_in: Tillhandahålls av din webbläsare och uppdateras när du loggar in
     translate_content_automatically: Översätt innehåll till mitt språk automatiskt
     bot_account_warning: Botkonton kommer inte att bjudas in att rösta i omröstningar eller delta i diskussioner
+    change_email: Ändra e-postadress
+    change_email_help: Ange en ny e-postadress. Din nuvarande adress förblir aktiv tills du bekräftar ändringen från den nya adressen.
+    new_email_address: Ny e-postadress
+    send_confirmation_email: Skicka bekräftelsemejl
+    email_confirmation_sent: Bekräftelsemejl skickat
+    email_change_pending: Bekräftelse väntar för %{email}
+    email_change_failed: Kunde inte begära en e-postadressändring
   text_editor:
     x_of_y_characters: "%{x} / %{y} tecken"
     select_text_to_link: Välj text att länka och försök igen
@@ -1675,6 +1682,7 @@ sv:
     set_password_helptext: Vänligen ange ett lösenord - minst 8 tecken
     set_password: Välj lösenord
     password_changed: ditt lösenord har uppdaterats
+    sessions_and_api_keys: Om du ändrar ditt lösenord loggas du ut från dina andra sessioner och återställer dina API-nycklar. Den här sessionen förblir inloggad.
   deactivation_modal:
     introduction: 'När du tar bort ditt konto:'
     deactivate_introduction: 'När du inaktiverar ditt konto:'

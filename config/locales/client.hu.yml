@@ -1660,6 +1660,13 @@ hu:
     updated_on_sign_in: A böngésző biztosítja, és bejelentkezéskor frissül
     translate_content_automatically: Tartalom automatikus fordítása a saját nyelvemre
     bot_account_warning: A botfiókok nem kapnak meghívást szavazásra vagy beszélgetésekben való részvételre.
+    change_email: E-mail cím módosítása
+    change_email_help: Adjon meg egy új e-mail címet. A jelenlegi címe addig marad aktív, amíg meg nem erősíti az új címről történő módosítást.
+    new_email_address: Új e-mail cím
+    send_confirmation_email: Megerősítő e-mail küldése
+    email_confirmation_sent: Megerősítő e-mail elküldve
+    email_change_pending: 'Megerősítés függőben a következő címre: %{email}'
+    email_change_failed: Nem sikerült e-mail-cím módosítását kérni
   text_editor:
     x_of_y_characters: "%{x} / %{y} karakter"
     select_text_to_link: Válassza ki a linkelni kívánt szöveget, és próbálja újra
@@ -1679,6 +1686,7 @@ hu:
     set_password_helptext: Adjon meg egy jelszót - legalább 8 karakter
     set_password: Állítsd be a jelszót
     password_changed: Jelszava frissült
+    sessions_and_api_keys: A jelszó megváltoztatásával kijelentkezik a többi munkamenetből, és visszaállítja az API-kulcsait. Ez a munkamenet bejelentkezve marad.
   deactivation_modal:
     introduction: 'Amikor törli fiókját:'
     deactivate_introduction: 'Amikor deaktiválja fiókját:'

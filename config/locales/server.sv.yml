@@ -180,6 +180,8 @@ sv:
     deleted_user: Ta bort användare
     placeholder_name: Inbjuden användare (%{hostname})
     error:
+      email_change_requires_confirmation: Begär en e-postadressändring och bekräfta den från den nya adressen
+      email_change_same: Ange en annan e-postadress
       sign_in_required_html: Du måste vara inloggad för att fortsätta. <a href="/dashboard" target="_blank">Logga in</a> och ladda sedan om sidan för att fortsätta.
       recaptcha: Vi kunde inte verifiera att du inte är en robot. Var god försök igen!
       bad_login: Tyvärr, det lösenordet stämmer inte överens med det vi har registrerat
@@ -262,6 +264,16 @@ sv:
       complete_page:
         title: Sammanfogningen lyckades!
         body_html: <p>Sammanfogningen av dina användarkonton lyckades. Du kommer att få en bekräftelse via e-post till <strong>%{target_email}</strong> inom kort.</p><p> <a href="/contact" target="_blank">Kontakta oss</a> om du har ytterligare frågor.</p>
+    email_change_confirmation:
+      subject: Bekräfta din %{site_name} e-postadress
+      body: Bekräfta %{email} som din nya e-postadress för kontot. Din nuvarande adress förblir aktiv tills du bekräftar denna ändring. Den här länken upphör att gälla om 24 timmar.
+      confirm: Bekräfta e-postadress
+    email_change_requested:
+      subject: Ändring av e-postadress begärd för ditt %{site_name}-konto
+      body: En begäran gjordes om att ändra din konto-e-postadress från %{old_email} till %{new_email}. Din nuvarande adress förblir aktiv tills den nya adressen har bekräftats. Om du inte begärde detta, ändra ditt lösenord.
+    email_change_completed:
+      subject: Din %{site_name} e-postadress har ändrats
+      body: Din konto-e-postadress har ändrats från %{old_email} till %{new_email}. Om du inte begärde detta, kontakta supporten.
   email:
     common:
       or_enter_code: Eller ange koden nedan
@@ -764,3 +776,9 @@ sv:
     review_date: "**Granskningsdatum:** %{value}"
   error:
     access_denied: Du har inte tillåtelse att göra det
+  email_changes:
+    confirm_title: Bekräfta e-postadress
+    confirm_body: Vill du ändra din e-postadress till %{email}?
+    confirm_action: Ändra e-postadress
+    complete_title: E-postadressen har ändrats
+    complete_body: Din e-postadress för kontot är nu %{email}. Du kan logga in med den här adressen.

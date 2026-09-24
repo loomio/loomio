@@ -184,6 +184,8 @@ it:
     deleted_user: Utente eliminato
     placeholder_name: Utente invitato %{hostname}
     error:
+      email_change_requires_confirmation: Richiedi la modifica dell'indirizzo email e confermala dal nuovo indirizzo.
+      email_change_same: Inserisci un indirizzo email diverso
       sign_in_required_html: |
         È necessario avere effettuato l'accesso per procedere.
         <a href="/dashboard" target="_blank">Accedi</a> quindi ricarica questa pagina per continuare.
@@ -273,6 +275,16 @@ it:
       complete_page:
         title: Unione riuscita!
         body_html: <p>L'unione dei tuoi account utente è andata a buon fine. A breve riceverai un'email di conferma all'indirizzo <strong>%{target_email}</strong> .</p><p><a href="/contact" target="_blank">Contattaci</a> se hai altre domande.</p>
+    email_change_confirmation:
+      subject: Conferma il tuo indirizzo email %{site_name}
+      body: Conferma %{email} come nuovo indirizzo email per il tuo account. Il tuo indirizzo attuale rimarrà attivo fino alla conferma della modifica. Questo link scade tra 24 ore.
+      confirm: Conferma l'indirizzo e-mail
+    email_change_requested:
+      subject: Richiesta di modifica dell'indirizzo email per il tuo account %{site_name}
+      body: È stata inoltrata una richiesta di modifica dell'indirizzo email del tuo account da %{old_email} a %{new_email}. Il tuo indirizzo attuale rimarrà attivo fino alla conferma del nuovo indirizzo. Se non hai richiesto questa modifica, cambia la tua password.
+    email_change_completed:
+      subject: Il tuo indirizzo email %{site_name} è cambiato
+      body: L'indirizzo email del tuo account è cambiato da %{old_email} a %{new_email}. Se non hai richiesto questa modifica, contatta l'assistenza.
   email:
     common:
       or_enter_code: Oppure inserisci il codice qui sotto
@@ -775,3 +787,9 @@ it:
     review_date: "**Data della revisione:** %{value}"
   error:
     access_denied: Non hai il permesso di farlo
+  email_changes:
+    confirm_title: Conferma l'indirizzo e-mail
+    confirm_body: Vuoi cambiare l'indirizzo email del tuo account in %{email}?
+    confirm_action: Modifica l'indirizzo email
+    complete_title: Indirizzo email modificato
+    complete_body: Il tuo indirizzo email di accesso è ora %{email}. Puoi accedere con questo indirizzo.

@@ -175,6 +175,8 @@ ja:
     deleted_user: 削除されたユーザー
     placeholder_name: 招待されたユーザー (%{hostname})
     error:
+      email_change_requires_confirmation: メールアドレスの変更をリクエストし、新しいアドレスから確認してください。
+      email_change_same: 別のメールアドレスを入力してください
       sign_in_required_html: 続行するにはサインインする必要があります。続行するには<a href="/dashboard" target="_blank">、サインインし</a>てこのページをリロードしてください。
       recaptcha: あなたがロボットではないことを確認できませんでした。もう一度試してください。
       bad_login: 申し訳ありませんが、そのパスワードはファイルにあるパスワードと一致しません
@@ -257,6 +259,16 @@ ja:
     redacted:
       subject: "%{site_name} ユーザー アカウントは削除されました"
       body_html: "<p>%{site_name} ユーザー アカウントは削除されました。</p><p>個人を特定できるデータはすべて削除されました。</p><p>リクエストしていない場合は、%{support_email} までご連絡ください。</p>"
+    email_change_confirmation:
+      subject: "%{site_name}のメールアドレスを確認してください。"
+      body: 新しいアカウントのメールアドレスとして%{email}をご確認ください。変更を確定するまで、現在のメールアドレスは有効なままです。このリンクは24時間後に期限切れとなります。
+      confirm: メールアドレスを確認
+    email_change_requested:
+      subject: お客様の%{site_name}アカウントのメールアドレス変更リクエストがありました。
+      body: お客様のアカウントのメールアドレスを%{old_email}から%{new_email}に変更するリクエストが送信されました。新しいメールアドレスが確認されるまで、現在のメールアドレスは引き続き有効です。この変更をリクエストしていない場合は、パスワードを変更してください。
+    email_change_completed:
+      subject: "%{site_name}のメールアドレスが変更されました"
+      body: お客様のアカウントメールアドレスが%{old_email}から%{new_email}に変更されました。変更を希望されていない場合は、サポートにお問い合わせください。
   email:
     common:
       or_enter_code: または、以下のコードを入力してください
@@ -764,3 +776,9 @@ ja:
     review_date: "**レビュー日:** %{value}"
   error:
     access_denied: あなたにはそれを行う権限がありません
+  email_changes:
+    confirm_title: メールアドレスを確認
+    confirm_body: アカウントのメールアドレスを%{email}に変更しますか？
+    confirm_action: メールアドレスを変更する
+    complete_title: メールアドレスが変更されました
+    complete_body: アカウントのメールアドレスは%{email}になりました。このアドレスでログインできます。

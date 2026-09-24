@@ -183,6 +183,8 @@ fr:
     deleted_user: Utilisateur supprimé
     placeholder_name: Utilisateur invité (%{hostname})
     error:
+      email_change_requires_confirmation: Demande un changement d'adresse e-mail et confirme-le depuis la nouvelle adresse
+      email_change_same: Saisis une autre adresse e-mail
       sign_in_required_html: |
         Tu dois être connecté pour commencer.
         <a href="/dashboard" target="_blank">Connecte-toi</a> puis recharger cette page pour continuer.
@@ -281,6 +283,16 @@ fr:
         body_html: |
           <p>La fusion de tes comptes d'utilisateur a été un succès. Tu recevras un courriel de confirmation à l'adresse <strong>%{target_email}</strong>très bientôt.</p>
           <p><a href="/contact" target="_blank">Contacte-nous</a>si tu as d'autres questions.</p>
+    email_change_confirmation:
+      subject: Confirme ton adresse e-mail %{site_name}
+      body: Confirme %{email} comme nouvelle adresse e-mail de ton compte. Ton adresse actuelle reste active jusqu'à ce que tu confirmes le changement. Ce lien expire dans 24 heures.
+      confirm: Confirmer l'adresse e-mail
+    email_change_requested:
+      subject: Changement d'adresse e-mail demandé pour ton compte %{site_name}
+      body: Une demande de changement de l'adresse e-mail de ton compte de %{old_email} à %{new_email} a été effectuée. Ton adresse actuelle reste active jusqu'à la confirmation de la nouvelle. Si tu n'as pas demandé ce changement, change ton mot de passe.
+    email_change_completed:
+      subject: L'adresse e-mail de ton compte %{site_name} a changé
+      body: 'L''adresse e-mail de ton compte est passée de %{old_email} à %{new_email}. Si tu n''as pas demandé ce changement, contacte l''assistance.'
   email:
     common:
       or_enter_code: Ou saisis ton code ci-dessous
@@ -794,3 +806,9 @@ fr:
     review_date: "**Date de révision :** %{value}"
   error:
     access_denied: Tu n'as pas la permission de faire cela
+  email_changes:
+    confirm_title: Confirmer l'adresse e-mail
+    confirm_body: Changer l'adresse e-mail de ton compte pour %{email} ?
+    confirm_action: Changer l'adresse e-mail
+    complete_title: Adresse e-mail modifiée
+    complete_body: L'adresse e-mail de ton compte est désormais %{email}. Tu peux te connecter avec cette adresse.

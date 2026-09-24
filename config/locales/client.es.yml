@@ -1679,6 +1679,13 @@ es:
     updated_on_sign_in: Proporcionado por tu navegador y actualizado al iniciar sesión
     translate_content_automatically: Traducir automáticamente el contenido a mi idioma
     bot_account_warning: Las cuentas de bots no serán invitadas a votar en encuestas ni a participar en debates.
+    change_email: Cambiar dirección de correo electrónico
+    change_email_help: Introduce una nueva dirección de correo electrónico. Tu dirección actual permanecerá activa hasta que confirmes el cambio desde la nueva dirección.
+    new_email_address: Nueva dirección de correo electrónico
+    send_confirmation_email: Enviar correo electrónico de confirmación
+    email_confirmation_sent: Correo electrónico de confirmación enviado
+    email_change_pending: Confirmación pendiente para %{email}
+    email_change_failed: No se pudo solicitar un cambio de correo electrónico.
   text_editor:
     x_of_y_characters: "%{x} / %{y} caractéres"
     select_text_to_link: Selecciona el texto del enlace e inténtalo de nuevo
@@ -1698,6 +1705,7 @@ es:
     set_password_helptext: Introduce una contraseña de al menos 8 caracteres
     set_password: Configura la contraseña
     password_changed: Tu contraseña ha sido actualizada.
+    sessions_and_api_keys: Cambiar tu contraseña cierra las demás sesiones y restablece tus claves API. Esta sesión permanece iniciada.
   deactivation_modal:
     introduction: 'Cuando borras tu cuenta:'
     deactivate_introduction: 'Cuando desactivas tu cuenta:'

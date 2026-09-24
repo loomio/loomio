@@ -183,6 +183,8 @@ pt_BR:
     deleted_user: Usuário excluído
     placeholder_name: Usuário convidado (%{hostname})
     error:
+      email_change_requires_confirmation: Solicite uma alteração de e-mail e confirme-a a partir do novo endereço.
+      email_change_same: Insira um endereço de e-mail diferente.
       sign_in_required_html: |
         Você deve entrar para seguir.
         Por favor <a href="/dashboard" target="_blank">entre </a> e então recarregue essa página para continuar.
@@ -281,6 +283,16 @@ pt_BR:
         body_html: |
           <p>A mesclagem de suas contas de usuário foi bem-sucedida. Você receberá um e-mail de confirmação em <strong>%{target_email}</strong> Em breve.</p>
           <p>Por favor <a href="/contact" target="_blank">Contate-nos</a> se você tiver quaisquer outras questões. </p>
+    email_change_confirmation:
+      subject: Confirme seu endereço de e-mail %{site_name}
+      body: Confirme %{email} como seu novo endereço de e-mail. Seu endereço atual permanecerá ativo até que você confirme esta alteração. Este link expira em 24 horas.
+      confirm: Confirme o endereço de e-mail.
+    email_change_requested:
+      subject: Solicitação de alteração de e-mail para sua conta %{site_name}
+      body: Foi feita uma solicitação para alterar o e-mail da sua conta de %{old_email} para %{new_email}. Seu endereço atual permanecerá ativo até que o novo endereço seja confirmado. Se você não solicitou essa alteração, altere sua senha.
+    email_change_completed:
+      subject: Seu endereço de e-mail %{site_name} foi alterado.
+      body: O endereço de e-mail da sua conta foi alterado de %{old_email} para %{new_email}. Caso não tenha solicitado essa alteração, entre em contato com o suporte.
   email:
     common:
       or_enter_code: Ou insira o código abaixo
@@ -794,3 +806,9 @@ pt_BR:
     review_date: "**Data da revisão:** %{value}"
   error:
     access_denied: Você não tem permissão para fazer isso.
+  email_changes:
+    confirm_title: Confirme o endereço de e-mail.
+    confirm_body: Alterar o endereço de e-mail da sua conta para %{email}?
+    confirm_action: Alterar endereço de e-mail
+    complete_title: Endereço de e-mail alterado
+    complete_body: O endereço de e-mail da sua conta agora é %{email}. Você pode entrar com este endereço.

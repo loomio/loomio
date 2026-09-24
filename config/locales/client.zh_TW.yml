@@ -1673,6 +1673,13 @@ zh_TW:
     updated_on_sign_in: 由您的瀏覽器提供並在您登入時更新
     translate_content_automatically: 自動將內容翻譯成我的語言
     bot_account_warning: 機器人帳號將不會被邀請參與投票或討論。
+    change_email: 更改電子郵件地址
+    change_email_help: 請輸入新的電子郵件地址。在您使用新地址確認變更之前，您目前的地址仍然有效。
+    new_email_address: 新電子郵件地址
+    send_confirmation_email: 發送確認郵件
+    email_confirmation_sent: 已發送確認郵件
+    email_change_pending: 待確認 %{email}
+    email_change_failed: 無法請求更改電子郵件地址
   text_editor:
     x_of_y_characters: "%{x} / %{y} 個字元"
     select_text_to_link: 選取要連結的文字並再試一次
@@ -1692,6 +1699,7 @@ zh_TW:
     set_password_helptext: 請輸入密碼，最少需要 8 個字元
     set_password: 設定密碼
     password_changed: 您的密碼已更新
+    sessions_and_api_keys: 更改密碼會登出您的其他會話並重設您的 API 金鑰。此會話將保持登入狀態。
   deactivation_modal:
     introduction: 當您刪除帳號時：
     deactivate_introduction: 當您停用您的帳戶時：

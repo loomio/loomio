@@ -184,6 +184,8 @@ nl_NL:
     deleted_user: Verwijderde gebruiker
     placeholder_name: Uitgenodigde gebruiker (%{hostname})
     error:
+      email_change_requires_confirmation: Vraag een wijziging van je e-mailadres aan en bevestig die via het nieuwe adres
+      email_change_same: Voer een ander e-mailadres in
       sign_in_required_html: |
         Je moet ingelogd zijn om door te gaan.
         <a href="/dashboard" target="_blank">Log in</a> en ververs deze pagina.
@@ -282,6 +284,16 @@ nl_NL:
         body_html: |
           <p>Het samenvoegen van jouw accounts is gelukt. Je krijgt een bevestigingse-mail op <strong>%{target_email}</strong> .</p>
           <p>Neem aub <a href="/contact" target="_blank">contact op</a> als je nog vragen hebt.</p>
+    email_change_confirmation:
+      subject: Bevestig je %{site_name} e-mailadres
+      body: Bevestig %{email} als het nieuwe e-mailadres voor je account. Je huidige adres blijft actief totdat je deze wijziging bevestigt. Deze link is 24 uur geldig.
+      confirm: Bevestig je e-mailadres
+    email_change_requested:
+      subject: E-mailwijziging aangevraagd voor je %{site_name} account
+      body: Er is een verzoek ingediend om het e-mailadres van je account te wijzigen van %{old_email} naar %{new_email}. Je huidige adres blijft actief totdat het nieuwe adres is bevestigd. Als je dit niet hebt aangevraagd, wijzig dan je wachtwoord.
+    email_change_completed:
+      subject: Je %{site_name} e-mailadres is gewijzigd
+      body: Het e-mailadres van je account is gewijzigd van %{old_email} naar %{new_email}. Als je dit niet zelf hebt aangevraagd, neem dan contact op met de ondersteuning.
   email:
     common:
       or_enter_code: Of, voer de code hieronder in
@@ -791,3 +803,9 @@ nl_NL:
     review_date: "**Reviewdatum:** %{value}"
   error:
     access_denied: Je hebt geen toestemming om dat te doen
+  email_changes:
+    confirm_title: Bevestig je e-mailadres
+    confirm_body: Wil je het e-mailadres van je account wijzigen naar %{email}?
+    confirm_action: E-mailadres wijzigen
+    complete_title: E-mailadres gewijzigd
+    complete_body: Het e-mailadres van je account is nu %{email}. Je kunt met dit adres inloggen.

@@ -1670,6 +1670,13 @@ nl_NL:
     updated_on_sign_in: Verstrekt door uw browser en bijgewerkt wanneer u zich aanmeldt
     translate_content_automatically: Vertaal inhoud automatisch naar mijn taal
     bot_account_warning: Botaccounts worden niet uitgenodigd om te stemmen in peilingen of deel te nemen aan discussies.
+    change_email: E-mailadres wijzigen
+    change_email_help: Voer een nieuw e-mailadres in. Je huidige adres blijft actief totdat je de wijziging via het nieuwe adres bevestigt.
+    new_email_address: Nieuw e-mailadres
+    send_confirmation_email: Verzend bevestigingsmail
+    email_confirmation_sent: Bevestigingsmail verzonden
+    email_change_pending: Bevestiging in afwachting voor %{email}
+    email_change_failed: E-mailwijziging kon niet worden aangevraagd
   text_editor:
     x_of_y_characters: "%{x} / %{y} tekens"
     select_text_to_link: Selecteer tekst om te linken en probeer het opnieuw
@@ -1689,6 +1696,7 @@ nl_NL:
     set_password_helptext: Gelieve een wachtwoord in te geven - minimum 8 karakters
     set_password: Wachtwoord instellen
     password_changed: Je wachtwoord is geüpdatet
+    sessions_and_api_keys: Als je je wachtwoord wijzigt, worden je andere sessies afgemeld en worden je API-sleutels gereset. Deze sessie blijft ingelogd.
   deactivation_modal:
     introduction: 'Wanneer u uw account verwijdert:'
     deactivate_introduction: 'Wanneer u uw account deactiveert:'

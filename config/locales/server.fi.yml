@@ -180,6 +180,8 @@ fi:
     deleted_user: Poistettu käyttäjä
     placeholder_name: Kutsuttu käyttäjä (%{hostname})
     error:
+      email_change_requires_confirmation: Pyydä sähköpostiosoitteen muutosta ja vahvista se uudesta osoitteesta
+      email_change_same: Anna eri sähköpostiosoite
       sign_in_required_html: Sinun on kirjauduttava sisään jatkaaksesi. Ole hyvä <a href="/dashboard" target="_blank">ja kirjaudu sisään</a> ja lataa tämä sivu uudelleen jatkaaksesi.
       recaptcha: Emme voineet vahvistaa, että et ole robotti. Yritä uudelleen!
       bad_login: Valitettavasti tämä salasana ei vastaa tiedoissamme olevaa salasanaa
@@ -262,6 +264,16 @@ fi:
       complete_page:
         title: Yhdistäminen onnistui!
         body_html: <p>Käyttäjätilien yhdistäminen onnistui. Saat pian vahvistussähköpostin osoitteeseen <strong>%{target_email}</strong> .</p><p> Ota <a href="/contact" target="_blank">meihin yhteyttä,</a> jos sinulla on kysyttävää.</p>
+    email_change_confirmation:
+      subject: Vahvista sähköpostiosoitteesi %{site_name}
+      body: Vahvista %{email} uudeksi tilisi sähköpostiosoitteeksi. Nykyinen osoitteesi pysyy aktiivisena, kunnes vahvistat tämän muutoksen. Tämä linkki vanhenee 24 tunnin kuluttua.
+      confirm: Vahvista sähköpostiosoite
+    email_change_requested:
+      subject: Sähköpostiosoitteen muutosta pyydetty %{site_name}-tilillesi
+      body: Tilisi sähköpostiosoitteen vaihtamista pyydettiin osoitteesta %{old_email} osoitteeseen %{new_email}. Nykyinen osoitteesi pysyy aktiivisena, kunnes uusi osoite on vahvistettu. Jos et pyytänyt tätä, vaihda salasanasi.
+    email_change_completed:
+      subject: Sähköpostiosoitteesi %{site_name} on muuttunut
+      body: Tilisi sähköpostiosoite muuttui osoitteesta %{old_email} osoitteeseen %{new_email}. Jos et pyytänyt tätä, ota yhteyttä tukeen.
   email:
     common:
       or_enter_code: Tai syötä alla oleva koodi
@@ -764,3 +776,9 @@ fi:
     review_date: "**Arviointipäivämäärä:** %{value}"
   error:
     access_denied: Sinulla ei ole lupaa tehdä niin
+  email_changes:
+    confirm_title: Vahvista sähköpostiosoite
+    confirm_body: Vaihdetaanko tilisi sähköpostiosoite muotoon %{email}?
+    confirm_action: Vaihda sähköpostiosoite
+    complete_title: Sähköpostiosoite muuttunut
+    complete_body: Tilisi sähköpostiosoite on nyt %{email}. Voit kirjautua sisään tällä osoitteella.

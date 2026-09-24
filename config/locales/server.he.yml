@@ -180,6 +180,8 @@ he:
     deleted_user: משתמש מחוק
     placeholder_name: משתמש מוזמן (%{hostname})
     error:
+      email_change_requires_confirmation: בקשה לשינוי כתובת דוא"ל ואשרה מהכתובת החדשה
+      email_change_same: הזן כתובת דוא"ל שונה
       sign_in_required_html: עליך להיות מחובר כדי להמשיך. אנא <a href="/dashboard" target="_blank">היכנס</a> ואז טען מחדש את הדף הזה כדי להמשיך.
       recaptcha: לא הצלחנו לאשר שאינך רובוט. אנא נסה שוב!
       bad_login: סליחה, סיסמה זו לא תואמת לזו שבמערכת
@@ -267,6 +269,16 @@ he:
       complete_page:
         title: מיזוג מוצלח!
         body_html: <p style=";text-align:right;direction:rtl">מיזוג חשבונות המשתמש שלך הצליח. בקרוב תקבל דוא"ל אישור ב <strong>-%{target_email}</strong> .</p><p style=";text-align:right;direction:rtl"> אנא <a href="/contact" target="_blank">צור איתנו קשר</a> אם יש לך שאלות נוספות.</p>
+    email_change_confirmation:
+      subject: אשר את כתובת הדוא"ל שלך %{site_name}
+      body: אשר את %{email} ככתובת הדוא"ל החדשה שלך. הכתובת הנוכחית שלך נשארת פעילה עד שתאשר שינוי זה. קישור זה יפוג תוקפו בעוד 24 שעות.
+      confirm: אשר כתובת דוא"ל
+    email_change_requested:
+      subject: התבקשה שינוי כתובת דוא"ל עבור חשבון %{site_name} שלך
+      body: הוגשה בקשה לשנות את כתובת הדוא"ל של חשבונך מ-%{old_email} ל-%{new_email}. הכתובת הנוכחית שלך נשארת פעילה עד לאישור הכתובת החדשה. אם לא ביקשת זאת, שנה את הסיסמה שלך.
+    email_change_completed:
+      subject: כתובת הדוא"ל שלך %{site_name} השתנתה
+      body: כתובת האימייל של החשבון שלך השתנתה מ-%{old_email} ל-%{new_email}. אם לא ביקשת זאת, צור קשר עם התמיכה.
   email:
     common:
       or_enter_code: או, הזן את הקוד למטה
@@ -776,3 +788,9 @@ he:
     review_date: "**תאריך סקירה:** %{value}"
   error:
     access_denied: אין לך אישור לעשות זאת
+  email_changes:
+    confirm_title: אשר כתובת דוא"ל
+    confirm_body: לשנות את כתובת הדוא"ל של החשבון שלך ל-%{email}?
+    confirm_action: שינוי כתובת דוא"ל
+    complete_title: כתובת הדוא"ל שונתה
+    complete_body: כתובת הדוא"ל של החשבון שלך היא כעת %{email}. באפשרותך להתחבר באמצעות כתובת זו.
