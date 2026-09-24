@@ -25,6 +25,8 @@ class DemoServiceTest < ActiveSupport::TestCase
 
     assert_equal "demo", source.subscription.plan
     assert_equal "demo", first.subscription.plan
+    refute first.members_can_add_members?
+    refute first.members_can_add_guests?
     assert_equal source.id, first.info.dig("source_record_ids", "Group-#{first.id}")
     assert_equal 3, first.discussions.count
     assert_equal 6, first.polls.count
@@ -67,7 +69,13 @@ class DemoServiceTest < ActiveSupport::TestCase
     assert_equal prepared_id, group.id
     assert_equal actor, group.creator
     assert_equal actor, group.subscription.owner
-    assert group.admins.exists?(actor.id)
+    assert group.members.exists?(actor.id)
+    refute group.admins.exists?(actor.id)
+    assert group.admins.exists?(User.find_by!(email: "jamie@oatmilk.example").id)
+    refute group.members_can_add_members?
+    refute group.members_can_add_guests?
+    refute actor.ability.can?(:add_members, group)
+    refute actor.ability.can?(:add_guests, group)
     refute group.info.fetch("demo_group_queued")
     assert_empty DemoService.demo_group_ids
     assert_equal unread_before + 3, NotificationDelivery.where(recipient: actor, channel: "in_app", viewed_at: nil).count
@@ -81,6 +89,10 @@ class DemoServiceTest < ActiveSupport::TestCase
 
     assert_equal "demo", group.subscription.plan
     assert_equal demo_source.id, group.info.dig("source_record_ids", "Group-#{group.id}")
+    assert group.members.exists?(actor.id)
+    refute group.admins.exists?(actor.id)
+    refute group.members_can_add_members?
+    refute group.members_can_add_guests?
     assert_equal unread_before + 3, NotificationDelivery.where(recipient: actor, channel: "in_app", viewed_at: nil).count
   end
 

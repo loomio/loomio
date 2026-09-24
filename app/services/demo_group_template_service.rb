@@ -50,6 +50,8 @@ class DemoGroupTemplateService
     mapped["polls"] = references.fetch("polls").transform_values { |id| clone_ids.fetch("Poll-#{id}") }
     clone.update!(
       membership_granted_upon: source.membership_granted_upon,
+      members_can_add_members: false,
+      members_can_add_guests: false,
       subscription: Subscription.create!(plan: "demo", owner: source.creator),
       info: clone.info.merge(
         "demo_group_template" => source.info.fetch("demo_group_template"),
@@ -109,13 +111,15 @@ class DemoGroupTemplateService
 
       group.update!(
         creator: user,
+        members_can_add_members: false,
+        members_can_add_guests: false,
         info: group.info.merge(
           "demo_group_queued" => false,
           "demo_group_recipient_id" => user.id
         )
       )
       group.subscription.update!(owner: user)
-      group.add_admin!(user)
+      group.add_member!(user)
       PollService.group_members_added(group.id)
       notifications = create_notifications!(load_template.fetch("notifications"), people, discussions, polls)
 
@@ -131,6 +135,7 @@ class DemoGroupTemplateService
     facilitator = people.fetch(template.fetch("facilitator"))
     group = create_group!(template, actor: recipient || facilitator, queued: recipient.nil?)
     add_people!(group, people, template.fetch("people"), facilitator)
+    group.membership_for(recipient).update!(admin: false) if recipient
     create_tags!(group, template.fetch("tags", []))
 
     discussions = create_discussions!(template.fetch("discussions"), group, people)
@@ -210,6 +215,8 @@ class DemoGroupTemplateService
       group_privacy: template.fetch("group_privacy"),
       membership_granted_upon: template.fetch("membership_granted_upon"),
       discussion_privacy_options: "private_only",
+      members_can_add_members: false,
+      members_can_add_guests: false,
       creator: actor,
       subscription: Subscription.new(plan: "demo", owner: actor),
       info: {

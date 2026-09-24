@@ -11,7 +11,12 @@ class DemoGroupTemplateServiceTest < ActiveSupport::TestCase
     assert_equal "invitation", result.group.membership_granted_upon
     assert_equal "demo", result.group.subscription.plan
     assert_equal user, result.group.subscription.owner
-    assert result.group.admins.exists?(user.id)
+    assert result.group.members.exists?(user.id)
+    refute result.group.admins.exists?(user.id)
+    refute result.group.members_can_add_members?
+    refute result.group.members_can_add_guests?
+    refute user.ability.can?(:add_members, result.group)
+    refute user.ability.can?(:add_guests, result.group)
     assert_equal 4, result.group.members.count
     assert result.group.logo.attached?
     assert result.group.cover_photo.attached?
