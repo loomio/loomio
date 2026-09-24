@@ -732,6 +732,7 @@ fi:
   merge_users:
     not_target_user: Sinun on kirjauduttava sisään kohdetilillä vahvistaaksesi yhdistämisen.
   thread_markdown:
+    comments: Kommentit
     poll: Kysely
     no_activity: Ei vielä kommentteja, kyselyitä, ääniä tai tuloksia
     thread_title: "%{type}: %{title} · %{author} %{timestamp}"

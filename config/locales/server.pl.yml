@@ -759,6 +759,7 @@ pl:
   merge_users:
     not_target_user: Aby potwierdzić scalenie, musisz zalogować się jako konto docelowe.
   thread_markdown:
+    comments: Komentarze
     poll: Głosowanie
     no_activity: Brak komentarzy, ankiet, głosów i wyników
     thread_title: "%{type}: %{title} · %{author} %{timestamp}"

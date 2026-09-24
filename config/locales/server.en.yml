@@ -3,6 +3,9 @@ en:
   error:
     access_denied: You do not have permission to do that
   thread_markdown:
+    comments: Comments
+    in_reply_to: "in reply to %{author}"
+    in_reply_to_hidden_vote: in reply to a hidden vote
     poll: Poll
     no_activity: No comments, polls, votes, or outcomes yet
     thread_title: "%{type}: %{title} · %{author} %{timestamp}"

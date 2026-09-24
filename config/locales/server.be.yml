@@ -727,6 +727,7 @@ be:
   upload:
     file_too_large: Файл занадта вялікі. Максімальны памер для загрузкі — %{limit}.
   thread_markdown:
+    comments: Каментары
     poll: Апытанне
     no_activity: Пакуль няма каментарыяў, апытанняў, галасаванняў або вынікаў
     thread_title: "%{type}: %{title} · %{author} %{timestamp}"

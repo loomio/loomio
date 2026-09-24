@@ -732,6 +732,7 @@ tr:
   merge_users:
     not_target_user: Birleştirme işlemini onaylamak için hedef hesapla oturum açmış olmanız gerekir.
   thread_markdown:
+    comments: Yorumlar
     poll: Anket
     no_activity: Henüz hiçbir yorum, anket, oy veya sonuç yok.
     thread_title: "%{type}: %{title} · %{author} %{timestamp}"

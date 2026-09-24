@@ -759,6 +759,7 @@ nl_NL:
   merge_users:
     not_target_user: Je moet ingelogd zijn met het doelaccount om een samenvoeging te bevestigen.
   thread_markdown:
+    comments: Reacties
     poll: Peiling
     no_activity: Nog geen reacties, peilingen, stemmen of uitslagen.
     thread_title: "%{type}: %{title} · %{author} %{timestamp}"

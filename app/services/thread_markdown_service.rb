@@ -48,9 +48,150 @@ class ThreadMarkdownService
   end
 
   def activity
-    content = topic_items.filter_map { |topic_item| event_markdown(topic_item) }
+    items = topic_items.to_a
+    preload_itemables(items)
+    @poll_created_item_ids = poll_created_item_ids(items)
+    anchored_poll_ids = items.filter_map { |topic_item| topic_item.itemable.id if poll_anchor?(topic_item) }.to_set
+    poll_items = poll_items_by_poll(items, anchored_poll_ids)
+    poll_item_ids = poll_items.values.flatten.to_set(&:id)
+
+    content = items.filter_map do |topic_item|
+      next if poll_item_ids.include?(topic_item.id)
+
+      event = event_markdown(topic_item)
+      poll = topic_item.itemable
+      next event unless poll.is_a?(Poll) && anchored_poll_ids.include?(poll.id)
+
+      [event, poll_comments_markdown(poll_items.fetch(poll.id, []))].compact_blank.join("\n\n")
+    end
     content = ["_#{t(:no_activity)}._"] if content.empty?
     content.join("\n\n")
+  end
+
+  def preload_itemables(items)
+    itemables = items.map(&:itemable)
+    ActiveRecord::Associations::Preloader.new(records: itemables.grep(Comment), associations: [:user, :parent, {reactions: :user}]).call
+    ActiveRecord::Associations::Preloader.new(records: itemables.grep(Stance), associations: [:participant, :poll, {reactions: :user}]).call
+  end
+
+  # The same rule as HasTopicItems#created_topic_item, read from the loaded
+  # items instead of queried per poll.
+  def poll_created_item_ids(items)
+    items
+      .select { |topic_item| topic_item.itemable.is_a?(Poll) && topic_item.kind == topic_item.itemable.created_topic_item_kind.to_s }
+      .group_by(&:itemable_id)
+      .transform_values { |created_items| created_items.min_by(&:id).id }
+  end
+
+  def poll_anchor?(topic_item)
+    poll = topic_item.itemable
+    poll.is_a?(Poll) && poll != topic.topicable && !poll.discarded? && topic_item.id == @poll_created_item_ids[poll.id]
+  end
+
+  # Groups each vote and poll reply item under the anchored poll that owns it.
+  def poll_items_by_poll(items, anchored_poll_ids)
+    poll_ids_by_record = {}
+
+    items.each_with_object(Hash.new { |hash, poll_id| hash[poll_id] = [] }) do |topic_item, poll_items|
+      poll_id = owning_poll_id(topic_item.itemable, poll_ids_by_record)
+      next if poll_id.nil?
+
+      poll_ids_by_record[node_key(topic_item.itemable)] = poll_id
+      poll_items[poll_id] << topic_item if anchored_poll_ids.include?(poll_id)
+    end
+  end
+
+  def owning_poll_id(itemable, poll_ids_by_record)
+    case itemable
+    when Stance then itemable.poll_id
+    when Comment
+      parent = itemable.parent
+      case parent
+      when Poll then parent.id
+      when Stance then parent.poll_id
+      when Comment then poll_ids_by_record[node_key(parent)]
+      end
+    end
+  end
+
+  # Compacts the poll's votes (stances) and the comments/replies on them into a
+  # single "Comments" block beneath the poll's results.
+  def poll_comments_markdown(items)
+    nodes = items.filter_map { |topic_item| poll_comment_node(topic_item) }
+    return if nodes.empty?
+
+    keys = nodes.to_set { |node| node[:key] }
+    roots, replies = nodes.partition { |node| !keys.include?(node[:parent_key]) }
+    children = replies.group_by { |node| node[:parent_key] }
+    entries = roots.flat_map { |root| comment_entries(root, children, 0) }
+
+    "### #{t(:comments)}\n\n#{entries.join("\n\n")}"
+  end
+
+  def node_key(itemable)
+    [itemable.class.name, itemable.id]
+  end
+
+  def poll_comment_node(topic_item)
+    itemable = topic_item.itemable
+    return if itemable.discarded?
+    return if itemable.is_a?(Stance) && !stance_visible?(itemable)
+
+    content = body(itemable, heading_offset: 3)
+    return if content.blank?
+
+    parent = itemable.parent if itemable.is_a?(Comment) && !itemable.parent.is_a?(Poll)
+
+    {topic_item: topic_item, itemable: itemable, key: node_key(itemable), parent: parent, parent_key: parent && node_key(parent), content: content}
+  end
+
+  # Depth is capped at two nested levels.
+  def comment_entries(node, children, depth)
+    replies = children.fetch(node[:key], []).flat_map { |child| comment_entries(child, children, [depth + 1, 2].min) }
+    [comment_entry(node, depth), *replies]
+  end
+
+  def comment_entry(node, depth)
+    itemable = node[:itemable]
+    details = [heading_timestamp(node[:topic_item].created_at)]
+    details << reply_context(node[:parent]) if depth.zero? && node[:parent]
+    header = "**#{author_name(itemable)}** (#{details.join(', ')}):"
+    # indent replies to comments for a better visualization
+    header = "&nbsp;&nbsp;&nbsp;&nbsp;" * depth + " ↳ " + header unless depth.zero?
+    reactions = compact_reactions(itemable)
+    content = node[:content]
+
+    if inline_content?(content)
+      entry = "#{header} #{content}"
+      reactions ? "#{entry} (Reactions: #{reactions})" : entry
+    else
+      content = "#{content}\n\nReactions: #{reactions}" if reactions
+      content = blockquote(content, depth) unless depth.zero?
+      "#{header}\n\n#{content}"
+    end
+  end
+
+  def reply_context(parent)
+    return t(:in_reply_to_hidden_vote) if parent.is_a?(Stance) && !stance_visible?(parent)
+
+    t(:in_reply_to, author: author_name(parent))
+  end
+
+  # Plain text only when Markdown renders it as a single paragraph.
+  def inline_content?(content)
+    return false if content.include?("\n")
+
+    blocks = Nokogiri::HTML.fragment(MarkdownService.render_html(content)).element_children
+    blocks.one? && blocks.first.name == 'p'
+  end
+
+  def blockquote(content, level)
+    prefix = Array.new(level, '>').join(' ')
+    content.split("\n", -1).map { |line| line.empty? ? prefix : "#{prefix} #{line}" }.join("\n")
+  end
+
+  def compact_reactions(record)
+    reaction_names(record).map { |reaction, names| "#{names.length} #{reaction} (#{names.join(', ')})" }.join(', ').presence
   end
 
   def topic_items
@@ -60,7 +201,7 @@ class ThreadMarkdownService
   def event_markdown(topic_item)
     itemable = topic_item.itemable
     return if itemable == topic.topicable
-    return if itemable.is_a?(Poll) && topic_item != itemable.created_topic_item
+    return if itemable.is_a?(Poll) && topic_item.id != @poll_created_item_ids[itemable.id]
     return if itemable.respond_to?(:discarded?) && itemable.discarded?
 
     case itemable
@@ -173,11 +314,15 @@ class ThreadMarkdownService
   end
 
   def reactions_markdown(record)
-    reactions = record.reactions.includes(:user).group_by(&:reaction).map do |reaction, matching|
-      names = matching.map { |item| author_name(item) }.sort.join(', ')
-      "- #{inline(reaction)} #{names}"
-    end
-    reactions.any? && reactions.sort.join("\n")
+    lines = reaction_names(record).map { |reaction, names| "- #{reaction} #{names.join(', ')}" }
+    lines.any? && lines.join("\n")
+  end
+
+  # Reactions grouped by emoji, each with the sorted names of who reacted.
+  def reaction_names(record)
+    record.reactions.group_by(&:reaction).map do |reaction, matching|
+      [inline(reaction), matching.map { |item| author_name(item) }.sort]
+    end.sort
   end
 
   def reply_author(topic_item)

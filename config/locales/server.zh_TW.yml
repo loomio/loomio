@@ -762,6 +762,7 @@ zh_TW:
   merge_users:
     not_target_user: 您必須以目標帳戶身分登入才能確認合併。
   thread_markdown:
+    comments: 留言
     poll: 輪詢
     no_activity: 目前尚無評論、投票或結果
     thread_title: "%{type}: %{title} · %{author} %{timestamp}"

@@ -727,6 +727,7 @@ zh_CN:
   merge_users:
     not_target_user: 您必须以目标帐户身份登录才能确认合并。
   thread_markdown:
+    comments: 评论
     poll: 轮询
     no_activity: 目前尚无评论、投票或结果
     thread_title: "%{type}: %{title} · %{author} %{timestamp}"

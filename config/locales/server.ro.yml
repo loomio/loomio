@@ -732,6 +732,7 @@ ro:
   merge_users:
     not_target_user: Trebuie să fii conectat ca contul țintă pentru a confirma o îmbinare.
   thread_markdown:
+    comments: Comentarii
     poll: Sondaj
     no_activity: Niciun comentariu, sondaj, vot sau rezultat încă
     thread_title: "%{type}: %{title} · %{author} %{timestamp}"

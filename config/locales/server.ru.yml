@@ -743,6 +743,7 @@ ru:
   merge_users:
     not_target_user: Для подтверждения слияния необходимо войти в систему под целевой учетной записью.
   thread_markdown:
+    comments: Комментарии
     poll: Голосование
     no_activity: Пока нет комментариев, опросов, голосов или результатов.
     thread_title: "%{type}: %{title} · %{author} %{timestamp}"

@@ -732,6 +732,7 @@ ja:
   merge_users:
     not_target_user: 統合を確定するには、対象アカウントとしてログインしている必要があります。
   thread_markdown:
+    comments: コメント
     poll: アンケート
     no_activity: コメント、アンケート、投票、結果はまだありません
     thread_title: "%{type}: %{title} · %{author} %{timestamp}"

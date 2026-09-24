@@ -732,6 +732,7 @@ hr:
   merge_users:
     not_target_user: Morate biti prijavljeni kao ciljni račun da biste potvrdili spajanje.
   thread_markdown:
+    comments: Komentari
     poll: Anketa
     no_activity: Još nema komentara, anketa, glasova ili rezultata
     thread_title: "%{type}: %{title} · %{author} %{timestamp}"

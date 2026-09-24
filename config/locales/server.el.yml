@@ -732,6 +732,7 @@ el:
   merge_users:
     not_target_user: Πρέπει να είστε συνδεδεμένοι ως ο λογαριασμός-στόχος για να επιβεβαιώσετε μια συγχώνευση.
   thread_markdown:
+    comments: Σχόλια
     poll: Ψηφοφορία
     no_activity: Δεν υπάρχουν σχόλια, δημοσκοπήσεις, ψήφοι ή αποτελέσματα ακόμα
     thread_title: "%{type}: %{title} · %{author} %{timestamp}"

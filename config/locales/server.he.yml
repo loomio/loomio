@@ -744,6 +744,7 @@ he:
   merge_users:
     not_target_user: עליך להיות מחובר כחשבון היעד כדי לאשר מיזוג.
   thread_markdown:
+    comments: תגובות
     poll: מִשׁאָל
     no_activity: אין עדיין תגובות, סקרים, הצבעות או תוצאות
     thread_title: "%{type}: %{title} · %{author} %{timestamp}"
