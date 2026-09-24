@@ -200,52 +200,56 @@ class TranslationService
     ENV['TRANSLATE_CREDENTIALS'].present?
   end
 
-  def self.translate_group_content!(group, locale, cache_only = false)
+  def self.translate_group_content!(group, locale, cache_only = false, cached_only: false)
     return if locale == 'en'
 
-    translate_group_record(group, group, locale, cache_only)
+    translate_group_record(group, group, locale, cache_only, cached_only: cached_only)
 
     group.discussions.each do |discussion|
-      translate_group_record(group, discussion, locale, cache_only)
+      translate_group_record(group, discussion, locale, cache_only, cached_only: cached_only)
     end
 
     group.polls.each do |poll|
-      translate_group_record(group, poll, locale, cache_only)
+      translate_group_record(group, poll, locale, cache_only, cached_only: cached_only)
 
       poll.outcomes.each do |outcome|
-        translate_group_record(group, outcome, locale, cache_only)
+        translate_group_record(group, outcome, locale, cache_only, cached_only: cached_only)
       end
 
       poll.poll_options.each do |poll_option|
         if poll.poll_option_name_format != 'plain'
-          translate_group_record(group, poll_option, locale, cache_only, ignore: 'name')
+          translate_group_record(group, poll_option, locale, cache_only, ignore: 'name', cached_only: cached_only)
         else
-          translate_group_record(group, poll_option, locale, cache_only)
+          translate_group_record(group, poll_option, locale, cache_only, cached_only: cached_only)
         end
       end
 
       poll.stances.each do |stance|
-        translate_group_record(group, stance, locale, cache_only)
+        translate_group_record(group, stance, locale, cache_only, cached_only: cached_only)
       end
     end
 
     group.comments.each do |comment|
-      translate_group_record(group, comment, locale, cache_only)
+      translate_group_record(group, comment, locale, cache_only, cached_only: cached_only)
     end
 
     group.tags.each do |tag|
-      translate_group_record(group, tag, locale, cache_only)
+      translate_group_record(group, tag, locale, cache_only, cached_only: cached_only)
     end
   end
 
-  def self.translate_group_record(group, record, locale, cache_only = false, ignore: [])
+  def self.translate_group_record(group, record, locale, cache_only = false, ignore: [], cached_only: false)
     translate_record = if source_record_id = group.info.dig('source_record_ids', "#{record.class}-#{record.id}")
       record.class.find(source_record_id)
     else
       record
     end
 
-    translation = TranslationService.create(model: translate_record, to: locale)
+    translation = if cached_only
+      TranslationService.cached(model: translate_record, to: locale) || raise("missing cached demo translation for #{translate_record.class} #{translate_record.id}")
+    else
+      TranslationService.create(model: translate_record, to: locale)
+    end
 
     return if cache_only
 

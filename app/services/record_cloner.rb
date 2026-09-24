@@ -20,6 +20,7 @@ class RecordCloner
     save_cloned_content!(clone_group)
 
     update_tag_colors(clone_group, group)
+    clone_reactions!(group)
     store_source_record_ids(clone_group)
 
 
@@ -49,6 +50,7 @@ class RecordCloner
     save_cloned_content!(clone_group)
 
     update_tag_colors(clone_group, group)
+    clone_reactions!(group)
 
     store_source_record_ids(clone_group)
 
@@ -59,6 +61,13 @@ class RecordCloner
     clone_group.discussions.each {|d| TopicService.repair(d.topic_id) }
     clone_group.reload
     clone_group
+  end
+
+  def clone_reactions!(group)
+    group.comment_reactions.find_each do |reaction|
+      reactable = existing_clone(reaction.reactable)
+      Reaction.create!(reactable: reactable, user: reaction.user, reaction: reaction.reaction)
+    end
   end
 
   # After the group is saved, save cloned discussions and polls.
@@ -114,6 +123,7 @@ class RecordCloner
 
     clone_group = new_clone(group, copy_fields, required_values, attachments)
     clone_group.parent = clone_parent
+    clone_group.tags = group.tags.map { |tag| new_clone_tag(tag) }
 
     clone_group.memberships = group.memberships.map {|m| new_clone_membership(m) }
     clone_group.subgroups = group.subgroups.enabled.map { |g| new_clone_group(g, clone_group) }
@@ -142,11 +152,12 @@ class RecordCloner
       updated_at
       discarded_at
       template
-      tags
     ]
 
     attachments = [:files, :image_files]
-    new_clone(discussion, copy_fields, {}, attachments)
+    new_clone(discussion, copy_fields, {}, attachments).tap do |clone|
+      clone.tags = discussion.tags.map { |tag| existing_clone(tag) }
+    end
   end
 
   def new_clone_topic(topic, topicable)
@@ -226,13 +237,13 @@ class RecordCloner
       stance_reason_required
       poll_option_name_format
       reason_prompt
-      tags
       poll_template_id
       poll_template_key
     ]
     attachments = [:files, :image_files]
 
     clone_poll = new_clone(poll, copy_fields, {}, attachments)
+    clone_poll.tags = poll.tags.map { |tag| existing_clone(tag) }
     # In-thread polls share the discussion's cloned topic;
     # standalone polls get their own topic
     clone_poll.topic = existing_clone(poll.topic) || new_clone_topic(poll.topic, clone_poll)

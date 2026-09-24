@@ -1,4 +1,5 @@
 class DemoGroupTemplateService
+  require "digest"
   TEMPLATE_KEY_PATTERN = /\A[a-z0-9_-]+\z/
   TEMPLATE_ROOT = Rails.root.join("config", "demo_groups")
   POLL_CONFIGURATION_KEYS = %w[
@@ -20,6 +21,44 @@ class DemoGroupTemplateService
 
   def self.prepare!(template_key:)
     new(template_key: template_key, user: nil).prepare!
+  end
+
+  def self.template_digest(template_key)
+    Digest::SHA256.file(TEMPLATE_ROOT.join("#{template_key}.yml")).hexdigest
+  end
+
+  # The source retains the YAML content and stable record IDs used by the
+  # translation cache. Queue entries are clones with recipient state added later.
+  def self.prepare_source!(template_key:)
+    result = prepare!(template_key: template_key)
+    group = result.group
+    group.update!(info: group.info.merge(
+      "demo_group_source" => true,
+      "demo_group_queued" => false,
+      "demo_group_digest" => template_digest(template_key)
+    ))
+    group
+  end
+
+  def self.prepare_clone!(source:)
+    clone = RecordCloner.new(recorded_at: source.created_at).create_clone_group(source)
+    source_ids = clone.info.fetch("source_record_ids")
+    clone_ids = source_ids.to_h { |key, id| [ "#{key.split('-').first}-#{id}", key.split('-').last.to_i ] }
+    references = source.info.fetch("demo_group_references")
+    mapped = references.deep_dup
+    mapped["discussions"] = references.fetch("discussions").transform_values { |id| clone_ids.fetch("Discussion-#{id}") }
+    mapped["polls"] = references.fetch("polls").transform_values { |id| clone_ids.fetch("Poll-#{id}") }
+    clone.update!(
+      membership_granted_upon: source.membership_granted_upon,
+      subscription: Subscription.create!(plan: "demo", owner: source.creator),
+      info: clone.info.merge(
+        "demo_group_template" => source.info.fetch("demo_group_template"),
+        "demo_group_digest" => source.info.fetch("demo_group_digest"),
+        "demo_group_queued" => true,
+        "demo_group_references" => mapped
+      )
+    )
+    clone
   end
 
   def self.claim!(group:, user:)
