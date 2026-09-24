@@ -2334,7 +2334,6 @@ es:
     weight: Peso
     vote_weight_column: Peso del voto
     stance: Votar
-    vote_date: Votado en
     participation_records_restricted: Los registros de participación están a disposición de los coordinadores de las elecciones.
     vote_weight: Peso %{weight}
   poll_common_undecided_panel:

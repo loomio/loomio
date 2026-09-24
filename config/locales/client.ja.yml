@@ -2299,7 +2299,6 @@ ja:
     weight: 重さ
     vote_weight_column: 投票権
     stance: 投票する
-    vote_date: 投票した
     participation_records_restricted: 投票記録は投票コーディネーターが閲覧可能です。
     vote_weight: 重量 %{weight}
   poll_common_undecided_panel:

@@ -2300,7 +2300,6 @@ sl:
     weight: Teža
     vote_weight_column: Teža glasov
     stance: Glasujte
-    vote_date: Glasovano o
     participation_records_restricted: Zapisi o udeležbi so na voljo koordinatorjem volitev
     vote_weight: Teža %{weight}
   poll_common_undecided_panel:

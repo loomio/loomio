@@ -2326,7 +2326,6 @@ zh_TW:
     weight: 重量
     vote_weight_column: 投票權重
     stance: 投票
-    vote_date: 投票結果
     participation_records_restricted: 投票協調員可以查閱投票記錄。
     vote_weight: 重量 %{weight}
   poll_common_undecided_panel:

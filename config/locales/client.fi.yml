@@ -2300,7 +2300,6 @@ fi:
     weight: Paino
     vote_weight_column: Äänestyspaino
     stance: Äänestää
-    vote_date: Äänesti
     participation_records_restricted: Osallistumistiedot ovat vaalikoordinaattoreiden saatavilla
     vote_weight: Paino %{weight}
   poll_common_undecided_panel:

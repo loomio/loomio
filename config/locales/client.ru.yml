@@ -2300,7 +2300,6 @@ ru:
     weight: Масса
     vote_weight_column: Вес голоса
     stance: Голосование
-    vote_date: Проголосовали по
     participation_records_restricted: Данные об участии доступны координаторам избирательных участков.
     vote_weight: Вес %{weight}
   poll_common_undecided_panel:

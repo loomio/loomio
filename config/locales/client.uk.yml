@@ -2328,7 +2328,6 @@ uk:
     weight: Вага
     vote_weight_column: Вага голосів
     stance: Голосувати
-    vote_date: Проголосовано за
     participation_records_restricted: Записи про участь доступні координаторам виборчих дільниць
     vote_weight: Вага %{weight}
   poll_common_undecided_panel:

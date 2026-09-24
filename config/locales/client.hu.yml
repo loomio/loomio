@@ -2307,7 +2307,6 @@ hu:
     weight: Súly
     vote_weight_column: Szavazati súly
     stance: Szavazás
-    vote_date: Szavazott
     participation_records_restricted: A részvételi adatok a szavazás koordinátorai számára elérhetők.
     vote_weight: Súly %{weight}
   poll_common_undecided_panel:

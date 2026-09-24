@@ -2557,7 +2557,6 @@ en:
     weight: Weight
     vote_weight_column: Vote weight
     stance: Vote
-    vote_date: Voted on
     participation_records_restricted: Participation records are available to poll coordinators
     cast: Cast
     uncast: Uncast

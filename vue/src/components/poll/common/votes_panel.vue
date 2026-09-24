@@ -163,7 +163,6 @@ watch([name, voteFilter], () => {
           th(v-if="showVoterEmail") {{ t('poll_receipts_page.voter_email') }}
           th {{ t('poll_common_votes_panel.stance') }}
           th(v-if="poll.weightedVoting") {{ t('poll_common_votes_panel.vote_weight_column') }}
-          th {{ t('poll_common_votes_panel.vote_date') }}
           th(v-if="showVoterDetails") {{ t('poll_receipts_page.member_since') }}
           th(v-if="showVoterDetails") {{ t('poll_receipts_page.invited_by') }}
           th(v-if="showVoterDetails") {{ t('poll_receipts_page.invited_on') }}
@@ -185,8 +184,6 @@ watch([name, voteFilter], () => {
                     span.ml-1(v-if="poll.hasVariableScore() && poll.pollType !== 'ranked_choice'") ({{ choice.score }})
             template(v-else) {{ t('poll_common_form.none_of_the_above') }}
           td(v-if="poll.weightedVoting") {{ stance.weight }}
-          td
-            time-ago(v-if="stance.castAt" :date="stance.castAt")
           td(v-if="showVoterDetails") {{ voterDetailsByUserId[stance.participantId]?.member_since }}
           td(v-if="showVoterDetails") {{ voterDetailsByUserId[stance.participantId]?.inviter_name }}
           td(v-if="showVoterDetails") {{ voterDetailsByUserId[stance.participantId]?.invited_on }}

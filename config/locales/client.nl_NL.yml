@@ -2325,7 +2325,6 @@ nl_NL:
     weight: Gewicht
     vote_weight_column: Stemgewicht
     stance: Stemmen
-    vote_date: Gestemd op
     participation_records_restricted: Deelnemersgegevens zijn beschikbaar voor de coördinatoren van de peilingen.
     vote_weight: Gewicht %{weight}
   poll_common_undecided_panel:

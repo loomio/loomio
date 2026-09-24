@@ -2300,7 +2300,6 @@ sv:
     weight: Vikt
     vote_weight_column: Röstvikt
     stance: Rösta
-    vote_date: Röstade på
     participation_records_restricted: Deltagarregister är tillgängliga för valkoordinatorer
     vote_weight: Vikt %{weight}
   poll_common_undecided_panel:

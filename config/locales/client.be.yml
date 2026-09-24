@@ -2463,7 +2463,6 @@ be:
     weight: Вага
     vote_weight_column: Вага галасоў
     stance: Галасаваць
-    vote_date: Прагаласавалі за
     participation_records_restricted: Запісы аб удзеле даступныя каардынатарам выбарчых апытанняў
     vote_weight: Вага %{weight}
   poll_common_details_meta:

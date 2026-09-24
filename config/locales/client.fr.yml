@@ -2342,7 +2342,6 @@ fr:
     weight: Poids
     vote_weight_column: Poids du vote
     stance: Vote
-    vote_date: Vote du
     participation_records_restricted: Les listes de participation sont accessibles aux coordinateurs de sondage.
     vote_weight: Poids %{weight}
   poll_common_undecided_panel:

@@ -2325,7 +2325,6 @@ pl:
     weight: Waga
     vote_weight_column: Waga głosu
     stance: Głosować
-    vote_date: Głosowano nad
     participation_records_restricted: Rejestry uczestnictwa są dostępne dla koordynatorów głosowania
     vote_weight: Waga %{weight}
   poll_common_undecided_panel:

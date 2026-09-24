@@ -2319,7 +2319,6 @@ he:
     weight: מִשׁקָל
     vote_weight_column: משקל הצבעה
     stance: הַצבָּעָה
-    vote_date: הצבעתי על
     participation_records_restricted: רישומי ההשתתפות זמינים למתאמי הקלפי
     vote_weight: משקל %{weight}
   poll_common_undecided_panel:

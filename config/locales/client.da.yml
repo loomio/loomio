@@ -2300,7 +2300,6 @@ da:
     weight: Vægt
     vote_weight_column: Stemmevægt
     stance: Stemme
-    vote_date: Stemte på
     participation_records_restricted: Deltagerregistre er tilgængelige for valgkoordinatorer
     vote_weight: Vægt %{weight}
   poll_common_undecided_panel:

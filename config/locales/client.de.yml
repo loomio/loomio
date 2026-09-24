@@ -2333,7 +2333,6 @@ de:
     weight: Gewicht
     vote_weight_column: Stimmgewicht
     stance: Abstimmung
-    vote_date: Abgestimmt am
     participation_records_restricted: Die Teilnehmerzahlen stehen den Wahlleitern zur Verfügung.
     vote_weight: Gewicht %{weight}
   poll_common_undecided_panel:

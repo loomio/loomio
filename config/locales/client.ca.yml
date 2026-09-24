@@ -2325,7 +2325,6 @@ ca:
     weight: Pes
     vote_weight_column: Pes del vot
     stance: Vota
-    vote_date: Votat per
     participation_records_restricted: Els registres de participació estan disponibles per als coordinadors de les enquestes
     vote_weight: Pes %{weight}
   poll_common_undecided_panel:

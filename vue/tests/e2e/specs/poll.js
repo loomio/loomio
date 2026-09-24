@@ -351,7 +351,7 @@ module.exports = {
     page.expectNoText('.topic-header .v-breadcrumbs', 'Votes')
     page.expectText('.poll-common-votes-panel table thead', 'Name')
     page.expectText('.poll-common-votes-panel table thead', 'Vote')
-    page.expectText('.poll-common-votes-panel table thead', 'Voted on')
+    page.expectNoText('.poll-common-votes-panel table thead', 'Voted on')
   },
 
   'can_start_a_results_hidden_until_closed_poll': (test) => {

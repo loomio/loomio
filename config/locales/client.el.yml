@@ -2300,7 +2300,6 @@ el:
     weight: Βάρος
     vote_weight_column: Βάρος ψήφου
     stance: Ψήφος
-    vote_date: Ψηφίστηκε
     participation_records_restricted: Τα αρχεία συμμετοχής είναι διαθέσιμα στους συντονιστές της ψηφοφορίας
     vote_weight: Βάρος %{weight}
   poll_common_undecided_panel:

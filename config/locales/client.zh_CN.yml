@@ -2437,7 +2437,6 @@ zh_CN:
     weight: 重量
     vote_weight_column: 投票权重
     stance: 投票
-    vote_date: 投票结果
     participation_records_restricted: 投票协调员可以查阅投票记录。
     vote_weight: 重量 %{weight}
   poll_common_undecided_panel:

@@ -2300,7 +2300,6 @@ ro:
     weight: Greutate
     vote_weight_column: Ponderea voturilor
     stance: Vot
-    vote_date: Votat pentru
     participation_records_restricted: Înregistrările de participare sunt disponibile coordonatorilor de scrutin.
     vote_weight: Greutate %{weight}
   poll_common_undecided_panel:

@@ -2300,7 +2300,6 @@ hr:
     weight: Težina
     vote_weight_column: Težina glasova
     stance: Glasanje
-    vote_date: Glasano
     participation_records_restricted: Zapisi o sudjelovanju dostupni su koordinatorima biračkih mjesta
     vote_weight: Težina %{weight}
   poll_common_undecided_panel:

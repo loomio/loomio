@@ -2300,7 +2300,6 @@ tr:
     weight: Ağırlık
     vote_weight_column: Oy ağırlığı
     stance: Oy
-    vote_date: Oylama yapıldı
     participation_records_restricted: Katılım kayıtları, anket koordinatörlerinin erişimine açıktır.
     vote_weight: Ağırlık %{weight}
   poll_common_undecided_panel:
