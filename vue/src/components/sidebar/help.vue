@@ -38,7 +38,7 @@ const startOrFindDemo = () => {
     Records.post({path: 'demos/clone'}).then(data => {
       Flash.success('templates.demo_created');
       router.push(urlFor(Records.groups.find(data.groups[0].id)));
-    })
+    }).catch(error => Flash.serverError(error));
   }
 };
 </script>
