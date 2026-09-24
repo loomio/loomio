@@ -74,7 +74,7 @@ export default {
           type="info"
         )
           span {{ $t('poll_common_action_panel.variable_vote_weights_explanation') }}
-          a.ml-1(:href="'https://www.loomio.com/docs/en/user_manual/polls/weighted_voting'" target="_blank" rel="noopener noreferrer") {{ $t('common.learn_more') }}
+          help-link.ml-1(path="user_manual/polls/weighted_voting")
         poll-common-chart-table(:poll="poll" :hide-voters="hideVoters")
       poll-common-chart-meeting(v-else :poll="poll")
 

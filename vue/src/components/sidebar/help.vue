@@ -22,8 +22,7 @@ const showContact = computed(() => AppConfig.features.app.show_contact);
 const helpURL = computed(() => {
   if (AppConfig.userManual?.url) { return AppConfig.userManual.url; }
 
-  const siteUrl = new URL(AppConfig.baseUrl);
-  return `https://www.loomio.com/docs/en?utm_source=${siteUrl.host}`;
+  return AppConfig.theme.help_url;
 });
 
 const startOrFindDemo = () => {
