@@ -367,6 +367,23 @@ ro:
   announcement_count_emails: "%{count} e-mailuri"
   email_actions:
     unfollowed_discussion: Ați dezactivat e-mailurile pentru fir.
+    catch_up_link: Setări pentru e-mailuri de recuperare
+    catch_up_title: Setări pentru e-mailuri de recuperare
+    catch_up_description: Alegeți cât de des doriți să primiți un rezumat al activității din grupurile dvs.
+    catch_up_schedule: Trimiteți un e-mail de recuperare
+    catch_up_saved: Setările pentru e-mailurile de recuperare au fost actualizate
+    catch_up_days:
+      never: Nu
+      every_day: În fiecare zi
+      every_second_day: În fiecare a doua zi
+      monday: luni
+      tuesday: marţi
+      wednesday: miercuri
+      thursday: joi
+      friday: vineri
+      saturday: sâmbătă
+      sunday: duminică
+    catch_up_all_groups: E-mailuri de recuperare (toate grupurile)
   discussion_mailer:
     reply_or_view_online_html: Raspunde acestui email direct sau <a href='%{url}'>vezi pe %{hostname}</a>.
     turn_off_notifications_html: "<a href='%{url}'>Nu mai trimite email</a> pentru aceasta discutie."

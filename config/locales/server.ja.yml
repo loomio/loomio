@@ -362,6 +362,23 @@ ja:
   announcement_count_emails: "%{count} 件のメール"
   email_actions:
     unfollowed_discussion: スレッドの電子メールをオフにしました。
+    catch_up_link: キャッチアップメールの設定
+    catch_up_title: キャッチアップメールの設定
+    catch_up_description: グループの活動概要を受け取る頻度を選択してください。
+    catch_up_schedule: 近況報告メールを送信する
+    catch_up_saved: フォローアップメールの設定が更新されました
+    catch_up_days:
+      never: 一度もない
+      every_day: 毎日
+      every_second_day: 2日に1回
+      monday: 月曜日
+      tuesday: 火曜日
+      wednesday: 水曜日
+      thursday: 木曜日
+      friday: 金曜日
+      saturday: 土曜日
+      sunday: 日曜日
+    catch_up_all_groups: 最新情報メール（全グループ対象）
   discussion_mailer:
     reply_or_view_online_html: このメールに直接返信するか、 <a href='%{url}'>%{hostname} で表示してください</a>。
     turn_off_notifications_html: このディスカッションでは<a href='%{url}'>電子メールをオフにしてください</a>。

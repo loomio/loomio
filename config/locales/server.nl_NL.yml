@@ -392,6 +392,23 @@ nl_NL:
   announcement_count_emails: "%{count} e-mails"
   email_actions:
     unfollowed_discussion: Je hebt de e-mails voor het bord afgezet.
+    catch_up_link: Instellingen voor samenvattingsmails
+    catch_up_title: Instellingen voor samenvattingsmails
+    catch_up_description: Kies hoe vaak je een samenvatting van de activiteiten in je groepen wilt ontvangen
+    catch_up_schedule: Samenvattingsmail versturen
+    catch_up_saved: Instellingen voor samenvattingsmails bijgewerkt
+    catch_up_days:
+      never: Nooit
+      every_day: Elke dag
+      every_second_day: Om de dag
+      monday: Maandag
+      tuesday: Dinsdag
+      wednesday: Woensdag
+      thursday: Donderdag
+      friday: Vrijdag
+      saturday: Zaterdag
+      sunday: Zondag
+    catch_up_all_groups: Inhaalmails (alle groepen)
   discussion_mailer:
     reply_or_view_online_html: Beantwoord deze e-mail onmiddelijk of <a href='%{url}'>bekijk het op %{hostname}</a>.
     turn_off_notifications_html: "<a href='%{url}'>Zet E-mails af</a> voor deze discussie."

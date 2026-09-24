@@ -69,7 +69,7 @@ class Api::V1::MembershipsController < Api::V1::RestfulController
     service.set_volume(
       membership: resource,
       params: params.slice(:volume_email, :volume_push, :apply_to_all),
-      actor: (restricted_user || current_user)
+      actor: current_user
     )
     respond_with_resource
   end

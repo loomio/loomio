@@ -55,9 +55,8 @@ function submit() {
 }
 
 function init() {
-  if (!Session.isSignedIn() && (Session.user().restricted == null)) { return; }
+  if (!Session.isSignedIn()) { return; }
   loadGroups();
-  Session.user().attributeNames.push('unsubscribeToken');
   user.value = Session.user().clone();
 }
 

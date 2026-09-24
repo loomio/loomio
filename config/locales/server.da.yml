@@ -373,6 +373,23 @@ da:
   announcement_count_emails: "%{count} e-mails"
   email_actions:
     unfollowed_discussion: Du har slået e-mails fra for tråden.
+    catch_up_link: Indstillinger for catch-up e-mail
+    catch_up_title: Indstillinger for catch-up e-mail
+    catch_up_description: Vælg hvor ofte du vil modtage en oversigt over aktiviteten i dine grupper
+    catch_up_schedule: Send en e-mail med en fornyet forsmag
+    catch_up_saved: Indstillinger for catch-up e-mail er opdateret
+    catch_up_days:
+      never: Aldrig
+      every_day: Hver dag
+      every_second_day: Hver anden dag
+      monday: mandag
+      tuesday: tirsdag
+      wednesday: onsdag
+      thursday: torsdag
+      friday: fredag
+      saturday: lørdag
+      sunday: søndag
+    catch_up_all_groups: Opfølgningsmails (alle grupper)
   discussion_mailer:
     reply_or_view_online_html: Svar på denne e-mail eller <a href='%{url}'>se det på %{hostname}</a>.
     turn_off_notifications_html: "<a href='%{url}'>Slå email notifikationer fra</a> for denne diskussion."

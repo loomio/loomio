@@ -367,6 +367,23 @@ hr:
   announcement_count_emails: "%{count} e-poruka"
   email_actions:
     unfollowed_discussion: Isključili ste e-poštu za nit.
+    catch_up_link: Postavke e-pošte za nadoknađivanje propuštenog
+    catch_up_title: Postavke e-pošte za nadoknađivanje propuštenog
+    catch_up_description: Odaberite koliko često želite primati sažetak aktivnosti u svojim grupama
+    catch_up_schedule: Pošaljite e-poruku za nadoknađivanje propuštenog
+    catch_up_saved: Postavke e-pošte za nadoknađivanje propuštenog ažurirane su
+    catch_up_days:
+      never: Nikada
+      every_day: Svaki dan
+      every_second_day: Svaki drugi dan
+      monday: ponedjeljak
+      tuesday: utorak
+      wednesday: srijeda
+      thursday: četvrtak
+      friday: petak
+      saturday: subota
+      sunday: nedjelja
+    catch_up_all_groups: E-poruke za nadoknađivanje propuštenog (sve grupe)
   discussion_mailer:
     reply_or_view_online_html: Odgovorite izravno na ovu e-poštu ili <a href='%{url}'>je pogledajte na %{hostname}</a> .
     turn_off_notifications_html: "<a href='%{url}'>Isključi e-poštu</a> za ovu raspravu."

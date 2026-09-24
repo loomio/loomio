@@ -378,6 +378,23 @@ it:
   announcement_count_emails: "%{count} email"
   email_actions:
     unfollowed_discussion: Hai disattivato le email per il thread.
+    catch_up_link: Impostazioni email per il recupero dei messaggi persi
+    catch_up_title: Impostazioni email per il recupero dei messaggi persi
+    catch_up_description: Scegli con quale frequenza ricevere un riepilogo delle attività nei tuoi gruppi
+    catch_up_schedule: Invia un'email di aggiornamento
+    catch_up_saved: Impostazioni email di recupero aggiornate
+    catch_up_days:
+      never: Mai
+      every_day: Ogni giorno
+      every_second_day: Ogni due giorni
+      monday: Lunedi
+      tuesday: Martedì
+      wednesday: Mercoledì
+      thursday: Giovedì
+      friday: Venerdì
+      saturday: Sabato
+      sunday: Domenica
+    catch_up_all_groups: Email di riepilogo (tutti i gruppi)
   discussion_mailer:
     reply_or_view_online_html: Rispondi a questa email direttamente o <a href='%{url}'> leggila su %{hostname}</a>.
     turn_off_notifications_html: "<a href='%{url}'> Escludi le email di notifica</a> per questa discussione."

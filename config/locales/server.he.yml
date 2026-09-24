@@ -377,6 +377,23 @@ he:
   announcement_count_emails: "%{count} מיילים"
   email_actions:
     unfollowed_discussion: השבתת הודעות אימייל עבור השיחה הזו.
+    catch_up_link: הגדרות אימייל לעדכון
+    catch_up_title: הגדרות אימייל לעדכון
+    catch_up_description: בחר באיזו תדירות לקבל סיכום של הפעילות בקבוצות שלך
+    catch_up_schedule: שלח אימייל לשחזור פערים
+    catch_up_saved: הגדרות אימייל לעדכון עודכנו
+    catch_up_days:
+      never: לְעוֹלָם לֹא
+      every_day: כל יום
+      every_second_day: כל יומיים
+      monday: יוֹם שֵׁנִי
+      tuesday: יוֹם שְׁלִישִׁי
+      wednesday: יוֹם רְבִיעִי
+      thursday: יוֹם חֲמִישִׁי
+      friday: יוֹם שִׁישִׁי
+      saturday: שַׁבָּת
+      sunday: יוֹם רִאשׁוֹן
+    catch_up_all_groups: אימיילים לעדכון (כל הקבוצות)
   discussion_mailer:
     reply_or_view_online_html: הגב ישירות למייל זה או <a href='%{url}'>צפה בו ב%{hostname}</a>.
     turn_off_notifications_html: "<a href='%{url}'>השבת מיילים</a> לדיון זה."

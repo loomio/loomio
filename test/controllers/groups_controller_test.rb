@@ -52,6 +52,8 @@ class GroupsControllerTest < ActionController::TestCase
     get :show, params: { key: 'doesnotexist' }
     assert_response 404
     assert_nil assigns(:group)
+    assert_select "main.sistema h1", text: I18n.t('errors.404.title')
+    assert_select "#app", count: 0
   end
 
   # Show - closed group

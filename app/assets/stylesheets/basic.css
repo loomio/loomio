@@ -52,11 +52,11 @@ header {
 }
 
 .flash-notice {
-    text-align: center;
-    margin-left: auto;
-    margin-leright: auto;
-    border: 2px solid green;
-    border-radius: 8px;
+  border: 1px solid var(--loomio-accent-color);
+  border-radius: 6px;
+  margin: 1em auto;
+  padding: 0.75em 1em;
+  text-align: center;
 }
 
 .sistema {
@@ -64,6 +64,61 @@ header {
     margin-right: auto;
     padding: 0 1em;
     max-width: 40em;
+}
+
+.email-action-page h1 {
+  margin-bottom: 0.25em;
+}
+
+.email-action-page h3 {
+  line-height: 1.35;
+}
+
+.email-action-page form {
+  margin-top: 1.5em;
+}
+
+.email-action-page label[for="email_catch_up_day"] {
+  display: block;
+  font-weight: 500;
+  margin-bottom: 0.5em;
+}
+
+.email-action-page select {
+  background: transparent;
+  border: 1px solid color-mix(in srgb, currentColor 45%, transparent);
+  border-radius: 6px;
+  color: inherit;
+  font: inherit;
+  min-height: 2.75em;
+  padding: 0.4em 0.75em;
+}
+
+.email-action-form select {
+  display: block;
+  max-width: 24em;
+  width: 100%;
+}
+
+.email-action-page input[type="submit"] {
+  cursor: pointer;
+  margin-top: 1.5em;
+}
+
+.email-action-page input[type="submit"]:disabled {
+  cursor: default;
+  opacity: 0.5;
+}
+
+.email-action-page :focus-visible {
+  outline: 2px solid var(--loomio-accent-color);
+  outline-offset: 3px;
+}
+
+.email-action-secondary-link {
+  border-top: 1px solid color-mix(in srgb, currentColor 25%, transparent);
+  margin-top: 2em;
+  padding-top: 1em;
 }
 
 footer {

@@ -385,6 +385,23 @@ es:
   announcement_count_emails: "%{count} email"
   email_actions:
     unfollowed_discussion: 'Has desactivado los emails para este hilo '
+    catch_up_link: Configuración del correo de resumen
+    catch_up_title: Configuración del correo de resumen
+    catch_up_description: Elige con qué frecuencia quieres recibir un resumen de la actividad de tus grupos
+    catch_up_schedule: Enviar un correo de resumen
+    catch_up_saved: Configuración del correo de resumen actualizada
+    catch_up_days:
+      never: Nunca
+      every_day: Cada día
+      every_second_day: Cada dos días
+      monday: Lunes
+      tuesday: Martes
+      wednesday: Miércoles
+      thursday: Jueves
+      friday: Viernes
+      saturday: Sábado
+      sunday: Domingo
+    catch_up_all_groups: Correos de resumen (todos los grupos)
   discussion_mailer:
     reply_or_view_online_html: Responde a este correo electrónico directamente o <a href='%{url}'>velo en %{hostname}</a>.
     turn_off_notifications_html: "<a href='%{url}'>Desactivar emails </a> para esta discusión."

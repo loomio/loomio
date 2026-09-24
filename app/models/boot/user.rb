@@ -16,7 +16,7 @@ module Boot
         flash:            @flash,
         root_url:         @root_url
       ).tap do |payload|
-        payload[:channel_token] = user.secret_token unless user.restricted
+        payload[:channel_token] = user.secret_token if user.is_logged_in?
       end
     end
 
@@ -24,7 +24,7 @@ module Boot
 
     def user_payload
       ActiveModel::ArraySerializer.new(Array(@user),
-        each_serializer: (user.restricted ? Restricted::UserSerializer : CurrentUserSerializer),
+        each_serializer: CurrentUserSerializer,
         root: :users
       ).as_json
     end

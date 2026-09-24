@@ -106,7 +106,7 @@ export default {
       if (Session.isSignedIn()) { return false; }
 
       switch (this.$route.path) {
-        case '/email_preferences': return (Session.user().restricted == null);
+        case '/email_preferences': return true;
         case '/dashboard': return true;
         case '/notifications': return true;
         case '/inbox':

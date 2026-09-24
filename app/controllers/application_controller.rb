@@ -99,7 +99,11 @@ class ApplicationController < ActionController::Base
     @body = message || t("errors.#{status}.body")
     @metadata = {title: @title, description: @body }
     respond_to do |format|
-      format.html { boot_app(status: status) }
+      format.html do
+        expires_now
+        prevent_caching
+        render Views::Application::Error.new(title: @title, body: @body), status: status
+      end
       format.json { render json: { error: message || @title }, root: false, status: status }
       format.xml { render xml: { error: message || @title }, status: status }
       format.any { head status }

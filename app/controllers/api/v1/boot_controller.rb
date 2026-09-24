@@ -23,7 +23,4 @@ class Api::V1::BootController < Api::V1::RestfulController
                    flash: flash).payload
   end
 
-  def current_user
-    restricted_user || super
-  end
 end

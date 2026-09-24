@@ -1,22 +1,5 @@
 class Api::V1::ProfileController < Api::V1::RestfulController
-  # A "restricted" current_user is one authenticated ONLY by an unsubscribe_token
-  # (a permanent bearer token embedded in every notification email), not by a
-  # real session. Such a request may manage email/notification preferences, but
-  # must NEVER reach account-destructive or credential-bearing actions, nor edit
-  # identity fields (name/email/password/username/avatar) via update_profile.
-  RESTRICTED_USER_FORBIDDEN_ACTIONS = %w[
-    email_api_key reset_email_api_key deactivate destroy
-    send_merge_verification_email remind upload_avatar use_provider_avatar
-  ].freeze
-
-  # The only user fields update_profile may change for a restricted user.
-  RESTRICTED_USER_UPDATABLE_FIELDS = %i[
-    email_newsletter email_catch_up_day volume_email_default volume_push_default
-    selected_locale autodetect_time_zone time_zone date_time_pref
-  ].freeze
-
   before_action :require_current_user
-  before_action :forbid_restricted_user_actions
 
   def index
     ids = UserQuery.invitable_user_ids(model: nil, actor: current_user, user_ids: params[:xids].split('x').map(&:to_i).compact)
@@ -159,10 +142,6 @@ class Api::V1::ProfileController < Api::V1::RestfulController
     identity.identity_type.titleize
   end
 
-  def current_user
-    restricted_user || super
-  end
-
   def model
     load_and_authorize(:group, optional: true) ||
     load_and_authorize(:discussion, optional: true) ||
@@ -195,18 +174,7 @@ class Api::V1::ProfileController < Api::V1::RestfulController
   def profile_update_params
     profile_params = permitted_params.user
     profile_params = profile_params.except(:password, :password_confirmation, :current_password) unless AppConfig.local_login_enabled?
-    return profile_params unless current_user.restricted
-
-    # Restricted (unsubscribe-token) users may only update notification prefs —
-    # strip identity/credential fields so the token cannot be used to change
-    # name, email, password, username, or avatar.
-    profile_params.slice(*RESTRICTED_USER_UPDATABLE_FIELDS.map(&:to_s))
-  end
-
-  def forbid_restricted_user_actions
-    return unless RESTRICTED_USER_FORBIDDEN_ACTIONS.include?(action_name) && current_user.restricted
-
-    raise CanCan::AccessDenied.new("unsubscribe-token users may not perform #{action_name}")
+    profile_params
   end
 
   def resource_class
@@ -214,11 +182,7 @@ class Api::V1::ProfileController < Api::V1::RestfulController
   end
 
   def serializer_class
-    if current_user.restricted
-      Restricted::UserSerializer
-    else
-      CurrentUserSerializer
-    end
+    CurrentUserSerializer
   end
 
   def serializer_root

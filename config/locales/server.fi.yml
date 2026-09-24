@@ -367,6 +367,23 @@ fi:
   announcement_count_emails: "%{count} sähköpostia"
   email_actions:
     unfollowed_discussion: Olet poistanut sähköpostit käytöstä ketjussa.
+    catch_up_link: Päivityssähköpostin asetukset
+    catch_up_title: Päivityssähköpostin asetukset
+    catch_up_description: Valitse, kuinka usein haluat saada yhteenvedon ryhmiesi toiminnasta
+    catch_up_schedule: Lähetä sähköpostia kuulumisten tarkistamiseksi
+    catch_up_saved: Päivityssähköpostin asetukset päivitetty
+    catch_up_days:
+      never: Ei koskaan
+      every_day: Joka päivä
+      every_second_day: Joka toinen päivä
+      monday: maanantai
+      tuesday: tiistai
+      wednesday: keskiviikko
+      thursday: torstai
+      friday: perjantai
+      saturday: Lauantai
+      sunday: sunnuntai
+    catch_up_all_groups: Päivityssähköpostit (kaikki ryhmät)
   discussion_mailer:
     reply_or_view_online_html: Vastaa tähän sähköpostiin suoraan tai <a href='%{url}'>katso se %{hostname} -palvelussa</a> .
     turn_off_notifications_html: "<a href='%{url}'>Poista sähköpostit käytöstä</a> tässä keskustelussa."
