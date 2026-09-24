@@ -1,5 +1,6 @@
 ---
 fr:
+  group_export_started: "L'export des données du groupe a démarré"
   discussion_templates:
     blank:
       process_name: Modèle vierge

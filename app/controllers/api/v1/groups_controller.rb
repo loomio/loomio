@@ -81,6 +81,12 @@ class Api::V1::GroupsController < Api::V1::RestfulController
     render json: { success: :ok }
   end
 
+  def export_html
+    group = load_and_authorize(:group, :export)
+    GroupExportHtmlWorker.perform_later(group.id, current_user.id)
+    render json: { success: :ok }
+  end
+
   private
 
   def destroy_action

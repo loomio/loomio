@@ -1,5 +1,6 @@
 ---
 sl:
+  group_export_started: "Izvoz skupinskih podatkov se je začel"
   discussion_templates:
     blank:
       process_name: Prazna predloga

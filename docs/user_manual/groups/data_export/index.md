@@ -24,13 +24,13 @@ Open the group drop down menu by clicking on the three dots, and select **Export
 
 *For working with the group data in a spreadsheet, such as with MS Excel or Google Sheets.*
 
-You'll be prompted to choose a destination on your computer for the CSV file.
+Loomio prepares the CSV file in the background and emails you a download link when it is ready. The link is available for one week.
 
 ### Export group data as HTML
 
 *For when you want to save the data for archival purposes.*
 
-This will open the HTML file in another tab in your browser. If you want to save the file, right-click anywhere on the page and click "Save as".
+Loomio prepares the HTML file in the background and emails you a download link when it is ready. The link is available for one week.
 
 ### Export group data as JSON
 

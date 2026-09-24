@@ -1,5 +1,6 @@
 ---
 uk:
+  group_export_started: "Експорт даних групи почався"
   discussion_templates:
     blank:
       process_name: Порожній шаблон

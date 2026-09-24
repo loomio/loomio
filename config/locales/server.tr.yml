@@ -1,5 +1,6 @@
 ---
 tr:
+  group_export_started: "Grup verilerini dışa aktarma işlemi başladı"
   discussion_templates:
     blank:
       process_name: Boş şablon

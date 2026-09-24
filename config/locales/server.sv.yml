@@ -1,5 +1,6 @@
 ---
 sv:
+  group_export_started: "Export av gruppdata har startat"
   discussion_templates:
     blank:
       process_name: Tom mall

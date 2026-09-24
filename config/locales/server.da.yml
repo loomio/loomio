@@ -1,5 +1,6 @@
 ---
 da:
+  group_export_started: "Eksport af gruppedata startede"
   discussion_templates:
     blank:
       process_name: Tom skabelon

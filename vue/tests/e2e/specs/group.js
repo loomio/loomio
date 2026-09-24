@@ -505,6 +505,18 @@ module.exports = {
     page.expectFlash("This group is unavailable and will be permanently deleted after 90 days")
   },
 
+  'queues_html_group_export': (test) => {
+    const page = pageHelper(test)
+
+    page.loadPath('setup_group_super_admin')
+    page.click('.action-menu')
+    page.click('.action-dock__button--export_data .v-list-item-title')
+    page.clickElement('.export-data-modal__html')
+    page.expectText('.confirm-modal', 'When it\'s ready you\'ll receive an email')
+    page.click('.confirm-modal__submit')
+    page.expectFlash('Group data export started')
+  },
+
   'removes_group_logo_and_cover_photo': (test) => {
     page = pageHelper(test)
 

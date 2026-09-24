@@ -1,5 +1,6 @@
 ---
 be:
+  group_export_started: "Пачаты экспарт групавых дадзеных"
   locale_names:
     en: Англійская
     be-BY: Беларуская

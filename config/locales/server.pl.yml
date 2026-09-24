@@ -1,5 +1,6 @@
 ---
 pl:
+  group_export_started: "Rozpoczęto eksportowanie danych grupy"
   discussion_templates:
     blank:
       process_name: Pusty szablon

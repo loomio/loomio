@@ -1,5 +1,6 @@
 ---
 ro:
+  group_export_started: "Exportul datelor de grup a început"
   discussion_templates:
     blank:
       process_name: Șablon gol

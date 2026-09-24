@@ -1,5 +1,6 @@
 ---
 it:
+  group_export_started: "Esportazione dati di gruppo avviata"
   discussion_templates:
     blank:
       process_name: Modello vuoto

@@ -1,5 +1,6 @@
 ---
 en:
+  group_export_started: Group data export started
   error:
     access_denied: You do not have permission to do that
   thread_markdown:

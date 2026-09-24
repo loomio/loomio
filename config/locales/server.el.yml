@@ -1,5 +1,6 @@
 ---
 el:
+  group_export_started: "Ξεκίνησε η εξαγωγή ομαδικών δεδομένων"
   discussion_templates:
     blank:
       process_name: Κενό πρότυπο

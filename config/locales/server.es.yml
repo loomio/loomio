@@ -1,5 +1,6 @@
 ---
 es:
+  group_export_started: "Iniciada la exportación de datos del grupo"
   discussion_templates:
     blank:
       process_name: Plantilla en blanco

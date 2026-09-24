@@ -1,5 +1,6 @@
 ---
 zh_TW:
+  group_export_started: "群組資料匯出開始"
   discussion_templates:
     blank:
       process_name: 空白模板

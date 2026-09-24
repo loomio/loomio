@@ -1,5 +1,6 @@
 ---
 he:
+  group_export_started: "יצוא תוכן הקבוצה החלה"
   discussion_templates:
     blank:
       process_name: תבנית ריקה

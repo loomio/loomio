@@ -1,5 +1,6 @@
 ---
 ru:
+  group_export_started: "Экспорт данных группы начат."
   discussion_templates:
     blank:
       process_name: Пустой шаблон
