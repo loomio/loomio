@@ -2200,6 +2200,7 @@ he:
     delegates: נציגים
     edit_vote_weights: עריכת משקלי קולות
     vote_weight_value: משקל %{weight}
+    vote_weights_are_defaults: משקלים ברירת מחדל אלה חלים על קולות חדשים. שינויים כאן אינם משפיעים על קולות שכבר הונפקו.
   polls_panel:
     new_poll: סקר חדש
     any_type: כל הסוגים
@@ -2982,6 +2983,7 @@ he:
     use_member_vote_weights: השתמש במשקלי הצבעות של החברים הנוכחיים
     set_one_vote_weight: קבע משקל אחד לכל מצביע
     member_vote_weights_hint: מצביעים ללא חברות קבוצתית נוכחית מקבלים משקל 1
+    vote_weights_description: הקצה לכל מצביע משקל קולות, כך שחלק מהקולות יספרו יותר מאחרים. התוצאות מציגות גם את מספר המצביעים וגם את הציון המשוקלל.
   poll_receipts_page:
     participation_status_requires_min_votes: זה מראה מי היה זכאי להצביע. האם כל אדם הצביע מוצג רק לאחר שלפחות %{count} אנשים הצביעו.
     verify_participants: אימות משתתפים
@@ -2996,6 +2998,7 @@ he:
     participation_records_explanation: זה מראה מי היה זכאי והאם הוא הצביע. זה לא מראה איך מישהו הצביע.
     voted: הצביעו
     not_voted: לא הצביעו
+    email_addresses_for_group_admins: כתובות דוא"ל מוצגות רק למנהלי קבוצות כדי להבחין בין אנשים.
   comment_reply_form:
     aria_label: הוסף תגובה
   discussion_template:

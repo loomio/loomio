@@ -2181,6 +2181,7 @@ da:
     delegates: Delegerede
     edit_vote_weights: Rediger stemmevægte
     vote_weight_value: Vægt %{weight}
+    vote_weights_are_defaults: Disse standardvægte gælder for nye stemmer. Ændringer her påvirker ikke allerede afgivne stemmer.
   polls_panel:
     new_poll: Ny meningsmåling
     any_type: Alle typer
@@ -2963,6 +2964,7 @@ da:
     use_member_vote_weights: Brug nuværende stemmevægte fra medlemmerne
     set_one_vote_weight: Sæt hver vælger til én vægt
     member_vote_weights_hint: Vælgere uden nuværende gruppemedlemskab får vægt 1
+    vote_weights_description: Tildel hver vælger en stemmevægt, så nogle stemmer tæller mere end andre. Resultaterne viser både antallet af vælgere og den vægtede score.
   poll_receipts_page:
     participation_status_requires_min_votes: Dette viser, hvem der var stemmeberettigede. Om hver person stemte, vises kun, når mindst %{count} personer har stemt.
     verify_participants: Bekræft deltagere
@@ -2977,6 +2979,7 @@ da:
     participation_records_explanation: Dette viser, hvem der var berettigede, og om de stemte. Det viser ikke, hvordan nogen stemte.
     voted: Stemte
     not_voted: Ikke stemt
+    email_addresses_for_group_admins: E-mailadresser vises kun til gruppeadministratorer for at skelne personer fra hinanden.
   comment_reply_form:
     aria_label: Tilføj et svar
   discussion_template:

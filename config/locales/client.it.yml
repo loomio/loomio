@@ -2209,6 +2209,7 @@ it:
     delegates: Delegati
     edit_vote_weights: Modifica i pesi di voto
     vote_weight_value: Peso %{weight}
+    vote_weights_are_defaults: Questi pesi predefiniti si applicano alle nuove votazioni. Le modifiche apportate qui non influiscono sulle votazioni già emesse.
   polls_panel:
     new_poll: Nuova votazione
     any_type: Tutti i tipi
@@ -2991,6 +2992,7 @@ it:
     use_member_vote_weights: Usa i pesi di voto attuali dei membri
     set_one_vote_weight: Assegna a ogni elettore un peso
     member_vote_weights_hint: Gli elettori senza un'attuale appartenenza a un gruppo ottengono peso 1
+    vote_weights_description: Assegna a ciascun elettore un peso di voto, in modo che alcuni voti abbiano più peso di altri. I risultati mostrano sia il numero di elettori che il punteggio ponderato.
   poll_receipts_page:
     participation_status_requires_min_votes: Mostra chi aveva diritto di voto. Lo stato di partecipazione di ogni persona viene mostrato solo quando hanno votato almeno %{count} persone.
     verify_participants: Verifica i partecipanti
@@ -3005,6 +3007,7 @@ it:
     participation_records_explanation: Questo elenco mostra chi aveva diritto di voto e se ha votato. Non indica come ha votato ciascuno.
     voted: Ha votato
     not_voted: Non ha votato
+    email_addresses_for_group_admins: Gli indirizzi email vengono mostrati solo agli amministratori del gruppo per distinguere i singoli utenti.
   comment_reply_form:
     aria_label: Aggiungi una risposta
   discussion_template:

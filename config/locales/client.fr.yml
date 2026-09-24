@@ -2223,6 +2223,7 @@ fr:
     delegates: Délégués
     edit_vote_weights: Modifier les pondérations des votes
     vote_weight_value: Poids %{weight}
+    vote_weights_are_defaults: Ces pondérations par défaut s'appliquent aux nouveaux votes. Les modifications apportées ici n'affectent pas les votes déjà émis.
   polls_panel:
     new_poll: Nouveau sondage
     any_type: Tous types
@@ -3007,6 +3008,7 @@ fr:
     use_member_vote_weights: Utilise les poids de vote actuels des membres
     set_one_vote_weight: Attribue un poids à chaque électeur
     member_vote_weights_hint: Les électeurs sans adhésion actuelle à un groupe reçoivent un poids de 1
+    vote_weights_description: Attribuez à chaque électeur un coefficient de pondération, afin que certains votes aient plus de poids que d'autres. Les résultats affichent à la fois le nombre de votants et le score pondéré.
   poll_receipts_page:
     participation_status_requires_min_votes: Cette liste indique qui avait le droit de voter. Le statut de participation de chaque personne n'est affiché que lorsqu'au moins %{count} personnes ont voté.
     verify_participants: Vérifier les participants
@@ -3021,6 +3023,7 @@ fr:
     participation_records_explanation: Cette liste indique qui pouvait voter et si cette personne a voté. Elle n’indique pas comment chaque personne a voté.
     voted: A voté
     not_voted: N’a pas voté
+    email_addresses_for_group_admins: Les adresses électroniques ne sont affichées qu'aux administrateurs du groupe afin de distinguer les personnes.
   comment_reply_form:
     aria_label: Ajouter une réponse
   discussion_template:

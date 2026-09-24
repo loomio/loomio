@@ -2188,6 +2188,7 @@ hu:
     delegates: Küldöttek
     edit_vote_weights: Szavazati súlyok szerkesztése
     vote_weight_value: Súly %{weight}
+    vote_weights_are_defaults: Ezek az alapértelmezett súlyok az új szavazatokra vonatkoznak. Az itt végrehajtott változtatások nem befolyásolják a már kiadott szavazatokat.
   polls_panel:
     new_poll: Új szavazás
     any_type: Minden típus
@@ -2970,6 +2971,7 @@ hu:
     use_member_vote_weights: Használja a jelenlegi tagok szavazati súlyait
     set_one_vote_weight: Minden szavazót egy súlyozással jelöljön ki
     member_vote_weights_hint: Az aktuális csoporttagsággal nem rendelkező szavazók 1-es súlyt kapnak.
+    vote_weights_description: Rendeljen minden szavazóhoz egy szavazati súlyt, így egyes szavazatok jobban számítanak, mint mások. Az eredmények mind a szavazók számát, mind a súlyozott pontszámot mutatják.
   poll_receipts_page:
     participation_status_requires_min_votes: Ez megmutatja, hogy ki volt jogosult szavazni. Az, hogy egyes személyek szavaztak-e, csak akkor jelenik meg, ha legalább %{count} ember szavazott.
     verify_participants: Résztvevők ellenőrzése
@@ -2984,6 +2986,7 @@ hu:
     participation_records_explanation: Ez azt mutatja, hogy kik voltak jogosultak és hogy szavaztak-e. Nem mutatja, hogy ki hogyan szavazott.
     voted: Szavazott
     not_voted: Nem szavazott
+    email_addresses_for_group_admins: Az e-mail címek csak a csoport adminisztrátorai számára jelennek meg, hogy megkülönböztessék az embereket.
   comment_reply_form:
     aria_label: Válasz hozzáadása
   discussion_template:

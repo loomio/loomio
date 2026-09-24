@@ -2181,6 +2181,7 @@ fi:
     delegates: Edustajat
     edit_vote_weights: Muokkaa äänimääriä
     vote_weight_value: Paino %{weight}
+    vote_weights_are_defaults: Nämä oletusarvoiset painotukset koskevat uusia ääniä. Muutokset tässä eivät vaikuta jo annettuihin ääniin.
   polls_panel:
     new_poll: Uusi kysely
     any_type: Kaikki tyypit
@@ -2963,6 +2964,7 @@ fi:
     use_member_vote_weights: Käytä nykyisiä jäsenten äänipainotuksia
     set_one_vote_weight: Aseta jokaiselle äänestäjälle yksi painoarvo
     member_vote_weights_hint: Äänestäjät, joilla ei ole nykyistä ryhmän jäsenyyttä, saavat painoarvon 1
+    vote_weights_description: Anna jokaiselle äänestäjälle painoarvo, jotta jotkut äänet lasketaan enemmän kuin toiset. Tulokset näyttävät sekä äänestäjien lukumäärän että painotetun pistemäärän.
   poll_receipts_page:
     participation_status_requires_min_votes: Tämä näyttää, ketkä olivat äänioikeutettuja. Se, äänestikö kukin henkilö, näytetään vasta, kun vähintään %{count} henkilöä on äänestänyt.
     verify_participants: Vahvista osallistujat
@@ -2977,6 +2979,7 @@ fi:
     participation_records_explanation: Tämä näyttää, ketkä olivat äänioikeutettuja ja äänestivätkö he. Se ei näytä, miten kukaan äänesti.
     voted: Äänesti
     not_voted: Ei äänestänyt
+    email_addresses_for_group_admins: Sähköpostiosoitteet näkyvät vain ryhmän ylläpitäjille ihmisten erottamiseksi toisistaan.
   comment_reply_form:
     aria_label: Lisää vastaus
   discussion_template:

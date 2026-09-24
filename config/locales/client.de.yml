@@ -2212,6 +2212,7 @@ de:
     delegates: Delegierte
     edit_vote_weights: Stimmengewichtung bearbeiten
     vote_weight_value: Gewicht %{weight}
+    vote_weights_are_defaults: Diese Standardgewichtungen gelten für neue Stimmen. Änderungen hier haben keine Auswirkungen auf bereits abgegebene Stimmen.
   polls_panel:
     new_poll: Neue Umfrage
     any_type: Alle Typen
@@ -2998,6 +2999,7 @@ de:
     use_member_vote_weights: Verwende die aktuellen Stimmgewichte der Mitglieder
     set_one_vote_weight: Weise jedem Wähler das gleiche Gewicht zu
     member_vote_weights_hint: Wähler ohne aktuelle Gruppenmitgliedschaft erhalten Gewichtung 1
+    vote_weights_description: Jedem Wähler wird ein Stimmgewicht zugewiesen, sodass manche Stimmen mehr zählen als andere. Die Ergebnisse zeigen sowohl die Anzahl der Wähler als auch die gewichtete Punktzahl.
   poll_receipts_page:
     participation_status_requires_min_votes: Hier wird angezeigt, wer teilnahmeberechtigt war. Ob die einzelnen Personen abgestimmt haben, wird nur angezeigt, wenn mindestens %{count} Personen abgestimmt haben.
     verify_participants: Teilnehmer überprüfen
@@ -3012,6 +3014,7 @@ de:
     participation_records_explanation: Hier wird angezeigt, wer wahlberechtigt war und ob diese Personen abgestimmt haben. Es wird nicht angezeigt, wie die einzelnen Personen abgestimmt haben.
     voted: Abgestimmt
     not_voted: Nicht abgestimmt
+    email_addresses_for_group_admins: E-Mail-Adressen werden nur Gruppenadministratoren angezeigt, um Personen zu unterscheiden.
   comment_reply_form:
     aria_label: Eine Antwort hinzufügen
   discussion_template:

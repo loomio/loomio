@@ -2180,6 +2180,7 @@ ja:
     delegates: 代表者
     edit_vote_weights: 投票の重みを編集する
     vote_weight_value: 重量 %{weight}
+    vote_weights_are_defaults: これらのデフォルトの重みは新規投票に適用されます。ここでの変更は、既に発行された投票には影響しません。
   polls_panel:
     new_poll: 新しい投票
     any_type: いろんなタイプ
@@ -2962,6 +2963,7 @@ ja:
     use_member_vote_weights: 現在の会員投票の重みを使用する
     set_one_vote_weight: すべての投票者に1つの重みを設定する
     member_vote_weights_hint: 現在グループに所属していない有権者は1の重みを持つ
+    vote_weights_description: 各投票者に投票重みを割り当てることで、一部の投票は他の投票よりも重みが高くなります。結果には、投票者数と重み付けされたスコアの両方が表示されます。
   poll_receipts_page:
     participation_status_requires_min_votes: 投票資格があった人を表示します。各人が投票したかどうかは、少なくとも%{count}人が投票した場合にのみ表示されます。
     verify_participants: 参加者を確認する
@@ -2976,6 +2978,7 @@ ja:
     participation_records_explanation: これは、誰が投票資格を有していたか、そして投票したかどうかを示しています。誰がどのように投票したかは示していません。
     voted: 投票済み
     not_voted: 未投票
+    email_addresses_for_group_admins: メールアドレスは、個人を識別するためにグループ管理者のみに表示されます。
   comment_reply_form:
     aria_label: 返信を追加
   discussion_template:

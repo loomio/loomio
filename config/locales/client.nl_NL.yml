@@ -2204,6 +2204,7 @@ nl_NL:
     delegates: Afgevaardigden
     edit_vote_weights: Stemweging bewerken
     vote_weight_value: Gewicht %{weight}
+    vote_weights_are_defaults: Deze standaardwegingen gelden voor nieuwe stemmen. Wijzigingen hierin hebben geen invloed op reeds uitgebrachte stemmen.
   polls_panel:
     new_poll: Nieuwe peiling
     any_type: Alle types
@@ -2990,6 +2991,7 @@ nl_NL:
     use_member_vote_weights: Gebruik de huidige stemweging van de leden
     set_one_vote_weight: Wijs aan elke kiezer één gewicht toe
     member_vote_weights_hint: Kiezers zonder huidig groepslidmaatschap krijgen 1 gewicht.
+    vote_weights_description: Ken aan elke kiezer een stemgewicht toe, zodat sommige stemmen zwaarder wegen dan andere. De resultaten tonen zowel het aantal kiezers als de gewogen score.
   poll_receipts_page:
     participation_status_requires_min_votes: Dit laat zien wie stemgerechtigd was. Of elke persoon heeft gestemd, wordt alleen getoond wanneer minstens %{count} mensen hebben gestemd.
     verify_participants: Deelnemers verifiëren
@@ -3004,6 +3006,7 @@ nl_NL:
     participation_records_explanation: Dit laat zien wie stemgerechtigd was en of ze hebben gestemd. Het laat niet zien hoe iemand heeft gestemd.
     voted: Gestemd
     not_voted: Niet gestemd
+    email_addresses_for_group_admins: E-mailadressen worden alleen aan groepsbeheerders getoond om personen te kunnen onderscheiden.
   comment_reply_form:
     aria_label: Voeg een antwoord toe
   discussion_template:

@@ -2181,6 +2181,7 @@ ro:
     delegates: Delegații
     edit_vote_weights: Editați ponderile voturilor
     vote_weight_value: Greutate %{weight}
+    vote_weights_are_defaults: Aceste ponderi implicite se aplică voturilor noi. Modificările de aici nu afectează voturile deja emise.
   polls_panel:
     new_poll: Sondaj nou
     any_type: Toate tipurile
@@ -2963,6 +2964,7 @@ ro:
     use_member_vote_weights: Folosește ponderile actuale ale voturilor membrilor
     set_one_vote_weight: Setați fiecare alegător la o singură pondere
     member_vote_weights_hint: Alegătorii fără apartenență la un grup primesc ponderea 1
+    vote_weights_description: Atribuiți fiecărui alegător o pondere a votului, astfel încât unele voturi să conteze mai mult decât altele. Rezultatele arată atât numărul de alegători, cât și scorul ponderat.
   poll_receipts_page:
     participation_status_requires_min_votes: Aceasta arată cine a avut drept de vot. Informația despre participarea fiecărei persoane este afișată numai după ce au votat cel puțin %{count} persoane.
     verify_participants: Verificați participanții
@@ -2977,6 +2979,7 @@ ro:
     participation_records_explanation: Asta arată cine a fost eligibil și dacă a votat. Nu arată cum a votat fiecare.
     voted: A votat
     not_voted: Nu a votat
+    email_addresses_for_group_admins: Adresele de e-mail sunt afișate doar administratorilor grupului pentru a distinge persoanele.
   comment_reply_form:
     aria_label: Adăugați un răspuns
   discussion_template:

@@ -2181,6 +2181,7 @@ sv:
     delegates: Delegater
     edit_vote_weights: Redigera röstvikter
     vote_weight_value: Vikt %{weight}
+    vote_weights_are_defaults: Dessa standardvikter gäller för nya röster. Ändringar här påverkar inte röster som redan utfärdats.
   polls_panel:
     new_poll: Ny omröstning
     any_type: Alla typer
@@ -2963,6 +2964,7 @@ sv:
     use_member_vote_weights: Använd nuvarande medlemmars röstvikter
     set_one_vote_weight: Sätt en vikt för varje väljare
     member_vote_weights_hint: Väljare utan nuvarande grupptillhörighet får vikt 1
+    vote_weights_description: Tilldela varje väljare en röstvikt, så att vissa röster räknas mer än andra. Resultaten visar både antalet väljare och den viktade poängen.
   poll_receipts_page:
     participation_status_requires_min_votes: Detta visar vilka som var röstberättigade. Om varje person har röstat visas endast när minst %{count} personer har röstat.
     verify_participants: Verifiera deltagare
@@ -2977,6 +2979,7 @@ sv:
     participation_records_explanation: Detta visar vilka som var röstberättigade och om de röstade. Det visar inte hur någon röstade.
     voted: Röstade
     not_voted: Röstade inte
+    email_addresses_for_group_admins: E-postadresser visas endast för gruppadministratörer för att skilja personer åt.
   comment_reply_form:
     aria_label: Lägg till ett svar
   discussion_template:

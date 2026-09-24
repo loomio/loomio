@@ -2181,6 +2181,7 @@ hr:
     delegates: Delegati
     edit_vote_weights: Uredi težine glasova
     vote_weight_value: Težina %{weight}
+    vote_weights_are_defaults: Ove zadane težine primjenjuju se na nove glasove. Promjene ovdje ne utječu na već izdane glasove.
   polls_panel:
     new_poll: Nova anketa
     any_type: Svi tipovi
@@ -2963,6 +2964,7 @@ hr:
     use_member_vote_weights: Koristi težine glasova trenutnih članova
     set_one_vote_weight: Postavite svakom biraču jednu težinu
     member_vote_weights_hint: Birači bez trenutnog članstva u grupi dobivaju težinu 1
+    vote_weights_description: Dodijelite svakom biraču težinu glasa, tako da neki glasovi imaju više vrijednosti od drugih. Rezultati pokazuju i broj birača i ponderirani rezultat.
   poll_receipts_page:
     participation_status_requires_min_votes: Ovo pokazuje tko je imao pravo glasa. Je li svaka osoba glasala prikazuje se tek kada su glasale najmanje %{count} osobe.
     verify_participants: Potvrdite sudionike
@@ -2977,6 +2979,7 @@ hr:
     participation_records_explanation: Ovo pokazuje tko je bio podoban i jesu li glasali. Ne pokazuje kako je tko glasao.
     voted: Glasao/la
     not_voted: Nije glasao/la
+    email_addresses_for_group_admins: E-mail adrese prikazuju se samo administratorima grupe radi razlikovanja ljudi.
   comment_reply_form:
     aria_label: Dodaj odgovor
   discussion_template:

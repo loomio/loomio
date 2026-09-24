@@ -2047,6 +2047,7 @@ zh_CN:
     participation_records_explanation: 这显示了哪些人有资格投票以及他们是否投票。但它并不显示任何人的投票情况。
     voted: 投票
     not_voted: 未投票
+    email_addresses_for_group_admins: 电子邮件地址仅对群组管理员显示，用于区分成员。
   decision_tools_card:
     choose_type: 选择投票类型
     title: 促进
@@ -2281,6 +2282,7 @@ zh_CN:
     accepted: 成员
     edit_vote_weights: 修改投票权重
     vote_weight_value: 重量 %{weight}
+    vote_weights_are_defaults: 这些默认权重适用于新投票。此处所做的更改不会影响已发出的投票。
   polls_panel:
     new_poll: 最新民调
     any_type: 所有类型
@@ -2612,6 +2614,7 @@ zh_CN:
     use_member_vote_weights: 使用当前成员投票权重
     set_one_vote_weight: 将所有选民的权重设为1。
     member_vote_weights_hint: 没有当前团体成员身份的选民权重为 1
+    vote_weights_description: 为每位选民设定投票权重，使某些选票比其他选票更重要。结果将显示选民人数和加权得分。
   poll_proposal_form:
     start_header: 开始提案
     edit_header: 编辑提案

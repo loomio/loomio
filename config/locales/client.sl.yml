@@ -2181,6 +2181,7 @@ sl:
     delegates: Delegati
     edit_vote_weights: Urejanje uteži glasov
     vote_weight_value: Teža %{weight}
+    vote_weights_are_defaults: Te privzete uteži veljajo za nove glasove. Spremembe tukaj ne vplivajo na že izdane glasove.
   polls_panel:
     new_poll: Nova anketa
     any_type: Vse vrste
@@ -2963,6 +2964,7 @@ sl:
     use_member_vote_weights: Uporabi ponder glasov trenutnih članov
     set_one_vote_weight: Vsakemu volivcu dodelite eno utež
     member_vote_weights_hint: Volivci brez trenutnega članstva v skupini dobijo utež 1
+    vote_weights_description: Vsakemu volivcu dodelite težo glasu, tako da nekateri glasovi štejejo več kot drugi. Rezultati prikazujejo tako število volivcev kot uteženo oceno.
   poll_receipts_page:
     participation_status_requires_min_votes: To prikazuje, kdo je bil upravičen do glasovanja. Ali je posamezna oseba glasovala, se prikaže šele, ko glasujejo vsaj %{count} osebe.
     verify_participants: Preverjanje udeležencev
@@ -2977,6 +2979,7 @@ sl:
     participation_records_explanation: To prikazuje, kdo je bil upravičen in ali je glasoval. Ne prikazuje, kako je kdo glasoval.
     voted: Glasoval/a
     not_voted: Ni glasoval/a
+    email_addresses_for_group_admins: E-poštni naslovi so prikazani samo skrbnikom skupine, da se ljudje lahko razlikujejo.
   comment_reply_form:
     aria_label: Dodaj odgovor
   discussion_template:
