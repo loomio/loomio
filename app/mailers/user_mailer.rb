@@ -30,6 +30,30 @@ class UserMailer < ApplicationMailer
     }
   end
 
+  def email_change_confirmation(user_id, email, token)
+    user = User.find(user_id)
+    component = Views::UserMailer::EmailChangeConfirmation.new(user: user, email: email, token: token)
+    send_email(to: email, locale: user.locale, component: component) {
+      I18n.t('user_mailer.email_change_confirmation.subject', site_name: AppConfig.theme[:site_name])
+    }
+  end
+
+  def email_change_requested(user_id, old_email, new_email)
+    user = User.find(user_id)
+    component = Views::UserMailer::EmailChangeRequested.new(old_email: old_email, new_email: new_email)
+    send_email(to: old_email, locale: user.locale, component: component) {
+      I18n.t('user_mailer.email_change_requested.subject', site_name: AppConfig.theme[:site_name])
+    }
+  end
+
+  def email_change_completed(user_id, old_email, new_email)
+    user = User.find(user_id)
+    component = Views::UserMailer::EmailChangeCompleted.new(old_email: old_email, new_email: new_email)
+    send_email(to: old_email, locale: user.locale, component: component) {
+      I18n.t('user_mailer.email_change_completed.subject', site_name: AppConfig.theme[:site_name])
+    }
+  end
+
 
   def group_export_ready(requestor_id, group_name, blob_signed_id, recipient_email = nil)
     requestor = User.find(requestor_id)

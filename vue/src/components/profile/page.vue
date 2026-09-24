@@ -87,6 +87,10 @@ export default {
       this.openChangePasswordModal(this.user);
     },
 
+    changeEmail() {
+      openModal({component: 'ChangeEmailForm'});
+    },
+
     openDeleteUserModal() {
       this.isDeleteUserModalOpen = true;
     },
@@ -121,8 +125,10 @@ v-main
                 v-text-field#user-username-field.profile-page__username-input(:label="$t('profile_page.username_label')" required v-model="user.username" :disabled="ssoDisableEditProfile")
                 validation-errors(:subject='user', field='username')
 
-                v-text-field#user-email-field.profile-page__email-input(:label="$t('profile_page.email_label')" required v-model='user.email' :disabled="ssoDisableEditProfile")
+                v-text-field#user-email-field.profile-page__email-input(:label="$t('profile_page.email_label')" :model-value="user.email" readonly)
                 validation-errors(:subject='user', field='email')
+                v-btn.profile-page__change-email(v-if="!ssoDisableEditProfile" variant="text" @click="changeEmail") {{ $t('profile_page.change_email') }}
+                p.text-medium-emphasis(v-if="originalUser.emailChangePending") {{ $t('profile_page.email_change_pending', {email: originalUser.emailChangePending}) }}
 
               .profile-page__avatar.d-flex.flex-column.justify-center.align-center.mx-12.mb-4(@click="changePicture()")
                 user-avatar.mb-4(:user='originalUser' :size='192' :no-link="true")

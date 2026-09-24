@@ -245,6 +245,7 @@ Rails.application.routes.draw do
           get  :email_api_key
           post :reset_email_api_key
           post :update_profile
+          post :request_email_change
           post :set_volume
           post :upload_avatar
           post :use_provider_avatar
@@ -526,6 +527,8 @@ Rails.application.routes.draw do
 
   get '/merge_users/confirm' => 'merge_users#confirm'
   post '/merge_users/merge' => 'merge_users#merge'
+  get '/email_changes/confirm' => 'email_changes#confirm', as: :email_changes_confirm
+  post '/email_changes/apply' => 'email_changes#apply', as: :email_changes_apply
 
   # for IE / other browsers which insist on requesting things which don't exist
   get '/favicon.ico'                       => 'application#ok'

@@ -100,6 +100,11 @@ class UserService
     user.require_valid_signup = true if user.incomplete?
     remove_externally_managed_profile_fields(params) if disable_edit_user_profile?
 
+    if params.key?(:email) && !params[:email].to_s.casecmp?(user.email.to_s)
+      user.errors.add(:email, I18n.t('user.error.email_change_requires_confirmation'))
+      return user
+    end
+
     user.assign_attributes_and_files(params)
     unless user.valid?
       Sentry.metrics.count("user.update_failed", attributes: { columns: user.errors.attribute_names.join(',') })
