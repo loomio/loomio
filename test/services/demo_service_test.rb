@@ -2,13 +2,17 @@ require "test_helper"
 
 class DemoServiceTest < ActiveSupport::TestCase
   setup do
-    @features_demo_groups = ENV["FEATURES_DEMO_GROUPS"]
+    @canonical_host = ENV["CANONICAL_HOST"]
+    @loomio_disable_demo_groups = ENV["LOOMIO_DISABLE_DEMO_GROUPS"]
     @features_demo_groups_size = ENV["FEATURES_DEMO_GROUPS_SIZE"]
+    ENV["CANONICAL_HOST"] = "loomio.eu"
+    ENV.delete("LOOMIO_DISABLE_DEMO_GROUPS")
     DemoService.reset_queue!
   end
 
   teardown do
-    ENV["FEATURES_DEMO_GROUPS"] = @features_demo_groups
+    ENV["CANONICAL_HOST"] = @canonical_host
+    ENV["LOOMIO_DISABLE_DEMO_GROUPS"] = @loomio_disable_demo_groups
     ENV["FEATURES_DEMO_GROUPS_SIZE"] = @features_demo_groups_size
     DemoService.reset_queue!
   end
@@ -37,16 +41,57 @@ class DemoServiceTest < ActiveSupport::TestCase
       DemoGroupTemplateService::Result.new(group: group, discussions: {}, polls: {}, notifications: [])
     end
 
+    english_name = group.name
     DemoGroupTemplateService.stub(:create!, provision) do
-      TranslationService.stub(:translate_group_content!, ->(*) { raise TranslationService::LimitReached, "limit reached" }) do
-        assert_equal group, DemoService.take_demo(actor)
+      TranslationService.stub(:available?, true) do
+        TranslationService.stub(:translate_group_content!, ->(*) { group.update_columns(name: "Nombre traducido"); raise TranslationService::LimitReached, "limit reached" }) do
+          assert_equal group, DemoService.take_demo(actor)
+        end
+      end
+    end
+
+    assert_equal english_name, group.reload.name
+  end
+
+  test "taking a demo translates for the requesting user when translation is available" do
+    actor = users(:user)
+    actor.selected_locale = "de"
+    group = groups(:group)
+    provision = lambda do |**|
+      DemoGroupTemplateService::Result.new(group: group, discussions: {}, polls: {}, notifications: [])
+    end
+    translated_locale = nil
+
+    DemoGroupTemplateService.stub(:create!, provision) do
+      TranslationService.stub(:available?, true) do
+        TranslationService.stub(:translate_group_content!, ->(_group, locale) { translated_locale = locale }) do
+          DemoService.take_demo(actor)
+        end
+      end
+    end
+
+    assert_equal "de", translated_locale
+  end
+
+  test "taking a demo leaves all content in English when translation is unavailable" do
+    actor = users(:user)
+    actor.selected_locale = "de"
+    group = groups(:group)
+    provision = lambda do |**|
+      DemoGroupTemplateService::Result.new(group: group, discussions: {}, polls: {}, notifications: [])
+    end
+
+    DemoGroupTemplateService.stub(:create!, provision) do
+      TranslationService.stub(:available?, false) do
+        TranslationService.stub(:translate_group_content!, ->(*) { flunk("translation must not start") }) do
+          assert_equal group, DemoService.take_demo(actor)
+        end
       end
     end
   end
 
   test "taking a queued demo claims its prepared content for the user" do
     actor = users(:user)
-    ENV["FEATURES_DEMO_GROUPS"] = "enabled"
     ENV["FEATURES_DEMO_GROUPS_SIZE"] = "1"
     DemoService.refill_queue
     prepared_group_id = DemoService.demo_group_ids.fetch(0)

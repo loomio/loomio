@@ -2,12 +2,15 @@ require 'test_helper'
 
 class Api::V1::DemosControllerTest < ActionController::TestCase
   setup do
-    @features_demo_groups = ENV["FEATURES_DEMO_GROUPS"]
-    ENV["FEATURES_DEMO_GROUPS"] = "enabled"
+    @loomio_disable_demo_groups = ENV["LOOMIO_DISABLE_DEMO_GROUPS"]
+    @canonical_host = ENV["CANONICAL_HOST"]
+    ENV.delete("LOOMIO_DISABLE_DEMO_GROUPS")
+    ENV["CANONICAL_HOST"] = "loomio.eu"
   end
 
   teardown do
-    ENV["FEATURES_DEMO_GROUPS"] = @features_demo_groups
+    ENV["LOOMIO_DISABLE_DEMO_GROUPS"] = @loomio_disable_demo_groups
+    ENV["CANONICAL_HOST"] = @canonical_host
   end
 
   test "clone is rate limited per user" do
@@ -46,7 +49,7 @@ class Api::V1::DemosControllerTest < ActionController::TestCase
   end
 
   test "clone is unavailable when demo groups are disabled" do
-    ENV.delete("FEATURES_DEMO_GROUPS")
+    ENV["LOOMIO_DISABLE_DEMO_GROUPS"] = "1"
     sign_in users(:user)
 
     DemoService.stub(:take_demo, ->(*) { flunk("disabled demos must not provision a group") }) do
@@ -56,11 +59,16 @@ class Api::V1::DemosControllerTest < ActionController::TestCase
     assert_response :not_found
   end
 
-  test "demo groups are advertised when enabled" do
+  test "demo groups are advertised on regional and private hosts by default" do
     assert AppConfig.app_features[:demos]
 
-    ENV.delete("FEATURES_DEMO_GROUPS")
+    ENV["CANONICAL_HOST"] = "private.example.org"
+    assert AppConfig.app_features[:demos]
 
+    ENV["CANONICAL_HOST"] = "loomio.com"
+    refute AppConfig.app_features[:demos]
+
+    ENV["LOOMIO_DISABLE_DEMO_GROUPS"] = "1"
     refute AppConfig.app_features[:demos]
   end
 end

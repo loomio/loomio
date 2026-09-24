@@ -92,10 +92,17 @@ class DemoGroupTemplateService
     facilitator = people.fetch(template.fetch("facilitator"))
     group = create_group!(template, actor: recipient || facilitator, queued: recipient.nil?)
     add_people!(group, people, template.fetch("people"), facilitator)
+    create_tags!(group, template.fetch("tags", []))
 
     discussions = create_discussions!(template.fetch("discussions"), group, people)
-    create_comments!(template.fetch("comments", []), discussions, people)
+    comments = template.fetch("comments", [])
+    comments_by_key = {}
+    create_comments!(comments.reject { |definition| definition["deferred"] }, discussions, people, comments_by_key)
     polls = create_polls!(template.fetch("polls"), group, people, discussions)
+    create_poll_comments!(template.fetch("poll_comments", []), polls, people)
+    revise_polls_and_votes!(template.fetch("polls"), polls, people)
+    close_polls!(template.fetch("polls"), polls, people)
+    create_comments!(comments.select { |definition| definition["deferred"] }, discussions, people, comments_by_key)
     store_references!(group, people: people, discussions: discussions, polls: polls)
     notifications = if recipient
       create_notifications!(template.fetch("notifications"), people, discussions, polls)
@@ -145,9 +152,15 @@ class DemoGroupTemplateService
     definitions.each do |definition|
       person = people.fetch(definition.fetch("key"))
       group.add_member!(person)
-      group.memberships.find_by!(user: person).update!(title: definition.fetch("title"))
+      group.memberships.find_by!(user: person).update!(title: definition["title"])
     end
     group.add_admin!(facilitator)
+  end
+
+  def create_tags!(group, names)
+    names.each_with_index do |name, index|
+      group.tags.create!(name: name, color: Tag::COLORS.fetch(index))
+    end
   end
 
   def create_group!(template, actor:, queued:)
@@ -209,10 +222,12 @@ class DemoGroupTemplateService
         params: {
           group_id: group.id,
           private: true,
+          max_depth: 3,
+          tags: definition.fetch("tags", []),
           allow_concurrent_polls: true,
           title: definition.fetch("title"),
           description: definition.fetch("description"),
-          description_format: "md"
+          description_format: definition.fetch("description_format", "md")
         },
         actor: people.fetch(definition.fetch("actor"))
       )
@@ -223,15 +238,28 @@ class DemoGroupTemplateService
     end
   end
 
-  def create_comments!(definitions, discussions, people)
+  def create_comments!(definitions, discussions, people, comments_by_key)
     definitions.each do |definition|
+      parent = if definition["reply_to"]
+        comments_by_key.fetch(definition.fetch("reply_to"))
+      else
+        discussions.fetch(definition.fetch("discussion"))
+      end
       comment = Comment.new(
-        parent: discussions.fetch(definition.fetch("discussion")),
+        parent: parent,
         body: definition.fetch("body"),
         body_format: "md"
       )
       CommentService.create(comment: comment, actor: people.fetch(definition.fetch("actor")))
       raise ActiveRecord::RecordInvalid, comment unless comment.persisted?
+      comments_by_key[definition.fetch("key")] = comment if definition["key"]
+      definition.fetch("reactions", []).each do |reaction|
+        Reaction.create!(
+          reactable: comment,
+          user: people.fetch(reaction.fetch("person")),
+          reaction: reaction.fetch("emoji")
+        )
+      end
     end
   end
 
@@ -264,8 +292,7 @@ class DemoGroupTemplateService
       )
       raise ActiveRecord::RecordInvalid, poll unless poll.persisted?
 
-      cast_votes!(poll, people, definition.fetch("votes"))
-      close_poll!(poll, actor, definition) if definition.fetch("closed", false)
+      cast_votes!(poll, people, definition)
       [ definition.fetch("key"), poll ]
     end
   end
@@ -279,20 +306,78 @@ class DemoGroupTemplateService
     end
   end
 
-  def cast_votes!(poll, people, definitions)
-    definitions.each do |definition|
-      person = people.fetch(definition.fetch("person"))
+  def cast_votes!(poll, people, definition)
+    definition.fetch("votes").each do |vote|
+      person = people.fetch(vote.fetch("person"))
       stance = poll.stances.undecided.find_by!(participant: person, latest: true)
-      stance.choice = vote_choice(poll, definition)
-      stance.reason = definition.fetch("reason")
+      stance.choice = vote_choice(poll, vote, definition)
+      stance.reason = vote.fetch("reason")
       StanceService.create(stance: stance, actor: person)
     end
   end
 
-  def vote_choice(poll, definition)
-    return definition.fetch("choice") unless definition.key?("scores")
+  def create_poll_comments!(definitions, polls, people)
+    comments = {}
+    definitions.each do |definition|
+      poll = polls.fetch(definition.fetch("poll"))
+      parent = if definition["reply_to"]
+        comments.fetch(definition.fetch("reply_to"))
+      else
+        poll.stances.latest.find_by!(participant: people.fetch(definition.fetch("parent_vote_by")))
+      end
+      comment = Comment.new(parent: parent, body: definition.fetch("body"), body_format: "md")
+      CommentService.create(comment: comment, actor: people.fetch(definition.fetch("actor")))
+      raise ActiveRecord::RecordInvalid, comment unless comment.persisted?
+      comments[definition.fetch("key")] = comment
+    end
+  end
 
-    scores = definition.fetch("scores")
+  # Seed a visible change of mind only after the objection has replies. The
+  # stance service then preserves the earlier vote as history instead of
+  # replacing it, which lets demo visitors follow how the concern was resolved.
+  def revise_polls_and_votes!(definitions, polls, people)
+    definitions.each do |definition|
+      poll = polls.fetch(definition.fetch("key"))
+      if definition["revised_details"] || definition["revised_title"]
+        PollService.update(
+          poll: poll,
+          params: {
+            title: definition.fetch("revised_title", poll.title),
+            details: definition.fetch("revised_details", poll.details)
+          },
+          actor: people.fetch(definition.fetch("actor"))
+        )
+      end
+      definition.fetch("vote_changes", []).each do |change|
+        person = people.fetch(change.fetch("person"))
+        stance = poll.stances.latest.find_by!(participant: person)
+        StanceService.update(
+          stance: stance,
+          params: { choice: vote_choice(poll, change, definition), reason: change.fetch("reason") },
+          actor: person
+        )
+      end
+    end
+  end
+
+  def close_polls!(definitions, polls, people)
+    definitions.each do |definition|
+      next unless definition.fetch("closed", false)
+
+      close_poll!(polls.fetch(definition.fetch("key")), people.fetch(definition.fetch("actor")), definition)
+    end
+  end
+
+  def vote_choice(poll, vote, definition)
+    unless vote.key?("scores")
+      choice = vote.fetch("choice")
+      return choice if choice.is_a?(Hash)
+
+      index = definition.fetch("options").index(choice)
+      return index ? poll.poll_options.order(:priority).to_a.fetch(index).name : choice
+    end
+
+    scores = vote.fetch("scores")
     raise ArgumentError, "meeting vote must score every option" unless scores.length == poll.poll_options.length
 
     poll.poll_options.zip(scores).to_h { |option, score| [ option.name, score ] }

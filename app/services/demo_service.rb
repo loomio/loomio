@@ -7,7 +7,7 @@ class DemoService
   # production, while the advisory lock serializes read-modify-write operations
   # across web and worker processes.
   def self.refill_queue
-    return unless ENV.key?("FEATURES_DEMO_GROUPS")
+    return unless AppConfig.demo_groups_enabled?
 
     with_demo_queue_lock do
       ids = demo_group_ids.select { |id| queued_group?(id) }
@@ -36,13 +36,15 @@ class DemoService
     DemoGroupTemplateService.route_notifications!(result.notifications) if claimed_result
 
     group = result.group
-    if actor.locale != "en"
+    if actor.locale != "en" && TranslationService.available?
       begin
-        TranslationService.translate_group_content!(group, actor.locale)
-      rescue TranslationService::LimitReached => error
-        # Translation is an enhancement to the demo. The claimed group must
-        # still be returned when the shared Google Translate quota is spent.
-        Rails.logger.warn("Demo translation skipped: #{error.message}")
+        # Translate every record together so a quota or provider failure leaves
+        # the whole walkthrough in English rather than in mixed languages.
+        ApplicationRecord.transaction do
+          TranslationService.translate_group_content!(group, actor.locale)
+        end
+      rescue StandardError => error
+        Rails.logger.warn("Demo translation skipped: #{error.class}: #{error.message}")
       end
     end
 
@@ -52,7 +54,7 @@ class DemoService
   end
 
   def self.ensure_queue
-    return unless ENV.key?("FEATURES_DEMO_GROUPS")
+    return unless AppConfig.demo_groups_enabled?
 
     with_demo_queue_lock do
       write_demo_group_ids(demo_group_ids.select { |id| queued_group?(id) })

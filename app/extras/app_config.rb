@@ -199,6 +199,13 @@ class AppConfig
     }
   end
 
+  def self.demo_groups_enabled?
+    return false if ENV['LOOMIO_DISABLE_DEMO_GROUPS'].present?
+
+    host = ENV['CANONICAL_HOST'].to_s.downcase
+    host.present? && !%w[loomio.com www.loomio.com].include?(host)
+  end
+
   def self.app_features
     loomio_subscriptions = ENV['LOOMIO_SUBSCRIPTIONS'].present?
 
@@ -206,7 +213,7 @@ class AppConfig
       env: Rails.env,
       subscriptions: ENV['CHARGIFY_API_KEY'].present? || loomio_subscriptions,
       loomio_subscriptions: loomio_subscriptions,
-      demos: ENV.fetch('FEATURES_DEMO_GROUPS', false),
+      demos: demo_groups_enabled?,
       trials: ENV.fetch('FEATURES_TRIALS', false),
       trial_days: ENV.fetch('TRIAL_DAYS', nil),
       gray_sidebar_logo_in_dark_mode: ENV.fetch('FEATURES_GRAY_SIDEBAR_LOGO_IN_DARK_MODE', false),

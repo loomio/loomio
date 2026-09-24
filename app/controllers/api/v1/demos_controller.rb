@@ -17,6 +17,6 @@ class Api::V1::DemosController < Api::V1::RestfulController
   private
 
   def require_demo_groups_enabled
-    head :not_found unless ENV["FEATURES_DEMO_GROUPS"].present?
+    head :not_found unless AppConfig.demo_groups_enabled?
   end
 end
