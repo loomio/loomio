@@ -3,6 +3,7 @@ import Session            from '@/shared/services/session';
 import { mdiCalendar } from '@mdi/js';
 
 import BarChart from '@/components/report/bar_chart';
+import { downloadFile } from '@/shared/helpers/download_file';
 
 const sumValues = obj => Object.values(obj).reduce((a, b) => a + b, 0);
 
@@ -21,13 +22,7 @@ function downloadCsv(headers, rows, filename) {
     return val ?? '';
   }).join(','));
   const csv = [headerRow, ...dataRows].join('\n');
-  const blob = new Blob([csv], { type: 'text/csv' });
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement('a');
-  a.href = url;
-  a.download = filename;
-  a.click();
-  URL.revokeObjectURL(url);
+  downloadFile(csv, 'text/csv', filename);
 }
 
 export default {
