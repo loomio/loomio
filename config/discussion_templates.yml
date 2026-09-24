@@ -126,7 +126,7 @@ prepare_for_a_meeting:
   process_introduction_format: html
   newest_first: false
   position: 4
-  max_depth: 2
+  max_depth: 3
   recipient_audience: group
 
 funding_decision:
@@ -141,7 +141,7 @@ funding_decision:
   process_introduction_format: html
   newest_first: false
   position: 4
-  max_depth: 2
+  max_depth: 3
   recipient_audience: group
 
 elect_a_governance_position:
@@ -156,7 +156,7 @@ elect_a_governance_position:
   process_introduction_format: html
   newest_first: false
   position: 4
-  max_depth: 2
+  max_depth: 3
   recipient_audience: group
 
 

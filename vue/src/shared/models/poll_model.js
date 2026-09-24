@@ -429,6 +429,6 @@ export default class PollModel extends BaseModel {
 
   maxDepth() {
     const topic = this.topic();
-    return topic ? topic.maxDepth : 2;
+    return topic ? topic.maxDepth : 3;
   }
 };
