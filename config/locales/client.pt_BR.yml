@@ -3013,6 +3013,7 @@ pt_BR:
     set_one_vote_weight: Atribua um peso a cada eleitor
     member_vote_weights_hint: Eleitores sem filiação atual a um grupo recebem peso 1
     vote_weights_description: Atribua um peso a cada eleitor, de forma que alguns votos contem mais do que outros. Os resultados mostram tanto o número de eleitores quanto a pontuação ponderada.
+    issued_vote_weights_will_change: A ponderação dos votos já emitidos será alterada.
   poll_receipts_page:
     participation_status_requires_min_votes: Isso mostra quem tinha direito a voto. A informação sobre se cada pessoa votou só é exibida quando pelo menos %{count} pessoas tiverem votado.
     verify_participants: Verificar participantes

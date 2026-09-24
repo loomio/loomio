@@ -592,11 +592,14 @@ v-form.poll-common-form(ref="form" @submit.prevent="submit")
             help-link.ml-1(path="user_manual/polls/weighted_voting")
           v-checkbox.poll-settings-vote-weights(
             hide-details
-            :disabled="!!poll.openedAt"
             v-model="poll.voteWeightsEnabled"
             :label="$t('poll_common_form.use_vote_weights')")
-          v-alert.mt-2(v-if="willDisableVoteWeights" type="warning" variant="tonal" density="compact") {{ $t('poll_common_form.vote_weights_off_warning') }}
-          v-alert.mt-2(v-if="willEnableVoteWeights" type="info" variant="tonal" density="compact") {{ $t(poll.groupId ? 'poll_common_form.vote_weights_on_group' : 'poll_common_form.vote_weights_on_direct') }}
+          v-alert.mt-2(v-if="willDisableVoteWeights" type="warning" variant="tonal" density="compact")
+            span.mr-1(v-if="poll.openedAt") {{ t('poll_common_form.issued_vote_weights_will_change') }}
+            span {{ t('poll_common_form.vote_weights_off_warning') }}
+          v-alert.mt-2(v-if="willEnableVoteWeights" :type="poll.openedAt ? 'warning' : 'info'" variant="tonal" density="compact")
+            span.mr-1(v-if="poll.openedAt") {{ t('poll_common_form.issued_vote_weights_will_change') }}
+            span {{ t(poll.groupId ? 'poll_common_form.vote_weights_on_group' : 'poll_common_form.vote_weights_on_direct') }}
 
         v-divider.mb-4(v-if="allowAnonymous || voteWeightsSupported || poll.config().allow_quorum")
         .poll-common-form__reminder-title.text-body-large.pb-2(v-t="'poll_common_form.reminder_notification'")

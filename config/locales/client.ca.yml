@@ -2992,6 +2992,7 @@ ca:
     set_one_vote_weight: Estableix cada votant a un pes
     member_vote_weights_hint: Els votants que no són membres d'un grup actual reben pes 1
     vote_weights_description: Assigneu un pes de vot a cada votant, de manera que alguns vots comptin més que d'altres. Els resultats mostren tant el nombre de votants com la puntuació ponderada.
+    issued_vote_weights_will_change: Els pesos dels vots ja emesos canviaran.
   poll_receipts_page:
     participation_status_requires_min_votes: Això mostra qui tenia dret a votar. Només es mostra si cada persona ha votat quan almenys %{count} persones han votat.
     verify_participants: Verifica els participants

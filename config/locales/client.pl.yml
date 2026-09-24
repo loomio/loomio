@@ -2992,6 +2992,7 @@ pl:
     set_one_vote_weight: Ustaw każdemu wyborcy jedną wagę
     member_vote_weights_hint: Wyborcy bez aktualnego członkostwa w grupie otrzymują wagę 1
     vote_weights_description: Przypisz każdemu wyborcy wagę głosu, tak aby niektóre głosy liczyły się bardziej niż inne. Wyniki pokazują zarówno liczbę wyborców, jak i ważony wynik.
+    issued_vote_weights_will_change: Waga głosów już oddanych ulegnie zmianie.
   poll_receipts_page:
     participation_status_requires_min_votes: Pokazuje, kto był uprawniony do głosowania. Informacja o tym, czy poszczególne osoby zagłosowały, jest wyświetlana tylko wtedy, gdy zagłosowały co najmniej %{count} osoby.
     verify_participants: Zweryfikuj uczestników

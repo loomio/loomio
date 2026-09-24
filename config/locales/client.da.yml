@@ -2965,6 +2965,7 @@ da:
     set_one_vote_weight: Sæt hver vælger til én vægt
     member_vote_weights_hint: Vælgere uden nuværende gruppemedlemskab får vægt 1
     vote_weights_description: Tildel hver vælger en stemmevægt, så nogle stemmer tæller mere end andre. Resultaterne viser både antallet af vælgere og den vægtede score.
+    issued_vote_weights_will_change: Vægten for allerede afgivne stemmer vil ændre sig.
   poll_receipts_page:
     participation_status_requires_min_votes: Dette viser, hvem der var stemmeberettigede. Om hver person stemte, vises kun, når mindst %{count} personer har stemt.
     verify_participants: Bekræft deltagere

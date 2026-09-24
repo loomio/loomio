@@ -2992,6 +2992,7 @@ nl_NL:
     set_one_vote_weight: Wijs aan elke kiezer één gewicht toe
     member_vote_weights_hint: Kiezers zonder huidig groepslidmaatschap krijgen 1 gewicht.
     vote_weights_description: Ken aan elke kiezer een stemgewicht toe, zodat sommige stemmen zwaarder wegen dan andere. De resultaten tonen zowel het aantal kiezers als de gewogen score.
+    issued_vote_weights_will_change: De weging van reeds uitgebrachte stemmen zal veranderen.
   poll_receipts_page:
     participation_status_requires_min_votes: Dit laat zien wie stemgerechtigd was. Of elke persoon heeft gestemd, wordt alleen getoond wanneer minstens %{count} mensen hebben gestemd.
     verify_participants: Deelnemers verifiëren

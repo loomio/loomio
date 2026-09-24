@@ -2965,6 +2965,7 @@ sv:
     set_one_vote_weight: Sätt en vikt för varje väljare
     member_vote_weights_hint: Väljare utan nuvarande grupptillhörighet får vikt 1
     vote_weights_description: Tilldela varje väljare en röstvikt, så att vissa röster räknas mer än andra. Resultaten visar både antalet väljare och den viktade poängen.
+    issued_vote_weights_will_change: Vikterna för redan utfärdade röster kommer att ändras.
   poll_receipts_page:
     participation_status_requires_min_votes: Detta visar vilka som var röstberättigade. Om varje person har röstat visas endast när minst %{count} personer har röstat.
     verify_participants: Verifiera deltagare

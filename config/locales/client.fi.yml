@@ -2965,6 +2965,7 @@ fi:
     set_one_vote_weight: Aseta jokaiselle äänestäjälle yksi painoarvo
     member_vote_weights_hint: Äänestäjät, joilla ei ole nykyistä ryhmän jäsenyyttä, saavat painoarvon 1
     vote_weights_description: Anna jokaiselle äänestäjälle painoarvo, jotta jotkut äänet lasketaan enemmän kuin toiset. Tulokset näyttävät sekä äänestäjien lukumäärän että painotetun pistemäärän.
+    issued_vote_weights_will_change: Jo annettujen äänten painotukset muuttuvat.
   poll_receipts_page:
     participation_status_requires_min_votes: Tämä näyttää, ketkä olivat äänioikeutettuja. Se, äänestikö kukin henkilö, näytetään vasta, kun vähintään %{count} henkilöä on äänestänyt.
     verify_participants: Vahvista osallistujat

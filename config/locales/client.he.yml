@@ -2984,6 +2984,7 @@ he:
     set_one_vote_weight: קבע משקל אחד לכל מצביע
     member_vote_weights_hint: מצביעים ללא חברות קבוצתית נוכחית מקבלים משקל 1
     vote_weights_description: הקצה לכל מצביע משקל קולות, כך שחלק מהקולות יספרו יותר מאחרים. התוצאות מציגות גם את מספר המצביעים וגם את הציון המשוקלל.
+    issued_vote_weights_will_change: משקלים לקולות שכבר הונפקו ישתנו.
   poll_receipts_page:
     participation_status_requires_min_votes: זה מראה מי היה זכאי להצביע. האם כל אדם הצביע מוצג רק לאחר שלפחות %{count} אנשים הצביעו.
     verify_participants: אימות משתתפים

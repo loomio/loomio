@@ -3000,6 +3000,7 @@ de:
     set_one_vote_weight: Weise jedem Wähler das gleiche Gewicht zu
     member_vote_weights_hint: Wähler ohne aktuelle Gruppenmitgliedschaft erhalten Gewichtung 1
     vote_weights_description: Jedem Wähler wird ein Stimmgewicht zugewiesen, sodass manche Stimmen mehr zählen als andere. Die Ergebnisse zeigen sowohl die Anzahl der Wähler als auch die gewichtete Punktzahl.
+    issued_vote_weights_will_change: Die Gewichtung der bereits abgegebenen Stimmen wird sich ändern.
   poll_receipts_page:
     participation_status_requires_min_votes: Hier wird angezeigt, wer teilnahmeberechtigt war. Ob die einzelnen Personen abgestimmt haben, wird nur angezeigt, wenn mindestens %{count} Personen abgestimmt haben.
     verify_participants: Teilnehmer überprüfen

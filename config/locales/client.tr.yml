@@ -2965,6 +2965,7 @@ tr:
     set_one_vote_weight: Her seçmene tek bir ağırlık atayın.
     member_vote_weights_hint: Mevcut bir gruba üye olmayan seçmenler 1 ağırlık puanı alır.
     vote_weights_description: Her seçmene bir oy ağırlığı atayın, böylece bazı oylar diğerlerinden daha fazla önem kazanır. Sonuçlar hem seçmen sayısını hem de ağırlıklı puanı gösterir.
+    issued_vote_weights_will_change: Daha önce verilmiş oyların ağırlıkları değişecektir.
   poll_receipts_page:
     participation_status_requires_min_votes: Bu, kimlerin oy kullanma hakkına sahip olduğunu gösterir. Her kişinin oy kullanıp kullanmadığı yalnızca en az %{count} kişi oy verdiğinde gösterilir.
     verify_participants: Katılımcıları doğrulayın

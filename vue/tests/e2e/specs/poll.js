@@ -614,4 +614,26 @@ module.exports = {
     page.click('.poll-settings-vote-weights input')
     test.assert.elementPresent('.poll-settings-vote-weights input:checked')
   },
+
+  'warns_when_vote_weights_change_on_an_open_poll': (test) => {
+    page = pageHelper(test)
+
+    page.loadPath('polls/edit_open_poll_vote_weights')
+    page.click('.poll-common-form__more-settings')
+    page.waitFor('.poll-settings-vote-weights')
+    page.click('.poll-settings-vote-weights input')
+    page.expectText('.poll-common-form', 'Weights for votes already issued will change.')
+    page.expectText('.poll-common-form', 'Turning on vote weights copies current group member weights.')
+  },
+
+  'warns_when_vote_weights_are_disabled_on_an_open_poll': (test) => {
+    page = pageHelper(test)
+
+    page.loadPath('polls/edit_open_poll_vote_weights?weighted=1')
+    page.click('.poll-common-form__more-settings')
+    page.waitFor('.poll-settings-vote-weights')
+    page.click('.poll-settings-vote-weights input')
+    page.expectText('.poll-common-form', 'Weights for votes already issued will change.')
+    page.expectText('.poll-common-form', 'Turning off vote weights sets every voter to weight 1')
+  },
 }

@@ -2993,6 +2993,7 @@ zh_TW:
     set_one_vote_weight: 將所有選民的權重設為1。
     member_vote_weights_hint: 沒有目前團體成員資格的選民權重為 1。
     vote_weights_description: 為每位選民設定投票權重，使某些選票比其他選票更重要。結果將顯示選民人數和加權得分。
+    issued_vote_weights_will_change: 已發出的選票權重將會改變。
   poll_receipts_page:
     participation_status_requires_min_votes: 這裡顯示哪些人有資格投票。只有在至少%{count}人投票後，才會顯示每個人是否投票。
     verify_participants: 驗證參與者

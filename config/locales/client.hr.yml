@@ -2965,6 +2965,7 @@ hr:
     set_one_vote_weight: Postavite svakom biraču jednu težinu
     member_vote_weights_hint: Birači bez trenutnog članstva u grupi dobivaju težinu 1
     vote_weights_description: Dodijelite svakom biraču težinu glasa, tako da neki glasovi imaju više vrijednosti od drugih. Rezultati pokazuju i broj birača i ponderirani rezultat.
+    issued_vote_weights_will_change: Ponderi za već izdane glasove će se promijeniti.
   poll_receipts_page:
     participation_status_requires_min_votes: Ovo pokazuje tko je imao pravo glasa. Je li svaka osoba glasala prikazuje se tek kada su glasale najmanje %{count} osobe.
     verify_participants: Potvrdite sudionike

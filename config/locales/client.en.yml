@@ -2633,6 +2633,7 @@ en:
     vote_weights_description: Assign each voter a vote weight, so some votes count more than others. Results show both the number of voters and the weighted score.
     use_vote_weights: Use vote weights
     vote_weights_off_warning: Turning off vote weights sets every voter to weight 1 and removes poll-specific weights
+    issued_vote_weights_will_change: Weights for votes already issued will change.
     vote_weights_on_group: Turning on vote weights copies current group member weights. Other voters get weight 1.
     vote_weights_on_direct: Turning on vote weights sets every voter to weight 1
     vote_weight_for: Vote weight for %{name}

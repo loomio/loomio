@@ -2972,6 +2972,7 @@ hu:
     set_one_vote_weight: Minden szavazót egy súlyozással jelöljön ki
     member_vote_weights_hint: Az aktuális csoporttagsággal nem rendelkező szavazók 1-es súlyt kapnak.
     vote_weights_description: Rendeljen minden szavazóhoz egy szavazati súlyt, így egyes szavazatok jobban számítanak, mint mások. Az eredmények mind a szavazók számát, mind a súlyozott pontszámot mutatják.
+    issued_vote_weights_will_change: A már kiadott szavazatok súlyozása megváltozik.
   poll_receipts_page:
     participation_status_requires_min_votes: Ez megmutatja, hogy ki volt jogosult szavazni. Az, hogy egyes személyek szavaztak-e, csak akkor jelenik meg, ha legalább %{count} ember szavazott.
     verify_participants: Résztvevők ellenőrzése
