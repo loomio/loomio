@@ -2601,8 +2601,6 @@ zh_CN:
     remove_voter: 移除选民
     voter_page_count: "%{first}–%{last} 共 %{total}"
     vote_weights: 投票权重
-    vote_weights_description: 为每位投票者分配一个整数权重。结果将显示投票者人数和加权得分。所有能够查看投票结果的人都可以看到投票者的权重。
-    vote_weights_description_decimal: 为每位投票者分配一个权重，权重最多可精确到小数点后三位。结果将显示投票者人数和加权得分。所有能够查看投票结果的人都可以看到投票者的权重。
     use_vote_weights: 使用投票权重
     vote_weights_off_warning: 关闭投票权重会将所有选民的权重设为 1，并移除特定投票的权重。
     vote_weights_on_group: 启用投票权重后，将复制当前组成员的权重。其他投票者的权重为 1。

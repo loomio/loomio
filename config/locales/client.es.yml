@@ -2987,8 +2987,6 @@ es:
     remove_voter: Eliminar votante
     voter_page_count: "%{first}–%{last} de %{total}"
     vote_weights: Ponderaciones de voto
-    vote_weights_description: Asigne a cada votante un valor numérico entero. Los resultados muestran tanto el número de votantes como la puntuación ponderada. Los valores de los votantes son visibles para todos los que pueden ver la encuesta.
-    vote_weights_description_decimal: Asigne a cada votante un peso con hasta tres decimales. Los resultados muestran tanto el número de votantes como la puntuación ponderada. Los pesos de los votantes son visibles para todos los que pueden ver la encuesta.
     use_vote_weights: Utilice ponderaciones de voto
     vote_weights_off_warning: Desactivar la ponderación de votos asigna a cada votante una ponderación de 1 y elimina las ponderaciones específicas de cada encuesta.
     vote_weights_on_group: Al activar la ponderación de votos, se copian las ponderaciones de los miembros actuales del grupo. Los demás votantes obtienen la ponderación 1.

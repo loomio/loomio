@@ -2978,8 +2978,6 @@ pl:
     remove_voter: Usuń wyborcę
     voter_page_count: "%{first}–%{last} z %{total}"
     vote_weights: Wagi głosów
-    vote_weights_description: Przypisz każdemu wyborcy wagę wyrażoną liczbą całkowitą. Wyniki pokazują zarówno liczbę wyborców, jak i ważony wynik. Wagi wyborców są widoczne dla wszystkich, którzy mogą oglądać ankietę.
-    vote_weights_description_decimal: Przypisz każdemu wyborcy wagę z dokładnością do trzech miejsc po przecinku. Wyniki pokazują zarówno liczbę wyborców, jak i ważony wynik. Wagi wyborców są widoczne dla wszystkich, którzy mogą oglądać ankietę.
     use_vote_weights: Użyj wag głosów
     vote_weights_off_warning: Wyłączenie wag głosów powoduje ustawienie wagi każdego wyborcy na 1 i usunięcie wag specyficznych dla danej ankiety
     vote_weights_on_group: Włączenie wag głosów kopiuje aktualne wagi członków grupy. Pozostali głosujący otrzymują wagę 1.

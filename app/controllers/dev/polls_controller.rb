@@ -125,6 +125,7 @@ class Dev::PollsController < Dev::NightwatchController
 
   def start_poll
     group = create_group_with_members
+    group.update!(vote_weights_allowed: true) if params[:weighted].present?
     sign_in group.admins.first
     redirect_to new_poll_url(group_id: group.id)
   end

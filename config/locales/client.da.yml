@@ -2951,8 +2951,6 @@ da:
     remove_voter: Fjern vælger
     voter_page_count: "%{first}–%{last} af %{total}"
     vote_weights: Stemmevægte
-    vote_weights_description: Tildel hver vælger en vægtning bestående af et helt tal. Resultaterne viser både antallet af vælgere og den vægtede score. Vælgervægtningen er synlig for alle, der kan se afstemningen.
-    vote_weights_description_decimal: Tildel hver vælger en vægt med op til tre decimaler. Resultaterne viser både antallet af vælgere og den vægtede score. Vælgernes vægtning er synlig for alle, der kan se afstemningen.
     use_vote_weights: Brug stemmevægte
     vote_weights_off_warning: Hvis du slår stemmevægte fra, sættes alle vælgere til vægt 1 og fjerner afstemningsspecifikke vægte
     vote_weights_on_group: Aktivering af stemmevægte kopierer vægtningen af nuværende gruppemedlemmer. Andre vælgere får vægt 1.

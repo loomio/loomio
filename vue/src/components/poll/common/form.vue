@@ -1,6 +1,7 @@
 <script setup lang="js">
 import { ref, computed, onMounted } from 'vue';
 import { useRouter, useRoute } from 'vue-router';
+import { useI18n } from 'vue-i18n';
 import AppConfig from '@/shared/services/app_config';
 import Session from '@/shared/services/session';
 import { mapKeys, without, some, pick, snakeCase, pickBy, identity } from 'lodash-es';
@@ -27,6 +28,7 @@ const emit = defineEmits(['setPoll', 'saveSuccess']);
 
 const router = useRouter();
 const route = useRoute();
+const { t } = useI18n();
 
 // url_for mixin functionality
 const urlFor = (model, action, params) => LmoUrlService.route({model, action, params});
@@ -550,7 +552,9 @@ v-form.poll-common-form(ref="form" @submit.prevent="submit")
       v-expansion-panel-text
         template(v-if="poll.config().allow_quorum")
           .poll-common-form__quorum-title.text-body-large.pb-2(v-t="'poll_common_form.quorum'")
-          .text-body-medium.pb-4.text-medium-emphasis(v-t="'poll_common_form.quorum_hint'")
+          .text-body-medium.pb-4.text-medium-emphasis
+            span {{ t('poll_common_form.quorum_hint') }}
+            help-link.ml-1(path="user_manual/polls/quorum")
           v-number-input.mb-4(
             v-model="poll.quorumPct"
             :label="$t('poll_common_form.participation_quorum')"
@@ -570,8 +574,9 @@ v-form.poll-common-form(ref="form" @submit.prevent="submit")
         template(v-if="allowAnonymous")
           v-divider.mb-4(v-if="poll.config().allow_quorum")
           .poll-common-form__anonymous-voting-title.text-body-large.pb-2(v-t="'poll_common_form.anonymous_voting'")
-          .poll-common-form__anonymous-voting-explanation.text-body-medium.pb-2.text-medium-emphasis(
-            v-t="'poll_common_form.anonymous_votes_stored_separately'")
+          .poll-common-form__anonymous-voting-explanation.text-body-medium.pb-2.text-medium-emphasis
+            span {{ t('poll_common_form.anonymous_votes_stored_separately') }}
+            help-link.ml-1(path="user_manual/polls/anonymous_voting")
           v-checkbox.poll-settings-anonymous(
             hide-label
             :disabled="!poll.isNew()"
@@ -582,14 +587,16 @@ v-form.poll-common-form(ref="form" @submit.prevent="submit")
         template(v-if="voteWeightsSupported")
           v-divider.mb-4
           .text-body-large.pb-2(v-t="'poll_common_form.vote_weights'")
-          .text-body-medium.pb-2.text-medium-emphasis {{ t('poll_common_form.vote_weights_description_decimal') }}
+          .text-body-medium.pb-2.text-medium-emphasis
+            span {{ $t('poll_common_form.vote_weights_description') }}
+            help-link.ml-1(path="user_manual/polls/weighted_voting")
           v-checkbox.poll-settings-vote-weights(
             hide-details
             :disabled="!!poll.openedAt"
             v-model="poll.voteWeightsEnabled"
             :label="$t('poll_common_form.use_vote_weights')")
-          v-alert.mt-2(v-if="willDisableVoteWeights" type="warning" variant="tonal" density="compact") {{ t('poll_common_form.vote_weights_off_warning') }}
-          v-alert.mt-2(v-if="willEnableVoteWeights" type="info" variant="tonal" density="compact") {{ t(poll.groupId ? 'poll_common_form.vote_weights_on_group' : 'poll_common_form.vote_weights_on_direct') }}
+          v-alert.mt-2(v-if="willDisableVoteWeights" type="warning" variant="tonal" density="compact") {{ $t('poll_common_form.vote_weights_off_warning') }}
+          v-alert.mt-2(v-if="willEnableVoteWeights" type="info" variant="tonal" density="compact") {{ $t(poll.groupId ? 'poll_common_form.vote_weights_on_group' : 'poll_common_form.vote_weights_on_direct') }}
 
         v-divider.mb-4(v-if="allowAnonymous || voteWeightsSupported || poll.config().allow_quorum")
         .poll-common-form__reminder-title.text-body-large.pb-2(v-t="'poll_common_form.reminder_notification'")

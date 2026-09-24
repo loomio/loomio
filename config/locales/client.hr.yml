@@ -2951,8 +2951,6 @@ hr:
     remove_voter: Ukloni birača
     voter_page_count: "%{first}–%{last} od %{total}"
     vote_weights: Težine glasova
-    vote_weights_description: Dodijelite svakom biraču težinu cijelog broja. Rezultati prikazuju i broj birača i ponderirani rezultat. Težine birača vidljive su svima koji mogu vidjeti anketu.
-    vote_weights_description_decimal: Dodijelite svakom biraču težinu s do tri decimale. Rezultati prikazuju i broj birača i ponderirani rezultat. Težine birača vidljive su svima koji mogu vidjeti anketu.
     use_vote_weights: Koristite težine glasova
     vote_weights_off_warning: Isključivanjem pondera glasova svaki birač dobiva ponder 1 i uklanjaju se ponderi specifični za ankete.
     vote_weights_on_group: Uključivanjem težina glasova kopiraju se trenutne težine članova grupe. Ostali birači dobivaju težinu 1.

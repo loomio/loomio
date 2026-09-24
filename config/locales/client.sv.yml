@@ -2951,8 +2951,6 @@ sv:
     remove_voter: Ta bort väljare
     voter_page_count: "%{first}–%{last} av %{total}"
     vote_weights: Röstvikter
-    vote_weights_description: Tilldela varje väljare en heltalsvikt. Resultaten visar både antalet väljare och den viktade poängen. Väljarvikterna är synliga för alla som kan se omröstningen.
-    vote_weights_description_decimal: Tilldela varje väljare en vikt med upp till tre decimaler. Resultaten visar både antalet väljare och den viktade poängen. Väljarvikterna är synliga för alla som kan se omröstningen.
     use_vote_weights: Använd röstvikter
     vote_weights_off_warning: Om man stänger av röstvikter får varje väljare vikt 1 och omröstningsspecifika vikter tas bort.
     vote_weights_on_group: Om röstvikter aktiveras kopieras vikterna för nuvarande gruppmedlemmar. Andra väljare får vikt 1.

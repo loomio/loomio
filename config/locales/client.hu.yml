@@ -2958,8 +2958,6 @@ hu:
     remove_voter: Szavazó eltávolítása
     voter_page_count: "%{first}–%{last} a %{total}-ból"
     vote_weights: Szavazati súlyok
-    vote_weights_description: Rendeljen minden szavazóhoz egy egész szám súlyt. Az eredmények mind a szavazók számát, mind a súlyozott pontszámot mutatják. A szavazói súlyok mindenki számára láthatók, aki megtekintheti a szavazást.
-    vote_weights_description_decimal: Rendeljen minden szavazóhoz egy súlyt legfeljebb három tizedesjegy pontossággal. Az eredmények mind a szavazók számát, mind a súlyozott pontszámot mutatják. A szavazók súlyai mindenki számára láthatók, aki megtekintheti a szavazást.
     use_vote_weights: Szavazati súlyok használata
     vote_weights_off_warning: A szavazati súlyok kikapcsolása minden szavazót 1-es súlyozással jelöl ki, és eltávolítja a szavazás-specifikus súlyokat.
     vote_weights_on_group: A szavazati súlyok bekapcsolása átmásolja az aktuális csoporttagok súlyait. A többi szavazó az 1-es súlyt kapja.

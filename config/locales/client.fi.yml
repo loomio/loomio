@@ -2951,8 +2951,6 @@ fi:
     remove_voter: Poista äänestäjä
     voter_page_count: "%{first}–%{last} / %{total}"
     vote_weights: Äänipainot
-    vote_weights_description: Anna jokaiselle äänestäjälle kokonaislukupaino. Tulokset näyttävät sekä äänestäjien lukumäärän että painotetun pistemäärän. Äänestäjien painotukset näkyvät kaikille, jotka voivat tarkastella kyselyä.
-    vote_weights_description_decimal: Anna jokaiselle äänestäjälle painoarvo enintään kolmen desimaalin tarkkuudella. Tulokset näyttävät sekä äänestäjien lukumäärän että painotetun pistemäärän. Äänestäjien painotukset näkyvät kaikille, jotka voivat tarkastella kyselyä.
     use_vote_weights: Käytä äänipainotuksia
     vote_weights_off_warning: Äänipainotusten poistaminen käytöstä asettaa jokaisen äänestäjän painoarvoon 1 ja poistaa kyselykohtaiset painotukset.
     vote_weights_on_group: Äänipainotusten päälle kytkeminen kopioi nykyisen ryhmän jäsenten painotukset. Muut äänestäjät saavat painotuksen 1.

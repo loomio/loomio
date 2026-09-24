@@ -2995,8 +2995,6 @@ fr:
     remove_voter: Supprimer l'électeur
     voter_page_count: "%{first}–%{last} de %{total}"
     vote_weights: Poids des votes
-    vote_weights_description: Attribuez à chaque électeur un coefficient de pondération entier. Les résultats affichent le nombre de votants et leur score pondéré. La pondération des votants est visible par tous ceux qui peuvent consulter le sondage.
-    vote_weights_description_decimal: Attribuez à chaque électeur un coefficient de pondération, arrondi à trois décimales. Les résultats affichent le nombre de votants et leur score pondéré. Les coefficients de pondération sont visibles par tous les participants au sondage.
     use_vote_weights: Utiliser les pondérations de vote
     vote_weights_off_warning: La désactivation de la pondération des votes attribue à chaque électeur un poids de 1 et supprime les pondérations spécifiques à chaque sondage.
     vote_weights_on_group: L'activation de la pondération des votes copie les poids actuels des membres du groupe. Les autres votants reçoivent un poids de 1.

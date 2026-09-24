@@ -2630,8 +2630,7 @@ en:
     remove_voter: Remove voter
     voter_page_count: "%{first}–%{last} of %{total}"
     vote_weights: Vote weights
-    vote_weights_description: Assign each voter a whole-number weight. Results show both the number of voters and the weighted score. Voter weights are visible to everyone who can view the poll.
-    vote_weights_description_decimal: Assign each voter a weight with up to three decimal places. Results show both the number of voters and the weighted score. Voter weights are visible to everyone who can view the poll.
+    vote_weights_description: Assign each voter a vote weight, so some votes count more than others. Results show both the number of voters and the weighted score.
     use_vote_weights: Use vote weights
     vote_weights_off_warning: Turning off vote weights sets every voter to weight 1 and removes poll-specific weights
     vote_weights_on_group: Turning on vote weights copies current group member weights. Other voters get weight 1.

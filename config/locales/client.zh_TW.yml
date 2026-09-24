@@ -2979,8 +2979,6 @@ zh_TW:
     remove_voter: 移除選民
     voter_page_count: "%{first}–%{last} 共 %{total}"
     vote_weights: 投票權重
-    vote_weights_description: 為每位投票者分配一個整數權重。結果將顯示投票者人數和加權得分。所有能夠查看投票結果的人都可以看到投票者的權重。
-    vote_weights_description_decimal: 為每位投票者分配一個權重，權重最多可精確到小數點後三位。結果將顯示投票者人數和加權得分。所有能夠查看投票結果的人都可以看到投票者的權重。
     use_vote_weights: 使用投票權重
     vote_weights_off_warning: 關閉投票權重會將所有選民的權重設為 1，並移除特定投票的權重。
     vote_weights_on_group: 啟用投票權重後，將複製目前群組成員的權重。其他投票者的權重為 1。

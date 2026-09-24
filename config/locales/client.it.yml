@@ -2979,8 +2979,6 @@ it:
     remove_voter: Rimuovere l'elettore
     voter_page_count: "%{first}–%{last} di %{total}"
     vote_weights: pesi di voto
-    vote_weights_description: Assegna a ciascun elettore un peso intero. I risultati mostrano sia il numero di elettori che il punteggio ponderato. I pesi degli elettori sono visibili a tutti coloro che possono visualizzare il sondaggio.
-    vote_weights_description_decimal: Assegna a ciascun elettore un peso con un massimo di tre cifre decimali. I risultati mostrano sia il numero di elettori che il punteggio ponderato. I pesi degli elettori sono visibili a tutti coloro che possono visualizzare il sondaggio.
     use_vote_weights: Utilizzare i pesi di voto
     vote_weights_off_warning: Disattivando i pesi di voto, a ogni elettore viene assegnato un peso pari a 1 e vengono rimossi i pesi specifici del sondaggio.
     vote_weights_on_group: L'attivazione dei pesi di voto copia i pesi attuali dei membri del gruppo. Gli altri votanti ottengono peso 1.

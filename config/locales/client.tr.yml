@@ -2951,8 +2951,6 @@ tr:
     remove_voter: Seçmeni kaldır
     voter_page_count: "%{first}–%{last} / %{total}"
     vote_weights: Oy ağırlıkları
-    vote_weights_description: Her seçmene tam sayı bir ağırlık atayın. Sonuçlar hem seçmen sayısını hem de ağırlıklı puanı gösterir. Seçmen ağırlıkları, anketi görüntüleyebilen herkes tarafından görülebilir.
-    vote_weights_description_decimal: Her seçmene en fazla üç ondalık basamağa kadar bir ağırlık atayın. Sonuçlar hem seçmen sayısını hem de ağırlıklı puanı gösterir. Seçmen ağırlıkları, anketi görüntüleyebilen herkes tarafından görülebilir.
     use_vote_weights: Oy ağırlıklarını kullanın
     vote_weights_off_warning: Oy ağırlıklarını kapatmak, her seçmenin ağırlığını 1 olarak ayarlar ve ankete özgü ağırlıkları kaldırır.
     vote_weights_on_group: Oy ağırlıklarını etkinleştirmek, mevcut grup üyesi ağırlıklarını kopyalar. Diğer seçmenler 1 ağırlık alır.

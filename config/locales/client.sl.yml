@@ -2951,8 +2951,6 @@ sl:
     remove_voter: Odstrani volivca
     voter_page_count: "%{first}–%{last} od %{total}"
     vote_weights: Uteži glasov
-    vote_weights_description: Vsakemu volivcu dodelite celoštevilčno utež. Rezultati prikazujejo tako število volivcev kot uteženi rezultat. Uteži volivcev so vidne vsem, ki si lahko ogledajo anketo.
-    vote_weights_description_decimal: Vsakemu volivcu dodelite utež z največ tremi decimalnimi mesti. Rezultati prikazujejo tako število volivcev kot uteženo oceno. Uteži volivcev so vidne vsem, ki si lahko ogledajo anketo.
     use_vote_weights: Uporabite uteži glasov
     vote_weights_off_warning: Če izklopite uteži glasov, vsak volivec dobi utež 1 in odstrani uteži, specifične za anketo.
     vote_weights_on_group: Vklop uteži glasov kopira uteži trenutnih članov skupine. Drugi volivci dobijo utež 1.

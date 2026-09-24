@@ -593,4 +593,22 @@ module.exports = {
     page.expectText('.context-panel__heading', 'A standalone proposal')
     page.expectText('.poll-common-details-panel__details p', 'Some details')
   },
+
+  'can_open_vote_weight_settings_in_poll_form': (test) => {
+    page = pageHelper(test)
+
+    page.loadPath('polls/start_poll?weighted=1')
+    page.clickAndWait('.decision-tools-card__poll-type--proposal', '.poll-common-form__more-settings')
+    page.click('.poll-common-form__more-settings')
+    page.expectElement('.poll-settings-vote-weights')
+    page.expectElement('a[href="/docs/en/user_manual/polls/quorum"]')
+    page.expectText('.poll-common-form', 'Assign each voter a vote weight, so some votes count more than others. Results show both the number of voters and the weighted score.')
+    page.expectElement('a[href="/docs/en/user_manual/polls/weighted_voting"]')
+    page.expectElement('a[href="/docs/en/user_manual/polls/anonymous_voting"]')
+    page.expectText('a[href="/docs/en/user_manual/polls/weighted_voting"]', 'Read more')
+    page.expectElement('a[href="/docs/en/user_manual/polls/weighted_voting"] .v-icon')
+    page.expectElement('a[href="/docs/en/user_manual/polls/anonymous_voting"] .v-icon')
+    page.click('.poll-settings-vote-weights input')
+    test.assert.elementPresent('.poll-settings-vote-weights input:checked')
+  },
 }

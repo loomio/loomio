@@ -2950,8 +2950,6 @@ ja:
     remove_voter: 有権者を削除する
     voter_page_count: "%{first}～%{last} / %{total}"
     vote_weights: 投票の重み
-    vote_weights_description: 各投票者に整数値の重みを割り当てます。結果には、投票者数と重み付けされたスコアの両方が表示されます。投票者の重みは、投票を閲覧できるすべての人に表示されます。
-    vote_weights_description_decimal: 各投票者に小数点以下3桁までの重みを割り当てます。結果には投票者数と重み付けされたスコアの両方が表示されます。投票者の重みは、投票を閲覧できるすべての人に表示されます。
     use_vote_weights: 投票の重み付けを使用する
     vote_weights_off_warning: 投票の重み付けをオフにすると、すべての投票者の重みが1に設定され、投票ごとの重み付けが削除されます。
     vote_weights_on_group: 投票重みを有効にすると、現在のグループメンバーの重みがコピーされます。他の投票者には重み1が割り当てられます。

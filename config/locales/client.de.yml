@@ -2986,8 +2986,6 @@ de:
     remove_voter: Wähler entfernen
     voter_page_count: "%{first}–%{last} von %{total}"
     vote_weights: Stimmgewichte
-    vote_weights_description: Jedem Wähler wird ein ganzzahliges Gewicht zugewiesen. Die Ergebnisse zeigen sowohl die Anzahl der Wähler als auch die gewichtete Punktzahl. Die Wählergewichte sind für alle sichtbar, die die Umfrage einsehen können.
-    vote_weights_description_decimal: Jedem Wähler wird ein Gewicht mit bis zu drei Dezimalstellen zugewiesen. Die Ergebnisse zeigen sowohl die Anzahl der Wähler als auch das gewichtete Ergebnis. Die Wählergewichte sind für alle sichtbar, die die Umfrage einsehen können.
     use_vote_weights: Stimmgewichte verwenden
     vote_weights_off_warning: Durch das Deaktivieren der Stimmgewichtung wird jeder Wähler auf das Gewicht 1 gesetzt und die umfragespezifischen Gewichtungen werden entfernt.
     vote_weights_on_group: Durch Aktivieren der Stimmgewichtung werden die aktuellen Stimmgewichte der Gruppenmitglieder übernommen. Andere Wähler erhalten das Gewicht 1.

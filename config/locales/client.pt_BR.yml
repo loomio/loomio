@@ -2999,8 +2999,6 @@ pt_BR:
     remove_voter: Remover eleitor
     voter_page_count: "%{first}–%{last} de %{total}"
     vote_weights: Pesos de voto
-    vote_weights_description: Atribua um peso numérico inteiro a cada eleitor. Os resultados mostram tanto o número de eleitores quanto a pontuação ponderada. Os pesos dos eleitores são visíveis para todos que podem visualizar a enquete.
-    vote_weights_description_decimal: Atribua a cada eleitor um peso com até três casas decimais. Os resultados mostram tanto o número de eleitores quanto a pontuação ponderada. Os pesos dos eleitores são visíveis para todos que podem visualizar a enquete.
     use_vote_weights: Utilizar ponderações de voto
     vote_weights_off_warning: Desativar a ponderação dos votos atribui o peso 1 a todos os eleitores e remove as ponderações específicas de cada pesquisa.
     vote_weights_on_group: Ao ativar a ponderação de votos, os pesos atuais dos membros do grupo são copiados. Os demais votantes recebem peso 1.

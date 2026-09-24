@@ -2978,8 +2978,6 @@ ca:
     remove_voter: Eliminar votant
     voter_page_count: "%{first}–%{last} de %{total}"
     vote_weights: pesos de vot
-    vote_weights_description: Assigneu a cada votant un pes enter. Els resultats mostren tant el nombre de votants com la puntuació ponderada. Els pesos dels votants són visibles per a tothom que pugui veure l'enquesta.
-    vote_weights_description_decimal: Assigneu a cada votant un pes amb fins a tres decimals. Els resultats mostren tant el nombre de votants com la puntuació ponderada. Els pesos dels votants són visibles per a tothom que pugui veure l'enquesta.
     use_vote_weights: Utilitza el pes dels vots
     vote_weights_off_warning: Desactivar els pesos dels vots estableix cada votant al pes 1 i elimina els pesos específics de l'enquesta
     vote_weights_on_group: En activar els pesos dels vots, es copien els pesos dels membres actuals del grup. Els altres votants reben el pes 1.

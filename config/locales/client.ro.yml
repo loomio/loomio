@@ -2951,8 +2951,6 @@ ro:
     remove_voter: Eliminați votantul
     voter_page_count: "%{first}–%{last} din %{total}"
     vote_weights: Ponderi ale voturilor
-    vote_weights_description: Atribuiți fiecărui alegător o pondere întreagă. Rezultatele arată atât numărul de alegători, cât și scorul ponderat. Ponderile alegătorilor sunt vizibile pentru toți cei care pot vizualiza sondajul.
-    vote_weights_description_decimal: Atribuiți fiecărui alegător o pondere cu până la trei zecimale. Rezultatele arată atât numărul de alegători, cât și scorul ponderat. Ponderile alegătorilor sunt vizibile pentru toți cei care pot vizualiza sondajul.
     use_vote_weights: Folosește ponderile voturilor
     vote_weights_off_warning: Dezactivarea ponderilor voturilor setează fiecare alegător la ponderea 1 și elimină ponderile specifice sondajului
     vote_weights_on_group: Activarea ponderilor voturilor copiază ponderile membrilor actuali ai grupului. Ceilalți votanți primesc ponderea 1.

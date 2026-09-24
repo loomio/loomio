@@ -2978,8 +2978,6 @@ nl_NL:
     remove_voter: Verwijder kiezer
     voter_page_count: "%{first}–%{last} van %{total}"
     vote_weights: Stemgewichten
-    vote_weights_description: Ken aan elke kiezer een gewicht toe dat een geheel getal is. De resultaten tonen zowel het aantal kiezers als de gewogen score. De gewichten van de kiezers zijn zichtbaar voor iedereen die de peiling kan bekijken.
-    vote_weights_description_decimal: Ken aan elke kiezer een gewicht toe met maximaal drie decimalen. De resultaten tonen zowel het aantal kiezers als de gewogen score. De gewichten van de kiezers zijn zichtbaar voor iedereen die de peiling kan bekijken.
     use_vote_weights: Gebruik stemgewichten
     vote_weights_off_warning: Het uitschakelen van stemwegingen zet elke kiezer op weging 1 en verwijdert de peilingspecifieke wegingen.
     vote_weights_on_group: Het inschakelen van stemgewichten kopieert de huidige gewichten van de groepsleden. Andere stemmers krijgen gewicht 1.
