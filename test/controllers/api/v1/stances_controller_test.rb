@@ -154,6 +154,32 @@ class Api::V1::StancesControllerTest < ActionController::TestCase
     assert_equal [0, 2], stances.map { |stance| stance.reload.weight.to_i }
   end
 
+  test "poll admin updates cast vote weights in one statement" do
+    @poll.update_column(:vote_weights_enabled, true)
+    stances = @poll.stances.latest.limit(2).to_a
+    option = @poll.poll_options.first
+    stances.first.update!(cast_at: Time.current,
+                          stance_choices_attributes: [{poll_option_id: option.id, score: 1}])
+    sign_in @admin
+    stance_updates = []
+    subscriber = ->(*args) do
+      sql = args.last[:sql]
+      stance_updates << sql if sql.match?(/\AUPDATE\s+"?stances"?\s/i)
+    end
+
+    ActiveSupport::Notifications.subscribed(subscriber, 'sql.active_record') do
+      patch :set_weights, params: {
+        poll_id: @poll.id, weights: {stances.first.id => 2, stances.second.id => 0.5}
+      }
+    end
+
+    assert_response :success
+    assert_equal 1, stance_updates.size
+    assert_equal BigDecimal('2'), stances.first.reload.weight
+    assert_equal BigDecimal('0.5'), stances.second.reload.weight
+    assert_equal BigDecimal('2'), option.reload.total_score
+  end
+
   test "bulk stance weight update rejects nested values" do
     @poll.update_columns(opened_at: nil, closing_at: nil, vote_weights_enabled: true)
     stance = @poll.stances.latest.first

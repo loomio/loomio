@@ -92,13 +92,14 @@ class Api::V1::MembershipsControllerTest < ActionController::TestCase
     assert_equal BigDecimal('0.5'), membership.weight
   end
 
-  test 'invalid weight leaves membership title unchanged' do
+  test 'out-of-range weight rolls back membership title' do
     sign_in @admin
     membership = @test_group.membership_for(@user)
 
-    patch :update, params: {id: membership.id, membership: {title: 'Chair', weight: '-1'}}
+    assert_raises ActiveRecord::StatementInvalid do
+      patch :update, params: {id: membership.id, membership: {title: 'Chair', weight: '-1'}}
+    end
 
-    assert_response :unprocessable_entity
     assert_nil membership.reload.title
     assert_equal 1, membership.weight
   end

@@ -324,12 +324,25 @@ class PollTest < ActiveSupport::TestCase
     assert poll.vote_weights_active?
   end
 
-  test "vote weights cannot be enabled after voting opens" do
-    poll = create_poll
+  test "switching vote weights after opening resets issued votes" do
+    member = users(:user)
+    membership = @group.membership_for(member)
+    membership.update!(weight: '2.5')
+    poll = create_poll(group_id: @group.id)
+    stance = poll.stances.latest.find_by!(participant: member)
+    option = poll.poll_options.first
+    stance.update!(cast_at: Time.current, stance_choices_attributes: [{poll_option_id: option.id, score: 1}])
 
-    poll.vote_weights_enabled = true
+    PollService.update(poll: poll, params: {vote_weights_enabled: true}, actor: @admin)
+    assert_equal BigDecimal('2.5'), stance.reload.weight
+    assert stance.cast_at
+    assert_equal BigDecimal('2.5'), option.reload.total_score
 
-    refute poll.save
+    stance.update_columns(weight: '3')
+    PollService.update(poll: poll, params: {vote_weights_enabled: false}, actor: @admin)
+    assert_equal 1, stance.reload.weight
+    assert stance.cast_at
+    assert_equal 1, option.reload.total_score
   end
 
   test "vote weights can be enabled before voting opens" do

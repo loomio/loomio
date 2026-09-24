@@ -89,23 +89,23 @@ class StanceService
   def self.set_weight(stance:, weight:, actor:)
     stance.poll.with_lock do
       actor.ability.authorize! :set_weight, stance
-      stance.update!(weight: weight)
+      stance.poll.stances.latest.where(id: stance.id).update_all(weight: weight)
       stance.poll.update_counts!
     end
-    stance
+    stance.reload
   end
 
   def self.set_weights(poll:, weights_by_stance_id:, actor:)
     raise ActionController::ParameterMissing, :weights if weights_by_stance_id.empty?
 
     poll.with_lock do
-      stances = poll.stances.latest.where(id: weights_by_stance_id.keys).index_by { |stance| stance.id.to_s }
-      raise ActiveRecord::RecordNotFound unless stances.length == weights_by_stance_id.length
+      actor.ability.authorize! :set_weight, Stance.new(poll: poll)
+      stance_ids = poll.stances.latest.where(id: weights_by_stance_id.keys).pluck(:id)
+      raise ActiveRecord::RecordNotFound unless stance_ids.length == weights_by_stance_id.length
 
-      stances.each_value { |stance| actor.ability.authorize! :set_weight, stance }
-      stances.each do |id, stance|
-        stance.update!(weight: weights_by_stance_id.fetch(id))
-      end
+      weight_by_id = Arel::Nodes::Case.new(Stance.arel_table[:id])
+      weights_by_stance_id.each { |id, weight| weight_by_id.when(id.to_i).then(BigDecimal(weight.to_s)) }
+      poll.stances.latest.where(id: stance_ids).update_all(weight: weight_by_id)
       poll.update_counts!
     end
 
@@ -117,22 +117,14 @@ class StanceService
   def self.reset_weights(poll:, actor:, mode: 'value', weight: nil)
     poll.with_lock do
       actor.ability.authorize! :set_weight, Stance.new(poll: poll)
-      weights_by_user_id = case mode
+      case mode
       when 'membership'
         raise ActionController::BadRequest, 'group membership weights require a group poll' unless poll.group_id
-
-        poll.member_vote_weights_by_user_id(poll.stances.latest.select(:participant_id))
+        poll.reset_stance_weights_from_memberships!
       when 'value'
-        candidate = Stance.new(poll: poll, weight: weight)
-        candidate.valid?
-        raise ActiveRecord::RecordInvalid, candidate if candidate.errors.include?(:weight)
-        nil
+        poll.stances.latest.update_all(weight: weight)
       else
         raise ActionController::BadRequest, 'invalid weight mode'
-      end
-
-      poll.stances.latest.find_each do |stance|
-        stance.update!(weight: weights_by_user_id ? weights_by_user_id.fetch(stance.participant_id, 1) : weight)
       end
       poll.update_counts!
     end

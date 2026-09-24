@@ -121,12 +121,16 @@ class MembershipService
     actor.ability.authorize! :update, membership
     actor.ability.authorize! :set_weight, membership if params.key?(:weight)
 
-    membership.assign_attributes(params.slice(:title, :weight))
-    return membership unless membership.valid?
+    membership.assign_attributes(params.slice(:title))
+    return membership if params.key?(:title) && !membership.valid?
     updated_membership = nil
     Membership.transaction do
-      membership.save!
-      updated_membership = update_user_titles(membership.id)
+      membership.save! if params.key?(:title)
+      if params.key?(:weight)
+        Membership.where(id: membership.id).update_all(weight: params[:weight], updated_at: Time.current)
+        membership.reload
+      end
+      updated_membership = update_user_titles(membership.id) if params.key?(:title)
     end
 
     if updated_membership

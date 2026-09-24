@@ -233,7 +233,6 @@ class Poll < ApplicationRecord
   validate :voting_system_cannot_change_after_opening
   validate :detached_configuration_cannot_change_after_ballot
   validate :vote_weights_enabled_is_supported
-  validate :vote_weights_enabled_cannot_change_after_opening
   validate :score_bounds_are_valid, if: :score_bounds_validation_required?
   validate :title_if_not_discarded
 
@@ -262,8 +261,8 @@ class Poll < ApplicationRecord
   after_commit :update_group_counter_caches
   after_update :synchronize_stance_weights_after_vote_weights_change
 
-  # A draft poll's stored weights reflect its current voting mode. Switching on
-  # copies current membership defaults; switching off discards poll overrides.
+  # Switching vote weights resets issued stances, including cast votes, so
+  # stored weights and poll results reflect the current voting mode.
   def synchronize_stance_weights_after_vote_weights_change
     return unless saved_change_to_vote_weights_enabled?
 
@@ -272,11 +271,19 @@ class Poll < ApplicationRecord
       return
     end
 
-    weights_by_user_id = member_vote_weights_by_user_id(stances.latest.select(:participant_id))
-    stances.latest.find_each do |stance|
-      weight = weights_by_user_id.fetch(stance.participant_id, 1)
-      stance.update!(weight: weight) if stance.weight != weight
-    end
+    reset_stance_weights_from_memberships!
+  end
+
+  # Copy current group defaults into issued votes in one statement. Voters
+  # without an active membership, including direct-poll voters, receive 1.
+  def reset_stance_weights_from_memberships!
+    return stances.latest.update_all(weight: 1) unless group_id
+
+    member_weight = Membership.active.where(group_id: group_id)
+      .where('memberships.user_id = stances.participant_id')
+      .select(:weight)
+      .limit(1)
+    stances.latest.update_all(weight: Arel.sql("COALESCE((#{member_weight.to_sql}), 1)"))
   end
 
   def update_group_counter_caches
@@ -697,12 +704,6 @@ class Poll < ApplicationRecord
     errors.add(:vote_weights_enabled, :invalid)
   end
 
-  def vote_weights_enabled_cannot_change_after_opening
-    return unless will_save_change_to_vote_weights_enabled?
-    return unless persisted? && opened_at_in_database.present?
-
-    errors.add(:vote_weights_enabled, :invalid)
-  end
 
   def closes_in_future
     return if closed_at
