@@ -359,6 +359,9 @@ v-form.poll-common-form(ref="form" @submit.prevent="submit")
             p {{option.meaning}}
 
           template(v-slot:append)
+            div.ml-0(v-if="poll.pollType != 'meeting'")
+              v-btn(icon variant="text" @click="editOption(option)" :title="$t('common.action.edit')")
+                common-icon(name="mdi-pencil")
             v-btn(
               icon
               variant="text"
@@ -366,9 +369,6 @@ v-form.poll-common-form(ref="form" @submit.prevent="submit")
               :title="$t('common.action.delete')"
             )
               common-icon(name="mdi-delete")
-            div.ml-0(v-if="poll.pollType != 'meeting'")
-              v-btn(icon variant="text" @click="editOption(option)" :title="$t('common.action.edit')")
-                common-icon(name="mdi-pencil")
             common-icon(name="mdi-drag-vertical" style="cursor: grab" v-handle :title="$t('common.action.move')" v-if="poll.pollType != 'meeting'")
 
     template(v-if="optionFormat == 'i18n'")
