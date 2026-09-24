@@ -145,13 +145,13 @@ class Api::V1::ProfileControllerTest < ActionController::TestCase
     assert_response :not_found
   end
 
-  test "restricted user cannot select a provider picture" do
+  test "an unsubscribe token cannot select a provider picture" do
     @user.identities.create!(identity_type: 'oauth', uid: 'profile-picture', logo: 'https://example.com/picture.png')
     @user.update_columns(unsubscribe_token: UNSUB)
 
     post :use_provider_avatar, params: { unsubscribe_token: UNSUB }, format: :json
 
-    assert_response :forbidden
+    assert_response :unauthorized
   end
 
   test "email and push defaults can be applied independently" do
@@ -300,14 +300,12 @@ class Api::V1::ProfileControllerTest < ActionController::TestCase
     assert_equal original_digest, @user.reload.password_digest
   end
 
-  # -- unsubscribe-token (restricted user) authorization --
-  # An attacker who obtains a victim's permanent unsubscribe_token (present in
-  # the footer of every notification email) must not be able to take over or
-  # destroy the account. These prove the restricted-user guardrails.
+  # An unsubscribe token authenticates email action pages only. It must not
+  # grant access to the profile API or account credentials.
 
   UNSUB = 'unsub-secret-token-for-tests'
 
-  test "restricted user cannot change password via update_profile" do
+  test "an unsubscribe token cannot change a password via update_profile" do
     @user.update_columns(unsubscribe_token: UNSUB)
     original_digest = @user.password_digest
 
@@ -316,10 +314,11 @@ class Api::V1::ProfileControllerTest < ActionController::TestCase
       user: { password: 'attacker_password_123', password_confirmation: 'attacker_password_123' }
     }, format: :json
 
-    assert_equal original_digest, @user.reload.password_digest, "restricted user must not change password"
+    assert_response :unauthorized
+    assert_equal original_digest, @user.reload.password_digest
   end
 
-  test "restricted user cannot change email via update_profile" do
+  test "an unsubscribe token cannot change an email via update_profile" do
     @user.update_columns(unsubscribe_token: UNSUB)
     original_email = @user.email
 
@@ -328,41 +327,42 @@ class Api::V1::ProfileControllerTest < ActionController::TestCase
       user: { email: 'attacker@evil.test' }
     }, format: :json
 
-    assert_equal original_email, @user.reload.email, "restricted user must not change email"
+    assert_response :unauthorized
+    assert_equal original_email, @user.reload.email
   end
 
-  test "restricted user cannot deactivate the account" do
+  test "an unsubscribe token cannot deactivate an account" do
     @user.update_columns(unsubscribe_token: UNSUB, deactivated_at: nil)
 
     post :deactivate, params: { unsubscribe_token: UNSUB }, format: :json
 
-    assert_response :forbidden
+    assert_response :unauthorized
     assert_nil @user.reload.deactivated_at
   end
 
-  test "restricted user cannot redact/destroy the account" do
+  test "an unsubscribe token cannot redact an account" do
     @user.update_columns(unsubscribe_token: UNSUB)
 
     delete :destroy, params: { unsubscribe_token: UNSUB }, format: :json
 
-    assert_response :forbidden
+    assert_response :unauthorized
   end
 
-  test "restricted user cannot read the email_api_key" do
+  test "an unsubscribe token cannot read the email_api_key" do
     @user.update_columns(unsubscribe_token: UNSUB)
 
     get :email_api_key, params: { unsubscribe_token: UNSUB }, format: :json
 
-    assert_response :forbidden
+    assert_response :unauthorized
   end
 
-  test "restricted user cannot reset the email_api_key" do
+  test "an unsubscribe token cannot reset the email_api_key" do
     @user.update_columns(unsubscribe_token: UNSUB)
     original = @user.email_api_key
 
     post :reset_email_api_key, params: { unsubscribe_token: UNSUB }, format: :json
 
-    assert_response :forbidden
+    assert_response :unauthorized
     assert_equal original, @user.reload.email_api_key
   end
 
@@ -383,7 +383,7 @@ class Api::V1::ProfileControllerTest < ActionController::TestCase
     assert_equal existing_response, response.body
   end
 
-  test "restricted user CAN still update notification preferences" do
+  test "an unsubscribe token cannot update notification preferences through the profile API" do
     @user.update_columns(
       unsubscribe_token: UNSUB,
       volume_email_default: User.volume_email_defaults[:quiet],
@@ -395,8 +395,8 @@ class Api::V1::ProfileControllerTest < ActionController::TestCase
       user: { volume_email_default: "normal", volume_push_default: "normal" }
     }, format: :json
 
-    assert_response :success
-    assert_predicate @user.reload, :email_default_normal?
-    assert_predicate @user, :push_default_normal?
+    assert_response :unauthorized
+    assert_predicate @user.reload, :email_default_quiet?
+    assert_predicate @user, :push_default_quiet?
   end
 end

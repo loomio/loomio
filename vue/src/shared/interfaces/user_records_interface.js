@@ -1,7 +1,6 @@
 import BaseRecordsInterface from '@/shared/record_store/base_records_interface';
 import UserModel            from '@/shared/models/user_model';
 import AnonymousUserModel   from '@/shared/models/anonymous_user_model';
-import {merge} from 'lodash-es';
 
 export default class UserRecordsInterface extends BaseRecordsInterface {
   constructor(recordStore) {
@@ -33,7 +32,7 @@ export default class UserRecordsInterface extends BaseRecordsInterface {
   updateProfile(user) {
     user.processing = true;
     user.prepareForSave();
-    return this.remote.post('update_profile', merge(user.serialize(), {unsubscribe_token: user.unsubscribeToken }))
+    return this.remote.post('update_profile', user.serialize())
     .catch(data => {
       if (data.errors) { user.setErrors(data.errors); }
       throw data;

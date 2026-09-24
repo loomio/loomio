@@ -162,10 +162,6 @@ module CurrentUserHelper
     )
   end
 
-  def restricted_user
-    User.find_by!(params.slice(:unsubscribe_token).permit!).tap { |user| user.restricted = true } if params[:unsubscribe_token]
-  end
-
   def set_last_seen_at
     current_user.update_attribute :last_seen_at, Time.now
   end

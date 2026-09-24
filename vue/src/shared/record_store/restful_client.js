@@ -17,7 +17,6 @@ export default class RestfulClient {
     this.currentUpload = null;
     this.apiPrefix = "/api/v1";
     this.defaultParams.locale = new URLSearchParams(location.search).get('locale');
-    this.defaultParams.unsubscribe_token = new URLSearchParams(location.search).get('unsubscribe_token');
     this.defaultParams.membership_token = new URLSearchParams(location.search).get('membership_token');
     this.defaultParams.stance_token = new URLSearchParams(location.search).get('stance_token');
     this.defaultParams.topic_reader_token = new URLSearchParams(location.search).get('topic_reader_token');

@@ -379,6 +379,23 @@ uk:
   announcement_count_emails: "%{count} листів"
   email_actions:
     unfollowed_discussion: Ви вимкнули сповіщення електронною поштою для цієї теми.
+    catch_up_link: Налаштування електронної пошти для надолуження згаяного
+    catch_up_title: Налаштування електронної пошти для надолуження згаяного
+    catch_up_description: Виберіть, як часто отримувати зведення активності у ваших групах
+    catch_up_schedule: Надіслати електронний лист для надолуження зниклого
+    catch_up_saved: Налаштування електронної пошти для надолуження збережених даних оновлено
+    catch_up_days:
+      never: Ніколи
+      every_day: Щодня
+      every_second_day: Через день
+      monday: Понеділок
+      tuesday: Вівторок
+      wednesday: Середа
+      thursday: Четвер
+      friday: П'ятниця
+      saturday: Субота
+      sunday: Неділя
+    catch_up_all_groups: Електронні листи для надолуження (усі групи)
   discussion_mailer:
     reply_or_view_online_html: Безпосередньо відповісти на цей лист або <a href='%{url}'>переглянути його на %{hostname}</a>.
     turn_off_notifications_html: "<a href='%{url}'>Вимкнути листи</a> з цього обговорення."

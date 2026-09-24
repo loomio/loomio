@@ -367,6 +367,23 @@ sv:
   announcement_count_emails: "%{count} e-postmeddelanden"
   email_actions:
     unfollowed_discussion: Du har stängt av e-post för tråden.
+    catch_up_link: Inställningar för e-postmeddelanden för att komma ikapp
+    catch_up_title: Inställningar för e-postmeddelanden för att komma ikapp
+    catch_up_description: Välj hur ofta du vill få en sammanfattning av aktiviteten i dina grupper
+    catch_up_schedule: Skicka ett mejl om uppföljning
+    catch_up_saved: Inställningar för e-post för att komma ikapp har uppdaterats
+    catch_up_days:
+      never: Aldrig
+      every_day: Varje dag
+      every_second_day: Varannan dag
+      monday: måndag
+      tuesday: tisdag
+      wednesday: onsdag
+      thursday: torsdag
+      friday: Fredag
+      saturday: Lördag
+      sunday: söndag
+    catch_up_all_groups: Mejl om uppdateringar (alla grupper)
   discussion_mailer:
     reply_or_view_online_html: Svara direkt på det här e-postmeddelandet eller <a href='%{url}'>se det på %{hostname}</a> .
     turn_off_notifications_html: "<a href='%{url}'>Stäng av e-postmeddelanden</a> för den här diskussionen."

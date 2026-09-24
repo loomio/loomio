@@ -66,10 +66,6 @@ module EmailHelper
     polymorphic_url(model, args)
   end
 
-  def preferences_url(recipient:)
-    email_preferences_url(unsubscribe_token: recipient.unsubscribe_token)
-  end
-
   def unsubscribe_url(itemable, recipient:)
     target = if itemable.respond_to?(:topic)
       itemable.topic

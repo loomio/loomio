@@ -392,6 +392,23 @@ pl:
   announcement_count_emails: "%{count} wiadomości e-mail"
   email_actions:
     unfollowed_discussion: Wyłączono wiadomości e-mail dla wątku.
+    catch_up_link: Ustawienia poczty e-mail
+    catch_up_title: Ustawienia poczty e-mail
+    catch_up_description: Wybierz, jak często chcesz otrzymywać podsumowanie aktywności w swoich grupach
+    catch_up_schedule: Wyślij e-mail z przypomnieniem
+    catch_up_saved: Zaktualizowano ustawienia wiadomości e-mail
+    catch_up_days:
+      never: Nigdy
+      every_day: Codziennie
+      every_second_day: Co drugi dzień
+      monday: Poniedziałek
+      tuesday: Wtorek
+      wednesday: Środa
+      thursday: Czwartek
+      friday: Piątek
+      saturday: Sobota
+      sunday: Niedziela
+    catch_up_all_groups: E-maile z podsumowaniem (wszystkie grupy)
   discussion_mailer:
     reply_or_view_online_html: Odpowiedz bezpośrednio na tego e-maila lub <a href='%{url}'>wyświetl go na %{hostname}</a>.
     turn_off_notifications_html: "<a href='%{url}'>Wyłącz wiadomości e-mail</a> dla tej dyskusji."

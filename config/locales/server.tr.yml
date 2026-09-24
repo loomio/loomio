@@ -367,6 +367,23 @@ tr:
   announcement_count_emails: "%{count} e-posta"
   email_actions:
     unfollowed_discussion: Konu başlığı için e-postaları kapattınız.
+    catch_up_link: Güncel e-posta ayarları
+    catch_up_title: Güncel e-posta ayarları
+    catch_up_description: Gruplarınızdaki faaliyetlerin özetini ne sıklıkla almak istediğinizi seçin.
+    catch_up_schedule: Güncelleme e-postası gönderin
+    catch_up_saved: Güncellenmiş e-posta ayarları
+    catch_up_days:
+      never: Asla
+      every_day: Her gün
+      every_second_day: Her iki günde bir
+      monday: Pazartesi
+      tuesday: Salı
+      wednesday: Çarşamba
+      thursday: Perşembe
+      friday: Cuma
+      saturday: Cumartesi
+      sunday: Pazar
+    catch_up_all_groups: Özet e-postalar (tüm gruplar)
   discussion_mailer:
     reply_or_view_online_html: Bu e-postayı doğrudan yanıtlayın veya <a href='%{url}'>%{hostname} üzerinde görüntüleyin</a>.
     turn_off_notifications_html: Bu müzakere için <a href='%{url}'>e-postaları devre dışı bırakın</a>.

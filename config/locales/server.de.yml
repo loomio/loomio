@@ -393,6 +393,23 @@ de:
   announcement_count_emails: "%{count} E-mails"
   email_actions:
     unfollowed_discussion: Du hast E-Mail-Benachrichtigungen für diese Diskussion deaktiviert.
+    catch_up_link: Einstellungen für Zusammenfassungs-E-Mails
+    catch_up_title: Einstellungen für Zusammenfassungs-E-Mails
+    catch_up_description: Wähle, wie oft du eine Zusammenfassung der Aktivitäten in deinen Gruppen erhalten möchtest
+    catch_up_schedule: Zusammenfassungs-E-Mail senden
+    catch_up_saved: Einstellungen für Zusammenfassungs-E-Mails aktualisiert
+    catch_up_days:
+      never: Niemals
+      every_day: Täglich
+      every_second_day: Jeden zweiten Tag
+      monday: Montag
+      tuesday: Dienstag
+      wednesday: Mittwoch
+      thursday: Donnerstag
+      friday: Freitag
+      saturday: Samstag
+      sunday: Sonntag
+    catch_up_all_groups: Zusammenfassungs-E-Mails (alle Gruppen)
   discussion_mailer:
     reply_or_view_online_html: Entweder direkt auf diese E-Mail antworten oder <a href='%{url}'>auf %{hostname} antworten</a>.
     turn_off_notifications_html: "<a href='%{url}'>E-Mail-Benachrichtigungen</a> für diese Diskussion deaktivieren."

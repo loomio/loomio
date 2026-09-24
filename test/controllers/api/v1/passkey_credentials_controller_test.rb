@@ -379,7 +379,7 @@ class Api::V1::PasskeyCredentialsControllerTest < ActionController::TestCase
     assert_response :forbidden
   end
 
-  test "restricted access cannot list or mutate passkeys" do
+  test "an unsubscribe token cannot list or mutate passkeys" do
     passkey = register_passkey
     sign_out
     @user.update_columns(unsubscribe_token: "passkey-unsubscribe-test")

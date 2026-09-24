@@ -391,6 +391,23 @@ fr:
   announcement_count_emails: "%{count} courriels"
   email_actions:
     unfollowed_discussion: Tu as désactivé les notifications pour cette discussion.
+    catch_up_link: Paramètres du courriel de rattrapage
+    catch_up_title: Paramètres du courriel de rattrapage
+    catch_up_description: Choisis la fréquence à laquelle tu souhaites recevoir un résumé de l'activité de tes groupes
+    catch_up_schedule: Envoyer un courriel de rattrapage
+    catch_up_saved: Paramètres du courriel de rattrapage mis à jour
+    catch_up_days:
+      never: Jamais
+      every_day: Tous les jours
+      every_second_day: Tous les deux jours
+      monday: Lundi
+      tuesday: Mardi
+      wednesday: Mercredi
+      thursday: Jeudi
+      friday: Vendredi
+      saturday: Samedi
+      sunday: Dimanche
+    catch_up_all_groups: Courriels de rattrapage (tous les groupes)
   discussion_mailer:
     reply_or_view_online_html: Réponds à ce message directement ou <a href='%{url}'>visualise-le sur %{hostname}</a>.
     turn_off_notifications_html: "<a href='%{url}'>Ne plus recevoir de courriels</a> pour cette discussion."
