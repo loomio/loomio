@@ -2978,7 +2978,6 @@ el:
     participation_records_explanation: Αυτό δείχνει ποιοι ήταν επιλέξιμοι και αν ψήφισαν. Δεν δείχνει πώς ψήφισε ο καθένας.
     voted: Ψήφισε
     not_voted: Δεν ψήφισε
-    email_addresses_for_group_admins: Οι διευθύνσεις ηλεκτρονικού ταχυδρομείου εμφανίζονται μόνο στους διαχειριστές ομάδων για να διακρίνονται άτομα με το ίδιο όνομα
   comment_reply_form:
     aria_label: Προσθήκη απάντησης
   discussion_template:

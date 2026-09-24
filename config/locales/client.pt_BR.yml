@@ -3026,7 +3026,6 @@ pt_BR:
     participation_records_explanation: Isso mostra quem era elegível e se votou. Não mostra como cada pessoa votou.
     voted: Votou
     not_voted: Não votou
-    email_addresses_for_group_admins: Os endereços de e-mail são exibidos apenas para os administradores do grupo, para distinguir pessoas com o mesmo nome.
   comment_reply_form:
     aria_label: Adicionar uma resposta
   discussion_template:

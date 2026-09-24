@@ -2978,7 +2978,6 @@ fi:
     participation_records_explanation: Tämä näyttää, ketkä olivat äänioikeutettuja ja äänestivätkö he. Se ei näytä, miten kukaan äänesti.
     voted: Äänesti
     not_voted: Ei äänestänyt
-    email_addresses_for_group_admins: Sähköpostiosoitteet näytetään vain ryhmän ylläpitäjille samannimisten henkilöiden erottamiseksi toisistaan.
   comment_reply_form:
     aria_label: Lisää vastaus
   discussion_template:

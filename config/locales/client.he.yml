@@ -2997,7 +2997,6 @@ he:
     participation_records_explanation: זה מראה מי היה זכאי והאם הוא הצביע. זה לא מראה איך מישהו הצביע.
     voted: הצביעו
     not_voted: לא הצביעו
-    email_addresses_for_group_admins: כתובות דוא"ל מוצגות רק למנהלי קבוצות כדי להבחין בין אנשים בעלי אותו שם
   comment_reply_form:
     aria_label: הוסף תגובה
   discussion_template:

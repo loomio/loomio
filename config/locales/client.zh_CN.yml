@@ -2047,7 +2047,6 @@ zh_CN:
     participation_records_explanation: 这显示了哪些人有资格投票以及他们是否投票。但它并不显示任何人的投票情况。
     voted: 投票
     not_voted: 未投票
-    email_addresses_for_group_admins: 电子邮件地址仅对群组管理员显示，以便区分同名人员。
   decision_tools_card:
     choose_type: 选择投票类型
     title: 促进

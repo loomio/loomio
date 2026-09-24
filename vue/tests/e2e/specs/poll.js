@@ -346,6 +346,9 @@ module.exports = {
 
     page.loadPath('polls/test_poll_scenario?scenario=poll_closed&poll_type=proposal')
     page.clickAndWait('.action-dock__button--view_votes', '.poll-common-votes-panel table tbody tr')
+    page.expectElement('.v-container--fluid .votes-page')
+    page.expectText('.topic-header h1', 'Votes')
+    page.expectNoText('.topic-header .v-breadcrumbs', 'Votes')
     page.expectText('.poll-common-votes-panel table thead', 'Name')
     page.expectText('.poll-common-votes-panel table thead', 'Vote')
     page.expectText('.poll-common-votes-panel table thead', 'Voted on')

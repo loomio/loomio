@@ -3022,7 +3022,6 @@ fr:
     participation_records_explanation: Cette liste indique qui pouvait voter et si cette personne a voté. Elle n’indique pas comment chaque personne a voté.
     voted: A voté
     not_voted: N’a pas voté
-    email_addresses_for_group_admins: Les adresses e-mail ne sont visibles qu'aux administrateurs du groupe afin de distinguer les personnes portant le même nom.
   comment_reply_form:
     aria_label: Ajouter une réponse
   discussion_template:

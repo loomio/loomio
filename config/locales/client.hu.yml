@@ -2985,7 +2985,6 @@ hu:
     participation_records_explanation: Ez azt mutatja, hogy kik voltak jogosultak és hogy szavaztak-e. Nem mutatja, hogy ki hogyan szavazott.
     voted: Szavazott
     not_voted: Nem szavazott
-    email_addresses_for_group_admins: Az e-mail címek csak a csoport adminisztrátorainak jelennek meg, hogy megkülönböztessék az azonos nevű embereket.
   comment_reply_form:
     aria_label: Válasz hozzáadása
   discussion_template:

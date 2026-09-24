@@ -2978,7 +2978,6 @@ da:
     participation_records_explanation: Dette viser, hvem der var berettigede, og om de stemte. Det viser ikke, hvordan nogen stemte.
     voted: Stemte
     not_voted: Ikke stemt
-    email_addresses_for_group_admins: E-mailadresser vises kun til gruppeadministratorer for at skelne personer med samme navn
   comment_reply_form:
     aria_label: Tilføj et svar
   discussion_template:

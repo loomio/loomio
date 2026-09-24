@@ -2978,7 +2978,6 @@ sv:
     participation_records_explanation: Detta visar vilka som var röstberättigade och om de röstade. Det visar inte hur någon röstade.
     voted: Röstade
     not_voted: Röstade inte
-    email_addresses_for_group_admins: E-postadresser visas endast för gruppadministratörer för att skilja personer med samma namn åt.
   comment_reply_form:
     aria_label: Lägg till ett svar
   discussion_template:

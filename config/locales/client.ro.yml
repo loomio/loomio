@@ -2978,7 +2978,6 @@ ro:
     participation_records_explanation: Asta arată cine a fost eligibil și dacă a votat. Nu arată cum a votat fiecare.
     voted: A votat
     not_voted: Nu a votat
-    email_addresses_for_group_admins: Adresele de e-mail sunt afișate doar administratorilor grupului pentru a distinge persoanele cu același nume
   comment_reply_form:
     aria_label: Adăugați un răspuns
   discussion_template:

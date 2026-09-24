@@ -39,7 +39,6 @@ const breadcrumbs = computed(() => {
       to: LmoUrlService.route({model: topicTopicable.value})
     });
   }
-  if (subpageTitle) items.push({title: subpageTitle, disabled: true});
   return items;
 });
 const tags = computed(() => topic.value.tags);

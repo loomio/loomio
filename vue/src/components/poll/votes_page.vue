@@ -26,7 +26,7 @@ Records.polls.findOrFetchById(route.params.key).then(p => {
 
 <template lang="pug">
 v-main
-  v-container(v-if="poll")
+  v-container(fluid v-if="poll")
     v-sheet.votes-page.mb-8.pb-4.rounded-lg.pa-4(elevation=1)
       loading(:until="poll")
         topic-header(:topicable="poll" :subpage-title="t('poll_common.votes')" :subpage-parent-to="`/p/${poll.key}`")

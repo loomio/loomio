@@ -2168,7 +2168,7 @@ en:
     see_votes_if_quorum_reached: If the poll has closed and quorum was reached, you will see who voted
     voter_name: Name
     voter_email: Email
-    email_addresses_for_group_admins: Email addresses are shown only to group admins to distinguish people with the same name
+    email_addresses_for_group_admins: Email addresses are shown only to group admins to distinguish people.
     vote_cast: Vote cast
     voted: Voted
     not_voted: Not voted

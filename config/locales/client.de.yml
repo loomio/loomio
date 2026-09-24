@@ -3013,7 +3013,6 @@ de:
     participation_records_explanation: Hier wird angezeigt, wer wahlberechtigt war und ob diese Personen abgestimmt haben. Es wird nicht angezeigt, wie die einzelnen Personen abgestimmt haben.
     voted: Abgestimmt
     not_voted: Nicht abgestimmt
-    email_addresses_for_group_admins: E-Mail-Adressen werden nur Gruppenadministratoren angezeigt, um Personen mit demselben Namen zu unterscheiden.
   comment_reply_form:
     aria_label: Eine Antwort hinzufügen
   discussion_template:

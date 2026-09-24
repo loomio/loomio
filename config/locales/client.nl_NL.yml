@@ -3005,7 +3005,6 @@ nl_NL:
     participation_records_explanation: Dit laat zien wie stemgerechtigd was en of ze hebben gestemd. Het laat niet zien hoe iemand heeft gestemd.
     voted: Gestemd
     not_voted: Niet gestemd
-    email_addresses_for_group_admins: E-mailadressen worden alleen aan groepsbeheerders getoond om personen met dezelfde naam te onderscheiden.
   comment_reply_form:
     aria_label: Voeg een antwoord toe
   discussion_template:

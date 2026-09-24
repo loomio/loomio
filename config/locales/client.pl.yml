@@ -3005,7 +3005,6 @@ pl:
     participation_records_explanation: Pokazuje, kto był uprawniony do głosowania i czy głosował. Nie pokazuje, jak ktoś głosował.
     voted: Zagłosował(a)
     not_voted: Nie zagłosował(a)
-    email_addresses_for_group_admins: Adresy e-mail są widoczne tylko dla administratorów grup, aby odróżnić osoby o tym samym imieniu i nazwisku
   comment_reply_form:
     aria_label: Dodaj odpowiedź
   discussion_template:

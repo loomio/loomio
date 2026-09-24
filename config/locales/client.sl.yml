@@ -2978,7 +2978,6 @@ sl:
     participation_records_explanation: To prikazuje, kdo je bil upravičen in ali je glasoval. Ne prikazuje, kako je kdo glasoval.
     voted: Glasoval/a
     not_voted: Ni glasoval/a
-    email_addresses_for_group_admins: E-poštni naslovi so prikazani samo skrbnikom skupine, da se lahko razlikujejo osebe z istim imenom.
   comment_reply_form:
     aria_label: Dodaj odgovor
   discussion_template:

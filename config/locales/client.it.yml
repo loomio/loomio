@@ -3006,7 +3006,6 @@ it:
     participation_records_explanation: Questo elenco mostra chi aveva diritto di voto e se ha votato. Non indica come ha votato ciascuno.
     voted: Ha votato
     not_voted: Non ha votato
-    email_addresses_for_group_admins: Gli indirizzi email vengono mostrati solo agli amministratori del gruppo per distinguere le persone con lo stesso nome.
   comment_reply_form:
     aria_label: Aggiungi una risposta
   discussion_template:

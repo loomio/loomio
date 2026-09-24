@@ -3008,7 +3008,6 @@ uk:
     participation_records_explanation: Це показує, хто мав право голосувати і чи голосував він. Це не показує, як хто голосував.
     voted: Проголосував(-ла)
     not_voted: Не проголосував(-ла)
-    email_addresses_for_group_admins: Адреси електронної пошти відображаються лише адміністраторам групи, щоб розрізняти людей з однаковим іменем
   comment_reply_form:
     aria_label: Додати відповідь
   discussion_template:

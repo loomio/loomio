@@ -2978,7 +2978,6 @@ tr:
     participation_records_explanation: Bu, kimlerin oy kullanma hakkına sahip olduğunu ve oy kullanıp kullanmadıklarını gösterir. Ancak kimin nasıl oy kullandığını göstermez.
     voted: Oy kullandı
     not_voted: Oy kullanmadı
-    email_addresses_for_group_admins: E-posta adresleri, aynı isme sahip kişileri ayırt etmek amacıyla yalnızca grup yöneticilerine gösterilir.
   comment_reply_form:
     aria_label: Bir cevap ekle
   discussion_template:

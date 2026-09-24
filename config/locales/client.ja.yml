@@ -2977,7 +2977,6 @@ ja:
     participation_records_explanation: これは、誰が投票資格を有していたか、そして投票したかどうかを示しています。誰がどのように投票したかは示していません。
     voted: 投票済み
     not_voted: 未投票
-    email_addresses_for_group_admins: メールアドレスは、同姓同名の人を区別するためにグループ管理者のみに表示されます。
   comment_reply_form:
     aria_label: 返信を追加
   discussion_template:

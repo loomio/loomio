@@ -3005,7 +3005,6 @@ ca:
     participation_records_explanation: Això mostra qui era elegible i si va votar. No mostra com va votar cadascú.
     voted: Votat
     not_voted: No votat
-    email_addresses_for_group_admins: Les adreces de correu electrònic només es mostren als administradors del grup per distingir les persones amb el mateix nom
   comment_reply_form:
     aria_label: Afegeix una resposta
   discussion_template:
