@@ -203,7 +203,7 @@ class AppConfig
     return false if ENV['LOOMIO_DISABLE_DEMO_GROUPS'].present?
 
     host = ENV['CANONICAL_HOST'].to_s.downcase
-    host.present? && !%w[loomio.com www.loomio.com].include?(host)
+    host.present?
   end
 
   def self.app_features

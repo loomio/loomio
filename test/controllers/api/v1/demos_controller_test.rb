@@ -59,14 +59,17 @@ class Api::V1::DemosControllerTest < ActionController::TestCase
     assert_response :not_found
   end
 
-  test "demo groups are advertised on regional and private hosts by default" do
+  test "demo groups are advertised on all configured hosts unless disabled" do
     assert AppConfig.app_features[:demos]
 
     ENV["CANONICAL_HOST"] = "private.example.org"
     assert AppConfig.app_features[:demos]
 
     ENV["CANONICAL_HOST"] = "loomio.com"
-    refute AppConfig.app_features[:demos]
+    assert AppConfig.app_features[:demos]
+
+    ENV["CANONICAL_HOST"] = "www.loomio.com"
+    assert AppConfig.app_features[:demos]
 
     ENV["LOOMIO_DISABLE_DEMO_GROUPS"] = "1"
     refute AppConfig.app_features[:demos]
