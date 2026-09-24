@@ -1733,6 +1733,13 @@ zh_CN:
     delete_account_subtitle: 彻底删除您的账户，并将您的名字从过去的讨论和决定中删除。
     updated_on_sign_in: 由您的浏览器提供，并在您登录时更新。
     bot_account_warning: 机器人账号将不会被邀请参与投票或讨论。
+    change_email: 更改电子邮件地址
+    change_email_help: 请输入新的电子邮件地址。在您使用新地址确认更改之前，您当前的地址仍然有效。
+    new_email_address: 新电子邮件地址
+    send_confirmation_email: 发送确认邮件
+    email_confirmation_sent: 已发送确认邮件
+    email_change_pending: 待确认 %{email}
+    email_change_failed: 无法请求更改电子邮件地址
   text_editor:
     x_of_y_characters: "%{x} / %{y} 个字符"
     select_text_to_link: 选择要链接的文本，然后重试
@@ -1752,6 +1759,7 @@ zh_CN:
     set_password_helptext: 请输入密码 - 至少 8 个字符
     set_password: 设置密码
     password_changed: 您的密码已更新
+    sessions_and_api_keys: 更改密码会注销您的其他会话并重置您的 API 密钥。此会话将保持登录状态。
   deactivation_modal:
     introduction: 当您删除帐户时：
     deactivate_introduction: 当您停用帐户时：

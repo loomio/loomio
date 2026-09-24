@@ -24,7 +24,7 @@ Click on **Edit profile**
 You can update your personal info by changing any of the following fields:
 
 * **Name**
-* **Email address** - this is the email address associated with your Loomio account, and where you will receive notifications from Loomio.
+* **Email address** - this is the email address associated with your Loomio account, and where you will receive notifications from Loomio. Select **Change email address** to enter a new address. Loomio sends a confirmation link to the new address and a notice to the current address. Your current address remains active until you open the link and confirm the change, even if the link opens in a different browser. The link expires after 24 hours; requesting another change invalidates the earlier link.
 * **Username** - your username is a name people can recognize and alert you using @mention. It can contain lower case letters, numbers, underscores, and internal hyphens.
 * **Introduction** - a few lines to tell others in your group something about you.
 * **Location** - useful for distributed or remote groups so people can get an idea of where you are located.
@@ -51,6 +51,8 @@ Loomio will detect your browser’s language settings, but you can manually set 
 
 ## Resetting your password
 You can change your password by visiting your profile page and clicking **Reset Password**.
+
+Changing your password signs out your other sessions and resets your API keys. Your current session stays signed in. Changing your email address does not sign out sessions or reset API keys.
 
 ![](reset_password.png#width-90)
 

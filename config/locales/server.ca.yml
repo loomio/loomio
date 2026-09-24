@@ -180,6 +180,8 @@ ca:
     deleted_user: Usuari suprimit
     placeholder_name: Usuari convidat (%{hostname})
     error:
+      email_change_requires_confirmation: Sol·licita un canvi de correu electrònic i confirma'l des de la nova adreça
+      email_change_same: Introduïu una adreça electrònica diferent
       sign_in_required_html: Heu d'iniciar la sessió per continuar. <a href="/dashboard" target="_blank">Inicieu la sessió</a> i torneu a carregar aquesta pàgina per continuar.
       recaptcha: No hem pogut verificar que no sou un robot. Siusplau torna-ho a provar!
       bad_login: Les contrasenyes no concorden
@@ -262,6 +264,16 @@ ca:
       complete_page:
         title: Combinació correcta!
         body_html: <p>La combinació dels vostres comptes d'usuari ha estat correcta. En breu rebràs un correu electrònic de confirmació a <strong>%{target_email}</strong> .</p><p> Si us plau, <a href="/contact" target="_blank">poseu-vos en contacte amb nosaltres</a> si teniu més preguntes.</p>
+    email_change_confirmation:
+      subject: Confirma la teva adreça electrònica de %{site_name}
+      body: Confirma %{email} com a nova adreça de correu electrònic del teu compte. La teva adreça actual romandrà activa fins que confirmis aquest canvi. Aquest enllaç caduca en 24 hores.
+      confirm: Confirma l'adreça electrònica
+    email_change_requested:
+      subject: S'ha sol·licitat un canvi de correu electrònic per al vostre compte de %{site_name}
+      body: S'ha fet una sol·licitud per canviar el correu electrònic del vostre compte de %{old_email} a %{new_email}. La vostra adreça actual romandrà activa fins que es confirmi la nova adreça. Si no ho heu sol·licitat, canvieu la vostra contrasenya.
+    email_change_completed:
+      subject: La teva adreça electrònica de %{site_name} ha canviat
+      body: El correu electrònic del vostre compte ha canviat de %{old_email} a %{new_email}. Si no ho heu sol·licitat, poseu-vos en contacte amb l'assistència.
   email:
     common:
       or_enter_code: O bé, introduïu el codi a continuació
@@ -766,3 +778,9 @@ ca:
     review_date: "**Data de revisió:** %{value}"
   error:
     access_denied: No tens permís per fer això
+  email_changes:
+    confirm_title: Confirma l'adreça electrònica
+    confirm_body: Voleu canviar l'adreça electrònica del vostre compte a %{email}?
+    confirm_action: Canviar l'adreça electrònica
+    complete_title: L'adreça electrònica ha canviat
+    complete_body: L'adreça electrònica del vostre compte ara és %{email}. Podeu iniciar la sessió amb aquesta adreça.

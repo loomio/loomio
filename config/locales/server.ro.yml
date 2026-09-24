@@ -180,6 +180,8 @@ ro:
     deleted_user: Utilizator șters
     placeholder_name: Utilizator invitat (%{hostname})
     error:
+      email_change_requires_confirmation: Solicitați o schimbare a adresei de e-mail și confirmați-o de la noua adresă
+      email_change_same: Introduceți o altă adresă de e-mail
       sign_in_required_html: Trebuie să fiți conectat pentru a continua. <a href="/dashboard" target="_blank">Conectați-vă</a> , apoi reîncărcați această pagină pentru a continua.
       recaptcha: Nu am putut verifica dacă nu ești un robot. Vă rugăm să încercați din nou!
       bad_login: Ne pare rău, acea parolă nu se potrivește cu cea pe care o avem în dosar
@@ -262,6 +264,16 @@ ro:
       complete_page:
         title: Îmbinare reușită!
         body_html: <p>Fuzionarea conturilor dvs. de utilizator a avut succes. Veți primi în curând un e-mail de confirmare la <strong>%{target_email}</strong> .</p><p> Vă rugăm <a href="/contact" target="_blank">să ne contactați</a> dacă aveți întrebări suplimentare.</p>
+    email_change_confirmation:
+      subject: Confirmați adresa dvs. de e-mail %{site_name}
+      body: Confirmați %{email} ca noua adresă de e-mail a contului. Adresa dvs. actuală rămâne activă până când confirmați această modificare. Acest link expiră în 24 de ore.
+      confirm: Confirmați adresa de e-mail
+    email_change_requested:
+      subject: Schimbare de adresă de e-mail solicitată pentru contul dvs. %{site_name}
+      body: A fost trimisă o solicitare pentru schimbarea adresei de e-mail a contului dvs. de la %{old_email} la %{new_email}. Adresa dvs. actuală rămâne activă până la confirmarea noii adrese. Dacă nu ați solicitat acest lucru, schimbați parola.
+    email_change_completed:
+      subject: Adresa ta de e-mail %{site_name} s-a modificat
+      body: Adresa de e-mail a contului dvs. s-a schimbat din %{old_email} în %{new_email}. Dacă nu ați solicitat acest lucru, contactați asistența.
   email:
     common:
       or_enter_code: Sau introduceți codul de mai jos
@@ -764,3 +776,9 @@ ro:
     review_date: "**Data revizuirii:** %{value}"
   error:
     access_denied: Nu aveți permisiunea să faceți asta
+  email_changes:
+    confirm_title: Confirmați adresa de e-mail
+    confirm_body: Schimbați adresa de e-mail a contului dvs. în %{email}?
+    confirm_action: Schimbați adresa de e-mail
+    complete_title: Adresa de e-mail a fost schimbată
+    complete_body: Adresa de e-mail a contului dvs. este acum %{email}. Vă puteți conecta cu această adresă.

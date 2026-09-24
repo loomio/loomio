@@ -37,6 +37,7 @@ v-card.change-password-form(
     dismiss-modal-button(:close="close")
   v-card-text
     p.pb-4.text-medium-emphasis(v-t="'change_password_form.set_password_helptext'")
+    p.pb-4.text-medium-emphasis {{ $t('change_password_form.sessions_and_api_keys') }}
     .change-password-form__password-container
       v-text-field.change-password-form__password(:label="$t('sign_up_form.password_label')" required type='password' v-model='user.password')
       validation-errors(:subject='user', field='password')

@@ -1,5 +1,5 @@
 class CurrentUserSerializer < UserSerializer
-  attributes :email, :email_catch_up_day, :selected_locale, :locale,
+  attributes :email, :email_change_pending, :email_catch_up_day, :selected_locale, :locale,
              :volume_email_default, :volume_push_default, :experiences,
              :email_newsletter, :is_admin, :memberships_count, :secret_token, :auto_translate,
              :legal_accepted_at, :legal_acceptance_required, :has_passkey

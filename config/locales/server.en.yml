@@ -481,6 +481,8 @@ en:
     deleted_user: Deleted User
     placeholder_name: Invited user (%{hostname})
     error:
+      email_change_requires_confirmation: Request an email change and confirm it from the new address
+      email_change_same: Enter a different email address
       sign_in_required_html: |
         You must be signed in to proceed.
         Please <a href="/dashboard" target="_blank">sign in</a> then reload this page to continue.
@@ -548,6 +550,16 @@ en:
         <p>If the message is from a member of the group, please review the email and select the member.</p>
         <p>If the message is unwanted, you can block any further email from that address.</p>
   user_mailer:
+    email_change_confirmation:
+      subject: Confirm your %{site_name} email address
+      body: Confirm %{email} as your new account email address. Your current address stays active until you confirm this change. This link expires in 24 hours.
+      confirm: Confirm email address
+    email_change_requested:
+      subject: Email change requested for your %{site_name} account
+      body: A request was made to change your account email from %{old_email} to %{new_email}. Your current address stays active until the new address is confirmed. If you did not request this, change your password.
+    email_change_completed:
+      subject: Your %{site_name} email address changed
+      body: Your account email changed from %{old_email} to %{new_email}. If you did not request this, contact support.
     group_export_ready:
       subject: Group data export for %{group_name}
       body_html: 'Download your group data <a href="%{url}">here</a>. Please note that this link will expire in one week''s time.'
@@ -585,6 +597,12 @@ en:
           <p>Please <a href="/contact" target="_blank">contact us</a> if you have any further questions.</p>
   merge_users:
     not_target_user: You must be signed in as the target account to confirm a merge.
+  email_changes:
+    confirm_title: Confirm email address
+    confirm_body: Change your account email address to %{email}?
+    confirm_action: Change email address
+    complete_title: Email address changed
+    complete_body: Your account email address is now %{email}. You can sign in with this address.
   email:
     content_was_translated_html: This content was translated from %{source_locale}. <a href="%{profile_url}">View settings<a>
     common:

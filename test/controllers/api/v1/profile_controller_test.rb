@@ -331,6 +331,50 @@ class Api::V1::ProfileControllerTest < ActionController::TestCase
     assert_equal original_email, @user.reload.email, "restricted user must not change email"
   end
 
+  test "profile update cannot change email before confirmation" do
+    sign_in @user
+    original_email = @user.email
+
+    post :update_profile, params: {user: {email: 'unconfirmed@example.com'}}, format: :json
+
+    assert_response :unprocessable_entity
+    assert_equal original_email, @user.reload.email
+    assert_nil @user.email_change_pending
+  end
+
+  test "requesting an email change keeps the current address and queues confirmation" do
+    sign_in @user
+    original_email = @user.email
+
+    assert_difference 'enqueued_jobs.count', 2 do
+      post :request_email_change, params: {email: 'new-profile@example.com'}, format: :json
+    end
+
+    assert_response :success
+    assert_equal original_email, @user.reload.email
+    assert_equal 'new-profile@example.com', @user.email_change_pending
+    assert_equal 'new-profile@example.com', JSON.parse(response.body).fetch('users').first.fetch('email_change_pending')
+  end
+
+  test "restricted user cannot request an email change" do
+    @user.update_columns(unsubscribe_token: UNSUB)
+
+    post :request_email_change, params: {unsubscribe_token: UNSUB, email: 'new-profile@example.com'}, format: :json
+
+    assert_response :forbidden
+    assert_nil @user.reload.email_change_pending
+  end
+
+  test "profile editing restriction also blocks email changes" do
+    ENV['LOOMIO_DISABLE_EDIT_USER_PROFILE'] = '1'
+    sign_in @user
+
+    post :request_email_change, params: {email: 'new-profile@example.com'}, format: :json
+
+    assert_response :forbidden
+    assert_nil @user.reload.email_change_pending
+  end
+
   test "restricted user cannot deactivate the account" do
     @user.update_columns(unsubscribe_token: UNSUB, deactivated_at: nil)
 

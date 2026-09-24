@@ -56,4 +56,8 @@ export default class UserRecordsInterface extends BaseRecordsInterface {
       target_email: targetEmail
     });
   }
+
+  requestEmailChange(email) {
+    return this.remote.post('request_email_change', {email});
+  }
 };

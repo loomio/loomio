@@ -1,5 +1,13 @@
 # Corrected translations
 
+## 2026-09-24 — Email changes and password sessions
+
+| File | Key | Before | After | Why it was wrong |
+|------|-----|--------|-------|------------------|
+| `config/locales/server.fr.yml` | `user_mailer.email_change_requested.body` | Omitted `%{old_email}` and `%{new_email}` | Restored both email addresses | The notice must identify the requested change |
+| `config/locales/server.de.yml`, `server.fr.yml`, `server.nl_NL.yml`, `client.de.yml`, `client.fr.yml`, `client.nl_NL.yml` | Email change messages and `change_password_form.sessions_and_api_keys` | Formal `Sie`, `vous`, or `u` wording | Informal `du`, `tu`, or `je` wording | These locales use informal direct address |
+| `config/locales/server.es.yml` | `user.error.email_change_same`, `user_mailer.email_change_requested.subject` | Formal imperative and possessive | Informal `tú` wording | Spanish UI uses the informal `tú` register |
+
 ## 2026-09-22 — Authentication method labels
 
 | File | Key | Before | After | Why it was wrong |

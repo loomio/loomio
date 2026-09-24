@@ -180,6 +180,8 @@ hr:
     deleted_user: Izbrisani korisnik
     placeholder_name: Pozvani korisnik (%{hostname})
     error:
+      email_change_requires_confirmation: Zatražite promjenu e-pošte i potvrdite je s nove adrese
+      email_change_same: Unesite drugu adresu e-pošte
       sign_in_required_html: Morate biti prijavljeni da biste nastavili. <a href="/dashboard" target="_blank">Prijavite se</a> i ponovno učitajte ovu stranicu za nastavak.
       recaptcha: Nismo uspjeli potvrditi da niste robot. Molim te pokušaj ponovno!
       bad_login: Nažalost, ta lozinka ne odgovara onoj koju imamo u evidenciji
@@ -262,6 +264,16 @@ hr:
       complete_page:
         title: Spajanje uspješno!
         body_html: <p>Spajanje vaših korisničkih računa je uspješno. Uskoro ćete primiti potvrdnu e-poruku na <strong>%{target_email}</strong> .</p><p> <a href="/contact" target="_blank">Kontaktirajte nas</a> ako imate dodatnih pitanja.</p>
+    email_change_confirmation:
+      subject: Potvrdite svoju %{site_name} adresu e-pošte
+      body: Potvrdite %{email} kao novu adresu e-pošte vašeg računa. Vaša trenutna adresa ostaje aktivna dok ne potvrdite ovu promjenu. Ova poveznica istječe za 24 sata.
+      confirm: Potvrdite adresu e-pošte
+    email_change_requested:
+      subject: Zatražena je promjena e-pošte za vaš %{site_name} račun
+      body: Zatražena je promjena e-pošte vašeg računa s %{old_email} na %{new_email}. Vaša trenutna adresa ostaje aktivna dok se ne potvrdi nova adresa. Ako to niste zatražili, promijenite lozinku.
+    email_change_completed:
+      subject: Vaša %{site_name} adresa e-pošte je promijenjena
+      body: E-pošta vašeg računa promijenila se iz %{old_email} u %{new_email}. Ako to niste zatražili, obratite se podršci.
   email:
     common:
       or_enter_code: Ili unesite kod ispod
@@ -764,3 +776,9 @@ hr:
     review_date: "**Datum pregleda:** %{value}"
   error:
     access_denied: Nemate dopuštenje za to
+  email_changes:
+    confirm_title: Potvrdite adresu e-pošte
+    confirm_body: Promijeniti adresu e-pošte vašeg računa na %{email}?
+    confirm_action: Promjena adrese e-pošte
+    complete_title: Adresa e-pošte promijenjena
+    complete_body: Adresa e-pošte vašeg računa sada je %{email}. Možete se prijaviti s ovom adresom.

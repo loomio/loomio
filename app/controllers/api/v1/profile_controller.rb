@@ -6,7 +6,7 @@ class Api::V1::ProfileController < Api::V1::RestfulController
   # identity fields (name/email/password/username/avatar) via update_profile.
   RESTRICTED_USER_FORBIDDEN_ACTIONS = %w[
     email_api_key reset_email_api_key deactivate destroy
-    send_merge_verification_email remind upload_avatar use_provider_avatar
+    send_merge_verification_email request_email_change remind upload_avatar use_provider_avatar
   ].freeze
 
   # The only user fields update_profile may change for a restricted user.
@@ -81,6 +81,16 @@ class Api::V1::ProfileController < Api::V1::RestfulController
 
   def update_profile
     service.update(**current_user_params)
+    respond_with_resource
+  end
+
+  def request_email_change
+    unless ThrottleService.can?(key: 'EmailChangeRequest', id: current_user.id, max: 5, per: 'hour')
+      render json: {error: 'Rate limit exceeded'}, status: 429
+      return
+    end
+
+    EmailChangeService.request(user: current_user, actor: current_user, email: params.require(:email))
     respond_with_resource
   end
 

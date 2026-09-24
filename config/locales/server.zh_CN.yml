@@ -447,6 +447,8 @@ zh_CN:
     deleted_user: 已删除用户
     placeholder_name: 受邀用户 (%{hostname})
     error:
+      email_change_requires_confirmation: 请求更改电子邮件地址，并从新地址确认。
+      email_change_same: 请输入其他电子邮件地址
       sign_in_required_html: 您必须登录才能继续。请<a href="/dashboard" target="_blank">登录</a>后重新加载此页面以继续。
       bad_login: 抱歉，您提供的密码与我们存档的密码不符。
       username_must_be_alphanumeric: 用户名必须仅包含小写字母和数字。
@@ -528,6 +530,16 @@ zh_CN:
       complete_page:
         title: 合并成功！
         body_html: <p>您的用户账户合并已成功。您稍后将收到一封确认邮件，发送至<strong>%{target_email}</strong> 。</p><p>如有任何疑问，请<a href="/contact" target="_blank">与我们联系</a>。</p>
+    email_change_confirmation:
+      subject: 请确认您的 %{site_name} 电子邮件地址
+      body: 请确认 %{email} 为您的新账户邮箱地址。在您确认此更改之前，您当前的邮箱地址将继续有效。此链接将在 24 小时后失效。
+      confirm: 确认电邮地址
+    email_change_requested:
+      subject: 您已申请更改 %{site_name} 帐户的电子邮件地址
+      body: 您已申请将您的账户邮箱从 %{old_email} 更改为 %{new_email}。在新的邮箱地址确认之前，您当前的邮箱地址仍然有效。如果您并未申请更改邮箱地址，请修改您的密码。
+    email_change_completed:
+      subject: 您的 %{site_name} 电子邮件地址已更改
+      body: 您的账户邮箱已从 %{old_email} 更改为 %{new_email}。如果您未申请更改，请联系客服。
   email:
     content_was_translated_html: 此内容由 %{source_locale} 翻译而来。<a href="%{profile_url}">查看设置<a></a>
     common:
@@ -759,3 +771,9 @@ zh_CN:
     review_date: "**审核日期：** %{value}"
   error:
     access_denied: 你没有权限这样做。
+  email_changes:
+    confirm_title: 确认电邮地址
+    confirm_body: 将您的帐户电子邮件地址更改为 %{email}？
+    confirm_action: 更改电子邮件地址
+    complete_title: 电子邮件地址已更改
+    complete_body: 您的账户邮箱地址现在是 %{email}。您可以使用此地址登录。

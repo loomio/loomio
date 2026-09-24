@@ -1670,6 +1670,13 @@ ca:
     updated_on_sign_in: Proporcionat pel vostre navegador i actualitzat quan inicieu la sessió
     translate_content_automatically: Tradueix el contingut al meu idioma automàticament
     bot_account_warning: Els comptes de bot no seran convidats a votar en enquestes ni a participar en debats.
+    change_email: Canviar l'adreça electrònica
+    change_email_help: Introduïu una nova adreça electrònica. La vostra adreça actual romandrà activa fins que confirmeu el canvi des de la nova adreça.
+    new_email_address: Nova adreça de correu electrònic
+    send_confirmation_email: Enviar correu electrònic de confirmació
+    email_confirmation_sent: Correu electrònic de confirmació enviat
+    email_change_pending: Confirmació pendent per a %{email}
+    email_change_failed: No s'ha pogut sol·licitar un canvi de correu electrònic
   text_editor:
     x_of_y_characters: "%{x} / %{y} caràcters"
     select_text_to_link: Seleccioneu el text per enllaçar i torneu-ho a provar
@@ -1689,6 +1696,7 @@ ca:
     set_password_helptext: Introduïu una contrasenya amb un mínim de 8 caràcters.
     set_password: Estableix la contrasenya
     password_changed: S'ha actualitzar la contrasenya
+    sessions_and_api_keys: Canviar la contrasenya tanca la sessió de les altres sessions i restableix les claus de l'API. Aquesta sessió continua iniciada.
   deactivation_modal:
     introduction: 'Quan suprimiu el vostre compte:'
     deactivate_introduction: 'Quan desactiveu el vostre compte:'

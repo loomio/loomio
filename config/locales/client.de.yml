@@ -1678,6 +1678,13 @@ de:
     updated_on_sign_in: Wird von deinem Browser bereitgestellt und aktualisiert, wenn du dich anmeldest
     translate_content_automatically: Inhalte automatisch in meine Sprache übersetzen
     bot_account_warning: Bot-Konten werden nicht zur Teilnahme an Umfragen oder Diskussionen eingeladen.
+    change_email: E-Mail-Adresse ändern
+    change_email_help: Gib eine neue E-Mail-Adresse ein. Deine aktuelle Adresse bleibt aktiv, bis du die Änderung von der neuen Adresse aus bestätigst.
+    new_email_address: Neue E-Mail-Adresse
+    send_confirmation_email: Bestätigungs-E-Mail senden
+    email_confirmation_sent: Bestätigungs-E-Mail gesendet
+    email_change_pending: Bestätigung für %{email} ausstehend
+    email_change_failed: E-Mail-Änderung konnte nicht angefordert werden
   text_editor:
     x_of_y_characters: "%{x} / %{y} Zeichen"
     select_text_to_link: Wähle den zu verlinkenden Text aus und versuche es erneut
@@ -1697,6 +1704,7 @@ de:
     set_password_helptext: 'Füge bitte ein Passwort mit minimal 8 Zeichen ein '
     set_password: Passwort festlegen
     password_changed: Dein Passwort wurde aktualisiert
+    sessions_and_api_keys: Wenn du dein Passwort änderst, werden deine anderen Sitzungen abgemeldet und deine API-Schlüssel zurückgesetzt. Diese Sitzung bleibt angemeldet.
   deactivation_modal:
     introduction: 'Wenn du dein Konto löschst:'
     deactivate_introduction: 'Wenn du dein Konto deaktivierst:'

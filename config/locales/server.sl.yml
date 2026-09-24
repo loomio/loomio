@@ -180,6 +180,8 @@ sl:
     deleted_user: Izbrisan uporabnik
     placeholder_name: Povabljen uporabnik (%{hostname})
     error:
+      email_change_requires_confirmation: Zahtevajte spremembo e-poštnega naslova in jo potrdite z novega naslova
+      email_change_same: Vnesite drug e-poštni naslov
       sign_in_required_html: Za nadaljevanje morate biti prijavljeni. Za nadaljevanje <a href="/dashboard" target="_blank">se prijavite</a> in znova naložite to stran.
       recaptcha: Nismo mogli preveriti, da niste robot. Prosim poskusite ponovno!
       bad_login: Žal se to geslo ne ujema s tistim, ki ga imamo v arhivu
@@ -262,6 +264,16 @@ sl:
       complete_page:
         title: Združevanje uspešno!
         body_html: <p>Združitev vaših uporabniških računov je bila uspešna. Kmalu boste prejeli potrditveno e-poštno sporočilo na <strong>%{target_email}</strong> .</p><p> Prosimo, <a href="/contact" target="_blank">kontaktirajte nas</a> , če imate dodatna vprašanja.</p>
+    email_change_confirmation:
+      subject: Potrdite svoj e-poštni naslov %{site_name}
+      body: Potrdite %{email} kot svoj novi e-poštni naslov računa. Vaš trenutni naslov ostane aktiven, dokler ne potrdite te spremembe. Ta povezava poteče čez 24 ur.
+      confirm: Potrdite e-poštni naslov
+    email_change_requested:
+      subject: Zahtevana sprememba e-poštnega naslova za vaš račun %{site_name}
+      body: Poslana je bila zahteva za spremembo e-poštnega naslova vašega računa iz %{old_email} v %{new_email}. Vaš trenutni naslov ostane aktiven, dokler ni potrjen novi naslov. Če tega niste zahtevali, spremenite geslo.
+    email_change_completed:
+      subject: Vaš e-poštni naslov %{site_name} se je spremenil
+      body: Vaš e-poštni naslov se je spremenil iz %{old_email} v %{new_email}. Če tega niste zahtevali, se obrnite na podporo.
   email:
     common:
       or_enter_code: Ali pa vnesite spodnjo kodo
@@ -764,3 +776,9 @@ sl:
     review_date: "**Datum pregleda:** %{value}"
   error:
     access_denied: Nimate dovoljenja za to.
+  email_changes:
+    confirm_title: Potrdite e-poštni naslov
+    confirm_body: Želite spremeniti e-poštni naslov svojega računa v %{email}?
+    confirm_action: Spremeni e-poštni naslov
+    complete_title: E-poštni naslov je bil spremenjen
+    complete_body: Vaš e-poštni naslov računa je zdaj %{email}. S tem naslovom se lahko prijavite.

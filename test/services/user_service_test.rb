@@ -14,9 +14,27 @@ class UserServiceTest < ActiveSupport::TestCase
   end
 
   teardown do
+    Current.session = nil
     ENV['LOOMIO_DISABLE_EDIT_USER_PROFILE'] = @original_disable_edit_user_profile
     ENV['LOOMIO_SSO_FORCE_USER_ATTRS'] = @original_sso_force_user_attrs
     ENV['DEFAULT_ONBOARDING_GROUP_ID'] = @original_default_onboarding_group_id
+  end
+
+  test "changing the password retains the current session and revokes other credentials" do
+    current_session = @user.sessions.create!(user_agent: 'current browser')
+    other_session = @user.sessions.create!(user_agent: 'other browser')
+    login_token = @user.login_tokens.create!
+    old_api_key = @user.api_key
+    old_email_api_key = @user.email_api_key
+    Current.session = current_session
+
+    UserService.update(user: @user, actor: @user, params: {password: 'new secure password', password_confirmation: 'new secure password'})
+
+    assert Session.exists?(current_session.id)
+    refute Session.exists?(other_session.id)
+    refute LoginToken.exists?(login_token.id)
+    refute_equal old_api_key, @user.reload.api_key
+    refute_equal old_email_api_key, @user.email_api_key
   end
 
   test "new users join the configured onboarding group when account completion supplies a name" do

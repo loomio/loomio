@@ -179,6 +179,8 @@ es:
     deleted_user: Usuario Eliminado
     placeholder_name: Usuario invitado (%{hostname})
     error:
+      email_change_requires_confirmation: Solicita un cambio de correo electrónico y confírmalo desde la nueva dirección.
+      email_change_same: Introduce otra dirección de correo electrónico
       sign_in_required_html: |
         Debes estar registrado para proceder.
         <a href="/dashboard" target="_blank">Regístrate</a> y después refresca esta página para continuar.
@@ -275,6 +277,16 @@ es:
         body_html: |
           <p>La fusión de tu cuenta de usuario fue satisfactoria. En breves recibirás un email de confirmación a<strong>%{target_email}</strong>.</p>
           <p><a href="/contact" target="_blank">Contacta con nosotros</a> si tienes más preguntas.</p>
+    email_change_confirmation:
+      subject: Confirma tu dirección de correo electrónico %{site_name}
+      body: Confirma %{email} como tu nueva dirección de correo electrónico. Tu dirección actual permanecerá activa hasta que confirmes este cambio. Este enlace caduca en 24 horas.
+      confirm: Confirmar el correo
+    email_change_requested:
+      subject: Se ha solicitado un cambio de correo electrónico para tu cuenta de %{site_name}
+      body: Se solicitó el cambio de la dirección de correo electrónico de tu cuenta de %{old_email} a %{new_email}. Tu dirección actual permanecerá activa hasta que se confirme la nueva. Si no solicitaste este cambio, modifica tu contraseña.
+    email_change_completed:
+      subject: Tu dirección de correo electrónico %{site_name} ha cambiado
+      body: Tu correo electrónico de cuenta cambió de %{old_email} a %{new_email}. Si no solicitaste este cambio, ponte en contacto con el servicio de asistencia.
   email:
     common:
       or_enter_code: O, ingresa el código debajo
@@ -788,3 +800,9 @@ es:
     review_date: "**Fecha de revisión:** %{value}"
   error:
     access_denied: No tienes permiso para hacer eso
+  email_changes:
+    confirm_title: Confirmar el correo
+    confirm_body: "¿Cambiar la dirección de correo electrónico de tu cuenta a %{email}?"
+    confirm_action: Cambiar dirección de correo electrónico
+    complete_title: La dirección de correo electrónico ha cambiado.
+    complete_body: Tu dirección de correo electrónico ahora es %{email}. Puedes iniciar sesión con esta dirección.

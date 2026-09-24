@@ -16,6 +16,8 @@ class RedactUserWorker < ApplicationJob
         secret_token: User.generate_unique_secure_token,
         name: nil,
         email: nil,
+        email_change_pending: nil,
+        email_change_requested_at: nil,
         short_bio: '',
         username: nil,
         experiences: {},

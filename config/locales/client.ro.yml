@@ -1656,6 +1656,13 @@ ro:
     updated_on_sign_in: Furnizat de browserul dvs. și actualizat atunci când vă conectați
     translate_content_automatically: Traduceți automat conținutul în limba mea
     bot_account_warning: Conturile de bot nu vor fi invitate să voteze în sondaje sau să participe la discuții.
+    change_email: Schimbați adresa de e-mail
+    change_email_help: Introduceți o nouă adresă de e-mail. Adresa dvs. actuală rămâne activă până când confirmați modificarea de la noua adresă.
+    new_email_address: Adresă de e-mail nouă
+    send_confirmation_email: Trimiteți un e-mail de confirmare
+    email_confirmation_sent: E-mail de confirmare trimis
+    email_change_pending: Confirmare în așteptare pentru %{email}
+    email_change_failed: Nu s-a putut solicita o schimbare a adresei de e-mail
   text_editor:
     x_of_y_characters: "%{x} / %{y} caractere"
     select_text_to_link: Selectați textul de conectat și încercați din nou
@@ -1675,6 +1682,7 @@ ro:
     set_password_helptext: Vă rugăm să introduceți o parolă - minim 8 caractere
     set_password: Seteaza parola
     password_changed: parola ta a fost actualizata
+    sessions_and_api_keys: Schimbarea parolei deconectează celelalte sesiuni și resetează cheile API. Această sesiune rămâne conectată.
   deactivation_modal:
     introduction: 'Când vă ștergeți contul:'
     deactivate_introduction: 'Când vă dezactivați contul:'

@@ -184,6 +184,8 @@ pl:
     deleted_user: Usunięty użytkownik
     placeholder_name: Zaproszony użytkownik (%{hostname})
     error:
+      email_change_requires_confirmation: Poproś o zmianę adresu e-mail i potwierdź ją z nowego adresu
+      email_change_same: Wprowadź inny adres e-mail
       sign_in_required_html: |
         Musisz być zalogowany, aby kontynuować.
         <a href="/dashboard" target="_blank">Zaloguj się</a>, a następnie ponownie załaduj tę stronę, aby kontynuować.
@@ -282,6 +284,16 @@ pl:
         body_html: |
           <p>Łączenie kont użytkowników zakończyło się powodzeniem. Wkrótce otrzymasz wiadomość e-mail na <strong>%{target_email}</strong>z potwierdzeniem.
           <p><a href="/contact" target="_blank">Skontaktuj się z nami</a>, jeśli masz dodatkowe pytania.</p>
+    email_change_confirmation:
+      subject: Potwierdź swój adres e-mail %{site_name}
+      body: Potwierdź, że %{email} to Twój nowy adres e-mail. Twój obecny adres pozostanie aktywny do momentu potwierdzenia tej zmiany. Ten link wygaśnie za 24 godziny.
+      confirm: Potwierdź adres e-mail
+    email_change_requested:
+      subject: Zażądano zmiany adresu e-mail dla konta %{site_name}
+      body: Zgłoszono prośbę o zmianę adresu e-mail Twojego konta z %{old_email} na %{new_email}. Twój obecny adres pozostanie aktywny do momentu potwierdzenia nowego adresu. Jeśli nie prosiłeś o zmianę, zmień hasło.
+    email_change_completed:
+      subject: Twój adres e-mail %{site_name} został zmieniony
+      body: Adres e-mail Twojego konta został zmieniony z %{old_email} na %{new_email}. Jeśli nie prosiłeś o to, skontaktuj się z pomocą techniczną.
   email:
     common:
       or_enter_code: Lub wprowadź kod poniżej
@@ -791,3 +803,9 @@ pl:
     review_date: "**Data przeglądu:** %{value}"
   error:
     access_denied: Nie masz uprawnień, aby to zrobić
+  email_changes:
+    confirm_title: Potwierdź adres e-mail
+    confirm_body: Zmienić adres e-mail swojego konta na %{email}?
+    confirm_action: Zmień adres e-mail
+    complete_title: Zmieniono adres e-mail
+    complete_body: Adres e-mail Twojego konta to teraz %{email}. Możesz się zalogować za pomocą tego adresu.

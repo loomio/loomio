@@ -1691,6 +1691,13 @@ fr:
     updated_on_sign_in: Fourni par ton navigateur et mis à jour lorsque tu te connectes
     translate_content_automatically: Traduire automatiquement le contenu dans ma langue
     bot_account_warning: Les comptes de robots ne seront pas invités à voter aux sondages ni à participer aux discussions.
+    change_email: Changer l'adresse e-mail
+    change_email_help: Saisis une nouvelle adresse e-mail. Ton adresse actuelle reste active jusqu'à ce que tu confirmes le changement depuis la nouvelle adresse.
+    new_email_address: Nouvelle adresse e-mail
+    send_confirmation_email: Envoyer un e-mail de confirmation
+    email_confirmation_sent: Courriel de confirmation envoyé
+    email_change_pending: Confirmation en attente pour %{email}
+    email_change_failed: Impossible de demander une modification d'adresse e-mail
   text_editor:
     x_of_y_characters: "%{x} / %{y} caractères"
     select_text_to_link: Sélectionne le texte à lier et réessaie
@@ -1710,6 +1717,7 @@ fr:
     set_password_helptext: Entre un mot de passe - il doit contenir 8 caractères au minimum
     set_password: Définir un mot de passe
     password_changed: Ton mot de passe a été mis à jour
+    sessions_and_api_keys: Changer ton mot de passe déconnecte tes autres sessions et réinitialise tes clés API. Cette session reste active.
   deactivation_modal:
     introduction: 'Lorsque tu supprimes ton compte:'
     deactivate_introduction: 'Lorsque tu désactives ton compte :'

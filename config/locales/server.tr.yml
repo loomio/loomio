@@ -180,6 +180,8 @@ tr:
     deleted_user: Silinmiş kullanıcı
     placeholder_name: Davet edilen kullanıcı (%{hostname})
     error:
+      email_change_requires_confirmation: E-posta adresinizi değiştirmeyi talep edin ve yeni adresten onaylayın.
+      email_change_same: Farklı bir e-posta adresi girin
       sign_in_required_html: Devam etmek için oturum açmalısınız. Lütfen <a href="/dashboard" target="_blank">oturum açın</a> ve devam etmek için bu sayfayı yeniden yükleyin.
       recaptcha: Robot olmadığınızı doğrulayamadık. Lütfen tekrar deneyin!
       bad_login: Üzgünüz, bu şifre kayıtlı şifremizle eşleşmiyor
@@ -262,6 +264,16 @@ tr:
       complete_page:
         title: Birleştirme başarılı!
         body_html: <p>Kullanıcı hesaplarınızın birleştirilmesi başarılı oldu. Kısa süre içinde <strong>%{target_email}</strong> adresine bir onay e-postası alacaksınız.</p><p> Başka sorularınız varsa lütfen <a href="/contact" target="_blank">bizimle iletişime geçin</a> .</p>
+    email_change_confirmation:
+      subject: "%{site_name} e-posta adresinizi onaylayın."
+      body: Yeni hesap e-posta adresiniz olarak %{email} adresini onaylayın. Bu değişikliği onaylayana kadar mevcut adresiniz aktif kalacaktır. Bu bağlantı 24 saat sonra geçerliliğini yitirecektir.
+      confirm: E
+    email_change_requested:
+      subject: "%{site_name} hesabınız için e-posta değişikliği talep edildi."
+      body: Hesabınızın e-posta adresinin %{old_email} adresinden %{new_email} adresine değiştirilmesi için bir talep yapıldı. Yeni adres onaylanana kadar mevcut adresiniz aktif kalacaktır. Bu talebi siz yapmadıysanız, şifrenizi değiştirin.
+    email_change_completed:
+      subject: "%{site_name} e-posta adresiniz değişti."
+      body: Hesabınızın e-posta adresi %{old_email} adresinden %{new_email} adresine değiştirildi. Bu değişikliği talep etmediyseniz, destek ekibiyle iletişime geçin.
   email:
     common:
       or_enter_code: Veya aşağıdaki kodu girin
@@ -764,3 +776,9 @@ tr:
     review_date: "**İnceleme tarihi:** %{value}"
   error:
     access_denied: Bunu yapma izniniz yok.
+  email_changes:
+    confirm_title: E
+    confirm_body: Hesabınızın e-posta adresini %{email} olarak değiştirmek ister misiniz?
+    confirm_action: E-posta adresini değiştir
+    complete_title: E-posta adresi değiştirildi
+    complete_body: Hesabınızın e-posta adresi artık %{email}. Bu adresle giriş yapabilirsiniz.

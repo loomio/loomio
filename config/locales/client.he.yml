@@ -1668,6 +1668,13 @@ he:
     updated_on_sign_in: מסופק על ידי הדפדפן שלך ומעודכן בעת הכניסה
     translate_content_automatically: תרגם תוכן לשפה שלי באופן אוטומטי
     bot_account_warning: חשבונות בוט לא יוזמנו להצביע בסקרים או להשתתף בדיונים
+    change_email: שינוי כתובת דוא"ל
+    change_email_help: הזן כתובת דוא"ל חדשה. הכתובת הנוכחית שלך נשארת פעילה עד שתאשר את השינוי מהכתובת החדשה.
+    new_email_address: כתובת דוא"ל חדשה
+    send_confirmation_email: שלח אימייל אישור
+    email_confirmation_sent: נשלח אימייל אישור
+    email_change_pending: אישור ממתין עבור %{email}
+    email_change_failed: לא ניתן היה לבקש שינוי כתובת דוא"ל
   text_editor:
     x_of_y_characters: "%{x} / %{y} תווים"
     select_text_to_link: בחר טקסט לקישור ונסה שוב
@@ -1687,6 +1694,7 @@ he:
     set_password_helptext: נא להזין סיסמה - מינימום 8 תווים
     set_password: הגדר סיסמה
     password_changed: סיסמתך עודכנה
+    sessions_and_api_keys: שינוי הסיסמה שלך יגרום לניתוק מההפעלות האחרות שלך ומאפס את מפתחות ה-API שלך. הפעלת ...
   deactivation_modal:
     introduction: 'כאשר אתה מוחק את החשבון שלך:'
     deactivate_introduction: 'כאשר אתה משבית את חשבונך:'

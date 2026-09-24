@@ -183,6 +183,8 @@ zh_TW:
     deleted_user: 已刪除的使用者
     placeholder_name: 已邀請的使用者 (%{hostname})
     error:
+      email_change_requires_confirmation: 要求更改電子郵件地址，並從新地址確認。
+      email_change_same: 請輸入其他電子郵件地址
       sign_in_required_html: |
         您必須登入以繼續。
         請<a href="/dashboard" target="_blank">登入</a>然後重新整理此頁面以繼續。
@@ -281,6 +283,16 @@ zh_TW:
         body_html: |
           <p>您的使用者帳號合併成功。您很快就會在 <strong>%{target_email}</strong> 收到確認信。</p>
           <p>如果您還有其他問題的話，請<a href="/contact" target="_blank">聯絡我們</a>。</p>
+    email_change_confirmation:
+      subject: 請確認您的 %{site_name} 電子郵件地址
+      body: 請確認 %{email} 為您的新帳戶信箱地址。在您確認此變更之前，您目前的郵箱地址將繼續有效。此連結將在 24 小時後失效。
+      confirm: 確認電子郵件地址
+    email_change_requested:
+      subject: 您已申請更改 %{site_name} 帳戶的電子郵件地址
+      body: 您已申請將您的帳戶信箱從 %{old_email} 變更為 %{new_email}。在新的郵箱地址確認之前，您目前的郵箱地址仍然有效。如果您並未申請更改郵件地址，請修改您的密碼。
+    email_change_completed:
+      subject: 您的 %{site_name} 電子郵件地址已更改
+      body: 您的帳戶郵箱已從 %{old_email} 變更為 %{new_email}。如果您未申請更改，請聯絡客服。
   email:
     common:
       or_enter_code: 或是在下方輸入代碼
@@ -794,3 +806,9 @@ zh_TW:
     review_date: "**審核日期：** %{value}"
   error:
     access_denied: 你沒有權限這樣做。
+  email_changes:
+    confirm_title: 確認電子郵件地址
+    confirm_body: 將您的帳戶電子郵件地址更改為 %{email}？
+    confirm_action: 更改電子郵件地址
+    complete_title: 電子郵件地址已更改
+    complete_body: 您的帳戶信箱地址現在是 %{email}。您可以使用此位址登入。

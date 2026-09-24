@@ -1787,6 +1787,13 @@ en:
     helptext: "%{name} will be emailed your name, email address, and message"
     email_sent: Email sent to %{name}
   profile_page:
+    change_email: Change email address
+    change_email_help: Enter a new email address. Your current address stays active until you confirm the change from the new address.
+    new_email_address: New email address
+    send_confirmation_email: Send confirmation email
+    email_confirmation_sent: Confirmation email sent
+    email_change_pending: Confirmation pending for %{email}
+    email_change_failed: Could not request an email change
     translate_content_automatically: Translate content to my language automatically
     autodetect_time_zone: Autodetect time zone
     account_is_bot: This is a bot account
@@ -1841,6 +1848,7 @@ en:
   change_password_form:
     set_password_title: Set your password
     set_password_helptext: Please enter a password - minimum 8 characters
+    sessions_and_api_keys: Changing your password signs out your other sessions and resets your API keys. This session stays signed in.
     set_password: Set password
     password_changed: Your password has been updated
   passkey_settings:

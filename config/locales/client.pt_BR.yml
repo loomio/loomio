@@ -1691,6 +1691,13 @@ pt_BR:
     updated_on_sign_in: Fornecido pelo seu navegador e atualizado quando você faz login
     translate_content_automatically: Traduzir conteúdo para o meu idioma automaticamente
     bot_account_warning: Contas de bots não serão convidadas a votar em enquetes ou participar de discussões.
+    change_email: Alterar endereço de e-mail
+    change_email_help: Insira um novo endereço de e-mail. Seu endereço atual permanecerá ativo até que você confirme a alteração para o novo endereço.
+    new_email_address: Novo endereço de e-mail
+    send_confirmation_email: Enviar e-mail de confirmação
+    email_confirmation_sent: E-mail de confirmação enviado
+    email_change_pending: Confirmação pendente para %{email}
+    email_change_failed: Não foi possível solicitar a alteração do endereço de e-mail.
   text_editor:
     x_of_y_characters: "%{x} / %{y} caracteres"
     select_text_to_link: Selecione o texto para vincular e tente novamente
@@ -1710,6 +1717,7 @@ pt_BR:
     set_password_helptext: Digite uma senha com pelo menos 8 caracteres
     set_password: Configurar a senha
     password_changed: Sua senha foi atualizada
+    sessions_and_api_keys: Alterar sua senha encerra suas outras sessões e redefine suas chaves de API. Esta sessão permanece conectada.
   deactivation_modal:
     introduction: 'Quando você deletar sua conta:'
     deactivate_introduction: 'Quando você desativa sua conta:'

@@ -18,4 +18,14 @@ class RedactUserWorkerTest < ActiveSupport::TestCase
 
     assert_nil user.reload.webauthn_id
   end
+
+  test "removes an unconfirmed replacement email during redaction" do
+    user = User.create!(name: 'Redacted User', email: 'redacted-email@example.com', email_verified: true,
+                        email_change_pending: 'pending@example.com', email_change_requested_at: Time.current)
+
+    RedactUserWorker.perform_now(user.id, user.id, false)
+
+    assert_nil user.reload.email_change_pending
+    assert_nil user.email_change_requested_at
+  end
 end

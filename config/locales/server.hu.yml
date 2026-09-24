@@ -180,6 +180,8 @@ hu:
     deleted_user: Törölt felhasználó
     placeholder_name: Meghívott felhasználó (%{hostname})
     error:
+      email_change_requires_confirmation: E-mail cím módosításának kérése és megerősítése az új címről
+      email_change_same: Adjon meg egy másik e-mail címet
       sign_in_required_html: |
         A folytatáshoz be kell jelentkeznie.
         Kérem <a href="/dashboard" target="_blank">jelentkezzen be</a> majd töltse be újra az oldalt a folytatáshoz.
@@ -268,6 +270,16 @@ hu:
       complete_page:
         title: Sikeres összevonás!
         body_html: <p>A felhasználói fiókok egyesítése sikeres volt. Hamarosan kap egy megerősítő e-mailt a <strong>%{target_email}</strong> címre.</p><p> Kérjük <a href="/contact" target="_blank">, forduljon hozzánk</a> , ha további kérdése van.</p>
+    email_change_confirmation:
+      subject: Erősítse meg a(z) %{site_name} e-mail címét
+      body: Erősítse meg a(z) %{email} címet új fiókja e-mail címeként. Jelenlegi címe addig marad aktív, amíg ezt a módosítást meg nem erősíti. Ez a link 24 óra múlva lejár.
+      confirm: E-mail cím megerősítése
+    email_change_requested:
+      subject: E-mail cím módosítása kérve a %{site_name} fiókodhoz
+      body: Kérés érkezett a fiókodhoz tartozó e-mail cím %{old_email} címről %{new_email} címre történő módosítására. A jelenlegi címed aktív marad, amíg az új címet meg nem erősítik. Ha nem kérted ezt, változtasd meg a jelszavadat.
+    email_change_completed:
+      subject: A(z) %{site_name} e-mail címed megváltozott
+      body: A fiókodhoz tartozó e-mail cím megváltozott %{old_email}-ről %{new_email}-re. Ha nem kérted ezt, vedd fel a kapcsolatot az ügyfélszolgálattal.
   email:
     common:
       or_enter_code: Vagy írja be az alábbi kódot
@@ -776,3 +788,9 @@ hu:
     review_date: "**Felülvizsgálat dátuma:** %{value}"
   error:
     access_denied: Nincs engedélyed erre
+  email_changes:
+    confirm_title: E-mail cím megerősítése
+    confirm_body: 'Módosítja a fiókjához tartozó e-mail címet erre: %{email}?'
+    confirm_action: E-mail cím módosítása
+    complete_title: E-mail cím megváltozott
+    complete_body: A fiókodhoz tartozó e-mail cím mostantól %{email}. Ezzel a címmel bejelentkezhetsz.

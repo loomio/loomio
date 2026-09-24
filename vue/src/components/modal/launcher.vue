@@ -21,6 +21,7 @@ export default
     EmailToGroupSettings: asyncComponent(() => import('@/components/group/email_to_group_settings')),
     MemberEmailAliasModal: asyncComponent(() => import('@/components/group/member_email_alias_modal')),
     ChangePasswordForm: asyncComponent(() => import('@/components/profile/change_password_form')),
+    ChangeEmailForm: asyncComponent(() => import('@/components/profile/change_email_form')),
     CredentialPrompt: asyncComponent(() => import('@/components/profile/credential_prompt')),
     AccountCompletion: asyncComponent(() => import('@/components/profile/account_completion')),
     MergeAccountsModal: asyncComponent(() => import('@/components/user/merge_accounts_modal')),
