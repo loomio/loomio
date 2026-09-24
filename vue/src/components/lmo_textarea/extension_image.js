@@ -9,6 +9,7 @@ import {
 
 let count = 0;
 import FileUploader from '@/shared/services/file_uploader'
+import { clipboardUploadFiles } from '@/shared/helpers/clipboard_upload_files.mjs'
 
 export const inputRegex = /!\[(.+|:?)]\((\S+)(?:(?:\s+)["'](\S+)["'])?\)/
 
@@ -220,18 +221,13 @@ export const CustomImage = Image.extend({
         props: {
           handleDOMEvents: {
             paste(view, event) {
-              const items = Array.from(event.clipboardData.items)
+              const files = clipboardUploadFiles(event.clipboardData)
 
-              if (items.filter(item => item.getAsFile()).length == 0) {
+              if (files.length === 0) {
                 return
               }
 
               event.preventDefault()
-              const files = items.map(item =>
-                new File([item.getAsFile()],
-                         event.clipboardData.getData('text/plain') || Date.now(),
-                         {lastModified: Date.now(), type: item.type})
-              )
               const coordinates = null;
               handleUploads({files, view, attachFile, attachImageFile, coordinates})
             },

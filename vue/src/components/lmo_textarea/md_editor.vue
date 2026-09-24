@@ -8,6 +8,7 @@ import MentionNotificationsCount from '@/components/common/mention_notifications
 import { useCommonMentioning, useMdMentioning } from './composables/useMentioning';
 import { useAttaching } from './composables/useAttaching';
 import { useI18n } from 'vue-i18n';
+import { clipboardUploadFiles } from '@/shared/helpers/clipboard_upload_files.mjs';
 
 const props = defineProps({
   model: Object,
@@ -102,16 +103,12 @@ const convertToHtmlHandler = () => {
 };
 
 const onPaste = (event) => {
-  const items = Array.from(event.clipboardData.items);
+  const files = clipboardUploadFiles(event.clipboardData);
 
-  if (items.filter(item => item.getAsFile()).length === 0) { return; }
+  if (files.length === 0) { return; }
 
   event.preventDefault();
-  handleUploads(items.map(item => {
-    return new File([item.getAsFile()],
-             event.clipboardData.getData('text/plain') || Date.now(),
-             {lastModified: Date.now(), type: item.type});
-  }));
+  handleUploads(files);
 };
 
 const handleUploads = (uploadFiles) => {

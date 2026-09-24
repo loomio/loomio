@@ -794,3 +794,4 @@ en:
       people_have_voted: "%{nom} of %{dnom} people have participated (%{pct}%)"
   upload:
     file_too_large: "File is too large. Maximum upload size is %{limit}."
+    filename_required: File name is required
