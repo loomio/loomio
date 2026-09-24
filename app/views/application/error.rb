@@ -9,7 +9,7 @@ class Views::Application::Error < Views::BasicLayout
   def view_template
     main(class: "sistema") do
       h1 { plain @title }
-      raw @body.html_safe
+      raw sanitize(@body, tags: %w[a], attributes: %w[href])
     end
   end
 end
