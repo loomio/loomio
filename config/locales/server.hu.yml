@@ -746,6 +746,7 @@ hu:
   merge_users:
     not_target_user: Az egyesítés megerősítéséhez célfiókként kell bejelentkeznie.
   thread_markdown:
+    comments: Megjegyzések
     poll: Szavazás
     no_activity: Még nincsenek hozzászólások, szavazások, szavazatok vagy eredmények
     thread_title: "%{type}: %{title} · %{author} %{timestamp}"

@@ -764,6 +764,7 @@ pt_BR:
   merge_users:
     not_target_user: Você precisa estar conectado com a conta de destino para confirmar a fusão.
   thread_markdown:
+    comments: Comentários
     poll: Enquete
     no_activity: Ainda não há comentários, enquetes, votos ou resultados.
     thread_title: "%{type}: %{title} · %{author} %{timestamp}"

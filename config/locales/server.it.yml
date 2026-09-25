@@ -745,6 +745,7 @@ it:
   merge_users:
     not_target_user: Per confermare l'unione, è necessario aver effettuato l'accesso con l'account di destinazione.
   thread_markdown:
+    comments: Commenti
     poll: Sondaggio
     no_activity: Nessun commento, sondaggio, voto o risultato ancora
     thread_title: "%{type}: %{title} · %{author} %{timestamp}"

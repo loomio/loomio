@@ -734,6 +734,7 @@ sv:
   merge_users:
     not_target_user: Du måste vara inloggad som målkonto för att bekräfta en sammanslagning.
   thread_markdown:
+    comments: Kommentarer
     poll: Röstning
     no_activity: Inga kommentarer, omröstningar, röster eller resultat ännu
     thread_title: "%{type}: %{title} · %{author} %{timestamp}"

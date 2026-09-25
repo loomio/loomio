@@ -766,6 +766,7 @@ de:
   merge_users:
     not_target_user: Du musst als das Zielkonto angemeldet sein, um eine Zusammenführung zu bestätigen.
   thread_markdown:
+    comments: Kommentare
     poll: Umfrage
     no_activity: Bisher keine Kommentare, Umfragen, Abstimmungen oder Ergebnisse.
     thread_title: "%{type}: %{title} · %{author} %{timestamp}"

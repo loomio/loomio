@@ -748,6 +748,7 @@ uk:
   merge_users:
     not_target_user: Щоб підтвердити об’єднання, ви повинні ввійти як цільовий обліковий запис.
   thread_markdown:
+    comments: Коментарі
     poll: Опитування
     no_activity: Поки що немає коментарів, опитувань, голосувань чи результатів
     thread_title: "%{type}: %{title} · %{author} %{timestamp}"

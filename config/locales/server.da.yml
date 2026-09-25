@@ -740,6 +740,7 @@ da:
   merge_users:
     not_target_user: Du skal være logget ind som målkontoen for at bekræfte en fletning.
   thread_markdown:
+    comments: Kommentarer
     poll: Afstemning
     no_activity: Ingen kommentarer, afstemninger, stemmer eller resultater endnu
     thread_title: "%{type}: %{title} · %{author} %{timestamp}"

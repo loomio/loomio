@@ -736,6 +736,7 @@ ca:
   merge_users:
     not_target_user: Heu d'haver iniciat la sessió com a compte de destinació per confirmar una fusió.
   thread_markdown:
+    comments: Comentaris
     poll: Enquesta
     no_activity: Encara no hi ha comentaris, enquestes, vots ni resultats
     thread_title: "%{type}: %{title} · %{author} %{timestamp}"
