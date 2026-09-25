@@ -95,23 +95,6 @@ class StanceService
     stance.reload
   end
 
-  def self.set_weights(poll:, weights_by_stance_id:, actor:)
-    raise ActionController::ParameterMissing, :weights if weights_by_stance_id.empty?
-
-    poll.with_lock do
-      actor.ability.authorize! :set_weight, Stance.new(poll: poll)
-      stance_ids = poll.stances.latest.where(id: weights_by_stance_id.keys).pluck(:id)
-      raise ActiveRecord::RecordNotFound unless stance_ids.length == weights_by_stance_id.length
-
-      weight_by_id = Arel::Nodes::Case.new(Stance.arel_table[:id])
-      weights_by_stance_id.each { |id, weight| weight_by_id.when(id.to_i).then(BigDecimal(weight.to_s)) }
-      poll.stances.latest.where(id: stance_ids).update_all(weight: weight_by_id)
-      poll.update_counts!
-    end
-
-    poll
-  end
-
   # Reset every current voter, including voters outside the visible page, and
   # recalculate the tally once within the same poll lock.
   def self.reset_weights(poll:, actor:, mode: 'value', weight: nil)

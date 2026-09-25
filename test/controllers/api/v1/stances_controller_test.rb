@@ -78,6 +78,37 @@ class Api::V1::StancesControllerTest < ActionController::TestCase
     assert_equal second.fetch('users').map { |user| user.fetch('id').to_s }.sort, second.fetch('meta').fetch('weights_by_user_id').keys.sort
   end
 
+  test "voter management lists newly added voters first even after another voter revises a vote" do
+    new_voter = users(:alien)
+    @group.add_member!(new_voter)
+    PollService.invite(poll: @poll, actor: @admin, params: {recipient_user_ids: [new_voter.id], notify_recipients: false})
+    sign_in @admin
+
+    get :users, params: {poll_id: @poll.id}
+    assert_equal new_voter.id, JSON.parse(response.body).fetch('users').first.fetch('id')
+
+    older_stance = @poll.stances.latest.where.not(participant_id: new_voter.id).order(:id).first
+    replacement = older_stance.build_replacement
+    older_stance.update!(latest: false)
+    replacement.save!
+
+    get :users, params: {poll_id: @poll.id}
+    assert_equal new_voter.id, JSON.parse(response.body).fetch('users').first.fetch('id')
+  end
+
+  test "voter management lists newly added anonymous poll voters first" do
+    poll = create_detached_anonymous_poll
+    new_voter = users(:alien)
+    @group.add_member!(new_voter)
+    PollService.invite(poll: poll, actor: @admin, params: {recipient_user_ids: [new_voter.id], notify_recipients: false})
+    sign_in @admin
+
+    get :users, params: {poll_id: poll.id}
+
+    assert_response :success
+    assert_equal new_voter.id, JSON.parse(response.body).fetch('users').first.fetch('id')
+  end
+
   test "non coordinator cannot page through voter management" do
     sign_in users(:alien)
 
@@ -137,82 +168,6 @@ class Api::V1::StancesControllerTest < ActionController::TestCase
     patch :set_weight, params: {id: stance.id, weight: 0}
 
     assert_response :forbidden
-    assert_equal 1, stance.reload.weight
-  end
-
-  test "poll admin updates all stance weights atomically before voting opens" do
-    @poll.update_columns(opened_at: nil, closing_at: nil, vote_weights_enabled: true)
-    stances = @poll.stances.latest.limit(2).to_a
-    sign_in @admin
-
-    patch :set_weights, params: {
-      poll_id: @poll.id,
-      weights: {stances.first.id => 0, stances.second.id => 2}
-    }
-
-    assert_response :success
-    assert_equal [0, 2], stances.map { |stance| stance.reload.weight.to_i }
-  end
-
-  test "poll admin updates cast vote weights in one statement" do
-    @poll.update_column(:vote_weights_enabled, true)
-    stances = @poll.stances.latest.limit(2).to_a
-    option = @poll.poll_options.first
-    stances.first.update!(cast_at: Time.current,
-                          stance_choices_attributes: [{poll_option_id: option.id, score: 1}])
-    sign_in @admin
-    stance_updates = []
-    subscriber = ->(*args) do
-      sql = args.last[:sql]
-      stance_updates << sql if sql.match?(/\AUPDATE\s+"?stances"?\s/i)
-    end
-
-    ActiveSupport::Notifications.subscribed(subscriber, 'sql.active_record') do
-      patch :set_weights, params: {
-        poll_id: @poll.id, weights: {stances.first.id => 2, stances.second.id => 0.5}
-      }
-    end
-
-    assert_response :success
-    assert_equal 1, stance_updates.size
-    assert_equal BigDecimal('2'), stances.first.reload.weight
-    assert_equal BigDecimal('0.5'), stances.second.reload.weight
-    assert_equal BigDecimal('2'), option.reload.total_score
-  end
-
-  test "bulk stance weight update rejects nested values" do
-    @poll.update_columns(opened_at: nil, closing_at: nil, vote_weights_enabled: true)
-    stance = @poll.stances.latest.first
-    sign_in @admin
-
-    assert_raises(ArgumentError) do
-      patch :set_weights, params: {poll_id: @poll.id, weights: {stance.id => {weight: 2}}}
-    end
-    assert_equal 1, stance.reload.weight
-  end
-
-  test "bulk stance weight update rolls back when one stance belongs to another poll" do
-    @poll.update_columns(opened_at: nil, closing_at: nil, vote_weights_enabled: true)
-    stance = @poll.stances.latest.first
-    discussions(:public_discussion).topic.group.update!(vote_weights_allowed: true)
-    other_poll = Poll.create!(
-      title: 'Other poll',
-      poll_type: 'proposal',
-      topic: discussions(:public_discussion).topic,
-      author: @admin,
-      vote_weights_enabled: true,
-      poll_option_names: ['Agree', 'Disagree'],
-      closing_at: 1.day.from_now
-    )
-    other_stance = Stance.create!(poll: other_poll, participant: users(:alien))
-    sign_in @admin
-
-    patch :set_weights, params: {
-      poll_id: @poll.id,
-      weights: {stance.id => 0, other_stance.id => 2}
-    }
-
-    assert_response :not_found
     assert_equal 1, stance.reload.weight
   end
 

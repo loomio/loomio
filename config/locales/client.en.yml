@@ -2169,6 +2169,7 @@ en:
     voter_name: Name
     voter_email: Email
     email_addresses_for_group_admins: Email addresses are shown only to group admins to distinguish people.
+    email_addresses_only_for_group_admins: Email addresses are shown only to group admins
     vote_cast: Vote cast
     voted: Voted
     not_voted: Not voted
@@ -2439,6 +2440,7 @@ en:
     upgrade: 'To start a subgroup, you''ll need to <a class="text-decoration-underline" href="%{url}" target="_blank">upgrade your Loomio subscription.</a> '
   poll_common_action_panel:
     variable_vote_weights_explanation: This poll uses variable vote weights, allowing one person's vote to influence the outcome more than another person's according to the assigned vote weight
+    votes_have_different_weights: Votes in this poll have different weights, so some count more than others.
     from_the_group: From the group
     default_templates: Default templates
     default_template: Default template
@@ -2625,25 +2627,36 @@ en:
     success: Successfully deleted
   poll_common_form:
     voters: Voters
+    find_or_invite_voters: Find or invite voters
     manage_voters: Manage voters
     search_voters: Search voters
+    close_search: Close search
     remove_voter: Remove voter
+    remove_voter_named: Remove %{name} from poll
+    remove_voter_and_any_vote_confirmation: Remove %{name} from this poll? This also removes any vote they cast.
     voter_page_count: "%{first}–%{last} of %{total}"
     vote_weights: Vote weights
     vote_weights_description: Assign each voter a vote weight, so some votes count more than others. Results show both the number of voters and the weighted score.
+    give_voters_different_weights_description: Give voters different weights. Results show the number of voters and the weighted score.
     use_vote_weights: Use vote weights
     vote_weights_off_warning: Turning off vote weights sets every voter to weight 1 and removes poll-specific weights
     issued_vote_weights_will_change: Weights for votes already issued will change.
     vote_weights_on_group: Turning on vote weights copies current group member weights. Other voters get weight 1.
     vote_weights_on_direct: Turning on vote weights sets every voter to weight 1
     vote_weight_for: Vote weight for %{name}
+    edit_vote_weight: Edit vote weight
+    edit_vote_weight_for: Edit vote weight for %{name} (currently %{weight})
     save_vote_weights: Save vote weights
     vote_weights_updated: Vote weights updated
     weight_for_all: Weight for all
     set_all_vote_weights: Set all weights
+    set_all_vote_weights_title: Set all vote weights
+    set_all_vote_weights_search_note: This changes the vote weights of all voters in the poll, including those outside your search results
     set_all: Set all
     use_member_vote_weights: Use current member vote weights
+    set_each_member_default_vote_weight: Set each member's default vote weight
     set_one_vote_weight: Set every voter to one weight
+    set_all_weights_the_same: Set all weights the same
     member_vote_weights_hint: Voters without a current group membership get weight 1
     anonymous_votes_are_stored_separately_from_voter_identities_description: Anonymous votes are stored separately from voter identities. Results appear after voting closes. Voters cannot add reasons, review their vote after submitting it, or change their vote
     quorum: Quorum
@@ -2745,6 +2758,7 @@ en:
     add_voters: Add voters
     notify_invitees: Send notifications
     no_notifications_warning: Voters will not be notified. This is useful if you're running a lot of polls and plan to notify everyone later on.
+    voters_will_not_be_notified: Voters will not be notified. Let them know about the poll another way.
     count_voters_added: "%{count} voters added"
     notify_voters_when_voting_opens: Notify voters when voting opens
     voters_notified_when_opens: Voters will be notified when voting opens

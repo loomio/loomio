@@ -64,15 +64,24 @@ class Api::V1::AnnouncementsController < Api::V1::RestfulController
   def search
     model = target_model
     UserInviter.authorize_recipient_discovery!(model: model, actor: current_user)
+    if model.is_a?(Poll)
+      current_user.ability.authorize!(params[:existing_only].present? ? :remind : :add_voters, model)
+    end
 
     # if target model has no groups, no discussions, then draw from users groups and guest threads
     self.collection = if params[:existing_only]
       model.members.invitable_search(params[:q]).limit(50)
     else
+      excluded_user_ids = if model.is_a?(Poll) && params[:exclude_members].present?
+        model.detached_anonymous? ? model.anonymous_poll_voters.select(:voter_id) : model.stances.latest.select(:participant_id)
+      else
+        []
+      end
       UserQuery.invitable_search(
         model: model,
         actor: current_user,
-        q: params[:q]
+        q: params[:q],
+        exclude_user_ids: excluded_user_ids
       )
     end
     respond_with_collection serializer: AuthorSerializer, root: :users

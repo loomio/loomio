@@ -120,7 +120,7 @@ watch([name, voteFilter], () => {
     template(v-if="canVerifyParticipants")
       p.text-medium-emphasis.my-3(v-if="receiptsMeta?.participation_status_visible") {{ t('poll_receipts_page.participation_records_explanation') }}
       p.text-medium-emphasis.my-3(v-else-if="receiptsLoaded") {{ t('poll_receipts_page.participation_status_requires_min_votes', { count: receiptsMeta.participation_status_votes_min }) }}
-      p.text-medium-emphasis.my-3(v-if="receiptsMeta?.show_voter_email") {{ t('poll_receipts_page.email_addresses_for_group_admins') }}
+      p.text-medium-emphasis.my-3(v-if="receiptsMeta?.show_voter_email") {{ t('poll_receipts_page.email_addresses_only_for_group_admins') }}
       v-alert.my-3(v-if="receiptsLoaded && receiptsMeta.voters_count > 0 && !receipts.length" type="error") {{ t('poll_receipts_page.no_receipts') }}
       v-text-field.poll-common-votes-panel__search.my-3(v-model="name" :label="t('poll_common_votes_panel.name_or_username')" density="compact" hide-details clearable)
       v-table(v-if="receiptsLoaded" density="comfortable")
@@ -151,7 +151,7 @@ watch([name, voteFilter], () => {
             td {{ receipt.invited_on }}
     p.text-medium-emphasis.my-4(v-else) {{ t('poll_common_votes_panel.participation_records_restricted') }}
   template(v-else)
-    p.text-medium-emphasis.my-3(v-if="showVoterEmail") {{ t('poll_receipts_page.email_addresses_for_group_admins') }}
+    p.text-medium-emphasis.my-3(v-if="showVoterEmail") {{ t('poll_receipts_page.email_addresses_only_for_group_admins') }}
     .d-flex.flex-wrap.ga-2.my-3
       v-select.poll-common-votes-panel__filter(:items="pollOptionItems" :label="t('common.option')" v-model="voteFilter" density="compact" hide-details)
       v-text-field.poll-common-votes-panel__search(v-model="name" :label="t('poll_common_votes_panel.name_or_username')" density="compact" hide-details clearable)

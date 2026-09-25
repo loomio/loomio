@@ -568,6 +568,50 @@ class Api::V1::AnnouncementsControllerTest < ActionController::TestCase
     }.merge(extra), actor: @admin)
   end
 
+  test "poll invite search excludes existing voters when requested" do
+    poll = create_test_poll
+    voter = users(:user)
+    PollService.invite(poll: poll, actor: @admin, params: {recipient_user_ids: [voter.id], notify_recipients: false})
+
+    get :search, params: {poll_id: poll.id, q: voter.username, exclude_members: 1}
+
+    assert_response :success
+    refute_includes JSON.parse(response.body).fetch('users').pluck('id'), voter.id
+
+    get :search, params: {poll_id: poll.id, q: voter.username}
+
+    assert_includes JSON.parse(response.body).fetch('users').pluck('id'), voter.id
+  end
+
+  test "anonymous poll invite search excludes existing voters when requested" do
+    poll = create_test_poll(anonymous: true)
+    voter = users(:user)
+    PollService.invite(poll: poll, actor: @admin, params: {recipient_user_ids: [voter.id], notify_recipients: false})
+
+    get :search, params: {poll_id: poll.id, q: voter.username, exclude_members: 1}
+
+    assert_response :success
+    refute_includes JSON.parse(response.body).fetch('users').pluck('id'), voter.id
+  end
+
+  test "anonymous poll voter filtering is denied to ordinary participants" do
+    poll = create_test_poll(anonymous: true)
+    PollService.invite(poll: poll, actor: @admin, params: {recipient_user_ids: [users(:user).id], notify_recipients: false})
+    sign_in users(:user)
+
+    get :search, params: {poll_id: poll.id, q: @admin.username, exclude_members: 1}
+
+    assert_response :forbidden
+
+    get :search, params: {poll_id: poll.id, q: @admin.username}
+
+    assert_response :forbidden
+
+    get :search, params: {poll_id: poll.id, q: @admin.username, existing_only: 1}
+
+    assert_response :forbidden
+  end
+
   test "audience voters works for anonymous polls" do
     poll = create_test_poll(anonymous: true, specified_voters_only: false)
     get :audience, params: {poll_id: poll.id, recipient_audience: 'voters'}

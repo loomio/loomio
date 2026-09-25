@@ -35,28 +35,30 @@ export default {
       saving: false,
       loading: false,
       initialRecipients: [],
-      actionNames: [],
-      service: StanceService,
       query: '',
+      searchOpen: false,
       message: '',
       stanceIdsByUserId: {},
       weightsByUserId: {},
-      weightsSavedByUserId: {},
       weightsSaving: false,
+      weightUser: null,
+      weightValue: '',
+      weightDialog: false,
+      removeUser: null,
+      removeDialog: false,
+      removing: false,
       resetWeight: '1',
       weightMode: 'membership',
       setAllDialog: false,
       voterTotal: 0,
       page: 1,
-      per: 20,
+      per: 50,
       fetchSequence: 0
     };
   },
 
   mounted() {
     this.poll.notifyRecipients = !(this.poll.openingAt && !this.poll.openedAt);
-    this.actionNames = this.poll.detachedAnonymousVoting() ? [] : ['revoke'];
-
     this.fetchStances();
     this.updateStances();
 
@@ -68,7 +70,6 @@ export default {
 
   computed: {
     isScheduled() { return this.poll.openingAt && !this.poll.openedAt; },
-    wipOrEmpty() { if (this.poll.closingAt) { return ''; } else { return 'wip_'; } },
     someRecipients() {
       return this.poll.recipientAudience ||
       this.poll.recipientUserIds.length ||
@@ -78,11 +79,8 @@ export default {
     canManageWeights() {
       return this.poll.voteWeightsEnabled && !this.poll.closedAt && this.poll.adminsInclude(Session.user());
     },
-    weightsDirty() {
-      return Object.keys(this.weightsByUserId).some(id => Number(this.weightsByUserId[id]) !== Number(this.weightsSavedByUserId[id]));
-    },
-    weightsValid() {
-      return Object.values(this.weightsByUserId).every(voteWeightValid);
+    canRemoveVoters() {
+      return !this.poll.detachedAnonymousVoting() && this.poll.adminsInclude(Session.user());
     },
     canUseMemberWeights() { return Boolean(this.poll.groupId); },
     totalPages() { return Math.max(1, Math.ceil(this.voterTotal / this.per)); },
@@ -96,20 +94,18 @@ export default {
       const group = this.poll.group();
       return Boolean(group && user.delegates && user.delegates[group.id]);
     },
-    performableActions(poll, user) {
-      return this.actionNames.filter(name => this.canPerform(name, poll, user))
+    openWeightDialog(user) {
+      this.weightUser = user;
+      this.weightValue = this.weightsByUserId[user.id];
+      this.weightDialog = true;
     },
-    saveWeights() {
-      const weights = {};
-      Object.keys(this.weightsByUserId).forEach(userId => {
-        if (Number(this.weightsByUserId[userId]) !== Number(this.weightsSavedByUserId[userId])) {
-          weights[this.stanceIdsByUserId[userId]] = this.weightsByUserId[userId];
-        }
-      });
-
+    saveWeight() {
+      if (this.weightsSaving || !voteWeightValid(this.weightValue)) return;
+      const user = this.weightUser;
       this.weightsSaving = true;
-      Records.remote.patch('stances/set_weights', {poll_id: this.poll.id, weights}).then(() => Records.polls.remote.fetchById(this.poll.id)).then(() => {
-        this.weightsSavedByUserId = Object.assign({}, this.weightsByUserId);
+      Records.remote.patch(`stances/${this.stanceIdsByUserId[user.id]}/set_weight`, {weight: this.weightValue}).then(() => Records.polls.remote.fetchById(this.poll.id)).then(() => {
+        this.weightsByUserId[user.id] = this.weightValue;
+        this.weightDialog = false;
         Flash.success('poll_common_form.vote_weights_updated');
       }).catch(error => {
         Flash.fromServer(error);
@@ -127,25 +123,28 @@ export default {
       if (this.weightMode === 'value') params.weight = this.resetWeight;
       Records.remote.patch('stances/reset_weights', params).then(() => Records.polls.remote.fetchById(this.poll.id)).then(() => {
         this.weightsByUserId = {};
-        this.weightsSavedByUserId = {};
         this.fetchStances();
         this.setAllDialog = false;
         Flash.success('poll_common_form.vote_weights_updated');
       }).catch(error => Flash.fromServer(error)).finally(() => { this.weightsSaving = false; });
     },
-    canPerform(action, poll, user) {
-      switch (action) {
-        case 'revoke':
-          return poll.adminsInclude(Session.user());
-      }
+    openRemoveDialog(user) {
+      this.removeUser = user;
+      this.removeDialog = true;
     },
 
-    perform(action, poll, user) {
-      this.service[action].perform(poll, user).then(() => {
+    removeVoter() {
+      const user = this.removeUser;
+      this.removing = true;
+      StanceService.revoke.perform(this.poll, user).then(() => {
         delete this.stanceIdsByUserId[user.id];
         delete this.weightsByUserId[user.id];
-        delete this.weightsSavedByUserId[user.id];
         this.fetchStances();
+        this.removeDialog = false;
+      }).catch(error => {
+        Flash.fromServer(error);
+      }).finally(() => {
+        this.removing = false;
       });
     },
 
@@ -185,6 +184,7 @@ export default {
     },
 
     newQuery(query) {
+      if (this.query === query) return;
       this.query = query;
       this.page = 1;
       this.userIds = [];
@@ -192,6 +192,16 @@ export default {
       this.voterTotal = 0;
       this.loading = true;
       this.fetchStances();
+    },
+
+    openSearch() {
+      this.searchOpen = true;
+      this.$nextTick(() => document.getElementById('poll-voter-search').focus());
+    },
+
+    closeSearch() {
+      this.searchOpen = false;
+      this.newQuery('');
     },
 
     changePage(page) {
@@ -229,7 +239,6 @@ export default {
           Object.assign(this.stanceIdsByUserId, data.meta.stance_ids_by_user_id || {});
           Object.entries(data.meta.weights_by_user_id || {}).forEach(([id, weight]) => {
             if (!(id in this.weightsByUserId)) this.weightsByUserId[id] = String(weight);
-            this.weightsSavedByUserId[id] = String(weight);
           });
         }
         this.userIds = map(data.users, 'id');
@@ -242,56 +251,62 @@ export default {
     } , 300),
 
     updateStances() {
-      this.users = Records.users.findByIds(this.userIds).sort((a, b) => a.id - b.id);
+      this.users = this.userIds.map(id => Records.users.findById(id));
     }
   }
 };
 </script>
 
 <template lang="pug">
-v-card.poll-members-form(:title="t('poll_common_form.voters')")
+v-card.poll-members-form(:title="t('poll_common_form.manage_voters')" style="height: 760px; max-height: 90vh; flex: none; display: flex; flex-direction: column; overflow-y: auto")
   template(v-slot:append)
+    help-btn.text-medium-emphasis.mr-2(path="en/user_manual/polls/inviting_people#add-voters-to-the-poll" label="common.user_manual" variant="text")
     dismiss-modal-button
   .px-4.pt-4
-    h2.text-title-large(v-if="!poll.closedAt") {{ t('poll_common_form.add_voters') }}
     recipients-autocomplete(
       v-if="!poll.closedAt"
-      :label="poll.notifyRecipients ? $t('announcement.form.'+wipOrEmpty+'poll_announced.helptext') : $t('poll_common_form.who_may_vote', {poll_type: poll.translatedPollType()})"
+      :label="t('poll_common_form.find_or_invite_voters')"
       :placeholder="$t('announcement.form.placeholder')"
       :model="poll"
       :reset="reset"
       :excludedAudiences="['voters', 'undecided_voters', 'non_voters', 'decided_voters']"
       :excludedUserIds="userIds"
       :initialRecipients="initialRecipients"
+      hideEmptyResults
+      preserveSearchOnBlur
+      @update:search="newQuery"
       includeActor
       :excludeMembers="true")
-
-    .d-flex.align-center(v-if="!poll.closedAt && !isScheduled")
-      v-checkbox(:disabled="!someRecipients" :label="$t('poll_common_form.notify_invitees')" v-model="poll.notifyRecipients")
-      v-spacer
-      v-btn.poll-members-form__submit(color="primary" :disabled="!someRecipients" :loading="saving" @click="inviteRecipients" )
-        span(v-t="'common.action.invite'" v-if="poll.notifyRecipients")
-        span(v-t="'poll_common_form.add_voters'" v-else)
-    .d-flex.align-center(v-if="!poll.closedAt && isScheduled")
-      v-spacer
-      v-btn.poll-members-form__submit(color="primary" :disabled="!someRecipients" :loading="saving" @click="inviteRecipients" )
-        span(v-t="'poll_common_form.add_voters'")
     v-alert(density="compact" type="info" text v-if="!poll.closedAt && isScheduled && someRecipients")
       span(v-t="'poll_common_form.voters_notified_when_opens'")
-    v-alert(density="compact" type="warning" text v-if="!poll.closedAt && !isScheduled && someRecipients && !poll.notifyRecipients")
-      span(v-t="'poll_common_form.no_notifications_warning'")
-    v-textarea(v-if="!poll.closedAt && !isScheduled && poll.notifyRecipients && someRecipients" filled rows="3" v-model="message" :label="$t('announcement.form.invitation_message_label')" :placeholder="$t('announcement.form.invitation_message_placeholder')")
-  .d-flex.align-center.ga-3.px-4.pt-4
-    h2.text-title-medium.mb-0 {{ t('membership_card.voters') }}
-    v-spacer
+    .mt-3(v-if="!poll.closedAt && !isScheduled && someRecipients")
+      v-textarea(v-if="poll.notifyRecipients" filled rows="3" hide-details v-model="message" :label="$t('announcement.form.invitation_message_label')" :placeholder="$t('announcement.form.invitation_message_placeholder')")
+      v-alert(v-else density="compact" type="info" variant="outlined" color="grey" text)
+        span {{ t('poll_common_form.voters_will_not_be_notified') }}
+    .d-flex.align-center.mt-4(v-if="!poll.closedAt && someRecipients")
+      v-checkbox(v-if="!isScheduled" :label="$t('poll_common_form.notify_invitees')" v-model="poll.notifyRecipients" hide-details)
+      v-spacer
+      v-btn.poll-members-form__submit(color="primary" :loading="saving" @click="inviteRecipients")
+        span(v-if="isScheduled || !poll.notifyRecipients") {{ t('poll_common_form.add_voters') }}
+        span(v-else) {{ t('common.action.invite') }}
+  .d-flex.flex-wrap.align-center.ga-3.px-4.pt-4(v-if="!someRecipients && (poll.closedAt || canManageWeights)")
+    v-btn.poll-members-form__search-toggle(v-if="poll.closedAt && !searchOpen" variant="text" icon :aria-label="t('poll_common_form.search_voters')" aria-controls="poll-voter-search" @click="openSearch")
+      common-icon(name="mdi-magnify")
     v-text-field.poll-members-form__search(
+      v-if="poll.closedAt && searchOpen"
+      id="poll-voter-search"
       :model-value="query"
       @update:model-value="newQuery"
       :label="t('poll_common_form.search_voters')"
-      clearable
+      prepend-inner-icon="mdi-magnify"
       density="compact"
       hide-details)
-  v-list.poll-members-form__list
+      template(v-slot:append-inner)
+        v-btn.poll-members-form__search-close(variant="text" icon size="x-small" :aria-label="t('poll_common_form.close_search')" @click.stop="closeSearch")
+          common-icon(name="mdi-close")
+    v-spacer
+    v-btn.poll-members-form__set-all(v-if="canManageWeights" variant="tonal" :disabled="weightsSaving" @click="openSetAllDialog") {{ t('poll_common_form.set_all_vote_weights') }}
+  v-list.poll-members-form__list(v-if="!someRecipients" style="flex: 1; min-height: 0; overflow-y: auto")
     v-list-item(v-for="user in users" :key="user.id")
       template(v-slot:prepend)
         user-avatar.mr-2(:user="user" :size="32")
@@ -306,50 +321,42 @@ v-card.poll-members-form(:title="t('poll_common_form.voters')")
         v-chip.mr-1(v-if="!user.emailVerified" variant="outlined" size="x-small" label :title="$t('announcement.members_list.has_not_joined_yet_hint')")
           span(v-t="'announcement.members_list.has_not_joined_yet'")
       template(v-slot:append)
-        v-text-field.poll-members-form__weight.mr-2(
+        v-btn.poll-members-form__weight.mr-1(
           v-if="canManageWeights"
-          v-model="weightsByUserId[user.id]"
-          type="text"
-          inputmode="decimal"
-          density="compact"
-          hide-details
-          :aria-label="$t('poll_common_form.vote_weight_for', {name: user.name})")
-        v-menu(v-if="performableActions(poll, user).length" offset-y)
-          template(v-slot:activator="{ props }")
-            v-btn.membership-dropdown__button(variant="flat" icon size="small" v-bind="props")
-              common-icon(name="mdi-dots-vertical")
-          v-list
-            v-list-item(
-              v-for="action in performableActions(poll, user)"
-              @click="perform(action, poll, user)"
-              :key="action")
-              v-list-item-title(v-t="{ path: service[action].name, args: { pollType: poll.translatedPollType() } }")
+          variant="text"
+          size="small"
+          :aria-label="t('poll_common_form.edit_vote_weight_for', {name: user.nameOrEmail(), weight: weightsByUserId[user.id]})"
+          @click="openWeightDialog(user)")
+          span {{ weightsByUserId[user.id] }}
+        v-btn.poll-members-form__remove(
+          v-if="canRemoveVoters"
+          variant="text"
+          icon
+          size="small"
+          :aria-label="t('poll_common_form.remove_voter_named', {name: user.nameOrEmail()})"
+          @click="openRemoveDialog(user)")
+          common-icon(name="mdi-delete-outline")
 
     v-list-item(v-if="query && users.length == 0")
       v-list-item-title(v-t="{ path: 'discussions_panel.no_results_found', args: { search: query }}")
     .d-flex.justify-center(v-if="loading")
       loading
-  .d-flex.flex-wrap.align-center.justify-space-between.ga-2.px-4.py-2
+  .d-flex.flex-wrap.align-center.justify-space-between.ga-2.px-4.py-2(v-if="!someRecipients")
     span.poll-members-form__page-count.text-body-small.text-medium-emphasis {{ t('poll_common_form.voter_page_count', {first: pageFirst, last: pageLast, total: voterTotal}) }}
     v-pagination.poll-members-form__pagination(
       v-if="totalPages > 1"
       :model-value="page"
       :length="totalPages"
+      :total-visible="7"
       :disabled="loading"
       @update:model-value="changePage")
-  .d-flex.flex-wrap.align-center.ga-2.justify-end.mx-4.pb-4
-    v-btn(v-if="canManageWeights" variant="tonal" :disabled="weightsSaving" @click="openSetAllDialog") {{ t('poll_common_form.set_all') }}
-    v-btn(v-if="canManageWeights" color="primary" :disabled="!weightsDirty || !weightsValid" :loading="weightsSaving" @click="saveWeights")
-      span {{ t('poll_common_form.save_vote_weights') }}
-    help-btn(
-      path="en/user_manual/polls/inviting_people#add-voters-to-the-poll")
-    v-spacer
-  v-dialog(v-model="setAllDialog" max-width="480")
-    v-card(:title="t('poll_common_form.set_all_vote_weights')")
+  v-dialog.poll-members-form__set-all-dialog(v-model="setAllDialog" max-width="480")
+    v-card(:title="t('poll_common_form.set_all_vote_weights_title')")
       v-card-text
+        p.poll-members-form__set-all-search-note.text-body-small.text-medium-emphasis(v-if="query.trim()") {{ t('poll_common_form.set_all_vote_weights_search_note') }}
         v-radio-group(v-model="weightMode" hide-details)
-          v-radio(v-if="canUseMemberWeights" value="membership" :label="t('poll_common_form.use_member_vote_weights')")
-          v-radio(value="value" :label="t('poll_common_form.set_one_vote_weight')")
+          v-radio(v-if="canUseMemberWeights" value="membership" :label="t('poll_common_form.set_each_member_default_vote_weight')")
+          v-radio(value="value" :label="t('poll_common_form.set_all_weights_the_same')")
         p.text-body-small.text-medium-emphasis(v-if="weightMode === 'membership'") {{ t('poll_common_form.member_vote_weights_hint') }}
         v-text-field.mt-3(
           v-if="weightMode === 'value'"
@@ -360,13 +367,37 @@ v-card.poll-members-form(:title="t('poll_common_form.voters')")
           :error="!voteWeightValid(resetWeight)")
       v-card-actions
         v-spacer
-        v-btn(variant="text" :disabled="weightsSaving" @click="setAllDialog = false") {{ t('common.action.cancel') }}
+        v-btn.poll-members-form__set-all-cancel(variant="text" :disabled="weightsSaving" @click="setAllDialog = false") {{ t('common.action.cancel') }}
         v-btn(color="primary" :disabled="weightsSaving || (weightMode === 'value' && !voteWeightValid(resetWeight))" :loading="weightsSaving" @click="resetWeights") {{ t('poll_common_form.set_all') }}
+  v-dialog(v-model="weightDialog" max-width="480")
+    v-card(:title="t('poll_common_form.edit_vote_weight')")
+      v-card-text
+        v-text-field.poll-members-form__weight-input(
+          v-if="weightUser"
+          v-model="weightValue"
+          type="text"
+          inputmode="decimal"
+          :label="t('poll_common_form.vote_weight_for', {name: weightUser.nameOrEmail()})"
+          :error="!voteWeightValid(weightValue)"
+          @keydown.enter.prevent="saveWeight")
+      v-card-actions
+        v-spacer
+        v-btn(variant="text" :disabled="weightsSaving" @click="weightDialog = false") {{ t('common.action.cancel') }}
+        v-btn.poll-members-form__save-weight(color="primary" :disabled="weightsSaving || !voteWeightValid(weightValue)" :loading="weightsSaving" @click="saveWeight") {{ t('common.action.save') }}
+  v-dialog.poll-members-form__remove-dialog(v-model="removeDialog" max-width="480")
+    v-card(:title="t('poll_common_form.remove_voter')")
+      v-card-text(v-if="removeUser") {{ t('poll_common_form.remove_voter_and_any_vote_confirmation', {name: removeUser.nameOrEmail()}) }}
+      v-card-actions
+        v-spacer
+        v-btn.poll-members-form__cancel-remove(variant="text" :disabled="removing" @click="removeDialog = false") {{ t('common.action.cancel') }}
+        v-btn.poll-members-form__confirm-remove(color="error" :disabled="removing" :loading="removing" @click="removeVoter") {{ t('poll_common_form.remove_voter') }}
 </template>
 
 <style>
 .poll-members-form__weight {
+  min-width: 56px;
   max-width: 112px;
+  border-radius: 999px;
 }
 
 
@@ -374,13 +405,4 @@ v-card.poll-members-form(:title="t('poll_common_form.voters')")
   max-width: 220px;
 }
 
-.poll-members-form {
-  max-height: 90dvh;
-  overflow-y: auto;
-}
-
-.poll-members-form__list {
-  max-height: 40dvh;
-  overflow-y: auto;
-}
 </style>

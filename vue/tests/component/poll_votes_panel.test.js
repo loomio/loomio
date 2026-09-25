@@ -90,7 +90,7 @@ describe('Poll votes panel', () => {
     expect(wrapper.text()).toContain('Agree');
     expect(wrapper.text()).toContain('3');
     expect(wrapper.text()).toContain('alex@example.com');
-    expect(wrapper.text()).toContain('poll_receipts_page.email_addresses_for_group_admins');
+    expect(wrapper.text()).toContain('poll_receipts_page.email_addresses_only_for_group_admins');
     expect(wrapper.text()).toContain('2024-01-02');
     expect(wrapper.text()).toContain('Morgan');
     expect(wrapper.text()).toContain('2026-09-22');
@@ -98,7 +98,7 @@ describe('Poll votes panel', () => {
     expect(wrapper.findAll('thead th').map(cell => cell.text()).slice(1)).toEqual([
       'poll_receipts_page.voter_name', 'poll_receipts_page.voter_email',
       'poll_common_votes_panel.stance', 'poll_common_votes_panel.vote_weight_column',
-      'poll_common_votes_panel.vote_date', 'poll_receipts_page.member_since',
+      'poll_receipts_page.member_since',
       'poll_receipts_page.invited_by', 'poll_receipts_page.invited_on'
     ]);
   });
@@ -151,10 +151,10 @@ describe('Poll votes panel', () => {
     expect(wrapper.findAll('tbody tr')).toHaveLength(1);
     expect(wrapper.text()).toContain('Morgan');
     expect(wrapper.text()).not.toContain('poll_receipts_page.vote_cast');
-    expect(wrapper.text()).not.toContain('poll_receipts_page.email_addresses_for_group_admins');
+    expect(wrapper.text()).not.toContain('poll_receipts_page.email_addresses_only_for_group_admins');
   });
 
-  it('explains why email addresses appear in an admin’s anonymous participation view', async () => {
+  it('states who can see email addresses in an admin’s anonymous participation view', async () => {
     mocks.canVerifyParticipants.mockReturnValue(true);
     mocks.fetch.mockResolvedValue({
       receipts: [{voter_id: 1, voter_name: 'Alex', voter_email: 'alex@example.com'}],
@@ -167,7 +167,7 @@ describe('Poll votes panel', () => {
     const wrapper = mountPanel({...identifiedPoll, anonymous: true});
     await flushPromises();
 
-    expect(wrapper.text()).toContain('poll_receipts_page.email_addresses_for_group_admins');
+    expect(wrapper.text()).toContain('poll_receipts_page.email_addresses_only_for_group_admins');
     expect(wrapper.text()).toContain('poll_receipts_page.voter_email');
     expect(wrapper.text()).toContain('alex@example.com');
   });

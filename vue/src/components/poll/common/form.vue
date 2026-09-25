@@ -590,7 +590,7 @@ v-form.poll-common-form(ref="form" @submit.prevent="submit")
           v-divider.mb-4
           .text-body-large.pb-2(v-t="'poll_common_form.vote_weights'")
           .text-body-medium.pb-2.text-medium-emphasis
-            span {{ $t('poll_common_form.vote_weights_description') }}
+            span {{ $t('poll_common_form.give_voters_different_weights_description') }}
             help-link.ml-1(path="user_manual/polls/weighted_voting")
           v-checkbox.poll-settings-vote-weights(
             hide-details

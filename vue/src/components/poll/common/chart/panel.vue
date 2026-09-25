@@ -73,7 +73,7 @@ export default {
           variant="tonal"
           type="info"
         )
-          span {{ $t('poll_common_action_panel.variable_vote_weights_explanation') }}
+          span {{ $t('poll_common_action_panel.votes_have_different_weights') }}
           help-link.ml-1(path="user_manual/polls/weighted_voting")
         poll-common-chart-table(:poll="poll" :hide-voters="hideVoters")
       poll-common-chart-meeting(v-else :poll="poll")

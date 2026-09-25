@@ -11,11 +11,17 @@ export default {
   },
 
   data() {
-    return {count: 0};
+    return {count: null, requestSequence: 0};
+  },
+
+  mounted() {
+    this.updateCount();
   },
 
   methods: {
     updateCount() {
+      const sequence = ++this.requestSequence;
+      this.count = null;
       const excludeMembers = (this.excludeMembers && {exclude_members: 1}) || {};
       Records.remote.fetch({path: 'announcements/count', params: {
         recipient_emails_cmr: this.model.recipientEmails.join(','),
@@ -26,10 +32,12 @@ export default {
         ...this.model.bestNamedId(),
         ...excludeMembers
       }}).then(data => {
-        this.count = data.count;
+        if (sequence === this.requestSequence) this.count = data.count;
       }).catch(error => {
-        this.count = 0;
-        Flash.fromServer(error.flash || error);
+        if (sequence === this.requestSequence) {
+          this.count = null;
+          Flash.fromServer(error.flash || error);
+        }
       });
     }
   },
@@ -44,7 +52,7 @@ export default {
 </script>
 
 <template lang="pug">
-p.common-notifications-count.text-medium-emphasis.text-body-small.mb-2
+p.common-notifications-count.text-medium-emphasis.text-body-small.mb-0(v-if="count !== null")
   span(v-if="model.groupId && model.group().membershipsCount < 2" v-t="'announcement.form.group_has_no_members_yet'")
   template(v-else)
     template(v-if="model.notifyRecipients")

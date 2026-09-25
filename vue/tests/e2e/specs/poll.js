@@ -439,10 +439,46 @@ module.exports = {
     page.click('.poll-common-form__submit')
 
     page.expectElement('.poll-members-form')
+    page.expectText('.poll-members-form .help-link', 'User manual')
+    test.expect.element('.poll-members-form__submit').to.not.be.present
+    test.expect.element('.poll-members-form .v-checkbox').to.not.be.present
     page.fillIn('.recipients-autocomplete input[type="text"]', 'test@example.com')
     page.expectText('.recipients-autocomplete-suggestion', 'test@example.com')
     page.click('.recipients-autocomplete-suggestion')
+    page.expectText('.poll-members-form .help-link', 'User manual')
+    test.expect.element('.recipients-autocomplete__no-data').to.not.be.present
+    test.expect.element('.poll-members-form__list').to.not.be.present
+    test.expect.element('.poll-members-form__page-count').to.not.be.present
     page.escape()
+    page.expectElement('.poll-members-form .v-checkbox')
+    page.expectElement('.poll-members-form .v-textarea')
+    page.expectElement('.recipients-autocomplete .v-input__details .common-notifications-count')
+    page.expectText('.poll-members-form .v-checkbox', 'Send notifications')
+    test.execute(() => {
+      const form = document.querySelector('.poll-members-form')
+      const message = form.querySelector('.v-textarea')
+      const checkbox = form.querySelector('.v-checkbox')
+      const submit = form.querySelector('.poll-members-form__submit')
+      return Boolean(message && checkbox && submit && checkbox.parentElement === submit.parentElement &&
+        message.compareDocumentPosition(checkbox) & Node.DOCUMENT_POSITION_FOLLOWING &&
+        checkbox.compareDocumentPosition(submit) & Node.DOCUMENT_POSITION_FOLLOWING)
+    }, [], ({value}) => test.assert.ok(value, 'message, notification choice, and Invite appear in order'))
+    let messageGap
+    test.execute(() => {
+      const form = document.querySelector('.poll-members-form')
+      return form.querySelector('.v-checkbox').parentElement.getBoundingClientRect().top - form.querySelector('.v-textarea').getBoundingClientRect().bottom
+    }, [], ({value}) => { messageGap = value })
+    page.click('.poll-members-form .v-checkbox .v-selection-control__wrapper')
+    test.expect.element('.poll-members-form .v-textarea').to.not.be.present
+    page.expectText('.poll-members-form .v-alert', 'Voters will not be notified. Let them know about the poll another way.')
+    page.expectElement('.poll-members-form .v-alert__prepend .v-icon')
+    page.expectText('.poll-members-form__submit', 'Add voters')
+    test.execute(() => {
+      const form = document.querySelector('.poll-members-form')
+      return form.querySelector('.v-checkbox').parentElement.getBoundingClientRect().top - form.querySelector('.v-alert').getBoundingClientRect().bottom
+    }, [], ({value}) => test.assert.ok(Math.abs(value - messageGap) <= 1, 'controls have the same spacing after the message and notice'))
+    page.click('.poll-members-form .v-checkbox .v-selection-control__wrapper')
+    page.expectElement('.poll-members-form .v-textarea')
     // page.expectElement('.text-h5')
     page.click('.poll-members-form__submit')
     page.expectText('.poll-members-form__list', 'test@example.com')
@@ -567,21 +603,123 @@ module.exports = {
     // Verify the voter management window is shown
     page.expectElement('.poll-members-form')
 
-    // Verify the add voters button label
+    test.expect.element('.poll-members-form__submit').to.not.be.present
+    test.expect.element('.poll-members-form .v-checkbox').to.not.be.present
+    page.fillIn('.recipients-autocomplete input[type="text"]', 'test@example.com')
+    page.expectText('.recipients-autocomplete-suggestion', 'test@example.com')
+    page.click('.recipients-autocomplete-suggestion')
+    test.expect.element('.recipients-autocomplete__no-data').to.not.be.present
+    page.expectText('.poll-members-form .help-link', 'User manual')
+    page.escape()
+
+    // Selecting a recipient reveals the submission controls.
     page.expectText('.poll-members-form__submit', 'Add voters')
+    page.expectElement('.poll-members-form__submit')
+  },
+
+  'counts_audience_recipients_before_expanding_them': (test) => {
+    page = pageHelper(test)
+
+    page.loadPath('polls/test_scheduled_poll')
+    page.clickAndWait('.action-dock__button--announce_poll', '.poll-members-form')
+    let modalHeight
+    test.execute(() => document.querySelector('.poll-members-form').offsetHeight, [], ({value}) => { modalHeight = value })
+    page.click('.recipients-autocomplete input[type="text"]')
+    page.expectText('.recipients-autocomplete-suggestion', 'Everyone in the thread')
+    page.click('.recipients-autocomplete-suggestion')
+    page.expectText('.common-notifications-count', '1 person will be added')
+    test.expect.element('.poll-members-form__list').to.not.be.present
+    test.execute(() => document.querySelector('.poll-members-form').offsetHeight, [], ({value}) => {
+      test.assert.ok(Math.abs(value - modalHeight) <= 1, 'modal height stays steady after selecting recipients')
+    })
+    page.click('.recipients-autocomplete .chip--select-multi')
+    page.expectText('.common-notifications-count', '1 person will be added')
+    page.click('.recipients-autocomplete .v-field__clearable')
+    page.expectElement('.poll-members-form__list')
+    test.expect.element('.poll-members-form__submit').to.not.be.present
   },
 
   'can_page_and_search_poll_voters': (test) => {
     page = pageHelper(test)
 
     page.loadPath('polls/test_scheduled_poll?voter_count=25&weighted=1')
-    page.clickAndWait('.action-dock__button--announce_poll', '.poll-members-form__pagination')
-    page.expectText('.poll-members-form__page-count', '1–20 of 25')
+    page.clickAndWait('.action-dock__button--announce_poll', '.poll-members-form__list')
+    page.expectText('.poll-members-form', 'Manage voters')
+    page.expectText('.poll-members-form .help-link', 'User manual')
+    page.expectText('.poll-members-form__page-count', '1–25 of 25')
     page.expectElement('.poll-members-form__weight')
-    page.click('.poll-members-form__pagination .v-pagination__next button')
-    page.expectText('.poll-members-form__page-count', '21–25 of 25')
-    page.fillIn('.poll-members-form__search input', 'No matching voter')
+    page.click('.poll-members-form__weight')
+    page.fillInAndEnter('.poll-members-form__weight-input input', '2')
+    page.expectFlash('Vote weights updated')
+    test.expect.element('.poll-members-form__weight-input').to.not.be.present
+    page.expectText('.poll-members-form__weight', '2')
+    page.click('.poll-members-form__set-all')
+    page.expectText('.poll-members-form__set-all-dialog', 'Set all vote weights')
+    page.expectText('.poll-members-form__set-all-dialog', "Set each member's default vote weight")
+    page.expectText('.poll-members-form__set-all-dialog', 'Set all weights the same')
+    page.click('.poll-members-form__set-all-cancel')
+    page.fillIn('.recipients-autocomplete input[type="text"]', 'No matching voter')
     page.expectText('.poll-members-form__page-count', '0–0 of 0')
+    page.click('.poll-members-form__set-all')
+    page.expectText('.poll-members-form__set-all-search-note', 'including those outside your search results')
+    page.click('.poll-members-form__set-all-cancel')
+    test.expect.element('.recipients-autocomplete__no-data').to.not.be.present
+    page.click('.poll-members-form__page-count')
+    page.expectValue('.recipients-autocomplete input[type="text"]', 'No matching voter')
+    page.expectText('.poll-members-form__page-count', '0–0 of 0')
+    page.click('.recipients-autocomplete .v-field__clearable')
+    page.expectValue('.recipients-autocomplete input[type="text"]', '')
+    test.expect.element('.poll-members-form__search').to.not.be.present
+    test.expect.element('.poll-members-form__search-toggle').to.not.be.present
+    page.expectText('.poll-members-form__page-count', '1–25 of 25')
+  },
+
+  'confirms_removing_a_poll_voter': (test) => {
+    page = pageHelper(test)
+
+    page.loadPath('polls/test_scheduled_poll?voter_count=4')
+    page.clickAndWait('.action-dock__button--announce_poll', '.poll-members-form__list')
+    page.expectText('.poll-members-form__page-count', '1–4 of 4')
+    page.click('.poll-members-form__remove')
+    page.expectText('.poll-members-form__remove-dialog', 'Remove')
+    page.expectText('.poll-members-form__remove-dialog', 'This also removes any vote they cast.')
+    page.click('.poll-members-form__cancel-remove')
+    page.expectText('.poll-members-form__page-count', '1–4 of 4')
+    page.click('.poll-members-form__remove')
+    page.click('.poll-members-form__confirm-remove')
+    page.expectText('.poll-members-form__page-count', '1–3 of 3')
+  },
+
+  'keeps_fifty_weighted_voters_inside_the_modal': (test) => {
+    page = pageHelper(test)
+
+    page.loadPath('polls/test_many_weighted_voters')
+    page.expectText('.poll-common-chart-panel__variable-vote-weights', 'Votes in this poll have different weights, so some count more than others.')
+    page.clickAndWait('.action-dock__button--announce_poll', '.poll-members-form__list')
+    page.expectText('.poll-members-form__page-count', '1–50 of 50')
+    page.expectText('.poll-members-form__list .v-list-item:first-child', 'Voter 45')
+    page.expectElement('.poll-members-form__weight')
+    test.execute(() => {
+      const modal = document.querySelector('.poll-members-form')
+      const list = document.querySelector('.poll-members-form__list')
+      const weights = Array.from(document.querySelectorAll('.poll-members-form__weight'), button => button.textContent.trim())
+      return {modalHeight: modal.getBoundingClientRect().height, viewportHeight: window.innerHeight, listScrolls: list.scrollHeight > list.clientHeight, distinctWeights: new Set(weights).size}
+    }, [], ({value}) => {
+      test.assert.ok(value.modalHeight <= value.viewportHeight * 0.9 + 1, 'modal fits within 90% of the viewport')
+      test.assert.ok(value.listScrolls, 'voter list scrolls within the modal')
+      test.assert.ok(value.distinctWeights > 1, 'voters have different vote weights')
+    })
+  },
+
+  'pages_weighted_voters_after_fifty': (test) => {
+    page = pageHelper(test)
+
+    page.loadPath('polls/test_many_weighted_voters?voter_count=55')
+    page.clickAndWait('.action-dock__button--announce_poll', '.poll-members-form__list')
+    page.expectText('.poll-members-form__page-count', '1–50 of 55')
+    page.expectText('.poll-members-form__list .v-list-item:first-child', 'Voter 50')
+    page.click('.poll-members-form__pagination .v-pagination__next button')
+    page.expectText('.poll-members-form__page-count', '51–55 of 55')
   },
 
   'can_start_a_standalone_poll': (test) => {
@@ -605,7 +743,7 @@ module.exports = {
     page.click('.poll-common-form__more-settings')
     page.expectElement('.poll-settings-vote-weights')
     page.expectElement('a[href="/docs/en/user_manual/polls/quorum"]')
-    page.expectText('.poll-common-form', 'Assign each voter a vote weight, so some votes count more than others. Results show both the number of voters and the weighted score.')
+    page.expectText('.poll-common-form', 'Give voters different weights. Results show the number of voters and the weighted score.')
     page.expectElement('a[href="/docs/en/user_manual/polls/weighted_voting"]')
     page.expectElement('a[href="/docs/en/user_manual/polls/anonymous_voting"]')
     page.expectElement('a[href="/docs/en/user_manual/polls/settings#reminder"]')

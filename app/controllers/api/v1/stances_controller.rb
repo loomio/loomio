@@ -46,14 +46,6 @@ class Api::V1::StancesController < Api::V1::RestfulController
     respond_with_resource
   end
 
-  def set_weights
-    poll = Poll.find(params.require(:poll_id))
-    weights_by_stance_id = params.require(:weights).to_unsafe_h
-    StanceService.set_weights poll: poll, weights_by_stance_id: weights_by_stance_id, actor: current_user
-    self.collection = poll.stances.latest.where(id: weights_by_stance_id.keys)
-    respond_with_collection
-  end
-
   def reset_weights
     mode = params[:mode] || 'value'
     weight = params.require(:weight) if mode == 'value'
@@ -123,7 +115,13 @@ class Api::V1::StancesController < Api::V1::RestfulController
     end
 
     self.collection_count = voters.count
-    self.collection = page_collection(voters.order(:id))
+    # Sort by the original voter record so later vote revisions do not move a voter to the top.
+    added_order = if poll.detached_anonymous?
+      "(SELECT anonymous_poll_voters.id FROM anonymous_poll_voters WHERE anonymous_poll_voters.poll_id = #{poll.id} AND anonymous_poll_voters.voter_id = users.id) DESC"
+    else
+      "(SELECT MIN(stances.id) FROM stances WHERE stances.poll_id = #{poll.id} AND stances.participant_id = users.id) DESC"
+    end
+    self.collection = page_collection(voters.order(Arel.sql(added_order)))
     add_voter_role_meta(collection.ids)
     respond_with_collection serializer: AuthorSerializer, root: :users
   end

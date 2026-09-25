@@ -159,6 +159,46 @@ class Dev::PollsController < Dev::NightwatchController
     redirect_to poll_url(scenario[:poll])
   end
 
+  # Build a large weighted electorate with both cast and pending votes so the
+  # voter modal, pagination, and result avatars can be inspected together.
+  def test_many_weighted_voters
+    scenario = poll_scheduled_scenario(poll_type: 'proposal', weighted: true)
+    voter_count = params.fetch(:voter_count, 50).to_i.clamp(50, 100)
+    group = scenario[:group]
+    poll = scenario[:poll]
+    actor = scenario[:actor]
+    group.update!(name: 'Fifty-member voting group')
+
+    voters = group.members.to_a
+    (voter_count - voters.length).times do |index|
+      voter = saved(fake_user(name: "Voter #{format('%02d', index + 1)}", email: "voter#{index + 1}@example.com"))
+      group.add_member!(voter)
+      voters << voter
+    end
+
+    weights = [0, 0.5, 1, 1.5, 2, 3, 5]
+    group.memberships.active.order(:id).each_with_index do |membership, index|
+      membership.update!(weight: weights[index % weights.length])
+    end
+
+    poll.update!(title: "Variable weights with #{voter_count} voters", opening_at: nil, opened_at: Time.current)
+    PollService.invite(
+      poll: poll,
+      params: {recipient_user_ids: voters.map(&:id), include_actor: true, notify_recipients: false},
+      actor: actor
+    )
+    StanceService.reset_weights(poll: poll, actor: actor, mode: 'membership')
+
+    voters.reject { |voter| voter == actor }.first(12).each_with_index do |voter, index|
+      stance = poll.stances.latest.find_by!(participant: voter)
+      option = poll.poll_options[index % poll.poll_options.length]
+      StanceService.update(stance: stance, actor: voter, params: {choice: {option.name => 1}})
+    end
+
+    sign_in actor
+    redirect_to poll_url(poll)
+  end
+
   def test_activity_items
     user = fake_user
     group = saved fake_group

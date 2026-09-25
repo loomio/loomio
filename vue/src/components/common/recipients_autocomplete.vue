@@ -21,6 +21,9 @@ export default {
     includeActor: Boolean,
     excludeMembers: Boolean,
     hideCount: Boolean,
+    hideEmptyResults: Boolean,
+    preserveSearchOnBlur: Boolean,
+    emptyAudienceHint: String,
     excludedAudiences: {
       type: Array,
       default() { return []; }
@@ -41,6 +44,7 @@ export default {
       suggestedUserIds: [],
       suggestions: [],
       availableAudiences: [],
+      audiencesLoaded: false,
       recipients: [],
       loading: false,
       currentUserId: Session.user().id
@@ -84,7 +88,16 @@ export default {
       return Boolean(user && group && user.delegates && user.delegates[group.id]);
     },
     updateQuery(q) {
-      this.query = q
+      const query = q || '';
+      // In multiple mode Vuetify clears search on blur; keep the voter filter until an explicit clear or selection.
+      if (this.preserveSearchOnBlur && !query && this.query && !this.recipients.length && document.activeElement !== this.$el.querySelector('input')) return;
+      this.query = query;
+      this.$emit('update:search', this.query);
+      this.fetchAndUpdateSuggestions();
+    },
+    clearSearch() {
+      this.query = '';
+      this.$emit('update:search', '');
       this.fetchAndUpdateSuggestions();
     },
     fetchChatbots() {
@@ -109,6 +122,7 @@ export default {
           q: this.query,
           per: 20,
           include_actor: (this.includeActor && 1) || null,
+          exclude_members: (this.excludeMembers && 1) || null,
           ...existingOnly,
           ...this.model.bestNamedId()
         }})
@@ -127,9 +141,11 @@ export default {
     },
 
     fetchAvailableAudiences() {
+      this.audiencesLoaded = false;
       const targetParams = this.model.bestNamedId();
       if (!Object.keys(targetParams).length) {
         this.availableAudiences = [];
+        this.audiencesLoaded = true;
         this.updateSuggestions();
         return;
       }
@@ -143,6 +159,7 @@ export default {
         }
       }).then(data => {
         this.availableAudiences = data.audiences || [];
+        this.audiencesLoaded = true;
         this.updateSuggestions();
       });
     },
@@ -306,29 +323,40 @@ div.recipients-autocomplete
     multiple
     return-object
     hide-selected
+    clearable
     auto-select-first
     clear-on-select
     v-model='recipients'
+    :search="query"
     @update:search="updateQuery"
+    @click:clear="clearSearch"
     item-title='name'
     item-value='id'
     :loading="loading"
     :label="label"
     :placeholder="placeholder"
     :items='suggestions'
+    :hide-no-data="(recipients.length > 0 && !query) || (hideEmptyResults && !!query)"
     autocomplete='off'
   )
+    template(v-slot:details)
+      notifications-count(
+        v-if="!hideCount && recipients.length"
+        :model="model"
+        :exclude-members="excludeMembers"
+        :include-actor="includeActor")
     template(v-slot:no-data)
-      v-list-item
+      v-list-item.recipients-autocomplete__no-data
         template(v-slot:prepend)
           common-icon(v-if="!query" name="mdi-account-search")
           common-icon(v-if="query" name="mdi-information-outline")
         v-list-item-title
-          span(v-if="query" v-t="'common.no_results_found'")
+          span(v-if="!query && emptyAudienceHint && audiencesLoaded && !audiences.length") {{ emptyAudienceHint }}
+          span(v-else-if="query") {{ $t('common.no_results_found') }}
           span(v-else)
             span(v-if="canAddGuests" v-t="'announcement.search_by_name_or_email'")
             span(v-if="!canAddGuests" v-t="'announcement.search_by_name'")
-        v-list-item-subtitle
+        v-list-item-subtitle(v-if="!(emptyAudienceHint && audiencesLoaded && !audiences.length)")
           span(v-if="!canAddGuests && !canNotifyGroup"
                v-t="'announcement.only_admins_can_announce_or_invite'")
           span(v-if="!canAddGuests && canNotifyGroup"
@@ -390,9 +418,4 @@ div.recipients-autocomplete
         //-     span ({{ $t('common.you') }})
         v-list-item-subtitle(v-if="internalItem.raw.user && internalItem.raw.user.email && (internalItem.raw.user.email != internalItem.raw.user.name)")
           span {{internalItem.raw.user.email}}
-  notifications-count(
-    v-show="!hideCount && recipients.length"
-    :model='model'
-    :exclude-members="excludeMembers"
-    :include-actor="includeActor")
 </template>

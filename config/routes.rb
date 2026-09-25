@@ -372,7 +372,6 @@ Rails.application.routes.draw do
           get :users
           get :my_stances
           post :revoke
-          patch :set_weights
           patch :reset_weights
         end
       end

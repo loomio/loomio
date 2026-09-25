@@ -24,10 +24,6 @@ export default {
     realOption(opt) {
       return Records.pollOptions.find(opt.id) || {meaning: '', name: opt.name}
     },
-    weightFor(option, userId) {
-      const weights = option.voter_weights || {};
-      return weights[userId] == null ? 1 : weights[userId];
-    },
     clampPercent(num) { return Math.max(0, Math.min(num, 100)); }
   },
 
@@ -109,14 +105,8 @@ export default {
             div.poll-common-chart-table__voter-avatars
               span.poll-common-chart-table__voter-avatar.float-left(
                 v-for="id in option.voter_ids"
-                :key="id"
-                :title="$t('poll_common_votes_panel.vote_weight', {weight: weightFor(option, id)})")
-                v-badge(
-                  :content="weightFor(option, id)"
-                  :model-value="poll.weightedVoting"
-                  color="primary"
-                  overlap)
-                  user-avatar(:user="users[id]" :size="24" no-link)
+                :key="id")
+                user-avatar(:user="users[id]" :size="24" no-link)
 </template>
 <style>
 .v-data-table tbody tr:hover {

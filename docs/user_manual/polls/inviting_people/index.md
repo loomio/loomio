@@ -41,13 +41,13 @@ At the bottom of the poll are several features to help you engage with people on
 
 You can add new people to the poll at any time, including before voting opens on a scheduled poll.
 
-Select **Manage voters** to open the voter management window, then enter the names or email addresses of the people you want to add. Use the page controls to see additional voters.
+Select **Manage voters** to open the voter management window. You can invite everyone in the group, add members by name, or add guests by email if guest invitations are allowed. Typing in **Find or invite voters** also filters the people already in the poll. The most recently added voters appear first; use the page controls to browse the full list.
 
 If the poll has a scheduled opening time and voting has not yet opened, voters will not receive an immediate notification. Instead, they will be notified when voting opens.
 
 ### Remove people from the poll
 
-Select **Manage voters**, find the person's name in the voter management window, open the three-dot menu beside it, and select **Remove voter**.
+Select **Manage voters**, find the person's name in the voter management window, select the trash button beside it, and confirm **Remove voter**.
 
 People cannot be removed from an anonymous poll.
 
