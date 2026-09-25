@@ -45,12 +45,12 @@ class Views::Admin::Base < Phlex::HTML
     end
   end
 
-  def definition_list(record, keys)
+  def definition_list(record, keys, &render_value)
     dl(class: "admin-definition-list") do
       keys.each do |key|
         div do
           dt { key.to_s.humanize }
-          dd { value(record.public_send(key)) }
+          dd { render_value ? render_value.call(key, record.public_send(key)) : value(record.public_send(key)) }
         end
       end
     end
