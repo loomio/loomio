@@ -317,6 +317,39 @@ class PollTest < ActiveSupport::TestCase
     refute poll.vote_weights_active?
   end
 
+  test "a zero-weight vote counts toward participation and quorum but not score" do
+    voters = [users(:admin), users(:user)]
+    poll = create_poll(
+      group_id: @group.id,
+      poll_option_names: %w[Agree Disagree],
+      vote_weights_enabled: true,
+      specified_voters_only: true,
+      quorum_pct: 100
+    )
+    agree = poll.poll_options.find_by!(name: 'Agree')
+    disagree = poll.poll_options.find_by!(name: 'Disagree')
+
+    Stance.create!(
+      poll: poll, participant: voters.first, weight: 0, cast_at: Time.current,
+      stance_choices_attributes: [{poll_option_id: agree.id, score: 1}]
+    )
+    Stance.create!(
+      poll: poll, participant: voters.last, weight: 3, cast_at: Time.current,
+      stance_choices_attributes: [{poll_option_id: disagree.id, score: 1}]
+    )
+    poll.update_counts!
+
+    assert_equal 2, poll.voters_count
+    assert_equal 2, poll.decided_voters_count
+    assert_equal 100, poll.cast_stances_pct
+    assert_equal 2, poll.quorum_count
+    assert_equal 1, agree.reload.voter_count
+    assert_equal 0, agree.total_score
+    assert_equal 3, disagree.reload.total_score
+    assert_equal 50, poll.results.find { |result| result[:id] == agree.id }[:voter_percent]
+    assert_equal 0, poll.results.find { |result| result[:id] == agree.id }[:score_percent]
+  end
+
   test "identified supported polls can enable vote weights" do
     poll = create_poll(vote_weights_enabled: true)
 

@@ -834,6 +834,36 @@ module Dev::Scenarios::OatmilkCooperative
     redirect_to poll_path(poll)
   end
 
+  def setup_manual_oatmilk_vote_weights
+    group, coordinator, discussion = create_manual_oatmilk_cooperative
+    production_lead = User.find_by!(email: 'samira@oatmilk.example')
+    sales_lead = User.find_by!(email: 'alex@oatmilk.example')
+    group.update!(vote_weights_allowed: true)
+    {coordinator => 0, production_lead => 1, sales_lead => 3}.each do |member, weight|
+      group.memberships.active.find_by!(user: member).update!(weight: weight)
+    end
+
+    poll = discussion.polls.find_by!(title: 'Run a six-week returnable bottle trial')
+    poll.update!(vote_weights_enabled: true)
+    if params[:votes] == '1'
+      [[coordinator, 'agree'], [production_lead, 'agree'], [sales_lead, 'disagree']].each do |voter, icon|
+        option = poll.poll_options.find_by!(icon: icon)
+        StanceService.update(
+          stance: poll.stances.latest.find_by!(participant: voter),
+          actor: voter,
+          params: {choice: {option.name => 1}}
+        )
+      end
+    end
+
+    sign_in coordinator
+    redirect_to case params[:view]
+    when 'group' then group_path(group)
+    when 'edit' then "/p/#{poll.key}/edit"
+    else poll_path(poll)
+    end
+  end
+
   def setup_manual_oatmilk_stv
     group, coordinator, = create_manual_oatmilk_cooperative
     discussion = group.discussions.find_by!(title: 'Weekly production schedule')
