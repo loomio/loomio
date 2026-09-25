@@ -790,6 +790,12 @@ en:
     beta_collab: "\U0001F9EA Beta features enabled!"
     outcomes: Outcomes
   strand_members_list:
+    manage_thread_members: Manage thread members
+    find_or_invite_people: Find or invite people
+    invite_or_notify_explanation: New people will be invited to the thread. People already in the thread will be notified again.
+    invite_or_notify: Invite or notify
+    member_page_count: "%{first}–%{last} of %{total}"
+    guest_access_info: Guests invited by email can participate in this thread without access to other group threads
     notify_members_or_invite_guests_info: Notify group members by name, or invite non-members by email address. Invited guests can participate in this thread but won't have access to other group threads.
     notify_members_info: Enter names of group members to notify them about this thread.
     specified_voters_only_warning: This thread has polls where only selected people can vote. Adding someone here won't give them a vote — use "add voters" on the poll instead.

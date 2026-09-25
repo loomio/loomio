@@ -21,6 +21,33 @@ class Api::V1::TopicReadersControllerTest < ActionController::TestCase
     assert_includes reader_ids, TopicReader.find_by!(topic: @discussion.topic, user: @alien).id
   end
 
+  test "index pages active readers newest first and counts matching readers" do
+    topic = @discussion.topic
+    topic.add_guest!(@alien, @admin)
+    newest = TopicReader.find_by!(topic: topic, user: @alien)
+    sign_in @admin
+
+    get :index, params: {topic_id: topic.id, active_only: 1, per: 1, from: 0}
+    first = JSON.parse(response.body)
+    assert_response :success
+    assert_equal newest.id, first.fetch('topic_readers').first.fetch('id')
+    assert_operator first.fetch('meta').fetch('total'), :>, 1
+
+    newest.update!(revoked_at: Time.current, revoker_id: @admin.id)
+    get :index, params: {topic_id: topic.id, active_only: 1, per: 1, from: 0}
+    active = JSON.parse(response.body)
+    assert_equal first.fetch('meta').fetch('total') - 1, active.fetch('meta').fetch('total')
+    assert_not_equal newest.id, active.fetch('topic_readers').first.fetch('id')
+  end
+
+  test "index does not reveal private thread members to an unrelated user" do
+    sign_in @alien
+
+    get :index, params: {topic_id: @discussion.topic_id, active_only: 1, per: 50}
+
+    assert_response :forbidden
+  end
+
   # -- make_admin --
 
   test "make_admin with permission makes user admin of topic" do

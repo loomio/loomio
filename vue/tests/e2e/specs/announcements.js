@@ -68,8 +68,8 @@ module.exports = {
     page.click('.topics-page__new-topic-button')
     page.click('.discussion-templates--direct-discussion')
     page.waitFor('.discussion-form')
-    page.fillIn('.recipients-autocomplete input[type="text"]', 'Emilio')
-    page.expectText('.recipients-autocomplete-suggestion', 'Emilio Estevez')
+    page.fillIn('.recipients-autocomplete input[type="text"]', 'test@example.com')
+    page.expectText('.recipients-autocomplete-suggestion', 'test@example.com')
   },
 
   // topic members list
@@ -99,6 +99,41 @@ module.exports = {
     page.expectElement('.topic-members-list')
     page.fillIn('.recipients-autocomplete input[type="text"]', 'Emilio')
     page.expectText('.recipients-autocomplete-suggestion', 'Emilio Estevez')
+  },
+
+  'pages_and_filters_thread_members': (test) => {
+    page = pageHelper(test)
+
+    page.loadPath('setup_discussion_many_members')
+    page.clickAndWait('.action-dock__button--announce_thread', '.topic-members-list__readers')
+    page.expectText('.topic-members-list', 'Manage thread members')
+    page.expectText('.topic-members-list .help-link', 'User manual')
+    page.expectText('.topic-members-list__page-count', '1–50 of 52')
+    page.expectText('.topic-members-list__readers', 'Thread member 50')
+    page.click('.topic-members-list__pagination .v-pagination__next button')
+    page.expectText('.topic-members-list__page-count', '51–52 of 52')
+    page.fillIn('.recipients-autocomplete input[type="text"]', 'Thread member 50')
+    page.expectText('.topic-members-list__page-count', '1–1 of 1')
+    page.click('.topic-members-list__page-count')
+    page.expectValue('.recipients-autocomplete input[type="text"]', 'Thread member 50')
+    page.click('.recipients-autocomplete .v-field__clearable')
+    page.expectText('.topic-members-list__page-count', '1–50 of 52')
+    test.expect.element('.topic-members-list textarea').to.not.be.present
+    test.expect.element('.topic-members-list__submit').to.not.be.present
+    page.fillIn('.recipients-autocomplete input[type="text"]', 'test@example.com')
+    page.expectText('.recipients-autocomplete-suggestion', 'test@example.com')
+    page.click('.recipients-autocomplete-suggestion')
+    page.expectElement('.topic-members-list textarea')
+    page.expectElement('.topic-members-list__submit')
+    page.expectText('.topic-members-list', 'New people will be invited to the thread')
+    test.expect.element('.topic-members-list__readers').to.not.be.present
+    page.click('.recipients-autocomplete .v-field__clearable')
+    page.expectElement('.topic-members-list__readers')
+    page.click('.topic-members-list .v-alert__close button')
+    page.expectNoText('.topic-members-list', 'Guests invited by email can participate')
+    page.click('.topic-members-list .dismiss-modal-button')
+    page.clickAndWait('.action-dock__button--announce_thread', '.topic-members-list__readers')
+    page.expectNoText('.topic-members-list', 'Guests invited by email can participate')
   },
 
   // poll members list

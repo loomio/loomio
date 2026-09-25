@@ -10,6 +10,16 @@ module Dev::Scenarios::Discussion
     redirect_to discussion_path(create_discussion)
   end
 
+  def setup_discussion_many_members
+    discussion = create_discussion
+    50.times do |index|
+      member = saved(fake_user(name: "Thread member #{format('%02d', index + 1)}", email: "threadmember#{index + 1}@example.com"))
+      discussion.topic.add_guest!(member, patrick)
+    end
+    sign_in patrick
+    redirect_to discussion_path(discussion)
+  end
+
   def setup_discussion_for_mention_ranking
     group = create_group
     [

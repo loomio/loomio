@@ -5,11 +5,13 @@ import AbilityService from '@/shared/services/ability_service';
 import Flash from '@/shared/services/flash';
 import RecipientsAutocomplete from '@/components/common/recipients_autocomplete';
 import TopicReaderService from '@/shared/services/topic_reader_service';
-import {map, debounce} from 'lodash-es';
+import {debounce} from 'lodash-es';
 import { useWatchRecords } from '@/composables/useWatchRecords';
 import { approximate } from '@/shared/helpers/format_time';
+import { useI18n } from 'vue-i18n';
 import { ref, computed } from 'vue';
 
+const { t } = useI18n();
 const { topic } = defineProps({
   topic: Object
 });
@@ -21,6 +23,12 @@ const hasSpecifiedVotersOnlyPolls = computed(() =>
 );
 
 const readers = ref([]);
+const readerIds = ref([]);
+const readerTotal = ref(0);
+const page = ref(1);
+const per = 50;
+const loading = ref(false);
+let fetchSequence = 0;
 const query = ref('');
 const recipients = ref([]);
 const membershipsByUserId = ref({});
@@ -28,6 +36,8 @@ const readerUserIds = ref([]);
 const reset = ref(false);
 const saving = ref(false);
 const message = ref('');
+const groupInfoDismissed = ref(Session.user().hasExperienced('dismissThreadMembersGroupInfo'));
+const voterInfoDismissed = ref(Session.user().hasExperienced('dismissThreadMembersVoterInfo'));
 const actionNames = ['makeAdmin', 'removeAdmin', 'revoke'];
 const service = TopicReaderService;
 
@@ -37,15 +47,30 @@ const hasRecipients = computed(() => {
     topic.recipientChatbotIds.length ||
     topic.recipientEmails.length;
 });
-
-const excludedUserIds = computed(() => {
-  return readerUserIds.value.concat(Session.user().id);
-});
+const totalPages = computed(() => Math.max(1, Math.ceil(readerTotal.value / per)));
+const pageFirst = computed(() => readerTotal.value ? (page.value - 1) * per + 1 : 0);
+const pageLast = computed(() => Math.min(page.value * per, readerTotal.value));
 
 function approximateDate(date) { return approximate(date); }
 
+function dismissGroupInfo() {
+  groupInfoDismissed.value = true;
+  Records.users.saveExperience('dismissThreadMembersGroupInfo');
+}
+
+function dismissVoterInfo() {
+  voterInfoDismissed.value = true;
+  Records.users.saveExperience('dismissThreadMembersVoterInfo');
+}
+
 function performableActions(reader) {
   return actionNames.filter((action) => service[action].canPerform(reader));
+}
+
+function performReaderAction(action, reader) {
+  service[action].perform(reader).then(() => {
+    if (action === 'revoke') fetchReaders();
+  }).catch(error => Flash.fromServer(error));
 }
 
 function isGroupAdmin(reader) {
@@ -73,6 +98,8 @@ function inviteRecipients() {
   };
   Records.remote.post('announcements', params).then(() => {
     reset.value = !reset.value;
+    page.value = 1;
+    fetchReaders();
     Flash.success('announcement.flash.success', { count });
   }).catch(error => {
     Flash.fromServer(error.flash || error);
@@ -82,21 +109,50 @@ function inviteRecipients() {
 }
 
 function newQuery(q) {
+  if (query.value === q) return;
   query.value = q;
-  updateReaders();
+  page.value = 1;
+  readerIds.value = [];
+  readerTotal.value = 0;
+  readers.value = [];
+  loading.value = true;
+  fetchReaders();
+}
+
+function changePage(nextPage) {
+  page.value = nextPage;
+  readerIds.value = [];
+  readers.value = [];
+  loading.value = true;
   fetchReaders();
 }
 
 function newRecipients(r) { recipients.value = r; }
 
+// Keep the server's filtered page and count together; ignore responses from an older search or page.
 const fetchReaders = debounce(function() {
+  const currentQuery = query.value;
+  const currentPage = page.value;
+  const sequence = ++fetchSequence;
+  loading.value = true;
   Records.topicReaders.fetch({
     params: {
-      query: query.value,
-      topic_id: topic.id
+      query: currentQuery,
+      topic_id: topic.id,
+      active_only: 1,
+      from: (currentPage - 1) * per,
+      per
     }
-  }).then(records => {
-    const userIds = map(records['users'], 'id');
+  }).then(data => {
+    if (sequence !== fetchSequence || currentQuery !== query.value || currentPage !== page.value) return;
+    readerTotal.value = data.meta.total;
+    if (page.value > totalPages.value) {
+      changePage(totalPages.value);
+      return;
+    }
+    readerIds.value = data.topic_readers.map(reader => reader.id);
+    updateReaders();
+    const userIds = readers.value.map(reader => reader.userId);
     if (group.value) {
       Records.memberships.fetch({
         params: {
@@ -106,28 +162,14 @@ const fetchReaders = debounce(function() {
         }
       });
     }
-  }).finally(() => updateReaders());
+  }).catch(error => Flash.fromServer(error)).finally(() => {
+    if (sequence === fetchSequence && currentQuery === query.value && currentPage === page.value) loading.value = false;
+  });
 } , 300);
 
 function updateReaders() {
-  let chain = Records.topicReaders.collection.chain().
-          find({topicId: topic.id}).
-          find({revokedAt: null});
-
-  if (query.value) {
-    const users = Records.users.collection.find({
-      $or: [
-        {name: {'$regex': [`^${query.value}`, "i"]}},
-        {email: {'$regex': [`${query.value}`, "i"]}},
-        {username: {'$regex': [`^${query.value}`, "i"]}},
-        {name: {'$regex': [` ${query.value}`, "i"]}}
-      ]});
-    chain = chain.find({userId: {$in: map(users, 'id')}});
-  }
-
-  chain = chain.simplesort('id', true);
-  readers.value = chain.data();
-  readerUserIds.value = map(Records.topicReaders.collection.find({topicId: topic.id}), 'userId');
+  readers.value = readerIds.value.map(id => Records.topicReaders.findById(id)).filter(reader => reader && !reader.revokedAt);
+  readerUserIds.value = readers.value.map(reader => reader.userId);
 
   membershipsByUserId.value = {};
   if (group.value) {
@@ -149,25 +191,29 @@ watchRecords({
 </script>
 
 <template lang="pug">
-v-card.topic-members-list(:title="$t('announcement.form.discussion_announced.title')")
+v-card.topic-members-list(:title="t('strand_members_list.manage_thread_members')" style="height: 760px; max-height: 90vh; flex: none; display: flex; flex-direction: column; overflow-y: auto")
   template(v-slot:append)
+    help-btn.text-medium-emphasis.mr-2(path="en/user_manual/discussions/using_discussions#invite-people" label="common.user_manual" variant="text")
     dismiss-modal-button
 
-  v-card-text
-    v-alert.mb-2(v-if="group" type="info" variant="tonal" density="compact")
-      span(v-if="canAddGuests" v-t="'strand_members_list.notify_members_or_invite_guests_info'")
-      span(v-else v-t="'strand_members_list.notify_members_info'")
-    v-alert.mb-2(v-if="hasSpecifiedVotersOnlyPolls" type="warning" variant="tonal" density="compact")
+  v-card-text(style="flex: none")
+    v-alert.mb-2(v-if="group && canAddGuests && !groupInfoDismissed" type="info" variant="tonal" density="compact" closable @click:close="dismissGroupInfo")
+      span {{ t('strand_members_list.guest_access_info') }}
+    v-alert.mb-2(v-if="hasSpecifiedVotersOnlyPolls && !voterInfoDismissed" type="warning" variant="tonal" density="compact" closable @click:close="dismissVoterInfo")
       span(v-t="'strand_members_list.specified_voters_only_warning'")
 
     recipients-autocomplete(
-      :label="$t('announcement.form.discussion_announced.helptext')"
+      :label="t('strand_members_list.find_or_invite_people')"
       :placeholder="$t('announcement.form.placeholder')"
       :model="topic"
       :excluded-audiences="['topic']"
       :reset="reset"
-      @new-query="newQuery"
+      hideEmptyResults
+      preserveSearchOnBlur
+      @update:search="newQuery"
       @new-recipients="newRecipients")
+
+    p.text-body-small.text-medium-emphasis.mt-2(v-if="hasRecipients") {{ t('strand_members_list.invite_or_notify_explanation') }}
 
     v-textarea(
       v-if="hasRecipients"
@@ -178,20 +224,15 @@ v-card.topic-members-list(:title="$t('announcement.form.discussion_announced.tit
       :placeholder="$t('announcement.form.invitation_message_placeholder')"
     )
 
-    .d-flex
+    .d-flex(v-if="hasRecipients")
       v-spacer
       v-btn.topic-members-list__submit(
         color="primary"
         :disabled="!recipients.length"
         :loading="saving"
-        @click="inviteRecipients"
-        v-t="'common.action.invite'")
+        @click="inviteRecipients") {{ t('strand_members_list.invite_or_notify') }}
 
-  v-list.px-2(lines="two")
-    v-list-subheader
-      span(v-t="'membership_card.thread_members'")
-      space
-      span ({{topic.membersCount}})
+  v-list.topic-members-list__readers.px-2(v-if="!hasRecipients" lines="two" density="compact" style="flex: 1; min-height: 0; overflow-y: auto")
     v-list-item(v-for="reader in readers" :user="reader.user()" :key="reader.id")
       template(v-slot:prepend)
         user-avatar.mr-2(:user="reader.user()" :size="32")
@@ -219,8 +260,19 @@ v-card.topic-members-list(:title="$t('announcement.form.discussion_announced.tit
             v-btn.membership-dropdown__button(variant="flat" icon v-bind="props")
               common-icon(name="mdi-dots-vertical")
           v-list
-            v-list-item(v-for="action in performableActions(reader)" @click="service[action].perform(reader)" :key="action")
-              v-list-item-title(v-t="service[action].name")
-    v-list-item(v-if="query && readers.length == 0")
-      v-list-item-title(v-t="{ path: 'discussions_panel.no_results_found', args: { search: query }}")
+            v-list-item(v-for="action in performableActions(reader)" @click="performReaderAction(action, reader)" :key="action")
+              v-list-item-title {{ t(service[action].name) }}
+    v-list-item(v-if="query && readers.length == 0 && !loading")
+      v-list-item-title {{ t('discussions_panel.no_results_found', { search: query }) }}
+    .d-flex.justify-center(v-if="loading")
+      loading
+  .d-flex.flex-wrap.align-center.justify-space-between.ga-2.px-4.py-2(v-if="!hasRecipients")
+    span.topic-members-list__page-count.text-body-small.text-medium-emphasis {{ t('strand_members_list.member_page_count', {first: pageFirst, last: pageLast, total: readerTotal}) }}
+    v-pagination.topic-members-list__pagination(
+      v-if="totalPages > 1"
+      :model-value="page"
+      :length="totalPages"
+      :total-visible="7"
+      :disabled="loading"
+      @update:model-value="changePage")
 </template>

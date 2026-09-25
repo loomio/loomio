@@ -96,9 +96,13 @@ Select **Invite people** to add people after the thread has started.
 
 Select a group or subgroup, enter the names of individual members, or enter an email address to invite a guest.
 
+The **Find or invite people** field also filters the list of people already in the thread. Clear the field to show the full list again, and use the page controls if there are more than 50 people. After you select recipients, the member list gives way to the optional message field. New people are invited; people who already have access receive another notification when you select **Invite or notify**.
+
 ![Invite people window with a field for names and email addresses](../notifying_people/thread_invite.png)
 
 A guest can see and participate in this thread but cannot see other discussions in the group unless separately invited.
+
+You can dismiss the guidance notices at the top of the window. Loomio remembers which notices you dismissed for your account.
 
 ![Inviting a guest by email address](../notifying_people/invite_guest.png)
 
