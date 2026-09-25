@@ -11,6 +11,19 @@ module.exports = {
     page.expectText('.sidebar__groups', 'Point Break')
   },
 
+  'links to an accessible subgroup when its parent is private': (test) => {
+    page = pageHelper(test)
+
+    page.loadPath('visit_subgroup_with_inaccessible_parent')
+    page.expectText('.group-page__name', 'Accessible Subgroup')
+    page.ensureSidebar()
+    page.expectText('.sidebar__groups', 'Accessible Subgroup')
+    page.expectNoText('.sidebar__groups', 'Private Parent')
+    page.clickElement('.sidebar__groups a')
+    page.expectText('.group-page__name', 'Accessible Subgroup')
+    page.expectNoElement('.error-page__forbidden')
+  },
+
   'should_allow_you_to_join_an_open_group': (test) => {
     page     = pageHelper(test)
 

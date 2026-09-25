@@ -3,7 +3,7 @@ import { ref, computed, watch, onMounted } from 'vue';
 import { useRouter, useRoute } from 'vue-router';
 import { useDisplay } from 'vuetify';
 import { useTheme } from 'vuetify';
-import { compact } from 'lodash-es';
+import { uniqBy } from 'lodash-es';
 import { subWeeks } from 'date-fns';
 
 import AppConfig from '@/shared/services/app_config';
@@ -115,7 +115,11 @@ const updateBookmarks = () => {
 
 
 const updateGroups = () => {
-  organizations.value = compact(Session.user().parentGroups().concat(Session.user().orphanParents())) || [];
+  const orphanOrganizations = Session.user().orphanSubgroups().map(subgroup => {
+    const parent = subgroup.parent();
+    return parent.isVisibleToPublic ? parent : subgroup;
+  });
+  organizations.value = uniqBy(Session.user().parentGroups().concat(orphanOrganizations), 'id');
   openCounts.value = {};
   openGroups.value = [];
   const recentCutoff = subWeeks(new Date(), 6);
