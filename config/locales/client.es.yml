@@ -2263,6 +2263,7 @@ es:
     legacy_vote_reasons_description: Los motivos de los votos emitidos mediante el formato de votación anónima anterior se muestran como texto sin formato
     anonymous_voting_participant_notice: La votación es anónima. No puedes revisar ni cambiar tu voto después de enviarlo. Los resultados no estarán disponibles hasta que haya finalizado la votación.
     variable_vote_weights_explanation: Esta encuesta utiliza ponderaciones de voto variables, lo que permite que el voto de una persona influya en el resultado más que el de otra, según la ponderación de voto asignada.
+    votes_have_different_weights: En esta encuesta, los votos tienen diferente ponderación, por lo que algunos cuentan más que otros.
   poll_common_collapsed:
     by_who: por %{name}
   poll_common_calendar_invite:
@@ -3002,6 +3003,18 @@ es:
     member_vote_weights_hint: Los votantes que no pertenecen actualmente a ningún grupo obtienen el peso 1.
     vote_weights_description: A cada votante se le asigna un peso al voto, de modo que algunos votos cuenten más que otros. Los resultados muestran tanto el número de votantes como la puntuación ponderada.
     issued_vote_weights_will_change: Las ponderaciones de los votos ya emitidos cambiarán.
+    find_or_invite_voters: Buscar o invitar a los votantes
+    close_search: Cerrar búsqueda
+    remove_voter_named: Eliminar %{name} de la encuesta
+    remove_voter_and_any_vote_confirmation: "¿Eliminar %{name} de esta encuesta? Esto también elimina cualquier voto que haya emitido."
+    give_voters_different_weights_description: Asigna diferentes ponderaciones a los votantes. Los resultados muestran el número de votantes y la puntuación ponderada.
+    edit_vote_weight: Editar el peso del voto
+    edit_vote_weight_for: Editar el peso del voto para %{name} (actualmente %{weight})
+    set_all_vote_weights_title: Establecer todos los pesos de voto
+    set_all_vote_weights_search_note: Esto cambia la ponderación de los votos de todos los votantes en la encuesta, incluidos aquellos que no aparecen en los resultados de tu búsqueda
+    set_each_member_default_vote_weight: Establece el peso de voto predeterminado de cada miembro
+    set_all_weights_the_same: Ajusta todos los pesos al mismo valor
+    voters_will_not_be_notified: Los votantes no recibirán una notificación. Infórmales sobre la encuesta de otra manera.
   poll_receipts_page:
     participation_status_requires_min_votes: Esto muestra quién tenía derecho a votar. Solo se muestra si cada persona votó cuando han votado al menos %{count} personas.
     verify_participants: Verificar participantes
@@ -3017,6 +3030,7 @@ es:
     voted: Votó
     not_voted: No votó
     email_addresses_for_group_admins: Las direcciones de correo electrónico solo se muestran a los administradores del grupo para distinguir a las personas.
+    email_addresses_only_for_group_admins: Las direcciones de correo electrónico solo se muestran a los administradores del grupo.
   comment_reply_form:
     aria_label: Añadir una respuesta
   discussion_template:
@@ -3110,6 +3124,12 @@ es:
     notify_members_or_invite_guests_info: Notifica a los miembros del grupo por su nombre o invita a quienes no sean miembros por su dirección de correo electrónico. Los invitados podrán participar en este hilo, pero no tendrán acceso a otros hilos del grupo.
     notify_members_info: Introduce los nombres de los miembros del grupo para notificarles sobre este hilo.
     specified_voters_only_warning: Este hilo contiene encuestas donde solo pueden votar personas seleccionadas. Agregar a alguien con este formulario no le dará un voto, solo la posibilidad de seguir la conversación y comentar. Si quieres emitir votos, usa "agregar votantes" en la encuesta.
+    manage_thread_members: Gestionar los miembros del hilo
+    find_or_invite_people: Encuentra o invita a personas
+    invite_or_notify_explanation: Se invitará a nuevos participantes al hilo de conversación. Quienes ya estén en el hilo recibirán una nueva notificación.
+    invite_or_notify: Invitar o notificar
+    member_page_count: "%{first}–%{last} de %{total}"
+    guest_access_info: Los invitados que hayan sido enviados por correo electrónico pueden participar en este hilo sin tener acceso a otros hilos del grupo.
   poll_common_details_meta:
     opened: Abierto
     opens: Abre

@@ -2229,6 +2229,7 @@ da:
     legacy_vote_reasons_description: Begrundelser fra stemmer afgivet ved hjælp af det ældre anonyme afstemningsformat vises som almindelig tekst
     anonymous_voting_participant_notice: Afstemningen er anonym. Du kan ikke gennemgå eller ændre din stemme efter afgivelse. Resultaterne er ikke tilgængelige, før afstemningen er afsluttet.
     variable_vote_weights_explanation: Denne afstemning bruger variable stemmevægte, hvilket giver én persons stemme mulighed for at påvirke resultatet mere end en anden persons i henhold til den tildelte stemmevægt.
+    votes_have_different_weights: Stemmer i denne afstemning har forskellig vægt, så nogle tæller mere end andre.
   poll_common_collapsed:
     by_who: af %{name}
   poll_common_calendar_invite:
@@ -2966,6 +2967,18 @@ da:
     member_vote_weights_hint: Vælgere uden nuværende gruppemedlemskab får vægt 1
     vote_weights_description: Tildel hver vælger en stemmevægt, så nogle stemmer tæller mere end andre. Resultaterne viser både antallet af vælgere og den vægtede score.
     issued_vote_weights_will_change: Vægten for allerede afgivne stemmer vil ændre sig.
+    find_or_invite_voters: Find eller inviter vælgere
+    close_search: Luk søgning
+    remove_voter_named: Fjern %{name} fra afstemningen
+    remove_voter_and_any_vote_confirmation: Fjerne %{name} fra denne afstemning? Dette fjerner også alle stemmer, de har afgivet.
+    give_voters_different_weights_description: Giv vælgerne forskellige vægte. Resultaterne viser antallet af vælgere og den vægtede score.
+    edit_vote_weight: Rediger stemmevægt
+    edit_vote_weight_for: Rediger stemmevægt for %{name} (i øjeblikket %{weight})
+    set_all_vote_weights_title: Angiv alle stemmevægte
+    set_all_vote_weights_search_note: Dette ændrer stemmevægten for alle vælgere i afstemningen, inklusive dem uden for dine søgeresultater.
+    set_each_member_default_vote_weight: Angiv standardvægten for stemmer for hvert medlem
+    set_all_weights_the_same: Sæt alle vægte ens
+    voters_will_not_be_notified: Vælgerne vil ikke blive underrettet. Giv dem besked om afstemningen på en anden måde.
   poll_receipts_page:
     participation_status_requires_min_votes: Dette viser, hvem der var stemmeberettigede. Om hver person stemte, vises kun, når mindst %{count} personer har stemt.
     verify_participants: Bekræft deltagere
@@ -2981,6 +2994,7 @@ da:
     voted: Stemte
     not_voted: Ikke stemt
     email_addresses_for_group_admins: E-mailadresser vises kun til gruppeadministratorer for at skelne personer fra hinanden.
+    email_addresses_only_for_group_admins: E-mailadresser vises kun til gruppeadministratorer
   comment_reply_form:
     aria_label: Tilføj et svar
   discussion_template:
@@ -3074,6 +3088,12 @@ da:
     notify_members_or_invite_guests_info: Giv gruppemedlemmer besked ved navn, eller inviter ikke-medlemmer via e-mailadresse. Inviterede gæster kan deltage i denne tråd, men har ikke adgang til andre gruppetråde.
     notify_members_info: Indtast navnene på gruppemedlemmer for at give dem besked om denne tråd.
     specified_voters_only_warning: Denne tråd har afstemninger, hvor kun udvalgte personer kan stemme. Hvis du tilføjer nogen med denne formular, får de ikke en stemme, men kun mulighed for at følge med og kommentere. Hvis du vil udstede stemmer, skal du bruge "tilføj vælgere" i afstemningen.
+    manage_thread_members: Administrer trådmedlemmer
+    find_or_invite_people: Find eller inviter personer
+    invite_or_notify_explanation: Nye personer vil blive inviteret til tråden. Personer, der allerede er i tråden, vil blive underrettet igen.
+    invite_or_notify: Inviter eller underret
+    member_page_count: "%{first}–%{last} af %{total}"
+    guest_access_info: Gæster inviteret via e-mail kan deltage i denne tråd uden adgang til andre gruppetråde
   poll_common_details_meta:
     opened: Åbnet
     opens: Åbner

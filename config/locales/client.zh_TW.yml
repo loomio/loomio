@@ -2255,6 +2255,7 @@ zh_TW:
     legacy_vote_reasons_description: 使用傳統匿名投票方式投出的選票的理由以純文字形式顯示
     anonymous_voting_participant_notice: 投票是匿名的。提交投票後，您將無法查看或更改您的投票。投票結束後才會公佈結果。
     variable_vote_weights_explanation: 本次民調採用可變權重，根據設定的權重，不同投票者的投票對結果的影響程度可能有所不同。
+    votes_have_different_weights: 在本次投票中，每張選票的權重不同，因此有些選票比其他選票更重要。
   poll_common_collapsed:
     by_who: 由 %{name}
   poll_common_calendar_invite:
@@ -2994,6 +2995,18 @@ zh_TW:
     member_vote_weights_hint: 沒有目前團體成員資格的選民權重為 1。
     vote_weights_description: 為每位選民設定投票權重，使某些選票比其他選票更重要。結果將顯示選民人數和加權得分。
     issued_vote_weights_will_change: 已發出的選票權重將會改變。
+    find_or_invite_voters: 尋找或邀請選民
+    close_search: 關閉搜尋
+    remove_voter_named: 從投票中移除 %{name}
+    remove_voter_and_any_vote_confirmation: 從本次投票中移除 %{name}？此操作也會移除該用戶投下的所有選票。
+    give_voters_different_weights_description: 賦予每位選民不同的權重。結果顯示選民人數和加權得分。
+    edit_vote_weight: 編輯投票權重
+    edit_vote_weight_for: 修改 %{name} 的投票權重（目前為 %{weight}）
+    set_all_vote_weights_title: 設定所有投票權重
+    set_all_vote_weights_search_note: 這將改變民調中所有投票者的投票權重，包括搜尋結果以外的投票者。
+    set_each_member_default_vote_weight: 設定每位成員的預設投票權重
+    set_all_weights_the_same: 將所有重量設定為相同
+    voters_will_not_be_notified: 選民不會收到通知。請透過其他方式告知他們投票情況。
   poll_receipts_page:
     participation_status_requires_min_votes: 這裡顯示哪些人有資格投票。只有在至少%{count}人投票後，才會顯示每個人是否投票。
     verify_participants: 驗證參與者
@@ -3009,6 +3022,7 @@ zh_TW:
     voted: 投票
     not_voted: 未投票
     email_addresses_for_group_admins: 電子郵件地址僅對群組管理員顯示，用於區分成員。
+    email_addresses_only_for_group_admins: 電子郵件地址僅對群組管理員可見。
   comment_reply_form:
     aria_label: 新增回覆
   discussion_template:
@@ -3102,6 +3116,12 @@ zh_TW:
     notify_members_or_invite_guests_info: 可以透過群組成員姓名通知他們，或透過電子郵件地址邀請非成員。受邀者可以參與此討論串，但無法存取群組的其他討論串。
     notify_members_info: 輸入群組成員姓名，即可通知他們此主題。
     specified_voters_only_warning: 本帖的投票僅限特定人員參與。使用此表單新增某人並不會授予其投票權，只會讓其能夠關注進展並發表評論。如果你想分配投票權，請使用投票頁面上的"新增投票者"。
+    manage_thread_members: 管理主題成員
+    find_or_invite_people: 尋找或邀請人們
+    invite_or_notify_explanation: 新用戶將被邀請加入討論串。已在討論串中的使用者將再次收到通知。
+    invite_or_notify: 邀請或通知
+    member_page_count: "%{first}–%{last} 共 %{total}"
+    guest_access_info: 透過電子郵件邀請的訪客可以參與此討論串，但無法存取其他群組討論串。
   poll_common_details_meta:
     opened: 已開啟
     opens: 打開

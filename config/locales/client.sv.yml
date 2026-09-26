@@ -2229,6 +2229,7 @@ sv:
     legacy_vote_reasons_description: Skäl från röster som avgivits med det äldre anonyma röstningsformatet visas som vanlig text
     anonymous_voting_participant_notice: Röstningen är anonym. Du kan inte granska eller ändra din röst efter att du skickat in den. Resultaten är inte tillgängliga förrän omröstningen har avslutats.
     variable_vote_weights_explanation: Denna omröstning använder varierande röstvikter, vilket gör att en persons röst påverkar resultatet mer än en annan persons enligt den tilldelade röstvikten.
+    votes_have_different_weights: Rösterna i den här omröstningen har olika vikt, så vissa räknas mer än andra.
   poll_common_collapsed:
     by_who: vid %{name}
   poll_common_calendar_invite:
@@ -2966,6 +2967,18 @@ sv:
     member_vote_weights_hint: Väljare utan nuvarande grupptillhörighet får vikt 1
     vote_weights_description: Tilldela varje väljare en röstvikt, så att vissa röster räknas mer än andra. Resultaten visar både antalet väljare och den viktade poängen.
     issued_vote_weights_will_change: Vikterna för redan utfärdade röster kommer att ändras.
+    find_or_invite_voters: Hitta eller bjud in väljare
+    close_search: Stäng sökningen
+    remove_voter_named: Ta bort %{name} från omröstningen
+    remove_voter_and_any_vote_confirmation: Vill du ta bort %{name} från den här omröstningen? Detta tar även bort alla röster de avgav.
+    give_voters_different_weights_description: Ge väljarna olika vikter. Resultaten visar antalet väljare och den viktade poängen.
+    edit_vote_weight: Redigera röstvikt
+    edit_vote_weight_for: Redigera röstvikt för %{name} (för närvarande %{weight})
+    set_all_vote_weights_title: Ange alla röstvikter
+    set_all_vote_weights_search_note: Detta ändrar röstvikten för alla väljare i omröstningen, inklusive de utanför dina sökresultat.
+    set_each_member_default_vote_weight: Ange varje medlems standardröstvikt
+    set_all_weights_the_same: Ställ in alla vikter på samma sätt
+    voters_will_not_be_notified: Väljarna kommer inte att meddelas. Informera dem om omröstningen på ett annat sätt.
   poll_receipts_page:
     participation_status_requires_min_votes: Detta visar vilka som var röstberättigade. Om varje person har röstat visas endast när minst %{count} personer har röstat.
     verify_participants: Verifiera deltagare
@@ -2981,6 +2994,7 @@ sv:
     voted: Röstade
     not_voted: Röstade inte
     email_addresses_for_group_admins: E-postadresser visas endast för gruppadministratörer för att skilja personer åt.
+    email_addresses_only_for_group_admins: E-postadresser visas endast för gruppadministratörer
   comment_reply_form:
     aria_label: Lägg till ett svar
   discussion_template:
@@ -3074,6 +3088,12 @@ sv:
     notify_members_or_invite_guests_info: Meddela gruppmedlemmar med namn eller bjud in icke-medlemmar via e-postadress. Inbjudna gäster kan delta i den här tråden men har inte tillgång till andra grupptrådar.
     notify_members_info: Ange namnen på gruppmedlemmarna för att meddela dem om den här tråden.
     specified_voters_only_warning: Den här tråden har omröstningar där endast utvalda personer kan rösta. Att lägga till någon med det här formuläret ger dem ingen röst, bara möjlighet att följa med och kommentera. Om du vill tilldela röster använder du "lägg till väljare" i omröstningen.
+    manage_thread_members: Hantera trådmedlemmar
+    find_or_invite_people: Hitta eller bjud in personer
+    invite_or_notify_explanation: Nya personer kommer att bjudas in till tråden. Personer som redan är med i tråden kommer att meddelas igen.
+    invite_or_notify: Bjud in eller meddela
+    member_page_count: "%{first}–%{last} av %{total}"
+    guest_access_info: Gäster som är inbjudna via e-post kan delta i den här tråden utan åtkomst till andra grupptrådar
   poll_common_details_meta:
     opened: Öppnad
     opens: Öppnar

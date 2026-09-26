@@ -2229,6 +2229,7 @@ tr:
     legacy_vote_reasons_description: Eski anonim oylama formatı kullanılarak verilen oyların gerekçeleri düz metin olarak gösterilir
     anonymous_voting_participant_notice: Oylama anonimdir. Oy verdikten sonra oyunuzu gözden geçiremez veya değiştiremezsiniz. Sonuçlar, oylama sona erene kadar açıklanmaz.
     variable_vote_weights_explanation: Bu anket, değişken oy ağırlıkları kullanmaktadır; bu sayede bir kişinin oyu, atanan oy ağırlığına bağlı olarak diğer bir kişinin oyundan daha fazla sonuç üzerinde etkili olabilir.
+    votes_have_different_weights: Bu ankette oyların ağırlıkları farklıdır, bu nedenle bazı oylar diğerlerinden daha fazla önem taşır.
   poll_common_collapsed:
     by_who: "%{name}"
   poll_common_calendar_invite:
@@ -2966,6 +2967,18 @@ tr:
     member_vote_weights_hint: Mevcut bir gruba üye olmayan seçmenler 1 ağırlık puanı alır.
     vote_weights_description: Her seçmene bir oy ağırlığı atayın, böylece bazı oylar diğerlerinden daha fazla önem kazanır. Sonuçlar hem seçmen sayısını hem de ağırlıklı puanı gösterir.
     issued_vote_weights_will_change: Daha önce verilmiş oyların ağırlıkları değişecektir.
+    find_or_invite_voters: Seçmenleri bulun veya davet edin
+    close_search: Aramayı kapat
+    remove_voter_named: Anketten %{name}'i kaldır
+    remove_voter_and_any_vote_confirmation: Bu anketten %{name} kullanıcısını kaldırmak mı istiyorsunuz? Bu işlem, kullanıcının verdiği tüm oyları da siler.
+    give_voters_different_weights_description: Seçmenlere farklı ağırlıklar verin. Sonuçlar, seçmen sayısını ve ağırlıklı puanı gösterir.
+    edit_vote_weight: Oy ağırlığını düzenle
+    edit_vote_weight_for: "%{name} için oy ağırlığını düzenle (şu anda %{weight})"
+    set_all_vote_weights_title: Tüm oy ağırlıklarını ayarlayın.
+    set_all_vote_weights_search_note: Bu, arama sonuçlarınızın dışında kalanlar da dahil olmak üzere anketteki tüm seçmenlerin oy ağırlıklarını değiştirir.
+    set_each_member_default_vote_weight: Her üyenin varsayılan oy ağırlığını ayarlayın.
+    set_all_weights_the_same: Tüm ağırlıkları aynı ayarlayın.
+    voters_will_not_be_notified: Seçmenlere bildirim yapılmayacak. Onlara anket hakkında başka bir yolla bilgi verin.
   poll_receipts_page:
     participation_status_requires_min_votes: Bu, kimlerin oy kullanma hakkına sahip olduğunu gösterir. Her kişinin oy kullanıp kullanmadığı yalnızca en az %{count} kişi oy verdiğinde gösterilir.
     verify_participants: Katılımcıları doğrulayın
@@ -2981,6 +2994,7 @@ tr:
     voted: Oy kullandı
     not_voted: Oy kullanmadı
     email_addresses_for_group_admins: E-posta adresleri, kişileri ayırt etmek amacıyla yalnızca grup yöneticilerine gösterilir.
+    email_addresses_only_for_group_admins: E-posta adresleri yalnızca grup yöneticilerine gösterilir.
   comment_reply_form:
     aria_label: Bir cevap ekle
   discussion_template:
@@ -3074,6 +3088,12 @@ tr:
     notify_members_or_invite_guests_info: Grup üyelerine isimleriyle bildirim gönderin veya üye olmayanları e-posta adresleriyle davet edin. Davet edilen misafirler bu tartışmaya katılabilir ancak diğer grup tartışmalarına erişemezler.
     notify_members_info: Bu konu hakkında bilgilendirmek istediğiniz grup üyelerinin adlarını girin.
     specified_voters_only_warning: Bu başlıkta yalnızca seçili kişilerin oy kullanabileceği anketler bulunmaktadır. Bu formla birini eklemek ona oy hakkı vermez, yalnızca takip etme ve yorum yapma olanağı sağlar. Oy hakkı vermek istiyorsanız ankette "oy veren ekle" seçeneğini kullanın.
+    manage_thread_members: Konu üyelerini yönetin
+    find_or_invite_people: İnsanları bulun veya davet edin
+    invite_or_notify_explanation: Yeni katılımcılar konuya davet edilecek. Konuda zaten bulunan katılımcılara ise tekrar bildirim gönderilecek.
+    invite_or_notify: Davet et veya bildir
+    member_page_count: "%{first}–%{last} / %{total}"
+    guest_access_info: E-posta ile davet edilen misafirler, diğer grup konularına erişimleri olmaksızın bu konuya katılabilirler.
   poll_common_details_meta:
     opened: Açıldı
     opens: Açılıyor

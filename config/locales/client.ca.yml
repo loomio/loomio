@@ -2254,6 +2254,7 @@ ca:
     legacy_vote_reasons_description: Els motius dels vots emesos mitjançant el format de votació anònima antic es mostren com a text sense format
     anonymous_voting_participant_notice: La votació és anònima. No podeu revisar ni canviar el vostre vot després d'enviar-lo. Els resultats no estaran disponibles fins que s'hagi tancat la votació.
     variable_vote_weights_explanation: Aquesta enquesta utilitza pesos de vot variables, permetent que el vot d'una persona influeixi més en el resultat que el d'una altra persona segons el pes de vot assignat.
+    votes_have_different_weights: Els vots en aquesta enquesta tenen pesos diferents, per la qual cosa alguns compten més que altres.
   poll_common_collapsed:
     by_who: per %{name}
   poll_common_calendar_invite:
@@ -2993,6 +2994,18 @@ ca:
     member_vote_weights_hint: Els votants que no són membres d'un grup actual reben pes 1
     vote_weights_description: Assigneu un pes de vot a cada votant, de manera que alguns vots comptin més que d'altres. Els resultats mostren tant el nombre de votants com la puntuació ponderada.
     issued_vote_weights_will_change: Els pesos dels vots ja emesos canviaran.
+    find_or_invite_voters: Trobar o convidar votants
+    close_search: Tanca la cerca
+    remove_voter_named: Elimina %{name} de l'enquesta
+    remove_voter_and_any_vote_confirmation: Voleu eliminar %{name} d'aquesta enquesta? Això també elimina qualsevol vot que hagin emès.
+    give_voters_different_weights_description: Doneu als votants diferents pesos. Els resultats mostren el nombre de votants i la puntuació ponderada.
+    edit_vote_weight: Edita el pes dels vots
+    edit_vote_weight_for: Edita el pes dels vots per a %{name} (actualment %{weight})
+    set_all_vote_weights_title: Estableix tots els pesos dels vots
+    set_all_vote_weights_search_note: Això canvia el pes dels vots de tots els votants de l'enquesta, inclosos els que no apareixen als resultats de la cerca.
+    set_each_member_default_vote_weight: Estableix el pes de vot predeterminat de cada membre
+    set_all_weights_the_same: Estableix tots els pesos iguals
+    voters_will_not_be_notified: Els votants no rebran notificacions. Feu-los saber sobre l'enquesta d'una altra manera.
   poll_receipts_page:
     participation_status_requires_min_votes: Això mostra qui tenia dret a votar. Només es mostra si cada persona ha votat quan almenys %{count} persones han votat.
     verify_participants: Verifica els participants
@@ -3008,6 +3021,7 @@ ca:
     voted: Votat
     not_voted: No votat
     email_addresses_for_group_admins: Les adreces de correu electrònic només es mostren als administradors del grup per distingir les persones.
+    email_addresses_only_for_group_admins: Les adreces de correu electrònic només es mostren als administradors del grup
   comment_reply_form:
     aria_label: Afegeix una resposta
   discussion_template:
@@ -3101,6 +3115,12 @@ ca:
     notify_members_or_invite_guests_info: Notifica els membres del grup pel seu nom o convida els que no són membres per correu electrònic. Els convidats poden participar en aquest fil però no tindran accés a altres fils del grup.
     notify_members_info: Introduïu els noms dels membres del grup per notificar-los sobre aquest fil.
     specified_voters_only_warning: Aquest fil té enquestes on només poden votar persones seleccionades. Afegir algú amb aquest formulari no li donarà vot, només la possibilitat de seguir la conversa i comentar. Si voleu assignar vots, feu servir "afegir votants" a l'enquesta.
+    manage_thread_members: Gestiona els membres del fil
+    find_or_invite_people: Trobar o convidar persones
+    invite_or_notify_explanation: Es convidarà gent nova al fil. Es notificarà de nou a les persones que ja hi siguin.
+    invite_or_notify: Convidar o notificar
+    member_page_count: "%{first}–%{last} de %{total}"
+    guest_access_info: Els convidats per correu electrònic poden participar en aquest fil sense accés a altres fils de grup.
   poll_common_details_meta:
     opened: Obert
     opens: Obreix

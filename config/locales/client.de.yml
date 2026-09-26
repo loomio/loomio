@@ -2262,6 +2262,7 @@ de:
     legacy_vote_reasons_description: Die Begründungen der im alten anonymen Abstimmungsformat abgegebenen Stimmen werden als reiner Text angezeigt
     anonymous_voting_participant_notice: Die Abstimmung ist anonym. Du kannst deine Stimme nach dem Absenden weder einsehen noch ändern. Die Ergebnisse sind erst nach Ende der Abstimmung verfügbar.
     variable_vote_weights_explanation: Diese Umfrage verwendet variable Stimmgewichte, sodass die Stimme einer Person das Ergebnis je nach zugewiesenem Stimmgewicht stärker beeinflussen kann als die einer anderen Person.
+    votes_have_different_weights: Bei dieser Umfrage haben die einzelnen Stimmen unterschiedliche Gewichtungen, manche zählen mehr als andere.
   poll_common_collapsed:
     by_who: von %{name}
   poll_common_calendar_invite:
@@ -3001,6 +3002,18 @@ de:
     member_vote_weights_hint: Wähler ohne aktuelle Gruppenmitgliedschaft erhalten Gewichtung 1
     vote_weights_description: Jedem Wähler wird ein Stimmgewicht zugewiesen, sodass manche Stimmen mehr zählen als andere. Die Ergebnisse zeigen sowohl die Anzahl der Wähler als auch die gewichtete Punktzahl.
     issued_vote_weights_will_change: Die Gewichtung der bereits abgegebenen Stimmen wird sich ändern.
+    find_or_invite_voters: Wähler finden oder einladen
+    close_search: Suche schließen
+    remove_voter_named: Entferne %{name} aus der Umfrage
+    remove_voter_and_any_vote_confirmation: "%{name} aus dieser Umfrage entfernen? Dadurch werden auch alle von dieser Person abgegebenen Stimmen entfernt."
+    give_voters_different_weights_description: Den Wählern werden unterschiedliche Gewichtungen zugewiesen. Die Ergebnisse zeigen die Anzahl der Wähler und die gewichtete Punktzahl.
+    edit_vote_weight: Gewichtung der Abstimmung bearbeiten
+    edit_vote_weight_for: Gewichtung der Stimmen für %{name} bearbeiten (derzeit %{weight})
+    set_all_vote_weights_title: Alle Stimmgewichte festlegen
+    set_all_vote_weights_search_note: Dies ändert die Gewichtung der Stimmen aller Wähler in der Umfrage, einschließlich derjenigen außerhalb deiner Suchergebnisse
+    set_each_member_default_vote_weight: Lege das Standard-Stimmengewicht jedes Mitglieds fest
+    set_all_weights_the_same: Alle Gewichte gleich einstellen
+    voters_will_not_be_notified: Die Wähler werden nicht benachrichtigt. Informiere sie auf anderem Weg über die Umfrage.
   poll_receipts_page:
     participation_status_requires_min_votes: Hier wird angezeigt, wer teilnahmeberechtigt war. Ob die einzelnen Personen abgestimmt haben, wird nur angezeigt, wenn mindestens %{count} Personen abgestimmt haben.
     verify_participants: Teilnehmer überprüfen
@@ -3016,6 +3029,7 @@ de:
     voted: Abgestimmt
     not_voted: Nicht abgestimmt
     email_addresses_for_group_admins: E-Mail-Adressen werden nur Gruppenadministratoren angezeigt, um Personen zu unterscheiden.
+    email_addresses_only_for_group_admins: E-Mail-Adressen werden nur Gruppenadministratoren angezeigt.
   comment_reply_form:
     aria_label: Eine Antwort hinzufügen
   discussion_template:
@@ -3109,6 +3123,12 @@ de:
     notify_members_or_invite_guests_info: Benachrichtige Gruppenmitglieder namentlich oder lade Nicht-Mitglieder per E-Mail-Adresse ein. Eingeladene Gäste können an diesem Thread teilnehmen, haben aber keinen Zugriff auf andere Gruppenthreads.
     notify_members_info: Gib die Namen der Gruppenmitglieder ein, um sie über diesen Thread zu benachrichtigen.
     specified_voters_only_warning: In diesem Thread gibt es Umfragen, an denen nur ausgewählte Personen abstimmen können. Wenn du jemanden mit diesem Formular hinzufügst, erhält diese Person keine Stimme, sondern nur die Möglichkeit, mitzulesen und zu kommentieren. Wenn du Stimmen vergeben möchtest, verwende in der Umfrage „Wähler hinzufügen“.
+    manage_thread_members: Thread-Mitglieder verwalten
+    find_or_invite_people: Finde oder lade Leute ein
+    invite_or_notify_explanation: Neue Teilnehmer werden zum Thread eingeladen. Diejenigen, die bereits im Thread sind, werden erneut benachrichtigt.
+    invite_or_notify: Einladen oder benachrichtigen
+    member_page_count: "%{first}–%{last} von %{total}"
+    guest_access_info: Gäste, die per E-Mail eingeladen wurden, können an diesem Thread teilnehmen, haben aber keinen Zugriff auf andere Gruppenthreads.
   poll_common_details_meta:
     opened: Geöffnet
     opens: Öffnet

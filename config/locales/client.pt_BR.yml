@@ -2275,6 +2275,7 @@ pt_BR:
     legacy_vote_reasons_description: As justificativas dos votos feitos no formato anterior de votação anônima são exibidas como texto simples
     anonymous_voting_participant_notice: A votação é anônima. Você não poderá revisar ou alterar seu voto após enviá-lo. Os resultados só serão divulgados após o encerramento da votação.
     variable_vote_weights_explanation: Esta pesquisa utiliza pesos de voto variáveis, permitindo que o voto de uma pessoa influencie o resultado mais do que o de outra, de acordo com o peso de voto atribuído.
+    votes_have_different_weights: Os votos nesta enquete têm pesos diferentes, portanto alguns contam mais do que outros.
   poll_common_collapsed:
     by_who: por %{name}
   poll_common_calendar_invite:
@@ -3014,6 +3015,18 @@ pt_BR:
     member_vote_weights_hint: Eleitores sem filiação atual a um grupo recebem peso 1
     vote_weights_description: Atribua um peso a cada eleitor, de forma que alguns votos contem mais do que outros. Os resultados mostram tanto o número de eleitores quanto a pontuação ponderada.
     issued_vote_weights_will_change: A ponderação dos votos já emitidos será alterada.
+    find_or_invite_voters: Encontre ou convide eleitores
+    close_search: Fechar pesquisa
+    remove_voter_named: Remover %{name} da enquete
+    remove_voter_and_any_vote_confirmation: Remover %{name} desta enquete? Isso também remove qualquer voto que essa pessoa tenha dado.
+    give_voters_different_weights_description: Atribua pesos diferentes aos eleitores. Os resultados mostram o número de eleitores e a pontuação ponderada.
+    edit_vote_weight: Editar peso do voto
+    edit_vote_weight_for: Editar peso do voto para %{name} (atualmente %{weight})
+    set_all_vote_weights_title: Defina todos os pesos de voto
+    set_all_vote_weights_search_note: Isso altera a ponderação dos votos de todos os eleitores na pesquisa, incluindo aqueles que não constam nos resultados da sua busca.
+    set_each_member_default_vote_weight: Defina o peso de voto padrão de cada membro.
+    set_all_weights_the_same: Defina todos os pesos iguais.
+    voters_will_not_be_notified: Os eleitores não serão notificados. Informe-os sobre a votação de outra forma.
   poll_receipts_page:
     participation_status_requires_min_votes: Isso mostra quem tinha direito a voto. A informação sobre se cada pessoa votou só é exibida quando pelo menos %{count} pessoas tiverem votado.
     verify_participants: Verificar participantes
@@ -3029,6 +3042,7 @@ pt_BR:
     voted: Votou
     not_voted: Não votou
     email_addresses_for_group_admins: Os endereços de e-mail são exibidos apenas para os administradores do grupo, a fim de distinguir as pessoas.
+    email_addresses_only_for_group_admins: Os endereços de e-mail são exibidos apenas para os administradores do grupo.
   comment_reply_form:
     aria_label: Adicionar uma resposta
   discussion_template:
@@ -3122,6 +3136,12 @@ pt_BR:
     notify_members_or_invite_guests_info: Notifique os membros do grupo pelo nome ou convide pessoas que não são membros por endereço de e-mail. Os convidados podem participar desta discussão, mas não terão acesso às outras discussões do grupo.
     notify_members_info: Insira os nomes dos membros do grupo para notificá-los sobre esta conversa.
     specified_voters_only_warning: Esta discussão contém enquetes em que apenas pessoas selecionadas podem votar. Adicionar alguém com este formulário não dará a essa pessoa um voto, apenas a possibilidade de acompanhar e comentar. Se você quiser conceder votos, use "adicionar votantes" na enquete.
+    manage_thread_members: Gerenciar membros da thread
+    find_or_invite_people: Encontre ou convide pessoas
+    invite_or_notify_explanation: Novas pessoas serão convidadas para a discussão. Quem já estiver na discussão será notificado novamente.
+    invite_or_notify: Convidar ou notificar
+    member_page_count: "%{first}–%{last} de %{total}"
+    guest_access_info: Os convidados que receberem e-mail podem participar desta discussão sem ter acesso às outras discussões do grupo.
   poll_common_details_meta:
     opened: Aberto
     opens: Abre

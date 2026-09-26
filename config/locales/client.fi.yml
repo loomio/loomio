@@ -2229,6 +2229,7 @@ fi:
     legacy_vote_reasons_description: Vanhaa anonyymiä äänestysmuotoa käyttäen annettujen äänten perustelut näytetään pelkkänä tekstinä
     anonymous_voting_participant_notice: Äänestäminen on anonyymiä. Et voi tarkastella tai muuttaa ääntäsi sen lähettämisen jälkeen. Tulokset eivät ole saatavilla ennen äänestyksen päättymistä.
     variable_vote_weights_explanation: Tässä kyselyssä käytetään vaihtelevia äänipainotuksia, jolloin yhden henkilön ääni voi vaikuttaa tulokseen enemmän kuin toisen henkilön äänipainotuksen mukaisesti.
+    votes_have_different_weights: Tässä äänestyksessä äänillä on eri painoarvo, joten jotkut äänestykset painavat enemmän kuin toiset.
   poll_common_collapsed:
     by_who: "%{name}"
   poll_common_calendar_invite:
@@ -2966,6 +2967,18 @@ fi:
     member_vote_weights_hint: Äänestäjät, joilla ei ole nykyistä ryhmän jäsenyyttä, saavat painoarvon 1
     vote_weights_description: Anna jokaiselle äänestäjälle painoarvo, jotta jotkut äänet lasketaan enemmän kuin toiset. Tulokset näyttävät sekä äänestäjien lukumäärän että painotetun pistemäärän.
     issued_vote_weights_will_change: Jo annettujen äänten painotukset muuttuvat.
+    find_or_invite_voters: Etsi tai kutsu äänestäjiä
+    close_search: Sulje haku
+    remove_voter_named: Poista %{name} kyselystä
+    remove_voter_and_any_vote_confirmation: Poistetaanko %{name} tästä kyselystä? Tämä poistaa myös kaikki hänen antamansa äänet.
+    give_voters_different_weights_description: Anna äänestäjille eri painotuksia. Tulokset näyttävät äänestäjien lukumäärän ja painotetun pistemäärän.
+    edit_vote_weight: Muokkaa äänimäärää
+    edit_vote_weight_for: Muokkaa äänimäärää käyttäjälle %{name} (tällä hetkellä %{weight})
+    set_all_vote_weights_title: Aseta kaikki äänipainotukset
+    set_all_vote_weights_search_note: Tämä muuttaa kaikkien äänestäjien äänipainotuksia kyselyssä, mukaan lukien hakutulosten ulkopuolella olevat.
+    set_each_member_default_vote_weight: Aseta kunkin jäsenen oletusäänipainotus
+    set_all_weights_the_same: Aseta kaikki painot samaksi
+    voters_will_not_be_notified: Äänestäjille ei ilmoiteta äänestyksestä. Ilmoita heille äänestyksestä toisella tavalla.
   poll_receipts_page:
     participation_status_requires_min_votes: Tämä näyttää, ketkä olivat äänioikeutettuja. Se, äänestikö kukin henkilö, näytetään vasta, kun vähintään %{count} henkilöä on äänestänyt.
     verify_participants: Vahvista osallistujat
@@ -2981,6 +2994,7 @@ fi:
     voted: Äänesti
     not_voted: Ei äänestänyt
     email_addresses_for_group_admins: Sähköpostiosoitteet näkyvät vain ryhmän ylläpitäjille ihmisten erottamiseksi toisistaan.
+    email_addresses_only_for_group_admins: Sähköpostiosoitteet näkyvät vain ryhmän ylläpitäjille
   comment_reply_form:
     aria_label: Lisää vastaus
   discussion_template:
@@ -3074,6 +3088,12 @@ fi:
     notify_members_or_invite_guests_info: Ilmoita ryhmän jäsenille nimeltä tai kutsu muita kuin jäseniä sähköpostiosoitteella. Kutsutut vieraat voivat osallistua tähän keskusteluketjuun, mutta heillä ei ole pääsyä muihin ryhmän keskusteluketjuihin.
     notify_members_info: Anna ryhmän jäsenten nimet, jotta heille ilmoitetaan tästä keskusteluketjusta.
     specified_voters_only_warning: Tässä ketjussa on äänestyksiä, joissa vain valitut henkilöt voivat äänestää. Henkilön lisääminen tällä lomakkeella ei anna hänelle ääntä, vaan vain mahdollisuuden seurata keskustelua ja kommentoida. Jos haluat antaa ääniä, käytä äänestyksessä "lisää äänestäjiä" -toimintoa.
+    manage_thread_members: Hallitse ketjun jäseniä
+    find_or_invite_people: Etsi tai kutsu ihmisiä
+    invite_or_notify_explanation: Uusia ihmisiä kutsutaan ketjuun. Ketjussa jo oleville ihmisille ilmoitetaan uudelleen.
+    invite_or_notify: Kutsu tai ilmoita
+    member_page_count: "%{first}–%{last} / %{total}"
+    guest_access_info: Sähköpostitse kutsutut vieraat voivat osallistua tähän keskusteluketjuun ilman pääsyä muihin ryhmän keskusteluketjuihin.
   poll_common_details_meta:
     opened: Avattu
     opens: Avautuu

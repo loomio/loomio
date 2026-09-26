@@ -2254,6 +2254,7 @@ nl_NL:
     legacy_vote_reasons_description: De redenen bij stemmen die met het oude anonieme stemsysteem zijn uitgebracht, worden als platte tekst weergegeven
     anonymous_voting_participant_notice: Stemmen is anoniem. Je kunt je stem niet meer bekijken of wijzigen nadat je die hebt uitgebracht. De resultaten zijn pas beschikbaar nadat de stemming is gesloten.
     variable_vote_weights_explanation: Bij deze peiling worden variabele stemgewichten gebruikt, waardoor de stem van de ene persoon de uitkomst meer kan beïnvloeden dan die van een andere persoon, afhankelijk van het toegekende stemgewicht.
+    votes_have_different_weights: In deze peiling hebben de stemmen een verschillende weging, waardoor sommige stemmen zwaarder wegen dan andere.
   poll_common_collapsed:
     by_who: door %{name}
   poll_common_calendar_invite:
@@ -2993,6 +2994,18 @@ nl_NL:
     member_vote_weights_hint: Kiezers zonder huidig groepslidmaatschap krijgen 1 gewicht.
     vote_weights_description: Ken aan elke kiezer een stemgewicht toe, zodat sommige stemmen zwaarder wegen dan andere. De resultaten tonen zowel het aantal kiezers als de gewogen score.
     issued_vote_weights_will_change: De weging van reeds uitgebrachte stemmen zal veranderen.
+    find_or_invite_voters: Zoek of nodig kiezers uit
+    close_search: Zoeken sluiten
+    remove_voter_named: Verwijder %{name} uit de poll
+    remove_voter_and_any_vote_confirmation: Wil je %{name} uit deze enquête verwijderen? Dan worden ook alle stemmen die zij hebben uitgebracht verwijderd.
+    give_voters_different_weights_description: Geef kiezers verschillende gewichten. De resultaten tonen het aantal kiezers en de gewogen score.
+    edit_vote_weight: Stemgewicht bewerken
+    edit_vote_weight_for: Bewerk het stemgewicht voor %{name} (momenteel %{weight})
+    set_all_vote_weights_title: Stel alle stemgewichten in
+    set_all_vote_weights_search_note: Dit wijzigt de stemweging van alle kiezers in de peiling, inclusief degenen die niet in je zoekresultaten voorkomen
+    set_each_member_default_vote_weight: Stel het standaard stemgewicht voor elk lid in
+    set_all_weights_the_same: Stel alle gewichten gelijk in
+    voters_will_not_be_notified: Kiezers worden niet op de hoogte gesteld. Breng hen op een andere manier op de hoogte van de stemming.
   poll_receipts_page:
     participation_status_requires_min_votes: Dit laat zien wie stemgerechtigd was. Of elke persoon heeft gestemd, wordt alleen getoond wanneer minstens %{count} mensen hebben gestemd.
     verify_participants: Deelnemers verifiëren
@@ -3008,6 +3021,7 @@ nl_NL:
     voted: Gestemd
     not_voted: Niet gestemd
     email_addresses_for_group_admins: E-mailadressen worden alleen aan groepsbeheerders getoond om personen te kunnen onderscheiden.
+    email_addresses_only_for_group_admins: E-mailadressen worden alleen getoond aan groepsbeheerders.
   comment_reply_form:
     aria_label: Voeg een antwoord toe
   discussion_template:
@@ -3101,6 +3115,12 @@ nl_NL:
     notify_members_or_invite_guests_info: Stel groepsleden persoonlijk op de hoogte of nodig niet-leden uit via hun e-mailadres. Uitgenodigde gasten kunnen deelnemen aan deze discussie, maar hebben geen toegang tot andere groepsdiscussies.
     notify_members_info: Voer de namen van de groepsleden in om hen over dit onderwerp te informeren.
     specified_voters_only_warning: In dit forumonderwerp vind je peilingen waar alleen geselecteerde personen kunnen stemmen. Iemand toevoegen met dit formulier geeft die persoon geen stem, maar alleen de mogelijkheid om mee te volgen en te reageren. Als je stemmen wilt toekennen, gebruik dan "stemmers toevoegen" in de peiling.
+    manage_thread_members: Beheer de leden van de discussie
+    find_or_invite_people: Zoek of nodig mensen uit
+    invite_or_notify_explanation: Nieuwe mensen worden uitgenodigd voor de discussie. Mensen die al in de discussie zitten, worden opnieuw op de hoogte gesteld.
+    invite_or_notify: Uitnodigen of opnieuw informeren
+    member_page_count: "%{first}–%{last} van %{total}"
+    guest_access_info: Gasten die per e-mail zijn uitgenodigd, kunnen aan deze discussie deelnemen zonder toegang te hebben tot andere groepsdiscussies.
   poll_common_details_meta:
     opened: Geopend
     opens: Opent

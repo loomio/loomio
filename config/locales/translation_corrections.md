@@ -1,5 +1,18 @@
 # Corrected translations
 
+## 2026-09-26 — Thread members and poll voter management
+
+| File | Key | Before | After | Why it was wrong |
+|------|-----|--------|-------|------------------|
+| `config/locales/client.{es,fr,it,nl_NL,pl,ru,tr}.yml` | `strand_members_list.member_page_count` | Translated interpolation names such as `%{primero}`, `%{eerste}`, `%{первый}` | `%{first}`, `%{last}`, `%{total}` | Interpolation names are code identifiers and must not be translated |
+| `config/locales/client.nl_NL.yml`, `client.ru.yml` | `poll_common_form.remove_voter_named`, `remove_voter_and_any_vote_confirmation` | `%{naam}`, `%{имя}` | `%{name}` | Translated identifiers would break the voter name in confirmation text |
+| `config/locales/client.es.yml` | `poll_common_form.give_voters_different_weights_description`, `set_all_vote_weights_search_note`, `set_each_member_default_vote_weight`, `voters_will_not_be_notified` | Formal `Asigne`, `su`, `Establezca`, `Infórmeles` | Informal `Asigna`, `tu`, `Establece`, `Infórmales` | Spanish UI uses the informal `tú` register |
+| `config/locales/client.nl_NL.yml` | `strand_members_list.invite_or_notify` | `Nodig uit of stel een melding op de hoogte` | `Uitnodigen of opnieuw informeren` | The generated label was ungrammatical and did not clearly describe inviting or notifying |
+| `config/locales/client.nl_NL.yml` | `poll_common_form.set_all_vote_weights_search_note` | Formal `uw` | Informal `je` | Dutch UI uses the informal `je` register |
+| `config/locales/client.de.yml` | `poll_common_form.remove_voter_and_any_vote_confirmation`, `set_all_vote_weights_search_note`, `voters_will_not_be_notified` | `ausschließen`; formal `Ihrer` and `Informieren Sie` | `entfernen`; informal `deiner` and `Informiere` | The action removes a voter, and German UI uses the informal register |
+| `config/locales/client.fr.yml` | `poll_common_form.give_voters_different_weights_description`, `edit_vote_weight`, `set_all_weights_the_same`, `voters_will_not_be_notified` | Formal `Attribuez`, `Réglez`, `Informez`; `Poids du vote modifié` | Informal or neutral action wording | French UI uses the informal register, and the edit action is not a completed change |
+| `config/locales/client.fr.yml` | `strand_members_list.invite_or_notify`, `guest_access_info` | `informer`; `invités reçus par courriel` | `notifier`; `invités par courriel` | The form sends a notification, and guests are invited rather than received |
+
 ## 2026-09-24 — Vote weights and voter management
 
 | File | Key | Before | After | Why it was wrong |

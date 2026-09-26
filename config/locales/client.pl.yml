@@ -2254,6 +2254,7 @@ pl:
     legacy_vote_reasons_description: Powody głosowania w tradycyjnym, anonimowym formacie są wyświetlane w postaci zwykłego tekstu
     anonymous_voting_participant_notice: Głosowanie jest anonimowe. Po oddaniu głosu nie można go przejrzeć ani zmienić. Wyniki będą dostępne dopiero po zakończeniu głosowania.
     variable_vote_weights_explanation: W tym sondażu zastosowano zmienną wagę głosu, co pozwala, aby głos jednej osoby miał większy wpływ na wynik niż głos innej osoby, zgodnie z przypisaną wagą głosu
+    votes_have_different_weights: Głosy w tej ankiecie mają różną wagę, dlatego niektóre liczą się bardziej niż inne.
   poll_common_collapsed:
     by_who: przez %{name}
   poll_common_calendar_invite:
@@ -2993,6 +2994,18 @@ pl:
     member_vote_weights_hint: Wyborcy bez aktualnego członkostwa w grupie otrzymują wagę 1
     vote_weights_description: Przypisz każdemu wyborcy wagę głosu, tak aby niektóre głosy liczyły się bardziej niż inne. Wyniki pokazują zarówno liczbę wyborców, jak i ważony wynik.
     issued_vote_weights_will_change: Waga głosów już oddanych ulegnie zmianie.
+    find_or_invite_voters: Znajdź lub zaproś wyborców
+    close_search: Zamknij wyszukiwanie
+    remove_voter_named: Usuń %{name} z ankiety
+    remove_voter_and_any_vote_confirmation: Usunąć %{name} z tej ankiety? To spowoduje również usunięcie wszystkich oddanych przez niego głosów.
+    give_voters_different_weights_description: Nadaj wyborcom różne wagi. Wyniki pokazują liczbę wyborców i ważony wynik.
+    edit_vote_weight: Edytuj wagę głosu
+    edit_vote_weight_for: Edytuj wagę głosu dla %{name} (aktualnie %{weight})
+    set_all_vote_weights_title: Ustaw wszystkie wagi głosów
+    set_all_vote_weights_search_note: Zmienia to wagę głosów wszystkich wyborców biorących udział w ankiecie, w tym tych spoza wyników wyszukiwania
+    set_each_member_default_vote_weight: Ustaw domyślną wagę głosu każdego członka
+    set_all_weights_the_same: Ustaw wszystkie ciężary na takie same
+    voters_will_not_be_notified: Wyborcy nie zostaną powiadomieni. Poinformuj ich o głosowaniu w inny sposób.
   poll_receipts_page:
     participation_status_requires_min_votes: Pokazuje, kto był uprawniony do głosowania. Informacja o tym, czy poszczególne osoby zagłosowały, jest wyświetlana tylko wtedy, gdy zagłosowały co najmniej %{count} osoby.
     verify_participants: Zweryfikuj uczestników
@@ -3008,6 +3021,7 @@ pl:
     voted: Zagłosował(a)
     not_voted: Nie zagłosował(a)
     email_addresses_for_group_admins: Adresy e-mail są widoczne tylko dla administratorów grup w celu rozróżnienia osób.
+    email_addresses_only_for_group_admins: Adresy e-mail są widoczne tylko dla administratorów grup
   comment_reply_form:
     aria_label: Dodaj odpowiedź
   discussion_template:
@@ -3101,6 +3115,12 @@ pl:
     notify_members_or_invite_guests_info: Powiadom członków grupy po imieniu lub zaproś osoby spoza grupy, podając adres e-mail. Zaproszeni goście mogą uczestniczyć w tym wątku, ale nie będą mieli dostępu do innych wątków grupy.
     notify_members_info: Wpisz nazwy członków grupy, aby powiadomić ich o tym wątku.
     specified_voters_only_warning: W tym wątku znajdują się ankiety, w których głosować mogą tylko wybrane osoby. Dodanie kogoś za pomocą tego formularza nie da mu głosu, a jedynie możliwość śledzenia dyskusji i komentowania. Jeśli chcesz przydzielić głosy, użyj w ankiecie opcji "dodaj głosujących".
+    manage_thread_members: Zarządzaj członkami wątku
+    find_or_invite_people: Znajdź lub zaproś ludzi
+    invite_or_notify_explanation: Nowe osoby zostaną zaproszone do wątku. Osoby, które już są w wątku, zostaną ponownie powiadomione.
+    invite_or_notify: Zaproś lub powiadom
+    member_page_count: "%{first}–%{last} z %{total}"
+    guest_access_info: Goście zaproszeni e-mailem mogą uczestniczyć w tym wątku bez dostępu do innych wątków grupy
   poll_common_details_meta:
     opened: Otwierany
     opens: Otwiera się

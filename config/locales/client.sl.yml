@@ -2229,6 +2229,7 @@ sl:
     legacy_vote_reasons_description: Razlogi za glasove, oddane z uporabo starejše anonimne oblike glasovanja, so prikazani kot navadno besedilo
     anonymous_voting_participant_notice: Glasovanje je anonimno. Po oddaji glasu ga ne morete pregledati ali spremeniti. Rezultati niso na voljo, dokler glasovanje ni zaključeno.
     variable_vote_weights_explanation: Ta anketa uporablja spremenljive uteži glasov, kar omogoča, da glas ene osebe bolj vpliva na izid kot glas druge osebe, odvisno od dodeljene teže glasov.
+    votes_have_different_weights: Glasovi v tej anketi imajo različno težo, zato nekateri štejejo več kot drugi.
   poll_common_collapsed:
     by_who: avtor %{name}
   poll_common_calendar_invite:
@@ -2966,6 +2967,18 @@ sl:
     member_vote_weights_hint: Volivci brez trenutnega članstva v skupini dobijo utež 1
     vote_weights_description: Vsakemu volivcu dodelite težo glasu, tako da nekateri glasovi štejejo več kot drugi. Rezultati prikazujejo tako število volivcev kot uteženo oceno.
     issued_vote_weights_will_change: Ponderji za že izdane glasove se bodo spremenili.
+    find_or_invite_voters: Poiščite ali povabite volivce
+    close_search: Zapri iskanje
+    remove_voter_named: Odstrani %{name} iz ankete
+    remove_voter_and_any_vote_confirmation: Želite odstraniti %{name} iz te ankete? S tem se odstranijo tudi vsi glasovi, ki jih je oddal.
+    give_voters_different_weights_description: Volivcem dodelite različne uteži. Rezultati prikazujejo število volivcev in uteženo oceno.
+    edit_vote_weight: Uredi težo glasov
+    edit_vote_weight_for: Uredi težo glasov za %{name} (trenutno %{weight})
+    set_all_vote_weights_title: Nastavi vse teže glasov
+    set_all_vote_weights_search_note: To spremeni utež glasov vseh volivcev v anketi, vključno s tistimi zunaj rezultatov iskanja.
+    set_each_member_default_vote_weight: Nastavite privzeto težo glasov za vsakega člana
+    set_all_weights_the_same: Vse uteži nastavite enako
+    voters_will_not_be_notified: Volivci ne bodo obveščeni. O anketi jih obvestite na drug način.
   poll_receipts_page:
     participation_status_requires_min_votes: To prikazuje, kdo je bil upravičen do glasovanja. Ali je posamezna oseba glasovala, se prikaže šele, ko glasujejo vsaj %{count} osebe.
     verify_participants: Preverjanje udeležencev
@@ -2981,6 +2994,7 @@ sl:
     voted: Glasoval/a
     not_voted: Ni glasoval/a
     email_addresses_for_group_admins: E-poštni naslovi so prikazani samo skrbnikom skupine, da se ljudje lahko razlikujejo.
+    email_addresses_only_for_group_admins: E-poštni naslovi so prikazani samo skrbnikom skupine
   comment_reply_form:
     aria_label: Dodaj odgovor
   discussion_template:
@@ -3074,6 +3088,12 @@ sl:
     notify_members_or_invite_guests_info: Obvesti člane skupine po imenu ali povabi nečlane po e-poštnem naslovu. Povabljeni gostje lahko sodelujejo v tej niti, vendar ne bodo imeli dostopa do drugih niti skupine.
     notify_members_info: Vnesite imena članov skupine, da jih obvestite o tej temi.
     specified_voters_only_warning: V tej temi so ankete, kjer lahko glasujejo samo izbrane osebe. Če nekoga dodate s tem obrazcem, mu ne boste dali glasu, ampak le možnost spremljanja in komentiranja. Če želite dodeliti glasove, v anketi uporabite "dodaj glasovalce".
+    manage_thread_members: Upravljanje članov niti
+    find_or_invite_people: Poiščite ali povabite ljudi
+    invite_or_notify_explanation: V nit bodo povabljene nove osebe. Osebe, ki so že v niti, bodo ponovno obveščene.
+    invite_or_notify: Povabilo ali obvestilo
+    member_page_count: "%{first}–%{last} od %{total}"
+    guest_access_info: Gostje, ki so bili povabljeni po e-pošti, lahko sodelujejo v tej niti brez dostopa do drugih niti skupine,
   poll_common_details_meta:
     opened: Odprto
     opens: Odpre se

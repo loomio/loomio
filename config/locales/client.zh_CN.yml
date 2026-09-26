@@ -2048,6 +2048,7 @@ zh_CN:
     voted: 投票
     not_voted: 未投票
     email_addresses_for_group_admins: 电子邮件地址仅对群组管理员显示，用于区分成员。
+    email_addresses_only_for_group_admins: 电子邮件地址仅对群组管理员可见。
   decision_tools_card:
     choose_type: 选择投票类型
     title: 促进
@@ -2328,6 +2329,7 @@ zh_CN:
     legacy_vote_reasons_description: 使用传统匿名投票方式投出的选票的理由以纯文本形式显示
     anonymous_voting_participant_notice: 投票是匿名的。提交投票后，您将无法查看或更改您的投票。投票结束后才会公布结果。
     variable_vote_weights_explanation: 本次民意调查采用可变权重，根据设定的权重，不同投票者的投票对结果的影响程度可能有所不同。
+    votes_have_different_weights: 本次投票中，每张选票的权重不同，因此有些选票比其他选票更重要。
   poll_common_collapsed:
     by_who: 由 %{name}
   poll_common_calendar_invite:
@@ -2616,6 +2618,18 @@ zh_CN:
     member_vote_weights_hint: 没有当前团体成员身份的选民权重为 1
     vote_weights_description: 为每位选民设定投票权重，使某些选票比其他选票更重要。结果将显示选民人数和加权得分。
     issued_vote_weights_will_change: 已发出的选票权重将会改变。
+    find_or_invite_voters: 寻找或邀请选民
+    close_search: 关闭搜索
+    remove_voter_named: 从投票中移除 %{name}
+    remove_voter_and_any_vote_confirmation: 从本次投票中移除 %{name}？此操作也会移除该用户投出的所有选票。
+    give_voters_different_weights_description: 赋予每位选民不同的权重。结果显示选民人数和加权得分。
+    edit_vote_weight: 编辑投票权重
+    edit_vote_weight_for: 修改 %{name} 的投票权重（当前为 %{weight}）
+    set_all_vote_weights_title: 设置所有投票权重
+    set_all_vote_weights_search_note: 这将改变民意调查中所有投票者的投票权重，包括搜索结果之外的投票者。
+    set_each_member_default_vote_weight: 设置每位成员的默认投票权重
+    set_all_weights_the_same: 将所有重量设置为相同
+    voters_will_not_be_notified: 选民不会收到通知。请通过其他方式告知他们投票情况。
   poll_proposal_form:
     start_header: 开始提案
     edit_header: 编辑提案
@@ -2993,6 +3007,12 @@ zh_CN:
     notify_members_or_invite_guests_info: 可以通过群组成员姓名通知他们，或者通过电子邮件地址邀请非成员。受邀者可以参与此讨论串，但无法访问群组的其他讨论串。
     notify_members_info: 输入群组成员姓名，即可通知他们此主题。
     specified_voters_only_warning: 本帖中的投票仅限特定人员参与。使用此表单添加某人并不会授予其投票权，只会让其能够关注进展并发表评论。如果你想分配投票权，请使用投票页面上的"添加投票者"。
+    manage_thread_members: 管理主题成员
+    find_or_invite_people: 寻找或邀请人们
+    invite_or_notify_explanation: 新用户将被邀请加入讨论串。已在讨论串中的用户将再次收到通知。
+    invite_or_notify: 邀请或通知
+    member_page_count: "%{first}–%{last} 共 %{total}"
+    guest_access_info: 通过电子邮件邀请的访客可以参与此讨论串，但无法访问其他群组讨论串。
   poll_common_details_meta:
     opened: 已打开
     opens: 打开

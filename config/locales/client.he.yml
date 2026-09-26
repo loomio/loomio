@@ -2248,6 +2248,7 @@ he:
     legacy_vote_reasons_description: נימוקים מהצבעות שניתנו באמצעות פורמט ההצבעה האנונימי הישן מוצגים כטקסט רגיל
     anonymous_voting_participant_notice: ההצבעה אנונימית. לא ניתן לעיין או לשנות את הצבעתך לאחר הגשתה. התוצאות אינן זמינות עד לסיום ההצבעה.
     variable_vote_weights_explanation: סקר זה משתמש במשקלי קולות משתנים, מה שמאפשר לקולו של אדם אחד להשפיע על התוצאה יותר מאשר קולו של אדם אחר, בהתאם למשקל הקולות שהוקצה.
+    votes_have_different_weights: לקולות בסקר זה יש משקלים שונים, כך שחלקם נחשבים יותר מאחרים.
   poll_common_collapsed:
     by_who: על פי %{name}
   poll_common_calendar_invite:
@@ -2985,6 +2986,18 @@ he:
     member_vote_weights_hint: מצביעים ללא חברות קבוצתית נוכחית מקבלים משקל 1
     vote_weights_description: הקצה לכל מצביע משקל קולות, כך שחלק מהקולות יספרו יותר מאחרים. התוצאות מציגות גם את מספר המצביעים וגם את הציון המשוקלל.
     issued_vote_weights_will_change: משקלים לקולות שכבר הונפקו ישתנו.
+    find_or_invite_voters: מצא או הזמן מצביעים
+    close_search: סגור חיפוש
+    remove_voter_named: הסר את %{name} מהסקר
+    remove_voter_and_any_vote_confirmation: להסיר את %{name} מהסקר הזה? פעולה זו מסירה גם כל הצבעה שהטילו.
+    give_voters_different_weights_description: תנו לבוחרים משקלים שונים. התוצאות מציגות את מספר הבוחרים ואת הציון המשוקלל.
+    edit_vote_weight: עריכת משקל ההצבעה
+    edit_vote_weight_for: עריכת משקל ההצבעה עבור %{name} (כרגע %{weight})
+    set_all_vote_weights_title: קבע את כל משקלי הקולות
+    set_all_vote_weights_search_note: זה משנה את משקלי הקולות של כל המצביעים בסקר, כולל אלו מחוץ לתוצאות החיפוש שלך.
+    set_each_member_default_vote_weight: קבע את משקל ההצבעה המוגדר כברירת מחדל עבור כל חבר
+    set_all_weights_the_same: קבע את כל המשקלים זהים
+    voters_will_not_be_notified: הבוחרים לא יקבלו הודעה. יש להודיע להם על הסקר בדרך אחרת.
   poll_receipts_page:
     participation_status_requires_min_votes: זה מראה מי היה זכאי להצביע. האם כל אדם הצביע מוצג רק לאחר שלפחות %{count} אנשים הצביעו.
     verify_participants: אימות משתתפים
@@ -3000,6 +3013,7 @@ he:
     voted: הצביעו
     not_voted: לא הצביעו
     email_addresses_for_group_admins: כתובות דוא"ל מוצגות רק למנהלי קבוצות כדי להבחין בין אנשים.
+    email_addresses_only_for_group_admins: כתובות דוא"ל מוצגות רק למנהלי הקבוצה
   comment_reply_form:
     aria_label: הוסף תגובה
   discussion_template:
@@ -3093,6 +3107,12 @@ he:
     notify_members_or_invite_guests_info: הודע לחברי הקבוצה לפי שמם, או הזמן אנשים שאינם חברים לפי כתובת דוא"ל. אורחים מוזמנים יכולים להשתתף בשרשור זה אך לא תהיה להם גישה לשרשורי קבוצה אחרים.
     notify_members_info: הזן שמות של חברי הקבוצה כדי להודיע להם על שרשור זה.
     specified_voters_only_warning: בשרשור הזה יש סקרים שבהם רק אנשים נבחרים יכולים להצביע. הוספת מישהו באמצעות הטופס הזה לא תעניק לו הצבעה, אלא רק את האפשרות לעקוב ולהגיב. אם ברצונכם להקצות הצבעות, השתמשו ב"הוספת מצביעים" בסקר.
+    manage_thread_members: ניהול חברי שרשור
+    find_or_invite_people: מצא או הזמן אנשים
+    invite_or_notify_explanation: אנשים חדשים יוזמנו לשרשור. אנשים שכבר נמצאים בשרשור יקבלו הודעה שוב.
+    invite_or_notify: הזמנה או הודעה
+    member_page_count: "%{first}–%{last} מתוך %{total}"
+    guest_access_info: אורחים שהוזמנו בדוא"ל יכולים להשתתף בשרשור זה ללא גישה לשרשורי קבוצה אחרים
   poll_common_details_meta:
     opened: נפתח
     opens: נפתח

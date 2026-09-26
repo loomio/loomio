@@ -2228,6 +2228,7 @@ ja:
     legacy_vote_reasons_description: 従来の匿名投票形式で行われた投票の理由は、プレーンテキストで表示されます
     anonymous_voting_participant_notice: 投票は匿名で行われます。投票送信後は、投票内容を確認したり変更したりすることはできません。投票結果は、投票締め切り後に公開されます。
     variable_vote_weights_explanation: この投票では投票の重みが変動するため、割り当てられた重みに応じて、ある人の投票が他の人の投票よりも結果に大きな影響を与える可能性があります。
+    votes_have_different_weights: この投票では、投票ごとに重みが異なるため、一部の投票は他の投票よりも重要度が高くなります。
   poll_common_collapsed:
     by_who: "%{name} による"
   poll_common_calendar_invite:
@@ -2965,6 +2966,18 @@ ja:
     member_vote_weights_hint: 現在グループに所属していない有権者は1の重みを持つ
     vote_weights_description: 各投票者に投票重みを割り当てることで、一部の投票は他の投票よりも重みが高くなります。結果には、投票者数と重み付けされたスコアの両方が表示されます。
     issued_vote_weights_will_change: 既に投票済みの票の重み付けが変更されます。
+    find_or_invite_voters: 有権者を探す、または招待する
+    close_search: 検索を閉じる
+    remove_voter_named: 投票から%{name}を削除
+    remove_voter_and_any_vote_confirmation: この投票から%{name}を削除しますか？そうすると、%{name}が行った投票もすべて削除されます。
+    give_voters_different_weights_description: 投票者に異なる重み付けを行う。結果には投票者数と重み付けされたスコアが表示される。
+    edit_vote_weight: 投票の重みを編集する
+    edit_vote_weight_for: "%{name}の投票重みを編集します（現在の重みは%{weight}です）"
+    set_all_vote_weights_title: すべての投票の重みを設定する
+    set_all_vote_weights_search_note: これにより、検索結果に含まれないユーザーも含め、投票に参加するすべてのユーザーの投票重みが変更されます。
+    set_each_member_default_vote_weight: 各メンバーのデフォルトの投票重みを設定する
+    set_all_weights_the_same: すべての重みを同じに設定する
+    voters_will_not_be_notified: 有権者には通知されません。別の方法で投票について知らせてください。
   poll_receipts_page:
     participation_status_requires_min_votes: 投票資格があった人を表示します。各人が投票したかどうかは、少なくとも%{count}人が投票した場合にのみ表示されます。
     verify_participants: 参加者を確認する
@@ -2980,6 +2993,7 @@ ja:
     voted: 投票済み
     not_voted: 未投票
     email_addresses_for_group_admins: メールアドレスは、個人を識別するためにグループ管理者のみに表示されます。
+    email_addresses_only_for_group_admins: メールアドレスはグループ管理者のみに表示されます
   comment_reply_form:
     aria_label: 返信を追加
   discussion_template:
@@ -3073,6 +3087,12 @@ ja:
     notify_members_or_invite_guests_info: グループメンバーには名前で通知するか、非メンバーにはメールアドレスで招待してください。招待されたゲストはこのスレッドに参加できますが、他のグループスレッドにはアクセスできません。
     notify_members_info: このスレッドについて通知するグループメンバーの名前を入力してください。
     specified_voters_only_warning: このスレッドには、投票できる人が限定されているアンケートがあります。このフォームで誰かを追加しても投票権は付与されず、経過を見守ってコメントできるようになるだけです。投票権を付与したい場合は、アンケートの"投票者を追加"を使用してください。
+    manage_thread_members: スレッドメンバーを管理する
+    find_or_invite_people: 人を探したり招待したりする
+    invite_or_notify_explanation: 新規参加者はスレッドに招待されます。既にスレッドに参加している方には、改めて通知されます。
+    invite_or_notify: 招待または通知する
+    member_page_count: "%{first}～%{last} / %{total}"
+    guest_access_info: メールで招待されたゲストは、他のグループスレッドにアクセスすることなく、このスレッドに参加できます。
   poll_common_details_meta:
     opened: オープンしました
     opens: 開く

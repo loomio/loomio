@@ -2271,6 +2271,7 @@ fr:
     legacy_vote_reasons_description: Les motifs des votes exprimés selon l'ancien format de vote anonyme sont affichés en texte brut
     anonymous_voting_participant_notice: Le vote est anonyme. Tu ne peux ni consulter ni modifier ton vote après l'avoir soumis. Les résultats ne sont disponibles qu'après la clôture du vote.
     variable_vote_weights_explanation: Ce sondage utilise des pondérations de vote variables, permettant ainsi au vote d'une personne d'influencer davantage le résultat que celui d'une autre, selon la pondération qui lui est attribuée.
+    votes_have_different_weights: Dans ce sondage, les votes ont des pondérations différentes, certains comptent donc plus que d'autres.
   poll_common_collapsed:
     by_who: par %{name}
   poll_common_calendar_invite:
@@ -3010,6 +3011,18 @@ fr:
     member_vote_weights_hint: Les électeurs sans adhésion actuelle à un groupe reçoivent un poids de 1
     vote_weights_description: Attribuez à chaque électeur un coefficient de pondération, afin que certains votes aient plus de poids que d'autres. Les résultats affichent à la fois le nombre de votants et le score pondéré.
     issued_vote_weights_will_change: Le poids des votes déjà exprimés sera modifié.
+    find_or_invite_voters: Trouver ou inviter des électeurs
+    close_search: Fermer la recherche
+    remove_voter_named: Supprimer %{name} du sondage
+    remove_voter_and_any_vote_confirmation: Supprimer %{name} de ce sondage ? Cela supprimera également tout vote qu'il ou elle a exprimé.
+    give_voters_different_weights_description: Attribue des poids de vote différents aux électeurs. Les résultats affichent le nombre d'électeurs et le score pondéré.
+    edit_vote_weight: Modifier le poids du vote
+    edit_vote_weight_for: Modifier le poids du vote pour %{name} (actuellement %{weight})
+    set_all_vote_weights_title: Définir tous les poids de vote
+    set_all_vote_weights_search_note: Cela modifie la pondération des votes de tous les votants dans le sondage, y compris ceux qui ne figurent pas dans vos résultats de recherche.
+    set_each_member_default_vote_weight: Définir le poids de vote par défaut de chaque membre
+    set_all_weights_the_same: Définir le même poids pour tous
+    voters_will_not_be_notified: Les électeurs ne seront pas avertis. Informe-les du sondage par un autre moyen.
   poll_receipts_page:
     participation_status_requires_min_votes: Cette liste indique qui avait le droit de voter. Le statut de participation de chaque personne n'est affiché que lorsqu'au moins %{count} personnes ont voté.
     verify_participants: Vérifier les participants
@@ -3025,6 +3038,7 @@ fr:
     voted: A voté
     not_voted: N’a pas voté
     email_addresses_for_group_admins: Les adresses électroniques ne sont affichées qu'aux administrateurs du groupe afin de distinguer les personnes.
+    email_addresses_only_for_group_admins: Les adresses électroniques ne sont visibles que par les administrateurs du groupe.
   comment_reply_form:
     aria_label: Ajouter une réponse
   discussion_template:
@@ -3118,6 +3132,12 @@ fr:
     notify_members_or_invite_guests_info: Préviens les membres du groupe par leur nom ou invite les personnes extérieures par leur adresse courriel. Les invités pourront participer à cette discussion, mais n'auront pas accès aux autres discussions du groupe.
     notify_members_info: Saisis les noms des membres du groupe pour les informer de cette discussion.
     specified_voters_only_warning: Ce fil de discussion contient des sondages où seules certaines personnes peuvent voter. Ajouter quelqu'un avec ce formulaire ne lui donnera pas de vote, seulement la possibilité de suivre la discussion et de commenter. Si tu souhaites attribuer des votes, utilise "Ajouter des votants" dans le sondage.
+    manage_thread_members: Gérer les membres du fil de discussion
+    find_or_invite_people: Trouver ou inviter des personnes
+    invite_or_notify_explanation: Les nouveaux participants seront invités à rejoindre la discussion. Les personnes déjà inscrites recevront une nouvelle notification.
+    invite_or_notify: Inviter ou notifier
+    member_page_count: "%{first}–%{last} de %{total}"
+    guest_access_info: Les invités par courriel peuvent participer à cette discussion sans avoir accès aux autres discussions du groupe
   poll_common_details_meta:
     opened: Ouvert
     opens: S'ouvre

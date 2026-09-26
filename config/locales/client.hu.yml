@@ -2236,6 +2236,7 @@ hu:
     legacy_vote_reasons_description: A hagyományos anonim szavazási formátummal leadott szavazatok indokai egyszerű szövegként jelennek meg
     anonymous_voting_participant_notice: A szavazás névtelen. A szavazat beküldése után nem ellenőrizheti vagy módosíthatja azt. Az eredmények csak a szavazás lezárultával érhetők el.
     variable_vote_weights_explanation: Ez a szavazás változó szavazati súlyokat használ, lehetővé téve, hogy az egyik személy szavazata a hozzárendelt szavazati súlytól függően jobban befolyásolja az eredményt, mint a másiké.
+    votes_have_different_weights: Ebben a szavazásban a szavazatok eltérő súllyal bírnak, így egyesek jobban számítanak, mint mások.
   poll_common_collapsed:
     by_who: tőle %{name}
   poll_common_calendar_invite:
@@ -2973,6 +2974,18 @@ hu:
     member_vote_weights_hint: Az aktuális csoporttagsággal nem rendelkező szavazók 1-es súlyt kapnak.
     vote_weights_description: Rendeljen minden szavazóhoz egy szavazati súlyt, így egyes szavazatok jobban számítanak, mint mások. Az eredmények mind a szavazók számát, mind a súlyozott pontszámot mutatják.
     issued_vote_weights_will_change: A már kiadott szavazatok súlyozása megváltozik.
+    find_or_invite_voters: Szavazók keresése vagy meghívása
+    close_search: Keresés bezárása
+    remove_voter_named: "%{name} eltávolítása a szavazásból"
+    remove_voter_and_any_vote_confirmation: Eltávolítod %{name} felhasználót ebből a szavazásból? Ezzel eltávolítod az általa leadott szavazatokat is.
+    give_voters_different_weights_description: Adjon a szavazóknak különböző súlyokat. Az eredmények a szavazók számát és a súlyozott pontszámot mutatják.
+    edit_vote_weight: Szavazati súly szerkesztése
+    edit_vote_weight_for: Szavazati súly szerkesztése %{name} felhasználó számára (jelenleg %{weight})
+    set_all_vote_weights_title: Az összes szavazati súly beállítása
+    set_all_vote_weights_search_note: Ez megváltoztatja a szavazáson részt vevő összes szavazó szavazatának súlyát, beleértve a keresési eredményeiden kívül esőket is.
+    set_each_member_default_vote_weight: Az egyes tagok alapértelmezett szavazati súlyának beállítása
+    set_all_weights_the_same: Állítsd be az összes súlyt azonosra
+    voters_will_not_be_notified: A szavazókat nem értesítjük. Más módon értesítse őket a szavazásról.
   poll_receipts_page:
     participation_status_requires_min_votes: Ez megmutatja, hogy ki volt jogosult szavazni. Az, hogy egyes személyek szavaztak-e, csak akkor jelenik meg, ha legalább %{count} ember szavazott.
     verify_participants: Résztvevők ellenőrzése
@@ -2988,6 +3001,7 @@ hu:
     voted: Szavazott
     not_voted: Nem szavazott
     email_addresses_for_group_admins: Az e-mail címek csak a csoport adminisztrátorai számára jelennek meg, hogy megkülönböztessék az embereket.
+    email_addresses_only_for_group_admins: Az e-mail címek csak a csoport adminisztrátorai számára láthatók.
   comment_reply_form:
     aria_label: Válasz hozzáadása
   discussion_template:
@@ -3081,6 +3095,12 @@ hu:
     notify_members_or_invite_guests_info: Értesítsd a csoport tagjait név szerint, vagy hívd meg a nem tagokat e-mail címükkel. A meghívott vendégek részt vehetnek ebben a beszélgetésben, de nem férhetnek hozzá a többi csoportbeszélgetéshez.
     notify_members_info: Add meg a csoport tagjainak nevét, hogy értesítsd őket erről a beszélgetésről.
     specified_voters_only_warning: Ebben a témában vannak szavazások, ahol csak kiválasztott személyek szavazhatnak. Ha valakit ezzel az űrlappal adsz hozzá, az nem ad neki szavazatot, csak lehetőséget arra, hogy kövesse a beszélgetést és hozzászóljon. Ha szavazatokat szeretnél kiosztani, használd a szavazáson a "szavazók hozzáadása" lehetőséget.
+    manage_thread_members: A téma tagjainak kezelése
+    find_or_invite_people: Személyek keresése vagy meghívása
+    invite_or_notify_explanation: Új embereket fogunk meghívni a beszélgetésbe. A beszélgetésben már részt vevő személyeket ismét értesítjük.
+    invite_or_notify: Meghívás vagy értesítés
+    member_page_count: "%{first}–%{last} a %{total}-ból"
+    guest_access_info: E-mailben meghívott vendégek részt vehetnek ebben a beszélgetésben anélkül, hogy hozzáférnének más csoportbeszélgetésekhez.
   poll_common_details_meta:
     opened: Megnyitva
     opens: Megnyílik

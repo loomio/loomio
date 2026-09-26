@@ -2229,6 +2229,7 @@ ro:
     legacy_vote_reasons_description: Motivele voturilor exprimate folosind formatul de vot anonim tradițional sunt afișate ca text simplu
     anonymous_voting_participant_notice: Votarea este anonimă. Nu puteți revizui sau modifica votul după ce l-ați trimis. Rezultatele nu sunt disponibile până la închiderea votării.
     variable_vote_weights_explanation: Acest sondaj folosește ponderi variabile ale voturilor, permițând votului unei persoane să influențeze rezultatul mai mult decât al altei persoane, în funcție de ponderea votului atribuită.
+    votes_have_different_weights: Voturile din acest sondaj au ponderi diferite, așa că unele contează mai mult decât altele.
   poll_common_collapsed:
     by_who: dupa %{name}
   poll_common_calendar_invite:
@@ -2966,6 +2967,18 @@ ro:
     member_vote_weights_hint: Alegătorii fără apartenență la un grup primesc ponderea 1
     vote_weights_description: Atribuiți fiecărui alegător o pondere a votului, astfel încât unele voturi să conteze mai mult decât altele. Rezultatele arată atât numărul de alegători, cât și scorul ponderat.
     issued_vote_weights_will_change: Ponderile voturilor deja emise se vor schimba.
+    find_or_invite_voters: Găsiți sau invitați alegători
+    close_search: Închide căutarea
+    remove_voter_named: Eliminați %{name} din sondaj
+    remove_voter_and_any_vote_confirmation: Elimină-l pe %{name} din acest sondaj? Această acțiune elimină și orice vot exprimat de acesta.
+    give_voters_different_weights_description: Acordați alegătorilor ponderi diferite. Rezultatele arată numărul de alegători și scorul ponderat.
+    edit_vote_weight: Editați ponderea voturilor
+    edit_vote_weight_for: Editați ponderea voturilor pentru %{name} (în prezent %{weight})
+    set_all_vote_weights_title: Setați toate ponderile voturilor
+    set_all_vote_weights_search_note: Aceasta modificare modifică ponderile voturilor tuturor alegătorilor din sondaj, inclusiv ale celor din afara rezultatelor căutării.
+    set_each_member_default_vote_weight: Setați ponderea implicită a voturilor pentru fiecare membru
+    set_all_weights_the_same: Setați toate greutățile la fel
+    voters_will_not_be_notified: Alegătorii nu vor fi notificați. Anunțați-i despre sondaj în alt mod.
   poll_receipts_page:
     participation_status_requires_min_votes: Aceasta arată cine a avut drept de vot. Informația despre participarea fiecărei persoane este afișată numai după ce au votat cel puțin %{count} persoane.
     verify_participants: Verificați participanții
@@ -2981,6 +2994,7 @@ ro:
     voted: A votat
     not_voted: Nu a votat
     email_addresses_for_group_admins: Adresele de e-mail sunt afișate doar administratorilor grupului pentru a distinge persoanele.
+    email_addresses_only_for_group_admins: Adresele de e-mail sunt afișate doar administratorilor grupului
   comment_reply_form:
     aria_label: Adăugați un răspuns
   discussion_template:
@@ -3074,6 +3088,12 @@ ro:
     notify_members_or_invite_guests_info: Anunță membrii grupului pe nume sau invită persoane care nu sunt membre prin adresa de e-mail. Persoanele invitate pot participa la acest fir de discuție, dar nu vor avea acces la alte fire de discuție ale grupului.
     notify_members_info: Introduceți numele membrilor grupului pentru a-i notifica despre acest fir de discuție.
     specified_voters_only_warning: Acest fir de discuție conține sondaje în care pot vota doar anumite persoane. Adăugarea cuiva cu acest formular nu îi va oferi un vot, ci doar posibilitatea de a urmări discuția și de a comenta. Dacă vrei să aloci voturi, folosește "adăugați votanți" în sondaj.
+    manage_thread_members: Gestionează membrii firului de discuție
+    find_or_invite_people: Găsește sau invită persoane
+    invite_or_notify_explanation: Noi persoane vor fi invitate în firul de discuție. Persoanele deja prezente în firul de discuție vor fi notificate din nou.
+    invite_or_notify: Invitați sau notificați
+    member_page_count: "%{first}–%{last} din %{total}"
+    guest_access_info: Invitații prin e-mail pot participa la acest fir de discuție fără acces la alte fire de discuție ale grupului.
   poll_common_details_meta:
     opened: Deschis
     opens: Se deschide
