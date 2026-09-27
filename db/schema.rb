@@ -760,7 +760,6 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_27_000001) do
     t.boolean "vote_weights_enabled", default: false, null: false
     t.integer "voters_count", default: 0, null: false
     t.integer "voting_system", default: 0, null: false
-    t.boolean "legacy_anonymous", default: false, null: false
     t.index ["author_id"], name: "index_polls_on_author_id"
     t.index ["closed_at", "closing_at"], name: "index_polls_on_closed_at_and_closing_at"
     t.index ["closed_at", "topic_id"], name: "index_polls_on_closed_at_and_topic_id"
