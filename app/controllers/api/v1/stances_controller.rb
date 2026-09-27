@@ -102,16 +102,9 @@ class Api::V1::StancesController < Api::V1::RestfulController
   def users
     poll = load_and_authorize(:poll)
     current_user.ability.authorize!(:add_voters, poll)
-    voters = if poll.detached_anonymous?
-      User.where(id: poll.anonymous_poll_voters.select(:voter_id))
-    else
-      User.where(id: poll.stances.latest.select(:participant_id))
-    end
+    voters = poll.unmasked_voters
     if query = params[:query].presence
-      voters = voters.where(
-        "users.name ILIKE :first OR users.name ILIKE :last OR users.email ILIKE :first OR users.username ILIKE :first",
-        first: "#{query}%", last: "% #{query}%"
-      )
+      voters = voters.invitable_search(query)
     end
 
     self.collection_count = voters.count
@@ -158,13 +151,10 @@ class Api::V1::StancesController < Api::V1::RestfulController
   private
 
   def add_voter_details_meta
-    # These fields were previously available through receipts, which excludes
-    # public readers and can be restricted to poll administrators.
-    can_view_details = @poll.group_id && if AppConfig.app_features[:verify_participants_admin_only]
-      @poll.admins.exists?(current_user.id)
-    else
-      @poll.members.exists?(current_user.id) || @poll.stances.latest.exists?(participant_id: current_user.id)
-    end
+    # Identified vote details are available to group members and poll participants,
+    # while anonymous participation records require a poll administrator.
+    can_view_details = @poll.group_id &&
+      (@poll.members.exists?(current_user.id) || @poll.stances.latest.exists?(participant_id: current_user.id))
     add_meta :show_voter_details, !!can_view_details
     return unless can_view_details
 

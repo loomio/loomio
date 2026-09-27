@@ -367,9 +367,7 @@ export default new class AbilityService {
 
   canVerifyParticipants(poll) {
     if (!poll.anonymous || !poll.groupId) { return false; }
-    if (poll.detachedAnonymousVoting()) { return poll.adminsInclude(Session.user()); }
-    if (!poll.membersInclude(Session.user())) { return false; }
-    return !AppConfig.features.app.verify_participants_admin_only || poll.adminsInclude(Session.user());
+    return poll.adminsInclude(Session.user());
   }
 
   canSetPollOutcome(poll) {

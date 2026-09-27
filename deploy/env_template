@@ -142,9 +142,6 @@ FEATURES_DEMO_GROUPS=1
 # Restrict explore page to signed-in users only
 # LOOMIO_RESTRICT_EXPLORE_TO_SIGNED_IN_USERS=1
 
-# Restrict "Verify participants" feature to group admins only
-# LOOMIO_VERIFY_PARTICIPANTS_ADMIN_ONLY=1
-
 # Enable search engines to index public content
 # ALLOW_ROBOTS=1
 

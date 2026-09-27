@@ -228,8 +228,7 @@ class AppConfig
       sentry_sample_rate: ENV.fetch('SENTRY_SAMPLE_RATE', 0.1).to_f,
       hidden_poll_templates: [],
       transcription: TranscriptionService.available?,
-      max_message_length: ENV.fetch('LMO_MAX_MESSAGE_LENGTH', 100000),
-      verify_participants_admin_only: !!ENV['LOOMIO_VERIFY_PARTICIPANTS_ADMIN_ONLY']
+      max_message_length: ENV.fetch('LMO_MAX_MESSAGE_LENGTH', 100000)
     }
   end
 

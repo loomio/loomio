@@ -109,6 +109,19 @@ class Api::V1::StancesControllerTest < ActionController::TestCase
     assert_equal new_voter.id, JSON.parse(response.body).fetch('users').first.fetch('id')
   end
 
+  test "voter management searches identified and detached anonymous electorates" do
+    sign_in @admin
+
+    [@poll, create_detached_anonymous_poll].each do |poll|
+      get :users, params: {poll_id: poll.id, query: @user.email}
+
+      assert_response :success
+      json = JSON.parse(response.body)
+      assert_equal [@user.id], json.fetch('users').pluck('id')
+      assert_equal 1, json.fetch('meta').fetch('total')
+    end
+  end
+
   test "non coordinator cannot page through voter management" do
     sign_in users(:alien)
 
