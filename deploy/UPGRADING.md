@@ -57,23 +57,19 @@ Allow the anonymous-poll conversion jobs to finish before upgrading beyond
 
 ## 3.3.0 anonymous-voting transition completion
 
-Loomio 3.3 removes the legacy anonymous stance implementation. Existing
-installations must run 3.2 first and complete every anonymous-poll conversion.
+Loomio 3.3 removes the legacy anonymous stance implementation. Its migration converts any remaining legacy anonymous polls, including discarded polls.
 
-While still running the 3.2 image, check the remaining count:
+If you are running 3.2, check for open or scheduled legacy anonymous polls that people still need to vote on:
 
 ```sh
 docker compose run --rm app bundle exec rails runner \
-  'puts Poll.where(anonymous: true, voting_system: :stance).count'
+  'puts Poll.kept.where(anonymous: true, voting_system: :stance, closed_at: nil).count'
 ```
 
-Do not continue until the command prints `0`. Open and scheduled legacy polls
-must be closed through the ordinary Loomio interface when voting is complete;
-3.2 queues their conversion when they close.
+Wait until voting is complete before upgrading. Close those polls through the ordinary Loomio interface if you want them to finish on 3.2; 3.2 queues their conversion when they close. A nonzero count of all legacy anonymous polls does not block the upgrade: 3.3 closes and converts any that remain, including open, scheduled, and discarded polls.
 
 Make and verify a current backup, set `LOOMIO_CONTAINER_TAG=3.3`, and run
-`./update.sh`. The 3.3 migration checks the database again and stops with a
-count and sample poll IDs if any legacy anonymous poll remains.
+`./update.sh`. The 3.3 migration checks the database after conversion and stops with a count and sample poll IDs if any legacy anonymous poll remains.
 
 ## Upgrading an older install
 
