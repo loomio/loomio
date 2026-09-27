@@ -310,6 +310,22 @@ class Api::V1::PollsControllerTest < ActionController::TestCase
     assert receipt.key?('voter_thumb_url')
   end
 
+  test "anonymous participation uses the electorate and preserves invitation dates" do
+    poll = create_detached_anonymous_poll(title: "participation source test")
+    eligible_voter = poll.anonymous_poll_voters.find_by!(voter: @user)
+    invited_at = 2.days.ago.change(usec: 0)
+    eligible_voter.update_column(:invited_at, invited_at)
+    [@admin, @user, @member].each { |voter| create_anonymous_ballot(poll: poll, voter: voter) }
+    sign_in @admin
+
+    get :receipts, params: {id: poll.key}
+
+    assert_response :success
+    record = JSON.parse(response.body).fetch("receipts").find { |receipt| receipt.fetch("voter_id") == @user.id }
+    assert_equal invited_at.to_date.iso8601, record.fetch("invited_on")
+    assert_equal true, record.fetch("vote_cast")
+  end
+
   test "anonymous participation status is hidden until three people vote" do
     poll = create_detached_anonymous_poll(title: "participation threshold test")
     sign_in @admin
@@ -486,32 +502,10 @@ class Api::V1::PollsControllerTest < ActionController::TestCase
     assert_response :forbidden
   end
 
-  test "receipts denied for non-admin member when admin only env set" do
-    ENV['LOOMIO_VERIFY_PARTICIPANTS_ADMIN_ONLY'] = '1'
-
+  test "receipts denied for identified polls" do
     poll = PollService.create(params: {
       title: "receipts test",
       poll_type: "proposal",
-      anonymous: true,
-      group_id: @group.id,
-      poll_option_names: %w[agree disagree abstain],
-      closing_at: 5.days.from_now
-    }, actor: @admin)
-
-    sign_in @user
-    get :receipts, params: { id: poll.key }
-    assert_response :forbidden
-  ensure
-    ENV.delete('LOOMIO_VERIFY_PARTICIPANTS_ADMIN_ONLY')
-  end
-
-  test "receipts allowed for group admin when admin only env set" do
-    ENV['LOOMIO_VERIFY_PARTICIPANTS_ADMIN_ONLY'] = '1'
-
-    poll = PollService.create(params: {
-      title: "receipts test",
-      poll_type: "proposal",
-      anonymous: true,
       group_id: @group.id,
       poll_option_names: %w[agree disagree abstain],
       closing_at: 5.days.from_now
@@ -519,9 +513,7 @@ class Api::V1::PollsControllerTest < ActionController::TestCase
 
     sign_in @admin
     get :receipts, params: { id: poll.key }
-    assert_response :success
-  ensure
-    ENV.delete('LOOMIO_VERIFY_PARTICIPANTS_ADMIN_ONLY')
+    assert_response :forbidden
   end
 
   # Close tests

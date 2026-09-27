@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_09_24_000001) do
+ActiveRecord::Schema[8.1].define(version: 2026_09_27_000000) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "hstore"
@@ -89,6 +89,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_24_000001) do
   create_table "anonymous_poll_voters", force: :cascade do |t|
     t.boolean "ballot_submitted", default: false, null: false
     t.boolean "group_member", default: false
+    t.datetime "invited_at"
     t.bigint "inviter_id"
     t.bigint "poll_id", null: false
     t.bigint "voter_id", null: false
@@ -1011,18 +1012,6 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_24_000001) do
   end
 
   add_check_constraint "stance_choices", "score >= 0", name: "stance_choices_score_nonnegative", validate: false
-
-  create_table "stance_receipts", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "invited_at"
-    t.bigint "inviter_id"
-    t.bigint "poll_id"
-    t.datetime "updated_at", null: false
-    t.boolean "vote_cast"
-    t.bigint "voter_id"
-    t.index ["inviter_id"], name: "index_stance_receipts_on_inviter_id"
-    t.index ["voter_id"], name: "index_stance_receipts_on_voter_id"
-  end
 
   create_table "stances", id: :serial, force: :cascade do |t|
     t.datetime "accepted_at", precision: nil

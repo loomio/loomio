@@ -474,9 +474,6 @@ class PollService
         next
       end
 
-      StanceReceipt.where(poll_id: poll.id).delete_all
-      StanceReceipt.insert_all build_receipts(poll)
-
       if poll.topic && poll.hide_results == 'until_closed'
         stance_ids = poll.stances.latest.reject(&:body_is_blank?).map(&:id)
         stance_ids_with_items = TopicItem.where(
@@ -506,29 +503,6 @@ class PollService
       end
 
       ReindexPollWorker.perform_later(poll.id)
-    end
-  end
-
-  def self.build_receipts(poll)
-    if poll.detached_anonymous?
-      return poll.anonymous_poll_voters.map do |voter|
-        {
-          poll_id: poll.id,
-          voter_id: voter.voter_id,
-          inviter_id: voter.inviter_id,
-          vote_cast: voter.ballot_submitted
-        }
-      end
-    end
-
-    poll.stances.latest.map do |stance|
-      {
-        poll_id: poll.id,
-        voter_id: stance.participant_id,
-        inviter_id: stance.inviter_id,
-        invited_at: stance.created_at,
-        vote_cast: !!stance.cast_at
-      }
     end
   end
 

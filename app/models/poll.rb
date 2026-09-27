@@ -196,7 +196,6 @@ class Poll < ApplicationRecord
   has_many :poll_options, -> { order('priority') }, dependent: :destroy, autosave: true
   accepts_nested_attributes_for :poll_options, allow_destroy: true
 
-  has_many :stance_receipts, dependent: :destroy
 
   scope :active, -> { kept.where('polls.closed_at': nil).where('polls.opened_at IS NOT NULL') }
   scope :template, -> { kept.where('polls.template': true) }

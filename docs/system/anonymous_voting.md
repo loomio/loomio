@@ -151,7 +151,7 @@ New identified polls do not need persisted participation receipts. Their named s
 
 Identified participation reports should be derived from stances.
 
-Existing `StanceReceipt` records remain available for historical polls. Complete receipt sets may be copied into `AnonymousPollVoter` during legacy migration, but the source receipts are not deleted or linked to individual ballots.
+Complete historical receipt sets were copied into `AnonymousPollVoter` during legacy migration. The later receipt cleanup copied their invitation dates into the named electorate and removed the redundant receipt table. Identified participation reports use stances.
 
 ## Poll invariants
 
@@ -442,7 +442,7 @@ The migration may copy:
 
 It must not infer historical group-membership state from current membership. If the historical value is unavailable, migrated electorate records must represent it as unknown rather than false.
 
-Some older polls may not have complete receipts. For those polls, the migration preserves the stored electorate and participation counts but does not invent named electorate rows. Named participation verification is unavailable when its source records do not exist.
+Some older polls may not have complete receipts. For those polls, the migration preserves the stored electorate and participation counts but does not invent named electorate rows. Named participation verification is unavailable when the named electorate could not be reconstructed. The later receipt cleanup removed the incomplete source rows after preserving all reliable participation information.
 
 ### Verification and deletion
 

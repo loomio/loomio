@@ -2,16 +2,12 @@ class Api::V1::PollsController < Api::V1::RestfulController
   def receipts
     @poll = load_and_authorize(:poll, :receipts)
 
-    if @poll.closed_at && StanceReceipt.where(poll_id: @poll.id).exists?
-      receipts = StanceReceipt.where(poll_id: @poll.id)
-    else
-      receipts = PollService.build_receipts(@poll).map { |h| StanceReceipt.new(h) }
-    end
+    voters_eligible = @poll.anonymous_poll_voters.to_a
 
     can_view_email = @poll.group.admins.include?(current_user)
-    memberships = @poll.group.present? ? @poll.group.memberships.where(user_id: receipts.map(&:voter_id)).index_by(&:user_id) : {}
-    voters = User.with_attached_uploaded_avatar.where(id: receipts.map(&:voter_id)).index_by(&:id)
-    inviters = User.where(id: receipts.map(&:inviter_id)).index_by(&:id)
+    memberships = @poll.group.memberships.where(user_id: voters_eligible.map(&:voter_id)).index_by(&:user_id)
+    voters = User.with_attached_uploaded_avatar.where(id: voters_eligible.map(&:voter_id)).index_by(&:id)
+    inviters = User.where(id: voters_eligible.map(&:inviter_id)).index_by(&:id)
     participation_status_visible = @poll.participation_status_visible?
 
     render json: {
@@ -20,23 +16,23 @@ class Api::V1::PollsController < Api::V1::RestfulController
       show_voter_email: can_view_email,
       participation_status_visible:,
       participation_status_votes_min: Poll::PARTICIPATION_STATUS_VOTES_MIN,
-      receipts: receipts.map do |receipt|
-        voter = voters[receipt.voter_id]
-        inviter = inviters[receipt.inviter_id]
-        membership = memberships[receipt.voter_id]
+      receipts: voters_eligible.map do |eligible_voter|
+        voter = voters[eligible_voter.voter_id]
+        inviter = inviters[eligible_voter.inviter_id]
+        membership = memberships[eligible_voter.voter_id]
         receipt_data = {
           poll_id: @poll.id,
-          voter_id: receipt.voter_id,
+          voter_id: eligible_voter.voter_id,
           voter_name: voter.name,
           voter_thumb_url: voter.thumb_url,
           voter_avatar_initials: voter.avatar_initials,
           voter_email: (voter.email if can_view_email),
           member_since: membership&.accepted_at&.to_date&.iso8601,
-          inviter_id: receipt.inviter_id,
+          inviter_id: eligible_voter.inviter_id,
           inviter_name: inviter&.name,
-          invited_on: receipt.invited_at&.to_date&.iso8601
+          invited_on: eligible_voter.invited_at&.to_date&.iso8601
         }
-        receipt_data[:vote_cast] = receipt.vote_cast if participation_status_visible
+        receipt_data[:vote_cast] = eligible_voter.ballot_submitted if participation_status_visible
         receipt_data
       end.shuffle
     }, root: false

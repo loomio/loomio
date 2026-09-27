@@ -353,7 +353,6 @@ class GroupExportServiceTest < ActiveSupport::TestCase
     group_topic_ids = Topic.where(group_id: group_ids).pluck(:id)
     comment_ids = TopicItem.where(topic_id: group_topic_ids, itemable_type: 'Comment').pluck(:itemable_id)
 
-    StanceReceipt.where(poll_id: group_poll_ids).delete_all
     Reaction.where(user_id: [admin_id, member_id]).delete_all
     NotificationDelivery.where(
       recipient_type: "User",

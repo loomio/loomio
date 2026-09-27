@@ -84,3 +84,5 @@ The following stepping-stone versions are required when upgrading an older Loomi
 - v2.11.13
 - v2.15.4
 - v2.17.1
+- v3.2.0 (complete the anonymous-poll conversion described above)
+- v3.3.0 (run its transition migration before upgrading to a later version)
