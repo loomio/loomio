@@ -136,7 +136,7 @@ const updateGroups = () => {
 const updateUnreadCounts = () => {
   unreadTopicCounts.value = {};
   const recentCutoff = subWeeks(new Date, 6);
-  Records.topics.collection.chain().find({lastActivityAt: {$gt: recentCutoff}}).where(t => t.isUnread()).data().forEach((t) => {
+  Records.topics.collection.chain().find({discardedAt: null, lastActivityAt: {$gt: recentCutoff}}).where(t => t.isUnread()).data().forEach((t) => {
     unreadTopicCounts.value['total'] = (unreadTopicCounts.value['total'] || 0) + 1;
     const groupId = t.groupId || 'direct'
     unreadTopicCounts.value[groupId] = (unreadTopicCounts.value[groupId] || 0) + 1;
