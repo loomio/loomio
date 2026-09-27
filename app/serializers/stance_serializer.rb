@@ -31,28 +31,8 @@ class StanceSerializer < ApplicationSerializer
     object.cast_at || object.created_at
   end
 
-  def include_cast_at?
-    !poll.anonymous?
-  end
-
-  def include_weight?
-    !poll.anonymous?
-  end
-
   def weight
     VoteWeight.format(object.weight)
-  end
-
-  def include_created_at?
-    !poll.anonymous?
-  end
-
-  def include_updated_at?
-    !poll.anonymous?
-  end
-
-  def include_order_at?
-    !poll.anonymous?
   end
 
   def option_scores

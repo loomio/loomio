@@ -63,7 +63,6 @@ class PollSerializer < ApplicationSerializer
              :quorum_votes_required,
              :topic_id,
              :group_id,
-             :vote_weights_supported,
              :vote_weights_enabled,
              :weighted_voting
 
@@ -111,10 +110,6 @@ class PollSerializer < ApplicationSerializer
 
   def include_stance_counts?
     results_visible?
-  end
-
-  def vote_weights_supported
-    object.vote_weights_supported?
   end
 
   def weighted_voting
