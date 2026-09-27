@@ -358,7 +358,7 @@ class Poll < ApplicationRecord
       []
     end
 
-    return columns unless weighted_voting?
+    return columns unless vote_weights_enabled?
 
     columns = columns.dup
     if one_point_choices?
@@ -378,14 +378,6 @@ class Poll < ApplicationRecord
     !anonymous? && !%w[stv meeting].include?(poll_type) && (vote_weights_enabled? || group.blank? || group.vote_weights_allowed?)
   end
 
-  def vote_weights_active?
-    vote_weights_enabled? && vote_weights_supported?
-  end
-
-  def weighted_voting?
-    vote_weights_active?
-  end
-
   def member_vote_weights_by_user_id(user_ids)
     return {} unless group_id
 
@@ -397,13 +389,13 @@ class Poll < ApplicationRecord
   end
 
   def result_score_heading_key
-    return 'poll_ranked_choice_form.points' unless weighted_voting?
+    return 'poll_ranked_choice_form.points' unless vote_weights_enabled?
 
     'poll_common.weighted_score'
   end
 
   def result_votes_heading_key
-    weighted_voting? ? 'membership_card.voters' : 'poll_common.votes'
+    vote_weights_enabled? ? 'membership_card.voters' : 'poll_common.votes'
   end
 
   def results

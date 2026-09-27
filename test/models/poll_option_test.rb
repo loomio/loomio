@@ -152,7 +152,7 @@ class PollOptionTest < ActiveSupport::TestCase
       vote_weights_enabled: true,
       notify_on_open: false
     }, actor: users(:admin))
-    assert poll.weighted_voting?
+    assert poll.vote_weights_enabled?
     assert_includes poll.result_columns, 'voter_count'
     assert_not_includes poll.result_columns, 'unweighted_score'
     assert_includes poll.result_columns, 'score'

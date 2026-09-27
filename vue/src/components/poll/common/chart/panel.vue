@@ -68,7 +68,7 @@ export default {
       poll-stv-chart-panel(v-if="poll.pollType == 'stv'" :poll="poll")
       template(v-else-if="poll.chartType != 'grid'")
         v-alert.poll-common-chart-panel__variable-vote-weights.mb-4(
-          v-if="poll.weightedVoting"
+          v-if="poll.voteWeightsEnabled"
           density="compact"
           variant="tonal"
           type="info"

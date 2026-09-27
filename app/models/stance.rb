@@ -155,7 +155,7 @@ class Stance < ApplicationRecord
   end
 
   def clamp_weight_without_vote_weights
-    self.weight = 1 if poll && !poll.vote_weights_active?
+    self.weight = 1 if poll && !poll.vote_weights_enabled?
   end
 
   def assign_option_scores

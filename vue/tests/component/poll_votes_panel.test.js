@@ -42,7 +42,7 @@ const stubs = {
 const identifiedPoll = {
   id: 42,
   anonymous: false,
-  weightedVoting: true,
+  voteWeightsEnabled: true,
   showResults: () => true,
   pollOptions: () => [],
   config: () => ({has_options: true}),

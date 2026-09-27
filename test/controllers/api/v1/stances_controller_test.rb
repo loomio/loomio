@@ -233,7 +233,7 @@ class Api::V1::StancesControllerTest < ActionController::TestCase
   end
 
   test "poll admin cannot reset weights on an anonymous poll" do
-    @poll.update_columns(vote_weights_enabled: true, anonymous: true, voting_system: Poll.voting_systems.fetch('anonymous_ballot'))
+    @poll.update_columns(anonymous: true, voting_system: Poll.voting_systems.fetch('anonymous_ballot'))
     sign_in @admin
 
     patch :reset_weights, params: {poll_id: @poll.id, weight: '0.5'}

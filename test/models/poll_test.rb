@@ -314,7 +314,6 @@ class PollTest < ActiveSupport::TestCase
     poll = create_poll
 
     refute poll.vote_weights_enabled?
-    refute poll.vote_weights_active?
   end
 
   test "a zero-weight vote counts toward participation and quorum but not score" do
@@ -354,7 +353,6 @@ class PollTest < ActiveSupport::TestCase
     poll = create_poll(vote_weights_enabled: true)
 
     assert poll.vote_weights_enabled?
-    assert poll.vote_weights_active?
   end
 
   test "switching vote weights after opening resets issued votes" do
@@ -428,7 +426,7 @@ class PollTest < ActiveSupport::TestCase
     assert poll.update(vote_weights_enabled: true)
 
     @group.update!(vote_weights_allowed: false)
-    assert poll.reload.vote_weights_active?
+    assert poll.reload.vote_weights_enabled?
   end
 
   test "anonymous, STV, and time polls cannot enable vote weights" do
@@ -443,6 +441,15 @@ class PollTest < ActiveSupport::TestCase
     time_poll = Poll.new(poll_params(poll_type: 'meeting', vote_weights_enabled: true))
     refute time_poll.valid?
     assert time_poll.errors.added?(:vote_weights_enabled, :invalid)
+  end
+
+  test "an existing anonymous poll rejects enabling vote weights" do
+    poll = create_poll
+    poll.update_columns(anonymous: true, voting_system: Poll.voting_systems.fetch('anonymous_ballot'))
+
+    refute poll.reload.update(vote_weights_enabled: true)
+    assert poll.errors.added?(:vote_weights_enabled, :invalid)
+    refute poll.reload.vote_weights_enabled?
   end
 
   test "direct polls can enable vote weights without a group setting" do

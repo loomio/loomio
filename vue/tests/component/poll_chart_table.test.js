@@ -15,7 +15,7 @@ import ChartTable from '@/components/poll/common/chart/table.vue';
 describe('weighted poll results table', () => {
   it('shows the equal and assigned weight scores in the same row', () => {
     const poll = {
-      weightedVoting: true,
+      voteWeightsEnabled: true,
       closedAt: false,
       chartType: 'bar',
       chartColumn: 'score_percent',
@@ -41,7 +41,7 @@ describe('weighted poll results table', () => {
 
   it('shows voters and score on proposals without an equal weight score column', () => {
     const poll = {
-      weightedVoting: true,
+      voteWeightsEnabled: true,
       pollType: 'proposal',
       closedAt: false,
       chartType: 'bar',
@@ -67,7 +67,7 @@ describe('weighted poll results table', () => {
 
   it('switches a proposal pie from weighted score to voter share when its header is clicked', async () => {
     const poll = {
-      weightedVoting: true,
+      voteWeightsEnabled: true,
       closedAt: false,
       chartType: 'pie',
       chartColumn: 'score_percent',
@@ -98,7 +98,7 @@ describe('weighted poll results table', () => {
 
   it('switches bars from weighted score to eligible voter share', async () => {
     const poll = {
-      weightedVoting: true,
+      voteWeightsEnabled: true,
       closedAt: false,
       chartType: 'bar',
       chartColumn: 'max_score_percent',
@@ -128,7 +128,7 @@ describe('weighted poll results table', () => {
 
   it('keeps the existing pie until a displayed measure is selected', async () => {
     const poll = {
-      weightedVoting: false,
+      voteWeightsEnabled: false,
       closedAt: false,
       chartType: 'pie',
       chartColumn: 'score_percent',
