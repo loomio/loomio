@@ -72,8 +72,7 @@ class PollExporter
       csv << meta_table.values
       csv << ['poll_options']
       results = PollService.calculate_results(@poll, @poll.poll_options)
-      keys = %w[id poll_id name name_format rank score score_percent max_score_percent voter_percent average voter_count color]
-      keys.insert(keys.index('score'), 'unweighted_score')
+      keys = %w[id poll_id name name_format rank unweighted_score score score_percent max_score_percent voter_percent average voter_count color]
       csv << keys
       results.each { |r| csv << r.slice(*keys).values }
       csv << ['votes']
