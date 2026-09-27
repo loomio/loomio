@@ -516,7 +516,7 @@ class PollService
   def self.calculate_results(poll, poll_options, undecided_voter_ids: nil)
     return calculate_stv_results(poll, poll_options) if poll.poll_type == 'stv'
 
-    weights_by_voter_id = poll.stances.latest.pluck(:participant_id, :weight).to_h.transform_values { |weight| HasVoteWeight.format(weight) }
+    weights_by_voter_id = poll.stances.latest.pluck(:participant_id, :weight).to_h.transform_values { |weight| VoteWeight.format(weight) }
 
     sorted_poll_options = case poll.order_results_by
     when 'priority'
@@ -559,7 +559,7 @@ class PollService
         name_format: poll.poll_option_name_format,
         icon: option.icon,
         rank: index+1,
-        score: weighted_results ? HasVoteWeight.format(option.total_score) : option.total_score.to_f,
+        score: weighted_results ? VoteWeight.format(option.total_score) : option.total_score.to_f,
         unweighted_score: weighted_results ? option.unweighted_score : option.total_score.to_i,
         target_percent: ((option.icon == 'agree') && (poll.agree_target.to_i > 0)) ? ((option.total_score.to_f / poll.agree_target.to_f) * 100) : 0,
         score_percent: score_percent.to_f,

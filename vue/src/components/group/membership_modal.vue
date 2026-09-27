@@ -42,7 +42,7 @@ v-card.membership-modal(:title="$t(canManageWeight ? 'membership_form.modal_titl
         type="text"
         inputmode="decimal"
         :label="$t('membership_form.weight_label')"
-        :error-messages="weightValid ? [] : [$t('membership_form.weight_invalid_decimal')]"
+        :error="!weightValid"
         @keyup.enter="submit")
   v-card-actions.membership-form-actions
     v-spacer

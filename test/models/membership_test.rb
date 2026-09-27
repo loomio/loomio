@@ -114,13 +114,17 @@ class MembershipTest < ActiveSupport::TestCase
     assert_equal :normal, membership.volume_push.to_sym
   end
 
-  test "vote weight defaults to one and accepts three decimal places" do
+  test "vote weight is nonnegative and rounds to the column precision" do
     membership = @group.add_member!(@user)
 
     assert_equal 1, membership.weight
     assert membership.update(weight: 2)
     assert membership.update(weight: '0.5')
-    refute membership.update(weight: '0.0001')
-    refute membership.update(weight: -1)
+    assert membership.update(weight: '0.0001')
+    assert_equal 0, membership.reload.weight
+    assert membership.update(weight: 1_000_001)
+    assert_raises ActiveRecord::StatementInvalid do
+      membership.update_columns(weight: -1)
+    end
   end
 end

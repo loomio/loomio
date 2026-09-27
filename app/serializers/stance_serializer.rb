@@ -40,7 +40,7 @@ class StanceSerializer < ApplicationSerializer
   end
 
   def weight
-    HasVoteWeight.format(object.weight)
+    VoteWeight.format(object.weight)
   end
 
   def include_created_at?

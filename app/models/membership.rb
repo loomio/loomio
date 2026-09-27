@@ -1,5 +1,4 @@
 class Membership < ApplicationRecord
-  include HasVoteWeight
 
   class InvitationAlreadyUsed < StandardError
     attr_accessor :membership

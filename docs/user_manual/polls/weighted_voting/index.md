@@ -6,7 +6,7 @@ Weighted voting lets some votes count more than others. You can set a different 
 - A team invites everyone to share their view, but gives formal voting weight only to designated voters. Others can vote with weight `0`, so their choices are recorded without adding to the score. The team can use different weights for a particular poll.
 - A condominium assigns voting power according to ownership share. A person with a 2.33% share can be assigned a weight of `2.33`, while someone with a 0.5% share can be assigned `0.5`.
 
-Vote weights can have up to three decimal places, from `0` to `1,000,000`. Loomio does not track which properties a person represents, who is authorized to vote for a property, or turnout by property. Check that a poll's voting method matches any rules about how many candidates a person may select; assigning weights alone does not define those rules.
+Vote weights can be `0` or greater and are stored to three decimal places. Values with more decimal places are rounded when saved. Loomio does not track which properties a person represents, who is authorized to vote for a property, or turnout by property. Check that a poll's voting method matches any rules about how many candidates a person may select; assigning weights alone does not define those rules.
 
 ## Allow vote weights in a group
 

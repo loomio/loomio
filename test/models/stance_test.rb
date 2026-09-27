@@ -34,7 +34,7 @@ class StanceTest < ActiveSupport::TestCase
     assert stance.valid?
   end
 
-  test "vote weight accepts three decimal places but rejects a fourth" do
+  test "vote weight is nonnegative and rounds to the column precision" do
     poll = PollService.create(params: poll_params(vote_weights_enabled: true), actor: @admin)
     stance = Stance.new(poll: poll, participant: @admin, weight: 0)
 
@@ -42,9 +42,12 @@ class StanceTest < ActiveSupport::TestCase
     stance.weight = 0.5
     assert stance.valid?
     stance.weight = '0.0001'
-    assert_not stance.valid?
-    stance.weight = -1
-    assert_not stance.valid?
+    stance.save!
+    assert_equal 0, stance.reload.weight
+    stance.update!(weight: 1_000_001)
+    assert_raises ActiveRecord::StatementInvalid do
+      stance.update_columns(weight: -1)
+    end
   end
 
   test "unweighted stances clamp any supplied weight to one" do

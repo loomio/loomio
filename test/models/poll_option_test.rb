@@ -95,14 +95,14 @@ class PollOptionTest < ActiveSupport::TestCase
     Stance.create!(
       participant: users(:admin),
       poll: poll,
-      weight: 1_000_000,
+      weight: 1_000_001,
       cast_at: Time.current,
       stance_choices_attributes: [{poll_option_id: option.id, score: 3_000}]
     )
 
     poll.update_counts!
 
-    assert_equal 3_000_000_000, option.reload.total_score
+    assert_equal 3_000_003_000, option.reload.total_score
   end
 
   test "fractional weights produce an exact decimal score" do

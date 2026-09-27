@@ -59,7 +59,7 @@ class Api::V1::StancesControllerTest < ActionController::TestCase
     assert_response :success
     serialized_stance = JSON.parse(response.body).fetch('stances').find { |item| item['id'] == stance.id }
     assert_equal '1', serialized_stance.fetch('weight')
-    assert_equal '1', HasVoteWeight.format(stance.reload.weight)
+    assert_equal '1', VoteWeight.format(stance.reload.weight)
   end
 
   test "voter management pages users and only includes weights for that page" do

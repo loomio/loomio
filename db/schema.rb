@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_09_27_000000) do
+ActiveRecord::Schema[8.1].define(version: 2026_09_27_000001) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "hstore"
@@ -390,7 +390,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_27_000000) do
     t.index ["volume_push"], name: "index_memberships_on_volume_push"
     t.check_constraint "volume_email = ANY (ARRAY[1, 2, 3])", name: "memberships_volume_email"
     t.check_constraint "volume_push = ANY (ARRAY[1, 2, 3])", name: "memberships_volume_push"
-    t.check_constraint "weight >= 0::numeric AND weight <= 1000000::numeric", name: "memberships_weight_in_range"
+    t.check_constraint "weight >= 0::numeric", name: "memberships_weight_nonnegative"
   end
 
   create_table "mobile_access_tokens", force: :cascade do |t|
@@ -1046,7 +1046,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_27_000000) do
     t.index ["redactor_id"], name: "index_stances_on_redactor_id"
     t.index ["revoker_id"], name: "index_stances_on_revoker_id"
     t.index ["token"], name: "index_stances_on_token", unique: true
-    t.check_constraint "weight >= 0::numeric AND weight <= 1000000::numeric", name: "stances_weight_in_range"
+    t.check_constraint "weight >= 0::numeric", name: "stances_weight_nonnegative"
   end
 
   create_table "subscription_update_receipts", force: :cascade do |t|

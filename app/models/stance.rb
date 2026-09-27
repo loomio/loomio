@@ -1,5 +1,4 @@
 class Stance < ApplicationRecord
-  include HasVoteWeight
   include CustomCounterCache::Model
   include HasMentions
   include Reactable

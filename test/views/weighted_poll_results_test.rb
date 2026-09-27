@@ -73,7 +73,7 @@ class WeightedPollResultsTest < ActiveSupport::TestCase
     assert_equal '1', option_row[option_headers.index('unweighted_score')]
     voter_row = csv[(csv.index(['votes']) + 2)..].find { |row| row[2] == @voter.id.to_s }
     assert_equal '1', voter_row[vote_headers.index('vote_weight')]
-    assert_equal '1', HasVoteWeight.format(poll.stances.latest.find_by!(participant: @voter).weight)
+    assert_equal '1', VoteWeight.format(poll.stances.latest.find_by!(participant: @voter).weight)
   end
 
   private

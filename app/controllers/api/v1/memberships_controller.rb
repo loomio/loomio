@@ -97,7 +97,7 @@ class Api::V1::MembershipsController < Api::V1::RestfulController
           avatar_initials: user.avatar_initials,
           title: membership.title,
           delegate: membership.delegate,
-          weight: HasVoteWeight.format(membership.weight)
+          weight: VoteWeight.format(membership.weight)
         }
       end
     render json: {memberships: memberships, has_current_polls: group.polls.active.exists?}

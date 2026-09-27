@@ -127,7 +127,7 @@ onMounted(async () => {
             type="text"
             inputmode="decimal"
             :label="t('poll_common_form.weight_for_all')"
-            :error-messages="voteWeightValid(resetWeight) ? [] : [t('membership_form.weight_invalid_decimal')]")
+            :error="!voteWeightValid(resetWeight)")
         v-card-actions
           v-spacer
           v-btn(variant="text" :disabled="saving" @click="resetDialog = false") {{ t('common.action.cancel') }}

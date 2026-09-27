@@ -87,7 +87,7 @@ class PollExporter
           stance.author_name,
           membership&.title,
           membership&.delegate,
-          @poll.anonymous? ? nil : HasVoteWeight.format(stance.weight),
+          @poll.anonymous? ? nil : VoteWeight.format(stance.weight),
           @poll.anonymous? ? nil : stance.created_at&.iso8601,
           @poll.anonymous? ? nil : stance.updated_at&.iso8601,
           stance.reason,
