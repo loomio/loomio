@@ -36,7 +36,9 @@ Select **Manage voters** on the poll to open the voter management window. Use **
 
 Select **Set all weights** at the top right of the voter list to update every current voter, including voters on other pages or outside the current search results. Choose **Set each member's default vote weight** to copy current group membership weights, or **Set all weights the same** to enter one value for everyone. Voters without a current group membership receive weight `1` when you copy membership defaults. This also updates people who have already voted and recalculates the poll result. Direct polls offer the one weight option because they have no group memberships.
 
-When each choice gives one point, the results table shows **Voters** for the number of people who chose each option and **Score** for the result using their assigned weights. For voting methods where a person can give more than one point, it also shows **Equal weight score**, calculated as if every voter had weight `1`. Charts and score percentages use the assigned weights. People who can view an identified poll's votes can also see voter weights. Decide whether that visibility is suitable before enabling weights.
+When each choice gives one point, the results table shows **Voters** for the number of people who chose each option and **Score** for the result using their assigned weights. For voting methods where a person can give more than one point, it also shows **Equal weight score**, calculated as if every voter had weight `1`. Score percentages use the assigned weights, and the chart shows the weighted result by default. People who can view an identified poll's votes can also see voter weights. Decide whether that visibility is suitable before enabling weights.
+
+Select a result column heading such as **Voters** or **Score** to chart that measure. The table values stay visible while the chart changes. Select **% of votes cast** or **Score** to return to the weighted result.
 
 ## Example: voters and weighted scores
 
@@ -44,4 +46,4 @@ In this proposal, Jamie and Samira agree, while Alex disagrees. Jamie's weight i
 
 ![A proposal where two people agree but one weighted disagreement has more influence](weighted-proposal-result.png)
 
-**Eligible voters** counts people, regardless of their weights. A voter with weight `0` is still eligible, and a vote they cast counts toward participation and quorum. For this example, Agree has two out of three eligible voters (about 67%), even though its share of the weighted score is 25%. A choice's **% of eligible voters** and **% of votes cast** can therefore differ. The result chart uses the weighted score.
+**Eligible voters** counts people, regardless of their weights. A voter with weight `0` is still eligible, and a vote they cast counts toward participation and quorum. For this example, Agree has two out of three eligible voters (about 67%), even though its share of the weighted score is 25%. A choice's **% of eligible voters** and **% of votes cast** can therefore differ. The chart starts with the weighted score; select **Voters** or **% of eligible voters** to see the result by people.

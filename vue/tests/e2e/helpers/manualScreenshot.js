@@ -47,6 +47,12 @@ module.exports = function(test, {outputDir} = {}) {
       `;
     }, [options.showFlash === true]);
     test.pause(300);
+    if (options.clearSelection) {
+      test.execute(function() {
+        document.activeElement?.blur();
+        window.getSelection()?.removeAllRanges();
+      });
+    }
   }
 
   function scrollIntoView(options) {

@@ -32,7 +32,12 @@ module.exports = {
     page.waitFor('.members-panel__edit-weights');
     page.clickAndWait('.members-panel__edit-weights', '.member-weights-page');
     page.expectText('.member-weights-page', 'Jamie Chen');
-    screenshot.captureElement('polls/weighted_voting/member-weights', '.member-weights-page', {width: 1200, height: 1000});
+    page.expectText('.group-page__name', 'Oatmilk Cooperative');
+    screenshot.captureElement('polls/weighted_voting/member-weights', '.group-page', {
+      width: 1200,
+      height: 1000,
+      spotlight: {selector: '.member-weights-page', padding: 16, radius: 16, opacity: 0.4, outlineWidth: 0}
+    });
   },
 
   'poll_setting': (test) => {
@@ -42,11 +47,12 @@ module.exports = {
     page.loadPath('setup_manual_oatmilk_vote_weights?view=edit');
     page.clickAndWait('.poll-common-form__more-settings', '.poll-settings-vote-weights');
     page.expectText('.poll-settings-vote-weights', 'Use vote weights');
-    screenshot.captureRegion('polls/weighted_voting/poll-setting', ['.poll-settings-vote-weights'], {
-      padding: 24,
+    screenshot.captureRegion('polls/weighted_voting/poll-setting', ['.poll-common-form__more-settings', '.poll-common-form__reminder-title'], {
+      padding: 32,
       width: 1200,
-      height: 900,
-      scrollSelector: '.poll-settings-vote-weights'
+      height: 1200,
+      scrollSelector: '.poll-settings-vote-weights',
+      spotlight: {selectors: ['.text-body-large:has(+ .text-body-medium + .poll-settings-vote-weights)', '.poll-settings-vote-weights'], padding: 16, radius: 14, opacity: 0.4, outlineWidth: 0}
     });
   },
 
@@ -70,6 +76,15 @@ module.exports = {
     page.waitFor('.poll-created .poll-common-chart-panel');
     page.expectText('.poll-common-chart-panel', 'Agree');
     page.expectText('.poll-common-chart-panel', 'Disagree');
-    screenshot.captureElement('polls/weighted_voting/weighted-proposal-result', '.poll-created .poll-common-chart-panel', {width: 1200, height: 1000});
+    screenshot.captureRegion('polls/weighted_voting/weighted-proposal-result', ['.poll-created .poll-common-card__title', '.poll-created .poll-common-chart-panel'], {
+      padding: 24,
+      width: 1200,
+      height: 1400,
+      clearSelection: true,
+      spotlight: {selector: '.poll-created .poll-common-chart-panel', padding: 16, radius: 16, opacity: 0.4, outlineWidth: 0}
+    });
+    page.click('.poll-common-chart-table thead th:nth-child(3) button');
+    page.expectElement('.poll-common-chart-table thead th:nth-child(3) button[aria-pressed="true"]');
+    page.expectText('.poll-common-chart-table', '25%');
   }
 };

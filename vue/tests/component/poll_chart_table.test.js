@@ -5,6 +5,10 @@ vi.mock('@/shared/services/records', () => ({
   default: {pollOptions: {find: () => ({name: 'Yes', meaning: ''})}, users: {find: () => null}}
 }));
 vi.mock('@/mixins/watch_records', () => ({default: {methods: {watchRecords: () => {}}}}));
+vi.mock('vue-i18n', async importOriginal => ({
+  ...await importOriginal(),
+  useI18n: () => ({t: key => key})
+}));
 
 import ChartTable from '@/components/poll/common/chart/table.vue';
 
@@ -59,5 +63,93 @@ describe('weighted poll results table', () => {
       'common.option', 'membership_card.voters', 'poll_common.weighted_score'
     ]);
     expect(wrapper.findAll('tbody td').slice(-2).map(cell => cell.text())).toEqual(['2', '2.83']);
+  });
+
+  it('switches a proposal pie from weighted score to voter share when its header is clicked', async () => {
+    const poll = {
+      weightedVoting: true,
+      closedAt: false,
+      chartType: 'pie',
+      chartColumn: 'score_percent',
+      singleChoice: () => true,
+      resultColumns: ['chart', 'name', 'votes', 'score', 'votes_cast_percent', 'voter_percent'],
+      results: [
+        {id: 1, name: 'Agree', name_format: 'plain', color: 'green', voter_count: 2, score: '1', score_percent: 25, voter_percent: 66.67},
+        {id: 2, name: 'Disagree', name_format: 'plain', color: 'red', voter_count: 1, score: '3', score_percent: 75, voter_percent: 33.33}
+      ]
+    };
+    const wrapper = shallowMount(ChartTable, {
+      props: {poll},
+      global: {
+        mocks: {$t: key => key},
+        stubs: {VTable: {template: '<table><slot /></table>'}, PlainText: {template: '<span>Option</span>'}}
+      }
+    });
+
+    expect(wrapper.vm.slices.map(slice => slice.value)).toEqual([25, 75]);
+    const voterHeader = wrapper.findAll('thead button').find(button => button.text() === 'membership_card.voters');
+    await voterHeader.trigger('click');
+    expect(voterHeader.attributes('aria-pressed')).toBe('true');
+    expect(wrapper.vm.slices.map(slice => slice.value)).toEqual([66.67, 33.33]);
+    expect(wrapper.findAll('tbody tr').map(row => row.text())).toEqual([
+      expect.stringContaining('2'), expect.stringContaining('1')
+    ]);
+  });
+
+  it('switches bars from weighted score to eligible voter share', async () => {
+    const poll = {
+      weightedVoting: true,
+      closedAt: false,
+      chartType: 'bar',
+      chartColumn: 'max_score_percent',
+      resultColumns: ['chart', 'name', 'score', 'voter_count'],
+      results: [
+        {id: 1, name: 'Alpha', name_format: 'plain', score: '2', voter_count: 3, voter_percent: 75},
+        {id: 2, name: 'Beta', name_format: 'plain', score: '4', voter_count: 1, voter_percent: 25}
+      ]
+    };
+    const wrapper = shallowMount(ChartTable, {
+      props: {poll},
+      global: {
+        mocks: {$t: key => key},
+        stubs: {VTable: {template: '<table><slot /></table>'}, PlainText: {template: '<span>Option</span>'}}
+      }
+    });
+
+    expect(wrapper.findAll('tbody .bg-info').map(bar => bar.attributes('style'))).toEqual([
+      'width: 50%; height: 24px;', 'width: 100%; height: 24px;'
+    ]);
+    const voterHeader = wrapper.findAll('thead button').find(button => button.text() === 'membership_card.voters');
+    await voterHeader.trigger('click');
+    expect(wrapper.findAll('tbody .bg-info').map(bar => bar.attributes('style'))).toEqual([
+      'width: 75%; height: 24px;', 'width: 25%; height: 24px;'
+    ]);
+  });
+
+  it('keeps the existing pie until a displayed measure is selected', async () => {
+    const poll = {
+      weightedVoting: false,
+      closedAt: false,
+      chartType: 'pie',
+      chartColumn: 'score_percent',
+      singleChoice: () => true,
+      pieSlices: () => [{color: 'green', value: 100}],
+      resultColumns: ['chart', 'name', 'voter_percent', 'voter_count'],
+      results: [
+        {id: 1, name: 'Agree', name_format: 'plain', color: 'green', voter_count: 1, voter_percent: 50},
+        {id: -1, name: 'Undecided', name_format: 'plain', color: 'grey', voter_count: 1, voter_percent: 50}
+      ]
+    };
+    const wrapper = shallowMount(ChartTable, {
+      props: {poll},
+      global: {
+        mocks: {$t: key => key},
+        stubs: {VTable: {template: '<table><slot /></table>'}, PlainText: {template: '<span>Option</span>'}}
+      }
+    });
+
+    expect(wrapper.vm.slices.map(slice => slice.value)).toEqual([100]);
+    await wrapper.findAll('thead button').find(button => button.text() === 'membership_card.voters').trigger('click');
+    expect(wrapper.vm.slices.map(slice => slice.value)).toEqual([50, 50]);
   });
 });
