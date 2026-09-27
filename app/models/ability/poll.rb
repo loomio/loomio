@@ -22,7 +22,7 @@ module Ability::Poll
       poll.results_visible?(voted: voted)
     end
 
-    can :receipts, ::Poll do |poll|
+    can :view_anonymous_voters, ::Poll do |poll|
       poll.anonymous? && poll.group_id && poll.admins.exists?(user.id)
     end
 

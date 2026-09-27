@@ -335,7 +335,7 @@ Rails.application.routes.draw do
 
       resources :polls, only: [:show, :index, :create, :update] do
         member do
-          get :receipts
+          get :votes
           post :remind
           delete :discard
           post :close

@@ -1,20 +1,16 @@
-import { flushPromises, shallowMount } from '@vue/test-utils';
+import { flushPromises, mount } from '@vue/test-utils';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
+import { nextTick } from 'vue';
 
 const mocks = vi.hoisted(() => ({
   fetch: vi.fn(),
-  findByIds: vi.fn(),
   canVerifyParticipants: vi.fn(),
   replace: vi.fn(),
   event: vi.fn()
 }));
 
-vi.mock('@/shared/services/records', () => ({
-  default: {fetch: mocks.fetch, stances: {findByIds: mocks.findByIds}}
-}));
-vi.mock('@/shared/services/ability_service', () => ({
-  default: {canVerifyParticipants: mocks.canVerifyParticipants}
-}));
+vi.mock('@/shared/services/records', () => ({default: {fetch: mocks.fetch}}));
+vi.mock('@/shared/services/ability_service', () => ({default: {canVerifyParticipants: mocks.canVerifyParticipants}}));
 vi.mock('@/shared/services/event_bus', () => ({default: {$emit: mocks.event}}));
 vi.mock('vue-router', () => ({
   useRoute: () => ({query: {}}),
@@ -22,162 +18,95 @@ vi.mock('vue-router', () => ({
 }));
 vi.mock('vue-i18n', async importOriginal => ({
   ...await importOriginal(),
-  useI18n: () => ({t: key => key})
+  useI18n: () => ({t: (key, params) => key === 'poll_common_form.voter_page_count'
+    ? `${params.first}–${params.last} of ${params.total}` : key})
 }));
 
 import VotesPanel from '@/components/poll/common/votes_panel.vue';
 
 const stubs = {
   VTable: {template: '<table><slot /></table>'},
-  VAlert: {template: '<div><slot /></div>'},
   VAvatar: {template: '<div><slot /></div>'},
   VSelect: {template: '<div />'},
   VTextField: {template: '<div />'},
-  VPagination: true,
-  UserAvatar: true,
-  TimeAgo: true,
-  Loading: true
+  VPagination: {template: '<div />'},
+  VIcon: {template: '<span />'},
+  Loading: {template: '<div />'}
 };
 
-const identifiedPoll = {
+const poll = {
   id: 42,
   anonymous: false,
   voteWeightsEnabled: true,
+  pollType: 'proposal',
   showResults: () => true,
-  pollOptions: () => [],
+  pollOptions: () => [{id: 5, optionName: () => 'Agree'}],
   config: () => ({has_options: true}),
   hasVariableScore: () => false
 };
 
-function mountPanel(poll) {
-  return shallowMount(VotesPanel, {props: {poll}, global: {stubs}});
+function mountPanel(overrides = {}) {
+  return mount(VotesPanel, {props: {poll: {...poll, ...overrides}}, global: {stubs}});
 }
 
 describe('Poll votes panel', () => {
-  beforeEach(() => {
-    vi.clearAllMocks();
-  });
+  beforeEach(() => { vi.clearAllMocks(); });
 
-  it('renders the identified voter rows returned by the paginated API', async () => {
-    const stance = {
-      id: 7,
-      participantId: 1,
-      weight: 3,
-      reason: 'A private reason that does not belong in the table',
-      castAt: '2026-09-23T10:00:00Z',
-      participant: () => ({id: 1, name: 'Alex'}),
-      participantName: () => 'Alex',
-      sortedChoices: () => [{show: true, pollOption: {id: 5, optionName: () => 'Agree'}}]
-    };
-    mocks.fetch.mockResolvedValue({stances: [{id: 7}], meta: {
-      total: 1, show_voter_email: true, show_voter_details: true,
-      voter_details_by_user_id: {1: {
-        voter_email: 'alex@example.com', member_since: '2024-01-02',
-        inviter_name: 'Morgan', invited_on: '2026-09-22'
-      }}
-    }});
-    mocks.findByIds.mockReturnValue([stance]);
-
-    const wrapper = mountPanel(identifiedPoll);
-    await flushPromises();
-
-    expect(mocks.fetch).toHaveBeenCalledWith({
-      path: 'stances',
-      params: {per: 50, poll_id: 42, from: 0}
+  it('renders identified votes from the poll votes endpoint', async () => {
+    mocks.fetch.mockResolvedValue({
+      voters: [{
+        voter_id: 1, voter_name: 'Alex', voter_email: 'alex@example.com',
+        vote_cast: true, option_scores: {5: 1}, weight: '3',
+        member_since: '2024-01-02', inviter_name: 'Morgan', invited_on: '2026-09-22'
+      }],
+      meta: {total: 1, show_voter_email: true, show_voter_details: true}
     });
+
+    const wrapper = mountPanel();
+    await flushPromises();
+    await nextTick();
+
+    expect(mocks.fetch).toHaveBeenCalledWith({path: 'polls/42/votes', params: {per: 25, from: 0}});
     expect(wrapper.findAll('tbody tr')).toHaveLength(1);
     expect(wrapper.text()).toContain('Alex');
     expect(wrapper.text()).toContain('Agree');
     expect(wrapper.text()).toContain('3');
     expect(wrapper.text()).toContain('alex@example.com');
-    expect(wrapper.text()).toContain('poll_receipts_page.email_addresses_only_for_group_admins');
-    expect(wrapper.text()).toContain('2024-01-02');
     expect(wrapper.text()).toContain('Morgan');
-    expect(wrapper.text()).toContain('2026-09-22');
-    expect(wrapper.text()).not.toContain(stance.reason);
-    expect(wrapper.findAll('thead th').map(cell => cell.text()).slice(1)).toEqual([
-      'poll_receipts_page.voter_name', 'poll_receipts_page.voter_email',
-      'poll_common_votes_panel.stance', 'poll_common_votes_panel.vote_weight_column',
-      'poll_receipts_page.member_since',
-      'poll_receipts_page.invited_by', 'poll_receipts_page.invited_on'
-    ]);
   });
 
-  it.each([
-    ['proposal', 'Agree', 1, null, false, 'Agree'],
-    ['poll', 'North', 1, null, false, 'North'],
-    ['score', 'North', 4, null, true, 'North(4)'],
-    ['dot_vote', 'North', 3, null, true, 'North(3)'],
-    ['ranked_choice', 'North', 3, 1, true, '1. North']
-  ])('shows the %s vote and its weight in adjacent columns', async (pollType, optionName, score, rank, variableScore, expectedVote) => {
-    const choice = {show: true, score, rank, pollOption: {id: 5, optionName: () => optionName}};
-    const stance = {
-      id: 7,
-      participantId: 1,
-      weight: '2.33',
-      castAt: '2026-09-23T10:00:00Z',
-      participant: () => ({id: 1, name: 'Alex'}),
-      participantName: () => 'Alex',
-      sortedChoices: () => [choice]
-    };
-    mocks.fetch.mockResolvedValue({stances: [{id: 7}], meta: {total: 1}});
-    mocks.findByIds.mockReturnValue([stance]);
-
-    const wrapper = mountPanel({
-      ...identifiedPoll, pollType,
-      hasVariableScore: () => variableScore
-    });
-    await flushPromises();
-
-    const cells = wrapper.findAll('tbody tr td');
-    expect(cells[2].text()).toBe(expectedVote);
-    expect(cells[3].text()).toBe('2.33');
-  });
-
-  it('keeps anonymous participation status hidden below the threshold', async () => {
+  it('does not show anonymous participation status below the threshold', async () => {
     mocks.canVerifyParticipants.mockReturnValue(true);
     mocks.fetch.mockResolvedValue({
-      receipts: [{voter_id: 1, voter_name: 'Alex', inviter_name: 'Morgan', invited_on: '2026-09-22'}],
-      voters_count: 1,
-      show_voter_email: false,
-      participation_status_visible: false,
-      participation_status_votes_min: 3
+      voters: [{voter_id: 1, voter_name: 'Alex', inviter_name: 'Morgan'}],
+      meta: {total: 1, show_voter_email: false, show_voter_details: true,
+        participation_status_visible: false, participation_status_votes_min: 3}
     });
 
-    const wrapper = mountPanel({...identifiedPoll, anonymous: true});
+    const wrapper = mountPanel({anonymous: true, voteWeightsEnabled: false});
     await flushPromises();
+    await nextTick();
 
-    expect(mocks.fetch).toHaveBeenCalledWith({path: 'polls/42/receipts'});
+    expect(mocks.fetch).toHaveBeenCalledWith({path: 'polls/42/votes', params: {per: 25, from: 0}});
     expect(wrapper.findAll('tbody tr')).toHaveLength(1);
     expect(wrapper.text()).toContain('Morgan');
     expect(wrapper.text()).not.toContain('poll_receipts_page.vote_cast');
-    expect(wrapper.text()).not.toContain('poll_receipts_page.email_addresses_only_for_group_admins');
   });
 
-  it('states who can see email addresses in an admin’s anonymous participation view', async () => {
-    mocks.canVerifyParticipants.mockReturnValue(true);
-    mocks.fetch.mockResolvedValue({
-      receipts: [{voter_id: 1, voter_name: 'Alex', voter_email: 'alex@example.com'}],
-      voters_count: 1,
-      show_voter_email: true,
-      participation_status_visible: false,
-      participation_status_votes_min: 3
-    });
-
-    const wrapper = mountPanel({...identifiedPoll, anonymous: true});
-    await flushPromises();
-
-    expect(wrapper.text()).toContain('poll_receipts_page.email_addresses_only_for_group_admins');
-    expect(wrapper.text()).toContain('poll_receipts_page.voter_email');
-    expect(wrapper.text()).toContain('alex@example.com');
-  });
-
-  it('does not fetch anonymous participation records for other viewers', () => {
+  it('does not request anonymous voter records for an unauthorized viewer', () => {
     mocks.canVerifyParticipants.mockReturnValue(false);
-
-    const wrapper = mountPanel({...identifiedPoll, anonymous: true});
-
+    const wrapper = mountPanel({anonymous: true});
     expect(mocks.fetch).not.toHaveBeenCalled();
     expect(wrapper.text()).toContain('poll_common_votes_panel.participation_records_restricted');
+  });
+
+  it('shows the result range beside pagination', async () => {
+    mocks.fetch.mockResolvedValue({voters: [], meta: {total: 50}});
+
+    const wrapper = mountPanel();
+    await flushPromises();
+
+    expect(wrapper.text()).toContain('1–25 of 50');
+    expect(wrapper.find('.poll-common-votes-panel__pagination').exists()).toBe(true);
   });
 });

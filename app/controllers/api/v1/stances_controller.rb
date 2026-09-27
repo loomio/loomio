@@ -95,7 +95,6 @@ class Api::V1::StancesController < Api::V1::RestfulController
 
       collection.order('cast_at DESC NULLS LAST, created_at DESC')
     end
-    add_voter_details_meta if !@poll.anonymous?
     respond_with_collection
   end
 
@@ -149,34 +148,6 @@ class Api::V1::StancesController < Api::V1::RestfulController
   end
 
   private
-
-  def add_voter_details_meta
-    # Identified vote details are available to group members and poll participants,
-    # while anonymous participation records require a poll administrator.
-    can_view_details = @poll.group_id &&
-      (@poll.members.exists?(current_user.id) || @poll.stances.latest.exists?(participant_id: current_user.id))
-    add_meta :show_voter_details, !!can_view_details
-    return unless can_view_details
-
-    stances = collection.to_a
-    voter_ids = stances.map(&:participant_id)
-    memberships = @poll.group.present? ? @poll.group.memberships.where(user_id: voter_ids).index_by(&:user_id) : {}
-    inviters = User.where(id: stances.map(&:inviter_id).compact).index_by(&:id)
-    show_voter_email = @poll.group.admins.include?(current_user)
-    voters = show_voter_email ? User.where(id: voter_ids).index_by(&:id) : {}
-
-    add_meta :show_voter_email, show_voter_email
-    details_by_user_id = stances.map do |stance|
-      details = {
-        member_since: memberships[stance.participant_id]&.accepted_at&.to_date&.iso8601,
-        inviter_name: inviters[stance.inviter_id]&.name,
-        invited_on: stance.created_at&.to_date&.iso8601
-      }
-      details[:voter_email] = voters[stance.participant_id]&.email if show_voter_email
-      [stance.participant_id, details]
-    end.to_h
-    add_meta :voter_details_by_user_id, details_by_user_id
-  end
 
   def add_voter_role_meta(user_ids)
     self.add_meta :guest_ids, @poll.topic.topic_readers.guests.pluck(:user_id) & user_ids

@@ -19,34 +19,26 @@ class Api::V1::StancesControllerTest < ActionController::TestCase
 
   # -- Index tests --
 
-  test "identified votes include the former verification details for the current page" do
+  test "generic stance index does not include votes page voter details" do
     sign_in @admin
 
     get :index, params: {poll_id: @poll.id, per: 1, from: 0}
 
     assert_response :success
     json = JSON.parse(response.body)
-    first_stance = json.fetch('stances').first
-    details = json.fetch('meta').fetch('voter_details_by_user_id')
-    assert_equal [first_stance.fetch('participant_id').to_s], details.keys
-    assert_equal true, json.fetch('meta').fetch('show_voter_email')
-    assert_equal true, json.fetch('meta').fetch('show_voter_details')
-    assert details.values.first.key?('member_since')
-    assert details.values.first.key?('inviter_name')
-    assert details.values.first.key?('invited_on')
-    assert details.values.first.key?('voter_email')
+    assert_equal 1, json.fetch('stances').length
+    refute json.fetch('meta').key?('voter_details_by_user_id')
   end
 
-  test "identified vote details do not expose email to an ordinary voter" do
+  test "generic stance index omits voter details for an ordinary voter" do
     sign_in @user
 
     get :index, params: {poll_id: @poll.id, per: 1}
 
     assert_response :success
     json = JSON.parse(response.body)
-    assert_equal false, json.fetch('meta').fetch('show_voter_email')
-    assert_equal true, json.fetch('meta').fetch('show_voter_details')
-    assert json.fetch('meta').fetch('voter_details_by_user_id').values.all? { |details| !details.key?('voter_email') }
+    refute json.fetch('meta').key?('show_voter_email')
+    refute json.fetch('meta').key?('voter_details_by_user_id')
   end
 
   test "unweighted identified votes serialize the effective weight of one" do
@@ -298,7 +290,6 @@ class Api::V1::StancesControllerTest < ActionController::TestCase
     response_json = JSON.parse(response.body)
     viewer_stance = response_json.fetch('stances').find { |stance| stance['id'] == public_stance.id }
     assert_equal '2', viewer_stance.fetch('weight')
-    assert_equal false, response_json.fetch('meta').fetch('show_voter_details')
     assert_not response_json.fetch('meta').key?('voter_details_by_user_id')
   end
 

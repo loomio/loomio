@@ -287,7 +287,7 @@ class Api::V1::PollsControllerTest < ActionController::TestCase
   end
 
   # Receipts tests
-  test "receipts returns receipts for a poll" do
+  test "votes returns anonymous voter rows" do
     @admin.update!(name: 'Test Admin')
     poll = PollService.create(params: {
       title: "receipts test",
@@ -299,15 +299,17 @@ class Api::V1::PollsControllerTest < ActionController::TestCase
     }, actor: @admin)
 
     sign_in @admin
-    get :receipts, params: { id: poll.key }
+    get :votes, params: { id: poll.key }
     assert_response :success
 
     json = JSON.parse(response.body)
-    assert_equal poll.title, json['poll_title']
-    assert json.key?('receipts')
-    receipt = json.fetch('receipts').find { |record| record['voter_id'] == @admin.id }
+    assert_equal poll.anonymous_poll_voters.count, json.fetch('meta').fetch('total')
+    assert_equal true, json.fetch('meta').fetch('show_voter_details')
+    assert json.key?('voters')
+    receipt = json.fetch('voters').find { |record| record['voter_id'] == @admin.id }
     assert_equal @admin.avatar_initials, receipt.fetch('voter_avatar_initials')
     assert receipt.key?('voter_thumb_url')
+    assert receipt.keys.intersection(%w[stance_id option_scores reason weight anonymous_ballot_id]).empty?
   end
 
   test "anonymous participation uses the electorate and preserves invitation dates" do
@@ -318,10 +320,11 @@ class Api::V1::PollsControllerTest < ActionController::TestCase
     [@admin, @user, @member].each { |voter| create_anonymous_ballot(poll: poll, voter: voter) }
     sign_in @admin
 
-    get :receipts, params: {id: poll.key}
+    get :votes, params: {id: poll.key}
 
     assert_response :success
-    record = JSON.parse(response.body).fetch("receipts").find { |receipt| receipt.fetch("voter_id") == @user.id }
+    json = JSON.parse(response.body)
+    record = json.fetch("voters").find { |receipt| receipt.fetch("voter_id") == @user.id }
     assert_equal invited_at.to_date.iso8601, record.fetch("invited_on")
     assert_equal true, record.fetch("vote_cast")
   end
@@ -331,25 +334,25 @@ class Api::V1::PollsControllerTest < ActionController::TestCase
     sign_in @admin
 
     [@admin, @user, @member].each_with_index do |voter, votes_count|
-      get :receipts, params: { id: poll.key }
+      get :votes, params: { id: poll.key }
       assert_response :success
 
       json = JSON.parse(response.body)
-      assert_equal false, json["participation_status_visible"], "status was visible after #{votes_count} votes"
-      assert_equal 3, json["participation_status_votes_min"]
-      assert json.fetch("receipts").none? { |receipt| receipt.key?("vote_cast") }
+      assert_equal false, json.fetch("meta")["participation_status_visible"], "status was visible after #{votes_count} votes"
+      assert_equal 3, json.fetch("meta")["participation_status_votes_min"]
+      assert json.fetch("voters").none? { |receipt| receipt.key?("vote_cast") }
 
       create_anonymous_ballot(poll: poll, voter: voter)
     end
 
-    get :receipts, params: { id: poll.key }
+    get :votes, params: { id: poll.key }
     assert_response :success
 
     json = JSON.parse(response.body)
-    assert_equal true, json["participation_status_visible"]
-    assert json.fetch("receipts").all? { |receipt| receipt.key?("vote_cast") }
+    assert_equal true, json.fetch("meta")["participation_status_visible"]
+    assert json.fetch("voters").all? { |receipt| receipt.key?("vote_cast") }
     voter_ids = [@admin.id, @user.id, @member.id]
-    voter_receipts = json.fetch("receipts").select { |receipt| voter_ids.include?(receipt["voter_id"]) }
+    voter_receipts = json.fetch("voters").select { |receipt| voter_ids.include?(receipt["voter_id"]) }
     assert voter_receipts.all? { |receipt| receipt["vote_cast"] }
   end
 
@@ -360,16 +363,33 @@ class Api::V1::PollsControllerTest < ActionController::TestCase
     PollService.close(poll: poll, actor: @admin)
 
     sign_in @admin
-    get :receipts, params: { id: poll.key }
+    get :votes, params: { id: poll.key }
     assert_response :success
 
     json = JSON.parse(response.body)
-    assert_equal false, json["participation_status_visible"]
-    assert_equal 3, json["participation_status_votes_min"]
-    assert json.fetch("receipts").none? { |receipt| receipt.key?("vote_cast") }
+    assert_equal false, json.fetch("meta")["participation_status_visible"]
+    assert_equal 3, json.fetch("meta")["participation_status_votes_min"]
+    assert json.fetch("voters").none? { |receipt| receipt.key?("vote_cast") }
   end
 
-  test "detached anonymous receipts denied for non-admin member" do
+  test "anonymous votes search and page the electorate without ballot data" do
+    poll = create_detached_anonymous_poll(title: "paged participation")
+    sign_in @admin
+
+    get :votes, params: {id: poll.key, name: @user.name, per: 1, from: 0}
+
+    assert_response :success
+    json = JSON.parse(response.body)
+    assert_equal 1, json.fetch('meta').fetch('total')
+    assert_equal [@user.id], json.fetch('voters').pluck('voter_id')
+    refute json.fetch('voters').first.key?('vote_cast')
+    refute json.fetch('voters').first.key?('option_scores')
+
+    get :votes, params: {id: poll.key, name: @user.email}
+    assert_equal [@user.id], JSON.parse(response.body).fetch('voters').pluck('voter_id')
+  end
+
+  test "detached anonymous votes denied for non-admin member" do
     poll = PollService.create(params: {
       title: "receipts test",
       poll_type: "proposal",
@@ -380,11 +400,11 @@ class Api::V1::PollsControllerTest < ActionController::TestCase
     }, actor: @admin)
 
     sign_in @user
-    get :receipts, params: { id: poll.key }
+    get :votes, params: { id: poll.key }
     assert_response :forbidden
   end
 
-  test "detached anonymous receipts allow a missing historical inviter" do
+  test "detached anonymous votes allow a missing historical inviter" do
     poll = PollService.create(params: {
       title: "migrated receipts test",
       poll_type: "proposal",
@@ -396,15 +416,14 @@ class Api::V1::PollsControllerTest < ActionController::TestCase
     poll.anonymous_poll_voters.find_by!(voter: @user).update_column(:inviter_id, nil)
 
     sign_in @admin
-    get :receipts, params: {id: poll.key}
+    get :votes, params: {id: poll.key}
 
     assert_response :success
     json = JSON.parse(response.body)
-    assert_equal true, json["show_voter_email"]
-    receipt = json.fetch("receipts").find { |record| record["voter_id"] == @user.id }
-    assert_nil receipt["inviter_id"]
-    assert_nil receipt["inviter_name"]
-    assert_equal @user.email, receipt["voter_email"]
+    assert_equal true, json.fetch("meta")["show_voter_email"]
+    details = json.fetch("voters").find { |record| record["voter_id"] == @user.id }
+    assert_nil details["inviter_name"]
+    assert_equal @user.email, details["voter_email"]
   end
 
   test "direct-topic coordinator cannot verify participants" do
@@ -426,7 +445,7 @@ class Api::V1::PollsControllerTest < ActionController::TestCase
     )
 
     sign_in @admin
-    get :receipts, params: {id: poll.key}
+    get :votes, params: {id: poll.key}
 
     assert_response :forbidden
   end
@@ -443,15 +462,19 @@ class Api::V1::PollsControllerTest < ActionController::TestCase
     TopicReader.for(user: @user, topic: poll.topic).update!(admin: true)
 
     sign_in @user
-    get :receipts, params: {id: poll.key}
+    get :votes, params: {id: poll.key}
 
     assert_response :success
     json = JSON.parse(response.body)
-    assert_equal false, json["show_voter_email"]
-    assert json.fetch("receipts").all? { |receipt| receipt["voter_email"].nil? }
+    assert_equal false, json.fetch("meta")["show_voter_email"]
+    assert_equal true, json.fetch("meta")["show_voter_details"]
+    assert json.fetch("voters").all? { |voter| !voter.key?("voter_email") }
+
+    get :votes, params: {id: poll.key, name: @admin.email}
+    assert_equal 0, JSON.parse(response.body).fetch('meta').fetch('total')
   end
 
-  test "detached anonymous receipts denied for poll member who is not a group member" do
+  test "detached anonymous votes denied for poll member who is not a group member" do
     poll = PollService.create(params: {
       title: "receipts test",
       poll_type: "proposal",
@@ -469,11 +492,11 @@ class Api::V1::PollsControllerTest < ActionController::TestCase
     )
 
     sign_in @alien
-    get :receipts, params: { id: poll.key }
+    get :votes, params: { id: poll.key }
     assert_response :forbidden
   end
 
-  test "receipts denied for non-member by default" do
+  test "anonymous votes denied for non-member by default" do
     poll = PollService.create(params: {
       title: "receipts test",
       poll_type: "proposal",
@@ -484,11 +507,11 @@ class Api::V1::PollsControllerTest < ActionController::TestCase
     }, actor: @admin)
 
     sign_in @alien
-    get :receipts, params: { id: poll.key }
+    get :votes, params: { id: poll.key }
     assert_response :forbidden
   end
 
-  test "receipts denied for signed out users" do
+  test "anonymous votes denied for signed out users" do
     poll = PollService.create(params: {
       title: "receipts test",
       poll_type: "proposal",
@@ -498,11 +521,11 @@ class Api::V1::PollsControllerTest < ActionController::TestCase
       closing_at: 5.days.from_now
     }, actor: @admin)
 
-    get :receipts, params: { id: poll.key }
+    get :votes, params: { id: poll.key }
     assert_response :forbidden
   end
 
-  test "receipts denied for identified polls" do
+  test "votes lists identified poll voters" do
     poll = PollService.create(params: {
       title: "receipts test",
       poll_type: "proposal",
@@ -512,8 +535,140 @@ class Api::V1::PollsControllerTest < ActionController::TestCase
     }, actor: @admin)
 
     sign_in @admin
-    get :receipts, params: { id: poll.key }
+    get :votes, params: { id: poll.key }
+    assert_response :success
+    json = JSON.parse(response.body)
+    assert_operator json.fetch('meta').fetch('total'), :>, 0
+    assert json.fetch('voters').all? { |voter| voter.key?('vote_cast') }
+  end
+
+  test "identified votes search without exposing email to an ordinary member" do
+    poll = PollService.create(params: {
+      title: 'Search voters', poll_type: 'proposal', group_id: @group.id,
+      poll_option_names: %w[Agree Disagree], closing_at: 5.days.from_now
+    }, actor: @admin)
+    sign_in @user
+
+    get :votes, params: {id: poll.key, name: @admin.name, per: 1}
+
+    assert_response :success
+    json = JSON.parse(response.body)
+    assert_equal 1, json.fetch('meta').fetch('total')
+    assert_equal [@admin.id], json.fetch('voters').pluck('voter_id')
+    assert_equal false, json.fetch('meta').fetch('show_voter_email')
+    assert json.fetch('voters').all? { |voter| !voter.key?('voter_email') }
+
+    get :votes, params: {id: poll.key, name: @admin.email}
+    assert_equal 0, JSON.parse(response.body).fetch('meta').fetch('total')
+  end
+
+  test "identified votes deny a viewer without access to the poll" do
+    poll = PollService.create(params: {
+      title: 'Private voters', poll_type: 'proposal', group_id: @group.id,
+      poll_option_names: %w[Agree Disagree], closing_at: 5.days.from_now
+    }, actor: @admin)
+    sign_in @alien
+
+    get :votes, params: {id: poll.key}
+
     assert_response :forbidden
+  end
+
+  test "identified public poll votes omit private voter details for an outside viewer" do
+    poll = Poll.create!(
+      title: 'Public voters', poll_type: 'proposal', topic: discussions(:public_discussion).topic,
+      author: @admin, poll_option_names: %w[Agree Disagree], closing_at: 5.days.from_now
+    )
+    Stance.create!(poll: poll, participant: @user, inviter: @admin)
+    sign_in @alien
+
+    get :votes, params: {id: poll.key}
+
+    assert_response :success
+    json = JSON.parse(response.body)
+    assert_equal false, json.fetch('meta').fetch('show_voter_details')
+    assert_equal false, json.fetch('meta').fetch('show_voter_email')
+    assert json.fetch('voters').all? { |voter| !voter.key?('member_since') && !voter.key?('voter_email') }
+  end
+
+  test "identified direct-topic votes do not use group voter details" do
+    poll = Poll.create!(
+      title: 'Direct voters', poll_type: 'proposal', topic: topics(:direct_topic),
+      author: @admin, poll_option_names: %w[Agree Disagree], closing_at: 5.days.from_now
+    )
+    Stance.create!(poll: poll, participant: @admin, inviter: @admin)
+    sign_in @admin
+
+    get :votes, params: {id: poll.key}
+
+    assert_response :success
+    json = JSON.parse(response.body)
+    assert_equal false, json.fetch('meta').fetch('show_voter_details')
+    assert_equal false, json.fetch('meta').fetch('show_voter_email')
+    assert json.fetch('voters').all? { |voter| !voter.key?('member_since') && !voter.key?('voter_email') }
+  end
+
+  test "identified votes include the assigned weight when enabled" do
+    @group.update!(vote_weights_allowed: true)
+    poll = PollService.create(params: {
+      title: 'Weighted voters', poll_type: 'proposal', group_id: @group.id,
+      poll_option_names: %w[Agree Disagree], vote_weights_enabled: true,
+      closing_at: 5.days.from_now
+    }, actor: @admin)
+    poll.stances.latest.find_by!(participant: @user).update!(weight: '2.5')
+    sign_in @admin
+
+    get :votes, params: {id: poll.key, name: @user.name}
+
+    assert_response :success
+    row = JSON.parse(response.body).fetch('voters').sole
+    assert_equal @user.id, row.fetch('voter_id')
+    assert_equal '2.5', row.fetch('weight')
+  end
+
+  test "identified votes hide choices and ignore option filtering until the viewer votes" do
+    poll = PollService.create(params: {
+      title: 'Hidden results', poll_type: 'proposal', group_id: @group.id,
+      hide_results: 'until_vote', poll_option_names: %w[Agree Disagree], closing_at: 5.days.from_now
+    }, actor: @admin)
+    option = poll.poll_options.first
+    stance = poll.stances.latest.find_by!(participant: @admin)
+    stance.update!(cast_at: Time.current, stance_choices_attributes: [{poll_option_id: option.id, score: 1}])
+    sign_in @user
+
+    get :votes, params: {id: poll.key, poll_option_id: option.id}
+
+    assert_response :success
+    json = JSON.parse(response.body)
+    assert_equal poll.stances.latest.count, json.fetch('meta').fetch('total')
+    assert json.fetch('voters').none? { |voter| voter.key?('option_scores') }
+
+    sign_in @admin
+    get :votes, params: {id: poll.key, poll_option_id: option.id}
+    assert_response :success
+    visible = JSON.parse(response.body)
+    assert_equal 1, visible.fetch('meta').fetch('total')
+    assert_equal({option.id.to_s => 1}, visible.fetch('voters').sole.fetch('option_scores'))
+  end
+
+  test "identified votes in a hidden-until-closed poll show only the viewer's row while open" do
+    poll = PollService.create(params: {
+      title: 'Closed results only', poll_type: 'proposal', group_id: @group.id,
+      hide_results: 'until_closed', poll_option_names: %w[Agree Disagree], closing_at: 5.days.from_now
+    }, actor: @admin)
+    option = poll.poll_options.first
+    poll.stances.latest.find_by!(participant: @admin).update!(
+      cast_at: Time.current,
+      stance_choices_attributes: [{poll_option_id: option.id, score: 1}]
+    )
+    sign_in @user
+
+    get :votes, params: {id: poll.key, poll_option_id: option.id}
+
+    assert_response :success
+    json = JSON.parse(response.body)
+    assert_equal [@user.id], json.fetch('voters').pluck('voter_id')
+    refute json.fetch('voters').first.key?('option_scores')
   end
 
   # Close tests
