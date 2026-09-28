@@ -2204,7 +2204,7 @@ nl_NL:
     delegate_popover: Een afgevaardigde is een groepslid met stemrecht
     delegates: Afgevaardigden
     edit_vote_weights: Stemweging bewerken
-    vote_weights_are_defaults: Deze standaardwegingen gelden voor nieuwe stemmen. Wijzigingen hierin hebben geen invloed op reeds uitgebrachte stemmen.
+    vote_weights_are_defaults: Deze standaard stemwegingen gelden voor nieuwe stemmen. Wijzigingen hierin hebben geen invloed op reeds toegekende stemwegingen.
   polls_panel:
     new_poll: Nieuwe peiling
     any_type: Alle types
@@ -2325,8 +2325,8 @@ nl_NL:
     all_voters: Alle kiezers
     vote_weight_column: Stemgewicht
     stance: Stemmen
-    vote_weight: Gewicht %{weight}
     participation_records_restricted: Je kunt zien wie er heeft deelgenomen nadat de stemming is gesloten
+    vote_weight: Stemgewicht %{weight}
   poll_common_undecided_panel:
     show_undecided: Toon %{count} onbeslist
     show_invitations: Toon uitnodigingen in afwachting
@@ -2977,17 +2977,10 @@ nl_NL:
     voter_page_count: "%{first}–%{last} van %{total}"
     vote_weights: Stemgewichten
     use_vote_weights: Gebruik stemgewichten
-    vote_weights_off_warning: Het uitschakelen van stemwegingen zet elke kiezer op weging 1 en verwijdert de peilingspecifieke wegingen.
-    vote_weights_on_group: Het inschakelen van stemgewichten kopieert de huidige gewichten van de groepsleden. Andere stemmers krijgen gewicht 1.
-    vote_weights_on_direct: Door stemgewichten in te schakelen, krijgt elke kiezer gewicht 1.
     vote_weight_for: Stemgewicht voor %{name}
     save_vote_weights: Stemgewichten opslaan
     vote_weights_updated: Stemweging bijgewerkt
-    weight_for_all: Gewicht voor iedereen
-    set_all_vote_weights: Stel alle gewichten in
     set_all: Stel alles in
-    member_vote_weights_hint: Kiezers zonder huidig groepslidmaatschap krijgen 1 gewicht.
-    issued_vote_weights_will_change: De weging van reeds uitgebrachte stemmen zal veranderen.
     find_or_invite_voters: Zoek of nodig kiezers uit
     remove_voter_named: Verwijder %{name} uit de poll
     remove_voter_and_any_vote_confirmation: Wil je %{name} uit deze enquête verwijderen? Dan worden ook alle stemmen die zij hebben uitgebracht verwijderd.
@@ -2996,9 +2989,16 @@ nl_NL:
     set_all_vote_weights_title: Stel alle stemgewichten in
     set_all_vote_weights_search_note: Dit wijzigt de stemweging van alle kiezers in de peiling, inclusief degenen die niet in je zoekresultaten voorkomen
     set_each_member_default_vote_weight: Stel het standaard stemgewicht voor elk lid in
-    set_all_weights_the_same: Stel alle gewichten gelijk in
     voters_will_not_be_notified: Kiezers worden niet op de hoogte gesteld. Breng hen op een andere manier op de hoogte van de stemming.
-    use_weighted_voting: Gebruik gewogen stemmen. De resultaten tonen zowel de gewone als de gewogen totalen.
+    give_voters_different_vote_weights: Geef kiezers verschillende stemgewichten. De resultaten tonen zowel de gewone als de gewogen totalen.
+    vote_weights_off_warning: Het uitschakelen van stemwegingen zet elke stemweging op 1 en verwijdert de stemwegingen die specifiek zijn voor de peiling
+    issued_vote_weights_will_change: De reeds toegekende stemwegingen zullen veranderen.
+    vote_weights_on_group: Door stemgewichten in te schakelen, wordt het standaard stemgewicht van elk lid gekopieerd. Andere stemmers krijgen een stemgewicht van 1.
+    vote_weights_on_direct: Door stemgewichten in te schakelen, wordt elk stemgewicht op 1 gezet
+    weight_for_all: Stemgewicht voor iedereen
+    set_all_vote_weights: Alle stemgewichten instellen
+    set_all_vote_weights_the_same: Alle stemgewichten gelijk instellen
+    member_vote_weights_hint: Kiezers zonder huidig groepslidmaatschap krijgen een stemgewicht van 1
   poll_receipts_page:
     participation_status_requires_min_votes: Dit laat zien wie stemgerechtigd was. Of elke persoon heeft gestemd, wordt alleen getoond wanneer minstens %{count} mensen hebben gestemd.
     see_votes_if_quorum_reached: Als de stemming is gesloten en het quorum is bereikt, ziet u wie er gestemd heeft.

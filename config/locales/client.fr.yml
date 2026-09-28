@@ -2223,7 +2223,7 @@ fr:
     delegate_popover: Un délégué est un membre du groupe avec droit de vote
     delegates: Délégués
     edit_vote_weights: Modifier les pondérations des votes
-    vote_weights_are_defaults: Ces pondérations par défaut s'appliquent aux nouveaux votes. Les modifications apportées ici n'affectent pas les votes déjà émis.
+    vote_weights_are_defaults: Ces pondérations de vote par défaut s'appliquent aux nouveaux votes. Les modifications apportées ici n'affectent pas les pondérations de vote déjà attribuées.
   polls_panel:
     new_poll: Nouveau sondage
     any_type: Tous types
@@ -2342,8 +2342,8 @@ fr:
     all_voters: Tous les électeurs
     vote_weight_column: Poids du vote
     stance: Vote
-    vote_weight: Poids %{weight}
     participation_records_restricted: Tu pourras voir qui a participé après la clôture du vote
+    vote_weight: Poids du vote %{weight}
   poll_common_undecided_panel:
     show_undecided: Afficher les %{count} indécis
     show_invitations: Montrer les invitations en attente
@@ -2994,17 +2994,10 @@ fr:
     voter_page_count: "%{first}–%{last} de %{total}"
     vote_weights: Poids des votes
     use_vote_weights: Utiliser les pondérations de vote
-    vote_weights_off_warning: La désactivation de la pondération des votes attribue à chaque électeur un poids de 1 et supprime les pondérations spécifiques à chaque sondage.
-    vote_weights_on_group: L'activation de la pondération des votes copie les poids actuels des membres du groupe. Les autres votants reçoivent un poids de 1.
-    vote_weights_on_direct: L'activation de la pondération des votes attribue à chaque électeur un poids de 1.
     vote_weight_for: Poids du vote pour %{name}
     save_vote_weights: Sauvegarder les poids des votes
     vote_weights_updated: Pondération des votes mise à jour
-    weight_for_all: Poids pour tous
-    set_all_vote_weights: Réglez tous les poids
     set_all: Tout définir
-    member_vote_weights_hint: Les électeurs sans adhésion actuelle à un groupe reçoivent un poids de 1
-    issued_vote_weights_will_change: Le poids des votes déjà exprimés sera modifié.
     find_or_invite_voters: Trouver ou inviter des électeurs
     remove_voter_named: Supprimer %{name} du sondage
     remove_voter_and_any_vote_confirmation: Supprimer %{name} de ce sondage ? Cela supprimera également tout vote qu'il ou elle a exprimé.
@@ -3013,9 +3006,16 @@ fr:
     set_all_vote_weights_title: Définir tous les poids de vote
     set_all_vote_weights_search_note: Cela modifie la pondération des votes de tous les votants dans le sondage, y compris ceux qui ne figurent pas dans vos résultats de recherche.
     set_each_member_default_vote_weight: Définir le poids de vote par défaut de chaque membre
-    set_all_weights_the_same: Définir le même poids pour tous
     voters_will_not_be_notified: Les électeurs ne seront pas avertis. Informe-les du sondage par un autre moyen.
-    use_weighted_voting: Utilise le vote pondéré. Les résultats affichent les totaux bruts et pondérés.
+    give_voters_different_vote_weights: Attribue aux votants des poids de vote différents. Les résultats affichent les totaux bruts et pondérés.
+    vote_weights_off_warning: La désactivation des pondérations de vote attribue la valeur 1 à chaque pondération et supprime les pondérations spécifiques à chaque sondage
+    issued_vote_weights_will_change: Les pondérations des votes déjà attribués seront modifiées.
+    vote_weights_on_group: L'activation de la pondération des votes copie le poids de vote par défaut de chaque membre. Les autres votants reçoivent un poids de vote de 1.
+    vote_weights_on_direct: L'activation de la pondération des votes attribue la valeur 1 à chaque vote
+    weight_for_all: Poids du vote pour tous
+    set_all_vote_weights: Définir tous les poids de vote
+    set_all_vote_weights_the_same: Même poids de vote pour tous
+    member_vote_weights_hint: Les électeurs sans appartenance actuelle à un groupe ont un poids de vote de 1
   poll_receipts_page:
     participation_status_requires_min_votes: Cette liste indique qui avait le droit de voter. Le statut de participation de chaque personne n'est affiché que lorsqu'au moins %{count} personnes ont voté.
     see_votes_if_quorum_reached: Si le vote est clos et que le quorum est atteint, tu verras qui a voté.

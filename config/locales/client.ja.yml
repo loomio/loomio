@@ -2180,7 +2180,7 @@ ja:
     delegate_popover: 代表者は投票権を持つグループメンバーである
     delegates: 代表者
     edit_vote_weights: 投票の重みを編集する
-    vote_weights_are_defaults: これらのデフォルトの重みは新規投票に適用されます。ここでの変更は、既に発行された投票には影響しません。
+    vote_weights_are_defaults: これらのデフォルトの投票重みは、新規投票に適用されます。ここでの変更は、既に発行された投票重みには影響しません。
   polls_panel:
     new_poll: 新しい投票
     any_type: いろんなタイプ
@@ -2299,8 +2299,8 @@ ja:
     all_voters: すべての有権者
     vote_weight_column: 投票権
     stance: 投票する
-    vote_weight: 重量 %{weight}
     participation_records_restricted: 投票終了後、誰が参加したかを確認できます
+    vote_weight: 投票の重み %{weight}
   poll_common_undecided_panel:
     show_undecided: "%{count} を表示するかどうかは未定"
     show_invitations: 保留中の招待状を表示
@@ -2949,17 +2949,10 @@ ja:
     voter_page_count: "%{first}～%{last} / %{total}"
     vote_weights: 投票の重み
     use_vote_weights: 投票の重み付けを使用する
-    vote_weights_off_warning: 投票の重み付けをオフにすると、すべての投票者の重みが1に設定され、投票ごとの重み付けが削除されます。
-    vote_weights_on_group: 投票重みを有効にすると、現在のグループメンバーの重みがコピーされます。他の投票者には重み1が割り当てられます。
-    vote_weights_on_direct: 投票重み付けを有効にすると、すべての投票者の重みが1に設定されます。
     vote_weight_for: "%{name}への投票重み"
     save_vote_weights: 投票の重みを保存する
     vote_weights_updated: 投票の重みが更新されました
-    weight_for_all: すべての重量
-    set_all_vote_weights: すべての重みを設定します
     set_all: すべて設定
-    member_vote_weights_hint: 現在グループに所属していない有権者は1の重みを持つ
-    issued_vote_weights_will_change: 既に投票済みの票の重み付けが変更されます。
     find_or_invite_voters: 有権者を探す、または招待する
     remove_voter_named: 投票から%{name}を削除
     remove_voter_and_any_vote_confirmation: この投票から%{name}を削除しますか？そうすると、%{name}が行った投票もすべて削除されます。
@@ -2968,9 +2961,16 @@ ja:
     set_all_vote_weights_title: すべての投票の重みを設定する
     set_all_vote_weights_search_note: これにより、検索結果に含まれないユーザーも含め、投票に参加するすべてのユーザーの投票重みが変更されます。
     set_each_member_default_vote_weight: 各メンバーのデフォルトの投票重みを設定する
-    set_all_weights_the_same: すべての重みを同じに設定する
     voters_will_not_be_notified: 有権者には通知されません。別の方法で投票について知らせてください。
-    use_weighted_voting: 加重投票方式を採用します。結果には、単純投票と加重投票の両方の合計が表示されます。
+    give_voters_different_vote_weights: 有権者に異なる投票重みを与える。結果は、単純な合計値と重み付けされた合計値の両方を示す。
+    vote_weights_off_warning: 投票重みをオフにすると、すべての投票重みが1に設定され、投票固有の投票重みが削除されます
+    issued_vote_weights_will_change: 既に発行された投票権の重み付けは変更されます。
+    vote_weights_on_group: 投票重みを有効にすると、各メンバーのデフォルトの投票重みがコピーされます。その他の投票者の投票重みは1になります。
+    vote_weights_on_direct: 投票重みをオンにすると、すべての投票重みが1に設定されます
+    weight_for_all: 全員の投票権
+    set_all_vote_weights: すべての投票の重みを設定する
+    set_all_vote_weights_the_same: すべての投票の重みを同じに設定する
+    member_vote_weights_hint: 現在グループに所属していない有権者は、1票の投票権を持つ
   poll_receipts_page:
     participation_status_requires_min_votes: 投票資格があった人を表示します。各人が投票したかどうかは、少なくとも%{count}人が投票した場合にのみ表示されます。
     see_votes_if_quorum_reached: 投票が終了し、定足数に達した場合は、誰が投票したかが表示されます。

@@ -2204,7 +2204,7 @@ pl:
     delegate_popover: Delegat jest członkiem grupy posiadającym prawo głosu
     delegates: Delegaci
     edit_vote_weights: Edytuj wagi głosów
-    vote_weights_are_defaults: Te domyślne wagi dotyczą nowych głosów. Zmiany w tym zakresie nie mają wpływu na głosy już oddane.
+    vote_weights_are_defaults: Te domyślne wagi głosów dotyczą nowych głosów. Zmiany w tym zakresie nie mają wpływu na wagi głosów już nadanych.
   polls_panel:
     new_poll: Nowe głosowanie
     any_type: Wszystkie rodzaje
@@ -2325,8 +2325,8 @@ pl:
     all_voters: Wszyscy wyborcy
     vote_weight_column: Waga głosu
     stance: Głosować
-    vote_weight: Waga %{weight}
     participation_records_restricted: Po zakończeniu głosowania możesz zobaczyć, kto wziął udział
+    vote_weight: Waga głosu %{weight}
   poll_common_undecided_panel:
     show_undecided: Pokaż %{count} niezdecydowanych
     show_invitations: Pokaż Oczekujące Zaproszenia
@@ -2977,17 +2977,10 @@ pl:
     voter_page_count: "%{first}–%{last} z %{total}"
     vote_weights: Wagi głosów
     use_vote_weights: Użyj wag głosów
-    vote_weights_off_warning: Wyłączenie wag głosów powoduje ustawienie wagi każdego wyborcy na 1 i usunięcie wag specyficznych dla danej ankiety
-    vote_weights_on_group: Włączenie wag głosów kopiuje aktualne wagi członków grupy. Pozostali głosujący otrzymują wagę 1.
-    vote_weights_on_direct: Włączenie wag głosów powoduje ustawienie wagi każdego wyborcy na 1
     vote_weight_for: Waga głosu dla %{name}
     save_vote_weights: Zapisz wagi głosów
     vote_weights_updated: Zaktualizowano wagę głosów
-    weight_for_all: Waga dla wszystkich
-    set_all_vote_weights: Ustaw wszystkie ciężary
     set_all: Ustaw wszystko
-    member_vote_weights_hint: Wyborcy bez aktualnego członkostwa w grupie otrzymują wagę 1
-    issued_vote_weights_will_change: Waga głosów już oddanych ulegnie zmianie.
     find_or_invite_voters: Znajdź lub zaproś wyborców
     remove_voter_named: Usuń %{name} z ankiety
     remove_voter_and_any_vote_confirmation: Usunąć %{name} z tej ankiety? To spowoduje również usunięcie wszystkich oddanych przez niego głosów.
@@ -2996,9 +2989,16 @@ pl:
     set_all_vote_weights_title: Ustaw wszystkie wagi głosów
     set_all_vote_weights_search_note: Zmienia to wagę głosów wszystkich wyborców biorących udział w ankiecie, w tym tych spoza wyników wyszukiwania
     set_each_member_default_vote_weight: Ustaw domyślną wagę głosu każdego członka
-    set_all_weights_the_same: Ustaw wszystkie ciężary na takie same
     voters_will_not_be_notified: Wyborcy nie zostaną powiadomieni. Poinformuj ich o głosowaniu w inny sposób.
-    use_weighted_voting: Użyj głosowania ważonego. Wyniki pokazują zarówno sumy zwykłe, jak i ważone.
+    give_voters_different_vote_weights: Nadaj wyborcom różne wagi głosów. Wyniki pokazują zarówno sumy zwykłe, jak i ważone.
+    vote_weights_off_warning: Wyłączenie wag głosów powoduje ustawienie każdej wagi głosu na 1 i usunięcie wag głosów specyficznych dla danej ankiety
+    issued_vote_weights_will_change: Dotychczasowe wagi głosów ulegną zmianie.
+    vote_weights_on_group: Włączenie wag głosów kopiuje domyślną wagę głosu każdego członka. Pozostali wyborcy otrzymują wagę głosu równą 1.
+    vote_weights_on_direct: Włączenie wag głosów ustawia każdą wagę głosu na 1
+    weight_for_all: Waga głosu dla wszystkich
+    set_all_vote_weights: Ustaw wszystkie wagi głosów
+    set_all_vote_weights_the_same: Ustaw wszystkie wagi głosów na takie same
+    member_vote_weights_hint: Wyborcy, którzy nie są obecnie członkami żadnej grupy, otrzymują wagę głosu równą 1
   poll_receipts_page:
     participation_status_requires_min_votes: Pokazuje, kto był uprawniony do głosowania. Informacja o tym, czy poszczególne osoby zagłosowały, jest wyświetlana tylko wtedy, gdy zagłosowały co najmniej %{count} osoby.
     see_votes_if_quorum_reached: Jeśli głosowanie zostało zamknięte i osiągnięto kworum, zobaczysz, kto oddał głos.

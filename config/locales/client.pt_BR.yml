@@ -2225,7 +2225,7 @@ pt_BR:
     delegate_popover: Um delegado é um membro do grupo com direito a voto
     delegates: Delegados
     edit_vote_weights: Editar pesos de voto
-    vote_weights_are_defaults: Esses pesos padrão se aplicam a novos votos. Alterações aqui não afetam votos já emitidos.
+    vote_weights_are_defaults: Esses pesos de voto padrão se aplicam a novas votações. Alterações aqui não afetam os pesos de voto já atribuídos.
   polls_panel:
     new_poll: Nova enquete
     any_type: Todos tipos
@@ -2346,8 +2346,8 @@ pt_BR:
     all_voters: Todos os eleitores
     vote_weight_column: Peso do voto
     stance: Voto
-    vote_weight: Peso %{weight}
     participation_records_restricted: Você poderá ver quem participou após o encerramento da votação
+    vote_weight: Peso do voto %{weight}
   poll_common_undecided_panel:
     show_undecided: Mostrar %{count} indeciso
     show_invitations: Mostrar Convites Pendentes
@@ -2998,17 +2998,10 @@ pt_BR:
     voter_page_count: "%{first}–%{last} de %{total}"
     vote_weights: Pesos de voto
     use_vote_weights: Utilizar ponderações de voto
-    vote_weights_off_warning: Desativar a ponderação dos votos atribui o peso 1 a todos os eleitores e remove as ponderações específicas de cada pesquisa.
-    vote_weights_on_group: Ao ativar a ponderação de votos, os pesos atuais dos membros do grupo são copiados. Os demais votantes recebem peso 1.
-    vote_weights_on_direct: Ao ativar a ponderação de votos, todos os eleitores recebem o peso 1.
     vote_weight_for: Peso do voto para %{name}
     save_vote_weights: Salvar pesos de voto
     vote_weights_updated: Pesos de voto atualizados
-    weight_for_all: Peso para todos
-    set_all_vote_weights: Ajuste todos os pesos
     set_all: Configurar tudo
-    member_vote_weights_hint: Eleitores sem filiação atual a um grupo recebem peso 1
-    issued_vote_weights_will_change: A ponderação dos votos já emitidos será alterada.
     find_or_invite_voters: Encontre ou convide eleitores
     remove_voter_named: Remover %{name} da enquete
     remove_voter_and_any_vote_confirmation: Remover %{name} desta enquete? Isso também remove qualquer voto que essa pessoa tenha dado.
@@ -3017,9 +3010,16 @@ pt_BR:
     set_all_vote_weights_title: Defina todos os pesos de voto
     set_all_vote_weights_search_note: Isso altera a ponderação dos votos de todos os eleitores na pesquisa, incluindo aqueles que não constam nos resultados da sua busca.
     set_each_member_default_vote_weight: Defina o peso de voto padrão de cada membro.
-    set_all_weights_the_same: Defina todos os pesos iguais.
     voters_will_not_be_notified: Os eleitores não serão notificados. Informe-os sobre a votação de outra forma.
-    use_weighted_voting: Utilize votação ponderada. Os resultados mostram os totais brutos e ponderados.
+    give_voters_different_vote_weights: Atribua pesos diferentes aos votos dos eleitores. Os resultados mostram os totais brutos e ponderados.
+    vote_weights_off_warning: Desativar a ponderação dos votos define o peso de todos os votos para 1 e remove a ponderação específica de cada pesquisa
+    issued_vote_weights_will_change: A ponderação dos votos já emitida será alterada.
+    vote_weights_on_group: Ao ativar a ponderação de votos, a ponderação padrão de cada membro é copiada. Os demais votantes recebem uma ponderação de voto de 1.
+    vote_weights_on_direct: Ao ativar a ponderação de votos, o peso de cada voto é definido como 1
+    weight_for_all: Peso do voto para todos
+    set_all_vote_weights: Defina todos os pesos de voto
+    set_all_vote_weights_the_same: Defina o mesmo peso para todos os votos
+    member_vote_weights_hint: Os eleitores que não são membros de nenhum grupo atualmente têm um peso de voto de 1
   poll_receipts_page:
     participation_status_requires_min_votes: Isso mostra quem tinha direito a voto. A informação sobre se cada pessoa votou só é exibida quando pelo menos %{count} pessoas tiverem votado.
     see_votes_if_quorum_reached: Se a votação for encerrada e o quórum for atingido, você verá quem votou.

@@ -2181,7 +2181,7 @@ da:
     delegate_popover: En delegeret er et gruppemedlem med stemmeret
     delegates: Delegerede
     edit_vote_weights: Rediger stemmevægte
-    vote_weights_are_defaults: Disse standardvægte gælder for nye stemmer. Ændringer her påvirker ikke allerede afgivne stemmer.
+    vote_weights_are_defaults: Disse standardstemmevægte gælder for nye stemmer. Ændringer her påvirker ikke stemmevægte, der allerede er udstedt.
   polls_panel:
     new_poll: Ny meningsmåling
     any_type: Alle typer
@@ -2300,8 +2300,8 @@ da:
     all_voters: Alle vælgere
     vote_weight_column: Stemmevægt
     stance: Stemme
-    vote_weight: Vægt %{weight}
     participation_records_restricted: Du kan se, hvem der deltog, efter afstemningen er afsluttet
+    vote_weight: Stemmevægt %{weight}
   poll_common_undecided_panel:
     show_undecided: Vis %{count} ubesluttede
     show_invitations: Vis afventende invitationer
@@ -2950,17 +2950,10 @@ da:
     voter_page_count: "%{first}–%{last} af %{total}"
     vote_weights: Stemmevægte
     use_vote_weights: Brug stemmevægte
-    vote_weights_off_warning: Hvis du slår stemmevægte fra, sættes alle vælgere til vægt 1 og fjerner afstemningsspecifikke vægte
-    vote_weights_on_group: Aktivering af stemmevægte kopierer vægtningen af nuværende gruppemedlemmer. Andre vælgere får vægt 1.
-    vote_weights_on_direct: Aktivering af stemmevægte giver alle vælgere vægt 1
     vote_weight_for: Stemmevægt for %{name}
     save_vote_weights: Gem stemmevægte
     vote_weights_updated: Stemmevægte opdateret
-    weight_for_all: Vægt for alle
-    set_all_vote_weights: Indstil alle vægte
     set_all: Sæt alle
-    member_vote_weights_hint: Vælgere uden nuværende gruppemedlemskab får vægt 1
-    issued_vote_weights_will_change: Vægten for allerede afgivne stemmer vil ændre sig.
     find_or_invite_voters: Find eller inviter vælgere
     remove_voter_named: Fjern %{name} fra afstemningen
     remove_voter_and_any_vote_confirmation: Fjerne %{name} fra denne afstemning? Dette fjerner også alle stemmer, de har afgivet.
@@ -2969,9 +2962,16 @@ da:
     set_all_vote_weights_title: Angiv alle stemmevægte
     set_all_vote_weights_search_note: Dette ændrer stemmevægten for alle vælgere i afstemningen, inklusive dem uden for dine søgeresultater.
     set_each_member_default_vote_weight: Angiv standardvægten for stemmer for hvert medlem
-    set_all_weights_the_same: Sæt alle vægte ens
     voters_will_not_be_notified: Vælgerne vil ikke blive underrettet. Giv dem besked om afstemningen på en anden måde.
-    use_weighted_voting: Brug vægtet afstemning. Resultaterne viser både de almindelige og de vægtede totaler.
+    give_voters_different_vote_weights: Giv vælgerne forskellige stemmevægte. Resultaterne viser både de almindelige og de vægtede totaler.
+    vote_weights_off_warning: Hvis du slår stemmevægte fra, sættes alle stemmevægte til 1 og fjerner afstemningsspecifikke stemmevægte
+    issued_vote_weights_will_change: Allerede udstedte stemmevægte vil ændre sig.
+    vote_weights_on_group: Når stemmevægte aktiveres, kopieres hvert medlems standardstemmevægt. Andre vælgere får en stemmevægt på 1.
+    vote_weights_on_direct: Aktivering af stemmevægte sætter hver stemmevægt til 1
+    weight_for_all: Stemmevægt for alle
+    set_all_vote_weights: Angiv alle stemmevægte
+    set_all_vote_weights_the_same: Sæt alle stemmevægte ens
+    member_vote_weights_hint: Vælgere uden nuværende gruppemedlemskab får en stemmevægt på 1
   poll_receipts_page:
     participation_status_requires_min_votes: Dette viser, hvem der var stemmeberettigede. Om hver person stemte, vises kun, når mindst %{count} personer har stemt.
     see_votes_if_quorum_reached: Hvis afstemningen er afsluttet, og det quorum er nået, vil du se, hvem der afgav en stemme.

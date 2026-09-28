@@ -1,5 +1,16 @@
 # Corrected translations
 
+## 2026-09-28 — Vote weight wording
+
+| File | Key | Before | After | Why it was wrong |
+|------|-----|--------|-------|------------------|
+| `config/locales/client.{es,fr,nl_NL,pt_BR,ru,sv,tr}.yml` and others | `poll_common_votes_panel.vote_weight` | Translated interpolation names such as `%{peso}`, `%{poids}`, `%{gewicht}`, `%{вес}` | `%{weight}` | Interpolation names are code identifiers and must not be translated |
+| `config/locales/client.de.yml` | `poll_common_form.give_voters_different_vote_weights`, `weight_for_all`, `poll_common_votes_panel.vote_weight` | Passive `Den Wählern werden … zugewiesen`; `Stimmgewichtung` | Imperative `Gib Wählern …`; `Stimmgewicht` | German UI uses the informal register, and the value is a vote weight rather than the weighting process |
+| `config/locales/client.es.yml` | `poll_common_form.give_voters_different_vote_weights`, `weight_for_all` | Formal `Asigne`; `Voto ponderado para todos` | Informal `Asigna`; `Peso de voto para todos` | Spanish UI uses `tú`, and the field sets a vote weight, not a weighted vote |
+| `config/locales/client.fr.yml`, `client.it.yml` | `poll_common_form.give_voters_different_vote_weights`, `set_all_vote_weights_the_same` | Formal `Attribuez`, infinitive `Assegnare`; option labels written as sentences with full stops | Informal `Attribue`, `Assegna`; short labels `Même poids de vote pour tous`, `Stesso peso di voto per tutti` | These locales use the informal register, and the radio option is a label |
+| `config/locales/client.nl_NL.yml` | `poll_common_form.set_all_vote_weights`, `set_all_vote_weights_the_same` | Sentences with full stops | `Alle stemgewichten instellen`, `Alle stemgewichten gelijk instellen` | Button and option labels |
+| `config/locales/client.*.yml` | Single-sentence `poll_common_form` vote weight labels and warnings | Final `.` or `。` | No final full stop | The English sources are single-sentence UI strings |
+
 ## 2026-09-28 — Vote weight settings descriptions
 
 | File | Key | Before | After | Why it was wrong |

@@ -2382,7 +2382,7 @@ en:
     new_discussion: New discussion
   members_panel:
     edit_vote_weights: Edit vote weights
-    vote_weights_are_defaults: These default weights apply to new votes. Changes here do not affect votes already issued.
+    vote_weights_are_defaults: These default vote weights apply to new votes. Changes here do not affect vote weights already issued.
     email_rejected: Email rejected
     email_rejected_meaning: Email sent to this address has bounced or been marked as spam. No more email will be sent to this address.
     bot: Bot
@@ -2583,7 +2583,7 @@ en:
     no_votes_yet: No votes have been placed yet.
     change_results_order: Change results order
     name_or_username: Name or username
-    vote_weight: Weight %{weight}
+    vote_weight: Vote weight %{weight}
   poll_common_details_meta:
     opened: Opened
     opens: Opens
@@ -2636,25 +2636,25 @@ en:
     remove_voter_and_any_vote_confirmation: Remove %{name} from this poll? This also removes any vote they cast.
     voter_page_count: "%{first}–%{last} of %{total}"
     vote_weights: Vote weights
-    use_weighted_voting: Use weighted voting. Results show both the plain and the weighted totals.
+    give_voters_different_vote_weights: Give voters different vote weights. Results show both the plain and the weighted totals.
     use_vote_weights: Use vote weights
-    vote_weights_off_warning: Turning off vote weights sets every voter to weight 1 and removes poll-specific weights
-    issued_vote_weights_will_change: Weights for votes already issued will change.
-    vote_weights_on_group: Turning on vote weights copies current group member weights. Other voters get weight 1.
-    vote_weights_on_direct: Turning on vote weights sets every voter to weight 1
+    vote_weights_off_warning: Turning off vote weights sets every vote weight to 1 and removes poll-specific vote weights
+    issued_vote_weights_will_change: Vote weights already issued will change.
+    vote_weights_on_group: Turning on vote weights copies each member's default vote weight. Other voters get a vote weight of 1.
+    vote_weights_on_direct: Turning on vote weights sets every vote weight to 1
     vote_weight_for: Vote weight for %{name}
     edit_vote_weight: Edit vote weight
     edit_vote_weight_for: Edit vote weight for %{name} (currently %{weight})
     save_vote_weights: Save vote weights
     vote_weights_updated: Vote weights updated
-    weight_for_all: Weight for all
-    set_all_vote_weights: Set all weights
+    weight_for_all: Vote weight for all
+    set_all_vote_weights: Set all vote weights
     set_all_vote_weights_title: Set all vote weights
     set_all_vote_weights_search_note: This changes the vote weights of all voters in the poll, including those outside your search results
     set_all: Set all
     set_each_member_default_vote_weight: Set each member's default vote weight
-    set_all_weights_the_same: Set all weights the same
-    member_vote_weights_hint: Voters without a current group membership get weight 1
+    set_all_vote_weights_the_same: Set all vote weights the same
+    member_vote_weights_hint: Voters without a current group membership get a vote weight of 1
     anonymous_votes_are_stored_separately_from_voter_identities_description: Anonymous votes are stored separately from voter identities. Results appear after voting closes. Voters cannot add reasons, review their vote after submitting it, or change their vote
     quorum: Quorum
     participation_quorum: Participation quorum

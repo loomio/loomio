@@ -2200,7 +2200,7 @@ he:
     delegate_popover: נציג הוא חבר קבוצה בעל זכות הצבעה
     delegates: נציגים
     edit_vote_weights: עריכת משקלי קולות
-    vote_weights_are_defaults: משקלים ברירת מחדל אלה חלים על קולות חדשים. שינויים כאן אינם משפיעים על קולות שכבר הונפקו.
+    vote_weights_are_defaults: משקלי ברירת המחדל הללו חלים על קולות חדשים. שינויים כאן אינם משפיעים על משקלי קולות שכבר פורסמו.
   polls_panel:
     new_poll: סקר חדש
     any_type: כל הסוגים
@@ -2319,8 +2319,8 @@ he:
     all_voters: כל הבוחרים
     vote_weight_column: משקל הצבעה
     stance: הַצבָּעָה
-    vote_weight: משקל %{weight}
     participation_records_restricted: ניתן לראות מי השתתף לאחר סגירת ההצבעה
+    vote_weight: משקל הצבעה %{weight}
   poll_common_undecided_panel:
     show_undecided: הצג %{count} מתלבטים
     show_invitations: הראה הצעות ממתינות
@@ -2969,17 +2969,10 @@ he:
     voter_page_count: "%{first}–%{last} מתוך %{total}"
     vote_weights: משקלי הצבעה
     use_vote_weights: השתמש במשקלי קולות
-    vote_weights_off_warning: ביטול משקלי הקולות מגדיר לכל מצביע משקל 1 ומסיר משקלים ספציפיים לסקר
-    vote_weights_on_group: הפעלת משקלי הקולות מעתיקה את משקלי חברי הקבוצה הנוכחיים. מצביעים אחרים מקבלים משקל 1.
-    vote_weights_on_direct: הפעלת משקלי קולות מגדירה לכל מצביע משקל 1
     vote_weight_for: משקל הצבעה עבור %{name}
     save_vote_weights: שמירת משקלי הצבעה
     vote_weights_updated: משקלי הקולות עודכנו
-    weight_for_all: משקל לכולם
-    set_all_vote_weights: הגדר את כל המשקלים
     set_all: הגדר הכל
-    member_vote_weights_hint: מצביעים ללא חברות קבוצתית נוכחית מקבלים משקל 1
-    issued_vote_weights_will_change: משקלים לקולות שכבר הונפקו ישתנו.
     find_or_invite_voters: מצא או הזמן מצביעים
     remove_voter_named: הסר את %{name} מהסקר
     remove_voter_and_any_vote_confirmation: להסיר את %{name} מהסקר הזה? פעולה זו מסירה גם כל הצבעה שהטילו.
@@ -2988,9 +2981,16 @@ he:
     set_all_vote_weights_title: קבע את כל משקלי הקולות
     set_all_vote_weights_search_note: זה משנה את משקלי הקולות של כל המצביעים בסקר, כולל אלו מחוץ לתוצאות החיפוש שלך.
     set_each_member_default_vote_weight: קבע את משקל ההצבעה המוגדר כברירת מחדל עבור כל חבר
-    set_all_weights_the_same: קבע את כל המשקלים זהים
     voters_will_not_be_notified: הבוחרים לא יקבלו הודעה. יש להודיע להם על הסקר בדרך אחרת.
-    use_weighted_voting: השתמש בהצבעה משוקללת. התוצאות מציגות גם את הסכומים הרגילים וגם את הסכומים המשוקללים.
+    give_voters_different_vote_weights: תנו לבוחרים משקלי קולות שונים. התוצאות מציגות גם את הסך הכולל הרגיל וגם את הסך הכולל המשוקלל.
+    vote_weights_off_warning: ביטול משקלי הצבעות קובע את משקל כל הצבעה ל-1 ומסיר משקלי הצבעה ספציפיים לסקר
+    issued_vote_weights_will_change: משקלי הקולות שכבר פורסמו ישתנו.
+    vote_weights_on_group: הפעלת משקלי קולות מעתיקה את משקל הקולות המוגדר כברירת מחדל של כל חבר. שאר המצביעים מקבלים משקל קולות של 1.
+    vote_weights_on_direct: הפעלת משקלי קולות מגדירה כל משקל קולות ל-1
+    weight_for_all: משקל הצבעה לכולם
+    set_all_vote_weights: קבע את כל משקלי הקולות
+    set_all_vote_weights_the_same: קבע את משקלי הקולות של כל הקולות זהים
+    member_vote_weights_hint: מצביעים ללא חברות קבוצתית נוכחית מקבלים משקל קולות של 1
   poll_receipts_page:
     participation_status_requires_min_votes: זה מראה מי היה זכאי להצביע. האם כל אדם הצביע מוצג רק לאחר שלפחות %{count} אנשים הצביעו.
     see_votes_if_quorum_reached: אם ההצבעה נסגרה והושג המניין החוקי, תראו מי הצביע.

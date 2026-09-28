@@ -331,7 +331,7 @@ v-card.poll-members-form(:title="t('poll_common_form.manage_voters')" style="hei
         p.poll-members-form__set-all-search-note.text-body-small.text-medium-emphasis(v-if="query.trim()") {{ t('poll_common_form.set_all_vote_weights_search_note') }}
         v-radio-group(v-model="weightMode" hide-details)
           v-radio(v-if="canUseMemberWeights" value="membership" :label="t('poll_common_form.set_each_member_default_vote_weight')")
-          v-radio(value="value" :label="t('poll_common_form.set_all_weights_the_same')")
+          v-radio(value="value" :label="t('poll_common_form.set_all_vote_weights_the_same')")
         p.text-body-small.text-medium-emphasis(v-if="weightMode === 'membership'") {{ t('poll_common_form.member_vote_weights_hint') }}
         v-text-field.mt-3(
           v-if="weightMode === 'value'"

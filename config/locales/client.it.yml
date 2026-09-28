@@ -2209,7 +2209,7 @@ it:
     delegate_popover: Un delegato è un membro del gruppo con diritto di voto
     delegates: Delegati
     edit_vote_weights: Modifica i pesi di voto
-    vote_weights_are_defaults: Questi pesi predefiniti si applicano alle nuove votazioni. Le modifiche apportate qui non influiscono sulle votazioni già emesse.
+    vote_weights_are_defaults: Questi pesi di voto predefiniti si applicano alle nuove votazioni. Le modifiche apportate qui non influiscono sui pesi di voto già assegnati.
   polls_panel:
     new_poll: Nuova votazione
     any_type: Tutti i tipi
@@ -2328,8 +2328,8 @@ it:
     all_voters: Tutti gli elettori
     vote_weight_column: Peso del voto
     stance: Votare
-    vote_weight: Peso %{weight}
     participation_records_restricted: Potrai vedere chi ha partecipato dopo la chiusura delle votazioni
+    vote_weight: Peso del voto %{weight}
   poll_common_undecided_panel:
     show_undecided: Mostra %{count} Indecisi
     show_invitations: Mostra inviti pendenti
@@ -2978,17 +2978,10 @@ it:
     voter_page_count: "%{first}–%{last} di %{total}"
     vote_weights: pesi di voto
     use_vote_weights: Utilizzare i pesi di voto
-    vote_weights_off_warning: Disattivando i pesi di voto, a ogni elettore viene assegnato un peso pari a 1 e vengono rimossi i pesi specifici del sondaggio.
-    vote_weights_on_group: L'attivazione dei pesi di voto copia i pesi attuali dei membri del gruppo. Gli altri votanti ottengono peso 1.
-    vote_weights_on_direct: L'attivazione dei pesi di voto assegna a ogni elettore un peso pari a 1
     vote_weight_for: Peso del voto per %{name}
     save_vote_weights: Salva i pesi di voto
     vote_weights_updated: Ponderazione dei voti aggiornata
-    weight_for_all: Peso per tutti
-    set_all_vote_weights: Imposta tutti i pesi
     set_all: Imposta tutto
-    member_vote_weights_hint: Gli elettori senza un'attuale appartenenza a un gruppo ottengono peso 1
-    issued_vote_weights_will_change: I pesi attribuiti ai voti già espressi subiranno delle modifiche.
     find_or_invite_voters: Trovare o invitare gli elettori
     remove_voter_named: Rimuovi %{name} dal sondaggio
     remove_voter_and_any_vote_confirmation: Rimuovere %{name} da questo sondaggio? In questo modo verranno rimossi anche tutti i voti espressi.
@@ -2997,9 +2990,16 @@ it:
     set_all_vote_weights_title: Imposta tutti i pesi di voto
     set_all_vote_weights_search_note: Ciò modifica il peso dei voti di tutti gli elettori nel sondaggio, compresi quelli al di fuori dei risultati della tua ricerca.
     set_each_member_default_vote_weight: Imposta il peso di voto predefinito di ciascun membro.
-    set_all_weights_the_same: Impostare tutti i pesi allo stesso modo
     voters_will_not_be_notified: Gli elettori non riceveranno alcuna notifica. Informali del sondaggio in un altro modo.
-    use_weighted_voting: Usa il voto ponderato. I risultati mostrano sia i totali semplici sia quelli ponderati.
+    give_voters_different_vote_weights: Assegna ai votanti pesi di voto diversi. I risultati mostrano sia i totali semplici sia quelli ponderati.
+    vote_weights_off_warning: Disattivando i pesi di voto, ogni peso di voto viene impostato a 1 e vengono rimossi i pesi di voto specifici del sondaggio
+    issued_vote_weights_will_change: I pesi di voto già assegnati subiranno delle modifiche.
+    vote_weights_on_group: L'attivazione dei pesi di voto copia il peso di voto predefinito di ciascun membro. Gli altri votanti ottengono un peso di voto pari a 1.
+    vote_weights_on_direct: L'attivazione dei pesi di voto imposta ogni peso di voto a 1
+    weight_for_all: Peso del voto per tutti
+    set_all_vote_weights: Imposta tutti i pesi di voto
+    set_all_vote_weights_the_same: Stesso peso di voto per tutti
+    member_vote_weights_hint: Gli elettori senza un'attuale appartenenza a un gruppo ottengono un peso di voto pari a 1
   poll_receipts_page:
     participation_status_requires_min_votes: Mostra chi aveva diritto di voto. Lo stato di partecipazione di ogni persona viene mostrato solo quando hanno votato almeno %{count} persone.
     see_votes_if_quorum_reached: Se la votazione è chiusa e il quorum è stato raggiunto, vedrai chi ha espresso il voto.

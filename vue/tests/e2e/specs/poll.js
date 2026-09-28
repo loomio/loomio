@@ -657,7 +657,7 @@ module.exports = {
     page.click('.poll-members-form__set-all')
     page.expectText('.poll-members-form__set-all-dialog', 'Set all vote weights')
     page.expectText('.poll-members-form__set-all-dialog', "Set each member's default vote weight")
-    page.expectText('.poll-members-form__set-all-dialog', 'Set all weights the same')
+    page.expectText('.poll-members-form__set-all-dialog', 'Set all vote weights the same')
     page.click('.poll-members-form__set-all-cancel')
     page.fillIn('.recipients-autocomplete input[type="text"]', 'No matching voter')
     page.expectText('.poll-members-form__page-count', '0–0 of 0')
@@ -760,7 +760,7 @@ module.exports = {
     page.click('.poll-common-form__more-settings')
     page.expectElement('.poll-settings-vote-weights')
     page.expectElement('a[href="/docs/en/user_manual/polls/quorum"]')
-    page.expectText('.poll-common-form', 'Use weighted voting. Results show both the plain and the weighted totals.')
+    page.expectText('.poll-common-form', 'Give voters different vote weights. Results show both the plain and the weighted totals.')
     page.expectElement('a[href="/docs/en/user_manual/polls/weighted_voting"]')
     page.expectElement('a[href="/docs/en/user_manual/polls/anonymous_voting"]')
     page.expectElement('a[href="/docs/en/user_manual/polls/settings#reminder"]')
@@ -781,8 +781,8 @@ module.exports = {
     page.click('.poll-common-form__more-settings')
     page.waitFor('.poll-settings-vote-weights')
     page.click('.poll-settings-vote-weights input')
-    page.expectText('.poll-common-form', 'Weights for votes already issued will change.')
-    page.expectText('.poll-common-form', 'Turning on vote weights copies current group member weights.')
+    page.expectText('.poll-common-form', 'Vote weights already issued will change.')
+    page.expectText('.poll-common-form', "Turning on vote weights copies each member's default vote weight.")
   },
 
   'warns_when_vote_weights_are_disabled_on_an_open_poll': (test) => {
@@ -792,7 +792,7 @@ module.exports = {
     page.click('.poll-common-form__more-settings')
     page.waitFor('.poll-settings-vote-weights')
     page.click('.poll-settings-vote-weights input')
-    page.expectText('.poll-common-form', 'Weights for votes already issued will change.')
-    page.expectText('.poll-common-form', 'Turning off vote weights sets every voter to weight 1')
+    page.expectText('.poll-common-form', 'Vote weights already issued will change.')
+    page.expectText('.poll-common-form', 'Turning off vote weights sets every vote weight to 1')
   },
 }

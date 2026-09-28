@@ -2181,7 +2181,7 @@ hr:
     delegate_popover: Delegat je član grupe s pravom glasa
     delegates: Delegati
     edit_vote_weights: Uredi težine glasova
-    vote_weights_are_defaults: Ove zadane težine primjenjuju se na nove glasove. Promjene ovdje ne utječu na već izdane glasove.
+    vote_weights_are_defaults: Ove zadane težine glasova primjenjuju se na nove glasove. Promjene ovdje ne utječu na već dodijeljene težine glasova.
   polls_panel:
     new_poll: Nova anketa
     any_type: Svi tipovi
@@ -2300,8 +2300,8 @@ hr:
     all_voters: Svi birači
     vote_weight_column: Težina glasova
     stance: Glasanje
-    vote_weight: Težina %{weight}
     participation_records_restricted: Nakon završetka glasanja možete vidjeti tko je sudjelovao
+    vote_weight: Težina glasova %{weight}
   poll_common_undecided_panel:
     show_undecided: Prikaži %{count} neodlučenih
     show_invitations: Prikaži pozivnice na čekanju
@@ -2950,17 +2950,10 @@ hr:
     voter_page_count: "%{first}–%{last} od %{total}"
     vote_weights: Težine glasova
     use_vote_weights: Koristite težine glasova
-    vote_weights_off_warning: Isključivanjem pondera glasova svaki birač dobiva ponder 1 i uklanjaju se ponderi specifični za ankete.
-    vote_weights_on_group: Uključivanjem težina glasova kopiraju se trenutne težine članova grupe. Ostali birači dobivaju težinu 1.
-    vote_weights_on_direct: Uključivanjem pondera glasova svaki birač dobiva ponder 1
     vote_weight_for: Težina glasa za %{name}
     save_vote_weights: Spremi težine glasova
     vote_weights_updated: Ažurirane su težine glasova
-    weight_for_all: Težina za sve
-    set_all_vote_weights: Postavite sve težine
     set_all: Postavi sve
-    member_vote_weights_hint: Birači bez trenutnog članstva u grupi dobivaju težinu 1
-    issued_vote_weights_will_change: Ponderi za već izdane glasove će se promijeniti.
     find_or_invite_voters: Pronađite ili pozovite birače
     remove_voter_named: Ukloni %{name} iz ankete
     remove_voter_and_any_vote_confirmation: Ukloniti %{name} iz ove ankete? Time se također uklanjaju svi glasovi koje je dao/dala.
@@ -2969,9 +2962,16 @@ hr:
     set_all_vote_weights_title: Postavi sve težine glasova
     set_all_vote_weights_search_note: Ovo mijenja težinu glasova svih birača u anketi, uključujući i one izvan rezultata pretraživanja.
     set_each_member_default_vote_weight: Postavite zadanu težinu glasa za svakog člana
-    set_all_weights_the_same: Postavite sve težine na iste
     voters_will_not_be_notified: Birači neće biti obaviješteni. Obavijestite ih o anketi na drugi način.
-    use_weighted_voting: Koristite ponderirano glasanje. Rezultati prikazuju i obične i ponderirane ukupne glasove.
+    give_voters_different_vote_weights: Dajte biračima različite težine glasova. Rezultati prikazuju i obične i ponderirane ukupne brojeve.
+    vote_weights_off_warning: Isključivanjem težina glasova svaka težina glasova postavlja se na 1 i uklanjaju se težine glasova specifične za ankete
+    issued_vote_weights_will_change: Već dodijeljene težine glasova će se promijeniti.
+    vote_weights_on_group: Uključivanjem težina glasova kopira se zadana težina glasa svakog člana. Ostali birači dobivaju težinu glasa od 1.
+    vote_weights_on_direct: Uključivanjem težine glasova postavlja se svaka težina glasa na 1
+    weight_for_all: Težina glasa za sve
+    set_all_vote_weights: Postavi sve težine glasova
+    set_all_vote_weights_the_same: Postavi sve težine glasova na istu razinu
+    member_vote_weights_hint: Birači bez trenutnog članstva u grupi dobivaju težinu glasa 1
   poll_receipts_page:
     participation_status_requires_min_votes: Ovo pokazuje tko je imao pravo glasa. Je li svaka osoba glasala prikazuje se tek kada su glasale najmanje %{count} osobe.
     see_votes_if_quorum_reached: Ako je glasanje zatvoreno i postignut je kvorum, vidjet ćete tko je glasao.

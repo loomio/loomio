@@ -2181,7 +2181,7 @@ sv:
     delegate_popover: En delegat är en gruppmedlem med rösträtt
     delegates: Delegater
     edit_vote_weights: Redigera röstvikter
-    vote_weights_are_defaults: Dessa standardvikter gäller för nya röster. Ändringar här påverkar inte röster som redan utfärdats.
+    vote_weights_are_defaults: Dessa standardröstvikter gäller för nya röster. Ändringar här påverkar inte röstvikter som redan utfärdats.
   polls_panel:
     new_poll: Ny omröstning
     any_type: Alla typer
@@ -2300,8 +2300,8 @@ sv:
     all_voters: Alla väljare
     vote_weight_column: Röstvikt
     stance: Rösta
-    vote_weight: Vikt %{weight}
     participation_records_restricted: Du kan se vilka som deltog efter att omröstningen avslutats
+    vote_weight: Röstvikt %{weight}
   poll_common_undecided_panel:
     show_undecided: Visa %{count} osäkra
     show_invitations: Visa väntande inbjudningar
@@ -2950,17 +2950,10 @@ sv:
     voter_page_count: "%{first}–%{last} av %{total}"
     vote_weights: Röstvikter
     use_vote_weights: Använd röstvikter
-    vote_weights_off_warning: Om man stänger av röstvikter får varje väljare vikt 1 och omröstningsspecifika vikter tas bort.
-    vote_weights_on_group: Om röstvikter aktiveras kopieras vikterna för nuvarande gruppmedlemmar. Andra väljare får vikt 1.
-    vote_weights_on_direct: Om man aktiverar röstvikter får varje väljare vikt 1
     vote_weight_for: Röstvikt för %{name}
     save_vote_weights: Spara röstvikter
     vote_weights_updated: Röstvikter uppdaterade
-    weight_for_all: Vikt för alla
-    set_all_vote_weights: Ställ in alla vikter
     set_all: Ställ in alla
-    member_vote_weights_hint: Väljare utan nuvarande grupptillhörighet får vikt 1
-    issued_vote_weights_will_change: Vikterna för redan utfärdade röster kommer att ändras.
     find_or_invite_voters: Hitta eller bjud in väljare
     remove_voter_named: Ta bort %{name} från omröstningen
     remove_voter_and_any_vote_confirmation: Vill du ta bort %{name} från den här omröstningen? Detta tar även bort alla röster de avgav.
@@ -2969,9 +2962,16 @@ sv:
     set_all_vote_weights_title: Ange alla röstvikter
     set_all_vote_weights_search_note: Detta ändrar röstvikten för alla väljare i omröstningen, inklusive de utanför dina sökresultat.
     set_each_member_default_vote_weight: Ange varje medlems standardröstvikt
-    set_all_weights_the_same: Ställ in alla vikter på samma sätt
     voters_will_not_be_notified: Väljarna kommer inte att meddelas. Informera dem om omröstningen på ett annat sätt.
-    use_weighted_voting: Använd viktad röstning. Resultaten visar både den vanliga och den viktade totalsumman.
+    give_voters_different_vote_weights: Ge väljarna olika röstvikter. Resultaten visar både den enkla och den viktade totalsumman.
+    vote_weights_off_warning: Om du stänger av röstvikter sätts varje röstvikt till 1 och röstvikter specifika för omröstningar tas bort
+    issued_vote_weights_will_change: Redan utfärdade röstvikter kommer att ändras.
+    vote_weights_on_group: Om röstvikter aktiveras kopieras varje medlems standardröstvikt. Andra väljare får röstvikten 1.
+    vote_weights_on_direct: Om du aktiverar röstvikter sätts varje röstvikt till 1
+    weight_for_all: Röstvikt för alla
+    set_all_vote_weights: Ange alla röstvikter
+    set_all_vote_weights_the_same: Sätt alla röstvikter lika
+    member_vote_weights_hint: Väljare utan nuvarande gruppmedlemskap får röstvikten 1
   poll_receipts_page:
     participation_status_requires_min_votes: Detta visar vilka som var röstberättigade. Om varje person har röstat visas endast när minst %{count} personer har röstat.
     see_votes_if_quorum_reached: Om omröstningen har avslutats och beslutsmässighet uppnåtts ser du vem som avgav en röst.
