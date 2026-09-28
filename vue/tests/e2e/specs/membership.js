@@ -96,7 +96,7 @@ module.exports = {
     page.click('.membership-dropdown__set-title')
     page.fillIn('.membership-form__title-input input', 'Suzerain')
     page.click('.membership-form__submit')
-    page.expectFlash('Membership title updated')
+    page.expectFlash('Membership updated')
   },
 
   'can_edit_group_vote_weights': (test) => {
