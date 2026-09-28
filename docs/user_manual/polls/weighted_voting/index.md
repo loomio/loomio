@@ -36,14 +36,17 @@ Select **Manage voters** on the poll to open the voter management window. Use **
 
 Select **Set all weights** at the top right of the voter list to update every current voter, including voters on other pages or outside the current search results. Choose **Set each member's default vote weight** to copy current group membership weights, or **Set all weights the same** to enter one value for everyone. Voters without a current group membership receive weight `1` when you copy membership defaults. This also updates people who have already voted and recalculates the poll result. Direct polls offer the one weight option because they have no group memberships.
 
-When each choice gives one point, the results table shows **Voters** for the number of people who chose each option and **Score** for the result using their assigned weights. For voting methods where a person can give more than one point, it also shows **Equal weight score**, calculated as if every voter had weight `1`. Score percentages use the assigned weights, and the chart shows the weighted result by default. People who can view an identified poll's votes can also see voter weights. Decide whether that visibility is suitable before enabling weights.
+The results table keeps its usual columns and adds the weighted result beside them:
 
-Select a result column heading such as **Voters** or **Score** to chart that measure. The table values stay visible while the chart changes. Select **% of votes cast** or **Score** to return to the weighted result.
+- For proposals and other voting methods where each choice gives one vote, **Votes** counts the people who chose each option and **Weighted votes** adds up their weights. The percentage column becomes **% of weighted votes**.
+- For dot votes, score polls, and ranked choice, **Points** shows the points given as if every voter had weight `1`, and **Weighted points** multiplies each voter's points by their weight. **% of weighted points** and **Weighted mean** also use the weights.
 
-## Example: voters and weighted scores
+The chart shows the weighted result by default. Select a column heading such as **Votes** or **Weighted votes** to chart that measure instead; the table values stay visible. People who can view an identified poll's votes can also see voter weights on the Votes page. Decide whether that visibility is suitable before enabling weights.
 
-In this proposal, Jamie and Samira agree, while Alex disagrees. Jamie's weight is `0`, Samira's is `1`, and Alex's is `3`. All three votes are recorded, so **Agree** has two voters and **Disagree** has one. The weighted scores are `1` for Agree and `3` for Disagree. The result chart therefore shows 25% Agree and 75% Disagree.
+## Example: votes and weighted votes
+
+In this proposal, Jamie and Samira agree, while Alex disagrees. Jamie's weight is `0`, Samira's is `1`, and Alex's is `3`. All three votes are recorded, so **Agree** has two votes and **Disagree** has one. Their weighted votes are `1` for Agree and `3` for Disagree, so the result chart shows 25% Agree and 75% Disagree.
 
 ![A proposal where two people agree but one weighted disagreement has more influence](weighted-proposal-result.png)
 
-**Eligible voters** counts people, regardless of their weights. A voter with weight `0` is still eligible, and a vote they cast counts toward participation and quorum. For this example, Agree has two out of three eligible voters (about 67%), even though its share of the weighted score is 25%. A choice's **% of eligible voters** and **% of votes cast** can therefore differ. The chart starts with the weighted score; select **Voters** or **% of eligible voters** to see the result by people.
+**Eligible voters** counts people, regardless of their weights. A voter with weight `0` is still eligible, and a vote they cast counts toward participation and quorum. For this example, Agree has two out of three eligible voters (about 67%), even though it has 25% of the weighted votes. A choice's **% of eligible voters** and **% of weighted votes** can therefore differ. The chart starts with the weighted votes; select **Votes** or **% of eligible voters** to see the result by people.
