@@ -1526,8 +1526,8 @@ pt_BR:
     members_can_create_tags_help: Permitir que os membros criem novas etiquetas ao etiquetar tópicos e enquetes.
     non_members_can_start_discussions: Quem não é membro pode iniciar discussões.
     non_members_can_start_discussions_help: Permitir que não membros iniciem uma discussão a partir de um dos modelos deste grupo.
-    let_admins_set_vote_weights: Permita que os administradores atribuam pesos diferentes aos votos dos membros, para que alguns votos contem mais do que outros
     allow_weighted_voting: Permitir votação ponderada
+    give_members_different_vote_weights: Atribua pesos de voto diferentes aos membros, de forma que alguns votos contem mais do que outros
   group_export_modal:
     title: Exportar data do grupo
     body: |

@@ -1505,8 +1505,8 @@ ca:
     members_can_create_tags_help: Permet que els membres creïn etiquetes noves en etiquetar fils i enquestes
     non_members_can_start_discussions: Els no membres poden iniciar debats
     non_members_can_start_discussions_help: Permet que els no membres iniciïn una discussió des d'una de les plantilles d'aquest grup
-    let_admins_set_vote_weights: Permet que els administradors donin als membres diferents pesos de vot, de manera que alguns vots comptin més que d'altres
     allow_weighted_voting: Permetre el vot ponderat
+    give_members_different_vote_weights: Doneu als membres diferents pesos de vot, de manera que alguns vots comptin més que altres
   group_export_modal:
     title: Exporta dades del grup
     body: |

@@ -1525,8 +1525,8 @@ it:
     members_can_create_tags_help: Consenti ai membri di creare nuovi tag quando etichettano discussioni e sondaggi.
     non_members_can_start_discussions: Anche i non membri possono avviare discussioni
     non_members_can_start_discussions_help: Consenti ai non membri di avviare una discussione utilizzando uno dei modelli di questo gruppo.
-    let_admins_set_vote_weights: Consenti agli amministratori di assegnare pesi di voto diversi ai membri, in modo che alcuni voti abbiano più peso di altri
     allow_weighted_voting: Consenti il voto ponderato
+    give_members_different_vote_weights: Assegna ai membri pesi di voto diversi, in modo che alcuni voti contino più di altri
   group_export_modal:
     title: Esporta i dati del gruppo
     body: <p>Puoi scaricare una copia dei dati del tuo gruppo in qualsiasi momento. <a href="https://help.loomio.org/en/user_manual/groups/data_export/">Scopri di più.</a></p><p> Il completamento richiede alcuni minuti, a seconda delle dimensioni del gruppo. Quando sarà pronto riceverai un'e-mail con un link per scaricare il file.</p>

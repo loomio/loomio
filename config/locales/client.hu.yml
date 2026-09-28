@@ -1503,8 +1503,8 @@ hu:
     members_can_create_tags_help: A tagok új címkéket hozhatnak létre a témák és szavazások címkézésekor
     non_members_can_start_discussions: Nem tagok is indíthatnak beszélgetéseket
     non_members_can_start_discussions_help: Engedélyezze a nem tagok számára, hogy beszélgetést indítsanak a csoport egyik sablonjából
-    let_admins_set_vote_weights: Engedélyezheti az adminisztrátoroknak, hogy a tagok eltérő szavazati súlyokat kapjanak, így egyes szavazatok jobban számítanak, mint mások
     allow_weighted_voting: Súlyozott szavazás engedélyezése
+    give_members_different_vote_weights: Adj a tagoknak különböző szavazati súlyokat, hogy egyes szavazatok jobban számítsanak, mint mások
   group_export_modal:
     title: Csoport adatok letöltése
     body: <p>A csoport adatainak másolatát bármikor letöltheti. <a href="https://help.loomio.org/en/user_manual/groups/data_export/">Tudj meg többet.</a></p><p> A kitöltése a csoport méretétől függően néhány percet vesz igénybe. Ha készen áll, e-mailben kap egy linket a fájl letöltéséhez.</p>

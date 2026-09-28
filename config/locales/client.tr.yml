@@ -1499,8 +1499,8 @@ tr:
     members_can_create_tags_help: Üyelerin konuları ve anketleri etiketlerken yeni etiketler oluşturmasına izin verin.
     non_members_can_start_discussions: Üye olmayanlar da tartışma başlatabilir.
     non_members_can_start_discussions_help: Üye olmayanların bu grubun şablonlarından birini kullanarak tartışma başlatmasına izin verin.
-    let_admins_set_vote_weights: Yöneticilerin üyelere farklı oy ağırlıkları vermesine izin verin, böylece bazı oylar diğerlerinden daha fazla sayılır
     allow_weighted_voting: Ağırlıklı oylamaya izin ver
+    give_members_different_vote_weights: Üyelere farklı oy ağırlıkları verin, böylece bazı oylar diğerlerinden daha fazla sayılır
   group_export_modal:
     title: Grup verilerini dışa aktar
     body: <p>Grubunuzun verilerinin bir kopyasını istediğiniz zaman indirebilirsiniz. <a href="https://help.loomio.org/en/user_manual/groups/data_export/">Daha fazlasını bul.</a></p><p> Grubunuzun büyüklüğüne bağlı olarak tamamlanması birkaç dakika sürer. Hazır olduğunda dosyayı indirme bağlantısını içeren bir e-posta alacaksınız.</p>

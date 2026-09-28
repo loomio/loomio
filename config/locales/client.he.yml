@@ -1503,8 +1503,8 @@ he:
     members_can_create_tags_help: אפשר לחברים ליצור תגיות חדשות בעת תיוג שרשורים וסקרים
     non_members_can_start_discussions: מי שאינם חברים יכולים לפתוח דיונים
     non_members_can_start_discussions_help: אפשר לאנשים שאינם חברים להתחיל דיון מאחת התבניות של קבוצה זו
-    let_admins_set_vote_weights: אפשרו למנהלים לתת לחברים משקלי הצבעה שונים, כך שחלק מהקולות ייחשבו יותר מאחרים
     allow_weighted_voting: אפשר הצבעה משוקללת
+    give_members_different_vote_weights: תנו לחברים משקלי קולות שונים, כך שחלק מהקולות נחשבים יותר מאחרים
   group_export_modal:
     title: יצוא נתונים מהקבוצה
     body: |

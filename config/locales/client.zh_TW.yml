@@ -1508,8 +1508,8 @@ zh_TW:
     members_can_create_tags_help: 允許成員在標記貼文和投票時建立新標籤。
     non_members_can_start_discussions: 非會員也可以發起討論
     non_members_can_start_discussions_help: 允許非成員使用本群組提供的範本發起討論。
-    let_admins_set_vote_weights: 允許管理員為成員設定不同的投票權重，使某些投票比其他投票更重要
     allow_weighted_voting: 允許加權投票
+    give_members_different_vote_weights: 賦予成員不同的投票權重，使某些投票比其他投票更重要
   group_export_modal:
     title: 匯出群組資料
     body: |

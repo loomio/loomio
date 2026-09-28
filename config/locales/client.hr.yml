@@ -1499,8 +1499,8 @@ hr:
     members_can_create_tags_help: Omogući članovima stvaranje novih oznaka prilikom označavanja tema i anketa
     non_members_can_start_discussions: Nečlanovi mogu započeti rasprave
     non_members_can_start_discussions_help: Dopusti osobama koje nisu članovi da započnu raspravu iz jednog od predložaka ove grupe
-    let_admins_set_vote_weights: Neka administratori daju članovima različite težine glasova, tako da neki glasovi imaju više vrijednosti od drugih
     allow_weighted_voting: Dopusti ponderirano glasanje
+    give_members_different_vote_weights: Dajte članovima različitu težinu glasova, tako da neki glasovi imaju više vrijednosti od drugih
   group_export_modal:
     title: Izvoz grupnih podataka
     body: <p>U bilo kojem trenutku možete preuzeti kopiju podataka svoje grupe. <a href="https://help.loomio.org/en/user_manual/groups/data_export/">Saznaj više.</a></p><p> Za dovršetak je potrebno nekoliko minuta, ovisno o veličini vaše grupe. Kada bude spremna, primit ćete e-poruku s vezom za preuzimanje datoteke.</p>

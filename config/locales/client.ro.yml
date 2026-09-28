@@ -1499,8 +1499,8 @@ ro:
     members_can_create_tags_help: Permite membrilor să creeze etichete noi atunci când etichetează firele de discuție și sondajele
     non_members_can_start_discussions: Persoanele care nu sunt membri pot începe discuții
     non_members_can_start_discussions_help: Permiteți membrilor care nu sunt membri să înceapă o discuție dintr-unul dintre șabloanele acestui grup
-    let_admins_set_vote_weights: Permite administratorilor să acorde membrilor ponderi diferite ale voturilor, astfel încât unele voturi să conteze mai mult decât altele
     allow_weighted_voting: Permiteți votul ponderat
+    give_members_different_vote_weights: Acordă membrilor ponderi diferite ale voturilor, astfel încât unele voturi să conteze mai mult decât altele
   group_export_modal:
     title: Exportați datele grupului
     body: <p>Puteți descărca oricând o copie a datelor grupului dvs. <a href="https://help.loomio.org/en/user_manual/groups/data_export/">Află mai multe.</a></p><p> Este nevoie de câteva minute pentru a finaliza, în funcție de dimensiunea grupului dvs. Când este gata, veți primi un e-mail cu un link pentru a descărca fișierul.</p>

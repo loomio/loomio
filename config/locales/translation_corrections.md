@@ -1,5 +1,13 @@
 # Corrected translations
 
+## 2026-09-28 — Group weighted voting help
+
+| File | Key | Before | After | Why it was wrong |
+|------|-----|--------|-------|------------------|
+| `config/locales/client.de.yml`, `client.fr.yml`, `client.ro.yml` | `group_form.give_members_different_vote_weights` | Formal `Weisen Sie … zu`, `Attribuez`, `Acordați` | Informal `Gib`, `Attribue`, `Acordă` | These locales use the informal register for the weighted voting strings |
+| `config/locales/client.it.yml` | `group_form.give_members_different_vote_weights` | Infinitive `Assegnare` | Imperative `Assegna` | Italian UI uses imperatives |
+| `config/locales/client.*.yml` | `group_form.give_members_different_vote_weights` | Final `.` or `。` | No final full stop | The English source is a single-sentence UI string |
+
 ## 2026-09-28 — Weighted voting settings
 
 | File | Key | Before | After | Why it was wrong |

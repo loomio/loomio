@@ -1549,7 +1549,7 @@ en:
     submit: Yes, Deactivate this group
   group_form:
     allow_weighted_voting: Allow weighted voting
-    let_admins_set_vote_weights: Let admins give members different vote weights, so some votes count more than others
+    give_members_different_vote_weights: Give members different vote weights, so some votes count more than others
     share_this_url_with_people_who_want_to_join: Share this URL with people who want to join
     request_to_join_prompt: Request to join prompt
     default_request_to_join_prompt: 'Thanks for your interest in our group. Please introduce yourself and explain why you are requesting to join.'

@@ -1513,8 +1513,8 @@ de:
     members_can_create_tags_help: Erlauben Sie Mitgliedern, beim Taggen von Threads und Umfragen neue Tags zu erstellen.
     non_members_can_start_discussions: Nichtmitglieder können Diskussionen starten
     non_members_can_start_discussions_help: Erlaube Nichtmitgliedern, eine Diskussion anhand einer Vorlage dieser Gruppe zu starten
-    let_admins_set_vote_weights: Lass Admins Mitgliedern unterschiedliche Stimmgewichte zuweisen, sodass manche Stimmen mehr zählen als andere
     allow_weighted_voting: Gewichtete Abstimmung zulassen
+    give_members_different_vote_weights: Gib Mitgliedern unterschiedliche Stimmgewichte, sodass manche Stimmen mehr zählen als andere
   group_export_modal:
     title: Gruppendaten exportieren
     body: |

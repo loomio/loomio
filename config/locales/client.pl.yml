@@ -1505,8 +1505,8 @@ pl:
     members_can_create_tags_help: Zezwalaj członkom na tworzenie nowych tagów podczas tagowania wątków i ankiet
     non_members_can_start_discussions: Osoby niebędące członkami mogą rozpoczynać dyskusje
     non_members_can_start_discussions_help: Zezwól osobom niebędącym członkami na rozpoczęcie dyskusji z jednego z szablonów tej grupy
-    let_admins_set_vote_weights: Pozwól administratorom nadawać członkom głosy o różnej wadze, aby niektóre głosy liczyły się bardziej niż inne
     allow_weighted_voting: Zezwól na głosowanie ważone
+    give_members_different_vote_weights: Nadaj członkom różną wagę głosu, aby niektóre głosy liczyły się bardziej niż inne
   group_export_modal:
     title: Eksportuj dane grupy
     body: |
