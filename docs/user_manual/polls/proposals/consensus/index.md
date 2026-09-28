@@ -32,4 +32,8 @@ The chart shows the balance of responses. Review every disagreement and block re
 
 ![](../proposal_consensus_results.png)
 
-If the group reaches agreement, publish an outcome recording the final standard and responsibilities. Otherwise, record what will be revised and when the group will return to the proposal.
+## Share an outcome
+
+When the proposal closes, share an outcome. If the group reached agreement, record the final agreement and who is responsible. Otherwise, record what will be revised and when the group will return to the proposal. See [Share an outcome](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome) for how outcomes work.
+
+![An outcome saying consensus was not reached and the standard will be revised](outcome.png)

@@ -32,4 +32,8 @@ The chart confirms who has responded, but the reasons contain the substance of a
 
 ![](../proposal_advice_results.png)
 
-The decision maker publishes an outcome explaining what they decided and how the advice informed it.
+## Share an outcome
+
+When the proposal closes, the decision maker shares an outcome. It states what they decided and how the advice informed the decision. See [Share an outcome](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome) for how outcomes work.
+
+![An outcome naming the chosen supplier and the advice it followed](outcome.png)

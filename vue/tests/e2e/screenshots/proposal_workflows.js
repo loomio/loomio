@@ -111,6 +111,26 @@ workflows.forEach(([template, name]) => {
     captureVoting(screenshot, name);
   };
 
+  if (defaultProposalDirectories[template]) {
+    tests[`${name}_outcome`] = (test) => {
+      const page = pageHelper(test);
+      const screenshot = manualScreenshot(test);
+      loadPoll(page, template, 'outcome');
+      page.waitFor('.poll-common-outcome-panel');
+      screenshot.captureRegion(
+        `polls/proposals/${defaultProposalDirectories[template]}/outcome`,
+        ['.poll-created .poll-common-card__title', '.poll-created .poll-common-chart-panel', '.poll-created .action-dock'],
+        {
+          padding: 32,
+          width: 1200,
+          height: 2200,
+          clearSelection: true,
+          spotlight: {selector: '.poll-common-outcome-panel', padding: 16, radius: 16, opacity: 0.4, outlineWidth: 0}
+        }
+      );
+    };
+  }
+
   tests[`${name}_results`] = (test) => {
     const page = pageHelper(test);
     const screenshot = manualScreenshot(test);

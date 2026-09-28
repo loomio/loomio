@@ -968,6 +968,16 @@ module Dev::Scenarios::OatmilkCooperative
       PollService.close(poll: poll, actor: coordinator)
     end
 
+    if params[:outcome] == '1'
+      OutcomeService.create(
+        outcome: Outcome.new(
+          poll: poll,
+          statement: 'Samira Patel, Alex Morgan, and Morgan Price are elected to the reusable packaging committee. Their term starts on 1 November, and the committee meets for the first time that week.'
+        ),
+        actor: coordinator
+      )
+    end
+
     sign_in coordinator
     redirect_to poll_path(poll)
   end
@@ -1169,7 +1179,7 @@ module Dev::Scenarios::OatmilkCooperative
       OutcomeService.create(
         outcome: Outcome.new(
           poll: poll,
-          statement: 'We will give cafe collections and the washing workflow equal time at the planning meeting, then publish the agreed trial schedule.'
+          statement: manual_oatmilk_poll_type_outcome(poll_type)
         ),
         actor: coordinator
       )
@@ -1316,7 +1326,7 @@ module Dev::Scenarios::OatmilkCooperative
       OutcomeService.create(
         outcome: Outcome.new(
           poll: poll,
-          statement: "The cooperative will proceed with the returnable bottle trial and review collection and washing data after six weeks."
+          statement: manual_oatmilk_proposal_outcome(template_key)
         ),
         actor: coordinator
       )
@@ -1479,6 +1489,27 @@ module Dev::Scenarios::OatmilkCooperative
       'gradients_of_agreement' => 'Support the proposed cafe collection schedule',
       'question' => 'Questions about the returnable bottle trial'
     }.fetch(template_key)
+  end
+
+  # Each outcome follows from the votes cast above: Jamie, Samira, and Alex
+  # choose the first, second, and third options in turn.
+  # Each outcome follows from the votes in manual_oatmilk_poll_type_config.
+  def manual_oatmilk_poll_type_outcome(poll_type)
+    {
+      'poll' => 'Cafe collections will get the most time at the planning meeting. The washing workflow and return-rate reporting will share the remaining time, with the washing workflow first.',
+      'score' => 'We will run the trial at Central Station cafe, which had the highest average score. If Central Station cannot take part, we will choose between Riverside market and University food court, which tied for second.',
+      'dot_vote' => 'The strategy review will spend the most time on financial sustainability, followed by staff development. The other three areas will share one session.',
+      'ranked_choice' => 'We will order the 500 ml amber bottle for the trial. If the supplier cannot deliver it in time, we will use the 500 ml clear bottle.'
+    }.fetch(poll_type)
+  end
+
+  def manual_oatmilk_proposal_outcome(template_key)
+    {
+      'check' => 'The plan needs changes before final review. Jamie will confirm supplier response times and add a weekly return-rate review, then run a Sense check on the revised plan next week.',
+      'advice' => 'I have chosen Riverside Wash as our bottle washing supplier. Following the advice, their contract includes a one-day response time for faults. Deliveries start on 3 November.',
+      'consent' => "Samira's objection is resolved: the supplier has confirmed a one-day response time for faults. The trial starts on 3 November. Jamie is responsible for the collection schedule, and we will review return rates when the six weeks end.",
+      'consensus' => "We have not reached consensus yet. Alex's concern will be addressed by adding a weekly return-rate review to the standard. Jamie will share the revised standard for another Consensus proposal on 20 October."
+    }.fetch(template_key, 'The cooperative will proceed with the returnable bottle trial and review collection and washing data after six weeks.')
   end
 
   def manual_oatmilk_proposal_details(_template_key)

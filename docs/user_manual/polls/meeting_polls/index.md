@@ -34,9 +34,9 @@ If the times don't work, participants can suggest alternatives using the message
 
 The results update as voting proceeds in a table showing who is available when, so everyone can see which timeslots are popular.
 
-### Outcome
+### Share an outcome
 
-When the Time poll closes, pick the best time and post an outcome.
+When the Time poll closes, pick the best time and share an outcome. See [Share an outcome](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome) for how outcomes work.
 
 ![](timepoll_outcome.png)
 

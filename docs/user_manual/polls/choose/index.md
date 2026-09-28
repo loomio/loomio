@@ -49,6 +49,8 @@ The results show the share of all selections received by each option, the number
 
 In this example, **Cafe collection schedule** has three selections. **Washing workflow** and **Return-rate reporting** each have two. The result supports giving cafe collections the most agenda time, but the tied topics still require the organizer to decide how the remaining time is divided.
 
-When the poll closes, publish an **Outcome** explaining what the group will do with the result.
+## Share an outcome
 
-![](outcome.png)
+When the poll closes, share an outcome. Say what the group will do with the result, including how any ties are settled. See [Share an outcome](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome) for how outcomes work.
+
+![An outcome giving cafe collections the most meeting time](outcome.png)

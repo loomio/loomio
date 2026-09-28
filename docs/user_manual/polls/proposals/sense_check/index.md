@@ -37,4 +37,8 @@ The chart shows the number and proportion of votes for each response. Read the r
 
 ![](../proposal_sense_check_results.png)
 
-Publish an outcome that summarizes the changes the group will make, or records that the idea is ready for the next decision stage.
+## Share an outcome
+
+When the Sense check closes, share an outcome. Summarize the changes the group will make, or record that the idea is ready for the next decision stage. See [Share an outcome](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome) for how outcomes work.
+
+![An outcome saying the plan will be revised before final review](outcome.png)

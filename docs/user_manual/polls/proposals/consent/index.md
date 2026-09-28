@@ -32,4 +32,8 @@ The chart makes objections visible, but the group must examine the reasons. Reso
 
 ![](../proposal_consent_results.png)
 
-Publish an outcome that records the agreed action, any safeguards, who is responsible, and when the group will review it.
+## Share an outcome
+
+When the proposal closes, share an outcome. Record the agreed action, how any objections were resolved, who is responsible, and when the group will review it. See [Share an outcome](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome) for how outcomes work.
+
+![An outcome recording a resolved objection, a start date, and a review point](outcome.png)

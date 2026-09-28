@@ -108,6 +108,12 @@ Expand **Round-by-round details** to see vote transfers and eliminations. Each r
 
 The green highlight shows when a candidate was elected, red shows when they were eliminated, and orange shows when they tied.
 
+## Share an outcome
+
+When the election closes, share an outcome. Name the people elected and say when their role starts. See [Share an outcome](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome) for how outcomes work.
+
+![An outcome naming the elected committee members](outcome.png)
+
 ## Exporting ballots
 
 After the election closes, people who can view the results can export the ballots in BLT format for an independent recount or audit. The export contains candidate rankings and combines identical rankings into a single row with a ballot count. For anonymous elections it does not contain voter identities, ballot identifiers, submission times, or submission order.
