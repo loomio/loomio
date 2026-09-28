@@ -205,6 +205,7 @@ zh_CN:
       title: 我们的战略方向应该重点放在哪里？
       details: <h3 id="what-is-this-poll-about"><strong>这个投票是关于什么的？</strong></h3><p></p><h3 id="why-is-this-important"><strong>为什么这很重要？</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"><strong>你要求人们做什么？</strong></h3><p></p><p>选择您喜欢的选项。</p>
       process_introduction_v2: <p><strong>“选择”功能</strong>可帮助您找到最受欢迎的选项。参与者从列表中选择——您可以设置他们可以选择一个或多个选项。</p><p> <a target="_blank" href="/docs/en/user_manual/polls/proposal_types#simple-poll">阅读更多关于“选择”的信息</a>。</p>
+      process_subtitle_v2: 通过单选或多选投票来衡量受欢迎程度
     score_poll:
       process_subtitle: 衡量每个选项的支持程度
       process_introduction: <p>当您想调查人们对每个选项的愿望、偏好或兴趣时，请使用评分投票。</p><p><span>参与者需要评估每个选项，并通过沿刻度移动滑块来分配分数。</span></p><p> <a target="_blank"  href="/docs/en/user_manual/polls/proposal_types#score-poll">阅读更多关于评分投票的信息</a>。</p>
@@ -212,6 +213,7 @@ zh_CN:
       details: <h3 id="what-is-this-poll-about"><strong>这个投票是关于什么的？</strong></h3><p></p><h3 id="why-is-this-important"><strong>为什么这很重要？</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"><strong>你要求人们做什么？</strong></h3><p></p><p>选择您喜欢的选项。</p>
       process_subtitle_v2: 衡量每项选择的支持程度
       process_introduction_v2: <p><strong>评分功能</strong>可以衡量群体对每个选项的支持程度。参与者通过滑动标尺为每个选项打分来评估，因此您不仅可以了解人们的偏好，还可以了解他们的偏好程度。</p><p> <a target="_blank" href="/docs/en/user_manual/polls/proposal_types#score-poll">阅读更多关于评分投票的信息</a>。</p>
+      process_subtitle_v3: 请选民对每个选项的支持程度进行评分
     dot_vote:
       process_subtitle: 分配一定数量的积分以揭示优先事项
       process_introduction: <p>点投票法可以将有限的资源分配给多个选项。它超越了简单的投票表决，帮助参与者意识到选择选项时存在资源限制。</p><p>每位参与者都会获得一定数量的积分预算供其分配。</p><p>参与者可以将所有积分分配给一个选项，也可以将积分分散到多个选项中。</p><p>参赛者不得超出预算，因此必须仔细考虑如何分配积分。</p><p> <a target="_blank"  href="/docs/en/user_manual/polls/proposal_types#dot-vote">阅读更多关于点投票的信息</a>。</p>
@@ -219,6 +221,7 @@ zh_CN:
       details: <h3 id="what-is-this-poll-about"><strong>这个投票是关于什么的？</strong></h3><p></p><h3 id="why-is-this-important"><strong>为什么这很重要？</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"><strong>你要求人们做什么？</strong></h3><p></p><p>本次投票中，您拥有一定数量的积分，可以分配给您偏好的选项。您可以将所有积分分配给一个选项，也可以分散分配。</p>
       process_subtitle_v2: 当需要权衡取舍时，要明确优先事项。
       process_introduction_v2: <p><strong>“分配”功能</strong>可以帮助您了解团队在权衡取舍时的优先事项。每位参与者都会获得一定数量的点数，用于分配到各个选项上——他们可以全力投入一个选项，也可以将点数分散到多个选项中。由于点数有限，因此每一分的花费都真实地反映了优先级。</p><p> <a target="_blank" href="/docs/en/user_manual/polls/proposal_types#dot-vote">阅读更多关于分配的信息</a>。</p>
+      process_subtitle_v3: 当需要权衡取舍时，要明确优先级。也称为点投票法。
     ranked_choice:
       process_subtitle: 了解选项的优先顺序
       process_introduction: <p>当选项众多或举行选举时，排序复选制非常有用。</p><p>选民通过拖放选项来按偏好顺序排列。</p><p>结果按排名顺序显示。</p><p> <a target="_blank"  href="/docs/en/user_manual/polls/proposal_types#ranked-choice">阅读更多关于排名选择的信息</a>。</p>
@@ -226,6 +229,7 @@ zh_CN:
       details: <h3 id="what-is-this-poll-about"><strong>这个投票是关于什么的？</strong></h3><p></p><h3 id="why-is-this-important"><strong>为什么这很重要？</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"><strong>你要求人们做什么？</strong></h3><p></p><p>请按偏好顺序对选项进行投票。排名第一的选项获胜。</p>
       process_subtitle_v2: 找出该群体的偏好顺序
       process_introduction_v2: <p><strong>排名</strong>显示了小组的偏好顺序。参与者通过拖放选项来按偏好程度从高到低排序，结果显示了总体排名。</p><p> <a target="_blank" href="/docs/en/user_manual/polls/proposal_types#ranked-choice">了解更多关于排名的信息</a>。</p>
+      process_subtitle_v3: 按偏好程度从高到低排序
     time_poll:
       process_subtitle: 找到人们何时有空见面
       process_introduction: <p>快速找到最适合您会议或活动的时间。添加标题、详细信息以及您所在时区的日期/时间选项。参会者将看到根据他们所在时区自动调整的时间。</p><p>当您的时间投票结束后，请设置最佳时间结果以及任何会议说明。Loomio 会发送一封包含日历邀请的电子邮件，以便参与者将其添加到自己的日历中。</p><p> <a target="_blank" href="/docs/en/user_manual/polls/meeting_polls#time-poll">阅读更多关于《时代》杂志民意调查的内容</a>。</p>

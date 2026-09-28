@@ -163,7 +163,7 @@ meeting:
 poll:
   poll_type: poll
   process_name_i18n: poll_common_form.voting_methods.choose
-  process_subtitle_i18n: poll_templates.simple_poll.process_subtitle
+  process_subtitle_i18n: poll_templates.simple_poll.process_subtitle_v2
   process_introduction_i18n: poll_templates.simple_poll.process_introduction_v2
   title_placeholder_i18n: poll_templates.simple_poll.title
   details_i18n: poll_templates.simple_poll.details
@@ -172,7 +172,7 @@ poll:
 dot_vote:
   poll_type: dot_vote
   process_name_i18n: poll_common_form.voting_methods.allocate
-  process_subtitle_i18n: poll_templates.dot_vote.process_subtitle_v2
+  process_subtitle_i18n: poll_templates.dot_vote.process_subtitle_v3
   process_introduction_i18n: poll_templates.dot_vote.process_introduction_v2
   title_placeholder_i18n: poll_templates.dot_vote.title
   details_i18n: poll_templates.dot_vote.details
@@ -181,7 +181,7 @@ dot_vote:
 score:
   poll_type: score
   process_name_i18n: poll_common_form.voting_methods.score
-  process_subtitle_i18n: poll_templates.score_poll.process_subtitle_v2
+  process_subtitle_i18n: poll_templates.score_poll.process_subtitle_v3
   process_introduction_i18n: poll_templates.score_poll.process_introduction_v2
   title_placeholder_i18n: poll_templates.score_poll.title
   details_i18n: poll_templates.score_poll.details
@@ -190,7 +190,7 @@ score:
 ranked_choice:
   poll_type: ranked_choice
   process_name_i18n: poll_common_form.voting_methods.rank
-  process_subtitle_i18n: poll_templates.ranked_choice.process_subtitle_v2
+  process_subtitle_i18n: poll_templates.ranked_choice.process_subtitle_v3
   process_introduction_i18n: poll_templates.ranked_choice.process_introduction_v2
   title_placeholder_i18n: poll_templates.ranked_choice.title
   details_i18n: poll_templates.ranked_choice.details

@@ -529,3 +529,42 @@ languages in the Nov 2025 pass.
 | `config/locales/client.zh_TW.yml` | `credential_prompt.passkey_description` | `密碼密鑰` | `通行密鑰` | The original term could be read as a password-based key rather than a passkey |
 | `config/locales/client.es.yml` | `credential_prompt.set_new_password` | `Establecer una nueva contraseña` | `Establece una nueva contraseña` | Spanish action labels use the informal `tú` imperative |
 | `config/locales/client.ca.yml`, `client.es.yml`, `client.ro.yml`, `client.ja.yml` | `credential_prompt.passkey_description` | Single-sentence UI text with final punctuation | Removed the final full stop | Single-sentence UI strings omit final full stops |
+
+## 2026-09-28 — Vote points
+
+| File | Key | Before | After | Why it was wrong |
+|------|-----|--------|-------|------------------|
+| `config/locales/client.ca.yml` | `poll_option_form.points_cast` | `Punts llançats` | `Punts emesos` | “Cast” refers to votes, not throwing points |
+| `config/locales/client.da.yml` | `poll_option_form.points_cast` | `Point kastet` | `Afgivne point` | “Cast” refers to votes, not throwing points |
+| `config/locales/client.de.yml` | `poll_option_form.points_cast` | `Punkte erzielt` | `Vergebene Punkte` | The points are allocated by votes, not earned by a player |
+| `config/locales/client.el.yml` | `poll_option_form.points_cast` | `Πόντοι που εκτοξεύτηκαν` | `Πόντοι από ψήφους` | “Cast” refers to votes, not launching points |
+| `config/locales/client.es.yml` | `poll_option_form.points_cast` | `Puntos lanzados` | `Puntos emitidos` | “Cast” refers to votes, not throwing points |
+| `config/locales/client.fi.yml` | `poll_option_form.points_cast` | `Heidetyt pisteet` | `Annetut pisteet` | “Cast” refers to votes, not throwing points |
+| `config/locales/client.fr.yml` | `poll_option_form.points_cast` | `Points lancés` | `Points attribués` | “Cast” refers to votes, not launching points |
+| `config/locales/client.hr.yml` | `poll_option_form.points_cast` | `Bacanje bodova` | `Dodijeljeni bodovi` | “Cast” refers to votes, not throwing points |
+| `config/locales/client.it.yml` | `poll_option_form.points_cast` | `Punti lanciati` | `Punti assegnati` | “Cast” refers to votes, not throwing points |
+| `config/locales/client.nl_NL.yml` | `poll_option_form.points_cast` | `Punten geworpen` | `Toegekende punten` | “Cast” refers to votes, not throwing points |
+| `config/locales/client.pl.yml` | `poll_option_form.points_cast` | `Punkty rzucane` | `Przyznane punkty` | “Cast” refers to votes, not throwing points |
+| `config/locales/client.pt_BR.yml` | `poll_option_form.points_cast` | `Pontos lançados` | `Pontos atribuídos` | “Cast” refers to votes, not throwing points |
+| `config/locales/client.ru.yml` | `poll_option_form.points_cast` | `Заданные точки` | `Начисленные баллы` | The original means assigned geometric points, not vote points |
+| `config/locales/client.tr.yml` | `poll_option_form.points_cast` | `Atılan puanlar` | `Verilen puanlar` | “Cast” refers to votes, not throwing points |
+| `config/locales/client.zh_TW.yml` | `poll_option_form.points_cast` | `重點` | `已投點數` | The original means a key point, not points assigned through votes |
+
+## 2026-09-28 — Score template subtitle
+
+| File | Key | Before | After | Why it was wrong |
+|------|-----|--------|-------|------------------|
+| `config/locales/server.de.yml` | `poll_templates.score_poll.process_subtitle_v3` | Formal `Sie`, final full stop | Informal `Bitte`, no final full stop | German copy uses the informal register and single-sentence UI strings omit final punctuation |
+| `config/locales/server.es.yml` | `poll_templates.score_poll.process_subtitle_v3` | Formal `Pida`, final full stop | Informal `Pide`, no final full stop | Spanish copy uses the informal `tú` register and single-sentence UI strings omit final punctuation |
+| `config/locales/server.fr.yml` | `poll_templates.score_poll.process_subtitle_v3` | Formal `Demandez`, final full stop | Informal `Demande`, no final full stop | French copy uses the informal `tu` register and single-sentence UI strings omit final punctuation |
+| `config/locales/server.nl_NL.yml`, `server.pt_BR.yml`, `server.ru.yml`, `server.zh_CN.yml`, `server.zh_TW.yml` | `poll_templates.score_poll.process_subtitle_v3` | Final full stop | Removed final full stop | Single-sentence UI strings omit final punctuation |
+
+## 2026-09-28 — Rank template subtitle
+
+| File | Key | Before | After | Why it was wrong |
+|------|-----|--------|-------|------------------|
+| `config/locales/server.es.yml` | `poll_templates.ranked_choice.process_subtitle_v3` | Infinitive `Ordenar` | Informal imperative `Ordena` | Spanish action copy uses the informal `tú` register |
+| `config/locales/server.fr.yml` | `poll_templates.ranked_choice.process_subtitle_v3` | Formal `Classez`, final full stop | Informal `Classe`, no final full stop | French copy uses the informal `tu` register and single-sentence UI strings omit final punctuation |
+| `config/locales/server.hu.yml` | `poll_templates.ranked_choice.process_subtitle_v3` | Both endpoints translated as least preferred | Restored most-to-least order | The original reversed and duplicated the ranking direction |
+| `config/locales/server.he.yml` | `poll_templates.ranked_choice.process_subtitle_v3` | Unnatural word order | Reordered as an instruction to rank options | The original was hard to understand as an action |
+| `config/locales/server.nl_NL.yml`, `server.pt_BR.yml`, `server.ru.yml`, `server.tr.yml` | `poll_templates.ranked_choice.process_subtitle_v3` | Final full stop | Removed final full stop | Single-sentence UI strings omit final punctuation |

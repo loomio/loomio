@@ -628,6 +628,7 @@ zh_TW:
       title: 我們的策略方向重點應該放在哪裡？
       details: <h3 id="what-is-this-poll-about"><strong>這次民調的內容是什麼？</strong></h3><p></p><h3 id="why-is-this-important"><strong>為什麼這很重要？</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"><strong>你要求人們做什麼？</strong></h3><p></p><p>選擇您喜歡的選項。</p>
       process_introduction_v2: <p><strong>「選擇」功能</strong>可協助您找到最受歡迎的選項。參與者從清單中選擇—您可以設定他們可以選擇一個或多個選項。</p><p> <a target="_blank" href="/docs/en/user_manual/polls/proposal_types#simple-poll">閱讀更多關於「選擇」的資訊</a>。</p>
+      process_subtitle_v2: 透過單選或多選投票來衡量受歡迎程度
     score_poll:
       process_subtitle: 衡量每個選項的支持程度
       process_introduction: <p>當您想調查人們對每個選項的願望、偏好或興趣時，請使用評分調查。</p><p><span>要求參與者評估每個選項並沿著刻度移動滑桿來分配分數。</span></p><p><span>結果以圖形方式顯示，並附有表格，顯示每個選項的總分、平均分數和投票人數。</span></p><p>高級設定包括“投票匿名”和“按隨機順序顯示選項” - 通常用於分數投票以減少任何投票偏見。</p><p> <a target="_blank"  href="/docs/en/user_manual/polls/proposal_types#score-poll">閱讀有關分數調查的更多資訊</a>。</p>
@@ -635,6 +636,7 @@ zh_TW:
       details: <h3 id="what-is-this-poll-about"><strong>這次民調的內容是什麼？</strong></h3><p></p><h3 id="why-is-this-important"><strong>為什麼這很重要？</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"><strong>你要求人們做什麼？</strong></h3><p></p><p>選擇您喜歡的選項。</p>
       process_subtitle_v2: 衡量每項選擇的支持程度
       process_introduction_v2: <p><strong>評分功能</strong>可以衡量群體對每個選項的支持程度。參與者透過滑動標尺為每個選項評分來評估，因此您不僅可以了解人們的偏好，還可以了解他們的偏好程度。</p><p> <a target="_blank" href="/docs/en/user_manual/polls/proposal_types#score-poll">閱讀更多關於評分投票的資訊</a>。</p>
+      process_subtitle_v3: 請選民對每個選項的支持程度進行評分
     dot_vote:
       process_subtitle: 分配預算點數以揭示優先事項
       process_introduction: <p>對於需要將有限資源分配給多個選項的團體來說，點投票非常有用。它超越了簡單的投票，幫助參與者認識到選擇選項時的限制。</p><p>每位參與者都會獲得一定數量的點數。具體數量由你決定。</p><p>他們將圓點放在自己喜歡的選項旁邊。參與者可以將所有圓點放在一個選項上，也可以分散放在多個選項上。</p><p>當參與者分配點數時，他們可能會超出點數預算限制，因此鼓勵他們仔細考慮如何花費點數。</p><p>點數最多的選項「獲勝」。結果表提供額外數據，助您分析結果。</p><ul><li><p> % 點數</p></li><li><p>積分</p></li><li><p>意思是</p></li><li><p>選民</p></li></ul><p><a target="_blank"  href="/docs/en/user_manual/polls/proposal_types#dot-vote">閱讀有關 Dot vote 的更多資訊</a>。</p>
@@ -642,6 +644,7 @@ zh_TW:
       details: <h3 id="what-is-this-poll-about"><strong>這次民調的內容是什麼？</strong></h3><p></p><h3 id="why-is-this-important"><strong>為什麼這很重要？</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"><strong>你要求人們做什麼？</strong></h3><p></p><p>在本次投票中，您有 8 個點的預算，可以分配給您喜歡的選項。您可以將所有點放在一個選項上，也可以分散放置。</p>
       process_subtitle_v2: 當需要權衡取捨時，要明確優先事項。
       process_introduction_v2: <p><strong>「分配」功能</strong>可以幫助您了解團隊在權衡取捨時的優先事項。每位參與者都會獲得一定數量的點數，用於分配到各個選項上——他們可以全力投入一個選項，也可以將點數分散到多個選項中。由於點數有限，因此每一分的花費都真實地反映了優先順序。</p><p> <a target="_blank" href="/docs/en/user_manual/polls/proposal_types#dot-vote">閱讀更多關於分配的資訊</a>。</p>
+      process_subtitle_v3: 當需要權衡取捨時，要明確優先順序。也稱為點投票法。
     ranked_choice:
       process_subtitle: 理解選項的有序偏好
       process_introduction: <p>當您有大量選擇或正在舉行選舉時，排序選擇很有用。</p><p>此投票範本提供了一系列選項，供人們按照自己喜歡的順序進行投票。</p><p>您可以設定投票者獲得的選擇數量。</p><p><span>投票者按偏好順序拖放選項（#1 是您最喜歡的選項）。</span></p><p><span>高級設定包括“投票匿名”和“按隨機順序顯示選項” - 通常用於排名</span>選擇以減少投票偏見。</p><p>結果按排序順序顯示。結果表提供了額外的數據，以幫助您分析結果。</p><ul><li><p>秩</p></li><li><p>% 點數</p></li><li><p>積分</p></li><li><p>意思是</p></li></ul><p><a target="_blank"  href="/docs/en/user_manual/polls/proposal_types#ranked-choice">閱讀有關排序選擇的更多資訊</a>。</p>
@@ -649,6 +652,7 @@ zh_TW:
       details: <h3 id="what-is-this-poll-about"><strong>這次民調的內容是什麼？</strong></h3><p></p><h3 id="why-is-this-important"><strong>為什麼這很重要？</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"><strong>你要求人們做什麼？</strong></h3><p></p><p>按您的偏好順序對選項進行投票。結果中排名第一的選項獲勝。</p>
       process_subtitle_v2: 找出該群體的偏好順序
       process_introduction_v2: <p><strong>排名</strong>顯示了小組的偏好順序。參與者透過拖放選項來按偏好程度從高到低排序，結果顯示了總體排名。</p><p> <a target="_blank" href="/docs/en/user_manual/polls/proposal_types#ranked-choice">了解更多關於排名的資訊</a>。</p>
+      process_subtitle_v3: 依偏好程度從高到低排序
     time_poll:
       process_subtitle: 尋找人們何時有空見面
       process_introduction: <p><span>節省安排會議或活動日期的時間。</span></p><p>時間調查可以輕鬆查看每個人的空閒時間並找到最佳時間。</p><p>為您的“時間”投票添加標題和詳細資訊。輸入您所在時區的日期和時間選項清單。</p><p>設定時段時，請考慮不同時區的人員。參與者將看到以他們所在時區為準的時間。</p><p>設定會議時長。</p><p>當時間投票結束時，設定最佳時間結果以及會議的任何指示。</p><p> <span>Loomio 將在結果通知電子郵件中附上日曆邀請，以便參與者可以將其添加到他們的日曆中。</span></p><p> <a target="_blank" href="/docs/en/user_manual/polls/meeting_polls#time-poll">閱讀更多有關“時間民意調查”的資訊</a>。</p>

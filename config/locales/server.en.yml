@@ -256,6 +256,7 @@ en:
       veto_prompt: Why do you block the proposal? What needs to change for you to support it?
     simple_poll:
       process_subtitle: Find the most popular option
+      process_subtitle_v2: Measure popularity with a single or multiple choice poll
       process_introduction: <p>Find the most popular option or options with a single or multiple choice poll.</p><p><a target="_blank"  href="/docs/en/user_manual/polls/proposal_types#simple-poll">Read more about Simple poll</a>.</p>
       process_introduction_v2: "<p><strong>Choose</strong> helps you find the most popular option. Participants pick from a list — you can configure whether they select one or multiple options.</p><p><a target=\"_blank\" href=\"/docs/en/user_manual/polls/proposal_types#simple-poll\">Read more about Choose</a>.</p>"
       title: Where should the focus of our strategic direction be?
@@ -263,6 +264,7 @@ en:
     score_poll:
       process_subtitle: Measure the degree of support for each option
       process_subtitle_v2: Measure the level of support for each option
+      process_subtitle_v3: Ask voters to rate how much they support each option
       process_introduction: <p>Use Score poll when you want to survey people for their desire, preference or interest in each option.</p><p><span>Participants are asked to evaluate each option and assign a score by moving a slider along a scale.</span></p><p><a target="_blank"  href="/docs/en/user_manual/polls/proposal_types#score-poll">Read more about Score poll</a>.</p>
       process_introduction_v2: "<p><strong>Score</strong> lets you measure the group's level of support for each option. Participants evaluate every option by assigning a score on a sliding scale, so you can see not just what people prefer, but by how much.</p><p><a target=\"_blank\" href=\"/docs/en/user_manual/polls/proposal_types#score-poll\">Read more about Score poll</a>.</p>"
       title: Assessing how decisions are made in our organization
@@ -270,6 +272,7 @@ en:
     dot_vote:
       process_subtitle: Allocate a budget of points to reveal priorities
       process_subtitle_v2: Reveal priorities when there are trade-offs
+      process_subtitle_v3: Reveal priorities when there are trade-offs. Also known as dot voting.
       process_introduction: <p>Dot vote can be used to allocate a limited resource across a number of options. It goes beyond a simple poll by helping participants appreciate there is a constraint when selecting options.</p><p>Participants are each given a budget of points to allocate.</p><p>Participants can allocate all their points to a single option or spread them over multiple options.</p><p>Participants may not exceed their budget so they must consider how they allocate their points carefully.</p><p><a target="_blank"  href="/docs/en/user_manual/polls/proposal_types#dot-vote">Read more about Dot vote</a>.</p>
       process_introduction_v2: "<p><strong>Allocate</strong> helps you understand a group's priorities when there are trade-offs. Each participant gets a budget of points to spread across the options — they can go all-in on one option or distribute their points across several. Because the budget is limited, every point spent is a genuine signal of priority.</p><p><a target=\"_blank\" href=\"/docs/en/user_manual/polls/proposal_types#dot-vote\">Read more about Allocate</a>.</p>"
       title: Choosing themes for our conference
@@ -277,6 +280,7 @@ en:
     ranked_choice:
       process_subtitle: Understand the ordered preference of options
       process_subtitle_v2: Find the group's order of preference
+      process_subtitle_v3: Order options from most to least preferred
       process_introduction: <p>Ranked choice is useful when you have a large number of options, or are holding an election.</p><p>Voters drag and drop options to arrange them in order of preference.</p><p>Results are showed in ranked order.</p><p><a target="_blank"  href="/docs/en/user_manual/polls/proposal_types#ranked-choice">Read more about Ranked choice</a>.</p>
       process_introduction_v2: "<p><strong>Rank</strong> reveals the group's order of preference. Participants drag and drop the options to arrange them from most to least preferred, and results show the overall ranking.</p><p><a target=\"_blank\" href=\"/docs/en/user_manual/polls/proposal_types#ranked-choice\">Read more about Rank</a>.</p>"
       title: Elect directors to governance board

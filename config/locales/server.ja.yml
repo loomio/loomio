@@ -598,6 +598,7 @@ ja:
       title: 私たちの戦略的方向性の焦点はどこに置くべきでしょうか?
       details: <h3 id="what-is-this-poll-about"><strong>この世論調査は何についてですか？</strong></h3><p></p><h3 id="why-is-this-important"><strong>なぜこれが重要なのでしょうか?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"><strong>人々に何をするよう求めているのですか?</strong></h3><p></p><p>ご希望のオプションを選択してください。</p>
       process_introduction_v2: <p><strong>「選択」機能は、</strong>最も人気のあるオプションを見つけるのに役立ちます。参加者はリストから選択します。1つのオプションを選択するか、複数のオプションを選択するかを設定できます。</p><p> <a target="_blank" href="/docs/en/user_manual/polls/proposal_types#simple-poll">Choose についての詳細をご覧ください</a>。</p>
+      process_subtitle_v2: 人気度を測るには、単一選択式または複数選択式のアンケートをご利用ください。
     score_poll:
       process_subtitle: 各オプションの支持度を測定する
       process_introduction: <p>各オプションに対する人々の希望、好み、または関心を調査する場合は、スコア アンケートを使用します。</p><p><span>参加者は、各オプションを評価し、スケールに沿ってスライダーを動かしてスコアを割り当てるように求められます。</span></p><p><span>結果はグラフで表示され、各オプションの合計ポイント、平均ポイント、投票者数を示す表も表示されます。</span></p><p>詳細設定には、「投票は匿名です」や「オプションをランダムな順序で表示します」などがあり、スコア投票で投票の偏りを減らすためによく使用されます。</p><p> <a target="_blank"  href="/docs/en/user_manual/polls/proposal_types#score-poll">スコア投票の詳細をご覧ください</a>。</p>
@@ -605,6 +606,7 @@ ja:
       details: <h3 id="what-is-this-poll-about"><strong>この世論調査は何についてですか？</strong></h3><p></p><h3 id="why-is-this-important"><strong>なぜこれが重要なのでしょうか?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"><strong>人々に何をするよう求めているのですか?</strong></h3><p></p><p>ご希望のオプションを選択してください。</p>
       process_subtitle_v2: 各オプションのサポートレベルを測定する
       process_introduction_v2: <p><strong>スコアを</strong>使用すると、各選択肢に対するグループの支持度を測定できます。参加者はスライドスケールに基づいて各選択肢を評価します。これにより、人々が何を好むかだけでなく、どの程度好んでいるかを把握できます。</p><p> <a target="_blank" href="/docs/en/user_manual/polls/proposal_types#score-poll">スコア投票の詳細については、こちらをご覧ください</a>。</p>
+      process_subtitle_v3: 有権者に各選択肢をどの程度支持するか評価してもらう
     dot_vote:
       process_subtitle: 優先順位を明らかにするためにポイントの予算を割り当てる
       process_introduction: <p>ドット投票は、限られたリソースを複数の選択肢に配分しようとするグループにとって役立ちます。参加者が選択肢を選択する際に制約があることを理解できるようにすることで、単なる投票を超えた効果をもたらします。</p><p>参加者にはそれぞれ決められた数のドットが与えられます。その数を決めてください。</p><p>参加者は提示された選択肢の中から気に入ったものに点を付けます。すべての点を1つの選択肢に付けることも、複数の選択肢に分散させることもできます。</p><p>参加者がドットを割り当てると、ドットの予算制限を超える可能性があるため、ドットの使い方を慎重に検討することが推奨されます。</p><p>最も多くのドットが付いた選択肢が「勝ち」となります。結果表には、結果を分析するのに役立つ追加データが表示されます。</p><ul><li><p>ポイントの割合</p></li><li><p>ポイント</p></li><li><p>平均</p></li><li><p>有権者</p></li></ul><p><a target="_blank"  href="/docs/en/user_manual/polls/proposal_types#dot-vote">ドット投票についての詳細を読む</a>。</p>
@@ -612,6 +614,7 @@ ja:
       details: <h3 id="what-is-this-poll-about"><strong>この世論調査は何についてですか？</strong></h3><p></p><h3 id="why-is-this-important"><strong>なぜこれが重要なのでしょうか?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"><strong>人々に何をするよう求めているのですか?</strong></h3><p></p><p>このアンケートでは、8つのドットを好きな選択肢に割り当てることができます。すべてのドットを1つの選択肢に割り当てても、分散させて割り当てても構いません。</p>
       process_subtitle_v2: トレードオフがある場合は優先順位を明らかにする
       process_introduction_v2: <p><strong>Allocateは</strong>、トレードオフがある場合のグループの優先順位を理解するのに役立ちます。各参加者は、複数の選択肢に配分するためのポイントの予算を受け取ります。1つの選択肢にすべてを集中させることも、複数の選択肢にポイントを配分することもできます。予算は限られているため、費やされるポイントはすべて、優先順位の真のシグナルとなります。</p><p> <a target="_blank" href="/docs/en/user_manual/polls/proposal_types#dot-vote">Allocate の詳細については、こちらをご覧ください</a>。</p>
+      process_subtitle_v3: トレードオフが存在する場合に、優先順位を明らかにする。ドット投票とも呼ばれる。
     ranked_choice:
       process_subtitle: 選択肢の優先順位を理解する
       process_introduction: <p>順位付け選択は、選択肢が多数ある場合や選挙を実施する場合に役立ちます。</p><p>この投票テンプレートは、ユーザーが好みの順序で投票できる一連のオプションを提供します。</p><p>投票者が選択できる選択肢の数を設定できます。</p><p><span>投票者は、好みの順にオプションをドラッグ アンド ドロップします (#1 が最も好ましいオプションです)。</span></p><p><span>詳細設定には、「投票は匿名です」や「オプションをランダムな順序で表示します」などがあり、これらは通常、投票の偏りを減らすためにランク付けされた選択肢で使用されます</span>。</p><p>結果はランキング順に表示されます。結果表には、結果の分析に役立つ追加データが表示されます。</p><ul><li><p>ランク</p></li><li><p>ポイントの割合</p></li><li><p>ポイント</p></li><li><p>平均</p></li></ul><p><a target="_blank"  href="/docs/en/user_manual/polls/proposal_types#ranked-choice">ランク付け選択についての詳細をご覧ください</a>。</p>
@@ -619,6 +622,7 @@ ja:
       details: <h3 id="what-is-this-poll-about"><strong>この世論調査は何についてですか？</strong></h3><p></p><h3 id="why-is-this-important"><strong>なぜこれが重要なのでしょうか?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"><strong>人々に何をするよう求めているのですか?</strong></h3><p></p><p>選択肢をあなたの好みの順にランク付けして投票してください。結果で1位になった選択肢が勝ちとなります。</p>
       process_subtitle_v2: グループの優先順位を見つける
       process_introduction_v2: <p><strong>ランクは</strong>グループの優先順位を示します。参加者は選択肢をドラッグ＆ドロップして、優先順位の高い順に並べ替えることができ、結果には全体の順位が表示されます。</p><p> <a target="_blank" href="/docs/en/user_manual/polls/proposal_types#ranked-choice">ランクについて詳しくはこちらをご覧ください</a>。</p>
+      process_subtitle_v3: 優先順位の高い順から低い順に並べ替える
     time_poll:
       process_subtitle: いつ会えるか調べる
       process_introduction: <p><span>会議やイベントの日程を調整する時間を節約します。</span></p><p>時間アンケートを使用すると、全員の空き時間を簡単に確認し、最適な時間を見つけることができます。</p><p>時間に関するアンケートにタイトルと詳細を入力してください。タイムゾーンの日付と時刻の選択肢のリストを入力してください。</p><p>時間枠を設定する際は、異なるタイムゾーンにいる参加者を考慮してください。参加者には、それぞれのタイムゾーンに合わせた時刻が表示されます。</p><p>会議の継続時間を設定します。</p><p>時間に関するアンケートが終了したら、最適な時間と会議の指示を結果として設定します。</p><p> <span>Loomio は結果通知メールにカレンダーの招待状を含めるので、参加者は自分のカレンダーに追加できます。</span></p><p> <a target="_blank" href="/docs/en/user_manual/polls/meeting_polls#time-poll">Time poll についてさらに詳しく読む</a>。</p>
