@@ -73,6 +73,12 @@ class PollOption < ApplicationRecord
     end
   end
 
+  # Only the time poll grid reads each voter's score from results. Other poll
+  # types would send every voter's score for every option.
+  def voter_scores_for_results
+    poll.poll_type == 'meeting' ? voter_scores : {}
+  end
+
   def voter_ids
     # this is a hack, we both know this
     # some polls 0 is a vote, others it is not

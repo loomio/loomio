@@ -194,4 +194,21 @@ class PollOptionTest < ActiveSupport::TestCase
 
     assert_equal 1, option.reload.total_score
   end
+
+  test "results send each voter's score only for time polls" do
+    proposal = PollService.create(params: {
+      poll_type: 'proposal', title: 'Scores stay out of results', poll_option_names: %w[agree disagree],
+      group_id: groups(:group).id, closing_at: 1.day.from_now
+    }, actor: users(:admin))
+    option = proposal.poll_options.first
+    proposal.stances.latest.find_by!(participant: users(:user)).update!(
+      cast_at: Time.current, stance_choices_attributes: [{poll_option_id: option.id, score: 1}]
+    )
+    proposal.update_counts!
+    result = proposal.reload.results.find { |row| row[:id] == option.id }
+
+    assert_equal({users(:user).id.to_s => 1}, option.reload.voter_scores)
+    assert_equal({}, result[:voter_scores])
+    assert_equal [users(:user).id], result[:voter_ids]
+  end
 end
