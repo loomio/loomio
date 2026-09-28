@@ -415,7 +415,7 @@ class Api::V1::PollsControllerTest < ActionController::TestCase
     eligible_voter = poll.anonymous_poll_voters.find_by!(voter: @user)
     invited_at = 2.days.ago.change(usec: 0)
     eligible_voter.update_column(:invited_at, invited_at)
-    [@admin, @user, @member].each { |voter| create_anonymous_ballot(poll: poll, voter: voter) }
+    ([@user] + electorate_except(poll, @user)).first(poll.participation_status_votes_required).each { |voter| create_anonymous_ballot(poll: poll, voter: voter) }
     PollService.close(poll: poll, actor: @admin)
     sign_in @admin
 
@@ -428,9 +428,10 @@ class Api::V1::PollsControllerTest < ActionController::TestCase
     assert_equal true, record.fetch("vote_cast")
   end
 
-  test "anonymous participation status appears once three people have voted" do
+  test "anonymous participation status appears once the required number have voted" do
     poll = create_detached_anonymous_poll(title: "participation threshold test")
-    [@admin, @user, @member].each { |voter| create_anonymous_ballot(poll: poll, voter: voter) }
+    voters = poll.anonymous_poll_voters.map(&:voter).first(poll.participation_status_votes_required)
+    voters.each { |voter| create_anonymous_ballot(poll: poll, voter: voter) }
     PollService.close(poll: poll, actor: @admin)
     sign_in @user
 
@@ -440,14 +441,13 @@ class Api::V1::PollsControllerTest < ActionController::TestCase
     json = JSON.parse(response.body)
     assert_equal true, json.fetch("meta")["participation_status_visible"]
     assert json.fetch("voters").all? { |receipt| receipt.key?("vote_cast") }
-    voter_ids = [@admin.id, @user.id, @member.id]
-    assert json.fetch("voters").select { |receipt| voter_ids.include?(receipt["voter_id"]) }.all? { |receipt| receipt["vote_cast"] }
+    assert json.fetch("voters").select { |receipt| voters.map(&:id).include?(receipt["voter_id"]) }.all? { |receipt| receipt["vote_cast"] }
   end
 
-  test "anonymous participation status remains hidden when poll closes with two votes" do
+  test "anonymous participation status remains hidden when poll closes one vote short" do
     poll = create_detached_anonymous_poll(title: "closed participation threshold test")
-    create_anonymous_ballot(poll: poll, voter: @admin)
-    create_anonymous_ballot(poll: poll, voter: @user)
+    votes_required = poll.participation_status_votes_required
+    poll.anonymous_poll_voters.map(&:voter).first(votes_required - 1).each { |voter| create_anonymous_ballot(poll: poll, voter: voter) }
     PollService.close(poll: poll, actor: @admin)
 
     sign_in @admin
@@ -456,7 +456,7 @@ class Api::V1::PollsControllerTest < ActionController::TestCase
 
     json = JSON.parse(response.body)
     assert_equal false, json.fetch("meta")["participation_status_visible"]
-    assert_equal 3, json.fetch("meta")["participation_status_votes_min"]
+    assert_equal votes_required, json.fetch("meta")["participation_status_votes_required"]
     assert json.fetch("voters").none? { |receipt| receipt.key?("vote_cast") }
   end
 
@@ -702,6 +702,10 @@ class Api::V1::PollsControllerTest < ActionController::TestCase
       poll_option_names: %w[agree disagree abstain],
       closing_at: 5.days.from_now
     }, actor: @admin)
+  end
+
+  def electorate_except(poll, user)
+    poll.anonymous_poll_voters.where.not(voter_id: user.id).map(&:voter)
   end
 
   def create_anonymous_ballot(poll:, voter:)

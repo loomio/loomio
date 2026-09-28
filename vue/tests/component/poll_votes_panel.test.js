@@ -84,7 +84,7 @@ describe('Poll votes panel', () => {
     mocks.fetch.mockResolvedValue({
       voters: [{voter_id: 1, voter_name: 'Alex', inviter_name: 'Morgan'}],
       meta: {total: 1, show_voter_email: false, show_voter_details: true,
-        participation_status_visible: false, participation_status_votes_min: 3}
+        participation_status_visible: false, participation_status_votes_required: 3}
     });
 
     const wrapper = mountPanel({anonymous: true, voteWeightsEnabled: false});

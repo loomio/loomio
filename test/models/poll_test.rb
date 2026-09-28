@@ -322,6 +322,13 @@ class PollTest < ActiveSupport::TestCase
     refute poll.vote_weights_enabled?
   end
 
+  test "anonymous participation needs the quorum or half the electorate, and at least three votes" do
+    assert_equal 5, Poll.new(voters_count: 10).participation_status_votes_required
+    assert_equal 3, Poll.new(voters_count: 4).participation_status_votes_required
+    assert_equal 6, Poll.new(voters_count: 10, quorum_pct: 60).participation_status_votes_required
+    assert_equal 3, Poll.new(voters_count: 20, quorum_pct: 10).participation_status_votes_required
+  end
+
   test "unweighted results keep master's columns and headings" do
     poll = create_poll(group_id: @group.id, poll_type: 'proposal')
 

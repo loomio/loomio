@@ -117,7 +117,7 @@ watch([name, voteFilter], () => {
   p.text-medium-emphasis.my-4(v-if="!canView") {{ t('poll_common_votes_panel.participation_records_restricted') }}
   .votes-content(v-else="")
     p.text-medium-emphasis.my-3(v-if="poll.anonymous && meta?.participation_status_visible") {{ t('poll_receipts_page.participation_records_explanation') }}
-    p.text-medium-emphasis.my-3(v-else-if="poll.anonymous && meta") {{ t('poll_receipts_page.participation_status_requires_min_votes', { count: meta.participation_status_votes_min }) }}
+    p.text-medium-emphasis.my-3(v-else-if="poll.anonymous && meta") {{ t('poll_receipts_page.participation_status_requires_min_votes', { count: meta.participation_status_votes_required }) }}
     p.text-medium-emphasis.my-3(v-if="meta?.show_voter_email") {{ t('poll_receipts_page.email_addresses_only_for_group_admins') }}
     .d-flex.flex-wrap.ga-2.my-3
       v-select.poll-common-votes-panel__filter(v-if="!poll.anonymous" :items="pollOptionItems" :label="t('common.option')" v-model="voteFilter" density="compact" hide-details)

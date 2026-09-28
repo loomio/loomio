@@ -27,7 +27,7 @@ class Api::V1::PollsController < Api::V1::RestfulController
         show_voter_details: @show_voter_details,
         show_voter_email: @show_voter_email,
         participation_status_visible:,
-        participation_status_votes_min: Poll::PARTICIPATION_STATUS_VOTES_MIN
+        participation_status_votes_required: @poll.participation_status_votes_required
       },
       voters: voters_eligible.map do |eligible_voter|
         voter = voters[eligible_voter.voter_id]

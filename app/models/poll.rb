@@ -493,10 +493,18 @@ class Poll < ApplicationRecord
     anonymous? && anonymous_ballot?
   end
 
+  # Who voted in an anonymous poll stays hidden until enough people have voted
+  # that the list says little about any one person: the quorum when the poll
+  # has one, otherwise half the electorate, and never fewer than three votes.
+  def participation_status_votes_required
+    votes_required = quorum_pct ? quorum_count : (voters_count / 2.0).ceil
+    [votes_required, PARTICIPATION_STATUS_VOTES_MIN].max
+  end
+
   def participation_status_visible?
     return true unless anonymous?
 
-    anonymous_ballots.offset(PARTICIPATION_STATUS_VOTES_MIN - 1).exists?
+    anonymous_ballots.offset(participation_status_votes_required - 1).exists?
   end
 
   def body
