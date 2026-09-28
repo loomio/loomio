@@ -49,7 +49,7 @@ describe('weighted poll results table', () => {
       chartType: 'bar',
       chartColumn: 'score_percent',
       pieSlices: () => [],
-      resultColumns: ['name', 'votes', 'score', 'votes_cast_percent', 'voter_percent'],
+      resultColumns: ['name', 'votes', 'score', 'voter_percent', 'votes_cast_percent'],
       resultHeadingKeys: {
         name: 'common.option', votes: 'poll_common.votes', score: 'poll_common.weighted_votes',
         votes_cast_percent: 'poll_common.pct_of_weighted_votes', voter_percent: 'poll_ranked_choice_form.pct_of_voters'
@@ -67,9 +67,9 @@ describe('weighted poll results table', () => {
 
     expect(wrapper.findAll('thead th').map(cell => cell.text())).toEqual([
       'common.option', 'poll_common.votes', 'poll_common.weighted_votes',
-      'poll_common.pct_of_weighted_votes', 'poll_ranked_choice_form.pct_of_voters'
+      'poll_ranked_choice_form.pct_of_voters', 'poll_common.pct_of_weighted_votes'
     ]);
-    expect(wrapper.findAll('tbody td').slice(1).map(cell => cell.text())).toEqual(['2', '2.83', '75%', '50%']);
+    expect(wrapper.findAll('tbody td').slice(1).map(cell => cell.text())).toEqual(['2', '2.83', '50%', '75%']);
   });
 
   it('switches a proposal pie from weighted score to voter share when its header is clicked', async () => {

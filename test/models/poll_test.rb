@@ -341,10 +341,10 @@ class PollTest < ActiveSupport::TestCase
     }, poll.result_heading_keys)
   end
 
-  test "weighted one-point results add weighted votes beside the vote count" do
+  test "weighted one-point results list counts before percentages" do
     poll = create_poll(group_id: @group.id, poll_type: 'proposal', vote_weights_enabled: true)
 
-    assert_equal %w[chart name votes score votes_cast_percent voter_percent voters], poll.result_columns
+    assert_equal %w[chart name votes score voter_percent votes_cast_percent voters], poll.result_columns
     assert_equal({
       'name' => 'common.option',
       'votes' => 'poll_common.votes',
@@ -354,13 +354,13 @@ class PollTest < ActiveSupport::TestCase
     }, poll.result_heading_keys)
   end
 
-  test "weighted multi-point results add points beside weighted points" do
+  test "weighted multi-point results list points before percentages" do
     poll = create_poll(
       group_id: @group.id, poll_type: 'dot_vote', vote_weights_enabled: true,
       poll_option_names: %w[Alpha Beta], dots_per_person: 8
     )
 
-    assert_equal %w[chart name score_percent unweighted_score score average voter_count], poll.result_columns
+    assert_equal %w[chart name unweighted_score score score_percent average voter_count], poll.result_columns
     assert_equal({
       'name' => 'common.option',
       'score_percent' => 'poll_common.pct_of_weighted_points',

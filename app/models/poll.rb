@@ -362,7 +362,11 @@ class Poll < ApplicationRecord
   }.freeze
 
   def result_columns
-    columns = case poll_type
+    vote_weights_enabled? ? weighted_result_columns : unweighted_result_columns
+  end
+
+  def unweighted_result_columns
+    case poll_type
     when 'proposal'
       %w[chart name votes votes_cast_percent voter_percent voters]
     when 'check'
@@ -388,20 +392,32 @@ class Poll < ApplicationRecord
     else
       []
     end
+  end
 
-    return columns unless vote_weights_enabled?
-
-    # One-point methods add the weighted votes beside the vote count. Other
-    # methods show the plain points beside the weighted points.
-    if one_point_choices?
-      count_column = columns.find { |column| %w[votes voter_count].include?(column) }
-      return columns unless count_column
-
-      columns.dup.insert(columns.index(count_column) + 1, 'score')
+  # Weighted results list the counts first, plain before weighted, then the
+  # percentages. Poll types without weighting keep their usual columns.
+  def weighted_result_columns
+    case poll_type
+    when 'proposal'
+      %w[chart name votes score voter_percent votes_cast_percent voters]
+    when 'check'
+      %w[chart name voter_count score voter_percent voters]
+    when 'count'
+      if agree_target
+        %w[chart name voter_count score target_percent voters]
+      else
+        %w[chart name voter_count score voters]
+      end
+    when 'poll'
+      %w[chart name voter_count score score_percent voters]
+    when 'ranked_choice'
+      %w[chart name rank unweighted_score score score_percent average voter_count]
+    when 'dot_vote'
+      %w[chart name unweighted_score score score_percent average voter_count]
+    when 'score'
+      %w[chart name unweighted_score score average voter_count]
     else
-      return columns unless columns.include?('score')
-
-      columns.dup.insert(columns.index('score'), 'unweighted_score')
+      unweighted_result_columns
     end
   end
 
