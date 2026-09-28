@@ -1685,8 +1685,6 @@ zh_CN:
     membership_updated: 会员资格已更新
     weight_label: 投票权重
     weight_helptext: 当成员被添加到新的投票中时，此值将复制到该成员的投票记录中。更改此值不会影响现有投票。将其设置为 0 可允许成员投票而不增加分数。
-    weight_invalid: 请输入一个介于 0 到 1,000,000 之间的整数。
-    weight_invalid_decimal: 请输入一个介于 0 到 1,000,000 之间的数字，最多保留三位小数。
   user_name_modal:
     user_name_updated: 用户名已更新
     set_user_name: 设置用户名
@@ -2047,7 +2045,6 @@ zh_CN:
     participation_records_explanation: 这显示了哪些人有资格投票以及他们是否投票。但它并不显示任何人的投票情况。
     voted: 投票
     not_voted: 未投票
-    email_addresses_for_group_admins: 电子邮件地址仅对群组管理员显示，用于区分成员。
     email_addresses_only_for_group_admins: 电子邮件地址仅对群组管理员可见。
   decision_tools_card:
     choose_type: 选择投票类型
@@ -2285,7 +2282,6 @@ zh_CN:
     invited_by_name: 受邀人：%{name}
     accepted: 成员
     edit_vote_weights: 修改投票权重
-    vote_weight_value: 重量 %{weight}
     vote_weights_are_defaults: 这些默认权重适用于新投票。此处所做的更改不会影响已发出的投票。
   polls_panel:
     new_poll: 最新民调
@@ -2331,7 +2327,6 @@ zh_CN:
     legacy_vote_reasons: 历史投票原因
     legacy_vote_reasons_description: 使用传统匿名投票方式投出的选票的理由以纯文本形式显示
     anonymous_voting_participant_notice: 投票是匿名的。提交投票后，您将无法查看或更改您的投票。投票结束后才会公布结果。
-    variable_vote_weights_explanation: 本次民意调查采用可变权重，根据设定的权重，不同投票者的投票对结果的影响程度可能有所不同。
     votes_have_different_weights: 本次投票中，每张选票的权重不同，因此有些选票比其他选票更重要。
   poll_common_collapsed:
     by_who: 由 %{name}
@@ -2441,7 +2436,6 @@ zh_CN:
     unredact_reason_confirm: 恢复原因
     unredact_reason_success: 投票理由已恢复
     all_voters: 所有选民
-    weight: 重量
     vote_weight_column: 投票权重
     stance: 投票
     participation_records_restricted: 投票协调员可以查阅投票记录。
@@ -2615,10 +2609,7 @@ zh_CN:
     weight_for_all: 所有重量
     set_all_vote_weights: 设置所有重量
     set_all: 设置全部
-    use_member_vote_weights: 使用当前成员投票权重
-    set_one_vote_weight: 将所有选民的权重设为1。
     member_vote_weights_hint: 没有当前团体成员身份的选民权重为 1
-    vote_weights_description: 为每位选民设定投票权重，使某些选票比其他选票更重要。结果将显示选民人数和加权得分。
     issued_vote_weights_will_change: 已发出的选票权重将会改变。
     find_or_invite_voters: 寻找或邀请选民
     remove_voter_named: 从投票中移除 %{name}

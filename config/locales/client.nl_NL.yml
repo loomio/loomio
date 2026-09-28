@@ -1622,8 +1622,6 @@ nl_NL:
     membership_updated: Lidmaatschap bijgewerkt
     weight_label: Stemgewicht
     weight_helptext: Deze waarde wordt overgenomen in de stem van het lid wanneer deze aan een nieuwe peiling wordt toegevoegd. Het wijzigen ervan heeft geen invloed op bestaande peilingen. Stel de waarde in op 0 om het lid te laten stemmen zonder dat de stem meetelt voor de score.
-    weight_invalid: Voer een geheel getal in tussen 0 en 1.000.000
-    weight_invalid_decimal: Voer een getal in van 0 tot 1.000.000 met maximaal drie decimalen.
   user_name_modal:
     user_name_updated: Gebruikersnaam bijgewerkt
     set_user_name: Gebruikersnaam instellen
@@ -2206,7 +2204,6 @@ nl_NL:
     delegate_popover: Een afgevaardigde is een groepslid met stemrecht
     delegates: Afgevaardigden
     edit_vote_weights: Stemweging bewerken
-    vote_weight_value: Gewicht %{weight}
     vote_weights_are_defaults: Deze standaardwegingen gelden voor nieuwe stemmen. Wijzigingen hierin hebben geen invloed op reeds uitgebrachte stemmen.
   polls_panel:
     new_poll: Nieuwe peiling
@@ -2256,7 +2253,6 @@ nl_NL:
     legacy_vote_reasons: Redenen bij eerdere stemmen
     legacy_vote_reasons_description: De redenen bij stemmen die met het oude anonieme stemsysteem zijn uitgebracht, worden als platte tekst weergegeven
     anonymous_voting_participant_notice: Stemmen is anoniem. Je kunt je stem niet meer bekijken of wijzigen nadat je die hebt uitgebracht. De resultaten zijn pas beschikbaar nadat de stemming is gesloten.
-    variable_vote_weights_explanation: Bij deze peiling worden variabele stemgewichten gebruikt, waardoor de stem van de ene persoon de uitkomst meer kan beïnvloeden dan die van een andere persoon, afhankelijk van het toegekende stemgewicht.
     votes_have_different_weights: In deze peiling hebben de stemmen een verschillende weging, waardoor sommige stemmen zwaarder wegen dan andere.
   poll_common_collapsed:
     by_who: door %{name}
@@ -2327,7 +2323,6 @@ nl_NL:
     unredact_reason_confirm: Reden herstellen
     unredact_reason_success: Reden voor de stemming hersteld
     all_voters: Alle kiezers
-    weight: Gewicht
     vote_weight_column: Stemgewicht
     stance: Stemmen
     participation_records_restricted: Deelnemersgegevens zijn beschikbaar voor de coördinatoren van de peilingen.
@@ -2991,10 +2986,7 @@ nl_NL:
     weight_for_all: Gewicht voor iedereen
     set_all_vote_weights: Stel alle gewichten in
     set_all: Stel alles in
-    use_member_vote_weights: Gebruik de huidige stemweging van de leden
-    set_one_vote_weight: Wijs aan elke kiezer één gewicht toe
     member_vote_weights_hint: Kiezers zonder huidig groepslidmaatschap krijgen 1 gewicht.
-    vote_weights_description: Ken aan elke kiezer een stemgewicht toe, zodat sommige stemmen zwaarder wegen dan andere. De resultaten tonen zowel het aantal kiezers als de gewogen score.
     issued_vote_weights_will_change: De weging van reeds uitgebrachte stemmen zal veranderen.
     find_or_invite_voters: Zoek of nodig kiezers uit
     remove_voter_named: Verwijder %{name} uit de poll
@@ -3021,7 +3013,6 @@ nl_NL:
     participation_records_explanation: Dit laat zien wie stemgerechtigd was en of ze hebben gestemd. Het laat niet zien hoe iemand heeft gestemd.
     voted: Gestemd
     not_voted: Niet gestemd
-    email_addresses_for_group_admins: E-mailadressen worden alleen aan groepsbeheerders getoond om personen te kunnen onderscheiden.
     email_addresses_only_for_group_admins: E-mailadressen worden alleen getoond aan groepsbeheerders.
   comment_reply_form:
     aria_label: Voeg een antwoord toe

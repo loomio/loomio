@@ -1608,8 +1608,6 @@ sl:
     membership_updated: Članstvo posodobljeno
     weight_label: Teža glasov
     weight_helptext: Ta vrednost se kopira v glas člana, ko je ta dodan v novo anketo. Sprememba ne vpliva na obstoječe ankete. Nastavite jo na 0, da član glasuje brez dodajanja rezultata.
-    weight_invalid: Vnesite celo število od 0 do 1.000.000
-    weight_invalid_decimal: Vnesite število od 0 do 1.000.000 z največ tremi decimalnimi mesti.
   user_name_modal:
     user_name_updated: Uporabniško ime posodobljeno
     set_user_name: Nastavite uporabniško ime
@@ -2183,7 +2181,6 @@ sl:
     delegate_popover: Delegat je član skupine z glasovalno pravico
     delegates: Delegati
     edit_vote_weights: Urejanje uteži glasov
-    vote_weight_value: Teža %{weight}
     vote_weights_are_defaults: Te privzete uteži veljajo za nove glasove. Spremembe tukaj ne vplivajo na že izdane glasove.
   polls_panel:
     new_poll: Nova anketa
@@ -2231,7 +2228,6 @@ sl:
     legacy_vote_reasons: Razlogi prejšnjih glasov
     legacy_vote_reasons_description: Razlogi za glasove, oddane z uporabo starejše anonimne oblike glasovanja, so prikazani kot navadno besedilo
     anonymous_voting_participant_notice: Glasovanje je anonimno. Po oddaji glasu ga ne morete pregledati ali spremeniti. Rezultati niso na voljo, dokler glasovanje ni zaključeno.
-    variable_vote_weights_explanation: Ta anketa uporablja spremenljive uteži glasov, kar omogoča, da glas ene osebe bolj vpliva na izid kot glas druge osebe, odvisno od dodeljene teže glasov.
     votes_have_different_weights: Glasovi v tej anketi imajo različno težo, zato nekateri štejejo več kot drugi.
   poll_common_collapsed:
     by_who: avtor %{name}
@@ -2302,7 +2298,6 @@ sl:
     unredact_reason_confirm: Razlog za obnovitev
     unredact_reason_success: Razlog za glasovanje je bil obnovljen
     all_voters: Vsi volivci
-    weight: Teža
     vote_weight_column: Teža glasov
     stance: Glasujte
     participation_records_restricted: Zapisi o udeležbi so na voljo koordinatorjem volitev
@@ -2964,10 +2959,7 @@ sl:
     weight_for_all: Teža za vse
     set_all_vote_weights: Nastavite vse uteži
     set_all: Nastavi vse
-    use_member_vote_weights: Uporabi ponder glasov trenutnih članov
-    set_one_vote_weight: Vsakemu volivcu dodelite eno utež
     member_vote_weights_hint: Volivci brez trenutnega članstva v skupini dobijo utež 1
-    vote_weights_description: Vsakemu volivcu dodelite težo glasu, tako da nekateri glasovi štejejo več kot drugi. Rezultati prikazujejo tako število volivcev kot uteženo oceno.
     issued_vote_weights_will_change: Ponderji za že izdane glasove se bodo spremenili.
     find_or_invite_voters: Poiščite ali povabite volivce
     remove_voter_named: Odstrani %{name} iz ankete
@@ -2994,7 +2986,6 @@ sl:
     participation_records_explanation: To prikazuje, kdo je bil upravičen in ali je glasoval. Ne prikazuje, kako je kdo glasoval.
     voted: Glasoval/a
     not_voted: Ni glasoval/a
-    email_addresses_for_group_admins: E-poštni naslovi so prikazani samo skrbnikom skupine, da se ljudje lahko razlikujejo.
     email_addresses_only_for_group_admins: E-poštni naslovi so prikazani samo skrbnikom skupine
   comment_reply_form:
     aria_label: Dodaj odgovor

@@ -1643,8 +1643,6 @@ pt_BR:
     membership_updated: Atualização de membros
     weight_label: Peso do voto
     weight_helptext: Esse valor é copiado para o voto do membro quando ele é adicionado a uma nova enquete. Alterá-lo não afeta as enquetes existentes. Defina-o como 0 para permitir que o membro vote sem adicionar pontos à pontuação.
-    weight_invalid: Digite um número inteiro de 0 a 1.000.000
-    weight_invalid_decimal: Digite um número de 0 a 1.000.000 com até três casas decimais.
   user_name_modal:
     user_name_updated: Nome de usuário atualizado
     set_user_name: Definir nome de usuário
@@ -2227,7 +2225,6 @@ pt_BR:
     delegate_popover: Um delegado é um membro do grupo com direito a voto
     delegates: Delegados
     edit_vote_weights: Editar pesos de voto
-    vote_weight_value: Peso %{weight}
     vote_weights_are_defaults: Esses pesos padrão se aplicam a novos votos. Alterações aqui não afetam votos já emitidos.
   polls_panel:
     new_poll: Nova enquete
@@ -2277,7 +2274,6 @@ pt_BR:
     legacy_vote_reasons: Justificativas de votos anteriores
     legacy_vote_reasons_description: As justificativas dos votos feitos no formato anterior de votação anônima são exibidas como texto simples
     anonymous_voting_participant_notice: A votação é anônima. Você não poderá revisar ou alterar seu voto após enviá-lo. Os resultados só serão divulgados após o encerramento da votação.
-    variable_vote_weights_explanation: Esta pesquisa utiliza pesos de voto variáveis, permitindo que o voto de uma pessoa influencie o resultado mais do que o de outra, de acordo com o peso de voto atribuído.
     votes_have_different_weights: Os votos nesta enquete têm pesos diferentes, portanto alguns contam mais do que outros.
   poll_common_collapsed:
     by_who: por %{name}
@@ -2348,7 +2344,6 @@ pt_BR:
     unredact_reason_confirm: Restaure a razão
     unredact_reason_success: Motivo da votação restaurado
     all_voters: Todos os eleitores
-    weight: Peso
     vote_weight_column: Peso do voto
     stance: Voto
     participation_records_restricted: Os registros de participação estão disponíveis para os coordenadores da votação.
@@ -3012,10 +3007,7 @@ pt_BR:
     weight_for_all: Peso para todos
     set_all_vote_weights: Ajuste todos os pesos
     set_all: Configurar tudo
-    use_member_vote_weights: Use os pesos de voto atuais dos membros
-    set_one_vote_weight: Atribua um peso a cada eleitor
     member_vote_weights_hint: Eleitores sem filiação atual a um grupo recebem peso 1
-    vote_weights_description: Atribua um peso a cada eleitor, de forma que alguns votos contem mais do que outros. Os resultados mostram tanto o número de eleitores quanto a pontuação ponderada.
     issued_vote_weights_will_change: A ponderação dos votos já emitidos será alterada.
     find_or_invite_voters: Encontre ou convide eleitores
     remove_voter_named: Remover %{name} da enquete
@@ -3042,7 +3034,6 @@ pt_BR:
     participation_records_explanation: Isso mostra quem era elegível e se votou. Não mostra como cada pessoa votou.
     voted: Votou
     not_voted: Não votou
-    email_addresses_for_group_admins: Os endereços de e-mail são exibidos apenas para os administradores do grupo, a fim de distinguir as pessoas.
     email_addresses_only_for_group_admins: Os endereços de e-mail são exibidos apenas para os administradores do grupo.
   comment_reply_form:
     aria_label: Adicionar uma resposta

@@ -1608,8 +1608,6 @@ fi:
     membership_updated: Jäsenyys päivitetty
     weight_label: Äänestyspaino
     weight_helptext: Tämä arvo kopioidaan jäsenen ääneen, kun hänet lisätään uuteen kyselyyn. Sen muuttaminen ei vaikuta olemassa oleviin kyselyihin. Aseta arvoksi 0, jos haluat jäsenen äänestävän lisäämättä pisteitä.
-    weight_invalid: Syötä kokonaisluku väliltä 0–1 000 000
-    weight_invalid_decimal: Syötä luku väliltä 0–1 000 000, enintään kolmen desimaalin tarkkuudella.
   user_name_modal:
     user_name_updated: Käyttäjätunnus päivitetty
     set_user_name: Aseta käyttäjänimi
@@ -2183,7 +2181,6 @@ fi:
     delegate_popover: Edustaja on ryhmän äänioikeutettu jäsen
     delegates: Edustajat
     edit_vote_weights: Muokkaa äänimääriä
-    vote_weight_value: Paino %{weight}
     vote_weights_are_defaults: Nämä oletusarvoiset painotukset koskevat uusia ääniä. Muutokset tässä eivät vaikuta jo annettuihin ääniin.
   polls_panel:
     new_poll: Uusi kysely
@@ -2231,7 +2228,6 @@ fi:
     legacy_vote_reasons: Aiemmin annettujen äänten perustelut
     legacy_vote_reasons_description: Vanhaa anonyymiä äänestysmuotoa käyttäen annettujen äänten perustelut näytetään pelkkänä tekstinä
     anonymous_voting_participant_notice: Äänestäminen on anonyymiä. Et voi tarkastella tai muuttaa ääntäsi sen lähettämisen jälkeen. Tulokset eivät ole saatavilla ennen äänestyksen päättymistä.
-    variable_vote_weights_explanation: Tässä kyselyssä käytetään vaihtelevia äänipainotuksia, jolloin yhden henkilön ääni voi vaikuttaa tulokseen enemmän kuin toisen henkilön äänipainotuksen mukaisesti.
     votes_have_different_weights: Tässä äänestyksessä äänillä on eri painoarvo, joten jotkut äänestykset painavat enemmän kuin toiset.
   poll_common_collapsed:
     by_who: "%{name}"
@@ -2302,7 +2298,6 @@ fi:
     unredact_reason_confirm: Palautuksen syy
     unredact_reason_success: Äänestyssyy palautettu
     all_voters: Kaikki äänestäjät
-    weight: Paino
     vote_weight_column: Äänestyspaino
     stance: Äänestää
     participation_records_restricted: Osallistumistiedot ovat vaalikoordinaattoreiden saatavilla
@@ -2964,10 +2959,7 @@ fi:
     weight_for_all: Paino kaikille
     set_all_vote_weights: Aseta kaikki painot
     set_all: Aseta kaikki
-    use_member_vote_weights: Käytä nykyisiä jäsenten äänipainotuksia
-    set_one_vote_weight: Aseta jokaiselle äänestäjälle yksi painoarvo
     member_vote_weights_hint: Äänestäjät, joilla ei ole nykyistä ryhmän jäsenyyttä, saavat painoarvon 1
-    vote_weights_description: Anna jokaiselle äänestäjälle painoarvo, jotta jotkut äänet lasketaan enemmän kuin toiset. Tulokset näyttävät sekä äänestäjien lukumäärän että painotetun pistemäärän.
     issued_vote_weights_will_change: Jo annettujen äänten painotukset muuttuvat.
     find_or_invite_voters: Etsi tai kutsu äänestäjiä
     remove_voter_named: Poista %{name} kyselystä
@@ -2994,7 +2986,6 @@ fi:
     participation_records_explanation: Tämä näyttää, ketkä olivat äänioikeutettuja ja äänestivätkö he. Se ei näytä, miten kukaan äänesti.
     voted: Äänesti
     not_voted: Ei äänestänyt
-    email_addresses_for_group_admins: Sähköpostiosoitteet näkyvät vain ryhmän ylläpitäjille ihmisten erottamiseksi toisistaan.
     email_addresses_only_for_group_admins: Sähköpostiosoitteet näkyvät vain ryhmän ylläpitäjille
   comment_reply_form:
     aria_label: Lisää vastaus

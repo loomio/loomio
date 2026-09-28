@@ -1630,8 +1630,6 @@ de:
     membership_updated: Mitgliedschaft aktualisiert
     weight_label: Stimmgewicht
     weight_helptext: Dieser Wert wird in die Stimme des Mitglieds übernommen, sobald es zu einer neuen Umfrage hinzugefügt wird. Eine Änderung hat keine Auswirkungen auf bestehende Umfragen. Setze den Wert auf 0, damit das Mitglied abstimmen kann, ohne dass die Stimme in die Gesamtwertung einfließt.
-    weight_invalid: Gib eine ganze Zahl von 0 bis 1.000.000 ein
-    weight_invalid_decimal: Gib eine Zahl von 0 bis 1.000.000 mit bis zu drei Dezimalstellen ein
   user_name_modal:
     user_name_updated: Benutzername aktualisiert
     set_user_name: Benutzernamen festlegen
@@ -2214,7 +2212,6 @@ de:
     delegate_popover: Ein Delegierter ist ein Gruppenmitglied mit Stimmrecht
     delegates: Delegierte
     edit_vote_weights: Stimmengewichtung bearbeiten
-    vote_weight_value: Gewicht %{weight}
     vote_weights_are_defaults: Diese Standardgewichtungen gelten für neue Stimmen. Änderungen hier haben keine Auswirkungen auf bereits abgegebene Stimmen.
   polls_panel:
     new_poll: Neue Umfrage
@@ -2264,7 +2261,6 @@ de:
     legacy_vote_reasons: Begründungen früherer Stimmen
     legacy_vote_reasons_description: Die Begründungen der im alten anonymen Abstimmungsformat abgegebenen Stimmen werden als reiner Text angezeigt
     anonymous_voting_participant_notice: Die Abstimmung ist anonym. Du kannst deine Stimme nach dem Absenden weder einsehen noch ändern. Die Ergebnisse sind erst nach Ende der Abstimmung verfügbar.
-    variable_vote_weights_explanation: Diese Umfrage verwendet variable Stimmgewichte, sodass die Stimme einer Person das Ergebnis je nach zugewiesenem Stimmgewicht stärker beeinflussen kann als die einer anderen Person.
     votes_have_different_weights: Bei dieser Umfrage haben die einzelnen Stimmen unterschiedliche Gewichtungen, manche zählen mehr als andere.
   poll_common_collapsed:
     by_who: von %{name}
@@ -2335,7 +2331,6 @@ de:
     unredact_reason_confirm: Wiederherstellungsgrund
     unredact_reason_success: Abstimmungsgrund wiederhergestellt
     all_voters: Alle Wähler
-    weight: Gewicht
     vote_weight_column: Stimmgewicht
     stance: Abstimmung
     participation_records_restricted: Die Teilnehmerzahlen stehen den Wahlleitern zur Verfügung.
@@ -2999,10 +2994,7 @@ de:
     weight_for_all: Gewicht für alle
     set_all_vote_weights: Alle Gewichte einstellen
     set_all: Alle festlegen
-    use_member_vote_weights: Verwende die aktuellen Stimmgewichte der Mitglieder
-    set_one_vote_weight: Weise jedem Wähler das gleiche Gewicht zu
     member_vote_weights_hint: Wähler ohne aktuelle Gruppenmitgliedschaft erhalten Gewichtung 1
-    vote_weights_description: Jedem Wähler wird ein Stimmgewicht zugewiesen, sodass manche Stimmen mehr zählen als andere. Die Ergebnisse zeigen sowohl die Anzahl der Wähler als auch die gewichtete Punktzahl.
     issued_vote_weights_will_change: Die Gewichtung der bereits abgegebenen Stimmen wird sich ändern.
     find_or_invite_voters: Wähler finden oder einladen
     remove_voter_named: Entferne %{name} aus der Umfrage
@@ -3029,7 +3021,6 @@ de:
     participation_records_explanation: Hier wird angezeigt, wer wahlberechtigt war und ob diese Personen abgestimmt haben. Es wird nicht angezeigt, wie die einzelnen Personen abgestimmt haben.
     voted: Abgestimmt
     not_voted: Nicht abgestimmt
-    email_addresses_for_group_admins: E-Mail-Adressen werden nur Gruppenadministratoren angezeigt, um Personen zu unterscheiden.
     email_addresses_only_for_group_admins: E-Mail-Adressen werden nur Gruppenadministratoren angezeigt.
   comment_reply_form:
     aria_label: Eine Antwort hinzufügen

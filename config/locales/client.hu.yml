@@ -1612,8 +1612,6 @@ hu:
     membership_updated: Tagság frissítve
     weight_label: Szavazati súly
     weight_helptext: Ez az érték átmásolódik a tag szavazatába, amikor új szavazásba adják őket. A módosítása nem befolyásolja a meglévő szavazásokat. Állítsa 0-ra, ha azt szeretné, hogy a tag a pontszám növelése nélkül szavazzon.
-    weight_invalid: Adjon meg egy egész számot 0 és 1 000 000 között
-    weight_invalid_decimal: Adjon meg egy 0 és 1 000 000 közötti számot, legfeljebb három tizedesjegyig
   user_name_modal:
     user_name_updated: Felhasználónév frissítve
     set_user_name: Felhasználónév beállítása
@@ -2190,7 +2188,6 @@ hu:
     delegate_popover: A delegált szavazati joggal rendelkező csoporttag
     delegates: Küldöttek
     edit_vote_weights: Szavazati súlyok szerkesztése
-    vote_weight_value: Súly %{weight}
     vote_weights_are_defaults: Ezek az alapértelmezett súlyok az új szavazatokra vonatkoznak. Az itt végrehajtott változtatások nem befolyásolják a már kiadott szavazatokat.
   polls_panel:
     new_poll: Új szavazás
@@ -2238,7 +2235,6 @@ hu:
     legacy_vote_reasons: Korábbi szavazatok indokai
     legacy_vote_reasons_description: A hagyományos anonim szavazási formátummal leadott szavazatok indokai egyszerű szövegként jelennek meg
     anonymous_voting_participant_notice: A szavazás névtelen. A szavazat beküldése után nem ellenőrizheti vagy módosíthatja azt. Az eredmények csak a szavazás lezárultával érhetők el.
-    variable_vote_weights_explanation: Ez a szavazás változó szavazati súlyokat használ, lehetővé téve, hogy az egyik személy szavazata a hozzárendelt szavazati súlytól függően jobban befolyásolja az eredményt, mint a másiké.
     votes_have_different_weights: Ebben a szavazásban a szavazatok eltérő súllyal bírnak, így egyesek jobban számítanak, mint mások.
   poll_common_collapsed:
     by_who: tőle %{name}
@@ -2309,7 +2305,6 @@ hu:
     unredact_reason_confirm: Visszaállítás oka
     unredact_reason_success: Szavazási indok visszaállítva
     all_voters: Minden szavazó
-    weight: Súly
     vote_weight_column: Szavazati súly
     stance: Szavazás
     participation_records_restricted: A részvételi adatok a szavazás koordinátorai számára elérhetők.
@@ -2971,10 +2966,7 @@ hu:
     weight_for_all: Súly mindenkinek
     set_all_vote_weights: Minden súly beállítása
     set_all: Összes beállítása
-    use_member_vote_weights: Használja a jelenlegi tagok szavazati súlyait
-    set_one_vote_weight: Minden szavazót egy súlyozással jelöljön ki
     member_vote_weights_hint: Az aktuális csoporttagsággal nem rendelkező szavazók 1-es súlyt kapnak.
-    vote_weights_description: Rendeljen minden szavazóhoz egy szavazati súlyt, így egyes szavazatok jobban számítanak, mint mások. Az eredmények mind a szavazók számát, mind a súlyozott pontszámot mutatják.
     issued_vote_weights_will_change: A már kiadott szavazatok súlyozása megváltozik.
     find_or_invite_voters: Szavazók keresése vagy meghívása
     remove_voter_named: "%{name} eltávolítása a szavazásból"
@@ -3001,7 +2993,6 @@ hu:
     participation_records_explanation: Ez azt mutatja, hogy kik voltak jogosultak és hogy szavaztak-e. Nem mutatja, hogy ki hogyan szavazott.
     voted: Szavazott
     not_voted: Nem szavazott
-    email_addresses_for_group_admins: Az e-mail címek csak a csoport adminisztrátorai számára jelennek meg, hogy megkülönböztessék az embereket.
     email_addresses_only_for_group_admins: Az e-mail címek csak a csoport adminisztrátorai számára láthatók.
   comment_reply_form:
     aria_label: Válasz hozzáadása
