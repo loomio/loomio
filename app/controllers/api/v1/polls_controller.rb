@@ -146,7 +146,7 @@ class Api::V1::PollsController < Api::V1::RestfulController
     end
 
     total = stances.count
-    stances = page_collection_bounded(stances.order('stances.cast_at DESC NULLS LAST, stances.created_at DESC')).to_a
+    stances = page_collection_bounded(stances.order('stances.cast_at DESC NULLS LAST, stances.created_at DESC, stances.id DESC')).to_a
     voter_ids = stances.map(&:participant_id)
     voters = User.with_attached_uploaded_avatar.where(id: voter_ids).index_by(&:id)
     show_voter_details = @poll.group_id && (@poll.members.exists?(current_user.id) || @poll.stances.latest.exists?(participant_id: current_user.id))

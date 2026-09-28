@@ -562,6 +562,30 @@ class Api::V1::PollsControllerTest < ActionController::TestCase
     assert_equal 0, JSON.parse(response.body).fetch('meta').fetch('total')
   end
 
+  test "identified votes page through voters invited at the same moment without repeats" do
+    poll = PollService.create(params: {
+      title: 'Bulk invited voters', poll_type: 'proposal', group_id: @group.id,
+      poll_option_names: %w[Agree Disagree], closing_at: 5.days.from_now
+    }, actor: @admin)
+    poll.stances.update_all(created_at: Time.zone.parse('2026-09-01 12:00'), cast_at: nil)
+    sign_in @admin
+
+    voter_ids = []
+    total = nil
+    offset = 0
+    loop do
+      get :votes, params: {id: poll.key, limit: 1, offset: offset}
+      json = JSON.parse(response.body)
+      total = json.fetch('meta').fetch('total')
+      break if offset >= total
+      voter_ids.concat(json.fetch('voters').pluck('voter_id'))
+      offset += 1
+    end
+
+    assert_operator total, :>, 2
+    assert_equal poll.stances.latest.pluck(:participant_id).sort, voter_ids.sort
+  end
+
   test "identified votes deny a viewer without access to the poll" do
     poll = PollService.create(params: {
       title: 'Private voters', poll_type: 'proposal', group_id: @group.id,
