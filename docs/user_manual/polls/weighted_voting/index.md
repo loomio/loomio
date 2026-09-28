@@ -41,7 +41,7 @@ The results table keeps its usual columns and adds the weighted result beside th
 - For proposals and other voting methods where each choice gives one vote, **Votes** counts the people who chose each option and **Weighted votes** adds up their weights. The percentage column becomes **% of weighted votes**.
 - For dot votes, score polls, and ranked choice, **Points** shows the points given as if every voter had weight `1`, and **Weighted points** multiplies each voter's points by their weight. **% of weighted points** and **Weighted mean** also use the weights.
 
-The chart shows the weighted result by default. Select a column heading such as **Votes** or **Weighted votes** to chart that measure instead; the table values stay visible. People who can view an identified poll's votes can also see voter weights on the Votes page. Decide whether that visibility is suitable before enabling weights.
+The chart shows the weighted result by default. Select a column heading such as **Votes** or **Weighted votes** to chart that measure instead; the table values stay visible. Anyone who can see the votes can also see each voter's weight.
 
 ## Example: votes and weighted votes
 
