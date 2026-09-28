@@ -53,7 +53,7 @@ People cannot be removed from an anonymous poll.
 
 For example, an administrator who creates a poll on behalf of board members can remove themself if they are not authorised to vote.
 
-For polls that use vote weights, the same window lets poll coordinators [review and edit voter weights](/en/user_manual/polls/weighted_voting).
+For polls that use vote weights, the same window lets poll coordinators [review and edit vote weights](/en/user_manual/polls/weighted_voting).
 
 ### Remind people to vote
 
