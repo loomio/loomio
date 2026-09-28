@@ -4,7 +4,7 @@ Weighted voting lets some votes count more than others. Each voter has a vote we
 
 - A housing community gives each property one vote. A member who represents three properties has a vote weight of `3`.
 - A cooperative's board makes the decision, but operations staff take part in the conversation. Board members have a vote weight of `1`. Operations staff have a vote weight of `0`, so their votes are recorded but do not change the result.
-- A condominium gives voting power by ownership share. Someone with a 2.33% share has a vote weight of `2.33`.
+- A company gives shareholders votes according to their ownership stake. Someone who owns 12.5% of the shares has a vote weight of `12.5`.
 
 ## Allow weighted voting in a group
 

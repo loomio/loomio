@@ -24,6 +24,10 @@ It's not a failure if a decision does not get agreement. You can ask members wha
 
 State an **outcome** when the proposal closes. Let everyone know the result of the decision and what will happen next.
 
+### Votes weighted by ownership
+
+If shareholders or members vote according to their ownership stake, use [weighted voting](/en/user_manual/polls/weighted_voting). Give each person a vote weight that matches their stake. Results show both the plain and the weighted totals.
+
 ![](thread_funding.png#width-90)
 
 ## Examples of out-of-session decisions
