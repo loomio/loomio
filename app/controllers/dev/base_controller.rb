@@ -2,8 +2,13 @@ class Dev::BaseController < ApplicationController
   before_action :ensure_not_production
 
   def index
-    routes = self.class.action_methods.select do |action|
-      /^(test_|setup_|view_)/.match action
+    controllers = if self.class == Dev::NightwatchController
+      {nightwatch: Dev::NightwatchController, discussions: Dev::DiscussionsController, polls: Dev::PollsController}
+    else
+      {controller_name.to_sym => self.class}
+    end
+    routes = controllers.flat_map do |namespace, controller|
+      controller.action_methods.grep(/\A(?:test_|setup_|view_)/).map { |action| "/dev/#{namespace}/#{action}" }
     end
     render Views::Dev::Main::Index.new(routes: routes)
   end
