@@ -2,11 +2,11 @@ require 'test_helper'
 
 # Guards the cost of serializing poll results.
 #
-# Unweighted polls must cost exactly what they cost before vote weights
-# existed. The baselines were measured by running this file's unweighted
-# scenarios on master at 6001ebe707. If an unrelated change moves them, measure
-# master again and update the numbers; do not raise them to absorb vote-weight
-# work.
+# Unweighted polls must cost no more than they did before vote weights existed.
+# Master at 6001ebe707 measured 4/7, 29/32, and 38/47 for these scenarios, with
+# one poll reload per option. Attaching the poll to its options removed those
+# reloads, so the counts below no longer grow with options or polls. Do not
+# raise them to absorb new work; find the extra query instead.
 #
 # Weighted polls may add a constant number of queries, but their cost must not
 # grow with the number of options, voters, or polls faster than unweighted
@@ -24,19 +24,19 @@ class Api::V1::PollResultsQueryCountTest < ActionController::TestCase
     sign_in @admin
   end
 
-  test "unweighted poll results cost the same as master" do
+  test "unweighted poll results do not grow with options or voters" do
     small = build_voted_poll(**SMALL)
     large = build_voted_poll(**LARGE)
 
-    assert_equal 4, calculate_results_queries(small)
-    assert_equal 7, calculate_results_queries(large)
-    assert_equal 29, show_queries(small)
-    assert_equal 32, show_queries(large)
+    assert_equal 2, calculate_results_queries(small)
+    assert_equal 2, calculate_results_queries(large)
+    assert_equal 27, show_queries(small)
+    assert_equal 27, show_queries(large)
   end
 
-  test "unweighted poll index costs the same as master" do
-    assert_equal 38, index_queries(polls_count: 1)
-    assert_equal 47, index_queries(polls_count: 4)
+  test "unweighted poll index does not grow with the number of polls" do
+    assert_equal 35, index_queries(polls_count: 1)
+    assert_equal 35, index_queries(polls_count: 4)
   end
 
   test "weighted poll results cost a bounded constant more than unweighted results" do

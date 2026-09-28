@@ -523,6 +523,9 @@ class PollService
   end
 
   def self.calculate_results(poll, poll_options, undecided_voter_ids: nil)
+    # Options may come from the record cache without their poll loaded; attach it
+    # so each option's color and voter ids do not reload the poll.
+    poll_options.each { |option| option.association(:poll).target = poll }
     return calculate_stv_results(poll, poll_options) if poll.poll_type == 'stv'
 
     sorted_poll_options = case poll.order_results_by
