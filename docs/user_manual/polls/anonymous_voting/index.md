@@ -59,7 +59,7 @@ An anonymous poll cannot be reopened after it closes.
 
 After an anonymous poll closes, anyone who can see its results can see who took part. No one can see this while voting is open.
 
-Select **View votes** to see the list. It always shows who was eligible. If at least three people voted, it also shows whether each person voted. It never shows how anyone voted, or when.
+Select **View votes** to see the list. It always shows who was eligible. It shows whether each person voted only if enough people voted. That means the poll's quorum if it has one, otherwise half the eligible voters, and never fewer than three votes. The list never shows how anyone voted, or when.
 
 Group members and the poll's voters also see when each person joined the group and who invited them. Group admins also see email addresses, to tell apart people with the same name.
 
@@ -82,7 +82,7 @@ Polls with a total voting period of less than 24 hours do not send this automati
 Through the application, a poll coordinator, group administrator, or instance administrator may be able to see:
 
 - the poll and its eligible voters;
-- whether each eligible person has voted, where their role permits access and at least three people have voted; and
+- whether each eligible person has voted, where their role permits access and enough people have voted; and
 - aggregate results after the poll closes.
 
 They cannot use application features to see:
@@ -102,9 +102,9 @@ Consider the size of the electorate and the sensitivity of the decision when dec
 
 ## Questions
 
-### Can a coordinator see how I voted?
+### Can anyone see how I voted?
 
-No. Once at least three people have voted, a coordinator can verify whether you voted but cannot connect you with a submitted vote through the application. Below that threshold, your participation status remains hidden.
+No. Once enough people have voted, people who can see the results can see whether you voted. No one can connect you with a submitted vote through the application. Until then, whether you voted stays hidden.
 
 ### Can I see my vote after submitting it?
 
