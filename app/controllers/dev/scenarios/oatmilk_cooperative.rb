@@ -831,7 +831,7 @@ module Dev::Scenarios::OatmilkCooperative
     end
 
     sign_in coordinator
-    redirect_to poll_path(poll)
+    redirect_to params[:view] == 'edit' ? "/p/#{poll.key}/edit" : poll_path(poll)
   end
 
   # The board decides with vote weight 1. Operations staff take part in the

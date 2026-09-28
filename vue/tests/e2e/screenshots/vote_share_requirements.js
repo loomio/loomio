@@ -1,53 +1,55 @@
 const pageHelper = require('../helpers/pageHelper');
 const manualScreenshot = require('../helpers/manualScreenshot');
-const richText = require('../helpers/oatmilkRichText');
 
-function spotlight(selector) {
-  return {selector, padding: 16, radius: 16, opacity: 0.4, outlineWidth: 0};
+function spotlight(selectors, padding = 16) {
+  return {selectors, padding, radius: 16, opacity: 0.4, outlineWidth: 0};
 }
 
-function openConsentForm(page) {
-  page.loadPath('setup_manual_oatmilk_formatting?key=0');
-  page.expectText('.context-panel__heading', 'Returnable bottles for cafe customers');
-  page.clickAndWait('.activity-panel__add-poll', '.decision-tools-card__poll-types');
-  page.expectText('.decision-tools-card__poll-types', 'Consent');
-  page.execute("Array.from(document.querySelectorAll('.decision-tools-card__poll-type')).find(el => el.textContent.includes('Consent')).click()");
+// Opens the proposal used in the results screenshots, so the whole example
+// follows one poll and its Agree option.
+function openProposalForm(page) {
+  page.loadPath('setup_manual_oatmilk_quorum?view=edit');
   page.waitFor('.poll-common-form-fields__title input');
-  page.fillIn('.poll-common-form-fields__title input', 'Approve the returnable bottle trial budget');
-  page.fillRichText(
-    '.poll-common-form-fields__details [contenteditable=true]',
-    richText.context('vote-share-proposal', [
-      'Approve the bottle deposits, washing costs, and collection budget for the six-week trial.',
-      'The budget covers three cafe partners, weekly collections, replacement bottles, and batch records.',
-      'Review the figures before voting and explain any cost that should be adjusted.'
-    ])
-  );
   page.execute(`
     const heading = Array.from(document.querySelectorAll('.poll-common-form .text-body-large'))
       .find(el => el.textContent.trim() === 'Options');
     heading.classList.add('manual-options-heading');
-    heading.nextElementSibling.classList.add('manual-options-list');
-    const option = Array.from(heading.nextElementSibling.querySelectorAll('.v-list-item'))
-      .find(el => el.textContent.includes('Consent'));
-    option.classList.add('manual-consent-option');
+    const options = Array.from(document.querySelectorAll('.poll-common-form .v-list-item'));
+    options.find(el => el.textContent.includes('Agree')).classList.add('manual-agree-option');
+    options[options.length - 1].classList.add('manual-last-option');
   `);
-  page.waitFor('.manual-consent-option');
+  page.waitFor('.manual-agree-option');
 }
 
-function openConsentOption(page) {
-  openConsentForm(page);
-  page.clickAndWait('.manual-consent-option button[title="Edit"]', '.poll-common-option-form');
+function openAgreeOption(page) {
+  openProposalForm(page);
+  page.clickAndWait('.manual-agree-option button[title="Edit"]', '.poll-common-option-form');
+  markVoteShareSection(page);
+}
+
+// Vue re-renders these fields when they change, which drops added classes, so mark them again after each change.
+function markVoteShareSection(page) {
+  page.execute(`
+    const heading = Array.from(document.querySelectorAll('.poll-common-option-form .text-body-large'))
+      .find(el => el.textContent.trim() === 'Vote share requirement');
+    heading.classList.add('manual-vote-share-heading');
+    heading.nextElementSibling.classList.add('manual-vote-share-checkbox');
+    heading.nextElementSibling.nextElementSibling.classList.add('manual-vote-share-fields');
+    document.querySelectorAll('.poll-common-option-form .v-select').item(1).classList.add('manual-vote-against-select');
+  `);
 }
 
 function enableVoteShare(page, percent) {
-  page.click('.poll-common-option-form .v-checkbox .v-selection-control__wrapper');
-  page.fillIn('.poll-common-option-form .v-number-input input', String(percent));
-  page.execute("document.querySelectorAll('.poll-common-option-form .v-select').item(1).classList.add('manual-vote-against-select')");
+  page.click('.manual-vote-share-checkbox .v-selection-control__wrapper');
+  page.pause(200);
+  markVoteShareSection(page);
+  page.fillIn('.manual-vote-share-fields .v-number-input input', String(percent));
+  markVoteShareSection(page);
   page.click('.manual-vote-against-select .v-field');
   page.waitFor('.v-overlay--active .v-list');
   page.execute("Array.from(document.querySelectorAll('.v-overlay--active .v-list-item')).find(el => el.textContent.includes('Eligible voters')).click()");
-  page.pause(200);
-  page.execute("document.querySelectorAll('.poll-common-option-form .v-select').item(1).classList.add('manual-vote-against-select')");
+  page.pause(300);
+  markVoteShareSection(page);
   page.expectText('.manual-vote-against-select', 'Eligible voters');
 }
 
@@ -55,8 +57,13 @@ function openVoteSharePoll(page, votes) {
   page.loadPath(`setup_manual_oatmilk_quorum?vote_share=1&votes=${votes}`);
   page.waitFor('.poll-created .poll-common-chart-panel');
   page.expectText('.poll-created', 'Run a six-week returnable bottle trial');
+  page.execute("document.querySelector('.poll-created .poll-common-chart-panel .v-alert').classList.add('manual-pass-requirements')");
   page.pause(400);
 }
+
+// The option window fits on screen, so show all of it with the relevant part spotlighted.
+const optionWindow = ['.poll-common-option-form', '.poll-option-form__done-btn'];
+const voteShareSection = ['.manual-vote-share-heading', '.manual-vote-share-checkbox', '.manual-vote-share-fields'];
 
 module.exports = {
   '@tags': ['manual-screenshot'],
@@ -64,15 +71,15 @@ module.exports = {
   'edit_highlight_on_option': (test) => {
     const page = pageHelper(test);
     const screenshot = manualScreenshot(test);
-    openConsentForm(page);
+    openProposalForm(page);
     screenshot.captureRegion(
       'polls/vote_share_requirements/edit-highlight-on-option',
-      ['.manual-options-heading', '.manual-consent-option'],
+      ['.poll-common-form > .v-card-title', '.manual-options-heading', '.manual-last-option', '.poll-common-form__add-option-btn'],
       {
-        padding: 12,
+        padding: 32,
         width: 1200,
-        height: 1200,
-        spotlight: spotlight('.manual-consent-option button[title="Edit"]')
+        height: 1600,
+        spotlight: spotlight(['.manual-agree-option button[title="Edit"]'], 10)
       }
     );
   },
@@ -80,34 +87,39 @@ module.exports = {
   'eligible_vs_cast': (test) => {
     const page = pageHelper(test);
     const screenshot = manualScreenshot(test);
-    openConsentOption(page);
-    enableVoteShare(page, 60);
+    openAgreeOption(page);
+    enableVoteShare(page, 75);
     page.click('.manual-vote-against-select .v-field');
     page.waitFor('.v-overlay--active .v-list');
-    page.execute(`
-      const heading = Array.from(document.querySelectorAll('.poll-common-option-form .text-body-large'))
-        .find(el => el.textContent.trim() === 'Vote share requirement');
-      heading.classList.add('manual-vote-share-heading');
-      heading.nextElementSibling.classList.add('manual-vote-share-checkbox');
-      heading.nextElementSibling.nextElementSibling.classList.add('manual-vote-share-fields');
-      document.querySelector('.poll-option-form__done-btn').style.visibility = 'hidden';
-    `);
+    markVoteShareSection(page);
     screenshot.captureRegion(
       'polls/vote_share_requirements/eligible-vs-cast',
-      ['.manual-vote-share-heading', '.manual-vote-share-checkbox', '.manual-vote-share-fields', '.v-overlay--active .v-list'],
-      {padding: 4, width: 1100, height: 1200}
+      [...optionWindow, '.v-overlay--active .v-list'],
+      {
+        padding: 32,
+        width: 1200,
+        height: 1600,
+        spotlight: spotlight([...voteShareSection, '.v-overlay--active .v-list'])
+      }
     );
   },
 
   'consent_vote_option': (test) => {
     const page = pageHelper(test);
     const screenshot = manualScreenshot(test);
-    openConsentOption(page);
+    openAgreeOption(page);
     enableVoteShare(page, 75);
-    screenshot.captureElement(
+    page.execute('document.activeElement && document.activeElement.blur()');
+    markVoteShareSection(page);
+    screenshot.captureRegion(
       'polls/vote_share_requirements/consent-vote-option',
-      '.poll-common-option-form',
-      {width: 1100, height: 1400}
+      optionWindow,
+      {
+        padding: 32,
+        width: 1200,
+        height: 1600,
+        spotlight: spotlight(voteShareSection)
+      }
     );
   },
 
@@ -115,10 +127,16 @@ module.exports = {
     const page = pageHelper(test);
     const screenshot = manualScreenshot(test);
     openVoteSharePoll(page, 2);
-    screenshot.captureElement(
+    screenshot.captureRegion(
       'polls/vote_share_requirements/first-vote-breakdown',
-      '.poll-created .poll-common-chart-panel',
-      {width: 1200, height: 1000}
+      ['.poll-created .poll-common-card__title', '.poll-created .poll-common-chart-panel', '.poll-created .action-dock'],
+      {
+        padding: 32,
+        width: 1200,
+        height: 1800,
+        clearSelection: true,
+        spotlight: spotlight(['.manual-pass-requirements'])
+      }
     );
   },
 
@@ -126,10 +144,16 @@ module.exports = {
     const page = pageHelper(test);
     const screenshot = manualScreenshot(test);
     openVoteSharePoll(page, 5);
-    screenshot.captureElement(
+    screenshot.captureRegion(
       'polls/vote_share_requirements/final-vote-breakdown',
-      '.poll-created .poll-common-chart-panel',
-      {width: 1200, height: 1000}
+      ['.poll-created .poll-common-card__title', '.poll-created .poll-common-chart-panel', '.poll-created .action-dock'],
+      {
+        padding: 32,
+        width: 1200,
+        height: 1800,
+        clearSelection: true,
+        spotlight: spotlight(['.manual-pass-requirements'])
+      }
     );
   }
 };
