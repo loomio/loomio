@@ -1500,7 +1500,7 @@ sv:
     non_members_can_start_discussions: Icke-medlemmar kan starta diskussioner
     non_members_can_start_discussions_help: Tillåt icke-medlemmar att starta en diskussion från en av den här gruppens mallar
     vote_weights_allowed: Tillåt röstvikter
-    vote_weights_allowed_help: Låt vissa röster väga tyngre än andra
+    let_admins_set_vote_weights: Låt administratörer ge medlemmar olika röstvikter, så att vissa röster räknas mer än andra
   group_export_modal:
     title: Exportera gruppdata
     body: <p>Du kan ladda ner en kopia av din grupps data när som helst. <a href="https://help.loomio.org/en/user_manual/groups/data_export/">Få reda på mer.</a></p><p> Det tar några minuter att slutföra, beroende på storleken på din grupp. När den är klar får du ett e-postmeddelande med en länk för att ladda ner filen.</p>
@@ -2971,7 +2971,7 @@ sv:
     set_each_member_default_vote_weight: Ange varje medlems standardröstvikt
     set_all_weights_the_same: Ställ in alla vikter på samma sätt
     voters_will_not_be_notified: Väljarna kommer inte att meddelas. Informera dem om omröstningen på ett annat sätt.
-    give_voters_different_weights_description: Ge väljarna olika vikter. Resultaten visar viktade röster eller poäng bredvid de oviktade totalsiffrorna.
+    use_weighted_voting: Använd viktad röstning. Resultaten visar både den vanliga och den viktade totalsumman.
   poll_receipts_page:
     participation_status_requires_min_votes: Detta visar vilka som var röstberättigade. Om varje person har röstat visas endast när minst %{count} personer har röstat.
     see_votes_if_quorum_reached: Om omröstningen har avslutats och beslutsmässighet uppnåtts ser du vem som avgav en röst.

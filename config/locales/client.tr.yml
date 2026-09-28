@@ -1500,7 +1500,7 @@ tr:
     non_members_can_start_discussions: Üye olmayanlar da tartışma başlatabilir.
     non_members_can_start_discussions_help: Üye olmayanların bu grubun şablonlarından birini kullanarak tartışma başlatmasına izin verin.
     vote_weights_allowed: Oy ağırlıklarına izin ver
-    vote_weights_allowed_help: Bazı oyların diğerlerinden daha fazla ağırlığa sahip olmasına izin verin.
+    let_admins_set_vote_weights: Yöneticilerin üyelere farklı oy ağırlıkları vermesine izin verin, böylece bazı oylar diğerlerinden daha fazla sayılır
   group_export_modal:
     title: Grup verilerini dışa aktar
     body: <p>Grubunuzun verilerinin bir kopyasını istediğiniz zaman indirebilirsiniz. <a href="https://help.loomio.org/en/user_manual/groups/data_export/">Daha fazlasını bul.</a></p><p> Grubunuzun büyüklüğüne bağlı olarak tamamlanması birkaç dakika sürer. Hazır olduğunda dosyayı indirme bağlantısını içeren bir e-posta alacaksınız.</p>
@@ -2971,7 +2971,7 @@ tr:
     set_each_member_default_vote_weight: Her üyenin varsayılan oy ağırlığını ayarlayın.
     set_all_weights_the_same: Tüm ağırlıkları aynı ayarlayın.
     voters_will_not_be_notified: Seçmenlere bildirim yapılmayacak. Onlara anket hakkında başka bir yolla bilgi verin.
-    give_voters_different_weights_description: Seçmenlere farklı ağırlıklar verin. Sonuçlar, ağırlıklı oyları veya puanları, ağırlıksız toplamlarla birlikte gösterir.
+    use_weighted_voting: Ağırlıklı oylama kullanın. Sonuçlar hem düz hem de ağırlıklı toplamları gösterir.
   poll_receipts_page:
     participation_status_requires_min_votes: Bu, kimlerin oy kullanma hakkına sahip olduğunu gösterir. Her kişinin oy kullanıp kullanmadığı yalnızca en az %{count} kişi oy verdiğinde gösterilir.
     see_votes_if_quorum_reached: Oylama sona ermiş ve yeter sayı sağlanmışsa, kimin oy kullandığını göreceksiniz.

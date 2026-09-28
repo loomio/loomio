@@ -1500,7 +1500,7 @@ da:
     non_members_can_start_discussions: Ikke-medlemmer kan starte diskussioner
     non_members_can_start_discussions_help: Tillad ikke-medlemmer at starte en diskussion fra en af denne gruppes skabeloner
     vote_weights_allowed: Tillad stemmevægte
-    vote_weights_allowed_help: Tillad nogle stemmer at have mere vægt end andre
+    let_admins_set_vote_weights: Lad administratorer give medlemmer forskellig stemmevægt, så nogle stemmer tæller mere end andre
   group_export_modal:
     title: Eksporter gruppedata
     body: <p>Du kan til enhver tid downloade en kopi af din gruppes data. <a href="https://help.loomio.org/en/user_manual/groups/data_export/">Find ud af mere.</a></p><p> Det tager et par minutter at gennemføre, afhængigt af størrelsen på din gruppe. Når den er klar, modtager du en e-mail med et link til at downloade filen.</p>
@@ -2971,7 +2971,7 @@ da:
     set_each_member_default_vote_weight: Angiv standardvægten for stemmer for hvert medlem
     set_all_weights_the_same: Sæt alle vægte ens
     voters_will_not_be_notified: Vælgerne vil ikke blive underrettet. Giv dem besked om afstemningen på en anden måde.
-    give_voters_different_weights_description: Giv vælgerne forskellig vægtning. Resultaterne viser vægtede stemmer eller point sammen med de uvægtede totaler.
+    use_weighted_voting: Brug vægtet afstemning. Resultaterne viser både de almindelige og de vægtede totaler.
   poll_receipts_page:
     participation_status_requires_min_votes: Dette viser, hvem der var stemmeberettigede. Om hver person stemte, vises kun, når mindst %{count} personer har stemt.
     see_votes_if_quorum_reached: Hvis afstemningen er afsluttet, og det quorum er nået, vil du se, hvem der afgav en stemme.

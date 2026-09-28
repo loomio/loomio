@@ -1578,7 +1578,7 @@ zh_CN:
     non_members_can_start_discussions: 非会员也可以发起讨论
     non_members_can_start_discussions_help: 允许非成员使用本群组提供的模板发起讨论。
     vote_weights_allowed: 允许投票权重
-    vote_weights_allowed_help: 允许某些选票比其他选票具有更高的权重。
+    let_admins_set_vote_weights: 允许管理员为成员设置不同的投票权重，使某些投票比其他投票更重要
   group_export_modal:
     title: 导出组数据
     body: <p>您可以随时下载您所在子群组的数据副本。<a href="https://help.loomio.org/en/user_manual/groups/data_export/">了解更多信息。</a></p><p>根据子群组人数，完成此操作大约需要几分钟。完成后，您将收到一封包含文件下载链接的电子邮件。</p>
@@ -2620,7 +2620,7 @@ zh_CN:
     set_each_member_default_vote_weight: 设置每位成员的默认投票权重
     set_all_weights_the_same: 将所有重量设置为相同
     voters_will_not_be_notified: 选民不会收到通知。请通过其他方式告知他们投票情况。
-    give_voters_different_weights_description: 赋予选民不同的权重。结果会显示加权票数或得分，以及未加权的总票数或得分。
+    use_weighted_voting: 采用加权投票制。结果将显示原始票数和加权票数。
   poll_proposal_form:
     start_header: 开始提案
     edit_header: 编辑提案

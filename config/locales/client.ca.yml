@@ -1506,7 +1506,7 @@ ca:
     non_members_can_start_discussions: Els no membres poden iniciar debats
     non_members_can_start_discussions_help: Permet que els no membres iniciïn una discussió des d'una de les plantilles d'aquest grup
     vote_weights_allowed: Permetre pesos de vot
-    vote_weights_allowed_help: Permetre que alguns vots tinguin més pes que d'altres
+    let_admins_set_vote_weights: Permet que els administradors donin als membres diferents pesos de vot, de manera que alguns vots comptin més que d'altres
   group_export_modal:
     title: Exporta dades del grup
     body: |
@@ -2998,7 +2998,7 @@ ca:
     set_each_member_default_vote_weight: Estableix el pes de vot predeterminat de cada membre
     set_all_weights_the_same: Estableix tots els pesos iguals
     voters_will_not_be_notified: Els votants no rebran notificacions. Feu-los saber sobre l'enquesta d'una altra manera.
-    give_voters_different_weights_description: Doneu als votants diferents pesos. Els resultats mostren els vots o punts ponderats juntament amb els totals no ponderats.
+    use_weighted_voting: Feu servir el vot ponderat. Els resultats mostren tant els totals normals com els ponderats.
   poll_receipts_page:
     participation_status_requires_min_votes: Això mostra qui tenia dret a votar. Només es mostra si cada persona ha votat quan almenys %{count} persones han votat.
     see_votes_if_quorum_reached: Si la votació s'ha tancat i s'ha arribat al quòrum, veureu qui ha votat.

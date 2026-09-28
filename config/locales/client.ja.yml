@@ -1499,7 +1499,7 @@ ja:
     non_members_can_start_discussions: 非会員でも議論を開始できます
     non_members_can_start_discussions_help: 非メンバーがこのグループのテンプレートのいずれかからディスカッションを開始できるようにする
     vote_weights_allowed: 投票の重み付けを許可する
-    vote_weights_allowed_help: 一部の投票に他の投票よりも大きな重みを持たせる
+    let_admins_set_vote_weights: 管理者がメンバーに異なる投票重みを設定できるようにすることで、一部の投票が他の投票よりも重要になるようにします
   group_export_modal:
     title: グループデータのエクスポート
     body: <p>グループのデータのコピーはいつでもダウンロードできます。<a href="https://help.loomio.org/en/user_manual/groups/data_export/">もっと詳しく調べてください。</a></p><p>グループの規模に応じて、完了までに数分かかります。準備が完了すると、ファイルをダウンロードするためのリンクが記載された電子メールが届きます。</p>
@@ -2970,7 +2970,7 @@ ja:
     set_each_member_default_vote_weight: 各メンバーのデフォルトの投票重みを設定する
     set_all_weights_the_same: すべての重みを同じに設定する
     voters_will_not_be_notified: 有権者には通知されません。別の方法で投票について知らせてください。
-    give_voters_different_weights_description: 投票者に異なる重み付けを与える。結果には、重み付けされた投票数またはポイントが、重み付けされていない合計値と並んで表示される。
+    use_weighted_voting: 加重投票方式を採用します。結果には、単純投票と加重投票の両方の合計が表示されます。
   poll_receipts_page:
     participation_status_requires_min_votes: 投票資格があった人を表示します。各人が投票したかどうかは、少なくとも%{count}人が投票した場合にのみ表示されます。
     see_votes_if_quorum_reached: 投票が終了し、定足数に達した場合は、誰が投票したかが表示されます。

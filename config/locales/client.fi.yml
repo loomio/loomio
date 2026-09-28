@@ -1500,7 +1500,7 @@ fi:
     non_members_can_start_discussions: Muutkin kuin jäsenet voivat aloittaa keskusteluja
     non_members_can_start_discussions_help: Salli muiden kuin jäsenten aloittaa keskustelun jostakin tämän ryhmän mallista
     vote_weights_allowed: Salli äänipainotukset
-    vote_weights_allowed_help: Anna joidenkin äänten olla painavampia kuin toisten
+    let_admins_set_vote_weights: Anna ylläpitäjien antaa jäsenille eri äänipainotuksia, jotta jotkut äänet painavat enemmän kuin toiset
   group_export_modal:
     title: Vie ryhmätiedot
     body: <p>Voit ladata kopion ryhmäsi tiedoista milloin tahansa. <a href="https://help.loomio.org/en/user_manual/groups/data_export/">Lue lisää.</a></p><p> Suorittaminen kestää muutaman minuutin ryhmäsi koosta riippuen. Kun se on valmis, saat sähköpostin, jossa on linkki tiedoston lataamiseen.</p>
@@ -2971,7 +2971,7 @@ fi:
     set_each_member_default_vote_weight: Aseta kunkin jäsenen oletusäänipainotus
     set_all_weights_the_same: Aseta kaikki painot samaksi
     voters_will_not_be_notified: Äänestäjille ei ilmoiteta äänestyksestä. Ilmoita heille äänestyksestä toisella tavalla.
-    give_voters_different_weights_description: Anna äänestäjille eri painotuksia. Tulokset näyttävät painotetut äänet tai pisteet painottamattomien kokonaismäärien rinnalla.
+    use_weighted_voting: Käytä painotettua äänestystä. Tulokset näyttävät sekä tavalliset että painotetut kokonaissummat.
   poll_receipts_page:
     participation_status_requires_min_votes: Tämä näyttää, ketkä olivat äänioikeutettuja. Se, äänestikö kukin henkilö, näytetään vasta, kun vähintään %{count} henkilöä on äänestänyt.
     see_votes_if_quorum_reached: Jos äänestys on päättynyt ja päätösvaltainen määrä on saavutettu, näet ketkä äänestivät.

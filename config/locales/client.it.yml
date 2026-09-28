@@ -1526,7 +1526,7 @@ it:
     non_members_can_start_discussions: Anche i non membri possono avviare discussioni
     non_members_can_start_discussions_help: Consenti ai non membri di avviare una discussione utilizzando uno dei modelli di questo gruppo.
     vote_weights_allowed: Consentire i pesi di voto
-    vote_weights_allowed_help: Consentire che alcuni voti abbiano più peso di altri
+    let_admins_set_vote_weights: Consenti agli amministratori di assegnare pesi di voto diversi ai membri, in modo che alcuni voti abbiano più peso di altri
   group_export_modal:
     title: Esporta i dati del gruppo
     body: <p>Puoi scaricare una copia dei dati del tuo gruppo in qualsiasi momento. <a href="https://help.loomio.org/en/user_manual/groups/data_export/">Scopri di più.</a></p><p> Il completamento richiede alcuni minuti, a seconda delle dimensioni del gruppo. Quando sarà pronto riceverai un'e-mail con un link per scaricare il file.</p>
@@ -2999,7 +2999,7 @@ it:
     set_each_member_default_vote_weight: Imposta il peso di voto predefinito di ciascun membro.
     set_all_weights_the_same: Impostare tutti i pesi allo stesso modo
     voters_will_not_be_notified: Gli elettori non riceveranno alcuna notifica. Informali del sondaggio in un altro modo.
-    give_voters_different_weights_description: Assegna pesi diversi agli elettori. I risultati mostrano i voti o i punti ponderati insieme ai totali non ponderati.
+    use_weighted_voting: Usa il voto ponderato. I risultati mostrano sia i totali semplici sia quelli ponderati.
   poll_receipts_page:
     participation_status_requires_min_votes: Mostra chi aveva diritto di voto. Lo stato di partecipazione di ogni persona viene mostrato solo quando hanno votato almeno %{count} persone.
     see_votes_if_quorum_reached: Se la votazione è chiusa e il quorum è stato raggiunto, vedrai chi ha espresso il voto.

@@ -1515,7 +1515,7 @@ es:
     non_members_can_start_discussions: Los no miembros pueden iniciar debates
     non_members_can_start_discussions_help: Permite que personas que no son miembros inicien un debate a partir de una de las plantillas de este grupo
     vote_weights_allowed: Permitir ponderaciones de voto
-    vote_weights_allowed_help: Permitir que algunos votos tengan más peso que otros.
+    let_admins_set_vote_weights: Permite que los administradores asignen distintos pesos de voto a los miembros, para que algunos votos cuenten más que otros
   group_export_modal:
     title: Exportar la data grupal
     body: |
@@ -3007,7 +3007,7 @@ es:
     set_each_member_default_vote_weight: Establece el peso de voto predeterminado de cada miembro
     set_all_weights_the_same: Ajusta todos los pesos al mismo valor
     voters_will_not_be_notified: Los votantes no recibirán una notificación. Infórmales sobre la encuesta de otra manera.
-    give_voters_different_weights_description: Asigna diferentes ponderaciones a los votantes. Los resultados muestran los votos o puntos ponderados junto con los totales sin ponderar.
+    use_weighted_voting: Usa la votación ponderada. Los resultados muestran tanto el total simple como el ponderado.
   poll_receipts_page:
     participation_status_requires_min_votes: Esto muestra quién tenía derecho a votar. Solo se muestra si cada persona votó cuando han votado al menos %{count} personas.
     see_votes_if_quorum_reached: Si la votación se ha cerrado y se ha alcanzado el quórum, podrás ver quién emitió tu voto.

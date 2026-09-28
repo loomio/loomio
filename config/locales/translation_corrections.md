@@ -1,5 +1,15 @@
 # Corrected translations
 
+## 2026-09-28 — Vote weight settings descriptions
+
+| File | Key | Before | After | Why it was wrong |
+|------|-----|--------|-------|------------------|
+| `config/locales/client.de.yml` | `group_form.let_admins_set_vote_weights`, `poll_common_form.use_weighted_voting` | Formal `Ermöglichen Sie es`; passive `Es wird gewichtetes Abstimmungsverfahren angewendet` | Informal `Lass Admins`; imperative `Nutze gewichtete Abstimmung` | German UI uses the informal register, and the description invites the coordinator to use weighted voting |
+| `config/locales/client.es.yml`, `client.fr.yml`, `client.it.yml` | `group_form.let_admins_set_vote_weights`, `poll_common_form.use_weighted_voting` | Infinitive `Permitir`, formal `Utilice`, `Autorisez`, `Utilisez`, infinitive `Utilizzare` | Informal `Permite`, `Usa`, `Autorise`, `Utilise`, `Usa` | These locales use the informal register for UI instructions |
+| `config/locales/client.fi.yml` | `poll_common_form.use_weighted_voting` | `selkeät` | `tavalliset` | `selkeät` means clear; the totals are plain, unweighted totals |
+| `config/locales/client.ro.yml` | `group_form.let_admins_set_vote_weights` | Formal `Permiteți` | Informal `Permite` | Matches the informal imperative in the poll form description |
+| `config/locales/client.*.yml` | `group_form.let_admins_set_vote_weights` | Final `.` or `。` | No final full stop | The English source is a single-sentence UI string |
+
 ## 2026-09-28 — Anonymous participation notice
 
 | File | Key | Before | After | Why it was wrong |

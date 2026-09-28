@@ -357,7 +357,7 @@ v-form(ref="form" @submit.prevent="submit")
               div
                 span {{ t('group_form.vote_weights_allowed') }}
                 br
-                span.text-body-small {{ t('group_form.vote_weights_allowed_help') }}
+                span.text-body-small {{ t('group_form.let_admins_set_vote_weights') }}
           v-checkbox.group-form__members-can-create-subgroups(hide-details v-model='group.membersCanCreateSubgroups' v-if='group.isParent()')
             template(v-slot:label)
               div

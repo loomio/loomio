@@ -1527,7 +1527,7 @@ pt_BR:
     non_members_can_start_discussions: Quem não é membro pode iniciar discussões.
     non_members_can_start_discussions_help: Permitir que não membros iniciem uma discussão a partir de um dos modelos deste grupo.
     vote_weights_allowed: Permitir ponderação de votos
-    vote_weights_allowed_help: Permitir que alguns votos tenham mais peso do que outros.
+    let_admins_set_vote_weights: Permita que os administradores atribuam pesos diferentes aos votos dos membros, para que alguns votos contem mais do que outros
   group_export_modal:
     title: Exportar data do grupo
     body: |
@@ -3019,7 +3019,7 @@ pt_BR:
     set_each_member_default_vote_weight: Defina o peso de voto padrão de cada membro.
     set_all_weights_the_same: Defina todos os pesos iguais.
     voters_will_not_be_notified: Os eleitores não serão notificados. Informe-os sobre a votação de outra forma.
-    give_voters_different_weights_description: Atribua pesos diferentes aos eleitores. Os resultados mostram os votos ou pontos ponderados juntamente com os totais não ponderados.
+    use_weighted_voting: Utilize votação ponderada. Os resultados mostram os totais brutos e ponderados.
   poll_receipts_page:
     participation_status_requires_min_votes: Isso mostra quem tinha direito a voto. A informação sobre se cada pessoa votou só é exibida quando pelo menos %{count} pessoas tiverem votado.
     see_votes_if_quorum_reached: Se a votação for encerrada e o quórum for atingido, você verá quem votou.

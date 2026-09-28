@@ -1509,7 +1509,7 @@ zh_TW:
     non_members_can_start_discussions: 非會員也可以發起討論
     non_members_can_start_discussions_help: 允許非成員使用本群組提供的範本發起討論。
     vote_weights_allowed: 允許投票權重
-    vote_weights_allowed_help: 允許某些選票比其他選票有更高的權重。
+    let_admins_set_vote_weights: 允許管理員為成員設定不同的投票權重，使某些投票比其他投票更重要
   group_export_modal:
     title: 匯出群組資料
     body: |
@@ -2999,7 +2999,7 @@ zh_TW:
     set_each_member_default_vote_weight: 設定每位成員的預設投票權重
     set_all_weights_the_same: 將所有重量設定為相同
     voters_will_not_be_notified: 選民不會收到通知。請透過其他方式告知他們投票情況。
-    give_voters_different_weights_description: 賦予選民不同的權重。結果會顯示加權票數或得分，以及未加權的總票數或得分。
+    use_weighted_voting: 採用加權投票制。結果將顯示原始票數和加權票數。
   poll_receipts_page:
     participation_status_requires_min_votes: 這裡顯示哪些人有資格投票。只有在至少%{count}人投票後，才會顯示每個人是否投票。
     see_votes_if_quorum_reached: 如果投票已結束且達到法定人數，您將看到誰投了票。

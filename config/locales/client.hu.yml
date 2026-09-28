@@ -1504,7 +1504,7 @@ hu:
     non_members_can_start_discussions: Nem tagok is indíthatnak beszélgetéseket
     non_members_can_start_discussions_help: Engedélyezze a nem tagok számára, hogy beszélgetést indítsanak a csoport egyik sablonjából
     vote_weights_allowed: Szavazati súlyok engedélyezése
-    vote_weights_allowed_help: Bizonyos szavazatok súlyának növelése másoknál
+    let_admins_set_vote_weights: Engedélyezheti az adminisztrátoroknak, hogy a tagok eltérő szavazati súlyokat kapjanak, így egyes szavazatok jobban számítanak, mint mások
   group_export_modal:
     title: Csoport adatok letöltése
     body: <p>A csoport adatainak másolatát bármikor letöltheti. <a href="https://help.loomio.org/en/user_manual/groups/data_export/">Tudj meg többet.</a></p><p> A kitöltése a csoport méretétől függően néhány percet vesz igénybe. Ha készen áll, e-mailben kap egy linket a fájl letöltéséhez.</p>
@@ -2978,7 +2978,7 @@ hu:
     set_each_member_default_vote_weight: Az egyes tagok alapértelmezett szavazati súlyának beállítása
     set_all_weights_the_same: Állítsd be az összes súlyt azonosra
     voters_will_not_be_notified: A szavazókat nem értesítjük. Más módon értesítse őket a szavazásról.
-    give_voters_different_weights_description: Adjon a szavazóknak különböző súlyokat. Az eredmények a súlyozott szavazatokat vagy pontokat a súlyozatlan összesítések mellett mutatják.
+    use_weighted_voting: Súlyozott szavazást használjon. Az eredmények mind a sima, mind a súlyozott összesítést mutatják.
   poll_receipts_page:
     participation_status_requires_min_votes: Ez megmutatja, hogy ki volt jogosult szavazni. Az, hogy egyes személyek szavaztak-e, csak akkor jelenik meg, ha legalább %{count} ember szavazott.
     see_votes_if_quorum_reached: Ha a szavazás lezárult és létrejött a határozatképző létszám, akkor láthatja, hogy kik szavaztak.

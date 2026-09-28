@@ -760,7 +760,7 @@ module.exports = {
     page.click('.poll-common-form__more-settings')
     page.expectElement('.poll-settings-vote-weights')
     page.expectElement('a[href="/docs/en/user_manual/polls/quorum"]')
-    page.expectText('.poll-common-form', 'Give voters different weights. Results show weighted votes or points alongside the unweighted totals.')
+    page.expectText('.poll-common-form', 'Use weighted voting. Results show both the plain and the weighted totals.')
     page.expectElement('a[href="/docs/en/user_manual/polls/weighted_voting"]')
     page.expectElement('a[href="/docs/en/user_manual/polls/anonymous_voting"]')
     page.expectElement('a[href="/docs/en/user_manual/polls/settings#reminder"]')

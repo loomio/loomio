@@ -1549,7 +1549,7 @@ en:
     submit: Yes, Deactivate this group
   group_form:
     vote_weights_allowed: Allow vote weights
-    vote_weights_allowed_help: Allow some votes to have more weight than others
+    let_admins_set_vote_weights: Let admins give members different vote weights, so some votes count more than others
     share_this_url_with_people_who_want_to_join: Share this URL with people who want to join
     request_to_join_prompt: Request to join prompt
     default_request_to_join_prompt: 'Thanks for your interest in our group. Please introduce yourself and explain why you are requesting to join.'
@@ -2636,7 +2636,7 @@ en:
     remove_voter_and_any_vote_confirmation: Remove %{name} from this poll? This also removes any vote they cast.
     voter_page_count: "%{first}–%{last} of %{total}"
     vote_weights: Vote weights
-    give_voters_different_weights_description: Give voters different weights. Results show weighted votes or points alongside the unweighted totals.
+    use_weighted_voting: Use weighted voting. Results show both the plain and the weighted totals.
     use_vote_weights: Use vote weights
     vote_weights_off_warning: Turning off vote weights sets every voter to weight 1 and removes poll-specific weights
     issued_vote_weights_will_change: Weights for votes already issued will change.

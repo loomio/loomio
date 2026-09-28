@@ -1506,7 +1506,7 @@ pl:
     non_members_can_start_discussions: Osoby niebędące członkami mogą rozpoczynać dyskusje
     non_members_can_start_discussions_help: Zezwól osobom niebędącym członkami na rozpoczęcie dyskusji z jednego z szablonów tej grupy
     vote_weights_allowed: Zezwól na wagi głosów
-    vote_weights_allowed_help: Pozwól, aby niektóre głosy miały większą wagę niż inne
+    let_admins_set_vote_weights: Pozwól administratorom nadawać członkom głosy o różnej wadze, aby niektóre głosy liczyły się bardziej niż inne
   group_export_modal:
     title: Eksportuj dane grupy
     body: |
@@ -2998,7 +2998,7 @@ pl:
     set_each_member_default_vote_weight: Ustaw domyślną wagę głosu każdego członka
     set_all_weights_the_same: Ustaw wszystkie ciężary na takie same
     voters_will_not_be_notified: Wyborcy nie zostaną powiadomieni. Poinformuj ich o głosowaniu w inny sposób.
-    give_voters_different_weights_description: Nadaj wyborcom różną wagę. Wyniki pokazują ważone głosy lub punkty obok nieważonych sum.
+    use_weighted_voting: Użyj głosowania ważonego. Wyniki pokazują zarówno sumy zwykłe, jak i ważone.
   poll_receipts_page:
     participation_status_requires_min_votes: Pokazuje, kto był uprawniony do głosowania. Informacja o tym, czy poszczególne osoby zagłosowały, jest wyświetlana tylko wtedy, gdy zagłosowały co najmniej %{count} osoby.
     see_votes_if_quorum_reached: Jeśli głosowanie zostało zamknięte i osiągnięto kworum, zobaczysz, kto oddał głos.

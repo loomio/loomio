@@ -1514,7 +1514,7 @@ de:
     non_members_can_start_discussions: Nichtmitglieder können Diskussionen starten
     non_members_can_start_discussions_help: Erlaube Nichtmitgliedern, eine Diskussion anhand einer Vorlage dieser Gruppe zu starten
     vote_weights_allowed: Stimmgewichtung zulassen
-    vote_weights_allowed_help: Manche Stimmen sollen mehr Gewicht haben als andere.
+    let_admins_set_vote_weights: Lass Admins Mitgliedern unterschiedliche Stimmgewichte zuweisen, sodass manche Stimmen mehr zählen als andere
   group_export_modal:
     title: Gruppendaten exportieren
     body: |
@@ -3006,7 +3006,7 @@ de:
     set_each_member_default_vote_weight: Lege das Standard-Stimmengewicht jedes Mitglieds fest
     set_all_weights_the_same: Alle Gewichte gleich einstellen
     voters_will_not_be_notified: Die Wähler werden nicht benachrichtigt. Informiere sie auf anderem Weg über die Umfrage.
-    give_voters_different_weights_description: Gib Wählern unterschiedliche Gewichtungen. Die Ergebnisse zeigen die gewichteten Stimmen oder Punkte neben den ungewichteten Gesamtsummen.
+    use_weighted_voting: Nutze gewichtete Abstimmung. Die Ergebnisse zeigen sowohl die einfachen als auch die gewichteten Summen.
   poll_receipts_page:
     participation_status_requires_min_votes: Hier wird angezeigt, wer teilnahmeberechtigt war. Ob die einzelnen Personen abgestimmt haben, wird nur angezeigt, wenn mindestens %{count} Personen abgestimmt haben.
     see_votes_if_quorum_reached: Wenn die Abstimmung beendet ist und das Quorum erreicht ist, siehst du, wer seine Stimme abgegeben hat.

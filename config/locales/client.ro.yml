@@ -1500,7 +1500,7 @@ ro:
     non_members_can_start_discussions: Persoanele care nu sunt membri pot începe discuții
     non_members_can_start_discussions_help: Permiteți membrilor care nu sunt membri să înceapă o discuție dintr-unul dintre șabloanele acestui grup
     vote_weights_allowed: Permiteți ponderile voturilor
-    vote_weights_allowed_help: Permiteți ca unele voturi să aibă o greutate mai mare decât altele
+    let_admins_set_vote_weights: Permite administratorilor să acorde membrilor ponderi diferite ale voturilor, astfel încât unele voturi să conteze mai mult decât altele
   group_export_modal:
     title: Exportați datele grupului
     body: <p>Puteți descărca oricând o copie a datelor grupului dvs. <a href="https://help.loomio.org/en/user_manual/groups/data_export/">Află mai multe.</a></p><p> Este nevoie de câteva minute pentru a finaliza, în funcție de dimensiunea grupului dvs. Când este gata, veți primi un e-mail cu un link pentru a descărca fișierul.</p>
@@ -2971,7 +2971,7 @@ ro:
     set_each_member_default_vote_weight: Setați ponderea implicită a voturilor pentru fiecare membru
     set_all_weights_the_same: Setați toate greutățile la fel
     voters_will_not_be_notified: Alegătorii nu vor fi notificați. Anunțați-i despre sondaj în alt mod.
-    give_voters_different_weights_description: Acordați alegătorilor ponderi diferite. Rezultatele afișează voturile sau punctele ponderate alături de totalurile neponderate.
+    use_weighted_voting: Folosește votul ponderat. Rezultatele arată atât totalul simplu, cât și totalul ponderat.
   poll_receipts_page:
     participation_status_requires_min_votes: Aceasta arată cine a avut drept de vot. Informația despre participarea fiecărei persoane este afișată numai după ce au votat cel puțin %{count} persoane.
     see_votes_if_quorum_reached: Dacă votarea s-a închis și s-a atins cvorumul, veți vedea cine a votat.
