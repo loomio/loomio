@@ -2041,6 +2041,7 @@ pt_BR:
     vote_share_requirement: Requisito de participação nos votos
     for_the_proposal_to_pass: Para que a proposta seja aprovada, esta opção deve receber…
     for_the_poll_to_be_valid: Para que %{poll_type} seja válido, esta opção deve receber…
+    points_cast: Pontos atribuídos
   poll_common:
     superseded: Suplantada
     outdated: Desatualizado
@@ -2155,6 +2156,7 @@ pt_BR:
     equal_weight_score: Pontuação de peso igual
     assigned_weight_score: Pontuação de peso atribuída
     view_votes: Ver votos
+    equal_weight_points: Pontos de peso igual
   poll_common_attachment_form:
     label: Anexos
   poll_common_add_option:
@@ -2449,6 +2451,7 @@ pt_BR:
     number_of_choices: Número de escolhas
     how_many_ranking_positions_explained: 'Exemplo: Se definido como 3, cada eleitor pode classificar três opções. A primeira escolha recebe 3 pontos, a segunda, 2, e a terceira, 1. Quaisquer opções não classificadas recebem 0 pontos.'
     minimum_stance_choices_helptext: Quantas opções cada eleitor tem?
+    pct_of_voters_short: "% de eleitores"
   poll_meeting_time_field:
     add_time_slot: Adicionar intervalo de tempo
     new_time_slot: Nova opção de horário

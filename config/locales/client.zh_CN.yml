@@ -2100,6 +2100,7 @@ zh_CN:
     name_gte_voter_percent: "%{name} 需要至少 %{percent}% 的合格投票者"
     name_lte_score_percent: "%{name} 不得超过 %{percent}% 的投票数"
     name_lte_voter_percent: "%{name} 不得超过合格投票者的 %{percent}%"
+    points_cast: 投出的点
   poll_common:
     superseded: 被取代
     outdated: 过时的
@@ -2214,6 +2215,7 @@ zh_CN:
     equal_weight_score: 等权重得分
     assigned_weight_score: 分配权重分数
     view_votes: 查看投票
+    equal_weight_points: 等权重分
   poll_common_attachment_form:
     label: 附件
   poll_common_add_option:
@@ -2694,6 +2696,7 @@ zh_CN:
     pct_of_votes_cast: 投票百分比
     pct_of_voters: 符合投票资格的投票者百分比
     percent: 百分比
+    pct_of_voters_short: 选民百分比
   poll_meeting_time_field:
     add_time_slot: 添加时间段
     new_time_slot: 新时间段

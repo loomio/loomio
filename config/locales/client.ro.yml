@@ -1997,6 +1997,7 @@ ro:
     vote_share_requirement: Cerința privind cota de vot
     for_the_proposal_to_pass: Pentru ca propunerea să fie adoptată, această opțiune trebuie să primească…
     for_the_poll_to_be_valid: Pentru ca %{poll_type} să fie valid, această opțiune trebuie să primească…
+    points_cast: Puncte distribuite
   poll_common:
     superseded: Inlocuit
     outdated: Învechit
@@ -2111,6 +2112,7 @@ ro:
     equal_weight_score: Scor de ponderare egală
     assigned_weight_score: Scorul de pondere atribuit
     view_votes: Vedeți voturile
+    equal_weight_points: Puncte cu pondere egală
   poll_common_attachment_form:
     label: Atașamente
   poll_common_add_option:
@@ -2403,6 +2405,7 @@ ro:
     number_of_choices: Numărul de opțiuni
     how_many_ranking_positions_explained: 'Exemplu: Dacă este setat la 3, fiecare alegător poate acorda trei opțiuni în clasament. Prima opțiune primește 3 puncte, a doua primește 2, iar a treia primește 1. Orice opțiuni neclasificate primesc 0 puncte.'
     minimum_stance_choices_helptext: Câte opțiuni are fiecare alegător?
+    pct_of_voters_short: "% dintre alegători"
   poll_meeting_time_field:
     add_time_slot: Adăugați intervalul de timp
     new_time_slot: Nou interval orar

@@ -1997,6 +1997,7 @@ da:
     vote_share_requirement: Krav om stemmeandel
     for_the_proposal_to_pass: For at forslaget kan vedtages, skal dette alternativ modtage…
     for_the_poll_to_be_valid: For at %{poll_type} kan være gyldig, skal denne indstilling modtage…
+    points_cast: Afgivne point
   poll_common:
     superseded: Afløst
     outdated: Forældet
@@ -2111,6 +2112,7 @@ da:
     equal_weight_score: Lige vægtscore
     assigned_weight_score: Tildelt vægtscore
     view_votes: Se stemmer
+    equal_weight_points: Lige vægtpoint
   poll_common_attachment_form:
     label: Vedhæftede filer
   poll_common_add_option:
@@ -2403,6 +2405,7 @@ da:
     number_of_choices: Antal valgmuligheder
     how_many_ranking_positions_explained: 'Eksempel: Hvis den er indstillet til 3, kan hver vælger rangere tre muligheder. Deres førstevalg får 3 point, andetvalg får 2, og tredjevalg får 1. Alle ikke-rangerede muligheder får 0 point.'
     minimum_stance_choices_helptext: Hvor mange valgmuligheder får hver vælger?
+    pct_of_voters_short: "% af vælgerne"
   poll_meeting_time_field:
     add_time_slot: Tilføj tidsrum
     new_time_slot: Nyt tidsrum

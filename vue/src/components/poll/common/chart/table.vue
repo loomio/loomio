@@ -119,18 +119,18 @@ export default {
           th.text-right(v-if="col == 'score_percent'")
             button.poll-common-chart-table__metric(type="button" :aria-pressed="selectedMetric === col" @click="selectMetric(col)") {{ t('poll_ranked_choice_form.pct_of_points') }}
           th.text-right(v-if="col == 'votes_cast_percent'")
-            button.poll-common-chart-table__metric(type="button" :aria-pressed="selectedMetric === col" @click="selectMetric(col)") {{ t('poll_ranked_choice_form.pct_of_votes_cast') }}
+            button.poll-common-chart-table__metric(type="button" :aria-pressed="selectedMetric === col" @click="selectMetric(col)") {{ t(poll.pollType === 'proposal' ? 'poll_ranked_choice_form.pct_of_points' : 'poll_ranked_choice_form.pct_of_votes_cast') }}
           th.text-right(v-if="col == 'voter_percent'")
-            button.poll-common-chart-table__metric(type="button" :aria-pressed="selectedMetric === col" :disabled="!chartableMetric(col)" @click="selectMetric(col)") {{ t('poll_ranked_choice_form.pct_of_voters') }}
+            button.poll-common-chart-table__metric(type="button" :aria-pressed="selectedMetric === col" :disabled="!chartableMetric(col)" @click="selectMetric(col)") {{ t('poll_ranked_choice_form.pct_of_voters_short') }}
           th.text-right(v-if="col == 'score'")
-            button.poll-common-chart-table__metric(type="button" :aria-pressed="selectedMetric === col" @click="selectMetric(col)") {{ t(poll.voteWeightsEnabled ? 'poll_common.weighted_score' : 'poll_ranked_choice_form.points') }}
+            button.poll-common-chart-table__metric(type="button" :aria-pressed="selectedMetric === col" @click="selectMetric(col)") {{ t('poll_ranked_choice_form.points') }}
           th.text-right(v-if="col == 'unweighted_score'")
-            button.poll-common-chart-table__metric(type="button" :aria-pressed="selectedMetric === col" @click="selectMetric(col)") {{ t('poll_common.equal_weight_score') }}
+            button.poll-common-chart-table__metric(type="button" :aria-pressed="selectedMetric === col" @click="selectMetric(col)") {{ t('poll_common.equal_weight_points') }}
           th.text-right(v-if="col == 'rank'" v-t='"poll_ranked_choice_form.rank"')
           th.text-right(v-if="col == 'average'")
             button.poll-common-chart-table__metric(type="button" :aria-pressed="selectedMetric === col" @click="selectMetric(col)") {{ t('poll_ranked_choice_form.mean') }}
           th.text-right(v-if="col == 'votes'")
-            button.poll-common-chart-table__metric(type="button" :aria-pressed="selectedMetric === col" :disabled="!chartableMetric(col)" @click="selectMetric(col)") {{ t(poll.voteWeightsEnabled ? 'membership_card.voters' : 'poll_common.votes') }}
+            button.poll-common-chart-table__metric(type="button" :aria-pressed="selectedMetric === col" :disabled="!chartableMetric(col)" @click="selectMetric(col)") {{ t(poll.voteWeightsEnabled || poll.pollType === 'proposal' ? 'membership_card.voters' : 'poll_common.votes') }}
           th.text-right(v-if="col == 'voter_count'")
             button.poll-common-chart-table__metric(type="button" :aria-pressed="selectedMetric === col" :disabled="!chartableMetric(col)" @click="selectMetric(col)") {{ t('membership_card.voters') }}
           th.d-none.d-sm-table-cell(v-if="col == 'voters' && !hideVoters")

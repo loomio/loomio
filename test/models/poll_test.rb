@@ -316,6 +316,18 @@ class PollTest < ActiveSupport::TestCase
     refute poll.vote_weights_enabled?
   end
 
+  test "weighted proposal results pair points and voters with their percentages" do
+    poll = create_poll(group_id: @group.id, poll_type: 'proposal', vote_weights_enabled: true)
+
+    assert_equal %w[chart name score votes votes_cast_percent voter_percent voters], poll.result_columns
+    assert_equal 'poll_ranked_choice_form.points', poll.result_score_heading_key
+    assert_equal 'poll_ranked_choice_form.pct_of_points', poll.result_votes_cast_percent_heading_key
+    unweighted = create_poll(group_id: @group.id, poll_type: 'proposal')
+    assert_equal %w[chart name score votes votes_cast_percent voter_percent voters], unweighted.result_columns
+    assert_equal 'membership_card.voters', unweighted.result_votes_heading_key
+    assert_equal 'poll_ranked_choice_form.pct_of_points', unweighted.result_votes_cast_percent_heading_key
+  end
+
   test "a zero-weight vote counts toward participation and quorum but not score" do
     voters = [users(:admin), users(:user)]
     poll = create_poll(

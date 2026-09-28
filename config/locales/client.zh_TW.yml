@@ -2023,6 +2023,7 @@ zh_TW:
     vote_share_requirement: 投票份額要求
     for_the_proposal_to_pass: 為了使提案獲得通過，此選項必須獲得…
     for_the_poll_to_be_valid: 為了使 %{poll_type} 有效，此選項必須接收...
+    points_cast: 已投點數
   poll_common:
     superseded: 取代
     outdated: 過時的
@@ -2137,6 +2138,7 @@ zh_TW:
     equal_weight_score: 等權重得分
     assigned_weight_score: 分配權重分數
     view_votes: 查看投票
+    equal_weight_points: 等權重分
   poll_common_attachment_form:
     label: 附件
   poll_common_add_option:
@@ -2429,6 +2431,7 @@ zh_TW:
     number_of_choices: 選擇數量
     how_many_ranking_positions_explained: 例如：如果設定為 3，則每位投票者可以對三個選項進行排名。第一個選項得 3 分，第二個得 2 分，第三個得 1 分。任何未排名的選項均得 0 分。
     minimum_stance_choices_helptext: 每個選民有多少個選擇？
+    pct_of_voters_short: 選民百分比
   poll_meeting_time_field:
     add_time_slot: 新增時間欄位
     new_time_slot: 新時間欄位

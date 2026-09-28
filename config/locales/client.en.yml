@@ -2226,6 +2226,7 @@ en:
     for_the_proposal_to_pass: For the proposal to pass, this option must receive…
     for_the_poll_to_be_valid: For the %{poll_type} to be valid, this option must receive…
     votes_cast: Votes cast
+    points_cast: Points cast
     eligible_voters: Eligible voters
     gte_score_percent: Needs at least %{percent}% of votes cast
     gte_voter_percent: Needs at least %{percent}% of eligible voters
@@ -2238,6 +2239,7 @@ en:
   poll_common:
     weighted_score: Score
     equal_weight_score: Equal weight score
+    equal_weight_points: Equal weight points
     assigned_weight_score: Assigned weight score
     your_vote_is_requested: Your vote is requested
     superseded: Superseded
@@ -2847,6 +2849,7 @@ en:
     average: Average
     mean: Mean
     pct_of_points: "% of points"
+    pct_of_voters_short: "% of voters"
     pct_of_votes_cast: "% of votes cast"
     pct_of_voters: "% of eligible voters"
     percent: Percent

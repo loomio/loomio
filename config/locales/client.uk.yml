@@ -2023,6 +2023,7 @@ uk:
     vote_share_requirement: Вимога щодо частки голосів
     for_the_proposal_to_pass: Щоб пропозиція була прийнята, цей варіант має отримати…
     for_the_poll_to_be_valid: Щоб %{poll_type} був дійсним, цей параметр має отримати…
+    points_cast: Очки нараховані
   poll_common:
     superseded: Замінено
     outdated: Застаріла
@@ -2137,6 +2138,7 @@ uk:
     equal_weight_score: Рівний ваговий бал
     assigned_weight_score: Призначений ваговий бал
     view_votes: Переглянути голоси
+    equal_weight_points: Очки однакової ваги
   poll_common_attachment_form:
     label: Вкладення
   poll_common_add_option:
@@ -2431,6 +2433,7 @@ uk:
     number_of_choices: Кількість варіантів
     how_many_ranking_positions_explained: 'Приклад: Якщо встановлено значення 3, кожен виборець може оцінити три варіанти. Його перший вибір отримує 3 бали, другий — 2, а третій — 1. Будь-які варіанти, що не мають рейтингу, отримують 0 балів.'
     minimum_stance_choices_helptext: Скільки варіантів вибору має кожен виборець?
+    pct_of_voters_short: "% виборців"
   poll_meeting_time_field:
     add_time_slot: Додайте часовий інтервал
     new_time_slot: Новий проміжок часу

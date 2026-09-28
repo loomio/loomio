@@ -1997,6 +1997,7 @@ el:
     vote_share_requirement: Απαίτηση ποσοστού ψήφου
     for_the_proposal_to_pass: Για να εγκριθεί η πρόταση, η επιλογή αυτή πρέπει να λάβει...
     for_the_poll_to_be_valid: Για να είναι έγκυρη η %{poll_type}, αυτή η επιλογή πρέπει να λάβει…
+    points_cast: Πόντοι από ψήφους
   poll_common:
     superseded: Αντικαταστάθηκε
     outdated: Απαρχαιωμένος
@@ -2111,6 +2112,7 @@ el:
     equal_weight_score: Ίση βαθμολογία βάρους
     assigned_weight_score: Βαθμολογία βάρους που έχει ανατεθεί
     view_votes: Δείτε τις ψήφους
+    equal_weight_points: Ίσοι βαθμοί βάρους
   poll_common_attachment_form:
     label: Συνημμένα
   poll_common_add_option:
@@ -2403,6 +2405,7 @@ el:
     number_of_choices: Αριθμός επιλογών
     how_many_ranking_positions_explained: 'Παράδειγμα: Εάν οριστεί σε 3, κάθε ψηφοφόρος μπορεί να κατατάξει τρεις επιλογές. Η πρώτη επιλογή του λαμβάνει 3 βαθμούς, η δεύτερη 2 και η τρίτη 1. Οποιεσδήποτε επιλογές που δεν έχουν καταταχθεί λαμβάνουν 0 βαθμούς.'
     minimum_stance_choices_helptext: Πόσες επιλογές έχει κάθε ψηφοφόρος;
+    pct_of_voters_short: "% των ψηφοφόρων"
   poll_meeting_time_field:
     add_time_slot: Προσθήκη χρονοθυρίδας
     new_time_slot: Νέο χρονικό διάστημα

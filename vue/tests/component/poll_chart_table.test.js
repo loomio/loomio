@@ -13,7 +13,7 @@ vi.mock('vue-i18n', async importOriginal => ({
 import ChartTable from '@/components/poll/common/chart/table.vue';
 
 describe('weighted poll results table', () => {
-  it('shows the equal and assigned weight scores in the same row', () => {
+  it('shows equal weight points and weighted points in the same row', () => {
     const poll = {
       voteWeightsEnabled: true,
       closedAt: false,
@@ -33,13 +33,13 @@ describe('weighted poll results table', () => {
     });
 
     expect(wrapper.findAll('thead th').map(cell => cell.text())).toEqual([
-      'common.option', 'poll_common.equal_weight_score', 'poll_common.weighted_score'
+      'common.option', 'poll_common.equal_weight_points', 'poll_ranked_choice_form.points'
     ]);
     expect(wrapper.findAll('tbody tr')).toHaveLength(1);
     expect(wrapper.findAll('tbody td').slice(-2).map(cell => cell.text())).toEqual(['2', '2.83']);
   });
 
-  it('shows voters and score on proposals without an equal weight score column', () => {
+  it('shows points and voters on weighted proposals', () => {
     const poll = {
       voteWeightsEnabled: true,
       pollType: 'proposal',
@@ -47,8 +47,8 @@ describe('weighted poll results table', () => {
       chartType: 'bar',
       chartColumn: 'score_percent',
       pieSlices: () => [],
-      resultColumns: ['name', 'votes', 'score'],
-      results: [{id: 1, name: 'Agree', name_format: 'plain', voter_count: 2, score: '2.83'}]
+      resultColumns: ['name', 'score', 'votes', 'votes_cast_percent', 'voter_percent'],
+      results: [{id: 1, name: 'Agree', name_format: 'plain', voter_count: 2, score: '2.83', score_percent: 75, voter_percent: 50}]
     };
 
     const wrapper = shallowMount(ChartTable, {
@@ -60,9 +60,10 @@ describe('weighted poll results table', () => {
     });
 
     expect(wrapper.findAll('thead th').map(cell => cell.text())).toEqual([
-      'common.option', 'membership_card.voters', 'poll_common.weighted_score'
+      'common.option', 'poll_ranked_choice_form.points', 'membership_card.voters',
+      'poll_ranked_choice_form.pct_of_points', 'poll_ranked_choice_form.pct_of_voters_short'
     ]);
-    expect(wrapper.findAll('tbody td').slice(-2).map(cell => cell.text())).toEqual(['2', '2.83']);
+    expect(wrapper.findAll('tbody td').slice(1).map(cell => cell.text())).toEqual(['2.83', '2', '75%', '50%']);
   });
 
   it('switches a proposal pie from weighted score to voter share when its header is clicked', async () => {

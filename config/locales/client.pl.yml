@@ -2020,6 +2020,7 @@ pl:
     vote_share_requirement: Wymagania dotyczące udziału w głosowaniu
     for_the_proposal_to_pass: Aby propozycja została przyjęta, opcja ta musi otrzymać…
     for_the_poll_to_be_valid: Aby %{poll_type} było ważne, ta opcja musi otrzymać…
+    points_cast: Przyznane punkty
   poll_common:
     superseded: zastąpione
     outdated: Przestarzały
@@ -2134,6 +2135,7 @@ pl:
     equal_weight_score: Wynik równej wagi
     assigned_weight_score: Przypisany wynik wagi
     view_votes: Zobacz głosy
+    equal_weight_points: Punkty o równej wadze
   poll_common_attachment_form:
     label: Załączniki
   poll_common_add_option:
@@ -2428,6 +2430,7 @@ pl:
     number_of_choices: Liczba wyborów
     how_many_ranking_positions_explained: 'Przykład: Jeśli ustawisz wartość na 3, każdy wyborca może ocenić trzy opcje. Pierwsza opcja otrzyma 3 punkty, druga 2, a trzecia 1. Wszystkie opcje niesklasyfikowane otrzymają 0 punktów.'
     minimum_stance_choices_helptext: Ile możliwości ma każdy wyborca?
+    pct_of_voters_short: "% wyborców"
   poll_meeting_time_field:
     add_time_slot: Dodaj przedział czasowy
     new_time_slot: Nowy przedział czasowy

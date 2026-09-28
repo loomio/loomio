@@ -1997,6 +1997,7 @@ tr:
     vote_share_requirement: Oy payı gereksinimi
     for_the_proposal_to_pass: Önerinin kabul edilebilmesi için bu seçeneğin…
     for_the_poll_to_be_valid: "%{poll_type} seçeneğinin geçerli olması için bu seçeneğin… alması gerekir."
+    points_cast: Verilen puanlar
   poll_common:
     superseded: Değiştirildi
     outdated: Modası geçmiş
@@ -2111,6 +2112,7 @@ tr:
     equal_weight_score: Eşit ağırlıklı puan
     assigned_weight_score: Atanan ağırlık puanı
     view_votes: Oyları görüntüle
+    equal_weight_points: Eşit ağırlıklı puanlar
   poll_common_attachment_form:
     label: Ekler
   poll_common_add_option:
@@ -2403,6 +2405,7 @@ tr:
     number_of_choices: Seçim sayısı
     how_many_ranking_positions_explained: 'Örnek: 3 olarak ayarlanırsa, her seçmen üç seçeneği sıralayabilir. İlk tercih 3 puan, ikinci tercih 2 puan ve üçüncü tercih 1 puan alır. Sıralanmamış seçenekler 0 puan alır.'
     minimum_stance_choices_helptext: Her seçmene kaç seçenek veriliyor?
+    pct_of_voters_short: seçmenlerin yüzdesi
   poll_meeting_time_field:
     add_time_slot: Zaman aralığı ekle
     new_time_slot: Yeni zaman dilimi

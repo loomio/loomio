@@ -2126,6 +2126,7 @@ be:
     name_gte_voter_percent: "%{name} патрабуе як мінімум %{percent}% выбаршчыкаў, якія маюць права голасу"
     name_lte_score_percent: "%{name} не павінен перавышаць %{percent}% аддадзеных галасоў"
     name_lte_voter_percent: "%{name} не павінна перавышаць %{percent}% ад колькасці выбаршчыкаў, якія маюць права голасу"
+    points_cast: Ачкі
   poll_common:
     your_vote_is_requested: Запытваецца ваш голас
     superseded: Заменена
@@ -2240,6 +2241,7 @@ be:
     equal_weight_score: Роўны вагавы бал
     assigned_weight_score: Прызначаны бал вагі
     view_votes: Праглядзець галасы
+    equal_weight_points: Ачкі з аднолькавай вагой
   poll_common_attachment_form:
     label: Укладанні
   poll_common_add_option:
@@ -2735,6 +2737,7 @@ be:
     pct_of_votes_cast: "% аддадзеных галасоў"
     pct_of_voters: "% выбаршчыкаў, якія маюць права голасу"
     percent: Працэнт
+    pct_of_voters_short: "% выбаршчыкаў"
   poll_meeting_time_field:
     add_time_slot: Дадаць часовы інтэрвал
     new_time_slot: Новы часовы інтэрвал

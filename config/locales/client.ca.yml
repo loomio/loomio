@@ -2020,6 +2020,7 @@ ca:
     vote_share_requirement: Requisit de quota de vot
     for_the_proposal_to_pass: Perquè la proposta sigui aprovada, aquesta opció ha de rebre...
     for_the_poll_to_be_valid: Perquè %{poll_type} sigui vàlid, aquesta opció ha de rebre…
+    points_cast: Punts emesos
   poll_common:
     superseded: Substituït
     outdated: Antiquat
@@ -2134,6 +2135,7 @@ ca:
     equal_weight_score: Puntuació de pes igual
     assigned_weight_score: Puntuació de pes assignada
     view_votes: Veure vots
+    equal_weight_points: Punts de pes igual
   poll_common_attachment_form:
     label: Adjunts
   poll_common_add_option:
@@ -2428,6 +2430,7 @@ ca:
     number_of_choices: Nombre d'opcions
     how_many_ranking_positions_explained: 'Exemple: Si s''estableix a 3, cada votant pot valorar tres opcions. La primera opció obté 3 punts, la segona 2 i la tercera 1. Les opcions sense valorar obtenen 0 punts.'
     minimum_stance_choices_helptext: Quantes opcions té cada votant?
+    pct_of_voters_short: "% de votants"
   poll_meeting_time_field:
     add_time_slot: Afegeix una franja horària
     new_time_slot: Nova franja horària

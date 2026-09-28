@@ -2,7 +2,7 @@ require "test_helper"
 
 class PollMarkdownResultsServiceTest < ActiveSupport::TestCase
   SIMPLE_COLUMNS = {
-    "proposal" => %w[chart name votes votes_cast_percent voter_percent voters],
+    "proposal" => %w[chart name score votes votes_cast_percent voter_percent voters],
     "check" => %w[chart name voter_percent voter_count voters],
     "count" => %w[chart name target_percent voter_count voters],
     "poll" => %w[chart name score_percent voter_count voters],
@@ -21,6 +21,9 @@ class PollMarkdownResultsServiceTest < ActiveSupport::TestCase
         poll_type: poll_type,
         result_columns: columns,
         result_score_heading_key: 'poll_ranked_choice_form.points',
+        result_votes_cast_percent_heading_key: poll_type == 'proposal' ? 'poll_ranked_choice_form.pct_of_points' : 'poll_ranked_choice_form.pct_of_votes_cast',
+        result_voter_percent_heading_key: 'poll_ranked_choice_form.pct_of_voters_short',
+        result_unweighted_score_heading_key: 'poll_common.equal_weight_points',
         result_votes_heading_key: 'poll_common.votes',
         anonymous?: false,
         has_variable_score: %w[score dot_vote ranked_choice].include?(poll_type),

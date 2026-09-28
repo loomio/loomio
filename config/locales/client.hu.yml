@@ -2004,6 +2004,7 @@ hu:
     vote_share_requirement: Szavazati arány követelmény
     for_the_proposal_to_pass: Ahhoz, hogy a javaslat elfogadásra kerüljön, ennek a lehetőségnek meg kell kapnia…
     for_the_poll_to_be_valid: Ahhoz, hogy a %{poll_type} érvényes legyen, ennek az opciónak a következőt kell kapnia…
+    points_cast: Leadott pontok
   poll_common:
     superseded: Felváltva
     outdated: Elavult
@@ -2118,6 +2119,7 @@ hu:
     equal_weight_score: Egyenlő súlypontszám
     assigned_weight_score: Hozzárendelt súlypontszám
     view_votes: Szavazatok megtekintése
+    equal_weight_points: Egyenlő súlypontok
   poll_common_attachment_form:
     label: Mellékletek
   poll_common_add_option:
@@ -2410,6 +2412,7 @@ hu:
     number_of_choices: Választási lehetőségek száma
     how_many_ranking_positions_explained: 'Példa: Ha 3-ra van állítva, minden szavazó három lehetőséget rangsorolhat. Az első választás 3 pontot, a második 2-t, a harmadik pedig 1-et kap. A rangsorolatlan lehetőségek 0 pontot kapnak.'
     minimum_stance_choices_helptext: Hány választási lehetőség közül választhat minden szavazó?
+    pct_of_voters_short: a szavazók százalékában
   poll_meeting_time_field:
     add_time_slot: Idősáv hozzáadása
     new_time_slot: Új időrés

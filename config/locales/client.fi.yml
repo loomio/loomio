@@ -1997,6 +1997,7 @@ fi:
     vote_share_requirement: Ääniosuusvaatimus
     for_the_proposal_to_pass: Jotta ehdotus hyväksyttäisiin, tämän vaihtoehdon on saatava…
     for_the_poll_to_be_valid: Jotta %{poll_type} olisi kelvollinen, tämän vaihtoehdon on vastaanotettava…
+    points_cast: Annetut pisteet
   poll_common:
     superseded: Korvattu
     outdated: Vanhentunut
@@ -2111,6 +2112,7 @@ fi:
     equal_weight_score: Tasapainopisteet
     assigned_weight_score: Annettu painopistemäärä
     view_votes: Näytä äänet
+    equal_weight_points: Yhtä painopisteet
   poll_common_attachment_form:
     label: Liitteet
   poll_common_add_option:
@@ -2403,6 +2405,7 @@ fi:
     number_of_choices: Vaihtoehtojen määrä
     how_many_ranking_positions_explained: 'Esimerkki: Jos arvoksi asetetaan 3, jokainen äänestäjä voi arvioida kolme vaihtoehtoa. Ensimmäinen vaihtoehto saa 3 pistettä, toinen 2 ja kolmas 1. Arvioimattomat vaihtoehdot saavat 0 pistettä.'
     minimum_stance_choices_helptext: Kuinka monta vaihtoehtoa kukin äänestäjä saa?
+    pct_of_voters_short: Äänestäjien prosenttiosuus
   poll_meeting_time_field:
     add_time_slot: Lisää aikaväli
     new_time_slot: Uusi aikaväli

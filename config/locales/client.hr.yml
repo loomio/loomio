@@ -1997,6 +1997,7 @@ hr:
     vote_share_requirement: Zahtjev za udio glasova
     for_the_proposal_to_pass: Da bi prijedlog prošao, ova opcija mora dobiti…
     for_the_poll_to_be_valid: Da bi %{poll_type} bio valjan, ova opcija mora primiti…
+    points_cast: Dodijeljeni bodovi
   poll_common:
     superseded: Zamijenjeno
     outdated: Zastario
@@ -2111,6 +2112,7 @@ hr:
     equal_weight_score: Jednak rezultat težine
     assigned_weight_score: Dodijeljena težina
     view_votes: Prikaži glasove
+    equal_weight_points: Bodovi jednake težine
   poll_common_attachment_form:
     label: Prilozi
   poll_common_add_option:
@@ -2403,6 +2405,7 @@ hr:
     number_of_choices: Broj izbora
     how_many_ranking_positions_explained: 'Primjer: Ako je postavljeno na 3, svaki glasač može rangirati tri opcije. Njihov prvi izbor dobiva 3 boda, drugi dobiva 2, a treći dobiva 1. Sve nerangirane opcije dobivaju 0 bodova.'
     minimum_stance_choices_helptext: Koliko izbora ima svaki birač?
+    pct_of_voters_short: "% birača"
   poll_meeting_time_field:
     add_time_slot: Dodajte vremenski odsjek
     new_time_slot: Novi termin

@@ -333,7 +333,7 @@ class Poll < ApplicationRecord
   def result_columns
     columns = case poll_type
     when 'proposal'
-      %w[chart name votes votes_cast_percent voter_percent voters]
+      vote_weights_enabled? ? %w[chart name votes votes_cast_percent voter_percent voters] : %w[chart name score votes votes_cast_percent voter_percent voters]
     when 'check'
       %w[chart name voter_percent voter_count voters]
     when 'count'
@@ -363,7 +363,7 @@ class Poll < ApplicationRecord
     columns = columns.dup
     if one_point_choices?
       voter_column = columns.include?('votes') ? 'votes' : 'voter_count'
-      columns.insert(columns.index(voter_column) + 1, 'score')
+      columns.insert(columns.index(voter_column) + (poll_type == 'proposal' ? 0 : 1), 'score')
       return columns
     end
 
@@ -389,13 +389,23 @@ class Poll < ApplicationRecord
   end
 
   def result_score_heading_key
-    return 'poll_ranked_choice_form.points' unless vote_weights_enabled?
+    'poll_ranked_choice_form.points'
+  end
 
-    'poll_common.weighted_score'
+  def result_votes_cast_percent_heading_key
+    poll_type == 'proposal' ? 'poll_ranked_choice_form.pct_of_points' : 'poll_ranked_choice_form.pct_of_votes_cast'
+  end
+
+  def result_voter_percent_heading_key
+    'poll_ranked_choice_form.pct_of_voters_short'
+  end
+
+  def result_unweighted_score_heading_key
+    'poll_common.equal_weight_points'
   end
 
   def result_votes_heading_key
-    vote_weights_enabled? ? 'membership_card.voters' : 'poll_common.votes'
+    vote_weights_enabled? || poll_type == 'proposal' ? 'membership_card.voters' : 'poll_common.votes'
   end
 
   def results

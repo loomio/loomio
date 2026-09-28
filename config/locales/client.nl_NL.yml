@@ -2020,6 +2020,7 @@ nl_NL:
     vote_share_requirement: Stemmenaandeelvereiste
     for_the_proposal_to_pass: Om het voorstel te laten slagen, moet deze optie…
     for_the_poll_to_be_valid: Om %{poll_type} geldig te laten zijn, moet deze optie het volgende ontvangen...
+    points_cast: Toegekende punten
   poll_common:
     superseded: Vervangen
     outdated: Verouderd
@@ -2134,6 +2135,7 @@ nl_NL:
     equal_weight_score: Gelijke gewichtsscore
     assigned_weight_score: Toegekende gewichtsscore
     view_votes: Bekijk stemmen
+    equal_weight_points: Gelijke gewichtspunten
   poll_common_attachment_form:
     label: Bijlagen
   poll_common_add_option:
@@ -2428,6 +2430,7 @@ nl_NL:
     number_of_choices: Aantal keuzes
     how_many_ranking_positions_explained: 'Voorbeeld: Als dit op 3 staat, kan elke kiezer drie opties beoordelen. De eerste keuze krijgt 3 punten, de tweede 2 en de derde 1. Alle opties zonder beoordeling krijgen 0 punten.'
     minimum_stance_choices_helptext: Hoeveel keuzes heeft elke kiezer?
+    pct_of_voters_short: "% van de kiezers"
   poll_meeting_time_field:
     add_time_slot: Tijdvenster toevoegen
     new_time_slot: Nieuw tijdvenster

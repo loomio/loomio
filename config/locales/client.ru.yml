@@ -1997,6 +1997,7 @@ ru:
     vote_share_requirement: Требование к доле голосов
     for_the_proposal_to_pass: Для того чтобы предложение было принято, этот вариант должен получить…
     for_the_poll_to_be_valid: Чтобы %{poll_type} был действительным, этот параметр должен получить…
+    points_cast: Начисленные баллы
   poll_common:
     superseded: Заменено
     outdated: Устаревший
@@ -2111,6 +2112,7 @@ ru:
     equal_weight_score: Показатель равного веса
     assigned_weight_score: Присвоенный весовой балл
     view_votes: Посмотреть голоса
+    equal_weight_points: Баллы равного веса
   poll_common_attachment_form:
     label: Вложения
   poll_common_add_option:
@@ -2403,6 +2405,7 @@ ru:
     number_of_choices: Количество вариантов выбора
     how_many_ranking_positions_explained: 'Пример: если установлено значение 3, каждый избиратель может оценить три варианта. Первый вариант получает 3 балла, второй — 2, а третий — 1. Любые варианты без оценки получают 0 баллов.'
     minimum_stance_choices_helptext: Сколько вариантов выбора есть у каждого избирателя?
+    pct_of_voters_short: "% избирателей"
   poll_meeting_time_field:
     add_time_slot: Добавить временной интервал
     new_time_slot: Новый временной интервал

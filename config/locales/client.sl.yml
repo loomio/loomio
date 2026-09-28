@@ -1997,6 +1997,7 @@ sl:
     vote_share_requirement: Zahteva po deležu glasov
     for_the_proposal_to_pass: Da bi bil predlog sprejet, mora ta možnost prejeti ...
     for_the_poll_to_be_valid: Da bi bila %{poll_type} veljavna, mora ta možnost prejeti…
+    points_cast: Oddane točke
   poll_common:
     superseded: Nadomeščeno
     outdated: Zastarelo
@@ -2111,6 +2112,7 @@ sl:
     equal_weight_score: Enaka teža
     assigned_weight_score: Dodeljena teža
     view_votes: Ogled glasov
+    equal_weight_points: Točke enake teže
   poll_common_attachment_form:
     label: Priloge
   poll_common_add_option:
@@ -2403,6 +2405,7 @@ sl:
     number_of_choices: Število izbir
     how_many_ranking_positions_explained: 'Primer: Če je nastavljeno na 3, lahko vsak volivec razvrsti tri možnosti. Njegova prva izbira dobi 3 točke, druga 2 in tretja 1. Vse nerazvrščene možnosti dobijo 0 točk.'
     minimum_stance_choices_helptext: Koliko izbir ima vsak volivec?
+    pct_of_voters_short: "% volivcev"
   poll_meeting_time_field:
     add_time_slot: Dodajte časovni okvir
     new_time_slot: Nov termin

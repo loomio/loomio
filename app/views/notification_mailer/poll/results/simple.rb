@@ -44,11 +44,11 @@ class Views::NotificationMailer::Poll::Results::Simple < Views::ApplicationMaile
     when 'name'
       th(class: "email-table-left") { plain t('common.option') }
     when 'votes_cast_percent'
-      th(class: "email-table-right") { plain t('poll_ranked_choice_form.pct_of_votes_cast') }
+      th(class: "email-table-right") { plain t(@poll.result_votes_cast_percent_heading_key) }
     when 'score_percent'
       th(class: "email-table-right") { plain t('poll_ranked_choice_form.pct_of_points') }
     when 'voter_percent'
-      th(class: "email-table-right") { plain t('poll_ranked_choice_form.pct_of_voters') }
+      th(class: "email-table-right") { plain t(@poll.result_voter_percent_heading_key) }
     when 'target_percent'
       th(class: "email-table-right") { plain t('poll_count_form.pct_of_target') }
     when 'rank'
@@ -56,7 +56,7 @@ class Views::NotificationMailer::Poll::Results::Simple < Views::ApplicationMaile
     when 'score'
       th(class: "email-table-right") { plain t(@poll.result_score_heading_key) }
     when 'unweighted_score'
-      th(class: "email-table-right") { plain t('poll_common.equal_weight_score') }
+      th(class: "email-table-right") { plain t(@poll.result_unweighted_score_heading_key) }
     when 'average'
       th(class: "email-table-right") { plain t('poll_ranked_choice_form.mean') }
     when 'votes'

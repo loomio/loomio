@@ -19,15 +19,15 @@ class Views::Chatbot::Matrix::Simple < Views::Chatbot::Base
             when 'score_percent'
               th { t('poll_ranked_choice_form.pct_of_points') }
             when 'votes_cast_percent'
-              th { t('poll_ranked_choice_form.pct_of_votes_cast') }
+              th { t(@poll.result_votes_cast_percent_heading_key) }
             when 'voter_percent'
-              th { t('poll_ranked_choice_form.pct_of_voters') }
+              th { t(@poll.result_voter_percent_heading_key) }
             when 'rank'
               th { t('poll_ranked_choice_form.rank') }
             when 'score'
               th { t(@poll.result_score_heading_key) }
             when 'unweighted_score'
-              th { t('poll_common.equal_weight_score') }
+              th { t(@poll.result_unweighted_score_heading_key) }
             when 'average'
               th { t('poll_ranked_choice_form.mean') }
             when 'stv_status'
