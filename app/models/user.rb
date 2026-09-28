@@ -37,6 +37,8 @@ class User < ApplicationRecord
   before_save :set_legal_accepted_at, if: :legal_accepted
 
   validates :email, presence: true, email: true, length: { maximum: 200 }
+  # 0-6 are weekdays (Sunday first), 7 is every day, 8 every second day, nil never.
+  validates :email_catch_up_day, inclusion: { in: 0..8 }, allow_nil: true
 
   validates :name,               presence: true, if: :require_valid_signup
   validates :legal_accepted,     presence: true, if: :require_legal_accepted

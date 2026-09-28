@@ -1,6 +1,4 @@
 class EmailActionsController < AuthenticateByUnsubscribeTokenController
-  CATCH_UP_DAYS = (0..8).map(&:to_s).freeze
-
   before_action :protect_token_url, only: [:unsubscribe, :catch_up, :set_catch_up, :set_group_volume, :set_discussion_volume]
 
   def unsubscribe
@@ -27,7 +25,7 @@ class EmailActionsController < AuthenticateByUnsubscribeTokenController
 
   def set_catch_up
     choice = params.require(:email_catch_up_day)
-    return respond_with_error 422 unless choice == 'never' || CATCH_UP_DAYS.include?(choice)
+    return respond_with_error 422 unless Views::EmailActions::CatchUp::DAY_OPTIONS.to_h.key?(choice)
 
     current_user.update!(email_catch_up_day: choice == 'never' ? nil : choice.to_i)
     redirect_to email_actions_catch_up_path(unsubscribe_token: params[:unsubscribe_token]), notice: t(:'email_actions.catch_up_saved')

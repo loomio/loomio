@@ -332,4 +332,11 @@ class UserTest < ActiveSupport::TestCase
   def restore_env(key, value)
     value.nil? ? ENV.delete(key) : ENV[key] = value
   end
+
+  test "email catch-up day must be a known schedule" do
+    @user.email_catch_up_day = 9
+    assert_not @user.valid?
+    @user.email_catch_up_day = nil
+    assert @user.valid?
+  end
 end
