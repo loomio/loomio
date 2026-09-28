@@ -417,10 +417,6 @@ class Poll < ApplicationRecord
     result_columns.excluding('chart', 'voters').index_with { |column| result_heading_key(column) }
   end
 
-  def vote_weights_supported?
-    !anonymous? && !%w[stv meeting].include?(poll_type) && (vote_weights_enabled? || group.blank? || group.vote_weights_allowed?)
-  end
-
   def member_vote_weights_by_user_id(user_ids)
     return {} unless group_id
 
@@ -727,7 +723,6 @@ class Poll < ApplicationRecord
 
     errors.add(:vote_weights_enabled, :invalid)
   end
-
 
   def closes_in_future
     return if closed_at

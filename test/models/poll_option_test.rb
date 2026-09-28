@@ -192,7 +192,6 @@ class PollOptionTest < ActiveSupport::TestCase
 
     poll.update_counts!
 
-    refute poll.vote_weights_supported?
     assert_equal 1, option.reload.total_score
   end
 end

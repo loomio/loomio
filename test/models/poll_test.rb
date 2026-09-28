@@ -503,7 +503,6 @@ class PollTest < ActiveSupport::TestCase
   test "direct polls can enable vote weights without a group setting" do
     poll = Poll.new(poll_params(topic: topics(:direct_topic), author: @admin, vote_weights_enabled: true))
 
-    assert poll.vote_weights_supported?
     assert poll.valid?
     assert_equal false, poll.group.vote_weights_allowed?
   end
