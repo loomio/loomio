@@ -1,5 +1,4 @@
 class Membership < ApplicationRecord
-
   class InvitationAlreadyUsed < StandardError
     attr_accessor :membership
     def initialize(obj)
