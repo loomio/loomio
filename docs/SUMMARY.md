@@ -52,7 +52,6 @@
   - [Vote Share Requirements](user_manual/polls/vote_share_requirements/index.md)
   - [Settings](user_manual/polls/settings/index.md)
   - [Invite to vote](user_manual/polls/inviting_people/index.md)
-  - [Outcomes](user_manual/polls/outcomes/index.md)
   - [Poll templates](user_manual/polls/poll_templates/index.md)
   - [Anonymous voting](user_manual/polls/anonymous_voting/index.md)
 

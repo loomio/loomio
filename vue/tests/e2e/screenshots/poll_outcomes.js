@@ -16,27 +16,16 @@ module.exports = {
 
     openOutcome(page);
     page.waitFor('.poll-common-set-outcome-panel');
-    screenshot.captureElement(
-      'polls/outcomes/outcome_prompt',
-      '.poll-common-set-outcome-panel',
-      {width: 1100, height: 700}
-    );
-  },
-
-  'outcome_statement': (test) => {
-    const page = pageHelper(test);
-    const screenshot = manualScreenshot(test);
-
-    openOutcome(page);
-    page.clickAndWait('.poll-common-set-outcome-panel__submit', '.poll-common-outcome-modal');
-    page.fillIn(
-      '.poll-common-outcome-form__statement [contenteditable=true]',
-      'The cooperative approved the six-week returnable bottle trial. Jamie will confirm the cafe collection schedule, and we will review return rates and washing time when the trial ends.'
-    );
-    screenshot.captureElement(
-      'polls/outcomes/outcome_statement',
-      '.poll-common-outcome-modal',
-      {width: 1280, height: 900}
+    screenshot.captureRegion(
+      'polls/intro_to_decisions/outcome_prompt',
+      ['.poll-created .poll-common-card__title', '.poll-created .poll-common-chart-panel', '.poll-created .action-dock'],
+      {
+        padding: 32,
+        width: 1200,
+        height: 1800,
+        clearSelection: true,
+        spotlight: {selector: '.poll-common-set-outcome-panel', padding: 16, radius: 16, opacity: 0.4, outlineWidth: 0}
+      }
     );
   },
 
@@ -47,10 +36,16 @@ module.exports = {
     openOutcome(page, true);
     page.waitFor('.poll-common-outcome-panel');
     page.expectText('.poll-common-outcome-panel', 'Jamie will confirm the cafe collection schedule');
-    screenshot.captureElement(
-      'polls/outcomes/outcome_published',
-      '.poll-common-outcome-panel',
-      {width: 1100, height: 800}
+    screenshot.captureRegion(
+      'polls/intro_to_decisions/outcome_published',
+      ['.poll-created .poll-common-card__title', '.poll-created .poll-common-chart-panel', '.poll-created .action-dock'],
+      {
+        padding: 32,
+        width: 1200,
+        height: 1800,
+        clearSelection: true,
+        spotlight: {selector: '.poll-common-outcome-panel', padding: 16, radius: 16, opacity: 0.4, outlineWidth: 0}
+      }
     );
   }
 };

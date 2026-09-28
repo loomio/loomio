@@ -118,7 +118,7 @@ A first process should demonstrate the complete pattern:
 2. Invite discussion or questions when they are needed.
 3. Start the appropriate proposal or poll.
 4. Remind people who have not participated when necessary.
-5. Publish an [outcome](/en/user_manual/polls/outcomes) stating what was decided and what happens next.
+5. Publish an [outcome](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome) stating what was decided and what happens next.
 
 The outcome closes the loop and creates a record that members can return to later. Afterward, ask what worked, adjust the process, and choose the next recurring piece of work to run in Loomio.
 

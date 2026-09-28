@@ -723,6 +723,18 @@ module Dev::Scenarios::OatmilkCooperative
   def setup_manual_oatmilk_outcome
     _group, coordinator, discussion = create_manual_oatmilk_cooperative
     poll = discussion.polls.find_by!(title: 'Run a six-week returnable bottle trial')
+    # The outcome reports an approval, so the closed results need votes that support it.
+    {
+      coordinator => ['agree', 'The trial budget is practical and includes the expected washing costs.'],
+      User.find_by!(email: 'samira@oatmilk.example') => ['agree', 'The production plan includes enough time for washing checks.'],
+      User.find_by!(email: 'alex@oatmilk.example') => ['abstain', 'I will support whatever the production team decides.']
+    }.each do |voter, (option, reason)|
+      StanceService.update(
+        stance: Stance.find_by!(poll: poll, participant: voter, latest: true),
+        actor: voter,
+        params: {choice: {poll.poll_options.find_by!(icon: option).name => 1}, reason: reason}
+      )
+    end
     PollService.close(poll: poll, actor: coordinator)
 
     if params[:published] == '1'
