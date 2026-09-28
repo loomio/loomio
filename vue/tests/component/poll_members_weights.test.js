@@ -67,4 +67,20 @@ describe('poll voter bulk weights', () => {
 
     expect(mocks.patch).toHaveBeenCalledWith('stances/reset_weights', {poll_id: 42, mode: 'value', weight: '2.33'});
   });
+
+  it('shows the weight the server saved rather than the typed value', async () => {
+    mocks.patch.mockResolvedValue({stances: [{id: 9, weight: '1.5'}]});
+    const user = {id: 1};
+    const state = {
+      poll: {id: 42}, weightUser: user, weightValue: '1.50', weightsSaving: false, weightDialog: true,
+      stanceIdsByUserId: {1: 9}, weightsByUserId: {1: '1'}
+    };
+
+    PollMembers.methods.saveWeight.call(state);
+    await flushPromises();
+
+    expect(mocks.patch).toHaveBeenCalledWith('stances/9/set_weight', {weight: '1.50'});
+    expect(state.weightsByUserId[1]).toBe('1.5');
+    expect(state.weightDialog).toBe(false);
+  });
 });

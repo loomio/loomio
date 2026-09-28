@@ -103,8 +103,10 @@ export default {
       if (this.weightsSaving || !voteWeightValid(this.weightValue)) return;
       const user = this.weightUser;
       this.weightsSaving = true;
-      Records.remote.patch(`stances/${this.stanceIdsByUserId[user.id]}/set_weight`, {weight: this.weightValue}).then(() => Records.polls.remote.fetchById(this.poll.id)).then(() => {
-        this.weightsByUserId[user.id] = this.weightValue;
+      Records.remote.patch(`stances/${this.stanceIdsByUserId[user.id]}/set_weight`, {weight: this.weightValue}).then(data => {
+        this.weightsByUserId[user.id] = data.stances[0].weight;
+        return Records.polls.remote.fetchById(this.poll.id);
+      }).then(() => {
         this.weightDialog = false;
         Flash.success('poll_common_form.vote_weights_updated');
       }).catch(error => {
@@ -236,10 +238,8 @@ export default {
         this.isGroupAdmin = this.toHash(data.meta.group_admin_ids);
         this.isTopicAdmin = this.toHash(data.meta.topic_admin_ids);
         if (this.canManageWeights) {
-          Object.assign(this.stanceIdsByUserId, data.meta.stance_ids_by_user_id || {});
-          Object.entries(data.meta.weights_by_user_id || {}).forEach(([id, weight]) => {
-            if (!(id in this.weightsByUserId)) this.weightsByUserId[id] = String(weight);
-          });
+          Object.assign(this.stanceIdsByUserId, data.meta.stance_ids_by_user_id);
+          Object.assign(this.weightsByUserId, data.meta.weights_by_user_id);
         }
         this.userIds = map(data.users, 'id');
         this.updateStances();
