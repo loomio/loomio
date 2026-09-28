@@ -38,7 +38,7 @@ const canMoveTo = (topic) => {
 const updateResults = () => {
   const frag = searchFragment.value.toLowerCase();
   searchResults.value = Records.topics.collection.chain()
-    .find({groupId: groupId.value, topicableType: 'Discussion'})
+    .find({groupId: groupId.value, topicableType: 'Discussion', discardedAt: null})
     .where(t => {
       if (!canMoveTo(t)) { return false; }
       if (!frag) { return true; }

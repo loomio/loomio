@@ -276,6 +276,27 @@ class Api::V1::GroupsControllerTest < ActionController::TestCase
       post :export_csv, params: { id: @group.id }
     end
     assert_response :forbidden
+
+    assert_no_enqueued_jobs(only: GroupExportHtmlWorker) do
+      post :export_html, params: { id: @group.id }
+    end
+    assert_response :forbidden
+  end
+
+  test "only group admins can queue an HTML export" do
+    @group.add_member!(@user)
+    sign_in @user
+
+    assert_no_enqueued_jobs(only: GroupExportHtmlWorker) do
+      post :export_html, params: { id: @group.id }
+    end
+    assert_response :forbidden
+
+    @group.add_admin!(@user)
+    assert_enqueued_with(job: GroupExportHtmlWorker, args: [@group.id, @user.id]) do
+      post :export_html, params: { id: @group.id }
+    end
+    assert_response :success
   end
 
   test "destroy warns and discards without scheduling permanent deletion" do

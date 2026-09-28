@@ -51,6 +51,12 @@ class PollTest < ActiveSupport::TestCase
     ), actor: @admin)
   end
 
+  test "totals numeric poll scores stored as JSON strings or numbers" do
+    poll = Poll.new(stance_counts: ["1.25", 2, "0.75"])
+
+    assert_equal BigDecimal("4"), poll.total_score
+  end
+
   test "destroying a poll's topic destroys the poll (no orphaned topic_id)" do
     poll = create_poll
     topic = poll.topic

@@ -148,11 +148,13 @@ class GroupsControllerTest < ActionController::TestCase
   end
 
   # Export
-  test "loads export for admin" do
+  test "queues HTML export for admin" do
     sign_in @user
     @group.add_admin!(@user)
-    get :export, params: { key: @group.key }, format: :html
-    assert_response 200
+    assert_enqueued_with(job: GroupExportHtmlWorker, args: [@group.id, @user.id]) do
+      get :export, params: { key: @group.key }, format: :html
+    end
+    assert_response :redirect
   end
 
   test "does not allow non-admins to see export" do

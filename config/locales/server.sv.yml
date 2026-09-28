@@ -1,5 +1,6 @@
 ---
 sv:
+  group_export_started: "Export av gruppdata har startat"
   discussion_templates:
     blank:
       process_name: Tom mall
@@ -745,6 +746,7 @@ sv:
     zh: Kinesiska (traditionell, Taiwan)
     zh-HK: Kinesiska (traditionell, Taiwan)
   upload:
+    filename_required: Filnamn krävs
     file_too_large: Filen är för stor. Maximal uppladdningsstorlek är %{limit}.
   merge_users:
     not_target_user: Du måste vara inloggad som målkonto för att bekräfta en sammanslagning.

@@ -215,6 +215,14 @@ module Dev::Scenarios::Group
     redirect_to group_path(create_another_group)
   end
 
+  def visit_subgroup_with_inaccessible_parent
+    parent = Group.create!(name: 'Private Parent', group_privacy: 'secret')
+    subgroup = Group.create!(name: 'Accessible Subgroup', parent: parent, group_privacy: 'secret')
+    subgroup.add_member! jennifer
+    sign_in jennifer
+    redirect_to group_path(subgroup)
+  end
+
   def setup_group_with_subgroups
     sign_in jennifer
     create_another_group.add_member! jennifer

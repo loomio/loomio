@@ -36,6 +36,15 @@ class DirectUploadsControllerTest < ActionController::TestCase
     assert_response :success
   end
 
+  test "rejects blank filename before creating a blob" do
+    sign_in @trial_user
+    assert_no_difference('ActiveStorage::Blob.count') do
+      post :create, params: blob_params(byte_size: 1024).deep_merge(blob: { filename: ' ' }), format: :json
+    end
+    assert_response :unprocessable_entity
+    assert_equal I18n.t('upload.filename_required'), JSON.parse(response.body).fetch('error')
+  end
+
   test "rejects upload over trial limit for trial user" do
     sign_in @trial_user
     post :create, params: blob_params(byte_size: DirectUploadsController::TRIAL_MAX_UPLOAD_BYTES + 1), format: :json

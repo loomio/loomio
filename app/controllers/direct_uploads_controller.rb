@@ -10,6 +10,7 @@ class DirectUploadsController < ActiveStorage::DirectUploadsController
   before_action :require_logged_in_user, only: :create
   before_action :enforce_upload_size_limit, only: :create
   before_action :enforce_content_type, only: :create
+  before_action :enforce_filename, only: :create
 
   BLOCKED_CONTENT_TYPES = %w[
     application/x-msdownload
@@ -23,6 +24,12 @@ class DirectUploadsController < ActiveStorage::DirectUploadsController
   ].freeze
 
   private
+
+  def enforce_filename
+    return if params.dig(:blob, :filename).to_s.strip.present?
+
+    render json: { error: I18n.t('upload.filename_required') }, status: :unprocessable_entity
+  end
 
   # Only signed-in users may mint presigned upload URLs / blobs — otherwise
   # anonymous callers can create orphan blobs and public loomio-domain

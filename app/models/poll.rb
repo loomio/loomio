@@ -456,7 +456,7 @@ class Poll < ApplicationRecord
   end
 
   def total_score
-    stance_counts.sum
+    stance_counts.sum { |score| BigDecimal(score.to_s) }
   end
 
   def update_counts!

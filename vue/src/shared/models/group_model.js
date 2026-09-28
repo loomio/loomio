@@ -244,6 +244,10 @@ export default class GroupModel extends BaseModel {
     return Records.groups.remote.postMember(this.id, 'export_csv');
   }
 
+  exportHTML() {
+    return Records.groups.remote.postMember(this.id, 'export_html');
+  }
+
   uploadLogo(file) {
     return Records.groups.remote.upload(`${this.key}/upload_photo/logo`, file, {}, function() {});
   }

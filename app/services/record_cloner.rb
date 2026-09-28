@@ -20,6 +20,7 @@ class RecordCloner
     save_cloned_content!(clone_group)
 
     update_tag_colors(clone_group, group)
+    clone_reactions!(group)
     store_source_record_ids(clone_group)
 
 
@@ -49,6 +50,7 @@ class RecordCloner
     save_cloned_content!(clone_group)
 
     update_tag_colors(clone_group, group)
+    clone_reactions!(group)
 
     store_source_record_ids(clone_group)
 
@@ -59,6 +61,13 @@ class RecordCloner
     clone_group.discussions.each {|d| TopicService.repair(d.topic_id) }
     clone_group.reload
     clone_group
+  end
+
+  def clone_reactions!(group)
+    group.comment_reactions.find_each do |reaction|
+      reactable = existing_clone(reaction.reactable)
+      Reaction.create!(reactable: reactable, user: reaction.user, reaction: reaction.reaction)
+    end
   end
 
   # After the group is saved, save cloned discussions and polls.
@@ -114,6 +123,7 @@ class RecordCloner
 
     clone_group = new_clone(group, copy_fields, required_values, attachments)
     clone_group.parent = clone_parent
+    clone_group.tags = group.tags.map { |tag| new_clone_tag(tag) }
 
     clone_group.memberships = group.memberships.map {|m| new_clone_membership(m) }
     clone_group.subgroups = group.subgroups.enabled.map { |g| new_clone_group(g, clone_group) }
@@ -159,6 +169,7 @@ class RecordCloner
       locker_id
       pinned_at
       last_activity_at
+      tags
       created_at
       updated_at
     ]

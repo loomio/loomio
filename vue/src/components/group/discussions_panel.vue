@@ -91,6 +91,7 @@ export default
         pinnedTopics = Records.topics.collection.chain().find({
           groupId: {$in: groupIds},
           topicableType: 'Discussion',
+          discardedAt: null,
           pinnedAt: {$ne: null}
         }).simplesort('pinnedAt', true).data();
       }
@@ -98,6 +99,7 @@ export default
       let chain = Records.topics.collection.chain().find({
         groupId: {$in: groupIds},
         topicableType: 'Discussion',
+        discardedAt: null,
         id: {$nin: pinnedTopics.map(t => t.id)}
       }).simplesort('lastActivityAt', true);
 
