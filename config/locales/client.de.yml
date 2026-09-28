@@ -2139,11 +2139,12 @@ de:
     status: Status
     your_vote_is_requested: Deine Stimme wird erbeten.
     browse_example_make_a_copy_hint: "<b>Klicke auf das Kopiersymbol</b>, um eine neue Umfragevorlage zu erstellen und das Beispiel als Ausgangspunkt zu verwenden"
-    weighted_score: Punktzahl
-    equal_weight_score: Wertung mit gleichem Gewicht
-    assigned_weight_score: Zugewiesene Gewichtung
     view_votes: Stimmen ansehen
-    equal_weight_points: Punkte mit gleichem Gewicht
+    weighted_votes: Gewichtete Stimmen
+    weighted_points: Gewichtete Punkte
+    pct_of_weighted_votes: "% der gewichteten Stimmen"
+    pct_of_weighted_points: "% der gewichteten Punkte"
+    weighted_mean: Gewichteter Mittelwert
   poll_common_attachment_form:
     label: Arbeitsmaterialien
   poll_common_add_option:
@@ -2438,7 +2439,6 @@ de:
     number_of_choices: Anzahl der Auswahlmöglichkeiten
     how_many_ranking_positions_explained: 'Beispiel: Bei der Einstellung 3 kann jeder Wähler drei Optionen bewerten. Die erste Wahl erhält 3 Punkte, die zweite 2 und die dritte 1 Punkt. Alle nicht bewerteten Optionen erhalten 0 Punkte.'
     minimum_stance_choices_helptext: Wie viele Auswahlmöglichkeiten hat jeder Wähler?
-    pct_of_voters_short: "% der Wähler"
   poll_meeting_time_field:
     add_time_slot: Ergänze einen Zeitslot
     new_time_slot: Neues Zeitfenster

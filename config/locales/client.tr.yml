@@ -2108,11 +2108,12 @@ tr:
     status: Durum
     your_vote_is_requested: Oylarınız rica olunur.
     browse_example_make_a_copy_hint: Örneği başlangıç noktası olarak kullanarak yeni bir anket şablonu oluşturmak için <b>kopyala simgesine tıklayın</b> .
-    weighted_score: Gol
-    equal_weight_score: Eşit ağırlıklı puan
-    assigned_weight_score: Atanan ağırlık puanı
     view_votes: Oyları görüntüle
-    equal_weight_points: Eşit ağırlıklı puanlar
+    weighted_votes: Ağırlıklı oylar
+    weighted_points: Ağırlıklı puanlar
+    pct_of_weighted_votes: Ağırlıklı oyların yüzdesi
+    pct_of_weighted_points: Ağırlıklı puanların yüzdesi
+    weighted_mean: Ağırlıklı ortalama
   poll_common_attachment_form:
     label: Ekler
   poll_common_add_option:
@@ -2405,7 +2406,6 @@ tr:
     number_of_choices: Seçim sayısı
     how_many_ranking_positions_explained: 'Örnek: 3 olarak ayarlanırsa, her seçmen üç seçeneği sıralayabilir. İlk tercih 3 puan, ikinci tercih 2 puan ve üçüncü tercih 1 puan alır. Sıralanmamış seçenekler 0 puan alır.'
     minimum_stance_choices_helptext: Her seçmene kaç seçenek veriliyor?
-    pct_of_voters_short: seçmenlerin yüzdesi
   poll_meeting_time_field:
     add_time_slot: Zaman aralığı ekle
     new_time_slot: Yeni zaman dilimi

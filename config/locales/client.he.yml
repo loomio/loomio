@@ -2127,11 +2127,12 @@ he:
     status: סטָטוּס
     your_vote_is_requested: הצבעתך מתבקשת
     browse_example_make_a_copy_hint: "<b>לחץ על סמל ההעתקה</b> כדי ליצור תבנית סקר חדשה, תוך שימוש בדוגמה כנקודת התחלה."
-    weighted_score: צִיוּן
-    equal_weight_score: ציון משקל שווה
-    assigned_weight_score: ציון משקל שהוקצה
     view_votes: הצג הצבעות
-    equal_weight_points: נקודות משקל שוות
+    weighted_votes: קולות משוקללים
+    weighted_points: נקודות משוקללות
+    pct_of_weighted_votes: אחוז מהקולות המשוקללים
+    pct_of_weighted_points: אחוז הנקודות המשוקללות
+    weighted_mean: ממוצע משוקלל
   poll_common_attachment_form:
     label: קבצים מצורפים
   poll_common_add_option:
@@ -2424,7 +2425,6 @@ he:
     number_of_choices: מספר אפשרויות
     how_many_ranking_positions_explained: 'דוגמה: אם מוגדר ל-3, כל מצביע יכול לדרג שלוש אפשרויות. הבחירה הראשונה שלו מקבלת 3 נקודות, השנייה מקבלת 2, והשלישית מקבלת 1. כל אפשרות שלא דורגה מקבלת 0 נקודות.'
     minimum_stance_choices_helptext: כמה אפשרויות מקבל כל בוחר?
-    pct_of_voters_short: אחוז מהמצביעים
   poll_meeting_time_field:
     add_time_slot: הוסף משבצת זמן
     new_time_slot: " משבצת זמן חדשה"

@@ -14,28 +14,9 @@ class Views::Chatbot::Matrix::Simple < Views::Chatbot::Base
             case col
             when 'pie', 'bar', 'grid'
               th { @poll.closed_at ? t(:"poll_common.results") : t(:"poll_common.current_results") }
-            when 'name'
-              th { t('common.option') }
-            when 'score_percent'
-              th { t('poll_ranked_choice_form.pct_of_points') }
-            when 'votes_cast_percent'
-              th { t(@poll.result_votes_cast_percent_heading_key) }
-            when 'voter_percent'
-              th { t(@poll.result_voter_percent_heading_key) }
-            when 'rank'
-              th { t('poll_ranked_choice_form.rank') }
-            when 'score'
-              th { t(@poll.result_score_heading_key) }
-            when 'unweighted_score'
-              th { t(@poll.result_unweighted_score_heading_key) }
-            when 'average'
-              th { t('poll_ranked_choice_form.mean') }
-            when 'stv_status'
-              th { t('poll_common.status') }
-            when 'voter_count'
-              th { t('membership_card.voters') }
-            when 'votes'
-              th { t(@poll.result_votes_heading_key) }
+            when 'name', 'score_percent', 'votes_cast_percent', 'voter_percent', 'rank', 'score',
+                 'unweighted_score', 'average', 'stv_status', 'voter_count', 'votes'
+              th { t(@poll.result_heading_key(col)) }
             when 'voters'
               th
             end

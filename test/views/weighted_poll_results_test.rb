@@ -9,12 +9,12 @@ class WeightedPollResultsTest < ActiveSupport::TestCase
     @voter = users(:user)
   end
 
-  test 'proposal results show voters and points across email, chatbots, and exports' do
+  test 'proposal results show votes and weighted votes across email, chatbots, and exports' do
     poll = create_weighted_poll('proposal', %w[agree disagree], 1)
 
     rendered_results(poll).each_value do |output|
-      assert_includes output, 'Points'
-      assert_not_includes output, 'Equal weight points'
+      assert_includes output, 'Weighted votes'
+      assert_not_includes output, 'Weighted points'
       assert_includes output, '2.33'
     end
 
@@ -26,13 +26,13 @@ class WeightedPollResultsTest < ActiveSupport::TestCase
     assert_includes csv.flatten, '2.33'
   end
 
-  test 'score poll results show equal weight score and score across email, chatbots, and exports' do
+  test 'score poll results show points and weighted points across email, chatbots, and exports' do
     poll = create_weighted_poll('score', %w[Alpha Beta], 4)
 
     rendered_results(poll).each_value do |output|
-      assert_includes output, 'Equal weight points'
       assert_includes output, 'Points'
-      assert_not_includes output, 'Assigned weight score'
+      assert_includes output, 'Weighted points'
+      assert_not_includes output, 'Weighted votes'
       assert_includes output, '9.32'
     end
 
@@ -43,13 +43,13 @@ class WeightedPollResultsTest < ActiveSupport::TestCase
     assert_includes csv.flatten, '9.32'
   end
 
-  test 'one point poll results show voters and score across email, chatbots, and exports' do
+  test 'one point poll results show voters and weighted votes across email, chatbots, and exports' do
     poll = create_weighted_poll('poll', %w[Alpha Beta], 1)
 
     rendered_results(poll).each_value do |output|
       assert_includes output, 'Voters'
-      assert_includes output, 'Points'
-      assert_not_includes output, 'Equal weight points'
+      assert_includes output, 'Weighted votes'
+      assert_not_includes output, 'Weighted points'
     end
 
     csv = CSV.parse(PollExporter.new(poll).to_csv)

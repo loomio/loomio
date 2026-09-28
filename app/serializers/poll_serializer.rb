@@ -35,6 +35,7 @@ class PollSerializer < ApplicationSerializer
              :poll_option_name_format,
              :results,
              :result_columns,
+             :result_heading_keys,
              :reason_prompt,
              :shuffle_options,
              :show_none_of_the_above,

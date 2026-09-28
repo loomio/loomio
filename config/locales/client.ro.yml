@@ -2108,11 +2108,12 @@ ro:
     status: Stare
     your_vote_is_requested: Votul dumneavoastră este solicitat
     browse_example_make_a_copy_hint: "<b>Faceți clic pe pictograma de copiere</b> pentru a crea un nou șablon de sondaj, folosind exemplul ca punct de plecare."
-    weighted_score: Scor
-    equal_weight_score: Scor de ponderare egală
-    assigned_weight_score: Scorul de pondere atribuit
     view_votes: Vedeți voturile
-    equal_weight_points: Puncte cu pondere egală
+    weighted_votes: Voturi ponderate
+    weighted_points: Puncte ponderate
+    pct_of_weighted_votes: "% din voturile ponderate"
+    pct_of_weighted_points: "% din punctele ponderate"
+    weighted_mean: Medie ponderată
   poll_common_attachment_form:
     label: Atașamente
   poll_common_add_option:
@@ -2405,7 +2406,6 @@ ro:
     number_of_choices: Numărul de opțiuni
     how_many_ranking_positions_explained: 'Exemplu: Dacă este setat la 3, fiecare alegător poate acorda trei opțiuni în clasament. Prima opțiune primește 3 puncte, a doua primește 2, iar a treia primește 1. Orice opțiuni neclasificate primesc 0 puncte.'
     minimum_stance_choices_helptext: Câte opțiuni are fiecare alegător?
-    pct_of_voters_short: "% dintre alegători"
   poll_meeting_time_field:
     add_time_slot: Adăugați intervalul de timp
     new_time_slot: Nou interval orar

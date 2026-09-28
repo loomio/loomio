@@ -330,10 +330,41 @@ class Poll < ApplicationRecord
     self[:custom_fields].fetch('can_respond_maybe', false)
   end
 
+  # Result headings keep master's labels. A column whose value includes vote
+  # weights gets a "Weighted" label instead, in the unit voters give: votes for
+  # one-point methods, points otherwise.
+  RESULT_HEADING_KEYS = {
+    'name' => 'common.option',
+    'target_percent' => 'poll_count_form.pct_of_target',
+    'score_percent' => 'poll_ranked_choice_form.pct_of_points',
+    'votes_cast_percent' => 'poll_ranked_choice_form.pct_of_votes_cast',
+    'voter_percent' => 'poll_ranked_choice_form.pct_of_voters',
+    'rank' => 'poll_ranked_choice_form.rank',
+    'score' => 'poll_ranked_choice_form.points',
+    'unweighted_score' => 'poll_ranked_choice_form.points',
+    'average' => 'poll_ranked_choice_form.mean',
+    'stv_status' => 'poll_common.status',
+    'voter_count' => 'membership_card.voters',
+    'votes' => 'poll_common.votes'
+  }.freeze
+
+  WEIGHTED_VOTES_HEADING_KEYS = {
+    'score' => 'poll_common.weighted_votes',
+    'score_percent' => 'poll_common.pct_of_weighted_votes',
+    'votes_cast_percent' => 'poll_common.pct_of_weighted_votes'
+  }.freeze
+
+  WEIGHTED_POINTS_HEADING_KEYS = {
+    'score' => 'poll_common.weighted_points',
+    'score_percent' => 'poll_common.pct_of_weighted_points',
+    'votes_cast_percent' => 'poll_common.pct_of_weighted_points',
+    'average' => 'poll_common.weighted_mean'
+  }.freeze
+
   def result_columns
     columns = case poll_type
     when 'proposal'
-      vote_weights_enabled? ? %w[chart name votes votes_cast_percent voter_percent voters] : %w[chart name score votes votes_cast_percent voter_percent voters]
+      %w[chart name votes votes_cast_percent voter_percent voters]
     when 'check'
       %w[chart name voter_percent voter_count voters]
     when 'count'
@@ -360,18 +391,30 @@ class Poll < ApplicationRecord
 
     return columns unless vote_weights_enabled?
 
-    columns = columns.dup
+    # One-point methods add the weighted votes beside the vote count. Other
+    # methods show the plain points beside the weighted points.
     if one_point_choices?
-      voter_column = columns.include?('votes') ? 'votes' : 'voter_count'
-      columns.insert(columns.index(voter_column) + (poll_type == 'proposal' ? 0 : 1), 'score')
-      return columns
-    end
+      count_column = columns.find { |column| %w[votes voter_count].include?(column) }
+      return columns unless count_column
 
-    columns.delete('score')
-    columns.insert(columns.index('name') + 1, 'unweighted_score', 'score')
-    voter_column = columns.include?('votes') ? 'votes' : 'voter_count'
-    columns.insert(columns.index('score') + 1, voter_column) unless columns.include?(voter_column)
-    columns
+      columns.dup.insert(columns.index(count_column) + 1, 'score')
+    else
+      return columns unless columns.include?('score')
+
+      columns.dup.insert(columns.index('score'), 'unweighted_score')
+    end
+  end
+
+  def result_heading_key(column)
+    weighted_keys = if !vote_weights_enabled? then {}
+    elsif one_point_choices? then WEIGHTED_VOTES_HEADING_KEYS
+    else WEIGHTED_POINTS_HEADING_KEYS
+    end
+    weighted_keys.fetch(column) { RESULT_HEADING_KEYS.fetch(column) }
+  end
+
+  def result_heading_keys
+    result_columns.excluding('chart', 'voters').index_with { |column| result_heading_key(column) }
   end
 
   def vote_weights_supported?
@@ -386,26 +429,6 @@ class Poll < ApplicationRecord
 
   def one_point_choices?
     min_score == 1 && max_score == 1
-  end
-
-  def result_score_heading_key
-    'poll_ranked_choice_form.points'
-  end
-
-  def result_votes_cast_percent_heading_key
-    poll_type == 'proposal' ? 'poll_ranked_choice_form.pct_of_points' : 'poll_ranked_choice_form.pct_of_votes_cast'
-  end
-
-  def result_voter_percent_heading_key
-    'poll_ranked_choice_form.pct_of_voters_short'
-  end
-
-  def result_unweighted_score_heading_key
-    'poll_common.equal_weight_points'
-  end
-
-  def result_votes_heading_key
-    vote_weights_enabled? || poll_type == 'proposal' ? 'membership_card.voters' : 'poll_common.votes'
   end
 
   def results

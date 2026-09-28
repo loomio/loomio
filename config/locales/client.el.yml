@@ -2108,11 +2108,12 @@ el:
     status: Κατάσταση
     your_vote_is_requested: Η ψήφος σας ζητείται
     browse_example_make_a_copy_hint: "<b>Κάντε κλικ στο εικονίδιο αντιγραφής</b> για να δημιουργήσετε ένα νέο πρότυπο δημοσκόπησης, χρησιμοποιώντας το παράδειγμα ως σημείο εκκίνησης."
-    weighted_score: Σκορ
-    equal_weight_score: Ίση βαθμολογία βάρους
-    assigned_weight_score: Βαθμολογία βάρους που έχει ανατεθεί
     view_votes: Δείτε τις ψήφους
-    equal_weight_points: Ίσοι βαθμοί βάρους
+    weighted_votes: Σταθμισμένες ψήφοι
+    weighted_points: Σταθμισμένοι πόντοι
+    pct_of_weighted_votes: "% σταθμισμένων ψήφων"
+    pct_of_weighted_points: "% σταθμισμένων πόντων"
+    weighted_mean: Σταθμισμένος μέσος όρος
   poll_common_attachment_form:
     label: Συνημμένα
   poll_common_add_option:
@@ -2405,7 +2406,6 @@ el:
     number_of_choices: Αριθμός επιλογών
     how_many_ranking_positions_explained: 'Παράδειγμα: Εάν οριστεί σε 3, κάθε ψηφοφόρος μπορεί να κατατάξει τρεις επιλογές. Η πρώτη επιλογή του λαμβάνει 3 βαθμούς, η δεύτερη 2 και η τρίτη 1. Οποιεσδήποτε επιλογές που δεν έχουν καταταχθεί λαμβάνουν 0 βαθμούς.'
     minimum_stance_choices_helptext: Πόσες επιλογές έχει κάθε ψηφοφόρος;
-    pct_of_voters_short: "% των ψηφοφόρων"
   poll_meeting_time_field:
     add_time_slot: Προσθήκη χρονοθυρίδας
     new_time_slot: Νέο χρονικό διάστημα

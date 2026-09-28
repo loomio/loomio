@@ -2108,11 +2108,12 @@ hr:
     status: Status
     your_vote_is_requested: Traži se vaš glas
     browse_example_make_a_copy_hint: "<b>Kliknite ikonu za kopiranje</b> da biste stvorili novi predložak ankete, koristeći primjer kao početnu točku."
-    weighted_score: Postići
-    equal_weight_score: Jednak rezultat težine
-    assigned_weight_score: Dodijeljena težina
     view_votes: Prikaži glasove
-    equal_weight_points: Bodovi jednake težine
+    weighted_votes: Ponderirani glasovi
+    weighted_points: Ponderirani bodovi
+    pct_of_weighted_votes: "% ponderiranih glasova"
+    pct_of_weighted_points: "% ponderiranih bodova"
+    weighted_mean: Ponderirana srednja vrijednost
   poll_common_attachment_form:
     label: Prilozi
   poll_common_add_option:
@@ -2405,7 +2406,6 @@ hr:
     number_of_choices: Broj izbora
     how_many_ranking_positions_explained: 'Primjer: Ako je postavljeno na 3, svaki glasač može rangirati tri opcije. Njihov prvi izbor dobiva 3 boda, drugi dobiva 2, a treći dobiva 1. Sve nerangirane opcije dobivaju 0 bodova.'
     minimum_stance_choices_helptext: Koliko izbora ima svaki birač?
-    pct_of_voters_short: "% birača"
   poll_meeting_time_field:
     add_time_slot: Dodajte vremenski odsjek
     new_time_slot: Novi termin

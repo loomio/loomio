@@ -42,31 +42,11 @@ class Views::NotificationMailer::Poll::Results::Simple < Views::ApplicationMaile
         plain(@poll.closed_at ? t(:"poll_common.results") : t(:"poll_common.current_results"))
       end
     when 'name'
-      th(class: "email-table-left") { plain t('common.option') }
-    when 'votes_cast_percent'
-      th(class: "email-table-right") { plain t(@poll.result_votes_cast_percent_heading_key) }
-    when 'score_percent'
-      th(class: "email-table-right") { plain t('poll_ranked_choice_form.pct_of_points') }
-    when 'voter_percent'
-      th(class: "email-table-right") { plain t(@poll.result_voter_percent_heading_key) }
-    when 'target_percent'
-      th(class: "email-table-right") { plain t('poll_count_form.pct_of_target') }
-    when 'rank'
-      th(class: "email-table-right") { plain t('poll_ranked_choice_form.rank') }
-    when 'score'
-      th(class: "email-table-right") { plain t(@poll.result_score_heading_key) }
-    when 'unweighted_score'
-      th(class: "email-table-right") { plain t(@poll.result_unweighted_score_heading_key) }
-    when 'average'
-      th(class: "email-table-right") { plain t('poll_ranked_choice_form.mean') }
-    when 'votes'
-      th(class: "email-table-right") { plain t(@poll.result_votes_heading_key) }
-    when 'stv_status'
-      th(class: "email-table-right") { plain t('poll_common.status') }
-    when 'voter_count'
-      th(class: "email-table-right") { plain t('membership_card.voters') }
+      th(class: "email-table-left") { plain t(@poll.result_heading_key(col)) }
     when 'voters'
       th(class: "email-table-left")
+    else
+      th(class: "email-table-right") { plain t(@poll.result_heading_key(col)) }
     end
   end
 

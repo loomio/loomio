@@ -1,5 +1,15 @@
 # Corrected translations
 
+## 2026-09-28 — Weighted result headings
+
+| File | Key | Before | After | Why it was wrong |
+|------|-----|--------|-------|------------------|
+| `config/locales/client.es.yml` | `poll_common.weighted_votes` | `votos ponderados` | `Votos ponderados` | Column headings start with a capital letter |
+| `config/locales/client.fr.yml`, `client.it.yml` | `poll_common.weighted_mean` | `moyenne pondérée`, `media ponderata` | `Moyenne pondérée`, `Media ponderata` | Column headings start with a capital letter |
+| `config/locales/client.el.yml` | `poll_common.weighted_points` | `Σταθμισμένα σημεία` | `Σταθμισμένοι πόντοι` | `σημεία` means geometric points; the Points heading uses `Πόντοι` |
+| `config/locales/client.sl.yml` | `poll_common.weighted_votes`, `pct_of_weighted_votes` | `Ponderirani glasovi`, `% ponderiranih glasov` | `Uteženi glasovi`, `% uteženih glasov` | `ponderirani` is Croatian; Slovenian uses `utežen`, as in the weighted points label |
+| `config/locales/client.zh_CN.yml` | `poll_common.weighted_points`, `pct_of_weighted_points` | `加权分数`, `加权分数百分比` | `加权积分`, `加权积分百分比` | The Points heading uses `积分`; the weighted column should use the same term |
+
 ## 2026-09-26 — Thread members and poll voter management
 
 | File | Key | Before | After | Why it was wrong |

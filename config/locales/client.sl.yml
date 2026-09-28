@@ -2108,11 +2108,12 @@ sl:
     status: Stanje
     your_vote_is_requested: Zahteva se vaš glas
     browse_example_make_a_copy_hint: "<b>Kliknite ikono za kopiranje</b> , da ustvarite novo predlogo ankete, pri čemer uporabite primer kot izhodišče."
-    weighted_score: Rezultat
-    equal_weight_score: Enaka teža
-    assigned_weight_score: Dodeljena teža
     view_votes: Ogled glasov
-    equal_weight_points: Točke enake teže
+    weighted_votes: Uteženi glasovi
+    weighted_points: Utežene točke
+    pct_of_weighted_votes: "% uteženih glasov"
+    pct_of_weighted_points: "% uteženih točk"
+    weighted_mean: Utežena povprečna vrednost
   poll_common_attachment_form:
     label: Priloge
   poll_common_add_option:
@@ -2405,7 +2406,6 @@ sl:
     number_of_choices: Število izbir
     how_many_ranking_positions_explained: 'Primer: Če je nastavljeno na 3, lahko vsak volivec razvrsti tri možnosti. Njegova prva izbira dobi 3 točke, druga 2 in tretja 1. Vse nerazvrščene možnosti dobijo 0 točk.'
     minimum_stance_choices_helptext: Koliko izbir ima vsak volivec?
-    pct_of_voters_short: "% volivcev"
   poll_meeting_time_field:
     add_time_slot: Dodajte časovni okvir
     new_time_slot: Nov termin

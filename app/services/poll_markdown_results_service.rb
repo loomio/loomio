@@ -106,21 +106,11 @@ class PollMarkdownResultsService
   end
 
   def simple_heading(column)
-    {
-      "name" => t("common.option"),
-      "score_percent" => t("poll_ranked_choice_form.pct_of_points"),
-      "votes_cast_percent" => t(poll.result_votes_cast_percent_heading_key),
-      "voter_percent" => t(poll.result_voter_percent_heading_key),
-      "target_percent" => t("thread_markdown.target"),
-      "rank" => t("poll_ranked_choice_form.rank"),
-      "score" => t(poll.result_score_heading_key),
-      "unweighted_score" => t(poll.result_unweighted_score_heading_key),
-      "average" => t("poll_ranked_choice_form.mean"),
-      "stv_status" => t("poll_common.status"),
-      "voter_count" => t("membership_card.voters"),
-      "votes" => t(poll.result_votes_heading_key),
-      "voters" => t("thread_markdown.voters")
-    }.fetch(column)
+    case column
+    when "target_percent" then t("thread_markdown.target")
+    when "voters" then t("thread_markdown.voters")
+    else t(poll.result_heading_key(column))
+    end
   end
 
   def simple_cell(column, result)

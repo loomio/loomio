@@ -361,17 +361,9 @@ module Views::Chatbot::Markdown::Concerns
   def simple_heading_for(col)
     case col
     when 'chart' then t(:"poll_common.results")
-    when 'name' then t('common.option')
-    when 'score_percent' then t('poll_ranked_choice_form.pct_of_points')
-    when 'votes_cast_percent' then t(@poll.result_votes_cast_percent_heading_key)
-    when 'voter_percent' then t(@poll.result_voter_percent_heading_key)
-    when 'rank' then t('poll_ranked_choice_form.rank')
-    when 'score' then t(@poll.result_score_heading_key)
-    when 'unweighted_score' then t(@poll.result_unweighted_score_heading_key)
-    when 'average' then t('poll_ranked_choice_form.mean')
-    when 'stv_status' then t('poll_common.status')
-    when 'voter_count' then t('membership_card.voters')
-    when 'votes' then t(@poll.result_votes_heading_key)
+    when 'name', 'score_percent', 'votes_cast_percent', 'voter_percent', 'rank', 'score',
+         'unweighted_score', 'average', 'stv_status', 'voter_count', 'votes'
+      t(@poll.result_heading_key(col))
     when 'voters' then nil
     end
   end

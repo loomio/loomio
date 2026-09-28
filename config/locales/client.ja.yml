@@ -2107,11 +2107,12 @@ ja:
     status: 状態
     your_vote_is_requested: あなたの投票をお願いします
     browse_example_make_a_copy_hint: "<b>コピーアイコンをクリックすると</b>、サンプルを参考に新しいアンケートテンプレートを作成できます。"
-    weighted_score: スコア
-    equal_weight_score: 同等の重み付けスコア
-    assigned_weight_score: 割り当てられた重みスコア
     view_votes: 投票を見る
-    equal_weight_points: 同等の重みポイント
+    weighted_votes: 加重投票
+    weighted_points: 加重ポイント
+    pct_of_weighted_votes: 加重投票の割合
+    pct_of_weighted_points: 加重ポイントの割合
+    weighted_mean: 加重平均
   poll_common_attachment_form:
     label: 添付ファイル
   poll_common_add_option:
@@ -2404,7 +2405,6 @@ ja:
     number_of_choices: 選択肢の数
     how_many_ranking_positions_explained: 例：3に設定した場合、各投票者は3つの選択肢に順位を付けることができます。1番目の選択肢には3ポイント、2番目の選択肢には2ポイント、3番目の選択肢には1ポイントが付与されます。順位付けされていない選択肢には0ポイントが付与されます。
     minimum_stance_choices_helptext: 各有権者はいくつの選択肢を持つのでしょうか?
-    pct_of_voters_short: 有権者の割合
   poll_meeting_time_field:
     add_time_slot: 時間帯を追加する
     new_time_slot: 新しい時間帯

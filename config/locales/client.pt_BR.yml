@@ -2152,11 +2152,12 @@ pt_BR:
     status: Status
     your_vote_is_requested: Seu voto é solicitado.
     browse_example_make_a_copy_hint: "<b>Clique no ícone de copiar</b> para criar um novo modelo de pesquisa, usando o exemplo como ponto de partida."
-    weighted_score: Pontuação
-    equal_weight_score: Pontuação de peso igual
-    assigned_weight_score: Pontuação de peso atribuída
     view_votes: Ver votos
-    equal_weight_points: Pontos de peso igual
+    weighted_votes: Votos ponderados
+    weighted_points: Pontos ponderados
+    pct_of_weighted_votes: "% de votos ponderados"
+    pct_of_weighted_points: "% de pontos ponderados"
+    weighted_mean: Média ponderada
   poll_common_attachment_form:
     label: Anexos
   poll_common_add_option:
@@ -2451,7 +2452,6 @@ pt_BR:
     number_of_choices: Número de escolhas
     how_many_ranking_positions_explained: 'Exemplo: Se definido como 3, cada eleitor pode classificar três opções. A primeira escolha recebe 3 pontos, a segunda, 2, e a terceira, 1. Quaisquer opções não classificadas recebem 0 pontos.'
     minimum_stance_choices_helptext: Quantas opções cada eleitor tem?
-    pct_of_voters_short: "% de eleitores"
   poll_meeting_time_field:
     add_time_slot: Adicionar intervalo de tempo
     new_time_slot: Nova opção de horário

@@ -2237,10 +2237,11 @@ en:
     name_lte_score_percent: "%{name} must not exceed %{percent}% of votes cast"
     name_lte_voter_percent: "%{name} must not exceed %{percent}% of eligible voters"
   poll_common:
-    weighted_score: Score
-    equal_weight_score: Equal weight score
-    equal_weight_points: Equal weight points
-    assigned_weight_score: Assigned weight score
+    weighted_votes: Weighted votes
+    weighted_points: Weighted points
+    pct_of_weighted_votes: "% of weighted votes"
+    pct_of_weighted_points: "% of weighted points"
+    weighted_mean: Weighted mean
     your_vote_is_requested: Your vote is requested
     superseded: Superseded
     outdated: Outdated
@@ -2849,7 +2850,6 @@ en:
     average: Average
     mean: Mean
     pct_of_points: "% of points"
-    pct_of_voters_short: "% of voters"
     pct_of_votes_cast: "% of votes cast"
     pct_of_voters: "% of eligible voters"
     percent: Percent

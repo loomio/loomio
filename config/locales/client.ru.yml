@@ -2108,11 +2108,12 @@ ru:
     status: Статус
     your_vote_is_requested: Просим вас проголосовать.
     browse_example_make_a_copy_hint: "<b>Нажмите на значок копирования</b> , чтобы создать новый шаблон опроса, используя пример в качестве отправной точки."
-    weighted_score: Счет
-    equal_weight_score: Показатель равного веса
-    assigned_weight_score: Присвоенный весовой балл
     view_votes: Посмотреть голоса
-    equal_weight_points: Баллы равного веса
+    weighted_votes: Взвешенные голоса
+    weighted_points: Взвешенные баллы
+    pct_of_weighted_votes: "% взвешенных голосов"
+    pct_of_weighted_points: "% взвешенных баллов"
+    weighted_mean: Взвешенное среднее
   poll_common_attachment_form:
     label: Вложения
   poll_common_add_option:
@@ -2405,7 +2406,6 @@ ru:
     number_of_choices: Количество вариантов выбора
     how_many_ranking_positions_explained: 'Пример: если установлено значение 3, каждый избиратель может оценить три варианта. Первый вариант получает 3 балла, второй — 2, а третий — 1. Любые варианты без оценки получают 0 баллов.'
     minimum_stance_choices_helptext: Сколько вариантов выбора есть у каждого избирателя?
-    pct_of_voters_short: "% избирателей"
   poll_meeting_time_field:
     add_time_slot: Добавить временной интервал
     new_time_slot: Новый временной интервал

@@ -2108,11 +2108,12 @@ sv:
     status: Status
     your_vote_is_requested: Din röst begärs
     browse_example_make_a_copy_hint: "<b>Klicka på kopieringsikonen</b> för att skapa en ny omröstningsmall med exemplet som utgångspunkt."
-    weighted_score: Göra
-    equal_weight_score: Lika viktpoäng
-    assigned_weight_score: Tilldelad viktpoäng
     view_votes: Visa röster
-    equal_weight_points: Lika viktpoäng
+    weighted_votes: Viktade röster
+    weighted_points: Viktade poäng
+    pct_of_weighted_votes: "% av viktade röster"
+    pct_of_weighted_points: "% av viktade poäng"
+    weighted_mean: Viktat medelvärde
   poll_common_attachment_form:
     label: Bilagor
   poll_common_add_option:
@@ -2405,7 +2406,6 @@ sv:
     number_of_choices: Antal valmöjligheter
     how_many_ranking_positions_explained: 'Exempel: Om värdet är satt till 3 kan varje väljare rangordna tre alternativ. Deras första val får 3 poäng, det andra får 2 och det tredje får 1. Alla alternativ som inte rankas får 0 poäng.'
     minimum_stance_choices_helptext: Hur många valmöjligheter får varje väljare?
-    pct_of_voters_short: "% av väljarna"
   poll_meeting_time_field:
     add_time_slot: Lägg till tidslucka
     new_time_slot: Ny tidslucka

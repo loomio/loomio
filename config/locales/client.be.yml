@@ -2237,11 +2237,12 @@ be:
     too_long: Занадта доўга
     edit_warning: Рэдагаванне рэкамендуецца толькі для нязначных змяненняў або выпраўлення арфаграфічных памылак. Для значных змяненняў зачыніце гэты %{pollType} і пачніце новы.
     no_voting: Толькі для абмеркавання, галасаванне адключана
-    weighted_score: Ацэнка
-    equal_weight_score: Роўны вагавы бал
-    assigned_weight_score: Прызначаны бал вагі
     view_votes: Праглядзець галасы
-    equal_weight_points: Ачкі з аднолькавай вагой
+    weighted_votes: Узважаныя галасы
+    weighted_points: Узважаныя балы
+    pct_of_weighted_votes: "% узважаных галасоў"
+    pct_of_weighted_points: "% узважаных балаў"
+    weighted_mean: Сярэднеўзважанае значэнне
   poll_common_attachment_form:
     label: Укладанні
   poll_common_add_option:
@@ -2737,7 +2738,6 @@ be:
     pct_of_votes_cast: "% аддадзеных галасоў"
     pct_of_voters: "% выбаршчыкаў, якія маюць права голасу"
     percent: Працэнт
-    pct_of_voters_short: "% выбаршчыкаў"
   poll_meeting_time_field:
     add_time_slot: Дадаць часовы інтэрвал
     new_time_slot: Новы часовы інтэрвал

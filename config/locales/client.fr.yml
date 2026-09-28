@@ -2150,11 +2150,12 @@ fr:
     status: Statut
     your_vote_is_requested: Ton vote est demandé
     browse_example_make_a_copy_hint: "<b>Clique sur l'icône de copie</b> pour créer un nouveau modèle de sondage en utilisant l'exemple comme point de départ"
-    weighted_score: Score
-    equal_weight_score: Score à pondération égale
-    assigned_weight_score: Score de pondération attribué
     view_votes: Voir les votes
-    equal_weight_points: Points de poids égal
+    weighted_votes: Votes pondérés
+    weighted_points: Points pondérés
+    pct_of_weighted_votes: "% des votes pondérés"
+    pct_of_weighted_points: "% de points pondérés"
+    weighted_mean: Moyenne pondérée
   poll_common_attachment_form:
     label: Pièces jointes
   poll_common_add_option:
@@ -2447,7 +2448,6 @@ fr:
     number_of_choices: Nombre de choix
     how_many_ranking_positions_explained: 'Exemple : Si le nombre est fixé à 3, chaque votant peut classer trois options. Son premier choix obtient 3 points, le deuxième 2 et le troisième 1. Les options non classées ne reçoivent aucun point.'
     minimum_stance_choices_helptext: Combien de choix chaque électeur a-t-il ?
-    pct_of_voters_short: "% des électeurs"
   poll_meeting_time_field:
     add_time_slot: Ajouter un créneau
     new_time_slot: Nouveau créneau horaire

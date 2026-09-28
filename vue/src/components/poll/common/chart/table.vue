@@ -6,10 +6,12 @@ import GridIcon from '@/components/poll/common/icon/grid.vue';
 import WatchRecords from '@/mixins/watch_records';
 import { useI18n } from 'vue-i18n';
 
+const METRIC_COLUMNS = ['target_percent', 'score_percent', 'votes_cast_percent', 'voter_percent', 'score', 'unweighted_score', 'average', 'votes', 'voter_count'];
+
 export default {
   setup() {
     const { t } = useI18n();
-    return { t };
+    return { t, METRIC_COLUMNS };
   },
   mixins: [WatchRecords],
   components: {BarIcon, PieIcon, GridIcon},
@@ -40,7 +42,7 @@ export default {
       return null;
     },
     chartableMetric(column) {
-      if (!['target_percent', 'score_percent', 'votes_cast_percent', 'voter_percent', 'score', 'unweighted_score', 'average', 'votes', 'voter_count'].includes(column)) return false;
+      if (!METRIC_COLUMNS.includes(column)) return false;
       if (this.poll.chartType === 'pie' && !this.poll.singleChoice() && ['voter_percent', 'votes', 'voter_count'].includes(column)) return false;
       return true;
     },
@@ -112,27 +114,11 @@ export default {
     thead
       tr
         template(v-for="col in poll.resultColumns")
-          th.text-left.d-none.d-sm-table-cell(v-if="col == 'chart'" v-t="poll.closedAt ? 'poll_common.results' : 'poll_common.current_results'")
-          th.text-left(v-if="col == 'name'") {{ $t('common.option') }}
-          th.text-right(v-if="col == 'target_percent'")
-            button.poll-common-chart-table__metric(type="button" :aria-pressed="selectedMetric === col" @click="selectMetric(col)") {{ t('poll_count_form.pct_of_target') }}
-          th.text-right(v-if="col == 'score_percent'")
-            button.poll-common-chart-table__metric(type="button" :aria-pressed="selectedMetric === col" @click="selectMetric(col)") {{ t('poll_ranked_choice_form.pct_of_points') }}
-          th.text-right(v-if="col == 'votes_cast_percent'")
-            button.poll-common-chart-table__metric(type="button" :aria-pressed="selectedMetric === col" @click="selectMetric(col)") {{ t(poll.pollType === 'proposal' ? 'poll_ranked_choice_form.pct_of_points' : 'poll_ranked_choice_form.pct_of_votes_cast') }}
-          th.text-right(v-if="col == 'voter_percent'")
-            button.poll-common-chart-table__metric(type="button" :aria-pressed="selectedMetric === col" :disabled="!chartableMetric(col)" @click="selectMetric(col)") {{ t('poll_ranked_choice_form.pct_of_voters_short') }}
-          th.text-right(v-if="col == 'score'")
-            button.poll-common-chart-table__metric(type="button" :aria-pressed="selectedMetric === col" @click="selectMetric(col)") {{ t('poll_ranked_choice_form.points') }}
-          th.text-right(v-if="col == 'unweighted_score'")
-            button.poll-common-chart-table__metric(type="button" :aria-pressed="selectedMetric === col" @click="selectMetric(col)") {{ t('poll_common.equal_weight_points') }}
-          th.text-right(v-if="col == 'rank'" v-t='"poll_ranked_choice_form.rank"')
-          th.text-right(v-if="col == 'average'")
-            button.poll-common-chart-table__metric(type="button" :aria-pressed="selectedMetric === col" @click="selectMetric(col)") {{ t('poll_ranked_choice_form.mean') }}
-          th.text-right(v-if="col == 'votes'")
-            button.poll-common-chart-table__metric(type="button" :aria-pressed="selectedMetric === col" :disabled="!chartableMetric(col)" @click="selectMetric(col)") {{ t(poll.voteWeightsEnabled || poll.pollType === 'proposal' ? 'membership_card.voters' : 'poll_common.votes') }}
-          th.text-right(v-if="col == 'voter_count'")
-            button.poll-common-chart-table__metric(type="button" :aria-pressed="selectedMetric === col" :disabled="!chartableMetric(col)" @click="selectMetric(col)") {{ t('membership_card.voters') }}
+          th.text-left.d-none.d-sm-table-cell(v-if="col == 'chart'") {{ t(poll.closedAt ? 'poll_common.results' : 'poll_common.current_results') }}
+          th.text-left(v-if="col == 'name'") {{ t(poll.resultHeadingKeys.name) }}
+          th.text-right(v-if="col == 'rank'") {{ t(poll.resultHeadingKeys.rank) }}
+          th.text-right(v-if="METRIC_COLUMNS.includes(col)")
+            button.poll-common-chart-table__metric(type="button" :aria-pressed="selectedMetric === col" :disabled="!chartableMetric(col)" @click="selectMetric(col)") {{ t(poll.resultHeadingKeys[col]) }}
           th.d-none.d-sm-table-cell(v-if="col == 'voters' && !hideVoters")
     tbody
       tr(v-for="option, index in poll.results", :key="option.id")

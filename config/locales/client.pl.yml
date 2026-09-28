@@ -2131,11 +2131,12 @@ pl:
     status: Status
     your_vote_is_requested: Proszę o Twój głos
     browse_example_make_a_copy_hint: "<b>Kliknij ikonę kopiowania</b> , aby utworzyć nowy szablon ankiety, używając przykładu jako punktu wyjścia."
-    weighted_score: Wynik
-    equal_weight_score: Wynik równej wagi
-    assigned_weight_score: Przypisany wynik wagi
     view_votes: Zobacz głosy
-    equal_weight_points: Punkty o równej wadze
+    weighted_votes: Głosy ważone
+    weighted_points: Punkty ważone
+    pct_of_weighted_votes: "% głosów ważonych"
+    pct_of_weighted_points: "% punktów ważonych"
+    weighted_mean: Średnia ważona
   poll_common_attachment_form:
     label: Załączniki
   poll_common_add_option:
@@ -2430,7 +2431,6 @@ pl:
     number_of_choices: Liczba wyborów
     how_many_ranking_positions_explained: 'Przykład: Jeśli ustawisz wartość na 3, każdy wyborca może ocenić trzy opcje. Pierwsza opcja otrzyma 3 punkty, druga 2, a trzecia 1. Wszystkie opcje niesklasyfikowane otrzymają 0 punktów.'
     minimum_stance_choices_helptext: Ile możliwości ma każdy wyborca?
-    pct_of_voters_short: "% wyborców"
   poll_meeting_time_field:
     add_time_slot: Dodaj przedział czasowy
     new_time_slot: Nowy przedział czasowy

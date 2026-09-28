@@ -316,16 +316,46 @@ class PollTest < ActiveSupport::TestCase
     refute poll.vote_weights_enabled?
   end
 
-  test "weighted proposal results pair points and voters with their percentages" do
+  test "unweighted results keep master's columns and headings" do
+    poll = create_poll(group_id: @group.id, poll_type: 'proposal')
+
+    assert_equal %w[chart name votes votes_cast_percent voter_percent voters], poll.result_columns
+    assert_equal({
+      'name' => 'common.option',
+      'votes' => 'poll_common.votes',
+      'votes_cast_percent' => 'poll_ranked_choice_form.pct_of_votes_cast',
+      'voter_percent' => 'poll_ranked_choice_form.pct_of_voters'
+    }, poll.result_heading_keys)
+  end
+
+  test "weighted one-point results add weighted votes beside the vote count" do
     poll = create_poll(group_id: @group.id, poll_type: 'proposal', vote_weights_enabled: true)
 
-    assert_equal %w[chart name score votes votes_cast_percent voter_percent voters], poll.result_columns
-    assert_equal 'poll_ranked_choice_form.points', poll.result_score_heading_key
-    assert_equal 'poll_ranked_choice_form.pct_of_points', poll.result_votes_cast_percent_heading_key
-    unweighted = create_poll(group_id: @group.id, poll_type: 'proposal')
-    assert_equal %w[chart name score votes votes_cast_percent voter_percent voters], unweighted.result_columns
-    assert_equal 'membership_card.voters', unweighted.result_votes_heading_key
-    assert_equal 'poll_ranked_choice_form.pct_of_points', unweighted.result_votes_cast_percent_heading_key
+    assert_equal %w[chart name votes score votes_cast_percent voter_percent voters], poll.result_columns
+    assert_equal({
+      'name' => 'common.option',
+      'votes' => 'poll_common.votes',
+      'score' => 'poll_common.weighted_votes',
+      'votes_cast_percent' => 'poll_common.pct_of_weighted_votes',
+      'voter_percent' => 'poll_ranked_choice_form.pct_of_voters'
+    }, poll.result_heading_keys)
+  end
+
+  test "weighted multi-point results add points beside weighted points" do
+    poll = create_poll(
+      group_id: @group.id, poll_type: 'dot_vote', vote_weights_enabled: true,
+      poll_option_names: %w[Alpha Beta], dots_per_person: 8
+    )
+
+    assert_equal %w[chart name score_percent unweighted_score score average voter_count], poll.result_columns
+    assert_equal({
+      'name' => 'common.option',
+      'score_percent' => 'poll_common.pct_of_weighted_points',
+      'unweighted_score' => 'poll_ranked_choice_form.points',
+      'score' => 'poll_common.weighted_points',
+      'average' => 'poll_common.weighted_mean',
+      'voter_count' => 'membership_card.voters'
+    }, poll.result_heading_keys)
   end
 
   test "a zero-weight vote counts toward participation and quorum but not score" do

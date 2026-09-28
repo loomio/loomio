@@ -2142,11 +2142,12 @@ es:
     status: Estado
     your_vote_is_requested: Se solicita tu voto.
     browse_example_make_a_copy_hint: "<b>Haz clic en el icono de copiar</b> para crear una nueva plantilla de encuesta, utilizando el ejemplo como punto de partida."
-    weighted_score: Puntaje
-    equal_weight_score: Puntuación de igual peso
-    assigned_weight_score: Puntuación de peso asignada
     view_votes: Ver votos
-    equal_weight_points: Puntos de igual valor
+    weighted_votes: Votos ponderados
+    weighted_points: Puntos ponderados
+    pct_of_weighted_votes: "% de votos ponderados"
+    pct_of_weighted_points: "% de puntos ponderados"
+    weighted_mean: Media ponderada
   poll_common_attachment_form:
     label: Adjuntos
   poll_common_add_option:
@@ -2439,7 +2440,6 @@ es:
     number_of_choices: Número de opciones
     how_many_ranking_positions_explained: 'Ejemplo: Si se establece en 3, cada votante puede clasificar tres opciones. La primera opción obtiene 3 puntos, la segunda, 2 y la tercera, 1. Las opciones sin clasificar obtienen 0 puntos.'
     minimum_stance_choices_helptext: "¿Cuántas opciones tiene cada votante?"
-    pct_of_voters_short: "% de votantes"
   poll_meeting_time_field:
     add_time_slot: Añadir intervalo de tiempo
     new_time_slot: Nuevo horario

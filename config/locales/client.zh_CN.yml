@@ -2211,11 +2211,12 @@ zh_CN:
     status: 地位
     your_vote_is_requested: 请您投票
     browse_example_make_a_copy_hint: "<b>点击复制图标</b>，以示例为起点，创建一个新的投票模板。"
-    weighted_score: 分数
-    equal_weight_score: 等权重得分
-    assigned_weight_score: 分配权重分数
     view_votes: 查看投票
-    equal_weight_points: 等权重分
+    weighted_votes: 加权投票
+    weighted_points: 加权积分
+    pct_of_weighted_votes: 加权投票百分比
+    pct_of_weighted_points: 加权积分百分比
+    weighted_mean: 加权平均值
   poll_common_attachment_form:
     label: 附件
   poll_common_add_option:
@@ -2696,7 +2697,6 @@ zh_CN:
     pct_of_votes_cast: 投票百分比
     pct_of_voters: 符合投票资格的投票者百分比
     percent: 百分比
-    pct_of_voters_short: 选民百分比
   poll_meeting_time_field:
     add_time_slot: 添加时间段
     new_time_slot: 新时间段

@@ -2134,11 +2134,12 @@ uk:
     status: Статус
     your_vote_is_requested: Запитується ваш голос
     browse_example_make_a_copy_hint: "<b>Натисніть значок копіювання</b> , щоб створити новий шаблон опитування, використовуючи приклад як відправну точку."
-    weighted_score: Рахунок
-    equal_weight_score: Рівний ваговий бал
-    assigned_weight_score: Призначений ваговий бал
     view_votes: Переглянути голоси
-    equal_weight_points: Очки однакової ваги
+    weighted_votes: Зважені голоси
+    weighted_points: Зважені бали
+    pct_of_weighted_votes: "% зважених голосів"
+    pct_of_weighted_points: "% зважених балів"
+    weighted_mean: Середньозважене значення
   poll_common_attachment_form:
     label: Вкладення
   poll_common_add_option:
@@ -2433,7 +2434,6 @@ uk:
     number_of_choices: Кількість варіантів
     how_many_ranking_positions_explained: 'Приклад: Якщо встановлено значення 3, кожен виборець може оцінити три варіанти. Його перший вибір отримує 3 бали, другий — 2, а третій — 1. Будь-які варіанти, що не мають рейтингу, отримують 0 балів.'
     minimum_stance_choices_helptext: Скільки варіантів вибору має кожен виборець?
-    pct_of_voters_short: "% виборців"
   poll_meeting_time_field:
     add_time_slot: Додайте часовий інтервал
     new_time_slot: Новий проміжок часу

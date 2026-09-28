@@ -2131,11 +2131,12 @@ nl_NL:
     status: Status
     your_vote_is_requested: Uw stem wordt gevraagd.
     browse_example_make_a_copy_hint: "<b>Klik op het kopieerpictogram</b> om een nieuwe enquêtesjabloon te maken, waarbij je het voorbeeld als uitgangspunt gebruikt"
-    weighted_score: Score
-    equal_weight_score: Gelijke gewichtsscore
-    assigned_weight_score: Toegekende gewichtsscore
     view_votes: Bekijk stemmen
-    equal_weight_points: Gelijke gewichtspunten
+    weighted_votes: Gewogen stemmen
+    weighted_points: Gewogen punten
+    pct_of_weighted_votes: "% van de gewogen stemmen"
+    pct_of_weighted_points: "% van de gewogen punten"
+    weighted_mean: Gewogen gemiddelde
   poll_common_attachment_form:
     label: Bijlagen
   poll_common_add_option:
@@ -2430,7 +2431,6 @@ nl_NL:
     number_of_choices: Aantal keuzes
     how_many_ranking_positions_explained: 'Voorbeeld: Als dit op 3 staat, kan elke kiezer drie opties beoordelen. De eerste keuze krijgt 3 punten, de tweede 2 en de derde 1. Alle opties zonder beoordeling krijgen 0 punten.'
     minimum_stance_choices_helptext: Hoeveel keuzes heeft elke kiezer?
-    pct_of_voters_short: "% van de kiezers"
   poll_meeting_time_field:
     add_time_slot: Tijdvenster toevoegen
     new_time_slot: Nieuw tijdvenster

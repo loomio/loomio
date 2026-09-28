@@ -2134,11 +2134,12 @@ zh_TW:
     status: 地位
     your_vote_is_requested: 請您投票
     browse_example_make_a_copy_hint: "<b>點擊複製圖標</b>，以範例為起點，建立一個新的投票模板。"
-    weighted_score: 分數
-    equal_weight_score: 等權重得分
-    assigned_weight_score: 分配權重分數
     view_votes: 查看投票
-    equal_weight_points: 等權重分
+    weighted_votes: 加權投票
+    weighted_points: 加權分數
+    pct_of_weighted_votes: 加權投票百分比
+    pct_of_weighted_points: 加權分數百分比
+    weighted_mean: 加權平均值
   poll_common_attachment_form:
     label: 附件
   poll_common_add_option:
@@ -2431,7 +2432,6 @@ zh_TW:
     number_of_choices: 選擇數量
     how_many_ranking_positions_explained: 例如：如果設定為 3，則每位投票者可以對三個選項進行排名。第一個選項得 3 分，第二個得 2 分，第三個得 1 分。任何未排名的選項均得 0 分。
     minimum_stance_choices_helptext: 每個選民有多少個選擇？
-    pct_of_voters_short: 選民百分比
   poll_meeting_time_field:
     add_time_slot: 新增時間欄位
     new_time_slot: 新時間欄位

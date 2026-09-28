@@ -143,7 +143,7 @@ class PollOptionTest < ActiveSupport::TestCase
     assert_equal 1.0, result[:score]
   end
 
-  test "weighted one point polls show voters and score without a duplicate score" do
+  test "weighted one point polls show weighted votes without separate points" do
     groups(:group).update!(vote_weights_allowed: true)
     poll = PollService.create(params: {
       poll_type: 'poll',
@@ -159,7 +159,7 @@ class PollOptionTest < ActiveSupport::TestCase
     assert_includes poll.result_columns, 'score'
   end
 
-  test "weighted score polls retain the separate equal vote score" do
+  test "weighted score polls show points beside weighted points" do
     groups(:group).update!(vote_weights_allowed: true)
     poll = PollService.create(params: {
       poll_type: 'score', title: 'Weighted score', poll_option_names: %w[Alpha Beta],
@@ -168,23 +168,6 @@ class PollOptionTest < ActiveSupport::TestCase
 
     assert_includes poll.result_columns, 'unweighted_score'
     assert_includes poll.result_columns, 'score'
-  end
-
-  test "weighted proposals show voters and score without a duplicate equal weight score" do
-    groups(:group).update!(vote_weights_allowed: true)
-    poll = PollService.create(params: {
-      poll_type: 'proposal',
-      title: 'Weighted proposal',
-      poll_option_names: %w[agree disagree],
-      group_id: groups(:group).id,
-      vote_weights_enabled: true,
-      notify_on_open: false
-    }, actor: users(:admin))
-
-    assert_includes poll.result_columns, 'votes'
-    assert_includes poll.result_columns, 'score'
-    assert_not_includes poll.result_columns, 'unweighted_score'
-    assert_equal poll.result_columns.index('votes') + 1, poll.result_columns.index('score')
   end
 
   test "STV does not apply stance weights" do

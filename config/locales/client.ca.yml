@@ -2131,11 +2131,12 @@ ca:
     status: Estat
     your_vote_is_requested: Es demana el vostre vot
     browse_example_make_a_copy_hint: "<b>Feu clic a la icona de còpia</b> per crear una nova plantilla d'enquesta, utilitzant l'exemple com a punt de partida."
-    weighted_score: Puntuació
-    equal_weight_score: Puntuació de pes igual
-    assigned_weight_score: Puntuació de pes assignada
     view_votes: Veure vots
-    equal_weight_points: Punts de pes igual
+    weighted_votes: Vots ponderats
+    weighted_points: Punts ponderats
+    pct_of_weighted_votes: "% de vots ponderats"
+    pct_of_weighted_points: "% de punts ponderats"
+    weighted_mean: Mitjana ponderada
   poll_common_attachment_form:
     label: Adjunts
   poll_common_add_option:
@@ -2430,7 +2431,6 @@ ca:
     number_of_choices: Nombre d'opcions
     how_many_ranking_positions_explained: 'Exemple: Si s''estableix a 3, cada votant pot valorar tres opcions. La primera opció obté 3 punts, la segona 2 i la tercera 1. Les opcions sense valorar obtenen 0 punts.'
     minimum_stance_choices_helptext: Quantes opcions té cada votant?
-    pct_of_voters_short: "% de votants"
   poll_meeting_time_field:
     add_time_slot: Afegeix una franja horària
     new_time_slot: Nova franja horària
