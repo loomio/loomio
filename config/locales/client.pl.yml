@@ -2991,7 +2991,6 @@ pl:
     set_each_member_default_vote_weight: Ustaw domyślną wagę głosu każdego członka
     voters_will_not_be_notified: Wyborcy nie zostaną powiadomieni. Poinformuj ich o głosowaniu w inny sposób.
     give_voters_different_vote_weights: Nadaj wyborcom różne wagi głosów. Wyniki pokazują zarówno sumy zwykłe, jak i ważone.
-    vote_weights_off_warning: Wyłączenie wag głosów powoduje ustawienie każdej wagi głosu na 1 i usunięcie wag głosów specyficznych dla danej ankiety
     issued_vote_weights_will_change: Dotychczasowe wagi głosów ulegną zmianie.
     vote_weights_on_group: Włączenie wag głosów kopiuje domyślną wagę głosu każdego członka. Pozostali wyborcy otrzymują wagę głosu równą 1.
     vote_weights_on_direct: Włączenie wag głosów ustawia każdą wagę głosu na 1
@@ -2999,6 +2998,7 @@ pl:
     set_all_vote_weights: Ustaw wszystkie wagi głosów
     set_all_vote_weights_the_same: Ustaw wszystkie wagi głosów na takie same
     member_vote_weights_hint: Wyborcy, którzy nie są obecnie członkami żadnej grupy, otrzymują wagę głosu równą 1
+    vote_weights_off_warning: Wyłączenie wag głosów ustawia wagę wszystkich głosów na 1. Wszelkie wagi głosów zmienione w tej ankiecie zostaną utracone.
   poll_receipts_page:
     participation_status_requires_min_votes: Pokazuje, kto był uprawniony do głosowania. Informacja o tym, czy poszczególne osoby zagłosowały, jest wyświetlana tylko wtedy, gdy zagłosowały co najmniej %{count} osoby.
     see_votes_if_quorum_reached: Jeśli głosowanie zostało zamknięte i osiągnięto kworum, zobaczysz, kto oddał głos.

@@ -2964,7 +2964,6 @@ sl:
     set_each_member_default_vote_weight: Nastavite privzeto težo glasov za vsakega člana
     voters_will_not_be_notified: Volivci ne bodo obveščeni. O anketi jih obvestite na drug način.
     give_voters_different_vote_weights: Volivcem dodelite različne uteži glasov. Rezultati prikazujejo tako navadne kot utežene vsote.
-    vote_weights_off_warning: Če izklopite uteži glasov, se vsaka utež glasov nastavi na 1 in se odstranijo uteži glasov, specifične za anketo
     issued_vote_weights_will_change: Že izdane ponderji glasov se bodo spremenili.
     vote_weights_on_group: Vklop uteži glasov kopira privzeto utež glasov vsakega člana. Drugi volivci dobijo utež glasov 1.
     vote_weights_on_direct: Vklop uteži glasov nastavi težo vsakega glasu na 1
@@ -2972,6 +2971,7 @@ sl:
     set_all_vote_weights: Nastavi vse teže glasov
     set_all_vote_weights_the_same: Vse teže glasov nastavi na enako vrednost
     member_vote_weights_hint: Volivci brez trenutnega članstva v skupini dobijo težo glasu 1
+    vote_weights_off_warning: Če izklopite uteži glasov, se vsaka utež glasov nastavi na 1. Vse uteži glasov, ki ste jih spremenili za to anketo, bodo izgubljene.
   poll_receipts_page:
     participation_status_requires_min_votes: To prikazuje, kdo je bil upravičen do glasovanja. Ali je posamezna oseba glasovala, se prikaže šele, ko glasujejo vsaj %{count} osebe.
     see_votes_if_quorum_reached: Če je glasovanje končano in je dosežen kvorum, boste videli, kdo je glasoval.

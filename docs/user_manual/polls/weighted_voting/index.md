@@ -26,7 +26,7 @@ A member's vote weight is a default for new votes in weighted polls. Changing it
 
 ## Use vote weights in a poll
 
-A poll coordinator can select **Use vote weights** in the poll's advanced settings, including after voting opens. In a group poll, the poll copies each group member's current vote weight when that person is added as a voter. Other invited people, including everyone in a direct poll, start with a vote weight of `1`. Turning vote weights off sets every vote weight in that poll back to `1` and removes poll-specific vote weights. Turning vote weights on again copies members' default vote weights; other voters get a vote weight of `1`. This also changes vote weights for votes already cast and recalculates the poll result.
+A poll coordinator can select **Use vote weights** in the poll's advanced settings, including after voting opens. In a group poll, the poll copies each group member's current vote weight when that person is added as a voter. Other invited people, including everyone in a direct poll, start with a vote weight of `1`. Turning vote weights off sets every vote weight in that poll back to `1`, so any vote weights changed for that poll are lost. Turning vote weights on again copies members' default vote weights; other voters get a vote weight of `1`. This also changes vote weights for votes already cast and recalculates the poll result.
 
 ![The Use vote weights setting in a poll](poll-setting.png)
 

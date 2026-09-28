@@ -1,5 +1,12 @@
 # Corrected translations
 
+## 2026-09-28 — Vote weights off warning
+
+| File | Key | Before | After | Why it was wrong |
+|------|-----|--------|-------|------------------|
+| `config/locales/client.de.yml` | `poll_common_form.vote_weights_off_warning` | Formal `Wenn Sie`, `Stimmgewichtung` | Informal `Wenn du`, `Stimmgewicht` | German UI uses the informal register, and each vote has a vote weight rather than a weighting |
+| `config/locales/client.fr.yml` | `poll_common_form.vote_weights_off_warning` | Formal `que vous avez modifiées` | Informal `que tu as modifiés` | French UI uses the informal register |
+
 ## 2026-09-28 — Vote weight wording
 
 | File | Key | Before | After | Why it was wrong |

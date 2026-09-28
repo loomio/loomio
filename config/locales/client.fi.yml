@@ -2964,7 +2964,6 @@ fi:
     set_each_member_default_vote_weight: Aseta kunkin jäsenen oletusäänipainotus
     voters_will_not_be_notified: Äänestäjille ei ilmoiteta äänestyksestä. Ilmoita heille äänestyksestä toisella tavalla.
     give_voters_different_vote_weights: Anna äänestäjille eri äänipainotukset. Tulokset näyttävät sekä selkeät että painotetut kokonaissummat.
-    vote_weights_off_warning: Äänipainotusten poistaminen käytöstä asettaa jokaisen äänen painotuksen arvoksi 1 ja poistaa kyselykohtaiset äänestyspainotukset
     issued_vote_weights_will_change: Jo annetut äänimäärät muuttuvat.
     vote_weights_on_group: Äänipainotusten päälle kytkeminen kopioi jokaisen jäsenen oletusäänipainotuksen. Muut äänestäjät saavat äänipainotuksen 1.
     vote_weights_on_direct: Äänipainotusten päälle kytkeminen asettaa jokaisen äänen painoarvon arvoon 1
@@ -2972,6 +2971,7 @@ fi:
     set_all_vote_weights: Aseta kaikki äänipainotukset
     set_all_vote_weights_the_same: Aseta kaikkien äänien painotukset samaksi
     member_vote_weights_hint: Äänestäjät, joilla ei ole nykyistä ryhmän jäsenyyttä, saavat äänen painoarvon 1
+    vote_weights_off_warning: Äänipainotusten poistaminen käytöstä asettaa jokaisen äänen painotuksen arvoon 1. Tässä kyselyssä muuttamasi äänen painotukset menetetään.
   poll_receipts_page:
     participation_status_requires_min_votes: Tämä näyttää, ketkä olivat äänioikeutettuja. Se, äänestikö kukin henkilö, näytetään vasta, kun vähintään %{count} henkilöä on äänestänyt.
     see_votes_if_quorum_reached: Jos äänestys on päättynyt ja päätösvaltainen määrä on saavutettu, näet ketkä äänestivät.

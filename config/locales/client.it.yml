@@ -2992,7 +2992,6 @@ it:
     set_each_member_default_vote_weight: Imposta il peso di voto predefinito di ciascun membro.
     voters_will_not_be_notified: Gli elettori non riceveranno alcuna notifica. Informali del sondaggio in un altro modo.
     give_voters_different_vote_weights: Assegna ai votanti pesi di voto diversi. I risultati mostrano sia i totali semplici sia quelli ponderati.
-    vote_weights_off_warning: Disattivando i pesi di voto, ogni peso di voto viene impostato a 1 e vengono rimossi i pesi di voto specifici del sondaggio
     issued_vote_weights_will_change: I pesi di voto già assegnati subiranno delle modifiche.
     vote_weights_on_group: L'attivazione dei pesi di voto copia il peso di voto predefinito di ciascun membro. Gli altri votanti ottengono un peso di voto pari a 1.
     vote_weights_on_direct: L'attivazione dei pesi di voto imposta ogni peso di voto a 1
@@ -3000,6 +2999,7 @@ it:
     set_all_vote_weights: Imposta tutti i pesi di voto
     set_all_vote_weights_the_same: Stesso peso di voto per tutti
     member_vote_weights_hint: Gli elettori senza un'attuale appartenenza a un gruppo ottengono un peso di voto pari a 1
+    vote_weights_off_warning: Disattivando i pesi di voto, ogni peso di voto viene impostato a 1. Tutti i pesi di voto modificati per questo sondaggio andranno persi.
   poll_receipts_page:
     participation_status_requires_min_votes: Mostra chi aveva diritto di voto. Lo stato di partecipazione di ogni persona viene mostrato solo quando hanno votato almeno %{count} persone.
     see_votes_if_quorum_reached: Se la votazione è chiusa e il quorum è stato raggiunto, vedrai chi ha espresso il voto.
