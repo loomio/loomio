@@ -14,7 +14,7 @@ A group admin can open **Group settings → Permissions** and select **Allow wei
 
 ## Set members' vote weights
 
-Open the group's **Members** page and select **Edit vote weights**. Enter vote weights and select **Save vote weights**. Search by name or email to find someone. To give every member the same vote weight, select **Set all vote weights**. You can also edit one member's vote weight from their menu.
+Open the group's **Members** page and select **Edit vote weights**. Enter vote weights and select **Save vote weights**. Vote weights can be `0` or more, with up to three decimal places. Search by name or email to find someone. To give every member the same vote weight, select **Set all vote weights**. You can also edit one member's vote weight from their menu.
 
 ![Vote weights for group members](member-weights.png)
 
