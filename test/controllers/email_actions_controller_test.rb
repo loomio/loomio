@@ -82,6 +82,7 @@ class EmailActionsControllerTest < ActionController::TestCase
     put :set_catch_up, params: {unsubscribe_token: 'invalid', email_catch_up_day: 'never'}
 
     assert_response :forbidden
+    assert_select "main.sistema h1", text: I18n.t('errors.403.title')
     assert_equal 7, @user.reload.email_catch_up_day
   end
 
