@@ -15,7 +15,7 @@ class Api::V1::PollTemplatesController < Api::V1::RestfulController
   end
 
   def browse
-    templates = PollTemplateService.default_templates + PollTemplateService.example_templates
+    templates = PollTemplateService.default_templates + PollTemplateService.public_example_templates
 
     results = templates.map { |dt|
       {

@@ -120,12 +120,7 @@ Available settings depend on the template:
 
 ![](vote_reason_options.png)
 
-The conditional settings follow the voting icon rather than the option name.
-They still apply if you rename Disagree to a term such as Objection. The
-Consent template defaults to **Required for disagree or block**, while the
-Consensus template defaults to **Required for block**. Other templates default
-to **Optional**, except Question rounds where the response itself is required.
-The poll author can change the setting for an individual poll.
+The conditional settings follow the voting icon rather than the option name. They still apply if you rename Disagree to a term such as Objection. The Consent template defaults to **Required for disagree or block**, while the Consensus template defaults to **Required for block**. Other templates default to **Optional**. The poll author can change the setting for an individual poll.
 
 **Limit reason to maximum 500 characters:** Keeping vote reasons short makes them easier to understand. A collection of concise reasons is a great resource for making a decision.  This setting is ticked by default. Untick to allow for longer reasons.
 

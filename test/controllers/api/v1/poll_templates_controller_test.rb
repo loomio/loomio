@@ -43,6 +43,20 @@ class Api::V1::PollTemplatesControllerTest < ActionController::TestCase
     assert_equal template.id, json['poll_templates'][0]['id']
   end
 
+  test "built-in Question Round is absent from template discovery" do
+    sign_in @admin
+
+    get :index, params: {group_id: @group.id}
+    assert_response :success
+    refute_includes JSON.parse(response.body).fetch('poll_templates').pluck('key'), 'question'
+
+    get :browse, params: {group_id: @group.id}
+    assert_response :success
+    refute_includes JSON.parse(response.body).pluck('key'), 'question'
+
+    assert PollTemplateService.example_templates.any? { |template| template.key == 'question' }
+  end
+
   # === SHOW ===
 
   test "show returns a template in user group" do

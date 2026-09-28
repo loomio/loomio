@@ -8,7 +8,7 @@ class PollTemplateService
         template
       end
     ).concat(
-      example_templates.map do |template|
+      public_example_templates.map do |template|
         template.group_id = group.id
         template.example = true
         template
@@ -22,6 +22,10 @@ class PollTemplateService
 
   def self.example_templates
     build_templates_from(AppConfig.poll_templates.select { |_key, attrs| attrs['example'] })
+  end
+
+  def self.public_example_templates
+    example_templates.reject { |template| template.key == 'question' }
   end
 
   private

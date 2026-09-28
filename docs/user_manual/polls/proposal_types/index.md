@@ -25,7 +25,3 @@ Polls collect selections, scores, allocations, rankings, availability, or electi
 ## STV Election
 
 [STV Elections](/en/user_manual/polls/stv/) let participants rank candidates in a proportional, multi-winner election. Use STV to elect a committee, board, or group of delegates.
-
-## Other specialized method
-
-Loomio also includes a Question round for collecting questions without voting. Group administrators can make it available from [Poll templates](/en/user_manual/polls/poll_templates/).
