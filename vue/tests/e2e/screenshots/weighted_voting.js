@@ -85,6 +85,6 @@ module.exports = {
     });
     page.click('.poll-common-chart-table thead th:nth-child(3) button');
     page.expectElement('.poll-common-chart-table thead th:nth-child(3) button[aria-pressed="true"]');
-    page.expectText('.poll-common-chart-table', '25%');
+    page.expectText('.poll-common-chart-table', '67%');
   }
 };

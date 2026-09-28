@@ -867,8 +867,8 @@ module Dev::Scenarios::OatmilkCooperative
     poll.update!(vote_weights_enabled: true)
     if params[:votes] == '1'
       [
-        [coordinator, 'agree'], [treasurer, 'agree'], [production_lead, 'agree'],
-        [operations_coordinator, 'agree'], [board_member, 'disagree'], [sales_lead, 'disagree']
+        [coordinator, 'agree'], [treasurer, 'agree'], [board_member, 'disagree'],
+        [production_lead, 'disagree'], [sales_lead, 'disagree'], [operations_coordinator, 'disagree']
       ].each do |voter, icon|
         option = poll.poll_options.find_by!(icon: icon)
         StanceService.update(
