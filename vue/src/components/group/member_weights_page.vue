@@ -38,6 +38,19 @@ const pageLast = computed(() => Math.min(page.value * limit, membershipTotal.val
 const editedIds = computed(() => Object.keys(weightsDraft.value).filter(id => Number(weightsDraft.value[id]) !== Number(weightsLoaded.value[id])));
 const weightsValid = computed(() => editedIds.value.every(id => voteWeightValid(weightsDraft.value[id])));
 
+// The weights endpoint returns plain rows, so shape each one like a user for
+// the shared avatar, which colours initials by user id.
+function avatarUser(membership) {
+  return {
+    id: membership.user_id,
+    name: membership.name,
+    thumbUrl: membership.avatar_url,
+    avatarUrl: membership.avatar_url,
+    avatarKind: 'initials',
+    avatarInitials: membership.avatar_initials
+  };
+}
+
 function openResetDialog() {
   resetWeight.value = '1';
   resetDialog.value = true;
@@ -152,9 +165,7 @@ onMounted(async () => {
         tr(v-for="membership in memberships" :key="membership.id")
           td
             .d-flex.align-center.ga-2
-              v-avatar(size="36")
-                v-img(v-if="membership.avatar_url" :src="membership.avatar_url")
-                span(v-if="!membership.avatar_url") {{ membership.avatar_initials }}
+              user-avatar(:user="avatarUser(membership)" :size="36" no-link)
               span {{ membership.name }}
               span.text-medium-emphasis(v-if="membership.title") {{ membership.title }}
               v-chip(v-if="membership.delegate" size="x-small" variant="tonal" label) {{ t('members_panel.delegate') }}

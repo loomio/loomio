@@ -96,6 +96,7 @@ class Api::V1::MembershipsController < Api::V1::RestfulController
         user = membership.user
         {
           id: membership.id,
+          user_id: user.id,
           name: user.name.presence || user.email,
           email: user.email,
           avatar_url: user.thumb_url,

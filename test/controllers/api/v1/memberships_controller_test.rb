@@ -158,7 +158,7 @@ class Api::V1::MembershipsControllerTest < ActionController::TestCase
     json = JSON.parse(response.body)
     assert_equal ordered_ids.length, json.fetch('total')
     assert_equal ordered_ids[1, 2], json.fetch('memberships').map { |row| row.fetch('id') }
-    assert_equal %w[avatar_initials avatar_url delegate email id name title weight], json.fetch('memberships').first.keys.sort
+    assert_equal %w[avatar_initials avatar_url delegate email id name title user_id weight], json.fetch('memberships').first.keys.sort
   end
 
   test 'weight editor filters by name or email' do
