@@ -1,6 +1,17 @@
 require "test_helper"
 
 class NotificationMailerTest < ActionMailer::TestCase
+  test 'a mention email links to the thread notification form' do
+    item = topic_items(:discussion_created_topic_item)
+    item.update_columns(kind: 'user_mentioned')
+
+    mail = NotificationMailer.topic_item(users(:user).id, item.id)
+    document = Nokogiri::HTML5(mail.html_part&.body&.decoded || mail.body.decoded)
+
+    assert document.at_css('.email-footer a[href*="email_actions/unsubscribe"]')
+    refute document.at_css('.email-footer a[href*="email_preferences"]')
+  end
+
   test "saved markdown cannot put an unsafe URL in notification email HTML" do
     discussion = discussions(:discussion)
     discussion.update!(

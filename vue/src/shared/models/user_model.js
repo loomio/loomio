@@ -93,8 +93,7 @@ export default class UserModel extends BaseModel {
   saveVolume(volumeEmail, volumePush, applyToAll) {
     this.processing = true;
     const params = {
-      apply_to_all: applyToAll,
-      unsubscribe_token: this.unsubscribeToken
+      apply_to_all: applyToAll
     };
     if (volumeEmail != null) params.volume_email = volumeEmail;
     if (volumePush != null) params.volume_push = volumePush;

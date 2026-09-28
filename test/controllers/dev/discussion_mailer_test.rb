@@ -30,6 +30,19 @@ class Dev::DiscussionMailerTest < ActionController::TestCase
     assert_text_no_tags('.email-user-content', "A description for this discussion. Should this be rich?")
   end
 
+  test "discussion_created preview delivers mail with the development job adapter" do
+    previous_adapter = ActiveJob::Base.queue_adapter
+    ActiveJob::Base.queue_adapter = :solid_queue
+
+    get :setup_discussion_mailer_discussion_created_email
+
+    assert_response :success
+    refute_includes response.body, "no emails sent"
+    assert_instance_of ActiveJob::QueueAdapters::SolidQueueAdapter, ActiveJob::Base.queue_adapter
+  ensure
+    ActiveJob::Base.queue_adapter = previous_adapter
+  end
+
   test "discussion_announced" do
     get :setup_discussion_mailer_discussion_announced_email
     assert_response :success

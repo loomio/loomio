@@ -1,7 +1,6 @@
 class Api::V1::PasskeyCredentialsController < Api::V1::RestfulController
   include RequiresLocalLogin
   before_action :require_current_user, only: [:index, :registration_options, :create, :destroy]
-  before_action :forbid_restricted_user, only: [:index, :registration_options, :create, :destroy]
   before_action :require_recent_authentication, only: [:registration_options, :create, :destroy]
 
   def index
@@ -111,10 +110,6 @@ class Api::V1::PasskeyCredentialsController < Api::V1::RestfulController
   end
 
   private
-
-  def forbid_restricted_user
-    respond_with_error(403) if current_user.restricted
-  end
 
   def relying_party
     PasskeyService.relying_party(request_origin: request.base_url, request_rp_id: request.host)
