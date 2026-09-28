@@ -317,6 +317,7 @@ module.exports = {
     )
     test.expect.element('.poll-common-vote-form').to.not.be.present
     test.expect.element('.poll-common-action-panel__results-hidden-until-closed').to.not.be.present
+    test.expect.element('.action-dock__button--view_votes').to.not.be.present
 
     page.click('.action-dock__button--close_poll')
     page.click('.confirm-modal__submit')

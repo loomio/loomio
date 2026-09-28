@@ -4,14 +4,14 @@ import { nextTick } from 'vue';
 
 const mocks = vi.hoisted(() => ({
   fetch: vi.fn(),
-  canVerifyParticipants: vi.fn(),
+  canViewAnonymousVoters: vi.fn(),
   replace: vi.fn(),
   event: vi.fn(),
   routeQuery: {}
 }));
 
 vi.mock('@/shared/services/records', () => ({default: {fetch: mocks.fetch}}));
-vi.mock('@/shared/services/ability_service', () => ({default: {canVerifyParticipants: mocks.canVerifyParticipants}}));
+vi.mock('@/shared/services/ability_service', () => ({default: {canViewAnonymousVoters: mocks.canViewAnonymousVoters}}));
 vi.mock('@/shared/services/event_bus', () => ({default: {$emit: mocks.event}}));
 vi.mock('vue-router', () => ({
   useRoute: () => ({query: mocks.routeQuery}),
@@ -80,7 +80,7 @@ describe('Poll votes panel', () => {
   });
 
   it('does not show anonymous participation status below the threshold', async () => {
-    mocks.canVerifyParticipants.mockReturnValue(true);
+    mocks.canViewAnonymousVoters.mockReturnValue(true);
     mocks.fetch.mockResolvedValue({
       voters: [{voter_id: 1, voter_name: 'Alex', inviter_name: 'Morgan'}],
       meta: {total: 1, show_voter_email: false, show_voter_details: true,
@@ -98,7 +98,7 @@ describe('Poll votes panel', () => {
   });
 
   it('does not request anonymous voter records for an unauthorized viewer', () => {
-    mocks.canVerifyParticipants.mockReturnValue(false);
+    mocks.canViewAnonymousVoters.mockReturnValue(false);
     const wrapper = mountPanel({anonymous: true});
     expect(mocks.fetch).not.toHaveBeenCalled();
     expect(wrapper.text()).toContain('poll_common_votes_panel.participation_records_restricted');

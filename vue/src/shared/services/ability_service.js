@@ -365,9 +365,9 @@ export default new class AbilityService {
     return !poll.discardedAt && poll.membersInclude(Session.user()) && (poll.closedAt || (poll.hideResults !== "until_closed"));
   }
 
-  canVerifyParticipants(poll) {
-    if (!poll.anonymous || !poll.groupId) { return false; }
-    return poll.adminsInclude(Session.user());
+  // Matches the server's view_anonymous_voters: everyone who can see the results.
+  canViewAnonymousVoters(poll) {
+    return poll.anonymous && poll.showResults();
   }
 
   canSetPollOutcome(poll) {

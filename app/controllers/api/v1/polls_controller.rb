@@ -3,7 +3,8 @@ class Api::V1::PollsController < Api::V1::RestfulController
   # come only from the electorate; ballot choices are never joined to voters.
   def votes
     @poll = load_and_authorize(:poll)
-    @can_view_voter_email = @poll.group_id && @poll.group.admins.exists?(current_user.id)
+    @show_voter_details = voter_details_visible?
+    @show_voter_email = @show_voter_details && @poll.group.admins.exists?(current_user.id)
     return render_identified_votes unless @poll.anonymous?
 
     current_user.ability.authorize!(:view_anonymous_voters, @poll)
@@ -15,32 +16,33 @@ class Api::V1::PollsController < Api::V1::RestfulController
     total = voters_eligible.count
     voters_eligible = page_collection_bounded(voters_eligible.order(id: :desc)).to_a
 
-    can_view_email = @can_view_voter_email
-    memberships = @poll.group.memberships.where(user_id: voters_eligible.map(&:voter_id)).index_by(&:user_id)
-    voters = User.with_attached_uploaded_avatar.where(id: voters_eligible.map(&:voter_id)).index_by(&:id)
-    inviters = User.where(id: voters_eligible.map(&:inviter_id)).index_by(&:id)
+    voter_ids = voters_eligible.map(&:voter_id)
+    voters = User.with_attached_uploaded_avatar.where(id: voter_ids).index_by(&:id)
+    memberships = @show_voter_details ? @poll.group.memberships.where(user_id: voter_ids).index_by(&:user_id) : {}
+    inviters = @show_voter_details ? User.where(id: voters_eligible.map(&:inviter_id).compact).index_by(&:id) : {}
     participation_status_visible = @poll.participation_status_visible?
     render json: {
       meta: {
         total:,
-        show_voter_details: true,
-        show_voter_email: can_view_email,
+        show_voter_details: @show_voter_details,
+        show_voter_email: @show_voter_email,
         participation_status_visible:,
         participation_status_votes_min: Poll::PARTICIPATION_STATUS_VOTES_MIN
       },
       voters: voters_eligible.map do |eligible_voter|
         voter = voters[eligible_voter.voter_id]
-        membership = memberships[eligible_voter.voter_id]
         row = {
           voter_id: eligible_voter.voter_id,
           voter_name: voter.name,
           voter_thumb_url: voter.thumb_url,
-          voter_avatar_initials: voter.avatar_initials,
-          member_since: membership&.accepted_at&.to_date&.iso8601,
-          inviter_name: inviters[eligible_voter.inviter_id]&.name,
-          invited_on: eligible_voter.invited_at&.to_date&.iso8601
+          voter_avatar_initials: voter.avatar_initials
         }
-        row[:voter_email] = voter.email if can_view_email
+        if @show_voter_details
+          row[:member_since] = memberships[eligible_voter.voter_id]&.accepted_at&.to_date&.iso8601
+          row[:inviter_name] = inviters[eligible_voter.inviter_id]&.name
+          row[:invited_on] = eligible_voter.invited_at&.to_date&.iso8601
+          row[:voter_email] = voter.email if @show_voter_email
+        end
         row[:vote_cast] = eligible_voter.ballot_submitted if participation_status_visible
         row
       end
@@ -126,7 +128,14 @@ class Api::V1::PollsController < Api::V1::RestfulController
   # Callers join from the poll's voters to users, so name searches start from
   # the poll's electorate rather than scanning every user.
   def voters_matching_name
-    @can_view_voter_email ? User.invitable_search(params[:name]) : User.mention_search(params[:name])
+    @show_voter_email ? User.invitable_search(params[:name]) : User.mention_search(params[:name])
+  end
+
+  # Membership and invitation details are for the group's members and the
+  # poll's own voters. Visitors to a public poll see names only.
+  def voter_details_visible?
+    @poll.group_id.present? &&
+      (@poll.members.exists?(current_user.id) || @poll.unmasked_voters.exists?(current_user.id))
   end
 
   # Filter and page stances before loading voter details. Choice-based filters
@@ -149,12 +158,10 @@ class Api::V1::PollsController < Api::V1::RestfulController
     stances = page_collection_bounded(stances.order('stances.cast_at DESC NULLS LAST, stances.created_at DESC, stances.id DESC')).to_a
     voter_ids = stances.map(&:participant_id)
     voters = User.with_attached_uploaded_avatar.where(id: voter_ids).index_by(&:id)
-    show_voter_details = @poll.group_id && (@poll.members.exists?(current_user.id) || @poll.stances.latest.exists?(participant_id: current_user.id))
-    show_voter_email = show_voter_details && @can_view_voter_email
-    memberships = show_voter_details ? @poll.group.memberships.where(user_id: voter_ids).index_by(&:user_id) : {}
-    inviters = show_voter_details ? User.where(id: stances.map(&:inviter_id).compact).index_by(&:id) : {}
+    memberships = @show_voter_details ? @poll.group.memberships.where(user_id: voter_ids).index_by(&:user_id) : {}
+    inviters = @show_voter_details ? User.where(id: stances.map(&:inviter_id).compact).index_by(&:id) : {}
     render json: {
-      meta: {total:, show_voter_details: !!show_voter_details, show_voter_email: !!show_voter_email},
+      meta: {total:, show_voter_details: @show_voter_details, show_voter_email: @show_voter_email},
       voters: stances.map do |stance|
         voter = voters.fetch(stance.participant_id)
         row = {
@@ -164,11 +171,11 @@ class Api::V1::PollsController < Api::V1::RestfulController
           voter_avatar_initials: voter.avatar_initials,
           vote_cast: stance.cast_at.present?
         }
-        if show_voter_details
+        if @show_voter_details
           row[:member_since] = memberships[voter.id]&.accepted_at&.to_date&.iso8601
           row[:inviter_name] = inviters[stance.inviter_id]&.name
           row[:invited_on] = stance.created_at&.to_date&.iso8601
-          row[:voter_email] = voter.email if show_voter_email
+          row[:voter_email] = voter.email if @show_voter_email
         end
         if show_results && stance.cast_at.present?
           row[:option_scores] = stance.option_scores

@@ -22,8 +22,11 @@ module Ability::Poll
       poll.results_visible?(voted: voted)
     end
 
+    # The anonymous electorate is visible to everyone who can see the results.
+    # Detached anonymous polls hide results until they close, so this is after
+    # closing. Rows never include ballot choices or voting times.
     can :view_anonymous_voters, ::Poll do |poll|
-      poll.anonymous? && poll.group_id && poll.admins.exists?(user.id)
+      poll.anonymous? && user.can?(:show, poll) && poll.results_available?
     end
 
     can [:show], ::Poll do |poll|

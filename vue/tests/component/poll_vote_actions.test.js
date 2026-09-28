@@ -1,13 +1,13 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 
 const mocks = vi.hoisted(() => ({
-  canVerifyParticipants: vi.fn(),
+  canViewAnonymousVoters: vi.fn(),
   canAddMembersPoll: vi.fn(),
   openModal: vi.fn()
 }));
 
 vi.mock('@/shared/services/ability_service', () => ({default: {
-  canVerifyParticipants: mocks.canVerifyParticipants,
+  canViewAnonymousVoters: mocks.canViewAnonymousVoters,
   canAddMembersPoll: mocks.canAddMembersPoll
 }}));
 vi.mock('@/shared/services/bookmark_service', () => ({default: {actions: () => ({})}}));
@@ -45,11 +45,11 @@ describe('poll vote actions', () => {
     expect(pollActions({discardedAt: '2026-09-25T00:00:00Z'}).view_votes.canPerform()).toBe(false);
   });
 
-  it('shows anonymous votes only to participants allowed to verify them', () => {
-    mocks.canVerifyParticipants.mockReturnValue(false);
+  it('shows anonymous votes to everyone who can see the results', () => {
+    mocks.canViewAnonymousVoters.mockReturnValue(false);
     expect(pollActions({anonymous: true}).view_votes.canPerform()).toBe(false);
 
-    mocks.canVerifyParticipants.mockReturnValue(true);
+    mocks.canViewAnonymousVoters.mockReturnValue(true);
     expect(pollActions({anonymous: true, decidedVotersCount: 0}).view_votes.canPerform()).toBe(true);
   });
 

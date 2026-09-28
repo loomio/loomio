@@ -19,7 +19,7 @@ const voters = ref([]);
 const meta = ref(null);
 const loading = ref(false);
 let fetchSequence = 0;
-const canView = !poll.anonymous || AbilityService.canVerifyParticipants(poll);
+const canView = !poll.anonymous || AbilityService.canViewAnonymousVoters(poll);
 const totalPages = computed(() => Math.max(1, Math.ceil((meta.value?.total || 0) / limit)));
 const rangeFirst = computed(() => meta.value?.total ? (page.value - 1) * limit + 1 : 0);
 const rangeLast = computed(() => Math.min(page.value * limit, meta.value?.total || 0));

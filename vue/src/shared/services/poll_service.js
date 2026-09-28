@@ -122,7 +122,7 @@ export default new class PollService {
         dock: 2,
         canPerform() {
           return !poll.discardedAt && (poll.anonymous
-            ? AbilityService.canVerifyParticipants(poll)
+            ? AbilityService.canViewAnonymousVoters(poll)
             : poll.decidedVotersCount > 0);
         },
         to() { return `/p/${poll.key}/votes`; }
