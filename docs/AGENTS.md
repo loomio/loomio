@@ -113,14 +113,16 @@ Work through screenshot replacements one image at a time:
 
 Use these framing defaults unless the page needs a deliberate exception:
 
-- Capture the smallest complete interface context that explains the action. A
-  discussion or proposal example usually needs the full central `.strand-card`,
-  but not the application drawer, top bar, or thread drawer.
+- Be generous with context. Prefer a larger area with the subject spotlighted
+  over a tight crop around the subject, so the reader can see where it sits on
+  the page. A discussion or proposal example usually needs the full central
+  `.strand-card`, but not the application drawer, top bar, or thread drawer.
 - Do not include the application toolbar or title bar unless the screenshot also
   includes an application drawer that needs it for orientation.
 - When the subject is a control inside a form or modal, show the whole form or
-  modal and spotlight the control. Do not crop so tightly that the reader cannot
-  identify where the control belongs.
+  modal and spotlight the control. If the form is too long for that, show about
+  one screen of the form around the control, with the control spotlighted. Do
+  not crop so tightly that the reader cannot identify where the control belongs.
 - Give compact editor, comment, task, and menu captures about 32 pixels of
   external padding. Adjust individual images when an overlay or unusually shaped
   target needs more or less space.
