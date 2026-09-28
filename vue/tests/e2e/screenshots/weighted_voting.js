@@ -35,7 +35,7 @@ module.exports = {
     page.expectText('.group-page__name', 'Oatmilk Cooperative');
     screenshot.captureElement('polls/weighted_voting/member-weights', '.group-page', {
       width: 1200,
-      height: 1100,
+      height: 1400,
       spotlight: {selector: '.member-weights-page', padding: 16, radius: 16, opacity: 0.4, outlineWidth: 0}
     });
   },

@@ -834,19 +834,42 @@ module Dev::Scenarios::OatmilkCooperative
     redirect_to poll_path(poll)
   end
 
+  # The board decides with vote weight 1. Operations staff take part in the
+  # conversation and vote with vote weight 0, so their votes are on record
+  # without changing the result.
   def setup_manual_oatmilk_vote_weights
     group, coordinator, discussion = create_manual_oatmilk_cooperative
     production_lead = User.find_by!(email: 'samira@oatmilk.example')
     sales_lead = User.find_by!(email: 'alex@oatmilk.example')
+    board_member = create_manual_oatmilk_member(name: 'Priya Nair', email: 'priya@oatmilk.example')
+    treasurer = create_manual_oatmilk_member(name: 'Tom Walker', email: 'tom@oatmilk.example')
+    operations_coordinator = create_manual_oatmilk_member(name: 'Lena Fischer', email: 'lena@oatmilk.example')
+    [board_member, treasurer, operations_coordinator].each { |member| group.add_member!(member) }
     group.update!(vote_weights_allowed: true)
-    {coordinator => 0, production_lead => 1, sales_lead => 3}.each do |member, weight|
-      group.memberships.active.find_by!(user: member).update!(weight: weight)
+    {
+      coordinator => ['Board chair', 1],
+      board_member => ['Board member', 1],
+      treasurer => ['Treasurer', 1],
+      production_lead => ['Production lead', 0],
+      sales_lead => ['Sales lead', 0],
+      operations_coordinator => ['Operations coordinator', 0]
+    }.each do |member, (title, weight)|
+      membership = group.memberships.active.find_by!(user: member)
+      membership.update!(title: title, weight: weight)
+      MembershipService.update_user_titles(membership.id)
     end
 
     poll = discussion.polls.find_by!(title: 'Run a six-week returnable bottle trial')
+    PollService.invite(
+      poll: poll, actor: coordinator,
+      params: {recipient_user_ids: [board_member.id, treasurer.id, operations_coordinator.id], notify_recipients: false}
+    )
     poll.update!(vote_weights_enabled: true)
     if params[:votes] == '1'
-      [[coordinator, 'agree'], [production_lead, 'agree'], [sales_lead, 'disagree']].each do |voter, icon|
+      [
+        [coordinator, 'agree'], [treasurer, 'agree'], [production_lead, 'agree'],
+        [operations_coordinator, 'agree'], [board_member, 'disagree'], [sales_lead, 'disagree']
+      ].each do |voter, icon|
         option = poll.poll_options.find_by!(icon: icon)
         StanceService.update(
           stance: poll.stances.latest.find_by!(participant: voter),
