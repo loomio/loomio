@@ -1503,8 +1503,8 @@ he:
     members_can_create_tags_help: אפשר לחברים ליצור תגיות חדשות בעת תיוג שרשורים וסקרים
     non_members_can_start_discussions: מי שאינם חברים יכולים לפתוח דיונים
     non_members_can_start_discussions_help: אפשר לאנשים שאינם חברים להתחיל דיון מאחת התבניות של קבוצה זו
-    vote_weights_allowed: אפשר משקלי קולות
     let_admins_set_vote_weights: אפשרו למנהלים לתת לחברים משקלי הצבעה שונים, כך שחלק מהקולות ייחשבו יותר מאחרים
+    allow_weighted_voting: אפשר הצבעה משוקללת
   group_export_modal:
     title: יצוא נתונים מהקבוצה
     body: |
@@ -2967,8 +2967,6 @@ he:
     manage_voters: ניהול מצביעים
     remove_voter: הסר את הבוחר
     voter_page_count: "%{first}–%{last} מתוך %{total}"
-    vote_weights: משקלי הצבעה
-    use_vote_weights: השתמש במשקלי קולות
     vote_weight_for: משקל הצבעה עבור %{name}
     save_vote_weights: שמירת משקלי הצבעה
     vote_weights_updated: משקלי הקולות עודכנו
@@ -2984,13 +2982,15 @@ he:
     voters_will_not_be_notified: הבוחרים לא יקבלו הודעה. יש להודיע להם על הסקר בדרך אחרת.
     give_voters_different_vote_weights: תנו לבוחרים משקלי קולות שונים. התוצאות מציגות גם את הסך הכולל הרגיל וגם את הסך הכולל המשוקלל.
     issued_vote_weights_will_change: משקלי הקולות שכבר פורסמו ישתנו.
-    vote_weights_on_group: הפעלת משקלי קולות מעתיקה את משקל הקולות המוגדר כברירת מחדל של כל חבר. שאר המצביעים מקבלים משקל קולות של 1.
-    vote_weights_on_direct: הפעלת משקלי קולות מגדירה כל משקל קולות ל-1
     weight_for_all: משקל הצבעה לכולם
     set_all_vote_weights: קבע את כל משקלי הקולות
     set_all_vote_weights_the_same: קבע את משקלי הקולות של כל הקולות זהים
     member_vote_weights_hint: מצביעים ללא חברות קבוצתית נוכחית מקבלים משקל קולות של 1
-    vote_weights_off_warning: כיבוי משקלי הקולות מגדיר כל משקל קולות ל-1. כל משקלי הקולות ששיניתם עבור סקר זה יאבדו.
+    weighted_voting: הצבעה משוקללת
+    use_weighted_voting: השתמש בהצבעה משוקללת
+    weighted_voting_off_warning: כיבוי הצבעה משוקללת מגדיר את משקל כל הקולות ל-1. כל משקלי הקולות ששיניתם עבור סקר זה יאבדו.
+    weighted_voting_on_group: הפעלת הצבעה משוקללת מעתיקה את משקל ההצבעה המוגדר כברירת מחדל של כל חבר. שאר המצביעים מקבלים משקל הצבעה של 1.
+    weighted_voting_on_direct: הפעלת הצבעה משוקללת מגדירה את משקל כל הצבעה ל-1
   poll_receipts_page:
     participation_status_requires_min_votes: זה מראה מי היה זכאי להצביע. האם כל אדם הצביע מוצג רק לאחר שלפחות %{count} אנשים הצביעו.
     see_votes_if_quorum_reached: אם ההצבעה נסגרה והושג המניין החוקי, תראו מי הצביע.

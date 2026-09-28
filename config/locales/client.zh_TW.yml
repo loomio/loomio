@@ -1508,8 +1508,8 @@ zh_TW:
     members_can_create_tags_help: 允許成員在標記貼文和投票時建立新標籤。
     non_members_can_start_discussions: 非會員也可以發起討論
     non_members_can_start_discussions_help: 允許非成員使用本群組提供的範本發起討論。
-    vote_weights_allowed: 允許投票權重
     let_admins_set_vote_weights: 允許管理員為成員設定不同的投票權重，使某些投票比其他投票更重要
+    allow_weighted_voting: 允許加權投票
   group_export_modal:
     title: 匯出群組資料
     body: |
@@ -2976,8 +2976,6 @@ zh_TW:
     manage_voters: 管理選民
     remove_voter: 移除選民
     voter_page_count: "%{first}–%{last} 共 %{total}"
-    vote_weights: 投票權重
-    use_vote_weights: 使用投票權重
     vote_weight_for: "%{name} 的投票權重"
     save_vote_weights: 保存投票權重
     vote_weights_updated: 投票權重已更新
@@ -2993,13 +2991,15 @@ zh_TW:
     voters_will_not_be_notified: 選民不會收到通知。請透過其他方式告知他們投票情況。
     give_voters_different_vote_weights: 賦予選民不同的投票權重。結果將顯示原始總數和加權總數。
     issued_vote_weights_will_change: 已公佈的投票權重將會改變。
-    vote_weights_on_group: 啟用投票權重後，每個成員的投票權重將保持不變。其他投票者的投票權重為 1。
-    vote_weights_on_direct: 啟用投票權重後，所有投票權重均設定為 1
     weight_for_all: 所有投票權重
     set_all_vote_weights: 設定所有投票權重
     set_all_vote_weights_the_same: 將所有投票權重設為相同
     member_vote_weights_hint: 沒有目前團體成員身分的選民投票權重為1
-    vote_weights_off_warning: 關閉投票權重會將所有投票權重設為 1。您在此投票中更改的任何投票權重都將遺失。
+    weighted_voting: 加權投票
+    use_weighted_voting: 使用加權投票
+    weighted_voting_off_warning: 關閉加權投票後，所有投票權重均為 1。您在此投票中更改的任何投票權重都將遺失。
+    weighted_voting_on_group: 啟用加權投票後，每個成員的預設投票權重將會被複製。其他投票者的投票權重為 1。
+    weighted_voting_on_direct: 啟用加權投票後，所有選票的權重皆設為 1
   poll_receipts_page:
     participation_status_requires_min_votes: 這裡顯示哪些人有資格投票。只有在至少%{count}人投票後，才會顯示每個人是否投票。
     see_votes_if_quorum_reached: 如果投票已結束且達到法定人數，您將看到誰投了票。

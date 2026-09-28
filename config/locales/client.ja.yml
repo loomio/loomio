@@ -1498,8 +1498,8 @@ ja:
     members_can_create_tags_help: メンバーがスレッドやアンケートにタグを付ける際に、新しいタグを作成できるようにする
     non_members_can_start_discussions: 非会員でも議論を開始できます
     non_members_can_start_discussions_help: 非メンバーがこのグループのテンプレートのいずれかからディスカッションを開始できるようにする
-    vote_weights_allowed: 投票の重み付けを許可する
     let_admins_set_vote_weights: 管理者がメンバーに異なる投票重みを設定できるようにすることで、一部の投票が他の投票よりも重要になるようにします
+    allow_weighted_voting: 加重投票を許可する
   group_export_modal:
     title: グループデータのエクスポート
     body: <p>グループのデータのコピーはいつでもダウンロードできます。<a href="https://help.loomio.org/en/user_manual/groups/data_export/">もっと詳しく調べてください。</a></p><p>グループの規模に応じて、完了までに数分かかります。準備が完了すると、ファイルをダウンロードするためのリンクが記載された電子メールが届きます。</p>
@@ -2947,8 +2947,6 @@ ja:
     manage_voters: 有権者の管理
     remove_voter: 有権者を削除する
     voter_page_count: "%{first}～%{last} / %{total}"
-    vote_weights: 投票の重み
-    use_vote_weights: 投票の重み付けを使用する
     vote_weight_for: "%{name}への投票重み"
     save_vote_weights: 投票の重みを保存する
     vote_weights_updated: 投票の重みが更新されました
@@ -2964,13 +2962,15 @@ ja:
     voters_will_not_be_notified: 有権者には通知されません。別の方法で投票について知らせてください。
     give_voters_different_vote_weights: 有権者に異なる投票重みを与える。結果は、単純な合計値と重み付けされた合計値の両方を示す。
     issued_vote_weights_will_change: 既に発行された投票権の重み付けは変更されます。
-    vote_weights_on_group: 投票重みを有効にすると、各メンバーのデフォルトの投票重みがコピーされます。その他の投票者の投票重みは1になります。
-    vote_weights_on_direct: 投票重みをオンにすると、すべての投票重みが1に設定されます
     weight_for_all: 全員の投票権
     set_all_vote_weights: すべての投票の重みを設定する
     set_all_vote_weights_the_same: すべての投票の重みを同じに設定する
     member_vote_weights_hint: 現在グループに所属していない有権者は、1票の投票権を持つ
-    vote_weights_off_warning: 投票重みをオフにすると、すべての投票重みが1に設定されます。この投票で変更した投票重みはすべて失われます。
+    weighted_voting: 加重投票
+    use_weighted_voting: 加重投票を使用する
+    weighted_voting_off_warning: 加重投票を無効にすると、すべての投票の重みが1に設定されます。この投票で変更した投票の重みはすべて失われます。
+    weighted_voting_on_group: 加重投票を有効にすると、各メンバーのデフォルトの投票重みがコピーされます。その他の投票者には投票重み1が割り当てられます。
+    weighted_voting_on_direct: 加重投票を有効にすると、すべての投票の重みが1に設定されます
   poll_receipts_page:
     participation_status_requires_min_votes: 投票資格があった人を表示します。各人が投票したかどうかは、少なくとも%{count}人が投票した場合にのみ表示されます。
     see_votes_if_quorum_reached: 投票が終了し、定足数に達した場合は、誰が投票したかが表示されます。

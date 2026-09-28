@@ -8,11 +8,11 @@ Weighted voting lets some votes count more than others. You can give each voter 
 
 Vote weights can be `0` or greater and are stored to three decimal places. Values with more decimal places are rounded when saved. Loomio does not track which properties a person represents, who is authorized to vote for a property, or turnout by property. Check that a poll's voting method matches any rules about how many candidates a person may select; assigning vote weights alone does not define those rules.
 
-## Allow vote weights in a group
+## Allow weighted voting in a group
 
-A group admin can open **Group settings → Permissions** and select **Allow vote weights**. The setting is off by default. It lets group admins set default vote weights for members and lets poll coordinators turn on vote weights in new polls in that group. Polls that already use vote weights keep using them if the group setting is turned off later. Direct polls have no group setting; their coordinators can enable vote weights in each poll.
+A group admin can open **Group settings → Permissions** and select **Allow weighted voting**. The setting is off by default. It lets group admins set default vote weights for members and lets poll coordinators turn on vote weights in new polls in that group. Polls that already use vote weights keep using them if the group setting is turned off later. Direct polls have no group setting; their coordinators can enable vote weights in each poll.
 
-![The Allow vote weights permission in group settings](group-permission.png)
+![The Allow weighted voting permission in group settings](group-permission.png)
 
 Vote weights are available for identified polls other than time polls and STV elections. Anonymous polls do not support them.
 
@@ -24,11 +24,11 @@ Open the group's **Members** page and select **Edit vote weights**. The editor l
 
 A member's vote weight is a default for new votes in weighted polls. Changing it does not alter vote weights already copied into a poll.
 
-## Use vote weights in a poll
+## Use weighted voting in a poll
 
-A poll coordinator can select **Use vote weights** in the poll's advanced settings, including after voting opens. In a group poll, the poll copies each group member's current vote weight when that person is added as a voter. Other invited people, including everyone in a direct poll, start with a vote weight of `1`. Turning vote weights off sets every vote weight in that poll back to `1`, so any vote weights changed for that poll are lost. Turning vote weights on again copies members' default vote weights; other voters get a vote weight of `1`. This also changes vote weights for votes already cast and recalculates the poll result.
+A poll coordinator can select **Use weighted voting** in the poll's advanced settings, including after voting opens. In a group poll, the poll copies each group member's current vote weight when that person is added as a voter. Other invited people, including everyone in a direct poll, start with a vote weight of `1`. Turning weighted voting off sets every vote weight in that poll back to `1`, so any vote weights changed for that poll are lost. Turning weighted voting on again copies members' default vote weights; other voters get a vote weight of `1`. This also changes vote weights for votes already cast and recalculates the poll result.
 
-![The Use vote weights setting in a poll](poll-setting.png)
+![The Use weighted voting setting in a poll](poll-setting.png)
 
 Select **Manage voters** on the poll to open the voter management window. Use **Find or invite voters** to search current voters or add new ones, and use the page controls to browse larger lists. To adjust one voter's vote weight, select it beside their name, enter the new vote weight, and save. Changing the vote weight of a vote already cast updates the poll's result.
 

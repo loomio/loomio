@@ -1577,8 +1577,8 @@ zh_CN:
     members_can_create_tags_help: 允许成员在标记帖子和投票时创建新标签。
     non_members_can_start_discussions: 非会员也可以发起讨论
     non_members_can_start_discussions_help: 允许非成员使用本群组提供的模板发起讨论。
-    vote_weights_allowed: 允许投票权重
     let_admins_set_vote_weights: 允许管理员为成员设置不同的投票权重，使某些投票比其他投票更重要
+    allow_weighted_voting: 允许加权投票
   group_export_modal:
     title: 导出组数据
     body: <p>您可以随时下载您所在子群组的数据副本。<a href="https://help.loomio.org/en/user_manual/groups/data_export/">了解更多信息。</a></p><p>根据子群组人数，完成此操作大约需要几分钟。完成后，您将收到一封包含文件下载链接的电子邮件。</p>
@@ -2597,8 +2597,6 @@ zh_CN:
     manage_voters: 管理选民
     remove_voter: 移除选民
     voter_page_count: "%{first}–%{last} 共 %{total}"
-    vote_weights: 投票权重
-    use_vote_weights: 使用投票权重
     vote_weight_for: "%{name} 的投票权重"
     save_vote_weights: 保存投票权重
     vote_weights_updated: 投票权重已更新
@@ -2614,13 +2612,15 @@ zh_CN:
     voters_will_not_be_notified: 选民不会收到通知。请通过其他方式告知他们投票情况。
     give_voters_different_vote_weights: 赋予选民不同的投票权重。结果将显示原始总数和加权总数。
     issued_vote_weights_will_change: 已公布的投票权重将会改变。
-    vote_weights_on_group: 启用投票权重后，每个成员的投票权重将保持不变。其他投票者的投票权重为 1。
-    vote_weights_on_direct: 启用投票权重后，所有投票权重均设置为 1
     weight_for_all: 所有投票权重
     set_all_vote_weights: 设置所有投票权重
     set_all_vote_weights_the_same: 将所有投票权重设为相同
     member_vote_weights_hint: 没有当前团体成员身份的选民投票权重为1
-    vote_weights_off_warning: 关闭投票权重会将所有投票权重设置为 1。您在此投票中更改的任何投票权重都将丢失。
+    weighted_voting: 加权投票
+    use_weighted_voting: 使用加权投票
+    weighted_voting_off_warning: 关闭加权投票后，所有投票权重均设为 1。您在此投票中更改的任何投票权重都将丢失。
+    weighted_voting_on_group: 启用加权投票后，每个成员的默认投票权重将被复制。其他投票者的投票权重为 1。
+    weighted_voting_on_direct: 启用加权投票后，所有选票的权重均设为 1
   poll_proposal_form:
     start_header: 开始提案
     edit_header: 编辑提案

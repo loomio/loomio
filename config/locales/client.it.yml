@@ -1525,8 +1525,8 @@ it:
     members_can_create_tags_help: Consenti ai membri di creare nuovi tag quando etichettano discussioni e sondaggi.
     non_members_can_start_discussions: Anche i non membri possono avviare discussioni
     non_members_can_start_discussions_help: Consenti ai non membri di avviare una discussione utilizzando uno dei modelli di questo gruppo.
-    vote_weights_allowed: Consentire i pesi di voto
     let_admins_set_vote_weights: Consenti agli amministratori di assegnare pesi di voto diversi ai membri, in modo che alcuni voti abbiano più peso di altri
+    allow_weighted_voting: Consenti il voto ponderato
   group_export_modal:
     title: Esporta i dati del gruppo
     body: <p>Puoi scaricare una copia dei dati del tuo gruppo in qualsiasi momento. <a href="https://help.loomio.org/en/user_manual/groups/data_export/">Scopri di più.</a></p><p> Il completamento richiede alcuni minuti, a seconda delle dimensioni del gruppo. Quando sarà pronto riceverai un'e-mail con un link per scaricare il file.</p>
@@ -2976,8 +2976,6 @@ it:
     manage_voters: Gestisci gli elettori
     remove_voter: Rimuovere l'elettore
     voter_page_count: "%{first}–%{last} di %{total}"
-    vote_weights: pesi di voto
-    use_vote_weights: Utilizzare i pesi di voto
     vote_weight_for: Peso del voto per %{name}
     save_vote_weights: Salva i pesi di voto
     vote_weights_updated: Ponderazione dei voti aggiornata
@@ -2993,13 +2991,15 @@ it:
     voters_will_not_be_notified: Gli elettori non riceveranno alcuna notifica. Informali del sondaggio in un altro modo.
     give_voters_different_vote_weights: Assegna ai votanti pesi di voto diversi. I risultati mostrano sia i totali semplici sia quelli ponderati.
     issued_vote_weights_will_change: I pesi di voto già assegnati subiranno delle modifiche.
-    vote_weights_on_group: L'attivazione dei pesi di voto copia il peso di voto predefinito di ciascun membro. Gli altri votanti ottengono un peso di voto pari a 1.
-    vote_weights_on_direct: L'attivazione dei pesi di voto imposta ogni peso di voto a 1
     weight_for_all: Peso del voto per tutti
     set_all_vote_weights: Imposta tutti i pesi di voto
     set_all_vote_weights_the_same: Stesso peso di voto per tutti
     member_vote_weights_hint: Gli elettori senza un'attuale appartenenza a un gruppo ottengono un peso di voto pari a 1
-    vote_weights_off_warning: Disattivando i pesi di voto, ogni peso di voto viene impostato a 1. Tutti i pesi di voto modificati per questo sondaggio andranno persi.
+    weighted_voting: Voto ponderato
+    use_weighted_voting: Usa il voto ponderato
+    weighted_voting_off_warning: Disattivando il voto ponderato, ogni peso di voto viene impostato a 1. Tutti i pesi di voto modificati per questo sondaggio andranno persi.
+    weighted_voting_on_group: L'attivazione del voto ponderato copia il peso di voto predefinito di ciascun membro. Gli altri votanti ottengono un peso di voto pari a 1.
+    weighted_voting_on_direct: L'attivazione del voto ponderato imposta il peso di ogni voto a 1
   poll_receipts_page:
     participation_status_requires_min_votes: Mostra chi aveva diritto di voto. Lo stato di partecipazione di ogni persona viene mostrato solo quando hanno votato almeno %{count} persone.
     see_votes_if_quorum_reached: Se la votazione è chiusa e il quorum è stato raggiunto, vedrai chi ha espresso il voto.

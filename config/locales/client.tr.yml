@@ -1499,8 +1499,8 @@ tr:
     members_can_create_tags_help: Üyelerin konuları ve anketleri etiketlerken yeni etiketler oluşturmasına izin verin.
     non_members_can_start_discussions: Üye olmayanlar da tartışma başlatabilir.
     non_members_can_start_discussions_help: Üye olmayanların bu grubun şablonlarından birini kullanarak tartışma başlatmasına izin verin.
-    vote_weights_allowed: Oy ağırlıklarına izin ver
     let_admins_set_vote_weights: Yöneticilerin üyelere farklı oy ağırlıkları vermesine izin verin, böylece bazı oylar diğerlerinden daha fazla sayılır
+    allow_weighted_voting: Ağırlıklı oylamaya izin ver
   group_export_modal:
     title: Grup verilerini dışa aktar
     body: <p>Grubunuzun verilerinin bir kopyasını istediğiniz zaman indirebilirsiniz. <a href="https://help.loomio.org/en/user_manual/groups/data_export/">Daha fazlasını bul.</a></p><p> Grubunuzun büyüklüğüne bağlı olarak tamamlanması birkaç dakika sürer. Hazır olduğunda dosyayı indirme bağlantısını içeren bir e-posta alacaksınız.</p>
@@ -2948,8 +2948,6 @@ tr:
     manage_voters: Seçmenleri yönetin
     remove_voter: Seçmeni kaldır
     voter_page_count: "%{first}–%{last} / %{total}"
-    vote_weights: Oy ağırlıkları
-    use_vote_weights: Oy ağırlıklarını kullanın
     vote_weight_for: "%{name} için oy ağırlığı"
     save_vote_weights: Oy ağırlıklarını kaydedin
     vote_weights_updated: Oy ağırlıkları güncellendi
@@ -2965,13 +2963,15 @@ tr:
     voters_will_not_be_notified: Seçmenlere bildirim yapılmayacak. Onlara anket hakkında başka bir yolla bilgi verin.
     give_voters_different_vote_weights: Seçmenlere farklı oy ağırlıkları verin. Sonuçlar hem düz hem de ağırlıklı toplamları gösterir.
     issued_vote_weights_will_change: Daha önce verilmiş olan oy ağırlıkları değişecektir.
-    vote_weights_on_group: Oy ağırlıklarını etkinleştirmek, her üyenin varsayılan oy ağırlığını kopyalar. Diğer seçmenler 1 oy ağırlığı alır.
-    vote_weights_on_direct: Oy ağırlıklarını etkinleştirmek, her oy ağırlığını 1'e ayarlar
     weight_for_all: Tüm oyların ağırlığı
     set_all_vote_weights: Tüm oy ağırlıklarını ayarlayın
     set_all_vote_weights_the_same: Tüm oy ağırlıklarını aynı olarak ayarlayın
     member_vote_weights_hint: Mevcut bir gruba üye olmayan seçmenlerin oy ağırlığı 1'dir
-    vote_weights_off_warning: Oy ağırlıklarını kapatmak, her oy ağırlığını 1'e ayarlar. Bu anket için değiştirdiğiniz tüm oy ağırlıkları kaybolacaktır.
+    weighted_voting: Ağırlıklı oylama
+    use_weighted_voting: Ağırlıklı oylama kullanın
+    weighted_voting_off_warning: Ağırlıklı oylamayı kapatmak, her oy ağırlığını 1'e ayarlar. Bu anket için değiştirdiğiniz tüm oy ağırlıkları kaybolacaktır.
+    weighted_voting_on_group: Ağırlıklı oylamayı etkinleştirmek, her üyenin varsayılan oy ağırlığını kopyalar. Diğer seçmenler 1 oy ağırlığı alır.
+    weighted_voting_on_direct: Ağırlıklı oylamayı etkinleştirmek, her oy ağırlığını 1'e ayarlar
   poll_receipts_page:
     participation_status_requires_min_votes: Bu, kimlerin oy kullanma hakkına sahip olduğunu gösterir. Her kişinin oy kullanıp kullanmadığı yalnızca en az %{count} kişi oy verdiğinde gösterilir.
     see_votes_if_quorum_reached: Oylama sona ermiş ve yeter sayı sağlanmışsa, kimin oy kullandığını göreceksiniz.

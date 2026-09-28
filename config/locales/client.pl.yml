@@ -1505,8 +1505,8 @@ pl:
     members_can_create_tags_help: Zezwalaj członkom na tworzenie nowych tagów podczas tagowania wątków i ankiet
     non_members_can_start_discussions: Osoby niebędące członkami mogą rozpoczynać dyskusje
     non_members_can_start_discussions_help: Zezwól osobom niebędącym członkami na rozpoczęcie dyskusji z jednego z szablonów tej grupy
-    vote_weights_allowed: Zezwól na wagi głosów
     let_admins_set_vote_weights: Pozwól administratorom nadawać członkom głosy o różnej wadze, aby niektóre głosy liczyły się bardziej niż inne
+    allow_weighted_voting: Zezwól na głosowanie ważone
   group_export_modal:
     title: Eksportuj dane grupy
     body: |
@@ -2975,8 +2975,6 @@ pl:
     manage_voters: Zarządzaj wyborcami
     remove_voter: Usuń wyborcę
     voter_page_count: "%{first}–%{last} z %{total}"
-    vote_weights: Wagi głosów
-    use_vote_weights: Użyj wag głosów
     vote_weight_for: Waga głosu dla %{name}
     save_vote_weights: Zapisz wagi głosów
     vote_weights_updated: Zaktualizowano wagę głosów
@@ -2992,13 +2990,15 @@ pl:
     voters_will_not_be_notified: Wyborcy nie zostaną powiadomieni. Poinformuj ich o głosowaniu w inny sposób.
     give_voters_different_vote_weights: Nadaj wyborcom różne wagi głosów. Wyniki pokazują zarówno sumy zwykłe, jak i ważone.
     issued_vote_weights_will_change: Dotychczasowe wagi głosów ulegną zmianie.
-    vote_weights_on_group: Włączenie wag głosów kopiuje domyślną wagę głosu każdego członka. Pozostali wyborcy otrzymują wagę głosu równą 1.
-    vote_weights_on_direct: Włączenie wag głosów ustawia każdą wagę głosu na 1
     weight_for_all: Waga głosu dla wszystkich
     set_all_vote_weights: Ustaw wszystkie wagi głosów
     set_all_vote_weights_the_same: Ustaw wszystkie wagi głosów na takie same
     member_vote_weights_hint: Wyborcy, którzy nie są obecnie członkami żadnej grupy, otrzymują wagę głosu równą 1
-    vote_weights_off_warning: Wyłączenie wag głosów ustawia wagę wszystkich głosów na 1. Wszelkie wagi głosów zmienione w tej ankiecie zostaną utracone.
+    weighted_voting: Głosowanie ważone
+    use_weighted_voting: Użyj głosowania ważonego
+    weighted_voting_off_warning: Wyłączenie głosowania ważonego spowoduje ustawienie wagi każdego głosu na 1. Wszelkie zmiany wagi głosu dla tej ankiety zostaną utracone.
+    weighted_voting_on_group: Włączenie głosowania ważonego powoduje skopiowanie domyślnej wagi głosu każdego członka. Pozostali wyborcy otrzymują wagę głosu równą 1.
+    weighted_voting_on_direct: Włączenie głosowania ważonego powoduje ustawienie wagi każdego głosu na 1
   poll_receipts_page:
     participation_status_requires_min_votes: Pokazuje, kto był uprawniony do głosowania. Informacja o tym, czy poszczególne osoby zagłosowały, jest wyświetlana tylko wtedy, gdy zagłosowały co najmniej %{count} osoby.
     see_votes_if_quorum_reached: Jeśli głosowanie zostało zamknięte i osiągnięto kworum, zobaczysz, kto oddał głos.

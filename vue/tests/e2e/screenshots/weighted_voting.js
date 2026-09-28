@@ -15,7 +15,7 @@ module.exports = {
     page.click('.v-overlay .action-dock__button--edit_group');
     page.waitFor('.group-form');
     page.click('.group-form__permissions-tab');
-    page.expectText('.group-form__vote-weights-allowed', 'Allow vote weights');
+    page.expectText('.group-form__vote-weights-allowed', 'Allow weighted voting');
     screenshot.captureElement('polls/weighted_voting/group-permission', '.group-form', {
       width: 1200,
       height: 1400,
@@ -35,7 +35,7 @@ module.exports = {
     page.expectText('.group-page__name', 'Oatmilk Cooperative');
     screenshot.captureElement('polls/weighted_voting/member-weights', '.group-page', {
       width: 1200,
-      height: 1000,
+      height: 1100,
       spotlight: {selector: '.member-weights-page', padding: 16, radius: 16, opacity: 0.4, outlineWidth: 0}
     });
   },
@@ -46,7 +46,7 @@ module.exports = {
 
     page.loadPath('setup_manual_oatmilk_vote_weights?view=edit');
     page.clickAndWait('.poll-common-form__more-settings', '.poll-settings-vote-weights');
-    page.expectText('.poll-settings-vote-weights', 'Use vote weights');
+    page.expectText('.poll-settings-vote-weights', 'Use weighted voting');
     screenshot.captureRegion('polls/weighted_voting/poll-setting', ['.poll-common-form__more-settings', '.poll-common-form__reminder-title'], {
       padding: 32,
       width: 1200,

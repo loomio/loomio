@@ -782,7 +782,7 @@ module.exports = {
     page.waitFor('.poll-settings-vote-weights')
     page.click('.poll-settings-vote-weights input')
     page.expectText('.poll-common-form', 'Vote weights already issued will change.')
-    page.expectText('.poll-common-form', "Turning on vote weights copies each member's default vote weight.")
+    page.expectText('.poll-common-form', "Turning on weighted voting copies each member's default vote weight.")
   },
 
   'warns_when_vote_weights_are_disabled_on_an_open_poll': (test) => {
@@ -793,6 +793,6 @@ module.exports = {
     page.waitFor('.poll-settings-vote-weights')
     page.click('.poll-settings-vote-weights input')
     page.expectText('.poll-common-form', 'Vote weights already issued will change.')
-    page.expectText('.poll-common-form', 'Turning off vote weights sets every vote weight to 1')
+    page.expectText('.poll-common-form', 'Turning off weighted voting sets every vote weight to 1')
   },
 }

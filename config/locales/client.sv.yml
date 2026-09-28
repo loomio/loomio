@@ -1499,8 +1499,8 @@ sv:
     members_can_create_tags_help: Tillåt medlemmar att skapa nya taggar när de taggar trådar och omröstningar
     non_members_can_start_discussions: Icke-medlemmar kan starta diskussioner
     non_members_can_start_discussions_help: Tillåt icke-medlemmar att starta en diskussion från en av den här gruppens mallar
-    vote_weights_allowed: Tillåt röstvikter
     let_admins_set_vote_weights: Låt administratörer ge medlemmar olika röstvikter, så att vissa röster räknas mer än andra
+    allow_weighted_voting: Tillåt viktad röstning
   group_export_modal:
     title: Exportera gruppdata
     body: <p>Du kan ladda ner en kopia av din grupps data när som helst. <a href="https://help.loomio.org/en/user_manual/groups/data_export/">Få reda på mer.</a></p><p> Det tar några minuter att slutföra, beroende på storleken på din grupp. När den är klar får du ett e-postmeddelande med en länk för att ladda ner filen.</p>
@@ -2948,8 +2948,6 @@ sv:
     manage_voters: Hantera väljare
     remove_voter: Ta bort väljare
     voter_page_count: "%{first}–%{last} av %{total}"
-    vote_weights: Röstvikter
-    use_vote_weights: Använd röstvikter
     vote_weight_for: Röstvikt för %{name}
     save_vote_weights: Spara röstvikter
     vote_weights_updated: Röstvikter uppdaterade
@@ -2965,13 +2963,15 @@ sv:
     voters_will_not_be_notified: Väljarna kommer inte att meddelas. Informera dem om omröstningen på ett annat sätt.
     give_voters_different_vote_weights: Ge väljarna olika röstvikter. Resultaten visar både den enkla och den viktade totalsumman.
     issued_vote_weights_will_change: Redan utfärdade röstvikter kommer att ändras.
-    vote_weights_on_group: Om röstvikter aktiveras kopieras varje medlems standardröstvikt. Andra väljare får röstvikten 1.
-    vote_weights_on_direct: Om du aktiverar röstvikter sätts varje röstvikt till 1
     weight_for_all: Röstvikt för alla
     set_all_vote_weights: Ange alla röstvikter
     set_all_vote_weights_the_same: Sätt alla röstvikter lika
     member_vote_weights_hint: Väljare utan nuvarande gruppmedlemskap får röstvikten 1
-    vote_weights_off_warning: Om du stänger av röstvikter sätts varje röstvikt till 1. Alla röstvikter du ändrade för den här omröstningen kommer att gå förlorade.
+    weighted_voting: Viktad röstning
+    use_weighted_voting: Använd viktad röstning
+    weighted_voting_off_warning: Om du stänger av viktad röstning sätts varje röstvikt till 1. Alla röstvikter du ändrade för den här omröstningen kommer att gå förlorade.
+    weighted_voting_on_group: Om viktad röstning aktiveras kopieras varje medlems standardröstvikt. Andra väljare får röstvikten 1.
+    weighted_voting_on_direct: Om man aktiverar viktad röstning sätts varje röstvikt till 1
   poll_receipts_page:
     participation_status_requires_min_votes: Detta visar vilka som var röstberättigade. Om varje person har röstat visas endast när minst %{count} personer har röstat.
     see_votes_if_quorum_reached: Om omröstningen har avslutats och beslutsmässighet uppnåtts ser du vem som avgav en röst.

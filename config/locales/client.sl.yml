@@ -1499,8 +1499,8 @@ sl:
     members_can_create_tags_help: Dovoli članom ustvarjanje novih oznak pri označevanju niti in anket
     non_members_can_start_discussions: Nečlani lahko začnejo razprave
     non_members_can_start_discussions_help: Dovoli nečlanom, da začnejo razpravo iz ene od predlog te skupine
-    vote_weights_allowed: Dovoli uteži glasov
     let_admins_set_vote_weights: Naj administratorji članom dodelijo različno težo glasov, tako da nekateri glasovi štejejo več kot drugi
+    allow_weighted_voting: Dovoli ponderirano glasovanje
   group_export_modal:
     title: Izvoz podatkov skupine
     body: <p>Kopijo podatkov svoje skupine lahko prenesete kadar koli. <a href="https://help.loomio.org/en/user_manual/groups/data_export/">Izvedi več.</a></p><p> Izpolnitev traja nekaj minut, odvisno od velikosti vaše skupine. Ko bo pripravljena, boste prejeli e-poštno sporočilo s povezavo za prenos datoteke.</p>
@@ -2948,8 +2948,6 @@ sl:
     manage_voters: Upravljanje volivcev
     remove_voter: Odstrani volivca
     voter_page_count: "%{first}–%{last} od %{total}"
-    vote_weights: Uteži glasov
-    use_vote_weights: Uporabite uteži glasov
     vote_weight_for: Teža glasov za %{name}
     save_vote_weights: Shrani uteži glasov
     vote_weights_updated: Ponderiranje glasov
@@ -2965,13 +2963,15 @@ sl:
     voters_will_not_be_notified: Volivci ne bodo obveščeni. O anketi jih obvestite na drug način.
     give_voters_different_vote_weights: Volivcem dodelite različne uteži glasov. Rezultati prikazujejo tako navadne kot utežene vsote.
     issued_vote_weights_will_change: Že izdane ponderji glasov se bodo spremenili.
-    vote_weights_on_group: Vklop uteži glasov kopira privzeto utež glasov vsakega člana. Drugi volivci dobijo utež glasov 1.
-    vote_weights_on_direct: Vklop uteži glasov nastavi težo vsakega glasu na 1
     weight_for_all: Teža glasov za vse
     set_all_vote_weights: Nastavi vse teže glasov
     set_all_vote_weights_the_same: Vse teže glasov nastavi na enako vrednost
     member_vote_weights_hint: Volivci brez trenutnega članstva v skupini dobijo težo glasu 1
-    vote_weights_off_warning: Če izklopite uteži glasov, se vsaka utež glasov nastavi na 1. Vse uteži glasov, ki ste jih spremenili za to anketo, bodo izgubljene.
+    weighted_voting: Ponderirano glasovanje
+    use_weighted_voting: Uporabite ponderirano glasovanje
+    weighted_voting_off_warning: Če izklopite uteženo glasovanje, se utež vseh glasov nastavi na 1. Vse uteži glasov, ki ste jih spremenili za to anketo, bodo izgubljene.
+    weighted_voting_on_group: Z vklopom uteženega glasovanja se kopira privzeta teža glasu vsakega člana. Drugi volivci dobijo težo glasu 1.
+    weighted_voting_on_direct: Z vklopom uteženega glasovanja se teža vsakega glasu nastavi na 1
   poll_receipts_page:
     participation_status_requires_min_votes: To prikazuje, kdo je bil upravičen do glasovanja. Ali je posamezna oseba glasovala, se prikaže šele, ko glasujejo vsaj %{count} osebe.
     see_votes_if_quorum_reached: Če je glasovanje končano in je dosežen kvorum, boste videli, kdo je glasoval.

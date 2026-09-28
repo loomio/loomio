@@ -1499,8 +1499,8 @@ hr:
     members_can_create_tags_help: Omogući članovima stvaranje novih oznaka prilikom označavanja tema i anketa
     non_members_can_start_discussions: Nečlanovi mogu započeti rasprave
     non_members_can_start_discussions_help: Dopusti osobama koje nisu članovi da započnu raspravu iz jednog od predložaka ove grupe
-    vote_weights_allowed: Dopusti težine glasova
     let_admins_set_vote_weights: Neka administratori daju članovima različite težine glasova, tako da neki glasovi imaju više vrijednosti od drugih
+    allow_weighted_voting: Dopusti ponderirano glasanje
   group_export_modal:
     title: Izvoz grupnih podataka
     body: <p>U bilo kojem trenutku možete preuzeti kopiju podataka svoje grupe. <a href="https://help.loomio.org/en/user_manual/groups/data_export/">Saznaj više.</a></p><p> Za dovršetak je potrebno nekoliko minuta, ovisno o veličini vaše grupe. Kada bude spremna, primit ćete e-poruku s vezom za preuzimanje datoteke.</p>
@@ -2948,8 +2948,6 @@ hr:
     manage_voters: Upravljanje biračima
     remove_voter: Ukloni birača
     voter_page_count: "%{first}–%{last} od %{total}"
-    vote_weights: Težine glasova
-    use_vote_weights: Koristite težine glasova
     vote_weight_for: Težina glasa za %{name}
     save_vote_weights: Spremi težine glasova
     vote_weights_updated: Ažurirane su težine glasova
@@ -2965,13 +2963,15 @@ hr:
     voters_will_not_be_notified: Birači neće biti obaviješteni. Obavijestite ih o anketi na drugi način.
     give_voters_different_vote_weights: Dajte biračima različite težine glasova. Rezultati prikazuju i obične i ponderirane ukupne brojeve.
     issued_vote_weights_will_change: Već dodijeljene težine glasova će se promijeniti.
-    vote_weights_on_group: Uključivanjem težina glasova kopira se zadana težina glasa svakog člana. Ostali birači dobivaju težinu glasa od 1.
-    vote_weights_on_direct: Uključivanjem težine glasova postavlja se svaka težina glasa na 1
     weight_for_all: Težina glasa za sve
     set_all_vote_weights: Postavi sve težine glasova
     set_all_vote_weights_the_same: Postavi sve težine glasova na istu razinu
     member_vote_weights_hint: Birači bez trenutnog članstva u grupi dobivaju težinu glasa 1
-    vote_weights_off_warning: Isključivanjem pondera glasova svaka ponderirana vrijednost glasa postavlja se na 1. Svi ponderirani iznosi glasova koje ste promijenili za ovu anketu bit će izgubljeni.
+    weighted_voting: Ponderirano glasanje
+    use_weighted_voting: Koristite ponderirano glasanje
+    weighted_voting_off_warning: Isključivanjem ponderiranog glasanja svaka težina glasa postavlja se na 1. Sve težine glasova koje ste promijenili za ovu anketu bit će izgubljene.
+    weighted_voting_on_group: Uključivanjem ponderiranog glasanja kopira se zadana težina glasa svakog člana. Ostali glasači dobivaju težinu glasa od 1.
+    weighted_voting_on_direct: Uključivanjem ponderiranog glasanja težina svakog glasa postaje 1
   poll_receipts_page:
     participation_status_requires_min_votes: Ovo pokazuje tko je imao pravo glasa. Je li svaka osoba glasala prikazuje se tek kada su glasale najmanje %{count} osobe.
     see_votes_if_quorum_reached: Ako je glasanje zatvoreno i postignut je kvorum, vidjet ćete tko je glasao.

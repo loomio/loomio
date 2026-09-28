@@ -1503,8 +1503,8 @@ hu:
     members_can_create_tags_help: A tagok új címkéket hozhatnak létre a témák és szavazások címkézésekor
     non_members_can_start_discussions: Nem tagok is indíthatnak beszélgetéseket
     non_members_can_start_discussions_help: Engedélyezze a nem tagok számára, hogy beszélgetést indítsanak a csoport egyik sablonjából
-    vote_weights_allowed: Szavazati súlyok engedélyezése
     let_admins_set_vote_weights: Engedélyezheti az adminisztrátoroknak, hogy a tagok eltérő szavazati súlyokat kapjanak, így egyes szavazatok jobban számítanak, mint mások
+    allow_weighted_voting: Súlyozott szavazás engedélyezése
   group_export_modal:
     title: Csoport adatok letöltése
     body: <p>A csoport adatainak másolatát bármikor letöltheti. <a href="https://help.loomio.org/en/user_manual/groups/data_export/">Tudj meg többet.</a></p><p> A kitöltése a csoport méretétől függően néhány percet vesz igénybe. Ha készen áll, e-mailben kap egy linket a fájl letöltéséhez.</p>
@@ -2955,8 +2955,6 @@ hu:
     manage_voters: Szavazók kezelése
     remove_voter: Szavazó eltávolítása
     voter_page_count: "%{first}–%{last} a %{total}-ból"
-    vote_weights: Szavazati súlyok
-    use_vote_weights: Szavazati súlyok használata
     vote_weight_for: Szavazati súly %{name} felhasználóra
     save_vote_weights: Szavazati súlyok mentése
     vote_weights_updated: Szavazati súlyok frissítve
@@ -2972,13 +2970,15 @@ hu:
     voters_will_not_be_notified: A szavazókat nem értesítjük. Más módon értesítse őket a szavazásról.
     give_voters_different_vote_weights: Adjon a szavazóknak különböző súlyokat a szavazataikhoz. Az eredmények mind a sima, mind a súlyozott összesítést mutatják.
     issued_vote_weights_will_change: A már kiadott szavazati súlyok változni fognak.
-    vote_weights_on_group: A szavazati súlyozás bekapcsolása minden tag alapértelmezett szavazati súlyát átmásolja. A többi szavazó 1-es szavazati súlyt kap.
-    vote_weights_on_direct: A szavazati súlyok bekapcsolása minden szavazati súlyt 1-re állít
     weight_for_all: Szavazati súly mindenkinek
     set_all_vote_weights: Az összes szavazati súly beállítása
     set_all_vote_weights_the_same: Minden szavazati súlyozásának azonosra állítása
     member_vote_weights_hint: Az aktuális csoporttagsággal nem rendelkező szavazók 1-es szavazati súlyt kapnak
-    vote_weights_off_warning: A szavazati súlyok kikapcsolása minden szavazati súlyt 1-re állít. Az ebben a szavazásban módosított szavazati súlyok elvesznek.
+    weighted_voting: Súlyozott szavazás
+    use_weighted_voting: Súlyozott szavazás használata
+    weighted_voting_off_warning: A súlyozott szavazás kikapcsolása minden szavazat súlyát 1-re állítja. Az ebben a szavazásban módosított szavazati súlyok elvesznek.
+    weighted_voting_on_group: A súlyozott szavazás bekapcsolása minden tag alapértelmezett szavazati súlyát lemásolja. A többi szavazó 1-es szavazati súlyt kap.
+    weighted_voting_on_direct: A súlyozott szavazás bekapcsolása minden szavazat súlyát 1-re állítja
   poll_receipts_page:
     participation_status_requires_min_votes: Ez megmutatja, hogy ki volt jogosult szavazni. Az, hogy egyes személyek szavaztak-e, csak akkor jelenik meg, ha legalább %{count} ember szavazott.
     see_votes_if_quorum_reached: Ha a szavazás lezárult és létrejött a határozatképző létszám, akkor láthatja, hogy kik szavaztak.

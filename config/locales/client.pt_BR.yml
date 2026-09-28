@@ -1526,8 +1526,8 @@ pt_BR:
     members_can_create_tags_help: Permitir que os membros criem novas etiquetas ao etiquetar tópicos e enquetes.
     non_members_can_start_discussions: Quem não é membro pode iniciar discussões.
     non_members_can_start_discussions_help: Permitir que não membros iniciem uma discussão a partir de um dos modelos deste grupo.
-    vote_weights_allowed: Permitir ponderação de votos
     let_admins_set_vote_weights: Permita que os administradores atribuam pesos diferentes aos votos dos membros, para que alguns votos contem mais do que outros
+    allow_weighted_voting: Permitir votação ponderada
   group_export_modal:
     title: Exportar data do grupo
     body: |
@@ -2996,8 +2996,6 @@ pt_BR:
     manage_voters: Gerenciar eleitores
     remove_voter: Remover eleitor
     voter_page_count: "%{first}–%{last} de %{total}"
-    vote_weights: Pesos de voto
-    use_vote_weights: Utilizar ponderações de voto
     vote_weight_for: Peso do voto para %{name}
     save_vote_weights: Salvar pesos de voto
     vote_weights_updated: Pesos de voto atualizados
@@ -3013,13 +3011,15 @@ pt_BR:
     voters_will_not_be_notified: Os eleitores não serão notificados. Informe-os sobre a votação de outra forma.
     give_voters_different_vote_weights: Atribua pesos diferentes aos votos dos eleitores. Os resultados mostram os totais brutos e ponderados.
     issued_vote_weights_will_change: A ponderação dos votos já emitida será alterada.
-    vote_weights_on_group: Ao ativar a ponderação de votos, a ponderação padrão de cada membro é copiada. Os demais votantes recebem uma ponderação de voto de 1.
-    vote_weights_on_direct: Ao ativar a ponderação de votos, o peso de cada voto é definido como 1
     weight_for_all: Peso do voto para todos
     set_all_vote_weights: Defina todos os pesos de voto
     set_all_vote_weights_the_same: Defina o mesmo peso para todos os votos
     member_vote_weights_hint: Os eleitores que não são membros de nenhum grupo atualmente têm um peso de voto de 1
-    vote_weights_off_warning: Desativar a ponderação dos votos define o peso de todos os votos para 1. Quaisquer ponderações de votos que você tenha alterado para esta enquete serão perdidas.
+    weighted_voting: Votação ponderada
+    use_weighted_voting: Usar votação ponderada
+    weighted_voting_off_warning: Desativar a votação ponderada define o peso de cada voto para 1. Quaisquer alterações na ponderação dos votos feitas para esta enquete serão perdidas.
+    weighted_voting_on_group: Ao ativar a votação ponderada, o peso de voto padrão de cada membro é copiado. Os demais votantes recebem um peso de voto de 1.
+    weighted_voting_on_direct: Ao ativar a votação ponderada, o peso de cada voto é definido como 1
   poll_receipts_page:
     participation_status_requires_min_votes: Isso mostra quem tinha direito a voto. A informação sobre se cada pessoa votou só é exibida quando pelo menos %{count} pessoas tiverem votado.
     see_votes_if_quorum_reached: Se a votação for encerrada e o quórum for atingido, você verá quem votou.

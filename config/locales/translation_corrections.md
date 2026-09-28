@@ -1,5 +1,16 @@
 # Corrected translations
 
+## 2026-09-28 — Weighted voting settings
+
+| File | Key | Before | After | Why it was wrong |
+|------|-----|--------|-------|------------------|
+| `config/locales/client.de.yml` | `poll_common_form.weighted_voting_off_warning`, `weighted_voting_on_group`, `weighted_voting_on_direct` | Formal `Wenn Sie`; mixed `Stimmabgabe` and `Abstimmung` | Informal `Wenn du`; `gewichtete Abstimmung` throughout | German UI uses the informal register, and the feature name should match its heading |
+| `config/locales/client.es.yml` | `poll_common_form.use_weighted_voting`, `weighted_voting_on_group`, `weighted_voting_on_direct` | Formal sentence `Utilice el voto ponderado.`; mixed `voto ponderado` | Label `Usar votación ponderada`; `votación ponderada` throughout | The checkbox is a label, and the feature name should match its heading |
+| `config/locales/client.fr.yml` | `poll_common_form.weighted_voting_off_warning`, `weighted_voting_on_group` | Formal `vous avez modifiés`; `attribue à chaque membre le poids de vote par défaut` | Informal `tu as modifiés`; `reprend le poids de vote par défaut de chaque membre` | French UI uses the informal register, and each member's own default is copied rather than one shared default being assigned |
+| `config/locales/client.it.yml` | `group_form.allow_weighted_voting`, `poll_common_form.use_weighted_voting` | Infinitives `Consentire`, `Utilizzare` | Imperatives `Consenti`, `Usa` | Italian UI uses imperatives for actions |
+| `config/locales/client.nl_NL.yml` | `group_form.allow_weighted_voting`, `poll_common_form.use_weighted_voting`, `weighted_voting_off_warning` | Sentence `Sta gewogen stemmen toe.`; formal `u` | Labels `Gewogen stemmen toestaan`, `Gewogen stemmen gebruiken`; informal `je` | Checkbox labels, and Dutch UI uses the informal register |
+| `config/locales/client.*.yml` | Single-sentence weighted voting labels | Final `.` or `。` | No final full stop | The English sources are single-sentence UI strings |
+
 ## 2026-09-28 — Vote weights off warning
 
 | File | Key | Before | After | Why it was wrong |

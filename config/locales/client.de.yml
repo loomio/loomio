@@ -1513,8 +1513,8 @@ de:
     members_can_create_tags_help: Erlauben Sie Mitgliedern, beim Taggen von Threads und Umfragen neue Tags zu erstellen.
     non_members_can_start_discussions: Nichtmitglieder können Diskussionen starten
     non_members_can_start_discussions_help: Erlaube Nichtmitgliedern, eine Diskussion anhand einer Vorlage dieser Gruppe zu starten
-    vote_weights_allowed: Stimmgewichtung zulassen
     let_admins_set_vote_weights: Lass Admins Mitgliedern unterschiedliche Stimmgewichte zuweisen, sodass manche Stimmen mehr zählen als andere
+    allow_weighted_voting: Gewichtete Abstimmung zulassen
   group_export_modal:
     title: Gruppendaten exportieren
     body: |
@@ -2983,8 +2983,6 @@ de:
     manage_voters: Wähler verwalten
     remove_voter: Wähler entfernen
     voter_page_count: "%{first}–%{last} von %{total}"
-    vote_weights: Stimmgewichte
-    use_vote_weights: Stimmgewichte verwenden
     vote_weight_for: Stimmgewichtung für %{name}
     save_vote_weights: Stimmengewichte speichern
     vote_weights_updated: Stimmgewichte aktualisiert
@@ -3000,13 +2998,15 @@ de:
     voters_will_not_be_notified: Die Wähler werden nicht benachrichtigt. Informiere sie auf anderem Weg über die Umfrage.
     give_voters_different_vote_weights: Gib Wählern unterschiedliche Stimmgewichte. Die Ergebnisse zeigen sowohl die einfachen als auch die gewichteten Summen.
     issued_vote_weights_will_change: Die bereits festgelegten Stimmgewichte werden sich ändern.
-    vote_weights_on_group: Durch Aktivieren der Stimmgewichtung wird das Standardstimmgewicht jedes Mitglieds übernommen. Andere Wähler erhalten ein Stimmgewicht von 1.
-    vote_weights_on_direct: Durch Aktivieren der Stimmgewichtung wird jede Stimmgewichtung auf 1 gesetzt
     weight_for_all: Stimmgewicht für alle
     set_all_vote_weights: Alle Stimmgewichte festlegen
     set_all_vote_weights_the_same: Alle Stimmengewichte gleich setzen
     member_vote_weights_hint: Wähler ohne aktuelle Gruppenmitgliedschaft erhalten ein Stimmgewicht von 1
-    vote_weights_off_warning: Wenn du die Stimmgewichte deaktivierst, wird jedes Stimmgewicht auf 1 gesetzt. Alle Stimmgewichte, die du für diese Umfrage geändert hast, gehen verloren.
+    weighted_voting: Gewichtete Abstimmung
+    use_weighted_voting: Gewichtete Abstimmung verwenden
+    weighted_voting_off_warning: Wenn du die gewichtete Abstimmung deaktivierst, wird jedes Stimmgewicht auf 1 gesetzt. Alle Stimmgewichte, die du für diese Umfrage geändert hast, gehen verloren.
+    weighted_voting_on_group: Wenn du die gewichtete Abstimmung aktivierst, wird das Standardstimmgewicht jedes Mitglieds übernommen. Andere Wähler erhalten ein Stimmgewicht von 1.
+    weighted_voting_on_direct: Wenn du die gewichtete Abstimmung aktivierst, wird jedes Stimmgewicht auf 1 gesetzt
   poll_receipts_page:
     participation_status_requires_min_votes: Hier wird angezeigt, wer teilnahmeberechtigt war. Ob die einzelnen Personen abgestimmt haben, wird nur angezeigt, wenn mindestens %{count} Personen abgestimmt haben.
     see_votes_if_quorum_reached: Wenn die Abstimmung beendet ist und das Quorum erreicht ist, siehst du, wer seine Stimme abgegeben hat.
