@@ -1,5 +1,6 @@
 ---
 da:
+  group_export_started: "Eksport af gruppedata startede"
   discussion_templates:
     blank:
       process_name: Tom skabelon
@@ -738,6 +739,7 @@ da:
     zh: Kinesisk (traditionel, Taiwan)
     zh-HK: Kinesisk (traditionel, Taiwan)
   upload:
+    filename_required: Filnavn er påkrævet
     file_too_large: Filen er for stor. Maksimal uploadstørrelse er %{limit}.
   merge_users:
     not_target_user: Du skal være logget ind som målkontoen for at bekræfte en fletning.

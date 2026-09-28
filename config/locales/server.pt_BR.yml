@@ -1,5 +1,6 @@
 ---
 pt_BR:
+  group_export_started: "Exportação dos dados do grupo iniciada"
   discussion_templates:
     blank:
       process_name: Modelo em branco
@@ -762,6 +763,7 @@ pt_BR:
     zh: Chinês (Tradicional, Taiwan)
     zh-HK: Chinês (Tradicional, Taiwan)
   upload:
+    filename_required: É necessário informar o nome do arquivo
     file_too_large: O arquivo é muito grande. O tamanho máximo de upload é %{limit}.
   merge_users:
     not_target_user: Você precisa estar conectado com a conta de destino para confirmar a fusão.

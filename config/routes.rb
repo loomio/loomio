@@ -186,6 +186,7 @@ Rails.application.routes.draw do
           get :subgroups
           post :export
           post :export_csv
+          post :export_html
           post 'upload_photo/:kind', action: :upload_photo
           delete 'remove_photo/:kind', action: :remove_photo
         end
@@ -248,6 +249,7 @@ Rails.application.routes.draw do
           get  :email_api_key
           post :reset_email_api_key
           post :update_profile
+          post :set_time_zone
           post :set_volume
           post :upload_avatar
           post :use_provider_avatar

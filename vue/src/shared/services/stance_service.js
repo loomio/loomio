@@ -77,7 +77,7 @@ export default new class StanceService {
         },
         perform() {
           const topic = stance.poll() ? stance.poll().topic() : null;
-          const maxDepth = topic ? topic.maxDepth : 2;
+          const maxDepth = topic ? topic.maxDepth : 3;
           if (topic_item.depth === maxDepth) {
             return EventBus.$emit('toggle-reply', stance, topic_item.parentId);
           } else {

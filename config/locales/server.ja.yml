@@ -1,5 +1,6 @@
 ---
 ja:
+  group_export_started: "グループデータのエクスポートが開始されました"
   discussion_templates:
     blank:
       process_name: 空のテンプレート
@@ -732,6 +733,7 @@ ja:
     zh: 中国語（繁体字、台湾語）
     zh-HK: 中国語（繁体字、台湾語）
   upload:
+    filename_required: ファイル名を入力してください
     file_too_large: ファイルサイズが大きすぎます。アップロードできる最大サイズは%{limit}です。
   merge_users:
     not_target_user: 統合を確定するには、対象アカウントとしてログインしている必要があります。

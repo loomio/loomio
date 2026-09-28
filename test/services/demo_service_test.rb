@@ -2,94 +2,202 @@ require "test_helper"
 
 class DemoServiceTest < ActiveSupport::TestCase
   setup do
-    @features_demo_groups = ENV["FEATURES_DEMO_GROUPS"]
+    @canonical_host = ENV["CANONICAL_HOST"]
+    @loomio_disable_demo_groups = ENV["LOOMIO_DISABLE_DEMO_GROUPS"]
     @features_demo_groups_size = ENV["FEATURES_DEMO_GROUPS_SIZE"]
+    ENV["CANONICAL_HOST"] = "loomio.eu"
+    ENV.delete("LOOMIO_DISABLE_DEMO_GROUPS")
+    ENV["FEATURES_DEMO_GROUPS_SIZE"] = "1"
     DemoService.reset_queue!
   end
 
   teardown do
-    ENV["FEATURES_DEMO_GROUPS"] = @features_demo_groups
+    ENV["CANONICAL_HOST"] = @canonical_host
+    ENV["LOOMIO_DISABLE_DEMO_GROUPS"] = @loomio_disable_demo_groups
     ENV["FEATURES_DEMO_GROUPS_SIZE"] = @features_demo_groups_size
     DemoService.reset_queue!
   end
 
-  test "taking a demo provisions the code-backed mobile template" do
-    actor = users(:user)
-    group = groups(:group)
-    captured = nil
-    provision = lambda do |**args|
-      captured = args
-      DemoGroupTemplateService::Result.new(group: group, discussions: {}, polls: {}, notifications: [])
-    end
+  test "one source supplies multiple complete demo clones" do
+    DemoService.refill_queue
+    source = demo_source
+    first = Group.find(DemoService.demo_group_ids.fetch(0))
 
-    DemoGroupTemplateService.stub(:create!, provision) do
-      assert_equal group, DemoService.take_demo(actor)
+    assert_equal "demo", source.subscription.plan
+    assert_equal "demo", first.subscription.plan
+    refute first.members_can_add_members?
+    refute first.members_can_add_guests?
+    assert_equal source.id, first.info.dig("source_record_ids", "Group-#{first.id}")
+    assert_equal 3, first.discussions.count
+    assert_equal 6, first.polls.count
+    assert_equal 5, first.comment_reactions.count
+    assert_equal source.comments.count, first.comments.count
+    assert_equal source.tags.order(:name).pluck(:name), first.tags.order(:name).pluck(:name)
+    assert first.discussions.all? { |discussion| discussion.topic.max_depth == 3 }
+    source.discussions.each do |discussion|
+      copied = first.discussions.find_by!(title: discussion.title)
+      assert_equal discussion.tags, copied.tags
+      assert_equal discussion.topic.tags, copied.topic.tags
     end
+    source.polls.each do |poll|
+      copied = first.polls.find_by!(title: poll.title)
+      assert_equal poll.tags, copied.tags
+    end
+    office = first.discussions.find_by!(title: "Is it time to move offices?")
+    assert_equal [
+      "Shall I come back with some options for a new office?",
+      "Maximum budget for a new office?",
+      "Move to The Orchard, Chalk Farm"
+    ], office.topic.polls.order(:created_at).pluck(:title)
 
-    assert_equal({ template_key: "mobile", user: actor }, captured)
+    DemoService.take_demo(users(:user))
+    DemoService.refill_queue
+    second = Group.find(DemoService.demo_group_ids.fetch(0))
+    assert_equal source.id, second.info.dig("source_record_ids", "Group-#{second.id}")
+    refute_equal first.id, second.id
+    assert_equal source.id, demo_source.id
   end
 
-  test "taking a demo succeeds in English when translation capacity is exhausted" do
+  test "queued demo is claimed and recipient notifications are routed" do
     actor = users(:user)
-    actor.selected_locale = "es"
-    group = groups(:group)
-    provision = lambda do |**|
-      DemoGroupTemplateService::Result.new(group: group, discussions: {}, polls: {}, notifications: [])
+    DemoService.refill_queue
+    prepared_id = DemoService.demo_group_ids.fetch(0)
+    unread_before = NotificationDelivery.where(recipient: actor, channel: "in_app", viewed_at: nil).count
+
+    group = DemoService.take_demo(actor)
+
+    assert_equal prepared_id, group.id
+    assert_equal actor, group.creator
+    assert_equal actor, group.subscription.owner
+    assert group.members.exists?(actor.id)
+    refute group.admins.exists?(actor.id)
+    assert group.admins.exists?(User.find_by!(email: "jamie@oatmilk.example").id)
+    refute group.members_can_add_members?
+    refute group.members_can_add_guests?
+    refute actor.ability.can?(:add_members, group)
+    refute actor.ability.can?(:add_guests, group)
+    refute group.info.fetch("demo_group_queued")
+    assert_empty DemoService.demo_group_ids
+    assert_equal unread_before + 3, NotificationDelivery.where(recipient: actor, channel: "in_app", viewed_at: nil).count
+  end
+
+  test "an empty queue creates a clone and routes its notifications" do
+    actor = users(:user)
+    unread_before = NotificationDelivery.where(recipient: actor, channel: "in_app", viewed_at: nil).count
+
+    group = DemoService.take_demo(actor)
+
+    assert_equal "demo", group.subscription.plan
+    assert_equal demo_source.id, group.info.dig("source_record_ids", "Group-#{group.id}")
+    assert group.members.exists?(actor.id)
+    refute group.admins.exists?(actor.id)
+    refute group.members_can_add_members?
+    refute group.members_can_add_guests?
+    assert_equal unread_before + 3, NotificationDelivery.where(recipient: actor, channel: "in_app", viewed_at: nil).count
+  end
+
+  test "expired demo cleanup keeps the source and removes old clones" do
+    DemoService.refill_queue
+    source = demo_source
+    clone = Group.find(DemoService.demo_group_ids.fetch(0))
+    source.update_columns(created_at: 8.days.ago)
+    clone.update_columns(created_at: 8.days.ago)
+
+    DemoService.destroy_expired_demo_groups
+
+    assert Group.exists?(source.id)
+    refute Group.exists?(clone.id)
+  end
+
+  test "hourly refills pretranslate each source locale once" do
+    calls = []
+    locales = AppConfig.locales.merge("supported" => %w[en de])
+
+    AppConfig.stub(:locales, locales) do
+      TranslationService.stub(:available?, true) do
+        TranslationService.stub(:translate_group_content!, ->(group, locale, cache_only) { calls << [group.id, locale, cache_only] }) do
+          2.times { DemoService.refill_queue }
+        end
+      end
     end
 
-    DemoGroupTemplateService.stub(:create!, provision) do
-      TranslationService.stub(:translate_group_content!, ->(*) { raise TranslationService::LimitReached, "limit reached" }) do
-        assert_equal group, DemoService.take_demo(actor)
+    assert_equal [[demo_source.id, "de", true]], calls
+    assert_equal ["de"], demo_source.info.fetch("demo_group_locales")
+  end
+
+  test "refill discards queued demos from an older template" do
+    DemoService.refill_queue
+    old_clone = Group.find(DemoService.demo_group_ids.fetch(0))
+    old_clone.update!(info: old_clone.info.except("demo_group_digest"))
+
+    DemoService.refill_queue
+
+    refute Group.exists?(old_clone.id)
+    assert_equal 1, DemoService.demo_group_ids.length
+    assert_equal demo_source.info.fetch("demo_group_digest"), Group.find(DemoService.demo_group_ids.fetch(0)).info.fetch("demo_group_digest")
+  end
+
+  test "a changed template replaces its source and queue" do
+    DemoService.refill_queue
+    old_source = demo_source
+    old_clone_id = DemoService.demo_group_ids.fetch(0)
+    old_source.update!(info: old_source.info.merge("demo_group_digest" => "obsolete"))
+    old_clone = Group.find(old_clone_id)
+    old_clone.update!(info: old_clone.info.merge("demo_group_digest" => "obsolete"))
+
+    DemoService.refill_queue
+
+    refute Group.exists?(old_source.id)
+    refute Group.exists?(old_clone_id)
+    assert_equal DemoGroupTemplateService.template_digest("mobile"), demo_source.info.fetch("demo_group_digest")
+  end
+
+  test "cached source translations are reused without translating clones" do
+    actor = users(:user)
+    actor.selected_locale = "de"
+    DemoService.refill_queue
+    source = demo_source
+    source.update!(info: source.info.merge("demo_group_locales" => ["de"]))
+    assert_equal "de", actor.locale
+    assert DemoService.send(:source_locale_ready?, Group.find(DemoService.demo_group_ids.fetch(0)), "de")
+    calls = 0
+    fake_translation = ->(model:, to:) do
+      calls += 1
+      Translation.new(translatable: model, language: to, fields: model.class.translatable_fields.to_h { |field| [field.to_s, "Translated #{field} #{model.id}"] })
+    end
+
+    TranslationService.stub(:available?, true) do
+      TranslationService.stub(:cached, fake_translation) do
+        TranslationService.stub(:create, ->(**) { flunk("clone requested a new translation") }) do
+          group = DemoService.take_demo(actor)
+          assert_equal "Translated name #{source.id}", group.reload.name
+          assert_operator calls, :>, 1
+          start_tag = group.tags.find_by!(name: "Translated name #{source.tags.find_by!(name: 'Start here').id}")
+          thread = group.discussions.find_by!(title: "Translated title #{source.discussions.find_by!(title: 'Should we try returnable bottles?').id}")
+          assert_equal [start_tag.name], thread.topic.reload.tags
+        end
       end
     end
   end
 
-  test "taking a queued demo claims its prepared content for the user" do
+  test "missing translations leave the claimed demo in English" do
     actor = users(:user)
-    ENV["FEATURES_DEMO_GROUPS"] = "enabled"
-    ENV["FEATURES_DEMO_GROUPS_SIZE"] = "1"
+    actor.selected_locale = "de"
     DemoService.refill_queue
-    prepared_group_id = DemoService.demo_group_ids.fetch(0)
-    unread_count_before = NotificationDelivery.where(recipient: actor, channel: "in_app", viewed_at: nil).count
+    source = demo_source
+    source.update!(info: source.info.merge("demo_group_locales" => ["de"]))
 
-    group = DemoService.take_demo(actor)
-
-    assert_equal prepared_group_id, group.id
-    assert_equal actor, group.creator
-    assert_equal "demo", group.subscription.plan
-    assert_equal actor, group.subscription.owner
-    assert group.admins.exists?(actor.id)
-    refute group.info.fetch("demo_group_queued")
-    assert_equal actor.id, group.info.fetch("demo_group_recipient_id")
-    assert_empty DemoService.demo_group_ids
-
-    active_polls = group.polls.active
-    assert active_polls.any?
-    active_polls.each do |poll|
-      assert poll.stances.latest.undecided.exists?(participant: actor)
+    TranslationService.stub(:available?, true) do
+      TranslationService.stub(:cached, nil) do
+        group = DemoService.take_demo(actor)
+        assert_equal "Oatmilk Cooperative", group.reload.name
+      end
     end
-
-    unread_count_after = NotificationDelivery.where(recipient: actor, channel: "in_app", viewed_at: nil).count
-    assert_equal unread_count_before + 3, unread_count_after
   end
 
-  test "taking a demo rejects an unmarked group id from the cache" do
-    actor = users(:user)
-    unrelated_group = groups(:alien_group)
-    fallback_group = groups(:group)
-    DemoService.write_demo_group_ids([ unrelated_group.id ])
-    fallback = DemoGroupTemplateService::Result.new(
-      group: fallback_group,
-      discussions: {},
-      polls: {},
-      notifications: []
-    )
+  private
 
-    DemoGroupTemplateService.stub(:create!, fallback) do
-      assert_equal fallback_group, DemoService.take_demo(actor)
-    end
-
-    assert_nil unrelated_group.reload.creator_id
-    assert_empty DemoService.demo_group_ids
+  def demo_source
+    Group.where("info @> ?", { demo_group_source: true }.to_json).last
   end
 end

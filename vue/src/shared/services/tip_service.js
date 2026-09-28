@@ -119,7 +119,7 @@ export default new class TipService {
                     }
                   }).then(() => {
                     const topic = Records.topics.collection.chain()
-                      .find({groupId: group.id, topicableType: 'Discussion'})
+                      .find({groupId: group.id, topicableType: 'Discussion', discardedAt: null})
                       .simplesort('id')
                       .data()[0];
                     vm.$router.push(vm.urlFor(topic, null, { current_action: 'add-poll' }));

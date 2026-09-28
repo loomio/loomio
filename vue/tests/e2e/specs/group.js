@@ -11,6 +11,19 @@ module.exports = {
     page.expectText('.sidebar__groups', 'Point Break')
   },
 
+  'links to an accessible subgroup when its parent is private': (test) => {
+    page = pageHelper(test)
+
+    page.loadPath('visit_subgroup_with_inaccessible_parent')
+    page.expectText('.group-page__name', 'Accessible Subgroup')
+    page.ensureSidebar()
+    page.expectText('.sidebar__groups', 'Accessible Subgroup')
+    page.expectNoText('.sidebar__groups', 'Private Parent')
+    page.clickElement('.sidebar__groups a')
+    page.expectText('.group-page__name', 'Accessible Subgroup')
+    page.expectNoElement('.error-page__forbidden')
+  },
+
   'should_allow_you_to_join_an_open_group': (test) => {
     page     = pageHelper(test)
 
@@ -503,6 +516,18 @@ module.exports = {
     page.fillIn('.confirm-text-field input', 'shoes')
     page.click('.confirm-modal__submit')
     page.expectFlash("This group is unavailable and will be permanently deleted after 90 days")
+  },
+
+  'queues_html_group_export': (test) => {
+    const page = pageHelper(test)
+
+    page.loadPath('setup_group_super_admin')
+    page.click('.action-menu')
+    page.click('.action-dock__button--export_data .v-list-item-title')
+    page.clickElement('.export-data-modal__html')
+    page.expectText('.confirm-modal', 'When it\'s ready you\'ll receive an email')
+    page.click('.confirm-modal__submit')
+    page.expectFlash('Group data export started')
   },
 
   'removes_group_logo_and_cover_photo': (test) => {

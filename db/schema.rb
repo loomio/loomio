@@ -168,7 +168,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_27_000000) do
     t.integer "hider_id"
     t.string "key"
     t.jsonb "link_previews", default: [], null: false
-    t.integer "max_depth", default: 2, null: false
+    t.integer "max_depth", default: 3, null: false
     t.boolean "newest_first", default: false, null: false
     t.jsonb "poll_template_keys_or_ids", default: [], null: false
     t.integer "position"

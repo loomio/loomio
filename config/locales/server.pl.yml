@@ -1,5 +1,6 @@
 ---
 pl:
+  group_export_started: "Rozpoczęto eksportowanie danych grupy"
   discussion_templates:
     blank:
       process_name: Pusty szablon
@@ -759,6 +760,7 @@ pl:
     zh: chiński (tradycyjny, tajwański)
     zh-HK: chiński (tradycyjny, tajwański)
   upload:
+    filename_required: Nazwa pliku jest wymagana
     file_too_large: Plik jest za duży. Maksymalny rozmiar przesyłanego pliku to %{limit}.
   merge_users:
     not_target_user: Aby potwierdzić scalenie, musisz zalogować się jako konto docelowe.

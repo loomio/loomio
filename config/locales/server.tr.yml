@@ -1,5 +1,6 @@
 ---
 tr:
+  group_export_started: "Grup verilerini dışa aktarma işlemi başladı"
   discussion_templates:
     blank:
       process_name: Boş şablon
@@ -732,6 +733,7 @@ tr:
     zh: Çince (Geleneksel, Tayvan)
     zh-HK: Çince (Geleneksel, Tayvan)
   upload:
+    filename_required: Dosya adı gerekli
     file_too_large: Dosya çok büyük. Maksimum yükleme boyutu %{limit}.
   merge_users:
     not_target_user: Birleştirme işlemini onaylamak için hedef hesapla oturum açmış olmanız gerekir.

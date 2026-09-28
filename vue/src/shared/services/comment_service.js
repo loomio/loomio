@@ -71,7 +71,7 @@ export default new class CommentService {
         canPerform() { return AbilityService.canRespondToComment(comment); },
         perform() {
           const topic = comment.topic();
-          if (topic_item.depth === (topic ? topic.maxDepth : 2)) {
+          if (topic_item.depth === (topic ? topic.maxDepth : 3)) {
             return EventBus.$emit('toggle-reply', comment, topic_item.parentId);
           } else {
             return EventBus.$emit('toggle-reply', comment, topic_item.id);

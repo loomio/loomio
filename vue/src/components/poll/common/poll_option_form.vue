@@ -44,7 +44,7 @@ export default {
   },
   mounted() {
     this.pollOption.testOperator = this.pollOption.testOperator || 'gte';
-    this.pollOption.testPercent = this.pollOption.testPercent || 50;
+    this.pollOption.testPercent = this.pollOption.testPercent ?? 50;
     this.pollOption.testAgainst = this.pollOption.testAgainst || 'score_percent';
   },
 

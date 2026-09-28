@@ -1,5 +1,6 @@
 ---
 ro:
+  group_export_started: "Exportul datelor de grup a început"
   discussion_templates:
     blank:
       process_name: Șablon gol
@@ -732,6 +733,7 @@ ro:
     zh: Chineză (tradițională, taiwaneză)
     zh-HK: Chineză (tradițională, taiwaneză)
   upload:
+    filename_required: Este necesar un nume de fișier
     file_too_large: Fișierul este prea mare. Dimensiunea maximă de încărcare este %{limit}.
   merge_users:
     not_target_user: Trebuie să fii conectat ca contul țintă pentru a confirma o îmbinare.
