@@ -19,19 +19,31 @@ class PollOption < ApplicationRecord
   def update_counts!
     if poll.detached_anonymous?
       choices = anonymous_ballot_choices
+      score_total = choices.sum(:score)
+      voter_count = choices.distinct.count(:anonymous_ballot_id)
       return update_columns(
         voter_scores: {},
-        total_score: choices.sum(:score),
-        voter_count: choices.distinct.count(:anonymous_ballot_id)
+        total_score: score_total,
+        unweighted_score: score_total,
+        voter_count: voter_count,
+        voter_weight_total: voter_count
       )
     end
 
-    score_total = stance_choices.latest.sum('stance_choices.score * stances.weight')
+    # One aggregate query yields the weighted total and the totals that weighted
+    # results need, so reading results never sums stance choices per option.
+    score_total, unweighted_score, voter_weight_total = stance_choices.latest.pick(
+      Arel.sql('COALESCE(SUM(stance_choices.score * stances.weight), 0)'),
+      Arel.sql('COALESCE(SUM(stance_choices.score), 0)'),
+      Arel.sql('COALESCE(SUM(stances.weight), 0)')
+    )
 
     update_columns(
       voter_scores: poll.anonymous ? {} : stance_choices.latest.where('stances.participant_id is not null').includes(:stance).map { |c| [ c.stance.participant_id, c.score ] }.to_h,
       total_score: score_total,
-      voter_count: stances.latest.count
+      unweighted_score: unweighted_score,
+      voter_count: stances.latest.count,
+      voter_weight_total: voter_weight_total
     )
   end
 
@@ -72,14 +84,15 @@ class PollOption < ApplicationRecord
   end
 
   def average_score
-    weight_total = stance_choices.latest.sum('stances.weight')
-    return 0 if weight_total == 0
+    return 0 if voter_count == 0
 
-    (total_score / weight_total).round(2).to_f
+    (total_score.to_f / voter_count).round(2)
   end
 
-  def unweighted_score
-    stance_choices.latest.sum(:score)
+  def weighted_average_score
+    return 0 if voter_weight_total == 0
+
+    (total_score / voter_weight_total).round(2).to_f
   end
 
   private

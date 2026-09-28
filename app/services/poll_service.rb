@@ -516,8 +516,6 @@ class PollService
   def self.calculate_results(poll, poll_options, undecided_voter_ids: nil)
     return calculate_stv_results(poll, poll_options) if poll.poll_type == 'stv'
 
-    weights_by_voter_id = poll.stances.latest.pluck(:participant_id, :weight).to_h.transform_values { |weight| VoteWeight.format(weight) }
-
     sorted_poll_options = case poll.order_results_by
     when 'priority'
       poll_options.sort_by {|o| o.priority }
@@ -526,12 +524,11 @@ class PollService
       poll_options.sort_by {|o| -(o.total_score)}
     end
 
-    total_score = poll.total_score
+    total_score = poll_options.sum(&:total_score)
     maximum_score = poll_options.map(&:total_score).max
     weighted_results = poll.vote_weights_enabled?
 
     l = sorted_poll_options.each_with_index.map do |option, index|
-      voter_ids = option.voter_ids.take(50)
       option_name = poll.poll_option_name_format == 'i18n' ? "poll_#{poll.poll_type}_options."+option.name : option.name
       score_percent = total_score > 0 ? ((option.total_score / total_score) * 100) : 0
       voter_percent = poll.voters_count > 0 ? ((option.voter_count.to_f / poll.voters_count.to_f) * 100) : 0
@@ -565,10 +562,9 @@ class PollService
         score_percent: score_percent.to_f,
         max_score_percent: total_score > 0 ? ((option.total_score / maximum_score) * 100).to_f : 0,
         voter_percent: voter_percent,
-        average: option.average_score,
+        average: weighted_results ? option.weighted_average_score : option.average_score,
         voter_scores: option.voter_scores,
-        voter_ids: voter_ids,
-        voter_weights: voter_ids.index_with { |id| weights_by_voter_id.fetch(id, 1) },
+        voter_ids: option.voter_ids.take(50),
         voter_count: option.voter_count,
         color: option.color,
         test_operator: option.test_operator,
@@ -579,7 +575,6 @@ class PollService
     end
 
     if poll.show_none_of_the_above
-      voter_ids = poll.none_of_the_above_voters.map(&:id).take(50)
       l.push(
         {
           id: 0,
@@ -595,8 +590,7 @@ class PollService
           voter_percent: poll.voters_count > 0 ? (poll.none_of_the_above_count.to_f / poll.voters_count.to_f * 100) : 0,
           average: 0,
           voter_scores: {},
-          voter_ids: voter_ids,
-          voter_weights: voter_ids.index_with { |id| weights_by_voter_id.fetch(id, 1) },
+          voter_ids: poll.none_of_the_above_voters.map(&:id).take(50),
           voter_count: poll.none_of_the_above_count,
           color: '#BBBBBB',
           test_result: nil
@@ -605,7 +599,6 @@ class PollService
     end
 
     if poll.results_include_undecided
-      voter_ids = (undecided_voter_ids || poll.undecided_voters.ids).take(50)
       l.push(
         {
           id: -1,
@@ -621,8 +614,7 @@ class PollService
           voter_percent: poll.voters_count > 0 ? (poll.undecided_voters_count.to_f / poll.voters_count.to_f * 100) : 0,
           average: 0,
           voter_scores: {},
-          voter_ids: voter_ids,
-          voter_weights: voter_ids.index_with { |id| weights_by_voter_id.fetch(id, 1) },
+          voter_ids: (undecided_voter_ids || poll.undecided_voters.ids).take(50),
           voter_count: poll.undecided_voters_count,
           color: '#BBBBBB',
           test_result: nil

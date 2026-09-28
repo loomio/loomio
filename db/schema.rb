@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_09_27_000001) do
+ActiveRecord::Schema[8.1].define(version: 2026_09_28_000000) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "hstore"
@@ -638,9 +638,11 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_27_000001) do
     t.string "test_operator"
     t.integer "test_percent"
     t.decimal "total_score", precision: 30, scale: 3, default: "0.0", null: false
+    t.bigint "unweighted_score", default: 0, null: false
     t.datetime "updated_at", precision: nil
     t.integer "voter_count", default: 0, null: false
     t.jsonb "voter_scores", default: {}, null: false
+    t.decimal "voter_weight_total", precision: 30, scale: 3, default: "0.0", null: false
     t.index ["poll_id"], name: "index_poll_options_on_poll_id"
   end
 

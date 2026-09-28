@@ -533,7 +533,7 @@ class Poll < ApplicationRecord
   end
 
   def total_score
-    poll_options.sum(:total_score)
+    stance_counts.sum
   end
 
   def update_counts!

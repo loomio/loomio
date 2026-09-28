@@ -73,8 +73,9 @@ class PollOptionTest < ActiveSupport::TestCase
     assert_equal 8, option.total_score
     assert_equal 5, poll.results.find { |result| result[:id] == option.id }[:unweighted_score]
     assert_equal 2, option.voter_count
-    assert_equal 4, option.average_score
-    assert_equal({users(:admin).id => '2', users(:user).id => '0'}, poll.results.find { |result| result[:id] == option.id }[:voter_weights])
+    assert_equal 5, option.unweighted_score
+    assert_equal 2, option.voter_weight_total
+    assert_equal 4, option.weighted_average_score
   end
 
   test "weighted scores can exceed the integer column range" do
