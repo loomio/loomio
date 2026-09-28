@@ -451,18 +451,15 @@ class Api::V1::ProfileControllerTest < ActionController::TestCase
     assert_predicate @user, :push_default_quiet?
   end
 
-  test "restricted user can only change the time zone through its dedicated endpoint" do
-    @user.update_columns(unsubscribe_token: UNSUB)
-    email = @user.email
+  test "an unsubscribe token cannot change the time zone" do
+    @user.update_columns(unsubscribe_token: UNSUB, time_zone: 'Pacific/Auckland')
 
     post :set_time_zone, params: {
       unsubscribe_token: UNSUB,
-      time_zone: 'Europe/Budapest',
-      user: { email: 'other@example.com' }
+      time_zone: 'Europe/Budapest'
     }, format: :json
 
-    assert_response :success
-    assert_equal 'Europe/Budapest', @user.reload.time_zone
-    assert_equal email, @user.email
+    assert_response :unauthorized
+    assert_equal 'Pacific/Auckland', @user.reload.time_zone
   end
 end
