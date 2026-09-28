@@ -522,7 +522,9 @@ class PollService
     number.frac.zero? ? number.to_i : number.to_f
   end
 
-  def self.calculate_results(poll, poll_options, undecided_voter_ids: nil)
+  # Callers with a record cache pass the voter ids they already loaded; other
+  # callers leave them nil and the ids are queried here.
+  def self.calculate_results(poll, poll_options, undecided_voter_ids: nil, none_of_the_above_voter_ids: nil)
     # Options may come from the record cache without their poll loaded; attach it
     # so each option's color and voter ids do not reload the poll.
     poll_options.each { |option| option.association(:poll).target = poll }
@@ -576,7 +578,7 @@ class PollService
         voter_percent: voter_percent,
         average: weighted_results ? option.weighted_average_score : option.average_score,
         voter_scores: option.voter_scores_for_results,
-        voter_ids: option.voter_ids.take(50),
+        voter_ids: option.voter_ids.take(Poll::RESULT_VOTER_IDS_MAX),
         voter_count: option.voter_count,
         color: option.color,
         test_operator: option.test_operator,
@@ -602,7 +604,7 @@ class PollService
           voter_percent: poll.voters_count > 0 ? (poll.none_of_the_above_count.to_f / poll.voters_count.to_f * 100) : 0,
           average: 0,
           voter_scores: {},
-          voter_ids: poll.none_of_the_above_voters.map(&:id).take(50),
+          voter_ids: (none_of_the_above_voter_ids || poll.none_of_the_above_voters.ids).take(Poll::RESULT_VOTER_IDS_MAX),
           voter_count: poll.none_of_the_above_count,
           color: '#BBBBBB',
           test_result: nil
@@ -626,7 +628,7 @@ class PollService
           voter_percent: poll.voters_count > 0 ? (poll.undecided_voters_count.to_f / poll.voters_count.to_f * 100) : 0,
           average: 0,
           voter_scores: {},
-          voter_ids: (undecided_voter_ids || poll.undecided_voters.ids).take(50),
+          voter_ids: (undecided_voter_ids || poll.undecided_voters.ids).take(Poll::RESULT_VOTER_IDS_MAX),
           voter_count: poll.undecided_voters_count,
           color: '#BBBBBB',
           test_result: nil
@@ -673,7 +675,7 @@ class PollService
         voter_percent: poll.voters_count > 0 ? ((option.voter_count.to_f / poll.voters_count.to_f) * 100) : 0,
         average: option.average_score,
         voter_scores: option.voter_scores_for_results,
-        voter_ids: option.voter_ids.take(50),
+        voter_ids: option.voter_ids.take(Poll::RESULT_VOTER_IDS_MAX),
         voter_count: option.voter_count,
         color: option.color,
         test_result: nil

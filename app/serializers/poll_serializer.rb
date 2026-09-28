@@ -133,8 +133,14 @@ class PollSerializer < ApplicationSerializer
   end
 
   def results
-    undecided_voter_ids = cache_fetch(:undecided_voter_ids_by_poll_id, object.id) { object.undecided_voters.ids }
-    PollService.calculate_results(object, poll_options, undecided_voter_ids: undecided_voter_ids)
+    # A known-missing cache entry means the poll has no such voters.
+    undecided_voter_ids = cache_fetch(:undecided_voter_ids_by_poll_id, object.id) { object.undecided_voters.ids } || []
+    none_of_the_above_voter_ids = cache_fetch(:none_of_the_above_voter_ids_by_poll_id, object.id) { object.none_of_the_above_voters.ids } || []
+    PollService.calculate_results(
+      object, poll_options,
+      undecided_voter_ids: undecided_voter_ids,
+      none_of_the_above_voter_ids: none_of_the_above_voter_ids
+    )
   end
 
   def include_results?

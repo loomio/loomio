@@ -1,5 +1,6 @@
 class Poll < ApplicationRecord
   PARTICIPATION_STATUS_VOTES_MIN = 3
+  RESULT_VOTER_IDS_MAX = 50
 
   extend  HasCustomFields
   include CustomCounterCache::Model
