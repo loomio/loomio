@@ -2978,7 +2978,6 @@ nl_NL:
     stance_reason_required_for_block: Vereist bij blokkeren
     voters: Kiezers
     manage_voters: Kiezers beheren
-    search_voters: Zoek kiezers
     remove_voter: Verwijder kiezer
     voter_page_count: "%{first}–%{last} van %{total}"
     vote_weights: Stemgewichten
@@ -2998,7 +2997,6 @@ nl_NL:
     vote_weights_description: Ken aan elke kiezer een stemgewicht toe, zodat sommige stemmen zwaarder wegen dan andere. De resultaten tonen zowel het aantal kiezers als de gewogen score.
     issued_vote_weights_will_change: De weging van reeds uitgebrachte stemmen zal veranderen.
     find_or_invite_voters: Zoek of nodig kiezers uit
-    close_search: Zoeken sluiten
     remove_voter_named: Verwijder %{name} uit de poll
     remove_voter_and_any_vote_confirmation: Wil je %{name} uit deze enquête verwijderen? Dan worden ook alle stemmen die zij hebben uitgebracht verwijderd.
     give_voters_different_weights_description: Geef kiezers verschillende gewichten. De resultaten tonen het aantal kiezers en de gewogen score.

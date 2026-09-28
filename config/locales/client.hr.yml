@@ -2951,7 +2951,6 @@ hr:
     stance_reason_required_for_block: Potrebno za blokiranje
     voters: Birači
     manage_voters: Upravljanje biračima
-    search_voters: Pretraži birače
     remove_voter: Ukloni birača
     voter_page_count: "%{first}–%{last} od %{total}"
     vote_weights: Težine glasova
@@ -2971,7 +2970,6 @@ hr:
     vote_weights_description: Dodijelite svakom biraču težinu glasa, tako da neki glasovi imaju više vrijednosti od drugih. Rezultati pokazuju i broj birača i ponderirani rezultat.
     issued_vote_weights_will_change: Ponderi za već izdane glasove će se promijeniti.
     find_or_invite_voters: Pronađite ili pozovite birače
-    close_search: Zatvori pretragu
     remove_voter_named: Ukloni %{name} iz ankete
     remove_voter_and_any_vote_confirmation: Ukloniti %{name} iz ove ankete? Time se također uklanjaju svi glasovi koje je dao/dala.
     give_voters_different_weights_description: Dajte biračima različite težine. Rezultati prikazuju broj birača i ponderirani rezultat.

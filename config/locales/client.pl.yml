@@ -2978,7 +2978,6 @@ pl:
     stance_reason_required_for_block: Wymagane przy blokowaniu
     voters: Wyborcy
     manage_voters: Zarządzaj wyborcami
-    search_voters: Wyszukaj wyborców
     remove_voter: Usuń wyborcę
     voter_page_count: "%{first}–%{last} z %{total}"
     vote_weights: Wagi głosów
@@ -2998,7 +2997,6 @@ pl:
     vote_weights_description: Przypisz każdemu wyborcy wagę głosu, tak aby niektóre głosy liczyły się bardziej niż inne. Wyniki pokazują zarówno liczbę wyborców, jak i ważony wynik.
     issued_vote_weights_will_change: Waga głosów już oddanych ulegnie zmianie.
     find_or_invite_voters: Znajdź lub zaproś wyborców
-    close_search: Zamknij wyszukiwanie
     remove_voter_named: Usuń %{name} z ankiety
     remove_voter_and_any_vote_confirmation: Usunąć %{name} z tej ankiety? To spowoduje również usunięcie wszystkich oddanych przez niego głosów.
     give_voters_different_weights_description: Nadaj wyborcom różne wagi. Wyniki pokazują liczbę wyborców i ważony wynik.

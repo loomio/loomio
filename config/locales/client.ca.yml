@@ -2978,7 +2978,6 @@ ca:
     stance_reason_required_for_block: Obligatori per bloqueig
     voters: Votants
     manage_voters: Gestiona els votants
-    search_voters: Cerca votants
     remove_voter: Eliminar votant
     voter_page_count: "%{first}–%{last} de %{total}"
     vote_weights: pesos de vot
@@ -2998,7 +2997,6 @@ ca:
     vote_weights_description: Assigneu un pes de vot a cada votant, de manera que alguns vots comptin més que d'altres. Els resultats mostren tant el nombre de votants com la puntuació ponderada.
     issued_vote_weights_will_change: Els pesos dels vots ja emesos canviaran.
     find_or_invite_voters: Trobar o convidar votants
-    close_search: Tanca la cerca
     remove_voter_named: Elimina %{name} de l'enquesta
     remove_voter_and_any_vote_confirmation: Voleu eliminar %{name} d'aquesta enquesta? Això també elimina qualsevol vot que hagin emès.
     give_voters_different_weights_description: Doneu als votants diferents pesos. Els resultats mostren el nombre de votants i la puntuació ponderada.

@@ -2986,7 +2986,6 @@ de:
     stance_reason_required_for_block: Erforderlich bei einem Veto
     voters: Wähler
     manage_voters: Wähler verwalten
-    search_voters: Wähler suchen
     remove_voter: Wähler entfernen
     voter_page_count: "%{first}–%{last} von %{total}"
     vote_weights: Stimmgewichte
@@ -3006,7 +3005,6 @@ de:
     vote_weights_description: Jedem Wähler wird ein Stimmgewicht zugewiesen, sodass manche Stimmen mehr zählen als andere. Die Ergebnisse zeigen sowohl die Anzahl der Wähler als auch die gewichtete Punktzahl.
     issued_vote_weights_will_change: Die Gewichtung der bereits abgegebenen Stimmen wird sich ändern.
     find_or_invite_voters: Wähler finden oder einladen
-    close_search: Suche schließen
     remove_voter_named: Entferne %{name} aus der Umfrage
     remove_voter_and_any_vote_confirmation: "%{name} aus dieser Umfrage entfernen? Dadurch werden auch alle von dieser Person abgegebenen Stimmen entfernt."
     give_voters_different_weights_description: Den Wählern werden unterschiedliche Gewichtungen zugewiesen. Die Ergebnisse zeigen die Anzahl der Wähler und die gewichtete Punktzahl.

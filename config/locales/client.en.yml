@@ -2638,8 +2638,6 @@ en:
     voters: Voters
     find_or_invite_voters: Find or invite voters
     manage_voters: Manage voters
-    search_voters: Search voters
-    close_search: Close search
     remove_voter: Remove voter
     remove_voter_named: Remove %{name} from poll
     remove_voter_and_any_vote_confirmation: Remove %{name} from this poll? This also removes any vote they cast.

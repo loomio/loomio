@@ -2951,7 +2951,6 @@ tr:
     stance_reason_required_for_block: Engelleme için gerekli
     voters: Seçmenler
     manage_voters: Seçmenleri yönetin
-    search_voters: Seçmenleri ara
     remove_voter: Seçmeni kaldır
     voter_page_count: "%{first}–%{last} / %{total}"
     vote_weights: Oy ağırlıkları
@@ -2971,7 +2970,6 @@ tr:
     vote_weights_description: Her seçmene bir oy ağırlığı atayın, böylece bazı oylar diğerlerinden daha fazla önem kazanır. Sonuçlar hem seçmen sayısını hem de ağırlıklı puanı gösterir.
     issued_vote_weights_will_change: Daha önce verilmiş oyların ağırlıkları değişecektir.
     find_or_invite_voters: Seçmenleri bulun veya davet edin
-    close_search: Aramayı kapat
     remove_voter_named: Anketten %{name}'i kaldır
     remove_voter_and_any_vote_confirmation: Bu anketten %{name} kullanıcısını kaldırmak mı istiyorsunuz? Bu işlem, kullanıcının verdiği tüm oyları da siler.
     give_voters_different_weights_description: Seçmenlere farklı ağırlıklar verin. Sonuçlar, seçmen sayısını ve ağırlıklı puanı gösterir.

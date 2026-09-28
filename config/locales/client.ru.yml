@@ -2951,7 +2951,6 @@ ru:
     stance_reason_required_for_block: Требуется при блокировке
     voters: Избиратели
     manage_voters: Управление избирателями
-    search_voters: Поиск избирателей
     remove_voter: Удалить избирателя
     voter_page_count: "%{first}–%{last} из %{total}"
     vote_weights: Весовые коэффициенты голосов
@@ -2971,7 +2970,6 @@ ru:
     vote_weights_description: Каждому избирателю присваивается весовой коэффициент, так что одни голоса имеют больший вес, чем другие. Результаты показывают как количество избирателей, так и взвешенный балл.
     issued_vote_weights_will_change: Весовые коэффициенты уже поданных голосов изменятся.
     find_or_invite_voters: Найти или пригласить избирателей
-    close_search: Закрыть поиск
     remove_voter_named: Удалить %{name} из опроса
     remove_voter_and_any_vote_confirmation: Удалить %{name} из этого опроса? Это также аннулирует все голоса, поданные этим пользователем.
     give_voters_different_weights_description: Присвойте избирателям разные веса. Результаты показывают количество избирателей и взвешенный балл.

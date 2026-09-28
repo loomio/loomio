@@ -2981,7 +2981,6 @@ uk:
     stance_reason_required_for_block: Обов'язково для блокування
     voters: Виборці
     manage_voters: Керування виборцями
-    search_voters: Пошук виборців
     remove_voter: Видалити виборця
     voter_page_count: "%{first}–%{last} від %{total}"
     vote_weights: Вага голосів
@@ -3001,7 +3000,6 @@ uk:
     vote_weights_description: Призначте кожному виборцю вагу голосу, щоб деякі голоси мали більше значення, ніж інші. Результати показують як кількість виборців, так і зважений бал.
     issued_vote_weights_will_change: Вага вже виданих голосів зміниться.
     find_or_invite_voters: Знайти або запросити виборців
-    close_search: Закрити пошук
     remove_voter_named: Видалити %{name} з опитування
     remove_voter_and_any_vote_confirmation: Видалити %{name} з цього опитування? Це також видаляє будь-які голоси, віддані цим користувачем.
     give_voters_different_weights_description: Надайте виборцям різні ваги. Результати показують кількість виборців та зважений бал.

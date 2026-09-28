@@ -36,7 +36,6 @@ export default {
       loading: false,
       initialRecipients: [],
       query: '',
-      searchOpen: false,
       message: '',
       stanceIdsByUserId: {},
       weightsByUserId: {},
@@ -196,16 +195,6 @@ export default {
       this.fetchStances();
     },
 
-    openSearch() {
-      this.searchOpen = true;
-      this.$nextTick(() => document.getElementById('poll-voter-search').focus());
-    },
-
-    closeSearch() {
-      this.searchOpen = false;
-      this.newQuery('');
-    },
-
     changePage(page) {
       this.page = page;
       this.userIds = [];
@@ -289,21 +278,7 @@ v-card.poll-members-form(:title="t('poll_common_form.manage_voters')" style="hei
       v-btn.poll-members-form__submit(color="primary" :loading="saving" @click="inviteRecipients")
         span(v-if="isScheduled || !poll.notifyRecipients") {{ t('poll_common_form.add_voters') }}
         span(v-else) {{ t('common.action.invite') }}
-  .d-flex.flex-wrap.align-center.ga-3.px-4.pt-4(v-if="!someRecipients && (poll.closedAt || canManageWeights)")
-    v-btn.poll-members-form__search-toggle(v-if="poll.closedAt && !searchOpen" variant="text" icon :aria-label="t('poll_common_form.search_voters')" aria-controls="poll-voter-search" @click="openSearch")
-      common-icon(name="mdi-magnify")
-    v-text-field.poll-members-form__search(
-      v-if="poll.closedAt && searchOpen"
-      id="poll-voter-search"
-      :model-value="query"
-      @update:model-value="newQuery"
-      :label="t('poll_common_form.search_voters')"
-      prepend-inner-icon="mdi-magnify"
-      density="compact"
-      hide-details)
-      template(v-slot:append-inner)
-        v-btn.poll-members-form__search-close(variant="text" icon size="x-small" :aria-label="t('poll_common_form.close_search')" @click.stop="closeSearch")
-          common-icon(name="mdi-close")
+  .d-flex.flex-wrap.align-center.ga-3.px-4.pt-4(v-if="!someRecipients && canManageWeights")
     v-spacer
     v-btn.poll-members-form__set-all(v-if="canManageWeights" variant="tonal" :disabled="weightsSaving" @click="openSetAllDialog") {{ t('poll_common_form.set_all_vote_weights') }}
   v-list.poll-members-form__list(v-if="!someRecipients" style="flex: 1; min-height: 0; overflow-y: auto")
@@ -337,8 +312,8 @@ v-card.poll-members-form(:title="t('poll_common_form.manage_voters')" style="hei
           @click="openRemoveDialog(user)")
           common-icon(name="mdi-delete-outline")
 
-    v-list-item(v-if="query && users.length == 0")
-      v-list-item-title(v-t="{ path: 'discussions_panel.no_results_found', args: { search: query }}")
+    v-list-item(v-if="query && users.length == 0 && !loading")
+      v-list-item-title {{ t('discussions_panel.no_results_found', { search: query }) }}
     .d-flex.justify-center(v-if="loading")
       loading
   .d-flex.flex-wrap.align-center.justify-space-between.ga-2.px-4.py-2(v-if="!someRecipients")

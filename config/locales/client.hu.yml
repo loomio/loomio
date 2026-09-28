@@ -2958,7 +2958,6 @@ hu:
     stance_reason_required_for_block: Kötelező a blokkoláshoz
     voters: Választók
     manage_voters: Szavazók kezelése
-    search_voters: Szavazók keresése
     remove_voter: Szavazó eltávolítása
     voter_page_count: "%{first}–%{last} a %{total}-ból"
     vote_weights: Szavazati súlyok
@@ -2978,7 +2977,6 @@ hu:
     vote_weights_description: Rendeljen minden szavazóhoz egy szavazati súlyt, így egyes szavazatok jobban számítanak, mint mások. Az eredmények mind a szavazók számát, mind a súlyozott pontszámot mutatják.
     issued_vote_weights_will_change: A már kiadott szavazatok súlyozása megváltozik.
     find_or_invite_voters: Szavazók keresése vagy meghívása
-    close_search: Keresés bezárása
     remove_voter_named: "%{name} eltávolítása a szavazásból"
     remove_voter_and_any_vote_confirmation: Eltávolítod %{name} felhasználót ebből a szavazásból? Ezzel eltávolítod az általa leadott szavazatokat is.
     give_voters_different_weights_description: Adjon a szavazóknak különböző súlyokat. Az eredmények a szavazók számát és a súlyozott pontszámot mutatják.

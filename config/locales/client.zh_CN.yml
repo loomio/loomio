@@ -2602,7 +2602,6 @@ zh_CN:
     stance_reason_required_for_block: 阻止时必填
     voters: 选民
     manage_voters: 管理选民
-    search_voters: 搜索选民
     remove_voter: 移除选民
     voter_page_count: "%{first}–%{last} 共 %{total}"
     vote_weights: 投票权重
@@ -2622,7 +2621,6 @@ zh_CN:
     vote_weights_description: 为每位选民设定投票权重，使某些选票比其他选票更重要。结果将显示选民人数和加权得分。
     issued_vote_weights_will_change: 已发出的选票权重将会改变。
     find_or_invite_voters: 寻找或邀请选民
-    close_search: 关闭搜索
     remove_voter_named: 从投票中移除 %{name}
     remove_voter_and_any_vote_confirmation: 从本次投票中移除 %{name}？此操作也会移除该用户投出的所有选票。
     give_voters_different_weights_description: 赋予每位选民不同的权重。结果显示选民人数和加权得分。

@@ -2970,7 +2970,6 @@ he:
     stance_reason_required_for_block: נדרש עבור חסימה
     voters: מצביעים
     manage_voters: ניהול מצביעים
-    search_voters: חיפוש מצביעים
     remove_voter: הסר את הבוחר
     voter_page_count: "%{first}–%{last} מתוך %{total}"
     vote_weights: משקלי הצבעה
@@ -2990,7 +2989,6 @@ he:
     vote_weights_description: הקצה לכל מצביע משקל קולות, כך שחלק מהקולות יספרו יותר מאחרים. התוצאות מציגות גם את מספר המצביעים וגם את הציון המשוקלל.
     issued_vote_weights_will_change: משקלים לקולות שכבר הונפקו ישתנו.
     find_or_invite_voters: מצא או הזמן מצביעים
-    close_search: סגור חיפוש
     remove_voter_named: הסר את %{name} מהסקר
     remove_voter_and_any_vote_confirmation: להסיר את %{name} מהסקר הזה? פעולה זו מסירה גם כל הצבעה שהטילו.
     give_voters_different_weights_description: תנו לבוחרים משקלים שונים. התוצאות מציגות את מספר הבוחרים ואת הציון המשוקלל.

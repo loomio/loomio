@@ -2995,7 +2995,6 @@ fr:
     stance_reason_required_for_block: Requis en cas de veto
     voters: Les électeurs
     manage_voters: Gérer les électeurs
-    search_voters: Recherche d'électeurs
     remove_voter: Supprimer l'électeur
     voter_page_count: "%{first}–%{last} de %{total}"
     vote_weights: Poids des votes
@@ -3015,7 +3014,6 @@ fr:
     vote_weights_description: Attribuez à chaque électeur un coefficient de pondération, afin que certains votes aient plus de poids que d'autres. Les résultats affichent à la fois le nombre de votants et le score pondéré.
     issued_vote_weights_will_change: Le poids des votes déjà exprimés sera modifié.
     find_or_invite_voters: Trouver ou inviter des électeurs
-    close_search: Fermer la recherche
     remove_voter_named: Supprimer %{name} du sondage
     remove_voter_and_any_vote_confirmation: Supprimer %{name} de ce sondage ? Cela supprimera également tout vote qu'il ou elle a exprimé.
     give_voters_different_weights_description: Attribue des poids de vote différents aux électeurs. Les résultats affichent le nombre d'électeurs et le score pondéré.

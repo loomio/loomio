@@ -2951,7 +2951,6 @@ sv:
     stance_reason_required_for_block: Krävs vid blockering
     voters: Väljare
     manage_voters: Hantera väljare
-    search_voters: Sök väljare
     remove_voter: Ta bort väljare
     voter_page_count: "%{first}–%{last} av %{total}"
     vote_weights: Röstvikter
@@ -2971,7 +2970,6 @@ sv:
     vote_weights_description: Tilldela varje väljare en röstvikt, så att vissa röster räknas mer än andra. Resultaten visar både antalet väljare och den viktade poängen.
     issued_vote_weights_will_change: Vikterna för redan utfärdade röster kommer att ändras.
     find_or_invite_voters: Hitta eller bjud in väljare
-    close_search: Stäng sökningen
     remove_voter_named: Ta bort %{name} från omröstningen
     remove_voter_and_any_vote_confirmation: Vill du ta bort %{name} från den här omröstningen? Detta tar även bort alla röster de avgav.
     give_voters_different_weights_description: Ge väljarna olika vikter. Resultaten visar antalet väljare och den viktade poängen.

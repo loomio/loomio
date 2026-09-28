@@ -2999,7 +2999,6 @@ pt_BR:
     stance_reason_required_for_block: Necessário para bloqueio
     voters: Eleitores
     manage_voters: Gerenciar eleitores
-    search_voters: Pesquisar eleitores
     remove_voter: Remover eleitor
     voter_page_count: "%{first}–%{last} de %{total}"
     vote_weights: Pesos de voto
@@ -3019,7 +3018,6 @@ pt_BR:
     vote_weights_description: Atribua um peso a cada eleitor, de forma que alguns votos contem mais do que outros. Os resultados mostram tanto o número de eleitores quanto a pontuação ponderada.
     issued_vote_weights_will_change: A ponderação dos votos já emitidos será alterada.
     find_or_invite_voters: Encontre ou convide eleitores
-    close_search: Fechar pesquisa
     remove_voter_named: Remover %{name} da enquete
     remove_voter_and_any_vote_confirmation: Remover %{name} desta enquete? Isso também remove qualquer voto que essa pessoa tenha dado.
     give_voters_different_weights_description: Atribua pesos diferentes aos eleitores. Os resultados mostram o número de eleitores e a pontuação ponderada.
