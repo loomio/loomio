@@ -26,9 +26,13 @@ Select **Use weighted voting** in the poll's advanced settings. You can turn it 
 
 ![The Use weighted voting setting in a poll](poll-setting.png)
 
-Weighted voting works with identified polls, except time polls and STV elections.
+Weighted voting works with these poll types: [Proposal](/en/user_manual/polls/proposals), [Choose](/en/user_manual/polls/choose), [Score](/en/user_manual/polls/score), [Allocate](/en/user_manual/polls/allocate), and [Rank](/en/user_manual/polls/rank).
+
+You cannot use weighted voting and [anonymous voting](/en/user_manual/polls/anonymous_voting) in the same poll.
 
 To change one voter's vote weight, select **Manage voters**, then select the vote weight beside their name. To change everyone's, select **Set all vote weights**. You can copy each member's vote weight from the group, or give everyone the same value. Voters who are not group members get a vote weight of `1`.
+
+![The Manage voters button on a poll](poll-manage-voters.png)
 
 ![Voters in a poll with individual vote weights](poll-voter-weights.png)
 
@@ -36,8 +40,8 @@ To change one voter's vote weight, select **Manage voters**, then select the vot
 
 Results show the plain totals and the weighted totals side by side:
 
-- Proposals and single-choice polls show **Votes** and **Weighted votes**.
-- Dot votes, score polls, and ranked choice show **Points** and **Weighted points**.
+- Proposal and Choose polls show **Votes** and **Weighted votes**.
+- Score, Allocate, and Rank polls show **Points** and **Weighted points**.
 
 The chart shows the weighted result. Select a column heading to chart that column instead. Eligible voters and quorum count people, not vote weights. Anyone who can see the votes can see each voter's vote weight.
 

@@ -56,6 +56,22 @@ module.exports = {
     });
   },
 
+  'poll_manage_voters': (test) => {
+    const page = pageHelper(test);
+    const screenshot = manualScreenshot(test);
+
+    page.loadPath('setup_manual_oatmilk_vote_weights?votes=1');
+    page.waitFor('.poll-created .action-dock__button--announce_poll');
+    page.expectText('.poll-created .action-dock__button--announce_poll', 'Manage voters');
+    screenshot.captureRegion('polls/weighted_voting/poll-manage-voters', ['.poll-created .poll-common-card__title', '.poll-created .action-dock'], {
+      padding: 24,
+      width: 1200,
+      height: 1400,
+      clearSelection: true,
+      spotlight: {selector: '.poll-created .action-dock__button--announce_poll', padding: 10, radius: 14, opacity: 0.4, outlineWidth: 0}
+    });
+  },
+
   'poll_voter_weights': (test) => {
     const page = pageHelper(test);
     const screenshot = manualScreenshot(test);
