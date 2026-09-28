@@ -2319,8 +2319,8 @@ he:
     all_voters: כל הבוחרים
     vote_weight_column: משקל הצבעה
     stance: הַצבָּעָה
-    participation_records_restricted: רישומי ההשתתפות זמינים למתאמי הקלפי
     vote_weight: משקל %{weight}
+    participation_records_restricted: ניתן לראות מי השתתף לאחר סגירת ההצבעה
   poll_common_undecided_panel:
     show_undecided: הצג %{count} מתלבטים
     show_invitations: הראה הצעות ממתינות
@@ -2993,7 +2993,6 @@ he:
     give_voters_different_weights_description: תנו לבוחרים משקלים שונים. התוצאות מציגות קולות או נקודות משוקללים לצד הסכומים הלא משוקללים.
   poll_receipts_page:
     participation_status_requires_min_votes: זה מראה מי היה זכאי להצביע. האם כל אדם הצביע מוצג רק לאחר שלפחות %{count} אנשים הצביעו.
-    verify_participants: אימות משתתפים
     see_votes_if_quorum_reached: אם ההצבעה נסגרה והושג המניין החוקי, תראו מי הצביע.
     voter_name: שם הבוחר
     voter_email: דוא"ל הבוחר

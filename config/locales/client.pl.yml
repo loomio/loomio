@@ -2325,8 +2325,8 @@ pl:
     all_voters: Wszyscy wyborcy
     vote_weight_column: Waga głosu
     stance: Głosować
-    participation_records_restricted: Rejestry uczestnictwa są dostępne dla koordynatorów głosowania
     vote_weight: Waga %{weight}
+    participation_records_restricted: Po zakończeniu głosowania możesz zobaczyć, kto wziął udział
   poll_common_undecided_panel:
     show_undecided: Pokaż %{count} niezdecydowanych
     show_invitations: Pokaż Oczekujące Zaproszenia
@@ -3001,7 +3001,6 @@ pl:
     give_voters_different_weights_description: Nadaj wyborcom różną wagę. Wyniki pokazują ważone głosy lub punkty obok nieważonych sum.
   poll_receipts_page:
     participation_status_requires_min_votes: Pokazuje, kto był uprawniony do głosowania. Informacja o tym, czy poszczególne osoby zagłosowały, jest wyświetlana tylko wtedy, gdy zagłosowały co najmniej %{count} osoby.
-    verify_participants: Zweryfikuj uczestników
     see_votes_if_quorum_reached: Jeśli głosowanie zostało zamknięte i osiągnięto kworum, zobaczysz, kto oddał głos.
     voter_name: Imię i nazwisko wyborcy
     voter_email: E-mail wyborcy

@@ -2300,8 +2300,8 @@ tr:
     all_voters: Tüm seçmenler
     vote_weight_column: Oy ağırlığı
     stance: Oy
-    participation_records_restricted: Katılım kayıtları, anket koordinatörlerinin erişimine açıktır.
     vote_weight: Ağırlık %{weight}
+    participation_records_restricted: Oy verme işlemi sona erdikten sonra kimlerin katıldığını görebilirsiniz
   poll_common_undecided_panel:
     show_undecided: "%{count} kararsızı göster"
     show_invitations: Bekleyen Davetiyeleri Göster
@@ -2974,7 +2974,6 @@ tr:
     give_voters_different_weights_description: Seçmenlere farklı ağırlıklar verin. Sonuçlar, ağırlıklı oyları veya puanları, ağırlıksız toplamlarla birlikte gösterir.
   poll_receipts_page:
     participation_status_requires_min_votes: Bu, kimlerin oy kullanma hakkına sahip olduğunu gösterir. Her kişinin oy kullanıp kullanmadığı yalnızca en az %{count} kişi oy verdiğinde gösterilir.
-    verify_participants: Katılımcıları doğrulayın
     see_votes_if_quorum_reached: Oylama sona ermiş ve yeter sayı sağlanmışsa, kimin oy kullandığını göreceksiniz.
     voter_name: Seçmen adı
     voter_email: Seçmen e-postası

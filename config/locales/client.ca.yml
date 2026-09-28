@@ -2325,8 +2325,8 @@ ca:
     all_voters: Tots els votants
     vote_weight_column: Pes del vot
     stance: Vota
-    participation_records_restricted: Els registres de participació estan disponibles per als coordinadors de les enquestes
     vote_weight: Pes %{weight}
+    participation_records_restricted: Podeu veure qui hi ha participat després del tancament de la votació
   poll_common_undecided_panel:
     show_undecided: Mostra %{count} indecisos
     show_invitations: Mostra les invitacions pendents
@@ -3001,7 +3001,6 @@ ca:
     give_voters_different_weights_description: Doneu als votants diferents pesos. Els resultats mostren els vots o punts ponderats juntament amb els totals no ponderats.
   poll_receipts_page:
     participation_status_requires_min_votes: Això mostra qui tenia dret a votar. Només es mostra si cada persona ha votat quan almenys %{count} persones han votat.
-    verify_participants: Verifica els participants
     see_votes_if_quorum_reached: Si la votació s'ha tancat i s'ha arribat al quòrum, veureu qui ha votat.
     voter_name: Nom del votant
     voter_email: Correu electrònic del votant

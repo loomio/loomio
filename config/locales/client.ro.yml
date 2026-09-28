@@ -2300,8 +2300,8 @@ ro:
     all_voters: Toți alegătorii
     vote_weight_column: Ponderea voturilor
     stance: Vot
-    participation_records_restricted: Înregistrările de participare sunt disponibile coordonatorilor de scrutin.
     vote_weight: Greutate %{weight}
+    participation_records_restricted: Puteți vedea cine a participat după închiderea votului
   poll_common_undecided_panel:
     show_undecided: Afișați %{count} nehotărâți
     show_invitations: Afișați invitațiile în așteptare
@@ -2974,7 +2974,6 @@ ro:
     give_voters_different_weights_description: Acordați alegătorilor ponderi diferite. Rezultatele afișează voturile sau punctele ponderate alături de totalurile neponderate.
   poll_receipts_page:
     participation_status_requires_min_votes: Aceasta arată cine a avut drept de vot. Informația despre participarea fiecărei persoane este afișată numai după ce au votat cel puțin %{count} persoane.
-    verify_participants: Verificați participanții
     see_votes_if_quorum_reached: Dacă votarea s-a închis și s-a atins cvorumul, veți vedea cine a votat.
     voter_name: Numele alegătorului
     voter_email: Adresa de e-mail a alegătorului

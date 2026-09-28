@@ -2300,8 +2300,8 @@ da:
     all_voters: Alle vælgere
     vote_weight_column: Stemmevægt
     stance: Stemme
-    participation_records_restricted: Deltagerregistre er tilgængelige for valgkoordinatorer
     vote_weight: Vægt %{weight}
+    participation_records_restricted: Du kan se, hvem der deltog, efter afstemningen er afsluttet
   poll_common_undecided_panel:
     show_undecided: Vis %{count} ubesluttede
     show_invitations: Vis afventende invitationer
@@ -2974,7 +2974,6 @@ da:
     give_voters_different_weights_description: Giv vælgerne forskellig vægtning. Resultaterne viser vægtede stemmer eller point sammen med de uvægtede totaler.
   poll_receipts_page:
     participation_status_requires_min_votes: Dette viser, hvem der var stemmeberettigede. Om hver person stemte, vises kun, når mindst %{count} personer har stemt.
-    verify_participants: Bekræft deltagere
     see_votes_if_quorum_reached: Hvis afstemningen er afsluttet, og det quorum er nået, vil du se, hvem der afgav en stemme.
     voter_name: Vælgernavn
     voter_email: Vælger-e-mail

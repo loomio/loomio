@@ -2300,8 +2300,8 @@ sl:
     all_voters: Vsi volivci
     vote_weight_column: Teža glasov
     stance: Glasujte
-    participation_records_restricted: Zapisi o udeležbi so na voljo koordinatorjem volitev
     vote_weight: Teža %{weight}
+    participation_records_restricted: Po koncu glasovanja si lahko ogledate, kdo je sodeloval
   poll_common_undecided_panel:
     show_undecided: Prikaži %{count} neodločenih
     show_invitations: Prikaži čakajoča povabila
@@ -2974,7 +2974,6 @@ sl:
     give_voters_different_weights_description: Volivcem dodelite različne uteži. Rezultati prikazujejo utežene glasove ali točke poleg neuteženih skupnih vrednosti.
   poll_receipts_page:
     participation_status_requires_min_votes: To prikazuje, kdo je bil upravičen do glasovanja. Ali je posamezna oseba glasovala, se prikaže šele, ko glasujejo vsaj %{count} osebe.
-    verify_participants: Preverjanje udeležencev
     see_votes_if_quorum_reached: Če je glasovanje končano in je dosežen kvorum, boste videli, kdo je glasoval.
     voter_name: Ime volivca
     voter_email: E-poštni naslov volivca

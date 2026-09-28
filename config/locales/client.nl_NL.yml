@@ -2325,8 +2325,8 @@ nl_NL:
     all_voters: Alle kiezers
     vote_weight_column: Stemgewicht
     stance: Stemmen
-    participation_records_restricted: Deelnemersgegevens zijn beschikbaar voor de coördinatoren van de peilingen.
     vote_weight: Gewicht %{weight}
+    participation_records_restricted: Je kunt zien wie er heeft deelgenomen nadat de stemming is gesloten
   poll_common_undecided_panel:
     show_undecided: Toon %{count} onbeslist
     show_invitations: Toon uitnodigingen in afwachting
@@ -3001,7 +3001,6 @@ nl_NL:
     give_voters_different_weights_description: Geef kiezers verschillende wegingen. De resultaten tonen de gewogen stemmen of punten naast de ongewogen totalen.
   poll_receipts_page:
     participation_status_requires_min_votes: Dit laat zien wie stemgerechtigd was. Of elke persoon heeft gestemd, wordt alleen getoond wanneer minstens %{count} mensen hebben gestemd.
-    verify_participants: Deelnemers verifiëren
     see_votes_if_quorum_reached: Als de stemming is gesloten en het quorum is bereikt, ziet u wie er gestemd heeft.
     voter_name: Naam van de kiezer
     voter_email: kiezers-e-mail

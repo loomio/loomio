@@ -2059,7 +2059,6 @@ be:
       reload: Перазагрузіць
   poll_receipts_page:
     no_receipts: Гэта ананімнае апытанне было закрыта да таго, як з'явілася функцыя праверкі, таму праверка немагчымая.
-    verify_participants: Праверка ўдзельнікаў
     participation_records_explanation: Гэта паказвае, хто меў права голасу і ці галасаваў ён. Гэта не паказвае, як хто галасаваў.
     participation_status_requires_min_votes: Тут паказана, хто меў права голасу. Ці прагаласаваў кожны чалавек, паказваецца толькі тады, калі прагаласавала не менш за %{count} чалавек.
     see_votes_if_quorum_reached: Калі апытанне завершана і кворум дасягнуты, вы ўбачыце, хто прагаласаваў
@@ -2470,8 +2469,8 @@ be:
     all_voters: Усе выбаршчыкі
     vote_weight_column: Вага галасоў
     stance: Галасаваць
-    participation_records_restricted: Запісы аб удзеле даступныя каардынатарам выбарчых апытанняў
     vote_weight: Вага %{weight}
+    participation_records_restricted: Пасля заканчэння галасавання вы зможаце ўбачыць, хто прыняў удзел
   poll_common_details_meta:
     opened: Адкрыта
     opens: Адкрываецца

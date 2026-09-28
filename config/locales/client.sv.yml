@@ -2300,8 +2300,8 @@ sv:
     all_voters: Alla väljare
     vote_weight_column: Röstvikt
     stance: Rösta
-    participation_records_restricted: Deltagarregister är tillgängliga för valkoordinatorer
     vote_weight: Vikt %{weight}
+    participation_records_restricted: Du kan se vilka som deltog efter att omröstningen avslutats
   poll_common_undecided_panel:
     show_undecided: Visa %{count} osäkra
     show_invitations: Visa väntande inbjudningar
@@ -2974,7 +2974,6 @@ sv:
     give_voters_different_weights_description: Ge väljarna olika vikter. Resultaten visar viktade röster eller poäng bredvid de oviktade totalsiffrorna.
   poll_receipts_page:
     participation_status_requires_min_votes: Detta visar vilka som var röstberättigade. Om varje person har röstat visas endast när minst %{count} personer har röstat.
-    verify_participants: Verifiera deltagare
     see_votes_if_quorum_reached: Om omröstningen har avslutats och beslutsmässighet uppnåtts ser du vem som avgav en röst.
     voter_name: Väljarens namn
     voter_email: Väljarens e-postadress

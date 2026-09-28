@@ -2300,8 +2300,8 @@ fi:
     all_voters: Kaikki äänestäjät
     vote_weight_column: Äänestyspaino
     stance: Äänestää
-    participation_records_restricted: Osallistumistiedot ovat vaalikoordinaattoreiden saatavilla
     vote_weight: Paino %{weight}
+    participation_records_restricted: Äänestyksen päätyttyä näet ketkä osallistuivat
   poll_common_undecided_panel:
     show_undecided: Näytä %{count} epävarmaa
     show_invitations: Näytä odottavat kutsut
@@ -2974,7 +2974,6 @@ fi:
     give_voters_different_weights_description: Anna äänestäjille eri painotuksia. Tulokset näyttävät painotetut äänet tai pisteet painottamattomien kokonaismäärien rinnalla.
   poll_receipts_page:
     participation_status_requires_min_votes: Tämä näyttää, ketkä olivat äänioikeutettuja. Se, äänestikö kukin henkilö, näytetään vasta, kun vähintään %{count} henkilöä on äänestänyt.
-    verify_participants: Vahvista osallistujat
     see_votes_if_quorum_reached: Jos äänestys on päättynyt ja päätösvaltainen määrä on saavutettu, näet ketkä äänestivät.
     voter_name: Äänestäjän nimi
     voter_email: Äänestäjän sähköpostiosoite

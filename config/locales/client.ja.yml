@@ -2299,8 +2299,8 @@ ja:
     all_voters: すべての有権者
     vote_weight_column: 投票権
     stance: 投票する
-    participation_records_restricted: 投票記録は投票コーディネーターが閲覧可能です。
     vote_weight: 重量 %{weight}
+    participation_records_restricted: 投票終了後、誰が参加したかを確認できます
   poll_common_undecided_panel:
     show_undecided: "%{count} を表示するかどうかは未定"
     show_invitations: 保留中の招待状を表示
@@ -2973,7 +2973,6 @@ ja:
     give_voters_different_weights_description: 投票者に異なる重み付けを与える。結果には、重み付けされた投票数またはポイントが、重み付けされていない合計値と並んで表示される。
   poll_receipts_page:
     participation_status_requires_min_votes: 投票資格があった人を表示します。各人が投票したかどうかは、少なくとも%{count}人が投票した場合にのみ表示されます。
-    verify_participants: 参加者を確認する
     see_votes_if_quorum_reached: 投票が終了し、定足数に達した場合は、誰が投票したかが表示されます。
     voter_name: 投票者名
     voter_email: 有権者メール

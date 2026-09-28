@@ -2342,8 +2342,8 @@ fr:
     all_voters: Tous les électeurs
     vote_weight_column: Poids du vote
     stance: Vote
-    participation_records_restricted: Les listes de participation sont accessibles aux coordinateurs de sondage.
     vote_weight: Poids %{weight}
+    participation_records_restricted: Tu pourras voir qui a participé après la clôture du vote
   poll_common_undecided_panel:
     show_undecided: Afficher les %{count} indécis
     show_invitations: Montrer les invitations en attente
@@ -3018,7 +3018,6 @@ fr:
     give_voters_different_weights_description: Attribue des pondérations différentes aux électeurs. Les résultats affichent les votes ou les points pondérés à côté des totaux non pondérés.
   poll_receipts_page:
     participation_status_requires_min_votes: Cette liste indique qui avait le droit de voter. Le statut de participation de chaque personne n'est affiché que lorsqu'au moins %{count} personnes ont voté.
-    verify_participants: Vérifier les participants
     see_votes_if_quorum_reached: Si le vote est clos et que le quorum est atteint, tu verras qui a voté.
     voter_name: Nom de l'électeur
     voter_email: Courriel des électeurs

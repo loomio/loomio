@@ -1,5 +1,12 @@
 # Corrected translations
 
+## 2026-09-28 — Anonymous participation notice
+
+| File | Key | Before | After | Why it was wrong |
+|------|-----|--------|-------|------------------|
+| `config/locales/client.de.yml`, `client.fr.yml` | `poll_common_votes_panel.participation_records_restricted` | Formal `Sie können`, `Vous pourrez` | Informal `Du kannst`, `Tu pourras` | German and French UI use the informal register |
+| `config/locales/client.*.yml` | `poll_common_votes_panel.participation_records_restricted` | Final `.` or `。` | No final full stop | The English source is a single-sentence UI string without a full stop |
+
 ## 2026-09-28 — Vote weight help text
 
 | File | Key | Before | After | Why it was wrong |

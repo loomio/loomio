@@ -2300,8 +2300,8 @@ el:
     all_voters: Όλοι οι ψηφοφόροι
     vote_weight_column: Βάρος ψήφου
     stance: Ψήφος
-    participation_records_restricted: Τα αρχεία συμμετοχής είναι διαθέσιμα στους συντονιστές της ψηφοφορίας
     vote_weight: Βάρος %{weight}
+    participation_records_restricted: Μπορείτε να δείτε ποιοι συμμετείχαν μετά το τέλος της ψηφοφορίας
   poll_common_undecided_panel:
     show_undecided: Εμφάνιση %{count} αναποφάσιστων
     show_invitations: Εμφάνιση προσκλήσεων σε εκκρεμότητα
@@ -2974,7 +2974,6 @@ el:
     give_voters_different_weights_description: Δώστε στους ψηφοφόρους διαφορετικά βάρη. Τα αποτελέσματα δείχνουν τις σταθμισμένες ψήφους ή τους πόντους παράλληλα με τα μη σταθμισμένα σύνολα.
   poll_receipts_page:
     participation_status_requires_min_votes: Αυτό δείχνει ποιος είχε δικαίωμα ψήφου. Το αν ψήφισε κάθε άτομο εμφανίζεται μόνο όταν έχουν ψηφίσει τουλάχιστον %{count} άτομα.
-    verify_participants: Επαλήθευση συμμετεχόντων
     see_votes_if_quorum_reached: Εάν η ψηφοφορία έχει ολοκληρωθεί και έχει επιτευχθεί απαρτία, θα δείτε ποιος ψήφισε.
     voter_name: Όνομα ψηφοφόρου
     voter_email: Ηλεκτρονικό ταχυδρομείο ψηφοφόρου

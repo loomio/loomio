@@ -2034,7 +2034,6 @@ zh_CN:
   poll_receipts_page:
     participation_status_requires_min_votes: 这里显示哪些人有资格投票。只有在至少%{count}人投票后，才会显示每个人是否投票。
     no_receipts: 这项匿名投票在验证功能推出之前就已经结束了，因此无法进行验证。
-    verify_participants: 核实参与者
     voter_name: 名字
     voter_email: 电子邮件
     vote_cast: 投票结果
@@ -2438,8 +2437,8 @@ zh_CN:
     all_voters: 所有选民
     vote_weight_column: 投票权重
     stance: 投票
-    participation_records_restricted: 投票协调员可以查阅投票记录。
     vote_weight: 重量 %{weight}
+    participation_records_restricted: 投票结束后，您可以查看所有参与者名单
   poll_common_undecided_panel:
     show_undecided: 显示 %{count} 个未决定
     show_invitations: 待处理的邀请

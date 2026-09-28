@@ -2326,8 +2326,8 @@ zh_TW:
     all_voters: 所有選民
     vote_weight_column: 投票權重
     stance: 投票
-    participation_records_restricted: 投票協調員可以查閱投票記錄。
     vote_weight: 重量 %{weight}
+    participation_records_restricted: 投票結束後，您可以查看所有參與者名單
   poll_common_undecided_panel:
     show_undecided: 顯示 %{count} 個未決定
     show_invitations: 顯示擱置中的邀請函
@@ -3002,7 +3002,6 @@ zh_TW:
     give_voters_different_weights_description: 賦予選民不同的權重。結果會顯示加權票數或得分，以及未加權的總票數或得分。
   poll_receipts_page:
     participation_status_requires_min_votes: 這裡顯示哪些人有資格投票。只有在至少%{count}人投票後，才會顯示每個人是否投票。
-    verify_participants: 驗證參與者
     see_votes_if_quorum_reached: 如果投票已結束且達到法定人數，您將看到誰投了票。
     voter_name: 選民姓名
     voter_email: 選民電子郵件

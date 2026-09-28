@@ -2328,8 +2328,8 @@ uk:
     all_voters: Усі виборці
     vote_weight_column: Вага голосів
     stance: Голосувати
-    participation_records_restricted: Записи про участь доступні координаторам виборчих дільниць
     vote_weight: Вага %{weight}
+    participation_records_restricted: Ви можете побачити, хто взяв участь, після завершення голосування
   poll_common_undecided_panel:
     show_undecided: Показати %{count} не визначилися
     show_invitations: Показати запрошення в очікувані
@@ -3004,7 +3004,6 @@ uk:
     give_voters_different_weights_description: Надайте виборцям різну вагу. Результати показують зважені голоси або бали поряд із незваженими підсумками.
   poll_receipts_page:
     participation_status_requires_min_votes: Тут показано, хто мав право голосувати. Інформація про те, чи проголосувала кожна людина, відображається лише після того, як проголосують щонайменше %{count} людини.
-    verify_participants: Перевірити учасників
     see_votes_if_quorum_reached: Якщо голосування завершено і досягнуто кворуму, ви побачите, хто проголосував.
     voter_name: Ім'я виборця
     voter_email: Електронна адреса виборця

@@ -2334,8 +2334,8 @@ es:
     all_voters: Todos los votantes
     vote_weight_column: Peso del voto
     stance: Votar
-    participation_records_restricted: Los registros de participación están a disposición de los coordinadores de las elecciones.
     vote_weight: Peso %{weight}
+    participation_records_restricted: Podrás ver quiénes participaron una vez finalizada la votación
   poll_common_undecided_panel:
     show_undecided: Mostrar %{count} indecisos
     show_invitations: Mostrar invitaciones pendientes
@@ -3010,7 +3010,6 @@ es:
     give_voters_different_weights_description: Asigna diferentes ponderaciones a los votantes. Los resultados muestran los votos o puntos ponderados junto con los totales sin ponderar.
   poll_receipts_page:
     participation_status_requires_min_votes: Esto muestra quién tenía derecho a votar. Solo se muestra si cada persona votó cuando han votado al menos %{count} personas.
-    verify_participants: Verificar participantes
     see_votes_if_quorum_reached: Si la votación se ha cerrado y se ha alcanzado el quórum, podrás ver quién emitió tu voto.
     voter_name: Nombre del votante
     voter_email: Correo electrónico del votante

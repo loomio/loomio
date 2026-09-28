@@ -2166,7 +2166,6 @@ en:
 
   poll_receipts_page:
     no_receipts: This anonymous poll closed before the verification feature existed, so verification is not possible.
-    verify_participants: Verify participants
     participation_records_explanation: This shows who was eligible and whether they voted. It does not show how anyone voted.
     participation_status_requires_min_votes: This shows who was eligible. Whether each person voted is shown only when at least %{count} people have voted.
     see_votes_if_quorum_reached: If the poll has closed and quorum was reached, you will see who voted
@@ -2562,7 +2561,7 @@ en:
     all_voters: All voters
     vote_weight_column: Vote weight
     stance: Vote
-    participation_records_restricted: Participation records are available to poll coordinators
+    participation_records_restricted: You can see who took part after voting closes
     cast: Cast
     uncast: Uncast
     vote_removed: Vote removed

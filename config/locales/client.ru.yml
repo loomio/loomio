@@ -2300,8 +2300,8 @@ ru:
     all_voters: Все избиратели
     vote_weight_column: Вес голоса
     stance: Голосование
-    participation_records_restricted: Данные об участии доступны координаторам избирательных участков.
     vote_weight: Вес %{weight}
+    participation_records_restricted: Список участников можно посмотреть после завершения голосования
   poll_common_undecided_panel:
     show_undecided: Показать %{count} не определился
     show_invitations: Показать ожидающие приглашения
@@ -2974,7 +2974,6 @@ ru:
     give_voters_different_weights_description: Присвойте избирателям разные веса. Результаты показывают взвешенные голоса или баллы наряду с невзвешенными итоговыми результатами.
   poll_receipts_page:
     participation_status_requires_min_votes: Здесь показано, кто имел право голоса. Сведения о том, проголосовал ли каждый участник, отображаются только после того, как проголосуют не менее %{count} человек.
-    verify_participants: Проверка участников
     see_votes_if_quorum_reached: Если голосование закрыто и кворум достигнут, вы увидите, кто отдал свой голос.
     voter_name: Имя избирателя
     voter_email: Электронная почта избирателя

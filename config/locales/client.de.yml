@@ -2333,8 +2333,8 @@ de:
     all_voters: Alle Wähler
     vote_weight_column: Stimmgewicht
     stance: Abstimmung
-    participation_records_restricted: Die Teilnehmerzahlen stehen den Wahlleitern zur Verfügung.
     vote_weight: Gewicht %{weight}
+    participation_records_restricted: Du kannst nach Schließung der Abstimmung sehen, wer teilgenommen hat
   poll_common_undecided_panel:
     show_undecided: Zeige %{count} unentschlossen
     show_invitations: Ausstehende Einladungen anzeigen
@@ -3009,7 +3009,6 @@ de:
     give_voters_different_weights_description: Gib Wählern unterschiedliche Gewichtungen. Die Ergebnisse zeigen die gewichteten Stimmen oder Punkte neben den ungewichteten Gesamtsummen.
   poll_receipts_page:
     participation_status_requires_min_votes: Hier wird angezeigt, wer teilnahmeberechtigt war. Ob die einzelnen Personen abgestimmt haben, wird nur angezeigt, wenn mindestens %{count} Personen abgestimmt haben.
-    verify_participants: Teilnehmer überprüfen
     see_votes_if_quorum_reached: Wenn die Abstimmung beendet ist und das Quorum erreicht ist, siehst du, wer seine Stimme abgegeben hat.
     voter_name: Name des Wählers
     voter_email: Wähler-E-Mail

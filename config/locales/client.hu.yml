@@ -2307,8 +2307,8 @@ hu:
     all_voters: Minden szavazó
     vote_weight_column: Szavazati súly
     stance: Szavazás
-    participation_records_restricted: A részvételi adatok a szavazás koordinátorai számára elérhetők.
     vote_weight: Súly %{weight}
+    participation_records_restricted: A szavazás lezárása után láthatja, kik vettek részt
   poll_common_undecided_panel:
     show_undecided: "%{count} bizonytalan megjelenítése"
     show_invitations: A függőben lévő meghívók megjelenítése
@@ -2981,7 +2981,6 @@ hu:
     give_voters_different_weights_description: Adjon a szavazóknak különböző súlyokat. Az eredmények a súlyozott szavazatokat vagy pontokat a súlyozatlan összesítések mellett mutatják.
   poll_receipts_page:
     participation_status_requires_min_votes: Ez megmutatja, hogy ki volt jogosult szavazni. Az, hogy egyes személyek szavaztak-e, csak akkor jelenik meg, ha legalább %{count} ember szavazott.
-    verify_participants: Résztvevők ellenőrzése
     see_votes_if_quorum_reached: Ha a szavazás lezárult és létrejött a határozatképző létszám, akkor láthatja, hogy kik szavaztak.
     voter_name: Szavazó neve
     voter_email: Szavazói e-mail cím
