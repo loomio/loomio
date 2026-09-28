@@ -1624,7 +1624,7 @@ zh_TW:
     updated: 成員標題已更新
     membership_updated: 會員資格已更新
     weight_label: 投票權重
-    weight_helptext: 當成員被加入新的投票中時，此值將複製到該成員的投票記錄中。更改此值不會影響現有投票。將其設為 0 可允許成員投票而不增加分數。
+    weight_helptext: 當成員被加入新的投票中時，此值會複製到該成員的投票記錄中。更改此值不會影響現有投票。將其設為 0 可使成員投票而不影響加權結果。
   user_name_modal:
     user_name_updated: 使用者名稱已更新
     set_user_name: 設定使用者名稱
@@ -2992,7 +2992,6 @@ zh_TW:
     find_or_invite_voters: 尋找或邀請選民
     remove_voter_named: 從投票中移除 %{name}
     remove_voter_and_any_vote_confirmation: 從本次投票中移除 %{name}？此操作也會移除該用戶投下的所有選票。
-    give_voters_different_weights_description: 賦予每位選民不同的權重。結果顯示選民人數和加權得分。
     edit_vote_weight: 編輯投票權重
     edit_vote_weight_for: 修改 %{name} 的投票權重（目前為 %{weight}）
     set_all_vote_weights_title: 設定所有投票權重
@@ -3000,6 +2999,7 @@ zh_TW:
     set_each_member_default_vote_weight: 設定每位成員的預設投票權重
     set_all_weights_the_same: 將所有重量設定為相同
     voters_will_not_be_notified: 選民不會收到通知。請透過其他方式告知他們投票情況。
+    give_voters_different_weights_description: 賦予選民不同的權重。結果會顯示加權票數或得分，以及未加權的總票數或得分。
   poll_receipts_page:
     participation_status_requires_min_votes: 這裡顯示哪些人有資格投票。只有在至少%{count}人投票後，才會顯示每個人是否投票。
     verify_participants: 驗證參與者

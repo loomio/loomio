@@ -1607,7 +1607,7 @@ da:
     updated: Medlemskabs titel er opdateret
     membership_updated: Medlemskab opdateret
     weight_label: Stemmevægt
-    weight_helptext: Denne værdi kopieres til medlemmets stemme, når de tilføjes til en ny afstemning. Ændring af den påvirker ikke eksisterende afstemninger. Indstil den til 0 for at lade medlemmet stemme uden at tilføje til scoren.
+    weight_helptext: Denne værdi kopieres til medlemmets stemme, når de tilføjes til en ny afstemning. Ændring af den påvirker ikke eksisterende afstemninger. Sæt den til 0 for at lade medlemmet stemme uden at påvirke det vægtede resultat.
   user_name_modal:
     user_name_updated: Brugernavn opdateret
     set_user_name: Indstil brugernavn
@@ -2964,7 +2964,6 @@ da:
     find_or_invite_voters: Find eller inviter vælgere
     remove_voter_named: Fjern %{name} fra afstemningen
     remove_voter_and_any_vote_confirmation: Fjerne %{name} fra denne afstemning? Dette fjerner også alle stemmer, de har afgivet.
-    give_voters_different_weights_description: Giv vælgerne forskellige vægte. Resultaterne viser antallet af vælgere og den vægtede score.
     edit_vote_weight: Rediger stemmevægt
     edit_vote_weight_for: Rediger stemmevægt for %{name} (i øjeblikket %{weight})
     set_all_vote_weights_title: Angiv alle stemmevægte
@@ -2972,6 +2971,7 @@ da:
     set_each_member_default_vote_weight: Angiv standardvægten for stemmer for hvert medlem
     set_all_weights_the_same: Sæt alle vægte ens
     voters_will_not_be_notified: Vælgerne vil ikke blive underrettet. Giv dem besked om afstemningen på en anden måde.
+    give_voters_different_weights_description: Giv vælgerne forskellig vægtning. Resultaterne viser vægtede stemmer eller point sammen med de uvægtede totaler.
   poll_receipts_page:
     participation_status_requires_min_votes: Dette viser, hvem der var stemmeberettigede. Om hver person stemte, vises kun, når mindst %{count} personer har stemt.
     verify_participants: Bekræft deltagere

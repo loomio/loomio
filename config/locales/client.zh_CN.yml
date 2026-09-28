@@ -1684,7 +1684,7 @@ zh_CN:
     updated: 会员头衔已更新
     membership_updated: 会员资格已更新
     weight_label: 投票权重
-    weight_helptext: 当成员被添加到新的投票中时，此值将复制到该成员的投票记录中。更改此值不会影响现有投票。将其设置为 0 可允许成员投票而不增加分数。
+    weight_helptext: 当成员被添加到新的投票中时，此值会复制到该成员的投票记录中。更改此值不会影响现有投票。将其设置为 0 可使成员投票而不影响加权结果。
   user_name_modal:
     user_name_updated: 用户名已更新
     set_user_name: 设置用户名
@@ -2614,7 +2614,6 @@ zh_CN:
     find_or_invite_voters: 寻找或邀请选民
     remove_voter_named: 从投票中移除 %{name}
     remove_voter_and_any_vote_confirmation: 从本次投票中移除 %{name}？此操作也会移除该用户投出的所有选票。
-    give_voters_different_weights_description: 赋予每位选民不同的权重。结果显示选民人数和加权得分。
     edit_vote_weight: 编辑投票权重
     edit_vote_weight_for: 修改 %{name} 的投票权重（当前为 %{weight}）
     set_all_vote_weights_title: 设置所有投票权重
@@ -2622,6 +2621,7 @@ zh_CN:
     set_each_member_default_vote_weight: 设置每位成员的默认投票权重
     set_all_weights_the_same: 将所有重量设置为相同
     voters_will_not_be_notified: 选民不会收到通知。请通过其他方式告知他们投票情况。
+    give_voters_different_weights_description: 赋予选民不同的权重。结果会显示加权票数或得分，以及未加权的总票数或得分。
   poll_proposal_form:
     start_header: 开始提案
     edit_header: 编辑提案

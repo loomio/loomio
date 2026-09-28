@@ -1,5 +1,13 @@
 # Corrected translations
 
+## 2026-09-28 — Vote weight help text
+
+| File | Key | Before | After | Why it was wrong |
+|------|-----|--------|-------|------------------|
+| `config/locales/client.de.yml` | `membership_form.weight_helptext`, `poll_common_form.give_voters_different_weights_description` | Formal `Setzen Sie`; passive `Den Wählern werden unterschiedliche Gewichtungen zugewiesen` | Informal `Setze`; imperative `Gib Wählern unterschiedliche Gewichtungen` | German UI uses the informal register, and the description tells the coordinator what to do |
+| `config/locales/client.es.yml` | `membership_form.weight_helptext`, `poll_common_form.give_voters_different_weights_description` | Formal `Establézcalo`, `Asigne` | Informal `Establécelo`, `Asigna` | Spanish UI uses the informal `tú` register |
+| `config/locales/client.fr.yml` | `membership_form.weight_helptext`, `poll_common_form.give_voters_different_weights_description` | Formal `Définissez-la`, `Attribuez` | Informal `Définis-la`, `Attribue` | French UI uses the informal register |
+
 ## 2026-09-28 — Weighted result headings
 
 | File | Key | Before | After | Why it was wrong |

@@ -1642,7 +1642,7 @@ pt_BR:
     updated: Título do membro atualizado
     membership_updated: Atualização de membros
     weight_label: Peso do voto
-    weight_helptext: Esse valor é copiado para o voto do membro quando ele é adicionado a uma nova enquete. Alterá-lo não afeta as enquetes existentes. Defina-o como 0 para permitir que o membro vote sem adicionar pontos à pontuação.
+    weight_helptext: Esse valor é copiado para o voto do membro quando ele é adicionado a uma nova enquete. Alterá-lo não afeta as enquetes existentes. Defina-o como 0 para permitir que o membro vote sem afetar o resultado ponderado.
   user_name_modal:
     user_name_updated: Nome de usuário atualizado
     set_user_name: Definir nome de usuário
@@ -3012,7 +3012,6 @@ pt_BR:
     find_or_invite_voters: Encontre ou convide eleitores
     remove_voter_named: Remover %{name} da enquete
     remove_voter_and_any_vote_confirmation: Remover %{name} desta enquete? Isso também remove qualquer voto que essa pessoa tenha dado.
-    give_voters_different_weights_description: Atribua pesos diferentes aos eleitores. Os resultados mostram o número de eleitores e a pontuação ponderada.
     edit_vote_weight: Editar peso do voto
     edit_vote_weight_for: Editar peso do voto para %{name} (atualmente %{weight})
     set_all_vote_weights_title: Defina todos os pesos de voto
@@ -3020,6 +3019,7 @@ pt_BR:
     set_each_member_default_vote_weight: Defina o peso de voto padrão de cada membro.
     set_all_weights_the_same: Defina todos os pesos iguais.
     voters_will_not_be_notified: Os eleitores não serão notificados. Informe-os sobre a votação de outra forma.
+    give_voters_different_weights_description: Atribua pesos diferentes aos eleitores. Os resultados mostram os votos ou pontos ponderados juntamente com os totais não ponderados.
   poll_receipts_page:
     participation_status_requires_min_votes: Isso mostra quem tinha direito a voto. A informação sobre se cada pessoa votou só é exibida quando pelo menos %{count} pessoas tiverem votado.
     verify_participants: Verificar participantes

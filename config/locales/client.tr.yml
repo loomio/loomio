@@ -1607,7 +1607,7 @@ tr:
     updated: Üyelik başlığı güncellendi
     membership_updated: Üyelik güncellendi
     weight_label: Oy ağırlığı
-    weight_helptext: Bu değer, üye yeni bir ankete eklendiğinde üyenin oyuna kopyalanır. Değiştirmek mevcut anketleri etkilemez. Üyenin puana eklenmeden oy kullanmasına izin vermek için değeri 0 olarak ayarlayın.
+    weight_helptext: Bu değer, üye yeni bir ankete eklendiğinde üyenin oyuna kopyalanır. Değiştirilmesi mevcut anketleri etkilemez. Ağırlıklı sonucu etkilemeden üyenin oy kullanmasına izin vermek için değeri 0 olarak ayarlayın.
   user_name_modal:
     user_name_updated: Kullanıcı adı güncellendi
     set_user_name: Kullanıcı adını ayarla
@@ -2964,7 +2964,6 @@ tr:
     find_or_invite_voters: Seçmenleri bulun veya davet edin
     remove_voter_named: Anketten %{name}'i kaldır
     remove_voter_and_any_vote_confirmation: Bu anketten %{name} kullanıcısını kaldırmak mı istiyorsunuz? Bu işlem, kullanıcının verdiği tüm oyları da siler.
-    give_voters_different_weights_description: Seçmenlere farklı ağırlıklar verin. Sonuçlar, seçmen sayısını ve ağırlıklı puanı gösterir.
     edit_vote_weight: Oy ağırlığını düzenle
     edit_vote_weight_for: "%{name} için oy ağırlığını düzenle (şu anda %{weight})"
     set_all_vote_weights_title: Tüm oy ağırlıklarını ayarlayın.
@@ -2972,6 +2971,7 @@ tr:
     set_each_member_default_vote_weight: Her üyenin varsayılan oy ağırlığını ayarlayın.
     set_all_weights_the_same: Tüm ağırlıkları aynı ayarlayın.
     voters_will_not_be_notified: Seçmenlere bildirim yapılmayacak. Onlara anket hakkında başka bir yolla bilgi verin.
+    give_voters_different_weights_description: Seçmenlere farklı ağırlıklar verin. Sonuçlar, ağırlıklı oyları veya puanları, ağırlıksız toplamlarla birlikte gösterir.
   poll_receipts_page:
     participation_status_requires_min_votes: Bu, kimlerin oy kullanma hakkına sahip olduğunu gösterir. Her kişinin oy kullanıp kullanmadığı yalnızca en az %{count} kişi oy verdiğinde gösterilir.
     verify_participants: Katılımcıları doğrulayın

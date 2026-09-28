@@ -1629,7 +1629,7 @@ de:
     updated: Mitgliedstchaftstitel überarbeitet
     membership_updated: Mitgliedschaft aktualisiert
     weight_label: Stimmgewicht
-    weight_helptext: Dieser Wert wird in die Stimme des Mitglieds übernommen, sobald es zu einer neuen Umfrage hinzugefügt wird. Eine Änderung hat keine Auswirkungen auf bestehende Umfragen. Setze den Wert auf 0, damit das Mitglied abstimmen kann, ohne dass die Stimme in die Gesamtwertung einfließt.
+    weight_helptext: Dieser Wert wird in die Stimme des Mitglieds übernommen, sobald es zu einer neuen Umfrage hinzugefügt wird. Eine Änderung hat keine Auswirkungen auf bestehende Umfragen. Setze den Wert auf 0, damit das Mitglied abstimmen kann, ohne das gewichtete Ergebnis zu beeinflussen.
   user_name_modal:
     user_name_updated: Benutzername aktualisiert
     set_user_name: Benutzernamen festlegen
@@ -2999,7 +2999,6 @@ de:
     find_or_invite_voters: Wähler finden oder einladen
     remove_voter_named: Entferne %{name} aus der Umfrage
     remove_voter_and_any_vote_confirmation: "%{name} aus dieser Umfrage entfernen? Dadurch werden auch alle von dieser Person abgegebenen Stimmen entfernt."
-    give_voters_different_weights_description: Den Wählern werden unterschiedliche Gewichtungen zugewiesen. Die Ergebnisse zeigen die Anzahl der Wähler und die gewichtete Punktzahl.
     edit_vote_weight: Gewichtung der Abstimmung bearbeiten
     edit_vote_weight_for: Gewichtung der Stimmen für %{name} bearbeiten (derzeit %{weight})
     set_all_vote_weights_title: Alle Stimmgewichte festlegen
@@ -3007,6 +3006,7 @@ de:
     set_each_member_default_vote_weight: Lege das Standard-Stimmengewicht jedes Mitglieds fest
     set_all_weights_the_same: Alle Gewichte gleich einstellen
     voters_will_not_be_notified: Die Wähler werden nicht benachrichtigt. Informiere sie auf anderem Weg über die Umfrage.
+    give_voters_different_weights_description: Gib Wählern unterschiedliche Gewichtungen. Die Ergebnisse zeigen die gewichteten Stimmen oder Punkte neben den ungewichteten Gesamtsummen.
   poll_receipts_page:
     participation_status_requires_min_votes: Hier wird angezeigt, wer teilnahmeberechtigt war. Ob die einzelnen Personen abgestimmt haben, wird nur angezeigt, wenn mindestens %{count} Personen abgestimmt haben.
     verify_participants: Teilnehmer überprüfen

@@ -1619,7 +1619,7 @@ he:
     updated: כותרת החברות עודכנה
     membership_updated: החברות עודכנה
     weight_label: משקל הצבעה
-    weight_helptext: ערך זה מועתק להצבעת החבר כאשר הוא נוסף לסקר חדש. שינויו אינו משפיע על סקרים קיימים. הגדר אותו ל-0 כדי לאפשר לחבר להצביע מבלי להוסיף לניקוד.
+    weight_helptext: ערך זה מועתק להצבעת החבר כאשר הוא נוסף לסקר חדש. שינויו אינו משפיע על סקרים קיימים. הגדר אותו ל-0 כדי לאפשר לחבר להצביע מבלי להשפיע על התוצאה המשוקללת.
   user_name_modal:
     user_name_updated: שם המשתמש עודכן
     set_user_name: הגדר שם משתמש
@@ -2983,7 +2983,6 @@ he:
     find_or_invite_voters: מצא או הזמן מצביעים
     remove_voter_named: הסר את %{name} מהסקר
     remove_voter_and_any_vote_confirmation: להסיר את %{name} מהסקר הזה? פעולה זו מסירה גם כל הצבעה שהטילו.
-    give_voters_different_weights_description: תנו לבוחרים משקלים שונים. התוצאות מציגות את מספר הבוחרים ואת הציון המשוקלל.
     edit_vote_weight: עריכת משקל ההצבעה
     edit_vote_weight_for: עריכת משקל ההצבעה עבור %{name} (כרגע %{weight})
     set_all_vote_weights_title: קבע את כל משקלי הקולות
@@ -2991,6 +2990,7 @@ he:
     set_each_member_default_vote_weight: קבע את משקל ההצבעה המוגדר כברירת מחדל עבור כל חבר
     set_all_weights_the_same: קבע את כל המשקלים זהים
     voters_will_not_be_notified: הבוחרים לא יקבלו הודעה. יש להודיע להם על הסקר בדרך אחרת.
+    give_voters_different_weights_description: תנו לבוחרים משקלים שונים. התוצאות מציגות קולות או נקודות משוקללים לצד הסכומים הלא משוקללים.
   poll_receipts_page:
     participation_status_requires_min_votes: זה מראה מי היה זכאי להצביע. האם כל אדם הצביע מוצג רק לאחר שלפחות %{count} אנשים הצביעו.
     verify_participants: אימות משתתפים

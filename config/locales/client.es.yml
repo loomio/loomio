@@ -1630,7 +1630,7 @@ es:
     updated: Título del integrante actualizado
     membership_updated: Membresía actualizada
     weight_label: Peso del voto
-    weight_helptext: Este valor se copia al voto del miembro cuando se le agrega a una nueva encuesta. Modificarlo no afecta a las encuestas existentes. Establécelo en 0 para que el miembro vote sin que su voto se sume a la puntuación.
+    weight_helptext: Este valor se copia al voto del miembro cuando se le agrega a una nueva encuesta. Modificarlo no afecta a las encuestas existentes. Establécelo en 0 para que el miembro vote sin afectar el resultado ponderado.
   user_name_modal:
     user_name_updated: Nombre de usuario actualizado
     set_user_name: Establecer nombre de usuario
@@ -3000,7 +3000,6 @@ es:
     find_or_invite_voters: Buscar o invitar a los votantes
     remove_voter_named: Eliminar %{name} de la encuesta
     remove_voter_and_any_vote_confirmation: "¿Eliminar %{name} de esta encuesta? Esto también elimina cualquier voto que haya emitido."
-    give_voters_different_weights_description: Asigna diferentes ponderaciones a los votantes. Los resultados muestran el número de votantes y la puntuación ponderada.
     edit_vote_weight: Editar el peso del voto
     edit_vote_weight_for: Editar el peso del voto para %{name} (actualmente %{weight})
     set_all_vote_weights_title: Establecer todos los pesos de voto
@@ -3008,6 +3007,7 @@ es:
     set_each_member_default_vote_weight: Establece el peso de voto predeterminado de cada miembro
     set_all_weights_the_same: Ajusta todos los pesos al mismo valor
     voters_will_not_be_notified: Los votantes no recibirán una notificación. Infórmales sobre la encuesta de otra manera.
+    give_voters_different_weights_description: Asigna diferentes ponderaciones a los votantes. Los resultados muestran los votos o puntos ponderados junto con los totales sin ponderar.
   poll_receipts_page:
     participation_status_requires_min_votes: Esto muestra quién tenía derecho a votar. Solo se muestra si cada persona votó cuando han votado al menos %{count} personas.
     verify_participants: Verificar participantes
