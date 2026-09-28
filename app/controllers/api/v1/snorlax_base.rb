@@ -210,6 +210,13 @@ class Api::V1::SnorlaxBase < ActionController::Base
     collection.offset(offset).limit(limit)
   end
 
+  # New endpoints page with offset and limit only, and cap the page size.
+  def page_collection_bounded(collection, limit_max: 50)
+    offset = [params[:offset].to_i, 0].max
+    limit  = (params[:limit] || limit_max).to_i.clamp(1, limit_max)
+    collection.offset(offset).limit(limit)
+  end
+
   def order_collection(collection)
     if valid_orders.include?(params[:order])
       collection.order(params[:order])

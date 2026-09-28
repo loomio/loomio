@@ -205,17 +205,19 @@ class MembershipService
     actor.ability.authorize! :set_weight, Membership.new(group: group)
     raise ActionController::ParameterMissing, :weights if weights_by_membership_id.empty?
 
-    membership_ids = group.memberships.where(id: weights_by_membership_id.keys).pluck(:id)
+    membership_ids = group.memberships.active.where(id: weights_by_membership_id.keys).pluck(:id)
     weights = weights_by_membership_id.slice(*membership_ids.map(&:to_s))
+    return if weights.empty?
+
     weight_by_id = Arel::Nodes::Case.new(Membership.arel_table[:id])
     weights.each { |id, weight| weight_by_id.when(id.to_i).then(BigDecimal(weight.to_s)) }
-    group.memberships.where(id: membership_ids).update_all(weight: weight_by_id, updated_at: Time.current)
+    Membership.where(id: membership_ids).update_all(weight: weight_by_id, updated_at: Time.current)
   end
 
   # Apply one weight to every active member in a single update.
   def self.reset_weights(group:, weight:, actor:)
     actor.ability.authorize! :set_weight, Membership.new(group: group)
-    group.memberships.update_all(weight: weight, updated_at: Time.current)
+    group.memberships.active.update_all(weight: weight, updated_at: Time.current)
   end
 
   def self.resend(membership:, actor:)

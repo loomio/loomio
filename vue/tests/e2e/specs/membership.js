@@ -129,6 +129,12 @@ module.exports = {
     page.refreshAndWait()
     page.waitFor('.member-weights-page .v-table tbody tr')
     test.expect.element('.member-weights-page .v-table tbody tr:first-child .member-weights-page__weight-input input').value.to.equal('0.75')
+
+    page.fillIn('.member-weights-page__search input', 'emilio')
+    page.pause(1000)
+    page.expectCount('.member-weights-page .v-table tbody tr', 1)
+    page.expectText('.member-weights-page .v-table tbody tr:first-child', 'Emilio')
+    page.expectText('.member-weights-page__page-count', '1–1 of 1')
   },
 
   'can_edit_member_title_and_weight_together': (test) => {

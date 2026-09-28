@@ -135,17 +135,43 @@ class Api::V1::MembershipsControllerTest < ActionController::TestCase
 
   # ===== Set Volume Tests =====
 
-  test 'weight editor lists every active group membership without pagination' do
+  test 'weight editor pages active memberships by name with a total' do
     sign_in @admin
-    memberships = @test_group.memberships.active.joins(:user).count
+    ordered_ids = @test_group.memberships.active.joins(:user).order('users.name, memberships.id').pluck(:id)
 
-    get :weights, params: {group_id: @test_group.id, per: 1}
+    get :weights, params: {group_id: @test_group.id, offset: 1, limit: 2}
 
     assert_response :success
-    rows = JSON.parse(response.body).fetch('memberships')
-    assert_equal memberships, rows.length
-    assert_equal %w[avatar_initials avatar_url delegate email id name title weight], rows.first.keys.sort
-    assert_equal @test_group.memberships.active.joins(:user).pluck(:id).sort, rows.map { |row| row.fetch('id') }.sort
+    json = JSON.parse(response.body)
+    assert_equal ordered_ids.length, json.fetch('total')
+    assert_equal ordered_ids[1, 2], json.fetch('memberships').map { |row| row.fetch('id') }
+    assert_equal %w[avatar_initials avatar_url delegate email id name title weight], json.fetch('memberships').first.keys.sort
+  end
+
+  test 'weight editor filters by name or email' do
+    sign_in @admin
+    member = User.create!(name: 'Zebedee Quorum', email: 'zq-weights@example.com', email_verified: true)
+    @test_group.add_member!(member)
+
+    get :weights, params: {group_id: @test_group.id, q: 'Quorum'}
+    json = JSON.parse(response.body)
+    assert_equal 1, json.fetch('total')
+    assert_equal [member.name], json.fetch('memberships').map { |row| row.fetch('name') }
+
+    get :weights, params: {group_id: @test_group.id, q: 'zq-weights'}
+    assert_equal [member.email], JSON.parse(response.body).fetch('memberships').map { |row| row.fetch('email') }
+  end
+
+  test 'group admin weight updates leave revoked memberships unchanged' do
+    sign_in @admin
+    revoked = @test_group.add_member!(User.create!(name: 'Former member', email: 'former-weights@example.com', email_verified: true))
+    revoked.update!(revoked_at: Time.current, weight: 4)
+
+    patch :set_weights, params: {group_id: @test_group.id, weights: {revoked.id => 2}}
+    assert_equal 4, revoked.reload.weight
+
+    patch :reset_weights, params: {group_id: @test_group.id, weight: '0.5'}
+    assert_equal 4, revoked.reload.weight
   end
 
   test 'weight editor reports whether the group has a current poll' do

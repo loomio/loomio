@@ -83,11 +83,16 @@ class Api::V1::MembershipsController < Api::V1::RestfulController
     render json: {updated: true}
   end
 
+  # Large groups page and search the weight editor on the server. Order by name
+  # with the membership id as a tiebreak so offsets stay stable.
   def weights
     group = Group.find(params.require(:group_id))
     current_user.ability.authorize! :set_weight, Membership.new(group: group)
-    memberships = group.memberships.active.joins(:user).includes(user: {uploaded_avatar_attachment: :blob})
-      .order('users.name, memberships.id').map do |membership|
+    memberships = group.memberships.active.joins(:user)
+    memberships = memberships.merge(User.invitable_search(params[:q])) if params[:q].present?
+    total = memberships.count
+    rows = page_collection_bounded(memberships.includes(user: {uploaded_avatar_attachment: :blob})
+      .order('users.name, memberships.id')).map do |membership|
         user = membership.user
         {
           id: membership.id,
@@ -100,7 +105,7 @@ class Api::V1::MembershipsController < Api::V1::RestfulController
           weight: VoteWeight.format(membership.weight)
         }
       end
-    render json: {memberships: memberships, has_current_polls: group.polls.active.exists?}
+    render json: {memberships: rows, total:, has_current_polls: group.polls.active.exists?}
   end
 
   def reset_weights
