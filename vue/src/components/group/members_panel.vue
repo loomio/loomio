@@ -30,12 +30,14 @@ export default
       ],
       memberships: [],
       searchOpen: Boolean(this.$route.query.q),
-      searchQuery: this.$route.query.q || ''
+      searchQuery: this.$route.query.q || '',
+      searchQueryPushed: this.$route.query.q || ''
     };
   },
 
   created() {
     this.onQueryInput = debounce(val => {
+      this.searchQueryPushed = val || '';
       return this.$router.replace(this.mergeQuery({q: val}));
     }
     , 500);
@@ -85,6 +87,7 @@ export default
     closeSearch() {
       this.onQueryInput.cancel();
       this.searchQuery = '';
+      this.searchQueryPushed = '';
       this.searchOpen = false;
       this.$router.replace(this.mergeQuery({q: null}));
     },
@@ -206,8 +209,15 @@ export default
   },
 
   watch: {
+    // Only take the search from the URL when navigation changed it. The URL
+    // update this box pushed can arrive after more typing, and must not undo it.
     '$route.query'() {
-      this.searchQuery = this.$route.query.q || '';
+      const q = this.$route.query.q || '';
+      if (q !== this.searchQueryPushed) {
+        this.searchQueryPushed = q;
+        this.searchQuery = q;
+        if (q) this.searchOpen = true;
+      }
       this.refresh();
     }
   }
