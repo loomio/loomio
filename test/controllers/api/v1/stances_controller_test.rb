@@ -123,6 +123,20 @@ class Api::V1::StancesControllerTest < ActionController::TestCase
     assert_response :forbidden
   end
 
+  test "invalid stance weights are rejected" do
+    @poll.update_columns(vote_weights_enabled: true)
+    stance = @poll.stances.latest.find_by!(participant: @user)
+    sign_in @admin
+
+    patch :set_weight, params: {id: stance.id, weight: '-2'}
+    assert_response :unprocessable_entity
+
+    patch :reset_weights, params: {poll_id: @poll.id, mode: 'value', weight: '1e3'}
+    assert_response :unprocessable_entity
+
+    assert_equal 1, stance.reload.weight
+  end
+
   test "poll admin updates stance weight before voting opens" do
     @poll.update_columns(opened_at: nil, closing_at: nil, vote_weights_enabled: true)
     stance = @poll.stances.latest.find_by!(participant: @user)

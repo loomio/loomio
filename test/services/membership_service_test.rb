@@ -81,10 +81,11 @@ class MembershipServiceTest < ActiveSupport::TestCase
     first = @group.membership_for(@admin)
     second = @group.add_member!(@user)
 
-    assert_raises ActiveRecord::StatementInvalid do
+    assert_raises VoteWeight::Invalid do
       MembershipService.set_weights(group: @group, weights_by_membership_id: {first.id.to_s => 2, second.id.to_s => -1}, actor: @admin)
     end
 
+    assert_equal [1, 1], [first.reload.weight, second.reload.weight]
   end
 
   test "bulk member weight changes ignore memberships from another group" do

@@ -120,6 +120,7 @@ class MembershipService
   def self.update(membership:, params:, actor:)
     actor.ability.authorize! :update, membership
     actor.ability.authorize! :set_weight, membership if params.key?(:weight)
+    weight = VoteWeight.parse!(params[:weight]) if params.key?(:weight)
 
     membership.assign_attributes(params.slice(:title))
     return membership if params.key?(:title) && !membership.valid?
@@ -127,7 +128,7 @@ class MembershipService
     Membership.transaction do
       membership.save! if params.key?(:title)
       if params.key?(:weight)
-        Membership.where(id: membership.id).update_all(weight: params[:weight], updated_at: Time.current)
+        Membership.where(id: membership.id).update_all(weight: weight, updated_at: Time.current)
         membership.reload
       end
       updated_membership = update_user_titles(membership.id) if params.key?(:title)
@@ -204,20 +205,21 @@ class MembershipService
   def self.set_weights(group:, weights_by_membership_id:, actor:)
     actor.ability.authorize! :set_weight, Membership.new(group: group)
     raise ActionController::ParameterMissing, :weights if weights_by_membership_id.empty?
+    weights_by_membership_id = weights_by_membership_id.to_h.transform_values { |weight| VoteWeight.parse!(weight) }
 
     membership_ids = group.memberships.active.where(id: weights_by_membership_id.keys).pluck(:id)
     weights = weights_by_membership_id.slice(*membership_ids.map(&:to_s))
     return if weights.empty?
 
     weight_by_id = Arel::Nodes::Case.new(Membership.arel_table[:id])
-    weights.each { |id, weight| weight_by_id.when(id.to_i).then(BigDecimal(weight.to_s)) }
+    weights.each { |id, weight| weight_by_id.when(id.to_i).then(weight) }
     Membership.where(id: membership_ids).update_all(weight: weight_by_id, updated_at: Time.current)
   end
 
   # Apply one weight to every active member in a single update.
   def self.reset_weights(group:, weight:, actor:)
     actor.ability.authorize! :set_weight, Membership.new(group: group)
-    group.memberships.active.update_all(weight: weight, updated_at: Time.current)
+    group.memberships.active.update_all(weight: VoteWeight.parse!(weight), updated_at: Time.current)
   end
 
   def self.resend(membership:, actor:)

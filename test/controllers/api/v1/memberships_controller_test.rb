@@ -92,16 +92,29 @@ class Api::V1::MembershipsControllerTest < ActionController::TestCase
     assert_equal BigDecimal('0.5'), membership.weight
   end
 
-  test 'out-of-range weight rolls back membership title' do
+  test 'invalid weight is rejected without saving the membership title' do
     sign_in @admin
     membership = @test_group.membership_for(@user)
 
-    assert_raises ActiveRecord::StatementInvalid do
-      patch :update, params: {id: membership.id, membership: {title: 'Chair', weight: '-1'}}
-    end
+    patch :update, params: {id: membership.id, membership: {title: 'Chair', weight: '-1'}}
 
+    assert_response :unprocessable_entity
+    assert JSON.parse(response.body).dig('errors', 'weight').present?
     assert_nil membership.reload.title
     assert_equal 1, membership.weight
+  end
+
+  test 'invalid weights are rejected by the bulk weight endpoints' do
+    sign_in @admin
+    membership = @test_group.membership_for(@user)
+
+    patch :set_weights, params: {group_id: @test_group.id, weights: {membership.id => 'abc'}}
+    assert_response :unprocessable_entity
+
+    patch :reset_weights, params: {group_id: @test_group.id, weight: '1000000000'}
+    assert_response :unprocessable_entity
+
+    assert_equal 1, membership.reload.weight
   end
 
   test 'group admin cannot update weight when vote weights are disabled' do

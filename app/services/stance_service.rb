@@ -89,7 +89,7 @@ class StanceService
   def self.set_weight(stance:, weight:, actor:)
     stance.poll.with_lock do
       actor.ability.authorize! :set_weight, stance
-      stance.poll.stances.latest.where(id: stance.id).update_all(weight: weight)
+      stance.poll.stances.latest.where(id: stance.id).update_all(weight: VoteWeight.parse!(weight))
       stance.poll.update_counts!
     end
     stance.reload
@@ -105,7 +105,7 @@ class StanceService
         raise ActionController::BadRequest, 'group membership weights require a group poll' unless poll.group_id
         poll.reset_stance_weights_from_memberships!
       when 'value'
-        poll.stances.latest.update_all(weight: weight)
+        poll.stances.latest.update_all(weight: VoteWeight.parse!(weight))
       else
         raise ActionController::BadRequest, 'invalid weight mode'
       end

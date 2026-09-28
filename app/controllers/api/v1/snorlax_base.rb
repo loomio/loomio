@@ -6,6 +6,7 @@ class Api::V1::SnorlaxBase < ActionController::Base
   rescue_from(ActionController::ParameterMissing)      { |e| respond_with_standard_error e, 400 }
   rescue_from(ActiveRecord::RecordNotFound)            { |e| respond_with_standard_error e, 404 }
   rescue_from(ActiveRecord::RecordInvalid)             { |e| respond_with_errors(e.record) }
+  rescue_from(VoteWeight::Invalid)                     { render json: {errors: {weight: [I18n.t('errors.messages.invalid')]}}, root: false, status: 422 }
   rescue_from(ThrottleService::LimitReached)            { respond_with_invitation_limit_reached }
   attr_accessor :collection_count
 
