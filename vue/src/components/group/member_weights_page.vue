@@ -3,6 +3,7 @@ import { computed, onMounted, ref } from 'vue';
 import { useI18n } from 'vue-i18n';
 import { useRoute, useRouter } from 'vue-router';
 import { debounce } from 'lodash-es';
+import { mdiMagnify } from '@mdi/js';
 import Records from '@/shared/services/records';
 import AbilityService from '@/shared/services/ability_service';
 import Flash from '@/shared/services/flash';
@@ -136,7 +137,7 @@ onMounted(async () => {
       :model-value="query"
       @update:model-value="search"
       :placeholder="t('navbar.search_members_short')"
-      prepend-inner-icon="mdi-magnify"
+      :prepend-inner-icon="mdiMagnify"
       density="compact"
       variant="outlined"
       clearable
