@@ -21,7 +21,6 @@ export default {
   methods: {
     updateCount() {
       const sequence = ++this.requestSequence;
-      this.count = null;
       const excludeMembers = (this.excludeMembers && {exclude_members: 1}) || {};
       Records.remote.fetch({path: 'announcements/count', params: {
         recipient_emails_cmr: this.model.recipientEmails.join(','),
