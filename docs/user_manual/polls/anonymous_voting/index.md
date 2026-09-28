@@ -1,6 +1,6 @@
 # Anonymous voting
 
-Anonymous voting, also known as blind voting, separates the record of who has voted from the votes themselves. Poll coordinators can see who was eligible and, once at least three people have voted, verify participation. Application users cannot connect a submitted vote with the person who submitted it.
+Anonymous voting, also known as blind voting, separates the record of who has voted from the votes themselves. After the poll closes, anyone who can see the results can see who took part. No one using Loomio can connect a submitted vote with the person who submitted it.
 
 This page explains the protections provided by anonymous voting, the information that is retained, and the limits of the guarantee.
 
@@ -55,13 +55,15 @@ The application does not publish vote identifiers, submission order, or submissi
 
 An anonymous poll cannot be reopened after it closes.
 
-## Participation verification
+## Who took part
 
-Poll coordinators can view the named participation records. These always show who was eligible. Once at least three people have voted, they also show whether each person voted, but never show how anyone voted. If a poll closes with fewer than three votes, the participation status remains hidden.
+After an anonymous poll closes, anyone who can see its results can see who took part. No one can see this while voting is open.
 
-Select **View votes** to see these records on the poll's Votes page, including membership and invitation details. Group admins also see email addresses to help distinguish people with the same name. The page does not show the date of an anonymous person's vote.
+Select **View votes** to see the list. It always shows who was eligible. If at least three people voted, it also shows whether each person voted. It never shows how anyone voted, or when.
 
-Other participants cannot view this named participation information. Access to poll results does not grant access to the participation records.
+Group members and the poll's voters also see when each person joined the group and who invited them. Group admins also see email addresses, to tell apart people with the same name.
+
+Because everyone who can see the results can see who voted, a one-sided result can reveal how people voted. For example, if every vote is Agree, everyone who voted agreed.
 
 Coordinators can add eligible people while voting remains open, including after
 other people have voted. Existing voters cannot be removed from an anonymous
@@ -118,7 +120,7 @@ No. Voting creates only the on-screen acknowledgement and updates your participa
 
 ### Does a public poll reveal more information?
 
-Public access may allow people to see the poll and its aggregate results after it closes. It does not expose the named participation records or individual anonymous votes.
+After a public poll closes, anyone can see its results and who took part. They cannot see individual votes, or membership and invitation details.
 
 ### Is anonymous voting suitable for every election?
 
