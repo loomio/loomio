@@ -54,7 +54,7 @@ class Api::V1::PollsControllerTest < ActionController::TestCase
     assert_not_includes data.fetch('result_columns'), 'unweighted_score'
     result = data.fetch('results').find { |row| row['id'] == option.id }
     assert_equal 1, result.fetch('unweighted_score')
-    assert_equal '2.33', result.fetch('score')
+    assert_equal 2.33, result.fetch('score')
   end
 
   test "show serializes without record cache fallbacks" do

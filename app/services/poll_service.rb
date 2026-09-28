@@ -515,6 +515,13 @@ class PollService
   #   EventBus.broadcast('poll_destroy', poll, actor)
   # end
 
+  # Result scores are numbers in every output: whole numbers stay integers, and
+  # weighted totals keep the three decimal places weights are stored with.
+  def self.result_number(value)
+    number = value.to_d.round(3)
+    number.frac.zero? ? number.to_i : number.to_f
+  end
+
   def self.calculate_results(poll, poll_options, undecided_voter_ids: nil)
     return calculate_stv_results(poll, poll_options) if poll.poll_type == 'stv'
 
@@ -558,7 +565,7 @@ class PollService
         name_format: poll.poll_option_name_format,
         icon: option.icon,
         rank: index+1,
-        score: weighted_results ? VoteWeight.format(option.total_score) : option.total_score.to_f,
+        score: result_number(option.total_score),
         unweighted_score: weighted_results ? option.unweighted_score : option.total_score.to_i,
         target_percent: ((option.icon == 'agree') && (poll.agree_target.to_i > 0)) ? ((option.total_score.to_f / poll.agree_target.to_f) * 100) : 0,
         score_percent: score_percent.to_f,
@@ -656,7 +663,7 @@ class PollService
         rank: elected_ids.index(option.id)&.+(1),
         stv_status: status,
         round_elected: elected_rounds[option.id],
-        score: option.total_score.to_f,
+        score: result_number(option.total_score),
         unweighted_score: option.total_score.to_i,
         score_percent: 0,
         max_score_percent: 0,

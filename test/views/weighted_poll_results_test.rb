@@ -69,11 +69,29 @@ class WeightedPollResultsTest < ActiveSupport::TestCase
     assert_includes option_headers, 'unweighted_score'
     assert_includes vote_headers, 'vote_weight'
     option_row = csv[(csv.index(['poll_options']) + 2)...csv.index(['votes'])].find { |row| row[2] == 'Alpha' }
-    assert_equal '1.0', option_row[option_headers.index('score')]
+    assert_equal '1', option_row[option_headers.index('score')]
     assert_equal '1', option_row[option_headers.index('unweighted_score')]
     voter_row = csv[(csv.index(['votes']) + 2)..].find { |row| row[2] == @voter.id.to_s }
     assert_equal '1', voter_row[vote_headers.index('vote_weight')]
     assert_equal '1', VoteWeight.format(poll.stances.latest.find_by!(participant: @voter).weight)
+  end
+
+  test 'unweighted results print whole scores without a decimal point' do
+    poll = PollService.create(params: {
+      title: 'Plain score', poll_type: 'score', group_id: @group.id,
+      poll_option_names: %w[Alpha Beta], closing_at: 1.day.from_now, notify_on_open: false
+    }, actor: @admin)
+    option = poll.poll_options.first
+    poll.stances.latest.find_by!(participant: @voter).update!(
+      cast_at: Time.current, stance_choices_attributes: [{poll_option_id: option.id, score: 4}]
+    )
+    poll.update_counts!
+
+    result = poll.reload.results.find { |row| row[:id] == option.id }
+    assert_equal 4, result[:score]
+    email = rendered_results(poll).fetch(:email)
+    assert_includes email, '>4<'
+    assert_not_includes email, '4.0'
   end
 
   private

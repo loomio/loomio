@@ -126,7 +126,7 @@ class PollOptionTest < ActiveSupport::TestCase
     assert_equal 2, option.voter_count
     result = poll.results.find { |row| row[:id] == option.id }
     assert_equal 2, result[:unweighted_score]
-    assert_equal '2.83', result[:score]
+    assert_equal 2.83, result[:score]
   end
 
   test "anonymous result data reports its actual unweighted score" do
@@ -140,7 +140,7 @@ class PollOptionTest < ActiveSupport::TestCase
 
     result = poll.results.find { |row| row[:id] == option.id }
     assert_equal 1, result[:unweighted_score]
-    assert_equal 1.0, result[:score]
+    assert_equal 1, result[:score]
   end
 
   test "weighted one point polls show weighted votes without separate points" do
