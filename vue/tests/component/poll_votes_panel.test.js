@@ -120,6 +120,24 @@ describe('Poll votes panel', () => {
     expect(mocks.fetch).toHaveBeenLastCalledWith({path: 'polls/42/votes', params: {limit: 25, offset: 0, name: 'Alex', stance_filter: 'cast'}});
   });
 
+  it('labels meeting availability instead of showing raw scores', async () => {
+    mocks.fetch.mockResolvedValue({
+      voters: [{voter_id: 1, voter_name: 'Alex', vote_cast: true, option_scores: {5: 2, 6: 1, 7: 0}}],
+      meta: {total: 1}
+    });
+    const wrapper = mountPanel({
+      pollType: 'meeting', voteWeightsEnabled: false, hasVariableScore: () => true,
+      pollOptions: () => [
+        {id: 5, optionName: () => 'Monday'}, {id: 6, optionName: () => 'Tuesday'}, {id: 7, optionName: () => 'Wednesday'}
+      ]
+    });
+    await flushPromises();
+
+    expect(wrapper.text()).toContain('Monday, Tuesday (poll_meeting_vote_form.if_need_be)');
+    expect(wrapper.text()).not.toContain('(2)');
+    expect(wrapper.text()).not.toContain('Wednesday');
+  });
+
   it('shows the result range beside pagination', async () => {
     mocks.fetch.mockResolvedValue({voters: [], meta: {total: 50}});
 

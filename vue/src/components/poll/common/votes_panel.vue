@@ -51,6 +51,8 @@ function voteLabel(voter) {
   if (!choices.length) { return t('poll_common_form.none_of_the_above'); }
   return choices.map(choice => {
     const name = choice.rank ? `${choice.rank}. ${choice.option.optionName()}` : choice.option.optionName();
+    // Meeting scores are 2 for yes and 1 for "if need be", not point values.
+    if (poll.pollType === 'meeting') { return choice.score === 1 ? `${name} (${t('poll_meeting_vote_form.if_need_be')})` : name; }
     return poll.hasVariableScore() && poll.pollType !== 'ranked_choice' ? `${name} (${choice.score})` : name;
   }).join(', ');
 }
