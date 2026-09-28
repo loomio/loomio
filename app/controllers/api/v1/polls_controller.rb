@@ -13,7 +13,7 @@ class Api::V1::PollsController < Api::V1::RestfulController
       voters_eligible = voters_eligible.where(voter_id: voters_matching_name.select(:id))
     end
     total = voters_eligible.count
-    voters_eligible = voters_eligible.order(id: :desc).offset(votes_offset).limit(votes_limit).to_a
+    voters_eligible = page_collection_bounded(voters_eligible.order(id: :desc)).to_a
 
     can_view_email = @can_view_voter_email
     memberships = @poll.group.memberships.where(user_id: voters_eligible.map(&:voter_id)).index_by(&:user_id)
@@ -123,14 +123,6 @@ class Api::V1::PollsController < Api::V1::RestfulController
 
   private
 
-  def votes_offset
-    [params[:from].to_i, 0].max
-  end
-
-  def votes_limit
-    (params[:per] || 50).to_i.clamp(1, 50)
-  end
-
   def voters_matching_name
     @can_view_voter_email ? User.invitable_search(params[:name]) : User.mention_search(params[:name])
   end
@@ -152,7 +144,7 @@ class Api::V1::PollsController < Api::V1::RestfulController
     end
 
     total = stances.count
-    stances = stances.order('cast_at DESC NULLS LAST, created_at DESC').offset(votes_offset).limit(votes_limit).to_a
+    stances = page_collection_bounded(stances.order('cast_at DESC NULLS LAST, created_at DESC')).to_a
     voter_ids = stances.map(&:participant_id)
     voters = User.with_attached_uploaded_avatar.where(id: voter_ids).index_by(&:id)
     show_voter_details = @poll.group_id && (@poll.members.exists?(current_user.id) || @poll.stances.latest.exists?(participant_id: current_user.id))

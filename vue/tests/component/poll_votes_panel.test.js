@@ -66,7 +66,7 @@ describe('Poll votes panel', () => {
     await flushPromises();
     await nextTick();
 
-    expect(mocks.fetch).toHaveBeenCalledWith({path: 'polls/42/votes', params: {per: 25, from: 0}});
+    expect(mocks.fetch).toHaveBeenCalledWith({path: 'polls/42/votes', params: {limit: 25, offset: 0}});
     expect(wrapper.findAll('tbody tr')).toHaveLength(1);
     expect(wrapper.text()).toContain('Alex');
     expect(wrapper.text()).toContain('Agree');
@@ -87,7 +87,7 @@ describe('Poll votes panel', () => {
     await flushPromises();
     await nextTick();
 
-    expect(mocks.fetch).toHaveBeenCalledWith({path: 'polls/42/votes', params: {per: 25, from: 0}});
+    expect(mocks.fetch).toHaveBeenCalledWith({path: 'polls/42/votes', params: {limit: 25, offset: 0}});
     expect(wrapper.findAll('tbody tr')).toHaveLength(1);
     expect(wrapper.text()).toContain('Morgan');
     expect(wrapper.text()).not.toContain('poll_receipts_page.vote_cast');

@@ -172,8 +172,8 @@ class Api::V1::PollsControllerTest < ActionController::TestCase
 
     sign_in @user
     get :index, params: {
-      from: 0,
-      per: 25,
+      offset: 0,
+      limit: 25,
       order: "id",
       exclude_types: "group reaction",
       status: "recent"
@@ -376,7 +376,7 @@ class Api::V1::PollsControllerTest < ActionController::TestCase
     poll = create_detached_anonymous_poll(title: "paged participation")
     sign_in @admin
 
-    get :votes, params: {id: poll.key, name: @user.name, per: 1, from: 0}
+    get :votes, params: {id: poll.key, name: @user.name, limit: 1, offset: 0}
 
     assert_response :success
     json = JSON.parse(response.body)
@@ -549,7 +549,7 @@ class Api::V1::PollsControllerTest < ActionController::TestCase
     }, actor: @admin)
     sign_in @user
 
-    get :votes, params: {id: poll.key, name: @admin.name, per: 1}
+    get :votes, params: {id: poll.key, name: @admin.name, limit: 1}
 
     assert_response :success
     json = JSON.parse(response.body)

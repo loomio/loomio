@@ -11,7 +11,7 @@ const { poll } = defineProps({ poll: Object });
 const { t } = useI18n();
 const route = useRoute();
 const router = useRouter();
-const per = 25;
+const limit = 25;
 const page = ref(Math.max(1, parseInt(route.query.page, 10) || 1));
 const name = ref(route.query.name || '');
 const voteFilter = ref(route.query.poll_option_id ? Number(route.query.poll_option_id) : (route.query.stance_filter || 'all'));
@@ -20,9 +20,9 @@ const meta = ref(null);
 const loading = ref(false);
 let fetchSequence = 0;
 const canView = !poll.anonymous || AbilityService.canVerifyParticipants(poll);
-const totalPages = computed(() => Math.max(1, Math.ceil((meta.value?.total || 0) / per)));
-const rangeFirst = computed(() => meta.value?.total ? (page.value - 1) * per + 1 : 0);
-const rangeLast = computed(() => Math.min(page.value * per, meta.value?.total || 0));
+const totalPages = computed(() => Math.max(1, Math.ceil((meta.value?.total || 0) / limit)));
+const rangeFirst = computed(() => meta.value?.total ? (page.value - 1) * limit + 1 : 0);
+const rangeLast = computed(() => Math.min(page.value * limit, meta.value?.total || 0));
 
 const pollOptionItems = computed(() => {
   const items = [
@@ -57,7 +57,7 @@ function voteLabel(voter) {
 
 async function fetchVotes() {
   const sequence = ++fetchSequence;
-  const params = { per, from: (page.value - 1) * per };
+  const params = { limit, offset: (page.value - 1) * limit };
   if (name.value) { params.name = name.value; }
   if (!poll.anonymous) {
     if (typeof voteFilter.value === 'number') { params.poll_option_id = voteFilter.value; }
@@ -67,8 +67,8 @@ async function fetchVotes() {
   try {
     const data = await Records.fetch({ path: `polls/${poll.id}/votes`, params });
     if (sequence !== fetchSequence) { return; }
-    if (page.value > Math.max(1, Math.ceil(data.meta.total / per))) {
-      page.value = Math.max(1, Math.ceil(data.meta.total / per));
+    if (page.value > Math.max(1, Math.ceil(data.meta.total / limit))) {
+      page.value = Math.max(1, Math.ceil(data.meta.total / limit));
       return;
     }
     voters.value = data.voters;
