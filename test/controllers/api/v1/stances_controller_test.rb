@@ -68,6 +68,7 @@ class Api::V1::StancesControllerTest < ActionController::TestCase
     refute_equal first.fetch('users').first.fetch('id'), second.fetch('users').first.fetch('id')
     assert_equal first.fetch('users').map { |user| user.fetch('id').to_s }.sort, first.fetch('meta').fetch('weights_by_user_id').keys.sort
     assert_equal second.fetch('users').map { |user| user.fetch('id').to_s }.sort, second.fetch('meta').fetch('weights_by_user_id').keys.sort
+    assert_equal ['1'], first.fetch('meta').fetch('weights_by_user_id').values
   end
 
   test "voter management lists newly added voters first even after another voter revises a vote" do

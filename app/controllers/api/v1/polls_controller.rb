@@ -3,14 +3,14 @@ class Api::V1::PollsController < Api::V1::RestfulController
   # come only from the electorate; ballot choices are never joined to voters.
   def votes
     @poll = load_and_authorize(:poll)
-    @can_view_voter_email = @poll.group_id && @poll.group.admins.include?(current_user)
+    @can_view_voter_email = @poll.group_id && @poll.group.admins.exists?(current_user.id)
     return render_identified_votes unless @poll.anonymous?
 
     current_user.ability.authorize!(:view_anonymous_voters, @poll)
 
     voters_eligible = @poll.anonymous_poll_voters
     if params[:name].present?
-      voters_eligible = voters_eligible.where(voter_id: voters_matching_name.select(:id))
+      voters_eligible = voters_eligible.joins(:voter).merge(voters_matching_name)
     end
     total = voters_eligible.count
     voters_eligible = page_collection_bounded(voters_eligible.order(id: :desc)).to_a
@@ -123,6 +123,8 @@ class Api::V1::PollsController < Api::V1::RestfulController
 
   private
 
+  # Callers join from the poll's voters to users, so name searches start from
+  # the poll's electorate rather than scanning every user.
   def voters_matching_name
     @can_view_voter_email ? User.invitable_search(params[:name]) : User.mention_search(params[:name])
   end
@@ -133,7 +135,7 @@ class Api::V1::PollsController < Api::V1::RestfulController
     show_results = @poll.results_visible?(voted: @poll.stances.latest.decided.exists?(participant_id: current_user.id))
     stances = @poll.stances.latest.where(revoked_at: nil)
     if params[:name].present?
-      stances = stances.where(participant_id: voters_matching_name.select(:id))
+      stances = stances.joins(:participant).merge(voters_matching_name)
     end
     stances = stances.decided if params[:stance_filter] == 'cast'
     stances = stances.undecided if params[:stance_filter] == 'uncast'
@@ -144,7 +146,7 @@ class Api::V1::PollsController < Api::V1::RestfulController
     end
 
     total = stances.count
-    stances = page_collection_bounded(stances.order('cast_at DESC NULLS LAST, created_at DESC')).to_a
+    stances = page_collection_bounded(stances.order('stances.cast_at DESC NULLS LAST, stances.created_at DESC')).to_a
     voter_ids = stances.map(&:participant_id)
     voters = User.with_attached_uploaded_avatar.where(id: voter_ids).index_by(&:id)
     show_voter_details = @poll.group_id && (@poll.members.exists?(current_user.id) || @poll.stances.latest.exists?(participant_id: current_user.id))
