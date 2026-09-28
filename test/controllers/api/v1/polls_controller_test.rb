@@ -404,6 +404,21 @@ class Api::V1::PollsControllerTest < ActionController::TestCase
     assert_response :forbidden
   end
 
+  test "detached anonymous votes show when each new voter was invited" do
+    travel_to Time.zone.parse('2026-09-01 12:00') do
+      @poll = PollService.create(params: {
+        title: "invited on", poll_type: "proposal", anonymous: true, group_id: @group.id,
+        poll_option_names: %w[agree disagree], closing_at: 5.days.from_now
+      }, actor: @admin)
+    end
+
+    sign_in @admin
+    get :votes, params: {id: @poll.key}
+
+    assert_response :success
+    assert JSON.parse(response.body).fetch("voters").all? { |voter| voter["invited_on"] == '2026-09-01' }
+  end
+
   test "detached anonymous votes allow a missing historical inviter" do
     poll = PollService.create(params: {
       title: "migrated receipts test",

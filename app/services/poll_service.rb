@@ -239,11 +239,13 @@ class PollService
     existing_voter_ids = poll.anonymous_poll_voters.where(voter_id: users.select(:id)).pluck(:voter_id)
     users = users.where.not(id: existing_voter_ids)
     group_member_ids = poll.group.members.where(id: users.select(:id)).pluck(:id).to_set
+    invited_at = Time.current
     rows = users.map do |user|
       {
         poll_id: poll.id,
         voter_id: user.id,
         inviter_id: actor.id,
+        invited_at: invited_at,
         group_member: group_member_ids.include?(user.id),
         ballot_submitted: false
       }
