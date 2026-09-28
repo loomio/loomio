@@ -1,5 +1,6 @@
 import { shallowMount } from '@vue/test-utils';
 import { describe, expect, it, vi } from 'vitest';
+import { reactive, nextTick } from 'vue';
 
 vi.mock('@/shared/services/records', () => ({
   default: {pollOptions: {find: () => ({name: 'Yes', meaning: ''})}, users: {find: () => null}}
@@ -163,5 +164,27 @@ describe('weighted poll results table', () => {
     expect(wrapper.vm.slices.map(slice => slice.value)).toEqual([100]);
     await wrapper.findAll('thead button').find(button => button.text() === 'membership_card.voters').trigger('click');
     expect(wrapper.vm.slices.map(slice => slice.value)).toEqual([50, 50]);
+  });
+
+  it('returns to the default measure when its column disappears', async () => {
+    const poll = reactive({
+      voteWeightsEnabled: true, closedAt: false, chartType: 'bar', chartColumn: 'score_percent',
+      pieSlices: () => [],
+      resultColumns: ['chart', 'name', 'score_percent', 'unweighted_score', 'score', 'voter_count'],
+      resultHeadingKeys: {name: 'common.option', score_percent: 'p', unweighted_score: 'u', score: 's', voter_count: 'v'},
+      results: [{id: 1, name: 'Alpha', name_format: 'plain', score_percent: 100, unweighted_score: 1, score: '1', voter_count: 1, voter_percent: 100}]
+    });
+    const wrapper = shallowMount(ChartTable, {
+      props: {poll},
+      global: {mocks: {$t: key => key}, stubs: {VTable: {template: '<table><slot /></table>'}, PlainText: {template: '<span>Option</span>'}}}
+    });
+
+    await wrapper.findAll('thead button').find(button => button.text() === 'u').trigger('click');
+    expect(wrapper.vm.selectedMetric).toBe('unweighted_score');
+
+    poll.resultColumns = ['chart', 'name', 'score_percent', 'score', 'voter_count'];
+    await nextTick();
+
+    expect(wrapper.vm.selectedMetric).toBe('score_percent');
   });
 });

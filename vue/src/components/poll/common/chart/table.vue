@@ -87,6 +87,16 @@ export default {
     clampPercent(num) { return Math.max(0, Math.min(num, 100)); }
   },
 
+  watch: {
+    // A poll reload or weights toggle can remove the selected measure's column.
+    'poll.resultColumns'(columns) {
+      if (this.selectedMetric && !columns.includes(this.selectedMetric)) {
+        this.selectedMetric = this.defaultChartMetric();
+        this.updateSlices();
+      }
+    }
+  },
+
   created() {
     this.updateSlices();
     this.watchRecords({
