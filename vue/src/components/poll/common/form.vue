@@ -139,6 +139,15 @@ const addOption = () => {
   });
 };
 
+// Moving a new poll to a group that does not allow weights turns them off, as
+// the server would reject them there.
+const setGroupId = (groupId) => {
+  props.poll.groupId = groupId;
+  if (groupId && !initialVoteWeightsEnabled.value && !props.poll.group().voteWeightsAllowed) {
+    props.poll.voteWeightsEnabled = false;
+  }
+};
+
 const setAnonymousVoting = (value) => {
   if (!value) { return; }
   props.poll.voteWeightsEnabled = false;
@@ -300,11 +309,12 @@ v-form.poll-common-form(ref="form" @submit.prevent="submit")
 
   poll-template-info-panel.mb-4(v-if="pollTemplate" :poll-template="pollTemplate")
 
-  v-select(
+  v-select.poll-common-form__group-select(
     v-if="!poll.topicId"
-    v-model="poll.groupId"
+    :model-value="poll.groupId"
+    @update:model-value="setGroupId"
     :items="groupItems"
-    :label="$t('common.group')"
+    :label="t('common.group')"
   )
 
   v-text-field.poll-common-form-fields__title.mb-2(
