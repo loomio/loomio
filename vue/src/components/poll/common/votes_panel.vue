@@ -83,22 +83,30 @@ async function fetchVotes() {
 const fetchDebounced = debounce(fetchVotes, 100);
 onMounted(() => { if (canView) { fetchVotes(); } });
 
-watch(page, value => {
-  router.replace({ query: { ...route.query, page: value === 1 ? undefined : value } });
-  if (canView) { fetchVotes(); }
-});
-
-watch([name, voteFilter], () => {
-  const pageChanged = page.value !== 1;
-  if (pageChanged) { page.value = 1; }
+// Build the whole query from current state. Both watchers can run in one flush
+// before the router updates route.query, so neither may copy our keys from it.
+function replaceQuery() {
   router.replace({ query: {
     ...route.query,
-    page: undefined,
+    page: page.value === 1 ? undefined : page.value,
     name: name.value || undefined,
     stance_filter: !poll.anonymous && typeof voteFilter.value === 'string' && voteFilter.value !== 'all' ? voteFilter.value : undefined,
     poll_option_id: !poll.anonymous && typeof voteFilter.value === 'number' ? voteFilter.value : undefined
   } });
-  if (canView && !pageChanged) { fetchDebounced(); }
+}
+
+watch(page, () => {
+  replaceQuery();
+  if (canView) { fetchVotes(); }
+});
+
+watch([name, voteFilter], () => {
+  if (page.value !== 1) {
+    page.value = 1;
+    return;
+  }
+  replaceQuery();
+  if (canView) { fetchDebounced(); }
 });
 </script>
 

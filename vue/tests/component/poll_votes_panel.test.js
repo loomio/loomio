@@ -6,14 +6,15 @@ const mocks = vi.hoisted(() => ({
   fetch: vi.fn(),
   canVerifyParticipants: vi.fn(),
   replace: vi.fn(),
-  event: vi.fn()
+  event: vi.fn(),
+  routeQuery: {}
 }));
 
 vi.mock('@/shared/services/records', () => ({default: {fetch: mocks.fetch}}));
 vi.mock('@/shared/services/ability_service', () => ({default: {canVerifyParticipants: mocks.canVerifyParticipants}}));
 vi.mock('@/shared/services/event_bus', () => ({default: {$emit: mocks.event}}));
 vi.mock('vue-router', () => ({
-  useRoute: () => ({query: {}}),
+  useRoute: () => ({query: mocks.routeQuery}),
   useRouter: () => ({replace: mocks.replace})
 }));
 vi.mock('vue-i18n', async importOriginal => ({
@@ -50,7 +51,10 @@ function mountPanel(overrides = {}) {
 }
 
 describe('Poll votes panel', () => {
-  beforeEach(() => { vi.clearAllMocks(); });
+  beforeEach(() => {
+    vi.clearAllMocks();
+    mocks.routeQuery = {};
+  });
 
   it('renders identified votes from the poll votes endpoint', async () => {
     mocks.fetch.mockResolvedValue({
@@ -98,6 +102,22 @@ describe('Poll votes panel', () => {
     const wrapper = mountPanel({anonymous: true});
     expect(mocks.fetch).not.toHaveBeenCalled();
     expect(wrapper.text()).toContain('poll_common_votes_panel.participation_records_restricted');
+  });
+
+  it('keeps a new search in the URL when it moves a later page back to the first', async () => {
+    mocks.routeQuery = {page: '3', stance_filter: 'cast', tab: 'votes'};
+    mocks.fetch.mockResolvedValue({voters: [], meta: {total: 100}});
+    const wrapper = mountPanel();
+    await flushPromises();
+
+    wrapper.vm.$.setupState.name = 'Alex';
+    await nextTick();
+    await flushPromises();
+
+    expect(mocks.replace).toHaveBeenLastCalledWith({query: {
+      tab: 'votes', page: undefined, name: 'Alex', stance_filter: 'cast', poll_option_id: undefined
+    }});
+    expect(mocks.fetch).toHaveBeenLastCalledWith({path: 'polls/42/votes', params: {limit: 25, offset: 0, name: 'Alex', stance_filter: 'cast'}});
   });
 
   it('shows the result range beside pagination', async () => {
