@@ -138,7 +138,7 @@ watch([name, voteFilter], () => {
             td(v-if="meta?.show_voter_details") {{ voter.member_since }}
             td(v-if="meta?.show_voter_details") {{ voter.inviter_name }}
             td(v-if="meta?.show_voter_details") {{ voter.invited_on }}
-    progress.poll-common-votes-panel__loading(v-if="loading" :aria-label="t('common.loading')")
+    progress.poll-common-votes-panel__loading(v-if="loading" :aria-label="t('common.action.loading')")
     p.text-medium-emphasis.my-4(v-if="!loading && meta && meta.total === 0") {{ t('common.no_results_found') }}
     .d-flex.align-center.justify-space-between.flex-wrap.ga-2.mt-4(v-if="meta && meta.total > 0")
       span.text-medium-emphasis {{ t('poll_common_form.voter_page_count', { first: rangeFirst, last: rangeLast, total: meta.total }) }}
