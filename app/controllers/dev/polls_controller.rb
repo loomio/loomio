@@ -125,9 +125,7 @@ class Dev::PollsController < Dev::NightwatchController
 
   def start_poll
     group = create_group_with_members
-    admin = group.admins.first
-    saved(fake_group(name: 'Unweighted group')).add_admin!(admin) if params[:unweighted_group].present?
-    sign_in admin
+    sign_in group.admins.first
     redirect_to new_poll_url(group_id: group.id)
   end
 

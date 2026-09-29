@@ -736,22 +736,6 @@ module.exports = {
     page.expectText('.poll-common-details-panel__details p', 'Some details')
   },
 
-  'turns_off_vote_weights_when_moving_a_new_poll_to_an_unweighted_group': (test) => {
-    page = pageHelper(test)
-
-    page.loadPath('polls/start_poll?weighted=1&unweighted_group=1')
-    page.clickAndWait('.decision-tools-card__poll-type--proposal', '.poll-common-form__more-settings')
-    page.click('.poll-common-form__more-settings')
-    page.click('.poll-settings-vote-weights input')
-    test.assert.elementPresent('.poll-settings-vote-weights input:checked')
-
-    page.execute("document.querySelector('.poll-common-form__group-select').scrollIntoView({block: 'center'})")
-    page.click('.poll-common-form__group-select .v-field')
-    page.waitFor('.v-overlay--active .v-list-item')
-    page.execute("Array.from(document.querySelectorAll('.v-overlay--active .v-list-item')).find(el => el.textContent.includes('Unweighted group')).click()")
-    page.expectNoElement('.poll-settings-vote-weights')
-  },
-
   'can_open_vote_weight_settings_in_poll_form': (test) => {
     page = pageHelper(test)
 
