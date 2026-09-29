@@ -2,7 +2,7 @@
 set -euo pipefail
 
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
-HOOK_DIR="$ROOT/.git/hooks"
+HOOK_DIR="$(git -C "$ROOT" rev-parse --path-format=absolute --git-path hooks)"
 
 install -m 0755 "$ROOT/script/git_hooks/pre-push" "$HOOK_DIR/pre-push"
 

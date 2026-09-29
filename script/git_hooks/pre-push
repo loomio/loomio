@@ -4,29 +4,13 @@ set -euo pipefail
 ROOT="$(git rev-parse --show-toplevel)"
 cd "$ROOT"
 
-# ── Brakeman ────────────────────────────────────────────────────────────
-
-if [ "${SKIP_BRAKEMAN:-}" = "1" ]; then
-  echo "Skipping Brakeman because SKIP_BRAKEMAN=1."
-else
-  echo "==> Running Brakeman before push..."
-  bundle exec brakeman --no-pager --no-threads --exit-on-warn --exit-on-error --ignore-config config/brakeman.ignore
-fi
-
-# ── Bundler Audit ───────────────────────────────────────────────────────
-
-if [ "${SKIP_BUNDLER_AUDIT:-}" = "1" ]; then
-  echo "Skipping Bundler Audit because SKIP_BUNDLER_AUDIT=1."
-else
-  echo ""
-  echo "==> Running Bundler Audit before push..."
-  bundle exec bundler-audit check --update
-fi
+# Brakeman and dependency auditing run in .github/workflows/security.yml.
+# Keep local push checks fast and independent of advisory-database updates.
 
 # ── Translation checks ──────────────────────────────────────────────────
 
-if [ "${SKIP_TRANSLATIONS:-}" = "1" ]; then
-  echo "Skipping translation checks because SKIP_TRANSLATIONS=1."
+if [ -n "${SKIP_TRANSLATIONS+x}" ]; then
+  echo "Skipping translation checks because SKIP_TRANSLATIONS is set."
 else
   BASE_REF="$(git rev-parse --abbrev-ref '@{upstream}' 2>/dev/null || echo 'origin/master')"
 
