@@ -1,6 +1,5 @@
 class GroupSerializer < ApplicationSerializer
   attributes :id,
-             :vote_weights_allowed,
              :key,
              :handle,
              :name,

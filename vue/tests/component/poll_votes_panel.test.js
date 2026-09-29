@@ -38,7 +38,7 @@ const stubs = {
 const poll = {
   id: 42,
   anonymous: false,
-  voteWeightsEnabled: true,
+  weightedVoting: true,
   pollType: 'proposal',
   showResults: () => true,
   pollOptions: () => [{id: 5, optionName: () => 'Agree'}],
@@ -87,7 +87,7 @@ describe('Poll votes panel', () => {
         participation_status_visible: false, participation_status_votes_required: 3}
     });
 
-    const wrapper = mountPanel({anonymous: true, voteWeightsEnabled: false});
+    const wrapper = mountPanel({anonymous: true, weightedVoting: false});
     await flushPromises();
     await nextTick();
 
@@ -126,7 +126,7 @@ describe('Poll votes panel', () => {
       meta: {total: 1}
     });
     const wrapper = mountPanel({
-      pollType: 'meeting', voteWeightsEnabled: false, hasVariableScore: () => true,
+      pollType: 'meeting', weightedVoting: false, hasVariableScore: () => true,
       pollOptions: () => [
         {id: 5, optionName: () => 'Monday'}, {id: 6, optionName: () => 'Tuesday'}, {id: 7, optionName: () => 'Wednesday'}
       ]

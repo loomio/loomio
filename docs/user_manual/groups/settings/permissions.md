@@ -19,8 +19,6 @@ Permissions include whether members can:
 
 For groups that are not secret, administrators can separately allow non-members to start discussions. A non-member who starts a discussion becomes a guest of that discussion but does not gain access to other private discussions or become a group member.
 
-The **Allow weighted voting** setting lets group admins set members' default vote weights and poll coordinators use those weights in polls. See [Weighted voting](/en/user_manual/polls/weighted_voting) for the settings and examples.
-
 The **Admins can edit members' comments** setting gives administrators an exceptional moderation capability. Enable it only when the group has agreed that administrators should be able to alter member-authored content.
 
 Review permissions when the group's purpose, membership, or moderation responsibilities change. Give each role only the capabilities it needs.

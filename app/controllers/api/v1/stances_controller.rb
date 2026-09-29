@@ -153,7 +153,7 @@ class Api::V1::StancesController < Api::V1::RestfulController
     self.add_meta :guest_ids, @poll.topic.topic_readers.guests.pluck(:user_id) & user_ids
     self.add_meta :group_admin_ids, @poll.group.admins.pluck(:user_id) & user_ids
     self.add_meta :topic_admin_ids, @poll.topic.topic_readers.admins.pluck(:user_id) & user_ids
-    if @poll.vote_weights_enabled? && @poll.closed_at.nil?
+    if @poll.weighted_voting? && @poll.closed_at.nil?
       stance_rows = @poll.stances.latest.where(participant_id: user_ids).pluck(:participant_id, :id, :weight)
       self.add_meta :stance_ids_by_user_id, stance_rows.to_h { |user_id, stance_id, _| [user_id, stance_id] }
       self.add_meta :weights_by_user_id, stance_rows.to_h { |user_id, _, weight| [user_id, VoteWeight.format(weight)] }

@@ -16,7 +16,7 @@ import ChartTable from '@/components/poll/common/chart/table.vue';
 describe('weighted poll results table', () => {
   it('shows points and weighted points in the same row', () => {
     const poll = {
-      voteWeightsEnabled: true,
+      weightedVoting: true,
       closedAt: false,
       chartType: 'bar',
       chartColumn: 'score_percent',
@@ -43,7 +43,7 @@ describe('weighted poll results table', () => {
 
   it('shows votes and weighted votes on weighted proposals', () => {
     const poll = {
-      voteWeightsEnabled: true,
+      weightedVoting: true,
       pollType: 'proposal',
       closedAt: false,
       chartType: 'bar',
@@ -74,7 +74,7 @@ describe('weighted poll results table', () => {
 
   it('switches a proposal pie from weighted score to voter share when its header is clicked', async () => {
     const poll = {
-      voteWeightsEnabled: true,
+      weightedVoting: true,
       closedAt: false,
       chartType: 'pie',
       chartColumn: 'score_percent',
@@ -109,7 +109,7 @@ describe('weighted poll results table', () => {
 
   it('switches bars from weighted score to eligible voter share', async () => {
     const poll = {
-      voteWeightsEnabled: true,
+      weightedVoting: true,
       closedAt: false,
       chartType: 'bar',
       chartColumn: 'max_score_percent',
@@ -140,7 +140,7 @@ describe('weighted poll results table', () => {
 
   it('keeps the existing pie until a displayed measure is selected', async () => {
     const poll = {
-      voteWeightsEnabled: false,
+      weightedVoting: false,
       closedAt: false,
       chartType: 'pie',
       chartColumn: 'score_percent',
@@ -168,7 +168,7 @@ describe('weighted poll results table', () => {
 
   it('returns to the default measure when its column disappears', async () => {
     const poll = reactive({
-      voteWeightsEnabled: true, closedAt: false, chartType: 'bar', chartColumn: 'score_percent',
+      weightedVoting: true, closedAt: false, chartType: 'bar', chartColumn: 'score_percent',
       pieSlices: () => [],
       resultColumns: ['chart', 'name', 'score_percent', 'unweighted_score', 'score', 'voter_count'],
       resultHeadingKeys: {name: 'common.option', score_percent: 'p', unweighted_score: 'u', score: 's', voter_count: 'v'},

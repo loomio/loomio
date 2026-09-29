@@ -180,7 +180,7 @@ class Api::V1::PollsController < Api::V1::RestfulController
         if show_results && stance.cast_at.present?
           row[:option_scores] = stance.option_scores
         end
-        row[:weight] = VoteWeight.format(stance.weight) if @poll.vote_weights_enabled?
+        row[:weight] = VoteWeight.format(stance.weight) if @poll.weighted_voting?
         row
       end
     }, root: false

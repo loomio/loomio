@@ -1505,8 +1505,6 @@ ca:
     members_can_create_tags_help: Permet que els membres creïn etiquetes noves en etiquetar fils i enquestes
     non_members_can_start_discussions: Els no membres poden iniciar debats
     non_members_can_start_discussions_help: Permet que els no membres iniciïn una discussió des d'una de les plantilles d'aquest grup
-    allow_weighted_voting: Permetre el vot ponderat
-    give_members_different_vote_weights: Doneu als membres diferents pesos de vot, de manera que alguns vots comptin més que altres
   group_export_modal:
     title: Exporta dades del grup
     body: |
@@ -1613,15 +1611,12 @@ ca:
   membership_form:
     modal_title:
       group: Estableix un títol dins del grup
-      membership: Edita la subscripció
     title_helptext:
       group: Aquest títol es mostrarà al costat del nom de %{name} dins d'aquest grup. Utilitzeu la funció per fer saber el seu rol als usuaris.
     title_label: Títol
     title_placeholder: 'Per exemple: "coordinador" o "moderador"'
     updated: S'ha actualitzat el títol de membre
-    membership_updated: Membresia actualitzada
     weight_label: Pes del vot
-    weight_helptext: Aquest valor es copia al vot del membre quan s'afegeix a una nova enquesta. Canviar-lo no afecta les enquestes existents. Establiu-lo a 0 per permetre que el membre voti sense afectar el resultat ponderat.
   user_name_modal:
     user_name_updated: Nom d'usuari actualitzat
     set_user_name: Estableix el nom d'usuari

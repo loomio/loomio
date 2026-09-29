@@ -1499,8 +1499,6 @@ fi:
     members_can_create_tags_help: Salli jäsenten luoda uusia tunnisteita tunnisteita lisätessään tunnisteita keskusteluketjuihin ja kyselyihin
     non_members_can_start_discussions: Muutkin kuin jäsenet voivat aloittaa keskusteluja
     non_members_can_start_discussions_help: Salli muiden kuin jäsenten aloittaa keskustelun jostakin tämän ryhmän mallista
-    allow_weighted_voting: Salli painotettu äänestys
-    give_members_different_vote_weights: Anna jäsenille eri äänestyspainotuksia, jotta jotkut äänet painavat enemmän kuin toiset
   group_export_modal:
     title: Vie ryhmätiedot
     body: <p>Voit ladata kopion ryhmäsi tiedoista milloin tahansa. <a href="https://help.loomio.org/en/user_manual/groups/data_export/">Lue lisää.</a></p><p> Suorittaminen kestää muutaman minuutin ryhmäsi koosta riippuen. Kun se on valmis, saat sähköpostin, jossa on linkki tiedoston lataamiseen.</p>
@@ -1599,15 +1597,12 @@ fi:
   membership_form:
     modal_title:
       group: Aseta otsikko
-      membership: Muokkaa jäsenyyttä
     title_helptext:
       group: Tämä otsikko näkyy käyttäjän %{name} nimen vieressä tässä ryhmässä. Käytä sitä kertoaksesi ihmisille roolistaan.
     title_label: otsikko
     title_placeholder: Esim 'koordinaattori' tai 'fasilitaattori'
     updated: Jäsennimike päivitetty
-    membership_updated: Jäsenyys päivitetty
     weight_label: Äänestyspaino
-    weight_helptext: Tämä arvo kopioidaan jäsenen ääneen, kun hänet lisätään uuteen kyselyyn. Sen muuttaminen ei vaikuta olemassa oleviin kyselyihin. Aseta arvoksi 0, jos haluat jäsenen äänestävän vaikuttamatta painotettuun tulokseen.
   user_name_modal:
     user_name_updated: Käyttäjätunnus päivitetty
     set_user_name: Aseta käyttäjänimi

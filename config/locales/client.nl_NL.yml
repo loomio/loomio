@@ -1505,8 +1505,6 @@ nl_NL:
     members_can_create_tags_help: Sta leden toe om nieuwe tags aan te maken bij het taggen van discussies en enquêtes.
     non_members_can_start_discussions: Niet-leden kunnen discussies starten
     non_members_can_start_discussions_help: Sta niet-leden toe om een discussie te starten via een van de sjablonen van deze groep
-    allow_weighted_voting: Gewogen stemmen toestaan
-    give_members_different_vote_weights: Geef leden verschillende stemgewichten, zodat sommige stemmen meer tellen dan andere
   group_export_modal:
     title: Groepsdata exporteren
     body: |
@@ -1613,15 +1611,12 @@ nl_NL:
   membership_form:
     modal_title:
       group: Stel groepstitel in
-      membership: Lidmaatschap bewerken
     title_helptext:
       group: Deze titel zal naast %{name}'s naam verschijnen binnen deze groep. Gebruik dit om mensen hun rol te laten weten.
     title_label: titel
     title_placeholder: bv 'Coordinator', of 'Facilitator'
     updated: Lidmaatschapstitel geupdate
-    membership_updated: Lidmaatschap bijgewerkt
     weight_label: Stemgewicht
-    weight_helptext: Deze waarde wordt overgenomen in de stem van het lid wanneer deze aan een nieuwe peiling wordt toegevoegd. Het wijzigen ervan heeft geen invloed op bestaande peilingen. Stel de waarde in op 0 om het lid te laten stemmen zonder dat dit het gewogen resultaat beïnvloedt.
   user_name_modal:
     user_name_updated: Gebruikersnaam bijgewerkt
     set_user_name: Gebruikersnaam instellen

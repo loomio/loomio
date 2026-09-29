@@ -17,7 +17,6 @@ const router = useRouter();
 const group = ref(null);
 const memberships = ref([]);
 const membershipTotal = ref(0);
-const hasCurrentPolls = ref(false);
 const page = ref(1);
 const query = ref('');
 // Drafts and loaded weights are keyed by membership id and kept across pages
@@ -67,7 +66,6 @@ async function loadWeights() {
     if (sequence !== fetchSequence) return;
     memberships.value = response.memberships;
     membershipTotal.value = response.total;
-    hasCurrentPolls.value = response.has_current_polls;
     memberships.value.forEach(membership => {
       weightsLoaded.value[membership.id] = membership.weight;
       if (!(membership.id in weightsDraft.value)) weightsDraft.value[membership.id] = membership.weight;
@@ -125,7 +123,7 @@ async function resetWeights() {
 onMounted(async () => {
   try {
     group.value = await Records.groups.findOrFetch(route.params.key);
-    if (!group.value.voteWeightsAllowed || !AbilityService.canAdminister(group.value)) {
+    if (!AbilityService.canAdminister(group.value)) {
       await router.replace(membersPath.value);
       return;
     }
@@ -145,7 +143,9 @@ onMounted(async () => {
     .d-flex.align-center.justify-space-between.pt-4.pb-2
       h2.text-title-medium.mb-0 {{ t('members_panel.edit_vote_weights') }}
       v-btn.member-weights-page__set-all(variant="tonal" @click="openResetDialog") {{ t('poll_common_form.set_all_vote_weights') }}
-    p.text-body-medium.text-medium-emphasis.mb-4(v-if="hasCurrentPolls") {{ t('members_panel.vote_weights_are_defaults') }}
+    p.text-body-medium.text-medium-emphasis.mb-4
+      span {{ t('members_panel.vote_weights_are_defaults') }}
+      help-link.ml-1(path="user_manual/polls/weighted_voting")
     v-text-field.member-weights-page__search(
       :model-value="query"
       @update:model-value="search"

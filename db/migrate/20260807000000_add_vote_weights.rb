@@ -8,8 +8,8 @@
 # under a lock that allows reads and writes.
 class AddVoteWeights < ActiveRecord::Migration[8.1]
   def up
-    add_column :groups, :vote_weights_allowed, :boolean, default: false, null: false
-    add_column :polls, :vote_weights_enabled, :boolean, default: false, null: false
+    add_column :polls, :weighted_voting, :boolean, default: false, null: false
+    add_column :poll_templates, :weighted_voting, :boolean, default: false, null: false
 
     add_column :memberships, :weight, :decimal, precision: 12, scale: 3, default: 1, null: false
     add_column :stances, :weight, :decimal, precision: 12, scale: 3, default: 1, null: false
@@ -31,7 +31,7 @@ class AddVoteWeights < ActiveRecord::Migration[8.1]
     remove_column :stances, :weight
     remove_column :memberships, :weight
 
-    remove_column :polls, :vote_weights_enabled
-    remove_column :groups, :vote_weights_allowed
+    remove_column :poll_templates, :weighted_voting
+    remove_column :polls, :weighted_voting
   end
 end

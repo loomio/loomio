@@ -32,7 +32,7 @@ import PollMembers from '@/components/poll/members.vue';
 
 function buildPoll(overrides = {}) {
   return {
-    id: 42, groupId: 8, voteWeightsEnabled: true, closedAt: null, openingAt: null, openedAt: '2026-09-28',
+    id: 42, groupId: 8, weightedVoting: true, closedAt: null, openingAt: null, openedAt: '2026-09-28',
     recipientAudience: null, recipientUserIds: [], recipientEmails: [], recipientChatbotIds: [],
     adminsInclude: () => true, detachedAnonymousVoting: () => false, group: () => ({id: 8}),
     ...overrides

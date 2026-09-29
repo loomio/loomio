@@ -131,7 +131,7 @@ form(v-on:submit.prevent='submit()')
           v-select(
             :disabled="!testEnabled"
             v-model="pollOption.testAgainst"
-            :items="[{title: $t(poll.voteWeightsEnabled && poll.pollType === 'proposal' ? 'poll_option_form.points_cast' : 'poll_option_form.votes_cast'), value: 'score_percent'}, {title: $t('poll_option_form.eligible_voters'), value: 'voter_percent'}]"
+            :items="[{title: $t(poll.weightedVoting && poll.pollType === 'proposal' ? 'poll_option_form.points_cast' : 'poll_option_form.votes_cast'), value: 'score_percent'}, {title: $t('poll_option_form.eligible_voters'), value: 'voter_percent'}]"
           )
 
     v-divider

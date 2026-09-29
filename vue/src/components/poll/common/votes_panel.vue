@@ -130,7 +130,7 @@ watch([name, voteFilter], () => {
             th {{ t('poll_receipts_page.voter_name') }}
             th(v-if="meta?.show_voter_email") {{ t('poll_receipts_page.voter_email') }}
             th(v-if="!poll.anonymous || meta?.participation_status_visible") {{ t(poll.anonymous ? 'poll_receipts_page.vote_cast' : 'poll_common_votes_panel.stance') }}
-            th(v-if="poll.voteWeightsEnabled") {{ t('poll_common_votes_panel.vote_weight_column') }}
+            th(v-if="poll.weightedVoting") {{ t('poll_common_votes_panel.vote_weight_column') }}
             th(v-if="meta?.show_voter_details") {{ t('poll_receipts_page.member_since') }}
             th(v-if="meta?.show_voter_details") {{ t('poll_receipts_page.invited_by') }}
             th(v-if="meta?.show_voter_details") {{ t('poll_receipts_page.invited_on') }}
@@ -144,7 +144,7 @@ watch([name, voteFilter], () => {
             td(v-if="poll.anonymous && meta?.participation_status_visible")
               v-icon(:icon="voter.vote_cast ? 'mdi-check' : 'mdi-close'" :color="voter.vote_cast ? 'success' : 'error'" size="small" :aria-label="t(voter.vote_cast ? 'poll_receipts_page.voted' : 'poll_receipts_page.not_voted')")
             td(v-if="!poll.anonymous") {{ voteLabel(voter) }}
-            td(v-if="poll.voteWeightsEnabled") {{ voter.weight }}
+            td(v-if="poll.weightedVoting") {{ voter.weight }}
             td(v-if="meta?.show_voter_details") {{ voter.member_since }}
             td(v-if="meta?.show_voter_details") {{ voter.inviter_name }}
             td(v-if="meta?.show_voter_details") {{ voter.invited_on }}

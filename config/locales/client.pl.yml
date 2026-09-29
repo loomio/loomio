@@ -1505,8 +1505,6 @@ pl:
     members_can_create_tags_help: Zezwalaj członkom na tworzenie nowych tagów podczas tagowania wątków i ankiet
     non_members_can_start_discussions: Osoby niebędące członkami mogą rozpoczynać dyskusje
     non_members_can_start_discussions_help: Zezwól osobom niebędącym członkami na rozpoczęcie dyskusji z jednego z szablonów tej grupy
-    allow_weighted_voting: Zezwól na głosowanie ważone
-    give_members_different_vote_weights: Nadaj członkom różną wagę głosu, aby niektóre głosy liczyły się bardziej niż inne
   group_export_modal:
     title: Eksportuj dane grupy
     body: |
@@ -1613,15 +1611,12 @@ pl:
   membership_form:
     modal_title:
       group: Ustaw tytuł grupy
-      membership: Edytuj członkostwo
     title_helptext:
       group: Ten tytuł pojawi się obok nazwy %{name} w tej grupie. Użyj go, aby poinformować ludzi o ich roli.
     title_label: tytuł
     title_placeholder: Np. „Koordynator” lub „Moderator”
     updated: Zaktualizowano rodzaj członkostwa
-    membership_updated: Zaktualizowano członkostwo
     weight_label: Waga głosu
-    weight_helptext: Ta wartość jest kopiowana do głosu członka, gdy jest on dodawany do nowej ankiety. Jej zmiana nie ma wpływu na istniejące ankiety. Ustaw ją na 0, aby umożliwić członkowi głosowanie bez wpływu na wynik ważony.
   user_name_modal:
     user_name_updated: Nazwa użytkownika zaktualizowana
     set_user_name: Ustaw nazwę użytkownika

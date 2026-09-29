@@ -6,15 +6,9 @@ Weighted voting lets some votes count more than others. Each voter has a vote we
 - A cooperative's board makes the decision, but operations staff take part in the conversation. Board members have a vote weight of `1`. Operations staff have a vote weight of `0`, so their votes are recorded but do not change the result.
 - A company gives shareholders votes according to their ownership stake. Someone who owns 12.5% of the shares has a vote weight of `12.5`.
 
-## Allow weighted voting in a group
-
-A group admin can open **Group settings → Permissions** and select **Allow weighted voting**. Group admins can then set members' vote weights, and poll coordinators can use weighted voting in that group's polls. Direct polls do not need this setting.
-
-![The Allow weighted voting permission in group settings](group-permission.png)
-
 ## Set members' vote weights
 
-Open the group's **Members** page and select **Edit vote weights**. Enter vote weights and select **Save vote weights**. Vote weights can be `0` or more, with up to three decimal places. Search by name or email to find someone. To give every member the same vote weight, select **Set all vote weights**. You can also edit one member's vote weight from their menu.
+A group admin can open the group's **Members** page and select **Edit vote weights**. Enter vote weights and select **Save vote weights**. Vote weights can be `0` or more, with up to three decimal places. Search by name or email to find someone. To give every member the same vote weight, select **Set all vote weights**.
 
 ![Vote weights for group members](member-weights.png)
 
@@ -23,6 +17,8 @@ A member's vote weight is copied into each poll they are added to. Changing it l
 ## Use weighted voting in a poll
 
 Select **Use weighted voting** in the poll's advanced settings. You can turn it on or off after voting opens. Turning it off sets every vote weight in the poll to `1`, and any vote weights you changed for that poll are lost.
+
+If your group uses weighted voting for an established process, select **Use weighted voting** in a [poll template](/en/user_manual/polls/poll_templates). Polls started from that template use weighted voting.
 
 ![The Use weighted voting setting in a poll](poll-setting.png)
 

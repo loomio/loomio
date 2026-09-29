@@ -127,7 +127,6 @@ class Group < ApplicationRecord
   has_one_attached :logo, dependent: :detach
 
   has_paper_trail only: [:name,
-                         :vote_weights_allowed,
                          :parent_id,
                          :description,
                          :description_format,

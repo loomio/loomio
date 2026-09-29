@@ -1577,8 +1577,6 @@ zh_CN:
     members_can_create_tags_help: 允许成员在标记帖子和投票时创建新标签。
     non_members_can_start_discussions: 非会员也可以发起讨论
     non_members_can_start_discussions_help: 允许非成员使用本群组提供的模板发起讨论。
-    allow_weighted_voting: 允许加权投票
-    give_members_different_vote_weights: 赋予成员不同的投票权重，使某些投票比其他投票更重要
   group_export_modal:
     title: 导出组数据
     body: <p>您可以随时下载您所在子群组的数据副本。<a href="https://help.loomio.org/en/user_manual/groups/data_export/">了解更多信息。</a></p><p>根据子群组人数，完成此操作大约需要几分钟。完成后，您将收到一封包含文件下载链接的电子邮件。</p>
@@ -1676,15 +1674,12 @@ zh_CN:
   membership_form:
     modal_title:
       group: 设置标题
-      membership: 编辑会员资格
     title_helptext:
       group: 此标题将显示在 %{name} 的名字旁边。使用它可以让成员了解他们的角色。
     title_label: 标题
     title_placeholder: 例如“协调员”或“促进者”
     updated: 会员头衔已更新
-    membership_updated: 会员资格已更新
     weight_label: 投票权重
-    weight_helptext: 当成员被添加到新的投票中时，此值会复制到该成员的投票记录中。更改此值不会影响现有投票。将其设置为 0 可使成员投票而不影响加权结果。
   user_name_modal:
     user_name_updated: 用户名已更新
     set_user_name: 设置用户名

@@ -19,6 +19,7 @@ export default class PollTemplateModel extends BaseModel {
   defaultValues() {
     return {
       anonymous: false,
+      weightedVoting: false,
       groupId: null,
       title: '',
       details: '',

@@ -8,14 +8,13 @@ class StanceServiceTest < ActiveSupport::TestCase
     @admin = users(:admin)
     @alien = users(:alien)
     @group = groups(:group)
-    @group.update!(vote_weights_allowed: true)
 
     @poll = PollService.create(params: {
       title: 'Test Poll',
       poll_type: 'proposal',
       closing_at: 3.days.from_now,
       group_id: @group.id,
-      vote_weights_enabled: true,
+      weighted_voting: true,
       poll_option_names: ['Agree', 'Disagree']
     }, actor: @admin)
   end
@@ -224,7 +223,7 @@ class StanceServiceTest < ActiveSupport::TestCase
       poll_type: 'proposal',
       closing_at: nil,
       group_id: @group.id,
-      vote_weights_enabled: true,
+      weighted_voting: true,
       poll_option_names: ['Agree', 'Disagree']
     }, actor: @admin)
 
@@ -245,7 +244,7 @@ class StanceServiceTest < ActiveSupport::TestCase
       poll_type: 'proposal',
       closing_at: nil,
       group_id: @group.id,
-      vote_weights_enabled: true,
+      weighted_voting: true,
       poll_option_names: ['Agree', 'Disagree']
     }, actor: @admin)
     stance = poll.stances.latest.find_by!(participant: @user)
@@ -285,7 +284,7 @@ class StanceServiceTest < ActiveSupport::TestCase
       poll_type: 'proposal',
       closing_at: nil,
       group_id: @group.id,
-      vote_weights_enabled: true,
+      weighted_voting: true,
       poll_option_names: ['Agree', 'Disagree']
     }, actor: @admin)
     stance = poll.stances.latest.find_by!(participant: @user)

@@ -115,28 +115,15 @@ class MembershipService
   end
 
 
-  # Save title and weight in one request while enforcing the separate weight
-  # permission. Keep the member's derived title data in the same transaction.
   def self.update(membership:, params:, actor:)
     actor.ability.authorize! :update, membership
-    actor.ability.authorize! :set_weight, membership if params.key?(:weight)
-    weight = VoteWeight.parse!(params[:weight]) if params.key?(:weight)
 
     membership.assign_attributes(params.slice(:title))
-    return membership if params.key?(:title) && !membership.valid?
-    updated_membership = nil
-    Membership.transaction do
-      membership.save! if params.key?(:title)
-      if params.key?(:weight)
-        Membership.where(id: membership.id).update_all(weight: weight, updated_at: Time.current)
-        membership.reload
-      end
-      updated_membership = update_user_titles(membership.id) if params.key?(:title)
-    end
+    return membership unless membership.valid?
+    membership.save!
 
-    if updated_membership
-      MessageChannelService.publish_models([updated_membership.user], serializer: AuthorSerializer, group_id: membership.group_id)
-    end
+    update_user_titles_and_broadcast(membership.id)
+
     EventBus.broadcast 'membership_update', membership, params, actor
     membership
   end

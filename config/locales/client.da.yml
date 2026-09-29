@@ -1499,8 +1499,6 @@ da:
     members_can_create_tags_help: Tillad medlemmer at oprette nye tags, når de tagger tråde og afstemninger
     non_members_can_start_discussions: Ikke-medlemmer kan starte diskussioner
     non_members_can_start_discussions_help: Tillad ikke-medlemmer at starte en diskussion fra en af denne gruppes skabeloner
-    allow_weighted_voting: Tillad vægtet afstemning
-    give_members_different_vote_weights: Giv medlemmerne forskellig stemmevægt, så nogle stemmer tæller mere end andre
   group_export_modal:
     title: Eksporter gruppedata
     body: <p>Du kan til enhver tid downloade en kopi af din gruppes data. <a href="https://help.loomio.org/en/user_manual/groups/data_export/">Find ud af mere.</a></p><p> Det tager et par minutter at gennemføre, afhængigt af størrelsen på din gruppe. Når den er klar, modtager du en e-mail med et link til at downloade filen.</p>
@@ -1599,15 +1597,12 @@ da:
   membership_form:
     modal_title:
       group: Indstil titel
-      membership: Rediger medlemskab
     title_helptext:
       group: Denne titel vises ved siden af %{name}s navn i denne gruppe. Brug det til at lade folk kende deres rolle.
     title_label: titel
     title_placeholder: F.eks. 'Koordinator' eller 'Facilitator'
     updated: Medlemskabs titel er opdateret
-    membership_updated: Medlemskab opdateret
     weight_label: Stemmevægt
-    weight_helptext: Denne værdi kopieres til medlemmets stemme, når de tilføjes til en ny afstemning. Ændring af den påvirker ikke eksisterende afstemninger. Sæt den til 0 for at lade medlemmet stemme uden at påvirke det vægtede resultat.
   user_name_modal:
     user_name_updated: Brugernavn opdateret
     set_user_name: Indstil brugernavn

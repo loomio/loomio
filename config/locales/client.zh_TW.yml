@@ -1508,8 +1508,6 @@ zh_TW:
     members_can_create_tags_help: 允許成員在標記貼文和投票時建立新標籤。
     non_members_can_start_discussions: 非會員也可以發起討論
     non_members_can_start_discussions_help: 允許非成員使用本群組提供的範本發起討論。
-    allow_weighted_voting: 允許加權投票
-    give_members_different_vote_weights: 賦予成員不同的投票權重，使某些投票比其他投票更重要
   group_export_modal:
     title: 匯出群組資料
     body: |
@@ -1616,15 +1614,12 @@ zh_TW:
   membership_form:
     modal_title:
       group: 設定群組標題
-      membership: 編輯會員資格
     title_helptext:
       group: 這個標題會出現在這個群組中的 %{name} 名稱旁。使用它來讓夥伴們知道他們的角色。
     title_label: 標題
     title_placeholder: 例子：「協調者」或「主持人」
     updated: 成員標題已更新
-    membership_updated: 會員資格已更新
     weight_label: 投票權重
-    weight_helptext: 當成員被加入新的投票中時，此值會複製到該成員的投票記錄中。更改此值不會影響現有投票。將其設為 0 可使成員投票而不影響加權結果。
   user_name_modal:
     user_name_updated: 使用者名稱已更新
     set_user_name: 設定使用者名稱

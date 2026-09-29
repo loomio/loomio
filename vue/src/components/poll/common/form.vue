@@ -49,7 +49,7 @@ const pollOptions = ref(props.poll.pollOptionsAttributes || props.poll.clonePoll
 const groupItems = ref([]);
 const pollTemplate = ref(null);
 const currentHideResults = ref(props.poll.hideResults);
-const initialVoteWeightsEnabled = ref(props.poll.voteWeightsEnabled);
+const initialWeightedVoting = ref(props.poll.weightedVoting);
 const hideResultsItems = ref([
   { title: I18n.global.t('poll_common_card.do_not_hide_results'), value: 'off' },
   { title: I18n.global.t('poll_common_card.until_you_vote'), value: 'until_vote' },
@@ -139,18 +139,9 @@ const addOption = () => {
   });
 };
 
-// Moving a new poll to a group that does not allow weights turns them off, as
-// the server would reject them there.
-const setGroupId = (groupId) => {
-  props.poll.groupId = groupId;
-  if (groupId && !initialVoteWeightsEnabled.value && !props.poll.group().voteWeightsAllowed) {
-    props.poll.voteWeightsEnabled = false;
-  }
-};
-
 const setAnonymousVoting = (value) => {
   if (!value) { return; }
-  props.poll.voteWeightsEnabled = false;
+  props.poll.weightedVoting = false;
   props.poll.hideResults = 'until_closed';
   props.poll.stanceReasonRequired = 'disabled';
   props.poll.notifyOnClosingSoon = 'undecided_voters';
@@ -182,7 +173,7 @@ const submit = () => {
     EventBus.$emit('deleteDraft', 'poll', props.poll.id, 'details');
 
     const poll = Records.polls.find(data.polls[0].id);
-    initialVoteWeightsEnabled.value = poll.voteWeightsEnabled;
+    initialWeightedVoting.value = poll.weightedVoting;
     if (props.redirectOnSave) { router.replace(urlFor(poll)); }
     emit('saveSuccess', poll);
 
@@ -229,9 +220,9 @@ const visiblePollOptions = computed(() => pollOptions.value.filter(o => !o._dest
 const hasOptions = computed(() => props.poll.config().has_options);
 const minOptions = computed(() => props.poll.config().min_options);
 const allowAnonymous = computed(() => !props.poll.config().prevent_anonymous);
-const voteWeightsSupported = computed(() => !props.poll.anonymous && !['stv', 'meeting'].includes(props.poll.pollType) && (props.poll.voteWeightsEnabled || initialVoteWeightsEnabled.value || !props.poll.groupId || props.poll.group().voteWeightsAllowed));
-const willDisableVoteWeights = computed(() => !props.poll.isNew() && initialVoteWeightsEnabled.value && !props.poll.voteWeightsEnabled);
-const willEnableVoteWeights = computed(() => !props.poll.isNew() && !initialVoteWeightsEnabled.value && props.poll.voteWeightsEnabled);
+const allowWeightedVoting = computed(() => !props.poll.anonymous && !props.poll.config().prevent_weighted_voting);
+const willDisableVoteWeights = computed(() => !props.poll.isNew() && initialWeightedVoting.value && !props.poll.weightedVoting);
+const willEnableVoteWeights = computed(() => !props.poll.isNew() && !initialWeightedVoting.value && props.poll.weightedVoting);
 
 const stanceReasonRequiredItems = computed(() => [
   {title: I18n.global.t('poll_common_form.stance_reason_required'), value: 'required'},
@@ -311,8 +302,7 @@ v-form.poll-common-form(ref="form" @submit.prevent="submit")
 
   v-select.poll-common-form__group-select(
     v-if="!poll.topicId"
-    :model-value="poll.groupId"
-    @update:model-value="setGroupId"
+    v-model="poll.groupId"
     :items="groupItems"
     :label="t('common.group')"
   )
@@ -596,7 +586,7 @@ v-form.poll-common-form(ref="form" @submit.prevent="submit")
             @update:model-value="setAnonymousVoting"
             :label="$t('poll_common_form.votes_are_anonymous')")
 
-        template(v-if="voteWeightsSupported")
+        template(v-if="allowWeightedVoting")
           v-divider.mb-4
           .text-body-large.pb-2 {{ t('poll_common_form.weighted_voting') }}
           .text-body-medium.pb-2.text-medium-emphasis
@@ -604,7 +594,7 @@ v-form.poll-common-form(ref="form" @submit.prevent="submit")
             help-link.ml-1(path="user_manual/polls/weighted_voting")
           v-checkbox.poll-settings-vote-weights(
             hide-details
-            v-model="poll.voteWeightsEnabled"
+            v-model="poll.weightedVoting"
             :label="t('poll_common_form.use_weighted_voting')")
           v-alert.mt-2(v-if="willDisableVoteWeights" type="warning" variant="tonal" density="compact")
             span.mr-1(v-if="poll.openedAt") {{ t('poll_common_form.issued_vote_weights_will_change') }}
@@ -613,7 +603,7 @@ v-form.poll-common-form(ref="form" @submit.prevent="submit")
             span.mr-1(v-if="poll.openedAt") {{ t('poll_common_form.issued_vote_weights_will_change') }}
             span {{ t(poll.groupId ? 'poll_common_form.weighted_voting_on_group' : 'poll_common_form.weighted_voting_on_direct') }}
 
-        v-divider.mb-4(v-if="allowAnonymous || voteWeightsSupported || poll.config().allow_quorum")
+        v-divider.mb-4(v-if="allowAnonymous || allowWeightedVoting || poll.config().allow_quorum")
         .poll-common-form__reminder-title.text-body-large.pb-2(v-t="'poll_common_form.reminder_notification'")
         .text-body-medium.pb-4.text-medium-emphasis
           span {{ t('poll_common_form.reminder_helptext') }}

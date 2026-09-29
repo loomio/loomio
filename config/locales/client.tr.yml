@@ -1499,8 +1499,6 @@ tr:
     members_can_create_tags_help: Üyelerin konuları ve anketleri etiketlerken yeni etiketler oluşturmasına izin verin.
     non_members_can_start_discussions: Üye olmayanlar da tartışma başlatabilir.
     non_members_can_start_discussions_help: Üye olmayanların bu grubun şablonlarından birini kullanarak tartışma başlatmasına izin verin.
-    allow_weighted_voting: Ağırlıklı oylamaya izin ver
-    give_members_different_vote_weights: Üyelere farklı oy ağırlıkları verin, böylece bazı oylar diğerlerinden daha fazla sayılır
   group_export_modal:
     title: Grup verilerini dışa aktar
     body: <p>Grubunuzun verilerinin bir kopyasını istediğiniz zaman indirebilirsiniz. <a href="https://help.loomio.org/en/user_manual/groups/data_export/">Daha fazlasını bul.</a></p><p> Grubunuzun büyüklüğüne bağlı olarak tamamlanması birkaç dakika sürer. Hazır olduğunda dosyayı indirme bağlantısını içeren bir e-posta alacaksınız.</p>
@@ -1599,15 +1597,12 @@ tr:
   membership_form:
     modal_title:
       group: Başlığı ayarla
-      membership: Üyeliği düzenle
     title_helptext:
       group: Bu başlık, bu grup içinde %{name}'nin adının yanında görünecek. İnsanların rollerini bilmelerini sağlamak için bunu kullanın.
     title_label: başlık
     title_placeholder: Örneğin 'Koordinatör' veya 'Kolaylaştırıcı'
     updated: Üyelik başlığı güncellendi
-    membership_updated: Üyelik güncellendi
     weight_label: Oy ağırlığı
-    weight_helptext: Bu değer, üye yeni bir ankete eklendiğinde üyenin oyuna kopyalanır. Değiştirilmesi mevcut anketleri etkilemez. Ağırlıklı sonucu etkilemeden üyenin oy kullanmasına izin vermek için değeri 0 olarak ayarlayın.
   user_name_modal:
     user_name_updated: Kullanıcı adı güncellendi
     set_user_name: Kullanıcı adını ayarla

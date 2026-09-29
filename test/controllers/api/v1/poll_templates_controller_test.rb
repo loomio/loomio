@@ -105,6 +105,47 @@ class Api::V1::PollTemplatesControllerTest < ActionController::TestCase
     refute template.hidden?, "admin-created template should not be auto-hidden"
   end
 
+  # Groups save weighted voting in templates for established processes, and
+  # polls started from the template copy it.
+  test "create saves weighted voting in a poll template" do
+    sign_in @admin
+
+    post :create, params: {
+      poll_template: {
+        group_id: @group.id,
+        process_name: "Board vote",
+        process_subtitle: "Weighted by board seat",
+        poll_type: "proposal",
+        default_duration_in_days: 5,
+        weighted_voting: true
+      }
+    }
+
+    assert_response :success
+    assert PollTemplate.last.weighted_voting?
+    assert_equal true, JSON.parse(response.body).fetch('poll_templates').first.fetch('weighted_voting')
+  end
+
+  test "create rejects weighted voting with anonymous voting" do
+    sign_in @admin
+
+    assert_no_difference 'PollTemplate.count' do
+      post :create, params: {
+        poll_template: {
+          group_id: @group.id,
+          process_name: "Secret board vote",
+          process_subtitle: "Anonymous",
+          poll_type: "proposal",
+          default_duration_in_days: 5,
+          anonymous: true,
+          weighted_voting: true
+        }
+      }
+    end
+
+    assert_response :unprocessable_entity
+  end
+
   test "create denies non-admin when setting disabled" do
     sign_in @user
     post :create, params: {

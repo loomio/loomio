@@ -230,6 +230,7 @@ meeting:
   ballot_rule: bounded
   material_icon: mdi-calendar-multiselect
   prevent_anonymous: true
+  prevent_weighted_voting: true
   vote_method: time_poll
   vote_method_hint_i18n: poll_common_form.voting_methods.time_poll_hint
   require_all_choices: true
@@ -346,6 +347,7 @@ ranked_choice:
 stv:
   ballot_rule: ranked_preferences
   material_icon: mdi-vote
+  prevent_weighted_voting: true
   vote_method: ranked_choice
   vote_method_hint_i18n: poll_common_form.voting_methods.stv_hint
   can_shuffle_options: true

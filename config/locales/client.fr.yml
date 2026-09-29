@@ -1526,8 +1526,6 @@ fr:
     members_can_create_tags_help: Autoriser les membres à créer de nouvelles étiquettes lors de l'étiquetage des sujets et des sondages.
     non_members_can_start_discussions: Les non-membres peuvent démarrer des discussions
     non_members_can_start_discussions_help: Autorise les non-membres à démarrer une discussion à partir de l'un des modèles de ce groupe
-    allow_weighted_voting: Autoriser le vote pondéré
-    give_members_different_vote_weights: Attribue aux membres des poids de vote différents, afin que certains votes comptent plus que d'autres
   group_export_modal:
     title: Exporter les données de ton groupe
     body: |
@@ -1634,15 +1632,12 @@ fr:
   membership_form:
     modal_title:
       group: Définir un rôle dans ce groupe
-      membership: Modifier l'adhésion
     title_helptext:
       group: Ce rôle apparaîtra après le nom de %{name} dans ce groupe. Utilise-le pour informer les personnes de leur rôle.
     title_label: rôle
     title_placeholder: Par exemple, « Coordinateur » ou « Facilitateur »
     updated: Rôle mis à jour
-    membership_updated: Mise à jour de l'adhésion
     weight_label: Poids du vote
-    weight_helptext: Cette valeur est automatiquement ajoutée au vote du membre lors de son ajout à un nouveau sondage. La modifier n'affecte pas les sondages en cours. Définis-la sur 0 pour permettre au membre de voter sans incidence sur le résultat pondéré.
   user_name_modal:
     user_name_updated: Nom d'utilisateur mis à jour
     set_user_name: Définir le nom d'utilisateur

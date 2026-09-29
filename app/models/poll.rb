@@ -110,6 +110,7 @@ class Poll < ApplicationRecord
                        ballot_rule
                        order_results_by
                        prevent_anonymous
+                       prevent_weighted_voting
                        vote_method
                        material_icon
                        require_all_choices
@@ -117,6 +118,13 @@ class Poll < ApplicationRecord
 
   TEMPLATE_VALUES.each do |field|
     define_method field, -> { AppConfig.poll_types.dig(self.poll_type, field) }
+  end
+
+  # Polls and poll templates share this rule. Anonymous ballots do not record
+  # who voted, so they cannot carry weights, and poll_types.yml marks the
+  # voting methods that do not support weighted totals.
+  def self.weighted_voting_available?(poll_type:, anonymous:)
+    !anonymous && !AppConfig.poll_types.dig(poll_type, 'prevent_weighted_voting')
   end
 
   def author
@@ -232,7 +240,7 @@ class Poll < ApplicationRecord
   validate :detached_anonymous_invariants
   validate :voting_system_cannot_change_after_opening
   validate :detached_configuration_cannot_change_after_ballot
-  validate :vote_weights_enabled_is_supported
+  validate :weighted_voting_available
   validate :score_bounds_are_valid, if: :score_bounds_validation_required?
   validate :title_if_not_discarded
 
@@ -253,7 +261,7 @@ class Poll < ApplicationRecord
     :tags,
     :notify_on_closing_soon,
     :notify_on_open,
-    :vote_weights_enabled,
+    :weighted_voting,
     :poll_option_names,
     :hide_results,
     :attachments]
@@ -264,9 +272,9 @@ class Poll < ApplicationRecord
   # Switching vote weights resets issued stances, including cast votes, so
   # stored weights and poll results reflect the current voting mode.
   def synchronize_stance_weights_after_vote_weights_change
-    return unless saved_change_to_vote_weights_enabled?
+    return unless saved_change_to_weighted_voting?
 
-    unless vote_weights_enabled?
+    unless weighted_voting?
       stances.where.not(weight: 1).update_all(weight: 1)
       return
     end
@@ -363,7 +371,7 @@ class Poll < ApplicationRecord
   }.freeze
 
   def result_columns
-    vote_weights_enabled? ? weighted_result_columns : unweighted_result_columns
+    weighted_voting? ? weighted_result_columns : unweighted_result_columns
   end
 
   def unweighted_result_columns
@@ -423,7 +431,7 @@ class Poll < ApplicationRecord
   end
 
   def result_heading_key(column)
-    weighted_keys = if !vote_weights_enabled? then {}
+    weighted_keys = if !weighted_voting? then {}
     elsif one_point_choices? then WEIGHTED_VOTES_HEADING_KEYS
     else WEIGHTED_POINTS_HEADING_KEYS
     end
@@ -742,11 +750,11 @@ class Poll < ApplicationRecord
     end
   end
 
-  def vote_weights_enabled_is_supported
-    return unless vote_weights_enabled?
-    return if !anonymous? && !%w[stv meeting].include?(poll_type) && (vote_weights_enabled_in_database || group.blank? || group.vote_weights_allowed?)
+  def weighted_voting_available
+    return unless weighted_voting?
+    return if Poll.weighted_voting_available?(poll_type: poll_type, anonymous: anonymous?)
 
-    errors.add(:vote_weights_enabled, :invalid)
+    errors.add(:weighted_voting, :invalid)
   end
 
   def closes_in_future

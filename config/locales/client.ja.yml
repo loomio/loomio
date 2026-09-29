@@ -1498,8 +1498,6 @@ ja:
     members_can_create_tags_help: メンバーがスレッドやアンケートにタグを付ける際に、新しいタグを作成できるようにする
     non_members_can_start_discussions: 非会員でも議論を開始できます
     non_members_can_start_discussions_help: 非メンバーがこのグループのテンプレートのいずれかからディスカッションを開始できるようにする
-    allow_weighted_voting: 加重投票を許可する
-    give_members_different_vote_weights: メンバーに異なる投票権の重みを与え、一部の投票が他の投票よりも重要になるようにする
   group_export_modal:
     title: グループデータのエクスポート
     body: <p>グループのデータのコピーはいつでもダウンロードできます。<a href="https://help.loomio.org/en/user_manual/groups/data_export/">もっと詳しく調べてください。</a></p><p>グループの規模に応じて、完了までに数分かかります。準備が完了すると、ファイルをダウンロードするためのリンクが記載された電子メールが届きます。</p>
@@ -1598,15 +1596,12 @@ ja:
   membership_form:
     modal_title:
       group: タイトルを設定する
-      membership: メンバーシップを編集
     title_helptext:
       group: このタイトルは、このグループ内の %{name} の名前の横に表示されます。人々に自分の役割を知らせるために使用します。
     title_label: タイトル
     title_placeholder: '例: 「コーディネーター」または「ファシリテーター」'
     updated: 会員タイトルを更新しました
-    membership_updated: 会員情報が更新されました
     weight_label: 投票権
-    weight_helptext: この値は、メンバーが新しい投票に追加された際に、そのメンバーの投票にコピーされます。この値を変更しても、既存の投票には影響しません。メンバーが加重結果に影響を与えずに投票できるようにするには、この値を0に設定してください。
   user_name_modal:
     user_name_updated: ユーザー名が更新されました
     set_user_name: ユーザー名を設定する

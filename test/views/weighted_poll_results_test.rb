@@ -4,7 +4,6 @@ require 'csv'
 class WeightedPollResultsTest < ActiveSupport::TestCase
   setup do
     @group = groups(:group)
-    @group.update!(vote_weights_allowed: true)
     @admin = users(:admin)
     @voter = users(:user)
   end
@@ -60,7 +59,7 @@ class WeightedPollResultsTest < ActiveSupport::TestCase
   test 'unweighted CSV exports effective weight one with a stable result schema' do
     poll = create_weighted_poll('poll', %w[Alpha Beta], 1)
     poll.update_columns(opened_at: nil)
-    poll.update!(vote_weights_enabled: false)
+    poll.update!(weighted_voting: false)
     poll.update_counts!
 
     csv = CSV.parse(PollExporter.new(poll.reload).to_csv)
@@ -99,7 +98,7 @@ class WeightedPollResultsTest < ActiveSupport::TestCase
   def create_weighted_poll(poll_type, option_names, score)
     poll = PollService.create(params: {
       title: 'Weighted result', poll_type: poll_type, group_id: @group.id,
-      poll_option_names: option_names, vote_weights_enabled: true,
+      poll_option_names: option_names, weighted_voting: true,
       closing_at: 1.day.from_now, notify_on_open: false
     }, actor: @admin)
     option = poll.poll_options.first

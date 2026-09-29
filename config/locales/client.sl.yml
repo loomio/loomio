@@ -1499,8 +1499,6 @@ sl:
     members_can_create_tags_help: Dovoli članom ustvarjanje novih oznak pri označevanju niti in anket
     non_members_can_start_discussions: Nečlani lahko začnejo razprave
     non_members_can_start_discussions_help: Dovoli nečlanom, da začnejo razpravo iz ene od predlog te skupine
-    allow_weighted_voting: Dovoli ponderirano glasovanje
-    give_members_different_vote_weights: Članom dodelite različno težo glasov, tako da nekateri glasovi štejejo več kot drugi
   group_export_modal:
     title: Izvoz podatkov skupine
     body: <p>Kopijo podatkov svoje skupine lahko prenesete kadar koli. <a href="https://help.loomio.org/en/user_manual/groups/data_export/">Izvedi več.</a></p><p> Izpolnitev traja nekaj minut, odvisno od velikosti vaše skupine. Ko bo pripravljena, boste prejeli e-poštno sporočilo s povezavo za prenos datoteke.</p>
@@ -1599,15 +1597,12 @@ sl:
   membership_form:
     modal_title:
       group: Nastavite naslov
-      membership: Uredi članstvo
     title_helptext:
       group: Ta naslov bo prikazan poleg imena %{name} znotraj te skupine. Uporabite ga, da seznanite ljudi s svojo vlogo.
     title_label: naslov
     title_placeholder: Npr. 'Koordinator' ali 'Pospeševalec'
     updated: Naslov članstva posodobljen
-    membership_updated: Članstvo posodobljeno
     weight_label: Teža glasov
-    weight_helptext: Ta vrednost se kopira v glas člana, ko je ta dodan v novo anketo. Sprememba ne vpliva na obstoječe ankete. Nastavite jo na 0, da član lahko glasuje brez vpliva na uteženi rezultat.
   user_name_modal:
     user_name_updated: Uporabniško ime posodobljeno
     set_user_name: Nastavite uporabniško ime

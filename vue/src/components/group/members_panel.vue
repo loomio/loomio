@@ -198,7 +198,7 @@ export default
       return AbilityService.canAddMembersToGroup(this.group);
     },
     canManageWeights() {
-      return this.group.voteWeightsAllowed && AbilityService.canAdminister(this.group);
+      return AbilityService.canAdminister(this.group);
     },
 
     showAdminWarning() {

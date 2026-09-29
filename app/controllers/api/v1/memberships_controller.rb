@@ -106,7 +106,7 @@ class Api::V1::MembershipsController < Api::V1::RestfulController
           weight: VoteWeight.format(membership.weight)
         }
       end
-    render json: {memberships: rows, total:, has_current_polls: group.polls.active.exists?}
+    render json: {memberships: rows, total:}
   end
 
   def reset_weights

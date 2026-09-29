@@ -296,7 +296,7 @@ class PollService
     end
 
     users_new = users.where.not(id: reinvited_user_ids).to_a
-    weights_by_user_id = poll.vote_weights_enabled? ? poll.member_vote_weights_by_user_id(users_new.map(&:id)) : {}
+    weights_by_user_id = poll.weighted_voting? ? poll.member_vote_weights_by_user_id(users_new.map(&:id)) : {}
 
     new_stances = users_new.map do |user|
       Stance.new(
@@ -540,7 +540,7 @@ class PollService
 
     total_score = poll_options.sum(&:total_score)
     maximum_score = poll_options.map(&:total_score).max
-    weighted_results = poll.vote_weights_enabled?
+    weighted_results = poll.weighted_voting?
 
     l = sorted_poll_options.each_with_index.map do |option, index|
       option_name = poll.poll_option_name_format == 'i18n' ? "poll_#{poll.poll_type}_options."+option.name : option.name

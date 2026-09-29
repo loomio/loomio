@@ -1514,8 +1514,6 @@ es:
     members_can_create_tags_help: Permitir a los miembros crear nuevas etiquetas al etiquetar hilos y encuestas.
     non_members_can_start_discussions: Los no miembros pueden iniciar debates
     non_members_can_start_discussions_help: Permite que personas que no son miembros inicien un debate a partir de una de las plantillas de este grupo
-    allow_weighted_voting: Permitir la votación ponderada
-    give_members_different_vote_weights: Asigna diferentes ponderaciones a los votos de los miembros, de modo que algunos votos cuenten más que otros
   group_export_modal:
     title: Exportar la data grupal
     body: |
@@ -1622,15 +1620,12 @@ es:
   membership_form:
     modal_title:
       group: Añadir título del grupo
-      membership: Editar membresía
     title_helptext:
       group: Este título será mostrado junto al nombre de %{name} dentro de este grupo. Úsalo para que otros integrantes conozcan tu cargo.
     title_label: Título
     title_placeholder: ej. ´Coordinadora´o ´Facilitadora´
     updated: Título del integrante actualizado
-    membership_updated: Membresía actualizada
     weight_label: Peso del voto
-    weight_helptext: Este valor se copia al voto del miembro cuando se le agrega a una nueva encuesta. Modificarlo no afecta a las encuestas existentes. Establécelo en 0 para que el miembro vote sin afectar el resultado ponderado.
   user_name_modal:
     user_name_updated: Nombre de usuario actualizado
     set_user_name: Establecer nombre de usuario

@@ -1499,8 +1499,6 @@ sv:
     members_can_create_tags_help: Tillåt medlemmar att skapa nya taggar när de taggar trådar och omröstningar
     non_members_can_start_discussions: Icke-medlemmar kan starta diskussioner
     non_members_can_start_discussions_help: Tillåt icke-medlemmar att starta en diskussion från en av den här gruppens mallar
-    allow_weighted_voting: Tillåt viktad röstning
-    give_members_different_vote_weights: Ge medlemmarna olika röstvikter, så att vissa röster räknas mer än andra
   group_export_modal:
     title: Exportera gruppdata
     body: <p>Du kan ladda ner en kopia av din grupps data när som helst. <a href="https://help.loomio.org/en/user_manual/groups/data_export/">Få reda på mer.</a></p><p> Det tar några minuter att slutföra, beroende på storleken på din grupp. När den är klar får du ett e-postmeddelande med en länk för att ladda ner filen.</p>
@@ -1599,15 +1597,12 @@ sv:
   membership_form:
     modal_title:
       group: Ställ in titel
-      membership: Redigera medlemskap
     title_helptext:
       group: Den här titeln kommer att visas bredvid %{name}s namn inom den här gruppen. Använd den för att låta folk veta sin roll.
     title_label: titel
     title_placeholder: T.ex. "koordinator" eller "förmedlare"
     updated: Medlemstitel uppdaterad
-    membership_updated: Medlemskapet uppdaterades
     weight_label: Röstvikt
-    weight_helptext: Detta värde kopieras till medlemmens röst när de läggs till i en ny omröstning. Att ändra det påverkar inte befintliga omröstningar. Ställ in det på 0 för att låta medlemmen rösta utan att påverka det viktade resultatet.
   user_name_modal:
     user_name_updated: Användarnamnet har uppdaterats
     set_user_name: Ange användarnamn

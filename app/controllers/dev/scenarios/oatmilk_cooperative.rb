@@ -857,7 +857,6 @@ module Dev::Scenarios::OatmilkCooperative
     treasurer = create_manual_oatmilk_member(name: 'Tom Walker', email: 'tom@oatmilk.example')
     operations_coordinator = create_manual_oatmilk_member(name: 'Lena Fischer', email: 'lena@oatmilk.example')
     [board_member, treasurer, operations_coordinator].each { |member| group.add_member!(member) }
-    group.update!(vote_weights_allowed: true)
     {
       coordinator => ['Board chair', 1],
       board_member => ['Board member', 1],
@@ -876,7 +875,7 @@ module Dev::Scenarios::OatmilkCooperative
       poll: poll, actor: coordinator,
       params: {recipient_user_ids: [board_member.id, treasurer.id, operations_coordinator.id], notify_recipients: false}
     )
-    poll.update!(vote_weights_enabled: true)
+    poll.update!(weighted_voting: true)
     if params[:votes] == '1'
       [
         [coordinator, 'agree'], [treasurer, 'agree'], [board_member, 'disagree'],

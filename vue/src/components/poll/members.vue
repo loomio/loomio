@@ -47,7 +47,7 @@ const someRecipients = computed(() => poll.recipientAudience ||
   poll.recipientUserIds.length ||
   poll.recipientEmails.length ||
   poll.recipientChatbotIds.length);
-const canManageWeights = computed(() => poll.voteWeightsEnabled && !poll.closedAt && poll.adminsInclude(Session.user()));
+const canManageWeights = computed(() => poll.weightedVoting && !poll.closedAt && poll.adminsInclude(Session.user()));
 const canRemoveVoters = computed(() => !poll.detachedAnonymousVoting() && poll.adminsInclude(Session.user()));
 const canUseMemberWeights = computed(() => Boolean(poll.groupId));
 const totalPages = computed(() => Math.max(1, Math.ceil(voterTotal.value / limit)));

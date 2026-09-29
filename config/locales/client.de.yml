@@ -1513,8 +1513,6 @@ de:
     members_can_create_tags_help: Erlauben Sie Mitgliedern, beim Taggen von Threads und Umfragen neue Tags zu erstellen.
     non_members_can_start_discussions: Nichtmitglieder können Diskussionen starten
     non_members_can_start_discussions_help: Erlaube Nichtmitgliedern, eine Diskussion anhand einer Vorlage dieser Gruppe zu starten
-    allow_weighted_voting: Gewichtete Abstimmung zulassen
-    give_members_different_vote_weights: Gib Mitgliedern unterschiedliche Stimmgewichte, sodass manche Stimmen mehr zählen als andere
   group_export_modal:
     title: Gruppendaten exportieren
     body: |
@@ -1621,15 +1619,12 @@ de:
   membership_form:
     modal_title:
       group: Titel innerhalb der Gruppe festlegen
-      membership: Mitgliedschaft bearbeiten
     title_helptext:
       group: Dieser Titel wird neben dem Namen von %{name} angezeigt, um die offizielle Funktion innerhalb der Gruppe näher zu beschreiben.
     title_label: Titel
     title_placeholder: z. B. "Projektkoordinator" oder "Moderator"
     updated: Mitgliedstchaftstitel überarbeitet
-    membership_updated: Mitgliedschaft aktualisiert
     weight_label: Stimmgewicht
-    weight_helptext: Dieser Wert wird in die Stimme des Mitglieds übernommen, sobald es zu einer neuen Umfrage hinzugefügt wird. Eine Änderung hat keine Auswirkungen auf bestehende Umfragen. Setze den Wert auf 0, damit das Mitglied abstimmen kann, ohne das gewichtete Ergebnis zu beeinflussen.
   user_name_modal:
     user_name_updated: Benutzername aktualisiert
     set_user_name: Benutzernamen festlegen

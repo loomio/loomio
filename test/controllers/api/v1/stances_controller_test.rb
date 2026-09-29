@@ -5,7 +5,6 @@ class Api::V1::StancesControllerTest < ActionController::TestCase
     @admin = users(:admin)
     @user = users(:user)
     @group = groups(:group)
-    @group.update!(vote_weights_allowed: true)
 
     @discussion = discussions(:discussion)
     @poll = PollService.create(params: {
@@ -55,7 +54,7 @@ class Api::V1::StancesControllerTest < ActionController::TestCase
   end
 
   test "voter management pages users and only includes weights for that page" do
-    @poll.update_column(:vote_weights_enabled, true)
+    @poll.update_column(:weighted_voting, true)
     sign_in @admin
 
     get :users, params: {poll_id: @poll.id, per: 1, from: 0}
@@ -124,7 +123,7 @@ class Api::V1::StancesControllerTest < ActionController::TestCase
   end
 
   test "invalid stance weights are rejected" do
-    @poll.update_columns(vote_weights_enabled: true)
+    @poll.update_columns(weighted_voting: true)
     stance = @poll.stances.latest.find_by!(participant: @user)
     sign_in @admin
 
@@ -138,7 +137,7 @@ class Api::V1::StancesControllerTest < ActionController::TestCase
   end
 
   test "poll admin updates stance weight before voting opens" do
-    @poll.update_columns(opened_at: nil, closing_at: nil, vote_weights_enabled: true)
+    @poll.update_columns(opened_at: nil, closing_at: nil, weighted_voting: true)
     stance = @poll.stances.latest.find_by!(participant: @user)
     sign_in @admin
 
@@ -149,7 +148,7 @@ class Api::V1::StancesControllerTest < ActionController::TestCase
   end
 
   test "poll admin sets a fractional stance weight" do
-    @poll.update_columns(opened_at: nil, closing_at: nil, vote_weights_enabled: true)
+    @poll.update_columns(opened_at: nil, closing_at: nil, weighted_voting: true)
     stance = @poll.stances.latest.find_by!(participant: @user)
     sign_in @admin
 
@@ -170,7 +169,7 @@ class Api::V1::StancesControllerTest < ActionController::TestCase
   end
 
   test "poll admin updates stance weight after voting opens" do
-    @poll.update_column(:vote_weights_enabled, true)
+    @poll.update_column(:weighted_voting, true)
     stance = @poll.stances.latest.find_by!(participant: @user)
     sign_in @admin
 
@@ -182,7 +181,7 @@ class Api::V1::StancesControllerTest < ActionController::TestCase
 
   test "poll admin cannot update stance weight after voting closes" do
     stance = @poll.stances.latest.find_by!(participant: @user)
-    @poll.update_columns(vote_weights_enabled: true, closed_at: Time.current)
+    @poll.update_columns(weighted_voting: true, closed_at: Time.current)
     sign_in @admin
 
     patch :set_weight, params: {id: stance.id, weight: 0}
@@ -192,7 +191,7 @@ class Api::V1::StancesControllerTest < ActionController::TestCase
   end
 
   test "poll admin resets every voter weight" do
-    @poll.update_column(:vote_weights_enabled, true)
+    @poll.update_column(:weighted_voting, true)
     sign_in @admin
 
     patch :reset_weights, params: {poll_id: @poll.id, weight: '2.33'}
@@ -202,7 +201,7 @@ class Api::V1::StancesControllerTest < ActionController::TestCase
   end
 
   test "poll admin restores current member weights and defaults other voters to one" do
-    @poll.update_column(:vote_weights_enabled, true)
+    @poll.update_column(:weighted_voting, true)
     @group.membership_for(@user).update!(weight: '2.33')
     option = @poll.poll_options.first
     member_stance = @poll.stances.latest.find_by!(participant: @user)
@@ -221,7 +220,7 @@ class Api::V1::StancesControllerTest < ActionController::TestCase
   end
 
   test "voter cannot reset poll weights" do
-    @poll.update_column(:vote_weights_enabled, true)
+    @poll.update_column(:weighted_voting, true)
 
     patch :reset_weights, params: {poll_id: @poll.id, weight: '0.5'}
 
@@ -230,7 +229,7 @@ class Api::V1::StancesControllerTest < ActionController::TestCase
   end
 
   test "poll admin cannot reset weights after closing" do
-    @poll.update_columns(vote_weights_enabled: true, closed_at: Time.current)
+    @poll.update_columns(weighted_voting: true, closed_at: Time.current)
     sign_in @admin
 
     patch :reset_weights, params: {poll_id: @poll.id, weight: '0.5'}
@@ -280,7 +279,7 @@ class Api::V1::StancesControllerTest < ActionController::TestCase
   end
 
   test "stance weight is visible to viewers of identified polls" do
-    @poll.update_column(:vote_weights_enabled, true)
+    @poll.update_column(:weighted_voting, true)
     weighted_stance = @poll.stances.latest.find_by!(participant: @user)
     weighted_stance.update!(weight: 2)
 
@@ -290,13 +289,12 @@ class Api::V1::StancesControllerTest < ActionController::TestCase
     assert_equal '2', admin_stance.fetch('weight')
 
     sign_in users(:alien)
-    discussions(:public_discussion).topic.group.update!(vote_weights_allowed: true)
     public_poll = Poll.create!(
       title: 'Public weighted poll',
       poll_type: 'proposal',
       topic: discussions(:public_discussion).topic,
       author: @admin,
-      vote_weights_enabled: true,
+      weighted_voting: true,
       poll_option_names: ['Agree', 'Disagree'],
       closing_at: 1.day.from_now
     )

@@ -1503,8 +1503,6 @@ hu:
     members_can_create_tags_help: A tagok új címkéket hozhatnak létre a témák és szavazások címkézésekor
     non_members_can_start_discussions: Nem tagok is indíthatnak beszélgetéseket
     non_members_can_start_discussions_help: Engedélyezze a nem tagok számára, hogy beszélgetést indítsanak a csoport egyik sablonjából
-    allow_weighted_voting: Súlyozott szavazás engedélyezése
-    give_members_different_vote_weights: Adj a tagoknak különböző szavazati súlyokat, hogy egyes szavazatok jobban számítsanak, mint mások
   group_export_modal:
     title: Csoport adatok letöltése
     body: <p>A csoport adatainak másolatát bármikor letöltheti. <a href="https://help.loomio.org/en/user_manual/groups/data_export/">Tudj meg többet.</a></p><p> A kitöltése a csoport méretétől függően néhány percet vesz igénybe. Ha készen áll, e-mailben kap egy linket a fájl letöltéséhez.</p>
@@ -1603,15 +1601,12 @@ hu:
   membership_form:
     modal_title:
       group: Állítsa be a csoport címét
-      membership: Tagság szerkesztése
     title_helptext:
       group: Ez a cím a csoporton belül a %{name} neve mellett jelenik meg. Használja azt, hogy megtudja az emberek szerepét.
     title_label: cím
     title_placeholder: Például. „Koordinátor” vagy „Levezető”
     updated: A tagság címe frissítve
-    membership_updated: Tagság frissítve
     weight_label: Szavazati súly
-    weight_helptext: Ez az érték átmásolódik a tag szavazatába, amikor új szavazásba adják őket. A módosítása nem befolyásolja a meglévő szavazásokat. Állítsa 0-ra, ha azt szeretné, hogy a tag a súlyozott eredmény befolyásolása nélkül szavazzon.
   user_name_modal:
     user_name_updated: Felhasználónév frissítve
     set_user_name: Felhasználónév beállítása

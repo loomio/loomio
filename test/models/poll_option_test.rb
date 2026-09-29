@@ -38,7 +38,6 @@ class PollOptionTest < ActiveSupport::TestCase
   end
 
   test "weights scores without weighting voter count or average" do
-    groups(:group).update!(vote_weights_allowed: true)
     poll = PollService.create(params: {
       poll_type: 'score',
       title: 'Weighted score',
@@ -47,7 +46,7 @@ class PollOptionTest < ActiveSupport::TestCase
       max_score: 5,
       closing_at: 1.day.from_now,
       group_id: groups(:group).id,
-      vote_weights_enabled: true,
+      weighted_voting: true,
       specified_voters_only: true,
       notify_on_open: false
     }, actor: users(:admin))
@@ -79,7 +78,6 @@ class PollOptionTest < ActiveSupport::TestCase
   end
 
   test "weighted scores can exceed the integer column range" do
-    groups(:group).update!(vote_weights_allowed: true)
     poll = PollService.create(params: {
       poll_type: 'score',
       title: 'Large weighted score',
@@ -88,7 +86,7 @@ class PollOptionTest < ActiveSupport::TestCase
       max_score: 3_000,
       closing_at: 1.day.from_now,
       group_id: groups(:group).id,
-      vote_weights_enabled: true,
+      weighted_voting: true,
       specified_voters_only: true,
       notify_on_open: false
     }, actor: users(:admin))
@@ -107,10 +105,9 @@ class PollOptionTest < ActiveSupport::TestCase
   end
 
   test "fractional weights produce an exact decimal score" do
-    groups(:group).update!(vote_weights_allowed: true)
     poll = PollService.create(params: {
       poll_type: 'poll', title: 'Ownership shares', poll_option_names: %w[Yes No],
-      group_id: groups(:group).id, vote_weights_enabled: true, notify_on_open: false
+      group_id: groups(:group).id, weighted_voting: true, notify_on_open: false
     }, actor: users(:admin))
     option = poll.poll_options.find_by!(name: 'Yes')
     [ ['0.5', users(:admin)], ['2.33', users(:user)] ].each do |weight, user|
@@ -144,26 +141,24 @@ class PollOptionTest < ActiveSupport::TestCase
   end
 
   test "weighted one point polls show weighted votes without separate points" do
-    groups(:group).update!(vote_weights_allowed: true)
     poll = PollService.create(params: {
       poll_type: 'poll',
       title: 'Weighted poll',
       poll_option_names: %w[Alpha Beta],
       group_id: groups(:group).id,
-      vote_weights_enabled: true,
+      weighted_voting: true,
       notify_on_open: false
     }, actor: users(:admin))
-    assert poll.vote_weights_enabled?
+    assert poll.weighted_voting?
     assert_includes poll.result_columns, 'voter_count'
     assert_not_includes poll.result_columns, 'unweighted_score'
     assert_includes poll.result_columns, 'score'
   end
 
   test "weighted score polls show points beside weighted points" do
-    groups(:group).update!(vote_weights_allowed: true)
     poll = PollService.create(params: {
       poll_type: 'score', title: 'Weighted score', poll_option_names: %w[Alpha Beta],
-      group_id: groups(:group).id, vote_weights_enabled: true, notify_on_open: false
+      group_id: groups(:group).id, weighted_voting: true, notify_on_open: false
     }, actor: users(:admin))
 
     assert_includes poll.result_columns, 'unweighted_score'

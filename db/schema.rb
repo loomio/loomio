@@ -302,7 +302,6 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_27_000000) do
     t.integer "theme_id"
     t.string "token"
     t.datetime "updated_at", precision: nil
-    t.boolean "vote_weights_allowed", default: false, null: false
     t.index ["created_at"], name: "index_groups_on_created_at"
     t.index ["creator_id"], name: "index_groups_on_creator_id"
     t.index ["discarded_at"], name: "index_groups_on_discarded_at", where: "(discarded_at IS NULL)"
@@ -699,6 +698,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_27_000000) do
     t.string "title"
     t.string "title_placeholder"
     t.datetime "updated_at", null: false
+    t.boolean "weighted_voting", default: false, null: false
     t.index ["discarded_at"], name: "index_poll_templates_on_discarded_at"
     t.index ["discarded_by"], name: "index_poll_templates_on_discarded_by"
     t.index ["hidden_at"], name: "index_poll_templates_on_hidden_at"
@@ -759,7 +759,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_27_000000) do
     t.integer "undecided_voters_count", default: 0, null: false
     t.datetime "updated_at", precision: nil
     t.integer "versions_count", default: 0
-    t.boolean "vote_weights_enabled", default: false, null: false
+    t.boolean "weighted_voting", default: false, null: false
     t.integer "voters_count", default: 0, null: false
     t.integer "voting_system", default: 0, null: false
     t.index ["author_id"], name: "index_polls_on_author_id"

@@ -40,7 +40,6 @@ class Api::V1::PollResultsQueryCountTest < ActionController::TestCase
   end
 
   test "weighted poll results cost a bounded constant more than unweighted results" do
-    @group.update!(vote_weights_allowed: true)
     unweighted_small = build_voted_poll(**SMALL)
     unweighted_large = build_voted_poll(**LARGE)
     weighted_small = build_voted_poll(**SMALL, weighted: true)
@@ -58,7 +57,6 @@ class Api::V1::PollResultsQueryCountTest < ActionController::TestCase
   end
 
   test "weighted poll index cost does not grow with the number of polls" do
-    @group.update!(vote_weights_allowed: true)
     unweighted = [index_queries(polls_count: 1), index_queries(polls_count: 4)]
     weighted = [index_queries(polls_count: 1, weighted: true), index_queries(polls_count: 4, weighted: true)]
 
@@ -91,7 +89,7 @@ class Api::V1::PollResultsQueryCountTest < ActionController::TestCase
       poll_option_names: Array.new(options_count) { |i| "Option #{i}" },
       closing_at: 3.days.from_now
     }
-    params[:vote_weights_enabled] = true if weighted
+    params[:weighted_voting] = true if weighted
     poll = PollService.create(params:, actor: @admin)
     assert poll.persisted?, poll.errors.full_messages.to_sentence
 

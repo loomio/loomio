@@ -4,25 +4,6 @@ const manualScreenshot = require('../helpers/manualScreenshot');
 module.exports = {
   '@tags': ['manual-screenshot'],
 
-  'group_permission': (test) => {
-    const page = pageHelper(test);
-    const screenshot = manualScreenshot(test);
-
-    page.loadPath('setup_manual_oatmilk_vote_weights?view=group');
-    page.expectText('.group-page__name', 'Oatmilk Cooperative');
-    page.click('.group-page .action-menu--btn');
-    page.waitFor('.v-overlay .action-dock__button--edit_group');
-    page.click('.v-overlay .action-dock__button--edit_group');
-    page.waitFor('.group-form');
-    page.click('.group-form__permissions-tab');
-    page.expectText('.group-form__vote-weights-allowed', 'Allow weighted voting');
-    screenshot.captureElement('polls/weighted_voting/group-permission', '.group-form', {
-      width: 1200,
-      height: 1400,
-      spotlight: {selector: '.group-form__vote-weights-allowed', padding: 14, radius: 14, opacity: 0.4, outlineWidth: 0}
-    });
-  },
-
   'member_weights': (test) => {
     const page = pageHelper(test);
     const screenshot = manualScreenshot(test);

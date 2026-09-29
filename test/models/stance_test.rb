@@ -35,7 +35,7 @@ class StanceTest < ActiveSupport::TestCase
   end
 
   test "vote weight is nonnegative and rounds to the column precision" do
-    poll = PollService.create(params: poll_params(vote_weights_enabled: true), actor: @admin)
+    poll = PollService.create(params: poll_params(weighted_voting: true), actor: @admin)
     stance = Stance.new(poll: poll, participant: @admin, weight: 0)
 
     assert stance.valid?

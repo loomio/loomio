@@ -86,10 +86,9 @@ class PollExporterTest < ActiveSupport::TestCase
   end
 
   test "to_csv includes member title, delegate status, and vote weight for vote rows" do
-    @group.update!(vote_weights_allowed: true)
     poll = PollService.create(params: {
       title: 'Weighted proposal', poll_type: 'proposal', group_id: @group.id,
-      poll_option_names: %w[agree disagree], closing_at: 1.day.from_now, vote_weights_enabled: true
+      poll_option_names: %w[agree disagree], closing_at: 1.day.from_now, weighted_voting: true
     }, actor: @admin)
     stance = poll.stances.latest.first
     membership = @group.membership_for(stance.participant)

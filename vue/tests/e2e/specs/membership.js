@@ -137,28 +137,6 @@ module.exports = {
     page.expectText('.member-weights-page__page-count', '1–1 of 1')
   },
 
-  'can_edit_member_title_and_weight_together': (test) => {
-    page = pageHelper(test)
-
-    page.loadPath('setup_group_with_vote_weights')
-    page.click('.group-page-members-tab')
-    page.click('.members-panel .v-card .v-list .v-list-item:first-child .membership-dropdown')
-    page.waitFor('.membership-dropdown__set-title')
-    page.pause(300)
-    page.click('.membership-dropdown__set-title')
-    page.fillIn('.membership-form__title-input input', 'Chair')
-    page.clearField('.membership-form__weight-input input')
-    page.fillIn('.membership-form__weight-input input', '2.25')
-    page.click('.membership-form__submit')
-    page.expectNoElement('.membership-form__submit')
-
-    page.refreshAndWait()
-    page.click('.group-page-members-tab')
-    page.click('.members-panel__edit-weights')
-    page.expectText('.member-weights-page .v-table tbody tr:first-child', 'Chair')
-    test.expect.element('.member-weights-page .v-table tbody tr:first-child .member-weights-page__weight-input input').value.to.equal('2.25')
-  },
-
   // 'can_change_volume': (test) => {
   //   page = pageHelper(test)
   //

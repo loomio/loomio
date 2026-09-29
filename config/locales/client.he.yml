@@ -1503,8 +1503,6 @@ he:
     members_can_create_tags_help: אפשר לחברים ליצור תגיות חדשות בעת תיוג שרשורים וסקרים
     non_members_can_start_discussions: מי שאינם חברים יכולים לפתוח דיונים
     non_members_can_start_discussions_help: אפשר לאנשים שאינם חברים להתחיל דיון מאחת התבניות של קבוצה זו
-    allow_weighted_voting: אפשר הצבעה משוקללת
-    give_members_different_vote_weights: תנו לחברים משקלי קולות שונים, כך שחלק מהקולות נחשבים יותר מאחרים
   group_export_modal:
     title: יצוא נתונים מהקבוצה
     body: |
@@ -1611,15 +1609,12 @@ he:
   membership_form:
     modal_title:
       group: תן שם לקבוצה
-      membership: עריכת חברות
     title_helptext:
       group: שם זה יופיע לצד השם של %{name} בתוך קבוצה זו. השתמש בזה כדי ליידע את האנשים על תפקידם.
     title_label: כותרת
     title_placeholder: 'לדוגמא: מתאם או מאפשר'
     updated: כותרת החברות עודכנה
-    membership_updated: החברות עודכנה
     weight_label: משקל הצבעה
-    weight_helptext: ערך זה מועתק להצבעת החבר כאשר הוא נוסף לסקר חדש. שינויו אינו משפיע על סקרים קיימים. הגדר אותו ל-0 כדי לאפשר לחבר להצביע מבלי להשפיע על התוצאה המשוקללת.
   user_name_modal:
     user_name_updated: שם המשתמש עודכן
     set_user_name: הגדר שם משתמש

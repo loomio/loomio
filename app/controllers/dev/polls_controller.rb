@@ -125,7 +125,6 @@ class Dev::PollsController < Dev::NightwatchController
 
   def start_poll
     group = create_group_with_members
-    group.update!(vote_weights_allowed: true) if params[:weighted].present?
     admin = group.admins.first
     saved(fake_group(name: 'Unweighted group')).add_admin!(admin) if params[:unweighted_group].present?
     sign_in admin
@@ -134,12 +133,11 @@ class Dev::PollsController < Dev::NightwatchController
 
   def edit_open_poll_vote_weights
     group = create_group_with_members
-    group.update!(vote_weights_allowed: true)
     admin = group.admins.first
     poll = PollService.create(params: {
       title: 'Open weighted vote settings', poll_type: 'proposal', group_id: group.id,
       poll_option_names: %w[Agree Disagree], closing_at: 1.day.from_now,
-      vote_weights_enabled: params[:weighted].present?
+      weighted_voting: params[:weighted].present?
     }, actor: admin)
     sign_in admin
     redirect_to "/p/#{poll.key}/edit"
@@ -223,7 +221,7 @@ class Dev::PollsController < Dev::NightwatchController
 
   def build_vote_table_matrix
     group = Group.find_by(name: 'Fifty-member voting group') || create_group_with_members.tap do |created|
-      created.update!(name: 'Fifty-member voting group', vote_weights_allowed: true)
+      created.update!(name: 'Fifty-member voting group')
     end
     actor = group.admins.first
     voters = group.members.order(:id).limit(50).to_a
@@ -232,7 +230,6 @@ class Dev::PollsController < Dev::NightwatchController
       group.add_member!(voter)
       voters << voter
     end
-    group.update!(vote_weights_allowed: true) unless group.vote_weights_allowed?
     templates = PollTemplateService.default_templates.index_by(&:key)
     specs = [
       {template: 'check', label: 'sense check proposal', anonymous: false, votes: 20},

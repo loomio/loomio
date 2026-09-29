@@ -6,7 +6,6 @@ class Api::V1::MembershipsControllerTest < ActionController::TestCase
     @admin = users(:admin)
     @alien = users(:alien)
     @test_group = groups(:group)
-    @test_group.update!(vote_weights_allowed: true)
     @subgroup = groups(:subgroup)
     sign_in @user
   end
@@ -61,16 +60,6 @@ class Api::V1::MembershipsControllerTest < ActionController::TestCase
     assert_equal 'dr', m.reload.title
   end
 
-  test 'ordinary membership update cannot change vote weight' do
-    membership = @test_group.membership_for(@user)
-
-    patch :update, params: {id: membership.id, membership: {title: 'Member', weight: 0}}
-
-    assert_response :forbidden
-    assert_nil membership.reload.title
-    assert_equal 1, membership.weight
-  end
-
   test 'member updates their own title without changing vote weight' do
     membership = @test_group.membership_for(@user)
 
@@ -81,25 +70,15 @@ class Api::V1::MembershipsControllerTest < ActionController::TestCase
     assert_equal 1, membership.weight
   end
 
-  test 'group admin updates membership title and weight together' do
+  # Vote weights are only edited together on the weights page, so the
+  # per-member update rejects a weight even from a group admin.
+  test 'membership update rejects a vote weight' do
     sign_in @admin
     membership = @test_group.membership_for(@user)
 
     patch :update, params: {id: membership.id, membership: {title: 'Chair', weight: '0.5'}}
 
-    assert_response :success
-    assert_equal 'Chair', membership.reload.title
-    assert_equal BigDecimal('0.5'), membership.weight
-  end
-
-  test 'invalid weight is rejected without saving the membership title' do
-    sign_in @admin
-    membership = @test_group.membership_for(@user)
-
-    patch :update, params: {id: membership.id, membership: {title: 'Chair', weight: '-1'}}
-
-    assert_response :unprocessable_entity
-    assert JSON.parse(response.body).dig('errors', 'weight').present?
+    assert_response :bad_request
     assert_nil membership.reload.title
     assert_equal 1, membership.weight
   end
@@ -115,18 +94,6 @@ class Api::V1::MembershipsControllerTest < ActionController::TestCase
     assert_response :unprocessable_entity
 
     assert_equal 1, membership.reload.weight
-  end
-
-  test 'group admin cannot update weight when vote weights are disabled' do
-    sign_in @admin
-    @test_group.update!(vote_weights_allowed: false)
-    membership = @test_group.membership_for(@user)
-
-    patch :update, params: {id: membership.id, membership: {title: 'Chair', weight: 2}}
-
-    assert_response :forbidden
-    assert_nil membership.reload.title
-    assert_equal 1, membership.weight
   end
 
   test 'user_name updates name but not username' do
@@ -187,34 +154,7 @@ class Api::V1::MembershipsControllerTest < ActionController::TestCase
     assert_equal 4, revoked.reload.weight
   end
 
-  test 'weight editor reports whether the group has a current poll' do
-    sign_in @admin
-    get :weights, params: {group_id: @test_group.id}
-    assert_equal false, JSON.parse(response.body).fetch('has_current_polls')
-
-    poll = PollService.create(params: {
-      title: 'Current vote', poll_type: 'proposal', group_id: @test_group.id,
-      poll_option_names: %w[Agree Disagree], closing_at: 1.day.from_now
-    }, actor: @admin)
-
-    get :weights, params: {group_id: @test_group.id}
-    assert_equal true, JSON.parse(response.body).fetch('has_current_polls')
-
-    poll.update!(closed_at: Time.current)
-    get :weights, params: {group_id: @test_group.id}
-    assert_equal false, JSON.parse(response.body).fetch('has_current_polls')
-  end
-
   test 'member cannot load the weight editor' do
-    get :weights, params: {group_id: @test_group.id}
-
-    assert_response :forbidden
-  end
-
-  test 'weight editor is unavailable when group vote weights are disabled' do
-    sign_in @admin
-    @test_group.update!(vote_weights_allowed: false)
-
     get :weights, params: {group_id: @test_group.id}
 
     assert_response :forbidden
@@ -280,16 +220,6 @@ class Api::V1::MembershipsControllerTest < ActionController::TestCase
   end
 
   test 'member cannot reset group member weights' do
-    patch :reset_weights, params: {group_id: @test_group.id, weight: '0.5'}
-
-    assert_response :forbidden
-    assert_equal 1, @test_group.membership_for(@user).reload.weight
-  end
-
-  test 'group admin cannot reset weights when the group setting is off' do
-    sign_in @admin
-    @test_group.update!(vote_weights_allowed: false)
-
     patch :reset_weights, params: {group_id: @test_group.id, weight: '0.5'}
 
     assert_response :forbidden

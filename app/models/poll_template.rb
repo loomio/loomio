@@ -30,6 +30,7 @@ class PollTemplate < ApplicationRecord
   validates :default_duration_in_days, presence: true
   normalizes :quorum_pct, with: ->(v) { v.nil? ? nil : [ [ v, 0 ].max, 100 ].min }
   normalizes :comment_length_max, with: ->(v) { v.presence&.to_i }
+  validate :weighted_voting_available
 
   has_paper_trail only: [
     :poll_type,
@@ -42,6 +43,7 @@ class PollTemplate < ApplicationRecord
     :details_format,
     :group_id,
     :anonymous,
+    :weighted_voting,
     :shuffle_options,
     :show_none_of_the_above,
     :chart_type,
@@ -101,5 +103,16 @@ class PollTemplate < ApplicationRecord
     end
 
     {process_name.underscore.gsub(" ", "_") => out}
+  end
+
+  private
+
+  # Use the poll rule, so a template cannot save a combination that polls
+  # started from it would reject.
+  def weighted_voting_available
+    return unless weighted_voting?
+    return if Poll.weighted_voting_available?(poll_type: poll_type, anonymous: anonymous?)
+
+    errors.add(:weighted_voting, :invalid)
   end
 end

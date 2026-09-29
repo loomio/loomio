@@ -6,14 +6,9 @@ import Flash   from '@/shared/services/flash';
 import EventBus   from '@/shared/services/event_bus';
 import { groupPrivacy, groupPrivacyStatement } from '@/shared/helpers/helptext';
 import { isEmpty, debounce } from 'lodash-es';
-import { useI18n } from 'vue-i18n';
 
 export default
 {
-  setup() {
-    const { t } = useI18n();
-    return { t };
-  },
   props: {
     group: Object
   },
@@ -352,12 +347,6 @@ v-form(ref="form" @submit.prevent="submit")
                 span(v-t="'group_form.members_can_announce'")
                 br
                 span.text-body-small(v-t="'group_form.members_can_announce_help'")
-          v-checkbox.group-form__vote-weights-allowed(hide-details v-model='group.voteWeightsAllowed')
-            template(v-slot:label)
-              div
-                span {{ t('group_form.allow_weighted_voting') }}
-                br
-                span.text-body-small {{ t('group_form.give_members_different_vote_weights') }}
           v-checkbox.group-form__members-can-create-subgroups(hide-details v-model='group.membersCanCreateSubgroups' v-if='group.isParent()')
             template(v-slot:label)
               div

@@ -91,7 +91,7 @@ export default class PollModel extends BaseModel {
       legacyAnonymousVoteReasonsCount: 0,
       anonymousVoterEligible: false,
       anonymousBallotSubmitted: false,
-      voteWeightsEnabled: false,
+      weightedVoting: false,
       stanceCounts: [],
       topicId: null,
       allowComments: true,

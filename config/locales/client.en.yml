@@ -1548,8 +1548,6 @@ en:
     question: Are you sure you want to deactivate this group?
     submit: Yes, Deactivate this group
   group_form:
-    allow_weighted_voting: Allow weighted voting
-    give_members_different_vote_weights: Give members different vote weights, so some votes count more than others
     share_this_url_with_people_who_want_to_join: Share this URL with people who want to join
     request_to_join_prompt: Request to join prompt
     default_request_to_join_prompt: 'Thanks for your interest in our group. Please introduce yourself and explain why you are requesting to join.'
@@ -1773,15 +1771,12 @@ en:
   membership_form:
     modal_title:
       group: Set title
-      membership: Edit membership
     title_helptext:
       group: This title will appear beside %{name}'s name within this group. Use it to let people know their role.
     title_label: title
     title_placeholder: E.g. 'Coordinator', or 'Facilitator'
     updated: Membership title updated
-    membership_updated: Membership updated
     weight_label: Vote weight
-    weight_helptext: This value is copied to the member's vote when they are added to a new poll. Changing it does not affect existing polls. Set it to 0 to let the member vote without affecting the weighted result.
   user_name_modal:
     user_name_updated: User name updated
     set_user_name: Set user name

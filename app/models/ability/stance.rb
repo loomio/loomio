@@ -13,7 +13,7 @@ module Ability::Stance
     end
 
     can :set_weight, ::Stance do |stance|
-      stance.poll.vote_weights_enabled? &&
+      stance.poll.weighted_voting? &&
       stance.poll.closed_at.nil? &&
       stance.poll.admins.exists?(user.id)
     end

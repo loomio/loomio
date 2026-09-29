@@ -27,7 +27,6 @@ export default class GroupModel extends BaseModel {
       discussionPrivacyOptions: 'private_only',
       membershipGrantedUpon: 'approval',
       membersCanAnnounce: true,
-      voteWeightsAllowed: false,
       membersCanAddMembers: true,
       membersCanEditDiscussions: true,
       membersCanEditComments: true,
