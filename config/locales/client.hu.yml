@@ -2969,6 +2969,7 @@ hu:
     set_all_vote_weights_the_same: Minden szavazati súlyozásának azonosra állítása
     member_vote_weights_hint: Az aktuális csoporttagsággal nem rendelkező szavazók 1-es szavazati súlyt kapnak
     weighted_voting: Súlyozott szavazás
+    weighted_voting_is_not_available_with_anonymous_voting: "A súlyozott szavazás névtelen szavazásnál nem érhető el"
     use_weighted_voting: Súlyozott szavazás használata
     weighted_voting_off_warning: A súlyozott szavazás kikapcsolása minden szavazat súlyát 1-re állítja. Az ebben a szavazásban módosított szavazati súlyok elvesznek.
     weighted_voting_on_group: A súlyozott szavazás bekapcsolása minden tag alapértelmezett szavazati súlyát lemásolja. A többi szavazó 1-es szavazati súlyt kap.

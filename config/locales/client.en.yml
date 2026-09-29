@@ -2630,6 +2630,7 @@ en:
     remove_voter_and_any_vote_confirmation: Remove %{name} from this poll? This also removes any vote they cast.
     voter_page_count: "%{first}–%{last} of %{total}"
     weighted_voting: Weighted voting
+    weighted_voting_is_not_available_with_anonymous_voting: "Weighted voting is not available with anonymous voting"
     give_voters_different_vote_weights: Give voters different vote weights. Results show both the plain and the weighted totals.
     use_weighted_voting: Use weighted voting
     weighted_voting_off_warning: Turning off weighted voting sets every vote weight to 1. Any vote weights you changed for this poll will be lost.

@@ -2962,6 +2962,7 @@ da:
     set_all_vote_weights_the_same: Sæt alle stemmevægte ens
     member_vote_weights_hint: Vælgere uden nuværende gruppemedlemskab får en stemmevægt på 1
     weighted_voting: Vægtet afstemning
+    weighted_voting_is_not_available_with_anonymous_voting: "Vægtet afstemning er ikke tilgængelig ved anonym afstemning"
     use_weighted_voting: Brug vægtet afstemning
     weighted_voting_off_warning: Hvis du slår vægtet afstemning fra, sættes alle stemmevægte til 1. Alle stemmevægte, du har ændret for denne afstemning, vil gå tabt.
     weighted_voting_on_group: Aktivering af vægtet stemmeafgivning kopierer hvert medlems standardstemmevægt. Andre vælgere får en stemmevægt på 1.

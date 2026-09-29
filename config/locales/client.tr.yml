@@ -2962,6 +2962,7 @@ tr:
     set_all_vote_weights_the_same: Tüm oy ağırlıklarını aynı olarak ayarlayın
     member_vote_weights_hint: Mevcut bir gruba üye olmayan seçmenlerin oy ağırlığı 1'dir
     weighted_voting: Ağırlıklı oylama
+    weighted_voting_is_not_available_with_anonymous_voting: "Ağırlıklı oylama anonim oylamada kullanılamaz"
     use_weighted_voting: Ağırlıklı oylama kullanın
     weighted_voting_off_warning: Ağırlıklı oylamayı kapatmak, her oy ağırlığını 1'e ayarlar. Bu anket için değiştirdiğiniz tüm oy ağırlıkları kaybolacaktır.
     weighted_voting_on_group: Ağırlıklı oylamayı etkinleştirmek, her üyenin varsayılan oy ağırlığını kopyalar. Diğer seçmenler 1 oy ağırlığı alır.

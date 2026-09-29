@@ -742,7 +742,7 @@ module.exports = {
     page.loadPath('polls/start_poll?weighted=1')
     page.clickAndWait('.decision-tools-card__poll-type--proposal', '.poll-common-form__more-settings')
     page.click('.poll-common-form__more-settings')
-    page.expectElement('.poll-settings-vote-weights')
+    page.expectElement('.poll-settings-weighted-voting')
     page.expectElement('a[href="/docs/en/user_manual/polls/quorum"]')
     page.expectText('.poll-common-form', 'Give voters different vote weights. Results show both the plain and the weighted totals.')
     page.expectElement('a[href="/docs/en/user_manual/polls/weighted_voting"]')
@@ -754,8 +754,21 @@ module.exports = {
     page.expectText('a[href="/docs/en/user_manual/polls/weighted_voting"]', 'Read more')
     page.expectElement('a[href="/docs/en/user_manual/polls/weighted_voting"] .v-icon')
     page.expectElement('a[href="/docs/en/user_manual/polls/anonymous_voting"] .v-icon')
-    page.click('.poll-settings-vote-weights input')
-    test.assert.elementPresent('.poll-settings-vote-weights input:checked')
+    page.click('.poll-settings-weighted-voting input')
+    test.assert.elementPresent('.poll-settings-weighted-voting input:checked')
+  },
+
+  'explains_that_anonymous_voting_disables_weighted_voting': (test) => {
+    page = pageHelper(test)
+
+    page.loadPath('polls/start_poll')
+    page.clickAndWait('.decision-tools-card__poll-type--proposal', '.poll-common-form__more-settings')
+    page.click('.poll-common-form__more-settings')
+    page.click('.poll-settings-weighted-voting input')
+    page.click('.poll-settings-anonymous .v-selection-control__wrapper')
+    test.assert.elementPresent('.poll-settings-weighted-voting input:disabled')
+    test.assert.not.elementPresent('.poll-settings-weighted-voting input:checked')
+    page.expectText('.poll-common-form', 'Weighted voting is not available with anonymous voting')
   },
 
   'warns_when_vote_weights_change_on_an_open_poll': (test) => {
@@ -763,8 +776,8 @@ module.exports = {
 
     page.loadPath('polls/edit_open_poll_vote_weights')
     page.click('.poll-common-form__more-settings')
-    page.waitFor('.poll-settings-vote-weights')
-    page.click('.poll-settings-vote-weights input')
+    page.waitFor('.poll-settings-weighted-voting')
+    page.click('.poll-settings-weighted-voting input')
     page.expectText('.poll-common-form', 'Vote weights already issued will change.')
     page.expectText('.poll-common-form', "Turning on weighted voting copies each member's default vote weight.")
   },
@@ -774,8 +787,8 @@ module.exports = {
 
     page.loadPath('polls/edit_open_poll_vote_weights?weighted=1')
     page.click('.poll-common-form__more-settings')
-    page.waitFor('.poll-settings-vote-weights')
-    page.click('.poll-settings-vote-weights input')
+    page.waitFor('.poll-settings-weighted-voting')
+    page.click('.poll-settings-weighted-voting input')
     page.expectText('.poll-common-form', 'Vote weights already issued will change.')
     page.expectText('.poll-common-form', 'Turning off weighted voting sets every vote weight to 1')
   },

@@ -220,9 +220,9 @@ const visiblePollOptions = computed(() => pollOptions.value.filter(o => !o._dest
 const hasOptions = computed(() => props.poll.config().has_options);
 const minOptions = computed(() => props.poll.config().min_options);
 const allowAnonymous = computed(() => !props.poll.config().prevent_anonymous);
-const allowWeightedVoting = computed(() => !props.poll.anonymous && !props.poll.config().prevent_weighted_voting);
-const willDisableVoteWeights = computed(() => !props.poll.isNew() && initialWeightedVoting.value && !props.poll.weightedVoting);
-const willEnableVoteWeights = computed(() => !props.poll.isNew() && !initialWeightedVoting.value && props.poll.weightedVoting);
+const allowWeightedVoting = computed(() => !props.poll.config().prevent_weighted_voting);
+const willTurnOffWeightedVoting = computed(() => !props.poll.isNew() && initialWeightedVoting.value && !props.poll.weightedVoting);
+const willTurnOnWeightedVoting = computed(() => !props.poll.isNew() && !initialWeightedVoting.value && props.poll.weightedVoting);
 
 const stanceReasonRequiredItems = computed(() => [
   {title: I18n.global.t('poll_common_form.stance_reason_required'), value: 'required'},
@@ -592,14 +592,16 @@ v-form.poll-common-form(ref="form" @submit.prevent="submit")
           .text-body-medium.pb-2.text-medium-emphasis
             span {{ t('poll_common_form.give_voters_different_vote_weights') }}
             help-link.ml-1(path="user_manual/polls/weighted_voting")
-          v-checkbox.poll-settings-vote-weights(
+          v-checkbox.poll-settings-weighted-voting(
             hide-details
+            :disabled="poll.anonymous"
             v-model="poll.weightedVoting"
             :label="t('poll_common_form.use_weighted_voting')")
-          v-alert.mt-2(v-if="willDisableVoteWeights" type="warning" variant="tonal" density="compact")
+          p.text-body-small.text-medium-emphasis.mt-1(v-if="poll.anonymous") {{ t('poll_common_form.weighted_voting_is_not_available_with_anonymous_voting') }}
+          v-alert.mt-2(v-if="willTurnOffWeightedVoting" type="warning" variant="tonal" density="compact")
             span.mr-1(v-if="poll.openedAt") {{ t('poll_common_form.issued_vote_weights_will_change') }}
             span {{ t('poll_common_form.weighted_voting_off_warning') }}
-          v-alert.mt-2(v-if="willEnableVoteWeights" :type="poll.openedAt ? 'warning' : 'info'" variant="tonal" density="compact")
+          v-alert.mt-2(v-if="willTurnOnWeightedVoting" :type="poll.openedAt ? 'warning' : 'info'" variant="tonal" density="compact")
             span.mr-1(v-if="poll.openedAt") {{ t('poll_common_form.issued_vote_weights_will_change') }}
             span {{ t(poll.groupId ? 'poll_common_form.weighted_voting_on_group' : 'poll_common_form.weighted_voting_on_direct') }}
 

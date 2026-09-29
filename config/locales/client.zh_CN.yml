@@ -2611,6 +2611,7 @@ zh_CN:
     set_all_vote_weights_the_same: 将所有投票权重设为相同
     member_vote_weights_hint: 没有当前团体成员身份的选民投票权重为1
     weighted_voting: 加权投票
+    weighted_voting_is_not_available_with_anonymous_voting: "匿名投票不支持加权投票"
     use_weighted_voting: 使用加权投票
     weighted_voting_off_warning: 关闭加权投票后，所有投票权重均设为 1。您在此投票中更改的任何投票权重都将丢失。
     weighted_voting_on_group: 启用加权投票后，每个成员的默认投票权重将被复制。其他投票者的投票权重为 1。

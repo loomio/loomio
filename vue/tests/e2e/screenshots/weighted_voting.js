@@ -26,14 +26,14 @@ module.exports = {
     const screenshot = manualScreenshot(test);
 
     page.loadPath('setup_manual_oatmilk_vote_weights?view=edit');
-    page.clickAndWait('.poll-common-form__more-settings', '.poll-settings-vote-weights');
-    page.expectText('.poll-settings-vote-weights', 'Use weighted voting');
+    page.clickAndWait('.poll-common-form__more-settings', '.poll-settings-weighted-voting');
+    page.expectText('.poll-settings-weighted-voting', 'Use weighted voting');
     screenshot.captureRegion('polls/weighted_voting/poll-setting', ['.poll-common-form__more-settings', '.poll-common-form__reminder-title'], {
       padding: 32,
       width: 1200,
       height: 1200,
-      scrollSelector: '.poll-settings-vote-weights',
-      spotlight: {selectors: ['.text-body-large:has(+ .text-body-medium + .poll-settings-vote-weights)', '.poll-settings-vote-weights'], padding: 16, radius: 14, opacity: 0.4, outlineWidth: 0}
+      scrollSelector: '.poll-settings-weighted-voting',
+      spotlight: {selectors: ['.text-body-large:has(+ .text-body-medium + .poll-settings-weighted-voting)', '.poll-settings-weighted-voting'], padding: 16, radius: 14, opacity: 0.4, outlineWidth: 0}
     });
   },
 

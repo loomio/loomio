@@ -2997,6 +2997,7 @@ de:
     set_all_vote_weights_the_same: Alle Stimmengewichte gleich setzen
     member_vote_weights_hint: Wähler ohne aktuelle Gruppenmitgliedschaft erhalten ein Stimmgewicht von 1
     weighted_voting: Gewichtete Abstimmung
+    weighted_voting_is_not_available_with_anonymous_voting: "Gewichtete Abstimmung ist bei anonymer Abstimmung nicht verfügbar"
     use_weighted_voting: Gewichtete Abstimmung verwenden
     weighted_voting_off_warning: Wenn du die gewichtete Abstimmung deaktivierst, wird jedes Stimmgewicht auf 1 gesetzt. Alle Stimmgewichte, die du für diese Umfrage geändert hast, gehen verloren.
     weighted_voting_on_group: Wenn du die gewichtete Abstimmung aktivierst, wird das Standardstimmgewicht jedes Mitglieds übernommen. Andere Wähler erhalten ein Stimmgewicht von 1.

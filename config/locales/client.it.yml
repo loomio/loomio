@@ -2990,6 +2990,7 @@ it:
     set_all_vote_weights_the_same: Stesso peso di voto per tutti
     member_vote_weights_hint: Gli elettori senza un'attuale appartenenza a un gruppo ottengono un peso di voto pari a 1
     weighted_voting: Voto ponderato
+    weighted_voting_is_not_available_with_anonymous_voting: "Il voto ponderato non è disponibile con la votazione anonima"
     use_weighted_voting: Usa il voto ponderato
     weighted_voting_off_warning: Disattivando il voto ponderato, ogni peso di voto viene impostato a 1. Tutti i pesi di voto modificati per questo sondaggio andranno persi.
     weighted_voting_on_group: L'attivazione del voto ponderato copia il peso di voto predefinito di ciascun membro. Gli altri votanti ottengono un peso di voto pari a 1.

@@ -2989,6 +2989,7 @@ ca:
     set_all_vote_weights_the_same: Establir tots els pesos de vot iguals
     member_vote_weights_hint: Els votants que no són membres d'un grup actual reben un pes de vot d'1
     weighted_voting: Vot ponderat
+    weighted_voting_is_not_available_with_anonymous_voting: "El vot ponderat no està disponible amb la votació anònima"
     use_weighted_voting: Utilitza el vot ponderat
     weighted_voting_off_warning: Si desactiveu la votació ponderada, el pes de cada vot serà d'1. Es perdrà qualsevol pes de vot que hàgiu canviat per a aquesta enquesta.
     weighted_voting_on_group: En activar el vot ponderat, es copia el pes de vot predeterminat de cada membre. Els altres votants reben un pes de vot d'1.

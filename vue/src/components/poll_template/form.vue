@@ -175,7 +175,7 @@ export default {
     },
 
     allowAnonymous() { return !this.pollTemplate.config().prevent_anonymous; },
-    allowWeightedVoting() { return !this.pollTemplate.anonymous && !this.pollTemplate.config().prevent_weighted_voting; },
+    allowWeightedVoting() { return !this.pollTemplate.config().prevent_weighted_voting; },
     stanceReasonRequiredItems() {
       return compact([
         {title: this.$t('poll_common_form.stance_reason_required'), value: 'required'},
@@ -451,10 +451,12 @@ export default {
           .text-body-medium.text-medium-emphasis
             span(v-t="'poll_common_form.give_voters_different_vote_weights'")
             help-link.ml-1(path="user_manual/polls/weighted_voting")
-          v-checkbox.poll-settings-vote-weights(
+          v-checkbox.poll-settings-weighted-voting(
             hide-details
+            :disabled="pollTemplate.anonymous"
             v-model="pollTemplate.weightedVoting"
             :label="$t('poll_common_form.use_weighted_voting')")
+          p.text-body-small.text-medium-emphasis.mt-1(v-if="pollTemplate.anonymous") {{ $t('poll_common_form.weighted_voting_is_not_available_with_anonymous_voting') }}
 
         template(v-if="pollTemplate.config().can_shuffle_options")
           v-divider.pb-4
