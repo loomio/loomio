@@ -778,7 +778,6 @@ it:
     revoke_admin: Revoca amministratore
     make_delegate: Rendi delegato
     revoke_delegate: Revoca delegato
-    edit_membership: Modifica l'iscrizione
   notification_models:
     comment: 'commenta in '
     poll: 'sondaggio:'

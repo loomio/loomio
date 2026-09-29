@@ -768,7 +768,6 @@ zh_CN:
       group: 从组中移除
       poll: 从 %{pollType} 中移除
     cancel_invitation: 取消邀请
-    edit_membership: 编辑会员资格
   notification_models:
     discussion: 讨论：
     comment: 评论

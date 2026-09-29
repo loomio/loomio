@@ -770,7 +770,6 @@ pl:
     revoke_admin: Odwołaj uprawnienia administratora
     make_delegate: Utwórz delegata
     revoke_delegate: Odwołaj delegata
-    edit_membership: Edytuj członkostwo
   notification_models:
     comment: skomentuj w
     poll: 'głosowanie:'

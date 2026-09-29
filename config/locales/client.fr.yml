@@ -778,7 +778,6 @@ fr:
     revoke_admin: Révoquer l'administrateur
     make_delegate: Faire déléguer
     revoke_delegate: Révoquer le délégué
-    edit_membership: Modifier l'adhésion
   notification_models:
     comment: commentaire dans
     poll: 'sondage:'

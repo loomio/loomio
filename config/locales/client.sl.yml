@@ -768,7 +768,6 @@ sl:
     revoke_admin: Preklic skrbnika
     make_delegate: Naredi pooblaščenca
     revoke_delegate: Prekliči pooblaščenca
-    edit_membership: Uredi članstvo
   notification_models:
     comment: komentar v
     poll: 'anketa:'

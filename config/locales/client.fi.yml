@@ -768,7 +768,6 @@ fi:
     revoke_admin: Peruuta järjestelmänvalvoja
     make_delegate: Tee valtuutettu
     revoke_delegate: Peruuta edustaja
-    edit_membership: Muokkaa jäsenyyttä
   notification_models:
     comment: kommentoida sisään
     poll: 'kysely:'

@@ -770,7 +770,6 @@ es:
     revoke_admin: Revocar administrador
     make_delegate: Hacer delegado
     revoke_delegate: Revocar delegado
-    edit_membership: Editar membresía
   notification_models:
     comment: comentar en
     poll: 'sondeo:'

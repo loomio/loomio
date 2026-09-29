@@ -768,7 +768,6 @@ sv:
     revoke_admin: Återkalla admin
     make_delegate: Gör ombud
     revoke_delegate: Återkalla delegat
-    edit_membership: Redigera medlemskap
   notification_models:
     comment: kommentera in
     poll: 'opinionsundersökning:'

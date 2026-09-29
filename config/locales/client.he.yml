@@ -768,7 +768,6 @@ he:
     revoke_admin: בטל את הניהול
     make_delegate: לעשות נציג
     revoke_delegate: בטל נציג
-    edit_membership: עריכת חברות
   notification_models:
     comment: הערה ב
     poll: 'מִשׁאָל:'

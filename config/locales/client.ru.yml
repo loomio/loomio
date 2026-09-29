@@ -768,7 +768,6 @@ ru:
     revoke_admin: Отозвать администратора
     make_delegate: Сделать делегатом
     revoke_delegate: Отозвать делегата
-    edit_membership: Редактировать членство
   notification_models:
     comment: прокомментируйте в
     poll: 'голосование:'

@@ -767,7 +767,6 @@ ja:
     revoke_admin: 管理者の取り消し
     make_delegate: 委任する
     revoke_delegate: 委任を取り消す
-    edit_membership: メンバーシップを編集
   notification_models:
     comment: コメントイン
     poll: '投票:'

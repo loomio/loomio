@@ -776,7 +776,6 @@ de:
     revoke_admin: Administrator widerrufen
     make_delegate: Delegieren
     revoke_delegate: Delegierten widerrufen
-    edit_membership: Mitgliedschaft bearbeiten
   notification_models:
     comment: kommentieren in
     poll: Umfrage

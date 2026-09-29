@@ -768,7 +768,6 @@ tr:
     revoke_admin: Yöneticiyi iptal et
     make_delegate: Delege et
     revoke_delegate: Temsilciyi iptal et
-    edit_membership: Üyeliği düzenle
   notification_models:
     comment: yorum yapın
     poll: 'anket:'

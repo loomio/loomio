@@ -771,7 +771,6 @@ zh_TW:
     revoke_admin: 撤銷管理員
     make_delegate: 任命代表
     revoke_delegate: 撤銷委託
-    edit_membership: 編輯會員資格
   notification_models:
     comment: 評論於
     poll: 投票：

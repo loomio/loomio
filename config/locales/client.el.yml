@@ -768,7 +768,6 @@ el:
     revoke_admin: Ανάκληση διαχειριστή
     make_delegate: Κάντε ανάθεση
     revoke_delegate: Ανάκληση εκπροσώπου
-    edit_membership: Επεξεργασία μέλους
   notification_models:
     comment: σχόλιο μέσα
     poll: 'ψηφοφορία:'

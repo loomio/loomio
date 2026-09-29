@@ -770,7 +770,6 @@ hu:
     revoke_admin: Rendszergazda visszavonása
     make_delegate: Legyen küldött
     revoke_delegate: Meghatalmazott visszavonása
-    edit_membership: Tagság szerkesztése
   notification_models:
     comment: hozzászólás itt
     poll: 'közvélemény kutatás:'

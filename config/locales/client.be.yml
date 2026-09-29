@@ -781,7 +781,6 @@ be:
       group: Выдаліць з групы
       poll: Выдаліць з %{pollType}
     cancel_invitation: Адмяніць запрашэнне
-    edit_membership: Рэдагаваць членства
   notification_models:
     discussion: 'абмеркаванне:'
     comment: каментар у

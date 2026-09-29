@@ -770,7 +770,6 @@ nl_NL:
     revoke_admin: Herroep admin
     make_delegate: Maak gedelegeerde
     revoke_delegate: Afgevaardigde intrekken
-    edit_membership: Lidmaatschap bewerken
   notification_models:
     comment: reactie in
     poll: 'peiling:'

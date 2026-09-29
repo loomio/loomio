@@ -770,7 +770,6 @@ ca:
     revoke_admin: Revoca l'administrador
     make_delegate: Fer delegat
     revoke_delegate: Revocar delegat
-    edit_membership: Edita la subscripció
   notification_models:
     comment: Comenta a
     poll: 'enquesta:'

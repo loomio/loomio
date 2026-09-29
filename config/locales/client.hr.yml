@@ -768,7 +768,6 @@ hr:
     revoke_admin: Opozovi administratora
     make_delegate: Napravi delegata
     revoke_delegate: Opozovi delegata
-    edit_membership: Uredi članstvo
   notification_models:
     comment: komentirati
     poll: 'anketa:'

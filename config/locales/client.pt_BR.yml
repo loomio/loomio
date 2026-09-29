@@ -778,7 +778,6 @@ pt_BR:
     revoke_admin: Revogar administrador
     make_delegate: Fazer delegado
     revoke_delegate: Revogar delegado
-    edit_membership: Editar adesão
   notification_models:
     comment: comentar em
     poll: 'enquete:'

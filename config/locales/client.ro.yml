@@ -768,7 +768,6 @@ ro:
     revoke_admin: Revocați admin
     make_delegate: Faceți delegat
     revoke_delegate: Revocați delegatul
-    edit_membership: Editează calitatea de membru
   notification_models:
     comment: comenta in
     poll: 'sondaj:'

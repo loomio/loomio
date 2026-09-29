@@ -768,7 +768,6 @@ da:
     revoke_admin: Tilbagekald admin
     make_delegate: Gør delegeret
     revoke_delegate: Tilbagekald delegeret
-    edit_membership: Rediger medlemskab
   notification_models:
     comment: kommentere ind
     poll: 'afstemning:'
