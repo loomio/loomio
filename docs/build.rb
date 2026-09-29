@@ -61,23 +61,27 @@ module Docs
   Heading = Data.define(:level, :id, :title)
 
   class Page
-    attr_accessor :description, :headings, :html, :title
-    attr_reader :navigation_title, :source_path
+    attr_accessor :description, :heading_ids, :headings, :html, :title
+    attr_reader :english, :locale, :navigation_title, :source_path
 
-    def initialize(navigation_title:, source_path:)
+    # A translated page keeps a reference to its English page, which supplies
+    # the navigation position and heading anchors.
+    def initialize(navigation_title:, source_path:, locale: "en", english: nil)
       @navigation_title = navigation_title
       @source_path = source_path
+      @locale = locale
+      @english = english || self
       @headings = []
     end
 
     def output_path
       published_path = source_path.sub(%r{/index\.md\z}, ".html").sub(/\.md\z/, ".html")
-      Docs::OUTPUT_ROOT.join("en", published_path)
+      Docs::OUTPUT_ROOT.join(locale, published_path)
     end
 
     def url
       path = source_path.sub(%r{/index\.md\z}, "").sub(/\.md\z/, "")
-      "#{Docs::SITE_PREFIX}/#{path}"
+      "#{Docs::BASE_PATH}/#{locale}/#{path}"
     end
 
     def canonical_url
@@ -127,12 +131,28 @@ module Docs
   end
 
   class MarkdownRenderer < Redcarpet::Render::HTML
-    def initialize
+    # Translated pages pass the English heading IDs, so anchors and links to
+    # sections are the same in every language.
+    def initialize(heading_ids: nil)
       super(with_toc_data: false)
       @heading_counts = Hash.new(0)
+      @heading_ids = heading_ids&.dup
+      @produced_ids = []
+    end
+
+    attr_reader :produced_ids
+
+    def unused_heading_ids
+      @heading_ids || []
     end
 
     def header(text, level)
+      if @heading_ids
+        slug = @heading_ids.shift or raise "translation has more headings than the English page"
+        @produced_ids << slug
+        return %(<h#{level} id="#{CGI.escape_html(slug)}"><a class="heading-anchor" href="##{CGI.escape_html(slug)}">#{text}</a></h#{level}>)
+      end
+
       title = Nokogiri::HTML5.fragment(text).text.strip
       slug = title.downcase
         .unicode_normalize(:nfkd)
@@ -145,6 +165,7 @@ module Docs
       count = @heading_counts[slug]
       @heading_counts[slug] += 1
       slug = "#{slug}-#{count}" if count.positive?
+      @produced_ids << slug
 
       %(<h#{level} id="#{CGI.escape_html(slug)}"><a class="heading-anchor" href="##{CGI.escape_html(slug)}">#{text}</a></h#{level}>)
     end
@@ -167,13 +188,24 @@ module Docs
       end
 
       pages.each { |page| render_markdown(page, pages_by_source, pages_by_url) }
-      pages.each_with_index do |page, index|
-        write_page(
-          page,
-          sections,
-          previous_page: index.positive? ? pages[index - 1] : nil,
-          next_page: pages[index + 1]
-        )
+      translations = translate_pages(pages, pages_by_source, pages_by_url)
+      all_pages = pages + translations.values.flat_map(&:values)
+
+      ["en", *translations.keys].each do |locale|
+        localize = ->(page) { locale == "en" ? page : translations.fetch(locale)[page.source_path] || page }
+        pages.each_with_index do |page, index|
+          localized = localize.call(page)
+          next unless localized.locale == locale
+
+          write_page(
+            localized,
+            sections,
+            previous_page: index.positive? ? localize.call(pages[index - 1]) : nil,
+            next_page: pages[index + 1] && localize.call(pages[index + 1]),
+            localize: localize,
+            alternates: alternates_for(page, translations)
+          )
+        end
       end
 
       copy_page_assets(pages)
@@ -184,17 +216,69 @@ module Docs
         write_page_aliases(pages)
       end
       write_landing_redirect
-      write_sitemap(pages)
+      write_sitemap(all_pages)
       build_search_index
-      validate_site(pages)
+      validate_site(all_pages)
 
       puts "built #{pages.length} pages in #{OUTPUT_ROOT.relative_path_from(SOURCE_ROOT.parent)}"
+      translatable = pages.count { |page| Localization.translated?(page.source_path) }
+      translations.each { |locale, localized| puts "  #{locale}: #{localized.length} of #{translatable} translatable pages" }
     end
 
     private
 
     def legacy_redirects?
       BASE_PATH.empty?
+    end
+
+    # DOCS_LOCALES lists the languages to build, for previewing unpublished
+    # translations. Without it, only published languages are built.
+    def build_locale?(locale)
+      requested = ENV["DOCS_LOCALES"].to_s.split(",").map(&:strip)
+      requested.empty? ? locale.published : requested.include?(locale.code)
+    end
+
+    # Builds each selected language's translated pages. A published language
+    # must translate every page in the translated sections, or the build fails.
+    # An unpublished language builds only its complete pages so reviewers can
+    # preview them; navigation links to the English page for the rest.
+    def translate_pages(pages, pages_by_source, pages_by_url)
+      Localization.locales.each_with_object({}) do |locale, result|
+        next unless build_locale?(locale)
+
+        localized = {}
+        markdown_by_source = {}
+        incomplete = []
+
+        pages.select { |page| Localization.translated?(page.source_path) }.each do |page|
+          markdown, missing = Localization.assemble(locale.code, page.source_path, SOURCE_ROOT.join(page.source_path).read)
+          if markdown.nil?
+            incomplete << "#{page.source_path} (#{missing.length} blocks)"
+            next
+          end
+
+          title = Localization.load(locale.code, page.source_path)["navigation_title"]
+          raise "#{locale.code}: #{page.source_path} has no navigation title" if title.to_s.empty?
+
+          localized[page.source_path] = Page.new(navigation_title: title, source_path: page.source_path, locale: locale.code, english: page)
+          markdown_by_source[page.source_path] = markdown
+        end
+
+        if locale.published && incomplete.any?
+          raise "#{locale.code} is published but these pages are not fully translated:\n- #{incomplete.join("\n- ")}"
+        end
+        next if localized.empty?
+
+        localized.each_value do |page|
+          render_markdown(page, pages_by_source, pages_by_url, markdown: markdown_by_source.fetch(page.source_path), localized: localized)
+        end
+        result[locale.code] = localized
+      end
+    end
+
+    def alternates_for(page, translations)
+      alternates = [["en", page]] + translations.filter_map { |code, localized| [code, localized[page.source_path]] if localized[page.source_path] }
+      alternates.length > 1 ? alternates : []
     end
 
     def build_cloudflare_redirects(pages, pages_by_url)
@@ -333,21 +417,26 @@ module Docs
       [sections, pages]
     end
 
-    def render_markdown(page, pages_by_source, pages_by_url)
-      markdown = if page.source_path == CHANGELOG_INDEX
+    def render_markdown(page, pages_by_source, pages_by_url, markdown: nil, localized: nil)
+      markdown ||= if page.source_path == CHANGELOG_INDEX
         changelog_markdown
       else
         SOURCE_ROOT.join(page.source_path).read
       end
 
       description_override = markdown[/<!--\s*seo-description:\s*(.*?)\s*-->/m, 1]
-      renderer = MarkdownRenderer.new
+      translated = !page.english.equal?(page)
+      renderer = MarkdownRenderer.new(heading_ids: translated ? page.english.heading_ids : nil)
       rendered = Redcarpet::Markdown.new(renderer, MARKDOWN_OPTIONS).render(markdown)
+      if renderer.unused_heading_ids.any?
+        raise "#{page.locale}: #{page.source_path} has fewer headings than the English page"
+      end
+      page.heading_ids = renderer.produced_ids
       fragment = Nokogiri::HTML5.fragment(rendered)
 
       fragment.xpath("//comment()").remove
-      render_alerts(fragment)
-      rewrite_links(fragment, page, pages_by_source, pages_by_url)
+      render_alerts(fragment, page.locale)
+      rewrite_links(fragment, page, pages_by_source, pages_by_url, localized)
       mark_high_density_screenshots(fragment)
       wrap_tables(fragment)
 
@@ -359,7 +448,7 @@ module Docs
       page.html = fragment.to_html
     end
 
-    def render_alerts(fragment)
+    def render_alerts(fragment, locale)
       fragment.css("blockquote").each do |blockquote|
         children = blockquote.element_children.to_a
         next if children.empty? || !children.first.inner_html.match?(MARKDOWN_ALERT_PATTERN)
@@ -386,7 +475,7 @@ module Docs
           title = Nokogiri::HTML5.fragment(<<~HTML).children.first
             <p class="markdown-alert-title">
               <svg class="markdown-alert-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="#{config[:icon]}"></path></svg>
-              <span>#{config[:title]}</span>
+              <span>#{CGI.escape_html(site_strings(locale).dig("alerts", alert[:type]) || config[:title])}</span>
             </p>
           HTML
           alert_node.add_child(title)
@@ -418,7 +507,7 @@ module Docs
       "#{index}\n\n#{content.join("\n\n")}\n"
     end
 
-    def rewrite_links(fragment, page, pages_by_source, pages_by_url)
+    def rewrite_links(fragment, page, pages_by_source, pages_by_url, localized)
       fragment.css("a[href], img[src], iframe[src], video[src], source[src]").each do |element|
         attribute = element.name == "a" ? "href" : "src"
         value = element[attribute]
@@ -428,13 +517,15 @@ module Docs
         value = Docs.site_path(value) if value.start_with?("/en/", "/en#") || value == "/en"
 
         if element.name == "a"
-          if (target = page_link(value, page, pages_by_source, pages_by_url))
+          if (target = page_link(value, page, pages_by_source, pages_by_url, localized))
             element[attribute] = target
             next
           end
         end
 
-        value = absolute_source_url(value, page) if page.index? && relative_url?(value)
+        # Translated pages are written to another language's directory, so
+        # their relative asset URLs are resolved against the English source.
+        value = absolute_source_url(value, page) if (page.index? || page.locale != "en") && relative_url?(value)
         value = clean_internal_url(value) if internal_url?(value)
         element[attribute] = value
       end
@@ -466,13 +557,14 @@ module Docs
       end
     end
 
-    def page_link(value, page, pages_by_source, pages_by_url)
+    def page_link(value, page, pages_by_source, pages_by_url, localized)
       path, suffix = split_url(value)
 
       if relative_url?(value) && path.end_with?(".md")
         source_path = Pathname(page.source_path).dirname.join(path).cleanpath.to_s
         target = pages_by_source[source_path]
         raise "#{page.source_path}: link points to unpublished Markdown page #{path}" unless target
+        target = localized&.[](target.source_path) || target
         return "#{target.url}#{suffix}"
       end
 
@@ -484,6 +576,7 @@ module Docs
         path
       end
       target = pages_by_url[site_path]
+      target = localized&.[](target.source_path) || target if target
       "#{target.url}#{suffix}" if target
     end
 
@@ -543,13 +636,16 @@ module Docs
       "#{shortened}…"
     end
 
-    def write_page(page, sections, previous_page:, next_page:)
+    def write_page(page, sections, previous_page:, next_page:, localize:, alternates:)
       FileUtils.mkdir_p(page.output_path.dirname)
       html = DocsTemplate.new(
         page: page,
         sections: sections,
         previous_page: previous_page,
-        next_page: next_page
+        next_page: next_page,
+        localize: localize,
+        alternates: alternates,
+        strings: site_strings(page.locale)
       ).call
       page.output_path.write("#{html}\n")
     end
@@ -713,7 +809,7 @@ module Docs
 
       pages.each do |page|
         document = Nokogiri::HTML5(page.output_path.read)
-        failures << "#{page.source_path}: missing title" unless document.at_css("title")&.text == "#{page.title} - Loomio Help"
+        failures << "#{page.locale}/#{page.source_path}: missing title" unless document.at_css("title")&.text == "#{page.title} - #{site_strings(page.locale).fetch("site_title")}"
         failures << "#{page.source_path}: missing description" if document.at_css('meta[name="description"]')&.[]("content").to_s.empty?
         failures << "#{page.source_path}: incorrect canonical URL" unless document.at_css('link[rel="canonical"]')&.[]("href") == page.canonical_url
       end
@@ -721,6 +817,11 @@ module Docs
       raise "Documentation validation failed:\n- #{failures.join("\n- ")}" if failures.any?
 
       puts "validated #{checked_links} internal links and assets"
+    end
+
+    def site_strings(locale)
+      @site_strings ||= {}
+      @site_strings[locale] ||= locale == "en" ? DocsTemplate::STRINGS : DocsTemplate::STRINGS.merge(Localization.site_strings(locale))
     end
 
     def internal_target(source, value)

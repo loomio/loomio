@@ -1,0 +1,27 @@
+site_title: Loomio Help
+menu: Menu
+open_navigation: Navigatie openen
+close_navigation: Navigatie sluiten
+search: Zoek
+search_label: Zoek in Loomio Help
+help_contents: Inhoud van de help
+on_this_page: Op deze pagina
+page_navigation: Paginanavigatie
+previous: Vorige
+next: Volgende
+image_alt: Hulp en documentatie voor Loomio
+languages: Talen
+copy: Kopiëren
+copy_label: Code naar klembord kopiëren
+copied: Gekopieerd
+copy_failed: Kopiëren mislukt
+alerts:
+  note: Opmerking
+  tip: Tip
+  important: Belangrijk
+  warning: Waarschuwing
+  caution: Let op
+sections:
+  User manual: Gebruikershandleiding
+  Guides: Gidsen
+  Customer information: Informatie voor klanten

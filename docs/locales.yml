@@ -1,0 +1,61 @@
+# Languages the user manual and guides are translated into. English is the
+# source. A published language must have every page translated, or the build
+# fails. Unpublished languages build only their fully translated pages, for
+# review.
+#
+# The key is the URL directory. `hreflang` (default: the key) is the language
+# tag used in HTML and search. `app_locale` (default: the key) names the
+# config/locales files that supply interface labels. `style` is given to the
+# translator with every request and matches how the app addresses users.
+es:
+  name: Español
+  published: false
+  style: Address the reader informally with tú (tu, tus) and informal imperatives (Selecciona, Elige). Never usted or su for the reader.
+fr:
+  name: Français
+  published: false
+  style: Address the reader with neutral formal vous (vous, votre, vos) and vous imperatives (Cliquez, Choisissez).
+de:
+  name: Deutsch
+  published: false
+  style: Address the reader informally with du (dein, deine) and informal imperatives (Wähle, Klicke). Never Sie or Ihr for the reader.
+it:
+  name: Italiano
+  published: false
+  style: Address the reader informally with tu (tuo, tua) and informal imperatives (Seleziona, Scegli). Never Lei for the reader.
+pt-br:
+  name: Português (Brasil)
+  hreflang: pt-BR
+  app_locale: pt_BR
+  published: false
+  style: Write Brazilian Portuguese. Address the reader with você (seu, sua) and imperatives in the você form (Selecione, Escolha). Never tu.
+nl:
+  name: Nederlands
+  app_locale: nl_NL
+  published: false
+  style: Address the reader informally with je and jouw and informal imperatives (Selecteer, Kies). Never u or uw.
+ru:
+  name: Русский
+  published: false
+  style: Address the reader with lowercase вы (ваш, ваша) and вы imperatives (Выберите, Нажмите). Never ты.
+uk:
+  name: Українська
+  published: false
+  style: Address the reader with lowercase ви (ваш, ваша) and ви imperatives (Виберіть, Натисніть). Never ти.
+fi:
+  name: Suomi
+  published: false
+  style: Address the reader informally with sinä forms and informal imperatives (Valitse, Napsauta), as Finnish software does.
+hu:
+  name: Magyar
+  published: false
+  style: Address the reader informally with te forms and informal imperatives (Válaszd ki, Kattints). Never Ön or formal verb forms.
+he:
+  name: עברית
+  dir: rtl
+  published: false
+  style: Write gender-neutral Hebrew. Address the reader with infinitives and impersonal forms (יש לבחור, ניתן לשנות) rather than masculine or feminine singular.
+ja:
+  name: 日本語
+  published: false
+  style: Use polite です/ます style. Avoid addressing the reader with あなた; describe actions directly.
