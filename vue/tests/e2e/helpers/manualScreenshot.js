@@ -7,6 +7,7 @@ const docsDir = path.resolve(__dirname, '../../../../docs');
 const repoDir = path.resolve(__dirname, '../../../..');
 const spotlightScript = path.join(repoDir, 'bin/spotlight-screenshot');
 const cropScript = path.join(repoDir, 'bin/crop-screenshot');
+const compressScript = path.join(repoDir, 'bin/compress-screenshot');
 const namePattern = /^[A-Za-z0-9][A-Za-z0-9/_-]*$/;
 
 module.exports = function(test, {outputDir} = {}) {
@@ -161,6 +162,20 @@ module.exports = function(test, {outputDir} = {}) {
     }
   }
 
+  // Compress last, after cropping and spotlighting have read the full-colour
+  // capture.
+  function applyCompression(outputPath) {
+    const result = spawnSync(
+      'bundle',
+      ['exec', 'ruby', compressScript, outputPath],
+      {cwd: repoDir, encoding: 'utf8'}
+    );
+
+    if (result.status !== 0) {
+      throw new Error(`Could not compress screenshot: ${result.stderr || result.stdout}`);
+    }
+  }
+
   return {
     capture(name, options = {}) {
       const outputPath = imagePath(name);
@@ -168,7 +183,10 @@ module.exports = function(test, {outputDir} = {}) {
       scrollIntoView(options);
       const geometry = spotlightGeometry(options.spotlight, null);
 
-      return test.saveScreenshot(outputPath, () => applySpotlight(outputPath, geometry));
+      return test.saveScreenshot(outputPath, () => {
+        applySpotlight(outputPath, geometry);
+        applyCompression(outputPath);
+      });
     },
 
     captureElement(name, selector, options = {}) {
@@ -181,6 +199,7 @@ module.exports = function(test, {outputDir} = {}) {
       return test.takeElementScreenshot(selector, (result) => {
         fs.writeFileSync(outputPath, Buffer.from(result.value, 'base64'));
         applySpotlight(outputPath, geometry);
+        applyCompression(outputPath);
       });
     },
 
@@ -214,6 +233,7 @@ module.exports = function(test, {outputDir} = {}) {
           };
           applySpotlight(outputPath, spotlight);
         }
+        applyCompression(outputPath);
       });
     }
   };
