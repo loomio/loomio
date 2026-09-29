@@ -84,9 +84,9 @@ module Docs
         text = [*comments, section.text.gsub(Corrections::MARKER, "").strip].join("\n\n")
         stored[section.id] = section.with(text: text)
       end
-      metadata = Marshal.load(Marshal.dump(target.metadata))
-      metadata["sections"] ||= {}
-      metadata["generated"] ||= {}
+      metadata = target.metadata.dup
+      metadata["sections"] = metadata.fetch("sections", {}).dup
+      metadata["generated"] = metadata.fetch("generated", {}).dup
       notes = metadata.fetch("needs_review", {}).dup
       pending = source.sections.select { |section| !stored.key?(section.id) || metadata["sections"][section.id] != section.text_hash }
       removed = original.keys - source.by_id.keys
