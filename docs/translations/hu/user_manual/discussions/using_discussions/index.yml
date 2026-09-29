@@ -1,0 +1,521 @@
+---
+navigation_title: Témák használata
+blocks:
+  d6fe7310d19b1141:
+    english: "# Using threads"
+    translation: "# Témák használata"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  031f9244f107aba8:
+    english: A discussion keeps its context, comments, decisions, and outcomes together in one thread. This page explains how to participate in a thread and use its navigation and actions.
+    translation: Egy beszélgetés egy témában tartja együtt a leírást, a hozzászólásokat, a döntéseket és a döntések összegzését. Ez az oldal bemutatja, hogyan vehetsz részt egy témában, és hogyan használhatod a navigációs és műveleti eszközöket.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  479a1564b496bfed:
+    english: "## Thread anatomy"
+    translation: "## A téma részei"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  fb745de96e6a612d:
+    english: 'A typical thread looks like this:'
+    translation: 'Egy jellemző téma így néz ki:'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  9e69f7f0b13fd9f9:
+    english: 'From the top of the page, a thread contains:'
+    translation: 'Az oldal tetejétől lefelé haladva a téma részei:'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  5b47d6434aa50e94:
+    english: "**Group name** - At the top left of the discussion page is the name of the group or subgroup that the discussion belongs to.  Click on this name to go back to the group page."
+    translation: "**Csoport neve** - A beszélgetés oldalának bal felső sarkában annak a csoportnak vagy alcsoportnak a neve látható, amelyhez a beszélgetés tartozik. Kattints a névre a csoport oldalának megnyitásához."
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  0dab4c46c2bee003:
+    english: "**Discussion access** - The access icon at the top right opens the discussion's access settings. A group discussion is available to group members and anyone specifically invited to it, subject to the group's privacy settings."
+    translation: "**Hozzáférés a beszélgetéshez** - A jobb felső sarokban lévő ikon megnyitja a beszélgetés hozzáférési beállításait. A csoportos beszélgetést a csoport tagjai és a külön meghívott személyek érhetik el, a csoport adatvédelmi beállításaitól függően."
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  e20178954e6d3ce0:
+    english: "**Discussion title** - The name of the discussion."
+    translation: "**Beszélgetés címe** - A beszélgetés neve."
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  47687209ed924849:
+    english: "**Category tags** - The discussion may have one or more category tags. Using simple tags helps people more easily find discussions of a similar type."
+    translation: "**Kategóriacímkék** - Egy beszélgetéshez egy vagy több kategóriacímke tartozhat. Az egyszerű címkék megkönnyítik a hasonló beszélgetések megtalálását."
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  b817649f985f51de:
+    english: "**Discussion author** - The name and avatar of the person who started the discussion, shown beneath the title."
+    translation: "**A beszélgetés indítója** - A címsor alatt a beszélgetést indító személy neve és profilképe látható."
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  c44d5a833b4ec9ff:
+    english: "**Date** - Hover over the date to see the full date and time of discussion start."
+    translation: "**Dátum** - Vidd a mutatót a dátum fölé a beszélgetés kezdésének teljes dátumáért és időpontjáért."
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  b8062113f1078acb:
+    english: "**Seen by** - In the right sidebar, shows who has read the discussion and when."
+    translation: "**Látta** - A jobb oldalsávban láthatod, ki és mikor olvasta el a beszélgetést."
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  133d0c2e469e9683:
+    english: "**Notified** - In the right sidebar, shows who has been notified about the discussion and whether each notification has been read or its email opened."
+    translation: "**Értesített** - A jobb oldalsávban láthatod, ki kapott értesítést a beszélgetésről, valamint hogy elolvasta-e az értesítést vagy megnyitotta-e az e-mailt."
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  9f788adb4eab80cc:
+    english: "**Discussion context** - Content to frame the discussion."
+    translation: "**Beszélgetés leírása** - A beszélgetés kereteit meghatározó tartalom."
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  e8c5ae76dfb5b89b:
+    english: "**Discussion interaction and administration tools** - The discussion context has controls to react to and edit it. The right sidebar contains notification, membership and administration actions."
+    translation: "**Részvételi és kezelési eszközök** - A beszélgetés leírásánál reagálhatsz a tartalomra és szerkesztheted azt. A jobb oldalsávban az értesítésekkel, a résztvevőkkel és a kezelésükkel kapcsolatos műveletek találhatók."
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  8f6eac4359c2b9f6:
+    english: "**Comments** - Comments are displayed under the discussion context. The author's name, avatar and posting time show who wrote each comment and when. Interaction and administration tools are available on each comment."
+    translation: "**Hozzászólások** - A hozzászólások a beszélgetés leírása alatt jelennek meg. A szerző neve, profilképe és a közzététel időpontja mutatja, ki és mikor írta az egyes hozzászólásokat. Minden hozzászólásnál elérhetők részvételi és kezelési eszközök."
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  f978af6c9af4afe5:
+    english: |-
+      **Navigation, notifications and actions** - The right sidebar contains
+      shortcuts to activity and milestones, notification and membership information,
+      and the thread actions available to you.
+    translation: |-
+      **Navigáció, értesítések és műveletek** - A jobb oldalsávban
+      az eseményekhez és a fontos pontokhoz vezető hivatkozások, az értesítésekkel és a résztvevőkkel kapcsolatos adatok,
+      valamint a számodra elérhető témaműveletek találhatók.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  f8c4084e9e8a2b27:
+    english: "## Discussion context"
+    translation: "## A beszélgetés leírása"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  5940bad6cb1cb49f:
+    english: The discussion **context** is always found at the top of the discussion. Use the context to frame the discussion or decision.
+    translation: A beszélgetés **leírása** mindig a beszélgetés tetején található. Ezzel adhatod meg a beszélgetés vagy a döntés kereteit.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  415dd2d0f1eacc9f:
+    english: Think of your group as you write content in the discussion context.  Your aim is to get a discussion going, so consider how you can motivate people to participate.  In general, keep the discussion context simple and clear.
+    translation: A beszélgetés leírását a csoportodnak írd. Gondold át, mi segíti a tagokat a részvételben. Általában érdemes egyszerűen és világosan fogalmazni.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  a1fcece28d8fb61d:
+    english: Write the discussion context when starting or editing a discussion. **Edit** a discussion with the pencil icon.
+    translation: A beszélgetés indításakor vagy szerkesztésekor írd meg a leírást. A ceruza ikonnal **Szerkesztés** műveletet indíthatsz.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  2f47adddef6b31d9:
+    english: As the discussion progresses, update discussion context.  Think of the context like a whiteboard in your meeting room, where you can write the agenda, the outcomes intended and how you plan to get there.
+    translation: 'A beszélgetés előrehaladtával frissítsd a leírást. Használd úgy, mint egy tárgyalótermi táblát: felírhatod rá a napirendet, a kívánt eredményeket és az elérésükhöz tervezett lépéseket.'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  c82ec20629208982:
+    english: At the bottom of the context panel is a formatting bar, where you can format text, attach files, images and embed a video.
+    translation: A leíráspanel alján formázási eszköztár található. Itt formázhatod a szöveget, fájlokat és képeket csatolhatsz, valamint videót ágyazhatsz be.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  e606d83ae0fb2178:
+    english: "### Notify people about context changes"
+    translation: "### Értesítés a leírás változásairól"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  d188326a58b28d96:
+    english: When you edit the discussion context, use **What's changed?** to summarize the update and choose who should be notified.
+    translation: Amikor szerkeszted a beszélgetés leírását, a **Mi változott?** mezőben foglald össze a módosítást, és válaszd ki, kik kapjanak értesítést.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  842091a987742d6d:
+    english: "![Editing a discussion context with a change summary and notification recipients](../notifying_people/thread_editcontext.png)"
+    translation: "![Beszélgetés leírásának szerkesztése a változás összefoglalásával és az értesítendők kiválasztásával](../notifying_people/thread_editcontext.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  b885359dd7e83428:
+    english: The summary appears as an item in the thread so participants can see what changed.
+    translation: Az összefoglaló külön elemként jelenik meg a témában, így a résztvevők láthatják, mi változott.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  c899c47e98f79a23:
+    english: "![A timeline item describing a discussion context change](../notifying_people/thread_edit_comment.png)"
+    translation: "![A beszélgetés leírásának változását ismertető elem az idővonalon](../notifying_people/thread_edit_comment.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  44ffd1d0a732b897:
+    english: "## Navigation"
+    translation: "## Navigáció"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  e96aef7a28a85001:
+    english: 'The **Jump to** section of the right sidebar helps you move through a thread:'
+    translation: 'A jobb oldalsáv **Ugrás ide:** részével navigálhatsz a témában:'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  4790c088af5fc09f:
+    english: |-
+      - **Start** goes to the discussion context
+      - **New to you** appears when the thread contains activity you have not read
+      - **Latest** appears when newer activity is available beyond the items currently loaded
+      - milestone links go directly to important comments, polls, and outcomes
+      - **End** goes to the latest item in the thread
+    translation: |-
+      - Az **Indítás** a beszélgetés leírásához visz
+      - Az **Új számodra** akkor jelenik meg, ha a témában van olyan esemény, amelyet még nem olvastál
+      - A **Legújabb** akkor jelenik meg, ha a betöltött elemek után újabb események is vannak
+      - a fontos pontokra mutató hivatkozások közvetlenül a fontos hozzászólásokhoz, szavazásokhoz és döntések összegzéséhez visznek
+      - A **Vége** a téma legutolsó eleméhez visz
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  941ea9900465724a:
+    english: Comments that include an H2 or H3 heading, polls, and proposals are automatically included as milestone links. Select any milestone to go directly to it.
+    translation: A H2 vagy H3 címsort tartalmazó hozzászólások, a szavazások és a javaslatok automatikusan bekerülnek a fontos pontokra mutató hivatkozások közé. Válassz ki egy fontos pontot, ha közvetlenül oda szeretnél ugrani.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  e94ea6f4b9dae8d4:
+    english: When you add a comment, poll, vote, or outcome, Loomio marks your own new item as read. It will not appear as something new for you to review.
+    translation: Amikor hozzászólást, szavazást, szavazatot vagy döntésösszegzést teszel közzé, a Loomio olvasottnak jelöli a saját új elemedet. Nem jelenik meg számodra átnézendő újdonságként.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  34251ada1ba3e50b:
+    english: "## Notifications and members"
+    translation: "## Értesítések és résztvevők"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  36a20a0e10208c7c:
+    english: The right sidebar controls your email notifications and shows who has been invited, who has seen the thread, and who has been notified.
+    translation: A jobb oldalsávban beállíthatod az e-mail-értesítéseidet, és láthatod, kit hívtak meg, ki látta a témát, valamint ki kapott értesítést.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  f2a437ac1169c882:
+    english: "### Email notifications for this thread"
+    translation: "### E-mail-értesítések erről a témáról"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  9bd7269489ed048e:
+    english: Select the current notification setting to choose whether Loomio emails you about all activity, only activity that specifically notifies you, or no activity. Receiving email for all activity can produce many messages in an active thread.
+    translation: Válaszd ki a jelenlegi értesítési beállítást, majd állítsd be, hogy a Loomio minden eseményről, csak a kifejezetten neked szóló értesítésekről, vagy egyáltalán ne küldjön e-mailt. Egy aktív témában a minden eseményről szóló értesítés sok e-mailt eredményezhet.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  0d64de2345c8eba9:
+    english: "![Email when notified selected in the discussion sidebar](../notifying_people/thread_interact.png)"
+    translation: "![E-mail küldése értesítéskor beállítás kiválasztva a beszélgetés oldalsávjában](../notifying_people/thread_interact.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  7bdbdaa98e89d1c3:
+    english: "### Invite people"
+    translation: "### Emberek meghívása"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  e81f85e723885264:
+    english: Select **Invite people** to add people after the thread has started.
+    translation: A téma elindítása után a **Hívj meg embereket** lehetőséggel adhatsz hozzá résztvevőket.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  e38a572cdffad5cb:
+    english: "![Invite people in the thread sidebar](../notifying_people/thread_invite_icon.png)"
+    translation: "![Hívj meg embereket a szál oldalsávjában](../notifying_people/thread_invite_icon.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  7e4e643fb327aa06:
+    english: Select a group or subgroup, enter the names of individual members, or enter an email address to invite a guest.
+    translation: Válassz egy csoportot vagy alcsoportot, add meg az egyes tagok nevét, vagy írj be egy e-mail-címet egy vendég meghívásához.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  03c1d74b4a8bc31d:
+    english: "![Invite people window with a field for names and email addresses](../notifying_people/thread_invite.png)"
+    translation: "![Meghívási ablak név- és e-mail-címmezővel](../notifying_people/thread_invite.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  85fc948a4e849ba8:
+    english: A guest can see and participate in this thread but cannot see other discussions in the group unless separately invited.
+    translation: A vendég láthatja ezt a szálat és részt vehet benne, de a csoport többi beszélgetését csak akkor láthatja, ha külön meghívják.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  9f1010b58cc5439f:
+    english: "![Inviting a guest by email address](../notifying_people/invite_guest.png)"
+    translation: "![Vendég meghívása e-mail-címmel](../notifying_people/invite_guest.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  e688189fa93b1e49:
+    english: To remove someone, open the three-dot menu (**⋯**) beside their name and select **Remove from discussion**.
+    translation: Ha el szeretnél távolítani valakit, nyisd meg a neve melletti hárompontos menüt (**⋯**), és válaszd az **Eltávolítás a beszélgetésből** lehetőséget.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  5602fbfa565eaf45:
+    english: "### Seen by"
+    translation: "### Látta"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  a929b22d02292573:
+    english: "**Seen by** shows who has opened the thread and when. It can help you identify people who may not have seen important information yet."
+    translation: A **Látta** megmutatja, ki és mikor nyitotta meg a szálat. Így láthatod, ki az, aki esetleg még nem olvasott fontos információt.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  d0335d202c5bbaa3:
+    english: "![Seen by and Notified in the Thread members section](../notifying_people/thread_engagement.png)"
+    translation: "![A Látta és az Értesített a szál tagjainak részében](../notifying_people/thread_engagement.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  fb77150441a43f5c:
+    english: "![Seen by window listing thread members](../notifying_people/thread_seenby.png)"
+    translation: "![A Látta ablak a szál tagjainak listájával](../notifying_people/thread_seenby.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  185f80d66c2091d8:
+    english: "### Notified"
+    translation: "### Értesített"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  885a21cbc1a44f7d:
+    english: "**Notified** opens the discussion notification history. It includes invitations, mentions, and replies, showing who was notified and whether each notification has been read when that information is available."
+    translation: Az **Értesített** megnyitja a beszélgetés értesítési előzményeit. Itt láthatod a meghívásokat, az említéseket és a válaszokat, valamint azt, hogy ki kapott értesítést, és ahol ez az adat elérhető, elolvasta-e.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  e73fae9309f626e2:
+    english: "![Discussion notification history](../notifying_people/thread_notified.png)"
+    translation: "![A beszélgetés értesítési előzményei](../notifying_people/thread_notified.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  347def7574cf5f1d:
+    english: "## Actions"
+    translation: "## Műveletek"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  '08ff4ccd500c2a69':
+    english: The right sidebar contains actions for the whole thread. Some actions are also available from the three-dot menu (**⋯**) beside a thread on the group page.
+    translation: A jobb oldalsávban az egész szálra vonatkozó műveleteket találod. Egyes műveletek a csoport oldalán, a szál melletti hárompontos menüben (**⋯**) is elérhetők.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  e73701c7d36f95ef:
+    english: The actions shown depend on your permissions. Group admins can manage threads, and group settings may allow members to perform some management actions. See [Group permissions](/en/user_manual/groups/settings/permissions).
+    translation: 'Az elérhető műveletek a jogosultságaidtól függenek. A csoportadminisztrátorok kezelhetik a szálakat, és a csoport beállításai egyes kezelési műveleteket a tagoknak is engedélyezhetnek. Lásd: [Csoportjogosultságok](/en/user_manual/groups/settings/permissions).'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  4fce317a163b0a40:
+    english: "### Print"
+    translation: "### Nyomtatás"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  9317d4c7c5ef4764:
+    english: Select **Print** to generate a page suitable for printing. Use your browser's print dialog to save it as a PDF.
+    translation: Válaszd a **Nyomtatás** lehetőséget egy nyomtatásra alkalmas oldal létrehozásához. A böngésződ nyomtatási ablakában PDF-ként is mentheted.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  443af0749df1db2a:
+    english: "### Markdown"
+    translation: "### Markdown"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  eb0442148f7c042d:
+    english: Select **Markdown** to save the complete thread as structured Markdown. Choose **Copy Markdown** to copy it to your clipboard, or **Download Markdown** to save it as a `.md` file. You can use it for meeting minutes, a document, an archive of decisions, an AI assistant, or another tool that supports Markdown.
+    translation: Válaszd a **Markdown** lehetőséget a teljes szál strukturált Markdown formátumú mentéséhez. A **Markdown másolása** a vágólapra másolja, a **Markdown letöltése** pedig `.md` fájlként menti. Használhatod jegyzőkönyvhöz, dokumentumhoz, döntések archiválásához, mesterségesintelligencia-asszisztenssel vagy más, Markdownt támogató eszközzel.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  80e3f57638b53cb4:
+    english: The document begins with YAML front matter containing the thread key, group, creation date, last activity date, and tags. It then includes the discussion context and every comment, poll, vote, and outcome in the same order and nesting as the threaded view.
+    translation: A dokumentum elején YAML-metaadatok szerepelnek a szál azonosítójával, a csoporttal, a létrehozás és az utolsó aktivitás dátumával, valamint a címkékkel. Ezután a beszélgetés kontextusa, majd minden hozzászólás, szavazás, leadott szavazat és következtetés következik a szálas nézettel azonos sorrendben és egymásba ágyazva.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  f99823b7b44e2cdd:
+    english: Each poll is a section. Comments, votes, and outcomes are quoted, and replies are quoted beneath the item they answer. This shows where each person's text begins and ends. Each quote starts with one line showing the person, when they posted, the item's number in the thread, and any reactions. Votes and outcomes also say what they are. The thread key and item number identify each item in Loomio.
+    translation: Minden szavazás külön szakasz. A hozzászólások, a leadott szavazatok és a következtetések idézetként jelennek meg, a válaszok pedig az alatt az elem alatt, amelyre érkeztek. Így látható, hol kezdődik és végződik az egyes résztvevők szövege. Minden idézet első sora megadja a résztvevő nevét, a közzététel idejét, az elem sorszámát a szálban és az esetleges reakciókat. A leadott szavazatoknál és a következtetéseknél az elemtípus is szerepel. A szál azonosítója és az elem sorszáma együtt azonosítja az elemet a Loomióban.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  e5bdfbb4a0d7646f:
+    english: Loomio applies the same visibility rules as the thread. Results and vote reasons you cannot see are not included, and voters are not identified in anonymous polls. If an open poll hides results until you vote, vote before exporting the thread. **Markdown** and **Print** are unavailable until you do.
+    translation: A Loomio ugyanazokat a láthatósági szabályokat alkalmazza, mint a szálban. Az általad nem látható eredmények és szavazási indokok kimaradnak, névtelen szavazásnál pedig nem derül ki, ki hogyan szavazott. Ha egy nyitott szavazás a szavazatod leadásáig elrejti az eredményeket, a szál exportálása előtt szavazz. Addig a **Markdown** és a **Nyomtatás** nem érhető el.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  7989d3386a42f180:
+    english: 'For example, a discussion containing a comment, reactions, a proposal, two votes, a reply, and an outcome produces this Markdown:'
+    translation: 'Például egy hozzászólást, reakciókat, egy javaslatot, két leadott szavazatot, egy választ és egy következtetést tartalmazó beszélgetésből ilyen Markdown készül:'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  275f4d9025c017c4:
+    english: The headings and labels use your selected language. Content written by participants remains in its original language.
+    translation: A címsorok és a címkék a kiválasztott nyelven jelennek meg. A résztvevők által írt tartalom az eredeti nyelvén marad.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  dab18fdf3c56269d:
+    english: "### Thread settings and display"
+    translation: "### Szálbeállítások és megjelenítés"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  7bc55279f97c6d1b:
+    english: Group admins can select **Thread settings** to change how replies are arranged and configure other discussion options.
+    translation: A csoportadminisztrátorok a **Szálbeállítások** alatt módosíthatják a válaszok elrendezését és a beszélgetés további beállításait.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  32b2640ba23524aa:
+    english: Choose **Timeline** to list items in the order they were posted, or **Threaded** to group replies beneath the item they respond to. Thread settings also control whether multiple polls may run at once and can set a maximum comment length. These settings apply to everyone in the discussion.
+    translation: Válaszd az **Idővonal** lehetőséget, ha az elemeket közzétételi sorrendben szeretnéd látni, vagy a **Threaded** lehetőséget, ha a válaszokat az általuk megválaszolt elem alatt szeretnéd csoportosítani. A szálbeállításokkal azt is szabályozhatod, futhat-e egyszerre több szavazás, és megadhatod a hozzászólások maximális hosszát. Ezek a beállítások a beszélgetés minden résztvevőjére érvényesek.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  4a520339278bcc2a:
+    english: "### Pin or unpin a thread"
+    translation: "### Szál rögzítése vagy rögzítésének megszüntetése"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  0433e7a61db60003:
+    english: Pinned threads appear above other threads on the group page. Welcome discussions, news items, and announcements are typical uses for pinned threads.
+    translation: A rögzített szálak a többi szál fölött jelennek meg a csoport oldalán. Így például üdvözlő beszélgetéseket, híreket és közleményeket emelhetsz ki.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  b2712588a5e0aab3:
+    english: Open the three-dot menu (**⋯**) beside the thread on the group page and select **Pin thread**. Pinned threads are ordered by the time they were pinned. To change their order, unpin and pin them again.
+    translation: Nyisd meg a csoport oldalán a szál melletti hárompontos menüt (**⋯**), és válaszd a **Téma rögzítése** lehetőséget. A rögzített szálak a rögzítésük időpontja szerint követik egymást. A sorrend módosításához szüntesd meg a rögzítésüket, majd rögzítsd őket újra.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  a0443f076d1b8ae5:
+    english: Select **Unpin thread** to return a thread to the activity-based order.
+    translation: Válaszd a **Téma rögzítésének megszüntetése** lehetőséget, hogy a szál ismét az aktivitás szerinti sorrendben jelenjen meg.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  b90a469963b02ffc:
+    english: "### Move a thread"
+    translation: "### Szál áthelyezése"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  8b2071f4625705e5:
+    english: Select **Move thread** to move a thread to another group, subgroup, or to a direct thread. It will be visible to members of the destination group and anyone specifically invited to it.
+    translation: Válaszd a **Szál áthelyezése** lehetőséget, ha a szálat másik csoportba, alcsoportba vagy közvetlen szálba szeretnéd áthelyezni. Ezután a célcsoport tagjai és a külön meghívott személyek láthatják.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  f09d5f2afce03ee8:
+    english: |-
+      >[!Tip]
+      >Start a draft as a direct discussion or in a private subgroup, then move it to the group when it is ready.
+    translation: |-
+      >[!Tip]
+      >Kezdd a piszkozatot közvetlen beszélgetésként vagy egy privát alcsoportban, majd amikor elkészült, helyezd át a csoportba.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  c82562b641053308:
+    english: To move selected activity rather than the whole thread, see [Moving items between threads](/en/user_manual/discussions/moving_items/).
+    translation: 'Ha nem az egész szálat, hanem csak bizonyos elemeket szeretnél áthelyezni, lásd: [Elemek áthelyezése szálak között](/en/user_manual/discussions/moving_items/).'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  be22d2980075fdaa:
+    english: "### Lock or unlock a thread"
+    translation: "### Szál zárolása vagy zárolásának feloldása"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  e7c24a610fd2bf8b:
+    english: Lock a thread to prevent comments or further changes. A thread can only be locked after its active polls have closed.
+    translation: Zárold a szálat a további hozzászólások és módosítások megakadályozásához. A szálat csak az aktív szavazások lezárása után lehet zárolni.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  edb983bb6366aa6c:
+    english: Select **Lock thread** under **Actions**. Locked threads are removed from the list of open discussions and marked with a **Locked** tag.
+    translation: Válaszd a **Téma zárolása** lehetőséget a **Műveletek** alatt. A zárolt szálak eltűnnek a nyitott beszélgetések listájából, és **Zárolva** címkét kapnak.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  ba2794349524cc33:
+    english: To find a locked thread, open the discussion filter on the group page and select **Locked**. Open the thread and select **Unlock thread** to allow comments and changes again.
+    translation: Zárolt szál kereséséhez nyisd meg a beszélgetések szűrőjét a csoport oldalán, és válaszd a **Zárolva** lehetőséget. Nyisd meg a szálat, majd válaszd a **Téma zárolásának feloldása** lehetőséget, hogy újra lehessen hozzászólni és módosításokat végezni.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  3a75fb1ad0ffab87:
+    english: "### Delete a thread"
+    translation: "### Téma törlése"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  0103a5729bd6a095:
+    english: Deleting a thread removes it permanently and cannot be undone. Lock the thread instead if you may need it again.
+    translation: A téma törlése végleges, és nem vonható vissza. Ha később még szükséged lehet rá, inkább zárold.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  daf08ca8895b0fe2:
+    english: Select **Delete thread** and confirm the deletion.
+    translation: Válaszd a **Téma törlése** lehetőséget, majd erősítsd meg a törlést.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'

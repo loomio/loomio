@@ -1,0 +1,69 @@
+---
+navigation_title: グループ設定
+blocks:
+  8953be95b754cbf1:
+    english: "# Group settings"
+    translation: "# グループ設定"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  0b8776f3657a1add:
+    english: Group settings control how your group is presented, who can find and join it, and what members are allowed to do. Only group administrators can edit these settings.
+    translation: グループ設定では、グループの表示方法、グループを見つけて参加できる人、メンバーができることを設定します。設定を編集できるのはグループ管理者だけです。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  306f2b79029e2196:
+    english: On the group page, open the actions menu and select **Edit group settings**.
+    translation: グループのページでアクションメニューを開き、**グループ設定を編集する**を選択します。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  da97a3ef0d0c2440:
+    english: "![Edit group settings from the group page](group_settings.png)"
+    translation: "![グループのページからグループ設定を編集する](group_settings.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  c9cb7d605f03af78:
+    english: 'The settings form is divided into three areas:'
+    translation: 設定フォームは次の3つの項目に分かれています。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  c3ac7e7af6a97167:
+    english: "## Group profile"
+    translation: "## グループのプロフィール"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  f7d530ddcbc99f60:
+    english: "[Group profile](/en/user_manual/groups/settings/profile) covers the group name, handle, description, cover image, and logo."
+    translation: "[グループのプロフィール](/en/user_manual/groups/settings/profile)では、グループ名、ハンドル、説明、カバー画像、ロゴを設定します。"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  228e2f1114d8e94b:
+    english: "## Group privacy"
+    translation: "## グループのプライバシー"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  c22b13644b71c97d:
+    english: "[Group privacy](/en/user_manual/groups/settings/privacy) covers who can find the group, who can read its content, how people join, directory listing, and following an Open group."
+    translation: "[グループのプライバシー](/en/user_manual/groups/settings/privacy)では、グループを見つけられる人、コンテンツを読める人、参加方法、ディレクトリへの掲載、オープングループのフォローについて設定します。"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  657ea70b782f7e42:
+    english: "## Group permissions"
+    translation: "## グループの権限"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  dd413ac130af89c4:
+    english: "[Group permissions](/en/user_manual/groups/settings/permissions) controls which actions members, non-members, and administrators can take."
+    translation: "[グループの権限](/en/user_manual/groups/settings/permissions)では、メンバー、メンバー以外の人、管理者が実行できる操作を設定します。"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'

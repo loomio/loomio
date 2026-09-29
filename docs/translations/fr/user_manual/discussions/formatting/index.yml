@@ -1,0 +1,371 @@
+---
+navigation_title: Mise en forme
+blocks:
+  0cff8e965b2d4bd5:
+    english: "# Formatting"
+    translation: "# Mise en forme"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  7bda51ac3285357f:
+    english: When starting or editing a discussion or poll, or writing a comment, you will see a formatting bar below the text field. Select the arrow at the end of the bar to show or hide the full set of tools.
+    translation: Lorsque vous créez ou modifiez une discussion ou un sondage, ou que vous rédigez un commentaire, une barre de mise en forme apparaît sous le champ de texte. Cliquez sur la flèche au bout de la barre pour afficher ou masquer tous les outils.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  2f2944ad10684b7f:
+    english: Hover the mouse or cursor over each item for the name of each tool.
+    translation: Passez le pointeur sur chaque icône pour voir le nom de l’outil.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  5f45a085deb9eff1:
+    english: Use formatting to add structure and emphasis so information is easier to scan.
+    translation: Utilisez la mise en forme pour structurer le contenu et mettre en évidence les informations importantes.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  9b542fd6dda53639:
+    english: "## Attach file"
+    translation: "## Joindre un fichier"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  d633f08de5eb744d:
+    english: Use the paper clip icon, just below the text form, to add file attachments from your computer.
+    translation: Cliquez sur l’icône en forme de trombone, juste sous le champ de texte, pour joindre des fichiers depuis votre ordinateur.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  1860ade9942c32a1:
+    english: "### Remove attachments"
+    translation: "### Supprimer des pièces jointes"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  ebc91823518309fd:
+    english: While editing the context, click the **X** to the right of the file name to remove it.
+    translation: Lorsque vous modifiez le contexte, cliquez sur le **X** à droite du nom du fichier pour le supprimer.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  b51c6da343bd6389:
+    english: "## Insert image"
+    translation: "## Insérer une image"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  b788d43f7bc630ec:
+    english: Use this tool to insert and display an image.
+    translation: Utilisez cet outil pour insérer et afficher une image.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  e23dd94c965ae06c:
+    english: Select an image file from your computer. The image is inserted into the editor after it uploads.
+    translation: Sélectionnez une image sur votre ordinateur. Une fois téléversée, elle apparaît dans l’éditeur.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  f8a47428252034cf:
+    english: The image is displayed within the published discussion, poll or comment.
+    translation: L’image apparaît dans la discussion, le sondage ou le commentaire publié.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  0fe125855fce8e52:
+    english: |-
+      >[!Tip]
+      >You can also copy/paste an image directly into Loomio.
+    translation: |-
+      >[!Tip]
+      >Vous pouvez aussi copier-coller une image directement dans Loomio.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  b631d0ab368ebfb0:
+    english: "## Insert link"
+    translation: "## Insérer un lien"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  909769fda18f0ec6:
+    english: 'You can add a link to any shareable document or page on the internet.  '
+    translation: Vous pouvez ajouter un lien vers un document partageable ou une page web.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  e034be8c0fbe76db:
+    english: 'To add a link:'
+    translation: 'Pour ajouter un lien :'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  dcf90e79aba1a2f9:
+    english: |-
+      1. Select the text you want to link to - say the name of a document.
+      2. Click the link icon.
+      3. Paste the address into the **Insert link** field and select **Apply**.
+    translation: |-
+      1. Sélectionnez le texte à transformer en lien, par exemple le nom d’un document.
+      2. Cliquez sur l’icône de lien.
+      3. Collez l’adresse dans le champ **Insérer un lien**, puis cliquez sur **Appliquer**.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  40ecf7d0c79432b2:
+    english: For a document hosted elsewhere, check its sharing permissions so discussion participants can open it.
+    translation: Si le document est hébergé ailleurs, vérifiez ses autorisations de partage pour que les personnes participant à la discussion puissent l’ouvrir.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  3f1824fc07dded13:
+    english: A preview of the doc will appear under the text space. You can remove this if you want.
+    translation: Un aperçu du document apparaît sous le champ de texte. Vous pouvez le supprimer.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  c6061aa7deff27ac:
+    english: Now, anyone with access to your Loomio discussion and permission to view the doc can open and read it.
+    translation: Toute personne ayant accès à votre discussion Loomio et l’autorisation de consulter le document peut alors l’ouvrir et le lire.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  c7643aa641977dea:
+    english: "## Insert Emoji"
+    translation: "## Insérer un émoji"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  b4f97f2939fd2d8c:
+    english: Select the smiley button and choose an emoji from the picker.
+    translation: Cliquez sur le bouton représentant un visage souriant, puis choisissez un émoji.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  f207ce88babd4532:
+    english: "## Headings"
+    translation: "## Titres"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  e2e647ef2e3ac736:
+    english: Heading 1, Heading 2 and Heading 3 can help structure a discussion or comment.
+    translation: Les titres de niveau 1, 2 et 3 vous aident à structurer une discussion ou un commentaire.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  6c3f52329a8b49b5:
+    english: Select the text to mark as a heading and click on the heading format tool.
+    translation: Sélectionnez le texte à utiliser comme titre, puis cliquez sur l’outil de mise en forme des titres.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  27a816f8cd10cd75:
+    english: If a heading is used in a comment, the comment will automatically be pinned to the discussion timeline.
+    translation: Si vous utilisez un titre dans un commentaire, celui-ci est automatiquement épinglé dans la chronologie de la discussion.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  8adf1a168d32f042:
+    english: "## Bold, Italicize, Strikethrough"
+    translation: "## Gras, italique, barré"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  c9b191938d57a135:
+    english: Select the text to format and click on the required format tool.
+    translation: Sélectionnez le texte à mettre en forme, puis cliquez sur l’outil souhaité.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  eb63f5ddcbf20776:
+    english: "## List"
+    translation: "## Liste"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  b91af8d6ee713dca:
+    english: Use **List** to format items as bullet points.
+    translation: Utilisez **Liste** pour créer une liste à puces.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  64fab26284d5610a:
+    english: "## Numbered list"
+    translation: "## Liste numérotée"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  '082bc75c625ebbaf':
+    english: Use **Numbered list** when the order of items matters.
+    translation: Utilisez **Liste numérotée** lorsque l’ordre des éléments compte.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  30f12f3f5c0a24be:
+    english: "## Task list"
+    translation: "## Liste des tâches"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  b7e072e37bdc12c0:
+    english: Use **Task list** to add checkboxes. After posting the list, tasks can be assigned to someone and given a due date.
+    translation: Utilisez **Liste des tâches** pour ajouter des cases à cocher. Après la publication de la liste, vous pouvez attribuer les tâches à une personne et fixer une date d’échéance.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  74542f03c2aabd7f:
+    english: See the page on [Tasks](/en/user_manual/discussions/tasks/) for more information.
+    translation: Pour en savoir plus, consultez la page [Tâches](/en/user_manual/discussions/tasks/).
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  15a3834a24e7a429:
+    english: "## Colors"
+    translation: "## Couleurs"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  d578168b29cd5bc5:
+    english: Use **Colors** to add a highlight colour to selected text.
+    translation: Utilisez **Couleurs** pour surligner le texte sélectionné.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  8294131df813b9ea:
+    english: "## Align"
+    translation: "## Alignement"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  58631363b7614205:
+    english: Select to align text to left, center or right.
+    translation: Choisissez un alignement à gauche, au centre ou à droite.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  2babc8a3fb1ee4b6:
+    english: "## Embed videos and webpages"
+    translation: "## Intégrer des vidéos et des pages web"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  5bbdda88f99ea68d:
+    english: You can embed supported videos and webpages anywhere there is a formatting toolbar.
+    translation: Vous pouvez intégrer des vidéos et des pages web compatibles partout où se trouve une barre d’outils de mise en forme.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  2e7e0de5ed62913d:
+    english: "To use the embed video feature: \n1. Copy the address of the video or webpage.\n2. Select **Embed video**, paste the address and select **Apply**."
+    translation: "Pour intégrer une vidéo ou une page web : \n1. Copiez son adresse.\n2. Sélectionnez **Intégrer la vidéo**, collez l’adresse, puis sélectionnez **Appliquer**."
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  41dcefa30819a0ae:
+    english: <iframe width="100%" height="380px" src="https://www.youtube-nocookie.com/embed/AJnjTd9u4zg" frameborder="0" allowfullscreen></iframe>
+    translation: <iframe width="100%" height="380px" src="https://www.youtube-nocookie.com/embed/AJnjTd9u4zg" frameborder="0" allowfullscreen></iframe>
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  13808447963b2a92:
+    english: |-
+      >[!Tip]
+      >Make sure the video can be accessed by everyone who can participate in the discussion. For example, an unlisted video may be suitable when it should not appear in public search results.
+    translation: |-
+      >[!Tip]
+      >Vérifiez que toutes les personnes qui peuvent participer à la discussion ont accès à la vidéo. Une vidéo non répertoriée peut convenir si elle ne doit pas apparaître dans les résultats de recherche publics.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  a54e9b54ec9d054a:
+    english: "## Quote"
+    translation: "## Citation"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  cde3af7721527f7f:
+    english: Quote adds emphasis to your text, and can be useful to draw attention to an instruction.
+    translation: Une citation met le texte en évidence. Elle peut servir à attirer l’attention sur une instruction.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  53156f370d2f19d6:
+    english: "## Code block"
+    translation: "## Bloc de code"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  4199778c2a4ddc86:
+    english: Typically used to show code in text, code block formatting is also available to help you distinguish text in your discussion.
+    translation: Le bloc de code sert généralement à afficher du code. Vous pouvez aussi l’utiliser pour distinguer un passage dans votre discussion.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  '4150439725516186':
+    english: "## Divider"
+    translation: "## Séparateur"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  7075717b6ffdba08:
+    english: Use the divider to draw a horizontal line to separate sections.
+    translation: Utilisez le séparateur pour tracer une ligne horizontale entre deux sections.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  66ca2e9ae98b0ca2:
+    english: "## Add table"
+    translation: "## Ajouter un tableau"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  7f93fecdf2cad04f:
+    english: 'Add a table to your discussion. '
+    translation: Ajoutez un tableau à votre discussion.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  1b8a068ce391ceac:
+    english: Additional tools are available to add/remove columns and rows.
+    translation: Des outils supplémentaires permettent d’ajouter ou de supprimer des colonnes et des lignes.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  236df5c508db1f3e:
+    english: "## Markdown"
+    translation: "## Markdown"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  bd726f6299d5f52e:
+    english: To switch to Markdown editing, select **Edit Markdown**.
+    translation: Pour passer à l’édition en Markdown, sélectionnez **Editer Markdown**.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  278b073701473e94:
+    english: If you click this while there is text in the form, some formatting may be lost upon conversion.
+    translation: Si le champ contient déjà du texte, une partie de la mise en forme peut être perdue lors de la conversion.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  c27e00bd5c98ccb1:
+    english: "### Rich text"
+    translation: "### Texte enrichi"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  ef2b52204ab83521:
+    english: Select **Edit rich text** to return to the formatting tools. This converts supported Markdown into its displayed form.
+    translation: Sélectionnez **Editer le texte enrichi** pour retrouver les outils de mise en forme. Le Markdown pris en charge est alors converti en texte mis en forme.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  164de50b8b1e4081:
+    english: "**Preview** shows how Markdown will appear when posted without converting it."
+    translation: "**Prévisualiser** montre l’apparence du Markdown une fois publié, sans le convertir."
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'

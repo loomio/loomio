@@ -1,0 +1,523 @@
+---
+navigation_title: En curso
+blocks:
+  30163152525e029c:
+    english: "# Underway"
+    translation: "# En curso"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  02feef9bf78ef420:
+    english: "## Where are we on the Map?"
+    translation: "## ¿En qué punto del proceso estamos?"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  '083f066ff9a3cfde':
+    english: People feel more confident and better held if they can orient themselves on a timeline or agenda. They want to know what they’re doing now, what’s coming up, and to be reminded of what they’ve already done. Understanding the overall shape of the process helps people understand how to contribute effectively.
+    translation: Las personas se sienten más seguras y acompañadas cuando pueden situarse en un cronograma o una agenda. Quieren saber qué están haciendo ahora, qué viene después y qué han hecho ya. Comprender el proceso en su conjunto les ayuda a saber cómo contribuir.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  ea2ef3e629108828:
+    english: For example if they can see there’s a Q&A section later, they'll be more willing to hold their questions during a presentation. If it’s clear that there’s a divergent phase and then a convergent phase, people will hold back from jumping to solutions too soon. People need to know what kind of input they are being asked for, and when.
+    translation: Por ejemplo, si saben que habrá un espacio para preguntas y respuestas más adelante, les resultará más fácil esperar hasta entonces para hacer preguntas durante una presentación. Si está claro que primero habrá una fase de exploración y después una fase para llegar a una conclusión, evitarán proponer soluciones demasiado pronto. Las personas necesitan saber qué tipo de aportación se espera de ellas y cuándo.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  7a5d009dfc4e0f6b:
+    english: Mapping the process well enough to communicate it also challenges facilitators to fully think through the journey, and helps them make sure each part of the process has a purpose that builds a cohesive whole. A well-facilitated experience follows a logical progression.
+    translation: Trazar el proceso con suficiente claridad para comunicarlo también lleva a quienes facilitan a pensar en todo el recorrido. Les ayuda a comprobar que cada parte tiene un propósito y contribuye a un conjunto coherente. Un proceso bien facilitado sigue una progresión lógica.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  aabfa9d842af2688:
+    english: On Loomio
+    translation: En Loomio
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  af3599a59685a726:
+    english: |-
+      * A Loomio decision already follows a basic logical progression (which is why it works): Gather (open/invite), Discuss (divergent), Propose (convergent), Decide and Act (conclude).
+      * Many Loomio users are employing the tool as part of explicitly mapped experiences, such as a multi-stage consultation process.
+      * We offer some tools of facilitators to help “reveal the map” to users, such as the group description field, and proposal deadlines. These can be proactively leveraged to increase context for participants.
+    translation: |-
+      * Una decisión en Loomio ya sigue una progresión lógica básica: reunir a las personas (abrir e invitar), discutir (explorar), proponer (concretar), decidir y actuar (concluir).
+      * Muchas personas usan Loomio como parte de procesos cuyas etapas están definidas, como una consulta de varias fases.
+      * Loomio ofrece herramientas para mostrar el recorrido a quienes participan, como la descripción del grupo y los plazos de las propuestas. Puedes usarlas para dar más contexto desde el principio.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  228ae545a39cd553:
+    english: "## The Art of Noticing"
+    translation: "## El arte de prestar atención"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  04155220f602a7e8:
+    english: Noticing is probably the most critical facilitation skill of all. The facilitator uses noticing to figure out what interventions or responses are needed, how to invite the right contributions, and to help the group notice itself. The value of facilitation is having someone paying attention and acting on what they notice, while others may be focused on specific content or their own agendas.
+    translation: Prestar atención es quizá la habilidad más importante de la facilitación. Permite identificar qué intervenciones o respuestas hacen falta, cómo invitar a las personas a contribuir y cómo ayudar al grupo a observar lo que ocurre en él. La facilitación aporta a alguien que presta atención y actúa en consecuencia, mientras las demás personas pueden estar centradas en asuntos concretos o en sus propias prioridades.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  90a03fdb345369b7:
+    english: 'Effective noticing is a combination of good informational inputs, and sensitivity and skill to interpret them. Many facilitators talk about “reading” a room: emotional reactions, tensions,  power dynamics. Facilitators need effective information signalling systems.'
+    translation: 'Para prestar atención de forma eficaz hacen falta buena información, sensibilidad y capacidad para interpretarla. Quienes facilitan suelen hablar de «leer» lo que ocurre en un grupo: las reacciones emocionales, las tensiones y las dinámicas de poder. Necesitan formas eficaces de detectar estas señales.'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  49b0f2cc823e0384:
+    english: |-
+      * Many current features assist with noticing — the biggest one is probably watching how the pie is shaping up in a proposal.
+      * The software notices some things: who has and has not yet participated, what topics are being raised, who has and has not accepted their group invitation, etc.
+      * On Loomio, a single facilitator can read across dozens of discussions at the same time, see clearly what’s being shared, and act accordingly.
+      * Talking online can make the implicit explicit, and therefore easier to notice.
+      * Communicating in writing can be very good for naming what’s being noticed and why a certain action is being taken in response. For example, you can quote someone’s exact words and reflect back what’s revealed by them. Or you can do the same thing at the level of a whole discussion, picking out a range of quotes and noticing themes or emerging conflicts.
+      * Noticing is much easier when you slow things down, which is one of Loomio’s great advantages — asynchronous communication you can read at any pace. It also makes it possible to notice across time, referring directly to past discussions.
+      * Because you can have simultaneous discussions, it's possible to have a layer of “meta” discussion (aka “blue hat”, aka discussion about the discussion) at the same time as progressing the main discussions. So you can collectively have a space to practice noticing without slowing down the process.
+    translation: |-
+      * Muchas funciones ayudan a observar lo que ocurre. Una de las más útiles es ver cómo evoluciona el gráfico circular de una propuesta.
+      * El software detecta algunas cosas: quién ha participado y quién no, qué temas surgen y quién ha aceptado o no la invitación al grupo.
+      * En Loomio, una sola persona puede seguir decenas de discusiones a la vez, ver con claridad qué se comparte y actuar en consecuencia.
+      * Hablar en línea puede hacer explícito lo que antes estaba implícito y facilitar que se detecte.
+      * La comunicación escrita ayuda a explicar qué has observado y por qué respondes de cierta manera. Por ejemplo, puedes citar las palabras exactas de alguien y señalar lo que revelan. También puedes hacerlo con toda una discusión: seleccionar varias citas e identificar temas o conflictos emergentes.
+      * Es más fácil prestar atención cuando el ritmo baja. Esa es una de las ventajas de Loomio: la comunicación asíncrona se puede leer al ritmo que necesites. También permite observar cambios a lo largo del tiempo y consultar discusiones anteriores.
+      * Como puede haber varias discusiones simultáneas, es posible mantener una conversación sobre las propias discusiones (una «metadiscusión» o «sombrero azul») mientras avanzan las principales. Así, el grupo dispone de un espacio para observar su proceso sin detenerlo.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  cdb52080510ddb69:
+    english: "## Hearing Diverse Voices"
+    translation: "## Escuchar voces diversas"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  150ff74c2805696b:
+    english: In our society, multiple layers of history, power dynamics, culture, and psychology conspire to amplify certain voices and suppress others. This plays out at every level of experience, from our innermost subconscious beliefs to our political system and laws.
+    translation: En nuestra sociedad, la historia, las dinámicas de poder, la cultura y la psicología se combinan para amplificar algunas voces y acallar otras. Esto ocurre en todos los ámbitos, desde nuestras creencias más profundas hasta el sistema político y las leyes.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  a3dccb91d161d18a:
+    english: But the best ideas do not always come from the loudest voices, and the role of facilitation is to counteract these biases. It’s important to be aware of the dynamics we are collectively grappling with if our goals are social justice, group effectiveness, and high quality decision making.
+    translation: Pero las mejores ideas no siempre vienen de quienes más se hacen oír. Una función de la facilitación es contrarrestar estos sesgos. Si buscamos justicia social, grupos eficaces y decisiones de calidad, debemos reconocer las dinámicas a las que nos enfrentamos en conjunto.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  5e8160d5b0da948a:
+    english: '> <img style="border-radius: 100%; float: right; margin-left: 0.5em; max-width: 96px; " src="../rich_200.png"> If you want to innovate, you have to make space for different points of view — luckily, this is also what you need to do if you want a team where everyone is empowered. All kinds of cultural and technical factors conspire to privilege some voices at the expense of others. There are many practices you can implement to systematically challenge that bias, but just being aware of it is a good starting point. — Richard Bartlett'
+    translation: '> <img style="border-radius: 100%; float: right; margin-left: 0.5em; max-width: 96px; " src="../rich_200.png"> Si quieres innovar, debes dejar espacio para distintos puntos de vista. Eso también es necesario para que todas las personas de un equipo puedan participar plenamente. Muchos factores culturales y técnicos favorecen unas voces en detrimento de otras. Hay muchas prácticas para cuestionar ese sesgo de forma sistemática, pero reconocerlo ya es un buen punto de partida. — Richard Bartlett'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  63e0bdf44ad2df5f:
+    english: Our lived human experience is to inhabit a singular consciousness, so humans tend to forget that others experience the world differently. Even within a seemingly homogenous group, there is incredible diversity — perspectives, pace, preferences. Internalising this truth — that others are different from myself — is a central personal growth challenge.
+    translation: Cada persona vive desde su propia conciencia, por lo que tendemos a olvidar que otras experimentan el mundo de otra manera. Incluso en un grupo aparentemente homogéneo hay una gran diversidad de perspectivas, ritmos y preferencias. Interiorizar que las demás personas son distintas de uno mismo es una parte importante del crecimiento personal.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  62f6a86aa220b787:
+    english: There is no such thing as one size fits all. Any mode of interacting enhances some voices and quiets others, or emphasises different tendencies within an individual. So, it’s necessary to employ a range of approaches to invite the best from multiple diverse voices.
+    translation: No hay un método que sirva para todo el mundo. Cada forma de interactuar da más espacio a algunas voces y menos a otras, o destaca distintas facetas de una misma persona. Por eso hacen falta varios enfoques para que puedan surgir las mejores aportaciones de personas diversas.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  8f9c1b2c0e40b1fc:
+    english: '> <img style="border-radius: 100%; float: right; margin-left: 0.5em; max-width: 96px; " src="../silvia_200.png"> Check you’re catering to different learning styles. One simple way to check is with the Head, Heart, Hands metaphor. People who learn with their Head need facts and detailed information. A Heart learner thrives off stories. They need an emotional connection to the work. Learning with the Hands is all about doing stuff and getting active. — Silvia Zuur'
+    translation: '> <img style="border-radius: 100%; float: right; margin-left: 0.5em; max-width: 96px; " src="../silvia_200.png"> Comprueba que tienes en cuenta distintas formas de aprender. Una manera sencilla de hacerlo es pensar en la metáfora de la cabeza, el corazón y las manos. Quienes aprenden con la cabeza necesitan datos e información detallada. Quienes aprenden con el corazón se apoyan en las historias y necesitan una conexión emocional con el trabajo. Aprender con las manos consiste en hacer cosas y participar activamente. — Silvia Zuur'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  04a3a7bc850913ab:
+    english: One of the best approaches to bringing out and weaving together diverse voices is to invite diverse modes of interaction, which will serve different needs and preferences, and level the communication playing field.
+    translation: Una de las mejores maneras de dar espacio a voces diversas y conectar sus aportaciones es ofrecer distintas formas de interactuar. Así se atienden diferentes necesidades y preferencias, y más personas pueden participar en condiciones de igualdad.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  ba31b7da59193745:
+    english: 'Some classic design building blocks to address communication diversity in collaborative communication:'
+    translation: 'Estas son algunas formas habituales de atender la diversidad de maneras de comunicarse al colaborar:'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  fbcafe73c1d8720b:
+    english: |-
+      * **Group size** — individual reflection, pairs, small group, large group, one-to-one, one-to-many, many-to-many.
+      * **Medium of expression** — writing, drawing, video, singing, dance, flowcharts, equations, symbols, stories, tears, laughter, debate, etc.
+      * **Discussion protocols** — rounds (hear from each person once before moving on), rate limiting (you can only speak again after two others have spoken), talking stick (only speak when you have the stick — no interrupting), time-limited contributions (you can talk for 1 minute only), time-unlimited contributions (you can hold the floor indefinitely and everyone will deeply listen), tracking contributions (how much have women vs men spoken, etc), holding periods of silence between speakers (for processing and reflection).
+      * **Embrace silence** *Silence is only awkward if you let it be awkward. Silence is a chance for people to think. — Silvia Zuur*
+    translation: |-
+      * **Tamaño del grupo** — reflexión individual, parejas, grupos pequeños, grupos grandes, conversaciones entre dos personas, de una persona a muchas o entre muchas personas.
+      * **Medio de expresión** — escritura, dibujo, vídeo, canto, danza, diagramas de flujo, ecuaciones, símbolos, historias, lágrimas, risas, debate, etc.
+      * **Reglas para la discusión** — rondas (escuchar a cada persona una vez antes de continuar), turnos espaciados (esperar a que hablen otras dos personas antes de volver a intervenir), objeto de la palabra (hablar solo cuando lo tienes, sin interrupciones), intervenciones con tiempo limitado (hablar durante un minuto como máximo), intervenciones sin límite de tiempo (hablar tanto como necesites mientras las demás personas escuchan con atención), seguimiento de las intervenciones (cuánto han hablado las mujeres en comparación con los hombres, por ejemplo) y pausas de silencio entre intervenciones (para procesar y reflexionar).
+      * **Dar espacio al silencio** *El silencio solo resulta incómodo si dejamos que lo sea. Da a las personas la oportunidad de pensar. — Silvia Zuur*
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  ff925b4be393907c:
+    english: |-
+      * The design of Loomio has always been about “hearing all voices”, including people who aren’t able to be there in person, are quieter, are busy, etc.
+      * In text, every voice is more or less the same “volume” and “speed”. Written asynchronous communication offers a kind of leveling of the field.
+      * The proposal feature is essentially a “round”, assisting groups to facilitate each individual person having their say (if they want to) on an equal basis.
+      * Loomio enables multi-media (links, videos, images, diagrams, supporting evidence), which serve various communication styles.
+      * Loomio itself is pretty basic, but with active facilitation and group maturity, it is possible to employ discussion protocols “manually” using cultural norms or agreed rules (eg, a discussion where everyone only posts once until everyone else has participated).
+      * Loomio provides flexible tools for small and large group interaction, using parent groups and subgroups. Some large consultation processes have involved multiple smaller groups which are then synthesised into a larger outcome.
+      * People who want time for individual reflection can take time out and process their thoughts, and then come back and share a longer comment or link to a document. This is a “self-selecting” example of creating interplay between individual and group communication.
+      * Loomio accessibility features and multi-lingual translations make it possible for people with very different needs to participate as equals in one discussion. This is a key example of how technology can enable equitable participation in a way that’s nearly impossible in person.
+      * If someone is contributing more than their share (talking too much), it’s technically possible to just scroll on by (whereas in person this behaviour can totally dominate the interaction). However, people posting “walls of text” can still be detrimental to a balanced Loomio discussion.
+    translation: |-
+      * Loomio siempre se ha diseñado para «escuchar todas las voces», incluidas las de quienes no pueden asistir en persona, hablan menos o tienen poco tiempo.
+      * En un texto, todas las voces tienen más o menos el mismo «volumen» y la misma «velocidad». La comunicación escrita y asíncrona ayuda a equilibrar la participación.
+      * Una propuesta funciona, en esencia, como una ronda: ayuda al grupo a dar a cada persona la misma oportunidad de expresar su opinión, si quiere hacerlo.
+      * Loomio permite compartir distintos formatos (enlaces, vídeos, imágenes, diagramas y documentación de apoyo) que se adaptan a diversas formas de comunicarse.
+      * Loomio ofrece herramientas sencillas. Con una facilitación activa y un grupo acostumbrado a colaborar, también se pueden aplicar reglas para la discusión mediante acuerdos. Por ejemplo, cada persona puede publicar una sola vez hasta que todas hayan participado.
+      * Loomio ofrece herramientas flexibles para grupos pequeños y grandes mediante grupos principales y subgrupos. Algunas consultas amplias han reunido las aportaciones de varios grupos pequeños en una conclusión conjunta.
+      * Quienes necesiten tiempo para reflexionar por su cuenta pueden ordenar sus ideas y volver después para compartir un comentario más extenso o un enlace a un documento. Así pueden combinar la reflexión individual con la comunicación en grupo.
+      * Las funciones de accesibilidad y las traducciones de Loomio permiten que personas con necesidades muy distintas participen en igualdad de condiciones en una discusión. La tecnología puede facilitar así una participación equitativa que sería difícil de lograr en persona.
+      * Si alguien interviene demasiado, las demás personas pueden seguir desplazándose por la página; en persona, esa conducta puede dominar por completo la conversación. Aun así, publicar grandes bloques de texto puede perjudicar el equilibrio de una discusión en Loomio.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  bb74ebca94285a48:
+    english: "## Counter Cognitive Bias"
+    translation: "## Contrarrestar los sesgos cognitivos"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  c8d4a9a10da47a62:
+    english: Human brains have evolved over millions of years to balance quick, efficient “good enough” thinking with slow, expensive, deep analysis. This allows us to use instincts, heuristics, and generalisations as cheap and fast solutions most of the time, and to engage deep analysis when needed.
+    translation: Durante millones de años, el cerebro humano ha evolucionado para combinar un pensamiento rápido y eficaz, «suficientemente bueno», con un análisis profundo que requiere más tiempo y esfuerzo. Así podemos recurrir casi siempre a instintos, atajos mentales y generalizaciones, y analizar las cosas a fondo cuando hace falta.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  3a35775e59cdea17:
+    english: But sometimes we get it wrong. In fact, there are well-known “bugs” in the human cognition program, which can keep people from making the best decisions. This is further complicated in group situations. We need to be aware of these dynamics.
+    translation: Pero a veces nos equivocamos. Hay errores de pensamiento conocidos que pueden impedirnos tomar las mejores decisiones. En grupo, la situación se complica aún más. Debemos conocer estas dinámicas.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  e3d808eb17e1aa5a:
+    english: There is a huge [range of cognitive biases](https://en.wikipedia.org/wiki/List_of_cognitive_biases) (this list is really worth a read), all of which have potential impacts on decision making and collaboration. Facilitation can be an important tool to deal with them, to raise awareness of their existence, encourage proactive choices about them. For example, asking when is it more important to move quickly and when is it more important to be accurate.
+    translation: Existe una gran [variedad de sesgos cognitivos](https://en.wikipedia.org/wiki/List_of_cognitive_biases) (vale la pena consultar esta lista). Todos pueden afectar a las decisiones y a la colaboración. La facilitación puede ayudar al grupo a reconocerlos y a elegir cómo responder. Por ejemplo, puede plantear cuándo conviene avanzar rápido y cuándo importa más ser preciso.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  c4755a454121a7b6:
+    english: One powerful tool to counter cognitive bias and increase quality of decisions is structured processes and communication. The challenge of following a process instead of the “path of least resistance” can help highlight thinking errors and bias. Facilitators sometimes push for things that feel challenging or trigger resistance, precisely because brains are being asked to step out of familiar patterns. Discipline in this area can help groups achieve their deeper goals, which can be worth some temporary discomfort.
+    translation: Los procesos y la comunicación estructurados son herramientas útiles para contrarrestar los sesgos cognitivos y mejorar las decisiones. Seguir un proceso en lugar del camino más fácil puede hacer visibles los errores de pensamiento y los sesgos. A veces, quienes facilitan proponen pasos que generan resistencia porque nos obligan a salir de formas de pensar habituales. Mantener esa disciplina puede ayudar al grupo a alcanzar sus objetivos de fondo, aunque cause cierta incomodidad temporal.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  99caa45d2ab4ae8b:
+    english: 'Some examples of processes that can help mitigate cognitive bias:'
+    translation: 'Estos son algunos procesos que pueden ayudar a reducir los sesgos cognitivos:'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  ebd2c767ea8fae2e:
+    english: |-
+      * [De Bono’s Hats](http://www.debonoforschools.com/asp/six_hats.asp): different colored hats participants can wear (metaphorically) to step outside their own opinions and try on different modes of thinking.
+      * Checklists: thinking “ruts” can cause us to miss even obvious things (especially in areas we're very familiar with), so a checklist can weed out errors.
+      * The Five Why’s: only asking why once or twice can mislead you into thinking you’ve reached the conclusion before you get to the root level of the issue. Asking five times tends to get to the bottom of it.
+      * Mental models: exercises like [SWOT analysis](https://en.wikipedia.org/wiki/SWOT_analysis), the [business model canvas](https://en.wikipedia.org/wiki/Business_Model_Canvas), or any number of countless other structured information gathering exercises can guide you to cleaner analysis and reveal assumptions.
+    translation: |-
+      * [Los sombreros de De Bono](http://www.debonoforschools.com/asp/six_hats.asp): sombreros de distintos colores que las personas participantes pueden ponerse de forma simbólica para dejar a un lado sus opiniones y probar otras formas de pensar.
+      * Listas de comprobación: los hábitos de pensamiento pueden hacer que pasemos por alto incluso cosas evidentes, sobre todo en temas que conocemos bien. Una lista puede ayudar a detectar errores.
+      * Los cinco porqués: preguntar «¿por qué?» solo una o dos veces puede llevarte a creer que has llegado a la conclusión antes de encontrar la raíz del problema. Repetir la pregunta cinco veces suele ayudar a descubrirla.
+      * Modelos mentales: ejercicios como el [análisis DAFO](https://en.wikipedia.org/wiki/SWOT_analysis), el [lienzo de modelo de negocio](https://en.wikipedia.org/wiki/Business_Model_Canvas) y otras formas estructuradas de recopilar información pueden ayudarte a analizar mejor una situación y descubrir tus supuestos.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  073fb22a0e7cd744:
+    english: |-
+      * Diverse information and inputs can disrupt assumptions or bias. This is built into Loomio’s basic design: by enabling more voices to contribute to a discussion on a more equitable basis, you have a chance to escape “groupthink”.
+      * Loomio gives participants the ability to dissent constructively. Safe and valued dissent is essential for a culture of critical thinking.
+      * Communicating asynchronously in writing slows conversation down and lets it be more carefully considered, giving people a chance to think more carefully and avoid cognitive errors.
+      * Loomio invites people into a semi-structured process that leads to more considered decision making. Loomio can be used for a huge range of different processes, but simply having *some* structure in a discussion enables other possibilities.
+    translation: |-
+      * La información y las aportaciones diversas pueden cuestionar supuestos y sesgos. Esto forma parte del diseño básico de Loomio: al permitir que más personas contribuyan a una discusión en condiciones más equitativas, el grupo tiene más oportunidades de evitar el «pensamiento de grupo».
+      * Loomio permite expresar desacuerdos de forma constructiva. Que las personas puedan disentir con seguridad y que sus objeciones se valoren es esencial para el pensamiento crítico.
+      * La comunicación escrita y asíncrona ralentiza la conversación y permite considerarla con más cuidado. Da tiempo para pensar y evitar errores de razonamiento.
+      * Loomio invita a participar en un proceso con cierta estructura que favorece decisiones más meditadas. Se puede usar para muchos procesos distintos, pero contar con *alguna* estructura en una discusión abre otras posibilidades.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  4ae16a63e2dd047a:
+    english: "## Balancing Divergent & Convergent"
+    translation: "## Equilibrar la exploración y la concreción"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  2983c2d32846ebd5:
+    english: The “diamond” of divergence and convergence is a conversational shape. It expands outward at first — opening up space for ideas, information, and different perspectives — then begins to come to a point. The right timing for this shift is key for effective facilitation of action-oriented, productive, collaborative discussions.
+    translation: El «diamante» de la divergencia y la convergencia representa la forma de una conversación. Primero se abre para dar espacio a ideas, información y perspectivas distintas. Después empieza a cerrarse hacia una conclusión. Elegir el momento adecuado para ese cambio es clave para facilitar discusiones colaborativas que conduzcan a la acción.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  bce4c52d377dbdbd:
+    english: If divergence is missed out or cut off too early, there will be a lack of information to work with, people may not feel heard, and great ideas will be left unsaid. If convergence is missed out or left too late, discussion can continue indefinitely without reaching an actionable conclusion, burning participants energy and failing to achieve results.
+    translation: Si se omite la exploración o se cierra demasiado pronto, faltará información, algunas personas podrían sentir que no se las ha escuchado y quedarán buenas ideas sin expresar. Si no se llega a concretar o se hace demasiado tarde, la discusión puede continuar indefinidamente sin una conclusión que permita actuar. Eso agota a quienes participan y dificulta obtener resultados.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  9f787be37e0492cc:
+    english: Each sub-phase of the larger process also requires awareness of the right timing and intervention. Divergence consists of introduction, clarification, ideation. Convergence consists of analysis, conclusion, commitment. Some discussions succeed with only a vague nod toward the diamond, while others are served by a meticulous breakdown of each phase and sub-phase.
+    translation: Cada etapa del proceso general también requiere intervenir en el momento adecuado. La exploración comprende la introducción, la aclaración y la generación de ideas. La concreción comprende el análisis, la conclusión y el compromiso. Para algunas discusiones basta con seguir el esquema del diamante de forma general; otras se benefician de definir cada fase y cada paso con detalle.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  8d8c7970db55ea11:
+    english: Within a group, different individuals will usually tend to prefer one mode or the other, and the group as a whole will have collective tendencies. Imbalance looks like too much blue sky thinking, or jumping to solutions. Facilitation can help each person and the group as a whole spend the right amount of energy on the different modes.
+    translation: Dentro de un grupo, algunas personas suelen preferir explorar y otras concretar. El grupo también puede tener una tendencia colectiva. El desequilibrio se manifiesta al quedarse demasiado tiempo imaginando posibilidades o al saltar directamente a las soluciones. La facilitación puede ayudar a cada persona y al grupo a dedicar la energía adecuada a cada forma de trabajar.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  36405c3bfcb951b6:
+    english: |-
+      * The core Loomio process does an excellent job of guiding groups to touch on each phase of the process, with the discussion being divergent and proposals being convergent. Awareness of the diamond was a big inspiration for the original design of the Loomio process.
+      * Loomio helps groups to use the diamond in dynamic ways, such as when an attempt to converge (a proposal) ends up becoming a deeper level of divergence (disagreement), revealing or clarifying information to support an even better convergence (iterated proposal).
+      * Some of Loomio’s basic features go a long way toward supporting each mode, such as notifications to group members when a new discussion is starting (prompting divergent contribution), and deadlines on proposals (prompting participation in convergence).
+      * Loomio users are already able to use the existing feature set to facilitate convergence — namely starting a proposal. Good use of proposals is one of the most obvious symptoms of an effective Loomio group, and simply advising users to start more proposals unblocks many groups who are having issues.
+    translation: |-
+      * El proceso básico de Loomio guía a los grupos por estas fases: la discusión abre posibilidades y las propuestas ayudan a concretarlas. El diamante inspiró en gran medida el diseño original de Loomio.
+      * Loomio ayuda a usar el diamante de forma dinámica. Por ejemplo, un intento de concretar mediante una propuesta puede revelar desacuerdos y abrir una exploración más profunda. La información que surge puede servir para elaborar una propuesta mejor.
+      * Algunas funciones básicas de Loomio apoyan cada fase. Las notificaciones a los miembros del grupo cuando empieza una discusión invitan a aportar perspectivas distintas, mientras que los plazos de las propuestas animan a participar en la decisión.
+      * Las personas que usan Loomio ya pueden ayudar al grupo a concretar iniciando una propuesta. Un grupo que usa bien las propuestas suele avanzar con eficacia. Sugerir que se inicien más propuestas ayuda a muchos grupos a salir de un bloqueo.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  af83d6e3b408e008:
+    english: "## Working with Scope"
+    translation: "## Definir el alcance"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  209f071ae0c7ae0f:
+    english: Successful collaboration often depends on biting off the right size pieces in the right order.
+    translation: Para colaborar con éxito, a menudo hay que abordar tareas de un tamaño adecuado y en el orden correcto.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  24658aca54702290:
+    english: 'You can apply a “project management” mindset to facilitation, designing for questions like:'
+    translation: 'Puedes aplicar a la facilitación una forma de pensar propia de la gestión de proyectos y plantearte preguntas como estas:'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  '09c7ee57551e1980':
+    english: |-
+      * What are the dependencies (what’s the critical path, which things need to be done first to enable other things)?
+      * What are the most important bits to focus on? What can be left out?
+      * What is an achievable scope to tackle at a given time to get to a useful place with the time, energy, and information available?
+    translation: |-
+      * ¿Qué depende de qué? ¿Cuál es la secuencia esencial y qué hay que hacer primero para poder avanzar?
+      * ¿En qué aspectos es más importante centrarse? ¿Qué se puede dejar fuera?
+      * ¿Qué alcance se puede abordar en este momento para lograr algo útil con el tiempo, la energía y la información disponibles?
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  bca4d47c3dc6f3cf:
+    english: It’s important not to try to “boil the ocean”, and instead break things down into manageable chunks. You can build toward a bigger outcome in a series of smaller pieces. It’s often better to achieve something small but useful, than to fail to reach any conclusions. It’s also possible to get too bogged down in details and fail to hit the bigger issues.
+    translation: Es importante no intentar abarcarlo todo, sino dividir el trabajo en partes manejables. Una serie de pasos pequeños puede llevar a una conclusión más amplia. A menudo es mejor lograr algo pequeño pero útil que no llegar a ninguna conclusión. También es posible perderse en los detalles y dejar de lado las cuestiones principales.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  ce5ed5c5115c7b90:
+    english: In a collaboration, no one knows exactly what will emerge, so scope must evolve with the discussion. Whether branching out at a given moment is a distraction or an evolution is a judgement call. Too much rigidity and too much flexibility can both be damaging. Often times it’s not about whether something is relevant or not, but a question of sequence and timing in terms of what will be most constructive.
+    translation: En una colaboración, nadie sabe exactamente qué surgirá, así que el alcance debe evolucionar con la discusión. Decidir si abrir una nueva línea de conversación es una distracción o un avance requiere criterio. Tanto la rigidez como la flexibilidad excesivas pueden perjudicar el proceso. A menudo, la cuestión no es si algo es pertinente, sino cuándo conviene abordarlo y en qué orden.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  3510d751f00b1ae6:
+    english: "> If you plan a session with multiple, interlinked parts – each one building on the other, and all leading to a life-changing, mind-exploding conclusion – and you can pull it off, then that’s amazing. But more often than not, a complicated session will go over-time and may not hit the participant’s wants and needs. - Silvia Zuur"
+    translation: "> Si planificas una sesión con varias partes conectadas entre sí, cada una apoyada en la anterior y todas encaminadas a una conclusión extraordinaria, y consigues llevarla a cabo, será admirable. Pero, con frecuencia, una sesión complicada se alarga y puede no responder a lo que las personas participantes quieren y necesitan. - Silvia Zuur"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  9204dd47d88ac308:
+    english: |-
+      ## A series of small yes's
+      Lumping too many conversations together simply creates confusion. Frustrated groups are often helped by breaking things down. If an issue seems hopeless, complex or conflicted, it can be possible to separate out individual questions and reach consensus on them, starting with the easiest things to agree. Then when it comes to points of disagreement, you can pare it down to only the crux of the issues and work on them in a focused way.
+    translation: |-
+      ## Una serie de pequeños acuerdos
+      Agrupar demasiadas conversaciones solo genera confusión. A los grupos que encuentran dificultades suele ayudarles dividir los asuntos. Si una cuestión parece irresoluble, compleja o conflictiva, puedes separar las preguntas y buscar consensos, empezando por aquello en lo que sea más fácil ponerse de acuerdo. Después puedes centrarte en los puntos esenciales de desacuerdo y tratarlos uno por uno.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  2d86c0488159e380:
+    english: |-
+      * Topic-based discussion threads are a powerful tool for effective scope — even more than face-to-face conversation, Loomio discussions can be usefully delineated to encourage focus on a specific question, while other aspects can be addressed simultaneously in other threads.
+      * We often see users making facilitation interventions like “That’s out of the scope of this topic, but why don’t you start a new discussion about it?”
+      * The act of creating a Loomio group helps define who are we and what are we here to discuss. This helps participants manage scope.
+      * The sequential proposals design of Loomio is very good for a “series of small yess's” approach — you can build small agreements while maintaining context in a single discussion thread, and build on the history of previous proposals.
+      * Asynchronous online communication can allow some people to go way out of scope without holding up others. They can simply start a new discussion or subgroup and go as deep and long as they want, while the main scope of the group is maintained.
+      * The discussion context box and group description are spaces to define the scope of a conversation or group, respectively.
+    translation: |-
+      * Los hilos de discusión centrados en un tema ayudan a definir el alcance. En Loomio, incluso más que en una conversación presencial, puedes delimitar una discusión para centrarla en una pregunta concreta y tratar otros aspectos al mismo tiempo en otros hilos.
+      * A menudo vemos intervenciones de facilitación como: «Eso queda fuera del alcance de este tema, ¿por qué no inicias otra discusión para tratarlo?».
+      * Crear un grupo en Loomio ayuda a definir quiénes lo integran y qué van a discutir. Esto ayuda a las personas participantes a gestionar el alcance.
+      * Las propuestas sucesivas de Loomio permiten avanzar mediante una serie de pequeños acuerdos. Puedes mantener el contexto en un mismo hilo de discusión y apoyarte en las propuestas anteriores.
+      * La comunicación asíncrona en línea permite que algunas personas profundicen en asuntos ajenos al alcance principal sin detener a las demás. Pueden iniciar otra discusión o un subgrupo y dedicarles tanto tiempo como quieran mientras el grupo mantiene el foco.
+      * El campo de contexto de la discusión y la descripción del grupo sirven para definir el alcance de una conversación o de un grupo, respectivamente.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  0b70d200637c265f:
+    english: "## Pacing & Timing"
+    translation: "## Ritmo y momento oportuno"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  d2b056c4b3edb54a:
+    english: A productive conversation has a rhythm. The right beat comes from a complex combination of factors and often feels intuitive, like a musician improvising. When is the moment to go deeper, or pull back? When is it right to bring in new information, or further delve into what’s already on the table? This is pacing.
+    translation: Una conversación productiva tiene un ritmo. Encontrar el adecuado depende de muchos factores y a menudo es intuitivo, como cuando improvisa una persona que toca música. ¿Cuándo conviene profundizar o dar un paso atrás? ¿Cuándo es oportuno aportar información nueva o explorar mejor lo que ya se ha planteado? De eso se trata gestionar el ritmo.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  d421940782402742:
+    english: Different participants will have different needs and preferences — some will need reigning in, while others need pulling along. The right pace emerges when a creative tension between digging deeper and moving forward is found. When it’s off, people will feel frustrated — either impatient or left behind.
+    translation: 'Cada participante tiene necesidades y preferencias distintas: algunas personas necesitarán moderar el paso y otras, un impulso para avanzar. El ritmo adecuado surge de equilibrar la profundización con el avance. Cuando se pierde ese equilibrio, algunas personas se impacientan y otras se quedan atrás.'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  7165c12910a2b3bb:
+    english: |-
+      * Because it’s asynchronous, people can read and respond at their own pace on Loomio, allowing a natural pace to emerge.
+      * It’s possible to scroll right past people moving slowly and push for forward momentum, and simultaneously possible to continue digging into something slowly while others press forward. This is not possible in synchronous communication.
+      * Proposal deadlines are a pace-setting tool. Topics that need to move quickly use shorter timeframes, and longer ones can have more time. Different decisions can go at different speeds.
+      * It’s easy to modulate your own pace of engagement. If a conversation is moving too fast or slowly for you, you can drop your input and step back, and then return later when a proposal is raised.
+      * It’s interesting to note how a “fast” decision on Loomio is 1 or 2 days, while a “fast” decision in person is more like 5 minutes. And yet, Loomio does not seem “slow”, the way taking 2 days to reach a decision in person would. Loomio runs decisions in parallel to other ongoing work, and it's much more efficient gathering everyone’s input on Loomio over 2 days versus having to schedule an in-person meeting.
+      * Facilitation on Loomio could be likened to “bullet time” (when Neo can stop time and just walk around a bullet in the Matrix) — you can walk through a living conversation frame by frame. It’s like a superpower.
+    translation: |-
+      * Como Loomio es asíncrono, cada persona puede leer y responder a su ritmo. Así puede surgir un ritmo natural.
+      * Puedes seguir avanzando aunque otras personas vayan más despacio. A la vez, quienes lo necesiten pueden seguir profundizando en un asunto mientras el resto avanza. Esto no es posible en la comunicación síncrona.
+      * Los plazos de las propuestas ayudan a marcar el ritmo. Los temas urgentes pueden tener plazos más cortos y los que requieren más tiempo, plazos más largos. Cada decisión puede avanzar a una velocidad distinta.
+      * Puedes ajustar fácilmente tu ritmo de participación. Si una conversación avanza demasiado rápido o demasiado despacio para ti, puedes aportar tu opinión, tomar distancia y volver más tarde cuando se presente una propuesta.
+      * Una decisión «rápida» en Loomio puede llevar uno o dos días, mientras que en persona podría llevar unos cinco minutos. Sin embargo, Loomio no parece lento del modo en que lo parecería una reunión presencial de dos días para tomar una decisión. Las decisiones avanzan en paralelo con otras tareas, y reunir las aportaciones de todo el mundo en Loomio durante dos días puede ser más eficiente que organizar una reunión presencial.
+      * Facilitar una conversación en Loomio se parece al «tiempo bala» de Matrix, cuando Neo puede detener el tiempo y caminar alrededor de una bala: puedes recorrer una conversación en curso paso a paso. Es casi como tener un superpoder.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  79fbcf8bb8520bf1:
+    english: "## Managing the Attention Economy"
+    translation: "## Gestionar la economía de la atención"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  c71302b08c3b6394:
+    english: A facilitator is a curator of attention. The information available can be literally infinite. It becomes critical to filter it in order to avoid becoming overwhelmed. Managing the attention economy means balancing importance against time and capacity.
+    translation: Quien facilita ayuda a orientar la atención. La información disponible puede ser prácticamente infinita, por lo que filtrarla es esencial para evitar la sobrecarga. Gestionar la economía de la atención significa equilibrar la importancia de cada asunto con el tiempo y la capacidad disponibles.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  865afb1b25257bbd:
+    english: Facilitation can help the group agree what the purpose and scope of a given discussion or process is, so they can have a rubric for prioritising attention. Limiting distractions and steering the conversation back on track are common interventions.
+    translation: La facilitación puede ayudar al grupo a acordar el propósito y el alcance de una discusión o un proceso. Así tendrá criterios para decidir dónde poner la atención. Limitar las distracciones y reconducir la conversación son intervenciones habituales.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  3dd99b496718a570:
+    english: Another important way facilitators work with attention is to insist on the group holding it long enough. When things get challenging, unclear, or uncomfortable, people to want to give up too soon, jump to another topic, or look away. A facilitator can help the group see things through, in service of their collective goals.
+    translation: Otra forma importante de gestionar la atención es ayudar al grupo a mantenerla el tiempo suficiente. Cuando un asunto se vuelve difícil, confuso o incómodo, puede surgir el impulso de abandonarlo demasiado pronto, cambiar de tema o mirar hacia otro lado. Quien facilita puede ayudar al grupo a seguir adelante para alcanzar sus objetivos comunes.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  811f79cee2eed8c1:
+    english: 'Structured processes and information sorting exercises are important facilitation tools in this area. Some examples:'
+    translation: 'Los procesos estructurados y los ejercicios para ordenar la información son herramientas de facilitación útiles en este ámbito. Por ejemplo:'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  1254ab2b182bbd46:
+    english: |-
+      * **Time-boxing** — specifying a period of brainstorming, or conversation on a given topic.
+      * **Agenda prioritisation** — listing everything people want to talk about and then picking to top items to focus on, before jumping into content.
+      * **Post-it cloud** — generating a bunch of ideas or questions and grouping them thematically and then condensing them into topics.
+      * **Parking lot** — a space to stick ideas or questions that come up that are not immediately relevant, to be addressed later.
+      * **What does success look like??** Defining success criteria and keeping the group focused on it until those criteria are achieved.
+    translation: |-
+      * **Limitar el tiempo** — fijar un período para generar ideas o conversar sobre un tema.
+      * **Priorizar la agenda** — enumerar todo lo que el grupo quiere tratar y elegir los asuntos principales antes de entrar en el contenido.
+      * **Agrupar notas adhesivas** — reunir ideas o preguntas, agruparlas por temas y resumirlas en asuntos concretos.
+      * **Aparcamiento de ideas** — reservar un espacio para las ideas o preguntas que surgen pero no son pertinentes en ese momento, y retomarlas más adelante.
+      * **¿Cómo sabremos que hemos tenido éxito?** Definir criterios de éxito y mantener al grupo centrado en ellos hasta cumplirlos.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  11cc1fd7daee10e8:
+    english: |-
+      * One of the most important attention management features in Loomio is topic-based discussion threading. There’s a reason why this format was one of the first to emerge in online communication decades ago, and continues to be used widely today: it’s a highly effective way to sort attention. Most Loomio users intuitively understand how to stay on topic when it’s listed in big letters at the top of the page.
+      * Activity in Loomio is the currency of its attention economy, and everything that generates a notification spends that currency. The software has opinions about what should be considered “salient” activity that generates notifications (for example, comments, votes, and outcomes are, while a “like” on a comment is not), developed based on user feedback.
+      * Users can exercise a lot of customised control over their Loomio attention economy through notification settings. Helping users set these preferences is an important tool to wisely using the attention economy of the group.
+      * Subgroups can be a powerful tool to help people moderate their attention economy. If only some people need to pay attention, you can split it out.
+      * The intentional but somewhat unpopular design decision to disallow concurrent proposals in Loomio is about the flow of attention — holding a group’s “feet to the fire” to fully process a proposal before moving on.
+    translation: |-
+      * Una de las funciones más importantes de Loomio para gestionar la atención es organizar las discusiones en hilos por tema. Este formato surgió hace décadas en la comunicación en línea y sigue siendo habitual porque ayuda a ordenar aquello a lo que prestamos atención. La mayoría de las personas que usan Loomio entienden intuitivamente que deben ceñirse al tema que aparece en letras grandes al principio de la página.
+      * La actividad es la moneda de la economía de la atención en Loomio: todo lo que genera una notificación consume parte de esa atención. A partir de los comentarios de las personas usuarias, el software determina qué actividades merecen una notificación. Por ejemplo, los comentarios, los votos y las conclusiones la generan, pero indicar que te gusta un comentario no.
+      * Puedes ajustar en gran medida cuánto de tu atención dedica Loomio a cada actividad mediante la configuración de notificaciones. Ayudar a las personas a establecer estas preferencias permite gestionar mejor la atención del grupo.
+      * Los subgrupos pueden ayudar a repartir la atención. Si un asunto solo requiere la participación de algunas personas, puedes tratarlo en un subgrupo.
+      * La decisión de diseño de no permitir propuestas simultáneas en Loomio, aunque no siempre resulte popular, busca que el grupo dedique suficiente atención a una propuesta antes de pasar a la siguiente.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  e522b56bbe8b16c9:
+    english: "> Many designers of information systems incorrectly represented their design problem as information scarcity rather than attention scarcity, and as a result they built systems that excelled at providing more and more information to people, when what was really needed were systems that excelled at filtering out unimportant or irrelevant information. — **[Wikipedia](https://en.wikipedia.org/wiki/Attention_economy)**"
+    translation: "> Muchos diseñadores de sistemas de información interpretaron erróneamente que el problema era la escasez de información y no la escasez de atención. Como resultado, crearon sistemas excelentes para ofrecer cada vez más información, cuando lo que se necesitaba eran sistemas capaces de filtrar la información poco importante o irrelevante. — **[Wikipedia](https://en.wikipedia.org/wiki/Attention_economy)**"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  12f78aa04c29d66d:
+    english: "## Facilitation Interventions"
+    translation: "## Intervenciones de facilitación"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  51065e352a92bf84:
+    english: There are as many facilitation techniques as there are facilitators in the world, and entire libraries of books have been written on the topic. It’s not possible to provide a comprehensive list of interventions.
+    translation: Hay tantas técnicas de facilitación como personas que facilitan, y se han escrito bibliotecas enteras sobre el tema. No es posible ofrecer una lista completa de intervenciones.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  1e23df53c3b816be:
+    english: 'However, it might be useful to consider two categories of interventions:'
+    translation: 'Sin embargo, puede ser útil distinguir dos tipos de intervenciones:'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  d5738a06518b45da:
+    english: |-
+      1. **Supportive interventions**: inviting contribution, going deeper, drawing out, coaxing, nurturing, protecting, creating space.
+      2. **Assertive interventions**: pulling back, shutting down, drawing lines, interrupting, challenging, steering on course, excluding bad behaviour.
+    translation: |-
+      1. **Intervenciones de apoyo**: invitar a participar, profundizar, ayudar a expresar ideas, animar, cuidar, proteger y crear espacio.
+      2. **Intervenciones firmes**: dar un paso atrás, detener una dinámica, establecer límites, interrumpir, cuestionar, reconducir y excluir comportamientos inadecuados.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  9f30fd7cd75da986:
+    english: Almost all interventions in face-to-face facilitation can be reimagined and employed in the online space.
+    translation: Casi todas las intervenciones de la facilitación presencial pueden adaptarse y emplearse en línea.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  1ed397ff049f2888:
+    english: "> Singling people out for a contribution will just make them feel like the stupid kid in class who doesn’t know the answer. Instead, a general invite to people who haven’t spoken yet to contribute tells the regular contributors to stay quiet, and gives quieter people the opportunity to step forward. — Silvia Zuur"
+    translation: "> Pedir directamente a una persona que contribuya puede hacer que se sienta como quien no sabe la respuesta en clase. En cambio, una invitación general a participar dirigida a quienes aún no han hablado indica a quienes suelen intervenir que dejen espacio y da a las personas más calladas la oportunidad de hacerlo. — Silvia Zuur"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  2d6c0a7189745fe1:
+    english: |-
+      * Intervention tools in Loomio include comments, @mentions, adding/removing users, and starting/deleting discussions. These can be employed for various forms of supportive and assertive interventions.
+      * The most commonly used intervention is the comment — simply talking to the group and inviting or trying to reduce certain behaviour.
+      * [Participation permissions](/en/user_manual/groups/settings/#permissions) offer relatively blunt but effective tools to moderate users, such as allowing or disallowing posting discussions or proposals.
+      * Loomio offers some trust-based features that other tools lack, such as the default ability for all participants to edit discussion contexts (even if it was posted originally by another user). These are inspired by things like Wikipedia and open source software development.
+    translation: |-
+      * Las herramientas de intervención de Loomio incluyen los comentarios, las @menciones, añadir o eliminar usuarios e iniciar o eliminar discusiones. Sirven para distintas intervenciones de apoyo y para establecer límites.
+      * La intervención más habitual es comentar: dirigirse al grupo para invitar a participar o intentar reducir determinados comportamientos.
+      * Los [permisos de participación](/en/user_manual/groups/settings/#permissions) ofrecen herramientas sencillas pero eficaces para moderar la participación, como permitir o impedir que se publiquen discusiones o propuestas.
+      * Loomio ofrece funciones basadas en la confianza que otras herramientas no tienen. Por ejemplo, de forma predeterminada, todas las personas participantes pueden editar el contexto de una discusión, aunque lo haya escrito otra persona. Estas funciones se inspiran en proyectos como Wikipedia y el desarrollo de software de código abierto.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'

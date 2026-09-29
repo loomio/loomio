@@ -1,0 +1,255 @@
+---
+navigation_title: Exportation des données
+blocks:
+  '053719812e2be1ea':
+    english: "# Group data backup or export"
+    translation: "# Sauvegarder ou exporter les données d’un groupe"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  42721518a91907da:
+    english: 'With the group data export feature you can:'
+    translation: 'La fonction d’exportation des données d’un groupe vous permet de :'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  f978c97e52e0b00a:
+    english: |-
+      - Download a file containing member data to audit group membership.
+      - Download content of your group including text of threads and polls for archive or analysis.
+      - Open poll results in a spreadsheet or scripting language.
+      - [Print or save PDF's of a thread or poll for archival purposes.](#print-thread-to-pdf)
+      - Move your group, including all users, threads, polls, and files to another Loomio server.
+    translation: |-
+      - Télécharger un fichier contenant les données des membres pour vérifier la composition du groupe.
+      - Télécharger le contenu de votre groupe, notamment le texte des discussions et des sondages, pour l’archiver ou l’analyser.
+      - Ouvrir les résultats des sondages dans un tableur ou les traiter avec un langage de script.
+      - [Imprimer une discussion ou un sondage, ou l’enregistrer au format PDF pour l’archiver.](#print-thread-to-pdf)
+      - Transférer votre groupe, avec tous ses utilisateurs, discussions, sondages et fichiers, vers un autre serveur Loomio.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  94b3081b62cd0a45:
+    english: If you ever want to move from Loomio managed servers [to your own](https://github.com/loomio/loomio), you can use this feature.
+    translation: Vous pouvez utiliser cette fonction si vous souhaitez quitter les serveurs gérés par Loomio pour passer [à votre propre serveur](https://github.com/loomio/loomio).
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  223d5690921676c4:
+    english: If you're running your own Loomio server, and would rather not anymore, Loomio offer managed hosting in USA, EU and Australia. If you'd like to migrate your group to one of these servers, please [contact us](/contact).
+    translation: Si vous gérez votre propre serveur Loomio et souhaitez passer à un hébergement géré, Loomio propose des serveurs aux États-Unis, dans l’Union européenne et en Australie. Pour y transférer votre groupe, [contactez-nous](/contact).
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  cabd4ab01146ea7c:
+    english: "[Contact us](/contact) if you would like to transfer your Loomio group from Loomio's global hosted service at loomio.com to one of our regional services; loomio.eu for Europe or loomio.nz for Australia and New Zealand."
+    translation: "[Contactez-nous](/contact) si vous souhaitez transférer votre groupe du service mondial hébergé par Loomio sur loomio.com vers l’un de nos services régionaux : loomio.eu pour l’Europe ou loomio.nz pour l’Australie et la Nouvelle-Zélande."
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  7f2ecd944aa32dbf:
+    english: "## Export data"
+    translation: "## Exporter les données"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  84dc26a340a5515c:
+    english: Open the group drop down menu by clicking on the three dots, and select **Export group data**.
+    translation: Ouvrez le menu du groupe en cliquant sur les trois points, puis sélectionnez **Exporter les données de ton groupe**.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  aff0fe2a7c8a4387:
+    english: "![Export group data action in the Oatmilk Cooperative menu](group_export_group_data.png)"
+    translation: "![Option d’exportation des données du groupe dans le menu d’Oatmilk Cooperative](group_export_group_data.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  89b404c37ca3eacb:
+    english: "### Export group data as CSV"
+    translation: "### Exporter les données du groupe au format CSV"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  fe148be194ea7678:
+    english: "*For working with the group data in a spreadsheet, such as with MS Excel or Google Sheets.*"
+    translation: "*Pour utiliser les données du groupe dans un tableur comme MS Excel ou Google Sheets.*"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  8f19e7d0c067abec:
+    english: Loomio prepares the CSV file in the background and emails you a download link when it is ready. The link is available for one week.
+    translation: Loomio prépare le fichier CSV en arrière-plan et vous envoie un lien de téléchargement par courriel lorsqu’il est prêt. Le lien reste disponible pendant une semaine.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  4272b6e6d986f710:
+    english: "### Export group data as HTML"
+    translation: "### Exporter les données du groupe au format HTML"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  e3076a79c179d09d:
+    english: "*For when you want to save the data for archival purposes.*"
+    translation: "*Pour conserver les données dans des archives.*"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  5936d07e505560ae:
+    english: Loomio prepares the HTML file in the background and emails you a download link when it is ready. The link is available for one week.
+    translation: Loomio prépare le fichier HTML en arrière-plan et vous envoie un lien de téléchargement par courriel lorsqu’il est prêt. Le lien reste disponible pendant une semaine.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  c81ccbae7a016e39:
+    english: "### Export group data as JSON"
+    translation: "### Exporter les données du groupe au format JSON"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  857b562cb95497c6:
+    english: "*For when you want to move your group data to a self-hosted Loomio instance.*"
+    translation: "*Pour transférer les données de votre groupe vers une instance Loomio que vous hébergez vous-même.*"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  a1b7f7b282933a3c:
+    english: 'You must be an admin of the group to export it. The JSON export includes:'
+    translation: 'Vous devez être administrateur du groupe pour l’exporter. L’exportation JSON comprend :'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  6a0b307d50fa35cf:
+    english: |-
+      - The group, its members and membership requests
+      - Threads, comments, reactions, tags, templates, notifications and related records from the included groups
+      - Polls, options, votes and outcomes; an anonymous poll is included only after it has closed
+      - Subgroups you belong to
+      - Open and closed subgroups when you export their parent group as a parent group admin, even if you do not belong to those subgroups
+      - References to files and images attached to the included content
+    translation: |-
+      - Le groupe, ses membres et les demandes d’adhésion
+      - Les discussions, commentaires, réactions, étiquettes, modèles, notifications et données associées des groupes inclus
+      - Les sondages, options, votes et conclusions ; un sondage anonyme n’est inclus qu’après sa clôture
+      - Les sous-groupes dont vous faites partie
+      - Les sous-groupes ouverts et fermés lorsque vous exportez leur groupe parent en tant qu’administrateur de ce groupe, même si vous ne faites pas partie de ces sous-groupes
+      - Les références aux fichiers et images joints au contenu inclus
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  4dee92f966ec24c9:
+    english: 'The JSON export does not include:'
+    translation: 'L’exportation JSON ne comprend pas :'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  a40deeed41d9937e:
+    english: |-
+      - Secret subgroups you do not belong to, including their membership and content
+      - Subgroups awaiting deletion
+      - Anonymous polls that have not closed
+      - Direct threads and polls that do not belong to the group
+    translation: |-
+      - Les sous-groupes secrets dont vous ne faites pas partie, ainsi que leurs membres et leur contenu
+      - Les sous-groupes en attente de suppression
+      - Les sondages anonymes qui ne sont pas encore clos
+      - Les discussions et sondages directs qui n’appartiennent pas au groupe
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  d789fbf93f8cebeb:
+    english: You'll shortly receive an email with a link to downloading the JSON file.
+    translation: Vous recevrez bientôt un courriel contenant un lien pour télécharger le fichier JSON.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  45e84928165064c0:
+    english: "## Print thread to pdf"
+    translation: "## Imprimer une discussion au format PDF"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  aeefd6206678dc53:
+    english: You may need to extract a copy of a thread to store in a separate file archive.
+    translation: Vous pouvez extraire une copie d’une discussion pour la conserver dans des archives distinctes.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  e3f452ea171c0fd5:
+    english: "**Print** thread retains all comments, polls, votes and outcomes, along with thread formatting."
+    translation: L’option **Imprimer** conserve tous les commentaires, sondages, votes et conclusions, ainsi que la mise en forme de la discussion.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  374e78cd9af57cfd:
+    english: In the thread menu click on the 3 dots menu (⋯) and choose **Print**. Loomio will generate an HTML page that you can then print or "save to pdf" using the print tool in your browser.
+    translation: Dans le menu de la discussion, cliquez sur les trois points (⋯), puis choisissez **Imprimer**. Loomio génère une page HTML que vous pouvez imprimer ou enregistrer au format PDF avec la fonction d’impression de votre navigateur.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  8bc0f6441f7870fe:
+    english: You can copy the page to paste it into a document editor, file, or data repository.
+    translation: Vous pouvez copier la page et la coller dans un éditeur de documents, un fichier ou un dépôt de données.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  acd7219673eb8a9d:
+    english: "![Print action for the returnable bottles discussion](discussion_print_discussion.png#width-90)"
+    translation: "![Option Imprimer pour la discussion sur les bouteilles consignées](discussion_print_discussion.png#width-90)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  8e0c22aed33c3826:
+    english: "## Import your group data on another Loomio server"
+    translation: "## Importer les données de votre groupe sur un autre serveur Loomio"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  552e7e7dac6e8c45:
+    english: 'For instructions on setting up your own Loomio server, visit: https://github.com/loomio/loomio'
+    translation: 'Pour savoir comment configurer votre propre serveur Loomio, consultez : https://github.com/loomio/loomio'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  a2ca329b6fa836cf:
+    english: 'If you are hosting your own Loomio deployment, and would like to import your exported data:'
+    translation: 'Si vous hébergez votre propre instance Loomio et souhaitez importer les données exportées :'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  6d584f8aa2b00d1a:
+    english: 'Copy the .json file to the container instance''s `import` folder:'
+    translation: 'Copiez le fichier .json dans le dossier `import` de l’instance du conteneur :'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  '007668b33284b9fc':
+    english: "`scp your-group-data.json username@some-domain.org:loomio-deploy/import`"
+    translation: "`scp your-group-data.json username@some-domain.org:loomio-deploy/import`"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  98fc0efbb6678c24:
+    english: 'Access the running Rails console:'
+    translation: 'Accédez à la console Rails de l’instance en cours d’exécution :'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  aa137a229b7d9684:
+    english: "`docker exec -ti loomio-app rails console`"
+    translation: "`docker exec -ti loomio-app rails console`"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  67b9086f5b47cff8:
+    english: 'Call the service:'
+    translation: 'Appelez le service :'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  d9c4f9a50d248ab9:
+    english: "`GroupExportService.import('/import/your-group-data.json')`"
+    translation: "`GroupExportService.import('/import/your-group-data.json')`"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'

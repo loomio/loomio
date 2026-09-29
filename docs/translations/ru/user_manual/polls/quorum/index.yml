@@ -1,0 +1,105 @@
+---
+navigation_title: Кворум
+blocks:
+  '038bd6f53f9e8861':
+    english: "# Quorum"
+    translation: "# Кворум"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  a79abb23e8e1c82f:
+    english: A quorum is the minimum percentage of eligible voters who must participate for a poll to be valid. Use it when your governance process requires a particular level of participation.
+    translation: Кворум — минимальный процент людей с правом голоса, которые должны проголосовать, чтобы голосование считалось действительным. Используйте его, если для принятия решений в вашей группе требуется определённый уровень участия.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  d83e75068f697f6f:
+    english: When creating a poll, open **More settings** and enter the required percentage in **Participation quorum**. Leave the field blank when no quorum is required.
+    translation: При создании опроса откройте **Дополнительные настройки** и укажите нужный процент в поле **Кворум участия**. Если кворум не нужен, оставьте поле пустым.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  a04b99724fe62a56:
+    english: "![The Quorum setting with a 60 percent participation quorum](./quorum-section.png)"
+    translation: "![Настройка кворума участия на уровне 60 процентов](./quorum-section.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  432f570094ad5b24:
+    english: You can also set a quorum in a [poll template](/en/user_manual/polls/poll_templates/) so that polls created from that template use it by default.
+    translation: Кворум также можно задать в [шаблоне опроса](/en/user_manual/polls/poll_templates/). Тогда он будет применяться по умолчанию к опросам, созданным по этому шаблону.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  52841ec4c6253973:
+    english: "## Example scenario"
+    translation: "## Пример"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  96ded9027f394b57:
+    english: Oatmilk Cooperative is discussing a six-week returnable bottle trial. The discussion has reached the point where the cooperative needs to approve the trial budget.
+    translation: Кооператив Oatmilk обсуждает шестинедельное испытание возвратных бутылок. Теперь кооперативу нужно утвердить бюджет испытания.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  7acd5f99c209cec0:
+    english: Jamie selects **Start a vote**, chooses the **Consent** proposal template, and completes the title, details, options, duration, and voter settings.
+    translation: Джейми выбирает **Начать голосование**, затем шаблон предложения **Согласие** и заполняет название, описание, варианты ответа, срок и настройки для голосующих.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  c5bd111a40bc588f:
+    english: "![The proposal title, details, options, duration, and voter settings](proposal-options.png)"
+    translation: "![Название предложения, описание, варианты ответа, срок и настройки для голосующих](proposal-options.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  7ba26dd025983d8d:
+    english: Jamie limits the vote to the five people responsible for the trial budget.
+    translation: Джейми ограничивает участие в голосовании пятью людьми, отвечающими за бюджет испытания.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  ef25fbaed498cfbe:
+    english: The cooperative requires 60 percent participation for significant decisions, so Jamie enters **60** in the participation quorum field and starts the proposal.
+    translation: Для важных решений кооператив требует участия не менее 60 процентов голосующих. Поэтому Джейми вводит **60** в поле кворума участия и запускает предложение.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  b1cd37eb5ed44589:
+    english: Before anyone votes, the results panel shows that the quorum has not been reached.
+    translation: До первого голоса панель результатов показывает, что кворум ещё не достигнут.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  1b8a41f8c5939665:
+    english: "![No votes cast and the 60 percent quorum not yet reached](pie-chart-0.png)"
+    translation: "![Голосов пока нет, кворум в 60 процентов не достигнут](pie-chart-0.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  ff36e799ac095caf:
+    english: Jamie agrees and Samira disagrees. The chart updates, but two of five eligible voters is only 40 percent participation, so the quorum is still not reached.
+    translation: Джейми соглашается, а Самира не соглашается. Диаграмма обновляется, но два человека из пяти — это только 40 процентов. Кворум всё ещё не достигнут.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  7ad216922d5d4dcb:
+    english: "![Two of five votes cast and the quorum not yet reached](pie-chart-40.png)"
+    translation: "![Проголосовали двое из пяти, кворум ещё не достигнут](pie-chart-40.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  554dc5536fdb1a60:
+    english: Alex then agrees. Three of five eligible voters have participated, reaching the 60 percent quorum. The requirement now shows a green check mark. Jamie can close the poll early or wait for the remaining voters.
+    translation: Затем Алекс соглашается. Проголосовали трое из пяти, и кворум в 60 процентов достигнут. Рядом с требованием появляется зелёная галочка. Джейми может закрыть опрос досрочно или дождаться остальных голосов.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  e792db36d3223ce3:
+    english: "![Three of five votes cast and the 60 percent quorum reached](pie-chart-60.png)"
+    translation: "![Проголосовали трое из пяти, кворум в 60 процентов достигнут](pie-chart-60.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'

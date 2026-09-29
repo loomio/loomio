@@ -1,0 +1,177 @@
+---
+navigation_title: תהליך פשוט לקבלת החלטות
+blocks:
+  84ddd86a61d09414:
+    english: "# Simple decision process"
+    translation: "# תהליך פשוט לקבלת החלטות"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  2e868ae6bc4a493b:
+    english: This guide describes an end-to-end process using a discussion, Sense check, final proposal, and outcome. For help with the fields and response options of one proposal, see [Proposals](/en/user_manual/polls/proposals/).
+    translation: מדריך זה מתאר תהליך מלא הכולל דיון, בדיקת חושים, הצעה סופית ומסקנה. להסבר על השדות ואפשרויות התגובה בהצעה, ראו [הצעות](/en/user_manual/polls/proposals/).
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  d9877680762afa22:
+    english: Some organizations arrive at Loomio having already developed a deep culture and practice of collaborative decision making.  Such organizations have often written handbooks and codified their practices, however, most organizations are still on the journey and looking for some helpful first steps towards making better decisions together.  If the burning question in your organization is **how do we make decisions together?**, then this guide is for you.
+    translation: יש ארגונים שמגיעים ללומיו עם תרבות מבוססת של קבלת החלטות משותפת. לעיתים קרובות יש להם מדריכים ונהלים כתובים. ארגונים רבים אחרים עדיין מחפשים צעדים ראשונים שיעזרו להם לקבל החלטות טובות יותר יחד. אם השאלה המרכזית בארגון היא **איך מקבלים החלטות יחד?**, המדריך הזה נועד לסייע.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  6b321a0ba71f92b8:
+    english: "***Here are three steps to help you co-create a better, more cohesive decision with less stress and anxiety.***"
+    translation: "***שלושה צעדים לגיבוש החלטה טובה ומגובשת יותר, עם פחות מתח וחשש.***"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  c46b32b56b933b0a:
+    english: "## Simple decision making - in 3 steps"
+    translation: "## קבלת החלטות פשוטה - בשלושה צעדים"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  e3208a84f88ba36f:
+    english: Good collaborative decisions rarely happen by themselves.  They almost always benefit from someone facilitating the discussion through to decision.  So when you launch a discussion thread, you take on a facilitation role (unless someone else is facilitating).
+    translation: החלטות משותפות טובות מתקבלות לעיתים רחוקות מעצמן. בדרך כלל כדאי שיהיה מי שינחה את הדיון עד לקבלת החלטה. פתיחת שרשור דיון כרוכה גם בתפקיד הנחיה, אלא אם מישהו אחר מנחה אותו.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  1a1da8788ddb01c7:
+    english: Follow these 3 steps as you facilitate your group to make a good decision.
+    translation: ניתן להיעזר בשלושת הצעדים האלה כדי להנחות את הקבוצה לקבלת החלטה טובה.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  5b83a53a3f4caad5:
+    english: |-
+      ### Step 1 - Introduce and discuss
+      Start a Loomio **discussion** to introduce the topic, open conversation and invite people. Include all the context-setting information your group needs to meaningfully participate, along with relevant background so everyone understands the purpose.
+    translation: |-
+      ### צעד 1 - הצגת הנושא ודיון
+      יש לפתוח **דיון** בלומיו כדי להציג את הנושא, להתחיל שיחה ולהזמין אנשים להשתתף. כדאי לכלול את כל המידע הדרוש לקבוצה להשתתפות משמעותית, לצד רקע שיעזור לכולם להבין את מטרת הדיון.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  8aab998cb04b8635:
+    english: 'Be clear about your objective - what is the decision to be made or intended outcome of the discussion? '
+    translation: 'כדאי להגדיר מטרה ברורה: איזו החלטה צריך לקבל, או מהי המסקנה הרצויה מהדיון?'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  d8f53cbae173f5ac:
+    english: As the discussion progresses, create space for diverse input - sometimes the best ideas and input come from outside the box.  Work together to explore and test ideas, encouraging a healthy and open discussion.
+    translation: ככל שהדיון מתקדם, יש לאפשר מגוון דעות. לפעמים הרעיונות הטובים ביותר מגיעים מכיוון לא צפוי. כדאי לבחון רעיונות יחד ולעודד דיון פתוח וענייני.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  7f447ab455f6cea4:
+    english: 'Notice when the same voices are dominating and invite some of the quieter people to contribute by @mentioning them and asking them what they think. '
+    translation: כדאי לשים לב אם אותם אנשים תופסים את רוב מקום בדיון. ניתן להזמין אנשים שטרם השמיעו את דעתם להשתתף באמצעות אזכור שלהם עם @ ושאלה לדעתם.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  d4bad2b5207ac1d8:
+    english: You can make a complex discussion easier to engage with by updating the context section with a summary of the key points.
+    translation: כדי להקל על ההשתתפות בדיון מורכב, ניתן לעדכן את חלק ההקשר בסיכום הנקודות המרכזיות.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  daeddff561f62553:
+    english: |-
+      ### Step 2 - Sense check
+      As your group begins to converge on path forwards, use a **Sense check** poll to survey opinions and test how the group feels.
+    translation: |-
+      ### צעד 2 - בדיקת חושים
+      כשהקבוצה מתחילה להתכנס לכיוון פעולה, ניתן להשתמש במשאל **בדיקת חושים** כדי לברר דעות ולבדוק מה עמדת הקבוצה.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  c1d4e97ce180d85b:
+    english: |-
+      A ‘Sense check’ lets people know a proposal is forming and encourages them to engage.
+      It can also be used to clarify an issue, even if the solution might not be apparent yet.
+    translation: |-
+      ״בדיקת חושים״ מבהירה שמתגבשת הצעה ומעודדת השתתפות.
+      אפשר להשתמש בה גם כדי להבהיר סוגיה, אפילו אם עדיין אין פתרון ברור.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  5ff914227bb8706a:
+    english: Sense check is a great way to surface concerns before moving to a formal agreement.  You can find out if people are happy with where this is going, if they have questions or need more time, or if they are concerned.
+    translation: בדיקת חושים מאפשרת להעלות חששות לפני שמגיעים להסכמה רשמית. כך ניתן לגלות אם יש תמיכה בכיוון המסתמן, אם יש שאלות או צורך בזמן נוסף, ואם יש חששות.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  01433544fefb70a5:
+    english: 'Use feedback to improve and refine the proposal. If there’s still some work to do, you may need to go back to Step 1 and then run another Sense check round. '
+    translation: יש להשתמש במשוב כדי לשפר ולדייק את ההצעה. אם נדרשת עוד עבודה, אפשר לחזור לצעד 1 ולאחר מכן לערוך סבב נוסף של בדיקת חושים.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  440474199fd76019:
+    english: Good engagement will help you assess when you are ready to proceed to a proposal.
+    translation: השתתפות בדיון תעזור להעריך מתי אפשר להתקדם להצעה.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  f3799fd76f9d9446:
+    english: "### Step 3 - Proposal\nNow when you raise a formal **Proposal**, you do so with confidence that it will pass. "
+    translation: |-
+      ### צעד 3 - הצעה
+      כעת ניתן להעלות **הצעה** רשמית מתוך ביטחון שיש לה סיכוי להתקבל.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  a3e74110f5a3c7a2:
+    english: There may have been a lot of discussion and variations suggested, so be specific about the decision being made, so that everyone knows what the voting options mean.
+    translation: ייתכן שבדיון עלו רעיונות וגרסאות רבות. יש לנסח במדויק את ההחלטה המוצעת, כדי שמשמעותן של אפשרויות ההצבעה תהיה ברורה לכולם.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  b7581cfd1ecffd78:
+    english: Set proposal deadlines consciously, so group members have time to consider and engage.  You can always extend the closing date if need be.
+    translation: יש לקבוע את מועד הסגירה של ההצעה כך שלחברי הקבוצה יהיה זמן לשקול אותה ולהשתתף. במקרה הצורך, תמיד אפשר להאריך את מועד הסגירה.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  b5bcc06f15cde560:
+    english: This step is important to formalize agreement with people’s vote and to state an outcome - what just happened and what will happen next.
+    translation: 'הצעד הזה מאפשר לתעד את ההסכמה באמצעות הצבעה ולפרסם מסקנה: מה הוחלט ומה יקרה בהמשך.'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  c2f2bbcacfd77ab0:
+    english: Proposal results are logged, along with a record of the discussion leading to the decision.
+    translation: תוצאות ההצעה מתועדות לצד הדיון שהוביל להחלטה.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  2d82209e751f2ffa:
+    english: |-
+      ### Outcome
+      When a Loomio poll closes, you will be prompted to set an **outcome** to let everyone know what happened and what is going to happen next.
+    translation: |-
+      ### מסקנה
+      כשמשאל בלומיו נסגר, תופיע בקשה לפרסם **מסקנה** כדי לעדכן את כולם במה שקרה ובמה שיקרה בהמשך.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  fb14b31115927d74:
+    english: "## Proposals can help in many situations"
+    translation: "## הצעות מועילות במצבים רבים"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  c1a27b25e2c01ff3:
+    english: 'Don''t hesitate to start a proposal just because you''re not sure everyone will agree - proposals are not only for when you have consensus, they''re designed to surface issues that need resolving and are useful for clarifying disagreements. '
+    translation: אפשר לפתוח הצעה גם כשלא ברור אם כולם יסכימו. הצעות אינן מיועדות רק למצבים שבהם כבר קיימת הסכמה. הן עוזרות להעלות סוגיות שדורשות פתרון ולהבהיר חילוקי דעות.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  6dbf0f3af984b8e8:
+    english: The next pages show a few more complex processes for reaching decisions, through [advice](/en/guides/making_decisions/advice_process), [consent](/en/guides/making_decisions/consent_process ), or [consensus](/en/guides/making_decisions/consensus_process ).
+    translation: בעמודים הבאים מוצגים תהליכים מורכבים מעט יותר לקבלת החלטות באמצעות [התייעצות](/en/guides/making_decisions/advice_process), [הסכמה ללא התנגדות](/en/guides/making_decisions/consent_process ) או [קונצנזוס](/en/guides/making_decisions/consensus_process ).
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'

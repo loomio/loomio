@@ -1,0 +1,61 @@
+---
+navigation_title: דיונים ישירים
+blocks:
+  ba470546359b688d:
+    english: "# Direct discussions"
+    translation: "# דיונים ישירים"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  b3ed13f5612f4ff9:
+    english: A direct discussion is a private discussion for a specific set of people.
+    translation: דיון ישיר הוא דיון פרטי לקבוצה מסוימת של אנשים.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  479f7faed056ab51:
+    english: A direct discussion does not belong to a group. Invited people do not need to be a member of your Loomio group.
+    translation: דיון ישיר אינו שייך לקבוצה. אנשים שהוזמנו אינם צריכים להיות חברים בקבוצת Loomio.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  2f5362faecc07fa0:
+    english: You control who can see and participate by adding people or email addresses to the **Invite** field.
+    translation: כדי לקבוע מי יוכל לראות את הדיון ולהשתתף בו, יש להוסיף אנשים או כתובות דוא״ל לשדה **הזמן**.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  f31343ea54b4f899:
+    english: Direct discussions support the same comments, polls and other tools as group discussions. They can be useful when creating a subgroup is unnecessary.
+    translation: בדיונים ישירים אפשר להשתמש בתגובות, במשאלים ובכלים נוספים, כמו בדיונים קבוצתיים. הם שימושיים כשאין צורך ליצור תת־קבוצה.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  8dcb1cd81ca79192:
+    english: "![A direct discussion form with no group selected and Samira Patel in the Invite field](direct-discussion-example.png)"
+    translation: "![טופס לדיון ישיר ללא קבוצה נבחרת, כשסמירה פאטל מופיעה בשדה הזמן](direct-discussion-example.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  6e1409b4f3f725d9:
+    english: Select **Direct threads** in the sidebar to see your direct discussions. Select **New discussion** on that page to start another one.
+    translation: כדי לראות את הדיונים הישירים, יש לבחור **חוטים ישירים** בסרגל הצד. כדי לפתוח דיון נוסף, יש לבחור **דיון חדש** בדף זה.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  f77108fd74372c43:
+    english: "![The Direct threads sidebar item and the list of direct discussions](direct-discussion-sidebar.png)"
+    translation: "![הפריט חוטים ישירים בסרגל הצד ורשימת הדיונים הישירים](direct-discussion-sidebar.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  5a0b9426a2d88e62:
+    english: |-
+      ## Contacting someone via a direct discussion
+      A direct discussion can be used to contact one or more people privately without creating a subgroup.
+    translation: |-
+      ## יצירת קשר באמצעות דיון ישיר
+      ניתן להשתמש בדיון ישיר כדי ליצור קשר באופן פרטי עם אדם אחד או יותר, בלי ליצור תת־קבוצה.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'

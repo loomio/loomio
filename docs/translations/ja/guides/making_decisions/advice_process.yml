@@ -1,0 +1,194 @@
+---
+navigation_title: アドバイスプロセス
+blocks:
+  22e829e1a21a5671:
+    english: "# Advice process"
+    translation: "# アドバイスプロセス"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  580a24a283790875:
+    english: This guide describes the complete Advice process. For help setting up and interpreting one Advice proposal, see [Advice](/en/user_manual/polls/proposals/advice/).
+    translation: このガイドでは、アドバイスプロセスの全体を説明します。個々のアドバイス提案の設定方法と解釈については、[アドバイス](/en/user_manual/polls/proposals/advice/)をご覧ください。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  b625cc22d87fc038:
+    english: "![Photo of yoda implying sage advice - *Photo by Nadir sYzYgY on Unsplash*](nadir-syzygy-den6gTowZKs-unsplash.jpg)"
+    translation: "![賢明な助言を連想させるヨーダの写真 - *写真：Nadir sYzYgY、Unsplash*](nadir-syzygy-den6gTowZKs-unsplash.jpg)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  aa1feddec315ed04:
+    english: Seek advice on a decision you need to make.
+    translation: 自分が下す必要のある決定について、助言を求めます。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  abd59b5e28c00123:
+    english: Make a decision with the advice of people impacted or who have expertise, so you can make a better decision for your organization.
+    translation: 影響を受ける人や専門知識を持つ人の助言を踏まえて決定します。そうすることで、組織にとってよりよい決定ができます。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  fce0c96bcc92d0aa:
+    english: "> *“With the advice process, any person can make any decision but must seek advice from affected parties and people with expertise.” - Frederick Laloux, Reinventing Organizations.*"
+    translation: "> *「アドバイスプロセスでは、誰でもどんな決定でも下せます。ただし、影響を受ける人と専門知識を持つ人に助言を求めなければなりません。」― フレデリック・ラルー『ティール組織』*"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  66f32f2b3cf56e0d:
+    english: |-
+      ## Key points
+      - Freedom to make a decision.
+      - Invite people to offer their advice.
+      - Take into account other people’s voices.
+    translation: |-
+      ## 要点
+      - 自ら決定する自由があります。
+      - 人々に助言を求めます。
+      - ほかの人の意見を考慮します。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  54d4f1ac3c2bd91f:
+    english: |-
+      ## Steps in the Advice process
+      You notice a problem or opportunity and take the initiative.
+      1. Frame the decision, identify who owns it, and invite the affected people and relevant experts.
+      2. Start a Loomio **discussion** and, when a structured response or deadline is useful, run an **Advice proposal**.
+      3. Clarify and build on the advice through vote reasons and discussion comments.
+      4. Make the decision, then publish an **outcome** explaining what was decided and how the advice informed it.
+    translation: |-
+      ## アドバイスプロセスの手順
+      問題や機会に気づき、自ら行動を起こします。
+      1. 決定すべきことと、その決定を担う人を明確にし、影響を受ける人や関係する専門家を招待します。
+      2. Loomioで**ディスカッション**を開始します。回答形式や期限を定めたい場合は、**アドバイス提案**を実施します。
+      3. 投票理由やディスカッションのコメントを通じて、助言を確認し、理解を深めます。
+      4. 決定を下し、何を決めたか、助言をどう生かしたかを説明する**結論**を公開します。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  6088bbd1e12e8920:
+    english: "## Benefits\n- Advice helps you make a better decision for your organization. \n- Foster relationships, learning opportunities and diverse input.\n- Stimulate initiative and creativity, and more enjoyable work."
+    translation: |-
+      ## 利点
+      - 助言を得ることで、組織にとってよりよい決定ができます。
+      - 人との関係や学ぶ機会が生まれ、多様な意見を取り入れられます。
+      - 自発性と創造性が高まり、仕事もより楽しくなります。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  0b6fc6b802feebda:
+    english: "## Applying the Advice process on Loomio"
+    translation: "## Loomioでアドバイスプロセスを実践する"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  a0a3c706db8ca405:
+    english: "| **Advice process** | **On Loomio** |\n|---|---|\n| You notice a problem or opportunity and take the initiative. |  |\n| Seek input to sound out perspectives before proposing action. | Start a Loomio **discussion** to provide context and open conversation. Run an **[Advice proposal](/en/user_manual/polls/proposals/advice/)** when you want a defined response period, vote reasons, and a clear record of who participated. |\n| Taking advice received into account, you make a decision and inform the people who have given advice. | Add an an **outcome** to the discussion thread.   <br /><br />State the decision made and thank people for their advice and feedback.  <br /><br />   Say what will happen next and notify people about the outcome.  <br /><br />The outcome statement is an important record of the decision for future reference. <br /> <br /> Either update the context to include this outcome, or state it in a comment you pin to the timeline to quickly find it in the future.<br /><br/> |        "
+    translation: |-
+      | **アドバイスプロセス** | **Loomioでの操作** |
+      |---|---|
+      | 問題や機会に気づき、自ら行動を起こします。 |  |
+      | 行動を提案する前に意見を求め、さまざまな視点を確かめます。 | Loomioで**ディスカッション**を開始し、背景を共有して話し合います。回答期間を定め、投票理由を集め、参加者を明確に記録したい場合は、**[アドバイス提案](/en/user_manual/polls/proposals/advice/)**を実施します。 |
+      | 受け取った助言を踏まえて決定し、助言をくれた人に伝えます。 | ディスカッションのスレッドに**結論**を追加します。   <br /><br />決定した内容を述べ、助言や意見をくれた人に感謝を伝えます。  <br /><br />   次に何が起こるかを説明し、結論を人々に通知します。  <br /><br />結論は、後から決定を振り返るための重要な記録になります。 <br /> <br /> 後で見つけやすいように、コンテキストを更新して結論を記載するか、タイムラインに固定するコメントに記載します。<br /><br/> |
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  f303a5de08c09a87:
+    english: "## Example of an Advice process on Loomio"
+    translation: "## Loomioでのアドバイスプロセスの例"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  12055e74d3733a99:
+    english: "### Step 0 - You notice a problem or opportunity and take the initiative."
+    translation: "### ステップ0 - 問題や機会に気づき、自ら行動を起こす"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  77f49576383e36ca:
+    english: Is the problem or opportunity is worth pursuing?  Takashi is experiencing problems with his old computer, and it crashed during a recent presentation.
+    translation: 取り組む価値のある問題や機会でしょうか。  タカシは古いパソコンに不具合を抱えており、最近のプレゼンテーション中に動かなくなりました。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  997d519afbb87519:
+    english: Is there a decision to be made?  It's time to replace the computer.
+    translation: 決めるべきことはありますか。  パソコンを買い替える時期です。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  fea51a2c49fc3f27:
+    english: Does it impact other people and your organization?  Takashi's colleagues want him to perform his role effectively, not waste time in meetings, and so appreciate he needs a working computer.  Purchase of a piece of equipment also impacts on the organization budget, purchasing policies and may need to be aligned with other team members.
+    translation: ほかの人や組織に影響しますか。  同僚は、タカシが会議中に時間を無駄にせず、役割を十分に果たせることを望んでいます。そのため、使えるパソコンが必要だと理解しています。  機器の購入は組織の予算や購買方針にも関わり、ほかのチームメンバーとの調整が必要になる場合もあります。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  93da70b78b1d57ff:
+    english: "### Step 1. Seek input to sound out perspectives before proposing action"
+    translation: "### ステップ1. 行動を提案する前に意見を求め、さまざまな視点を確かめる"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  105886bcb6f7807b:
+    english: Takashi starts a Loomio discussion with a clear statement of the decision he needs to make.  He provides some context to open a discussion, that he is starting an advice process.
+    translation: タカシは、決める必要があることを明確にしてLoomioでディスカッションを開始します。  アドバイスプロセスを始めることを伝え、話し合いに必要な背景を共有します。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  5dbbbc9ad1569679:
+    english: He can also run an [Advice proposal](/en/user_manual/polls/proposals/advice/) in the discussion to request structured responses by a closing date.
+    translation: 締め切りまでに定められた形式で回答を集めたい場合は、ディスカッション内で[アドバイス提案](/en/user_manual/polls/proposals/advice/)を実施することもできます。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  1c0ef4c1e9221705:
+    english: "### Step 2.  Clarify and strengthen the advice through discussion"
+    translation: "### ステップ2.  話し合いを通じて助言を明確にし、深める"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  ed50411e67d1df0a:
+    english: Takashi replies to advice given in comments in the discussion thread, clarifying his situation and asking questions to expand on the advice given.
+    translation: タカシはディスカッションのスレッドに寄せられた助言に返信し、自分の状況を説明します。さらに質問をして、助言への理解を深めます。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  b27279b9ea3b1f0a:
+    english: As people offer advice and comments, Takashi grows resolved in his decision.
+    translation: 助言やコメントが集まるにつれ、タカシは決定への考えを固めていきます。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  f3a820171554b2c9:
+    english: "### Step 3. Make a decision with advice and inform people"
+    translation: "### ステップ3. 助言を踏まえて決定し、人々に伝える"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  8a0d4bfcbc87c5bb:
+    english: When everyone has offered advice, or the proposal closes, Takashi makes a decision and states the **[outcome](/en/user_manual/polls/outcomes/)**.
+    translation: 全員が助言を伝えた後、または提案が締め切られた後、タカシは決定を下して**[結論](/en/user_manual/polls/outcomes/)**を示します。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  e638fad69da59644:
+    english: The outcome is a clear statement of the decision made and what will happen next. It  becomes an important record for the organization.
+    translation: 結論には、何を決定し、次に何をするかを明確に記します。これは組織にとって重要な記録になります。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  05eae3956cc1a84d:
+    english: Takashi edits the discussion context to include this outcome.
+    translation: タカシはディスカッションのコンテキストを編集し、この結論を記載します。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  5289a72f0eed9bd9:
+    english: Alternatively, he could state it in a comment that he pins to the thread, so the outcome appears prominently in the discussion timeline.
+    translation: または、結論をコメントに記載してスレッドに固定することもできます。そうすると、ディスカッションのタイムラインで結論が目立つ位置に表示されます。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'

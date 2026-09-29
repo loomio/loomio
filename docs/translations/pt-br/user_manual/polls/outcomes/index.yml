@@ -1,0 +1,109 @@
+---
+navigation_title: Conclusões
+blocks:
+  40ec8b1a5fe05e37:
+    english: "# Outcome"
+    translation: "# Conclusão"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  7478a826673bce70:
+    english: When your proposal or poll closes, you’ll be prompted to enter an **outcome**.
+    translation: Quando sua proposta ou enquete for encerrada, você receberá uma solicitação para escrever uma **conclusão**.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  ccaf1bc50a4f4734:
+    english: State the results of the proposal or poll and say what will happen next.
+    translation: Apresente os resultados da proposta ou enquete e diga o que acontecerá em seguida.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  fde482f3a84e26e6:
+    english: The outcome statement is an important record of the poll or decision - a succinct statement for future reference.
+    translation: 'A conclusão é um registro importante da enquete ou decisão: uma síntese para consultas futuras.'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  9f4a341103cf4286:
+    english: "## Outcome statements for common decision processes"
+    translation: "## Conclusões para processos de decisão comuns"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  457a047ee6ae5975:
+    english: |-
+      | **Decision process** | **When the decision is made** | **Outcome** |
+      |---|---|---|
+      | Advice process | When advice has been received and taken into account. | State the decision made and thank people for their advice and feedback. |
+      | Consent process | When there are no remaining objections. | State that no valid objections remain and there is consent that the proposal is 'safe to try'.  |
+      | Consensus process | When most* people agree. | State proposal results and the decision made. |
+    translation: |-
+      | **Processo de decisão** | **Quando a decisão é tomada** | **Conclusão** |
+      |---|---|---|
+      | Processo de consulta | Quando as sugestões foram recebidas e consideradas. | Apresente a decisão tomada e agradeça às pessoas pelas sugestões e opiniões. |
+      | Processo de consentimento | Quando não restam objeções. | Declare que não restam objeções válidas e que há consentimento para considerar a proposta 'segura para experimentar'.  |
+      | Processo de consenso | Quando a maioria* das pessoas concorda. | Apresente os resultados da proposta e a decisão tomada. |
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  f8adf692b7b22c59:
+    english: "**The majority or supermajority as governed by constitution or by prior agreement within your organization.*  "
+    translation: "**A maioria simples ou qualificada, conforme o estatuto ou um acordo prévio da sua organização.*"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  278c243b460bef68:
+    english: 'Whatever the results, there is always something to learn from the proposal and poll. '
+    translation: Independentemente dos resultados, sempre há algo a aprender com a proposta e a enquete.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  e694b60515143fcb:
+    english: If your proposal fails, consider what new understanding has been gained, and if this can be accommodated to reach a better decision.
+    translation: Se sua proposta não for aprovada, considere o que foi aprendido e se isso pode ser incorporado para chegar a uma decisão melhor.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  780a97e6dd058d5d:
+    english: 'The outcome statement is an opportunity to state the results and what has been learnt.  '
+    translation: A conclusão é uma oportunidade para apresentar os resultados e o que foi aprendido.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  ca65851b5da70691:
+    english: You can notify people - they will receive an email from Loomio containing the poll results and your outcome statement.
+    translation: Você pode notificar as pessoas. Elas receberão um e-mail do Loomio com os resultados da enquete e sua conclusão.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  64d6b82a9343b3a6:
+    english: 'You can also set a **Review date**: a future date when you would like to review this poll or decision. For example, you might review a strategy at the same time next year.'
+    translation: 'Você também pode definir uma **Data de revisão**: uma data futura para voltar a analisar esta enquete ou decisão. Por exemplo, você pode revisar uma estratégia na mesma época do ano seguinte.'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  60605804c2662fc8:
+    english: "**Example outcome statements**"
+    translation: "**Exemplos de conclusões**"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  96f33990f48604cd:
+    english: "> _This proposal did not reach consensus because several people were concerned about budget impacts. George and Jimena will do some financial modelling and raise a new proposal next week._"
+    translation: "> _Esta proposta não chegou a um consenso porque várias pessoas tinham preocupações com o impacto no orçamento. George e Jimena farão algumas projeções financeiras e apresentarão uma nova proposta na próxima semana._"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  7175517a370b5cd2:
+    english: or
+    translation: ou
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  40861d5640e63eef:
+    english: "> _I've taken on board everyone's input. As the project manager, this is my call to make and I've decided we are going to extend the timeline by 10 days._"
+    translation: "> _Considerei as contribuições de todas as pessoas. Como gerente do projeto, cabe a mim tomar esta decisão, e decidi que vamos ampliar o prazo em 10 dias._"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'

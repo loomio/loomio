@@ -1,0 +1,203 @@
+---
+navigation_title: Luokkatunnisteet
+blocks:
+  29a00cacbd5bd549:
+    english: "# Category tags"
+    translation: "# Luokkatunnisteet"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  1d390c0c4f4cea4a:
+    english: Category tags make it easy to find threads and polls about a particular type of work or topic.
+    translation: Luokkatunnisteiden avulla löydät helposti tiettyyn työhön tai aiheeseen liittyvät keskustelut ja kyselyt.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  572adf8961fc1178:
+    english: |-
+      Tags belong to the whole organization. A tag used in a parent group is the
+      same tag in its subgroups, making it possible to organize related work across
+      the organization. Loomio displays tag names alphabetically and shows their
+      colors as dots beside the names.
+    translation: |-
+      Tunnisteet ovat koko organisaation yhteisiä. Pääryhmässä käytetty tunniste on
+      sama myös sen alaryhmissä. Näin voit järjestää toisiinsa liittyvää työtä koko
+      organisaatiossa. Loomio näyttää tunnisteiden nimet aakkosjärjestyksessä ja
+      niiden värit pisteinä nimien vieressä.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  b5340bcbf37095dc:
+    english: |-
+      On your group page, click **Tags** above the thread list to see the tags used in
+      the current group. Select a tag to show only threads with that tag. Use the
+      filter textbox to search a long list, or select **Show more** to include all
+      tags in the organization. Select **Show fewer** to return to the current
+      group's tags.
+    translation: |-
+      Näet ryhmässä käytetyt tunnisteet napsauttamalla ryhmäsivulla keskusteluluettelon
+      yläpuolella olevaa **Tunnisteet**-painiketta. Valitse tunniste, niin näet vain sillä
+      merkityt keskustelut. Voit etsiä tunnisteita pitkästä luettelosta suodatuskentän
+      avulla tai valita **Näytä lisää**, jolloin näet organisaation kaikki tunnisteet.
+      Valitse **Näytä vähemmän**, niin näet taas vain tämän ryhmän tunnisteet.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  9de81b9a795d066d:
+    english: "## Apply tags"
+    translation: "## Lisää tunnisteita"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  bf284f7568360b53:
+    english: Members who can edit a thread or poll can apply tags to it.
+    translation: Jäsenet, jotka voivat muokata keskustelua tai kyselyä, voivat lisätä siihen tunnisteita.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  58488fe368513138:
+    english: When you start a thread or poll, click the **Tags** field and select one or more tags.
+    translation: Kun aloitat keskustelun tai kyselyn, napsauta **Tunnisteet**-kenttää ja valitse yksi tai useampi tunniste.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  e060934a2853a35a:
+    english: Start typing to filter the list. Select a tag again, or click the × on its chip, to remove it.
+    translation: Ala kirjoittaa suodattaaksesi luetteloa. Poista tunniste valitsemalla se uudelleen tai napsauttamalla sen merkissä olevaa ×-painiketta.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  9f5e48b7e520d1a0:
+    english: "## Create tags"
+    translation: "## Luo tunnisteita"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  efa789e9365b2ab2:
+    english: |-
+      Parent-group admins can always create tags for the parent group and its
+      subgroups. Subgroup admins can create tags while tagging content in their
+      subgroup. The **Members can create tags** group permission, enabled by default,
+      allows other members who can tag a thread or poll to create new tag names. If
+      the permission is disabled, members can still apply existing tags.
+    translation: |-
+      Pääryhmän ylläpitäjät voivat aina luoda tunnisteita pääryhmälle ja sen
+      alaryhmille. Alaryhmän ylläpitäjät voivat luoda tunnisteita merkitessään
+      alaryhmänsä sisältöä. Oletusarvoisesti käytössä oleva **Jäsenet voivat luoda tunnisteita**
+      -ryhmäoikeus sallii uusien tunnisteiden luomisen myös muille jäsenille, jotka
+      voivat merkitä keskustelun tai kyselyn. Jos oikeus poistetaan käytöstä, jäsenet voivat edelleen käyttää olemassa olevia tunnisteita.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  7e06376f3431ad2f:
+    english: To create a tag while starting a thread or poll, type its name in the **Tags** field and press Enter.
+    translation: 'Voit luoda tunnisteen aloittaessasi keskustelun tai kyselyn: kirjoita sen nimi **Tunnisteet**-kenttään ja paina Enter-näppäintä.'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  44cd1f0281bb8116:
+    english: "![create new tag](tags_create_new.png)"
+    translation: "![luo uusi tunniste](tags_create_new.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  25943c6357948b42:
+    english: "![new tag created](tags_created_new.png)"
+    translation: "![uusi tunniste luotu](tags_created_new.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  7d3b350731e07a2c:
+    english: Use short, familiar names that group members will recognize, such as Finance, Governance, Packaging, or Cafe partnerships.
+    translation: Käytä lyhyitä, ryhmän jäsenille tuttuja nimiä, kuten Talous, Hallinto, Pakkaaminen tai Kahvilayhteistyö.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  d7df1acb0ce347f5:
+    english: "## Edit tags"
+    translation: "## Muokkaa tunnisteita"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  67bc6cfdb2afad04:
+    english: |-
+      Only parent-group admins can rename, recolor, merge, or delete tags. These
+      changes apply throughout the organization, including its subgroups.
+    translation: |-
+      Vain pääryhmän ylläpitäjät voivat nimetä tunnisteita uudelleen, vaihtaa niiden värejä, yhdistää niitä tai poistaa niitä. Muutokset koskevat koko organisaatiota,
+      myös sen alaryhmiä.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  b4ca99a5204d8526:
+    english: On the group page, open **Tags** and select **Edit tags**.
+    translation: Avaa ryhmäsivulla **Tunnisteet** ja valitse **Muokkaa tunnisteita**.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  581734d0042d7a3a:
+    english: "![edit category tags](tags_edit_new.png)"
+    translation: "![muokkaa luokkatunnisteita](tags_edit_new.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  e55612b318c4cc6e:
+    english: Select the pencil icon beside a tag.
+    translation: Valitse tunnisteen vieressä oleva kynäkuvake.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  871b47d8a7e83eef:
+    english: "![edit category tags](tags_edit_new_pencil.png)"
+    translation: "![muokkaa luokkatunnisteita](tags_edit_new_pencil.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  5a1856fe42a6cf57:
+    english: Edit the tag name or choose a color, then click **Save**.
+    translation: Muokkaa tunnisteen nimeä tai valitse väri ja napsauta **Tallenna**.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  372d48b364fa7993:
+    english: "![edit tag color](tags_edit_name.png)"
+    translation: "![muokkaa tunnisteen väriä](tags_edit_name.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  146a4351b419d9f3:
+    english: Click **Delete** to remove the tag from all threads and polls in the organization.
+    translation: Napsauta **Poistaa**, niin tunniste poistetaan kaikista organisaation keskusteluista ja kyselyistä.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  ac6ff8dca31e6357:
+    english: "![delete tag](tags_delete.png)"
+    translation: "![poista tunniste](tags_delete.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  238eb4277538b10d:
+    english: "### Edit tag in thread or poll"
+    translation: "### Muokkaa keskustelun tai kyselyn tunnisteita"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  35715a66bb0686a9:
+    english: To change the tags on an existing thread or poll, open it and click the tag button beside its current tags near the title.
+    translation: Voit muuttaa olemassa olevan keskustelun tai kyselyn tunnisteita avaamalla sen ja napsauttamalla otsikon lähellä, nykyisten tunnisteiden vieressä olevaa tunnistepainiketta.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  99c1872e69d86e10:
+    english: Select tags to add or remove them. Changes are saved immediately.
+    translation: Valitse tunnisteita lisätäksesi tai poistaaksesi niitä. Muutokset tallentuvat heti.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  16df99acbf2b5046:
+    english: "![edit tags in thread](tags_thread_edit.png)"
+    translation: "![muokkaa keskustelun tunnisteita](tags_thread_edit.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'

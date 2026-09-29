@@ -1,0 +1,157 @@
+---
+navigation_title: A profilod
+blocks:
+  7ac59f9506d9a9e9:
+    english: "# Your Profile\nYour Loomio user profile is how people recognize you.  "
+    translation: |-
+      # A profilod
+      A Loomio-profilod alapján ismernek fel mások.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  f77b75330707f9a4:
+    english: Being able to recognize people in Loomio helps build trust and authenticity, encouraging more genuine participation.  So wherever possible we encourage you to be you, and to add a photo or avatar.
+    translation: Ha az emberek felismerik egymást a Loomión, könnyebben alakul ki bizalom, és nyíltabban vehetnek részt a közös munkában. Ezért érdemes a saját nevedet használnod, és fényképet vagy avatárt hozzáadnod a profilodhoz.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  e902d9db69f3ccaa:
+    english: "## Edit profile"
+    translation: "## Profil szerkesztése"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  f48def44ceb36407:
+    english: 'Your profile page lets you customize your Loomio identity. To visit your profile page select the **Edit profile** option in the user menu, which is found by clicking on your name at the top of the sidebar. '
+    translation: A profiloldaladon személyre szabhatod, hogyan jelensz meg a Loomión. A profiloldal megnyitásához kattints a nevedre az oldalsáv tetején, majd válaszd a felhasználói menü **Profil szerkesztése** pontját.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  456daa472d672b1f:
+    english: If the sidebar is closed, click on the menu icon (**☰**) to open it.
+    translation: Ha az oldalsáv zárva van, kattints a menüikonra (**☰**) a megnyitásához.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  7b920b3794ac1be0:
+    english: Click on the down arrow to the right of your name.
+    translation: Kattints a neved jobb oldalán lévő lefelé mutató nyílra.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  9664aeb8784b2137:
+    english: Click on **Edit profile**
+    translation: Kattints a **Profil szerkesztése** lehetőségre
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  e98e7384d147ec31:
+    english: "## Update your personal info"
+    translation: "## Személyes adataid frissítése"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  9578a723a8d322cc:
+    english: 'You can update your personal info by changing any of the following fields:'
+    translation: 'Személyes adataidat az alábbi mezők módosításával frissítheted:'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  cc28d4b1038e6fe5:
+    english: |-
+      * **Name**
+      * **Email address** - this is the email address associated with your Loomio account, and where you will receive notifications from Loomio.
+      * **Username** - your username is a name people can recognize and alert you using @mention. It can contain lower case letters, numbers, underscores, and internal hyphens.
+      * **Introduction** - a few lines to tell others in your group something about you.
+      * **Location** - useful for distributed or remote groups so people can get an idea of where you are located.
+    translation: |-
+      * **Név**
+      * **E-mail cím** - a Loomio-fiókodhoz tartozó e-mail cím, amelyre a Loomio értesítéseit kapod.
+      * **Felhasználónév** - a felhasználóneved alapján mások felismerhetnek, és @említéssel értesíthetnek. Kisbetűket, számokat, aláhúzásjeleket és szavakon belüli kötőjeleket tartalmazhat.
+      * **Bevezetés** - néhány sor, amelyben bemutatkozhatsz a csoportod többi tagjának.
+      * **Helyszín** - segít a különböző helyeken dolgozó csoportok tagjainak megtudni, hol vagy.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  d64106bb76c8936e:
+    english: "## Viewing another person's profile"
+    translation: "## Mások profiljának megtekintése"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  fa6b7c980bad9aeb:
+    english: Select a person's name or avatar to open their profile. Their recent discussions, comments, and polls are listed alongside their profile details and groups. The list only includes activity you have permission to access; signed-out visitors see public activity only.
+    translation: Egy személy profiljának megnyitásához kattints a nevére vagy az avatárjára. A profiladatai és csoportjai mellett a legutóbbi beszélgetései, hozzászólásai és szavazásai is megjelennek. A listán csak azok a tevékenységek szerepelnek, amelyekhez hozzáférsz; a kijelentkezett látogatók csak a nyilvános tevékenységeket látják.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  ac9abf23a4881216:
+    english: "## Uploading a profile photo\nWhen you first create a Loomio account, your initials will be the default image associated with your profile. You can upload a profile photo by clicking on your picture on the profile page. "
+    translation: |-
+      ## Profilkép feltöltése
+      Amikor létrehozod a Loomio-fiókodat, alapértelmezés szerint a monogramod jelenik meg profilképként. Profilképet a profiloldalon a képedre kattintva tölthetsz fel.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  b011f45bc197558a:
+    english: If you have a [Gravatar](https://en.gravatar.com/) you can set that as your profile picture by selecting **Use Gravatar**. You can also choose for Loomio to use the photo you use for other common platforms/tools.
+    translation: Ha van [Gravatarod](https://en.gravatar.com/), a **Használj Gravatart** lehetőséget választva beállíthatod profilképként. Azt is beállíthatod, hogy a Loomio egy másik, általad használt szolgáltatásban megadott képedet használja.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  41f1c139f9a0822b:
+    english: |-
+      ## Language settings
+      Loomio is developed in English, but [is translated by volunteers into many languages](https://www.loomio.com/g/cpaM3Hsv/loomio-community-translation).
+    translation: |-
+      ## Nyelvi beállítások
+      A Loomio angol nyelven készül, de [önkéntesek sok nyelvre lefordítják](https://www.loomio.com/g/cpaM3Hsv/loomio-community-translation).
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  9faad78d2b46c546:
+    english: Loomio will detect your browser’s language settings, but you can manually set your preferred language from the available options on the profile page.
+    translation: A Loomio felismeri a böngésződ nyelvi beállításait, de a profiloldalon kézzel is kiválaszthatod a kívánt nyelvet az elérhető lehetőségek közül.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  a224dd4aaaf81381:
+    english: |-
+      ## Resetting your password
+      You can change your password by visiting your profile page and clicking **Reset Password**.
+    translation: |-
+      ## Jelszavad visszaállítása
+      A jelszavad módosításához nyisd meg a profiloldaladat, majd kattints a **Jelszó visszaállítása** lehetőségre.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  5bfa3cd39abcafba:
+    english: "## Merge accounts"
+    translation: "## Fiókok egyesítése"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  2e3c544b479874d5:
+    english: If you have two Loomio user accounts, you can merge them into a single account.
+    translation: Ha két Loomio-fiókod van, egyesítheted őket egyetlen fiókban.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  26fec713318a68fc:
+    english: See [Merge Accounts](../merge_accounts).
+    translation: Lásd a [Fiókok egyesítése](../merge_accounts) című oldalt.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  a12633b5bfa58576:
+    english: "## Deleting your account"
+    translation: "## Fiókod törlése"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  544b974bf2c6bdfa:
+    english: If you wish to delete your Loomio user account and leave any Loomio groups you are a member of, see [Deleting Your Loomio Account](../deleting_your_account).
+    translation: Ha törölni szeretnéd a Loomio-fiókodat, és ki szeretnél lépni minden Loomio-csoportból, amelynek tagja vagy, olvasd el a [Loomio-fiókod törlése](../deleting_your_account) című oldalt.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'

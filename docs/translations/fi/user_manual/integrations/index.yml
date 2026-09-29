@@ -1,0 +1,75 @@
+---
+navigation_title: Integraatiot
+blocks:
+  448845ab7a62ee14:
+    english: "# Integrations"
+    translation: "# Integraatiot"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  de2c0d66a5664722:
+    english: Connect Loomio with other tools used by your group.
+    translation: Yhdistä Loomio muihin ryhmäsi käyttämiin työkaluihin.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  37a981ffe4539815:
+    english: "## Choose where work belongs"
+    translation: "## Valitse työlle sopiva paikka"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  828de256c39d112c:
+    english: Loomio complements chat, shared documents, and task-management tools rather than replacing every kind of work.
+    translation: Loomio täydentää keskustelupalveluja, jaettuja asiakirjoja ja tehtävienhallintatyökaluja. Kaikkea työtä ei tarvitse tehdä Loomiossa.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  ad42655c9ef79337:
+    english: |-
+      | Work | Suggested tool |
+      |---|---|
+      | Quick questions, social conversation, and timely updates | Chat |
+      | Collaborative editing of a living document | Shared document |
+      | Assigning and tracking tasks | Project or task-management tool |
+      | Important topic-based discussion, broad participation, decisions, and outcomes | Loomio |
+    translation: |-
+      | Työ | Suositeltu työkalu |
+      |---|---|
+      | Nopeat kysymykset, vapaamuotoinen keskustelu ja ajankohtaiset päivitykset | Keskustelupalvelu |
+      | Yhteistyössä muokattava asiakirja | Jaettu asiakirja |
+      | Tehtävien jakaminen ja seuranta | Projektin- tai tehtävienhallintatyökalu |
+      | Tärkeät aihekohtaiset keskustelut, laaja osallistuminen, päätökset ja yhteenvedot | Loomio |
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  40e853f5116f28eb:
+    english: Put work in Loomio when people need time to consider a topic, when everyone affected should have a meaningful opportunity to participate, or when the group will need to find the discussion and decision later. Link to the relevant document or task from the Loomio discussion so its context remains easy to find.
+    translation: Käytä Loomiota, kun ihmiset tarvitsevat aikaa aiheen pohtimiseen, kun kaikilla asianomaisilla tulisi olla mahdollisuus osallistua tai kun ryhmän on löydettävä keskustelu ja päätös myöhemmin. Lisää Loomion keskusteluun linkki asiaankuuluvaan asiakirjaan tai tehtävään, jotta asiayhteys löytyy helposti.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  fc05fe498d905c7c:
+    english: "## Chat integrations"
+    translation: "## Keskustelupalveluiden integraatiot"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  26c8dc97c7bf3e56:
+    english: "[Chat integrations](/en/user_manual/integrations/chatbots) post Loomio activity to chat services including Discord, Matrix, Mattermost, Microsoft Teams, and Slack."
+    translation: "[Keskustelupalveluiden integraatiot](/en/user_manual/integrations/chatbots) julkaisevat Loomion tapahtumia keskustelupalveluissa, kuten Discordissa, Matrixissa, Mattermostissa, Microsoft Teamsissa ja Slackissa."
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  40caf66c4de56e46:
+    english: "## API"
+    translation: "## API"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  daac16165f43c062:
+    english: Use the [Loomio API](/en/user_manual/integrations/api) to connect Loomio with your own software and automated workflows.
+    translation: Yhdistä Loomio omiin ohjelmistoihisi ja automatisoituihin työnkulkuihisi [Loomion API:n](/en/user_manual/integrations/api) avulla.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'

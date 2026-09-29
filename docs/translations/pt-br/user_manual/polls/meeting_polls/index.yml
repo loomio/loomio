@@ -1,0 +1,135 @@
+---
+navigation_title: Enquete de horário
+blocks:
+  ebb0b3146e7f6937:
+    english: "# Time poll"
+    translation: "# Enquete de horário"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  86490ad15147169e:
+    english: Use a **Time poll** to find a time for a meeting or event. It serves the same purpose as scheduling tools such as Doodle, while keeping the scheduling process with the group's other Loomio work. Participants see the options in their own time zone.
+    translation: Use uma **Enquete de horário** para encontrar um horário para uma reunião ou evento. Ela ajuda a organizar a agenda junto às outras atividades do grupo no Loomio, como ferramentas de agendamento como o Doodle. Os participantes veem as opções no próprio fuso horário.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  2e21bb1b54b6fcf9:
+    english: "## Time poll"
+    translation: "## Enquete de horário"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  27ba736f4b564fe3:
+    english: _Find when people are available to meet_
+    translation: _Descubra quando as pessoas podem se reunir_
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  2f5455ba3b487407:
+    english: Save time arranging a date for your meeting or event.
+    translation: Economize tempo ao marcar sua reunião ou evento.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  859c3efc07ce0b04:
+    english: Time poll makes it easy to see everyone's availability and find the best time.
+    translation: A enquete de horário facilita a visualização da disponibilidade de todos e a escolha do melhor horário.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  12ae9e9d3bdb0a4e:
+    english: Give your Time poll a title and details. Enter a list of date and time options in your time zone.
+    translation: Dê um título à sua enquete de horário e acrescente os detalhes. Informe as opções de data e horário no seu fuso horário.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  548fb6cd6fcd9376:
+    english: When setting timeslots, consider people in different time zones. Participants will see times localized in their time zone.
+    translation: Ao definir os horários, considere as pessoas em outros fusos horários. Cada participante verá os horários ajustados ao próprio fuso.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  3105405631b53c31:
+    english: Set a meeting duration.
+    translation: Defina a duração da reunião.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  8d56a5d9986286e9:
+    english: "### Voting"
+    translation: "### Votação"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  41d1e6a3a6739d95:
+    english: People mark each time with the green thumbs-up icon when they are available, the yellow sideways thumb when they can attend if needed, or the red thumbs-down icon when they are unavailable.
+    translation: Para cada horário, as pessoas usam o ícone verde de polegar para cima quando estão disponíveis, o ícone amarelo de polegar de lado quando podem participar se necessário ou o ícone vermelho de polegar para baixo quando não estão disponíveis.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  b4784042c82735af:
+    english: Participants can leave a reason comment to help the organizer find a suitable time.
+    translation: Os participantes podem deixar um comentário explicando sua escolha para ajudar quem organiza a reunião a encontrar um horário adequado.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  0165a90bc22b6f7f:
+    english: If the times don't work, participants can suggest alternatives using the message field. You can then update the poll with new times.
+    translation: Se nenhum horário funcionar, os participantes podem sugerir alternativas no campo de mensagem. Você pode então atualizar a enquete com novos horários.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  6c7c09879e7d9bf8:
+    english: The results update as voting proceeds in a table showing who is available when, so everyone can see which timeslots are popular.
+    translation: Os resultados são atualizados conforme a votação avança. Uma tabela mostra quem está disponível em cada horário, para que todos vejam quais opções são mais populares.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  b4783489f09ccf19:
+    english: "### Outcome"
+    translation: "### Conclusão"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  3c0061b9af0a6bca:
+    english: When the Time poll closes, pick the best time and post an outcome.
+    translation: Quando a enquete de horário terminar, escolha o melhor horário e publique uma conclusão.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  62ef08e40ed2f44b:
+    english: "**Notify**: Add the people you are inviting to the meeting or event"
+    translation: "**Notificar**: Adicione as pessoas que você está convidando para a reunião ou evento"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  945f9e19218fb1bf:
+    english: "**Meeting time**: Select the time that works best"
+    translation: "**Horário da reunião**: Selecione o horário mais adequado"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  c5909628c21cd884:
+    english: "**Meeting name**: Give your meeting a name. The Time poll title is used by default"
+    translation: "**Nome da reunião**: Dê um nome à reunião. O título da enquete de horário é usado por padrão"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  81195d01767895e4:
+    english: "**Location**: Add a physical location or a meeting link"
+    translation: "**Localização**: Adicione um local físico ou um link para a reunião"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  af5765f5bdf83132:
+    english: "**Statement**: Summarize the result and add any instructions for the meeting"
+    translation: "**Resultado**: Resuma a conclusão e acrescente as instruções para a reunião"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  6c0cb92cca53d36a:
+    english: Loomio includes the selected time, meeting name, duration, location, and statement in the outcome notification and calendar invitation.
+    translation: O Loomio inclui o horário selecionado, o nome da reunião, a duração, a localização e o resultado na notificação da conclusão e no convite de calendário.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'

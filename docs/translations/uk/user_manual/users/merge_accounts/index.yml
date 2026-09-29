@@ -1,0 +1,129 @@
+---
+navigation_title: Об’єднати облікові записи
+blocks:
+  e3a50952a2ce6cfc:
+    english: "# Merge accounts"
+    translation: "# Об’єднати облікові записи"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  e0bdfaac5741d310:
+    english: Merge two Loomio accounts when each account uses a different email address and you want to continue with one account.
+    translation: Якщо у вас є два облікові записи Loomio з різними електронними адресами, об’єднайте їх, щоб надалі користуватися одним обліковим записом.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  '08d4fcba2e0a2b3b':
+    english: 'Before you begin, decide which account you want to keep:'
+    translation: 'Перш ніж почати, вирішіть, який обліковий запис ви хочете зберегти:'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  6f7efc1ebdc680c7:
+    english: |-
+      - The **account to keep** is the account whose email address and profile you will use after the merge
+      - The **account to retire** is the account you sign in to first. Its email address will no longer work for signing in after the merge
+    translation: |-
+      - **Обліковий запис, який ви хочете зберегти**, — це обліковий запис, електронною адресою та профілем якого ви користуватиметеся після об’єднання
+      - **Обліковий запис, який ви хочете видалити**, — це обліковий запис, до якого ви ввійдете першим. Після об’єднання ви більше не зможете входити за його електронною адресою
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  060fb4b1c12c153a:
+    english: You need access to both accounts and to the email address of the account you want to keep.
+    translation: Вам потрібен доступ до обох облікових записів і до електронної адреси облікового запису, який ви хочете зберегти.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  9c9a7e082a3b67ae:
+    english: |-
+      > [!WARNING]
+      > Merging accounts is irreversible. Check the source and target email addresses carefully before the final confirmation.
+    translation: |-
+      > [!WARNING]
+      > Об’єднання облікових записів не можна скасувати. Перед остаточним підтвердженням уважно перевірте електронні адреси обох облікових записів.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  4d6defccb0f2a2ec:
+    english: "## Start the merge"
+    translation: "## Почніть об’єднання"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  0c49f5d2284571d3:
+    english: |-
+      1. Sign in to the **account you want to retire**.
+      2. Open the sidebar, select your name, and select **Edit profile**.
+      3. Select **Merge accounts**.
+    translation: |-
+      1. Увійдіть до **облікового запису, який ви хочете видалити**.
+      2. Відкрийте бічну панель, виберіть своє ім’я, а потім — **Редагувати профіль**.
+      3. Виберіть **Об’єднати облікові записи**.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  a05689d18f3c3337:
+    english: "![The profile actions with Merge accounts highlighted](merge_accounts_profile.png)"
+    translation: "![Дії з профілем, де виділено пункт «Об’єднати облікові записи»](merge_accounts_profile.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  29656e0572127b88:
+    english: 4. Enter the destination account's email address—the address belonging to the **account you want to keep**—and select **Send verification email**. Loomio always shows the same confirmation and signs you out. If an account uses that address, Loomio sends it the verification email.
+    translation: 4. Введіть електронну адресу **облікового запису, який ви хочете зберегти**, і виберіть **Надіслати електронний лист з підтвердженням**. Loomio покаже однакове повідомлення про підтвердження в будь-якому випадку та вийде з вашого облікового запису. Якщо обліковий запис із цією адресою існує, Loomio надішле на неї лист для підтвердження.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  d045b6c7e8a5b853:
+    english: "## Verify the account you want to keep"
+    translation: "## Підтвердьте обліковий запис, який ви хочете зберегти"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  57255cdb29b384d7:
+    english: 5. Open the verification email sent to the address of the account you want to keep and select **Verify email and proceed**.
+    translation: 5. Відкрийте лист, надісланий на адресу облікового запису, який ви хочете зберегти, і виберіть **Підтвердьте електронну адресу та продовжуйте**.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  5e496b2d8f551efa:
+    english: "![The merge verification email with the Verify email and proceed button highlighted](merge_accounts_email.png)"
+    translation: "![Лист для підтвердження об’єднання, де виділено кнопку «Підтвердьте електронну адресу та продовжуйте»](merge_accounts_email.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  ad19dc0399f9d446:
+    english: |-
+      6. Sign in as the account you want to keep if Loomio asks you to sign in.
+      7. On the **Confirm merge** page, check both email addresses again. Select **Merge accounts** to complete the merge.
+    translation: |-
+      6. Якщо Loomio попросить вас увійти, увійдіть до облікового запису, який ви хочете зберегти.
+      7. На сторінці **Підтвердити об'єднання** ще раз перевірте обидві електронні адреси. Виберіть **Об’єднати облікові записи**, щоб завершити об’єднання.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  a575e2cd16aa66b4:
+    english: "![The final confirmation page with the Merge accounts button highlighted](merge_accounts_confirm.png)"
+    translation: "![Сторінка остаточного підтвердження, де виділено кнопку «Об’єднати облікові записи»](merge_accounts_confirm.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  cf8eba685cfdbf04:
+    english: "## What happens after the merge"
+    translation: "## Що відбувається після об’єднання"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  6ae4c6c893430735:
+    english: The account you keep remains your Loomio identity and sign-in account. Group memberships and activity from the retired account, including discussions, comments, polls, and votes, are reassigned to the account you keep. Where both accounts already belong to the same group, the existing membership for the account you keep remains.
+    translation: Обліковий запис, який ви зберегли, залишається вашим обліковим записом Loomio для входу. Участь у групах і дії з видаленого облікового запису, зокрема обговорення, коментарі, опитування та голоси, переносяться до облікового запису, який ви зберегли. Якщо обидва облікові записи вже належать до однієї групи, участь у ній облікового запису, який ви зберегли, залишається чинною.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  eb05b57367c0815c:
+    english: The retired account is deleted and its email address can no longer be used to sign in. Loomio sends a confirmation email to the address of the account you kept when the merge is complete.
+    translation: Інший обліковий запис видаляється, і за його електронною адресою більше не можна ввійти. Після завершення об’єднання Loomio надсилає лист із підтвердженням на адресу облікового запису, який ви зберегли.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'

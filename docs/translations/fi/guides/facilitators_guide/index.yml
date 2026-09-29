@@ -1,0 +1,99 @@
+---
+navigation_title: Loomion fasilitointiopas
+blocks:
+  51bef990323f41b0:
+    english: "# The Facilitator's Guide To Loomio"
+    translation: "# Loomion fasilitointiopas"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  980342866ab7bee6:
+    english: An in-depth guide to applying key facilitation concepts in the online space.
+    translation: Perusteellinen opas fasilitoinnin keskeisten periaatteiden soveltamiseen verkossa.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  ac8728f5ce2ea8ce:
+    english: Loomio is made by facilitators, and that plays a huge role in how it has been designed. This guide is about revealing more of that context, and translating facilitation concepts from the offline space to the online space.
+    translation: Loomion ovat tehneet fasilitaattorit, ja heidän kokemuksensa on vaikuttanut merkittävästi sen suunnitteluun. Tämä opas avaa suunnittelun taustaa ja näyttää, miten kasvokkaisen fasilitoinnin periaatteita voi soveltaa verkossa.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  e802660a44da1775:
+    english: "## More about this guide"
+    translation: "## Lisää tästä oppaasta"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  5cbd64dba51ca485:
+    english: Whether employed by a professional facilitator, people peer-facilitating each other, or a group that has no awareness of facilitation at all, Loomio’s essential function is to mediate and support group communication toward a desired outcome. In other words, facilitation.
+    translation: Loomion perustehtävä on tukea ryhmän viestintää ja auttaa sitä pääsemään haluttuun lopputulokseen. Näin on riippumatta siitä, johtaako keskustelua ammattifasilitaattori, fasilitoivatko osallistujat toistensa työskentelyä vai onko fasilitointi ryhmälle vieras käsite. Toisin sanoen Loomio tukee fasilitointia.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  25a956280b647fa6:
+    english: 'Loomio is *groupware*:'
+    translation: 'Loomio on *ryhmätyöohjelmisto*:'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  33e304be58a0a55b:
+    english: "> Collaborative software, or groupware, is designed to help people involved in a common task achieve their goals. One of the earliest definitions of collaborative software is “intentional group processes plus software to support them.” -- Wikipedia"
+    translation: "> Yhteistyöohjelmisto eli ryhmätyöohjelmisto on suunniteltu auttamaan yhteisen tehtävän parissa työskenteleviä ihmisiä saavuttamaan tavoitteensa. Yksi varhaisimmista määritelmistä kuvaa sitä tarkoituksellisiksi ryhmäprosesseiksi ja niitä tukevaksi ohjelmistoksi. -- Wikipedia"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  170a0b463e1ad8ca:
+    english: There is a huge body of knowledge, best practice, and tradition in both in-person facilitation and online moderation, but the art and science of their intersection is only just emerging. This is the specific space where Loomio strives to excel.
+    translation: Kasvokkaisesta fasilitoinnista ja verkkokeskustelujen moderoinnista on kertynyt paljon tietoa, hyviä käytäntöjä ja perinteitä. Niiden yhdistäminen on kuitenkin vasta kehittymässä. Juuri siinä Loomio pyrkii olemaan hyödyksi.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  596f4162a52f315b:
+    english: "***"
+    translation: "***"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  e2491f4b9f37c546:
+    english: "## About the author"
+    translation: "## Kirjoittajasta"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  4ef2c88e31656836:
+    english: '<img style="border-radius: 100%; float: right; margin: 0 0 2em 2em; max-width: 200px;" src="alanna_fringe_s.jpg">'
+    translation: '<img style="border-radius: 100%; float: right; margin: 0 0 2em 2em; max-width: 200px;" src="alanna_fringe_s.jpg">'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  e19d687b56819302:
+    english: Hi! I'm Alanna.
+    translation: Hei, olen Alanna.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  10352ad196487ff3:
+    english: I'm one of the founders of Loomio, and I've been thinking deeply about how it works from a facilitation perspective since the beginning. I am not a seminal facilitation expert; I consider myself only a beginner in this craft that one could spend a lifetime honing.
+    translation: Olen yksi Loomion perustajista, ja olen alusta asti pohtinut sen toimintaa fasilitoinnin näkökulmasta. En ole alan johtava asiantuntija. Pidän itseäni vasta aloittelijana taidossa, jota voisi harjoitella koko elämänsä.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  c637c96f9723f02d:
+    english: What I can offer is help translating between the offline and online spaces, as a practitioner in both. I've facilitated a lot of groups who use Loomio, and learned from their experiences.
+    translation: Minulla on kokemusta fasilitoinnista sekä kasvokkain että verkossa, joten voin auttaa soveltamaan käytäntöjä ympäristöstä toiseen. Olen fasilitoinut monia Loomiota käyttäviä ryhmiä ja oppinut niiden kokemuksista.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  c376e38821fb6c2f:
+    english: You can find out [more about me on my website](http://alanna.space).
+    translation: Voit lukea [minusta lisää verkkosivuiltani](http://alanna.space).
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  b893957534fa37e2:
+    english: I'm only one person, with one perspective and approach to facilitation, when there are myriad approaches. I've tried to bring in a couple other facilitator's voices here, including [Rich](http://richdecibels.com/) from Loomio and Silvia from [EXP](http://exp.agency).
+    translation: Olen vain yksi ihminen, ja fasilitointiin on monia näkökulmia ja tapoja. Olen siksi pyrkinyt tuomaan oppaaseen myös muiden fasilitaattorien ääniä, kuten Loomiossa työskentelevän [Richin](http://richdecibels.com/) ja [EXP:n](http://exp.agency) Silvian.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'

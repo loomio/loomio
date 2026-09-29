@@ -1,0 +1,109 @@
+---
+navigation_title: Исходы
+blocks:
+  40ec8b1a5fe05e37:
+    english: "# Outcome"
+    translation: "# Исход"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  7478a826673bce70:
+    english: When your proposal or poll closes, you’ll be prompted to enter an **outcome**.
+    translation: Когда срок вашего предложения или опроса истечёт, Loomio предложит вам указать **Исход**.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  ccaf1bc50a4f4734:
+    english: State the results of the proposal or poll and say what will happen next.
+    translation: Опишите результаты предложения или опроса и укажите, что будет дальше.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  fde482f3a84e26e6:
+    english: The outcome statement is an important record of the poll or decision - a succinct statement for future reference.
+    translation: Исход кратко фиксирует итоги опроса или принятого решения, чтобы к ним можно было вернуться позже.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  9f4a341103cf4286:
+    english: "## Outcome statements for common decision processes"
+    translation: "## Формулировки исхода для разных способов принятия решений"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  457a047ee6ae5975:
+    english: |-
+      | **Decision process** | **When the decision is made** | **Outcome** |
+      |---|---|---|
+      | Advice process | When advice has been received and taken into account. | State the decision made and thank people for their advice and feedback. |
+      | Consent process | When there are no remaining objections. | State that no valid objections remain and there is consent that the proposal is 'safe to try'.  |
+      | Consensus process | When most* people agree. | State proposal results and the decision made. |
+    translation: |-
+      | **Способ принятия решения** | **Когда решение принято** | **Исход** |
+      |---|---|---|
+      | Решение после консультации | Когда советы получены и учтены. | Укажите принятое решение и поблагодарите людей за советы и отзывы. |
+      | Решение по согласию | Когда не осталось возражений. | Укажите, что обоснованных возражений не осталось и участники согласны, что предложение можно попробовать на практике.  |
+      | Решение консенсусом | Когда большинство* людей согласно. | Укажите результаты голосования по предложению и принятое решение. |
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  f8adf692b7b22c59:
+    english: "**The majority or supermajority as governed by constitution or by prior agreement within your organization.*  "
+    translation: "**Обычное или квалифицированное большинство в соответствии с уставом вашей организации или предварительной договорённостью.*"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  278c243b460bef68:
+    english: 'Whatever the results, there is always something to learn from the proposal and poll. '
+    translation: Какими бы ни были результаты, предложение или опрос помогают узнать что-то новое.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  e694b60515143fcb:
+    english: If your proposal fails, consider what new understanding has been gained, and if this can be accommodated to reach a better decision.
+    translation: Если ваше предложение не получило поддержки, подумайте, что нового вы узнали и поможет ли это принять более удачное решение.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  780a97e6dd058d5d:
+    english: 'The outcome statement is an opportunity to state the results and what has been learnt.  '
+    translation: В описании исхода вы можете указать результаты и то, что удалось узнать.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  ca65851b5da70691:
+    english: You can notify people - they will receive an email from Loomio containing the poll results and your outcome statement.
+    translation: 'Вы можете уведомить людей: они получат письмо от Loomio с результатами голосования и вашим описанием исхода.'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  64d6b82a9343b3a6:
+    english: 'You can also set a **Review date**: a future date when you would like to review this poll or decision. For example, you might review a strategy at the same time next year.'
+    translation: Вы также можете указать **Дата рассмотрения** — дату, когда вы планируете вернуться к этому голосованию или решению. Например, вы можете пересмотреть стратегию в это же время в следующем году.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  60605804c2662fc8:
+    english: "**Example outcome statements**"
+    translation: "**Примеры формулировок исхода**"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  96f33990f48604cd:
+    english: "> _This proposal did not reach consensus because several people were concerned about budget impacts. George and Jimena will do some financial modelling and raise a new proposal next week._"
+    translation: "> _По этому предложению не удалось достичь консенсуса: несколько человек обеспокоены его влиянием на бюджет. Джордж и Химена проведут финансовые расчёты и представят новое предложение на следующей неделе._"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  7175517a370b5cd2:
+    english: or
+    translation: или
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  40861d5640e63eef:
+    english: "> _I've taken on board everyone's input. As the project manager, this is my call to make and I've decided we are going to extend the timeline by 10 days._"
+    translation: "> _Я учёл мнения всех участников. Как руководитель проекта, я принимаю это решение: мы продлим срок работы на 10 дней._"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'

@@ -1,0 +1,295 @@
+---
+navigation_title: Processo di consenso
+blocks:
+  610d979e3d56d6b1:
+    english: "# Consent process"
+    translation: "# Processo di consenso"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  cd54bade9fb552d0:
+    english: This guide describes the complete Consent process. For help setting up and interpreting one Consent proposal, see [Consent](/en/user_manual/polls/proposals/consent/).
+    translation: Questa guida descrive l'intero processo di consenso. Per sapere come impostare e interpretare una singola proposta di consenso, consulta [Consenso](/en/user_manual/polls/proposals/consent/).
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  518c79dba339d283:
+    english: "![photo of people collaborating](better_collaboration.jpg)"
+    translation: "![foto di persone che collaborano](better_collaboration.jpg)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  f3c6b8e6992d240a:
+    english: Make a decision that is ‘safe to try’, without objections.
+    translation: Prendi una decisione che si può «provare senza rischi», senza obiezioni.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  b11cbc132fe6b4d0:
+    english: Seek consent on a decision you need to make, where there are no meaningful objections to your proposal, so you can make a fast decision that is 'safe to try' now.
+    translation: Cerca il consenso su una decisione da prendere. Se non ci sono obiezioni sostanziali alla proposta, puoi decidere rapidamente di provarla.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  75e8b175ecfcd49a:
+    english: "> *“Consent turns the question around: instead of asking for what we want, we ask whether there are reasons not to go ahead.” - Ted Rau, Sociocracy For All*"
+    translation: "> *«Il consenso ribalta la domanda: invece di chiederci che cosa vogliamo, ci chiediamo se ci sono ragioni per non procedere.» - Ted Rau, Sociocracy For All*"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  55ccc01c9b274a87:
+    english: |-
+      ## Key points
+      - Aim for a ‘good enough’ decision.
+      - Involve many voices to develop a workable proposal.
+      - Ask if anyone has a valid objection.
+      - Amend the proposal to resolve objections.
+    translation: |-
+      ## Punti chiave
+      - Punta a una decisione «sufficientemente buona».
+      - Coinvolgi più persone per elaborare una proposta praticabile.
+      - Chiedi se qualcuno ha un'obiezione valida.
+      - Modifica la proposta per risolvere le obiezioni.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  7c2ef9fc3419f4b7:
+    english: |-
+      **Typical roles:**
+      - Proposer: The person who raises a topic that requires a decision.
+      - Facilitator: Someone who can help the proposer do their job efficiently.
+    translation: |-
+      **Ruoli tipici:**
+      - Proponente: la persona che solleva una questione su cui occorre decidere.
+      - Facilitatore: la persona che aiuta chi propone a svolgere il proprio compito in modo efficace.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  c56d1ea7a5582723:
+    english: |-
+      ## Consent process steps
+      You notice a problem or opportunity and take the initiative.
+      1. Present a proposal - start a Loomio **discussion**.
+      2. Facilitate a round of questions, reactions and any comments to improve the proposal - run a **Sense check proposal**.
+      3. Amend the proposal with suggestions and comments.
+      4. Ask if anyone has a meaningful objection to the amended proposal - run a **Consent proposal**.
+      5. Integrate valid objections to create an amended version of the proposal that everyone consents is ‘safe to try’ - state the decision **outcome**.
+    translation: |-
+      ## Fasi del processo di consenso
+      Noti un problema o un'opportunità e prendi l'iniziativa.
+      1. Presenta una proposta: avvia una **discussione** su Loomio.
+      2. Facilita un giro di domande, reazioni e commenti per migliorare la proposta: avvia una **proposta di verifica delle impressioni**.
+      3. Modifica la proposta in base ai suggerimenti e ai commenti.
+      4. Chiedi se qualcuno ha un'obiezione sostanziale alla proposta modificata: avvia una **proposta di consenso**.
+      5. Integra le obiezioni valide per creare una versione della proposta che tutti ritengano possibile provare: comunica la **conclusione** della decisione.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  735e10dde58793f0:
+    english: |-
+      >[!Tip]
+      >In more complex decisions you may also include a clarifying **Questions round** at step 2, to help people understand the proposal before inviting them to react and comment on the proposal.
+    translation: |-
+      >[!Tip]
+      >Per le decisioni più complesse puoi includere anche un **Giro di domande** di chiarimento nella fase 2. Aiuta le persone a capire la proposta prima di invitarle a reagire e commentare.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  9cf871a054d8e628:
+    english: |-
+      ## Benefits
+      - Faster, efficient, clear and more adaptable decisions.
+      - Diverse perspectives and empowered engagement builds trust.
+      - A more agile, transparent and inclusive culture.
+    translation: |-
+      ## Vantaggi
+      - Decisioni più rapide, chiare, efficaci e adattabili.
+      - Prospettive diverse e partecipazione attiva rafforzano la fiducia.
+      - Una cultura più agile, trasparente e inclusiva.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  '09907f3ec328e9d2':
+    english: "## Applying the Consent process on Loomio"
+    translation: "## Come applicare il processo di consenso su Loomio"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  8d7c91a6160b45cf:
+    english: |-
+      | **Consent process** | **On Loomio** |
+      |---|---|
+      | You notice a problem or opportunity and take the initiative. |  |
+      | **Present a proposal** <br /><br />Write a clear and concise proposal and share it with people impacted. Describe it in a way so that others will understand what you are proposing. | Start a Loomio **discussion**. <br /><br />Name the proposal in the discussion title, and describe it in the context. |
+      | **Questions** (Optional) <br /><br />Invite clarifying questions to help people understand the proposal. <br /><br />*“A clarifying question round helps make sure everyone understands the proposal before they say what they think about it.”* | Run a **Question round**. If it is hidden, a group administrator can make it available from [Poll templates](/en/user_manual/polls/poll_templates/). <br /><br />Ask “what do you need to know so you understand the proposal?” |
+      | **Reactions** <br /><br />Invite people to offer reactions and comments to improve the proposal. <br /><br />This is a sensing and responding round - *to actively sense and interpret information from the group and then respond or adapt accordingly.* | Run a **[Sense check](/en/user_manual/polls/proposals/sense_check/)** proposal. <br /><br />*In the title:* Name the proposal and say this is an opportunity to react and comment. <br /><br />*In the proposal details:* Clearly frame the proposal and say why it is important.  Include any background information necessary and a link to the current proposal version.  <br /><br />Invite everyone to respond, and to do so before the proposal closes.  |
+      | **Amendment** <br /><br />Consider comments and suggestions from people and amend the proposal as appropriate for the good of your organization. <br /><br />Consider any amendments you want to make for the new proposal version. | Reply to comments and suggestions raised in the Sense check proposal. <br /><br />State an **outcome** to summarize the results of the proposal.  <br /><br />Note any concerns or new information discovered, and outline how the proposal will be amended. <br /><br />Say what will happen next and notify people about the outcome. |
+      | **Objections** <br /><br />Present the amended proposal version and invite people to state valid objections - objections that might cause harm. <br /><br />Respond to and integrate each objection by amending the proposal. | Run a **[Consent proposal](/en/user_manual/polls/proposals/consent/)** with the amended proposal. <br /><br />*In the title:* Name the decision to be made. <br /><br />*In the proposal details:* Present the proposal and invite people to vote consent or to state a valid objection - an objection that might cause harm.  Remember we are seeking consent that the proposal is 'safe to try'. <br /><br />Respond to and integrate each objection, creating an amended version of the proposal. <br /><br />Notify everyone that there has been a further amendment, and invite them to reconsider their Consent and “change your vote”. <br /><br />Or run successive Consent proposals as necessary until objections are resolved. |
+      | **Outcome** <br /><br />When there are no remaining objections and everyone has consented, the result of the decision is announced. | State an **outcome**. <br /><br />Close the proposal. State an outcome and notify everyone involved. <br /><br />State the decision made and thank people for participation in the process. <br /><br />Summarize results of the process and say what will happen next. <br /><br />If no valid objections remain, state that there is consent the proposal is 'safe to try'. <br /><br />The outcome statement is an important record of the decision for future reference. |
+    translation: |-
+      | **Processo di consenso** | **Su Loomio** |
+      |---|---|
+      | Noti un problema o un'opportunità e prendi l'iniziativa. |  |
+      | **Presenta una proposta** <br /><br />Scrivi una proposta chiara e concisa e condividila con le persone interessate. Descrivila in modo che capiscano che cosa proponi. | Avvia una **discussione** su Loomio. <br /><br />Indica la proposta nel titolo della discussione e descrivila nel contesto. |
+      | **Domande** (facoltativo) <br /><br />Invita le persone a porre domande di chiarimento per aiutarle a capire la proposta. <br /><br />*«Un giro di domande di chiarimento aiuta tutti a capire la proposta prima di esprimere un'opinione.»* | Avvia un **Giro di domande**. Se è nascosto, un amministratore del gruppo può renderlo disponibile da [Modelli di sondaggio](/en/user_manual/polls/poll_templates/). <br /><br />Chiedi: «Che cosa devi sapere per capire la proposta?» |
+      | **Reazioni** <br /><br />Invita le persone a condividere reazioni e commenti per migliorare la proposta. <br /><br />In questo giro si raccolgono e si valutano le informazioni del gruppo, *per poi rispondere o adattare la proposta di conseguenza.* | Avvia una proposta di **[Verifica delle impressioni](/en/user_manual/polls/proposals/sense_check/)**. <br /><br />*Nel titolo:* indica la proposta e spiega che è un'occasione per reagire e commentare. <br /><br />*Nei dettagli della proposta:* presenta chiaramente la proposta e spiega perché è importante. Includi le informazioni di contesto necessarie e un link alla versione attuale della proposta. <br /><br />Invita tutti a rispondere prima della chiusura della proposta. |
+      | **Modifica** <br /><br />Valuta commenti e suggerimenti e modifica la proposta secondo le esigenze della tua organizzazione. <br /><br />Decidi quali modifiche apportare alla nuova versione della proposta. | Rispondi ai commenti e ai suggerimenti ricevuti nella proposta di verifica delle impressioni. <br /><br />Comunica una **conclusione** che riassuma quanto emerso dalla proposta. <br /><br />Annota eventuali preoccupazioni o nuove informazioni e spiega come modificherai la proposta. <br /><br />Indica i prossimi passi e informa le persone della conclusione. |
+      | **Obiezioni** <br /><br />Presenta la versione modificata della proposta e invita le persone a esprimere obiezioni valide, cioè obiezioni che indicano un possibile danno. <br /><br />Rispondi a ogni obiezione e integrala modificando la proposta. | Avvia una **[proposta di consenso](/en/user_manual/polls/proposals/consent/)** con la versione modificata. <br /><br />*Nel titolo:* indica la decisione da prendere. <br /><br />*Nei dettagli della proposta:* presenta la proposta e invita le persone a votare per il consenso o a esprimere un'obiezione valida, cioè un'obiezione che indica un possibile danno. Ricorda che si cerca il consenso per provare la proposta senza rischi. <br /><br />Rispondi a ogni obiezione e integrala in una nuova versione della proposta. <br /><br />Informa tutti della nuova modifica e invitali a riconsiderare il proprio consenso e a «cambiare il voto». <br /><br />Se necessario, avvia altre proposte di consenso finché le obiezioni non sono risolte. |
+      | **Conclusione** <br /><br />Quando non restano obiezioni e tutti hanno dato il consenso, viene comunicata la decisione. | Comunica una **conclusione**. <br /><br />Chiudi la proposta, comunica la conclusione e informa tutte le persone coinvolte. <br /><br />Indica la decisione presa e ringrazia le persone per aver partecipato al processo. <br /><br />Riassumi quanto emerso e indica i prossimi passi. <br /><br />Se non restano obiezioni valide, dichiara che c'è consenso per provare la proposta senza rischi. <br /><br />La conclusione documenta la decisione e potrà essere consultata in futuro. |
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  525fe55f979f05e3:
+    english: "### Objections"
+    translation: "### Obiezioni"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  3cc3304a15bc3d2f:
+    english: In the Consent process, an objection is defined as something that **might cause harm to the team or organization**.
+    translation: Nel processo di consenso, un'obiezione riguarda qualcosa che **potrebbe causare un danno al gruppo o all'organizzazione**.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  ab509ea088e16a0d:
+    english: |-
+      Objections should meet this criteria to be valid:
+      - Explicit: *I can make a reasoned case*
+      - Impersonal: *It's not just a personal preference*
+      - Evidenced: *Not predictive, based on experience*
+      - Not 'safe to fail': *It's not that I have a 'better idea'*
+    translation: |-
+      Per essere valide, le obiezioni devono soddisfare questi criteri:
+      - Esplicite: *posso spiegare le mie ragioni*
+      - Impersonali: *non sono solo una preferenza personale*
+      - Basate su prove: *si fondano sull'esperienza, non su previsioni*
+      - Riguardano un rischio reale: *non si tratta solo di avere un'idea «migliore»*
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  '08d3059af11ce88f':
+    english: "## Example of a Consent process on Loomio"
+    translation: "## Esempio di un processo di consenso su Loomio"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  ec691660458e426c:
+    english: "### Step 0. You notice a problem or opportunity and take the initiative"
+    translation: "### Fase 0. Noti un problema o un'opportunità e prendi l'iniziativa"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  7dd26502d162e33e:
+    english: "*Is the problem or opportunity is worth pursuing?* Chloe noticed that new Health and Safety legislation is coming into effect soon, and has taken the lead to draft a policy for her organization."
+    translation: "*Vale la pena affrontare il problema o cogliere l'opportunità?* Chloe ha saputo che una nuova normativa sulla salute e la sicurezza entrerà presto in vigore. Ha preso l'iniziativa di redigere una politica per la sua organizzazione."
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  b6afe6516fd602d4:
+    english: "*Is there a decision to be made?* The Health and Safety policy document will need to be approved as a formal policy."
+    translation: "*C'è una decisione da prendere?* Il documento sulla salute e la sicurezza dovrà essere approvato come politica ufficiale."
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  5e80186b2ed95b37:
+    english: "*Does it impact other people and your organization?* The policy impacts everyone in the organization.  Staff will need to comply with the policy, and it will become a legal obligation of the organization."
+    translation: "*La decisione riguarda altre persone e la tua organizzazione?* La politica riguarda tutte le persone dell'organizzazione. Il personale dovrà rispettarla e la sua applicazione diventerà un obbligo legale per l'organizzazione."
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  bc0f7f13bdc1f533:
+    english: "### Step 1. Present a proposal"
+    translation: "### Fase 1. Presenta una proposta"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  72e08141a5c023c5:
+    english: Chloe starts a Loomio thread outlining the need to develop a Health and Safety policy, proposing to lead this work with a first draft, inviting contributions to develop the policy and that she is starting a Consent process to adopt the policy.
+    translation: Chloe avvia una discussione su Loomio per spiegare perché serve una politica sulla salute e la sicurezza. Propone di coordinare il lavoro preparando una prima bozza, invita le persone a contribuire e annuncia l'avvio di un processo di consenso per adottare la politica.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  aedd5ec7bae09e0c:
+    english: "### Step 2. Facilitate a clarifying question round"
+    translation: "### Fase 2. Facilita un giro di domande di chiarimento"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  71ad95aa780b52f8:
+    english: Chloe runs a Question proposal to open a question round, inviting people to ask clarifying questions about the Health and Safety policy within a set period.  Some further background information along with the draft document is provided for context.
+    translation: Chloe avvia una proposta di domande per aprire un giro in cui le persone possono chiedere chiarimenti sulla politica per la salute e la sicurezza entro un termine stabilito. Fornisce la bozza del documento e altre informazioni di contesto.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  dcc6429fd48d9730:
+    english: The aim at this stage is to help people understand the policy before they say what they think about it.
+    translation: In questa fase l'obiettivo è aiutare le persone a capire la politica prima che esprimano un'opinione.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  5ea5e1926f6c575b:
+    english: People ask questions in the proposal 'Reason' text field and click 'Submit vote'.  Chloe replies to questions.
+    translation: Le persone scrivono le domande nel campo di testo «Motivazione» della proposta e selezionano «Invia voto». Chloe risponde alle domande.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  99a04622ca0997d0:
+    english: "### Step 3. Facilitate a reactions round "
+    translation: "### Fase 3. Facilita un giro di reazioni"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  97ed321f599305b8:
+    english: 'Chloe now opens a Reactions round by running a Sense check proposal.  People are invited to offer reactions and comments to improve the policy.  '
+    translation: Chloe apre un giro di reazioni avviando una proposta di verifica delle impressioni. Invita le persone a condividere reazioni e commenti per migliorare la politica.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  9a6fc43806e90356:
+    english: This round is an opportunity to actively sense and interpret information from the group and then respond or adapt accordingly.
+    translation: Questo giro permette di raccogliere e valutare le informazioni del gruppo, per poi rispondere o adattare la proposta di conseguenza.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  d86e63424185ef5a:
+    english: "### Step 4. Amend the proposal"
+    translation: "### Fase 4. Modifica la proposta"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  d7be57cd9ffe1142:
+    english: When the Sense check proposal closes, Chloe notifies everyone and works to amend the policy appropriately.
+    translation: Quando la proposta di verifica delle impressioni si chiude, Chloe informa tutti e modifica la politica in modo appropriato.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  c3584939cbfea28e:
+    english: "### Step 5. Seek consent to adopt the policy"
+    translation: "### Fase 5. Cerca il consenso per adottare la politica"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  0eb85e3f6caeb550:
+    english: The Health and Safety policy is looking good.  People have had the opportunity to ask questions and to offer suggestions to improve the policy.
+    translation: La politica sulla salute e la sicurezza ha preso forma. Le persone hanno potuto porre domande e suggerire miglioramenti.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  90921f42cb6e0481:
+    english: Now Chloe seeks consent to adopt the policy by running a Consent proposal.
+    translation: Ora Chloe cerca il consenso per adottare la politica avviando una proposta di consenso.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  884231f468d03af1:
+    english: "### Step 6. Integrate valid objections to create an amended version of the proposal that everyone consents is ‘safe to try’"
+    translation: "### Fase 6. Integra le obiezioni valide per creare una versione modificata della proposta che tutti ritengano possibile provare"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  4ad8ee69c1af2618:
+    english: Once all objections are integrated, consent has been reached and Chloe states the decision outcome :-)
+    translation: Una volta integrate tutte le obiezioni, il consenso è raggiunto e Chloe comunica la conclusione della decisione.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'

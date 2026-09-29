@@ -1,0 +1,273 @@
+---
+navigation_title: Vorbereitung
+blocks:
+  4fdd26e2ff6dd9e5:
+    english: "# Preparation"
+    translation: "# Vorbereitung"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  4fc02624e97369e9:
+    english: |-
+      > <img style="border-radius: 100%; float: right; margin-left: 0.5em; max-width: 96px; " src="../silvia_200.png"> For every minute of time with the group, consider spending 3 minutes planning. That means spending three hours preparing for a one hour session. Only as you improve should you spend less time planning.
+      >
+      > — Silvia Zuur
+    translation: |-
+      > <img style="border-radius: 100%; float: right; margin-left: 0.5em; max-width: 96px; " src="../silvia_200.png"> Plane für jede Minute mit der Gruppe möglichst drei Minuten Vorbereitung ein. Für ein einstündiges Treffen wären das drei Stunden. Erst mit wachsender Erfahrung solltest du weniger Zeit für die Planung aufwenden.
+      >
+      > — Silvia Zuur
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  d18832ab8f94fa1b:
+    english: "## Understand Purpose"
+    translation: "## Den Zweck verstehen"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  26d88950f0aac205:
+    english: Clarification of purpose is one of the highest value offerings of a skilled facilitator — if they can help the group nail that, everything else is possible. Purpose operates at the level of a group as a whole, and at the level of individual discussions/decisions. Purpose is what enables judgment calls about what tools to deploy, what interventions to enact, and what outcomes to aim for. Lack of shared understanding about purpose can be fatal to a discussion, or to the group itself.
+    translation: Eine der wertvollsten Aufgaben guter Moderation ist es, den Zweck zu klären. Wenn die Gruppe sich darüber einig ist, wird vieles andere möglich. Ein Zweck gilt für die Gruppe als Ganzes und für einzelne Diskussionen und Entscheidungen. An ihm lässt sich beurteilen, welche Werkzeuge passen, wann eingegriffen werden sollte und welches Fazit angestrebt wird. Fehlt ein gemeinsames Verständnis des Zwecks, kann eine Diskussion oder sogar die Gruppe daran scheitern.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  4276182ea8afaf36:
+    english: "> Always refer back to your purpose-finding questions to check that you’re covering off what the participants want to learn or achieve. — Silvia Zuur"
+    translation: "> Komm immer wieder auf deine Fragen zum Zweck zurück. Prüfe, ob du damit erfasst, was die Teilnehmenden lernen oder erreichen möchten. — Silvia Zuur"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  aabfa9d842af2688:
+    english: On Loomio
+    translation: Auf Loomio
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  ea5f19b8970e4db6:
+    english: |-
+      * The app offers space for explication of purpose, such as the [group description](/en/user_manual/groups/starting_a_group/#group-description) and [discussion context](/en/user_manual/discussions/using_discussions/#discussion-context) fields.
+      * A Loomio discussion *about* purpose is a great place to start with your group, if it's not already clear.
+      * Our analytics (stats about how people use the software) show that groups with a clear shared purpose are more successful.
+      * [Customer stories and case studies](https://blog.loomio.com/?utm_campaign=facilitators_guide_help&utm_term=help) we've collected emphasise the importance of setting a collective purpose.
+    translation: |-
+      * Die App bietet Platz, um den Zweck zu erläutern, etwa in der [Gruppenbeschreibung](/en/user_manual/groups/starting_a_group/#group-description) und im Feld [Kontext der Diskussion](/en/user_manual/discussions/using_discussions/#discussion-context).
+      * Wenn der Zweck noch unklar ist, beginne mit deiner Gruppe eine Loomio-Diskussion *über* den Zweck.
+      * Unsere Nutzungsstatistiken zeigen, dass Gruppen mit einem klaren gemeinsamen Zweck erfolgreicher sind.
+      * Die von uns gesammelten [Erfahrungsberichte und Fallstudien](https://blog.loomio.com/?utm_campaign=facilitators_guide_help&utm_term=help) zeigen, wie wichtig ein gemeinsamer Zweck ist.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  e7d962ee3ac4e476:
+    english: "## Rearrange the Furniture"
+    translation: "## Die Einrichtung umstellen"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  bee66f99abaa8e2a:
+    english: Desiging the space you invite people into greatly influences their experience. Every gathering is unique, and deserves a setup to suit. Familiarity signals safety, while changing the environment cues openness to new ideas.
+    translation: Wie du den Raum gestaltest, in den du Menschen einlädst, prägt ihre Erfahrung. Jedes Treffen ist anders und braucht eine passende Umgebung. Vertrautes vermittelt Sicherheit. Eine veränderte Umgebung kann Offenheit für neue Ideen fördern.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  b98fa9d3e5726891:
+    english: In offline spaces, literally rearranging the furniture is a habit that helps facilitators get into the right zone to hold space, and prompts them to think about what’s unique in that session. Imagine the difference between everyone seated in rows versus everyone in a circle.
+    translation: Bei Treffen vor Ort stellen Moderierende oft tatsächlich die Möbel um. Das hilft ihnen, sich auf die Moderation einzustellen und über die Besonderheiten des Treffens nachzudenken. Stell dir vor, wie anders ein Treffen verläuft, wenn alle im Kreis sitzen statt in Reihen.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  546ba20d5778bb25:
+    english: |-
+      * Inviting people into a new digital space specifically for decision making is powerful — there’s a “threshold crossing” experience making it as distinct from other online spaces (which might be for socialising or other functions).
+      * [Customising your group photo](/en/user_manual/groups/starting_a_group/#upload-a-group-photo) is a prime opportunity to craft the feeling of the space.
+      * The group description is a main piece of “furniture” on the group page, and [you can customise it](/en/user_manual/groups/starting_a_group/#group-description) to suit.
+    translation: |-
+      * Menschen in einen neuen digitalen Raum einzuladen, der eigens für Entscheidungen gedacht ist, kann viel bewirken. Der Wechsel in diesen Raum hebt ihn von anderen Online-Räumen ab, die etwa dem sozialen Austausch dienen.
+      * Wenn du [das Gruppenfoto anpasst](/en/user_manual/groups/starting_a_group/#upload-a-group-photo), kannst du die Atmosphäre des Raums mitgestalten.
+      * Die Gruppenbeschreibung ist ein wichtiger Teil der „Einrichtung“ der Gruppenseite. [Du kannst sie passend gestalten](/en/user_manual/groups/starting_a_group/#group-description).
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  bb1d23808a93d41b:
+    english: "## Supplies, Tools, Materials"
+    translation: "## Hilfsmittel, Werkzeuge und Materialien"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  b5e22b09672c3587:
+    english: When facilitation is running smoothly, all the supplies a group needs are right at hand. In offline spaces, this stuff includes post-its, pens, paper, name tags, printouts, and background material. Every step a facilitator takes to be well-prepared in this way allows more time and energy for the work.
+    translation: Bei einer gut vorbereiteten Moderation ist alles griffbereit, was die Gruppe braucht. Vor Ort können das Haftnotizen, Stifte, Papier, Namensschilder, Ausdrucke und Hintergrundmaterial sein. Jeder solche Vorbereitungsschritt schafft mehr Zeit und Energie für die eigentliche Arbeit.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  7da21174f12dfb9e:
+    english: |-
+      * Many groups use the group description to link to a shared drive of collaborative documents, background information, the group's project management or task tracking system, a list of contacts, etc.
+      * Each thread deserves consideration of what people might need to engage with it — putting all the information right at hand is essential (for example, if you reference something, linking directly to it is much more effective than expecting people to search for it).
+    translation: |-
+      * Viele Gruppen verlinken in der Gruppenbeschreibung auf einen gemeinsamen Speicherort für Dokumente, Hintergrundinformationen, Projektmanagement oder Aufgaben sowie auf Kontaktlisten.
+      * Überlege bei jeder Diskussion, was die Beteiligten brauchen, um mitzuarbeiten. Stelle die Informationen direkt bereit. Wenn du zum Beispiel etwas erwähnst, ist ein direkter Link hilfreicher, als die Beteiligten danach suchen zu lassen.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  35dd82fcf7e543d8:
+    english: "## Design the Experience"
+    translation: "## Den Ablauf gestalten"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  fbc88dd9b9738343:
+    english: 'Once they have the basic pieces in place (purpose, tools, background info), good facilitators take time to think through the design of the experience they are inviting: the situation, what success could look like, all the possible pathways and choices. They don’t jump in without a considered design.'
+    translation: Wenn Zweck, Werkzeuge und Hintergrundinformationen geklärt sind, nehmen sich gute Moderierende Zeit für die Gestaltung des Ablaufs. Sie denken über die Situation nach, darüber, wie Erfolg aussehen könnte, und über mögliche Wege und Entscheidungen. Sie beginnen nicht ohne durchdachten Plan.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  a4dce16ca48a4324:
+    english: Time and time again we have seen people drastically underestimate the need for prep and design. Stop and think about the experience you want to host, before jumping straight in. Investment in design is paid back many times over by success later.
+    translation: Wir haben immer wieder erlebt, dass Menschen den Aufwand für Vorbereitung und Gestaltung stark unterschätzen. Halte kurz inne und überlege, welche Erfahrung du ermöglichen möchtest, bevor du beginnst. Die Zeit für diese Planung zahlt sich später vielfach aus.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  e91f002ee6e53550:
+    english: "* Loomio’s most basic functionality follows the structure of good facilitation by design: invite people, discuss a topic, gather divergent input, converge into a specific proposal, test for agreement, confirm outcome."
+    translation: "* Schon die Grundfunktionen von Loomio folgen einem sinnvollen Moderationsablauf: Menschen einladen, ein Thema diskutieren, unterschiedliche Beiträge sammeln, daraus einen konkreten Vorschlag entwickeln, Zustimmung prüfen und das Fazit festhalten."
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  211e08fc109e6449:
+    english: |-
+      * Skilled users are already adapting Loomio for various experience designs — such as a multi-step consultation processes, signing off documents, etc. Each job, when facilitated effectively, takes a certain repeatable shape.
+      * Online collaboration design doesn't have to reinvent the wheel. Trust what you know works, and translate it. Many tried and tested offline processes can be adapted to the online space (ex: the [Advice Process](/en/guides/making_decisions/advice_process.html)).
+      * [Case studies](https://blog.loomio.com/?utm_campaign=facilitators_guide_help&utm_term=help) of thoughtfully designed processes could be used as “recipes” — if you're not sure what design to use, start by seeing what others have tried.
+    translation: |-
+      * Erfahrene Nutzerinnen und Nutzer passen Loomio bereits an unterschiedliche Abläufe an, etwa für mehrstufige Konsultationen oder die Freigabe von Dokumenten. Gut moderiert nimmt jede dieser Aufgaben eine wiederholbare Form an.
+      * Für die Gestaltung der Online-Zusammenarbeit musst du nicht bei null anfangen. Nutze, was sich für dich bewährt hat. Viele erprobte Abläufe aus Treffen vor Ort lassen sich online umsetzen, zum Beispiel der [Beratungsprozess](/en/guides/making_decisions/advice_process.html).
+      * [Fallstudien](https://blog.loomio.com/?utm_campaign=facilitators_guide_help&utm_term=help) zu durchdacht gestalteten Abläufen können als Vorlagen dienen. Wenn du noch keinen passenden Ablauf kennst, sieh dir an, was andere ausprobiert haben.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  7e99e2ddc63d7a98:
+    english: "## Contextualise the Moment"
+    translation: "## Den Zeitpunkt einordnen"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  427b66f23f4b3c09:
+    english: Discussions do not occur in a vacuum, but in the larger context of the group’s history and practice. To be effective, facilitated experiences have to occur with the right timing, and fit in with the rest of the group’s process.
+    translation: Diskussionen finden nicht isoliert statt. Sie stehen im Zusammenhang mit der Geschichte und Arbeitsweise der Gruppe. Damit Moderation wirksam ist, muss sie zum richtigen Zeitpunkt stattfinden und zum übrigen Vorgehen der Gruppe passen.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  48a889b09297e38b:
+    english: 'Key Context Questions:'
+    translation: 'Wichtige Fragen zum Kontext:'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  7eccc4a4e4a3b175:
+    english: |-
+      * Is this a moment of transition?
+      * Is this an enhancement of existing practice?
+      * Is this one of many concurrent processes, or a singular focus?
+      * Are we here to solve a problem, or go deeper, wider, narrower?
+    translation: |-
+      * Befindet sich die Gruppe gerade im Wandel?
+      * Verbessert das Vorhaben eine bestehende Arbeitsweise?
+      * Ist dies einer von mehreren gleichzeitigen Prozessen oder der einzige Schwerpunkt?
+      * Wollen wir ein Problem lösen oder ein Thema vertiefen, erweitern oder eingrenzen?
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  c7c8ce0838a076cd:
+    english: |-
+      * Loomio groups nearly always have a “champion”, who understands the group’s context and makes the call about whether introducing Loomio is right for them.
+      * It's not wise to try to change everything at once. Any time Loomio fits nicely into existing workflows, groups will adopt it better.
+      * Good timing is when the group is ready to incorporate online collaborative practice effectively. They have to feel the pain of not having the online decision-making space, and be motivated to solve that problem.
+      * Consider the group’s attention economy to determine when the right time to raise a given topic might be. Collective attention is a limited resource.
+      * Many groups are not even cognisant of their existing collaborative practice and habits, much less clear about how Loomio might fit in. Start with a discussion about the current way of doing things, and what's working or not working.
+    translation: |-
+      * In Loomio-Gruppen gibt es fast immer eine Person, die das Vorhaben vorantreibt. Sie kennt den Kontext der Gruppe und entscheidet mit, ob die Einführung von Loomio gerade passt.
+      * Versuche nicht, alles auf einmal zu ändern. Gruppen nehmen Loomio leichter an, wenn es zu ihren bestehenden Abläufen passt.
+      * Ein guter Zeitpunkt ist erreicht, wenn die Gruppe bereit ist, online zusammenzuarbeiten. Sie sollte merken, dass ihr ein Raum für Online-Entscheidungen fehlt, und diesen Bedarf angehen wollen.
+      * Bedenke, wie viel Aufmerksamkeit die Gruppe aufbringen kann, wenn du den Zeitpunkt für ein Thema wählst. Gemeinsame Aufmerksamkeit ist begrenzt.
+      * Vielen Gruppen sind ihre bisherigen Formen und Gewohnheiten der Zusammenarbeit kaum bewusst. Dann ist erst recht unklar, wie Loomio dazu passen könnte. Beginne mit einer Diskussion darüber, wie die Gruppe bisher arbeitet und was dabei funktioniert oder nicht funktioniert.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  7bc2616a0ec0b1dc:
+    english: "## The Role of the Facilitator"
+    translation: "## Die Rolle der Moderation"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  c6d08854a875262a:
+    english: Good facilitation requires self-awareness on an individual and collective level. Lack of understanding of the role can lead to misunderstandings, conflict, or unsafe situations.
+    translation: Gute Moderation erfordert, dass sich Einzelne und die Gruppe ihrer eigenen Rolle bewusst sind. Ist die Rolle der Moderation unklar, kann das zu Missverständnissen, Konflikten oder unsicheren Situationen führen.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  aa59e3e4d08a95b7:
+    english: "> Have the power handed over to you. When you’re invited into a new group or organization, everybody will be thinking: Who’s this joker? Why should we listen to them? Get somebody who the participants know and trust to introduce you. This builds you up in the participants' minds and helps to hand over the power over to you. — Silvia Zuur"
+    translation: "> Lass dir die Befugnis zur Moderation ausdrücklich übertragen. Wenn du in eine neue Gruppe oder Organisation eingeladen wirst, fragen sich die Beteiligten vielleicht: Wer ist diese Person? Warum sollten wir auf sie hören? Bitte jemanden, den die Beteiligten kennen und dem sie vertrauen, dich vorzustellen. Das schafft Vertrauen und hilft, dir die Befugnis zur Moderation zu übertragen. — Silvia Zuur"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  02d38d1def45d150:
+    english: |-
+      ### Consent
+      It’s critical that the group consents to be facilitated. Attempting to facilitate otherwise can be at worst coercive (unfair to the group) and dangerous (unfair to the facilitator) — and will face resistance and confusion. Facilitators put themselves in a vulnerable position; they must have mandate or they should not agree to engage. Consent is critical for both the facilitator and participants.
+    translation: |-
+      ### Einverständnis
+      Die Gruppe muss mit der Moderation einverstanden sein. Ohne dieses Einverständnis kann Moderation im schlimmsten Fall Zwang auf die Gruppe ausüben und die moderierende Person gefährden. Sie wird auch auf Widerstand und Verwirrung stoßen. Moderierende begeben sich in eine verletzliche Position. Sie brauchen ein Mandat und sollten die Aufgabe sonst nicht übernehmen. Einverständnis ist für beide Seiten entscheidend.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  a1a8c6ca89dad49a:
+    english: |-
+      ### Responsibility
+      Once a facilitator takes up a mandate, they carry enhanced responsibilities. Facilitators have more claim to floor time, and directing the group’s attention. This has to be used in service to the whole, not for a personal agenda. The words and demeanor of the facilitator will also have a disproportionate effect, meaning they have to act with heightened consideration.
+    translation: |-
+      ### Verantwortung
+      Wer ein Mandat zur Moderation übernimmt, trägt zusätzliche Verantwortung. Moderierende können mehr Redezeit beanspruchen und die Aufmerksamkeit der Gruppe lenken. Diese Möglichkeiten müssen der ganzen Gruppe dienen, nicht einer persönlichen Agenda. Auch ihre Worte und ihr Auftreten haben besonders großes Gewicht. Deshalb müssen sie besonders umsichtig handeln.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  b5f6b4ebd477c97c:
+    english: |-
+      ### Power
+      Facilitation by nature introduces power differentials. If the facilitator cannot exercise power in certain ways, they cannot do their job. For example, to keep a discussion on topic the facilitator might interrupt someone, or say that a certain way of interacting is not OK. It’s not appropriate to expect a facilitator to shoulder responsibility for the experience without giving them the powers they need to deliver successfully. There is no one right answer about how much power, but it has to be balanced with the level of responsibility.
+    translation: |-
+      ### Macht
+      Moderation schafft zwangsläufig Machtunterschiede. Moderierende müssen bestimmte Befugnisse ausüben können, um ihre Aufgabe zu erfüllen. Sie müssen zum Beispiel jemanden unterbrechen können, damit eine Diskussion beim Thema bleibt, oder eine Form des Umgangs als nicht akzeptabel benennen. Wer ihnen die Verantwortung für den Ablauf überträgt, muss ihnen auch die dafür nötigen Befugnisse geben. Wie weit diese reichen, hängt von der Verantwortung ab, die sie tragen.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  c82df3fe42db014a:
+    english: |-
+      ### Responsiveness
+      Facilitators do their best work when they can adapt effectively to the emergent reality. Human beings are endlessly complex, and groups of them exponentially more so. Rigid adherence to a plan or protocol without flexibility can set the group up to fail. If a facilitator is not allowed or not willing to adapt to changing circumstance, they cannot effectively hold the space for dynamic humans.
+    translation: |-
+      ### Anpassungsfähigkeit
+      Moderierende arbeiten am besten, wenn sie auf neue Entwicklungen eingehen können. Menschen sind komplex, und in Gruppen wird das Zusammenspiel noch komplexer. Wer starr an einem Plan oder Ablauf festhält, kann den Erfolg der Gruppe gefährden. Können oder wollen Moderierende sich nicht an veränderte Umstände anpassen, können sie eine dynamische Gruppe nicht wirksam begleiten.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  aad36b296834ab22:
+    english: "> Wear and un-wear the facilitation-hat. A challenge many people face is trying to facilitate meetings and workshops with their own team. As a facilitator, they need to be neutral. But as a team member, they have valuable insights to share. Make it really clear when you’re a facilitator and when you’re being a participant. — Silvia Zuur"
+    translation: "> Setz den Moderationshut auf und auch wieder ab. Für viele ist es schwierig, Treffen und Workshops im eigenen Team zu moderieren. In der Moderation müssen sie neutral sein. Als Teammitglied haben sie zugleich wertvolle Einsichten beizutragen. Mach deutlich, wann du moderierst und wann du als teilnehmende Person sprichst. — Silvia Zuur"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  85c4fcf7a6e72361:
+    english: |-
+      * Many groups using Loomio are experienced with facilitation and already have a shared understanding of the role. They already adapt the tool to meet these needs with some success.
+      * Often the person who starts a discussion is assumed to be facilitating it, barring another agreed understanding in the group. Clarity about who is facilitating can greatly enhance mutual safety and success.
+      * Loomio naturally creates a dynamic and open to distributed acts of facilitation, such as users tagging in others, requests to stay on topic, suggestions of the right timing for a proposal, etc — but this is often left implicit. Explicitly naming what acts of facilitation are and discussing whether this role is centralised or distributed can clarify the role.
+      * Implicit distributed facilitation can be the default starting place for an online group (ie, no discussion of facilitation as a named role), but that setup is actually best for advanced groups prgressing past working with explicit facilitation.
+    translation: |-
+      * Viele Gruppen, die Loomio nutzen, haben Erfahrung mit Moderation und ein gemeinsames Verständnis dieser Rolle. Sie passen das Werkzeug bereits an ihre Bedürfnisse an.
+      * Oft wird angenommen, dass die Person, die eine Diskussion startet, sie auch moderiert, sofern die Gruppe nichts anderes vereinbart hat. Klarheit darüber, wer moderiert, kann Sicherheit und Erfolg für alle fördern.
+      * Loomio ermöglicht eine offene Dynamik, in der sich mehrere Personen an der Moderation beteiligen können. Sie können etwa andere markieren, darum bitten, beim Thema zu bleiben, oder einen passenden Zeitpunkt für einen Vorschlag anregen. Häufig bleibt diese Moderation unausgesprochen. Wenn die Gruppe solche Handlungen benennt und bespricht, ob die Rolle bei einer Person liegt oder verteilt ist, wird sie klarer.
+      * Eine Gruppe kann online mit stillschweigend verteilter Moderation beginnen, ohne Moderation ausdrücklich als Rolle zu besprechen. Diese Form eignet sich allerdings eher für erfahrene Gruppen, die bereits mit ausdrücklicher Moderation gearbeitet haben.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'

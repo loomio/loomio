@@ -1,0 +1,267 @@
+---
+navigation_title: Modèles de sondage
+blocks:
+  6428da81fbbe11c6:
+    english: "# Poll templates"
+    translation: "# Modèles de sondage"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  208bc68b458895f1:
+    english: Poll templates are reusable starting points shown when someone selects **Start a vote** or **New poll**. A template combines a voting method with preset guidance, response options, and settings.
+    translation: Les modèles de sondage sont des points de départ réutilisables, proposés lorsque vous sélectionnez **Lancer un vote** ou **Nouveau sondage**. Un modèle associe une méthode de vote à des instructions, des options de réponse et des paramètres prédéfinis.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  f290b92adeb2a791:
+    english: Use this page to configure which templates are available to a group or to create one for your own process. To choose a template for a particular vote, see [Proposals](../proposals/) or [Polls](../proposal_types/). To facilitate a complete decision process, see [Making decisions](/en/guides/making_decisions/).
+    translation: Cette page explique comment choisir les modèles disponibles pour un groupe ou en créer un pour votre propre processus. Pour choisir un modèle pour un vote précis, consultez [Propositions](../proposals/) ou [Sondages](../proposal_types/). Pour accompagner l’ensemble du processus, consultez [Prendre des décisions](/en/guides/making_decisions/).
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  658d10486cbee7dc:
+    english: "## Voting methods and templates"
+    translation: "## Méthodes de vote et modèles"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  d903d1a58aebf643:
+    english: A voting method controls how participants respond and how Loomio calculates the result. Examples include Proposal, Choose, Score, Allocate, Rank, Time poll, and STV.
+    translation: La méthode de vote détermine comment les participants répondent et comment Loomio calcule le résultat. Il existe notamment Proposition, Choisir, Score, Allouer, Classer, Sondage horaire de réunion et STV.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  21efff1a5c91ad29:
+    english: A poll template uses one of those methods and adds reusable defaults. For example, Sense check, Advice, Consent, and Consensus are different templates built on the Proposal voting method. Their instructions and response options differ even though Loomio handles their ballots in the same way.
+    translation: Un modèle de sondage utilise l’une de ces méthodes et y ajoute des valeurs par défaut réutilisables. Par exemple, Vérification du ressenti, Avis, Consentement et Consensus sont des modèles différents fondés sur la méthode de vote Proposition. Leurs instructions et leurs options de réponse diffèrent, même si Loomio traite les votes de la même façon.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  f622951ffc7e1064:
+    english: "## Use a template"
+    translation: "## Utiliser un modèle"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  865e825cc7d00cf2:
+    english: When starting a vote, select the **Proposal** or **Poll** tab and choose one of the templates available to the group.
+    translation: Lorsque vous lancez un vote, sélectionnez l’onglet **Proposition** ou **Sondage**, puis choisissez un modèle disponible pour le groupe.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  1598f1a55a6944e6:
+    english: The template supplies an introduction, example content, options, and settings. Review and edit these for the particular decision before starting the vote. Editing the new vote does not change the reusable template.
+    translation: Le modèle fournit une introduction, un exemple de contenu, des options et des paramètres. Vérifiez et adaptez ces éléments à la décision avant de lancer le vote. Les modifications apportées au nouveau vote ne changent pas le modèle réutilisable.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  8212a94908338b22:
+    english: "## Who can manage templates"
+    translation: "## Qui peut gérer les modèles"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  378caa9ba83ee0dc:
+    english: Group administrators can create and manage every poll template in their group. They can enable **Members can create templates** under **Group settings** → **Permissions**. When enabled, members can create templates and manage templates they authored.
+    translation: Les administrateurs d’un groupe peuvent créer et gérer tous ses modèles de sondage. Ils peuvent activer **Les membres peuvent créer des modèles** dans **Paramètres de groupe** → **Permissions**. Les membres peuvent alors créer des modèles et gérer ceux dont ils sont les auteurs.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  0fafc6275b6c9153:
+    english: "## Create a poll template"
+    translation: "## Créer un modèle de sondage"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  5fc696a1e924179c:
+    english: Open the template list and select **New template**. Start with an example or a blank template, then choose the group that will use it.
+    translation: Ouvrez la liste des modèles et sélectionnez **Nouveau modèle**. Partez d’un exemple ou d’un modèle vierge, puis choisissez le groupe qui l’utilisera.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  37b3658ec66eb8b7:
+    english: The template form defines the guidance and defaults people receive when they start a vote.
+    translation: Le formulaire du modèle définit les instructions et les valeurs par défaut proposées aux personnes qui lancent un vote.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  fa0dab51a009bf90:
+    english: "### Template title, subtitle, and help"
+    translation: "### Titre, sous-titre et aide du modèle"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  965cde5e13952ade:
+    english: |-
+      - **Template title** is the short name shown in the template list.
+      - **Template subtitle** explains when to use it in one sentence.
+      - **Template help** appears in the information panel when someone uses the template. Explain its purpose, any rules participants should know, and links to relevant policies or guides.
+    translation: |-
+      - **Titre du modèle** est le nom court affiché dans la liste des modèles.
+      - **Sous-titre du modèle** explique en une phrase quand l’utiliser.
+      - **Aide sur les modèles** apparaît dans le panneau d’information lorsque quelqu’un utilise le modèle. Expliquez son objectif, les règles que les participants doivent connaître et, si nécessaire, ajoutez des liens vers les politiques ou guides pertinents.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  f3e51b30163d5b85:
+    english: Use plain, specific names that distinguish the template from others in the group.
+    translation: Choisissez des noms simples et précis pour distinguer ce modèle des autres modèles du groupe.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  e6b8a09191bb8c3f:
+    english: "### Voting method"
+    translation: "### Méthode de vote"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  ea4fef806c1cf060:
+    english: Choose what participants need to express and how the result should be calculated.
+    translation: Choisissez ce que les participants doivent exprimer et comment le résultat doit être calculé.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  f8c87a496921c710:
+    english: |-
+      - **Proposal**: respond to a statement using defined positions;
+      - **Choose**: select one or more options;
+      - **Score**: evaluate every option on a scale;
+      - **Allocate**: distribute a limited budget of points;
+      - **Rank**: arrange options in preference order;
+      - **Time poll**: indicate availability; and
+      - **STV**: rank candidates in a proportional, multi-winner election.
+    translation: |-
+      - **Proposition** : répondre à une affirmation en choisissant parmi des positions définies ;
+      - **Choisir** : sélectionner une ou plusieurs options ;
+      - **Score** : évaluer chaque option sur une échelle ;
+      - **Allouer** : répartir un nombre limité de points ;
+      - **Classer** : classer les options par ordre de préférence ;
+      - **Sondage horaire de réunion** : indiquer ses disponibilités ; et
+      - **STV** : classer des candidats dans le cadre d’une élection proportionnelle à plusieurs sièges.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  9d589e44fa94c5e2:
+    english: Changing the voting method changes the fields and result calculation available to the template.
+    translation: Changer de méthode de vote modifie les champs et le calcul du résultat disponibles dans le modèle.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  230689f781e4cbc7:
+    english: "### Example title, details, and tags"
+    translation: "### Exemple de titre, de détails et d’étiquettes"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  6fa4b3625c6ec7ce:
+    english: Provide example content that helps an author frame the vote. These values are copied into a new proposal or poll and can be edited before it starts.
+    translation: Fournissez un exemple de contenu pour aider l’auteur à formuler le vote. Ces valeurs sont copiées dans une nouvelle proposition ou un nouveau sondage et peuvent être modifiées avant son lancement.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  a093368b30ac3c9b:
+    english: Use prompts rather than fixed content when each use needs a different title or details. Add default category tags only when they apply every time the template is used.
+    translation: Utilisez des invites plutôt qu’un contenu fixe si chaque utilisation demande un titre ou des détails différents. Ajoutez des étiquettes de catégorie par défaut uniquement si elles s’appliquent à chaque utilisation du modèle.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  24c3fa4b7ef676fd:
+    english: "### Response options"
+    translation: "### Options de réponse"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  e7421caab9c47f5b:
+    english: 'Methods such as Proposal and Choose let you configure response options. Select the pencil icon beside an option to edit:'
+    translation: 'Des méthodes comme Proposition et Choisir permettent de configurer les options de réponse. Sélectionnez l’icône en forme de crayon à côté d’une option pour modifier :'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  73a065ad5b861579:
+    english: |-
+      - **Option name**: the short response label;
+      - **Icon**: its visual marker;
+      - **Meaning**: what selecting the option communicates; and
+      - **Reason prompt**: the question shown when someone explains their response.
+    translation: |-
+      - **Nom de l’option** : le libellé court de la réponse ;
+      - **Icône** : son repère visuel ;
+      - **Signification** : ce qu’exprime le choix de cette option ; et
+      - **Invite de raison** : la question affichée lorsqu’une personne explique sa réponse.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  38bc8cfc36aaea2e:
+    english: Define options so participants can tell the difference between them without guessing. The meanings should match the decision rules your group actually uses.
+    translation: Définissez les options de façon à ce que les participants puissent les distinguer sans avoir à deviner. Leur signification doit correspondre aux règles de décision réellement utilisées par votre groupe.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  cc4adba73670a75b:
+    english: "### Duration and settings"
+    translation: "### Durée et paramètres"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  6c63a57ab4cec442:
+    english: Set a default duration that is suitable for most uses of the template. The author can change the closing time for an individual vote.
+    translation: Définissez une durée par défaut adaptée à la plupart des utilisations du modèle. L’auteur peut modifier l’heure de clôture d’un vote particulier.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  df14be8dbf80fa3c:
+    english: Other defaults can control result visibility, anonymous voting, vote-reason requirements, reminders, quorum, and method-specific behaviour. See [Proposal and poll settings](../settings/) for their effects.
+    translation: D’autres paramètres par défaut peuvent régir la visibilité des résultats, le vote anonyme, l’obligation de justifier son vote, les rappels, le quorum et les fonctions propres à chaque méthode. Consultez [Paramètres des propositions et des sondages](../settings/) pour connaître leurs effets.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  774ed7b91d33ab10:
+    english: "### Save and test the template"
+    translation: "### Enregistrer et tester le modèle"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  1b26a723ab8a9811:
+    english: After saving, start a draft vote from the template. Check that its introduction, prompts, options, and defaults make sense to someone who did not create it. Starting a draft is also a useful way to confirm that the chosen voting method produces the result the group expects.
+    translation: Après avoir enregistré le modèle, créez un brouillon de vote à partir de celui-ci. Vérifiez que son introduction, ses invites, ses options et ses paramètres par défaut sont compréhensibles pour une personne qui ne l’a pas créé. Ce brouillon permet aussi de vérifier que la méthode de vote choisie produit le résultat attendu par le groupe.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  1f0dab3f50320e75:
+    english: "## Manage the template list"
+    translation: "## Gérer la liste des modèles"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  e9748843a900273f:
+    english: 'Use the action menu beside a template to:'
+    translation: 'Utilisez le menu d’actions à côté d’un modèle pour :'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  646235094d051c83:
+    english: |-
+      - **Edit** its reusable content and defaults;
+      - **Move** it to a different position in the list;
+      - **Hide** it from people starting votes; or
+      - **Delete** a custom template that is no longer needed.
+    translation: |-
+      - **Modifier** son contenu réutilisable et ses paramètres par défaut ;
+      - **Déplacer** le modèle à une autre position dans la liste ;
+      - **Cacher** le modèle aux personnes qui lancent un vote ; ou
+      - **Supprimer** un modèle personnalisé devenu inutile.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  3f6dc06b1fd2bce8:
+    english: Select **Show hidden templates** to review or restore hidden templates. Default templates can be hidden or adapted for the group, but cannot be deleted.
+    translation: Sélectionnez **Afficher les modèles cachés** pour examiner ou rétablir les modèles cachés. Les modèles par défaut peuvent être cachés ou adaptés au groupe, mais ils ne peuvent pas être supprimés.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  be3ee2d2721d3e2a:
+    english: Changing a template does not alter proposals or polls that have already been started from it.
+    translation: La modification d’un modèle ne change pas les propositions ou sondages déjà lancés à partir de celui-ci.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'

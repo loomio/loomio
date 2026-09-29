@@ -1,0 +1,105 @@
+---
+navigation_title: Határozatképesség
+blocks:
+  '038bd6f53f9e8861':
+    english: "# Quorum"
+    translation: "# Határozatképesség"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  a79abb23e8e1c82f:
+    english: A quorum is the minimum percentage of eligible voters who must participate for a poll to be valid. Use it when your governance process requires a particular level of participation.
+    translation: A részvételi határozatképesség azt a legkisebb arányt jelenti, amelyben a szavazásra jogosultaknak részt kell venniük ahhoz, hogy a szavazás érvényes legyen. Akkor használd, ha a döntéshozatali folyamatotok meghatározott részvételi arányt ír elő.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  d83e75068f697f6f:
+    english: When creating a poll, open **More settings** and enter the required percentage in **Participation quorum**. Leave the field blank when no quorum is required.
+    translation: Szavazás létrehozásakor nyisd meg a **További beállítások** részt, és add meg a szükséges százalékot a **Részvételi határozatképesség** mezőben. Ha nincs részvételi követelmény, hagyd üresen a mezőt.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  a04b99724fe62a56:
+    english: "![The Quorum setting with a 60 percent participation quorum](./quorum-section.png)"
+    translation: "![A részvételi határozatképesség beállítása 60 százalékos értékkel](./quorum-section.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  432f570094ad5b24:
+    english: You can also set a quorum in a [poll template](/en/user_manual/polls/poll_templates/) so that polls created from that template use it by default.
+    translation: A részvételi határozatképességet [szavazási sablonban](/en/user_manual/polls/poll_templates/) is beállíthatod. Így a sablonból létrehozott szavazások alapértelmezés szerint ezt az értéket használják.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  52841ec4c6253973:
+    english: "## Example scenario"
+    translation: "## Példa"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  96ded9027f394b57:
+    english: Oatmilk Cooperative is discussing a six-week returnable bottle trial. The discussion has reached the point where the cooperative needs to approve the trial budget.
+    translation: A Zabtej Szövetkezet egy hathetes, visszaváltható palackokkal végzett próbaidőszakról beszélget. A szövetkezetnek most jóvá kell hagynia a próbaidőszak költségvetését.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  7acd5f99c209cec0:
+    english: Jamie selects **Start a vote**, chooses the **Consent** proposal template, and completes the title, details, options, duration, and voter settings.
+    translation: Jamie kiválasztja a **Szavazás indítása** lehetőséget, majd a **Beleegyezés** javaslatsablont. Kitölti a címet, a részleteket, a válaszlehetőségeket, az időtartamot és a szavazókra vonatkozó beállításokat.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  c5bd111a40bc588f:
+    english: "![The proposal title, details, options, duration, and voter settings](proposal-options.png)"
+    translation: "![A javaslat címe, részletei, válaszlehetőségei, időtartama és a szavazók beállításai](proposal-options.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  7ba26dd025983d8d:
+    english: Jamie limits the vote to the five people responsible for the trial budget.
+    translation: Jamie a szavazást arra az öt emberre korlátozza, akik a próbaidőszak költségvetéséért felelnek.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  ef25fbaed498cfbe:
+    english: The cooperative requires 60 percent participation for significant decisions, so Jamie enters **60** in the participation quorum field and starts the proposal.
+    translation: A szövetkezet a jelentős döntésekhez 60 százalékos részvételt ír elő. Jamie ezért **60**-at ír a részvételi határozatképesség mezőjébe, majd elindítja a javaslatot.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  b1cd37eb5ed44589:
+    english: Before anyone votes, the results panel shows that the quorum has not been reached.
+    translation: Mielőtt bárki szavazna, az eredmények panelje jelzi, hogy a szükséges részvételi arány még nem teljesült.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  1b8a41f8c5939665:
+    english: "![No votes cast and the 60 percent quorum not yet reached](pie-chart-0.png)"
+    translation: "![Még senki sem szavazott, így a 60 százalékos részvételi arány nem teljesült](pie-chart-0.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  ff36e799ac095caf:
+    english: Jamie agrees and Samira disagrees. The chart updates, but two of five eligible voters is only 40 percent participation, so the quorum is still not reached.
+    translation: Jamie egyetért, Samira pedig nem ért egyet. A diagram frissül, de az öt jogosult szavazóból csak ketten vettek részt. Ez 40 százalékos részvétel, így a szükséges arány még nem teljesült.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  7ad216922d5d4dcb:
+    english: "![Two of five votes cast and the quorum not yet reached](pie-chart-40.png)"
+    translation: "![Öt jogosultból ketten szavaztak, a szükséges részvételi arány még nem teljesült](pie-chart-40.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  554dc5536fdb1a60:
+    english: Alex then agrees. Three of five eligible voters have participated, reaching the 60 percent quorum. The requirement now shows a green check mark. Jamie can close the poll early or wait for the remaining voters.
+    translation: Ezután Alex is egyetért. Az öt jogosult szavazóból hárman vettek részt, így teljesült a 60 százalékos részvételi követelmény. A követelmény mellett most zöld pipa látható. Jamie lezárhatja a szavazást korábban, vagy megvárhatja a többi szavazót.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  e792db36d3223ce3:
+    english: "![Three of five votes cast and the 60 percent quorum reached](pie-chart-60.png)"
+    translation: "![Öt jogosultból hárman szavaztak, így teljesült a 60 százalékos részvételi követelmény](pie-chart-60.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'

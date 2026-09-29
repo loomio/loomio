@@ -1,0 +1,131 @@
+---
+navigation_title: בחירה
+blocks:
+  581de5d50d3dc442:
+    english: "# Choose"
+    translation: "# בחירה"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  733b320e0407fbdc:
+    english: Choose is a simple poll for finding the most popular option or making a shortlist. Participants select one or more options, depending on the limits you set. This voting method is commonly known as multiple choice.
+    translation: בחירה היא מִשׁאָל פשוט למציאת האפשרות הפופולרית ביותר או ליצירת רשימה מצומצמת. המשתתפים בוחרים אפשרות אחת או יותר, בהתאם למגבלות שנקבעו. שיטת הצבעה זו מוכרת בשם בחירה מרובה.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  '09aefb579b50874b':
+    english: "## When to use Choose"
+    translation: "## מתי להשתמש בבחירה"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  be35cf72fcaf9c4d:
+    english: 'Use Choose when the options are distinct and you need to count how many people select each one. It works well for:'
+    translation: 'כדאי להשתמש בבחירה כשהאפשרויות נבדלות זו מזו ויש צורך לספור כמה אנשים בחרו בכל אחת מהן. היא מתאימה ל:'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  dcc6f6b9238155b2:
+    english: |-
+      - choosing one venue from a shortlist;
+      - selecting up to three topics for an agenda;
+      - deciding which design should proceed to the next round; or
+      - checking which services members intend to use.
+    translation: |-
+      - בחירת מקום אחד מתוך רשימה מצומצמת;
+      - בחירת עד שלושה נושאים לסדר היום;
+      - החלטה איזה עיצוב ימשיך לסבב הבא; או
+      - בדיקה באילו שירותים בכוונת חברי הקבוצה להשתמש.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  3770d0653b752de5:
+    english: Choose records selections, not the strength or order of a person's preferences. Use [Score](/en/user_manual/polls/score/) to measure how strongly people support every option, [Allocate](/en/user_manual/polls/allocate/) when there is a limited budget, or [Rank](/en/user_manual/polls/rank/) when preference order matters.
+    translation: בחירה מתעדת אילו אפשרויות נבחרו, אך לא את עוצמת ההעדפה או את סדר ההעדפות. ניתן להשתמש ב[ניקוד](/en/user_manual/polls/score/) כדי למדוד את מידת התמיכה בכל אפשרות, ב[הקצאה](/en/user_manual/polls/allocate/) כשיש תקציב מוגבל, או ב[דירוג](/en/user_manual/polls/rank/) כשסדר ההעדפות חשוב.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  f15aca327e894f30:
+    english: "## Example: set a planning-meeting agenda"
+    translation: "## דוגמה: קביעת סדר יום לפגישת תכנון"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  f51e09afa0ed1e53:
+    english: Oatmilk Cooperative needs to decide which parts of a returnable-bottle trial need the most time at its next planning meeting. The poll asks each person to choose up to two topics. Its details explain how the result will be used, and each option includes enough information to distinguish it from the others.
+    translation: קואופרטיב Oatmilk צריך להחליט אילו חלקים בניסוי של בקבוקים להחזרה דורשים את מרב הזמן בפגישת התכנון הבאה. המִשׁאָל מבקש מכל משתתף ומשתתפת לבחור עד שני נושאים. הפירוט מסביר כיצד ייעשה שימוש בתוצאה, וכל אפשרות כוללת מספיק מידע כדי להבחין בינה לבין האחרות.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  c74ebb16f872b3c6:
+    english: "## Set up the poll"
+    translation: "## הגדרת המִשׁאָל"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  abc749fec8671661:
+    english: Give the poll a specific question as its title. In **Details**, explain what participants should consider and what will happen with the result. Add each available option, then set the **Minimum choices** and **Maximum choices**.
+    translation: יש לנסח שאלה ממוקדת ככותרת המִשׁאָל. ב**פירוט** יש להסביר מה על המשתתפים לשקול ומה ייעשה בתוצאה. לאחר הוספת כל האפשרויות, יש להגדיר את **אפשרויות מינימום** ואת **מקסימום אפשרויות**.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  e878ddc9f61dd243:
+    english: Set both limits to 1 when participants must choose exactly one option. Set a higher maximum when you want a shortlist. Avoid allowing so many choices that participants can select nearly every option, because that makes the result less useful.
+    translation: כשנדרשת בחירה של אפשרות אחת בדיוק, יש להגדיר את שתי המגבלות ל־1. ליצירת רשימה מצומצמת יש להגדיר מספר מרבי גבוה יותר. כדאי להימנע מהתרת בחירה של כמעט כל האפשרויות, משום שהתוצאה תהיה פחות שימושית.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  152fec5018fc232b:
+    english: Use the pencil icon beside an option to add a meaning or further explanation. This is useful when a short option name could be interpreted in different ways.
+    translation: ניתן להשתמש בסמל העיפרון שליד אפשרות כדי להוסיף הבהרה על משמעותה. הדבר מועיל כשאפשר לפרש שם קצר של אפשרות בדרכים שונות.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  59e405cf9a028c8d:
+    english: Under **More settings**, **Show options in random order** can reduce the effect of always presenting one option first.
+    translation: תחת **הגדרות נוספות**, האפשרות **הצג אפשרויות בסדר אקראי** יכולה לצמצם את ההשפעה של הצגת אותה אפשרות ראשונה בכל פעם.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  d391457c69df967f:
+    english: "## Vote"
+    translation: "## הצבעה"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  7db2d0e58e5fb4e4:
+    english: The vote form tells participants how many options they may select. In this example, the voter selects **Cafe collection schedule** and **Washing workflow**, then gives a reason connecting those choices to the trial.
+    translation: טופס ההצבעה מציג למשתתפים כמה אפשרויות ניתן לבחור. בדוגמה זו נבחרות **לוח זמנים לאיסוף מבתי קפה** ו**תהליך שטיפת הבקבוקים**, ונוספת סיבה שמקשרת בין הבחירות לניסוי.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  e55e4b8950a5fd46:
+    english: A reason can reveal why an option matters and what work participants expect it to cover. If reasons are important to the decision, configure the vote-reason setting before starting the poll.
+    translation: הסיבה יכולה להבהיר מדוע אפשרות מסוימת חשובה ואיזו עבודה המשתתפים מצפים שתכלול. אם הסיבות חשובות להחלטה, יש להגדיר את הדרישה לנימוק הצבעה לפני פתיחת המִשׁאָל.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  72a9e4073ea27936:
+    english: "## Read the results"
+    translation: "## קריאת התוצאות"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  c1ec47f66384e3bb:
+    english: The results show the share of all selections received by each option, the number of voters who selected it, and who has not voted. Because each person could choose two options, the percentages describe selections rather than a percentage of people.
+    translation: התוצאות מציגות את חלקה של כל אפשרות מכלל הבחירות, את מספר המצביעים שבחרו בה ואת מי שטרם הצביעו. מכיוון שכל אדם יכול היה לבחור שתי אפשרויות, האחוזים מתארים את חלקן של הבחירות ולא את שיעור האנשים.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  6cbc0f9d6fdf6727:
+    english: In this example, **Cafe collection schedule** has three selections. **Washing workflow** and **Return-rate reporting** each have two. The result supports giving cafe collections the most agenda time, but the tied topics still require the organizer to decide how the remaining time is divided.
+    translation: בדוגמה זו, **לוח זמנים לאיסוף מבתי קפה** נבחר שלוש פעמים. **תהליך שטיפת הבקבוקים** ו**דיווח על שיעור החזרת הבקבוקים** נבחרו פעמיים כל אחד. התוצאה תומכת בהקצאת הזמן הרב ביותר בסדר היום לאיסוף מבתי קפה, אך עדיין יש להחליט כיצד לחלק את הזמן שנותר בין שני הנושאים שקיבלו מספר בחירות שווה.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  adb7eb28e16616be:
+    english: When the poll closes, publish an **Outcome** explaining what the group will do with the result.
+    translation: עם סגירת המִשׁאָל, יש לפרסם **מסקנה** שמסבירה מה תעשה הקבוצה בעקבות התוצאה.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'

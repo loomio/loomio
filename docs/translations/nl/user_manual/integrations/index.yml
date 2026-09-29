@@ -1,0 +1,75 @@
+---
+navigation_title: Integraties
+blocks:
+  448845ab7a62ee14:
+    english: "# Integrations"
+    translation: "# Integraties"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  de2c0d66a5664722:
+    english: Connect Loomio with other tools used by your group.
+    translation: Verbind Loomio met andere tools die jouw groep gebruikt.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  37a981ffe4539815:
+    english: "## Choose where work belongs"
+    translation: "## Kies waar het werk thuishoort"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  828de256c39d112c:
+    english: Loomio complements chat, shared documents, and task-management tools rather than replacing every kind of work.
+    translation: Loomio vult chat, gedeelde documenten en tools voor taakbeheer aan. Je hoeft niet al het werk in Loomio te doen.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  ad42655c9ef79337:
+    english: |-
+      | Work | Suggested tool |
+      |---|---|
+      | Quick questions, social conversation, and timely updates | Chat |
+      | Collaborative editing of a living document | Shared document |
+      | Assigning and tracking tasks | Project or task-management tool |
+      | Important topic-based discussion, broad participation, decisions, and outcomes | Loomio |
+    translation: |-
+      | Werk | Aanbevolen tool |
+      |---|---|
+      | Korte vragen, informele gesprekken en actuele updates | Chat |
+      | Samen een document bewerken dat steeds wordt bijgewerkt | Gedeeld document |
+      | Taken toewijzen en bijhouden | Tool voor project- of taakbeheer |
+      | Belangrijke discussies over een onderwerp, brede deelname, besluiten en conclusies | Loomio |
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  40e853f5116f28eb:
+    english: Put work in Loomio when people need time to consider a topic, when everyone affected should have a meaningful opportunity to participate, or when the group will need to find the discussion and decision later. Link to the relevant document or task from the Loomio discussion so its context remains easy to find.
+    translation: Gebruik Loomio wanneer mensen tijd nodig hebben om over een onderwerp na te denken, wanneer iedereen die erbij betrokken is de kans moet krijgen om mee te doen, of wanneer de groep de discussie en het besluit later moet kunnen terugvinden. Voeg in de Loomio-discussie een link toe naar het relevante document of de taak, zodat de context makkelijk te vinden blijft.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  fc05fe498d905c7c:
+    english: "## Chat integrations"
+    translation: "## Chatintegraties"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  26c8dc97c7bf3e56:
+    english: "[Chat integrations](/en/user_manual/integrations/chatbots) post Loomio activity to chat services including Discord, Matrix, Mattermost, Microsoft Teams, and Slack."
+    translation: "[Chatintegraties](/en/user_manual/integrations/chatbots) plaatsen Loomio-activiteiten in chatdiensten zoals Discord, Matrix, Mattermost, Microsoft Teams en Slack."
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  40caf66c4de56e46:
+    english: "## API"
+    translation: "## API"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  daac16165f43c062:
+    english: Use the [Loomio API](/en/user_manual/integrations/api) to connect Loomio with your own software and automated workflows.
+    translation: Gebruik de [Loomio API](/en/user_manual/integrations/api) om Loomio te verbinden met jouw eigen software en geautomatiseerde werkprocessen.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'

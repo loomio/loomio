@@ -1,0 +1,93 @@
+---
+navigation_title: Ryhmän poistaminen
+blocks:
+  6e0bf431fbefa0d3:
+    english: "# Deleting your group"
+    translation: "# Ryhmän poistaminen"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  f8e8d1ee802cae90:
+    english: 'Deleting your Loomio group initiates a process to permanently delete all group data. '
+    translation: Kun poistat Loomio-ryhmäsi, käynnistät prosessin, jossa kaikki ryhmän tiedot poistetaan pysyvästi.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  214aa96eca0b90ca:
+    english: If there is any data you wish to retain, make sure you [export group data](/en/user_manual/groups/data_export/) and manually download any important files you have uploaded before you continue.
+    translation: Jos haluat säilyttää tietoja, [vie ryhmän tiedot](/en/user_manual/groups/data_export/) ja lataa käsin kaikki tärkeät tiedostot, jotka olet ladannut ryhmään, ennen kuin jatkat.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  181fecc458dcc49d:
+    english: Open the group drop down menu by clicking on the three dots, and select the **Delete group** option to remove access to the group and to initiate deletion of all group data from our records. You must be an admin to delete a group.
+    translation: Avaa ryhmän pudotusvalikko napsauttamalla kolmea pistettä ja valitse **Poista ryhmä**. Ryhmään ei sen jälkeen enää pääse, ja kaikkien sen tietojen poistaminen rekistereistämme käynnistyy. Ryhmän poistaminen edellyttää ylläpitäjän oikeuksia.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  f5178957964c2bc0:
+    english: When you delete a group, it is removed from view immediately and will be permanently deleted after 90 days. You and group members immediately lose access to the group. If a mistake was made, contact us within 90 days of deleting your group to request restoration.
+    translation: Kun poistat ryhmän, se katoaa näkyvistä heti ja sen tiedot poistetaan pysyvästi 90 päivän kuluttua. Sinä ja ryhmän jäsenet menetätte pääsyn ryhmään heti. Jos poistit ryhmän vahingossa, ota meihin yhteyttä 90 päivän kuluessa ja pyydä sen palauttamista.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  c15f72841d15dc52:
+    english: Groups awaiting deletion and their subgroups are unavailable to members and coordinators for viewing, participation, or export, including polls opened from saved links. Members cannot create or edit content, vote, send announcements or reminders, or accept invitations. Export the group and download important files before confirming deletion. Direct discussions and polls are unaffected.
+    translation: Poistoa odottava ryhmä ja sen alaryhmät eivät ole jäsenten eivätkä ylläpitäjien käytettävissä. Niitä ei voi tarkastella, niihin ei voi osallistua eikä niiden tietoja voi viedä. Myöskään tallennetuista linkeistä avatut kyselyt eivät ole käytettävissä. Jäsenet eivät voi luoda tai muokata sisältöä, äänestää, lähettää ilmoituksia tai muistutuksia eivätkä hyväksyä kutsuja. Vie ryhmän tiedot ja lataa tärkeät tiedostot ennen poistamisen vahvistamista. Suorat keskustelut ja kyselyt säilyvät ennallaan.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  5122280818cc30c7:
+    english: Scheduling the group for deletion stops pending activity notifications and poll reminders for the group and its subgroups. Messages already being sent may still arrive.
+    translation: Kun ryhmä ajoitetaan poistettavaksi, ryhmän ja sen alaryhmien lähettämistä odottavat toimintailmoitukset ja kyselymuistutukset perutaan. Jo lähetyksessä olevat viestit voivat silti saapua perille.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  953ebf00860389c1:
+    english: The warning email includes counts for the group's subgroups, members, discussions, polls and comments. If you need to keep the group or [export its data](/en/user_manual/groups/data_export/), reply within 90 days so access can be restored before deletion.
+    translation: Varoitussähköpostissa kerrotaan ryhmän alaryhmien, jäsenten, keskustelujen, kyselyiden ja kommenttien määrät. Jos haluat säilyttää ryhmän tai [viedä sen tiedot](/en/user_manual/groups/data_export/), vastaa viestiin 90 päivän kuluessa, jotta pääsy ryhmään voidaan palauttaa ennen sen poistamista.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  17dc58c271e429d5:
+    english: Deleting your group will also cancel your Loomio subscription.
+    translation: Ryhmän poistaminen päättää myös Loomio-tilauksesi.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  fa7cec0f3ba570ef:
+    english: "![Delete group action in the Oatmilk Cooperative menu](group_delete_group.png)"
+    translation: "![Poista ryhmä -toiminto Oatmilk Cooperative -ryhmän valikossa](group_delete_group.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  cb0d8b2f2c8b9630:
+    english: You will be invited to type the name of your group (*case sensitive*) to confirm you wish to delete your group.
+    translation: Vahvista poistaminen kirjoittamalla ryhmäsi nimi (*isot ja pienet kirjaimet on kirjoitettava täsmälleen oikein*).
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  5430eb3885d98872:
+    english: "![Confirmation form requiring the Oatmilk Cooperative handle](group_delete_group_confirm.png)"
+    translation: "![Vahvistuslomake, johon on kirjoitettava Oatmilk Cooperative -ryhmän tunnus](group_delete_group_confirm.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  2df60ea964109f11:
+    english: "## Group data is permanently deleted after 90 days"
+    translation: "## Ryhmän tiedot poistetaan pysyvästi 90 päivän kuluttua"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  9e09923078301b8d:
+    english: After 90 days, all the threads, polls, files and other group content will be permanently deleted. ***This is non-reversible!***
+    translation: Kaikki keskusteluketjut, kyselyt, tiedostot ja muu ryhmän sisältö poistetaan pysyvästi 90 päivän kuluttua. ***Poistamista ei voi perua.***
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  8695a5ebfb09611d:
+    english: We recommend that you [export the group data](/en/user_manual/groups/data_export/)and manually download any important files you have uploaded before you continue.
+    translation: Suosittelemme, että [viet ryhmän tiedot](/en/user_manual/groups/data_export/)ja lataat käsin kaikki tärkeät tiedostot, jotka olet ladannut ryhmään, ennen kuin jatkat.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'

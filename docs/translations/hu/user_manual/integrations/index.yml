@@ -1,0 +1,75 @@
+---
+navigation_title: Integrációk
+blocks:
+  448845ab7a62ee14:
+    english: "# Integrations"
+    translation: "# Integrációk"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  de2c0d66a5664722:
+    english: Connect Loomio with other tools used by your group.
+    translation: Kapcsold össze a Loomiót a csoportod által használt más eszközökkel.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  37a981ffe4539815:
+    english: "## Choose where work belongs"
+    translation: "## Válaszd ki, melyik munkához melyik eszköz illik"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  828de256c39d112c:
+    english: Loomio complements chat, shared documents, and task-management tools rather than replacing every kind of work.
+    translation: A Loomio kiegészíti a csevegést, a közös dokumentumokat és a feladatkezelő eszközöket. Nem kell minden munkát ugyanott végezni.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  ad42655c9ef79337:
+    english: |-
+      | Work | Suggested tool |
+      |---|---|
+      | Quick questions, social conversation, and timely updates | Chat |
+      | Collaborative editing of a living document | Shared document |
+      | Assigning and tracking tasks | Project or task-management tool |
+      | Important topic-based discussion, broad participation, decisions, and outcomes | Loomio |
+    translation: |-
+      | Munka | Javasolt eszköz |
+      |---|---|
+      | Gyors kérdések, kötetlen beszélgetés és időszerű hírek | Csevegés |
+      | Folyamatosan változó dokumentum közös szerkesztése | Közös dokumentum |
+      | Feladatok kiosztása és nyomon követése | Projekt- vagy feladatkezelő eszköz |
+      | Fontos témák megvitatása, széles körű részvétel, döntések és következtetések | Loomio |
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  40e853f5116f28eb:
+    english: Put work in Loomio when people need time to consider a topic, when everyone affected should have a meaningful opportunity to participate, or when the group will need to find the discussion and decision later. Link to the relevant document or task from the Loomio discussion so its context remains easy to find.
+    translation: Akkor használd a Loomiót, ha az embereknek időre van szükségük egy téma átgondolásához, ha minden érintettnek lehetőséget kell kapnia a részvételre, vagy ha a csoportnak később meg kell találnia a beszélgetést és a döntést. A kapcsolódó dokumentumot vagy feladatot linkeld be a Loomio-beszélgetésbe, hogy a háttérinformációk könnyen megtalálhatók legyenek.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  fc05fe498d905c7c:
+    english: "## Chat integrations"
+    translation: "## Csevegőintegrációk"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  26c8dc97c7bf3e56:
+    english: "[Chat integrations](/en/user_manual/integrations/chatbots) post Loomio activity to chat services including Discord, Matrix, Mattermost, Microsoft Teams, and Slack."
+    translation: A [csevegőintegrációk](/en/user_manual/integrations/chatbots) közzéteszik a Loomio eseményeit olyan csevegőszolgáltatásokban, mint a Discord, a Matrix, a Mattermost, a Microsoft Teams és a Slack.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  40caf66c4de56e46:
+    english: "## API"
+    translation: "## API"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  daac16165f43c062:
+    english: Use the [Loomio API](/en/user_manual/integrations/api) to connect Loomio with your own software and automated workflows.
+    translation: A [Loomio API](/en/user_manual/integrations/api) segítségével összekapcsolhatod a Loomiót a saját szoftvereiddel és automatizált munkafolyamataiddal.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'

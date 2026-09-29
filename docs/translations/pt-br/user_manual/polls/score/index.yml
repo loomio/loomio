@@ -1,0 +1,139 @@
+---
+navigation_title: Pontuação
+blocks:
+  c719d051fa2f700e:
+    english: "# Score"
+    translation: "# Pontuação"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  517adc384b38d256:
+    english: Score measures how participants evaluate each option on a shared numeric scale. Unlike Choose, it asks people to respond to every option, so the results show both what people prefer and how strongly they prefer it.
+    translation: A enquete de pontuação mede como os participantes avaliam cada opção em uma escala numérica comum. Diferentemente da enquete de escolha, ela pede que as pessoas respondam a todas as opções. Assim, os resultados mostram quais opções elas preferem e com que intensidade.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  a678333f6d814e87:
+    english: "## When to use Score"
+    translation: "## Quando usar a enquete de pontuação"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  c4ca19abb53e3ddc:
+    english: 'Use Score when every option can be evaluated independently against the same question. It works well for:'
+    translation: 'Use a enquete de pontuação quando cada opção puder ser avaliada de forma independente pela mesma pergunta. Ela funciona bem para:'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  c77c1ad6b2a9d697:
+    english: |-
+      - assessing how ready each part of a project is;
+      - rating the importance of several principles;
+      - measuring interest in possible meeting topics;
+      - evaluating grant applications against a common criterion; or
+      - comparing the suitability of several proposals.
+    translation: |-
+      - avaliar o quanto cada parte de um projeto está pronta;
+      - classificar a importância de vários princípios;
+      - medir o interesse em possíveis temas para uma reunião;
+      - avaliar pedidos de financiamento com base em um critério comum; ou
+      - comparar a adequação de várias propostas.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  d91459d96a31a671:
+    english: Define what the bottom and top of the scale mean. A number without a shared definition can mean different things to different voters. Use [Choose](/en/user_manual/polls/choose/) when you only need selections, or [Allocate](/en/user_manual/polls/allocate/) when participants must make trade-offs within a limited budget.
+    translation: Defina o que significam os extremos da escala. Sem uma definição comum, o mesmo número pode ter significados diferentes para cada eleitor. Use [Escolha](/en/user_manual/polls/choose/) quando você precisar apenas que as pessoas selecionem opções, ou [Distribuição](/en/user_manual/polls/allocate/) quando os participantes precisarem distribuir um número limitado de pontos entre elas.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  6160518dc06b70a7:
+    english: "## Example: score possible trial locations"
+    translation: "## Exemplo: pontuar possíveis locais para um projeto piloto"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  a75c387743cad529:
+    english: Oatmilk Cooperative is choosing locations for a returnable-bottle trial. It asks members to score four locations from 0 (**unsuitable**) to 10 (**ideal**), considering customer access, staff capacity, storage, and collection transport.
+    translation: A Cooperativa Oatmilk está escolhendo locais para um projeto piloto de garrafas retornáveis. Ela pede aos membros que atribuam uma pontuação de 0 (**inadequado**) a 10 (**ideal**) a quatro locais, considerando o acesso dos clientes, a capacidade da equipe, o armazenamento e o transporte para coleta.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  c74ebb16f872b3c6:
+    english: "## Set up the poll"
+    translation: "## Configure a enquete"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  b03122ee279f9c91:
+    english: State one question that applies equally to every option. Add the items to be assessed, set the **Minimum score** and **Maximum score**, and explain the endpoints in the details. Option meanings can clarify the scope of each item.
+    translation: Formule uma pergunta que se aplique igualmente a todas as opções. Adicione os itens a serem avaliados, defina a **Pontuação mínima** e a **Pontuação máxima** e explique o que significam os extremos da escala nos detalhes. A descrição de cada opção pode esclarecer o que está incluído no item.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  85e66520acf78264:
+    english: Choose a scale participants can apply consistently. A 0–5 scale is quick to use; a 0–10 scale allows finer distinctions. More precision does not necessarily produce better information, so use the shortest scale that fits the question.
+    translation: Escolha uma escala que os participantes possam usar de forma consistente. Uma escala de 0 a 5 é rápida de usar; uma escala de 0 a 10 permite distinções mais detalhadas. Mais precisão nem sempre traz informações melhores. Use a escala mais curta que atenda à pergunta.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  bb3998655598796f:
+    english: Anonymous voting and showing options in random order can be useful when you want to reduce social or ordering effects.
+    translation: O voto anônimo e a exibição das opções em ordem aleatória podem ajudar a reduzir a influência de outras pessoas e da ordem das opções.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  d391457c69df967f:
+    english: "## Vote"
+    translation: "## Vote"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  33199814c9ad8a64:
+    english: Participants move a slider to score every option. In this example, the voter scores Central Station cafe at 8, Riverside market at 6, the University food court at 7, and Harbour offices at 5.
+    translation: Os participantes movem um controle deslizante para pontuar cada opção. Neste exemplo, o eleitor atribui 8 pontos ao Café da Estação Central, 6 ao Mercado da Beira-Rio, 7 à Praça de Alimentação da Universidade e 5 aos Escritórios do Porto.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  fba3d21a09846414:
+    english: The reason explains how the voter applied the scale. This helps the group distinguish a low score caused by missing information from one caused by substantive concern.
+    translation: A justificativa explica como o eleitor usou a escala. Isso ajuda o grupo a distinguir uma pontuação baixa causada pela falta de informações de outra causada por uma preocupação concreta.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  72a9e4073ea27936:
+    english: "## Read the results"
+    translation: "## Leia os resultados"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  846b7759f9d54232:
+    english: 'For each option, the results show:'
+    translation: 'Para cada opção, os resultados mostram:'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  cac30fa54f0aeaf7:
+    english: |-
+      - **Points**: the sum of all scores;
+      - **Mean**: the average score; and
+      - **Voters**: how many people scored the option.
+    translation: |-
+      - **Pontos**: a soma de todas as pontuações;
+      - **Significar**: a pontuação média; e
+      - **Eleitores**: quantas pessoas pontuaram a opção.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  7e063d4b1babcb9e:
+    english: In this example, **Central Station cafe** has the highest mean at 7.5. **Harbour offices** has the lowest mean at 5.25, while Riverside market and the University food court are tied at 7. Four of five invited people have voted, so the group can also see that one response is outstanding.
+    translation: Neste exemplo, o **Café da Estação Central** tem a maior média, de 7,5. Os **Escritórios do Porto** têm a menor média, de 5,25, enquanto o Mercado da Beira-Rio e a Praça de Alimentação da Universidade estão empatados com 7. Quatro das cinco pessoas convidadas votaram, então o grupo também pode ver que falta uma resposta.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  147800d3643d9942:
+    english: Compare means only when the options have a similar number of voters. Read the vote reasons before treating a small difference as meaningful, and publish an outcome explaining what action follows from the scores.
+    translation: Compare as médias apenas quando as opções tiverem um número semelhante de eleitores. Leia as justificativas dos votos antes de considerar significativa uma pequena diferença e publique uma conclusão explicando qual ação será tomada com base nas pontuações.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'

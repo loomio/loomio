@@ -1,0 +1,57 @@
+---
+navigation_title: בעלי זכות הצבעה כנציגים
+blocks:
+  cde9fe3639ac5e9e:
+    english: "# Delegated voters"
+    translation: "# בעלי זכות הצבעה כנציגים"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  9cfb3b7835dc5cb0:
+    english: If some members of your group should have voting rights while others should not, you can use the "Make delegate" feature to identify those people with voting rights. There is a corresponding "Revoke delegate" action too.
+    translation: אם רק לחלק מחברי הקבוצה צריכה להיות זכות הצבעה, ניתן לסמן אותם באמצעות הפעולה "לעשות נציג". ניתן גם להסיר את המינוי באמצעות "בטל נציג".
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  e017eafb51368777:
+    english: Use delegates when people should share the same discussion space but only a defined set, such as directors or elected representatives, may vote. This is usually simpler than maintaining a second subgroup whose only purpose is to separate voters from non-voters.
+    translation: כדאי להשתמש בנציגים כאשר כולם צריכים להשתתף באותם דיונים, אך רק קבוצה מוגדרת, כגון חברי הנהלה או נציגים נבחרים, רשאית להצביע. בדרך כלל זה פשוט יותר מניהול תת־קבוצה נוספת שמטרתה היחידה היא להפריד בין בעלי זכות הצבעה לשאר החברים.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  1942a47ae47ca813:
+    english: Use a private subgroup instead when its members also need discussions, files, or membership information that other members must not see.
+    translation: אם החברים האלה צריכים גם דיונים, קבצים או פרטי חברות שאסור לשאר החברים לראות, יש להשתמש בתת־קבוצה פרטית.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  3346f757dc7bcd14:
+    english: "![Make delegate action in a member's menu](member_make_delegate.png)"
+    translation: "![הפעולה לעשות נציג בתפריט של חבר קבוצה](member_make_delegate.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  0b8bb762e37fb8c3:
+    english: |-
+      To create a poll or proposal and only invite the delegates, use the "Selected people only" poll setting.
+      ![Selected people only setting when starting a proposal](poll_invited_people_only.png)
+      Then when inviting people to vote you will see the "Delegates of group-name" option.
+      ![Delegates of Oatmilk Cooperative option in the invite-to-vote form](poll_invite_delegates_group.png)
+    translation: |-
+      כדי ליצור משאל או הצעה ולהזמין רק את הנציגים, יש לבחור בהגדרה "אנשים נבחרים בלבד".
+      ![ההגדרה אנשים נבחרים בלבד בעת פתיחת הצעה](poll_invited_people_only.png)
+      לאחר מכן, בעת הזמנת אנשים להצביע, תופיע האפשרות "נציגים של שם הקבוצה".
+      ![האפשרות נציגים של קואופרטיב חלב שיבולת שועל בטופס ההזמנה להצבעה](poll_invite_delegates_group.png)
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  e895a07efeaf4dcf:
+    english: |-
+      You can see a list of who the delegates are from the members tab of your group page. Use the filter menu and select "Delegates".
+      ![Delegates option in the members filter](members_list_delegates.png)
+    translation: |-
+      ניתן לראות את רשימת הנציגים בלשונית החברים בדף הקבוצה. יש לפתוח את תפריט הסינון ולבחור "נציגים".
+      ![האפשרות נציגים במסנן רשימת החברים](members_list_delegates.png)
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'

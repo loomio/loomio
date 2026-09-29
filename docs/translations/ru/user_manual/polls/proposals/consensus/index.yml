@@ -1,0 +1,93 @@
+---
+navigation_title: Консенсус
+blocks:
+  9f617c478e625137:
+    english: "# Consensus"
+    translation: "# Консенсус"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  7fdabc28ebd47ad3:
+    english: A Consensus proposal seeks collective agreement from everyone involved. The default responses let participants agree, abstain, disagree, or block.
+    translation: Предложение по принципу консенсуса помогает всем участникам прийти к общему согласию. По умолчанию можно согласиться, воздержаться, не согласиться или заблокировать предложение.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  82dbfd2dd1160c29:
+    english: This page explains how to run one Consensus proposal. See the [Consensus process](/en/guides/making_decisions/consensus_process) for the complete workflow from discussion and Sense check through amendment and outcome.
+    translation: На этой странице описано, как провести одно предложение по принципу консенсуса. Полный порядок работы — от обсуждения и проверки мнений до внесения поправок и публикации результата — описан на странице [«Процесс консенсуса»](/en/guides/making_decisions/consensus_process).
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  12074389ed4de458:
+    english: "## When to use Consensus"
+    translation: "## Когда использовать консенсус"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  e1e89b6df3a1dbe1:
+    english: Use Consensus for decisions where broad ownership matters and the group is prepared to work through concerns together. It suits shared standards, governance agreements, strategic commitments, and decisions that affect the whole group.
+    translation: Используйте консенсус, когда важно, чтобы вся группа поддержала решение и была готова вместе обсудить разногласия. Он подходит для общих стандартов, соглашений об управлении, стратегических обязательств и решений, затрагивающих всю группу.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  a28ea900326c3254:
+    english: Consensus usually requires discussion and proposal development before voting. Define the meaning and consequences of **Block** for your group. If your process does not use blocks, edit the template to remove that option.
+    translation: Обычно перед голосованием по принципу консенсуса нужно обсудить вопрос и доработать предложение. Определите, что означает **Блокировать** в вашей группе и каковы последствия такого ответа. Если в вашем процессе блокировка не предусмотрена, удалите этот вариант из шаблона.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  f795d33e2be59883:
+    english: "## Example: adopt a bottle return standard"
+    translation: "## Пример: принять стандарт возврата бутылок"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  dda29f07ddb547f7:
+    english: Oatmilk Cooperative has developed a standard covering deposits, collection, washing, food-safety records, and reporting. Because every team will use it, the cooperative seeks consensus before adopting it.
+    translation: Кооператив Oatmilk разработал стандарт, охватывающий залоги, сбор и мойку бутылок, учёт безопасности пищевых продуктов и отчётность. Стандарт будет применяться во всех командах, поэтому перед его принятием кооператив стремится достичь консенсуса.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  9703f1f9474243af:
+    english: "## Set up the proposal"
+    translation: "## Подготовьте предложение"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  9e63b2959e1f6553:
+    english: State the complete agreement being considered and link to supporting information. Explain each response, particularly the distinction between disagreeing and blocking. Allow enough time for questions and amendments.
+    translation: Изложите соглашение целиком и добавьте ссылки на справочные материалы. Объясните значение каждого ответа, особенно разницу между несогласием и блокировкой. Оставьте достаточно времени для вопросов и поправок.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  d391457c69df967f:
+    english: "## Vote"
+    translation: "## Голосование"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  955925e0c6998049:
+    english: Participants choose the response that matches their position and explain the interests or concerns behind it. A block reason should identify why adopting the proposal would violate a fundamental need or agreed principle.
+    translation: Участники выбирают ответ, соответствующий их позиции, и объясняют свои интересы или опасения. При блокировке нужно указать, какую важную потребность или согласованный принцип нарушит принятие предложения.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  72a9e4073ea27936:
+    english: "## Read the results"
+    translation: "## Изучите результаты"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  d5d9f0dbb463bed7:
+    english: The chart shows the balance of responses. Review every disagreement and block reason; consensus is a process of resolving concerns, not only counting agreement votes.
+    translation: Диаграмма показывает соотношение ответов. Изучите каждое несогласие и причину блокировки. Достижение консенсуса требует разрешить разногласия, а не просто подсчитать голоса за предложение.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  f7318776f4a978fc:
+    english: If the group reaches agreement, publish an outcome recording the final standard and responsibilities. Otherwise, record what will be revised and when the group will return to the proposal.
+    translation: Если группа достигла согласия, опубликуйте результат с окончательной версией стандарта и распределением обязанностей. В противном случае зафиксируйте, что нужно пересмотреть и когда группа вернётся к предложению.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'

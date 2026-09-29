@@ -1,0 +1,151 @@
+---
+navigation_title: Privacy
+blocks:
+  946f29d3bdb2e2af:
+    english: "# Group privacy"
+    translation: "# Privacy van groepen"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  6a2fbb3e7cecad6e:
+    english: Privacy controls who can find a group and who can read its content. Open **Edit group settings** from the group page, then select **Privacy**.
+    translation: De privacyinstelling bepaalt wie een groep kan vinden en wie de inhoud kan lezen. Open **Bewerk groepsinstellingen** op de groepspagina en selecteer **Privacy**.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  bf79bc420fc36377:
+    english: "![Group privacy settings](group_privacy_settings.png#width-90)"
+    translation: "![Privacyinstellingen van de groep](group_privacy_settings.png#width-90)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  4d275c75fe1a2c77:
+    english: Changing privacy can expose or hide existing group content, not only content created afterward. Choose the most restrictive setting that still supports the group's purpose.
+    translation: Als je de privacyinstelling wijzigt, kan bestaande groepsinhoud zichtbaar of verborgen worden. Dit geldt dus niet alleen voor nieuwe inhoud. Kies de meest beperkte instelling die nog past bij het doel van de groep.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  7510b0e8a0fcf7b3:
+    english: "## Open"
+    translation: "## Open"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  f202c6fba754adaa:
+    english: Open groups are public spaces. Anyone can find the group and read its discussions, polls, and files. The member list remains visible only to members.
+    translation: Open groepen zijn openbaar. Iedereen kan de groep vinden en de discussies, peilingen en bestanden lezen. Alleen leden kunnen de ledenlijst zien.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  c8d2b41a601ed65e:
+    english: Open groups can allow people to join immediately, require approval, or remain invitation only.
+    translation: Bij een Open groep kunnen mensen direct lid worden, eerst goedkeuring nodig hebben of alleen op uitnodiging lid worden.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  f07a1c59f30e5fea:
+    english: "### Follow an Open group"
+    translation: "### Een Open groep volgen"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  d6f9ee2eb742720e:
+    english: People can stay up to date with an Open group without joining. Following adds unread group activity to their catch-up email so they can review it in their own time. Followers do not become members, receive member voting rights, or receive immediate notifications just because they follow the group.
+    translation: Mensen kunnen een Open groep volgen zonder lid te worden. Ongelezen groepsactiviteit verschijnt dan in hun samenvattingsmail, zodat ze die kunnen bekijken wanneer het hun uitkomt. Volgers worden geen lid, krijgen geen stemrecht als lid en ontvangen niet automatisch directe meldingen doordat ze de groep volgen.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  17cb84d9141c9728:
+    english: Turn on **Follow updates** on the group page to include its unread discussions, comments, polls, and other thread activity in your catch-up. Turn the setting off to stop including the group.
+    translation: Schakel **Volg de updates** in op de groepspagina om ongelezen discussies, reacties, peilingen en andere activiteit in threads op te nemen in jouw samenvattingsmail. Schakel de instelling uit om de groep daaruit te verwijderen.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  b0c06651e8c0df2b:
+    english: "![Follow updates on an Open group](group_follow_updates.png)"
+    translation: "![Updates van een Open groep volgen](group_follow_updates.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  1c5becc4d01b10f3:
+    english: "## Closed"
+    translation: "## Gesloten"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  eaf6878c89438b53:
+    english: Anyone can find a Closed group and read its name and description. Discussions, polls, files, and the member list are private to members and invited guests.
+    translation: Iedereen kan een Gesloten groep vinden en de naam en beschrijving lezen. Alleen leden en uitgenodigde gasten kunnen de discussies, peilingen, bestanden en ledenlijst zien.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  ab7851d3b88d4e27:
+    english: Closed groups can let people request membership or remain invitation only. They cannot let people join immediately without approval.
+    translation: Bij een Gesloten groep kunnen mensen lidmaatschap aanvragen of alleen op uitnodiging lid worden. Ze kunnen niet zonder goedkeuring direct lid worden.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  e2f094fc6e490216:
+    english: A Closed subgroup of a parent group can optionally allow members of the parent group to read its discussions without joining the subgroup.
+    translation: Een Gesloten subgroep kan leden van de hoofdgroep toegang geven tot haar discussies zonder dat ze lid worden van de subgroep.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  9c21e144af9492a6:
+    english: "## Secret"
+    translation: "## Geheim"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  6a9871bdd7fde747:
+    english: Secret groups and their content are visible only to people who have been invited or added. Membership is invitation only. Secret groups do not appear in the public group directory.
+    translation: Geheime groepen en hun inhoud zijn alleen zichtbaar voor mensen die zijn uitgenodigd of toegevoegd. Lid worden kan alleen op uitnodiging. Geheime groepen verschijnen niet in de openbare groepsgids.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  405ac2846a65b06c:
+    english: "## How people join"
+    translation: "## Lid worden van een groep"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  1c7aebb687bbffbf:
+    english: 'Privacy determines which joining options are available:'
+    translation: 'De privacyinstelling bepaalt welke mogelijkheden er zijn om lid te worden:'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  a6a7608fe4510b67:
+    english: |-
+      | Group privacy | Available joining options |
+      | --- | --- |
+      | **Open** | Anyone can join, request approval, or invitation only |
+      | **Closed** | Request approval or invitation only |
+      | **Secret** | Invitation only |
+    translation: |-
+      | Privacy van de groep | Mogelijkheden om lid te worden |
+      | --- | --- |
+      | **Open** | Direct lid worden, goedkeuring aanvragen of alleen op uitnodiging |
+      | **Gesloten** | Goedkeuring aanvragen of alleen op uitnodiging |
+      | **Geheim** | Alleen op uitnodiging |
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  473a620db15dff75:
+    english: When approval is required, people select **Join group**, answer the group's joining prompt, and send a request to join. See [Inviting people](/en/user_manual/groups/inviting_people#request-to-join-group) for instructions on configuring the prompt, reviewing requests, and inviting people directly.
+    translation: Als goedkeuring nodig is, selecteren mensen **Word lid van de groep**, beantwoorden ze de vraag bij de lidmaatschapsaanvraag en versturen ze hun aanvraag. Zie [Mensen uitnodigen](/en/user_manual/groups/inviting_people#request-to-join-group) voor instructies om de vraag in te stellen, aanvragen te beoordelen en mensen rechtstreeks uit te nodigen.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  4c02de0d4580f7e6:
+    english: "## Group directory"
+    translation: "## Groepsgids"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  2dc848ec1af0064e:
+    english: Open and Closed parent groups can be listed in the public group directory so people can discover them. Directory listing does not change who can read group content or become a member. Subgroups and Secret groups cannot be listed.
+    translation: Open en Gesloten hoofdgroepen kunnen in de openbare groepsgids worden vermeld, zodat mensen ze kunnen vinden. Een vermelding verandert niet wie de groepsinhoud kan lezen of lid kan worden. Subgroepen en Geheime groepen kunnen niet worden vermeld.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'

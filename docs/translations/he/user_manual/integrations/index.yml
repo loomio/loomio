@@ -1,0 +1,75 @@
+---
+navigation_title: שילובים
+blocks:
+  448845ab7a62ee14:
+    english: "# Integrations"
+    translation: "# שילובים"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  de2c0d66a5664722:
+    english: Connect Loomio with other tools used by your group.
+    translation: ניתן לחבר את Loomio לכלים אחרים שהקבוצה משתמשת בהם.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  37a981ffe4539815:
+    english: "## Choose where work belongs"
+    translation: "## בחירת הכלי המתאים לעבודה"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  828de256c39d112c:
+    english: Loomio complements chat, shared documents, and task-management tools rather than replacing every kind of work.
+    translation: Loomio משלימה כלי צ׳אט, מסמכים משותפים וכלים לניהול משימות. לכל סוג עבודה מתאים כלי אחר.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  ad42655c9ef79337:
+    english: |-
+      | Work | Suggested tool |
+      |---|---|
+      | Quick questions, social conversation, and timely updates | Chat |
+      | Collaborative editing of a living document | Shared document |
+      | Assigning and tracking tasks | Project or task-management tool |
+      | Important topic-based discussion, broad participation, decisions, and outcomes | Loomio |
+    translation: |-
+      | סוג העבודה | כלי מוצע |
+      |---|---|
+      | שאלות קצרות, שיחה חברתית ועדכונים שדורשים תגובה מהירה | צ׳אט |
+      | עריכה משותפת של מסמך שמתעדכן לאורך זמן | מסמך משותף |
+      | הקצאה ומעקב אחר משימות | כלי לניהול פרויקטים או משימות |
+      | דיון חשוב בנושא מסוים, השתתפות רחבה, החלטות ומסקנות | Loomio |
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  40e853f5116f28eb:
+    english: Put work in Loomio when people need time to consider a topic, when everyone affected should have a meaningful opportunity to participate, or when the group will need to find the discussion and decision later. Link to the relevant document or task from the Loomio discussion so its context remains easy to find.
+    translation: כדאי להשתמש ב־Loomio כשדרוש זמן לשקול נושא, כשחשוב לתת לכל מי שהנושא נוגע להם הזדמנות להשתתף, או כשהקבוצה תצטרך למצוא את הדיון וההחלטה בהמשך. ניתן לקשר מהדיון ב־Loomio למסמך או למשימה הרלוונטיים, כדי שיהיה קל למצוא את ההקשר.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  fc05fe498d905c7c:
+    english: "## Chat integrations"
+    translation: "## שילובים עם צ׳אט"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  26c8dc97c7bf3e56:
+    english: "[Chat integrations](/en/user_manual/integrations/chatbots) post Loomio activity to chat services including Discord, Matrix, Mattermost, Microsoft Teams, and Slack."
+    translation: "[שילובים עם צ׳אט](/en/user_manual/integrations/chatbots) מפרסמים פעילות מ־Loomio בשירותי צ׳אט, בהם Discord, Matrix, Mattermost, Microsoft Teams ו־Slack."
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  40caf66c4de56e46:
+    english: "## API"
+    translation: "## API"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  daac16165f43c062:
+    english: Use the [Loomio API](/en/user_manual/integrations/api) to connect Loomio with your own software and automated workflows.
+    translation: ניתן להשתמש ב־[API של Loomio](/en/user_manual/integrations/api) כדי לחבר את Loomio לתוכנות ולתהליכי עבודה אוטומטיים.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'

@@ -1,0 +1,217 @@
+---
+navigation_title: Meghívás szavazásra
+blocks:
+  0635cf23fcaaa95b:
+    english: "# Invite to vote"
+    translation: "# Meghívás szavazásra"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  2ae3991d9865a2bb:
+    english: "## Invite people to vote in a poll"
+    translation: "## Hívj meg embereket a szavazásra"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  56d96764605291b4:
+    english: Invite people to your poll by sending them a notification.
+    translation: Értesítéssel hívhatsz meg embereket a szavazásra.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  3632ef534c8c03f7:
+    english: After you start a poll, the **Invite to vote** box appears. Select an audience such as **Everyone in the thread** or your group, or enter individual names and email addresses.
+    translation: A szavazás elindítása után megjelenik a **Meghívás szavazásra** mező. Válaszd ki például a **Mindenki ebben a témában** lehetőséget vagy a csoportodat, vagy add meg az emberek nevét és e-mail-címét.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  835f178f0b52f3b6:
+    english: You can include an optional message with the invitation.
+    translation: A meghívóhoz üzenetet is írhatsz.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  78da00061d5815a4:
+    english: Select a group chip to expand it into the people you are inviting. Select the x beside a name to remove that person from the invitation.
+    translation: Kattints a csoport címkéjére, hogy lásd, kiket hívsz meg. Ha valakit ki szeretnél venni a meghívottak közül, kattints a neve melletti x-re.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  e6969f4c4b62b6ff:
+    english: "### Invite guests or experts"
+    translation: "### Vendégek vagy szakértők meghívása"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  9bb72d11863e1f46:
+    english: You can also invite a guest to the poll by entering their email address. They will be given permission to participate in only this poll.
+    translation: Vendéget is meghívhatsz a szavazásra az e-mail-címe megadásával. Csak ebben a szavazásban vehet részt.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  dd20b166a40eb798:
+    english: If the poll is within a thread, they will also be able to see that thread and its comments. They will not be able to comment, participate in other polls in the thread, or see other threads in the group.
+    translation: Ha a szavazás egy témához tartozik, a vendég a témát és a hozzászólásait is láthatja. Nem szólhat hozzá, nem vehet részt a téma más szavazásaiban, és nem láthatja a csoport többi témáját.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  84cc8773a5337094:
+    english: "### Invite a subgroup to vote"
+    translation: "### Alcsoport meghívása szavazásra"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  80ca3c8c753b0ebb:
+    english: To limit voting to invited people, select **Selected people only** when you create the poll. You can then invite a subgroup from the parent group. See also [Delegated voters](/en/user_manual/groups/delegated_voters/).
+    translation: 'Ha csak a meghívottak szavazhatnak, a szavazás létrehozásakor válaszd a **Csak kiválasztott személyek** lehetőséget. Ezután meghívhatsz egy alcsoportot a szülőcsoportból. Lásd még: [Meghatalmazott szavazók](/en/user_manual/groups/delegated_voters/).'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  2074aff770fa7610:
+    english: |-
+      ![Selecting invited people only](invited-people-only.png)
+      ![Inviting a subgroup to vote](invite-voters-subgroup.png)
+    translation: |-
+      ![Csak a meghívottak szavazhatnak beállítás kiválasztása](invited-people-only.png)
+      ![Alcsoport meghívása szavazásra](invite-voters-subgroup.png)
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  29103b18580994a1:
+    english: "## Engage people while a poll is running"
+    translation: "## Kapcsolattartás a résztvevőkkel a szavazás alatt"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  1ce57a2542eebaab:
+    english: At the bottom of the poll are several features to help you engage with people once the poll is running.
+    translation: A szavazás alján több lehetőséget találsz arra, hogy kapcsolatban maradj a résztvevőkkel a szavazás ideje alatt.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  45090f8260d19a47:
+    english: "### Add voters to the poll"
+    translation: "### Szavazók hozzáadása"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  3116212829910b50:
+    english: You can add new people to the poll at any time, including before voting opens on a scheduled poll.
+    translation: Bármikor hozzáadhatsz új szavazókat, akár egy ütemezett szavazás kezdete előtt is.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  5e851e072e9dc1de:
+    english: Select **Add voters**, then enter the names or email addresses of the people you want to add.
+    translation: Válaszd a **Szavazók hozzáadása** lehetőséget, majd add meg a hozzáadni kívánt emberek nevét vagy e-mail-címét.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  be5aceb4caf93c11:
+    english: If the poll has a scheduled opening time and voting has not yet opened, voters will not receive an immediate notification. Instead, they will be notified when voting opens.
+    translation: Ha a szavazásnak ütemezett kezdési időpontja van, és még nem kezdődött el, a szavazók nem kapnak azonnal értesítést. A szavazás kezdetekor kapnak értesítést.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  b9a08269e3e252ce:
+    english: "### Remove people from the poll"
+    translation: "### Résztvevők eltávolítása a szavazásból"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  ce37b0af98854c79:
+    english: Select **Add voters**, find the person's name, open the three-dot menu beside it, and select **Remove from proposal**.
+    translation: Válaszd a **Szavazók hozzáadása** lehetőséget, keresd meg a résztvevő nevét, nyisd meg a mellette lévő hárompontos menüt, majd válaszd az **Eltávolítás a javaslatból** lehetőséget.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  '08df94a4269ad100':
+    english: People cannot be removed from an anonymous poll.
+    translation: Névtelen szavazásból nem lehet résztvevőket eltávolítani.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  3d13453394c79f30:
+    english: For example, an administrator who creates a poll on behalf of board members can remove themself if they are not authorised to vote.
+    translation: Például ha egy adminisztrátor az igazgatósági tagok nevében hoz létre szavazást, eltávolíthatja magát, ha nincs szavazati joga.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  2a354792a1f1f517:
+    english: "### Remind people to vote"
+    translation: "### Emlékeztesd a résztvevőket a szavazásra"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  501e7846380326fd:
+    english: Select **Remind** to send a notification to people who have not voted. **Everyone invited to vote** is selected by default. Select the chip to see or change the recipients.
+    translation: Válaszd az **Emlékeztet** lehetőséget, hogy értesítést küldj azoknak, akik még nem szavaztak. Alapértelmezés szerint a **Mindenki, aki szavazhat** van kiválasztva. Kattints a címkére a címzettek megtekintéséhez vagy módosításához.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  04e4537024da788c:
+    english: "### View notification history"
+    translation: "### Értesítési előzmények megtekintése"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  46145a9dd950c8eb:
+    english: Open the three-dot menu (**⋯**) at the bottom of the poll and select **Notification history**.
+    translation: Nyisd meg a szavazás alján lévő hárompontos menüt (**⋯**), majd válaszd az **Értesítési előzmények** lehetőséget.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  e74eafb1566d5dea:
+    english: "![Notification history in a poll's actions menu](../../discussions/notifying_people/poll_notification_history.png)"
+    translation: "![Értesítési előzmények a szavazás műveleteinek menüjében](../../discussions/notifying_people/poll_notification_history.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  1a96cd0121fe58ec:
+    english: The history shows who has been invited to vote, when each invitation was sent, and whether it has been read when that information is available.
+    translation: Az előzményekből láthatod, kit hívtak meg szavazni, mikor küldték el az egyes meghívókat, és – ha ez az adat elérhető – elolvasták-e őket.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  3bd9a11263e1c8f4:
+    english: "![Notification history for a poll](../../discussions/notifying_people/poll_notification_example.png)"
+    translation: "![Egy szavazás értesítési előzményei](../../discussions/notifying_people/poll_notification_example.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  f3bbc883f6429276:
+    english: "### Close early"
+    translation: "### Korai lezárás"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  af6a9acaafaaa96a:
+    english: Select **Close early** to close a poll before its scheduled closing time.
+    translation: Válaszd a **Korán bezárni** lehetőséget, ha a tervezett zárási időpont előtt le szeretnéd zárni a szavazást.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  3cdbb11687fa03c0:
+    english: You might do this when everyone has voted or the poll no longer needs to remain open.
+    translation: Ezt akkor teheted meg, ha már mindenki szavazott, vagy a szavazásnak már nem kell nyitva maradnia.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  46f3a0ec8da6dba1:
+    english: "### Reopen"
+    translation: "### Újranyitás"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  '0821c04199937236':
+    english: Select **Reopen** on a closed poll, then set a new closing date and time.
+    translation: Egy lezárt szavazásnál válaszd az **Újranyit** lehetőséget, majd állíts be új zárási dátumot és időpontot.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  53079cadd493f27c:
+    english: Anonymous polls cannot be reopened.
+    translation: A névtelen szavazásokat nem lehet újranyitni.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'

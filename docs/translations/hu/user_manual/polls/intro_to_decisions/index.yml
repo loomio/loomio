@@ -1,0 +1,191 @@
+---
+navigation_title: Javaslatok és szavazások
+blocks:
+  68e2a02de493acf3:
+    english: "# Proposals and polls"
+    translation: "# Javaslatok és szavazások"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  ff07fce3bab705aa:
+    english: Proposals and polls collect structured responses from a group. They can help test an idea, make a decision, identify priorities, schedule a meeting, or elect representatives.
+    translation: A javaslatok és szavazások meghatározott formában gyűjtik össze a csoport tagjainak válaszait. Segítenek egy ötlet kipróbálásában, a döntéshozatalban, a fontossági sorrend meghatározásában, egy találkozó időpontjának egyeztetésében vagy képviselők megválasztásában.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  f031d2644fee2a91:
+    english: "## Find the right help"
+    translation: "## Találd meg a megfelelő útmutatót"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  34039c79ea769793:
+    english: 'These parts of the manual answer different questions:'
+    translation: 'A kézikönyv alábbi részei különböző kérdésekben segítenek:'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  34ea9d58ccbf80fb:
+    english: |-
+      | If you want to… | Read… |
+      |---|---|
+      | Choose what participants should express | [Proposals](../proposals/) or [Polls](../proposal_types/) |
+      | Run a specific proposal template | [Sense check](../proposals/sense_check/), [Advice](../proposals/advice/), [Consent](../proposals/consent/), or [Consensus](../proposals/consensus/) |
+      | Configure the templates available to a group | [Poll templates](../poll_templates/) |
+      | Facilitate a decision from discussion to outcome | [Making decisions](/en/guides/making_decisions/) |
+    translation: |-
+      | Ha azt szeretnéd… | Olvasd el… |
+      |---|---|
+      | Eldönteni, mit fejezzenek ki a résztvevők | A [Javaslatok](../proposals/) vagy a [Szavazások](../proposal_types/) oldalt |
+      | Egy adott javaslatsablont használni | Az [Előzetes véleményfelmérés](../proposals/sense_check/), a [Tanácskérés](../proposals/advice/), a [Beleegyezés](../proposals/consent/) vagy a [Konszenzus](../proposals/consensus/) oldalt |
+      | Beállítani, mely sablonok érhetők el egy csoportban | A [Szavazási sablonok](../poll_templates/) oldalt |
+      | Végigvezetni egy döntést a beszélgetéstől a következtetésig | A [Döntéshozatal](/en/guides/making_decisions/) útmutatót |
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  7eddb057cca077f4:
+    english: A **voting method** defines how people respond and how results are calculated. A **poll template** is a reusable configuration built on a voting method, with preset instructions, options, and settings. A **decision process** may use a discussion and several templates before the group reaches an outcome.
+    translation: A **szavazási módszer** határozza meg, hogyan válaszolhatnak az emberek, és hogyan számítja ki a rendszer az eredményeket. A **szavazási sablon** egy szavazási módszerre épülő, újra felhasználható beállítás, előre megadott útmutatással, válaszlehetőségekkel és egyéb beállításokkal. Egy **döntési folyamat** során a csoport beszélgetést és több sablont is használhat, mielőtt következtetésre jut.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  3cd46aa2f1240e88:
+    english: "## Proposals"
+    translation: "## Javaslatok"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  85a55fccaf4e4032:
+    english: 'A proposal asks people to respond to a statement or course of action. Loomio includes templates for common purposes:'
+    translation: 'A javaslat egy állításra vagy tervezett lépésre kér választ. A Loomio több gyakori célhoz kínál sablont:'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  51bf1ffa7d057d9e:
+    english: |-
+      - [Sense check](../proposals/sense_check/) gathers early reactions;
+      - [Advice](../proposals/advice/) gathers input for a decision maker;
+      - [Consent](../proposals/consent/) tests for meaningful objections; and
+      - [Consensus](../proposals/consensus/) seeks collective agreement.
+    translation: |-
+      - Az [Előzetes véleményfelmérés](../proposals/sense_check/) összegyűjti az első reakciókat;
+      - a [Tanácskérés](../proposals/advice/) véleményeket gyűjt a döntéshozó számára;
+      - a [Beleegyezés](../proposals/consent/) feltárja a lényeges ellenvetéseket; és
+      - a [Konszenzus](../proposals/consensus/) közös egyetértésre törekszik.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  d01e9f85fcd2d9c2:
+    english: See [Proposals](../proposals/) to compare them.
+    translation: A sablonokat a [Javaslatok](../proposals/) oldalon hasonlíthatod össze.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  821dcd89b5460804:
+    english: "## Polls"
+    translation: "## Szavazások"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  ec746235c7fe89c4:
+    english: 'Use a poll when participants need to select, score, allocate, rank, state their availability, or cast an election ballot:'
+    translation: 'Akkor használj szavazást, ha a résztvevőknek választaniuk, pontozniuk, pontokat elosztaniuk, lehetőségeket sorba rendezniük, a ráérésüket megadniuk vagy választáson szavazniuk kell:'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  b93f9fe9611d9205:
+    english: |-
+      - [Choose](../choose/) finds popular options;
+      - [Score](../score/) evaluates every option on a scale;
+      - [Allocate](../allocate/) distributes a limited budget of points;
+      - [Rank](../rank/) finds an overall order of preference;
+      - [Time poll](../meeting_polls/) finds when people are available; and
+      - [STV Election](../stv/) elects multiple winners proportionally.
+    translation: |-
+      - A [Választás](../choose/) megmutatja, mely lehetőségek népszerűek;
+      - a [Pontozás](../score/) minden lehetőséget egy skálán értékel;
+      - a [Pontok elosztása](../allocate/) meghatározott számú pontot oszt szét;
+      - a [Rangsorolás](../rank/) megállapítja a lehetőségek közös sorrendjét;
+      - az [Időpont-egyeztetés](../meeting_polls/) megmutatja, mikor érnek rá az emberek; és
+      - az [STV-választás](../stv/) arányos módon választ meg több nyertest.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  9972b34ccc3ea79b:
+    english: See [Polls](../proposal_types/) to compare them.
+    translation: A módszereket a [Szavazások](../proposal_types/) oldalon hasonlíthatod össze.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  5890626db6dcbb68:
+    english: "## Start a proposal or poll"
+    translation: "## Javaslat vagy szavazás indítása"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  4b5338cae269fd32:
+    english: "### Choose whether to use a discussion"
+    translation: "### Döntsd el, szükség van-e beszélgetésre"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  c45fe8ff31f71486:
+    english: Start the proposal or poll inside a discussion when people need context, questions, or conversation before responding. A discussion can contain several proposals over time, keeping amendments and the eventual outcome together as one record of the topic.
+    translation: Akkor indítsd a javaslatot vagy szavazást egy beszélgetésen belül, ha a válaszadás előtt háttérinformációra, kérdésekre vagy eszmecserére van szükség. Egy beszélgetés idővel több javaslatot is tartalmazhat, így a módosítások és a végső következtetés ugyanabban a témában maradnak.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  0bb2a90f8f9dad0c:
+    english: Run a standalone poll when the discussion has already happened elsewhere, such as at a meeting, or when the question is simple and you only need to collect responses. Include enough detail or a link to the relevant record so voters understand what they are responding to.
+    translation: Önálló szavazást akkor indíts, ha a megbeszélés már máshol, például egy találkozón megtörtént, vagy ha a kérdés egyszerű, és csak a válaszokat kell összegyűjtened. Adj meg elég részletet, vagy hivatkozz a kapcsolódó dokumentumra, hogy a szavazók értsék, mire válaszolnak.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  7d50445f0c54190d:
+    english: "### In a discussion"
+    translation: "### Beszélgetésben"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  05e03f7ee0e1b4dc:
+    english: Open the discussion, scroll to the reply area, select **Start a vote**, and choose a template.
+    translation: Nyisd meg a beszélgetést, görgess a válaszadási területhez, válaszd a **Szavazás indítása** lehetőséget, majd válassz egy sablont.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  55dc0481a5c4ecb6:
+    english: "### Without a discussion"
+    translation: "### Beszélgetés nélkül"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  af5fd115de5f7aec:
+    english: Open the **Polls** tab on the group page, select **New poll**, and choose a template.
+    translation: Nyisd meg a csoport oldalán a **Szavazások** lapot, válaszd az **Új szavazás** lehetőséget, majd válassz egy sablont.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  23479ea263004d4a:
+    english: If you create a discussion and poll at the same time only to run a vote, avoid notifying people twice. Start the discussion without notifying them and use the poll invitation, or run the poll without a discussion.
+    translation: Ha csak egy szavazás miatt hozol létre egyszerre beszélgetést és szavazást, ne küldj két értesítést az embereknek. Indítsd el a beszélgetést értesítés nélkül, és a szavazás meghívójával értesítsd őket, vagy indíts szavazást beszélgetés nélkül.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  31f857d230319a3c:
+    english: "## What happens next"
+    translation: "## Mi történik ezután"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  fb709a76dfeabd4f:
+    english: When starting a proposal or poll, you provide a title and details, review its response options and settings, set a closing time, and invite participants. While it is open, participants can vote, explain their response, and change their vote. Results update as votes are submitted, subject to the poll's result-visibility setting.
+    translation: Javaslat vagy szavazás indításakor megadod a címet és a részleteket, áttekinted a válaszlehetőségeket és a beállításokat, beállítod a zárás időpontját, és meghívod a résztvevőket. Amíg nyitva van, a résztvevők szavazhatnak, megindokolhatják a válaszukat, és módosíthatják a szavazatukat. Az eredmények a szavazatok beérkezésekor frissülnek, a szavazás eredményláthatósági beállításának megfelelően.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  acd2e813b56034a0:
+    english: When it closes, publish an [outcome](../outcomes/) that records what the result means and what will happen next.
+    translation: A lezárás után tegyél közzé egy [következtetést](../outcomes/), amely rögzíti, mit jelent az eredmény, és mi történik ezután.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'

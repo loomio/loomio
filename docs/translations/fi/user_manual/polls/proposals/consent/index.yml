@@ -1,0 +1,93 @@
+---
+navigation_title: Suostumus
+blocks:
+  9153f30a2c3db9f2:
+    english: "# Consent"
+    translation: "# Suostumus"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  e16bed826124695f:
+    english: A Consent proposal asks whether a course of action is safe to try. Participants either consent or raise an objection. An objection identifies a concrete risk or harm that the proposal should address.
+    translation: Suostumusehdotuksessa kysytään, onko ehdotettua toimintatapaa turvallista kokeilla. Osallistujat joko antavat suostumuksensa tai esittävät vastalauseen. Vastalauseessa tuodaan esiin konkreettinen riski tai haitta, johon ehdotuksessa on puututtava.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  d675dd47ae42c929:
+    english: This page explains how to run one Consent proposal. See the [Consent process](/en/guides/making_decisions/consent_process) for the complete workflow, including questions, Sense check, amendments, objections, and outcome.
+    translation: Tällä sivulla kerrotaan, miten toteutat yhden suostumusehdotuksen. Koko työnkulku kysymyksistä, alustavasta arviosta ja muutoksista vastalauseisiin ja päätelmään kuvataan [suostumusprosessin oppaassa](/en/guides/making_decisions/consent_process).
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  7c4c79526b1d437b:
+    english: "## When to use Consent"
+    translation: "## Milloin suostumusta kannattaa käyttää"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  1b99c0443bd1e4c8:
+    english: Use Consent when the group needs a workable decision that can proceed unless there is a valid objection. It suits experiments, operational policies, role agreements, and other decisions the group can review after gaining experience.
+    translation: Käytä suostumusta, kun ryhmä tarvitsee toteuttamiskelpoisen päätöksen, joka voi edetä, ellei sille esitetä perusteltua vastalausetta. Se sopii kokeiluihin, toimintakäytäntöihin, rooleja koskeviin sopimuksiin ja muihin päätöksiin, joita ryhmä voi arvioida saatuaan kokemusta.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  966f3146dc9f61f1:
+    english: Consent does not require everyone to prefer the proposal. Define what counts as an objection before voting, and explain how objections will be tested and resolved.
+    translation: Suostumus ei edellytä, että ehdotus on kaikkien mielestä paras vaihtoehto. Määrittele ennen äänestystä, mikä lasketaan vastalauseeksi, ja kerro, miten vastalauseet arvioidaan ja ratkaistaan.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  e6cf2f0ebd4a7f58:
+    english: "## Example: start a bottle trial"
+    translation: "## Esimerkki: aloita pullokokeilu"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  ad7be5e188748cb3:
+    english: Oatmilk Cooperative proposes starting a six-week returnable-bottle trial next month. The trial is limited in scope and includes a review, so the group asks whether it is safe to try.
+    translation: Oatmilk Cooperative ehdottaa kuuden viikon kokeilua palautettavilla pulloilla ensi kuusta alkaen. Kokeilu on rajattu ja sen tulokset arvioidaan, joten ryhmä pohtii, onko sitä turvallista kokeilla.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  9703f1f9474243af:
+    english: "## Set up the proposal"
+    translation: "## Valmistele ehdotus"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  6458750b94201df6:
+    english: Describe the proposed action, its limits, safeguards, and review point. Keep **Consent** and **Objection** meanings precise, and require a reason for objections so the concern can be understood and addressed.
+    translation: Kuvaa ehdotettu toiminta, sen rajat, varotoimet ja arviointiajankohta. Määrittele tarkasti, mitä **suostumus** ja **Vastalause** tarkoittavat. Edellytä vastalauseelle perustelua, jotta huoli voidaan ymmärtää ja käsitellä.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  d391457c69df967f:
+    english: "## Vote"
+    translation: "## Äänestä"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  d98c0e71880c8828:
+    english: Participants select **Consent** when the proposal is safe enough to try, even if it is not their preferred plan. They select **Objection** when they can describe a material risk or harm.
+    translation: Osallistujat valitsevat **suostumus**, kun ehdotusta on riittävän turvallista kokeilla, vaikka se ei olisi heidän ensisijainen vaihtoehtonsa. He valitsevat **Vastalause**, kun he voivat kuvata merkittävän riskin tai haitan.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  72a9e4073ea27936:
+    english: "## Read the results"
+    translation: "## Tarkastele tuloksia"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  b0265040032f48e5:
+    english: The chart makes objections visible, but the group must examine the reasons. Resolve a valid objection by amending the proposal, adding a safeguard, changing its scope, or deciding not to proceed.
+    translation: Kaavio näyttää vastalauseet, mutta ryhmän on tarkasteltava niiden perusteluja. Ratkaise perusteltu vastalause muuttamalla ehdotusta, lisäämällä varotoimi, rajaamalla kokeilua tai päättämällä olla etenemättä.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  a87df65569cb3a09:
+    english: Publish an outcome that records the agreed action, any safeguards, who is responsible, and when the group will review it.
+    translation: Julkaise päätelmä, johon kirjataan sovittu toiminta, mahdolliset varotoimet, vastuuhenkilöt ja se, milloin ryhmä arvioi toimintaa.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'

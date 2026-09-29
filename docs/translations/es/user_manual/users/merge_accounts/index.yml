@@ -1,0 +1,129 @@
+---
+navigation_title: Fusionar cuentas
+blocks:
+  e3a50952a2ce6cfc:
+    english: "# Merge accounts"
+    translation: "# Fusionar cuentas"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  e0bdfaac5741d310:
+    english: Merge two Loomio accounts when each account uses a different email address and you want to continue with one account.
+    translation: Fusiona dos cuentas de Loomio si cada una tiene una dirección de correo electrónico distinta y quieres seguir usando una sola cuenta.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  '08d4fcba2e0a2b3b':
+    english: 'Before you begin, decide which account you want to keep:'
+    translation: 'Antes de empezar, decide qué cuenta quieres conservar:'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  6f7efc1ebdc680c7:
+    english: |-
+      - The **account to keep** is the account whose email address and profile you will use after the merge
+      - The **account to retire** is the account you sign in to first. Its email address will no longer work for signing in after the merge
+    translation: |-
+      - La **cuenta que quieres conservar** es aquella cuyo correo electrónico y perfil usarás después de la fusión
+      - La **cuenta que dejarás de usar** es aquella en la que iniciarás sesión primero. Después de la fusión, ya no podrás iniciar sesión con su dirección de correo electrónico
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  060fb4b1c12c153a:
+    english: You need access to both accounts and to the email address of the account you want to keep.
+    translation: Necesitas acceso a ambas cuentas y a la dirección de correo electrónico de la cuenta que quieres conservar.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  9c9a7e082a3b67ae:
+    english: |-
+      > [!WARNING]
+      > Merging accounts is irreversible. Check the source and target email addresses carefully before the final confirmation.
+    translation: |-
+      > [!WARNING]
+      > La fusión de cuentas es irreversible. Comprueba bien las direcciones de correo electrónico de origen y destino antes de la confirmación final.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  4d6defccb0f2a2ec:
+    english: "## Start the merge"
+    translation: "## Inicia la fusión"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  0c49f5d2284571d3:
+    english: |-
+      1. Sign in to the **account you want to retire**.
+      2. Open the sidebar, select your name, and select **Edit profile**.
+      3. Select **Merge accounts**.
+    translation: |-
+      1. Inicia sesión en la **cuenta que quieres dejar de usar**.
+      2. Abre la barra lateral, selecciona tu nombre y luego **Editar perfil **.
+      3. Selecciona **Fusionar cuentas**.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  a05689d18f3c3337:
+    english: "![The profile actions with Merge accounts highlighted](merge_accounts_profile.png)"
+    translation: "![Las acciones del perfil con Fusionar cuentas resaltado](merge_accounts_profile.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  29656e0572127b88:
+    english: 4. Enter the destination account's email address—the address belonging to the **account you want to keep**—and select **Send verification email**. Loomio always shows the same confirmation and signs you out. If an account uses that address, Loomio sends it the verification email.
+    translation: 4. Introduce la dirección de correo electrónico de destino, la de la **cuenta que quieres conservar**, y selecciona **Enviar correo electrónico de verificación**. Loomio muestra siempre la misma confirmación y cierra tu sesión. Si existe una cuenta con esa dirección, Loomio le envía el correo de verificación.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  d045b6c7e8a5b853:
+    english: "## Verify the account you want to keep"
+    translation: "## Verifica la cuenta que quieres conservar"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  57255cdb29b384d7:
+    english: 5. Open the verification email sent to the address of the account you want to keep and select **Verify email and proceed**.
+    translation: 5. Abre el correo de verificación enviado a la dirección de la cuenta que quieres conservar y selecciona **Verifica el email y procede**.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  5e496b2d8f551efa:
+    english: "![The merge verification email with the Verify email and proceed button highlighted](merge_accounts_email.png)"
+    translation: "![El correo de verificación de la fusión con el botón Verifica el email y procede resaltado](merge_accounts_email.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  ad19dc0399f9d446:
+    english: |-
+      6. Sign in as the account you want to keep if Loomio asks you to sign in.
+      7. On the **Confirm merge** page, check both email addresses again. Select **Merge accounts** to complete the merge.
+    translation: |-
+      6. Si Loomio te lo pide, inicia sesión en la cuenta que quieres conservar.
+      7. En la página **Confirma fusión**, comprueba de nuevo ambas direcciones de correo electrónico. Selecciona **Fusionar cuentas** para completar la fusión.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  a575e2cd16aa66b4:
+    english: "![The final confirmation page with the Merge accounts button highlighted](merge_accounts_confirm.png)"
+    translation: "![La página de confirmación final con el botón Fusionar cuentas resaltado](merge_accounts_confirm.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  cf8eba685cfdbf04:
+    english: "## What happens after the merge"
+    translation: "## Qué ocurre después de la fusión"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  6ae4c6c893430735:
+    english: The account you keep remains your Loomio identity and sign-in account. Group memberships and activity from the retired account, including discussions, comments, polls, and votes, are reassigned to the account you keep. Where both accounts already belong to the same group, the existing membership for the account you keep remains.
+    translation: La cuenta que conservas sigue siendo tu identidad en Loomio y la cuenta con la que inicias sesión. La pertenencia a grupos y la actividad de la cuenta que dejas de usar, incluidas las discusiones, los comentarios, los sondeos y los votos, se transfieren a la cuenta que conservas. Si ambas cuentas ya pertenecen al mismo grupo, se mantiene la pertenencia de la cuenta que conservas.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  eb05b57367c0815c:
+    english: The retired account is deleted and its email address can no longer be used to sign in. Loomio sends a confirmation email to the address of the account you kept when the merge is complete.
+    translation: La cuenta que dejas de usar se elimina y ya no puedes iniciar sesión con su dirección de correo electrónico. Cuando termina la fusión, Loomio envía un correo de confirmación a la dirección de la cuenta que conservas.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'

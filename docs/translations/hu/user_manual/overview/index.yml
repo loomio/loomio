@@ -1,0 +1,147 @@
+---
+navigation_title: Első lépések
+blocks:
+  7b82d33bbaae3080:
+    english: "# Getting started"
+    translation: "# Első lépések"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  73449e09f559b4bd:
+    english: Loomio is a discussion and decision making tool for collaborative organizations.
+    translation: A Loomio a közösen dolgozó szervezetek beszélgetéseit és döntéseit segítő eszköz.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  c6d663f00c64f35d:
+    english: It enables you to bring people together to discuss topics, explore proposals and make decisions.
+    translation: Összehozhatod az embereket, hogy megvitassanak témákat, javaslatokat mérlegeljenek és döntéseket hozzanak.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  31ab6b8ca4d0f976:
+    english: |-
+      <div class="iframe-container">
+      <iframe width="660" height="415" src="https://www.youtube-nocookie.com/embed/K8ZRNtlRvAI" title="Loomio in 2 minutes" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+    translation: |-
+      <div class="iframe-container">
+      <iframe width="660" height="415" src="https://www.youtube-nocookie.com/embed/K8ZRNtlRvAI" title="Loomio in 2 minutes" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  7c8501ecb12311af:
+    english: "## How Loomio works"
+    translation: "## Hogyan működik a Loomio"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  74caca2261c15283:
+    english: 'Loomio has three main parts: groups, discussions, and polls.'
+    translation: 'A Loomio három fő részből áll: csoportokból, beszélgetésekből és szavazásokból.'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  5f0a46926a0f7350:
+    english: "### Groups"
+    translation: "### Csoportok"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  2060a64d0fabc6d7:
+    english: A group is a place for an organization, team, or community to work together. Its home page explains the group's purpose and provides access to its discussions, polls, members, and files.
+    translation: A csoportban egy szervezet, csapat vagy közösség együtt dolgozhat. A csoport kezdőlapja bemutatja a célját, és hozzáférést ad a beszélgetésekhez, szavazásokhoz, tagokhoz és fájlokhoz.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  311793a17709182c:
+    english: "### Discussions"
+    translation: "### Beszélgetések"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  05ecdffe6c18a1df:
+    english: Discussions keep the information and conversation about a topic together. People can share context, comment, reply, react, and use polls to move the discussion towards an outcome.
+    translation: A beszélgetések egy helyen tartják az adott témához tartozó információkat és hozzászólásokat. A résztvevők megoszthatnak háttérinformációkat, hozzászólhatnak, válaszolhatnak, reagálhatnak, és szavazásokkal segíthetik a következtetés kialakítását.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  dc9a50d7f1f20c80:
+    english: Over time, discussions create a searchable record of the information considered and the decisions made by your group.
+    translation: Idővel a beszélgetések kereshető nyilvántartást alkotnak a mérlegelt információkról és a csoportod döntéseiről.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  3448194e8a2ce09d:
+    english: "### Polls and proposals"
+    translation: "### Szavazások és javaslatok"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  4ef7092f5f56e773:
+    english: Polls help a group understand preferences, gather advice, and make decisions. Different poll templates support different processes. A proposal asks people to respond to a suggested course of action and explain the reason for their response.
+    translation: A szavazások segítenek a csoportnak megismerni a tagok álláspontját, tanácsot gyűjteni és döntéseket hozni. A különböző szavazási sablonok különböző döntési folyamatokat támogatnak. A javaslat arra kéri a résztvevőket, hogy reagáljanak egy javasolt cselekvésre, és indokolják meg a válaszukat.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  51ab039bc7c374bd:
+    english: Polls can be part of a discussion or run independently from the **Polls** tab on a group page.
+    translation: A szavazások kapcsolódhatnak egy beszélgetéshez, vagy önállóan is elindíthatók a csoport oldalán található **Szavazások** fülről.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  47500e7125fdedbc:
+    english: To learn where these parts appear in the interface, see the [Quick tour](/en/user_manual/overview/orientation). To start contributing, see [How to participate](/en/user_manual/overview/how-to-participate).
+    translation: Ha szeretnéd látni, hol találod ezeket a felületen, olvasd el a [Gyors áttekintést](/en/user_manual/overview/orientation). A részvételhez olvasd el a [Hogyan vehetsz részt](/en/user_manual/overview/how-to-participate) című útmutatót.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  57ed823687deabb5:
+    english: "## Try it out"
+    translation: "## Próbáld ki"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  b08a2d6a44f0d7ac:
+    english: The best way to learn about Loomio is to [start a free trial](/try)
+    translation: A Loomiót úgy ismerheted meg a legjobban, ha [elindítasz egy ingyenes próbaidőszakot](/try)
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  ced10eda436a40ca:
+    english: "## How people use Loomio"
+    translation: "## Mire használják a Loomiót"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  4198817a2724ad0a:
+    english: "**Member organizations** to involve members in decisions at scale. Political parties, consumer and worker co-operatives, and membership associations use Loomio to facilitate a safe, inclusive space for members to share information and raise topics, participate in important decisions and vote in General Assembly. Streamline decision processes, improve transparency and accountability, document discussions and record decisions, and include members' voices to organize for action."
+    translation: "**Tagságon alapuló szervezetek** a tagok bevonására használják a Loomiót, akár nagy létszám mellett is. Politikai pártok, fogyasztói és dolgozói szövetkezetek, valamint egyesületek olyan teret teremtenek vele, ahol a tagok biztonságosan megoszthatják az információkat, témákat vethetnek fel, részt vehetnek a fontos döntésekben és szavazhatnak a közgyűlésen. Egyszerűsíthetik a döntési folyamatokat, átláthatóbbá tehetik a működést, dokumentálhatják a beszélgetéseket és a döntéseket, és a tagok véleményét is bevonhatják a közös cselekvés megszervezésébe."
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  7b2fd1306e05f4e3:
+    english: "**Self-managing organizations** to involve staff in decisions. Self-managing teams, worker co-operatives, and sociocratic organisations use Loomio to run consent, consensus, and advice-based decision processes across distributed teams and time zones. Tap into collective intelligence, distribute decision making, build governance and policy together, and document decisions and discussion."
+    translation: "**Önszerveződő szervezetek** a munkatársak bevonására használják a Loomiót. Önszerveződő csapatok, dolgozói szövetkezetek és szociokratikus szervezetek beleegyezésen, konszenzuson és tanácskérésen alapuló döntési folyamatokat folytathatnak vele, akkor is, ha tagjaik különböző helyeken és időzónákban dolgoznak. Hasznosíthatják a közös tudást, megoszthatják a döntéshozatalt, együtt alakíthatják ki az irányítási elveket és szabályzatokat, valamint dokumentálhatják a döntéseket és a beszélgetéseket."
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  75d7266c562f65c2:
+    english: "**Boards, councils, and distributed networks** to involve stakeholders in decisions. Create a safe space for discussion, keep track of communications, and coordinate across geographies and time zones. Structure decision making processes, improve agility and response times, and preserve organizational memory."
+    translation: "**Igazgatóságok, tanácsok és több helyszínen működő hálózatok** az érintettek bevonására használják a Loomiót. Biztonságos teret hozhatnak létre a beszélgetésekhez, követhetik a kommunikációt, és összehangolhatják a munkát különböző helyszínek és időzónák között. Rendezettebbé tehetik a döntési folyamatokat, gyorsabban reagálhatnak, és megőrizhetik a szervezet közös emlékezetét."
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  cbe5ae77738f2704:
+    english: "**Residential communities and co-ops** to make decisions together as neighbours. Cohousing communities, ecovillages, coliving cooperatives, housing co-ops, and land trusts use Loomio to replace or augment traditional strata and property management with democratic governance. Residents shape decisions about shared land, common spaces, and community agreements, and asynchronous discussion means members can fully participate whether they're on-site or away travelling, keeping a clear record of how the community has chosen to live together."
+    translation: "**Lakóközösségek és lakásszövetkezetek** a szomszédok közös döntéseihez használják a Loomiót. Közösségi lakhatási csoportok, ökofalvak, együttélésre épülő szövetkezetek, lakásszövetkezetek és közösségi földtulajdont kezelő szervezetek a hagyományos ingatlanüzemeltetést demokratikus döntéshozatallal egészíthetik ki vagy válthatják fel. A lakók közösen alakíthatják a földhasználatról, a közös terekről és az együttélés szabályairól szóló döntéseket. Mivel a beszélgetésekhez nem kell egyszerre jelen lenni, a tagok akkor is teljes értékűen részt vehetnek bennük, ha éppen máshol tartózkodnak. A döntések nyomán világos feljegyzés marad arról, hogyan szeretne együtt élni a közösség."
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  fb1039083c952286:
+    english: Loomio builds a living record of your organization; the decisions made, who was involved and the discussion leading up to the decision.
+    translation: A Loomio folyamatosan bővülő nyilvántartást készít a szervezeted döntéseiről, a résztvevőkről és a döntésekhez vezető beszélgetésekről.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'

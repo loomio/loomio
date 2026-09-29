@@ -1,0 +1,135 @@
+---
+navigation_title: סקר זמן
+blocks:
+  ebb0b3146e7f6937:
+    english: "# Time poll"
+    translation: "# סקר זמן"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  86490ad15147169e:
+    english: Use a **Time poll** to find a time for a meeting or event. It serves the same purpose as scheduling tools such as Doodle, while keeping the scheduling process with the group's other Loomio work. Participants see the options in their own time zone.
+    translation: אפשר להשתמש ב**סקר זמן** כדי למצוא מועד לפגישה או לאירוע. הוא מסייע לתאם מועד, בדומה לכלים כמו Doodle, לצד שאר הפעילות של הקבוצה ב-Loomio. המשתתפים רואים את האפשרויות באזור הזמן שלהם.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  2e21bb1b54b6fcf9:
+    english: "## Time poll"
+    translation: "## סקר זמן"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  27ba736f4b564fe3:
+    english: _Find when people are available to meet_
+    translation: _מציאת מועד שבו אנשים פנויים להיפגש_
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  2f5455ba3b487407:
+    english: Save time arranging a date for your meeting or event.
+    translation: אפשר לחסוך זמן בתיאום מועד לפגישה או לאירוע.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  859c3efc07ce0b04:
+    english: Time poll makes it easy to see everyone's availability and find the best time.
+    translation: סקר זמן מקל לראות מתי כולם פנויים ולמצוא את המועד המתאים ביותר.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  12ae9e9d3bdb0a4e:
+    english: Give your Time poll a title and details. Enter a list of date and time options in your time zone.
+    translation: יש לתת לסקר הזמן כותרת ולהוסיף פרטים. יש להזין רשימת מועדים ושעות לפי אזור הזמן המקומי.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  548fb6cd6fcd9376:
+    english: When setting timeslots, consider people in different time zones. Participants will see times localized in their time zone.
+    translation: בעת קביעת המועדים, כדאי להתחשב באנשים באזורי זמן שונים. המשתתפים יראו את השעות לפי אזור הזמן שלהם.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  3105405631b53c31:
+    english: Set a meeting duration.
+    translation: יש להגדיר את משך הפגישה.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  8d56a5d9986286e9:
+    english: "### Voting"
+    translation: "### הצבעה"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  41d1e6a3a6739d95:
+    english: People mark each time with the green thumbs-up icon when they are available, the yellow sideways thumb when they can attend if needed, or the red thumbs-down icon when they are unavailable.
+    translation: לציון זמינות בכל מועד, המשתתפים משתמשים בסמל האגודל הירוק כלפי מעלה כשהם פנויים, באגודל הצהוב המוטה הצידה כשהם יכולים להשתתף במקרה הצורך, או באגודל האדום כלפי מטה כשאינם פנויים.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  b4784042c82735af:
+    english: Participants can leave a reason comment to help the organizer find a suitable time.
+    translation: המשתתפים יכולים להוסיף הערה עם הסיבה לבחירתם כדי לסייע למארגני הפגישה למצוא מועד מתאים.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  0165a90bc22b6f7f:
+    english: If the times don't work, participants can suggest alternatives using the message field. You can then update the poll with new times.
+    translation: אם המועדים אינם מתאימים, המשתתפים יכולים להציע חלופות בשדה ההודעה. לאחר מכן ניתן לעדכן את הסקר ולהוסיף מועדים חדשים.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  6c7c09879e7d9bf8:
+    english: The results update as voting proceeds in a table showing who is available when, so everyone can see which timeslots are popular.
+    translation: התוצאות מתעדכנות במהלך ההצבעה בטבלה שמציגה מי פנוי בכל מועד. כך כולם יכולים לראות אילו מועדים מתאימים למספר רב של משתתפים.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  b4783489f09ccf19:
+    english: "### Outcome"
+    translation: "### מסקנה"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  3c0061b9af0a6bca:
+    english: When the Time poll closes, pick the best time and post an outcome.
+    translation: כשסקר הזמן נסגר, יש לבחור את המועד המתאים ביותר ולפרסם מסקנה.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  62ef08e40ed2f44b:
+    english: "**Notify**: Add the people you are inviting to the meeting or event"
+    translation: "**לְהוֹדִיעַ**: יש להוסיף את האנשים שמוזמנים לפגישה או לאירוע"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  945f9e19218fb1bf:
+    english: "**Meeting time**: Select the time that works best"
+    translation: "**זמן פגישה**: יש לבחור את המועד המתאים ביותר"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  c5909628c21cd884:
+    english: "**Meeting name**: Give your meeting a name. The Time poll title is used by default"
+    translation: "**שם הפגישה**: יש לתת לפגישה שם. כברירת מחדל ייעשה שימוש בכותרת של סקר הזמן"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  81195d01767895e4:
+    english: "**Location**: Add a physical location or a meeting link"
+    translation: "**מיקום**: יש להוסיף מיקום פיזי או קישור לפגישה"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  af5765f5bdf83132:
+    english: "**Statement**: Summarize the result and add any instructions for the meeting"
+    translation: "**הצהרה**: יש לסכם את ההחלטה ולהוסיף הנחיות לפגישה, אם ישנן"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  6c0cb92cca53d36a:
+    english: Loomio includes the selected time, meeting name, duration, location, and statement in the outcome notification and calendar invitation.
+    translation: Loomio כוללת את המועד שנבחר, שם הפגישה, משך הפגישה, המיקום וההצהרה בהודעה על המסקנה ובהזמנה ביומן.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'

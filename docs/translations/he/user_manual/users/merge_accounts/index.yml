@@ -1,0 +1,129 @@
+---
+navigation_title: מיזוג חשבונות
+blocks:
+  e3a50952a2ce6cfc:
+    english: "# Merge accounts"
+    translation: "# מיזוג חשבונות"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  e0bdfaac5741d310:
+    english: Merge two Loomio accounts when each account uses a different email address and you want to continue with one account.
+    translation: ניתן למזג שני חשבונות Loomio שמשתמשים בכתובות אימייל שונות, ולהמשיך להשתמש בחשבון אחד.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  '08d4fcba2e0a2b3b':
+    english: 'Before you begin, decide which account you want to keep:'
+    translation: 'לפני שמתחילים, יש להחליט איזה חשבון להשאיר:'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  6f7efc1ebdc680c7:
+    english: |-
+      - The **account to keep** is the account whose email address and profile you will use after the merge
+      - The **account to retire** is the account you sign in to first. Its email address will no longer work for signing in after the merge
+    translation: |-
+      - **החשבון שיישאר** הוא החשבון שבכתובת האימייל ובפרופיל שלו ייעשה שימוש לאחר המיזוג
+      - **החשבון שיימחק** הוא החשבון שאליו יש להיכנס תחילה. לאחר המיזוג, לא ניתן יהיה להיכנס באמצעות כתובת האימייל שלו
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  060fb4b1c12c153a:
+    english: You need access to both accounts and to the email address of the account you want to keep.
+    translation: יש צורך בגישה לשני החשבונות ולכתובת האימייל של החשבון שיישאר.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  9c9a7e082a3b67ae:
+    english: |-
+      > [!WARNING]
+      > Merging accounts is irreversible. Check the source and target email addresses carefully before the final confirmation.
+    translation: |-
+      > [!WARNING]
+      > לא ניתן לבטל מיזוג חשבונות. לפני האישור הסופי, יש לבדוק היטב את כתובות האימייל של החשבון שיימחק ושל החשבון שיישאר.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  4d6defccb0f2a2ec:
+    english: "## Start the merge"
+    translation: "## התחלת המיזוג"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  0c49f5d2284571d3:
+    english: |-
+      1. Sign in to the **account you want to retire**.
+      2. Open the sidebar, select your name, and select **Edit profile**.
+      3. Select **Merge accounts**.
+    translation: |-
+      1. יש להיכנס אל **החשבון שיימחק**.
+      2. יש לפתוח את סרגל הצד, לבחור בשם החשבון ולבחור **עריכת פרופיל**.
+      3. יש לבחור **מיזוג חשבונות**.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  a05689d18f3c3337:
+    english: "![The profile actions with Merge accounts highlighted](merge_accounts_profile.png)"
+    translation: "![פעולות הפרופיל, עם האפשרות מיזוג חשבונות מודגשת](merge_accounts_profile.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  29656e0572127b88:
+    english: 4. Enter the destination account's email address—the address belonging to the **account you want to keep**—and select **Send verification email**. Loomio always shows the same confirmation and signs you out. If an account uses that address, Loomio sends it the verification email.
+    translation: 4. יש להזין את כתובת האימייל של חשבון היעד, כלומר הכתובת של **החשבון שיישאר**, ולבחור **שלח אימייל אימות**. Loomio מציג תמיד את אותו אישור ומנתק את החשבון. אם קיים חשבון שמשתמש בכתובת הזו, Loomio שולח אליה אימייל אימות.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  d045b6c7e8a5b853:
+    english: "## Verify the account you want to keep"
+    translation: "## אימות החשבון שיישאר"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  57255cdb29b384d7:
+    english: 5. Open the verification email sent to the address of the account you want to keep and select **Verify email and proceed**.
+    translation: 5. יש לפתוח את אימייל האימות שנשלח לכתובת של החשבון שיישאר ולבחור **אמת את האימייל והמשך**.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  5e496b2d8f551efa:
+    english: "![The merge verification email with the Verify email and proceed button highlighted](merge_accounts_email.png)"
+    translation: "![אימייל האימות למיזוג, עם הכפתור אמת את האימייל והמשך מודגש](merge_accounts_email.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  ad19dc0399f9d446:
+    english: |-
+      6. Sign in as the account you want to keep if Loomio asks you to sign in.
+      7. On the **Confirm merge** page, check both email addresses again. Select **Merge accounts** to complete the merge.
+    translation: |-
+      6. אם Loomio מבקש להיכנס, יש להיכנס באמצעות החשבון שיישאר.
+      7. בדף **אשר מיזוג**, יש לבדוק שוב את שתי כתובות האימייל. יש לבחור **מיזוג חשבונות** כדי להשלים את המיזוג.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  a575e2cd16aa66b4:
+    english: "![The final confirmation page with the Merge accounts button highlighted](merge_accounts_confirm.png)"
+    translation: "![דף האישור הסופי, עם הכפתור מיזוג חשבונות מודגש](merge_accounts_confirm.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  cf8eba685cfdbf04:
+    english: "## What happens after the merge"
+    translation: "## מה קורה לאחר המיזוג"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  6ae4c6c893430735:
+    english: The account you keep remains your Loomio identity and sign-in account. Group memberships and activity from the retired account, including discussions, comments, polls, and votes, are reassigned to the account you keep. Where both accounts already belong to the same group, the existing membership for the account you keep remains.
+    translation: החשבון שיישאר ממשיך לשמש כחשבון הכניסה וכזהות ב-Loomio. החברות בקבוצות והפעילות של החשבון שנמחק, כולל דיונים, תגובות, משאלים והצבעות, משויכות מחדש לחשבון שיישאר. אם שני החשבונות כבר חברים באותה קבוצה, החברות הקיימת של החשבון שיישאר נשמרת.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  eb05b57367c0815c:
+    english: The retired account is deleted and its email address can no longer be used to sign in. Loomio sends a confirmation email to the address of the account you kept when the merge is complete.
+    translation: החשבון השני נמחק, ולא ניתן עוד להיכנס באמצעות כתובת האימייל שלו. כשהמיזוג מסתיים, Loomio שולח אימייל אישור לכתובת של החשבון שנשאר.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'

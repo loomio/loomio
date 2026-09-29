@@ -1,0 +1,201 @@
+---
+navigation_title: Apresentando o Loomio ao seu conselho
+blocks:
+  2d7d9e9285159d4f:
+    english: "# Introducing Loomio to your board"
+    translation: "# Apresentando o Loomio ao seu conselho"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  6a42b6e2aba774c1:
+    english: Loomio can become the online place where your board or committee meet, discuss, decide and build an auditable record for your organization.
+    translation: O Loomio pode ser o espaço online onde seu conselho ou comitê se reúne, discute, toma decisões e cria um registro que sua organização pode consultar e auditar.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  1e26a40fe8b74f47:
+    english: Start with the general sequence in [Introducing Loomio to your group](/en/user_manual/overview/introducing_loomio). This page adds considerations specific to boards and committees.
+    translation: Comece pela sequência geral em [Apresentando o Loomio ao seu grupo](/en/user_manual/overview/introducing_loomio). Esta página traz orientações específicas para conselhos e comitês.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  2999c11b8e274b1b:
+    english: However Loomio will be of little value if only some of your board participate.  Information and communication will likely remain scattered over multiple tools, lost in email inboxes and the confusion will waste everyone's time.
+    translation: Se apenas parte do conselho participar, o Loomio terá pouco valor. As informações e a comunicação provavelmente continuarão espalhadas por várias ferramentas e caixas de entrada de e-mail. Essa dispersão fará todos perderem tempo.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  28097dbe6dfd2fd7:
+    english: 'Consider the problem you are trying to solve by using Loomio, say to improve and track communication or build institutional memory.  Then commit as a board to move your work into Loomio, and encourage everyone to make a genuine effort.  '
+    translation: Pense no problema que você quer resolver com o Loomio, como melhorar e acompanhar a comunicação ou preservar a memória institucional. Depois, assuma com o conselho o compromisso de levar o trabalho para o Loomio e incentive todos a participar de verdade.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  449e6d5c90588dd2:
+    english: As administrator your primary objective is to set up Loomio effectively for your board.
+    translation: Como administrador, seu principal objetivo é configurar o Loomio para atender às necessidades do conselho.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  '08969c9eca0d9855':
+    english: 'Aim to encourage directors to join and participate. They should be able to:'
+    translation: 'Incentive os integrantes do conselho a entrar e participar. Eles devem conseguir:'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  70bf0ec81830055e:
+    english: |-
+      - Sign in to Loomio
+      - Read and comment on threads
+      - Vote in polls
+      - See how your governance practices work in Loomio
+    translation: |-
+      - Entrar no Loomio
+      - Ler e comentar nas discussões
+      - Votar nas enquetes
+      - Entender como as práticas de governança do conselho funcionam no Loomio
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  d41ec118bb86c93f:
+    english: "## Check technical proficiency "
+    translation: "## Verifique a familiaridade com a tecnologia"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  728e1c8d201cacca:
+    english: Board members will need a computer or smartphone connected to the internet. They must be capable of sending and receiving email, browsing the web, reading digital documents, viewing and hearing videos.
+    translation: Os integrantes do conselho precisarão de um computador ou smartphone conectado à internet. Eles devem saber enviar e receber e-mails, navegar na internet, ler documentos digitais e assistir a vídeos com som.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  de1b1186edaff7c6:
+    english: 'Check that members have all of the following:'
+    translation: 'Verifique se todos os membros têm:'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  9932640dbf8944e3:
+    english: |-
+      - an up-to-date device—a computer, tablet or smart phone with email and a modern internet browser
+      - internet service via WIFI, ethernet cable or mobile data plan (3G or above)
+      - capability to send and receive email, browse the internet, download documents and play videos.
+    translation: |-
+      - um dispositivo atualizado — computador, tablet ou smartphone com acesso a e-mail e um navegador moderno
+      - acesso à internet por Wi-Fi, cabo de rede ou plano de dados móveis (3G ou superior)
+      - capacidade de enviar e receber e-mails, navegar na internet, baixar documentos e reproduzir vídeos.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  4496ce2ee6172b32:
+    english: Loomio works with all standard internet browsers such as Google Chrome, Microsoft Edge, Firefox and Apple Safari. Old out-of-date browsers such as Microsoft Internet Explorer may not work.
+    translation: O Loomio funciona nos navegadores mais comuns, como Google Chrome, Microsoft Edge, Firefox e Apple Safari. Navegadores antigos e desatualizados, como o Microsoft Internet Explorer, podem não funcionar.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  bd5dc5f2d0f56a28:
+    english: If you have a problem using Loomio on your device, [Contact Loomio support](/contact).
+    translation: Se você tiver problemas para usar o Loomio no seu dispositivo, [entre em contato com o suporte do Loomio](/contact).
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  ca7b25bb2d86ba90:
+    english: "## Configure your group"
+    translation: "## Configure seu grupo"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  92712f3a984128af:
+    english: |-
+      ### Group Description
+      The group description is the first place people see when they arrive into your Loomio group. Write it to help new members  understand the purpose of the group and the work you will do together. Provide any other information that orients people and encourages them to participate.
+    translation: |-
+      ### Descrição do grupo
+      A descrição do grupo é a primeira coisa que as pessoas veem ao entrar no seu grupo no Loomio. Escreva uma descrição que ajude os novos membros a entender o objetivo do grupo e o trabalho que farão juntos. Inclua outras informações que orientem as pessoas e incentivem sua participação.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  7e018e436df9afa1:
+    english: 'For example, welcome people and let them know that this is there online space for communication and governance of your organization:'
+    translation: 'Por exemplo, dê as boas-vindas às pessoas e explique que esse é o espaço online para a comunicação e a governança da organização:'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  826a76aa71e6d689:
+    english: |-
+      - Remind members of the purpose of the board or committee.
+      - Outline how you intend to use Loomio; prepare for meetings, progress discussions, make decisions and stay in context between meetings.
+      - Be clear who has access to the group, can read and participate.
+      - Attach or link any background or governance documents.
+    translation: |-
+      - Lembre os membros do propósito do conselho ou comitê.
+      - Explique como vocês pretendem usar o Loomio: preparar reuniões, dar continuidade às discussões, tomar decisões e manter o contexto entre as reuniões.
+      - Deixe claro quem tem acesso ao grupo e pode ler e participar.
+      - Anexe documentos de referência ou de governança, ou inclua links para eles.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  00c14924ec3f24cb:
+    english: |-
+      ### Check privacy and permission settings
+      Loomio groups are **Secret** by default, which means only the people you specifically invite to the group know of its existence.
+    translation: |-
+      ### Verifique as configurações de privacidade e permissões
+      Por padrão, os grupos do Loomio são **Secreto**. Isso significa que apenas as pessoas que você convidar para o grupo saberão que ele existe.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  9158ac7ea9b0db99:
+    english: See [member permissions](/en/user_manual/groups/settings#permissions), and set to suit the proficiency of members in your group.  It may help to remove some permissions to avoid confusion as you are starting out. You can always restore permissions and everyone becomes more familiar with Loomio.
+    translation: Consulte as [permissões dos membros](/en/user_manual/groups/settings#permissions) e ajuste-as conforme a familiaridade dos membros do grupo com o Loomio. No início, remover algumas permissões pode evitar confusão. Você pode restaurá-las à medida que todos conhecerem melhor o Loomio.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  6a139f43ad2871f8:
+    english: |-
+      ### Category tags
+      Add [category tags](/en/user_manual/discussions/tags/) to suit your organization.  Setting these in advance will help everyone use tags and find the threads and info they are looking for.
+    translation: |-
+      ### Tags de categoria
+      Adicione [tags de categoria](/en/user_manual/discussions/tags/) adequadas à sua organização. Configurá-las com antecedência ajudará todos a usar as tags e encontrar as discussões e informações que procuram.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  7435f3589b1f26e3:
+    english: |-
+      ### Set up your personal profile
+      Your [personal profile](/en/user_manual/users/user_profile) will help members of your group easily identify you, and have confidence that the messages they receive from you actually come from you.
+    translation: |-
+      ### Configure seu perfil pessoal
+      Seu [perfil pessoal](/en/user_manual/users/user_profile) ajudará os membros do grupo a identificar você e a reconhecer que as mensagens enviadas em seu nome vieram de você.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  cf3684fe138b05fe:
+    english: |-
+      ### Manage group membership
+      Make sure all the members of your board or committee have been [invited](/en/user_manual/groups/inviting_people/) to the group, and accepted their invitation.
+    translation: |-
+      ### Gerencie os membros do grupo
+      Verifique se todos os integrantes do conselho ou comitê foram [convidados](/en/user_manual/groups/inviting_people/) para o grupo e aceitaram o convite.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  '029e18cb13c89e7b':
+    english: "### Start with a board process"
+    translation: "### Comece com um processo do conselho"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  ba8a6193de9c928f:
+    english: The general introduction guide explains how to help everyone comment and vote once. For a board, follow that practice with one recurring governance process, such as preparing an agenda, approving minutes, reviewing a report, or making a small out-of-session decision.
+    translation: O guia geral de introdução explica como ajudar todos a comentar e votar pela primeira vez. No conselho, continue com um processo de governança recorrente, como preparar uma pauta, aprovar uma ata, analisar um relatório ou tomar uma decisão simples entre reuniões.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  f7c156fde7984f49:
+    english: Agree whether decisions made in Loomio take effect when their outcome is published or must be ratified at the next meeting. Record the agreed quorum, vote threshold, eligible voters, and ratification process in the group description or governance documents.
+    translation: Definam se as decisões tomadas no Loomio entram em vigor quando a conclusão é publicada ou se precisam ser ratificadas na reunião seguinte. Registrem o quórum, o número de votos necessário para aprovação, quem pode votar e o processo de ratificação na descrição do grupo ou nos documentos de governança.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'

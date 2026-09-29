@@ -1,0 +1,61 @@
+---
+navigation_title: Discussioni dirette
+blocks:
+  ba470546359b688d:
+    english: "# Direct discussions"
+    translation: "# Discussioni dirette"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  b3ed13f5612f4ff9:
+    english: A direct discussion is a private discussion for a specific set of people.
+    translation: Una discussione diretta è una discussione privata tra persone specifiche.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  479f7faed056ab51:
+    english: A direct discussion does not belong to a group. Invited people do not need to be a member of your Loomio group.
+    translation: Una discussione diretta non appartiene a un gruppo. Le persone invitate non devono essere membri del tuo gruppo Loomio.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  2f5362faecc07fa0:
+    english: You control who can see and participate by adding people or email addresses to the **Invite** field.
+    translation: Puoi decidere chi può vedere la discussione e partecipare aggiungendo persone o indirizzi email nel campo **Invita**.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  f31343ea54b4f899:
+    english: Direct discussions support the same comments, polls and other tools as group discussions. They can be useful when creating a subgroup is unnecessary.
+    translation: Le discussioni dirette offrono gli stessi commenti, sondaggi e altri strumenti delle discussioni di gruppo. Sono utili quando non serve creare un sottogruppo.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  8dcb1cd81ca79192:
+    english: "![A direct discussion form with no group selected and Samira Patel in the Invite field](direct-discussion-example.png)"
+    translation: "![Il modulo di una discussione diretta senza un gruppo selezionato e con Samira Patel nel campo Invita](direct-discussion-example.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  6e1409b4f3f725d9:
+    english: Select **Direct threads** in the sidebar to see your direct discussions. Select **New discussion** on that page to start another one.
+    translation: Seleziona **Thread diretti** nella barra laterale per vedere le tue discussioni dirette. Seleziona **Nuova discussione** in quella pagina per avviarne un'altra.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  f77108fd74372c43:
+    english: "![The Direct threads sidebar item and the list of direct discussions](direct-discussion-sidebar.png)"
+    translation: "![La voce Thread diretti nella barra laterale e l'elenco delle discussioni dirette](direct-discussion-sidebar.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  5a0b9426a2d88e62:
+    english: |-
+      ## Contacting someone via a direct discussion
+      A direct discussion can be used to contact one or more people privately without creating a subgroup.
+    translation: |-
+      ## Contattare qualcuno tramite una discussione diretta
+      Puoi usare una discussione diretta per contattare una o più persone in privato senza creare un sottogruppo.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'

@@ -1,0 +1,129 @@
+---
+navigation_title: ディスカッションを進める
+blocks:
+  c377321bc013336b:
+    english: "# Facilitating discussions"
+    translation: "# ディスカッションを進める"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  b771c6c746b8dc40:
+    english: 'At times topics arise that require the attention of board or committee members mid-cycle, between meetings. '
+    translation: 会議と会議の間に、理事会や委員会のメンバーが対応すべき議題が生じることがあります。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  b5fc5f12c8e44c40:
+    english: And sometimes there is just not space during a meeting for discussion or to sufficiently deliberate on a decision.
+    translation: また、会議中に十分な時間を取って話し合い、決定を検討できないこともあります。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  79f2f83380e195c4:
+    english: "## On Loomio"
+    translation: "## Loomioでの進め方"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  14d5e62d33996982:
+    english: Use a Loomio **thread** to facilitate a discussion.  Give the thread a descriptive title that members will recognize and provide details in the thread context.  Add a relevant category tag to help members find the thread in future.
+    translation: 話し合いを進めるには、Loomioの**スレッド**を使います。メンバーに内容が伝わるタイトルを付け、スレッドの説明に詳細を書きます。関連するカテゴリタグを追加すると、後からスレッドを見つけやすくなります。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  8d35b4315f4e42cb:
+    english: Notify members of the thread by inviting them, so they will receive a copy of the thread by email.  Members can participate in the discussion by clicking on the link to go to Loomio, or reply to the notification email and their comment will appear as a comment in the thread.
+    translation: メンバーをスレッドに招待すると、スレッドの内容がメールで届きます。メンバーはリンクからLoomioを開いてディスカッションに参加できます。通知メールに返信することもでき、その内容はスレッドのコメントとして表示されます。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  f7d839f27c1a6f72:
+    english: A Loomio thread enables you to attach files or link to online resources to support the discussion.
+    translation: Loomioのスレッドには、話し合いの資料となるファイルを添付したり、オンライン資料へのリンクを追加したりできます。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  e45d25d90798cf1e:
+    english: "Common examples include:\n- review and develop a policy\n- seek advice from the board about a topic or issue\n- discuss strategy \n- explore an idea or opportunity\n- assess risk"
+    translation: |-
+      例えば、次のような話し合いに使えます。
+      - 方針を見直し、作成する
+      - 議題や課題について理事会に意見を求める
+      - 戦略を話し合う
+      - アイデアや機会を検討する
+      - リスクを評価する
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  86ace2adbcf3df6f:
+    english: "## Issues that arise between board meetings"
+    translation: "## 理事会の会議と会議の間に生じる課題"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  48f6023950ee0729:
+    english: 'A lot can happen in an organization between meetings, and most people rely on email to alert board members.  Trying to keep track of a discussion on email is tricky, with replies often lost in in-boxes and people left out.  '
+    translation: 会議と会議の間にも、組織ではさまざまなことが起こります。理事会のメンバーへの連絡には、メールがよく使われます。しかし、メールでの話し合いは経過を追いにくく、返信が受信箱に埋もれたり、連絡から漏れる人が出たりします。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  1cb0e78c848b9621:
+    english: "*“You can’t do governance by email!”, Richard Westlake (Westlake Governance).*"
+    translation: "*「メールで組織運営はできません」、リチャード・ウェストレイク（Westlake Governance）。*"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  eddf348746c93b4c:
+    english: 'When an issue arises requiring board attention, use a Loomio thread rather than email.  Members can reply via email and their comment will appear in the Loomio thread, keeping the discussion in one place. '
+    translation: 理事会の対応が必要な課題が生じたら、メールの代わりにLoomioのスレッドを使います。メンバーがメールで返信すると、その内容がスレッドのコメントとして表示され、話し合いを一か所にまとめられます。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  2f7ad89003f79fb8:
+    english: |-
+      Here's how:
+      - Make the email subject line the title of your thread,
+      - write your email content in the thread context,
+      - invite your team to the thread with their email address or Loomio user name.
+    translation: |-
+      手順は次のとおりです。
+      - メールの件名にする内容をスレッドのタイトルにします。
+      - メールの本文にする内容をスレッドの説明に書きます。
+      - メールアドレスまたはLoomioのユーザー名を使って、チームのメンバーをスレッドに招待します。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  9825cbb88dcedc3d:
+    english: |-
+      A Loomio thread means that:
+      - All info about a topic is organized in one easily accessible place,
+      - people can respond without generating reply/reply-all email chains that risk leaving people out,
+      - you can see who has read the message and who needs a nudge,
+      - you can progress actual work to an outcome, and cut down on the amount of email.
+    translation: |-
+      Loomioのスレッドを使うと、次のことができます。
+      - 議題に関する情報を、アクセスしやすい一か所にまとめられます。
+      - 全員に返信するメールのやり取りを増やさずに回答でき、連絡から漏れる人を減らせます。
+      - 誰がメッセージを読んだか、誰に確認が必要かを把握できます。
+      - 作業を結論まで進めながら、メールの量を減らせます。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  fb9adc7cb7922016:
+    english: "## When there isn't space during meetings"
+    translation: "## 会議中に時間が足りないとき"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  6b1c61424aa7e74b:
+    english: When an agenda item cannot be resolved within the time available in your board meeting, you can move this for further discussion to Loomio. Direct people to the relevant thread, or start a new one and notify your board members.
+    translation: 理事会の会議中に議題を解決する時間が足りない場合は、Loomioで話し合いを続けられます。関連するスレッドを案内するか、新しいスレッドを作成して理事会のメンバーに通知します。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  ced9caddb281230f:
+    english: This relieves pressure on your board, allows more time for information gathering, discussion and deeper reflection which often results in a better quality decision.
+    translation: 会議中に結論を急ぐ必要がなくなり、情報収集や話し合い、十分な検討に時間を使えます。その結果、よりよい決定につながることがあります。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'

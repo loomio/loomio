@@ -1,0 +1,173 @@
+---
+navigation_title: Tomando decisões
+blocks:
+  0a72d2c89c87c2a7:
+    english: "# Making resolutions and online decisions"
+    translation: "# Tomando decisões formais e decisões online"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  50902da4933b32b7:
+    english: Board and committee members frequently need to make 'out-of-session' decisions. These are governance decisions and discussion where either;
+    translation: 'Membros de conselhos e comitês frequentemente precisam tomar decisões fora das reuniões. Essas decisões de governança precisam ser discutidas quando:'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  4355b569fb0f9ee4:
+    english: |-
+      - There was insufficient time to make a decision in the board meeting,
+      - the decision does not require a lot of discussion (including administrative decisions),
+      - something has happened (internally or externally) that requires the board to act before the next meeting,
+      - a director has a particular interest to explore with the board.
+    translation: |-
+      - Não houve tempo suficiente para decidir durante a reunião do conselho,
+      - a decisão não exige muita discussão, como em assuntos administrativos,
+      - aconteceu algo, dentro ou fora da organização, que exige uma ação do conselho antes da próxima reunião,
+      - um conselheiro quer discutir um assunto específico com o conselho.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  c46be74fd433f516:
+    english: |-
+      ## On Loomio
+      Start a **thread** and open a discussion:
+      - Introduce the topic or decision that you would like to make,
+      - invite directors to comment with their thoughts, opinions and any information they have to help everyone understand their perspective about the 'out-of-session' topic or decision,
+      - encourage members to participate by posting or reply to comments.
+    translation: |-
+      ## No Loomio
+      Inicie um **tópico** e abra a discussão:
+      - Apresente o assunto ou a decisão que você deseja tomar,
+      - convide os conselheiros a compartilhar suas ideias, opiniões e informações para ajudar todos a entender seus pontos de vista sobre o assunto ou a decisão fora da reunião,
+      - incentive os membros a participar com publicações ou respostas aos comentários.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  337cfc1a7b434acd:
+    english: "When ready, raise a **poll** and invite members to vote. \nIf the issue is straightforward use a **Proposal** or if the issue is more complex use a **Sense check** poll to clearly ask fellow members how they feel about the proposal.\n- State the decision and invite people to vote,\n- ask people to leave a reason for their vote, particularly if they want to qualify any points,\n- choose the decision options that work for your board's decision-making processes.\n- You can ratify and minute the 'out-of-session' decision at your next board meeting."
+    translation: "Quando chegar a hora de decidir, crie uma **enquete de escolha** e convide os membros a votar. \nSe a questão for simples, use uma **Proposta**. Se for mais complexa, use uma enquete de **Verificação de sentido** para perguntar aos demais membros o que pensam da proposta.\n- Descreva a decisão e convide as pessoas a votar,\n- peça que expliquem o motivo do voto, especialmente se quiserem fazer ressalvas,\n- escolha as opções de voto adequadas ao processo de decisão do seu conselho.\n- Você pode ratificar a decisão tomada fora da reunião e registrá-la em ata na próxima reunião do conselho."
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  19a80c3ce7d106e0:
+    english: It's not a failure if a decision does not get agreement. You can ask members what changes they would make to enable them to agree to a decision. This helps you build to a better decision. A new Proposal with amendments is then more likely to achieve agreement.
+    translation: A falta de consenso não significa que o processo falhou. Você pode perguntar aos membros que mudanças permitiriam que concordassem com a decisão. Isso ajuda a formular uma decisão melhor. Uma nova Proposta com essas alterações terá mais chances de obter consenso.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  b06f2d2a0e68f99d:
+    english: State an **outcome** when the proposal closes. Let everyone know the result of the decision and what will happen next.
+    translation: Publique uma **conclusão** quando a proposta for encerrada. Informe a todos qual foi a decisão e o que acontecerá em seguida.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  6a4d6a8c978bcb11:
+    english: "## Examples of out-of-session decisions"
+    translation: "## Exemplos de decisões tomadas fora das reuniões"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  fff64b1ac620cc4a:
+    english: |-
+      ### Decision about property purchase
+      At the last board meeting, a property purchase was discussed. A director required an independent engineering report before making the decision. At the board meeting, the board agreed to purchase the property subject to a satisfactory engineering report. However as the purchase must be made before the next board meeting, the board agreed to upload the engineering report to Loomio when ready, for discussion and to make the final decision for the property purchase on Loomio.
+    translation: |-
+      ### Decisão sobre a compra de um imóvel
+      Na última reunião do conselho, os conselheiros discutiram a compra de um imóvel. Um deles solicitou um laudo independente de engenharia antes da decisão. O conselho concordou em comprar o imóvel, desde que o laudo fosse satisfatório. Como a compra precisava ser concluída antes da próxima reunião, o conselho decidiu publicar o laudo no Loomio assim que estivesse pronto. Dessa forma, os conselheiros poderiam discuti-lo e tomar a decisão final sobre a compra no Loomio.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  b279ed6b1c5aadfa:
+    english: |-
+      ### Decision to accept Directors and Officers Liability insurance
+      During the board meeting it was noted that the annual insurance renewal was coming up. As this was considered to be an administrative matter, the board agreed to use Loomio to discuss the renewal application, seek the required information from each director, submit the application and to accept the insurance renewal quote.
+    translation: |-
+      ### Decisão sobre a contratação de seguro de responsabilidade civil para conselheiros e diretores
+      Durante a reunião do conselho, foi observado que a renovação anual do seguro estava próxima. Como se tratava de uma questão administrativa, o conselho decidiu usar o Loomio para discutir a proposta de renovação, obter as informações necessárias de cada conselheiro, enviar a solicitação e aceitar a cotação do seguro.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  ca3a40286ca25a9a:
+    english: |-
+      ### A security breach has occurred at one of our facilities
+      A break-in and theft of property has occurred that has put the corporation and staff at risk. Directors must be made aware of the event and risks, and evaluate an appropriate response.
+    translation: |-
+      ### Ocorreu uma falha de segurança em uma de nossas instalações
+      Houve uma invasão e um furto que colocaram a organização e seus funcionários em risco. Os conselheiros precisam ser informados sobre o ocorrido e os riscos, além de avaliar uma resposta adequada.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  c406842807e1091b:
+    english: |-
+      ### A director has challenged the board about gender and diversity of board membership
+      The director has provided good reasons and evidence that the board should diversify membership to be more representative of the corporation. Directors need to digest the information, ask questions, discuss the issue and decide a response.
+    translation: |-
+      ### Um conselheiro questionou a diversidade de gênero e a composição do conselho
+      O conselheiro apresentou razões e evidências para diversificar a composição do conselho, tornando-o mais representativo da organização. Os conselheiros precisam analisar as informações, fazer perguntas, discutir o assunto e decidir como responder.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  bf35cdb4a62a85f4:
+    english: "## Keeping a record of decisions made and supporting discussion"
+    translation: "## Registrando as decisões e as discussões que as fundamentam"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  6231d476f6bddb27:
+    english: Record keeping is a legal requirement for governance boards and good practice for committees.
+    translation: Manter registros é uma exigência legal para conselhos de governança e uma boa prática para comitês.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  511470c795509c7e:
+    english: Today, many organizations record and store formal minutes, resolutions, policies and key decisions electronically. Document records are created and approved, distributed and used, retained and stored, and ultimately disposed of.
+    translation: Hoje, muitas organizações registram e armazenam eletronicamente atas formais, decisões, políticas e outros documentos importantes. Esses documentos são criados e aprovados, distribuídos e utilizados, conservados e armazenados e, por fim, descartados.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  324fc531e7a78088:
+    english: |-
+      ### On Loomio
+      Minutes, reports, resolutions and other documents can be attached to a meeting **thread**, in the thread context, within a poll or any to thread comment.  This means the documents are always associated with the relevant discussion.
+    translation: |-
+      ### No Loomio
+      Atas, relatórios, decisões e outros documentos podem ser anexados ao **tópico** de uma reunião, ao contexto do tópico, a uma enquete ou a qualquer comentário no tópico.  Assim, os documentos ficam associados à discussão correspondente.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  9be58ccab5189118:
+    english: A list of files can also be found under the **Files** tab.
+    translation: Você também encontra uma lista de arquivos na aba **Arquivos**.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  24bc6a0bf5139b23:
+    english: You can also add a link within any thread or poll to a document stored in your preferred document management system.  Find the online shareable link to the document, copy and paste into your thread, poll or comment.
+    translation: Você também pode adicionar, em qualquer tópico ou enquete, um link para um documento armazenado no sistema de gestão de documentos de sua preferência.  Encontre o link compartilhável do documento, copie-o e cole-o no tópico, na enquete ou em um comentário.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  4fee216f27a3fdff:
+    english: Anyone with permission can then click the link to open and read the document.
+    translation: Qualquer pessoa com permissão poderá clicar no link para abrir e ler o documento.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  9f0e1cd18ae1a402:
+    english: Because Loomio discussions and decisions are always already documented, it provides a robust way to verify all your board's decision-making. You can easily demonstrate what was decided, and when. If directors have discussed and commented, as well as voted on a resolution—you will also know how and why each decision was reached.
+    translation: Como as discussões e decisões no Loomio já ficam documentadas, você pode verificar como o conselho tomou cada decisão. É fácil demonstrar o que foi decidido e quando. Se os conselheiros discutiram, comentaram e votaram em uma decisão, você também poderá saber como e por que ela foi tomada.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  71071cda2f1c034e:
+    english: Over time, you are creating a history for your organization where you can easily search and find past decisions and related discussion.
+    translation: Com o tempo, você cria um histórico da sua organização no qual pode pesquisar e encontrar decisões anteriores e as discussões relacionadas.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  629c2034788a9fd5:
+    english: In Loomio all data is written and stored on multiple disks and multiple locations, *in the cloud*, backed up daily.  Files uploaded are stored on servers that use modern techniques to remove bottlenecks and points of failure.
+    translation: No Loomio, todos os dados são gravados e armazenados em vários discos e locais, *na nuvem*, com backups diários.  Os arquivos enviados ficam em servidores que usam técnicas modernas para evitar gargalos e pontos únicos de falha.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'

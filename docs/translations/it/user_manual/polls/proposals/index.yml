@@ -1,0 +1,75 @@
+---
+navigation_title: Proposte
+blocks:
+  3fa760281a1aed06:
+    english: "# Proposals"
+    translation: "# Proposte"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  ca5b9583bfe78b65:
+    english: A proposal asks people to respond to a statement or course of action. Participants choose a defined response and can explain their vote. Use a proposal to gather feedback, seek advice, identify objections, or test for agreement.
+    translation: Una proposta invita le persone a esprimersi su un'affermazione o una linea d'azione. I partecipanti scelgono una delle risposte previste e possono spiegare il proprio voto. Usa una proposta per raccogliere pareri, chiedere consigli, individuare obiezioni o verificare se c'è accordo.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  143dc77c58a4c881:
+    english: This section helps you choose and run Loomio's default proposal templates. For a complete sequence of discussion, proposals, amendments, and outcome, use the [decision-making guides](/en/guides/making_decisions/). To change the templates available to your group, see [Poll templates](../poll_templates/).
+    translation: Questa sezione ti aiuta a scegliere e usare i modelli di proposta predefiniti di Loomio. Per seguire un percorso completo dalla discussione alla proposta, agli emendamenti e alla conclusione, consulta le [guide al processo decisionale](/en/guides/making_decisions/). Per modificare i modelli disponibili nel tuo gruppo, consulta [Modelli di sondaggio](../poll_templates/).
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  e0f8614f95c9c5ff:
+    english: "## Choose a proposal template"
+    translation: "## Scegli un modello di proposta"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  525699503edbe342:
+    english: |-
+      | Template | What it asks | Use it when… |
+      |---|---|---|
+      | [Sense check](sense_check/) | Is this on the right track? | An idea is still being developed |
+      | [Advice](advice/) | What advice should the decision maker consider? | A person or team owns the decision |
+      | [Consent](consent/) | Is this safe to try, or is there a meaningful objection? | The group uses consent decision-making |
+      | [Consensus](consensus/) | What is your position on this proposal? | The group is seeking collective agreement |
+    translation: |-
+      | Modello | Domanda | Quando usarlo… |
+      |---|---|---|
+      | [Controllo del senso](sense_check/) | Siamo sulla strada giusta? | Un'idea è ancora in fase di sviluppo |
+      | [Consiglio](advice/) | Quali consigli dovrebbe considerare chi prende la decisione? | La decisione spetta a una persona o a un team |
+      | [Consenso](consent/) | Si può provare senza rischi significativi o c'è un'obiezione sostanziale? | Il gruppo decide con il metodo del consenso |
+      | [Consenso](consensus/) | Qual è la tua posizione su questa proposta? | Il gruppo cerca un accordo collettivo |
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  0cb03ac4a22f02b4:
+    english: Choose the template whose response options match the question you need answered. Each template page explains its use cases, setup, voting form, and results.
+    translation: Scegli il modello con le opzioni di risposta adatte alla domanda che vuoi porre. La pagina di ogni modello spiega quando usarlo, come configurarlo, come si vota e come vengono mostrati i risultati.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  d379b02c308b3b55:
+    english: "## Other proposal templates"
+    translation: "## Altri modelli di proposta"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  44cdb16aebf757ca:
+    english: Loomio also provides templates such as Proposal, Gradients of agreement, Question round, and Majority. Some are hidden initially. Group administrators can make them available or create a template for the group's own terminology and rules from [Poll templates](../poll_templates/).
+    translation: Loomio offre anche modelli come Proposta, Gradienti di accordo, Giro di domande e Maggioranza. Alcuni sono inizialmente nascosti. Gli amministratori del gruppo possono renderli disponibili o creare un modello che rispecchi la terminologia e le regole del gruppo da [Modelli di sondaggio](../poll_templates/).
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  ca179ba4cb53c5e3:
+    english: "## Proposal records"
+    translation: "## Documentazione delle proposte"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  460a90e796fc4dc0:
+    english: Votes and reasons update while the proposal is open, and participants can change their response. After it closes, publish an [outcome](../outcomes/) that states the decision or next step. The discussion, proposal, votes, reasons, and outcome form a record of how the group reached its decision.
+    translation: Finché la proposta è aperta, i voti e le motivazioni si aggiornano e i partecipanti possono cambiare la propria risposta. Dopo la chiusura, pubblica una [conclusione](../outcomes/) che indichi la decisione o il passo successivo. La discussione, la proposta, i voti, le motivazioni e la conclusione documentano come il gruppo è arrivato alla decisione.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'

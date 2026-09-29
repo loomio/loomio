@@ -1,0 +1,153 @@
+---
+navigation_title: Stimmenanteilsanforderungen
+blocks:
+  54368e42ed93ae0c:
+    english: "# Vote share requirements"
+    translation: "# Stimmenanteilsanforderungen"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  2051086558658db2:
+    english: Set a vote share requirement on an option when a proposal must receive a particular percentage of support, or remain below a particular percentage of opposition, to pass.
+    translation: Lege für eine Option eine Stimmenanteilsanforderung fest, wenn ein Vorschlag nur mit einem bestimmten Anteil an Zustimmung oder höchstens einem bestimmten Anteil an Ablehnung angenommen werden soll.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  f00d3806d6b890ae:
+    english: Vote share requirements can be combined with a [quorum](/en/user_manual/polls/quorum/) to require both sufficient participation and a particular distribution of votes.
+    translation: Du kannst Stimmenanteilsanforderungen mit einem [Quorum](/en/user_manual/polls/quorum/) kombinieren. So muss sowohl die Beteiligung als auch die Verteilung der Stimmen die jeweiligen Anforderungen erfüllen.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  0fc0acd12134f67e:
+    english: When creating a proposal, select the edit icon beside an option.
+    translation: Wähle beim Erstellen eines Vorschlags das Bearbeitungssymbol neben einer Option.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  27979c31066e397f:
+    english: "![The edit icon beside the Consent option](edit-highlight-on-option.png)"
+    translation: "![Das Bearbeitungssymbol neben der Option Zustimmung](edit-highlight-on-option.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  b3a4dee73762bea4:
+    english: "## Eligible voters and votes cast"
+    translation: "## Wahlberechtigte und abgegebene Stimmen"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  1d04d75fa16a2a18:
+    english: The percentage can be based on either **Votes cast** or **Eligible voters**.
+    translation: Der Prozentsatz kann sich auf **Abgegebene Stimmen** oder **Wahlberechtigte** beziehen.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  590e1a316f9ad174:
+    english: "![Choosing whether a vote share requirement uses votes cast or eligible voters](./eligible-vs-cast.png)"
+    translation: "![Auswahl, ob sich die Stimmenanteilsanforderung auf abgegebene Stimmen oder Wahlberechtigte bezieht](./eligible-vs-cast.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  d4c72d50982e071d:
+    english: "**Eligible voters** means everyone who is able to vote in the proposal. **Votes cast** means only the votes that have been submitted."
+    translation: "**Wahlberechtigte** sind alle Personen, die über den Vorschlag abstimmen können. **Abgegebene Stimmen** sind nur die Stimmen, die tatsächlich eingereicht wurden."
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  24945a1a4f0d08e3:
+    english: A requirement of 75 percent agreement from eligible voters can pass only when at least 75 percent of all eligible voters vote for that option.
+    translation: Wenn mindestens 75 Prozent der Wahlberechtigten zustimmen müssen, kann der Vorschlag nur angenommen werden, wenn mindestens 75 Prozent aller Wahlberechtigten für diese Option stimmen.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  14e4ff7cd000c7af:
+    english: A requirement of 60 percent agreement from votes cast can pass when 60 percent of submitted votes support the option, regardless of overall turnout. Add a quorum when your process also requires a minimum level of participation.
+    translation: Wenn mindestens 60 Prozent der abgegebenen Stimmen zustimmen müssen, kann der Vorschlag angenommen werden, sobald 60 Prozent der eingereichten Stimmen diese Option unterstützen. Die gesamte Wahlbeteiligung spielt dabei keine Rolle. Lege zusätzlich ein Quorum fest, wenn dein Verfahren eine Mindestbeteiligung verlangt.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  a8f235434b40ecd9:
+    english: "## Different vote share requirements"
+    translation: "## Verschiedene Stimmenanteilsanforderungen"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  6682c9656815bdbc:
+    english: 'A proposal can have requirements on more than one option. For example:'
+    translation: 'Ein Vorschlag kann Anforderungen für mehrere Optionen haben. Zum Beispiel:'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  dac1980305bef52d:
+    english: |-
+      - Agreement must be at least 75 percent of eligible voters
+      - Abstention must be no more than 30 percent of votes cast
+      - Block must be no more than 0 percent of votes cast
+    translation: |-
+      - Dafür: mindestens 75 Prozent der Wahlberechtigten
+      - Enthaltung: höchstens 30 Prozent der abgegebenen Stimmen
+      - Veto: höchstens 0 Prozent der abgegebenen Stimmen
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  11325e607f603eb7:
+    english: You can also add requirements to a [poll template](/en/user_manual/polls/poll_templates/) so that new proposals created from the template use them by default.
+    translation: Du kannst Anforderungen auch zu einer [Abstimmungsvorlage](/en/user_manual/polls/poll_templates/) hinzufügen. Neue Vorschläge, die aus der Vorlage erstellt werden, übernehmen sie dann standardmäßig.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  d6bffbdadc45e7f5:
+    english: "## Detailed example"
+    translation: "## Ausführliches Beispiel"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  4318dab03fe217ad:
+    english: Oatmilk Cooperative is deciding whether to approve the budget for its six-week returnable bottle trial. Five people are eligible to vote.
+    translation: Die Oatmilk Cooperative entscheidet, ob sie das Budget für einen sechswöchigen Test mit Mehrwegflaschen genehmigt. Fünf Personen sind wahlberechtigt.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  8f5779f2f1bb9ec3:
+    english: Jamie uses the **Consent** proposal template, edits the Consent option, and enables its vote share requirement.
+    translation: Jamie verwendet die Vorschlagsvorlage **Zustimmung**, bearbeitet die Option Zustimmung und aktiviert ihre Stimmenanteilsanforderung.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  842038ffbd273e57:
+    english: The cooperative's process requires at least 75 percent of eligible voters to support the proposal. Jamie sets the requirement to **At least 75% of Eligible voters**.
+    translation: Das Verfahren der Kooperative verlangt, dass mindestens 75 Prozent der Wahlberechtigten den Vorschlag unterstützen. Jamie legt die Anforderung auf **Mindestens 75 % der Wahlberechtigten** fest.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  5b852b2e7a9b3034:
+    english: "![The Consent option requiring at least 75 percent of eligible voters](./consent-vote-option.png)"
+    translation: "![Die Option Zustimmung erfordert mindestens 75 Prozent der Wahlberechtigten](./consent-vote-option.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  8a42a135c0c11c98:
+    english: Jamie also sets a 60 percent quorum. Jamie and Samira vote in agreement. All submitted votes support the proposal, but they represent only 40 percent of eligible voters, so neither requirement has been reached.
+    translation: Jamie legt außerdem ein Quorum von 60 Prozent fest. Jamie und Samira stimmen zu. Alle abgegebenen Stimmen unterstützen den Vorschlag. Die beiden Stimmen entsprechen aber nur 40 Prozent der Wahlberechtigten. Daher ist keine der beiden Anforderungen erfüllt.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  2284440b974635e3:
+    english: "![Two of five people have voted in agreement and neither requirement is reached](./first-vote-breakdown.png)"
+    translation: "![Zwei von fünf Personen haben zugestimmt und keine der beiden Anforderungen ist erfüllt](./first-vote-breakdown.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  2cb3890f4ef20320:
+    english: Alex and Morgan then agree, while Taylor disagrees. All five people have voted, reaching the quorum, and four of five eligible voters agree. The 80 percent agreement exceeds the 75 percent vote share requirement, so both requirements show green check marks.
+    translation: Alex und Morgan stimmen ebenfalls zu, Taylor stimmt dagegen. Alle fünf Personen haben abgestimmt. Damit ist das Quorum erreicht, und vier von fünf Wahlberechtigten stimmen zu. Die Zustimmung von 80 Prozent übersteigt die geforderten 75 Prozent. Beide Anforderungen werden daher mit einem grünen Häkchen angezeigt.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  6b09cbe2063c0a6a:
+    english: "![All five people have voted and both requirements are reached](./final-vote-breakdown.png)"
+    translation: "![Alle fünf Personen haben abgestimmt und beide Anforderungen sind erfüllt](./final-vote-breakdown.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'

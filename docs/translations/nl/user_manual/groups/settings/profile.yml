@@ -1,0 +1,75 @@
+---
+navigation_title: Profiel
+blocks:
+  04c18671ca588e8c:
+    english: "# Group profile"
+    translation: "# Groepsprofiel"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  0b903e1c3c7e1862:
+    english: The profile tab controls how your group is identified and introduced. Open **Edit group settings** from the group page, then select **Profile**.
+    translation: Op het tabblad Profiel bepaal je hoe je groep wordt weergegeven en voorgesteld. Open **Bewerk groepsinstellingen** op de groepspagina en selecteer **Profiel**.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  1baaad2a0c6c8909:
+    english: "![Group profile settings](group_profile.png)"
+    translation: "![Instellingen voor het groepsprofiel](group_profile.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  a1c12efad8cb82f5:
+    english: "## Name and handle"
+    translation: "## Naam en groepsadres"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  3643c2e2ffd5db73:
+    english: Choose a concise group name, particularly if the group will contain subgroups. Loomio uses the handle in the group's web address and group email address, such as `loomio.com/your-group-handle` and `your-group-handle@loomio.com`.
+    translation: Kies een korte groepsnaam, vooral als de groep subgroepen krijgt. Loomio gebruikt het groepsadres in het webadres en e-mailadres van de groep, zoals `loomio.com/your-group-handle` en `your-group-handle@loomio.com`.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  5a6e298a019f6a15:
+    english: When you change the handle, links using the previous handle redirect to the new address, and email sent to the previous group address continues to reach the group. Loomio retains up to three previous handles; changing the handle again after that causes the oldest one to expire.
+    translation: Als je het groepsadres wijzigt, worden links met het vorige adres doorgestuurd naar het nieuwe adres. E-mail naar het vorige groepsadres blijft aankomen. Loomio bewaart maximaal drie vorige groepsadressen. Als je het adres daarna opnieuw wijzigt, vervalt het oudste.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  2b45dd41be9c3d1d:
+    english: "## Description"
+    translation: "## Beschrijving"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  7b707620077d9d19:
+    english: Use the description to explain what the group is for, who participates, and how people are expected to use it. You can format the description and include links, documents, and videos.
+    translation: Leg in de beschrijving uit waar de groep voor dient, wie eraan deelnemen en hoe mensen de groep kunnen gebruiken. Je kunt de beschrijving opmaken en links, documenten en video's toevoegen.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  93a11a5e2927833e:
+    english: The name and description may be visible to non-members depending on the group's [privacy settings](/en/user_manual/groups/settings/privacy).
+    translation: Afhankelijk van de [privacyinstellingen](/en/user_manual/groups/settings/privacy) van de groep kunnen ook mensen die geen lid zijn de naam en beschrijving zien.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  0dff03268238aa26:
+    english: "## Cover image and logo"
+    translation: "## Omslagafbeelding en logo"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  9d08dda635bd5ce6:
+    english: The cover image appears across the top of the group page. A wide image works best; the recommended size is 2048 × 512 pixels.
+    translation: De omslagafbeelding staat bovenaan de groepspagina. Een brede afbeelding werkt het best. De aanbevolen afmetingen zijn 2048 × 512 pixels.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  cc04654d8d08da59:
+    english: The group logo identifies the group in navigation and other compact contexts. Upload the cover image and logo separately so each can be cropped for its intended shape.
+    translation: Het groepslogo maakt de groep herkenbaar in de navigatie en op andere plekken met weinig ruimte. Upload de omslagafbeelding en het logo afzonderlijk, zodat je elk voor de juiste vorm kunt bijsnijden.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'

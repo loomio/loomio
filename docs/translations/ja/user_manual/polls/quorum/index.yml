@@ -1,0 +1,105 @@
+---
+navigation_title: 定足数
+blocks:
+  '038bd6f53f9e8861':
+    english: "# Quorum"
+    translation: "# 定足数"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  a79abb23e8e1c82f:
+    english: A quorum is the minimum percentage of eligible voters who must participate for a poll to be valid. Use it when your governance process requires a particular level of participation.
+    translation: 定足数は、投票を有効にするために参加が必要な有資格投票者の最低割合です。意思決定の手続きで一定の参加率が必要な場合に設定します。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  d83e75068f697f6f:
+    english: When creating a poll, open **More settings** and enter the required percentage in **Participation quorum**. Leave the field blank when no quorum is required.
+    translation: 投票を作成するときに **その他の設定** を開き、**参加定足数** に必要な割合を入力します。定足数が不要な場合は空欄のままにします。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  a04b99724fe62a56:
+    english: "![The Quorum setting with a 60 percent participation quorum](./quorum-section.png)"
+    translation: "![参加定足数を60%に設定した定足数の項目](./quorum-section.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  432f570094ad5b24:
+    english: You can also set a quorum in a [poll template](/en/user_manual/polls/poll_templates/) so that polls created from that template use it by default.
+    translation: "[投票テンプレート](/en/user_manual/polls/poll_templates/)にも定足数を設定できます。そのテンプレートから作成した投票には、設定した値が初期値として適用されます。"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  52841ec4c6253973:
+    english: "## Example scenario"
+    translation: "## 利用例"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  96ded9027f394b57:
+    english: Oatmilk Cooperative is discussing a six-week returnable bottle trial. The discussion has reached the point where the cooperative needs to approve the trial budget.
+    translation: オーツミルク協同組合では、返却可能なボトルを6週間試験的に導入することについて議論しています。試験の予算を承認する段階になりました。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  7acd5f99c209cec0:
+    english: Jamie selects **Start a vote**, chooses the **Consent** proposal template, and completes the title, details, options, duration, and voter settings.
+    translation: ジェイミーは **投票を開始する** を選び、**同意** の提案テンプレートを選択します。その後、タイトル、詳細、選択肢、期間、投票者の設定を入力します。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  c5bd111a40bc588f:
+    english: "![The proposal title, details, options, duration, and voter settings](proposal-options.png)"
+    translation: "![提案のタイトル、詳細、選択肢、期間、投票者の設定](proposal-options.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  7ba26dd025983d8d:
+    english: Jamie limits the vote to the five people responsible for the trial budget.
+    translation: ジェイミーは、試験の予算を担当する5人に投票者を限定します。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  ef25fbaed498cfbe:
+    english: The cooperative requires 60 percent participation for significant decisions, so Jamie enters **60** in the participation quorum field and starts the proposal.
+    translation: この協同組合では、重要な決定に60%の参加が必要です。ジェイミーは参加定足数の欄に **60** と入力し、提案を開始します。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  b1cd37eb5ed44589:
+    english: Before anyone votes, the results panel shows that the quorum has not been reached.
+    translation: 投票が始まる前は、結果欄に定足数に達していないことが表示されます。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  1b8a41f8c5939665:
+    english: "![No votes cast and the 60 percent quorum not yet reached](pie-chart-0.png)"
+    translation: "![投票がなく、60%の定足数に達していない状態](pie-chart-0.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  ff36e799ac095caf:
+    english: Jamie agrees and Samira disagrees. The chart updates, but two of five eligible voters is only 40 percent participation, so the quorum is still not reached.
+    translation: ジェイミーが賛成し、サミラが反対します。グラフは更新されますが、有資格投票者5人のうち2人の参加率は40%なので、まだ定足数に達していません。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  7ad216922d5d4dcb:
+    english: "![Two of five votes cast and the quorum not yet reached](pie-chart-40.png)"
+    translation: "![5人のうち2人が投票し、定足数に達していない状態](pie-chart-40.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  554dc5536fdb1a60:
+    english: Alex then agrees. Three of five eligible voters have participated, reaching the 60 percent quorum. The requirement now shows a green check mark. Jamie can close the poll early or wait for the remaining voters.
+    translation: 続いてアレックスが賛成します。有資格投票者5人のうち3人が参加し、60%の定足数に達します。要件の横に緑色のチェックマークが表示されます。ジェイミーは投票を早期に締め切ることも、残りの投票者を待つこともできます。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  e792db36d3223ce3:
+    english: "![Three of five votes cast and the 60 percent quorum reached](pie-chart-60.png)"
+    translation: "![5人のうち3人が投票し、60%の定足数に達した状態](pie-chart-60.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'

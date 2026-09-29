@@ -1,0 +1,179 @@
+---
+navigation_title: Concludere
+blocks:
+  b2d8fb17fce5a4a3:
+    english: "# Concluding"
+    translation: "# Concludere"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  4e03229937f959ed:
+    english: "## Outcomes & Next Steps"
+    translation: "## Conclusioni e prossimi passi"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  eaf0fe98db301c7f:
+    english: 'Confirming the outcome can be critical to feel like the goals of a collaborative discussion have been achieved. A facilitator can pull together what’s been decided and reflect it back, to help the group walk away with the answers to some key questions:'
+    translation: 'Confermare la conclusione aiuta a riconoscere che la discussione collaborativa ha raggiunto i suoi obiettivi. Chi facilita può riassumere le decisioni e condividerle con il gruppo, così da chiarire alcune domande fondamentali:'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  00ed94f662c9643a:
+    english: |-
+      * What did we do?
+      * What does it mean?
+      * What will happen now?
+      * What is my responsibility?
+      * What will be different because we went through this experience?
+    translation: |-
+      * Che cosa abbiamo fatto?
+      * Che cosa significa?
+      * Che cosa succederà adesso?
+      * Qual è la mia responsabilità?
+      * Che cosa cambierà grazie a questa esperienza?
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  0f9ecf512b4990b7:
+    english: Sometimes the answers to these questions are very concrete, such as action points, while other times they are more abstract, such as deepening shared understanding.
+    translation: A volte le risposte sono concrete, come le azioni da intraprendere. Altre volte sono più astratte, come una comprensione condivisa più profonda.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  aabfa9d842af2688:
+    english: On Loomio
+    translation: Su Loomio
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  a63bbb12b1a1e04c:
+    english: |-
+      * [Outcomes](/en/user_manual/polls/outcomes/) are a very important tool. A proposal ending is not quite the end: there’s a need to sum up conclusively. That's what the outcome feature is for.
+      * Many Loomio discussions come to a natural end without even using proposals or publishing outcomes. These discussions still provide a lot of value, and it can be helpful to update the context box with an outcome summary for later reference.
+      * If specific people have action points, you can @mention their names and they will be notified.
+    translation: |-
+      * Le [conclusioni](/en/user_manual/polls/outcomes/) sono uno strumento importante. La chiusura di una proposta non conclude il lavoro: occorre riassumere ciò che è stato deciso. A questo serve la funzione delle conclusioni.
+      * Molte discussioni su Loomio si concludono naturalmente senza usare proposte o pubblicare conclusioni. Anche queste discussioni sono utili. Può essere opportuno aggiornare il riquadro del contesto con un riepilogo della conclusione, da consultare in seguito.
+      * Se alcune persone devono svolgere delle azioni, puoi citarle con @mention. Riceveranno una notifica.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  55a9b345194f80d6:
+    english: "## Reporting & Harvesting"
+    translation: "## Documentare e raccogliere i risultati"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  fc6ee28887dd5ab1:
+    english: To understand the meaning of an experience, you have to inquire into how it fits into the bigger context. What was this moment, in the bigger rhythm of our progress? What form will our understanding from this experience take — a story, a report, a change, a call to action?
+    translation: 'Per capire il significato di un’esperienza, considera come si inserisce nel contesto più ampio. Che ruolo ha avuto questo momento nel percorso del gruppo? Quale forma prenderà ciò che abbiamo imparato: un racconto, un resoconto, un cambiamento, un invito ad agire?'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  eb2cdc1c6526e053:
+    english: The experience happens in the moment, but its impact often comes from putting handles on it, giving it a name, and being able to use it and refer to it. Otherwise you risk forgetting, leaving people out who weren't there, or having to repeat it later. Productive collaboration is often helped by tangible documentation or reporting.
+    translation: L’esperienza avviene in un momento preciso, ma il suo impatto spesso dipende dalla capacità di darle un nome, documentarla e farvi riferimento. Altrimenti rischi di dimenticarla, di escludere chi non era presente o di dover ripetere il lavoro. Documenti e resoconti concreti aiutano spesso la collaborazione.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  4104d8b917a87b0e:
+    english: |-
+      * Loomio is self-documenting — notes write themselves as an integrated part of the process. This creates a gold-mine of archival content for groups, without any extra effort.
+      * We have some features to support harvesting and archiving: the search function, the “previous decisions” list, and the print discussion option.
+      * Premium plans offer the option to export all your group's Loomio data.
+      * Many groups use Loomio to integrate content from various channels. For example, posting a meeting announcement and building the agenda on Loomio, having the meeting in person, posting the notes back on Loomio, and making related decisions in the same thread. This expands the “self-harvesting” ability of Loomio beyond the online space.
+    translation: |-
+      * Loomio documenta il lavoro mentre si svolge: gli interventi restano parte del processo. Il gruppo crea così un archivio di contenuti senza lavoro aggiuntivo.
+      * Alcune funzioni aiutano a raccogliere e consultare i contenuti: la ricerca, l’elenco delle «decisioni precedenti» e l’opzione per stampare la discussione.
+      * I piani Premium permettono di esportare tutti i dati del tuo gruppo su Loomio.
+      * Molti gruppi usano Loomio per riunire contenuti provenienti da canali diversi. Per esempio, puoi annunciare una riunione e preparare l’ordine del giorno su Loomio, incontrarvi di persona, pubblicare gli appunti su Loomio e prendere le decisioni collegate nella stessa discussione. In questo modo, Loomio documenta anche ciò che avviene fuori dalla piattaforma.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  dae98cfd5f14b034:
+    english: "## Turning Discussion into Action"
+    translation: "## Trasformare la discussione in azione"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  a39a66938d6cadb0:
+    english: There comes a moment when you have to re-engage with the reality outside the room. Occasionally, the need is simply to work with ideas and feelings, without worrying about implementation. But usually a group will not reach its goals without applying its conclusions to real-world action. This transition is part of the total facilitated experience.
+    translation: Arriva il momento di tornare alla realtà fuori dalla discussione. A volte basta lavorare su idee e sentimenti, senza preoccuparsi di metterli in pratica. Di solito, però, un gruppo raggiunge i propri obiettivi solo se traduce le conclusioni in azioni concrete. Anche questo passaggio fa parte del percorso facilitato.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  3e26f1939ffe69fe:
+    english: 'It’s at this point that a collaborative process intersects with other organizational systems, and the facilitator has to help figure out how it will work. These other systems might include:'
+    translation: 'È qui che il processo collaborativo incontra gli altri sistemi dell’organizzazione. Chi facilita deve aiutare il gruppo a capire come procedere. Tra gli aspetti da considerare ci sono:'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  cb030c5876714643:
+    english: |-
+      * **Power** — Who actually makes decisions? What has to happen for ideas to turn into reality here?
+      * **Management** — How does this fit into other priorities? What dependencies might exist?
+      * **Delegation** — Who will take responsibility for next steps? Will they be held accountable?
+      * **Communication** — How will this process or discussion be relayed to others? What do they need to know?
+      * **Administration** — How will information from one system be input into another, such as a task tracking or communications tool? Where will information be stored?
+    translation: |-
+      * **Potere decisionale** — Chi prende effettivamente le decisioni? Che cosa deve accadere perché le idee diventino realtà?
+      * **Gestione** — Come si inserisce questa attività tra le altre priorità? Da quali altre attività dipende?
+      * **Delega** — Chi si assumerà la responsabilità dei prossimi passi? Come ne renderà conto?
+      * **Comunicazione** — Come verrà comunicato ad altri questo processo o questa discussione? Che cosa devono sapere?
+      * **Amministrazione** — Come verranno trasferite le informazioni da un sistema all’altro, per esempio a uno strumento per gestire attività o comunicazioni? Dove saranno conservate?
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  5fd6382726e6e5c0:
+    english: If there are any blocks around these issues, it can be damaging to leave this realisation until the moment of conclusion. For example, if the participants don’t actually have the power to make a change they have decided, they will feel defeated.Think ahead toward confronting reality when setting up the process, and scope the collaboration accordingly.
+    translation: Se ci sono ostacoli su questi aspetti, scoprirli solo alla fine può danneggiare il processo. Per esempio, se le persone partecipanti non hanno il potere di attuare un cambiamento che hanno deciso, potrebbero sentirsi scoraggiate. Quando prepari il processo, considera fin dall’inizio i vincoli concreti e definisci di conseguenza l’ambito della collaborazione.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  c3f96d2ea17ab236:
+    english: |-
+      * You can @mention the names of people who will take actions out of a decision.
+      * Many users accomplish integrating Loomio content into other organizational systems through other channels like reviewing Loomio decisions in regular offline meetings, or transferring outcomes to their task tracking process.
+      * Making an explicit decision naturally leads people to ask, “OK, but how are we going to take this forward?”
+      * Forming a Loomio group often surfaces important questions like, “Who needs to participate here to turn these decisions into action?” If you're missing key stakeholders, leaders, or administrators, you'll get stuck.
+    translation: |-
+      * Puoi usare @mention per citare le persone che dovranno agire in seguito a una decisione.
+      * Molti utenti integrano i contenuti di Loomio negli altri sistemi dell’organizzazione attraverso i canali che già usano. Per esempio, riesaminano le decisioni prese su Loomio durante le riunioni periodiche in presenza o trasferiscono le conclusioni nel proprio sistema di gestione delle attività.
+      * Una decisione esplicita porta spesso a chiedersi: «Bene, come procediamo adesso?»
+      * Creare un gruppo su Loomio può far emergere domande importanti, come: «Chi deve partecipare perché queste decisioni diventino azioni?» Se mancano persone con un ruolo decisivo, responsabili o amministratori, il lavoro potrebbe fermarsi.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  60bb517775f11e5d:
+    english: "## It Ain’t Over Til It’s Over"
+    translation: "## Concludere davvero"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  '079da8800a401a45':
+    english: Ending well is important. There’s a ritual to closing a process, and if it’s missed people will feel unsettled. Sometimes the end is determined by running out of time, and sometimes it’s when certain goals are achieved. Recognize implicit and explicit cues indicating if the individuals, and the group as a whole, can feel completion of a process or phase.
+    translation: È importante concludere bene. Chiudere un processo richiede un momento riconoscibile; se manca, le persone possono restare incerte. A volte si conclude perché il tempo è finito, altre perché sono stati raggiunti determinati obiettivi. Presta attenzione ai segnali, espliciti e impliciti, che indicano se le singole persone e il gruppo sentono concluso il processo o una sua fase.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  280969e6212842cc:
+    english: Participants often look to the leader or facilitator for confirmation of when it’s actually over, and it usually pays to be explicit. Sometimes the signal is a clear statement that the session is wrapping up, a recap of decisions or next steps, and bidding everyone goodbye. Other times groups have established practices like a check-out. Letting a session vaguely trail off will leave a bad taste.
+    translation: Le persone partecipanti spesso aspettano che chi guida o facilita confermi che il lavoro è finito. Di solito è utile dirlo chiaramente. Puoi annunciare la fine dell’incontro, riepilogare le decisioni o i prossimi passi e salutare tutti. Alcuni gruppi hanno invece una pratica di chiusura condivisa. Lasciare che l’incontro si spenga senza una conclusione chiara può creare insoddisfazione.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  e15896aadc163225:
+    english: |-
+      * The clearest indication of conclusion on Loomio is publishing a decision outcome.
+      * Some groups use the [lock thread](/en/user_manual/discussions/using_discussions/#lock-or-unlock-a-thread) feature to prevent further changes and reduce clutter.
+      * Deactivating a group is the strongest possible “closure” move. No one can say anything else after that.
+      * Since Loomio groups can remain while group activity goes up and down, it can be useful to recognize milestones like the conclusion of a particular phase, even if the group will reactivate in the future.
+    translation: |-
+      * Su Loomio, il segnale più chiaro che una decisione è conclusa è pubblicarne la conclusione.
+      * Alcuni gruppi usano la funzione [blocca la discussione](/en/user_manual/discussions/using_discussions/#lock-or-unlock-a-thread) per impedire ulteriori modifiche e ridurre i contenuti superflui.
+      * Disattivare un gruppo è la forma di chiusura più netta. Dopo la disattivazione, nessuno può aggiungere altri contenuti.
+      * Un gruppo Loomio può restare attivo anche quando la frequenza delle attività varia. Può quindi essere utile riconoscere traguardi come la conclusione di una fase, anche se il gruppo riprenderà le attività in futuro.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'

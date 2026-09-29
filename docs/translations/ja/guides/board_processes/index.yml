@@ -1,0 +1,139 @@
+---
+navigation_title: Loomioを活用した適切な組織運営ガイド
+blocks:
+  841dc37eec92eeec:
+    english: "# Good Governance Guide to Loomio"
+    translation: "# Loomioを活用した適切な組織運営ガイド"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  a29c1c76443ad97f:
+    english: Good governance is more than a board meeting, it requires good communication before and after meetings.
+    translation: 適切な組織運営には、理事会の会議だけでなく、会議の前後に十分なコミュニケーションを取ることが必要です。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  9f05171a74ac30d0:
+    english: |-
+      This guide is intended to help you use Loomio in your board or committee, so you can stay connected between meetings, deal with urgent matters and reduce board admin.
+      - Continue governance between meetings
+      - Keep track of communications
+      - Use board meetings for issues that matter
+      - Preserve institutional memory with a detailed record
+    translation: |-
+      このガイドでは、理事会や委員会でLoomioを活用する方法を紹介します。会議の合間も連絡を取り合い、緊急の案件に対応し、運営事務を減らすために役立ててください。
+      - 会議の合間も組織運営を進める
+      - やり取りを記録する
+      - 重要な議題に会議の時間を使う
+      - 詳細な記録を残し、組織の知識を引き継ぐ
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  bce24543243c913b:
+    english: 'Loomio is a versatile discussion and decision-making tool for collaborative boards and committees. '
+    translation: Loomioは、理事会や委員会が協力してディスカッションや意思決定を行うための、多用途なツールです。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  ba71351afdaed693:
+    english: Following are some examples of common practices of boards and committees, and how to apply these in Loomio.
+    translation: 以下では、理事会や委員会でよく行われる活動と、Loomioでの進め方を紹介します。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  98ee80d2ddf674c8:
+    english: "##  Demo of Loomio for boards "
+    translation: "##  理事会向けLoomioのデモ"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  37cecad32c3d7142:
+    english: Rahul walks through a demo of Loomio for a board.
+    translation: Rahulが、理事会でのLoomioの使い方を実演します。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  81cd49ded62d5229:
+    english: |-
+      <div class="iframe-container">
+      <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/VSuFvlbAEVA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+    translation: |-
+      <div class="iframe-container">
+      <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/VSuFvlbAEVA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  53aa88a8c223c1e1:
+    english: Originally recorded as part of the online Governance forum hosted by the Office of the Registrar of Indigenous Corporations (ORIC), Australia. 30 November 2021.
+    translation: この動画は、オーストラリアの先住民法人登録官事務所（ORIC）が主催したオンラインの組織運営フォーラムで、2021年11月30日に収録されました。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  ed64c7ea83ddd1bc:
+    english: 'In this guide:'
+    translation: このガイドの内容：
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  b6153b03c2cbfb0a:
+    english: |-
+      - [Prepare for a meeting](meeting.md)
+      - [Facilitating discussions](facilitating_discussions.md)
+      - [Making resolutions and online decisions](decisions.md)
+      - [Governance practices and approaches](practices.md)
+      - [Administration and record keeping](admin.md)
+      - [Introducing Loomio to your board](introduce.md)
+    translation: |-
+      - [会議の準備](meeting.md)
+      - [ディスカッションの進行](facilitating_discussions.md)
+      - [決議とオンラインでの意思決定](decisions.md)
+      - [組織運営の実践と進め方](practices.md)
+      - [管理と記録の保存](admin.md)
+      - [理事会にLoomioを導入する](introduce.md)
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  209937bbfe59c88b:
+    english: "## Why does your board need an online place for discussion and decisions?"
+    translation: "## 理事会にオンラインでのディスカッションと意思決定の場が必要な理由"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  eecfb12ed1d28d50:
+    english: Good governance exists where an organization has systems and processes in place that are appropriate to its circumstances, and which enable the organization to pursue its purpose effectively and meet its obligations under the law.
+    translation: 適切な組織運営には、組織の状況に合った仕組みと手続きが必要です。それによって、組織は目的に向けて効果的に活動し、法律上の義務を果たせます。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  e54f67d22cf67a93:
+    english: "*“It is participatory, consensus-oriented, accountable, transparent, responsive, effective and efficient, equitable and inclusive and follows the rule of law.”* [United Nations Economic and Social Commission for Asia and the Pacific](https://www.unescap.org/sites/default/d8files/knowledge-products/good-governance.pdf)."
+    translation: "*「参加型で、合意形成を重視し、説明責任と透明性があり、状況に対応でき、効果的かつ効率的で、公平かつ包摂的であり、法の支配に従うものです。」* [国連アジア太平洋経済社会委員会](https://www.unescap.org/sites/default/d8files/knowledge-products/good-governance.pdf)。"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  1661a79cfda1a9df:
+    english: Underpinning all of these principles is the need for good communication.
+    translation: こうした原則はすべて、十分なコミュニケーションに支えられています。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  2819f114c9d74160:
+    english: 'Here are some or the challenges directors and boards experience:'
+    translation: 理事や理事会が直面する課題には、次のようなものがあります。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  ed750814c61b85fb:
+    english: "* Getting directors together in person\n* Time available to consider important issues \n* Tracking communication\n* Urgency of critical issues\n* Online video meeting fatigue\n* Directors in multiple, remote locations, sometimes with poor internet connectivity\n* Mixed governance practice and experience\n* Dealing with high volumes of transactional business \n* Maintaining institutional memory"
+    translation: "* 理事が対面で集まるのが難しい\n* 重要な問題を検討する時間が限られている \n* やり取りを追跡しにくい\n* 重要な問題に急いで対応する必要がある\n* オンラインのビデオ会議で疲れやすい\n* 理事が離れた複数の場所にいて、インターネット接続が不安定な場合もある\n* 組織運営の方法や経験がさまざまである\n* 多くの日常的な業務に対応する必要がある \n* 組織の知識を引き継ぐ必要がある"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  b910c5253cf77950:
+    english: Loomio offers an opportunity to strengthen governance, to extend collaboration beyond board meetings, to include everyone in open, honest and respectful discussion while documenting everything.
+    translation: Loomioを使うと、理事会の会議以外でも協力を続けられます。全員が率直に、互いを尊重して話し合い、その内容を記録することで、組織運営を強化できます。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'

@@ -1,0 +1,153 @@
+---
+navigation_title: Vereisten voor het stemmenaandeel
+blocks:
+  54368e42ed93ae0c:
+    english: "# Vote share requirements"
+    translation: "# Vereisten voor het stemmenaandeel"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  2051086558658db2:
+    english: Set a vote share requirement on an option when a proposal must receive a particular percentage of support, or remain below a particular percentage of opposition, to pass.
+    translation: Stel voor een optie een vereiste voor het stemmenaandeel in als een voorstel alleen mag worden aangenomen bij een bepaald percentage steun, of als het percentage tegenstemmen onder een bepaalde grens moet blijven.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  f00d3806d6b890ae:
+    english: Vote share requirements can be combined with a [quorum](/en/user_manual/polls/quorum/) to require both sufficient participation and a particular distribution of votes.
+    translation: Je kunt vereisten voor het stemmenaandeel combineren met een [quorum](/en/user_manual/polls/quorum/). Zo vereis je zowel voldoende deelname als een bepaalde verdeling van de stemmen.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  0fc0acd12134f67e:
+    english: When creating a proposal, select the edit icon beside an option.
+    translation: Selecteer bij het maken van een voorstel het bewerkingspictogram naast een optie.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  27979c31066e397f:
+    english: "![The edit icon beside the Consent option](edit-highlight-on-option.png)"
+    translation: "![Het bewerkingspictogram naast de optie Toestemming](edit-highlight-on-option.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  b3a4dee73762bea4:
+    english: "## Eligible voters and votes cast"
+    translation: "## Kiesgerechtigde kiezers en uitgebrachte stemmen"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  1d04d75fa16a2a18:
+    english: The percentage can be based on either **Votes cast** or **Eligible voters**.
+    translation: Je kunt het percentage baseren op **Uitgebrachte stemmen** of **Kiesgerechtigde kiezers**.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  590e1a316f9ad174:
+    english: "![Choosing whether a vote share requirement uses votes cast or eligible voters](./eligible-vs-cast.png)"
+    translation: "![Kiezen of een vereiste voor het stemmenaandeel wordt gebaseerd op uitgebrachte stemmen of kiesgerechtigde kiezers](./eligible-vs-cast.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  d4c72d50982e071d:
+    english: "**Eligible voters** means everyone who is able to vote in the proposal. **Votes cast** means only the votes that have been submitted."
+    translation: "**Kiesgerechtigde kiezers** zijn alle mensen die over het voorstel mogen stemmen. **Uitgebrachte stemmen** zijn alleen de stemmen die zijn ingediend."
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  24945a1a4f0d08e3:
+    english: A requirement of 75 percent agreement from eligible voters can pass only when at least 75 percent of all eligible voters vote for that option.
+    translation: Bij een vereiste van 75 procent instemming van kiesgerechtigde kiezers wordt de optie alleen aangenomen als minstens 75 procent van alle kiesgerechtigde kiezers ervoor stemt.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  14e4ff7cd000c7af:
+    english: A requirement of 60 percent agreement from votes cast can pass when 60 percent of submitted votes support the option, regardless of overall turnout. Add a quorum when your process also requires a minimum level of participation.
+    translation: Bij een vereiste van 60 procent instemming van de uitgebrachte stemmen kan de optie worden aangenomen als 60 procent van de ingediende stemmen ervoor is, ongeacht de opkomst. Voeg een quorum toe als jouw proces ook een minimumdeelname vereist.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  a8f235434b40ecd9:
+    english: "## Different vote share requirements"
+    translation: "## Verschillende vereisten voor het stemmenaandeel"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  6682c9656815bdbc:
+    english: 'A proposal can have requirements on more than one option. For example:'
+    translation: 'Een voorstel kan voor meerdere opties een vereiste hebben. Bijvoorbeeld:'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  dac1980305bef52d:
+    english: |-
+      - Agreement must be at least 75 percent of eligible voters
+      - Abstention must be no more than 30 percent of votes cast
+      - Block must be no more than 0 percent of votes cast
+    translation: |-
+      - Eens moet minstens 75 procent van de kiesgerechtigde kiezers krijgen
+      - Onthouden mag niet meer dan 30 procent van de uitgebrachte stemmen krijgen
+      - Blokkeer mag niet meer dan 0 procent van de uitgebrachte stemmen krijgen
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  11325e607f603eb7:
+    english: You can also add requirements to a [poll template](/en/user_manual/polls/poll_templates/) so that new proposals created from the template use them by default.
+    translation: Je kunt ook vereisten toevoegen aan een [peilingssjabloon](/en/user_manual/polls/poll_templates/). Nieuwe voorstellen die je met het sjabloon maakt, gebruiken die vereisten dan standaard.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  d6bffbdadc45e7f5:
+    english: "## Detailed example"
+    translation: "## Uitgebreid voorbeeld"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  4318dab03fe217ad:
+    english: Oatmilk Cooperative is deciding whether to approve the budget for its six-week returnable bottle trial. Five people are eligible to vote.
+    translation: Oatmilk Cooperative beslist of het budget voor een proef van zes weken met herbruikbare flessen wordt goedgekeurd. Vijf mensen zijn kiesgerechtigd.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  8f5779f2f1bb9ec3:
+    english: Jamie uses the **Consent** proposal template, edits the Consent option, and enables its vote share requirement.
+    translation: Jamie gebruikt het voorstelsjabloon **Toestemming**, bewerkt de optie Toestemming en schakelt de vereiste voor het stemmenaandeel in.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  842038ffbd273e57:
+    english: The cooperative's process requires at least 75 percent of eligible voters to support the proposal. Jamie sets the requirement to **At least 75% of Eligible voters**.
+    translation: Het proces van de coöperatie vereist steun van minstens 75 procent van de kiesgerechtigde kiezers. Jamie stelt de vereiste in op **Ten minste 75% van Kiesgerechtigde kiezers**.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  5b852b2e7a9b3034:
+    english: "![The Consent option requiring at least 75 percent of eligible voters](./consent-vote-option.png)"
+    translation: "![De optie Toestemming vereist steun van minstens 75 procent van de kiesgerechtigde kiezers](./consent-vote-option.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  8a42a135c0c11c98:
+    english: Jamie also sets a 60 percent quorum. Jamie and Samira vote in agreement. All submitted votes support the proposal, but they represent only 40 percent of eligible voters, so neither requirement has been reached.
+    translation: Jamie stelt ook een quorum van 60 procent in. Jamie en Samira stemmen voor. Alle uitgebrachte stemmen steunen het voorstel, maar ze vertegenwoordigen slechts 40 procent van de kiesgerechtigde kiezers. Geen van beide vereisten is dus bereikt.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  2284440b974635e3:
+    english: "![Two of five people have voted in agreement and neither requirement is reached](./first-vote-breakdown.png)"
+    translation: "![Twee van de vijf mensen hebben voor gestemd en geen van beide vereisten is bereikt](./first-vote-breakdown.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  2cb3890f4ef20320:
+    english: Alex and Morgan then agree, while Taylor disagrees. All five people have voted, reaching the quorum, and four of five eligible voters agree. The 80 percent agreement exceeds the 75 percent vote share requirement, so both requirements show green check marks.
+    translation: Daarna stemmen Alex en Morgan voor, terwijl Taylor tegenstemt. Alle vijf mensen hebben gestemd, dus het quorum is bereikt. Vier van de vijf kiesgerechtigde kiezers stemmen voor. Die 80 procent is meer dan de vereiste 75 procent. Bij beide vereisten staat daarom een groen vinkje.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  6b09cbe2063c0a6a:
+    english: "![All five people have voted and both requirements are reached](./final-vote-breakdown.png)"
+    translation: "![Alle vijf mensen hebben gestemd en beide vereisten zijn bereikt](./final-vote-breakdown.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'

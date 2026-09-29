@@ -1,0 +1,57 @@
+---
+navigation_title: Afgevaardigden met stemrecht
+blocks:
+  cde9fe3639ac5e9e:
+    english: "# Delegated voters"
+    translation: "# Afgevaardigden met stemrecht"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  9cfb3b7835dc5cb0:
+    english: If some members of your group should have voting rights while others should not, you can use the "Make delegate" feature to identify those people with voting rights. There is a corresponding "Revoke delegate" action too.
+    translation: Als sommige leden van je groep stemrecht moeten hebben en andere niet, gebruik je "Maak gedelegeerde" om aan te geven wie mag stemmen. Met "Afgevaardigde intrekken" kun je dat stemrecht weer intrekken.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  e017eafb51368777:
+    english: Use delegates when people should share the same discussion space but only a defined set, such as directors or elected representatives, may vote. This is usually simpler than maintaining a second subgroup whose only purpose is to separate voters from non-voters.
+    translation: Gebruik afgevaardigden als iedereen dezelfde ruimte voor discussies deelt, maar alleen een bepaalde groep mag stemmen, zoals bestuurders of gekozen vertegenwoordigers. Dat is meestal eenvoudiger dan een tweede subgroep bijhouden om stemmers van andere leden te scheiden.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  1942a47ae47ca813:
+    english: Use a private subgroup instead when its members also need discussions, files, or membership information that other members must not see.
+    translation: Gebruik een besloten subgroep als de leden daarvan ook toegang nodig hebben tot discussies, bestanden of ledengegevens die andere leden niet mogen zien.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  3346f757dc7bcd14:
+    english: "![Make delegate action in a member's menu](member_make_delegate.png)"
+    translation: "![De optie Maak gedelegeerde in het menu van een lid](member_make_delegate.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  0b8bb762e37fb8c3:
+    english: |-
+      To create a poll or proposal and only invite the delegates, use the "Selected people only" poll setting.
+      ![Selected people only setting when starting a proposal](poll_invited_people_only.png)
+      Then when inviting people to vote you will see the "Delegates of group-name" option.
+      ![Delegates of Oatmilk Cooperative option in the invite-to-vote form](poll_invite_delegates_group.png)
+    translation: |-
+      Gebruik de peilinginstelling "Alleen voor geselecteerde personen." om een peiling of voorstel te starten waarvoor je alleen afgevaardigden uitnodigt.
+      ![De instelling Alleen voor geselecteerde personen bij het starten van een voorstel](poll_invited_people_only.png)
+      Wanneer je mensen uitnodigt om te stemmen, zie je de optie "Afgevaardigden van groepsnaam".
+      ![De optie Afgevaardigden van Oatmilk Cooperative in het uitnodigingsformulier](poll_invite_delegates_group.png)
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  e895a07efeaf4dcf:
+    english: |-
+      You can see a list of who the delegates are from the members tab of your group page. Use the filter menu and select "Delegates".
+      ![Delegates option in the members filter](members_list_delegates.png)
+    translation: |-
+      Op het tabblad met leden van je groepspagina zie je wie de afgevaardigden zijn. Open het filtermenu en selecteer "Afgevaardigden".
+      ![De optie Afgevaardigden in het ledenfilter](members_list_delegates.png)
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'

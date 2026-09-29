@@ -1,0 +1,79 @@
+---
+navigation_title: Eliminare il tuo account
+blocks:
+  b69fb514fd196dd7:
+    english: "# Deleting your Loomio account"
+    translation: "# Eliminare il tuo account Loomio"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  941f0addde6f7326:
+    english: "## What does delete account mean?"
+    translation: "## Cosa succede quando elimini il tuo account?"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  dab05d98ad64604f:
+    english: |-
+      When you delete your account:
+      - Your user account including your name, email address and other personally identifying data will be deleted from our systems. You will not be able to sign in to Loomio with this account.
+      - Comments, proposal and discussions you have made will remain but your name will be removed from them. We do this because we have an obligation to groups to keep threads and proposals coherent.
+      - You will no longer be listed as a member of any groups.
+      - You will no longer receive notification emails.
+    translation: |-
+      Quando elimini il tuo account:
+      - Il tuo account, compresi il nome, l'indirizzo email e gli altri dati che ti identificano, sarà eliminato dai nostri sistemi. Non potrai più accedere a Loomio con questo account.
+      - I commenti, le proposte e le discussioni che hai creato rimarranno, ma il tuo nome sarà rimosso. Questo permette ai gruppi di conservare discussioni e proposte comprensibili.
+      - Non comparirai più tra i membri di alcun gruppo.
+      - Non riceverai più email di notifica.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  dbeaf194bb8bd9e8:
+    english: It is important to understand that copies of the data you have generated on Loomio have likely been emailed to everyone in the group - Loomio has no ability to delete those.
+    translation: È probabile che copie dei contenuti che hai creato su Loomio siano state inviate via email ai membri del gruppo. Loomio non può eliminare queste copie.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  fa98dfeef486cf05:
+    english: Deleting your account will _not_ cancel your subscription; to stop your payments see [Subscriptions](/en/policy/subscriptions/management#cancel-your-plan).
+    translation: Eliminare il tuo account _non_ annulla l'abbonamento. Per interrompere i pagamenti, consulta [Abbonamenti](/en/policy/subscriptions/management#cancel-your-plan).
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  c1ceda8f829133c7:
+    english: Loomio has made fundamental decisions about its ownership, business model and software to protect users' rights. Loomio is an independent, worker-owned cooperative, the software is open source, you can [export your data](/en/user_manual/groups/data_export), and Loomio never sells your data or uses it for advertising. These commitments are set out in our [privacy policy](/en/policy/privacy) and grounded in the purpose and values in our [constitution](https://www.loomio.coop/constitution.html) and [cooperative handbook](https://www.loomio.coop/purpose_and_vision.html). If you have any questions, [contact us](/contact).
+    translation: Loomio ha fatto scelte fondamentali sulla proprietà, sul modello di attività e sul software per tutelare i diritti degli utenti. Loomio è una cooperativa indipendente di proprietà dei lavoratori. Il software è open source, puoi [esportare i tuoi dati](/en/user_manual/groups/data_export) e Loomio non vende mai i tuoi dati né li usa per la pubblicità. Questi impegni sono descritti nella nostra [informativa sulla privacy](/en/policy/privacy) e si fondano sugli scopi e sui valori espressi nel nostro [statuto](https://www.loomio.coop/constitution.html) e nel [manuale della cooperativa](https://www.loomio.coop/purpose_and_vision.html). Se hai domande, [contattaci](/contact).
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  d8cc22d615b8f5d9:
+    english: "## To delete your account entirely"
+    translation: "## Come eliminare definitivamente il tuo account"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  77235d504409d763:
+    english: Sign in to Loomio.  Go to the sidebar from the (☰) menu icon at screen top left Click on your account avatar or initials, at the top right of your screen.
+    translation: Accedi a Loomio. Apri la barra laterale con l'icona del menu (☰) in alto a sinistra. Seleziona il tuo avatar o le tue iniziali in alto a destra.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  04127f38282f6bd2:
+    english: Click the down arrow ( ∨ ) alongside your name to open user settings. Select **Edit profile**.
+    translation: Seleziona la freccia verso il basso ( ∨ ) accanto al tuo nome per aprire le impostazioni utente. Seleziona **Modifica profilo**.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  28b9f49f98d62fae:
+    english: Scroll to the bottom, and click on **Delete account**.
+    translation: Scorri fino in fondo e seleziona **Rimuovi account**.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  7151ebb20cf3efbb:
+    english: A pop up will appear requesting confirmation that you wish to delete your account.
+    translation: Si aprirà una finestra che ti chiederà di confermare l'eliminazione del tuo account.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'

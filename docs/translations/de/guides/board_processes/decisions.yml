@@ -1,0 +1,173 @@
+---
+navigation_title: Beschlüsse fassen
+blocks:
+  0a72d2c89c87c2a7:
+    english: "# Making resolutions and online decisions"
+    translation: "# Beschlüsse fassen und online entscheiden"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  50902da4933b32b7:
+    english: Board and committee members frequently need to make 'out-of-session' decisions. These are governance decisions and discussion where either;
+    translation: 'Vorstands- und Ausschussmitglieder müssen häufig Entscheidungen zwischen Sitzungen treffen. Das betrifft Entscheidungen und Beratungen zur Leitung der Organisation, wenn:'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  4355b569fb0f9ee4:
+    english: |-
+      - There was insufficient time to make a decision in the board meeting,
+      - the decision does not require a lot of discussion (including administrative decisions),
+      - something has happened (internally or externally) that requires the board to act before the next meeting,
+      - a director has a particular interest to explore with the board.
+    translation: |-
+      - in der Vorstandssitzung nicht genug Zeit für eine Entscheidung war,
+      - die Entscheidung wenig Diskussion erfordert, etwa bei Verwaltungsfragen,
+      - ein internes oder externes Ereignis erfordert, dass der Vorstand vor der nächsten Sitzung handelt,
+      - ein Vorstandsmitglied ein bestimmtes Thema mit dem Vorstand besprechen möchte.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  c46be74fd433f516:
+    english: |-
+      ## On Loomio
+      Start a **thread** and open a discussion:
+      - Introduce the topic or decision that you would like to make,
+      - invite directors to comment with their thoughts, opinions and any information they have to help everyone understand their perspective about the 'out-of-session' topic or decision,
+      - encourage members to participate by posting or reply to comments.
+    translation: |-
+      ## Auf Loomio
+      Starte eine **Diskussion**:
+      - Stelle das Thema oder die anstehende Entscheidung vor,
+      - lade die Vorstandsmitglieder ein, ihre Gedanken, Meinungen und Informationen zu teilen, damit alle ihre Sicht auf das Thema oder die Entscheidung zwischen den Sitzungen verstehen können,
+      - ermutige die Mitglieder, sich mit Beiträgen und Antworten auf Kommentare zu beteiligen.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  337cfc1a7b434acd:
+    english: "When ready, raise a **poll** and invite members to vote. \nIf the issue is straightforward use a **Proposal** or if the issue is more complex use a **Sense check** poll to clearly ask fellow members how they feel about the proposal.\n- State the decision and invite people to vote,\n- ask people to leave a reason for their vote, particularly if they want to qualify any points,\n- choose the decision options that work for your board's decision-making processes.\n- You can ratify and minute the 'out-of-session' decision at your next board meeting."
+    translation: "Wenn ihr bereit seid, starte eine **Abstimmung** und lade die Mitglieder zur Stimmabgabe ein. \nBei einer einfachen Frage nutze einen **Vorschlag**. Bei einer komplexeren Frage kannst du mit einer **Sinnesprüfung** erfragen, wie die anderen Mitglieder zum Vorschlag stehen.\n- Formuliere die Entscheidung und lade zur Abstimmung ein,\n- bitte die Mitglieder, ihre Stimme zu begründen, besonders wenn sie einzelne Punkte erläutern möchten,\n- wähle Abstimmungsoptionen, die zum Entscheidungsverfahren deines Vorstands passen.\n- Ihr könnt die Entscheidung zwischen den Sitzungen bei der nächsten Vorstandssitzung bestätigen und protokollieren."
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  19a80c3ce7d106e0:
+    english: It's not a failure if a decision does not get agreement. You can ask members what changes they would make to enable them to agree to a decision. This helps you build to a better decision. A new Proposal with amendments is then more likely to achieve agreement.
+    translation: Wenn keine Einigung zustande kommt, ist das kein Scheitern. Frage die Mitglieder, welche Änderungen ihnen eine Zustimmung ermöglichen würden. So könnt ihr den Vorschlag verbessern. Ein neuer Vorschlag mit diesen Änderungen hat bessere Chancen auf Zustimmung.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  b06f2d2a0e68f99d:
+    english: State an **outcome** when the proposal closes. Let everyone know the result of the decision and what will happen next.
+    translation: Teile ein **Fazit**, wenn der Vorschlag geschlossen wird. Informiere alle über die Entscheidung und die nächsten Schritte.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  6a4d6a8c978bcb11:
+    english: "## Examples of out-of-session decisions"
+    translation: "## Beispiele für Entscheidungen zwischen Sitzungen"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  fff64b1ac620cc4a:
+    english: |-
+      ### Decision about property purchase
+      At the last board meeting, a property purchase was discussed. A director required an independent engineering report before making the decision. At the board meeting, the board agreed to purchase the property subject to a satisfactory engineering report. However as the purchase must be made before the next board meeting, the board agreed to upload the engineering report to Loomio when ready, for discussion and to make the final decision for the property purchase on Loomio.
+    translation: |-
+      ### Entscheidung über einen Immobilienkauf
+      In der letzten Vorstandssitzung wurde ein Immobilienkauf besprochen. Ein Vorstandsmitglied verlangte vor der Entscheidung ein unabhängiges technisches Gutachten. Der Vorstand stimmte dem Kauf unter der Voraussetzung zu, dass das Gutachten zufriedenstellend ausfällt. Da der Kauf vor der nächsten Sitzung erfolgen muss, vereinbarte der Vorstand, das Gutachten nach Fertigstellung auf Loomio hochzuladen, dort zu besprechen und die endgültige Entscheidung über den Kauf auf Loomio zu treffen.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  b279ed6b1c5aadfa:
+    english: |-
+      ### Decision to accept Directors and Officers Liability insurance
+      During the board meeting it was noted that the annual insurance renewal was coming up. As this was considered to be an administrative matter, the board agreed to use Loomio to discuss the renewal application, seek the required information from each director, submit the application and to accept the insurance renewal quote.
+    translation: |-
+      ### Entscheidung über den Abschluss einer Organhaftpflichtversicherung
+      In der Vorstandssitzung wurde darauf hingewiesen, dass die jährliche Verlängerung der Versicherung ansteht. Da dies als Verwaltungsangelegenheit galt, beschloss der Vorstand, den Verlängerungsantrag auf Loomio zu besprechen, die erforderlichen Angaben von allen Vorstandsmitgliedern einzuholen, den Antrag einzureichen und das Angebot zur Verlängerung anzunehmen.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  ca3a40286ca25a9a:
+    english: |-
+      ### A security breach has occurred at one of our facilities
+      A break-in and theft of property has occurred that has put the corporation and staff at risk. Directors must be made aware of the event and risks, and evaluate an appropriate response.
+    translation: |-
+      ### Sicherheitsvorfall an einem unserer Standorte
+      Bei einem Einbruch wurden Gegenstände gestohlen. Dadurch sind die Organisation und ihre Mitarbeitenden gefährdet. Die Vorstandsmitglieder müssen über den Vorfall und die Risiken informiert werden und eine angemessene Reaktion prüfen.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  c406842807e1091b:
+    english: |-
+      ### A director has challenged the board about gender and diversity of board membership
+      The director has provided good reasons and evidence that the board should diversify membership to be more representative of the corporation. Directors need to digest the information, ask questions, discuss the issue and decide a response.
+    translation: |-
+      ### Ein Vorstandsmitglied spricht die Geschlechterverteilung und Vielfalt im Vorstand an
+      Das Vorstandsmitglied hat gute Gründe und Belege dafür vorgebracht, dass der Vorstand vielfältiger besetzt sein sollte, um die Organisation besser zu repräsentieren. Die Vorstandsmitglieder müssen die Informationen prüfen, Fragen stellen, das Thema besprechen und über eine Antwort entscheiden.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  bf35cdb4a62a85f4:
+    english: "## Keeping a record of decisions made and supporting discussion"
+    translation: "## Entscheidungen und zugehörige Diskussionen dokumentieren"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  6231d476f6bddb27:
+    english: Record keeping is a legal requirement for governance boards and good practice for committees.
+    translation: Für Vorstände ist die Dokumentation gesetzlich vorgeschrieben. Auch für Ausschüsse ist sie eine bewährte Praxis.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  511470c795509c7e:
+    english: Today, many organizations record and store formal minutes, resolutions, policies and key decisions electronically. Document records are created and approved, distributed and used, retained and stored, and ultimately disposed of.
+    translation: Viele Organisationen erfassen und speichern heute Protokolle, Beschlüsse, Richtlinien und wichtige Entscheidungen elektronisch. Dokumente werden erstellt und genehmigt, verteilt und genutzt, aufbewahrt und schließlich gelöscht.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  324fc531e7a78088:
+    english: |-
+      ### On Loomio
+      Minutes, reports, resolutions and other documents can be attached to a meeting **thread**, in the thread context, within a poll or any to thread comment.  This means the documents are always associated with the relevant discussion.
+    translation: |-
+      ### Auf Loomio
+      Protokolle, Berichte, Beschlüsse und andere Dokumente kannst du an eine **Diskussion** zu einer Sitzung anhängen: im Diskussionskontext, innerhalb einer Abstimmung oder an einen Kommentar. So bleiben die Dokumente mit der jeweiligen Diskussion verbunden.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  9be58ccab5189118:
+    english: A list of files can also be found under the **Files** tab.
+    translation: Eine Liste der Dateien findest du auch unter **Dokumente**.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  24bc6a0bf5139b23:
+    english: You can also add a link within any thread or poll to a document stored in your preferred document management system.  Find the online shareable link to the document, copy and paste into your thread, poll or comment.
+    translation: Du kannst in jeder Diskussion oder Abstimmung auch einen Link zu einem Dokument in deinem bevorzugten Dokumentenverwaltungssystem einfügen. Suche den teilbaren Link zum Dokument, kopiere ihn und füge ihn in die Diskussion, Abstimmung oder einen Kommentar ein.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  4fee216f27a3fdff:
+    english: Anyone with permission can then click the link to open and read the document.
+    translation: Alle Personen mit entsprechender Berechtigung können das Dokument dann über den Link öffnen und lesen.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  9f0e1cd18ae1a402:
+    english: Because Loomio discussions and decisions are always already documented, it provides a robust way to verify all your board's decision-making. You can easily demonstrate what was decided, and when. If directors have discussed and commented, as well as voted on a resolution—you will also know how and why each decision was reached.
+    translation: Diskussionen und Entscheidungen sind auf Loomio bereits dokumentiert. So kannst du die Entscheidungen deines Vorstands nachvollziehen und leicht zeigen, was wann beschlossen wurde. Wenn die Vorstandsmitglieder einen Beschluss besprochen, kommentiert und darüber abgestimmt haben, kannst du auch nachvollziehen, wie und warum die Entscheidung zustande kam.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  71071cda2f1c034e:
+    english: Over time, you are creating a history for your organization where you can easily search and find past decisions and related discussion.
+    translation: Mit der Zeit entsteht eine Chronik deiner Organisation, in der du frühere Entscheidungen und zugehörige Diskussionen leicht suchen und finden kannst.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  629c2034788a9fd5:
+    english: In Loomio all data is written and stored on multiple disks and multiple locations, *in the cloud*, backed up daily.  Files uploaded are stored on servers that use modern techniques to remove bottlenecks and points of failure.
+    translation: Auf Loomio werden alle Daten auf mehreren Datenträgern und an mehreren Standorten *in der Cloud* gespeichert und täglich gesichert. Hochgeladene Dateien liegen auf Servern, die mit modernen Verfahren Engpässe und einzelne Ausfallpunkte vermeiden.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'

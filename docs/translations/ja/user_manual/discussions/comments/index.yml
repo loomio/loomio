@@ -1,0 +1,335 @@
+---
+navigation_title: コメント
+blocks:
+  e6981c530fad6f45:
+    english: "# Comments"
+    translation: "# コメント"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  cb82daa3594be60c:
+    english: Comments are the main way people participate in a discussion. They are visible to anyone who has permission to see the thread.
+    translation: コメントは、ディスカッションに参加するための主な方法です。スレッドを見る権限がある人は誰でもコメントを見ることができます。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  96ffa85117001d18:
+    english: "## Reading comments"
+    translation: "## コメントを読む"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  2d82b2da2ee96a1f:
+    english: When you open a discussion, Loomio takes you to activity that is new to you.
+    translation: ディスカッションを開くと、Loomioはまだ見ていない新しい活動を表示します。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  c4a1b0be655249a9:
+    english: Unread comments have a blue **new** label beside their posting time.
+    translation: 未読のコメントには、投稿時刻の横に青い**新しい**ラベルが表示されます。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  82bce54322fa6023:
+    english: "## Writing a comment"
+    translation: "## コメントを書く"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  7b14a17025b52e3d:
+    english: Write a comment to contribute to the discussion. Other people can reply, react, or post their own comments.
+    translation: コメントを書いてディスカッションに参加できます。他の人は返信やリアクションをしたり、自分のコメントを投稿したりできます。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  6e0c07cfcb8f1166:
+    english: Select **Post Comment** to publish it. Your comment will be visible to anyone who has permission to see the discussion.
+    translation: "**コメントを投稿します**を選択すると、コメントが公開されます。ディスカッションを見る権限がある人は誰でも、そのコメントを見ることができます。"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  edfadd8f1dcac9c4:
+    english: The tools described in [Formatting](/en/user_manual/discussions/formatting/) are available when writing comments.
+    translation: コメントを書くときは、[書式設定](/en/user_manual/discussions/formatting/)で説明しているツールを使えます。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  b4dce878f57863ff:
+    english: "## Mentioning people"
+    translation: "## 人にメンションする"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  70543178fe9e7b4b:
+    english: Type **@**, start typing a person's name, then select them from the list. A mention notifies that person immediately and is a useful way to ask for their attention or response.
+    translation: "**@**を入力してから相手の名前を入力し始め、一覧から選択します。メンションすると相手にすぐ通知が届くため、注意を向けてほしいときや返答を求めたいときに使えます。"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  b1d5a5e3d5bb86e3:
+    english: "![Mentioning Samira Patel in a comment](../notifying_people/comment_mention.png)"
+    translation: "![コメントでSamira Patelにメンションする](../notifying_people/comment_mention.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  07aa88bffb5b1700:
+    english: To notify everyone in the group, type **@**, start typing the group name, then select it from the list.
+    translation: グループの全員に通知するには、**@**を入力してからグループ名を入力し始め、一覧から選択します。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  794c26be4050ac1b:
+    english: "![Searching for Oatmilk Cooperative while writing a group mention](../notifying_people/mentioning_group_1.png)"
+    translation: "![グループへのメンションを入力しながらOatmilk Cooperativeを検索する](../notifying_people/mentioning_group_1.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  111625a57c02bc5c:
+    english: "![Oatmilk Cooperative selected as a group mention](../notifying_people/mentioning_group_2.png)"
+    translation: "![グループへのメンションとしてOatmilk Cooperativeを選択した状態](../notifying_people/mentioning_group_2.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  b4fb3c8390c32e31:
+    english: Mentioning someone does not give them access to the thread. Use **Invite people** in the thread sidebar if they are not already a thread member.
+    translation: メンションしても、その人にスレッドへのアクセス権は付与されません。まだスレッドのメンバーでない場合は、スレッドのサイドバーにある**メンバーを招待する**を使います。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  6bba3d93a1845f91:
+    english: "## Replying to a comment"
+    translation: "## コメントに返信する"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  e7776c198f2f2f48:
+    english: Select **Reply** below a comment to respond to it. The reply is prefilled with an @mention of the comment author, which notifies them when you post it. Remove the mention if you do not want to notify them.
+    translation: コメントの下にある**返信**を選択すると、そのコメントに返答できます。返信にはコメントの投稿者への@メンションがあらかじめ入力されており、投稿すると相手に通知が届きます。通知したくない場合は、メンションを削除します。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  eb45d23f7f968858:
+    english: You can also reply to your own comment to nest a response beneath it.
+    translation: 自分のコメントに返信して、その下に返答を表示することもできます。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  ab1caf06d54d3bcb:
+    english: If a Loomio email says you can reply by email, your emailed reply will appear in the thread.
+    translation: Loomioからのメールに返信できると書かれている場合は、メールで送った返信がスレッドに表示されます。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  72d9282ce2bc763a:
+    english: "## Reactions"
+    translation: "## リアクション"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  1875a303c30b5343:
+    english: Use the smiley button to respond with an emoji. Reactions notify the comment author within Loomio but do not send an email.
+    translation: スマイルマークのボタンを使うと、絵文字で反応できます。リアクションはLoomio内でコメントの投稿者に通知されますが、メールは送信されません。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  ce997bcd34b2eae0:
+    english: "## Translating comments"
+    translation: "## コメントを翻訳する"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  b50a435640652d31:
+    english: If the author uses a language other than yours, a **Translate** action appears below the comment.
+    translation: 投稿者が自分とは異なる言語を使っている場合、コメントの下に**翻訳する**が表示されます。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  9077e2c891750fe8:
+    english: Select **Translate comment** to see the comment in your language.
+    translation: "**コメントを翻訳**を選択すると、自分の言語でコメントを読めます。"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  60a885598057c1bf:
+    english: "## Comment actions"
+    translation: "## コメントの操作"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  9689ea71da9051d8:
+    english: Common actions appear directly below a comment. Additional actions are available from the three-dot menu (**⋯**).
+    translation: よく使う操作はコメントのすぐ下に表示されます。その他の操作は、三点メニュー（**⋯**）から選べます。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  88263de7d2158dae:
+    english: "### Add a comment to Jump to"
+    translation: "### コメントをジャンプに追加する"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  dd60de0295088aa5:
+    english: Use **Pin to timeline** to add a comment to the thread's **Jump to** list.
+    translation: "**タイムラインにピン留めする**を使うと、コメントをスレッドの**ジャンプ**一覧に追加できます。"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  90252c4d66b752d4:
+    english: You can edit the label shown in **Jump to**. Unpin and then pin the comment again to change the link text.
+    translation: "**ジャンプ**に表示されるラベルは変更できます。リンクの文言を変えるには、コメントのピン留めを解除してから、もう一度ピン留めします。"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  28c2ffaa171b6b1b:
+    english: |-
+      >[!Tip]
+      >Highlight the words you want to use as the link text before selecting **Pin to timeline**.
+    translation: |-
+      >[!Tip]
+      >**タイムラインにピン留めする**を選択する前に、リンクの文言にしたい語句を選択してください。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  7545e856758edb22:
+    english: Select **Unpin** to remove the item from **Jump to**.
+    translation: "**Unpin**を選択すると、項目を**ジャンプ**から削除できます。"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  c3b33d31cbce93c3:
+    english: "### Edit a comment and view changes"
+    translation: "### コメントを編集して変更内容を確認する"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  abaeaac4c1f2c966:
+    english: Select **Edit** below one of your comments to change it. Group admins can also edit member comments when the relevant group permission is enabled.
+    translation: 自分のコメントの下にある**編集**を選択すると、内容を変更できます。該当するグループの権限設定が有効な場合は、グループ管理者もメンバーのコメントを編集できます。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  69647eee1f3fcfb7:
+    english: An **Edited** action appears below an edited comment.
+    translation: 編集されたコメントの下には**編集済み**が表示されます。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  fcaa0d6329f5c5d4:
+    english: Select **Edited** to see what changed. Red highlighting shows removed text and green highlighting shows added text. Loomio records who made each edit and when it was made.
+    translation: "**編集済み**を選択すると、変更内容を確認できます。削除された文章は赤色、追加された文章は緑色で示されます。Loomioには、編集した人と日時が記録されます。"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  042b22530d14a486:
+    english: 'You can edit a comment when:'
+    translation: 次の場合にコメントを編集できます。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  afe0ed6535a96b15:
+    english: |-
+      - you wrote it and the group allows members to edit their comments
+      - you are a group admin and [Admins can edit members' comments](/en/user_manual/groups/settings/permissions) is enabled
+    translation: |-
+      - 自分が書いたコメントで、グループがメンバーによる自分のコメントの編集を許可している場合
+      - グループ管理者で、[管理者がメンバーのコメントを編集できる](/en/user_manual/groups/settings/permissions)が有効な場合
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  6962d0caeeea20e8:
+    english: "### Copy a comment link"
+    translation: "### コメントへのリンクをコピーする"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  0fb9e2ebde71573e:
+    english: Select **Copy link** to copy the comment's unique URL. You can paste the link elsewhere to refer directly to that comment.
+    translation: "**リンクをコピーする**を選択すると、そのコメント固有のURLをコピーできます。リンクを別の場所に貼り付けると、そのコメントを直接参照できます。"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  04e4537024da788c:
+    english: "### View notification history"
+    translation: "### 通知履歴を見る"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  957677befce0ab3f:
+    english: Open the three-dot menu (**⋯**) beside a comment and select **Notification history**.
+    translation: コメントの横にある三点メニュー（**⋯**）を開き、**通知履歴**を選択します。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  fa9d0f2448239944:
+    english: "![Notification history in a comment's actions menu](../notifying_people/comment_notification_history.png)"
+    translation: "![コメントの操作メニューにある通知履歴](../notifying_people/comment_notification_history.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  30a58d4ef7d80c15:
+    english: The notification history shows who was notified about the comment, when the notification was sent, and whether it has been read when that information is available.
+    translation: 通知履歴には、コメントについて誰にいつ通知したか、また確認できる場合は通知が読まれたかどうかが表示されます。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  4f6ead46c3f9759e:
+    english: "![Notification history for a comment mentioning Samira Patel](../notifying_people/comment_notification_example.png)"
+    translation: "![Samira Patelにメンションしたコメントの通知履歴](../notifying_people/comment_notification_example.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  fa2204fb0745dec4:
+    english: "### Discard, restore, or delete a comment"
+    translation: "### コメントを破棄、復元、消去する"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  592dfa766814bb8e:
+    english: Discarding a comment removes it from the thread but retains it in a trash bin. You can discard your own comments with **Discard** in the three-dot menu. Group admins can also discard comments.
+    translation: コメントを破棄すると、スレッドから取り除かれ、ゴミ箱に保管されます。自分のコメントは三点メニューの**破棄**で破棄できます。グループ管理者もコメントを破棄できます。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  670a46d5274f9ab5:
+    english: "**Restore a comment**"
+    translation: "**コメントを復元する**"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  9b202a60d5665ac6:
+    english: The location of a discarded comment is labelled **Item removed**. Open its three-dot menu and select **Restore**.
+    translation: 破棄されたコメントがあった場所には、**アイテムが削除されました**と表示されます。その三点メニューを開き、**復元する**を選択します。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  d6427576dab2b2c5:
+    english: "**Delete a comment**"
+    translation: "**コメントを消去する**"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  d8b9add122e73295:
+    english: Deleting a comment removes it permanently. It cannot be restored.
+    translation: コメントを消去すると、完全に削除されます。復元はできません。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  51f7dce6a0188a51:
+    english: If **Members can delete their own comments** is enabled in [Group permissions](/en/user_manual/groups/settings/permissions), members can permanently delete their own discarded comments. Group admins can delete any comment.
+    translation: "[グループの権限](/en/user_manual/groups/settings/permissions)で**メンバーは自分のコメントを削除できます**が有効な場合、メンバーは破棄した自分のコメントを完全に削除できます。グループ管理者はどのコメントも削除できます。"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  63134f860609d669:
+    english: Open the three-dot menu on an **Item removed** entry and select **Delete**.
+    translation: "**アイテムが削除されました**と表示された項目の三点メニューを開き、**消去**を選択します。"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  19580f91a59bf5ef:
+    english: A confirmation message explains that the comment will be permanently deleted.
+    translation: 確認メッセージに、コメントが完全に削除されることが表示されます。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'

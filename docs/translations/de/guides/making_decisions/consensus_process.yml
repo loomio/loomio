@@ -1,0 +1,241 @@
+---
+navigation_title: Konsensprozess
+blocks:
+  4059ba7b76b4d0b3:
+    english: "# Consensus process"
+    translation: "# Konsensprozess"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  43a6e9601b802416:
+    english: This guide describes the complete Consensus process. For help setting up and interpreting one Consensus proposal, see [Consensus](/en/user_manual/polls/proposals/consensus/).
+    translation: Diese Anleitung beschreibt den gesamten Konsensprozess. Wie du einen einzelnen Konsensvorschlag einrichtest und auswertest, erfährst du unter [Konsens](/en/user_manual/polls/proposals/consensus/).
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  9ca83f452d41ab96:
+    english: "![Photo by Aaron Burden on Unsplash *Photo by Aaron Burden on Unsplash*](aaron-burden-NXt5PrOb_7U-unsplash.jpg)"
+    translation: "![Foto von Aaron Burden auf Unsplash *Foto von Aaron Burden auf Unsplash*](aaron-burden-NXt5PrOb_7U-unsplash.jpg)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  9cbed48cb66abb67:
+    english: Reach collective agreement with everyone involved.
+    translation: Erziele eine gemeinsame Einigung mit allen Beteiligten.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  7069de909d719ef2:
+    english: Build consensus for a decision you need to make together, to reach an agreement that satisfies the needs and concerns of all participants.
+    translation: Findet für eine gemeinsame Entscheidung einen Konsens, der die Bedürfnisse und Bedenken aller Beteiligten berücksichtigt.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  223c90e3fe5b24d7:
+    english: "> *“Consensus is the process – a participatory process by which a group thinks and feels together, en route to their decision.” - Sam Kaner, Community at Work*"
+    translation: "> *„Konsens ist der Prozess – ein gemeinschaftlicher Prozess, in dem eine Gruppe auf dem Weg zu ihrer Entscheidung zusammen denkt und fühlt.“ – Sam Kaner, Community at Work*"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  9872b82ded022524:
+    english: |-
+      ## Key points
+      - Discuss and develop a proposal together
+      - Include and respect everyone involved
+      - Seek agreement from most people
+    translation: |-
+      ## Das Wichtigste
+      - Einen Vorschlag gemeinsam besprechen und entwickeln
+      - Alle Beteiligten einbeziehen und respektieren
+      - Die Zustimmung der meisten Beteiligten anstreben
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  a1cd3fa440013e0c:
+    english: "**Consensus is typically used in:**\n- Working teams building shared understanding of an issue or opportunity, collaborating on a proposal and deciding course of action. \n- Governance board decisions where the board shows it is acting jointly, such as decisions on vision, policy, strategic planning and budget.\n- AGMs and General Assemblies where members and stakeholders seek general agreement for major decisions, such as revisions to statutes, major transactions and the elections of directors or council members."
+    translation: |-
+      **Ein Konsensprozess wird häufig genutzt für:**
+      - Arbeitsteams, die ein gemeinsames Verständnis für ein Problem oder eine Möglichkeit entwickeln, an einem Vorschlag zusammenarbeiten und das weitere Vorgehen entscheiden.
+      - Entscheidungen von Leitungsgremien, die gemeinsam handeln, etwa zu Leitbild, Richtlinien, strategischer Planung und Budget.
+      - Mitgliederversammlungen und Vollversammlungen, bei denen Mitglieder und andere Beteiligte eine breite Einigung über wichtige Entscheidungen suchen, etwa Satzungsänderungen, größere Geschäfte oder die Wahl von Vorstands- oder Ratsmitgliedern.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  7c5d3122a1333ba5:
+    english: |-
+      **Typical roles:**
+      - Appoint a facilitator.  In board meetings this is usually the Chairperson.
+      - A quorum or supermajority of members to participate, as specified in the organization's statutes.
+    translation: |-
+      **Typische Rollen:**
+      - Bestimme eine Person für die Moderation.  Bei Sitzungen eines Leitungsgremiums übernimmt das meist der Vorsitz.
+      - Ein in der Satzung festgelegtes Quorum oder eine qualifizierte Mehrheit der Mitglieder nimmt teil.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  1d8ee54aa5e87423:
+    english: |-
+      ## Consensus process steps
+      1. State the issue to be decided - start a Loomio **discussion**.
+      2. Present a proposal to test for consensus - start a **Sense check proposal**.
+      3. Clarify any points, invite constructive modifications and amend the proposal.
+      4. Test for agreement - start a **Consensus proposal**.
+      5. Outcome - state the decision **outcome**.
+    translation: |-
+      ## Schritte im Konsensprozess
+      1. Benenne die Frage, über die entschieden werden soll – starte eine Loomio-**Diskussion**.
+      2. Stelle einen Vorschlag vor, um ein erstes Meinungsbild einzuholen – starte einen **Vorschlag zur Sinnesprüfung**.
+      3. Kläre offene Punkte, lade zu konstruktiven Änderungen ein und überarbeite den Vorschlag.
+      4. Prüfe, ob Einigkeit besteht – starte einen **Konsensvorschlag**.
+      5. Halte die Entscheidung im **Fazit** fest.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  0b5249cfd4c92c35:
+    english: |-
+      ## Benefits
+      - Grow shared understanding.
+      - Decisions for the collective will of the group.
+      - Encourage people to value the group over their personal preferences.
+    translation: |-
+      ## Vorteile
+      - Ein gemeinsames Verständnis entwickeln.
+      - Entscheidungen treffen, die den gemeinsamen Willen der Gruppe ausdrücken.
+      - Die Beteiligten ermutigen, die Interessen der Gruppe über persönliche Vorlieben zu stellen.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  55d7d6c48f056550:
+    english: "## Applying the Consensus process on Loomio"
+    translation: "## Den Konsensprozess auf Loomio anwenden"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  e50b473237140170:
+    english: |-
+      | **Consensus process** | **On Loomio** |
+      |---|---|
+      | You notice a problem or opportunity and take the initiative. |  |
+      | **State the issue to be decided**  <br /><br />Provide background information and open a broad ranging discussion to build shared understanding. Look for emerging proposals. | Start a Loomio discussion <br /><br />Name the topic of discussion in the discussion title, and what you hope to achieve. <br /><br />Attach or link to background information. Invite people to ask questions, contribute information and write comments. |
+      | **Present a proposal** <br /><br />Test for consensus. | Run a [Sense check proposal](/en/user_manual/polls/proposals/sense_check/). <br /><br />*In the title:* Name the proposal. <br /><br />*In the proposal details:* Clearly frame the proposal and say why it is important.  Include any background information necessary and a link to the proposal.  <br /><br />Invite everyone to respond, and to do so before the proposal closes.  |
+      | **Amendment** <br /><br />Discuss, clarify and amend the proposal. <br /><br />Seek to understand and resolve any objections. <br /><br />Invite people objecting to to propose a constructive and practical modification to the proposed decision or course of action. | Facilitate discussion in the thread to address concerns and modify the proposal. |
+      | **Agreement** <br /><br />Do you have an agreement?  Check for: <br /><br />Agreement: I support the proposal. <br /><br />Abstain: This decision does not affect me and I am happy with whatever the group decides. <br /><br />Disagreement: Something in the proposal needs to be changed before I can support it. <br /><br />Block: I have a fundamental disagreement with the proposal that cannot be resolved. | Run a [Consensus proposal](/en/user_manual/polls/proposals/consensus/) with the current proposal version. <br /><br />*In the title:* Name the decision to be made. <br /><br />*In the proposal details:* Present the proposal and invite people to vote. <br /><br />Include a clear statement of what agreement means, say 'for this proposal to pass, we need everyone to vote agree' or 'for this proposal to pass, we need 75% of members to agree'.  <br /><br />Ask participants to leave a vote 'Reason' - and if they do not agree to say why, and what needs to change for them to agree. <br /><br />Some organizations also use the Block (or veto) voting option. <br /><br />As voting progresses, respond to comments, post updates, close early, or let the proposal run to conclusion. <br /><br />Participants can *“change vote”* up to proposal close time, say in response to new information that arrives during voting. |
+      | **Outcome** <br /><br />State if agreement was reached and the decision that has been made. <br /><br />Implement the decision and plan actions to be taken. | Consider voting results and state the decision made. <br /><br />Summarize results of the process and say what will happen next. <br /><br />If results are inconclusive, you may choose to re-open the discussion and run a new proposal. <br /><br />The outcome statement is an important record of the decision for future reference. |
+    translation: |-
+      | **Konsensprozess** | **Auf Loomio** |
+      |---|---|
+      | Du erkennst ein Problem oder eine Möglichkeit und ergreifst die Initiative. |  |
+      | **Die Entscheidungsfrage benennen**  <br /><br />Gib Hintergrundinformationen und eröffne eine breite Diskussion, um ein gemeinsames Verständnis zu entwickeln. Achte auf erste Vorschläge. | Starte eine Loomio-Diskussion. <br /><br />Benenne im Titel das Diskussionsthema und das Ziel. <br /><br />Füge Hintergrundinformationen als Anhang oder Link hinzu. Lade andere ein, Fragen zu stellen, Informationen beizutragen und Kommentare zu schreiben. |
+      | **Einen Vorschlag vorstellen** <br /><br />Prüfe, ob sich ein Konsens abzeichnet. | Starte einen [Vorschlag zur Sinnesprüfung](/en/user_manual/polls/proposals/sense_check/). <br /><br />*Im Titel:* Benenne den Vorschlag. <br /><br />*In den Vorschlagsdetails:* Beschreibe den Vorschlag klar und erkläre, warum er wichtig ist. Füge nötige Hintergrundinformationen und einen Link zum Vorschlag hinzu. <br /><br />Lade alle ein, vor Ablauf des Vorschlags zu antworten. |
+      | **Überarbeitung** <br /><br />Besprecht, klärt und überarbeitet den Vorschlag. <br /><br />Versucht, Einwände zu verstehen und auszuräumen. <br /><br />Bitte Personen mit Einwänden, eine konstruktive und umsetzbare Änderung der vorgeschlagenen Entscheidung oder Vorgehensweise vorzuschlagen. | Modere die Diskussion im Thread, um Bedenken aufzugreifen und den Vorschlag zu überarbeiten. |
+      | **Einigung** <br /><br />Besteht Einigkeit? Prüfe die Antworten: <br /><br />Dafür: Ich unterstütze den Vorschlag. <br /><br />Enthaltung: Diese Entscheidung betrifft mich nicht, und ich bin mit der Entscheidung der Gruppe einverstanden. <br /><br />Dagegen: Am Vorschlag muss sich etwas ändern, bevor ich ihn unterstützen kann. <br /><br />Veto: Ich habe einen grundlegenden Einwand gegen den Vorschlag, der sich nicht ausräumen lässt. | Starte einen [Konsensvorschlag](/en/user_manual/polls/proposals/consensus/) mit der aktuellen Fassung. <br /><br />*Im Titel:* Benenne die anstehende Entscheidung. <br /><br />*In den Vorschlagsdetails:* Stelle den Vorschlag vor und lade zur Abstimmung ein. <br /><br />Erkläre klar, welche Zustimmung nötig ist, etwa: „Damit dieser Vorschlag angenommen wird, müssen alle mit Dafür stimmen“ oder „Damit dieser Vorschlag angenommen wird, müssen 75 % der Mitglieder mit Dafür stimmen“. <br /><br />Bitte die Beteiligten, eine „Begründung“ für ihre Stimme anzugeben. Wer nicht zustimmt, sollte erklären, warum und was sich ändern müsste. <br /><br />Manche Organisationen verwenden auch die Abstimmungsoption Veto. <br /><br />Während der Abstimmung kannst du auf Kommentare antworten, Neuigkeiten mitteilen, den Vorschlag vorzeitig schließen oder ihn bis zum geplanten Ende laufen lassen. <br /><br />Die Beteiligten können ihre *„Stimme ändern“*, bis der Vorschlag schließt, etwa wenn während der Abstimmung neue Informationen auftauchen. |
+      | **Fazit** <br /><br />Halte fest, ob eine Einigung erzielt wurde und welche Entscheidung getroffen wurde. <br /><br />Setze die Entscheidung um und plane die nächsten Schritte. | Sieh dir die Abstimmungsergebnisse an und halte die Entscheidung fest. <br /><br />Fasse die Ergebnisse des Prozesses zusammen und erkläre, was als Nächstes geschieht. <br /><br />Wenn die Ergebnisse nicht eindeutig sind, kannst du die Diskussion erneut öffnen und einen neuen Vorschlag starten. <br /><br />Das Fazit hält die Entscheidung fest und kann später als Referenz dienen. |
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  97378a06a382f8a0:
+    english: "## Example of a Consensus process on Loomio"
+    translation: "## Beispiel für einen Konsensprozess auf Loomio"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  ec691660458e426c:
+    english: "### Step 0. You notice a problem or opportunity and take the initiative"
+    translation: "### Schritt 0. Du erkennst ein Problem oder eine Möglichkeit und ergreifst die Initiative"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  960ad433a566ef52:
+    english: "*Is the problem or opportunity is worth pursuing?* Vivien noticed it's time to review the Oatmilk Coop brand."
+    translation: "*Lohnt es sich, das Problem oder die Möglichkeit weiterzuverfolgen?* Vivien stellt fest, dass es Zeit ist, die Marke der Oatmilk Coop zu überprüfen."
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  fed09a0a56e35eb1:
+    english: "*Is there a decision to be made?* The governance board has responsibility to approve a new brand concept."
+    translation: "*Steht eine Entscheidung an?* Das Leitungsgremium ist für die Genehmigung eines neuen Markenkonzepts zuständig."
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  90d8e915824db4db:
+    english: "*Does it impact other people and your organization?* Brand impacts on the perception of the co-op and impacts everyone in the organization. "
+    translation: "*Betrifft es andere Menschen und deine Organisation?* Die Marke prägt die Wahrnehmung der Genossenschaft und betrifft alle in der Organisation."
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  fda82a609f8773ed:
+    english: "### Step 1. State the problem or issue"
+    translation: "### Schritt 1. Das Problem oder die Frage benennen"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  c98dda573e480da3:
+    english: Vivien starts a Loomio discussion outlining the need to review the organization's brand, inviting participation to develop a new brand concept, and that the approval decision is to be made by the governance board using the consensus process.
+    translation: Vivien startet eine Loomio-Diskussion über die nötige Überprüfung der Marke. Sie lädt alle ein, ein neues Markenkonzept zu entwickeln, und erklärt, dass das Leitungsgremium im Konsensprozess über dessen Genehmigung entscheidet.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  37d6cf6c0162e6bb:
+    english: "### Step 2. Present a proposal "
+    translation: "### Schritt 2. Einen Vorschlag vorstellen"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  c090241da7a91eb9:
+    english: Vivien runs a Sense check proposal to survey opinions to see how people feel about key elements of the brand concept, and test for consensus.   The Sense check proposal lets people know a proposal is forming and encourages them to engage.  It's a good way to surface concerns.
+    translation: Vivien startet einen Vorschlag zur Sinnesprüfung, um Meinungen zu wichtigen Teilen des Markenkonzepts einzuholen und zu prüfen, ob sich ein Konsens abzeichnet. So erfahren die Beteiligten, dass ein Vorschlag entsteht, und können sich einbringen. Dabei können auch Bedenken sichtbar werden.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  cc4caeb72841fee5:
+    english: "### Step 3. Amendment"
+    translation: "### Schritt 3. Überarbeitung"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  db11954b34a1697d:
+    english: |-
+      When the Sense check proposal closes, Vivien states an outcome and notifies everyone about the results and what will happen next.
+      Vivien facilitates a discussion to address concerns and modify the Brand Concept document.
+    translation: |-
+      Als der Vorschlag zur Sinnesprüfung schließt, teilt Vivien ein Fazit mit und informiert alle über die Ergebnisse und die nächsten Schritte.
+      Vivien moderiert eine Diskussion, um Bedenken aufzugreifen und das Dokument zum Markenkonzept zu überarbeiten.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  c31d7c71eb3c735c:
+    english: "### Step 4. Agreement"
+    translation: "### Schritt 4. Einigung"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  39e0039c195ae5f3:
+    english: Having completed the latest version of the Brand Concept document, Vivien is now ready to seek approval from the governance board by running a Consensus proposal.
+    translation: Nachdem Vivien die aktuelle Fassung des Dokuments zum Markenkonzept fertiggestellt hat, startet sie einen Konsensvorschlag, um die Zustimmung des Leitungsgremiums einzuholen.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  4bf082d10976bc31:
+    english: 'Governance board members are invited to vote and approve the Brand Concept.  The board has previously agreed that proposals like this require >75% of members to vote Agree for it to pass. '
+    translation: Die Mitglieder des Leitungsgremiums werden eingeladen, über das Markenkonzept abzustimmen. Das Gremium hat zuvor vereinbart, dass Vorschläge dieser Art nur angenommen werden, wenn >75 % der Mitglieder mit Dafür stimmen.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  feb488e50bdd3834:
+    english: This template includes a Block option by default. Block isn't suitable for every group — it can be controversial or misused. If you don't use block in your decision-making process, we recommend editing the template to remove it.
+    translation: 'Diese Vorlage enthält standardmäßig die Option Veto. Ein Veto passt nicht zu jeder Gruppe: Es kann umstritten sein oder missbraucht werden. Wenn ihr in eurem Entscheidungsprozess kein Veto verwendet, empfehlen wir, die Option aus der Vorlage zu entfernen.'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  5130a17b3032bee3:
+    english: "### Step 5. Outcome"
+    translation: "### Schritt 5. Fazit"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  47143ba16ce4a9ff:
+    english: 'When the Consensus proposal closes, Vivien states an outcome and notifies everyone that agreement has been reached, and that work to implement the new brand will commence. '
+    translation: Als der Konsensvorschlag schließt, teilt Vivien ein Fazit mit. Sie informiert alle darüber, dass eine Einigung erzielt wurde und die Umsetzung der neuen Marke beginnt.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'

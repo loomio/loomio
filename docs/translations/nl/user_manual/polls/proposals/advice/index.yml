@@ -1,0 +1,93 @@
+---
+navigation_title: Advies
+blocks:
+  2072a463e55dfba1:
+    english: "# Advice"
+    translation: "# Advies"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  aadbf3844be4a95f:
+    english: An Advice proposal gathers input for a decision that a person or team is responsible for making. Participants can offer advice or indicate that they have no advice to add.
+    translation: Met een Adviesvoorstel verzamel je inbreng voor een beslissing die een persoon of team moet nemen. Deelnemers kunnen advies geven of aangeven dat ze niets toe te voegen hebben.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  769a2446fc3ec4a9:
+    english: This page explains the Advice proposal form, voting, and results. See the [Advice process](/en/guides/making_decisions/advice_process) for the complete workflow from framing the decision to publishing an outcome.
+    translation: Op deze pagina lees je hoe het Adviesvoorstel, het stemmen en de resultaten werken. Bekijk het [Adviestraject](/en/guides/making_decisions/advice_process) voor het hele proces, van het formuleren van de beslissing tot het publiceren van een conclusie.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  f19e32088d70eec4:
+    english: "## When to use Advice"
+    translation: "## Wanneer gebruik je Advies"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  d4c7e7da6f2d5860:
+    english: Use Advice when the decision maker wants input from people with relevant expertise or people affected by the decision. It works well for supplier choices, operational decisions, policy drafts, and decisions within a delegated role.
+    translation: Gebruik Advies wanneer de beslisser inbreng wil van mensen met relevante kennis of van mensen die de gevolgen van de beslissing ondervinden. Het is geschikt voor de keuze van een leverancier, operationele beslissingen, conceptbeleid en beslissingen binnen een gedelegeerde rol.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  a81e33e00080fbe4:
+    english: Advice is not an approval vote. Say who will make the decision, what constraints apply, and how they will consider the responses.
+    translation: Advies is geen stemming over goedkeuring. Geef aan wie de beslissing neemt, welke voorwaarden gelden en hoe diegene de reacties meeweegt.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  4be7ef0783f6e444:
+    english: "## Example: choose a washing supplier"
+    translation: "## Voorbeeld: een leverancier voor reiniging kiezen"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  d8157e98107798c6:
+    english: Oatmilk Cooperative's operations coordinator must select a washing supplier. They invite advice about capacity, food-safety records, water use, service response times, and support.
+    translation: De operationeel coördinator van Oatmilk Cooperative moet een leverancier voor reiniging kiezen. Die vraagt advies over capaciteit, voedselveiligheidsgegevens, waterverbruik, reactietijden bij serviceverzoeken en ondersteuning.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  9703f1f9474243af:
+    english: "## Set up the proposal"
+    translation: "## Het voorstel opstellen"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  6b9c305f0f4000d9:
+    english: Describe the decision, name the decision maker, and include the information participants need. Invite people who are affected or have relevant knowledge. The default options let someone offer advice or abstain.
+    translation: Beschrijf de beslissing, noem de beslisser en geef deelnemers de informatie die ze nodig hebben. Nodig mensen uit die de gevolgen ondervinden of relevante kennis hebben. Met de standaardopties kunnen zij advies geven of zich onthouden.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  d391457c69df967f:
+    english: "## Vote"
+    translation: "## Stemmen"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  0a259af7a59899b7:
+    english: Participants select **Advice** and give a concrete recommendation, risk, question, or relevant experience. They can abstain when they have no useful input.
+    translation: Deelnemers kiezen **Advies** en geven een concrete aanbeveling, benoemen een risico, stellen een vraag of delen relevante ervaring. Ze kunnen zich onthouden als ze niets nuttigs kunnen toevoegen.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  72a9e4073ea27936:
+    english: "## Read the results"
+    translation: "## De resultaten lezen"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  1d4bf7b5d0079f87:
+    english: The chart confirms who has responded, but the reasons contain the substance of an Advice proposal. Look for constraints, agreements, and conflicting recommendations rather than treating the most common response as the decision.
+    translation: De grafiek laat zien wie heeft gereageerd, maar de toelichtingen vormen de kern van een Adviesvoorstel. Let op voorwaarden, overeenstemming en tegenstrijdige aanbevelingen. Beschouw de meest voorkomende reactie niet als de beslissing.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  e9fc01ce6c059f29:
+    english: The decision maker publishes an outcome explaining what they decided and how the advice informed it.
+    translation: De beslisser publiceert een conclusie waarin staat wat die heeft besloten en hoe het advies daarbij is meegewogen.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'

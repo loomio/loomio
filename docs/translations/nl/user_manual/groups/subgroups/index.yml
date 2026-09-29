@@ -1,0 +1,267 @@
+---
+navigation_title: Subgroepen
+blocks:
+  782c5b3df26b17ae:
+    english: "# Subgroups"
+    translation: "# Subgroepen"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  0025fb895cd6cae8:
+    english: Subgroups help you organize your communications and members so that the right people are engaged in their work together.
+    translation: Met subgroepen organiseer je gesprekken en leden, zodat de juiste mensen kunnen samenwerken.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  cc3abd19bc310546:
+    english: |-
+      For example, an organization may have the following subgroups:
+      - governance board
+      - working team or a project working group
+      - a topic (such as 'strategy' or 'learning')
+    translation: |-
+      Een organisatie kan bijvoorbeeld deze subgroepen hebben:
+      - een bestuur
+      - een team of projectgroep
+      - een onderwerp (zoals 'strategie' of 'leren')
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  eab908c78ccd923d:
+    english: Subgroups work just like groups do, but are located within your "parent" group. Most of the features and settings available are the same as in the parent group. This also means that someone can be a member of your subgroup, such as your board, but not of your parent group.
+    translation: Subgroepen werken hetzelfde als groepen, maar bevinden zich binnen een bovenliggende groep. De meeste functies en instellingen zijn hetzelfde. Iemand kan lid zijn van een subgroep, zoals het bestuur, zonder lid te zijn van de bovenliggende groep.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  aaa62c1b02d15779:
+    english: "## Add a subgroup"
+    translation: "## Een subgroep toevoegen"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  8ed2fcd2a209a53d:
+    english: |-
+      >[!Note]
+      >The ability to add new subgroups is part of the group's [permission settings](/en/user_manual/groups/settings/permissions). By default, only admins can start new subgroups.
+    translation: |-
+      >[!Note]
+      >Of je nieuwe subgroepen kunt toevoegen, hangt af van de [machtigingsinstellingen](/en/user_manual/groups/settings/permissions) van de groep. Standaard kunnen alleen beheerders nieuwe subgroepen starten.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  483b820f123b5ae0:
+    english: 'To add a subgroup, visit your main group page, then click **New Subgroup** from the sidebar.  '
+    translation: Ga naar de pagina van je hoofdgroep en klik in de zijbalk op **Nieuwe subgroep**.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  abceea91b4638844:
+    english: "![New subgroup button in the Oatmilk Cooperative sidebar](subgroups-sidebar.png)"
+    translation: "![Knop Nieuwe subgroep in de zijbalk van Oatmilk Cooperative](subgroups-sidebar.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  b8e3d3477eb6765d:
+    english: Click the **New subgroup** button, give it a name and select the privacy setting, then click **Start subgroup**.
+    translation: Klik op **Nieuwe subgroep**, geef de subgroep een naam, kies de privacyinstelling en klik op **Start subgroep**.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  1d49b46575af3f21:
+    english: "![New subgroup form for the Packaging Working Group](subgroups_new.png)"
+    translation: "![Formulier voor een nieuwe subgroep voor de Packaging Working Group](subgroups_new.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  348e88e5c0ca37d0:
+    english: When you are ready, [invite people](/en/user_manual/groups/inviting_people/) to the subgroup.
+    translation: Als je zover bent, kun je [mensen uitnodigen](/en/user_manual/groups/inviting_people/) voor de subgroep.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  4ac901bff75cf342:
+    english: You can edit the subgroups [group settings](/en/user_manual/groups/settings/) by clicking the cog icon on the subgroup page.
+    translation: Je kunt de [groepsinstellingen](/en/user_manual/groups/settings/) van de subgroep bewerken via het tandwielpictogram op de pagina van de subgroep.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  926676e3163dbc8e:
+    english: "![Edit group settings action on the Packaging Working Group](subgroups_edit_group_settings.png)"
+    translation: "![Optie om de groepsinstellingen van de Packaging Working Group te bewerken](subgroups_edit_group_settings.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  737225cc4bebe7e8:
+    english: "## Subgroup settings"
+    translation: "## Instellingen van subgroepen"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  c93e5ec8b6f3ceb7:
+    english: "### Privacy"
+    translation: "### Privacy"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  92a47fe13740347a:
+    english: The privacy settings for subgroups are similar to the parent group.
+    translation: De privacyinstellingen van subgroepen lijken op die van de bovenliggende groep.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  cee5963ea2acac16:
+    english: "**Secret** subgroups are not visible to people not invited to the subgroup."
+    translation: "**Geheim** subgroepen zijn alleen zichtbaar voor mensen die voor de subgroep zijn uitgenodigd."
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  1c8fb4caaa5a2cb9:
+    english: "**Closed** subgroups are listed in the Subgroups tab of the parent group and user's sidebar menu. Members of the parent group can request to join the subgroup. Membership is approved by a subgroup admin."
+    translation: "**Gesloten** subgroepen staan op het tabblad Subgroepen van de bovenliggende groep en in het zijbalkmenu van gebruikers. Leden van de bovenliggende groep kunnen vragen om lid te worden van de subgroep. Een beheerder van de subgroep keurt het lidmaatschap goed."
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  b35b1b3450b2d1e1:
+    english: Closed subgroups have an additional setting that allow members of its parent group to see private threads.
+    translation: Gesloten subgroepen hebben een extra instelling waarmee leden van de bovenliggende groep privédiscussies kunnen zien.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  933fe2f0cbdec143:
+    english: "[Read about group privacy here](/en/user_manual/groups/settings/privacy)."
+    translation: "[Lees meer over de privacy van groepen](/en/user_manual/groups/settings/privacy)."
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  d16c8b1258b67c9e:
+    english: "### Permissions"
+    translation: "### Machtigingen"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  eb5de97caadd5166:
+    english: Subgroups operate independently of the main group. For example, if the subgroup privacy setting is set to **Secret**, then only invited members can find this subgroup, see who is in it, and see threads.
+    translation: Subgroepen werken onafhankelijk van de hoofdgroep. Als de privacyinstelling van een subgroep bijvoorbeeld op **Geheim** staat, kunnen alleen uitgenodigde leden de subgroep vinden, zien wie lid is en discussies bekijken.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  e7897aa59ffe96a1:
+    english: "**Closed** subgroups have an additional setting that allow members of its parent group to see private threads, enabling the subgroup to be transparent to members of the parent group."
+    translation: "**Gesloten** subgroepen hebben een extra instelling waarmee leden van de bovenliggende groep privédiscussies kunnen zien. Zo kunnen zij volgen wat er in de subgroep gebeurt."
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  8dd3770fefa7d7e6:
+    english: "![Setting that lets parent group members see private subgroup threads](subgroups_private_threads_settings.png)"
+    translation: "![Instelling waarmee leden van de bovenliggende groep privédiscussies van de subgroep kunnen zien](subgroups_private_threads_settings.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  c78effb175b8924b:
+    english: "## Find subgroups"
+    translation: "## Subgroepen vinden"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  5692ebbfe3fe83e9:
+    english: Open the sidebar menu, and click your group name to see it's subgroups.
+    translation: Open het zijbalkmenu en klik op de naam van je groep om de subgroepen te zien.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  0abefe88cc8bea7f:
+    english: "![Oatmilk Cooperative subgroups listed in the sidebar](subgroups_find_subgroups.png)"
+    translation: "![Subgroepen van Oatmilk Cooperative in de zijbalk](subgroups_find_subgroups.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  8988135e14e40636:
+    english: "## Invite to a subgroup"
+    translation: "## Mensen uitnodigen voor een subgroep"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  217a985e9afb5421:
+    english: Invite people to a subgroup as you invite them into a group. If they already belong to a parent group or another subgroup in the same organization that you also belong to, you can type their name or select that group as an audience. Select the audience chip to expand it into individual people, then remove anyone you do not want to invite.
+    translation: Je nodigt mensen voor een subgroep uit zoals je ze voor een groep uitnodigt. Als ze al lid zijn van een bovenliggende groep of een andere subgroep binnen dezelfde organisatie waarvan jij ook lid bent, kun je hun naam invoeren of die groep als doelgroep selecteren. Selecteer het label van de doelgroep om de afzonderlijke mensen te zien. Verwijder daarna iedereen die je niet wilt uitnodigen.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  2d4a28c2306fc3c6:
+    english: "### Simultaneously invite people to subgroups and parent group"
+    translation: "### Mensen tegelijk uitnodigen voor subgroepen en de bovenliggende groep"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  cf301ba403b3a28e:
+    english: If you use the **Invite people** button from your parent group's **Members** tab, you can invite people to multiple subgroups at the same time by ticking the boxes of those you would like them to join immediately.
+    translation: Gebruik je de knop **Mensen uitnodigen** op het tabblad **Leden** van de bovenliggende groep? Dan kun je mensen tegelijk voor meerdere subgroepen uitnodigen. Vink de subgroepen aan waarvan ze meteen lid moeten worden.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  28a271be7caa0590:
+    english: "![Selecting the parent group and subgroup in the invitation form](group_invite_email_subgroups.png)"
+    translation: "![De bovenliggende groep en een subgroep selecteren in het uitnodigingsformulier](group_invite_email_subgroups.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  5323cb0e01e3e171:
+    english: "## Administer a subgroup"
+    translation: "## Een subgroep beheren"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  e7c6ae867d7d3813:
+    english: Subgroups can have their own admins, and admins of a subgroup may not be the same as the admins of the parent group.
+    translation: Subgroepen kunnen eigen beheerders hebben. Dat hoeven niet dezelfde mensen te zijn als de beheerders van de bovenliggende groep.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  937ae9d3e8948a26:
+    english: However an admin of the 'parent' group can make themselves admin of any subgroup.  This helps administrators of the parent group to administer subgroups as necessary.
+    translation: Een beheerder van de bovenliggende groep kan zichzelf wel beheerder maken van elke subgroep. Zo kan die de subgroepen beheren wanneer dat nodig is.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  282547a6c728d20c:
+    english: Go to the Subgroup tab, find the subgroup and click **Join group**.
+    translation: Ga naar het tabblad Subgroepen, zoek de subgroep en klik op **Word lid van de groep**.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  64102057b4f533dd:
+    english: "![Join group button on a closed subgroup](member_join_subgroup.png)"
+    translation: "![Knop Word lid van de groep bij een gesloten subgroep](member_join_subgroup.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  0f91a4020a9484ef:
+    english: Now a member of the subgroup, an admin of the parent group can make themselves an admin of the subgroup.
+    translation: Zodra de beheerder van de bovenliggende groep lid is van de subgroep, kan die zichzelf beheerder van de subgroep maken.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  b10fec2c4c3ebb6c:
+    english: "![Make admin action for a parent group admin](member_make_admin.png)"
+    translation: "![Optie om een beheerder van de bovenliggende groep beheerder van de subgroep te maken](member_make_admin.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  dcb00619954e30a2:
+    english: "## Delete a subgroup"
+    translation: "## Een subgroep verwijderen"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  92e05281b2891dd5:
+    english: Admins can delete a subgroup in the same way you delete a group. When deleting a subgroup, be careful to not delete the 'parent' group.
+    translation: Beheerders kunnen een subgroep op dezelfde manier verwijderen als een groep. Let erop dat je de bovenliggende groep niet verwijdert.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  a29b8361fb910cde:
+    english: Learn [how to delete groups](/en/user_manual/groups/deleting_your_group/).
+    translation: Lees [hoe je groepen verwijdert](/en/user_manual/groups/deleting_your_group/).
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'

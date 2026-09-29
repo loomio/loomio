@@ -1,0 +1,75 @@
+---
+navigation_title: Ehdotukset
+blocks:
+  3fa760281a1aed06:
+    english: "# Proposals"
+    translation: "# Ehdotukset"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  ca5b9583bfe78b65:
+    english: A proposal asks people to respond to a statement or course of action. Participants choose a defined response and can explain their vote. Use a proposal to gather feedback, seek advice, identify objections, or test for agreement.
+    translation: Ehdotuksessa pyydetään ihmisiä ottamaan kantaa väitteeseen tai toimintatapaan. Osallistujat valitsevat vastausvaihtoehdon ja voivat perustella äänensä. Ehdotuksella voit kerätä palautetta, pyytää neuvoja, tunnistaa vastalauseita tai selvittää, onko asiasta yhteisymmärrys.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  143dc77c58a4c881:
+    english: This section helps you choose and run Loomio's default proposal templates. For a complete sequence of discussion, proposals, amendments, and outcome, use the [decision-making guides](/en/guides/making_decisions/). To change the templates available to your group, see [Poll templates](../poll_templates/).
+    translation: Tässä osiossa opit valitsemaan ja käyttämään Loomion oletusarvoisia ehdotusmalleja. Jos haluat käydä läpi koko päätöksentekoprosessin keskustelusta ehdotuksiin, muutoksiin ja lopputulokseen, tutustu [päätöksenteko-oppaisiin](/en/guides/making_decisions/). Jos haluat muuttaa ryhmäsi käytettävissä olevia malleja, katso [Kyselymallit](../poll_templates/).
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  e0f8614f95c9c5ff:
+    english: "## Choose a proposal template"
+    translation: "## Valitse ehdotusmalli"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  525699503edbe342:
+    english: |-
+      | Template | What it asks | Use it when… |
+      |---|---|---|
+      | [Sense check](sense_check/) | Is this on the right track? | An idea is still being developed |
+      | [Advice](advice/) | What advice should the decision maker consider? | A person or team owns the decision |
+      | [Consent](consent/) | Is this safe to try, or is there a meaningful objection? | The group uses consent decision-making |
+      | [Consensus](consensus/) | What is your position on this proposal? | The group is seeking collective agreement |
+    translation: |-
+      | Malli | Mitä siinä kysytään | Käytä, kun… |
+      |---|---|---|
+      | [Suunnan tarkistus](sense_check/) | Ollaanko oikealla tiellä? | Ideaa kehitetään vielä |
+      | [Neuvojen pyytäminen](advice/) | Mitä neuvoja päätöksentekijän tulisi ottaa huomioon? | Päätös on henkilön tai tiimin vastuulla |
+      | [Suostumus](consent/) | Voidaanko tätä turvallisesti kokeilla, vai onko sille painava vastalause? | Ryhmä tekee päätöksiä suostumuksen perusteella |
+      | [Konsensus](consensus/) | Mikä on kantasi tähän ehdotukseen? | Ryhmä pyrkii yhteiseen päätökseen |
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  0cb03ac4a22f02b4:
+    english: Choose the template whose response options match the question you need answered. Each template page explains its use cases, setup, voting form, and results.
+    translation: Valitse malli, jonka vastausvaihtoehdot sopivat kysymykseesi. Kunkin mallin sivulla kerrotaan, mihin sitä käytetään sekä miten se otetaan käyttöön, miten sillä äänestetään ja miten tuloksia tarkastellaan.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  d379b02c308b3b55:
+    english: "## Other proposal templates"
+    translation: "## Muut ehdotusmallit"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  44cdb16aebf757ca:
+    english: Loomio also provides templates such as Proposal, Gradients of agreement, Question round, and Majority. Some are hidden initially. Group administrators can make them available or create a template for the group's own terminology and rules from [Poll templates](../poll_templates/).
+    translation: Loomiossa on myös malleja, kuten Ehdotus, Yhteisymmärryksen asteet, Kysymyskierros ja Enemmistö. Osa niistä on aluksi piilotettu. Ryhmän ylläpitäjät voivat ottaa ne käyttöön tai luoda ryhmän omiin termeihin ja sääntöihin sopivan mallin kohdassa [Kyselymallit](../poll_templates/).
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  ca179ba4cb53c5e3:
+    english: "## Proposal records"
+    translation: "## Ehdotuksen dokumentointi"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  460a90e796fc4dc0:
+    english: Votes and reasons update while the proposal is open, and participants can change their response. After it closes, publish an [outcome](../outcomes/) that states the decision or next step. The discussion, proposal, votes, reasons, and outcome form a record of how the group reached its decision.
+    translation: Äänet ja perustelut päivittyvät ehdotuksen ollessa avoinna, ja osallistujat voivat muuttaa vastaustaan. Kun ehdotus sulkeutuu, julkaise [lopputulos](../outcomes/), jossa kerrot päätöksen tai seuraavan vaiheen. Keskustelu, ehdotus, äänet, perustelut ja lopputulos dokumentoivat, miten ryhmä päätyi päätökseensä.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'

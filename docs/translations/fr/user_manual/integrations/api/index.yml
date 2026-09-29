@@ -1,0 +1,51 @@
+---
+navigation_title: API
+blocks:
+  073c1e9d8445f8d7:
+    english: "# Loomio API"
+    translation: "# API Loomio"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  3be363e1618c6924:
+    english: Use the Loomio API to connect Loomio with other software and automated workflows.
+    translation: Utilisez l’API Loomio pour connecter Loomio à d’autres logiciels et à des flux de travail automatisés.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  3a0a3a45b68cea23:
+    english: The [OpenAPI 3.1 contract](openapi.yaml) describes every public User API and Server API operation in a machine-readable format. Import it into an API client or use it to generate typed client code. The guides below explain workflows, permissions, and behavior that are not fully expressed by the contract.
+    translation: Le [contrat OpenAPI 3.1](openapi.yaml) décrit toutes les opérations publiques de l’API utilisateur et de l’API serveur dans un format lisible par machine. Importez-le dans un client API ou utilisez-le pour générer du code client typé. Les guides ci-dessous expliquent les flux de travail, les autorisations et les comportements que le contrat ne décrit pas entièrement.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  19fe420b8b57b3a3:
+    english: "## User API"
+    translation: "## API utilisateur"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  e08b0799f5a9b271:
+    english: The [User API](/en/user_manual/integrations/api/user-api) performs actions as a Loomio user. It can list groups and create or manage threads, comments, polls, and group memberships according to that user's permissions.
+    translation: L’[API utilisateur](/en/user_manual/integrations/api/user-api) permet d’effectuer des actions en tant qu’utilisateur de Loomio. Selon les autorisations de cet utilisateur, elle peut lister les groupes et créer ou gérer des fils de discussion, des commentaires, des sondages et des adhésions aux groupes.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  d212aebc3b500643:
+    english: For push-based integrations, [group webhooks](/en/user_manual/integrations/api/user-api#webhooks) send selected Loomio events to a web endpoint as JSON. Use the REST endpoints to read or change Loomio data and a webhook when an integration should receive events without polling.
+    translation: Pour les intégrations qui reçoivent des événements, les [webhooks de groupe](/en/user_manual/integrations/api/user-api#webhooks) envoient certains événements Loomio à un point de terminaison web au format JSON. Utilisez les points de terminaison REST pour lire ou modifier les données de Loomio, et un webhook pour recevoir les événements sans interroger régulièrement l’API.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  d6536c749fb8a984:
+    english: "## Server API"
+    translation: "## API serveur"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  76fbf0c8fa91eeb8:
+    english: The [Server API](/en/user_manual/integrations/api/server-api) lets operators of self-hosted Loomio installations manage user accounts. It is authenticated with a server-wide secret.
+    translation: L’[API serveur](/en/user_manual/integrations/api/server-api) permet aux personnes qui exploitent une installation Loomio auto-hébergée de gérer les comptes utilisateurs. L’authentification repose sur un secret commun à tout le serveur.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'

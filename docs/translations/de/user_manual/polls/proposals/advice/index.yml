@@ -1,0 +1,93 @@
+---
+navigation_title: Beratung
+blocks:
+  2072a463e55dfba1:
+    english: "# Advice"
+    translation: "# Beratung"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  aadbf3844be4a95f:
+    english: An Advice proposal gathers input for a decision that a person or team is responsible for making. Participants can offer advice or indicate that they have no advice to add.
+    translation: Ein Beratungsvorschlag sammelt Beiträge zu einer Entscheidung, für die eine Person oder ein Team verantwortlich ist. Teilnehmende können Ratschläge geben oder angeben, dass sie nichts beizutragen haben.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  769a2446fc3ec4a9:
+    english: This page explains the Advice proposal form, voting, and results. See the [Advice process](/en/guides/making_decisions/advice_process) for the complete workflow from framing the decision to publishing an outcome.
+    translation: 'Diese Seite erklärt das Formular für Beratungsvorschläge, die Abstimmung und die Ergebnisse. Der [Beratungsprozess](/en/guides/making_decisions/advice_process) beschreibt den gesamten Ablauf: von der Formulierung der Entscheidung bis zur Veröffentlichung des Fazits.'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  f19e32088d70eec4:
+    english: "## When to use Advice"
+    translation: "## Wann du Beratung nutzen kannst"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  d4c7e7da6f2d5860:
+    english: Use Advice when the decision maker wants input from people with relevant expertise or people affected by the decision. It works well for supplier choices, operational decisions, policy drafts, and decisions within a delegated role.
+    translation: Nutze Beratung, wenn die entscheidende Person Beiträge von Menschen mit passender Erfahrung oder von Betroffenen einholen möchte. Sie eignet sich für die Auswahl von Lieferanten, betriebliche Entscheidungen, Richtlinienentwürfe und Entscheidungen innerhalb einer übertragenen Rolle.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  a81e33e00080fbe4:
+    english: Advice is not an approval vote. Say who will make the decision, what constraints apply, and how they will consider the responses.
+    translation: Beratung ist keine Abstimmung über eine Genehmigung. Gib an, wer entscheidet, welche Rahmenbedingungen gelten und wie die Antworten berücksichtigt werden.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  4be7ef0783f6e444:
+    english: "## Example: choose a washing supplier"
+    translation: "## Beispiel: einen Reinigungsdienstleister auswählen"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  d8157e98107798c6:
+    english: Oatmilk Cooperative's operations coordinator must select a washing supplier. They invite advice about capacity, food-safety records, water use, service response times, and support.
+    translation: Die für den Betrieb zuständige Person der Oatmilk Cooperative muss einen Reinigungsdienstleister auswählen. Sie bittet um Ratschläge zu Kapazität, Nachweisen zur Lebensmittelsicherheit, Wasserverbrauch, Reaktionszeiten und Support.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  9703f1f9474243af:
+    english: "## Set up the proposal"
+    translation: "## Vorschlag erstellen"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  6b9c305f0f4000d9:
+    english: Describe the decision, name the decision maker, and include the information participants need. Invite people who are affected or have relevant knowledge. The default options let someone offer advice or abstain.
+    translation: Beschreibe die Entscheidung, benenne die entscheidende Person und füge die Informationen hinzu, die Teilnehmende benötigen. Lade betroffene Personen und Menschen mit passendem Fachwissen ein. Mit den voreingestellten Optionen können sie einen Ratschlag geben oder sich enthalten.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  d391457c69df967f:
+    english: "## Vote"
+    translation: "## Abstimmen"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  0a259af7a59899b7:
+    english: Participants select **Advice** and give a concrete recommendation, risk, question, or relevant experience. They can abstain when they have no useful input.
+    translation: Teilnehmende wählen **Beratung** und geben eine konkrete Empfehlung, ein Risiko, eine Frage oder eine relevante Erfahrung an. Wenn sie nichts Hilfreiches beizutragen haben, können sie sich enthalten.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  72a9e4073ea27936:
+    english: "## Read the results"
+    translation: "## Ergebnisse lesen"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  1d4bf7b5d0079f87:
+    english: The chart confirms who has responded, but the reasons contain the substance of an Advice proposal. Look for constraints, agreements, and conflicting recommendations rather than treating the most common response as the decision.
+    translation: Das Diagramm zeigt, wer geantwortet hat. Der Inhalt eines Beratungsvorschlags steckt jedoch in den Begründungen. Achte auf Rahmenbedingungen, Übereinstimmungen und widersprüchliche Empfehlungen. Die häufigste Antwort ist nicht automatisch die Entscheidung.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  e9fc01ce6c059f29:
+    english: The decision maker publishes an outcome explaining what they decided and how the advice informed it.
+    translation: Die entscheidende Person veröffentlicht ein Fazit. Darin erklärt sie, was sie entschieden hat und wie die Ratschläge in die Entscheidung eingeflossen sind.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'

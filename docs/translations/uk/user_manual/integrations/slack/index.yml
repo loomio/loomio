@@ -1,0 +1,85 @@
+---
+navigation_title: Slack
+blocks:
+  69603abd8497f21a:
+    english: |-
+      # Slack integration
+      _Connect your Loomio group notifications to Slack._
+    translation: |-
+      # Інтеграція зі Slack
+      _Підключіть сповіщення вашої групи Loomio до Slack._
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  a79a01e9aec93915:
+    english: Loomio can send notifications into your Slack channels when new discussions, proposals, comments, votes, and outcomes occur. Get key updates, at the right time, on important discussions and decisions.
+    translation: Loomio може надсилати сповіщення у ваші канали Slack про нові обговорення, пропозиції, коментарі, голоси та висновки. Так ви вчасно отримуватимете важливі оновлення щодо обговорень і рішень.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  cb3f91d54eee30e5:
+    english: "---"
+    translation: "---"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  e3d7251e6b6c6fcd:
+    english: Start by visiting [https://api.slack.com](https://api.slack.com), signing in if you are not already, then clicking Create New App
+    translation: Перейдіть на [https://api.slack.com](https://api.slack.com), увійдіть у свій обліковий запис, якщо ще не зробили цього, і натисніть Create New App
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  5eade15c411d0952:
+    english: Give your Slack app a name
+    translation: Назвіть свій застосунок Slack
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  92f150e25b179808:
+    english: Add incoming webhooks support
+    translation: Додайте підтримку вхідних вебхуків
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  cfe2230d96281712:
+    english: Then enable the function
+    translation: Увімкніть цю функцію
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  a2fd1434a7c21bb2:
+    english: Then add a new webhook
+    translation: Додайте новий вебхук
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  364ccb658072c895:
+    english: Select a channel
+    translation: Виберіть канал
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  a0ab356346501ef4:
+    english: Copy the webhook URL to your clipboard
+    translation: Скопіюйте URL-адресу вебхука до буфера обміну
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  '00578f28c33f1ea1':
+    english: 'Now that you have a Webhook URL, continue setting up your chat integration:'
+    translation: 'Отримавши URL-адресу вебхука, продовжте налаштування інтеграції з чатом:'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  894c0911cade4b44:
+    english: "[Set up a chat integration in Loomio](../chatbots/#set-up-a-chat-integration)"
+    translation: "[Налаштуйте інтеграцію з чатом у Loomio](../chatbots/#set-up-a-chat-integration)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  82f871fb7e17c291:
+    english: _Loomio is not created by, affiliated with, or supported by Slack._
+    translation: _Компанія Slack не створювала Loomio, не пов’язана з Loomio і не підтримує його._
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'

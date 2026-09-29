@@ -1,0 +1,93 @@
+---
+navigation_title: Beleegyezés
+blocks:
+  9153f30a2c3db9f2:
+    english: "# Consent"
+    translation: "# Beleegyezés"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  e16bed826124695f:
+    english: A Consent proposal asks whether a course of action is safe to try. Participants either consent or raise an objection. An objection identifies a concrete risk or harm that the proposal should address.
+    translation: A beleegyezésen alapuló javaslat arra kérdez rá, hogy biztonságos-e kipróbálni egy tervezett lépést. A résztvevők egyetértenek vele, vagy tiltakoznak ellene. A tiltakozás konkrét kockázatot vagy lehetséges kárt jelöl meg, amellyel a javaslatnak foglalkoznia kell.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  d675dd47ae42c929:
+    english: This page explains how to run one Consent proposal. See the [Consent process](/en/guides/making_decisions/consent_process) for the complete workflow, including questions, Sense check, amendments, objections, and outcome.
+    translation: Ez az oldal bemutatja, hogyan vezess le egy beleegyezésen alapuló javaslatot. A teljes folyamatot, benne a kérdéseket, az érzékellenőrzést, a módosításokat, a tiltakozásokat és a következtetést, a [Beleegyezési folyamat](/en/guides/making_decisions/consent_process) című útmutató ismerteti.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  7c4c79526b1d437b:
+    english: "## When to use Consent"
+    translation: "## Mikor használd a beleegyezést"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  1b99c0443bd1e4c8:
+    english: Use Consent when the group needs a workable decision that can proceed unless there is a valid objection. It suits experiments, operational policies, role agreements, and other decisions the group can review after gaining experience.
+    translation: Akkor használd a beleegyezést, ha a csoportnak olyan megvalósítható döntésre van szüksége, amely érvényes tiltakozás hiányában végrehajtható. Alkalmas kísérletekhez, működési szabályokhoz, szerepekről szóló megállapodásokhoz és más olyan döntésekhez, amelyeket a csoport a tapasztalatok alapján később felülvizsgálhat.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  966f3146dc9f61f1:
+    english: Consent does not require everyone to prefer the proposal. Define what counts as an objection before voting, and explain how objections will be tested and resolved.
+    translation: A beleegyezéshez nem kell, hogy mindenkinek a javaslat legyen a kedvenc megoldása. A szavazás előtt határozd meg, mi számít tiltakozásnak, és mondd el, hogyan vizsgáljátok meg és oldjátok fel a tiltakozásokat.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  e6cf2f0ebd4a7f58:
+    english: "## Example: start a bottle trial"
+    translation: "## Példa: palackvisszaváltási próba indítása"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  ad7be5e188748cb3:
+    english: Oatmilk Cooperative proposes starting a six-week returnable-bottle trial next month. The trial is limited in scope and includes a review, so the group asks whether it is safe to try.
+    translation: Az Oatmilk Szövetkezet azt javasolja, hogy a következő hónapban indítsanak hathetes próbát visszaváltható palackokkal. A próba korlátozott körű, és felülvizsgálat is tartozik hozzá, ezért a csoport azt mérlegeli, hogy biztonságos-e kipróbálni.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  9703f1f9474243af:
+    english: "## Set up the proposal"
+    translation: "## A javaslat beállítása"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  6458750b94201df6:
+    english: Describe the proposed action, its limits, safeguards, and review point. Keep **Consent** and **Objection** meanings precise, and require a reason for objections so the concern can be understood and addressed.
+    translation: Írd le a javasolt lépést, annak korlátait, a biztosítékokat és a felülvizsgálat időpontját. Pontosan határozd meg az **Egyetértés** és a **Tiltakozás** jelentését. A tiltakozáshoz kérj indoklást, hogy a csoport megérthesse és kezelhesse az aggályt.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  d391457c69df967f:
+    english: "## Vote"
+    translation: "## Szavazás"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  d98c0e71880c8828:
+    english: Participants select **Consent** when the proposal is safe enough to try, even if it is not their preferred plan. They select **Objection** when they can describe a material risk or harm.
+    translation: A résztvevők az **Egyetértés** lehetőséget választják, ha a javaslatot elég biztonságosnak tartják a kipróbáláshoz, akkor is, ha más megoldást részesítenének előnyben. A **Tiltakozás** lehetőséget választják, ha jelentős kockázatot vagy lehetséges kárt tudnak megnevezni.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  72a9e4073ea27936:
+    english: "## Read the results"
+    translation: "## Az eredmények áttekintése"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  b0265040032f48e5:
+    english: The chart makes objections visible, but the group must examine the reasons. Resolve a valid objection by amending the proposal, adding a safeguard, changing its scope, or deciding not to proceed.
+    translation: A diagram láthatóvá teszi a tiltakozásokat, de a csoportnak az indokokat is meg kell vizsgálnia. Egy érvényes tiltakozást a javaslat módosításával, biztosíték bevezetésével vagy a javaslat hatókörének megváltoztatásával kezeljetek. Arról is dönthettek, hogy nem folytatjátok a tervet.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  a87df65569cb3a09:
+    english: Publish an outcome that records the agreed action, any safeguards, who is responsible, and when the group will review it.
+    translation: Tegyél közzé egy következtetést, amely rögzíti az elfogadott lépést, az esetleges biztosítékokat, a felelősöket és a felülvizsgálat időpontját.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'

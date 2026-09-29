@@ -1,0 +1,107 @@
+---
+navigation_title: Sense check
+blocks:
+  5c5bf2d96ddf4ca2:
+    english: "# Sense check"
+    translation: "# Sense check"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  4ec1b55b6ebaf563:
+    english: Sense check gathers reactions while an idea is still being developed. Its options—**Looks good**, **Could be better**, and **Needs a rethink**—show whether the group is ready to proceed or should revise the idea first.
+    translation: Sense check kerää mielipiteitä, kun ideaa vielä kehitetään. Vaihtoehdot **Näyttää hyvältä**, **Voisi olla parempi** ja **Tarvitsee uudelleenarviointia** kertovat, voiko ryhmä edetä vai pitääkö ideaa ensin muokata.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  43573d5547783c67:
+    english: This page explains how to run one Sense check. See the [Simple decision process](/en/guides/making_decisions/simple_decision_process), [Consent process](/en/guides/making_decisions/consent_process), or [Consensus process](/en/guides/making_decisions/consensus_process) for examples of using Sense check as one stage of a larger process.
+    translation: Tällä sivulla kerrotaan, miten teet Sense check -kyselyn. Katso [yksinkertainen päätösprosessi](/en/guides/making_decisions/simple_decision_process), [suostumusprosessi](/en/guides/making_decisions/consent_process) tai [konsensusprosessi](/en/guides/making_decisions/consensus_process), jos haluat nähdä esimerkkejä Sense checkin käytöstä osana laajempaa prosessia.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  5ad4c12fda490468:
+    english: "## When to use Sense check"
+    translation: "## Milloin Sense checkiä kannattaa käyttää"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  dc841c725ef4e519:
+    english: 'Use Sense check to:'
+    translation: 'Käytä Sense checkiä, kun haluat:'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  8472db2ec587add8:
+    english: |-
+      - test an early draft before investing in a detailed proposal;
+      - uncover questions and concerns before a formal decision;
+      - check whether another round of discussion is needed; or
+      - compare support before and after revising an idea.
+    translation: |-
+      - testata varhaista luonnosta ennen yksityiskohtaisen ehdotuksen laatimista;
+      - tuoda kysymykset ja huolenaiheet esiin ennen varsinaista päätöstä;
+      - selvittää, tarvitaanko vielä lisää keskustelua; tai
+      - verrata idean saamaa kannatusta ennen sen muokkaamista ja sen jälkeen.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  f411d599f7810e88:
+    english: Do not treat **Looks good** as formal approval unless the group has explicitly agreed to do so. Use [Consent](../consent/) or [Consensus](../consensus/) when the response must authorize a decision.
+    translation: Älä pidä vastausta **Näyttää hyvältä** muodollisena hyväksyntänä, ellei ryhmä ole nimenomaisesti sopinut siitä. Käytä [suostumusta](../consent/) tai [konsensusta](../consensus/), kun vastausten perusteella on voitava tehdä päätös.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  e504f1a6f38ec6ad:
+    english: "## Example: check a trial plan"
+    translation: "## Esimerkki: kokeilusuunnitelman arviointi"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  dd13b88fd1a52d50:
+    english: Oatmilk Cooperative has drafted a returnable-bottle trial. It runs a Sense check to learn whether the collection schedule, washing checks, and reporting plan are ready for final review.
+    translation: Kauramaito-osuuskunta on laatinut suunnitelman palautuspullojen kokeilusta. Se käyttää Sense checkiä selvittääkseen, ovatko pullojen keräysaikataulu, pesun tarkistukset ja raportointisuunnitelma valmiita lopulliseen arviointiin.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  9703f1f9474243af:
+    english: "## Set up the proposal"
+    translation: "## Ehdotuksen valmistelu"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  48d89110b4c23c6f:
+    english: State what stage the idea has reached and what will happen with the feedback. Keep the default response meanings or edit them to match the group's language. Set a closing time that leaves enough time to revise the plan.
+    translation: Kerro, missä vaiheessa idea on ja miten palautetta käytetään. Säilytä vastausvaihtoehtojen oletusmerkitykset tai muokkaa niitä ryhmän käyttämään kieleen sopiviksi. Aseta sulkeutumisaika niin, että suunnitelman muokkaamiseen jää riittävästi aikaa.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  d391457c69df967f:
+    english: "## Vote"
+    translation: "## Äänestä"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  4a0f4779c6103c9c:
+    english: Participants choose the response that best represents their current view and explain what is ready or what should change. A useful reason gives the proposal author something specific to act on.
+    translation: Osallistujat valitsevat nykyistä näkemystään parhaiten kuvaavan vaihtoehdon ja kertovat, mikä on valmista tai mitä pitäisi muuttaa. Hyvä perustelu antaa ehdotuksen tekijälle konkreettisen muutosehdotuksen.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  72a9e4073ea27936:
+    english: "## Read the results"
+    translation: "## Tulosten tarkastelu"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  ddcd496a30ab97da:
+    english: 'The chart shows the number and proportion of votes for each response. Read the reasons as well as the distribution: one well-founded concern may require attention even when most participants select **Looks good**.'
+    translation: 'Kaavio näyttää kunkin vastausvaihtoehdon äänimäärän ja osuuden. Lue myös perustelut: yksikin hyvin perusteltu huolenaihe voi vaatia huomiota, vaikka useimmat osallistujat valitsisivat **Näyttää hyvältä**.'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  d9ac55d3e75e5484:
+    english: Publish an outcome that summarizes the changes the group will make, or records that the idea is ready for the next decision stage.
+    translation: Julkaise johtopäätös, jossa kerrot, mitä ryhmä muuttaa, tai kirjaat, että idea on valmis päätösprosessin seuraavaan vaiheeseen.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'

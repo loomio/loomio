@@ -1,0 +1,191 @@
+---
+navigation_title: Ehdotukset ja kyselyt
+blocks:
+  68e2a02de493acf3:
+    english: "# Proposals and polls"
+    translation: "# Ehdotukset ja kyselyt"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  ff07fce3bab705aa:
+    english: Proposals and polls collect structured responses from a group. They can help test an idea, make a decision, identify priorities, schedule a meeting, or elect representatives.
+    translation: Ehdotukset ja kyselyt keräävät ryhmän vastaukset määrämuotoisesti. Niiden avulla voit kokeilla ideaa, tehdä päätöksen, selvittää tärkeysjärjestyksen, sopia tapaamisen ajankohdan tai valita edustajia.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  f031d2644fee2a91:
+    english: "## Find the right help"
+    translation: "## Löydä oikea ohje"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  34039c79ea769793:
+    english: 'These parts of the manual answer different questions:'
+    translation: 'Käsikirjan eri osat vastaavat eri kysymyksiin:'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  34ea9d58ccbf80fb:
+    english: |-
+      | If you want to… | Read… |
+      |---|---|
+      | Choose what participants should express | [Proposals](../proposals/) or [Polls](../proposal_types/) |
+      | Run a specific proposal template | [Sense check](../proposals/sense_check/), [Advice](../proposals/advice/), [Consent](../proposals/consent/), or [Consensus](../proposals/consensus/) |
+      | Configure the templates available to a group | [Poll templates](../poll_templates/) |
+      | Facilitate a decision from discussion to outcome | [Making decisions](/en/guides/making_decisions/) |
+    translation: |-
+      | Jos haluat… | Lue… |
+      |---|---|
+      | Valita, millaisen kannan osallistujat ilmaisevat | [Ehdotukset](../proposals/) tai [Kyselyt](../proposal_types/) |
+      | Käyttää tiettyä ehdotusmallia | [Tunnustele mielipiteitä](../proposals/sense_check/), [Pyydä neuvoja](../proposals/advice/), [Hae suostumusta](../proposals/consent/) tai [Hae yhteisymmärrystä](../proposals/consensus/) |
+      | Määrittää ryhmän käytettävissä olevat mallit | [Kyselymallit](../poll_templates/) |
+      | Ohjata päätöksentekoa keskustelusta johtopäätökseen | [Päätöksenteko](/en/guides/making_decisions/) |
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  7eddb057cca077f4:
+    english: A **voting method** defines how people respond and how results are calculated. A **poll template** is a reusable configuration built on a voting method, with preset instructions, options, and settings. A **decision process** may use a discussion and several templates before the group reaches an outcome.
+    translation: "**Äänestystapa** määrittää, miten ihmiset vastaavat ja miten tulokset lasketaan. **Kyselymalli** on uudelleenkäytettävä äänestystapaan perustuva malli, jossa ohjeet, vaihtoehdot ja asetukset on määritetty valmiiksi. **Päätöksentekoprosessi** voi sisältää keskustelun ja useita malleja ennen kuin ryhmä päätyy johtopäätökseen."
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  3cd46aa2f1240e88:
+    english: "## Proposals"
+    translation: "## Ehdotukset"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  85a55fccaf4e4032:
+    english: 'A proposal asks people to respond to a statement or course of action. Loomio includes templates for common purposes:'
+    translation: 'Ehdotus pyytää ihmisiä ottamaan kantaa väitteeseen tai toimintatapaan. Loomiossa on malleja tavallisiin käyttötarkoituksiin:'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  51bf1ffa7d057d9e:
+    english: |-
+      - [Sense check](../proposals/sense_check/) gathers early reactions;
+      - [Advice](../proposals/advice/) gathers input for a decision maker;
+      - [Consent](../proposals/consent/) tests for meaningful objections; and
+      - [Consensus](../proposals/consensus/) seeks collective agreement.
+    translation: |-
+      - [Tunnustele mielipiteitä](../proposals/sense_check/) kerää alustavia näkemyksiä;
+      - [Pyydä neuvoja](../proposals/advice/) kerää näkemyksiä päätöksentekijälle;
+      - [Hae suostumusta](../proposals/consent/) selvittää, onko merkittäviä vastalauseita; ja
+      - [Hae yhteisymmärrystä](../proposals/consensus/) pyrkii yhteiseen näkemykseen.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  d01e9f85fcd2d9c2:
+    english: See [Proposals](../proposals/) to compare them.
+    translation: Vertaile malleja sivulla [Ehdotukset](../proposals/).
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  821dcd89b5460804:
+    english: "## Polls"
+    translation: "## Kyselyt"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  ec746235c7fe89c4:
+    english: 'Use a poll when participants need to select, score, allocate, rank, state their availability, or cast an election ballot:'
+    translation: 'Käytä kyselyä, kun osallistujien pitää valita, antaa pisteitä, jakaa pisteitä vaihtoehtojen kesken, asettaa vaihtoehtoja järjestykseen, ilmoittaa käytettävyytensä tai äänestää vaalissa:'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  b93f9fe9611d9205:
+    english: |-
+      - [Choose](../choose/) finds popular options;
+      - [Score](../score/) evaluates every option on a scale;
+      - [Allocate](../allocate/) distributes a limited budget of points;
+      - [Rank](../rank/) finds an overall order of preference;
+      - [Time poll](../meeting_polls/) finds when people are available; and
+      - [STV Election](../stv/) elects multiple winners proportionally.
+    translation: |-
+      - [Valitse](../choose/) selvittää suosituimmat vaihtoehdot;
+      - [Pisteytä](../score/) arvioi jokaisen vaihtoehdon asteikolla;
+      - [Jaa pisteet](../allocate/) jakaa rajallisen pistemäärän vaihtoehtojen kesken;
+      - [Aseta järjestykseen](../rank/) selvittää vaihtoehtojen yleisen suosituimmuusjärjestyksen;
+      - [Ajankohtakysely](../meeting_polls/) selvittää, milloin ihmisille sopii; ja
+      - [STV-vaali](../stv/) valitsee useita edustajia suhteellisesti.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  9972b34ccc3ea79b:
+    english: See [Polls](../proposal_types/) to compare them.
+    translation: Vertaile kyselyitä sivulla [Kyselyt](../proposal_types/).
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  5890626db6dcbb68:
+    english: "## Start a proposal or poll"
+    translation: "## Aloita ehdotus tai kysely"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  4b5338cae269fd32:
+    english: "### Choose whether to use a discussion"
+    translation: "### Valitse, käytätkö keskustelua"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  c45fe8ff31f71486:
+    english: Start the proposal or poll inside a discussion when people need context, questions, or conversation before responding. A discussion can contain several proposals over time, keeping amendments and the eventual outcome together as one record of the topic.
+    translation: Aloita ehdotus tai kysely keskustelussa, kun ihmiset tarvitsevat taustatietoa tai mahdollisuuden esittää kysymyksiä ja keskustella ennen vastaamista. Keskusteluun voi ajan mittaan kuulua useita ehdotuksia. Näin muutokset ja lopullinen johtopäätös pysyvät saman aiheen yhteydessä.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  0bb2a90f8f9dad0c:
+    english: Run a standalone poll when the discussion has already happened elsewhere, such as at a meeting, or when the question is simple and you only need to collect responses. Include enough detail or a link to the relevant record so voters understand what they are responding to.
+    translation: Aloita erillinen kysely, jos keskustelu on jo käyty muualla, esimerkiksi kokouksessa, tai jos kysymys on yksinkertainen ja haluat vain kerätä vastaukset. Lisää riittävästi taustatietoa tai linkki asiaankuuluvaan aineistoon, jotta äänestäjät ymmärtävät, mihin he vastaavat.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  7d50445f0c54190d:
+    english: "### In a discussion"
+    translation: "### Keskustelussa"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  05e03f7ee0e1b4dc:
+    english: Open the discussion, scroll to the reply area, select **Start a vote**, and choose a template.
+    translation: Avaa keskustelu, vieritä vastausalueelle, valitse **Aloita äänestys** ja valitse malli.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  55dc0481a5c4ecb6:
+    english: "### Without a discussion"
+    translation: "### Ilman keskustelua"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  af5fd115de5f7aec:
+    english: Open the **Polls** tab on the group page, select **New poll**, and choose a template.
+    translation: Avaa ryhmän sivulla **Kyselyt**-välilehti, valitse **Uusi kysely** ja valitse malli.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  23479ea263004d4a:
+    english: If you create a discussion and poll at the same time only to run a vote, avoid notifying people twice. Start the discussion without notifying them and use the poll invitation, or run the poll without a discussion.
+    translation: Jos luot keskustelun ja kyselyn samaan aikaan vain äänestystä varten, vältä ilmoittamasta ihmisille kahdesti. Aloita keskustelu ilmoittamatta heille ja käytä kyselyn kutsua tai järjestä kysely ilman keskustelua.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  31f857d230319a3c:
+    english: "## What happens next"
+    translation: "## Mitä seuraavaksi tapahtuu"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  fb709a76dfeabd4f:
+    english: When starting a proposal or poll, you provide a title and details, review its response options and settings, set a closing time, and invite participants. While it is open, participants can vote, explain their response, and change their vote. Results update as votes are submitted, subject to the poll's result-visibility setting.
+    translation: Kun aloitat ehdotuksen tai kyselyn, annat sille otsikon ja lisätiedot, tarkistat vastausvaihtoehdot ja asetukset, asetat sulkeutumisajan ja kutsut osallistujat. Kyselyn ollessa avoinna osallistujat voivat äänestää, perustella vastauksensa ja muuttaa ääntään. Tulokset päivittyvät, kun ääniä annetaan, kyselyn tulosten näkyvyysasetuksen mukaisesti.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  acd2e813b56034a0:
+    english: When it closes, publish an [outcome](../outcomes/) that records what the result means and what will happen next.
+    translation: Kun ehdotus tai kysely sulkeutuu, julkaise [johtopäätös](../outcomes/), jossa kerrot, mitä tulos merkitsee ja mitä seuraavaksi tapahtuu.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'

@@ -1,0 +1,75 @@
+---
+navigation_title: פרופיל
+blocks:
+  04c18671ca588e8c:
+    english: "# Group profile"
+    translation: "# פרופיל הקבוצה"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  0b903e1c3c7e1862:
+    english: The profile tab controls how your group is identified and introduced. Open **Edit group settings** from the group page, then select **Profile**.
+    translation: בלשונית הפרופיל ניתן לקבוע כיצד הקבוצה מזוהה ומוצגת. בדף הקבוצה יש לפתוח את **ערוך הגדרות קבוצה** ולבחור ב**פרופיל**.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  1baaad2a0c6c8909:
+    english: "![Group profile settings](group_profile.png)"
+    translation: "![הגדרות פרופיל הקבוצה](group_profile.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  a1c12efad8cb82f5:
+    english: "## Name and handle"
+    translation: "## שם ומזהה קבוצה"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  3643c2e2ffd5db73:
+    english: Choose a concise group name, particularly if the group will contain subgroups. Loomio uses the handle in the group's web address and group email address, such as `loomio.com/your-group-handle` and `your-group-handle@loomio.com`.
+    translation: יש לבחור שם קצר לקבוצה, במיוחד אם יהיו בה תתי־קבוצות. Loomio משתמשת במזהה הקבוצה בכתובת האינטרנט ובכתובת הדוא״ל שלה, למשל `loomio.com/your-group-handle` ו־`your-group-handle@loomio.com`.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  5a6e298a019f6a15:
+    english: When you change the handle, links using the previous handle redirect to the new address, and email sent to the previous group address continues to reach the group. Loomio retains up to three previous handles; changing the handle again after that causes the oldest one to expire.
+    translation: לאחר שינוי מזהה הקבוצה, קישורים עם המזהה הקודם מפנים לכתובת החדשה, והודעות שנשלחות לכתובת הדוא״ל הקודמת ממשיכות להגיע לקבוצה. Loomio שומרת עד שלושה מזהים קודמים. אם משנים את המזהה שוב לאחר מכן, המזהה הישן ביותר מפסיק לפעול.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  2b45dd41be9c3d1d:
+    english: "## Description"
+    translation: "## תיאור"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  7b707620077d9d19:
+    english: Use the description to explain what the group is for, who participates, and how people are expected to use it. You can format the description and include links, documents, and videos.
+    translation: בתיאור ניתן להסביר מה מטרת הקבוצה, מי משתתפים בה וכיצד מצופה להשתמש בה. ניתן לעצב את התיאור ולכלול בו קישורים, מסמכים וסרטונים.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  93a11a5e2927833e:
+    english: The name and description may be visible to non-members depending on the group's [privacy settings](/en/user_manual/groups/settings/privacy).
+    translation: ייתכן ששם הקבוצה והתיאור שלה יהיו גלויים גם למי שאינם חברים בה, בהתאם ל[הגדרות הפרטיות](/en/user_manual/groups/settings/privacy) של הקבוצה.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  0dff03268238aa26:
+    english: "## Cover image and logo"
+    translation: "## תמונת רקע ולוגו"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  9d08dda635bd5ce6:
+    english: The cover image appears across the top of the group page. A wide image works best; the recommended size is 2048 × 512 pixels.
+    translation: תמונת הרקע מופיעה לרוחב החלק העליון של דף הקבוצה. מומלץ להשתמש בתמונה רחבה בגודל 2048 × 512 פיקסלים.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  cc04654d8d08da59:
+    english: The group logo identifies the group in navigation and other compact contexts. Upload the cover image and logo separately so each can be cropped for its intended shape.
+    translation: הלוגו מזהה את הקבוצה בניווט ובמקומות אחרים שבהם מוצגת תמונה קטנה. יש להעלות את תמונת הרקע ואת הלוגו בנפרד, כדי שניתן יהיה לחתוך כל אחד מהם לצורה המתאימה לו.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'

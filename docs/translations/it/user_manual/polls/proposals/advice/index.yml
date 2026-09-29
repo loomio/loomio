@@ -1,0 +1,93 @@
+---
+navigation_title: Consiglio
+blocks:
+  2072a463e55dfba1:
+    english: "# Advice"
+    translation: "# Consiglio"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  aadbf3844be4a95f:
+    english: An Advice proposal gathers input for a decision that a person or team is responsible for making. Participants can offer advice or indicate that they have no advice to add.
+    translation: Una proposta di Consiglio raccoglie contributi per una decisione che spetta a una persona o a un gruppo di lavoro. I partecipanti possono dare un consiglio o indicare che non hanno nulla da aggiungere.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  769a2446fc3ec4a9:
+    english: This page explains the Advice proposal form, voting, and results. See the [Advice process](/en/guides/making_decisions/advice_process) for the complete workflow from framing the decision to publishing an outcome.
+    translation: Questa pagina spiega come compilare la proposta di Consiglio, votare e leggere i risultati. Consulta il [processo di Consiglio](/en/guides/making_decisions/advice_process) per seguire tutte le fasi, dalla definizione della decisione alla pubblicazione della conclusione.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  f19e32088d70eec4:
+    english: "## When to use Advice"
+    translation: "## Quando usare Consiglio"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  d4c7e7da6f2d5860:
+    english: Use Advice when the decision maker wants input from people with relevant expertise or people affected by the decision. It works well for supplier choices, operational decisions, policy drafts, and decisions within a delegated role.
+    translation: Usa Consiglio quando chi prende la decisione vuole sentire persone con competenze pertinenti o persone che ne subiranno gli effetti. È utile per scegliere fornitori, prendere decisioni operative, preparare bozze di politiche e decidere nell'ambito di un ruolo delegato.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  a81e33e00080fbe4:
+    english: Advice is not an approval vote. Say who will make the decision, what constraints apply, and how they will consider the responses.
+    translation: Consiglio non è un voto di approvazione. Indica chi prenderà la decisione, quali vincoli si applicano e come terrà conto delle risposte.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  4be7ef0783f6e444:
+    english: "## Example: choose a washing supplier"
+    translation: "## Esempio: scegliere un fornitore per il lavaggio"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  d8157e98107798c6:
+    english: Oatmilk Cooperative's operations coordinator must select a washing supplier. They invite advice about capacity, food-safety records, water use, service response times, and support.
+    translation: La persona che coordina le attività operative della Cooperativa Oatmilk deve scegliere un fornitore per il lavaggio. Chiede consigli sulla capacità produttiva, la documentazione relativa alla sicurezza alimentare, il consumo d'acqua, i tempi di risposta del servizio e l'assistenza.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  9703f1f9474243af:
+    english: "## Set up the proposal"
+    translation: "## Preparare la proposta"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  6b9c305f0f4000d9:
+    english: Describe the decision, name the decision maker, and include the information participants need. Invite people who are affected or have relevant knowledge. The default options let someone offer advice or abstain.
+    translation: Descrivi la decisione, indica chi la prenderà e includi le informazioni necessarie ai partecipanti. Invita le persone coinvolte o con conoscenze pertinenti. Le opzioni predefinite permettono di dare un consiglio o di astenersi.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  d391457c69df967f:
+    english: "## Vote"
+    translation: "## Votare"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  0a259af7a59899b7:
+    english: Participants select **Advice** and give a concrete recommendation, risk, question, or relevant experience. They can abstain when they have no useful input.
+    translation: I partecipanti selezionano **Consiglio** e condividono una raccomandazione concreta, un rischio, una domanda o un'esperienza pertinente. Possono astenersi se non hanno contributi utili.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  72a9e4073ea27936:
+    english: "## Read the results"
+    translation: "## Leggere i risultati"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  1d4bf7b5d0079f87:
+    english: The chart confirms who has responded, but the reasons contain the substance of an Advice proposal. Look for constraints, agreements, and conflicting recommendations rather than treating the most common response as the decision.
+    translation: Il grafico mostra chi ha risposto, ma le motivazioni sono la parte sostanziale di una proposta di Consiglio. Cerca vincoli, punti di accordo e raccomandazioni contrastanti. La risposta più frequente non determina la decisione.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  e9fc01ce6c059f29:
+    english: The decision maker publishes an outcome explaining what they decided and how the advice informed it.
+    translation: Chi prende la decisione pubblica una conclusione in cui spiega che cosa ha deciso e come ha tenuto conto dei consigli ricevuti.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'

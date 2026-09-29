@@ -1,0 +1,191 @@
+---
+navigation_title: Propostas e enquetes
+blocks:
+  68e2a02de493acf3:
+    english: "# Proposals and polls"
+    translation: "# Propostas e enquetes"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  ff07fce3bab705aa:
+    english: Proposals and polls collect structured responses from a group. They can help test an idea, make a decision, identify priorities, schedule a meeting, or elect representatives.
+    translation: Propostas e enquetes coletam respostas estruturadas de um grupo. Elas ajudam a testar uma ideia, tomar uma decisão, identificar prioridades, agendar uma reunião ou eleger representantes.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  f031d2644fee2a91:
+    english: "## Find the right help"
+    translation: "## Encontre a orientação certa"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  34039c79ea769793:
+    english: 'These parts of the manual answer different questions:'
+    translation: 'Estas partes do manual respondem a perguntas diferentes:'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  34ea9d58ccbf80fb:
+    english: |-
+      | If you want to… | Read… |
+      |---|---|
+      | Choose what participants should express | [Proposals](../proposals/) or [Polls](../proposal_types/) |
+      | Run a specific proposal template | [Sense check](../proposals/sense_check/), [Advice](../proposals/advice/), [Consent](../proposals/consent/), or [Consensus](../proposals/consensus/) |
+      | Configure the templates available to a group | [Poll templates](../poll_templates/) |
+      | Facilitate a decision from discussion to outcome | [Making decisions](/en/guides/making_decisions/) |
+    translation: |-
+      | Se você quer… | Leia… |
+      |---|---|
+      | Escolher o que os participantes devem expressar | [Propostas](../proposals/) ou [Enquetes](../proposal_types/) |
+      | Usar um modelo de proposta específico | [Verificação de opinião](../proposals/sense_check/), [Aconselhamento](../proposals/advice/), [Consentimento](../proposals/consent/) ou [Consenso](../proposals/consensus/) |
+      | Configurar os modelos disponíveis para um grupo | [Modelos de enquetes](../poll_templates/) |
+      | Conduzir uma decisão da discussão até a conclusão | [Tomada de decisões](/en/guides/making_decisions/) |
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  7eddb057cca077f4:
+    english: A **voting method** defines how people respond and how results are calculated. A **poll template** is a reusable configuration built on a voting method, with preset instructions, options, and settings. A **decision process** may use a discussion and several templates before the group reaches an outcome.
+    translation: Um **método de votação** define como as pessoas respondem e como os resultados são calculados. Um **modelo de enquete** é uma configuração reutilizável baseada em um método de votação, com instruções, opções e configurações predefinidas. Um **processo de decisão** pode incluir uma discussão e vários modelos antes que o grupo chegue a uma conclusão.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  3cd46aa2f1240e88:
+    english: "## Proposals"
+    translation: "## Propostas"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  85a55fccaf4e4032:
+    english: 'A proposal asks people to respond to a statement or course of action. Loomio includes templates for common purposes:'
+    translation: 'Uma proposta pede que as pessoas respondam a uma afirmação ou a um plano de ação. O Loomio inclui modelos para finalidades comuns:'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  51bf1ffa7d057d9e:
+    english: |-
+      - [Sense check](../proposals/sense_check/) gathers early reactions;
+      - [Advice](../proposals/advice/) gathers input for a decision maker;
+      - [Consent](../proposals/consent/) tests for meaningful objections; and
+      - [Consensus](../proposals/consensus/) seeks collective agreement.
+    translation: |-
+      - [Verificação de opinião](../proposals/sense_check/) reúne as primeiras reações;
+      - [Aconselhamento](../proposals/advice/) reúne contribuições para quem toma a decisão;
+      - [Consentimento](../proposals/consent/) verifica se há objeções relevantes; e
+      - [Consenso](../proposals/consensus/) busca um acordo coletivo.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  d01e9f85fcd2d9c2:
+    english: See [Proposals](../proposals/) to compare them.
+    translation: Consulte [Propostas](../proposals/) para comparar os modelos.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  821dcd89b5460804:
+    english: "## Polls"
+    translation: "## Enquetes"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  ec746235c7fe89c4:
+    english: 'Use a poll when participants need to select, score, allocate, rank, state their availability, or cast an election ballot:'
+    translation: 'Use uma enquete quando os participantes precisarem escolher opções, atribuir pontuações, distribuir pontos, ordenar preferências, informar sua disponibilidade ou votar em uma eleição:'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  b93f9fe9611d9205:
+    english: |-
+      - [Choose](../choose/) finds popular options;
+      - [Score](../score/) evaluates every option on a scale;
+      - [Allocate](../allocate/) distributes a limited budget of points;
+      - [Rank](../rank/) finds an overall order of preference;
+      - [Time poll](../meeting_polls/) finds when people are available; and
+      - [STV Election](../stv/) elects multiple winners proportionally.
+    translation: |-
+      - [Escolha](../choose/) identifica as opções mais populares;
+      - [Pontuação](../score/) avalia cada opção em uma escala;
+      - [Distribuição](../allocate/) distribui uma quantidade limitada de pontos;
+      - [Classificação](../rank/) identifica a ordem geral de preferência;
+      - [Enquete de horário](../meeting_polls/) identifica quando as pessoas estão disponíveis; e
+      - [Eleição STV](../stv/) elege vários representantes de forma proporcional.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  9972b34ccc3ea79b:
+    english: See [Polls](../proposal_types/) to compare them.
+    translation: Consulte [Enquetes](../proposal_types/) para comparar os tipos.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  5890626db6dcbb68:
+    english: "## Start a proposal or poll"
+    translation: "## Inicie uma proposta ou enquete"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  4b5338cae269fd32:
+    english: "### Choose whether to use a discussion"
+    translation: "### Escolha se vai usar uma discussão"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  c45fe8ff31f71486:
+    english: Start the proposal or poll inside a discussion when people need context, questions, or conversation before responding. A discussion can contain several proposals over time, keeping amendments and the eventual outcome together as one record of the topic.
+    translation: Inicie a proposta ou enquete dentro de uma discussão quando as pessoas precisarem de contexto, perguntas ou uma conversa antes de responder. Uma discussão pode reunir várias propostas ao longo do tempo, mantendo as alterações e a conclusão final em um único registro do assunto.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  0bb2a90f8f9dad0c:
+    english: Run a standalone poll when the discussion has already happened elsewhere, such as at a meeting, or when the question is simple and you only need to collect responses. Include enough detail or a link to the relevant record so voters understand what they are responding to.
+    translation: Crie uma enquete independente quando a discussão já tiver ocorrido em outro lugar, como em uma reunião, ou quando a pergunta for simples e você só precisar coletar respostas. Inclua detalhes suficientes ou um link para o registro relevante, para que as pessoas entendam a que estão respondendo.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  7d50445f0c54190d:
+    english: "### In a discussion"
+    translation: "### Em uma discussão"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  05e03f7ee0e1b4dc:
+    english: Open the discussion, scroll to the reply area, select **Start a vote**, and choose a template.
+    translation: Abra a discussão, role até a área de resposta, selecione **Iniciar uma votação** e escolha um modelo.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  55dc0481a5c4ecb6:
+    english: "### Without a discussion"
+    translation: "### Sem uma discussão"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  af5fd115de5f7aec:
+    english: Open the **Polls** tab on the group page, select **New poll**, and choose a template.
+    translation: Abra a aba **Consultas** na página do grupo, selecione **Nova enquete** e escolha um modelo.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  23479ea263004d4a:
+    english: If you create a discussion and poll at the same time only to run a vote, avoid notifying people twice. Start the discussion without notifying them and use the poll invitation, or run the poll without a discussion.
+    translation: Se você criar uma discussão e uma enquete ao mesmo tempo apenas para realizar uma votação, evite notificar as pessoas duas vezes. Inicie a discussão sem notificá-las e use o convite da enquete, ou crie a enquete sem uma discussão.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  31f857d230319a3c:
+    english: "## What happens next"
+    translation: "## O que acontece depois"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  fb709a76dfeabd4f:
+    english: When starting a proposal or poll, you provide a title and details, review its response options and settings, set a closing time, and invite participants. While it is open, participants can vote, explain their response, and change their vote. Results update as votes are submitted, subject to the poll's result-visibility setting.
+    translation: Ao iniciar uma proposta ou enquete, você informa um título e os detalhes, revisa as opções de resposta e as configurações, define um horário de encerramento e convida os participantes. Enquanto estiver aberta, os participantes podem votar, explicar sua resposta e alterar seu voto. Os resultados são atualizados à medida que os votos são enviados, conforme a configuração de visibilidade dos resultados da enquete.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  acd2e813b56034a0:
+    english: When it closes, publish an [outcome](../outcomes/) that records what the result means and what will happen next.
+    translation: Quando ela terminar, publique uma [conclusão](../outcomes/) que registre o significado do resultado e o que acontecerá em seguida.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'

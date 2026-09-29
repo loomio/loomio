@@ -1,0 +1,285 @@
+---
+navigation_title: Початок роботи
+blocks:
+  43e4cbf778263d11:
+    english: "# Commencing"
+    translation: "# Початок роботи"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  0ce0604bb021d98f:
+    english: "## Invitation"
+    translation: "## Запрошення"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  8d5fabca3934dafd:
+    english: How participants are invited into a facilitated space is incredibly important. People understand huge amounts of information from the invitation, and use it to judge how a space will be held and if they belong there. The moment of invitation is in many ways the defining opportunity to set the tone and establish trust.
+    translation: Те, як учасників запрошують до простору для спільної роботи, має велике значення. Із запрошення люди дізнаються, як буде організована робота і чи є в ній місце для них. Саме запрошення дає змогу задати тон і закласти основу довіри.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  a8d7e10a50432195:
+    english: |-
+      > <img style="border-radius: 100%; float: right; margin-left: 0.5em; max-width: 96px; " src="../rich_200.png"> Decision making is all about communication: your group can only make good decisions together if there’s a foundation of good communication in place first. This means being clear about what the purpose of a discussion or meeting is, who needs to be involved, what the time-frame is, and what people can expect.
+      >
+      > — Richard Bartlett
+    translation: |-
+      > <img style="border-radius: 100%; float: right; margin-left: 0.5em; max-width: 96px; " src="../rich_200.png"> Ухвалення рішень починається зі спілкування. Група зможе разом ухвалювати виважені рішення, якщо спершу налагодить спілкування. Тому важливо чітко пояснити мету обговорення чи зустрічі, кого потрібно залучити, скільки це триватиме і чого людям очікувати.
+      >
+      > — Річард Бартлетт
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  ab260e60bf87a11d:
+    english: 'Key aspects to an invitation:'
+    translation: 'Що важливо зазначити в запрошенні:'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  ff258493e21d7f3a:
+    english: |-
+      * **Background.** What is this thing? What am I being asked to do? Who is behind this? Who else will be involved? What is the time commitment, topic focus, and protocol?
+      * **Context.** What is the character of this specific engagement? Of all the possible formats and ways it could go, which one will it be? Why now, why this way?
+      * **Belonging.** Am I welcome? Is this for me? Am I needed in this process? What is my unique value and contribution? Why should I specifically be compelled?
+      * **Safety.** Does this invitation indicate thoughtfulness, trust, and understanding? Is the structure of the engagement up to handling the inherent power dynamics at play? What level of honesty or vulnerability will this require of me? Do I think the person inviting is going to hold me well?
+      * **Accessibility.** Will my basic requirements for participation be accommodated? Language, assistive technology, unfamiliar jargon, etc. Will it be possible for me to engage?
+    translation: |-
+      * **Передумови.** Що це за ініціатива? Що мені пропонують зробити? Хто її організовує? Хто ще братиме участь? Скільки часу це займе, якою буде тема і за якими правилами ми працюватимемо?
+      * **Контекст.** Яким буде саме цей процес? Який формат обрано з можливих варіантів? Чому це відбувається зараз і саме так?
+      * **Причетність.** Чи раді моїй участі? Чи це для мене? Чи потрібна моя участь у цьому процесі? Який внесок можу зробити саме я? Чому мені варто долучитися?
+      * **Безпека.** Чи свідчить запрошення про уважність, довіру й розуміння? Чи враховує організація процесу відмінності у впливі та владі між учасниками? Наскільки відвертим або вразливим мені доведеться бути? Чи можу я розраховувати на підтримку людини, яка мене запрошує?
+      * **Доступність.** Чи врахують мої основні потреби для участі? Мову, допоміжні технології, незнайомі терміни тощо? Чи зможу я долучитися?
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  aabfa9d842af2688:
+    english: On Loomio
+    translation: У Loomio
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  8a87ed2ddb6c659f:
+    english: |-
+      * The tool has a built-in function to [invite users](/en/user_manual/groups/inviting_people/) by email or by sending them a special link. Users can also request to join your group if your settings allow.
+      * The invitation tools built into the software are very basic, and getting an unexpected login request for new software without context isn't very inviting, so group creators often introduce people to the idea of Loomio through a separate process.
+      * Many aspects of Loomio are already designed to create a safe and respectful space users would want to enter — such as thoughtful [privacy options](/en/user_manual/groups/starting_a_group/#privacy).
+      * The design of the software itself is meant to be friendly, simple, and professional, hopefully putting out a trustworthy vibe.
+      * Loomio has accessibility features, for people who use assistive technology like screen readers, and translation features for people who speak different languages. Emphasising these aspects in an invitation can make some people feel more welcome.
+    translation: |-
+      * У Loomio можна [запросити користувачів](/en/user_manual/groups/inviting_people/) електронною поштою або надіслати їм спеціальне посилання. Користувачі також можуть подати запит на вступ до вашої групи, якщо це дозволяють її налаштування.
+      * Вбудовані засоби запрошення прості. Неочікуваний запит увійти в незнайому програму без пояснення навряд чи спонукає долучитися. Тому творці груп часто спочатку знайомлять людей із Loomio в інший спосіб.
+      * Багато можливостей Loomio допомагають створити безпечний простір для шанобливого спілкування. Серед них — продумані [налаштування конфіденційності](/en/user_manual/groups/starting_a_group/#privacy).
+      * Інтерфейс Loomio задумано як зрозумілий і зручний для роботи, щоб людям було легше довіряти простору.
+      * Loomio підтримує допоміжні технології, зокрема програми зчитування з екрана, а також переклад для людей, які говорять різними мовами. Якщо згадати про це в запрошенні, більше людей знатимуть, що можуть долучитися.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  cb459c1230aaf54c:
+    english: "## Arrival"
+    translation: "## Приєднання"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  ef55fa893f9e1034:
+    english: The moment of arrival is the “first impression” of an engagement, and sets the trajectory from there on in. The person has accepted an invitation and decided to step in. They are open and expectant, and the impression they get will make a big impact on their experience.
+    translation: Перші хвилини участі формують враження від усього процесу. Людина прийняла запрошення й вирішила долучитися. Вона готова до взаємодії та має певні очікування. Те, що вона побачить на початку, суттєво вплине на її подальший досвід.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  66e7e79597f6a3d0:
+    english: |-
+      ### Welcoming
+      To enable openness to engagement, participation, and receptivity, a person has to feel welcome. They need their existence acknowledged, and to feel a sense of hospitality.
+    translation: |-
+      ### Привітання
+      Щоб людина могла відкрито долучитися до роботи, їй потрібно відчути, що їй раді. Важливо помітити її присутність і привітно прийняти.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  b3ce2bd5e2ea9acd:
+    english: |-
+      ### Settling
+      When someone enters a physical room, they want to know where to sit, where the exit is, where to go to the bathroom, and if there is coffee available. They need a basic introduction to the space and their place in it.
+    translation: |-
+      ### Орієнтація
+      Коли людина заходить до кімнати, вона хоче знати, де сісти, де вихід і вбиральня та чи є кава. Їй потрібно коротко пояснити, як улаштований простір і де її місце в ньому.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  8d6fd9d29415a172:
+    english: |-
+      * The group description fields and discussion context box are the main space to put a “welcome message” for people arriving into the space.
+      * Take a tour of the Loomio space, tweak things to make yourself comfortable (like [notification settings](/en/user_manual/users/email_settings/) and your [profile photo](/en/user_manual/users/user_profile/).
+      * See information how you like using different thread views and options like Recent, Unread, Mute, and Star. Make yourself at home.
+    translation: |-
+      * Поля опису групи та поле контексту обговорення — основні місця для привітального повідомлення новим учасникам.
+      * Ознайомтеся з простором Loomio й налаштуйте його під себе, зокрема [сповіщення](/en/user_manual/users/email_settings/) та [фото профілю](/en/user_manual/users/user_profile/).
+      * Переглядайте інформацію у зручний для вас спосіб: використовуйте різні режими перегляду тем і такі параметри, як «Нещодавні», «Непрочитані», «Вимкнути сповіщення» та «Позначити зірочкою».
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  8acf15fe96515738:
+    english: "## Who’s in the Room"
+    translation: "## Хто бере участь"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  48c4449cd1d9b135:
+    english: Introducing yourself and being introduced to others is one of the most basic and most important human social functions. From Māori *mihimihi* to British “how do you do” to Japanese business card exchanges, every culture places a lot of importance on this. It goes beyond practicalities and politeness and touches on a deep human need, which is a prerequisite for comfort, openness, and focus.
+    translation: 'Представитися й познайомитися з іншими — одна з найважливіших складових людського спілкування. У різних культурах цьому приділяють багато уваги: від маорійського *mihimihi* до британського «як поживаєте?» чи японського обміну візитівками. Йдеться не лише про ввічливість або практичну користь. Знайомство допомагає людям почуватися спокійно, бути відкритими й зосередитися.'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  a8eec818aeb74e64:
+    english: As a facilitator, if you don’t give people a chance to introduce themselves and find out who is around them, they will generally subvert whatever else you’re trying to point their attention at until you allow this process to occur. Consciously design introductions as a feature, and use them as an opportunity to further the overall goals of the interaction.
+    translation: Якщо ви ведете процес і не даєте людям нагоди представитися та дізнатися, хто ще бере участь, їм зазвичай важко зосередитися на іншому. Передбачте час для знайомства. Воно також може допомогти досягти загальної мети зустрічі.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  ad3d2a31a23af036:
+    english: "### Check in"
+    translation: "### Коротке коло"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  71d51a259d8b2c35:
+    english: Even among groups who already know each other well, this introduction process continues with “checking in” – where everyone has a chance to speak at the beginning of a meeting (often to a question of "what is on top for you", "how are you", or "is there anything preventing you from being present") and other good practices for team cohesion. People have a multitude of identities, which change based on the context. People answer and re-answer “who am I for this moment” all the time, and that is what allows them to orient around one another.
+    translation: 'Навіть у групах, де всі добре знайомі, на початку зустрічі корисно провести коротке коло, у якому кожен може висловитися. Наприклад, можна запитати: «Що зараз для вас найважливіше?», «Як ви почуваєтеся?» або «Чи щось заважає вам бути залученими?». Це та інші подібні практики допомагають групі працювати злагоджено. Люди мають багато ролей, і залежно від обставин на перший план виходять різні з них. Відповідаючи на запитання «Хто я зараз?», учасники краще розуміють одне одного.'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  0573ae3aef6f1c6c:
+    english: People's expression does not occur in a vaccuum, but in the context of who they are. A multi-faceted view of someone’s identity is an essential aspect of interpreting their contributions.
+    translation: Слова людини не існують окремо від її досвіду та обставин. Щоб зрозуміти її внесок, важливо бачити різні сторони її особистості.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  86eb005fd168a424:
+    english: "> We start many of our meetings with everyone “checking in” before we get to the agenda. These check-ins are focused not on your work tasks, but on how you’re doing as a human being. If you’re going through a rough patch at home, or you’re sick, or you have exciting positive news, understanding your state of mind will help the entire group have the right context to interpret how you’re communicating. — Richard Bartlett"
+    translation: "> Багато наших зустрічей починаються з короткого кола, ще до порядку денного. Ми говоримо не про робочі завдання, а про те, як кожен почувається. Якщо вдома у вас складний період, ви хворієте або маєте радісні новини, розуміння вашого стану допоможе всій групі правильно сприймати те, як ви спілкуєтеся. — Річард Бартлетт"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  d5aea1c0564ccff8:
+    english: |-
+      * Create a thread called "Introduce yourself" or "Check in". It provides a useful first _call to action_ everyone coming in will understand.
+      * For “request to join” groups, we have a function that allows the requestor to introduce themselves to the coordinator, to get access to the group. Some groups have a process of re-posting this content in the intro thread to welcome people in.
+      * Upload profile photos! Photos of faces are one of the most powerful ways of feeling like you know who is in the room with you online.
+    translation: |-
+      * Створіть тему «Представтеся» або «Як ви почуваєтеся?». Це зрозумілий перший _заклик до дії_ для кожного, хто долучається.
+      * У групах, до яких вступають за запитом, людина може представитися координатору, щоб отримати доступ. У деяких групах це представлення потім публікують у темі знайомства, щоб привітати нового учасника.
+      * Завантажте фото профілю. Фотографії облич допомагають відчути, з ким ви спілкуєтеся онлайн.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  d3b245589018cebf:
+    english: "## Who’s NOT in the Room"
+    translation: "## Кого немає серед учасників"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  5daf97a7cbbdd355:
+    english: Diversity is critical for quality group decision making. The “wisdom of the crowd effect” (collective intelligence) only works by combining a variety of viewpoints. Outcomes of collaboration processes depend heavily on which voices are, and are not, represented. It’s impossible to have perfect representative inclusion, but you need to take into account who might be missing.
+    translation: Різноманітність поглядів важлива для якісних групових рішень. «Мудрість натовпу», або колективний інтелект, працює завдяки поєднанню різних точок зору. Результат спільної роботи значною мірою залежить від того, чиї голоси представлені, а чиї — ні. Неможливо забезпечити участь усіх, але варто подумати, кого бракує.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  b16b07380f6bc37c:
+    english: It’s extremely common for people to have blind spots around privilege. Humans are not great at intuiting bias, and are a lot better at noticing the presence of something, rather than the absence. Our minds trick us. For example, when women and men are deliberately given an equal amount of talking time there is often a perception that women are getting more than their fair share, due to different ideas about how much they “should” talk ([more details](https://www.quora.com/Do-women-tend-to-talk-more-than-men)). It can be necessary to actually measure or count to get an accurate picture, instead of relying on intuition.
+    translation: Люди часто не помічають переваг, які дає їм власне становище. Нам легше помітити присутність чогось, ніж його відсутність, і ми не завжди бачимо власні упередження. Наприклад, навіть коли жінкам і чоловікам свідомо надають однаковий час для виступів, може здаватися, що жінки говорять надто багато. Це пов’язано з різними уявленнями про те, скільки вони «мають» говорити ([докладніше](https://www.quora.com/Do-women-tend-to-talk-more-than-men)). Щоб отримати точну картину, іноді потрібно вимірювати й рахувати, а не покладатися на враження.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  2b720395fe4e451f:
+    english: Someone who does not have particular accessibility needs may not even notice that a venue isn’t wheelchair accessible, a document isn’t formatted for screen readers, or a situation is excluding someone with hearing loss. But the people with those challenges will notice. Someone without kids might not consider that a 7PM meeting time won't work for parents. These, and a thousand other practical, social, and cultural elements, could block someone from *being in the room*.
+    translation: Людина без особливих потреб щодо доступності може не помітити, що до місця зустрічі не можна потрапити на кріслі колісному, документ не підходить для програми зчитування з екрана, а умови не дають змоги взяти участь людині з порушенням слуху. Ті, кого це стосується, помітять. Людина без дітей може не подумати, що зустріч о 19:00 незручна для батьків. Ці та багато інших практичних, соціальних і культурних обставин можуть завадити комусь *бути серед учасників*.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  25ac4ed8610c591c:
+    english: 'It’s especially important to think about who is not in room when trying to solve problems for others: build with, not for; talk with people, not about them. If the people you are trying to serve are not in the room, it’s very unlikely you’ll have all the input you need to be effective. This is just as much about effectiveness for business outcomes as about social justice; it’s almost always better to design collaboration *with* the users or stakeholders.'
+    translation: 'Особливо важливо замислитися, кого немає серед учасників, коли ви розв’язуєте проблеми інших людей: працюйте разом із ними й розмовляйте з ними. Якщо людей, яким ви прагнете допомогти, немає в обговоренні, вам навряд чи вистачить інформації для дієвого рішення. Це важливо і для суспільної справедливості, і для результатів роботи. Зазвичай краще створювати рішення *разом із* користувачами або зацікавленими сторонами.'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  6b44ef1725c36586:
+    english: |-
+      * Collaborating online can allow for whole other levels of inclusion. Instead of thinking about a “digital divide”, think about the “digital bridge” — how technology can include people who cannot attend in-person meetings or participate at a specific time, and enable whole new possibilities like multi-lingual discussions.
+      * Loomio makes it very clear who is invited to a group and who has participated in a discussion, giving important information for thinking about inclusion. If people are missing, you can see that.
+      * If inclusive decision making and diversity of thinking are important to you, periodically ask yourself, “Who’s not in the room? Why?”
+    translation: |-
+      * Співпраця онлайн може залучити більше людей. Технології можуть стати «цифровим мостом» для тих, хто не може прийти на очну зустріч або взяти участь у певний час. Вони також відкривають нові можливості, як-от багатомовні обговорення.
+      * У Loomio видно, кого запросили до групи й хто взяв участь в обговоренні. Це допомагає оцінити, чи всі потрібні люди долучилися. Якщо когось бракує, ви це побачите.
+      * Якщо для вас важливі залучення різних людей і різноманітність поглядів, час від часу запитуйте себе: «Кого немає серед учасників? Чому?»
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  0a5324e7de64cdba:
+    english: "## Culture, Protocol, Expectations"
+    translation: "## Культура, правила й очікування"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  851a2601b835fbb1:
+    english: Culture can be quite a nebulous concept, and operates at multiple levels. The culture of the wider society has a big influence, but you can think of every group, and every session or discussion, as having a culture of its own.
+    translation: Культуру не завжди легко визначити, і вона проявляється на різних рівнях. Культура суспільства має великий вплив, але кожна група, зустріч і обговорення також мають власну культуру.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  27d3b10b80ade309:
+    english: How do we roll? How do we talk to one another? What is and is not ok here? What are the rules of the game, of how we interact?
+    translation: Як ми працюємо разом? Як спілкуємося? Що тут прийнятно, а що ні? Яких правил взаємодії дотримуємося?
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  54d83e0b3e487190:
+    english: The process of confronting cultural questions can be a powerful moment of self-awareness for a group. Not confronting them can harm ability to meet goals, or sometimes tear a group apart completely.
+    translation: Обговорення цих питань може допомогти групі краще зрозуміти себе. Якщо їх оминати, групі буде складніше досягати мети, а іноді це може призвести до її розпаду.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  f9918d7d61cef0c9:
+    english: Culture, protocol, and expectations can be implicit or explicit, and by nature intersect in complex ways with power dynamics and social capital. It’s a challenging balance to keep things loose enough to allow emergence, evolution, creativity, and freedom, while being explicit enough about bottom lines and boundaries to ensure safety.
+    translation: Культура, правила й очікування можуть бути висловленими прямо або залишатися невисловленими. Вони складно пов’язані з відмінностями у впливі та становищі учасників. Потрібно залишити простір для розвитку, творчості й свободи та водночас чітко визначити межі, необхідні для безпеки.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  3d484eafb8524354:
+    english: Facilitators often guide the group to live up to the culture it has set, follow the protocols it has agreed, and hold expectations to account. If a facilitator is tasked with this role, they need to be backed by a certain level of explicitness about those agreements, and a certain mandate. Otherwise, it can get messy.
+    translation: Люди, які ведуть процес, часто допомагають групі дотримуватися визначеної нею культури, узгоджених правил і очікувань. Для цього їм потрібні достатньо чіткі домовленості та повноваження від групи. Інакше впоратися з порушеннями буде складно.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  ba3ef231a647d607:
+    english: People often want to leave things to “common sense” and avoid agreeing a code of conduct or explicit protocols. However, this can disproportionately affect the most vulnerable members of the group, since they will feel the negative impacts of bad behavior or culture first and strongest, and are least empowered to counteract it themselves. It's the responsibility of the more privileged or influential members of the group to think through these questions carefully.
+    translation: Люди часто хочуть покластися на «здоровий глузд» і не домовлятися про кодекс поведінки чи чіткі правила. Але наслідки поганої поведінки або шкідливої культури найраніше й найсильніше відчувають найуразливіші члени групи. Їм також найважче самостійно цьому протидіяти. Тому учасникам із більшим впливом або привілеями варто уважно поставитися до цих питань.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  d14bcec24555318c:
+    english: Like a legal contract, you hope you never have to enforce a code of conduct, but if you need it you’re very glad it’s there. You want to agree *before* it becomes necessary. In order for a facilitator or any member of the group to effectively stand up and say, “that’s not OK here”, you need to have already invested in culture-building and expectation-setting.
+    translation: Як і з юридичним договором, ви сподіваєтеся, що кодекс поведінки не доведеться застосовувати. Але якщо потреба виникне, він стане в пригоді. Домовтеся про правила *до того*, як вони знадобляться. Щоб людина, яка веде процес, або будь-який член групи могли впевнено сказати «у нас так не можна», групі потрібно заздалегідь сформувати спільну культуру й узгодити очікування.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  dda14b86acbd8199:
+    english: |-
+      * Because Loomio is usually used as a space for constructive deliberation among groups with a specific purpose and set of members, for the most part people engage in good faith and behave respectfully.
+      * Loomio is designed specifically to give voice to the individual, and let them communicate their needs and concerns. Even if a majority doesn’t see a problem, a single person can raise it and be heard.
+      * Communicating online enables a certain level of physical safety, because people are not face to face.
+      * Some groups already use the group description field to note a code of conduct or expectations for behavior. Others have collectively agreed a set of expectations that govern participation.
+      * Many groups use Loomio itself to decide their group protocols, such as how to engage, what is allowed, what a decision means and what makes it valid, etc.
+      * Some core protocol issues are answered simply by using Loomio: Who is allowed here? How do we communicate?
+      * One of the most basic decisions Loomio users all encounter is about decision-making protocol — Consensus? Majority? Quorum? Unanimity? Bringing the question of decision-making protocol to the fore can be a very productive step in cultural development.
+    translation: |-
+      * Loomio зазвичай використовують групи зі спільною метою та визначеним складом для конструктивного обговорення. Тому учасники здебільшого діють добросовісно й ставляться одне до одного з повагою.
+      * Loomio дає кожній людині змогу висловити свої потреби й застереження. Навіть якщо більшість не бачить проблеми, одна людина може порушити її та бути почутою.
+      * Спілкування онлайн забезпечує певний рівень фізичної безпеки, оскільки люди не перебувають в одному приміщенні.
+      * Деякі групи зазначають кодекс поведінки чи очікування в описі групи. Інші спільно узгоджують правила участі.
+      * Багато груп використовують сам Loomio, щоб домовитися про правила: як спілкуватися, що дозволено, що означає рішення та за яких умов воно є чинним.
+      * На деякі основні питання щодо правил відповідає саме використання Loomio: хто може бути тут? Як ми спілкуємося?
+      * Одне з основних питань, з якими стикаються користувачі Loomio, стосується порядку ухвалення рішень: консенсус, більшість голосів, кворум чи одностайність? Відкрите обговорення цього питання може допомогти групі сформувати свою культуру.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'

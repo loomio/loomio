@@ -1,0 +1,189 @@
+---
+navigation_title: 参加方法
+blocks:
+  b07064bf98055393:
+    english: "# How to participate"
+    translation: "# 参加方法"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  c121de54fbe72331:
+    english: 'Once signed in to a Loomio group you have been invited to, you can participate in a Loomio discussion or decision.  '
+    translation: 招待されたLoomioのグループにサインインすると、ディスカッションや意思決定に参加できます。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  9bb48e2f2f1858af:
+    english: Read on to see  how to write a comment in a thread and how to vote in a poll.
+    translation: ここでは、スレッドにコメントを書く方法と、投票に参加する方法を説明します。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  '095ec081a6f1d74e':
+    english: "## Comment"
+    translation: "## コメント"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  d5dadbc416d8603a:
+    english: You can write a comment in a thread, and people can reply, react or post their own comment to continue the discussion.
+    translation: スレッドにコメントを書くと、ほかの人が返信やリアクションをしたり、自分のコメントを投稿したりして、話し合いを続けられます。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  250f7bc0e6e6c93c:
+    english: 'When you have written your text, use **Post Comment** to instantly publish the comment. Your comment will be visible to anyone who has permission to see the thread. '
+    translation: 文章を書いたら、**コメントを投稿します**を選ぶと、コメントがすぐに公開されます。スレッドを見る権限がある人には、コメントが表示されます。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  76a3378441f45ebf:
+    english: "### Reply to a comment"
+    translation: "### コメントに返信する"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  c3495aed9ac78348:
+    english: You can reply to someone's comment by clicking on the reply icon beneath the comment.
+    translation: コメントの下にある返信アイコンをクリックすると、そのコメントに返信できます。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  b2698ab73e65442c:
+    english: Your reply is published in the thread and an email notification is sent to the author of the comment.
+    translation: 返信はスレッドに公開され、元のコメントを書いた人にメール通知が送られます。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  04743dedbee0de5c:
+    english: "### Get someone's attention"
+    translation: "### 相手に通知する"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  455fea8aa593dad4:
+    english: You can notify people when you write a comment.
+    translation: コメントを書くときに、ほかの人に通知できます。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  316ef3257eaebd54:
+    english: "### Reactions"
+    translation: "### リアクション"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  4b68204cf35c85f1:
+    english: Reacting to a comment is a great way to encourage and acknowledge a comment by letting the comment author know how you feel.  It is a quick and light-weight way to participate that does not require any text, nor send an email. Click the smile emoji icon beneath a comment to leave an emoji reaction.
+    translation: リアクションをすると、コメントを書いた人に気持ちを伝え、その発言を受け止めていることを示せます。文章を書く必要はなく、メールも送られません。コメントの下にある笑顔の絵文字アイコンをクリックすると、絵文字でリアクションできます。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  d391457c69df967f:
+    english: "## Vote"
+    translation: "## 投票"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  4432b9c5b263014a:
+    english: You may receive an invitation to vote in a poll via email or by notification in Loomio. Click on the link in the email to vote.
+    translation: 投票への招待が、メールまたはLoomioの通知で届くことがあります。メールから投票する場合は、記載されたリンクをクリックします。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  2a8641a22cf13597:
+    english: Voting is easy, just click or tap on the icon of your choice.
+    translation: 投票するには、選びたい選択肢のアイコンをクリックまたはタップします。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  00d6e2698ade53cc:
+    english: There are many types of polls. The example below shows a typical proposal with voting options of **Agree**, **Abstain** or **Disagree**. Other options may be available.
+    translation: 投票にはさまざまな種類があります。下の例は一般的な提案で、**同意する**、**棄権する**、**同意しない**から選べます。ほかの選択肢が表示される場合もあります。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  4f327c4a766af0ab:
+    english: Read the poll, and any attached files, then cast your vote by selecting one of the options.
+    translation: 投票の内容と添付ファイルを読み、選択肢を一つ選んで投票します。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  2cf633f37997e8b8:
+    english: "### State a reason"
+    translation: "### 理由を書く"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  c976385dcb75f67b:
+    english: When voting, you can also leave a **Reason** to say why you have voted this way. This is optional.
+    translation: 投票するときは、選んだ理由を**理由**に書くこともできます。入力は任意です。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  6d0d884b0832dda9:
+    english: "### Change your vote"
+    translation: "### 投票を変更する"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  84629138984e43d0:
+    english: You can **change your vote**, up until the proposal closes.
+    translation: 提案が締め切られるまでは、**投票を変更する**ことができます。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  8fcddbe7856e926b:
+    english: There are many reasons why you might want to change your vote. For example if new information emerges it may cause you to rethink your decision, and change your vote.
+    translation: 新しい情報が出てきて判断を見直した場合など、投票を変更したくなることがあります。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  f7078b517c8bfed8:
+    english: Once again, you can leave a reason to say why you have changed your vote.
+    translation: 変更した理由を書くこともできます。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  8e1b2953471f22ba:
+    english: "### Results"
+    translation: "### 結果"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  2153df12cd2b4fe2:
+    english: Results of the proposal are updated as people vote, so you can see how a proposal is trending.
+    translation: 提案の結果は投票に合わせて更新されるため、賛否の動きを確認できます。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  229571fe36c571b0:
+    english: 'In a controversial proposal it is common to see mixed results, however this does not mean the proposal has failed.  '
+    translation: 意見が分かれる提案では、結果が割れることもあります。それだけで提案が否決されたわけではありません。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  c3d5e53684bf3e88:
+    english: Often the new information revealed during the proposal helps form a better proposal that is more likely to pass.
+    translation: 提案への投票を通じて明らかになった新しい情報が、より賛同を得やすい提案を作る助けになることもあります。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  b4783489f09ccf19:
+    english: "### Outcome"
+    translation: "### 結論"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  592f419764241ef6:
+    english: When the proposal closes, the author is prompted to state the **Outcome**.
+    translation: 提案が締め切られると、作成者には**結論**の記入が求められます。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  0fae106181bbc6ac:
+    english: This is an important final step to record the result of the decision and let everyone know what will happen next.
+    translation: これは、意思決定の結果を記録し、次に何が起こるかを全員に知らせるための最後の手順です。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'

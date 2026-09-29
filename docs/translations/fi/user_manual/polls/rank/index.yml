@@ -1,0 +1,137 @@
+---
+navigation_title: Sijoitus
+blocks:
+  92702560a3786c85:
+    english: "# Rank"
+    translation: "# Sijoitus"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  7cf7aa3423ff6b9d:
+    english: Rank finds the group's overall order of preference. Participants arrange options from most to least preferred, and Loomio assigns more points to higher-ranked options.
+    translation: Sijoitus näyttää ryhmän vaihtoehdot yhteisessä suosituimmuusjärjestyksessä. Osallistujat järjestävät vaihtoehdot mieluisimmasta vähiten mieluisaan. Loomio antaa ylemmäksi sijoitetuille vaihtoehdoille enemmän pisteitä.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  72790fdf21d1f129:
+    english: "## When to use Rank"
+    translation: "## Milloin Sijoitus sopii käyttöön"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  f9ce50752bf1c1e7:
+    english: 'Use Rank when preference order matters and you want one overall ordering. It works well for:'
+    translation: 'Käytä Sijoitusta, kun vaihtoehtojen keskinäinen järjestys on tärkeä ja haluat muodostaa yhden yhteisen järjestyksen. Se sopii esimerkiksi seuraaviin tilanteisiin:'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  4a5c8ee257df4dc2:
+    english: |-
+      - selecting one candidate for a position;
+      - ordering projects for a work plan;
+      - prioritizing conference topics;
+      - choosing backup options as well as a first choice; or
+      - reducing a long list to an ordered shortlist.
+    translation: |-
+      - yhden henkilön valitseminen tehtävään;
+      - hankkeiden järjestäminen työsuunnitelmaa varten;
+      - konferenssin aiheiden asettaminen tärkeysjärjestykseen;
+      - varavaihtoehtojen valitseminen ensisijaisen vaihtoehdon lisäksi; tai
+      - pitkän listan karsiminen järjestetyksi ehdokaslistaksi.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  2549ddaa8a4a4fa8:
+    english: Rank uses a points-based ordering. It is not a proportional election method. To elect several people while representing different groups of voters, use an [STV Election](/en/user_manual/polls/stv/).
+    translation: Sijoitus perustuu pisteisiin. Se ei ole suhteellinen vaalitapa. Jos haluat valita useita henkilöitä niin, että eri äänestäjäryhmät tulevat edustetuiksi, käytä [STV-vaalia](/en/user_manual/polls/stv/).
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  2a859bf73143ce12:
+    english: "## Example: rank bottle designs"
+    translation: "## Esimerkki: pullomallien järjestäminen"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  46a7d343d3b48bea:
+    english: Oatmilk Cooperative asks members to rank four bottle designs for its returnable-bottle trial. Participants consider handling, durability, customer needs, storage, and compatibility with the washing equipment.
+    translation: Oatmilk Cooperative pyytää jäseniään järjestämään neljä pullomallia palautuspullojen kokeilua varten. Osallistujat arvioivat käsiteltävyyttä, kestävyyttä, asiakkaiden tarpeita, säilytystä ja yhteensopivuutta pesulaitteiden kanssa.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  c74ebb16f872b3c6:
+    english: "## Set up the poll"
+    translation: "## Luo kysely"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  5975d0fd35ec0a7c:
+    english: State what the ranking will determine and add the options. Set **Number of choices** to control how many options each person may rank. A first choice receives the most points, the next choice receives one fewer, and unranked options receive no points.
+    translation: Kerro, mitä järjestyksen perusteella päätetään, ja lisää vaihtoehdot. Määritä kohdassa **Vaihtoehtojen määrä**, kuinka monta vaihtoehtoa kukin voi sijoittaa järjestykseen. Ensimmäinen valinta saa eniten pisteitä, seuraava yhden pisteen vähemmän. Sijoittamatta jääneet vaihtoehdot eivät saa pisteitä.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  47f32c81e29fa3c6:
+    english: Require all options to be ranked when you need a complete ordering. Allow fewer choices when participants may not know enough to rank everything. Showing options in random order can reduce the influence of their initial presentation.
+    translation: Edellytä kaikkien vaihtoehtojen järjestämistä, jos tarvitset täydellisen järjestyksen. Salli vähemmän valintoja, jos osallistujat eivät välttämättä tunne kaikkia vaihtoehtoja riittävän hyvin. Vaihtoehtojen näyttäminen satunnaisessa järjestyksessä voi vähentää niiden alkuperäisen esitysjärjestyksen vaikutusta.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  d391457c69df967f:
+    english: "## Vote"
+    translation: "## Äänestä"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  53946361c36775f0:
+    english: Participants drag the options into their preferred order, with number 1 as the first choice. They can add a reason explaining the criteria behind their ranking.
+    translation: Osallistujat vetävät vaihtoehdot haluamaansa järjestykseen. Numero 1 on ensisijainen valinta. He voivat myös perustella järjestyksen.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  eae63303cb9dced6:
+    english: In this example, the voter puts the **500 ml amber bottle** first and the **500 ml clear bottle** second because both fit the existing cafe storage and washing equipment.
+    translation: Tässä esimerkissä äänestäjä sijoittaa **500 ml:n meripihkanvärisen pullon** ensimmäiseksi ja **500 ml:n kirkkaan pullon** toiseksi, koska molemmat sopivat kahvilan nykyisiin säilytystiloihin ja pesulaitteisiin.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  72a9e4073ea27936:
+    english: "## Read the results"
+    translation: "## Tarkastele tuloksia"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  6be27268f870dc3e:
+    english: 'The results combine all ballots into an overall points-based ranking. For each option they show:'
+    translation: 'Tulokset yhdistävät kaikki äänet pisteisiin perustuvaksi yhteiseksi järjestykseksi. Kustakin vaihtoehdosta näytetään:'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  88b912ae1b9787bc:
+    english: |-
+      - **Rank**: its position in the combined result;
+      - **% of points**: its share of all ranking points;
+      - **Points**: the total points from all ballots;
+      - **Mean**: its average points per voter; and
+      - **Voters**: how many people ranked it.
+    translation: |-
+      - **Sijoitus**: vaihtoehdon paikka yhteisessä tuloksessa;
+      - **% pisteistä**: vaihtoehdon osuus kaikista sijoituspisteistä;
+      - **Pisteet**: vaihtoehdon kaikista äänistä saamat pisteet yhteensä;
+      - **Tarkoittaa**: vaihtoehdon keskimääräiset pisteet äänestäjää kohti; ja
+      - **Äänestäjät**: kuinka moni sijoitti vaihtoehdon järjestykseen.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  2e0cda6f79f31a51:
+    english: In this example, the **500 ml amber bottle** ranks first, followed by the **500 ml clear bottle** and the **750 ml amber bottle**. The group can investigate the preferred design first while retaining the remaining order as a sequence of alternatives.
+    translation: Tässä esimerkissä **500 ml:n meripihkanvärinen pullo** sijoittuu ensimmäiseksi. Sitä seuraavat **500 ml:n kirkas pullo** ja **750 ml:n meripihkanvärinen pullo**. Ryhmä voi selvittää ensisijaisen mallin soveltuvuutta ensin ja käyttää muuta järjestystä vaihtoehtoisten mallien arviointiin.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  22df687a6fa02ddb:
+    english: A points-based result can conceal different preference patterns that produce the same total. Review individual ballots and vote reasons when options are close or the decision is consequential.
+    translation: Sama pistemäärä voi syntyä erilaisista mieltymyksistä, joita yhteistulos ei näytä. Tarkastele yksittäisiä ääniä ja niiden perusteluja, jos vaihtoehdot ovat tasaväkisiä tai päätöksellä on suuri merkitys.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'

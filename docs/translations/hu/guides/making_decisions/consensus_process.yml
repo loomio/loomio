@@ -1,0 +1,241 @@
+---
+navigation_title: Konszenzusos folyamat
+blocks:
+  4059ba7b76b4d0b3:
+    english: "# Consensus process"
+    translation: "# Konszenzusos folyamat"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  43a6e9601b802416:
+    english: This guide describes the complete Consensus process. For help setting up and interpreting one Consensus proposal, see [Consensus](/en/user_manual/polls/proposals/consensus/).
+    translation: Ez az útmutató a teljes konszenzusos folyamatot mutatja be. Ha egy konszenzusos javaslat beállításához vagy értelmezéséhez keresel segítséget, olvasd el a [Konszenzus](/en/user_manual/polls/proposals/consensus/) oldalt.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  9ca83f452d41ab96:
+    english: "![Photo by Aaron Burden on Unsplash *Photo by Aaron Burden on Unsplash*](aaron-burden-NXt5PrOb_7U-unsplash.jpg)"
+    translation: "![Aaron Burden fotója az Unsplashen *Aaron Burden fotója az Unsplashen*](aaron-burden-NXt5PrOb_7U-unsplash.jpg)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  9cbed48cb66abb67:
+    english: Reach collective agreement with everyone involved.
+    translation: Jussatok közös megállapodásra minden érintettel.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  7069de909d719ef2:
+    english: Build consensus for a decision you need to make together, to reach an agreement that satisfies the needs and concerns of all participants.
+    translation: Építsetek konszenzust a közösen meghozandó döntéshez, hogy a megállapodás minden résztvevő igényeit és aggályait figyelembe vegye.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  223c90e3fe5b24d7:
+    english: "> *“Consensus is the process – a participatory process by which a group thinks and feels together, en route to their decision.” - Sam Kaner, Community at Work*"
+    translation: "> *„A konszenzus maga a folyamat: egy részvételen alapuló folyamat, amelyben a csoport tagjai együtt gondolkodnak és éreznek, miközben eljutnak a döntésig.” – Sam Kaner, Community at Work*"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  9872b82ded022524:
+    english: |-
+      ## Key points
+      - Discuss and develop a proposal together
+      - Include and respect everyone involved
+      - Seek agreement from most people
+    translation: |-
+      ## Főbb pontok
+      - Vitassátok meg és dolgozzátok ki együtt a javaslatot
+      - Vonjatok be és tiszteljetek minden érintettet
+      - Törekedjetek arra, hogy a legtöbben egyetértsenek
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  a1cd3fa440013e0c:
+    english: "**Consensus is typically used in:**\n- Working teams building shared understanding of an issue or opportunity, collaborating on a proposal and deciding course of action. \n- Governance board decisions where the board shows it is acting jointly, such as decisions on vision, policy, strategic planning and budget.\n- AGMs and General Assemblies where members and stakeholders seek general agreement for major decisions, such as revisions to statutes, major transactions and the elections of directors or council members."
+    translation: |-
+      **A konszenzust jellemzően ezekben a helyzetekben használják:**
+      - Munkacsoportokban, amikor a tagok közös képet alakítanak ki egy problémáról vagy lehetőségről, együtt dolgoznak egy javaslaton, majd döntenek a teendőkről.
+      - Vezető testületi döntéseknél, amikor a testület közösen jár el, például a jövőkép, a szabályzatok, a stratégiai tervezés vagy a költségvetés ügyében.
+      - Éves közgyűléseken és más közgyűléseken, amikor a tagok és az érintettek széles körű egyetértésre törekednek jelentős döntéseknél, például az alapszabály módosításánál, nagyobb ügyleteknél vagy a vezetők és testületi tagok megválasztásánál.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  7c5d3122a1333ba5:
+    english: |-
+      **Typical roles:**
+      - Appoint a facilitator.  In board meetings this is usually the Chairperson.
+      - A quorum or supermajority of members to participate, as specified in the organization's statutes.
+    translation: |-
+      **Jellemző szerepek:**
+      - Jelöljetek ki egy facilitátort.  A vezető testület ülésein ez általában az elnök.
+      - A szervezet alapszabályában meghatározott számú tag részvétele szükséges: határozatképesség vagy minősített többség.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  1d8ee54aa5e87423:
+    english: |-
+      ## Consensus process steps
+      1. State the issue to be decided - start a Loomio **discussion**.
+      2. Present a proposal to test for consensus - start a **Sense check proposal**.
+      3. Clarify any points, invite constructive modifications and amend the proposal.
+      4. Test for agreement - start a **Consensus proposal**.
+      5. Outcome - state the decision **outcome**.
+    translation: |-
+      ## A konszenzusos folyamat lépései
+      1. Fogalmazd meg a döntendő kérdést – indíts egy Loomio-**vitát**.
+      2. Mutasd be a javaslatot, hogy felmérd, kialakulhat-e konszenzus – indíts egy **Érzékellenőrzés** típusú javaslatot.
+      3. Tisztázd a felmerülő kérdéseket, kérj építő módosításokat, és módosítsd a javaslatot.
+      4. Mérd fel az egyetértést – indíts egy **Konszenzus** típusú javaslatot.
+      5. Következtetés – fogalmazd meg a döntés **következtetését**.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  0b5249cfd4c92c35:
+    english: |-
+      ## Benefits
+      - Grow shared understanding.
+      - Decisions for the collective will of the group.
+      - Encourage people to value the group over their personal preferences.
+    translation: |-
+      ## Előnyök
+      - Mélyül a közös megértés.
+      - A döntések a csoport közös akaratát tükrözik.
+      - A résztvevők a személyes preferenciáik mellett a csoport szempontjait is figyelembe veszik.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  55d7d6c48f056550:
+    english: "## Applying the Consensus process on Loomio"
+    translation: "## A konszenzusos folyamat alkalmazása a Loomión"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  e50b473237140170:
+    english: |-
+      | **Consensus process** | **On Loomio** |
+      |---|---|
+      | You notice a problem or opportunity and take the initiative. |  |
+      | **State the issue to be decided**  <br /><br />Provide background information and open a broad ranging discussion to build shared understanding. Look for emerging proposals. | Start a Loomio discussion <br /><br />Name the topic of discussion in the discussion title, and what you hope to achieve. <br /><br />Attach or link to background information. Invite people to ask questions, contribute information and write comments. |
+      | **Present a proposal** <br /><br />Test for consensus. | Run a [Sense check proposal](/en/user_manual/polls/proposals/sense_check/). <br /><br />*In the title:* Name the proposal. <br /><br />*In the proposal details:* Clearly frame the proposal and say why it is important.  Include any background information necessary and a link to the proposal.  <br /><br />Invite everyone to respond, and to do so before the proposal closes.  |
+      | **Amendment** <br /><br />Discuss, clarify and amend the proposal. <br /><br />Seek to understand and resolve any objections. <br /><br />Invite people objecting to to propose a constructive and practical modification to the proposed decision or course of action. | Facilitate discussion in the thread to address concerns and modify the proposal. |
+      | **Agreement** <br /><br />Do you have an agreement?  Check for: <br /><br />Agreement: I support the proposal. <br /><br />Abstain: This decision does not affect me and I am happy with whatever the group decides. <br /><br />Disagreement: Something in the proposal needs to be changed before I can support it. <br /><br />Block: I have a fundamental disagreement with the proposal that cannot be resolved. | Run a [Consensus proposal](/en/user_manual/polls/proposals/consensus/) with the current proposal version. <br /><br />*In the title:* Name the decision to be made. <br /><br />*In the proposal details:* Present the proposal and invite people to vote. <br /><br />Include a clear statement of what agreement means, say 'for this proposal to pass, we need everyone to vote agree' or 'for this proposal to pass, we need 75% of members to agree'.  <br /><br />Ask participants to leave a vote 'Reason' - and if they do not agree to say why, and what needs to change for them to agree. <br /><br />Some organizations also use the Block (or veto) voting option. <br /><br />As voting progresses, respond to comments, post updates, close early, or let the proposal run to conclusion. <br /><br />Participants can *“change vote”* up to proposal close time, say in response to new information that arrives during voting. |
+      | **Outcome** <br /><br />State if agreement was reached and the decision that has been made. <br /><br />Implement the decision and plan actions to be taken. | Consider voting results and state the decision made. <br /><br />Summarize results of the process and say what will happen next. <br /><br />If results are inconclusive, you may choose to re-open the discussion and run a new proposal. <br /><br />The outcome statement is an important record of the decision for future reference. |
+    translation: |-
+      | **Konszenzusos folyamat** | **A Loomión** |
+      |---|---|
+      | Észreveszel egy problémát vagy lehetőséget, és kezdeményezel. |  |
+      | **Fogalmazd meg a döntendő kérdést**  <br /><br />Adj háttérinformációkat, és indíts széles körű vitát a közös megértés kialakításához. Figyeld, milyen javaslatok körvonalazódnak. | Indíts egy Loomio-vitát <br /><br />A vita címében nevezd meg a témát és azt, hogy mit szeretnél elérni. <br /><br />Csatolj háttéranyagokat, vagy adj meg rájuk mutató linkeket. Kérd meg a résztvevőket, hogy tegyenek fel kérdéseket, osszanak meg információkat és írjanak hozzászólásokat. |
+      | **Mutass be egy javaslatot** <br /><br />Mérd fel, kialakulhat-e konszenzus. | Indíts egy [Érzékellenőrzés típusú javaslatot](/en/user_manual/polls/proposals/sense_check/). <br /><br />*A címben:* Nevezd meg a javaslatot. <br /><br />*A javaslat részleteiben:* Világosan fogalmazd meg a javaslatot, és mondd el, miért fontos. Add meg a szükséges háttérinformációkat és a javaslatra mutató linket. <br /><br />Kérj választ mindenkitől a javaslat lezárása előtt. |
+      | **Módosítás** <br /><br />Vitassátok meg, tisztázzátok és módosítsátok a javaslatot. <br /><br />Próbáljátok megérteni és feloldani az ellenvetéseket. <br /><br />Kérd meg az ellenzőket, hogy javasoljanak építő és megvalósítható módosítást a döntéshez vagy a tervezett lépésekhez. | Vezesd a vitát a beszélgetésszálban, hogy kezeljétek az aggályokat és módosítsátok a javaslatot. |
+      | **Egyetértés** <br /><br />Sikerült megállapodni? Ellenőrizd a válaszokat: <br /><br />Egyetért: Támogatom a javaslatot. <br /><br />Tartózkodik: Ez a döntés nem érint engem, és elfogadom, amit a csoport dönt. <br /><br />Nem ért egyet: Valamit módosítani kell a javaslatban, mielőtt támogatni tudnám. <br /><br />Tiltakozás: Alapvető kifogásom van a javaslattal szemben, amelyet nem lehet feloldani. | Indíts egy [Konszenzus típusú javaslatot](/en/user_manual/polls/proposals/consensus/) a javaslat aktuális változatával. <br /><br />*A címben:* Nevezd meg a meghozandó döntést. <br /><br />*A javaslat részleteiben:* Mutasd be a javaslatot, és kérd meg a résztvevőket, hogy szavazzanak. <br /><br />Egyértelműen írd le, mi szükséges a megállapodáshoz, például: „A javaslat elfogadásához mindenkinek az Egyetért lehetőségre kell szavaznia”, vagy „A javaslat elfogadásához a tagok 75%-ának egyet kell értenie”. <br /><br />Kérd meg a résztvevőket, hogy adják meg szavazatuk „Ok” mezőjét. Ha nem értenek egyet, írják le, miért, és minek kell változnia ahhoz, hogy egyetértsenek. <br /><br />Egyes szervezetek a Tiltakozás (vétó) szavazási lehetőséget is használják. <br /><br />A szavazás során válaszolj a hozzászólásokra, tegyél közzé frissítéseket, zárd le korábban a javaslatot, vagy várd meg a határidőt. <br /><br />A résztvevők a javaslat lezárásáig *„megváltoztathatják a szavazatukat”*, például ha a szavazás során új információ érkezik. |
+      | **Következtetés** <br /><br />Írd le, hogy sikerült-e megállapodni, és milyen döntés született. <br /><br />Valósítsátok meg a döntést, és tervezzétek meg a teendőket. | Nézd át a szavazás eredményét, és fogalmazd meg a meghozott döntést. <br /><br />Foglald össze a folyamat eredményét, és írd le, mi történik ezután. <br /><br />Ha az eredmény nem egyértelmű, újranyithatod a vitát, és új javaslatot indíthatsz. <br /><br />A következtetés fontos feljegyzés a döntésről, amelyhez később visszatérhettek. |
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  97378a06a382f8a0:
+    english: "## Example of a Consensus process on Loomio"
+    translation: "## Példa a Loomión végigvitt konszenzusos folyamatra"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  ec691660458e426c:
+    english: "### Step 0. You notice a problem or opportunity and take the initiative"
+    translation: "### 0. lépés: Észreveszel egy problémát vagy lehetőséget, és kezdeményezel"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  960ad433a566ef52:
+    english: "*Is the problem or opportunity is worth pursuing?* Vivien noticed it's time to review the Oatmilk Coop brand."
+    translation: "*Érdemes foglalkozni a problémával vagy lehetőséggel?* Vivien észrevette, hogy ideje felülvizsgálni az Oatmilk Coop arculatát."
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  fed09a0a56e35eb1:
+    english: "*Is there a decision to be made?* The governance board has responsibility to approve a new brand concept."
+    translation: "*Szükség van döntésre?* Az új arculati koncepció jóváhagyása a vezető testület feladata."
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  90d8e915824db4db:
+    english: "*Does it impact other people and your organization?* Brand impacts on the perception of the co-op and impacts everyone in the organization. "
+    translation: "*Érint másokat és a szervezetet is?* Az arculat befolyásolja, hogyan látják a szövetkezetet, és a szervezet minden tagját érinti."
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  fda82a609f8773ed:
+    english: "### Step 1. State the problem or issue"
+    translation: "### 1. lépés: Fogalmazd meg a problémát vagy a kérdést"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  c98dda573e480da3:
+    english: Vivien starts a Loomio discussion outlining the need to review the organization's brand, inviting participation to develop a new brand concept, and that the approval decision is to be made by the governance board using the consensus process.
+    translation: Vivien vitát indít a Loomión. Leírja, miért kell felülvizsgálni a szervezet arculatát, részvételre hív az új arculati koncepció kidolgozásában, és jelzi, hogy a jóváhagyásról a vezető testület dönt konszenzusos folyamattal.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  37d6cf6c0162e6bb:
+    english: "### Step 2. Present a proposal "
+    translation: "### 2. lépés: Mutass be egy javaslatot"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  c090241da7a91eb9:
+    english: Vivien runs a Sense check proposal to survey opinions to see how people feel about key elements of the brand concept, and test for consensus.   The Sense check proposal lets people know a proposal is forming and encourages them to engage.  It's a good way to surface concerns.
+    translation: Vivien Érzékellenőrzés típusú javaslatot indít, hogy felmérje az arculati koncepció fő elemeiről alkotott véleményeket és a lehetséges egyetértést. Ez jelzi a résztvevőknek, hogy javaslat készül, és részvételre ösztönzi őket. Segít felszínre hozni az aggályokat.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  cc4caeb72841fee5:
+    english: "### Step 3. Amendment"
+    translation: "### 3. lépés: Módosítás"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  db11954b34a1697d:
+    english: |-
+      When the Sense check proposal closes, Vivien states an outcome and notifies everyone about the results and what will happen next.
+      Vivien facilitates a discussion to address concerns and modify the Brand Concept document.
+    translation: |-
+      Amikor az Érzékellenőrzés típusú javaslat lezárul, Vivien közzéteszi a következtetést, és értesít mindenkit az eredményről és a következő lépésekről.
+      Vivien vezeti a vitát az aggályok kezeléséről és az Arculati koncepció dokumentum módosításáról.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  c31d7c71eb3c735c:
+    english: "### Step 4. Agreement"
+    translation: "### 4. lépés: Egyetértés"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  39e0039c195ae5f3:
+    english: Having completed the latest version of the Brand Concept document, Vivien is now ready to seek approval from the governance board by running a Consensus proposal.
+    translation: Miután elkészült az Arculati koncepció dokumentum legújabb változata, Vivien Konszenzus típusú javaslatot indít, hogy jóváhagyást kérjen a vezető testülettől.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  4bf082d10976bc31:
+    english: 'Governance board members are invited to vote and approve the Brand Concept.  The board has previously agreed that proposals like this require >75% of members to vote Agree for it to pass. '
+    translation: A vezető testület tagjai meghívást kapnak, hogy szavazzanak az Arculati koncepció jóváhagyásáról. A testület korábban megállapodott abban, hogy az ilyen javaslatok elfogadásához a tagok >75%-ának az Egyetért lehetőségre kell szavaznia.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  feb488e50bdd3834:
+    english: This template includes a Block option by default. Block isn't suitable for every group — it can be controversial or misused. If you don't use block in your decision-making process, we recommend editing the template to remove it.
+    translation: 'Ez a sablon alapértelmezés szerint tartalmazza a Tiltakozás lehetőséget. A Tiltakozás nem minden csoportnak megfelelő: vitát válthat ki, vagy visszaélhetnek vele. Ha a döntéshozatali folyamatotokban nem használjátok, szerkeszd a sablont, és távolítsd el ezt a lehetőséget.'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  5130a17b3032bee3:
+    english: "### Step 5. Outcome"
+    translation: "### 5. lépés: Következtetés"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  47143ba16ce4a9ff:
+    english: 'When the Consensus proposal closes, Vivien states an outcome and notifies everyone that agreement has been reached, and that work to implement the new brand will commence. '
+    translation: Amikor a Konszenzus típusú javaslat lezárul, Vivien közzéteszi a következtetést, és értesít mindenkit arról, hogy megszületett a megállapodás, és megkezdődik az új arculat bevezetése.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'

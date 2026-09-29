@@ -1,0 +1,93 @@
+---
+navigation_title: アドバイス
+blocks:
+  2072a463e55dfba1:
+    english: "# Advice"
+    translation: "# アドバイス"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  aadbf3844be4a95f:
+    english: An Advice proposal gathers input for a decision that a person or team is responsible for making. Participants can offer advice or indicate that they have no advice to add.
+    translation: アドバイス提案では、個人やチームが責任を持って行う決定について意見を集めます。参加者はアドバイスを伝えるか、付け加えるアドバイスがないことを示せます。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  769a2446fc3ec4a9:
+    english: This page explains the Advice proposal form, voting, and results. See the [Advice process](/en/guides/making_decisions/advice_process) for the complete workflow from framing the decision to publishing an outcome.
+    translation: このページでは、アドバイス提案の入力フォーム、投票、結果について説明します。決定事項の整理から結論の公開までの流れは、[アドバイスの進め方](/en/guides/making_decisions/advice_process)をご覧ください。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  f19e32088d70eec4:
+    english: "## When to use Advice"
+    translation: "## アドバイスを使う場面"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  d4c7e7da6f2d5860:
+    english: Use Advice when the decision maker wants input from people with relevant expertise or people affected by the decision. It works well for supplier choices, operational decisions, policy drafts, and decisions within a delegated role.
+    translation: 決定する人が、関連する専門知識を持つ人や決定の影響を受ける人から意見を求めるときに、アドバイスを使います。取引先の選定、業務上の決定、方針案、権限を委ねられた役割での決定に適しています。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  a81e33e00080fbe4:
+    english: Advice is not an approval vote. Say who will make the decision, what constraints apply, and how they will consider the responses.
+    translation: アドバイスは承認を求める投票ではありません。誰が決定するのか、どのような制約があるのか、寄せられた回答をどう検討するのかを明示します。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  4be7ef0783f6e444:
+    english: "## Example: choose a washing supplier"
+    translation: "## 例：洗浄業者を選ぶ"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  d8157e98107798c6:
+    english: Oatmilk Cooperative's operations coordinator must select a washing supplier. They invite advice about capacity, food-safety records, water use, service response times, and support.
+    translation: オーツミルク協同組合の業務コーディネーターは、洗浄業者を選ぶ必要があります。対応能力、食品安全に関する記録、水の使用量、問い合わせへの対応時間、サポートについてアドバイスを募ります。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  9703f1f9474243af:
+    english: "## Set up the proposal"
+    translation: "## 提案を設定する"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  6b9c305f0f4000d9:
+    english: Describe the decision, name the decision maker, and include the information participants need. Invite people who are affected or have relevant knowledge. The default options let someone offer advice or abstain.
+    translation: 決定する内容と決定者を明記し、参加者に必要な情報を記載します。決定の影響を受ける人や、関連する知識を持つ人を招待します。初期設定の選択肢では、アドバイスを伝えるか棄権するかを選べます。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  d391457c69df967f:
+    english: "## Vote"
+    translation: "## 投票する"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  0a259af7a59899b7:
+    english: Participants select **Advice** and give a concrete recommendation, risk, question, or relevant experience. They can abstain when they have no useful input.
+    translation: 参加者は**アドバイス**を選び、具体的な提案、懸念点、質問、または関連する経験を伝えます。有用な意見がない場合は棄権できます。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  72a9e4073ea27936:
+    english: "## Read the results"
+    translation: "## 結果を読む"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  1d4bf7b5d0079f87:
+    english: The chart confirms who has responded, but the reasons contain the substance of an Advice proposal. Look for constraints, agreements, and conflicting recommendations rather than treating the most common response as the decision.
+    translation: グラフでは誰が回答したかを確認できますが、アドバイス提案の重要な内容は回答の理由にあります。最も多い回答をそのまま決定とせず、制約、意見の一致、相反する提案に目を向けます。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  e9fc01ce6c059f29:
+    english: The decision maker publishes an outcome explaining what they decided and how the advice informed it.
+    translation: 決定者は、何を決めたか、アドバイスをどう判断に生かしたかを説明する結論を公開します。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'

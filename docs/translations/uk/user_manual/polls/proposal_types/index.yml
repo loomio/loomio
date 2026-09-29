@@ -1,0 +1,99 @@
+---
+navigation_title: Опитування
+blocks:
+  800f4167b38b4715:
+    english: "# Polls"
+    translation: "# Опитування"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  d370759001be4e21:
+    english: Polls collect selections, scores, allocations, rankings, availability, or election ballots. Choose the voting method based on what participants need to express and how you intend to use the result. Use a [Proposal](/en/user_manual/polls/proposals/) when people need to respond to a statement or course of action.
+    translation: Опитування допомагають зібрати вибір учасників, оцінки, розподіл балів, рейтинги, відомості про доступний час або голоси на виборах. Виберіть метод голосування залежно від того, що учасники мають висловити і як ви плануєте використати результат. Використовуйте [Пропозицію](/en/user_manual/polls/proposals/), коли людям потрібно відреагувати на твердження або запропонований план дій.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  1132ff680c7b2562:
+    english: "## Simple poll"
+    translation: "## Просте опитування"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  6b957bf5630c1470:
+    english: "[Choose](/en/user_manual/polls/choose/) lets participants select one or more options. Use it to find the most popular option or make a shortlist."
+    translation: "[Виберіть](/en/user_manual/polls/choose/) дає учасникам змогу обрати один або кілька варіантів. Використовуйте цей метод, щоб визначити найпопулярніший варіант або скласти короткий список."
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  c982974685e1b5d6:
+    english: "## Score poll"
+    translation: "## Оціночне опитування"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  fbbfe14196388606:
+    english: "[Score](/en/user_manual/polls/score/) lets participants rate every option on the same scale. Use it to compare the strength of support, readiness, suitability, or importance across options."
+    translation: "[Рахунок](/en/user_manual/polls/score/) дає учасникам змогу оцінити кожен варіант за однаковою шкалою. Використовуйте цей метод, щоб порівняти рівень підтримки, готовності, придатності або важливості варіантів."
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  0465fcb48a56ca78:
+    english: "## Dot vote"
+    translation: "## Відбіркове голосування"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  ffb7d1711a5fca3b:
+    english: "[Allocate](/en/user_manual/polls/allocate/) gives each participant a fixed budget of points to distribute. Use it to identify priorities when choosing one thing means giving less attention or resources to another."
+    translation: "[Виділити](/en/user_manual/polls/allocate/) дає кожному учаснику фіксовану кількість балів для розподілу. Використовуйте цей метод, щоб визначити пріоритети, коли вибір одного варіанта зменшує увагу або ресурси для іншого."
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  a1b15c28fbe526f6:
+    english: "## Ranked choice"
+    translation: "## Ранговий вибір"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  8811f455b7ab3821:
+    english: "[Rank](/en/user_manual/polls/rank/) lets participants arrange options in order of preference. Use it to find the group's overall preferred order or select one leading option."
+    translation: "[Ранг](/en/user_manual/polls/rank/) дає учасникам змогу розташувати варіанти за порядком уподобання. Використовуйте цей метод, щоб визначити загальний порядок уподобань групи або обрати один провідний варіант."
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  2e21bb1b54b6fcf9:
+    english: "## Time poll"
+    translation: "## Опитування щодо часу"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  fb768f07eb0d1971:
+    english: "[Time poll](/en/user_manual/polls/meeting_polls/) lets participants indicate when they are available. Use it to schedule a meeting or event across time zones."
+    translation: "[Опитування часу](/en/user_manual/polls/meeting_polls/) дає учасникам змогу вказати, коли вони вільні. Використовуйте цей метод, щоб запланувати зустріч або подію для людей у різних часових поясах."
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  6333ad0ee6d54609:
+    english: "## STV Election"
+    translation: "## Вибори на СТВ"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  6f93c6ad598d809c:
+    english: "[STV Elections](/en/user_manual/polls/stv/) let participants rank candidates in a proportional, multi-winner election. Use STV to elect a committee, board, or group of delegates."
+    translation: "[Вибори на СТВ](/en/user_manual/polls/stv/) дають учасникам змогу ранжувати кандидатів на пропорційних виборах із кількома переможцями. Використовуйте СТВ, щоб обрати комітет, правління або групу делегатів."
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  6752a750a7703b58:
+    english: "## Other specialized method"
+    translation: "## Інший спеціалізований метод"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  '099449b0e1fe4f85':
+    english: Loomio also includes a Question round for collecting questions without voting. Group administrators can make it available from [Poll templates](/en/user_manual/polls/poll_templates/).
+    translation: У Loomio також є Раунд питань для збору запитань без голосування. Адміністратори групи можуть увімкнути його в розділі [Шаблони опитувань](/en/user_manual/polls/poll_templates/).
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'

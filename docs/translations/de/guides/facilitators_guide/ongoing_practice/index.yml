@@ -1,0 +1,199 @@
+---
+navigation_title: Kontinuierliche Praxis
+blocks:
+  508e19e18ba4a97e:
+    english: "# Ongoing Practice"
+    translation: "# Kontinuierliche Praxis"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  fba51c92285b31c7:
+    english: "## Continuous Improvement"
+    translation: "## Kontinuierliche Verbesserung"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  121b4afb86de3c31:
+    english: No matter how amazing a group or facilitator is, they can always improve. If they incrementally head in a good direction they will get to a better place. Incremental improvement requires an effective protocol for meta-conversation (talking about how you collaborate). With it, anything is possible. Without it, you stagnate.
+    translation: Auch eine sehr erfahrene Gruppe oder Moderation kann sich weiterentwickeln. Viele kleine Schritte in die richtige Richtung führen zu Verbesserungen. Dafür braucht es eine gute Möglichkeit, über die Zusammenarbeit selbst zu sprechen. So kann die Gruppe erkennen, was funktioniert und was sie ändern möchte. Ohne solche Gespräche bleibt sie leicht stehen.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  331d258dee610e96:
+    english: There are many approaches to continuous improvement, but they all create space for reflection and feedback, and a way to make changes in response. For teams that work together on an ongoing basis, they might employ a methodology like <a href="https://en.wikipedia.org/wiki/Scrum_(software_development)" target="_blank">scrum</a>, including retrospectives and regular process improvements. For a one-off session, a facilitator might simply follow up with a request for feedback.
+    translation: Es gibt viele Wege, sich kontinuierlich zu verbessern. Sie alle schaffen Raum für Reflexion und Rückmeldungen und ermöglichen Veränderungen. Teams, die dauerhaft zusammenarbeiten, können eine Methode wie <a href="https://en.wikipedia.org/wiki/Scrum_(software_development)" target="_blank">Scrum</a> nutzen, mit Rückblicken und regelmäßigen Verbesserungen ihrer Abläufe. Nach einer einzelnen Veranstaltung kann die Moderation einfach um Rückmeldungen bitten.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  aabfa9d842af2688:
+    english: On Loomio
+    translation: Auf Loomio
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  ac2f489368566562:
+    english: |-
+      * People use Loomio itself to talk about how they use Loomio. It provides an obvious platform to “talk about the talking”.
+      * The process of joining Loomio causes groups to reflect on many aspects of their collaboration and decision-making process, which creates the opportunity to improve.
+    translation: |-
+      * Menschen nutzen Loomio, um darüber zu sprechen, wie sie Loomio nutzen. So können sie ihre Gespräche und Abläufe gemeinsam betrachten.
+      * Wenn Gruppen Loomio nutzen, denken sie über viele Aspekte ihrer Zusammenarbeit und Entscheidungsfindung nach. Das eröffnet Möglichkeiten zur Verbesserung.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  7b11f212a312312e:
+    english: "## Distributed Facilitation / Self-facilitation"
+    translation: "## Verteilte Moderation / Selbstmoderation"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  1e385970a624bf63:
+    english: As a group becomes more experienced, more individuals build capacity for facilitation. Facilitation can cease to be a role held by a specific person, and become more of a function that can be distributed. Anyone can take acts of facilitation, and a dance of give and take, leading and following, can emerge among participants. For groups with aspirations toward shared leadership and non-hierarchy, this is a very important thing to encourage.
+    translation: Wenn eine Gruppe Erfahrung sammelt, können mehr Mitglieder Moderationsaufgaben übernehmen. Moderation muss dann nicht mehr die Rolle einer bestimmten Person sein. Sie kann zu einer Aufgabe werden, die mehrere Menschen teilen. Alle können zur Moderation beitragen. Dabei entsteht ein Wechselspiel aus Anleiten und Folgen, Geben und Nehmen. Für Gruppen, die gemeinsame Führung und flache Hierarchien anstreben, ist es wichtig, das zu fördern.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  fa78b242f7390326:
+    english: 'People who are less used to taking acts of facilitation can be supported with education, invitations, and suggestions of first steps. Some examples of acts of facilitation almost anyone can be encouraged to try:'
+    translation: 'Wer noch wenig Erfahrung mit Moderationsaufgaben hat, kann durch Schulungen, Einladungen und Vorschläge für erste Schritte unterstützt werden. Fast alle können zum Beispiel Folgendes ausprobieren:'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  1f490f466a1893ed:
+    english: |-
+      * reflecting back what you’re hearing or summarising
+      * inviting others to contribute
+      * asking questions to enhance collective understanding
+      * noticing who is and is not participating
+      * appreciating contributions explicitly
+    translation: |-
+      * Gehörtes wiedergeben oder zusammenfassen
+      * Andere einladen, sich einzubringen
+      * Fragen stellen, die das gemeinsame Verständnis vertiefen
+      * Darauf achten, wer sich beteiligt und wer nicht
+      * Beiträge ausdrücklich würdigen
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  e2eed897e0f564d2:
+    english: '> <img style="border-radius: 100%; float: right; margin-left: 0.5em; max-width: 96px; " src="../silvia_200.png"> You don’t need an agenda to be a facilitator. Facilitating is just about making a group situation easy. Next time you’re at a family gathering, party or morning tea: approach it like a facilitator and make sure everybody in the group feels included and able to participate. — Silvia Zuur'
+    translation: '> <img style="border-radius: 100%; float: right; margin-left: 0.5em; max-width: 96px; " src="../silvia_200.png"> Du brauchst keine Tagesordnung, um eine Gruppe zu moderieren. Moderation bedeutet, es einer Gruppe leichter zu machen, miteinander umzugehen. Wenn du das nächste Mal bei einem Familientreffen, einer Feier oder einer Kaffeerunde bist, geh die Situation wie eine Moderation an: Achte darauf, dass sich alle einbezogen fühlen und mitmachen können. — Silvia Zuur'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  180b1232871c44c4:
+    english: Distributed facilitation can work beautifully, but it can also cause people to step all over each other. At first, it’s awkward as people learn the dance. It’s important to differentiate between distributed facilitation (peers helping the collective), “facipulation” (manipulating the group toward your own agenda), and backseat facilitation (taking acts of facilitation when you do not have the mandate).
+    translation: Verteilte Moderation kann sehr gut funktionieren. Sie kann aber auch dazu führen, dass sich Menschen gegenseitig ins Wort fallen oder in die Quere kommen. Am Anfang ist das Zusammenspiel oft ungewohnt. Wichtig ist die Unterscheidung zwischen verteilter Moderation (Mitglieder unterstützen die Gruppe), „Facipulation“ (jemand lenkt die Gruppe zugunsten eigener Ziele) und ungefragter Moderation (jemand übernimmt Moderationsaufgaben ohne entsprechenden Auftrag).
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  ea5faa685be1ceae:
+    english: Consciously decide when peer facilitation is a good choice, and when a specific facilitator is called for. In certain situations, such as a high-conflict discussion where a specified neutral party is needed, or there is a lack of trust, distributed facilitation might not work.
+    translation: Entscheide bewusst, wann Moderation durch Gruppenmitglieder sinnvoll ist und wann eine bestimmte Person moderieren sollte. Bei einer konfliktreichen Diskussion kann zum Beispiel eine ausdrücklich benannte neutrale Person nötig sein. Auch wenn Vertrauen fehlt, funktioniert verteilte Moderation möglicherweise nicht.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  8d6df5458ecb8e45:
+    english: '> <img style="border-radius: 100%; float: right; margin-left: 0.5em; max-width: 96px; " src="../rich_200.png"> Acts of facilitation are not just for the manager, or the person who called the meeting — they are for everyone. — Richard Bartlett'
+    translation: '> <img style="border-radius: 100%; float: right; margin-left: 0.5em; max-width: 96px; " src="../rich_200.png"> Moderationsaufgaben sind nicht nur Sache der Führungskraft oder der Person, die das Treffen einberufen hat — alle können sie übernehmen. — Richard Bartlett'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  c3215e63fca09b79:
+    english: "## Translating this into Loomio"
+    translation: "## So lässt sich das auf Loomio übertragen"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  35ce75e6810e0611:
+    english: |-
+      * The online space is uniquely suited to distributed facilitation. Different people can come along at different points depending on what they notice and their skill set.
+      * An online discussion is by default a distributed collaboration among peers. Any other setup requires explicit design. This is the opposite of offline spaces where the default is that someone called a meeting and distributing the role requires proactivity.
+      * Loomio is designed with a group of equals in mind. In many ways, a distributed facilitation approach is the best fit for the tool.
+      * Current Loomio users do peer facilitation all the time, whether they realize that’s what they are doing or not. Simple things like suggesting someone raise a proposal, tagging people, summarising the process so far, etc, are all acts of facilitation.
+    translation: |-
+      * Online eignet sich verteilte Moderation besonders gut. Verschiedene Menschen können sich zu unterschiedlichen Zeitpunkten einbringen, je nachdem, was ihnen auffällt und welche Fähigkeiten sie haben.
+      * Eine Online-Diskussion ist zunächst eine Zusammenarbeit unter Gleichgestellten. Eine andere Rollenverteilung muss bewusst gestaltet werden. Bei Treffen vor Ort ist es oft umgekehrt: Jemand beruft das Treffen ein, und die Moderation auf mehrere Personen zu verteilen erfordert Initiative.
+      * Loomio ist für Gruppen gedacht, deren Mitglieder gleichberechtigt zusammenarbeiten. Deshalb passt verteilte Moderation in vieler Hinsicht gut zum Werkzeug.
+      * Menschen, die Loomio nutzen, moderieren ihre Gruppen bereits gegenseitig, ob ihnen das bewusst ist oder nicht. Einen Vorschlag anzuregen, andere zu markieren oder den bisherigen Verlauf zusammenzufassen: All das sind Moderationsaufgaben.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  efde81539c545bae:
+    english: "## The Art of Being Facilitated"
+    translation: "## Die Kunst, sich moderieren zu lassen"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  93ed1980d0cc95b4:
+    english: Like the skill of being the follow in a ballroom dance pair, being facilitated is an art itself. People with experience facilitating themselves, or who have participated in a lot of well-facilitated processes, will receive facilitation differently than those who haven't.
+    translation: Beim Paartanz braucht auch die folgende Person Übung. Ähnlich ist es eine Fähigkeit, sich moderieren zu lassen. Wer selbst schon moderiert oder an vielen gut moderierten Prozessen teilgenommen hat, nimmt Moderation anders an als jemand ohne diese Erfahrung.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  d2bcd9f07f5bd25b:
+    english: On the positive side, skillful receptivity to facilitation is a capacoty that can be grown, and it can have a big impact on group success. This ranges from things as simple as showing up on time, to following instructions, to being willing to try a new style of thinking or communicating. Sometimes people have a good experience and they don’t quite know why — pointing out that facilitation is the reason for the smoothness or depth can help them understand what it is they valued about the process.
+    translation: Die Fähigkeit, auf Moderation einzugehen, lässt sich entwickeln. Sie kann viel zum Erfolg einer Gruppe beitragen. Dazu gehört, pünktlich zu erscheinen, Anleitungen zu folgen oder eine neue Art des Denkens oder Kommunizierens auszuprobieren. Manchmal erleben Menschen einen guten gemeinsamen Prozess, ohne genau zu wissen, warum. Wenn du darauf hinweist, wie die Moderation zu einem reibungslosen oder tiefgehenden Austausch beigetragen hat, können sie besser verstehen, was ihnen daran wichtig war.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  87345b383ccba81d:
+    english: On the negative side, people who can’t or won’t be facilitated can be detrimental to group collaboration. No matter how skilled a facilitator is, if they encounter a certain level of resistance they won’t be able to do their job. Common problems include dominating the discussion, playing devil’s advocate, disrupting the process, disrespecting the facilitator or participants, or being disengaged. At some level individuals must take responsibility for their willingness to be facilitated.
+    translation: Menschen, die sich nicht moderieren lassen können oder wollen, können die Zusammenarbeit erschweren. Selbst eine erfahrene Moderation kann ihre Aufgabe bei starkem Widerstand nicht erfüllen. Häufige Probleme sind, die Diskussion zu beherrschen, ständig Gegenpositionen einzunehmen, den Ablauf zu stören, die Moderation oder andere Beteiligte respektlos zu behandeln oder sich nicht einzubringen. Jede Person trägt einen Teil der Verantwortung dafür, offen für Moderation zu sein.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  c096fd0a7e12ddd4:
+    english: |-
+      * With a little practice, most users quickly upskill on being responsive to acts of facilitation on Loomio, such as replying when @mentioned.
+      * Taking acts of facilitation on Loomio helps people become more responsive to facilitation themselves.
+      * Because everything is archived, users can see past acts of facilitation “frozen in time”, gaining the benefits of observing them without having been there.
+    translation: |-
+      * Mit etwas Übung lernen die meisten Menschen schnell, auf Moderation in Loomio einzugehen, etwa indem sie antworten, wenn sie mit @ erwähnt werden.
+      * Wer auf Loomio Moderationsaufgaben übernimmt, lernt auch selbst besser, auf Moderation einzugehen.
+      * Weil alles archiviert wird, können Menschen frühere Moderationsbeiträge später nachlesen und daraus lernen, auch wenn sie nicht dabei waren.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  f930b325aaedb19a:
+    english: "## Culture Change"
+    translation: "## Kulturwandel"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  82936abec2b50e3f:
+    english: A collaborative, participatory culture is something that emerges over time, with lots of practice and trial and error. Understanding, valuing, and inviting facilitation can play a pivotal role in this cultural emergence. Facilitation can evolve from a role, to a function, to a mindset. A truly collaborative culture is one where everyone is facilitating everyone in myriad different ways.
+    translation: Eine Kultur der Zusammenarbeit und Beteiligung entsteht mit der Zeit, durch viel Übung, Ausprobieren und Korrigieren. Wenn Menschen Moderation verstehen, schätzen und dazu einladen, kann das diesen Wandel wesentlich unterstützen. Moderation kann sich von einer Rolle über eine gemeinsame Aufgabe zu einer Haltung entwickeln. In einer Kultur echter Zusammenarbeit unterstützen sich alle auf unterschiedliche Weise dabei, gut zusammenzuarbeiten.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  898bf6557380a042:
+    english: Is the company party participatory? Does the office potluck just happen like magic? Are ideas able to emerge from anywhere, evolve through many brains and hands, and get implemented in a way better than anyone first imagined?
+    translation: Können sich alle an der Betriebsfeier beteiligen? Entsteht das gemeinsame Essen im Büro scheinbar wie von selbst? Können Ideen von überall kommen, durch viele Köpfe und Hände weiterentwickelt und schließlich besser umgesetzt werden, als anfangs irgendjemand dachte?
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  f4964381b3c6dc7b:
+    english: Deep culture change is when the culture of collaboration starts to leak out of specific “collaboration” spaces and shows up in every aspect of the organization. Collaboration is not about post-it notes and check-ins, but the very timbre of organizational life.
+    translation: Ein tiefgreifender Kulturwandel zeigt sich, wenn Zusammenarbeit nicht mehr auf bestimmte Räume oder Anlässe beschränkt bleibt, sondern jeden Bereich der Organisation prägt. Zusammenarbeit besteht nicht nur aus Haftnotizen und kurzen Gesprächsrunden. Sie wird Teil des alltäglichen Miteinanders.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  6962aa4815c01b0f:
+    english: |-
+      * The [theory of change of Loomio](http://www.loomio.com/about) is that more groups practicing effective, inclusive decision making can change organizational dynamics at a global scale. This shows up in everything about how the tool is designed and [how we run as a co-op](http://loomio.coop). Ultimately, it’s about culture change through collaborative practice.
+      * Loomio groups have experienced evolving culture through the tool. Like groups that already has a collaborative culture scale while holding onto that, or a participatory group continuing to exists instead of imploding due to challanges around inclusive decicion-making.
+      * Loomio makes a certain kind of “new normal” of collaborative practice possible, through making collaborative practice more accessible and achievable.
+    translation: |-
+      * Die [Theorie des Wandels von Loomio](http://www.loomio.com/about) besagt: Wenn mehr Gruppen wirksame und inklusive Entscheidungsfindung praktizieren, können sich die Abläufe in Organisationen weltweit verändern. Dieser Gedanke prägt die Gestaltung von Loomio und [unsere Arbeit als Genossenschaft](http://loomio.coop). Letztlich geht es um Kulturwandel durch gelebte Zusammenarbeit.
+      * Loomio-Gruppen haben erlebt, wie sich ihre Kultur mit dem Werkzeug weiterentwickelt. Manche konnten wachsen und ihre Kultur der Zusammenarbeit bewahren. Andere konnten trotz der Herausforderungen inklusiver Entscheidungen als beteiligungsorientierte Gruppe bestehen bleiben.
+      * Loomio macht eine neue Form alltäglicher Zusammenarbeit möglich, indem das Werkzeug gemeinsame Entscheidungen leichter zugänglich und umsetzbar macht.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  3f2cee633e8b83c2:
+    english: For inspiration about Ongoing Practice, check out [stories of Loomio groups](https://blog.loomio.com/?utm_campaign=facilitators_guide_help&utm_term=help).
+    translation: Weitere Anregungen für kontinuierliche Praxis findest du in den [Geschichten von Loomio-Gruppen](https://blog.loomio.com/?utm_campaign=facilitators_guide_help&utm_term=help).
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'

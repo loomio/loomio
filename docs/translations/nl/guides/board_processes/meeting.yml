@@ -1,0 +1,305 @@
+---
+navigation_title: Een vergadering voorbereiden
+blocks:
+  165e9dec4d4660aa:
+    english: "# Prepare for a meeting"
+    translation: "# Een vergadering voorbereiden"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  5d14c790e0c05446:
+    english: Effective meetings are productive, inclusive, and collaborative - they improve engagement, help build strong relationships, establish alignment, make better and faster decisions, promote inclusion, facilitate creative thinking and innovation, are a great channel for feedback and continuous improvement.
+    translation: Effectieve vergaderingen zijn productief, inclusief en gericht op samenwerking. Ze vergroten de betrokkenheid, versterken relaties en helpen mensen op één lijn te komen. Ze maken betere en snellere besluiten, creatief denken, vernieuwing, feedback en voortdurende verbetering mogelijk.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  c69f325003094ac5:
+    english: Use Loomio to plan an effective meeting; involve people from the outset, align towards the most important topics, and make better use of your precious time together.
+    translation: Gebruik Loomio om een effectieve vergadering te plannen. Betrek mensen vanaf het begin, bepaal samen welke onderwerpen het belangrijkst zijn en benut de tijd die je samen hebt.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  a30a32e8b06a9432:
+    english: If the group is new to Loomio, begin with [Introducing Loomio to your group](/en/user_manual/overview/introducing_loomio), then use this meeting process as a practical first recurring workflow.
+    translation: Als de groep nieuw is met Loomio, begin dan met [Loomio introduceren bij je groep](/en/user_manual/overview/introducing_loomio). Gebruik daarna dit vergaderproces als eerste terugkerende werkwijze.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  9a0eb26797e28e0f:
+    english: There are several things you can do to make your next board or committee meeting effective...
+    translation: Je kunt verschillende dingen doen om je volgende bestuurs- of commissievergadering effectief te maken...
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  c04e8fcfc9edb01c:
+    english: |-
+      - [Meeting focus and review actions](#meeting-focus-and-review-actions)
+      - [Announce agenda and notify](#agenda-and-notify)
+      - [Find a time for meeting](#find-a-time-for-meeting)
+      - [Sign off minutes](#sign-off-minutes)
+      - [Approve reports](#approve-reports)
+    translation: |-
+      - [De focus van de vergadering bepalen en acties bespreken](#meeting-focus-and-review-actions)
+      - [De agenda bekendmaken en leden informeren](#agenda-and-notify)
+      - [Een tijd voor de vergadering vinden](#find-a-time-for-meeting)
+      - [De notulen goedkeuren](#sign-off-minutes)
+      - [Verslagen goedkeuren](#approve-reports)
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  6e6785b547007644:
+    english: "## Meeting focus and review actions"
+    translation: "## De focus van de vergadering bepalen en acties bespreken"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  26bf98782eb61549:
+    english: 'Establish a focus for the meeting, so you spend your precious time together talking about the most important topics.  '
+    translation: Bepaal waarop de vergadering zich richt, zodat je de tijd samen besteedt aan de belangrijkste onderwerpen.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  c23fdd52f0a29b2c:
+    english: Inviting members to contribute to the agenda helps everyone align, think about topics and energize for the meeting.
+    translation: Als je leden uitnodigt om onderwerpen voor de agenda aan te dragen, kan iedereen zich voorbereiden en ontstaat er een gedeeld beeld van wat besproken moet worden.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  52409f3ffabfb7d1:
+    english: |-
+      Actions:
+      - focus the meeting on the most important things,
+      - follow up and talk to members about actions from previous meetings.
+    translation: |-
+      Acties:
+      - richt de vergadering op de belangrijkste onderwerpen,
+      - bespreek met leden de acties uit eerdere vergaderingen.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  a52dd7ebb4619e46:
+    english: |-
+      ### On Loomio
+      Use a Loomio **Discussion** to prepare for your meeting:
+      * remind members about the meeting coming up,
+      * invite comment about the most important things to focus on,
+      * summarize actions from the previous meeting and ask for an update.
+    translation: |-
+      ### Op Loomio
+      Gebruik een **Discussie** op Loomio om je vergadering voor te bereiden:
+      * herinner leden aan de komende vergadering,
+      * vraag welke onderwerpen volgens hen aandacht verdienen,
+      * vat de acties uit de vorige vergadering samen en vraag om een update.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  5bcd10bb61edcc35:
+    english: "## Agenda and notify"
+    translation: "## Agenda en kennisgeving"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  d9431846021bb8f3:
+    english: Announce the meeting with a clear agenda. Attach papers, link to key documents and notify members.
+    translation: Kondig de vergadering aan met een duidelijke agenda. Voeg vergaderstukken toe, link naar belangrijke documenten en informeer de leden.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  41e84b882fa9bab1:
+    english: This helps everyone prepare for the meeting, by reading the materials and thinking about topics of discussion and the decisions to be made.  Members are then more likely to arrive in context and ready for the meeting.
+    translation: Zo kan iedereen zich voorbereiden door de stukken te lezen en na te denken over de onderwerpen en besluiten. Leden weten dan wat ze kunnen verwachten wanneer ze naar de vergadering komen.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  b6b0e7ed67711d5b:
+    english: |-
+      Actions:
+      - prepare agenda, documents, materials and board papers,
+      - notify members of meeting and send materials.
+    translation: |-
+      Acties:
+      - bereid de agenda, documenten en vergaderstukken voor,
+      - informeer leden over de vergadering en stuur de stukken mee.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  5b6d4a5158e41747:
+    english: |-
+      ### On Loomio
+      Use a Loomio **Discussion** to prepare for your board meeting:
+      * state details of meeting,
+      * attach or link agenda, documents and other meeting materials,
+      * invite members with a notification,
+      * monitor 'Seen by' to see who has read the thread.
+    translation: |-
+      ### Op Loomio
+      Gebruik een **Discussie** op Loomio om je bestuursvergadering voor te bereiden:
+      * vermeld de gegevens van de vergadering,
+      * voeg de agenda, documenten en andere vergaderstukken toe of link ernaar,
+      * nodig leden uit met een melding,
+      * kijk bij 'Gezien door' wie de thread heeft gelezen.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  f2c8f10394bf10c8:
+    english: |-
+      While similar to sending an email, a Loomio thread has advantages:
+      - you can see who has read the thread, and remind those who haven't,
+      - member replies or comments are visible to everyone who has permission to view the thread,
+      - any discussion or questions about the agenda or meeting materials is held in a single place.
+    translation: |-
+      Een thread op Loomio lijkt op een e-mail, maar biedt een aantal voordelen:
+      - je kunt zien wie de thread heeft gelezen en de anderen eraan herinneren,
+      - reacties van leden zijn zichtbaar voor iedereen die de thread mag bekijken,
+      - vragen en gesprekken over de agenda of vergaderstukken blijven op één plek.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  dd6d8cabe5f1810d:
+    english: Members can find all the information about the meeting readily available in one place, thereby avoiding confusing email chains and losing important info in their email inbox.
+    translation: Leden vinden alle informatie over de vergadering op één plek. Zo raken belangrijke gegevens minder snel zoek in lange e-mailgesprekken of volle inboxen.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  6a57d003a0bd5f07:
+    english: |-
+      ### Confirm
+      Ask members to leave a comment confirming they have read the agenda and meeting papers and are prepared for the meeting. Use **Seen by** to identify anyone who may need a reminder.
+    translation: |-
+      ### Bevestiging
+      Vraag leden in een reactie te bevestigen dat ze de agenda en vergaderstukken hebben gelezen en voorbereid zijn. Gebruik **Gezien door** om te zien wie mogelijk een herinnering nodig heeft.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  8d08b0ae5712ef2d:
+    english: "## Find a time for meeting\nFinding a time to meet can be a frequent headache for many administrators. "
+    translation: |-
+      ## Een tijd voor de vergadering vinden
+      Voor beheerders kost het vaak moeite om een tijd te vinden waarop iedereen kan.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  1da8fdf943571a19:
+    english: |-
+      ### On Loomio
+      If you have not yet set a date and time for the meeting or you need to find a time for a future meeting, you can use **Time poll**.
+    translation: |-
+      ### Op Loomio
+      Als de datum en tijd nog niet vaststaan, of als je een tijd voor een toekomstige vergadering zoekt, gebruik dan **Moment bevragen**.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  f1c92e27dfd63153:
+    english: Time poll makes it easy to see everyone's availability and find the best time, reducing time and energy needed for this common admin task.
+    translation: Met een peiling van het type Moment bevragen zie je eenvoudig wanneer iedereen beschikbaar is. Zo vind je een geschikt moment en kost het plannen minder tijd.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  45b90fd46cce4976:
+    english: Members in different time zones will see dates and times localized in their time zone.
+    translation: Leden in verschillende tijdzones zien de datums en tijden in hun eigen tijdzone.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  dc159c751f73d5d1:
+    english: 'When the Time poll closes, choose the best time and send an outcome notification with a calendar invitation, so members can add the meeting to their calendar. '
+    translation: Wanneer de peiling sluit, kies je het beste moment en deel je een conclusie met een agenda-uitnodiging. Leden kunnen de vergadering dan aan hun agenda toevoegen.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  4bafee41dd5f774c:
+    english: "## Sign off minutes\nApproving or ratifying minutes is standard practice for formal meetings and good practice for all meetings.  "
+    translation: |-
+      ## De notulen goedkeuren
+      Notulen goedkeuren of bekrachtigen is gebruikelijk bij formele vergaderingen en zinvol bij andere vergaderingen.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  8d9795ed92dabff7:
+    english: 'Minutes provide a record of the meeting, key points raised during discussion, results of decisions and how people voted. They include the actions agreed and the person(s) responsible, and are often the starting point for the next meeting.  '
+    translation: In de notulen staan de belangrijkste besproken punten, de genomen besluiten en hoe mensen hebben gestemd. Ze vermelden ook de afgesproken acties en wie daarvoor verantwoordelijk is. Vaak vormen ze het vertrekpunt voor de volgende vergadering.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  1fd0d860cba070db:
+    english: Minutes are valuable as a reminder for people present, helpful for those absent and a record to consult in case of conflict.
+    translation: De notulen herinneren aanwezigen aan wat is besproken, houden afwezigen op de hoogte en bieden een verslag om bij een meningsverschil te raadplegen.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  166796d872f35962:
+    english: "### On Loomio"
+    translation: "### Op Loomio"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  ef51b49480cb721a:
+    english: Post the minutes in the Loomio meeting thread within a few days of the meeting and invite participants to approve.  This keeps the minutes relevant and fresh in member's minds and is a great way to remind members of their actions.  It also saves some time during your meeting.
+    translation: Plaats de notulen binnen enkele dagen na de vergadering in de thread op Loomio en nodig deelnemers uit om ze goed te keuren. Dan ligt de vergadering nog vers in het geheugen en worden leden herinnerd aan hun acties. Het bespaart ook tijd tijdens de volgende vergadering.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  ea02d6cf3ede73dc:
+    english: The example above uses a **Choose** poll with two options 'Accept' or 'Review'.
+    translation: 'In het voorbeeld hierboven staat een peiling van het type **Kiezen** met twee opties: ''Accepteren'' en ''Herzien''.'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  56c55da82e5ddeb7:
+    english: 'When everyone has voted and the poll closes, state an outcome so everyone knows what has happened.  '
+    translation: Wanneer iedereen heeft gestemd en de peiling sluit, deel je een conclusie zodat iedereen weet wat er is besloten.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  e8b710a05eb113dc:
+    english: 'If your meeting practice requires formal acceptance at the next meeting, schedule an agenda item to acknowledge and confirm polls and decisions made on Loomio, and record this in the meeting minutes.  '
+    translation: Als besluiten volgens jullie werkwijze formeel tijdens de volgende vergadering moeten worden goedgekeurd, zet dit dan op de agenda. Bevestig daar de peilingen en besluiten op Loomio en leg dit vast in de notulen.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  '06339a98b65ccc2c':
+    english: For example; *"Does anyone wish to change their votes in Loomio?  If no, then let's resolve to formally approve polls made in Loomio during the last period."*
+    translation: 'Bijvoorbeeld: *"Wil iemand zijn stem op Loomio wijzigen? Zo niet, laten we dan de peilingen van de afgelopen periode op Loomio formeel goedkeuren."*'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  f460b4ae218b375a:
+    english: |-
+      ## Approve reports
+      Most meeting agendas include time for reports to be presented, discussed and approved; for example reports from the CEO, Financial, Operations, Health & Safety, and project reports.
+    translation: |-
+      ## Verslagen goedkeuren
+      Op de meeste vergaderagenda's staat tijd om verslagen te presenteren, bespreken en goed te keuren. Denk aan verslagen van de directeur, over financiën, bedrijfsvoering, gezondheid en veiligheid, of over projecten.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  00abfe283956509a:
+    english: Reports are very important to help everyone get on the same page, however they can absorb valuable time in a meeting that may be used more effectively.
+    translation: Verslagen helpen iedereen dezelfde informatie te krijgen. De bespreking ervan kan echter veel vergadertijd kosten die je ook anders kunt gebruiken.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  861200207a1e1dfb:
+    english: Attach or link reports to your meeting **thread** and invite questions about the reports in advance of the meeting.
+    translation: Voeg verslagen toe aan de **thread** voor je vergadering of link ernaar, en nodig leden uit om vooraf vragen te stellen.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  11f124875e8a5945:
+    english: Members receive and read the reports at a time and place that works for them.  As members read and think about the reports, they can comment, ask questions and see responses in Loomio.
+    translation: Leden kunnen de verslagen lezen op een tijd en plaats die hun uitkomen. Tijdens het lezen kunnen ze op Loomio reageren, vragen stellen en antwoorden bekijken.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  2871f1673d36999a:
+    english: A question asked by one member is likely of interest to other members, so when someone replies to the question, their response  is visible to everyone in the Loomio group.
+    translation: Een vraag van één lid is vaak ook interessant voor andere leden. Als iemand antwoord geeft, kan iedereen in de Loomio-groep dat antwoord zien.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  851a2a86a1047697:
+    english: As members become familiar with discussing reports in Loomio, save a little more time by taking it a step further - seek approval of reports ahead of the meeting.
+    translation: Als leden gewend zijn om verslagen op Loomio te bespreken, kun je meer vergadertijd besparen door ze ook vóór de vergadering ter goedkeuring voor te leggen.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'

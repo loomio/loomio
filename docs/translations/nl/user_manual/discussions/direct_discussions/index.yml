@@ -1,0 +1,61 @@
+---
+navigation_title: Directe discussies
+blocks:
+  ba470546359b688d:
+    english: "# Direct discussions"
+    translation: "# Directe discussies"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  b3ed13f5612f4ff9:
+    english: A direct discussion is a private discussion for a specific set of people.
+    translation: Een directe discussie is een privédiscussie voor een bepaalde groep mensen.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  479f7faed056ab51:
+    english: A direct discussion does not belong to a group. Invited people do not need to be a member of your Loomio group.
+    translation: Een directe discussie hoort niet bij een groep. Mensen die je uitnodigt, hoeven geen lid te zijn van jouw Loomio-groep.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  2f5362faecc07fa0:
+    english: You control who can see and participate by adding people or email addresses to the **Invite** field.
+    translation: Je bepaalt wie de discussie kan zien en eraan kan deelnemen door mensen of e-mailadressen toe te voegen aan het veld **Uitnodigen**.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  f31343ea54b4f899:
+    english: Direct discussions support the same comments, polls and other tools as group discussions. They can be useful when creating a subgroup is unnecessary.
+    translation: In directe discussies kun je dezelfde reacties, peilingen en andere functies gebruiken als in groepsdiscussies. Ze zijn handig als je geen subgroep hoeft te maken.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  8dcb1cd81ca79192:
+    english: "![A direct discussion form with no group selected and Samira Patel in the Invite field](direct-discussion-example.png)"
+    translation: "![Een formulier voor een directe discussie zonder geselecteerde groep en met Samira Patel in het veld Uitnodigen](direct-discussion-example.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  6e1409b4f3f725d9:
+    english: Select **Direct threads** in the sidebar to see your direct discussions. Select **New discussion** on that page to start another one.
+    translation: Selecteer **Directe borden** in de zijbalk om je directe discussies te bekijken. Selecteer **Nieuwe discussie** op die pagina om er nog een te starten.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  f77108fd74372c43:
+    english: "![The Direct threads sidebar item and the list of direct discussions](direct-discussion-sidebar.png)"
+    translation: "![Directe borden in de zijbalk en de lijst met directe discussies](direct-discussion-sidebar.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  5a0b9426a2d88e62:
+    english: |-
+      ## Contacting someone via a direct discussion
+      A direct discussion can be used to contact one or more people privately without creating a subgroup.
+    translation: |-
+      ## Iemand benaderen via een directe discussie
+      Je kunt een directe discussie gebruiken om privé contact op te nemen met een of meer mensen zonder een subgroep te maken.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'

@@ -1,0 +1,503 @@
+---
+navigation_title: Configurações
+blocks:
+  145c23b2412eff98:
+    english: "# Proposal and poll settings"
+    translation: "# Configurações de propostas e enquetes"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  9e0347d976f79179:
+    english: "## Setting up a proposal or poll"
+    translation: "## Configurar uma proposta ou enquete"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  e5d6f17041c19d41:
+    english: "### Proposal and poll templates"
+    translation: "### Modelos de propostas e enquetes"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  8913cabb2f1f8227:
+    english: 'Choose the proposal template you want to use. '
+    translation: Escolha o modelo de proposta que você quer usar.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  3620f6321777ca50:
+    english: "### Add content"
+    translation: "### Adicionar conteúdo"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  bc7ebb222e9ff4d1:
+    english: "**Group:** Check that the correct group is selected for your proposal or poll."
+    translation: "**Grupo:** Confira se o grupo correto está selecionado para sua proposta ou enquete."
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  3a1d375da02f3a49:
+    english: "**Title:** Give your proposal or poll a short, relevant title."
+    translation: "**Título:** Dê à sua proposta ou enquete um título curto e relevante."
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  a62a7e63f9db295c:
+    english: "**Details:** Explain what you are asking of people and include enough details so everyone knows what it means to vote.  "
+    translation: "**Detalhes:** Explique o que você está pedindo às pessoas e inclua detalhes suficientes para que todas entendam o que significa votar."
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  e17c2ab4878716f2:
+    english: The predefined templates include some prompts to help you write a good proposal - use these or add your own details.
+    translation: Os modelos predefinidos incluem sugestões para ajudar você a escrever uma boa proposta. Use-as ou acrescente seus próprios detalhes.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  74daa7f0cc476971:
+    english: Avoid combining a range of ideas in one proposal, because people might agree to some aspects but not others and be unsure how to respond. You can break complex decisions down into multiple proposals.
+    translation: Evite reunir várias ideias em uma única proposta. As pessoas podem concordar com algumas partes e discordar de outras, sem saber como responder. Você pode dividir decisões complexas em várias propostas.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  0da6e449688940bb:
+    english: When making a proposal, state your expectations and describe the impact the proposal will have if adopted. If it's a formal or binding proposal it's often worth describing what it means if the proposal is not adopted.
+    translation: Ao criar uma proposta, explique o que você espera e qual será o impacto se ela for aprovada. Se a proposta for formal ou vinculante, também pode ser útil explicar o que acontecerá se ela não for aprovada.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  a6db66b75f495e21:
+    english: Use the formatting tools to support your poll.  For example, attach a document file with the paperclip icon, insert an image, link to a website or online document, or even embed a video.
+    translation: Use as ferramentas de formatação para complementar sua enquete. Por exemplo, anexe um documento com o ícone de clipe, insira uma imagem, adicione um link para um site ou documento on-line ou incorpore um vídeo.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  f4f85f131878c36d:
+    english: "### Voting options"
+    translation: "### Opções de voto"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  616aab74af2072ba:
+    english: Each proposal and poll template provides options for voting.
+    translation: Cada modelo de proposta ou enquete oferece opções de voto.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  7a85de7eefe74178:
+    english: Depending on the template, you can edit, remove, reorder, or add voting options to suit the decision process you are running.
+    translation: Dependendo do modelo, você pode editar, remover, reordenar ou adicionar opções de voto conforme o processo de decisão.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  9bc44bf4b28ac5d8:
+    english: "- Use the pencil icon to edit voting option \n- Use the trash can icon to remove unwanted voting options\n- Use the handle to move the order of voting options\n- Add voting options with **Add option** when the template allows custom options"
+    translation: "- Use o ícone de lápis para editar uma opção de voto \n- Use o ícone de lixeira para remover opções de voto indesejadas\n- Use a alça para alterar a ordem das opções de voto\n- Adicione opções de voto com **Adicionar opção** quando o modelo permitir opções personalizadas"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  2062f39334fbd629:
+    english: |-
+      ### Edit voting options
+      There is a lot of flexibility to configure voting options to suit the way your organization makes decisions.
+    translation: |-
+      ### Editar opções de voto
+      Você pode configurar as opções de voto de acordo com a forma como sua organização toma decisões.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  5ac5b47c81fe187b:
+    english: 'Use the pencil icon alongside the voting option to open the edit modal:'
+    translation: 'Use o ícone de lápis ao lado da opção de voto para abrir a janela de edição:'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  3c791f8140ad3b39:
+    english: "**Option name:** A short name for the option."
+    translation: "**Nome da opção:** Um nome curto para a opção."
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  77a0fb7409cf1711:
+    english: "**Icon:** Select an icon for the option, such as thumbs up, thumbs down, abstain, or block."
+    translation: "**Ícone:** Selecione um ícone para a opção, como aprovação, reprovação, abstenção ou bloqueio."
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  9126ee91e5d1cb95:
+    english: "**Meaning:** A sentence that explains what choosing this options means."
+    translation: "**Significado:** Uma frase que explique o que significa escolher essa opção."
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  e88d83b93ba47666:
+    english: "**Reason prompt:** A question to prompt voters to provide their reasoning or reconsider their position. "
+    translation: "**Pergunta sobre o motivo:** Uma pergunta para incentivar as pessoas a explicar seu voto ou reconsiderar sua posição."
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  d05197892ea46087:
+    english: "### Opening time"
+    translation: "### Horário de abertura"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  1b56f0ad52a3aed8:
+    english: By default, voting opens immediately when you create the poll. If you want to schedule voting to open at a later time, uncheck **Voting opens immediately** and select an opening date and time.
+    translation: Por padrão, a votação começa assim que você cria a enquete. Para agendar o início da votação, desmarque **A votação começa imediatamente.** e selecione a data e o horário de abertura.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  48ccc43734b062eb:
+    english: This is useful to give time for discussion before voting opens, or to ensure a poll or proposal is correctly set up and scheduled to happen at the right time.
+    translation: Isso dá tempo para a discussão antes da votação ou permite conferir a configuração da enquete ou proposta e programar seu início para o momento certo.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  b68fccc3132988ff:
+    english: When a poll has a scheduled opening time, you can add voters before voting opens. Voters will be notified when voting opens, rather than when they are added.
+    translation: Quando a abertura de uma enquete está agendada, você pode adicionar pessoas votantes antes do início da votação. Elas serão notificadas quando a votação começar, e não quando forem adicionadas.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  82d4cacfa780dd98:
+    english: "**Notify voters when poll opens:** When checked (default), all voters will receive a notification when voting opens. Uncheck this if you want to open voting without sending notifications."
+    translation: "**Notificar votantes quando a enquete começar:** Quando esta opção está marcada (padrão), todas as pessoas votantes recebem uma notificação no início da votação. Desmarque-a para abrir a votação sem enviar notificações."
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  d084620657803f93:
+    english: "**Closing date and time:** Select the closing date and time for your poll."
+    translation: "**Data e horário de encerramento:** Selecione a data e o horário de encerramento da enquete."
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  c0472419a2671222:
+    english: Give sufficient time for people to vote. You could time the proposal so it closes before a meeting, or avoid closing over a weekend, so that people will receive a timely reminder. If necessary, you can close the poll early or extend the closing time.
+    translation: Dê às pessoas tempo suficiente para votar. Você pode programar a proposta para encerrar antes de uma reunião ou evitar que ela se encerre durante o fim de semana, para que as pessoas recebam um lembrete em tempo hábil. Se necessário, você pode encerrar a enquete antes do prazo ou prorrogar a votação.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  c87f87e6cbc1a4d7:
+    english: "**Who can vote?** Invite everyone in the group or only specific people that you invite."
+    translation: "**Quem pode votar?** Convide todas as pessoas do grupo ou apenas pessoas específicas."
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  e02a9cefc3082334:
+    english: |-
+      You can later add people to an 'Invite people only' poll. For identified polls,
+      you can also remove people who should no longer be eligible to vote. People
+      cannot be removed from an anonymous poll.
+    translation: |-
+      Você pode adicionar pessoas posteriormente a uma enquete do tipo 'Somente pessoas convidadas'. Em enquetes identificadas,
+      também pode remover pessoas que não devem mais ter direito a voto. Não é possível
+      remover pessoas de uma enquete anônima.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  2e959157d75ed7bd:
+    english: "## More settings"
+    translation: "## Mais configurações"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  3d4443d3e6d3b13d:
+    english: |-
+      ### Reminder
+      Send a 'Closing soon' notification 24 hours before the poll closes. This can be an opportunity for people to see how others have voted and reconsider their own vote, or just a way to increase participation in the poll.
+    translation: |-
+      ### Lembrete
+      Envie uma notificação de 'Encerramento em breve' 24 horas antes do fim da enquete. Isso permite que as pessoas vejam como outras votaram e reconsiderem seu próprio voto. Também pode aumentar a participação na enquete.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  62067c0573d7a64e:
+    english: |-
+      Setting options:
+      - Nobody
+      - Author
+      - Undecided voters (default)
+      - All voters
+    translation: |-
+      Opções de configuração:
+      - Ninguém
+      - Autor
+      - Pessoas que ainda não votaram (padrão)
+      - Todas as pessoas votantes
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  6cd67c3f92302551:
+    english: |-
+      For an anonymous poll lasting at least 24 hours, Loomio automatically reminds
+      eligible people who have not voted during the final 24 hours. This reminder
+      cannot be changed in the poll settings.
+    translation: |-
+      Em uma enquete anônima com duração de pelo menos 24 horas, o Loomio envia automaticamente um lembrete
+      às pessoas aptas a votar que ainda não votaram nas últimas 24 horas. Esse lembrete
+      não pode ser alterado nas configurações da enquete.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  72f172271e2a636a:
+    english: |-
+      ### Anonymous voting
+      If enabled, votes are stored separately from voter identities. Results appear after voting closes, and voters cannot add reasons, review their submitted vote, or change it.
+    translation: |-
+      ### Votação anônima
+      Quando ativada, os votos são armazenados separadamente da identidade de quem votou. Os resultados aparecem após o encerramento da votação. As pessoas votantes não podem acrescentar justificativas, consultar o voto enviado nem alterá-lo.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  3393027493510f2f:
+    english: See [Anonymous voting](/en/user_manual/polls/anonymous_voting) for details about how voter identities are separated from submitted votes, what information is retained, and the limits of the protection.
+    translation: Consulte [Votação anônima](/en/user_manual/polls/anonymous_voting) para saber como a identidade das pessoas votantes é separada dos votos enviados, quais informações são mantidas e quais são os limites dessa proteção.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  b731b9118e48dee5:
+    english: |-
+      > [!WARNING]
+      > Once a poll has started you cannot edit the poll to make it anonymous or to undo the anonymous setting.
+    translation: |-
+      > [!WARNING]
+      > Depois que uma enquete começar, você não poderá torná-la anônima nem desativar a votação anônima.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  e8660d089a3c07bb:
+    english: |-
+      > [!WARNING]
+      > You cannot re-open an anonymous poll after it has closed. Submitted votes are not linked to the participation records that show who has voted.
+    translation: |-
+      > [!WARNING]
+      > Você não poderá reabrir uma enquete anônima após o encerramento. Os votos enviados não estão vinculados aos registros de participação que mostram quem votou.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  aaaaa28a4b435835:
+    english: |-
+      ### Vote reason
+      It can be helpful to understand why people voted the way they did. With this setting, you can prompt people to share their thoughts when they vote.
+    translation: |-
+      ### Justificativa do voto
+      Entender por que as pessoas votaram de determinada maneira pode ajudar na decisão. Com esta configuração, você pode pedir que elas compartilhem suas razões ao votar.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  309645182b157738:
+    english: 'Available settings depend on the template:'
+    translation: 'As configurações disponíveis dependem do modelo:'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  d67e2c2914e91a6f:
+    english: |-
+      - **Optional** lets voters choose whether to give a reason
+      - **Required for disagree or block** requires a reason when the selected option
+        uses the Disagree or Block voting icon
+      - **Required for block** requires a reason when the selected option uses the
+        Block voting icon
+      - **Required** requires every voter to give a reason
+      - **Disabled** removes the vote-reason field
+    translation: |-
+      - **Opcional** permite que os votantes escolham se querem justificar o voto
+      - **Necessário para discordar ou bloquear** exige uma justificativa quando a opção selecionada
+        usa o ícone de voto Discordar ou Bloquear
+      - **Necessário para bloqueio** exige uma justificativa quando a opção selecionada usa o
+        ícone de voto Bloquear
+      - **Obrigatório** exige que todos os votantes justifiquem o voto
+      - **Desabilitado** remove o campo de justificativa do voto
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  af5e7c0557aec611:
+    english: |-
+      The conditional settings follow the voting icon rather than the option name.
+      They still apply if you rename Disagree to a term such as Objection. The
+      Consent template defaults to **Required for disagree or block**, while the
+      Consensus template defaults to **Required for block**. Other templates default
+      to **Optional**, except Question rounds where the response itself is required.
+      The poll author can change the setting for an individual poll.
+    translation: |-
+      As configurações condicionais seguem o ícone de voto, independentemente do nome da opção.
+      Elas continuam válidas se você renomear Discordar para algo como Objeção. O
+      modelo de Consentimento usa **Necessário para discordar ou bloquear** por padrão, enquanto o
+      modelo de Consenso usa **Necessário para bloqueio**. Os demais modelos usam
+      **Opcional** por padrão, exceto as rodadas de Perguntas, nas quais a resposta é obrigatória.
+      Quem criou a enquete pode alterar essa configuração para cada enquete.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  ecb0d89c623db459:
+    english: "**Limit reason to maximum 500 characters:** Keeping vote reasons short makes them easier to understand. A collection of concise reasons is a great resource for making a decision.  This setting is ticked by default. Untick to allow for longer reasons."
+    translation: "**Limitar a justificativa a 500 caracteres:** Justificativas curtas são mais fáceis de entender. Um conjunto de justificativas concisas ajuda na tomada de decisão. Essa opção vem marcada por padrão. Desmarque-a para permitir justificativas mais longas."
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  35bd4f116b9ff26a:
+    english: |-
+      ### Hide results
+      If you want people to vote without knowing how others have voted, you can hide the results of the poll.  Useful if you do not want people to be affected by how other people have voted.
+    translation: |-
+      ### Ocultar resultados
+      Você pode ocultar os resultados da enquete para que as pessoas votem sem saber como outras votaram. Isso evita que os votos anteriores influenciem os demais.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  8cc5b82f4cc5e94e:
+    english: |-
+      Setting options:
+      - Do not hide results
+      - Hide results until a vote is cast
+      - Hide results until voting closes
+    translation: |-
+      Opções de configuração:
+      - Não ocultar resultados
+      - Ocultar resultados até que um voto seja registrado
+      - Ocultar resultados até o encerramento da votação
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  4be103ffd97e7e8f:
+    english: While results are hidden, nobody can reply to votes. Replies to votes open when voting closes.
+    translation: Enquanto os resultados estiverem ocultos, ninguém poderá responder aos votos. As respostas aos votos ficam disponíveis quando a votação termina.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  a488ebe6712a5e1d:
+    english: If results are hidden until a vote is cast, vote before you print or export the thread as Markdown.
+    translation: Se os resultados estiverem ocultos até que um voto seja registrado, vote antes de imprimir ou exportar a discussão como Markdown.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  1e5a1eb47ee3d99d:
+    english: |-
+      Anonymous polls always hide results until voting closes. The STV Election
+      template enables anonymous voting by default.
+    translation: |-
+      Enquetes anônimas sempre ocultam os resultados até o encerramento da votação. O modelo de Eleição STV
+      ativa a votação anônima por padrão.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  8e7d8e81db57f4f8:
+    english: |-
+      ### Start the poll
+      Select the **Start proposal** or **Start poll** button.
+    translation: |-
+      ### Iniciar a enquete
+      Selecione o botão **Iniciar proposta** ou **Iniciar enquete de escolha**.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  b1ee90012c240ef5:
+    english: "## Managing polls"
+    translation: "## Gerenciar enquetes"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  0b5f754660efb4da:
+    english: Open the three-dot menu at the bottom right of the poll.
+    translation: Abra o menu de três pontos no canto inferior direito da enquete.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  cc2325791d155b04:
+    english: "### Edit poll"
+    translation: "### Editar enquete"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  8d5ecd0352b5caf8:
+    english: Use **Edit poll** to edit poll content or settings.   You can not change voting options once voting commences.
+    translation: Use **Editar enquete de escolha** para editar o conteúdo ou as configurações da enquete. Você não pode alterar as opções de voto depois que a votação começa.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  84d18e91493020d4:
+    english: "### Make a copy"
+    translation: "### Fazer uma cópia"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  071c2438f8e5315f:
+    english: Use **Make a copy** to create a new poll using the current poll and settings as a starting point.
+    translation: Use **Faça uma cópia** para criar uma nova enquete com base na enquete atual e em suas configurações.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  3c42dde555e8a245:
+    english: "### Notification history"
+    translation: "### Histórico de notificações"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  3e750b3f37e8ddf1:
+    english: "**Notification history** shows who was notified and whether each notification has been read."
+    translation: "**Histórico de notificações** mostra quem recebeu uma notificação e se cada notificação foi lida."
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  d78b253bae2aecc7:
+    english: "### Export poll"
+    translation: "### Exportar enquete"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  17e6fd426afa3b4d:
+    english: "**Export** poll status and results to a spreadsheet (.csv) file, to download unformatted poll data for analysis or archive."
+    translation: Use **Exportar** para baixar o estado e os resultados da enquete em um arquivo de planilha (.csv), com dados sem formatação para análise ou arquivamento.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  4fce317a163b0a40:
+    english: "### Print"
+    translation: "### Imprimir"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  d698be92962e2cd7:
+    english: Use **Print** in the thread actions to open a printable HTML document. You can print it or save it as a PDF for publishing and archiving.
+    translation: Use **Imprimir** nas ações da discussão para abrir um documento HTML pronto para impressão. Você pode imprimi-lo ou salvá-lo como PDF para publicar ou arquivar.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  5f48f7e2615e2acf:
+    english: "### Delete"
+    translation: "### Deletar"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  3fa0318abfe3b8ee:
+    english: "**Delete** will delete the poll.  You will first be asked to confirm you want to delete the poll."
+    translation: "**Deletar** apaga a enquete. Primeiro, você precisará confirmar a exclusão."
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  c15f44a0ee84f4aa:
+    english: Make sure you want to delete the poll.  There is no 'restore' option.
+    translation: Confirme que deseja apagar a enquete. Não há opção para restaurá-la.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  4b00b8191236e3d3:
+    english: After deletion, an **Item removed** marker remains in the thread.
+    translation: Após a exclusão, o marcador **Item removido** permanece na discussão.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  72383878842d4c51:
+    english: "### Save bookmark"
+    translation: "### Salvar marcador"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  66b9438053aa5b0c:
+    english: Use **Save bookmark** to add the poll to your bookmarks for quick access later.
+    translation: Use **Salvar marcador** para adicionar a enquete aos seus marcadores e acessá-la rapidamente depois.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'

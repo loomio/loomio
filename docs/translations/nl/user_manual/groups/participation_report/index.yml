@@ -1,0 +1,193 @@
+---
+navigation_title: Participatierapport
+blocks:
+  2f8bdb5ed7656e65:
+    english: "# Participation report"
+    translation: "# Participatierapport"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  0431c9fc46658338:
+    english: 'The group participation report gives insights into the usage of your Loomio group. '
+    translation: Het participatierapport laat zien hoe jouw Loomio-groep wordt gebruikt.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  0d23c0831f1ea6ca:
+    english: 'You''re able to choose which groups to include in the report, the start and end date for the report, and the interval (year, month, week or day) for grouping results. '
+    translation: Je kunt kiezen welke groepen je opneemt, wat de begin- en einddatum zijn en of je de resultaten per jaar, maand, week of dag groepeert.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  73c9822c08a37866:
+    english: The report is available to everyone in your group, however users can only see results for groups that they belong to, this means that different users may see slightly different reports.
+    translation: Iedereen in je groep kan het rapport bekijken. Je ziet alleen resultaten van groepen waarvan je lid bent. Daardoor kan het rapport er voor verschillende mensen iets anders uitzien.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  c9402b4720639f86:
+    english: 'You can find the report by clicking the group settings menu cog, as shown below. '
+    translation: Je vindt het rapport via het tandwiel van het menu met groepsinstellingen, zoals hieronder te zien is.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  a8f7425ca00b558b:
+    english: "![Participation report action in the Oatmilk Cooperative menu](group_participation_report.png)"
+    translation: "![Optie voor het participatierapport in het menu van Oatmilk Cooperative](group_participation_report.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  90b9c89c6933eeee:
+    english: "## What's in the report?"
+    translation: "## Wat staat er in het rapport?"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  06aabe2c1d6cd716:
+    english: "### Actions per month"
+    translation: "### Acties per maand"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  6772e16cee705fc1:
+    english: 'Understand how much participation happens in your group over a given period of time. '
+    translation: Bekijk hoeveel mensen in een bepaalde periode aan je groep hebben bijgedragen.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  fe690a715f8a00b5:
+    english: The report shows how many threads, comments, polls, votes and reactions have happened per month. This is graphed so you can see ebbs and flows of usage.
+    translation: Het rapport toont per maand het aantal threads, opmerkingen, polls, stemmen en reacties. De grafiek laat zien hoe de activiteit in de loop van de tijd verandert.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  21bf7cb257f4bb03:
+    english: Click specific labels on the graph to remove them from view.
+    translation: Klik op een label in de grafiek om de bijbehorende gegevens te verbergen.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  35ced3d9d51038aa:
+    english: Click specific headings in the table to sort the table by that column.
+    translation: Klik op een kolomkop om de tabel op die kolom te sorteren.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  9d511b052ae56765:
+    english: "![Participation report controls, totals, and activity graph for Oatmilk Cooperative](group_participation_report_graph.png)"
+    translation: "![Instellingen, totalen en activiteitengrafiek van het participatierapport voor Oatmilk Cooperative](group_participation_report_graph.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  aacb6b17aff5ac38:
+    english: "### Tag usage"
+    translation: "### Gebruik van labels"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  05aecaed54955302:
+    english: This shows how frequently various tags have been applied during the specified time frame.  For example, you can see the number of decisions using a particular decision process or template.
+    translation: Hier zie je hoe vaak verschillende labels in de gekozen periode zijn gebruikt. Je kunt bijvoorbeeld zien hoeveel besluiten een bepaald besluitvormingsproces of sjabloon gebruiken.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  9c6a609ca4029056:
+    english: "![Tag activity over time for Production, Cafe partnerships, and Operations](group_participation_report_tags.png)"
+    translation: "![Gebruik van labels door de tijd heen voor Production, Cafe partnerships en Operations](group_participation_report_tags.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  519237662235d020:
+    english: |-
+      ### Actions per user
+      Understand who are the most and least active contributors in your group.
+    translation: |-
+      ### Acties per gebruiker
+      Bekijk wie in je groep het meest en het minst actief zijn.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  b538bd1f65e69d28:
+    english: This table shows how many threads, comments, polls, votes and reactions each user in the specified groups was responsible for during the time frame. Click specific headings in the table to sort the table by that column.
+    translation: Deze tabel toont hoeveel threads, opmerkingen, polls, stemmen en reacties elke gebruiker in de geselecteerde groepen tijdens de gekozen periode heeft geplaatst of uitgebracht. Klik op een kolomkop om de tabel op die kolom te sorteren.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  7d416ad780b3ca85:
+    english: Turn on **Delegates only** to show people who are currently delegates in any of the selected groups. Their activity and voting record are aggregated across all selected groups, and delegates with no activity during the selected period remain in the table. The CSV download uses the same filter.
+    translation: Schakel **Alleen voor afgevaardigden** in om mensen te tonen die momenteel afgevaardigde zijn in een van de geselecteerde groepen. Hun activiteit en stemgegevens worden over alle geselecteerde groepen samengevoegd. Afgevaardigden zonder activiteit in de gekozen periode blijven in de tabel staan. De CSV-download gebruikt hetzelfde filter.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  12baf5af62638134:
+    english: "![Actions per delegate showing three levels of participation](group_participation_report_actions_per_user.png)"
+    translation: "![Acties per afgevaardigde met drie niveaus van deelname](group_participation_report_actions_per_user.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  1650f708482b4789:
+    english: "### Voting record per user"
+    translation: "### Stemgegevens per gebruiker"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  e6670b54039f316a:
+    english: Compare the number of votes issued to each person with the number they cast, see missed votes, and identify people who cast every vote issued to them. A person with no issued votes is not shown as having cast all votes. Anonymous polls are excluded because an anonymous ballot must not be associated with the person who cast it.
+    translation: Vergelijk hoeveel stemmen aan iemand zijn toegekend met hoeveel stemmen die persoon heeft uitgebracht. Bekijk gemiste stemmen en zie wie alle toegekende stemmen heeft uitgebracht. Iemand aan wie geen stemmen zijn toegekend, wordt niet getoond alsof die alle stemmen heeft uitgebracht. Anonieme polls tellen niet mee, omdat een anonieme stem niet aan de stemmer gekoppeld mag worden.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  252da2b72775c4f8:
+    english: Use **Delegates only** to review the voting record of current delegates. The CSV download uses the same name and delegate filters.
+    translation: Gebruik **Alleen voor afgevaardigden** om de stemgegevens van huidige afgevaardigden te bekijken. De CSV-download gebruikt dezelfde filters voor naam en afgevaardigden.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  d720230a7ca893dc:
+    english: "![Voting record for delegates showing issued, cast, and missed votes](group_participation_report_voting_record.png)"
+    translation: "![Stemgegevens van afgevaardigden met toegekende, uitgebrachte en gemiste stemmen](group_participation_report_voting_record.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  27754d9b8ac66b4a:
+    english: "### Users per country"
+    translation: "### Gebruikers per land"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  2fbdea8b174cff14:
+    english: How many users are in each country for all users in your group, based on the current IP address of users.
+    translation: Bekijk hoeveel gebruikers uit je groep zich in elk land bevinden, op basis van hun huidige IP-adres.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  fbd901317e9bc08e:
+    english: "![Users per country in the selected groups](group_participation_report_users_per_country.png)"
+    translation: "![Gebruikers per land in de geselecteerde groepen](group_participation_report_users_per_country.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  65756c058a279fcc:
+    english: "### Actions per country"
+    translation: "### Acties per land"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  569d9a416d57c04f:
+    english: Understand in which country users participate the most and least.
+    translation: Bekijk in welke landen gebruikers het meest en het minst deelnemen.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  b8e14bac0a6b4eda:
+    english: Similar to "Actions per user", but the data is grouped by the country the user is detected as being in.
+    translation: Net als bij "Acties per gebruiker", maar hier zijn de gegevens gegroepeerd per land waarin de gebruiker zich volgens de locatiebepaling bevindt.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  8ae0038e10a27c46:
+    english: "![Actions grouped by country](group_participation_report_actions_per_country.png)"
+    translation: "![Acties gegroepeerd per land](group_participation_report_actions_per_country.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'

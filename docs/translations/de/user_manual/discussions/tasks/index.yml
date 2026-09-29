@@ -1,0 +1,69 @@
+---
+navigation_title: Aufgaben
+blocks:
+  970146a02b39726b:
+    english: "# Tasks"
+    translation: "# Aufgaben"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  bea1dad1b0b47107:
+    english: Use tasks in threads and comments to name an action, assign it to someone, set a due date, and track whether it is complete.
+    translation: Mit Aufgaben in Diskussionen und Kommentaren kannst du festhalten, was zu tun ist, eine Person zuweisen, ein Fälligkeitsdatum setzen und verfolgen, ob die Aufgabe erledigt ist.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  2398b3493bad759e:
+    english: "## Add a task"
+    translation: "## Aufgabe hinzufügen"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  c240866e019fab51:
+    english: While writing a thread or comment, expand the formatting toolbar and click **Task list**. Type the action beside the checkbox.
+    translation: Wenn du eine Diskussion oder einen Kommentar schreibst, klappe die Formatierungsleiste auf und klicke auf **Aufgabenliste**. Schreibe die Aufgabe neben das Kontrollkästchen.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  f7d4f63b321e9af1:
+    english: "## Name and assign the task to a person"
+    translation: "## Aufgabe benennen und einer Person zuweisen"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  5ea902e45aaf1f7a:
+    english: Use an @mention in the task to assign it to a group member. An **Add due date** button appears once the task has an assignee.
+    translation: Erwähne ein Gruppenmitglied mit @ in der Aufgabe, um sie dieser Person zuzuweisen. Sobald die Aufgabe zugewiesen ist, erscheint die Schaltfläche **Fälligkeitsdatum hinzufügen**.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  1134aedee6cafd8c:
+    english: Tasks assigned to you appear on your **Tasks** page. Open **Tasks** from the sidebar to see them grouped by thread or poll.
+    translation: Dir zugewiesene Aufgaben erscheinen auf deiner Seite **Aufgaben**. Öffne **Aufgaben** über die Seitenleiste, um sie nach Diskussion oder Umfrage gruppiert zu sehen.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  5eae519b81c94f7a:
+    english: "## Set a reminder"
+    translation: "## Erinnerung festlegen"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  561597d43d716888:
+    english: Click **Add due date** to choose a due date and when Loomio should email the assignee a reminder. You can also remove an existing due date from this dialog.
+    translation: Klicke auf **Fälligkeitsdatum hinzufügen**, um ein Fälligkeitsdatum festzulegen und auszuwählen, wann Loomio der zugewiesenen Person eine Erinnerung per E-Mail senden soll. In diesem Dialog kannst du auch ein bestehendes Fälligkeitsdatum entfernen.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  bd36c23f297b0429:
+    english: "## Mark it as done"
+    translation: "## Als erledigt markieren"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  59b6138f35694902:
+    english: Click the checkbox beside a task to mark it as done. You can do this while editing the text, while reading it if you are the assignee, or from the **Tasks** page. Click it again to reopen the task.
+    translation: Klicke auf das Kontrollkästchen neben einer Aufgabe, um sie als erledigt zu markieren. Das geht beim Bearbeiten des Textes, beim Lesen einer dir zugewiesenen Aufgabe oder auf der Seite **Aufgaben**. Klicke erneut darauf, um die Aufgabe wieder zu öffnen.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'

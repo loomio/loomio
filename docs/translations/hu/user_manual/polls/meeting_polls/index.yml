@@ -1,0 +1,135 @@
+---
+navigation_title: Időpont választás
+blocks:
+  ebb0b3146e7f6937:
+    english: "# Time poll"
+    translation: "# Időpont választás"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  86490ad15147169e:
+    english: Use a **Time poll** to find a time for a meeting or event. It serves the same purpose as scheduling tools such as Doodle, while keeping the scheduling process with the group's other Loomio work. Participants see the options in their own time zone.
+    translation: Az **Időpont választás** segítségével találhatsz időpontot egy találkozóhoz vagy eseményhez. Ugyanarra szolgál, mint az időpont-egyeztető eszközök, például a Doodle, de az egyeztetés a csoport többi Loomio-tevékenységével együtt marad. A résztvevők a saját időzónájukban látják a lehetőségeket.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  2e21bb1b54b6fcf9:
+    english: "## Time poll"
+    translation: "## Időpont választás"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  27ba736f4b564fe3:
+    english: _Find when people are available to meet_
+    translation: _Tudd meg, mikor érnek rá a résztvevők_
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  2f5455ba3b487407:
+    english: Save time arranging a date for your meeting or event.
+    translation: Egyeztesd gyorsabban a találkozód vagy eseményed időpontját.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  859c3efc07ce0b04:
+    english: Time poll makes it easy to see everyone's availability and find the best time.
+    translation: Az időpontválasztással könnyen áttekintheted, ki mikor ér rá, és megtalálhatod a legjobb időpontot.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  12ae9e9d3bdb0a4e:
+    english: Give your Time poll a title and details. Enter a list of date and time options in your time zone.
+    translation: Adj címet és leírást az időpontválasztásnak. Sorold fel a lehetséges dátumokat és időpontokat a saját időzónádban.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  548fb6cd6fcd9376:
+    english: When setting timeslots, consider people in different time zones. Participants will see times localized in their time zone.
+    translation: Az időpontok megadásakor gondolj a más időzónában élőkre is. A résztvevők a saját időzónájuk szerinti időpontokat látják.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  3105405631b53c31:
+    english: Set a meeting duration.
+    translation: Állítsd be a találkozó időtartamát.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  8d56a5d9986286e9:
+    english: "### Voting"
+    translation: "### Szavazás"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  41d1e6a3a6739d95:
+    english: People mark each time with the green thumbs-up icon when they are available, the yellow sideways thumb when they can attend if needed, or the red thumbs-down icon when they are unavailable.
+    translation: A résztvevők minden időpontnál zöld felfelé mutató hüvelykujjal jelzik, ha ráérnek, sárga oldalra mutató hüvelykujjal, ha szükség esetén részt tudnak venni, és piros lefelé mutató hüvelykujjal, ha nem érnek rá.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  b4784042c82735af:
+    english: Participants can leave a reason comment to help the organizer find a suitable time.
+    translation: A résztvevők megjegyzésben megindokolhatják a válaszukat, hogy segítsenek a szervezőnek megfelelő időpontot találni.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  0165a90bc22b6f7f:
+    english: If the times don't work, participants can suggest alternatives using the message field. You can then update the poll with new times.
+    translation: Ha egyik időpont sem megfelelő, a résztvevők az üzenetmezőben más időpontokat javasolhatnak. Ezután új időpontokkal frissítheted a szavazást.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  6c7c09879e7d9bf8:
+    english: The results update as voting proceeds in a table showing who is available when, so everyone can see which timeslots are popular.
+    translation: Az eredmények a szavazás során folyamatosan frissülnek. A táblázat megmutatja, ki mikor ér rá, így mindenki láthatja, mely időpontok a legnépszerűbbek.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  b4783489f09ccf19:
+    english: "### Outcome"
+    translation: "### Következtetés"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  3c0061b9af0a6bca:
+    english: When the Time poll closes, pick the best time and post an outcome.
+    translation: Amikor lezárul az időpontválasztás, válaszd ki a legjobb időpontot, és tedd közzé a következtetést.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  62ef08e40ed2f44b:
+    english: "**Notify**: Add the people you are inviting to the meeting or event"
+    translation: "**Értesít**: Add hozzá azokat, akiket meghívsz a találkozóra vagy eseményre"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  945f9e19218fb1bf:
+    english: "**Meeting time**: Select the time that works best"
+    translation: "**Találkozási idő**: Válaszd ki a legmegfelelőbb időpontot"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  c5909628c21cd884:
+    english: "**Meeting name**: Give your meeting a name. The Time poll title is used by default"
+    translation: "**Találkozás neve**: Adj nevet a találkozónak. Alapértelmezés szerint az időpontválasztás címe jelenik meg"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  81195d01767895e4:
+    english: "**Location**: Add a physical location or a meeting link"
+    translation: "**Helyszín**: Adj meg egy helyszínt vagy egy linket az online találkozóhoz"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  af5765f5bdf83132:
+    english: "**Statement**: Summarize the result and add any instructions for the meeting"
+    translation: "**Nyilatkozat**: Foglald össze a döntést, és adj meg minden szükséges tudnivalót a találkozóhoz"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  6c0cb92cca53d36a:
+    english: Loomio includes the selected time, meeting name, duration, location, and statement in the outcome notification and calendar invitation.
+    translation: A Loomio a kiválasztott időpontot, a találkozó nevét, időtartamát, helyszínét és a nyilatkozatot is feltünteti a következtetésről szóló értesítésben és a naptármeghívóban.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'

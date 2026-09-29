@@ -1,0 +1,159 @@
+---
+navigation_title: Kirjautuminen
+blocks:
+  7d0aa091e06fa112:
+    english: "# Signing in"
+    translation: "# Kirjautuminen"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  3bede807c136909b:
+    english: On Loomio.com, you can sign in with a passkey, your email and password, an emailed sign-in code, or Google. You can choose whichever available method is most convenient for you.
+    translation: Loomio.comissa voit kirjautua sisään passkeyllä, sähköpostiosoitteella ja salasanalla, sähköpostitse lähetettävällä kirjautumiskoodilla tai Google-tilillä. Valitse sinulle sopivin käytettävissä oleva tapa.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  2bc2277a8ee0508d:
+    english: "![The Loomio sign-in form with passkey, email, password, and emailed-code options](sign_in_email.png)"
+    translation: "![Loomion kirjautumislomake, jossa voi käyttää passkeytä, sähköpostiosoitetta ja salasanaa tai sähköpostitse lähetettävää koodia](sign_in_email.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  e3daf63d410d5513:
+    english: "## Sign in with a passkey"
+    translation: "## Kirjaudu sisään passkeyllä"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  5c82bc1e8baa9f0b:
+    english: Select **Use a passkey**. Your browser or device shows the Loomio passkeys available to you and asks you to unlock the selected passkey with its normal screen lock, fingerprint, face recognition, PIN, or security key. You do not enter an email address first.
+    translation: Valitse **Käytä salasanaa**. Selain tai laite näyttää käytettävissä olevat Loomion passkeyt ja pyytää avaamaan valitsemasi passkeyn tavalliseen tapaan näytön lukituksella, sormenjäljellä, kasvojentunnistuksella, PIN-koodilla tai turva-avaimella. Sähköpostiosoitetta ei tarvitse antaa ensin.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  9386303ee98cb592:
+    english: You can add, name, and remove passkeys from your profile. For security, Loomio may ask you to sign in again before changing them. Give each passkey a recognizable name such as “Work laptop” or “Phone”. Passkeys are tied to the Loomio site where they were created and may be synchronized by your device or password manager.
+    translation: Voit lisätä, nimetä ja poistaa passkeytä profiilissasi. Turvallisuussyistä Loomio voi pyytää sinua kirjautumaan uudelleen sisään ennen niiden muuttamista. Anna kullekin passkeylle tunnistettava nimi, kuten ”Työkannettava” tai ”Puhelin”. Passkey on sidottu siihen Loomio-sivustoon, jolla se luotiin. Laitteesi tai salasananhallintasi voi synkronoida sen.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  5f10999e671f9b56:
+    english: "## Sign in with email and password"
+    translation: "## Kirjaudu sisään sähköpostiosoitteella ja salasanalla"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  5c8a380df0b08c86:
+    english: Enter your email address and password, then select **Sign in**. For account privacy, Loomio uses the same error when the email or password cannot be used to sign in.
+    translation: Anna sähköpostiosoitteesi ja salasanasi ja valitse sitten **Kirjaudu sisään**. Tilien yksityisyyden suojaamiseksi Loomio näyttää saman virheilmoituksen riippumatta siitä, estääkö sähköpostiosoite vai salasana kirjautumisen.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  63c19e6f58a1de53:
+    english: If you have not added a passkey, Loomio offers to add one after you sign in with a password. You can dismiss the offer, and Loomio will remember your choice.
+    translation: Jos et ole lisännyt passkeytä, Loomio ehdottaa sen lisäämistä sen jälkeen, kun olet kirjautunut sisään salasanalla. Voit ohittaa ehdotuksen, ja Loomio muistaa valintasi.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  dde79982546607b4:
+    english: If you do not have a password or cannot remember it, select **Send me a code** instead.
+    translation: Jos sinulla ei ole salasanaa tai et muista sitä, valitse sen sijaan **Lähetä minulle koodi**.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  5f3c6f8eca20d49c:
+    english: "## Get a sign-in code"
+    translation: "## Hanki kirjautumiskoodi"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  9713c017e247d8e2:
+    english: Select **Send me a code**, enter your email address, and submit the form. Loomio displays the same confirmation whether or not the address belongs to an account, so another person cannot use the form to discover who uses Loomio.
+    translation: Valitse **Lähetä minulle koodi**, anna sähköpostiosoitteesi ja lähetä lomake. Loomio näyttää saman vahvistuksen riippumatta siitä, kuuluuko osoite johonkin tiliin. Näin muut eivät voi selvittää lomakkeen avulla, kuka käyttää Loomiota.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  546aaa95b133da11:
+    english: If the address belongs to your account, Loomio sends a six-digit code. Return to the sign-in form, enter the code, and select **Sign in**. Sign-in codes normally expire after 24 hours and cannot be reused. Check your spam folder if the message does not arrive, and make sure you entered the address associated with your account.
+    translation: Jos osoite kuuluu tiliisi, Loomio lähettää kuusinumeroisen koodin. Palaa kirjautumislomakkeeseen, anna koodi ja valitse **Kirjaudu sisään**. Kirjautumiskoodit vanhenevat tavallisesti 24 tunnin kuluttua, eikä niitä voi käyttää uudelleen. Jos viesti ei saavu, tarkista roskapostikansiosi ja varmista, että annoit tiliisi liitetyn sähköpostiosoitteen.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  26171d5996050130:
+    english: "![The Loomio form for entering a six-digit sign-in code](sign_in_code.png)"
+    translation: "![Loomion lomake kuusinumeroisen kirjautumiskoodin antamiseen](sign_in_code.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  '087809317d00494a':
+    english: After each sign-in with a code, Loomio offers to set or replace your password. If your browser supports passkeys, you can also add one, even if you have already added a passkey on another device. A passkey lets you sign in quickly with your device’s fingerprint, face, or screen lock. You can skip the offer and continue using emailed codes.
+    translation: Aina kun kirjaudut sisään koodilla, Loomio ehdottaa salasanan asettamista tai vaihtamista. Jos selaimesi tukee passkeytä, voit myös lisätä sellaisen, vaikka olisit jo lisännyt passkeyn toisella laitteella. Passkeyllä voit kirjautua nopeasti sisään laitteesi sormenjäljellä, kasvojentunnistuksella tai näytön lukituksella. Voit ohittaa ehdotuksen ja jatkaa sähköpostitse lähetettävien koodien käyttöä.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  fa960675e8369daf:
+    english: "## Create an account"
+    translation: "## Luo tili"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  75fc0885f772c8cf:
+    english: Select **Create account** and follow the email-verification steps.
+    translation: Valitse **Luo tili** ja vahvista sähköpostiosoitteesi ohjeiden mukaan.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  aa461253943b989a:
+    english: For privacy, use the same email address that received your group invitation. If you have accounts under more than one address, you can [merge your accounts](/en/user_manual/users/merge_accounts).
+    translation: Yksityisyytesi suojaamiseksi käytä samaa sähköpostiosoitetta, johon sait ryhmäkutsun. Jos sinulla on tilejä usealla sähköpostiosoitteella, voit [yhdistää tilisi](/en/user_manual/users/merge_accounts).
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  d9844ac27d806c35:
+    english: "## Sign in with Google"
+    translation: "## Kirjaudu sisään Google-tilillä"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  8445cfcb9e9ecef5:
+    english: Select **Sign in with Google** and authenticate with your Google account. If an existing Loomio account has the same email address, Loomio links the Google identity to that account.
+    translation: Valitse **Kirjaudu sisään Google-tilillä** ja tunnistaudu Google-tililläsi. Jos olemassa olevalla Loomio-tilillä on sama sähköpostiosoite, Loomio liittää Google-tunnuksesi siihen tiliin.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  46281cafc4a889bf:
+    english: "## Other Loomio sites"
+    translation: "## Muut Loomio-sivustot"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  23c2dffa5d5056e2:
+    english: Organizations that host their own Loomio site can configure different sign-in methods. A site may offer passwords, emailed codes, passkeys, Google, SAML, or another OAuth provider alongside each other.
+    translation: Omaa Loomio-sivustoaan ylläpitävät organisaatiot voivat määrittää eri kirjautumistapoja. Sivusto voi tarjota rinnakkain salasanoja, sähköpostitse lähetettäviä koodeja, passkeytä, Google-kirjautumista, SAML-kirjautumista tai muuta OAuth-palveluntarjoajaa.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  3de129c7bac50409:
+    english: Some sites require an invitation before you can create an account. On these sites, **Create account** appears only when you follow an invitation link.
+    translation: Joillakin sivustoilla tarvitset kutsun ennen tilin luomista. Näillä sivustoilla **Luo tili** näkyy vain, kun avaat kutsulinkin.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  16004d08bcad640b:
+    english: An SSO-only private site shows only its organization sign-in option. It does not offer Loomio-managed passwords, emailed sign-in codes, native account creation, or Loomio-managed passkeys. If the organization uses passkeys, its identity provider asks for them during SSO.
+    translation: Yksityisellä sivustolla, jolla käytetään vain kertakirjautumista (SSO), näkyy ainoastaan organisaation kirjautumisvaihtoehto. Sivusto ei tarjoa Loomion hallinnoimia salasanoja, sähköpostitse lähetettäviä kirjautumiskoodeja, tilin luomista suoraan Loomiossa eikä Loomion hallinnoimia passkeytä. Jos organisaatio käyttää passkeytä, sen tunnistuspalvelu pyytää niitä kertakirjautumisen aikana.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  148bcb52b49eb179:
+    english: "## Sign out"
+    translation: "## Kirjaudu ulos"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  dc9ad2d75eb9da48:
+    english: Open the sidebar, select your name, then select **Sign out**. On a shared computer, sign out when you finish rather than closing only the browser tab.
+    translation: Avaa sivupalkki, valitse nimesi ja sitten **Kirjaudu ulos**. Jos käytät yhteiskäyttöistä tietokonetta, kirjaudu lopuksi ulos sen sijaan, että sulkisit vain selaimen välilehden.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'

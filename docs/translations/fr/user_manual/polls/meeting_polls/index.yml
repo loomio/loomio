@@ -1,0 +1,135 @@
+---
+navigation_title: Sondage horaire de réunion
+blocks:
+  ebb0b3146e7f6937:
+    english: "# Time poll"
+    translation: "# Sondage horaire de réunion"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  86490ad15147169e:
+    english: Use a **Time poll** to find a time for a meeting or event. It serves the same purpose as scheduling tools such as Doodle, while keeping the scheduling process with the group's other Loomio work. Participants see the options in their own time zone.
+    translation: Utilisez un **Sondage horaire de réunion** pour trouver une date et une heure pour une réunion ou un événement. Il remplit le même rôle que des outils de planification comme Doodle, tout en gardant l'organisation de la réunion avec les autres activités du groupe sur Loomio. Les personnes participantes voient les créneaux dans leur propre fuseau horaire.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  2e21bb1b54b6fcf9:
+    english: "## Time poll"
+    translation: "## Sondage horaire de réunion"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  27ba736f4b564fe3:
+    english: _Find when people are available to meet_
+    translation: _Trouvez quand les personnes sont disponibles pour se réunir_
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  2f5455ba3b487407:
+    english: Save time arranging a date for your meeting or event.
+    translation: Gagnez du temps pour fixer la date de votre réunion ou de votre événement.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  859c3efc07ce0b04:
+    english: Time poll makes it easy to see everyone's availability and find the best time.
+    translation: Le sondage horaire de réunion permet de voir les disponibilités de chacun et de trouver le meilleur créneau.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  12ae9e9d3bdb0a4e:
+    english: Give your Time poll a title and details. Enter a list of date and time options in your time zone.
+    translation: Donnez un titre à votre sondage horaire de réunion et ajoutez des précisions. Saisissez une liste de dates et d'heures dans votre fuseau horaire.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  548fb6cd6fcd9376:
+    english: When setting timeslots, consider people in different time zones. Participants will see times localized in their time zone.
+    translation: Lorsque vous définissez les créneaux, tenez compte des personnes situées dans d'autres fuseaux horaires. Chaque personne verra les heures dans son propre fuseau horaire.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  3105405631b53c31:
+    english: Set a meeting duration.
+    translation: Définissez la durée de la réunion.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  8d56a5d9986286e9:
+    english: "### Voting"
+    translation: "### Vote"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  41d1e6a3a6739d95:
+    english: People mark each time with the green thumbs-up icon when they are available, the yellow sideways thumb when they can attend if needed, or the red thumbs-down icon when they are unavailable.
+    translation: Pour chaque créneau, les personnes indiquent leur disponibilité avec l'icône verte représentant un pouce levé, leur disponibilité sous réserve avec l'icône jaune représentant un pouce sur le côté, ou leur indisponibilité avec l'icône rouge représentant un pouce baissé.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  b4784042c82735af:
+    english: Participants can leave a reason comment to help the organizer find a suitable time.
+    translation: Les personnes participantes peuvent expliquer leur réponse dans un commentaire pour aider la personne qui organise la réunion à trouver un créneau adapté.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  0165a90bc22b6f7f:
+    english: If the times don't work, participants can suggest alternatives using the message field. You can then update the poll with new times.
+    translation: Si aucun créneau ne convient, les personnes participantes peuvent proposer d'autres horaires dans le champ de message. Vous pouvez ensuite ajouter ces horaires au sondage.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  6c7c09879e7d9bf8:
+    english: The results update as voting proceeds in a table showing who is available when, so everyone can see which timeslots are popular.
+    translation: Les résultats se mettent à jour au fil des votes. Un tableau indique les disponibilités de chaque personne afin que tout le monde puisse voir les créneaux qui conviennent au plus grand nombre.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  b4783489f09ccf19:
+    english: "### Outcome"
+    translation: "### Conclusion"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  3c0061b9af0a6bca:
+    english: When the Time poll closes, pick the best time and post an outcome.
+    translation: À la clôture du sondage horaire de réunion, choisissez le meilleur créneau et publiez une conclusion.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  62ef08e40ed2f44b:
+    english: "**Notify**: Add the people you are inviting to the meeting or event"
+    translation: "**Notifier** : Ajoutez les personnes que vous invitez à la réunion ou à l'événement"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  945f9e19218fb1bf:
+    english: "**Meeting time**: Select the time that works best"
+    translation: "**Heure de réunion** : Sélectionnez le créneau qui convient le mieux"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  c5909628c21cd884:
+    english: "**Meeting name**: Give your meeting a name. The Time poll title is used by default"
+    translation: "**Titre de la réunion** : Donnez un nom à votre réunion. Le titre du sondage horaire de réunion est utilisé par défaut"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  81195d01767895e4:
+    english: "**Location**: Add a physical location or a meeting link"
+    translation: "**Lieu** : Ajoutez une adresse ou un lien vers la réunion"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  af5765f5bdf83132:
+    english: "**Statement**: Summarize the result and add any instructions for the meeting"
+    translation: "**Déclaration** : Résumez la décision et ajoutez toute consigne pour la réunion"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  6c0cb92cca53d36a:
+    english: Loomio includes the selected time, meeting name, duration, location, and statement in the outcome notification and calendar invitation.
+    translation: Loomio inclut le créneau choisi, le titre de la réunion, sa durée, le lieu et la déclaration dans la notification de conclusion et l'invitation de calendrier.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'

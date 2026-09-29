@@ -1,0 +1,75 @@
+---
+navigation_title: Profil
+blocks:
+  04c18671ca588e8c:
+    english: "# Group profile"
+    translation: "# Gruppenprofil"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  0b903e1c3c7e1862:
+    english: The profile tab controls how your group is identified and introduced. Open **Edit group settings** from the group page, then select **Profile**.
+    translation: Im Tab „Profil“ legst du fest, wie deine Gruppe dargestellt wird. Öffne auf der Gruppenseite **Gruppeneinstellungen bearbeiten** und wähle dann **Profil**.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  1baaad2a0c6c8909:
+    english: "![Group profile settings](group_profile.png)"
+    translation: "![Einstellungen für das Gruppenprofil](group_profile.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  a1c12efad8cb82f5:
+    english: "## Name and handle"
+    translation: "## Name und Kürzel"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  3643c2e2ffd5db73:
+    english: Choose a concise group name, particularly if the group will contain subgroups. Loomio uses the handle in the group's web address and group email address, such as `loomio.com/your-group-handle` and `your-group-handle@loomio.com`.
+    translation: Wähle einen kurzen Gruppennamen, besonders wenn die Gruppe Untergruppen enthalten wird. Loomio verwendet das Kürzel in der Webadresse und der E-Mail-Adresse der Gruppe, zum Beispiel `loomio.com/your-group-handle` und `your-group-handle@loomio.com`.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  5a6e298a019f6a15:
+    english: When you change the handle, links using the previous handle redirect to the new address, and email sent to the previous group address continues to reach the group. Loomio retains up to three previous handles; changing the handle again after that causes the oldest one to expire.
+    translation: Wenn du das Kürzel änderst, werden Links mit dem bisherigen Kürzel an die neue Adresse weitergeleitet. E-Mails an die bisherige Gruppenadresse erreichen die Gruppe weiterhin. Loomio speichert bis zu drei frühere Kürzel. Änderst du das Kürzel danach erneut, läuft das älteste ab.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  2b45dd41be9c3d1d:
+    english: "## Description"
+    translation: "## Beschreibung"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  7b707620077d9d19:
+    english: Use the description to explain what the group is for, who participates, and how people are expected to use it. You can format the description and include links, documents, and videos.
+    translation: Erkläre in der Beschreibung, wofür die Gruppe da ist, wer mitmacht und wie sie genutzt werden soll. Du kannst die Beschreibung formatieren und Links, Dokumente und Videos einfügen.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  93a11a5e2927833e:
+    english: The name and description may be visible to non-members depending on the group's [privacy settings](/en/user_manual/groups/settings/privacy).
+    translation: Je nach [Sichtbarkeitseinstellungen](/en/user_manual/groups/settings/privacy) der Gruppe können auch Personen, die keine Mitglieder sind, den Namen und die Beschreibung sehen.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  0dff03268238aa26:
+    english: "## Cover image and logo"
+    translation: "## Titelbild und Logo"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  9d08dda635bd5ce6:
+    english: The cover image appears across the top of the group page. A wide image works best; the recommended size is 2048 × 512 pixels.
+    translation: Das Titelbild erscheint oben auf der Gruppenseite. Ein breites Bild eignet sich am besten. Die empfohlene Größe beträgt 2048 × 512 Pixel.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  cc04654d8d08da59:
+    english: The group logo identifies the group in navigation and other compact contexts. Upload the cover image and logo separately so each can be cropped for its intended shape.
+    translation: Das Gruppenlogo kennzeichnet die Gruppe in der Navigation und an anderen Stellen mit wenig Platz. Lade Titelbild und Logo getrennt hoch, damit du jedes Bild passend zuschneiden kannst.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'

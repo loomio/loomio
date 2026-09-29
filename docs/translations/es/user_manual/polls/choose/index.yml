@@ -1,0 +1,131 @@
+---
+navigation_title: Elegir
+blocks:
+  581de5d50d3dc442:
+    english: "# Choose"
+    translation: "# Elegir"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  733b320e0407fbdc:
+    english: Choose is a simple poll for finding the most popular option or making a shortlist. Participants select one or more options, depending on the limits you set. This voting method is commonly known as multiple choice.
+    translation: Elegir es un sondeo sencillo para encontrar la opción más popular o crear una lista de opciones preferidas. Cada participante selecciona una o varias opciones, según los límites que establezcas. Este método de votación se conoce como opción múltiple.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  '09aefb579b50874b':
+    english: "## When to use Choose"
+    translation: "## Cuándo usar Elegir"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  be35cf72fcaf9c4d:
+    english: 'Use Choose when the options are distinct and you need to count how many people select each one. It works well for:'
+    translation: 'Usa Elegir cuando las opciones sean distintas y necesites contar cuántas personas seleccionan cada una. Sirve para:'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  dcc6f6b9238155b2:
+    english: |-
+      - choosing one venue from a shortlist;
+      - selecting up to three topics for an agenda;
+      - deciding which design should proceed to the next round; or
+      - checking which services members intend to use.
+    translation: |-
+      - elegir un lugar de una lista de opciones;
+      - seleccionar hasta tres temas para un orden del día;
+      - decidir qué diseño pasa a la siguiente ronda; o
+      - comprobar qué servicios piensan usar los miembros.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  3770d0653b752de5:
+    english: Choose records selections, not the strength or order of a person's preferences. Use [Score](/en/user_manual/polls/score/) to measure how strongly people support every option, [Allocate](/en/user_manual/polls/allocate/) when there is a limited budget, or [Rank](/en/user_manual/polls/rank/) when preference order matters.
+    translation: Elegir registra las opciones seleccionadas, pero no la intensidad ni el orden de las preferencias de cada persona. Usa [Puntaje](/en/user_manual/polls/score/) para medir cuánto apoyo recibe cada opción, [Asignar](/en/user_manual/polls/allocate/) cuando haya un presupuesto limitado o [Rango](/en/user_manual/polls/rank/) cuando importe el orden de preferencia.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  f15aca327e894f30:
+    english: "## Example: set a planning-meeting agenda"
+    translation: "## Ejemplo: preparar el orden del día de una reunión de planificación"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  f51e09afa0ed1e53:
+    english: Oatmilk Cooperative needs to decide which parts of a returnable-bottle trial need the most time at its next planning meeting. The poll asks each person to choose up to two topics. Its details explain how the result will be used, and each option includes enough information to distinguish it from the others.
+    translation: La Cooperativa Oatmilk necesita decidir qué partes de una prueba con botellas retornables requieren más tiempo en su próxima reunión de planificación. El sondeo pide a cada persona que elija hasta dos temas. Los detalles explican cómo se utilizará el resultado, y cada opción incluye información suficiente para distinguirla de las demás.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  c74ebb16f872b3c6:
+    english: "## Set up the poll"
+    translation: "## Configurar el sondeo"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  abc749fec8671661:
+    english: Give the poll a specific question as its title. In **Details**, explain what participants should consider and what will happen with the result. Add each available option, then set the **Minimum choices** and **Maximum choices**.
+    translation: Usa una pregunta concreta como título del sondeo. En **Detalles**, explica qué deben tener en cuenta los participantes y qué se hará con el resultado. Añade cada opción disponible y establece las **Opciones mínimas** y las **Máximas opciones**.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  e878ddc9f61dd243:
+    english: Set both limits to 1 when participants must choose exactly one option. Set a higher maximum when you want a shortlist. Avoid allowing so many choices that participants can select nearly every option, because that makes the result less useful.
+    translation: Establece ambos límites en 1 si los participantes deben elegir exactamente una opción. Fija un máximo mayor si quieres crear una lista de opciones preferidas. Evita permitir tantas opciones que los participantes puedan seleccionar casi todas, porque el resultado sería menos útil.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  152fec5018fc232b:
+    english: Use the pencil icon beside an option to add a meaning or further explanation. This is useful when a short option name could be interpreted in different ways.
+    translation: Usa el icono del lápiz junto a una opción para aclarar su significado o añadir una explicación. Esto ayuda cuando el nombre breve de una opción puede interpretarse de distintas maneras.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  59e405cf9a028c8d:
+    english: Under **More settings**, **Show options in random order** can reduce the effect of always presenting one option first.
+    translation: En **Más configuraciones**, **Mostrar opciones en orden aleatorio** puede reducir el efecto de presentar siempre la misma opción en primer lugar.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  d391457c69df967f:
+    english: "## Vote"
+    translation: "## Votar"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  7db2d0e58e5fb4e4:
+    english: The vote form tells participants how many options they may select. In this example, the voter selects **Cafe collection schedule** and **Washing workflow**, then gives a reason connecting those choices to the trial.
+    translation: El formulario de votación indica cuántas opciones pueden seleccionar los participantes. En este ejemplo, una persona selecciona **Calendario de recogida en cafeterías** y **Proceso de lavado**, y explica cómo se relacionan esas opciones con la prueba.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  e55e4b8950a5fd46:
+    english: A reason can reveal why an option matters and what work participants expect it to cover. If reasons are important to the decision, configure the vote-reason setting before starting the poll.
+    translation: Una explicación puede mostrar por qué importa una opción y qué trabajo esperan los participantes que abarque. Si las explicaciones son importantes para la decisión, configura la opción para pedir el motivo del voto antes de iniciar el sondeo.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  72a9e4073ea27936:
+    english: "## Read the results"
+    translation: "## Leer los resultados"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  c1ec47f66384e3bb:
+    english: The results show the share of all selections received by each option, the number of voters who selected it, and who has not voted. Because each person could choose two options, the percentages describe selections rather than a percentage of people.
+    translation: Los resultados muestran qué proporción del total de selecciones recibió cada opción, cuántas personas la seleccionaron y quiénes no han votado. Como cada persona podía elegir dos opciones, los porcentajes corresponden a las selecciones, no a las personas.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  6cbc0f9d6fdf6727:
+    english: In this example, **Cafe collection schedule** has three selections. **Washing workflow** and **Return-rate reporting** each have two. The result supports giving cafe collections the most agenda time, but the tied topics still require the organizer to decide how the remaining time is divided.
+    translation: En este ejemplo, **Calendario de recogida en cafeterías** recibió tres selecciones. **Proceso de lavado** e **Informe sobre la tasa de devolución** recibieron dos cada uno. El resultado respalda dedicar más tiempo del orden del día a la recogida en cafeterías, pero quien organiza la reunión aún debe decidir cómo repartir el tiempo restante entre los dos temas empatados.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  adb7eb28e16616be:
+    english: When the poll closes, publish an **Outcome** explaining what the group will do with the result.
+    translation: Cuando se cierre el sondeo, publica una **Conclusión** que explique qué hará el grupo con el resultado.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'

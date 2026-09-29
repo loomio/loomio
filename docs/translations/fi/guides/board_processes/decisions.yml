@@ -1,0 +1,179 @@
+---
+navigation_title: Päätösten tekeminen
+blocks:
+  0a72d2c89c87c2a7:
+    english: "# Making resolutions and online decisions"
+    translation: "# Päätösten tekeminen verkossa"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  50902da4933b32b7:
+    english: Board and committee members frequently need to make 'out-of-session' decisions. These are governance decisions and discussion where either;
+    translation: 'Hallituksen ja toimikunnan jäsenet joutuvat usein tekemään päätöksiä kokousten välillä. Tällainen päätös ja siihen liittyvä keskustelu voivat olla tarpeen, kun:'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  4355b569fb0f9ee4:
+    english: |-
+      - There was insufficient time to make a decision in the board meeting,
+      - the decision does not require a lot of discussion (including administrative decisions),
+      - something has happened (internally or externally) that requires the board to act before the next meeting,
+      - a director has a particular interest to explore with the board.
+    translation: |-
+      - hallituksen kokouksessa ei ollut riittävästi aikaa päätöksen tekemiseen,
+      - päätös ei vaadi paljon keskustelua, kuten hallinnollisissa asioissa,
+      - organisaatiossa tai sen ulkopuolella on tapahtunut jotakin, joka vaatii hallitusta toimimaan ennen seuraavaa kokousta,
+      - hallituksen jäsen haluaa käsitellä tiettyä asiaa muiden jäsenten kanssa.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  c46be74fd433f516:
+    english: |-
+      ## On Loomio
+      Start a **thread** and open a discussion:
+      - Introduce the topic or decision that you would like to make,
+      - invite directors to comment with their thoughts, opinions and any information they have to help everyone understand their perspective about the 'out-of-session' topic or decision,
+      - encourage members to participate by posting or reply to comments.
+    translation: |-
+      ## Loomiossa
+      Aloita **keskusteluketju** ja avaa keskustelu:
+      - Esittele aihe tai päätös, jonka haluat käsiteltäväksi.
+      - Kutsu hallituksen jäsenet kertomaan ajatuksistaan, näkemyksistään ja tiedoistaan, jotta muut ymmärtävät heidän kantansa.
+      - Kannusta jäseniä osallistumaan kirjoittamalla kommentteja ja vastaamalla niihin.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  337cfc1a7b434acd:
+    english: "When ready, raise a **poll** and invite members to vote. \nIf the issue is straightforward use a **Proposal** or if the issue is more complex use a **Sense check** poll to clearly ask fellow members how they feel about the proposal.\n- State the decision and invite people to vote,\n- ask people to leave a reason for their vote, particularly if they want to qualify any points,\n- choose the decision options that work for your board's decision-making processes.\n- You can ratify and minute the 'out-of-session' decision at your next board meeting."
+    translation: |-
+      Kun asia on valmis päätettäväksi, aloita **kysely** ja kutsu jäsenet äänestämään.
+      Jos asia on yksinkertainen, käytä **Ehdotus**-kyselyä. Monimutkaisemmassa asiassa käytä **Aistitarkistus**-kyselyä selvittääksesi, mitä muut jäsenet ajattelevat ehdotuksesta.
+      - Kerro, mistä päätetään, ja kutsu ihmiset äänestämään.
+      - Pyydä äänestäjiä perustelemaan kantansa, etenkin jos he haluavat tarkentaa sitä.
+      - Valitse hallituksen päätöksentekotapaan sopivat vastausvaihtoehdot.
+      - Voit vahvistaa kokousten välillä tehdyn päätöksen ja kirjata sen pöytäkirjaan seuraavassa hallituksen kokouksessa.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  19a80c3ce7d106e0:
+    english: It's not a failure if a decision does not get agreement. You can ask members what changes they would make to enable them to agree to a decision. This helps you build to a better decision. A new Proposal with amendments is then more likely to achieve agreement.
+    translation: Jos päätöksestä ei synny yhteisymmärrystä, se ei tarkoita epäonnistumista. Kysy jäseniltä, millaiset muutokset auttaisivat heitä hyväksymään päätöksen. Näin voit kehittää ehdotusta. Muutettu uusi ehdotus voi saada laajemman kannatuksen.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  b06f2d2a0e68f99d:
+    english: State an **outcome** when the proposal closes. Let everyone know the result of the decision and what will happen next.
+    translation: Julkaise **tulos**, kun ehdotus sulkeutuu. Kerro kaikille, mikä päätöksen tulos oli ja mitä seuraavaksi tapahtuu.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  6a4d6a8c978bcb11:
+    english: "## Examples of out-of-session decisions"
+    translation: "## Esimerkkejä kokousten välillä tehtävistä päätöksistä"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  fff64b1ac620cc4a:
+    english: |-
+      ### Decision about property purchase
+      At the last board meeting, a property purchase was discussed. A director required an independent engineering report before making the decision. At the board meeting, the board agreed to purchase the property subject to a satisfactory engineering report. However as the purchase must be made before the next board meeting, the board agreed to upload the engineering report to Loomio when ready, for discussion and to make the final decision for the property purchase on Loomio.
+    translation: |-
+      ### Päätös kiinteistön ostamisesta
+      Kiinteistön ostosta keskusteltiin edellisessä hallituksen kokouksessa. Yksi hallituksen jäsen halusi riippumattoman teknisen selvityksen ennen päätöstä. Hallitus sopi ostavansa kiinteistön, jos selvityksen tulos on tyydyttävä. Kauppa on kuitenkin tehtävä ennen seuraavaa kokousta. Siksi hallitus sopi, että selvitys ladataan valmistuttuaan Loomioon. Hallitus keskustelee siitä ja tekee lopullisen ostopäätöksen Loomiossa.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  b279ed6b1c5aadfa:
+    english: |-
+      ### Decision to accept Directors and Officers Liability insurance
+      During the board meeting it was noted that the annual insurance renewal was coming up. As this was considered to be an administrative matter, the board agreed to use Loomio to discuss the renewal application, seek the required information from each director, submit the application and to accept the insurance renewal quote.
+    translation: |-
+      ### Päätös hallituksen ja johdon vastuuvakuutuksen hyväksymisestä
+      Hallituksen kokouksessa todettiin, että vakuutuksen vuosittainen uusiminen oli ajankohtaista. Hallitus piti asiaa hallinnollisena ja sopi käsittelevänsä uusimishakemuksen Loomiossa. Siellä voidaan pyytää tarvittavat tiedot kultakin hallituksen jäseneltä, jättää hakemus ja hyväksyä vakuutuksen uusimistarjous.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  ca3a40286ca25a9a:
+    english: |-
+      ### A security breach has occurred at one of our facilities
+      A break-in and theft of property has occurred that has put the corporation and staff at risk. Directors must be made aware of the event and risks, and evaluate an appropriate response.
+    translation: |-
+      ### Yhdessä toimipisteessämme on tapahtunut tietoturvaan vaikuttava murto
+      Toimipisteeseen on murtauduttu ja omaisuutta on varastettu. Tapahtuma aiheuttaa riskejä organisaatiolle ja henkilöstölle. Hallituksen jäsenille on kerrottava tapahtumasta ja riskeistä, jotta he voivat arvioida sopivan toimintatavan.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  c406842807e1091b:
+    english: |-
+      ### A director has challenged the board about gender and diversity of board membership
+      The director has provided good reasons and evidence that the board should diversify membership to be more representative of the corporation. Directors need to digest the information, ask questions, discuss the issue and decide a response.
+    translation: |-
+      ### Hallituksen jäsen on nostanut esiin hallituksen sukupuolijakauman ja monimuotoisuuden
+      Jäsen on esittänyt perusteluja ja näyttöä siitä, että hallituksen kokoonpanon tulisi olla monimuotoisempi ja edustaa organisaatiota paremmin. Hallituksen jäsenten on perehdyttävä tietoihin, esitettävä kysymyksiä, keskusteltava asiasta ja päätettävä, miten siihen vastataan.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  bf35cdb4a62a85f4:
+    english: "## Keeping a record of decisions made and supporting discussion"
+    translation: "## Päätösten ja niihin liittyvien keskustelujen dokumentointi"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  6231d476f6bddb27:
+    english: Record keeping is a legal requirement for governance boards and good practice for committees.
+    translation: Päätösten dokumentointi on hallituksille lakisääteinen velvollisuus ja toimikunnille hyvä käytäntö.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  511470c795509c7e:
+    english: Today, many organizations record and store formal minutes, resolutions, policies and key decisions electronically. Document records are created and approved, distributed and used, retained and stored, and ultimately disposed of.
+    translation: Monet organisaatiot laativat ja säilyttävät nykyään viralliset pöytäkirjat, päätökset, toimintaperiaatteet ja muut keskeiset asiakirjat sähköisesti. Asiakirjat laaditaan, hyväksytään, jaetaan, otetaan käyttöön, säilytetään ja lopulta hävitetään.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  324fc531e7a78088:
+    english: |-
+      ### On Loomio
+      Minutes, reports, resolutions and other documents can be attached to a meeting **thread**, in the thread context, within a poll or any to thread comment.  This means the documents are always associated with the relevant discussion.
+    translation: |-
+      ### Loomiossa
+      Voit liittää pöytäkirjoja, raportteja, päätöksiä ja muita asiakirjoja kokouksen **keskusteluketjuun**, sen kuvaukseen, kyselyyn tai ketjun kommenttiin. Näin asiakirjat pysyvät niitä koskevan keskustelun yhteydessä.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  9be58ccab5189118:
+    english: A list of files can also be found under the **Files** tab.
+    translation: Löydät tiedostojen luettelon myös **Tiedostot**-välilehdeltä.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  24bc6a0bf5139b23:
+    english: You can also add a link within any thread or poll to a document stored in your preferred document management system.  Find the online shareable link to the document, copy and paste into your thread, poll or comment.
+    translation: Voit lisätä mihin tahansa keskusteluketjuun tai kyselyyn linkin asiakirjaan, joka on tallennettu käyttämääsi asiakirjanhallintajärjestelmään. Etsi asiakirjan jaettava linkki, kopioi se ja liitä se ketjuun, kyselyyn tai kommenttiin.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  4fee216f27a3fdff:
+    english: Anyone with permission can then click the link to open and read the document.
+    translation: Jokainen, jolla on tarvittavat käyttöoikeudet, voi avata linkin ja lukea asiakirjan.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  9f0e1cd18ae1a402:
+    english: Because Loomio discussions and decisions are always already documented, it provides a robust way to verify all your board's decision-making. You can easily demonstrate what was decided, and when. If directors have discussed and commented, as well as voted on a resolution—you will also know how and why each decision was reached.
+    translation: Loomion keskustelut ja päätökset tallentuvat, joten voit tarkistaa hallituksen päätöksenteon vaiheet. Näet helposti, mitä päätettiin ja milloin. Jos hallituksen jäsenet ovat keskustelleet, kommentoineet ja äänestäneet päätöksestä, näet myös, miten ja miksi siihen päädyttiin.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  71071cda2f1c034e:
+    english: Over time, you are creating a history for your organization where you can easily search and find past decisions and related discussion.
+    translation: Ajan mittaan organisaatiollesi kertyy historia, josta voit helposti etsiä aiempia päätöksiä ja niihin liittyviä keskusteluja.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  629c2034788a9fd5:
+    english: In Loomio all data is written and stored on multiple disks and multiple locations, *in the cloud*, backed up daily.  Files uploaded are stored on servers that use modern techniques to remove bottlenecks and points of failure.
+    translation: Loomion tiedot tallennetaan useille levyille eri sijainneissa *pilvipalvelussa*, ja niistä tehdään varmuuskopio päivittäin. Ladatut tiedostot säilytetään palvelimilla, joilla ehkäistään nykyaikaisin menetelmin pullonkauloja ja yksittäisiä vikaantumispisteitä.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'

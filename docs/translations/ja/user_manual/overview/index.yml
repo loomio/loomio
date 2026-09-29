@@ -1,0 +1,147 @@
+---
+navigation_title: はじめに
+blocks:
+  7b82d33bbaae3080:
+    english: "# Getting started"
+    translation: "# はじめに"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  73449e09f559b4bd:
+    english: Loomio is a discussion and decision making tool for collaborative organizations.
+    translation: Loomioは、組織が協力して議論し、意思決定するためのツールです。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  c6d663f00c64f35d:
+    english: It enables you to bring people together to discuss topics, explore proposals and make decisions.
+    translation: 人々が集まって議題を話し合い、提案を検討し、意思決定できます。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  31ab6b8ca4d0f976:
+    english: |-
+      <div class="iframe-container">
+      <iframe width="660" height="415" src="https://www.youtube-nocookie.com/embed/K8ZRNtlRvAI" title="Loomio in 2 minutes" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+    translation: |-
+      <div class="iframe-container">
+      <iframe width="660" height="415" src="https://www.youtube-nocookie.com/embed/K8ZRNtlRvAI" title="Loomio in 2 minutes" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  7c8501ecb12311af:
+    english: "## How Loomio works"
+    translation: "## Loomioの仕組み"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  74caca2261c15283:
+    english: 'Loomio has three main parts: groups, discussions, and polls.'
+    translation: Loomioには、グループ、ディスカッション、投票の3つの主な要素があります。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  5f0a46926a0f7350:
+    english: "### Groups"
+    translation: "### グループ"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  2060a64d0fabc6d7:
+    english: A group is a place for an organization, team, or community to work together. Its home page explains the group's purpose and provides access to its discussions, polls, members, and files.
+    translation: グループは、組織、チーム、コミュニティが協力する場です。ホームページにはグループの目的が示され、ディスカッション、投票、メンバー、ファイルにアクセスできます。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  311793a17709182c:
+    english: "### Discussions"
+    translation: "### ディスカッション"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  05ecdffe6c18a1df:
+    english: Discussions keep the information and conversation about a topic together. People can share context, comment, reply, react, and use polls to move the discussion towards an outcome.
+    translation: ディスカッションでは、議題に関する情報と会話を一か所にまとめられます。背景情報の共有、コメント、返信、リアクションができます。投票を使って議論を結論へ進めることもできます。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  dc9a50d7f1f20c80:
+    english: Over time, discussions create a searchable record of the information considered and the decisions made by your group.
+    translation: ディスカッションを重ねると、グループが検討した情報と下した決定が、検索できる記録として残ります。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  3448194e8a2ce09d:
+    english: "### Polls and proposals"
+    translation: "### 投票と提案"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  4ef7092f5f56e773:
+    english: Polls help a group understand preferences, gather advice, and make decisions. Different poll templates support different processes. A proposal asks people to respond to a suggested course of action and explain the reason for their response.
+    translation: 投票は、グループ内の意向を把握し、意見を集め、意思決定するのに役立ちます。投票テンプレートごとに異なる進め方に対応しています。提案では、示された行動案について意見とその理由を求めます。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  51ab039bc7c374bd:
+    english: Polls can be part of a discussion or run independently from the **Polls** tab on a group page.
+    translation: 投票はディスカッションに含めることも、グループページの**投票**タブから単独で実施することもできます。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  47500e7125fdedbc:
+    english: To learn where these parts appear in the interface, see the [Quick tour](/en/user_manual/overview/orientation). To start contributing, see [How to participate](/en/user_manual/overview/how-to-participate).
+    translation: 各要素が画面のどこにあるかは、[クイックツアー](/en/user_manual/overview/orientation)をご覧ください。参加を始めるには、[参加方法](/en/user_manual/overview/how-to-participate)をご覧ください。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  57ed823687deabb5:
+    english: "## Try it out"
+    translation: "## 試してみる"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  b08a2d6a44f0d7ac:
+    english: The best way to learn about Loomio is to [start a free trial](/try)
+    translation: Loomioを知るには、[無料トライアルを始める](/try)のが一番です
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  ced10eda436a40ca:
+    english: "## How people use Loomio"
+    translation: "## Loomioの活用例"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  4198817a2724ad0a:
+    english: "**Member organizations** to involve members in decisions at scale. Political parties, consumer and worker co-operatives, and membership associations use Loomio to facilitate a safe, inclusive space for members to share information and raise topics, participate in important decisions and vote in General Assembly. Streamline decision processes, improve transparency and accountability, document discussions and record decisions, and include members' voices to organize for action."
+    translation: "**会員制組織**では、多くの会員が意思決定に参加できます。政党、消費者協同組合、労働者協同組合、会員団体は、会員が情報を共有し、議題を提起し、重要な決定に参加し、総会で投票できる場としてLoomioを使っています。意思決定の手順を整え、透明性と説明責任を高め、議論と決定を記録できます。会員の意見を活動につなげられます。"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  7b2fd1306e05f4e3:
+    english: "**Self-managing organizations** to involve staff in decisions. Self-managing teams, worker co-operatives, and sociocratic organisations use Loomio to run consent, consensus, and advice-based decision processes across distributed teams and time zones. Tap into collective intelligence, distribute decision making, build governance and policy together, and document decisions and discussion."
+    translation: "**自主管理型の組織**では、職員が意思決定に参加できます。自主管理チーム、労働者協同組合、ソシオクラシーを採用する組織は、離れた場所や異なる時間帯で働く人々の間で、同意、合意、助言に基づく意思決定を進めるためにLoomioを使っています。知識を持ち寄り、意思決定を分担し、運営方針や規則をともに作り、決定と議論を記録できます。"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  75d7266c562f65c2:
+    english: "**Boards, councils, and distributed networks** to involve stakeholders in decisions. Create a safe space for discussion, keep track of communications, and coordinate across geographies and time zones. Structure decision making processes, improve agility and response times, and preserve organizational memory."
+    translation: "**理事会、協議会、分散型ネットワーク**では、関係者が意思決定に参加できます。安心して議論できる場を設け、連絡の経緯を記録し、場所や時間帯が異なる人々の間で活動を調整できます。意思決定の手順を整え、対応を早め、組織の知識を残せます。"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  cbe5ae77738f2704:
+    english: "**Residential communities and co-ops** to make decisions together as neighbours. Cohousing communities, ecovillages, coliving cooperatives, housing co-ops, and land trusts use Loomio to replace or augment traditional strata and property management with democratic governance. Residents shape decisions about shared land, common spaces, and community agreements, and asynchronous discussion means members can fully participate whether they're on-site or away travelling, keeping a clear record of how the community has chosen to live together."
+    translation: "**居住コミュニティと協同組合**では、住民が近隣の人々とともに意思決定できます。コハウジング、エコビレッジ、共同生活の協同組合、住宅協同組合、土地信託では、従来の区分所有や不動産管理を民主的な運営に置き換えたり、補ったりするためにLoomioを使っています。住民は共有地、共用スペース、コミュニティの取り決めに関する決定に参加できます。時間を合わせずに議論できるため、現地にいる人も旅行中の人も参加でき、コミュニティがどのように暮らし方を決めたかを記録できます。"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  fb1039083c952286:
+    english: Loomio builds a living record of your organization; the decisions made, who was involved and the discussion leading up to the decision.
+    translation: Loomioには、組織が下した決定、参加した人々、決定に至る議論が、継続して記録されます。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'

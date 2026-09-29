@@ -1,0 +1,209 @@
+---
+navigation_title: Invitare persone
+blocks:
+  47820acef0cf3fe9:
+    english: "# Inviting people"
+    translation: "# Invitare persone"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  6a2bc749ec2883c0:
+    english: Go to your group page and click the **Members** tab to access member management.
+    translation: Vai alla pagina del tuo gruppo e seleziona la scheda **Membri** per gestire i membri.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  7fc9a792512e50bb:
+    english: You can **Invite** particular people to your group with their email address or **Share** a link to your group via email, newsletter, chat or from your website.
+    translation: Puoi **Invita** persone specifiche al tuo gruppo usando il loro indirizzo email oppure **Condividi** un link al gruppo via email, newsletter, chat o sul tuo sito web.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  3fc7875402babd63:
+    english: "## Send invitations via email"
+    translation: "## Inviare inviti via email"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  4e91c3f036e94808:
+    english: Click **Invite** on the **Members** tab to send an email containing a single-use invitation link. The recipient can create a Loomio user account and join your group.
+    translation: Seleziona **Invita** nella scheda **Membri** per inviare un'email con un link di invito utilizzabile una sola volta. Chi lo riceve può creare un account Loomio e unirsi al tuo gruppo.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  37a98960a11df300:
+    english: If the recipient already has a Loomio user account they can still accept the invitation to join your group with their existing account.
+    translation: Se ha già un account Loomio, può accettare l'invito e unirsi al gruppo con quell'account.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  c40b8865bc90ab0b:
+    english: "### Invite many at once"
+    translation: "### Invitare più persone contemporaneamente"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  f92bf789ad23e4c3:
+    english: You can send invitations by email to up to 100 people at a time by entering (or copy/pasting) multiple email addresses into the "Who would you like to invite" box. Separate email addresses by comma or space.
+    translation: Puoi invitare via email fino a 100 persone alla volta. Inserisci o incolla più indirizzi email nel campo "Chi vuoi invitare?", separandoli con una virgola o uno spazio.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  1e8ea8567d051081:
+    english: When inviting people to a group within an organization, the parent group and related subgroups you belong to appear as audience suggestions. Select a group, then select its chip to expand the audience into individual people. You can remove anyone you do not want to invite before sending the invitations. People who already belong to the destination group are excluded.
+    translation: Quando inviti persone a un gruppo di un'organizzazione, il gruppo principale e i sottogruppi di cui fai parte compaiono tra i suggerimenti. Seleziona un gruppo, poi seleziona la sua etichetta per vedere le singole persone. Prima di inviare gli inviti, puoi rimuovere chi non vuoi invitare. Le persone già iscritte al gruppo di destinazione vengono escluse.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  23c96c665ed9ad1c:
+    english: |-
+      >[!Tip]
+      >Copy email addresses from a column in a Google or Excel spreadsheet, and paste into the invitation box.
+    translation: |-
+      >[!Tip]
+      >Copia gli indirizzi email da una colonna di un foglio Google o Excel e incollali nel campo degli inviti.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  697177b4211a5479:
+    english: When you click **Invite** an email will be sent to each of the email addresses you supplied, containing a unique invitation link that can only be used once. This email will be sent in your current language.
+    translation: Quando selezioni **Invita**, ogni indirizzo email che hai indicato riceve un messaggio con un link di invito unico, utilizzabile una sola volta. Il messaggio viene inviato nella lingua che stai usando.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  bcce66d3fb6f6b8e:
+    english: "### Invite people to Subgroups"
+    translation: "### Invitare persone nei sottogruppi"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  9e422dfc71ef2fe0:
+    english: Following the same process as above, you can invite people to a 'parent' group, and one or more subgroups simultaneously when you invite them with the **Invite people** button. Tick the boxes next to the subgroups you want them to immediately be a part of when they join the group.
+    translation: Con la stessa procedura puoi invitare le persone a un gruppo principale e, contemporaneamente, a uno o più sottogruppi tramite il pulsante **Invita persone**. Seleziona le caselle accanto ai sottogruppi a cui vuoi che si uniscano quando entrano nel gruppo.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  87f0b0c3281b6228:
+    english: "## Share a link to your group"
+    translation: "## Condividere un link al gruppo"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  2f014bdf9b719ec0:
+    english: You can share a link to your group with the **Share** button. This is useful if you want to send a link via email, newsletter, chat or post on your website.
+    translation: Puoi condividere un link al tuo gruppo con il pulsante **Condividi**. Puoi inviarlo via email, newsletter o chat, oppure pubblicarlo sul tuo sito web.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  18ff20426c02846e:
+    english: Click on the "copy" icon to copy the link to your clipboard, then paste in your email, newsletter or chat channel.
+    translation: Seleziona l'icona "copia" per copiare il link negli appunti, poi incollalo in un'email, una newsletter o una chat.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  c6506b3c529f683c:
+    english: If you want to stop people from joining via this link, click "Reset this link". The existing link will no longer work and a new link will be created.
+    translation: Per impedire ad altre persone di unirsi tramite quel link, seleziona "Reimposta questo link". Il link esistente smetterà di funzionare e ne verrà creato uno nuovo.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  6d57daddf1df6a2d:
+    english: "## Request to join group"
+    translation: "## Richiedere di unirsi a un gruppo"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  70b9af34b3bc2a9e:
+    english: People can request to join an Open or Closed group. Share the group URL, such as `https://www.loomio.com/group-name`. When people arrive at the group page, they can see the public group information and select **Join group** to answer the joining prompt and send their request.
+    translation: Le persone possono chiedere di unirsi a un gruppo aperto o chiuso. Condividi l'URL del gruppo, per esempio `https://www.loomio.com/group-name`. Nella pagina del gruppo possono vedere le informazioni pubbliche e selezionare **Iscriviti al gruppo** per rispondere alla domanda di iscrizione e inviare la richiesta.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  a5534ae2aba161ba:
+    english: The joining prompt gives people a chance to introduce themselves and explain why they want to join.
+    translation: La domanda di iscrizione permette alle persone di presentarsi e spiegare perché vogliono unirsi al gruppo.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  bb13bbdbfd6da80b:
+    english: Under [Group privacy](/en/user_manual/groups/settings/privacy#how-people-join), choose **Request approval** to require requests to be reviewed. You can also customize the joining prompt in the group settings.
+    translation: In [Privacy del gruppo](/en/user_manual/groups/settings/privacy#how-people-join), scegli **Richiedi approvazione** per sottoporre le richieste a revisione. Puoi anche personalizzare la domanda di iscrizione nelle impostazioni del gruppo.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  5b0e7c47a0518a3e:
+    english: "### Review membership requests"
+    translation: "### Esaminare le richieste di iscrizione"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  d4a03352457d41cb:
+    english: 'Group administrators and members with permission to add members review requests from the **Membership requests** section of the **Members** tab. A reviewer can:'
+    translation: 'Gli amministratori del gruppo e i membri autorizzati ad aggiungere persone esaminano le richieste nella sezione **Richieste di iscrizione** della scheda **Membri**. Chi esamina una richiesta può:'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  84c6d641f9dba801:
+    english: |-
+      - **Approve** the request to add the applicant as a member and notify them.
+      - **Ignore** the request to close it without notifying the applicant or allowing another request.
+      - **Decline** the request with a message explaining the decision. Loomio sends the message to the applicant by email and notification, and they can submit a new request.
+    translation: |-
+      - **Approva** la richiesta per aggiungere la persona al gruppo e inviarle una notifica.
+      - **Ignora** la richiesta per chiuderla senza avvisare la persona né consentirle di inviarne un'altra.
+      - **Declino** la richiesta con un messaggio che spiega la decisione. Loomio invia il messaggio alla persona via email e con una notifica. La persona potrà inviare una nuova richiesta.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  b1de5132fa942ba8:
+    english: Select the decline button to write a message or ignore the request.
+    translation: Seleziona il pulsante per rifiutare la richiesta e scrivere un messaggio, oppure ignora la richiesta.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  a87e3fdd4ce43ee9:
+    english: "## Managing invitations"
+    translation: "## Gestire gli inviti"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  84dc2f66c60f3237:
+    english: To manage invitations, open the filter/ drop down from the Members tab of your Group page and select **Invitations**. You can manage individual invitations by clicking the three dot menu (**⋮**) to the right of the member.
+    translation: Per gestire gli inviti, apri il menu dei filtri nella scheda Membri della pagina del tuo gruppo e seleziona **Inviti**. Per gestire un singolo invito, seleziona il menu con i tre puntini (**⋮**) a destra del nome della persona.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  c8d12991b8edb22f:
+    english: You can also make people administrators or set their title (e.g. "IT Support") within the group before they accept their invitation.
+    translation: Prima che accettino l'invito, puoi anche nominare le persone amministratrici o impostare il loro ruolo nel gruppo, per esempio "Supporto IT".
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  e8aec784f84451cc:
+    english: "### Re-send invitations"
+    translation: "### Inviare di nuovo gli inviti"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  1c201c2b360b1877:
+    english: Follow up on people who don't make it into the group and give them a nudge. If someone has lost or forgotten about their invitation email, you can re-send it from the dropdown menu beside their name on the Members page.
+    translation: Puoi ricontattare le persone che non si sono ancora unite al gruppo. Se qualcuno ha perso o dimenticato l'email di invito, puoi inviarla di nuovo dal menu accanto al suo nome nella pagina Membri.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  8b4674400f9a3f09:
+    english: Click on the three dots (**⋮**) next to the person you want to resend the invitation to, and then choose **Resend invitation**.
+    translation: Seleziona i tre puntini (**⋮**) accanto alla persona a cui vuoi inviare di nuovo l'invito, poi scegli **Invia di nuovo invito**.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  abc5a934440fb8e1:
+    english: |-
+      ### Cancelling invitations
+      If you entered the wrong email address, or have changed your mind about inviting someone, you can cancel an invitation from the Members tab on your Group page. Select **Cancel Invitation** from the drop down menu to the right of the member invitation (**⋮**).
+    translation: |-
+      ### Revocare gli inviti
+      Se hai inserito un indirizzo email errato o hai cambiato idea, puoi revocare un invito dalla scheda Membri della pagina del tuo gruppo. Seleziona **Revoca invito** dal menu a destra dell'invito (**⋮**).
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'

@@ -1,0 +1,93 @@
+---
+navigation_title: 同意
+blocks:
+  9153f30a2c3db9f2:
+    english: "# Consent"
+    translation: "# 同意"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  e16bed826124695f:
+    english: A Consent proposal asks whether a course of action is safe to try. Participants either consent or raise an objection. An objection identifies a concrete risk or harm that the proposal should address.
+    translation: 同意による提案では、ある行動を試しても問題ないかを確かめます。参加者は同意するか、異議を唱えます。異議では、提案で対処すべき具体的なリスクや害を示します。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  d675dd47ae42c929:
+    english: This page explains how to run one Consent proposal. See the [Consent process](/en/guides/making_decisions/consent_process) for the complete workflow, including questions, Sense check, amendments, objections, and outcome.
+    translation: このページでは、同意による提案の進め方を説明します。質問、意向の確認、修正、異議、結論を含む一連の流れは、[同意による意思決定の進め方](/en/guides/making_decisions/consent_process)を参照してください。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  7c4c79526b1d437b:
+    english: "## When to use Consent"
+    translation: "## 同意を使う場面"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  1b99c0443bd1e4c8:
+    english: Use Consent when the group needs a workable decision that can proceed unless there is a valid objection. It suits experiments, operational policies, role agreements, and other decisions the group can review after gaining experience.
+    translation: 有効な異議がなければ進められる、実行可能な決定をグループが必要としているときに、同意を使います。試行、運営方針、役割についての合意など、経験を積んだ後に見直せる決定に適しています。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  966f3146dc9f61f1:
+    english: Consent does not require everyone to prefer the proposal. Define what counts as an objection before voting, and explain how objections will be tested and resolved.
+    translation: 同意には、全員がその提案を最も望ましい案だと考える必要はありません。投票前に何を異議とみなすかを定め、異議をどう検討し、解決するかを説明します。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  e6cf2f0ebd4a7f58:
+    english: "## Example: start a bottle trial"
+    translation: "## 例：瓶の試験運用を始める"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  ad7be5e188748cb3:
+    english: Oatmilk Cooperative proposes starting a six-week returnable-bottle trial next month. The trial is limited in scope and includes a review, so the group asks whether it is safe to try.
+    translation: オーツミルク協同組合は、来月から返却可能な瓶を6週間試験運用することを提案します。試験運用の範囲を限定し、見直しも予定しているため、グループは試しても問題ないかを確かめます。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  9703f1f9474243af:
+    english: "## Set up the proposal"
+    translation: "## 提案を設定する"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  6458750b94201df6:
+    english: Describe the proposed action, its limits, safeguards, and review point. Keep **Consent** and **Objection** meanings precise, and require a reason for objections so the concern can be understood and addressed.
+    translation: 提案する行動、その範囲、安全策、見直す時期を説明します。**同意**と**異議**の意味を明確にし、懸念を理解して対処できるよう、異議には理由を求めます。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  d391457c69df967f:
+    english: "## Vote"
+    translation: "## 投票する"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  d98c0e71880c8828:
+    english: Participants select **Consent** when the proposal is safe enough to try, even if it is not their preferred plan. They select **Objection** when they can describe a material risk or harm.
+    translation: 参加者は、最も望ましい案でなくても、試すのに十分安全だと判断した場合は**同意**を選びます。重大なリスクや害を具体的に説明できる場合は**異議**を選びます。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  72a9e4073ea27936:
+    english: "## Read the results"
+    translation: "## 結果を確認する"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  b0265040032f48e5:
+    english: The chart makes objections visible, but the group must examine the reasons. Resolve a valid objection by amending the proposal, adding a safeguard, changing its scope, or deciding not to proceed.
+    translation: グラフには異議が表示されますが、グループはその理由を確認する必要があります。有効な異議には、提案の修正、安全策の追加、範囲の変更、または実施を見送ることで対処します。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  a87df65569cb3a09:
+    english: Publish an outcome that records the agreed action, any safeguards, who is responsible, and when the group will review it.
+    translation: 合意した行動、安全策、担当者、グループが見直す時期を記録した結論を公開します。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'

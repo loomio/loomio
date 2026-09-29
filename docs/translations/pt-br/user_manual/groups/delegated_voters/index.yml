@@ -1,0 +1,57 @@
+---
+navigation_title: Votantes delegados
+blocks:
+  cde9fe3639ac5e9e:
+    english: "# Delegated voters"
+    translation: "# Votantes delegados"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  9cfb3b7835dc5cb0:
+    english: If some members of your group should have voting rights while others should not, you can use the "Make delegate" feature to identify those people with voting rights. There is a corresponding "Revoke delegate" action too.
+    translation: Se algumas pessoas do seu grupo devem ter direito a voto e outras não, use **Fazer delegado** para identificar quem pode votar. Você também pode usar **Revogar delegado** para retirar esse direito.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  e017eafb51368777:
+    english: Use delegates when people should share the same discussion space but only a defined set, such as directors or elected representatives, may vote. This is usually simpler than maintaining a second subgroup whose only purpose is to separate voters from non-voters.
+    translation: Use delegados quando as pessoas devem compartilhar o mesmo espaço de discussão, mas apenas um grupo definido, como diretores ou representantes eleitos, pode votar. Em geral, isso é mais simples do que manter um segundo subgrupo apenas para separar quem pode votar de quem não pode.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  1942a47ae47ca813:
+    english: Use a private subgroup instead when its members also need discussions, files, or membership information that other members must not see.
+    translation: Use um subgrupo privado se seus membros também precisarem de discussões, arquivos ou informações sobre os membros que outras pessoas do grupo não devem ver.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  3346f757dc7bcd14:
+    english: "![Make delegate action in a member's menu](member_make_delegate.png)"
+    translation: "![Ação Fazer delegado no menu de um membro](member_make_delegate.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  0b8bb762e37fb8c3:
+    english: |-
+      To create a poll or proposal and only invite the delegates, use the "Selected people only" poll setting.
+      ![Selected people only setting when starting a proposal](poll_invited_people_only.png)
+      Then when inviting people to vote you will see the "Delegates of group-name" option.
+      ![Delegates of Oatmilk Cooperative option in the invite-to-vote form](poll_invite_delegates_group.png)
+    translation: |-
+      Para criar uma enquete ou proposta e convidar apenas os delegados, use a configuração **Apenas para pessoas selecionadas**.
+      ![Configuração Apenas para pessoas selecionadas ao iniciar uma proposta](poll_invited_people_only.png)
+      Ao convidar pessoas para votar, você verá a opção **Delegados de nome-do-grupo**.
+      ![Opção Delegados da Cooperativa de Leite de Aveia no formulário de convite para votar](poll_invite_delegates_group.png)
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  e895a07efeaf4dcf:
+    english: |-
+      You can see a list of who the delegates are from the members tab of your group page. Use the filter menu and select "Delegates".
+      ![Delegates option in the members filter](members_list_delegates.png)
+    translation: |-
+      Para ver a lista de delegados, abra a aba de membros na página do seu grupo. No menu de filtros, selecione **Delegados**.
+      ![Opção Delegados no filtro de membros](members_list_delegates.png)
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'

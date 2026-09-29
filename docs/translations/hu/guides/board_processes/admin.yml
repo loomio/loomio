@@ -1,0 +1,195 @@
+---
+navigation_title: Nyilvántartás
+blocks:
+  016a912f9ba8d2dd:
+    english: "# Administration and record keeping"
+    translation: "# Adminisztráció és nyilvántartás"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  00be127a2f453ab3:
+    english: 'Admin and keeping good records for audit is an important, and often legal requirement for your board or committee. '
+    translation: A testületed vagy bizottságod számára fontos az adminisztráció és az ellenőrzéshez szükséges pontos nyilvántartás. Ezt gyakran jogszabály is előírja.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  e4617bf502879b0d:
+    english: 'Increasingly, electronic records are supplanting the requirement for paper.  '
+    translation: Az elektronikus nyilvántartások egyre inkább kiváltják a papíralapú dokumentumokat.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  e1d587f71cdcc6c1:
+    english: 'However digital tools enable your board to do much more than just file meeting minutes.  '
+    translation: A digitális eszközökkel azonban a testületed jóval többet tehet az ülésjegyzőkönyvek tárolásánál.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  f249e5f83d487c4b:
+    english: 'Transform your board: '
+    translation: 'Alakítsd át a testületed munkáját:'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  fd8154295c7350b7:
+    english: |-
+      *“Our board group has been particularly transformative, enabling continuous governance, improving response times and increasing our agility, resilience and sustainability… Loomio saves us thousands of pounds every year”*
+      - Austen Cordasco Co-operative Assistance Network Limited (CAN) Business support services , United Kingdom
+    translation: |-
+      *„A testületi csoportunk jelentősen átalakította a munkánkat: lehetővé tette a folyamatos irányítást, gyorsabbá tette a válaszadást, és növelte a rugalmasságunkat, az ellenálló képességünket és a fenntarthatóságunkat… A Loomio évente több ezer fontot takarít meg nekünk”*
+      - Austen Cordasco, Co-operative Assistance Network Limited (CAN), üzleti támogató szolgáltatások, Egyesült Királyság
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  b8eb8dcae7d7a78b:
+    english: Let's look at how to organize work, administer discussions, keep data safe and store records in Loomio.
+    translation: Nézzük meg, hogyan szervezheted a munkát, kezelheted a beszélgetéseket, védheted az adatokat és őrizheted meg a dokumentumokat a Loomióban.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  a27011d28c4f11a6:
+    english: "## Administering discussions"
+    translation: "## Beszélgetések kezelése"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  8e67ece08e454475:
+    english: There is a range of features in Loomio to help you administer discussions accessible from the drop down menu to the right of the discussion.
+    translation: A Loomióban többféle funkció segít a beszélgetések kezelésében. Ezeket a beszélgetés jobb oldalán lévő legördülő menüben találod.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  2d5be8c39f22ec28:
+    english: 'Keep the discussion list current by using:'
+    translation: 'Az alábbi lehetőségekkel tarthatod naprakészen a beszélgetések listáját:'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  75739da1bd5910a6:
+    english: |-
+      - **Pin discussion** to keep important discussions at the top of the list
+      - **Edit discussion** to change discussion title or update discussion context
+      - **Move to group** when you want to move a discussion to another group or subgroup, or to an archive group.
+      - **Lock thread** to prevent further comments or changes and remove the thread from the list of open threads. Locked threads are available under the discussion filter and from the search bar, and can be unlocked at any time.
+      - **Delete discussion** when you do not want to keep a record of the discussion.  Note that deleted discussions can not be un-deleted.
+    translation: |-
+      - **Beszélgetés rögzítése**: a fontos beszélgetések a lista tetején maradnak
+      - **Téma szerkesztése**: módosíthatod a beszélgetés címét vagy leírását
+      - **Mozgasd a csoportba**: áthelyezheted a beszélgetést másik csoportba, alcsoportba vagy archív csoportba
+      - **Téma zárolása**: megakadályozhatod az új hozzászólásokat és módosításokat, és eltávolíthatod a témát a nyitott témák listájából. A zárolt témákat a beszélgetésszűrővel és a keresősávban találod meg. Bármikor feloldhatod a zárolásukat.
+      - **Beszélgetés törlése**: akkor használd, ha nem szeretnéd megőrizni a beszélgetést. A törölt beszélgetéseket nem lehet visszaállítani.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  e3d2099d0e6fe6fa:
+    english: "## Category tags"
+    translation: "## Kategóriacímkék"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  24b03357f6f6c3b9:
+    english: Category tags are a great way to label discussions so they can be easily found. Set tags and apply to each discussion  - try to be consistent.
+    translation: A kategóriacímkékkel könnyebben megtalálhatók a beszélgetések. Hozz létre címkéket, és alkalmazd őket a beszélgetésekre. Használd őket következetesen.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  f0f5f5abd586fb61:
+    english: 'Common board tags include: Administration, AGM, Board meeting, Report, Finance, Legal, Members, Minutes, Planning, Policy, Resolution, Constitution, General meeting, Strategy.'
+    translation: 'Gyakori testületi címkék: Adminisztráció, Éves közgyűlés, Testületi ülés, Beszámoló, Pénzügyek, Jogi ügyek, Tagok, Jegyzőkönyvek, Tervezés, Szabályzatok, Határozatok, Alapszabály, Közgyűlés, Stratégia.'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  89d8ec222f5019df:
+    english: Group members can search for discussions by tag under the **tags** drop down menu.
+    translation: A csoport tagjai a **Címkék** legördülő menüben címke alapján kereshetnek beszélgetéseket.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  54ee008489cceaca:
+    english: "## Maintaining the discussion topic"
+    translation: "## A beszélgetés témájának megtartása"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  e9007433ca60ae39:
+    english: Discussions work best for everyone when you can keep the discussion on a single topic.
+    translation: A beszélgetések akkor működnek a legjobban mindenki számára, ha egyetlen témánál maradnak.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  f742ae07824b35c6:
+    english: If a new topic is introduced in the middle of a discussion, you can select and move specific comments to another discussion, or start a new discussion.
+    translation: Ha a beszélgetés közben új téma merül fel, kijelölhetsz és áthelyezhetsz hozzászólásokat egy másik beszélgetésbe, vagy új beszélgetést indíthatsz.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  c8b5176f58dceb8b:
+    english: "## Subgroups"
+    translation: "## Alcsoportok"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  79ad157a95adc8ef:
+    english: Subgroups help you organize your communications and members so that the right people are engaged in their work together.  For example, you can use a subgroup for a subcommittee or working group.
+    translation: Az alcsoportok segítenek megszervezni a kommunikációt és a tagságot, hogy az érintettek együtt dolgozhassanak. Létrehozhatsz például alcsoportot egy albizottságnak vagy munkacsoportnak.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  0f4ebdab4c62be34:
+    english: "[Setting up subgroups.](/en/user_manual/groups/subgroups)"
+    translation: "[Alcsoportok létrehozása.](/en/user_manual/groups/subgroups)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  d3c65fde78b2b08f:
+    english: "## Archiving records"
+    translation: "## Dokumentumok archiválása"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  435f52763f0d9a5b:
+    english: To keep a record of a thread discussion and decisions in polls, use **[Print thread](/en/user_manual/groups/data_export#print-thread-to-pdf)** and print the file to pdf.  You can then store a published copy of the thread in your chosen document storage archive.
+    translation: Ha meg szeretnéd őrizni egy téma beszélgetését és a szavazások döntéseit, használd a **[Téma nyomtatása](/en/user_manual/groups/data_export#print-thread-to-pdf)** funkciót, és nyomtasd a fájlt PDF-be. Ezután a téma közzétett példányát eltárolhatod a választott dokumentumarchívumban.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  a6b96750c9e1e590:
+    english: To keep a complete record of the data in your Loomio group, use **[Export group data](/en/user_manual/groups/data_export#group-data-backup-or-export)**.
+    translation: Ha a Loomio-csoportod összes adatát meg szeretnéd őrizni, használd a **[Csoportadatok exportálása](/en/user_manual/groups/data_export#group-data-backup-or-export)** funkciót.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  '082f19717e933762':
+    english: "## Data storage"
+    translation: "## Adattárolás"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  e6c76e3a9b68b65f:
+    english: Loomio's cloud services protect your data by writing to multiple disks instantly, backed up daily, and stored in multiple locations.
+    translation: A Loomio felhőszolgáltatásai az adatokat azonnal több lemezre írják, naponta biztonsági mentést készítenek róluk, és több helyszínen tárolják őket.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  84ee638382ead0fe:
+    english: All data in threads, comments, polls and file attachments are stored in this way.
+    translation: A témák, hozzászólások, szavazások és csatolt fájlok minden adata így van tárolva.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  6e92f35d693c625c:
+    english: Files attached to threads can also be seen under the Files tab.
+    translation: A témákhoz csatolt fájlokat a Fájlok lapon is megtalálod.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  96642a66ac5c7e6f:
+    english: |-
+      [More about security in Loomio.
+      ](/en/policy/security)
+    translation: |-
+      [További információ a Loomio biztonságáról.
+      ](/en/policy/security)
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'

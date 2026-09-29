@@ -1,0 +1,75 @@
+---
+navigation_title: 提案
+blocks:
+  3fa760281a1aed06:
+    english: "# Proposals"
+    translation: "# 提案"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  ca5b9583bfe78b65:
+    english: A proposal asks people to respond to a statement or course of action. Participants choose a defined response and can explain their vote. Use a proposal to gather feedback, seek advice, identify objections, or test for agreement.
+    translation: 提案は、ある考えや行動方針について意見を求めるものです。参加者は用意された選択肢から回答を選び、投票の理由を説明できます。フィードバックやアドバイスを集めたり、異議を確認したり、合意を確かめたりするときに使います。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  143dc77c58a4c881:
+    english: This section helps you choose and run Loomio's default proposal templates. For a complete sequence of discussion, proposals, amendments, and outcome, use the [decision-making guides](/en/guides/making_decisions/). To change the templates available to your group, see [Poll templates](../poll_templates/).
+    translation: このセクションでは、Loomioの標準の提案テンプレートの選び方と使い方を説明します。ディスカッションから提案、修正、結論までの一連の進め方は、[意思決定ガイド](/en/guides/making_decisions/)をご覧ください。グループで利用できるテンプレートを変更する方法は、[投票テンプレート](../poll_templates/)をご覧ください。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  e0f8614f95c9c5ff:
+    english: "## Choose a proposal template"
+    translation: "## 提案テンプレートを選ぶ"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  525699503edbe342:
+    english: |-
+      | Template | What it asks | Use it when… |
+      |---|---|---|
+      | [Sense check](sense_check/) | Is this on the right track? | An idea is still being developed |
+      | [Advice](advice/) | What advice should the decision maker consider? | A person or team owns the decision |
+      | [Consent](consent/) | Is this safe to try, or is there a meaningful objection? | The group uses consent decision-making |
+      | [Consensus](consensus/) | What is your position on this proposal? | The group is seeking collective agreement |
+    translation: |-
+      | テンプレート | 確認すること | 適した場面 |
+      |---|---|---|
+      | [センスチェック](sense_check/) | この方向で進めてよいですか？ | アイデアを検討している段階 |
+      | [アドバイス](advice/) | 意思決定者はどのような助言を考慮すべきですか？ | 個人またはチームが決定を担う場合 |
+      | [同意](consent/) | 試しても問題ありませんか？重要な異議はありますか？ | グループが同意による意思決定を行う場合 |
+      | [コンセンサス](consensus/) | この提案について、どのような立場ですか？ | グループ全体の合意を目指す場合 |
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  0cb03ac4a22f02b4:
+    english: Choose the template whose response options match the question you need answered. Each template page explains its use cases, setup, voting form, and results.
+    translation: 確認したいことに合った回答の選択肢を持つテンプレートを選びます。各テンプレートのページでは、適した場面、設定、投票フォーム、結果について説明しています。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  d379b02c308b3b55:
+    english: "## Other proposal templates"
+    translation: "## その他の提案テンプレート"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  44cdb16aebf757ca:
+    english: Loomio also provides templates such as Proposal, Gradients of agreement, Question round, and Majority. Some are hidden initially. Group administrators can make them available or create a template for the group's own terminology and rules from [Poll templates](../poll_templates/).
+    translation: Loomioには、提案、一致の勾配、質問ラウンド、過半数などのテンプレートもあります。最初は非表示になっているものもあります。グループ管理者は、[投票テンプレート](../poll_templates/)から利用可能にしたり、グループ独自の用語やルールに合わせたテンプレートを作成したりできます。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  ca179ba4cb53c5e3:
+    english: "## Proposal records"
+    translation: "## 提案の記録"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  460a90e796fc4dc0:
+    english: Votes and reasons update while the proposal is open, and participants can change their response. After it closes, publish an [outcome](../outcomes/) that states the decision or next step. The discussion, proposal, votes, reasons, and outcome form a record of how the group reached its decision.
+    translation: 提案が開かれている間、投票とその理由は随時更新され、参加者は回答を変更できます。終了後は、決定事項や次のステップを示す[結論](../outcomes/)を公開します。ディスカッション、提案、投票、理由、結論が、グループの意思決定の記録になります。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'

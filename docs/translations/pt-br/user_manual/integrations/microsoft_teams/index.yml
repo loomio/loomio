@@ -1,0 +1,103 @@
+---
+navigation_title: Microsoft Teams
+blocks:
+  b3051bc079ccb2a4:
+    english: |-
+      # Microsoft Teams integration
+      _Connect your Loomio group notifications to Microsoft Teams._
+    translation: |-
+      # Integração com o Microsoft Teams
+      _Conecte as notificações do seu grupo no Loomio ao Microsoft Teams._
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  1512a87b3144ae1e:
+    english: 'Loomio can send notifications into your Microsoft Teams when new discussions, proposals, comments, votes, and outcomes occur. '
+    translation: O Loomio pode enviar notificações ao Microsoft Teams quando houver novas discussões, propostas, comentários, votos e conclusões.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  cb3f91d54eee30e5:
+    english: "---"
+    translation: "---"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  9e82eeed268ff95b:
+    english: |-
+      Visit [https://teams.microsoft.com](https://teams.microsoft.com) then click Apps
+      ![](t1.png)
+    translation: |-
+      Acesse [https://teams.microsoft.com](https://teams.microsoft.com) e clique em Aplicativos
+      ![](t1.png)
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  4013a8134cd33c5e:
+    english: |-
+      Search for "webhook" in the search field, then click Incoming Webhook
+      ![](t2.png)
+    translation: |-
+      Busque por "webhook" no campo de pesquisa e clique em Webhook de entrada
+      ![](t2.png)
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  27e11023c40ed56d:
+    english: |-
+      Click "Add to a team"
+      ![](t3.png)
+    translation: |-
+      Clique em "Adicionar a uma equipe"
+      ![](t3.png)
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  6d1831726b04a7f5:
+    english: |-
+      Type and select the channel you want Loomio notifications to appear within.
+      ![](t4.png)
+    translation: |-
+      Digite e selecione o canal em que você quer receber as notificações do Loomio.
+      ![](t4.png)
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  a046f5d6ec1f29bd:
+    english: |-
+      Give it a name, such as "Loomio notifications", then click "Create"
+      ![](t5.png)
+    translation: |-
+      Dê um nome, como "Notificações do Loomio", e clique em "Criar"
+      ![](t5.png)
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  10c1340978fde8ff:
+    english: |-
+      Copy the URL it gives you, you'll paste it into Loomio in the last step.
+      ![](t6.png)
+    translation: |-
+      Copie a URL fornecida. Você vai inseri-la no Loomio na última etapa.
+      ![](t6.png)
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  95007f138e435f22:
+    english: _Loomio is not created by, affiliated with, or supported by Microsoft._
+    translation: _O Loomio não foi criado pela Microsoft, não é afiliado a ela e não recebe suporte dela._
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  '00578f28c33f1ea1':
+    english: 'Now that you have a Webhook URL, continue setting up your chat integration:'
+    translation: 'Com a URL do webhook em mãos, continue a configurar sua integração com o chat:'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  894c0911cade4b44:
+    english: "[Set up a chat integration in Loomio](../chatbots/#set-up-a-chat-integration)"
+    translation: "[Configure uma integração com o chat no Loomio](../chatbots/#set-up-a-chat-integration)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'

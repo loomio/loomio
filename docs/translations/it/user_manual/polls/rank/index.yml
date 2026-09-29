@@ -1,0 +1,137 @@
+---
+navigation_title: Rango
+blocks:
+  92702560a3786c85:
+    english: "# Rank"
+    translation: "# Rango"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  7cf7aa3423ff6b9d:
+    english: Rank finds the group's overall order of preference. Participants arrange options from most to least preferred, and Loomio assigns more points to higher-ranked options.
+    translation: Rango mostra l'ordine complessivo delle preferenze del gruppo. I partecipanti ordinano le opzioni dalla più alla meno preferita e Loomio assegna più punti a quelle nelle posizioni più alte.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  72790fdf21d1f129:
+    english: "## When to use Rank"
+    translation: "## Quando usare Rango"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  f9ce50752bf1c1e7:
+    english: 'Use Rank when preference order matters and you want one overall ordering. It works well for:'
+    translation: 'Usa Rango quando conta l''ordine delle preferenze e vuoi ottenere una classifica complessiva. È utile per:'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  4a5c8ee257df4dc2:
+    english: |-
+      - selecting one candidate for a position;
+      - ordering projects for a work plan;
+      - prioritizing conference topics;
+      - choosing backup options as well as a first choice; or
+      - reducing a long list to an ordered shortlist.
+    translation: |-
+      - scegliere una persona per un incarico;
+      - ordinare i progetti per un piano di lavoro;
+      - stabilire le priorità tra i temi di una conferenza;
+      - scegliere opzioni alternative oltre alla prima scelta; oppure
+      - ridurre un elenco lungo a una lista ristretta e ordinata.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  2549ddaa8a4a4fa8:
+    english: Rank uses a points-based ordering. It is not a proportional election method. To elect several people while representing different groups of voters, use an [STV Election](/en/user_manual/polls/stv/).
+    translation: Rango ordina le opzioni in base ai punti. Non è un metodo di elezione proporzionale. Per eleggere più persone rappresentando diversi gruppi di elettori, usa un'[Elezione STV](/en/user_manual/polls/stv/).
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  2a859bf73143ce12:
+    english: "## Example: rank bottle designs"
+    translation: "## Esempio: ordinare i modelli di bottiglia"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  46a7d343d3b48bea:
+    english: Oatmilk Cooperative asks members to rank four bottle designs for its returnable-bottle trial. Participants consider handling, durability, customer needs, storage, and compatibility with the washing equipment.
+    translation: La cooperativa Oatmilk chiede ai membri di ordinare quattro modelli di bottiglia per una prova con bottiglie a rendere. I partecipanti valutano la facilità d'uso, la durata, le esigenze dei clienti, lo spazio necessario e la compatibilità con le attrezzature di lavaggio.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  c74ebb16f872b3c6:
+    english: "## Set up the poll"
+    translation: "## Impostare il sondaggio"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  5975d0fd35ec0a7c:
+    english: State what the ranking will determine and add the options. Set **Number of choices** to control how many options each person may rank. A first choice receives the most points, the next choice receives one fewer, and unranked options receive no points.
+    translation: Spiega cosa determinerà la classifica e aggiungi le opzioni. Imposta **Numero di scelte** per stabilire quante opzioni può ordinare ogni persona. La prima scelta riceve più punti, la successiva ne riceve uno in meno e le opzioni non classificate non ricevono punti.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  47f32c81e29fa3c6:
+    english: Require all options to be ranked when you need a complete ordering. Allow fewer choices when participants may not know enough to rank everything. Showing options in random order can reduce the influence of their initial presentation.
+    translation: Richiedi di classificare tutte le opzioni quando ti serve un ordine completo. Consenti di sceglierne meno quando i partecipanti potrebbero non conoscere abbastanza tutte le opzioni. Mostrare le opzioni in ordine casuale può ridurre l'influenza del loro ordine iniziale.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  d391457c69df967f:
+    english: "## Vote"
+    translation: "## Votare"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  53946361c36775f0:
+    english: Participants drag the options into their preferred order, with number 1 as the first choice. They can add a reason explaining the criteria behind their ranking.
+    translation: I partecipanti trascinano le opzioni nell'ordine che preferiscono, indicando con il numero 1 la prima scelta. Possono aggiungere una motivazione per spiegare i criteri usati.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  eae63303cb9dced6:
+    english: In this example, the voter puts the **500 ml amber bottle** first and the **500 ml clear bottle** second because both fit the existing cafe storage and washing equipment.
+    translation: In questo esempio, un elettore mette la **bottiglia ambrata da 500 ml** al primo posto e la **bottiglia trasparente da 500 ml** al secondo, perché entrambe sono adatte agli spazi di stoccaggio e alle attrezzature di lavaggio già presenti nel bar.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  72a9e4073ea27936:
+    english: "## Read the results"
+    translation: "## Leggere i risultati"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  6be27268f870dc3e:
+    english: 'The results combine all ballots into an overall points-based ranking. For each option they show:'
+    translation: 'I risultati combinano tutte le schede di voto in una classifica complessiva basata sui punti. Per ogni opzione mostrano:'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  88b912ae1b9787bc:
+    english: |-
+      - **Rank**: its position in the combined result;
+      - **% of points**: its share of all ranking points;
+      - **Points**: the total points from all ballots;
+      - **Mean**: its average points per voter; and
+      - **Voters**: how many people ranked it.
+    translation: |-
+      - **Posizione**: la posizione nel risultato complessivo;
+      - **% di punti**: la quota di tutti i punti assegnati;
+      - **Punti**: il totale dei punti ricevuti da tutte le schede di voto;
+      - **Significare**: la media dei punti per elettore; e
+      - **Elettori**: quante persone hanno classificato l'opzione.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  2e0cda6f79f31a51:
+    english: In this example, the **500 ml amber bottle** ranks first, followed by the **500 ml clear bottle** and the **750 ml amber bottle**. The group can investigate the preferred design first while retaining the remaining order as a sequence of alternatives.
+    translation: In questo esempio, la **bottiglia ambrata da 500 ml** è al primo posto, seguita dalla **bottiglia trasparente da 500 ml** e dalla **bottiglia ambrata da 750 ml**. Il gruppo può esaminare per primo il modello preferito e conservare l'ordine delle altre opzioni come elenco di alternative.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  22df687a6fa02ddb:
+    english: A points-based result can conceal different preference patterns that produce the same total. Review individual ballots and vote reasons when options are close or the decision is consequential.
+    translation: Lo stesso totale di punti può derivare da preferenze diverse. Esamina le singole schede di voto e le motivazioni quando le opzioni hanno risultati simili o la decisione ha conseguenze importanti.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'

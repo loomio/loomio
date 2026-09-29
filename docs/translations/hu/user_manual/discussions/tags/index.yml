@@ -1,0 +1,205 @@
+---
+navigation_title: Kategóriacímkék
+blocks:
+  29a00cacbd5bd549:
+    english: "# Category tags"
+    translation: "# Kategóriacímkék"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  1d390c0c4f4cea4a:
+    english: Category tags make it easy to find threads and polls about a particular type of work or topic.
+    translation: A kategóriacímkékkel könnyen megtalálhatod az egy adott munkához vagy témához kapcsolódó beszélgetéseket és szavazásokat.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  572adf8961fc1178:
+    english: |-
+      Tags belong to the whole organization. A tag used in a parent group is the
+      same tag in its subgroups, making it possible to organize related work across
+      the organization. Loomio displays tag names alphabetically and shows their
+      colors as dots beside the names.
+    translation: |-
+      A címkék az egész szervezethez tartoznak. A szülőcsoportban használt címke
+      ugyanaz az alcsoportokban is, így a kapcsolódó munkát az egész szervezetben
+      rendszerezheted. A Loomio ábécérendben jeleníti meg a címkék nevét, a színüket
+      pedig a nevük melletti pontok jelzik.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  b5340bcbf37095dc:
+    english: |-
+      On your group page, click **Tags** above the thread list to see the tags used in
+      the current group. Select a tag to show only threads with that tag. Use the
+      filter textbox to search a long list, or select **Show more** to include all
+      tags in the organization. Select **Show fewer** to return to the current
+      group's tags.
+    translation: |-
+      A csoportod oldalán kattints a beszélgetések listája fölötti **Címkék** gombra,
+      hogy lásd a csoportban használt címkéket. Válassz ki egy címkét, ha csak az
+      azzal megjelölt beszélgetéseket szeretnéd látni. Hosszú listában a szűrőmezővel
+      kereshetsz, vagy a **Bővebben** lehetőséggel megjelenítheted a szervezet összes
+      címkéjét. A **Kevesebb megjelenítése** lehetőséggel visszatérhetsz a csoport
+      címkéihez.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  9de81b9a795d066d:
+    english: "## Apply tags"
+    translation: "## Címkék alkalmazása"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  bf284f7568360b53:
+    english: Members who can edit a thread or poll can apply tags to it.
+    translation: Azok a tagok, akik szerkeszthetnek egy beszélgetést vagy szavazást, címkéket is adhatnak hozzá.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  58488fe368513138:
+    english: When you start a thread or poll, click the **Tags** field and select one or more tags.
+    translation: Beszélgetés vagy szavazás indításakor kattints a **Címkék** mezőre, és válassz ki egy vagy több címkét.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  e060934a2853a35a:
+    english: Start typing to filter the list. Select a tag again, or click the × on its chip, to remove it.
+    translation: Kezdj el gépelni a lista szűréséhez. Egy címke eltávolításához válaszd ki újra, vagy kattints a címke melletti × jelre.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  9f5e48b7e520d1a0:
+    english: "## Create tags"
+    translation: "## Címkék létrehozása"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  efa789e9365b2ab2:
+    english: |-
+      Parent-group admins can always create tags for the parent group and its
+      subgroups. Subgroup admins can create tags while tagging content in their
+      subgroup. The **Members can create tags** group permission, enabled by default,
+      allows other members who can tag a thread or poll to create new tag names. If
+      the permission is disabled, members can still apply existing tags.
+    translation: |-
+      A szülőcsoport adminisztrátorai mindig létrehozhatnak címkéket a szülőcsoport
+      és az alcsoportjai számára. Az alcsoportok adminisztrátorai akkor hozhatnak létre
+      címkéket, amikor az alcsoportjukban jelölnek meg tartalmat. Az alapértelmezés
+      szerint bekapcsolt **A tagok címkéket hozhatnak létre** csoportjogosultság
+      lehetővé teszi, hogy a beszélgetéseket vagy szavazásokat címkéző többi tag is új
+      címkéket hozzon létre. Ha kikapcsolod, a tagok továbbra is használhatják a meglévő címkéket.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  7e06376f3431ad2f:
+    english: To create a tag while starting a thread or poll, type its name in the **Tags** field and press Enter.
+    translation: Ha beszélgetés vagy szavazás indításakor új címkét szeretnél létrehozni, írd be a nevét a **Címkék** mezőbe, és nyomd meg az Enter billentyűt.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  44cd1f0281bb8116:
+    english: "![create new tag](tags_create_new.png)"
+    translation: "![új címke létrehozása](tags_create_new.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  25943c6357948b42:
+    english: "![new tag created](tags_created_new.png)"
+    translation: "![létrehozott új címke](tags_created_new.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  7d3b350731e07a2c:
+    english: Use short, familiar names that group members will recognize, such as Finance, Governance, Packaging, or Cafe partnerships.
+    translation: Használj rövid, ismerős neveket, amelyeket a csoport tagjai felismernek, például Pénzügyek, Irányítás, Csomagolás vagy Kávézói partnerségek.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  d7df1acb0ce347f5:
+    english: "## Edit tags"
+    translation: "## Címkék szerkesztése"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  67bc6cfdb2afad04:
+    english: |-
+      Only parent-group admins can rename, recolor, merge, or delete tags. These
+      changes apply throughout the organization, including its subgroups.
+    translation: |-
+      Csak a szülőcsoport adminisztrátorai nevezhetik át, színezhetik át, egyesíthetik
+      vagy törölhetik a címkéket. A változások az egész szervezetben, az alcsoportokban is érvényesek.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  b4ca99a5204d8526:
+    english: On the group page, open **Tags** and select **Edit tags**.
+    translation: A csoport oldalán nyisd meg a **Címkék** menüt, és válaszd a **Címkék szerkesztése** lehetőséget.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  581734d0042d7a3a:
+    english: "![edit category tags](tags_edit_new.png)"
+    translation: "![kategóriacímkék szerkesztése](tags_edit_new.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  e55612b318c4cc6e:
+    english: Select the pencil icon beside a tag.
+    translation: Válaszd ki a címke melletti ceruza ikont.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  871b47d8a7e83eef:
+    english: "![edit category tags](tags_edit_new_pencil.png)"
+    translation: "![kategóriacímkék szerkesztése](tags_edit_new_pencil.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  5a1856fe42a6cf57:
+    english: Edit the tag name or choose a color, then click **Save**.
+    translation: Szerkeszd a címke nevét, vagy válassz színt, majd kattints a **Mentés** gombra.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  372d48b364fa7993:
+    english: "![edit tag color](tags_edit_name.png)"
+    translation: "![címke színének szerkesztése](tags_edit_name.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  146a4351b419d9f3:
+    english: Click **Delete** to remove the tag from all threads and polls in the organization.
+    translation: Kattints a **Törlés** gombra, hogy a címkét eltávolítsd a szervezet összes beszélgetéséből és szavazásából.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  ac6ff8dca31e6357:
+    english: "![delete tag](tags_delete.png)"
+    translation: "![címke törlése](tags_delete.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  238eb4277538b10d:
+    english: "### Edit tag in thread or poll"
+    translation: "### Címkék szerkesztése beszélgetésben vagy szavazásban"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  35715a66bb0686a9:
+    english: To change the tags on an existing thread or poll, open it and click the tag button beside its current tags near the title.
+    translation: Egy meglévő beszélgetés vagy szavazás címkéinek módosításához nyisd meg, majd kattints a cím mellett, a jelenlegi címkék közelében lévő címke gombra.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  99c1872e69d86e10:
+    english: Select tags to add or remove them. Changes are saved immediately.
+    translation: Címkék hozzáadásához vagy eltávolításához válaszd ki őket. A változások azonnal mentésre kerülnek.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  16df99acbf2b5046:
+    english: "![edit tags in thread](tags_thread_edit.png)"
+    translation: "![címkék szerkesztése beszélgetésben](tags_thread_edit.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'

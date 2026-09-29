@@ -1,0 +1,191 @@
+---
+navigation_title: Vorschläge und Umfragen
+blocks:
+  68e2a02de493acf3:
+    english: "# Proposals and polls"
+    translation: "# Vorschläge und Umfragen"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  ff07fce3bab705aa:
+    english: Proposals and polls collect structured responses from a group. They can help test an idea, make a decision, identify priorities, schedule a meeting, or elect representatives.
+    translation: Mit Vorschlägen und Umfragen lassen sich Antworten einer Gruppe strukturiert sammeln. So kannst du eine Idee prüfen, eine Entscheidung treffen, Prioritäten erkennen, ein Treffen planen oder Vertretungen wählen.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  f031d2644fee2a91:
+    english: "## Find the right help"
+    translation: "## Die passende Hilfe finden"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  34039c79ea769793:
+    english: 'These parts of the manual answer different questions:'
+    translation: 'Diese Teile des Handbuchs helfen dir bei unterschiedlichen Fragen:'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  34ea9d58ccbf80fb:
+    english: |-
+      | If you want to… | Read… |
+      |---|---|
+      | Choose what participants should express | [Proposals](../proposals/) or [Polls](../proposal_types/) |
+      | Run a specific proposal template | [Sense check](../proposals/sense_check/), [Advice](../proposals/advice/), [Consent](../proposals/consent/), or [Consensus](../proposals/consensus/) |
+      | Configure the templates available to a group | [Poll templates](../poll_templates/) |
+      | Facilitate a decision from discussion to outcome | [Making decisions](/en/guides/making_decisions/) |
+    translation: |-
+      | Wenn du … | Lies … |
+      |---|---|
+      | festlegen möchtest, welche Art von Antwort die Teilnehmenden geben sollen | [Vorschläge](../proposals/) oder [Umfragen](../proposal_types/) |
+      | eine bestimmte Vorschlagsvorlage verwenden möchtest | [Stimmungsbild](../proposals/sense_check/), [Rat einholen](../proposals/advice/), [Zustimmung](../proposals/consent/) oder [Konsens](../proposals/consensus/) |
+      | die verfügbaren Vorlagen einer Gruppe einrichten möchtest | [Umfragevorlagen](../poll_templates/) |
+      | eine Entscheidung von der Diskussion bis zum Fazit begleiten möchtest | [Entscheidungen treffen](/en/guides/making_decisions/) |
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  7eddb057cca077f4:
+    english: A **voting method** defines how people respond and how results are calculated. A **poll template** is a reusable configuration built on a voting method, with preset instructions, options, and settings. A **decision process** may use a discussion and several templates before the group reaches an outcome.
+    translation: Eine **Abstimmungsmethode** legt fest, wie Menschen antworten und wie die Ergebnisse berechnet werden. Eine **Umfragevorlage** ist eine wiederverwendbare Konfiguration auf Basis einer Abstimmungsmethode. Sie enthält vorgegebene Anweisungen, Optionen und Einstellungen. Ein **Entscheidungsprozess** kann eine Diskussion und mehrere Vorlagen umfassen, bevor die Gruppe zu einem Fazit kommt.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  3cd46aa2f1240e88:
+    english: "## Proposals"
+    translation: "## Vorschläge"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  85a55fccaf4e4032:
+    english: 'A proposal asks people to respond to a statement or course of action. Loomio includes templates for common purposes:'
+    translation: 'Ein Vorschlag bittet Menschen, auf eine Aussage oder einen Handlungsvorschlag zu reagieren. Loomio bietet Vorlagen für häufige Zwecke:'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  51bf1ffa7d057d9e:
+    english: |-
+      - [Sense check](../proposals/sense_check/) gathers early reactions;
+      - [Advice](../proposals/advice/) gathers input for a decision maker;
+      - [Consent](../proposals/consent/) tests for meaningful objections; and
+      - [Consensus](../proposals/consensus/) seeks collective agreement.
+    translation: |-
+      - [Stimmungsbild](../proposals/sense_check/) sammelt erste Reaktionen;
+      - [Rat einholen](../proposals/advice/) sammelt Beiträge für die Person, die entscheidet;
+      - [Zustimmung](../proposals/consent/) prüft, ob es wesentliche Einwände gibt; und
+      - [Konsens](../proposals/consensus/) sucht nach einer gemeinsamen Einigung.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  d01e9f85fcd2d9c2:
+    english: See [Proposals](../proposals/) to compare them.
+    translation: Unter [Vorschläge](../proposals/) kannst du die Vorlagen vergleichen.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  821dcd89b5460804:
+    english: "## Polls"
+    translation: "## Umfragen"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  ec746235c7fe89c4:
+    english: 'Use a poll when participants need to select, score, allocate, rank, state their availability, or cast an election ballot:'
+    translation: 'Verwende eine Umfrage, wenn Teilnehmende Optionen auswählen, bewerten, Punkte verteilen, Rangfolgen festlegen, ihre Verfügbarkeit angeben oder bei einer Wahl abstimmen sollen:'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  b93f9fe9611d9205:
+    english: |-
+      - [Choose](../choose/) finds popular options;
+      - [Score](../score/) evaluates every option on a scale;
+      - [Allocate](../allocate/) distributes a limited budget of points;
+      - [Rank](../rank/) finds an overall order of preference;
+      - [Time poll](../meeting_polls/) finds when people are available; and
+      - [STV Election](../stv/) elects multiple winners proportionally.
+    translation: |-
+      - [Auswählen](../choose/) zeigt, welche Optionen beliebt sind;
+      - [Bewerten](../score/) bewertet jede Option auf einer Skala;
+      - [Punkte verteilen](../allocate/) verteilt eine begrenzte Zahl von Punkten;
+      - [Prioritäten setzen](../rank/) ermittelt eine gemeinsame Rangfolge;
+      - [Terminumfrage](../meeting_polls/) zeigt, wann Menschen Zeit haben; und
+      - [STV-Wahl](../stv/) wählt mehrere Personen nach dem Verhältnis der Stimmen.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  9972b34ccc3ea79b:
+    english: See [Polls](../proposal_types/) to compare them.
+    translation: Unter [Umfragen](../proposal_types/) kannst du die Umfragearten vergleichen.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  5890626db6dcbb68:
+    english: "## Start a proposal or poll"
+    translation: "## Einen Vorschlag oder eine Umfrage starten"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  4b5338cae269fd32:
+    english: "### Choose whether to use a discussion"
+    translation: "### Entscheiden, ob du eine Diskussion verwenden möchtest"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  c45fe8ff31f71486:
+    english: Start the proposal or poll inside a discussion when people need context, questions, or conversation before responding. A discussion can contain several proposals over time, keeping amendments and the eventual outcome together as one record of the topic.
+    translation: Starte den Vorschlag oder die Umfrage in einer Diskussion, wenn die Teilnehmenden vor ihrer Antwort Hintergrundinformationen, Fragen oder einen Austausch brauchen. Eine Diskussion kann im Laufe der Zeit mehrere Vorschläge enthalten. So bleiben Änderungen und das spätere Fazit gemeinsam als Verlauf des Themas erhalten.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  0bb2a90f8f9dad0c:
+    english: Run a standalone poll when the discussion has already happened elsewhere, such as at a meeting, or when the question is simple and you only need to collect responses. Include enough detail or a link to the relevant record so voters understand what they are responding to.
+    translation: Starte eine eigenständige Umfrage, wenn die Diskussion bereits anderswo stattgefunden hat, etwa bei einem Treffen. Das passt auch, wenn die Frage einfach ist und du nur Antworten sammeln möchtest. Gib genug Einzelheiten an oder verlinke den passenden Gesprächsverlauf, damit die Abstimmenden wissen, worauf sie antworten.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  7d50445f0c54190d:
+    english: "### In a discussion"
+    translation: "### In einer Diskussion"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  05e03f7ee0e1b4dc:
+    english: Open the discussion, scroll to the reply area, select **Start a vote**, and choose a template.
+    translation: Öffne die Diskussion, scrolle zum Antwortbereich, wähle **Jetzt abstimmen** und dann eine Vorlage.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  55dc0481a5c4ecb6:
+    english: "### Without a discussion"
+    translation: "### Ohne Diskussion"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  af5fd115de5f7aec:
+    english: Open the **Polls** tab on the group page, select **New poll**, and choose a template.
+    translation: Öffne auf der Gruppenseite den Tab **Abstimmungen**, wähle **Neue Umfrage** und dann eine Vorlage.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  23479ea263004d4a:
+    english: If you create a discussion and poll at the same time only to run a vote, avoid notifying people twice. Start the discussion without notifying them and use the poll invitation, or run the poll without a discussion.
+    translation: Wenn du nur für eine Abstimmung gleichzeitig eine Diskussion und eine Umfrage erstellst, vermeide doppelte Benachrichtigungen. Starte die Diskussion, ohne die Teilnehmenden zu benachrichtigen, und lade sie über die Umfrage ein. Du kannst die Umfrage auch ohne Diskussion starten.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  31f857d230319a3c:
+    english: "## What happens next"
+    translation: "## Wie es weitergeht"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  fb709a76dfeabd4f:
+    english: When starting a proposal or poll, you provide a title and details, review its response options and settings, set a closing time, and invite participants. While it is open, participants can vote, explain their response, and change their vote. Results update as votes are submitted, subject to the poll's result-visibility setting.
+    translation: Wenn du einen Vorschlag oder eine Umfrage startest, gibst du einen Titel und Einzelheiten an. Du prüfst die Antwortmöglichkeiten und Einstellungen, legst einen Schließzeitpunkt fest und lädst Teilnehmende ein. Solange die Abstimmung offen ist, können sie abstimmen, ihre Antwort erläutern und ihre Stimme ändern. Die Ergebnisse werden mit jeder abgegebenen Stimme aktualisiert, soweit die Einstellung zur Sichtbarkeit der Ergebnisse dies zulässt.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  acd2e813b56034a0:
+    english: When it closes, publish an [outcome](../outcomes/) that records what the result means and what will happen next.
+    translation: Wenn die Abstimmung endet, veröffentliche ein [Fazit](../outcomes/). Halte darin fest, was das Ergebnis bedeutet und wie es weitergeht.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'

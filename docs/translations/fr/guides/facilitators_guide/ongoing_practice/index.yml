@@ -1,0 +1,199 @@
+---
+navigation_title: Pratique continue
+blocks:
+  508e19e18ba4a97e:
+    english: "# Ongoing Practice"
+    translation: "# Pratique continue"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  fba51c92285b31c7:
+    english: "## Continuous Improvement"
+    translation: "## Amélioration continue"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  121b4afb86de3c31:
+    english: No matter how amazing a group or facilitator is, they can always improve. If they incrementally head in a good direction they will get to a better place. Incremental improvement requires an effective protocol for meta-conversation (talking about how you collaborate). With it, anything is possible. Without it, you stagnate.
+    translation: Même un groupe ou une personne qui anime avec beaucoup de talent peut progresser. En avançant par petites étapes dans la bonne direction, le groupe améliore sa façon de travailler. Cela demande un moyen efficace de parler de la manière dont on collabore. Sans cet échange, les pratiques stagnent.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  331d258dee610e96:
+    english: There are many approaches to continuous improvement, but they all create space for reflection and feedback, and a way to make changes in response. For teams that work together on an ongoing basis, they might employ a methodology like <a href="https://en.wikipedia.org/wiki/Scrum_(software_development)" target="_blank">scrum</a>, including retrospectives and regular process improvements. For a one-off session, a facilitator might simply follow up with a request for feedback.
+    translation: Il existe de nombreuses façons de s’améliorer en continu. Toutes prévoient un temps de réflexion, des retours et un moyen de faire évoluer les pratiques. Une équipe qui travaille ensemble dans la durée peut adopter une méthode comme le <a href="https://en.wikipedia.org/wiki/Scrum_(software_development)" target="_blank">scrum</a>, avec des rétrospectives et des améliorations régulières. Après une séance ponctuelle, la personne qui l’a animée peut simplement demander des retours.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  aabfa9d842af2688:
+    english: On Loomio
+    translation: Sur Loomio
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  ac2f489368566562:
+    english: |-
+      * People use Loomio itself to talk about how they use Loomio. It provides an obvious platform to “talk about the talking”.
+      * The process of joining Loomio causes groups to reflect on many aspects of their collaboration and decision-making process, which creates the opportunity to improve.
+    translation: |-
+      * Les personnes utilisent Loomio pour discuter de leur manière d’utiliser Loomio. C’est un espace naturel pour parler de leurs échanges.
+      * Rejoindre Loomio amène les groupes à réfléchir à leur collaboration et à leur façon de prendre des décisions. Cette réflexion leur donne l’occasion de s’améliorer.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  7b11f212a312312e:
+    english: "## Distributed Facilitation / Self-facilitation"
+    translation: "## Animation partagée et auto-animation"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  1e385970a624bf63:
+    english: As a group becomes more experienced, more individuals build capacity for facilitation. Facilitation can cease to be a role held by a specific person, and become more of a function that can be distributed. Anyone can take acts of facilitation, and a dance of give and take, leading and following, can emerge among participants. For groups with aspirations toward shared leadership and non-hierarchy, this is a very important thing to encourage.
+    translation: À mesure qu’un groupe gagne en expérience, davantage de personnes apprennent à animer les échanges. L’animation peut alors devenir une fonction partagée, plutôt qu’un rôle confié à une seule personne. Chacun peut contribuer à l’animation. Les personnes présentes apprennent peu à peu à prendre l’initiative, à laisser la place aux autres, à guider et à suivre. Cette pratique compte particulièrement pour les groupes qui souhaitent partager les responsabilités et éviter la hiérarchie.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  fa78b242f7390326:
+    english: 'People who are less used to taking acts of facilitation can be supported with education, invitations, and suggestions of first steps. Some examples of acts of facilitation almost anyone can be encouraged to try:'
+    translation: 'Les personnes moins habituées à contribuer à l’animation peuvent être accompagnées par des explications, des invitations à participer et des suggestions pour commencer. Voici quelques gestes que presque tout le monde peut essayer :'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  1f490f466a1893ed:
+    english: |-
+      * reflecting back what you’re hearing or summarising
+      * inviting others to contribute
+      * asking questions to enhance collective understanding
+      * noticing who is and is not participating
+      * appreciating contributions explicitly
+    translation: |-
+      * reformuler ce que vous entendez ou résumer les échanges
+      * inviter d’autres personnes à contribuer
+      * poser des questions pour améliorer la compréhension commune
+      * remarquer qui participe et qui ne participe pas
+      * reconnaître explicitement les contributions
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  e2eed897e0f564d2:
+    english: '> <img style="border-radius: 100%; float: right; margin-left: 0.5em; max-width: 96px; " src="../silvia_200.png"> You don’t need an agenda to be a facilitator. Facilitating is just about making a group situation easy. Next time you’re at a family gathering, party or morning tea: approach it like a facilitator and make sure everybody in the group feels included and able to participate. — Silvia Zuur'
+    translation: '> <img style="border-radius: 100%; float: right; margin-left: 0.5em; max-width: 96px; " src="../silvia_200.png"> Vous n’avez pas besoin d’un ordre du jour pour animer un groupe. Animer consiste simplement à faciliter les échanges. Lors de votre prochaine réunion de famille, fête ou pause-café, veillez à ce que chaque personne se sente incluse et puisse participer. — Silvia Zuur'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  180b1232871c44c4:
+    english: Distributed facilitation can work beautifully, but it can also cause people to step all over each other. At first, it’s awkward as people learn the dance. It’s important to differentiate between distributed facilitation (peers helping the collective), “facipulation” (manipulating the group toward your own agenda), and backseat facilitation (taking acts of facilitation when you do not have the mandate).
+    translation: L’animation partagée peut très bien fonctionner, mais les personnes qui y contribuent peuvent aussi se gêner mutuellement. Les débuts sont parfois maladroits, le temps de trouver un équilibre. Il faut distinguer l’animation partagée, où des pairs aident le groupe, de la « facipulation », où une personne oriente le groupe vers ses propres objectifs, et de l’animation sans mandat, où une personne intervient sans y avoir été invitée.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  ea5faa685be1ceae:
+    english: Consciously decide when peer facilitation is a good choice, and when a specific facilitator is called for. In certain situations, such as a high-conflict discussion where a specified neutral party is needed, or there is a lack of trust, distributed facilitation might not work.
+    translation: Déterminez ensemble quand l’animation par les pairs convient et quand il faut désigner une personne pour animer. Elle peut être difficile dans une discussion très conflictuelle qui demande une personne neutre, ou lorsque la confiance manque.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  8d6df5458ecb8e45:
+    english: '> <img style="border-radius: 100%; float: right; margin-left: 0.5em; max-width: 96px; " src="../rich_200.png"> Acts of facilitation are not just for the manager, or the person who called the meeting — they are for everyone. — Richard Bartlett'
+    translation: '> <img style="border-radius: 100%; float: right; margin-left: 0.5em; max-width: 96px; " src="../rich_200.png"> L’animation n’est pas réservée à la personne responsable ou à celle qui a organisé la réunion : tout le monde peut y contribuer. — Richard Bartlett'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  c3215e63fca09b79:
+    english: "## Translating this into Loomio"
+    translation: "## Mettre ces principes en pratique sur Loomio"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  35ce75e6810e0611:
+    english: |-
+      * The online space is uniquely suited to distributed facilitation. Different people can come along at different points depending on what they notice and their skill set.
+      * An online discussion is by default a distributed collaboration among peers. Any other setup requires explicit design. This is the opposite of offline spaces where the default is that someone called a meeting and distributing the role requires proactivity.
+      * Loomio is designed with a group of equals in mind. In many ways, a distributed facilitation approach is the best fit for the tool.
+      * Current Loomio users do peer facilitation all the time, whether they realize that’s what they are doing or not. Simple things like suggesting someone raise a proposal, tagging people, summarising the process so far, etc, are all acts of facilitation.
+    translation: |-
+      * Les échanges en ligne se prêtent bien à l’animation partagée. Différentes personnes peuvent intervenir à différents moments, selon ce qu’elles remarquent et leurs compétences.
+      * Une discussion en ligne est, par défaut, une collaboration entre pairs. Toute autre organisation demande une décision explicite. Dans une réunion en personne, quelqu’un prend généralement l’initiative de la convoquer ; partager l’animation demande alors une démarche volontaire.
+      * Loomio est conçu pour des groupes où les personnes participent sur un pied d’égalité. L’animation partagée correspond donc bien à cet outil.
+      * Les personnes qui utilisent Loomio contribuent régulièrement à l’animation, parfois sans s’en rendre compte. Suggérer de lancer une proposition, mentionner des personnes ou résumer les échanges en cours en sont quelques exemples.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  efde81539c545bae:
+    english: "## The Art of Being Facilitated"
+    translation: "## L’art de participer à une animation"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  93ed1980d0cc95b4:
+    english: Like the skill of being the follow in a ballroom dance pair, being facilitated is an art itself. People with experience facilitating themselves, or who have participated in a lot of well-facilitated processes, will receive facilitation differently than those who haven't.
+    translation: Comme suivre son partenaire dans une danse de salon, participer à un échange animé demande un savoir-faire. Les personnes qui ont déjà animé des échanges, ou participé à de nombreux échanges bien animés, réagissent à l’animation autrement que celles qui n’en ont pas l’expérience.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  d2bcd9f07f5bd25b:
+    english: On the positive side, skillful receptivity to facilitation is a capacoty that can be grown, and it can have a big impact on group success. This ranges from things as simple as showing up on time, to following instructions, to being willing to try a new style of thinking or communicating. Sometimes people have a good experience and they don’t quite know why — pointing out that facilitation is the reason for the smoothness or depth can help them understand what it is they valued about the process.
+    translation: La capacité à accueillir l’animation se développe avec la pratique. Elle peut beaucoup aider un groupe. Il peut s’agir d’arriver à l’heure, de suivre des consignes ou d’essayer une nouvelle manière de réfléchir ou de communiquer. Parfois, les personnes apprécient un échange sans savoir exactement pourquoi. Montrer comment l’animation a contribué à sa fluidité ou à sa profondeur peut les aider à comprendre ce qu’elles ont apprécié.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  87345b383ccba81d:
+    english: On the negative side, people who can’t or won’t be facilitated can be detrimental to group collaboration. No matter how skilled a facilitator is, if they encounter a certain level of resistance they won’t be able to do their job. Common problems include dominating the discussion, playing devil’s advocate, disrupting the process, disrespecting the facilitator or participants, or being disengaged. At some level individuals must take responsibility for their willingness to be facilitated.
+    translation: À l’inverse, lorsqu’une personne ne peut pas ou ne veut pas participer à l’animation, la collaboration peut en souffrir. Même avec beaucoup d’expérience, la personne qui anime ne peut pas remplir son rôle face à une forte résistance. Monopoliser la discussion, contester systématiquement, perturber le déroulement, manquer de respect aux autres ou se désengager sont des difficultés courantes. Chaque personne doit, dans une certaine mesure, être disposée à participer à l’animation.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  c096fd0a7e12ddd4:
+    english: |-
+      * With a little practice, most users quickly upskill on being responsive to acts of facilitation on Loomio, such as replying when @mentioned.
+      * Taking acts of facilitation on Loomio helps people become more responsive to facilitation themselves.
+      * Because everything is archived, users can see past acts of facilitation “frozen in time”, gaining the benefits of observing them without having been there.
+    translation: |-
+      * Avec un peu de pratique, la plupart des personnes qui utilisent Loomio apprennent vite à répondre aux gestes d’animation, par exemple lorsqu’elles sont mentionnées avec @.
+      * Contribuer à l’animation sur Loomio aide aussi à mieux accueillir les interventions des autres.
+      * Comme les échanges sont archivés, les personnes peuvent observer après coup des gestes d’animation, même si elles n’étaient pas présentes.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  f930b325aaedb19a:
+    english: "## Culture Change"
+    translation: "## Changement de culture"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  82936abec2b50e3f:
+    english: A collaborative, participatory culture is something that emerges over time, with lots of practice and trial and error. Understanding, valuing, and inviting facilitation can play a pivotal role in this cultural emergence. Facilitation can evolve from a role, to a function, to a mindset. A truly collaborative culture is one where everyone is facilitating everyone in myriad different ways.
+    translation: Une culture de collaboration et de participation se construit avec le temps, par la pratique, les essais et les erreurs. Comprendre l’animation, lui accorder de la valeur et inviter les autres à y contribuer peut jouer un rôle central dans cette évolution. L’animation peut passer d’un rôle à une fonction, puis à une façon d’aborder le travail collectif. Dans une culture collaborative, chaque personne aide les autres à participer de différentes manières.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  898bf6557380a042:
+    english: Is the company party participatory? Does the office potluck just happen like magic? Are ideas able to emerge from anywhere, evolve through many brains and hands, and get implemented in a way better than anyone first imagined?
+    translation: La fête de l’entreprise permet-elle à tout le monde de participer ? Le repas partagé au bureau s’organise-t-il tout seul ? Les idées peuvent-elles venir de partout, évoluer grâce à de nombreuses personnes, puis se concrétiser mieux que quiconque ne l’avait imaginé au départ ?
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  f4964381b3c6dc7b:
+    english: Deep culture change is when the culture of collaboration starts to leak out of specific “collaboration” spaces and shows up in every aspect of the organization. Collaboration is not about post-it notes and check-ins, but the very timbre of organizational life.
+    translation: 'Un changement de culture profond se produit lorsque la collaboration dépasse les espaces qui lui sont réservés et se retrouve dans tous les aspects de l’organisation. Elle ne se limite pas aux notes adhésives et aux tours de parole : elle façonne la vie quotidienne de l’organisation.'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  6962aa4815c01b0f:
+    english: |-
+      * The [theory of change of Loomio](http://www.loomio.com/about) is that more groups practicing effective, inclusive decision making can change organizational dynamics at a global scale. This shows up in everything about how the tool is designed and [how we run as a co-op](http://loomio.coop). Ultimately, it’s about culture change through collaborative practice.
+      * Loomio groups have experienced evolving culture through the tool. Like groups that already has a collaborative culture scale while holding onto that, or a participatory group continuing to exists instead of imploding due to challanges around inclusive decicion-making.
+      * Loomio makes a certain kind of “new normal” of collaborative practice possible, through making collaborative practice more accessible and achievable.
+    translation: |-
+      * Selon la [théorie du changement de Loomio](http://www.loomio.com/about), des groupes plus nombreux à prendre des décisions de manière efficace et inclusive peuvent faire évoluer le fonctionnement des organisations à l’échelle mondiale. Cette idée guide la conception de l’outil et [notre façon de fonctionner en coopérative](http://loomio.coop). Elle vise un changement de culture par la pratique collaborative.
+      * Des groupes ont vu leur culture évoluer grâce à Loomio. Certains ont grandi tout en préservant leurs pratiques collaboratives. D’autres ont pu continuer à fonctionner malgré les difficultés liées à la prise de décision inclusive.
+      * Loomio aide à faire de la collaboration une pratique courante, en la rendant plus accessible et plus facile à mettre en œuvre.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  3f2cee633e8b83c2:
+    english: For inspiration about Ongoing Practice, check out [stories of Loomio groups](https://blog.loomio.com/?utm_campaign=facilitators_guide_help&utm_term=help).
+    translation: Pour trouver d’autres exemples de pratique continue, consultez les [témoignages de groupes Loomio](https://blog.loomio.com/?utm_campaign=facilitators_guide_help&utm_term=help).
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'

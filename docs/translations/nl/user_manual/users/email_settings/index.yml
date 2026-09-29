@@ -1,0 +1,417 @@
+---
+navigation_title: Meldingen
+blocks:
+  3a65b66c581936a1:
+    english: "# Notifications"
+    translation: "# Meldingen"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  c343eb5a1db968d8:
+    english: Notifications help groups maintain momentum by drawing your attention to discussions and decisions that need a response.
+    translation: Meldingen helpen groepen verder door je aandacht te vestigen op discussies en besluiten die om een reactie vragen.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  3d7b27f3b9880973:
+    english: 'Notifications are often the starting point when you return to Loomio. They let you know when:'
+    translation: 'Als je terugkomt in Loomio, begin je vaak bij je meldingen. Je krijgt een melding wanneer:'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  c4aec8fcb9fbc0de:
+    english: |-
+      - someone mentions you or replies to something you wrote
+      - a new discussion is shared with you
+      - you are invited or reminded to vote
+      - a poll is closing soon
+      - an outcome is announced
+    translation: |-
+      - iemand je noemt of reageert op iets wat je hebt geschreven
+      - iemand een nieuwe discussie met je deelt
+      - je wordt uitgenodigd of eraan wordt herinnerd om te stemmen
+      - een peiling binnenkort sluit
+      - een conclusie wordt bekendgemaakt
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  792dcad0f81e8cc5:
+    english: Loomio's notification settings let you choose how closely you want to follow each group or thread. Notifications remain available in Loomio, so you can review what needs your attention when you are ready.
+    translation: Met de meldingsinstellingen van Loomio kies je hoe nauw je elke groep of thread volgt. Meldingen blijven beschikbaar in Loomio, zodat je ze kunt bekijken wanneer het jou uitkomt.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  '082fae961275aaaf':
+    english: "## Two ways to begin"
+    translation: "## Twee manieren om te beginnen"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  cbea008bb7c0ee02:
+    english: 'Most people can start with one of two approaches:'
+    translation: 'De meeste mensen kunnen op een van deze twee manieren beginnen:'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  3349bdb53fc33195:
+    english: |-
+      - **When notified** — receive an email when someone asks for your attention, and include everything else in your daily catch-up. Start here if you are still learning how your group uses Loomio.
+      - **Once per day** — set Email to **Catch-up only** and keep your catch-up set to **Every day**. Your notifications and other unread activity will be delivered together in one email.
+    translation: |-
+      - **Wanneer je een melding krijgt** — ontvang een e-mail wanneer iemand je aandacht vraagt. De rest komt in je dagelijkse samenvatting. Begin hiermee als je nog ontdekt hoe jouw groep Loomio gebruikt.
+      - **Een keer per dag** — stel E-mail in op **Alleen inhalen** en houd je samenvatting op **Elke dag**. Je meldingen en andere ongelezen activiteit komen dan samen in één e-mail.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  74e84c4946aa3713:
+    english: New accounts start with **When notified** and a daily catch-up. This brings mentions, replies, discussions shared with you, invitations and reminders to vote, polls closing soon, and outcomes to your attention as they happen without sending an immediate update about every comment or vote.
+    translation: Nieuwe accounts beginnen met **Wanneer je een melding krijgt** en een dagelijkse samenvatting. Je hoort meteen wanneer iemand je noemt, op je reageert of een discussie met je deelt, wanneer je wordt uitgenodigd of herinnerd om te stemmen, wanneer een peiling binnenkort sluit en wanneer een conclusie wordt bekendgemaakt. Je krijgt niet meteen een e-mail over elke reactie of stem.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  896722cbb87e98be:
+    english: If you would rather receive your Loomio notifications all at once, move to the once-per-day approach. You can change this later as your pattern of work changes.
+    translation: Wil je al je Loomio-meldingen tegelijk ontvangen? Kies dan voor één e-mail per dag. Je kunt dit later aanpassen als jouw manier van werken verandert.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  e2c60724226ad68a:
+    english: For a group or thread that you want to follow more closely, choose **All activity** to receive every update as it happens.
+    translation: Wil je een groep of thread nauwlettender volgen? Kies **Alle activiteiten** om elke update te ontvangen zodra die plaatsvindt.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  91fd24c60a6a84ee:
+    english: These defaults apply when you join a group. Threads initially inherit the settings of their group, but you can follow an important thread more closely or reduce its notifications without changing the rest of the group.
+    translation: Deze standaardinstellingen gelden wanneer je lid wordt van een groep. Threads nemen eerst de instellingen van hun groep over. Je kunt een belangrijke thread nauwlettender volgen of er minder meldingen voor ontvangen, zonder de instellingen van de rest van de groep te wijzigen.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  a75df26cfc4e6614:
+    english: "## Notifications in Loomio"
+    translation: "## Meldingen in Loomio"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  9286edc0ac459625:
+    english: The bell icon in the top-right is where notifications are accessed within the app; a number shows how many notifications you have yet to read.
+    translation: Via het belpictogram rechtsboven open je de meldingen in Loomio. Het getal geeft aan hoeveel meldingen je nog niet hebt gelezen.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  bfacf52b815e1252:
+    english: Select a notification to open the related discussion or poll.
+    translation: Selecteer een melding om de bijbehorende discussie of peiling te openen.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  b7ed6a5c5c661d60:
+    english: "## Catch-up"
+    translation: "## Samenvatting"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  fc61461d684c5b47:
+    english: The catch-up provides a regular overview of activity without requiring you to follow each group throughout the day.
+    translation: De samenvatting geeft je regelmatig een overzicht van de activiteit, zodat je niet de hele dag elke groep hoeft te volgen.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  9e519b17a3847cee:
+    english: It shows your unseen notifications first, followed by unread discussions and standalone polls grouped by group. Notifications provide linked summaries of activity that needs your attention, while the unread section includes the discussion, poll, comment, vote, and edit details. Direct discussions and threads you have joined as a guest are included when they contain unread activity.
+    translation: Je ziet eerst je nog niet bekeken meldingen. Daarna volgen ongelezen discussies en losse peilingen, ingedeeld per groep. Meldingen bevatten links naar samenvattingen van activiteit die je aandacht vraagt. In het gedeelte met ongelezen activiteit vind je details over discussies, peilingen, reacties, stemmen en bewerkingen. Rechtstreekse discussies en threads waaraan je als gast deelneemt, worden ook opgenomen als er ongelezen activiteit is.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  00703333f277e3c0:
+    english: You can turn on **Follow updates** on an open Group that you have not joined. Unread discussions and polls from that Group are then included in your catch-up at your existing schedule. Reading the threads or marking the catch-up as read updates their read status in the same way as threads from Groups you belong to. Turn off **Follow updates** on the Group page to stop including them.
+    translation: Bij een open groep waarvan je geen lid bent, kun je **Volg de updates** inschakelen. Ongelezen discussies en peilingen uit die groep komen dan volgens je bestaande schema in je samenvatting. Als je de threads leest of de samenvatting als gelezen markeert, verandert hun leesstatus op dezelfde manier als bij threads uit groepen waarvan je lid bent. Schakel **Volg de updates** uit op de groepspagina om ze niet meer op te nemen.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  fcac102a70f7ee7f:
+    english: Loomio does not send a catch-up when there are no unseen notifications or unread threads from the relevant period.
+    translation: Loomio verstuurt geen samenvatting als er in de betreffende periode geen nieuwe meldingen of ongelezen threads zijn.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  888011209ac583be:
+    english: "![A catch-up with unseen notifications and unread thread activity from one group](digest_email_example.png)"
+    translation: "![Een samenvatting met nieuwe meldingen en ongelezen activiteit in threads uit één groep](digest_email_example.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  7d80cf08a383f6bd:
+    english: "### Choose your catch-up schedule"
+    translation: "### Kies hoe vaak je een samenvatting ontvangt"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  677863d68136156b:
+    english: Open **Notification settings** from your user menu to choose how often you receive a catch-up.
+    translation: Open **Melding instellingen** via je gebruikersmenu om te kiezen hoe vaak je een samenvatting ontvangt.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  7c0dece94210f807:
+    english: The **Unsubscribe** link in a catch-up email opens a catch-up schedule form. The email link authorizes that form, so you can change or stop catch-up emails without signing in. The full **Notification settings** page in Loomio remains available when you sign in.
+    translation: De link **Uitschrijven** in een samenvattingsmail opent een formulier voor het verzendschema. De link in de e-mail geeft toegang tot dat formulier. Je kunt de samenvattingsmails dus wijzigen of stopzetten zonder in te loggen. Als je inlogt, kun je ook de volledige pagina **Melding instellingen** in Loomio openen.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  da5740fd6dbd5737:
+    english: "![Notification settings in the user menu](sidebar_notification_settings.png)"
+    translation: "![Melding instellingen in het gebruikersmenu](sidebar_notification_settings.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  58af77d870a877e2:
+    english: 'New accounts start with a daily catch-up. The available schedules are:'
+    translation: 'Nieuwe accounts ontvangen dagelijks een samenvatting. Je kunt kiezen uit:'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  b0fe04b2b5284253:
+    english: |-
+      - **Never** to turn off the catch-up
+      - **Every day** for activity from approximately the previous 24 hours
+      - **Every second day** for activity from approximately the previous two days
+      - a weekday to receive a weekly catch-up on that day
+    translation: |-
+      - **Nooit** om de samenvatting uit te schakelen
+      - **Elke dag** voor activiteit uit ongeveer de afgelopen 24 uur
+      - **Om de andere dag** voor activiteit uit ongeveer de afgelopen twee dagen
+      - een weekdag om op die dag een wekelijkse samenvatting te ontvangen
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  a23935f518dd15cb:
+    english: The catch-up is sent in the morning according to the time zone in your Loomio profile.
+    translation: De samenvatting wordt 's ochtends verstuurd volgens de tijdzone in jouw Loomio-profiel.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  b214c0634763fb51:
+    english: "![Catch-up schedule setting](digest_email_setting.png)"
+    translation: "![Instelling voor het verzendschema van de samenvatting](digest_email_setting.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  efbcecfe827438a5:
+    english: "### Mark a catch-up as read"
+    translation: "### Markeer een samenvatting als gelezen"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  2b764b73f48d3185:
+    english: Select **Mark catch-up as read** to mark its notifications and topic activity as read in Loomio. Opening or previewing the catch-up does not mark anything as read.
+    translation: Selecteer **Markeer de samenvatting als gelezen** om de meldingen en activiteit in onderwerpen als gelezen te markeren in Loomio. Als je de samenvatting opent of een voorbeeld bekijkt, wordt niets als gelezen gemarkeerd.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  81ffa4a869f82451:
+    english: A catch-up is not specific to one discussion, so do not reply to it. Open a discussion or poll from the catch-up before commenting or replying.
+    translation: Een samenvatting hoort niet bij één specifieke discussie. Reageer daarom niet op de e-mail. Open eerst een discussie of peiling vanuit de samenvatting voordat je een reactie plaatst.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  f7dfee93901e5eea:
+    english: "## Group and thread notification settings"
+    translation: "## Meldingsinstellingen voor groepen en threads"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  31be594005b6bcfc:
+    english: You can choose how closely to follow each group and thread. These settings belong to you; group administrators cannot change them.
+    translation: Je kiest zelf hoe nauw je elke groep en thread volgt. Groepsbeheerders kunnen jouw instellingen niet wijzigen.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  6c9a762b18c9f92d:
+    english: Change your defaults for groups you join from **Notification settings** in your user menu. You can then override the default for a particular group or thread. A thread override changes only that thread and does not affect the rest of its group.
+    translation: Wijzig via **Melding instellingen** in je gebruikersmenu de standaardinstellingen voor groepen waarvan je lid wordt. Daarna kun je voor een bepaalde groep of thread een andere instelling kiezen. Een afwijkende instelling voor een thread geldt alleen voor die thread, niet voor de rest van de groep.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  f4b6aa6eab1beb2b:
+    english: "### Group notification settings"
+    translation: "### Meldingsinstellingen voor groepen"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  977289761daba9db:
+    english: 'To change the notification setting for a group:'
+    translation: 'Zo wijzig je de meldingsinstelling voor een groep:'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  d78d13409c481c71:
+    english: |-
+      1. Open the group page.
+      2. Open the notification settings for the group.
+    translation: |-
+      1. Open de groepspagina.
+      2. Open de meldingsinstellingen voor de groep.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  02116f695da0a946:
+    english: "![Notification settings on a group page](group_notifications.png)"
+    translation: "![Meldingsinstellingen op een groepspagina](group_notifications.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  8ce50d3418e2d9fa:
+    english: The form asks **How do you want to stay updated?** Choose **Catch-up only**, **When notified**, or **All activity**. If your catch-up is set to **Never**, **Catch-up only** is replaced by **No email updates** or **No push updates**.
+    translation: Het formulier vraagt **Hoe wil je op de hoogte blijven?** Kies **Alleen inhalen**, **Wanneer je een melding krijgt** of **Alle activiteiten**. Als je samenvatting op **Nooit** staat, wordt **Alleen inhalen** vervangen door **Geen e-mailupdates** of **Geen push-updates**.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  24db74c2c82737eb:
+    english: Select **Apply to all groups** to use the same setting for all of your groups.
+    translation: Selecteer **Toepassen op alle groepen** om dezelfde instelling voor al je groepen te gebruiken.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  54cd6a8eac96e073:
+    english: "![Group notification settings](group_notification_settings.png)"
+    translation: "![Meldingsinstellingen voor een groep](group_notification_settings.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  d0ab43e865282241:
+    english: "### Thread notification settings"
+    translation: "### Meldingsinstellingen voor threads"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  f61284373b7afc42:
+    english: To change notification settings for an individual thread, open the notification control in the thread sidebar.
+    translation: Open de meldingsknop in de zijbalk van een thread om de meldingsinstellingen voor die thread te wijzigen.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  b329b8421ab5d4f8:
+    english: "![The notification control in a thread](thread_subscribe.png)"
+    translation: "![De meldingsknop in een thread](thread_subscribe.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  226c5e321d735005:
+    english: "![Thread notification settings](thread_notifications.png)"
+    translation: "![Meldingsinstellingen voor een thread](thread_notifications.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  3178b3b456acd783:
+    english: Thread notification settings use the same **Catch-up only**, **When notified**, and **All activity** choices. A thread setting overrides the group setting for that thread.
+    translation: Voor threads kun je ook kiezen uit **Alleen inhalen**, **Wanneer je een melding krijgt** en **Alle activiteiten**. De instelling voor een thread gaat voor die van de groep.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  f53fa37c98c9b747:
+    english: |-
+      >[!Note]
+      >The changes in **Thread notification settings** apply only to the thread you have open. Select **Change notifications for group** to change the setting inherited by the group's other threads.
+    translation: |-
+      >[!Note]
+      >Wijzigingen in **Instellingen voor threadmeldingen** gelden alleen voor de thread die je hebt geopend. Selecteer **Verander de meldingen van deze groep** om de instelling te wijzigen die de andere threads van de groep overnemen.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  99a0923cdcdc1cdf:
+    english: "## Email delivery"
+    translation: "## E-mailmeldingen"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  6cf70b2dc7cdbf83:
+    english: By default, Loomio sends an email when you are notified. Depending on your group and thread notification settings, this can include mentions, replies, discussions shared with you, invitations and reminders to vote, outcomes, and polls closing soon. Choose **All activity** to also receive emails about every new comment, vote, thread, poll, and outcome.
+    translation: Loomio stuurt je standaard een e-mail wanneer je een melding krijgt. Afhankelijk van je meldingsinstellingen voor groepen en threads kan dat gaan om vermeldingen, reacties, discussies die met je zijn gedeeld, uitnodigingen en herinneringen om te stemmen, conclusies en peilingen die binnenkort sluiten. Kies **Alle activiteiten** om ook e-mails te ontvangen over elke nieuwe reactie, stem, thread, peiling en conclusie.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  ce2919b895be45b3:
+    english: The **Unsubscribe** link in a notification email opens settings for that thread or group, including emails sent because someone mentioned you or replied to you. That form shows your current catch-up schedule for all groups and links to the catch-up email settings. These email links authorize only their own settings forms; they do not sign you in to Loomio.
+    translation: De link **Uitschrijven** in een melding per e-mail opent de instellingen voor die thread of groep. Dit geldt ook voor e-mails die je krijgt omdat iemand je heeft vermeld of op je heeft gereageerd. Het formulier toont je huidige schema voor samenvattingsmails voor alle groepen en bevat een link naar de instellingen voor samenvattingsmails. Deze links geven alleen toegang tot het bijbehorende instellingenformulier; ze melden je niet aan bij Loomio.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  d615e84f882a2728:
+    english: When a discussion email says that replies are accepted, you can reply directly from your email and your message will be posted into the Loomio discussion.
+    translation: Als in een e-mail over een discussie staat dat je kunt antwoorden, kun je rechtstreeks op de e-mail reageren. Je bericht wordt dan in de Loomio-discussie geplaatst.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  5b4ce168b24bc44a:
+    english: Poll invitation emails show the poll and its response options, but selecting an option opens Loomio in your browser to complete the vote. You may need to sign in or confirm your account. The catch-up cannot accept replies; open the linked discussion or poll first.
+    translation: Uitnodigingen voor een peiling tonen de peiling en de antwoordopties. Als je een optie selecteert, opent Loomio in je browser om je stem uit te brengen. Mogelijk moet je je aanmelden of je account bevestigen. Je kunt niet antwoorden op een samenvattingsmail. Open eerst de gekoppelde discussie of peiling.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  0c2b2867a1ace598:
+    english: "![A proposal invitation email with response options and the related thread](proposal_invitation_email.png)"
+    translation: "![Een uitnodiging per e-mail voor een voorstel, met antwoordopties en de bijbehorende thread](proposal_invitation_email.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  a73508aa897d96cf:
+    english: "## Enable mobile notifications with web push"
+    translation: "## Mobiele meldingen inschakelen met webpush"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  f4b14a4ba068b670:
+    english: Web push is how Loomio delivers mobile notifications today. It can notify you about Loomio activity on your phone when Loomio is not open.
+    translation: Loomio verstuurt mobiele meldingen via webpush. Zo kun je op je telefoon meldingen over activiteit in Loomio krijgen wanneer Loomio niet openstaat.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  811ee794dea12cd3:
+    english: On Android, open **Notification settings** in a supported browser and enable push. On an iPhone or iPad, first open Loomio in Safari, use **Share** then **Add to Home Screen**, open Loomio from the new Home Screen icon, and enable push from there. Select **Test connection** to verify delivery to every browser listed under **Enabled browsers**.
+    translation: Open op Android **Melding instellingen** in een ondersteunde browser en schakel push in. Open op een iPhone of iPad eerst Loomio in Safari, kies **Delen** en daarna **Zet op beginscherm**. Open Loomio via het nieuwe pictogram op je beginscherm en schakel daar push in. Selecteer **Test verbinding** om te controleren of meldingen aankomen in elke browser onder **Ingeschakelde browsers**.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  72f0707b2d67bf0e:
+    english: Web push also works in supported desktop browsers. Enable it there if you want Loomio notifications on your computer.
+    translation: Webpush werkt ook in ondersteunde browsers op je computer. Schakel het daar in als je Loomio-meldingen op je computer wilt ontvangen.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  fea7dbef040ae7f5:
+    english: Once push is enabled in at least one browser, group and thread notification forms let you choose **Email**, **Push**, or **Email and push**. Email and push can use different notification settings. Push delivery can be delayed by the browser, operating system, or network connection.
+    translation: Zodra push in minstens één browser is ingeschakeld, kun je in de meldingsinstellingen voor groepen en threads kiezen uit **E-mail**, **Push** en **E-mail en push**. Je kunt voor e-mail en push verschillende meldingsinstellingen gebruiken. De browser, het besturingssysteem of de netwerkverbinding kan de bezorging van pushmeldingen vertragen.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  210e15dcdff781ce:
+    english: "![Push notification settings and enabled browsers](push_notification_settings.png)"
+    translation: "![Instellingen voor pushmeldingen en ingeschakelde browsers](push_notification_settings.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  37e2be2c73fbb06d:
+    english: "## Turn off external notifications"
+    translation: "## Externe meldingen uitschakelen"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  5e3d442fa885bcd4:
+    english: To stop email and push messages for group and thread activity, open **Notification settings** from your user menu, set the catch-up to **Never**, and choose **No email updates** and **No push updates**. Notifications and activity remain available when you open Loomio.
+    translation: Wil je geen e-mails en pushmeldingen meer ontvangen over activiteit in groepen en threads? Open **Melding instellingen** via je gebruikersmenu, zet de samenvattingsmail op **Nooit** en kies **Geen e-mailupdates** en **Geen push-updates**. Meldingen en activiteit blijven beschikbaar wanneer je Loomio opent.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  54bd12aaa8a9ed58:
+    english: "![Set the catch-up to Never](turn_off_all_emails_1.png)"
+    translation: "![Stel de samenvattingsmail in op Nooit](turn_off_all_emails_1.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  92738bb4c71f0229:
+    english: "![Turn off updates for groups](turn_off_all_emails_2.png)"
+    translation: "![Schakel updates voor groepen uit](turn_off_all_emails_2.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'

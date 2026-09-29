@@ -1,0 +1,57 @@
+---
+navigation_title: Tomando decisões
+blocks:
+  f69dd6a570dfa0f5:
+    english: "# Making decisions"
+    translation: "# Tomando decisões"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  b27fab33a1dd5176:
+    english: 'These guides explain complete decision processes: how to frame a decision, involve the right people, use discussion and proposals, respond to concerns, and record an outcome.'
+    translation: 'Estes guias explicam processos de decisão completos: como definir a decisão, envolver as pessoas certas, usar discussões e propostas, responder a preocupações e registrar uma conclusão.'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  bcbe5e3fd75700a6:
+    english: They are different from the proposal-template pages. A [proposal template](/en/user_manual/polls/proposals/) explains one proposal and its response options. A decision process can use several proposals over time.
+    translation: Eles são diferentes das páginas sobre modelos de proposta. Um [modelo de proposta](/en/user_manual/polls/proposals/) explica uma proposta e suas opções de resposta. Um processo de decisão pode usar várias propostas ao longo do tempo.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  af00d65d38e41f8b:
+    english: "## Choose a process"
+    translation: "## Escolha um processo"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  f41e345421a1a1e8:
+    english: |-
+      | Process | Who decides? | Main question |
+      |---|---|---|
+      | [Simple decision process](simple_decision_process) | Defined by the group | How can we discuss, test, and decide? |
+      | [Advice process](advice_process) | A person or delegated team | What advice should the decision maker consider? |
+      | [Consent process](consent_process) | The group | Is the proposal safe to try without a meaningful objection? |
+      | [Consensus process](consensus_process) | The group | Can we reach collective agreement? |
+    translation: |-
+      | Processo | Quem decide? | Pergunta principal |
+      |---|---|---|
+      | [Processo de decisão simples](simple_decision_process) | Definido pelo grupo | Como podemos discutir, testar e decidir? |
+      | [Processo de aconselhamento](advice_process) | Uma pessoa ou equipe delegada | Que orientações a pessoa responsável pela decisão deve considerar? |
+      | [Processo de consentimento](consent_process) | O grupo | É seguro testar a proposta sem uma objeção relevante? |
+      | [Processo de consenso](consensus_process) | O grupo | Podemos chegar a um acordo coletivo? |
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  d2843889568043c0:
+    english: Use the process required by your group's governing rules or decision policy. Different kinds of decisions may use different processes.
+    translation: Use o processo exigido pelas regras de governança ou pela política de decisões do seu grupo. Tipos diferentes de decisão podem exigir processos diferentes.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  bb120914edd79d13:
+    english: If you only need help choosing a response format, compare [Proposals](/en/user_manual/polls/proposals/) and [Polls](/en/user_manual/polls/proposal_types/). If you administer the reusable choices shown when someone selects **Start a vote**, see [Poll templates](/en/user_manual/polls/poll_templates/).
+    translation: Se você só precisa de ajuda para escolher um formato de resposta, compare [Propostas](/en/user_manual/polls/proposals/) e [Enquetes](/en/user_manual/polls/proposal_types/). Se você administra as opções reutilizáveis exibidas quando alguém seleciona **Iniciar uma votação**, consulte [Modelos de enquete](/en/user_manual/polls/poll_templates/).
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'

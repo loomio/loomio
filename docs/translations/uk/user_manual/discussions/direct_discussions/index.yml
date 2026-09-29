@@ -1,0 +1,61 @@
+---
+navigation_title: Прямі обговорення
+blocks:
+  ba470546359b688d:
+    english: "# Direct discussions"
+    translation: "# Прямі обговорення"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  b3ed13f5612f4ff9:
+    english: A direct discussion is a private discussion for a specific set of people.
+    translation: Пряме обговорення — це приватне обговорення для визначеного кола людей.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  479f7faed056ab51:
+    english: A direct discussion does not belong to a group. Invited people do not need to be a member of your Loomio group.
+    translation: Пряме обговорення не належить до групи. Запрошеним людям не потрібно бути учасниками вашої групи в Loomio.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  2f5362faecc07fa0:
+    english: You control who can see and participate by adding people or email addresses to the **Invite** field.
+    translation: Ви визначаєте, хто може бачити обговорення та брати в ньому участь, додаючи людей або адреси електронної пошти в поле **Запросити**.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  f31343ea54b4f899:
+    english: Direct discussions support the same comments, polls and other tools as group discussions. They can be useful when creating a subgroup is unnecessary.
+    translation: У прямих обговореннях доступні ті самі коментарі, опитування та інші інструменти, що й в обговореннях групи. Вони стануть у пригоді, коли створювати підгрупу немає потреби.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  8dcb1cd81ca79192:
+    english: "![A direct discussion form with no group selected and Samira Patel in the Invite field](direct-discussion-example.png)"
+    translation: "![Форма прямого обговорення, у якій не вибрано групу, а в полі «Запросити» зазначено Саміру Патель](direct-discussion-example.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  6e1409b4f3f725d9:
+    english: Select **Direct threads** in the sidebar to see your direct discussions. Select **New discussion** on that page to start another one.
+    translation: Виберіть **Прямі теми** на бічній панелі, щоб переглянути свої прямі обговорення. Щоб почати ще одне, виберіть **Нове обговорення** на цій сторінці.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  f77108fd74372c43:
+    english: "![The Direct threads sidebar item and the list of direct discussions](direct-discussion-sidebar.png)"
+    translation: "![Пункт «Прямі теми» на бічній панелі та список прямих обговорень](direct-discussion-sidebar.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  5a0b9426a2d88e62:
+    english: |-
+      ## Contacting someone via a direct discussion
+      A direct discussion can be used to contact one or more people privately without creating a subgroup.
+    translation: |-
+      ## Як зв’язатися з кимось через пряме обговорення
+      Пряме обговорення дає змогу приватно зв’язатися з однією або кількома людьми без створення підгрупи.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'

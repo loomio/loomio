@@ -1,0 +1,135 @@
+---
+navigation_title: Punkte verteilen
+blocks:
+  343675f0497d460a:
+    english: "# Allocate"
+    translation: "# Punkte verteilen"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  46dd27ee2e2fb992:
+    english: Allocate, sometimes known as a dot vote, reveals priorities when there are trade-offs. Each participant receives a fixed budget of points and distributes it across the options. Giving more to one option leaves fewer points for the others.
+    translation: Bei „Punkte verteilen“, auch Punktabstimmung genannt, werden Prioritäten sichtbar, wenn Entscheidungen gegeneinander abgewogen werden müssen. Alle Teilnehmenden erhalten eine feste Anzahl von Punkten und verteilen sie auf die Optionen. Wer einer Option mehr Punkte gibt, hat für die anderen weniger übrig.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  c6d05c5ec2a695d2:
+    english: "## When to use Allocate"
+    translation: "## Wann du Punkte verteilen solltest"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  f5b2c4377aea5079:
+    english: 'Use Allocate when time, money, attention, or another resource is limited. It works well for:'
+    translation: 'Nutze „Punkte verteilen“, wenn Zeit, Geld, Aufmerksamkeit oder eine andere Ressource begrenzt ist. Das eignet sich zum Beispiel, um:'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  8e6525da99616946:
+    english: |-
+      - prioritizing work for the next planning period;
+      - dividing a participatory budget between projects;
+      - choosing how much agenda time to give several topics;
+      - distributing a fixed number of volunteer hours; or
+      - identifying which improvements matter most to members.
+    translation: |-
+      - Aufgaben für den nächsten Planungszeitraum zu priorisieren;
+      - ein gemeinschaftlich verwaltetes Budget auf Projekte zu verteilen;
+      - zu entscheiden, wie viel Zeit mehrere Themen auf der Tagesordnung erhalten;
+      - eine feste Anzahl von Stunden für ehrenamtliche Arbeit zu verteilen; oder
+      - zu erkennen, welche Verbesserungen den Mitgliedern am wichtigsten sind.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  66b0f13c4811ef63:
+    english: The points express relative priority, not an amount that Loomio will automatically assign. Use [Score](/en/user_manual/polls/score/) when every option can receive a high rating without reducing support for another.
+    translation: Die Punkte zeigen relative Prioritäten. Loomio weist dadurch keine Ressourcen automatisch zu. Nutze [Bewertung](/en/user_manual/polls/score/), wenn jede Option eine hohe Bewertung erhalten kann, ohne dass dadurch für eine andere weniger übrig bleibt.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  '0409e08bd5e80f61':
+    english: "## Example: set priorities for an annual strategy review"
+    translation: "## Beispiel: Prioritäten für die jährliche Strategieüberprüfung festlegen"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  e274f6e40509e611:
+    english: Oatmilk Cooperative is planning its annual strategy review. It asks members which areas should receive the most time and attention during the review. Each member receives ten points to allocate across five areas. This shows the group's relative priorities while requiring participants to make trade-offs.
+    translation: Die Hafermilch-Genossenschaft plant ihre jährliche Strategieüberprüfung. Sie fragt ihre Mitglieder, welchen Bereichen sie dabei die meiste Zeit und Aufmerksamkeit widmen soll. Jedes Mitglied erhält zehn Punkte und kann sie auf fünf Bereiche verteilen. So werden die Prioritäten der Gruppe sichtbar. Zugleich müssen die Teilnehmenden abwägen, wofür sie ihre Punkte einsetzen.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  c74ebb16f872b3c6:
+    english: "## Set up the poll"
+    translation: "## Abstimmung einrichten"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  906790609aa7eb30:
+    english: Describe the decision and what the points represent. Add options at a similar level of scope, then set **Points per person**. In this example, each voter receives ten points to indicate how much review time each strategic area should receive.
+    translation: Beschreibe die Entscheidung und erkläre, wofür die Punkte stehen. Füge Optionen mit einem ähnlichen Umfang hinzu und lege dann **Punkte pro Person** fest. In diesem Beispiel erhalten alle Abstimmenden zehn Punkte, um anzugeben, wie viel Zeit jeder strategische Bereich bei der Überprüfung erhalten soll.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  67ae025b83fb4781:
+    english: A very large budget can create false precision. A useful budget is usually large enough to show differences but small enough to require choices. Make clear whether concentrating all points on one option is acceptable.
+    translation: Eine sehr hohe Punktzahl kann eine Genauigkeit vortäuschen, die nicht besteht. Eine sinnvolle Punktzahl ist meist hoch genug, um Unterschiede sichtbar zu machen, und niedrig genug, um Entscheidungen zu erfordern. Stelle klar, ob alle Punkte auf eine einzige Option entfallen dürfen.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  d391457c69df967f:
+    english: "## Vote"
+    translation: "## Abstimmen"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  d9a73b9d4e2f8927:
+    english: Participants move the sliders to distribute their budget. Loomio shows how many points remain and prevents submission until the allocation is valid.
+    translation: Die Teilnehmenden verteilen ihre Punkte mit den Schiebereglern. Loomio zeigt an, wie viele Punkte übrig sind, und lässt die Stimmabgabe erst zu, wenn die Verteilung gültig ist.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  7b3d616673a01fbb:
+    english: In this example, the voter assigns three points each to **Member participation** and **Financial sustainability**, two each to **Environmental impact** and **Staff development**, and none to **Products and services**. A zero does not necessarily mean an area has no value; it means the voter used their limited points elsewhere.
+    translation: In diesem Beispiel vergibt die abstimmende Person je drei Punkte an **Mitgliederbeteiligung** und **Finanzielle Nachhaltigkeit**, je zwei an **Umweltauswirkungen** und **Personalentwicklung** und keinen an **Produkte und Dienstleistungen**. Null Punkte bedeuten nicht unbedingt, dass ein Bereich unwichtig ist. Die Person hat ihre begrenzten Punkte für andere Bereiche verwendet.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  72a9e4073ea27936:
+    english: "## Read the results"
+    translation: "## Ergebnisse lesen"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  97147f83eaf22313:
+    english: 'The results order options by the total points received. They also show:'
+    translation: 'Die Ergebnisse ordnen die Optionen nach der Gesamtzahl der erhaltenen Punkte. Sie zeigen außerdem:'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  1d224c0c34145a7f:
+    english: |-
+      - **% of points**: the option's share of all allocated points;
+      - **Points**: the total points allocated;
+      - **Mean**: the average among voters who gave the option points; and
+      - **Voters**: how many people gave the option at least one point.
+    translation: |-
+      - **% der Punkte**: den Anteil der Option an allen vergebenen Punkten;
+      - **Punkte**: die insgesamt an die Option vergebenen Punkte;
+      - **Bedeuten**: den Durchschnitt unter den Abstimmenden, die der Option Punkte gegeben haben; und
+      - **Wähler*innen**: wie viele Personen der Option mindestens einen Punkt gegeben haben.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  2901008fa326e4f5:
+    english: In this example, **Financial sustainability** receives the most points, followed by **Staff development**. Financial sustainability receives points from every voter, suggesting broad agreement that it needs substantial review time. Read the totals alongside the number of voters to distinguish broad priorities from areas strongly supported by fewer people.
+    translation: In diesem Beispiel erhält **Finanzielle Nachhaltigkeit** die meisten Punkte, gefolgt von **Personalentwicklung**. Alle Abstimmenden geben der finanziellen Nachhaltigkeit Punkte. Das deutet auf breite Zustimmung hin, diesem Bereich bei der Überprüfung viel Zeit zu widmen. Vergleiche die Gesamtpunktzahl mit der Zahl der Abstimmenden. So erkennst du, ob ein Bereich vielen wichtig ist oder von wenigen besonders stark unterstützt wird.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  f2c04fbdc54d23e8:
+    english: Read the totals together with the number of voters and their reasons. Publish an outcome explaining how the strategy review will be structured; the poll does not assign time automatically.
+    translation: Betrachte die Gesamtpunktzahlen zusammen mit der Zahl der Abstimmenden und ihren Begründungen. Veröffentliche ein Fazit, das erklärt, wie die Strategieüberprüfung aufgebaut sein wird. Die Abstimmung weist keine Zeit automatisch zu.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'

@@ -1,0 +1,99 @@
+---
+navigation_title: Leitfaden zur Moderation mit Loomio
+blocks:
+  51bef990323f41b0:
+    english: "# The Facilitator's Guide To Loomio"
+    translation: "# Leitfaden zur Moderation mit Loomio"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  980342866ab7bee6:
+    english: An in-depth guide to applying key facilitation concepts in the online space.
+    translation: Ein ausführlicher Leitfaden dazu, wie du wichtige Konzepte der Moderation online anwendest.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  ac8728f5ce2ea8ce:
+    english: Loomio is made by facilitators, and that plays a huge role in how it has been designed. This guide is about revealing more of that context, and translating facilitation concepts from the offline space to the online space.
+    translation: Loomio wurde von Menschen entwickelt, die Gruppen moderieren. Ihre Erfahrungen haben die Gestaltung von Loomio stark geprägt. Dieser Leitfaden erklärt diesen Hintergrund und zeigt, wie sich Konzepte der Moderation vom persönlichen Austausch auf die Online-Zusammenarbeit übertragen lassen.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  e802660a44da1775:
+    english: "## More about this guide"
+    translation: "## Mehr über diesen Leitfaden"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  5cbd64dba51ca485:
+    english: Whether employed by a professional facilitator, people peer-facilitating each other, or a group that has no awareness of facilitation at all, Loomio’s essential function is to mediate and support group communication toward a desired outcome. In other words, facilitation.
+    translation: 'Ob eine Fachperson die Moderation übernimmt, Menschen sich gegenseitig moderieren oder eine Gruppe sich gar nicht mit Moderation beschäftigt: Loomio hilft Gruppen, sich auszutauschen und auf ein gewünschtes Ziel hinzuarbeiten. Das ist Moderation.'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  25a956280b647fa6:
+    english: 'Loomio is *groupware*:'
+    translation: 'Loomio ist *Groupware*:'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  33e304be58a0a55b:
+    english: "> Collaborative software, or groupware, is designed to help people involved in a common task achieve their goals. One of the earliest definitions of collaborative software is “intentional group processes plus software to support them.” -- Wikipedia"
+    translation: "> Kollaborative Software, auch Groupware genannt, soll Menschen helfen, bei einer gemeinsamen Aufgabe ihre Ziele zu erreichen. Eine der frühesten Definitionen lautet: „bewusst gestaltete Gruppenprozesse und Software, die sie unterstützt“. -- Wikipedia"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  170a0b463e1ad8ca:
+    english: There is a huge body of knowledge, best practice, and tradition in both in-person facilitation and online moderation, but the art and science of their intersection is only just emerging. This is the specific space where Loomio strives to excel.
+    translation: Über die Moderation persönlicher Treffen und von Online-Räumen gibt es viel Wissen, bewährte Methoden und lange Traditionen. Wie beides zusammenwirkt, wird dagegen erst seit Kurzem erforscht und erprobt. In diesem Bereich möchte Loomio besonders hilfreich sein.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  596f4162a52f315b:
+    english: "***"
+    translation: "***"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  e2491f4b9f37c546:
+    english: "## About the author"
+    translation: "## Über die Autorin"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  4ef2c88e31656836:
+    english: '<img style="border-radius: 100%; float: right; margin: 0 0 2em 2em; max-width: 200px;" src="alanna_fringe_s.jpg">'
+    translation: '<img style="border-radius: 100%; float: right; margin: 0 0 2em 2em; max-width: 200px;" src="alanna_fringe_s.jpg">'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  e19d687b56819302:
+    english: Hi! I'm Alanna.
+    translation: Hallo, ich bin Alanna.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  10352ad196487ff3:
+    english: I'm one of the founders of Loomio, and I've been thinking deeply about how it works from a facilitation perspective since the beginning. I am not a seminal facilitation expert; I consider myself only a beginner in this craft that one could spend a lifetime honing.
+    translation: Ich habe Loomio mitgegründet und beschäftige mich seit Anfang an damit, wie es aus Sicht der Moderation funktioniert. Ich bin keine führende Expertin auf diesem Gebiet. Ich sehe mich als Anfängerin in einer Praxis, die man ein Leben lang weiterentwickeln kann.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  c637c96f9723f02d:
+    english: What I can offer is help translating between the offline and online spaces, as a practitioner in both. I've facilitated a lot of groups who use Loomio, and learned from their experiences.
+    translation: Ich kann dabei helfen, Erfahrungen aus der Moderation persönlicher Treffen auf die Online-Zusammenarbeit zu übertragen und umgekehrt. Ich habe viele Gruppen moderiert, die Loomio nutzen, und aus ihren Erfahrungen gelernt.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  c376e38821fb6c2f:
+    english: You can find out [more about me on my website](http://alanna.space).
+    translation: "[Mehr über mich erfährst du auf meiner Website](http://alanna.space)."
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  b893957534fa37e2:
+    english: I'm only one person, with one perspective and approach to facilitation, when there are myriad approaches. I've tried to bring in a couple other facilitator's voices here, including [Rich](http://richdecibels.com/) from Loomio and Silvia from [EXP](http://exp.agency).
+    translation: Ich bin nur eine Person mit einer bestimmten Sichtweise und einem eigenen Ansatz zur Moderation. Es gibt viele andere Ansätze. Deshalb habe ich versucht, hier auch andere Stimmen aus der Moderation einzubeziehen, darunter [Rich](http://richdecibels.com/) von Loomio und Silvia von [EXP](http://exp.agency).
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'

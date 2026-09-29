@@ -1,0 +1,137 @@
+---
+navigation_title: ランク
+blocks:
+  92702560a3786c85:
+    english: "# Rank"
+    translation: "# ランク"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  7cf7aa3423ff6b9d:
+    english: Rank finds the group's overall order of preference. Participants arrange options from most to least preferred, and Loomio assigns more points to higher-ranked options.
+    translation: ランクでは、グループ全体の希望順位を確認できます。参加者が選択肢を希望する順に並べると、Loomioは上位の選択肢に多くのポイントを割り当てます。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  72790fdf21d1f129:
+    english: "## When to use Rank"
+    translation: "## ランクを使う場面"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  f9ce50752bf1c1e7:
+    english: 'Use Rank when preference order matters and you want one overall ordering. It works well for:'
+    translation: 希望の順序が重要で、全体の順位を一つにまとめたいときにランクを使います。たとえば、次のような場合に役立ちます。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  4a5c8ee257df4dc2:
+    english: |-
+      - selecting one candidate for a position;
+      - ordering projects for a work plan;
+      - prioritizing conference topics;
+      - choosing backup options as well as a first choice; or
+      - reducing a long list to an ordered shortlist.
+    translation: |-
+      - 役職の候補者を1人選ぶ
+      - 作業計画に向けてプロジェクトの順序を決める
+      - 会議の議題に優先順位を付ける
+      - 第一希望と代替案を選ぶ
+      - 長い候補一覧を順位付きの候補リストに絞る
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  2549ddaa8a4a4fa8:
+    english: Rank uses a points-based ordering. It is not a proportional election method. To elect several people while representing different groups of voters, use an [STV Election](/en/user_manual/polls/stv/).
+    translation: ランクはポイントに基づいて順位を決めます。比例代表方式の選挙には使えません。異なる有権者グループの意向を反映しながら複数人を選ぶ場合は、[STV選挙](/en/user_manual/polls/stv/)を使います。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  2a859bf73143ce12:
+    english: "## Example: rank bottle designs"
+    translation: "## 例：ボトルのデザインに順位を付ける"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  46a7d343d3b48bea:
+    english: Oatmilk Cooperative asks members to rank four bottle designs for its returnable-bottle trial. Participants consider handling, durability, customer needs, storage, and compatibility with the washing equipment.
+    translation: オーツミルク協同組合は、返却可能なボトルの試験導入に向けて、4種類のデザインに順位を付けるようメンバーに依頼します。参加者は、持ちやすさ、耐久性、顧客のニーズ、保管のしやすさ、洗浄設備との適合性を検討します。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  c74ebb16f872b3c6:
+    english: "## Set up the poll"
+    translation: "## 投票を設定する"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  5975d0fd35ec0a7c:
+    english: State what the ranking will determine and add the options. Set **Number of choices** to control how many options each person may rank. A first choice receives the most points, the next choice receives one fewer, and unranked options receive no points.
+    translation: 順位付けで何を決めるかを説明し、選択肢を追加します。各参加者が順位を付けられる選択肢の数は、**選択肢の数**で設定します。第一希望に最も多くのポイントが付き、次の選択肢は1ポイント少なくなります。順位を付けなかった選択肢にはポイントが付きません。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  47f32c81e29fa3c6:
+    english: Require all options to be ranked when you need a complete ordering. Allow fewer choices when participants may not know enough to rank everything. Showing options in random order can reduce the influence of their initial presentation.
+    translation: すべての選択肢について順位が必要な場合は、全項目の順位付けを必須にします。参加者がすべてを評価するだけの情報を持っていない場合は、順位を付ける数を減らせるようにします。選択肢をランダムな順序で表示すると、最初の表示順による影響を減らせます。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  d391457c69df967f:
+    english: "## Vote"
+    translation: "## 投票する"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  53946361c36775f0:
+    english: Participants drag the options into their preferred order, with number 1 as the first choice. They can add a reason explaining the criteria behind their ranking.
+    translation: 参加者は選択肢をドラッグして希望する順に並べます。1番が第一希望です。順位を決めた基準を理由として追加することもできます。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  eae63303cb9dced6:
+    english: In this example, the voter puts the **500 ml amber bottle** first and the **500 ml clear bottle** second because both fit the existing cafe storage and washing equipment.
+    translation: この例では、**500 mlの琥珀色のボトル**を1位、**500 mlの透明なボトル**を2位にしています。どちらも既存のカフェの保管場所と洗浄設備に適合するためです。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  72a9e4073ea27936:
+    english: "## Read the results"
+    translation: "## 結果を読む"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  6be27268f870dc3e:
+    english: 'The results combine all ballots into an overall points-based ranking. For each option they show:'
+    translation: 結果では、すべての投票を集計し、ポイントに基づく全体の順位を示します。各選択肢には次の項目が表示されます。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  88b912ae1b9787bc:
+    english: |-
+      - **Rank**: its position in the combined result;
+      - **% of points**: its share of all ranking points;
+      - **Points**: the total points from all ballots;
+      - **Mean**: its average points per voter; and
+      - **Voters**: how many people ranked it.
+    translation: |-
+      - **ランク**：集計結果での順位
+      - **ポイントの割合**：順位付けで付与された全ポイントのうち、その選択肢が占める割合
+      - **ポイント**：すべての投票で得たポイントの合計
+      - **平均**：有権者1人当たりの平均ポイント
+      - **有権者**：その選択肢に順位を付けた人数
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  2e0cda6f79f31a51:
+    english: In this example, the **500 ml amber bottle** ranks first, followed by the **500 ml clear bottle** and the **750 ml amber bottle**. The group can investigate the preferred design first while retaining the remaining order as a sequence of alternatives.
+    translation: この例では、**500 mlの琥珀色のボトル**が1位で、**500 mlの透明なボトル**、**750 mlの琥珀色のボトル**が続きます。グループは第一候補のデザインから検討し、残りの順位を代替案の順序として活用できます。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  22df687a6fa02ddb:
+    english: A points-based result can conceal different preference patterns that produce the same total. Review individual ballots and vote reasons when options are close or the decision is consequential.
+    translation: 異なる希望の傾向でも、ポイントの合計が同じになることがあります。選択肢の結果が僅差の場合や、重要な決定を行う場合は、個々の投票とその理由を確認します。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'

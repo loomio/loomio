@@ -1,0 +1,217 @@
+---
+navigation_title: Kutsu äänestämään
+blocks:
+  0635cf23fcaaa95b:
+    english: "# Invite to vote"
+    translation: "# Kutsu äänestämään"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  2ae3991d9865a2bb:
+    english: "## Invite people to vote in a poll"
+    translation: "## Kutsu ihmisiä äänestämään kyselyssä"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  56d96764605291b4:
+    english: Invite people to your poll by sending them a notification.
+    translation: Kutsu ihmisiä kyselyysi lähettämällä heille ilmoitus.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  3632ef534c8c03f7:
+    english: After you start a poll, the **Invite to vote** box appears. Select an audience such as **Everyone in the thread** or your group, or enter individual names and email addresses.
+    translation: Kun aloitat kyselyn, **Kutsu äänestämään** -kenttä tulee näkyviin. Valitse vastaanottajiksi esimerkiksi **Kaikki ketjussa** tai oma ryhmäsi. Voit myös kirjoittaa yksittäisten henkilöiden nimiä ja sähköpostiosoitteita.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  835f178f0b52f3b6:
+    english: You can include an optional message with the invitation.
+    translation: Voit liittää kutsuun viestin.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  78da00061d5815a4:
+    english: Select a group chip to expand it into the people you are inviting. Select the x beside a name to remove that person from the invitation.
+    translation: Valitse ryhmän tunniste nähdäksesi kutsuttavat henkilöt. Poista henkilö kutsusta valitsemalla hänen nimensä vieressä oleva x.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  e6969f4c4b62b6ff:
+    english: "### Invite guests or experts"
+    translation: "### Kutsu vieraita tai asiantuntijoita"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  9bb72d11863e1f46:
+    english: You can also invite a guest to the poll by entering their email address. They will be given permission to participate in only this poll.
+    translation: Voit kutsua kyselyyn myös vieraan kirjoittamalla hänen sähköpostiosoitteensa. Hän saa oikeuden osallistua vain tähän kyselyyn.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  dd20b166a40eb798:
+    english: If the poll is within a thread, they will also be able to see that thread and its comments. They will not be able to comment, participate in other polls in the thread, or see other threads in the group.
+    translation: Jos kysely on ketjussa, vieras näkee myös ketjun ja sen kommentit. Hän ei voi kommentoida, osallistua ketjun muihin kyselyihin eikä nähdä ryhmän muita ketjuja.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  84cc8773a5337094:
+    english: "### Invite a subgroup to vote"
+    translation: "### Kutsu alaryhmä äänestämään"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  80ca3c8c753b0ebb:
+    english: To limit voting to invited people, select **Selected people only** when you create the poll. You can then invite a subgroup from the parent group. See also [Delegated voters](/en/user_manual/groups/delegated_voters/).
+    translation: Jos haluat rajata äänestämisen kutsutuille henkilöille, valitse kyselyä luodessasi **Vain valitut henkilöt**. Sen jälkeen voit kutsua emoryhmän alaryhmän. Katso myös [Valtuutetut äänestäjät](/en/user_manual/groups/delegated_voters/).
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  2074aff770fa7610:
+    english: |-
+      ![Selecting invited people only](invited-people-only.png)
+      ![Inviting a subgroup to vote](invite-voters-subgroup.png)
+    translation: |-
+      ![Vain kutsuttujen henkilöiden valinta](invited-people-only.png)
+      ![Alaryhmän kutsuminen äänestämään](invite-voters-subgroup.png)
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  29103b18580994a1:
+    english: "## Engage people while a poll is running"
+    translation: "## Ota yhteyttä ihmisiin kyselyn aikana"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  1ce57a2542eebaab:
+    english: At the bottom of the poll are several features to help you engage with people once the poll is running.
+    translation: Kyselyn alareunassa on toimintoja, joiden avulla voit olla yhteydessä ihmisiin kyselyn aikana.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  45090f8260d19a47:
+    english: "### Add voters to the poll"
+    translation: "### Lisää äänestäjiä kyselyyn"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  3116212829910b50:
+    english: You can add new people to the poll at any time, including before voting opens on a scheduled poll.
+    translation: Voit lisätä kyselyyn uusia henkilöitä milloin tahansa, myös ennen kuin ajastetun kyselyn äänestys alkaa.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  5e851e072e9dc1de:
+    english: Select **Add voters**, then enter the names or email addresses of the people you want to add.
+    translation: Valitse **Lisää äänestäjiä** ja kirjoita lisättävien henkilöiden nimet tai sähköpostiosoitteet.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  be5aceb4caf93c11:
+    english: If the poll has a scheduled opening time and voting has not yet opened, voters will not receive an immediate notification. Instead, they will be notified when voting opens.
+    translation: Jos kyselyn alkamisaika on ajastettu eikä äänestys ole vielä alkanut, äänestäjät eivät saa ilmoitusta heti. Heille lähetetään ilmoitus, kun äänestys alkaa.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  b9a08269e3e252ce:
+    english: "### Remove people from the poll"
+    translation: "### Poista henkilöitä kyselystä"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  ce37b0af98854c79:
+    english: Select **Add voters**, find the person's name, open the three-dot menu beside it, and select **Remove from proposal**.
+    translation: Valitse **Lisää äänestäjiä**, etsi henkilön nimi, avaa sen vieressä oleva kolmen pisteen valikko ja valitse **Poista ehdotuksesta**.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  '08df94a4269ad100':
+    english: People cannot be removed from an anonymous poll.
+    translation: Henkilöitä ei voi poistaa anonyymistä kyselystä.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  3d13453394c79f30:
+    english: For example, an administrator who creates a poll on behalf of board members can remove themself if they are not authorised to vote.
+    translation: Jos ylläpitäjä esimerkiksi luo kyselyn hallituksen jäsenten puolesta, hän voi poistaa itsensä, jos hänellä ei ole äänioikeutta.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  2a354792a1f1f517:
+    english: "### Remind people to vote"
+    translation: "### Muistuta ihmisiä äänestämään"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  501e7846380326fd:
+    english: Select **Remind** to send a notification to people who have not voted. **Everyone invited to vote** is selected by default. Select the chip to see or change the recipients.
+    translation: Valitse **Muistuttaa**, kun haluat lähettää ilmoituksen henkilöille, jotka eivät ole äänestäneet. **Kaikki kutsuttiin äänestämään** on valittuna oletuksena. Valitse tunniste, jos haluat nähdä tai vaihtaa vastaanottajat.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  04e4537024da788c:
+    english: "### View notification history"
+    translation: "### Tarkastele ilmoitushistoriaa"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  46145a9dd950c8eb:
+    english: Open the three-dot menu (**⋯**) at the bottom of the poll and select **Notification history**.
+    translation: Avaa kyselyn alareunassa oleva kolmen pisteen valikko (**⋯**) ja valitse **Ilmoitushistoria**.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  e74eafb1566d5dea:
+    english: "![Notification history in a poll's actions menu](../../discussions/notifying_people/poll_notification_history.png)"
+    translation: "![Ilmoitushistoria kyselyn toimintovalikossa](../../discussions/notifying_people/poll_notification_history.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  1a96cd0121fe58ec:
+    english: The history shows who has been invited to vote, when each invitation was sent, and whether it has been read when that information is available.
+    translation: Historiasta näet, ketkä on kutsuttu äänestämään ja milloin kutsut lähetettiin. Jos tieto on saatavilla, näet myös, onko kutsu luettu.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  3bd9a11263e1c8f4:
+    english: "![Notification history for a poll](../../discussions/notifying_people/poll_notification_example.png)"
+    translation: "![Kyselyn ilmoitushistoria](../../discussions/notifying_people/poll_notification_example.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  f3bbc883f6429276:
+    english: "### Close early"
+    translation: "### Sulje aikaisin"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  af6a9acaafaaa96a:
+    english: Select **Close early** to close a poll before its scheduled closing time.
+    translation: Valitse **Sulje aikaisin**, jos haluat sulkea kyselyn ennen ajastettua päättymisaikaa.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  3cdbb11687fa03c0:
+    english: You might do this when everyone has voted or the poll no longer needs to remain open.
+    translation: Voit tehdä näin esimerkiksi silloin, kun kaikki ovat äänestäneet tai kyselyä ei enää tarvitse pitää avoinna.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  46f3a0ec8da6dba1:
+    english: "### Reopen"
+    translation: "### Avaa uudelleen"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  '0821c04199937236':
+    english: Select **Reopen** on a closed poll, then set a new closing date and time.
+    translation: Valitse suljetussa kyselyssä **Avaa uudelleen** ja aseta uusi päättymispäivä ja -aika.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  53079cadd493f27c:
+    english: Anonymous polls cannot be reopened.
+    translation: Anonyymejä kyselyitä ei voi avata uudelleen.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'

@@ -1,0 +1,99 @@
+---
+navigation_title: Peilingen
+blocks:
+  800f4167b38b4715:
+    english: "# Polls"
+    translation: "# Peilingen"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  d370759001be4e21:
+    english: Polls collect selections, scores, allocations, rankings, availability, or election ballots. Choose the voting method based on what participants need to express and how you intend to use the result. Use a [Proposal](/en/user_manual/polls/proposals/) when people need to respond to a statement or course of action.
+    translation: Met peilingen verzamel je keuzes, scores, puntverdelingen, rangschikkingen, beschikbaarheid of stemmen bij een verkiezing. Kies de stemmethode op basis van wat deelnemers willen aangeven en hoe je de uitslag wilt gebruiken. Gebruik een [Voorstel](/en/user_manual/polls/proposals/) als mensen moeten reageren op een stelling of plan.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  1132ff680c7b2562:
+    english: "## Simple poll"
+    translation: "## Eenvoudige peiling"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  6b957bf5630c1470:
+    english: "[Choose](/en/user_manual/polls/choose/) lets participants select one or more options. Use it to find the most popular option or make a shortlist."
+    translation: Met [Kiezen](/en/user_manual/polls/choose/) kunnen deelnemers een of meer opties selecteren. Gebruik deze methode om de populairste optie te vinden of een shortlist te maken.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  c982974685e1b5d6:
+    english: "## Score poll"
+    translation: "## Scorepeiling"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  fbbfe14196388606:
+    english: "[Score](/en/user_manual/polls/score/) lets participants rate every option on the same scale. Use it to compare the strength of support, readiness, suitability, or importance across options."
+    translation: Met [Score](/en/user_manual/polls/score/) beoordelen deelnemers elke optie op dezelfde schaal. Zo vergelijk je hoeveel steun er voor opties is en hoe gereed, geschikt of belangrijk ze worden gevonden.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  0465fcb48a56ca78:
+    english: "## Dot vote"
+    translation: "## Punten verdelen"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  ffb7d1711a5fca3b:
+    english: "[Allocate](/en/user_manual/polls/allocate/) gives each participant a fixed budget of points to distribute. Use it to identify priorities when choosing one thing means giving less attention or resources to another."
+    translation: Bij [Toewijzen](/en/user_manual/polls/allocate/) krijgt elke deelnemer een vast aantal punten om te verdelen. Gebruik deze methode om prioriteiten te bepalen wanneer meer aandacht of middelen voor de ene optie ten koste gaan van een andere.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  a1b15c28fbe526f6:
+    english: "## Ranked choice"
+    translation: "## Gerangschikte keuze"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  8811f455b7ab3821:
+    english: "[Rank](/en/user_manual/polls/rank/) lets participants arrange options in order of preference. Use it to find the group's overall preferred order or select one leading option."
+    translation: Met [Rang](/en/user_manual/polls/rank/) zetten deelnemers opties in volgorde van voorkeur. Gebruik deze methode om de gezamenlijke voorkeursvolgorde van de groep te bepalen of één optie te kiezen.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  2e21bb1b54b6fcf9:
+    english: "## Time poll"
+    translation: "## Tijdpeiling"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  fb768f07eb0d1971:
+    english: "[Time poll](/en/user_manual/polls/meeting_polls/) lets participants indicate when they are available. Use it to schedule a meeting or event across time zones."
+    translation: Met een [Tijd peiling](/en/user_manual/polls/meeting_polls/) geven deelnemers aan wanneer ze beschikbaar zijn. Gebruik deze methode om een vergadering of evenement te plannen met deelnemers in verschillende tijdzones.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  6333ad0ee6d54609:
+    english: "## STV Election"
+    translation: "## STV-verkiezing"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  6f93c6ad598d809c:
+    english: "[STV Elections](/en/user_manual/polls/stv/) let participants rank candidates in a proportional, multi-winner election. Use STV to elect a committee, board, or group of delegates."
+    translation: Bij [STV-verkiezingen](/en/user_manual/polls/stv/) rangschikken deelnemers kandidaten voor een evenredige verkiezing met meerdere winnaars. Gebruik STV om een commissie, bestuur of groep afgevaardigden te kiezen.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  6752a750a7703b58:
+    english: "## Other specialized method"
+    translation: "## Andere gespecialiseerde methode"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  '099449b0e1fe4f85':
+    english: Loomio also includes a Question round for collecting questions without voting. Group administrators can make it available from [Poll templates](/en/user_manual/polls/poll_templates/).
+    translation: Loomio heeft ook een Vragenronde om vragen te verzamelen zonder te stemmen. Groepsbeheerders kunnen deze beschikbaar maken via [Poll-sjablonen](/en/user_manual/polls/poll_templates/).
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'

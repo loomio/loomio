@@ -1,0 +1,189 @@
+---
+navigation_title: Ledenbeheer
+blocks:
+  3d2d8d3f7d252651:
+    english: "# Member management"
+    translation: "# Ledenbeheer"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  f9901909d4cd86e0:
+    english: If you are an admin, you can manage members from the **Members** tab on your group page.
+    translation: Als admin kun je leden beheren via het tabblad **Leden** op de groepspagina.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  d25e71106f726cac:
+    english: Click on the three dots (**⋮**) to the right of the group member to set their title, make them an admin, make them a delegate, or remove them from the group.
+    translation: Klik op de drie puntjes (**⋮**) rechts van een groepslid om een titel in te stellen, het lid admin of afgevaardigde te maken, of het lid uit de groep te verwijderen.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  db5a08225152e80a:
+    english: "![Member actions menu on the Oatmilk Cooperative members page](member_management.png)"
+    translation: "![Menu met acties voor een lid op de ledenpagina van Oatmilk Cooperative](member_management.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  0f29eb85fabc200d:
+    english: |-
+      ## Administering your group
+      There are only two user types in a Loomio group: **member** and **admin**.
+    translation: |-
+      ## Je groep beheren
+      Een Loomio-groep heeft twee soorten gebruikers: **leden** en **admins**.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  4317e6fcbbedcdaa:
+    english: 'Admins perform administrative tasks for your group, including: adding and removing members, managing member permissions, setting the group privacy levels, and managing the subscription plans.  In addition, admins are able to see the email addresses of members and export the group''s data.'
+    translation: Admins beheren de groep. Ze voegen leden toe en verwijderen ze, beheren de rechten van leden, stellen de privacy van de groep in en beheren het abonnement. Admins kunnen ook de e-mailadressen van leden zien en de groepsgegevens exporteren.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  7de2ea0e85a19d0a:
+    english: The person creating a new Loomio group is made admin by default. We recommend to make at least one other trusted person in your group an admin, to insure someone can always administer your group. You can have as many admins in your group as you wish.
+    translation: Wie een nieuwe Loomio-groep aanmaakt, wordt automatisch admin. Maak bij voorkeur minstens één andere persoon die je vertrouwt admin, zodat iemand de groep kan beheren als jij dat niet kunt. Een groep kan zoveel admins hebben als je wilt.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  ac9e3bb2da56869e:
+    english: To make a member **admin**, go to the Members tab, find the member and click on the three dots (**⋮**) next to their name. Choose **Make admin**. An `Admin` tag will appear beside their name.
+    translation: Wil je een lid **admin** maken? Ga naar het tabblad **Leden**, zoek het lid en klik op de drie puntjes (**⋮**) naast de naam. Kies **Admin maken**. Naast de naam verschijnt dan het label `Admin`.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  b93c8eaf5367f572:
+    english: "![Make admin action in a member's menu](member_make_admin.png)"
+    translation: "![Actie Admin maken in het menu van een lid](member_make_admin.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  f6d7a993e2d32771:
+    english: |-
+      ## Managing subgroups
+      If you are the admin of a parent group, or organization, you have additional permissions with regards to any __closed__ subgroups.
+    translation: |-
+      ## Subgroepen beheren
+      Als admin van een hoofdgroep of organisatie heb je extra rechten voor __besloten__ subgroepen.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  cd781594b26ae052:
+    english: You will be able to join any closed subgroup by clicking the "Join Group" button on the left of the Subgroup page in question (just under the tabs).
+    translation: Je kunt lid worden van elke besloten subgroep door links op de pagina van die subgroep, net onder de tabbladen, op de knop "Lid worden van de groep" te klikken.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  ba630e95409473a5:
+    english: "![Join group button on a closed Oatmilk Cooperative subgroup](member_join_subgroup.png)"
+    translation: "![Knop om lid te worden van een besloten subgroep van Oatmilk Cooperative](member_join_subgroup.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  87c2d0e0fa784cff:
+    english: Once you have joined the subgroup, you will also be able to make yourself the admin of that subgroup, just as you would promote anyone to admin.
+    translation: Zodra je lid bent van de subgroep, kun je jezelf admin maken, net zoals je een ander lid admin zou maken.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  e439992d86591319:
+    english: |-
+      >[!Note]
+      >These permissions do not extend to [**secret** subgroups](/en/user_manual/groups/subgroups/?highlight=secret#permissions).
+    translation: |-
+      >[!Note]
+      >Deze rechten gelden niet voor [**geheime** subgroepen](/en/user_manual/groups/subgroups/?highlight=secret#permissions).
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  31a8fbe10f50c1a0:
+    english: |-
+      ## Removing members
+      When you click **Remove from group** you'll be asked to confirm the removal. Upon removal, this user will no longer have access to the group's pages, threads, polls, or proposals. They will receive no further emails or notifications of group activity. However, any comments and votes written by the user will remain untouched.
+    translation: |-
+      ## Leden verwijderen
+      Als je op **Van groep verwijderen** klikt, wordt je gevraagd de verwijdering te bevestigen. Daarna heeft het lid geen toegang meer tot de groepspagina's, discussies, peilingen of voorstellen. Het lid ontvangt ook geen e-mails of meldingen meer over groepsactiviteiten. Reacties en stemmen van het lid blijven staan.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  8bf29fce0f0d8e9b:
+    english: "![Remove from group action in a member's menu](member_remove.png)"
+    translation: "![Actie Van groep verwijderen in het menu van een lid](member_remove.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  aa3b173ffd048b99:
+    english: You can add removed members back to the group later if you wish.
+    translation: Je kunt verwijderde leden later weer aan de groep toevoegen.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  6ef7d0422c66d652:
+    english: |-
+      ## Leaving group
+      To leave a group: go to the group page, open the 3 dot menu, and click **Leave group**.
+    translation: |-
+      ## Een groep verlaten
+      Wil je een groep verlaten? Ga naar de groepspagina, open het menu met de drie puntjes en klik op **Verlaat groep**.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  5395b374b5814162:
+    english: "![Leave group action in the Oatmilk Cooperative settings menu](member_leave_group.png)"
+    translation: "![Actie Verlaat groep in het instellingenmenu van Oatmilk Cooperative](member_leave_group.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  d926fc8d1e3cbac2:
+    english: |-
+      ## Set title
+      Within the Members tab, you can also name your role within the group, or identify an organization you represent using **title**. You or a group admin can change your title with **Set title** from the 3 dot menu near your name.
+    translation: |-
+      ## Titel instellen
+      Op het tabblad **Leden** kun je met een **titel** aangeven wat jouw rol in de groep is of welke organisatie je vertegenwoordigt. Jij of een groepsadmin kan jouw titel wijzigen via **Titel aanmaken** in het menu met de drie puntjes naast jouw naam.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  2425e4d5b1e8047d:
+    english: "![Set title action in a member's menu](member_set_title.png)"
+    translation: "![Actie Titel aanmaken in het menu van een lid](member_set_title.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  6af456317883a890:
+    english: You can have different titles in different subgroups.
+    translation: Je kunt in verschillende subgroepen verschillende titels hebben.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  2d59cb70493e06b1:
+    english: "## Member email addresses"
+    translation: "## E-mailadressen van leden"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  cee3a1e0e1031377:
+    english: Only admins can see group member email addresses.  This is sometimes necessary to audit the members in a group.
+    translation: Alleen admins kunnen de e-mailadressen van groepsleden zien. Dat kan nodig zijn om te controleren wie lid is van een groep.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  4ff1112b058a3205:
+    english: 'To see member email addresses: Use [data export](/en/user_manual/groups/data_export/) to download a CSV file, and open the file in Excel or Google sheets.'
+    translation: Wil je de e-mailadressen van leden zien? Download via [gegevensexport](/en/user_manual/groups/data_export/) een CSV-bestand en open het in Excel of Google Spreadsheets.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  105be57911f832fc:
+    english: The export group data file shows every person and their email address in every subgroup.
+    translation: Het geëxporteerde bestand met groepsgegevens bevat alle leden en hun e-mailadressen in elke subgroep.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  20f87bcff4ec41e6:
+    english: You can also search for members by email address in the members tab. So if you see someone you want to remove, you can search by email to remove them.
+    translation: Je kunt op het tabblad **Leden** ook op e-mailadres naar leden zoeken. Zo kun je een lid opzoeken en uit de groep verwijderen.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'

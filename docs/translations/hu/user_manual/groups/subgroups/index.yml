@@ -1,0 +1,267 @@
+---
+navigation_title: Alcsoportok
+blocks:
+  782c5b3df26b17ae:
+    english: "# Subgroups"
+    translation: "# Alcsoportok"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  0025fb895cd6cae8:
+    english: Subgroups help you organize your communications and members so that the right people are engaged in their work together.
+    translation: Az alcsoportok segítenek úgy szervezni a kommunikációt és a tagokat, hogy az együtt dolgozó emberek részt vehessenek a közös munkában.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  cc3abd19bc310546:
+    english: |-
+      For example, an organization may have the following subgroups:
+      - governance board
+      - working team or a project working group
+      - a topic (such as 'strategy' or 'learning')
+    translation: |-
+      Egy szervezetben például a következő alcsoportok lehetnek:
+      - vezetőség
+      - munkacsoport vagy projektcsoport
+      - egy témával foglalkozó csoport (például „stratégia” vagy „tanulás”)
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  eab908c78ccd923d:
+    english: Subgroups work just like groups do, but are located within your "parent" group. Most of the features and settings available are the same as in the parent group. This also means that someone can be a member of your subgroup, such as your board, but not of your parent group.
+    translation: Az alcsoportok ugyanúgy működnek, mint a csoportok, de egy „szülőcsoporton” belül találhatók. A legtöbb funkciójuk és beállításuk megegyezik a szülőcsoportéval. Valaki lehet egy alcsoport, például a vezetőség tagja úgy is, hogy nem tagja a szülőcsoportnak.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  aaa62c1b02d15779:
+    english: "## Add a subgroup"
+    translation: "## Alcsoport hozzáadása"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  8ed2fcd2a209a53d:
+    english: |-
+      >[!Note]
+      >The ability to add new subgroups is part of the group's [permission settings](/en/user_manual/groups/settings/permissions). By default, only admins can start new subgroups.
+    translation: |-
+      >[!Note]
+      >Az új alcsoportok létrehozását a csoport [jogosultsági beállításai](/en/user_manual/groups/settings/permissions) szabályozzák. Alapértelmezés szerint csak az adminok indíthatnak új alcsoportokat.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  483b820f123b5ae0:
+    english: 'To add a subgroup, visit your main group page, then click **New Subgroup** from the sidebar.  '
+    translation: Alcsoport hozzáadásához nyisd meg a fő csoport oldalát, majd kattints az oldalsávban az **Új alcsoport** gombra.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  abceea91b4638844:
+    english: "![New subgroup button in the Oatmilk Cooperative sidebar](subgroups-sidebar.png)"
+    translation: "![Új alcsoport gomb az Oatmilk Cooperative oldalsávjában](subgroups-sidebar.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  b8e3d3477eb6765d:
+    english: Click the **New subgroup** button, give it a name and select the privacy setting, then click **Start subgroup**.
+    translation: Kattints az **Új alcsoport** gombra, adj nevet az alcsoportnak, válaszd ki az adatvédelmi beállítást, majd kattints az **Az alcsoport indítása** gombra.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  1d49b46575af3f21:
+    english: "![New subgroup form for the Packaging Working Group](subgroups_new.png)"
+    translation: "![Új alcsoport űrlapja a Csomagolási Munkacsoport számára](subgroups_new.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  348e88e5c0ca37d0:
+    english: When you are ready, [invite people](/en/user_manual/groups/inviting_people/) to the subgroup.
+    translation: Ha készen állsz, [hívj meg embereket](/en/user_manual/groups/inviting_people/) az alcsoportba.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  4ac901bff75cf342:
+    english: You can edit the subgroups [group settings](/en/user_manual/groups/settings/) by clicking the cog icon on the subgroup page.
+    translation: Az alcsoport oldalán a fogaskerék ikonra kattintva módosíthatod az alcsoport [beállításait](/en/user_manual/groups/settings/).
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  926676e3163dbc8e:
+    english: "![Edit group settings action on the Packaging Working Group](subgroups_edit_group_settings.png)"
+    translation: "![Csoportbeállítások szerkesztése a Csomagolási Munkacsoportban](subgroups_edit_group_settings.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  737225cc4bebe7e8:
+    english: "## Subgroup settings"
+    translation: "## Alcsoport beállításai"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  c93e5ec8b6f3ceb7:
+    english: "### Privacy"
+    translation: "### Adatvédelem"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  92a47fe13740347a:
+    english: The privacy settings for subgroups are similar to the parent group.
+    translation: Az alcsoportok adatvédelmi beállításai hasonlóak a szülőcsoport beállításaihoz.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  cee5963ea2acac16:
+    english: "**Secret** subgroups are not visible to people not invited to the subgroup."
+    translation: A **Titkos** alcsoportok nem láthatók azok számára, akiket nem hívtak meg az alcsoportba.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  1c8fb4caaa5a2cb9:
+    english: "**Closed** subgroups are listed in the Subgroups tab of the parent group and user's sidebar menu. Members of the parent group can request to join the subgroup. Membership is approved by a subgroup admin."
+    translation: A **Zárt** alcsoportok megjelennek a szülőcsoport Alcsoportok lapján és a felhasználók oldalsávjában. A szülőcsoport tagjai kérhetik felvételüket az alcsoportba. A csatlakozást az alcsoport egyik adminja hagyja jóvá.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  b35b1b3450b2d1e1:
+    english: Closed subgroups have an additional setting that allow members of its parent group to see private threads.
+    translation: A zárt alcsoportoknál külön beállítással engedélyezhető, hogy a szülőcsoport tagjai lássák a privát szálakat.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  933fe2f0cbdec143:
+    english: "[Read about group privacy here](/en/user_manual/groups/settings/privacy)."
+    translation: "[További információ a csoportok adatvédelméről](/en/user_manual/groups/settings/privacy)."
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  d16c8b1258b67c9e:
+    english: "### Permissions"
+    translation: "### Jogosultságok"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  eb5de97caadd5166:
+    english: Subgroups operate independently of the main group. For example, if the subgroup privacy setting is set to **Secret**, then only invited members can find this subgroup, see who is in it, and see threads.
+    translation: Az alcsoportok a fő csoporttól függetlenül működnek. Ha például az alcsoport adatvédelmi beállítása **Titkos**, csak a meghívott tagok találhatják meg az alcsoportot, láthatják a tagjait és a szálait.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  e7897aa59ffe96a1:
+    english: "**Closed** subgroups have an additional setting that allow members of its parent group to see private threads, enabling the subgroup to be transparent to members of the parent group."
+    translation: A **Zárt** alcsoportoknál külön beállítással engedélyezhető, hogy a szülőcsoport tagjai lássák a privát szálakat. Így a szülőcsoport tagjai is követhetik az alcsoport munkáját.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  8dd3770fefa7d7e6:
+    english: "![Setting that lets parent group members see private subgroup threads](subgroups_private_threads_settings.png)"
+    translation: "![Beállítás, amellyel a szülőcsoport tagjai láthatják az alcsoport privát szálait](subgroups_private_threads_settings.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  c78effb175b8924b:
+    english: "## Find subgroups"
+    translation: "## Alcsoportok keresése"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  5692ebbfe3fe83e9:
+    english: Open the sidebar menu, and click your group name to see it's subgroups.
+    translation: Nyisd meg az oldalsáv menüjét, majd kattints a csoportod nevére az alcsoportjai megtekintéséhez.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  0abefe88cc8bea7f:
+    english: "![Oatmilk Cooperative subgroups listed in the sidebar](subgroups_find_subgroups.png)"
+    translation: "![Az Oatmilk Cooperative alcsoportjai az oldalsávban](subgroups_find_subgroups.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  8988135e14e40636:
+    english: "## Invite to a subgroup"
+    translation: "## Meghívás alcsoportba"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  217a985e9afb5421:
+    english: Invite people to a subgroup as you invite them into a group. If they already belong to a parent group or another subgroup in the same organization that you also belong to, you can type their name or select that group as an audience. Select the audience chip to expand it into individual people, then remove anyone you do not want to invite.
+    translation: Ugyanúgy hívhatsz meg embereket egy alcsoportba, mint egy csoportba. Ha a meghívni kívánt emberek már tagjai a szülőcsoportnak vagy ugyanazon szervezet egy másik alcsoportjának, amelynek te is tagja vagy, beírhatod a nevüket, vagy kiválaszthatod a csoportjukat címzettként. Kattints a címzetteket jelölő elemre az egyes emberek megjelenítéséhez, majd távolítsd el azokat, akiket nem szeretnél meghívni.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  2d4a28c2306fc3c6:
+    english: "### Simultaneously invite people to subgroups and parent group"
+    translation: "### Egyidejű meghívás alcsoportokba és a szülőcsoportba"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  cf301ba403b3a28e:
+    english: If you use the **Invite people** button from your parent group's **Members** tab, you can invite people to multiple subgroups at the same time by ticking the boxes of those you would like them to join immediately.
+    translation: Ha a szülőcsoport **Tagok** lapján a **Hívj meg embereket** gombot használod, egyszerre több alcsoportba is meghívhatsz embereket. Jelöld be azoknak az alcsoportoknak a jelölőnégyzetét, amelyekhez azonnal csatlakozhatnak.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  28a271be7caa0590:
+    english: "![Selecting the parent group and subgroup in the invitation form](group_invite_email_subgroups.png)"
+    translation: "![A szülőcsoport és az alcsoport kiválasztása a meghívási űrlapon](group_invite_email_subgroups.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  5323cb0e01e3e171:
+    english: "## Administer a subgroup"
+    translation: "## Alcsoport kezelése"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  e7c6ae867d7d3813:
+    english: Subgroups can have their own admins, and admins of a subgroup may not be the same as the admins of the parent group.
+    translation: Az alcsoportoknak saját adminjaik lehetnek, akik eltérhetnek a szülőcsoport adminjaitól.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  937ae9d3e8948a26:
+    english: However an admin of the 'parent' group can make themselves admin of any subgroup.  This helps administrators of the parent group to administer subgroups as necessary.
+    translation: A szülőcsoport adminja azonban bármelyik alcsoportban adminná teheti magát. Így szükség esetén kezelheti az alcsoportokat.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  282547a6c728d20c:
+    english: Go to the Subgroup tab, find the subgroup and click **Join group**.
+    translation: Nyisd meg az Alcsoportok lapot, keresd meg az alcsoportot, majd kattints a **Kapcsolódj a csoporthoz** gombra.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  64102057b4f533dd:
+    english: "![Join group button on a closed subgroup](member_join_subgroup.png)"
+    translation: "![Kapcsolódj a csoporthoz gomb egy zárt alcsoportnál](member_join_subgroup.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  0f91a4020a9484ef:
+    english: Now a member of the subgroup, an admin of the parent group can make themselves an admin of the subgroup.
+    translation: Miután az alcsoport tagjává vált, a szülőcsoport adminja adminná teheti magát az alcsoportban.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  b10fec2c4c3ebb6c:
+    english: "![Make admin action for a parent group admin](member_make_admin.png)"
+    translation: "![Adminná tétel művelete a szülőcsoport adminja számára](member_make_admin.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  dcb00619954e30a2:
+    english: "## Delete a subgroup"
+    translation: "## Alcsoport törlése"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  92e05281b2891dd5:
+    english: Admins can delete a subgroup in the same way you delete a group. When deleting a subgroup, be careful to not delete the 'parent' group.
+    translation: Az adminisztrátorok ugyanúgy törölhetnek egy alcsoportot, mint egy csoportot. Az alcsoport törlésekor ügyelj arra, hogy ne a szülőcsoportot töröld.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  a29b8361fb910cde:
+    english: Learn [how to delete groups](/en/user_manual/groups/deleting_your_group/).
+    translation: Olvasd el, [hogyan törölhetsz csoportokat](/en/user_manual/groups/deleting_your_group/).
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'

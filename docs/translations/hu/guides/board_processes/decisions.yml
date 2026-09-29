@@ -1,0 +1,173 @@
+---
+navigation_title: Határozathozatal
+blocks:
+  0a72d2c89c87c2a7:
+    english: "# Making resolutions and online decisions"
+    translation: "# Határozathozatal és online döntéshozatal"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  50902da4933b32b7:
+    english: Board and committee members frequently need to make 'out-of-session' decisions. These are governance decisions and discussion where either;
+    translation: 'Az igazgatóságok és bizottságok tagjainak gyakran az üléseken kívül kell dönteniük. Ilyen döntésre és az azt megelőző vitára több okból lehet szükség:'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  4355b569fb0f9ee4:
+    english: |-
+      - There was insufficient time to make a decision in the board meeting,
+      - the decision does not require a lot of discussion (including administrative decisions),
+      - something has happened (internally or externally) that requires the board to act before the next meeting,
+      - a director has a particular interest to explore with the board.
+    translation: |-
+      - Az igazgatósági ülésen nem jutott elég idő a döntésre,
+      - a döntés nem igényel hosszas vitát, például ügyviteli kérdésben,
+      - belső vagy külső esemény miatt az igazgatóságnak a következő ülés előtt lépnie kell,
+      - egy igazgatósági tag szeretne egy számára fontos kérdést megvitatni az igazgatósággal.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  c46be74fd433f516:
+    english: |-
+      ## On Loomio
+      Start a **thread** and open a discussion:
+      - Introduce the topic or decision that you would like to make,
+      - invite directors to comment with their thoughts, opinions and any information they have to help everyone understand their perspective about the 'out-of-session' topic or decision,
+      - encourage members to participate by posting or reply to comments.
+    translation: |-
+      ## A Loomióban
+      Indíts egy **témát**, és kezdd el a beszélgetést:
+      - Mutasd be a kérdést vagy a meghozandó döntést,
+      - kérd meg az igazgatósági tagokat, hogy osszák meg gondolataikat, véleményüket és a szempontjaik megértéséhez szükséges információkat,
+      - bátorítsd a tagokat, hogy szóljanak hozzá, vagy válaszoljanak mások hozzászólásaira.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  337cfc1a7b434acd:
+    english: "When ready, raise a **poll** and invite members to vote. \nIf the issue is straightforward use a **Proposal** or if the issue is more complex use a **Sense check** poll to clearly ask fellow members how they feel about the proposal.\n- State the decision and invite people to vote,\n- ask people to leave a reason for their vote, particularly if they want to qualify any points,\n- choose the decision options that work for your board's decision-making processes.\n- You can ratify and minute the 'out-of-session' decision at your next board meeting."
+    translation: "Amikor készen álltok, indíts egy **szavazás**t, és hívd meg a tagokat szavazni. \nHa a kérdés egyszerű, használj **Javaslat**ot. Ha összetettebb, indíts **Érzékellenőrzés** szavazást, hogy egyértelműen megtudd, mit gondolnak a tagok a javaslatról.\n- Fogalmazd meg a döntést, és hívd meg a többieket szavazni,\n- kérd meg őket, hogy indokolják a szavazatukat, különösen, ha pontosítani szeretnék az álláspontjukat,\n- válaszd ki a testület döntéshozatali folyamatának megfelelő válaszlehetőségeket.\n- A következő testületi ülésen jóváhagyhatjátok és jegyzőkönyvbe foglalhatjátok az ülésen kívül hozott döntést."
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  19a80c3ce7d106e0:
+    english: It's not a failure if a decision does not get agreement. You can ask members what changes they would make to enable them to agree to a decision. This helps you build to a better decision. A new Proposal with amendments is then more likely to achieve agreement.
+    translation: Ha egy döntésről nincs egyetértés, kérdezd meg a tagokat, milyen változtatásokkal tudnák támogatni. Így jobb döntést dolgozhattok ki. A módosításokat tartalmazó új javaslat nagyobb eséllyel kap támogatást.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  b06f2d2a0e68f99d:
+    english: State an **outcome** when the proposal closes. Let everyone know the result of the decision and what will happen next.
+    translation: Amikor a javaslat lezárul, oszd meg a **következtetést**. Tudasd mindenkivel a döntés eredményét és a következő lépéseket.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  6a4d6a8c978bcb11:
+    english: "## Examples of out-of-session decisions"
+    translation: "## Példák az ülésen kívül hozott döntésekre"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  fff64b1ac620cc4a:
+    english: |-
+      ### Decision about property purchase
+      At the last board meeting, a property purchase was discussed. A director required an independent engineering report before making the decision. At the board meeting, the board agreed to purchase the property subject to a satisfactory engineering report. However as the purchase must be made before the next board meeting, the board agreed to upload the engineering report to Loomio when ready, for discussion and to make the final decision for the property purchase on Loomio.
+    translation: |-
+      ### Döntés ingatlanvásárlásról
+      A legutóbbi igazgatósági ülésen ingatlanvásárlásról volt szó. Az egyik igazgatósági tag független műszaki szakvéleményt kért a döntés előtt. Az igazgatóság megállapodott abban, hogy megfelelő szakvélemény esetén megvásárolja az ingatlant. Mivel a vásárlásról a következő ülés előtt kell dönteni, abban is megállapodtak, hogy a szakvéleményt elkészülte után feltöltik a Loomióba. Ott megvitatják, majd meghozzák a végleges döntést.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  b279ed6b1c5aadfa:
+    english: |-
+      ### Decision to accept Directors and Officers Liability insurance
+      During the board meeting it was noted that the annual insurance renewal was coming up. As this was considered to be an administrative matter, the board agreed to use Loomio to discuss the renewal application, seek the required information from each director, submit the application and to accept the insurance renewal quote.
+    translation: |-
+      ### Döntés a vezető tisztségviselők felelősségbiztosításának elfogadásáról
+      Az igazgatósági ülésen felmerült, hogy hamarosan esedékes az éves biztosítás megújítása. Mivel ezt ügyviteli kérdésnek tekintették, az igazgatóság úgy döntött, hogy a Loomióban vitatja meg a megújítási kérelmet, gyűjti be a szükséges adatokat az igazgatósági tagoktól, nyújtja be a kérelmet és fogadja el a biztosítás megújítására kapott ajánlatot.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  ca3a40286ca25a9a:
+    english: |-
+      ### A security breach has occurred at one of our facilities
+      A break-in and theft of property has occurred that has put the corporation and staff at risk. Directors must be made aware of the event and risks, and evaluate an appropriate response.
+    translation: |-
+      ### Biztonsági incidens történt az egyik létesítményünkben
+      Betörés és lopás történt, amely veszélybe sodorta a szervezetet és a munkatársakat. Az igazgatósági tagokat tájékoztatni kell az esetről és a kockázatokról, majd mérlegelniük kell a megfelelő választ.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  c406842807e1091b:
+    english: |-
+      ### A director has challenged the board about gender and diversity of board membership
+      The director has provided good reasons and evidence that the board should diversify membership to be more representative of the corporation. Directors need to digest the information, ask questions, discuss the issue and decide a response.
+    translation: |-
+      ### Egy igazgatósági tag felvetette a nemek és a sokszínűség kérdését az igazgatóság összetételében
+      Az igazgatósági tag érvekkel és bizonyítékokkal támasztotta alá, hogy az igazgatóság összetételének jobban kellene tükröznie a szervezet sokszínűségét. A tagoknak át kell tekinteniük az információkat, kérdéseket kell feltenniük, meg kell vitatniuk a témát, és dönteniük kell a válaszról.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  bf35cdb4a62a85f4:
+    english: "## Keeping a record of decisions made and supporting discussion"
+    translation: "## A döntések és az azokat megalapozó vita dokumentálása"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  6231d476f6bddb27:
+    english: Record keeping is a legal requirement for governance boards and good practice for committees.
+    translation: Az igazgatóságok számára a dokumentálás jogi követelmény, a bizottságok számára pedig bevált gyakorlat.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  511470c795509c7e:
+    english: Today, many organizations record and store formal minutes, resolutions, policies and key decisions electronically. Document records are created and approved, distributed and used, retained and stored, and ultimately disposed of.
+    translation: Ma sok szervezet elektronikus formában készíti és tárolja a hivatalos jegyzőkönyveket, határozatokat, szabályzatokat és fontos döntéseket. A dokumentumokat létrehozzák és jóváhagyják, megosztják és használják, megőrzik és tárolják, végül pedig selejtezik.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  324fc531e7a78088:
+    english: |-
+      ### On Loomio
+      Minutes, reports, resolutions and other documents can be attached to a meeting **thread**, in the thread context, within a poll or any to thread comment.  This means the documents are always associated with the relevant discussion.
+    translation: |-
+      ### A Loomióban
+      Jegyzőkönyveket, jelentéseket, határozatokat és más dokumentumokat csatolhatsz egy ülés **témájához**, a téma leírásához, egy szavazáshoz vagy bármely hozzászóláshoz. Így a dokumentumok mindig a kapcsolódó beszélgetés mellett találhatók.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  9be58ccab5189118:
+    english: A list of files can also be found under the **Files** tab.
+    translation: A fájlok listáját a **Fájlok** lapon is megtalálod.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  24bc6a0bf5139b23:
+    english: You can also add a link within any thread or poll to a document stored in your preferred document management system.  Find the online shareable link to the document, copy and paste into your thread, poll or comment.
+    translation: Bármely témában vagy szavazásban hivatkozhatsz a választott dokumentumkezelő rendszeredben tárolt dokumentumra. Keresd meg a dokumentum megosztható hivatkozását, majd másold be a témába, a szavazásba vagy egy hozzászólásba.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  4fee216f27a3fdff:
+    english: Anyone with permission can then click the link to open and read the document.
+    translation: A megfelelő jogosultsággal rendelkezők a hivatkozásra kattintva megnyithatják és elolvashatják a dokumentumot.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  9f0e1cd18ae1a402:
+    english: Because Loomio discussions and decisions are always already documented, it provides a robust way to verify all your board's decision-making. You can easily demonstrate what was decided, and when. If directors have discussed and commented, as well as voted on a resolution—you will also know how and why each decision was reached.
+    translation: A Loomióban a beszélgetések és döntések eleve dokumentálva vannak. Így ellenőrizheted az igazgatóság döntéseit, és könnyen megmutathatod, miről és mikor döntöttek. Ha az igazgatósági tagok megvitatták a határozatot, hozzászóltak és szavaztak is róla, azt is láthatod, hogyan és miért született meg a döntés.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  71071cda2f1c034e:
+    english: Over time, you are creating a history for your organization where you can easily search and find past decisions and related discussion.
+    translation: Idővel kereshető előzmények gyűlnek össze a szervezeted döntéseiről és a hozzájuk kapcsolódó beszélgetésekről.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  629c2034788a9fd5:
+    english: In Loomio all data is written and stored on multiple disks and multiple locations, *in the cloud*, backed up daily.  Files uploaded are stored on servers that use modern techniques to remove bottlenecks and points of failure.
+    translation: A Loomio minden adatot több lemezen és több helyen, *a felhőben* tárol, és naponta biztonsági másolatot készít. A feltöltött fájlokat olyan szerverek tárolják, amelyek korszerű megoldásokkal csökkentik a szűk keresztmetszetek és a kiesések kockázatát.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'

@@ -1,0 +1,99 @@
+---
+navigation_title: 投票
+blocks:
+  800f4167b38b4715:
+    english: "# Polls"
+    translation: "# 投票"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  d370759001be4e21:
+    english: Polls collect selections, scores, allocations, rankings, availability, or election ballots. Choose the voting method based on what participants need to express and how you intend to use the result. Use a [Proposal](/en/user_manual/polls/proposals/) when people need to respond to a statement or course of action.
+    translation: 投票では、選択、評価、ポイントの配分、順位、参加できる日時、選挙の票を集められます。参加者が何を表明するか、結果をどう使うかに合わせて投票方法を選びます。方針や行動案への賛否を尋ねる場合は、[提案](/en/user_manual/polls/proposals/)を使います。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  1132ff680c7b2562:
+    english: "## Simple poll"
+    translation: "## シンプルな投票"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  6b957bf5630c1470:
+    english: "[Choose](/en/user_manual/polls/choose/) lets participants select one or more options. Use it to find the most popular option or make a shortlist."
+    translation: "[選択](/en/user_manual/polls/choose/)では、参加者が選択肢を1つまたは複数選べます。最も支持される選択肢を見つけたり、候補を絞り込んだりするときに使います。"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  c982974685e1b5d6:
+    english: "## Score poll"
+    translation: "## スコア投票"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  fbbfe14196388606:
+    english: "[Score](/en/user_manual/polls/score/) lets participants rate every option on the same scale. Use it to compare the strength of support, readiness, suitability, or importance across options."
+    translation: "[スコア](/en/user_manual/polls/score/)では、参加者がすべての選択肢を同じ尺度で評価できます。選択肢ごとの支持の強さ、準備状況、適合性、重要度を比べるときに使います。"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  0465fcb48a56ca78:
+    english: "## Dot vote"
+    translation: "## ドット投票"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  ffb7d1711a5fca3b:
+    english: "[Allocate](/en/user_manual/polls/allocate/) gives each participant a fixed budget of points to distribute. Use it to identify priorities when choosing one thing means giving less attention or resources to another."
+    translation: "[配分](/en/user_manual/polls/allocate/)では、各参加者に決められた数のポイントを配分してもらいます。ある選択肢を優先すると、別の選択肢に使える時間や資源が減る場合に、優先順位を決めるために使います。"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  a1b15c28fbe526f6:
+    english: "## Ranked choice"
+    translation: "## 順位付けされた選択肢"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  8811f455b7ab3821:
+    english: "[Rank](/en/user_manual/polls/rank/) lets participants arrange options in order of preference. Use it to find the group's overall preferred order or select one leading option."
+    translation: "[順位付け](/en/user_manual/polls/rank/)では、参加者が選択肢を希望順に並べられます。グループ全体で望まれる順序を調べたり、最も支持される選択肢を1つ選んだりするときに使います。"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  2e21bb1b54b6fcf9:
+    english: "## Time poll"
+    translation: "## 時間投票"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  fb768f07eb0d1971:
+    english: "[Time poll](/en/user_manual/polls/meeting_polls/) lets participants indicate when they are available. Use it to schedule a meeting or event across time zones."
+    translation: "[時間投票](/en/user_manual/polls/meeting_polls/)では、参加者が参加できる日時を示せます。異なるタイムゾーンの参加者がいる会議やイベントの日程調整に使います。"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  6333ad0ee6d54609:
+    english: "## STV Election"
+    translation: "## STV選挙"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  6f93c6ad598d809c:
+    english: "[STV Elections](/en/user_manual/polls/stv/) let participants rank candidates in a proportional, multi-winner election. Use STV to elect a committee, board, or group of delegates."
+    translation: "[STV選挙](/en/user_manual/polls/stv/)では、参加者が複数の当選者を比例的に選ぶ選挙で、候補者に順位を付けられます。委員会や理事会のメンバー、代議員を選ぶときに使います。"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  6752a750a7703b58:
+    english: "## Other specialized method"
+    translation: "## その他の専用形式"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  '099449b0e1fe4f85':
+    english: Loomio also includes a Question round for collecting questions without voting. Group administrators can make it available from [Poll templates](/en/user_manual/polls/poll_templates/).
+    translation: Loomioには、投票せずに質問を集める質問ラウンドもあります。グループ管理者は[投票テンプレート](/en/user_manual/polls/poll_templates/)から利用できるように設定できます。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'

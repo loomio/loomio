@@ -1,0 +1,417 @@
+---
+navigation_title: Értesítések
+blocks:
+  3a65b66c581936a1:
+    english: "# Notifications"
+    translation: "# Értesítések"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  c343eb5a1db968d8:
+    english: Notifications help groups maintain momentum by drawing your attention to discussions and decisions that need a response.
+    translation: Az értesítések felhívják a figyelmedet azokra a beszélgetésekre és döntésekre, amelyek válaszra várnak. Így segítik a csoportokat a munka folytatásában.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  3d7b27f3b9880973:
+    english: 'Notifications are often the starting point when you return to Loomio. They let you know when:'
+    translation: 'Amikor visszatérsz a Loomióba, gyakran az értesítésekkel kezded. Ezek jelzik, ha:'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  c4aec8fcb9fbc0de:
+    english: |-
+      - someone mentions you or replies to something you wrote
+      - a new discussion is shared with you
+      - you are invited or reminded to vote
+      - a poll is closing soon
+      - an outcome is announced
+    translation: |-
+      - valaki megemlít téged, vagy válaszol arra, amit írtál
+      - valaki megoszt veled egy új beszélgetést
+      - meghívnak vagy emlékeztetnek egy szavazásra
+      - egy szavazás hamarosan lezárul
+      - közzétesznek egy következtetést
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  792dcad0f81e8cc5:
+    english: Loomio's notification settings let you choose how closely you want to follow each group or thread. Notifications remain available in Loomio, so you can review what needs your attention when you are ready.
+    translation: A Loomio értesítési beállításaiban megadhatod, milyen részletesen szeretnéd követni az egyes csoportokat és témákat. Az értesítések a Loomióban is megmaradnak, így akkor nézheted át őket, amikor készen állsz rá.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  '082fae961275aaaf':
+    english: "## Two ways to begin"
+    translation: "## Két mód a kezdéshez"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  cbea008bb7c0ee02:
+    english: 'Most people can start with one of two approaches:'
+    translation: 'A legtöbben az alábbi két mód egyikével kezdhetnek:'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  3349bdb53fc33195:
+    english: |-
+      - **When notified** — receive an email when someone asks for your attention, and include everything else in your daily catch-up. Start here if you are still learning how your group uses Loomio.
+      - **Once per day** — set Email to **Catch-up only** and keep your catch-up set to **Every day**. Your notifications and other unread activity will be delivered together in one email.
+    translation: |-
+      - **Értesítéskor** — e-mailt kapsz, ha valaki a figyelmedet kéri. Minden más bekerül a napi összefoglalódba. Ezt válaszd, ha még ismerkedsz azzal, hogyan használja a csoportod a Loomiót.
+      - **Naponta egyszer** — az Email beállításnál válaszd a **Csak felzárkózás** lehetőséget, az összefoglaló gyakoriságát pedig állítsd **Minden nap** értékre. Az értesítéseket és az egyéb olvasatlan tevékenységeket egyetlen e-mailben kapod meg.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  74e84c4946aa3713:
+    english: New accounts start with **When notified** and a daily catch-up. This brings mentions, replies, discussions shared with you, invitations and reminders to vote, polls closing soon, and outcomes to your attention as they happen without sending an immediate update about every comment or vote.
+    translation: Az új fiókoknál az **Értesítéskor** beállítás és a napi összefoglaló van bekapcsolva. Így időben értesülsz az említésekről, válaszokról, veled megosztott beszélgetésekről, szavazási meghívásokról és emlékeztetőkről, hamarosan záruló szavazásokról és következtetésekről, de nem kapsz azonnali üzenetet minden hozzászólásról vagy szavazatról.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  896722cbb87e98be:
+    english: If you would rather receive your Loomio notifications all at once, move to the once-per-day approach. You can change this later as your pattern of work changes.
+    translation: Ha inkább egyszerre szeretnéd megkapni a Loomio értesítéseit, válts a napi egyszeri összefoglalóra. Később bármikor módosíthatod ezt a munkarendednek megfelelően.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  e2c60724226ad68a:
+    english: For a group or thread that you want to follow more closely, choose **All activity** to receive every update as it happens.
+    translation: Ha egy csoportot vagy témát részletesebben szeretnél követni, válaszd a **Minden tevékenység** lehetőséget. Így minden frissítésről értesülsz, amikor megtörténik.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  91fd24c60a6a84ee:
+    english: These defaults apply when you join a group. Threads initially inherit the settings of their group, but you can follow an important thread more closely or reduce its notifications without changing the rest of the group.
+    translation: Ezek az alapbeállítások akkor lépnek érvénybe, amikor csatlakozol egy csoporthoz. A témák kezdetben öröklik a csoportjuk beállításait, de egy fontos témát részletesebben is követhetsz, vagy csökkentheted az értesítéseit anélkül, hogy a csoport többi témájának beállítása változna.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  a75df26cfc4e6614:
+    english: "## Notifications in Loomio"
+    translation: "## Értesítések a Loomióban"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  9286edc0ac459625:
+    english: The bell icon in the top-right is where notifications are accessed within the app; a number shows how many notifications you have yet to read.
+    translation: Az alkalmazáson belüli értesítéseket a jobb felső sarokban lévő harang ikonnal érheted el. A mellette látható szám a még olvasatlan értesítéseid számát mutatja.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  bfacf52b815e1252:
+    english: Select a notification to open the related discussion or poll.
+    translation: Válassz ki egy értesítést a kapcsolódó beszélgetés vagy szavazás megnyitásához.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  b7ed6a5c5c661d60:
+    english: "## Catch-up"
+    translation: "## Összefoglaló"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  fc61461d684c5b47:
+    english: The catch-up provides a regular overview of activity without requiring you to follow each group throughout the day.
+    translation: Az összefoglaló rendszeresen áttekintést ad a tevékenységekről, így nem kell egész nap figyelned az egyes csoportokat.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  9e519b17a3847cee:
+    english: It shows your unseen notifications first, followed by unread discussions and standalone polls grouped by group. Notifications provide linked summaries of activity that needs your attention, while the unread section includes the discussion, poll, comment, vote, and edit details. Direct discussions and threads you have joined as a guest are included when they contain unread activity.
+    translation: Először a még nem látott értesítéseidet mutatja, majd csoportonként az olvasatlan beszélgetéseket és az önálló szavazásokat. Az értesítések hivatkozásokkal ellátott összefoglalókat adnak a figyelmedet igénylő tevékenységekről. Az olvasatlan tartalmak között a beszélgetések, szavazások, hozzászólások, szavazatok és szerkesztések részleteit találod. A közvetlen beszélgetések és azok a témák is megjelennek, amelyekhez vendégként csatlakoztál, ha van bennük olvasatlan tevékenység.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  00703333f277e3c0:
+    english: You can turn on **Follow updates** on an open Group that you have not joined. Unread discussions and polls from that Group are then included in your catch-up at your existing schedule. Reading the threads or marking the catch-up as read updates their read status in the same way as threads from Groups you belong to. Turn off **Follow updates** on the Group page to stop including them.
+    translation: Egy nyitott csoportnál, amelyhez nem csatlakoztál, bekapcsolhatod a **Frissítések követése** beállítást. Ezután a csoport olvasatlan beszélgetései és szavazásai a meglévő ütemezésed szerint megjelennek az összefoglalódban. Ha elolvasod a témákat, vagy olvasottként jelölöd meg az összefoglalót, az olvasottsági állapotuk ugyanúgy frissül, mint a saját csoportjaid témáinál. Ha nem szeretnéd tovább látni őket, kapcsold ki a **Frissítések követése** beállítást a csoport oldalán.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  fcac102a70f7ee7f:
+    english: Loomio does not send a catch-up when there are no unseen notifications or unread threads from the relevant period.
+    translation: A Loomio nem küld összefoglalót, ha az adott időszakban nincs még nem látott értesítésed vagy olvasatlan témád.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  888011209ac583be:
+    english: "![A catch-up with unseen notifications and unread thread activity from one group](digest_email_example.png)"
+    translation: "![Összefoglaló egy csoport még nem látott értesítéseivel és olvasatlan témáival](digest_email_example.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  7d80cf08a383f6bd:
+    english: "### Choose your catch-up schedule"
+    translation: "### Válaszd ki az összefoglaló gyakoriságát"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  677863d68136156b:
+    english: Open **Notification settings** from your user menu to choose how often you receive a catch-up.
+    translation: Nyisd meg az **Értesítési beállítások** oldalt a felhasználói menüben, és válaszd ki, milyen gyakran szeretnél összefoglalót kapni.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  7c0dece94210f807:
+    english: The **Unsubscribe** link in a catch-up email opens a catch-up schedule form. The email link authorizes that form, so you can change or stop catch-up emails without signing in. The full **Notification settings** page in Loomio remains available when you sign in.
+    translation: Az összefoglaló e-mailben található **Leiratkozás** hivatkozás megnyitja az összefoglaló ütemezésére szolgáló űrlapot. Az e-mailben lévő hivatkozás hozzáférést ad ehhez az űrlaphoz, így bejelentkezés nélkül is módosíthatod vagy leállíthatod az összefoglaló e-maileket. Bejelentkezés után a teljes **Értesítési beállítások** oldal is elérhető a Loomióban.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  da5740fd6dbd5737:
+    english: "![Notification settings in the user menu](sidebar_notification_settings.png)"
+    translation: "![Értesítési beállítások a felhasználói menüben](sidebar_notification_settings.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  58af77d870a877e2:
+    english: 'New accounts start with a daily catch-up. The available schedules are:'
+    translation: 'Az új fiókok naponta kapnak összefoglalót. Az alábbi gyakoriságok közül választhatsz:'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  b0fe04b2b5284253:
+    english: |-
+      - **Never** to turn off the catch-up
+      - **Every day** for activity from approximately the previous 24 hours
+      - **Every second day** for activity from approximately the previous two days
+      - a weekday to receive a weekly catch-up on that day
+    translation: |-
+      - **Soha** az összefoglaló kikapcsolásához
+      - **Minden nap** az előző körülbelül 24 óra tevékenységeiről
+      - **Minden második nap** az előző körülbelül két nap tevékenységeiről
+      - a hét egyik napja, ha hetente azon a napon szeretnél összefoglalót kapni
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  a23935f518dd15cb:
+    english: The catch-up is sent in the morning according to the time zone in your Loomio profile.
+    translation: Az összefoglaló reggel érkezik, a Loomio-profilodban megadott időzóna szerint.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  b214c0634763fb51:
+    english: "![Catch-up schedule setting](digest_email_setting.png)"
+    translation: "![Az összefoglaló gyakoriságának beállítása](digest_email_setting.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  efbcecfe827438a5:
+    english: "### Mark a catch-up as read"
+    translation: "### Összefoglaló megjelölése olvasottként"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  2b764b73f48d3185:
+    english: Select **Mark catch-up as read** to mark its notifications and topic activity as read in Loomio. Opening or previewing the catch-up does not mark anything as read.
+    translation: Válaszd a **Bepótolás megjelölése olvasottként** lehetőséget, ha az összefoglalóban szereplő értesítéseket és tématevékenységeket olvasottként szeretnéd megjelölni a Loomióban. Az összefoglaló megnyitása vagy előnézete önmagában semmit sem jelöl olvasottként.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  81ffa4a869f82451:
+    english: A catch-up is not specific to one discussion, so do not reply to it. Open a discussion or poll from the catch-up before commenting or replying.
+    translation: Az összefoglaló nem egyetlen beszélgetéshez tartozik, ezért ne válaszolj rá. Hozzászólás vagy válasz írása előtt nyisd meg belőle a megfelelő beszélgetést vagy szavazást.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  f7dfee93901e5eea:
+    english: "## Group and thread notification settings"
+    translation: "## Csoportok és témák értesítési beállításai"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  31be594005b6bcfc:
+    english: You can choose how closely to follow each group and thread. These settings belong to you; group administrators cannot change them.
+    translation: Megválaszthatod, milyen részletesen szeretnéd követni az egyes csoportokat és témákat. Ezek a saját beállításaid; a csoport adminisztrátorai nem módosíthatják őket.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  6c9a762b18c9f92d:
+    english: Change your defaults for groups you join from **Notification settings** in your user menu. You can then override the default for a particular group or thread. A thread override changes only that thread and does not affect the rest of its group.
+    translation: A csatlakozáskor érvényes csoportbeállításaidat a felhasználói menü **Értesítési beállítások** oldalán módosíthatod. Ezután egy adott csoporthoz vagy témához külön beállítást is megadhatsz. A téma saját beállítása csak arra a témára vonatkozik, a csoport többi részére nem.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  f4b6aa6eab1beb2b:
+    english: "### Group notification settings"
+    translation: "### Csoportértesítési beállítások"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  977289761daba9db:
+    english: 'To change the notification setting for a group:'
+    translation: 'Egy csoport értesítési beállításának módosításához:'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  d78d13409c481c71:
+    english: |-
+      1. Open the group page.
+      2. Open the notification settings for the group.
+    translation: |-
+      1. Nyisd meg a csoport oldalát.
+      2. Nyisd meg a csoport értesítési beállításait.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  02116f695da0a946:
+    english: "![Notification settings on a group page](group_notifications.png)"
+    translation: "![Értesítési beállítások egy csoport oldalán](group_notifications.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  8ce50d3418e2d9fa:
+    english: The form asks **How do you want to stay updated?** Choose **Catch-up only**, **When notified**, or **All activity**. If your catch-up is set to **Never**, **Catch-up only** is replaced by **No email updates** or **No push updates**.
+    translation: 'Az űrlap ezt kérdezi: **Hogyan szeretnél naprakész maradni?** Válaszd a **Csak felzárkózás**, az **Értesítéskor** vagy a **Minden tevékenység** lehetőséget. Ha az összefoglaló gyakorisága **Soha**, a **Csak felzárkózás** helyett a **Nincsenek e-mail értesítések** vagy a **Nincsenek push frissítések** lehetőség jelenik meg.'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  24db74c2c82737eb:
+    english: Select **Apply to all groups** to use the same setting for all of your groups.
+    translation: Válaszd az **Alkalmazás minden csoportra** lehetőséget, ha minden csoportodnál ugyanazt a beállítást szeretnéd használni.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  54cd6a8eac96e073:
+    english: "![Group notification settings](group_notification_settings.png)"
+    translation: "![Csoportértesítési beállítások](group_notification_settings.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  d0ab43e865282241:
+    english: "### Thread notification settings"
+    translation: "### Téma értesítési beállításai"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  f61284373b7afc42:
+    english: To change notification settings for an individual thread, open the notification control in the thread sidebar.
+    translation: Egy téma értesítéseinek módosításához nyisd meg az értesítési beállításokat a téma oldalsávjában.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  b329b8421ab5d4f8:
+    english: "![The notification control in a thread](thread_subscribe.png)"
+    translation: "![Értesítési beállítások egy témában](thread_subscribe.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  226c5e321d735005:
+    english: "![Thread notification settings](thread_notifications.png)"
+    translation: "![Téma értesítési beállításai](thread_notifications.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  3178b3b456acd783:
+    english: Thread notification settings use the same **Catch-up only**, **When notified**, and **All activity** choices. A thread setting overrides the group setting for that thread.
+    translation: A témáknál is a **Csak felzárkózás**, az **Értesítéskor** és a **Minden tevékenység** közül választhatsz. A téma saját beállítása felülírja a csoport beállítását ennél a témánál.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  f53fa37c98c9b747:
+    english: |-
+      >[!Note]
+      >The changes in **Thread notification settings** apply only to the thread you have open. Select **Change notifications for group** to change the setting inherited by the group's other threads.
+    translation: |-
+      >[!Note]
+      >A **Téma értesítési beállításai** alatt végzett módosítások csak a megnyitott témára vonatkoznak. Válaszd a **Csoport értesítéseinek megváltoztatása** lehetőséget, ha a csoport többi témájára öröklődő beállítást szeretnéd módosítani.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  99a0923cdcdc1cdf:
+    english: "## Email delivery"
+    translation: "## E-mailes kézbesítés"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  6cf70b2dc7cdbf83:
+    english: By default, Loomio sends an email when you are notified. Depending on your group and thread notification settings, this can include mentions, replies, discussions shared with you, invitations and reminders to vote, outcomes, and polls closing soon. Choose **All activity** to also receive emails about every new comment, vote, thread, poll, and outcome.
+    translation: A Loomio alapértelmezés szerint e-mailt küld, amikor értesítést kapsz. A csoport és a téma értesítési beállításaitól függően ez vonatkozhat a megemlítésekre, a válaszokra, a veled megosztott vitákra, a szavazási meghívókra és emlékeztetőkre, a következtetésekre és a hamarosan záruló szavazásokra. Válaszd a **Minden tevékenység** lehetőséget, ha minden új hozzászólásról, szavazatról, témáról, szavazásról és következtetésről e-mailt szeretnél kapni.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  ce2919b895be45b3:
+    english: The **Unsubscribe** link in a notification email opens settings for that thread or group, including emails sent because someone mentioned you or replied to you. That form shows your current catch-up schedule for all groups and links to the catch-up email settings. These email links authorize only their own settings forms; they do not sign you in to Loomio.
+    translation: Az értesítési e-mailben található **Leiratkozás** hivatkozás az adott téma vagy csoport beállításait nyitja meg. Ez azokra az e-mailekre is érvényes, amelyeket azért kaptál, mert valaki megemlített vagy válaszolt neked. Az űrlapon láthatod az összes csoportodra érvényes felzárkóztató e-mailek ütemezését, és elérheted azok beállításait. Ezek a hivatkozások csak a hozzájuk tartozó beállítási űrlaphoz adnak hozzáférést; nem jelentkeztetnek be a Loomióba.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  d615e84f882a2728:
+    english: When a discussion email says that replies are accepted, you can reply directly from your email and your message will be posted into the Loomio discussion.
+    translation: Ha egy vitáról szóló e-mail szerint válaszolhatsz rá, válaszolj közvetlenül az e-mailre. Az üzeneted megjelenik a Loomio-vitában.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  5b4ce168b24bc44a:
+    english: Poll invitation emails show the poll and its response options, but selecting an option opens Loomio in your browser to complete the vote. You may need to sign in or confirm your account. The catch-up cannot accept replies; open the linked discussion or poll first.
+    translation: A szavazási meghívók e-mailjei megmutatják a szavazást és a válaszlehetőségeket, de egy lehetőség kiválasztásakor a Loomio a böngésződben nyílik meg, ahol leadhatod a szavazatodat. Előfordulhat, hogy be kell jelentkezned vagy meg kell erősítened a fiókodat. A felzárkóztató e-mailre nem lehet válaszolni; előbb nyisd meg a hivatkozott vitát vagy szavazást.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  0c2b2867a1ace598:
+    english: "![A proposal invitation email with response options and the related thread](proposal_invitation_email.png)"
+    translation: "![Javaslatra szóló meghívó e-mail válaszlehetőségekkel és a kapcsolódó témával](proposal_invitation_email.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  a73508aa897d96cf:
+    english: "## Enable mobile notifications with web push"
+    translation: "## Mobilértesítések bekapcsolása webes push segítségével"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  f4b14a4ba068b670:
+    english: Web push is how Loomio delivers mobile notifications today. It can notify you about Loomio activity on your phone when Loomio is not open.
+    translation: A Loomio jelenleg webes push értesítésekkel küld mobilértesítéseket. Így akkor is kaphatsz értesítést a Loomio tevékenységeiről a telefonodon, amikor nincs megnyitva a Loomio.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  811ee794dea12cd3:
+    english: On Android, open **Notification settings** in a supported browser and enable push. On an iPhone or iPad, first open Loomio in Safari, use **Share** then **Add to Home Screen**, open Loomio from the new Home Screen icon, and enable push from there. Select **Test connection** to verify delivery to every browser listed under **Enabled browsers**.
+    translation: Androidon nyisd meg az **Értesítési beállítások** oldalt egy támogatott böngészőben, és kapcsold be a push értesítéseket. iPhone-on vagy iPaden először nyisd meg a Loomiót a Safariban, válaszd a **Megoszt**, majd a **Hozzáadás a Főképernyőhöz** lehetőséget. Nyisd meg a Loomiót az új főképernyőikonról, és ott kapcsold be a push értesítéseket. Válaszd a **Kapcsolat tesztelése** lehetőséget annak ellenőrzésére, hogy az értesítések megérkeznek-e az **Engedélyezett böngészők** alatt felsorolt összes böngészőbe.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  72f0707b2d67bf0e:
+    english: Web push also works in supported desktop browsers. Enable it there if you want Loomio notifications on your computer.
+    translation: A webes push támogatott asztali böngészőkben is működik. Kapcsold be ott is, ha a számítógépeden szeretnél Loomio-értesítéseket kapni.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  fea7dbef040ae7f5:
+    english: Once push is enabled in at least one browser, group and thread notification forms let you choose **Email**, **Push**, or **Email and push**. Email and push can use different notification settings. Push delivery can be delayed by the browser, operating system, or network connection.
+    translation: Miután legalább egy böngészőben bekapcsoltad a push értesítéseket, a csoportok és témák értesítési beállításainál választhatsz az **E-mail**, a **Push** és az **E-mail és push** közül. Az e-mailhez és a push értesítésekhez különböző értesítési beállításokat használhatsz. A push értesítések kézbesítését a böngésző, az operációs rendszer vagy a hálózati kapcsolat késleltetheti.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  210e15dcdff781ce:
+    english: "![Push notification settings and enabled browsers](push_notification_settings.png)"
+    translation: "![Push értesítési beállítások és engedélyezett böngészők](push_notification_settings.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  37e2be2c73fbb06d:
+    english: "## Turn off external notifications"
+    translation: "## Külső értesítések kikapcsolása"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  5e3d442fa885bcd4:
+    english: To stop email and push messages for group and thread activity, open **Notification settings** from your user menu, set the catch-up to **Never**, and choose **No email updates** and **No push updates**. Notifications and activity remain available when you open Loomio.
+    translation: Ha nem szeretnél e-mailt vagy push értesítést kapni a csoportok és témák tevékenységeiről, nyisd meg az **Értesítési beállítások** oldalt a felhasználói menüben. Állítsd a felzárkóztató e-maileket **Soha** értékre, majd válaszd a **Nincsenek e-mail értesítések** és a **Nincsenek push frissítések** lehetőséget. Az értesítéseket és a tevékenységeket továbbra is láthatod, amikor megnyitod a Loomiót.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  54bd12aaa8a9ed58:
+    english: "![Set the catch-up to Never](turn_off_all_emails_1.png)"
+    translation: "![A felzárkóztató e-mailek beállítása Soha értékre](turn_off_all_emails_1.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  92738bb4c71f0229:
+    english: "![Turn off updates for groups](turn_off_all_emails_2.png)"
+    translation: "![Csoportok frissítéseinek kikapcsolása](turn_off_all_emails_2.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'

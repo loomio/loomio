@@ -1,0 +1,295 @@
+---
+navigation_title: Toestemmingsproces
+blocks:
+  610d979e3d56d6b1:
+    english: "# Consent process"
+    translation: "# Toestemmingsproces"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  cd54bade9fb552d0:
+    english: This guide describes the complete Consent process. For help setting up and interpreting one Consent proposal, see [Consent](/en/user_manual/polls/proposals/consent/).
+    translation: Deze gids beschrijft het volledige toestemmingsproces. Wil je hulp bij het opzetten en interpreteren van één toestemmingsvoorstel? Lees dan [Toestemming](/en/user_manual/polls/proposals/consent/).
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  518c79dba339d283:
+    english: "![photo of people collaborating](better_collaboration.jpg)"
+    translation: "![foto van mensen die samenwerken](better_collaboration.jpg)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  f3c6b8e6992d240a:
+    english: Make a decision that is ‘safe to try’, without objections.
+    translation: Neem zonder bezwaren een besluit dat ‘veilig is om uit te proberen’.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  b11cbc132fe6b4d0:
+    english: Seek consent on a decision you need to make, where there are no meaningful objections to your proposal, so you can make a fast decision that is 'safe to try' now.
+    translation: Vraag om instemming met een besluit dat je moet nemen. Als er geen zwaarwegende bezwaren tegen je voorstel zijn, kun je snel een besluit nemen dat nu ‘veilig is om uit te proberen’.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  75e8b175ecfcd49a:
+    english: "> *“Consent turns the question around: instead of asking for what we want, we ask whether there are reasons not to go ahead.” - Ted Rau, Sociocracy For All*"
+    translation: "> *“Instemming draait de vraag om: in plaats van te vragen wat we willen, vragen we of er redenen zijn om niet verder te gaan.” - Ted Rau, Sociocracy For All*"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  55ccc01c9b274a87:
+    english: |-
+      ## Key points
+      - Aim for a ‘good enough’ decision.
+      - Involve many voices to develop a workable proposal.
+      - Ask if anyone has a valid objection.
+      - Amend the proposal to resolve objections.
+    translation: |-
+      ## Belangrijkste punten
+      - Streef naar een besluit dat ‘goed genoeg’ is.
+      - Betrek veel mensen bij het ontwikkelen van een werkbaar voorstel.
+      - Vraag of iemand een gegrond bezwaar heeft.
+      - Pas het voorstel aan om bezwaren weg te nemen.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  7c2ef9fc3419f4b7:
+    english: |-
+      **Typical roles:**
+      - Proposer: The person who raises a topic that requires a decision.
+      - Facilitator: Someone who can help the proposer do their job efficiently.
+    translation: |-
+      **Gebruikelijke rollen:**
+      - Voorsteller: degene die een onderwerp aankaart waarvoor een besluit nodig is.
+      - Procesbegeleider: iemand die de voorsteller helpt om dit efficiënt te doen.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  c56d1ea7a5582723:
+    english: |-
+      ## Consent process steps
+      You notice a problem or opportunity and take the initiative.
+      1. Present a proposal - start a Loomio **discussion**.
+      2. Facilitate a round of questions, reactions and any comments to improve the proposal - run a **Sense check proposal**.
+      3. Amend the proposal with suggestions and comments.
+      4. Ask if anyone has a meaningful objection to the amended proposal - run a **Consent proposal**.
+      5. Integrate valid objections to create an amended version of the proposal that everyone consents is ‘safe to try’ - state the decision **outcome**.
+    translation: |-
+      ## Stappen van het toestemmingsproces
+      Je ziet een probleem of kans en neemt het initiatief.
+      1. Presenteer een voorstel: start een Loomio-**discussie**.
+      2. Begeleid een ronde met vragen, reacties en opmerkingen om het voorstel te verbeteren: start een **voorstel voor een peiling van reacties**.
+      3. Pas het voorstel aan op basis van suggesties en opmerkingen.
+      4. Vraag of iemand een zwaarwegend bezwaar heeft tegen het aangepaste voorstel: start een **toestemmingsvoorstel**.
+      5. Verwerk gegronde bezwaren in een nieuwe versie van het voorstel die volgens iedereen ‘veilig is om uit te proberen’: deel de **Conclusie** van het besluit.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  735e10dde58793f0:
+    english: |-
+      >[!Tip]
+      >In more complex decisions you may also include a clarifying **Questions round** at step 2, to help people understand the proposal before inviting them to react and comment on the proposal.
+    translation: |-
+      >[!Tip]
+      >Bij complexere besluiten kun je bij stap 2 ook een verhelderende **Vragen ronde** toevoegen. Zo kunnen mensen het voorstel begrijpen voordat je hen uitnodigt om erop te reageren.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  9cf871a054d8e628:
+    english: |-
+      ## Benefits
+      - Faster, efficient, clear and more adaptable decisions.
+      - Diverse perspectives and empowered engagement builds trust.
+      - A more agile, transparent and inclusive culture.
+    translation: |-
+      ## Voordelen
+      - Snellere, efficiënte, duidelijke en beter aanpasbare besluiten.
+      - Verschillende perspectieven en actieve betrokkenheid versterken het vertrouwen.
+      - Een cultuur die flexibeler, transparanter en inclusiever is.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  '09907f3ec328e9d2':
+    english: "## Applying the Consent process on Loomio"
+    translation: "## Het toestemmingsproces toepassen in Loomio"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  8d7c91a6160b45cf:
+    english: |-
+      | **Consent process** | **On Loomio** |
+      |---|---|
+      | You notice a problem or opportunity and take the initiative. |  |
+      | **Present a proposal** <br /><br />Write a clear and concise proposal and share it with people impacted. Describe it in a way so that others will understand what you are proposing. | Start a Loomio **discussion**. <br /><br />Name the proposal in the discussion title, and describe it in the context. |
+      | **Questions** (Optional) <br /><br />Invite clarifying questions to help people understand the proposal. <br /><br />*“A clarifying question round helps make sure everyone understands the proposal before they say what they think about it.”* | Run a **Question round**. If it is hidden, a group administrator can make it available from [Poll templates](/en/user_manual/polls/poll_templates/). <br /><br />Ask “what do you need to know so you understand the proposal?” |
+      | **Reactions** <br /><br />Invite people to offer reactions and comments to improve the proposal. <br /><br />This is a sensing and responding round - *to actively sense and interpret information from the group and then respond or adapt accordingly.* | Run a **[Sense check](/en/user_manual/polls/proposals/sense_check/)** proposal. <br /><br />*In the title:* Name the proposal and say this is an opportunity to react and comment. <br /><br />*In the proposal details:* Clearly frame the proposal and say why it is important.  Include any background information necessary and a link to the current proposal version.  <br /><br />Invite everyone to respond, and to do so before the proposal closes.  |
+      | **Amendment** <br /><br />Consider comments and suggestions from people and amend the proposal as appropriate for the good of your organization. <br /><br />Consider any amendments you want to make for the new proposal version. | Reply to comments and suggestions raised in the Sense check proposal. <br /><br />State an **outcome** to summarize the results of the proposal.  <br /><br />Note any concerns or new information discovered, and outline how the proposal will be amended. <br /><br />Say what will happen next and notify people about the outcome. |
+      | **Objections** <br /><br />Present the amended proposal version and invite people to state valid objections - objections that might cause harm. <br /><br />Respond to and integrate each objection by amending the proposal. | Run a **[Consent proposal](/en/user_manual/polls/proposals/consent/)** with the amended proposal. <br /><br />*In the title:* Name the decision to be made. <br /><br />*In the proposal details:* Present the proposal and invite people to vote consent or to state a valid objection - an objection that might cause harm.  Remember we are seeking consent that the proposal is 'safe to try'. <br /><br />Respond to and integrate each objection, creating an amended version of the proposal. <br /><br />Notify everyone that there has been a further amendment, and invite them to reconsider their Consent and “change your vote”. <br /><br />Or run successive Consent proposals as necessary until objections are resolved. |
+      | **Outcome** <br /><br />When there are no remaining objections and everyone has consented, the result of the decision is announced. | State an **outcome**. <br /><br />Close the proposal. State an outcome and notify everyone involved. <br /><br />State the decision made and thank people for participation in the process. <br /><br />Summarize results of the process and say what will happen next. <br /><br />If no valid objections remain, state that there is consent the proposal is 'safe to try'. <br /><br />The outcome statement is an important record of the decision for future reference. |
+    translation: |-
+      | **Toestemmingsproces** | **In Loomio** |
+      |---|---|
+      | Je ziet een probleem of kans en neemt het initiatief. |  |
+      | **Presenteer een voorstel** <br /><br />Schrijf een duidelijk en beknopt voorstel en deel het met de mensen die ermee te maken krijgen. Beschrijf wat je voorstelt, zodat anderen het begrijpen. | Start een Loomio-**discussie**. <br /><br />Noem het voorstel in de titel van de discussie en beschrijf het in de context. |
+      | **Vragen** (optioneel) <br /><br />Nodig mensen uit om verhelderende vragen te stellen, zodat ze het voorstel begrijpen. <br /><br />*“Een ronde met verhelderende vragen helpt ervoor te zorgen dat iedereen het voorstel begrijpt voordat ze zeggen wat ze ervan vinden.”* | Start een **Vragen ronde**. Als deze verborgen is, kan een groepsbeheerder deze beschikbaar maken via [Peilingssjablonen](/en/user_manual/polls/poll_templates/). <br /><br />Vraag: “Wat moet je weten om het voorstel te begrijpen?” |
+      | **Reacties** <br /><br />Nodig mensen uit om te reageren en opmerkingen te geven die het voorstel kunnen verbeteren. <br /><br />In deze ronde verzamel en bespreek je reacties: *neem actief informatie uit de groep op, interpreteer die en reageer erop of pas het voorstel aan.* | Start een **[peiling van reacties](/en/user_manual/polls/proposals/sense_check/)** over het voorstel. <br /><br />*In de titel:* Noem het voorstel en geef aan dat mensen kunnen reageren en opmerkingen kunnen geven. <br /><br />*In de details van het voorstel:* Beschrijf het voorstel duidelijk en leg uit waarom het belangrijk is. Voeg de nodige achtergrondinformatie toe en een link naar de huidige versie van het voorstel. <br /><br />Nodig iedereen uit om te reageren voordat het voorstel sluit. |
+      | **Aanpassing** <br /><br />Bekijk de opmerkingen en suggesties en pas het voorstel aan waar dat goed is voor je organisatie. <br /><br />Bepaal welke wijzigingen je in de nieuwe versie van het voorstel wilt opnemen. | Reageer op opmerkingen en suggesties bij de peiling van reacties. <br /><br />Deel een **Conclusie** om de resultaten van het voorstel samen te vatten. <br /><br />Noteer eventuele zorgen of nieuwe informatie en beschrijf hoe je het voorstel gaat aanpassen. <br /><br />Vertel wat er hierna gebeurt en breng mensen op de hoogte van de conclusie. |
+      | **Bezwaren** <br /><br />Presenteer de aangepaste versie van het voorstel en nodig mensen uit om gegronde bezwaren te noemen: bezwaren over mogelijke schade. <br /><br />Reageer op elk bezwaar en verwerk het in een aanpassing van het voorstel. | Start een **[toestemmingsvoorstel](/en/user_manual/polls/proposals/consent/)** met het aangepaste voorstel. <br /><br />*In de titel:* Noem het besluit dat genomen moet worden. <br /><br />*In de details van het voorstel:* Presenteer het voorstel en nodig mensen uit om voor toestemming te stemmen of een gegrond bezwaar te noemen: een bezwaar over mogelijke schade. Het doel is instemming dat het voorstel ‘veilig is om uit te proberen’. <br /><br />Reageer op elk bezwaar en verwerk het in een aangepaste versie van het voorstel. <br /><br />Laat iedereen weten dat het voorstel opnieuw is aangepast en nodig hen uit om hun toestemming te heroverwegen en hun stem te wijzigen. <br /><br />Start zo nodig opeenvolgende toestemmingsvoorstellen totdat de bezwaren zijn weggenomen. |
+      | **Conclusie** <br /><br />Als er geen bezwaren meer zijn en iedereen heeft ingestemd, maak je het besluit bekend. | Deel een **Conclusie**. <br /><br />Sluit het voorstel, deel een conclusie en breng alle betrokkenen op de hoogte. <br /><br />Noem het genomen besluit en bedank mensen voor hun deelname aan het proces. <br /><br />Vat de resultaten van het proces samen en vertel wat er hierna gebeurt. <br /><br />Als er geen gegronde bezwaren meer zijn, geef dan aan dat er instemming is dat het voorstel ‘veilig is om uit te proberen’. <br /><br />De conclusie legt het besluit vast, zodat je er later naar kunt verwijzen. |
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  525fe55f979f05e3:
+    english: "### Objections"
+    translation: "### Bezwaren"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  3cc3304a15bc3d2f:
+    english: In the Consent process, an objection is defined as something that **might cause harm to the team or organization**.
+    translation: In het toestemmingsproces is een bezwaar iets dat **schade kan veroorzaken aan het team of de organisatie**.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  ab509ea088e16a0d:
+    english: |-
+      Objections should meet this criteria to be valid:
+      - Explicit: *I can make a reasoned case*
+      - Impersonal: *It's not just a personal preference*
+      - Evidenced: *Not predictive, based on experience*
+      - Not 'safe to fail': *It's not that I have a 'better idea'*
+    translation: |-
+      Een bezwaar is gegrond als het aan deze criteria voldoet:
+      - Expliciet: *Ik kan mijn bezwaar onderbouwen*
+      - Onpersoonlijk: *Het is niet alleen een persoonlijke voorkeur*
+      - Onderbouwd met bewijs: *Het is gebaseerd op ervaring, niet op een voorspelling*
+      - Niet ‘veilig om te laten mislukken’: *Het gaat er niet om dat ik een ‘beter idee’ heb*
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  '08d3059af11ce88f':
+    english: "## Example of a Consent process on Loomio"
+    translation: "## Voorbeeld van een toestemmingsproces in Loomio"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  ec691660458e426c:
+    english: "### Step 0. You notice a problem or opportunity and take the initiative"
+    translation: "### Stap 0. Je ziet een probleem of kans en neemt het initiatief"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  7dd26502d162e33e:
+    english: "*Is the problem or opportunity is worth pursuing?* Chloe noticed that new Health and Safety legislation is coming into effect soon, and has taken the lead to draft a policy for her organization."
+    translation: "*Is het probleem of de kans de moeite waard om op te pakken?* Chloe merkt dat binnenkort nieuwe wetgeving over gezondheid en veiligheid van kracht wordt. Ze neemt het initiatief om beleid voor haar organisatie op te stellen."
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  b6afe6516fd602d4:
+    english: "*Is there a decision to be made?* The Health and Safety policy document will need to be approved as a formal policy."
+    translation: "*Moet er een besluit worden genomen?* Het document over gezondheid en veiligheid moet als formeel beleid worden goedgekeurd."
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  5e80186b2ed95b37:
+    english: "*Does it impact other people and your organization?* The policy impacts everyone in the organization.  Staff will need to comply with the policy, and it will become a legal obligation of the organization."
+    translation: "*Heeft het gevolgen voor andere mensen en je organisatie?* Het beleid geldt voor iedereen in de organisatie. Medewerkers moeten zich eraan houden en de organisatie wordt er wettelijk aan gebonden."
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  bc0f7f13bdc1f533:
+    english: "### Step 1. Present a proposal"
+    translation: "### Stap 1. Presenteer een voorstel"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  72e08141a5c023c5:
+    english: Chloe starts a Loomio thread outlining the need to develop a Health and Safety policy, proposing to lead this work with a first draft, inviting contributions to develop the policy and that she is starting a Consent process to adopt the policy.
+    translation: Chloe start een Loomio-discussie over de noodzaak van beleid voor gezondheid en veiligheid. Ze stelt voor om het werk te leiden en een eerste concept te schrijven. Ze nodigt anderen uit om bij te dragen aan het beleid en kondigt aan dat ze een toestemmingsproces start om het beleid vast te stellen.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  aedd5ec7bae09e0c:
+    english: "### Step 2. Facilitate a clarifying question round"
+    translation: "### Stap 2. Begeleid een ronde met verhelderende vragen"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  71ad95aa780b52f8:
+    english: Chloe runs a Question proposal to open a question round, inviting people to ask clarifying questions about the Health and Safety policy within a set period.  Some further background information along with the draft document is provided for context.
+    translation: Chloe start een voorstel voor een Vragen ronde. Ze nodigt mensen uit om binnen een bepaalde periode verhelderende vragen te stellen over het beleid voor gezondheid en veiligheid. Ze voegt achtergrondinformatie en het conceptdocument toe als context.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  dcc6429fd48d9730:
+    english: The aim at this stage is to help people understand the policy before they say what they think about it.
+    translation: Het doel van deze stap is mensen te helpen het beleid te begrijpen voordat ze zeggen wat ze ervan vinden.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  5ea5e1926f6c575b:
+    english: People ask questions in the proposal 'Reason' text field and click 'Submit vote'.  Chloe replies to questions.
+    translation: Mensen stellen hun vragen in het tekstveld ‘Reden’ van het voorstel en klikken op ‘Verstuur stem’. Chloe beantwoordt de vragen.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  99a04622ca0997d0:
+    english: "### Step 3. Facilitate a reactions round "
+    translation: "### Stap 3. Begeleid een reactieronde"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  97ed321f599305b8:
+    english: 'Chloe now opens a Reactions round by running a Sense check proposal.  People are invited to offer reactions and comments to improve the policy.  '
+    translation: Chloe opent nu een reactieronde met een voorstel voor een peiling van reacties. Mensen kunnen reageren en opmerkingen geven om het beleid te verbeteren.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  9a6fc43806e90356:
+    english: This round is an opportunity to actively sense and interpret information from the group and then respond or adapt accordingly.
+    translation: In deze ronde kan de groep informatie actief opnemen en interpreteren, en het beleid vervolgens aanpassen waar nodig.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  d86e63424185ef5a:
+    english: "### Step 4. Amend the proposal"
+    translation: "### Stap 4. Pas het voorstel aan"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  d7be57cd9ffe1142:
+    english: When the Sense check proposal closes, Chloe notifies everyone and works to amend the policy appropriately.
+    translation: Wanneer de peiling van reacties sluit, brengt Chloe iedereen op de hoogte en past ze het beleid aan waar nodig.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  c3584939cbfea28e:
+    english: "### Step 5. Seek consent to adopt the policy"
+    translation: "### Stap 5. Vraag om instemming met het beleid"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  0eb85e3f6caeb550:
+    english: The Health and Safety policy is looking good.  People have had the opportunity to ask questions and to offer suggestions to improve the policy.
+    translation: Het beleid voor gezondheid en veiligheid is inmiddels verder uitgewerkt. Mensen hebben vragen kunnen stellen en suggesties kunnen doen om het beleid te verbeteren.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  90921f42cb6e0481:
+    english: Now Chloe seeks consent to adopt the policy by running a Consent proposal.
+    translation: Chloe vraagt nu om instemming met het beleid door een toestemmingsvoorstel te starten.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  884231f468d03af1:
+    english: "### Step 6. Integrate valid objections to create an amended version of the proposal that everyone consents is ‘safe to try’"
+    translation: "### Stap 6. Verwerk gegronde bezwaren in een aangepaste versie van het voorstel die volgens iedereen ‘veilig is om uit te proberen’"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  4ad8ee69c1af2618:
+    english: Once all objections are integrated, consent has been reached and Chloe states the decision outcome :-)
+    translation: Zodra alle bezwaren zijn verwerkt, is er instemming en deelt Chloe de conclusie van het besluit.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'

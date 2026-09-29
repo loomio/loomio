@@ -1,0 +1,139 @@
+---
+navigation_title: Оціночне опитування
+blocks:
+  c719d051fa2f700e:
+    english: "# Score"
+    translation: "# Оціночне опитування"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  517adc384b38d256:
+    english: Score measures how participants evaluate each option on a shared numeric scale. Unlike Choose, it asks people to respond to every option, so the results show both what people prefer and how strongly they prefer it.
+    translation: Оціночне опитування показує, як учасники оцінюють кожен варіант за спільною числовою шкалою. На відміну від опитування «Вибір», тут потрібно оцінити кожен варіант. Результати показують, яким варіантам люди віддають перевагу і наскільки сильно.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  a678333f6d814e87:
+    english: "## When to use Score"
+    translation: "## Коли використовувати оціночне опитування"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  c4ca19abb53e3ddc:
+    english: 'Use Score when every option can be evaluated independently against the same question. It works well for:'
+    translation: 'Використовуйте оціночне опитування, коли кожен варіант можна окремо оцінити за одним запитанням. Воно підходить для:'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  c77c1ad6b2a9d697:
+    english: |-
+      - assessing how ready each part of a project is;
+      - rating the importance of several principles;
+      - measuring interest in possible meeting topics;
+      - evaluating grant applications against a common criterion; or
+      - comparing the suitability of several proposals.
+    translation: |-
+      - оцінювання готовності кожної частини проєкту;
+      - визначення важливості кількох принципів;
+      - вимірювання зацікавленості в можливих темах зустрічі;
+      - оцінювання заявок на грант за спільним критерієм; або
+      - порівняння придатності кількох пропозицій.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  d91459d96a31a671:
+    english: Define what the bottom and top of the scale mean. A number without a shared definition can mean different things to different voters. Use [Choose](/en/user_manual/polls/choose/) when you only need selections, or [Allocate](/en/user_manual/polls/allocate/) when participants must make trade-offs within a limited budget.
+    translation: Поясніть, що означають нижня й верхня межі шкали. Без спільного визначення виборці можуть по-різному розуміти те саме число. Використовуйте [Вибір](/en/user_manual/polls/choose/), якщо потрібно лише вибрати варіанти, або [Розподіл](/en/user_manual/polls/allocate/), якщо учасники мають розподілити обмежену кількість ресурсів між варіантами.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  6160518dc06b70a7:
+    english: "## Example: score possible trial locations"
+    translation: "## Приклад: оцінювання можливих місць для випробування"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  a75c387743cad529:
+    english: Oatmilk Cooperative is choosing locations for a returnable-bottle trial. It asks members to score four locations from 0 (**unsuitable**) to 10 (**ideal**), considering customer access, staff capacity, storage, and collection transport.
+    translation: Кооператив Oatmilk обирає місця для випробування системи поворотних пляшок. Він просить учасників оцінити чотири місця від 0 (**непридатне**) до 10 (**ідеальне**), враховуючи доступність для клієнтів, можливості працівників, місце для зберігання й перевезення зібраних пляшок.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  c74ebb16f872b3c6:
+    english: "## Set up the poll"
+    translation: "## Налаштуйте опитування"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  b03122ee279f9c91:
+    english: State one question that applies equally to every option. Add the items to be assessed, set the **Minimum score** and **Maximum score**, and explain the endpoints in the details. Option meanings can clarify the scope of each item.
+    translation: Сформулюйте одне запитання, яке однаково стосується кожного варіанта. Додайте варіанти для оцінювання, установіть **Мінімальна оцінка** та **Максимальна оцінка** й поясніть у деталях, що означають крайні значення шкали. Описи варіантів допоможуть уточнити, що саме оцінюється.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  85e66520acf78264:
+    english: Choose a scale participants can apply consistently. A 0–5 scale is quick to use; a 0–10 scale allows finer distinctions. More precision does not necessarily produce better information, so use the shortest scale that fits the question.
+    translation: Виберіть шкалу, яку учасники зможуть застосовувати послідовно. Шкалу 0–5 легко використовувати, а шкала 0–10 дає змогу точніше розрізняти оцінки. Більша точність не обов’язково дає кращі дані, тому виберіть найкоротшу шкалу, яка підходить для запитання.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  bb3998655598796f:
+    english: Anonymous voting and showing options in random order can be useful when you want to reduce social or ordering effects.
+    translation: Анонімне голосування та випадковий порядок варіантів можуть допомогти зменшити вплив інших людей і порядку варіантів на оцінки.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  d391457c69df967f:
+    english: "## Vote"
+    translation: "## Проголосуйте"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  33199814c9ad8a64:
+    english: Participants move a slider to score every option. In this example, the voter scores Central Station cafe at 8, Riverside market at 6, the University food court at 7, and Harbour offices at 5.
+    translation: Учасники пересувають повзунок, щоб оцінити кожен варіант. У цьому прикладі виборець ставить кафе біля Центрального вокзалу 8, ринку біля річки 6, університетському фудкорту 7, а офісам у порту 5.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  fba3d21a09846414:
+    english: The reason explains how the voter applied the scale. This helps the group distinguish a low score caused by missing information from one caused by substantive concern.
+    translation: У поясненні виборець описує, як застосував шкалу. Це допомагає групі зрозуміти, чи низька оцінка пов’язана з браком інформації, чи із суттєвими застереженнями.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  72a9e4073ea27936:
+    english: "## Read the results"
+    translation: "## Перегляньте результати"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  846b7759f9d54232:
+    english: 'For each option, the results show:'
+    translation: 'Для кожного варіанта результати показують:'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  cac30fa54f0aeaf7:
+    english: |-
+      - **Points**: the sum of all scores;
+      - **Mean**: the average score; and
+      - **Voters**: how many people scored the option.
+    translation: |-
+      - **Бали**: суму всіх оцінок;
+      - **Середній**: середню оцінку; і
+      - **Виборці**: кількість людей, які оцінили варіант.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  7e063d4b1babcb9e:
+    english: In this example, **Central Station cafe** has the highest mean at 7.5. **Harbour offices** has the lowest mean at 5.25, while Riverside market and the University food court are tied at 7. Four of five invited people have voted, so the group can also see that one response is outstanding.
+    translation: У цьому прикладі **кафе біля Центрального вокзалу** має найвищу середню оцінку — 7.5. **Офіси в порту** мають найнижчу — 5.25, а ринок біля річки й університетський фудкорт отримали по 7. Проголосували четверо з п’яти запрошених людей, тож група також бачить, що одна людина ще не відповіла.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  147800d3643d9942:
+    english: Compare means only when the options have a similar number of voters. Read the vote reasons before treating a small difference as meaningful, and publish an outcome explaining what action follows from the scores.
+    translation: Порівнюйте середні оцінки лише тоді, коли варіанти оцінила приблизно однакова кількість виборців. Перш ніж вважати невелику різницю значущою, прочитайте пояснення до голосів. Потім опублікуйте результат і поясніть, які дії випливають з оцінок.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'

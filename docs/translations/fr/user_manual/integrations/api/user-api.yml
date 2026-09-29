@@ -1,0 +1,1273 @@
+---
+navigation_title: API utilisateur
+blocks:
+  0217b93dddc627ac:
+    english: "# Loomio User API documentation"
+    translation: "# Documentation de l’API utilisateur de Loomio"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  bc6fcbf5f783fd29:
+    english: "<!-- seo-description: Use the Loomio User API to create and manage discussions, comments, polls, threads, and group memberships from other software. -->"
+    translation: "<!-- seo-description: Utilisez l’API utilisateur de Loomio pour créer et gérer des discussions, des commentaires, des sondages, des fils de discussion et des adhésions aux groupes depuis d’autres logiciels. -->"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  cc2da08540808ada:
+    english: "`/api/b2` is the user-oriented API for integrations with Loomio. It uses the API key of a user account, and every action is performed as that user."
+    translation: "`/api/b2` est l’API destinée aux intégrations utilisateur avec Loomio. Elle utilise la clé API d’un compte utilisateur, et chaque action est effectuée au nom de ce compte."
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  7036a6661aac00f2:
+    english: Group operations use the memberships and group permissions of the API-key user. Instance-administrator status does not expand an API key's access to groups or content; use the Server API for instance-level administration.
+    translation: Les opérations sur les groupes dépendent des adhésions et des autorisations de groupe de l’utilisateur auquel appartient la clé API. Le statut d’administrateur de l’instance n’étend pas l’accès de cette clé aux groupes ou aux contenus. Pour administrer l’instance, utilisez l’API serveur.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  c4436493b062b9f1:
+    english: Use the API key from the Loomio user account that will perform the actions. A dedicated bot account is useful when an integration should not be invited to polls or receive notifications.
+    translation: Utilisez la clé API du compte Loomio qui effectuera les actions. Un compte robot dédié est utile si l’intégration ne doit pas être invitée aux sondages ni recevoir de notifications.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  ade21c593f08100c:
+    english: Signed-in users can find their API key and group IDs on the [API access page](/profile/api_access).
+    translation: Les utilisateurs connectés trouveront leur clé API et les identifiants de leurs groupes sur la [page d’accès à l’API](/profile/api_access).
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  15160edafaf441c1:
+    english: 'Send the API key in an `Authorization: Bearer` header. API keys in query strings are rejected because URLs can be recorded by proxies and access logs.'
+    translation: 'Envoyez la clé API dans l’en-tête `Authorization: Bearer`. Les clés API placées dans les paramètres d’URL sont rejetées, car les URL peuvent être enregistrées par les serveurs mandataires et les journaux d’accès.'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  2215e57186277325:
+    english: "### Authentication change"
+    translation: "### Changement du mode d’authentification"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  ff5f4c1055e80fb6:
+    english: 'The API key was previously accepted as an `api_key` URL parameter. Requests using `?api_key=YOUR_API_KEY` no longer work. Use the HTTP `Authorization` header instead:'
+    translation: 'La clé API était auparavant acceptée dans le paramètre d’URL `api_key`. Les requêtes utilisant `?api_key=YOUR_API_KEY` ne fonctionnent plus. Utilisez désormais l’en-tête HTTP `Authorization` :'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  65574ba500243c80:
+    english: The examples use `YOUR_API_KEY`, group ID `123`, and `https://www.loomio.com/`. Replace these with your API key, group ID, and Loomio installation URL.
+    translation: Les exemples utilisent `YOUR_API_KEY`, l’identifiant de groupe `123` et `https://www.loomio.com/`. Remplacez-les par votre clé API, l’identifiant de votre groupe et l’URL de votre installation Loomio.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  bec1e4f30aeef4ce:
+    english: "## Response size and related records"
+    translation: "## Taille des réponses et enregistrements associés"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  da004eb4e005fae1:
+    english: 'User API responses use a compound format: the primary records are accompanied by related records such as topics, groups, users, polls, and reactions. This lets a client populate a local record store from one request, but can include more data than a simple integration needs.'
+    translation: 'Les réponses de l’API utilisateur ont un format composé : les enregistrements principaux sont accompagnés d’enregistrements associés, comme les sujets, les groupes, les utilisateurs, les sondages et les réactions. Un client peut ainsi remplir son stockage local avec une seule requête. La réponse peut toutefois contenir plus de données que nécessaire pour une intégration simple.'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  64d9a631b54cbaba:
+    english: Pass `compact=1` to omit bulky related topics, groups, parent groups, memberships, reactions, tags, and translations. Primary records and the related records needed to interpret their content remain present.
+    translation: Ajoutez `compact=1` pour omettre les sujets, groupes, groupes parents, adhésions, réactions, étiquettes et traductions associés les plus volumineux. Les enregistrements principaux et les enregistrements associés nécessaires pour comprendre leur contenu restent présents.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  e4e671db39dbe6f1:
+    english: For direct control, pass `exclude_types` with space-separated singular record types. For example, `exclude_types=group reaction` omits related groups and reactions. Common values are `topic`, `group`, `parent`, `membership`, `reaction`, `tag`, `translation`, `user`, `discussion`, `poll`, `poll_option`, `stance`, `stance_choice`, `outcome`, and `topic_item`. Exclusions apply to related records, not the primary resource requested by the endpoint.
+    translation: Pour choisir les exclusions, utilisez `exclude_types` avec des types d’enregistrements au singulier, séparés par des espaces. Par exemple, `exclude_types=group reaction` omet les groupes et les réactions associés. Les valeurs courantes sont `topic`, `group`, `parent`, `membership`, `reaction`, `tag`, `translation`, `user`, `discussion`, `poll`, `poll_option`, `stance`, `stance_choice`, `outcome` et `topic_item`. Les exclusions concernent les enregistrements associés, pas la ressource principale demandée à l’endpoint.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  ded075da3c2aa815:
+    english: Collection responses include `meta.total` when an exact collection size is defined. The total is calculated before `limit` and `offset` are applied. Endpoints such as search that intentionally return a bounded result set omit `meta.total` rather than returning `null`.
+    translation: Les réponses contenant une collection incluent `meta.total` lorsque sa taille exacte est définie. Ce total est calculé avant l’application de `limit` et `offset`. Les endpoints comme la recherche, qui renvoient volontairement un ensemble limité de résultats, omettent `meta.total` au lieu de renvoyer `null`.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  17cb8ef90a2acdb3:
+    english: "## Endpoint summary"
+    translation: "## Résumé des endpoints"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  608edb13080e57c2:
+    english: |-
+      | Method | Endpoint | Purpose |
+      | --- | --- | --- |
+      | `GET` | `/api/b2/groups` | List the API-key user's groups |
+      | `GET` | `/api/b2/groups/:id_or_key_or_handle` | Get a visible group |
+      | `GET` | `/api/b2/reports` | Generate a participation report |
+      | `GET` | `/api/b2/search` | Search visible discussions, comments, polls, votes, and outcomes |
+      | `POST` | `/api/b2/discussions` | Create a discussion |
+      | `GET` | `/api/b2/discussions/:id` | Get a discussion |
+      | `GET` | `/api/b2/discussions` | List discussions in a group |
+      | `PATCH` | `/api/b2/discussions/:id` | Edit a discussion |
+      | `DELETE` | `/api/b2/discussions/:id` | Soft-delete a discussion |
+      | `GET` | `/api/b2/threads` | List visible discussion and standalone-poll threads |
+      | `GET` | `/api/b2/threads/:topic_id` | Get a thread |
+      | `GET` | `/api/b2/threads/:topic_id/items` | Get the ordered items in a thread |
+      | `GET` | `/api/b2/threads/:topic_id/markdown` | Get a complete thread as Markdown |
+      | `POST` | `/api/b2/comments` | Create a comment or reply |
+      | `PATCH` | `/api/b2/comments/:id` | Edit a comment |
+      | `DELETE` | `/api/b2/comments/:id` | Soft-delete a comment |
+      | `POST` | `/api/b2/polls` | Create a poll |
+      | `GET` | `/api/b2/polls/:id` | Get a poll |
+      | `GET` | `/api/b2/polls` | List polls in a group |
+      | `PATCH` | `/api/b2/polls/:id` | Edit a poll |
+      | `DELETE` | `/api/b2/polls/:id` | Soft-delete a poll |
+      | `GET` | `/api/b2/memberships` | List a group's memberships |
+      | `POST` | `/api/b2/memberships` | Add members and optionally remove absent members |
+      | `GET` | `/api/b2/chatbots` | List a group's chat integrations and webhooks |
+      | `POST` | `/api/b2/chatbots` | Create a chat integration or webhook |
+      | `PATCH` | `/api/b2/chatbots/:id` | Update a chat integration or webhook |
+      | `DELETE` | `/api/b2/chatbots/:id` | Delete a chat integration or webhook |
+      | `POST` | `/api/b2/chatbots/check` | Send a webhook connection test |
+    translation: |-
+      | Méthode | Endpoint | Fonction |
+      | --- | --- | --- |
+      | `GET` | `/api/b2/groups` | Lister les groupes de l’utilisateur auquel appartient la clé API |
+      | `GET` | `/api/b2/groups/:id_or_key_or_handle` | Obtenir un groupe visible |
+      | `GET` | `/api/b2/reports` | Générer un rapport de participation |
+      | `GET` | `/api/b2/search` | Rechercher les discussions, commentaires, sondages, votes et conclusions visibles |
+      | `POST` | `/api/b2/discussions` | Créer une discussion |
+      | `GET` | `/api/b2/discussions/:id` | Obtenir une discussion |
+      | `GET` | `/api/b2/discussions` | Lister les discussions d’un groupe |
+      | `PATCH` | `/api/b2/discussions/:id` | Modifier une discussion |
+      | `DELETE` | `/api/b2/discussions/:id` | Supprimer une discussion de manière réversible |
+      | `GET` | `/api/b2/threads` | Lister les fils de discussion et les fils de sondages autonomes visibles |
+      | `GET` | `/api/b2/threads/:topic_id` | Obtenir un fil de discussion |
+      | `GET` | `/api/b2/threads/:topic_id/items` | Obtenir les éléments d’un fil dans l’ordre |
+      | `GET` | `/api/b2/threads/:topic_id/markdown` | Obtenir un fil complet au format Markdown |
+      | `POST` | `/api/b2/comments` | Créer un commentaire ou une réponse |
+      | `PATCH` | `/api/b2/comments/:id` | Modifier un commentaire |
+      | `DELETE` | `/api/b2/comments/:id` | Supprimer un commentaire de manière réversible |
+      | `POST` | `/api/b2/polls` | Créer un sondage |
+      | `GET` | `/api/b2/polls/:id` | Obtenir un sondage |
+      | `GET` | `/api/b2/polls` | Lister les sondages d’un groupe |
+      | `PATCH` | `/api/b2/polls/:id` | Modifier un sondage |
+      | `DELETE` | `/api/b2/polls/:id` | Supprimer un sondage de manière réversible |
+      | `GET` | `/api/b2/memberships` | Lister les adhésions à un groupe |
+      | `POST` | `/api/b2/memberships` | Ajouter des membres et, éventuellement, retirer les membres absents de la liste |
+      | `GET` | `/api/b2/chatbots` | Lister les intégrations de chat et les webhooks d’un groupe |
+      | `POST` | `/api/b2/chatbots` | Créer une intégration de chat ou un webhook |
+      | `PATCH` | `/api/b2/chatbots/:id` | Mettre à jour une intégration de chat ou un webhook |
+      | `DELETE` | `/api/b2/chatbots/:id` | Supprimer une intégration de chat ou un webhook |
+      | `POST` | `/api/b2/chatbots/check` | Envoyer un test de connexion à un webhook |
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  0473f1f7fb78f074:
+    english: "## Groups"
+    translation: "## Groupes"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  dc819221f371c435:
+    english: "### List groups"
+    translation: "### Lister les groupes"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  964f575e90aa9cde:
+    english: Return the groups in which the API-key user has an active membership.
+    translation: Renvoie les groupes dont l’utilisateur auquel appartient la clé API est un membre actif.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  3835e6e77bc0ad10:
+    english: "`GET /api/b2/groups`"
+    translation: "`GET /api/b2/groups`"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  4f588e981afc3069:
+    english: The response contains all matching records in a non-paginated `groups` array. It includes parent groups and subgroups, including groups whose subscription is not currently active. Check the `enabled` field when an integration should operate only on enabled groups.
+    translation: La réponse contient tous les enregistrements correspondants dans un tableau `groups` non paginé. Elle inclut les groupes parents et les sous-groupes, même lorsque leur abonnement n’est pas actif. Vérifiez le champ `enabled` si l’intégration ne doit agir que sur les groupes activés.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  213de8ce539a42c3:
+    english: 'Important group fields include:'
+    translation: 'Les principaux champs d’un groupe sont :'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  d377f7c9b224a6d7:
+    english: |-
+      | Field | Description |
+      | --- | --- |
+      | `id` | Numeric group ID used by other User API endpoints |
+      | `key` | Stable short key used in Loomio URLs |
+      | `handle` | Human-readable group handle |
+      | `name` | Group name |
+      | `full_name` | Group name including its parent-group context |
+      | `parent_id` | Numeric parent-group ID for a subgroup, otherwise `null` |
+      | `enabled` | Whether the group and its subscription are active |
+      | `memberships_count` | Number of active and pending memberships |
+      | `accepted_memberships_count` | Number of accepted memberships |
+      | `pending_memberships_count` | Number of pending invitations |
+      | `admin_memberships_count` | Number of group administrators |
+      | `delegates_count` | Number of delegates |
+      | `discussions_count` | Number of discussions directly in the group |
+      | `polls_count` | Number of polls directly in the group |
+      | `subgroups_count` | Number of subgroups |
+    translation: |-
+      | Champ | Description |
+      | --- | --- |
+      | `id` | Identifiant numérique du groupe utilisé par les autres endpoints de l’API utilisateur |
+      | `key` | Clé courte et stable utilisée dans les URL Loomio |
+      | `handle` | Identifiant lisible du groupe |
+      | `name` | Nom du groupe |
+      | `full_name` | Nom du groupe avec le contexte de son groupe parent |
+      | `parent_id` | Identifiant numérique du groupe parent pour un sous-groupe, sinon `null` |
+      | `enabled` | Indique si le groupe et son abonnement sont actifs |
+      | `memberships_count` | Nombre d’adhésions actives et en attente |
+      | `accepted_memberships_count` | Nombre d’adhésions acceptées |
+      | `pending_memberships_count` | Nombre d’invitations en attente |
+      | `admin_memberships_count` | Nombre d’administrateurs du groupe |
+      | `delegates_count` | Nombre de délégués |
+      | `discussions_count` | Nombre de discussions directement dans le groupe |
+      | `polls_count` | Nombre de sondages directement dans le groupe |
+      | `subgroups_count` | Nombre de sous-groupes |
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  34f1693ba28fcb80:
+    english: The response may include additional group settings, related parent-group records and the API user's memberships. Clients should ignore fields they do not use.
+    translation: La réponse peut aussi inclure d’autres paramètres du groupe, des enregistrements associés au groupe parent et les adhésions de l’utilisateur de l’API. Les clients doivent ignorer les champs qu’ils n’utilisent pas.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  d7c327b8ed7f7bf2:
+    english: "### Get a group"
+    translation: "### Obtenir un groupe"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  15ab63bc2d396657:
+    english: Return one group visible to the API-key user.
+    translation: Renvoie un groupe visible par l’utilisateur auquel appartient la clé API.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  8ba2cc9e3c67b1dd:
+    english: "`GET /api/b2/groups/:id_or_key_or_handle`"
+    translation: "`GET /api/b2/groups/:id_or_key_or_handle`"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  71e5812ff9890c9b:
+    english: The identifier can be the group's numeric ID, key or handle.
+    translation: Vous pouvez identifier le groupe par son identifiant numérique, sa clé ou son identifiant lisible.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  8ba79a283b7b77d5:
+    english: The response contains the group in the `groups` array and uses the same fields as the list endpoint. A request for a group the API-key user cannot access returns a permission error.
+    translation: La réponse contient le groupe dans le tableau `groups`, avec les mêmes champs que l’endpoint de liste. Une requête portant sur un groupe inaccessible à l’utilisateur auquel appartient la clé API renvoie une erreur d’autorisation.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  18d823df4d7f8fac:
+    english: "## Webhooks"
+    translation: "## Webhooks"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  f33d58fc1f2fd84c:
+    english: 'The User API is request-based: an integration calls Loomio when it wants to read or change data. A group webhook provides the push direction. Loomio sends selected group events to your endpoint as they happen, so an integration does not need to poll the REST API for changes.'
+    translation: 'L’API utilisateur fonctionne par requêtes : une intégration appelle Loomio lorsqu’elle veut lire ou modifier des données. Un webhook de groupe permet de recevoir les changements. Loomio envoie à votre endpoint les événements sélectionnés dès qu’ils se produisent. L’intégration n’a donc pas besoin d’interroger régulièrement l’API REST.'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  3b5b4b0ac52b9010:
+    english: 'Webhooks are configured per group and require group-administrator permission. They can be managed through the Loomio interface:'
+    translation: 'Les webhooks sont configurés par groupe et nécessitent les droits d’administrateur du groupe. Vous pouvez les gérer dans l’interface Loomio :'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  318710be7b3aae7d:
+    english: |-
+      1. Open the group.
+      2. Open the group menu and select **Chat integrations**.
+      3. Add the integration matching the payload format your endpoint accepts. For a general-purpose endpoint, use the Mattermost/Markdown format.
+      4. Enter a name and the destination URL.
+      5. Select the events that Loomio should send automatically.
+      6. Save the integration and use **Test connection** to send a test message.
+    translation: |-
+      1. Ouvrez le groupe.
+      2. Ouvrez le menu du groupe et sélectionnez **Intégrations de chat**.
+      3. Ajoutez l’intégration correspondant au format de données accepté par votre endpoint. Pour un endpoint généraliste, utilisez le format Mattermost/Markdown.
+      4. Saisissez un nom et l’URL de destination.
+      5. Sélectionnez les événements que Loomio doit envoyer automatiquement.
+      6. Enregistrez l’intégration, puis utilisez **Tester la connexion** pour envoyer un message de test.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  43fb95cf304fced6:
+    english: Use an HTTPS destination with an unguessable URL. Loomio requires the destination to resolve to a public address and blocks requests to local or private network addresses.
+    translation: Utilisez une destination HTTPS dont l’URL est impossible à deviner. Loomio exige que cette URL mène à une adresse publique et bloque les requêtes vers les adresses de réseaux locaux ou privés.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  d8d5abffe6425bea:
+    english: Agents and other integrations can instead manage webhooks through the Bearer-authenticated chatbot endpoints described below. The resource is named `chatbots` for compatibility with Loomio's chat integrations, but it also represents general outgoing webhooks.
+    translation: Les agents et autres intégrations peuvent aussi gérer les webhooks au moyen des endpoints chatbot décrits ci-dessous, avec une authentification Bearer. La ressource s’appelle `chatbots` pour rester compatible avec les intégrations de chat de Loomio, mais elle représente également les webhooks sortants généraux.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  28fb6371af33b66f:
+    english: "### List webhooks"
+    translation: "### Lister les webhooks"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  7187e5a26c3ec864:
+    english: Return the chat integrations configured for a group. The API-key user must be an administrator of that group. The response includes destination URLs, so it must not be exposed to ordinary group members.
+    translation: 'Renvoie les intégrations de chat configurées pour un groupe. L’utilisateur auquel appartient la clé API doit être administrateur de ce groupe. La réponse contient les URL de destination : elle ne doit donc pas être accessible aux membres ordinaires du groupe.'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  788d370538bdda46:
+    english: "`GET /api/b2/chatbots?group_id=123`"
+    translation: "`GET /api/b2/chatbots?group_id=123`"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  d676ca45c3e1074a:
+    english: 'The response contains a `chatbots` array with these fields:'
+    translation: 'La réponse contient un tableau `chatbots` avec les champs suivants :'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  ca00f7d0a52ce803:
+    english: |-
+      | Field | Description |
+      | --- | --- |
+      | `id` | Integration ID used for updates and deletion |
+      | `group_id` | Group receiving the events |
+      | `name` | Administrative name for the integration |
+      | `kind` | `webhook` for an outgoing webhook or `matrix` for a Matrix integration |
+      | `webhook_kind` | Payload format: `markdown`, `slack`, `discord`, `microsoft`, or `webex` |
+      | `server` | Destination URL |
+      | `event_kinds` | Events sent automatically |
+      | `notification_only` | Whether messages contain only the notification headline |
+    translation: |-
+      | Champ | Description |
+      | --- | --- |
+      | `id` | Identifiant de l’intégration utilisé pour les mises à jour et la suppression |
+      | `group_id` | Groupe dont proviennent les événements |
+      | `name` | Nom de l’intégration pour son administration |
+      | `kind` | `webhook` pour un webhook sortant ou `matrix` pour une intégration Matrix |
+      | `webhook_kind` | Format des données envoyées : `markdown`, `slack`, `discord`, `microsoft` ou `webex` |
+      | `server` | URL de destination |
+      | `event_kinds` | Événements envoyés automatiquement |
+      | `notification_only` | Indique si les messages contiennent uniquement le titre de la notification |
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  d72d8237eded6fdd:
+    english: "### Create a webhook"
+    translation: "### Créer un webhook"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  e33c05cb2770fe21:
+    english: "`POST /api/b2/chatbots`"
+    translation: "`POST /api/b2/chatbots`"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  acee55f2470a1eef:
+    english: The API-key user must be an administrator of `group_id`. The destination is validated as a public URL before it is saved.
+    translation: Le compte associé à la clé API doit administrer le groupe désigné par `group_id`. L’URL de destination doit être publique pour que la configuration puisse être enregistrée.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  05d9e1cdc6185f85:
+    english: "### Update a webhook"
+    translation: "### Modifier un webhook"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  eb7a96b45abe57c2:
+    english: "`PATCH /api/b2/chatbots/:id`"
+    translation: "`PATCH /api/b2/chatbots/:id`"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  2696d4fd91cd5f6f:
+    english: Send any fields that should change. The webhook cannot be transferred to another group by changing `group_id`.
+    translation: Envoyez les champs à modifier. Modifier `group_id` ne permet pas de transférer le webhook vers un autre groupe.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  e56bb884ce5ef3c5:
+    english: "### Test a webhook destination"
+    translation: "### Tester la destination d’un webhook"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  10c1e636b20121c2:
+    english: Send a Markdown-compatible test message to a destination before or after saving its configuration.
+    translation: Envoyez un message de test compatible avec Markdown à une destination, avant ou après l’enregistrement de sa configuration.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  cf0e0fae3c68178d:
+    english: "`POST /api/b2/chatbots/check`"
+    translation: "`POST /api/b2/chatbots/check`"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  fcb55f73325b9f2a:
+    english: "### Delete a webhook"
+    translation: "### Supprimer un webhook"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  f7e12256467f6c49:
+    english: "`DELETE /api/b2/chatbots/:id`"
+    translation: "`DELETE /api/b2/chatbots/:id`"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  f158f3939e36074c:
+    english: Deleting the configuration stops future deliveries. It does not delete any Loomio group content.
+    translation: La suppression de la configuration arrête les envois futurs. Elle ne supprime aucun contenu du groupe dans Loomio.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  f0fe37689a7c3646:
+    english: "### Event types"
+    translation: "### Types d’événements"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  066ca1423e999efa:
+    english: 'A webhook can subscribe to these event types:'
+    translation: 'Un webhook peut recevoir les types d’événements suivants :'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  82962625b0583140:
+    english: |-
+      | Event | When it is sent |
+      | --- | --- |
+      | `new_discussion` | A discussion is started |
+      | `discussion_edited` | A discussion is edited |
+      | `new_comment` | A comment is created |
+      | `poll_created` | A poll is started |
+      | `poll_edited` | A poll is edited |
+      | `poll_closing_soon` | A poll is approaching its closing time |
+      | `poll_expired` | A poll reaches its closing time |
+      | `poll_closed_by_user` | A person closes a poll manually |
+      | `poll_reopened` | A poll is reopened |
+      | `outcome_created` | An outcome is published |
+      | `outcome_updated` | An outcome is updated |
+      | `outcome_review_due` | An outcome review becomes due |
+      | `stance_created` | A vote is cast |
+      | `stance_updated` | A vote is changed |
+    translation: |-
+      | Événement | Moment de l’envoi |
+      | --- | --- |
+      | `new_discussion` | Une discussion est lancée |
+      | `discussion_edited` | Une discussion est modifiée |
+      | `new_comment` | Un commentaire est créé |
+      | `poll_created` | Un sondage est lancé |
+      | `poll_edited` | Un sondage est modifié |
+      | `poll_closing_soon` | Un sondage approche de sa clôture |
+      | `poll_expired` | Un sondage atteint sa date de clôture |
+      | `poll_closed_by_user` | Une personne clôture manuellement un sondage |
+      | `poll_reopened` | Un sondage est rouvert |
+      | `outcome_created` | Une conclusion est publiée |
+      | `outcome_updated` | Une conclusion est mise à jour |
+      | `outcome_review_due` | La date de révision d’une conclusion est atteinte |
+      | `stance_created` | Un vote est exprimé |
+      | `stance_updated` | Un vote est modifié |
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  ed1d3fc4a6fb67b9:
+    english: The webhook belongs to one group and receives subscribed events from that group. People can also explicitly select the integration when sharing or sending some notifications, even when the corresponding automatic event is not selected.
+    translation: Le webhook appartient à un groupe et reçoit les événements sélectionnés de ce groupe. Une personne peut aussi sélectionner explicitement l’intégration lors du partage ou de l’envoi de certaines notifications, même si l’événement automatique correspondant n’est pas sélectionné.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  512f0701765b66ec:
+    english: "### HTTP delivery"
+    translation: "### Envoi HTTP"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  dca082a687dc5505:
+    english: 'Loomio sends an asynchronous HTTP `POST` to the configured URL with this header:'
+    translation: 'Loomio envoie une requête HTTP `POST` asynchrone à l’URL configurée avec cet en-tête :'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  a4f66c4c94afa135:
+    english: The request timeout is five seconds. A `2xx` response, including `204 No Content`, is treated as successful. Webhook consumers should respond promptly, process longer work asynchronously, and tolerate duplicate or out-of-order deliveries.
+    translation: Le délai d’expiration de la requête est de cinq secondes. Une réponse `2xx`, y compris `204 No Content`, est considérée comme une réussite. Les services qui reçoivent les webhooks doivent répondre rapidement, traiter les tâches longues de manière asynchrone et accepter les envois en double ou dans le désordre.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  84faa7dad6f34739:
+    english: Loomio does not currently add a webhook signature, shared-secret header, event ID, or delivery ID. Treat the full destination URL as a credential, do not expose it publicly, and include an unguessable token in the URL when the receiving service supports one. If a stable machine-readable event schema or signed delivery is required, use the webhook as a change notification and retrieve the current records through the authenticated User API.
+    translation: 'Actuellement, Loomio n’ajoute ni signature de webhook, ni en-tête contenant un secret partagé, ni identifiant d’événement ou d’envoi. Traitez l’URL de destination complète comme un secret : ne la rendez pas publique et ajoutez-y un jeton difficile à deviner si le service destinataire le permet. Si vous avez besoin d’un schéma d’événement stable et exploitable par machine ou d’envois signés, utilisez le webhook pour signaler un changement, puis récupérez les données à jour avec l’API utilisateur authentifiée.'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  f3d956b4694f793c:
+    english: "### Payload formats"
+    translation: "### Formats des données envoyées"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  deed1ccba8a70ac2:
+    english: Webhook payloads are presentation-oriented messages intended for chat services. They are not complete serialized Loomio records. Links in the message identify the affected Loomio content; an integration can follow up through the User API when it needs structured current state.
+    translation: Les données envoyées par les webhooks sont des messages destinés aux services de chat. Elles ne contiennent pas des enregistrements Loomio complets. Les liens du message indiquent le contenu Loomio concerné. Une intégration peut ensuite utiliser l’API utilisateur si elle a besoin de données structurées à jour.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  c2e9782a81b59ab2:
+    english: |-
+      | Integration format | Principal JSON fields |
+      | --- | --- |
+      | Mattermost/Markdown | `text`, `icon_url`, `username` |
+      | Slack | `text` |
+      | Discord | `content`, limited to approximately 1,900 characters |
+      | Microsoft Teams | `@type`, `@context`, `themeColor`, `text`, `sections` |
+      | Webex | `markdown` |
+    translation: |-
+      | Format de l’intégration | Principaux champs JSON |
+      | --- | --- |
+      | Mattermost/Markdown | `text`, `icon_url`, `username` |
+      | Slack | `text` |
+      | Discord | `content`, limité à environ 1 900 caractères |
+      | Microsoft Teams | `@type`, `@context`, `themeColor`, `text`, `sections` |
+      | Webex | `markdown` |
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  132dd698f11d1d08:
+    english: 'For example, the general Markdown format sends a body shaped like:'
+    translation: 'Par exemple, le format Markdown général envoie un corps de cette forme :'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  d224ca01f360918e:
+    english: The exact message text depends on the event, group locale, notification-only setting, and Loomio version. Consumers should rely on the selected format's documented top-level fields rather than parsing sentence wording.
+    translation: Le texte exact du message dépend de l’événement, de la langue du groupe, du réglage qui limite le message au titre de la notification et de la version de Loomio. Les services destinataires doivent utiliser les champs de premier niveau documentés pour le format choisi, sans analyser la formulation des phrases.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  62c53ea4911e0c79:
+    english: "## Search"
+    translation: "## Recherche"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  f7346561ccdfcfce:
+    english: Search discussions, comments, polls, votes, and outcomes visible to the API-key user. Results include public content even when the user is not a member of its group; private content remains subject to normal topic visibility.
+    translation: Recherchez les discussions, commentaires, sondages, votes et conclusions visibles par le compte associé à la clé API. Les résultats incluent le contenu public, même si ce compte n’est pas membre du groupe concerné. La visibilité du contenu privé reste soumise aux autorisations habituelles des sujets.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  e9101cf4a72bde36:
+    english: "`GET /api/b2/search`"
+    translation: "`GET /api/b2/search`"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  9bc24da4bd85dac2:
+    english: "### Params"
+    translation: "### Paramètres"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  ac9bc86d81bfd39f:
+    english: |-
+      | Name | Description |
+      | --- | --- |
+      | `query` | Search text. Exact and fuzzy matches are supported |
+      | `group_id` | Restrict results to one visible group |
+      | `org_id` | Restrict results to a visible parent group and its visible subgroups. Use `0` for direct discussions |
+      | `type` | Restrict results to one type: `Discussion`, `Comment`, `Poll`, `Stance`, or `Outcome` |
+      | `types` | Comma-separated list of result types |
+      | `tag` | Restrict results to topics with this tag |
+      | `author_id` | Restrict results to content by one author. Without `query`, returns that author's recent visible activity |
+      | `order` | Set to `authored_at_desc` to order matching content by authoring time |
+    translation: |-
+      | Nom | Description |
+      | --- | --- |
+      | `query` | Texte recherché. Les correspondances exactes et approximatives sont prises en charge |
+      | `group_id` | Limite les résultats à un groupe visible |
+      | `org_id` | Limite les résultats à un groupe parent visible et à ses sous-groupes visibles. Utilisez `0` pour les discussions directes |
+      | `type` | Limite les résultats à un type : `Discussion`, `Comment`, `Poll`, `Stance` ou `Outcome` |
+      | `types` | Liste des types de résultats séparés par des virgules |
+      | `tag` | Limite les résultats aux sujets portant ce tag |
+      | `author_id` | Limite les résultats au contenu d’une personne. Sans `query`, renvoie son activité récente visible |
+      | `order` | Définissez `authored_at_desc` pour trier le contenu correspondant par date de création |
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  00e046b622446633:
+    english: The response contains a `search_results` array. Each result identifies the matched record and its visible context with fields including `searchable_type`, `searchable_id`, `highlight`, `group_id`, `group_name`, `discussion_key`, `poll_key`, `author_id`, `author_name`, `authored_at`, and `tags`. Fields that do not apply to a result are `null`.
+    translation: La réponse contient un tableau `search_results`. Chaque résultat indique l’enregistrement correspondant et son contexte visible, avec notamment les champs `searchable_type`, `searchable_id`, `highlight`, `group_id`, `group_name`, `discussion_key`, `poll_key`, `author_id`, `author_name`, `authored_at` et `tags`. Les champs sans objet pour un résultat ont la valeur `null`.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  f90d2c11582b8bfa:
+    english: "## Participation report"
+    translation: "## Rapport de participation"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  0fbe24cde7a5e1aa:
+    english: Return the same aggregated participation data used by Loomio's Participation report.
+    translation: Renvoie les mêmes données de participation agrégées que le rapport de participation de Loomio.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  0f176aa4823b4ece:
+    english: "`GET /api/b2/reports`"
+    translation: "`GET /api/b2/reports`"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  fc4488304bf3735e:
+    english: |-
+      | Name | Description |
+      | --- | --- |
+      | `section` | Report section: `base`, `users`, or `countries`. Use `users` for per-person activity |
+      | `group_scope` | `custom` or `my`. The legacy `all` value is treated as `my` because User API keys never receive instance-wide access |
+      | `group_ids` | Comma-separated group IDs when `group_scope=custom`. IDs outside the API user's memberships are ignored |
+      | `start_month` | First month to include in `YYYY-MM` format; defaults to 12 months ago |
+      | `end_month` | Last month to include in `YYYY-MM` format; defaults to the current month |
+      | `interval` | Interval for the `base` section: `day`, `week`, `month`, or `year` |
+      | `member_type` | Set to `delegate` with `section=users` to return only current delegates |
+    translation: |-
+      | Nom | Description |
+      | --- | --- |
+      | `section` | Section du rapport : `base`, `users` ou `countries`. Utilisez `users` pour l’activité par personne |
+      | `group_scope` | `custom` ou `my`. L’ancienne valeur `all` est traitée comme `my`, car les clés de l’API utilisateur ne donnent jamais accès à toute l’instance |
+      | `group_ids` | Identifiants de groupes séparés par des virgules lorsque `group_scope=custom`. Les identifiants des groupes dont le compte associé à la clé API n’est pas membre sont ignorés |
+      | `start_month` | Premier mois à inclure, au format `YYYY-MM`. Par défaut, il s’agit du mois d’il y a 12 mois |
+      | `end_month` | Dernier mois à inclure, au format `YYYY-MM`. Par défaut, il s’agit du mois en cours |
+      | `interval` | Intervalle pour la section `base` : `day`, `week`, `month` ou `year` |
+      | `member_type` | Définissez `delegate` avec `section=users` pour ne renvoyer que les délégués actuels |
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  '09b3d2247802eae7':
+    english: A person is a delegate when they have an active delegate membership in any selected group. Their counts are aggregated across all selected groups. Delegate rows are returned even when every activity count is zero. Counts cover threads, comments, polls, votes, outcomes, and reactions; they are not voting participation rates. User rows also include identified ballots issued, cast, and missed. Anonymous polls are excluded from all per-person voting counts. `all_votes_cast` is true only when at least one ballot was issued and every issued ballot was cast.
+    translation: Une personne est déléguée si elle possède un rôle de délégué actif dans au moins un groupe sélectionné. Ses nombres d’activités sont agrégés sur tous les groupes sélectionnés. Les lignes des délégués sont renvoyées même si tous ces nombres sont nuls. Ils couvrent les fils de discussion, les commentaires, les sondages, les votes, les conclusions et les réactions. Ils ne représentent pas des taux de participation aux votes. Les lignes des utilisateurs indiquent aussi les bulletins de vote nominatif envoyés, déposés et non déposés. Les sondages anonymes sont exclus de tous les nombres de votes par personne. `all_votes_cast` vaut true uniquement si au moins un bulletin a été envoyé et que tous les bulletins envoyés ont été déposés.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  be9b5cd02a9b5930:
+    english: The API applies the same group visibility rules as the in-product report. A user API key cannot expose report data from groups that user cannot access.
+    translation: L’API applique les mêmes règles de visibilité des groupes que le rapport dans Loomio. Une clé de l’API utilisateur ne peut pas révéler les données d’un groupe auquel le compte associé n’a pas accès.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  b9b5449b4e5cc2bf:
+    english: "### Example"
+    translation: "### Exemple"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  02f5d1b42c97f8b1:
+    english: 'The `users` array contains complete activity rows:'
+    translation: 'Le tableau `users` contient des lignes d’activité complètes :'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  1b6062beed3a0a72:
+    english: "## Create Discussion"
+    translation: "## Créer une discussion"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  25084af8adac07da:
+    english: Create a discussion as the API-key user.
+    translation: Créez une discussion avec le compte associé à la clé API.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  3b0e5637c80d484b:
+    english: "`POST /api/b2/discussions`"
+    translation: "`POST /api/b2/discussions`"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  0cc56e5d8301ef95:
+    english: |-
+      | Name | Description |
+      | --- | --- |
+      | `group_id` | Group where thread will exist |
+      | `title` | Title of the thread, required |
+      | `description` | Context for the thread, optional |
+      | `description_format` | Either `md` or `html`, optional, default `md` |
+      | `recipient_audience` | `group` or null. If `group`, the whole group will be notified about the new thread |
+      | `recipient_user_ids` | Array of user IDs to notify or invite to the thread |
+      | `recipient_emails` | Array of email addresses of people to invite to the thread |
+      | `recipient_message` | Message to include in the email invitation |
+    translation: |-
+      | Nom | Description |
+      | --- | --- |
+      | `group_id` | Groupe dans lequel se trouvera le fil de discussion |
+      | `title` | Titre du fil de discussion, obligatoire |
+      | `description` | Contexte du fil de discussion, facultatif |
+      | `description_format` | `md` ou `html`, facultatif, `md` par défaut |
+      | `recipient_audience` | `group` ou null. Avec `group`, tout le groupe reçoit une notification concernant le nouveau fil de discussion |
+      | `recipient_user_ids` | Tableau d’identifiants d’utilisateurs à notifier ou à inviter dans le fil de discussion |
+      | `recipient_emails` | Tableau d’adresses e-mail des personnes à inviter dans le fil de discussion |
+      | `recipient_message` | Message à inclure dans l’invitation par e-mail |
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  c7706a78c6fbaf8e:
+    english: "## Show Discussion"
+    translation: "## Afficher une discussion"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  2b1532d4d9b3d933:
+    english: Fetch a discussion using the discussion ID, an integer, or key, a string.
+    translation: Récupérez une discussion à l’aide de son identifiant numérique ou de sa clé, qui est une chaîne de caractères.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  767a45c13bb89fbb:
+    english: "`GET /api/b2/discussions/:id`"
+    translation: "`GET /api/b2/discussions/:id`"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  b0b28e774c4bea85:
+    english: "## List Discussions"
+    translation: "## Lister les discussions"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  6450e37933b585d0:
+    english: List discussions visible to the API-key user in a group. For a publicly visible group, a nonmember can list its public discussions; private discussions remain restricted to users who can read them in Loomio.
+    translation: Listez les discussions d’un groupe visibles par le compte associé à la clé API. Si le groupe est public, une personne qui n’en est pas membre peut lister ses discussions publiques. Les discussions privées restent accessibles uniquement aux personnes autorisées à les consulter dans Loomio.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  13af44fcc75e22f3:
+    english: "`GET /api/b2/discussions`"
+    translation: "`GET /api/b2/discussions`"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  fc7a91d6f51f9b4d:
+    english: |-
+      | Name | Description |
+      | --- | --- |
+      | `group_id` | Integer, required. ID of the group to list discussions from |
+      | `status` | String, optional, default `open`. Values: `open`, `closed`, `all` |
+      | `limit` | Integer, optional, default 50. Page size |
+      | `offset` | Integer, optional, default 0. Offset for pagination |
+    translation: |-
+      | Nom | Description |
+      | --- | --- |
+      | `group_id` | Entier obligatoire. Identifiant du groupe dont les discussions seront listées |
+      | `status` | Chaîne facultative, `open` par défaut. Valeurs : `open`, `closed`, `all` |
+      | `limit` | Entier facultatif, 50 par défaut. Nombre d’éléments par page |
+      | `offset` | Entier facultatif, 0 par défaut. Décalage pour la pagination |
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  d0bc750cf9181dbd:
+    english: 'Legacy: `per` and `from` are accepted as aliases for `limit` and `offset` and will continue to work.'
+    translation: 'Compatibilité : `per` et `from` restent acceptés comme alias de `limit` et `offset`.'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  007f191533503f69:
+    english: "## List Threads"
+    translation: "## Lister les fils de discussion"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  9b51c6a9da5f5a11:
+    english: List the discussion and poll threads visible to the API-key user, ordered by latest activity. A thread ID is its `topic_id`.
+    translation: Listez les fils de discussion et les fils de sondage visibles par le compte associé à la clé API, du plus récemment actif au moins récemment actif. L’identifiant d’un fil est son `topic_id`.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  1d151dbf55e30e1b:
+    english: "`GET /api/b2/threads`"
+    translation: "`GET /api/b2/threads`"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  16d3f174e3e7efb0:
+    english: |-
+      | Name | Description |
+      | --- | --- |
+      | `limit` | Integer, optional, default 50. Page size |
+      | `offset` | Integer, optional, default 0. Offset for pagination |
+    translation: |-
+      | Nom | Description |
+      | --- | --- |
+      | `limit` | Entier facultatif, 50 par défaut. Nombre d’éléments par page |
+      | `offset` | Entier facultatif, 0 par défaut. Décalage pour la pagination |
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  beb0fb8b32931f64:
+    english: "## Read Thread"
+    translation: "## Lire un fil de discussion"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  3c83a21bec3893c0:
+    english: Read a thread, its ordered event stream, or its complete visible Markdown document.
+    translation: Lisez un fil de discussion, la liste chronologique de ses événements ou son contenu visible complet au format Markdown.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  e586d03943b063ca:
+    english: "`GET /api/b2/threads/:topic_id`"
+    translation: "`GET /api/b2/threads/:topic_id`"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  3652bd347435ccb3:
+    english: "`GET /api/b2/threads/:topic_id/items`"
+    translation: "`GET /api/b2/threads/:topic_id/items`"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  05e667b698dff82f:
+    english: "`GET /api/b2/threads/:topic_id/markdown`"
+    translation: "`GET /api/b2/threads/:topic_id/markdown`"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  f849f2ff41c98641:
+    english: The `items` endpoint returns the ordered event stream, including visible comments, polls, votes, and outcomes. The `markdown` endpoint returns the complete visible thread as one Markdown document. Vote reasons are included only when they are visible to the API-key user.
+    translation: Le point de terminaison `items` renvoie les événements dans l’ordre, notamment les commentaires, sondages, votes et conclusions visibles. Le point de terminaison `markdown` renvoie tout le contenu visible du fil dans un seul document Markdown. Les motifs des votes ne sont inclus que s’ils sont visibles par le compte associé à la clé API.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  03afead392a12af3:
+    english: All thread endpoints enforce the same permissions as the Loomio interface. The API key does not grant access to a thread the user cannot normally open.
+    translation: Tous les points de terminaison des fils de discussion appliquent les mêmes permissions que l’interface Loomio. La clé API ne donne pas accès à un fil que l’utilisateur ne peut normalement pas ouvrir.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  705646f4eaaff142:
+    english: "## Edit Discussion"
+    translation: "## Modifier une discussion"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  9cdde455b71f15f2:
+    english: 'Edit a discussion as the API-key user. The same permissions apply as in Loomio: the user must be allowed to edit that discussion.'
+    translation: 'Modifiez une discussion avec le compte associé à la clé API. Les mêmes permissions que dans Loomio s’appliquent : l’utilisateur doit être autorisé à modifier cette discussion.'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  229116097cc6a6f8:
+    english: "`PATCH /api/b2/discussions/:id`"
+    translation: "`PATCH /api/b2/discussions/:id`"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  69e9c0b276abee77:
+    english: |-
+      | Name | Description |
+      | --- | --- |
+      | `title` | Updated title |
+      | `description` | Updated context |
+      | `description_format` | Either `md` or `html`, optional, default `md` |
+      | `recipient_audience` | `group` or null. If `group`, the whole group will be notified about the edit |
+      | `recipient_user_ids` | Array of user IDs to notify or invite to the thread |
+      | `recipient_emails` | Array of email addresses of people to invite to the thread |
+      | `recipient_message` | Message to include in the email invitation |
+    translation: |-
+      | Nom | Description |
+      | --- | --- |
+      | `title` | Nouveau titre |
+      | `description` | Nouveau contexte |
+      | `description_format` | `md` ou `html`, facultatif, `md` par défaut |
+      | `recipient_audience` | `group` ou null. Avec `group`, tout le groupe reçoit une notification concernant la modification |
+      | `recipient_user_ids` | Tableau d’identifiants d’utilisateurs à notifier ou à inviter dans le fil de discussion |
+      | `recipient_emails` | Tableau d’adresses e-mail des personnes à inviter dans le fil de discussion |
+      | `recipient_message` | Message à inclure dans l’invitation par e-mail |
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  f5e5bfbdc1d474d5:
+    english: "## Soft Delete Discussion"
+    translation: "## Supprimer une discussion sans effacer son enregistrement"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  d7fe3173b0157307:
+    english: Soft delete a discussion as the API-key user. This discards the discussion and keeps the discussion record in place.
+    translation: Supprimez une discussion avec le compte associé à la clé API. La discussion est écartée, mais son enregistrement est conservé.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  91e7375d98c30c22:
+    english: "`DELETE /api/b2/discussions/:id`"
+    translation: "`DELETE /api/b2/discussions/:id`"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  1fba7bcbe53938e6:
+    english: "## Create Comment"
+    translation: "## Créer un commentaire"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  856e0042242ba23f:
+    english: Create a comment in a discussion as the API-key user.
+    translation: Créez un commentaire dans une discussion avec le compte associé à la clé API.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  4f8865ef5c5c4d1b:
+    english: "`POST /api/b2/comments`"
+    translation: "`POST /api/b2/comments`"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  77e6be88ba92be0f:
+    english: |-
+      | Name | Description |
+      | --- | --- |
+      | `discussion_id` | Integer, required. ID of the discussion to comment on |
+      | `body` | Comment body, required unless an attachment is provided |
+      | `body_format` | Either `md` or `html`, optional, default `md` |
+    translation: |-
+      | Nom | Description |
+      | --- | --- |
+      | `discussion_id` | Entier obligatoire. Identifiant de la discussion à commenter |
+      | `body` | Contenu du commentaire, obligatoire sauf si une pièce jointe est fournie |
+      | `body_format` | `md` ou `html`, facultatif, `md` par défaut |
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  e7926f8346761f82:
+    english: "## Edit Comment"
+    translation: "## Modifier un commentaire"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  d0444baeff4f1ca7:
+    english: 'Edit a comment as the API-key user. The same permissions apply as in Loomio: the user must be allowed to edit that comment.'
+    translation: 'Modifiez un commentaire avec le compte associé à la clé API. Les mêmes permissions que dans Loomio s’appliquent : l’utilisateur doit être autorisé à modifier ce commentaire.'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  6d8d02d665668b46:
+    english: "`PATCH /api/b2/comments/:id`"
+    translation: "`PATCH /api/b2/comments/:id`"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  8935753aa1247cd1:
+    english: |-
+      | Name | Description |
+      | --- | --- |
+      | `body` | Updated comment body |
+      | `body_format` | Either `md` or `html`, optional, default `md` |
+    translation: |-
+      | Nom | Description |
+      | --- | --- |
+      | `body` | Nouveau contenu du commentaire |
+      | `body_format` | `md` ou `html`, facultatif, `md` par défaut |
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  196d8d1ba7268171:
+    english: "## Soft Delete Comment"
+    translation: "## Supprimer un commentaire sans effacer son enregistrement"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  f6089bcecaf5970f:
+    english: Soft delete a comment as the API-key user. This discards the comment, hides its body, and keeps the comment record in place.
+    translation: Supprimez un commentaire avec le compte associé à la clé API. Le commentaire est écarté et son contenu masqué, mais son enregistrement est conservé.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  fd44b50018ce9b0e:
+    english: "`DELETE /api/b2/comments/:id`"
+    translation: "`DELETE /api/b2/comments/:id`"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  389dd780fb05ab15:
+    english: "## Create Poll"
+    translation: "## Créer un sondage"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  3a869e5ffd18d325:
+    english: Create a poll as the API-key user.
+    translation: Créez un sondage avec le compte utilisateur associé à la clé API.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  7384e709c75e7278:
+    english: "`POST /api/b2/polls`"
+    translation: "`POST /api/b2/polls`"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  3e67180e9dbafb27:
+    english: |-
+      | Name | Description |
+      | --- | --- |
+      | `group_id` | Integer, optional, default null. ID of group for poll. If `discussion_id` is passed, `group_id` is ignored |
+      | `discussion_id` | Integer, optional, default null. ID of discussion thread to add this poll to |
+      | `title` | String, required. Title of the poll |
+      | `poll_type` | String, required. Values: `proposal`, `poll`, `count`, `score`, `ranked_choice`, `meeting`, `dot_vote` |
+      | `details` | String, optional. The body text of the poll |
+      | `details_format` | String, optional, default `md`. Values: `md` or `html` |
+      | `options` | Array of strings. If `poll_type` is `proposal`, valid values are `agree`, `disagree`, `abstain`, `block`. If `poll_type` is `meeting`, provide ISO 8601 date or datetime strings. For all other poll types, any string is valid |
+      | `closing_at` | ISO 8601 string or null, default null. Example: `2026-09-01T12:00:00Z`. If null, voting is disabled and poll is considered work in progress |
+      | `specified_voters_only` | Boolean, optional, default false. If true, only specified people can vote. If false, everyone in the group will be invited to vote |
+      | `hide_results` | String, optional, default `off`. Values: `off`, `until_vote`, `until_closed` |
+      | `shuffle_options` | Boolean, default false. Display options to voters in random order |
+      | `anonymous` | Boolean, optional, default false. Hide identities of voters |
+      | `recipient_audience` | `group` or null, optional, default null. If `group`, the whole group will be notified |
+      | `notify_on_closing_soon` | String, optional, default `nobody`. Values: `nobody`, `author`, `undecided_voters`, `voters` |
+      | `recipient_user_ids` | Array of user IDs to notify or invite |
+      | `recipient_emails` | Array of email addresses of people to invite to vote |
+      | `recipient_message` | Message to include in the email invitation |
+      | `notify_recipients` | Boolean, default false. If false, add people without sending notifications. If true, everyone invited in this request will get a notification email |
+    translation: |-
+      | Nom | Description |
+      | --- | --- |
+      | `group_id` | Entier, facultatif, valeur par défaut : null. Identifiant du groupe auquel appartient le sondage. Si `discussion_id` est fourni, `group_id` est ignoré |
+      | `discussion_id` | Entier, facultatif, valeur par défaut : null. Identifiant du fil de discussion auquel ajouter ce sondage |
+      | `title` | Chaîne de caractères obligatoire. Titre du sondage |
+      | `poll_type` | Chaîne de caractères obligatoire. Valeurs : `proposal`, `poll`, `count`, `score`, `ranked_choice`, `meeting`, `dot_vote` |
+      | `details` | Chaîne de caractères facultative. Texte du sondage |
+      | `details_format` | Chaîne de caractères facultative, valeur par défaut : `md`. Valeurs : `md` ou `html` |
+      | `options` | Tableau de chaînes de caractères. Si `poll_type` vaut `proposal`, les valeurs possibles sont `agree`, `disagree`, `abstain` et `block`. Si `poll_type` vaut `meeting`, fournissez des dates ou des dates et heures au format ISO 8601. Pour les autres types de sondage, toute chaîne de caractères est acceptée |
+      | `closing_at` | Chaîne au format ISO 8601 ou valeur nulle, valeur par défaut : nulle. Exemple : `2026-09-01T12:00:00Z`. Si la valeur est nulle, le vote est désactivé et le sondage est considéré comme un brouillon |
+      | `specified_voters_only` | Booléen facultatif, valeur par défaut : faux. Si la valeur est vraie, seules les personnes désignées peuvent voter. Sinon, toutes les personnes du groupe sont invitées à voter |
+      | `hide_results` | Chaîne de caractères facultative, valeur par défaut : `off`. Valeurs : `off`, `until_vote`, `until_closed` |
+      | `shuffle_options` | Booléen, valeur par défaut : faux. Affiche les options aux votants dans un ordre aléatoire |
+      | `anonymous` | Booléen facultatif, valeur par défaut : faux. Masque l’identité des votants |
+      | `recipient_audience` | `group` ou valeur nulle, facultatif, valeur par défaut : nulle. Si la valeur est `group`, tout le groupe reçoit une notification |
+      | `notify_on_closing_soon` | Chaîne de caractères facultative, valeur par défaut : `nobody`. Valeurs : `nobody`, `author`, `undecided_voters`, `voters` |
+      | `recipient_user_ids` | Tableau d’identifiants de personnes à avertir ou à inviter |
+      | `recipient_emails` | Tableau d’adresses e-mail de personnes à inviter à voter |
+      | `recipient_message` | Message à inclure dans l’invitation envoyée par e-mail |
+      | `notify_recipients` | Booléen, valeur par défaut : faux. Si la valeur est fausse, les personnes sont ajoutées sans notification. Si elle est vraie, chaque personne invitée par cette requête reçoit une notification par e-mail |
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  4ac2d8dd37b3daa8:
+    english: "## Show Poll"
+    translation: "## Consulter un sondage"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  207b3d0024e25cdc:
+    english: Fetch a poll using the poll ID, an integer, or key, a string.
+    translation: Récupérez un sondage à partir de son identifiant numérique ou de sa clé, qui est une chaîne de caractères.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  beacd1fbd8839441:
+    english: "`GET /api/b2/polls/:id`"
+    translation: "`GET /api/b2/polls/:id`"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  40c35186cef47073:
+    english: "## List Polls"
+    translation: "## Lister les sondages"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  2c6bd4d0a9b3e572:
+    english: List polls visible to the API-key user in a group. For a publicly visible group, a nonmember can list its public polls; private polls remain restricted to users who can read them in Loomio. The response includes each visible poll's current outcome, so you can use `status=closed` to list decided proposals.
+    translation: Listez les sondages d’un groupe visibles pour le compte utilisateur associé à la clé API. Dans un groupe public, une personne qui n’en est pas membre peut lister les sondages publics. Les sondages privés restent réservés aux personnes autorisées à les consulter dans Loomio. La réponse inclut la conclusion actuelle de chaque sondage visible. Vous pouvez donc utiliser `status=closed` pour lister les propositions ayant fait l’objet d’une décision.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  39a3aaccbde4f9c6:
+    english: "`GET /api/b2/polls`"
+    translation: "`GET /api/b2/polls`"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  603cb0b8f1627160:
+    english: |-
+      | Name | Description |
+      | --- | --- |
+      | `group_id` | Integer, required. ID of the group to list polls from |
+      | `status` | String, optional, default `active`. Values: `active`, `closed`, `all` |
+      | `limit` | Integer, optional, default 50. Page size |
+      | `offset` | Integer, optional, default 0. Offset for pagination |
+    translation: |-
+      | Nom | Description |
+      | --- | --- |
+      | `group_id` | Entier, obligatoire. Identifiant du groupe dont les sondages seront listés |
+      | `status` | Chaîne de caractères, facultative, `active` par défaut. Valeurs : `active`, `closed`, `all` |
+      | `limit` | Entier, facultatif, 50 par défaut. Taille de la page |
+      | `offset` | Entier, facultatif, 0 par défaut. Décalage pour la pagination |
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  b8e8afff8dd60b94:
+    english: "## Edit Poll"
+    translation: "## Modifier un sondage"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  89d4750f43685ca4:
+    english: 'Edit a poll as the API-key user. The same permissions apply as in Loomio: the user must be allowed to edit that poll.'
+    translation: 'Modifiez un sondage avec le compte utilisateur associé à la clé API. Les mêmes autorisations que dans Loomio s’appliquent : ce compte doit être autorisé à modifier le sondage.'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  a9979e2bdfdc9255:
+    english: "`PATCH /api/b2/polls/:id`"
+    translation: "`PATCH /api/b2/polls/:id`"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  0f9c33f7ab86801e:
+    english: |-
+      | Name | Description |
+      | --- | --- |
+      | `title` | Updated title |
+      | `details` | Updated poll details |
+      | `details_format` | Either `md` or `html`, optional, default `md` |
+      | `options` | Updated option names. Changing options may affect existing votes depending on poll state |
+      | `closing_at` | ISO 8601 string or null |
+      | `recipient_audience` | `group` or null. If `group`, the whole group will be notified |
+      | `recipient_user_ids` | Array of user IDs to notify or invite |
+      | `recipient_emails` | Array of email addresses of people to invite to vote |
+      | `recipient_message` | Message to include in the email invitation |
+    translation: |-
+      | Nom | Description |
+      | --- | --- |
+      | `title` | Titre mis à jour |
+      | `details` | Détails du sondage mis à jour |
+      | `details_format` | `md` ou `html`, facultatif, valeur par défaut : `md` |
+      | `options` | Noms des options mis à jour. Leur modification peut avoir une incidence sur les votes existants selon l’état du sondage |
+      | `closing_at` | Chaîne au format ISO 8601 ou valeur nulle |
+      | `recipient_audience` | `group` ou valeur nulle. Si la valeur est `group`, tout le groupe reçoit une notification |
+      | `recipient_user_ids` | Tableau d’identifiants de personnes à avertir ou à inviter |
+      | `recipient_emails` | Tableau d’adresses e-mail de personnes à inviter à voter |
+      | `recipient_message` | Message à inclure dans l’invitation envoyée par e-mail |
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  8eeee9aa5627c1bd:
+    english: "## Soft Delete Poll"
+    translation: "## Supprimer un sondage sans effacer son enregistrement"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  fc1daa062587f38a:
+    english: Soft delete a poll as the API-key user. This discards the poll and keeps the poll record in place.
+    translation: Supprimez un sondage avec le compte utilisateur associé à la clé API. Le sondage est écarté, mais son enregistrement est conservé.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  22aa61b376d91946:
+    english: "`DELETE /api/b2/polls/:id`"
+    translation: "`DELETE /api/b2/polls/:id`"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  b4f45bba98832973:
+    english: "## List Memberships"
+    translation: "## Lister les adhésions"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  db5578da00c8e245:
+    english: List the memberships visible to the API-key user. Group members can read member names, IDs, titles, and roles. Email addresses are included only for the API-key user's own account or when the API-key user is a group administrator.
+    translation: Listez les adhésions visibles pour le compte utilisateur associé à la clé API. Les membres d’un groupe peuvent consulter les noms, les identifiants, les titres et les rôles des membres. Les adresses e-mail sont incluses uniquement pour le propre compte associé à la clé API ou lorsque ce compte est administrateur du groupe.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  918224859e770180:
+    english: "`GET /api/b2/memberships`"
+    translation: "`GET /api/b2/memberships`"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  9ca7c77c708956dd:
+    english: |-
+      | Name | Description |
+      | --- | --- |
+      | `group_id` | Integer, required. ID of the group whose memberships will be listed |
+    translation: |-
+      | Nom | Description |
+      | --- | --- |
+      | `group_id` | Entier, obligatoire. Identifiant du groupe dont les adhésions seront listées |
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  df7f1aa3f445fca5:
+    english: "## Manage Memberships"
+    translation: "## Gérer les adhésions"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  12167a132cbc9ba9:
+    english: Send a list of emails. It will invite all the new email addresses to the group. Unlike listing memberships, this operation requires group-administrator permission.
+    translation: Envoyez une liste d’adresses e-mail. Chaque nouvelle adresse recevra une invitation à rejoindre le groupe. Contrairement à la consultation des adhésions, cette opération nécessite les droits d’administration du groupe.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  472725f6bacb0edc:
+    english: "`POST /api/b2/memberships`"
+    translation: "`POST /api/b2/memberships`"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  528fc95bb1a3c505:
+    english: |-
+      | Name | Description |
+      | --- | --- |
+      | `group_id` | Integer, required. ID of the group whose memberships will be managed |
+      | `emails` | Array of strings, required. Email addresses of people to invite into the group |
+      | `remove_absent` | Boolean. If true, remove anyone from the group whose email is not present in the list |
+    translation: |-
+      | Nom | Description |
+      | --- | --- |
+      | `group_id` | Entier obligatoire. Identifiant du groupe dont les membres seront gérés |
+      | `emails` | Tableau de chaînes de caractères obligatoire. Adresses e-mail des personnes à inviter dans le groupe |
+      | `remove_absent` | Booléen. Si la valeur est vraie, retire du groupe toute personne dont l’adresse e-mail ne figure pas dans la liste |
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  444860e8996924f4:
+    english: If you pass `remove_absent=1`, any members of the group who were not included in the list will be removed from the group. Be careful, you could remove everyone in your group.
+    translation: 'Si vous fournissez `remove_absent=1`, les membres du groupe absents de la liste seront retirés du groupe. Vérifiez la liste : vous pourriez retirer tous les membres de votre groupe.'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  6cdfb31270df0fc9:
+    english: 'This returns an object with `{added_emails: ["person@added.com"], removed_emails: ["person@removed.com"]}`.'
+    translation: 'La réponse est un objet contenant `{added_emails: ["person@added.com"], removed_emails: ["person@removed.com"]}`.'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'

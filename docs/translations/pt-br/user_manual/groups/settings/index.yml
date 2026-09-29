@@ -1,0 +1,69 @@
+---
+navigation_title: Configurações do grupo
+blocks:
+  8953be95b754cbf1:
+    english: "# Group settings"
+    translation: "# Configurações do grupo"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  0b8776f3657a1add:
+    english: Group settings control how your group is presented, who can find and join it, and what members are allowed to do. Only group administrators can edit these settings.
+    translation: As configurações do grupo definem como ele é apresentado, quem pode encontrá-lo e entrar nele e o que os membros podem fazer. Somente os administradores do grupo podem editar essas configurações.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  306f2b79029e2196:
+    english: On the group page, open the actions menu and select **Edit group settings**.
+    translation: Na página do grupo, abra o menu de ações e selecione **Editar configurações do grupo**.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  da97a3ef0d0c2440:
+    english: "![Edit group settings from the group page](group_settings.png)"
+    translation: "![Editar configurações do grupo na página do grupo](group_settings.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  c9cb7d605f03af78:
+    english: 'The settings form is divided into three areas:'
+    translation: 'O formulário de configurações tem três áreas:'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  c3ac7e7af6a97167:
+    english: "## Group profile"
+    translation: "## Perfil do grupo"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  f7d530ddcbc99f60:
+    english: "[Group profile](/en/user_manual/groups/settings/profile) covers the group name, handle, description, cover image, and logo."
+    translation: "[Perfil do grupo](/en/user_manual/groups/settings/profile) explica como configurar o nome, o identificador, a descrição, a imagem de capa e o logotipo do grupo."
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  228e2f1114d8e94b:
+    english: "## Group privacy"
+    translation: "## Privacidade do grupo"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  c22b13644b71c97d:
+    english: "[Group privacy](/en/user_manual/groups/settings/privacy) covers who can find the group, who can read its content, how people join, directory listing, and following an Open group."
+    translation: "[Privacidade do grupo](/en/user_manual/groups/settings/privacy) explica quem pode encontrar o grupo e ler seu conteúdo, como as pessoas entram nele, sua exibição no diretório e como seguir um grupo Aberto."
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  657ea70b782f7e42:
+    english: "## Group permissions"
+    translation: "## Permissões do grupo"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  dd413ac130af89c4:
+    english: "[Group permissions](/en/user_manual/groups/settings/permissions) controls which actions members, non-members, and administrators can take."
+    translation: "[Permissões do grupo](/en/user_manual/groups/settings/permissions) define quais ações membros, pessoas que não são membros e administradores podem realizar."
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'

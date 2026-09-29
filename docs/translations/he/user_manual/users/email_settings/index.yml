@@ -1,0 +1,417 @@
+---
+navigation_title: התראות
+blocks:
+  3a65b66c581936a1:
+    english: "# Notifications"
+    translation: "# התראות"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  c343eb5a1db968d8:
+    english: Notifications help groups maintain momentum by drawing your attention to discussions and decisions that need a response.
+    translation: התראות עוזרות לקבוצות להמשיך להתקדם בכך שהן מפנות תשומת לב לדיונים ולהחלטות שדורשים תגובה.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  3d7b27f3b9880973:
+    english: 'Notifications are often the starting point when you return to Loomio. They let you know when:'
+    translation: 'כשחוזרים ל־Loomio, ההתראות הן לעיתים נקודת ההתחלה. הן מציינות מתי:'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  c4aec8fcb9fbc0de:
+    english: |-
+      - someone mentions you or replies to something you wrote
+      - a new discussion is shared with you
+      - you are invited or reminded to vote
+      - a poll is closing soon
+      - an outcome is announced
+    translation: |-
+      - מישהו מזכיר אתכם או מגיב למשהו שכתבתם
+      - דיון חדש משותף איתכם
+      - מתקבלת הזמנה או תזכורת להצביע
+      - מועד הסיום של משאל מתקרב
+      - מתפרסמת מסקנה
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  792dcad0f81e8cc5:
+    english: Loomio's notification settings let you choose how closely you want to follow each group or thread. Notifications remain available in Loomio, so you can review what needs your attention when you are ready.
+    translation: הגדרות ההתראות של Loomio מאפשרות לקבוע עד כמה לעקוב אחר כל קבוצה או שרשור. ההתראות נשארות זמינות ב־Loomio, כך שניתן לעיין במה שדורש תשומת לב בזמן המתאים.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  '082fae961275aaaf':
+    english: "## Two ways to begin"
+    translation: "## שתי דרכים להתחיל"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  cbea008bb7c0ee02:
+    english: 'Most people can start with one of two approaches:'
+    translation: 'רוב האנשים יכולים להתחיל באחת משתי דרכים:'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  3349bdb53fc33195:
+    english: |-
+      - **When notified** — receive an email when someone asks for your attention, and include everything else in your daily catch-up. Start here if you are still learning how your group uses Loomio.
+      - **Once per day** — set Email to **Catch-up only** and keep your catch-up set to **Every day**. Your notifications and other unread activity will be delivered together in one email.
+    translation: |-
+      - **כאשר יקבלו הודעה** — לקבל דוא״ל כשמישהו מבקש את תשומת לבכם, ולכלול את שאר הפעילות בהשלמה היומית. זו אפשרות מתאימה בזמן שלומדים כיצד הקבוצה משתמשת ב־Loomio.
+      - **פעם ביום** — להגדיר את הדוא״ל ל־**רק השלמה** ולהשאיר את תדירות ההשלמה על **כל יום**. ההתראות ושאר הפעילות שלא נקראה יגיעו יחד בדוא״ל אחד.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  74e84c4946aa3713:
+    english: New accounts start with **When notified** and a daily catch-up. This brings mentions, replies, discussions shared with you, invitations and reminders to vote, polls closing soon, and outcomes to your attention as they happen without sending an immediate update about every comment or vote.
+    translation: חשבונות חדשים מתחילים עם **כאשר יקבלו הודעה** והשלמה יומית. כך מתקבלים בזמן אמת עדכונים על אזכורים, תגובות, דיונים ששותפו איתכם, הזמנות ותזכורות להצביע, משאלים שעומדים להסתיים ומסקנות, בלי לקבל עדכון מיידי על כל תגובה או הצבעה.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  896722cbb87e98be:
+    english: If you would rather receive your Loomio notifications all at once, move to the once-per-day approach. You can change this later as your pattern of work changes.
+    translation: כדי לקבל את כל ההתראות מ־Loomio יחד, ניתן לעבור לאפשרות של פעם ביום. אפשר לשנות זאת בהמשך בהתאם לאופן העבודה.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  e2c60724226ad68a:
+    english: For a group or thread that you want to follow more closely, choose **All activity** to receive every update as it happens.
+    translation: כדי לעקוב מקרוב יותר אחר קבוצה או שרשור, יש לבחור **כל הפעילות** ולקבל כל עדכון כשהוא מתרחש.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  91fd24c60a6a84ee:
+    english: These defaults apply when you join a group. Threads initially inherit the settings of their group, but you can follow an important thread more closely or reduce its notifications without changing the rest of the group.
+    translation: הגדרות ברירת המחדל האלה חלות בעת הצטרפות לקבוצה. שרשורים יורשים בתחילה את הגדרות הקבוצה, אך אפשר לעקוב מקרוב יותר אחר שרשור חשוב או להפחית את ההתראות ממנו בלי לשנות את ההגדרות של שאר הקבוצה.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  a75df26cfc4e6614:
+    english: "## Notifications in Loomio"
+    translation: "## התראות ב־Loomio"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  9286edc0ac459625:
+    english: The bell icon in the top-right is where notifications are accessed within the app; a number shows how many notifications you have yet to read.
+    translation: סמל הפעמון בפינה השמאלית העליונה מאפשר לגשת להתראות בתוך היישום. המספר מציין כמה התראות עדיין לא נקראו.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  bfacf52b815e1252:
+    english: Select a notification to open the related discussion or poll.
+    translation: יש לבחור התראה כדי לפתוח את הדיון או המשאל הקשורים אליה.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  b7ed6a5c5c661d60:
+    english: "## Catch-up"
+    translation: "## השלמה"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  fc61461d684c5b47:
+    english: The catch-up provides a regular overview of activity without requiring you to follow each group throughout the day.
+    translation: ההשלמה מספקת סקירה קבועה של הפעילות, בלי צורך לעקוב אחר כל קבוצה לאורך היום.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  9e519b17a3847cee:
+    english: It shows your unseen notifications first, followed by unread discussions and standalone polls grouped by group. Notifications provide linked summaries of activity that needs your attention, while the unread section includes the discussion, poll, comment, vote, and edit details. Direct discussions and threads you have joined as a guest are included when they contain unread activity.
+    translation: תחילה מוצגות התראות שטרם נצפו, ואחריהן דיונים ומשאלים עצמאיים שלא נקראו, לפי קבוצה. ההתראות מסכמות פעילות שדורשת תשומת לב ומקשרות אליה. החלק של הפריטים שלא נקראו כולל פרטים על דיונים, משאלים, תגובות, הצבעות ועריכות. גם דיונים ישירים ושרשורים שהצטרפתם אליהם כאורחים נכללים כאשר יש בהם פעילות שלא נקראה.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  00703333f277e3c0:
+    english: You can turn on **Follow updates** on an open Group that you have not joined. Unread discussions and polls from that Group are then included in your catch-up at your existing schedule. Reading the threads or marking the catch-up as read updates their read status in the same way as threads from Groups you belong to. Turn off **Follow updates** on the Group page to stop including them.
+    translation: בקבוצה פתוחה שלא הצטרפתם אליה אפשר להפעיל **עקוב אחר עדכונים**. דיונים ומשאלים שלא נקראו מאותה קבוצה ייכללו בהשלמה לפי לוח הזמנים הקיים. קריאת השרשורים או סימון ההשלמה כנקראה מעדכנים את מצב הקריאה שלהם כמו בשרשורים מקבוצות שאתם חברים בהן. כדי להפסיק לכלול אותם, יש לכבות את **עקוב אחר עדכונים** בדף הקבוצה.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  fcac102a70f7ee7f:
+    english: Loomio does not send a catch-up when there are no unseen notifications or unread threads from the relevant period.
+    translation: Loomio אינה שולחת השלמה כשאין התראות שטרם נצפו או שרשורים שלא נקראו מהתקופה הרלוונטית.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  888011209ac583be:
+    english: "![A catch-up with unseen notifications and unread thread activity from one group](digest_email_example.png)"
+    translation: "![השלמה עם התראות שטרם נצפו ופעילות שלא נקראה בשרשורים מקבוצה אחת](digest_email_example.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  7d80cf08a383f6bd:
+    english: "### Choose your catch-up schedule"
+    translation: "### בחירת תדירות ההשלמה"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  677863d68136156b:
+    english: Open **Notification settings** from your user menu to choose how often you receive a catch-up.
+    translation: יש לפתוח את **הגדרות התראות** מתפריט המשתמש כדי לבחור באיזו תדירות לקבל השלמה.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  7c0dece94210f807:
+    english: The **Unsubscribe** link in a catch-up email opens a catch-up schedule form. The email link authorizes that form, so you can change or stop catch-up emails without signing in. The full **Notification settings** page in Loomio remains available when you sign in.
+    translation: הקישור **ביטול מינוי** בדוא״ל השלמה פותח טופס להגדרת תדירות ההשלמה. הקישור בדוא״ל מאפשר לשנות או להפסיק את הודעות ההשלמה בלי להיכנס לחשבון. הדף המלא של **הגדרות התראות** ב־Loomio זמין לאחר כניסה לחשבון.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  da5740fd6dbd5737:
+    english: "![Notification settings in the user menu](sidebar_notification_settings.png)"
+    translation: "![הגדרות התראות בתפריט המשתמש](sidebar_notification_settings.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  58af77d870a877e2:
+    english: 'New accounts start with a daily catch-up. The available schedules are:'
+    translation: 'חשבונות חדשים מתחילים עם השלמה יומית. התדירויות הזמינות הן:'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  b0fe04b2b5284253:
+    english: |-
+      - **Never** to turn off the catch-up
+      - **Every day** for activity from approximately the previous 24 hours
+      - **Every second day** for activity from approximately the previous two days
+      - a weekday to receive a weekly catch-up on that day
+    translation: |-
+      - **לְעוֹלָם לֹא** כדי להפסיק את ההשלמה
+      - **כל יום** לפעילות מכ־24 השעות האחרונות
+      - **כל יומיים** לפעילות מכיומיים האחרונים
+      - יום בשבוע כדי לקבל השלמה שבועית באותו יום
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  a23935f518dd15cb:
+    english: The catch-up is sent in the morning according to the time zone in your Loomio profile.
+    translation: ההשלמה נשלחת בבוקר לפי אזור הזמן שמוגדר בפרופיל שלכם ב־Loomio.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  b214c0634763fb51:
+    english: "![Catch-up schedule setting](digest_email_setting.png)"
+    translation: "![הגדרת תדירות ההשלמה](digest_email_setting.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  efbcecfe827438a5:
+    english: "### Mark a catch-up as read"
+    translation: "### סימון השלמה כנקראה"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  2b764b73f48d3185:
+    english: Select **Mark catch-up as read** to mark its notifications and topic activity as read in Loomio. Opening or previewing the catch-up does not mark anything as read.
+    translation: יש לבחור **סמן את ההשלמה כנקרא** כדי לסמן את ההתראות והפעילות בנושאים שבה כנקראו ב־Loomio. פתיחה או תצוגה מקדימה של ההשלמה אינן מסמנות דבר כנקרא.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  81ffa4a869f82451:
+    english: A catch-up is not specific to one discussion, so do not reply to it. Open a discussion or poll from the catch-up before commenting or replying.
+    translation: ההשלמה אינה שייכת לדיון מסוים, ולכן אין להשיב לה. כדי להגיב, יש לפתוח תחילה דיון או משאל מתוך ההשלמה.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  f7dfee93901e5eea:
+    english: "## Group and thread notification settings"
+    translation: "## הגדרות התראות לקבוצות ולשרשורים"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  31be594005b6bcfc:
+    english: You can choose how closely to follow each group and thread. These settings belong to you; group administrators cannot change them.
+    translation: אפשר לבחור עד כמה לעקוב אחר כל קבוצה ושרשור. אלו הגדרות אישיות, ומנהלי הקבוצה אינם יכולים לשנות אותן.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  6c9a762b18c9f92d:
+    english: Change your defaults for groups you join from **Notification settings** in your user menu. You can then override the default for a particular group or thread. A thread override changes only that thread and does not affect the rest of its group.
+    translation: אפשר לשנות את הגדרות ברירת המחדל לקבוצות שמצטרפים אליהן דרך **הגדרות התראות** בתפריט המשתמש. לאחר מכן אפשר לקבוע הגדרה אחרת לקבוצה או לשרשור מסוימים. שינוי ההגדרה של שרשור משפיע רק עליו ולא על שאר הקבוצה.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  f4b6aa6eab1beb2b:
+    english: "### Group notification settings"
+    translation: "### הגדרות התראות לקבוצה"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  977289761daba9db:
+    english: 'To change the notification setting for a group:'
+    translation: 'כדי לשנות את הגדרת ההתראות של קבוצה:'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  d78d13409c481c71:
+    english: |-
+      1. Open the group page.
+      2. Open the notification settings for the group.
+    translation: |-
+      1. יש לפתוח את דף הקבוצה.
+      2. יש לפתוח את הגדרות ההתראות של הקבוצה.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  02116f695da0a946:
+    english: "![Notification settings on a group page](group_notifications.png)"
+    translation: "![הגדרות התראות בדף קבוצה](group_notifications.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  8ce50d3418e2d9fa:
+    english: The form asks **How do you want to stay updated?** Choose **Catch-up only**, **When notified**, or **All activity**. If your catch-up is set to **Never**, **Catch-up only** is replaced by **No email updates** or **No push updates**.
+    translation: בטופס מופיעה השאלה **איך אתם רוצים להישאר מעודכנים?** יש לבחור **רק השלמה**, **כאשר יקבלו הודעה** או **כל הפעילות**. אם תדירות ההשלמה מוגדרת ל־**לְעוֹלָם לֹא**, האפשרות **רק השלמה** מוחלפת ב־**אין עדכוני דוא"ל** או ב־**אין עדכוני דחיפה**.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  24db74c2c82737eb:
+    english: Select **Apply to all groups** to use the same setting for all of your groups.
+    translation: יש לבחור **החלה על כל הקבוצות** כדי להשתמש באותה הגדרה בכל הקבוצות.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  54cd6a8eac96e073:
+    english: "![Group notification settings](group_notification_settings.png)"
+    translation: "![הגדרות התראות לקבוצה](group_notification_settings.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  d0ab43e865282241:
+    english: "### Thread notification settings"
+    translation: "### הגדרות התראות לשרשור"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  f61284373b7afc42:
+    english: To change notification settings for an individual thread, open the notification control in the thread sidebar.
+    translation: כדי לשנות את הגדרות ההתראות של שרשור מסוים, יש לפתוח את בקרת ההתראות בסרגל הצד של השרשור.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  b329b8421ab5d4f8:
+    english: "![The notification control in a thread](thread_subscribe.png)"
+    translation: "![בקרת ההתראות בשרשור](thread_subscribe.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  226c5e321d735005:
+    english: "![Thread notification settings](thread_notifications.png)"
+    translation: "![הגדרות התראות לשרשור](thread_notifications.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  3178b3b456acd783:
+    english: Thread notification settings use the same **Catch-up only**, **When notified**, and **All activity** choices. A thread setting overrides the group setting for that thread.
+    translation: 'בהגדרות ההתראות לשרשור מופיעות אותן אפשרויות: **רק השלמה**, **כאשר יקבלו הודעה** ו**כל הפעילות**. הגדרה של שרשור גוברת על הגדרת הקבוצה עבור אותו שרשור.'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  f53fa37c98c9b747:
+    english: |-
+      >[!Note]
+      >The changes in **Thread notification settings** apply only to the thread you have open. Select **Change notifications for group** to change the setting inherited by the group's other threads.
+    translation: |-
+      >[!Note]
+      >השינויים ב**הגדרות התראות שרשור** חלים רק על השרשור הפתוח. כדי לשנות את ההגדרה ששאר השרשורים בקבוצה יורשים, יש לבחור **שנה התראות לקבוצה**.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  99a0923cdcdc1cdf:
+    english: "## Email delivery"
+    translation: '## קבלת הודעות בדוא"ל'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  6cf70b2dc7cdbf83:
+    english: By default, Loomio sends an email when you are notified. Depending on your group and thread notification settings, this can include mentions, replies, discussions shared with you, invitations and reminders to vote, outcomes, and polls closing soon. Choose **All activity** to also receive emails about every new comment, vote, thread, poll, and outcome.
+    translation: כברירת מחדל, Loomio שולחת הודעת דוא"ל כאשר מתקבלת התראה. בהתאם להגדרות ההתראות של הקבוצה והשרשור, ההתראות עשויות לכלול אזכורים, תגובות, דיונים ששותפו, הזמנות ותזכורות להצבעה, מסקנות ומשאלים שעומדים להיסגר. יש לבחור **כל הפעילות** כדי לקבל הודעת דוא"ל גם על כל תגובה, הצבעה, שרשור, משאל ומסקנה חדשים.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  ce2919b895be45b3:
+    english: The **Unsubscribe** link in a notification email opens settings for that thread or group, including emails sent because someone mentioned you or replied to you. That form shows your current catch-up schedule for all groups and links to the catch-up email settings. These email links authorize only their own settings forms; they do not sign you in to Loomio.
+    translation: הקישור **ביטול מינוי** בהודעת דוא"ל על התראה פותח את ההגדרות של השרשור או הקבוצה, גם כשההודעה נשלחה בעקבות אזכור או תגובה. בטופס מוצג לוח הזמנים הנוכחי של הודעות ההשלמה לכל הקבוצות, לצד קישור להגדרות שלהן. הקישורים בהודעות הדוא"ל מאפשרים גישה רק לטופסי ההגדרות המתאימים להם; הם אינם מבצעים כניסה ל־Loomio.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  d615e84f882a2728:
+    english: When a discussion email says that replies are accepted, you can reply directly from your email and your message will be posted into the Loomio discussion.
+    translation: כאשר מצוין בהודעת דוא"ל על דיון שאפשר להשיב לה, ניתן להשיב ישירות בדוא"ל. התשובה תפורסם בדיון ב־Loomio.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  5b4ce168b24bc44a:
+    english: Poll invitation emails show the poll and its response options, but selecting an option opens Loomio in your browser to complete the vote. You may need to sign in or confirm your account. The catch-up cannot accept replies; open the linked discussion or poll first.
+    translation: בהודעות דוא"ל עם הזמנה למשאל מוצגים המשאל ואפשרויות התשובה שלו. בחירה באפשרות פותחת את Loomio בדפדפן כדי להשלים את ההצבעה. ייתכן שיהיה צורך להיכנס לחשבון או לאשר אותו. לא ניתן להשיב להודעת השלמה; תחילה יש לפתוח את הדיון או המשאל המקושרים אליה.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  0c2b2867a1ace598:
+    english: "![A proposal invitation email with response options and the related thread](proposal_invitation_email.png)"
+    translation: '![הודעת דוא"ל עם הזמנה להצעה, אפשרויות תגובה והשרשור הקשור](proposal_invitation_email.png)'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  a73508aa897d96cf:
+    english: "## Enable mobile notifications with web push"
+    translation: "## הפעלת התראות במכשיר נייד באמצעות Web Push"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  f4b14a4ba068b670:
+    english: Web push is how Loomio delivers mobile notifications today. It can notify you about Loomio activity on your phone when Loomio is not open.
+    translation: Loomio שולחת כיום התראות למכשירים ניידים באמצעות Web Push. כך ניתן לקבל בטלפון התראות על פעילות ב־Loomio גם כשהיישום אינו פתוח.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  811ee794dea12cd3:
+    english: On Android, open **Notification settings** in a supported browser and enable push. On an iPhone or iPad, first open Loomio in Safari, use **Share** then **Add to Home Screen**, open Loomio from the new Home Screen icon, and enable push from there. Select **Test connection** to verify delivery to every browser listed under **Enabled browsers**.
+    translation: ב־Android יש לפתוח את **הגדרות התראות** בדפדפן נתמך ולהפעיל התראות דחיפה. ב־iPhone או ב־iPad יש תחילה לפתוח את Loomio ב־Safari, לבחור **שיתוף** ואז **הוספה למסך הבית**, לפתוח את Loomio מהסמל החדש במסך הבית ולהפעיל משם התראות דחיפה. יש לבחור **בדיקת חיבור** כדי לוודא שהתראות מגיעות לכל דפדפן שמופיע תחת **דפדפנים מופעלים**.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  72f0707b2d67bf0e:
+    english: Web push also works in supported desktop browsers. Enable it there if you want Loomio notifications on your computer.
+    translation: התראות Web Push פועלות גם בדפדפנים נתמכים במחשב. ניתן להפעיל אותן שם כדי לקבל התראות מ־Loomio במחשב.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  fea7dbef040ae7f5:
+    english: Once push is enabled in at least one browser, group and thread notification forms let you choose **Email**, **Push**, or **Email and push**. Email and push can use different notification settings. Push delivery can be delayed by the browser, operating system, or network connection.
+    translation: לאחר הפעלת התראות דחיפה בדפדפן אחד לפחות, ניתן לבחור בטופסי ההתראות של קבוצות ושרשורים בין **דואר אלקטרוני**, **Push** ו**דוא"ל ודחיפה**. ניתן להגדיר התראות שונות לדוא"ל ולהתראות דחיפה. הדפדפן, מערכת ההפעלה או החיבור לרשת עשויים לעכב את קבלת התראות הדחיפה.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  210e15dcdff781ce:
+    english: "![Push notification settings and enabled browsers](push_notification_settings.png)"
+    translation: "![הגדרות התראות דחיפה ודפדפנים מופעלים](push_notification_settings.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  37e2be2c73fbb06d:
+    english: "## Turn off external notifications"
+    translation: "## כיבוי התראות מחוץ ל־Loomio"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  5e3d442fa885bcd4:
+    english: To stop email and push messages for group and thread activity, open **Notification settings** from your user menu, set the catch-up to **Never**, and choose **No email updates** and **No push updates**. Notifications and activity remain available when you open Loomio.
+    translation: כדי להפסיק לקבל הודעות דוא"ל והתראות דחיפה על פעילות בקבוצות ובשרשורים, יש לפתוח את **הגדרות התראות** מתפריט המשתמש, להגדיר את הודעות ההשלמה ל**לְעוֹלָם לֹא**, ולבחור **אין עדכוני דוא"ל** ו**אין עדכוני דחיפה**. ההתראות והפעילות יישארו זמינות בעת פתיחת Loomio.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  54bd12aaa8a9ed58:
+    english: "![Set the catch-up to Never](turn_off_all_emails_1.png)"
+    translation: "![הגדרת הודעות ההשלמה ללְעוֹלָם לֹא](turn_off_all_emails_1.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  92738bb4c71f0229:
+    english: "![Turn off updates for groups](turn_off_all_emails_2.png)"
+    translation: "![כיבוי עדכונים לקבוצות](turn_off_all_emails_2.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'

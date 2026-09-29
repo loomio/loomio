@@ -1,0 +1,159 @@
+---
+navigation_title: Inloggen
+blocks:
+  7d0aa091e06fa112:
+    english: "# Signing in"
+    translation: "# Inloggen"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  3bede807c136909b:
+    english: On Loomio.com, you can sign in with a passkey, your email and password, an emailed sign-in code, or Google. You can choose whichever available method is most convenient for you.
+    translation: Op Loomio.com kun je inloggen met een passkey, je e-mailadres en wachtwoord, een inlogcode per e-mail of Google. Kies de beschikbare methode die voor jou het handigst is.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  2bc2277a8ee0508d:
+    english: "![The Loomio sign-in form with passkey, email, password, and emailed-code options](sign_in_email.png)"
+    translation: "![Het Loomio-inlogformulier met opties voor een passkey, e-mailadres, wachtwoord en code per e-mail](sign_in_email.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  e3daf63d410d5513:
+    english: "## Sign in with a passkey"
+    translation: "## Inloggen met een passkey"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  5c82bc1e8baa9f0b:
+    english: Select **Use a passkey**. Your browser or device shows the Loomio passkeys available to you and asks you to unlock the selected passkey with its normal screen lock, fingerprint, face recognition, PIN, or security key. You do not enter an email address first.
+    translation: Selecteer **Gebruik een passkey**. Je browser of apparaat toont de Loomio-passkeys die je kunt gebruiken. Ontgrendel de gekozen passkey met de gebruikelijke schermvergrendeling, vingerafdruk, gezichtsherkenning, pincode of beveiligingssleutel. Je hoeft niet eerst een e-mailadres in te voeren.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  9386303ee98cb592:
+    english: You can add, name, and remove passkeys from your profile. For security, Loomio may ask you to sign in again before changing them. Give each passkey a recognizable name such as “Work laptop” or “Phone”. Passkeys are tied to the Loomio site where they were created and may be synchronized by your device or password manager.
+    translation: Je kunt passkeys toevoegen, een naam geven en verwijderen via je profiel. Om veiligheidsredenen kan Loomio je vragen opnieuw in te loggen voordat je ze wijzigt. Geef elke passkey een herkenbare naam, zoals ‘Werklaptop’ of ‘Telefoon’. Passkeys horen bij de Loomio-site waarop ze zijn aangemaakt en kunnen worden gesynchroniseerd door je apparaat of wachtwoordbeheerder.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  5f10999e671f9b56:
+    english: "## Sign in with email and password"
+    translation: "## Inloggen met e-mailadres en wachtwoord"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  5c8a380df0b08c86:
+    english: Enter your email address and password, then select **Sign in**. For account privacy, Loomio uses the same error when the email or password cannot be used to sign in.
+    translation: Voer je e-mailadres en wachtwoord in en selecteer **Inloggen**. Om de privacy van accounts te beschermen, toont Loomio dezelfde foutmelding als het e-mailadres of wachtwoord niet kan worden gebruikt om in te loggen.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  63c19e6f58a1de53:
+    english: If you have not added a passkey, Loomio offers to add one after you sign in with a password. You can dismiss the offer, and Loomio will remember your choice.
+    translation: Als je nog geen passkey hebt toegevoegd, biedt Loomio je na het inloggen met een wachtwoord aan om er een toe te voegen. Je kunt dit aanbod wegklikken. Loomio onthoudt je keuze.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  dde79982546607b4:
+    english: If you do not have a password or cannot remember it, select **Send me a code** instead.
+    translation: Heb je geen wachtwoord of weet je het niet meer? Selecteer dan **Stuur me een code**.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  5f3c6f8eca20d49c:
+    english: "## Get a sign-in code"
+    translation: "## Een inlogcode ontvangen"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  9713c017e247d8e2:
+    english: Select **Send me a code**, enter your email address, and submit the form. Loomio displays the same confirmation whether or not the address belongs to an account, so another person cannot use the form to discover who uses Loomio.
+    translation: Selecteer **Stuur me een code**, voer je e-mailadres in en verstuur het formulier. Loomio toont dezelfde bevestiging, ongeacht of het adres bij een account hoort. Zo kan niemand via het formulier achterhalen wie Loomio gebruikt.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  546aaa95b133da11:
+    english: If the address belongs to your account, Loomio sends a six-digit code. Return to the sign-in form, enter the code, and select **Sign in**. Sign-in codes normally expire after 24 hours and cannot be reused. Check your spam folder if the message does not arrive, and make sure you entered the address associated with your account.
+    translation: Als het adres bij jouw account hoort, stuurt Loomio een zescijferige code. Ga terug naar het inlogformulier, voer de code in en selecteer **Inloggen**. Inlogcodes verlopen normaal gesproken na 24 uur en kunnen niet opnieuw worden gebruikt. Controleer je spammap als het bericht niet aankomt en ga na of je het e-mailadres van jouw account hebt ingevoerd.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  26171d5996050130:
+    english: "![The Loomio form for entering a six-digit sign-in code](sign_in_code.png)"
+    translation: "![Het Loomio-formulier voor het invoeren van een zescijferige inlogcode](sign_in_code.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  '087809317d00494a':
+    english: After each sign-in with a code, Loomio offers to set or replace your password. If your browser supports passkeys, you can also add one, even if you have already added a passkey on another device. A passkey lets you sign in quickly with your device’s fingerprint, face, or screen lock. You can skip the offer and continue using emailed codes.
+    translation: Na elke aanmelding met een code biedt Loomio je aan een wachtwoord in te stellen of te vervangen. Als je browser passkeys ondersteunt, kun je ook een passkey toevoegen, zelfs als je er al een op een ander apparaat hebt toegevoegd. Met een passkey log je snel in met de vingerafdruk, gezichtsherkenning of schermvergrendeling van je apparaat. Je kunt het aanbod overslaan en codes per e-mail blijven gebruiken.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  fa960675e8369daf:
+    english: "## Create an account"
+    translation: "## Een account aanmaken"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  75fc0885f772c8cf:
+    english: Select **Create account** and follow the email-verification steps.
+    translation: Selecteer **Account aanmaken** en volg de stappen om je e-mailadres te verifiëren.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  aa461253943b989a:
+    english: For privacy, use the same email address that received your group invitation. If you have accounts under more than one address, you can [merge your accounts](/en/user_manual/users/merge_accounts).
+    translation: Gebruik omwille van je privacy hetzelfde e-mailadres waarop je de groepsuitnodiging hebt ontvangen. Als je accounts met verschillende e-mailadressen hebt, kun je [je accounts samenvoegen](/en/user_manual/users/merge_accounts).
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  d9844ac27d806c35:
+    english: "## Sign in with Google"
+    translation: "## Inloggen met Google"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  8445cfcb9e9ecef5:
+    english: Select **Sign in with Google** and authenticate with your Google account. If an existing Loomio account has the same email address, Loomio links the Google identity to that account.
+    translation: Selecteer **Inloggen met Google** en meld je aan met je Google-account. Als een bestaand Loomio-account hetzelfde e-mailadres heeft, koppelt Loomio je Google-identiteit aan dat account.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  46281cafc4a889bf:
+    english: "## Other Loomio sites"
+    translation: "## Andere Loomio-sites"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  23c2dffa5d5056e2:
+    english: Organizations that host their own Loomio site can configure different sign-in methods. A site may offer passwords, emailed codes, passkeys, Google, SAML, or another OAuth provider alongside each other.
+    translation: Organisaties die een eigen Loomio-site beheren, kunnen andere inlogmethoden instellen. Een site kan wachtwoorden, codes per e-mail, passkeys, Google, SAML en een andere OAuth-aanbieder naast elkaar aanbieden.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  3de129c7bac50409:
+    english: Some sites require an invitation before you can create an account. On these sites, **Create account** appears only when you follow an invitation link.
+    translation: Op sommige sites heb je een uitnodiging nodig voordat je een account kunt aanmaken. Daar verschijnt **Account aanmaken** alleen als je een uitnodigingslink volgt.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  16004d08bcad640b:
+    english: An SSO-only private site shows only its organization sign-in option. It does not offer Loomio-managed passwords, emailed sign-in codes, native account creation, or Loomio-managed passkeys. If the organization uses passkeys, its identity provider asks for them during SSO.
+    translation: Een besloten site waarop je alleen via SSO kunt inloggen, toont uitsluitend de inlogoptie van de organisatie. De site biedt geen door Loomio beheerde wachtwoorden, inlogcodes per e-mail, rechtstreekse accountaanmaak of door Loomio beheerde passkeys. Als de organisatie passkeys gebruikt, vraagt haar identiteitsprovider erom tijdens het inloggen via SSO.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  148bcb52b49eb179:
+    english: "## Sign out"
+    translation: "## Uitloggen"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  dc9ad2d75eb9da48:
+    english: Open the sidebar, select your name, then select **Sign out**. On a shared computer, sign out when you finish rather than closing only the browser tab.
+    translation: Open de zijbalk, selecteer je naam en selecteer daarna **Uitloggen**. Gebruik je een gedeelde computer? Log dan uit wanneer je klaar bent. Alleen het browsertabblad sluiten is niet voldoende.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'

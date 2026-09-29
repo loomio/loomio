@@ -1,0 +1,65 @@
+---
+navigation_title: Discord
+blocks:
+  e92ee4f66d31839f:
+    english: "# Discord integration"
+    translation: "# Integração com o Discord"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  61fab684103643cb:
+    english: _Connecting your Loomio group notifications to your Discord team chat._
+    translation: _Conecte as notificações do seu grupo no Loomio ao chat da sua equipe no Discord._
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  9f4683cb4db90895:
+    english: Loomio can send notifications into your Discord channels when new discussions, proposals, comments, votes, and outcomes occur. You can also manually notify the chatroom when you need to remind people about a decision.
+    translation: O Loomio pode enviar notificações aos seus canais do Discord quando houver novas discussões, propostas, comentários, votos e conclusões. Você também pode enviar uma notificação manualmente ao chat para lembrar as pessoas de uma decisão.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  cb3f91d54eee30e5:
+    english: "---"
+    translation: "---"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  18c535c6cc41438f:
+    english: |-
+      Open your Discord server and find the server settings menu.
+      ![](server-settings.png)
+    translation: |-
+      Abra seu servidor do Discord e encontre o menu de configurações do servidor.
+      ![](server-settings.png)
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  8306d30ee700173f:
+    english: |-
+      Click "Integrations"
+      ![](integrations.png)
+    translation: |-
+      Clique em "Integrações"
+      ![](integrations.png)
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  f899b4ab6b43cdbb:
+    english: Then click "Add Webhook" and give it a name, like "Loomio bot"
+    translation: Depois, clique em "Adicionar webhook" e dê um nome a ele, como "Bot do Loomio"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  '08e0ec6156925f55':
+    english: Make sure you have copied the Webhook URL to your clipboard and follow the link below.
+    translation: Copie a URL do webhook para a área de transferência e siga o link abaixo.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  894c0911cade4b44:
+    english: "[Set up a chat integration in Loomio](../chatbots/#set-up-a-chat-integration)"
+    translation: "[Configure uma integração de chat no Loomio](../chatbots/#set-up-a-chat-integration)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'

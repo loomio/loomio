@@ -1,0 +1,135 @@
+---
+navigation_title: הקצאת נקודות
+blocks:
+  343675f0497d460a:
+    english: "# Allocate"
+    translation: "# הקצאת נקודות"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  46dd27ee2e2fb992:
+    english: Allocate, sometimes known as a dot vote, reveals priorities when there are trade-offs. Each participant receives a fixed budget of points and distributes it across the options. Giving more to one option leaves fewer points for the others.
+    translation: הקצאת נקודות, המכונה לפעמים הצבעת נקודות, עוזרת לזהות סדרי עדיפויות כשצריך לבחור בין אפשרויות. כל משתתף מקבל מספר קבוע של נקודות ומחלק אותן בין האפשרויות. הקצאת יותר נקודות לאפשרות אחת משאירה פחות נקודות לאחרות.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  c6d05c5ec2a695d2:
+    english: "## When to use Allocate"
+    translation: "## מתי להשתמש בהקצאת נקודות"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  f5b2c4377aea5079:
+    english: 'Use Allocate when time, money, attention, or another resource is limited. It works well for:'
+    translation: 'ניתן להשתמש בהקצאת נקודות כשזמן, כסף, תשומת לב או משאב אחר מוגבלים. היא מתאימה ל:'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  8e6525da99616946:
+    english: |-
+      - prioritizing work for the next planning period;
+      - dividing a participatory budget between projects;
+      - choosing how much agenda time to give several topics;
+      - distributing a fixed number of volunteer hours; or
+      - identifying which improvements matter most to members.
+    translation: |-
+      - קביעת סדר עדיפויות לעבודה בתקופת התכנון הבאה;
+      - חלוקת תקציב משתף בין פרויקטים;
+      - החלטה כמה זמן בסדר היום להקדיש לכמה נושאים;
+      - חלוקת מספר קבוע של שעות התנדבות; או
+      - זיהוי השיפורים החשובים ביותר לחברי הקבוצה.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  66b0f13c4811ef63:
+    english: The points express relative priority, not an amount that Loomio will automatically assign. Use [Score](/en/user_manual/polls/score/) when every option can receive a high rating without reducing support for another.
+    translation: הנקודות מבטאות עדיפות יחסית, ולא כמות ש־Loomio תקצה באופן אוטומטי. ניתן להשתמש ב[סקר ציון](/en/user_manual/polls/score/) כשכל אפשרות יכולה לקבל דירוג גבוה בלי להפחית את התמיכה באפשרות אחרת.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  '0409e08bd5e80f61':
+    english: "## Example: set priorities for an annual strategy review"
+    translation: "## דוגמה: קביעת סדרי עדיפויות לסקירת האסטרטגיה השנתית"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  e274f6e40509e611:
+    english: Oatmilk Cooperative is planning its annual strategy review. It asks members which areas should receive the most time and attention during the review. Each member receives ten points to allocate across five areas. This shows the group's relative priorities while requiring participants to make trade-offs.
+    translation: קואופרטיב חלב שיבולת שועל מתכנן סקירה שנתית של האסטרטגיה שלו. הקואופרטיב שואל את חברי הקבוצה לאילו תחומים יש להקדיש את מרב הזמן ותשומת הלב במהלך הסקירה. כל חבר מקבל עשר נקודות לחלוקה בין חמישה תחומים. כך אפשר לראות את סדרי העדיפויות היחסיים של הקבוצה, תוך בחירה בין התחומים.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  c74ebb16f872b3c6:
+    english: "## Set up the poll"
+    translation: "## הגדרת המשאל"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  906790609aa7eb30:
+    english: Describe the decision and what the points represent. Add options at a similar level of scope, then set **Points per person**. In this example, each voter receives ten points to indicate how much review time each strategic area should receive.
+    translation: יש לתאר את ההחלטה ואת משמעות הנקודות. יש להוסיף אפשרויות בהיקף דומה, ואז להגדיר **נקודות לאדם**. בדוגמה זו, כל מצביע מקבל עשר נקודות כדי לציין כמה זמן סקירה יש להקדיש לכל תחום אסטרטגי.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  67ae025b83fb4781:
+    english: A very large budget can create false precision. A useful budget is usually large enough to show differences but small enough to require choices. Make clear whether concentrating all points on one option is acceptable.
+    translation: מספר גדול מאוד של נקודות עלול ליצור רושם מטעה של דיוק. בדרך כלל כדאי להקצות מספיק נקודות כדי להראות הבדלים, אך מעט מספיק כדי לחייב בחירה. יש להבהיר אם מותר להקצות את כל הנקודות לאפשרות אחת.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  d391457c69df967f:
+    english: "## Vote"
+    translation: "## הצבעה"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  d9a73b9d4e2f8927:
+    english: Participants move the sliders to distribute their budget. Loomio shows how many points remain and prevents submission until the allocation is valid.
+    translation: המשתתפים מזיזים את המחוונים כדי לחלק את הנקודות. Loomio מציגה כמה נקודות נותרו ומונעת שליחה עד שחלוקת הנקודות תקינה.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  7b3d616673a01fbb:
+    english: In this example, the voter assigns three points each to **Member participation** and **Financial sustainability**, two each to **Environmental impact** and **Staff development**, and none to **Products and services**. A zero does not necessarily mean an area has no value; it means the voter used their limited points elsewhere.
+    translation: בדוגמה זו מוקצות שלוש נקודות לכל אחת מהאפשרויות **השתתפות חברים** ו**יציבות פיננסית**, שתי נקודות לכל אחת מהאפשרויות **השפעה סביבתית** ו**פיתוח צוות**, ואפס נקודות ל**מוצרים ושירותים**. אפס אינו מעיד בהכרח שהתחום חסר ערך; פירושו שהנקודות המוגבלות הוקצו לתחומים אחרים.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  72a9e4073ea27936:
+    english: "## Read the results"
+    translation: "## קריאת התוצאות"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  97147f83eaf22313:
+    english: 'The results order options by the total points received. They also show:'
+    translation: 'האפשרויות בתוצאות מסודרות לפי סך הנקודות שקיבלו. התוצאות מציגות גם:'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  1d224c0c34145a7f:
+    english: |-
+      - **% of points**: the option's share of all allocated points;
+      - **Points**: the total points allocated;
+      - **Mean**: the average among voters who gave the option points; and
+      - **Voters**: how many people gave the option at least one point.
+    translation: |-
+      - **אחוז הנקודות**: חלקה של האפשרות מתוך כלל הנקודות שהוקצו;
+      - **נקודות**: סך הנקודות שהוקצו לאפשרות;
+      - **מתכוון**: הממוצע בקרב המצביעים שהקצו נקודות לאפשרות; וכן
+      - **מצביעים**: מספר האנשים שהקצו לאפשרות לפחות נקודה אחת.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  2901008fa326e4f5:
+    english: In this example, **Financial sustainability** receives the most points, followed by **Staff development**. Financial sustainability receives points from every voter, suggesting broad agreement that it needs substantial review time. Read the totals alongside the number of voters to distinguish broad priorities from areas strongly supported by fewer people.
+    translation: בדוגמה זו, **יציבות פיננסית** מקבלת את מספר הנקודות הגבוה ביותר, ואחריה **פיתוח צוות**. כל המצביעים הקצו נקודות ליציבות פיננסית. הדבר עשוי להעיד על הסכמה רחבה שיש להקדיש לתחום זה זמן סקירה משמעותי. יש לבחון את סך הנקודות לצד מספר המצביעים כדי להבחין בין עדיפות רחבה לבין תחומים שמקבלים תמיכה חזקה ממספר קטן יותר של אנשים.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  f2c04fbdc54d23e8:
+    english: Read the totals together with the number of voters and their reasons. Publish an outcome explaining how the strategy review will be structured; the poll does not assign time automatically.
+    translation: יש לבחון את סך הנקודות לצד מספר המצביעים והנימוקים שלהם. יש לפרסם מסקנה שמסבירה כיצד תיערך סקירת האסטרטגיה; המשאל אינו מקצה זמן באופן אוטומטי.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'

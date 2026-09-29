@@ -1,0 +1,129 @@
+---
+navigation_title: Discussies begeleiden
+blocks:
+  c377321bc013336b:
+    english: "# Facilitating discussions"
+    translation: "# Discussies begeleiden"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  b771c6c746b8dc40:
+    english: 'At times topics arise that require the attention of board or committee members mid-cycle, between meetings. '
+    translation: Soms komen er tussen vergaderingen onderwerpen op die aandacht vragen van bestuurs- of commissieleden.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  b5fc5f12c8e44c40:
+    english: And sometimes there is just not space during a meeting for discussion or to sufficiently deliberate on a decision.
+    translation: En soms is er tijdens een vergadering te weinig tijd om een onderwerp te bespreken of zorgvuldig over een besluit na te denken.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  79f2f83380e195c4:
+    english: "## On Loomio"
+    translation: "## Op Loomio"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  14d5e62d33996982:
+    english: Use a Loomio **thread** to facilitate a discussion.  Give the thread a descriptive title that members will recognize and provide details in the thread context.  Add a relevant category tag to help members find the thread in future.
+    translation: Gebruik een Loomio-**discussie** om een gesprek te begeleiden. Geef de discussie een duidelijke titel die leden herkennen en beschrijf het onderwerp in de context van de discussie. Voeg een relevante categorietag toe, zodat leden de discussie later kunnen terugvinden.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  8d35b4315f4e42cb:
+    english: Notify members of the thread by inviting them, so they will receive a copy of the thread by email.  Members can participate in the discussion by clicking on the link to go to Loomio, or reply to the notification email and their comment will appear as a comment in the thread.
+    translation: Nodig leden uit voor de discussie. Zij krijgen dan een kopie per e-mail. Leden kunnen deelnemen door via de link naar Loomio te gaan. Ze kunnen ook op de e-mailmelding reageren; hun antwoord verschijnt dan als reactie in de discussie.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  f7d839f27c1a6f72:
+    english: A Loomio thread enables you to attach files or link to online resources to support the discussion.
+    translation: In een Loomio-discussie kun je bestanden toevoegen of naar online bronnen linken om het gesprek te ondersteunen.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  e45d25d90798cf1e:
+    english: "Common examples include:\n- review and develop a policy\n- seek advice from the board about a topic or issue\n- discuss strategy \n- explore an idea or opportunity\n- assess risk"
+    translation: |-
+      Veelvoorkomende voorbeelden zijn:
+      - beleid beoordelen en ontwikkelen
+      - het bestuur om advies vragen over een onderwerp of probleem
+      - strategie bespreken
+      - een idee of kans verkennen
+      - risico's beoordelen
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  86ace2adbcf3df6f:
+    english: "## Issues that arise between board meetings"
+    translation: "## Onderwerpen die tussen bestuursvergaderingen opkomen"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  48f6023950ee0729:
+    english: 'A lot can happen in an organization between meetings, and most people rely on email to alert board members.  Trying to keep track of a discussion on email is tricky, with replies often lost in in-boxes and people left out.  '
+    translation: 'Tussen vergaderingen kan er veel gebeuren in een organisatie. Veel mensen gebruiken e-mail om bestuursleden op de hoogte te stellen. Een discussie per e-mail is lastig te volgen: antwoorden raken zoek in inboxen en niet iedereen wordt erbij betrokken.'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  1cb0e78c848b9621:
+    english: "*“You can’t do governance by email!”, Richard Westlake (Westlake Governance).*"
+    translation: "*“Je kunt geen bestuur voeren via e-mail!”, Richard Westlake (Westlake Governance).*"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  eddf348746c93b4c:
+    english: 'When an issue arises requiring board attention, use a Loomio thread rather than email.  Members can reply via email and their comment will appear in the Loomio thread, keeping the discussion in one place. '
+    translation: Als een onderwerp aandacht van het bestuur vraagt, gebruik dan een Loomio-discussie in plaats van e-mail. Leden kunnen per e-mail reageren. Hun reactie verschijnt in de Loomio-discussie, zodat het gesprek op één plek blijft.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  2f7ad89003f79fb8:
+    english: |-
+      Here's how:
+      - Make the email subject line the title of your thread,
+      - write your email content in the thread context,
+      - invite your team to the thread with their email address or Loomio user name.
+    translation: |-
+      Zo doe je dat:
+      - Gebruik het onderwerp van je e-mail als titel van je discussie,
+      - zet de inhoud van je e-mail in de context van de discussie,
+      - nodig je team uit voor de discussie met hun e-mailadres of Loomio-gebruikersnaam.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  9825cbb88dcedc3d:
+    english: |-
+      A Loomio thread means that:
+      - All info about a topic is organized in one easily accessible place,
+      - people can respond without generating reply/reply-all email chains that risk leaving people out,
+      - you can see who has read the message and who needs a nudge,
+      - you can progress actual work to an outcome, and cut down on the amount of email.
+    translation: |-
+      Met een Loomio-discussie:
+      - staat alle informatie over een onderwerp op één goed toegankelijke plek,
+      - kunnen mensen reageren zonder e-mailketens met beantwoorden en allen beantwoorden, waarbij mensen buiten het gesprek kunnen vallen,
+      - kun je zien wie het bericht heeft gelezen en wie een herinnering nodig heeft,
+      - kun je het werk naar een conclusie brengen en het aantal e-mails beperken.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  fb9adc7cb7922016:
+    english: "## When there isn't space during meetings"
+    translation: "## Als er tijdens vergaderingen te weinig tijd is"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  6b1c61424aa7e74b:
+    english: When an agenda item cannot be resolved within the time available in your board meeting, you can move this for further discussion to Loomio. Direct people to the relevant thread, or start a new one and notify your board members.
+    translation: Als er tijdens een bestuursvergadering niet genoeg tijd is om een agendapunt af te ronden, kun je de bespreking voortzetten op Loomio. Verwijs mensen naar de juiste discussie, of start een nieuwe en stel de bestuursleden op de hoogte.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  ced9caddb281230f:
+    english: This relieves pressure on your board, allows more time for information gathering, discussion and deeper reflection which often results in a better quality decision.
+    translation: Dit vermindert de druk op het bestuur. Er is meer tijd om informatie te verzamelen, het onderwerp te bespreken en er goed over na te denken. Dat leidt vaak tot een beter besluit.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'

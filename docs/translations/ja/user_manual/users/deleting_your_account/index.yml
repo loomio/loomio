@@ -1,0 +1,79 @@
+---
+navigation_title: アカウントの削除
+blocks:
+  b69fb514fd196dd7:
+    english: "# Deleting your Loomio account"
+    translation: "# Loomioアカウントの削除"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  941f0addde6f7326:
+    english: "## What does delete account mean?"
+    translation: "## アカウントを削除するとどうなりますか？"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  dab05d98ad64604f:
+    english: |-
+      When you delete your account:
+      - Your user account including your name, email address and other personally identifying data will be deleted from our systems. You will not be able to sign in to Loomio with this account.
+      - Comments, proposal and discussions you have made will remain but your name will be removed from them. We do this because we have an obligation to groups to keep threads and proposals coherent.
+      - You will no longer be listed as a member of any groups.
+      - You will no longer receive notification emails.
+    translation: |-
+      アカウントを削除すると、次のようになります。
+      - 名前、メールアドレス、その他の個人を特定できる情報を含むユーザーアカウントが、Loomioのシステムから削除されます。このアカウントでLoomioにログインできなくなります。
+      - 投稿したコメント、提案、ディスカッションは残りますが、名前は削除されます。グループのスレッドや提案の内容を一貫して残すためです。
+      - どのグループのメンバー一覧にも表示されなくなります。
+      - 通知メールが届かなくなります。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  dbeaf194bb8bd9e8:
+    english: It is important to understand that copies of the data you have generated on Loomio have likely been emailed to everyone in the group - Loomio has no ability to delete those.
+    translation: Loomioで作成したデータのコピーは、グループの全員にメールで送信されている可能性があります。Loomioは、送信済みのコピーを削除できません。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  fa98dfeef486cf05:
+    english: Deleting your account will _not_ cancel your subscription; to stop your payments see [Subscriptions](/en/policy/subscriptions/management#cancel-your-plan).
+    translation: アカウントを削除しても、サブスクリプションは_解約されません_。支払いを止めるには、[サブスクリプション](/en/policy/subscriptions/management#cancel-your-plan)をご覧ください。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  c1ceda8f829133c7:
+    english: Loomio has made fundamental decisions about its ownership, business model and software to protect users' rights. Loomio is an independent, worker-owned cooperative, the software is open source, you can [export your data](/en/user_manual/groups/data_export), and Loomio never sells your data or uses it for advertising. These commitments are set out in our [privacy policy](/en/policy/privacy) and grounded in the purpose and values in our [constitution](https://www.loomio.coop/constitution.html) and [cooperative handbook](https://www.loomio.coop/purpose_and_vision.html). If you have any questions, [contact us](/contact).
+    translation: Loomioは、ユーザーの権利を守るため、所有形態、事業モデル、ソフトウェアについて基本方針を定めています。Loomioは労働者が所有する独立した協同組合です。ソフトウェアはオープンソースで、[データをエクスポート](/en/user_manual/groups/data_export)できます。Loomioがデータを販売したり、広告に利用したりすることはありません。これらの方針は[プライバシーポリシー](/en/policy/privacy)に記載され、[定款](https://www.loomio.coop/constitution.html)と[協同組合ハンドブック](https://www.loomio.coop/purpose_and_vision.html)に示された目的と価値観に基づいています。ご質問がある場合は、[お問い合わせください](/contact)。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  d8cc22d615b8f5d9:
+    english: "## To delete your account entirely"
+    translation: "## アカウントを完全に削除する方法"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  77235d504409d763:
+    english: Sign in to Loomio.  Go to the sidebar from the (☰) menu icon at screen top left Click on your account avatar or initials, at the top right of your screen.
+    translation: Loomioにログインします。画面左上のメニューアイコン（☰）からサイドバーを開きます。次に、画面右上にあるアカウントのアバターまたはイニシャルをクリックします。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  04127f38282f6bd2:
+    english: Click the down arrow ( ∨ ) alongside your name to open user settings. Select **Edit profile**.
+    translation: 名前の横にある下向き矢印（ ∨ ）をクリックしてユーザー設定を開きます。**プロファイル編集**を選択します。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  28b9f49f98d62fae:
+    english: Scroll to the bottom, and click on **Delete account**.
+    translation: 一番下までスクロールし、**アカウントを削除する**をクリックします。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  7151ebb20cf3efbb:
+    english: A pop up will appear requesting confirmation that you wish to delete your account.
+    translation: アカウントの削除を確認するポップアップが表示されます。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'

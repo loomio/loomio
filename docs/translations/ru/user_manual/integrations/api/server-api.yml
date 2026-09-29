@@ -1,0 +1,343 @@
+---
+navigation_title: Серверный API
+blocks:
+  1083a030306ee2ab:
+    english: "# Loomio Server API documentation"
+    translation: "# Документация по серверному API Loomio"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  88da9d3293123753:
+    english: "<!-- seo-description: Use the Loomio Server API to manage user accounts on a self-hosted Loomio installation. -->"
+    translation: "<!-- seo-description: Используйте серверный API Loomio для управления учётными записями пользователей в собственной установке Loomio. -->"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  7fe42bee753b558d:
+    english: "`/api/b3` is for server-level operations. Use `/api/b2` for user-oriented actions performed as a Loomio user account."
+    translation: "`/api/b3` предназначен для операций на уровне сервера. Для действий от имени пользователя Loomio используйте `/api/b2`."
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  df96773c8abc735d:
+    english: "## Authentication"
+    translation: "## Аутентификация"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  3131d6ab6e787458:
+    english: Set `B3_API_KEY` to a secret longer than 16 characters.
+    translation: Задайте для `B3_API_KEY` секретный ключ длиной более 16 символов.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  88c920613607a743:
+    english: 'Send the key as a bearer token:'
+    translation: 'Передавайте ключ как токен Bearer:'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  f64bc40a8142367d:
+    english: Send credentials only in the `Authorization` header. API keys in query strings or request bodies are rejected.
+    translation: Передавайте учётные данные только в заголовке `Authorization`. API-ключи в строке запроса или теле запроса отклоняются.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  06e27eb2d09b17d3:
+    english: "## User Object"
+    translation: "## Объект пользователя"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  eb469c91e1b2c807:
+    english: 'User responses use this shape:'
+    translation: 'Ответы с данными пользователя имеют следующую структуру:'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  61a65dfcd89ff0c5:
+    english: "## List Users"
+    translation: "## Список пользователей"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  b0852d3912847939:
+    english: List all user accounts on the Loomio installation.
+    translation: Получите список всех учётных записей пользователей в установке Loomio.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  ccfc740c8ceee329:
+    english: "`GET /api/b3/users`"
+    translation: "`GET /api/b3/users`"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  b9b5449b4e5cc2bf:
+    english: "### Example"
+    translation: "### Пример"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  aa687b3bdd3ed38a:
+    english: 'Returns:'
+    translation: 'Ответ:'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  3a1aa7b3109173ad:
+    english: "## Show User"
+    translation: "## Получение данных пользователя"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  dac84a659c2867bc:
+    english: Find a user by their Loomio user ID or external identity.
+    translation: Найдите пользователя по его ID в Loomio или внешнему идентификатору.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  43b77c8f1f98680f:
+    english: "`GET /api/b3/users/:id`"
+    translation: "`GET /api/b3/users/:id`"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  22b100ab14e12225:
+    english: "`GET /api/b3/users/identity/:identity_type/:uid`"
+    translation: "`GET /api/b3/users/identity/:identity_type/:uid`"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  867cdb3f99fdd95a:
+    english: "### Examples"
+    translation: "### Примеры"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  6fd8b773738dd20d:
+    english: 'By Loomio user ID:'
+    translation: 'По ID пользователя в Loomio:'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  bc7b59c792994318:
+    english: 'By external identity:'
+    translation: 'По внешнему идентификатору:'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  74a5a519877a16d1:
+    english: "## Update User"
+    translation: "## Обновление данных пользователя"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  3ca15eb188af0a99:
+    english: Update the profile fields of a user found by their Loomio user ID or external identity.
+    translation: Обновите поля профиля пользователя, найденного по его ID в Loomio или внешнему идентификатору.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  d6ae076e5d2435f2:
+    english: "`PATCH /api/b3/users/:id`"
+    translation: "`PATCH /api/b3/users/:id`"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  29fa7bc1e33a4eb2:
+    english: "`PATCH /api/b3/users/identity/:identity_type/:uid`"
+    translation: "`PATCH /api/b3/users/identity/:identity_type/:uid`"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  9bc24da4bd85dac2:
+    english: "### Params"
+    translation: "### Параметры"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  8e8053dd2bb38992:
+    english: |-
+      | Field | Description |
+      | --- | --- |
+      | `name` | Display name |
+      | `username` | Loomio username |
+      | `email` | Email address |
+    translation: |-
+      | Поле | Описание |
+      | --- | --- |
+      | `name` | Отображаемое имя |
+      | `username` | Имя пользователя в Loomio |
+      | `email` | Адрес электронной почты |
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  d3912fbe3513027f:
+    english: 'Returns the updated user:'
+    translation: 'Ответ содержит обновлённые данные пользователя:'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  d3ea2ea6f2000b74:
+    english: "## Deactivate User"
+    translation: "## Деактивация пользователя"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  328f8d1780f1f3db:
+    english: Deactivate a user account found by its Loomio user ID or external identity.
+    translation: Деактивируйте учётную запись пользователя, найденную по его ID в Loomio или внешнему идентификатору.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  43f4112cc34ba506:
+    english: "`POST /api/b3/users/:id/deactivate`"
+    translation: "`POST /api/b3/users/:id/deactivate`"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  c372366bebfa9fd9:
+    english: "`POST /api/b3/users/identity/:identity_type/:uid/deactivate`"
+    translation: "`POST /api/b3/users/identity/:identity_type/:uid/deactivate`"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  adfcf76e29cffb98:
+    english: "## Reactivate User"
+    translation: "## Повторная активация пользователя"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  7248bf23aed796b6:
+    english: Reactivate a deactivated user account found by its Loomio user ID or external identity.
+    translation: Повторно активируйте деактивированную учётную запись пользователя, найденную по его ID в Loomio или внешнему идентификатору.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  5d16072c08fa15bc:
+    english: "`POST /api/b3/users/:id/reactivate`"
+    translation: "`POST /api/b3/users/:id/reactivate`"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  63b47d1d74b77dc9:
+    english: "`POST /api/b3/users/identity/:identity_type/:uid/reactivate`"
+    translation: "`POST /api/b3/users/identity/:identity_type/:uid/reactivate`"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  ef744e4acfdb7653:
+    english: "## Redact User"
+    translation: "## Удаление личных данных пользователя"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  4a423dbb4fd59b45:
+    english: Redaction keeps the user's comments and other user-generated content within their groups, but removes known personally identifying information such as name, bio, profile photo, email address, login credentials, identities, and active sessions.
+    translation: 'При удалении личных данных комментарии пользователя и другие созданные им материалы остаются в его группах. При этом удаляются известные персональные данные: имя, биография, фотография профиля, адрес электронной почты, учётные данные для входа, внешние идентификаторы и активные сеансы.'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  9b472af7dbef98ac:
+    english: This is the recommended way to remove a user from Loomio.
+    translation: Это рекомендуемый способ удалить пользователя из Loomio.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  9839b052c7f487d6:
+    english: "`POST /api/b3/users/:id/redact`"
+    translation: "`POST /api/b3/users/:id/redact`"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  de96fb46de14e0d4:
+    english: "`POST /api/b3/users/identity/:identity_type/:uid/redact`"
+    translation: "`POST /api/b3/users/identity/:identity_type/:uid/redact`"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  ce9efb629e50628c:
+    english: "## Delete User"
+    translation: "## Удаление пользователя"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  a37f91309a44b472:
+    english: Delete removes the user and records the user created. Comments are removed from threads, votes are removed from polls, and groups, discussions, polls, and other records created by the user may also be deleted through database associations.
+    translation: При удалении исчезают учётная запись пользователя и созданные им записи. Комментарии удаляются из обсуждений, голоса — из голосований. Связи в базе данных могут также привести к удалению групп, обсуждений, голосований и других записей, созданных пользователем.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  537bd891e445eb93:
+    english: This is very destructive. Redaction is highly recommended instead.
+    translation: Удаление может привести к значительной потере данных. Вместо него настоятельно рекомендуется обезличивание.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  5a8f0f08bf2e3748:
+    english: "`DELETE /api/b3/users/:id`"
+    translation: "`DELETE /api/b3/users/:id`"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  aa43693fccf0741e:
+    english: "`DELETE /api/b3/users/identity/:identity_type/:uid`"
+    translation: "`DELETE /api/b3/users/identity/:identity_type/:uid`"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  5363d74e43453a93:
+    english: "## SSO Profile Sync Settings"
+    translation: "## Настройки синхронизации профиля через SSO"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  5d1d8b72689c1c84:
+    english: Use these settings when another system manages Loomio profile fields.
+    translation: Используйте эти настройки, если полями профиля Loomio управляет другая система.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  83b6503850a3581c:
+    english: "`LOOMIO_DISABLE_EDIT_USER_PROFILE=1` prevents users from editing these fields themselves:"
+    translation: "`LOOMIO_DISABLE_EDIT_USER_PROFILE=1` запрещает пользователям самостоятельно изменять следующие поля:"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  b40beb01122e6c22:
+    english: |-
+      | Field | Notes |
+      | --- | --- |
+      | `name` | Managed by external sync |
+      | `username` | Managed by external sync |
+      | `email` | Managed by external sync |
+      | `avatar_kind` / `uploaded_avatar` | Managed by external sync |
+    translation: |-
+      | Поле | Примечания |
+      | --- | --- |
+      | `name` | Управляется внешней синхронизацией |
+      | `username` | Управляется внешней синхронизацией |
+      | `email` | Управляется внешней синхронизацией |
+      | `avatar_kind` / `uploaded_avatar` | Управляется внешней синхронизацией |
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  d914243a6d80944b:
+    english: Users can still edit Loomio-local fields such as `short_bio` and `location`.
+    translation: Пользователи по-прежнему могут изменять локальные поля Loomio, например `short_bio` и `location`.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  d2d40191ec060f7e:
+    english: "`LOOMIO_SSO_UPDATE_USER_PROFILE_ON_LOGIN=1` updates `name` and `email` from SSO login data. Leave it commented out or unset when an external sync script should be the only source of those updates."
+    translation: "`LOOMIO_SSO_UPDATE_USER_PROFILE_ON_LOGIN=1` обновляет `name` и `email` на основе данных входа через SSO. Если единственным источником этих обновлений должен быть внешний скрипт синхронизации, оставьте эту строку закомментированной или не задавайте переменную."
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  f19f0588ef52b814:
+    english: "`LOOMIO_SSO_FORCE_USER_ATTRS` still works for existing installs. It both disables user edits and updates `name` and `email` on SSO login."
+    translation: "`LOOMIO_SSO_FORCE_USER_ATTRS` по-прежнему работает в существующих установках. Эта настройка запрещает пользователям изменять профиль и обновляет `name` и `email` при входе через SSO."
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'

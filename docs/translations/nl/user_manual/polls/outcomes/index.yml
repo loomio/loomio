@@ -1,0 +1,109 @@
+---
+navigation_title: Conclusies
+blocks:
+  40ec8b1a5fe05e37:
+    english: "# Outcome"
+    translation: "# Conclusie"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  7478a826673bce70:
+    english: When your proposal or poll closes, you’ll be prompted to enter an **outcome**.
+    translation: Wanneer je voorstel of peiling sluit, wordt je gevraagd een **conclusie** in te voeren.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  ccaf1bc50a4f4734:
+    english: State the results of the proposal or poll and say what will happen next.
+    translation: Beschrijf de resultaten van het voorstel of de peiling en geef aan wat er daarna gebeurt.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  fde482f3a84e26e6:
+    english: The outcome statement is an important record of the poll or decision - a succinct statement for future reference.
+    translation: De conclusie legt de peiling of beslissing vast in een korte tekst die je later kunt raadplegen.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  9f4a341103cf4286:
+    english: "## Outcome statements for common decision processes"
+    translation: "## Conclusies bij veelgebruikte besluitvormingsprocessen"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  457a047ee6ae5975:
+    english: |-
+      | **Decision process** | **When the decision is made** | **Outcome** |
+      |---|---|---|
+      | Advice process | When advice has been received and taken into account. | State the decision made and thank people for their advice and feedback. |
+      | Consent process | When there are no remaining objections. | State that no valid objections remain and there is consent that the proposal is 'safe to try'.  |
+      | Consensus process | When most* people agree. | State proposal results and the decision made. |
+    translation: |-
+      | **Besluitvormingsproces** | **Wanneer de beslissing wordt genomen** | **Conclusie** |
+      |---|---|---|
+      | Adviesproces | Wanneer het advies is ontvangen en meegewogen. | Beschrijf de beslissing en bedank mensen voor hun advies en feedback. |
+      | Consentproces | Wanneer er geen bezwaren meer zijn. | Geef aan dat er geen geldige bezwaren meer zijn en dat er consent is om het voorstel te proberen. |
+      | Consensusproces | Wanneer de meeste* mensen het eens zijn. | Beschrijf de resultaten van het voorstel en de genomen beslissing. |
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  f8adf692b7b22c59:
+    english: "**The majority or supermajority as governed by constitution or by prior agreement within your organization.*  "
+    translation: "**De meerderheid of gekwalificeerde meerderheid zoals vastgelegd in de statuten of vooraf afgesproken binnen jouw organisatie.*"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  278c243b460bef68:
+    english: 'Whatever the results, there is always something to learn from the proposal and poll. '
+    translation: Wat de resultaten ook zijn, van een voorstel of peiling valt altijd iets te leren.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  e694b60515143fcb:
+    english: If your proposal fails, consider what new understanding has been gained, and if this can be accommodated to reach a better decision.
+    translation: Als je voorstel niet wordt aangenomen, kijk dan wat je hebt geleerd en of je daarmee tot een betere beslissing kunt komen.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  780a97e6dd058d5d:
+    english: 'The outcome statement is an opportunity to state the results and what has been learnt.  '
+    translation: In de conclusie kun je de resultaten en de geleerde lessen vastleggen.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  ca65851b5da70691:
+    english: You can notify people - they will receive an email from Loomio containing the poll results and your outcome statement.
+    translation: Je kunt mensen op de hoogte stellen. Ze ontvangen dan een e-mail van Loomio met de resultaten van de peiling en jouw conclusie.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  64d6b82a9343b3a6:
+    english: 'You can also set a **Review date**: a future date when you would like to review this poll or decision. For example, you might review a strategy at the same time next year.'
+    translation: 'Je kunt ook een **Beoordelingsdatum** instellen: een datum waarop je deze peiling of beslissing opnieuw wilt bekijken. Je kunt bijvoorbeeld een strategie volgend jaar rond dezelfde tijd beoordelen.'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  60605804c2662fc8:
+    english: "**Example outcome statements**"
+    translation: "**Voorbeelden van conclusies**"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  96f33990f48604cd:
+    english: "> _This proposal did not reach consensus because several people were concerned about budget impacts. George and Jimena will do some financial modelling and raise a new proposal next week._"
+    translation: "> _Over dit voorstel is geen consensus bereikt, omdat meerdere mensen zich zorgen maakten over de gevolgen voor het budget. George en Jimena zullen de financiële gevolgen doorrekenen en volgende week een nieuw voorstel indienen._"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  7175517a370b5cd2:
+    english: or
+    translation: of
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  40861d5640e63eef:
+    english: "> _I've taken on board everyone's input. As the project manager, this is my call to make and I've decided we are going to extend the timeline by 10 days._"
+    translation: "> _Ik heb ieders inbreng meegewogen. Als projectmanager neem ik deze beslissing. Ik heb besloten de planning met 10 dagen te verlengen._"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'

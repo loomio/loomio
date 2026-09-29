@@ -1,0 +1,91 @@
+---
+navigation_title: Grupos
+blocks:
+  cce1047bc62d8a5e:
+    english: "# Intro to Groups"
+    translation: "# Introducción a los grupos"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  91a303d3d1fb3894:
+    english: 'A Loomio group is a safe place for people to meet, have discussions and make decisions. '
+    translation: Un grupo de Loomio es un espacio seguro donde las personas pueden reunirse, debatir y tomar decisiones.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  ea5096230dfe16d4:
+    english: 'It’s a container where group members can find and share information, participate in important discussions and decisions that affect their work.  '
+    translation: Es un lugar donde los miembros del grupo pueden encontrar y compartir información, y participar en discusiones y decisiones importantes para su trabajo.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  47903117cdc64e73:
+    english: A Loomio group looks like this.  At the top of the page you will see an image and logo that you can tailor to represent your organization.  This allows people arriving into your group to see they have joined a place they recognize and feel welcome - a safe space where people feel at home, amongst friends and can participate effectively.
+    translation: Así es un grupo de Loomio. En la parte superior de la página verás una imagen y un logotipo que puedes adaptar para representar a tu organización. Así, quienes lleguen a tu grupo podrán reconocer el espacio, sentirse bienvenidos y participar con confianza.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  3d39462ab98c79e6:
+    english: "![The Oatmilk Cooperative group page, with its description and discussion list](group_page.png)"
+    translation: "![Página del grupo Cooperativa Oatmilk, con su descripción y lista de discusiones](group_page.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  59f3bebbce1676a6:
+    english: |-
+      Choose a representative name for your group and use the group description to outline;
+      - **what** this group is used for,
+      - **why** this is important,
+      - **who** is involved, and
+      - **how** members can participate.
+    translation: |-
+      Elige un nombre que represente a tu grupo y usa la descripción para explicar:
+      - **para qué** se usa el grupo,
+      - **por qué** es importante,
+      - **quiénes** participan, y
+      - **cómo** pueden participar los miembros.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  79ae54bca7eb1797:
+    english: You may also include information like a code of conduct, terms of reference or other governing documents for the group.
+    translation: También puedes incluir un código de conducta, normas de funcionamiento u otros documentos que rijan el grupo.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  '018c400616dad5f4':
+    english: If you are preparing a new group, see [Introducing Loomio to your group](/en/user_manual/overview/introducing_loomio) for a practical sequence from choosing the first piece of work through to recording an outcome.
+    translation: Si estás preparando un grupo nuevo, consulta [Cómo presentar Loomio a tu grupo](/en/user_manual/overview/introducing_loomio) para seguir una secuencia práctica, desde elegir la primera tarea hasta registrar una conclusión.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  1bda53ca8e31780c:
+    english: "## Administration, Facilitation and Moderation - Code of Conduct"
+    translation: "## Administración, facilitación y moderación: código de conducta"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  1091f77d5ab879ed:
+    english: 'Loomio is built to foster inclusive participation, diversity and trust - helping groups make better decisions together. '
+    translation: Loomio ayuda a los grupos a tomar mejores decisiones juntos mediante la participación inclusiva, la diversidad y la confianza.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  1ac058350eea2c6d:
+    english: 'Some topics bring tension in a group.  So it''s important to allow a robust discussion to take place, while ensuring it is also a safe place, particularly for vulnerable people in your group. '
+    translation: Algunos temas pueden generar tensión en un grupo. Por eso, es importante permitir una discusión abierta y rigurosa, y mantener un espacio seguro, especialmente para las personas vulnerables del grupo.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  999bb2251bf623cd:
+    english: 'We recommend establishing a code of conduct for your group, to help everyone be aware of their responsibility for appropriate behaviour and encourage self-regulation. '
+    translation: Recomendamos establecer un código de conducta para el grupo. Así, todas las personas conocerán su responsabilidad de comportarse adecuadamente y podrán regular su propia conducta.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  9a77fa2d5f4fdb01:
+    english: See the [Facilitator's Guide](/en/guides/facilitators_guide/commencing#culture-protocol-expectations) to further explore the value of a code of conduct.
+    translation: Consulta la [Guía para facilitadores](/en/guides/facilitators_guide/commencing#culture-protocol-expectations) para conocer mejor la utilidad de un código de conducta.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'

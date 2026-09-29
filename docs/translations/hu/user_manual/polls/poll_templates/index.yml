@@ -1,0 +1,267 @@
+---
+navigation_title: Szavazási sablonok
+blocks:
+  6428da81fbbe11c6:
+    english: "# Poll templates"
+    translation: "# Szavazási sablonok"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  208bc68b458895f1:
+    english: Poll templates are reusable starting points shown when someone selects **Start a vote** or **New poll**. A template combines a voting method with preset guidance, response options, and settings.
+    translation: A szavazási sablonok újra felhasználható kiindulópontok, amelyek a **Szavazás indítása** vagy az **Új szavazás** kiválasztásakor jelennek meg. Egy sablon szavazási módszert, előre megadott útmutatást, válaszlehetőségeket és beállításokat tartalmaz.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  f290b92adeb2a791:
+    english: Use this page to configure which templates are available to a group or to create one for your own process. To choose a template for a particular vote, see [Proposals](../proposals/) or [Polls](../proposal_types/). To facilitate a complete decision process, see [Making decisions](/en/guides/making_decisions/).
+    translation: Ezen az oldalon beállíthatod, mely sablonok érhetők el egy csoportban, vagy létrehozhatsz egyet a saját döntési folyamatotokhoz. Ha egy adott szavazáshoz szeretnél sablont választani, olvasd el a [Javaslatok](../proposals/) vagy a [Szavazások](../proposal_types/) oldalát. A teljes döntési folyamat támogatásához olvasd el a [Döntéshozatal](/en/guides/making_decisions/) útmutatót.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  658d10486cbee7dc:
+    english: "## Voting methods and templates"
+    translation: "## Szavazási módszerek és sablonok"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  d903d1a58aebf643:
+    english: A voting method controls how participants respond and how Loomio calculates the result. Examples include Proposal, Choose, Score, Allocate, Rank, Time poll, and STV.
+    translation: A szavazási módszer határozza meg, hogyan válaszolnak a résztvevők, és hogyan számítja ki a Loomio az eredményt. Ilyen módszer a Javaslat, a Választ, a Pontszám, a Kiosztás, a Rangsorolás, az Időpont választás és az STV.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  21efff1a5c91ad29:
+    english: A poll template uses one of those methods and adds reusable defaults. For example, Sense check, Advice, Consent, and Consensus are different templates built on the Proposal voting method. Their instructions and response options differ even though Loomio handles their ballots in the same way.
+    translation: A szavazási sablon ezek egyikét használja, és újra felhasználható alapbeállításokat ad hozzá. Például a helyzetfelmérés, a tanácskérés, a hozzájárulás és a konszenzus különböző, a Javaslat módszerre épülő sablonok. Az útmutatásuk és a válaszlehetőségeik eltérnek, bár a Loomio ugyanúgy kezeli a leadott szavazatokat.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  f622951ffc7e1064:
+    english: "## Use a template"
+    translation: "## Sablon használata"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  865e825cc7d00cf2:
+    english: When starting a vote, select the **Proposal** or **Poll** tab and choose one of the templates available to the group.
+    translation: Szavazás indításakor válaszd a **Javaslat** vagy a **Szavazás** fület, majd válassz egyet a csoport számára elérhető sablonok közül.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  1598f1a55a6944e6:
+    english: The template supplies an introduction, example content, options, and settings. Review and edit these for the particular decision before starting the vote. Editing the new vote does not change the reusable template.
+    translation: A sablon bevezetőt, példatartalmat, lehetőségeket és beállításokat ad meg. A szavazás indítása előtt nézd át és igazítsd ezeket az adott döntéshez. Az új szavazás szerkesztése nem módosítja az újra felhasználható sablont.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  8212a94908338b22:
+    english: "## Who can manage templates"
+    translation: "## Ki kezelheti a sablonokat?"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  378caa9ba83ee0dc:
+    english: Group administrators can create and manage every poll template in their group. They can enable **Members can create templates** under **Group settings** → **Permissions**. When enabled, members can create templates and manage templates they authored.
+    translation: A csoportadminisztrátorok a csoport összes szavazási sablonját létrehozhatják és kezelhetik. A **Csoport beállítások** → **Engedélyek** alatt bekapcsolhatják az **A tagok sablonokat hozhatnak létre** beállítást. Ha ez be van kapcsolva, a tagok sablonokat hozhatnak létre, és kezelhetik az általuk készített sablonokat.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  0fafc6275b6c9153:
+    english: "## Create a poll template"
+    translation: "## Szavazási sablon létrehozása"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  5fc696a1e924179c:
+    english: Open the template list and select **New template**. Start with an example or a blank template, then choose the group that will use it.
+    translation: Nyisd meg a sablonok listáját, és válaszd az **Új sablon** lehetőséget. Indulj ki egy példából vagy egy üres sablonból, majd válaszd ki a csoportot, amely használni fogja.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  37b3658ec66eb8b7:
+    english: The template form defines the guidance and defaults people receive when they start a vote.
+    translation: A sablon űrlapján adhatod meg azt az útmutatást és azokat az alapbeállításokat, amelyeket az emberek szavazás indításakor látnak.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  fa0dab51a009bf90:
+    english: "### Template title, subtitle, and help"
+    translation: "### A sablon címe, alcíme és súgója"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  965cde5e13952ade:
+    english: |-
+      - **Template title** is the short name shown in the template list.
+      - **Template subtitle** explains when to use it in one sentence.
+      - **Template help** appears in the information panel when someone uses the template. Explain its purpose, any rules participants should know, and links to relevant policies or guides.
+    translation: |-
+      - A **Sablon címe** a sablonok listájában megjelenő rövid név.
+      - A **Sablon alcíme** egy mondatban elmagyarázza, mikor érdemes használni.
+      - A **Sablon súgó** az információs panelen jelenik meg, amikor valaki használja a sablont. Írd le a sablon célját, a résztvevők számára fontos szabályokat, és adj meg hivatkozásokat a kapcsolódó szabályzatokra vagy útmutatókra.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  f3e51b30163d5b85:
+    english: Use plain, specific names that distinguish the template from others in the group.
+    translation: Használj egyszerű, egyértelmű neveket, amelyek megkülönböztetik a sablont a csoport többi sablonjától.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  e6b8a09191bb8c3f:
+    english: "### Voting method"
+    translation: "### Szavazási módszer"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  ea4fef806c1cf060:
+    english: Choose what participants need to express and how the result should be calculated.
+    translation: Válassz aszerint, hogy mit kell kifejezniük a résztvevőknek, és hogyan kell kiszámítani az eredményt.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  f8c87a496921c710:
+    english: |-
+      - **Proposal**: respond to a statement using defined positions;
+      - **Choose**: select one or more options;
+      - **Score**: evaluate every option on a scale;
+      - **Allocate**: distribute a limited budget of points;
+      - **Rank**: arrange options in preference order;
+      - **Time poll**: indicate availability; and
+      - **STV**: rank candidates in a proportional, multi-winner election.
+    translation: |-
+      - **Javaslat**: válasz egy állításra előre meghatározott álláspontokkal;
+      - **Választ**: egy vagy több lehetőség kiválasztása;
+      - **Pontszám**: minden lehetőség értékelése egy skálán;
+      - **Kiosztás**: korlátozott számú pont elosztása;
+      - **Rangsorolás**: a lehetőségek sorrendbe állítása a preferenciák szerint;
+      - **Időpont választás**: a ráérés jelzése; és
+      - **STV**: jelöltek rangsorolása arányos, több győztest eredményező választáson.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  9d589e44fa94c5e2:
+    english: Changing the voting method changes the fields and result calculation available to the template.
+    translation: A szavazási módszer megváltoztatásával a sablonban elérhető mezők és az eredmény kiszámítása is változik.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  230689f781e4cbc7:
+    english: "### Example title, details, and tags"
+    translation: "### Példacím, részletek és címkék"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  6fa4b3625c6ec7ce:
+    english: Provide example content that helps an author frame the vote. These values are copied into a new proposal or poll and can be edited before it starts.
+    translation: Adj meg példatartalmat, amely segít a szavazás megfogalmazásában. Ezek az értékek bekerülnek az új javaslatba vagy szavazásba, és az indítás előtt szerkeszthetők.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  a093368b30ac3c9b:
+    english: Use prompts rather than fixed content when each use needs a different title or details. Add default category tags only when they apply every time the template is used.
+    translation: Ha a sablon minden használatakor más címre vagy részletekre van szükség, rögzített szöveg helyett adj meg kitöltési útmutatást. Alapértelmezett kategóriacímkéket csak akkor adj hozzá, ha a sablon minden használatakor érvényesek.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  24c3fa4b7ef676fd:
+    english: "### Response options"
+    translation: "### Válaszlehetőségek"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  e7421caab9c47f5b:
+    english: 'Methods such as Proposal and Choose let you configure response options. Select the pencil icon beside an option to edit:'
+    translation: 'Egyes módszereknél, például a Javaslat és a Választ esetében beállíthatod a válaszlehetőségeket. A szerkesztéshez kattints a lehetőség melletti ceruzaikonra:'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  73a065ad5b861579:
+    english: |-
+      - **Option name**: the short response label;
+      - **Icon**: its visual marker;
+      - **Meaning**: what selecting the option communicates; and
+      - **Reason prompt**: the question shown when someone explains their response.
+    translation: |-
+      - **Opció neve**: a válasz rövid neve;
+      - **Ikon**: a lehetőség képi jelölése;
+      - **Jelentése**: mit fejez ki a lehetőség kiválasztása; és
+      - **Indoklás kérése**: a kérdés, amely akkor jelenik meg, amikor valaki megindokolja a válaszát.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  38bc8cfc36aaea2e:
+    english: Define options so participants can tell the difference between them without guessing. The meanings should match the decision rules your group actually uses.
+    translation: Úgy határozd meg a lehetőségeket, hogy a résztvevők találgatás nélkül megértsék a különbséget köztük. A jelentésük feleljen meg a csoport tényleges döntési szabályainak.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  cc4adba73670a75b:
+    english: "### Duration and settings"
+    translation: "### Időtartam és beállítások"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  6c63a57ab4cec442:
+    english: Set a default duration that is suitable for most uses of the template. The author can change the closing time for an individual vote.
+    translation: Állíts be olyan alapértelmezett időtartamot, amely a sablon legtöbb használatához megfelelő. Az indító az egyes szavazások zárási idejét módosíthatja.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  df14be8dbf80fa3c:
+    english: Other defaults can control result visibility, anonymous voting, vote-reason requirements, reminders, quorum, and method-specific behaviour. See [Proposal and poll settings](../settings/) for their effects.
+    translation: Más alapbeállítások szabályozhatják az eredmény láthatóságát, a névtelen szavazást, az indoklás kötelező megadását, az emlékeztetőket, a részvételi küszöböt és a választott módszer sajátos működését. A hatásukat a [Javaslatok és szavazások beállításai](../settings/) oldalon találod.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  774ed7b91d33ab10:
+    english: "### Save and test the template"
+    translation: "### A sablon mentése és kipróbálása"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  1b26a723ab8a9811:
+    english: After saving, start a draft vote from the template. Check that its introduction, prompts, options, and defaults make sense to someone who did not create it. Starting a draft is also a useful way to confirm that the chosen voting method produces the result the group expects.
+    translation: Mentés után indíts egy szavazástervezetet a sablonból. Ellenőrizd, hogy a bevezető, a kitöltési útmutatás, a lehetőségek és az alapbeállítások annak is érthetők-e, aki nem készítette a sablont. A tervezetben azt is ellenőrizheted, hogy a választott szavazási módszer a csoport által várt eredményt adja-e.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  1f0dab3f50320e75:
+    english: "## Manage the template list"
+    translation: "## A sablonok listájának kezelése"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  e9748843a900273f:
+    english: 'Use the action menu beside a template to:'
+    translation: 'A sablon melletti műveleti menüben a következőket teheted:'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  646235094d051c83:
+    english: |-
+      - **Edit** its reusable content and defaults;
+      - **Move** it to a different position in the list;
+      - **Hide** it from people starting votes; or
+      - **Delete** a custom template that is no longer needed.
+    translation: |-
+      - **Szerkesztés**: módosíthatod az újra felhasználható tartalmat és az alapbeállításokat;
+      - **Mozgat**: áthelyezheted a sablont a lista másik helyére;
+      - **Elrejt**: elrejtheted a sablont a szavazást indítók elől; vagy
+      - **Törlés**: törölhetsz egy egyéni sablont, amelyre már nincs szükség.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  3f6dc06b1fd2bce8:
+    english: Select **Show hidden templates** to review or restore hidden templates. Default templates can be hidden or adapted for the group, but cannot be deleted.
+    translation: A rejtett sablonok áttekintéséhez vagy visszaállításához válaszd a **Rejtett sablonok megjelenítése** lehetőséget. Az alapértelmezett sablonok elrejthetők vagy a csoport igényeihez igazíthatók, de nem törölhetők.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  be3ee2d2721d3e2a:
+    english: Changing a template does not alter proposals or polls that have already been started from it.
+    translation: A sablon módosítása nem változtatja meg a belőle már elindított javaslatokat vagy szavazásokat.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'

@@ -1,0 +1,93 @@
+---
+navigation_title: Consenso
+blocks:
+  9f617c478e625137:
+    english: "# Consensus"
+    translation: "# Consenso"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  7fdabc28ebd47ad3:
+    english: A Consensus proposal seeks collective agreement from everyone involved. The default responses let participants agree, abstain, disagree, or block.
+    translation: Una proposta di Consenso cerca un accordo condiviso tra tutte le persone coinvolte. Le risposte predefinite permettono ai partecipanti di essere d'accordo, astenersi, essere in disaccordo o bloccare la proposta.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  82dbfd2dd1160c29:
+    english: This page explains how to run one Consensus proposal. See the [Consensus process](/en/guides/making_decisions/consensus_process) for the complete workflow from discussion and Sense check through amendment and outcome.
+    translation: Questa pagina spiega come gestire una proposta di Consenso. Consulta il [processo di Consenso](/en/guides/making_decisions/consensus_process) per il percorso completo, dalla discussione e dalla verifica dell'orientamento del gruppo fino alle modifiche e alla conclusione.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  12074389ed4de458:
+    english: "## When to use Consensus"
+    translation: "## Quando usare il Consenso"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  e1e89b6df3a1dbe1:
+    english: Use Consensus for decisions where broad ownership matters and the group is prepared to work through concerns together. It suits shared standards, governance agreements, strategic commitments, and decisions that affect the whole group.
+    translation: Usa il Consenso per le decisioni che richiedono un ampio impegno condiviso, quando il gruppo è pronto ad affrontare insieme le preoccupazioni. È adatto a standard comuni, accordi di governance, impegni strategici e decisioni che riguardano l'intero gruppo.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  a28ea900326c3254:
+    english: Consensus usually requires discussion and proposal development before voting. Define the meaning and consequences of **Block** for your group. If your process does not use blocks, edit the template to remove that option.
+    translation: Il Consenso richiede di solito una discussione e la preparazione della proposta prima del voto. Definisci che cosa significa **Blocco** per il tuo gruppo e quali conseguenze comporta. Se il tuo processo non prevede blocchi, modifica il modello per rimuovere questa opzione.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  f795d33e2be59883:
+    english: "## Example: adopt a bottle return standard"
+    translation: "## Esempio: adottare uno standard per la restituzione delle bottiglie"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  dda29f07ddb547f7:
+    english: Oatmilk Cooperative has developed a standard covering deposits, collection, washing, food-safety records, and reporting. Because every team will use it, the cooperative seeks consensus before adopting it.
+    translation: La Cooperativa del Latte d'Avena ha elaborato uno standard che riguarda i depositi cauzionali, la raccolta, il lavaggio, la documentazione sulla sicurezza alimentare e la rendicontazione. Poiché tutti i team lo useranno, la cooperativa cerca il consenso prima di adottarlo.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  9703f1f9474243af:
+    english: "## Set up the proposal"
+    translation: "## Prepara la proposta"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  9e63b2959e1f6553:
+    english: State the complete agreement being considered and link to supporting information. Explain each response, particularly the distinction between disagreeing and blocking. Allow enough time for questions and amendments.
+    translation: Descrivi l'accordo completo su cui il gruppo deve decidere e aggiungi i link alle informazioni di supporto. Spiega ogni risposta, in particolare la differenza tra essere in disaccordo e bloccare la proposta. Lascia tempo sufficiente per domande e modifiche.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  d391457c69df967f:
+    english: "## Vote"
+    translation: "## Vota"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  955925e0c6998049:
+    english: Participants choose the response that matches their position and explain the interests or concerns behind it. A block reason should identify why adopting the proposal would violate a fundamental need or agreed principle.
+    translation: I partecipanti scelgono la risposta che rappresenta la loro posizione e spiegano gli interessi o le preoccupazioni che la motivano. Chi blocca la proposta dovrebbe spiegare perché adottarla violerebbe un'esigenza fondamentale o un principio condiviso.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  72a9e4073ea27936:
+    english: "## Read the results"
+    translation: "## Leggi i risultati"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  d5d9f0dbb463bed7:
+    english: The chart shows the balance of responses. Review every disagreement and block reason; consensus is a process of resolving concerns, not only counting agreement votes.
+    translation: 'Il grafico mostra la distribuzione delle risposte. Esamina ogni motivo di disaccordo o blocco: il Consenso richiede di affrontare le preoccupazioni, non solo di contare i voti favorevoli.'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  f7318776f4a978fc:
+    english: If the group reaches agreement, publish an outcome recording the final standard and responsibilities. Otherwise, record what will be revised and when the group will return to the proposal.
+    translation: Se il gruppo raggiunge un accordo, pubblica una conclusione che riporti lo standard definitivo e le responsabilità. Altrimenti, registra che cosa verrà rivisto e quando il gruppo tornerà a esaminare la proposta.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'

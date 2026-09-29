@@ -1,0 +1,149 @@
+---
+navigation_title: Integrazioni di chat
+blocks:
+  2e7de12fecf4173f:
+    english: "# Chat integrations"
+    translation: "# Integrazioni di chat"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  195fe68dbcc6418f:
+    english: Loomio can send notifications to your chatroom.
+    translation: Loomio può inviare notifiche alla tua chat.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  bf886ec0d398e8d7:
+    english: Chat tools and Loomio work well together. Use chat for quick conversation and timely updates. Move important topics to Loomio when people need time to participate, when a decision must be made, or when the group will need a lasting record.
+    translation: La chat e Loomio funzionano bene insieme. Usa la chat per conversazioni rapide e aggiornamenti tempestivi. Porta gli argomenti importanti su Loomio quando le persone hanno bisogno di tempo per partecipare, quando occorre prendere una decisione o quando il gruppo deve conservarne traccia.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  db7d26a18ddc651d:
+    english: Loomio supports Slack, Discord, Microsoft Teams, Matrix and Mattermost.
+    translation: Loomio supporta Slack, Discord, Microsoft Teams, Matrix e Mattermost.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  765fc0d609a0db99:
+    english: You can send notifications to your chatroom any time you like, just the same way you would invite individual people to vote, or to join a thread.
+    translation: Puoi inviare notifiche alla tua chat quando vuoi, proprio come inviti singole persone a votare o a partecipare a una discussione.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  a89717f4f41f3212:
+    english: You can also configure notifications to always happen when a specific event happens, like someone starting a thread.
+    translation: Puoi anche configurare l'invio automatico di notifiche per eventi specifici, per esempio quando qualcuno avvia una discussione.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  c425490496cb0ed2:
+    english: |-
+      ## What it looks like in chat
+      ![](chatbot_in_slack.png)
+    translation: |-
+      ## Come appare nella chat
+      ![](chatbot_in_slack.png)
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  e21550bf41c185b9:
+    english: |-
+      ## Generate a Webhook URL
+      We've prepared step by step walk-throughs for each service we support. Follow the right one for your service to obtain the webhook URL you'll need to add the chat integration in Loomio.
+    translation: |-
+      ## Genera un URL webhook
+      Abbiamo preparato istruzioni dettagliate per ogni servizio supportato. Segui quelle del servizio che usi per ottenere l'URL webhook necessario ad aggiungere l'integrazione di chat in Loomio.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  84f03860780d02b8:
+    english: |-
+      - [Slack](../slack/)
+      - [Microsoft Teams](../microsoft_teams/)
+      - [Discord](../discord/)
+      - [Matrix](../matrix/)
+      - [Mattermost](../mattermost/)
+    translation: |-
+      - [Slack](../slack/)
+      - [Microsoft Teams](../microsoft_teams/)
+      - [Discord](../discord/)
+      - [Matrix](../matrix/)
+      - [Mattermost](../mattermost/)
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  290b36f9178272e2:
+    english: |-
+      Our webhook based system can also be used to support other systems that support incoming webhooks with either HTML or Markdown formatting. This could be something like Zapier or Rocketchat.
+      Just select the mattermost bot, but use a custom webhook URL.
+    translation: |-
+      Il sistema basato sui webhook può funzionare anche con altri servizi che accettano webhook in ingresso formattati in HTML o Markdown, come Zapier o Rocketchat.
+      Seleziona il bot Mattermost e usa un URL webhook personalizzato.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  f76c44196c94dcef:
+    english: "## Set up a chat integration"
+    translation: "## Configura un'integrazione di chat"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  3c63f567f90fd1eb:
+    english: |-
+      After configuring your chosen service (see above), you'll have a webhook URL.
+      Open **Chat integrations** from the group menu and add a new chat integration for your group.
+    translation: |-
+      Dopo aver configurato il servizio scelto (vedi sopra), avrai un URL webhook.
+      Apri **Integrazioni di chat** dal menu del gruppo e aggiungi una nuova integrazione di chat per il tuo gruppo.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  a2e8e555406040a6:
+    english: |-
+      ![](loomio-group-settings.png)
+      ![](loomio-settings-chatbots.png)
+    translation: |-
+      ![](loomio-group-settings.png)
+      ![](loomio-settings-chatbots.png)
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  ca092d1c3fdb9f59:
+    english: 'You probably don''t want to click any of the checkboxes for now. Just enter the name (such as "Discord #general") and the URL and click the save button at the bottom of the form.'
+    translation: 'Per ora lascia deselezionate le caselle. Inserisci il nome (per esempio "Discord #general") e l''URL, poi seleziona il pulsante per salvare in fondo al modulo.'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  a63a4be4a45bcfdb:
+    english: If you decide later that you want the integration to receive automatic notifications, return to its settings and select the relevant events.
+    translation: Se in seguito vuoi ricevere notifiche automatiche tramite l'integrazione, torna alle sue impostazioni e seleziona gli eventi pertinenti.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  f1d9c09f9d3c2a82:
+    english: "### Invite to poll"
+    translation: "### Invita a votare"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  cbc7b5fd5afcc24c:
+    english: |-
+      This is how to send a notification to your chatroom inviting people to vote in a proposal.
+      It's the same process for Share outcome, Invite to thread, Remind to vote, Poll edited etc.
+    translation: |-
+      Per invitare le persone a votare una proposta, invia una notifica alla tua chat in questo modo.
+      La procedura è la stessa per Condividi conclusione, Invita alla discussione, Ricorda di votare, Sondaggio modificato e altri eventi.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  290001bb97dee010:
+    english: |-
+      ### Automatic notifications
+      To send a notification whenever a specific event happens, edit the chat integration and select that event.
+    translation: |-
+      ### Notifiche automatiche
+      Per inviare una notifica ogni volta che si verifica un evento specifico, modifica l'integrazione di chat e seleziona quell'evento.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'

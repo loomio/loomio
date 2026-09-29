@@ -1,0 +1,179 @@
+---
+navigation_title: Подведение итогов
+blocks:
+  b2d8fb17fce5a4a3:
+    english: "# Concluding"
+    translation: "# Подведение итогов"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  4e03229937f959ed:
+    english: "## Outcomes & Next Steps"
+    translation: "## Итоги и дальнейшие шаги"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  eaf0fe98db301c7f:
+    english: 'Confirming the outcome can be critical to feel like the goals of a collaborative discussion have been achieved. A facilitator can pull together what’s been decided and reflect it back, to help the group walk away with the answers to some key questions:'
+    translation: 'Подведение итогов помогает участникам понять, достигло ли совместное обсуждение своих целей. Ведущий может обобщить принятые решения и представить их группе, чтобы ответить на ключевые вопросы:'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  00ed94f662c9643a:
+    english: |-
+      * What did we do?
+      * What does it mean?
+      * What will happen now?
+      * What is my responsibility?
+      * What will be different because we went through this experience?
+    translation: |-
+      * Что мы сделали?
+      * Что это значит?
+      * Что произойдёт дальше?
+      * За что отвечаю я?
+      * Что изменится благодаря этой совместной работе?
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  0f9ecf512b4990b7:
+    english: Sometimes the answers to these questions are very concrete, such as action points, while other times they are more abstract, such as deepening shared understanding.
+    translation: 'Иногда ответы на эти вопросы вполне конкретны, например список задач. В других случаях они менее осязаемы: участники начинают лучше понимать друг друга.'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  aabfa9d842af2688:
+    english: On Loomio
+    translation: В Loomio
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  a63bbb12b1a1e04c:
+    english: |-
+      * [Outcomes](/en/user_manual/polls/outcomes/) are a very important tool. A proposal ending is not quite the end: there’s a need to sum up conclusively. That's what the outcome feature is for.
+      * Many Loomio discussions come to a natural end without even using proposals or publishing outcomes. These discussions still provide a lot of value, and it can be helpful to update the context box with an outcome summary for later reference.
+      * If specific people have action points, you can @mention their names and they will be notified.
+    translation: |-
+      * [Итоги](/en/user_manual/polls/outcomes/) — важный инструмент. Завершение предложения ещё не означает завершения работы: нужно сформулировать окончательный вывод. Для этого и предназначена функция подведения итогов.
+      * Многие обсуждения в Loomio естественным образом завершаются без предложений и опубликованных итогов. Они всё равно полезны. Можно добавить краткий итог в поле контекста, чтобы позже к нему вернуться.
+      * Если конкретным людям поручены задачи, вы можете упомянуть их через @ — они получат уведомление.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  55a9b345194f80d6:
+    english: "## Reporting & Harvesting"
+    translation: "## Отчётность и сохранение результатов"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  fc6ee28887dd5ab1:
+    english: To understand the meaning of an experience, you have to inquire into how it fits into the bigger context. What was this moment, in the bigger rhythm of our progress? What form will our understanding from this experience take — a story, a report, a change, a call to action?
+    translation: Чтобы понять значение совместной работы, нужно увидеть её в более широком контексте. Какое место этот этап занимает в общем ходе работы? В какой форме сохранить полученные знания — как историю, отчёт, изменение или призыв к действию?
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  eb2cdc1c6526e053:
+    english: The experience happens in the moment, but its impact often comes from putting handles on it, giving it a name, and being able to use it and refer to it. Otherwise you risk forgetting, leaving people out who weren't there, or having to repeat it later. Productive collaboration is often helped by tangible documentation or reporting.
+    translation: Совместная работа происходит здесь и сейчас, но её влияние часто зависит от того, удастся ли назвать и сохранить её результаты, чтобы пользоваться ими и ссылаться на них позже. Иначе о них можно забыть, не поделиться ими с теми, кто не участвовал, или повторить ту же работу. Документация и отчёты помогают продолжать совместную работу.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  4104d8b917a87b0e:
+    english: |-
+      * Loomio is self-documenting — notes write themselves as an integrated part of the process. This creates a gold-mine of archival content for groups, without any extra effort.
+      * We have some features to support harvesting and archiving: the search function, the “previous decisions” list, and the print discussion option.
+      * Premium plans offer the option to export all your group's Loomio data.
+      * Many groups use Loomio to integrate content from various channels. For example, posting a meeting announcement and building the agenda on Loomio, having the meeting in person, posting the notes back on Loomio, and making related decisions in the same thread. This expands the “self-harvesting” ability of Loomio beyond the online space.
+    translation: |-
+      * В Loomio записи создаются по ходу работы. Так у группы без дополнительных усилий появляется архив обсуждений и решений.
+      * Сохранять и находить материалы помогают поиск, список «Предыдущие решения» и возможность распечатать обсуждение.
+      * Платные тарифы позволяют экспортировать все данные вашей группы из Loomio.
+      * Многие группы собирают в Loomio материалы из разных каналов. Например, они публикуют объявление о встрече и составляют повестку в Loomio, проводят встречу очно, затем размещают заметки и принимают связанные решения в той же теме. Так в Loomio сохраняются и результаты работы за пределами платформы.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  dae98cfd5f14b034:
+    english: "## Turning Discussion into Action"
+    translation: "## От обсуждения к действию"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  a39a66938d6cadb0:
+    english: There comes a moment when you have to re-engage with the reality outside the room. Occasionally, the need is simply to work with ideas and feelings, without worrying about implementation. But usually a group will not reach its goals without applying its conclusions to real-world action. This transition is part of the total facilitated experience.
+    translation: Наступает момент, когда нужно вернуться к делам за пределами обсуждения. Иногда достаточно поработать с идеями и чувствами, не думая об их воплощении. Но обычно группа достигает целей, только если применяет свои выводы на практике. Переход к действиям — часть совместной работы.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  3e26f1939ffe69fe:
+    english: 'It’s at this point that a collaborative process intersects with other organizational systems, and the facilitator has to help figure out how it will work. These other systems might include:'
+    translation: 'На этом этапе совместный процесс пересекается с другими рабочими процессами организации. Ведущему нужно помочь группе понять, как они будут взаимодействовать. Среди таких вопросов:'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  cb030c5876714643:
+    english: |-
+      * **Power** — Who actually makes decisions? What has to happen for ideas to turn into reality here?
+      * **Management** — How does this fit into other priorities? What dependencies might exist?
+      * **Delegation** — Who will take responsibility for next steps? Will they be held accountable?
+      * **Communication** — How will this process or discussion be relayed to others? What do they need to know?
+      * **Administration** — How will information from one system be input into another, such as a task tracking or communications tool? Where will information be stored?
+    translation: |-
+      * **Полномочия** — Кто на самом деле принимает решения? Что нужно, чтобы воплотить идеи в жизнь?
+      * **Управление** — Как это соотносится с другими приоритетами? От чего может зависеть выполнение планов?
+      * **Распределение задач** — Кто возьмёт на себя следующие шаги? Как будет отслеживаться их выполнение?
+      * **Коммуникация** — Как рассказать другим об этом процессе или обсуждении? Что им нужно знать?
+      * **Организация работы** — Как перенести информацию в другие системы, например в инструмент для отслеживания задач или общения? Где она будет храниться?
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  5fd6382726e6e5c0:
+    english: If there are any blocks around these issues, it can be damaging to leave this realisation until the moment of conclusion. For example, if the participants don’t actually have the power to make a change they have decided, they will feel defeated.Think ahead toward confronting reality when setting up the process, and scope the collaboration accordingly.
+    translation: Если здесь есть препятствия, вредно обнаружить их только в конце процесса. Например, участники могут решить что-то изменить, а затем узнать, что у них нет на это полномочий. Это вызовет разочарование. Учитывайте такие ограничения при подготовке процесса и определяйте рамки совместной работы соответственно.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  c3f96d2ea17ab236:
+    english: |-
+      * You can @mention the names of people who will take actions out of a decision.
+      * Many users accomplish integrating Loomio content into other organizational systems through other channels like reviewing Loomio decisions in regular offline meetings, or transferring outcomes to their task tracking process.
+      * Making an explicit decision naturally leads people to ask, “OK, but how are we going to take this forward?”
+      * Forming a Loomio group often surfaces important questions like, “Who needs to participate here to turn these decisions into action?” If you're missing key stakeholders, leaders, or administrators, you'll get stuck.
+    translation: |-
+      * Вы можете упомянуть через @ людей, которым предстоит выполнить действия по принятому решению.
+      * Многие пользователи связывают работу в Loomio с другими процессами организации: например, обсуждают решения из Loomio на регулярных очных встречах или переносят итоги в систему отслеживания задач.
+      * После принятия чёткого решения закономерно возникает вопрос: «Хорошо, а как мы будем действовать дальше?»
+      * Создание группы в Loomio часто помогает выявить важный вопрос: «Кому нужно участвовать, чтобы эти решения воплотились в жизнь?» Без ключевых заинтересованных сторон, руководителей или администраторов работа может остановиться.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  60bb517775f11e5d:
+    english: "## It Ain’t Over Til It’s Over"
+    translation: "## Как завершить работу"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  '079da8800a401a45':
+    english: Ending well is important. There’s a ritual to closing a process, and if it’s missed people will feel unsettled. Sometimes the end is determined by running out of time, and sometimes it’s when certain goals are achieved. Recognize implicit and explicit cues indicating if the individuals, and the group as a whole, can feel completion of a process or phase.
+    translation: Важно ясно завершить процесс. Если этого не сделать, у участников может остаться чувство незавершённости. Иногда процесс заканчивается, потому что вышло время, а иногда — потому что достигнуты цели. Обращайте внимание на явные и неявные признаки того, что отдельные участники и группа в целом готовы завершить процесс или его этап.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  280969e6212842cc:
+    english: Participants often look to the leader or facilitator for confirmation of when it’s actually over, and it usually pays to be explicit. Sometimes the signal is a clear statement that the session is wrapping up, a recap of decisions or next steps, and bidding everyone goodbye. Other times groups have established practices like a check-out. Letting a session vaguely trail off will leave a bad taste.
+    translation: Участники часто ждут от руководителя или ведущего подтверждения, что работа закончена, поэтому лучше сказать об этом прямо. Можно объявить о завершении встречи, кратко повторить решения и следующие шаги и попрощаться. У некоторых групп есть свои способы завершения, например заключительный круг. Если встреча просто постепенно затихнет, у участников может остаться неприятное впечатление.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  e15896aadc163225:
+    english: |-
+      * The clearest indication of conclusion on Loomio is publishing a decision outcome.
+      * Some groups use the [lock thread](/en/user_manual/discussions/using_discussions/#lock-or-unlock-a-thread) feature to prevent further changes and reduce clutter.
+      * Deactivating a group is the strongest possible “closure” move. No one can say anything else after that.
+      * Since Loomio groups can remain while group activity goes up and down, it can be useful to recognize milestones like the conclusion of a particular phase, even if the group will reactivate in the future.
+    translation: |-
+      * Самый ясный способ обозначить завершение работы в Loomio — опубликовать итог решения.
+      * Некоторые группы используют функцию [блокировки темы](/en/user_manual/discussions/using_discussions/#lock-or-unlock-a-thread), чтобы предотвратить дальнейшие изменения и сократить число новых сообщений.
+      * Деактивация группы означает полное завершение её работы. После этого никто не сможет добавлять сообщения.
+      * Группа в Loomio может сохраняться, даже когда её активность меняется. Поэтому полезно отмечать завершение отдельных этапов, даже если в будущем группа снова приступит к работе.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'

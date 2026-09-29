@@ -1,0 +1,177 @@
+---
+navigation_title: Egyszerű döntési folyamat
+blocks:
+  84ddd86a61d09414:
+    english: "# Simple decision process"
+    translation: "# Egyszerű döntési folyamat"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  2e868ae6bc4a493b:
+    english: This guide describes an end-to-end process using a discussion, Sense check, final proposal, and outcome. For help with the fields and response options of one proposal, see [Proposals](/en/user_manual/polls/proposals/).
+    translation: 'Ez az útmutató egy teljes döntési folyamatot mutat be: beszélgetés, Érzékellenőrzés, végső javaslat és következtetés. Ha egy javaslat mezőiről és válaszlehetőségeiről szeretnél többet megtudni, olvasd el a [Javaslatok](/en/user_manual/polls/proposals/) oldalt.'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  d9877680762afa22:
+    english: Some organizations arrive at Loomio having already developed a deep culture and practice of collaborative decision making.  Such organizations have often written handbooks and codified their practices, however, most organizations are still on the journey and looking for some helpful first steps towards making better decisions together.  If the burning question in your organization is **how do we make decisions together?**, then this guide is for you.
+    translation: Néhány szervezet már kialakult közös döntéshozatali gyakorlattal kezdi használni a Loomiót. Gyakran kézikönyvben is rögzítették a módszereiket. Sok szervezet azonban még keresi az első lépéseket ahhoz, hogy jobb döntéseket hozzon közösen. Ha nálatok is fontos kérdés, hogy **hogyan hozzunk közösen döntéseket?**, ez az útmutató neked szól.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  6b321a0ba71f92b8:
+    english: "***Here are three steps to help you co-create a better, more cohesive decision with less stress and anxiety.***"
+    translation: "***Ez a három lépés segít abban, hogy közösen jobb, átgondoltabb döntést hozzatok kevesebb feszültséggel.***"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  c46b32b56b933b0a:
+    english: "## Simple decision making - in 3 steps"
+    translation: "## Egyszerű döntéshozatal 3 lépésben"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  e3208a84f88ba36f:
+    english: Good collaborative decisions rarely happen by themselves.  They almost always benefit from someone facilitating the discussion through to decision.  So when you launch a discussion thread, you take on a facilitation role (unless someone else is facilitating).
+    translation: A jó közös döntések ritkán születnek meg maguktól. Többnyire segít, ha valaki a döntésig vezeti a beszélgetést. Amikor beszélgetést indítasz, ezt a szerepet vállalod, hacsak nem valaki más vezeti azt.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  1a1da8788ddb01c7:
+    english: Follow these 3 steps as you facilitate your group to make a good decision.
+    translation: Kövesd ezt a három lépést, miközben segíted a csoportodat a döntéshozatalban.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  5b83a53a3f4caad5:
+    english: |-
+      ### Step 1 - Introduce and discuss
+      Start a Loomio **discussion** to introduce the topic, open conversation and invite people. Include all the context-setting information your group needs to meaningfully participate, along with relevant background so everyone understands the purpose.
+    translation: |-
+      ### 1. lépés – Mutasd be a témát, és beszéljétek meg
+      Indíts **beszélgetést** a Loomióban: mutasd be a témát, és hívd meg a résztvevőket. Adj meg minden információt és háttéranyagot, amelyre a csoportodnak szüksége van az érdemi részvételhez és a cél megértéséhez.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  8aab998cb04b8635:
+    english: 'Be clear about your objective - what is the decision to be made or intended outcome of the discussion? '
+    translation: 'Fogalmazd meg egyértelműen a célt: milyen döntést kell meghoznotok, vagy milyen eredményt vártok a beszélgetéstől?'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  d8f53cbae173f5ac:
+    english: As the discussion progresses, create space for diverse input - sometimes the best ideas and input come from outside the box.  Work together to explore and test ideas, encouraging a healthy and open discussion.
+    translation: A beszélgetés során adj teret a különböző nézőpontoknak. A legjobb ötletek néha váratlan helyről érkeznek. Közösen vizsgáljátok meg és próbáljátok ki az ötleteket, és tartsátok nyitva a beszélgetést.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  7f447ab455f6cea4:
+    english: 'Notice when the same voices are dominating and invite some of the quieter people to contribute by @mentioning them and asking them what they think. '
+    translation: Figyeld meg, ha mindig ugyanazok szólnak hozzá. Az @jellel megemlítve hívj meg néhány csendesebb résztvevőt is, és kérdezd meg a véleményüket.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  d4bad2b5207ac1d8:
+    english: You can make a complex discussion easier to engage with by updating the context section with a summary of the key points.
+    translation: Egy összetett beszélgetést könnyebb követni, ha a kontextus részt a főbb pontok összefoglalásával frissíted.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  daeddff561f62553:
+    english: |-
+      ### Step 2 - Sense check
+      As your group begins to converge on path forwards, use a **Sense check** poll to survey opinions and test how the group feels.
+    translation: |-
+      ### 2. lépés – Érzékellenőrzés
+      Amikor a csoportod kezd közös irányt találni, indíts **Érzékellenőrzés** szavazást, hogy megismerd a véleményeket és felmérd, hogyan látják a résztvevők a helyzetet.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  c1d4e97ce180d85b:
+    english: |-
+      A ‘Sense check’ lets people know a proposal is forming and encourages them to engage.
+      It can also be used to clarify an issue, even if the solution might not be apparent yet.
+    translation: |-
+      Az „Érzékellenőrzés” jelzi a résztvevőknek, hogy kezd kialakulni egy javaslat, és részvételre ösztönzi őket.
+      Egy kérdés tisztázására is használhatod, akkor is, ha a megoldás még nem látszik.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  5ff914227bb8706a:
+    english: Sense check is a great way to surface concerns before moving to a formal agreement.  You can find out if people are happy with where this is going, if they have questions or need more time, or if they are concerned.
+    translation: Az Érzékellenőrzés segít felszínre hozni az aggályokat, mielőtt hivatalos megállapodásra törekednétek. Megtudhatod, hogy a résztvevők elégedettek-e az iránnyal, vannak-e kérdéseik, több időre van-e szükségük, vagy aggódnak-e valami miatt.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  01433544fefb70a5:
+    english: 'Use feedback to improve and refine the proposal. If there’s still some work to do, you may need to go back to Step 1 and then run another Sense check round. '
+    translation: A visszajelzések alapján javítsd és pontosítsd a javaslatot. Ha még van mit átgondolni, térj vissza az 1. lépéshez, majd indíts újabb Érzékellenőrzést.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  440474199fd76019:
+    english: Good engagement will help you assess when you are ready to proceed to a proposal.
+    translation: Az aktív részvétel segít felmérni, mikor álltok készen a javaslatra.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  f3799fd76f9d9446:
+    english: "### Step 3 - Proposal\nNow when you raise a formal **Proposal**, you do so with confidence that it will pass. "
+    translation: |-
+      ### 3. lépés – Javaslat
+      Ekkor már abban a tudatban tehetsz hivatalos **Javaslat**ot, hogy várhatóan elfogadják.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  a3e74110f5a3c7a2:
+    english: There may have been a lot of discussion and variations suggested, so be specific about the decision being made, so that everyone knows what the voting options mean.
+    translation: Lehet, hogy sok változat felmerült a beszélgetésben. Pontosan fogalmazd meg, miről szól a döntés, hogy mindenki értse a szavazási lehetőségeket.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  b7581cfd1ecffd78:
+    english: Set proposal deadlines consciously, so group members have time to consider and engage.  You can always extend the closing date if need be.
+    translation: Úgy állítsd be a javaslat határidejét, hogy a csoport tagjainak legyen idejük átgondolni és megvitatni azt. Szükség esetén meghosszabbíthatod a határidőt.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  b5bcc06f15cde560:
+    english: This step is important to formalize agreement with people’s vote and to state an outcome - what just happened and what will happen next.
+    translation: Ebben a lépésben a résztvevők szavazataival rögzítitek a megállapodást, majd következtetésben foglaljátok össze, mi történt és mi következik.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  c2f2bbcacfd77ab0:
+    english: Proposal results are logged, along with a record of the discussion leading to the decision.
+    translation: A rendszer rögzíti a javaslat eredményét és a döntéshez vezető beszélgetést.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  2d82209e751f2ffa:
+    english: |-
+      ### Outcome
+      When a Loomio poll closes, you will be prompted to set an **outcome** to let everyone know what happened and what is going to happen next.
+    translation: |-
+      ### Következtetés
+      Amikor egy Loomio-szavazás lezárul, a rendszer felkér, hogy írj **következtetést**, amelyből mindenki megtudhatja, mi történt és mi következik.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  fb14b31115927d74:
+    english: "## Proposals can help in many situations"
+    translation: "## A javaslatok sokféle helyzetben segíthetnek"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  c1a27b25e2c01ff3:
+    english: 'Don''t hesitate to start a proposal just because you''re not sure everyone will agree - proposals are not only for when you have consensus, they''re designed to surface issues that need resolving and are useful for clarifying disagreements. '
+    translation: Akkor is indíthatsz javaslatot, ha nem vagy biztos benne, hogy mindenki egyetért. A javaslatok segítenek felszínre hozni a megoldandó kérdéseket és tisztázni a nézeteltéréseket.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  6dbf0f3af984b8e8:
+    english: The next pages show a few more complex processes for reaching decisions, through [advice](/en/guides/making_decisions/advice_process), [consent](/en/guides/making_decisions/consent_process ), or [consensus](/en/guides/making_decisions/consensus_process ).
+    translation: 'A következő oldalakon összetettebb döntési folyamatokat találsz: [tanácskérés](/en/guides/making_decisions/advice_process), [beleegyezés](/en/guides/making_decisions/consent_process ) és [konszenzus](/en/guides/making_decisions/consensus_process ).'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'

@@ -1,0 +1,73 @@
+---
+navigation_title: כתובת דוא״ל
+blocks:
+  14280ff177b248ab:
+    english: "# Send an email to start a thread in your group"
+    translation: "# שליחת דוא״ל כדי לפתוח שרשור בקבוצה"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  e3de5524e10b9928:
+    english: Your Loomio group has an email address! You can send or forward email to this address to start a thread in the group.
+    translation: לקבוצת Loomio יש כתובת דוא״ל. ניתן לשלוח אליה הודעה או להעביר אליה הודעה קיימת כדי לפתוח שרשור בקבוצה.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  85a7436d4a1b4396:
+    english: |-
+      You can see your group's email address on the group page:
+      ![location of the email address on the group page](email_email_button.png)
+    translation: |-
+      אפשר למצוא את כתובת הדוא״ל של הקבוצה בדף הקבוצה:
+      ![מיקום כתובת הדוא״ל בדף הקבוצה](email_email_button.png)
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  e34019bbcf3b319f:
+    english: When you send an email to this address, a new thread will be started. The email subject becomes the thread title, the body of the email becomes the description, and any attached files will be attached to the thread.
+    translation: שליחת הודעה לכתובת זו פותחת שרשור חדש. נושא ההודעה הופך לכותרת השרשור, גוף ההודעה הופך לתיאור, וקבצים מצורפים מצורפים לשרשור.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  46a53b8267a61c2f:
+    english: The email "From" address is used to find the group member who will be the author of the thread.
+    translation: הכתובת בשדה ״מאת״ משמשת לזיהוי חבר או חברת הקבוצה שיירשמו כיוצרי השרשור.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  bd7df6f632af8db1:
+    english: "## Preventing unauthorized emails"
+    translation: "## מניעת הודעות דוא״ל לא מורשות"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  a5118468df167ba0:
+    english: To ensure that this feature cannot be used by people who are not members of your group, Loomio will require that the "From" address of an incoming email matches the address of someone in the group.
+    translation: כדי שרק חברי הקבוצה יוכלו להשתמש בתכונה, Loomio דורשת שהכתובת בשדה ״מאת״ בהודעה נכנסת תהיה כתובת של חבר או חברת הקבוצה.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  f11910ae643c5b47:
+    english: If you use multiple email addresses, you can add an alias so Loomio knows about your other email addresses.
+    translation: אם משתמשים בכמה כתובות דוא״ל, ניתן להוסיף כינוי כדי ש־Loomio תזהה גם את הכתובות האחרות.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  e3d88a25128322b5:
+    english: When the "from" address does not match a member of the group, you will receive a notification asking you to add an alias or reject all further emails from that address.
+    translation: אם הכתובת בשדה ״מאת״ אינה תואמת לכתובת של חבר או חברת הקבוצה, תתקבל התראה עם אפשרות להוסיף כינוי או לדחות את כל ההודעות העתידיות מאותה כתובת.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  890546269cfa56b6:
+    english: This means that the first time you send email from an unrecognised address, you will need to add an alias. After that, emails will be accepted immediately.
+    translation: לכן, בשליחת הודעה ראשונה מכתובת שאינה מוכרת, יש להוסיף כינוי. לאחר מכן, הודעות מאותה כתובת יתקבלו מיד.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  e778a27d6b286135:
+    english: "![Location of the approve and reject buttons for an unrecognised email](email_unreleased_emails.png)"
+    translation: "![מיקום הכפתורים לאישור ולדחייה של הודעה מכתובת שאינה מוכרת](email_unreleased_emails.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'

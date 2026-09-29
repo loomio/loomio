@@ -1,0 +1,117 @@
+---
+navigation_title: Segnalibri
+blocks:
+  4f81ad2ed2c971a4:
+    english: "# Bookmarks"
+    translation: "# Segnalibri"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  5d590d1d8ab9b956:
+    english: |-
+      Bookmarks are a personal list of Loomio items you want to return to. Your
+      bookmarks are visible only to you and saving an item does not notify anyone
+      else.
+    translation: |-
+      I segnalibri sono un elenco personale di elementi di Loomio a cui vuoi tornare. Solo tu puoi vedere i tuoi
+      segnalibri. Quando salvi un elemento, nessun altro riceve una
+      notifica.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  aac40737df991d52:
+    english: 'You can bookmark:'
+    translation: 'Puoi aggiungere ai segnalibri:'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  0f6c7e4161c72c18:
+    english: |-
+      - discussions
+      - comments
+      - proposals and polls
+      - votes
+      - outcomes
+    translation: |-
+      - discussioni
+      - commenti
+      - proposte e sondaggi
+      - voti
+      - conclusioni
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  fc91d7d6d32e590b:
+    english: "## Save a bookmark"
+    translation: "## Salvare un segnalibro"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  daec09886eecd058:
+    english: |-
+      Open the action menu for the item and select **Save bookmark**. The action menu
+      is usually shown as three dots. For a discussion, use the action menu near the
+      discussion title; for a comment, vote, proposal, poll, or outcome, use the menu
+      on that item.
+    translation: |-
+      Apri il menu delle azioni dell'elemento e seleziona **Salva segnalibro**. Il menu delle azioni
+      è generalmente indicato da tre puntini. Per una discussione, usa il menu vicino al
+      titolo della discussione. Per un commento, un voto, una proposta, un sondaggio o una conclusione, usa il menu
+      sull'elemento stesso.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  395a4c119e77f34b:
+    english: "## View your bookmarks"
+    translation: "## Visualizzare i tuoi segnalibri"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  a5e09c422c753df7:
+    english: |-
+      Open the sidebar and select **Bookmarks**. The number beside the link shows how
+      many bookmarks you have saved.
+    translation: |-
+      Apri la barra laterale e seleziona **Segnalibri**. Il numero accanto al collegamento indica quanti
+      segnalibri hai salvato.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  7c21b03875c08b8e:
+    english: |-
+      The Bookmarks page lists your most recently saved items first. Each row shows
+      the kind of item and its author. Select a row to return to the bookmarked item.
+    translation: |-
+      La pagina Segnalibri mostra per primi gli elementi che hai salvato più di recente. Ogni riga indica
+      il tipo di elemento e chi lo ha creato. Seleziona una riga per tornare all'elemento salvato.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  644d774a0d045214:
+    english: "## Remove a bookmark"
+    translation: "## Rimuovere un segnalibro"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  c2480aa6235675ba:
+    english: |-
+      On the Bookmarks page, select the remove-bookmark button at the end of a row.
+      You can also open the bookmarked item's action menu and select **Remove
+      bookmark**.
+    translation: |-
+      Nella pagina Segnalibri, seleziona il pulsante per rimuovere il segnalibro alla fine della riga.
+      Puoi anche aprire il menu delle azioni dell'elemento e selezionare **Rimuovi
+      segnalibro**.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  6c20d47950313409:
+    english: |-
+      Removing a bookmark affects only your personal list. You can save the item
+      again later.
+    translation: |-
+      La rimozione di un segnalibro riguarda solo il tuo elenco personale. Puoi salvare di nuovo l'elemento
+      in seguito.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'

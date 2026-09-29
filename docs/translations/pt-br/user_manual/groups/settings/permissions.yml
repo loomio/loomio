@@ -1,0 +1,73 @@
+---
+navigation_title: Permissões
+blocks:
+  d661e5fc8cc1b460:
+    english: "# Group permissions"
+    translation: "# Permissões do grupo"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  712830f14602c6c7:
+    english: The permissions tab controls which group operations are available to ordinary members and, for non-secret groups, to non-members. Open **Edit group settings** from the group page, then select **Permissions**.
+    translation: A aba de permissões controla quais ações os membros comuns podem realizar no grupo e, em grupos que não são secretos, quais ações estão disponíveis para quem não é membro. Na página do grupo, abra **Editar configurações do grupo** e selecione **Permissões**.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  b71bf8cce1cb369c:
+    english: "![Group permission settings](group_group_settings_permissions.png)"
+    translation: "![Configurações de permissões do grupo](group_group_settings_permissions.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  88e5fcd302a53620:
+    english: Administrators retain the ability to manage the group. Enabling a member permission extends that particular action to ordinary members; it does not make them administrators.
+    translation: Os administradores continuam podendo gerenciar o grupo. Ao ativar uma permissão para membros, você permite que membros comuns realizem aquela ação, sem torná-los administradores.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  5b2b9af0f68b7a57:
+    english: 'Permissions include whether members can:'
+    translation: 'As permissões definem se os membros podem:'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  8377b499d13690c0:
+    english: |-
+      - add members or invite guests;
+      - send announcements;
+      - create subgroups;
+      - start and manage discussions;
+      - create and manage tags;
+      - edit or delete comments where the setting permits;
+      - start proposals and polls; and
+      - create discussion and poll templates.
+    translation: |-
+      - adicionar membros ou convidar pessoas para participar de discussões;
+      - enviar anúncios;
+      - criar subgrupos;
+      - iniciar e gerenciar discussões;
+      - criar e gerenciar tags;
+      - editar ou excluir comentários, quando a configuração permitir;
+      - iniciar propostas e enquetes; e
+      - criar modelos de discussão e enquete.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  87166abe7eea1ab3:
+    english: For groups that are not secret, administrators can separately allow non-members to start discussions. A non-member who starts a discussion becomes a guest of that discussion but does not gain access to other private discussions or become a group member.
+    translation: Em grupos que não são secretos, os administradores podem permitir separadamente que pessoas que não são membros iniciem discussões. Quem inicia uma discussão dessa forma participa dela como convidado, mas não ganha acesso a outras discussões privadas nem se torna membro do grupo.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  3d01d10a97636b1e:
+    english: The **Admins can edit members' comments** setting gives administrators an exceptional moderation capability. Enable it only when the group has agreed that administrators should be able to alter member-authored content.
+    translation: A opção **Os administradores podem editar os comentários dos membros** dá aos administradores uma capacidade especial de moderação. Ative-a apenas se o grupo concordar que os administradores podem alterar o conteúdo escrito pelos membros.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  b0af0135752a461f:
+    english: Review permissions when the group's purpose, membership, or moderation responsibilities change. Give each role only the capabilities it needs.
+    translation: Revise as permissões quando mudarem o propósito do grupo, seus membros ou as responsabilidades de moderação. Conceda a cada função apenas as permissões necessárias.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'

@@ -1,0 +1,371 @@
+---
+navigation_title: עיצוב
+blocks:
+  0cff8e965b2d4bd5:
+    english: "# Formatting"
+    translation: "# עיצוב"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  7bda51ac3285357f:
+    english: When starting or editing a discussion or poll, or writing a comment, you will see a formatting bar below the text field. Select the arrow at the end of the bar to show or hide the full set of tools.
+    translation: בעת פתיחה או עריכה של דיון או משאל, או בעת כתיבת תגובה, מופיע סרגל עיצוב מתחת לשדה הטקסט. ניתן לבחור בחץ שבקצה הסרגל כדי להציג או להסתיר את כל הכלים.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  2f2944ad10684b7f:
+    english: Hover the mouse or cursor over each item for the name of each tool.
+    translation: כדי לראות את שם הכלי, יש להשהות מעליו את סמן העכבר.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  5f45a085deb9eff1:
+    english: Use formatting to add structure and emphasis so information is easier to scan.
+    translation: העיצוב מאפשר להוסיף מבנה והדגשה, כך שקל יותר לסרוק את המידע.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  9b542fd6dda53639:
+    english: "## Attach file"
+    translation: "## צירוף קובץ"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  d633f08de5eb744d:
+    english: Use the paper clip icon, just below the text form, to add file attachments from your computer.
+    translation: כדי לצרף קבצים מהמחשב, יש לבחור בסמל המהדק שמתחת לשדה הטקסט.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  1860ade9942c32a1:
+    english: "### Remove attachments"
+    translation: "### הסרת קבצים מצורפים"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  ebc91823518309fd:
+    english: While editing the context, click the **X** to the right of the file name to remove it.
+    translation: בעת עריכת התוכן, יש ללחוץ על **X** שמשמאל לשם הקובץ כדי להסיר אותו.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  b51c6da343bd6389:
+    english: "## Insert image"
+    translation: "## הוספת תמונה"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  b788d43f7bc630ec:
+    english: Use this tool to insert and display an image.
+    translation: כלי זה מאפשר להוסיף תמונה ולהציג אותה.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  e23dd94c965ae06c:
+    english: Select an image file from your computer. The image is inserted into the editor after it uploads.
+    translation: יש לבחור קובץ תמונה מהמחשב. לאחר העלאת הקובץ, התמונה תתווסף לעורך.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  f8a47428252034cf:
+    english: The image is displayed within the published discussion, poll or comment.
+    translation: התמונה תופיע בדיון, במשאל או בתגובה לאחר הפרסום.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  0fe125855fce8e52:
+    english: |-
+      >[!Tip]
+      >You can also copy/paste an image directly into Loomio.
+    translation: |-
+      >[!Tip]
+      >ניתן גם להעתיק ולהדביק תמונה ישירות ב־Loomio.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  b631d0ab368ebfb0:
+    english: "## Insert link"
+    translation: "## הוספת קישור"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  909769fda18f0ec6:
+    english: 'You can add a link to any shareable document or page on the internet.  '
+    translation: ניתן להוסיף קישור לכל מסמך או דף באינטרנט שאפשר לשתף.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  e034be8c0fbe76db:
+    english: 'To add a link:'
+    translation: 'כדי להוסיף קישור:'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  dcf90e79aba1a2f9:
+    english: |-
+      1. Select the text you want to link to - say the name of a document.
+      2. Click the link icon.
+      3. Paste the address into the **Insert link** field and select **Apply**.
+    translation: |-
+      1. יש לסמן את הטקסט שאליו רוצים להוסיף קישור, למשל שם של מסמך.
+      2. יש ללחוץ על סמל הקישור.
+      3. יש להדביק את הכתובת בשדה **הכנס לינק** ולבחור **החל**.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  40ecf7d0c79432b2:
+    english: For a document hosted elsewhere, check its sharing permissions so discussion participants can open it.
+    translation: אם המסמך מאוחסן במקום אחר, יש לבדוק את הרשאות השיתוף שלו כדי שמשתתפי הדיון יוכלו לפתוח אותו.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  3f1824fc07dded13:
+    english: A preview of the doc will appear under the text space. You can remove this if you want.
+    translation: תצוגה מקדימה של המסמך תופיע מתחת לשדה הטקסט. ניתן להסיר אותה.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  c6061aa7deff27ac:
+    english: Now, anyone with access to your Loomio discussion and permission to view the doc can open and read it.
+    translation: כעת, כל מי שיש להם גישה לדיון ב־Loomio והרשאה לצפות במסמך יוכלו לפתוח ולקרוא אותו.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  c7643aa641977dea:
+    english: "## Insert Emoji"
+    translation: "## הוספת אמוג׳י"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  b4f97f2939fd2d8c:
+    english: Select the smiley button and choose an emoji from the picker.
+    translation: יש לבחור בכפתור הסמיילי ואז לבחור אמוג׳י.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  f207ce88babd4532:
+    english: "## Headings"
+    translation: "## כותרות"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  e2e647ef2e3ac736:
+    english: Heading 1, Heading 2 and Heading 3 can help structure a discussion or comment.
+    translation: כותרות ברמות 1, 2 ו־3 עוזרות לארגן דיון או תגובה.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  6c3f52329a8b49b5:
+    english: Select the text to mark as a heading and click on the heading format tool.
+    translation: יש לסמן את הטקסט שישמש ככותרת ולבחור בכלי לעיצוב כותרות.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  27a816f8cd10cd75:
+    english: If a heading is used in a comment, the comment will automatically be pinned to the discussion timeline.
+    translation: כאשר משתמשים בכותרת בתגובה, התגובה תוצמד אוטומטית לציר הזמן של הדיון.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  8adf1a168d32f042:
+    english: "## Bold, Italicize, Strikethrough"
+    translation: "## הדגשה, הטיה וקו חוצה"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  c9b191938d57a135:
+    english: Select the text to format and click on the required format tool.
+    translation: יש לסמן את הטקסט ולבחור בכלי העיצוב הרצוי.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  eb63f5ddcbf20776:
+    english: "## List"
+    translation: "## רשימה"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  b91af8d6ee713dca:
+    english: Use **List** to format items as bullet points.
+    translation: יש להשתמש ב־**רשימה** כדי להציג פריטים עם תבליטים.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  64fab26284d5610a:
+    english: "## Numbered list"
+    translation: "## רשימה ממוספרת"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  '082bc75c625ebbaf':
+    english: Use **Numbered list** when the order of items matters.
+    translation: יש להשתמש ב־**רשימה ממוספרת** כאשר סדר הפריטים חשוב.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  30f12f3f5c0a24be:
+    english: "## Task list"
+    translation: "## רשימת מטלות"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  b7e072e37bdc12c0:
+    english: Use **Task list** to add checkboxes. After posting the list, tasks can be assigned to someone and given a due date.
+    translation: יש להשתמש ב־**רשימת מטלות** כדי להוסיף תיבות סימון. לאחר פרסום הרשימה, ניתן לשייך מטלות לאנשים ולקבוע להן תאריך יעד.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  74542f03c2aabd7f:
+    english: See the page on [Tasks](/en/user_manual/discussions/tasks/) for more information.
+    translation: למידע נוסף, ראו את הדף [מטלות](/en/user_manual/discussions/tasks/).
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  15a3834a24e7a429:
+    english: "## Colors"
+    translation: "## צבעים"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  d578168b29cd5bc5:
+    english: Use **Colors** to add a highlight colour to selected text.
+    translation: יש להשתמש ב־**צבעים** כדי להוסיף צבע הדגשה לטקסט מסומן.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  8294131df813b9ea:
+    english: "## Align"
+    translation: "## יישור"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  58631363b7614205:
+    english: Select to align text to left, center or right.
+    translation: ניתן לבחור יישור טקסט לשמאל, למרכז או לימין.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  2babc8a3fb1ee4b6:
+    english: "## Embed videos and webpages"
+    translation: "## הטמעת סרטונים ודפי אינטרנט"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  5bbdda88f99ea68d:
+    english: You can embed supported videos and webpages anywhere there is a formatting toolbar.
+    translation: ניתן להטמיע סרטונים ודפי אינטרנט נתמכים בכל מקום שבו מופיע סרגל עיצוב.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  2e7e0de5ed62913d:
+    english: "To use the embed video feature: \n1. Copy the address of the video or webpage.\n2. Select **Embed video**, paste the address and select **Apply**."
+    translation: "כדי להטמיע סרטון או דף אינטרנט: \n1. יש להעתיק את הכתובת של הסרטון או דף האינטרנט.\n2. יש לבחור **הטמע וידאו**, להדביק את הכתובת ולבחור **החל**."
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  41dcefa30819a0ae:
+    english: <iframe width="100%" height="380px" src="https://www.youtube-nocookie.com/embed/AJnjTd9u4zg" frameborder="0" allowfullscreen></iframe>
+    translation: <iframe width="100%" height="380px" src="https://www.youtube-nocookie.com/embed/AJnjTd9u4zg" frameborder="0" allowfullscreen></iframe>
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  13808447963b2a92:
+    english: |-
+      >[!Tip]
+      >Make sure the video can be accessed by everyone who can participate in the discussion. For example, an unlisted video may be suitable when it should not appear in public search results.
+    translation: |-
+      >[!Tip]
+      >יש לוודא שכל המשתתפים בדיון יכולים לגשת לסרטון. למשל, סרטון שאינו רשום עשוי להתאים אם אין רצון שיופיע בתוצאות חיפוש ציבוריות.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  a54e9b54ec9d054a:
+    english: "## Quote"
+    translation: "## ציטוט"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  cde3af7721527f7f:
+    english: Quote adds emphasis to your text, and can be useful to draw attention to an instruction.
+    translation: ציטוט מדגיש טקסט ויכול לעזור להפנות תשומת לב להוראה.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  53156f370d2f19d6:
+    english: "## Code block"
+    translation: "## בלוק קוד"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  4199778c2a4ddc86:
+    english: Typically used to show code in text, code block formatting is also available to help you distinguish text in your discussion.
+    translation: עיצוב בלוק קוד משמש בדרך כלל להצגת קוד, ואפשר להשתמש בו גם כדי להבחין בין חלקי טקסט בדיון.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  '4150439725516186':
+    english: "## Divider"
+    translation: "## קו מפריד"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  7075717b6ffdba08:
+    english: Use the divider to draw a horizontal line to separate sections.
+    translation: ניתן להוסיף קו אופקי כדי להפריד בין חלקים.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  66ca2e9ae98b0ca2:
+    english: "## Add table"
+    translation: "## הוספת טבלה"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  7f93fecdf2cad04f:
+    english: 'Add a table to your discussion. '
+    translation: ניתן להוסיף טבלה לדיון.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  1b8a068ce391ceac:
+    english: Additional tools are available to add/remove columns and rows.
+    translation: כלים נוספים מאפשרים להוסיף ולהסיר עמודות ושורות.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  236df5c508db1f3e:
+    english: "## Markdown"
+    translation: "## Markdown"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  bd726f6299d5f52e:
+    english: To switch to Markdown editing, select **Edit Markdown**.
+    translation: כדי לעבור לעריכה ב־Markdown, יש לבחור **ערוך Markdown**.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  278b073701473e94:
+    english: If you click this while there is text in the form, some formatting may be lost upon conversion.
+    translation: אם כבר יש טקסט בשדה, חלק מהעיצוב עשוי ללכת לאיבוד בעת ההמרה.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  c27e00bd5c98ccb1:
+    english: "### Rich text"
+    translation: "### טקסט עשיר"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  ef2b52204ab83521:
+    english: Select **Edit rich text** to return to the formatting tools. This converts supported Markdown into its displayed form.
+    translation: כדי לחזור לכלי העיצוב, יש לבחור **עריכת טקסט עשיר**. פעולה זו מציגה רכיבי Markdown נתמכים בצורתם המעוצבת.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  164de50b8b1e4081:
+    english: "**Preview** shows how Markdown will appear when posted without converting it."
+    translation: "**תצוגה מקדימה** מראה כיצד ייראה הטקסט לאחר הפרסום, בלי להמיר אותו."
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'

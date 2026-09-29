@@ -1,0 +1,189 @@
+---
+navigation_title: So beteiligst du dich
+blocks:
+  b07064bf98055393:
+    english: "# How to participate"
+    translation: "# So beteiligst du dich"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  c121de54fbe72331:
+    english: 'Once signed in to a Loomio group you have been invited to, you can participate in a Loomio discussion or decision.  '
+    translation: Wenn du dich bei einer Loomio-Gruppe angemeldet hast, zu der du eingeladen wurdest, kannst du dich an Diskussionen und Entscheidungen beteiligen.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  9bb48e2f2f1858af:
+    english: Read on to see  how to write a comment in a thread and how to vote in a poll.
+    translation: Hier erfährst du, wie du einen Kommentar in einer Diskussion schreibst und bei einer Abstimmung abstimmst.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  '095ec081a6f1d74e':
+    english: "## Comment"
+    translation: "## Kommentieren"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  d5dadbc416d8603a:
+    english: You can write a comment in a thread, and people can reply, react or post their own comment to continue the discussion.
+    translation: Du kannst in einer Diskussion einen Kommentar schreiben. Andere können darauf antworten, mit einer Reaktion reagieren oder einen eigenen Kommentar schreiben und so die Diskussion fortsetzen.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  250f7bc0e6e6c93c:
+    english: 'When you have written your text, use **Post Comment** to instantly publish the comment. Your comment will be visible to anyone who has permission to see the thread. '
+    translation: Wenn du deinen Text geschrieben hast, veröffentliche ihn mit **Kommentar abschicken**. Dein Kommentar ist für alle sichtbar, die Zugriff auf die Diskussion haben.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  76a3378441f45ebf:
+    english: "### Reply to a comment"
+    translation: "### Auf einen Kommentar antworten"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  c3495aed9ac78348:
+    english: You can reply to someone's comment by clicking on the reply icon beneath the comment.
+    translation: Klicke auf das Antwortsymbol unter einem Kommentar, um darauf zu antworten.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  b2698ab73e65442c:
+    english: Your reply is published in the thread and an email notification is sent to the author of the comment.
+    translation: Deine Antwort erscheint in der Diskussion. Die Person, die den Kommentar geschrieben hat, erhält eine E-Mail-Benachrichtigung.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  04743dedbee0de5c:
+    english: "### Get someone's attention"
+    translation: "### Jemanden benachrichtigen"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  455fea8aa593dad4:
+    english: You can notify people when you write a comment.
+    translation: Wenn du einen Kommentar schreibst, kannst du andere Personen benachrichtigen.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  316ef3257eaebd54:
+    english: "### Reactions"
+    translation: "### Reaktionen"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  4b68204cf35c85f1:
+    english: Reacting to a comment is a great way to encourage and acknowledge a comment by letting the comment author know how you feel.  It is a quick and light-weight way to participate that does not require any text, nor send an email. Click the smile emoji icon beneath a comment to leave an emoji reaction.
+    translation: Mit einer Reaktion kannst du zeigen, wie du einen Kommentar findest, und der Person, die ihn geschrieben hat, eine Rückmeldung geben. Du brauchst dafür keinen Text zu schreiben, und es wird keine E-Mail versendet. Klicke auf das Smiley-Symbol unter einem Kommentar, um mit einem Emoji zu reagieren.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  d391457c69df967f:
+    english: "## Vote"
+    translation: "## Abstimmen"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  4432b9c5b263014a:
+    english: You may receive an invitation to vote in a poll via email or by notification in Loomio. Click on the link in the email to vote.
+    translation: Du kannst per E-Mail oder über eine Benachrichtigung in Loomio eingeladen werden, an einer Abstimmung teilzunehmen. Klicke auf den Link in der E-Mail, um abzustimmen.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  2a8641a22cf13597:
+    english: Voting is easy, just click or tap on the icon of your choice.
+    translation: Klicke oder tippe auf das Symbol für die gewünschte Option, um abzustimmen.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  00d6e2698ade53cc:
+    english: There are many types of polls. The example below shows a typical proposal with voting options of **Agree**, **Abstain** or **Disagree**. Other options may be available.
+    translation: Es gibt verschiedene Arten von Abstimmungen. Das folgende Beispiel zeigt einen typischen Vorschlag mit den Optionen **Dafür**, **Enthaltung** und **Dagegen**. Bei anderen Abstimmungen können weitere Optionen verfügbar sein.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  4f327c4a766af0ab:
+    english: Read the poll, and any attached files, then cast your vote by selecting one of the options.
+    translation: Lies die Abstimmung und alle angehängten Dateien. Wähle dann eine Option, um deine Stimme abzugeben.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  2cf633f37997e8b8:
+    english: "### State a reason"
+    translation: "### Eine Begründung angeben"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  c976385dcb75f67b:
+    english: When voting, you can also leave a **Reason** to say why you have voted this way. This is optional.
+    translation: Beim Abstimmen kannst du unter **Begründung** erklären, warum du dich so entschieden hast. Das ist freiwillig.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  6d0d884b0832dda9:
+    english: "### Change your vote"
+    translation: "### Deine Stimme ändern"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  84629138984e43d0:
+    english: You can **change your vote**, up until the proposal closes.
+    translation: Du kannst **deine Stimme ändern**, bis der Vorschlag geschlossen wird.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  8fcddbe7856e926b:
+    english: There are many reasons why you might want to change your vote. For example if new information emerges it may cause you to rethink your decision, and change your vote.
+    translation: Dafür kann es viele Gründe geben. Neue Informationen können dich zum Beispiel dazu bringen, deine Entscheidung zu überdenken und deine Stimme zu ändern.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  f7078b517c8bfed8:
+    english: Once again, you can leave a reason to say why you have changed your vote.
+    translation: Du kannst erneut eine Begründung angeben und erklären, warum du deine Stimme geändert hast.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  8e1b2953471f22ba:
+    english: "### Results"
+    translation: "### Ergebnisse"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  2153df12cd2b4fe2:
+    english: Results of the proposal are updated as people vote, so you can see how a proposal is trending.
+    translation: Die Abstimmungsergebnisse werden laufend aktualisiert. So kannst du sehen, wie sich die Stimmen für den Vorschlag entwickeln.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  229571fe36c571b0:
+    english: 'In a controversial proposal it is common to see mixed results, however this does not mean the proposal has failed.  '
+    translation: Bei einem umstrittenen Vorschlag sind gemischte Ergebnisse üblich. Das bedeutet nicht, dass der Vorschlag gescheitert ist.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  c3d5e53684bf3e88:
+    english: Often the new information revealed during the proposal helps form a better proposal that is more likely to pass.
+    translation: Oft helfen neue Informationen aus der Abstimmung dabei, einen besseren Vorschlag zu formulieren, der mehr Zustimmung findet.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  b4783489f09ccf19:
+    english: "### Outcome"
+    translation: "### Fazit"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  592f419764241ef6:
+    english: When the proposal closes, the author is prompted to state the **Outcome**.
+    translation: Wenn der Vorschlag geschlossen wird, wird die Person, die ihn erstellt hat, aufgefordert, das **Fazit** festzuhalten.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  0fae106181bbc6ac:
+    english: This is an important final step to record the result of the decision and let everyone know what will happen next.
+    translation: Dieser letzte Schritt hält das Ergebnis der Entscheidung fest und informiert alle darüber, wie es weitergeht.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'

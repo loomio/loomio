@@ -1,0 +1,157 @@
+---
+navigation_title: הפרופיל שלך
+blocks:
+  7ac59f9506d9a9e9:
+    english: "# Your Profile\nYour Loomio user profile is how people recognize you.  "
+    translation: |-
+      # הפרופיל שלך
+      הפרופיל ב-Loomio מאפשר לאנשים לזהות מי משתתף.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  f77b75330707f9a4:
+    english: Being able to recognize people in Loomio helps build trust and authenticity, encouraging more genuine participation.  So wherever possible we encourage you to be you, and to add a photo or avatar.
+    translation: זיהוי המשתתפים ב-Loomio עוזר לבנות אמון ומעודד השתתפות כנה. לכן, מומלץ להשתמש בשם שמזוהה איתך ולהוסיף תמונה או תמונת פרופיל.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  e902d9db69f3ccaa:
+    english: "## Edit profile"
+    translation: "## עריכת פרופיל"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  f48def44ceb36407:
+    english: 'Your profile page lets you customize your Loomio identity. To visit your profile page select the **Edit profile** option in the user menu, which is found by clicking on your name at the top of the sidebar. '
+    translation: בדף הפרופיל ניתן להתאים את האופן שבו מופיעים ב-Loomio. כדי להגיע אליו, יש לבחור **עריכת פרופיל** בתפריט המשתמש. התפריט נפתח בלחיצה על השם בראש סרגל הצד.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  456daa472d672b1f:
+    english: If the sidebar is closed, click on the menu icon (**☰**) to open it.
+    translation: אם סרגל הצד סגור, יש ללחוץ על סמל התפריט (**☰**) כדי לפתוח אותו.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  7b920b3794ac1be0:
+    english: Click on the down arrow to the right of your name.
+    translation: יש ללחוץ על החץ הפונה מטה משמאל לשם.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  9664aeb8784b2137:
+    english: Click on **Edit profile**
+    translation: יש ללחוץ על **עריכת פרופיל**
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  e98e7384d147ec31:
+    english: "## Update your personal info"
+    translation: "## עדכון פרטים אישיים"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  9578a723a8d322cc:
+    english: 'You can update your personal info by changing any of the following fields:'
+    translation: 'ניתן לעדכן פרטים אישיים באמצעות שינוי השדות הבאים:'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  cc28d4b1038e6fe5:
+    english: |-
+      * **Name**
+      * **Email address** - this is the email address associated with your Loomio account, and where you will receive notifications from Loomio.
+      * **Username** - your username is a name people can recognize and alert you using @mention. It can contain lower case letters, numbers, underscores, and internal hyphens.
+      * **Introduction** - a few lines to tell others in your group something about you.
+      * **Location** - useful for distributed or remote groups so people can get an idea of where you are located.
+    translation: |-
+      * **שם**
+      * **כתובת דוא"ל** - הכתובת המשויכת לחשבון Loomio, שאליה יישלחו הודעות מ-Loomio.
+      * **שם משתמש** - שם שמאפשר לאחרים לזהות משתתפים ולתייג אותם באמצעות @mention. הוא יכול להכיל אותיות לטיניות קטנות, ספרות, קווים תחתונים ומקפים בתוך השם.
+      * **הצגה** - כמה שורות שיספרו לחברי הקבוצה על בעלות ובעלי הפרופיל.
+      * **מיקום** - עוזר לחברי קבוצות שפועלות מרחוק לדעת היכן נמצאים המשתתפים.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  d64106bb76c8936e:
+    english: "## Viewing another person's profile"
+    translation: "## צפייה בפרופיל של אדם אחר"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  fa6b7c980bad9aeb:
+    english: Select a person's name or avatar to open their profile. Their recent discussions, comments, and polls are listed alongside their profile details and groups. The list only includes activity you have permission to access; signed-out visitors see public activity only.
+    translation: יש לבחור בשם או בתמונת הפרופיל של אדם כדי לפתוח את הפרופיל שלו. לצד פרטי הפרופיל והקבוצות מופיעים דיונים, תגובות וסקרים אחרונים. הרשימה כוללת רק פעילות שיש הרשאה לצפות בה; מבקרים שלא התחברו רואים פעילות ציבורית בלבד.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  ac9abf23a4881216:
+    english: "## Uploading a profile photo\nWhen you first create a Loomio account, your initials will be the default image associated with your profile. You can upload a profile photo by clicking on your picture on the profile page. "
+    translation: |-
+      ## העלאת תמונת פרופיל
+      בעת יצירת חשבון Loomio, ראשי התיבות של השם משמשים כתמונת הפרופיל כברירת מחדל. כדי להעלות תמונה, יש ללחוץ על תמונת הפרופיל בדף הפרופיל.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  b011f45bc197558a:
+    english: If you have a [Gravatar](https://en.gravatar.com/) you can set that as your profile picture by selecting **Use Gravatar**. You can also choose for Loomio to use the photo you use for other common platforms/tools.
+    translation: אם יש חשבון [Gravatar](https://en.gravatar.com/), ניתן להשתמש בתמונה שלו כתמונת הפרופיל באמצעות בחירה ב**שימוש בGravatar**. ניתן גם לבחור להשתמש בתמונה המשמשת בשירותים ובכלים אחרים.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  41f1c139f9a0822b:
+    english: |-
+      ## Language settings
+      Loomio is developed in English, but [is translated by volunteers into many languages](https://www.loomio.com/g/cpaM3Hsv/loomio-community-translation).
+    translation: |-
+      ## הגדרות שפה
+      Loomio מפותחת באנגלית, אך [מתנדבים מתרגמים אותה לשפות רבות](https://www.loomio.com/g/cpaM3Hsv/loomio-community-translation).
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  9faad78d2b46c546:
+    english: Loomio will detect your browser’s language settings, but you can manually set your preferred language from the available options on the profile page.
+    translation: Loomio מזהה את הגדרות השפה של הדפדפן. ניתן גם לבחור ידנית שפה מועדפת מבין האפשרויות בדף הפרופיל.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  a224dd4aaaf81381:
+    english: |-
+      ## Resetting your password
+      You can change your password by visiting your profile page and clicking **Reset Password**.
+    translation: |-
+      ## איפוס סיסמה
+      כדי לשנות את הסיסמה, יש לפתוח את דף הפרופיל וללחוץ על **איפוס סיסמה**.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  5bfa3cd39abcafba:
+    english: "## Merge accounts"
+    translation: "## מיזוג חשבונות"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  2e3c544b479874d5:
+    english: If you have two Loomio user accounts, you can merge them into a single account.
+    translation: אם יש שני חשבונות משתמש ב-Loomio, ניתן למזג אותם לחשבון אחד.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  26fec713318a68fc:
+    english: See [Merge Accounts](../merge_accounts).
+    translation: למידע נוסף, ראו [מיזוג חשבונות](../merge_accounts).
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  a12633b5bfa58576:
+    english: "## Deleting your account"
+    translation: "## מחיקת החשבון"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  544b974bf2c6bdfa:
+    english: If you wish to delete your Loomio user account and leave any Loomio groups you are a member of, see [Deleting Your Loomio Account](../deleting_your_account).
+    translation: כדי למחוק חשבון Loomio ולעזוב את כל הקבוצות שבהן החשבון חבר, ראו [מחיקת חשבון Loomio](../deleting_your_account).
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'

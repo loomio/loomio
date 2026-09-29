@@ -1,0 +1,189 @@
+---
+navigation_title: איך להשתתף
+blocks:
+  b07064bf98055393:
+    english: "# How to participate"
+    translation: "# איך להשתתף"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  c121de54fbe72331:
+    english: 'Once signed in to a Loomio group you have been invited to, you can participate in a Loomio discussion or decision.  '
+    translation: לאחר כניסה לקבוצת Loomio שאליה התקבלה הזמנה, ניתן להשתתף בדיון או בקבלת החלטה.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  9bb48e2f2f1858af:
+    english: Read on to see  how to write a comment in a thread and how to vote in a poll.
+    translation: בהמשך מוסבר איך לכתוב תגובה בשרשור ואיך להצביע בסקר.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  '095ec081a6f1d74e':
+    english: "## Comment"
+    translation: "## כתיבת תגובה"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  d5dadbc416d8603a:
+    english: You can write a comment in a thread, and people can reply, react or post their own comment to continue the discussion.
+    translation: ניתן לכתוב תגובה בשרשור. אנשים אחרים יכולים להשיב לה, להגיב עליה באימוג׳י או לפרסם תגובה משלהם ולהמשיך את הדיון.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  250f7bc0e6e6c93c:
+    english: 'When you have written your text, use **Post Comment** to instantly publish the comment. Your comment will be visible to anyone who has permission to see the thread. '
+    translation: לאחר כתיבת התגובה, יש לבחור **שלחו תגובה** כדי לפרסם אותה מיד. התגובה תהיה גלויה לכל מי שיש להם הרשאה לצפות בשרשור.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  76a3378441f45ebf:
+    english: "### Reply to a comment"
+    translation: "### תשובה לתגובה"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  c3495aed9ac78348:
+    english: You can reply to someone's comment by clicking on the reply icon beneath the comment.
+    translation: כדי להשיב לתגובה, יש לבחור בסמל התשובה שמתחתיה.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  b2698ab73e65442c:
+    english: Your reply is published in the thread and an email notification is sent to the author of the comment.
+    translation: התשובה מתפרסמת בשרשור, והודעה בדוא״ל נשלחת למי שכתב את התגובה.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  04743dedbee0de5c:
+    english: "### Get someone's attention"
+    translation: "### הפניית תשומת הלב של אחרים"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  455fea8aa593dad4:
+    english: You can notify people when you write a comment.
+    translation: בעת כתיבת תגובה, ניתן לשלוח הודעה לאנשים אחרים.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  316ef3257eaebd54:
+    english: "### Reactions"
+    translation: "### תגובות באימוג׳י"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  4b68204cf35c85f1:
+    english: Reacting to a comment is a great way to encourage and acknowledge a comment by letting the comment author know how you feel.  It is a quick and light-weight way to participate that does not require any text, nor send an email. Click the smile emoji icon beneath a comment to leave an emoji reaction.
+    translation: תגובה באימוג׳י מאפשרת להביע הערכה ולעודד את מי שכתב את התגובה. זו דרך מהירה להשתתף בלי לכתוב טקסט ובלי לשלוח דוא״ל. כדי להוסיף תגובת אימוג׳י, יש לבחור בסמל הפנים המחייכות שמתחת לתגובה.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  d391457c69df967f:
+    english: "## Vote"
+    translation: "## הצבעה"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  4432b9c5b263014a:
+    english: You may receive an invitation to vote in a poll via email or by notification in Loomio. Click on the link in the email to vote.
+    translation: הזמנה להצביע בסקר עשויה להגיע בדוא״ל או כהודעה ב־Loomio. כדי להצביע, יש לפתוח את הקישור שבהודעת הדוא״ל.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  2a8641a22cf13597:
+    english: Voting is easy, just click or tap on the icon of your choice.
+    translation: כדי להצביע, יש לבחור בסמל של האפשרות הרצויה.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  00d6e2698ade53cc:
+    english: There are many types of polls. The example below shows a typical proposal with voting options of **Agree**, **Abstain** or **Disagree**. Other options may be available.
+    translation: יש סוגים רבים של סקרים. בדוגמה שלהלן מופיעה הצעה רגילה עם אפשרויות ההצבעה **בעד**, **נמנע** או **נגד**. ייתכן שיהיו אפשרויות נוספות.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  4f327c4a766af0ab:
+    english: Read the poll, and any attached files, then cast your vote by selecting one of the options.
+    translation: יש לקרוא את הסקר ואת הקבצים המצורפים, אם ישנם, ואז לבחור באחת האפשרויות כדי להצביע.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  2cf633f37997e8b8:
+    english: "### State a reason"
+    translation: "### ציון סיבה"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  c976385dcb75f67b:
+    english: When voting, you can also leave a **Reason** to say why you have voted this way. This is optional.
+    translation: בעת ההצבעה ניתן גם לכתוב **סיבה** שמסבירה את הבחירה. זהו שלב רשות.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  6d0d884b0832dda9:
+    english: "### Change your vote"
+    translation: "### שינוי ההצבעה"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  84629138984e43d0:
+    english: You can **change your vote**, up until the proposal closes.
+    translation: ניתן **לשנות את ההצבעה** עד לסגירת ההצעה.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  8fcddbe7856e926b:
+    english: There are many reasons why you might want to change your vote. For example if new information emerges it may cause you to rethink your decision, and change your vote.
+    translation: יש סיבות רבות לשינוי ההצבעה. לדוגמה, מידע חדש עשוי להוביל לבחינה מחודשת של ההחלטה ולשינוי ההצבעה.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  f7078b517c8bfed8:
+    english: Once again, you can leave a reason to say why you have changed your vote.
+    translation: גם בעת שינוי ההצבעה ניתן להשאיר סיבה שמסבירה את השינוי.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  8e1b2953471f22ba:
+    english: "### Results"
+    translation: "### תוצאות"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  2153df12cd2b4fe2:
+    english: Results of the proposal are updated as people vote, so you can see how a proposal is trending.
+    translation: תוצאות ההצעה מתעדכנות עם כל הצבעה, כך שניתן לראות כיצד ההצעה מתקדמת.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  229571fe36c571b0:
+    english: 'In a controversial proposal it is common to see mixed results, however this does not mean the proposal has failed.  '
+    translation: בהצעה שיש לגביה מחלוקת, תוצאות מעורבות הן דבר שכיח. אין פירוש הדבר שההצעה נכשלה.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  c3d5e53684bf3e88:
+    english: Often the new information revealed during the proposal helps form a better proposal that is more likely to pass.
+    translation: לעיתים קרובות, מידע חדש שעולה במהלך הדיון בהצעה עוזר לגבש הצעה טובה יותר, שסיכוייה להתקבל גבוהים יותר.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  b4783489f09ccf19:
+    english: "### Outcome"
+    translation: "### מסקנה"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  592f419764241ef6:
+    english: When the proposal closes, the author is prompted to state the **Outcome**.
+    translation: כשההצעה נסגרת, מי שיצר אותה מתבקש לציין את ה**מסקנה**.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  0fae106181bbc6ac:
+    english: This is an important final step to record the result of the decision and let everyone know what will happen next.
+    translation: זהו שלב אחרון חשוב לתיעוד תוצאת ההחלטה ולעדכון כולם לגבי הצעדים הבאים.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'

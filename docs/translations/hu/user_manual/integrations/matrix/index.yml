@@ -1,0 +1,121 @@
+---
+navigation_title: Matrix
+blocks:
+  90c643b33736cf22:
+    english: "# Matrix integration"
+    translation: "# Matrix-integráció"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  f3106c22cd3d4059:
+    english: 'Loomio can send notifications into your Matrix channels when new discussions, proposals, comments, votes, and outcomes occur. '
+    translation: A Loomio értesítéseket küldhet a Matrix-csatornáidba, amikor új beszélgetés, javaslat, hozzászólás, szavazat vagy következtetés születik.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  a20cf2be00dac0ce:
+    english: Matrix is nice because it allows some HTML in the chatroom, and Loomio takes advantage of this.
+    translation: A Matrix támogat bizonyos HTML-elemeket a csevegőszobákban, és a Loomio ezt kihasználja.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  ffe12502f0030fec:
+    english: Our Matrix integration is a little different to our other chat integrations - it does not use a webhook - we've built a custom bot client for this one.
+    translation: 'A Matrix-integráció eltér a többi csevegőintegrációnktól: webhook helyett egy erre készített botklienssel működik.'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  44db147f65127a55:
+    english: You will need to create a matrix user for the bot to login as.
+    translation: Hozz létre egy Matrix-felhasználót, amellyel a bot bejelentkezhet.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  98045e5bf1339543:
+    english: Once you've created a user for the bot, sign in at that user to obtain the following information.
+    translation: Miután létrehoztad a bot felhasználóját, jelentkezz be ezzel a fiókkal az alábbi adatok megszerzéséhez.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  '059df9c4b4ebf0d0':
+    english: We're using Element for this guide.
+    translation: Ebben az útmutatóban az Elementet használjuk.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  cb3f91d54eee30e5:
+    english: "---"
+    translation: "---"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  f6fba52dc4f2326e:
+    english: |-
+      From your Loomio group, add a Matrix chat integration
+      ![loomio matrix bot menu](loomio-add-matrix-bot.png)
+    translation: |-
+      Adj hozzá egy Matrix-csevegőintegrációt a Loomio-csoportodhoz
+      ![A Loomio Matrix-bot menüje](loomio-add-matrix-bot.png)
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  f4c3d9fe2b4b951f:
+    english: |-
+      Here's the form to complete
+      ![loomio matrix bot form](loomio-matrix-bot-form.png)
+    translation: |-
+      Töltsd ki ezt az űrlapot
+      ![A Loomio Matrix-bot űrlapja](loomio-matrix-bot-form.png)
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  a8c6bed6f21a8d49:
+    english: |-
+      Here's where you start to find your access token
+      ![matrix settings menu](matrix-settings-menu.png)
+    translation: |-
+      Itt kezdheted el megkeresni a hozzáférési tokenedet
+      ![A Matrix beállítások menüje](matrix-settings-menu.png)
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  8529683cb87f553e:
+    english: |-
+      Here's the settings page
+      ![matrix settings](matrix-settings.png)
+    translation: |-
+      Ez a beállítások oldala
+      ![Matrix-beállítások](matrix-settings.png)
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  a1f18fc4522cd3db:
+    english: |-
+      Here's the access token itself
+      ![matrix access token](matrix-access-token.png)
+    translation: |-
+      Itt találod a hozzáférési tokent
+      ![Matrix-hozzáférési token](matrix-access-token.png)
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  2a4ccd4c121be4b1:
+    english: |-
+      Now you need the room id..
+      ![matrix room settings](matrix-room-settings.png)
+    translation: |-
+      Most a szobaazonosítóra van szükséged
+      ![A Matrix-szoba beállításai](matrix-room-settings.png)
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  bef40aab614c37b3:
+    english: |-
+      Here it is.
+      ![matrix room id](matrix-room-id.png)
+    translation: |-
+      Itt találod
+      ![Matrix-szobaazonosító](matrix-room-id.png)
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'

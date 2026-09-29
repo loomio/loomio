@@ -1,0 +1,75 @@
+---
+navigation_title: Пропозиції
+blocks:
+  3fa760281a1aed06:
+    english: "# Proposals"
+    translation: "# Пропозиції"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  ca5b9583bfe78b65:
+    english: A proposal asks people to respond to a statement or course of action. Participants choose a defined response and can explain their vote. Use a proposal to gather feedback, seek advice, identify objections, or test for agreement.
+    translation: Пропозиція запрошує людей висловитися щодо твердження або плану дій. Учасники вибирають один із визначених варіантів відповіді й можуть пояснити свій голос. Використовуйте пропозицію, щоб зібрати відгуки, отримати поради, виявити заперечення або перевірити, чи є згода.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  143dc77c58a4c881:
+    english: This section helps you choose and run Loomio's default proposal templates. For a complete sequence of discussion, proposals, amendments, and outcome, use the [decision-making guides](/en/guides/making_decisions/). To change the templates available to your group, see [Poll templates](../poll_templates/).
+    translation: Цей розділ допоможе вам вибрати й провести опитування за стандартними шаблонами пропозицій Loomio. Повну послідовність обговорення, пропозицій, поправок і висновку описано в [посібниках із ухвалення рішень](/en/guides/making_decisions/). Щоб змінити шаблони, доступні вашій групі, перегляньте [Шаблони опитувань](../poll_templates/).
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  e0f8614f95c9c5ff:
+    english: "## Choose a proposal template"
+    translation: "## Виберіть шаблон пропозиції"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  525699503edbe342:
+    english: |-
+      | Template | What it asks | Use it when… |
+      |---|---|---|
+      | [Sense check](sense_check/) | Is this on the right track? | An idea is still being developed |
+      | [Advice](advice/) | What advice should the decision maker consider? | A person or team owns the decision |
+      | [Consent](consent/) | Is this safe to try, or is there a meaningful objection? | The group uses consent decision-making |
+      | [Consensus](consensus/) | What is your position on this proposal? | The group is seeking collective agreement |
+    translation: |-
+      | Шаблон | На яке запитання він відповідає | Коли використовувати… |
+      |---|---|---|
+      | [Перевірка сенсу](sense_check/) | Чи рухаємося ми в правильному напрямку? | Ідею ще розробляють |
+      | [Порада](advice/) | Які поради варто врахувати тому, хто ухвалює рішення? | За рішення відповідає людина або команда |
+      | [Згода](consent/) | Чи можна безпечно це спробувати, чи є суттєве заперечення? | Група ухвалює рішення за принципом згоди |
+      | [Консенсус](consensus/) | Яка ваша позиція щодо цієї пропозиції? | Група прагне досягти спільної згоди |
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  0cb03ac4a22f02b4:
+    english: Choose the template whose response options match the question you need answered. Each template page explains its use cases, setup, voting form, and results.
+    translation: Виберіть шаблон, варіанти відповіді якого відповідають вашому запитанню. На сторінці кожного шаблону описано, коли його використовувати, як налаштувати, як виглядає форма голосування та як переглядати результати.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  d379b02c308b3b55:
+    english: "## Other proposal templates"
+    translation: "## Інші шаблони пропозицій"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  44cdb16aebf757ca:
+    english: Loomio also provides templates such as Proposal, Gradients of agreement, Question round, and Majority. Some are hidden initially. Group administrators can make them available or create a template for the group's own terminology and rules from [Poll templates](../poll_templates/).
+    translation: Loomio також пропонує шаблони «Пропозиція», «Градієнти згоди», «Раунд питань» і «Більшість». Деякі з них спочатку приховані. Адміністратори групи можуть зробити їх доступними або створити шаблон із власними термінами та правилами групи в розділі [Шаблони опитувань](../poll_templates/).
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  ca179ba4cb53c5e3:
+    english: "## Proposal records"
+    translation: "## Історія пропозиції"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  460a90e796fc4dc0:
+    english: Votes and reasons update while the proposal is open, and participants can change their response. After it closes, publish an [outcome](../outcomes/) that states the decision or next step. The discussion, proposal, votes, reasons, and outcome form a record of how the group reached its decision.
+    translation: Поки пропозиція відкрита, голоси та пояснення оновлюються, а учасники можуть змінювати свої відповіді. Після її закриття опублікуйте [висновок](../outcomes/), у якому зазначено рішення або наступний крок. Обговорення, пропозиція, голоси, пояснення та висновок зберігають історію того, як група дійшла рішення.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'

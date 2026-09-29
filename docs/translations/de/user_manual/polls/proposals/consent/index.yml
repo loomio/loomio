@@ -1,0 +1,93 @@
+---
+navigation_title: Zustimmung
+blocks:
+  9153f30a2c3db9f2:
+    english: "# Consent"
+    translation: "# Zustimmung"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  e16bed826124695f:
+    english: A Consent proposal asks whether a course of action is safe to try. Participants either consent or raise an objection. An objection identifies a concrete risk or harm that the proposal should address.
+    translation: Ein Vorschlag zur Zustimmung fragt, ob eine Maßnahme sicher genug ist, um sie auszuprobieren. Die Teilnehmenden stimmen zu oder erheben einen Einwand. Ein Einwand benennt ein konkretes Risiko oder einen möglichen Schaden, auf den der Vorschlag eingehen sollte.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  d675dd47ae42c929:
+    english: This page explains how to run one Consent proposal. See the [Consent process](/en/guides/making_decisions/consent_process) for the complete workflow, including questions, Sense check, amendments, objections, and outcome.
+    translation: Diese Seite erklärt, wie du einen Vorschlag zur Zustimmung durchführst. Den vollständigen Ablauf mit Fragen, Stimmungsbild, Änderungen, Einwänden und Fazit findest du unter [Zustimmungsprozess](/en/guides/making_decisions/consent_process).
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  7c4c79526b1d437b:
+    english: "## When to use Consent"
+    translation: "## Wann du Zustimmung verwenden solltest"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  1b99c0443bd1e4c8:
+    english: Use Consent when the group needs a workable decision that can proceed unless there is a valid objection. It suits experiments, operational policies, role agreements, and other decisions the group can review after gaining experience.
+    translation: Verwende Zustimmung, wenn die Gruppe eine praktikable Entscheidung treffen muss, die ohne berechtigten Einwand umgesetzt werden kann. Das eignet sich für Experimente, Arbeitsregeln, Vereinbarungen über Rollen und andere Entscheidungen, die die Gruppe nach ersten Erfahrungen überprüfen kann.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  966f3146dc9f61f1:
+    english: Consent does not require everyone to prefer the proposal. Define what counts as an objection before voting, and explain how objections will be tested and resolved.
+    translation: Bei der Zustimmung müssen nicht alle den Vorschlag bevorzugen. Lege vor der Abstimmung fest, was als Einwand zählt, und erkläre, wie Einwände geprüft und geklärt werden.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  e6cf2f0ebd4a7f58:
+    english: "## Example: start a bottle trial"
+    translation: "## Beispiel: Mehrwegflaschen testen"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  ad7be5e188748cb3:
+    english: Oatmilk Cooperative proposes starting a six-week returnable-bottle trial next month. The trial is limited in scope and includes a review, so the group asks whether it is safe to try.
+    translation: Die Hafermilchgenossenschaft schlägt vor, nächsten Monat einen sechswöchigen Test mit Mehrwegflaschen zu beginnen. Der Test ist begrenzt und wird anschließend überprüft. Deshalb fragt die Gruppe, ob sie ihn sicher ausprobieren kann.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  9703f1f9474243af:
+    english: "## Set up the proposal"
+    translation: "## Vorschlag vorbereiten"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  6458750b94201df6:
+    english: Describe the proposed action, its limits, safeguards, and review point. Keep **Consent** and **Objection** meanings precise, and require a reason for objections so the concern can be understood and addressed.
+    translation: Beschreibe die geplante Maßnahme, ihre Grenzen, Schutzmaßnahmen und den Zeitpunkt der Überprüfung. Erkläre genau, was **Zustimmung** und **Einwand** bedeuten. Verlange für Einwände eine Begründung, damit die Gruppe das Anliegen verstehen und darauf eingehen kann.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  d391457c69df967f:
+    english: "## Vote"
+    translation: "## Abstimmen"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  d98c0e71880c8828:
+    english: Participants select **Consent** when the proposal is safe enough to try, even if it is not their preferred plan. They select **Objection** when they can describe a material risk or harm.
+    translation: Teilnehmende wählen **Zustimmung**, wenn der Vorschlag sicher genug ist, um ihn auszuprobieren – auch wenn sie einen anderen Plan bevorzugen. Sie wählen **Einwand**, wenn sie ein wesentliches Risiko oder einen möglichen Schaden beschreiben können.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  72a9e4073ea27936:
+    english: "## Read the results"
+    translation: "## Ergebnisse auswerten"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  b0265040032f48e5:
+    english: The chart makes objections visible, but the group must examine the reasons. Resolve a valid objection by amending the proposal, adding a safeguard, changing its scope, or deciding not to proceed.
+    translation: Das Diagramm zeigt die Einwände. Die Gruppe muss aber auch deren Begründungen prüfen. Einen berechtigten Einwand kannst du klären, indem du den Vorschlag änderst, eine Schutzmaßnahme ergänzt, seinen Umfang anpasst oder entscheidest, nicht fortzufahren.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  a87df65569cb3a09:
+    english: Publish an outcome that records the agreed action, any safeguards, who is responsible, and when the group will review it.
+    translation: Veröffentliche ein Fazit, das die vereinbarte Maßnahme, mögliche Schutzmaßnahmen, die verantwortlichen Personen und den Zeitpunkt der Überprüfung festhält.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'

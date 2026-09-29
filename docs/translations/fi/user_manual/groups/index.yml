@@ -1,0 +1,91 @@
+---
+navigation_title: Ryhmät
+blocks:
+  cce1047bc62d8a5e:
+    english: "# Intro to Groups"
+    translation: "# Johdanto ryhmiin"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  91a303d3d1fb3894:
+    english: 'A Loomio group is a safe place for people to meet, have discussions and make decisions. '
+    translation: Loomio-ryhmä on turvallinen paikka, jossa ihmiset voivat tavata, keskustella ja tehdä päätöksiä.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  ea5096230dfe16d4:
+    english: 'It’s a container where group members can find and share information, participate in important discussions and decisions that affect their work.  '
+    translation: Ryhmän jäsenet voivat löytää ja jakaa siellä tietoa sekä osallistua työhönsä vaikuttaviin keskusteluihin ja päätöksiin.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  47903117cdc64e73:
+    english: A Loomio group looks like this.  At the top of the page you will see an image and logo that you can tailor to represent your organization.  This allows people arriving into your group to see they have joined a place they recognize and feel welcome - a safe space where people feel at home, amongst friends and can participate effectively.
+    translation: Loomio-ryhmä näyttää tältä. Sivun yläosassa näet kuvan ja logon, jotka voit mukauttaa organisaatiosi näköisiksi. Niistä ryhmään saapuvat ihmiset tunnistavat paikan omakseen. Tuttu ympäristö auttaa heitä tuntemaan olonsa tervetulleiksi ja osallistumaan keskusteluun.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  3d39462ab98c79e6:
+    english: "![The Oatmilk Cooperative group page, with its description and discussion list](group_page.png)"
+    translation: "![Oatmilk Cooperative -ryhmän sivu, jolla näkyvät ryhmän kuvaus ja keskusteluluettelo](group_page.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  59f3bebbce1676a6:
+    english: |-
+      Choose a representative name for your group and use the group description to outline;
+      - **what** this group is used for,
+      - **why** this is important,
+      - **who** is involved, and
+      - **how** members can participate.
+    translation: |-
+      Valitse ryhmällesi kuvaava nimi ja kerro ryhmän kuvauksessa;
+      - **mihin** ryhmää käytetään,
+      - **miksi** ryhmä on tärkeä,
+      - **ketkä** osallistuvat ja
+      - **miten** jäsenet voivat osallistua.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  79ae54bca7eb1797:
+    english: You may also include information like a code of conduct, terms of reference or other governing documents for the group.
+    translation: Voit lisätä kuvaukseen myös ryhmän käytännesäännöt, tehtävänkuvauksen tai muita ryhmän toimintaa ohjaavia asiakirjoja.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  '018c400616dad5f4':
+    english: If you are preparing a new group, see [Introducing Loomio to your group](/en/user_manual/overview/introducing_loomio) for a practical sequence from choosing the first piece of work through to recording an outcome.
+    translation: Jos olet perustamassa uutta ryhmää, tutustu sivuun [Loomion esittely ryhmällesi](/en/user_manual/overview/introducing_loomio). Siinä käydään läpi käytännön vaiheet ensimmäisen tehtävän valinnasta lopputuloksen kirjaamiseen.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  1bda53ca8e31780c:
+    english: "## Administration, Facilitation and Moderation - Code of Conduct"
+    translation: "## Ryhmän hallinnointi, keskustelun ohjaaminen ja moderointi – käytännesäännöt"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  1091f77d5ab879ed:
+    english: 'Loomio is built to foster inclusive participation, diversity and trust - helping groups make better decisions together. '
+    translation: Loomio tukee kaikkien osallistumista, erilaisia näkökulmia ja luottamusta. Näin ryhmät voivat tehdä parempia päätöksiä yhdessä.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  1ac058350eea2c6d:
+    english: 'Some topics bring tension in a group.  So it''s important to allow a robust discussion to take place, while ensuring it is also a safe place, particularly for vulnerable people in your group. '
+    translation: Jotkin aiheet voivat aiheuttaa ryhmässä jännitteitä. Keskustelulle on tärkeää antaa tilaa ja huolehtia samalla sen turvallisuudesta, erityisesti ryhmän haavoittuvassa asemassa oleville jäsenille.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  999bb2251bf623cd:
+    english: 'We recommend establishing a code of conduct for your group, to help everyone be aware of their responsibility for appropriate behaviour and encourage self-regulation. '
+    translation: Suosittelemme laatimaan ryhmälle käytännesäännöt. Ne auttavat kaikkia ymmärtämään vastuunsa asiallisesta käytöksestä ja säätelemään omaa toimintaansa.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  9a77fa2d5f4fdb01:
+    english: See the [Facilitator's Guide](/en/guides/facilitators_guide/commencing#culture-protocol-expectations) to further explore the value of a code of conduct.
+    translation: Lue [keskustelun ohjaajan opas](/en/guides/facilitators_guide/commencing#culture-protocol-expectations), jos haluat tutustua tarkemmin käytännesääntöjen hyötyihin.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'

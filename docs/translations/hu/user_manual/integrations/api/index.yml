@@ -1,0 +1,51 @@
+---
+navigation_title: API
+blocks:
+  073c1e9d8445f8d7:
+    english: "# Loomio API"
+    translation: "# Loomio API"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  3be363e1618c6924:
+    english: Use the Loomio API to connect Loomio with other software and automated workflows.
+    translation: A Loomio API-val összekapcsolhatod a Loomiót más szoftverekkel és automatizált munkafolyamatokkal.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  3a0a3a45b68cea23:
+    english: The [OpenAPI 3.1 contract](openapi.yaml) describes every public User API and Server API operation in a machine-readable format. Import it into an API client or use it to generate typed client code. The guides below explain workflows, permissions, and behavior that are not fully expressed by the contract.
+    translation: Az [OpenAPI 3.1 specifikáció](openapi.yaml) géppel olvasható formában írja le a felhasználói API és a szerver API összes nyilvános műveletét. Importáld egy API-kliensbe, vagy generálj belőle típusos klienskódot. Az alábbi útmutatók azokat a munkafolyamatokat, jogosultságokat és működési részleteket ismertetik, amelyeket a specifikáció nem ír le teljesen.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  19fe420b8b57b3a3:
+    english: "## User API"
+    translation: "## Felhasználói API"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  e08b0799f5a9b271:
+    english: The [User API](/en/user_manual/integrations/api/user-api) performs actions as a Loomio user. It can list groups and create or manage threads, comments, polls, and group memberships according to that user's permissions.
+    translation: A [felhasználói API](/en/user_manual/integrations/api/user-api) egy Loomio-felhasználó nevében hajt végre műveleteket. A felhasználó jogosultságai szerint listázhatja a csoportokat, és létrehozhat vagy kezelhet témákat, hozzászólásokat, szavazásokat és csoporttagságokat.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  d212aebc3b500643:
+    english: For push-based integrations, [group webhooks](/en/user_manual/integrations/api/user-api#webhooks) send selected Loomio events to a web endpoint as JSON. Use the REST endpoints to read or change Loomio data and a webhook when an integration should receive events without polling.
+    translation: A push-alapú integrációkhoz a [csoportos webhookok](/en/user_manual/integrations/api/user-api#webhooks) JSON-formátumban küldik el a kiválasztott Loomio-eseményeket egy webes végpontnak. A REST-végpontokkal olvashatod vagy módosíthatod a Loomio adatait. Akkor használj webhookot, ha az integrációnak rendszeres lekérdezés nélkül kell értesülnie az eseményekről.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  d6536c749fb8a984:
+    english: "## Server API"
+    translation: "## Szerver API"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  76fbf0c8fa91eeb8:
+    english: The [Server API](/en/user_manual/integrations/api/server-api) lets operators of self-hosted Loomio installations manage user accounts. It is authenticated with a server-wide secret.
+    translation: A [szerver API](/en/user_manual/integrations/api/server-api) segítségével a saját szerveren futtatott Loomio-telepítések üzemeltetői kezelhetik a felhasználói fiókokat. A hitelesítéshez a teljes szerverre érvényes titkos kulcs szükséges.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'

@@ -1,0 +1,61 @@
+---
+navigation_title: ダイレクトディスカッション
+blocks:
+  ba470546359b688d:
+    english: "# Direct discussions"
+    translation: "# ダイレクトディスカッション"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  b3ed13f5612f4ff9:
+    english: A direct discussion is a private discussion for a specific set of people.
+    translation: ダイレクトディスカッションは、特定の人だけが参加できる非公開の議論です。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  479f7faed056ab51:
+    english: A direct discussion does not belong to a group. Invited people do not need to be a member of your Loomio group.
+    translation: ダイレクトディスカッションはグループに属しません。招待する人がLoomioグループのメンバーである必要はありません。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  2f5362faecc07fa0:
+    english: You control who can see and participate by adding people or email addresses to the **Invite** field.
+    translation: "**招待する**欄に人やメールアドレスを追加すると、閲覧と参加ができる人を指定できます。"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  f31343ea54b4f899:
+    english: Direct discussions support the same comments, polls and other tools as group discussions. They can be useful when creating a subgroup is unnecessary.
+    translation: ダイレクトディスカッションでも、グループの議論と同じようにコメントや投票などの機能を使えます。サブグループを作る必要がない場合に便利です。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  8dcb1cd81ca79192:
+    english: "![A direct discussion form with no group selected and Samira Patel in the Invite field](direct-discussion-example.png)"
+    translation: "![グループが選択されておらず、招待する欄にSamira Patelが入力されたダイレクトディスカッションのフォーム](direct-discussion-example.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  6e1409b4f3f725d9:
+    english: Select **Direct threads** in the sidebar to see your direct discussions. Select **New discussion** on that page to start another one.
+    translation: ダイレクトディスカッションを見るには、サイドバーの**ダイレクトスレッド**を選択します。新しく始めるには、そのページで**新しい議論**を選択します。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  f77108fd74372c43:
+    english: "![The Direct threads sidebar item and the list of direct discussions](direct-discussion-sidebar.png)"
+    translation: "![サイドバーのダイレクトスレッド項目とダイレクトディスカッションの一覧](direct-discussion-sidebar.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  5a0b9426a2d88e62:
+    english: |-
+      ## Contacting someone via a direct discussion
+      A direct discussion can be used to contact one or more people privately without creating a subgroup.
+    translation: |-
+      ## ダイレクトディスカッションで連絡する
+      サブグループを作らずに、1人または複数の人へ非公開で連絡できます。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'

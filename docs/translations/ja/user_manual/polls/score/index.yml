@@ -1,0 +1,139 @@
+---
+navigation_title: スコア投票
+blocks:
+  c719d051fa2f700e:
+    english: "# Score"
+    translation: "# スコア投票"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  517adc384b38d256:
+    english: Score measures how participants evaluate each option on a shared numeric scale. Unlike Choose, it asks people to respond to every option, so the results show both what people prefer and how strongly they prefer it.
+    translation: スコア投票では、参加者が共通の数値尺度で各選択肢を評価します。選択投票とは異なり、すべての選択肢への回答を求めます。そのため、結果から何を好むかに加え、どの程度好むかも分かります。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  a678333f6d814e87:
+    english: "## When to use Score"
+    translation: "## スコア投票を使う場面"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  c4ca19abb53e3ddc:
+    english: 'Use Score when every option can be evaluated independently against the same question. It works well for:'
+    translation: すべての選択肢を同じ問いに基づいて個別に評価できる場合は、スコア投票を使います。たとえば、次のような場合に適しています。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  c77c1ad6b2a9d697:
+    english: |-
+      - assessing how ready each part of a project is;
+      - rating the importance of several principles;
+      - measuring interest in possible meeting topics;
+      - evaluating grant applications against a common criterion; or
+      - comparing the suitability of several proposals.
+    translation: |-
+      - プロジェクトの各部分の準備状況を評価する
+      - 複数の原則の重要度を評価する
+      - 会議の議題候補への関心を測る
+      - 共通の基準で助成金の申請を評価する
+      - 複数の提案の適合性を比較する
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  d91459d96a31a671:
+    english: Define what the bottom and top of the scale mean. A number without a shared definition can mean different things to different voters. Use [Choose](/en/user_manual/polls/choose/) when you only need selections, or [Allocate](/en/user_manual/polls/allocate/) when participants must make trade-offs within a limited budget.
+    translation: 尺度の最低点と最高点が何を意味するかを定義します。共通の定義がなければ、同じ数字でも投票者によって意味が異なる場合があります。選択肢を選ぶだけでよい場合は[選択投票](/en/user_manual/polls/choose/)を、参加者が限られた予算の中で配分を決める必要がある場合は[配分投票](/en/user_manual/polls/allocate/)を使います。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  6160518dc06b70a7:
+    english: "## Example: score possible trial locations"
+    translation: "## 例：試験実施場所の候補を評価する"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  a75c387743cad529:
+    english: Oatmilk Cooperative is choosing locations for a returnable-bottle trial. It asks members to score four locations from 0 (**unsuitable**) to 10 (**ideal**), considering customer access, staff capacity, storage, and collection transport.
+    translation: オーツミルク協同組合は、返却可能なボトルの試験実施場所を選んでいます。顧客のアクセス、スタッフの対応力、保管場所、回収時の輸送を考慮し、メンバーに4つの場所を0（**不適切**）から10（**理想的**）で評価してもらいます。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  c74ebb16f872b3c6:
+    english: "## Set up the poll"
+    translation: "## 投票を設定する"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  b03122ee279f9c91:
+    english: State one question that applies equally to every option. Add the items to be assessed, set the **Minimum score** and **Maximum score**, and explain the endpoints in the details. Option meanings can clarify the scope of each item.
+    translation: すべての選択肢に同じように当てはまる質問を1つ示します。評価する項目を追加し、**最低スコア**と**最大スコア**を設定して、詳細にそれぞれの点数が意味することを説明します。選択肢の説明には、各項目の評価範囲を明記できます。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  85e66520acf78264:
+    english: Choose a scale participants can apply consistently. A 0–5 scale is quick to use; a 0–10 scale allows finer distinctions. More precision does not necessarily produce better information, so use the shortest scale that fits the question.
+    translation: 参加者が一貫して使える尺度を選びます。0～5の尺度は手軽に使えます。0～10の尺度なら、より細かな違いを示せます。細かくしても、必ずしも有用な情報が増えるわけではありません。質問に合う、できるだけ簡潔な尺度を使います。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  bb3998655598796f:
+    english: Anonymous voting and showing options in random order can be useful when you want to reduce social or ordering effects.
+    translation: ほかの人の影響や選択肢の表示順による影響を減らしたい場合は、匿名投票や選択肢のランダム表示が役立ちます。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  d391457c69df967f:
+    english: "## Vote"
+    translation: "## 投票する"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  33199814c9ad8a64:
+    english: Participants move a slider to score every option. In this example, the voter scores Central Station cafe at 8, Riverside market at 6, the University food court at 7, and Harbour offices at 5.
+    translation: 参加者はスライダーを動かして、すべての選択肢に点数を付けます。この例では、投票者は中央駅のカフェに8点、川沿いの市場に6点、大学のフードコートに7点、港のオフィスに5点を付けています。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  fba3d21a09846414:
+    english: The reason explains how the voter applied the scale. This helps the group distinguish a low score caused by missing information from one caused by substantive concern.
+    translation: 投票理由には、その尺度をどう当てはめたかを説明します。これにより、グループは低い点数が情報不足によるものか、具体的な懸念によるものかを区別できます。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  72a9e4073ea27936:
+    english: "## Read the results"
+    translation: "## 結果を読む"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  846b7759f9d54232:
+    english: 'For each option, the results show:'
+    translation: 結果には、選択肢ごとに次の情報が表示されます。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  cac30fa54f0aeaf7:
+    english: |-
+      - **Points**: the sum of all scores;
+      - **Mean**: the average score; and
+      - **Voters**: how many people scored the option.
+    translation: |-
+      - **ポイント**：すべての点数の合計
+      - **平均**：点数の平均
+      - **有権者**：その選択肢に点数を付けた人数
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  7e063d4b1babcb9e:
+    english: In this example, **Central Station cafe** has the highest mean at 7.5. **Harbour offices** has the lowest mean at 5.25, while Riverside market and the University food court are tied at 7. Four of five invited people have voted, so the group can also see that one response is outstanding.
+    translation: この例では、**中央駅のカフェ**の平均が7.5で最も高く、**港のオフィス**の平均が5.25で最も低くなっています。川沿いの市場と大学のフードコートは、どちらも7です。招待された5人のうち4人が投票済みなので、グループは1人の回答がまだないことも確認できます。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  147800d3643d9942:
+    english: Compare means only when the options have a similar number of voters. Read the vote reasons before treating a small difference as meaningful, and publish an outcome explaining what action follows from the scores.
+    translation: 平均を比較するのは、選択肢ごとの投票者数がほぼ同じ場合に限ります。わずかな差に意味があると判断する前に投票理由を読み、点数を受けてどのような行動を取るかを説明する結論を公開します。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'

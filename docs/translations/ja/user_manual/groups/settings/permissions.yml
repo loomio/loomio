@@ -1,0 +1,73 @@
+---
+navigation_title: 権限
+blocks:
+  d661e5fc8cc1b460:
+    english: "# Group permissions"
+    translation: "# グループの権限"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  712830f14602c6c7:
+    english: The permissions tab controls which group operations are available to ordinary members and, for non-secret groups, to non-members. Open **Edit group settings** from the group page, then select **Permissions**.
+    translation: 権限タブでは、一般のメンバーが行える操作を設定できます。非公開ではないグループでは、非メンバーに許可する操作も設定できます。グループのページで**グループ設定を編集する**を開き、**権限**を選択します。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  b71bf8cce1cb369c:
+    english: "![Group permission settings](group_group_settings_permissions.png)"
+    translation: "![グループの権限設定](group_group_settings_permissions.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  88e5fcd302a53620:
+    english: Administrators retain the ability to manage the group. Enabling a member permission extends that particular action to ordinary members; it does not make them administrators.
+    translation: 管理者は引き続きグループを管理できます。メンバーの権限を有効にすると、一般のメンバーもその操作を行えるようになります。管理者になるわけではありません。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  5b2b9af0f68b7a57:
+    english: 'Permissions include whether members can:'
+    translation: メンバーに許可できる操作には、次のものがあります。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  8377b499d13690c0:
+    english: |-
+      - add members or invite guests;
+      - send announcements;
+      - create subgroups;
+      - start and manage discussions;
+      - create and manage tags;
+      - edit or delete comments where the setting permits;
+      - start proposals and polls; and
+      - create discussion and poll templates.
+    translation: |-
+      - メンバーを追加する、またはゲストを招待する
+      - お知らせを送る
+      - サブグループを作成する
+      - ディスカッションを開始、管理する
+      - タグを作成、管理する
+      - 設定で許可されている場合にコメントを編集、削除する
+      - 提案や投票を開始する
+      - ディスカッションと投票のテンプレートを作成する
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  87166abe7eea1ab3:
+    english: For groups that are not secret, administrators can separately allow non-members to start discussions. A non-member who starts a discussion becomes a guest of that discussion but does not gain access to other private discussions or become a group member.
+    translation: 非公開ではないグループでは、管理者は非メンバーによるディスカッションの開始を別途許可できます。ディスカッションを開始した非メンバーは、そのディスカッションのゲストになります。ただし、ほかのプライベートなディスカッションにはアクセスできず、グループのメンバーにもなりません。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  3d01d10a97636b1e:
+    english: The **Admins can edit members' comments** setting gives administrators an exceptional moderation capability. Enable it only when the group has agreed that administrators should be able to alter member-authored content.
+    translation: "**管理者はメンバーのコメントを編集できます**を有効にすると、管理者はメンバーが書いたコメントを編集できるようになります。メンバーが書いた内容を管理者が変更してよいとグループで合意した場合にのみ、有効にしてください。"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  b0af0135752a461f:
+    english: Review permissions when the group's purpose, membership, or moderation responsibilities change. Give each role only the capabilities it needs.
+    translation: グループの目的、メンバー構成、モデレーションの担当が変わったときは、権限を見直してください。各役割に必要な権限だけを付与します。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'

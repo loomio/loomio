@@ -1,0 +1,117 @@
+---
+navigation_title: סימניות
+blocks:
+  4f81ad2ed2c971a4:
+    english: "# Bookmarks"
+    translation: "# סימניות"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  5d590d1d8ab9b956:
+    english: |-
+      Bookmarks are a personal list of Loomio items you want to return to. Your
+      bookmarks are visible only to you and saving an item does not notify anyone
+      else.
+    translation: |-
+      סימניות הן רשימה אישית של פריטים ב-Loomio שרוצים לחזור אליהם. הסימניות
+      גלויות רק למי ששמר אותן, ושמירת פריט אינה שולחת הודעה
+      לאף אחד אחר.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  aac40737df991d52:
+    english: 'You can bookmark:'
+    translation: 'ניתן לשמור סימניות עבור:'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  0f6c7e4161c72c18:
+    english: |-
+      - discussions
+      - comments
+      - proposals and polls
+      - votes
+      - outcomes
+    translation: |-
+      - דיונים
+      - תגובות
+      - הצעות ומשאלים
+      - הצבעות
+      - מסקנות
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  fc91d7d6d32e590b:
+    english: "## Save a bookmark"
+    translation: "## שמירת סימנייה"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  daec09886eecd058:
+    english: |-
+      Open the action menu for the item and select **Save bookmark**. The action menu
+      is usually shown as three dots. For a discussion, use the action menu near the
+      discussion title; for a comment, vote, proposal, poll, or outcome, use the menu
+      on that item.
+    translation: |-
+      יש לפתוח את תפריט הפעולות של הפריט ולבחור **שמור סימניה**. תפריט הפעולות
+      מופיע בדרך כלל כשלוש נקודות. בדיון, יש להשתמש בתפריט שליד
+      כותרת הדיון; בתגובה, בהצבעה, בהצעה, במשאל או במסקנה, יש להשתמש בתפריט
+      של אותו פריט.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  395a4c119e77f34b:
+    english: "## View your bookmarks"
+    translation: "## הצגת הסימניות"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  a5e09c422c753df7:
+    english: |-
+      Open the sidebar and select **Bookmarks**. The number beside the link shows how
+      many bookmarks you have saved.
+    translation: |-
+      יש לפתוח את סרגל הצד ולבחור **סימניות**. המספר שליד הקישור מציג כמה
+      סימניות נשמרו.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  7c21b03875c08b8e:
+    english: |-
+      The Bookmarks page lists your most recently saved items first. Each row shows
+      the kind of item and its author. Select a row to return to the bookmarked item.
+    translation: |-
+      בדף הסימניות, הפריטים שנשמרו לאחרונה מופיעים ראשונים. בכל שורה מוצגים
+      סוג הפריט ושם מי שיצר אותו. יש לבחור שורה כדי לחזור לפריט שסומן.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  644d774a0d045214:
+    english: "## Remove a bookmark"
+    translation: "## הסרת סימנייה"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  c2480aa6235675ba:
+    english: |-
+      On the Bookmarks page, select the remove-bookmark button at the end of a row.
+      You can also open the bookmarked item's action menu and select **Remove
+      bookmark**.
+    translation: |-
+      בדף הסימניות, יש לבחור בלחצן הסרת הסימנייה שבסוף השורה.
+      ניתן גם לפתוח את תפריט הפעולות של הפריט שסומן ולבחור **הסרת
+      סימנייה**.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  6c20d47950313409:
+    english: |-
+      Removing a bookmark affects only your personal list. You can save the item
+      again later.
+    translation: |-
+      הסרת סימנייה משפיעה רק על הרשימה האישית. ניתן לשמור את הפריט
+      שוב בהמשך.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'

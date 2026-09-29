@@ -1,0 +1,363 @@
+---
+navigation_title: Loomio introduceren in je groep
+blocks:
+  6c777a62b2b77732:
+    english: "# Introducing Loomio to your group"
+    translation: "# Loomio introduceren in je groep"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  438cc622ae730bd8:
+    english: Introduce Loomio through one useful piece of work. Prepare the group before inviting people, help everyone participate once, and complete the process through to an outcome.
+    translation: Introduceer Loomio met één nuttige taak. Bereid de groep voor voordat je mensen uitnodigt, help iedereen om een eerste bijdrage te leveren en rond het proces af met een conclusie.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  9c9fa4e8f6e208e4:
+    english: "## Choose one useful starting point"
+    translation: "## Kies één nuttig startpunt"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  3353fb04e83837e5:
+    english: Start with a real process that your group already needs. A good first use is small enough to complete soon, but relevant enough that people have a reason to participate.
+    translation: Begin met een bestaand proces dat je groep nodig heeft. Kies iets dat je snel kunt afronden, maar dat belangrijk genoeg is om mensen te laten deelnemen.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  652744a2ab28954b:
+    english: 'For example:'
+    translation: 'Bijvoorbeeld:'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  19bc6c09eeea816e:
+    english: |-
+      - prepare the agenda for an upcoming meeting;
+      - review and approve meeting minutes;
+      - gather feedback on a draft document;
+      - decide a small operational question; or
+      - identify priorities for the next month.
+    translation: |-
+      - stel de agenda op voor een komende vergadering;
+      - bekijk en keur de notulen van een vergadering goed;
+      - verzamel feedback op een conceptdocument;
+      - neem een kleine praktische beslissing; of
+      - bepaal de prioriteiten voor de komende maand.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  68a0d6b76f36ebaf:
+    english: Avoid moving every discussion and decision into Loomio at once. A repeatable process gives the group a clear reason to return and lets you improve the way you run it each time.
+    translation: Verplaats niet meteen alle discussies en beslissingen naar Loomio. Een terugkerend proces geeft de groep een duidelijke reden om terug te komen. Je kunt de aanpak bovendien elke keer verbeteren.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  4b65243ef120921b:
+    english: "## Prepare the group before inviting people"
+    translation: "## Bereid de groep voor voordat je mensen uitnodigt"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  305b29c1c832c246:
+    english: 'Give people a useful and recognizable place to arrive in:'
+    translation: 'Zorg dat mensen in een herkenbare groep terechtkomen waar ze meteen aan de slag kunnen:'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  76d859d168805706:
+    english: |-
+      - add the group's name, logo, cover image, purpose, and important links;
+      - check the group's privacy and permissions;
+      - add any [category tags](/en/user_manual/discussions/tags) the group will use regularly;
+      - create the first real discussion, with the background information people need; and
+      - create a practice discussion if members would benefit from trying comments, reactions, and voting without consequences.
+    translation: |-
+      - voeg de naam, het logo, de omslagafbeelding, het doel en belangrijke links van de groep toe;
+      - controleer de privacyinstellingen en rechten van de groep;
+      - voeg [categorielabels](/en/user_manual/discussions/tags) toe die de groep regelmatig zal gebruiken;
+      - begin de eerste echte discussie en geef mensen de achtergrondinformatie die ze nodig hebben; en
+      - begin een oefendiscussie als leden zonder gevolgen willen oefenen met reacties en stemmen.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  f1decb57ec9d48cb:
+    english: Use your own photo in your profile and the organization's logo for the group. This helps people recognize who invited them and which organization an email is about.
+    translation: Gebruik een foto van jezelf in je profiel en het logo van de organisatie voor de groep. Zo herkennen mensen wie hen heeft uitgenodigd en over welke organisatie een e-mail gaat.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  '01965093f234bb36':
+    english: "## Decide where work belongs"
+    translation: "## Bepaal waar het werk thuishoort"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  7fbd0d770cbed2bd:
+    english: 'Loomio can sit alongside tools your group already uses:'
+    translation: 'Loomio kan naast de hulpmiddelen staan die je groep al gebruikt:'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  '0168271b154f6931':
+    english: |-
+      | Use | Good place for it |
+      |---|---|
+      | Quick questions, social conversation, and timely updates | Chat, such as Slack, Teams, Matrix, or Discord |
+      | Collaborative editing of a living document | A shared document tool |
+      | Assigning work and tracking its completion | A task or project-management tool |
+      | A focused discussion, broad participation, a decision, and its lasting record | Loomio |
+    translation: |-
+      | Gebruik | Geschikte plek |
+      |---|---|
+      | Korte vragen, informele gesprekken en actuele updates | Chat, zoals Slack, Teams, Matrix of Discord |
+      | Samen werken aan een document dat blijft veranderen | Een gedeelde documenteditor |
+      | Werk verdelen en bijhouden wat is afgerond | Een hulpmiddel voor taken of projectbeheer |
+      | Een gerichte discussie, brede deelname, een beslissing en een blijvend verslag daarvan | Loomio |
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  50fae2027411e538:
+    english: Link to documents and other systems from the group description or discussion context. Use [chat integrations](/en/user_manual/integrations/chatbots) to bring important Loomio activity into a channel people already follow.
+    translation: Link vanuit de groepsbeschrijving of de context van een discussie naar documenten en andere systemen. Gebruik [chatintegraties](/en/user_manual/integrations/chatbots) om belangrijke activiteiten in Loomio te delen in een kanaal dat mensen al volgen.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  ed67af54bdf1c775:
+    english: Tell members what you expect to happen in Loomio. A simple boundary such as “important discussions and decisions go in Loomio; quick coordination stays in chat” is easier to adopt than an unexplained new tool.
+    translation: Vertel leden waarvoor je Loomio wilt gebruiken. Een eenvoudige afspraak, zoals ‘belangrijke discussies en beslissingen horen in Loomio; korte afstemming blijft in de chat’, is makkelijker te volgen dan een nieuw hulpmiddel zonder uitleg.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  0a799d7911a46f6f:
+    english: "## Decide how your group decides"
+    translation: "## Bepaal hoe je groep beslissingen neemt"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  9e1c64de2dc68593:
+    english: Loomio does not require every group, or every decision, to use the same process. Some groups arrive with established rules. Others use Loomio while they develop a clearer decision-making practice together.
+    translation: Niet elke groep of beslissing hoeft in Loomio hetzelfde proces te volgen. Sommige groepen hebben al vaste regels. Andere groepen gebruiken Loomio terwijl ze samen duidelijkere afspraken maken over besluitvorming.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  6d0c0f50959ab9d6:
+    english: "### If your process is already established"
+    translation: "### Als je proces al vaststaat"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  5fbfe86e935d5a8c:
+    english: 'Translate the group''s existing requirements into Loomio. Before running a formal decision, make sure participants can tell:'
+    translation: 'Pas de bestaande regels van de groep toe in Loomio. Zorg dat deelnemers vóór een formele beslissing weten:'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  9a1b89bd4c5fe02c:
+    english: |-
+      - which kinds of decisions can be made in Loomio;
+      - who provides input and who has authority to decide;
+      - who is eligible to vote;
+      - whether a [quorum](/en/user_manual/polls/quorum) is required;
+      - whether the decision requires a majority, supermajority, unanimous agreement, consent, or another [vote share requirement](/en/user_manual/polls/vote_share_requirements);
+      - whether the decision takes effect when its outcome is published or must be ratified elsewhere; and
+      - who will record and carry out the outcome.
+    translation: |-
+      - welke soorten beslissingen in Loomio kunnen worden genomen;
+      - wie inbreng levert en wie bevoegd is om te beslissen;
+      - wie mag stemmen;
+      - of een [quorum](/en/user_manual/polls/quorum) vereist is;
+      - of de beslissing een gewone meerderheid, een gekwalificeerde meerderheid, unanimiteit, consent of een ander [vereist stemmenaandeel](/en/user_manual/polls/vote_share_requirements) vereist;
+      - of de beslissing ingaat zodra de conclusie is gepubliceerd of elders nog moet worden bekrachtigd; en
+      - wie de conclusie vastlegt en uitvoert.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  4b48b6e0aff5cfc0:
+    english: If your constitution, bylaws, policy, or local law governs electronic decisions, make sure the Loomio process follows those requirements. Configure [delegated voters](/en/user_manual/groups/delegated_voters), proposal settings, and [poll templates](/en/user_manual/polls/poll_templates) to make the agreed process easy to repeat.
+    translation: Als de statuten, het huishoudelijk reglement, het beleid of de plaatselijke wet regels stellen voor elektronische besluitvorming, zorg dan dat het proces in Loomio daaraan voldoet. Stel [gedelegeerde stemmers](/en/user_manual/groups/delegated_voters), voorstelinstellingen en [peilingsjablonen](/en/user_manual/polls/poll_templates) in, zodat de groep het afgesproken proces gemakkelijk kan herhalen.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  b068624ed6c7c6b3:
+    english: "### If your group is still deciding"
+    translation: "### Als je groep nog afspraken maakt"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  14449de544d28a6b:
+    english: 'Start a discussion about how decisions should be made. Instead of beginning with a voting tool, ask the group to consider:'
+    translation: 'Begin een discussie over hoe de groep beslissingen wil nemen. Vraag de groep eerst om na te denken over:'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  f65b39a74ae25ed7:
+    english: |-
+      - What kinds of decisions do we make?
+      - Who is affected, who should be consulted, and who is responsible for deciding?
+      - Which decisions need advice, consent, consensus, a vote, or delegated authority?
+      - What level of participation or support makes a decision valid?
+      - How will we respond to objections, tied results, or insufficient participation?
+      - How will we communicate, record, review, and change a decision?
+    translation: |-
+      - Welke soorten beslissingen nemen we?
+      - Wie ondervindt de gevolgen, wie moeten we raadplegen en wie is verantwoordelijk voor de beslissing?
+      - Voor welke beslissingen is advies, consent, consensus, een stemming of gedelegeerde bevoegdheid nodig?
+      - Hoeveel deelname of steun is nodig voor een geldige beslissing?
+      - Hoe gaan we om met bezwaren, een gelijke stand of te weinig deelname?
+      - Hoe communiceren, leggen we vast, beoordelen we en wijzigen we een beslissing?
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  ce7c0af2ad170b5c:
+    english: The answers may be different for an operational decision, a policy, an election, and a constitutional change. See [Making decisions](/en/guides/making_decisions) to compare several complete processes.
+    translation: De antwoorden kunnen verschillen tussen een praktische beslissing, beleid, een verkiezing en een statutenwijziging. Bekijk [Beslissingen nemen](/en/guides/making_decisions) om verschillende volledige processen te vergelijken.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  aac26fc96b90744d:
+    english: If the group is not ready to settle every rule, agree on a provisional process for one low-risk decision. State what the result will mean before asking people to participate, publish an outcome, then review how the process worked. Record what the group learns in its description, governance documents, or reusable templates.
+    translation: Als de groep nog niet alle regels kan vastleggen, spreek dan een voorlopig proces af voor één beslissing met weinig risico. Leg uit wat de uitkomst van de stemming zal betekenen voordat je mensen vraagt deel te nemen. Publiceer daarna een conclusie en bespreek hoe het proces verliep. Leg vast wat de groep heeft geleerd in de groepsbeschrijving, beleidsdocumenten of herbruikbare sjablonen.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  23ed8fb3e887afbc:
+    english: "## Invite people"
+    translation: "## Nodig mensen uit"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  a5d369ad9df691fe:
+    english: "[Invite people](/en/user_manual/groups/inviting_people) with a short personal message that explains:"
+    translation: "[Nodig mensen uit](/en/user_manual/groups/inviting_people) met een kort persoonlijk bericht waarin je uitlegt:"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  3383207ff2fcc99b:
+    english: |-
+      - why the group is using Loomio;
+      - what you are asking them to do first;
+      - when you need their response; and
+      - where they can get help.
+    translation: |-
+      - waarom de groep Loomio gebruikt;
+      - wat je hen als eerste vraagt te doen;
+      - wanneer je hun reactie nodig hebt; en
+      - waar ze hulp kunnen krijgen.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  282ef8673815823e:
+    english: You can begin with a small group of people who will actively test the process, or invite the whole group when everyone needs to participate from the start. In either case, have a discussion ready for them rather than inviting people into an empty group.
+    translation: Je kunt beginnen met een kleine groep mensen die het proces actief uitprobeert. Je kunt ook meteen de hele groep uitnodigen als iedereen vanaf het begin moet deelnemen. Zorg in beide gevallen dat er al een discussie klaarstaat, zodat mensen niet in een lege groep terechtkomen.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  cd6511a78ce7c9b7:
+    english: "## Help everyone participate once"
+    translation: "## Help iedereen een eerste bijdrage te leveren"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  4a37273687b4f4b0:
+    english: The first objective is for each person to cross the threshold from receiving an invitation to contributing something.
+    translation: Het eerste doel is dat iedereen na de uitnodiging ook daadwerkelijk iets bijdraagt.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  ce285f27cca389c4:
+    english: 'Ask people to:'
+    translation: 'Vraag mensen om:'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  d0b9e80af995edff:
+    english: |-
+      1. sign in and add a profile photo;
+      2. open the welcome or practice discussion;
+      3. post a short comment or reaction; and
+      4. vote in a low-stakes proposal and, if useful, leave a reason.
+    translation: |-
+      1. in te loggen en een profielfoto toe te voegen;
+      2. de welkomst- of oefendiscussie te openen;
+      3. een korte reactie te plaatsen; en
+      4. te stemmen over een voorstel met weinig op het spel en, als dat nuttig is, hun stem toe te lichten.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  919e32e7adb7c4c8:
+    english: Members do not need to create a password. They can [sign in by email](/en/user_manual/users/signing_in), and they can reply to eligible discussion emails without first navigating back to the thread.
+    translation: Leden hoeven geen wachtwoord aan te maken. Ze kunnen [inloggen via e-mail](/en/user_manual/users/signing_in) en rechtstreeks antwoorden op discussie-e-mails die antwoorden per e-mail toestaan, zonder eerst de discussie te openen.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  22ceb7104d416acf:
+    english: "## Use notifications deliberately"
+    translation: "## Gebruik meldingen bewust"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  dd99e6dd5c93d9ee:
+    english: Access to content and notification about it are separate. Group members can find discussions in their group even when they were not notified immediately.
+    translation: Toegang tot inhoud en meldingen daarover staan los van elkaar. Groepsleden kunnen discussies in hun groep vinden, ook als ze niet meteen een melding kregen.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  0e20732d957eb282:
+    english: When starting a discussion, notify the people whose input is needed at that stage. Use @mentions and replies when asking particular people to respond. When voting opens later, invite the eligible voters.
+    translation: Stuur bij het starten van een discussie een melding naar de mensen van wie je op dat moment inbreng nodig hebt. Gebruik @mentions en antwoorden als je specifieke mensen om een reactie vraagt. Nodig de stemgerechtigden uit zodra de stemming later begint.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  43339ff0f3d30a50:
+    english: If you create a discussion and poll together only to capture a vote, avoid sending a discussion invitation immediately followed by a poll invitation. Either start the discussion without notifying people and invite them through the poll, or run a [standalone poll](/en/user_manual/polls/intro_to_decisions#without-a-discussion).
+    translation: Als je tegelijk een discussie en een peiling maakt om alleen stemmen te verzamelen, stuur dan niet direct na een uitnodiging voor de discussie ook een uitnodiging voor de peiling. Begin de discussie zonder mensen een melding te sturen en nodig hen via de peiling uit, of gebruik een [zelfstandige peiling](/en/user_manual/polls/intro_to_decisions#without-a-discussion).
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  467cf9d1e5bd2973:
+    english: Show members the [Catch-up and notification settings](/en/user_manual/users/email_settings), especially if they do not expect to visit Loomio every day.
+    translation: Wijs leden op de [instellingen voor samenvattingsmails en meldingen](/en/user_manual/users/email_settings), vooral als ze Loomio niet elke dag bezoeken.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  ebe7764d64b17823:
+    english: "## Complete the first process"
+    translation: "## Rond het eerste proces af"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  9a165c59ba0aed5a:
+    english: 'A first process should demonstrate the complete pattern:'
+    translation: 'Laat met het eerste proces alle stappen zien:'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  8bc60d4319adf204:
+    english: |-
+      1. Introduce the topic and provide context.
+      2. Invite discussion or questions when they are needed.
+      3. Start the appropriate proposal or poll.
+      4. Remind people who have not participated when necessary.
+      5. Publish an [outcome](/en/user_manual/polls/outcomes) stating what was decided and what happens next.
+    translation: |-
+      1. Introduceer het onderwerp en geef achtergrondinformatie.
+      2. Nodig mensen uit om mee te praten of vragen te stellen wanneer dat nodig is.
+      3. Start het passende voorstel of de passende peiling.
+      4. Herinner mensen die nog niet hebben deelgenomen er zo nodig aan.
+      5. Publiceer een [conclusie](/en/user_manual/polls/outcomes) waarin staat wat is besloten en wat er daarna gebeurt.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  1235244007a8559b:
+    english: The outcome closes the loop and creates a record that members can return to later. Afterward, ask what worked, adjust the process, and choose the next recurring piece of work to run in Loomio.
+    translation: De conclusie rondt het proces af en legt de beslissing vast, zodat leden die later kunnen terugvinden. Vraag daarna wat goed werkte, pas het proces aan en kies het volgende terugkerende onderwerp om in Loomio te behandelen.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  c699f8804cdd41b1:
+    english: For a facilitated sequence from discussion to decision, see [Making decisions](/en/guides/making_decisions). For board-specific practices, see [Introducing Loomio to your board](/en/guides/board_processes/introduce).
+    translation: Lees [Beslissingen nemen](/en/guides/making_decisions) voor een begeleid proces van discussie tot beslissing. Lees [Loomio introduceren bij je bestuur](/en/guides/board_processes/introduce) voor werkwijzen voor besturen.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'

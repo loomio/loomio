@@ -1,0 +1,335 @@
+---
+navigation_title: Коментарі
+blocks:
+  e6981c530fad6f45:
+    english: "# Comments"
+    translation: "# Коментарі"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  cb82daa3594be60c:
+    english: Comments are the main way people participate in a discussion. They are visible to anyone who has permission to see the thread.
+    translation: Коментарі — основний спосіб участі в обговоренні. Їх бачать усі, хто має доступ до теми.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  96ffa85117001d18:
+    english: "## Reading comments"
+    translation: "## Читання коментарів"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  2d82b2da2ee96a1f:
+    english: When you open a discussion, Loomio takes you to activity that is new to you.
+    translation: Коли ви відкриваєте обговорення, Loomio показує нові для вас дії.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  c4a1b0be655249a9:
+    english: Unread comments have a blue **new** label beside their posting time.
+    translation: Поруч із часом публікації непрочитаних коментарів є синя позначка **новий**.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  82bce54322fa6023:
+    english: "## Writing a comment"
+    translation: "## Написання коментаря"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  7b14a17025b52e3d:
+    english: Write a comment to contribute to the discussion. Other people can reply, react, or post their own comments.
+    translation: Напишіть коментар, щоб долучитися до обговорення. Інші люди можуть відповісти, залишити реакцію або написати власні коментарі.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  6e0c07cfcb8f1166:
+    english: Select **Post Comment** to publish it. Your comment will be visible to anyone who has permission to see the discussion.
+    translation: Виберіть **Опублікувати коментар**, щоб опублікувати його. Ваш коментар побачать усі, хто має доступ до обговорення.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  edfadd8f1dcac9c4:
+    english: The tools described in [Formatting](/en/user_manual/discussions/formatting/) are available when writing comments.
+    translation: Під час написання коментарів доступні інструменти, описані в розділі [Форматування](/en/user_manual/discussions/formatting/).
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  b4dce878f57863ff:
+    english: "## Mentioning people"
+    translation: "## Згадування людей"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  70543178fe9e7b4b:
+    english: Type **@**, start typing a person's name, then select them from the list. A mention notifies that person immediately and is a useful way to ask for their attention or response.
+    translation: Введіть **@**, почніть вводити ім’я людини й виберіть її зі списку. Вона одразу отримає сповіщення про згадку. Так можна привернути її увагу або попросити відповісти.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  b1d5a5e3d5bb86e3:
+    english: "![Mentioning Samira Patel in a comment](../notifying_people/comment_mention.png)"
+    translation: "![Згадування Саміри Патель у коментарі](../notifying_people/comment_mention.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  07aa88bffb5b1700:
+    english: To notify everyone in the group, type **@**, start typing the group name, then select it from the list.
+    translation: Щоб сповістити всіх у групі, введіть **@**, почніть вводити назву групи й виберіть її зі списку.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  794c26be4050ac1b:
+    english: "![Searching for Oatmilk Cooperative while writing a group mention](../notifying_people/mentioning_group_1.png)"
+    translation: "![Пошук Oatmilk Cooperative під час написання згадки групи](../notifying_people/mentioning_group_1.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  111625a57c02bc5c:
+    english: "![Oatmilk Cooperative selected as a group mention](../notifying_people/mentioning_group_2.png)"
+    translation: "![Oatmilk Cooperative вибрано для згадки групи](../notifying_people/mentioning_group_2.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  b4fb3c8390c32e31:
+    english: Mentioning someone does not give them access to the thread. Use **Invite people** in the thread sidebar if they are not already a thread member.
+    translation: Згадка не надає людині доступу до теми. Якщо вона ще не є учасником теми, скористайтеся кнопкою **Запросити людей** на бічній панелі теми.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  6bba3d93a1845f91:
+    english: "## Replying to a comment"
+    translation: "## Відповідь на коментар"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  e7776c198f2f2f48:
+    english: Select **Reply** below a comment to respond to it. The reply is prefilled with an @mention of the comment author, which notifies them when you post it. Remove the mention if you do not want to notify them.
+    translation: Виберіть **Відповісти** під коментарем. У відповідь автоматично додається згадка @автора коментаря. Коли ви опублікуєте відповідь, автор отримає сповіщення. Видаліть згадку, якщо не хочете його сповіщати.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  eb45d23f7f968858:
+    english: You can also reply to your own comment to nest a response beneath it.
+    translation: Ви також можете відповісти на власний коментар, щоб розмістити відповідь під ним.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  ab1caf06d54d3bcb:
+    english: If a Loomio email says you can reply by email, your emailed reply will appear in the thread.
+    translation: Якщо в листі від Loomio зазначено, що ви можете відповісти електронною поштою, ваша відповідь з’явиться в темі.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  72d9282ce2bc763a:
+    english: "## Reactions"
+    translation: "## Реакції"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  1875a303c30b5343:
+    english: Use the smiley button to respond with an emoji. Reactions notify the comment author within Loomio but do not send an email.
+    translation: Використовуйте кнопку зі смайликом, щоб відповісти емодзі. Реакції сповіщають автора коментаря в Loomio, але не надсилають електронного листа.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  ce997bcd34b2eae0:
+    english: "## Translating comments"
+    translation: "## Переклад коментарів"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  b50a435640652d31:
+    english: If the author uses a language other than yours, a **Translate** action appears below the comment.
+    translation: Якщо автор пише іншою мовою, під коментарем з’являється дія **Перекласти**.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  9077e2c891750fe8:
+    english: Select **Translate comment** to see the comment in your language.
+    translation: Виберіть **Перекласти коментар**, щоб побачити його своєю мовою.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  60a885598057c1bf:
+    english: "## Comment actions"
+    translation: "## Дії з коментарями"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  9689ea71da9051d8:
+    english: Common actions appear directly below a comment. Additional actions are available from the three-dot menu (**⋯**).
+    translation: Основні дії розміщено безпосередньо під коментарем. Інші дії доступні в меню з трьома крапками (**⋯**).
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  88263de7d2158dae:
+    english: "### Add a comment to Jump to"
+    translation: "### Додавання коментаря до списку «Перейти до»"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  dd60de0295088aa5:
+    english: Use **Pin to timeline** to add a comment to the thread's **Jump to** list.
+    translation: Виберіть **Закріпити на часовій шкалі**, щоб додати коментар до списку **Перейти до** в темі.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  90252c4d66b752d4:
+    english: You can edit the label shown in **Jump to**. Unpin and then pin the comment again to change the link text.
+    translation: Ви можете змінити назву посилання в списку **Перейти до**. Для цього відкріпіть коментар і закріпіть його знову.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  28c2ffaa171b6b1b:
+    english: |-
+      >[!Tip]
+      >Highlight the words you want to use as the link text before selecting **Pin to timeline**.
+    translation: |-
+      >[!Tip]
+      >Перш ніж вибрати **Закріпити на часовій шкалі**, виділіть слова, які хочете використати як текст посилання.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  7545e856758edb22:
+    english: Select **Unpin** to remove the item from **Jump to**.
+    translation: Виберіть **Відкріпити**, щоб прибрати коментар зі списку **Перейти до**.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  c3b33d31cbce93c3:
+    english: "### Edit a comment and view changes"
+    translation: "### Редагування коментаря та перегляд змін"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  abaeaac4c1f2c966:
+    english: Select **Edit** below one of your comments to change it. Group admins can also edit member comments when the relevant group permission is enabled.
+    translation: Виберіть **Редагувати** під своїм коментарем, щоб змінити його. Адміністратори групи також можуть редагувати коментарі учасників, якщо ввімкнено відповідний дозвіл групи.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  69647eee1f3fcfb7:
+    english: An **Edited** action appears below an edited comment.
+    translation: Під зміненим коментарем з’являється дія **Відредаговано**.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  fcaa0d6329f5c5d4:
+    english: Select **Edited** to see what changed. Red highlighting shows removed text and green highlighting shows added text. Loomio records who made each edit and when it was made.
+    translation: Виберіть **Відредаговано**, щоб переглянути зміни. Видалений текст виділено червоним, а доданий — зеленим. Loomio зберігає відомості про те, хто й коли зробив кожну зміну.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  042b22530d14a486:
+    english: 'You can edit a comment when:'
+    translation: 'Ви можете редагувати коментар, якщо:'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  afe0ed6535a96b15:
+    english: |-
+      - you wrote it and the group allows members to edit their comments
+      - you are a group admin and [Admins can edit members' comments](/en/user_manual/groups/settings/permissions) is enabled
+    translation: |-
+      - ви написали його, а група дозволяє учасникам редагувати власні коментарі
+      - ви адміністратор групи й увімкнено дозвіл [Адміністратори можуть редагувати коментарі учасників](/en/user_manual/groups/settings/permissions)
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  6962d0caeeea20e8:
+    english: "### Copy a comment link"
+    translation: "### Копіювання посилання на коментар"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  0fb9e2ebde71573e:
+    english: Select **Copy link** to copy the comment's unique URL. You can paste the link elsewhere to refer directly to that comment.
+    translation: Виберіть **Копіювати посилання**, щоб скопіювати унікальну URL-адресу коментаря. Ви можете вставити посилання в іншому місці, щоб указати безпосередньо на цей коментар.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  04e4537024da788c:
+    english: "### View notification history"
+    translation: "### Перегляд історії сповіщень"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  957677befce0ab3f:
+    english: Open the three-dot menu (**⋯**) beside a comment and select **Notification history**.
+    translation: Відкрийте меню з трьома крапками (**⋯**) біля коментаря та виберіть **Історія сповіщень**.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  fa9d0f2448239944:
+    english: "![Notification history in a comment's actions menu](../notifying_people/comment_notification_history.png)"
+    translation: "![Історія сповіщень у меню дій із коментарем](../notifying_people/comment_notification_history.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  30a58d4ef7d80c15:
+    english: The notification history shows who was notified about the comment, when the notification was sent, and whether it has been read when that information is available.
+    translation: Історія сповіщень показує, хто отримав сповіщення про коментар, коли його надіслали та чи прочитали його, якщо ця інформація доступна.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  4f6ead46c3f9759e:
+    english: "![Notification history for a comment mentioning Samira Patel](../notifying_people/comment_notification_example.png)"
+    translation: "![Історія сповіщень для коментаря зі згадкою Саміри Патель](../notifying_people/comment_notification_example.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  fa2204fb0745dec4:
+    english: "### Discard, restore, or delete a comment"
+    translation: "### Відмова від коментаря, його відновлення або видалення"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  592dfa766814bb8e:
+    english: Discarding a comment removes it from the thread but retains it in a trash bin. You can discard your own comments with **Discard** in the three-dot menu. Group admins can also discard comments.
+    translation: Якщо відмовитися від коментаря, він зникне з теми, але залишиться в кошику. Щоб відмовитися від власного коментаря, виберіть **Відмовитись** у меню з трьома крапками. Адміністратори групи також можуть відмовлятися від коментарів.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  670a46d5274f9ab5:
+    english: "**Restore a comment**"
+    translation: "**Відновлення коментаря**"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  9b202a60d5665ac6:
+    english: The location of a discarded comment is labelled **Item removed**. Open its three-dot menu and select **Restore**.
+    translation: На місці коментаря, від якого відмовилися, з’явиться позначка **Елемент видалено**. Відкрийте меню з трьома крапками та виберіть **Відновити**.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  d6427576dab2b2c5:
+    english: "**Delete a comment**"
+    translation: "**Видалення коментаря**"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  d8b9add122e73295:
+    english: Deleting a comment removes it permanently. It cannot be restored.
+    translation: Видалений коментар зникає назавжди. Відновити його неможливо.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  51f7dce6a0188a51:
+    english: If **Members can delete their own comments** is enabled in [Group permissions](/en/user_manual/groups/settings/permissions), members can permanently delete their own discarded comments. Group admins can delete any comment.
+    translation: Якщо в [дозволах групи](/en/user_manual/groups/settings/permissions) увімкнено **Учасники можуть видаляти власні коментарі**, учасники можуть назавжди видаляти власні коментарі, від яких вони відмовилися. Адміністратори групи можуть видалити будь-який коментар.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  63134f860609d669:
+    english: Open the three-dot menu on an **Item removed** entry and select **Delete**.
+    translation: Відкрийте меню з трьома крапками біля запису **Елемент видалено** та виберіть **Видалити**.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  19580f91a59bf5ef:
+    english: A confirmation message explains that the comment will be permanently deleted.
+    translation: У повідомленні з підтвердженням зазначено, що коментар буде видалено назавжди.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'

@@ -1,0 +1,141 @@
+---
+navigation_title: Visita rápida
+blocks:
+  1be6038be45d840d:
+    english: "# Quick tour"
+    translation: "# Visita rápida"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  63c602fdeb39caf8:
+    english: This page introduces the main parts of the Loomio interface and where to find the work that involves you.
+    translation: Esta página presenta las partes principales de la interfaz de Loomio y dónde encontrar las actividades en las que participas.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  7d5f837af9189e74:
+    english: "## Group page"
+    translation: "## Página del grupo"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  d5b0be3db0bc6202:
+    english: Your group home page introduces the group and provides access to its work.
+    translation: La página de inicio de tu grupo presenta el grupo y te da acceso a sus actividades.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  5cf665a54aa4a09d:
+    english: "### Tabs"
+    translation: "### Pestañas"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  cdd3c098983b6066:
+    english: 'The tabs under the group description provide access to:'
+    translation: 'Las pestañas debajo de la descripción del grupo dan acceso a:'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  02760342b07f5ff4:
+    english: "**Discussions** - The group's discussion threads and recent activity."
+    translation: "**Discusiones** - Los hilos de discusión del grupo y la actividad reciente."
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  e2c7a0c137330c27:
+    english: "**Polls** - A list of polls active in your group."
+    translation: "**Sondeos** - Una lista de los sondeos activos en tu grupo."
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  '085bd9dfce8144dc':
+    english: "**Members** - The people who belong to the group."
+    translation: "**Integrantes** - Las personas que forman parte del grupo."
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  cfdb369a7fd6e14f:
+    english: "**Files** - Documents and other files attached throughout the group. The tab collects files from discussion contexts, comments, proposals, and polls, so you can find a document without remembering where it was attached."
+    translation: "**Archivos** - Documentos y otros archivos adjuntos en distintas partes del grupo. La pestaña reúne archivos de contextos de discusión, comentarios, propuestas y sondeos para que puedas encontrar un documento sin recordar dónde se adjuntó."
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  6483153cbc12b458:
+    english: See [Finding content](/en/user_manual/overview/finding-content) for help with search, filters, tags, bookmarks, and unread discussions.
+    translation: Consulta [Buscar contenido](/en/user_manual/overview/finding-content) para saber cómo usar la búsqueda, los filtros, las etiquetas, los marcadores y las discusiones no leídas.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  4d65c4ebdb266f6b:
+    english: "## Sidebar"
+    translation: "## Barra lateral"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  017aecc27a4746ca:
+    english: Open the sidebar with the menu button (**☰**) at the top left.
+    translation: Abre la barra lateral con el botón de menú (**☰**) de la esquina superior izquierda.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  0bd69f7ef1a85ec1:
+    english: Use the sidebar to open your dashboard, polls awaiting your vote, unread and direct discussions, tasks, and groups. It also links to the user manual and support.
+    translation: Usa la barra lateral para abrir tu panel, los sondeos en los que aún debes votar, las discusiones no leídas y directas, las tareas y los grupos. También contiene enlaces al manual de usuario y al soporte.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  45a5b7ceb512d86c:
+    english: "### User settings"
+    translation: "### Configuración de usuario"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  e6c693b0bbf41324:
+    english: Select your name in the sidebar to open your user menu.
+    translation: Selecciona tu nombre en la barra lateral para abrir tu menú de usuario.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  e671b5bc0a63ce1d:
+    english: Use this menu to edit your profile, change notification settings, choose a theme, manage account settings, and sign out.
+    translation: Usa este menú para editar tu perfil, cambiar la configuración de notificaciones, elegir un tema, gestionar la configuración de tu cuenta y salir.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  c005f6296b6fdf2d:
+    english: "## Notifications"
+    translation: "## Notificaciones"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  59121c87e06e34d0:
+    english: The bell button at the top right opens your in-app notifications. A badge appears when you have notifications you have not viewed.
+    translation: El botón de la campana en la esquina superior derecha abre tus notificaciones en la aplicación. Aparece un indicador cuando tienes notificaciones que aún no has visto.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  d128ccedfd3f1379:
+    english: See [Notifications](/en/user_manual/users/email_settings) to learn about in-app notifications, email preferences, and notification settings for groups and discussions.
+    translation: Consulta [Notificaciones](/en/user_manual/users/email_settings) para conocer las notificaciones en la aplicación, las preferencias de correo electrónico y la configuración de notificaciones de grupos y discusiones.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  e4a4ca9c3ed52509:
+    english: "## What to do next"
+    translation: "## Qué hacer a continuación"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  b7b09881cc3060b1:
+    english: |-
+      - Read [How to participate](/en/user_manual/overview/how-to-participate) to learn how to comment, reply, react, and vote.
+      - Read [Finding content](/en/user_manual/overview/finding-content) to learn how to locate discussions and decisions.
+      - Visit [Discussions](/en/user_manual/discussions) or [Proposals and polls](/en/user_manual/polls/intro_to_decisions) for detailed guidance.
+    translation: |-
+      - Lee [Cómo participar](/en/user_manual/overview/how-to-participate) para aprender a comentar, responder, reaccionar y votar.
+      - Lee [Buscar contenido](/en/user_manual/overview/finding-content) para aprender a encontrar discusiones y decisiones.
+      - Visita [Discusiones](/en/user_manual/discussions) o [Propuestas y sondeos](/en/user_manual/polls/intro_to_decisions) para obtener instrucciones detalladas.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'

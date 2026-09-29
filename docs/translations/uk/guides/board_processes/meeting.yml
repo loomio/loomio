@@ -1,0 +1,305 @@
+---
+navigation_title: Підготуйтеся до зустрічі
+blocks:
+  165e9dec4d4660aa:
+    english: "# Prepare for a meeting"
+    translation: "# Підготуйтеся до зустрічі"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  5d14c790e0c05446:
+    english: Effective meetings are productive, inclusive, and collaborative - they improve engagement, help build strong relationships, establish alignment, make better and faster decisions, promote inclusion, facilitate creative thinking and innovation, are a great channel for feedback and continuous improvement.
+    translation: Ефективні зустрічі дають змогу працювати продуктивно й залучати всіх до співпраці. Вони допомагають налагоджувати стосунки, узгоджувати позиції, швидше ухвалювати кращі рішення, обмінюватися відгуками та знаходити нові ідеї.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  c69f325003094ac5:
+    english: Use Loomio to plan an effective meeting; involve people from the outset, align towards the most important topics, and make better use of your precious time together.
+    translation: 'Плануйте зустрічі в Loomio: залучайте людей від самого початку, визначайте найважливіші теми й використовуйте спільний час з користю.'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  a30a32e8b06a9432:
+    english: If the group is new to Loomio, begin with [Introducing Loomio to your group](/en/user_manual/overview/introducing_loomio), then use this meeting process as a practical first recurring workflow.
+    translation: Якщо ваша група ще не користувалася Loomio, почніть зі сторінки [Знайомство вашої групи з Loomio](/en/user_manual/overview/introducing_loomio). Потім використовуйте цей порядок підготовки як перший регулярний процес.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  9a0eb26797e28e0f:
+    english: There are several things you can do to make your next board or committee meeting effective...
+    translation: Ось кілька способів зробити наступне засідання правління чи комітету ефективнішим...
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  c04e8fcfc9edb01c:
+    english: |-
+      - [Meeting focus and review actions](#meeting-focus-and-review-actions)
+      - [Announce agenda and notify](#agenda-and-notify)
+      - [Find a time for meeting](#find-a-time-for-meeting)
+      - [Sign off minutes](#sign-off-minutes)
+      - [Approve reports](#approve-reports)
+    translation: |-
+      - [Визначте головні теми й перегляньте виконання завдань](#meeting-focus-and-review-actions)
+      - [Оголосіть порядок денний і повідомте учасників](#agenda-and-notify)
+      - [Знайдіть час для зустрічі](#find-a-time-for-meeting)
+      - [Затвердьте протокол](#sign-off-minutes)
+      - [Затвердьте звіти](#approve-reports)
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  6e6785b547007644:
+    english: "## Meeting focus and review actions"
+    translation: "## Визначте головні теми й перегляньте виконання завдань"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  26bf98782eb61549:
+    english: 'Establish a focus for the meeting, so you spend your precious time together talking about the most important topics.  '
+    translation: Визначте головні теми зустрічі, щоб присвятити спільний час найважливішим питанням.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  c23fdd52f0a29b2c:
+    english: Inviting members to contribute to the agenda helps everyone align, think about topics and energize for the meeting.
+    translation: Запросіть учасників запропонувати питання до порядку денного. Це допоможе всім узгодити пріоритети й підготуватися до розмови.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  52409f3ffabfb7d1:
+    english: |-
+      Actions:
+      - focus the meeting on the most important things,
+      - follow up and talk to members about actions from previous meetings.
+    translation: |-
+      Дії:
+      - зосередьте зустріч на найважливішому,
+      - обговоріть з учасниками виконання завдань із попередніх зустрічей.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  a52dd7ebb4619e46:
+    english: |-
+      ### On Loomio
+      Use a Loomio **Discussion** to prepare for your meeting:
+      * remind members about the meeting coming up,
+      * invite comment about the most important things to focus on,
+      * summarize actions from the previous meeting and ask for an update.
+    translation: |-
+      ### У Loomio
+      Створіть **Обговорення** в Loomio, щоб підготуватися до зустрічі:
+      * нагадайте учасникам про майбутню зустріч,
+      * запропонуйте висловитися про найважливіші питання,
+      * підсумуйте завдання з попередньої зустрічі й попросіть повідомити про їх виконання.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  5bcd10bb61edcc35:
+    english: "## Agenda and notify"
+    translation: "## Порядок денний і повідомлення учасників"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  d9431846021bb8f3:
+    english: Announce the meeting with a clear agenda. Attach papers, link to key documents and notify members.
+    translation: Оголосіть зустріч і чіткий порядок денний. Додайте матеріали, посилання на ключові документи й повідомте учасників.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  41e84b882fa9bab1:
+    english: This helps everyone prepare for the meeting, by reading the materials and thinking about topics of discussion and the decisions to be made.  Members are then more likely to arrive in context and ready for the meeting.
+    translation: Так кожен зможе прочитати матеріали й обміркувати теми для обговорення та рішення, які потрібно ухвалити.  Учасники прийдуть на зустріч підготовленими.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  b6b0e7ed67711d5b:
+    english: |-
+      Actions:
+      - prepare agenda, documents, materials and board papers,
+      - notify members of meeting and send materials.
+    translation: |-
+      Дії:
+      - підготуйте порядок денний, документи та інші матеріали для засідання,
+      - повідомте учасників про зустріч і надішліть матеріали.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  5b6d4a5158e41747:
+    english: |-
+      ### On Loomio
+      Use a Loomio **Discussion** to prepare for your board meeting:
+      * state details of meeting,
+      * attach or link agenda, documents and other meeting materials,
+      * invite members with a notification,
+      * monitor 'Seen by' to see who has read the thread.
+    translation: |-
+      ### У Loomio
+      Створіть **Обговорення** в Loomio, щоб підготуватися до засідання правління:
+      * повідомте подробиці зустрічі,
+      * додайте порядок денний, документи й інші матеріали або посилання на них,
+      * надішліть учасникам сповіщення,
+      * перевіряйте показник «Переглянуто», щоб бачити, хто прочитав тему.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  f2c8f10394bf10c8:
+    english: |-
+      While similar to sending an email, a Loomio thread has advantages:
+      - you can see who has read the thread, and remind those who haven't,
+      - member replies or comments are visible to everyone who has permission to view the thread,
+      - any discussion or questions about the agenda or meeting materials is held in a single place.
+    translation: |-
+      Тема в Loomio подібна до листування електронною поштою, але має переваги:
+      - ви бачите, хто прочитав тему, і можете нагадати тим, хто ще не прочитав,
+      - відповіді й коментарі учасників бачать усі, хто має доступ до теми,
+      - обговорення порядку денного й матеріалів зустрічі зберігається в одному місці.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  dd6d8cabe5f1810d:
+    english: Members can find all the information about the meeting readily available in one place, thereby avoiding confusing email chains and losing important info in their email inbox.
+    translation: Учасники легко знайдуть усю інформацію про зустріч в одному місці. Їм не доведеться шукати важливі відомості в довгих ланцюжках електронних листів.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  6a57d003a0bd5f07:
+    english: |-
+      ### Confirm
+      Ask members to leave a comment confirming they have read the agenda and meeting papers and are prepared for the meeting. Use **Seen by** to identify anyone who may need a reminder.
+    translation: |-
+      ### Підтвердіть готовність
+      Попросіть учасників залишити коментар, щоб підтвердити, що вони прочитали порядок денний і матеріали та готові до зустрічі. За показником **Переглянуто** визначте, кому варто нагадати.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  8d08b0ae5712ef2d:
+    english: "## Find a time for meeting\nFinding a time to meet can be a frequent headache for many administrators. "
+    translation: |-
+      ## Знайдіть час для зустрічі
+      Узгодження часу зустрічі часто забирає в адміністраторів багато зусиль.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  1da8fdf943571a19:
+    english: |-
+      ### On Loomio
+      If you have not yet set a date and time for the meeting or you need to find a time for a future meeting, you can use **Time poll**.
+    translation: |-
+      ### У Loomio
+      Якщо дату й час зустрічі ще не визначено або потрібно запланувати наступну зустріч, скористайтеся **Опитуванням щодо часу**.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  f1c92e27dfd63153:
+    english: Time poll makes it easy to see everyone's availability and find the best time, reducing time and energy needed for this common admin task.
+    translation: Опитування щодо часу допомагає побачити, коли кожен учасник може зустрітися, і вибрати найкращий час. Це спрощує організацію зустрічі.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  45b90fd46cce4976:
+    english: Members in different time zones will see dates and times localized in their time zone.
+    translation: Учасники в різних часових поясах побачать дати й час відповідно до свого часового поясу.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  dc159c751f73d5d1:
+    english: 'When the Time poll closes, choose the best time and send an outcome notification with a calendar invitation, so members can add the meeting to their calendar. '
+    translation: Коли опитування щодо часу завершиться, виберіть найкращий час і надішліть сповіщення про висновок із запрошенням у календарі. Так учасники зможуть додати зустріч до своїх календарів.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  4bafee41dd5f774c:
+    english: "## Sign off minutes\nApproving or ratifying minutes is standard practice for formal meetings and good practice for all meetings.  "
+    translation: |-
+      ## Затвердьте протокол
+      Затверджувати протокол прийнято на офіційних засіданнях, але це корисно й для інших зустрічей.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  8d9795ed92dabff7:
+    english: 'Minutes provide a record of the meeting, key points raised during discussion, results of decisions and how people voted. They include the actions agreed and the person(s) responsible, and are often the starting point for the next meeting.  '
+    translation: Протокол фіксує перебіг зустрічі, основні питання обговорення, ухвалені рішення й те, як голосували учасники. У ньому також зазначають узгоджені дії та відповідальних осіб. Часто він стає відправною точкою для наступної зустрічі.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  1fd0d860cba070db:
+    english: Minutes are valuable as a reminder for people present, helpful for those absent and a record to consult in case of conflict.
+    translation: Протокол нагадує присутнім про домовленості, інформує тих, хто не зміг бути на зустрічі, і дає змогу звернутися до запису в разі суперечок.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  166796d872f35962:
+    english: "### On Loomio"
+    translation: "### У Loomio"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  ef51b49480cb721a:
+    english: Post the minutes in the Loomio meeting thread within a few days of the meeting and invite participants to approve.  This keeps the minutes relevant and fresh in member's minds and is a great way to remind members of their actions.  It also saves some time during your meeting.
+    translation: Протягом кількох днів після зустрічі опублікуйте протокол у темі зустрічі в Loomio й запросіть учасників його затвердити.  Так вони зможуть переглянути домовленості, поки зустріч ще свіжа в пам’яті. Це також заощадить час на наступній зустрічі.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  ea02d6cf3ede73dc:
+    english: The example above uses a **Choose** poll with two options 'Accept' or 'Review'.
+    translation: 'У прикладі вище використано опитування **Виберіть** із двома варіантами: «Прийняти» й «Переглянути».'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  56c55da82e5ddeb7:
+    english: 'When everyone has voted and the poll closes, state an outcome so everyone knows what has happened.  '
+    translation: Коли всі проголосують і опитування завершиться, опублікуйте висновок, щоб усі знали, яке рішення ухвалено.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  e8b710a05eb113dc:
+    english: 'If your meeting practice requires formal acceptance at the next meeting, schedule an agenda item to acknowledge and confirm polls and decisions made on Loomio, and record this in the meeting minutes.  '
+    translation: Якщо за правилами ваших зустрічей рішення потрібно формально затвердити на наступному засіданні, додайте до порядку денного підтвердження опитувань і рішень, ухвалених у Loomio. Зафіксуйте це в протоколі.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  '06339a98b65ccc2c':
+    english: For example; *"Does anyone wish to change their votes in Loomio?  If no, then let's resolve to formally approve polls made in Loomio during the last period."*
+    translation: 'Наприклад: *«Чи хоче хтось змінити свій голос у Loomio?  Якщо ні, пропоную формально затвердити результати опитувань, проведених у Loomio з часу попередньої зустрічі».*'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  f460b4ae218b375a:
+    english: |-
+      ## Approve reports
+      Most meeting agendas include time for reports to be presented, discussed and approved; for example reports from the CEO, Financial, Operations, Health & Safety, and project reports.
+    translation: |-
+      ## Затвердьте звіти
+      У порядку денному більшості зустрічей передбачають час, щоб представити, обговорити й затвердити звіти. Це можуть бути звіти керівника, фінансові, операційні, про охорону здоров’я та безпеку, а також проєктні звіти.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  00abfe283956509a:
+    english: Reports are very important to help everyone get on the same page, however they can absorb valuable time in a meeting that may be used more effectively.
+    translation: Звіти допомагають усім зрозуміти стан справ, але можуть забрати чимало часу зустрічі. Цей час можна використати для інших питань.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  861200207a1e1dfb:
+    english: Attach or link reports to your meeting **thread** and invite questions about the reports in advance of the meeting.
+    translation: Додайте звіти до **теми** зустрічі або посилання на них і запросіть учасників поставити запитання до зустрічі.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  11f124875e8a5945:
+    english: Members receive and read the reports at a time and place that works for them.  As members read and think about the reports, they can comment, ask questions and see responses in Loomio.
+    translation: Учасники отримають звіти й прочитають їх у зручний час.  Під час читання вони можуть залишати коментарі, ставити запитання й переглядати відповіді в Loomio.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  2871f1673d36999a:
+    english: A question asked by one member is likely of interest to other members, so when someone replies to the question, their response  is visible to everyone in the Loomio group.
+    translation: Запитання одного учасника може цікавити й інших. Коли хтось на нього відповість, відповідь  побачать усі учасники групи в Loomio.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  851a2a86a1047697:
+    english: As members become familiar with discussing reports in Loomio, save a little more time by taking it a step further - seek approval of reports ahead of the meeting.
+    translation: Коли учасники звикнуть обговорювати звіти в Loomio, спробуйте затверджувати їх до зустрічі. Це дасть змогу заощадити ще трохи часу.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'

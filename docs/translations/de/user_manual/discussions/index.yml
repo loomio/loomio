@@ -1,0 +1,167 @@
+---
+navigation_title: Diskussionen
+blocks:
+  f087c06a5f4ab2e6:
+    english: "# Intro to Discussions"
+    translation: "# Einführung in Diskussionen"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  f515c87a8d1d20c7:
+    english: Loomio discussions are where you can share information, discuss topics, and make decisions with your group.  People participate by posting comments and replies.
+    translation: In Loomio-Diskussionen kannst du Informationen teilen, Themen besprechen und mit deiner Gruppe Entscheidungen treffen. Andere beteiligen sich mit Kommentaren und Antworten.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  eede89b6ce4f357d:
+    english: |-
+      - All info about a topic is in one easily accessible place.
+      - People can reply via email and their comments appear in the discussion.
+      - You can see who has read the discussion and who needs a nudge.
+      - There is a record of discussion you can easily find again.
+    translation: |-
+      - Alle Informationen zu einem Thema sind an einem leicht zugänglichen Ort.
+      - Andere können per E-Mail antworten. Ihre Kommentare erscheinen in der Diskussion.
+      - Du siehst, wer die Diskussion gelesen hat und wen du noch daran erinnern kannst.
+      - Du kannst den Verlauf der Diskussion später leicht wiederfinden.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  9cb2eb404b59208b:
+    english: Discussions have a wide range of uses - from a general discussion forum to running specific work-flow and decision-making processes.
+    translation: 'Diskussionen eignen sich für vieles: vom allgemeinen Austausch bis zu bestimmten Arbeitsabläufen und Entscheidungsprozessen.'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  87a95605052570ca:
+    english: For example, you may frame a discussion on a particular topic, invite people to contribute their thoughts and share information, and facilitate progress towards an agreed outcome.
+    translation: Du kannst zum Beispiel ein Thema für eine Diskussion umreißen, andere einladen, ihre Gedanken und Informationen zu teilen, und die Gruppe zu einem gemeinsamen Fazit führen.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  ce6e6734c595d968:
+    english: Or you may invite people to participate in a particular decision, using a consent or advice decision-making process.
+    translation: Du kannst auch andere einladen, an einer bestimmten Entscheidung mitzuwirken, etwa mit einem Konsentverfahren oder indem du Rat einholst.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  7fa58cb3ba95be0b:
+    english: Discussions can also contain polls and proposals to help progress a discussion to an outcome. As people comment in the discussion and vote in polls, a discussion timeline builds so you can easily find key milestones.
+    translation: Diskussionen können auch Abstimmungen und Vorschläge enthalten, die helfen, zu einem Fazit zu kommen. Wenn andere kommentieren und abstimmen, entsteht ein zeitlicher Verlauf. Darin findest du wichtige Meilensteine leicht wieder.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  388e829e86a99bd8:
+    english: "![The Returnable bottles for cafe customers discussion, with a comment and a proposal](discussion-example.png)"
+    translation: "![Die Diskussion über Mehrwegflaschen für Cafégäste mit einem Kommentar und einem Vorschlag](discussion-example.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  6b0556376d31b63e:
+    english: "## Common uses"
+    translation: "## Häufige Anwendungen"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  cf4344b3f2a3b7e9:
+    english: 'Here are some common uses of discussions:'
+    translation: 'Hier sind einige häufige Anwendungen für Diskussionen:'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  '0479bd2337b02443':
+    english: "### Boards and Governance"
+    translation: "### Vorstände und Leitungsgremien"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  5b0a3e2c653d47f8:
+    english: "**Prepare for a meeting** - Build an agenda, post board papers and organize administrative matters so everyone is up to date, in context and prepared. "
+    translation: "**Bereite dich auf ein Meeting vor** - Erstelle eine Tagesordnung, teile Sitzungsunterlagen und kläre organisatorische Fragen. So haben alle den nötigen Kontext und können sich vorbereiten."
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  5c1c6aa79c3556dc:
+    english: "**Pass a resolution** - Post context and background information, respond to questions and raise a proposal to pass a resolution. "
+    translation: "**Verabschiede einen Beschluss** - Teile Hintergrundinformationen, beantworte Fragen und bringe einen Vorschlag für den Beschluss ein."
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  07ae9c6a1f0a32d0:
+    english: "**Discuss an agenda item on Loomio** - Start discussion about an agenda item prior to your meeting. Or, if you run out of time in the meeting, move the discussion on to Loomio."
+    translation: "**Besprich einen Tagesordnungspunkt auf Loomio** - Beginne die Diskussion über einen Tagesordnungspunkt vor dem Meeting. Wenn im Meeting die Zeit nicht reicht, setze die Diskussion auf Loomio fort."
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  f0b0de7094b1cfc9:
+    english: "**Approve minutes and track actions** - Post minutes and assign actions. Use a poll to approve minutes. "
+    translation: "**Genehmige Protokolle und verfolge Aufgaben** - Teile das Protokoll und weise Aufgaben zu. Nutze eine Abstimmung, um das Protokoll genehmigen zu lassen."
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  ba7cf177191baadb:
+    english: "### Member participation"
+    translation: "### Beteiligung der Mitglieder"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  3cf51f837c0a3e9f:
+    english: "**Share news (replace mailing list)** - Post information for members, invite comments."
+    translation: "**Teile Neuigkeiten (statt einer Mailingliste)** - Informiere die Mitglieder und lade sie ein, Kommentare zu schreiben."
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  d2cd391b61042129:
+    english: "**Organize an event** - Work with your organizing team on details. Keep all discussion and info within the thread. Then announce the event to wider membership."
+    translation: "**Organisiere eine Veranstaltung** - Kläre die Einzelheiten mit deinem Organisationsteam. Halte die Diskussion und alle Informationen im Thread fest. Kündige die Veranstaltung anschließend allen Mitgliedern an."
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  cf59a44a8643cc96:
+    english: "**Develop a policy** - Post a policy draft, seek member feedback and input, finalize and ratify the policy."
+    translation: "**Entwickle eine Richtlinie** - Teile einen Entwurf, hole Rückmeldungen und Anregungen von Mitgliedern ein und stelle die Richtlinie fertig. Lass sie anschließend beschließen."
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  6ddec467576426ca:
+    english: "**General Assembly** - Organize, prepare and run a formal meeting including all members, to deliberate and make decisions on strategic matters."
+    translation: "**Mitgliederversammlung** - Organisiere und leite eine formelle Versammlung aller Mitglieder. Bereite sie so vor, dass ihr strategische Fragen beraten und Entscheidungen treffen könnt."
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  8d32bb446c4ca025:
+    english: "### Self-organizing working teams"
+    translation: "### Selbstorganisierte Arbeitsteams"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  87ab6b2d51a7c1b6:
+    english: "**Share information** - Post information and reports of interest to your team, invite comment and discussion."
+    translation: "**Teile Informationen** - Teile Informationen und Berichte, die für dein Team interessant sind, und lade zu Kommentaren und Diskussionen ein."
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  e93205aa183cd1e0:
+    english: "**Progress work** - Outline a work task and seek advice, input and feedback from team members through to completion."
+    translation: "**Bringe die Arbeit voran** - Beschreibe eine Aufgabe und hole bis zu ihrem Abschluss Rat, Anregungen und Rückmeldungen aus dem Team ein."
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  1ddaef5d44653691:
+    english: "**Meeting notes and actions** - Post meeting notes as a record of discussion, and follow up on tasks. "
+    translation: "**Halte Besprechungen und Aufgaben fest** - Teile Besprechungsnotizen als Dokumentation der Diskussion und verfolge die Aufgaben weiter."
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  8ce9169d72c90788:
+    english: "**Explore ideas** - Share thoughts and invite discussion about a concern you notice, or an improvement that can be made."
+    translation: "**Erkunde Ideen** - Teile deine Gedanken und lade zur Diskussion über ein Problem oder eine mögliche Verbesserung ein."
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  a06e734e86f07828:
+    english: "**Advice, Consent and Generative decision making** - Prepare, propose, clarify, respond to reactions and objections, agree and implement - all within a Loomio discussion."
+    translation: "**Triff Entscheidungen durch Beratung, Konsent und gemeinsame Ideenentwicklung** - Bereite die Entscheidung vor, mache einen Vorschlag, kläre Fragen, gehe auf Reaktionen und Einwände ein, finde eine Einigung und setze sie um. All das ist innerhalb einer Loomio-Diskussion möglich."
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'

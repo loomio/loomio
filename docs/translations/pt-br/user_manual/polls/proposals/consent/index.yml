@@ -1,0 +1,93 @@
+---
+navigation_title: Consentimento
+blocks:
+  9153f30a2c3db9f2:
+    english: "# Consent"
+    translation: "# Consentimento"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  e16bed826124695f:
+    english: A Consent proposal asks whether a course of action is safe to try. Participants either consent or raise an objection. An objection identifies a concrete risk or harm that the proposal should address.
+    translation: Uma proposta de consentimento pergunta se é seguro experimentar uma ação. As pessoas participantes podem consentir ou apresentar uma objeção. Uma objeção identifica um risco ou dano concreto que a proposta deve abordar.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  d675dd47ae42c929:
+    english: This page explains how to run one Consent proposal. See the [Consent process](/en/guides/making_decisions/consent_process) for the complete workflow, including questions, Sense check, amendments, objections, and outcome.
+    translation: Esta página explica como conduzir uma proposta de consentimento. Consulte o [processo de consentimento](/en/guides/making_decisions/consent_process) para conhecer todas as etapas, incluindo perguntas, verificação de entendimento, alterações, objeções e conclusão.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  7c4c79526b1d437b:
+    english: "## When to use Consent"
+    translation: "## Quando usar o consentimento"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  1b99c0443bd1e4c8:
+    english: Use Consent when the group needs a workable decision that can proceed unless there is a valid objection. It suits experiments, operational policies, role agreements, and other decisions the group can review after gaining experience.
+    translation: Use o consentimento quando o grupo precisar de uma decisão viável que possa seguir adiante se não houver uma objeção válida. Ele é adequado para experimentos, políticas operacionais, acordos sobre funções e outras decisões que o grupo possa revisar depois de adquirir experiência.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  966f3146dc9f61f1:
+    english: Consent does not require everyone to prefer the proposal. Define what counts as an objection before voting, and explain how objections will be tested and resolved.
+    translation: O consentimento não exige que todas as pessoas prefiram a proposta. Defina o que constitui uma objeção antes da votação e explique como as objeções serão avaliadas e resolvidas.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  e6cf2f0ebd4a7f58:
+    english: "## Example: start a bottle trial"
+    translation: "## Exemplo: iniciar um teste com garrafas"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  ad7be5e188748cb3:
+    english: Oatmilk Cooperative proposes starting a six-week returnable-bottle trial next month. The trial is limited in scope and includes a review, so the group asks whether it is safe to try.
+    translation: A Cooperativa de Leite de Aveia propõe iniciar, no mês que vem, um teste de seis semanas com garrafas retornáveis. O teste tem escopo limitado e prevê uma revisão. Por isso, o grupo pergunta se é seguro experimentá-lo.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  9703f1f9474243af:
+    english: "## Set up the proposal"
+    translation: "## Configure a proposta"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  6458750b94201df6:
+    english: Describe the proposed action, its limits, safeguards, and review point. Keep **Consent** and **Objection** meanings precise, and require a reason for objections so the concern can be understood and addressed.
+    translation: Descreva a ação proposta, seus limites, as medidas de proteção e quando ela será revisada. Defina com precisão o significado de **Consentir** e **Objeção**. Exija uma justificativa para cada objeção, para que o grupo possa entendê-la e tratá-la.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  d391457c69df967f:
+    english: "## Vote"
+    translation: "## Vote"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  d98c0e71880c8828:
+    english: Participants select **Consent** when the proposal is safe enough to try, even if it is not their preferred plan. They select **Objection** when they can describe a material risk or harm.
+    translation: As pessoas participantes selecionam **Consentir** quando a proposta é segura o suficiente para ser experimentada, mesmo que não seja a opção que preferem. Selecionam **Objeção** quando conseguem descrever um risco ou dano relevante.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  72a9e4073ea27936:
+    english: "## Read the results"
+    translation: "## Leia os resultados"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  b0265040032f48e5:
+    english: The chart makes objections visible, but the group must examine the reasons. Resolve a valid objection by amending the proposal, adding a safeguard, changing its scope, or deciding not to proceed.
+    translation: O gráfico mostra as objeções, mas o grupo precisa examinar as justificativas. Resolva uma objeção válida alterando a proposta, acrescentando uma medida de proteção, mudando seu escopo ou decidindo não seguir adiante.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  a87df65569cb3a09:
+    english: Publish an outcome that records the agreed action, any safeguards, who is responsible, and when the group will review it.
+    translation: Publique uma conclusão que registre a ação acordada, as medidas de proteção, quem é responsável e quando o grupo fará a revisão.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'

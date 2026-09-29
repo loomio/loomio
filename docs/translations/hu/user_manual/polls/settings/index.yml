@@ -1,0 +1,503 @@
+---
+navigation_title: Beállítások
+blocks:
+  145c23b2412eff98:
+    english: "# Proposal and poll settings"
+    translation: "# Javaslatok és szavazások beállításai"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  9e0347d976f79179:
+    english: "## Setting up a proposal or poll"
+    translation: "## Javaslat vagy szavazás beállítása"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  e5d6f17041c19d41:
+    english: "### Proposal and poll templates"
+    translation: "### Javaslat- és szavazássablonok"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  8913cabb2f1f8227:
+    english: 'Choose the proposal template you want to use. '
+    translation: Válaszd ki a használni kívánt javaslatsablont.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  3620f6321777ca50:
+    english: "### Add content"
+    translation: "### Tartalom hozzáadása"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  bc7ebb222e9ff4d1:
+    english: "**Group:** Check that the correct group is selected for your proposal or poll."
+    translation: "**Csoport:** Ellenőrizd, hogy a megfelelő csoport van-e kiválasztva a javaslatodhoz vagy a szavazásodhoz."
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  3a1d375da02f3a49:
+    english: "**Title:** Give your proposal or poll a short, relevant title."
+    translation: "**Cím:** Adj rövid, találó címet a javaslatodnak vagy a szavazásodnak."
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  a62a7e63f9db295c:
+    english: "**Details:** Explain what you are asking of people and include enough details so everyone knows what it means to vote.  "
+    translation: "**Részletek:** Írd le, miről kérsz döntést, és adj meg annyi részletet, hogy mindenki értse, mit jelent a szavazata."
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  e17c2ab4878716f2:
+    english: The predefined templates include some prompts to help you write a good proposal - use these or add your own details.
+    translation: Az előre elkészített sablonok kérdésekkel segítenek a javaslat megírásában. Használd ezeket, vagy add meg a saját részleteidet.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  74daa7f0cc476971:
+    english: Avoid combining a range of ideas in one proposal, because people might agree to some aspects but not others and be unsure how to respond. You can break complex decisions down into multiple proposals.
+    translation: Ne vonj össze több különböző ötletet egy javaslatban. Lehet, hogy valaki egyes részeivel egyetért, másokkal viszont nem, és így nehéz választ adnia. Az összetett döntéseket több javaslatra bonthatod.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  0da6e449688940bb:
+    english: When making a proposal, state your expectations and describe the impact the proposal will have if adopted. If it's a formal or binding proposal it's often worth describing what it means if the proposal is not adopted.
+    translation: A javaslatban írd le, mit vársz a résztvevőktől, és milyen hatása lesz a javaslat elfogadásának. Ha a javaslat hivatalos vagy kötelező érvényű, érdemes azt is leírni, mi történik, ha nem fogadják el.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  a6db66b75f495e21:
+    english: Use the formatting tools to support your poll.  For example, attach a document file with the paperclip icon, insert an image, link to a website or online document, or even embed a video.
+    translation: A formázási eszközökkel kiegészítheted a szavazást. Például a gemkapocs ikonnal dokumentumot csatolhatsz, képet szúrhatsz be, weboldalra vagy online dokumentumra hivatkozhatsz, vagy videót ágyazhatsz be.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  f4f85f131878c36d:
+    english: "### Voting options"
+    translation: "### Szavazási lehetőségek"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  616aab74af2072ba:
+    english: Each proposal and poll template provides options for voting.
+    translation: Minden javaslat- és szavazássablon tartalmaz szavazási lehetőségeket.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  7a85de7eefe74178:
+    english: Depending on the template, you can edit, remove, reorder, or add voting options to suit the decision process you are running.
+    translation: A sablontól függően szerkesztheted, eltávolíthatod, átrendezheted vagy bővítheted a szavazási lehetőségeket a döntési folyamathoz igazítva.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  9bc44bf4b28ac5d8:
+    english: "- Use the pencil icon to edit voting option \n- Use the trash can icon to remove unwanted voting options\n- Use the handle to move the order of voting options\n- Add voting options with **Add option** when the template allows custom options"
+    translation: "- A ceruza ikonnal szerkesztheted a szavazási lehetőséget \n- A kuka ikonnal eltávolíthatod a felesleges szavazási lehetőségeket\n- A fogantyúval átrendezheted a szavazási lehetőségeket\n- Ha a sablon engedi, a **Lehetőség hozzáadása** gombbal új szavazási lehetőségeket adhatsz hozzá"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  2062f39334fbd629:
+    english: |-
+      ### Edit voting options
+      There is a lot of flexibility to configure voting options to suit the way your organization makes decisions.
+    translation: |-
+      ### Szavazási lehetőségek szerkesztése
+      A szavazási lehetőségeket rugalmasan alakíthatod a szervezeted döntéshozatali módjához.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  5ac5b47c81fe187b:
+    english: 'Use the pencil icon alongside the voting option to open the edit modal:'
+    translation: 'A szavazási lehetőség melletti ceruza ikonra kattintva nyithatod meg a szerkesztőablakot:'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  3c791f8140ad3b39:
+    english: "**Option name:** A short name for the option."
+    translation: "**Lehetőség neve:** A lehetőség rövid neve."
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  77a0fb7409cf1711:
+    english: "**Icon:** Select an icon for the option, such as thumbs up, thumbs down, abstain, or block."
+    translation: "**Ikon:** Válassz ikont a lehetőséghez, például felfelé vagy lefelé mutató hüvelykujjat, tartózkodást vagy blokkolást."
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  9126ee91e5d1cb95:
+    english: "**Meaning:** A sentence that explains what choosing this options means."
+    translation: "**Jelentés:** Egy mondat arról, mit jelent ennek a lehetőségnek a választása."
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  e88d83b93ba47666:
+    english: "**Reason prompt:** A question to prompt voters to provide their reasoning or reconsider their position. "
+    translation: "**Indoklást segítő kérdés:** Egy kérdés, amely segít a szavazóknak megindokolni a döntésüket vagy átgondolni az álláspontjukat."
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  d05197892ea46087:
+    english: "### Opening time"
+    translation: "### A szavazás kezdete"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  1b56f0ad52a3aed8:
+    english: By default, voting opens immediately when you create the poll. If you want to schedule voting to open at a later time, uncheck **Voting opens immediately** and select an opening date and time.
+    translation: Alapértelmezés szerint a szavazás a létrehozásakor azonnal megnyílik. Ha később szeretnéd megnyitni, kapcsold ki az **A szavazás azonnal megnyílik** beállítást, majd válaszd ki a kezdés dátumát és időpontját.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  48ccc43734b062eb:
+    english: This is useful to give time for discussion before voting opens, or to ensure a poll or proposal is correctly set up and scheduled to happen at the right time.
+    translation: Így időt adhatsz a megbeszélésre a szavazás előtt, vagy előre beállíthatod, hogy a szavazás a megfelelő időpontban kezdődjön.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  b68fccc3132988ff:
+    english: When a poll has a scheduled opening time, you can add voters before voting opens. Voters will be notified when voting opens, rather than when they are added.
+    translation: Ha a szavazás kezdete előre be van állítva, a szavazókat már a megnyitás előtt hozzáadhatod. Az értesítést a szavazás kezdetekor kapják meg, nem a hozzáadásukkor.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  82d4cacfa780dd98:
+    english: "**Notify voters when poll opens:** When checked (default), all voters will receive a notification when voting opens. Uncheck this if you want to open voting without sending notifications."
+    translation: "**A szavazók értesítése a szavazás kezdetekor:** Ha be van kapcsolva (ez az alapértelmezés), minden szavazó értesítést kap a szavazás megnyitásakor. Kapcsold ki, ha értesítések nélkül szeretnéd megnyitni a szavazást."
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  d084620657803f93:
+    english: "**Closing date and time:** Select the closing date and time for your poll."
+    translation: "**Zárás dátuma és időpontja:** Válaszd ki, mikor záruljon a szavazás."
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  c0472419a2671222:
+    english: Give sufficient time for people to vote. You could time the proposal so it closes before a meeting, or avoid closing over a weekend, so that people will receive a timely reminder. If necessary, you can close the poll early or extend the closing time.
+    translation: Hagyj elég időt a szavazásra. Beállíthatod például úgy, hogy egy megbeszélés előtt záruljon le a javaslat, vagy elkerülheted a hétvégi zárást, hogy az emlékeztető időben érkezzen meg. Szükség esetén korábban lezárhatod a szavazást, vagy meghosszabbíthatod a határidőt.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  c87f87e6cbc1a4d7:
+    english: "**Who can vote?** Invite everyone in the group or only specific people that you invite."
+    translation: "**Ki szavazhat?** Meghívhatod a csoport minden tagját, vagy csak az általad kiválasztott személyeket."
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  e02a9cefc3082334:
+    english: |-
+      You can later add people to an 'Invite people only' poll. For identified polls,
+      you can also remove people who should no longer be eligible to vote. People
+      cannot be removed from an anonymous poll.
+    translation: |-
+      A „Csak meghívottak” szavazáshoz később is hozzáadhatsz embereket. Az azonosított szavazásokból
+      el is távolíthatod azokat, akik már nem jogosultak szavazni. Névtelen szavazásból
+      nem távolíthatsz el résztvevőket.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  2e959157d75ed7bd:
+    english: "## More settings"
+    translation: "## További beállítások"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  3d4443d3e6d3b13d:
+    english: |-
+      ### Reminder
+      Send a 'Closing soon' notification 24 hours before the poll closes. This can be an opportunity for people to see how others have voted and reconsider their own vote, or just a way to increase participation in the poll.
+    translation: |-
+      ### Emlékeztető
+      A szavazás lezárása előtt 24 órával „Hamarosan zárul” értesítést küldhetsz. Így a résztvevők megnézhetik, hogyan szavaztak mások, és átgondolhatják a saját szavazatukat. Az értesítés a részvételt is növelheti.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  62067c0573d7a64e:
+    english: |-
+      Setting options:
+      - Nobody
+      - Author
+      - Undecided voters (default)
+      - All voters
+    translation: |-
+      Beállítási lehetőségek:
+      - Senki
+      - Szerző
+      - Még nem szavazók (alapértelmezett)
+      - Minden szavazó
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  6cd67c3f92302551:
+    english: |-
+      For an anonymous poll lasting at least 24 hours, Loomio automatically reminds
+      eligible people who have not voted during the final 24 hours. This reminder
+      cannot be changed in the poll settings.
+    translation: |-
+      A legalább 24 órán át tartó névtelen szavazásoknál a Loomio az utolsó 24 órában automatikusan emlékezteti
+      a szavazásra jogosultakat, akik még nem szavaztak. Ezt az emlékeztetőt
+      nem módosíthatod a szavazás beállításainál.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  72f172271e2a636a:
+    english: |-
+      ### Anonymous voting
+      If enabled, votes are stored separately from voter identities. Results appear after voting closes, and voters cannot add reasons, review their submitted vote, or change it.
+    translation: |-
+      ### Névtelen szavazás
+      Ha bekapcsolod, a szavazatokat a szavazók személyazonosságától elkülönítve tárolja a rendszer. Az eredmények a szavazás lezárása után jelennek meg. A szavazók nem adhatnak meg indoklást, nem nézhetik meg a leadott szavazatukat, és nem módosíthatják azt.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  3393027493510f2f:
+    english: See [Anonymous voting](/en/user_manual/polls/anonymous_voting) for details about how voter identities are separated from submitted votes, what information is retained, and the limits of the protection.
+    translation: A [Névtelen szavazás](/en/user_manual/polls/anonymous_voting) oldalon megtudhatod, hogyan különül el a szavazók személyazonossága a leadott szavazatoktól, milyen adatok maradnak meg, és meddig terjed ez a védelem.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  b731b9118e48dee5:
+    english: |-
+      > [!WARNING]
+      > Once a poll has started you cannot edit the poll to make it anonymous or to undo the anonymous setting.
+    translation: |-
+      > [!WARNING]
+      > A szavazás kezdete után már nem állíthatod át névtelenre a szavazást, és a névtelen beállítást sem kapcsolhatod ki.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  e8660d089a3c07bb:
+    english: |-
+      > [!WARNING]
+      > You cannot re-open an anonymous poll after it has closed. Submitted votes are not linked to the participation records that show who has voted.
+    translation: |-
+      > [!WARNING]
+      > A lezárt névtelen szavazást nem nyithatod meg újra. A leadott szavazatok nincsenek összekapcsolva azokkal a részvételi adatokkal, amelyek megmutatják, ki szavazott.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  aaaaa28a4b435835:
+    english: |-
+      ### Vote reason
+      It can be helpful to understand why people voted the way they did. With this setting, you can prompt people to share their thoughts when they vote.
+    translation: |-
+      ### A szavazat indoklása
+      Hasznos lehet tudni, miért szavaztak úgy az emberek, ahogy szavaztak. Ezzel a beállítással arra kérheted őket, hogy szavazáskor osszák meg a véleményüket.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  309645182b157738:
+    english: 'Available settings depend on the template:'
+    translation: 'Az elérhető beállítások a sablontól függenek:'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  d67e2c2914e91a6f:
+    english: |-
+      - **Optional** lets voters choose whether to give a reason
+      - **Required for disagree or block** requires a reason when the selected option
+        uses the Disagree or Block voting icon
+      - **Required for block** requires a reason when the selected option uses the
+        Block voting icon
+      - **Required** requires every voter to give a reason
+      - **Disabled** removes the vote-reason field
+    translation: |-
+      - A **Választható** beállításnál a szavazók eldönthetik, hogy megindokolják-e a szavazatukat
+      - A **Kötelező a nemetmondáshoz vagy a blokkoláshoz** beállításnál indoklás szükséges, ha a választott lehetőség
+        a Nem értek egyet vagy a Blokkolás szavazási ikont használja
+      - A **Kötelező a blokkoláshoz** beállításnál indoklás szükséges, ha a választott lehetőség
+        a Blokkolás szavazási ikont használja
+      - A **Kívánt** beállításnál minden szavazónak meg kell indokolnia a szavazatát
+      - A **Mozgáskorlátozott** beállítás eltávolítja az indoklás mezőjét
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  af5e7c0557aec611:
+    english: |-
+      The conditional settings follow the voting icon rather than the option name.
+      They still apply if you rename Disagree to a term such as Objection. The
+      Consent template defaults to **Required for disagree or block**, while the
+      Consensus template defaults to **Required for block**. Other templates default
+      to **Optional**, except Question rounds where the response itself is required.
+      The poll author can change the setting for an individual poll.
+    translation: |-
+      A feltételes beállítások a szavazási ikonhoz kötődnek, nem a lehetőség nevéhez.
+      Akkor is érvényesek, ha a Nem értek egyet lehetőséget például Kifogásra nevezed át. A
+      Beleegyezés sablonban alapértelmezés szerint a **Kötelező a nemetmondáshoz vagy a blokkoláshoz**, míg a
+      Konszenzus sablonban a **Kötelező a blokkoláshoz** beállítás van kiválasztva. A többi sablonban alapértelmezés szerint
+      **Választható** az indoklás, kivéve a Kérdés fordulóit, ahol maga a válasz kötelező.
+      A szavazás szerzője minden szavazásnál módosíthatja ezt a beállítást.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  ecb0d89c623db459:
+    english: "**Limit reason to maximum 500 characters:** Keeping vote reasons short makes them easier to understand. A collection of concise reasons is a great resource for making a decision.  This setting is ticked by default. Untick to allow for longer reasons."
+    translation: "**Az indoklás legfeljebb 500 karakter lehet:** A rövid indoklásokat könnyebb megérteni. A tömör indoklások segítenek a döntésben. Ez a beállítás alapértelmezés szerint be van jelölve. Ha hosszabb indoklásokat szeretnél engedélyezni, töröld a jelölést."
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  35bd4f116b9ff26a:
+    english: |-
+      ### Hide results
+      If you want people to vote without knowing how others have voted, you can hide the results of the poll.  Useful if you do not want people to be affected by how other people have voted.
+    translation: |-
+      ### Eredmények elrejtése
+      Elrejtheted a szavazás eredményét, ha azt szeretnéd, hogy a résztvevők mások szavazatainak ismerete nélkül szavazzanak. Így mások szavazatai nem befolyásolják őket.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  8cc5b82f4cc5e94e:
+    english: |-
+      Setting options:
+      - Do not hide results
+      - Hide results until a vote is cast
+      - Hide results until voting closes
+    translation: |-
+      Beállítási lehetőségek:
+      - Ne rejtsd el az eredményeket
+      - Az eredmények elrejtése a szavazat leadásáig
+      - Az eredmények elrejtése a szavazás lezárásáig
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  4be103ffd97e7e8f:
+    english: While results are hidden, nobody can reply to votes. Replies to votes open when voting closes.
+    translation: Amíg az eredmények rejtve vannak, senki sem válaszolhat a szavazatokra. A válaszadás a szavazás lezárásakor válik elérhetővé.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  a488ebe6712a5e1d:
+    english: If results are hidden until a vote is cast, vote before you print or export the thread as Markdown.
+    translation: Ha az eredmények a szavazat leadásáig rejtve vannak, szavazz, mielőtt kinyomtatod vagy Markdown-formátumban exportálod a témát.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  1e5a1eb47ee3d99d:
+    english: |-
+      Anonymous polls always hide results until voting closes. The STV Election
+      template enables anonymous voting by default.
+    translation: |-
+      A névtelen szavazások eredménye a szavazás lezárásáig mindig rejtve marad. Az STV-választás
+      sablonban a névtelen szavazás alapértelmezés szerint be van kapcsolva.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  8e7d8e81db57f4f8:
+    english: |-
+      ### Start the poll
+      Select the **Start proposal** or **Start poll** button.
+    translation: |-
+      ### A szavazás indítása
+      Válaszd a **Javaslat indítása** vagy a **Szavazás indítása** gombot.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  b1ee90012c240ef5:
+    english: "## Managing polls"
+    translation: "## Szavazások kezelése"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  0b5f754660efb4da:
+    english: Open the three-dot menu at the bottom right of the poll.
+    translation: Nyisd meg a hárompontos menüt a szavazás jobb alsó sarkában.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  cc2325791d155b04:
+    english: "### Edit poll"
+    translation: "### Szavazás szerkesztése"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  8d5ecd0352b5caf8:
+    english: Use **Edit poll** to edit poll content or settings.   You can not change voting options once voting commences.
+    translation: A szavazás tartalmát és beállításait a **Szavazás szerkesztése** gombbal módosíthatod. A szavazási lehetőségeket a szavazás megkezdése után már nem változtathatod meg.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  84d18e91493020d4:
+    english: "### Make a copy"
+    translation: "### Másolat készítése"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  071c2438f8e5315f:
+    english: Use **Make a copy** to create a new poll using the current poll and settings as a starting point.
+    translation: A **Készíteni egy másolatot** lehetőséggel új szavazást hozhatsz létre a jelenlegi szavazásból és annak beállításaiból kiindulva.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  3c42dde555e8a245:
+    english: "### Notification history"
+    translation: "### Értesítési előzmények"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  3e750b3f37e8ddf1:
+    english: "**Notification history** shows who was notified and whether each notification has been read."
+    translation: Az **Értesítési előzmények** megmutatják, ki kapott értesítést, és elolvasta-e azt.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  d78b253bae2aecc7:
+    english: "### Export poll"
+    translation: "### Szavazás exportálása"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  17e6fd426afa3b4d:
+    english: "**Export** poll status and results to a spreadsheet (.csv) file, to download unformatted poll data for analysis or archive."
+    translation: A **Letölt** lehetőséggel a szavazás állapotát és eredményeit táblázatkezelőben megnyitható (.csv) fájlba exportálhatod. A formázás nélküli adatokat elemzésre vagy archiválásra használhatod.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  4fce317a163b0a40:
+    english: "### Print"
+    translation: "### Nyomtatás"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  d698be92962e2cd7:
+    english: Use **Print** in the thread actions to open a printable HTML document. You can print it or save it as a PDF for publishing and archiving.
+    translation: A téma műveletei között válaszd a **Nyomtatás** lehetőséget a nyomtatható HTML-dokumentum megnyitásához. Kinyomtathatod, vagy PDF-ként mentheted közzétételhez és archiváláshoz.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  5f48f7e2615e2acf:
+    english: "### Delete"
+    translation: "### Törlés"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  3fa0318abfe3b8ee:
+    english: "**Delete** will delete the poll.  You will first be asked to confirm you want to delete the poll."
+    translation: A **Törlés** lehetőség törli a szavazást. Először meg kell erősítened a törlést.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  c15f44a0ee84f4aa:
+    english: Make sure you want to delete the poll.  There is no 'restore' option.
+    translation: Csak akkor töröld a szavazást, ha biztos vagy benne. Nincs visszaállítási lehetőség.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  4b00b8191236e3d3:
+    english: After deletion, an **Item removed** marker remains in the thread.
+    translation: Törlés után az **Elem törölve** jelzés megmarad a témában.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  72383878842d4c51:
+    english: "### Save bookmark"
+    translation: "### Könyvjelző mentése"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  66b9438053aa5b0c:
+    english: Use **Save bookmark** to add the poll to your bookmarks for quick access later.
+    translation: A **Könyvjelző mentése** lehetőséggel hozzáadhatod a szavazást a könyvjelzőidhez, hogy később gyorsan megtaláld.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'

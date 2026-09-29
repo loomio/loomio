@@ -1,0 +1,101 @@
+---
+navigation_title: Bladwijzers
+blocks:
+  4f81ad2ed2c971a4:
+    english: "# Bookmarks"
+    translation: "# Bladwijzers"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  5d590d1d8ab9b956:
+    english: |-
+      Bookmarks are a personal list of Loomio items you want to return to. Your
+      bookmarks are visible only to you and saving an item does not notify anyone
+      else.
+    translation: Bladwijzers zijn een persoonlijke lijst met onderdelen van Loomio die je later wilt terugvinden. Alleen jij kunt je bladwijzers zien. Als je een bladwijzer opslaat, krijgt niemand anders daar een melding van.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  aac40737df991d52:
+    english: 'You can bookmark:'
+    translation: 'Je kunt bladwijzers opslaan voor:'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  0f6c7e4161c72c18:
+    english: |-
+      - discussions
+      - comments
+      - proposals and polls
+      - votes
+      - outcomes
+    translation: |-
+      - discussies
+      - reacties
+      - voorstellen en peilingen
+      - stemmen
+      - conclusies
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  fc91d7d6d32e590b:
+    english: "## Save a bookmark"
+    translation: "## Een bladwijzer opslaan"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  daec09886eecd058:
+    english: |-
+      Open the action menu for the item and select **Save bookmark**. The action menu
+      is usually shown as three dots. For a discussion, use the action menu near the
+      discussion title; for a comment, vote, proposal, poll, or outcome, use the menu
+      on that item.
+    translation: Open het actiemenu van het onderdeel en selecteer **Sla bladwijzer op**. Het actiemenu wordt meestal weergegeven als drie puntjes. Gebruik voor een discussie het actiemenu bij de titel. Gebruik voor een reactie, stem, voorstel, peiling of conclusie het menu van dat onderdeel.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  395a4c119e77f34b:
+    english: "## View your bookmarks"
+    translation: "## Je bladwijzers bekijken"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  a5e09c422c753df7:
+    english: |-
+      Open the sidebar and select **Bookmarks**. The number beside the link shows how
+      many bookmarks you have saved.
+    translation: Open de zijbalk en selecteer **Bladwijzers**. Het getal naast de link laat zien hoeveel bladwijzers je hebt opgeslagen.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  7c21b03875c08b8e:
+    english: |-
+      The Bookmarks page lists your most recently saved items first. Each row shows
+      the kind of item and its author. Select a row to return to the bookmarked item.
+    translation: Op de pagina Bladwijzers staan de onderdelen die je het laatst hebt opgeslagen bovenaan. Elke rij toont het soort onderdeel en de auteur. Selecteer een rij om naar het onderdeel te gaan.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  644d774a0d045214:
+    english: "## Remove a bookmark"
+    translation: "## Een bladwijzer verwijderen"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  c2480aa6235675ba:
+    english: |-
+      On the Bookmarks page, select the remove-bookmark button at the end of a row.
+      You can also open the bookmarked item's action menu and select **Remove
+      bookmark**.
+    translation: Selecteer op de pagina Bladwijzers de knop om de bladwijzer te verwijderen aan het einde van de rij. Je kunt ook het actiemenu van het onderdeel openen en **Verwijder bladwijzer** selecteren.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  6c20d47950313409:
+    english: |-
+      Removing a bookmark affects only your personal list. You can save the item
+      again later.
+    translation: Als je een bladwijzer verwijdert, verandert alleen je persoonlijke lijst. Je kunt het onderdeel later opnieuw opslaan.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'

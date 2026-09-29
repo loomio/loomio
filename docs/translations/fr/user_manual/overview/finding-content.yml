@@ -1,0 +1,117 @@
+---
+navigation_title: Trouver du contenu
+blocks:
+  f268a5ae052b3df4:
+    english: "# Finding content"
+    translation: "# Trouver du contenu"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  2f06a9491227b073:
+    english: Loomio provides several ways to find discussions and decisions across your groups.
+    translation: Loomio vous offre plusieurs moyens de retrouver les discussions et les décisions de vos groupes.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  62c53ea4911e0c79:
+    english: "## Search"
+    translation: "## Rechercher"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  29cbb6f48ca978fa:
+    english: The Search button in the top navigation bar opens global search from any page in Loomio.
+    translation: Le bouton Rechercher dans la barre de navigation supérieure ouvre la recherche globale depuis n’importe quelle page de Loomio.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  6286c9b6f2b16fc4:
+    english: Search includes content you can access across all your groups and direct discussions. It can find discussion titles and context, comments, polls, votes, and outcomes.
+    translation: La recherche couvre le contenu auquel vous avez accès dans tous vos groupes et vos discussions directes. Elle peut trouver des titres et des descriptions de discussions, des commentaires, des sondages, des votes et des conclusions.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  c5a77d75258a11e6:
+    english: Enter a word or phrase, then press Enter or select the search icon. For example, searching for **bottle** finds Oatmilk Cooperative content containing that word.
+    translation: Saisissez un mot ou une expression, puis appuyez sur Entrée ou sélectionnez l’icône de recherche. Par exemple, une recherche sur **bottle** trouve le contenu d’Oatmilk Cooperative qui contient ce mot.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  1b93fd8aaf142d37:
+    english: "### Search tips"
+    translation: "### Conseils de recherche"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  99f906ecbde3a538:
+    english: "- Start with one or two distinctive words from the title or content you remember.\n- Search matches the beginning of a word, so a partial word such as **bott** can match **bottle**. \n- It will compensate for misspellings when results for the given query are very few.\n- Use the filters to limit results to an organization, subgroup, tag, or content type such as comments or polls.\n- Sort by **Best match** when relevance matters, or by newest or oldest when you know roughly when the content was posted."
+    translation: "- Commencez par un ou deux mots distinctifs du titre ou du contenu dont vous vous souvenez.\n- La recherche reconnaît le début des mots : un fragment comme **bott** peut trouver **bottle**. \n- Elle peut corriger les fautes d’orthographe si la recherche donne très peu de résultats.\n- Utilisez les filtres pour limiter les résultats à une organisation, un sous-groupe, un tag ou un type de contenu, comme les commentaires ou les sondages.\n- Triez par **Meilleure correspondance** si la pertinence compte, ou par date, de la plus récente à la plus ancienne ou l’inverse, si vous savez à peu près quand le contenu a été publié."
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  e7c532f120c4807d:
+    english: "## Filter discussions"
+    translation: "## Filtrer les discussions"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  91bf7098343a1efa:
+    english: Use the controls beside Search to filter discussions by open or closed status or by category tag. Combining a search term with a filter can narrow a long discussion list quickly.
+    translation: Utilisez les commandes à côté de Rechercher pour filtrer les discussions selon leur statut, ouvertes ou fermées, ou selon un tag de catégorie. Associez un terme de recherche à un filtre pour réduire rapidement une longue liste de discussions.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  e3d2099d0e6fe6fa:
+    english: "## Category tags"
+    translation: "## Tags de catégorie"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  932506e53b51fac1:
+    english: Tags group related discussions and polls under names chosen by your group, such as a project, team, or area of work.
+    translation: Les tags regroupent les discussions et les sondages liés sous des noms choisis par votre groupe, par exemple un projet, une équipe ou un domaine de travail.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  d761f1c7397d8e51:
+    english: Select a tag on the **Discussions** tab to show matching discussions. People with permission to start or edit discussions can apply tags. See [Category tags](/en/user_manual/discussions/tags) for setup and permission details.
+    translation: Sélectionnez un tag dans l’onglet **Discussions** pour afficher les discussions correspondantes. Les personnes autorisées à lancer ou à modifier des discussions peuvent leur attribuer des tags. Consultez [Tags de catégorie](/en/user_manual/discussions/tags) pour en savoir plus sur leur configuration et les autorisations.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  b620c9f42e31a54f:
+    english: "## Unread discussions"
+    translation: "## Discussions non lues"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  b2f3737cd46d903a:
+    english: Select **Unread discussions** in the sidebar to see discussions with activity you have not read. Within a discussion, the timeline helps you move to unread items and important events.
+    translation: Sélectionnez **Discussions non lues** dans la barre latérale pour voir les discussions qui contiennent des activités que vous n’avez pas lues. Dans une discussion, la chronologie vous aide à accéder aux éléments non lus et aux événements importants.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  e016a4cafcaee460:
+    english: "## Polls awaiting your vote"
+    translation: "## Sondages en attente de votre vote"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  873929c0f1d06567:
+    english: Select **Polls to vote on** in the sidebar to see active polls where you have been invited but have not yet voted. You can also open a group's **Polls** tab to see its active and closed polls.
+    translation: Sélectionnez **Sondages sur les votes** dans la barre latérale pour voir les sondages actifs auxquels vous avez été invité à participer sans avoir encore voté. Vous pouvez aussi ouvrir l’onglet **Sondages** d’un groupe pour voir ses sondages actifs et terminés.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  3bb08c3343e3efd7:
+    english: "## Bookmarks"
+    translation: "## Signets"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  1bec2703cc5fe70a:
+    english: Bookmark a discussion, comment, poll, vote, or outcome when you want to return to it. Open **Bookmarks** from your user menu to see everything you have saved. See [Bookmarks](/en/user_manual/users/bookmarks) for details.
+    translation: Ajoutez un signet à une discussion, un commentaire, un sondage, un vote ou une conclusion pour y revenir plus tard. Ouvrez **Signets** depuis votre menu utilisateur pour voir tout ce que vous avez enregistré. Consultez [Signets](/en/user_manual/users/bookmarks) pour en savoir plus.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'

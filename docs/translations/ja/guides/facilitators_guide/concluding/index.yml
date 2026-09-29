@@ -1,0 +1,179 @@
+---
+navigation_title: 結論を出す
+blocks:
+  b2d8fb17fce5a4a3:
+    english: "# Concluding"
+    translation: "# 結論を出す"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  4e03229937f959ed:
+    english: "## Outcomes & Next Steps"
+    translation: "## 結論と次のステップ"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  eaf0fe98db301c7f:
+    english: 'Confirming the outcome can be critical to feel like the goals of a collaborative discussion have been achieved. A facilitator can pull together what’s been decided and reflect it back, to help the group walk away with the answers to some key questions:'
+    translation: 協力して進めた議論の目標を達成できたと感じるには、結論を確認することが大切です。進行役が決まったことを整理して共有すると、グループは次の重要な問いに答えを持って活動を終えられます。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  00ed94f662c9643a:
+    english: |-
+      * What did we do?
+      * What does it mean?
+      * What will happen now?
+      * What is my responsibility?
+      * What will be different because we went through this experience?
+    translation: |-
+      * 何をしましたか？
+      * それにはどんな意味がありますか？
+      * これから何が起こりますか？
+      * 自分にはどんな責任がありますか？
+      * この経験によって何が変わりますか？
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  0f9ecf512b4990b7:
+    english: Sometimes the answers to these questions are very concrete, such as action points, while other times they are more abstract, such as deepening shared understanding.
+    translation: 答えが具体的な行動項目になることもあれば、共通理解が深まったという抽象的なものになることもあります。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  aabfa9d842af2688:
+    english: On Loomio
+    translation: Loomio では
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  a63bbb12b1a1e04c:
+    english: |-
+      * [Outcomes](/en/user_manual/polls/outcomes/) are a very important tool. A proposal ending is not quite the end: there’s a need to sum up conclusively. That's what the outcome feature is for.
+      * Many Loomio discussions come to a natural end without even using proposals or publishing outcomes. These discussions still provide a lot of value, and it can be helpful to update the context box with an outcome summary for later reference.
+      * If specific people have action points, you can @mention their names and they will be notified.
+    translation: |-
+      * [結論](/en/user_manual/polls/outcomes/)は重要な機能です。提案が終了しても、それで完了とは限りません。最後に内容をまとめるために、結論の機能を使います。
+      * Loomio のディスカッションには、提案や結論を使わずに自然に終わるものも多くあります。そうしたディスカッションにも価値があります。後で参照できるように、コンテキスト欄に結論の要約を追記すると役立ちます。
+      * 特定の人に担当する作業がある場合は、その名前を @メンションすると通知が届きます。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  55a9b345194f80d6:
+    english: "## Reporting & Harvesting"
+    translation: "## 記録と成果の整理"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  fc6ee28887dd5ab1:
+    english: To understand the meaning of an experience, you have to inquire into how it fits into the bigger context. What was this moment, in the bigger rhythm of our progress? What form will our understanding from this experience take — a story, a report, a change, a call to action?
+    translation: 経験の意味を理解するには、より大きな流れの中でその経験がどこに位置づくかを考えます。これまでの進展の中で、今回はどんな節目だったのでしょうか。得られた理解を、物語、報告書、変化、行動の呼びかけのどの形にするのでしょうか。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  eb2cdc1c6526e053:
+    english: The experience happens in the moment, but its impact often comes from putting handles on it, giving it a name, and being able to use it and refer to it. Otherwise you risk forgetting, leaving people out who weren't there, or having to repeat it later. Productive collaboration is often helped by tangible documentation or reporting.
+    translation: 経験はその場で起こりますが、後から名前を付け、使いやすく、参照しやすくすることで影響が広がります。そうしなければ、忘れてしまったり、その場にいなかった人に伝わらなかったり、同じことを繰り返す必要が生じたりします。文書や報告書として残すことは、協力して進める活動に役立ちます。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  4104d8b917a87b0e:
+    english: |-
+      * Loomio is self-documenting — notes write themselves as an integrated part of the process. This creates a gold-mine of archival content for groups, without any extra effort.
+      * We have some features to support harvesting and archiving: the search function, the “previous decisions” list, and the print discussion option.
+      * Premium plans offer the option to export all your group's Loomio data.
+      * Many groups use Loomio to integrate content from various channels. For example, posting a meeting announcement and building the agenda on Loomio, having the meeting in person, posting the notes back on Loomio, and making related decisions in the same thread. This expands the “self-harvesting” ability of Loomio beyond the online space.
+    translation: |-
+      * Loomio では、活動の過程そのものが記録になります。追加の作業をしなくても、グループにとって貴重な記録が蓄積されます。
+      * 記録を整理して保存するために、検索機能、「過去の決定」一覧、ディスカッションの印刷機能を利用できます。
+      * プレミアムプランでは、グループの Loomio データをすべてエクスポートできます。
+      * 多くのグループは、さまざまな場で生まれた内容を Loomio にまとめています。たとえば、会議の案内を投稿して議題を作り、対面で会議を開いた後に議事録を投稿し、同じスレッドで関連する決定を行います。これにより、オンライン以外での活動も Loomio に記録できます。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  dae98cfd5f14b034:
+    english: "## Turning Discussion into Action"
+    translation: "## ディスカッションを行動につなげる"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  a39a66938d6cadb0:
+    english: There comes a moment when you have to re-engage with the reality outside the room. Occasionally, the need is simply to work with ideas and feelings, without worrying about implementation. But usually a group will not reach its goals without applying its conclusions to real-world action. This transition is part of the total facilitated experience.
+    translation: 議論を終えたら、会議の場を離れて現実の課題に向き合う時が来ます。実行を考えず、考えや気持ちを共有することだけが必要な場合もあります。しかし通常、結論を実際の行動に移さなければ、グループは目標を達成できません。この移行も、進行役が支える活動の一部です。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  3e26f1939ffe69fe:
+    english: 'It’s at this point that a collaborative process intersects with other organizational systems, and the facilitator has to help figure out how it will work. These other systems might include:'
+    translation: この段階で、協力して進めてきた活動は組織内のほかの仕組みとつながります。進行役は、それらとどう連携するかを考える必要があります。たとえば、次のような仕組みです。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  cb030c5876714643:
+    english: |-
+      * **Power** — Who actually makes decisions? What has to happen for ideas to turn into reality here?
+      * **Management** — How does this fit into other priorities? What dependencies might exist?
+      * **Delegation** — Who will take responsibility for next steps? Will they be held accountable?
+      * **Communication** — How will this process or discussion be relayed to others? What do they need to know?
+      * **Administration** — How will information from one system be input into another, such as a task tracking or communications tool? Where will information be stored?
+    translation: |-
+      * **権限** — 実際に決定するのは誰ですか？アイデアを実現するには何が必要ですか？
+      * **運営** — ほかの優先事項とどう関係しますか？先に済ませる必要のあることはありますか？
+      * **役割分担** — 次のステップは誰が担当しますか？担当者は進捗を説明する責任を負いますか？
+      * **情報共有** — この活動やディスカッションをほかの人にどう伝えますか？何を知ってもらう必要がありますか？
+      * **事務作業** — タスク管理ツールや連絡ツールなど、別の仕組みに情報をどう移しますか？情報はどこに保存しますか？
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  5fd6382726e6e5c0:
+    english: If there are any blocks around these issues, it can be damaging to leave this realisation until the moment of conclusion. For example, if the participants don’t actually have the power to make a change they have decided, they will feel defeated.Think ahead toward confronting reality when setting up the process, and scope the collaboration accordingly.
+    translation: こうした点に障害があるなら、結論を出す時まで気づかずにいると問題になります。たとえば、参加者に決定した変更を実行する権限がなければ、無力感が残ります。活動を始める段階で実行上の条件を見据え、協力する範囲を決めてください。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  c3f96d2ea17ab236:
+    english: |-
+      * You can @mention the names of people who will take actions out of a decision.
+      * Many users accomplish integrating Loomio content into other organizational systems through other channels like reviewing Loomio decisions in regular offline meetings, or transferring outcomes to their task tracking process.
+      * Making an explicit decision naturally leads people to ask, “OK, but how are we going to take this forward?”
+      * Forming a Loomio group often surfaces important questions like, “Who needs to participate here to turn these decisions into action?” If you're missing key stakeholders, leaders, or administrators, you'll get stuck.
+    translation: |-
+      * 決定を受けて行動する人を @メンションできます。
+      * 多くの人は、定期的な対面会議で Loomio の決定を確認したり、結論をタスク管理の手順に取り入れたりして、Loomio の内容を組織内のほかの仕組みにつなげています。
+      * 明確に決定すると、「では、これをどう進めるか」という問いが自然に生まれます。
+      * Loomio でグループを作ると、「決定を行動に移すには誰の参加が必要か」といった重要な問いが明らかになることがあります。関係者、リーダー、管理者が欠けていると、先に進めなくなります。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  60bb517775f11e5d:
+    english: "## It Ain’t Over Til It’s Over"
+    translation: "## 最後まできちんと終える"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  '079da8800a401a45':
+    english: Ending well is important. There’s a ritual to closing a process, and if it’s missed people will feel unsettled. Sometimes the end is determined by running out of time, and sometimes it’s when certain goals are achieved. Recognize implicit and explicit cues indicating if the individuals, and the group as a whole, can feel completion of a process or phase.
+    translation: 活動をきちんと終えることは大切です。終わりを確認する機会がないと、参加者は区切りがつかないと感じることがあります。時間切れで終わる場合も、目標の達成によって終わる場合もあります。個々の参加者とグループ全体が、活動やその段階を終えたと感じられるかどうか、明示的な反応にも暗黙の反応にも目を向けてください。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  280969e6212842cc:
+    english: Participants often look to the leader or facilitator for confirmation of when it’s actually over, and it usually pays to be explicit. Sometimes the signal is a clear statement that the session is wrapping up, a recap of decisions or next steps, and bidding everyone goodbye. Other times groups have established practices like a check-out. Letting a session vaguely trail off will leave a bad taste.
+    translation: 参加者は、いつ終わるのかをリーダーや進行役に確認したいことがよくあります。終了を明確に伝えると役立ちます。終了を告げ、決定や次のステップを振り返り、あいさつをして締めくくる場合があります。終了時に一人ずつ感想を述べるなど、決まった方法を持つグループもあります。曖昧なまま終わらせないようにします。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  e15896aadc163225:
+    english: |-
+      * The clearest indication of conclusion on Loomio is publishing a decision outcome.
+      * Some groups use the [lock thread](/en/user_manual/discussions/using_discussions/#lock-or-unlock-a-thread) feature to prevent further changes and reduce clutter.
+      * Deactivating a group is the strongest possible “closure” move. No one can say anything else after that.
+      * Since Loomio groups can remain while group activity goes up and down, it can be useful to recognize milestones like the conclusion of a particular phase, even if the group will reactivate in the future.
+    translation: |-
+      * Loomio で終了を最も明確に示す方法は、決定の結論を公開することです。
+      * 一部のグループは、[スレッドをロックする](/en/user_manual/discussions/using_discussions/#lock-or-unlock-a-thread)機能を使い、その後の変更を防いで情報を整理しています。
+      * グループを無効化すると、活動は完全に終了します。その後は誰も投稿できません。
+      * Loomio のグループは活動が増減しても残しておけます。将来また活動する予定があっても、特定の段階が終わったことを確認すると役立ちます。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'

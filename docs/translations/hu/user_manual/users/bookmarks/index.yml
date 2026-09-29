@@ -1,0 +1,117 @@
+---
+navigation_title: Könyvjelzők
+blocks:
+  4f81ad2ed2c971a4:
+    english: "# Bookmarks"
+    translation: "# Könyvjelzők"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  5d590d1d8ab9b956:
+    english: |-
+      Bookmarks are a personal list of Loomio items you want to return to. Your
+      bookmarks are visible only to you and saving an item does not notify anyone
+      else.
+    translation: |-
+      A könyvjelzők a Loomio azon elemeinek személyes listája, amelyekhez vissza szeretnél térni.
+      A könyvjelzőidet csak te láthatod. Ha elmentesz egy könyvjelzőt, arról senki más nem kap
+      értesítést.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  aac40737df991d52:
+    english: 'You can bookmark:'
+    translation: 'Könyvjelzővel láthatod el a következőket:'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  0f6c7e4161c72c18:
+    english: |-
+      - discussions
+      - comments
+      - proposals and polls
+      - votes
+      - outcomes
+    translation: |-
+      - beszélgetések
+      - hozzászólások
+      - javaslatok és szavazások
+      - szavazatok
+      - következtetések
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  fc91d7d6d32e590b:
+    english: "## Save a bookmark"
+    translation: "## Könyvjelző mentése"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  daec09886eecd058:
+    english: |-
+      Open the action menu for the item and select **Save bookmark**. The action menu
+      is usually shown as three dots. For a discussion, use the action menu near the
+      discussion title; for a comment, vote, proposal, poll, or outcome, use the menu
+      on that item.
+    translation: |-
+      Nyisd meg az elem műveleti menüjét, és válaszd a **Könyvjelző mentése** lehetőséget. A műveleti menüt
+      általában három pont jelzi. Beszélgetésnél a cím melletti műveleti menüt használd;
+      hozzászólásnál, szavazatnál, javaslatnál, szavazásnál vagy következtetésnél az adott elem
+      menüjét.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  395a4c119e77f34b:
+    english: "## View your bookmarks"
+    translation: "## Könyvjelzőid megtekintése"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  a5e09c422c753df7:
+    english: |-
+      Open the sidebar and select **Bookmarks**. The number beside the link shows how
+      many bookmarks you have saved.
+    translation: |-
+      Nyisd meg az oldalsávot, és válaszd a **Könyvjelzők** lehetőséget. A hivatkozás melletti szám azt mutatja,
+      hány könyvjelzőt mentettél el.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  7c21b03875c08b8e:
+    english: |-
+      The Bookmarks page lists your most recently saved items first. Each row shows
+      the kind of item and its author. Select a row to return to the bookmarked item.
+    translation: |-
+      A Könyvjelzők oldalon a legutóbb mentett elemek jelennek meg először. Minden sorban láthatod
+      az elem típusát és szerzőjét. Válassz ki egy sort a könyvjelzővel megjelölt elem megnyitásához.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  644d774a0d045214:
+    english: "## Remove a bookmark"
+    translation: "## Könyvjelző eltávolítása"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  c2480aa6235675ba:
+    english: |-
+      On the Bookmarks page, select the remove-bookmark button at the end of a row.
+      You can also open the bookmarked item's action menu and select **Remove
+      bookmark**.
+    translation: |-
+      A Könyvjelzők oldalon kattints a sor végén lévő könyvjelző-eltávolító gombra.
+      Megnyithatod a könyvjelzővel megjelölt elem műveleti menüjét is, és kiválaszthatod a **Könyvjelző
+      eltávolítása** lehetőséget.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  6c20d47950313409:
+    english: |-
+      Removing a bookmark affects only your personal list. You can save the item
+      again later.
+    translation: |-
+      A könyvjelző eltávolítása csak a személyes listádat érinti. Az elemet később
+      újra elmentheted.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'

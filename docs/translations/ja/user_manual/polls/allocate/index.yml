@@ -1,0 +1,135 @@
+---
+navigation_title: 割り当てる
+blocks:
+  343675f0497d460a:
+    english: "# Allocate"
+    translation: "# 割り当てる"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  46dd27ee2e2fb992:
+    english: Allocate, sometimes known as a dot vote, reveals priorities when there are trade-offs. Each participant receives a fixed budget of points and distributes it across the options. Giving more to one option leaves fewer points for the others.
+    translation: 割り当てる投票は、ドット投票とも呼ばれます。限られた資源をどう使うかを決める際に、優先順位を明らかにできます。各参加者には決まった数のポイントが与えられ、選択肢に配分します。ある選択肢に多く配分すると、ほかの選択肢に使えるポイントは少なくなります。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  c6d05c5ec2a695d2:
+    english: "## When to use Allocate"
+    translation: "## 割り当てる投票を使う場面"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  f5b2c4377aea5079:
+    english: 'Use Allocate when time, money, attention, or another resource is limited. It works well for:'
+    translation: 時間、資金、労力などの資源が限られている場合に使います。たとえば、次のような用途に適しています。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  8e6525da99616946:
+    english: |-
+      - prioritizing work for the next planning period;
+      - dividing a participatory budget between projects;
+      - choosing how much agenda time to give several topics;
+      - distributing a fixed number of volunteer hours; or
+      - identifying which improvements matter most to members.
+    translation: |-
+      - 次の計画期間に取り組む仕事の優先順位を決める
+      - 参加型予算を複数のプロジェクトに配分する
+      - 複数の議題に割く時間を決める
+      - 限られたボランティアの活動時間を配分する
+      - メンバーが最も重視する改善点を見つける
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  66b0f13c4811ef63:
+    english: The points express relative priority, not an amount that Loomio will automatically assign. Use [Score](/en/user_manual/polls/score/) when every option can receive a high rating without reducing support for another.
+    translation: ポイントは相対的な優先順位を示します。Loomioが自動的に割り当てる量ではありません。ほかの選択肢への支持を減らさずに、各選択肢を高く評価できるようにしたい場合は、[スコア投票](/en/user_manual/polls/score/)を使います。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  '0409e08bd5e80f61':
+    english: "## Example: set priorities for an annual strategy review"
+    translation: "## 例：年次戦略レビューの優先順位を決める"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  e274f6e40509e611:
+    english: Oatmilk Cooperative is planning its annual strategy review. It asks members which areas should receive the most time and attention during the review. Each member receives ten points to allocate across five areas. This shows the group's relative priorities while requiring participants to make trade-offs.
+    translation: オーツミルク協同組合は、年次戦略レビューを計画しています。レビューでどの分野に最も多くの時間と注意を向けるべきか、メンバーに尋ねます。各メンバーは10ポイントを受け取り、5つの分野に配分します。参加者が優先順位を選ぶことで、グループ全体の優先順位が見えてきます。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  c74ebb16f872b3c6:
+    english: "## Set up the poll"
+    translation: "## 投票を設定する"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  906790609aa7eb30:
+    english: Describe the decision and what the points represent. Add options at a similar level of scope, then set **Points per person**. In this example, each voter receives ten points to indicate how much review time each strategic area should receive.
+    translation: 何を決めるのか、ポイントが何を表すのかを説明します。同じくらいの範囲の選択肢を追加し、**1人あたりのポイント**を設定します。この例では、各投票者に10ポイントを与え、戦略上の各分野のレビューにどれだけ時間を割くべきかを示してもらいます。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  67ae025b83fb4781:
+    english: A very large budget can create false precision. A useful budget is usually large enough to show differences but small enough to require choices. Make clear whether concentrating all points on one option is acceptable.
+    translation: ポイント数が多すぎると、実際以上に細かな違いがあるように見えることがあります。違いを示せるだけのポイントを用意しつつ、選択を迫られる程度に抑えるとよいでしょう。すべてのポイントを1つの選択肢に集中させてもよいか、明示します。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  d391457c69df967f:
+    english: "## Vote"
+    translation: "## 投票する"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  d9a73b9d4e2f8927:
+    english: Participants move the sliders to distribute their budget. Loomio shows how many points remain and prevents submission until the allocation is valid.
+    translation: 参加者はスライダーを動かしてポイントを配分します。Loomioには残りのポイント数が表示され、配分が有効になるまで送信できません。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  7b3d616673a01fbb:
+    english: In this example, the voter assigns three points each to **Member participation** and **Financial sustainability**, two each to **Environmental impact** and **Staff development**, and none to **Products and services**. A zero does not necessarily mean an area has no value; it means the voter used their limited points elsewhere.
+    translation: この例では、投票者は**メンバーの参加**と**財務の持続可能性**にそれぞれ3ポイント、**環境への影響**と**スタッフの育成**にそれぞれ2ポイントを配分し、**製品とサービス**には配分しません。0ポイントは、その分野に価値がないという意味とは限りません。限られたポイントをほかの分野に使ったことを示します。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  72a9e4073ea27936:
+    english: "## Read the results"
+    translation: "## 結果を読む"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  97147f83eaf22313:
+    english: 'The results order options by the total points received. They also show:'
+    translation: 結果では、獲得したポイントの合計が多い順に選択肢が並びます。次の項目も表示されます。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  1d224c0c34145a7f:
+    english: |-
+      - **% of points**: the option's share of all allocated points;
+      - **Points**: the total points allocated;
+      - **Mean**: the average among voters who gave the option points; and
+      - **Voters**: how many people gave the option at least one point.
+    translation: |-
+      - **ポイントの割合**：配分された全ポイントに占める、その選択肢の割合
+      - **ポイント**：配分されたポイントの合計
+      - **平均**：その選択肢にポイントを配分した投票者の平均
+      - **有権者**：その選択肢に1ポイント以上配分した人の数
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  2901008fa326e4f5:
+    english: In this example, **Financial sustainability** receives the most points, followed by **Staff development**. Financial sustainability receives points from every voter, suggesting broad agreement that it needs substantial review time. Read the totals alongside the number of voters to distinguish broad priorities from areas strongly supported by fewer people.
+    translation: この例では、**財務の持続可能性**が最も多くのポイントを獲得し、次に**スタッフの育成**が続きます。財務の持続可能性には全投票者がポイントを配分しており、レビューに十分な時間を割く必要があるという認識が広く共有されていることがうかがえます。合計ポイントと投票者数を併せて見ると、広く支持された優先事項と、少数の人が強く支持する分野を区別できます。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  f2c04fbdc54d23e8:
+    english: Read the totals together with the number of voters and their reasons. Publish an outcome explaining how the strategy review will be structured; the poll does not assign time automatically.
+    translation: 合計ポイントに加え、投票者数とその理由も確認します。戦略レビューをどのように進めるかを説明する結論を公開します。投票によって時間が自動的に割り当てられることはありません。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'

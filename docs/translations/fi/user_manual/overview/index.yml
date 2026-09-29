@@ -1,0 +1,147 @@
+---
+navigation_title: Aloittaminen
+blocks:
+  7b82d33bbaae3080:
+    english: "# Getting started"
+    translation: "# Aloittaminen"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  73449e09f559b4bd:
+    english: Loomio is a discussion and decision making tool for collaborative organizations.
+    translation: Loomio on keskustelun ja päätöksenteon työkalu yhteistyötä tekeville organisaatioille.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  c6d663f00c64f35d:
+    english: It enables you to bring people together to discuss topics, explore proposals and make decisions.
+    translation: Sen avulla voit tuoda ihmiset yhteen keskustelemaan aiheista, pohtimaan ehdotuksia ja tekemään päätöksiä.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  31ab6b8ca4d0f976:
+    english: |-
+      <div class="iframe-container">
+      <iframe width="660" height="415" src="https://www.youtube-nocookie.com/embed/K8ZRNtlRvAI" title="Loomio in 2 minutes" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+    translation: |-
+      <div class="iframe-container">
+      <iframe width="660" height="415" src="https://www.youtube-nocookie.com/embed/K8ZRNtlRvAI" title="Loomio in 2 minutes" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  7c8501ecb12311af:
+    english: "## How Loomio works"
+    translation: "## Miten Loomio toimii"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  74caca2261c15283:
+    english: 'Loomio has three main parts: groups, discussions, and polls.'
+    translation: 'Loomiossa on kolme pääosaa: ryhmät, keskustelut ja kyselyt.'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  5f0a46926a0f7350:
+    english: "### Groups"
+    translation: "### Ryhmät"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  2060a64d0fabc6d7:
+    english: A group is a place for an organization, team, or community to work together. Its home page explains the group's purpose and provides access to its discussions, polls, members, and files.
+    translation: Ryhmä on paikka, jossa organisaatio, tiimi tai yhteisö voi tehdä yhteistyötä. Ryhmän etusivu kertoo sen tarkoituksesta ja tarjoaa pääsyn keskusteluihin, kyselyihin, jäseniin ja tiedostoihin.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  311793a17709182c:
+    english: "### Discussions"
+    translation: "### Keskustelut"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  05ecdffe6c18a1df:
+    english: Discussions keep the information and conversation about a topic together. People can share context, comment, reply, react, and use polls to move the discussion towards an outcome.
+    translation: Keskustelu kokoaa yhteen aiheeseen liittyvät tiedot ja viestit. Osallistujat voivat jakaa taustatietoa, kommentoida, vastata ja reagoida. Kyselyiden avulla keskustelu voi edetä kohti lopputulosta.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  dc9a50d7f1f20c80:
+    english: Over time, discussions create a searchable record of the information considered and the decisions made by your group.
+    translation: Ajan mittaan keskusteluista muodostuu haettava arkisto tiedoista, joita ryhmäsi on käsitellyt, ja päätöksistä, joita se on tehnyt.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  3448194e8a2ce09d:
+    english: "### Polls and proposals"
+    translation: "### Kyselyt ja ehdotukset"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  4ef7092f5f56e773:
+    english: Polls help a group understand preferences, gather advice, and make decisions. Different poll templates support different processes. A proposal asks people to respond to a suggested course of action and explain the reason for their response.
+    translation: Kyselyt auttavat ryhmää selvittämään mielipiteitä, pyytämään neuvoja ja tekemään päätöksiä. Eri kyselymallit tukevat erilaisia päätöksentekotapoja. Ehdotuksessa osallistujia pyydetään ottamaan kantaa esitettyyn toimintatapaan ja perustelemaan vastauksensa.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  51ab039bc7c374bd:
+    english: Polls can be part of a discussion or run independently from the **Polls** tab on a group page.
+    translation: Kysely voi olla osa keskustelua. Voit myös aloittaa erillisen kyselyn ryhmän sivun **Äänestykset**-välilehdeltä.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  47500e7125fdedbc:
+    english: To learn where these parts appear in the interface, see the [Quick tour](/en/user_manual/overview/orientation). To start contributing, see [How to participate](/en/user_manual/overview/how-to-participate).
+    translation: Katso [Pikakierroksesta](/en/user_manual/overview/orientation), missä nämä osat näkyvät käyttöliittymässä. Jos haluat osallistua, lue [Osallistumisohjeet](/en/user_manual/overview/how-to-participate).
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  57ed823687deabb5:
+    english: "## Try it out"
+    translation: "## Kokeile itse"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  b08a2d6a44f0d7ac:
+    english: The best way to learn about Loomio is to [start a free trial](/try)
+    translation: Opit käyttämään Loomiota parhaiten [aloittamalla ilmaisen kokeilun](/try)
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  ced10eda436a40ca:
+    english: "## How people use Loomio"
+    translation: "## Mihin Loomiota käytetään"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  4198817a2724ad0a:
+    english: "**Member organizations** to involve members in decisions at scale. Political parties, consumer and worker co-operatives, and membership associations use Loomio to facilitate a safe, inclusive space for members to share information and raise topics, participate in important decisions and vote in General Assembly. Streamline decision processes, improve transparency and accountability, document discussions and record decisions, and include members' voices to organize for action."
+    translation: "**Jäsenjärjestöt** voivat ottaa jäsenet mukaan päätöksentekoon myös suurissa organisaatioissa. Poliittiset puolueet, kuluttaja- ja työntekijäosuuskunnat sekä yhdistykset käyttävät Loomiota, jotta jäsenet voivat jakaa tietoa, nostaa aiheita esiin, osallistua tärkeisiin päätöksiin ja äänestää yleiskokouksessa. Loomio auttaa selkeyttämään päätöksentekoa, lisäämään avoimuutta ja vastuullisuutta sekä tallentamaan keskustelut ja päätökset. Jäsenten näkemykset voidaan ottaa mukaan yhteisen toiminnan suunnitteluun."
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  7b2fd1306e05f4e3:
+    english: "**Self-managing organizations** to involve staff in decisions. Self-managing teams, worker co-operatives, and sociocratic organisations use Loomio to run consent, consensus, and advice-based decision processes across distributed teams and time zones. Tap into collective intelligence, distribute decision making, build governance and policy together, and document decisions and discussion."
+    translation: "**Itseohjautuvat organisaatiot** voivat ottaa henkilöstön mukaan päätöksentekoon. Itseohjautuvat tiimit, työntekijäosuuskunnat ja sosiokraattiset organisaatiot käyttävät Loomiota suostumukseen, yksimielisyyteen ja neuvoihin perustuvassa päätöksenteossa, vaikka tiimit työskentelisivät eri paikoissa ja aikavyöhykkeillä. Loomion avulla ne voivat hyödyntää yhteistä tietoa, jakaa päätösvaltaa, laatia yhdessä toimintatapoja ja sääntöjä sekä tallentaa päätökset ja keskustelut."
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  75d7266c562f65c2:
+    english: "**Boards, councils, and distributed networks** to involve stakeholders in decisions. Create a safe space for discussion, keep track of communications, and coordinate across geographies and time zones. Structure decision making processes, improve agility and response times, and preserve organizational memory."
+    translation: "**Hallitukset, neuvostot ja hajautetut verkostot** voivat ottaa sidosryhmät mukaan päätöksiin. Loomio tarjoaa tilan keskustelulle, auttaa seuraamaan viestintää ja tukee yhteistyötä eri paikoissa ja aikavyöhykkeillä. Sen avulla voit jäsentää päätöksentekoa, nopeuttaa toimintaa ja säilyttää tiedon aiemmista keskusteluista ja päätöksistä."
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  cbe5ae77738f2704:
+    english: "**Residential communities and co-ops** to make decisions together as neighbours. Cohousing communities, ecovillages, coliving cooperatives, housing co-ops, and land trusts use Loomio to replace or augment traditional strata and property management with democratic governance. Residents shape decisions about shared land, common spaces, and community agreements, and asynchronous discussion means members can fully participate whether they're on-site or away travelling, keeping a clear record of how the community has chosen to live together."
+    translation: "**Asuinyhteisöt ja asunto-osuuskunnat** voivat tehdä päätöksiä yhdessä naapureiden kanssa. Yhteisöasumisen yhteisöt, ekokylät, asumisosuuskunnat, asunto-osuuskunnat ja yhteisölliset maanomistusjärjestelyt käyttävät Loomiota täydentämään tai korvaamaan perinteistä kiinteistönhallintaa demokraattisella päätöksenteolla. Asukkaat voivat päättää yhdessä maa-alueista, yhteisistä tiloista ja yhteisön sopimuksista. Kun keskusteluun voi osallistua eri aikaan, jäsenet voivat osallistua täysipainoisesti myös matkoilla ollessaan. Päätöksistä jää selkeä tieto."
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  fb1039083c952286:
+    english: Loomio builds a living record of your organization; the decisions made, who was involved and the discussion leading up to the decision.
+    translation: Loomioon kertyy jatkuvasti täydentyvä tieto organisaatiosi päätöksistä, päätöksiin osallistuneista ihmisistä ja niitä edeltäneistä keskusteluista.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'

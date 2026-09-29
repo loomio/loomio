@@ -1,0 +1,69 @@
+---
+navigation_title: Настройки группы
+blocks:
+  8953be95b754cbf1:
+    english: "# Group settings"
+    translation: "# Настройки группы"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  0b8776f3657a1add:
+    english: Group settings control how your group is presented, who can find and join it, and what members are allowed to do. Only group administrators can edit these settings.
+    translation: Настройки группы определяют, как она представлена, кто может её найти и присоединиться к ней, а также какие действия доступны участникам. Изменять эти настройки могут только администраторы группы.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  306f2b79029e2196:
+    english: On the group page, open the actions menu and select **Edit group settings**.
+    translation: На странице группы откройте меню действий и выберите **Редактировать настройки группы**.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  da97a3ef0d0c2440:
+    english: "![Edit group settings from the group page](group_settings.png)"
+    translation: "![Редактирование настроек группы со страницы группы](group_settings.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  c9cb7d605f03af78:
+    english: 'The settings form is divided into three areas:'
+    translation: 'Форма настроек состоит из трёх разделов:'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  c3ac7e7af6a97167:
+    english: "## Group profile"
+    translation: "## Профиль группы"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  f7d530ddcbc99f60:
+    english: "[Group profile](/en/user_manual/groups/settings/profile) covers the group name, handle, description, cover image, and logo."
+    translation: В разделе [Профиль группы](/en/user_manual/groups/settings/profile) можно настроить название, идентификатор в URL, описание, изображение обложки и логотип группы.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  228e2f1114d8e94b:
+    english: "## Group privacy"
+    translation: "## Конфиденциальность группы"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  c22b13644b71c97d:
+    english: "[Group privacy](/en/user_manual/groups/settings/privacy) covers who can find the group, who can read its content, how people join, directory listing, and following an Open group."
+    translation: Раздел [Конфиденциальность группы](/en/user_manual/groups/settings/privacy) определяет, кто может найти группу и читать её материалы, как люди присоединяются к группе, отображается ли она в каталоге и можно ли подписаться на открытую группу.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  657ea70b782f7e42:
+    english: "## Group permissions"
+    translation: "## Разрешения группы"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  dd413ac130af89c4:
+    english: "[Group permissions](/en/user_manual/groups/settings/permissions) controls which actions members, non-members, and administrators can take."
+    translation: Раздел [Разрешения группы](/en/user_manual/groups/settings/permissions) определяет, какие действия доступны участникам, людям вне группы и администраторам.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'

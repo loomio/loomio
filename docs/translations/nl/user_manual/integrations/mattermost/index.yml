@@ -1,0 +1,87 @@
+---
+navigation_title: Mattermost
+blocks:
+  faecc8a35e23054a:
+    english: |-
+      # Mattermost integration
+      _Connecting your Loomio group notifications to your Mattermost team chat._
+    translation: |-
+      # Mattermost-integratie
+      _Meldingen van je Loomio-groep koppelen aan de teamchat in Mattermost._
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  3955d3033be2b126:
+    english: 'Loomio can send notifications into your Mattermost channels when new discussions, proposals, comments, votes, and outcomes occur. '
+    translation: Loomio kan meldingen naar je Mattermost-kanalen sturen bij nieuwe discussies, voorstellen, reacties, stemmen en conclusies.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  cb3f91d54eee30e5:
+    english: "---"
+    translation: "---"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  5b8fbf385e691898:
+    english: |-
+      Start from your Mattermost team in your browser. Then open the Integrations settings page.
+      ![](mm1.png)
+    translation: |-
+      Open je Mattermost-team in je browser. Ga vervolgens naar de instellingen voor integraties.
+      ![](mm1.png)
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  71a08631e70f06c9:
+    english: |-
+      Click "Incoming Webhooks"
+      ![](mm2.png)
+    translation: |-
+      Klik op "Incoming Webhooks"
+      ![](mm2.png)
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  4f149aa53006b72f:
+    english: |-
+      Then click  "Add Incoming Webhook"
+      ![](mm3.png)
+    translation: |-
+      Klik vervolgens op  "Add Incoming Webhook"
+      ![](mm3.png)
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  d030c8a27b1d2a15:
+    english: |-
+      Give it a simple name, select the channel for notifications to appear within, and click Save
+      ![](mm4.png)
+    translation: |-
+      Geef de webhook een eenvoudige naam, selecteer het kanaal waarin de meldingen moeten verschijnen en klik op Save
+      ![](mm4.png)
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  adc3f2f055883a4f:
+    english: |-
+      Copy the Webhook URL to your clipboard, you're going to need it the next step.
+      ![](mm5.png)
+    translation: |-
+      Kopieer de Webhook-URL naar je klembord. Je hebt deze nodig bij de volgende stap.
+      ![](mm5.png)
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  42fc079c9a2a6885:
+    english: Make sure you have your Webhook URL in your clipboard and follow the link below.
+    translation: Zorg dat de Webhook-URL op je klembord staat en volg de onderstaande link.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  894c0911cade4b44:
+    english: "[Set up a chat integration in Loomio](../chatbots/#set-up-a-chat-integration)"
+    translation: "[Stel een chatintegratie in Loomio in](../chatbots/#set-up-a-chat-integration)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'

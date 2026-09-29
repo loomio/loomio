@@ -1,0 +1,273 @@
+---
+navigation_title: Voorbereiding
+blocks:
+  4fdd26e2ff6dd9e5:
+    english: "# Preparation"
+    translation: "# Voorbereiding"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  4fc02624e97369e9:
+    english: |-
+      > <img style="border-radius: 100%; float: right; margin-left: 0.5em; max-width: 96px; " src="../silvia_200.png"> For every minute of time with the group, consider spending 3 minutes planning. That means spending three hours preparing for a one hour session. Only as you improve should you spend less time planning.
+      >
+      > — Silvia Zuur
+    translation: |-
+      > <img style="border-radius: 100%; float: right; margin-left: 0.5em; max-width: 96px; " src="../silvia_200.png"> Overweeg om voor elke minuut met de groep drie minuten aan planning te besteden. Voor een bijeenkomst van een uur betekent dat drie uur voorbereiding. Pas wanneer je er beter in wordt, kun je minder tijd aan planning besteden.
+      >
+      > — Silvia Zuur
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  d18832ab8f94fa1b:
+    english: "## Understand Purpose"
+    translation: "## Begrijp het doel"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  26d88950f0aac205:
+    english: Clarification of purpose is one of the highest value offerings of a skilled facilitator — if they can help the group nail that, everything else is possible. Purpose operates at the level of a group as a whole, and at the level of individual discussions/decisions. Purpose is what enables judgment calls about what tools to deploy, what interventions to enact, and what outcomes to aim for. Lack of shared understanding about purpose can be fatal to a discussion, or to the group itself.
+    translation: Een van de belangrijkste bijdragen van een ervaren facilitator is het doel helder krijgen. Als de groep weet wat zij wil bereiken, wordt de rest mogelijk. Een groep als geheel heeft een doel, maar ook afzonderlijke discussies en besluiten hebben dat. Het doel helpt je bepalen welke hulpmiddelen je inzet, wanneer je ingrijpt en naar welke conclusies je toewerkt. Zonder gedeeld begrip van het doel kan een discussie vastlopen, of zelfs de groep uiteenvallen.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  4276182ea8afaf36:
+    english: "> Always refer back to your purpose-finding questions to check that you’re covering off what the participants want to learn or achieve. — Silvia Zuur"
+    translation: "> Kom steeds terug op de vragen waarmee je het doel hebt bepaald. Zo controleer je of je aandacht besteedt aan wat deelnemers willen leren of bereiken. — Silvia Zuur"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  aabfa9d842af2688:
+    english: On Loomio
+    translation: Op Loomio
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  ea5f19b8970e4db6:
+    english: |-
+      * The app offers space for explication of purpose, such as the [group description](/en/user_manual/groups/starting_a_group/#group-description) and [discussion context](/en/user_manual/discussions/using_discussions/#discussion-context) fields.
+      * A Loomio discussion *about* purpose is a great place to start with your group, if it's not already clear.
+      * Our analytics (stats about how people use the software) show that groups with a clear shared purpose are more successful.
+      * [Customer stories and case studies](https://blog.loomio.com/?utm_campaign=facilitators_guide_help&utm_term=help) we've collected emphasise the importance of setting a collective purpose.
+    translation: |-
+      * De app biedt ruimte om het doel uit te leggen, bijvoorbeeld in de [groepsbeschrijving](/en/user_manual/groups/starting_a_group/#group-description) en de [context van de discussie](/en/user_manual/discussions/using_discussions/#discussion-context).
+      * Als het doel nog niet duidelijk is, kun je met je groep beginnen met een Loomio-discussie *over* dat doel.
+      * Onze gebruiksstatistieken laten zien dat groepen met een duidelijk gedeeld doel meer bereiken.
+      * De [verhalen en praktijkvoorbeelden van klanten](https://blog.loomio.com/?utm_campaign=facilitators_guide_help&utm_term=help) die we hebben verzameld, benadrukken het belang van een gezamenlijk doel.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  e7d962ee3ac4e476:
+    english: "## Rearrange the Furniture"
+    translation: "## Richt de ruimte anders in"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  bee66f99abaa8e2a:
+    english: Desiging the space you invite people into greatly influences their experience. Every gathering is unique, and deserves a setup to suit. Familiarity signals safety, while changing the environment cues openness to new ideas.
+    translation: De inrichting van de ruimte waarin je mensen uitnodigt, heeft veel invloed op hun ervaring. Elke bijeenkomst is anders en vraagt om een passende opzet. Een vertrouwde omgeving geeft houvast. Een andere inrichting kan mensen openstellen voor nieuwe ideeën.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  b98fa9d3e5726891:
+    english: In offline spaces, literally rearranging the furniture is a habit that helps facilitators get into the right zone to hold space, and prompts them to think about what’s unique in that session. Imagine the difference between everyone seated in rows versus everyone in a circle.
+    translation: Bij een fysieke bijeenkomst kunnen facilitators het meubilair letterlijk verplaatsen. Dat helpt hen zich op de bijeenkomst voor te bereiden en na te denken over wat deze bijzonder maakt. Stel je het verschil voor tussen mensen die in rijen zitten en mensen die in een kring zitten.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  546ba20d5778bb25:
+    english: |-
+      * Inviting people into a new digital space specifically for decision making is powerful — there’s a “threshold crossing” experience making it as distinct from other online spaces (which might be for socialising or other functions).
+      * [Customising your group photo](/en/user_manual/groups/starting_a_group/#upload-a-group-photo) is a prime opportunity to craft the feeling of the space.
+      * The group description is a main piece of “furniture” on the group page, and [you can customise it](/en/user_manual/groups/starting_a_group/#group-description) to suit.
+    translation: |-
+      * Mensen uitnodigen in een nieuwe digitale ruimte speciaal voor besluitvorming kan veel betekenen. De overstap naar die ruimte maakt duidelijk dat deze een ander doel heeft dan online plekken voor sociaal contact of andere activiteiten.
+      * Met [een aangepaste groepsfoto](/en/user_manual/groups/starting_a_group/#upload-a-group-photo) kun je de sfeer van de ruimte vormgeven.
+      * De groepsbeschrijving is een belangrijk onderdeel van de groepspagina. Je kunt [de beschrijving aanpassen](/en/user_manual/groups/starting_a_group/#group-description) aan de groep.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  bb1d23808a93d41b:
+    english: "## Supplies, Tools, Materials"
+    translation: "## Benodigdheden, hulpmiddelen en materiaal"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  b5e22b09672c3587:
+    english: When facilitation is running smoothly, all the supplies a group needs are right at hand. In offline spaces, this stuff includes post-its, pens, paper, name tags, printouts, and background material. Every step a facilitator takes to be well-prepared in this way allows more time and energy for the work.
+    translation: Als de begeleiding soepel verloopt, heeft de groep alles wat zij nodig heeft binnen handbereik. Bij een fysieke bijeenkomst zijn dat bijvoorbeeld plakbriefjes, pennen, papier, naamkaartjes, afdrukken en achtergrondinformatie. Goede voorbereiding op dit gebied geeft een facilitator meer tijd en aandacht voor het werk zelf.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  7da21174f12dfb9e:
+    english: |-
+      * Many groups use the group description to link to a shared drive of collaborative documents, background information, the group's project management or task tracking system, a list of contacts, etc.
+      * Each thread deserves consideration of what people might need to engage with it — putting all the information right at hand is essential (for example, if you reference something, linking directly to it is much more effective than expecting people to search for it).
+    translation: |-
+      * Veel groepen gebruiken de groepsbeschrijving voor links naar gedeelde documenten, achtergrondinformatie, hun projectbeheer of takenlijst en contactgegevens.
+      * Denk bij elke discussie na over wat mensen nodig hebben om mee te doen. Zet die informatie binnen handbereik. Als je bijvoorbeeld naar iets verwijst, helpt een directe link meer dan wanneer mensen er zelf naar moeten zoeken.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  35dd82fcf7e543d8:
+    english: "## Design the Experience"
+    translation: "## Ontwerp de ervaring"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  fbc88dd9b9738343:
+    english: 'Once they have the basic pieces in place (purpose, tools, background info), good facilitators take time to think through the design of the experience they are inviting: the situation, what success could look like, all the possible pathways and choices. They don’t jump in without a considered design.'
+    translation: Als het doel, de hulpmiddelen en de achtergrondinformatie duidelijk zijn, denken goede facilitators na over de ervaring waarvoor zij mensen uitnodigen. Ze kijken naar de situatie, wat een geslaagde bijeenkomst zou zijn en welke routes en keuzes mogelijk zijn. Ze beginnen met een doordachte opzet.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  a4dce16ca48a4324:
+    english: Time and time again we have seen people drastically underestimate the need for prep and design. Stop and think about the experience you want to host, before jumping straight in. Investment in design is paid back many times over by success later.
+    translation: We zien telkens weer dat mensen onderschatten hoeveel voorbereiding en ontwerp nodig zijn. Neem voordat je begint de tijd om na te denken over de ervaring die je wilt begeleiden. Die voorbereiding betaalt zich later terug.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  e91f002ee6e53550:
+    english: "* Loomio’s most basic functionality follows the structure of good facilitation by design: invite people, discuss a topic, gather divergent input, converge into a specific proposal, test for agreement, confirm outcome."
+    translation: "* De basisfuncties van Loomio volgen de opzet van goede begeleiding: nodig mensen uit, bespreek een onderwerp, verzamel verschillende meningen, werk toe naar een concreet voorstel, toets of er overeenstemming is en bevestig de conclusie."
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  211e08fc109e6449:
+    english: |-
+      * Skilled users are already adapting Loomio for various experience designs — such as a multi-step consultation processes, signing off documents, etc. Each job, when facilitated effectively, takes a certain repeatable shape.
+      * Online collaboration design doesn't have to reinvent the wheel. Trust what you know works, and translate it. Many tried and tested offline processes can be adapted to the online space (ex: the [Advice Process](/en/guides/making_decisions/advice_process.html)).
+      * [Case studies](https://blog.loomio.com/?utm_campaign=facilitators_guide_help&utm_term=help) of thoughtfully designed processes could be used as “recipes” — if you're not sure what design to use, start by seeing what others have tried.
+    translation: |-
+      * Ervaren gebruikers passen Loomio al aan voor verschillende werkwijzen, zoals raadplegingen in meerdere stappen of het goedkeuren van documenten. Een goed begeleid proces krijgt vaak een vorm die je kunt herhalen.
+      * Voor online samenwerking hoef je niet opnieuw te beginnen. Ga uit van wat volgens jou werkt en pas dat aan. Veel beproefde werkwijzen voor fysieke bijeenkomsten zijn ook online te gebruiken, zoals het [adviesproces](/en/guides/making_decisions/advice_process.html).
+      * [Praktijkvoorbeelden](https://blog.loomio.com/?utm_campaign=facilitators_guide_help&utm_term=help) van doordacht ontworpen processen kunnen als leidraad dienen. Weet je niet welke opzet je moet kiezen, kijk dan eerst wat anderen hebben geprobeerd.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  7e99e2ddc63d7a98:
+    english: "## Contextualise the Moment"
+    translation: "## Plaats het moment in de juiste context"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  427b66f23f4b3c09:
+    english: Discussions do not occur in a vacuum, but in the larger context of the group’s history and practice. To be effective, facilitated experiences have to occur with the right timing, and fit in with the rest of the group’s process.
+    translation: Discussies staan niet op zichzelf. Ze maken deel uit van de geschiedenis en de werkwijze van de groep. Goede begeleiding vraagt om het juiste moment en moet passen bij de rest van het groepsproces.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  48a889b09297e38b:
+    english: 'Key Context Questions:'
+    translation: 'Belangrijke vragen over de context:'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  7eccc4a4e4a3b175:
+    english: |-
+      * Is this a moment of transition?
+      * Is this an enhancement of existing practice?
+      * Is this one of many concurrent processes, or a singular focus?
+      * Are we here to solve a problem, or go deeper, wider, narrower?
+    translation: |-
+      * Is dit een overgangsmoment?
+      * Bouwen we voort op een bestaande werkwijze?
+      * Is dit een van meerdere processen die tegelijk lopen, of krijgt dit alle aandacht?
+      * Willen we een probleem oplossen, of het onderwerp verder verdiepen, verbreden of afbakenen?
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  c7c8ce0838a076cd:
+    english: |-
+      * Loomio groups nearly always have a “champion”, who understands the group’s context and makes the call about whether introducing Loomio is right for them.
+      * It's not wise to try to change everything at once. Any time Loomio fits nicely into existing workflows, groups will adopt it better.
+      * Good timing is when the group is ready to incorporate online collaborative practice effectively. They have to feel the pain of not having the online decision-making space, and be motivated to solve that problem.
+      * Consider the group’s attention economy to determine when the right time to raise a given topic might be. Collective attention is a limited resource.
+      * Many groups are not even cognisant of their existing collaborative practice and habits, much less clear about how Loomio might fit in. Start with a discussion about the current way of doing things, and what's working or not working.
+    translation: |-
+      * Loomio-groepen hebben bijna altijd iemand die het initiatief neemt. Die persoon kent de context van de groep en beoordeelt of Loomio daarbij past.
+      * Probeer niet alles tegelijk te veranderen. Groepen nemen Loomio makkelijker in gebruik als het goed aansluit op hun bestaande werkwijze.
+      * Het juiste moment is wanneer de groep klaar is om online samen te werken. Mensen moeten merken dat zij een online ruimte voor besluitvorming missen en dat willen oplossen.
+      * Houd rekening met de beschikbare aandacht van de groep wanneer je bepaalt wanneer je een onderwerp aan de orde stelt. De gezamenlijke aandacht is beperkt.
+      * Veel groepen staan nauwelijks stil bij hoe zij nu samenwerken. Daardoor is ook niet duidelijk hoe Loomio daarbij kan passen. Begin met een discussie over de huidige werkwijze en wat wel en niet werkt.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  7bc2616a0ec0b1dc:
+    english: "## The Role of the Facilitator"
+    translation: "## De rol van de facilitator"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  c6d08854a875262a:
+    english: Good facilitation requires self-awareness on an individual and collective level. Lack of understanding of the role can lead to misunderstandings, conflict, or unsafe situations.
+    translation: Goede begeleiding vraagt dat zowel de facilitator als de groep zich bewust is van de eigen rol. Onduidelijkheid over die rol kan leiden tot misverstanden, conflicten of onveilige situaties.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  aa59e3e4d08a95b7:
+    english: "> Have the power handed over to you. When you’re invited into a new group or organization, everybody will be thinking: Who’s this joker? Why should we listen to them? Get somebody who the participants know and trust to introduce you. This builds you up in the participants' minds and helps to hand over the power over to you. — Silvia Zuur"
+    translation: "> Zorg dat iemand het vertrouwen aan je overdraagt. Als je bij een nieuwe groep of organisatie wordt uitgenodigd, zullen mensen zich afvragen: wie is die persoon en waarom zouden we luisteren? Vraag iemand die de deelnemers kennen en vertrouwen om je voor te stellen. Dat helpt hen vertrouwen in je te krijgen en geeft je de ruimte om je rol te vervullen. — Silvia Zuur"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  02d38d1def45d150:
+    english: |-
+      ### Consent
+      It’s critical that the group consents to be facilitated. Attempting to facilitate otherwise can be at worst coercive (unfair to the group) and dangerous (unfair to the facilitator) — and will face resistance and confusion. Facilitators put themselves in a vulnerable position; they must have mandate or they should not agree to engage. Consent is critical for both the facilitator and participants.
+    translation: |-
+      ### Instemming
+      Het is essentieel dat de groep instemt met de begeleiding. Zonder die instemming kan begeleiding in het ergste geval dwingend zijn voor de groep en riskant voor de facilitator. Ook kan het weerstand en verwarring oproepen. Facilitators stellen zich kwetsbaar op. Ze hebben een mandaat nodig en moeten de rol anders niet aannemen. Instemming is belangrijk voor zowel de facilitator als de deelnemers.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  a1a8c6ca89dad49a:
+    english: |-
+      ### Responsibility
+      Once a facilitator takes up a mandate, they carry enhanced responsibilities. Facilitators have more claim to floor time, and directing the group’s attention. This has to be used in service to the whole, not for a personal agenda. The words and demeanor of the facilitator will also have a disproportionate effect, meaning they have to act with heightened consideration.
+    translation: |-
+      ### Verantwoordelijkheid
+      Zodra een facilitator een mandaat aanneemt, krijgt die extra verantwoordelijkheden. Facilitators nemen vaker het woord en sturen de aandacht van de groep. Dat moeten ze doen in het belang van de hele groep, niet voor een eigen agenda. Hun woorden en houding hebben ook meer invloed. Daarom moeten ze extra zorgvuldig handelen.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  b5f6b4ebd477c97c:
+    english: |-
+      ### Power
+      Facilitation by nature introduces power differentials. If the facilitator cannot exercise power in certain ways, they cannot do their job. For example, to keep a discussion on topic the facilitator might interrupt someone, or say that a certain way of interacting is not OK. It’s not appropriate to expect a facilitator to shoulder responsibility for the experience without giving them the powers they need to deliver successfully. There is no one right answer about how much power, but it has to be balanced with the level of responsibility.
+    translation: |-
+      ### Macht
+      Begeleiding brengt van nature een verschil in zeggenschap met zich mee. Een facilitator kan het werk niet doen zonder die zeggenschap soms te gebruiken. Om een discussie bij het onderwerp te houden, kan die bijvoorbeeld iemand onderbreken of aangeven dat een bepaalde manier van omgaan met elkaar niet goed is. Je kunt een facilitator niet verantwoordelijk maken voor het verloop zonder de bevoegdheden die daarvoor nodig zijn. Hoeveel zeggenschap passend is, hangt af van de verantwoordelijkheid.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  c82df3fe42db014a:
+    english: |-
+      ### Responsiveness
+      Facilitators do their best work when they can adapt effectively to the emergent reality. Human beings are endlessly complex, and groups of them exponentially more so. Rigid adherence to a plan or protocol without flexibility can set the group up to fail. If a facilitator is not allowed or not willing to adapt to changing circumstance, they cannot effectively hold the space for dynamic humans.
+    translation: |-
+      ### Aanpassingsvermogen
+      Facilitators werken het best wanneer ze kunnen inspelen op wat er tijdens een bijeenkomst gebeurt. Mensen zijn complex, en groepen nog meer. Strikt vasthouden aan een plan of werkwijze kan de groep in de weg staan. Als een facilitator zich niet mag of wil aanpassen aan veranderende omstandigheden, kan die de groep niet goed begeleiden.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  aad36b296834ab22:
+    english: "> Wear and un-wear the facilitation-hat. A challenge many people face is trying to facilitate meetings and workshops with their own team. As a facilitator, they need to be neutral. But as a team member, they have valuable insights to share. Make it really clear when you’re a facilitator and when you’re being a participant. — Silvia Zuur"
+    translation: "> Zet je facilitatorpet op en af. Veel mensen vinden het lastig om bijeenkomsten en workshops van hun eigen team te begeleiden. Als facilitator moeten ze neutraal zijn. Als teamlid hebben ze waardevolle inzichten te delen. Maak duidelijk wanneer je de facilitator bent en wanneer je als deelnemer spreekt. — Silvia Zuur"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  85c4fcf7a6e72361:
+    english: |-
+      * Many groups using Loomio are experienced with facilitation and already have a shared understanding of the role. They already adapt the tool to meet these needs with some success.
+      * Often the person who starts a discussion is assumed to be facilitating it, barring another agreed understanding in the group. Clarity about who is facilitating can greatly enhance mutual safety and success.
+      * Loomio naturally creates a dynamic and open to distributed acts of facilitation, such as users tagging in others, requests to stay on topic, suggestions of the right timing for a proposal, etc — but this is often left implicit. Explicitly naming what acts of facilitation are and discussing whether this role is centralised or distributed can clarify the role.
+      * Implicit distributed facilitation can be the default starting place for an online group (ie, no discussion of facilitation as a named role), but that setup is actually best for advanced groups prgressing past working with explicit facilitation.
+    translation: |-
+      * Veel groepen die Loomio gebruiken, hebben ervaring met begeleiding en delen al een beeld van de rol van de facilitator. Zij passen Loomio aan hun behoeften aan.
+      * Vaak gaan mensen ervan uit dat degene die een discussie start, deze ook begeleidt, tenzij de groep iets anders heeft afgesproken. Duidelijkheid over wie de discussie begeleidt, helpt mensen zich veilig te voelen en goed samen te werken.
+      * Loomio maakt het makkelijk om de begeleiding te verdelen. Mensen kunnen anderen vermelden, vragen om bij het onderwerp te blijven of een goed moment voor een voorstel suggereren. Vaak blijft onuitgesproken dat dit vormen van begeleiding zijn. Benoem deze handelingen en bespreek of één persoon de rol heeft of dat de groep haar verdeelt.
+      * Een online groep kan beginnen zonder iemand expliciet als facilitator aan te wijzen. Die impliciete verdeling werkt echter het best voor ervaren groepen die eerder met expliciete begeleiding hebben gewerkt.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'

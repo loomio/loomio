@@ -1,0 +1,99 @@
+---
+navigation_title: Sondeos
+blocks:
+  800f4167b38b4715:
+    english: "# Polls"
+    translation: "# Sondeos"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  d370759001be4e21:
+    english: Polls collect selections, scores, allocations, rankings, availability, or election ballots. Choose the voting method based on what participants need to express and how you intend to use the result. Use a [Proposal](/en/user_manual/polls/proposals/) when people need to respond to a statement or course of action.
+    translation: Los sondeos permiten recopilar selecciones, puntuaciones, distribuciones de puntos, preferencias ordenadas, disponibilidad o votos en elecciones. Elige el método de votación según lo que necesiten expresar las personas participantes y cómo vayas a usar el resultado. Usa una [propuesta](/en/user_manual/polls/proposals/) cuando las personas deban responder a una afirmación o un plan de acción.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  1132ff680c7b2562:
+    english: "## Simple poll"
+    translation: "## Sondeo simple"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  6b957bf5630c1470:
+    english: "[Choose](/en/user_manual/polls/choose/) lets participants select one or more options. Use it to find the most popular option or make a shortlist."
+    translation: "[Elegir](/en/user_manual/polls/choose/) permite seleccionar una o varias opciones. Úsalo para encontrar la opción más popular o preparar una lista de opciones finalistas."
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  c982974685e1b5d6:
+    english: "## Score poll"
+    translation: "## Encuesta de puntuación"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  fbbfe14196388606:
+    english: "[Score](/en/user_manual/polls/score/) lets participants rate every option on the same scale. Use it to compare the strength of support, readiness, suitability, or importance across options."
+    translation: "[Puntuación](/en/user_manual/polls/score/) permite valorar cada opción con la misma escala. Úsala para comparar el grado de apoyo, preparación, idoneidad o importancia de las opciones."
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  0465fcb48a56ca78:
+    english: "## Dot vote"
+    translation: "## Votación por puntos"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  ffb7d1711a5fca3b:
+    english: "[Allocate](/en/user_manual/polls/allocate/) gives each participant a fixed budget of points to distribute. Use it to identify priorities when choosing one thing means giving less attention or resources to another."
+    translation: "[Distribuir](/en/user_manual/polls/allocate/) da a cada participante un número fijo de puntos para repartir. Úsalo para identificar prioridades cuando dedicar recursos o atención a una opción implica dedicar menos a otra."
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  a1b15c28fbe526f6:
+    english: "## Ranked choice"
+    translation: "## Elección clasificada"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  8811f455b7ab3821:
+    english: "[Rank](/en/user_manual/polls/rank/) lets participants arrange options in order of preference. Use it to find the group's overall preferred order or select one leading option."
+    translation: "[Ordenar](/en/user_manual/polls/rank/) permite ordenar las opciones por preferencia. Úsalo para conocer el orden de preferencia del grupo o elegir la opción mejor situada."
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  2e21bb1b54b6fcf9:
+    english: "## Time poll"
+    translation: "## Coordinación de horario"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  fb768f07eb0d1971:
+    english: "[Time poll](/en/user_manual/polls/meeting_polls/) lets participants indicate when they are available. Use it to schedule a meeting or event across time zones."
+    translation: "[Coordinación de horario](/en/user_manual/polls/meeting_polls/) permite indicar cuándo está disponible cada participante. Úsala para programar una reunión o un evento entre distintas zonas horarias."
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  6333ad0ee6d54609:
+    english: "## STV Election"
+    translation: "## Elecciones STV"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  6f93c6ad598d809c:
+    english: "[STV Elections](/en/user_manual/polls/stv/) let participants rank candidates in a proportional, multi-winner election. Use STV to elect a committee, board, or group of delegates."
+    translation: "[Elecciones STV](/en/user_manual/polls/stv/) permite ordenar candidaturas por preferencia en una elección proporcional con varios puestos. Usa STV para elegir un comité, una junta o un grupo de representantes."
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  6752a750a7703b58:
+    english: "## Other specialized method"
+    translation: "## Otro método especializado"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  '099449b0e1fe4f85':
+    english: Loomio also includes a Question round for collecting questions without voting. Group administrators can make it available from [Poll templates](/en/user_manual/polls/poll_templates/).
+    translation: Loomio también incluye una ronda de preguntas para recopilar preguntas sin votar. Quienes administran el grupo pueden activarla desde [Plantillas de sondeo](/en/user_manual/polls/poll_templates/).
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'

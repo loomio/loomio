@@ -1,0 +1,371 @@
+---
+navigation_title: Opmaak
+blocks:
+  0cff8e965b2d4bd5:
+    english: "# Formatting"
+    translation: "# Opmaak"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  7bda51ac3285357f:
+    english: When starting or editing a discussion or poll, or writing a comment, you will see a formatting bar below the text field. Select the arrow at the end of the bar to show or hide the full set of tools.
+    translation: Als je een discussie of peiling begint of bewerkt, of een reactie schrijft, zie je onder het tekstveld een opmaakbalk. Selecteer de pijl aan het einde van de balk om alle hulpmiddelen te tonen of te verbergen.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  2f2944ad10684b7f:
+    english: Hover the mouse or cursor over each item for the name of each tool.
+    translation: Beweeg de muisaanwijzer over een onderdeel om de naam van het hulpmiddel te zien.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  5f45a085deb9eff1:
+    english: Use formatting to add structure and emphasis so information is easier to scan.
+    translation: Gebruik opmaak om structuur en nadruk aan te brengen, zodat informatie makkelijker te scannen is.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  9b542fd6dda53639:
+    english: "## Attach file"
+    translation: "## Bestand bijvoegen"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  d633f08de5eb744d:
+    english: Use the paper clip icon, just below the text form, to add file attachments from your computer.
+    translation: Gebruik het paperclippictogram onder het tekstveld om bestanden vanaf je computer bij te voegen.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  1860ade9942c32a1:
+    english: "### Remove attachments"
+    translation: "### Bijlagen verwijderen"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  ebc91823518309fd:
+    english: While editing the context, click the **X** to the right of the file name to remove it.
+    translation: Klik tijdens het bewerken van de context op de **X** rechts van de bestandsnaam om de bijlage te verwijderen.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  b51c6da343bd6389:
+    english: "## Insert image"
+    translation: "## Afbeelding invoegen"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  b788d43f7bc630ec:
+    english: Use this tool to insert and display an image.
+    translation: Gebruik dit hulpmiddel om een afbeelding in te voegen en weer te geven.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  e23dd94c965ae06c:
+    english: Select an image file from your computer. The image is inserted into the editor after it uploads.
+    translation: Selecteer een afbeeldingsbestand op je computer. Na het uploaden verschijnt de afbeelding in de editor.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  f8a47428252034cf:
+    english: The image is displayed within the published discussion, poll or comment.
+    translation: De afbeelding verschijnt in de gepubliceerde discussie, peiling of reactie.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  0fe125855fce8e52:
+    english: |-
+      >[!Tip]
+      >You can also copy/paste an image directly into Loomio.
+    translation: |-
+      >[!Tip]
+      >Je kunt een afbeelding ook rechtstreeks in Loomio kopiëren en plakken.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  b631d0ab368ebfb0:
+    english: "## Insert link"
+    translation: "## Link invoegen"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  909769fda18f0ec6:
+    english: 'You can add a link to any shareable document or page on the internet.  '
+    translation: Je kunt een link toevoegen naar elk deelbaar document of elke pagina op internet.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  e034be8c0fbe76db:
+    english: 'To add a link:'
+    translation: 'Zo voeg je een link toe:'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  dcf90e79aba1a2f9:
+    english: |-
+      1. Select the text you want to link to - say the name of a document.
+      2. Click the link icon.
+      3. Paste the address into the **Insert link** field and select **Apply**.
+    translation: |-
+      1. Selecteer de tekst waarvan je een link wilt maken, bijvoorbeeld de naam van een document.
+      2. Klik op het linkpictogram.
+      3. Plak het adres in het veld **Link invoegen** en selecteer **Toepassen**.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  40ecf7d0c79432b2:
+    english: For a document hosted elsewhere, check its sharing permissions so discussion participants can open it.
+    translation: Controleer bij een document dat elders is opgeslagen de deelrechten, zodat deelnemers aan de discussie het kunnen openen.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  3f1824fc07dded13:
+    english: A preview of the doc will appear under the text space. You can remove this if you want.
+    translation: Onder het tekstveld verschijnt een voorbeeld van het document. Je kunt dit verwijderen als je wilt.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  c6061aa7deff27ac:
+    english: Now, anyone with access to your Loomio discussion and permission to view the doc can open and read it.
+    translation: Iedereen die toegang heeft tot jouw Loomio-discussie en het document mag bekijken, kan het nu openen en lezen.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  c7643aa641977dea:
+    english: "## Insert Emoji"
+    translation: "## Emoji invoegen"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  b4f97f2939fd2d8c:
+    english: Select the smiley button and choose an emoji from the picker.
+    translation: Selecteer de knop met de smiley en kies een emoji.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  f207ce88babd4532:
+    english: "## Headings"
+    translation: "## Koppen"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  e2e647ef2e3ac736:
+    english: Heading 1, Heading 2 and Heading 3 can help structure a discussion or comment.
+    translation: Met Kop 1, Kop 2 en Kop 3 kun je een discussie of reactie indelen.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  6c3f52329a8b49b5:
+    english: Select the text to mark as a heading and click on the heading format tool.
+    translation: Selecteer de tekst die je als kop wilt opmaken en klik op het hulpmiddel voor koppen.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  27a816f8cd10cd75:
+    english: If a heading is used in a comment, the comment will automatically be pinned to the discussion timeline.
+    translation: Als je een kop in een reactie gebruikt, wordt die reactie automatisch vastgezet op de tijdlijn van de discussie.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  8adf1a168d32f042:
+    english: "## Bold, Italicize, Strikethrough"
+    translation: "## Vet, cursief, doorhalen"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  c9b191938d57a135:
+    english: Select the text to format and click on the required format tool.
+    translation: Selecteer de tekst die je wilt opmaken en klik op het bijbehorende opmaakhulpmiddel.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  eb63f5ddcbf20776:
+    english: "## List"
+    translation: "## Lijst"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  b91af8d6ee713dca:
+    english: Use **List** to format items as bullet points.
+    translation: Gebruik **Lijst** om items als opsomming weer te geven.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  64fab26284d5610a:
+    english: "## Numbered list"
+    translation: "## Genummerde lijst"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  '082bc75c625ebbaf':
+    english: Use **Numbered list** when the order of items matters.
+    translation: Gebruik **Genummerde lijst** als de volgorde van de items belangrijk is.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  30f12f3f5c0a24be:
+    english: "## Task list"
+    translation: "## Takenlijst"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  b7e072e37bdc12c0:
+    english: Use **Task list** to add checkboxes. After posting the list, tasks can be assigned to someone and given a due date.
+    translation: Gebruik **Takenlijst** om selectievakjes toe te voegen. Nadat je de lijst hebt geplaatst, kun je taken aan iemand toewijzen en een einddatum instellen.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  74542f03c2aabd7f:
+    english: See the page on [Tasks](/en/user_manual/discussions/tasks/) for more information.
+    translation: Lees de pagina over [Taken](/en/user_manual/discussions/tasks/) voor meer informatie.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  15a3834a24e7a429:
+    english: "## Colors"
+    translation: "## Kleuren"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  d578168b29cd5bc5:
+    english: Use **Colors** to add a highlight colour to selected text.
+    translation: Gebruik **Kleuren** om geselecteerde tekst een markeringskleur te geven.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  8294131df813b9ea:
+    english: "## Align"
+    translation: "## Uitlijnen"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  58631363b7614205:
+    english: Select to align text to left, center or right.
+    translation: Selecteer een optie om tekst links, in het midden of rechts uit te lijnen.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  2babc8a3fb1ee4b6:
+    english: "## Embed videos and webpages"
+    translation: "## Video's en webpagina's integreren"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  5bbdda88f99ea68d:
+    english: You can embed supported videos and webpages anywhere there is a formatting toolbar.
+    translation: Je kunt ondersteunde video's en webpagina's insluiten waar een opmaakbalk beschikbaar is.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  2e7e0de5ed62913d:
+    english: "To use the embed video feature: \n1. Copy the address of the video or webpage.\n2. Select **Embed video**, paste the address and select **Apply**."
+    translation: "Zo sluit je een video of webpagina in: \n1. Kopieer het adres van de video of webpagina.\n2. Selecteer **Video integreren**, plak het adres en selecteer **Toepassen**."
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  41dcefa30819a0ae:
+    english: <iframe width="100%" height="380px" src="https://www.youtube-nocookie.com/embed/AJnjTd9u4zg" frameborder="0" allowfullscreen></iframe>
+    translation: <iframe width="100%" height="380px" src="https://www.youtube-nocookie.com/embed/AJnjTd9u4zg" frameborder="0" allowfullscreen></iframe>
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  13808447963b2a92:
+    english: |-
+      >[!Tip]
+      >Make sure the video can be accessed by everyone who can participate in the discussion. For example, an unlisted video may be suitable when it should not appear in public search results.
+    translation: |-
+      >[!Tip]
+      >Zorg dat iedereen die aan de discussie kan deelnemen de video kan bekijken. Een verborgen video kan bijvoorbeeld geschikt zijn als deze niet in openbare zoekresultaten mag verschijnen.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  a54e9b54ec9d054a:
+    english: "## Quote"
+    translation: "## Citaat"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  cde3af7721527f7f:
+    english: Quote adds emphasis to your text, and can be useful to draw attention to an instruction.
+    translation: Met een citaat kun je tekst benadrukken, bijvoorbeeld om de aandacht op een instructie te vestigen.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  53156f370d2f19d6:
+    english: "## Code block"
+    translation: "## Codeblok"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  4199778c2a4ddc86:
+    english: Typically used to show code in text, code block formatting is also available to help you distinguish text in your discussion.
+    translation: Een codeblok wordt meestal gebruikt om code weer te geven. Je kunt het ook gebruiken om tekst in jouw discussie te onderscheiden.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  '4150439725516186':
+    english: "## Divider"
+    translation: "## Scheidingslijn"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  7075717b6ffdba08:
+    english: Use the divider to draw a horizontal line to separate sections.
+    translation: Gebruik een scheidingslijn om delen van de tekst van elkaar te scheiden.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  66ca2e9ae98b0ca2:
+    english: "## Add table"
+    translation: "## Tabel toevoegen"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  7f93fecdf2cad04f:
+    english: 'Add a table to your discussion. '
+    translation: Voeg een tabel toe aan jouw discussie.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  1b8a068ce391ceac:
+    english: Additional tools are available to add/remove columns and rows.
+    translation: Met extra hulpmiddelen kun je kolommen en rijen toevoegen of verwijderen.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  236df5c508db1f3e:
+    english: "## Markdown"
+    translation: "## Markdown"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  bd726f6299d5f52e:
+    english: To switch to Markdown editing, select **Edit Markdown**.
+    translation: Selecteer **Markdown bewerken** om over te schakelen naar Markdown.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  278b073701473e94:
+    english: If you click this while there is text in the form, some formatting may be lost upon conversion.
+    translation: Als er al tekst in het veld staat, kan bij het omzetten een deel van de opmaak verloren gaan.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  c27e00bd5c98ccb1:
+    english: "### Rich text"
+    translation: "### Opgemaakte tekst"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  ef2b52204ab83521:
+    english: Select **Edit rich text** to return to the formatting tools. This converts supported Markdown into its displayed form.
+    translation: Selecteer **Opgemaakte tekst bewerken** om terug te gaan naar de opmaakhulpmiddelen. Ondersteunde Markdown wordt dan omgezet naar de opgemaakte weergave.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  164de50b8b1e4081:
+    english: "**Preview** shows how Markdown will appear when posted without converting it."
+    translation: "**Voorbeeld** laat zien hoe Markdown eruitziet na plaatsing, zonder de tekst om te zetten."
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'

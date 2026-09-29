@@ -1,0 +1,157 @@
+---
+navigation_title: Seu perfil
+blocks:
+  7ac59f9506d9a9e9:
+    english: "# Your Profile\nYour Loomio user profile is how people recognize you.  "
+    translation: |-
+      # Seu perfil
+      Seu perfil de usuário no Loomio é como as pessoas reconhecem você.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  f77b75330707f9a4:
+    english: Being able to recognize people in Loomio helps build trust and authenticity, encouraging more genuine participation.  So wherever possible we encourage you to be you, and to add a photo or avatar.
+    translation: Reconhecer as pessoas no Loomio ajuda a criar confiança e incentiva uma participação mais autêntica. Por isso, sempre que possível, use seu nome e adicione uma foto ou avatar.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  e902d9db69f3ccaa:
+    english: "## Edit profile"
+    translation: "## Editar perfil"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  f48def44ceb36407:
+    english: 'Your profile page lets you customize your Loomio identity. To visit your profile page select the **Edit profile** option in the user menu, which is found by clicking on your name at the top of the sidebar. '
+    translation: Na página do seu perfil, você pode personalizar sua identidade no Loomio. Para acessá-la, selecione **Editar perfil** no menu do usuário. Para abrir esse menu, clique no seu nome na parte superior da barra lateral.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  456daa472d672b1f:
+    english: If the sidebar is closed, click on the menu icon (**☰**) to open it.
+    translation: Se a barra lateral estiver fechada, clique no ícone de menu (**☰**) para abri-la.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  7b920b3794ac1be0:
+    english: Click on the down arrow to the right of your name.
+    translation: Clique na seta para baixo à direita do seu nome.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  9664aeb8784b2137:
+    english: Click on **Edit profile**
+    translation: Clique em **Editar perfil**
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  e98e7384d147ec31:
+    english: "## Update your personal info"
+    translation: "## Atualizar suas informações pessoais"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  9578a723a8d322cc:
+    english: 'You can update your personal info by changing any of the following fields:'
+    translation: 'Você pode atualizar suas informações pessoais alterando qualquer um destes campos:'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  cc28d4b1038e6fe5:
+    english: |-
+      * **Name**
+      * **Email address** - this is the email address associated with your Loomio account, and where you will receive notifications from Loomio.
+      * **Username** - your username is a name people can recognize and alert you using @mention. It can contain lower case letters, numbers, underscores, and internal hyphens.
+      * **Introduction** - a few lines to tell others in your group something about you.
+      * **Location** - useful for distributed or remote groups so people can get an idea of where you are located.
+    translation: |-
+      * **Nome**
+      * **Endereço de e-mail** - é o endereço associado à sua conta no Loomio, no qual você receberá as notificações.
+      * **Nome de usuário** - é o nome pelo qual as pessoas podem reconhecer você e chamar sua atenção com uma @menção. Pode conter letras minúsculas, números, sublinhados e hífens entre caracteres.
+      * **Apresentação** - algumas linhas para contar às pessoas do seu grupo um pouco sobre você.
+      * **Localização** - ajuda as pessoas de grupos distribuídos ou remotos a saber onde você está.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  d64106bb76c8936e:
+    english: "## Viewing another person's profile"
+    translation: "## Ver o perfil de outra pessoa"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  fa6b7c980bad9aeb:
+    english: Select a person's name or avatar to open their profile. Their recent discussions, comments, and polls are listed alongside their profile details and groups. The list only includes activity you have permission to access; signed-out visitors see public activity only.
+    translation: Selecione o nome ou o avatar de uma pessoa para abrir o perfil dela. As discussões, os comentários e as enquetes recentes aparecem junto com os dados do perfil e os grupos. A lista mostra apenas as atividades que você tem permissão para acessar. Quem não estiver conectado verá apenas as atividades públicas.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  ac9abf23a4881216:
+    english: "## Uploading a profile photo\nWhen you first create a Loomio account, your initials will be the default image associated with your profile. You can upload a profile photo by clicking on your picture on the profile page. "
+    translation: |-
+      ## Adicionar uma foto ao perfil
+      Quando você cria uma conta no Loomio, suas iniciais são a imagem padrão do perfil. Para adicionar uma foto, clique na imagem do seu perfil na página do perfil.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  b011f45bc197558a:
+    english: If you have a [Gravatar](https://en.gravatar.com/) you can set that as your profile picture by selecting **Use Gravatar**. You can also choose for Loomio to use the photo you use for other common platforms/tools.
+    translation: Se você tiver um [Gravatar](https://en.gravatar.com/), poderá usá-lo como imagem do perfil selecionando **Use Gravatar**. Você também pode escolher uma foto que usa em outras plataformas ou ferramentas.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  41f1c139f9a0822b:
+    english: |-
+      ## Language settings
+      Loomio is developed in English, but [is translated by volunteers into many languages](https://www.loomio.com/g/cpaM3Hsv/loomio-community-translation).
+    translation: |-
+      ## Configurações de idioma
+      O Loomio é desenvolvido em inglês, mas [voluntários o traduzem para muitos idiomas](https://www.loomio.com/g/cpaM3Hsv/loomio-community-translation).
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  9faad78d2b46c546:
+    english: Loomio will detect your browser’s language settings, but you can manually set your preferred language from the available options on the profile page.
+    translation: O Loomio detecta o idioma configurado no seu navegador. Você também pode escolher seu idioma entre as opções disponíveis na página do perfil.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  a224dd4aaaf81381:
+    english: |-
+      ## Resetting your password
+      You can change your password by visiting your profile page and clicking **Reset Password**.
+    translation: |-
+      ## Redefinir sua senha
+      Para alterar sua senha, acesse a página do seu perfil e clique em **Redefinir senha**.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  5bfa3cd39abcafba:
+    english: "## Merge accounts"
+    translation: "## Mesclar contas"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  2e3c544b479874d5:
+    english: If you have two Loomio user accounts, you can merge them into a single account.
+    translation: Se você tiver duas contas de usuário no Loomio, poderá mesclá-las em uma só.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  26fec713318a68fc:
+    english: See [Merge Accounts](../merge_accounts).
+    translation: Consulte [Mesclar contas](../merge_accounts).
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  a12633b5bfa58576:
+    english: "## Deleting your account"
+    translation: "## Excluir sua conta"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  544b974bf2c6bdfa:
+    english: If you wish to delete your Loomio user account and leave any Loomio groups you are a member of, see [Deleting Your Loomio Account](../deleting_your_account).
+    translation: Se você quiser excluir sua conta de usuário no Loomio e sair dos grupos dos quais é membro, consulte [Excluir sua conta do Loomio](../deleting_your_account).
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'

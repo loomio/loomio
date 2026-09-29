@@ -1,0 +1,105 @@
+---
+navigation_title: Quorum
+blocks:
+  '038bd6f53f9e8861':
+    english: "# Quorum"
+    translation: "# Quorum"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  a79abb23e8e1c82f:
+    english: A quorum is the minimum percentage of eligible voters who must participate for a poll to be valid. Use it when your governance process requires a particular level of participation.
+    translation: Le quorum est le pourcentage minimum de personnes habilitées à voter qui doivent participer pour qu’un sondage soit valide. Utilisez-le lorsque votre processus de décision exige un certain niveau de participation.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  d83e75068f697f6f:
+    english: When creating a poll, open **More settings** and enter the required percentage in **Participation quorum**. Leave the field blank when no quorum is required.
+    translation: Lors de la création d’un sondage, ouvrez **Plus de paramètres** et saisissez le pourcentage requis dans **Quorum de participation**. Laissez le champ vide si aucun quorum n’est requis.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  a04b99724fe62a56:
+    english: "![The Quorum setting with a 60 percent participation quorum](./quorum-section.png)"
+    translation: "![Le paramètre de quorum avec un quorum de participation de 60 %](./quorum-section.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  432f570094ad5b24:
+    english: You can also set a quorum in a [poll template](/en/user_manual/polls/poll_templates/) so that polls created from that template use it by default.
+    translation: Vous pouvez aussi définir un quorum dans un [modèle de sondage](/en/user_manual/polls/poll_templates/). Les sondages créés à partir de ce modèle l’utiliseront par défaut.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  52841ec4c6253973:
+    english: "## Example scenario"
+    translation: "## Exemple"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  96ded9027f394b57:
+    english: Oatmilk Cooperative is discussing a six-week returnable bottle trial. The discussion has reached the point where the cooperative needs to approve the trial budget.
+    translation: La coopérative Oatmilk discute d’un essai de six semaines avec des bouteilles consignées. Elle doit maintenant approuver le budget de cet essai.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  7acd5f99c209cec0:
+    english: Jamie selects **Start a vote**, chooses the **Consent** proposal template, and completes the title, details, options, duration, and voter settings.
+    translation: Jamie sélectionne **Lancer un vote**, choisit le modèle de proposition **Consentement**, puis renseigne le titre, les détails, les options, la durée et les paramètres des personnes autorisées à voter.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  c5bd111a40bc588f:
+    english: "![The proposal title, details, options, duration, and voter settings](proposal-options.png)"
+    translation: "![Le titre, les détails, les options, la durée et les paramètres des personnes autorisées à voter pour la proposition](proposal-options.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  7ba26dd025983d8d:
+    english: Jamie limits the vote to the five people responsible for the trial budget.
+    translation: Jamie limite le vote aux cinq personnes responsables du budget de l’essai.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  ef25fbaed498cfbe:
+    english: The cooperative requires 60 percent participation for significant decisions, so Jamie enters **60** in the participation quorum field and starts the proposal.
+    translation: La coopérative exige une participation de 60 % pour les décisions importantes. Jamie saisit donc **60** dans le champ du quorum de participation et lance la proposition.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  b1cd37eb5ed44589:
+    english: Before anyone votes, the results panel shows that the quorum has not been reached.
+    translation: Avant le premier vote, le panneau des résultats indique que le quorum n’est pas atteint.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  1b8a41f8c5939665:
+    english: "![No votes cast and the 60 percent quorum not yet reached](pie-chart-0.png)"
+    translation: "![Aucun vote exprimé et le quorum de 60 % pas encore atteint](pie-chart-0.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  ff36e799ac095caf:
+    english: Jamie agrees and Samira disagrees. The chart updates, but two of five eligible voters is only 40 percent participation, so the quorum is still not reached.
+    translation: Jamie est d’accord et Samira n’est pas d’accord. Le graphique se met à jour, mais deux personnes sur cinq ne représentent que 40 % de participation. Le quorum n’est donc toujours pas atteint.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  7ad216922d5d4dcb:
+    english: "![Two of five votes cast and the quorum not yet reached](pie-chart-40.png)"
+    translation: "![Deux votes sur cinq exprimés et le quorum pas encore atteint](pie-chart-40.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  554dc5536fdb1a60:
+    english: Alex then agrees. Three of five eligible voters have participated, reaching the 60 percent quorum. The requirement now shows a green check mark. Jamie can close the poll early or wait for the remaining voters.
+    translation: 'Alex vote ensuite pour. Trois des cinq personnes habilitées à voter ont participé : le quorum de 60 % est atteint. Une coche verte indique désormais que cette condition est remplie. Jamie peut fermer le sondage avant son échéance ou attendre les derniers votes.'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  e792db36d3223ce3:
+    english: "![Three of five votes cast and the 60 percent quorum reached](pie-chart-60.png)"
+    translation: "![Trois votes sur cinq exprimés et le quorum de 60 % atteint](pie-chart-60.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'

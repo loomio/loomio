@@ -1,0 +1,167 @@
+---
+navigation_title: Keskustelut
+blocks:
+  f087c06a5f4ab2e6:
+    english: "# Intro to Discussions"
+    translation: "# Johdanto keskusteluihin"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  f515c87a8d1d20c7:
+    english: Loomio discussions are where you can share information, discuss topics, and make decisions with your group.  People participate by posting comments and replies.
+    translation: Loomion keskusteluissa voit jakaa tietoa, käsitellä aiheita ja tehdä päätöksiä ryhmäsi kanssa. Ihmiset osallistuvat kirjoittamalla kommentteja ja vastauksia.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  eede89b6ce4f357d:
+    english: |-
+      - All info about a topic is in one easily accessible place.
+      - People can reply via email and their comments appear in the discussion.
+      - You can see who has read the discussion and who needs a nudge.
+      - There is a record of discussion you can easily find again.
+    translation: |-
+      - Kaikki aiheeseen liittyvä tieto on yhdessä paikassa, josta se on helppo löytää.
+      - Ihmiset voivat vastata sähköpostitse, ja heidän kommenttinsa näkyvät keskustelussa.
+      - Näet, ketkä ovat lukeneet keskustelun ja keitä kannattaa muistuttaa.
+      - Keskustelusta jää tallenne, jonka löydät helposti myöhemmin.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  9cb2eb404b59208b:
+    english: Discussions have a wide range of uses - from a general discussion forum to running specific work-flow and decision-making processes.
+    translation: 'Keskusteluja voi käyttää monin tavoin: yleisenä keskustelufoorumina tai tiettyjen työ- ja päätöksentekoprosessien tukena.'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  87a95605052570ca:
+    english: For example, you may frame a discussion on a particular topic, invite people to contribute their thoughts and share information, and facilitate progress towards an agreed outcome.
+    translation: Voit esimerkiksi aloittaa keskustelun tietystä aiheesta, kutsua ihmisiä jakamaan ajatuksiaan ja tietoa sekä auttaa ryhmää etenemään kohti yhteistä päätöstä.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  ce6e6734c595d968:
+    english: Or you may invite people to participate in a particular decision, using a consent or advice decision-making process.
+    translation: Voit myös kutsua ihmisiä osallistumaan tiettyyn päätökseen esimerkiksi suostumukseen tai neuvojen pyytämiseen perustuvalla päätöksentekotavalla.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  7fa58cb3ba95be0b:
+    english: Discussions can also contain polls and proposals to help progress a discussion to an outcome. As people comment in the discussion and vote in polls, a discussion timeline builds so you can easily find key milestones.
+    translation: Keskusteluun voi lisätä kyselyitä ja ehdotuksia, jotka auttavat etenemään kohti päätöstä. Kun ihmiset kommentoivat ja äänestävät kyselyissä, keskustelulle muodostuu aikajana, jolta löydät helposti tärkeät vaiheet.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  388e829e86a99bd8:
+    english: "![The Returnable bottles for cafe customers discussion, with a comment and a proposal](discussion-example.png)"
+    translation: "![Keskustelu kahvila-asiakkaiden palautuspulloista sekä kommentti ja ehdotus](discussion-example.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  6b0556376d31b63e:
+    english: "## Common uses"
+    translation: "## Tavallisia käyttötapoja"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  cf4344b3f2a3b7e9:
+    english: 'Here are some common uses of discussions:'
+    translation: 'Tässä on tavallisia tapoja käyttää keskusteluja:'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  '0479bd2337b02443':
+    english: "### Boards and Governance"
+    translation: "### Hallitustyö ja päätöksenteko"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  5b0a3e2c653d47f8:
+    english: "**Prepare for a meeting** - Build an agenda, post board papers and organize administrative matters so everyone is up to date, in context and prepared. "
+    translation: "**Valmistaudu tapaamiseen** - Laadi esityslista, jaa hallituksen asiakirjat ja hoida käytännön järjestelyt, jotta kaikilla on tarvittavat tiedot ennen tapaamista."
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  5c1c6aa79c3556dc:
+    english: "**Pass a resolution** - Post context and background information, respond to questions and raise a proposal to pass a resolution. "
+    translation: "**Anna päätös** - Jaa taustatiedot, vastaa kysymyksiin ja tee ehdotus päätöksen hyväksymiseksi."
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  07ae9c6a1f0a32d0:
+    english: "**Discuss an agenda item on Loomio** - Start discussion about an agenda item prior to your meeting. Or, if you run out of time in the meeting, move the discussion on to Loomio."
+    translation: "**Keskustele esityslistan kohdasta Loomiossa** - Aloita keskustelu esityslistan kohdasta ennen tapaamista. Jos aika loppuu tapaamisessa, jatka keskustelua Loomiossa."
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  f0b0de7094b1cfc9:
+    english: "**Approve minutes and track actions** - Post minutes and assign actions. Use a poll to approve minutes. "
+    translation: "**Hyväksy pöytäkirja ja seuraa tehtäviä** - Jaa pöytäkirja ja jaa tehtävät. Hyväksy pöytäkirja kyselyn avulla."
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  ba7cf177191baadb:
+    english: "### Member participation"
+    translation: "### Jäsenten osallistuminen"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  3cf51f837c0a3e9f:
+    english: "**Share news (replace mailing list)** - Post information for members, invite comments."
+    translation: "**Jaa uutisia (sähköpostilistan sijaan)** - Jaa tietoa jäsenille ja kutsu heitä kommentoimaan."
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  d2cd391b61042129:
+    english: "**Organize an event** - Work with your organizing team on details. Keep all discussion and info within the thread. Then announce the event to wider membership."
+    translation: "**Järjestä tapahtuma** - Suunnittele yksityiskohdat järjestäjäryhmän kanssa. Pidä kaikki keskustelu ja tieto samassa keskusteluketjussa. Ilmoita sitten tapahtumasta muille jäsenille."
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  cf59a44a8643cc96:
+    english: "**Develop a policy** - Post a policy draft, seek member feedback and input, finalize and ratify the policy."
+    translation: "**Laadi toimintaperiaate** - Jaa luonnos, pyydä jäseniltä palautetta ja ehdotuksia sekä viimeistele ja hyväksy toimintaperiaate."
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  6ddec467576426ca:
+    english: "**General Assembly** - Organize, prepare and run a formal meeting including all members, to deliberate and make decisions on strategic matters."
+    translation: "**Yleiskokous** - Järjestä ja valmistele virallinen kokous kaikille jäsenille. Kokouksessa voidaan käsitellä strategisia asioita ja tehdä niistä päätöksiä."
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  8d32bb446c4ca025:
+    english: "### Self-organizing working teams"
+    translation: "### Itseorganisoituvat työryhmät"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  87ab6b2d51a7c1b6:
+    english: "**Share information** - Post information and reports of interest to your team, invite comment and discussion."
+    translation: "**Jaa tietoa** - Jaa ryhmääsi kiinnostavaa tietoa ja raportteja sekä kutsu muita kommentoimaan ja keskustelemaan."
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  e93205aa183cd1e0:
+    english: "**Progress work** - Outline a work task and seek advice, input and feedback from team members through to completion."
+    translation: "**Edistä työtä** - Kuvaa tehtävä ja pyydä työryhmän jäseniltä neuvoja, ehdotuksia ja palautetta työn valmistumiseen asti."
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  1ddaef5d44653691:
+    english: "**Meeting notes and actions** - Post meeting notes as a record of discussion, and follow up on tasks. "
+    translation: "**Kokousmuistiinpanot ja tehtävät** - Jaa kokousmuistiinpanot keskustelun tallenteeksi ja seuraa tehtävien etenemistä."
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  8ce9169d72c90788:
+    english: "**Explore ideas** - Share thoughts and invite discussion about a concern you notice, or an improvement that can be made."
+    translation: "**Tutki ideoita** - Jaa ajatuksiasi ja kutsu muita keskustelemaan havaitsemastasi ongelmasta tai mahdollisesta parannuksesta."
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  a06e734e86f07828:
+    english: "**Advice, Consent and Generative decision making** - Prepare, propose, clarify, respond to reactions and objections, agree and implement - all within a Loomio discussion."
+    translation: "**Neuvoihin, suostumukseen ja yhteiseen kehittelyyn perustuva päätöksenteko** - Valmistele, tee ehdotus, selvennä, vastaa reaktioihin ja vastalauseisiin, sovi ja toteuta päätös Loomion keskustelussa."
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'

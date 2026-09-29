@@ -1,0 +1,93 @@
+---
+navigation_title: Je groep verwijderen
+blocks:
+  6e0bf431fbefa0d3:
+    english: "# Deleting your group"
+    translation: "# Je groep verwijderen"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  f8e8d1ee802cae90:
+    english: 'Deleting your Loomio group initiates a process to permanently delete all group data. '
+    translation: Als je je Loomio-groep verwijdert, begint het proces om alle groepsgegevens definitief te verwijderen.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  214aa96eca0b90ca:
+    english: If there is any data you wish to retain, make sure you [export group data](/en/user_manual/groups/data_export/) and manually download any important files you have uploaded before you continue.
+    translation: Wil je gegevens bewaren? [Exporteer dan de groepsgegevens](/en/user_manual/groups/data_export/) en download belangrijke bestanden die je hebt geüpload voordat je verdergaat.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  181fecc458dcc49d:
+    english: Open the group drop down menu by clicking on the three dots, and select the **Delete group** option to remove access to the group and to initiate deletion of all group data from our records. You must be an admin to delete a group.
+    translation: Open het groepsmenu door op de drie puntjes te klikken en kies **Groep verwijderen**. Daarmee wordt de toegang tot de groep beëindigd en begint het proces om alle groepsgegevens uit onze administratie te verwijderen. Je moet beheerder zijn om een groep te verwijderen.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  f5178957964c2bc0:
+    english: When you delete a group, it is removed from view immediately and will be permanently deleted after 90 days. You and group members immediately lose access to the group. If a mistake was made, contact us within 90 days of deleting your group to request restoration.
+    translation: Wanneer je een groep verwijdert, verdwijnt deze meteen uit beeld. Na 90 dagen wordt de groep definitief verwijderd. Jij en de groepsleden verliezen meteen de toegang. Heb je de groep per ongeluk verwijderd? Neem dan binnen 90 dagen contact met ons op om herstel aan te vragen.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  c15f72841d15dc52:
+    english: Groups awaiting deletion and their subgroups are unavailable to members and coordinators for viewing, participation, or export, including polls opened from saved links. Members cannot create or edit content, vote, send announcements or reminders, or accept invitations. Export the group and download important files before confirming deletion. Direct discussions and polls are unaffected.
+    translation: Groepen die wachten op verwijdering en hun subgroepen zijn niet beschikbaar voor leden en coördinatoren. Ze kunnen deze niet bekijken, eraan deelnemen of exporteren. Dit geldt ook voor peilingen die ze via opgeslagen links openen. Leden kunnen geen inhoud maken of bewerken, stemmen, aankondigingen of herinneringen versturen of uitnodigingen accepteren. Exporteer de groep en download belangrijke bestanden voordat je de verwijdering bevestigt. Directe discussies en peilingen blijven beschikbaar.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  5122280818cc30c7:
+    english: Scheduling the group for deletion stops pending activity notifications and poll reminders for the group and its subgroups. Messages already being sent may still arrive.
+    translation: Wanneer je de verwijdering van de groep plant, worden nog niet verzonden activiteitsmeldingen en herinneringen voor peilingen in de groep en haar subgroepen stopgezet. Berichten die al worden verzonden, kunnen nog aankomen.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  953ebf00860389c1:
+    english: The warning email includes counts for the group's subgroups, members, discussions, polls and comments. If you need to keep the group or [export its data](/en/user_manual/groups/data_export/), reply within 90 days so access can be restored before deletion.
+    translation: De waarschuwingsmail vermeldt het aantal subgroepen, leden, discussies, peilingen en reacties van de groep. Wil je de groep behouden of [de gegevens exporteren](/en/user_manual/groups/data_export/)? Reageer dan binnen 90 dagen, zodat de toegang vóór de verwijdering kan worden hersteld.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  17dc58c271e429d5:
+    english: Deleting your group will also cancel your Loomio subscription.
+    translation: Als je je groep verwijdert, wordt ook je Loomio-abonnement opgezegd.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  fa7cec0f3ba570ef:
+    english: "![Delete group action in the Oatmilk Cooperative menu](group_delete_group.png)"
+    translation: "![Optie Groep verwijderen in het menu van Oatmilk Cooperative](group_delete_group.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  cb0d8b2f2c8b9630:
+    english: You will be invited to type the name of your group (*case sensitive*) to confirm you wish to delete your group.
+    translation: Je wordt gevraagd de naam van je groep in te voeren (*hoofdlettergevoelig*) om de verwijdering te bevestigen.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  5430eb3885d98872:
+    english: "![Confirmation form requiring the Oatmilk Cooperative handle](group_delete_group_confirm.png)"
+    translation: "![Bevestigingsformulier waarin je de identificatie van Oatmilk Cooperative moet invoeren](group_delete_group_confirm.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  2df60ea964109f11:
+    english: "## Group data is permanently deleted after 90 days"
+    translation: "## Groepsgegevens worden na 90 dagen definitief verwijderd"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  9e09923078301b8d:
+    english: After 90 days, all the threads, polls, files and other group content will be permanently deleted. ***This is non-reversible!***
+    translation: Na 90 dagen worden alle discussies, peilingen, bestanden en andere groepsinhoud definitief verwijderd. ***Dit kan niet ongedaan worden gemaakt.***
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  8695a5ebfb09611d:
+    english: We recommend that you [export the group data](/en/user_manual/groups/data_export/)and manually download any important files you have uploaded before you continue.
+    translation: We raden je aan [de groepsgegevens te exporteren](/en/user_manual/groups/data_export/)en belangrijke bestanden die je hebt geüpload handmatig te downloaden voordat je verdergaat.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'

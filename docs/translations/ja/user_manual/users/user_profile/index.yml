@@ -1,0 +1,157 @@
+---
+navigation_title: プロフィール
+blocks:
+  7ac59f9506d9a9e9:
+    english: "# Your Profile\nYour Loomio user profile is how people recognize you.  "
+    translation: |-
+      # プロフィール
+      Loomioのプロフィールは、ほかの人が誰かを見分けるための情報です。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  f77b75330707f9a4:
+    english: Being able to recognize people in Loomio helps build trust and authenticity, encouraging more genuine participation.  So wherever possible we encourage you to be you, and to add a photo or avatar.
+    translation: Loomioで誰が参加しているか分かると、信頼関係を築きやすくなります。できるだけ本人と分かる名前を使い、写真やアバターを追加することをおすすめします。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  e902d9db69f3ccaa:
+    english: "## Edit profile"
+    translation: "## プロファイル編集"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  f48def44ceb36407:
+    english: 'Your profile page lets you customize your Loomio identity. To visit your profile page select the **Edit profile** option in the user menu, which is found by clicking on your name at the top of the sidebar. '
+    translation: プロフィールページでは、Loomioで表示する情報を設定できます。プロフィールページを開くには、サイドバー上部の名前をクリックし、ユーザーメニューから**プロファイル編集**を選択します。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  456daa472d672b1f:
+    english: If the sidebar is closed, click on the menu icon (**☰**) to open it.
+    translation: サイドバーが閉じている場合は、メニューアイコン（**☰**）をクリックして開きます。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  7b920b3794ac1be0:
+    english: Click on the down arrow to the right of your name.
+    translation: 名前の右にある下向き矢印をクリックします。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  9664aeb8784b2137:
+    english: Click on **Edit profile**
+    translation: "**プロファイル編集**をクリックします。"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  e98e7384d147ec31:
+    english: "## Update your personal info"
+    translation: "## 個人情報を更新する"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  9578a723a8d322cc:
+    english: 'You can update your personal info by changing any of the following fields:'
+    translation: 次の項目を変更すると、個人情報を更新できます。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  cc28d4b1038e6fe5:
+    english: |-
+      * **Name**
+      * **Email address** - this is the email address associated with your Loomio account, and where you will receive notifications from Loomio.
+      * **Username** - your username is a name people can recognize and alert you using @mention. It can contain lower case letters, numbers, underscores, and internal hyphens.
+      * **Introduction** - a few lines to tell others in your group something about you.
+      * **Location** - useful for distributed or remote groups so people can get an idea of where you are located.
+    translation: |-
+      * **氏名**
+      * **Eメールアドレス** - Loomioアカウントに登録されているアドレスです。Loomioからの通知はこのアドレスに届きます。
+      * **ユーザー名** - ほかの人が見分けたり、@mentionで通知したりするときに使う名前です。小文字の英字、数字、アンダースコア、単語の間のハイフンを使用できます。
+      * **導入** - グループのほかのメンバーに自分のことを伝える短い文章です。
+      * **位置** - 離れた場所で活動するグループで、どこにいるかを伝えるのに役立ちます。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  d64106bb76c8936e:
+    english: "## Viewing another person's profile"
+    translation: "## ほかの人のプロフィールを見る"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  fa6b7c980bad9aeb:
+    english: Select a person's name or avatar to open their profile. Their recent discussions, comments, and polls are listed alongside their profile details and groups. The list only includes activity you have permission to access; signed-out visitors see public activity only.
+    translation: 名前またはアバターを選択すると、その人のプロフィールが開きます。プロフィール情報と所属グループに加え、最近のディスカッション、コメント、投票が表示されます。表示される活動は、閲覧権限のあるものだけです。ログインしていない人には、公開されている活動だけが表示されます。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  ac9abf23a4881216:
+    english: "## Uploading a profile photo\nWhen you first create a Loomio account, your initials will be the default image associated with your profile. You can upload a profile photo by clicking on your picture on the profile page. "
+    translation: |-
+      ## プロフィール写真をアップロードする
+      Loomioアカウントを作成した直後は、名前の頭文字がプロフィール画像になります。プロフィールページで画像をクリックすると、写真をアップロードできます。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  b011f45bc197558a:
+    english: If you have a [Gravatar](https://en.gravatar.com/) you can set that as your profile picture by selecting **Use Gravatar**. You can also choose for Loomio to use the photo you use for other common platforms/tools.
+    translation: "[Gravatar](https://en.gravatar.com/)を利用している場合は、**グラバターを使用する**を選択すると、その画像をプロフィール写真に設定できます。ほかの一般的なサービスで使用している写真をLoomioで使うこともできます。"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  41f1c139f9a0822b:
+    english: |-
+      ## Language settings
+      Loomio is developed in English, but [is translated by volunteers into many languages](https://www.loomio.com/g/cpaM3Hsv/loomio-community-translation).
+    translation: |-
+      ## 言語設定
+      Loomioは英語で開発されていますが、[ボランティアによって多くの言語に翻訳されています](https://www.loomio.com/g/cpaM3Hsv/loomio-community-translation)。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  9faad78d2b46c546:
+    english: Loomio will detect your browser’s language settings, but you can manually set your preferred language from the available options on the profile page.
+    translation: Loomioはブラウザーの言語設定を検出します。プロフィールページで、利用可能な言語から希望する言語を手動で選ぶこともできます。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  a224dd4aaaf81381:
+    english: |-
+      ## Resetting your password
+      You can change your password by visiting your profile page and clicking **Reset Password**.
+    translation: |-
+      ## パスワードを再設定する
+      パスワードを変更するには、プロフィールページで**パスワードをリセット**をクリックします。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  5bfa3cd39abcafba:
+    english: "## Merge accounts"
+    translation: "## アカウントを統合する"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  2e3c544b479874d5:
+    english: If you have two Loomio user accounts, you can merge them into a single account.
+    translation: Loomioのアカウントを2つ持っている場合は、1つに統合できます。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  26fec713318a68fc:
+    english: See [Merge Accounts](../merge_accounts).
+    translation: 詳しくは[アカウントを統合する](../merge_accounts)をご覧ください。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  a12633b5bfa58576:
+    english: "## Deleting your account"
+    translation: "## アカウントを削除する"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  544b974bf2c6bdfa:
+    english: If you wish to delete your Loomio user account and leave any Loomio groups you are a member of, see [Deleting Your Loomio Account](../deleting_your_account).
+    translation: Loomioアカウントを削除し、参加しているすべてのLoomioグループから退出する場合は、[Loomioアカウントを削除する](../deleting_your_account)をご覧ください。
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'

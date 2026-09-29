@@ -1,0 +1,93 @@
+---
+navigation_title: Toestemming
+blocks:
+  9153f30a2c3db9f2:
+    english: "# Consent"
+    translation: "# Toestemming"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  e16bed826124695f:
+    english: A Consent proposal asks whether a course of action is safe to try. Participants either consent or raise an objection. An objection identifies a concrete risk or harm that the proposal should address.
+    translation: Een voorstel op basis van toestemming vraagt of het veilig is om een aanpak te proberen. Deelnemers stemmen toe of maken bezwaar. Een bezwaar benoemt een concreet risico of mogelijke schade waarmee het voorstel rekening moet houden.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  d675dd47ae42c929:
+    english: This page explains how to run one Consent proposal. See the [Consent process](/en/guides/making_decisions/consent_process) for the complete workflow, including questions, Sense check, amendments, objections, and outcome.
+    translation: Op deze pagina lees je hoe je één voorstel op basis van toestemming behandelt. Bekijk het [toestemmingsproces](/en/guides/making_decisions/consent_process) voor het volledige verloop, van vragen en een eerste peiling tot aanpassingen, bezwaren en een conclusie.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  7c4c79526b1d437b:
+    english: "## When to use Consent"
+    translation: "## Wanneer gebruik je toestemming?"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  1b99c0443bd1e4c8:
+    english: Use Consent when the group needs a workable decision that can proceed unless there is a valid objection. It suits experiments, operational policies, role agreements, and other decisions the group can review after gaining experience.
+    translation: Gebruik toestemming wanneer de groep een werkbaar besluit nodig heeft dat kan doorgaan zolang er geen geldig bezwaar is. Dit past bij experimenten, praktische afspraken, rolafspraken en andere besluiten die de groep na enige ervaring kan beoordelen.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  966f3146dc9f61f1:
+    english: Consent does not require everyone to prefer the proposal. Define what counts as an objection before voting, and explain how objections will be tested and resolved.
+    translation: Niet iedereen hoeft het voorstel de beste optie te vinden om toestemming te geven. Spreek vóór de stemming af wat als bezwaar telt en leg uit hoe bezwaren worden beoordeeld en opgelost.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  e6cf2f0ebd4a7f58:
+    english: "## Example: start a bottle trial"
+    translation: "## Voorbeeld: begin een proef met herbruikbare flessen"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  ad7be5e188748cb3:
+    english: Oatmilk Cooperative proposes starting a six-week returnable-bottle trial next month. The trial is limited in scope and includes a review, so the group asks whether it is safe to try.
+    translation: Oatmilk Cooperative stelt voor om volgende maand een proef van zes weken met herbruikbare flessen te beginnen. De proef is beperkt van omvang en wordt na afloop beoordeeld. Daarom vraagt de groep of het veilig is om de aanpak te proberen.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  9703f1f9474243af:
+    english: "## Set up the proposal"
+    translation: "## Stel het voorstel op"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  6458750b94201df6:
+    english: Describe the proposed action, its limits, safeguards, and review point. Keep **Consent** and **Objection** meanings precise, and require a reason for objections so the concern can be understood and addressed.
+    translation: Beschrijf de voorgestelde aanpak, de grenzen ervan, de voorzorgsmaatregelen en het moment van beoordeling. Leg precies uit wat **Toestemming** en **Bezwaar** betekenen. Vraag deelnemers hun bezwaar te onderbouwen, zodat de groep het kan begrijpen en behandelen.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  d391457c69df967f:
+    english: "## Vote"
+    translation: "## Stem"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  d98c0e71880c8828:
+    english: Participants select **Consent** when the proposal is safe enough to try, even if it is not their preferred plan. They select **Objection** when they can describe a material risk or harm.
+    translation: Deelnemers kiezen **Toestemming** als het voorstel veilig genoeg is om te proberen, ook als zij liever een ander plan hadden. Ze kiezen **Bezwaar** als ze een wezenlijk risico of mogelijke schade kunnen beschrijven.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  72a9e4073ea27936:
+    english: "## Read the results"
+    translation: "## Bekijk de resultaten"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  b0265040032f48e5:
+    english: The chart makes objections visible, but the group must examine the reasons. Resolve a valid objection by amending the proposal, adding a safeguard, changing its scope, or deciding not to proceed.
+    translation: De grafiek laat zien welke bezwaren er zijn, maar de groep moet ook de redenen bekijken. Los een geldig bezwaar op door het voorstel aan te passen, een voorzorgsmaatregel toe te voegen, de reikwijdte te veranderen of te besluiten niet door te gaan.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  a87df65569cb3a09:
+    english: Publish an outcome that records the agreed action, any safeguards, who is responsible, and when the group will review it.
+    translation: Publiceer een conclusie waarin de afgesproken aanpak, eventuele voorzorgsmaatregelen, de verantwoordelijke personen en het moment van beoordeling staan.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'

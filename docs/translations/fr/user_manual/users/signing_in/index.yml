@@ -1,0 +1,159 @@
+---
+navigation_title: Se connecter
+blocks:
+  7d0aa091e06fa112:
+    english: "# Signing in"
+    translation: "# Se connecter"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  3bede807c136909b:
+    english: On Loomio.com, you can sign in with a passkey, your email and password, an emailed sign-in code, or Google. You can choose whichever available method is most convenient for you.
+    translation: Sur Loomio.com, vous pouvez vous connecter avec une clé d’accès, votre adresse e-mail et votre mot de passe, un code reçu par e-mail ou Google. Choisissez la méthode disponible qui vous convient.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  2bc2277a8ee0508d:
+    english: "![The Loomio sign-in form with passkey, email, password, and emailed-code options](sign_in_email.png)"
+    translation: "![Le formulaire de connexion de Loomio avec les options de clé d’accès, d’adresse e-mail, de mot de passe et de code reçu par e-mail](sign_in_email.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  e3daf63d410d5513:
+    english: "## Sign in with a passkey"
+    translation: "## Se connecter avec une clé d’accès"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  5c82bc1e8baa9f0b:
+    english: Select **Use a passkey**. Your browser or device shows the Loomio passkeys available to you and asks you to unlock the selected passkey with its normal screen lock, fingerprint, face recognition, PIN, or security key. You do not enter an email address first.
+    translation: 'Sélectionnez **Utilise une clé d’accès**. Votre navigateur ou votre appareil affiche les clés d’accès Loomio dont vous disposez et vous demande de déverrouiller celle que vous choisissez avec votre méthode habituelle : verrouillage de l’écran, empreinte digitale, reconnaissance faciale, code PIN ou clé de sécurité. Vous n’avez pas besoin de saisir d’abord votre adresse e-mail.'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  9386303ee98cb592:
+    english: You can add, name, and remove passkeys from your profile. For security, Loomio may ask you to sign in again before changing them. Give each passkey a recognizable name such as “Work laptop” or “Phone”. Passkeys are tied to the Loomio site where they were created and may be synchronized by your device or password manager.
+    translation: Vous pouvez ajouter, nommer et supprimer des clés d’accès dans votre profil. Pour des raisons de sécurité, Loomio peut vous demander de vous reconnecter avant de les modifier. Donnez à chaque clé un nom facile à reconnaître, comme « Ordinateur professionnel » ou « Téléphone ». Les clés d’accès sont liées au site Loomio sur lequel elles ont été créées. Votre appareil ou votre gestionnaire de mots de passe peut les synchroniser.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  5f10999e671f9b56:
+    english: "## Sign in with email and password"
+    translation: "## Se connecter avec une adresse e-mail et un mot de passe"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  5c8a380df0b08c86:
+    english: Enter your email address and password, then select **Sign in**. For account privacy, Loomio uses the same error when the email or password cannot be used to sign in.
+    translation: Saisissez votre adresse e-mail et votre mot de passe, puis sélectionnez **Se connecter**. Pour protéger la confidentialité des comptes, Loomio affiche le même message d’erreur si l’adresse e-mail ou le mot de passe ne permet pas de vous connecter.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  63c19e6f58a1de53:
+    english: If you have not added a passkey, Loomio offers to add one after you sign in with a password. You can dismiss the offer, and Loomio will remember your choice.
+    translation: Si vous n’avez pas encore ajouté de clé d’accès, Loomio vous propose d’en ajouter une après votre connexion avec un mot de passe. Vous pouvez ignorer cette proposition. Loomio mémorisera votre choix.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  dde79982546607b4:
+    english: If you do not have a password or cannot remember it, select **Send me a code** instead.
+    translation: Si vous n’avez pas de mot de passe ou ne vous en souvenez plus, sélectionnez **Envoie-moi un code**.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  5f3c6f8eca20d49c:
+    english: "## Get a sign-in code"
+    translation: "## Obtenir un code de connexion"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  9713c017e247d8e2:
+    english: Select **Send me a code**, enter your email address, and submit the form. Loomio displays the same confirmation whether or not the address belongs to an account, so another person cannot use the form to discover who uses Loomio.
+    translation: Sélectionnez **Envoie-moi un code**, saisissez votre adresse e-mail et envoyez le formulaire. Loomio affiche la même confirmation que l’adresse corresponde ou non à un compte. Personne ne peut ainsi utiliser ce formulaire pour savoir qui utilise Loomio.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  546aaa95b133da11:
+    english: If the address belongs to your account, Loomio sends a six-digit code. Return to the sign-in form, enter the code, and select **Sign in**. Sign-in codes normally expire after 24 hours and cannot be reused. Check your spam folder if the message does not arrive, and make sure you entered the address associated with your account.
+    translation: Si l’adresse est associée à votre compte, Loomio vous envoie un code à six chiffres. Revenez au formulaire de connexion, saisissez le code, puis sélectionnez **Se connecter**. Les codes de connexion expirent normalement après 24 heures et ne peuvent pas être réutilisés. Si vous ne recevez pas le message, vérifiez votre dossier de courriers indésirables et assurez-vous d’avoir saisi l’adresse associée à votre compte.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  26171d5996050130:
+    english: "![The Loomio form for entering a six-digit sign-in code](sign_in_code.png)"
+    translation: "![Le formulaire de Loomio permettant de saisir un code de connexion à six chiffres](sign_in_code.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  '087809317d00494a':
+    english: After each sign-in with a code, Loomio offers to set or replace your password. If your browser supports passkeys, you can also add one, even if you have already added a passkey on another device. A passkey lets you sign in quickly with your device’s fingerprint, face, or screen lock. You can skip the offer and continue using emailed codes.
+    translation: Après chaque connexion avec un code, Loomio vous propose de définir ou de remplacer votre mot de passe. Si votre navigateur prend en charge les clés d’accès, vous pouvez aussi en ajouter une, même si vous en avez déjà ajouté une sur un autre appareil. Une clé d’accès vous permet de vous connecter rapidement avec l’empreinte digitale, la reconnaissance faciale ou le verrouillage de l’écran de votre appareil. Vous pouvez ignorer cette proposition et continuer à utiliser les codes reçus par e-mail.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  fa960675e8369daf:
+    english: "## Create an account"
+    translation: "## Créer un compte"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  75fc0885f772c8cf:
+    english: Select **Create account** and follow the email-verification steps.
+    translation: Sélectionnez **Crée un compte** et suivez les étapes de vérification de votre adresse e-mail.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  aa461253943b989a:
+    english: For privacy, use the same email address that received your group invitation. If you have accounts under more than one address, you can [merge your accounts](/en/user_manual/users/merge_accounts).
+    translation: Pour protéger votre vie privée, utilisez l’adresse e-mail à laquelle vous avez reçu l’invitation à rejoindre votre groupe. Si vous avez des comptes associés à plusieurs adresses, vous pouvez [fusionner vos comptes](/en/user_manual/users/merge_accounts).
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  d9844ac27d806c35:
+    english: "## Sign in with Google"
+    translation: "## Se connecter avec Google"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  8445cfcb9e9ecef5:
+    english: Select **Sign in with Google** and authenticate with your Google account. If an existing Loomio account has the same email address, Loomio links the Google identity to that account.
+    translation: Sélectionnez **Se connecter avec Google** et authentifiez-vous avec votre compte Google. Si un compte Loomio existant utilise la même adresse e-mail, Loomio associe votre identité Google à ce compte.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  46281cafc4a889bf:
+    english: "## Other Loomio sites"
+    translation: "## Autres sites Loomio"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  23c2dffa5d5056e2:
+    english: Organizations that host their own Loomio site can configure different sign-in methods. A site may offer passwords, emailed codes, passkeys, Google, SAML, or another OAuth provider alongside each other.
+    translation: Les organisations qui hébergent leur propre site Loomio peuvent configurer différentes méthodes de connexion. Un site peut proposer à la fois des mots de passe, des codes envoyés par e-mail, des clés d’accès, Google, SAML ou un autre fournisseur OAuth.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  3de129c7bac50409:
+    english: Some sites require an invitation before you can create an account. On these sites, **Create account** appears only when you follow an invitation link.
+    translation: Certains sites exigent une invitation avant la création d’un compte. Sur ces sites, **Crée un compte** apparaît uniquement lorsque vous suivez un lien d’invitation.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  16004d08bcad640b:
+    english: An SSO-only private site shows only its organization sign-in option. It does not offer Loomio-managed passwords, emailed sign-in codes, native account creation, or Loomio-managed passkeys. If the organization uses passkeys, its identity provider asks for them during SSO.
+    translation: Un site privé qui utilise uniquement l’authentification unique (SSO) affiche seulement l’option de connexion de son organisation. Il ne propose ni mots de passe, ni codes de connexion envoyés par e-mail, ni création de compte directement sur Loomio, ni clés d’accès gérées par Loomio. Si l’organisation utilise des clés d’accès, son fournisseur d’identité vous les demande pendant l’authentification unique.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  148bcb52b49eb179:
+    english: "## Sign out"
+    translation: "## Se déconnecter"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  dc9ad2d75eb9da48:
+    english: Open the sidebar, select your name, then select **Sign out**. On a shared computer, sign out when you finish rather than closing only the browser tab.
+    translation: Ouvrez la barre latérale, sélectionnez votre nom, puis **Se déconnecter**. Sur un ordinateur partagé, déconnectez-vous lorsque vous avez terminé au lieu de simplement fermer l’onglet du navigateur.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'

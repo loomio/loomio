@@ -1,0 +1,93 @@
+---
+navigation_title: קוֹנסֶנזוּס
+blocks:
+  9f617c478e625137:
+    english: "# Consensus"
+    translation: "# קוֹנסֶנזוּס"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  7fdabc28ebd47ad3:
+    english: A Consensus proposal seeks collective agreement from everyone involved. The default responses let participants agree, abstain, disagree, or block.
+    translation: הצעת קונצנזוס נועדה להגיע להסכמה משותפת של כל המעורבים. אפשרויות התגובה המוגדרות מראש מאפשרות להסכים, להימנע, להתנגד או לחסום.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  82dbfd2dd1160c29:
+    english: This page explains how to run one Consensus proposal. See the [Consensus process](/en/guides/making_decisions/consensus_process) for the complete workflow from discussion and Sense check through amendment and outcome.
+    translation: דף זה מסביר כיצד לנהל הצעת קונצנזוס אחת. לתהליך המלא, מהדיון ובדיקת החושים ועד לתיקון ההצעה ולמסקנה, יש לעיין ב[תהליך הקונצנזוס](/en/guides/making_decisions/consensus_process).
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  12074389ed4de458:
+    english: "## When to use Consensus"
+    translation: "## מתי להשתמש בקונצנזוס"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  e1e89b6df3a1dbe1:
+    english: Use Consensus for decisions where broad ownership matters and the group is prepared to work through concerns together. It suits shared standards, governance agreements, strategic commitments, and decisions that affect the whole group.
+    translation: קונצנזוס מתאים להחלטות שחשוב שלקבוצה תהיה אחריות משותפת עליהן, ושהקבוצה מוכנה לדון יחד בחששות שעולים. הוא מתאים לתקנים משותפים, להסכמות על ניהול הקבוצה, להתחייבויות אסטרטגיות ולהחלטות שמשפיעות על הקבוצה כולה.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  a28ea900326c3254:
+    english: Consensus usually requires discussion and proposal development before voting. Define the meaning and consequences of **Block** for your group. If your process does not use blocks, edit the template to remove that option.
+    translation: קונצנזוס דורש בדרך כלל דיון וגיבוש ההצעה לפני ההצבעה. יש להגדיר מה המשמעות של **חסום** בקבוצה ומהן ההשלכות של בחירה באפשרות זו. אם התהליך אינו כולל חסימה, יש לערוך את התבנית ולהסיר את האפשרות.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  f795d33e2be59883:
+    english: "## Example: adopt a bottle return standard"
+    translation: "## דוגמה: אימוץ תקן להחזרת בקבוקים"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  dda29f07ddb547f7:
+    english: Oatmilk Cooperative has developed a standard covering deposits, collection, washing, food-safety records, and reporting. Because every team will use it, the cooperative seeks consensus before adopting it.
+    translation: קואופרטיב חלב שיבולת השועל גיבש תקן לפיקדונות, לאיסוף, לשטיפה, לתיעוד בטיחות מזון ולדיווח. מכיוון שכל הצוותים ישתמשו בו, הקואופרטיב מבקש להגיע לקונצנזוס לפני אימוצו.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  9703f1f9474243af:
+    english: "## Set up the proposal"
+    translation: "## הגדרת ההצעה"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  9e63b2959e1f6553:
+    english: State the complete agreement being considered and link to supporting information. Explain each response, particularly the distinction between disagreeing and blocking. Allow enough time for questions and amendments.
+    translation: יש להציג את ההסכמה המלאה שעומדת לדיון ולקשר למידע תומך. יש להסביר את משמעותה של כל תגובה, ובמיוחד את ההבדל בין התנגדות לחסימה. יש להקצות מספיק זמן לשאלות ולתיקונים.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  d391457c69df967f:
+    english: "## Vote"
+    translation: "## הצבעה"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  955925e0c6998049:
+    english: Participants choose the response that matches their position and explain the interests or concerns behind it. A block reason should identify why adopting the proposal would violate a fundamental need or agreed principle.
+    translation: יש לבחור בתגובה שמשקפת את העמדה ולהסביר את הצרכים או החששות שבבסיסה. בנימוק לחסימה יש להסביר מדוע אימוץ ההצעה יפגע בצורך יסודי או בעיקרון שהוסכם עליו.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  72a9e4073ea27936:
+    english: "## Read the results"
+    translation: "## קריאת התוצאות"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  d5d9f0dbb463bed7:
+    english: The chart shows the balance of responses. Review every disagreement and block reason; consensus is a process of resolving concerns, not only counting agreement votes.
+    translation: התרשים מציג את התפלגות התגובות. יש לבחון כל התנגדות ונימוק לחסימה. קונצנזוס הוא תהליך של מענה לחששות, מעבר לספירת קולות ההסכמה.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  f7318776f4a978fc:
+    english: If the group reaches agreement, publish an outcome recording the final standard and responsibilities. Otherwise, record what will be revised and when the group will return to the proposal.
+    translation: אם הקבוצה מגיעה להסכמה, יש לפרסם מסקנה שמתעדת את התקן הסופי ואת תחומי האחריות. אחרת, יש לתעד מה יתוקן ומתי הקבוצה תחזור לדון בהצעה.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'

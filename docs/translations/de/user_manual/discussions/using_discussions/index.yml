@@ -1,0 +1,521 @@
+---
+navigation_title: Threads verwenden
+blocks:
+  d6fe7310d19b1141:
+    english: "# Using threads"
+    translation: "# Threads verwenden"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  031f9244f107aba8:
+    english: A discussion keeps its context, comments, decisions, and outcomes together in one thread. This page explains how to participate in a thread and use its navigation and actions.
+    translation: Eine Diskussion hält ihren Kontext, Kommentare, Abstimmungen und Fazits in einem Thread zusammen. Auf dieser Seite erfährst du, wie du dich an einem Thread beteiligst und seine Navigation und Aktionen nutzt.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  479a1564b496bfed:
+    english: "## Thread anatomy"
+    translation: "## Aufbau eines Threads"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  fb745de96e6a612d:
+    english: 'A typical thread looks like this:'
+    translation: 'Ein typischer Thread sieht so aus:'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  9e69f7f0b13fd9f9:
+    english: 'From the top of the page, a thread contains:'
+    translation: 'Von oben nach unten enthält ein Thread:'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  5b47d6434aa50e94:
+    english: "**Group name** - At the top left of the discussion page is the name of the group or subgroup that the discussion belongs to.  Click on this name to go back to the group page."
+    translation: "**Gruppenname** - Oben links auf der Diskussionsseite steht der Name der Gruppe oder Untergruppe, zu der die Diskussion gehört. Klicke auf den Namen, um zur Gruppenseite zurückzukehren."
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  0dab4c46c2bee003:
+    english: "**Discussion access** - The access icon at the top right opens the discussion's access settings. A group discussion is available to group members and anyone specifically invited to it, subject to the group's privacy settings."
+    translation: "**Zugriff auf die Diskussion** - Das Zugriffssymbol oben rechts öffnet die Zugriffseinstellungen der Diskussion. Eine Gruppendiskussion ist für Gruppenmitglieder und eigens eingeladene Personen zugänglich, soweit die Privatsphäre-Einstellungen der Gruppe es erlauben."
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  e20178954e6d3ce0:
+    english: "**Discussion title** - The name of the discussion."
+    translation: "**Diskussionstitel** - Der Name der Diskussion."
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  47687209ed924849:
+    english: "**Category tags** - The discussion may have one or more category tags. Using simple tags helps people more easily find discussions of a similar type."
+    translation: "**Schlagwörter für Kategorien** - Eine Diskussion kann ein oder mehrere Schlagwörter für Kategorien haben. Einfache Schlagwörter helfen dabei, ähnliche Diskussionen zu finden."
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  b817649f985f51de:
+    english: "**Discussion author** - The name and avatar of the person who started the discussion, shown beneath the title."
+    translation: "**Autor der Diskussion** - Name und Profilbild der Person, die die Diskussion begonnen hat, stehen unter dem Titel."
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  c44d5a833b4ec9ff:
+    english: "**Date** - Hover over the date to see the full date and time of discussion start."
+    translation: "**Datum** - Bewege den Mauszeiger über das Datum, um das vollständige Datum und die Uhrzeit des Diskussionsbeginns zu sehen."
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  b8062113f1078acb:
+    english: "**Seen by** - In the right sidebar, shows who has read the discussion and when."
+    translation: "**Angesehen von** - Zeigt in der rechten Seitenleiste, wer die Diskussion gelesen hat und wann."
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  133d0c2e469e9683:
+    english: "**Notified** - In the right sidebar, shows who has been notified about the discussion and whether each notification has been read or its email opened."
+    translation: "**benachrichtigt** - Zeigt in der rechten Seitenleiste, wer über die Diskussion benachrichtigt wurde und ob die jeweilige Benachrichtigung gelesen oder ihre E-Mail geöffnet wurde."
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  9f788adb4eab80cc:
+    english: "**Discussion context** - Content to frame the discussion."
+    translation: "**Diskussionskontext** - Inhalte, die den Rahmen für die Diskussion bilden."
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  e8c5ae76dfb5b89b:
+    english: "**Discussion interaction and administration tools** - The discussion context has controls to react to and edit it. The right sidebar contains notification, membership and administration actions."
+    translation: "**Werkzeuge für Beteiligung und Verwaltung** - Beim Diskussionskontext findest du Steuerelemente, um darauf zu reagieren und ihn zu bearbeiten. Die rechte Seitenleiste enthält Aktionen für Benachrichtigungen, Mitglieder und die Verwaltung."
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  8f6eac4359c2b9f6:
+    english: "**Comments** - Comments are displayed under the discussion context. The author's name, avatar and posting time show who wrote each comment and when. Interaction and administration tools are available on each comment."
+    translation: "**Kommentare** - Kommentare stehen unter dem Diskussionskontext. Name, Profilbild und Zeitpunkt der Veröffentlichung zeigen, wer den jeweiligen Kommentar wann geschrieben hat. Für jeden Kommentar stehen Werkzeuge zur Beteiligung und Verwaltung bereit."
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  f978af6c9af4afe5:
+    english: |-
+      **Navigation, notifications and actions** - The right sidebar contains
+      shortcuts to activity and milestones, notification and membership information,
+      and the thread actions available to you.
+    translation: |-
+      **Navigation, Benachrichtigungen und Aktionen** - Die rechte Seitenleiste enthält
+      Verknüpfungen zu Aktivitäten und Meilensteinen, Angaben zu Benachrichtigungen und Mitgliedern
+      sowie die Thread-Aktionen, die dir zur Verfügung stehen.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  f8c4084e9e8a2b27:
+    english: "## Discussion context"
+    translation: "## Diskussionskontext"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  5940bad6cb1cb49f:
+    english: The discussion **context** is always found at the top of the discussion. Use the context to frame the discussion or decision.
+    translation: Der **Kontext** steht immer am Anfang der Diskussion. Nutze ihn, um den Rahmen für die Diskussion oder Entscheidung zu setzen.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  415dd2d0f1eacc9f:
+    english: Think of your group as you write content in the discussion context.  Your aim is to get a discussion going, so consider how you can motivate people to participate.  In general, keep the discussion context simple and clear.
+    translation: Denke beim Schreiben des Diskussionskontexts an deine Gruppe. Der Kontext soll eine Diskussion anstoßen. Überlege deshalb, was andere zur Teilnahme ermutigt. Halte ihn möglichst einfach und klar.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  a1fcece28d8fb61d:
+    english: Write the discussion context when starting or editing a discussion. **Edit** a discussion with the pencil icon.
+    translation: Schreibe den Diskussionskontext, wenn du eine Diskussion beginnst oder bearbeitest. Mit dem Stiftsymbol kannst du eine Diskussion **Bearbeiten**.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  2f47adddef6b31d9:
+    english: As the discussion progresses, update discussion context.  Think of the context like a whiteboard in your meeting room, where you can write the agenda, the outcomes intended and how you plan to get there.
+    translation: 'Aktualisiere den Diskussionskontext im Verlauf der Diskussion. Du kannst ihn wie eine Tafel in einem Besprechungsraum nutzen: Halte dort die Tagesordnung, die angestrebten Fazits und die nächsten Schritte fest.'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  c82ec20629208982:
+    english: At the bottom of the context panel is a formatting bar, where you can format text, attach files, images and embed a video.
+    translation: Unten im Kontextfeld befindet sich eine Formatierungsleiste. Dort kannst du Text formatieren, Dateien und Bilder anhängen und ein Video einbetten.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  e606d83ae0fb2178:
+    english: "### Notify people about context changes"
+    translation: "### Personen über Änderungen am Kontext benachrichtigen"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  d188326a58b28d96:
+    english: When you edit the discussion context, use **What's changed?** to summarize the update and choose who should be notified.
+    translation: Wenn du den Diskussionskontext bearbeitest, fasse die Änderung unter **Was hat sich geändert?** zusammen und wähle aus, wer benachrichtigt werden soll.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  842091a987742d6d:
+    english: "![Editing a discussion context with a change summary and notification recipients](../notifying_people/thread_editcontext.png)"
+    translation: "![Bearbeitung eines Diskussionskontexts mit einer Zusammenfassung der Änderung und Empfängern der Benachrichtigung](../notifying_people/thread_editcontext.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  b885359dd7e83428:
+    english: The summary appears as an item in the thread so participants can see what changed.
+    translation: Die Zusammenfassung erscheint als Eintrag im Thread. So können die Teilnehmenden sehen, was sich geändert hat.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  c899c47e98f79a23:
+    english: "![A timeline item describing a discussion context change](../notifying_people/thread_edit_comment.png)"
+    translation: "![Ein Eintrag in der Zeitleiste, der eine Änderung am Diskussionskontext beschreibt](../notifying_people/thread_edit_comment.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  44ffd1d0a732b897:
+    english: "## Navigation"
+    translation: "## Navigation"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  e96aef7a28a85001:
+    english: 'The **Jump to** section of the right sidebar helps you move through a thread:'
+    translation: 'Der Bereich **Springen zu** in der rechten Seitenleiste hilft dir, dich durch einen Thread zu bewegen:'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  4790c088af5fc09f:
+    english: |-
+      - **Start** goes to the discussion context
+      - **New to you** appears when the thread contains activity you have not read
+      - **Latest** appears when newer activity is available beyond the items currently loaded
+      - milestone links go directly to important comments, polls, and outcomes
+      - **End** goes to the latest item in the thread
+    translation: |-
+      - **Start** führt zum Diskussionskontext
+      - **Neu für dich** erscheint, wenn der Thread Aktivitäten enthält, die du noch nicht gelesen hast
+      - **Letzte** erscheint, wenn es neuere Aktivitäten gibt als die bisher geladenen Einträge
+      - Meilenstein-Links führen direkt zu wichtigen Kommentaren, Abstimmungen und Fazits
+      - **Ende** führt zum neuesten Eintrag im Thread
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  941ea9900465724a:
+    english: Comments that include an H2 or H3 heading, polls, and proposals are automatically included as milestone links. Select any milestone to go directly to it.
+    translation: Kommentare mit einer H2- oder H3-Überschrift, Abstimmungen und Vorschläge werden automatisch als Meilenstein-Links angezeigt. Wähle einen Meilenstein aus, um direkt dorthin zu gelangen.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  e94ea6f4b9dae8d4:
+    english: When you add a comment, poll, vote, or outcome, Loomio marks your own new item as read. It will not appear as something new for you to review.
+    translation: Wenn du einen Kommentar, eine Abstimmung, eine Stimme oder ein Fazit hinzufügst, markiert Loomio deinen neuen Eintrag als gelesen. Er erscheint für dich nicht als ungelesene Aktivität.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  34251ada1ba3e50b:
+    english: "## Notifications and members"
+    translation: "## Benachrichtigungen und Mitglieder"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  36a20a0e10208c7c:
+    english: The right sidebar controls your email notifications and shows who has been invited, who has seen the thread, and who has been notified.
+    translation: In der rechten Seitenleiste stellst du deine E-Mail-Benachrichtigungen ein. Dort siehst du auch, wer eingeladen wurde, wer den Thread angesehen hat und wer benachrichtigt wurde.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  f2a437ac1169c882:
+    english: "### Email notifications for this thread"
+    translation: "### E-Mail-Benachrichtigungen für diesen Thread"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  9bd7269489ed048e:
+    english: Select the current notification setting to choose whether Loomio emails you about all activity, only activity that specifically notifies you, or no activity. Receiving email for all activity can produce many messages in an active thread.
+    translation: Wähle die aktuelle Benachrichtigungseinstellung aus. Dort legst du fest, ob Loomio dir E-Mails zu allen Aktivitäten sendet, nur zu Aktivitäten, über die du ausdrücklich benachrichtigt wirst, oder zu keinen Aktivitäten. Bei einem aktiven Thread können E-Mails zu allen Aktivitäten viele Nachrichten erzeugen.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  0d64de2345c8eba9:
+    english: "![Email when notified selected in the discussion sidebar](../notifying_people/thread_interact.png)"
+    translation: "![Die Einstellung „Bei Benachrichtigung“ in der Seitenleiste der Diskussion](../notifying_people/thread_interact.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  7bdbdaa98e89d1c3:
+    english: "### Invite people"
+    translation: "### Leute einladen"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  e81f85e723885264:
+    english: Select **Invite people** to add people after the thread has started.
+    translation: Wähle **Leute einladen**, um nach dem Beginn des Threads weitere Personen hinzuzufügen.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  e38a572cdffad5cb:
+    english: "![Invite people in the thread sidebar](../notifying_people/thread_invite_icon.png)"
+    translation: "![Leute in der Seitenleiste des Threads einladen](../notifying_people/thread_invite_icon.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  7e4e643fb327aa06:
+    english: Select a group or subgroup, enter the names of individual members, or enter an email address to invite a guest.
+    translation: Wähle eine Gruppe oder Untergruppe aus, gib die Namen einzelner Mitglieder ein oder lade einen Gast mit seiner E-Mail-Adresse ein.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  03c1d74b4a8bc31d:
+    english: "![Invite people window with a field for names and email addresses](../notifying_people/thread_invite.png)"
+    translation: "![Fenster „Leute einladen“ mit einem Feld für Namen und E-Mail-Adressen](../notifying_people/thread_invite.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  85fc948a4e849ba8:
+    english: A guest can see and participate in this thread but cannot see other discussions in the group unless separately invited.
+    translation: Ein Gast kann diesen Thread sehen und daran teilnehmen. Andere Diskussionen der Gruppe kann er nur sehen, wenn er dazu gesondert eingeladen wurde.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  9f1010b58cc5439f:
+    english: "![Inviting a guest by email address](../notifying_people/invite_guest.png)"
+    translation: "![Einen Gast per E-Mail-Adresse einladen](../notifying_people/invite_guest.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  e688189fa93b1e49:
+    english: To remove someone, open the three-dot menu (**⋯**) beside their name and select **Remove from discussion**.
+    translation: Um jemanden zu entfernen, öffne das Drei-Punkte-Menü (**⋯**) neben dem Namen und wähle **Aus der Diskussion entfernen**.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  5602fbfa565eaf45:
+    english: "### Seen by"
+    translation: "### Angesehen von"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  a929b22d02292573:
+    english: "**Seen by** shows who has opened the thread and when. It can help you identify people who may not have seen important information yet."
+    translation: "**Angesehen von** zeigt, wer den Thread wann geöffnet hat. So kannst du erkennen, wer wichtige Informationen möglicherweise noch nicht gesehen hat."
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  d0335d202c5bbaa3:
+    english: "![Seen by and Notified in the Thread members section](../notifying_people/thread_engagement.png)"
+    translation: "![Angesehen von und benachrichtigt im Bereich für Thread-Mitglieder](../notifying_people/thread_engagement.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  fb77150441a43f5c:
+    english: "![Seen by window listing thread members](../notifying_people/thread_seenby.png)"
+    translation: "![Fenster „Angesehen von“ mit einer Liste der Thread-Mitglieder](../notifying_people/thread_seenby.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  185f80d66c2091d8:
+    english: "### Notified"
+    translation: "### benachrichtigt"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  885a21cbc1a44f7d:
+    english: "**Notified** opens the discussion notification history. It includes invitations, mentions, and replies, showing who was notified and whether each notification has been read when that information is available."
+    translation: "**benachrichtigt** öffnet den Benachrichtigungsverlauf der Diskussion. Er umfasst Einladungen, Erwähnungen und Antworten. Du siehst, wer benachrichtigt wurde und, sofern diese Information verfügbar ist, ob die Benachrichtigung gelesen wurde."
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  e73fae9309f626e2:
+    english: "![Discussion notification history](../notifying_people/thread_notified.png)"
+    translation: "![Benachrichtigungsverlauf der Diskussion](../notifying_people/thread_notified.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  347def7574cf5f1d:
+    english: "## Actions"
+    translation: "## Aktionen"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  '08ff4ccd500c2a69':
+    english: The right sidebar contains actions for the whole thread. Some actions are also available from the three-dot menu (**⋯**) beside a thread on the group page.
+    translation: Die rechte Seitenleiste enthält Aktionen für den gesamten Thread. Einige Aktionen findest du auch im Drei-Punkte-Menü (**⋯**) neben dem Thread auf der Gruppenseite.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  e73701c7d36f95ef:
+    english: The actions shown depend on your permissions. Group admins can manage threads, and group settings may allow members to perform some management actions. See [Group permissions](/en/user_manual/groups/settings/permissions).
+    translation: Welche Aktionen angezeigt werden, hängt von deinen Berechtigungen ab. Gruppenadministratoren können Threads verwalten. Je nach Gruppeneinstellungen dürfen Mitglieder einige Verwaltungsaktionen ausführen. Siehe [Gruppenberechtigungen](/en/user_manual/groups/settings/permissions).
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  4fce317a163b0a40:
+    english: "### Print"
+    translation: "### Drucken"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  9317d4c7c5ef4764:
+    english: Select **Print** to generate a page suitable for printing. Use your browser's print dialog to save it as a PDF.
+    translation: Wähle **Drucken**, um eine druckbare Seite zu erstellen. Über den Druckdialog deines Browsers kannst du sie als PDF speichern.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  443af0749df1db2a:
+    english: "### Markdown"
+    translation: "### Markdown"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  eb0442148f7c042d:
+    english: Select **Markdown** to save the complete thread as structured Markdown. Choose **Copy Markdown** to copy it to your clipboard, or **Download Markdown** to save it as a `.md` file. You can use it for meeting minutes, a document, an archive of decisions, an AI assistant, or another tool that supports Markdown.
+    translation: Wähle **Markdown**, um den vollständigen Thread als strukturiertes Markdown zu speichern. Mit **Markdown kopieren** kopierst du ihn in die Zwischenablage. Mit **Markdown herunterladen** speicherst du ihn als `.md`-Datei. Du kannst ihn für ein Sitzungsprotokoll, ein Dokument, ein Archiv von Entscheidungen, einen KI-Assistenten oder ein anderes Werkzeug verwenden, das Markdown unterstützt.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  80e3f57638b53cb4:
+    english: The document begins with YAML front matter containing the thread key, group, creation date, last activity date, and tags. It then includes the discussion context and every comment, poll, vote, and outcome in the same order and nesting as the threaded view.
+    translation: Das Dokument beginnt mit YAML-Kopfdaten. Sie enthalten den Thread-Schlüssel, die Gruppe, das Erstellungsdatum, das Datum der letzten Aktivität und die Schlagwörter. Danach folgen der Diskussionskontext und alle Kommentare, Abstimmungen, Stimmen und Fazits in derselben Reihenfolge und Verschachtelung wie in der Thread-Ansicht.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  f99823b7b44e2cdd:
+    english: Each poll is a section. Comments, votes, and outcomes are quoted, and replies are quoted beneath the item they answer. This shows where each person's text begins and ends. Each quote starts with one line showing the person, when they posted, the item's number in the thread, and any reactions. Votes and outcomes also say what they are. The thread key and item number identify each item in Loomio.
+    translation: Jede Abstimmung bildet einen Abschnitt. Kommentare, Stimmen und Fazits werden als Zitate dargestellt. Antworten stehen als Zitate unter dem jeweiligen Beitrag. So ist erkennbar, wo der Text einer Person beginnt und endet. Jedes Zitat beginnt mit einer Zeile, die die Person, den Zeitpunkt des Beitrags, die Nummer des Beitrags im Thread und etwaige Reaktionen zeigt. Bei Stimmen und Fazits wird außerdem angegeben, worum es sich handelt. Der Thread-Schlüssel und die Beitragsnummer kennzeichnen jeden Beitrag in Loomio.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  e5bdfbb4a0d7646f:
+    english: Loomio applies the same visibility rules as the thread. Results and vote reasons you cannot see are not included, and voters are not identified in anonymous polls. If an open poll hides results until you vote, vote before exporting the thread. **Markdown** and **Print** are unavailable until you do.
+    translation: Loomio wendet dieselben Sichtbarkeitsregeln wie im Thread an. Ergebnisse und Begründungen für Stimmen, die du nicht sehen darfst, werden nicht übernommen. Bei anonymen Abstimmungen werden die Abstimmenden nicht genannt. Wenn die Ergebnisse einer offenen Abstimmung bis zu deiner Stimmabgabe verborgen sind, stimme vor dem Export des Threads ab. Bis dahin sind **Markdown** und **Drucken** nicht verfügbar.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  7989d3386a42f180:
+    english: 'For example, a discussion containing a comment, reactions, a proposal, two votes, a reply, and an outcome produces this Markdown:'
+    translation: 'Eine Diskussion mit einem Kommentar, Reaktionen, einem Vorschlag, zwei Stimmen, einer Antwort und einem Fazit erzeugt beispielsweise dieses Markdown:'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  275f4d9025c017c4:
+    english: The headings and labels use your selected language. Content written by participants remains in its original language.
+    translation: Überschriften und Bezeichnungen erscheinen in der von dir gewählten Sprache. Von Teilnehmenden verfasste Inhalte bleiben in ihrer ursprünglichen Sprache.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  dab18fdf3c56269d:
+    english: "### Thread settings and display"
+    translation: "### Thread-Einstellungen und Anzeige"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  7bc55279f97c6d1b:
+    english: Group admins can select **Thread settings** to change how replies are arranged and configure other discussion options.
+    translation: Gruppenadministratoren können unter **Thread-Einstellungen** festlegen, wie Antworten angeordnet werden, und weitere Optionen für die Diskussion einstellen.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  32b2640ba23524aa:
+    english: Choose **Timeline** to list items in the order they were posted, or **Threaded** to group replies beneath the item they respond to. Thread settings also control whether multiple polls may run at once and can set a maximum comment length. These settings apply to everyone in the discussion.
+    translation: Wähle **Zeitleiste**, um Beiträge in der Reihenfolge ihrer Veröffentlichung anzuzeigen, oder **Als Thread**, um Antworten unter dem Beitrag anzuordnen, auf den sie sich beziehen. In den Thread-Einstellungen kannst du auch festlegen, ob mehrere Abstimmungen gleichzeitig laufen dürfen, und eine maximale Kommentarlänge einstellen. Diese Einstellungen gelten für alle in der Diskussion.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  4a520339278bcc2a:
+    english: "### Pin or unpin a thread"
+    translation: "### Einen Thread anheften oder lösen"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  0433e7a61db60003:
+    english: Pinned threads appear above other threads on the group page. Welcome discussions, news items, and announcements are typical uses for pinned threads.
+    translation: Angeheftete Threads erscheinen auf der Gruppenseite über den anderen Threads. Häufig werden Begrüßungsdiskussionen, Neuigkeiten und Ankündigungen angeheftet.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  b2712588a5e0aab3:
+    english: Open the three-dot menu (**⋯**) beside the thread on the group page and select **Pin thread**. Pinned threads are ordered by the time they were pinned. To change their order, unpin and pin them again.
+    translation: Öffne auf der Gruppenseite das Drei-Punkte-Menü (**⋯**) neben dem Thread und wähle **Diskussion anheften**. Angeheftete Threads werden nach dem Zeitpunkt des Anheftens sortiert. Um ihre Reihenfolge zu ändern, löse sie und hefte sie erneut an.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  a0443f076d1b8ae5:
+    english: Select **Unpin thread** to return a thread to the activity-based order.
+    translation: Wähle **Anheftung lösen**, damit der Thread wieder nach Aktivität einsortiert wird.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  b90a469963b02ffc:
+    english: "### Move a thread"
+    translation: "### Einen Thread verschieben"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  8b2071f4625705e5:
+    english: Select **Move thread** to move a thread to another group, subgroup, or to a direct thread. It will be visible to members of the destination group and anyone specifically invited to it.
+    translation: Wähle **Thema verschieben**, um einen Thread in eine andere Gruppe oder Untergruppe zu verschieben oder daraus einen direkten Thread zu machen. Er ist dann für die Mitglieder der Zielgruppe und für alle Personen sichtbar, die eigens dazu eingeladen wurden.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  f09d5f2afce03ee8:
+    english: |-
+      >[!Tip]
+      >Start a draft as a direct discussion or in a private subgroup, then move it to the group when it is ready.
+    translation: |-
+      >[!Tip]
+      >Beginne einen Entwurf als direkte Diskussion oder in einer privaten Untergruppe. Wenn er fertig ist, verschiebe ihn in die Gruppe.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  c82562b641053308:
+    english: To move selected activity rather than the whole thread, see [Moving items between threads](/en/user_manual/discussions/moving_items/).
+    translation: Wenn du nur ausgewählte Aktivitäten statt des ganzen Threads verschieben möchtest, lies [Beiträge zwischen Threads verschieben](/en/user_manual/discussions/moving_items/).
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  be22d2980075fdaa:
+    english: "### Lock or unlock a thread"
+    translation: "### Einen Thread sperren oder entsperren"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  e7c24a610fd2bf8b:
+    english: Lock a thread to prevent comments or further changes. A thread can only be locked after its active polls have closed.
+    translation: Sperre einen Thread, um Kommentare und weitere Änderungen zu verhindern. Du kannst ihn erst sperren, wenn alle laufenden Abstimmungen geschlossen sind.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  edb983bb6366aa6c:
+    english: Select **Lock thread** under **Actions**. Locked threads are removed from the list of open discussions and marked with a **Locked** tag.
+    translation: Wähle unter **Aktionen ** die Option **Thread sperren**. Gesperrte Threads werden aus der Liste offener Diskussionen entfernt und mit **Gesperrt** gekennzeichnet.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  ba2794349524cc33:
+    english: To find a locked thread, open the discussion filter on the group page and select **Locked**. Open the thread and select **Unlock thread** to allow comments and changes again.
+    translation: Um einen gesperrten Thread zu finden, öffne den Diskussionsfilter auf der Gruppenseite und wähle **Gesperrt**. Öffne den Thread und wähle **Thread entsperren**, um Kommentare und Änderungen wieder zuzulassen.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  3a75fb1ad0ffab87:
+    english: "### Delete a thread"
+    translation: "### Eine Diskussion löschen"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  0103a5729bd6a095:
+    english: Deleting a thread removes it permanently and cannot be undone. Lock the thread instead if you may need it again.
+    translation: Wenn du eine Diskussion löschst, wird sie dauerhaft entfernt. Das lässt sich nicht rückgängig machen. Sperre den Thread stattdessen, wenn du ihn später noch brauchen könntest.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  daf08ca8895b0fe2:
+    english: Select **Delete thread** and confirm the deletion.
+    translation: Wähle **Diskussion löschen** und bestätige das Löschen.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'

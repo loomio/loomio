@@ -1,0 +1,75 @@
+---
+navigation_title: Профіль
+blocks:
+  04c18671ca588e8c:
+    english: "# Group profile"
+    translation: "# Профіль групи"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  0b903e1c3c7e1862:
+    english: The profile tab controls how your group is identified and introduced. Open **Edit group settings** from the group page, then select **Profile**.
+    translation: На вкладці профілю ви визначаєте, як представлено вашу групу. На сторінці групи відкрийте **Редагувати налаштування групи**, а потім виберіть **Профіль**.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  1baaad2a0c6c8909:
+    english: "![Group profile settings](group_profile.png)"
+    translation: "![Налаштування профілю групи](group_profile.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  a1c12efad8cb82f5:
+    english: "## Name and handle"
+    translation: "## Назва та коротка адреса"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  3643c2e2ffd5db73:
+    english: Choose a concise group name, particularly if the group will contain subgroups. Loomio uses the handle in the group's web address and group email address, such as `loomio.com/your-group-handle` and `your-group-handle@loomio.com`.
+    translation: Виберіть коротку назву групи, особливо якщо в ній будуть підгрупи. Loomio використовує коротку адресу у вебадресі та адресі електронної пошти групи, наприклад `loomio.com/your-group-handle` і `your-group-handle@loomio.com`.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  5a6e298a019f6a15:
+    english: When you change the handle, links using the previous handle redirect to the new address, and email sent to the previous group address continues to reach the group. Loomio retains up to three previous handles; changing the handle again after that causes the oldest one to expire.
+    translation: Коли ви змінюєте коротку адресу, посилання зі старою адресою переспрямовують на нову. Листи, надіслані на стару адресу групи, і далі надходять до групи. Loomio зберігає до трьох попередніх коротких адрес. Після наступної зміни найстаріша з них перестає діяти.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  2b45dd41be9c3d1d:
+    english: "## Description"
+    translation: "## Опис"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  7b707620077d9d19:
+    english: Use the description to explain what the group is for, who participates, and how people are expected to use it. You can format the description and include links, documents, and videos.
+    translation: В описі поясніть мету групи, хто бере в ній участь і як її слід використовувати. Ви можете форматувати опис і додавати посилання, документи та відео.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  93a11a5e2927833e:
+    english: The name and description may be visible to non-members depending on the group's [privacy settings](/en/user_manual/groups/settings/privacy).
+    translation: Залежно від [налаштувань приватності](/en/user_manual/groups/settings/privacy) групи її назву та опис можуть бачити люди, які не є учасниками.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  0dff03268238aa26:
+    english: "## Cover image and logo"
+    translation: "## Обкладинка та логотип"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  9d08dda635bd5ce6:
+    english: The cover image appears across the top of the group page. A wide image works best; the recommended size is 2048 × 512 pixels.
+    translation: Обкладинка відображається у верхній частині сторінки групи. Найкраще підходить широке зображення. Рекомендований розмір — 2048 × 512 пікселів.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  cc04654d8d08da59:
+    english: The group logo identifies the group in navigation and other compact contexts. Upload the cover image and logo separately so each can be cropped for its intended shape.
+    translation: Логотип допомагає впізнати групу в навігації та інших місцях, де мало простору. Завантажте обкладинку й логотип окремо, щоб кожне зображення можна було обрізати відповідно до його форми.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'

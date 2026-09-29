@@ -1,0 +1,181 @@
+---
+navigation_title: Start een discussie
+blocks:
+  8fae4100a4f3548b:
+    english: "# Start a discussion"
+    translation: "# Start een discussie"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  4ba984e9573c27ff:
+    english: Starting a Loomio discussion is like writing an email. The subject line of an email is like the discussion title, and the text you write in an email is like the context of a discussion.
+    translation: Een discussie starten in Loomio lijkt op het schrijven van een e-mail. De onderwerpregel is de titel van de discussie. De tekst van de e-mail is de context van de discussie.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  4f81447c072f5dfe:
+    english: As you add people in the send list of your email, in Loomio you can invite people individually or as a group to the discussion - they will receive an email notification with the content of your discussion.
+    translation: Net zoals je ontvangers aan een e-mail toevoegt, kun je in Loomio mensen afzonderlijk of als groep uitnodigen voor een discussie. Zij krijgen een e-mailmelding met de inhoud van je discussie.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  2408b54e3b78a282:
+    english: People can reply to your discussion via email and their comments will appear in the discussion.
+    translation: Mensen kunnen per e-mail op je discussie reageren. Hun reacties verschijnen dan in de discussie.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  24ced64c5c4cf853:
+    english: As with an email, a discussion may be a simple question, or a more detailed introduction to a topic with links or files attached for background information.
+    translation: Net als een e-mail kan een discussie een eenvoudige vraag zijn, of een uitgebreidere introductie van een onderwerp met links of bijlagen als achtergrondinformatie.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  ec39413fa07094c8:
+    english: "## New discussion"
+    translation: "## Nieuwe discussie"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  92b37b2e208bfd57:
+    english: Find the **New discussion** button on your Loomio group page to start a new discussion.
+    translation: Klik op **Nieuwe discussie** op de pagina van je Loomio-groep om een discussie te starten.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  515ac46bdfccb401:
+    english: You can start a discussion within your Loomio group or any subgroup.
+    translation: Je kunt een discussie starten in je Loomio-groep of in een van de subgroepen.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  ef9721ba6b69b86b:
+    english: "![New discussion button on the Oatmilk Cooperative page](new-discussion-button.png)"
+    translation: "![Knop Nieuwe discussie op de pagina van de Oatmilk Cooperative](new-discussion-button.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  1cf9e569475cd2cc:
+    english: "![New discussion form for planning the returnable bottle trial](new-discussion-example.png)"
+    translation: "![Formulier voor een nieuwe discussie over de proef met herbruikbare flessen](new-discussion-example.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  f973f5b9f1c4b1dd:
+    english: |-
+      ### Group
+      Check the name of the group or subgroup is correct for your discussion.  Anyone in this group will be able to see the discussion. You can also start the discussion in another group or as a 'direct' discussion (no group).
+    translation: |-
+      ### Groep
+      Controleer of de juiste groep of subgroep is geselecteerd voor je discussie. Iedereen in die groep kan de discussie zien. Je kunt de discussie ook in een andere groep starten of als een 'directe' discussie (zonder groep).
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  f0b0bda9877ce0ed:
+    english: |-
+      >[!Tip]
+      >If you are not ready to make the discussion visible in your group, start the discussion as 'direct'.  You can move the discussion to your Loomio group when ready.
+    translation: |-
+      >[!Tip]
+      >Wil je de discussie nog niet zichtbaar maken in je groep, start deze dan als een 'directe' discussie. Je kunt de discussie later naar je Loomio-groep verplaatsen.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  cd1b45c3cb71503b:
+    english: "### Invite and notify"
+    translation: "### Uitnodigen en meldingen versturen"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  f3f388d23b06b25c:
+    english: The **Invite** field controls who receives the new discussion immediately.
+    translation: Het veld **Uitnodigen** bepaalt wie de nieuwe discussie meteen ontvangt.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  1c1b5c23770d3692:
+    english: Group members can see a discussion in their group even if you do not notify them. Adding a group member to **Invite** sends them an email notification and a notification in Loomio.
+    translation: Groepsleden kunnen een discussie in hun groep zien, ook als je hun geen melding stuurt. Voeg je een groepslid toe aan **Uitnodigen**, dan krijgt die persoon een e-mailmelding en een melding in Loomio.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  e2e5906a39131506:
+    english: Select a group to notify everyone in it, or expand the group to choose individual members. Select the × beside a name to remove that person from the notification.
+    translation: Selecteer een groep om alle leden een melding te sturen, of klap de groep open om afzonderlijke leden te kiezen. Selecteer de × naast een naam om die persoon uit de lijst met ontvangers te verwijderen.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  81b57efbb3c428b7:
+    english: "![Invite field expanded to show individual recipients](../notifying_people/thread_notification.png)"
+    translation: "![Het veld Uitnodigen opengeklapt met afzonderlijke ontvangers](../notifying_people/thread_notification.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  5cbd2b7b0bcc486f:
+    english: Start typing a member's name and select it from the list.
+    translation: Begin de naam van een lid te typen en selecteer die persoon in de lijst.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  dc128abbc65cb0c8:
+    english: "![Searching for Samira Patel in the Invite field](../notifying_people/thread_notify_user.png)"
+    translation: "![Zoeken naar Samira Patel in het veld Uitnodigen](../notifying_people/thread_notify_user.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  3274fe93fcf29b29:
+    english: Enter an email address to invite a guest. A guest can see and participate in this thread but cannot see other discussions in the group unless separately invited.
+    translation: Voer een e-mailadres in om een gast uit te nodigen. Een gast kan deze discussie zien en eraan deelnemen, maar kan andere discussies in de groep alleen zien als die persoon daarvoor apart is uitgenodigd.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  ab3214ccf77143e3:
+    english: "![Adding a guest email address to the Invite field](../notifying_people/thread_notify_email.png)"
+    translation: "![Het e-mailadres van een gast toevoegen aan het veld Uitnodigen](../notifying_people/thread_notify_email.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  cba9346e727b829a:
+    english: You can also start the discussion without notifying anyone. Group members can still find it in Loomio and may see it in their catch-up email, depending on their notification settings.
+    translation: Je kunt de discussie ook starten zonder iemand een melding te sturen. Groepsleden kunnen de discussie nog steeds vinden in Loomio. Afhankelijk van hun meldingsinstellingen kan de discussie ook in hun samenvattingsmail verschijnen.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  6518afe373ff1959:
+    english: "### Tags"
+    translation: "### Labels"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  ff67c09f89479873:
+    english: Add tag(s) to help people find your discussion when searching by tag. Admins can create new tags.
+    translation: Voeg een of meer labels toe, zodat mensen je discussie kunnen vinden wanneer ze op label zoeken. Admins kunnen nieuwe labels maken.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  ba80a903c4ecc7d1:
+    english: |-
+      ### Title
+      Give your discussion a relevant title.  A discussion title is similar to an email subject line.
+    translation: |-
+      ### Titel
+      Geef je discussie een passende titel. De titel van een discussie lijkt op de onderwerpregel van een e-mail.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  a91cf4b0b1b2ad5e:
+    english: |-
+      ### Context
+      Use discussion context to introduce the topic and frame the conversation or decision to make. Use the formatting tools to emphasize key points. Include background information, attach files, link to online documents and embed a video.
+    translation: |-
+      ### Context
+      Gebruik de context van de discussie om het onderwerp te introduceren en aan te geven waarover mensen kunnen praten of beslissen. Gebruik de opmaakopties om belangrijke punten te benadrukken. Voeg achtergrondinformatie en bestanden toe, plaats links naar online documenten en sluit een video in.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  1bf690aa841299cd:
+    english: The context will always stay at the top of the discussion and you can update it at any time as the discussion progresses.  When the discussion ends, update the context with the outcome.
+    translation: De context blijft bovenaan de discussie staan. Je kunt deze op elk moment bijwerken terwijl de discussie vordert. Werk de context bij met de conclusie wanneer de discussie eindigt.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'

@@ -1,0 +1,139 @@
+---
+navigation_title: Guia de boa governança com o Loomio
+blocks:
+  841dc37eec92eeec:
+    english: "# Good Governance Guide to Loomio"
+    translation: "# Guia de boa governança com o Loomio"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  a29c1c76443ad97f:
+    english: Good governance is more than a board meeting, it requires good communication before and after meetings.
+    translation: A boa governança vai além das reuniões do conselho. Ela exige boa comunicação antes e depois de cada reunião.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  9f05171a74ac30d0:
+    english: |-
+      This guide is intended to help you use Loomio in your board or committee, so you can stay connected between meetings, deal with urgent matters and reduce board admin.
+      - Continue governance between meetings
+      - Keep track of communications
+      - Use board meetings for issues that matter
+      - Preserve institutional memory with a detailed record
+    translation: |-
+      Este guia ajuda você a usar o Loomio no seu conselho ou comitê para manter o contato entre reuniões, tratar assuntos urgentes e reduzir o trabalho administrativo.
+      - Dê continuidade à governança entre as reuniões
+      - Acompanhe as comunicações
+      - Use as reuniões do conselho para tratar de assuntos importantes
+      - Preserve a memória institucional com um registro detalhado
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  bce24543243c913b:
+    english: 'Loomio is a versatile discussion and decision-making tool for collaborative boards and committees. '
+    translation: O Loomio é uma ferramenta versátil de discussão e tomada de decisões para conselhos e comitês que trabalham de forma colaborativa.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  ba71351afdaed693:
+    english: Following are some examples of common practices of boards and committees, and how to apply these in Loomio.
+    translation: Veja a seguir exemplos de práticas comuns de conselhos e comitês e como aplicá-las no Loomio.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  98ee80d2ddf674c8:
+    english: "##  Demo of Loomio for boards "
+    translation: "##  Demonstração do Loomio para conselhos"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  37cecad32c3d7142:
+    english: Rahul walks through a demo of Loomio for a board.
+    translation: Rahul apresenta uma demonstração do Loomio para um conselho.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  81cd49ded62d5229:
+    english: |-
+      <div class="iframe-container">
+      <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/VSuFvlbAEVA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+    translation: |-
+      <div class="iframe-container">
+      <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/VSuFvlbAEVA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  53aa88a8c223c1e1:
+    english: Originally recorded as part of the online Governance forum hosted by the Office of the Registrar of Indigenous Corporations (ORIC), Australia. 30 November 2021.
+    translation: Gravado originalmente como parte do fórum online sobre governança organizado pelo Office of the Registrar of Indigenous Corporations (ORIC), na Austrália, em 30 de novembro de 2021.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  ed64c7ea83ddd1bc:
+    english: 'In this guide:'
+    translation: 'Neste guia:'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  b6153b03c2cbfb0a:
+    english: |-
+      - [Prepare for a meeting](meeting.md)
+      - [Facilitating discussions](facilitating_discussions.md)
+      - [Making resolutions and online decisions](decisions.md)
+      - [Governance practices and approaches](practices.md)
+      - [Administration and record keeping](admin.md)
+      - [Introducing Loomio to your board](introduce.md)
+    translation: |-
+      - [Prepare uma reunião](meeting.md)
+      - [Facilite discussões](facilitating_discussions.md)
+      - [Aprove resoluções e tome decisões online](decisions.md)
+      - [Práticas e abordagens de governança](practices.md)
+      - [Administração e manutenção de registros](admin.md)
+      - [Apresente o Loomio ao seu conselho](introduce.md)
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  209937bbfe59c88b:
+    english: "## Why does your board need an online place for discussion and decisions?"
+    translation: "## Por que seu conselho precisa de um espaço online para discussões e decisões?"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  eecfb12ed1d28d50:
+    english: Good governance exists where an organization has systems and processes in place that are appropriate to its circumstances, and which enable the organization to pursue its purpose effectively and meet its obligations under the law.
+    translation: Há boa governança quando uma organização tem sistemas e processos adequados à sua realidade, que permitem cumprir seu propósito de forma eficaz e atender às suas obrigações legais.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  e54f67d22cf67a93:
+    english: "*“It is participatory, consensus-oriented, accountable, transparent, responsive, effective and efficient, equitable and inclusive and follows the rule of law.”* [United Nations Economic and Social Commission for Asia and the Pacific](https://www.unescap.org/sites/default/d8files/knowledge-products/good-governance.pdf)."
+    translation: "*“Ela é participativa, orientada para o consenso, responsável, transparente, receptiva, eficaz e eficiente, equitativa e inclusiva, e segue o Estado de Direito.”* [Comissão Econômica e Social das Nações Unidas para a Ásia e o Pacífico](https://www.unescap.org/sites/default/d8files/knowledge-products/good-governance.pdf)."
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  1661a79cfda1a9df:
+    english: Underpinning all of these principles is the need for good communication.
+    translation: A boa comunicação é a base de todos esses princípios.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  2819f114c9d74160:
+    english: 'Here are some or the challenges directors and boards experience:'
+    translation: 'Estes são alguns dos desafios enfrentados por conselheiros e conselhos:'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  ed750814c61b85fb:
+    english: "* Getting directors together in person\n* Time available to consider important issues \n* Tracking communication\n* Urgency of critical issues\n* Online video meeting fatigue\n* Directors in multiple, remote locations, sometimes with poor internet connectivity\n* Mixed governance practice and experience\n* Dealing with high volumes of transactional business \n* Maintaining institutional memory"
+    translation: "* Reunir os conselheiros presencialmente\n* Dispor de tempo para considerar assuntos importantes \n* Acompanhar as comunicações\n* Tratar de assuntos críticos urgentes\n* Lidar com o cansaço causado por reuniões por vídeo\n* Conectar conselheiros em diferentes localidades, às vezes com acesso precário à internet\n* Conciliar diferentes práticas e níveis de experiência em governança\n* Lidar com um grande volume de assuntos rotineiros \n* Preservar a memória institucional"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  b910c5253cf77950:
+    english: Loomio offers an opportunity to strengthen governance, to extend collaboration beyond board meetings, to include everyone in open, honest and respectful discussion while documenting everything.
+    translation: O Loomio ajuda a fortalecer a governança e a ampliar a colaboração para além das reuniões do conselho. Todas as pessoas podem participar de discussões abertas, francas e respeitosas, com tudo documentado.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'

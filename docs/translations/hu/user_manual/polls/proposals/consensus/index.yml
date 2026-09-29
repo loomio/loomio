@@ -1,0 +1,93 @@
+---
+navigation_title: Konszenzus
+blocks:
+  9f617c478e625137:
+    english: "# Consensus"
+    translation: "# Konszenzus"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  7fdabc28ebd47ad3:
+    english: A Consensus proposal seeks collective agreement from everyone involved. The default responses let participants agree, abstain, disagree, or block.
+    translation: A konszenzusos javaslat célja, hogy minden érintett közös egyetértésre jusson. Az alapértelmezett válaszokkal a résztvevők egyetérthetnek, tartózkodhatnak, ellenezhetik a javaslatot, vagy tiltakozhatnak ellene.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  82dbfd2dd1160c29:
+    english: This page explains how to run one Consensus proposal. See the [Consensus process](/en/guides/making_decisions/consensus_process) for the complete workflow from discussion and Sense check through amendment and outcome.
+    translation: Ez az oldal egy konszenzusos javaslat lebonyolítását mutatja be. A beszélgetéstől és az előzetes véleményfelméréstől a módosításokon át a következtetésig tartó teljes folyamatról a [Konszenzusos folyamat](/en/guides/making_decisions/consensus_process) oldalon olvashatsz.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  12074389ed4de458:
+    english: "## When to use Consensus"
+    translation: "## Mikor használj konszenzust"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  e1e89b6df3a1dbe1:
+    english: Use Consensus for decisions where broad ownership matters and the group is prepared to work through concerns together. It suits shared standards, governance agreements, strategic commitments, and decisions that affect the whole group.
+    translation: Akkor használj konszenzust, ha fontos, hogy a döntést a csoport széles körben magáénak érezze, és a tagok készek együtt foglalkozni az aggályokkal. Alkalmas közös szabályokhoz, működési megállapodásokhoz, stratégiai vállalásokhoz és az egész csoportot érintő döntésekhez.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  a28ea900326c3254:
+    english: Consensus usually requires discussion and proposal development before voting. Define the meaning and consequences of **Block** for your group. If your process does not use blocks, edit the template to remove that option.
+    translation: A konszenzus általában beszélgetést és a javaslat kidolgozását igényli a szavazás előtt. Határozzátok meg, mit jelent a **Tiltakozás** a csoportotokban, és milyen következményekkel jár. Ha a folyamatotokban nincs ilyen válaszlehetőség, távolítsd el a sablonból.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  f795d33e2be59883:
+    english: "## Example: adopt a bottle return standard"
+    translation: "## Példa: a visszaváltható palackokra vonatkozó szabály elfogadása"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  dda29f07ddb547f7:
+    english: Oatmilk Cooperative has developed a standard covering deposits, collection, washing, food-safety records, and reporting. Because every team will use it, the cooperative seeks consensus before adopting it.
+    translation: A Zabtej Szövetkezet szabályt dolgozott ki a betétdíjra, a palackok gyűjtésére és mosására, az élelmiszer-biztonsági nyilvántartásra és a jelentéstételre. Mivel minden csapat alkalmazni fogja, a szövetkezet konszenzust keres az elfogadása előtt.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  9703f1f9474243af:
+    english: "## Set up the proposal"
+    translation: "## A javaslat előkészítése"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  9e63b2959e1f6553:
+    english: State the complete agreement being considered and link to supporting information. Explain each response, particularly the distinction between disagreeing and blocking. Allow enough time for questions and amendments.
+    translation: Írd le a megfontolásra kerülő teljes megállapodást, és hivatkozz a kapcsolódó információkra. Magyarázd el az egyes válaszokat, különösen az ellenzés és a tiltakozás közötti különbséget. Hagyj elég időt a kérdésekre és a módosításokra.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  d391457c69df967f:
+    english: "## Vote"
+    translation: "## Szavazás"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  955925e0c6998049:
+    english: Participants choose the response that matches their position and explain the interests or concerns behind it. A block reason should identify why adopting the proposal would violate a fundamental need or agreed principle.
+    translation: A résztvevők kiválasztják az álláspontjuknak megfelelő választ, és megindokolják, milyen érdekek vagy aggályok állnak mögötte. A tiltakozás indoklásában írd le, hogy a javaslat elfogadása miért sértene egy alapvető szükségletet vagy egy közösen elfogadott elvet.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  72a9e4073ea27936:
+    english: "## Read the results"
+    translation: "## Az eredmények áttekintése"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  d5d9f0dbb463bed7:
+    english: The chart shows the balance of responses. Review every disagreement and block reason; consensus is a process of resolving concerns, not only counting agreement votes.
+    translation: A diagram a válaszok megoszlását mutatja. Nézd át az összes ellenző választ és tiltakozást az indoklásukkal együtt. A konszenzus az aggályok feloldásának folyamata, nem csupán az egyetértő szavazatok megszámlálása.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  f7318776f4a978fc:
+    english: If the group reaches agreement, publish an outcome recording the final standard and responsibilities. Otherwise, record what will be revised and when the group will return to the proposal.
+    translation: Ha a csoport egyetértésre jut, tedd közzé a végleges szabályt és a felelősségeket rögzítő következtetést. Ellenkező esetben rögzítsd, min változtattok, és mikor tér vissza a csoport a javaslathoz.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'

@@ -1,0 +1,69 @@
+---
+navigation_title: Tarefas
+blocks:
+  970146a02b39726b:
+    english: "# Tasks"
+    translation: "# Tarefas"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  bea1dad1b0b47107:
+    english: Use tasks in threads and comments to name an action, assign it to someone, set a due date, and track whether it is complete.
+    translation: Use tarefas em tópicos e comentários para definir uma ação, atribuí-la a alguém, estabelecer uma data de vencimento e acompanhar sua conclusão.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  2398b3493bad759e:
+    english: "## Add a task"
+    translation: "## Adicionar uma tarefa"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  c240866e019fab51:
+    english: While writing a thread or comment, expand the formatting toolbar and click **Task list**. Type the action beside the checkbox.
+    translation: Ao escrever em um tópico ou comentário, expanda a barra de ferramentas de formatação e clique em **Lista de tarefas**. Escreva a ação ao lado da caixa de seleção.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  f7d4f63b321e9af1:
+    english: "## Name and assign the task to a person"
+    translation: "## Nomear e atribuir a tarefa a uma pessoa"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  5ea902e45aaf1f7a:
+    english: Use an @mention in the task to assign it to a group member. An **Add due date** button appears once the task has an assignee.
+    translation: Use uma @menção na tarefa para atribuí-la a um membro do grupo. O botão **Adicionar data de vencimento** aparece quando a tarefa tem uma pessoa responsável.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  1134aedee6cafd8c:
+    english: Tasks assigned to you appear on your **Tasks** page. Open **Tasks** from the sidebar to see them grouped by thread or poll.
+    translation: As tarefas atribuídas a você aparecem na página **Tarefas**. Abra **Tarefas** na barra lateral para vê-las agrupadas por tópico ou enquete.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  5eae519b81c94f7a:
+    english: "## Set a reminder"
+    translation: "## Definir um lembrete"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  561597d43d716888:
+    english: Click **Add due date** to choose a due date and when Loomio should email the assignee a reminder. You can also remove an existing due date from this dialog.
+    translation: Clique em **Adicionar data de vencimento** para escolher a data de vencimento e quando o Loomio deve enviar um lembrete por e-mail à pessoa responsável. Você também pode remover uma data de vencimento existente nessa janela.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  bd36c23f297b0429:
+    english: "## Mark it as done"
+    translation: "## Marcar como concluída"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  59b6138f35694902:
+    english: Click the checkbox beside a task to mark it as done. You can do this while editing the text, while reading it if you are the assignee, or from the **Tasks** page. Click it again to reopen the task.
+    translation: Clique na caixa de seleção ao lado de uma tarefa para marcá-la como concluída. Você pode fazer isso ao editar o texto, ao lê-lo se a tarefa foi atribuída a você ou na página **Tarefas**. Clique novamente para reabrir a tarefa.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'

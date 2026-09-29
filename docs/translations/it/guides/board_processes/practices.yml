@@ -1,0 +1,65 @@
+---
+navigation_title: Pratiche di governance
+blocks:
+  be27d7d85647e400:
+    english: "# Governance practices and approaches"
+    translation: "# Pratiche e approcci di governance"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  3242767a5e393028:
+    english: Good governance includes establishing, reviewing and challenging governance practices, policies and procedures to continously improve board effectiveness.
+    translation: Una buona governance richiede di definire, rivedere e mettere in discussione pratiche, politiche e procedure per migliorare continuamente l'efficacia del consiglio direttivo.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  c4d8cb7f7eb901a6:
+    english: However many boards are short on time and often weighed down by board papers, compliance and risk, without sufficient time to discuss and debate critical strategy and performance issues.
+    translation: Molti consigli direttivi, però, hanno poco tempo e devono occuparsi di documenti, conformità e rischi. Spesso resta poco spazio per discutere questioni cruciali di strategia e risultati.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  eb59655c49bf902d:
+    english: "## On Loomio\nLoomio offers the opportunity to work online on a document, policy or procedure.  Discussion and decisions are contained in a thread that members can access when and wherever works for them.  "
+    translation: |-
+      ## Su Loomio
+      Loomio ti permette di lavorare online su un documento, una politica o una procedura. Discussioni e decisioni si svolgono in una discussione a cui i membri possono accedere quando e dove preferiscono.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  a0d6426929e39b38:
+    english: 'Use a **thread** for each document, policy or procedure. The thread is the container for discussion, and holds document drafts and subsequent versions of the document.  '
+    translation: Usa una **discussione** per ogni documento, politica o procedura. La discussione raccoglie i commenti, le bozze e le versioni successive del documento.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  551c5aac67b42167:
+    english: With a Loomio thread, you can organize so that the 2-3 people working on the document text are discussing particulars in the thread.  The thread could be private amongst just those 2-3 people, or run openly in the group so that the work is transparent to all members.
+    translation: In una discussione Loomio, le 2-3 persone che lavorano al testo possono confrontarsi sui dettagli. Puoi riservare la discussione a loro oppure aprirla al gruppo, così tutti i membri possono seguire il lavoro.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  1400a6d44d7d4e35:
+    english: When the document reaches a draft version, use a **Sense check poll** to notify members that the draft document is ready for review, and invite members to read the document and respond with any comments or questions.  As well as letting everyone know that the work is progressing, the poll closing date encourages people to participate.
+    translation: Quando la bozza è pronta, usa un sondaggio **Controllo del senso** per avvisare i membri che possono esaminarla. Invitali a leggere il documento e a lasciare commenti o domande. La data di chiusura del sondaggio dà loro un termine entro cui partecipare e li tiene aggiornati sull'avanzamento del lavoro.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  44bcb71608c8f14a:
+    english: The document may require several draft iterations.
+    translation: Il documento potrebbe richiedere diverse revisioni della bozza.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  a5371854b689874a:
+    english: When a 'final' draft is ready, raise a **Proposal** to approve the document.
+    translation: Quando la bozza «finale» è pronta, avvia una **Proposta** per approvare il documento.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  5998c94bd5b640ab:
+    english: Loomio enables a board to progress work on governance improvement between meetings without eating into precious time in meetings.
+    translation: Loomio permette al consiglio direttivo di portare avanti il lavoro per migliorare la governance tra una riunione e l'altra, senza sottrarre tempo alle riunioni.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'

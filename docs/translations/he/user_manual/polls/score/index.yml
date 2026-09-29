@@ -1,0 +1,139 @@
+---
+navigation_title: סקר ציון
+blocks:
+  c719d051fa2f700e:
+    english: "# Score"
+    translation: "# סקר ציון"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  517adc384b38d256:
+    english: Score measures how participants evaluate each option on a shared numeric scale. Unlike Choose, it asks people to respond to every option, so the results show both what people prefer and how strongly they prefer it.
+    translation: סקר ציון מודד כיצד המשתתפים מעריכים כל אפשרות לפי סולם מספרי משותף. בשונה מסקר לבחור, יש לתת ציון לכל אפשרות. כך התוצאות מראות גם אילו אפשרויות מועדפות וגם עד כמה הן מועדפות.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  a678333f6d814e87:
+    english: "## When to use Score"
+    translation: "## מתי להשתמש בסקר ציון"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  c4ca19abb53e3ddc:
+    english: 'Use Score when every option can be evaluated independently against the same question. It works well for:'
+    translation: 'כדאי להשתמש בסקר ציון כאשר אפשר להעריך כל אפשרות בנפרד לפי אותה שאלה. הוא מתאים למשל ל:'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  c77c1ad6b2a9d697:
+    english: |-
+      - assessing how ready each part of a project is;
+      - rating the importance of several principles;
+      - measuring interest in possible meeting topics;
+      - evaluating grant applications against a common criterion; or
+      - comparing the suitability of several proposals.
+    translation: |-
+      - הערכת מידת המוכנות של כל חלק בפרויקט;
+      - דירוג החשיבות של כמה עקרונות;
+      - מדידת עניין בנושאים אפשריים לפגישה;
+      - הערכת בקשות למענק לפי קריטריון משותף; או
+      - השוואת ההתאמה של כמה הצעות.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  d91459d96a31a671:
+    english: Define what the bottom and top of the scale mean. A number without a shared definition can mean different things to different voters. Use [Choose](/en/user_manual/polls/choose/) when you only need selections, or [Allocate](/en/user_manual/polls/allocate/) when participants must make trade-offs within a limited budget.
+    translation: יש להגדיר מה משמעות הקצה התחתון והקצה העליון של הסולם. ללא הגדרה משותפת, אותו מספר עשוי לקבל משמעויות שונות אצל מצביעים שונים. כאשר נדרשת רק בחירה בין אפשרויות, אפשר להשתמש ב[לבחור](/en/user_manual/polls/choose/). כאשר המשתתפים צריכים לחלק תקציב מוגבל בין האפשרויות, אפשר להשתמש ב[להקצות](/en/user_manual/polls/allocate/).
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  6160518dc06b70a7:
+    english: "## Example: score possible trial locations"
+    translation: "## דוגמה: מתן ציונים למיקומים אפשריים לניסוי"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  a75c387743cad529:
+    english: Oatmilk Cooperative is choosing locations for a returnable-bottle trial. It asks members to score four locations from 0 (**unsuitable**) to 10 (**ideal**), considering customer access, staff capacity, storage, and collection transport.
+    translation: קואופרטיב חלב שיבולת שועל בוחר מיקומים לניסוי של בקבוקים להחזרה. חברי הקבוצה מתבקשים לתת ציון לארבעה מיקומים, מ־0 (**לא מתאים**) עד 10 (**אידיאלי**), תוך התחשבות בנגישות ללקוחות, בזמינות הצוות, באחסון ובהובלה לאיסוף הבקבוקים.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  c74ebb16f872b3c6:
+    english: "## Set up the poll"
+    translation: "## הגדרת הסקר"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  b03122ee279f9c91:
+    english: State one question that applies equally to every option. Add the items to be assessed, set the **Minimum score** and **Maximum score**, and explain the endpoints in the details. Option meanings can clarify the scope of each item.
+    translation: יש לנסח שאלה אחת שמתאימה לכל האפשרויות. יש להוסיף את הפריטים להערכה, לקבוע **ציון מינימום** ו**ציון מקסימלי**, ולהסביר בפרטים מה משמעות קצות הסולם. אפשר להבהיר את ההיקף של כל פריט בתיאור האפשרות.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  85e66520acf78264:
+    english: Choose a scale participants can apply consistently. A 0–5 scale is quick to use; a 0–10 scale allows finer distinctions. More precision does not necessarily produce better information, so use the shortest scale that fits the question.
+    translation: יש לבחור סולם שהמשתתפים יכולים להשתמש בו בעקביות. סולם של 0–5 מהיר לשימוש; סולם של 0–10 מאפשר הבחנות דקות יותר. דיוק רב יותר לא בהכרח מספק מידע טוב יותר, ולכן כדאי לבחור בסולם הקצר ביותר שמתאים לשאלה.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  bb3998655598796f:
+    english: Anonymous voting and showing options in random order can be useful when you want to reduce social or ordering effects.
+    translation: הצבעה אנונימית והצגת האפשרויות בסדר אקראי עשויות לעזור לצמצם השפעות חברתיות והשפעות של סדר ההצגה.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  d391457c69df967f:
+    english: "## Vote"
+    translation: "## הצבעה"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  33199814c9ad8a64:
+    english: Participants move a slider to score every option. In this example, the voter scores Central Station cafe at 8, Riverside market at 6, the University food court at 7, and Harbour offices at 5.
+    translation: המשתתפים מזיזים מחוון כדי לתת ציון לכל אפשרות. בדוגמה זו, בית הקפה בתחנה המרכזית מקבל ציון 8, השוק שעל גדת הנהר 6, מתחם האוכל באוניברסיטה 7, והמשרדים בנמל 5.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  fba3d21a09846414:
+    english: The reason explains how the voter applied the scale. This helps the group distinguish a low score caused by missing information from one caused by substantive concern.
+    translation: הנימוק מסביר כיצד הוחל הסולם בהצבעה. כך הקבוצה יכולה להבחין בין ציון נמוך שנובע ממחסור במידע לבין ציון נמוך שנובע מחשש מהותי.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  72a9e4073ea27936:
+    english: "## Read the results"
+    translation: "## קריאת התוצאות"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  846b7759f9d54232:
+    english: 'For each option, the results show:'
+    translation: 'התוצאות מציגות לכל אפשרות:'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  cac30fa54f0aeaf7:
+    english: |-
+      - **Points**: the sum of all scores;
+      - **Mean**: the average score; and
+      - **Voters**: how many people scored the option.
+    translation: |-
+      - **נקודות**: סכום כל הציונים;
+      - **מתכוון**: ממוצע הציונים; וכן
+      - **מצביעים**: מספר האנשים שנתנו ציון לאפשרות.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  7e063d4b1babcb9e:
+    english: In this example, **Central Station cafe** has the highest mean at 7.5. **Harbour offices** has the lowest mean at 5.25, while Riverside market and the University food court are tied at 7. Four of five invited people have voted, so the group can also see that one response is outstanding.
+    translation: בדוגמה זו, ל**בית הקפה בתחנה המרכזית** הממוצע הגבוה ביותר, 7.5. ל**משרדים בנמל** הממוצע הנמוך ביותר, 5.25, ואילו השוק שעל גדת הנהר ומתחם האוכל באוניברסיטה חולקים ממוצע של 7. ארבעה מתוך חמשת האנשים שהוזמנו כבר הצביעו, ולכן הקבוצה יכולה לראות שעדיין חסרה תשובה אחת.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  147800d3643d9942:
+    english: Compare means only when the options have a similar number of voters. Read the vote reasons before treating a small difference as meaningful, and publish an outcome explaining what action follows from the scores.
+    translation: יש להשוות ממוצעים רק כאשר מספר המצביעים דומה בין האפשרויות. לפני שמייחסים משמעות להבדל קטן, כדאי לקרוא את נימוקי ההצבעות ולפרסם מסקנה שמסבירה איזו פעולה תינקט בעקבות הציונים.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'

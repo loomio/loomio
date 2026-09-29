@@ -1,0 +1,191 @@
+---
+navigation_title: Пропозиції та опитування
+blocks:
+  68e2a02de493acf3:
+    english: "# Proposals and polls"
+    translation: "# Пропозиції та опитування"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  ff07fce3bab705aa:
+    english: Proposals and polls collect structured responses from a group. They can help test an idea, make a decision, identify priorities, schedule a meeting, or elect representatives.
+    translation: Пропозиції та опитування допомагають зібрати структуровані відповіді учасників групи. З їхньою допомогою можна перевірити ідею, ухвалити рішення, визначити пріоритети, запланувати зустріч або обрати представників.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  f031d2644fee2a91:
+    english: "## Find the right help"
+    translation: "## Знайдіть потрібну інформацію"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  34039c79ea769793:
+    english: 'These parts of the manual answer different questions:'
+    translation: 'Ці розділи посібника відповідають на різні запитання:'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  34ea9d58ccbf80fb:
+    english: |-
+      | If you want to… | Read… |
+      |---|---|
+      | Choose what participants should express | [Proposals](../proposals/) or [Polls](../proposal_types/) |
+      | Run a specific proposal template | [Sense check](../proposals/sense_check/), [Advice](../proposals/advice/), [Consent](../proposals/consent/), or [Consensus](../proposals/consensus/) |
+      | Configure the templates available to a group | [Poll templates](../poll_templates/) |
+      | Facilitate a decision from discussion to outcome | [Making decisions](/en/guides/making_decisions/) |
+    translation: |-
+      | Якщо ви хочете… | Читайте… |
+      |---|---|
+      | Визначити, яку відповідь мають дати учасники | [Пропозиції](../proposals/) або [Опитування](../proposal_types/) |
+      | Використати певний шаблон пропозиції | [Перевірка думок](../proposals/sense_check/), [Порада](../proposals/advice/), [Згода](../proposals/consent/) або [Консенсус](../proposals/consensus/) |
+      | Налаштувати шаблони, доступні групі | [Шаблони опитувань](../poll_templates/) |
+      | Провести групу від обговорення до висновку | [Ухвалення рішень](/en/guides/making_decisions/) |
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  7eddb057cca077f4:
+    english: A **voting method** defines how people respond and how results are calculated. A **poll template** is a reusable configuration built on a voting method, with preset instructions, options, and settings. A **decision process** may use a discussion and several templates before the group reaches an outcome.
+    translation: "**Метод голосування** визначає, як люди відповідають і як підраховуються результати. **Шаблон опитування** — це налаштування на основі методу голосування, які можна використовувати повторно. Він містить заздалегідь задані інструкції, варіанти відповіді та параметри. **Процес ухвалення рішення** може охоплювати обговорення й кілька шаблонів, перш ніж група дійде висновку."
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  3cd46aa2f1240e88:
+    english: "## Proposals"
+    translation: "## Пропозиції"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  85a55fccaf4e4032:
+    english: 'A proposal asks people to respond to a statement or course of action. Loomio includes templates for common purposes:'
+    translation: 'Пропозиція запрошує людей висловитися щодо твердження або плану дій. Loomio містить шаблони для поширених завдань:'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  51bf1ffa7d057d9e:
+    english: |-
+      - [Sense check](../proposals/sense_check/) gathers early reactions;
+      - [Advice](../proposals/advice/) gathers input for a decision maker;
+      - [Consent](../proposals/consent/) tests for meaningful objections; and
+      - [Consensus](../proposals/consensus/) seeks collective agreement.
+    translation: |-
+      - [Перевірка думок](../proposals/sense_check/) збирає перші реакції;
+      - [Порада](../proposals/advice/) збирає думки для того, хто ухвалює рішення;
+      - [Згода](../proposals/consent/) допомагає виявити суттєві заперечення; і
+      - [Консенсус](../proposals/consensus/) допомагає досягти спільної згоди.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  d01e9f85fcd2d9c2:
+    english: See [Proposals](../proposals/) to compare them.
+    translation: Порівняйте їх у розділі [Пропозиції](../proposals/).
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  821dcd89b5460804:
+    english: "## Polls"
+    translation: "## Опитування"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  ec746235c7fe89c4:
+    english: 'Use a poll when participants need to select, score, allocate, rank, state their availability, or cast an election ballot:'
+    translation: 'Використовуйте опитування, коли учасникам потрібно вибрати варіанти, оцінити їх, розподілити бали, упорядкувати варіанти за перевагою, указати свою доступність або проголосувати на виборах:'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  b93f9fe9611d9205:
+    english: |-
+      - [Choose](../choose/) finds popular options;
+      - [Score](../score/) evaluates every option on a scale;
+      - [Allocate](../allocate/) distributes a limited budget of points;
+      - [Rank](../rank/) finds an overall order of preference;
+      - [Time poll](../meeting_polls/) finds when people are available; and
+      - [STV Election](../stv/) elects multiple winners proportionally.
+    translation: |-
+      - [Вибір](../choose/) визначає популярні варіанти;
+      - [Оцінювання](../score/) дає змогу оцінити кожен варіант за шкалою;
+      - [Розподіл](../allocate/) дає змогу розподілити обмежену кількість балів;
+      - [Ранжування](../rank/) визначає загальний порядок переваг;
+      - [Опитування щодо часу](../meeting_polls/) визначає, коли люди можуть зустрітися; і
+      - [Вибори на СТВ](../stv/) дають змогу пропорційно обрати кількох переможців.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  9972b34ccc3ea79b:
+    english: See [Polls](../proposal_types/) to compare them.
+    translation: Порівняйте їх у розділі [Опитування](../proposal_types/).
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  5890626db6dcbb68:
+    english: "## Start a proposal or poll"
+    translation: "## Розпочніть пропозицію або опитування"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  4b5338cae269fd32:
+    english: "### Choose whether to use a discussion"
+    translation: "### Вирішіть, чи потрібне обговорення"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  c45fe8ff31f71486:
+    english: Start the proposal or poll inside a discussion when people need context, questions, or conversation before responding. A discussion can contain several proposals over time, keeping amendments and the eventual outcome together as one record of the topic.
+    translation: Розпочніть пропозицію або опитування в обговоренні, якщо перед відповіддю людям потрібен контекст або можливість поставити запитання й обговорити тему. З часом в одному обговоренні можна розмістити кілька пропозицій. Тоді зміни до них і підсумковий висновок залишаться разом в одному записі теми.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  0bb2a90f8f9dad0c:
+    english: Run a standalone poll when the discussion has already happened elsewhere, such as at a meeting, or when the question is simple and you only need to collect responses. Include enough detail or a link to the relevant record so voters understand what they are responding to.
+    translation: Проведіть окреме опитування, якщо обговорення вже відбулося деінде, наприклад на зустрічі, або якщо запитання просте і вам потрібно лише зібрати відповіді. Додайте достатньо деталей або посилання на відповідний запис, щоб учасники розуміли, щодо чого голосують.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  7d50445f0c54190d:
+    english: "### In a discussion"
+    translation: "### В обговоренні"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  05e03f7ee0e1b4dc:
+    english: Open the discussion, scroll to the reply area, select **Start a vote**, and choose a template.
+    translation: Відкрийте обговорення, прокрутіть до поля відповіді, натисніть **Розпочати голосування** й виберіть шаблон.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  55dc0481a5c4ecb6:
+    english: "### Without a discussion"
+    translation: "### Без обговорення"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  af5fd115de5f7aec:
+    english: Open the **Polls** tab on the group page, select **New poll**, and choose a template.
+    translation: Відкрийте вкладку **Опитування** на сторінці групи, натисніть **Нове опитування** й виберіть шаблон.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  23479ea263004d4a:
+    english: If you create a discussion and poll at the same time only to run a vote, avoid notifying people twice. Start the discussion without notifying them and use the poll invitation, or run the poll without a discussion.
+    translation: Якщо ви створюєте обговорення й опитування одночасно лише для голосування, не надсилайте людям два сповіщення. Створіть обговорення без сповіщення й запросіть людей через опитування або проведіть опитування без обговорення.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  31f857d230319a3c:
+    english: "## What happens next"
+    translation: "## Що відбувається далі"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  fb709a76dfeabd4f:
+    english: When starting a proposal or poll, you provide a title and details, review its response options and settings, set a closing time, and invite participants. While it is open, participants can vote, explain their response, and change their vote. Results update as votes are submitted, subject to the poll's result-visibility setting.
+    translation: Коли ви розпочинаєте пропозицію або опитування, укажіть назву й подробиці, перегляньте варіанти відповіді та налаштування, установіть час завершення й запросіть учасників. Поки голосування відкрите, учасники можуть голосувати, пояснювати й змінювати свій голос. Результати оновлюються з надходженням голосів відповідно до налаштування видимості результатів.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  acd2e813b56034a0:
+    english: When it closes, publish an [outcome](../outcomes/) that records what the result means and what will happen next.
+    translation: Після завершення опублікуйте [висновок](../outcomes/), у якому поясніть, що означає результат і що відбудеться далі.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'

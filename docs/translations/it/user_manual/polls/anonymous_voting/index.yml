@@ -1,0 +1,369 @@
+---
+navigation_title: Voto anonimo
+blocks:
+  b4e842083054a400:
+    english: "# Anonymous voting"
+    translation: "# Voto anonimo"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  9b5c46644a952388:
+    english: Anonymous voting, also known as blind voting, separates the record of who has voted from the votes themselves. Poll coordinators can see who was eligible and, once at least three people have voted, verify participation. Application users cannot connect a submitted vote with the person who submitted it.
+    translation: Il voto anonimo, detto anche voto segreto, separa la registrazione di chi ha votato dai voti espressi. Chi coordina il sondaggio può vedere chi aveva diritto di voto e, dopo che almeno tre persone hanno votato, verificare la partecipazione. Chi usa l'applicazione non può collegare un voto alla persona che lo ha espresso.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  105abff68025f002:
+    english: This page explains the protections provided by anonymous voting, the information that is retained, and the limits of the guarantee.
+    translation: Questa pagina spiega come viene protetto il voto anonimo, quali informazioni vengono conservate e quali sono i limiti di questa tutela.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  6d97c8b835a3f1f2:
+    english: "## How anonymous voting protects voters"
+    translation: "## Come il voto anonimo protegge chi vota"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  e01d5c77096b953e:
+    english: 'An anonymous poll keeps two separate sets of records:'
+    translation: 'Un sondaggio anonimo conserva due insiemi distinti di dati:'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  757ab56b1165a71d:
+    english: |-
+      | Participation records | Submitted votes |
+      | --- | --- |
+      | Who is eligible to vote | The selected options or scores |
+      | Who was invited, and by whom | The poll the vote belongs to |
+      | Whether each eligible person has voted | No name or user account |
+      | No selected options or scores | No link to a participation record |
+    translation: |-
+      | Dati sulla partecipazione | Voti espressi |
+      | --- | --- |
+      | Chi ha diritto di voto | Le opzioni selezionate o i punteggi assegnati |
+      | Chi è stato invitato e da chi | Il sondaggio a cui appartiene il voto |
+      | Se ciascuna persona avente diritto ha votato | Nessun nome o account utente |
+      | Nessuna opzione selezionata o punteggio assegnato | Nessun collegamento ai dati sulla partecipazione |
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  b908c49acc827932:
+    english: There is no shared identifier that connects these records. Submitted votes also omit the actual submission time, invitation information, written reasons, attachments, and other metadata that could help identify a voter.
+    translation: Non esiste un identificativo condiviso che colleghi questi dati. I voti espressi non includono nemmeno l'ora effettiva dell'invio, le informazioni sugli inviti, le motivazioni scritte, gli allegati o altri metadati che potrebbero aiutare a identificare chi ha votato.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  6430a3d863d135b6:
+    english: This separation is enforced when the vote is stored. It does not depend only on hiding names in the interface.
+    translation: Questa separazione viene applicata quando il voto viene memorizzato. Non dipende soltanto dal fatto che i nomi siano nascosti nell'interfaccia.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  b8e31aef3d559f28:
+    english: "## While voting is open"
+    translation: "## Durante la votazione"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  f905c85734898a41:
+    english: Results remain hidden from everyone until the poll closes. This includes poll coordinators, group administrators, and instance administrators using the application.
+    translation: I risultati restano nascosti a tutti fino alla chiusura del sondaggio. Questo vale anche per chi coordina il sondaggio e per chi amministra il gruppo o l'istanza tramite l'applicazione.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  828df5247b61c9e6:
+    english: 'When someone votes:'
+    translation: 'Quando una persona vota:'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  69b471d43b2148a1:
+    english: |-
+      - their submitted vote is stored without their name or participation record;
+      - their participation record is marked to show that they have voted;
+      - no vote event, notification, email, comment, or activity entry is created;
+      - no copy of their selections is returned after submission; and
+      - the interface confirms only that their vote was recorded.
+    translation: |-
+      - il suo voto viene memorizzato senza il suo nome né un collegamento ai suoi dati sulla partecipazione;
+      - i suoi dati sulla partecipazione vengono aggiornati per indicare che ha votato;
+      - non vengono creati eventi di voto, notifiche, email, commenti o voci di attività;
+      - dopo l'invio non viene restituita una copia delle sue scelte; e
+      - l'interfaccia conferma soltanto che il voto è stato registrato.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  4ffe4b38db135dab:
+    english: The participation record does not store a precise time for when the person voted. Submitted votes are not ordered by submission time.
+    translation: I dati sulla partecipazione non conservano l'ora precisa in cui la persona ha votato. I voti espressi non sono ordinati in base all'ora di invio.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  7acaf6b48fc42105:
+    english: "## Votes cannot be changed"
+    translation: "## I voti non possono essere modificati"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  996ef90a3eee857b:
+    english: Each eligible person can vote once. A submitted anonymous vote cannot be reviewed, changed, withdrawn, or replaced, including by a coordinator or administrator.
+    translation: Ogni persona avente diritto può votare una sola volta. Un voto anonimo inviato non può essere consultato, modificato, ritirato o sostituito, nemmeno da chi coordina o amministra il sondaggio.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  58f0aaa6a45c1d37:
+    english: Allowing a person to retrieve or replace their vote would require a persistent link between that person and the vote. Anonymous voting deliberately does not create that link.
+    translation: Per consentire a una persona di recuperare o sostituire il proprio voto, servirebbe un collegamento permanente tra la persona e il voto. Il voto anonimo non crea questo collegamento.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  2fd2c9d6ab0d6f68:
+    english: Review your selections carefully before submitting.
+    translation: Controlla con attenzione le tue scelte prima di inviare il voto.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  59f83c0e359484c4:
+    english: "## Why anonymous votes do not have reasons"
+    translation: "## Perché i voti anonimi non includono motivazioni"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  89f9d9a1d4bcb395:
+    english: New anonymous votes cannot include a written reason or an attachment. Reasons can contain names, personal details, writing patterns, mentions, or other information that identifies the voter. They would also make individual votes easier to distinguish from the aggregate result.
+    translation: I nuovi voti anonimi non possono includere una motivazione scritta o un allegato. Le motivazioni possono contenere nomi, dati personali, modi di scrivere riconoscibili, menzioni o altre informazioni che identificano chi vota. Renderebbero inoltre più facile distinguere i singoli voti dal risultato complessivo.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  932f88aa929fb4eb:
+    english: Participants can still discuss the poll in its thread where discussion is available. Those comments are ordinary named discussion contributions and are not attached to an anonymous vote.
+    translation: Le persone possono comunque parlare del sondaggio nella relativa discussione, se i commenti sono disponibili. Quei commenti sono normali contributi attribuiti a chi li scrive e non sono collegati a un voto anonimo.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  1b21c2826270bd52:
+    english: "## Results and exports"
+    translation: "## Risultati ed esportazioni"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  afc45e50b74e075b:
+    english: After the poll closes, the results are calculated from the detached votes and displayed as totals and other aggregate results supported by the poll type.
+    translation: Dopo la chiusura del sondaggio, i risultati vengono calcolati dai voti separati dalle identità e mostrati come totali e altri risultati complessivi previsti dal tipo di sondaggio.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  b28c82ffcb4ffeb5:
+    english: The application does not publish vote identifiers, submission order, or submission times. Poll exports contain aggregate results rather than a row for each anonymous vote, except that a closed STV election can be exported in BLT format. A BLT export contains the candidate rankings needed to recount the election, grouped when multiple ballots have the same ranking, without voter identities or ballot metadata.
+    translation: L'applicazione non pubblica gli identificativi dei voti, l'ordine di invio o le ore di invio. Le esportazioni dei sondaggi contengono risultati complessivi anziché una riga per ogni voto anonimo. Fa eccezione un'elezione STV chiusa, che può essere esportata in formato BLT. Un'esportazione BLT contiene le classifiche dei candidati necessarie per ricontare l'elezione. Le schede con la stessa classifica sono raggruppate e non vengono incluse le identità di chi ha votato né i metadati delle schede.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  8088fc78d955e9bb:
+    english: An anonymous poll cannot be reopened after it closes.
+    translation: Un sondaggio anonimo non può essere riaperto dopo la chiusura.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  c368b542923cd542:
+    english: "## Participation verification"
+    translation: "## Verifica della partecipazione"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  ab086d63c01514bf:
+    english: Poll coordinators can view the named participation records. These always show who was eligible. Once at least three people have voted, they also show whether each person voted, but never show how anyone voted. If a poll closes with fewer than three votes, the participation status remains hidden.
+    translation: Chi coordina il sondaggio può vedere i dati sulla partecipazione associati ai nomi. Questi mostrano sempre chi aveva diritto di voto. Dopo che almeno tre persone hanno votato, mostrano anche se ciascuna persona ha votato, ma mai come ha votato. Se un sondaggio si chiude con meno di tre voti, lo stato di partecipazione resta nascosto.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  dcad5d728e5e7cfd:
+    english: Other participants cannot view this named participation information. Access to poll results does not grant access to the participation records.
+    translation: Le altre persone che partecipano al sondaggio non possono vedere queste informazioni nominative. L'accesso ai risultati del sondaggio non dà accesso ai dati sulla partecipazione.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  37cf06402ac47fa2:
+    english: |-
+      Coordinators can add eligible people while voting remains open, including after
+      other people have voted. Existing voters cannot be removed from an anonymous
+      poll.
+    translation: |-
+      Chi coordina il sondaggio può aggiungere persone aventi diritto mentre la votazione è aperta, anche dopo che
+      altre persone hanno votato. Chi ha già votato non può essere rimosso da un sondaggio
+      anonimo.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  705e9b807681f6c1:
+    english: "## Reminders"
+    translation: "## Promemoria"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  8ef8b501a1b27f63:
+    english: For an anonymous poll lasting at least 24 hours, eligible people who have not voted receive one automatic reminder during the final 24 hours.
+    translation: Per un sondaggio anonimo che dura almeno 24 ore, le persone aventi diritto che non hanno votato ricevono un promemoria automatico nelle ultime 24 ore.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  b23e579a8ef628de:
+    english: The reminder is selected from participation records only. It does not inspect submitted votes or create a connection to them. If the deadline changes, the hourly reminder check uses the current deadline without maintaining a separate scheduled reminder for the poll.
+    translation: Il promemoria viene inviato in base ai soli dati sulla partecipazione. Non esamina i voti espressi né crea un collegamento con essi. Se la scadenza cambia, il controllo orario dei promemoria usa la scadenza corrente, senza mantenere un promemoria programmato separato per il sondaggio.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  053ce04ce5f98ed8:
+    english: Polls with a total voting period of less than 24 hours do not send this automatic reminder.
+    translation: I sondaggi con un periodo di votazione complessivo inferiore a 24 ore non inviano questo promemoria automatico.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  fb1f13e60fe178fe:
+    english: "## What coordinators and administrators can see"
+    translation: "## Cosa possono vedere coordinatori e amministratori"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  e59c22e94231a746:
+    english: 'Through the application, a poll coordinator, group administrator, or instance administrator may be able to see:'
+    translation: 'Tramite l''applicazione, chi coordina il sondaggio o amministra il gruppo o l''istanza può avere accesso a:'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  2da6b1feaa8b36f1:
+    english: |-
+      - the poll and its eligible voters;
+      - whether each eligible person has voted, where their role permits access and at least three people have voted; and
+      - aggregate results after the poll closes.
+    translation: |-
+      - il sondaggio e le persone aventi diritto di voto;
+      - l'indicazione che ciascuna persona avente diritto abbia votato, se il suo ruolo consente l'accesso e almeno tre persone hanno votato; e
+      - i risultati complessivi dopo la chiusura del sondaggio.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  6a96a87699625dc6:
+    english: 'They cannot use application features to see:'
+    translation: 'Le funzionalità dell''applicazione non consentono loro di vedere:'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  dd4756253d1ee6dc:
+    english: |-
+      - which selections belong to a person;
+      - individual votes or voting patterns;
+      - when a particular vote was submitted; or
+      - a reason, attachment, event, or notification associated with a submitted vote.
+    translation: |-
+      - quali scelte appartengono a una persona;
+      - i singoli voti o i modi in cui le persone hanno votato;
+      - quando è stato inviato un determinato voto; o
+      - una motivazione, un allegato, un evento o una notifica associati a un voto inviato.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  c350875c33492237:
+    english: "## Limits of anonymous voting"
+    translation: "## Limiti del voto anonimo"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  48d04d7b4817e710:
+    english: These protections prevent application users from linking a submitted vote to its voter. They are not a cryptographic protection against an operator who can inspect the database, backups, server logs, process memory, network traffic, or a modified version of the application.
+    translation: Queste tutele impediscono a chi usa l'applicazione di collegare un voto alla persona che lo ha espresso. Non offrono una protezione crittografica contro un operatore che possa esaminare il database, i backup, i log del server, la memoria dei processi, il traffico di rete o una versione modificata dell'applicazione.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  f901f505362e46b4:
+    english: The result itself may also reveal information. A small electorate, a unanimous result, a distinctive combination of selections, or information shared outside the poll can make a person's choices easier to infer. Voters may also choose to identify themselves in discussion outside their submitted vote.
+    translation: Anche il risultato può rivelare informazioni. Se le persone aventi diritto sono poche, il risultato è unanime, una combinazione di scelte è particolare o vengono condivise informazioni fuori dal sondaggio, può essere più facile dedurre le scelte di una persona. Chi vota può anche scegliere di identificarsi nella discussione, al di fuori del voto inviato.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  dfe97db86db52d15:
+    english: Consider the size of the electorate and the sensitivity of the decision when deciding whether application-level anonymous voting is suitable.
+    translation: Per decidere se il voto anonimo nell'applicazione è adatto, considera il numero di elettori e la delicatezza della decisione.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  60cc6f1a0163ec5d:
+    english: "## Questions"
+    translation: "## Domande"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  57615f2c4c040dce:
+    english: "### Can a coordinator see how I voted?"
+    translation: "### Un coordinatore può vedere come ho votato?"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  9dc1d151cc90e94e:
+    english: No. Once at least three people have voted, a coordinator can verify whether you voted but cannot connect you with a submitted vote through the application. Below that threshold, your participation status remains hidden.
+    translation: No. Dopo che almeno tre persone hanno votato, un coordinatore può verificare se hai votato, ma non può associare il tuo nome a un voto inviato tramite l'applicazione. Finché i voti sono meno di tre, la tua partecipazione resta nascosta.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  b3b382d2575b715d:
+    english: "### Can I see my vote after submitting it?"
+    translation: "### Posso vedere il mio voto dopo averlo inviato?"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  52aaaa1c764d5745:
+    english: No. The application confirms that your vote was recorded, then discards the selections from the voting interface. It cannot retrieve your vote without creating the link that anonymous voting is designed to avoid.
+    translation: No. L'applicazione conferma che il tuo voto è stato registrato, poi rimuove le tue scelte dall'interfaccia di voto. Non può recuperare il tuo voto senza creare il collegamento che il voto anonimo è progettato per evitare.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  071dd89d6eb38ebf:
+    english: "### Can I change or withdraw my vote?"
+    translation: "### Posso cambiare o ritirare il mio voto?"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  '059b75c51b4225ab':
+    english: No. There is no link that would let the application identify which submitted vote to change or remove.
+    translation: No. Non esiste un collegamento che permetta all'applicazione di identificare quale voto inviato modificare o rimuovere.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  c94077837455425f:
+    english: "### Will I receive an email confirming my vote?"
+    translation: "### Riceverò un'email di conferma del mio voto?"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  f36a8b43a3fdee36:
+    english: No. Voting creates only the on-screen acknowledgement and updates your participation record. It does not send a confirmation email or create a notification or activity event.
+    translation: No. Il voto produce solo una conferma sullo schermo e aggiorna il tuo registro di partecipazione. Non invia un'email di conferma né crea una notifica o un evento nel registro delle attività.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  f320754cf7ee77bc:
+    english: "### Does a public poll reveal more information?"
+    translation: "### Un sondaggio pubblico rivela più informazioni?"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  f84121f0c18e03ab:
+    english: Public access may allow people to see the poll and its aggregate results after it closes. It does not expose the named participation records or individual anonymous votes.
+    translation: L'accesso pubblico può permettere di vedere il sondaggio e i risultati aggregati dopo la sua chiusura. Non rende visibili i registri di partecipazione con i nomi né i singoli voti anonimi.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  e2dbe0c181f865ca:
+    english: "### Is anonymous voting suitable for every election?"
+    translation: "### Il voto anonimo è adatto a ogni elezione?"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  05fc871619a2170d:
+    english: No. It provides application-level separation between identities and votes. Decisions requiring protection from system operators or independently verifiable cryptographic elections need a system designed for those requirements.
+    translation: No. Separa le identità dai voti all'interno dell'applicazione. Per le decisioni che richiedono protezione dagli operatori del sistema o elezioni crittografiche verificabili in modo indipendente, serve un sistema progettato per questi requisiti.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'

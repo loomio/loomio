@@ -1,0 +1,141 @@
+---
+navigation_title: Kurzer Rundgang
+blocks:
+  1be6038be45d840d:
+    english: "# Quick tour"
+    translation: "# Kurzer Rundgang"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  63c602fdeb39caf8:
+    english: This page introduces the main parts of the Loomio interface and where to find the work that involves you.
+    translation: Diese Seite zeigt dir die wichtigsten Bereiche der Loomio-Oberfläche und wo du Inhalte findest, die dich betreffen.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  7d5f837af9189e74:
+    english: "## Group page"
+    translation: "## Gruppenseite"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  d5b0be3db0bc6202:
+    english: Your group home page introduces the group and provides access to its work.
+    translation: Die Startseite deiner Gruppe stellt die Gruppe vor und bietet Zugang zu ihren Inhalten.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  5cf665a54aa4a09d:
+    english: "### Tabs"
+    translation: "### Tabs"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  cdd3c098983b6066:
+    english: 'The tabs under the group description provide access to:'
+    translation: 'Über die Tabs unter der Gruppenbeschreibung erreichst du:'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  02760342b07f5ff4:
+    english: "**Discussions** - The group's discussion threads and recent activity."
+    translation: "**Diskussionen** - Die Diskussionen der Gruppe und die neuesten Aktivitäten."
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  e2c7a0c137330c27:
+    english: "**Polls** - A list of polls active in your group."
+    translation: "**Abstimmungen** - Eine Liste der aktiven Abstimmungen in deiner Gruppe."
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  '085bd9dfce8144dc':
+    english: "**Members** - The people who belong to the group."
+    translation: "**Mitglieder** - Die Personen, die zur Gruppe gehören."
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  cfdb369a7fd6e14f:
+    english: "**Files** - Documents and other files attached throughout the group. The tab collects files from discussion contexts, comments, proposals, and polls, so you can find a document without remembering where it was attached."
+    translation: "**Dokumente** - Dokumente und andere Dateien, die in der Gruppe angehängt wurden. Der Tab sammelt Dateien aus Diskussionskontexten, Kommentaren, Vorschlägen und Abstimmungen. So findest du ein Dokument, ohne wissen zu müssen, wo es angehängt wurde."
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  6483153cbc12b458:
+    english: See [Finding content](/en/user_manual/overview/finding-content) for help with search, filters, tags, bookmarks, and unread discussions.
+    translation: Unter [Inhalte finden](/en/user_manual/overview/finding-content) erfährst du mehr über Suche, Filter, Tags, Lesezeichen und ungelesene Diskussionen.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  4d65c4ebdb266f6b:
+    english: "## Sidebar"
+    translation: "## Seitenleiste"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  017aecc27a4746ca:
+    english: Open the sidebar with the menu button (**☰**) at the top left.
+    translation: Öffne die Seitenleiste über die Menüschaltfläche (**☰**) oben links.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  0bd69f7ef1a85ec1:
+    english: Use the sidebar to open your dashboard, polls awaiting your vote, unread and direct discussions, tasks, and groups. It also links to the user manual and support.
+    translation: Über die Seitenleiste erreichst du deine Übersicht, Abstimmungen, bei denen deine Stimme noch aussteht, ungelesene und direkte Diskussionen, Aufgaben und Gruppen. Dort findest du auch Links zum Benutzerhandbuch und zum Support.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  45a5b7ceb512d86c:
+    english: "### User settings"
+    translation: "### Benutzereinstellungen"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  e6c693b0bbf41324:
+    english: Select your name in the sidebar to open your user menu.
+    translation: Wähle deinen Namen in der Seitenleiste aus, um dein Benutzermenü zu öffnen.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  e671b5bc0a63ce1d:
+    english: Use this menu to edit your profile, change notification settings, choose a theme, manage account settings, and sign out.
+    translation: In diesem Menü kannst du dein Profil bearbeiten, Benachrichtigungseinstellungen ändern, ein Thema auswählen, Kontoeinstellungen verwalten und dich abmelden.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  c005f6296b6fdf2d:
+    english: "## Notifications"
+    translation: "## Benachrichtigungen"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  59121c87e06e34d0:
+    english: The bell button at the top right opens your in-app notifications. A badge appears when you have notifications you have not viewed.
+    translation: Über die Glocke oben rechts öffnest du deine Benachrichtigungen in Loomio. Wenn du Benachrichtigungen noch nicht angesehen hast, erscheint eine Markierung.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  d128ccedfd3f1379:
+    english: See [Notifications](/en/user_manual/users/email_settings) to learn about in-app notifications, email preferences, and notification settings for groups and discussions.
+    translation: Unter [Benachrichtigungen](/en/user_manual/users/email_settings) erfährst du mehr über Benachrichtigungen in Loomio, E-Mail-Einstellungen und Benachrichtigungseinstellungen für Gruppen und Diskussionen.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  e4a4ca9c3ed52509:
+    english: "## What to do next"
+    translation: "## Nächste Schritte"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'
+  b7b09881cc3060b1:
+    english: |-
+      - Read [How to participate](/en/user_manual/overview/how-to-participate) to learn how to comment, reply, react, and vote.
+      - Read [Finding content](/en/user_manual/overview/finding-content) to learn how to locate discussions and decisions.
+      - Visit [Discussions](/en/user_manual/discussions) or [Proposals and polls](/en/user_manual/polls/intro_to_decisions) for detailed guidance.
+    translation: |-
+      - Lies [So kannst du dich beteiligen](/en/user_manual/overview/how-to-participate), um zu erfahren, wie du kommentierst, antwortest, reagierst und abstimmst.
+      - Lies [Inhalte finden](/en/user_manual/overview/finding-content), um Diskussionen und Entscheidungen zu finden.
+      - Unter [Diskussionen](/en/user_manual/discussions) oder [Vorschläge und Abstimmungen](/en/user_manual/polls/intro_to_decisions) findest du ausführliche Anleitungen.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-29'

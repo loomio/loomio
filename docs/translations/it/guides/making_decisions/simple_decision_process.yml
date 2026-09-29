@@ -1,0 +1,177 @@
+---
+navigation_title: Processo decisionale semplice
+blocks:
+  84ddd86a61d09414:
+    english: "# Simple decision process"
+    translation: "# Processo decisionale semplice"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  2e868ae6bc4a493b:
+    english: This guide describes an end-to-end process using a discussion, Sense check, final proposal, and outcome. For help with the fields and response options of one proposal, see [Proposals](/en/user_manual/polls/proposals/).
+    translation: 'Questa guida descrive un processo completo: dalla discussione al Controllo del senso, fino alla proposta finale e alla conclusione. Per informazioni sui campi e sulle opzioni di risposta di una proposta, consulta [Proposte](/en/user_manual/polls/proposals/).'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  d9877680762afa22:
+    english: Some organizations arrive at Loomio having already developed a deep culture and practice of collaborative decision making.  Such organizations have often written handbooks and codified their practices, however, most organizations are still on the journey and looking for some helpful first steps towards making better decisions together.  If the burning question in your organization is **how do we make decisions together?**, then this guide is for you.
+    translation: Alcune organizzazioni arrivano su Loomio con una pratica consolidata di decisioni collaborative. Spesso hanno già documentato i propri metodi. Molte altre, invece, cercano un punto di partenza per prendere decisioni migliori insieme. Se nella tua organizzazione vi chiedete **come prendiamo decisioni insieme?**, questa guida può aiutarti.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  6b321a0ba71f92b8:
+    english: "***Here are three steps to help you co-create a better, more cohesive decision with less stress and anxiety.***"
+    translation: "***Ecco tre passi per costruire insieme una decisione migliore e più condivisa, con meno stress e incertezza.***"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  c46b32b56b933b0a:
+    english: "## Simple decision making - in 3 steps"
+    translation: "## Prendere decisioni insieme in 3 passi"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  e3208a84f88ba36f:
+    english: Good collaborative decisions rarely happen by themselves.  They almost always benefit from someone facilitating the discussion through to decision.  So when you launch a discussion thread, you take on a facilitation role (unless someone else is facilitating).
+    translation: Le buone decisioni collaborative raramente arrivano da sole. Di solito serve qualcuno che accompagni la discussione fino alla decisione. Quando avvii una discussione, assumi questo ruolo, a meno che non lo faccia un'altra persona.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  1a1da8788ddb01c7:
+    english: Follow these 3 steps as you facilitate your group to make a good decision.
+    translation: Segui questi 3 passi per aiutare il tuo gruppo a prendere una buona decisione.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  5b83a53a3f4caad5:
+    english: |-
+      ### Step 1 - Introduce and discuss
+      Start a Loomio **discussion** to introduce the topic, open conversation and invite people. Include all the context-setting information your group needs to meaningfully participate, along with relevant background so everyone understands the purpose.
+    translation: |-
+      ### Passo 1 - Presenta l'argomento e avvia la discussione
+      Avvia una **Discussione** su Loomio per presentare l'argomento, aprire il confronto e invitare le persone a partecipare. Fornisci al gruppo le informazioni necessarie per contribuire e il contesto utile a capire lo scopo della discussione.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  8aab998cb04b8635:
+    english: 'Be clear about your objective - what is the decision to be made or intended outcome of the discussion? '
+    translation: 'Chiarisci il tuo obiettivo: quale decisione va presa o quale conclusione vuoi raggiungere con la discussione?'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  d8f53cbae173f5ac:
+    english: As the discussion progresses, create space for diverse input - sometimes the best ideas and input come from outside the box.  Work together to explore and test ideas, encouraging a healthy and open discussion.
+    translation: Man mano che la discussione procede, lascia spazio a punti di vista diversi. A volte le idee migliori arrivano da prospettive inattese. Esplorate e mettete alla prova le idee insieme, favorendo un confronto aperto.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  7f447ab455f6cea4:
+    english: 'Notice when the same voices are dominating and invite some of the quieter people to contribute by @mentioning them and asking them what they think. '
+    translation: Se alcune persone intervengono più delle altre, invita anche chi parla meno a contribuire. Usa una @menzione e chiedi che cosa ne pensa.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  d4bad2b5207ac1d8:
+    english: You can make a complex discussion easier to engage with by updating the context section with a summary of the key points.
+    translation: Per facilitare la partecipazione a una discussione complessa, aggiorna la sezione del contesto con un riepilogo dei punti principali.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  daeddff561f62553:
+    english: |-
+      ### Step 2 - Sense check
+      As your group begins to converge on path forwards, use a **Sense check** poll to survey opinions and test how the group feels.
+    translation: |-
+      ### Passo 2 - Controllo del senso
+      Quando il gruppo inizia a orientarsi verso una soluzione, usa un sondaggio **Controllo del senso** per raccogliere le opinioni e capire come la pensa il gruppo.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  c1d4e97ce180d85b:
+    english: |-
+      A ‘Sense check’ lets people know a proposal is forming and encourages them to engage.
+      It can also be used to clarify an issue, even if the solution might not be apparent yet.
+    translation: |-
+      Un «Controllo del senso» segnala che sta prendendo forma una proposta e invita le persone a partecipare.
+      Può anche aiutare a chiarire una questione, anche quando la soluzione non è ancora evidente.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  5ff914227bb8706a:
+    english: Sense check is a great way to surface concerns before moving to a formal agreement.  You can find out if people are happy with where this is going, if they have questions or need more time, or if they are concerned.
+    translation: Il Controllo del senso aiuta a far emergere le preoccupazioni prima di cercare un accordo formale. Puoi capire se il gruppo è soddisfatto della direzione scelta, se ha domande, se serve più tempo o se ci sono riserve.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  01433544fefb70a5:
+    english: 'Use feedback to improve and refine the proposal. If there’s still some work to do, you may need to go back to Step 1 and then run another Sense check round. '
+    translation: Usa i commenti ricevuti per migliorare e precisare la proposta. Se resta del lavoro da fare, torna al Passo 1 e poi avvia un altro Controllo del senso.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  440474199fd76019:
+    english: Good engagement will help you assess when you are ready to proceed to a proposal.
+    translation: La partecipazione del gruppo ti aiuterà a capire quando è il momento di passare a una proposta.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  f3799fd76f9d9446:
+    english: "### Step 3 - Proposal\nNow when you raise a formal **Proposal**, you do so with confidence that it will pass. "
+    translation: |-
+      ### Passo 3 - Proposta
+      A questo punto puoi presentare una **Proposta** formale con una buona probabilità che venga approvata.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  a3e74110f5a3c7a2:
+    english: There may have been a lot of discussion and variations suggested, so be specific about the decision being made, so that everyone knows what the voting options mean.
+    translation: La discussione potrebbe aver prodotto molte varianti. Indica con precisione quale decisione si sta prendendo, così tutte le persone sapranno che cosa significano le opzioni di voto.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  b7581cfd1ecffd78:
+    english: Set proposal deadlines consciously, so group members have time to consider and engage.  You can always extend the closing date if need be.
+    translation: Scegli con cura la scadenza della proposta, in modo che i membri del gruppo abbiano tempo per valutarla e partecipare. Se serve, puoi sempre prorogarla.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  b5bcc06f15cde560:
+    english: This step is important to formalize agreement with people’s vote and to state an outcome - what just happened and what will happen next.
+    translation: 'Questo passo serve a formalizzare l''accordo attraverso il voto e a comunicare una conclusione: che cosa è stato deciso e che cosa succederà dopo.'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  c2f2bbcacfd77ab0:
+    english: Proposal results are logged, along with a record of the discussion leading to the decision.
+    translation: I risultati della proposta vengono registrati insieme alla discussione che ha portato alla decisione.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  2d82209e751f2ffa:
+    english: |-
+      ### Outcome
+      When a Loomio poll closes, you will be prompted to set an **outcome** to let everyone know what happened and what is going to happen next.
+    translation: |-
+      ### Conclusione
+      Quando un sondaggio su Loomio si chiude, ti verrà chiesto di pubblicare una **conclusione** per comunicare a tutti che cosa è successo e quali saranno i prossimi passi.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  fb14b31115927d74:
+    english: "## Proposals can help in many situations"
+    translation: "## Le proposte sono utili in molte situazioni"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  c1a27b25e2c01ff3:
+    english: 'Don''t hesitate to start a proposal just because you''re not sure everyone will agree - proposals are not only for when you have consensus, they''re designed to surface issues that need resolving and are useful for clarifying disagreements. '
+    translation: Puoi avviare una proposta anche se non sai se tutti saranno d'accordo. Le proposte aiutano a far emergere le questioni da risolvere e a chiarire i disaccordi, anche quando non c'è ancora consenso.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  6dbf0f3af984b8e8:
+    english: The next pages show a few more complex processes for reaching decisions, through [advice](/en/guides/making_decisions/advice_process), [consent](/en/guides/making_decisions/consent_process ), or [consensus](/en/guides/making_decisions/consensus_process ).
+    translation: Le pagine seguenti illustrano processi decisionali più articolati basati su [consigli](/en/guides/making_decisions/advice_process), [consenso per assenza di obiezioni](/en/guides/making_decisions/consent_process ) o [consenso](/en/guides/making_decisions/consensus_process ).
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
