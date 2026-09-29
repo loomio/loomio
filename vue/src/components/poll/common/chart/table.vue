@@ -7,11 +7,13 @@ import WatchRecords from '@/mixins/watch_records';
 import { useI18n } from 'vue-i18n';
 
 const METRIC_COLUMNS = ['target_percent', 'score_percent', 'votes_cast_percent', 'voter_percent', 'score', 'unweighted_score', 'average', 'votes', 'voter_count'];
+// Show a few avatars per option and count the rest, so rows keep one height.
+const VOTER_AVATARS_MAX = 3;
 
 export default {
   setup() {
     const { t } = useI18n();
-    return { t, METRIC_COLUMNS };
+    return { t, METRIC_COLUMNS, VOTER_AVATARS_MAX };
   },
   mixins: [WatchRecords],
   components: {BarIcon, PieIcon, GridIcon},
@@ -167,10 +169,12 @@ export default {
           td.text-right(v-if="col == 'score_percent' || col == 'votes_cast_percent'") {{option.score_percent === null ? '' : option.score_percent.toFixed(0) + "%"}}
           td.text-right.d-none.d-sm-table-cell(v-if="col == 'voters' && !hideVoters")
             div.poll-common-chart-table__voter-avatars
-              span.poll-common-chart-table__voter-avatar.float-left(
-                v-for="id in option.voter_ids"
+              span.poll-common-chart-table__voter-avatar(
+                v-for="id in option.voter_ids.slice(0, VOTER_AVATARS_MAX)"
                 :key="id")
                 user-avatar(:user="users[id]" :size="24" no-link)
+              span.poll-common-chart-table__more-voters.text-body-small.text-medium-emphasis(
+                v-if="option.voter_count > VOTER_AVATARS_MAX") +{{ option.voter_count - VOTER_AVATARS_MAX }}
 </template>
 <style>
 .v-data-table tbody tr:hover {
@@ -204,12 +208,10 @@ export default {
 }
 
 .poll-common-chart-table__voter-avatars {
-  position: relative;
-  max-height: 72px;
-  overflow: hidden;
-}
-
-.poll-common-chart-table__voter-avatar {
-  margin: 4px 2px 0 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 2px;
+  white-space: nowrap;
 }
 </style>

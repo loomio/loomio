@@ -3,7 +3,7 @@ import { describe, expect, it, vi } from 'vitest';
 import { reactive, nextTick } from 'vue';
 
 vi.mock('@/shared/services/records', () => ({
-  default: {pollOptions: {find: () => ({name: 'Yes', meaning: ''})}, users: {find: () => null}}
+  default: {pollOptions: {find: () => ({name: 'Yes', meaning: ''})}, users: {find: () => null, build: () => ({})}}
 }));
 vi.mock('@/mixins/watch_records', () => ({default: {methods: {watchRecords: () => {}}}}));
 vi.mock('vue-i18n', async importOriginal => ({
@@ -186,5 +186,28 @@ describe('weighted poll results table', () => {
     await nextTick();
 
     expect(wrapper.vm.selectedMetric).toBe('score_percent');
+  });
+
+  it('shows three voter avatars and counts the rest', () => {
+    const poll = {
+      closedAt: false,
+      chartType: 'bar',
+      chartColumn: 'voter_percent',
+      pieSlices: () => [],
+      resultColumns: ['name', 'voters'],
+      resultHeadingKeys: {name: 'common.option', voters: 'poll_common.voters'},
+      results: [{id: 1, name: 'Agree', name_format: 'plain', voter_count: 5, voter_ids: [1, 2, 3, 4, 5]}]
+    };
+
+    const wrapper = shallowMount(ChartTable, {
+      props: {poll},
+      global: {
+        mocks: {$t: key => key},
+        stubs: {VTable: {template: '<table><slot /></table>'}, PlainText: {template: '<span>Agree</span>'}}
+      }
+    });
+
+    expect(wrapper.findAll('.poll-common-chart-table__voter-avatar')).toHaveLength(3);
+    expect(wrapper.find('.poll-common-chart-table__more-voters').text()).toBe('+2');
   });
 });
