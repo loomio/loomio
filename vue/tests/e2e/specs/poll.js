@@ -363,9 +363,11 @@ module.exports = {
     page.clickAndWait('.decision-tools-card__poll-type--proposal', '.poll-common-form-fields__title input')
     page.fillIn('.poll-common-form-fields__title input', 'A new proposal')
     page.fillIn('.poll-common-form-fields__details .lmo-textarea div[contenteditable=true]', 'Some details')
-    page.click('.poll-common-form__more-settings')
-
-    page.scrollClick('.poll-common-settings__hide-results .v-field')
+    // Wait for More settings to finish expanding, so the field stays put while it is clicked.
+    page.clickAndWait('.poll-common-form__more-settings', '.poll-common-settings__hide-results')
+    test.waitForElementNotPresent('.expand-transition-enter-active')
+    page.execute("document.querySelector('.poll-common-settings__hide-results').scrollIntoView({block: 'center'})")
+    page.click('.poll-common-settings__hide-results .v-field')
     page.waitFor('.v-overlay--active .v-list-item')
     page.clickLastElement('.v-overlay--active .v-list-item')
 
@@ -390,9 +392,11 @@ module.exports = {
     page = pageHelper(test)
 
     page.loadPath('polls/test_poll_scenario?poll_type=proposal&scenario=poll_closing_soon_with_vote')
-    page.execute("document.querySelector('.action-menu--btn').scrollIntoView({block: 'center'})")
-    page.click('.action-menu--btn')
-    page.click('.action-dock__button--uncast_stance')
+    // The thread header has its own action menu, so target the poll's.
+    page.waitFor('.poll-created .action-menu--btn')
+    page.execute("document.querySelector('.poll-created .action-menu--btn').scrollIntoView({block: 'center'})")
+    page.click('.poll-created .action-menu--btn')
+    page.click('.v-overlay--active .action-dock__button--uncast_stance')
     page.expectText('.confirm-modal', 'Remove your vote?')
     page.click('.confirm-modal__submit')
     page.expectFlash('Vote removed')
