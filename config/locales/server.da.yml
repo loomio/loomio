@@ -763,10 +763,6 @@ da:
   thread_markdown:
     poll: Afstemning
     no_activity: Ingen kommentarer, afstemninger, stemmer eller resultater endnu
-    thread_title: "%{type}: %{title} · %{author} %{timestamp}"
-    comment: Kommentar · %{author} %{timestamp}
-    comment_reply: Svar til %{reply_author} · %{author} %{timestamp}
-    poll_title: "%{type}: %{title} · %{author} %{timestamp}"
     status: "**Status:** %{value}"
     anonymous_voting: "**Anonym afstemning:** %{value}"
     options: "**Valgmuligheder:** %{value}"
@@ -786,10 +782,15 @@ da:
     anonymous: Anonym
     no_voters: Ingen vælgere
     score: 'score: %{value}'
-    vote: 'Stemme: %{response} · %{author} %{timestamp}'
     none_of_the_above: Ingen af ovenstående
     no_option_selected: Ingen valgmulighed valgt
-    outcome: Resultat · %{author} %{timestamp}
     review_date: "**Gennemgangsdato:** %{value}"
+    voted: "%{author} stemte %{response}"
+    voted_hidden: "%{author} stemte"
+    vote_removed: "%{author}: stemme fjernet"
+    undecided: "%{author}: ubeslutsom"
+    superseded: erstattet
+    shared_outcome: "%{author} delte en konklusion"
+    removed: Fjernet
   error:
     access_denied: Du har ikke tilladelse til at gøre det

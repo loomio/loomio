@@ -1171,6 +1171,9 @@ zh_TW:
     thread_markdown_copied: 貼文 Markdown 已複製
     move_thread_v2: 移動主題
     more: 更多
+    download_markdown: 下載 Markdown
+    markdown: Markdown
+    vote_before_export: 導出前請先投票。本帖包含一個投票，投票前結果不會顯示。
   formatting:
     formatting_tools: 文字格式化工具
     colors: 顏色

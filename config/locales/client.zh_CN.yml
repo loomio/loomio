@@ -1204,6 +1204,9 @@ zh_CN:
     thread_markdown_copied: 帖子 Markdown 已复制
     move_thread_v2: 移动主题
     more: 更多
+    download_markdown: 下载 Markdown
+    markdown: Markdown
+    vote_before_export: 导出前请先投票。本帖包含一个投票，投票前结果不会显示。
   formatting:
     confirm_discard: 您确定要放弃更改吗？
     discard_draft: 弃用草稿

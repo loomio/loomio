@@ -1178,6 +1178,9 @@ it:
     thread_markdown_copied: Thread Markdown copiato
     move_thread_v2: Sposta discussione
     more: Di più
+    download_markdown: Scarica Markdown
+    markdown: Markdown
+    vote_before_export: Vota prima di esportare. Questa discussione contiene un sondaggio i cui risultati rimangono nascosti finché non voti.
   formatting:
     formatting_tools: Strumenti di formattazione del testo
     colors: Colori

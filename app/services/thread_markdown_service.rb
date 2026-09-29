@@ -3,6 +3,13 @@ class ThreadMarkdownService
     new(topic, user).render
   end
 
+  # People invited by email may not have set a name yet, so fall back to their
+  # username rather than leaving a blank that breaks sorting and reads as
+  # missing. User#name already labels deleted accounts.
+  def self.person_name(user)
+    user&.name.presence || user&.username.presence || I18n.t('common.anonymous')
+  end
+
   def initialize(topic, user)
     @topic = topic
     @user = user
@@ -24,6 +31,7 @@ class ThreadMarkdownService
   def front_matter
     record = topic.topicable
     fields = {
+      key: record.key,
       group: topic.group_id.present? ? topic.group.name : nil,
       created: timestamp(record.created_at),
       last_activity: timestamp(topic.last_activity_at),
@@ -35,7 +43,7 @@ class ThreadMarkdownService
 
   def title
     record = topic.topicable
-    "# #{t(:thread_title, type: record.model_name.human, title: inline(record.title), author: author_name(record), timestamp: heading_timestamp(record.created_at))}"
+    "# #{[titled(record.model_name.human, record.title), author_name(record), heading_timestamp(record.created_at)].join(' · ')}"
   end
 
   def topic_overview
@@ -47,46 +55,105 @@ class ThreadMarkdownService
     end
   end
 
+  # Renders the thread in the same tree the app shows: items sorted by
+  # position_key, nested by depth. Polls are "##" sections. Comments, votes,
+  # and outcomes are blockquotes, nested one level per reply, so each person's
+  # text has a clear boundary and Markdown parsers read the replies as a tree.
+  # Items beneath a poll start one level in, under its heading.
   def activity
-    content = topic_items.filter_map { |topic_item| event_markdown(topic_item) }
-    content = ["_#{t(:no_activity)}._"] if content.empty?
-    content.join("\n\n")
+    items = activity_items
+    return "_#{t(:no_activity)}._" if items.empty?
+
+    in_poll_section = false
+    items.each_with_index.flat_map do |item, index|
+      in_poll_section = poll_section?(item) if item.depth <= 1
+      level = poll_section?(item) ? 0 : item.depth - (in_poll_section ? 1 : 0)
+      # A reply continues its parent's blockquote, so the line before it
+      # carries the parent's quote prefix.
+      separator = quote_prefix([level - 1, 0].max) unless index.zero?
+      [separator, quote(item_markdown(item), level)].compact
+    end.join("\n")
   end
 
-  def topic_items
-    topic.items.includes(:itemable, :user, parent: [:itemable, :user]).order(:sequence_id)
+  def activity_items
+    items = topic.items
+      .where(kind: %w[new_comment poll_created stance_created stance_updated outcome_created])
+      .where.not(position_key: nil)
+      .includes(:itemable)
+      .order(:position_key)
+      .to_a
+    items.reject! { |item| item.itemable.nil? || item.itemable == topic.topicable }
+    items.select! { |item| !item.itemable.is_a?(Poll) || item.id == item.itemable.created_topic_item&.id }
+    preload(items)
+    items
   end
 
-  def event_markdown(topic_item)
-    itemable = topic_item.itemable
-    return if itemable == topic.topicable
-    return if itemable.is_a?(Poll) && topic_item != itemable.created_topic_item
-    return if itemable.respond_to?(:discarded?) && itemable.discarded?
+  def preload(items)
+    itemables = items.map(&:itemable)
+    ActiveRecord::Associations::Preloader.new(records: itemables.grep(Comment), associations: [:user, :parent, {reactions: :user}]).call
+    ActiveRecord::Associations::Preloader.new(records: itemables.grep(Stance), associations: [:participant, {poll: :poll_options}, {stance_choices: :poll_option}, {reactions: :user}]).call
+    ActiveRecord::Associations::Preloader.new(records: itemables.grep(Outcome), associations: [:author, {reactions: :user}]).call
+  end
+
+  def poll_section?(item)
+    item.itemable.is_a?(Poll) && !item.itemable.discarded?
+  end
+
+  def quote_prefix(level)
+    Array.new(level, '>').join(' ')
+  end
+
+  def quote(markdown, level)
+    return markdown if level.zero?
+
+    prefix = quote_prefix(level)
+    markdown.split("\n", -1).map { |line| line.empty? ? prefix : "#{prefix} #{line}" }.join("\n")
+  end
+
+  def item_markdown(item)
+    itemable = item.itemable
+    return item_header(item, "_#{t(:removed)}_") if itemable.discarded?
 
     case itemable
-    when Comment then comment_markdown(topic_item, itemable)
     when Poll
       poll_type = I18n.t("poll_types.#{itemable.poll_type}").sub(/\A./) { |character| character.upcase }
-      heading = t(:poll_title, type: poll_type, title: inline(itemable.title), author: author_name(itemable), timestamp: heading_timestamp(topic_item.created_at))
+      heading = [titled(poll_type, itemable.title), author_name(itemable), heading_timestamp(item.created_at), "##{item.sequence_id}"].join(' · ')
       poll_markdown(itemable, heading: "## #{heading}")
-    when Stance then stance_markdown(topic_item, itemable)
-    when Outcome then outcome_markdown(topic_item, itemable)
+    when Comment
+      [item_header(item, author_label(itemable)), body(itemable, heading_offset: 2)].compact_blank.join("\n\n")
+    when Stance
+      stance_markdown(item, itemable)
+    when Outcome
+      metadata = itemable.review_on.present? && metadata_line(:review_date, itemable.review_on.iso8601)
+      [item_header(item, t(:shared_outcome, author: author_label(itemable))), metadata, body(itemable, heading_offset: 2)].compact_blank.join("\n\n")
     end
   end
 
-  def comment_markdown(topic_item, comment)
-    content = body(comment, heading_offset: 2)
-    return if content.blank?
+  # Mirrors the thread's vote item: the voter and time are always shown, the
+  # choice and reason only when the reader can see the poll's results.
+  def stance_markdown(item, stance)
+    author = author_label(stance)
+    return item_header(item, t(:vote_removed, author: author)) if stance.revoked_at.present?
+    return item_header(item, t(:undecided, author: author)) if stance.cast_at.blank?
+    return item_header(item, t(:voted_hidden, author: author)) unless poll_results_visible?(stance.poll)
 
-    parent_author = reply_author(topic_item)
-    heading = if parent_author
-      t(:comment_reply, author: author_name(comment), reply_author: parent_author, timestamp: heading_timestamp(topic_item.created_at))
-    else
-      t(:comment, author: author_name(comment), timestamp: heading_timestamp(topic_item.created_at))
-    end
-    sections = ["## #{heading}", content]
-    sections << reactions_markdown(comment)
-    sections.compact_blank.join("\n\n")
+    summary = t(:voted, author: author, response: "**#{stance_response_heading(stance)}**")
+    summary += " (#{t(:superseded)})" unless stance.latest?
+    reason = body(stance, heading_offset: 2) unless stance.redacted_at.present?
+    [item_header(item, summary), reason].compact_blank.join("\n\n")
+  end
+
+  def author_label(record)
+    "**#{author_name(record)}**"
+  end
+
+  # One line per item: who (and for votes and outcomes, what), when, its
+  # sequence id (which with the thread key identifies the item in the app),
+  # and who reacted.
+  def item_header(item, summary)
+    parts = [summary, heading_timestamp(item.created_at), "##{item.sequence_id}"]
+    parts.concat(reaction_names(item.itemable).map { |reaction, names| "#{reaction} #{names.join(', ')}" })
+    parts.join(' · ')
   end
 
   def poll_markdown(poll, heading:)
@@ -127,23 +194,6 @@ class ThreadMarkdownService
     "### #{t(:current_results)}\n\n#{table}"
   end
 
-  def stance_markdown(topic_item, stance)
-    return unless stance_visible?(stance)
-
-    reason = body(stance, heading_offset: 2)
-    heading = t(:vote, response: stance_response_heading(stance), author: author_name(stance), timestamp: heading_timestamp(topic_item.created_at))
-    sections = ["## #{heading}", reason]
-    sections << reactions_markdown(stance)
-    sections.compact_blank.join("\n\n")
-  end
-
-  def stance_visible?(stance)
-    return false unless stance.latest? && stance.revoked_at.blank? && stance.cast_at.present?
-    return false if stance.redacted_at.present?
-
-    stance.participant_id == user.id || poll_results_visible?(stance.poll)
-  end
-
   def stance_response_heading(stance)
     return t(:none_of_the_above) if stance.none_of_the_above?
 
@@ -154,17 +204,6 @@ class ThreadMarkdownService
     choices.presence&.join(', ') || t(:no_option_selected)
   end
 
-  def outcome_markdown(topic_item, outcome)
-    metadata = [
-      outcome.review_on.present? && metadata_line(:review_date, outcome.review_on.iso8601)
-    ].compact_blank.join("\n")
-    content = body(outcome, heading_offset: 2)
-    return if content.blank?
-
-    heading = t(:outcome, author: author_name(outcome), timestamp: heading_timestamp(topic_item.created_at))
-    ["## #{heading}", metadata, content].compact_blank.join("\n\n")
-  end
-
   def poll_results_visible?(poll)
     return @poll_results_visible[poll.id] if @poll_results_visible.key?(poll.id)
 
@@ -172,17 +211,13 @@ class ThreadMarkdownService
     @poll_results_visible[poll.id] = poll.results_visible?(voted: voted)
   end
 
-  def reactions_markdown(record)
-    reactions = record.reactions.includes(:user).group_by(&:reaction).map do |reaction, matching|
-      names = matching.map { |item| author_name(item) }.sort.join(', ')
-      "- #{inline(reaction)} #{names}"
-    end
-    reactions.any? && reactions.sort.join("\n")
-  end
+  # Reactions grouped by emoji, each with the sorted names of who reacted.
+  def reaction_names(record)
+    return [] unless record.respond_to?(:reactions)
 
-  def reply_author(topic_item)
-    record = topic_item.parent&.itemable
-    author_name(record) if record.is_a?(Comment) || record.is_a?(Poll) || record.is_a?(Stance) || record.is_a?(Outcome)
+    record.reactions.group_by(&:reaction).map do |reaction, matching|
+      [inline(reaction), matching.map { |item| author_name(item) }.sort]
+    end.sort
   end
 
   def author_name(record)
@@ -191,7 +226,7 @@ class ThreadMarkdownService
     elsif record.respond_to?(:user)
       record.user
     end
-    inline(author&.name.presence || I18n.t('common.anonymous'))
+    inline(self.class.person_name(author))
   end
 
   def body(record, heading_offset:)
@@ -209,6 +244,10 @@ class ThreadMarkdownService
 
   def metadata_line(key, value)
     "- #{t(key, value: value)}"
+  end
+
+  def titled(type, title)
+    "#{type}: #{inline(title)}"
   end
 
   def inline(value)

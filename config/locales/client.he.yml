@@ -1168,6 +1168,9 @@ he:
     thread_markdown_copied: ה-Markdown של השרשור הועתק
     move_thread_v2: הזזת שרשור
     more: יוֹתֵר
+    download_markdown: הורד את Markdown
+    markdown: Markdown
+    vote_before_export: הצביעו לפני ייצוא. בשרשור הזה יש סקר שמסתיר את התוצאות עד שתצביעו.
   formatting:
     formatting_tools: כלי עיצוב טקסט
     colors: צבעים

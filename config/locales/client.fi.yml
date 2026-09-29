@@ -1164,6 +1164,9 @@ fi:
     thread_markdown_copied: Ketjun Markdown kopioitu
     move_thread_v2: Siirrä ketju
     more: Lisää
+    download_markdown: Lataa Markdown
+    markdown: Markdown
+    vote_before_export: Äänestä ennen vientiä. Tässä ketjussa on äänestys, joka piilottaa tulokset, kunnes äänestät.
   formatting:
     formatting_tools: Tekstin muotoilutyökalut
     colors: värit

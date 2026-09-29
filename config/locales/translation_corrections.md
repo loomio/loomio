@@ -618,6 +618,22 @@ languages in the Nov 2025 pass.
 | `config/locales/client.es.yml` | `credential_prompt.set_new_password` | `Establecer una nueva contraseña` | `Establece una nueva contraseña` | Spanish action labels use the informal `tú` imperative |
 | `config/locales/client.ca.yml`, `client.es.yml`, `client.ro.yml`, `client.ja.yml` | `credential_prompt.passkey_description` | Single-sentence UI text with final punctuation | Removed the final full stop | Single-sentence UI strings omit final full stops |
 
+## 2026-09-29 — Thread Markdown export
+
+| File | Key | Before | After | Why it was wrong |
+|------|-----|--------|-------|------------------|
+| `client.*.yml` (be, ca, da, de, el, es, fi, fr, he, hr, hu, it, ja, pl, ro, ru, sl, sv, uk) | `action_dock.markdown` | Retail "markdown" (`Preisnachlass`, `Reducción`, `Sconto`, `Réduction`, `Уцінка`, …) or a transliteration | `Markdown` | Markdown is the name of a text format, not a price reduction |
+| `server.*.yml` (be, da, el, es, fr, hu, it, ja, nl_NL, ru, tr) | `thread_markdown.voted`, `voted_hidden`, `vote_removed`, `undecided` | Translated placeholders such as `%{autor}`, `%{auteur}`, `%{réponse}`, `%{yazar}`, `%{著者}` | `%{author}`, `%{response}` | Interpolation placeholder names must remain unchanged |
+| `server.zh_CN.yml`, `server.zh_TW.yml` | `thread_markdown.voted`, `shared_outcome` | `作者投票给了响应者。`, `作者分享了一个结果` | `%{author} 投票给了 %{response}`, `%{author} 分享了总结` | Google translated the placeholders into words and dropped them |
+| `server.*.yml` (most locales) | `thread_markdown.shared_outcome` | The locale's word for *result* (`Ergebnis`, `resultado`, `résultat`, `risultato`, …) | The locale's word for *conclusion* used by `outcome` (`Fazit`, `conclusión`, `conclusion`, `conclusione`, …) | Outcome is the author's closing statement, not the vote tally |
+| `server.de.yml`, `it`, `nl_NL`, `pl` | `thread_markdown.removed` | All caps (`ENTFERNT`, `RIMOSSO`, `VERWIJDERD`, `REMOVED`) | Sentence case | A status label, not a heading |
+| `server.es.yml` | `thread_markdown.removed` | `Remoto` ("remote") | `Eliminado` | Wrong sense of "removed" |
+| `server.de.yml` | `thread_markdown.voted` | `%{author} hat %{response} abgestimmt.` | `%{author} hat für %{response} gestimmt` | Ungrammatical, with a final full stop on a label |
+| `server.hu.yml`, `server.tr.yml` | `thread_markdown.voted` | `%{response}-ra`, `%{yanıt} oy verdi` | `szavazata: %{response}`, `%{response} seçeneğine oy verdi` | Case suffixes cannot attach to an interpolated option name |
+| `server.ja.yml`, `server.tr.yml` | `thread_markdown.superseded` | `取って代わられた`, `yerini aldı` ("took its place") | `置き換え済み`, `değiştirildi` | Status label for an earlier vote that was replaced |
+| `client.de.yml`, `client.fr.yml` | `action_dock.vote_before_export` | Formal `Sie/Ihrer`, `vous` | Informal `du/deiner`, `tu` | German and French UI use informal direct address |
+
+
 ## 2026-09-28 — Vote points
 
 | File | Key | Before | After | Why it was wrong |
@@ -656,3 +672,4 @@ languages in the Nov 2025 pass.
 | `config/locales/server.hu.yml` | `poll_templates.ranked_choice.process_subtitle_v3` | Both endpoints translated as least preferred | Restored most-to-least order | The original reversed and duplicated the ranking direction |
 | `config/locales/server.he.yml` | `poll_templates.ranked_choice.process_subtitle_v3` | Unnatural word order | Reordered as an instruction to rank options | The original was hard to understand as an action |
 | `config/locales/server.nl_NL.yml`, `server.pt_BR.yml`, `server.ru.yml`, `server.tr.yml` | `poll_templates.ranked_choice.process_subtitle_v3` | Final full stop | Removed final full stop | Single-sentence UI strings omit final punctuation |
+||||||| 77151f5bb3

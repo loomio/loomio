@@ -1164,6 +1164,9 @@ sl:
     thread_markdown_copied: Nit Markdown kopiran
     move_thread_v2: Premakni nit
     more: Več
+    download_markdown: Prenesi Markdown
+    markdown: Markdown
+    vote_before_export: Glasujte pred izvozom. Ta nit ima anketo, ki skriva rezultate, dokler ne glasujete.
   formatting:
     formatting_tools: Orodja za oblikovanje besedila
     colors: Barve

@@ -133,9 +133,9 @@ class PollMarkdownResultsService
 
     voters = case result[:id].to_i
     when -1
-      poll.undecided_voters.map(&:name)
+      poll.undecided_voters.map { |voter| voter_label(voter) }
     when 0
-      voter_stances.select(&:none_of_the_above?).map { |stance| stance.participant.name }
+      voter_stances.select(&:none_of_the_above?).map { |stance| voter_label(stance.participant) }
     else
       voter_stances.filter_map do |stance|
         choice = stance.stance_choices.find { |item| item.poll_option_id == result[:id] }
@@ -152,7 +152,7 @@ class PollMarkdownResultsService
   end
 
   def voter_label(voter)
-    poll.anonymous? ? t("thread_markdown.anonymous") : voter.name
+    poll.anonymous? ? t("thread_markdown.anonymous") : ThreadMarkdownService.person_name(voter)
   end
 
   def option_name(name, format)

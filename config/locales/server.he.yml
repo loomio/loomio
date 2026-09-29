@@ -769,10 +769,6 @@ he:
   thread_markdown:
     poll: מִשׁאָל
     no_activity: אין עדיין תגובות, סקרים, הצבעות או תוצאות
-    thread_title: "%{type}: %{title} · %{author} %{timestamp}"
-    comment: תגובה · %{author} %{timestamp}
-    comment_reply: תשובה ל-%{reply_author} · %{author} %{timestamp}
-    poll_title: "%{type}: %{title} · %{author} %{timestamp}"
     status: "**סטטוס:** %{value}"
     anonymous_voting: "**הצבעה אנונימית:** %{value}"
     options: "**אפשרויות:** %{value}"
@@ -792,10 +788,15 @@ he:
     anonymous: אֲנוֹנִימִי
     no_voters: אין מצביעים
     score: 'ציון: %{value}'
-    vote: 'הצבעה: %{response} · %{author} %{timestamp}'
     none_of_the_above: אף אחד מהנ"ל
     no_option_selected: לא נבחרה אפשרות
-    outcome: תוצאה · %{author} %{timestamp}
     review_date: "**תאריך סקירה:** %{value}"
+    voted: "%{author} הצביע %{response}"
+    voted_hidden: "%{author} הצביעו"
+    vote_removed: "%{author}: הצבעה הוסרה"
+    undecided: "%{author}: לא החליט"
+    superseded: הוחלף
+    shared_outcome: "%{author} שיתף מסקנה"
+    removed: הוסר
   error:
     access_denied: אין לך אישור לעשות זאת

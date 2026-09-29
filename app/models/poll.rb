@@ -567,6 +567,12 @@ class Poll < ApplicationRecord
     hide_results != 'until_closed' || closed_at.present?
   end
 
+  # True when everyone who can see the poll can see its results, regardless of
+  # whether they have voted.
+  def results_visible_to_all?
+    hide_results == 'off' || closed_at.present?
+  end
+
   # Server-rendered output must apply the recipient-specific until-vote rule.
   def results_visible?(voted: false)
     results_available? && (hide_results != 'until_vote' || closed_at.present? || voted)

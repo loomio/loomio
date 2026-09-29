@@ -1,72 +1,102 @@
 # Discussion templates
 
-Discussion templates provide a reusable starting point for discussions your group runs regularly. A template can supply instructions, a title, context, tags, invite settings, and recommended poll templates.
+Discussion templates help your group start discussions the same way each time. A template can supply a title, context, tags, and instructions for the person starting the discussion. It also sets defaults, such as whether to notify the whole group and which polls to suggest.
 
-Use a template when a discussion follows a repeatable process, such as a project review, advice process, meeting preparation, funding decision, or document approval. Members can still edit the supplied content before starting each discussion.
+Every new discussion in a group starts from a template. When someone selects **Start discussion**, Loomio shows the group's templates. Even **Blank template** is a template, so your group can change its defaults too.
 
-## Choose a template
+Templates work well for processes your group repeats, such as project reviews, advice processes, meeting preparation, funding decisions, or document approvals. The person starting the discussion can still edit everything before they start it.
 
-Select **Start a new discussion** from the group page to see the group's available templates. Each item has a process name and subtitle explaining its purpose.
+## How templates are used
+
+1. A member selects **Start discussion** on the group page.
+2. Loomio lists the group's visible templates. Each one shows its title and subtitle.
+3. The member selects a template. Loomio opens the new discussion form, filled in from the template.
+4. The template's help appears at the top of the form as guidance.
+5. The member edits the title, context, tags, and invite list, then selects **Start discussion**.
 
 ![](list.png)
 
-Select a template to open a pre-filled discussion form, or select **New template** to browse examples and create one. Starting a blank discussion is also a template choice.
+Changing a template affects only discussions started after the change. Discussions already started from it keep their content and settings.
 
-## Example: bottle trial review
+## Choose who is notified by default
 
-Oatmilk Cooperative reviews its returnable-bottle trial after each cycle. Its template reminds members to read the weekly report and consider return rates, washing records, cafe feedback, and transport costs. It also recommends a Sense check followed by Consent.
+The **Invite** setting controls who the new discussion form invites by default. It has two options:
 
-This is a useful template because the purpose and evidence remain consistent while the observations and decisions change each cycle.
+- **Everyone in the group**: the group appears in the discussion form's **Invite** field, and every member is notified when the discussion starts.
+- **None**: the **Invite** field starts empty. Nobody is notified unless the author adds people.
 
-## Create or edit a template
-
-Group administrators can select **New template** from the template list, choose an example or blank template, and then adapt it. Use the action menu beside an existing template to edit it.
-
-![](form.png)
-
-The form includes:
-
-- **Process name**: the short name shown in the template list;
-- **Process subtitle**: a one-line explanation of when to use it;
-- **Process introduction**: instructions shown above the new discussion form;
-- **Group**: whether the template starts a group or direct discussion;
-- **Default title**: a title supplied to each new discussion;
-- **Example title**: placeholder guidance when there is no default title;
-- **Tags**: tags automatically applied to the discussion;
-- **Context**: headings, questions, links, or other editable starting content;
-- **Invite**: whether to invite everyone in the group by default;
-- **Poll templates**: polls or proposals recommended for this process;
-- **Concurrent polls**: whether more than one poll may be open at a time; and
-- **Comment length**: an optional limit for replies.
-
-Use a default title only when it will remain accurate. Otherwise, provide an example title that prompts the author to name the particular review, period, document, or decision.
-
-## Start a discussion from a template
-
-Select the template, review the process instructions, and edit the supplied title and context for this instance. Check the invite list before selecting **Start discussion**.
+Loomio's built-in templates, including **Blank template**, use **Everyone in the group**. If your group does not want every new discussion to notify all members, edit the templates your group uses and set **Invite** to **None**.
 
 ![](use.png)
 
-Recommended poll templates appear in the form as a guide to the process. They do not start automatically. Once the discussion is open, start the recommended poll when the group reaches the appropriate stage.
+The author can always change the invite list before starting the discussion. They can remove the group to notify nobody, or add specific people instead. This setting only affects notifications. Group members can still find and read the discussion in the group, whichever option you choose.
+
+The group is added to the invite list only when the author is allowed to notify the whole group. Admins can always do this. Members can do it when **Members can notify everyone in the group** is enabled in the group's permissions.
+
+## Template settings
+
+Group admins can edit a template from the action menu beside it in the template list. The form has these settings:
+
+![](form.png)
+
+- **Template title**: the short name shown in the template list.
+- **Template subtitle**: one line explaining when to use the template.
+- **Template help**: instructions shown at the top of the new discussion form. Use it to explain the process and link to resources. It is not part of the discussion.
+- **Group**: whether the template starts a discussion in the group or a direct discussion. A direct discussion is visible only to the people invited to it.
+- **Default title**: a title filled in for each new discussion. The author can edit it.
+- **Example title**: an example shown in an empty title field. Use it when a default title would not fit every discussion.
+- **Tags**: tags applied to each new discussion. The author can remove them.
+- **Context**: the starting text of the discussion. Use headings, questions, or links to guide what people write.
+- **Invite**: whether to invite everyone in the group by default. See [Choose who is notified by default](#choose-who-is-notified-by-default).
+- **Poll templates**: polls suggested for this process. They are listed on the new discussion form. They also appear first when someone starts a poll in the discussion. They do not start automatically.
+- **Allow concurrent polls**: whether more than one poll can be open in the discussion at the same time.
+- **Comment length limit**: an optional maximum length for comments.
+
+Use a default title only when it will stay accurate. Otherwise, write an example title that prompts the author to name the specific review, period, document, or decision.
+
+## Example: bottle trial review
+
+Oatmilk Cooperative reviews its returnable-bottle trial after each cycle. Its template is titled "Bottle trial review" and has a default title. It adds the "Bottle trial" tag. Its context asks members to read the weekly report and consider return rates, washing records, cafe feedback, and transport costs. It recommends a Sense check followed by Consent.
+
+This works as a template because the purpose and evidence stay the same each cycle. Only the observations and decisions change.
+
+## Create a template
+
+Group admins can select **New template** from the template list. Choose an example from Loomio's gallery or start with a blank template, then adapt it and save it.
+
+You can search or filter the gallery. An example is not added to your group until you save it.
 
 ## Manage the template list
 
-Group administrators can use the action menu beside a template to:
+When a group is created, Loomio adds a set of templates suited to the kind of group. Only **Blank template** and **Practice discussion** are visible at first. The others are hidden, and admins can unhide them.
+
+Group admins can use the action menu beside a template to:
 
 - edit its content and settings;
-- hide it from the main template list;
+- hide it from the template list;
 - unhide it from **Hidden templates**;
-- rearrange the order of visible templates; or
-- delete a template the group no longer needs.
+- rearrange the order of visible templates;
+- export it as a JSON file; or
+- delete it.
 
-Hiding a template preserves it for later use. Deleting it removes the template but does not delete discussions previously created from it.
+Hiding a template keeps it for later use. Deleting a template does not delete discussions started from it.
+
+## Share templates between groups
+
+Select **Export json** in a template's action menu to download it as a file. To use it in another group, select **New template**, then **Import json**. The form opens with the imported content so you can review it before saving.
+
+Links to custom poll templates are not included in the file. Export and import those poll templates separately.
 
 ## Let members create templates
 
-By default, group administrators manage templates. An administrator can enable **Members can create templates** under **Group settings** → **Permissions**.
+By default, only group admins can create and edit templates. An admin can enable **Members can create templates** under **Group settings** → **Permissions**.
 
-When enabled, members can create discussion and poll templates and manage templates they authored. Group administrators can manage every template in the group. A member-created template is available in the group's template list after it is saved, so agree on naming and review practices before enabling this permission.
+When this is enabled, members can create discussion and poll templates and edit the templates they created. Admins can edit every template in the group. A member's template appears in the group's template list once it is saved, so agree on naming and review practices before enabling this permission.
 
-## Browse example templates
+## Templates for non-members
 
-Select **New template** to browse Loomio's example processes. Search or filter the gallery, choose an example, and edit the copy for your group. The example is not added to the group until you save it.
+If **Non-members can start discussions** is enabled, people outside the group choose from the same template list. Their discussion form never invites the group by default. See [Collect private submissions](/en/user_manual/discussions/private_submissions).
+
+## Related
+
+- [Poll templates](/en/user_manual/polls/poll_templates)

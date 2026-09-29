@@ -20,6 +20,7 @@ class Api::B2::ThreadsController < Api::B2::BaseController
   end
 
   def markdown
+    current_user.ability.authorize!(:export, thread)
     render json: {markdown: ThreadMarkdownService.render(topic: thread, user: current_user)}
   end
 

@@ -38,6 +38,8 @@ module.exports = {
     page.loadPath('setup_manual_oatmilk_discussion_from_template');
     page.waitFor('.discussion-form');
     page.expectValue('#discussion-title', 'Returnable bottle trial review');
+    page.waitFor('.discussion-form .common-notify-fields');
+    page.expectText('.discussion-form .common-notify-fields', 'Oatmilk Cooperative');
     screenshot.captureElement(
       'discussions/templates/use',
       '.discussion-form',

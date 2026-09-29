@@ -1170,6 +1170,9 @@ nl_NL:
     thread_markdown_copied: Markdown-tekst van de thread gekopieerd
     move_thread_v2: Verplaats discussie
     more: Meer
+    download_markdown: Markdown downloaden
+    markdown: Markdown
+    vote_before_export: Stem voordat je exporteert. Deze discussie bevat een poll waarvan de resultaten pas zichtbaar zijn nadat je hebt gestemd.
   formatting:
     formatting_tools: Tekst-formatteer tools
     colors: Kleuren

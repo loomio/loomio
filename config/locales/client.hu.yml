@@ -1168,6 +1168,9 @@ hu:
     thread_markdown_copied: A szál Markdown másolva
     move_thread_v2: Szál áthelyezése
     more: Több
+    download_markdown: Markdown letöltése
+    markdown: Markdown
+    vote_before_export: Szavazz exportálás előtt. Ebben a témában van egy szavazás, amely elrejti az eredményeket, amíg nem szavazol.
   formatting:
     formatting_tools: Szövegformázó eszközök
     colors: Színek

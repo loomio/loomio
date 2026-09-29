@@ -1164,6 +1164,9 @@ hr:
     thread_markdown_copied: Markdown teme kopiran
     move_thread_v2: Premjesti nit
     more: Više
+    download_markdown: Preuzmi Markdown
+    markdown: Markdown
+    vote_before_export: Glasajte prije izvoza. Ova tema ima anketu koja skriva rezultate dok ne glasate.
   formatting:
     formatting_tools: Alati za oblikovanje teksta
     colors: Boje

@@ -136,24 +136,29 @@ Select **Print** to generate a page suitable for printing. Use your browser's pr
 
 ![](thread_print_thread.png)
 
-### Copy Markdown
+### Markdown
 
-Select **Copy Markdown**, then **Copy Markdown**, to copy the complete thread as structured Markdown. You can paste it into meeting minutes, a document, an AI assistant, or another tool that supports Markdown.
+Select **Markdown** to save the complete thread as structured Markdown. Choose **Copy Markdown** to copy it to your clipboard, or **Download Markdown** to save it as a `.md` file. You can use it for meeting minutes, a document, an archive of decisions, an AI assistant, or another tool that supports Markdown.
 
-![](../discussion_management/copy_markdown_dialog.png)
+![](../discussion_management/copy_markdown_menu.png)
 
-The copied document begins with YAML front matter containing the group, creation date, last activity date, and tags. It then includes the discussion context, replies, polls, visible results, voter names, vote reasons, reactions, and outcomes. Poll results use a table so each option's count and voters can be read together. Loomio applies the same visibility rules as the thread: results and vote reasons you cannot see are not included, and voters are not identified in anonymous polls.
+The document begins with YAML front matter containing the thread key, group, creation date, last activity date, and tags. It then includes the discussion context and every comment, poll, vote, and outcome in the same order and nesting as the threaded view.
 
-For example, a discussion containing a comment, reactions, a proposal, two votes, and an outcome produces Markdown with this structure:
+Each poll is a section. Comments, votes, and outcomes are quoted, and replies are quoted beneath the item they answer. This shows where each person's text begins and ends. Each quote starts with one line showing the person, when they posted, the item's number in the thread, and any reactions. Votes and outcomes also say what they are. The thread key and item number identify each item in Loomio.
+
+Loomio applies the same visibility rules as the thread. Results and vote reasons you cannot see are not included, and voters are not identified in anonymous polls. If an open poll hides results until you vote, vote before exporting the thread. **Markdown** and **Print** are unavailable until you do.
+
+For example, a discussion containing a comment, reactions, a proposal, two votes, a reply, and an outcome produces this Markdown:
 
 ```markdown
 ---
+key: "fi2TAgeC"
 group: "Oatmilk Cooperative"
 created: "2026-09-10T23:28:30Z"
 last_activity: "2026-09-10T23:28:30Z"
 ---
 
-# Discussion: Returnable bottles for cafe customers · Samira Patel 2026-09-10 23:28
+# Discussion: Returnable bottles for cafe customers · Samira Patel · 2026-09-10 23:28
 
 Several cafe customers have asked whether we can supply oat milk in returnable glass bottles. This thread is for working through the practical questions before we decide whether to run a trial. 🥛
 
@@ -161,13 +166,11 @@ Several cafe customers have asked whether we can supply oat milk in returnable g
 
 Please read the [draft bottle return guide](https://example.com/oatmilk-bottle-return-guide) and add any questions about washing capacity, food-safety checks, transport costs, or weekly reporting.
 
-## Comment · Alex Morgan 2026-09-10 23:28
+> **Alex Morgan** · 2026-09-10 23:28 · #1 · 👍 Jamie Chen, Samira Patel
+>
+> I can ask three cafes to track how many bottles are returned each week.
 
-I can ask three cafes to track how many bottles are returned each week.
-
-- 👍 Jamie Chen, Samira Patel
-
-## Proposal: Run a six-week returnable bottle trial · Jamie Chen 2026-09-10 23:28
+## Proposal: Run a six-week returnable bottle trial · Jamie Chen · 2026-09-10 23:28 · #2
 
 - **Status:** Closed 2026-09-10T23:28:30Z
 - **Options:** Agree; Abstain; Disagree
@@ -191,26 +194,24 @@ Supply returnable glass bottles to three cafe customers for six weeks, with one 
 | Disagree | 0 | 0% | 0% | No voters |
 | Undecided | 1 |  | 33% | Jamie Chen |
 
-## Vote: Agree · Samira Patel 2026-09-10 23:28
+> **Samira Patel** voted **Agree** · 2026-09-10 23:28 · #3 · ❤️ Jamie Chen
+>
+> The six-week trial gives us enough time to test collections and washing capacity.
+>
+> > **Alex Morgan** · 2026-09-10 23:28 · #4
+> >
+> > Could we confirm which cafes will participate before the trial starts?
 
-The six-week trial gives us enough time to test collections and washing capacity.
+> **Alex Morgan** voted **Abstain** · 2026-09-10 23:28 · #5
+>
+> I can support the trial once the collection dates are confirmed with each cafe.
 
-- ❤️ Jamie Chen
-
-## Reply to Samira Patel · Alex Morgan 2026-09-10 23:28
-
-Could we confirm which cafes will participate before the trial starts?
-
-## Vote: Abstain · Alex Morgan 2026-09-10 23:28
-
-I can support the trial once the collection dates are confirmed with each cafe.
-
-## Outcome · Jamie Chen 2026-09-10 23:28
-
-Run the six-week bottle trial with three cafes. Review return rates, washing time, and transport costs each week.
+> **Jamie Chen** shared an outcome · 2026-09-10 23:28 · #7
+>
+> Run the six-week bottle trial with three cafes. Review return rates, washing time, and transport costs each week.
 ```
 
-The copied headings and labels use your selected language. Content written by participants remains in its original language.
+The headings and labels use your selected language. Content written by participants remains in its original language.
 
 ### Thread settings and display
 

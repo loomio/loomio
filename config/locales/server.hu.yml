@@ -769,10 +769,6 @@ hu:
   thread_markdown:
     poll: Szavazás
     no_activity: Még nincsenek hozzászólások, szavazások, szavazatok vagy eredmények
-    thread_title: "%{type}: %{title} · %{author} %{timestamp}"
-    comment: Hozzászólás · %{author} %{timestamp}
-    comment_reply: Válasz %{reply_author} felhasználónak · %{author} %{timestamp}
-    poll_title: "%{type}: %{title} · %{author} %{timestamp}"
     status: "**Állapot:** %{value}"
     anonymous_voting: "**Névtelen szavazás:** %{value}"
     options: "**Opciók:** %{value}"
@@ -792,10 +788,15 @@ hu:
     anonymous: Névtelen
     no_voters: Nincsenek szavazók
     score: 'pontszám: %{value}'
-    vote: 'Szavazat: %{response} · %{author} %{timestamp}'
     none_of_the_above: A fentiek egyike sem
     no_option_selected: Nincs kiválasztva opció
-    outcome: Eredmény · %{author} %{timestamp}
     review_date: "**Felülvizsgálat dátuma:** %{value}"
+    voted: "%{author} szavazata: %{response}"
+    voted_hidden: "%{author} szavazott"
+    vote_removed: "%{author}: szavazat eltávolítva"
+    undecided: "%{author}: eldöntetlen"
+    superseded: felülírva
+    shared_outcome: "%{author} megosztott egy következtetést"
+    removed: Eltávolítva
   error:
     access_denied: Nincs engedélyed erre

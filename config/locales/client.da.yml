@@ -1164,6 +1164,9 @@ da:
     thread_markdown_copied: Trådmarkdown kopieret
     move_thread_v2: Flyt tråd
     more: Mere
+    download_markdown: Download Markdown
+    markdown: Markdown
+    vote_before_export: Stem før eksport. Denne tråd har en afstemning, der skjuler resultaterne, indtil du stemmer.
   formatting:
     formatting_tools: Tekstformateringsværktøjer
     colors: Farver
