@@ -7,6 +7,7 @@ import LmoUrlService  from '@/shared/services/lmo_url_service';
 import ScrollService  from '@/shared/services/scroll_service';
 import openModal      from '@/shared/helpers/open_modal';
 import { hardReload } from '@/shared/helpers/window';
+import { downloadFile } from '@/shared/helpers/download_file';
 import { subMonths } from 'date-fns';
 
 export default new class TopicService {
@@ -188,15 +189,26 @@ export default new class TopicService {
         }
       },
 
-      copy_thread_for_ai: {
-        name: 'action_dock.copy_markdown',
+      thread_markdown: {
+        name: 'action_dock.markdown',
         icon: 'mdi-language-markdown-outline',
         dock: 0,
         collection: 'actions',
         canPerform() {
           return !topic.discardedAt && topic.membersInclude(Session.user());
         },
-        perform: () => openModal({component: 'CopyForAiModal', props: {topic}})
+        menu: [
+          {
+            name: 'action_dock.copy_markdown',
+            icon: 'mdi-content-copy',
+            perform: () => this.copyMarkdown(topic)
+          },
+          {
+            name: 'action_dock.download_markdown',
+            icon: 'mdi-download',
+            perform: () => this.downloadMarkdown(topic)
+          }
+        ]
       },
 
       edit_discussion: {
@@ -439,5 +451,36 @@ export default new class TopicService {
     return topic.saveUnpin().then(() => {
       return Flash.success("discussion.pin.unpinned", 'undo', () => this.pin(topic));
     });
+  }
+
+  fetchMarkdown(topic) {
+    return fetch(`/api/v1/topics/${topic.id}/markdown`).then(response => {
+      if (!response.ok) { throw new Error('Could not load thread Markdown'); }
+      return response.json();
+    }).then(json => json.markdown);
+  }
+
+  // The clipboard write starts in the click handler with a pending blob, so
+  // browsers that require a user gesture still allow it after the fetch.
+  copyMarkdown(topic) {
+    const blob = this.fetchMarkdown(topic).then(markdown => new Blob([markdown], {type: 'text/plain'}));
+    return navigator.clipboard.write([new ClipboardItem({'text/plain': blob})])
+      .then(() => Flash.success('action_dock.thread_markdown_copied'))
+      .catch(error => {
+        console.error(error);
+        Flash.error('common.something_went_wrong');
+      });
+  }
+
+  // Strip only characters that filesystems reject, so titles in any script
+  // keep their words in the filename.
+  downloadMarkdown(topic) {
+    const name = topic.title.replace(/[\/\\:*?"<>|\u0000-\u001f]+/g, '').trim();
+    return this.fetchMarkdown(topic)
+      .then(markdown => downloadFile(markdown, 'text/markdown', `${name || 'thread'}.md`))
+      .catch(error => {
+        console.error(error);
+        Flash.error('common.something_went_wrong');
+      });
   }
 };
