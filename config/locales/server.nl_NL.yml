@@ -780,10 +780,6 @@ nl_NL:
   thread_markdown:
     poll: Peiling
     no_activity: Nog geen reacties, peilingen, stemmen of uitslagen.
-    thread_title: "%{type}: %{title} · %{author} %{timestamp}"
-    comment: Reactie · %{author} %{timestamp}
-    comment_reply: Antwoord op %{reply_author} · %{author} %{timestamp}
-    poll_title: "%{type}: %{title} · %{author} %{timestamp}"
     status: "**Status:** %{value}"
     anonymous_voting: "**Anoniem stemmen:** %{value}"
     options: "**Opties:** %{value}"
@@ -803,10 +799,15 @@ nl_NL:
     anonymous: Anoniem
     no_voters: Geen kiezers
     score: 'score: %{value}'
-    vote: 'Stem: %{response} · %{author} %{timestamp}'
     none_of_the_above: Geen van bovenstaande
     no_option_selected: Geen optie geselecteerd
-    outcome: Resultaat · %{author} %{timestamp}
     review_date: "**Reviewdatum:** %{value}"
+    voted: "%{author} stemde %{response}"
+    voted_hidden: "%{author} heeft gestemd"
+    vote_removed: "%{author}: stem verwijderd"
+    undecided: "%{author}: onbeslist"
+    superseded: vervangen
+    shared_outcome: "%{author} deelde een conclusie"
+    removed: Verwijderd
   error:
     access_denied: Je hebt geen toestemming om dat te doen

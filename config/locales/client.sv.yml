@@ -1164,6 +1164,9 @@ sv:
     thread_markdown_copied: Trådmarkdown kopierad
     move_thread_v2: Flytta tråd
     more: Mer
+    download_markdown: Ladda ner Markdown
+    markdown: Markdown
+    vote_before_export: Rösta innan export. Den här tråden har en omröstning som döljer resultaten tills du röstar.
   formatting:
     formatting_tools: Textformateringsverktyg
     colors: Färger

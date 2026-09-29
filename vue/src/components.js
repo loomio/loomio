@@ -21,7 +21,6 @@ export default {
   ChangePictureForm: 'profile/change_picture_form',
   ChangeVolumeForm: 'common/change_volume_form',
   CommentForm: 'topic/comment_form',
-  CopyForAiModal: 'common/copy_for_ai_modal',
   CommonNotifyFields: 'common/notify_fields',
   ConfirmModal: 'common/confirm_modal',
   ContactForm: 'contact/form',

@@ -785,10 +785,6 @@ de:
   thread_markdown:
     poll: Umfrage
     no_activity: Bisher keine Kommentare, Umfragen, Abstimmungen oder Ergebnisse.
-    thread_title: "%{type}: %{title} · %{author} %{timestamp}"
-    comment: Kommentar · %{author} %{timestamp}
-    comment_reply: Antwort an %{reply_author} · %{author} %{timestamp}
-    poll_title: "%{type}: %{title} · %{author} %{timestamp}"
     status: "**Status:** %{value}"
     anonymous_voting: "**Anonyme Abstimmung:** %{value}"
     options: "**Optionen:** %{value}"
@@ -808,10 +804,15 @@ de:
     anonymous: Anonym
     no_voters: Keine Wähler
     score: 'Punktzahl: %{value}'
-    vote: 'Abstimmung: %{response} · %{author} %{timestamp}'
     none_of_the_above: Nichts des oben Genannten
     no_option_selected: Keine Option ausgewählt
-    outcome: Ergebnis · %{author} %{timestamp}
     review_date: "**Überprüfungsdatum:** %{value}"
+    voted: "%{author} hat für %{response} gestimmt"
+    voted_hidden: "%{author} hat abgestimmt"
+    vote_removed: "%{author}: Stimme entfernt"
+    undecided: "%{author}: unentschieden"
+    superseded: ersetzt
+    shared_outcome: "%{author} hat ein Fazit geteilt"
+    removed: Entfernt
   error:
     access_denied: Du hast keine Berechtigung dazu

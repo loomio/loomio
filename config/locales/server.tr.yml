@@ -753,10 +753,6 @@ tr:
   thread_markdown:
     poll: Anket
     no_activity: Henüz hiçbir yorum, anket, oy veya sonuç yok.
-    thread_title: "%{type}: %{title} · %{author} %{timestamp}"
-    comment: Yorum · %{author} %{timestamp}
-    comment_reply: "%{reply_author} adlı kullanıcıya yanıt ver · %{author} %{timestamp}"
-    poll_title: "%{type}: %{title} · %{author} %{timestamp}"
     status: "**Durum:** %{value}"
     anonymous_voting: "**Anonim oylama:** %{value}"
     options: "**Seçenekler:** %{value}"
@@ -776,10 +772,15 @@ tr:
     anonymous: Anonim
     no_voters: Oy vermeyenler
     score: 'puan: %{value}'
-    vote: 'Oy: %{response} · %{author} %{timestamp}'
     none_of_the_above: Yukarıdakilerin hiçbiri
     no_option_selected: Hiçbir seçenek seçilmedi.
-    outcome: Sonuç · %{author} %{timestamp}
     review_date: "**İnceleme tarihi:** %{value}"
+    voted: "%{author}, %{response} seçeneğine oy verdi"
+    voted_hidden: "%{author} oy kullandı"
+    vote_removed: "%{author}: oy kaldırıldı"
+    undecided: "%{author}: kararsız"
+    superseded: değiştirildi
+    shared_outcome: "%{author} bir karar paylaştı"
+    removed: Kaldırıldı
   error:
     access_denied: Bunu yapma izniniz yok.

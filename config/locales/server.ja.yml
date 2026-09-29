@@ -753,10 +753,6 @@ ja:
   thread_markdown:
     poll: アンケート
     no_activity: コメント、アンケート、投票、結果はまだありません
-    thread_title: "%{type}: %{title} · %{author} %{timestamp}"
-    comment: コメント · %{author} %{timestamp}
-    comment_reply: "%{reply_author} · %{author} %{timestamp} への返信"
-    poll_title: "%{type}: %{title} · %{author} %{timestamp}"
     status: "**ステータス:** %{value}"
     anonymous_voting: "**匿名投票:** %{value}"
     options: "**オプション:** %{value}"
@@ -776,10 +772,15 @@ ja:
     anonymous: 匿名
     no_voters: 投票者なし
     score: 'スコア: %{value}'
-    vote: '投票: %{response} · %{author} %{timestamp}'
     none_of_the_above: 上記のどれでもない
     no_option_selected: オプションは選択されていません
-    outcome: 結果 · %{author} %{timestamp}
     review_date: "**レビュー日:** %{value}"
+    voted: "%{author} が %{response} に投票しました"
+    voted_hidden: "%{author} が投票しました"
+    vote_removed: "%{author}: 投票が削除されました"
+    undecided: "%{author}: 未定"
+    superseded: 置き換え済み
+    shared_outcome: "%{author} が結論を共有しました"
+    removed: 削除済み
   error:
     access_denied: あなたにはそれを行う権限がありません

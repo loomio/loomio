@@ -220,13 +220,13 @@ module.exports = {
     const page = pageHelper(test);
     const screenshot = manualScreenshot(test);
     openCopyMarkdownDiscussion(page);
-    page.waitFor('.topic-sidebar .action-dock__button--copy_thread_for_ai');
+    page.waitFor('.topic-sidebar .action-dock__button--thread_markdown');
     screenshot.capture('discussions/discussion_management/copy_markdown_action', {
       width: 1280,
       height: 1000,
-      scrollSelector: '.topic-sidebar .action-dock__button--copy_thread_for_ai',
+      scrollSelector: '.topic-sidebar .action-dock__button--thread_markdown',
       spotlight: {
-        selector: '.topic-sidebar .action-dock__button--copy_thread_for_ai',
+        selector: '.topic-sidebar .action-dock__button--thread_markdown',
         padding: 16,
         radius: 16,
         opacity: 0.4,
@@ -235,19 +235,24 @@ module.exports = {
     });
   },
 
-  'copy_markdown_dialog': (test) => {
+  'copy_markdown_menu': (test) => {
     const page = pageHelper(test);
     const screenshot = manualScreenshot(test);
     openCopyMarkdownDiscussion(page);
-    page.click('.topic-sidebar .action-dock__button--copy_thread_for_ai');
-    page.waitFor('.modal-launcher .v-card');
-    page.expectText('.modal-launcher .v-card', 'Copy Markdown');
-    page.waitFor('.modal-launcher .v-card-actions .v-btn:not([disabled])');
-    screenshot.captureElement(
-      'discussions/discussion_management/copy_markdown_dialog',
-      '.modal-launcher .v-card',
-      {width: 1100, height: 1200}
-    );
+    page.click('.topic-sidebar .action-dock__button--thread_markdown');
+    page.waitFor('.v-overlay--active .v-list');
+    page.expectText('.v-overlay--active .v-list', 'Download Markdown');
+    screenshot.capture('discussions/discussion_management/copy_markdown_menu', {
+      width: 1280,
+      height: 1000,
+      spotlight: {
+        selector: '.v-overlay--active .v-list',
+        padding: 16,
+        radius: 16,
+        opacity: 0.4,
+        outlineWidth: 0
+      }
+    });
   },
 
   'thread_delete': (test) => {

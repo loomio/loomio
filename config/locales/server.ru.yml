@@ -764,10 +764,6 @@ ru:
   thread_markdown:
     poll: Голосование
     no_activity: Пока нет комментариев, опросов, голосов или результатов.
-    thread_title: "%{type}: %{title} · %{author} %{timestamp}"
-    comment: Комментарий · %{author} %{timestamp}
-    comment_reply: Ответить %{reply_author} · %{author} %{timestamp}
-    poll_title: "%{type}: %{title} · %{author} %{timestamp}"
     status: "**Статус:** %{value}"
     anonymous_voting: "**Анонимное голосование:** %{value}"
     options: "**Параметры:** %{value}"
@@ -787,10 +783,15 @@ ru:
     anonymous: Аноним
     no_voters: Нет избирателей
     score: 'оценка: %{value}'
-    vote: 'Голосование: %{response} · %{author} %{timestamp}'
     none_of_the_above: Ни один из вышеперечисленных
     no_option_selected: Вариант не выбран
-    outcome: Результат · %{author} %{timestamp}
     review_date: "**Дата проверки:** %{value}"
+    voted: "%{author} проголосовал %{response}"
+    voted_hidden: "%{author} проголосовал"
+    vote_removed: "%{author}: голос удален"
+    undecided: "%{author}: не определился"
+    superseded: заменен
+    shared_outcome: "%{author} поделился выводом"
+    removed: Удалено
   error:
     access_denied: У вас нет разрешения на это.

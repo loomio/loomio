@@ -1176,6 +1176,9 @@ de:
     thread_markdown_copied: Thread-Markdown kopiert
     move_thread_v2: Thema verschieben
     more: Mehr
+    download_markdown: Markdown herunterladen
+    markdown: Markdown
+    vote_before_export: Stimme vor dem Export ab. In diesem Thread gibt es eine Umfrage, deren Ergebnisse erst nach deiner Stimmabgabe sichtbar sind.
   formatting:
     formatting_tools: Werkzeuge für Textbearbeitung
     colors: Farben

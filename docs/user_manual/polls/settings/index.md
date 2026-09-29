@@ -135,6 +135,10 @@ Setting options:
 - Hide results until a vote is cast
 - Hide results until voting closes
 
+While results are hidden, nobody can reply to votes. Replies to votes open when voting closes.
+
+If results are hidden until a vote is cast, vote before you print or export the thread as Markdown.
+
 Anonymous polls always hide results until voting closes. The STV Election
 template enables anonymous voting by default.
 

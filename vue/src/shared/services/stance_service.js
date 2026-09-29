@@ -71,7 +71,7 @@ export default new class StanceService {
           !stance.discardedAt &&
           !stance.revokedAt &&
           poll && !poll.anonymous &&
-          poll.showResults() &&
+          poll.resultsVisibleToAll() &&
           topic && topic.membersInclude(Session.user()) &&
           !topic.lockedAt;
         },

@@ -783,10 +783,6 @@ pt_BR:
   thread_markdown:
     poll: Enquete
     no_activity: Ainda não há comentários, enquetes, votos ou resultados.
-    thread_title: "%{type}: %{title} · %{author} %{timestamp}"
-    comment: Comentário · %{author} %{timestamp}
-    comment_reply: Responder a %{reply_author} · %{author} %{timestamp}
-    poll_title: "%{type}: %{title} · %{author} %{timestamp}"
     status: "**Status:** %{value}"
     anonymous_voting: "**Votação anônima:** %{value}"
     options: "**Opções:** %{value}"
@@ -806,10 +802,15 @@ pt_BR:
     anonymous: Anônimo
     no_voters: Sem eleitores
     score: 'pontuação: %{value}'
-    vote: 'Voto: %{response} · %{author} %{timestamp}'
     none_of_the_above: Nenhuma das acima
     no_option_selected: Nenhuma opção selecionada
-    outcome: Resultado · %{author} %{timestamp}
     review_date: "**Data da revisão:** %{value}"
+    voted: "%{author} votou em %{response}"
+    voted_hidden: "%{author} votou"
+    vote_removed: "%{author}: voto removido"
+    undecided: "%{author}: indeciso"
+    superseded: substituído
+    shared_outcome: "%{author} compartilhou uma conclusão"
+    removed: Removido
   error:
     access_denied: Você não tem permissão para fazer isso.

@@ -60,6 +60,38 @@ class Api::V1::TopicsControllerTest < ActionController::TestCase
     refute_includes response.body, "Private markdown security marker"
   end
 
+  test "markdown waits until the reader votes in an open poll that hides results until voting" do
+    poll = PollService.create(
+      params: {topic_id: @topic.id, title: "Hidden until vote", poll_type: "proposal",
+               poll_option_names: ["Agree", "Disagree"], closing_at: 3.days.from_now, hide_results: "until_vote"},
+      actor: @admin
+    )
+    sign_in @user
+
+    get :markdown, params: {id: @topic.id}
+    assert_response :forbidden
+
+    stance = poll.stances.latest.find_by!(participant_id: @user.id)
+    stance.choice = "Agree"
+    StanceService.create(stance: stance, actor: @user)
+
+    get :markdown, params: {id: @topic.id}
+    assert_response :success
+  end
+
+  test "markdown is available while results are hidden until the poll closes" do
+    PollService.create(
+      params: {topic_id: @topic.id, title: "Hidden until closed", poll_type: "proposal",
+               poll_option_names: ["Agree", "Disagree"], closing_at: 3.days.from_now, hide_results: "until_closed"},
+      actor: @admin
+    )
+    sign_in @user
+
+    get :markdown, params: {id: @topic.id}
+
+    assert_response :success
+  end
+
   test "mark as read does not return a topic after guest access is revoked" do
     secret_discussion = discussions(:alien_discussion)
     secret_discussion.update!(title: "Private mark read security marker")

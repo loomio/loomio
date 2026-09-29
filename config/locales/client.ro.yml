@@ -1164,6 +1164,9 @@ ro:
     thread_markdown_copied: Markdown-ul firului de discuție a fost copiat
     move_thread_v2: Mută firul de discuție
     more: Mai mult
+    download_markdown: Descărcați Markdown
+    markdown: Markdown
+    vote_before_export: Votează înainte de a exporta. Acest fir de discuție are un sondaj care ascunde rezultatele până când votezi.
   formatting:
     formatting_tools: Instrumente de formatare a textului
     colors: Culori

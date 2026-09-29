@@ -6,10 +6,13 @@ en:
   thread_markdown:
     poll: Poll
     no_activity: No comments, polls, votes, or outcomes yet
-    thread_title: "%{type}: %{title} · %{author} %{timestamp}"
-    comment: "Comment · %{author} %{timestamp}"
-    comment_reply: "Reply to %{reply_author} · %{author} %{timestamp}"
-    poll_title: "%{type}: %{title} · %{author} %{timestamp}"
+    voted: "%{author} voted %{response}"
+    voted_hidden: "%{author} voted"
+    vote_removed: "%{author}: vote removed"
+    undecided: "%{author}: undecided"
+    superseded: superseded
+    shared_outcome: "%{author} shared an outcome"
+    removed: Removed
     status: "**Status:** %{value}"
     anonymous_voting: "**Anonymous voting:** %{value}"
     options: "**Options:** %{value}"
@@ -29,10 +32,8 @@ en:
     anonymous: Anonymous
     no_voters: No voters
     score: "score: %{value}"
-    vote: "Vote: %{response} · %{author} %{timestamp}"
     none_of_the_above: None of the above
     no_option_selected: No option selected
-    outcome: "Outcome · %{author} %{timestamp}"
     review_date: "**Review date:** %{value}"
   locale_names:
     en: English

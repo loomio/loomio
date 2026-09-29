@@ -753,10 +753,6 @@ fi:
   thread_markdown:
     poll: Kysely
     no_activity: Ei vielä kommentteja, kyselyitä, ääniä tai tuloksia
-    thread_title: "%{type}: %{title} · %{author} %{timestamp}"
-    comment: Kommentti · %{author} %{timestamp}
-    comment_reply: Vastaus käyttäjälle %{reply_author} · %{author} %{timestamp}
-    poll_title: "%{type}: %{title} · %{author} %{timestamp}"
     status: "**Tila:** %{value}"
     anonymous_voting: "**Anonyymi äänestys:** %{value}"
     options: "**Asetukset:** %{value}"
@@ -776,10 +772,15 @@ fi:
     anonymous: Anonyymi
     no_voters: Ei äänestäjiä
     score: 'pisteet: %{value}'
-    vote: 'Äänestys: %{response} · %{author} %{timestamp}'
     none_of_the_above: Mikään yllä mainituista
     no_option_selected: Ei valittua vaihtoehtoa
-    outcome: Lopputulos · %{author} %{timestamp}
     review_date: "**Arviointipäivämäärä:** %{value}"
+    voted: "%{author} äänesti %{response}"
+    voted_hidden: "%{author} äänesti"
+    vote_removed: "%{author}: ääni poistettu"
+    undecided: "%{author}: epävarma"
+    superseded: korvattu
+    shared_outcome: "%{author} jakoi johtopäätöksen"
+    removed: Poistettu
   error:
     access_denied: Sinulla ei ole lupaa tehdä niin

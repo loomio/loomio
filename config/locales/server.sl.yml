@@ -753,10 +753,6 @@ sl:
   thread_markdown:
     poll: Anketa
     no_activity: Še ni komentarjev, anket, glasov ali rezultatov
-    thread_title: "%{type}: %{title} · %{author} %{timestamp}"
-    comment: Komentar · %{author} %{timestamp}
-    comment_reply: Odgovori na %{reply_author} · %{author} %{timestamp}
-    poll_title: "%{type}: %{title} · %{author} %{timestamp}"
     status: "**Stanje:** %{value}"
     anonymous_voting: "**Anonimno glasovanje:** %{value}"
     options: "**Možnosti:** %{value}"
@@ -776,10 +772,15 @@ sl:
     anonymous: Anonimno
     no_voters: Brez volivcev
     score: 'rezultat: %{value}'
-    vote: 'Glas: %{response} · %{author} %{timestamp}'
     none_of_the_above: Nič od naštetega
     no_option_selected: Ni izbrane možnosti
-    outcome: Rezultat · %{author} %{timestamp}
     review_date: "**Datum pregleda:** %{value}"
+    voted: "%{author} je glasoval/a za %{response}"
+    voted_hidden: "%{author} je glasoval"
+    vote_removed: "%{author}: glas odstranjen"
+    undecided: "%{author}: neodločen"
+    superseded: nadomeščen
+    shared_outcome: "%{author} je delil/a izid"
+    removed: Odstranjeno
   error:
     access_denied: Nimate dovoljenja za to.

@@ -767,10 +767,6 @@ uk:
   thread_markdown:
     poll: Опитування
     no_activity: Поки що немає коментарів, опитувань, голосувань чи результатів
-    thread_title: "%{type}: %{title} · %{author} %{timestamp}"
-    comment: Коментар · %{author} %{timestamp}
-    comment_reply: Відповідь для %{reply_author} · %{author} %{timestamp}
-    poll_title: "%{type}: %{title} · %{author} %{timestamp}"
     status: "**Статус:** %{value}"
     anonymous_voting: "**Анонімне голосування:** %{value}"
     options: "**Параметри:** %{value}"
@@ -790,10 +786,15 @@ uk:
     anonymous: Анонім
     no_voters: Немає виборців
     score: 'оцінка: %{value}'
-    vote: 'Голос: %{response} · %{author} %{timestamp}'
     none_of_the_above: Жоден з перерахованих вище
     no_option_selected: Не вибрано жодного варіанта
-    outcome: Результат · %{author} %{timestamp}
     review_date: "**Дата перегляду:** %{value}"
+    voted: "%{author} проголосував за %{response}"
+    voted_hidden: "%{author} проголосував"
+    vote_removed: "%{author}: голос видалено"
+    undecided: "%{author}: не визначився"
+    superseded: замінений
+    shared_outcome: "%{author} поділився висновком"
+    removed: Видалено
   error:
     access_denied: У вас немає дозволу на це

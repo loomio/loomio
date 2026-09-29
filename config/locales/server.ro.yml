@@ -753,10 +753,6 @@ ro:
   thread_markdown:
     poll: Sondaj
     no_activity: Niciun comentariu, sondaj, vot sau rezultat încă
-    thread_title: "%{type}: %{title} · %{author} %{timestamp}"
-    comment: Comentariu · %{author} %{timestamp}
-    comment_reply: Răspuns către %{reply_author} · %{author} %{timestamp}
-    poll_title: "%{type}: %{title} · %{author} %{timestamp}"
     status: "**Stare:** %{value}"
     anonymous_voting: "**Vot anonim:** %{value}"
     options: "**Opțiuni:** %{value}"
@@ -776,10 +772,15 @@ ro:
     anonymous: Anonim
     no_voters: Niciun alegător
     score: 'scor: %{value}'
-    vote: 'Vot: %{response} · %{author} %{timestamp}'
     none_of_the_above: Nici una dintre cele de mai sus
     no_option_selected: Nicio opțiune selectată
-    outcome: Rezultat · %{author} %{timestamp}
     review_date: "**Data revizuirii:** %{value}"
+    voted: "%{author} a votat %{response}"
+    voted_hidden: "%{author} a votat"
+    vote_removed: "%{author}: vot eliminat"
+    undecided: "%{author}: nehotărât"
+    superseded: înlocuit
+    shared_outcome: "%{author} a distribuit o concluzie"
+    removed: Eliminat
   error:
     access_denied: Nu aveți permisiunea să faceți asta

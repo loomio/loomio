@@ -6,6 +6,14 @@ module Ability::Topic
       can?(:show, topic.topicable)
     end
 
+    # An export would show the votes in any open poll that hides results until
+    # the reader votes, so wait until the reader has voted in each one.
+    can [:export], ::Topic do |topic|
+      voted_poll_ids = ::Stance.latest.decided.where(participant_id: user.id).select(:poll_id)
+      can?(:show, topic) &&
+      !topic.polls.active.where(hide_results: :until_vote).where.not(id: voted_poll_ids).exists?
+    end
+
     can [:update, :move, :move_comments, :pin, :close, :reopen, :discard], ::Topic do |topic|
       topic.admins_include?(user)
     end
