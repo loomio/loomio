@@ -111,6 +111,7 @@ success messages).
 - **Avoid full stops on single-sentence UI strings.** Following Material Design UI copy guidance, omit the final full stop when a UI string is a single sentence; use normal punctuation when the string contains more than one sentence.
 - **Spanish (es): use the informal `tú` register throughout.** The app addresses users with "tu", "tú", informal imperatives ("Suscríbete", "Descubre"), and informal verb forms ("¿Cómo piensas?"). Google Translate often introduces `usted`/`su` — catch and correct this on review.
 - **Dutch (nl_NL): use the informal `je/jouw` register throughout.** The app addresses users with "je", "jouw", and informal verb forms ("Hoe wil je?", "je eigen demogroep"). Google Translate often introduces `u`/`uw` — catch and correct this on review.
+- **Belarusian (be): use `вы`, the official Cyrillic orthography, and gender-inclusive wording.** The app addresses users with lowercase "вы/ваш" and вы imperatives ("Выберыце", "Націсніце"). Belarusian past-tense verbs and many person nouns are gendered, so prefer plural, present-tense or impersonal constructions ("удзельнікі прагаласавалі", "каб прагаласаваць") over masculine singular forms ("ён прагаласаваў", "удзельнік прагаласаваў"). Write Belarusian, not Russian: machine translation often borrows Russian words and spellings — catch and correct these on review.
 
 ### Making a locale's register consistent
 

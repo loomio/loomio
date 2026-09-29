@@ -1,0 +1,69 @@
+---
+navigation_title: Задачы
+blocks:
+  970146a02b39726b:
+    english: "# Tasks"
+    translation: "# Задачы"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  bea1dad1b0b47107:
+    english: Use tasks in threads and comments to name an action, assign it to someone, set a due date, and track whether it is complete.
+    translation: Задачы ў тэмах і каментарыях дапамагаюць апісаць дзеянне, прызначыць адказных, усталяваць тэрмін выканання і адсочваць, ці выканана яно.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  2398b3493bad759e:
+    english: "## Add a task"
+    translation: "## Дадаць задачу"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  c240866e019fab51:
+    english: While writing a thread or comment, expand the formatting toolbar and click **Task list**. Type the action beside the checkbox.
+    translation: Калі пішаце тэкст тэмы або каментарый, разгарніце панэль фарматавання і націсніце **Спіс задач**. Побач з полем для пазнакі ўвядзіце, што трэба зрабіць.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  f7d4f63b321e9af1:
+    english: "## Name and assign the task to a person"
+    translation: "## Назваць задачу і прызначыць адказных"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  5ea902e45aaf1f7a:
+    english: Use an @mention in the task to assign it to a group member. An **Add due date** button appears once the task has an assignee.
+    translation: Каб прызначыць задачу аднаму з удзельнікаў групы, згадайце гэтага чалавека ў задачы праз @. Пасля прызначэння з’явіцца кнопка **Дадаць тэрмін выканання**.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  1134aedee6cafd8c:
+    english: Tasks assigned to you appear on your **Tasks** page. Open **Tasks** from the sidebar to see them grouped by thread or poll.
+    translation: Прызначаныя вам задачы з’яўляюцца на старонцы **Задачы**. Адкрыйце **Задачы** на бакавой панэлі, каб убачыць іх згрупаванымі па тэмах або апытаннях.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  5eae519b81c94f7a:
+    english: "## Set a reminder"
+    translation: "## Наладзіць напамін"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  561597d43d716888:
+    english: Click **Add due date** to choose a due date and when Loomio should email the assignee a reminder. You can also remove an existing due date from this dialog.
+    translation: Націсніце **Дадаць тэрмін выканання**, каб выбраць дату выканання і час, калі Loomio мае адправіць напамін па электроннай пошце. У гэтым жа акне можна выдаліць усталяваны тэрмін.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  bd36c23f297b0429:
+    english: "## Mark it as done"
+    translation: "## Пазначыць задачу як выкананую"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  59b6138f35694902:
+    english: Click the checkbox beside a task to mark it as done. You can do this while editing the text, while reading it if you are the assignee, or from the **Tasks** page. Click it again to reopen the task.
+    translation: Націсніце поле для пазнакі побач з задачай, каб пазначыць яе як выкананую. Гэта можна зрабіць падчас рэдагавання тэксту, падчас чытання, калі задача прызначана вам, або на старонцы **Задачы**. Націсніце поле яшчэ раз, каб аднавіць задачу.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'

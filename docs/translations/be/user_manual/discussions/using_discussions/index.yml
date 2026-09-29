@@ -1,0 +1,521 @@
+---
+navigation_title: Як карыстацца тэмамі
+blocks:
+  d6fe7310d19b1141:
+    english: "# Using threads"
+    translation: "# Як карыстацца тэмамі"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  031f9244f107aba8:
+    english: A discussion keeps its context, comments, decisions, and outcomes together in one thread. This page explains how to participate in a thread and use its navigation and actions.
+    translation: У адной тэме захоўваюцца кантэкст абмеркавання, каментарыі, рашэнні і высновы. На гэтай старонцы расказана, як удзельнічаць у тэме, перамяшчацца па ёй і карыстацца даступнымі дзеяннямі.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  479a1564b496bfed:
+    english: "## Thread anatomy"
+    translation: "## З чаго складаецца тэма"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  fb745de96e6a612d:
+    english: 'A typical thread looks like this:'
+    translation: 'Тыповая тэма выглядае так:'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  9e69f7f0b13fd9f9:
+    english: 'From the top of the page, a thread contains:'
+    translation: 'Калі рухацца зверху ўніз, тэма змяшчае:'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  5b47d6434aa50e94:
+    english: "**Group name** - At the top left of the discussion page is the name of the group or subgroup that the discussion belongs to.  Click on this name to go back to the group page."
+    translation: "**Назва групы** - У левым верхнім куце старонкі абмеркавання паказана назва групы або падгрупы, да якой яно належыць. Націсніце на назву, каб вярнуцца на старонку групы."
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  0dab4c46c2bee003:
+    english: "**Discussion access** - The access icon at the top right opens the discussion's access settings. A group discussion is available to group members and anyone specifically invited to it, subject to the group's privacy settings."
+    translation: "**Доступ да абмеркавання** - Значок доступу ў правым верхнім куце адкрывае налады доступу да абмеркавання. Абмеркаванне ў групе даступнае яе ўдзельнікам і людзям, якіх запрасілі асобна, з улікам налад прыватнасці групы."
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  e20178954e6d3ce0:
+    english: "**Discussion title** - The name of the discussion."
+    translation: "**Назва абмеркавання** - Назва абмеркавання."
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  47687209ed924849:
+    english: "**Category tags** - The discussion may have one or more category tags. Using simple tags helps people more easily find discussions of a similar type."
+    translation: "**Тэгі катэгорый** - Абмеркаванне можа мець адзін або некалькі тэгаў катэгорый. Простыя тэгі дапамагаюць людзям знаходзіць падобныя абмеркаванні."
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  b817649f985f51de:
+    english: "**Discussion author** - The name and avatar of the person who started the discussion, shown beneath the title."
+    translation: "**Аўтары абмеркавання** - Пад назвай паказаны імя і аватар людзей, якія пачалі абмеркаванне."
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  c44d5a833b4ec9ff:
+    english: "**Date** - Hover over the date to see the full date and time of discussion start."
+    translation: "**Дата** - Навядзіце паказальнік на дату, каб убачыць поўную дату і час пачатку абмеркавання."
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  b8062113f1078acb:
+    english: "**Seen by** - In the right sidebar, shows who has read the discussion and when."
+    translation: "**Бачыў** - На правай бакавой панэлі паказвае, хто і калі прачытаў абмеркаванне."
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  133d0c2e469e9683:
+    english: "**Notified** - In the right sidebar, shows who has been notified about the discussion and whether each notification has been read or its email opened."
+    translation: "**Апавешчаны** - На правай бакавой панэлі паказвае, хто атрымаў апавяшчэнне пра абмеркаванне, а таксама ці было яно прачытана або ці быў адкрыты адпаведны электронны ліст."
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  9f788adb4eab80cc:
+    english: "**Discussion context** - Content to frame the discussion."
+    translation: "**Кантэкст абмеркавання** - Змест, які задае рамкі абмеркавання."
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  e8c5ae76dfb5b89b:
+    english: "**Discussion interaction and administration tools** - The discussion context has controls to react to and edit it. The right sidebar contains notification, membership and administration actions."
+    translation: "**Інструменты ўзаемадзеяння і кіравання абмеркаваннем** - Побач з кантэкстам абмеркавання ёсць элементы кіравання, каб адрэагаваць на яго або адрэдагаваць. Правая бакавая панэль змяшчае дзеянні для апавяшчэнняў, складу ўдзельнікаў і кіравання."
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  8f6eac4359c2b9f6:
+    english: "**Comments** - Comments are displayed under the discussion context. The author's name, avatar and posting time show who wrote each comment and when. Interaction and administration tools are available on each comment."
+    translation: "**Каментарыі** - Каментарыі паказваюцца пад кантэкстам абмеркавання. Імя, аватар і час публікацыі паказваюць, хто і калі напісаў кожны каментарый. Для кожнага каментарыя даступныя інструменты ўзаемадзеяння і кіравання."
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  f978af6c9af4afe5:
+    english: |-
+      **Navigation, notifications and actions** - The right sidebar contains
+      shortcuts to activity and milestones, notification and membership information,
+      and the thread actions available to you.
+    translation: |-
+      **Навігацыя, апавяшчэнні і дзеянні** - Правая бакавая панэль змяшчае
+      спасылкі на падзеі і важныя пункты тэмы, звесткі пра апавяшчэнні і ўдзельнікаў,
+      а таксама даступныя вам дзеянні з тэмай.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  f8c4084e9e8a2b27:
+    english: "## Discussion context"
+    translation: "## Кантэкст абмеркавання"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  5940bad6cb1cb49f:
+    english: The discussion **context** is always found at the top of the discussion. Use the context to frame the discussion or decision.
+    translation: "**Кантэкст** заўсёды знаходзіцца ўверсе абмеркавання. Выкарыстоўвайце яго, каб задаць рамкі абмеркавання або рашэння."
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  415dd2d0f1eacc9f:
+    english: Think of your group as you write content in the discussion context.  Your aim is to get a discussion going, so consider how you can motivate people to participate.  In general, keep the discussion context simple and clear.
+    translation: Пішучы кантэкст абмеркавання, улічвайце патрэбы сваёй групы. Каб пачаць абмеркаванне, падумайце, што дапаможа людзям далучыцца. Звычайна кантэкст лепш пісаць проста і зразумела.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  a1fcece28d8fb61d:
+    english: Write the discussion context when starting or editing a discussion. **Edit** a discussion with the pencil icon.
+    translation: Дадайце кантэкст, калі пачынаеце або рэдагуеце абмеркаванне. Каб змяніць абмеркаванне, націсніце значок алоўка **Рэдагаваць**.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  2f47adddef6b31d9:
+    english: As the discussion progresses, update discussion context.  Think of the context like a whiteboard in your meeting room, where you can write the agenda, the outcomes intended and how you plan to get there.
+    translation: 'Абнаўляйце кантэкст па ходзе абмеркавання. Ён можа служыць дошкай у пакоі для сустрэч: тут можна запісаць парадак дня, чаканыя высновы і план далейшай працы.'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  c82ec20629208982:
+    english: At the bottom of the context panel is a formatting bar, where you can format text, attach files, images and embed a video.
+    translation: Унізе панэлі кантэксту знаходзіцца панэль фарматавання. На ёй можна фарматаваць тэкст, далучаць файлы і выявы, а таксама ўбудоўваць відэа.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  e606d83ae0fb2178:
+    english: "### Notify people about context changes"
+    translation: "### Апавяшчайце людзей пра змены кантэксту"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  d188326a58b28d96:
+    english: When you edit the discussion context, use **What's changed?** to summarize the update and choose who should be notified.
+    translation: Калі рэдагуеце кантэкст абмеркавання, выкарыстоўвайце поле **Што змянілася?**, каб коратка апісаць абнаўленне і выбраць, каго апавясціць.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  842091a987742d6d:
+    english: "![Editing a discussion context with a change summary and notification recipients](../notifying_people/thread_editcontext.png)"
+    translation: "![Рэдагаванне кантэксту абмеркавання з апісаннем змен і выбарам атрымальнікаў апавяшчэння](../notifying_people/thread_editcontext.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  b885359dd7e83428:
+    english: The summary appears as an item in the thread so participants can see what changed.
+    translation: Апісанне змен з'яўляецца асобным элементам у тэме, каб удзельнікі маглі ўбачыць, што змянілася.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  c899c47e98f79a23:
+    english: "![A timeline item describing a discussion context change](../notifying_people/thread_edit_comment.png)"
+    translation: "![Элемент храналогіі з апісаннем змены кантэксту абмеркавання](../notifying_people/thread_edit_comment.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  44ffd1d0a732b897:
+    english: "## Navigation"
+    translation: "## Навігацыя"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  e96aef7a28a85001:
+    english: 'The **Jump to** section of the right sidebar helps you move through a thread:'
+    translation: 'Раздзел **Перайсці да** на правай бакавой панэлі дапамагае перамяшчацца па тэме:'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  4790c088af5fc09f:
+    english: |-
+      - **Start** goes to the discussion context
+      - **New to you** appears when the thread contains activity you have not read
+      - **Latest** appears when newer activity is available beyond the items currently loaded
+      - milestone links go directly to important comments, polls, and outcomes
+      - **End** goes to the latest item in the thread
+    translation: |-
+      - **Пачатак** вядзе да кантэксту абмеркавання
+      - **Новае для цябе** з'яўляецца, калі ў тэме ёсць непрачытаная вамі актыўнасць
+      - **Апошнія** з'яўляецца, калі ёсць навейшыя падзеі, чым ужо загружаныя
+      - спасылкі на важныя пункты вядуць да важных каментарыяў, апытанняў і высноў
+      - **Канец** вядзе да апошняга элемента тэмы
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  941ea9900465724a:
+    english: Comments that include an H2 or H3 heading, polls, and proposals are automatically included as milestone links. Select any milestone to go directly to it.
+    translation: Каментарыі з загалоўкам H2 або H3, апытанні і прапановы аўтаматычна з'яўляюцца сярод спасылак на важныя пункты. Выберыце любы з іх, каб перайсці да яго.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  e94ea6f4b9dae8d4:
+    english: When you add a comment, poll, vote, or outcome, Loomio marks your own new item as read. It will not appear as something new for you to review.
+    translation: Калі вы дадаяце каментарый, апытанне, голас або выснову, Loomio пазначае ваш новы элемент як прачытаны. Ён не будзе паказвацца вам як нешта новае для прагляду.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  34251ada1ba3e50b:
+    english: "## Notifications and members"
+    translation: "## Апавяшчэнні і ўдзельнікі"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  36a20a0e10208c7c:
+    english: The right sidebar controls your email notifications and shows who has been invited, who has seen the thread, and who has been notified.
+    translation: На правай бакавой панэлі можна кіраваць апавяшчэннямі па электроннай пошце і бачыць, каго запрасілі, хто праглядзеў тэму і хто атрымаў апавяшчэнні.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  f2a437ac1169c882:
+    english: "### Email notifications for this thread"
+    translation: "### Апавяшчэнні па электроннай пошце для гэтай тэмы"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  9bd7269489ed048e:
+    english: Select the current notification setting to choose whether Loomio emails you about all activity, only activity that specifically notifies you, or no activity. Receiving email for all activity can produce many messages in an active thread.
+    translation: Націсніце бягучую наладу апавяшчэнняў і выберыце, ці будзе Loomio дасылаць вам лісты пра ўсе падзеі, толькі пра падзеі, пра якія вас апавяшчаюць асобна, або не будзе дасылаць іх увогуле. У актыўнай тэме лістаў пра ўсе падзеі можа быць шмат.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  0d64de2345c8eba9:
+    english: "![Email when notified selected in the discussion sidebar](../notifying_people/thread_interact.png)"
+    translation: "![На бакавой панэлі абмеркавання выбрана адпраўка электронных лістоў пры атрыманні апавяшчэнняў](../notifying_people/thread_interact.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  7bdbdaa98e89d1c3:
+    english: "### Invite people"
+    translation: "### Запрасіць людзей"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  e81f85e723885264:
+    english: Select **Invite people** to add people after the thread has started.
+    translation: Выберыце **Запрасіць людзей**, каб дадаць іх пасля пачатку тэмы.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  e38a572cdffad5cb:
+    english: "![Invite people in the thread sidebar](../notifying_people/thread_invite_icon.png)"
+    translation: "![Запрашэнне людзей у бакавой панэлі тэмы](../notifying_people/thread_invite_icon.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  7e4e643fb327aa06:
+    english: Select a group or subgroup, enter the names of individual members, or enter an email address to invite a guest.
+    translation: Выберыце групу або падгрупу, увядзіце імёны асобных удзельнікаў або адрас электроннай пошты, каб запрасіць госця.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  03c1d74b4a8bc31d:
+    english: "![Invite people window with a field for names and email addresses](../notifying_people/thread_invite.png)"
+    translation: "![Акно запрашэння людзей з полем для імёнаў і адрасоў электроннай пошты](../notifying_people/thread_invite.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  85fc948a4e849ba8:
+    english: A guest can see and participate in this thread but cannot see other discussions in the group unless separately invited.
+    translation: Госці могуць праглядаць гэтую тэму і ўдзельнічаць у ёй, але не бачаць іншых абмеркаванняў у групе без асобнага запрашэння.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  9f1010b58cc5439f:
+    english: "![Inviting a guest by email address](../notifying_people/invite_guest.png)"
+    translation: "![Запрашэнне госця па адрасе электроннай пошты](../notifying_people/invite_guest.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  e688189fa93b1e49:
+    english: To remove someone, open the three-dot menu (**⋯**) beside their name and select **Remove from discussion**.
+    translation: Каб выдаліць чалавека, адкрыйце меню з трыма кропкамі (**⋯**) побач з яго імем і выберыце **Выдаліць з абмеркавання**.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  5602fbfa565eaf45:
+    english: "### Seen by"
+    translation: "### Бачыў"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  a929b22d02292573:
+    english: "**Seen by** shows who has opened the thread and when. It can help you identify people who may not have seen important information yet."
+    translation: Раздзел **Бачыў** паказвае, хто і калі адкрыў тэму. Гэта дапамагае вызначыць, хто яшчэ мог не ўбачыць важную інфармацыю.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  d0335d202c5bbaa3:
+    english: "![Seen by and Notified in the Thread members section](../notifying_people/thread_engagement.png)"
+    translation: "![Раздзел «Удзельнікі тэмы» з пунктамі «Бачыў» і «Апавешчаны»](../notifying_people/thread_engagement.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  fb77150441a43f5c:
+    english: "![Seen by window listing thread members](../notifying_people/thread_seenby.png)"
+    translation: "![Акно «Бачыў» са спісам удзельнікаў тэмы](../notifying_people/thread_seenby.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  185f80d66c2091d8:
+    english: "### Notified"
+    translation: "### Апавешчаны"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  885a21cbc1a44f7d:
+    english: "**Notified** opens the discussion notification history. It includes invitations, mentions, and replies, showing who was notified and whether each notification has been read when that information is available."
+    translation: Пункт **Апавешчаны** адкрывае гісторыю апавяшчэнняў аб абмеркаванні. Яна змяшчае запрашэнні, згадкі і адказы, а таксама паказвае, хто атрымаў апавяшчэнне і ці было яно прачытана, калі гэтыя звесткі даступныя.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  e73fae9309f626e2:
+    english: "![Discussion notification history](../notifying_people/thread_notified.png)"
+    translation: "![Гісторыя апавяшчэнняў аб абмеркаванні](../notifying_people/thread_notified.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  347def7574cf5f1d:
+    english: "## Actions"
+    translation: "## Дзеянні"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  '08ff4ccd500c2a69':
+    english: The right sidebar contains actions for the whole thread. Some actions are also available from the three-dot menu (**⋯**) beside a thread on the group page.
+    translation: У правай бакавой панэлі ёсць дзеянні для ўсёй тэмы. Некаторыя з іх таксама даступныя ў меню з трыма кропкамі (**⋯**) побач з тэмай на старонцы групы.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  e73701c7d36f95ef:
+    english: The actions shown depend on your permissions. Group admins can manage threads, and group settings may allow members to perform some management actions. See [Group permissions](/en/user_manual/groups/settings/permissions).
+    translation: Даступныя дзеянні залежаць ад вашых правоў. Адміністратары групы могуць кіраваць тэмамі, а налады групы могуць дазваляць удзельнікам выконваць некаторыя дзеянні па кіраванні. Глядзіце [Правы доступу ў групе](/en/user_manual/groups/settings/permissions).
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  4fce317a163b0a40:
+    english: "### Print"
+    translation: "### Друк"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  9317d4c7c5ef4764:
+    english: Select **Print** to generate a page suitable for printing. Use your browser's print dialog to save it as a PDF.
+    translation: Выберыце **Друк**, каб стварыць старонку для друку. Каб захаваць яе як PDF, скарыстайцеся акном друку ў браўзеры.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  443af0749df1db2a:
+    english: "### Markdown"
+    translation: "### Markdown"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  eb0442148f7c042d:
+    english: Select **Markdown** to save the complete thread as structured Markdown. Choose **Copy Markdown** to copy it to your clipboard, or **Download Markdown** to save it as a `.md` file. You can use it for meeting minutes, a document, an archive of decisions, an AI assistant, or another tool that supports Markdown.
+    translation: Выберыце **Markdown**, каб захаваць усю тэму ў структураваным фармаце Markdown. Выберыце **Капіраваць Markdown**, каб скапіяваць яе ў буфер абмену, або **Спампаваць Markdown**, каб захаваць яе ў файле `.md`. Гэты файл можна выкарыстаць для пратакола сустрэчы, дакумента, архіва рашэнняў, працы з памочнікам на аснове ШІ або іншым інструментам, які падтрымлівае Markdown.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  80e3f57638b53cb4:
+    english: The document begins with YAML front matter containing the thread key, group, creation date, last activity date, and tags. It then includes the discussion context and every comment, poll, vote, and outcome in the same order and nesting as the threaded view.
+    translation: Дакумент пачынаецца з блока метаданых YAML, які змяшчае ключ тэмы, групу, дату стварэння, дату апошняй актыўнасці і тэгі. Далей ідуць кантэкст абмеркавання і ўсе каментарыі, апытанні, галасы і высновы ў тым жа парадку і з той жа ўкладзенасцю, што і ў згрупаваным паказе адказаў.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  f99823b7b44e2cdd:
+    english: Each poll is a section. Comments, votes, and outcomes are quoted, and replies are quoted beneath the item they answer. This shows where each person's text begins and ends. Each quote starts with one line showing the person, when they posted, the item's number in the thread, and any reactions. Votes and outcomes also say what they are. The thread key and item number identify each item in Loomio.
+    translation: Кожнае апытанне ўтварае асобны раздзел. Каментарыі, галасы і высновы аформлены як цытаты, а адказы размешчаны цытатамі пад тымі элементамі, да якіх яны адносяцца. Так відаць, дзе пачынаецца і заканчваецца тэкст кожнага чалавека. Першы радок кожнай цытаты паказвае імя, час публікацыі, нумар элемента ў тэме і рэакцыі, калі яны ёсць. Для галасоў і высноў таксама пазначаны іх тып. Ключ тэмы і нумар элемента дазваляюць знайсці кожны элемент у Loomio.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  e5bdfbb4a0d7646f:
+    english: Loomio applies the same visibility rules as the thread. Results and vote reasons you cannot see are not included, and voters are not identified in anonymous polls. If an open poll hides results until you vote, vote before exporting the thread. **Markdown** and **Print** are unavailable until you do.
+    translation: Loomio прымяняе тыя ж правілы бачнасці, што і ў тэме. Вынікі і прычыны галасавання, да якіх у вас няма доступу, не ўключаюцца, а ў ананімных апытаннях не раскрываецца, хто як прагаласаваў. Калі вынікі адкрытага апытання схаваны да вашага галасавання, прагаласуйце перад экспартам тэмы. Да гэтага **Markdown** і **Друк** будуць недаступныя.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  7989d3386a42f180:
+    english: 'For example, a discussion containing a comment, reactions, a proposal, two votes, a reply, and an outcome produces this Markdown:'
+    translation: 'Напрыклад, абмеркаванне з каментарыем, рэакцыямі, прапановай, двума галасамі, адказам і высновай дае такі дакумент Markdown:'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  275f4d9025c017c4:
+    english: The headings and labels use your selected language. Content written by participants remains in its original language.
+    translation: Загалоўкі і меткі паказваюцца на выбранай вамі мове. Тэкст удзельнікаў застаецца на мове арыгінала.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  dab18fdf3c56269d:
+    english: "### Thread settings and display"
+    translation: "### Налады і выгляд тэмы"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  7bc55279f97c6d1b:
+    english: Group admins can select **Thread settings** to change how replies are arranged and configure other discussion options.
+    translation: Адміністратары групы могуць выбраць **Налады тэмы**, каб змяніць парадак паказу адказаў і іншыя налады абмеркавання.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  32b2640ba23524aa:
+    english: Choose **Timeline** to list items in the order they were posted, or **Threaded** to group replies beneath the item they respond to. Thread settings also control whether multiple polls may run at once and can set a maximum comment length. These settings apply to everyone in the discussion.
+    translation: Выберыце **Храналогія**, каб бачыць элементы ў парадку публікацыі, або **Разьбяны**, каб размясціць адказы пад элементамі, да якіх яны адносяцца. У наладах тэмы таксама можна дазволіць некалькі адначасовых апытанняў і задаць максімальную даўжыню каментарыя. Гэтыя налады дзейнічаюць для ўсіх удзельнікаў абмеркавання.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  4a520339278bcc2a:
+    english: "### Pin or unpin a thread"
+    translation: "### Замацаванне і адмацаванне тэмы"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  0433e7a61db60003:
+    english: Pinned threads appear above other threads on the group page. Welcome discussions, news items, and announcements are typical uses for pinned threads.
+    translation: Замацаваныя тэмы паказваюцца вышэй за іншыя тэмы на старонцы групы. Звычайна так замацоўваюць прывітальныя абмеркаванні, навіны і аб’явы.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  b2712588a5e0aab3:
+    english: Open the three-dot menu (**⋯**) beside the thread on the group page and select **Pin thread**. Pinned threads are ordered by the time they were pinned. To change their order, unpin and pin them again.
+    translation: Адкрыйце меню з трыма кропкамі (**⋯**) побач з тэмай на старонцы групы і выберыце **Замацаваць нітку**. Парадак замацаваных тэм залежыць ад часу іх замацавання. Каб змяніць парадак, адмацуйце тэмы і замацуйце іх зноў.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  a0443f076d1b8ae5:
+    english: Select **Unpin thread** to return a thread to the activity-based order.
+    translation: Выберыце **Адмацаваць тэму**, каб вярнуць тэму ў парадак паводле актыўнасці.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  b90a469963b02ffc:
+    english: "### Move a thread"
+    translation: "### Перамяшчэнне тэмы"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  8b2071f4625705e5:
+    english: Select **Move thread** to move a thread to another group, subgroup, or to a direct thread. It will be visible to members of the destination group and anyone specifically invited to it.
+    translation: Выберыце **Перамясціць тэму**, каб перамясціць тэму ў іншую групу, падгрупу або ў прамую тэму. Яна будзе бачная ўдзельнікам групы прызначэння і ўсім, хто атрымаў асобнае запрашэнне.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  f09d5f2afce03ee8:
+    english: |-
+      >[!Tip]
+      >Start a draft as a direct discussion or in a private subgroup, then move it to the group when it is ready.
+    translation: |-
+      >[!Tip]
+      >Стварыце чарнавік як прамое абмеркаванне або ў прыватнай падгрупе, а калі ён будзе гатовы, перамясціце яго ў групу.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  c82562b641053308:
+    english: To move selected activity rather than the whole thread, see [Moving items between threads](/en/user_manual/discussions/moving_items/).
+    translation: Каб перамясціць асобныя элементы, а не ўсю тэму, глядзіце [Перамяшчэнне элементаў паміж тэмамі](/en/user_manual/discussions/moving_items/).
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  be22d2980075fdaa:
+    english: "### Lock or unlock a thread"
+    translation: "### Блакіраванне і разблакіраванне тэмы"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  e7c24a610fd2bf8b:
+    english: Lock a thread to prevent comments or further changes. A thread can only be locked after its active polls have closed.
+    translation: Заблакіруйце тэму, каб спыніць даданне каментарыяў і іншыя змены. Заблакіраваць тэму можна толькі пасля закрыцця ўсіх актыўных апытанняў у ёй.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  edb983bb6366aa6c:
+    english: Select **Lock thread** under **Actions**. Locked threads are removed from the list of open discussions and marked with a **Locked** tag.
+    translation: Выберыце **Заблакіраваць тэму** ў раздзеле **Дзеянні**. Заблакіраваныя тэмы знікаюць са спіса адкрытых абмеркаванняў і атрымліваюць пазнаку **Заблакіравана**.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  ba2794349524cc33:
+    english: To find a locked thread, open the discussion filter on the group page and select **Locked**. Open the thread and select **Unlock thread** to allow comments and changes again.
+    translation: Каб знайсці заблакіраваную тэму, адкрыйце фільтр абмеркаванняў на старонцы групы і выберыце **Заблакіравана**. Адкрыйце тэму і выберыце **Разблакіраваць тэму**, каб зноў дазволіць каментарыі і змены.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  3a75fb1ad0ffab87:
+    english: "### Delete a thread"
+    translation: "### Выдаліць тэму"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  0103a5729bd6a095:
+    english: Deleting a thread removes it permanently and cannot be undone. Lock the thread instead if you may need it again.
+    translation: Выдаленне тэмы незваротнае. Калі тэма можа спатрэбіцца вам пазней, заблакіруйце яе замест выдалення.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  daf08ca8895b0fe2:
+    english: Select **Delete thread** and confirm the deletion.
+    translation: Выберыце **Выдаліць тэму** і пацвердзіце выдаленне.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'

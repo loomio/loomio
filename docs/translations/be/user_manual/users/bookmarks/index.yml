@@ -1,0 +1,117 @@
+---
+navigation_title: Закладкі
+blocks:
+  4f81ad2ed2c971a4:
+    english: "# Bookmarks"
+    translation: "# Закладкі"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  5d590d1d8ab9b956:
+    english: |-
+      Bookmarks are a personal list of Loomio items you want to return to. Your
+      bookmarks are visible only to you and saving an item does not notify anyone
+      else.
+    translation: |-
+      Закладкі — гэта ваш асабісты спіс матэрыялаў Loomio, да якіх вы хочаце вярнуцца.
+      Вашы закладкі бачыце толькі вы. Калі вы захоўваеце закладку, ніхто іншы
+      не атрымлівае апавяшчэння.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  aac40737df991d52:
+    english: 'You can bookmark:'
+    translation: 'Вы можаце дадаваць у закладкі:'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  0f6c7e4161c72c18:
+    english: |-
+      - discussions
+      - comments
+      - proposals and polls
+      - votes
+      - outcomes
+    translation: |-
+      - абмеркаванні
+      - каментарыі
+      - прапановы і апытанні
+      - галасы
+      - высновы
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  fc91d7d6d32e590b:
+    english: "## Save a bookmark"
+    translation: "## Захаваць закладку"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  daec09886eecd058:
+    english: |-
+      Open the action menu for the item and select **Save bookmark**. The action menu
+      is usually shown as three dots. For a discussion, use the action menu near the
+      discussion title; for a comment, vote, proposal, poll, or outcome, use the menu
+      on that item.
+    translation: |-
+      Адкрыйце меню дзеянняў патрэбнага элемента і выберыце **Захаваць закладку**. Меню дзеянняў
+      звычайна пазначана трыма кропкамі. Для абмеркавання адкрыйце меню каля
+      яго назвы. Для каментарыя, голасу, прапановы, апытання або высновы адкрыйце меню
+      адпаведнага элемента.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  395a4c119e77f34b:
+    english: "## View your bookmarks"
+    translation: "## Праглядзець закладкі"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  a5e09c422c753df7:
+    english: |-
+      Open the sidebar and select **Bookmarks**. The number beside the link shows how
+      many bookmarks you have saved.
+    translation: |-
+      Адкрыйце бакавую панэль і выберыце **Закладкі**. Лічба побач са спасылкай паказвае,
+      колькі закладак вы захавалі.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  7c21b03875c08b8e:
+    english: |-
+      The Bookmarks page lists your most recently saved items first. Each row shows
+      the kind of item and its author. Select a row to return to the bookmarked item.
+    translation: |-
+      На старонцы «Закладкі» спачатку паказаны элементы, захаваныя апошнімі. У кожным радку пазначаны
+      тып элемента і яго аўтар. Выберыце радок, каб перайсці да элемента з закладкі.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  644d774a0d045214:
+    english: "## Remove a bookmark"
+    translation: "## Выдаліць закладку"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  c2480aa6235675ba:
+    english: |-
+      On the Bookmarks page, select the remove-bookmark button at the end of a row.
+      You can also open the bookmarked item's action menu and select **Remove
+      bookmark**.
+    translation: |-
+      На старонцы «Закладкі» націсніце кнопку выдалення закладкі ў канцы радка.
+      Вы таксама можаце адкрыць меню дзеянняў элемента і выбраць **Выдаліць
+      закладку**.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  6c20d47950313409:
+    english: |-
+      Removing a bookmark affects only your personal list. You can save the item
+      again later.
+    translation: |-
+      Выдаленне закладкі ўплывае толькі на ваш асабісты спіс. Вы можаце захаваць гэты элемент
+      зноў пазней.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'

@@ -1,0 +1,217 @@
+---
+navigation_title: Запрашаем галасаваць
+blocks:
+  0635cf23fcaaa95b:
+    english: "# Invite to vote"
+    translation: "# Запрашаем галасаваць"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  2ae3991d9865a2bb:
+    english: "## Invite people to vote in a poll"
+    translation: "## Запрасіце людзей галасаваць у апытанні"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  56d96764605291b4:
+    english: Invite people to your poll by sending them a notification.
+    translation: Дашліце людзям апавяшчэнне з запрашэннем да ўдзелу ў вашым апытанні.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  3632ef534c8c03f7:
+    english: After you start a poll, the **Invite to vote** box appears. Select an audience such as **Everyone in the thread** or your group, or enter individual names and email addresses.
+    translation: Пасля запуску апытання з’явіцца поле **Запрашаем галасаваць**. Выберыце атрымальнікаў, напрыклад **Усе ў трэдзе** або вашу групу, ці ўвядзіце імёны і адрасы электроннай пошты асобных людзей.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  835f178f0b52f3b6:
+    english: You can include an optional message with the invitation.
+    translation: Да запрашэння можна дадаць паведамленне.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  78da00061d5815a4:
+    english: Select a group chip to expand it into the people you are inviting. Select the x beside a name to remove that person from the invitation.
+    translation: Націсніце на пазнаку групы, каб убачыць людзей, якіх вы запрашаеце. Каб прыбраць чалавека з запрашэння, націсніце x побач з яго імем.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  e6969f4c4b62b6ff:
+    english: "### Invite guests or experts"
+    translation: "### Запрасіце гасцей або экспертаў"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  9bb72d11863e1f46:
+    english: You can also invite a guest to the poll by entering their email address. They will be given permission to participate in only this poll.
+    translation: Вы таксама можаце запрасіць гасцей, увёўшы іх адрасы электроннай пошты. Яны атрымаюць дазвол удзельнічаць толькі ў гэтым апытанні.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  dd20b166a40eb798:
+    english: If the poll is within a thread, they will also be able to see that thread and its comments. They will not be able to comment, participate in other polls in the thread, or see other threads in the group.
+    translation: Калі апытанне знаходзіцца ў тэме, госці таксама змогуць бачыць гэтую тэму і каментарыі да яе. Яны не змогуць пакідаць каментарыі, удзельнічаць у іншых апытаннях гэтай тэмы або бачыць іншыя тэмы групы.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  84cc8773a5337094:
+    english: "### Invite a subgroup to vote"
+    translation: "### Запрасіце падгрупу галасаваць"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  80ca3c8c753b0ebb:
+    english: To limit voting to invited people, select **Selected people only** when you create the poll. You can then invite a subgroup from the parent group. See also [Delegated voters](/en/user_manual/groups/delegated_voters/).
+    translation: Каб галасаваць маглі толькі запрошаныя людзі, пры стварэнні апытання выберыце **Толькі выбраныя людзі**. Затым вы зможаце запрасіць падгрупу з бацькоўскай групы. Глядзіце таксама [Дэлегаваныя выбаршчыкі](/en/user_manual/groups/delegated_voters/).
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  2074aff770fa7610:
+    english: |-
+      ![Selecting invited people only](invited-people-only.png)
+      ![Inviting a subgroup to vote](invite-voters-subgroup.png)
+    translation: |-
+      ![Выбар толькі запрошаных людзей](invited-people-only.png)
+      ![Запрашэнне падгрупы да галасавання](invite-voters-subgroup.png)
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  29103b18580994a1:
+    english: "## Engage people while a poll is running"
+    translation: "## Падтрымлівайце ўдзел людзей падчас апытання"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  1ce57a2542eebaab:
+    english: At the bottom of the poll are several features to help you engage with people once the poll is running.
+    translation: Унізе апытання ёсць некалькі функцый, якія дапамогуць вам падтрымліваць удзел людзей пасля яго запуску.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  45090f8260d19a47:
+    english: "### Add voters to the poll"
+    translation: "### Дадайце выбаршчыкаў у апытанне"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  3116212829910b50:
+    english: You can add new people to the poll at any time, including before voting opens on a scheduled poll.
+    translation: Вы можаце дадаваць людзей у апытанне ў любы час, у тым ліку да пачатку галасавання ў запланаваным апытанні.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  5e851e072e9dc1de:
+    english: Select **Add voters**, then enter the names or email addresses of the people you want to add.
+    translation: Выберыце **Дадаць выбаршчыкаў**, затым увядзіце імёны або адрасы электроннай пошты людзей, якіх хочаце дадаць.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  be5aceb4caf93c11:
+    english: If the poll has a scheduled opening time and voting has not yet opened, voters will not receive an immediate notification. Instead, they will be notified when voting opens.
+    translation: Калі для апытання запланаваны час пачатку і галасаванне яшчэ не адкрыта, выбаршчыкі не атрымаюць апавяшчэнне адразу. Яны атрымаюць яго, калі галасаванне адкрыецца.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  b9a08269e3e252ce:
+    english: "### Remove people from the poll"
+    translation: "### Прыбярыце людзей з апытання"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  ce37b0af98854c79:
+    english: Select **Add voters**, find the person's name, open the three-dot menu beside it, and select **Remove from proposal**.
+    translation: Выберыце **Дадаць выбаршчыкаў**, знайдзіце патрэбнае імя, адкрыйце меню з трыма кропкамі побач з ім і выберыце **Прыбраць з прапановы**.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  '08df94a4269ad100':
+    english: People cannot be removed from an anonymous poll.
+    translation: Людзей нельга прыбраць з ананімнага апытання.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  3d13453394c79f30:
+    english: For example, an administrator who creates a poll on behalf of board members can remove themself if they are not authorised to vote.
+    translation: Напрыклад, адміністрацыя можа стварыць апытанне ад імя ўдзельнікаў рады, а потым прыбраць сябе з апытання, калі не мае права галасаваць.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  2a354792a1f1f517:
+    english: "### Remind people to vote"
+    translation: "### Нагадайце людзям пра галасаванне"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  501e7846380326fd:
+    english: Select **Remind** to send a notification to people who have not voted. **Everyone invited to vote** is selected by default. Select the chip to see or change the recipients.
+    translation: Выберыце **Нагадаць**, каб адправіць апавяшчэнне людзям, якія яшчэ не прагаласавалі. Па змаўчанні выбрана **Усіх запрашаюць галасаваць**. Націсніце на пазнаку, каб паглядзець або змяніць атрымальнікаў.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  04e4537024da788c:
+    english: "### View notification history"
+    translation: "### Праглядзіце гісторыю апавяшчэнняў"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  46145a9dd950c8eb:
+    english: Open the three-dot menu (**⋯**) at the bottom of the poll and select **Notification history**.
+    translation: Адкрыйце меню з трыма кропкамі (**⋯**) унізе апытання і выберыце **Гісторыя апавяшчэнняў**.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  e74eafb1566d5dea:
+    english: "![Notification history in a poll's actions menu](../../discussions/notifying_people/poll_notification_history.png)"
+    translation: "![Гісторыя апавяшчэнняў у меню дзеянняў апытання](../../discussions/notifying_people/poll_notification_history.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  1a96cd0121fe58ec:
+    english: The history shows who has been invited to vote, when each invitation was sent, and whether it has been read when that information is available.
+    translation: У гісторыі паказана, каго запрасілі галасаваць, калі адправілі кожнае запрашэнне і, калі гэтая інфармацыя даступная, ці было яно прачытана.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  3bd9a11263e1c8f4:
+    english: "![Notification history for a poll](../../discussions/notifying_people/poll_notification_example.png)"
+    translation: "![Гісторыя апавяшчэнняў аб апытанні](../../discussions/notifying_people/poll_notification_example.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  f3bbc883f6429276:
+    english: "### Close early"
+    translation: "### Зачыніце раней"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  af6a9acaafaaa96a:
+    english: Select **Close early** to close a poll before its scheduled closing time.
+    translation: Выберыце **Зачыняецца раней**, каб закрыць апытанне да запланаванага часу завяршэння.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  3cdbb11687fa03c0:
+    english: You might do this when everyone has voted or the poll no longer needs to remain open.
+    translation: Гэта можна зрабіць, калі ўсе прагаласавалі або больш няма патрэбы трымаць апытанне адкрытым.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  46f3a0ec8da6dba1:
+    english: "### Reopen"
+    translation: "### Адкрыйце зноў"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  '0821c04199937236':
+    english: Select **Reopen** on a closed poll, then set a new closing date and time.
+    translation: У закрытым апытанні выберыце **Зноў адкрыць**, затым задайце новую дату і час завяршэння.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  53079cadd493f27c:
+    english: Anonymous polls cannot be reopened.
+    translation: Ананімныя апытанні нельга адкрыць зноў.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'

@@ -1,0 +1,65 @@
+---
+navigation_title: Discord
+blocks:
+  e92ee4f66d31839f:
+    english: "# Discord integration"
+    translation: "# Інтэграцыя з Discord"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  61fab684103643cb:
+    english: _Connecting your Loomio group notifications to your Discord team chat._
+    translation: _Падключэнне апавяшчэнняў вашай групы Loomio да каманднага чата ў Discord._
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  9f4683cb4db90895:
+    english: Loomio can send notifications into your Discord channels when new discussions, proposals, comments, votes, and outcomes occur. You can also manually notify the chatroom when you need to remind people about a decision.
+    translation: Loomio можа адпраўляць апавяшчэнні ў вашы каналы Discord, калі з'яўляюцца новыя абмеркаванні, прапановы, каментарыі, галасы і высновы. Вы таксама можаце ўручную адправіць апавяшчэнне ў чат, каб нагадаць людзям пра рашэнне.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  cb3f91d54eee30e5:
+    english: "---"
+    translation: "---"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  18c535c6cc41438f:
+    english: |-
+      Open your Discord server and find the server settings menu.
+      ![](server-settings.png)
+    translation: |-
+      Адкрыйце ваш сервер Discord і знайдзіце меню налад сервера.
+      ![](server-settings.png)
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  8306d30ee700173f:
+    english: |-
+      Click "Integrations"
+      ![](integrations.png)
+    translation: |-
+      Націсніце «Інтэграцыі».
+      ![](integrations.png)
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  f899b4ab6b43cdbb:
+    english: Then click "Add Webhook" and give it a name, like "Loomio bot"
+    translation: Затым націсніце «Дадаць вебхук» і дайце яму назву, напрыклад «Бот Loomio».
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  '08e0ec6156925f55':
+    english: Make sure you have copied the Webhook URL to your clipboard and follow the link below.
+    translation: Скапіруйце URL вебхука ў буфер абмену і перайдзіце па спасылцы ніжэй.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  894c0911cade4b44:
+    english: "[Set up a chat integration in Loomio](../chatbots/#set-up-a-chat-integration)"
+    translation: "[Наладзіць інтэграцыю з чатам у Loomio](../chatbots/#set-up-a-chat-integration)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'

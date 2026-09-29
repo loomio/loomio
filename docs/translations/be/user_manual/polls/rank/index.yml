@@ -1,0 +1,137 @@
+---
+navigation_title: Ранг
+blocks:
+  92702560a3786c85:
+    english: "# Rank"
+    translation: "# Ранг"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  7cf7aa3423ff6b9d:
+    english: Rank finds the group's overall order of preference. Participants arrange options from most to least preferred, and Loomio assigns more points to higher-ranked options.
+    translation: Ранг паказвае агульны парадак пераваг групы. Удзельнікі размяшчаюць варыянты ад найбольш да найменш пажаданага, а Loomio налічвае больш балаў варыянтам, якія стаяць вышэй.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  72790fdf21d1f129:
+    english: "## When to use Rank"
+    translation: "## Калі выкарыстоўваць ранг"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  f9ce50752bf1c1e7:
+    english: 'Use Rank when preference order matters and you want one overall ordering. It works well for:'
+    translation: 'Выкарыстоўвайце ранг, калі важны парадак пераваг і патрэбны адзін агульны рэйтынг. Ён падыходзіць, каб:'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  4a5c8ee257df4dc2:
+    english: |-
+      - selecting one candidate for a position;
+      - ordering projects for a work plan;
+      - prioritizing conference topics;
+      - choosing backup options as well as a first choice; or
+      - reducing a long list to an ordered shortlist.
+    translation: |-
+      - выбраць аднаго кандыдата на пасаду;
+      - вызначыць парадак праектаў у працоўным плане;
+      - расставіць тэмы канферэнцыі паводле прыярытэту;
+      - выбраць запасныя варыянты разам з асноўным; або
+      - скараціць доўгі спіс да кароткага спісу з вызначаным парадкам.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  2549ddaa8a4a4fa8:
+    english: Rank uses a points-based ordering. It is not a proportional election method. To elect several people while representing different groups of voters, use an [STV Election](/en/user_manual/polls/stv/).
+    translation: Ранг вызначаецца паводле балаў. Гэта не метад прапарцыйных выбараў. Каб абраць некалькіх людзей з улікам розных груп выбаршчыкаў, выкарыстоўвайце [выбары STV](/en/user_manual/polls/stv/).
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  2a859bf73143ce12:
+    english: "## Example: rank bottle designs"
+    translation: "## Прыклад: выбар дызайну бутэлек паводле рангу"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  46a7d343d3b48bea:
+    english: Oatmilk Cooperative asks members to rank four bottle designs for its returnable-bottle trial. Participants consider handling, durability, customer needs, storage, and compatibility with the washing equipment.
+    translation: Кааператыў Oatmilk просіць удзельнікаў расставіць паводле перавагі чатыры дызайны бутэлек для выпрабавання сістэмы зваротнай тары. Удзельнікі ўлічваюць зручнасць выкарыстання, трываласць, патрэбы кліентаў, захоўванне і сумяшчальнасць з мыйным абсталяваннем.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  c74ebb16f872b3c6:
+    english: "## Set up the poll"
+    translation: "## Наладзьце апытанне"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  5975d0fd35ec0a7c:
+    english: State what the ranking will determine and add the options. Set **Number of choices** to control how many options each person may rank. A first choice receives the most points, the next choice receives one fewer, and unranked options receive no points.
+    translation: Пазначце, што вызначыць ранжыраванне, і дадайце варыянты. Наладзьце **Колькасць варыянтаў**, каб вызначыць, колькі варыянтаў можна расставіць паводле перавагі. Першы варыянт атрымлівае найбольш балаў, наступны — на адзін бал менш, а варыянты без рангу не атрымліваюць балаў.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  47f32c81e29fa3c6:
+    english: Require all options to be ranked when you need a complete ordering. Allow fewer choices when participants may not know enough to rank everything. Showing options in random order can reduce the influence of their initial presentation.
+    translation: Калі патрэбны поўны парадак, патрабуйце расставіць усе варыянты. Калі ўдзельнікі могуць ведаць недастаткова пра кожны варыянт, дазвольце выбіраць менш. Выпадковы парадак паказу варыянтаў можа паменшыць уплыў іх першапачатковага размяшчэння.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  d391457c69df967f:
+    english: "## Vote"
+    translation: "## Прагаласуйце"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  53946361c36775f0:
+    english: Participants drag the options into their preferred order, with number 1 as the first choice. They can add a reason explaining the criteria behind their ranking.
+    translation: Удзельнікі перацягваюць варыянты ў парадку сваіх пераваг. Нумар 1 азначае першы выбар. Яны могуць дадаць абгрунтаванне і растлумачыць крытэрыі свайго выбару.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  eae63303cb9dced6:
+    english: In this example, the voter puts the **500 ml amber bottle** first and the **500 ml clear bottle** second because both fit the existing cafe storage and washing equipment.
+    translation: У гэтым прыкладзе на першым месцы — **бурштынавая бутэлька 500 мл**, на другім — **празрыстая бутэлька 500 мл**. Абедзве падыходзяць для наяўных месцаў захоўвання ў кавярні і мыйнага абсталявання.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  72a9e4073ea27936:
+    english: "## Read the results"
+    translation: "## Праглядзіце вынікі"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  6be27268f870dc3e:
+    english: 'The results combine all ballots into an overall points-based ranking. For each option they show:'
+    translation: 'Вынікі аб’ядноўваюць усе бюлетэні ў агульны рэйтынг паводле балаў. Для кожнага варыянта паказваюцца:'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  88b912ae1b9787bc:
+    english: |-
+      - **Rank**: its position in the combined result;
+      - **% of points**: its share of all ranking points;
+      - **Points**: the total points from all ballots;
+      - **Mean**: its average points per voter; and
+      - **Voters**: how many people ranked it.
+    translation: |-
+      - **Ранг**: месца ў агульным выніку;
+      - **% балаў**: доля ад усіх балаў ранжыравання;
+      - **Ачкі**: агульная колькасць балаў з усіх бюлетэняў;
+      - **Сярэдняе**: сярэдняя колькасць балаў на аднаго выбаршчыка; і
+      - **Выбаршчыкі**: колькасць людзей, якія прысвоілі варыянту ранг.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  2e0cda6f79f31a51:
+    english: In this example, the **500 ml amber bottle** ranks first, followed by the **500 ml clear bottle** and the **750 ml amber bottle**. The group can investigate the preferred design first while retaining the remaining order as a sequence of alternatives.
+    translation: У гэтым прыкладзе **бурштынавая бутэлька 500 мл** займае першае месца. За ёй ідуць **празрыстая бутэлька 500 мл** і **бурштынавая бутэлька 750 мл**. Група можа спачатку вывучыць найбольш пажаданы дызайн, а астатнія разглядаць як альтэрнатывы ў атрыманым парадку.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  22df687a6fa02ddb:
+    english: A points-based result can conceal different preference patterns that produce the same total. Review individual ballots and vote reasons when options are close or the decision is consequential.
+    translation: Адна і тая ж сума балаў можа складацца з розных пераваг выбаршчыкаў. Калі варыянты маюць блізкія вынікі або рашэнне мае істотныя наступствы, праглядзіце асобныя бюлетэні і абгрунтаванні галасоў.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'

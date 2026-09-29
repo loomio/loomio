@@ -1,0 +1,163 @@
+---
+navigation_title: Збіраць прыватныя заяўкі
+blocks:
+  c4a53a596a037fc0:
+    english: "# Collect private submissions"
+    translation: "# Збіраць прыватныя заяўкі"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  b24abc6bf93b1c0f:
+    english: Use a Closed group to collect private submissions from people who are not members of the group. Each submission becomes a separate discussion that the submitter and the group's review team can use to exchange information, ask questions, and record a decision. Submitters cannot see other private discussions or submissions in the group.
+    translation: Выкарыстоўвайце закрытую групу, каб збіраць прыватныя заяўкі ад людзей, якія не ўваходзяць у яе склад. Для кожнай заяўкі ствараецца асобнае абмеркаванне. Там аўтары заявак і каманда групы могуць абменьвацца інфармацыяй, задаваць пытанні і фіксаваць рашэнне. Аўтары заявак не бачаць іншых прыватных абмеркаванняў і заявак у групе.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  feb5105698bca188:
+    english: Nominations are a clear use case when candidate details or the list of nominees must remain private during selection. A person can nominate themselves or someone else for an election, appointment, committee, board, or representative role, while a selection panel reviews each nomination in its own discussion.
+    translation: Так можна збіраць намінацыі, калі звесткі пра кандыдатаў або спіс намінантаў павінны заставацца прыватнымі падчас адбору. Людзі могуць вылучыць сябе або іншых на выбары, прызначэнне, у камітэт, раду ці на прадстаўнічую пасаду. Камісія разглядае кожную намінацыю ў асобным абмеркаванні.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  a64597508a4f7f3d:
+    english: 'Other suitable purposes where submissions should not be public include:'
+    translation: 'Гэты спосаб таксама падыходзіць для іншых заявак, якія не павінны быць публічнымі:'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  e4bd382899a8e7d9:
+    english: |-
+      - Complaints, safeguarding reports, safety concerns, and incident reports
+      - Appeals and requests to reconsider a decision about an individual case
+      - Requests for mediation, conflict resolution, or personal support
+      - Applications containing personal, financial, or eligibility information, such as hardship grants or scholarships
+      - Sealed bids or tender responses that must remain private during assessment
+    translation: |-
+      - Скаргі, паведамленні аб пагрозах дабрабыту людзей, праблемах бяспекі і здарэннях
+      - Апеляцыі і просьбы перагледзець рашэнне па асобнай справе
+      - Запыты на пасярэдніцтва, вырашэнне канфліктаў або асабістую падтрымку
+      - Заяўкі з асабістымі, фінансавымі звесткамі або звесткамі пра адпаведнасць умовам, напрыклад на матэрыяльную дапамогу або стыпендыю
+      - Закрытыя цэнавыя прапановы і адказы на тэндары, якія павінны заставацца прыватнымі падчас ацэнкі
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  bab86da011a22a2a:
+    english: This workflow is private between submitters, but it is not anonymous. Submitters need a user account, and every member of the Closed group can see the submissions. Consider who belongs to the review group before using it for sensitive information.
+    translation: Заяўкі застаюцца прыватнымі паміж іх аўтарамі, але не ананімнымі. Каб падаць заяўку, патрэбны ўліковы запіс. Усе ўдзельнікі закрытай групы могуць бачыць заяўкі. Перад тым як выкарыстоўваць гэты спосаб для канфідэнцыяльных звестак, праверце, хто ўваходзіць у групу разгляду.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  b82ae8f3f04d257f:
+    english: "## Enable private submissions"
+    translation: "## Уключыць прыватныя заяўкі"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  0cebe3c5801844ce:
+    english: You must be an admin of the group or subgroup where you want to collect submissions.
+    translation: Вы павінны быць адміністратарам групы або падгрупы, у якой хочаце збіраць заяўкі.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  831d833d53a12ece:
+    english: |-
+      1. Open the group.
+      2. Select **Settings** (or **More** and then **Edit group settings**).
+      3. Open **Permissions**.
+      4. Enable **Non-members can start discussions**.
+      5. Save the group settings.
+    translation: |-
+      1. Адкрыйце групу.
+      2. Выберыце **Налады** (або **Больш**, а затым **Рэдагаваць налады групы**).
+      3. Адкрыйце **Дазволы**.
+      4. Уключыце **Неўдзельнікі могуць пачынаць абмеркаванні**.
+      5. Захавайце налады групы.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  f3962a27b1c4ffa8:
+    english: "![The Permissions tab in group settings, with Non-members can start discussions highlighted](non_members_can_start_discussions.png)"
+    translation: "![Укладка «Дазволы» ў наладах групы з вылучаным параметрам «Неўдзельнікі могуць пачынаць абмеркаванні»](non_members_can_start_discussions.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  99ace15d10e78f33:
+    english: This option is available only for **Open** and **Closed** groups. It is hidden for **Secret** groups. If you cannot see it, open **Privacy** in the group settings and change **Group privacy** to **Closed** (recommended for private submissions) or **Open**, then return to **Permissions**.
+    translation: Гэты параметр даступны толькі для груп з рэжымамі **Адкрыта** і **Закрыта**. Для груп з рэжымам **Сакрэт** ён схаваны. Калі вы не бачыце параметр, адкрыйце **Канфідэнцыяльнасць** у наладах групы і ў раздзеле **Канфідэнцыяльнасць групы** выберыце **Закрыта** (рэкамендуецца для прыватных заявак) або **Адкрыта**. Затым вярніцеся ў **Дазволы**.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  449517e6293a3acc:
+    english: Enabling this permission does not make the group's discussions public. A non-member can start a new discussion and access that discussion as a guest, but cannot see the group's other private discussions.
+    translation: Уключэнне гэтага дазволу не робіць абмеркаванні групы публічнымі. Людзі, якія не ўваходзяць у групу, могуць пачаць новае абмеркаванне і атрымаць да яго доступ у якасці гасцей, але не бачаць іншых прыватных абмеркаванняў групы.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  151f68a3f638fb67:
+    english: "## Set up a private submission process"
+    translation: "## Наладзіць збор прыватных заявак"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  ae924433d81f5eac:
+    english: |-
+      1. Create a dedicated subgroup for the submission process and set its privacy to **Closed**. A subgroup keeps the submissions separate from the parent group's other work.
+      2. Add the selection panel or other people responsible for reviewing submissions as members of the subgroup. Every subgroup member can see every submission, so add only people who should have that access.
+      3. Create a [discussion template](/en/user_manual/discussions/templates) in the subgroup. Include the questions and information submitters should provide. You can create different discussion templates for different kinds of submissions.
+      4. If submitters should not request subgroup membership, set membership to **Invitation only**.
+      5. [Enable private submissions](#enable-private-submissions) in the subgroup's permissions.
+      6. Test the process with an account that is not a member of the subgroup.
+      7. Share the subgroup page with prospective submitters. They must sign in to their user account before making a submission.
+    translation: |-
+      1. Стварыце асобную падгрупу для збору заявак і ўсталюйце для яе рэжым **Закрыта**. Так заяўкі будуць аддзеленыя ад іншай працы асноўнай групы.
+      2. Дадайце ў падгрупу членаў камісіі або іншых людзей, якія будуць разглядаць заяўкі. Усе ўдзельнікі падгрупы могуць бачыць кожную заяўку, таму дадавайце толькі тых, каму патрэбны такі доступ.
+      3. Стварыце ў падгрупе [шаблон абмеркавання](/en/user_manual/discussions/templates). Дадайце ў яго пытанні і пералік звестак, якія трэба падаць. Для розных відаў заявак можна стварыць розныя шаблоны.
+      4. Калі аўтары заявак не павінны запытваць членства ў падгрупе, усталюйце для членства рэжым **Толькі па запрашэнні**.
+      5. [Уключыце прыватныя заяўкі](#enable-private-submissions) у дазволах падгрупы.
+      6. Праверце працэс з уліковага запісу, які не належыць удзельнікам падгрупы.
+      7. Падзяліцеся старонкай падгрупы з людзьмі, якія могуць падаць заяўку. Перад падачай заяўкі ім трэба ўвайсці ў свой уліковы запіс.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  3acec1b4a6724a65:
+    english: "## Make a submission"
+    translation: "## Падаць заяўку"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  58f96f48b6aacf65:
+    english: The submitter opens the subgroup and selects **Start discussion**. Loomio shows the subgroup's available discussion templates. The submitter selects the relevant discussion template, completes its questions, and starts the discussion.
+    translation: Каб падаць заяўку, адкрыйце падгрупу і выберыце **Пачаць абмеркаванне**. Loomio пакажа даступныя шаблоны абмеркаванняў падгрупы. Выберыце патрэбны шаблон, адкажыце на пытанні і пачніце абмеркаванне.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  5a65043771edeb44:
+    english: The discussion belongs to the subgroup, but the submitter does not become a subgroup member. Loomio adds them as a guest of their discussion thread, enabling them to see and participate in the discussion with the panel or review team. They cannot see other private discussions or submissions in the subgroup.
+    translation: Абмеркаванне належыць падгрупе, але аўтары заявак не становяцца яе ўдзельнікамі. Loomio дадае іх у якасці гасцей да ніткі іх абмеркавання. Яны могуць бачыць абмеркаванне і ўдзельнічаць у ім разам з камісіяй або камандай разгляду. Іншыя прыватныя абмеркаванні і заяўкі ў падгрупе ім недаступныя.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  9338fd073b26dafc:
+    english: "## Review submissions"
+    translation: "## Разгледзець заяўкі"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  50e33fa0f0868cf5:
+    english: Subgroup members can see every submission discussion in the subgroup. They can ask follow-up questions and use comments, polls, or other discussion tools to complete their review.
+    translation: Удзельнікі падгрупы могуць бачыць абмеркаванне кожнай заяўкі. Каб завяршыць разгляд, яны могуць задаваць дадатковыя пытанні, пакідаць каментарыі, праводзіць апытанні і карыстацца іншымі сродкамі абмеркавання.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  537b76c6f85cc575:
+    english: If another person needs to provide information, a subgroup member with permission can invite them to the submission discussion. For example, when a nominator submits a nomination, the subgroup can invite the nominee to the thread if their participation is required. The invited person joins as a guest without gaining access to the subgroup's other private discussions.
+    translation: Калі патрэбна інфармацыя ад іншых людзей, удзельнікі падгрупы з адпаведным дазволам могуць запрасіць іх у абмеркаванне заяўкі. Напрыклад, калі заяўку на вылучэнне падаюць іншыя людзі, падгрупа можа запрасіць вылучаных людзей у нітку, калі патрэбны іх удзел. Запрошаныя далучаюцца як госці і не атрымліваюць доступу да іншых прыватных абмеркаванняў падгрупы.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  1fb7da309186b19e:
+    english: Each submitter can see their own submission but cannot see the subgroup's other private discussions or submissions. Disable **Non-members can start discussions** when submissions close. Existing discussions and guest access are unchanged.
+    translation: Аўтары заявак могуць бачыць уласныя заяўкі, але не бачаць іншых прыватных абмеркаванняў і заявак падгрупы. Калі прыём заявак завершыцца, выключыце **Неўдзельнікі могуць пачынаць абмеркаванні**. Існыя абмеркаванні і доступ гасцей застануцца без змен.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'

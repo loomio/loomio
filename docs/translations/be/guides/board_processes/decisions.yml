@@ -1,0 +1,173 @@
+---
+navigation_title: Прыняцце рашэнняў
+blocks:
+  0a72d2c89c87c2a7:
+    english: "# Making resolutions and online decisions"
+    translation: "# Прыняцце пастаноў і рашэнняў анлайн"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  50902da4933b32b7:
+    english: Board and committee members frequently need to make 'out-of-session' decisions. These are governance decisions and discussion where either;
+    translation: 'Членам праўлення і камітэта часта трэба прымаць рашэнні па-за пасяджэннямі. Такія рашэнні і іх абмеркаванне патрэбныя, калі:'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  4355b569fb0f9ee4:
+    english: |-
+      - There was insufficient time to make a decision in the board meeting,
+      - the decision does not require a lot of discussion (including administrative decisions),
+      - something has happened (internally or externally) that requires the board to act before the next meeting,
+      - a director has a particular interest to explore with the board.
+    translation: |-
+      - на пасяджэнні праўлення не хапіла часу прыняць рашэнне,
+      - рашэнне не патрабуе доўгага абмеркавання, у тым ліку калі гэта адміністрацыйнае пытанне,
+      - адбылася падзея ў арганізацыі або па-за ёй, якая патрабуе дзеянняў праўлення да наступнага пасяджэння,
+      - хтосьці з членаў праўлення хоча абмеркаваць з калегамі асобнае пытанне.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  c46be74fd433f516:
+    english: |-
+      ## On Loomio
+      Start a **thread** and open a discussion:
+      - Introduce the topic or decision that you would like to make,
+      - invite directors to comment with their thoughts, opinions and any information they have to help everyone understand their perspective about the 'out-of-session' topic or decision,
+      - encourage members to participate by posting or reply to comments.
+    translation: |-
+      ## У Loomio
+      Пачніце **нітку** і адкрыйце абмеркаванне:
+      - прадстаўце пытанне або рашэнне, якое хочаце прыняць,
+      - запрасіце членаў праўлення падзяліцца думкамі і інфармацыяй, якая дапаможа ўсім зразумець іх погляд на пытанне або рашэнне па-за пасяджэннем,
+      - заахвочвайце ўдзельнікаў пісаць каментарыі і адказваць на іх.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  337cfc1a7b434acd:
+    english: "When ready, raise a **poll** and invite members to vote. \nIf the issue is straightforward use a **Proposal** or if the issue is more complex use a **Sense check** poll to clearly ask fellow members how they feel about the proposal.\n- State the decision and invite people to vote,\n- ask people to leave a reason for their vote, particularly if they want to qualify any points,\n- choose the decision options that work for your board's decision-making processes.\n- You can ratify and minute the 'out-of-session' decision at your next board meeting."
+    translation: "Калі будзеце гатовыя, пачніце **апытанне** і запрасіце ўдзельнікаў прагаласаваць. \nКалі пытанне простае, выкарыстоўвайце **Прапанова**. Калі яно больш складанае, выкарыстоўвайце апытанне **Праверка сэнсу**, каб даведацца, як іншыя ўдзельнікі ставяцца да прапановы.\n- Сфармулюйце рашэнне і запрасіце людзей прагаласаваць,\n- папрасіце патлумачыць свой голас, асабліва калі ўдзельнікі хочуць удакладніць сваю пазіцыю,\n- выберыце варыянты адказу, якія адпавядаюць парадку прыняцця рашэнняў у вашым праўленні.\n- На наступным пасяджэнні праўлення вы можаце зацвердзіць рашэнне, прынятае па-за пасяджэннем, і ўнесці яго ў пратакол."
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  19a80c3ce7d106e0:
+    english: It's not a failure if a decision does not get agreement. You can ask members what changes they would make to enable them to agree to a decision. This helps you build to a better decision. A new Proposal with amendments is then more likely to achieve agreement.
+    translation: Калі ўдзельнікі не дасягнулі згоды, гэта не няўдача. Спытайце, якія змены дапамаглі б ім падтрымаць рашэнне. Так вы зможаце палепшыць прапанову. Новая Прапанова з папраўкамі мае больш шанцаў атрымаць падтрымку.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  b06f2d2a0e68f99d:
+    english: State an **outcome** when the proposal closes. Let everyone know the result of the decision and what will happen next.
+    translation: Калі прапанова закрыецца, апублікуйце **выснову**. Паведаміце ўсім пра вынік галасавання і наступныя крокі.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  6a4d6a8c978bcb11:
+    english: "## Examples of out-of-session decisions"
+    translation: "## Прыклады рашэнняў па-за пасяджэннем"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  fff64b1ac620cc4a:
+    english: |-
+      ### Decision about property purchase
+      At the last board meeting, a property purchase was discussed. A director required an independent engineering report before making the decision. At the board meeting, the board agreed to purchase the property subject to a satisfactory engineering report. However as the purchase must be made before the next board meeting, the board agreed to upload the engineering report to Loomio when ready, for discussion and to make the final decision for the property purchase on Loomio.
+    translation: |-
+      ### Рашэнне аб куплі нерухомасці
+      На апошнім пасяджэнні праўленне абмеркавала куплю нерухомасці. Каб прыняць рашэнне, аднаму з членаў праўлення спатрэбілася незалежнае інжынернае заключэнне. Праўленне пагадзілася купіць нерухомасць пры ўмове, што заключэнне будзе здавальняючым. Куплю трэба здзейсніць да наступнага пасяджэння, таму праўленне дамовілася загрузіць гатовае заключэнне ў Loomio, абмеркаваць яго і прыняць там канчатковае рашэнне.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  b279ed6b1c5aadfa:
+    english: |-
+      ### Decision to accept Directors and Officers Liability insurance
+      During the board meeting it was noted that the annual insurance renewal was coming up. As this was considered to be an administrative matter, the board agreed to use Loomio to discuss the renewal application, seek the required information from each director, submit the application and to accept the insurance renewal quote.
+    translation: |-
+      ### Рашэнне аб прыняцці ўмоў страхавання адказнасці членаў праўлення і службовых асоб
+      На пасяджэнні праўленне адзначыла, што набліжаецца тэрмін штогадовага падаўжэння страхавання. Паколькі гэта адміністрацыйнае пытанне, праўленне дамовілася абмеркаваць заяўку ў Loomio, сабраць неабходныя звесткі ад кожнага члена праўлення, падаць заяўку і прыняць прапанову аб падаўжэнні страхавання.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  ca3a40286ca25a9a:
+    english: |-
+      ### A security breach has occurred at one of our facilities
+      A break-in and theft of property has occurred that has put the corporation and staff at risk. Directors must be made aware of the event and risks, and evaluate an appropriate response.
+    translation: |-
+      ### Парушэнне бяспекі на адным з нашых аб'ектаў
+      На аб'екце адбыўся ўзлом і крадзеж маёмасці. Гэта стварыла рызыкі для арганізацыі і яе супрацоўнікаў. Членам праўлення трэба паведаміць пра здарэнне і рызыкі, каб яны маглі вызначыць належныя дзеянні.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  c406842807e1091b:
+    english: |-
+      ### A director has challenged the board about gender and diversity of board membership
+      The director has provided good reasons and evidence that the board should diversify membership to be more representative of the corporation. Directors need to digest the information, ask questions, discuss the issue and decide a response.
+    translation: |-
+      ### Пытанне аб гендарнай і іншай разнастайнасці складу праўлення
+      Адзін з членаў праўлення прывёў важкія аргументы і доказы таго, што склад праўлення варта зрабіць больш разнастайным, каб ён лепш прадстаўляў арганізацыю. Членам праўлення трэба азнаёміцца з інфармацыяй, задаць пытанні, абмеркаваць тэму і вызначыць адказ.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  bf35cdb4a62a85f4:
+    english: "## Keeping a record of decisions made and supporting discussion"
+    translation: "## Захаванне звестак пра рашэнні і іх абмеркаванне"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  6231d476f6bddb27:
+    english: Record keeping is a legal requirement for governance boards and good practice for committees.
+    translation: Захаванне дакументацыі — юрыдычнае патрабаванне да праўленняў і добрая практыка для камітэтаў.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  511470c795509c7e:
+    english: Today, many organizations record and store formal minutes, resolutions, policies and key decisions electronically. Document records are created and approved, distributed and used, retained and stored, and ultimately disposed of.
+    translation: Сёння многія арганізацыі ствараюць і захоўваюць афіцыйныя пратаколы, пастановы, правілы і важныя рашэнні ў электронным выглядзе. Дакументы складаюць і зацвярджаюць, распаўсюджваюць і выкарыстоўваюць, захоўваюць, а пасля заканчэння тэрміну захоўвання выдаляюць.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  324fc531e7a78088:
+    english: |-
+      ### On Loomio
+      Minutes, reports, resolutions and other documents can be attached to a meeting **thread**, in the thread context, within a poll or any to thread comment.  This means the documents are always associated with the relevant discussion.
+    translation: |-
+      ### У Loomio
+      Пратаколы, справаздачы, пастановы і іншыя дакументы можна далучыць да **ніткі** пасяджэння: у яе апісанні, у апытанні або ў любым каментарыі. Так дакументы застаюцца звязанымі з адпаведным абмеркаваннем.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  9be58ccab5189118:
+    english: A list of files can also be found under the **Files** tab.
+    translation: Спіс файлаў таксама ёсць на ўкладцы **Файлы**.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  24bc6a0bf5139b23:
+    english: You can also add a link within any thread or poll to a document stored in your preferred document management system.  Find the online shareable link to the document, copy and paste into your thread, poll or comment.
+    translation: У любую нітку або апытанне можна дадаць спасылку на дакумент у вашай сістэме кіравання дакументамі. Знайдзіце спасылку, па якой можна адкрыць доступ да дакумента, скапіруйце яе і ўстаўце ў нітку, апытанне або каментарый.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  4fee216f27a3fdff:
+    english: Anyone with permission can then click the link to open and read the document.
+    translation: Людзі з адпаведным доступам змогуць перайсці па спасылцы, адкрыць дакумент і прачытаць яго.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  9f0e1cd18ae1a402:
+    english: Because Loomio discussions and decisions are always already documented, it provides a robust way to verify all your board's decision-making. You can easily demonstrate what was decided, and when. If directors have discussed and commented, as well as voted on a resolution—you will also know how and why each decision was reached.
+    translation: У Loomio абмеркаванні і рашэнні захоўваюцца разам. Таму вы можаце праверыць, як праўленне прымала рашэнні, і паказаць, што і калі было вырашана. Калі члены праўлення абмяркоўвалі пастанову, пакідалі каментарыі і галасавалі, будзе таксама відаць, як і чаму прынята рашэнне.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  71071cda2f1c034e:
+    english: Over time, you are creating a history for your organization where you can easily search and find past decisions and related discussion.
+    translation: З часам у вас з'явіцца гісторыя арганізацыі, у якой можна лёгка знайсці ранейшыя рашэнні і звязаныя з імі абмеркаванні.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  629c2034788a9fd5:
+    english: In Loomio all data is written and stored on multiple disks and multiple locations, *in the cloud*, backed up daily.  Files uploaded are stored on servers that use modern techniques to remove bottlenecks and points of failure.
+    translation: У Loomio ўсе даныя захоўваюцца на некалькіх дысках у розных месцах, *у воблаку*. Рэзервовыя копіі ствараюцца штодня. Загружаныя файлы захоўваюцца на серверах, дзе выкарыстоўваюцца сучасныя тэхналогіі для прадухілення перагрузак і адмоў.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'

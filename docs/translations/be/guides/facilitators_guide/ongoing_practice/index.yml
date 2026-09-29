@@ -1,0 +1,199 @@
+---
+navigation_title: Пастаянная практыка
+blocks:
+  508e19e18ba4a97e:
+    english: "# Ongoing Practice"
+    translation: "# Пастаянная практыка"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  fba51c92285b31c7:
+    english: "## Continuous Improvement"
+    translation: "## Бесперапыннае ўдасканаленне"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  121b4afb86de3c31:
+    english: No matter how amazing a group or facilitator is, they can always improve. If they incrementally head in a good direction they will get to a better place. Incremental improvement requires an effective protocol for meta-conversation (talking about how you collaborate). With it, anything is possible. Without it, you stagnate.
+    translation: Нават вельмі дасведчаныя групы і людзі, якія дапамагаюць ім весці размову, могуць удасканальвацца. Калі паступова рухацца ў добрым кірунку, вынікі будуць паляпшацца. Для гэтага патрэбны дзейсны спосаб абмяркоўваць тое, як вы супрацоўнічаеце. Такія размовы дапамагаюць змяняць што заўгодна. Без іх развіццё спыняецца.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  331d258dee610e96:
+    english: There are many approaches to continuous improvement, but they all create space for reflection and feedback, and a way to make changes in response. For teams that work together on an ongoing basis, they might employ a methodology like <a href="https://en.wikipedia.org/wiki/Scrum_(software_development)" target="_blank">scrum</a>, including retrospectives and regular process improvements. For a one-off session, a facilitator might simply follow up with a request for feedback.
+    translation: Ёсць шмат падыходаў да бесперапыннага ўдасканалення. Усе яны даюць час на асэнсаванне досведу, зваротную сувязь і змены на яе аснове. Каманды, якія працуюць разам пастаянна, могуць выкарыстоўваць такі метад, як <a href="https://en.wikipedia.org/wiki/Scrum_(software_development)" target="_blank">скрам</a>, з рэгулярным аналізам зробленага і паляпшэннем працэсаў. Пасля разавай сустрэчы можна проста папрасіць удзельнікаў падзяліцца водгукамі.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  aabfa9d842af2688:
+    english: On Loomio
+    translation: У Loomio
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  ac2f489368566562:
+    english: |-
+      * People use Loomio itself to talk about how they use Loomio. It provides an obvious platform to “talk about the talking”.
+      * The process of joining Loomio causes groups to reflect on many aspects of their collaboration and decision-making process, which creates the opportunity to improve.
+    translation: |-
+      * Людзі выкарыстоўваюць Loomio, каб абмяркоўваць, як яны карыстаюцца Loomio. Гэта зручнае месца для размовы пра сам працэс размовы.
+      * Далучэнне да Loomio заахвочвае групы перагледзець розныя бакі супрацоўніцтва і прыняцця рашэнняў. Гэта стварае магчымасць палепшыць іх.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  7b11f212a312312e:
+    english: "## Distributed Facilitation / Self-facilitation"
+    translation: "## Сумеснае вядзенне размовы / Самастойнае вядзенне размовы"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  1e385970a624bf63:
+    english: As a group becomes more experienced, more individuals build capacity for facilitation. Facilitation can cease to be a role held by a specific person, and become more of a function that can be distributed. Anyone can take acts of facilitation, and a dance of give and take, leading and following, can emerge among participants. For groups with aspirations toward shared leadership and non-hierarchy, this is a very important thing to encourage.
+    translation: Па меры назапашвання досведу ў групе ўсё больш людзей вучацца дапамагаць ёй весці размову. Гэта можа перастаць быць роляй аднаго чалавека і стаць справай, якую падзяляюць паміж сабой. Кожны можа дапамагчы размове рухацца далей. Удзельнікі могуць па чарзе прапаноўваць кірунак і падтрымліваць прапановы іншых. Групам, якія імкнуцца да сумеснага лідарства і адсутнасці іерархіі, асабліва важна падтрымліваць такую практыку.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  fa78b242f7390326:
+    english: 'People who are less used to taking acts of facilitation can be supported with education, invitations, and suggestions of first steps. Some examples of acts of facilitation almost anyone can be encouraged to try:'
+    translation: 'Людзям, якія яшчэ не прывыклі дапамагаць весці размову, можна прапанаваць навучанне, запрашэнне паспрабаваць і простыя першыя крокі. Амаль кожнаму можна прапанаваць:'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  1f490f466a1893ed:
+    english: |-
+      * reflecting back what you’re hearing or summarising
+      * inviting others to contribute
+      * asking questions to enhance collective understanding
+      * noticing who is and is not participating
+      * appreciating contributions explicitly
+    translation: |-
+      * пераказаць пачутае сваімі словамі або падсумаваць сказанае
+      * запрасіць іншых выказацца
+      * задаць пытанні, якія дапамогуць усім лепш зразумець тэму
+      * заўважыць, хто ўдзельнічае, а хто не
+      * адкрыта падзякаваць за ўклад
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  e2eed897e0f564d2:
+    english: '> <img style="border-radius: 100%; float: right; margin-left: 0.5em; max-width: 96px; " src="../silvia_200.png"> You don’t need an agenda to be a facilitator. Facilitating is just about making a group situation easy. Next time you’re at a family gathering, party or morning tea: approach it like a facilitator and make sure everybody in the group feels included and able to participate. — Silvia Zuur'
+    translation: '> <img style="border-radius: 100%; float: right; margin-left: 0.5em; max-width: 96px; " src="../silvia_200.png"> Каб дапамагаць групе весці размову, вам не патрэбны парадак дня. Дастаткова зрабіць удзел у групе прасцейшым. Калі наступным разам вы апыняцеся на сямейнай сустрэчы, вечарыне ці ранішнім чаяванні, паспрабуйце дапамагчы ўсім адчуць сябе часткай групы і далучыцца да размовы. — Сільвія Зуур'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  180b1232871c44c4:
+    english: Distributed facilitation can work beautifully, but it can also cause people to step all over each other. At first, it’s awkward as people learn the dance. It’s important to differentiate between distributed facilitation (peers helping the collective), “facipulation” (manipulating the group toward your own agenda), and backseat facilitation (taking acts of facilitation when you do not have the mandate).
+    translation: Сумеснае вядзенне размовы можа працаваць вельмі добра, але людзі таксама могуць перашкаджаць адно аднаму. Спачатку бывае няёмка, пакуль удзельнікі вучацца дзейнічаць разам. Важна адрозніваць сумесную дапамогу групе ад маніпулявання ёю дзеля ўласных мэт і ад умяшання ў вядзенне размовы без адпаведных паўнамоцтваў.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  ea5faa685be1ceae:
+    english: Consciously decide when peer facilitation is a good choice, and when a specific facilitator is called for. In certain situations, such as a high-conflict discussion where a specified neutral party is needed, or there is a lack of trust, distributed facilitation might not work.
+    translation: Свядома вырашайце, калі групе падыходзіць сумеснае вядзенне размовы, а калі патрэбны асобны чалавек для гэтай ролі. Напрыклад, калі ў абмеркаванні моцны канфлікт і патрэбны нейтральны чалавек або калі ў групе бракуе даверу, сумеснае вядзенне можа не спрацаваць.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  8d6df5458ecb8e45:
+    english: '> <img style="border-radius: 100%; float: right; margin-left: 0.5em; max-width: 96px; " src="../rich_200.png"> Acts of facilitation are not just for the manager, or the person who called the meeting — they are for everyone. — Richard Bartlett'
+    translation: '> <img style="border-radius: 100%; float: right; margin-left: 0.5em; max-width: 96px; " src="../rich_200.png"> Дапамагаць весці размову могуць не толькі кіраўніцтва ці людзі, якія склікалі сустрэчу. Гэта можа рабіць кожны. — Рычард Бартлет'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  c3215e63fca09b79:
+    english: "## Translating this into Loomio"
+    translation: "## Як гэта працуе ў Loomio"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  35ce75e6810e0611:
+    english: |-
+      * The online space is uniquely suited to distributed facilitation. Different people can come along at different points depending on what they notice and their skill set.
+      * An online discussion is by default a distributed collaboration among peers. Any other setup requires explicit design. This is the opposite of offline spaces where the default is that someone called a meeting and distributing the role requires proactivity.
+      * Loomio is designed with a group of equals in mind. In many ways, a distributed facilitation approach is the best fit for the tool.
+      * Current Loomio users do peer facilitation all the time, whether they realize that’s what they are doing or not. Simple things like suggesting someone raise a proposal, tagging people, summarising the process so far, etc, are all acts of facilitation.
+    translation: |-
+      * Анлайн-прастора добра падыходзіць для сумеснага вядзення размовы. Розныя людзі могуць далучацца на розных этапах у залежнасці ад таго, што яны заўважылі і што ўмеюць.
+      * Анлайн-абмеркаванне звычайна адразу будуецца як супрацоўніцтва роўных удзельнікаў. Іншы парадак трэба арганізаваць свядома. Пры асабістых сустрэчах звычайна хтосьці іх склікае, таму для размеркавання гэтай ролі патрэбны дадатковыя намаганні.
+      * Loomio створаны для груп, дзе ўдзельнікі роўныя. Таму сумеснае вядзенне размовы добра адпавядае магчымасцям інструмента.
+      * Людзі ў Loomio пастаянна дапамагаюць адно аднаму весці размову, нават калі не называюць гэта так. Прапанаваць стварыць прапанову, пазначыць людзей або падсумаваць ход абмеркавання — усё гэта прыклады такой дапамогі.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  efde81539c545bae:
+    english: "## The Art of Being Facilitated"
+    translation: "## Уменне прымаць дапамогу ў размове"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  93ed1980d0cc95b4:
+    english: Like the skill of being the follow in a ballroom dance pair, being facilitated is an art itself. People with experience facilitating themselves, or who have participated in a lot of well-facilitated processes, will receive facilitation differently than those who haven't.
+    translation: Як і ўменне ісці за партнёрам у бальным танцы, уменне прымаць дапамогу ў размове патрабуе практыкі. Людзі, якія самі дапамагалі групам весці размову або часта ўдзельнічалі ў добра арганізаваных абмеркаваннях, успрымаюць такую дапамогу інакш за тых, хто не мае гэтага досведу.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  d2bcd9f07f5bd25b:
+    english: On the positive side, skillful receptivity to facilitation is a capacoty that can be grown, and it can have a big impact on group success. This ranges from things as simple as showing up on time, to following instructions, to being willing to try a new style of thinking or communicating. Sometimes people have a good experience and they don’t quite know why — pointing out that facilitation is the reason for the smoothness or depth can help them understand what it is they valued about the process.
+    translation: 'Уменне адгукацца на дапамогу ў вядзенні размовы можна развіваць. Яно істотна ўплывае на поспех групы. Гэта можа быць нешта простае: прыходзіць своечасова, выконваць інструкцыі або спрабаваць новы спосаб мыслення ці зносін. Часам людзі атрымліваюць добры досвед, але не ведаюць чаму. Калі звярнуць увагу на тое, што менавіта дапамагло размове ісці гладка і глыбока, ім будзе прасцей зразумець, што яны ацанілі ў гэтым працэсе.'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  87345b383ccba81d:
+    english: On the negative side, people who can’t or won’t be facilitated can be detrimental to group collaboration. No matter how skilled a facilitator is, if they encounter a certain level of resistance they won’t be able to do their job. Common problems include dominating the discussion, playing devil’s advocate, disrupting the process, disrespecting the facilitator or participants, or being disengaged. At some level individuals must take responsibility for their willingness to be facilitated.
+    translation: Калі людзі не могуць або не хочуць прымаць такую дапамогу, супрацоўніцтва ў групе ўскладняецца. Нават пры вялікім досведзе цяжка весці размову, калі супраціўленне занадта моцнае. Пашыраныя праблемы — калі хтосьці займае ўсю прастору ў абмеркаванні, спрачаецца толькі дзеля спрэчкі, парушае працэс, не паважае людзей, якія дапамагаюць весці размову, або іншых удзельнікаў, ці не ўдзельнічае ў працы. Кожнаму трэба ўзяць на сябе частку адказнасці за гатоўнасць прымаць дапамогу.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  c096fd0a7e12ddd4:
+    english: |-
+      * With a little practice, most users quickly upskill on being responsive to acts of facilitation on Loomio, such as replying when @mentioned.
+      * Taking acts of facilitation on Loomio helps people become more responsive to facilitation themselves.
+      * Because everything is archived, users can see past acts of facilitation “frozen in time”, gaining the benefits of observing them without having been there.
+    translation: |-
+      * Пасля невялікай практыкі большасць карыстальнікаў хутка вучацца адгукацца на дапамогу ў Loomio, напрыклад адказваць, калі іх згадваюць праз @.
+      * Калі людзі самі дапамагаюць весці размову ў Loomio, ім становіцца прасцей прымаць такую дапамогу ад іншых.
+      * Паколькі ўсё захоўваецца ў архіве, карыстальнікі могуць бачыць ранейшыя прыклады такой дапамогі і вучыцца на іх, нават калі не ўдзельнічалі ў тых размовах.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  f930b325aaedb19a:
+    english: "## Culture Change"
+    translation: "## Змена культуры"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  82936abec2b50e3f:
+    english: A collaborative, participatory culture is something that emerges over time, with lots of practice and trial and error. Understanding, valuing, and inviting facilitation can play a pivotal role in this cultural emergence. Facilitation can evolve from a role, to a function, to a mindset. A truly collaborative culture is one where everyone is facilitating everyone in myriad different ways.
+    translation: Культура супрацоўніцтва і ўдзелу ўзнікае з часам, праз практыку, спробы і памылкі. Разуменне каштоўнасці дапамогі ў вядзенні размовы і запрашэнне да яе могуць адыграць важную ролю ў гэтым працэсе. Такая дапамога можа ператварыцца з асобнай ролі ў агульную справу, а затым — у звыклы спосаб мыслення. У культуры сапраўднага супрацоўніцтва ўсе па-рознаму дапамагаюць адно аднаму ўдзельнічаць.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  898bf6557380a042:
+    english: Is the company party participatory? Does the office potluck just happen like magic? Are ideas able to emerge from anywhere, evolve through many brains and hands, and get implemented in a way better than anyone first imagined?
+    translation: Ці могуць усе паўдзельнічаць у карпаратыўным свяце? Ці сумесны абед у офісе складваецца нібы сам сабой? Ці могуць ідэі ўзнікаць у розных людзей, развівацца дзякуючы агульнай працы і ўвасабляцца лепш, чым можна было ўявіць спачатку?
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  f4964381b3c6dc7b:
+    english: Deep culture change is when the culture of collaboration starts to leak out of specific “collaboration” spaces and shows up in every aspect of the organization. Collaboration is not about post-it notes and check-ins, but the very timbre of organizational life.
+    translation: Глыбокая змена культуры адбываецца тады, калі супрацоўніцтва выходзіць за межы спецыяльных месцаў для сумеснай працы і становіцца часткай усіх бакоў жыцця арганізацыі. Яно праяўляецца не толькі ў нататках на стыкерах і рэгулярных сустрэчах, а ў самім ладзе працы арганізацыі.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  6962aa4815c01b0f:
+    english: |-
+      * The [theory of change of Loomio](http://www.loomio.com/about) is that more groups practicing effective, inclusive decision making can change organizational dynamics at a global scale. This shows up in everything about how the tool is designed and [how we run as a co-op](http://loomio.coop). Ultimately, it’s about culture change through collaborative practice.
+      * Loomio groups have experienced evolving culture through the tool. Like groups that already has a collaborative culture scale while holding onto that, or a participatory group continuing to exists instead of imploding due to challanges around inclusive decicion-making.
+      * Loomio makes a certain kind of “new normal” of collaborative practice possible, through making collaborative practice more accessible and achievable.
+    translation: |-
+      * [Тэорыя змен Loomio](http://www.loomio.com/about) палягае ў тым, што ўсё больш груп могуць практыкаваць эфектыўнае прыняцце рашэнняў з удзелам усіх і тым самым змяняць працу арганізацый па ўсім свеце. Гэтая ідэя адлюстроўваецца ў будове інструмента і ў тым, [як мы працуем як кааператыў](http://loomio.coop). Урэшце гаворка ідзе пра змену культуры праз практыку супрацоўніцтва.
+      * Групы ў Loomio заўважаюць, як змяняецца іх культура. Напрыклад, групы з ужо наладжаным супрацоўніцтвам могуць расці і захоўваць яго. А групы, дзе ўдзельнічаюць усе, могуць працягваць працу, нягледзячы на цяжкасці з прыняццем рашэнняў з улікам кожнага голасу.
+      * Loomio дапамагае зрабіць супрацоўніцтва звычайнай практыкай, бо ўдзельнічаць у ёй становіцца прасцей.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  3f2cee633e8b83c2:
+    english: For inspiration about Ongoing Practice, check out [stories of Loomio groups](https://blog.loomio.com/?utm_campaign=facilitators_guide_help&utm_term=help).
+    translation: Каб знайсці натхненне для пастаяннай практыкі, прачытайце [гісторыі груп Loomio](https://blog.loomio.com/?utm_campaign=facilitators_guide_help&utm_term=help).
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'

@@ -1,0 +1,374 @@
+---
+navigation_title: Фарматаванне
+blocks:
+  0cff8e965b2d4bd5:
+    english: "# Formatting"
+    translation: "# Фарматаванне"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  7bda51ac3285357f:
+    english: When starting or editing a discussion or poll, or writing a comment, you will see a formatting bar below the text field. Select the arrow at the end of the bar to show or hide the full set of tools.
+    translation: Калі вы пачынаеце або рэдагуеце абмеркаванне ці апытанне або пішаце каментарый, пад тэкставым полем з'яўляецца панэль фарматавання. Націсніце стрэлку ў канцы панэлі, каб паказаць або схаваць усе інструменты.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  2f2944ad10684b7f:
+    english: Hover the mouse or cursor over each item for the name of each tool.
+    translation: Навядзіце паказальнік на інструмент, каб убачыць яго назву.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  5f45a085deb9eff1:
+    english: Use formatting to add structure and emphasis so information is easier to scan.
+    translation: Выкарыстоўвайце фарматаванне, каб упарадкаваць і вылучыць інфармацыю. Так яе лягчэй праглядаць.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  9b542fd6dda53639:
+    english: "## Attach file"
+    translation: "## Далучыць файл"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  d633f08de5eb744d:
+    english: Use the paper clip icon, just below the text form, to add file attachments from your computer.
+    translation: Каб далучыць файл з камп’ютара, націсніце значок сашчэпкі пад тэкставым полем.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  1860ade9942c32a1:
+    english: "### Remove attachments"
+    translation: "### Выдаліць укладанні"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  ebc91823518309fd:
+    english: While editing the context, click the **X** to the right of the file name to remove it.
+    translation: Падчас рэдагавання апісання націсніце **X** справа ад назвы файла, каб выдаліць яго.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  b51c6da343bd6389:
+    english: "## Insert image"
+    translation: "## Уставіць выяву"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  b788d43f7bc630ec:
+    english: Use this tool to insert and display an image.
+    translation: Выкарыстоўвайце гэты інструмент, каб уставіць выяву ў тэкст.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  e23dd94c965ae06c:
+    english: Select an image file from your computer. The image is inserted into the editor after it uploads.
+    translation: Выберыце файл выявы на камп’ютары. Пасля загрузкі выява з’явіцца ў рэдактары.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  f8a47428252034cf:
+    english: The image is displayed within the published discussion, poll or comment.
+    translation: Выява будзе бачная ў апублікаваным абмеркаванні, апытанні або каментарыі.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  0fe125855fce8e52:
+    english: |-
+      >[!Tip]
+      >You can also copy/paste an image directly into Loomio.
+    translation: |-
+      >[!Tip]
+      >Вы таксама можаце скапіяваць выяву і ўставіць яе непасрэдна ў Loomio.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  b631d0ab368ebfb0:
+    english: "## Insert link"
+    translation: "## Уставіць спасылку"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  909769fda18f0ec6:
+    english: 'You can add a link to any shareable document or page on the internet.  '
+    translation: Вы можаце дадаць спасылку на дакумент з адкрытым доступам або старонку ў інтэрнэце.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  e034be8c0fbe76db:
+    english: 'To add a link:'
+    translation: 'Каб дадаць спасылку:'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  dcf90e79aba1a2f9:
+    english: |-
+      1. Select the text you want to link to - say the name of a document.
+      2. Click the link icon.
+      3. Paste the address into the **Insert link** field and select **Apply**.
+    translation: |-
+      1. Вылучыце тэкст, які будзе спасылкай, напрыклад назву дакумента.
+      2. Націсніце значок спасылкі.
+      3. Устаўце адрас у поле **Уставіць спасылку** і націсніце **Ужыць**.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  40ecf7d0c79432b2:
+    english: For a document hosted elsewhere, check its sharing permissions so discussion participants can open it.
+    translation: Калі дакумент захоўваецца на іншым сэрвісе, праверце налады доступу, каб удзельнікі абмеркавання маглі яго адкрыць.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  3f1824fc07dded13:
+    english: A preview of the doc will appear under the text space. You can remove this if you want.
+    translation: Пад тэкставым полем з’явіцца папярэдні прагляд дакумента. Пры жаданні яго можна выдаліць.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  c6061aa7deff27ac:
+    english: Now, anyone with access to your Loomio discussion and permission to view the doc can open and read it.
+    translation: Цяпер дакумент змогуць адкрыць і прачытаць усе, хто мае доступ да вашага абмеркавання ў Loomio і дазвол на прагляд дакумента.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  c7643aa641977dea:
+    english: "## Insert Emoji"
+    translation: "## Уставіць эмодзі"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  b4f97f2939fd2d8c:
+    english: Select the smiley button and choose an emoji from the picker.
+    translation: Націсніце кнопку са смайлікам і выберыце эмодзі.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  f207ce88babd4532:
+    english: "## Headings"
+    translation: "## Загалоўкі"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  e2e647ef2e3ac736:
+    english: Heading 1, Heading 2 and Heading 3 can help structure a discussion or comment.
+    translation: Загалоўкі ўзроўняў 1, 2 і 3 дапамагаюць упарадкаваць абмеркаванне або каментарый.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  6c3f52329a8b49b5:
+    english: Select the text to mark as a heading and click on the heading format tool.
+    translation: Вылучыце тэкст, які хочаце зрабіць загалоўкам, і націсніце інструмент фарматавання загалоўкаў.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  27a816f8cd10cd75:
+    english: If a heading is used in a comment, the comment will automatically be pinned to the discussion timeline.
+    translation: Калі ў каментарыі ёсць загаловак, каментарый аўтаматычна замацуецца на часовай шкале абмеркавання.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  8adf1a168d32f042:
+    english: "## Bold, Italicize, Strikethrough"
+    translation: "## Тоўсты шрыфт, курсіў, закрэсліванне"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  c9b191938d57a135:
+    english: Select the text to format and click on the required format tool.
+    translation: Вылучыце тэкст і націсніце патрэбны інструмент фарматавання.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  eb63f5ddcbf20776:
+    english: "## List"
+    translation: "## Спіс"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  b91af8d6ee713dca:
+    english: Use **List** to format items as bullet points.
+    translation: Выкарыстоўвайце **Спіс**, каб стварыць маркіраваны спіс.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  64fab26284d5610a:
+    english: "## Numbered list"
+    translation: "## Нумараваны спіс"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  '082bc75c625ebbaf':
+    english: Use **Numbered list** when the order of items matters.
+    translation: Выкарыстоўвайце **Нумараваны спіс**, калі парадак пунктаў мае значэнне.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  30f12f3f5c0a24be:
+    english: "## Task list"
+    translation: "## Спіс задач"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  b7e072e37bdc12c0:
+    english: Use **Task list** to add checkboxes. After posting the list, tasks can be assigned to someone and given a due date.
+    translation: Выкарыстоўвайце **Спіс задач**, каб дадаць сцяжкі. Пасля публікацыі спіса можна прызначыць адказных за задачы і ўсталяваць тэрміны выканання.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  74542f03c2aabd7f:
+    english: See the page on [Tasks](/en/user_manual/discussions/tasks/) for more information.
+    translation: Больш інфармацыі ёсць на старонцы [Задачы](/en/user_manual/discussions/tasks/).
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  15a3834a24e7a429:
+    english: "## Colors"
+    translation: "## Колеры"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  d578168b29cd5bc5:
+    english: Use **Colors** to add a highlight colour to selected text.
+    translation: Выкарыстоўвайце **Колеры**, каб вылучыць выбраны тэкст колерам.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  8294131df813b9ea:
+    english: "## Align"
+    translation: "## Выраўнаваць"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  58631363b7614205:
+    english: Select to align text to left, center or right.
+    translation: Выберыце выраўноўванне тэксту па левым краі, па цэнтры або па правым краі.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  2babc8a3fb1ee4b6:
+    english: "## Embed videos and webpages"
+    translation: "## Убудаваць відэа і вэб-старонкі"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  5bbdda88f99ea68d:
+    english: You can embed supported videos and webpages anywhere there is a formatting toolbar.
+    translation: Вы можаце ўбудоўваць відэа і вэб-старонкі, якія падтрымліваюцца, усюды, дзе ёсць панэль фарматавання.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  2e7e0de5ed62913d:
+    english: "To use the embed video feature: \n1. Copy the address of the video or webpage.\n2. Select **Embed video**, paste the address and select **Apply**."
+    translation: |-
+      Каб убудаваць відэа:
+      1. Скапіруйце адрас відэа або вэб-старонкі.
+      2. Выберыце **Убудаваць відэа**, устаўце адрас і выберыце **Ужыць**.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  41dcefa30819a0ae:
+    english: <iframe width="100%" height="380px" src="https://www.youtube-nocookie.com/embed/AJnjTd9u4zg" frameborder="0" allowfullscreen></iframe>
+    translation: <iframe width="100%" height="380px" src="https://www.youtube-nocookie.com/embed/AJnjTd9u4zg" frameborder="0" allowfullscreen></iframe>
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  13808447963b2a92:
+    english: |-
+      >[!Tip]
+      >Make sure the video can be accessed by everyone who can participate in the discussion. For example, an unlisted video may be suitable when it should not appear in public search results.
+    translation: |-
+      >[!Tip]
+      >Пераканайцеся, што відэа даступнае ўсім, хто можа ўдзельнічаць у абмеркаванні. Напрыклад, відэа з доступам па спасылцы падыдзе, калі яно не павінна з'яўляцца ў выніках публічнага пошуку.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  a54e9b54ec9d054a:
+    english: "## Quote"
+    translation: "## Цытата"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  cde3af7721527f7f:
+    english: Quote adds emphasis to your text, and can be useful to draw attention to an instruction.
+    translation: Цытата вылучае тэкст і дапамагае звярнуць увагу на інструкцыю.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  53156f370d2f19d6:
+    english: "## Code block"
+    translation: "## Блок кода"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  4199778c2a4ddc86:
+    english: Typically used to show code in text, code block formatting is also available to help you distinguish text in your discussion.
+    translation: Блок кода звычайна выкарыстоўваюць, каб паказаць код. З яго дапамогай таксама можна вылучыць тэкст у абмеркаванні.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  '4150439725516186':
+    english: "## Divider"
+    translation: "## Дзельнік"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  7075717b6ffdba08:
+    english: Use the divider to draw a horizontal line to separate sections.
+    translation: Выкарыстоўвайце дзельнік, каб аддзяліць раздзелы гарызантальнай лініяй.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  66ca2e9ae98b0ca2:
+    english: "## Add table"
+    translation: "## Дадаць табліцу"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  7f93fecdf2cad04f:
+    english: 'Add a table to your discussion. '
+    translation: Дадайце табліцу ў абмеркаванне.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  1b8a068ce391ceac:
+    english: Additional tools are available to add/remove columns and rows.
+    translation: Дадатковыя інструменты дазваляюць дадаваць і выдаляць слупкі і радкі.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  236df5c508db1f3e:
+    english: "## Markdown"
+    translation: "## Markdown"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  bd726f6299d5f52e:
+    english: To switch to Markdown editing, select **Edit Markdown**.
+    translation: Каб перайсці да рэдагавання ў Markdown, выберыце **Рэдагаваць Markdown**.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  278b073701473e94:
+    english: If you click this while there is text in the form, some formatting may be lost upon conversion.
+    translation: Калі ў полі ўжо ёсць тэкст, пры пераўтварэнні частка фарматавання можа быць страчана.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  c27e00bd5c98ccb1:
+    english: "### Rich text"
+    translation: "### Фарматаваны тэкст"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  ef2b52204ab83521:
+    english: Select **Edit rich text** to return to the formatting tools. This converts supported Markdown into its displayed form.
+    translation: Выберыце **Рэдагаваць фарматаваны тэкст**, каб вярнуцца да інструментаў фарматавання. Markdown, які падтрымліваецца, будзе пераўтвораны ў фарматаваны тэкст.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  164de50b8b1e4081:
+    english: "**Preview** shows how Markdown will appear when posted without converting it."
+    translation: "**Папярэдні прагляд** паказвае, як будзе выглядаць Markdown пасля публікацыі, без пераўтварэння."
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'

@@ -1,0 +1,417 @@
+---
+navigation_title: Апавяшчэнні
+blocks:
+  3a65b66c581936a1:
+    english: "# Notifications"
+    translation: "# Апавяшчэнні"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  c343eb5a1db968d8:
+    english: Notifications help groups maintain momentum by drawing your attention to discussions and decisions that need a response.
+    translation: 'Апавяшчэнні дапамагаюць групам працягваць працу: яны звяртаюць вашу ўвагу на абмеркаванні і рашэнні, якія патрабуюць адказу.'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  3d7b27f3b9880973:
+    english: 'Notifications are often the starting point when you return to Loomio. They let you know when:'
+    translation: 'Калі вы вяртаецеся ў Loomio, часта перш за ўсё праглядаеце апавяшчэнні. Яны паведамляюць, калі:'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  c4aec8fcb9fbc0de:
+    english: |-
+      - someone mentions you or replies to something you wrote
+      - a new discussion is shared with you
+      - you are invited or reminded to vote
+      - a poll is closing soon
+      - an outcome is announced
+    translation: |-
+      - хтосьці згадвае вас або адказвае на ваша паведамленне
+      - з вамі дзеляцца новым абмеркаваннем
+      - вас запрашаюць прагаласаваць або нагадваюць пра галасаванне
+      - апытанне хутка завершыцца
+      - абвяшчаюць выснову
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  792dcad0f81e8cc5:
+    english: Loomio's notification settings let you choose how closely you want to follow each group or thread. Notifications remain available in Loomio, so you can review what needs your attention when you are ready.
+    translation: У наладах апавяшчэнняў Loomio вы можаце выбраць, наколькі ўважліва сачыць за кожнай групай або ланцужком паведамленняў. Апавяшчэнні застаюцца ў Loomio, таму вы можаце праглядзець іх у зручны час.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  '082fae961275aaaf':
+    english: "## Two ways to begin"
+    translation: "## Два спосабы пачаць"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  cbea008bb7c0ee02:
+    english: 'Most people can start with one of two approaches:'
+    translation: 'Большасці людзей падыдзе адзін з двух варыянтаў:'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  3349bdb53fc33195:
+    english: |-
+      - **When notified** — receive an email when someone asks for your attention, and include everything else in your daily catch-up. Start here if you are still learning how your group uses Loomio.
+      - **Once per day** — set Email to **Catch-up only** and keep your catch-up set to **Every day**. Your notifications and other unread activity will be delivered together in one email.
+    translation: |-
+      - **Калі апавяшчэнне** — атрымлівайце электронны ліст, калі нешта патрабуе вашай увагі. Астатнія падзеі будуць у штодзённым аглядзе. Пачніце з гэтага варыянту, калі вы яшчэ знаёміцеся з тым, як ваша група выкарыстоўвае Loomio.
+      - **Раз на дзень** — для электроннай пошты выберыце **Толькі даганянне**, а для раскладу агляду пакіньце **Кожны дзень**. Апавяшчэнні і іншыя непрачытаныя падзеі прыйдуць у адным лісце.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  74e84c4946aa3713:
+    english: New accounts start with **When notified** and a daily catch-up. This brings mentions, replies, discussions shared with you, invitations and reminders to vote, polls closing soon, and outcomes to your attention as they happen without sending an immediate update about every comment or vote.
+    translation: Для новых уліковых запісаў спачатку ўключаны **Калі апавяшчэнне** і штодзённы агляд. Вы будзеце своечасова даведвацца пра згадкі, адказы, абмеркаванні, якімі з вамі падзяліліся, запрашэнні і напаміны пра галасаванне, апытанні, якія хутка завершацца, і высновы. Пры гэтым асобны ліст не будзе прыходзіць пасля кожнага каментарыя або голасу.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  896722cbb87e98be:
+    english: If you would rather receive your Loomio notifications all at once, move to the once-per-day approach. You can change this later as your pattern of work changes.
+    translation: Калі вы хочаце атрымліваць усе апавяшчэнні Loomio разам, перайдзіце на варыянт з адным лістом на дзень. Пазней вы зможаце змяніць гэтыя налады.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  e2c60724226ad68a:
+    english: For a group or thread that you want to follow more closely, choose **All activity** to receive every update as it happens.
+    translation: Каб больш уважліва сачыць за групай або ланцужком паведамленняў, выберыце **Уся актыўнасць**. Вы будзеце атрымліваць кожнае абнаўленне адразу.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  91fd24c60a6a84ee:
+    english: These defaults apply when you join a group. Threads initially inherit the settings of their group, but you can follow an important thread more closely or reduce its notifications without changing the rest of the group.
+    translation: Гэтыя стандартныя налады пачынаюць дзейнічаць, калі вы далучаецеся да групы. Ланцужкі паведамленняў спачатку выкарыстоўваюць налады сваёй групы. Вы можаце асобна ўключыць больш апавяшчэнняў для важнага ланцужка або паменшыць іх колькасць, не змяняючы налады астатняй групы.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  a75df26cfc4e6614:
+    english: "## Notifications in Loomio"
+    translation: "## Апавяшчэнні ў Loomio"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  9286edc0ac459625:
+    english: The bell icon in the top-right is where notifications are accessed within the app; a number shows how many notifications you have yet to read.
+    translation: Каб адкрыць апавяшчэнні ў праграме, націсніце значок званка ўверсе справа. Лічба каля яго паказвае колькасць непрачытаных апавяшчэнняў.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  bfacf52b815e1252:
+    english: Select a notification to open the related discussion or poll.
+    translation: Выберыце апавяшчэнне, каб адкрыць адпаведнае абмеркаванне або апытанне.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  b7ed6a5c5c661d60:
+    english: "## Catch-up"
+    translation: "## Агляд падзей"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  fc61461d684c5b47:
+    english: The catch-up provides a regular overview of activity without requiring you to follow each group throughout the day.
+    translation: Агляд падзей рэгулярна паказвае, што адбылося ў групах. Вам не трэба сачыць за кожнай групай на працягу дня.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  9e519b17a3847cee:
+    english: It shows your unseen notifications first, followed by unread discussions and standalone polls grouped by group. Notifications provide linked summaries of activity that needs your attention, while the unread section includes the discussion, poll, comment, vote, and edit details. Direct discussions and threads you have joined as a guest are included when they contain unread activity.
+    translation: Спачатку ў ім паказваюцца апавяшчэнні, якія вы яшчэ не бачылі, затым — непрачытаныя абмеркаванні і асобныя апытанні, згрупаваныя паводле груп. Апавяшчэнні коратка апісваюць падзеі, якія патрабуюць вашай увагі, і ўтрымліваюць спасылкі на іх. Раздзел непрачытанага змяшчае падрабязнасці абмеркаванняў, апытанняў, каментарыяў, галасоў і правак. Прамыя абмеркаванні і ланцужкі, да якіх вы далучыліся як госць, таксама трапляюць у агляд, калі ў іх ёсць непрачытаныя падзеі.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  00703333f277e3c0:
+    english: You can turn on **Follow updates** on an open Group that you have not joined. Unread discussions and polls from that Group are then included in your catch-up at your existing schedule. Reading the threads or marking the catch-up as read updates their read status in the same way as threads from Groups you belong to. Turn off **Follow updates** on the Group page to stop including them.
+    translation: Вы можаце ўключыць **Сачыце за абнаўленнямі** для адкрытай групы, да якой не далучыліся. Тады непрачытаныя абмеркаванні і апытанні гэтай групы будуць з’яўляцца ў вашым аглядзе паводле ўжо выбранага раскладу. Калі вы прачытаеце ланцужкі або адзначыце агляд як прачытаны, іх статус абновіцца гэтак жа, як у ланцужкоў вашых груп. Каб яны больш не траплялі ў агляд, выключыце **Сачыце за абнаўленнямі** на старонцы групы.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  fcac102a70f7ee7f:
+    english: Loomio does not send a catch-up when there are no unseen notifications or unread threads from the relevant period.
+    translation: Loomio не дасылае агляд, калі за адпаведны перыяд няма апавяшчэнняў, якія вы яшчэ не бачылі, або непрачытаных ланцужкоў.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  888011209ac583be:
+    english: "![A catch-up with unseen notifications and unread thread activity from one group](digest_email_example.png)"
+    translation: "![Агляд з непрагледжанымі апавяшчэннямі і непрачытанымі падзеямі ў ланцужках адной групы](digest_email_example.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  7d80cf08a383f6bd:
+    english: "### Choose your catch-up schedule"
+    translation: "### Выберыце расклад аглядаў"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  677863d68136156b:
+    english: Open **Notification settings** from your user menu to choose how often you receive a catch-up.
+    translation: Адкрыйце **Налады апавяшчэнняў** у меню карыстальніка, каб выбраць, як часта атрымліваць агляд.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  7c0dece94210f807:
+    english: The **Unsubscribe** link in a catch-up email opens a catch-up schedule form. The email link authorizes that form, so you can change or stop catch-up emails without signing in. The full **Notification settings** page in Loomio remains available when you sign in.
+    translation: Спасылка **Адпісацца** ў лісце з аглядам адкрывае форму раскладу аглядаў. Спасылка з ліста дае доступ да гэтай формы, таму вы можаце змяніць расклад або спыніць рассылку аглядаў без уваходу ў сістэму. Пасля ўваходу ў Loomio вам па-ранейшаму даступная поўная старонка **Налады апавяшчэнняў**.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  da5740fd6dbd5737:
+    english: "![Notification settings in the user menu](sidebar_notification_settings.png)"
+    translation: "![Налады апавяшчэнняў у меню карыстальніка](sidebar_notification_settings.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  58af77d870a877e2:
+    english: 'New accounts start with a daily catch-up. The available schedules are:'
+    translation: 'Для новых уліковых запісаў спачатку ўключаны штодзённы агляд. Даступныя такія варыянты:'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  b0fe04b2b5284253:
+    english: |-
+      - **Never** to turn off the catch-up
+      - **Every day** for activity from approximately the previous 24 hours
+      - **Every second day** for activity from approximately the previous two days
+      - a weekday to receive a weekly catch-up on that day
+    translation: |-
+      - **Ніколі** — выключыць агляд
+      - **Кожны дзень** — атрымліваць агляд падзей прыкладна за папярэднія 24 гадзіны
+      - **Кожны другі дзень** — атрымліваць агляд падзей прыкладна за папярэднія два дні
+      - дзень тыдня — атрымліваць штотыднёвы агляд у гэты дзень
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  a23935f518dd15cb:
+    english: The catch-up is sent in the morning according to the time zone in your Loomio profile.
+    translation: Агляд дасылаецца раніцай паводле часавага пояса, указанага ў вашым профілі Loomio.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  b214c0634763fb51:
+    english: "![Catch-up schedule setting](digest_email_setting.png)"
+    translation: "![Налада раскладу аглядаў](digest_email_setting.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  efbcecfe827438a5:
+    english: "### Mark a catch-up as read"
+    translation: "### Адзначце агляд як прачытаны"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  2b764b73f48d3185:
+    english: Select **Mark catch-up as read** to mark its notifications and topic activity as read in Loomio. Opening or previewing the catch-up does not mark anything as read.
+    translation: Выберыце **Адзначыць паведамленне як прачытанае**, каб адзначыць апавяшчэнні і падзеі ў тэмах з агляду як прачытаныя ў Loomio. Калі проста адкрыць або праглядзець агляд, нічога не будзе адзначана як прачытанае.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  81ffa4a869f82451:
+    english: A catch-up is not specific to one discussion, so do not reply to it. Open a discussion or poll from the catch-up before commenting or replying.
+    translation: Агляд не належыць да аднаго абмеркавання, таму не адказвайце на ліст з аглядам. Каб пакінуць каментарый або адказ, спачатку адкрыйце абмеркаванне або апытанне з агляду.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  f7dfee93901e5eea:
+    english: "## Group and thread notification settings"
+    translation: "## Налады апавяшчэнняў для груп і ланцужкоў паведамленняў"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  31be594005b6bcfc:
+    english: You can choose how closely to follow each group and thread. These settings belong to you; group administrators cannot change them.
+    translation: Вы можаце выбраць, наколькі ўважліва сачыць за кожнай групай і кожным ланцужком паведамленняў. Гэта вашы асабістыя налады; адміністратары груп не могуць іх змяняць.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  6c9a762b18c9f92d:
+    english: Change your defaults for groups you join from **Notification settings** in your user menu. You can then override the default for a particular group or thread. A thread override changes only that thread and does not affect the rest of its group.
+    translation: У меню карыстальніка адкрыйце **Налады апавяшчэнняў**, каб змяніць стандартныя налады для груп, да якіх вы далучаецеся. Пасля гэтага вы можаце задаць асобныя налады для пэўнай групы або ланцужка. Асобныя налады ланцужка ўплываюць толькі на яго, а не на астатнюю групу.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  f4b6aa6eab1beb2b:
+    english: "### Group notification settings"
+    translation: "### Налады апавяшчэнняў для групы"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  977289761daba9db:
+    english: 'To change the notification setting for a group:'
+    translation: 'Каб змяніць налады апавяшчэнняў для групы:'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  d78d13409c481c71:
+    english: |-
+      1. Open the group page.
+      2. Open the notification settings for the group.
+    translation: |-
+      1. Адкрыйце старонку групы.
+      2. Адкрыйце налады апавяшчэнняў для групы.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  02116f695da0a946:
+    english: "![Notification settings on a group page](group_notifications.png)"
+    translation: "![Налады апавяшчэнняў на старонцы групы](group_notifications.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  8ce50d3418e2d9fa:
+    english: The form asks **How do you want to stay updated?** Choose **Catch-up only**, **When notified**, or **All activity**. If your catch-up is set to **Never**, **Catch-up only** is replaced by **No email updates** or **No push updates**.
+    translation: У форме ёсць пытанне **Як вы хочаце быць у курсе падзей?** Выберыце **Толькі даганянне**, **Калі апавяшчэнне** або **Уся актыўнасць**. Калі для агляду выбрана **Ніколі**, замест **Толькі даганянне** будуць даступныя **Няма абнаўленняў па электроннай пошце** або **Няма push-абнаўленняў**.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  24db74c2c82737eb:
+    english: Select **Apply to all groups** to use the same setting for all of your groups.
+    translation: Выберыце **Ужыць да ўсіх груп**, каб выкарыстоўваць аднолькавыя налады для ўсіх вашых груп.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  54cd6a8eac96e073:
+    english: "![Group notification settings](group_notification_settings.png)"
+    translation: "![Налады апавяшчэнняў для групы](group_notification_settings.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  d0ab43e865282241:
+    english: "### Thread notification settings"
+    translation: "### Налады апавяшчэнняў аб ланцужках паведамленняў"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  f61284373b7afc42:
+    english: To change notification settings for an individual thread, open the notification control in the thread sidebar.
+    translation: Каб змяніць налады апавяшчэнняў для асобнай тэмы, адкрыйце налады апавяшчэнняў на бакавой панэлі тэмы.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  b329b8421ab5d4f8:
+    english: "![The notification control in a thread](thread_subscribe.png)"
+    translation: "![Налады апавяшчэнняў на бакавой панэлі тэмы](thread_subscribe.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  226c5e321d735005:
+    english: "![Thread notification settings](thread_notifications.png)"
+    translation: "![Налады апавяшчэнняў аб ланцужках паведамленняў](thread_notifications.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  3178b3b456acd783:
+    english: Thread notification settings use the same **Catch-up only**, **When notified**, and **All activity** choices. A thread setting overrides the group setting for that thread.
+    translation: 'Для апавяшчэнняў аб тэме даступныя тыя ж варыянты: **Толькі даганянне**, **Калі апавяшчэнне** і **Уся актыўнасць**. Налады асобнай тэмы маюць перавагу перад наладамі групы для гэтай тэмы.'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  f53fa37c98c9b747:
+    english: |-
+      >[!Note]
+      >The changes in **Thread notification settings** apply only to the thread you have open. Select **Change notifications for group** to change the setting inherited by the group's other threads.
+    translation: |-
+      >[!Note]
+      >Змены ў **Налады апавяшчэнняў аб ланцужках паведамленняў** датычацца толькі адкрытай тэмы. Выберыце **Змяніць апавяшчэнні для групы**, каб змяніць налады, якія атрымліваюць у спадчыну іншыя тэмы групы.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  99a0923cdcdc1cdf:
+    english: "## Email delivery"
+    translation: "## Дастаўка па электроннай пошце"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  6cf70b2dc7cdbf83:
+    english: By default, Loomio sends an email when you are notified. Depending on your group and thread notification settings, this can include mentions, replies, discussions shared with you, invitations and reminders to vote, outcomes, and polls closing soon. Choose **All activity** to also receive emails about every new comment, vote, thread, poll, and outcome.
+    translation: Па змаўчанні Loomio дасылае электронны ліст, калі вы атрымліваеце апавяшчэнне. У залежнасці ад налад апавяшчэнняў для групы і тэмы гэта могуць быць згадкі, адказы, абмеркаванні, якімі падзяліліся з вамі, запрашэнні і напаміны пра галасаванне, высновы і апытанні, якія хутка завершацца. Выберыце **Уся актыўнасць**, каб таксама атрымліваць лісты пра кожны новы каментарый, голас, тэму, апытанне і выснову.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  ce2919b895be45b3:
+    english: The **Unsubscribe** link in a notification email opens settings for that thread or group, including emails sent because someone mentioned you or replied to you. That form shows your current catch-up schedule for all groups and links to the catch-up email settings. These email links authorize only their own settings forms; they do not sign you in to Loomio.
+    translation: Спасылка **Адпісацца** ў лісце з апавяшчэннем адкрывае налады адпаведнай тэмы або групы. Гэта датычыцца і лістоў, дасланых пасля таго, як вас згадалі або вам адказалі. Форма паказвае ваш бягучы расклад аглядных лістоў для ўсіх груп і змяшчае спасылку на іх налады. Спасылкі з электронных лістоў даюць доступ толькі да адпаведных формаў налад і не ўваходзяць у ваш уліковы запіс Loomio.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  d615e84f882a2728:
+    english: When a discussion email says that replies are accepted, you can reply directly from your email and your message will be posted into the Loomio discussion.
+    translation: Калі ў лісце аб абмеркаванні сказана, што на яго можна адказаць, адпраўце адказ па электроннай пошце. Ваша паведамленне з'явіцца ў абмеркаванні Loomio.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  5b4ce168b24bc44a:
+    english: Poll invitation emails show the poll and its response options, but selecting an option opens Loomio in your browser to complete the vote. You may need to sign in or confirm your account. The catch-up cannot accept replies; open the linked discussion or poll first.
+    translation: 'У лістах з запрашэннем да апытання паказаны апытанне і варыянты адказу. Калі вы выбераце варыянт, у браўзеры адкрыецца Loomio, дзе можна завяршыць галасаванне. Магчыма, вам спатрэбіцца ўвайсці або пацвердзіць свой уліковы запіс. На аглядны ліст нельга адказаць: спачатку адкрыйце абмеркаванне або апытанне па спасылцы.'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  0c2b2867a1ace598:
+    english: "![A proposal invitation email with response options and the related thread](proposal_invitation_email.png)"
+    translation: "![Ліст з запрашэннем да галасавання па прапанове, варыянтамі адказу і звязанай тэмай](proposal_invitation_email.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  a73508aa897d96cf:
+    english: "## Enable mobile notifications with web push"
+    translation: "## Уключыце мабільныя апавяшчэнні праз web push"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  f4b14a4ba068b670:
+    english: Web push is how Loomio delivers mobile notifications today. It can notify you about Loomio activity on your phone when Loomio is not open.
+    translation: Цяпер Loomio дастаўляе мабільныя апавяшчэнні праз web push. Так вы можаце атрымліваць апавяшчэнні пра актыўнасць у Loomio на тэлефоне, нават калі Loomio не адкрыты.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  811ee794dea12cd3:
+    english: On Android, open **Notification settings** in a supported browser and enable push. On an iPhone or iPad, first open Loomio in Safari, use **Share** then **Add to Home Screen**, open Loomio from the new Home Screen icon, and enable push from there. Select **Test connection** to verify delivery to every browser listed under **Enabled browsers**.
+    translation: На Android адкрыйце **Налады апавяшчэнняў** у браўзеры, які падтрымлівае push-апавяшчэнні, і ўключыце іх. На iPhone або iPad спачатку адкрыйце Loomio ў Safari, выберыце **Падзяліцца**, затым **Дадаць на пачатковы экран**, адкрыйце Loomio праз новы значок на пачатковым экране і ўключыце push-апавяшчэнні. Выберыце **Тэставае падключэнне**, каб праверыць дастаўку ва ўсе браўзеры са спіса **Уключаныя браўзеры**.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  72f0707b2d67bf0e:
+    english: Web push also works in supported desktop browsers. Enable it there if you want Loomio notifications on your computer.
+    translation: Web push таксама працуе ў браўзерах на камп’ютары, якія яго падтрымліваюць. Уключыце яго там, калі хочаце атрымліваць апавяшчэнні Loomio на камп’ютары.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  fea7dbef040ae7f5:
+    english: Once push is enabled in at least one browser, group and thread notification forms let you choose **Email**, **Push**, or **Email and push**. Email and push can use different notification settings. Push delivery can be delayed by the browser, operating system, or network connection.
+    translation: Калі push-апавяшчэнні ўключаны хаця б у адным браўзеры, у формах налад апавяшчэнняў для груп і тэм можна выбраць **Электронная пошта**, **Push** або **Электронная пошта і push-паведамленні**. Для электроннай пошты і push-апавяшчэнняў можна задаць розныя налады. Браўзер, аперацыйная сістэма або сеткавае злучэнне могуць затрымліваць дастаўку push-апавяшчэнняў.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  210e15dcdff781ce:
+    english: "![Push notification settings and enabled browsers](push_notification_settings.png)"
+    translation: "![Налады push-апавяшчэнняў і ўключаныя браўзеры](push_notification_settings.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  37e2be2c73fbb06d:
+    english: "## Turn off external notifications"
+    translation: "## Выключыце знешнія апавяшчэнні"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  5e3d442fa885bcd4:
+    english: To stop email and push messages for group and thread activity, open **Notification settings** from your user menu, set the catch-up to **Never**, and choose **No email updates** and **No push updates**. Notifications and activity remain available when you open Loomio.
+    translation: Каб спыніць электронныя лісты і push-апавяшчэнні пра актыўнасць у групах і тэмах, адкрыйце **Налады апавяшчэнняў** у меню карыстальніка, усталюйце для аглядных лістоў **Ніколі** і выберыце **Няма абнаўленняў па электроннай пошце** і **Няма push-абнаўленняў**. Апавяшчэнні і звесткі пра актыўнасць будуць даступныя ў Loomio.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  54bd12aaa8a9ed58:
+    english: "![Set the catch-up to Never](turn_off_all_emails_1.png)"
+    translation: "![Для аглядных лістоў выбрана «Ніколі»](turn_off_all_emails_1.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  92738bb4c71f0229:
+    english: "![Turn off updates for groups](turn_off_all_emails_2.png)"
+    translation: "![Абнаўленні для груп выключаны](turn_off_all_emails_2.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'

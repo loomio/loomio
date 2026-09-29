@@ -1,0 +1,205 @@
+---
+navigation_title: Тэгі катэгорый
+blocks:
+  29a00cacbd5bd549:
+    english: "# Category tags"
+    translation: "# Тэгі катэгорый"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  1d390c0c4f4cea4a:
+    english: Category tags make it easy to find threads and polls about a particular type of work or topic.
+    translation: Тэгі катэгорый дапамагаюць знаходзіць тэмы і апытанні, якія тычацца пэўнай працы або пытання.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  572adf8961fc1178:
+    english: |-
+      Tags belong to the whole organization. A tag used in a parent group is the
+      same tag in its subgroups, making it possible to organize related work across
+      the organization. Loomio displays tag names alphabetically and shows their
+      colors as dots beside the names.
+    translation: |-
+      Тэгі належаць усёй арганізацыі. Тэг, які выкарыстоўваецца ў асноўнай групе, —
+      той самы тэг і ў яе падгрупах. Гэта дапамагае ўпарадкаваць звязаную працу ва
+      ўсёй арганізацыі. Loomio паказвае назвы тэгаў у алфавітным парадку, а іх
+      колеры — кропкамі побач з назвамі.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  b5340bcbf37095dc:
+    english: |-
+      On your group page, click **Tags** above the thread list to see the tags used in
+      the current group. Select a tag to show only threads with that tag. Use the
+      filter textbox to search a long list, or select **Show more** to include all
+      tags in the organization. Select **Show fewer** to return to the current
+      group's tags.
+    translation: |-
+      На старонцы вашай групы націсніце **Тэгі** над спісам тэм, каб убачыць тэгі,
+      якія выкарыстоўваюцца ў гэтай групе. Выберыце тэг, каб паказаць толькі тэмы
+      з ім. Каб знайсці тэг у доўгім спісе, скарыстайцеся полем фільтра. Каб убачыць
+      усе тэгі арганізацыі, выберыце **Паказаць больш**. Каб вярнуцца да тэгаў
+      бягучай групы, выберыце **Паказаць менш**.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  9de81b9a795d066d:
+    english: "## Apply tags"
+    translation: "## Ужыць тэгі"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  bf284f7568360b53:
+    english: Members who can edit a thread or poll can apply tags to it.
+    translation: Удзельнікі, якія могуць рэдагаваць тэму або апытанне, могуць дадаваць да іх тэгі.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  58488fe368513138:
+    english: When you start a thread or poll, click the **Tags** field and select one or more tags.
+    translation: Калі вы пачынаеце тэму або апытанне, націсніце поле **Тэгі** і выберыце адзін ці некалькі тэгаў.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  e060934a2853a35a:
+    english: Start typing to filter the list. Select a tag again, or click the × on its chip, to remove it.
+    translation: Пачніце ўводзіць тэкст, каб адфільтраваць спіс. Каб прыбраць тэг, выберыце яго яшчэ раз або націсніце × на яго пазнацы.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  9f5e48b7e520d1a0:
+    english: "## Create tags"
+    translation: "## Стварыць тэгі"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  efa789e9365b2ab2:
+    english: |-
+      Parent-group admins can always create tags for the parent group and its
+      subgroups. Subgroup admins can create tags while tagging content in their
+      subgroup. The **Members can create tags** group permission, enabled by default,
+      allows other members who can tag a thread or poll to create new tag names. If
+      the permission is disabled, members can still apply existing tags.
+    translation: |-
+      Адміністратары асноўнай групы заўсёды могуць ствараць тэгі для яе і яе
+      падгруп. Адміністратары падгруп могуць ствараць тэгі, калі дадаюць іх да
+      матэрыялаў сваёй падгрупы. Дазвол групы **Удзельнікі могуць ствараць тэгі**,
+      уключаны па змаўчанні, дазваляе іншым удзельнікам, якія могуць дадаваць тэгі
+      да тэм або апытанняў, ствараць новыя назвы тэгаў. Калі дазвол выключаны,
+      удзельнікі ўсё роўна могуць выкарыстоўваць існыя тэгі.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  7e06376f3431ad2f:
+    english: To create a tag while starting a thread or poll, type its name in the **Tags** field and press Enter.
+    translation: Каб стварыць тэг падчас стварэння тэмы або апытання, увядзіце яго назву ў поле **Тэгі** і націсніце Enter.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  44cd1f0281bb8116:
+    english: "![create new tag](tags_create_new.png)"
+    translation: "![стварэнне новага тэга](tags_create_new.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  25943c6357948b42:
+    english: "![new tag created](tags_created_new.png)"
+    translation: "![новы тэг створаны](tags_created_new.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  7d3b350731e07a2c:
+    english: Use short, familiar names that group members will recognize, such as Finance, Governance, Packaging, or Cafe partnerships.
+    translation: Выбірайце кароткія і зразумелыя ўдзельнікам групы назвы, напрыклад «Фінансы», «Кіраванне», «Упакоўка» або «Партнёрства з кавярнямі».
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  d7df1acb0ce347f5:
+    english: "## Edit tags"
+    translation: "## Рэдагаваць тэгі"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  67bc6cfdb2afad04:
+    english: |-
+      Only parent-group admins can rename, recolor, merge, or delete tags. These
+      changes apply throughout the organization, including its subgroups.
+    translation: |-
+      Толькі адміністратары асноўнай групы могуць перайменаваць тэгі, змяніць іх
+      колер, аб’яднаць або выдаліць. Гэтыя змены дзейнічаюць ва ўсёй арганізацыі,
+      уключаючы падгрупы.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  b4ca99a5204d8526:
+    english: On the group page, open **Tags** and select **Edit tags**.
+    translation: На старонцы групы адкрыйце **Тэгі** і выберыце **Рэдагаваць тэгі**.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  581734d0042d7a3a:
+    english: "![edit category tags](tags_edit_new.png)"
+    translation: "![рэдагаванне тэгаў катэгорый](tags_edit_new.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  e55612b318c4cc6e:
+    english: Select the pencil icon beside a tag.
+    translation: Выберыце значок алоўка побач з тэгам.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  871b47d8a7e83eef:
+    english: "![edit category tags](tags_edit_new_pencil.png)"
+    translation: "![рэдагаванне тэгаў катэгорый](tags_edit_new_pencil.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  5a1856fe42a6cf57:
+    english: Edit the tag name or choose a color, then click **Save**.
+    translation: Змяніце назву тэга або выберыце колер, затым націсніце **Захаваць**.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  372d48b364fa7993:
+    english: "![edit tag color](tags_edit_name.png)"
+    translation: "![рэдагаванне колеру тэга](tags_edit_name.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  146a4351b419d9f3:
+    english: Click **Delete** to remove the tag from all threads and polls in the organization.
+    translation: Націсніце **Выдаліць**, каб прыбраць тэг з усіх тэм і апытанняў арганізацыі.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  ac6ff8dca31e6357:
+    english: "![delete tag](tags_delete.png)"
+    translation: "![выдаленне тэга](tags_delete.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  238eb4277538b10d:
+    english: "### Edit tag in thread or poll"
+    translation: "### Рэдагаваць тэгі ў тэме або апытанні"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  35715a66bb0686a9:
+    english: To change the tags on an existing thread or poll, open it and click the tag button beside its current tags near the title.
+    translation: Каб змяніць тэгі ў існай тэме або апытанні, адкрыйце яе і націсніце кнопку тэгаў побач з бягучымі тэгамі каля загалоўка.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  99c1872e69d86e10:
+    english: Select tags to add or remove them. Changes are saved immediately.
+    translation: Выберыце тэгі, каб дадаць або прыбраць іх. Змены захоўваюцца адразу.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  16df99acbf2b5046:
+    english: "![edit tags in thread](tags_thread_edit.png)"
+    translation: "![рэдагаванне тэгаў у тэме](tags_thread_edit.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'

@@ -1,0 +1,117 @@
+---
+navigation_title: Пошук змесціва
+blocks:
+  f268a5ae052b3df4:
+    english: "# Finding content"
+    translation: "# Пошук змесціва"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  2f06a9491227b073:
+    english: Loomio provides several ways to find discussions and decisions across your groups.
+    translation: У Loomio ёсць некалькі спосабаў знаходзіць абмеркаванні і рашэнні ў вашых групах.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  62c53ea4911e0c79:
+    english: "## Search"
+    translation: "## Пошук"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  29cbb6f48ca978fa:
+    english: The Search button in the top navigation bar opens global search from any page in Loomio.
+    translation: Кнопка «Пошук» у верхняй панэлі навігацыі адкрывае пошук па ўсім даступным змесціве з любой старонкі Loomio.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  6286c9b6f2b16fc4:
+    english: Search includes content you can access across all your groups and direct discussions. It can find discussion titles and context, comments, polls, votes, and outcomes.
+    translation: Пошук ахоплівае даступнае вам змесціва ва ўсіх вашых групах і прамых абмеркаваннях. Ён знаходзіць назвы і апісанні абмеркаванняў, каментарыі, апытанні, галасы і высновы.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  c5a77d75258a11e6:
+    english: Enter a word or phrase, then press Enter or select the search icon. For example, searching for **bottle** finds Oatmilk Cooperative content containing that word.
+    translation: Увядзіце слова або фразу, затым націсніце Enter або значок пошуку. Напрыклад, пошук слова **bottle** знаходзіць змесціва Oatmilk Cooperative з гэтым словам.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  1b93fd8aaf142d37:
+    english: "### Search tips"
+    translation: "### Парады па пошуку"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  99f906ecbde3a538:
+    english: "- Start with one or two distinctive words from the title or content you remember.\n- Search matches the beginning of a word, so a partial word such as **bott** can match **bottle**. \n- It will compensate for misspellings when results for the given query are very few.\n- Use the filters to limit results to an organization, subgroup, tag, or content type such as comments or polls.\n- Sort by **Best match** when relevance matters, or by newest or oldest when you know roughly when the content was posted."
+    translation: "- Пачніце з аднаго або двух адметных слоў з назвы ці змесціва, якія вы памятаеце.\n- Пошук знаходзіць словы па іх пачатку, таму частка слова **bott** можа адпавядаць слову **bottle**. \n- Калі вынікаў па запыце вельмі мала, пошук улічвае магчымыя памылкі ў напісанні.\n- Выкарыстоўвайце фільтры, каб абмежаваць вынікі арганізацыяй, падгрупай, тэгам або тыпам змесціва, напрыклад каментарыямі ці апытаннямі.\n- Сартуйце па **Найлепшае супадзенне**, калі важная адпаведнасць запыту, або па даце ад новых да старых ці наадварот, калі вы прыкладна ведаеце, калі змесціва было апублікавана."
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  e7c532f120c4807d:
+    english: "## Filter discussions"
+    translation: "## Фільтрацыя абмеркаванняў"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  91bf7098343a1efa:
+    english: Use the controls beside Search to filter discussions by open or closed status or by category tag. Combining a search term with a filter can narrow a long discussion list quickly.
+    translation: Выкарыстоўвайце элементы кіравання побач з полем пошуку, каб адфільтраваць абмеркаванні па стане — адкрытыя ці закрытыя — або па тэгу катэгорыі. Пошукавы запыт разам з фільтрам дапаможа хутка скараціць доўгі спіс абмеркаванняў.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  e3d2099d0e6fe6fa:
+    english: "## Category tags"
+    translation: "## Тэгі катэгорый"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  932506e53b51fac1:
+    english: Tags group related discussions and polls under names chosen by your group, such as a project, team, or area of work.
+    translation: Тэгі аб’ядноўваюць звязаныя абмеркаванні і апытанні пад назвамі, якія выбірае ваша група, напрыклад па праекце, камандзе або кірунку працы.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  d761f1c7397d8e51:
+    english: Select a tag on the **Discussions** tab to show matching discussions. People with permission to start or edit discussions can apply tags. See [Category tags](/en/user_manual/discussions/tags) for setup and permission details.
+    translation: Выберыце тэг на ўкладцы **Абмеркаванні**, каб убачыць адпаведныя абмеркаванні. Людзі з правам пачынаць або рэдагаваць абмеркаванні могуць дадаваць тэгі. Падрабязнасці пра наладжванне і правы доступу глядзіце ў раздзеле [Тэгі катэгорый](/en/user_manual/discussions/tags).
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  b620c9f42e31a54f:
+    english: "## Unread discussions"
+    translation: "## Непрачытаныя абмеркаванні"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  b2f3737cd46d903a:
+    english: Select **Unread discussions** in the sidebar to see discussions with activity you have not read. Within a discussion, the timeline helps you move to unread items and important events.
+    translation: Выберыце **Непрачытаныя абмеркаванні** на бакавой панэлі, каб убачыць абмеркаванні з новай для вас актыўнасцю. Унутры абмеркавання часавая шкала дапамагае перайсці да непрачытаных паведамленняў і важных падзей.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  e016a4cafcaee460:
+    english: "## Polls awaiting your vote"
+    translation: "## Апытанні, у якіх чакаюць вашага голасу"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  873929c0f1d06567:
+    english: Select **Polls to vote on** in the sidebar to see active polls where you have been invited but have not yet voted. You can also open a group's **Polls** tab to see its active and closed polls.
+    translation: Выберыце **Апытанні для галасавання** на бакавой панэлі, каб убачыць актыўныя апытанні, у якіх вас запрасілі прагаласаваць і вы яшчэ не прагаласавалі. На ўкладцы групы **Апытанні** можна ўбачыць яе актыўныя і закрытыя апытанні.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  3bb08c3343e3efd7:
+    english: "## Bookmarks"
+    translation: "## Закладкі"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  1bec2703cc5fe70a:
+    english: Bookmark a discussion, comment, poll, vote, or outcome when you want to return to it. Open **Bookmarks** from your user menu to see everything you have saved. See [Bookmarks](/en/user_manual/users/bookmarks) for details.
+    translation: Дадайце абмеркаванне, каментарый, апытанне, голас або выснову ў закладкі, калі хочаце вярнуцца да іх пазней. Адкрыйце **Закладкі** ў меню карыстальніка, каб убачыць усё захаванае. Падрабязнасці глядзіце ў раздзеле [Закладкі](/en/user_manual/users/bookmarks).
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'

@@ -1,0 +1,81 @@
+---
+navigation_title: Стварэнне групы
+blocks:
+  e8632dbb628c7c7d:
+    english: "# Starting a new group"
+    translation: "# Стварэнне новай групы"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  2a4a6907d4e2049d:
+    english: If you are new to Loomio, you can start a group on a free trial at any time from the [Loomio website](https://www.loomio.com/). If you already use Loomio and would like to start a new group for another organization or purpose, you can do this from the sidebar menu - click on **New group**.
+    translation: Калі вы ўпершыню карыстаецеся Loomio, можаце ў любы час стварыць групу на бясплатны пробны перыяд праз [сайт Loomio](https://www.loomio.com/). Калі вы ўжо карыстаецеся Loomio і хочаце стварыць групу для іншай арганізацыі або мэты, адкрыйце бакавое меню і націсніце **Новая група**.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  10e8756c96038e58:
+    english: For many organizations, a single Loomio group is sufficient. You can start as many subgroups as you need within the group. See [Subgroups](/en/user_manual/groups/subgroups/) for more info.
+    translation: Для многіх арганізацый дастаткова адной групы Loomio. У ёй можна стварыць столькі падгруп, колькі вам патрэбна. Падрабязней глядзіце ў раздзеле [Падгрупы](/en/user_manual/groups/subgroups/).
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  ed00dbe94cd53435:
+    english: "## Group details"
+    translation: "## Звесткі пра групу"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  0bb201e3a09fe99d:
+    english: "### Group name"
+    translation: "### Назва групы"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  '019cdfc169ea858a':
+    english: Type your group name. It's best to keep your group name short and concise.
+    translation: Увядзіце назву групы. Лепш, каб яна была кароткай і зразумелай.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  6ae6b08ae7fbe257:
+    english: "### Group handle"
+    translation: "### Ідэнтыфікатар групы"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  b054d0f760888add:
+    english: Your group is automatically assigned a handle. The handle is used in the group's URL and email address, such as **loomio.com/your-group-handle** and **your-group-handle@loomio.com**.
+    translation: Група аўтаматычна атрымлівае ідэнтыфікатар. Ён выкарыстоўваецца ў URL-адрасе і адрасе электроннай пошты групы, напрыклад **loomio.com/your-group-handle** і **your-group-handle@loomio.com**.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  1dee654ba628ba95:
+    english: You can edit the handle when you create the group and change it later in group settings. When you change it, links and email addresses that use the old handle continue to work. Loomio keeps up to three old handles; after that, the oldest handle expires.
+    translation: Вы можаце змяніць ідэнтыфікатар пры стварэнні групы або пазней у наладах групы. Пасля змены спасылкі і адрасы электроннай пошты са старым ідэнтыфікатарам працягнуць працаваць. Loomio захоўвае да трох старых ідэнтыфікатараў; пасля гэтага найстарэйшы перастае працаваць.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  '08496ed70144fc4d':
+    english: "### Group description"
+    translation: "### Апісанне групы"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  1a464543c51ded45:
+    english: This short description will show at the top of the dashboard, to offer any necessary context for new members.
+    translation: Кароткае апісанне паказваецца ўверсе панэлі кіравання і дапамагае новым удзельнікам зразумець, для чаго існуе група.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  83221a28598f0a5e:
+    english: "**When you click 'Start Group' your new group is automatically created!**"
+    translation: "**Калі вы націснеце «Пачаць групу», новая група будзе створана аўтаматычна.**"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  cb3f91d54eee30e5:
+    english: "---"
+    translation: "---"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'

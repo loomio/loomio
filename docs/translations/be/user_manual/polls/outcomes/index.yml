@@ -1,0 +1,109 @@
+---
+navigation_title: Высновы
+blocks:
+  40ec8b1a5fe05e37:
+    english: "# Outcome"
+    translation: "# Выснова"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  7478a826673bce70:
+    english: When your proposal or poll closes, you’ll be prompted to enter an **outcome**.
+    translation: Калі ваша прапанова або апытанне закрыецца, вам прапануюць напісаць **выснову**.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  ccaf1bc50a4f4734:
+    english: State the results of the proposal or poll and say what will happen next.
+    translation: Падсумуйце вынікі прапановы або апытання і раскажыце, што будзе далей.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  fde482f3a84e26e6:
+    english: The outcome statement is an important record of the poll or decision - a succinct statement for future reference.
+    translation: Выснова захоўвае кароткі падсумаваны запіс аб апытанні або рашэнні, да якога можна вярнуцца пазней.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  9f4a341103cf4286:
+    english: "## Outcome statements for common decision processes"
+    translation: "## Высновы для распаўсюджаных спосабаў прыняцця рашэнняў"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  457a047ee6ae5975:
+    english: |-
+      | **Decision process** | **When the decision is made** | **Outcome** |
+      |---|---|---|
+      | Advice process | When advice has been received and taken into account. | State the decision made and thank people for their advice and feedback. |
+      | Consent process | When there are no remaining objections. | State that no valid objections remain and there is consent that the proposal is 'safe to try'.  |
+      | Consensus process | When most* people agree. | State proposal results and the decision made. |
+    translation: |-
+      | **Спосаб прыняцця рашэння** | **Калі рашэнне прынята** | **Выснова** |
+      |---|---|---|
+      | Прыняцце рашэння з улікам парад | Калі парады атрыманы і ўлічаны. | Назавіце прынятае рашэнне і падзякуйце людзям за парады і водгукі. |
+      | Прыняцце рашэння са згоды ўдзельнікаў | Калі пярэчанняў больш няма. | Адзначце, што абгрунтаваных пярэчанняў не засталося і ўдзельнікі згодныя з тым, што прапанову можна паспрабаваць ажыццявіць.  |
+      | Прыняцце рашэння кансэнсусам | Калі большасць* людзей згодныя. | Падсумуйце вынікі прапановы і назавіце прынятае рашэнне. |
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  f8adf692b7b22c59:
+    english: "**The majority or supermajority as governed by constitution or by prior agreement within your organization.*  "
+    translation: "**Большасць або кваліфікаваная большасць, як вызначана статутам ці папярэдняй дамоўленасцю ў вашай арганізацыі.*"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  278c243b460bef68:
+    english: 'Whatever the results, there is always something to learn from the proposal and poll. '
+    translation: Якімі б ні былі вынікі, прапанова і апытанне заўсёды даюць магчымасць нешта даведацца.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  e694b60515143fcb:
+    english: If your proposal fails, consider what new understanding has been gained, and if this can be accommodated to reach a better decision.
+    translation: Калі вашу прапанову не падтрымалі, падумайце, што новага вы даведаліся і ці дапаможа гэта прыняць лепшае рашэнне.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  780a97e6dd058d5d:
+    english: 'The outcome statement is an opportunity to state the results and what has been learnt.  '
+    translation: У выснове можна падсумаваць вынікі і тое, што ўдалося даведацца.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  ca65851b5da70691:
+    english: You can notify people - they will receive an email from Loomio containing the poll results and your outcome statement.
+    translation: Вы можаце паведаміць людзям пра выснову. Яны атрымаюць электронны ліст ад Loomio з вынікамі апытання і вашай высновай.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  64d6b82a9343b3a6:
+    english: 'You can also set a **Review date**: a future date when you would like to review this poll or decision. For example, you might review a strategy at the same time next year.'
+    translation: Вы таксама можаце задаць **Дата агляду** — дату, калі захочаце зноў разгледзець гэтае апытанне або рашэнне. Напрыклад, стратэгію можна перагледзець у той жа час наступнага года.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  60605804c2662fc8:
+    english: "**Example outcome statements**"
+    translation: "**Прыклады высноў**"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  96f33990f48604cd:
+    english: "> _This proposal did not reach consensus because several people were concerned about budget impacts. George and Jimena will do some financial modelling and raise a new proposal next week._"
+    translation: "> _Па гэтай прапанове не дасягнулі кансэнсусу, бо некалькі чалавек выказалі занепакоенасць уплывам на бюджэт. Джордж і Хімена зробяць фінансавыя разлікі і на наступным тыдні вынесуць новую прапанову._"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  7175517a370b5cd2:
+    english: or
+    translation: або
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  40861d5640e63eef:
+    english: "> _I've taken on board everyone's input. As the project manager, this is my call to make and I've decided we are going to extend the timeline by 10 days._"
+    translation: "> _Я ўлічыў усе выказаныя меркаванні. Як кіраўнік праекта, я прымаю гэтае рашэнне: мы падоўжым тэрмін на 10 дзён._"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'

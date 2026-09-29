@@ -59,3 +59,7 @@ ja:
   name: 日本語
   published: false
   style: Use polite です/ます style. Avoid addressing the reader with あなた; describe actions directly.
+be:
+  name: Беларуская
+  published: false
+  style: Write Belarusian, not Russian, in the official Cyrillic orthography used by the app. Address the reader with lowercase вы (ваш, ваша) and вы imperatives (Выберыце, Націсніце). Never ты. Keep references to people gender-inclusive - use plural forms, present tense, impersonal constructions or group nouns instead of masculine singular past-tense verbs and masculine person nouns (prefer удзельнікі прагаласавалі, or каб прагаласаваць, over ён прагаласаваў or удзельнік прагаласаваў).

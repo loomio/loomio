@@ -1,0 +1,97 @@
+---
+navigation_title: Мова і пераклад
+blocks:
+  cdd50aae0248ecb4:
+    english: "# Languages and Translation"
+    translation: "# Мовы і пераклад"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  af566dd0b0ea4b7a:
+    english: 'Loomio supports mutliple languages with these two features:'
+    translation: 'Loomio падтрымлівае некалькі моў двума спосабамі:'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  bdd96ea053e98eb3:
+    english: |-
+      1. Application translation - Change the language of the user interface, IE: the buttons and application text.
+      2. Content translation - Translate comments, discussions and proposals into your preferred language.
+    translation: |-
+      1. Пераклад інтэрфейсу — вы можаце змяніць мову кнопак і тэксту праграмы.
+      2. Пераклад кантэнту — вы можаце перакладаць каментары, абмеркаванні і прапановы на мову, якой аддаеце перавагу.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  51d8c2a9441b45ba:
+    english: "## Application translation"
+    translation: "## Пераклад інтэрфейсу"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  04fdf482671e91c1:
+    english: "Loomio will automatically detect what your preferred language is when you visit the app with your browser. \nIf you want to change the preferred language, you can do so from the \"Edit profile\" page."
+    translation: |-
+      Калі вы адкрываеце Loomio у браўзеры, праграма аўтаматычна вызначае мову, якой вы аддаеце перавагу.
+      Каб змяніць яе, адкрыйце старонку «Рэдагаваць профіль».
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  5fe82a709bd9ffcd:
+    english: "![changing your preferred language](change_language.png)"
+    translation: "![Змена мовы, якой вы аддаеце перавагу](change_language.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  a858ffdb8df01bed:
+    english: |-
+      ## Content translation
+      When someone in your group writes their message in a language that is different to your preferred language, a "translate" button will appear below the message. You can click this button to automatically translate the message into your preferred language.
+    translation: |-
+      ## Пераклад кантэнту
+      Калі ў вашай групе з’явіцца паведамленне на іншай мове, пад ім будзе кнопка «Перакласці». Націсніце яе, каб аўтаматычна перакласці паведамленне на мову, якой вы аддаеце перавагу.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  2a6b90c58c4afdef:
+    english: "![content tranlation](content_translation.png)"
+    translation: "![Пераклад кантэнту](content_translation.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  18c8516c8f8e8c9d:
+    english: The translated text replaces the original text in the discussion. Select **original** to show the original text again.
+    translation: Перакладзены тэкст замяняе арыгінальны ў абмеркаванні. Выберыце **Арыгінал**, каб зноў паказаць арыгінальны тэкст.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  72a02bc0411c9442:
+    english: "![A comment translated from Spanish into English](content_translated.png)"
+    translation: "![Каментар, перакладзены з іспанскай на англійскую](content_translated.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  0bb8d23fc6e2f5a1:
+    english: Translation of user content is provided by Google Translate and performed when requested by a user.
+    translation: Кантэнт карыстальнікаў перакладаецца праз Google Translate па запыце карыстальнікаў.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  8f6d1cba345dfbda:
+    english: "## Automatic translation"
+    translation: "## Аўтаматычны пераклад"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  1a61645ea48e6aac:
+    english: To translate supported content automatically, open **Edit profile** and select **Translate content to my language automatically**. Loomio uses the language selected in your profile.
+    translation: Каб кантэнт, для якога даступны пераклад, перакладаўся аўтаматычна, адкрыйце **Рэдагаваць профіль** і выберыце **Аўтаматычна перакладаць кантэнт на маю мову**. Loomio выкарыстоўвае мову, выбраную ў вашым профілі.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  218709a94f296767:
+    english: "![The automatic content translation preference on the Edit Profile page](automatic_translation.png)"
+    translation: "![Налада аўтаматычнага перакладу кантэнту на старонцы рэдагавання профілю](automatic_translation.png)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'

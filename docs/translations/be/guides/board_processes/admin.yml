@@ -1,0 +1,195 @@
+---
+navigation_title: Вядзенне дакументацыі
+blocks:
+  016a912f9ba8d2dd:
+    english: "# Administration and record keeping"
+    translation: "# Адміністраванне і вядзенне дакументацыі"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  00be127a2f453ab3:
+    english: 'Admin and keeping good records for audit is an important, and often legal requirement for your board or committee. '
+    translation: Адміністраванне і належнае вядзенне дакументацыі для праверак важныя для вашай рады або камітэта, а часта і патрабуюцца законам.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  e4617bf502879b0d:
+    english: 'Increasingly, electronic records are supplanting the requirement for paper.  '
+    translation: Электронныя дакументы ўсё часцей замяняюць папяровыя.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  e1d587f71cdcc6c1:
+    english: 'However digital tools enable your board to do much more than just file meeting minutes.  '
+    translation: Але лічбавыя інструменты дазваляюць вашай радзе не толькі захоўваць пратаколы пасяджэнняў.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  f249e5f83d487c4b:
+    english: 'Transform your board: '
+    translation: 'Змяніце працу вашай рады:'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  fd8154295c7350b7:
+    english: |-
+      *“Our board group has been particularly transformative, enabling continuous governance, improving response times and increasing our agility, resilience and sustainability… Loomio saves us thousands of pounds every year”*
+      - Austen Cordasco Co-operative Assistance Network Limited (CAN) Business support services , United Kingdom
+    translation: |-
+      *«Група нашай рады істотна змяніла нашу працу: мы можам кіраваць арганізацыяй бесперапынна, хутчэй рэагаваць і працаваць больш гнутка, устойліва і надзейна… Loomio штогод эканоміць нам тысячы фунтаў»*
+      - Остэн Кардаска, Co-operative Assistance Network Limited (CAN), паслугі падтрымкі бізнесу, Вялікабрытанія
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  b8eb8dcae7d7a78b:
+    english: Let's look at how to organize work, administer discussions, keep data safe and store records in Loomio.
+    translation: Разгледзім, як арганізоўваць працу, кіраваць абмеркаваннямі, абараняць даныя і захоўваць дакументы ў Loomio.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  a27011d28c4f11a6:
+    english: "## Administering discussions"
+    translation: "## Кіраванне абмеркаваннямі"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  8e67ece08e454475:
+    english: There is a range of features in Loomio to help you administer discussions accessible from the drop down menu to the right of the discussion.
+    translation: У Loomio ёсць некалькі функцый для кіравання абмеркаваннямі. Яны даступныя ў выпадным меню справа ад абмеркавання.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  2d5be8c39f22ec28:
+    english: 'Keep the discussion list current by using:'
+    translation: 'Каб спіс абмеркаванняў заставаўся актуальным, выкарыстоўвайце:'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  75739da1bd5910a6:
+    english: |-
+      - **Pin discussion** to keep important discussions at the top of the list
+      - **Edit discussion** to change discussion title or update discussion context
+      - **Move to group** when you want to move a discussion to another group or subgroup, or to an archive group.
+      - **Lock thread** to prevent further comments or changes and remove the thread from the list of open threads. Locked threads are available under the discussion filter and from the search bar, and can be unlocked at any time.
+      - **Delete discussion** when you do not want to keep a record of the discussion.  Note that deleted discussions can not be un-deleted.
+    translation: |-
+      - **Замацаваць абмеркаванне**, каб важныя абмеркаванні заставаліся ўверсе спіса
+      - **Рэдагаваць абмеркаванне**, каб змяніць назву або абнавіць апісанне абмеркавання
+      - **Перамясціць у групу**, каб перанесці абмеркаванне ў іншую групу, падгрупу або архіўную групу
+      - **Заблакіраваць тэму**, каб забараніць далейшыя каментарыі і змены ды прыбраць тэму са спіса адкрытых тэм. Заблакіраваныя тэмы можна знайсці праз фільтр абмеркаванняў або радок пошуку. Іх можна разблакіраваць у любы час.
+      - **Выдаліць абмеркаванне**, калі не трэба захоўваць яго запіс. Выдаленае абмеркаванне нельга аднавіць.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  e3d2099d0e6fe6fa:
+    english: "## Category tags"
+    translation: "## Тэгі катэгорый"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  24b03357f6f6c3b9:
+    english: Category tags are a great way to label discussions so they can be easily found. Set tags and apply to each discussion  - try to be consistent.
+    translation: Тэгі катэгорый дапамагаюць пазначаць абмеркаванні, каб іх было лёгка знайсці. Стварыце тэгі і ўжывайце іх да абмеркаванняў паслядоўна.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  f0f5f5abd586fb61:
+    english: 'Common board tags include: Administration, AGM, Board meeting, Report, Finance, Legal, Members, Minutes, Planning, Policy, Resolution, Constitution, General meeting, Strategy.'
+    translation: 'Пашыраныя тэгі для рады: Адміністраванне, Гадавы агульны сход, Пасяджэнне рады, Справаздача, Фінансы, Прававыя пытанні, Удзельнікі, Пратаколы, Планаванне, Палітыкі, Рашэнні, Статут, Агульны сход, Стратэгія.'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  89d8ec222f5019df:
+    english: Group members can search for discussions by tag under the **tags** drop down menu.
+    translation: Удзельнікі групы могуць шукаць абмеркаванні па тэгах праз выпадное меню **Тэгі**.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  54ee008489cceaca:
+    english: "## Maintaining the discussion topic"
+    translation: "## Захаванне тэмы абмеркавання"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  e9007433ca60ae39:
+    english: Discussions work best for everyone when you can keep the discussion on a single topic.
+    translation: Абмеркаванне зручнейшае для ўсіх, калі яно прысвечана адной тэме.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  f742ae07824b35c6:
+    english: If a new topic is introduced in the middle of a discussion, you can select and move specific comments to another discussion, or start a new discussion.
+    translation: Калі падчас абмеркавання ўзнікае новая тэма, вы можаце выбраць і перанесці асобныя каментарыі ў іншае абмеркаванне або пачаць новае.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  c8b5176f58dceb8b:
+    english: "## Subgroups"
+    translation: "## Падгрупы"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  79ad157a95adc8ef:
+    english: Subgroups help you organize your communications and members so that the right people are engaged in their work together.  For example, you can use a subgroup for a subcommittee or working group.
+    translation: Падгрупы дапамагаюць арганізаваць зносіны і ўдзел людзей у сумеснай працы. Напрыклад, можна стварыць падгрупу для падкамітэта або працоўнай групы.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  0f4ebdab4c62be34:
+    english: "[Setting up subgroups.](/en/user_manual/groups/subgroups)"
+    translation: "[Стварэнне падгруп.](/en/user_manual/groups/subgroups)"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  d3c65fde78b2b08f:
+    english: "## Archiving records"
+    translation: "## Архіваванне запісаў"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  435f52763f0d9a5b:
+    english: To keep a record of a thread discussion and decisions in polls, use **[Print thread](/en/user_manual/groups/data_export#print-thread-to-pdf)** and print the file to pdf.  You can then store a published copy of the thread in your chosen document storage archive.
+    translation: Каб захаваць запіс абмеркавання ў тэме і рашэнняў у апытаннях, выкарыстайце **[Надрукаваць тэму](/en/user_manual/groups/data_export#print-thread-to-pdf)** і захавайце файл у фармаце PDF. Затым вы можаце змясціць апублікаваную копію тэмы ў выбраны архіў дакументаў.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  a6b96750c9e1e590:
+    english: To keep a complete record of the data in your Loomio group, use **[Export group data](/en/user_manual/groups/data_export#group-data-backup-or-export)**.
+    translation: Каб захаваць поўную копію даных вашай групы ў Loomio, выкарыстайце **[Экспартаваць даныя групы](/en/user_manual/groups/data_export#group-data-backup-or-export)**.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  '082f19717e933762':
+    english: "## Data storage"
+    translation: "## Захоўванне даных"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  e6c76e3a9b68b65f:
+    english: Loomio's cloud services protect your data by writing to multiple disks instantly, backed up daily, and stored in multiple locations.
+    translation: 'Воблачныя сэрвісы Loomio абараняюць вашы даныя: адразу запісваюць іх на некалькі дыскаў, штодня ствараюць рэзервовыя копіі і захоўваюць іх у некалькіх месцах.'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  84ee638382ead0fe:
+    english: All data in threads, comments, polls and file attachments are stored in this way.
+    translation: Так захоўваюцца ўсе даныя тэм, каментарыяў, апытанняў і далучаных файлаў.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  6e92f35d693c625c:
+    english: Files attached to threads can also be seen under the Files tab.
+    translation: Файлы, далучаныя да тэм, таксама можна праглядзець на ўкладцы «Файлы».
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  96642a66ac5c7e6f:
+    english: |-
+      [More about security in Loomio.
+      ](/en/policy/security)
+    translation: |-
+      [Больш пра бяспеку ў Loomio.
+      ](/en/policy/security)
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'

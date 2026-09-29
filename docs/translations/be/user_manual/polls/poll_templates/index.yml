@@ -1,0 +1,267 @@
+---
+navigation_title: Шаблоны апытанняў
+blocks:
+  6428da81fbbe11c6:
+    english: "# Poll templates"
+    translation: "# Шаблоны апытанняў"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  208bc68b458895f1:
+    english: Poll templates are reusable starting points shown when someone selects **Start a vote** or **New poll**. A template combines a voting method with preset guidance, response options, and settings.
+    translation: Шаблоны апытанняў — гэта гатовыя асновы, якія можна выкарыстоўваць паўторна. Яны з’яўляюцца, калі выбіраюць **Пачаць галасаванне** або **Новае апытанне**. Шаблон спалучае спосаб галасавання з загадзя падрыхтаванымі тлумачэннямі, варыянтамі адказу і наладамі.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  f290b92adeb2a791:
+    english: Use this page to configure which templates are available to a group or to create one for your own process. To choose a template for a particular vote, see [Proposals](../proposals/) or [Polls](../proposal_types/). To facilitate a complete decision process, see [Making decisions](/en/guides/making_decisions/).
+    translation: На гэтай старонцы вы даведаецеся, як наладзіць даступныя групе шаблоны або стварыць шаблон для свайго працэсу. Каб выбраць шаблон для канкрэтнага галасавання, глядзіце [Прапанова](../proposals/) або [Апытанні](../proposal_types/). Каб арганізаваць увесь працэс прыняцця рашэння, глядзіце [Прыняцце рашэнняў](/en/guides/making_decisions/).
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  658d10486cbee7dc:
+    english: "## Voting methods and templates"
+    translation: "## Спосабы галасавання і шаблоны"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  d903d1a58aebf643:
+    english: A voting method controls how participants respond and how Loomio calculates the result. Examples include Proposal, Choose, Score, Allocate, Rank, Time poll, and STV.
+    translation: 'Спосаб галасавання вызначае, як удзельнікі адказваюць і як Loomio падлічвае вынік. Прыклады: Прапанова, Выберыце, Ацэнка, Выдзеліць, Ранг, Апытанне часу і STV.'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  21efff1a5c91ad29:
+    english: A poll template uses one of those methods and adds reusable defaults. For example, Sense check, Advice, Consent, and Consensus are different templates built on the Proposal voting method. Their instructions and response options differ even though Loomio handles their ballots in the same way.
+    translation: Шаблон апытання выкарыстоўвае адзін з гэтых спосабаў і задае налады па змаўчанні, якія можна выкарыстоўваць паўторна. Напрыклад, «Праверка меркаванняў», «Парада», «Згода» і «Кансенсус» — розныя шаблоны на аснове спосабу галасавання «Прапанова». Іх інструкцыі і варыянты адказу адрозніваюцца, хоць Loomio апрацоўвае галасы аднолькава.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  f622951ffc7e1064:
+    english: "## Use a template"
+    translation: "## Выкарыстанне шаблону"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  865e825cc7d00cf2:
+    english: When starting a vote, select the **Proposal** or **Poll** tab and choose one of the templates available to the group.
+    translation: Калі пачынаеце галасаванне, адкрыйце ўкладку **Прапанова** або **Апытанне** і выберыце адзін з шаблонаў, даступных групе.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  1598f1a55a6944e6:
+    english: The template supplies an introduction, example content, options, and settings. Review and edit these for the particular decision before starting the vote. Editing the new vote does not change the reusable template.
+    translation: Шаблон дадае ўводны тэкст, прыклад зместу, варыянты адказу і налады. Перад пачаткам галасавання праверце і адрэдагуйце іх для канкрэтнага рашэння. Рэдагаванне новага галасавання не змяняе шаблон.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  8212a94908338b22:
+    english: "## Who can manage templates"
+    translation: "## Хто можа кіраваць шаблонамі"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  378caa9ba83ee0dc:
+    english: Group administrators can create and manage every poll template in their group. They can enable **Members can create templates** under **Group settings** → **Permissions**. When enabled, members can create templates and manage templates they authored.
+    translation: Адміністратары групы могуць ствараць усе шаблоны апытанняў у сваёй групе і кіраваць імі. У раздзеле **Налады групы** → **Дазволы** яны могуць уключыць наладу **Удзельнікі могуць ствараць шаблоны**. Пасля гэтага ўдзельнікі змогуць ствараць шаблоны і кіраваць шаблонамі, якія стварылі самі.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  0fafc6275b6c9153:
+    english: "## Create a poll template"
+    translation: "## Стварэнне шаблону апытання"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  5fc696a1e924179c:
+    english: Open the template list and select **New template**. Start with an example or a blank template, then choose the group that will use it.
+    translation: Адкрыйце спіс шаблонаў і выберыце **Новы шаблон**. Пачніце з прыкладу або пустога шаблону, а затым выберыце групу, якая будзе ім карыстацца.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  37b3658ec66eb8b7:
+    english: The template form defines the guidance and defaults people receive when they start a vote.
+    translation: У форме шаблону задаюцца тлумачэнні і налады па змаўчанні, якія людзі бачаць, калі пачынаюць галасаванне.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  fa0dab51a009bf90:
+    english: "### Template title, subtitle, and help"
+    translation: "### Назва, падзагаловак і даведка шаблону"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  965cde5e13952ade:
+    english: |-
+      - **Template title** is the short name shown in the template list.
+      - **Template subtitle** explains when to use it in one sentence.
+      - **Template help** appears in the information panel when someone uses the template. Explain its purpose, any rules participants should know, and links to relevant policies or guides.
+    translation: |-
+      - **Назва шаблону** — кароткая назва ў спісе шаблонаў.
+      - **Шаблон падзагалоўка** — адно сказанне пра тое, калі выкарыстоўваць шаблон.
+      - **Даведка па шаблонах** з’яўляецца на інфармацыйнай панэлі пры выкарыстанні шаблону. Растлумачце яго прызначэнне, правілы, якія варта ведаць удзельнікам, і дадайце спасылкі на адпаведныя правілы або дапаможнікі.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  f3e51b30163d5b85:
+    english: Use plain, specific names that distinguish the template from others in the group.
+    translation: Давайце шаблонам простыя і дакладныя назвы, каб іх можна было адрозніць ад іншых шаблонаў групы.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  e6b8a09191bb8c3f:
+    english: "### Voting method"
+    translation: "### Спосаб галасавання"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  ea4fef806c1cf060:
+    english: Choose what participants need to express and how the result should be calculated.
+    translation: Вызначце, што трэба выказаць удзельнікам і як падлічваць вынік.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  f8c87a496921c710:
+    english: |-
+      - **Proposal**: respond to a statement using defined positions;
+      - **Choose**: select one or more options;
+      - **Score**: evaluate every option on a scale;
+      - **Allocate**: distribute a limited budget of points;
+      - **Rank**: arrange options in preference order;
+      - **Time poll**: indicate availability; and
+      - **STV**: rank candidates in a proportional, multi-winner election.
+    translation: |-
+      - **Прапанова**: адказаць на сцвярджэнне, выбраўшы адну з вызначаных пазіцый;
+      - **Выберыце**: выбраць адзін або некалькі варыянтаў;
+      - **Ацэнка**: ацаніць кожны варыянт па шкале;
+      - **Выдзеліць**: размеркаваць абмежаваную колькасць балаў;
+      - **Ранг**: размясціць варыянты ў парадку перавагі;
+      - **Апытанне часу**: пазначыць даступны час; і
+      - **STV**: размясціць кандыдатур у парадку перавагі на прапарцыйных выбарах з некалькімі месцамі.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  9d589e44fa94c5e2:
+    english: Changing the voting method changes the fields and result calculation available to the template.
+    translation: Пры змене спосабу галасавання змяняюцца даступныя ў шаблоне палі і спосаб падліку выніку.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  230689f781e4cbc7:
+    english: "### Example title, details, and tags"
+    translation: "### Прыклад назвы, падрабязнасцей і тэгаў"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  6fa4b3625c6ec7ce:
+    english: Provide example content that helps an author frame the vote. These values are copied into a new proposal or poll and can be edited before it starts.
+    translation: Дадайце прыклад зместу, які дапаможа сфармуляваць пытанне для галасавання. Гэтыя значэнні капіююцца ў новую прапанову або апытанне. Іх можна адрэдагаваць перад пачаткам галасавання.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  a093368b30ac3c9b:
+    english: Use prompts rather than fixed content when each use needs a different title or details. Add default category tags only when they apply every time the template is used.
+    translation: Калі для кожнага галасавання патрэбныя іншыя назва або падрабязнасці, выкарыстоўвайце падказкі замест нязменнага тэксту. Дадавайце тэгі катэгорый па змаўчанні, толькі калі яны падыходзяць для кожнага выкарыстання шаблону.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  24c3fa4b7ef676fd:
+    english: "### Response options"
+    translation: "### Варыянты адказу"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  e7421caab9c47f5b:
+    english: 'Methods such as Proposal and Choose let you configure response options. Select the pencil icon beside an option to edit:'
+    translation: 'Такія спосабы, як «Прапанова» і «Выберыце», дазваляюць наладжваць варыянты адказу. Каб адрэдагаваць варыянт, націсніце значок алоўка побач з ім:'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  73a065ad5b861579:
+    english: |-
+      - **Option name**: the short response label;
+      - **Icon**: its visual marker;
+      - **Meaning**: what selecting the option communicates; and
+      - **Reason prompt**: the question shown when someone explains their response.
+    translation: |-
+      - **Назва опцыі**: кароткая назва адказу;
+      - **Значок**: яго візуальнае абазначэнне;
+      - **Значэнне**: што азначае выбар гэтага варыянту; і
+      - **Запыт на прычыну**: пытанне, якое паказваецца, калі людзі тлумачаць свой адказ.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  38bc8cfc36aaea2e:
+    english: Define options so participants can tell the difference between them without guessing. The meanings should match the decision rules your group actually uses.
+    translation: Апісвайце варыянты так, каб удзельнікі маглі адрозніць іх без здагадак. Іх значэнні павінны адпавядаць правілам прыняцця рашэнняў, якімі карыстаецца ваша група.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  cc4adba73670a75b:
+    english: "### Duration and settings"
+    translation: "### Працягласць і налады"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  6c63a57ab4cec442:
+    english: Set a default duration that is suitable for most uses of the template. The author can change the closing time for an individual vote.
+    translation: Задайце працягласць па змаўчанні, якая падыходзіць для большасці галасаванняў па гэтым шаблоне. Час завяршэння асобнага галасавання можна змяніць.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  df14be8dbf80fa3c:
+    english: Other defaults can control result visibility, anonymous voting, vote-reason requirements, reminders, quorum, and method-specific behaviour. See [Proposal and poll settings](../settings/) for their effects.
+    translation: Іншыя налады па змаўчанні могуць вызначаць бачнасць вынікаў, ананімнасць галасавання, неабходнасць тлумачыць адказ, напаміны, кворум і асаблівасці выбранага спосабу. Іх дзеянне апісана ў раздзеле [Налады прапаноў і апытанняў](../settings/).
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  774ed7b91d33ab10:
+    english: "### Save and test the template"
+    translation: "### Захаванне і праверка шаблону"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  1b26a723ab8a9811:
+    english: After saving, start a draft vote from the template. Check that its introduction, prompts, options, and defaults make sense to someone who did not create it. Starting a draft is also a useful way to confirm that the chosen voting method produces the result the group expects.
+    translation: Пасля захавання стварыце з шаблону чарнавік галасавання. Праверце, ці зразумелыя яго ўводны тэкст, падказкі, варыянты адказу і налады людзям, якія не стваралі шаблон. Чарнавік таксама дапаможа ўпэўніцца, што выбраны спосаб галасавання дае вынік, якога чакае група.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  1f0dab3f50320e75:
+    english: "## Manage the template list"
+    translation: "## Кіраванне спісам шаблонаў"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  e9748843a900273f:
+    english: 'Use the action menu beside a template to:'
+    translation: 'У меню дзеянняў побач з шаблонам можна:'
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  646235094d051c83:
+    english: |-
+      - **Edit** its reusable content and defaults;
+      - **Move** it to a different position in the list;
+      - **Hide** it from people starting votes; or
+      - **Delete** a custom template that is no longer needed.
+    translation: |-
+      - **Рэдагаваць** яго змест і налады па змаўчанні;
+      - **Перамясціць** яго ў іншае месца ў спісе;
+      - **Схаваць** яго ад людзей, якія пачынаюць галасаванне; або
+      - **Выдаліць** карыстальніцкі шаблон, які больш не патрэбны.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  3f6dc06b1fd2bce8:
+    english: Select **Show hidden templates** to review or restore hidden templates. Default templates can be hidden or adapted for the group, but cannot be deleted.
+    translation: Выберыце **Паказаць схаваныя шаблоны**, каб праглядзець або аднавіць іх. Шаблоны па змаўчанні можна схаваць або прыстасаваць для групы, але нельга выдаліць.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  be3ee2d2721d3e2a:
+    english: Changing a template does not alter proposals or polls that have already been started from it.
+    translation: Змена шаблону не ўплывае на прапановы і апытанні, ужо пачатыя на яго аснове.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'

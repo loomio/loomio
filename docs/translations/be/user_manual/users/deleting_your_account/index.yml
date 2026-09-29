@@ -1,0 +1,79 @@
+---
+navigation_title: Выдаленне ўліковага запісу
+blocks:
+  b69fb514fd196dd7:
+    english: "# Deleting your Loomio account"
+    translation: "# Выдаленне ўліковага запісу Loomio"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  941f0addde6f7326:
+    english: "## What does delete account mean?"
+    translation: "## Што адбываецца пры выдаленні ўліковага запісу?"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  dab05d98ad64604f:
+    english: |-
+      When you delete your account:
+      - Your user account including your name, email address and other personally identifying data will be deleted from our systems. You will not be able to sign in to Loomio with this account.
+      - Comments, proposal and discussions you have made will remain but your name will be removed from them. We do this because we have an obligation to groups to keep threads and proposals coherent.
+      - You will no longer be listed as a member of any groups.
+      - You will no longer receive notification emails.
+    translation: |-
+      Калі вы выдаліце ўліковы запіс:
+      - Ваш уліковы запіс, у тым ліку імя, адрас электроннай пошты і іншыя звесткі, па якіх можна вас ідэнтыфікаваць, будзе выдалены з нашых сістэм. Вы больш не зможаце ўвайсці ў Loomio з гэтым уліковым запісам.
+      - Вашы каментарыі, прапановы і абмеркаванні застануцца, але ваша імя будзе з іх выдалена. Гэта дапамагае захаваць звязнасць абмеркаванняў і прапаноў для груп.
+      - Вы больш не будзеце пазначаны ў якасці ўдзельнікаў ніводнай групы.
+      - Вы больш не будзеце атрымліваць апавяшчэнні па электроннай пошце.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  dbeaf194bb8bd9e8:
+    english: It is important to understand that copies of the data you have generated on Loomio have likely been emailed to everyone in the group - Loomio has no ability to delete those.
+    translation: Копіі даных, якія вы стварылі ў Loomio, маглі быць дасланы электроннай поштай усім у групе. Loomio не можа выдаліць гэтыя копіі.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  fa98dfeef486cf05:
+    english: Deleting your account will _not_ cancel your subscription; to stop your payments see [Subscriptions](/en/policy/subscriptions/management#cancel-your-plan).
+    translation: Выдаленне ўліковага запісу _не_ скасуе вашу падпіску. Каб спыніць плацяжы, глядзіце [Падпіскі](/en/policy/subscriptions/management#cancel-your-plan).
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  c1ceda8f829133c7:
+    english: Loomio has made fundamental decisions about its ownership, business model and software to protect users' rights. Loomio is an independent, worker-owned cooperative, the software is open source, you can [export your data](/en/user_manual/groups/data_export), and Loomio never sells your data or uses it for advertising. These commitments are set out in our [privacy policy](/en/policy/privacy) and grounded in the purpose and values in our [constitution](https://www.loomio.coop/constitution.html) and [cooperative handbook](https://www.loomio.coop/purpose_and_vision.html). If you have any questions, [contact us](/contact).
+    translation: Loomio прыняла прынцыповыя рашэнні адносна формы ўласнасці, бізнес-мадэлі і праграмнага забеспячэння, каб абараняць правы карыстальнікаў. Loomio — незалежны кааператыў ва ўласнасці работнікаў. Праграмнае забеспячэнне мае адкрыты зыходны код. Вы можаце [экспартаваць свае даныя](/en/user_manual/groups/data_export). Loomio ніколі не прадае вашы даныя і не выкарыстоўвае іх для рэкламы. Гэтыя абавязацельствы выкладзены ў нашай [палітыцы прыватнасці](/en/policy/privacy) і грунтуюцца на мэце і каштоўнасцях, апісаных у нашым [статуце](https://www.loomio.coop/constitution.html) і [даведніку кааператыва](https://www.loomio.coop/purpose_and_vision.html). Калі ў вас ёсць пытанні, [звяжыцеся з намі](/contact).
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  d8cc22d615b8f5d9:
+    english: "## To delete your account entirely"
+    translation: "## Як цалкам выдаліць уліковы запіс"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  77235d504409d763:
+    english: Sign in to Loomio.  Go to the sidebar from the (☰) menu icon at screen top left Click on your account avatar or initials, at the top right of your screen.
+    translation: Увайдзіце ў Loomio. Адкрыйце бакавую панэль праз значок меню (☰) у левым верхнім куце экрана. Націсніце на аватар або ініцыялы вашага ўліковага запісу ў правым верхнім куце экрана.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  04127f38282f6bd2:
+    english: Click the down arrow ( ∨ ) alongside your name to open user settings. Select **Edit profile**.
+    translation: Націсніце на стрэлку ўніз ( ∨ ) побач з вашым імем, каб адкрыць налады карыстальніка. Выберыце **Рэдагаваць профіль**.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  28b9f49f98d62fae:
+    english: Scroll to the bottom, and click on **Delete account**.
+    translation: Пракруціце старонку да канца і націсніце **Выдаліць уліковы запіс**.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  7151ebb20cf3efbb:
+    english: A pop up will appear requesting confirmation that you wish to delete your account.
+    translation: З’явіцца ўсплывальнае акно з просьбай пацвердзіць выдаленне ўліковага запісу.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'

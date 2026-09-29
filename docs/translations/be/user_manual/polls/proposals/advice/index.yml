@@ -1,0 +1,93 @@
+---
+navigation_title: Парада
+blocks:
+  2072a463e55dfba1:
+    english: "# Advice"
+    translation: "# Парада"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  aadbf3844be4a95f:
+    english: An Advice proposal gathers input for a decision that a person or team is responsible for making. Participants can offer advice or indicate that they have no advice to add.
+    translation: Прапанова «Парада» дапамагае сабраць меркаванні для рашэння, якое прымае пэўны чалавек або каманда. Удзельнікі могуць даць параду або паведаміць, што ім няма чаго дадаць.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  769a2446fc3ec4a9:
+    english: This page explains the Advice proposal form, voting, and results. See the [Advice process](/en/guides/making_decisions/advice_process) for the complete workflow from framing the decision to publishing an outcome.
+    translation: На гэтай старонцы апісаны форма прапановы «Парада», галасаванне і вынікі. Поўны працэс — ад пастаноўкі пытання да публікацыі высновы — апісаны ў раздзеле [Працэс кансультавання](/en/guides/making_decisions/advice_process).
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  f19e32088d70eec4:
+    english: "## When to use Advice"
+    translation: "## Калі выкарыстоўваць «Параду»"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  d4c7e7da6f2d5860:
+    english: Use Advice when the decision maker wants input from people with relevant expertise or people affected by the decision. It works well for supplier choices, operational decisions, policy drafts, and decisions within a delegated role.
+    translation: Выкарыстоўвайце «Параду», калі для прыняцця рашэння патрэбныя меркаванні людзей з адпаведным досведам або тых, каго рашэнне закране. Гэта падыходзіць для выбару пастаўшчыкоў, аперацыйных рашэнняў, праектаў правілаў і рашэнняў у межах дэлегаваных паўнамоцтваў.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  a81e33e00080fbe4:
+    english: Advice is not an approval vote. Say who will make the decision, what constraints apply, and how they will consider the responses.
+    translation: "«Парада» — гэта не галасаванне за ўхваленне. Укажыце, хто прыме рашэнне, якія ёсць абмежаванні і як будуць улічаны адказы."
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  4be7ef0783f6e444:
+    english: "## Example: choose a washing supplier"
+    translation: "## Прыклад: выбар пастаўшчыка паслуг мыйкі"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  d8157e98107798c6:
+    english: Oatmilk Cooperative's operations coordinator must select a washing supplier. They invite advice about capacity, food-safety records, water use, service response times, and support.
+    translation: Каардынацыйная каманда аперацыйнай дзейнасці кааператыва Oatmilk павінна выбраць пастаўшчыка паслуг мыйкі. Яна запрашае парады наконт магутнасцяў пастаўшчыка, дакументаў пра бяспеку харчовых прадуктаў, выкарыстання вады, хуткасці рэагавання і падтрымкі.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  9703f1f9474243af:
+    english: "## Set up the proposal"
+    translation: "## Падрыхтоўка прапановы"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  6b9c305f0f4000d9:
+    english: Describe the decision, name the decision maker, and include the information participants need. Invite people who are affected or have relevant knowledge. The default options let someone offer advice or abstain.
+    translation: Апішыце рашэнне, укажыце, хто яго прыме, і дадайце інфармацыю, патрэбную ўдзельнікам. Запрасіце людзей, якіх закране рашэнне або якія маюць адпаведныя веды. Стандартныя варыянты дазваляюць даць параду або ўстрымацца.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  d391457c69df967f:
+    english: "## Vote"
+    translation: "## Галасаванне"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  0a259af7a59899b7:
+    english: Participants select **Advice** and give a concrete recommendation, risk, question, or relevant experience. They can abstain when they have no useful input.
+    translation: Удзельнікі выбіраюць **Парада** і даюць канкрэтную рэкамендацыю, апісваюць рызыку, задаюць пытанне або дзеляцца адпаведным досведам. Калі ім няма чаго дадаць, яны могуць устрымацца.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  72a9e4073ea27936:
+    english: "## Read the results"
+    translation: "## Прагляд вынікаў"
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  1d4bf7b5d0079f87:
+    english: The chart confirms who has responded, but the reasons contain the substance of an Advice proposal. Look for constraints, agreements, and conflicting recommendations rather than treating the most common response as the decision.
+    translation: Дыяграма паказвае, хто адказаў, але сутнасць прапановы «Парада» — у тлумачэннях. Звяртайце ўвагу на абмежаванні, пункты згоды і супярэчлівыя рэкамендацыі. Найбольш часты адказ сам па сабе не вызначае рашэнне.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
+  e9fc01ce6c059f29:
+    english: The decision maker publishes an outcome explaining what they decided and how the advice informed it.
+    translation: Пасля прыняцця рашэння публікуецца выснова з тлумачэннем таго, што было вырашана і як парады паўплывалі на рашэнне.
+    status: machine
+    provider: codex/gpt-6-sol
+    translated_on: '2026-09-30'
