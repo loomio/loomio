@@ -58,9 +58,9 @@ When you edit the discussion context, use **What's changed?** to summarize the u
 
 ![Editing a discussion context with a change summary and notification recipients](../notifying_people/thread_editcontext.png)
 
-The summary appears as an item in the thread so participants can see what changed.
+The thread shows that you edited the context. The people you notify receive your summary with the notification.
 
-![A timeline item describing a discussion context change](../notifying_people/thread_edit_comment.png)
+![A thread item showing that the discussion context was edited](../notifying_people/thread_edit_comment.png)
 
 ## Navigation
 

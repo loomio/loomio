@@ -38,7 +38,7 @@ Oatmilk Cooperative is deciding whether to run a six-week returnable bottle tria
 
 The cooperative's process requires at least 75 percent of eligible voters to agree. Jamie edits the proposal's **Agree** option, enables its vote share requirement, and sets it to **At least 75% of Eligible voters**.
 
-![The Agree option requiring at least 75 percent of eligible voters](./consent-vote-option.png)
+![The Agree option requiring at least 75 percent of eligible voters](./agree-vote-option.png)
 
 Jamie also sets a 60 percent quorum. Jamie and Samira vote in agreement. All submitted votes support the proposal, but they represent only 40 percent of eligible voters, so neither requirement has been reached.
 

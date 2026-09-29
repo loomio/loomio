@@ -104,7 +104,7 @@ module.exports = {
     );
   },
 
-  'consent_vote_option': (test) => {
+  'agree_vote_option': (test) => {
     const page = pageHelper(test);
     const screenshot = manualScreenshot(test);
     openAgreeOption(page);
@@ -112,7 +112,7 @@ module.exports = {
     page.execute('document.activeElement && document.activeElement.blur()');
     markVoteShareSection(page);
     screenshot.captureRegion(
-      'polls/vote_share_requirements/consent-vote-option',
+      'polls/vote_share_requirements/agree-vote-option',
       optionWindow,
       {
         padding: 32,

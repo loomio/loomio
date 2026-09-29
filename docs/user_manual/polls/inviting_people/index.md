@@ -49,6 +49,8 @@ If the poll has a scheduled opening time and voting has not yet opened, voters w
 
 Select **Manage voters**, find the person's name in the voter management window, select the trash button beside it, and confirm **Remove voter**.
 
+![The trash button beside a voter in the voter management window](proposal_invite_remove.png)
+
 People cannot be removed from an anonymous poll.
 
 For example, an administrator who creates a poll on behalf of board members can remove themself if they are not authorised to vote.
