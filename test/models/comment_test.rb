@@ -9,6 +9,27 @@ class CommentTest < ActiveSupport::TestCase
     @discussion = discussions(:discussion)
   end
 
+  test "replies to votes wait until the poll's results are visible to everyone" do
+    %w[until_vote until_closed].each do |hide_results|
+      stance = cast_vote_in_new_poll(hide_results: hide_results)
+
+      own_reply = Comment.new(parent: stance, body: "Replying to my own vote", author: @user)
+      other_reply = Comment.new(parent: stance, body: "Replying to their vote", author: @admin)
+      refute own_reply.valid?, "#{hide_results}: voter could reply to their own hidden vote"
+      refute other_reply.valid?, "#{hide_results}: member could reply to a hidden vote"
+      assert_includes own_reply.errors.details[:parent], {error: :invalid}
+
+      PollService.close(poll: stance.poll, actor: @admin)
+      assert Comment.new(parent: stance.reload, body: "After closing", author: @admin).valid?, "#{hide_results}: reply blocked after closing"
+    end
+  end
+
+  test "replies to votes are allowed when results are always visible" do
+    stance = cast_vote_in_new_poll(hide_results: "off")
+
+    assert Comment.new(parent: stance, body: "Replying to a visible vote", author: @admin).valid?
+  end
+
   test "removes script tags from html body" do
     comment = Comment.new(parent: @discussion, author: @user, body_format: "html")
     comment.body = "hi im a hacker <script>alert('hacked')</script>"
@@ -27,5 +48,20 @@ class CommentTest < ActiveSupport::TestCase
     CommentService.create(comment: comment, actor: @user)
 
     assert_not_includes comment.mentioned_users, @alien
+  end
+
+  private
+
+  def cast_vote_in_new_poll(hide_results:)
+    poll = PollService.create(
+      params: {topic_id: @discussion.topic_id, title: "Reply check", poll_type: "proposal",
+               poll_option_names: ["Agree", "Disagree"], closing_at: 3.days.from_now, hide_results: hide_results},
+      actor: @admin
+    )
+    stance = poll.stances.latest.find_by!(participant_id: @user.id)
+    stance.choice = "Agree"
+    stance.reason = "My reason"
+    StanceService.create(stance: stance, actor: @user)
+    stance.reload
   end
 end

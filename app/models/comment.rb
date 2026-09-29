@@ -68,6 +68,7 @@ class Comment < ApplicationRecord
   validates_presence_of :user, unless: :discarded_at
 
   validate :parent_cannot_change, on: :update
+  validate :parent_vote_results_visible_to_all, on: :create
   validate :has_body_or_attachment
   validate :body_within_topic_limit
 
@@ -135,6 +136,15 @@ class Comment < ApplicationRecord
 
   def body_blank?
     body.to_s.empty? || body.to_s == "<p></p>"
+  end
+
+  # A reply is visible to everyone in the thread, so replying to a vote whose
+  # results are still hidden from some readers would reveal it through the
+  # reply. Such votes take replies once the poll closes.
+  def parent_vote_results_visible_to_all
+    return unless parent.is_a?(Stance)
+
+    errors.add(:parent, :invalid) unless parent.poll.results_visible_to_all?
   end
 
   def parent_cannot_change

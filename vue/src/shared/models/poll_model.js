@@ -282,6 +282,12 @@ export default class PollModel extends BaseModel {
     return this.anonymous && this.votingSystem === 'anonymous_ballot';
   }
 
+  // Replies to votes are shown to everyone, so they wait until no reader has
+  // the results hidden. The server applies the same rule.
+  resultsVisibleToAll() {
+    return this.hideResults === 'off' || !!this.closedAt;
+  }
+
   showResults() {
     return !!this.closingAt &&
     (() => { switch (this.hideResults) {
