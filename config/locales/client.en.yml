@@ -1185,6 +1185,7 @@ en:
     copy_markdown_description: Copy the thread as structured Markdown — ideal for use with an AI agent or for creating a simple document from the thread content.
     download_markdown: Download Markdown
     markdown: Markdown
+    vote_before_export: Vote before exporting. This thread has a poll that hides results until you vote.
     thread_markdown_copied: Thread Markdown copied
     copy_thread_for_ai: Copy for AI
     thread_copied_for_ai: Thread copied for AI

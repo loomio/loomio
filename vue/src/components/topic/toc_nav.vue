@@ -194,7 +194,16 @@ v-navigation-drawer.lmo-no-print.disable-select.topic-sidebar(v-if="topic" v-mod
     v-list(nav slim density="compact" :lines="false" v-if="menuActions.length")
       v-list-subheader(v-t="'members_panel.header_actions'")
       template(v-for="{ key, action } in menuActions" :key="key")
-        v-menu(v-if="action.menu" location="start")
+        v-tooltip(v-if="action.disabled && action.disabled()" location="start" :text="$t(action.disabledReason)")
+          template(v-slot:activator="{ props }")
+            div(v-bind="props")
+              v-list-item(
+                disabled
+                :class="`action-dock__button--${key}`"
+                :title="$t(action.name, (action.nameArgs && action.nameArgs()) || {})")
+                template(v-slot:prepend)
+                  common-icon(:name="action.icon")
+        v-menu(v-else-if="action.menu" location="start")
           template(v-slot:activator="{ props }")
             v-list-item(
               v-bind="props"
