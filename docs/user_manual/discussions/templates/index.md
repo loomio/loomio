@@ -9,9 +9,9 @@ Templates work well for processes your group repeats, such as project reviews, a
 ## How templates are used
 
 1. A member selects **Start discussion** on the group page.
-2. Loomio lists the group's visible templates. Each one shows its process name and subtitle.
+2. Loomio lists the group's visible templates. Each one shows its title and subtitle.
 3. The member selects a template. Loomio opens the new discussion form, filled in from the template.
-4. The template's process introduction appears at the top of the form as guidance.
+4. The template's help appears at the top of the form as guidance.
 5. The member edits the title, context, tags, and invite list, then selects **Start discussion**.
 
 ![](list.png)
@@ -39,9 +39,9 @@ Group admins can edit a template from the action menu beside it in the template 
 
 ![](form.png)
 
-- **Process name**: the short name shown in the template list.
-- **Process subtitle**: one line explaining when to use the template.
-- **Process introduction**: instructions shown at the top of the new discussion form. Use it to explain the process and link to resources. It is not part of the discussion.
+- **Template title**: the short name shown in the template list.
+- **Template subtitle**: one line explaining when to use the template.
+- **Template help**: instructions shown at the top of the new discussion form. Use it to explain the process and link to resources. It is not part of the discussion.
 - **Group**: whether the template starts a discussion in the group or a direct discussion. A direct discussion is visible only to the people invited to it.
 - **Default title**: a title filled in for each new discussion. The author can edit it.
 - **Example title**: an example shown in an empty title field. Use it when a default title would not fit every discussion.
@@ -56,7 +56,7 @@ Use a default title only when it will stay accurate. Otherwise, write an example
 
 ## Example: bottle trial review
 
-Oatmilk Cooperative reviews its returnable-bottle trial after each cycle. Its template has the process name "Bottle trial review" and a default title. It adds the "Bottle trial" tag. Its context asks members to read the weekly report and consider return rates, washing records, cafe feedback, and transport costs. It recommends a Sense check followed by Consent.
+Oatmilk Cooperative reviews its returnable-bottle trial after each cycle. Its template is titled "Bottle trial review" and has a default title. It adds the "Bottle trial" tag. Its context asks members to read the weekly report and consider return rates, washing records, cafe feedback, and transport costs. It recommends a Sense check followed by Consent.
 
 This works as a template because the purpose and evidence stay the same each cycle. Only the observations and decisions change.
 
