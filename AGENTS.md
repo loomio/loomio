@@ -77,7 +77,7 @@ success messages).
 
 ## User manual
 
-- Loomio publishes `docs/user_manual/` with its own documentation site builder
+- Loomio publishes `docs/en/user_manual/` with its own documentation site builder
   in `docs/build.rb`. When developing user-visible features or behaviour
   changes, consider the user manual's audience and update the relevant pages
   so the documentation stays in sync with the application. Follow
@@ -85,7 +85,7 @@ success messages).
 
 ## Changelog
 
-- Add a new Markdown file under `docs/user_manual/changelog/` only for new features, changes to behaviour that users would notice, or fixes for long-standing bugs. Do not add changelog entries for minor or routine bug fixes.
+- Add a new Markdown file under `docs/en/user_manual/changelog/` only for new features, changes to behaviour that users would notice, or fixes for long-standing bugs. Do not add changelog entries for minor or routine bug fixes.
 - Name changelog files with the current date and a short feature slug, for example `2026-07-07_tags_improvements.md`. Write for Loomio power users: explain what changed, who can use it, permission effects, and visible workflow or interface changes without describing internal implementation details.
 
 ## Release notes

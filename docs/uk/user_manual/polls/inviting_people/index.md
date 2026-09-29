@@ -1,0 +1,145 @@
+---
+title: Запросити до голосування
+source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
+source_file: docs/user_manual/polls/inviting_people/index.md
+translated:
+  provider: codex/gpt-6-sol
+  'on': '2026-09-29'
+sections:
+  introduction: 0635cf23fcaaa95b
+  invite-people-to-vote-in-a-poll: cfbf5caf71d1d5ca
+  invite-guests-or-experts: 0717537bbd36fa07
+  invite-a-subgroup-to-vote: 3ac684bdca4b3365
+  engage-people-while-a-poll-is-running: 69971de8d56c0a74
+  add-voters-to-the-poll: 904f682bab618ce3
+  remove-people-from-the-poll: d204dd916f5418e2
+  remind-people-to-vote: 177c881cb1b0dfb9
+  view-notification-history: 52d930341c048008
+  close-early: 0c46e8066719fc2f
+  reopen: 9575383179a411cc
+generated:
+  introduction: 265ed8f74a21fdea
+  invite-people-to-vote-in-a-poll: dde844b44b420a42
+  invite-guests-or-experts: 5430e3b083ee8a0a
+  invite-a-subgroup-to-vote: a4f8041158d26a41
+  engage-people-while-a-poll-is-running: 0b0f127b241bc7d1
+  add-voters-to-the-poll: 66fc811d0794507b
+  remove-people-from-the-poll: ac677d31ae279bec
+  remind-people-to-vote: 9772bbaa8d9cf7fd
+  view-notification-history: 30832745902b006f
+  close-early: 1c6ec53a5870fbd2
+  reopen: a120edf6edcbe680
+title_source: 4801d1a3dba7ce3d
+title_generated: ba22e8121d90784a
+---
+
+<!-- translation-section: introduction -->
+
+# Запросити до голосування
+
+<!-- translation-section: invite-people-to-vote-in-a-poll -->
+
+## Запросіть людей проголосувати в опитуванні
+
+Надішліть людям сповіщення із запрошенням проголосувати у вашому опитуванні.
+
+Після початку опитування з’явиться поле **Запросити до голосування**. Виберіть, кого запросити, наприклад **Усім в темі** або вашу групу, чи введіть імена й адреси електронної пошти окремих людей.
+
+![](proposal_invite.png)
+
+За бажанням додайте до запрошення повідомлення.
+
+![](proposal_invite_members.png)
+
+Виберіть позначку групи, щоб побачити людей, яких ви запрошуєте. Щоб вилучити людину із запрошення, натисніть x поруч із її іменем.
+
+![](proposal_invite_expand.png)
+
+<!-- translation-section: invite-guests-or-experts -->
+
+### Запросіть гостей або експертів
+
+Щоб запросити гостя до опитування, введіть його адресу електронної пошти. Гість зможе брати участь лише в цьому опитуванні.
+
+Якщо опитування проходить у темі, гість також зможе бачити цю тему та коментарі до неї. Він не зможе коментувати, брати участь в інших опитуваннях цієї теми чи переглядати інші теми групи.
+
+![](proposal_invite_guest.png)
+
+<!-- translation-section: invite-a-subgroup-to-vote -->
+
+### Запросіть підгрупу до голосування
+
+Щоб голосувати могли лише запрошені люди, під час створення опитування виберіть **Тільки вибрані люди**. Після цього ви зможете запросити підгрупу з батьківської групи. Дивіться також [Делеговані виборці](/en/user_manual/groups/delegated_voters/).
+
+![Вибір голосування лише для запрошених](invited-people-only.png)
+![Запрошення підгрупи до голосування](invite-voters-subgroup.png)
+
+<!-- translation-section: engage-people-while-a-poll-is-running -->
+
+## Залучайте людей під час опитування
+
+У нижній частині опитування є кілька функцій, які допоможуть вам залучати людей після його початку.
+
+![](proposal_after_start.png)
+
+<!-- translation-section: add-voters-to-the-poll -->
+
+### Додайте виборців до опитування
+
+Ви можете додати нових людей до опитування будь-коли, зокрема до початку голосування в запланованому опитуванні.
+
+Виберіть **Додати виборців**, а потім введіть імена або адреси електронної пошти людей, яких хочете додати.
+
+Якщо початок голосування заплановано на певний час і голосування ще не почалося, виборці не отримають сповіщення одразу. Їх сповістять, коли голосування почнеться.
+
+<!-- translation-section: remove-people-from-the-poll -->
+
+### Вилучіть людей з опитування
+
+Виберіть **Додати виборців**, знайдіть ім’я людини, відкрийте меню з трьома крапками поруч із ним і виберіть **Вилучити з пропозиції**.
+
+З анонімного опитування не можна вилучати людей.
+
+Наприклад, координатор, який створив опитування для членів правління, може вилучити себе, якщо не має права голосувати.
+
+![](proposal_invite_remove.png)
+
+<!-- translation-section: remind-people-to-vote -->
+
+### Нагадайте людям проголосувати
+
+Виберіть **Нагадати**, щоб надіслати сповіщення людям, які ще не проголосували. За замовчуванням вибрано **Усім запрошеним до голосування**. Натисніть позначку, щоб переглянути або змінити одержувачів.
+
+![](proposal_remind.png)
+
+<!-- translation-section: view-notification-history -->
+
+### Перегляньте історію сповіщень
+
+Відкрийте меню з трьома крапками (**⋯**) у нижній частині опитування та виберіть **Історія сповіщень**.
+
+![Історія сповіщень у меню дій опитування](../../discussions/notifying_people/poll_notification_history.png)
+
+В історії видно, кого запросили голосувати, коли надіслали кожне запрошення та чи його прочитали, якщо ця інформація доступна.
+
+![Історія сповіщень опитування](../../discussions/notifying_people/poll_notification_example.png)
+
+<!-- translation-section: close-early -->
+
+### Закрийте раніше
+
+Виберіть **Закрити раніше**, щоб завершити опитування до запланованого часу закриття.
+
+Це може знадобитися, коли всі проголосували або більше немає потреби залишати опитування відкритим.
+
+![](proposal_close_early.png)
+
+<!-- translation-section: reopen -->
+
+### Відновіть опитування
+
+У закритому опитуванні виберіть **Відновити**, а потім установіть нову дату й час закриття.
+
+Анонімні опитування не можна відновити.
+
+![](proposal_reopen.png)

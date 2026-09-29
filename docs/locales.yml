@@ -1,7 +1,7 @@
 # Languages the user manual and guides are translated into. English is the
 # source. A published language must have every page translated, or the build
-# fails. Unpublished languages build only their fully translated pages, for
-# review.
+# fails. Machine translations may publish after automated validation; human
+# review is optional. Unpublished languages build complete, current pages for preview.
 #
 # The key is the URL directory. `hreflang` (default: the key) is the language
 # tag used in HTML and search. `app_locale` (default: the key) names the

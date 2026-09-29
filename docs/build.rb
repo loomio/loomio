@@ -16,6 +16,7 @@ require_relative "template"
 
 module Docs
   SOURCE_ROOT = Pathname(__dir__).expand_path.freeze
+  ENGLISH_ROOT = SOURCE_ROOT.join("en").freeze
   OUTPUT_ROOT = Pathname(ENV.fetch("DOCS_OUTPUT", SOURCE_ROOT.join("../public/docs"))).expand_path.freeze
   BASE_PATH = ENV.fetch("DOCS_BASE_PATH", "/docs").sub(%r{/+\z}, "").freeze
   SITE_ORIGIN = ENV.fetch("DOCS_SITE_ORIGIN", BASE_PATH.empty? ? "https://help.loomio.com" : "https://www.loomio.com").freeze
@@ -23,16 +24,6 @@ module Docs
   SITE_PREFIX = "#{BASE_PATH}/en".freeze
   CHANGELOG_INDEX = "user_manual/changelog/index.md"
   CHANGELOG_PATTERN = /\A\d{4}-\d{2}-\d{2}_.+\.md\z/
-  MARKDOWN_OPTIONS = {
-    autolink: true,
-    fenced_code_blocks: true,
-    no_intra_emphasis: true,
-    space_after_headers: true,
-    strikethrough: true,
-    superscript: true,
-    tables: true,
-    underline: true
-  }.freeze
   # These paths come from @mdi/js, matching the mdi-svg icon set used by Vuetify.
   MARKDOWN_ALERTS = {
     "note" => {
@@ -208,7 +199,7 @@ module Docs
         end
       end
 
-      copy_page_assets(pages)
+      copy_page_assets(all_pages)
       copy_static_assets
       write_site_assets
       write_redirects(pages_by_url)
@@ -251,13 +242,13 @@ module Docs
         incomplete = []
 
         pages.select { |page| Localization.translated?(page.source_path) }.each do |page|
-          markdown, missing = Localization.assemble(locale.code, page.source_path, SOURCE_ROOT.join(page.source_path).read)
+          markdown, missing = Localization.assemble(locale.code, page.source_path, ENGLISH_ROOT.join(page.source_path).read)
           if markdown.nil?
-            incomplete << "#{page.source_path} (#{missing.length} blocks)"
+            incomplete << "#{page.source_path} (#{missing.join("; ")})"
             next
           end
 
-          title = Localization.load(locale.code, page.source_path)["navigation_title"]
+          title = Localization.load(locale.code, page.source_path).metadata["title"]
           raise "#{locale.code}: #{page.source_path} has no navigation title" if title.to_s.empty?
 
           localized[page.source_path] = Page.new(navigation_title: title, source_path: page.source_path, locale: locale.code, english: page)
@@ -396,7 +387,7 @@ module Docs
 
         depth = indentation / 2
         page = Page.new(navigation_title: link[2], source_path: link[3])
-        source_file = SOURCE_ROOT.join(page.source_path)
+        source_file = ENGLISH_ROOT.join(page.source_path)
         raise "SUMMARY.md:#{line_number}: missing #{page.source_path}" unless source_file.file?
         raise "SUMMARY.md:#{line_number}: duplicate #{page.source_path}" if pages.any? { |item| item.source_path == page.source_path }
 
@@ -421,7 +412,7 @@ module Docs
       markdown ||= if page.source_path == CHANGELOG_INDEX
         changelog_markdown
       else
-        SOURCE_ROOT.join(page.source_path).read
+        ENGLISH_ROOT.join(page.source_path).read
       end
 
       description_override = markdown[/<!--\s*seo-description:\s*(.*?)\s*-->/m, 1]
@@ -434,7 +425,7 @@ module Docs
       page.heading_ids = renderer.produced_ids
       fragment = Nokogiri::HTML5.fragment(rendered)
 
-      fragment.xpath("//comment()").remove
+      fragment.xpath(".//comment()").remove
       render_alerts(fragment, page.locale)
       rewrite_links(fragment, page, pages_by_source, pages_by_url, localized)
       mark_high_density_screenshots(fragment)
@@ -488,8 +479,8 @@ module Docs
     end
 
     def changelog_markdown
-      index = SOURCE_ROOT.join(CHANGELOG_INDEX).read.rstrip
-      directory = SOURCE_ROOT.join(File.dirname(CHANGELOG_INDEX))
+      index = ENGLISH_ROOT.join(CHANGELOG_INDEX).read.rstrip
+      directory = ENGLISH_ROOT.join(File.dirname(CHANGELOG_INDEX))
       entries = directory.children
         .select { |path| path.file? && path.basename.to_s.match?(CHANGELOG_PATTERN) }
         .sort_by { |path| path.basename.to_s }
@@ -523,9 +514,14 @@ module Docs
           end
         end
 
-        # Translated pages are written to another language's directory, so
-        # their relative asset URLs are resolved against the English source.
-        value = absolute_source_url(value, page) if (page.index? || page.locale != "en") && relative_url?(value)
+        # Use a localized asset when supplied; otherwise share the English
+        # image or download without copying it into every language directory.
+        if (page.index? || page.locale != "en") && relative_url?(value)
+          value = absolute_source_url(value, page)
+        elsif page.locale != "en" && value.start_with?("#{SITE_PREFIX}/")
+          path, suffix = split_url(value.delete_prefix("#{SITE_PREFIX}/"))
+          value = asset_url(path, suffix, page)
+        end
         value = clean_internal_url(value) if internal_url?(value)
         element[attribute] = value
       end
@@ -583,7 +579,16 @@ module Docs
     def absolute_source_url(value, page)
       path, suffix = split_url(value)
       source_path = Pathname(page.source_path).dirname.join(path).cleanpath
-      "#{SITE_PREFIX}/#{source_path}#{suffix}"
+      asset_url(source_path.to_s, suffix, page)
+    end
+
+    def asset_url(source_path, suffix, page)
+      locale = if page.locale != "en" && Localization.path(page.locale, source_path).file?
+        page.locale
+      else
+        "en"
+      end
+      "#{BASE_PATH}/#{locale}/#{source_path}#{suffix}"
     end
 
     def relative_url?(value)
@@ -650,18 +655,22 @@ module Docs
       page.output_path.write("#{html}\n")
     end
 
+    # Copy shared English assets once and any locale-specific overrides to
+    # their matching public paths. Markdown and translation state stay private.
     def copy_page_assets(pages)
-      roots = pages.map { |page| page.source_path.split("/").first }.uniq
-      roots.each do |root|
-        source = SOURCE_ROOT.join(root)
-        next unless source.directory?
+      pages.group_by(&:locale).each do |locale, localized|
+        source_root = SOURCE_ROOT.join(locale)
+        localized.map { |page| page.source_path.split("/").first }.uniq.each do |root|
+          source = source_root.join(root)
+          next unless source.directory?
 
-        source.find do |path|
-          next if path.directory? || path.extname == ".md"
+          source.find do |path|
+            next if path.directory? || path.extname == ".md"
 
-          destination = OUTPUT_ROOT.join("en", path.relative_path_from(SOURCE_ROOT))
-          FileUtils.mkdir_p(destination.dirname)
-          FileUtils.cp(path, destination)
+            destination = OUTPUT_ROOT.join(locale, path.relative_path_from(source_root))
+            FileUtils.mkdir_p(destination.dirname)
+            FileUtils.cp(path, destination)
+          end
         end
       end
     end

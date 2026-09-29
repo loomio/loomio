@@ -5,7 +5,7 @@ require_relative "localization"
 
 class DocsTemplate < Phlex::HTML
   # English interface text. Each translated language overrides these in
-  # docs/translations/<locale>/_site.yml, which must define every key.
+  # docs/<locale>/_site.yml, which must define every key.
   STRINGS = {
     "site_title" => "Loomio Help",
     "menu" => "Menu",

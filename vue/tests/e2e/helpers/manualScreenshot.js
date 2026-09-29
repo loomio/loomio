@@ -2,8 +2,8 @@ const fs = require('node:fs');
 const path = require('node:path');
 const {spawnSync} = require('node:child_process');
 
-const manualDir = path.resolve(__dirname, '../../../../docs/user_manual');
-const docsDir = path.resolve(__dirname, '../../../../docs');
+const manualDir = path.resolve(__dirname, '../../../../docs/en/user_manual');
+const docsDir = path.resolve(__dirname, '../../../../docs/en');
 const repoDir = path.resolve(__dirname, '../../../..');
 const spotlightScript = path.join(repoDir, 'bin/spotlight-screenshot');
 const cropScript = path.join(repoDir, 'bin/crop-screenshot');
