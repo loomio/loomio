@@ -13,6 +13,7 @@ require "uri"
 require "yaml"
 
 require_relative "template"
+require_relative "screenshots"
 
 module Docs
   SOURCE_ROOT = Pathname(__dir__).expand_path.freeze
@@ -429,6 +430,7 @@ module Docs
       render_alerts(fragment, page.locale)
       rewrite_links(fragment, page, pages_by_source, pages_by_url, localized)
       mark_high_density_screenshots(fragment)
+      mark_localized_screenshots(fragment, page)
       wrap_tables(fragment)
 
       page.title = fragment.at_css("h1")&.text&.strip || page.navigation_title
@@ -538,6 +540,30 @@ module Docs
 
         image["class"] = [image["class"], "screenshot-2x"].compact.join(" ")
         image["srcset"] = "#{source} 2x"
+      end
+    end
+
+    # Keep English src/srcset usable without JavaScript and verifiable during
+    # Docker builds. At runtime try the persistent local cache, then loomio.com.
+    # Only images with an approved capture recipe participate in this lookup.
+    def mark_localized_screenshots(fragment, page)
+      return if page.locale == "en"
+
+      fragment.css("img[src]").each do |image|
+        source, = split_url(image["src"])
+        prefixes = ["#{BASE_PATH}/en/", "#{BASE_PATH}/#{page.locale}/"]
+        prefix = prefixes.find { |candidate| source.start_with?(candidate) }
+        next unless prefix
+        logical_path = source.delete_prefix(prefix)
+        next unless Screenshots.images.key?(logical_path)
+
+        local = "#{Screenshots::URL_ROOT}/#{page.locale}/#{logical_path}"
+        hosted = "#{Screenshots::HOSTED_ROOT}/#{page.locale}/#{logical_path}"
+        english = "#{BASE_PATH}/en/#{logical_path}"
+        candidates = [local, hosted, english]
+        candidates.unshift(image["src"]) if prefix == "#{BASE_PATH}/#{page.locale}/"
+        image["data-screenshot-sources"] = JSON.generate(candidates.uniq)
+        image["referrerpolicy"] = "no-referrer"
       end
     end
 

@@ -16,8 +16,10 @@ module.exports = function(test, {outputDir} = {}) {
       throw new Error(`Invalid manual screenshot name: ${name}`);
     }
 
-    const imageRoot = outputDir || (name.startsWith('guides/') ? docsDir : manualDir);
-    const imagePath = path.join(imageRoot, `${name}.png`);
+    const generatedRoot = process.env.DOCS_SCREENSHOT_OUTPUT;
+    const imageRoot = generatedRoot || outputDir || (name.startsWith('guides/') ? docsDir : manualDir);
+    const imageName = generatedRoot && !name.startsWith('guides/') ? `user_manual/${name}` : name;
+    const imagePath = path.join(imageRoot, `${imageName}.png`);
     fs.mkdirSync(path.dirname(imagePath), {recursive: true});
     return imagePath;
   }
@@ -27,6 +29,11 @@ module.exports = function(test, {outputDir} = {}) {
     const height = options.height || 900;
 
     test.resizeWindow(width, height);
+    if (process.env.DOCS_SCREENSHOT_APP_LOCALE) {
+      // A completed Vue boot does not guarantee its asynchronous locale import
+      // has finished. Never save English UI under a translated filename.
+      test.waitForElementPresent(`html[lang="${process.env.DOCS_SCREENSHOT_APP_LOCALE}"]`, 20000);
+    }
     test.execute(function(showFlash) {
       let style = document.getElementById('manual-screenshot-styles');
 

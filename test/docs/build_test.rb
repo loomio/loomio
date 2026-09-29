@@ -77,6 +77,29 @@ class DocsBuildTest < Minitest::Test
     assert_includes page.html, "A paragraph."
   end
 
+  def test_translated_screenshots_keep_english_html_and_supply_runtime_fallbacks
+    fragment = render_markdown("![Save](#{Docs::BASE_PATH}/en/user_manual/users/bookmarks/save_bookmark.png)\n\n![Diagram](#{Docs::BASE_PATH}/en/guides/facilitators_guide/collaboration-process.png)\n")
+    page = Docs::Page.new(navigation_title: "Signets", source_path: "user_manual/users/bookmarks/index.md", locale: "fr")
+    Docs::Builder.new.send(:mark_localized_screenshots, fragment, page)
+    image = fragment.css("img").first
+    assert_equal "#{Docs::BASE_PATH}/en/user_manual/users/bookmarks/save_bookmark.png", image["src"]
+    assert_equal "#{image['src']} 2x", image["srcset"]
+    assert_equal [
+      "/docs-screenshots/fr/user_manual/users/bookmarks/save_bookmark.png",
+      "https://www.loomio.com/docs-screenshots/fr/user_manual/users/bookmarks/save_bookmark.png",
+      image["src"]
+    ], JSON.parse(image["data-screenshot-sources"])
+    assert_nil fragment.css("img").last["data-screenshot-sources"]
+  end
+
+  def test_supplied_locale_asset_precedes_generated_cache_and_hosted_copy
+    fragment = render_markdown("![Save](#{Docs::BASE_PATH}/fr/user_manual/users/bookmarks/save_bookmark.png)")
+    page = Docs::Page.new(navigation_title: "Signets", source_path: "user_manual/users/bookmarks/index.md", locale: "fr")
+    Docs::Builder.new.send(:mark_localized_screenshots, fragment, page)
+    image = fragment.at_css("img")
+    assert_equal image["src"], JSON.parse(image["data-screenshot-sources"]).first
+  end
+
   private
 
   def render_markdown(markdown)

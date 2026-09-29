@@ -28,7 +28,9 @@ Git source provenance identifies an available committed baseline. English can be
 
 ## Screenshots and assets
 
-Reuse English screenshots and downloads by default. A file at the equivalent path under `docs/<locale>/` overrides that asset. Avoid duplicating every English image for every language. Localized screenshots can be introduced gradually through the existing deterministic Oatmilk Cooperative screenshot workflow, checking text overflow, clipping, translated example content and right-to-left layout where applicable.
+Commit only English screenshots. Generate translated application screenshots separately with the existing deterministic Oatmilk Cooperative recipes, using translated interface labels and fixed fictional example content. `bin/docs-screenshots` fills missing images; `--refresh` also replaces outdated images. A single manifest tracks generation time and capture-input fingerprints while PNGs keep stable paths and overwrite their previous versions. Generation and publishing remain optional steps outside Docker builds and deployment.
+
+Store generated images under `public/docs-screenshots/<locale>/...`, backed by loomio.com's existing persistent client asset volume. Exclude that directory from frontend asset pruning. Runtime image lookup tries local translated files, then the equivalent `www.loomio.com` URL, then bundled English. Private hosts need neither generation nor new storage; populating their existing volume automatically takes priority. Keep English images usable without JavaScript. Photos, diagrams, downloads and assets without a capture recipe remain shared. Check clipping, text overflow and right-to-left layout when adding or changing capture recipes.
 
 ## Build and publication
 

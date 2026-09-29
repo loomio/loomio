@@ -11,6 +11,26 @@ const strings = {
 };
 const sidebarScrim = document.querySelector(".sidebar-scrim");
 
+// English stays in the built HTML. Translated images can be filled later in
+// the existing client asset volume, without rebuilding or redeploying docs.
+document.querySelectorAll("img[data-screenshot-sources]").forEach((image) => {
+  const sources = [...new Set(JSON.parse(image.dataset.screenshotSources)
+    .map(source => new URL(source, window.location.href).href))];
+  let index = 0;
+  function loadNext() {
+    if (index === sources.length) {
+      image.removeEventListener("error", loadNext);
+      return;
+    }
+    const source = sources[index++];
+    // Changing src alone leaves the browser using the previous 2x srcset.
+    image.srcset = `${source} 2x`;
+    image.src = source;
+  }
+  image.addEventListener("error", loadNext);
+  loadNext();
+});
+
 function setNavigationOpen(open) {
   document.body.classList.toggle("navigation-open", open);
   sidebarToggle?.setAttribute("aria-expanded", String(open));

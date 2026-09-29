@@ -31,6 +31,25 @@ bundle exec ruby -Itest -e 'Dir["test/docs/*_test.rb"].sort.each { |file| requir
 
 The default build includes English and languages marked `published` in `locales.yml`. `DOCS_LOCALES` selects additional languages for preview. A published language must have complete, current translations that pass structural validation. Preview builds omit pages that fail those checks. Public paths remain `/docs/en/...`, `/docs/fr/...`, and so on.
 
-English images and downloads are shared. Put a localized replacement at the equivalent path under the language's directory to override it. Use the existing screenshot workflow for application images; moving the source directories does not require new screenshots.
+English images and downloads are shared. Only English screenshots are committed. Application screenshots with an approved capture recipe try the local client asset volume, then the same path on `www.loomio.com`, then the bundled English image. Photos, diagrams, downloads and images without a recipe remain shared English assets.
+
+## Optional translated screenshots
+
+Generation runs separately from Docker builds and deployment. It uses the existing Nightwatch recipes and isolated test application to capture translated interface labels, with fixed fictional example content. It never runs against the production database. The default output is the ignored `public/docs-screenshots/` directory. Vite builds directly into its own `public/vue/` directory, so a frontend rebuild cannot clear the screenshot cache.
+
+```bash
+bin/docs-screenshots all --status
+bin/docs-screenshots fr users/bookmarks
+bin/docs-screenshots fr users/bookmarks --refresh
+bin/docs-screenshots fr,de --output /path/to/docs-screenshots
+```
+
+The command generates missing files. `--refresh` also overwrites outdated files; current files are skipped. A single `.generation.json` records each language/path's generation time and capture-input fingerprint. PNG filenames stay stable, and every update replaces the previous file atomically. Inputs include the English PNG, locale strings, scenario, capture helpers and recipe. Failed captures leave the existing cache intact. `--status` does not start a browser or create files.
+
+Populate the loomio.com web host's `/var/lib/loomio/client3/docs-screenshots/` directory from a runner with the screenshot prerequisites installed. Generate locally, then copy the cache with the existing ops access and `rsync --delay-updates` so completed files replace their previous versions. Include the hidden manifest; do not use `--delete`. This is an optional operation and is not part of deployment. No new service, registry artifact or storage volume is required.
+
+The Docker image links `/public/vue` to the existing persistent `/public/client3` directory and `/public/docs-screenshots` to its `docs-screenshots` subdirectory. Container startup copies the current build from `/loomio/vue-build` into that volume. Existing Kamal and Compose mounts continue to work, and older clients retain their `/client3/...` URLs with the existing 90-day asset retention policy.
+
+Private hosts automatically try their own `/docs-screenshots/<locale>/...` files before requesting loomio.com's copy. Missing or unreachable copies fall back to English. Building locally supplies the first choice without configuration. With JavaScript disabled, the built English screenshot remains available. The client asset sync excludes `docs-screenshots/` from its 90-day pruning policy. Generated images use the normal static-file revalidation behaviour rather than immutable filenames.
 
 See [AGENTS.md](AGENTS.md) for builder, redirect and screenshot instructions and [the localization plan](system/user_manual_localization_plan.md) for the design constraints.

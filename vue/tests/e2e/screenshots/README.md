@@ -83,7 +83,7 @@ participation-report graph) remain manual captures.
 To spotlight adjacent controls as one region, pass a `selectors` array instead
 of `selector`; the helper uses their combined bounding rectangle.
 
-Generated images are expected to be reviewed and committed. Do not edit them
+Generated English images are expected to be reviewed and committed. Translated screenshots are optional cache files generated with `bin/docs-screenshots`; see [the docs workflow](../../../../docs/README.md#optional-translated-screenshots). Do not edit images
 by hand; update the scenario or screenshot spec and regenerate them instead.
 Run `bundle exec ruby docs/build.rb` after generating a candidate and before
 sharing its localhost documentation URL, because the rendered manual serves

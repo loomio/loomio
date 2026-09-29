@@ -75,6 +75,7 @@ COPY . .
 
 COPY --from=nodebuild /tmp/pagefind /usr/local/bin/pagefind
 COPY --from=nodebuild /tmp/pagefind-LICENSE /usr/local/share/licenses/pagefind/LICENSE
+COPY --from=nodebuild /usr/local/bin/node /usr/local/bin/node
 
 # Render the static help site under /public/docs.
 RUN PAGEFIND_BINARY=/usr/local/bin/pagefind \
@@ -87,15 +88,20 @@ RUN DATABASE_URL=postgresql://localhost/loomio_build \
     SECRET_KEY_BASE_DUMMY=1 \
     bundle exec rails assets:precompile
 
-# Keep assets at their served path for Kamal's asset bridge.
-COPY --from=nodebuild /build/public/client3 /loomio/public/client3
+# Seed the existing persistent client3 volume. Older clients retain their
+# /client3 URLs; new clients use /vue over the same accumulated asset files.
+COPY --from=nodebuild /build/public/vue /loomio/public/client3
 
 # Also keep an immutable staging copy for Docker Compose. Its startup script
 # copies this release over the mounted volume while retaining old hashed files.
-COPY --from=nodebuild /build/public/client3 /loomio/client3-build
+COPY --from=nodebuild /build/public/vue /loomio/vue-build
+
+# Reuse the existing volume for new URLs without changing deployment mounts.
+# Locally these are independent directories; Vite never sees the screenshot cache.
+RUN ln -s client3 /loomio/public/vue && \
+    ln -s client3/docs-screenshots /loomio/public/docs-screenshots
 
 # Copy Node.js binary and hocuspocus dependencies from nodebuild stage
-COPY --from=nodebuild /usr/local/bin/node /usr/local/bin/node
 COPY --from=nodebuild /build/hocuspocus/node_modules /loomio/hocuspocus/node_modules
 
 EXPOSE 80

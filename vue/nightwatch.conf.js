@@ -1,4 +1,6 @@
 const chromeArgs = ['window-size=1280,6400'];
+const screenshotLocale = process.env.DOCS_SCREENSHOT_APP_LOCALE?.replace('_', '-');
+if (screenshotLocale) chromeArgs.push(`--lang=${screenshotLocale}`);
 
 if (process.env.NIGHTWATCH_DEVICE_SCALE_FACTOR) {
   chromeArgs.push(`--force-device-scale-factor=${process.env.NIGHTWATCH_DEVICE_SCALE_FACTOR}`);
@@ -29,7 +31,10 @@ module.exports = {
       desiredCapabilities: {
         browserName: 'chrome',
         chromeOptions: {
-          args: chromeArgs
+          args: chromeArgs,
+          // Signed-out and server-rendered captures use the browser locale;
+          // signed-in scenarios also persist it on their fictional user.
+          ...(screenshotLocale ? {prefs: {'intl.accept_languages': screenshotLocale}} : {})
         }
       },
       
