@@ -1,5 +1,13 @@
 # Corrected translations
 
+## 2026-09-29 — French register changed to vous
+
+| File | Key | Before | After | Why it was wrong |
+|------|-----|--------|-------|------------------|
+| `config/locales/client.fr.yml`, `server.fr.yml` | All direct-address strings | Informal `tu/ton/ta/tes/toi`, `t'` and 2nd-person-singular imperatives (`Découvre`, `Passe`) | Neutral `vous/votre/vos` and `vous` imperatives (`Découvrez`, `Passez`) | `vous` is the neutral default for French software. Earlier entries in this file that change French to `tu` no longer apply |
+| `config/locales/server.fr.yml` | `group_mailer.destroy_warning.*` | `vôtre groupe`, `vous êtes certains` | `votre groupe`, `vous êtes certain` | `vôtre` is a pronoun (`le vôtre`), not a determiner, and formal `vous` addresses one person |
+| `config/locales/client.fr.yml` | `auth_form.email_placeholder` | `toi{'@'}exemple.com` | `vous{'@'}exemple.com` | The example address follows the interface register |
+
 ## 2026-09-24 — Catch-up email settings
 
 | File | Key | Before | After | Why it was wrong |

@@ -111,6 +111,7 @@ success messages).
 - **Avoid full stops on single-sentence UI strings.** Following Material Design UI copy guidance, omit the final full stop when a UI string is a single sentence; use normal punctuation when the string contains more than one sentence.
 - **Spanish (es): use the informal `tú` register throughout.** The app addresses users with "tu", "tú", informal imperatives ("Suscríbete", "Descubre"), and informal verb forms ("¿Cómo piensas?"). Google Translate often introduces `usted`/`su` — catch and correct this on review.
 - **Dutch (nl_NL): use the informal `je/jouw` register throughout.** The app addresses users with "je", "jouw", and informal verb forms ("Hoe wil je?", "je eigen demogroep"). Google Translate often introduces `u`/`uw` — catch and correct this on review.
+- **French (fr): use the neutral `vous` register throughout.** `vous` is the standard address in French software, and Loomio's French users include associations, boards, unions and public bodies. Use `vous/votre/vos`, `vous` imperatives in sentences ("Cliquez", "Choisissez"), and infinitives for short button and menu labels ("Enregistrer"). Watch for `tu/ton/ta` and 2nd-person-singular imperatives from earlier informal wording.
 
 ### Making a locale's register consistent
 
@@ -128,7 +129,7 @@ Register-grooming completed so far:
 
 - `de` — German informal `du/dein` in PR #12540.
 - `es` — Spanish informal `tú/tu` in PR #12544.
-- `fr` — French informal `tu/ton/ta` in PR #12541.
+- `fr` — French neutral `vous/votre/vos`, replacing the informal `tu` from PR #12541.
 - `it` — Italian informal `tu` in PR #12542.
 - `pt_BR` — Brazilian Portuguese register cleanup in PR #12543.
 - Broad all-locale pass started in PR #12539; prefer dedicated locale PRs for careful review when a language needs substantial grammar fixes.
