@@ -69,10 +69,20 @@ const updateGroupItems = () => {
   })));
 };
 
+// The record store is not reactive, so a computed membership check would keep
+// the value from before the current user's memberships loaded. Track it in a
+// ref and refresh it when groups or memberships change.
+const isGroupMember = ref(false);
+
+const updateIsGroupMember = () => {
+  isGroupMember.value = !!props.discussion.groupId &&
+    props.discussion.group().membersInclude(Session.user());
+};
+
 const isNonMemberDiscussion = computed(() => {
   return props.discussion.isNew() &&
-    props.discussion.groupId &&
-    !props.discussion.group().membersInclude(Session.user());
+    !!props.discussion.groupId &&
+    !isGroupMember.value;
 });
 
 const submit = () => {
@@ -137,6 +147,7 @@ const isMovingItems = computed(() => {
 
 // Watcher
 watch(() => props.discussion.groupId, (groupId) => {
+  updateIsGroupMember();
   subscription.value = props.discussion.group().parentOrSelf().subscription;
   const users = compact([props.user]).map(u => ({
     id: u.id,
@@ -152,6 +163,7 @@ watch(() => props.discussion.groupId, (groupId) => {
 // Mounted
 onMounted(() => {
   loadGroups().then(() => {
+    updateIsGroupMember();
     if (isNonMemberDiscussion.value) {
       props.discussion.update({
         recipientAudience: null,
@@ -192,7 +204,10 @@ onMounted(() => {
 
   watchRecords({
     collections: ['groups', 'memberships'],
-    query: records => { updateGroupItems(); }
+    query: records => {
+      updateGroupItems();
+      updateIsGroupMember();
+    }
   });
 });
 </script>

@@ -28,32 +28,23 @@ module Dev::Scenarios::Group
   end
 
   def setup_nonmember_nomination
-    group = create_group
-    group.update!(
-      discussion_privacy_options: 'private_only',
-      membership_granted_upon: 'invitation',
-      non_members_can_start_discussions: true
-    )
-    DiscussionTemplate.create!(
-      group: group,
-      author: patrick,
-      position: -1,
-      process_name: 'Nominate a candidate',
-      process_subtitle: 'Nominate yourself or someone else for a position',
-      process_introduction: 'Provide the information the selection group needs to understand and compare this nomination.',
-      process_introduction_format: 'html',
-      title_placeholder: 'Candidate name and position',
-      description: <<~HTML,
-        <p><strong>Who are you nominating, and for which position?</strong></p>
-        <p>State whether you are nominating yourself or someone else.</p>
-        <p><strong>Why is this person suitable?</strong></p>
-        <p>Describe their relevant experience and the reasons for the nomination.</p>
-      HTML
-      description_format: 'html'
-    )
-
+    create_nomination_template
     sign_in max
-    redirect_to group_path(group)
+    redirect_to group_path(create_group)
+  end
+
+  # Load the new discussion form directly, so the current user's memberships
+  # arrive after the form mounts.
+  def setup_nonmember_nomination_form
+    template = create_nomination_template
+    sign_in max
+    redirect_to "/d/new?template_id=#{template.id}&group_id=#{create_group.id}"
+  end
+
+  def setup_member_nomination_form
+    template = create_nomination_template
+    sign_in patrick
+    redirect_to "/d/new?template_id=#{template.id}&group_id=#{create_group.id}"
   end
 
   def setup_group_route_transitions
@@ -358,5 +349,33 @@ module Dev::Scenarios::Group
   def setup_start_poll_form_from_url
     sign_in patrick
     redirect_to "/p/new/count?group_id=#{create_group.id}&title=testing title"
+  end
+
+  private
+
+  def create_nomination_template
+    create_group.update!(
+      discussion_privacy_options: 'private_only',
+      membership_granted_upon: 'invitation',
+      non_members_can_start_discussions: true
+    )
+    DiscussionTemplate.create!(
+      group: create_group,
+      author: patrick,
+      position: -1,
+      process_name: 'Nominate a candidate',
+      process_subtitle: 'Nominate yourself or someone else for a position',
+      process_introduction: 'Provide the information the selection group needs to understand and compare this nomination.',
+      process_introduction_format: 'html',
+      title_placeholder: 'Candidate name and position',
+      recipient_audience: 'group',
+      description: <<~HTML,
+        <p><strong>Who are you nominating, and for which position?</strong></p>
+        <p>State whether you are nominating yourself or someone else.</p>
+        <p><strong>Why is this person suitable?</strong></p>
+        <p>Describe their relevant experience and the reasons for the nomination.</p>
+      HTML
+      description_format: 'html'
+    )
   end
 end
