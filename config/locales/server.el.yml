@@ -732,13 +732,8 @@ el:
   merge_users:
     not_target_user: Πρέπει να είστε συνδεδεμένοι ως ο λογαριασμός-στόχος για να επιβεβαιώσετε μια συγχώνευση.
   thread_markdown:
-    comments: Σχόλια
     poll: Ψηφοφορία
     no_activity: Δεν υπάρχουν σχόλια, δημοσκοπήσεις, ψήφοι ή αποτελέσματα ακόμα
-    thread_title: "%{type}: %{title} · %{author} %{timestamp}"
-    comment: Σχόλιο · %{author} %{timestamp}
-    comment_reply: Απάντηση στον %{reply_author} · %{author} %{timestamp}
-    poll_title: "%{type}: %{title} · %{author} %{timestamp}"
     status: "**Κατάσταση:** %{value}"
     anonymous_voting: "**Ανώνυμη ψήφος:** %{value}"
     options: "**Επιλογές:** %{value}"
@@ -758,10 +753,8 @@ el:
     anonymous: Ανώνυμος
     no_voters: Δεν υπάρχουν ψηφοφόροι
     score: 'βαθμολογία: %{value}'
-    vote: 'Ψηφοφορία: %{response} · %{author} %{timestamp}'
     none_of_the_above: Κανένα από τα παραπάνω
     no_option_selected: Δεν έχει επιλεγεί καμία επιλογή
-    outcome: Αποτέλεσμα · %{author} %{timestamp}
     review_date: "**Ημερομηνία αξιολόγησης:** %{value}"
   error:
     access_denied: Δεν έχετε άδεια να το κάνετε αυτό

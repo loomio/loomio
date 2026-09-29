@@ -762,13 +762,8 @@ fr:
   merge_users:
     not_target_user: Tu dois être connecté avec le compte cible pour confirmer une fusion.
   thread_markdown:
-    comments: Commentaires
     poll: Sondage
     no_activity: Aucun commentaire, sondage, vote ni résultat pour l'instant.
-    thread_title: "%{type}: %{title} · %{author} %{timestamp}"
-    comment: Commentaire · %{author} %{timestamp}
-    comment_reply: Réponse à %{reply_author} · %{author} %{timestamp}
-    poll_title: "%{type}: %{title} · %{author} %{timestamp}"
     status: "**Statut :** %{value}"
     anonymous_voting: "**Vote anonyme :** %{value}"
     options: "**Options :** %{value}"
@@ -788,10 +783,8 @@ fr:
     anonymous: Anonyme
     no_voters: Aucun électeur
     score: 'score: %{value}'
-    vote: 'Vote : %{response} · %{author} %{timestamp}'
     none_of_the_above: Aucune des réponses ci-dessus
     no_option_selected: Aucune option sélectionnée
-    outcome: Résultat · %{author} %{timestamp}
     review_date: "**Date de révision :** %{value}"
   error:
     access_denied: Tu n'as pas la permission de faire cela

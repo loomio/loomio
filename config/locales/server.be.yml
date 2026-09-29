@@ -727,13 +727,8 @@ be:
   upload:
     file_too_large: Файл занадта вялікі. Максімальны памер для загрузкі — %{limit}.
   thread_markdown:
-    comments: Каментары
     poll: Апытанне
     no_activity: Пакуль няма каментарыяў, апытанняў, галасаванняў або вынікаў
-    thread_title: "%{type}: %{title} · %{author} %{timestamp}"
-    comment: Каментарый · %{author} %{timestamp}
-    comment_reply: Адказ для %{reply_author} · %{author} %{timestamp}
-    poll_title: "%{type}: %{title} · %{author} %{timestamp}"
     status: "**Стан:** %{value}"
     anonymous_voting: "**Ананімнае галасаванне:** %{value}"
     options: "**Параметры:** %{value}"
@@ -753,10 +748,8 @@ be:
     anonymous: Ананімны
     no_voters: Няма выбаршчыкаў
     score: 'бал: %{value}'
-    vote: 'Галасаванне: %{response} · %{author} %{timestamp}'
     none_of_the_above: Нічога з вышэйпералічанага
     no_option_selected: Варыянт не выбраны
-    outcome: Вынік · %{author} %{timestamp}
     review_date: "**Дата агляду:** %{value}"
   error:
     access_denied: У вас няма дазволу на гэта

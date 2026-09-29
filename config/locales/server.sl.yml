@@ -732,13 +732,8 @@ sl:
   merge_users:
     not_target_user: Za potrditev združitve morate biti prijavljeni kot ciljni račun.
   thread_markdown:
-    comments: Komentarji
     poll: Anketa
     no_activity: Še ni komentarjev, anket, glasov ali rezultatov
-    thread_title: "%{type}: %{title} · %{author} %{timestamp}"
-    comment: Komentar · %{author} %{timestamp}
-    comment_reply: Odgovori na %{reply_author} · %{author} %{timestamp}
-    poll_title: "%{type}: %{title} · %{author} %{timestamp}"
     status: "**Stanje:** %{value}"
     anonymous_voting: "**Anonimno glasovanje:** %{value}"
     options: "**Možnosti:** %{value}"
@@ -758,10 +753,8 @@ sl:
     anonymous: Anonimno
     no_voters: Brez volivcev
     score: 'rezultat: %{value}'
-    vote: 'Glas: %{response} · %{author} %{timestamp}'
     none_of_the_above: Nič od naštetega
     no_option_selected: Ni izbrane možnosti
-    outcome: Rezultat · %{author} %{timestamp}
     review_date: "**Datum pregleda:** %{value}"
   error:
     access_denied: Nimate dovoljenja za to.

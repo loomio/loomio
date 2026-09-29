@@ -734,13 +734,8 @@ ca:
   merge_users:
     not_target_user: Heu d'haver iniciat la sessió com a compte de destinació per confirmar una fusió.
   thread_markdown:
-    comments: Comentaris
     poll: Enquesta
     no_activity: Encara no hi ha comentaris, enquestes, vots ni resultats
-    thread_title: "%{type}: %{title} · %{author} %{timestamp}"
-    comment: Comentari · %{author} %{timestamp}
-    comment_reply: Respon a %{reply_author} · %{author} %{timestamp}
-    poll_title: "%{type}: %{title} · %{author} %{timestamp}"
     status: "**Estat:** %{value}"
     anonymous_voting: "**Vot anònim:** %{value}"
     options: "**Opcions:** %{value}"
@@ -760,10 +755,8 @@ ca:
     anonymous: Anònim
     no_voters: Cap votant
     score: 'puntuació: %{value}'
-    vote: 'Vot: %{response} · %{author} %{timestamp}'
     none_of_the_above: Cap de les anteriors
     no_option_selected: No s'ha seleccionat cap opció
-    outcome: Resultat · %{author} %{timestamp}
     review_date: "**Data de revisió:** %{value}"
   error:
     access_denied: No tens permís per fer això

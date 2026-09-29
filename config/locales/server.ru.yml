@@ -743,13 +743,8 @@ ru:
   merge_users:
     not_target_user: Для подтверждения слияния необходимо войти в систему под целевой учетной записью.
   thread_markdown:
-    comments: Комментарии
     poll: Голосование
     no_activity: Пока нет комментариев, опросов, голосов или результатов.
-    thread_title: "%{type}: %{title} · %{author} %{timestamp}"
-    comment: Комментарий · %{author} %{timestamp}
-    comment_reply: Ответить %{reply_author} · %{author} %{timestamp}
-    poll_title: "%{type}: %{title} · %{author} %{timestamp}"
     status: "**Статус:** %{value}"
     anonymous_voting: "**Анонимное голосование:** %{value}"
     options: "**Параметры:** %{value}"
@@ -769,10 +764,8 @@ ru:
     anonymous: Аноним
     no_voters: Нет избирателей
     score: 'оценка: %{value}'
-    vote: 'Голосование: %{response} · %{author} %{timestamp}'
     none_of_the_above: Ни один из вышеперечисленных
     no_option_selected: Вариант не выбран
-    outcome: Результат · %{author} %{timestamp}
     review_date: "**Дата проверки:** %{value}"
   error:
     access_denied: У вас нет разрешения на это.

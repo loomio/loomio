@@ -764,13 +764,8 @@ de:
   merge_users:
     not_target_user: Du musst als das Zielkonto angemeldet sein, um eine Zusammenführung zu bestätigen.
   thread_markdown:
-    comments: Kommentare
     poll: Umfrage
     no_activity: Bisher keine Kommentare, Umfragen, Abstimmungen oder Ergebnisse.
-    thread_title: "%{type}: %{title} · %{author} %{timestamp}"
-    comment: Kommentar · %{author} %{timestamp}
-    comment_reply: Antwort an %{reply_author} · %{author} %{timestamp}
-    poll_title: "%{type}: %{title} · %{author} %{timestamp}"
     status: "**Status:** %{value}"
     anonymous_voting: "**Anonyme Abstimmung:** %{value}"
     options: "**Optionen:** %{value}"
@@ -790,10 +785,8 @@ de:
     anonymous: Anonym
     no_voters: Keine Wähler
     score: 'Punktzahl: %{value}'
-    vote: 'Abstimmung: %{response} · %{author} %{timestamp}'
     none_of_the_above: Nichts des oben Genannten
     no_option_selected: Keine Option ausgewählt
-    outcome: Ergebnis · %{author} %{timestamp}
     review_date: "**Überprüfungsdatum:** %{value}"
   error:
     access_denied: Du hast keine Berechtigung dazu

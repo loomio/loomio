@@ -743,13 +743,8 @@ it:
   merge_users:
     not_target_user: Per confermare l'unione, è necessario aver effettuato l'accesso con l'account di destinazione.
   thread_markdown:
-    comments: Commenti
     poll: Sondaggio
     no_activity: Nessun commento, sondaggio, voto o risultato ancora
-    thread_title: "%{type}: %{title} · %{author} %{timestamp}"
-    comment: Commento · %{author} %{timestamp}
-    comment_reply: Risposta a %{reply_author} · %{author} %{timestamp}
-    poll_title: "%{type}: %{title} · %{author} %{timestamp}"
     status: "**Stato:** %{value}"
     anonymous_voting: "**Voto anonimo:** %{value}"
     options: "**Opzioni:** %{value}"
@@ -769,10 +764,8 @@ it:
     anonymous: Anonimo
     no_voters: Nessun elettore
     score: 'punteggio: %{value}'
-    vote: 'Voto: %{response} · %{author} %{timestamp}'
     none_of_the_above: Nessuna delle precedenti
     no_option_selected: Nessuna opzione selezionata
-    outcome: Risultato · %{author} %{timestamp}
     review_date: "**Data della revisione:** %{value}"
   error:
     access_denied: Non hai il permesso di farlo
