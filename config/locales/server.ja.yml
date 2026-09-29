@@ -756,5 +756,12 @@ ja:
     none_of_the_above: 上記のどれでもない
     no_option_selected: オプションは選択されていません
     review_date: "**レビュー日:** %{value}"
+    voted: "%{author} が %{response} に投票しました"
+    voted_hidden: "%{author} が投票しました"
+    vote_removed: "%{author}: 投票が削除されました"
+    undecided: "%{author}: 未定"
+    superseded: 置き換え済み
+    shared_outcome: "%{author} が結論を共有しました"
+    removed: 削除済み
   error:
     access_denied: あなたにはそれを行う権限がありません

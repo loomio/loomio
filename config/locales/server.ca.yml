@@ -758,5 +758,12 @@ ca:
     none_of_the_above: Cap de les anteriors
     no_option_selected: No s'ha seleccionat cap opció
     review_date: "**Data de revisió:** %{value}"
+    voted: "%{author} ha votat %{response}"
+    voted_hidden: "%{author} ha votat"
+    vote_removed: "%{author}: vot eliminat"
+    undecided: "%{author}: indecís"
+    superseded: substituït
+    shared_outcome: "%{author} ha compartit una conclusió"
+    removed: Eliminat
   error:
     access_denied: No tens permís per fer això

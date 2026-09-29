@@ -1164,6 +1164,9 @@ tr:
     thread_markdown_copied: Konu Markdown'ı kopyalandı
     move_thread_v2: Konuyu taşı
     more: Daha
+    download_markdown: Markdown'ı İndir
+    markdown: Markdown
+    vote_before_export: Dışa aktarmadan önce oy verin. Bu başlıkta, siz oy verene kadar sonuçları gizleyen bir anket bulunmaktadır.
   formatting:
     formatting_tools: Metin biçimlendirme araçları
     colors: Renkler

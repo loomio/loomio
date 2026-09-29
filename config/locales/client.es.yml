@@ -1168,6 +1168,9 @@ es:
     thread_markdown_copied: Hilo Markdown copiado
     move_thread_v2: Mover hilo
     more: Más
+    download_markdown: Descargar Markdown
+    markdown: Markdown
+    vote_before_export: Vota antes de exportar. Este hilo contiene una encuesta cuyos resultados permanecen ocultos hasta que votes.
   formatting:
     formatting_tools: Herramientas formateo de texto
     colors: Colores

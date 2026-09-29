@@ -783,5 +783,12 @@ pl:
     none_of_the_above: Żadne z powyższych
     no_option_selected: Nie wybrano opcji
     review_date: "**Data przeglądu:** %{value}"
+    voted: "%{author} zagłosował na %{response}"
+    voted_hidden: "%{author} zagłosował"
+    vote_removed: "%{author}: głos usunięty"
+    undecided: "%{author}: niezdecydowany"
+    superseded: zastąpiony
+    shared_outcome: "%{author} udostępnił wniosek"
+    removed: Usunięto
   error:
     access_denied: Nie masz uprawnień, aby to zrobić

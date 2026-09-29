@@ -768,5 +768,12 @@ he:
     none_of_the_above: אף אחד מהנ"ל
     no_option_selected: לא נבחרה אפשרות
     review_date: "**תאריך סקירה:** %{value}"
+    voted: "%{author} הצביע %{response}"
+    voted_hidden: "%{author} הצביעו"
+    vote_removed: "%{author}: הצבעה הוסרה"
+    undecided: "%{author}: לא החליט"
+    superseded: הוחלף
+    shared_outcome: "%{author} שיתף מסקנה"
+    removed: הוסר
   error:
     access_denied: אין לך אישור לעשות זאת

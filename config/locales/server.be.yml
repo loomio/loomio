@@ -751,5 +751,12 @@ be:
     none_of_the_above: Нічога з вышэйпералічанага
     no_option_selected: Варыянт не выбраны
     review_date: "**Дата агляду:** %{value}"
+    voted: "%{author} прагаласаваў за %{response}"
+    voted_hidden: "%{author} прагаласаваў"
+    vote_removed: "%{author}: голас выдалены"
+    undecided: "%{author}: не вызначыўся"
+    superseded: заменены
+    shared_outcome: "%{author} падзяліўся высновай"
+    removed: Выдалена
   error:
     access_denied: У вас няма дазволу на гэта

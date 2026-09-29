@@ -780,5 +780,12 @@ es:
     none_of_the_above: Ninguna de las anteriores
     no_option_selected: No se ha seleccionado ninguna opción.
     review_date: "**Fecha de revisión:** %{value}"
+    voted: "%{author} votó %{response}"
+    voted_hidden: "%{author} votó"
+    vote_removed: "%{author}: voto eliminado"
+    undecided: "%{author}: indeciso"
+    superseded: sustituido
+    shared_outcome: "%{author} compartió una conclusión"
+    removed: Eliminado
   error:
     access_denied: No tienes permiso para hacer eso

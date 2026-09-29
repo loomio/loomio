@@ -756,5 +756,12 @@ sv:
     none_of_the_above: Inget av ovanstående
     no_option_selected: Inget alternativ valt
     review_date: "**Granskningsdatum:** %{value}"
+    voted: "%{author} röstade %{response}"
+    voted_hidden: "%{author} röstade"
+    vote_removed: "%{author}: röst borttagen"
+    undecided: "%{author}: obeslutsam"
+    superseded: ersatt
+    shared_outcome: "%{author} delade en slutsats"
+    removed: Borttagen
   error:
     access_denied: Du har inte tillåtelse att göra det

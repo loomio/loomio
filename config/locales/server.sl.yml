@@ -756,5 +756,12 @@ sl:
     none_of_the_above: Nič od naštetega
     no_option_selected: Ni izbrane možnosti
     review_date: "**Datum pregleda:** %{value}"
+    voted: "%{author} je glasoval/a za %{response}"
+    voted_hidden: "%{author} je glasoval"
+    vote_removed: "%{author}: glas odstranjen"
+    undecided: "%{author}: neodločen"
+    superseded: nadomeščen
+    shared_outcome: "%{author} je delil/a izid"
+    removed: Odstranjeno
   error:
     access_denied: Nimate dovoljenja za to.

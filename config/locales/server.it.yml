@@ -767,5 +767,12 @@ it:
     none_of_the_above: Nessuna delle precedenti
     no_option_selected: Nessuna opzione selezionata
     review_date: "**Data della revisione:** %{value}"
+    voted: "%{author} ha votato %{response}"
+    voted_hidden: "%{author} ha votato"
+    vote_removed: "%{author}: voto rimosso"
+    undecided: "%{author}: indeciso"
+    superseded: sostituito
+    shared_outcome: "%{author} ha condiviso una conclusione"
+    removed: Rimosso
   error:
     access_denied: Non hai il permesso di farlo

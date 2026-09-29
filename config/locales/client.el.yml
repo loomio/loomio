@@ -1164,6 +1164,9 @@ el:
     thread_markdown_copied: Το Markdown του νήματος αντιγράφηκε
     move_thread_v2: Μετακίνηση νήματος
     more: Περισσότερο
+    download_markdown: Λήψη Markdown
+    markdown: Markdown
+    vote_before_export: Ψηφίστε πριν από την εξαγωγή. Αυτό το νήμα έχει μια δημοσκόπηση που αποκρύπτει τα αποτελέσματα μέχρι να ψηφίσετε.
   formatting:
     formatting_tools: Εργαλεία μορφοποίησης κειμένου
     colors: Χρωματιστά

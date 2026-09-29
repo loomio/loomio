@@ -756,5 +756,12 @@ hr:
     none_of_the_above: Ništa od navedenog
     no_option_selected: Nije odabrana nijedna opcija
     review_date: "**Datum pregleda:** %{value}"
+    voted: "%{author} je glasao/la %{response}"
+    voted_hidden: "%{author} je glasao"
+    vote_removed: "%{author}: glas uklonjen"
+    undecided: "%{author}: neodlučan"
+    superseded: zamijenjen
+    shared_outcome: "%{author} je podijelio/la ishod"
+    removed: Uklonjeno
   error:
     access_denied: Nemate dopuštenje za to

@@ -762,5 +762,12 @@ da:
     none_of_the_above: Ingen af ovenstående
     no_option_selected: Ingen valgmulighed valgt
     review_date: "**Gennemgangsdato:** %{value}"
+    voted: "%{author} stemte %{response}"
+    voted_hidden: "%{author} stemte"
+    vote_removed: "%{author}: stemme fjernet"
+    undecided: "%{author}: ubeslutsom"
+    superseded: erstattet
+    shared_outcome: "%{author} delte en konklusion"
+    removed: Fjernet
   error:
     access_denied: Du har ikke tilladelse til at gøre det

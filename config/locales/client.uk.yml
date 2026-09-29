@@ -1171,6 +1171,9 @@ uk:
     thread_markdown_copied: Розмітка теми скопійована
     move_thread_v2: Перемістити тему
     more: Більше
+    download_markdown: Завантажити Markdown
+    markdown: Markdown
+    vote_before_export: Проголосуйте перед експортом. У цій темі є опитування, результати якого приховуються, доки ви не проголосуєте.
   formatting:
     formatting_tools: Інструменти форматування тексту
     colors: Кольори

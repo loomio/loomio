@@ -770,5 +770,12 @@ uk:
     none_of_the_above: Жоден з перерахованих вище
     no_option_selected: Не вибрано жодного варіанта
     review_date: "**Дата перегляду:** %{value}"
+    voted: "%{author} проголосував за %{response}"
+    voted_hidden: "%{author} проголосував"
+    vote_removed: "%{author}: голос видалено"
+    undecided: "%{author}: не визначився"
+    superseded: замінений
+    shared_outcome: "%{author} поділився висновком"
+    removed: Видалено
   error:
     access_denied: У вас немає дозволу на це

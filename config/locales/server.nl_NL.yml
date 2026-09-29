@@ -783,5 +783,12 @@ nl_NL:
     none_of_the_above: Geen van bovenstaande
     no_option_selected: Geen optie geselecteerd
     review_date: "**Reviewdatum:** %{value}"
+    voted: "%{author} stemde %{response}"
+    voted_hidden: "%{author} heeft gestemd"
+    vote_removed: "%{author}: stem verwijderd"
+    undecided: "%{author}: onbeslist"
+    superseded: vervangen
+    shared_outcome: "%{author} deelde een conclusie"
+    removed: Verwijderd
   error:
     access_denied: Je hebt geen toestemming om dat te doen

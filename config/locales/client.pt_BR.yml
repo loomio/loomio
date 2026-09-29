@@ -1178,6 +1178,9 @@ pt_BR:
     thread_markdown_copied: Tópico Markdown copiado
     move_thread_v2: Mover tópico
     more: Mais
+    download_markdown: Baixar Markdown
+    markdown: Markdown
+    vote_before_export: Vote antes de exportar. Este tópico contém uma enquete que oculta os resultados até que você vote.
   formatting:
     formatting_tools: Text formatting tools
     colors: Cores

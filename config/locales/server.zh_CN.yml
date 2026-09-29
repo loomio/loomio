@@ -751,5 +751,12 @@ zh_CN:
     none_of_the_above: 以上皆非
     no_option_selected: 未选择任何选项
     review_date: "**审核日期：** %{value}"
+    voted: "%{author} 投票给了 %{response}"
+    voted_hidden: "%{author} 投票"
+    vote_removed: "%{author}：投票已移除"
+    undecided: "%{author}：未定"
+    superseded: 被取代
+    shared_outcome: "%{author} 分享了总结"
+    removed: 已移除
   error:
     access_denied: 你没有权限这样做。

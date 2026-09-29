@@ -1170,6 +1170,9 @@ ca:
     thread_markdown_copied: S'ha copiat el Markdown del fil
     move_thread_v2: Mou el fil
     more: Més
+    download_markdown: Descarregar Markdown
+    markdown: Markdown
+    vote_before_export: Vota abans d'exportar. Aquest fil té una enquesta que amaga els resultats fins que votes.
   formatting:
     formatting_tools: Eines de formatació de text
     colors: Colors

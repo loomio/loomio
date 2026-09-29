@@ -788,5 +788,12 @@ de:
     none_of_the_above: Nichts des oben Genannten
     no_option_selected: Keine Option ausgewählt
     review_date: "**Überprüfungsdatum:** %{value}"
+    voted: "%{author} hat für %{response} gestimmt"
+    voted_hidden: "%{author} hat abgestimmt"
+    vote_removed: "%{author}: Stimme entfernt"
+    undecided: "%{author}: unentschieden"
+    superseded: ersetzt
+    shared_outcome: "%{author} hat ein Fazit geteilt"
+    removed: Entfernt
   error:
     access_denied: Du hast keine Berechtigung dazu

@@ -756,5 +756,12 @@ tr:
     none_of_the_above: Yukarıdakilerin hiçbiri
     no_option_selected: Hiçbir seçenek seçilmedi.
     review_date: "**İnceleme tarihi:** %{value}"
+    voted: "%{author}, %{response} seçeneğine oy verdi"
+    voted_hidden: "%{author} oy kullandı"
+    vote_removed: "%{author}: oy kaldırıldı"
+    undecided: "%{author}: kararsız"
+    superseded: değiştirildi
+    shared_outcome: "%{author} bir karar paylaştı"
+    removed: Kaldırıldı
   error:
     access_denied: Bunu yapma izniniz yok.

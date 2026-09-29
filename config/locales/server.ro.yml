@@ -756,5 +756,12 @@ ro:
     none_of_the_above: Nici una dintre cele de mai sus
     no_option_selected: Nicio opțiune selectată
     review_date: "**Data revizuirii:** %{value}"
+    voted: "%{author} a votat %{response}"
+    voted_hidden: "%{author} a votat"
+    vote_removed: "%{author}: vot eliminat"
+    undecided: "%{author}: nehotărât"
+    superseded: înlocuit
+    shared_outcome: "%{author} a distribuit o concluzie"
+    removed: Eliminat
   error:
     access_denied: Nu aveți permisiunea să faceți asta

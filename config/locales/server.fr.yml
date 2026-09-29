@@ -786,5 +786,12 @@ fr:
     none_of_the_above: Aucune des réponses ci-dessus
     no_option_selected: Aucune option sélectionnée
     review_date: "**Date de révision :** %{value}"
+    voted: "%{author} a voté %{response}"
+    voted_hidden: "%{author} a voté"
+    vote_removed: "%{author} : vote supprimé"
+    undecided: "%{author} : indécis"
+    superseded: remplacé
+    shared_outcome: "%{author} a partagé une conclusion"
+    removed: Supprimé
   error:
     access_denied: Tu n'as pas la permission de faire cela

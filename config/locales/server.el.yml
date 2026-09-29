@@ -756,5 +756,12 @@ el:
     none_of_the_above: Κανένα από τα παραπάνω
     no_option_selected: Δεν έχει επιλεγεί καμία επιλογή
     review_date: "**Ημερομηνία αξιολόγησης:** %{value}"
+    voted: "%{author} ψήφισε %{response}"
+    voted_hidden: "%{author} ψήφισε"
+    vote_removed: "%{author}: η ψήφος αφαιρέθηκε"
+    undecided: "%{author}: αναποφάσιστος"
+    superseded: αντικαταστάθηκε
+    shared_outcome: Ο χρήστης %{author} κοινοποίησε ένα συμπέρασμα
+    removed: Αφαιρέθηκε
   error:
     access_denied: Δεν έχετε άδεια να το κάνετε αυτό

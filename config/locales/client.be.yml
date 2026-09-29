@@ -1211,6 +1211,9 @@ be:
     add_poll_to_thread: Дадаць у тэму
     count_members: "%{count} удзельнікаў"
     count_voters: "%{count} выбаршчыкаў"
+    download_markdown: Спампаваць Markdown
+    markdown: Markdown
+    vote_before_export: Прагаласуйце перад экспартам. У гэтай тэме ёсць апытанне, вынікі якога хаваюцца, пакуль вы не прагаласуеце.
   formatting:
     confirm_discard: Вы ўпэўненыя, што хочаце адхіліць змены?
     discard_draft: Адхіліць чарнавік

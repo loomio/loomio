@@ -768,5 +768,12 @@ hu:
     none_of_the_above: A fentiek egyike sem
     no_option_selected: Nincs kiválasztva opció
     review_date: "**Felülvizsgálat dátuma:** %{value}"
+    voted: "%{author} szavazata: %{response}"
+    voted_hidden: "%{author} szavazott"
+    vote_removed: "%{author}: szavazat eltávolítva"
+    undecided: "%{author}: eldöntetlen"
+    superseded: felülírva
+    shared_outcome: "%{author} megosztott egy következtetést"
+    removed: Eltávolítva
   error:
     access_denied: Nincs engedélyed erre

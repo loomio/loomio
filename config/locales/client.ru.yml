@@ -1164,6 +1164,9 @@ ru:
     thread_markdown_copied: Markdown обсуждения скопирован
     move_thread_v2: Переместить тему
     more: Более
+    download_markdown: Скачать Markdown
+    markdown: Markdown
+    vote_before_export: Проголосуйте перед экспортом. В этой теме есть опрос, результаты которого скрыты до вашего голосования.
   formatting:
     formatting_tools: Инструменты форматирования текста
     colors: Цвета

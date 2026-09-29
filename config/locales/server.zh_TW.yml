@@ -786,5 +786,12 @@ zh_TW:
     none_of_the_above: 以上皆非
     no_option_selected: 未選擇任何選項
     review_date: "**審核日期：** %{value}"
+    voted: "%{author} 投票給了 %{response}"
+    voted_hidden: "%{author} 投票"
+    vote_removed: "%{author}：投票已移除"
+    undecided: "%{author}：未定"
+    superseded: 被取代
+    shared_outcome: "%{author} 分享了結論"
+    removed: 已移除
   error:
     access_denied: 你沒有權限這樣做。

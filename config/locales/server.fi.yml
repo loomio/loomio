@@ -756,5 +756,12 @@ fi:
     none_of_the_above: Mikään yllä mainituista
     no_option_selected: Ei valittua vaihtoehtoa
     review_date: "**Arviointipäivämäärä:** %{value}"
+    voted: "%{author} äänesti %{response}"
+    voted_hidden: "%{author} äänesti"
+    vote_removed: "%{author}: ääni poistettu"
+    undecided: "%{author}: epävarma"
+    superseded: korvattu
+    shared_outcome: "%{author} jakoi johtopäätöksen"
+    removed: Poistettu
   error:
     access_denied: Sinulla ei ole lupaa tehdä niin

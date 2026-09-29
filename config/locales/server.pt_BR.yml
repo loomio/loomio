@@ -786,5 +786,12 @@ pt_BR:
     none_of_the_above: Nenhuma das acima
     no_option_selected: Nenhuma opção selecionada
     review_date: "**Data da revisão:** %{value}"
+    voted: "%{author} votou em %{response}"
+    voted_hidden: "%{author} votou"
+    vote_removed: "%{author}: voto removido"
+    undecided: "%{author}: indeciso"
+    superseded: substituído
+    shared_outcome: "%{author} compartilhou uma conclusão"
+    removed: Removido
   error:
     access_denied: Você não tem permissão para fazer isso.
