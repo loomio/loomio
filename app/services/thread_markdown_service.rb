@@ -3,6 +3,13 @@ class ThreadMarkdownService
     new(topic, user).render
   end
 
+  # People invited by email may not have set a name yet, so fall back to their
+  # username rather than leaving a blank that breaks sorting and reads as
+  # missing. User#name already labels deleted accounts.
+  def self.person_name(user)
+    user&.name.presence || user&.username.presence || I18n.t('common.anonymous')
+  end
+
   def initialize(topic, user)
     @topic = topic
     @user = user
@@ -219,7 +226,7 @@ class ThreadMarkdownService
     elsif record.respond_to?(:user)
       record.user
     end
-    inline(author&.name.presence || I18n.t('common.anonymous'))
+    inline(self.class.person_name(author))
   end
 
   def body(record, heading_offset:)

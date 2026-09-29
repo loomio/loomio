@@ -330,6 +330,25 @@ class ThreadMarkdownServiceTest < ActiveSupport::TestCase
     assert_equal 3, TopicItem.find_by!(itemable: nested).depth
   end
 
+  test "lists voters who have not set a name by their username" do
+    nameless = User.create!(email: "nameless-voter@example.com", email_verified: true)
+    @group.add_member!(nameless)
+    discussion = create_discussion
+    poll = create_poll(discussion)
+
+    undecided_markdown = render(discussion.topic)
+    assert_match(/\| Undecided\s+\|[^\n]*#{nameless.username}/, undecided_markdown)
+
+    stance = poll.stances.latest.find_by!(participant_id: nameless.id)
+    stance.choice = "Agree"
+    stance.reason = "Works for me."
+    StanceService.create(stance: stance, actor: nameless)
+
+    voted_markdown = render(discussion.topic)
+    assert_match(/\| Agree\s+\|[^\n]*#{nameless.username}/, voted_markdown)
+    assert_match(/^> \*\*#{nameless.username}\*\* voted \*\*Agree\*\* · /, voted_markdown)
+  end
+
   test "keeps replies to a removed comment nested under a placeholder" do
     discussion = create_discussion
     comment = Comment.new(body: "<p>Removed text.</p>", body_format: "html", parent: discussion)
