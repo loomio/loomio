@@ -21,9 +21,8 @@ export default {
     includeActor: Boolean,
     excludeMembers: Boolean,
     hideCount: Boolean,
-    hideEmptyResults: Boolean,
+    hideEmptyMenu: Boolean,
     preserveSearchOnBlur: Boolean,
-    emptyAudienceHint: String,
     excludedAudiences: {
       type: Array,
       default() { return []; }
@@ -44,8 +43,8 @@ export default {
       suggestedUserIds: [],
       suggestions: [],
       availableAudiences: [],
-      audiencesLoaded: false,
       recipients: [],
+      menu: false,
       loading: false,
       currentUserId: Session.user().id
     };
@@ -74,7 +73,10 @@ export default {
       this.fetchAndUpdateSuggestions();
     },
 
+    suggestions() { this.syncMenu(); },
+
     recipients(val) {
+      this.syncMenu();
       this.newRecipients(val);
       this.$emit('new-recipients', val);
       this.updateSuggestions();
@@ -94,6 +96,22 @@ export default {
       this.query = query;
       this.$emit('update:search', this.query);
       this.fetchAndUpdateSuggestions();
+    },
+    // With hideEmptyMenu, the menu never opens empty. Search results arrive
+    // after a debounced request, and Vuetify's own hide-no-data would leave the
+    // menu closed, so open it when results arrive for a query being typed.
+    // Otherwise Vuetify opens the menu on focus and click as usual.
+    updateMenu(open) {
+      if (!this.hideEmptyMenu) { return; }
+      this.menu = open && this.hasShownSuggestions;
+    },
+    syncMenu() {
+      if (!this.hideEmptyMenu) { return; }
+      if (!this.hasShownSuggestions) {
+        this.menu = false;
+      } else if (this.query && this.$el.contains(document.activeElement)) {
+        this.menu = true;
+      }
     },
     clearSearch() {
       this.query = '';
@@ -141,11 +159,9 @@ export default {
     },
 
     fetchAvailableAudiences() {
-      this.audiencesLoaded = false;
       const targetParams = this.model.bestNamedId();
       if (!Object.keys(targetParams).length) {
         this.availableAudiences = [];
-        this.audiencesLoaded = true;
         this.updateSuggestions();
         return;
       }
@@ -159,7 +175,6 @@ export default {
         }
       }).then(data => {
         this.availableAudiences = data.audiences || [];
-        this.audiencesLoaded = true;
         this.updateSuggestions();
       });
     },
@@ -296,6 +311,13 @@ export default {
     canAddGuests() { return AbilityService.canAddGuests(this.model); },
     canNotifyGroup() { return AbilityService.canAnnounce(this.model); },
     modelName() { return this.model.constructor.singular; },
+    // Bind menu only in hideEmptyMenu mode: Vuetify treats any bound menu prop,
+    // even undefined, as controlled, which would keep other forms' menus closed.
+    menuProps() { return this.hideEmptyMenu ? {menu: this.menu} : {}; },
+    // Selected recipients stay in suggestions but hide-selected keeps them out of the menu.
+    hasShownSuggestions() {
+      return this.suggestions.some(s => !this.recipients.some(r => r.type === s.type && r.id === s.id));
+    },
 
     audiences() {
       if (this.recipients.length > 0) { return []; }
@@ -328,7 +350,9 @@ div.recipients-autocomplete
     clear-on-select
     v-model='recipients'
     :search="query"
+    v-bind="menuProps"
     @update:search="updateQuery"
+    @update:menu="updateMenu"
     @click:clear="clearSearch"
     item-title='name'
     item-value='id'
@@ -336,7 +360,7 @@ div.recipients-autocomplete
     :label="label"
     :placeholder="placeholder"
     :items='suggestions'
-    :hide-no-data="(recipients.length > 0 && !query) || (hideEmptyResults && !!query)"
+    :hide-no-data="hideEmptyMenu || (recipients.length > 0 && !query)"
     autocomplete='off'
   )
     template(v-slot:details)
@@ -351,12 +375,11 @@ div.recipients-autocomplete
           common-icon(v-if="!query" name="mdi-account-search")
           common-icon(v-if="query" name="mdi-information-outline")
         v-list-item-title
-          span(v-if="!query && emptyAudienceHint && audiencesLoaded && !audiences.length") {{ emptyAudienceHint }}
-          span(v-else-if="query") {{ $t('common.no_results_found') }}
+          span(v-if="query") {{ $t('common.no_results_found') }}
           span(v-else)
             span(v-if="canAddGuests" v-t="'announcement.search_by_name_or_email'")
             span(v-if="!canAddGuests" v-t="'announcement.search_by_name'")
-        v-list-item-subtitle(v-if="!(emptyAudienceHint && audiencesLoaded && !audiences.length)")
+        v-list-item-subtitle
           span(v-if="!canAddGuests && !canNotifyGroup"
                v-t="'announcement.only_admins_can_announce_or_invite'")
           span(v-if="!canAddGuests && canNotifyGroup"

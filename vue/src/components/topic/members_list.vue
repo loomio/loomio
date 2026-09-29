@@ -208,7 +208,7 @@ v-card.topic-members-list(:title="t('strand_members_list.manage_thread_members')
       :model="topic"
       :excluded-audiences="['topic']"
       :reset="reset"
-      hideEmptyResults
+      hideEmptyMenu
       preserveSearchOnBlur
       @update:search="newQuery"
       @new-recipients="newRecipients")

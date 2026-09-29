@@ -239,7 +239,7 @@ v-card.poll-members-form(:title="t('poll_common_form.manage_voters')" style="hei
       :excludedAudiences="['voters', 'undecided_voters', 'non_voters', 'decided_voters']"
       :excludedUserIds="userIds"
       :initialRecipients="initialRecipients"
-      hideEmptyResults
+      hideEmptyMenu
       preserveSearchOnBlur
       @update:search="newQuery"
       includeActor
