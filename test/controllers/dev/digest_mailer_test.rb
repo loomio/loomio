@@ -54,7 +54,7 @@ class Dev::DigestMailerTest < ActionController::TestCase
     # Verify notification-style branding and unsubscribe footer
     assert parsed_body.css('.email-header-logo').empty?
     assert_element '.email-footer-logo'
-    assert_element 'a[href*="email_preferences"]'
+    assert_element 'a[href*="email_actions/catch_up"]'
 
     # Reading the catch-up is acknowledged explicitly rather than by image loading.
     assert_text_in 'a[href*="mark_digest_as_read"]', I18n.t('email.catch_up.mark_catch_up_as_read')

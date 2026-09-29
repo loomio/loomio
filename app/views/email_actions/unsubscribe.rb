@@ -16,7 +16,7 @@ class Views::EmailActions::Unsubscribe < Views::BasicLayout
 
   def view_template
     render_styles
-    main(class: "sistema") do
+    main(class: "sistema email-action-page") do
       h1 { t(:"email_settings_page.header") }
 
       if @topic_reader
@@ -37,10 +37,23 @@ class Views::EmailActions::Unsubscribe < Views::BasicLayout
       end
 
       p { t(:"push_notifications.enable_from_loomio") } unless @push_enabled
+      div(class: "email-action-secondary-link") do
+        p do
+          strong { t(:"email_actions.catch_up_all_groups") }
+          plain ": #{t(:"email_actions.catch_up_days.#{catch_up_day_key}")}"
+        end
+        a(href: email_actions_catch_up_path(unsubscribe_token: @unsubscribe_token)) do
+          t(:"email_actions.catch_up_link")
+        end
+      end
     end
   end
 
   private
+
+  def catch_up_day_key
+    Views::EmailActions::CatchUp::DAY_OPTIONS.to_h.fetch((@email_catch_up_day || 'never').to_s)
+  end
 
   def render_styles
     style do
@@ -78,7 +91,7 @@ class Views::EmailActions::Unsubscribe < Views::BasicLayout
       volume_radios(record, :push) if @push_enabled
       catch_up_hint if @email_catch_up_day
       apply_to_group_checkbox if apply_to_group
-      input(type: "submit", value: t(:"common.action.save"))
+      input(type: "submit", value: t(:"common.action.save"), class: "btn--accent--raised")
     end
   end
 

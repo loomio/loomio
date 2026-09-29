@@ -100,6 +100,22 @@
 | `config/locales/client.it.yml` | `poll_common_form.manage_voters`, `use_member_vote_weights`, `set_one_vote_weight` | Infinitives | Imperatives | These are actions in the interface |
 | `config/locales/client.pt_BR.yml` | `poll_common_form.use_member_vote_weights`, `set_one_vote_weight` | Infinitive and a final full stop | Imperative without final full stop | These are action labels |
 
+||||||| 6001ebe707
+
+## 2026-09-24 — Catch-up email settings
+
+| File | Key | Before | After | Why it was wrong |
+|------|-----|--------|-------|------------------|
+| `config/locales/server.de.yml` | `email_actions.catch_up_*` | Formal `Sie` and literal “Catch-up” or follow-up wording | Informal `du` and summary-email wording | German UI uses `du`, and catch-up is a summary of activity |
+| `config/locales/server.es.yml` | `email_actions.catch_up_*` | “Recovery” and follow-up email wording | `correo de resumen` | Spanish UI already calls the catch-up a summary email |
+| `config/locales/server.fr.yml` | `email_actions.catch_up_*` | Formal `vous` | Informal `tu` | French UI consistently uses `tu` |
+| `config/locales/server.nl_NL.yml` | `email_actions.catch_up_*` | Formal `u` and “catching up on email” wording | Informal `je` and `samenvattingsmail` | Dutch UI uses `je`, and the catch-up is a summary email |
+| `config/locales/server.de.yml` | `email_actions.catch_up_all_groups` | `Auffrischungs-E-Mails (alle Gruppen)` | `Zusammenfassungs-E-Mails (alle Gruppen)` | Catch-up emails summarize activity; they are not refresher messages |
+| `config/locales/server.es.yml` | `email_actions.catch_up_all_groups` | `Correos electrónicos de seguimiento (todos los grupos)` | `Correos de resumen (todos los grupos)` | Keep the established Spanish term for catch-up summaries |
+| `config/locales/server.ru.yml` | `email_actions.catch_up_all_groups` | `Уведомления о новых сообщениях (для всех групп)` | `Письма со сводкой (для всех групп)` | Catch-up emails summarize activity beyond new messages |
+| `config/locales/server.zh_CN.yml` | `email_actions.catch_up_all_groups` | `补发邮件（所有群组）` | `动态摘要邮件（所有群组）` | Catch-up is an activity summary, not a resent email |
+| `config/locales/server.zh_TW.yml` | `email_actions.catch_up_all_groups` | `補發郵件（所有群組）` | `動態摘要郵件（所有群組）` | Catch-up is an activity summary, not a resent email |
+
 ## 2026-09-22 — Authentication method labels
 
 | File | Key | Before | After | Why it was wrong |

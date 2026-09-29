@@ -55,7 +55,7 @@ export default new class Session {
   }
 
   isSignedIn() {
-    return AppConfig.currentUserId && (this.user().restricted == null);
+    return Boolean(AppConfig.currentUserId);
   }
 
   user() {
