@@ -37,17 +37,15 @@ else
   echo "==> Checking translations against $BASE_REF..."
   bundle exec ruby script/check_translations.rb "$BASE_REF" config/locales:server config/locales:client
 
-  # The installed hook is shared by worktrees, including older branches. The
-  # sync translates whatever is stale in this checkout, so run it only when this
-  # branch changes user_manual sources relative to master.
+  # The installed hook is shared by worktrees, including older branches. It only
+  # checks; translating is a separate step so a push never generates files.
   if [ -f docs/sync_translations.rb ]; then
-    if git diff --quiet origin/master...HEAD -- docs/SUMMARY.md docs/locales.yml 'docs/*/*.md'; then
+    echo ""
+    echo "==> Checking user_manual translations..."
+    if ! bundle exec ruby docs/sync_translations.rb --check; then
       echo ""
-      echo "==> Branch does not change the user_manual; skipping user_manual translation sync."
-    else
-      echo ""
-      echo "==> Running user_manual translation sync..."
-      bundle exec ruby docs/sync_translations.rb --before-push
+      echo "Run 'bundle exec ruby docs/sync_translations.rb', commit the changed translations, then push again."
+      exit 1
     fi
   fi
 fi

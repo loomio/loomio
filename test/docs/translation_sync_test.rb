@@ -78,17 +78,6 @@ class DocsTranslationSyncTest < Minitest::Test
     end
   end
 
-  def test_uncommitted_sources_are_reported_before_a_push
-    fake = lambda do |*arguments, **|
-      output = arguments[1] == "diff" ? "docs/en/#{PAGE}\0docs/README.md\0" : "docs/fr/#{PAGE}\0"
-      [output, Struct.new(:success?).new(true)]
-    end
-    Open3.stub(:capture2, fake) do
-      assert_equal ["docs/en/#{PAGE}", "docs/fr/#{PAGE}"], @sync.uncommitted_paths
-    end
-    assert_empty @requests
-  end
-
   private
 
   def write(path, text)
