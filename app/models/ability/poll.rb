@@ -9,8 +9,9 @@ module Ability::Poll
         if poll.detached_anonymous?
           poll.anonymous_poll_voters.where(ballot_submitted: false).exists?(voter_id: user.id)
         else
-          poll.unmasked_voters.exists?(user.id) ||
-            (!poll.specified_voters_only && poll.members.exists?(user.id))
+          # Voting always updates an existing stance. Members of open polls get
+          # theirs when they join, which fixes their vote weight up front.
+          poll.unmasked_voters.exists?(user.id)
         end
       )
     end

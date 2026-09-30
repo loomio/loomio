@@ -36,7 +36,8 @@ class StanceTest < ActiveSupport::TestCase
 
   test "vote weight is nonnegative and rounds to the column precision" do
     poll = PollService.create(params: poll_params(weighted_voting: true), actor: @admin)
-    stance = Stance.new(poll: poll, participant: @admin, weight: 0)
+    stance = poll.stances.latest.find_by!(participant: @admin)
+    stance.weight = 0
 
     assert stance.valid?
     stance.weight = 0.5
@@ -237,7 +238,7 @@ class StanceTest < ActiveSupport::TestCase
       title: 'which pet?',
       poll_option_names: %w[dog cat]
     ), actor: @admin)
-    Stance.create!(poll: poll, participant: @admin, choice: 'dog')
+    poll.stances.latest.find_by!(participant: @admin).update!(choice: 'dog')
     poll.update_counts!
     assert_equal [1, 0], poll.stance_counts
   end
@@ -248,7 +249,7 @@ class StanceTest < ActiveSupport::TestCase
       title: 'which pet?',
       poll_option_names: %w[dog cat]
     ), actor: @admin)
-    Stance.create!(poll: poll, participant: @admin, choice: ['dog', 'cat'])
+    poll.stances.latest.find_by!(participant: @admin).update!(choice: ['dog', 'cat'])
     poll.update_counts!
     assert_equal [1, 1], poll.stance_counts
   end

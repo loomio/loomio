@@ -42,15 +42,17 @@ class PollService
 
     topic_item = Poll.transaction do
       poll.save!
+      # The author joins the topic first, so a direct poll's author is among
+      # the members who receive a stance and can vote.
+      TopicReader.for(user: actor, topic: poll.topic)
+                  .update(admin: true, guest: !poll.topic.group_id.present?, inviter_id: actor.id)
+
       if poll.detached_anonymous?
         create_anonymous_poll_voters(poll: poll, actor: actor, params: params)
       else
         create_anyone_can_vote_stances(poll) if !poll.specified_voters_only
       end
       poll.update_counts!
-
-      TopicReader.for(user: actor, topic: poll.topic)
-                  .update(admin: true, guest: !poll.topic.group_id.present?, inviter_id: actor.id)
 
       Sentry.metrics.count("poll.create", attributes: { poll_type: poll.poll_type })
       topic_item = TopicItems::PollCreated.create!(
@@ -415,18 +417,27 @@ class PollService
         end
   end
 
+  # Members vote only through a stance (or anonymous voter record), so new
+  # members get one in every unclosed poll, including scheduled and draft polls
+  # that open later. Each new voter then receives the poll with their own voting
+  # state, so they can vote without reloading. Runs in PollGroupMembersAddedWorker.
   def self.group_members_added(group_id)
     return if group_id.nil?
 
-    Poll.active.joins(:topic).where(topics: { group_id: group_id }, specified_voters_only: false).each do |poll|
-      if poll.detached_anonymous?
+    Poll.kept.where(closed_at: nil).joins(:topic).where(topics: { group_id: group_id }, specified_voters_only: false).each do |poll|
+      new_voter_ids = if poll.detached_anonymous?
         Poll.transaction do
           poll.lock!
-          create_anonymous_poll_voters(poll: poll, actor: poll.author, params: {})
+          voter_ids = create_anonymous_poll_voters(poll: poll, actor: poll.author, params: {}).pluck(:voter_id)
           poll.update_counts!
+          voter_ids
         end
       else
-        create_anyone_can_vote_stances(poll)
+        create_anyone_can_vote_stances(poll).pluck(:participant_id)
+      end
+
+      new_voter_ids.each do |user_id|
+        MessageChannelService.publish_models([ poll ], user_id: user_id)
       end
     end
   end

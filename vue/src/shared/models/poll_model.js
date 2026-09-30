@@ -309,7 +309,7 @@ export default class PollModel extends BaseModel {
     if (this.detachedAnonymousVoting()) {
       return this.isVotable() && this.anonymousVoterEligible && !this.anonymousBallotSubmitted;
     }
-    return this.isVotable() && (this.myStance() || (!this.specifiedVotersOnly && this.membersInclude(Session.user())));
+    return this.isVotable() && !!this.myStance();
   }
 
   isBlank() {

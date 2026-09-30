@@ -345,12 +345,6 @@ export default new class AbilityService {
     )
   }
 
-  canParticipateInPoll(poll) {
-    if (!poll) { return false; }
-    if (poll.closedAt) { return false; }
-    return poll.group().isEnabled() && (poll.myStance() || (!poll.specifiedVotersOnly && poll.membersInclude(Session.user())));
-  }
-
   canEditPoll(poll) {
     return poll.group().isEnabled() && !poll.topic().closedAt &&
     poll.adminsInclude(Session.user()) && !poll.closedAt;

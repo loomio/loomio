@@ -1,6 +1,5 @@
 <script lang="js">
 import AppConfig from '@/shared/services/app_config';
-import AbilityService from '@/shared/services/ability_service';
 import { find } from 'lodash-es';
 import WatchRecords from '@/mixins/watch_records';
 import UrlFor from '@/mixins/url_for';
@@ -19,7 +18,7 @@ export default {
     this.watchRecords({
       collections: ['polls', 'stances'],
       query: store => {
-        this.poll = find(this.discussion.activePolls().filter(poll => poll.pollOptionNames.length), poll => poll.closingAt && AbilityService.canParticipateInPoll(poll) && !poll.iHaveVoted());
+        this.poll = find(this.discussion.activePolls().filter(poll => poll.pollOptionNames.length), poll => poll.iCanVote() && !poll.iHaveVoted());
       }
     });
   },

@@ -517,6 +517,53 @@ class PollServiceTest < ActiveSupport::TestCase
     assert_equal original_closed_at, poll.reload.closed_at
   end
 
+  # -- members who join after a poll starts --
+
+  test "members who join before a scheduled poll opens get a stance and a live update" do
+    poll = create_poll(closing_at: 7.days.from_now, opening_at: 3.days.from_now)
+    member = create_unique_user("latejoiner")
+    @group.add_member!(member)
+    assert_not poll.stances.latest.exists?(participant_id: member.id)
+
+    published_user_ids = []
+    publish = ->(models, user_id: nil, **) { published_user_ids << user_id if models == [ poll ] }
+    MessageChannelService.stub(:publish_models, publish) do
+      PollService.group_members_added(@group.id)
+    end
+
+    assert poll.stances.latest.exists?(participant_id: member.id)
+    assert_equal [ member.id ], published_user_ids
+  end
+
+  test "members who join a weighted poll's group vote with their membership weight" do
+    poll = PollService.create(params: poll_params(weighted_voting: true), actor: @admin)
+    member = create_unique_user("weightedjoiner")
+    @group.add_member!(member).update!(weight: 2.5)
+
+    PollService.group_members_added(@group.id)
+
+    stance = poll.stances.latest.find_by!(participant_id: member.id)
+    assert_equal 2.5, stance.weight
+    assert member.can?(:vote_in, poll.reload)
+  end
+
+  test "members who join an anonymous poll's group get a voter record and a live update" do
+    poll = create_poll(anonymous: true)
+    member = create_unique_user("anonjoiner")
+    @group.add_member!(member)
+    assert_not member.can?(:vote_in, poll.reload)
+
+    published_user_ids = []
+    publish = ->(models, user_id: nil, **) { published_user_ids << user_id if models == [ poll ] }
+    MessageChannelService.stub(:publish_models, publish) do
+      PollService.group_members_added(@group.id)
+    end
+
+    assert poll.anonymous_poll_voters.exists?(voter_id: member.id)
+    assert_equal [ member.id ], published_user_ids
+    assert member.can?(:vote_in, poll.reload)
+  end
+
   # -- scheduled opening (opening_at) --
 
   test "scheduled poll is not opened at create time" do
