@@ -19,6 +19,7 @@ COPY vue ./
 # Copy Rails locale files that Vite depends on
 WORKDIR /build/
 COPY config ./config
+COPY docs/locales.yml ./docs/locales.yml
 WORKDIR /build/vue
 
 # Build Vite assets

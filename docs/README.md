@@ -36,6 +36,8 @@ bundle exec ruby -Itest -e 'Dir["test/docs/*_test.rb"].sort.each { |file| requir
 
 The default build includes English and languages marked `published` in `locales.yml`. `DOCS_LOCALES` selects additional languages for preview. A published language must have complete, current translations that pass structural validation. Preview builds omit pages that fail those checks. Public paths remain `/docs/en/...`, `/docs/fr/...`, and so on.
 
+Application help buttons, Read more links and the sidebar manual link use the active app language and the published locale mapping in `locales.yml`. Its `app_locale` field maps `pt_BR` to `pt-br` and `nl_NL` to `nl`; other published locale names match their documentation directories. Unsupported app languages use English. Policies and the changelog stay in English, and a host-specific `LOOMIO_HELP_URL` remains the sidebar destination when supplied.
+
 English images and downloads are shared. Only English screenshots are committed. Application screenshots with an approved capture recipe try local files under `/docs-screenshots/`, then `https://user-manual-screenshots.loomio.com/<locale>/...`, then the bundled English image. Photos, diagrams, downloads and images without a recipe remain shared English assets.
 
 ## Optional translated screenshots
