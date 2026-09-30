@@ -175,12 +175,14 @@ class PollSerializer < ApplicationSerializer
     object.legacy_anonymous_vote_reasons.count
   end
 
+  # Voter state belongs to the current user. Shared payloads omit it rather
+  # than send false, which would overwrite each recipient's own state.
   def include_anonymous_voter_eligible?
-    object.detached_anonymous?
+    object.detached_anonymous? && scope[:current_user_id].present?
   end
 
   def include_anonymous_ballot_submitted?
-    object.detached_anonymous?
+    object.detached_anonymous? && scope[:current_user_id].present?
   end
 
   def current_outcome
