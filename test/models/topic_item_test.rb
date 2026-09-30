@@ -500,7 +500,7 @@ class EventTest < ActiveSupport::TestCase
     assert_not Notification.about(stance).exists?(kind: "stance_created")
 
     publish_count = 0
-    MessageChannelService.stub(:publish_models, ->(*) { publish_count += 1 }) do
+    MessageChannelService.stub(:publish_serialized_records, ->(*, **) { publish_count += 1 }) do
       PublishLiveUpdateTopicItemWorker.perform_now(topic_item.id)
     end
     assert_operator publish_count, :>, 0

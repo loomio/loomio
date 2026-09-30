@@ -3,10 +3,23 @@ class MessageChannelService
   # This replaces operational TopicItem rows whose only purpose was to carry the
   # model through the realtime channel.
   def self.publish_topic_model(model)
-    publish_models([ model ], group_id: model.group_id) if model.group_id
-    model.topic.guests.find_each do |user|
-      publish_models([ model ], user_id: user.id)
+    publish_topic_models([ model ], topic: model.topic, group_id: model.group_id)
+  end
+
+  # Guests are not subscribed to the group channel, so each receives the update
+  # on their user channel. Everyone gets the same shared serialization, built
+  # once: serializing per guest made publishing cost grow with the guest count.
+  def self.publish_topic_models(models, topic:, group_id:)
+    data = serialize_shared_models(models)
+    publish_serialized_records(data, group_id: group_id) if group_id
+    topic.guests.pluck(:id).each do |user_id|
+      publish_serialized_records(data, user_id: user_id)
     end
+  end
+
+  def self.serialize_shared_models(models)
+    cache = RecordCache.for_collection(models, nil, [])
+    serialize_models(models, scope: { cache: cache, current_user_id: nil })
   end
 
   def self.publish_models(models, serializer: nil, scope: {}, root: nil, group_id: nil, user_id: nil, topic_id: nil)
