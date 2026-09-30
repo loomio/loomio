@@ -230,17 +230,18 @@ class PollTest < ActiveSupport::TestCase
     assert_equal ranked_choice.poll_options.length, ranked_choice.minimum_stance_choices
   end
 
-  test "ranked choice keeps its maximum choices synchronized with its ranking positions" do
+  test "ranked choice accepts a full ranking despite a stored maximum choices" do
     ranked_choice = create_ranked_choice(
       minimum_stance_choices: 2,
       maximum_stance_choices: 1
     )
 
-    assert_equal 2, ranked_choice.maximum_stance_choices
-
-    ranked_choice.update!(minimum_stance_choices: 3)
-
-    assert_equal 3, ranked_choice.reload.maximum_stance_choices
+    stance = ranked_choice.stances.build(
+      participant: @admin,
+      cast_at: Time.current,
+      stance_choices_attributes: ranked_choice.poll_options.first(2).each_with_index.map { |option, index| { poll_option_id: option.id, score: index + 1 } }
+    )
+    assert_predicate stance, :valid?
   end
 
   test "meeting derives required choice bounds when dates are added" do
@@ -274,6 +275,30 @@ class PollTest < ActiveSupport::TestCase
 
     assert_equal 2, meeting.reload.minimum_stance_choices
     assert_equal 2, meeting.maximum_stance_choices
+  end
+
+  test "poll types without a maximum choices setting derive it from their options" do
+    ballots = {
+      "dot_vote" => [3, 3, 2],
+      "score" => [5, 4, 3],
+      "stv" => [1, 2, 3]
+    }
+
+    ballots.each do |poll_type, scores|
+      poll = create_poll(poll_type: poll_type, poll_option_names: %w[apple banana])
+      poll.update_columns(maximum_stance_choices: 2)
+
+      poll.update!(poll_option_names: %w[apple banana orange])
+
+      assert_equal 3, poll.reload.maximum_stance_choices, poll_type
+
+      stance = poll.stances.build(
+        participant: @admin,
+        cast_at: Time.current,
+        stance_choices_attributes: poll.poll_options.zip(scores).map { |option, score| { poll_option_id: option.id, score: score } }
+      )
+      assert_predicate stance, :valid?, poll_type
+    end
   end
 
   test "ballot configuration ignores JSON custom fields" do

@@ -1,10 +1,10 @@
 ---
 title: Paramètres
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/polls/settings/index.md
+source_revision: 6b2c4d5c591a9eb139fc64370d602b8dcf19c0e4
+source_file: docs/en/user_manual/polls/settings/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 145c23b2412eff98
   setting-up-a-proposal-or-poll: 9e0347d976f79179
@@ -20,7 +20,7 @@ sections:
   hide-results: c0873aeafe8feb59
   start-the-poll: 8e7d8e81db57f4f8
   managing-polls: b26fc41e19371d54
-  edit-poll: fd603b15240e6a14
+  edit-poll: ddf392426410ec5a
   make-a-copy: e6d8d4ff9a1325dc
   notification-history: f132def867659f30
   export-poll: 3c015ed01e8e7a6a
@@ -42,7 +42,7 @@ generated:
   hide-results: 9cf56a806a4f6b55
   start-the-poll: 482d7105c46a8f2b
   managing-polls: d4841c826f9ca251
-  edit-poll: 3384a957dead85fe
+  edit-poll: 6d166e33ea82f74a
   make-a-copy: d4b793f5bfebbe73
   notification-history: 7079369efc871ce4
   export-poll: 2e9ccfcd69f12b92
@@ -227,7 +227,7 @@ Ouvrez le menu à trois points en bas à droite du sondage.
 
 ### Modifier le sondage
 
-Utilisez **Modifier le sondage** pour modifier son contenu ou ses paramètres. Vous ne pouvez plus modifier les options de vote une fois le vote commencé.
+Utilisez **Modifier le sondage** pour modifier son contenu ou ses paramètres.
 
 <!-- translation-section: make-a-copy -->
 

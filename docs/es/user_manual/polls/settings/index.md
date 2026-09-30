@@ -1,10 +1,10 @@
 ---
 title: Configuración
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/polls/settings/index.md
+source_revision: 6b2c4d5c591a9eb139fc64370d602b8dcf19c0e4
+source_file: docs/en/user_manual/polls/settings/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 145c23b2412eff98
   setting-up-a-proposal-or-poll: 9e0347d976f79179
@@ -20,7 +20,7 @@ sections:
   hide-results: c0873aeafe8feb59
   start-the-poll: 8e7d8e81db57f4f8
   managing-polls: b26fc41e19371d54
-  edit-poll: fd603b15240e6a14
+  edit-poll: ddf392426410ec5a
   make-a-copy: e6d8d4ff9a1325dc
   notification-history: f132def867659f30
   export-poll: 3c015ed01e8e7a6a
@@ -42,7 +42,7 @@ generated:
   hide-results: 26eb6981aaf6e869
   start-the-poll: 4a14fd3145c3e39b
   managing-polls: 3711abc9c32d6f77
-  edit-poll: '083481a1bee17f0d'
+  edit-poll: 400edfc9316a5b18
   make-a-copy: 60f1f435fc9643a8
   notification-history: 322dcabfa6b4afa6
   export-poll: 88e99ed661138083
@@ -227,7 +227,7 @@ Abre el menú de tres puntos en la parte inferior derecha de la encuesta.
 
 ### Editar encuesta
 
-Usa **Editar encuesta** para modificar el contenido o la configuración de la encuesta. No puedes cambiar las opciones de voto una vez que comienza la votación.
+Usa **Editar encuesta** para modificar el contenido o la configuración de la encuesta.
 
 <!-- translation-section: make-a-copy -->
 

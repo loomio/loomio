@@ -7,6 +7,21 @@ cd "$ROOT"
 # Brakeman and dependency auditing run in .github/workflows/security.yml.
 # Keep local push checks fast and independent of advisory-database updates.
 
+# Git lists each pushed ref on stdin. Branch deletions push no commits, so they
+# need no checks.
+ZERO_SHA_PATTERN='^0+$'
+PUSHED_REF_COUNT=0
+while read -r _local_ref local_sha _remote_ref _remote_sha; do
+  if [[ ! "$local_sha" =~ $ZERO_SHA_PATTERN ]]; then
+    PUSHED_REF_COUNT=$((PUSHED_REF_COUNT + 1))
+  fi
+done
+
+if [ "$PUSHED_REF_COUNT" -eq 0 ]; then
+  echo "No commits pushed; skipping push checks."
+  exit 0
+fi
+
 # ── Translation checks ──────────────────────────────────────────────────
 
 if [ -n "${SKIP_TRANSLATIONS+x}" ]; then
@@ -22,10 +37,17 @@ else
   echo "==> Checking translations against $BASE_REF..."
   bundle exec ruby script/check_translations.rb "$BASE_REF" config/locales:server config/locales:client
 
-  # The installed hook is shared by worktrees, including older branches.
+  # The installed hook is shared by worktrees, including older branches. The
+  # sync translates whatever is stale in this checkout, so run it only when this
+  # branch changes user_manual sources relative to master.
   if [ -f docs/sync_translations.rb ]; then
-    echo ""
-    echo "==> Updating and checking published manual translations..."
-    bundle exec ruby docs/sync_translations.rb --before-push
+    if git diff --quiet origin/master...HEAD -- docs/SUMMARY.md docs/locales.yml 'docs/*/*.md'; then
+      echo ""
+      echo "==> Branch does not change the user_manual; skipping user_manual translation sync."
+    else
+      echo ""
+      echo "==> Running user_manual translation sync..."
+      bundle exec ruby docs/sync_translations.rb --before-push
+    fi
   fi
 fi

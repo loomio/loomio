@@ -1,10 +1,10 @@
 ---
 title: הגדרות
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/polls/settings/index.md
+source_revision: 6b2c4d5c591a9eb139fc64370d602b8dcf19c0e4
+source_file: docs/en/user_manual/polls/settings/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 145c23b2412eff98
   setting-up-a-proposal-or-poll: 9e0347d976f79179
@@ -20,7 +20,7 @@ sections:
   hide-results: c0873aeafe8feb59
   start-the-poll: 8e7d8e81db57f4f8
   managing-polls: b26fc41e19371d54
-  edit-poll: fd603b15240e6a14
+  edit-poll: ddf392426410ec5a
   make-a-copy: e6d8d4ff9a1325dc
   notification-history: f132def867659f30
   export-poll: 3c015ed01e8e7a6a
@@ -42,7 +42,7 @@ generated:
   hide-results: d667e363ddc83841
   start-the-poll: 894da34622dce8b7
   managing-polls: 7289b830d7d29fe7
-  edit-poll: '079e0d8d18f12d23'
+  edit-poll: 9203d0a9d41bf074
   make-a-copy: cbc16f9f6d9edb48
   notification-history: 76c8f49832f75c45
   export-poll: 540ff7d99b3a0272
@@ -227,7 +227,7 @@ title_generated: 2a929616c81f3e30
 
 ### עריכת סקר
 
-ניתן להשתמש ב־**עריכת סקר** כדי לערוך את תוכן הסקר או את הגדרותיו. לאחר תחילת ההצבעה לא ניתן לשנות את אפשרויות ההצבעה.
+ניתן להשתמש ב־**עריכת סקר** כדי לערוך את תוכן הסקר או את הגדרותיו.
 
 <!-- translation-section: make-a-copy -->
 

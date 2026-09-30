@@ -68,9 +68,13 @@ class GroupSerializer < ApplicationSerializer
   end
 
   def current_user_followed
-    return false unless scope[:current_user_id]
-
     followed_group_ids.include?(object.id)
+  end
+
+  # Shared payloads omit follow state rather than send false, which would
+  # overwrite each recipient's own state.
+  def include_current_user_followed?
+    scope[:current_user_id].present?
   end
 
   def followed_group_ids

@@ -1,10 +1,10 @@
 ---
 title: Настройки
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/polls/settings/index.md
+source_revision: 6b2c4d5c591a9eb139fc64370d602b8dcf19c0e4
+source_file: docs/en/user_manual/polls/settings/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 145c23b2412eff98
   setting-up-a-proposal-or-poll: 9e0347d976f79179
@@ -20,7 +20,7 @@ sections:
   hide-results: c0873aeafe8feb59
   start-the-poll: 8e7d8e81db57f4f8
   managing-polls: b26fc41e19371d54
-  edit-poll: fd603b15240e6a14
+  edit-poll: ddf392426410ec5a
   make-a-copy: e6d8d4ff9a1325dc
   notification-history: f132def867659f30
   export-poll: 3c015ed01e8e7a6a
@@ -42,7 +42,7 @@ generated:
   hide-results: 4458c864fa0b747d
   start-the-poll: 1fb69b94b36fee72
   managing-polls: 24208e2b7439b5ce
-  edit-poll: 345253d175ed867e
+  edit-poll: 55473e70aa9c783c
   make-a-copy: 94caf106bc257602
   notification-history: 62e30dfaa580538d
   export-poll: a41fa695160ef280
@@ -227,7 +227,7 @@ title_generated: 985b5e0f2ccf1ba0
 
 ### Редактировать опрос
 
-Чтобы изменить содержание или настройки опроса, выберите **Редактировать опрос**. После начала голосования варианты ответа изменить нельзя.
+Чтобы изменить содержание или настройки опроса, выберите **Редактировать опрос**.
 
 <!-- translation-section: make-a-copy -->
 

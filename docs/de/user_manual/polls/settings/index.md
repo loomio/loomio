@@ -1,10 +1,10 @@
 ---
 title: Einstellungen
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/polls/settings/index.md
+source_revision: 6b2c4d5c591a9eb139fc64370d602b8dcf19c0e4
+source_file: docs/en/user_manual/polls/settings/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 145c23b2412eff98
   setting-up-a-proposal-or-poll: 9e0347d976f79179
@@ -20,7 +20,7 @@ sections:
   hide-results: c0873aeafe8feb59
   start-the-poll: 8e7d8e81db57f4f8
   managing-polls: b26fc41e19371d54
-  edit-poll: fd603b15240e6a14
+  edit-poll: ddf392426410ec5a
   make-a-copy: e6d8d4ff9a1325dc
   notification-history: f132def867659f30
   export-poll: 3c015ed01e8e7a6a
@@ -42,7 +42,7 @@ generated:
   hide-results: a63f75f73c70b082
   start-the-poll: 4653e38acf30bac6
   managing-polls: 4b22eb8a7f88e8c5
-  edit-poll: 8c9182994459ee87
+  edit-poll: a9631b4eb72f41b0
   make-a-copy: b6981b243df12534
   notification-history: 513cf22429d52f3a
   export-poll: 58d60369e1dd16b1
@@ -227,7 +227,7 @@ Wähle **Abstimmung starten** oder **Umfrage starten**.
 
 ### Umfrage bearbeiten
 
-Mit **Umfrage bearbeiten** kannst du den Inhalt oder die Einstellungen der Umfrage ändern. Sobald die Abstimmung begonnen hat, kannst du die Abstimmungsoptionen nicht mehr ändern.
+Mit **Umfrage bearbeiten** kannst du den Inhalt oder die Einstellungen der Umfrage ändern.
 
 <!-- translation-section: make-a-copy -->
 

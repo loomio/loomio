@@ -159,13 +159,15 @@ class Poll < ApplicationRecord
     end
   end
 
+  # Types without a configured maximum offer no setting for it, so their limit
+  # always follows the options. Clients echo the serialized value back on edit,
+  # and a stored copy would go stale when options are added.
   def maximum_stance_choices
-    if require_all_choices
+    maximum_stance_choices_default = AppConfig.poll_types.dig(self.poll_type, 'defaults', 'maximum_stance_choices')
+    if require_all_choices || maximum_stance_choices_default.nil?
       poll_option_count
     else
-      self[:maximum_stance_choices] ||
-      AppConfig.poll_types.dig(self.poll_type, 'defaults', 'maximum_stance_choices') ||
-      poll_option_count
+      self[:maximum_stance_choices] || maximum_stance_choices_default
     end
   end
 
@@ -229,7 +231,6 @@ class Poll < ApplicationRecord
   validates :details, length: {maximum: AppConfig.app_features[:max_message_length] }
 
   before_validation :clamp_minimum_stance_choices
-  before_validation :synchronize_ranked_choice_bounds
   normalizes :quorum_pct, with: ->(v) { v.nil? ? nil : [ [ v, 0 ].max, 100 ].min }
   normalizes :closing_at, :opening_at, with: ->(v) { v&.beginning_of_hour }
   validate :closes_in_future
@@ -785,12 +786,6 @@ class Poll < ApplicationRecord
     if self[:minimum_stance_choices] > poll_option_count
       self.minimum_stance_choices = poll_option_count
     end
-  end
-
-  def synchronize_ranked_choice_bounds
-    return unless poll_type == "ranked_choice"
-
-    self.maximum_stance_choices = minimum_stance_choices
   end
 
   def poll_option_count
