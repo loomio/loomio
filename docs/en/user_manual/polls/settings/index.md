@@ -183,7 +183,7 @@ Open the three-dot menu at the bottom right of the poll.
 
 ### Edit poll
 
-Use **Edit poll** to edit poll content or settings.   You can not change voting options once voting commences.
+Use **Edit poll** to edit poll content or settings.
 
 <!-- translation-section: make-a-copy -->
 
