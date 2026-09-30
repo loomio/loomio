@@ -1,0 +1,27 @@
+site_title: Даведка Loomio
+menu: Меню
+open_navigation: Адкрыць навігацыю
+close_navigation: Закрыць навігацыю
+search: Пошук
+search_label: Пошук у даведцы Loomio
+help_contents: Змест даведкі
+on_this_page: На гэтай старонцы
+page_navigation: Навігацыя па старонках
+previous: Назад
+next: Далей
+image_alt: Даведка і дакументацыя Loomio
+languages: Мовы
+copy: Капіраваць
+copy_label: Скапіраваць код у буфер абмену
+copied: Скапіравана
+copy_failed: Не ўдалося скапіраваць
+alerts:
+  note: Заўвага
+  tip: Парада
+  important: Важна
+  warning: Папярэджанне
+  caution: Асцярожна
+sections:
+  User manual: Кіраўніцтва карыстальніка
+  Guides: Інструкцыі
+  Customer information: Інфармацыя для кліентаў

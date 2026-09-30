@@ -1,0 +1,174 @@
+---
+title: STV選挙
+source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
+source_file: docs/user_manual/polls/stv/index.md
+translated:
+  provider: codex/gpt-6-sol
+  'on': '2026-09-29'
+sections:
+  introduction: 6c43a75f60922bb6
+  when-to-use-stv: e37de389c27f7d87
+  creating-an-stv-election: 2d475191d922803f
+  number-of-seats: 9463d911f230eea0
+  counting-method: 31e83bb5bc08829c
+  quota-type: 12d5c4b5fe2abb1d
+  how-voting-works: b9a7df3cedbe4d50
+  how-counting-works: 50ba0a7800bc5667
+  understanding-results: 8442813a9c097112
+  method-and-quota: 90113296c3d59816
+  elected-candidates: a6c3dbb5548c7d41
+  round-by-round-details: e4a8789dae29d49e
+  exporting-ballots: 582555dd13633bf0
+generated:
+  introduction: 1639cd540d418e77
+  when-to-use-stv: 24baa41a8a15b3ad
+  creating-an-stv-election: 53fe87b64a45995f
+  number-of-seats: 7bcf29f05b2765ad
+  counting-method: 05657f7b404d2010
+  quota-type: 6a9da19ec5799b37
+  how-voting-works: 9a5c92c6df6398bd
+  how-counting-works: 6c5c319fd2124024
+  understanding-results: e73646e9afd829ff
+  method-and-quota: 758eb63ed4972ba0
+  elected-candidates: 4c52d84e365ac625
+  round-by-round-details: aad52ef104c685fb
+  exporting-ballots: 23605315cab6091a
+title_source: cd3e1a4cdc2456a6
+title_generated: 834e0eeeefc92e8e
+---
+
+<!-- translation-section: introduction -->
+
+# STV選挙
+
+**単記移譲式投票（STV）**は、複数の候補者から複数の当選者を選ぶ比例代表制の投票方式です。有権者の多様な意見が、当選者の構成に比例して反映されます。
+
+<!-- translation-section: when-to-use-stv -->
+
+## STVを使う場面
+
+次のような場合にSTV選挙を使います。
+
+- 候補者の中から**委員会、理事会、代表団**のメンバーを選ぶ
+- 少数派も支持に応じて議席を得られる**比例代表**を実現する
+- 有権者が候補者を希望順に並べる選挙を行う
+
+>[!NOTE]
+>STVはLoomioの[ランク投票](/en/user_manual/polls/rank/)とは**異なります**。ランク投票は、点数に基づいて候補を順位付けし、最もよい選択肢を一つ選ぶ簡単な方式です。STVは票の移譲と候補者の脱落を繰り返し、複数の当選者を選びます。
+
+<!-- translation-section: creating-an-stv-election -->
+
+## STV選挙を作成する
+
+投票を開始するとき、投票の種類に**STV選挙**を選び、候補者を投票の選択肢として追加します。**議席数**、**集計方法**、**クォータの種類**を設定できます。
+
+この例では、Oatmilk Cooperativeが返却可能な包装の試験運用を監督する3人を選びます。フォームには役割の説明と5人の候補者があり、Scottish STVとDroopクォータを使用しています。
+
+![](form.png)
+
+<!-- translation-section: number-of-seats -->
+
+### 議席数
+
+選出する当選者の人数です。候補者の人数より少なくする必要があります。
+
+<!-- translation-section: counting-method -->
+
+### 集計方法
+
+票の集計方法は二つあります。
+
+Scottish STV : 推奨。2007年からスコットランドの地方選挙で使われている加重包括グレゴリー方式（WIGM）です。規則が明確で分かりやすく、ほとんどの組織に適しています。
+
+Meek STV : 数学的により精密な反復計算方式です。候補者が脱落すると、その候補者が最初から立候補していなかったものとして票を再集計します。
+
+<!-- translation-section: quota-type -->
+
+### クォータの種類
+
+クォータは、候補者が議席を得るために必要な最低票数です。次のいずれかを選べます。
+
+Droop : 推奨。多くのSTV選挙で使われる標準的なクォータで、アイルランド、オーストラリア、スコットランドでも使われています。過半数の支持を得た連合が議席の過半数を獲得できる方式です。次のように計算します。 \\[ floor(\frac{votes}{(seats + 1)}) + 1 \\]
+
+Hare
+  : 当選に必要な最低票数が高く、少数派の支持もより比例的に反映されます。
+    少数派の代表を守るため、DSAの支部ではHareが好まれています。
+   次のように計算します。
+    \\[ \frac{votes}{seats}\\]
+
+>[!TIP]
+  > Droopの必要票数は常にHareより少なくなります。たとえば、100票で4議席を選ぶ場合、Droopクォータは21票、Hareクォータは25票です。
+
+<!-- translation-section: how-voting-works -->
+
+## 投票の仕組み
+
+この例では、Oatmilk Cooperativeが再利用可能な包装の試験運用を監督する3人を選びます。有権者は候補者を線の上へドラッグし、希望する順に並べます。
+
+![](stv-vote-in-progress.png)
+
+- **第1希望** = 最も希望する候補者
+- **第2希望** = 2番目に希望する候補者
+- 希望する人数まで候補者に順位を付けます
+
+すべての候補者に順位を付ける必要はありません。順位を付けなかった候補者に、その有権者の票が移ることはありません。
+
+<!-- translation-section: how-counting-works -->
+
+## 集計の仕組み
+集計は次の手順で行います。
+
+1. **クォータ**（議席を得るために必要な最低票数）を計算します。
+2. 各候補者の**第一希望**の票を数えます。
+3. クォータに達した候補者は**当選**します。クォータを超えた余剰票は、票の価値を按分して有権者の次の希望先へ**移譲**します。
+4. クォータに達した候補者がいない場合は、**得票数が最も少ない候補者が脱落**します。その候補者の票は、票の価値を減らさずに有権者の次の希望先へ移譲します。
+5. すべての議席が埋まるまで繰り返します。
+
+>[!TIP]
+>順位を付けた候補者が誰も残っていない場合、その票は「移譲先なし」となり、以後の集計には使われません。そのため、一般には多くの候補者に順位を付けると票を生かしやすくなります。
+
+<!-- translation-section: understanding-results -->
+
+## 結果の見方
+
+投票が締め切られると、結果がいくつかの項目に分けて表示されます。この選挙では、Samira Patel、Alex Morgan、Morgan Priceの3人が委員会の議席を得ました。
+
+![](stv-results-summary.png)
+
+<!-- translation-section: method-and-quota -->
+
+### 集計方法とクォータ
+
+上部には、集計方法（Scottish STVまたはMeek STV）、クォータの種類（DroopまたはHare）、当選に必要だった票数が表示されます。
+
+<!-- translation-section: elected-candidates -->
+
+### 当選者
+
+当選者の概要が、5列の表に表示されます。
+
+| 列 | 意味 |
+|--------|---------|
+| **候補者** | 当選した候補者の名前 |
+| **ラウンド選出** | クォータに達して議席を得た集計ラウンド。第1ラウンドは第一希望の票だけで当選したことを示します。それ以降のラウンドでは、脱落者の票や当選者の余剰票の移譲によって当選しています。 |
+| **第一希望** | この候補者を第1希望に選んだ有権者の数。票が移譲される前の直接の支持を示します。 |
+| **最終集計** | 当選した時点での候補者の得票数。票の移譲によって、第一希望の票数より多くなることがあります。 |
+| **余剰** | 最終集計がクォータを超えた票数（最終集計からクォータを引いた数）。余剰が多いほど、当選に必要な票数を超える支持が多いことを示します。Scottish STVでは、この余剰を有権者の次の希望先に再配分します。 |
+
+残った候補者のうち誰を脱落させるかによって結果が変わる同点の場合、その候補者は別の表に表示されます。恣意的に当選者を選ぶことはありません。
+
+<!-- translation-section: round-by-round-details -->
+
+### ラウンドごとの詳細
+
+**ラウンドごとの詳細**を展開すると、票の移譲と候補者の脱落を確認できます。各行が候補者、各列が集計ラウンドです。
+
+![](stv-results.png)
+
+緑色は当選、赤色は脱落、オレンジ色は同点になったラウンドを示します。
+
+<!-- translation-section: exporting-ballots -->
+
+## 投票用紙のエクスポート
+
+選挙の締め切り後、結果を閲覧できる人は、独立した再集計や監査のために投票用紙をBLT形式でエクスポートできます。エクスポートには候補者の順位が含まれ、同じ順位付けの投票用紙は件数とともに1行にまとめられます。匿名選挙では、投票者の身元、投票用紙の識別子、送信日時、送信順序は含まれません。

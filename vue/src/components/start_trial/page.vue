@@ -14,7 +14,6 @@ const userName = ref(null);
 const userEmail = ref(null);
 const group = Records.groups.build({ description: I18n.global.t('group_form.new_description_html') });
 const groupName = ref(null);
-const groupCategory = ref(null);
 const howDidYouHearAboutLoomio = ref(null);
 const emailNewsletter = ref(false);
 const legalAccepted = ref(false);
@@ -28,11 +27,6 @@ const submitBlockedByCaptcha = computed(() => Boolean(turnstileSiteKey) && !turn
 const form = useTemplateRef('form')
 
 const isSignedIn = Session.isSignedIn();
-const categoryItems = ['board', 'membership', 'self_managing', 'cohousing', 'other'].map(category => ({
-  title: I18n.global.t('group_survey.categories.'+category),
-  value: category
-}));
-
 const trialDays = AppConfig.features.app.trial_days;
 const termsUrl = AppConfig.theme.terms_url;
 const privacyUrl = AppConfig.theme.privacy_url;
@@ -56,7 +50,6 @@ const submit = () => {
     user_legal_accepted: legalAccepted.value,
     group_name: groupName.value,
     group_description: group.description,
-    group_category: groupCategory.value,
     group_how_did_you_hear_about_loomio: howDidYouHearAboutLoomio.value,
     turnstile_token: turnstileToken.value,
   }).then((data) => {
@@ -94,7 +87,6 @@ v-main
           v-text-field.start-trial-form__name(v-if="!isSignedIn" v-model='userName' :label="$t('start_trial.your_name')" :rules="validate('user_name')")
           v-text-field.start-trial-form__email(v-if="!isSignedIn" v-model='userEmail' :label="$t('start_trial.your_email')" type="email" :rules="validate('user_email')")
           v-text-field.start-trial-form__group-name(v-model='groupName' :label="$t('group_form.organization_name')" :rules="validate('group_name')")
-          v-select.start-trial-form__category(v-model="groupCategory" :items="categoryItems" :label="$t('group_survey.describe_other')" :rules="validate('group_category')")
           lmo-textarea.group-form__group-description(:model='group' field="description" :placeholder="$t('group_form.description_placeholder')" :label="$t('group_form.description')")
           template(v-if="!isSignedIn")
             v-textarea(v-model='howDidYouHearAboutLoomio' :label="$t('start_trial.how_did_you_hear_about_loomio')")

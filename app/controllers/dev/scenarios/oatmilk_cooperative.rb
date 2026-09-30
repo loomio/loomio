@@ -2056,7 +2056,7 @@ module Dev::Scenarios::OatmilkCooperative
       name: name,
       email: email,
       password: 'password',
-      detected_locale: 'en',
+      detected_locale: Rails.env.test? ? ENV.fetch('DOCS_SCREENSHOT_APP_LOCALE', 'en') : 'en',
       email_verified: true,
       legal_accepted: true,
       experiences: {changePicture: true, hideOnboarding: true, theme: 'light'}

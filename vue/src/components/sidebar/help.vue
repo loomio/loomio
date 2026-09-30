@@ -1,6 +1,8 @@
 <script setup lang="js">
 import { computed } from 'vue';
 import { useRouter, useRoute } from 'vue-router';
+import { useI18n } from 'vue-i18n';
+import { manualUrl } from '@/shared/helpers/manual_url';
 
 import AppConfig from '@/shared/services/app_config';
 import Session from '@/shared/services/session';
@@ -11,6 +13,7 @@ import LmoUrlService from '@/shared/services/lmo_url_service';
 
 const router = useRouter();
 const route = useRoute();
+const { locale } = useI18n();
 
 const urlFor = (model, action, params) => LmoUrlService.route({model, action, params});
 
@@ -22,7 +25,9 @@ const showContact = computed(() => AppConfig.features.app.show_contact);
 const helpURL = computed(() => {
   if (AppConfig.userManual?.url) { return AppConfig.userManual.url; }
 
-  return AppConfig.theme.help_url;
+  const url = new URL(manualUrl('user_manual/overview', locale.value));
+  url.searchParams.set('utm_source', new URL(AppConfig.baseUrl).host);
+  return url.href;
 });
 
 const startOrFindDemo = () => {

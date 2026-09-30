@@ -9,6 +9,7 @@ import UrlFor from '@/mixins/url_for';
 import WatchRecords from '@/mixins/watch_records';
 import FormatDate from '@/mixins/format_date';
 import { taskRecordTitle } from '@/shared/helpers/task_record_title.mjs';
+import { manualUrl } from '@/shared/helpers/manual_url';
 
 import {groupBy} from 'lodash-es';
 
@@ -39,6 +40,7 @@ export default {
   },
 
   methods: {
+    manualUrl,
     taskUrlFor(record) {
       if (record.isA('discussion')) {
         return this.urlFor(record)+'/0';
@@ -80,7 +82,7 @@ v-main
                 common-icon(v-else name="mdi-checkbox-blank-outline")
     p(v-if="!loading && Object.keys(records).length == 0" v-t="'tasks.no_tasks_assigned'")
     .d-flex.justify-center
-      v-chip(outlined href="https://help.loomio.org/en/user_manual/threads/thread_admin/tasks.html" target="_blank")
+      v-chip(outlined :href="manualUrl('user_manual/discussions/tasks', $i18n.locale)" target="_blank")
         common-icon.mr-2(name="mdi-help-circle-outline")
         span(v-t="'common.user_guide'")
         span :

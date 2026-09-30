@@ -1,0 +1,27 @@
+site_title: Loomion ohje
+menu: Valikko
+open_navigation: Avaa navigointi
+close_navigation: Sulje navigointi
+search: Hae
+search_label: Hae Loomion ohjeesta
+help_contents: Ohjeen sisältö
+on_this_page: Tällä sivulla
+page_navigation: Sivunavigointi
+previous: Edellinen
+next: Seuraava
+image_alt: Loomion ohjeet ja dokumentaatio
+languages: Kielet
+copy: Kopioi
+copy_label: Kopioi koodi leikepöydälle
+copied: Kopioitu
+copy_failed: Kopiointi epäonnistui
+alerts:
+  note: Huomautus
+  tip: Vinkki
+  important: Tärkeää
+  warning: Varoitus
+  caution: Huomio
+sections:
+  User manual: Käyttöopas
+  Guides: Oppaat
+  Customer information: Tietoa asiakkaille

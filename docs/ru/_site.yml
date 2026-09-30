@@ -1,0 +1,27 @@
+site_title: Справка Loomio
+menu: Меню
+open_navigation: Открыть навигацию
+close_navigation: Закрыть навигацию
+search: Поиск
+search_label: Поиск в справке Loomio
+help_contents: Содержание справки
+on_this_page: На этой странице
+page_navigation: Навигация по странице
+previous: Предыдущее
+next: Следующее
+image_alt: Справка и документация Loomio
+languages: Языки
+copy: Копировать
+copy_label: Копировать код в буфер обмена
+copied: Скопировано
+copy_failed: Не удалось скопировать
+alerts:
+  note: Примечание
+  tip: Совет
+  important: Важно
+  warning: Предупреждение
+  caution: Внимание
+sections:
+  User manual: Руководство пользователя
+  Guides: Руководства
+  Customer information: Информация для клиентов

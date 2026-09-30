@@ -1,0 +1,27 @@
+site_title: Loomio súgó
+menu: Menü
+open_navigation: Navigáció megnyitása
+close_navigation: Navigáció bezárása
+search: Keresés
+search_label: Keresés a Loomio súgójában
+help_contents: A súgó tartalma
+on_this_page: Ezen az oldalon
+page_navigation: Oldalnavigáció
+previous: Előző
+next: Következő
+image_alt: Loomio súgó és dokumentáció
+languages: Nyelvek
+copy: Másolás
+copy_label: Kód másolása a vágólapra
+copied: Másolva
+copy_failed: A másolás sikertelen
+alerts:
+  note: Megjegyzés
+  tip: Tipp
+  important: Fontos
+  warning: Figyelmeztetés
+  caution: Vigyázat
+sections:
+  User manual: Felhasználói kézikönyv
+  Guides: Útmutatók
+  Customer information: Ügyfélinformációk

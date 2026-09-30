@@ -1,17 +1,17 @@
 <script setup lang="js">
 import { useI18n } from 'vue-i18n';
+import { manualUrl } from '@/shared/helpers/manual_url';
 
-defineProps({
+const { path } = defineProps({
   path: String
 });
-
-const { t } = useI18n();
+const { t, locale } = useI18n();
 </script>
 
 <template lang="pug">
 a.help-link.text-decoration-underline(
   style="color: inherit"
-  :href="'/docs/en/'+path"
+  :href="manualUrl(path, locale)"
   target="_blank"
   rel="noopener noreferrer"
 )

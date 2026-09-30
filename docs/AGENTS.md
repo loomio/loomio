@@ -6,7 +6,7 @@ By default it writes the site to `public/docs/` with URLs under `/docs`.
 Setting `DOCS_REDIRECT_TARGET` with an empty base path generates Cloudflare
 Bulk Redirect CSV files for moving `help.loomio.com` to the canonical site.
 
-- Keep user-manual source files under `docs/user_manual/`. Add every page that
+- Keep user-manual source files under `docs/en/user_manual/`. Add every page that
   should be published to `docs/SUMMARY.md`; the builder does not publish
   orphaned Markdown files. Dated changelog files are source fragments for the
   consolidated changelog and are the exception to this rule.
@@ -43,15 +43,34 @@ Bulk Redirect CSV files for moving `help.loomio.com` to the canonical site.
   `<!-- seo-description: ... -->` override when that paragraph is not a useful
   page summary.
 - The renderer concatenates dated files under
-  `docs/user_manual/changelog/` into the static changelog index, newest first.
+  `docs/en/user_manual/changelog/` into the static changelog index, newest first.
   Do not add dated entries to `docs/SUMMARY.md`; they are published only as
   part of the consolidated changelog page.
 
+## Translated manual
+
+English source pages live under `docs/en/`. Translated pages mirror their paths under `docs/<locale>/`, for example `docs/en/user_manual/users/bookmarks/index.md` and `docs/fr/user_manual/users/bookmarks/index.md`. The user manual and guides are translated; policy pages and the changelog stay in English. Shared navigation order lives in `docs/SUMMARY.md`, whose page paths are relative to each language directory.
+
+- Edit translated prose directly as Markdown. Customers do not need to change frontmatter, mark sections reviewed, or maintain a correction log. Keep section comments intact when editing words, splitting paragraphs, or renaming headings.
+- `<!-- translation-section: stable-id -->` marks a translation unit. IDs are unique within a page and remain unchanged when the text changes. Seed a new English page's IDs with `docs/translate.rb`; when adding a section to an existing page, give it a new marker and copy the marker to its translation only when supplying the translated text.
+- Frontmatter holds the translated navigation `title`, English section hashes in `sections`, generated text hashes in `generated`, Git source provenance where available, the last translation provider/date, and exceptional `needs_review` notes. The generated hashes detect customer edits automatically. They are fingerprints, not section identities.
+- Update a language with `bundle exec ruby docs/translate.rb <locale> [<page.md>...]`. Omit pages to process every manual and guide page in the shared summary. The script learns customer corrections even when English has not changed, without making a translation request. It translates only missing or stale sections and removes sections deleted from English.
+- Run `bundle exec ruby docs/sync_translations.rb` to update every published language. The local pre-push hook runs this automatically after checking that manual source edits are committed. Generated changes stop the push and must be committed before retrying; the hook never commits or stages them. The documentation GitHub Action checks freshness with `--check` and builds the site without invoking the translator.
+- When English changes a corrected section, update it automatically using the customer's version and previous correction notes as context. Record the customer's before/after wording in a `translation-correction` comment when Git contains the matching generated baseline. For an uncommitted generated baseline, record the preferred text instead. Keep notes with their section and give them to later translation requests. These notes do not create a review queue.
+- Translation requests receive named sections as rendered HTML with full-page context. Validate returned Markdown against the English using the site's Markdown parser: heading levels, lists, tables, link/image targets, code, literal HTML, and alert markers. Run the same structural checks at build time, including on customer edits. Terminology warnings are recorded for information and do not block otherwise valid translations.
+- A language builds when it is published in `docs/locales.yml` or requested through `DOCS_LOCALES`, for example `DOCS_LOCALES=fr,de bundle exec ruby docs/build.rb`. Machine translations may be published after automated validation; human review is optional. Published languages require every translated page to be complete, current and structurally valid. Preview builds omit incomplete or stale pages, using English navigation links for those pages.
+- Translated headings retain English anchor IDs, and links between translated pages use the current language. Reuse English screenshots and downloads by default; an asset at the equivalent `docs/<locale>/...` path overrides the English asset without copying all images into every locale.
+- Commit only English screenshots. Generate translated application images separately with `bin/docs-screenshots <locale,...|all> [image-or-directory...]`; `--status` reports cache state and `--refresh` also replaces outdated files. Generated PNGs and `.generation.json` live under the ignored `public/docs-screenshots/` cache or an explicit `--output` directory. Keep filenames stable and update the manifest only after successful captures. The manual-screenshot GitHub Action restores each language's R2 cache and publishes changed images and its manifest from trusted master runs. Runtime lookup uses local images, then `user-manual-screenshots.loomio.com`, then bundled English. Generation and publishing happen outside deployment; preserve local screenshot caches during client asset pruning.
+- The documentation GitHub Action validates the complete site and saves successful builds as workflow artifacts. Docker builds the static site into `public/docs/` from its own checkout during deployment. Documentation failures must fail CI, but the Docker build warns, removes incomplete output and continues without documentation. Publish only translated screenshots and their generation manifests to R2. Keep publishing credentials out of pull-request steps.
+- `docs/<locale>/_site.yml` contains site interface strings. The language's `style` in `docs/locales.yml` provides register guidance and follows the app's locale conventions.
+
 ## User-manual screenshot workflow
 
-Application screenshots in `docs/user_manual/` are generated by the dedicated Nightwatch specs under `vue/tests/e2e/screenshots/`. Keep each generated image in the same directory as the Markdown page that uses it, and reuse the existing filename when replacing a manual screenshot. Photos, diagrams, email-client screenshots, and third-party integration interfaces are not automatically in scope merely because they are images in the manual.
+Application screenshots in `docs/en/user_manual/` are generated by the dedicated Nightwatch specs under `vue/tests/e2e/screenshots/`. Keep each generated image in the same directory as the Markdown page that uses it, and reuse the existing filename when replacing a manual screenshot. Photos, diagrams, email-client screenshots, and third-party integration interfaces are not automatically in scope merely because they are images in the manual.
 
 The screenshot runner captures PNGs at 2× device scale. The documentation builder automatically emits local PNGs with a `2x` density descriptor so they display at no more than half their pixel dimensions with automatic height; do not add per-image display dimensions for this purpose.
+
+The screenshot helper compresses every capture as a palette PNG with `bin/compress-screenshot`, after cropping and spotlighting. Compression is deterministic and skips images that are already palette PNGs, so rerunning it never degrades an image. To compress a manually captured or replaced image, run `bundle exec ruby bin/compress-screenshot <path>`.
 
 Do not change production UI behavior merely to make a screenshot look right.
 First check capture timing, viewport changes, overlay positioning, selectors,
@@ -91,7 +110,7 @@ Work through screenshot replacements one image at a time:
 3. Add or extend a deterministic dev scenario, then navigate and interact with
    the interface through Nightwatch. Prefer normal user actions over directly
    mutating frontend state.
-4. Capture to the image's existing path relative to `docs/user_manual/` with
+4. Capture to the image's existing path relative to `docs/en/user_manual/` with
    `manualScreenshot.capture`, `manualScreenshot.captureElement`, or
    `manualScreenshot.captureRegion`. Use a
    stable selector and wait for the content that proves the documented state is
