@@ -1,18 +1,18 @@
 ---
 title: Invitar a votar
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/polls/inviting_people/index.md
+source_revision: 3a315412c646d254c8426be5c436a4e593f6011f
+source_file: docs/en/user_manual/polls/inviting_people/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 0635cf23fcaaa95b
   invite-people-to-vote-in-a-poll: cfbf5caf71d1d5ca
   invite-guests-or-experts: 0717537bbd36fa07
   invite-a-subgroup-to-vote: 3ac684bdca4b3365
   engage-people-while-a-poll-is-running: 69971de8d56c0a74
-  add-voters-to-the-poll: 904f682bab618ce3
-  remove-people-from-the-poll: d204dd916f5418e2
+  add-voters-to-the-poll: 48f3b4a1edb5a037
+  remove-people-from-the-poll: ceec3f0319728807
   remind-people-to-vote: 177c881cb1b0dfb9
   view-notification-history: 52d930341c048008
   close-early: 0c46e8066719fc2f
@@ -23,8 +23,8 @@ generated:
   invite-guests-or-experts: 30052411e9a1d1b7
   invite-a-subgroup-to-vote: b637f9a51fe79006
   engage-people-while-a-poll-is-running: 74b8254f9d6258be
-  add-voters-to-the-poll: f077cf224435b64d
-  remove-people-from-the-poll: c94333a5b487b23c
+  add-voters-to-the-poll: a6a8ea28785a3d96
+  remove-people-from-the-poll: 80dc0ffd9a671228
   remind-people-to-vote: 594e5e0f0d4d77f2
   view-notification-history: 2e2ad2399c6537f7
   close-early: c0930e10d29266ff
@@ -88,7 +88,7 @@ En la parte inferior del sondeo encontrarás varias funciones para mantener la p
 
 Puedes agregar personas al sondeo en cualquier momento, incluso antes de que se abra la votación de un sondeo programado.
 
-Selecciona **Agregar votantes** e introduce los nombres o las direcciones de correo electrónico de las personas que quieres agregar.
+Selecciona **Gestionar a los votantes** para abrir la ventana de gestión de votantes. Puedes invitar a todas las personas del grupo, agregar miembros por nombre o agregar personas invitadas por correo electrónico si se permiten las invitaciones a personas externas. Al escribir en **Buscar o invitar a los votantes**, también se filtran las personas que ya están en el sondeo. Los votantes agregados más recientemente aparecen primero; usa los controles de paginación para recorrer la lista completa.
 
 Si el sondeo tiene una hora de apertura programada y la votación aún no se ha abierto, las personas invitadas no recibirán una notificación inmediata. Recibirán una notificación cuando se abra la votación.
 
@@ -96,13 +96,15 @@ Si el sondeo tiene una hora de apertura programada y la votación aún no se ha 
 
 ### Quitar personas del sondeo
 
-Selecciona **Agregar votantes**, busca el nombre de la persona, abre el menú de tres puntos junto a él y selecciona **Eliminar de la propuesta**.
+Selecciona **Gestionar a los votantes**, busca el nombre de la persona en la ventana de gestión de votantes, selecciona el botón de la papelera junto al nombre y confirma **Eliminar votante**.
+
+![El botón de la papelera junto a un votante en la ventana de gestión de votantes](proposal_invite_remove.png)
 
 No se puede quitar a personas de un sondeo anónimo.
 
 Por ejemplo, si una persona administradora crea un sondeo en nombre de los miembros de una junta, puede quitarse si no tiene autorización para votar.
 
-![](proposal_invite_remove.png)
+En los sondeos que usan pesos de voto, esta misma ventana permite a quienes coordinan el sondeo [revisar y editar los pesos de voto](/en/user_manual/polls/weighted_voting).
 
 <!-- translation-section: remind-people-to-vote -->
 

@@ -1,19 +1,19 @@
 ---
 title: Conclusión
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/guides/facilitators_guide/concluding/index.md
+source_revision: 3a315412c646d254c8426be5c436a4e593f6011f
+source_file: docs/en/guides/facilitators_guide/concluding/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-30'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 0160da4a2a071cae
-  outcomes-next-steps: 9829d1cef05d120b
+  outcomes-next-steps: 146b139e25dcfb4e
   reporting-harvesting: 64a7f7605636c422
   turning-discussion-into-action: 67b87042b96109e0
   it-ain-t-over-til-it-s-over: 9edb6ef0bcb17938
 generated:
   introduction: a51647d18a741349
-  outcomes-next-steps: 9ff9105d2c5ec880
+  outcomes-next-steps: 04073e76269b540b
   reporting-harvesting: 893ed0b36fb5769a
   turning-discussion-into-action: c09b14d9c668a89a
   it-ain-t-over-til-it-s-over: 4fa0b15ced430441
@@ -43,7 +43,7 @@ A veces las respuestas son concretas, como las tareas pendientes. Otras veces so
 
 En Loomio
 
-* Las [conclusiones](/en/user_manual/polls/outcomes/) son una herramienta importante. Que termine una propuesta no significa que el proceso haya concluido: todavía hace falta resumir lo acordado. Para eso sirve la función de conclusiones.
+* Las [conclusiones](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome) son una herramienta importante. Que termine una propuesta no significa que el proceso haya concluido: todavía hace falta resumir lo acordado. Para eso sirve la función de conclusiones.
 * Muchas discusiones de Loomio terminan de forma natural sin usar propuestas ni publicar conclusiones. Aun así, aportan valor. Puede ser útil actualizar el cuadro de contexto con un resumen de la conclusión para consultarlo más adelante.
 * Si algunas personas tienen tareas pendientes, puedes @mencionar sus nombres para que reciban una notificación.
 

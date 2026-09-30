@@ -1,24 +1,26 @@
 ---
 title: Allouer
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/polls/allocate/index.md
+source_revision: 3a315412c646d254c8426be5c436a4e593f6011f
+source_file: docs/en/user_manual/polls/allocate/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: d097e3a7d91324c9
   when-to-use-allocate: 25c91f8c05c1ec80
   example-set-priorities-for-an-annual-strategy-review: 0211b365dde1d17c
   set-up-the-poll: 772846c919c6af97
   vote: b6d1dab4c7743034
-  read-the-results: 85ea9532f2548205
+  read-the-results: 3a66507bd8387273
+  share-an-outcome: abb46bfca8b73b7a
 generated:
   introduction: d28a0ff4d4d85f39
   when-to-use-allocate: d3103c99855dd546
   example-set-priorities-for-an-annual-strategy-review: ced8ea74d3d324ed
   set-up-the-poll: ed9a1d866a952a43
   vote: c4c451b763acb362
-  read-the-results: b2399955969cf674
+  read-the-results: fe2bb8276105375a
+  share-an-outcome: 79e080b1fd808a10
 title_source: c927a8a7c2ce230c
 title_generated: 0fee5d0b0df53184
 ---
@@ -84,4 +86,12 @@ Les options sont classées selon le nombre total de points reçus. Les résultat
 
 Dans cet exemple, **Viabilité financière** reçoit le plus de points, suivie de **Développement du personnel**. Toutes les personnes qui ont voté ont attribué des points à la viabilité financière, ce qui suggère un large accord sur la nécessité de lui consacrer beaucoup de temps pendant la revue. Comparez les totaux au nombre de votants pour distinguer les priorités largement partagées des domaines fortement soutenus par moins de personnes.
 
-Examinez les totaux, le nombre de votants et les raisons qu’ils ont données. Publiez une conclusion expliquant comment la revue stratégique sera organisée ; le vote n’attribue pas automatiquement le temps disponible.
+Examinez les totaux, le nombre de votants et les raisons qu’ils ont données.
+
+<!-- translation-section: share-an-outcome -->
+
+## Partager une conclusion
+
+À la clôture du sondage, partagez une conclusion. Le sondage n’attribue pas automatiquement de temps ou d’argent : indiquez donc comment le résultat sera utilisé. Consultez [Partager une conclusion](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome) pour comprendre le fonctionnement des conclusions.
+
+![Une conclusion précisant comment le temps sera réparti pendant la revue stratégique](outcome.png)

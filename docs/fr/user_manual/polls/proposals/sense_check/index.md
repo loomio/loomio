@@ -1,24 +1,26 @@
 ---
 title: Vérification de l’idée
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/polls/proposals/sense_check/index.md
+source_revision: 3a315412c646d254c8426be5c436a4e593f6011f
+source_file: docs/en/user_manual/polls/proposals/sense_check/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 2336356b9efbde30
   when-to-use-sense-check: c70985229c659d2f
   example-check-a-trial-plan: 8055cad3418b4bb7
   set-up-the-proposal: 8106c7ab17a225e6
   vote: 2440e2649ed1ff05
-  read-the-results: f8f63c908d080f77
+  read-the-results: 9cac8b6f7c7de36f
+  share-an-outcome: b05f9f889a838d47
 generated:
   introduction: af1a387c0540b30f
   when-to-use-sense-check: a4b296c6a1efed24
   example-check-a-trial-plan: 4c891121d48b9a8c
   set-up-the-proposal: 0d999e8e7bf17937
   vote: bcaaccf0c6df7fa8
-  read-the-results: baa156105096a766
+  read-the-results: 6d88aa753d633749
+  share-an-outcome: 32460daed7d2ff2c
 title_source: e9ac5b767e01ae7b
 title_generated: e589c23349974d71
 ---
@@ -70,8 +72,14 @@ Les participants choisissent la réponse qui correspond le mieux à leur avis ac
 
 ## Lire les résultats
 
-Le graphique indique le nombre et la proportion de votes pour chaque réponse. Lisez aussi les explications : une préoccupation bien fondée peut nécessiter une réponse, même si la plupart des participants choisissent **Ça a l'air bien**.
+Le graphique indique le nombre et la proportion de votes pour chaque réponse. Lisez les explications ainsi que la répartition des votes : une préoccupation bien fondée peut nécessiter une réponse, même si la plupart des participants choisissent **Ça a l'air bien**.
 
 ![](../proposal_sense_check_results.png)
 
-Publiez une conclusion qui résume les changements que le groupe apportera ou indique que l’idée est prête pour la prochaine étape de décision.
+<!-- translation-section: share-an-outcome -->
+
+## Partager une conclusion
+
+Lorsque la vérification de l’idée se termine, partagez une conclusion. Résumez les changements que le groupe apportera ou indiquez que l’idée est prête pour la prochaine étape de décision. Consultez [Partager une conclusion](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome) pour comprendre le fonctionnement des conclusions.
+
+![Une conclusion indiquant que le plan sera révisé avant l’examen final](outcome.png)

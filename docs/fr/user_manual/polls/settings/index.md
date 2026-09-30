@@ -1,6 +1,6 @@
 ---
 title: Paramètres
-source_revision: 6b2c4d5c591a9eb139fc64370d602b8dcf19c0e4
+source_revision: 3a315412c646d254c8426be5c436a4e593f6011f
 source_file: docs/en/user_manual/polls/settings/index.md
 translated:
   provider: codex/gpt-6.1-sol
@@ -12,11 +12,11 @@ sections:
   add-content: f622e36a3ad15e4e
   voting-options: d0ea31745ce8b651
   edit-voting-options: ef0d61585b34fbd6
-  opening-time: 13aa5e4392d1ba60
+  opening-time: 2fdf358a34805114
   more-settings: fd837a51b81cbc13
   reminder: e6ac37324b884958
   anonymous-voting: 4fde93187ffd1a86
-  vote-reason: ce00fe99ebac71ff
+  vote-reason: b1ebf2700ce8248b
   hide-results: c0873aeafe8feb59
   start-the-poll: 8e7d8e81db57f4f8
   managing-polls: b26fc41e19371d54
@@ -34,11 +34,11 @@ generated:
   add-content: dc871764c762def0
   voting-options: 8663e7895ace06b7
   edit-voting-options: 0b8971bc80f21aba
-  opening-time: ceaa16a280bf2dcf
+  opening-time: 4b550765619b5b54
   more-settings: ea1e48c372fdea5d
   reminder: 50492caa79211027
   anonymous-voting: cdb5b4daca7c548a
-  vote-reason: 83424410309e91a7
+  vote-reason: 4cfe702deb99e995
   hide-results: 9cf56a806a4f6b55
   start-the-poll: 482d7105c46a8f2b
   managing-polls: d4841c826f9ca251
@@ -123,11 +123,13 @@ Utilisez l’icône en forme de crayon à côté d’une option de vote pour ouv
 
 <!-- translation-section: opening-time -->
 
-### Heure d’ouverture
+### Durée
 
 Par défaut, le vote s’ouvre dès que vous créez le sondage. Pour l’ouvrir plus tard, décochez **Le vote est ouvert immédiatement**, puis choisissez une date et une heure d’ouverture.
 
 Vous pouvez ainsi laisser du temps pour la discussion avant l’ouverture du vote, ou vérifier que le sondage ou la proposition est correctement configuré et s’ouvrira au bon moment.
+
+Par exemple, si votre groupe doit voter sur plusieurs décisions lors d’une prochaine assemblée, vous pouvez préparer les sondages et ajouter les personnes invitées à voter à l’avance, puis programmer l’ouverture de tous les sondages au début de la période de vote. Les personnes peuvent consulter les sondages avant leur ouverture, mais ne peuvent pas voter à l’avance.
 
 Si une heure d’ouverture est programmée, vous pouvez ajouter des personnes au sondage avant l’ouverture du vote. Elles recevront une notification à l’ouverture du vote, et non au moment où vous les ajoutez.
 
@@ -176,21 +178,20 @@ Consultez [Vote anonyme](/en/user_manual/polls/anonymous_voting) pour savoir com
 <!-- translation-section: vote-reason -->
 
 ### Raison du vote
+
 Comprendre les raisons des votes peut être utile. Ce paramètre vous permet d’inviter les personnes à expliquer leur choix lorsqu’elles votent.
 
 Les paramètres disponibles dépendent du modèle :
 
 - **Facultatif** permet aux personnes qui votent de choisir si elles donnent une raison
-- **Nécessaire pour être en désaccord ou bloquer** exige une raison lorsque l’option choisie
-  utilise l’icône de vote Désaccord ou Veto
-- **Requis en cas de veto** exige une raison lorsque l’option choisie utilise
-  l’icône de vote Veto
+- **Nécessaire pour être en désaccord ou bloquer** exige une raison lorsque l’option choisie utilise l’icône de vote Désaccord ou Veto
+- **Requis en cas de veto** exige une raison lorsque l’option choisie utilise l’icône de vote Veto
 - **Requis** exige une raison de chaque personne qui vote
 - **Désactivé** supprime le champ de justification du vote
 
 ![](vote_reason_options.png)
 
-Les paramètres conditionnels dépendent de l’icône de vote, et non du nom de l’option. Ils restent applicables si vous renommez Désaccord, par exemple en Objection. Le modèle Consentement utilise par défaut **Nécessaire pour être en désaccord ou bloquer**, tandis que le modèle Consensus utilise **Requis en cas de veto**. Les autres modèles utilisent par défaut **Facultatif**, sauf les tours de questions, où une réponse est requise. La personne qui crée le sondage peut modifier ce paramètre pour chaque sondage.
+Les paramètres conditionnels dépendent de l’icône de vote, et non du nom de l’option. Ils restent applicables si vous renommez Désaccord, par exemple en Objection. Le modèle Consentement utilise par défaut **Nécessaire pour être en désaccord ou bloquer**, tandis que le modèle Consensus utilise **Requis en cas de veto**. Les autres modèles utilisent par défaut **Facultatif**. La personne qui crée le sondage peut modifier ce paramètre pour chaque sondage.
 
 **Limiter les raisons à 500 caractères :** Des raisons courtes sont plus faciles à comprendre. Un ensemble de raisons concises aide à prendre une décision. Ce paramètre est activé par défaut. Décochez-le pour autoriser des raisons plus longues.
 

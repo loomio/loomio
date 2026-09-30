@@ -1,24 +1,26 @@
 ---
 title: Elegir
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/polls/choose/index.md
+source_revision: 3a315412c646d254c8426be5c436a4e593f6011f
+source_file: docs/en/user_manual/polls/choose/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: f9d6a5bfb7445de0
   when-to-use-choose: f8a798497cac5a43
   example-set-a-planning-meeting-agenda: 32a94a916dbf84e5
   set-up-the-poll: a16095b63c57e0c9
   vote: d170451131c544cf
-  read-the-results: 84521c82aed8dd29
+  read-the-results: e675d12da1a4ba8a
+  share-an-outcome: f6afc1713b921265
 generated:
   introduction: a36b885e4b7f4555
   when-to-use-choose: c5598e58c9ef535a
   example-set-a-planning-meeting-agenda: a52e8805f5d477e4
   set-up-the-poll: 40ee015c503d9360
   vote: c2081a9c832a8673
-  read-the-results: 9d0d844664bbd0a2
+  read-the-results: 823bb47ec292ec7d
+  share-an-outcome: 35c0451473f82a5e
 title_source: c7f937836f5d82d5
 title_generated: f213c041507fb409
 ---
@@ -86,6 +88,10 @@ Los resultados muestran qué proporción del total de selecciones recibió cada 
 
 En este ejemplo, **Calendario de recogida en cafeterías** recibió tres selecciones. **Proceso de lavado** e **Informe sobre la tasa de devolución** recibieron dos cada uno. El resultado respalda dedicar más tiempo del orden del día a la recogida en cafeterías, pero quien organiza la reunión aún debe decidir cómo repartir el tiempo restante entre los dos temas empatados.
 
-Cuando se cierre el sondeo, publica una **Conclusión** que explique qué hará el grupo con el resultado.
+<!-- translation-section: share-an-outcome -->
 
-![](outcome.png)
+## Compartir una conclusión
+
+Cuando se cierre el sondeo, comparte una conclusión. Explica qué hará el grupo con el resultado, incluido cómo se resuelven los empates. Consulta [Compartir una conclusión](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome) para saber cómo funcionan las conclusiones.
+
+![Una conclusión que dedica la mayor parte del tiempo de la reunión a la recogida en cafeterías](outcome.png)

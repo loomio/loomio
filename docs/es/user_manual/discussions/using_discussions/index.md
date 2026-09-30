@@ -1,19 +1,19 @@
 ---
 title: Usar los hilos
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/discussions/using_discussions/index.md
+source_revision: 3a315412c646d254c8426be5c436a4e593f6011f
+source_file: docs/en/user_manual/discussions/using_discussions/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: fe8ab54791a49e01
   thread-anatomy: fca9ec9af6718a99
   discussion-context: ebefd7274a307dd0
-  notify-people-about-context-changes: 79d0ed7f94edb858
+  notify-people-about-context-changes: 3fe9320d33fff8f6
   navigation: c0ccc79744ae2c33
   notifications-and-members: ac51f2bbe3642155
   email-notifications-for-this-thread: 69076a17d7457ba0
-  invite-people: 69e5555d18551b0b
+  invite-people: 94ab00a27cec065d
   seen-by: 1d0bfd812ca11782
   notified: 6139bdcaae32a1db
   actions: c015c12999c5be2f
@@ -28,11 +28,11 @@ generated:
   introduction: 168e1658fc96899e
   thread-anatomy: fc444a0c40b2cc89
   discussion-context: db68f50fb07744da
-  notify-people-about-context-changes: 8b069a7a42591eca
+  notify-people-about-context-changes: 658ee1b7adf7a490
   navigation: c2a10fa85250b6fe
   notifications-and-members: 7e77d9a3db304261
   email-notifications-for-this-thread: 53fb1ba608def27d
-  invite-people: 3c62074b87e58100
+  invite-people: 0f12fdb28687a2ab
   seen-by: 53033b816f39a23f
   notified: b8eb59c5b1c05a5f
   actions: 70815fbd76d74f6c
@@ -113,9 +113,9 @@ Cuando edites el contexto de la discusión, usa **¿Qué ha cambiado?** para res
 
 ![Edición del contexto de una discusión con un resumen de cambios y destinatarios de la notificación](../notifying_people/thread_editcontext.png)
 
-El resumen aparece como un elemento del hilo para que quienes participan puedan ver qué ha cambiado.
+El hilo muestra que editaste el contexto. Las personas a quienes notifiques reciben tu resumen junto con la notificación.
 
-![Elemento de la cronología que describe un cambio en el contexto de la discusión](../notifying_people/thread_edit_comment.png)
+![Elemento del hilo que muestra que se editó el contexto de la discusión](../notifying_people/thread_edit_comment.png)
 
 <!-- translation-section: navigation -->
 
@@ -159,9 +159,13 @@ Selecciona **Invitar personas** para añadir personas después de iniciar el hil
 
 Selecciona un grupo o subgrupo, escribe los nombres de los miembros o introduce una dirección de correo electrónico para invitar a una persona como invitada.
 
+El campo **Encuentra o invita a personas** también filtra la lista de personas que ya están en el hilo. Borra el contenido del campo para volver a mostrar la lista completa y usa los controles de paginación si hay más de 50 personas. Después de seleccionar a los destinatarios, el campo de mensaje opcional sustituye a la lista de miembros. Las personas nuevas reciben una invitación; quienes ya tienen acceso reciben otra notificación cuando seleccionas **Invitar o notificar**.
+
 ![Ventana para invitar personas con un campo para nombres y direcciones de correo electrónico](../notifying_people/thread_invite.png)
 
 Una persona invitada puede ver este hilo y participar en él, pero no puede ver otras discusiones del grupo a menos que también la invites a ellas.
+
+Puedes descartar los avisos de orientación que aparecen en la parte superior de la ventana. Loomio recuerda qué avisos descartaste en tu cuenta.
 
 ![Invitación a una persona por correo electrónico](../notifying_people/invite_guest.png)
 

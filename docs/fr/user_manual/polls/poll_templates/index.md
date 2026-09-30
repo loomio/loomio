@@ -1,10 +1,10 @@
 ---
 title: Modèles de sondage
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/polls/poll_templates/index.md
+source_revision: 3a315412c646d254c8426be5c436a4e593f6011f
+source_file: docs/en/user_manual/polls/poll_templates/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: f11182d62d99dbcc
   voting-methods-and-templates: 24be471686aa2dfd
@@ -15,7 +15,7 @@ sections:
   voting-method: 761137852812fea8
   example-title-details-and-tags: 9dbbd0510d2d6cc1
   response-options: 727afbf0dcea6069
-  duration-and-settings: dc1fb9123eb808df
+  duration-and-settings: a364411a3bebb3ae
   save-and-test-the-template: 8c48386c69ea309a
   manage-the-template-list: 0c124d7958c3f80a
 generated:
@@ -28,7 +28,7 @@ generated:
   voting-method: d4035c964dc7d99b
   example-title-details-and-tags: aa28219deb825aea
   response-options: f73b8622cf9c9d3b
-  duration-and-settings: ff73a866afd589ff
+  duration-and-settings: 17932de315e03ac8
   save-and-test-the-template: ab4269cb1e361b55
   manage-the-template-list: 884a5ba9e6104d99
 title_source: 114cca246e357304
@@ -142,7 +142,7 @@ Définissez une durée par défaut adaptée à la plupart des utilisations du mo
 
 ![](poll_type_duration.png)
 
-D’autres paramètres par défaut peuvent régir la visibilité des résultats, le vote anonyme, l’obligation de justifier son vote, les rappels, le quorum et les fonctions propres à chaque méthode. Consultez [Paramètres des propositions et des sondages](../settings/) pour connaître leurs effets.
+D’autres paramètres par défaut peuvent régir la visibilité des résultats, le vote anonyme, le [vote pondéré](../weighted_voting/), l’obligation de justifier son vote, les rappels, le quorum et les fonctions propres à chaque méthode. Consultez [Paramètres des propositions et des sondages](../settings/) pour connaître leurs effets.
 
 <!-- translation-section: save-and-test-the-template -->
 

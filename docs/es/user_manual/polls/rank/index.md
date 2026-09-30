@@ -1,10 +1,10 @@
 ---
 title: Rango
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/polls/rank/index.md
+source_revision: 3a315412c646d254c8426be5c436a4e593f6011f
+source_file: docs/en/user_manual/polls/rank/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 9908dff1f0045200
   when-to-use-rank: f47d22e4968f74dd
@@ -12,6 +12,7 @@ sections:
   set-up-the-poll: 8a5902b708d6e7be
   vote: b089c2c5b7504b5d
   read-the-results: 18fbb0f9a5a866bc
+  share-an-outcome: c9dcebf155d64c65
 generated:
   introduction: 76506b84373055c7
   when-to-use-rank: 0f9e6bd57bd35876
@@ -19,6 +20,7 @@ generated:
   set-up-the-poll: 37d070499efd0987
   vote: 5c89cff06db81463
   read-the-results: 1e96f0fa370ce77d
+  share-an-outcome: 9c09c79f4b548302
 title_source: a4130d7d2c3a137f
 title_generated: b3255287db980add
 ---
@@ -86,3 +88,11 @@ Los resultados combinan todos los votos en una clasificación general por puntos
 En este ejemplo, la **botella ámbar de 500 ml** ocupa el primer lugar, seguida de la **botella transparente de 500 ml** y la **botella ámbar de 750 ml**. El grupo puede estudiar primero el diseño preferido y conservar el resto del orden como secuencia de alternativas.
 
 Un resultado basado en puntos puede ocultar patrones de preferencia distintos que producen el mismo total. Revisa los votos individuales y sus razones cuando las opciones estén muy igualadas o la decisión tenga consecuencias importantes.
+
+<!-- translation-section: share-an-outcome -->
+
+## Comparte una conclusión
+
+Cuando se cierre la encuesta, comparte una conclusión. Indica qué opción llevará adelante el grupo y qué ocurrirá si no se puede concretar. Consulta [Comparte una conclusión](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome) para saber cómo funcionan las conclusiones.
+
+![Una conclusión que elige el diseño de botella mejor clasificado](outcome.png)

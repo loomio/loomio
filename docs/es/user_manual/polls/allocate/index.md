@@ -1,24 +1,26 @@
 ---
 title: Asignar
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/polls/allocate/index.md
+source_revision: 3a315412c646d254c8426be5c436a4e593f6011f
+source_file: docs/en/user_manual/polls/allocate/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: d097e3a7d91324c9
   when-to-use-allocate: 25c91f8c05c1ec80
   example-set-priorities-for-an-annual-strategy-review: 0211b365dde1d17c
   set-up-the-poll: 772846c919c6af97
   vote: b6d1dab4c7743034
-  read-the-results: 85ea9532f2548205
+  read-the-results: 3a66507bd8387273
+  share-an-outcome: abb46bfca8b73b7a
 generated:
   introduction: f1e35e9fab0bbd6a
   when-to-use-allocate: 5ed3fc5f03afb1aa
   example-set-priorities-for-an-annual-strategy-review: a274199bfb5be6f3
   set-up-the-poll: 11eb1ba8d352260a
   vote: f7d4af2024587408
-  read-the-results: 7e33a35c572a8951
+  read-the-results: e60c9e4df6f688fd
+  share-an-outcome: 50e28ac20e7f7403
 title_source: c927a8a7c2ce230c
 title_generated: f195acb749b4242b
 ---
@@ -84,4 +86,12 @@ Los resultados ordenan las opciones según el total de puntos recibidos. Tambié
 
 En este ejemplo, **Sostenibilidad financiera** recibe más puntos, seguida de **Desarrollo del personal**. Todas las personas votantes dan puntos a Sostenibilidad financiera, lo que sugiere un amplio acuerdo en que necesita bastante tiempo de revisión. Compara los totales con el número de votantes para distinguir las prioridades compartidas de las áreas que reciben mucho apoyo de menos personas.
 
-Considera los totales junto con el número de votantes y sus razones. Publica una conclusión que explique cómo se organizará la revisión de la estrategia; el sondeo no asigna tiempo automáticamente.
+Considera los totales junto con el número de votantes y sus razones.
+
+<!-- translation-section: share-an-outcome -->
+
+## Comparte una conclusión
+
+Cuando se cierre el sondeo, comparte una conclusión. El sondeo no asigna tiempo ni dinero automáticamente, así que explica cómo se utilizará el resultado. Consulta [Comparte una conclusión](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome) para saber cómo funcionan las conclusiones.
+
+![Una conclusión que establece cómo se distribuirá el tiempo de la revisión de la estrategia](outcome.png)

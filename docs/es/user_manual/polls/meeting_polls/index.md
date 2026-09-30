@@ -1,20 +1,20 @@
 ---
 title: Encuesta de tiempo
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/polls/meeting_polls/index.md
+source_revision: 3a315412c646d254c8426be5c436a4e593f6011f
+source_file: docs/en/user_manual/polls/meeting_polls/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 8ab9108683132085
   time-poll: d5d5d81f7de10419
   voting: c50083234167a0f9
-  outcome: 20d3f84d36a3b860
+  outcome: 74db36d36fa18798
 generated:
   introduction: e34257193300b4bf
   time-poll: ce63ce27b2f127fe
   voting: '00886ad1570ec63f'
-  outcome: 46099cdc0ce4dac7
+  outcome: fc6c4e392aa44026
 title_source: 8e2a07d7257fbc04
 title_generated: 878240a5be52ffbf
 ---
@@ -63,9 +63,9 @@ Los resultados se actualizan a medida que avanza la votación. Una tabla muestra
 
 <!-- translation-section: outcome -->
 
-### Conclusión
+### Compartir una conclusión
 
-Cuando se cierre la encuesta de tiempo, elige el mejor horario y publica una conclusión.
+Cuando se cierre la encuesta de tiempo, elige el mejor horario y comparte una conclusión. Consulta [Compartir una conclusión](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome) para saber cómo funcionan las conclusiones.
 
 ![](timepoll_outcome.png)
 

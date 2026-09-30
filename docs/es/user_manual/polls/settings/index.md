@@ -1,6 +1,6 @@
 ---
 title: Configuración
-source_revision: 6b2c4d5c591a9eb139fc64370d602b8dcf19c0e4
+source_revision: 3a315412c646d254c8426be5c436a4e593f6011f
 source_file: docs/en/user_manual/polls/settings/index.md
 translated:
   provider: codex/gpt-6.1-sol
@@ -12,11 +12,11 @@ sections:
   add-content: f622e36a3ad15e4e
   voting-options: d0ea31745ce8b651
   edit-voting-options: ef0d61585b34fbd6
-  opening-time: 13aa5e4392d1ba60
+  opening-time: 2fdf358a34805114
   more-settings: fd837a51b81cbc13
   reminder: e6ac37324b884958
   anonymous-voting: 4fde93187ffd1a86
-  vote-reason: ce00fe99ebac71ff
+  vote-reason: b1ebf2700ce8248b
   hide-results: c0873aeafe8feb59
   start-the-poll: 8e7d8e81db57f4f8
   managing-polls: b26fc41e19371d54
@@ -34,11 +34,11 @@ generated:
   add-content: 7b1337a2b3cae417
   voting-options: 7d361d091b44f4d7
   edit-voting-options: 22d3796122793181
-  opening-time: 946731717f3cde3a
+  opening-time: fc6ac53212e77c33
   more-settings: 3519ac4ed701ef08
   reminder: 8800055fd45ae1f1
   anonymous-voting: 77d215b1ebd0c8e6
-  vote-reason: 9608198e80bdd5a0
+  vote-reason: 47dc00f6f7e233dc
   hide-results: 26eb6981aaf6e869
   start-the-poll: 4a14fd3145c3e39b
   managing-polls: 3711abc9c32d6f77
@@ -123,11 +123,13 @@ Usa el icono del lápiz junto a la opción de voto para abrir la ventana de edic
 
 <!-- translation-section: opening-time -->
 
-### Hora de apertura
+### Duración
 
 De forma predeterminada, la votación se abre en cuanto creas la encuesta. Si quieres que se abra más tarde, desmarca **La votación se abre inmediatamente** y selecciona la fecha y hora de apertura.
 
 Esto permite dejar tiempo para debatir antes de votar o preparar la encuesta o propuesta para que se abra en el momento previsto.
+
+Por ejemplo, si tu grupo tiene varias decisiones que votar en una próxima asamblea, puedes preparar las encuestas y agregar votantes con anticipación, y luego programarlas para que todas se abran cuando comience el periodo de votación. Las personas pueden ver las encuestas antes de que se abran, pero no pueden votar antes de tiempo.
 
 Si programas la apertura de una encuesta, puedes agregar votantes antes de que se abra. Recibirán una notificación cuando se abra la votación, en lugar de recibirla cuando los agregues.
 
@@ -176,21 +178,20 @@ Consulta [Votación anónima](/en/user_manual/polls/anonymous_voting) para saber
 <!-- translation-section: vote-reason -->
 
 ### Motivo del voto
+
 Puede ser útil saber por qué las personas votaron de cierta manera. Con esta opción, puedes invitarlas a compartir sus motivos al votar.
 
 Las opciones disponibles dependen de la plantilla:
 
 - **Opcional** permite a quienes votan decidir si dan una razón
-- **Requerido para estar en desacuerdo o bloquear** exige una razón cuando la opción elegida
-  usa el icono de voto En desacuerdo o Bloquear
-- **Requerido para bloquear** exige una razón cuando la opción elegida usa el
-  icono de voto Bloquear
+- **Requerido para estar en desacuerdo o bloquear** exige una razón cuando la opción elegida usa el icono de voto En desacuerdo o Bloquear
+- **Requerido para bloquear** exige una razón cuando la opción elegida usa el icono de voto Bloquear
 - **Requerido** exige que todas las personas que votan den una razón
 - **Desactivado** elimina el campo para explicar el voto
 
 ![](vote_reason_options.png)
 
-Las opciones condicionales dependen del icono de voto, no del nombre de la opción. Siguen aplicándose si cambias el nombre de En desacuerdo por otro, como Objeción. La plantilla de Consentimiento usa por defecto **Requerido para estar en desacuerdo o bloquear**, mientras que la plantilla de Consenso usa **Requerido para bloquear**. Las demás plantillas usan por defecto **Opcional**, excepto las rondas de preguntas, en las que la respuesta es obligatoria. Quien crea la encuesta puede cambiar esta opción para una encuesta concreta.
+Las opciones condicionales dependen del icono de voto, no del nombre de la opción. Siguen aplicándose si cambias el nombre de En desacuerdo por otro, como Objeción. La plantilla de Consentimiento usa por defecto **Requerido para estar en desacuerdo o bloquear**, mientras que la plantilla de Consenso usa **Requerido para bloquear**. Las demás plantillas usan por defecto **Opcional**. Quien crea la encuesta puede cambiar esta opción para una encuesta concreta.
 
 **Limitar la razón a un máximo de 500 caracteres:** Las razones breves son más fáciles de entender. Un conjunto de razones concisas ayuda a tomar una decisión. Esta opción está marcada por defecto. Desmárcala para permitir razones más largas.
 

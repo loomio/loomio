@@ -1,10 +1,10 @@
 ---
 title: Propuestas y sondeos
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/polls/intro_to_decisions/index.md
+source_revision: 3a315412c646d254c8426be5c436a4e593f6011f
+source_file: docs/en/user_manual/polls/intro_to_decisions/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: d7cf8a871d9af6ea
   find-the-right-help: 4bb04c002cbbde42
@@ -14,7 +14,12 @@ sections:
   choose-whether-to-use-a-discussion: fbe0fe9415feadae
   in-a-discussion: d57d23917bab162a
   without-a-discussion: 87efa5071bb33a34
-  what-happens-next: de5cc2b17603d0ce
+  what-happens-next: 7fe113c92c0a58bd
+  1-create-it: 865fde10233c86d2
+  2-voting-opens: 571a77b9c70569d3
+  3-people-vote: 71061d516df57dab
+  4-it-closes: c0376a9026d18bc3
+  5-share-an-outcome: 8339cb332cd8a946
 generated:
   introduction: 04bb539e88cd6904
   find-the-right-help: 203863c14e680991
@@ -24,7 +29,12 @@ generated:
   choose-whether-to-use-a-discussion: 7d6901b032995188
   in-a-discussion: f30cdd532415dfe2
   without-a-discussion: 2481a444436c6630
-  what-happens-next: 25fba0306245c674
+  what-happens-next: 72be04ffd41ef1d1
+  1-create-it: f745cec4e784ce76
+  2-voting-opens: 17b5cd190575ffe9
+  3-people-vote: 2d4f6956ae1afc5a
+  4-it-closes: b23cb1d8a6607035
+  5-share-an-outcome: 710280e44f8ad288
 title_source: d45b4ba3cb7a27cb
 title_generated: 4d74778611cbdcd4
 ---
@@ -110,8 +120,48 @@ Si creas una discusión y un sondeo al mismo tiempo solo para celebrar una votac
 
 <!-- translation-section: what-happens-next -->
 
-## Qué ocurre después
+## Del inicio a la conclusión
 
-Al iniciar una propuesta o un sondeo, añades un título y los detalles, revisas las opciones de respuesta y los ajustes, estableces una hora de cierre e invitas a las personas participantes. Mientras está abierto, pueden votar, explicar su respuesta y cambiar su voto. Los resultados se actualizan a medida que se emiten los votos, según el ajuste de visibilidad de los resultados del sondeo.
+Una propuesta o un sondeo pasa por estas etapas.
 
-Cuando se cierre, publica una [conclusión](../outcomes/) que explique qué significa el resultado y qué ocurrirá después.
+<!-- translation-section: 1-create-it -->
+
+### 1. Créalo
+
+Añade un título y los detalles, revisa las opciones y los ajustes, y establece una hora de cierre. Después, elige cuándo se abre la votación:
+
+- **La votación se abre inmediatamente** abre la votación en cuanto inicias la propuesta o el sondeo.
+- Una **Fecha de apertura** permite programar la votación. Las personas pueden verla antes de esa fecha, pero no pueden votar hasta que se abra.
+- Si no eliges ninguna de estas opciones, se guarda como borrador.
+
+<!-- translation-section: 2-voting-opens -->
+
+### 2. Se abre la votación
+
+Cuando se abre la votación, Loomio notifica a las personas que invitaste. Consulta [Invitar a votar](../inviting_people/).
+
+<!-- translation-section: 3-people-vote -->
+
+### 3. Las personas votan
+
+Mientras la votación está abierta, las personas pueden votar, explicar su voto y cambiarlo. Los resultados se actualizan a medida que las personas votan, salvo que estén ocultos hasta el cierre. Por defecto, las personas que no han votado reciben un recordatorio un día antes del cierre.
+
+<!-- translation-section: 4-it-closes -->
+
+### 4. Se cierra la votación
+
+La votación se cierra automáticamente a la hora de cierre. Un coordinador del sondeo también puede cerrarla antes. Después del cierre, un coordinador del sondeo puede volver a abrirla con una nueva hora de cierre para que las personas sigan votando. Los sondeos anónimos no se pueden volver a abrir.
+
+<!-- translation-section: 5-share-an-outcome -->
+
+### 5. Comparte una conclusión
+
+Cuando se cierra el sondeo, Loomio pide a sus coordinadores que compartan una conclusión.
+
+![La indicación para introducir una conclusión después del cierre de una propuesta](outcome_prompt.png)
+
+La conclusión indica qué se decidió y qué sucederá después. Aparece encima de los resultados, por lo que es lo primero que las personas leen. Cuando la publiques, puedes notificar a las personas. Recibirán un correo electrónico con los resultados y la conclusión.
+
+También puedes establecer una fecha en **Revisar fecha**. Ese día, Loomio te recuerda que revises la decisión.
+
+![Una conclusión publicada con una fecha de revisión](outcome_published.png)

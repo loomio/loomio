@@ -1,24 +1,26 @@
 ---
 title: Consejo
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/polls/proposals/advice/index.md
+source_revision: 3a315412c646d254c8426be5c436a4e593f6011f
+source_file: docs/en/user_manual/polls/proposals/advice/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 3b517bcf7f8d31d2
   when-to-use-advice: d98ed1affd9abbd3
   example-choose-a-washing-supplier: 94c2d1f8987bd817
   set-up-the-proposal: e93938cfa0895f27
   vote: e076d476b50d1445
-  read-the-results: 7782c49ae9875d70
+  read-the-results: 937eff4c74abcc79
+  share-an-outcome: 1f762148d1f18b1d
 generated:
   introduction: 1347a35fb5ee9bc9
   when-to-use-advice: 6b07bbf901f38949
   example-choose-a-washing-supplier: eb568b5e289280c4
   set-up-the-proposal: 276d41dc2ccdbd67
   vote: fbd8a5ce4006e251
-  read-the-results: 8cdffdf926700c88
+  read-the-results: 15d2e635f9fbf127
+  share-an-outcome: f89ce2e8623dfadc
 title_source: 305f5e5463e18d7f
 title_generated: b18dd065ae9f1f7e
 ---
@@ -69,4 +71,10 @@ El gráfico muestra quién ha respondido, pero los motivos contienen lo esencial
 
 ![](../proposal_advice_results.png)
 
-Quien toma la decisión publica una conclusión en la que explica qué decidió y cómo influyeron los consejos recibidos.
+<!-- translation-section: share-an-outcome -->
+
+## Comparte una conclusión
+
+Cuando se cierra la propuesta, quien toma la decisión comparte una conclusión. En ella explica qué decidió y cómo influyeron los consejos recibidos en la decisión. Consulta [Comparte una conclusión](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome) para saber cómo funcionan las conclusiones.
+
+![Una conclusión que indica el proveedor elegido y los consejos que se siguieron](outcome.png)

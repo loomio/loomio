@@ -1,19 +1,19 @@
 ---
 title: Utiliser les fils de discussion
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/discussions/using_discussions/index.md
+source_revision: 3a315412c646d254c8426be5c436a4e593f6011f
+source_file: docs/en/user_manual/discussions/using_discussions/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: fe8ab54791a49e01
   thread-anatomy: fca9ec9af6718a99
   discussion-context: ebefd7274a307dd0
-  notify-people-about-context-changes: 79d0ed7f94edb858
+  notify-people-about-context-changes: 3fe9320d33fff8f6
   navigation: c0ccc79744ae2c33
   notifications-and-members: ac51f2bbe3642155
   email-notifications-for-this-thread: 69076a17d7457ba0
-  invite-people: 69e5555d18551b0b
+  invite-people: 94ab00a27cec065d
   seen-by: 1d0bfd812ca11782
   notified: 6139bdcaae32a1db
   actions: c015c12999c5be2f
@@ -28,11 +28,11 @@ generated:
   introduction: ec44f55e0bcbdd17
   thread-anatomy: 76dae2fa8028253c
   discussion-context: 592e484713d90ea6
-  notify-people-about-context-changes: 24de98489f6b74b4
+  notify-people-about-context-changes: 4c2914e64f8461b1
   navigation: 6e42a5401de9676d
   notifications-and-members: fa4cc183e9cad8e5
   email-notifications-for-this-thread: 0d17b218d973a644
-  invite-people: 25af52aa67b21aca
+  invite-people: 5f89e8ec116c65fe
   seen-by: d5da42a2d06d3204
   notified: 35653165cee968f0
   actions: 0a80480546ad630d
@@ -113,9 +113,9 @@ Lorsque vous modifiez le contexte de la discussion, utilisez **Qu'est ce qui a c
 
 ![Modification du contexte d’une discussion avec un résumé des changements et le choix des destinataires de la notification](../notifying_people/thread_editcontext.png)
 
-Le résumé apparaît dans le fil de discussion pour que les participants puissent voir ce qui a changé.
+Le fil de discussion indique que vous avez modifié le contexte. Les personnes que vous notifiez reçoivent votre résumé avec la notification.
 
-![Élément de la chronologie décrivant une modification du contexte de la discussion](../notifying_people/thread_edit_comment.png)
+![Élément du fil de discussion indiquant que le contexte de la discussion a été modifié](../notifying_people/thread_edit_comment.png)
 
 <!-- translation-section: navigation -->
 
@@ -159,9 +159,13 @@ Sélectionnez **Inviter des personnes** pour ajouter des participants après le 
 
 Sélectionnez un groupe ou un sous-groupe, saisissez le nom des membres à inviter individuellement, ou saisissez une adresse e-mail pour inviter une personne extérieure.
 
+Le champ **Trouver ou inviter des personnes** permet aussi de filtrer la liste des personnes déjà présentes dans le fil de discussion. Effacez le contenu du champ pour afficher à nouveau la liste complète, et utilisez les commandes de pagination s’il y a plus de 50 personnes. Après la sélection des destinataires, la liste des membres laisse place au champ de message facultatif. Les nouvelles personnes sont invitées ; celles qui ont déjà accès à la discussion reçoivent une nouvelle notification lorsque vous sélectionnez **Inviter ou notifier**.
+
 ![Fenêtre d’invitation avec un champ pour les noms et les adresses e-mail](../notifying_people/thread_invite.png)
 
 Une personne invitée peut voir ce fil de discussion et y participer. Elle ne peut pas voir les autres discussions du groupe sans y avoir été invitée séparément.
+
+Vous pouvez masquer les messages d’aide en haut de la fenêtre. Loomio mémorise les messages que vous avez masqués pour votre compte.
 
 ![Invitation d’une personne extérieure par adresse e-mail](../notifying_people/invite_guest.png)
 

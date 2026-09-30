@@ -1,10 +1,10 @@
 ---
 title: Presenta Loomio a tu grupo
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/overview/introducing_loomio/index.md
+source_revision: 3a315412c646d254c8426be5c436a4e593f6011f
+source_file: docs/en/user_manual/overview/introducing_loomio/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 3937e28d4932fd6d
   choose-one-useful-starting-point: 990ae1af5bf58d27
@@ -16,7 +16,7 @@ sections:
   invite-people: 40058431249a070e
   help-everyone-participate-once: 94babb6a295b7f66
   use-notifications-deliberately: a532d30c36993c6a
-  complete-the-first-process: 48fdb4622d159044
+  complete-the-first-process: fd49ec812c1265e7
 generated:
   introduction: cfb03592c0d4fe65
   choose-one-useful-starting-point: ca2e6bfba9a65b1f
@@ -28,7 +28,7 @@ generated:
   invite-people: 86cd1d749f519bff
   help-everyone-participate-once: 2fd1b3bfde98294e
   use-notifications-deliberately: 0cf4161fca463b19
-  complete-the-first-process: 2f69e4fb7ccb2eee
+  complete-the-first-process: 9864995ddbd3626c
 title_source: 4f1540fbaadc657b
 title_generated: 774e4f929f88aded
 ---
@@ -175,8 +175,8 @@ El primer proceso debe mostrar todas las etapas:
 2. Invita a debatir o a hacer preguntas cuando sea necesario.
 3. Inicia la propuesta o el sondeo adecuado.
 4. Recuerda que participen quienes aún no lo hayan hecho, si es necesario.
-5. Publica una [conclusión](/en/user_manual/polls/outcomes) que indique qué se decidió y cuáles son los siguientes pasos.
+5. Publica una [conclusión](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome) que indique qué se decidió y cuáles son los siguientes pasos.
 
-La conclusión cierra el proceso y deja un registro que los miembros pueden consultar más adelante. Después, pregunta qué funcionó, ajusta el proceso y elige la siguiente tarea periódica que realizaréis en Loomio.
+La conclusión cierra el proceso y deja un registro que los miembros pueden consultar más adelante. Después, pregunta qué funcionó, ajusta el proceso y elige la siguiente tarea periódica que el grupo realizará en Loomio.
 
 Para seguir un proceso guiado desde el debate hasta la decisión, consulta [Tomar decisiones](/en/guides/making_decisions). Si buscas prácticas específicas para juntas directivas, consulta [Presenta Loomio a tu junta directiva](/en/guides/board_processes/introduce).

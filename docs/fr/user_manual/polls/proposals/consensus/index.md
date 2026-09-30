@@ -1,24 +1,26 @@
 ---
 title: Consensus
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/polls/proposals/consensus/index.md
+source_revision: 3a315412c646d254c8426be5c436a4e593f6011f
+source_file: docs/en/user_manual/polls/proposals/consensus/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: af2e2a50e8c0b440
   when-to-use-consensus: fc7f6180345f73a3
   example-adopt-a-bottle-return-standard: 9b0915ee6f41fa54
   set-up-the-proposal: b35a641ec031a40b
   vote: f7dbea12e2d6261a
-  read-the-results: d7d1bfae079d04ec
+  read-the-results: e60abb3a43a86d6e
+  share-an-outcome: a7febe19484c20b3
 generated:
   introduction: 21718be779ed1ec9
   when-to-use-consensus: 65b5ed25683a1422
   example-adopt-a-bottle-return-standard: '046999299c9e4f04'
   set-up-the-proposal: 5b19d9e6e8473e40
   vote: 2ee747c2d59e8e75
-  read-the-results: a16050f73cfac0af
+  read-the-results: 2c72114d4f532ce4
+  share-an-outcome: dea161bd821038cb
 title_source: 8abe09bf65aefdb8
 title_generated: 8abe09bf65aefdb8
 ---
@@ -69,4 +71,10 @@ Le graphique montre la répartition des réponses. Examinez chaque désaccord et
 
 ![](../proposal_consensus_results.png)
 
-Si le groupe parvient à un accord, publiez une conclusion qui consigne la norme définitive et les responsabilités de chacun. Sinon, indiquez ce qui sera révisé et quand le groupe reviendra sur la proposition.
+<!-- translation-section: share-an-outcome -->
+
+## Partager une conclusion
+
+Lorsque la proposition est close, partagez une conclusion. Si le groupe est parvenu à un accord, consignez l’accord définitif et les personnes responsables. Sinon, indiquez ce qui sera révisé et quand le groupe reviendra sur la proposition. Consultez [Partager une conclusion](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome) pour comprendre le fonctionnement des conclusions.
+
+![Une conclusion indiquant que le consensus n’a pas été atteint et que la norme sera révisée](outcome.png)

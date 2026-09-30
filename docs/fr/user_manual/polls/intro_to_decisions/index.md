@@ -3,8 +3,8 @@ title: Propositions et sondages
 source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
 source_file: docs/user_manual/polls/intro_to_decisions/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: d7cf8a871d9af6ea
   find-the-right-help: 4bb04c002cbbde42
@@ -14,7 +14,11 @@ sections:
   choose-whether-to-use-a-discussion: fbe0fe9415feadae
   in-a-discussion: d57d23917bab162a
   without-a-discussion: 87efa5071bb33a34
-  what-happens-next: de5cc2b17603d0ce
+  what-happens-next: 7fe113c92c0a58bd
+  1-create-it: 865fde10233c86d2
+  2-voting-opens: 571a77b9c70569d3
+  3-people-vote: 71061d516df57dab
+  4-it-closes: c0376a9026d18bc3
 generated:
   introduction: 64a345c27fc6b18e
   find-the-right-help: 9f97d51dce613bb1
@@ -24,7 +28,11 @@ generated:
   choose-whether-to-use-a-discussion: 69e64aa3363f248e
   in-a-discussion: aac1394b245beb84
   without-a-discussion: 8c94d968ab119b40
-  what-happens-next: e743d54db71ff1a2
+  what-happens-next: d47b4a89a6f66aa8
+  1-create-it: 0d9f215576fc48ab
+  2-voting-opens: 553cace937dbbb38
+  3-people-vote: c296cec78e03cb3f
+  4-it-closes: a06b19e09266066a
 title_source: d45b4ba3cb7a27cb
 title_generated: 177d8f0aa41e5dc7
 ---
@@ -110,8 +118,34 @@ Si vous créez une discussion et un sondage en même temps uniquement pour organ
 
 <!-- translation-section: what-happens-next -->
 
-## Et ensuite
+## Du lancement à la conclusion
 
-Pour lancer une proposition ou un sondage, indiquez un titre et des détails, vérifiez les options de réponse et les paramètres, fixez une heure de clôture et invitez les participants. Tant que le vote est ouvert, les participants peuvent voter, expliquer leur réponse et modifier leur vote. Les résultats sont mis à jour au fur et à mesure des votes, selon le paramètre de visibilité des résultats du sondage.
+Une proposition ou un sondage passe par les étapes suivantes.
 
-À la clôture, publiez une [conclusion](../outcomes/) qui explique ce que signifie le résultat et ce qui se passera ensuite.
+<!-- translation-section: 1-create-it -->
+
+### 1. Créez une proposition ou un sondage
+
+Indiquez un titre et des détails, vérifiez les options et les paramètres, puis fixez une heure de clôture. Choisissez ensuite quand le vote s'ouvre :
+
+- **Le vote est ouvert immédiatement** ouvre le vote dès que vous le lancez.
+- Une **Date d'ouverture** permet de programmer l'ouverture du vote. Les personnes peuvent consulter la proposition ou le sondage avant cette date, mais ne peuvent pas voter avant l'ouverture.
+- Si vous ne choisissez aucune de ces deux options, la proposition ou le sondage est enregistré comme brouillon.
+
+<!-- translation-section: 2-voting-opens -->
+
+### 2. Le vote s'ouvre
+
+À l'ouverture du vote, Loomio informe les personnes que vous avez invitées. Consultez [Inviter à voter](../inviting_people/).
+
+<!-- translation-section: 3-people-vote -->
+
+### 3. Les personnes votent
+
+Tant que le vote est ouvert, les personnes peuvent voter, expliquer leur vote et le modifier. Les résultats sont mis à jour au fur et à mesure des votes, sauf s'ils sont masqués jusqu'à la clôture. Par défaut, les personnes qui n'ont pas voté reçoivent un rappel un jour avant la clôture.
+
+<!-- translation-section: 4-it-closes -->
+
+### 4. Le vote se clôture
+
+Le vote se clôture automatiquement à l'heure prévue. Un administrateur du sondage peut aussi le clôturer plus tôt. Après la clôture, un administrateur du sondage peut le rouvrir en fixant une nouvelle heure de clôture pour permettre aux personnes de continuer à voter. Les sondages anonymes ne peuvent pas être rouverts.
