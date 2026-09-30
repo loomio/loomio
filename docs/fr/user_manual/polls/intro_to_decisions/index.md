@@ -1,7 +1,7 @@
 ---
 title: Propositions et sondages
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/polls/intro_to_decisions/index.md
+source_revision: 86965cccf11c36e68a6c2afce50b7ebe1c6e1449
+source_file: docs/en/user_manual/polls/intro_to_decisions/index.md
 translated:
   provider: codex/gpt-6.1-sol
   'on': '2026-10-01'
@@ -19,6 +19,7 @@ sections:
   2-voting-opens: 571a77b9c70569d3
   3-people-vote: 71061d516df57dab
   4-it-closes: c0376a9026d18bc3
+  5-share-an-outcome: 8339cb332cd8a946
 generated:
   introduction: 64a345c27fc6b18e
   find-the-right-help: 9f97d51dce613bb1
@@ -33,6 +34,7 @@ generated:
   2-voting-opens: 553cace937dbbb38
   3-people-vote: c296cec78e03cb3f
   4-it-closes: a06b19e09266066a
+  5-share-an-outcome: 0cbceb0f63ee4655
 title_source: d45b4ba3cb7a27cb
 title_generated: 177d8f0aa41e5dc7
 ---
@@ -149,3 +151,17 @@ Tant que le vote est ouvert, les personnes peuvent voter, expliquer leur vote et
 ### 4. Le vote se clôture
 
 Le vote se clôture automatiquement à l'heure prévue. Un administrateur du sondage peut aussi le clôturer plus tôt. Après la clôture, un administrateur du sondage peut le rouvrir en fixant une nouvelle heure de clôture pour permettre aux personnes de continuer à voter. Les sondages anonymes ne peuvent pas être rouverts.
+
+<!-- translation-section: 5-share-an-outcome -->
+
+### 5. Partager une conclusion
+
+À la clôture du sondage, Loomio demande aux administrateurs du sondage de partager une conclusion.
+
+![L’invitation à saisir une conclusion après la clôture d’une proposition](outcome_prompt.png)
+
+La conclusion indique ce qui a été décidé et ce qui se passera ensuite. Elle apparaît au-dessus des résultats : c’est donc la première chose que les personnes lisent. Lorsque vous la publiez, vous pouvez leur envoyer une notification. Elles reçoivent un e-mail contenant les résultats et la conclusion.
+
+Vous pouvez également définir une **Date de révision**. À cette date, Loomio vous rappelle de réexaminer la décision.
+
+![Une conclusion publiée avec une date de révision](outcome_published.png)
