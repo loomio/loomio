@@ -2,11 +2,12 @@ const fs = require('node:fs');
 const path = require('node:path');
 const {spawnSync} = require('node:child_process');
 
-const manualDir = path.resolve(__dirname, '../../../../docs/user_manual');
-const docsDir = path.resolve(__dirname, '../../../../docs');
+const manualDir = path.resolve(__dirname, '../../../../docs/en/user_manual');
+const docsDir = path.resolve(__dirname, '../../../../docs/en');
 const repoDir = path.resolve(__dirname, '../../../..');
 const spotlightScript = path.join(repoDir, 'bin/spotlight-screenshot');
 const cropScript = path.join(repoDir, 'bin/crop-screenshot');
+const compressScript = path.join(repoDir, 'bin/compress-screenshot');
 const namePattern = /^[A-Za-z0-9][A-Za-z0-9/_-]*$/;
 
 module.exports = function(test, {outputDir} = {}) {
@@ -15,8 +16,10 @@ module.exports = function(test, {outputDir} = {}) {
       throw new Error(`Invalid manual screenshot name: ${name}`);
     }
 
-    const imageRoot = outputDir || (name.startsWith('guides/') ? docsDir : manualDir);
-    const imagePath = path.join(imageRoot, `${name}.png`);
+    const generatedRoot = process.env.DOCS_SCREENSHOT_OUTPUT;
+    const imageRoot = generatedRoot || outputDir || (name.startsWith('guides/') ? docsDir : manualDir);
+    const imageName = generatedRoot && !name.startsWith('guides/') ? `user_manual/${name}` : name;
+    const imagePath = path.join(imageRoot, `${imageName}.png`);
     fs.mkdirSync(path.dirname(imagePath), {recursive: true});
     return imagePath;
   }
@@ -26,6 +29,11 @@ module.exports = function(test, {outputDir} = {}) {
     const height = options.height || 900;
 
     test.resizeWindow(width, height);
+    if (process.env.DOCS_SCREENSHOT_APP_LOCALE) {
+      // A completed Vue boot does not guarantee its asynchronous locale import
+      // has finished. Never save English UI under a translated filename.
+      test.waitForElementPresent(`html[lang="${process.env.DOCS_SCREENSHOT_APP_LOCALE}"]`, 20000);
+    }
     test.execute(function(showFlash) {
       let style = document.getElementById('manual-screenshot-styles');
 
@@ -161,6 +169,20 @@ module.exports = function(test, {outputDir} = {}) {
     }
   }
 
+  // Compress last, after cropping and spotlighting have read the full-colour
+  // capture.
+  function applyCompression(outputPath) {
+    const result = spawnSync(
+      'bundle',
+      ['exec', 'ruby', compressScript, outputPath],
+      {cwd: repoDir, encoding: 'utf8'}
+    );
+
+    if (result.status !== 0) {
+      throw new Error(`Could not compress screenshot: ${result.stderr || result.stdout}`);
+    }
+  }
+
   return {
     capture(name, options = {}) {
       const outputPath = imagePath(name);
@@ -168,7 +190,10 @@ module.exports = function(test, {outputDir} = {}) {
       scrollIntoView(options);
       const geometry = spotlightGeometry(options.spotlight, null);
 
-      return test.saveScreenshot(outputPath, () => applySpotlight(outputPath, geometry));
+      return test.saveScreenshot(outputPath, () => {
+        applySpotlight(outputPath, geometry);
+        applyCompression(outputPath);
+      });
     },
 
     captureElement(name, selector, options = {}) {
@@ -181,6 +206,7 @@ module.exports = function(test, {outputDir} = {}) {
       return test.takeElementScreenshot(selector, (result) => {
         fs.writeFileSync(outputPath, Buffer.from(result.value, 'base64'));
         applySpotlight(outputPath, geometry);
+        applyCompression(outputPath);
       });
     },
 
@@ -214,6 +240,7 @@ module.exports = function(test, {outputDir} = {}) {
           };
           applySpotlight(outputPath, spotlight);
         }
+        applyCompression(outputPath);
       });
     }
   };

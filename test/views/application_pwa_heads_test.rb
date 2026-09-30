@@ -41,7 +41,7 @@ class ApplicationPwaHeadsTest < ActiveSupport::TestCase
       stylesheets = document.css("head link[rel='stylesheet']").to_a
       layer_order_index = stylesheets.index { |link| link["href"] == "/vuetify-layers.css" }
       component_style_indexes = stylesheets.each_index.select do |index|
-        stylesheets[index]["href"].start_with?("/client3/assets/")
+        stylesheets[index]["href"].start_with?("/vue/assets/")
       end
 
       assert layer_order_index

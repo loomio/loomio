@@ -2,7 +2,7 @@ require "test_helper"
 require "yaml"
 
 class OpenapiRoutesTest < ActiveSupport::TestCase
-  SPEC_PATH = Rails.root.join("docs/user_manual/integrations/api/openapi.yaml")
+  SPEC_PATH = Rails.root.join("docs/en/user_manual/integrations/api/openapi.yaml")
   HTTP_METHODS = %w[get post put patch delete options head trace].freeze
 
   test "OpenAPI contract covers every B2 and B3 route" do

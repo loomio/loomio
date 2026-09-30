@@ -1,89 +1,47 @@
 # User manual localization plan
 
-## Initial languages
+## Goals
 
-Start with French (`fr`), Spanish (`es`), and German (`de`). In a sample of the
-50,000 users with the most recent `last_seen_at` values in the development
-database, these were the three most common non-English locales:
+Publish usable translated documentation with automated checks and occasional customer improvements. A contributor should be able to open a page on GitHub, select Edit, fix the Markdown and submit it without maintaining translation metadata. Human review is optional. Corrections should provide context for future automated translations without creating a separate proposal or review queue.
 
-| Locale | Users | Share of sample | Share of non-English users |
-| --- | ---: | ---: | ---: |
-| French (`fr`) | 3,947 | 7.89% | 33.68% |
-| Spanish (`es`) | 3,717 | 7.43% | 31.72% |
-| German (`de`) | 930 | 1.86% | 7.94% |
+## Source layout
 
-The sample covered `last_seen_at` values from 19 July 2022 through 7 August
-2026. Recheck production usage before adding later languages.
+English remains canonical under `docs/en/`. Translations mirror its paths under `docs/<locale>/`, for example `docs/en/user_manual/users/bookmarks/index.md` and `docs/fr/user_manual/users/bookmarks/index.md`. Translate the user manual and guides; keep policy pages and the changelog in English. Keep one shared `docs/SUMMARY.md` with page paths relative to each language directory. Navigation titles come from the summary for English and page frontmatter for other languages. Shared scripts, styles, redirects, internal documentation and release notes remain under `docs/`.
 
-## Translation model
+Keep public routes unchanged: `/docs/en/...`, `/docs/fr/...`, and corresponding language paths. Translated headings retain English anchor IDs. Links between translated pages use the current language; links to English-only material remain in English.
 
-Keep the English Markdown under `docs/user_manual/` as the canonical source.
-Do not send raw Markdown to the translation service. Parse each page and
-produce protected HTML or another structured representation with stable block
-IDs. Translate one complete page at a time so headings and paragraphs provide
-context, then store the translated output by block.
+## Translation units and storage
 
-Each translated block should record:
+Translated pages are ordinary Markdown. Stable `translation-section` comments identify sections in English and translated files. Seed readable IDs from headings once; never regenerate an existing ID when its heading changes. A section can contain several paragraphs, lists, tables, code, alerts and images. Paragraph splitting does not change its identity.
 
-- its stable block ID and English source hash;
-- the translated HTML;
-- the translation provider and model;
-- the translation date;
-- whether it is machine translated, reviewed, or stale;
-- an optional reviewer and translation note.
+Small page frontmatter holds the translated navigation title, source fingerprints by section ID, generated text fingerprints by section ID, available Git source provenance, the last translation provider/date and exceptional terminology warnings. Keep metadata outside the prose. Source fingerprints detect changed English; generated fingerprints recognize human corrections without asking contributors to set review flags. Repeated English text and routine per-paragraph provider/date fields are unnecessary.
 
-When English changes, mark only affected blocks stale. A translation request
-may include the complete page for context, but reviewed unchanged blocks must
-not be overwritten.
+Send parsed section HTML to the translation service with the full page for context, the app glossary and any previous corrected wording. Return Markdown and validate its structure using the same parser settings as the site renderer. Preserve URLs, image paths, code, heading levels, lists, tables, literal HTML and alert markers. Preserve the established language register and use `config/locales/translation_corrections.md` for known terminology errors. Inflected interface labels may produce an informational terminology note rather than blocking a valid translation.
 
-Use a glossary for Loomio terminology, poll and proposal language, product
-names, and text that must remain unchanged. Seed it from the existing locale
-files and `config/locales/translation_corrections.md`. Preserve the established
-register rules, including informal Spanish `tú` and the locale-specific choices
-already documented in `AGENTS.md`.
+## Customer corrections
 
-## Localized screenshots
+An unchanged English section keeps its current translated text. The next translation run detects customer edits and records the difference from the matching generated version in a `translation-correction` comment, even if no translation request is needed. Git history supplies the baseline; if a generated version has not been committed, retain the preferred wording instead. Customers do not need to write these comments themselves.
 
-Treat screenshots as locale-specific generated artifacts. Extend
-`bin/e2e-screenshots` with a locale argument and run the existing deterministic
-Oatmilk Cooperative scenarios with:
+When English changes a corrected section, translate it automatically using the customer's version and its correction notes as context. Keep those notes with the section and supply them to subsequent requests. This provides translation context and does not train the underlying model. There is no mandatory human review, special approval state or proposal queue. Failed structural validation retains the existing translated section and reports the failure for rerunning the translation job.
 
-- a user whose selected locale matches the requested screenshot locale;
-- translated application UI;
-- deterministic translated example discussions, comments, polls, and outcomes;
-- locale-specific output paths while retaining the same logical screenshot
-  name as English.
+Git source provenance identifies an available committed baseline. English can be translated before it is committed; a prior Git section is used as the previous English only if its fingerprint matches the recorded source fingerprint.
 
-Record enough generation metadata to identify stale screenshots when their
-testcase, scenario, relevant UI translations, locale, or application revision
-changes. Check localized captures for text overflow, clipped controls, complete
-thread-item gutters and avatars, and right-to-left layout when later languages
-require it.
+## Screenshots and assets
 
-## Build and validation
+Commit only English screenshots. Generate translated application screenshots separately with the existing deterministic Oatmilk Cooperative recipes, using translated interface labels and fixed fictional example content. `bin/docs-screenshots` fills missing images; `--refresh` also replaces outdated images. A single manifest tracks generation time and capture-input fingerprints while PNGs keep stable paths and overwrite their previous versions. Generation and publishing remain optional steps outside Docker builds and deployment.
 
-Generate locale routes such as `/docs/fr/`, `/docs/es/`, and `/docs/de/`, with
-localized navigation, metadata, internal links, and screenshot lookup. Validate
-that every published locale has the same page and block structure as English.
-Reject builds with:
+Store optional local images under `public/docs-screenshots/<locale>/...` and exclude that directory from frontend asset pruning. CI restores each language's cache from the `user-manual-screenshots` R2 bucket, regenerates missing or outdated images and uploads completed files at stable keys. A separate manifest per language prevents concurrent jobs from losing generation history. Runtime image lookup tries local translated files, then `user-manual-screenshots.loomio.com`, then bundled English. Private hosts need neither generation nor new storage; populating their local cache automatically takes priority. Keep English images usable without JavaScript. Photos, diagrams, downloads and assets without a capture recipe remain shared. Check clipping, text overflow and right-to-left layout when adding or changing capture recipes.
 
-- missing or extra block IDs;
-- altered URLs, commands, filenames, code, or interpolation variables;
-- broken internal links or missing localized assets;
-- invalid generated HTML;
-- stale reviewed translations where the release policy requires current text;
-- known terminology or register regressions.
+## Build and publication
 
-## Rollout
+Build English and published languages by default; use `DOCS_LOCALES` to preview other languages. Machine translations may publish after automated validation. A published language requires every manual and guide page to be complete, current and structurally valid; preview builds omit incomplete or stale pages. Optional terminology notes do not prevent publication.
 
-1. Add locale-aware builder routes, translation storage, and asset lookup.
-2. Pilot one substantial page in French, Spanish, and German.
-3. Machine translate parsed page HTML with stable block IDs and glossaries.
-4. Have fluent reviewers correct the pilot and record terminology decisions.
-5. Generate and review the corresponding localized screenshots.
-6. Expand one manual section at a time, preserving reviewed translations.
-7. Add further languages based on a refreshed active-user locale sample and
-   the available review capacity.
+The local pre-push hook checks published pages and launches the local translator only for affected pages. It records customer corrections, leaves generated files for the author or agent to commit, and retries without model requests when the pages are current. CI checks freshness and builds the site without invoking the model. Docker builds the static site from its checkout into `public/docs/` during deployment. A documentation build failure prints a warning and removes incomplete output without stopping deployment; that image has no documentation site. Screenshot generation is an independent CI workflow, and only translated screenshots and their generation manifests are published to R2.
 
-Human review remains the publication gate for translated pages and localized
-screenshots.
+Validate links, images, metadata, redirects, heading anchors, language attributes and the sitemap. Apply structural validation to hand-edited translations as well as generated text. Regression coverage must include heading renames, paragraph splitting, inserted/deleted sections, customer corrections, repeated translation runs, failed translations and localized asset lookup.
+
+## Migration
+
+Convert the existing block YAML mechanically, retaining all translated text without model requests. Add stable section markers to English, assemble the corresponding translated sections, and carry forward exceptional notes and available provenance. Compare every rendered page before and after the conversion, including text, code, links, images, anchors, navigation and metadata. Update screenshot output paths and API specification consumers with the English directory move.
+
+The initial implementation translated 85 pages into 13 languages. Keep those languages available for preview; enable publication separately through `docs/locales.yml` when their automated checks and operator rollout are ready.

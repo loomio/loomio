@@ -1,0 +1,77 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require "optparse"
+require_relative "../docs/localization"
+require_relative "../docs/screenshots"
+
+options = {output: Docs::Screenshots::ROOT.join("public/docs-screenshots"), refresh: false, status: false}
+parser = OptionParser.new do |args|
+  args.banner = "Usage: bin/docs-screenshots <locale,...|all> [image-or-directory...] [options]"
+  args.on("--output DIRECTORY", "Cache directory (default: public/docs-screenshots)") { |value| options[:output] = value }
+  args.on("--status", "Report missing/current/outdated images without generating") { options[:status] = true }
+  args.on("--refresh", "Also replace outdated images at their existing paths") { options[:refresh] = true }
+  args.on("-h", "--help") { puts args; exit }
+end
+parser.parse!
+selection = ARGV.shift or abort parser.to_s
+locales = selection == "all" ? Docs::Localization.locales : selection.split(",").map { |code| Docs::Localization.locale(code) }
+abort "English screenshots use bin/e2e-screenshots" if locales.any? { |locale| locale.code == "en" }
+recipes = Docs::Screenshots.catalog
+unless ARGV.empty?
+  filters = ARGV.map { |path| path.delete_prefix("docs/en/").delete_prefix("/").delete_suffix("/") }
+  filters.map! { |path| path.start_with?("guides/", "user_manual/") ? path : "user_manual/#{path}" }
+  recipes = recipes.select { |recipe| filters.any? { |filter| recipe.fetch("image") == filter || recipe.fetch("image").start_with?("#{filter}/") } }
+  abort "No approved screenshot recipes match #{ARGV.join(', ')}" if recipes.empty?
+end
+
+FileUtils.mkdir_p(options[:output]) unless options[:status]
+generate = lambda do
+  cache = Docs::Screenshots::Cache.new(options[:output])
+  locales.each do |locale|
+    rows = recipes.map do |recipe|
+      inputs = Docs::Screenshots.fingerprint(recipe, locale.app_locale)
+      [recipe, inputs, cache.status(locale.code, recipe, inputs)]
+    end
+    puts "#{locale.code}: #{%w[missing current outdated].map { |status| "#{rows.count { |row| row.last == status }} #{status}" }.join(', ')}"
+    next if options[:status]
+    pending = rows.select { |_, _, status| status == "missing" || (options[:refresh] && status == "outdated") }
+    next if pending.empty?
+
+    Dir.mktmpdir("docs-screenshots-") do |directory|
+      staging = Pathname(directory)
+      suite = staging.join("suite")
+      suite.mkpath
+      pending.group_by { |recipe, _, _| recipe.fetch("spec") }.each do |spec, captures|
+        cases = captures.map { |recipe, _, _| recipe.fetch("testcase") }.uniq
+        original = Docs::Screenshots::ROOT.join("vue/tests/e2e/screenshots", spec).to_s
+        suite.join(spec).write("const original = require(#{JSON.generate(original)});\nmodule.exports = Object.fromEntries(#{JSON.generate(cases)}.map(name => [name, original[name]]));\n")
+      end
+      labels = staging.join("labels.json")
+      labels.write(JSON.generate(Docs::Screenshots.labels(locale.app_locale)))
+      environment = {
+        "DOCS_SCREENSHOT_LOCALE" => locale.code, "DOCS_SCREENSHOT_APP_LOCALE" => locale.app_locale,
+        "DOCS_SCREENSHOT_OUTPUT" => staging.join("images").to_s,
+        "DOCS_SCREENSHOT_LABELS" => labels.to_s, "NIGHTWATCH_SRC_FOLDERS" => suite.to_s,
+        "NIGHTWATCH_DEVICE_SCALE_FACTOR" => "2"
+      }
+      success = system(environment, Docs::Screenshots::ROOT.join("bin/e2e-screenshots").to_s, chdir: Docs::Screenshots::ROOT.to_s)
+      abort "#{locale.code}: capture failed; existing cached images retained" unless success
+      pending.each do |recipe, inputs, _|
+        cache.store(locale.code, recipe, inputs, staging.join("images", recipe.fetch("image")))
+      end
+      puts "#{locale.code}: stored #{pending.length} compressed screenshots"
+    end
+  end
+end
+
+if options[:status]
+  generate.call
+else
+  # Serialize writers, including separate languages, so manifest updates cannot
+  # lose each other. Screenshot generation uses the isolated E2E test database.
+  File.open(File.join(options[:output], ".generation.lock"), "a") do |lock|
+    abort "Another screenshot generator is using this cache" unless lock.flock(File::LOCK_EX | File::LOCK_NB)
+    generate.call
+  end
+end

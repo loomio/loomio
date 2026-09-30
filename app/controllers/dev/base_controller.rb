@@ -1,5 +1,6 @@
 class Dev::BaseController < ApplicationController
   before_action :ensure_not_production
+  after_action :set_screenshot_locale
 
   def index
     routes = self.class.action_methods.select do |action|
@@ -28,6 +29,15 @@ class Dev::BaseController < ApplicationController
   end
 
   private
+
+  # The optional screenshot runner uses only the isolated test application.
+  # Persist its selected locale before the scenario redirect loads Vue.
+  def set_screenshot_locale
+    return unless Rails.env.test? && ENV.key?("DOCS_SCREENSHOT_APP_LOCALE")
+    return unless current_user.is_logged_in?
+
+    current_user.update_columns(selected_locale: ENV.fetch("DOCS_SCREENSHOT_APP_LOCALE"))
+  end
 
   def redirect_to(options = {}, response_options = {})
     super

@@ -1,0 +1,63 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+repository_path="$(cd "$(dirname "$0")/../.." && pwd)"
+test_path="$(mktemp -d)"
+trap 'rm -rf "$test_path"' EXIT
+mkdir -p "$test_path/bin" "$test_path/bucket/fr" "$test_path/workspace/bin"
+export PATH="$test_path/bin:$PATH"
+export RUNNER_TEMP="$test_path/runner"
+export MOCK_BUCKET="$test_path/bucket"
+
+cat > "$test_path/bin/aws" <<'SH'
+#!/usr/bin/env bash
+set -euo pipefail
+if [ "$4" = sync ] && [[ "$5" == s3://* ]]; then
+  cp -R "$MOCK_BUCKET/fr/." "$6/"
+elif [ "$4" = sync ]; then
+  if [ -n "${FAIL_UPLOAD+x}" ]; then exit 72; fi
+  cp "$5"/*.png "$MOCK_BUCKET/fr/"
+else
+  cp "$5" "$MOCK_BUCKET/fr/.generation.json"
+fi
+SH
+
+cat > "$test_path/workspace/bin/docs-screenshots" <<'SH'
+#!/usr/bin/env bash
+set -euo pipefail
+# The generator must receive the downloaded manifest at its normal cache root.
+grep -Fxq 'old manifest' "$4/.generation.json"
+if [ -n "${FAIL_GENERATION+x}" ]; then exit 73; fi
+printf '%s\n' 'new image' > "$4/fr/example.png"
+printf '%s\n' 'new manifest' > "$4/.generation.json"
+SH
+
+chmod +x "$test_path/bin/aws" "$test_path/workspace/bin/docs-screenshots"
+cd "$test_path/workspace"
+
+reset_published() {
+  printf '%s\n' 'old image' > "$MOCK_BUCKET/fr/example.png"
+  printf '%s\n' 'old manifest' > "$MOCK_BUCKET/fr/.generation.json"
+}
+
+reset_published
+bash "$repository_path/script/ci_manual_screenshots" fr
+grep -Fxq 'new image' "$MOCK_BUCKET/fr/example.png"
+grep -Fxq 'new manifest' "$MOCK_BUCKET/fr/.generation.json"
+
+reset_published
+if FAIL_GENERATION=1 bash "$repository_path/script/ci_manual_screenshots" fr; then
+  echo 'Failed generation unexpectedly succeeded' >&2
+  exit 1
+fi
+grep -Fxq 'old image' "$MOCK_BUCKET/fr/example.png"
+grep -Fxq 'old manifest' "$MOCK_BUCKET/fr/.generation.json"
+
+reset_published
+if FAIL_UPLOAD=1 bash "$repository_path/script/ci_manual_screenshots" fr; then
+  echo 'Failed upload unexpectedly succeeded' >&2
+  exit 1
+fi
+grep -Fxq 'old manifest' "$MOCK_BUCKET/fr/.generation.json"
+
+echo 'Screenshot CI cache and failure tests passed'

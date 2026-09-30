@@ -1,0 +1,27 @@
+site_title: Aide Loomio
+menu: Menu
+open_navigation: Ouvrir la navigation
+close_navigation: Fermer la navigation
+search: Rechercher
+search_label: Rechercher dans l'aide Loomio
+help_contents: Sommaire de l'aide
+on_this_page: Sur cette page
+page_navigation: Navigation entre les pages
+previous: Précédent
+next: Suivant
+image_alt: Aide et documentation Loomio
+languages: Langues
+copy: Copier
+copy_label: Copier le code dans le presse-papiers
+copied: Copié
+copy_failed: Échec de la copie
+alerts:
+  note: Remarque
+  tip: Astuce
+  important: Important
+  warning: Avertissement
+  caution: Attention
+sections:
+  User manual: Manuel d'utilisation
+  Guides: Guides
+  Customer information: Informations clients

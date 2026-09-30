@@ -1,10 +1,40 @@
 const sidebarToggle = document.querySelector(".sidebar-toggle");
+// Translated pages put their interface text on the root element.
+const strings = {
+  openNavigation: "Open navigation",
+  closeNavigation: "Close navigation",
+  copy: "Copy",
+  copyLabel: "Copy code to clipboard",
+  copied: "Copied",
+  copyFailed: "Copy failed",
+  ...document.documentElement.dataset
+};
 const sidebarScrim = document.querySelector(".sidebar-scrim");
+
+// English stays in the built HTML. Translated images can be filled later in
+// the existing client asset volume, without rebuilding or redeploying docs.
+document.querySelectorAll("img[data-screenshot-sources]").forEach((image) => {
+  const sources = [...new Set(JSON.parse(image.dataset.screenshotSources)
+    .map(source => new URL(source, window.location.href).href))];
+  let index = 0;
+  function loadNext() {
+    if (index === sources.length) {
+      image.removeEventListener("error", loadNext);
+      return;
+    }
+    const source = sources[index++];
+    // Changing src alone leaves the browser using the previous 2x srcset.
+    image.srcset = `${source} 2x`;
+    image.src = source;
+  }
+  image.addEventListener("error", loadNext);
+  loadNext();
+});
 
 function setNavigationOpen(open) {
   document.body.classList.toggle("navigation-open", open);
   sidebarToggle?.setAttribute("aria-expanded", String(open));
-  sidebarToggle?.setAttribute("aria-label", open ? "Close navigation" : "Open navigation");
+  sidebarToggle?.setAttribute("aria-label", open ? strings.closeNavigation : strings.openNavigation);
 }
 
 sidebarToggle?.addEventListener("click", () => {
@@ -12,6 +42,10 @@ sidebarToggle?.addEventListener("click", () => {
 });
 
 sidebarScrim?.addEventListener("click", () => setNavigationOpen(false));
+
+document.querySelector("[data-language-select]")?.addEventListener("change", (event) => {
+  window.location.href = event.target.value;
+});
 
 document.addEventListener("keydown", (event) => {
   if (event.key === "Escape") setNavigationOpen(false);
@@ -39,8 +73,8 @@ document.querySelectorAll("pre > code").forEach((code) => {
   wrapper.className = "code-block";
   button.className = "code-copy-button";
   button.type = "button";
-  button.textContent = "Copy";
-  button.setAttribute("aria-label", "Copy code to clipboard");
+  button.textContent = strings.copy;
+  button.setAttribute("aria-label", strings.copyLabel);
 
   pre.before(wrapper);
   wrapper.append(pre, button);
@@ -48,13 +82,13 @@ document.querySelectorAll("pre > code").forEach((code) => {
   button.addEventListener("click", async () => {
     try {
       await copyText(code.textContent);
-      button.textContent = "Copied";
+      button.textContent = strings.copied;
     } catch (_error) {
-      button.textContent = "Copy failed";
+      button.textContent = strings.copyFailed;
     }
 
     window.setTimeout(() => {
-      button.textContent = "Copy";
+      button.textContent = strings.copy;
     }, 1600);
   });
 });

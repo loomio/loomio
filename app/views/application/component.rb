@@ -25,7 +25,7 @@ class Views::Application::Component < Phlex::HTML
   private
 
   def vue_index
-    File.read(Rails.root.join('public/client3/index.html'))
+    File.read(Rails.root.join('public/vue/index.html'))
   end
 
   def vue_css_includes

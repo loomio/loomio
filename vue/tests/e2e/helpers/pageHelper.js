@@ -1,5 +1,15 @@
 const port = process.env.E2E_PORT || (process.env.RAILS_ENV === 'test' ? '3001' : '8080');
 const base_url = `http://localhost:${port}`;
+const screenshotLabels = process.env.DOCS_SCREENSHOT_LABELS
+  ? require(process.env.DOCS_SCREENSHOT_LABELS) : null;
+
+function scenarioUrl(path) {
+  const url = new URL(`${base_url}/dev/${path}`);
+  if (process.env.DOCS_SCREENSHOT_APP_LOCALE) {
+    url.searchParams.set('locale', process.env.DOCS_SCREENSHOT_APP_LOCALE);
+  }
+  return url.toString();
+}
 
 module.exports = function(test, browser) {
   test.resizeWindow(1000, 2000);
@@ -18,12 +28,12 @@ module.exports = function(test, browser) {
     },
 
     loadPath(path, opts = {}) {
-      test.url(`${base_url}/dev/${path}`);
+      test.url(scenarioUrl(path));
       return test.waitForElementPresent('.app-is-booted', 20000);
     },
 
     loadPathNoApp(path, opts = {}) {
-      return test.url(`${base_url}/dev/${path}`);
+      return test.url(scenarioUrl(path));
     },
 
     loadLastEmail() {
@@ -213,6 +223,12 @@ module.exports = function(test, browser) {
 
     expectText(selector, value, wait) {
       this.waitFor(selector, wait);
+      if (screenshotLabels && screenshotLabels[value]) {
+        const candidates = [value, ...screenshotLabels[value]];
+        return test.getText(selector, result => {
+          test.assert.ok(candidates.some(text => result.value.includes(text)), `Expected screenshot text: ${value}`);
+        });
+      }
       return test.expect.element(selector).text.to.contain(value);
     },
 

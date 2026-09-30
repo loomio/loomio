@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+screenshot_locale="${1:?Usage: script/ci_manual_screenshots LOCALE}"
+screenshots_cache="${RUNNER_TEMP:-/tmp}/loomio-manual-screenshots/$screenshot_locale"
+r2_endpoint="https://32a6f2e065e7302d52feef812b23608d.r2.cloudflarestorage.com"
+r2_prefix="s3://user-manual-screenshots/$screenshot_locale"
+
+mkdir -p "$screenshots_cache/$screenshot_locale"
+
+# Each language owns its manifest so parallel CI jobs cannot overwrite another
+# language's generation history. Images use stable keys and are never deleted.
+aws --endpoint-url "$r2_endpoint" s3 sync "$r2_prefix/" "$screenshots_cache/$screenshot_locale/" --only-show-errors
+if [ -f "$screenshots_cache/$screenshot_locale/.generation.json" ]; then
+  cp "$screenshots_cache/$screenshot_locale/.generation.json" "$screenshots_cache/.generation.json"
+fi
+
+bin/docs-screenshots "$screenshot_locale" --refresh --output "$screenshots_cache"
+
+# Store the manifest only after all completed images have been uploaded. A
+# failed generation makes no changes to the published images or manifest.
+aws --endpoint-url "$r2_endpoint" s3 sync "$screenshots_cache/$screenshot_locale/" "$r2_prefix/" \
+  --exclude '.generation.json' --cache-control 'public,max-age=300' --only-show-errors
+aws --endpoint-url "$r2_endpoint" s3 cp "$screenshots_cache/.generation.json" "$r2_prefix/.generation.json" \
+  --content-type application/json --cache-control no-store --only-show-errors

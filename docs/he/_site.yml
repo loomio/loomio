@@ -1,0 +1,27 @@
+site_title: העזרה של Loomio
+menu: תפריט
+open_navigation: פתיחת ניווט
+close_navigation: סגירת ניווט
+search: חיפוש
+search_label: חיפוש בעזרה של Loomio
+help_contents: תוכן העזרה
+on_this_page: בעמוד זה
+page_navigation: ניווט בעמוד
+previous: הקודם
+next: הבא
+image_alt: עזרה ותיעוד של Loomio
+languages: שפות
+copy: העתקה
+copy_label: העתקת קוד ללוח הכתיבה
+copied: הועתק
+copy_failed: ההעתקה נכשלה
+alerts:
+  note: הערה
+  tip: טיפ
+  important: חשוב
+  warning: אזהרה
+  caution: זהירות
+sections:
+  User manual: מדריך למשתמש
+  Guides: מדריכים
+  Customer information: מידע ללקוחות

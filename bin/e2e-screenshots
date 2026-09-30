@@ -10,7 +10,7 @@ set -euo pipefail
 
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 export NIGHTWATCH_DEVICE_SCALE_FACTOR="${NIGHTWATCH_DEVICE_SCALE_FACTOR:-2}"
-export NIGHTWATCH_SRC_FOLDERS="tests/e2e/screenshots"
+export NIGHTWATCH_SRC_FOLDERS="${NIGHTWATCH_SRC_FOLDERS:-tests/e2e/screenshots}"
 export CANONICAL_HOST="${CANONICAL_HOST:-localhost}"
 export CANONICAL_PORT="${CANONICAL_PORT:-3001}"
 # Screenshot scenarios seed cached translations, so enabling the feature here

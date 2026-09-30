@@ -1,0 +1,27 @@
+site_title: Loomio ヘルプ
+menu: メニュー
+open_navigation: ナビゲーションを開く
+close_navigation: ナビゲーションを閉じる
+search: 検索
+search_label: Loomio ヘルプを検索
+help_contents: ヘルプの目次
+on_this_page: このページの内容
+page_navigation: ページ内ナビゲーション
+previous: 前へ
+next: 次へ
+image_alt: Loomio のヘルプとドキュメント
+languages: 言語
+copy: コピー
+copy_label: コードをクリップボードにコピー
+copied: コピーしました
+copy_failed: コピーできませんでした
+alerts:
+  note: 注記
+  tip: ヒント
+  important: 重要
+  warning: 警告
+  caution: 注意
+sections:
+  User manual: ユーザーマニュアル
+  Guides: ガイド
+  Customer information: お客様向け情報

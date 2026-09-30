@@ -1,0 +1,27 @@
+site_title: Довідка Loomio
+menu: Меню
+open_navigation: Відкрити навігацію
+close_navigation: Закрити навігацію
+search: Пошук
+search_label: Пошук у довідці Loomio
+help_contents: Зміст довідки
+on_this_page: На цій сторінці
+page_navigation: Навігація сторінкою
+previous: Попередня
+next: Наступна
+image_alt: Довідка та документація Loomio
+languages: Мови
+copy: Копіювати
+copy_label: Копіювати код до буфера обміну
+copied: Скопійовано
+copy_failed: Не вдалося скопіювати
+alerts:
+  note: Примітка
+  tip: Порада
+  important: Важливо
+  warning: Попередження
+  caution: Увага
+sections:
+  User manual: Посібник користувача
+  Guides: Посібники
+  Customer information: Інформація для клієнтів
