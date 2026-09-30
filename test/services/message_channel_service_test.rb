@@ -48,7 +48,7 @@ class MessageChannelServiceTest < ActiveSupport::TestCase
 
     MessageChannelService.stub(:serialize_models, serialize) do
       MessageChannelService.stub(:publish_serialized_records, publish) do
-        MessageChannelService.publish_topic_model(discussion)
+        PublishTopicModelWorker.perform_now("Discussion", discussion.id)
       end
     end
 
@@ -74,7 +74,7 @@ class MessageChannelServiceTest < ActiveSupport::TestCase
     end
 
     MessageChannelService.stub(:publish_serialized_records, publish) do
-      MessageChannelService.publish_topic_model(discussion)
+      PublishTopicModelWorker.perform_now("Discussion", discussion.id)
     end
 
     assert publications.none? { |publication| publication[:group_id] }
@@ -83,5 +83,48 @@ class MessageChannelServiceTest < ActiveSupport::TestCase
     topic_payload = publications.first[:data].fetch("topics").first
     assert_not topic_payload.key?("topic_reader_id")
     assert_not topic_payload.key?("last_read_at")
+  end
+
+  test "topic model publishing is queued instead of run in the request" do
+    discussion = discussions(:discussion)
+
+    MessageChannelService.stub(:publish_serialized_records, ->(*, **) { flunk "published in the request" }) do
+      assert_enqueued_with(job: PublishTopicModelWorker, args: [ "Discussion", discussion.id ]) do
+        MessageChannelService.publish_topic_model(discussion)
+      end
+    end
+  end
+
+  test "queued publishing skips models deleted before the job runs" do
+    discussion = discussions(:discussion)
+    discussion_id = discussion.id
+    discussion.delete
+
+    MessageChannelService.stub(:publish_serialized_records, ->(*, **) { flunk "published a deleted model" }) do
+      assert_nothing_raised do
+        PublishTopicModelWorker.perform_now("Discussion", discussion_id)
+      end
+    end
+  end
+
+  test "queued publishing skips stances whose results became hidden" do
+    poll = PollService.create(
+      params: {
+        title: "Hidden results",
+        poll_type: "proposal",
+        closing_at: 3.days.from_now,
+        group_id: groups(:group).id,
+        poll_option_names: [ "Agree", "Disagree" ]
+      },
+      actor: users(:admin)
+    )
+    stance = poll.stances.latest.find_by!(participant: users(:user))
+    poll.update_columns(hide_results: Poll.hide_results.fetch("until_closed"))
+
+    MessageChannelService.stub(:publish_serialized_records, ->(*, **) { flunk "published a hidden stance" }) do
+      assert_nothing_raised do
+        PublishTopicModelWorker.perform_now("Stance", stance.id)
+      end
+    end
   end
 end

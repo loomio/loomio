@@ -3,7 +3,7 @@ class MessageChannelService
   # This replaces operational TopicItem rows whose only purpose was to carry the
   # model through the realtime channel.
   def self.publish_topic_model(model)
-    publish_topic_models([ model ], topic: model.topic, group_id: model.group_id)
+    PublishTopicModelWorker.perform_later(model.class.name, model.id)
   end
 
   # Guests are not subscribed to the group channel, so each receives the update
