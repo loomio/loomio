@@ -13,7 +13,12 @@ The next translation run records your correction automatically. Later updates re
 ```bash
 bundle exec ruby docs/translate.rb fr
 bundle exec ruby docs/translate.rb fr user_manual/users/bookmarks/index.md
+bundle exec ruby docs/sync_translations.rb
 ```
+
+The installed local pre-push hook runs `docs/sync_translations.rb --before-push`. It checks every published language for missing or stale sections, navigation titles and customer corrections. It starts the translator only for affected pages, using the same local login as an explicit translation run. Commit source edits first; if the hook generates changes, it lists the files and stops the push so they can be committed before retrying. It does not commit or stage files itself. `SKIP_TRANSLATIONS` skips the local checks when present.
+
+The documentation GitHub Action runs `docs/sync_translations.rb --check` and builds the complete site on pull requests and pushes to master. CI makes no model requests. Missing, stale or structurally invalid published translations fail the check; the site build also validates links, images, redirects and search. Successful builds are saved as workflow artifacts. A successful master build also replaces `manual-site.tar.gz` in the `user-manual-screenshots` R2 bucket. Docker downloads that last successful archive instead of building the manual during deployment. A failed documentation build leaves the published archive unchanged.
 
 The script calls `codex exec` with `gpt-6.1-sol` by default, using the CLI’s existing login. Override it with `DOCS_TRANSLATOR_MODEL`; `DOCS_TRANSLATOR_EFFORT` defaults to `low`. Each request runs in read-only, ephemeral mode and returns JSON, which the Ruby script validates before writing Markdown.
 
@@ -31,7 +36,7 @@ bundle exec ruby -Itest -e 'Dir["test/docs/*_test.rb"].sort.each { |file| requir
 
 The default build includes English and languages marked `published` in `locales.yml`. `DOCS_LOCALES` selects additional languages for preview. A published language must have complete, current translations that pass structural validation. Preview builds omit pages that fail those checks. Public paths remain `/docs/en/...`, `/docs/fr/...`, and so on.
 
-English images and downloads are shared. Only English screenshots are committed. Application screenshots with an approved capture recipe try the local client asset volume, then the same path on `www.loomio.com`, then the bundled English image. Photos, diagrams, downloads and images without a recipe remain shared English assets.
+English images and downloads are shared. Only English screenshots are committed. Application screenshots with an approved capture recipe try local files under `/docs-screenshots/`, then `https://user-manual-screenshots.loomio.com/<locale>/...`, then the bundled English image. Photos, diagrams, downloads and images without a recipe remain shared English assets.
 
 ## Optional translated screenshots
 
@@ -46,10 +51,12 @@ bin/docs-screenshots fr,de --output /path/to/docs-screenshots
 
 The command generates missing files. `--refresh` also overwrites outdated files; current files are skipped. A single `.generation.json` records each language/path's generation time and capture-input fingerprint. PNG filenames stay stable, and every update replaces the previous file atomically. Inputs include the English PNG, locale strings, scenario, capture helpers and recipe. Failed captures leave the existing cache intact. `--status` does not start a browser or create files.
 
-Populate the loomio.com web host's `/var/lib/loomio/client3/docs-screenshots/` directory from a runner with the screenshot prerequisites installed. Generate locally, then copy the cache with the existing ops access and `rsync --delay-updates` so completed files replace their previous versions. Include the hidden manifest; do not use `--delete`. This is an optional operation and is not part of deployment. No new service, registry artifact or storage volume is required.
+The `manual screenshots` GitHub Action generates and publishes images independently of application deployment. Relevant changes on master trigger it; it can also be started manually from master. Each language runs against its own isolated test application and database. The job downloads its existing images and generation manifest from R2, runs the generator with `--refresh`, and uploads completed images at the same keys. Each language stores a separate `<locale>/.generation.json` in R2 so concurrent jobs cannot overwrite another language's manifest. Failed generation keeps the published images unchanged; the manifest is published only after successful image uploads. Nothing is deleted, and no historical copies are created.
+
+Publishing uses repository secrets `MANUAL_R2_ACCESS_KEY_ID` and `MANUAL_R2_SECRET_ACCESS_KEY`, with Object Read & Write permission restricted to the `user-manual-screenshots` bucket. Only trusted master runs receive credentials; pull requests validate the site without publishing. Screenshot uploads set a five-minute cache lifetime, while generation manifests are not cached and the site archive requires revalidation. The bucket's public hostname is `user-manual-screenshots.loomio.com`.
 
 The Docker image links `/public/vue` to the existing persistent `/public/client3` directory and `/public/docs-screenshots` to its `docs-screenshots` subdirectory. Container startup copies the current build from `/loomio/vue-build` into that volume. Existing Kamal and Compose mounts continue to work, and older clients retain their `/client3/...` URLs with the existing 90-day asset retention policy.
 
-Private hosts automatically try their own `/docs-screenshots/<locale>/...` files before requesting loomio.com's copy. Missing or unreachable copies fall back to English. Building locally supplies the first choice without configuration. With JavaScript disabled, the built English screenshot remains available. The client asset sync excludes `docs-screenshots/` from its 90-day pruning policy. Generated images use the normal static-file revalidation behaviour rather than immutable filenames.
+Every host automatically tries its own `/docs-screenshots/<locale>/...` files before requesting R2's copy. Missing or unreachable copies fall back to English. Building locally supplies the first choice without configuration. With JavaScript disabled, the built English screenshot remains available. The client asset sync excludes `docs-screenshots/` from its 90-day pruning policy.
 
 See [AGENTS.md](AGENTS.md) for builder, redirect and screenshot instructions and [the localization plan](system/user_manual_localization_plan.md) for the design constraints.

@@ -21,4 +21,11 @@ else
   echo ""
   echo "==> Checking translations against $BASE_REF..."
   bundle exec ruby script/check_translations.rb "$BASE_REF" config/locales:server config/locales:client
+
+  # The installed hook is shared by worktrees, including older branches.
+  if [ -f docs/sync_translations.rb ]; then
+    echo ""
+    echo "==> Updating and checking published manual translations..."
+    bundle exec ruby docs/sync_translations.rb --before-push
+  fi
 fi

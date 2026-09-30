@@ -1,0 +1,65 @@
+name: documentation
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: documentation-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '4.0.5'
+          bundler-cache: true
+      - uses: actions/setup-node@v6
+        with:
+          node-version-file: .node-version
+          cache: npm
+          cache-dependency-path: vue/package-lock.json
+      - name: Install npm
+        run: npm install --global "npm@$(cat .npm-version)" --no-audit --no-fund
+      - name: Install documentation dependencies
+        working-directory: vue
+        run: npm ci --no-audit --no-fund
+      - name: Test documentation tools
+        run: |
+          bundle exec ruby -Itest -e 'Dir["test/docs/*_test.rb"].sort.each { |file| require_relative file }'
+          node --test test/docs/screenshot_fallback_test.cjs
+          bash test/scripts/manual_screenshots_ci_test
+      - name: Check published translations without calling a model
+        run: bundle exec ruby docs/sync_translations.rb --check
+      - name: Build and validate the documentation site
+        run: bundle exec ruby docs/build.rb
+      - name: Save the validated site
+        uses: actions/upload-artifact@v4
+        with:
+          name: documentation-${{ github.sha }}
+          path: public/docs/
+          if-no-files-found: error
+      - name: Publish the last successful documentation build
+        if: github.ref == 'refs/heads/master' && github.event_name != 'pull_request'
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.MANUAL_R2_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.MANUAL_R2_SECRET_ACCESS_KEY }}
+          AWS_DEFAULT_REGION: auto
+          AWS_REQUEST_CHECKSUM_CALCULATION: when_required
+          AWS_RESPONSE_CHECKSUM_VALIDATION: when_required
+        run: |
+          tar -czf "$RUNNER_TEMP/manual-site.tar.gz" -C public/docs .
+          aws --endpoint-url https://32a6f2e065e7302d52feef812b23608d.r2.cloudflarestorage.com s3 cp \
+            "$RUNNER_TEMP/manual-site.tar.gz" s3://user-manual-screenshots/manual-site.tar.gz \
+            --content-type application/gzip --cache-control no-cache --only-show-errors

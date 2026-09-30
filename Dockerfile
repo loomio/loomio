@@ -24,10 +24,6 @@ WORKDIR /build/vue
 # Build Vite assets
 RUN NODE_OPTIONS=--max-old-space-size=2048 npm run build
 
-# Keep Pagefind's platform-specific static binary for the documentation build.
-RUN cp "$(node -e "const name = '@pagefind/' + process.platform + '-' + process.arch + '/bin/pagefind_extended'; process.stdout.write(require.resolve(name))")" /tmp/pagefind
-RUN cp node_modules/pagefind/LICENSE/LICENSE /tmp/pagefind-LICENSE
-
 # Install hocuspocus dependencies
 WORKDIR /build/hocuspocus
 COPY hocuspocus/package.json hocuspocus/package-lock.json ./
@@ -73,14 +69,15 @@ RUN bundle install && \
 # Copy entire app source
 COPY . .
 
-COPY --from=nodebuild /tmp/pagefind /usr/local/bin/pagefind
-COPY --from=nodebuild /tmp/pagefind-LICENSE /usr/local/share/licenses/pagefind/LICENSE
 COPY --from=nodebuild /usr/local/bin/node /usr/local/bin/node
 
-# Render the static help site under /public/docs.
-RUN PAGEFIND_BINARY=/usr/local/bin/pagefind \
-    PAGEFIND_LICENSE=/usr/local/share/licenses/pagefind/LICENSE \
-    bundle exec ruby docs/build.rb
+# CI validates and publishes the manual independently. A failed documentation
+# build leaves this last successful archive intact and cannot block deployment.
+RUN curl --fail --silent --show-error --location --retry 3 \
+      https://user-manual-screenshots.loomio.com/manual-site.tar.gz -o /tmp/manual-site.tar.gz && \
+    mkdir -p public/docs && \
+    tar -xzf /tmp/manual-site.tar.gz -C public/docs && \
+    rm /tmp/manual-site.tar.gz
 
 # Compile Propshaft assets into the image. Production does not serve assets
 # dynamically, so the manifest and digested files must exist at build time.

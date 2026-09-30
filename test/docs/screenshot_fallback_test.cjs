@@ -24,7 +24,7 @@ function imageWithFallbacks(sources, origin = 'https://private.example') {
 }
 
 const local = '/docs-screenshots/fr/example.png';
-const hosted = `https://www.loomio.com${local}`;
+const hosted = 'https://user-manual-screenshots.loomio.com/fr/example.png';
 const english = '/docs/en/example.png';
 
 test('tries local, hosted, then English and updates the 2x source at every step', () => {
@@ -47,9 +47,9 @@ test('a supplied local image takes priority and successful loads keep that choic
   assert.equal(image.src, `https://private.example${supplied}`);
 });
 
-test('loomio.com does not retry the same missing image as a hosted fallback', () => {
-  const {image, fail} = imageWithFallbacks([local, hosted, english], 'https://www.loomio.com');
-  assert.equal(image.src, hosted);
+test('duplicate image URLs are attempted only once', () => {
+  const {image, fail} = imageWithFallbacks([local, `https://www.loomio.com${local}`, english], 'https://www.loomio.com');
+  assert.equal(image.src, `https://www.loomio.com${local}`);
   fail();
   assert.equal(image.src, `https://www.loomio.com${english}`);
 });

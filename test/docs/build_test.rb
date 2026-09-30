@@ -86,7 +86,7 @@ class DocsBuildTest < Minitest::Test
     assert_equal "#{image['src']} 2x", image["srcset"]
     assert_equal [
       "/docs-screenshots/fr/user_manual/users/bookmarks/save_bookmark.png",
-      "https://www.loomio.com/docs-screenshots/fr/user_manual/users/bookmarks/save_bookmark.png",
+      "https://user-manual-screenshots.loomio.com/fr/user_manual/users/bookmarks/save_bookmark.png",
       image["src"]
     ], JSON.parse(image["data-screenshot-sources"])
     assert_nil fragment.css("img").last["data-screenshot-sources"]

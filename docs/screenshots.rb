@@ -16,7 +16,7 @@ module Docs
   module Screenshots
     ROOT = Pathname(__dir__).parent.freeze
     URL_ROOT = "/docs-screenshots"
-    HOSTED_ROOT = "https://www.loomio.com#{URL_ROOT}"
+    HOSTED_ROOT = "https://user-manual-screenshots.loomio.com"
     SHARED_INPUTS = %w[
       vue/tests/e2e/helpers/manualScreenshot.js
       vue/tests/e2e/helpers/pageHelper.js
