@@ -1,10 +1,10 @@
 ---
 title: Beállítások
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/polls/settings/index.md
+source_revision: 6b2c4d5c591a9eb139fc64370d602b8dcf19c0e4
+source_file: docs/en/user_manual/polls/settings/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-30'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 145c23b2412eff98
   setting-up-a-proposal-or-poll: 9e0347d976f79179
@@ -20,7 +20,7 @@ sections:
   hide-results: c0873aeafe8feb59
   start-the-poll: 8e7d8e81db57f4f8
   managing-polls: b26fc41e19371d54
-  edit-poll: fd603b15240e6a14
+  edit-poll: ddf392426410ec5a
   make-a-copy: e6d8d4ff9a1325dc
   notification-history: f132def867659f30
   export-poll: 3c015ed01e8e7a6a
@@ -42,7 +42,7 @@ generated:
   hide-results: 2f77b4d24f88f18e
   start-the-poll: cb1db5f9ffb2f4b9
   managing-polls: '0178d1c3ca4ca57f'
-  edit-poll: e6d48bf2d2a4397b
+  edit-poll: b48d6e4759c5a285
   make-a-copy: 8c06e98dc2b050ad
   notification-history: ee9e8a83822e74ae
   export-poll: 27f8cf9a8af898cb
@@ -227,7 +227,7 @@ Nyisd meg a hárompontos menüt a szavazás jobb alsó sarkában.
 
 ### Szavazás szerkesztése
 
-A szavazás tartalmát és beállításait a **Szavazás szerkesztése** gombbal módosíthatod. A szavazási lehetőségeket a szavazás megkezdése után már nem változtathatod meg.
+A szavazás tartalmát és beállításait a **Szavazás szerkesztése** gombbal módosíthatod.
 
 <!-- translation-section: make-a-copy -->
 

@@ -1,10 +1,10 @@
 ---
 title: Impostazioni
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/polls/settings/index.md
+source_revision: 6b2c4d5c591a9eb139fc64370d602b8dcf19c0e4
+source_file: docs/en/user_manual/polls/settings/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 145c23b2412eff98
   setting-up-a-proposal-or-poll: 9e0347d976f79179
@@ -20,7 +20,7 @@ sections:
   hide-results: c0873aeafe8feb59
   start-the-poll: 8e7d8e81db57f4f8
   managing-polls: b26fc41e19371d54
-  edit-poll: fd603b15240e6a14
+  edit-poll: ddf392426410ec5a
   make-a-copy: e6d8d4ff9a1325dc
   notification-history: f132def867659f30
   export-poll: 3c015ed01e8e7a6a
@@ -42,7 +42,7 @@ generated:
   hide-results: 49c40087e6faf171
   start-the-poll: 933a8548f2a935c6
   managing-polls: 672f3bc3037e2759
-  edit-poll: fd006f5848a037cd
+  edit-poll: 36fba85821b434d2
   make-a-copy: 5175d5c8ec2410c4
   notification-history: 21504c7bbd889f19
   export-poll: 865bcbe817b0f16a
@@ -227,7 +227,7 @@ Apri il menu con i tre puntini in basso a destra del sondaggio.
 
 ### Modificare il sondaggio
 
-Usa **Modifica sondaggio** per modificare il contenuto o le impostazioni del sondaggio. Non puoi cambiare le opzioni di voto dopo l'inizio delle votazioni.
+Usa **Modifica sondaggio** per modificare il contenuto o le impostazioni del sondaggio.
 
 <!-- translation-section: make-a-copy -->
 

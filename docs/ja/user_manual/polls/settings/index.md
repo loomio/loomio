@@ -1,10 +1,10 @@
 ---
 title: 設定
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/polls/settings/index.md
+source_revision: 6b2c4d5c591a9eb139fc64370d602b8dcf19c0e4
+source_file: docs/en/user_manual/polls/settings/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 145c23b2412eff98
   setting-up-a-proposal-or-poll: 9e0347d976f79179
@@ -20,7 +20,7 @@ sections:
   hide-results: c0873aeafe8feb59
   start-the-poll: 8e7d8e81db57f4f8
   managing-polls: b26fc41e19371d54
-  edit-poll: fd603b15240e6a14
+  edit-poll: ddf392426410ec5a
   make-a-copy: e6d8d4ff9a1325dc
   notification-history: f132def867659f30
   export-poll: 3c015ed01e8e7a6a
@@ -42,7 +42,7 @@ generated:
   hide-results: 38cada5a12f9d76e
   start-the-poll: 58cfac8c9a3be9eb
   managing-polls: 5c67584867fea8e9
-  edit-poll: 887c378ca66142b3
+  edit-poll: 7ccb4ad6542d1e79
   make-a-copy: 6f732ab10d7f4f71
   notification-history: f8c882600c730a3e
   export-poll: 46dcc2af36b3a8c9
@@ -227,7 +227,7 @@ title_generated: 0d8619aae051ae34
 
 ### 投票の編集
 
-**投票の編集**で、投票の内容や設定を編集できます。投票が始まると、投票の選択肢は変更できません。
+**投票の編集**で、投票の内容や設定を編集できます。
 
 <!-- translation-section: make-a-copy -->
 

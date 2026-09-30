@@ -1,10 +1,10 @@
 ---
 title: Налады
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/polls/settings/index.md
+source_revision: 6b2c4d5c591a9eb139fc64370d602b8dcf19c0e4
+source_file: docs/en/user_manual/polls/settings/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-30'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 145c23b2412eff98
   setting-up-a-proposal-or-poll: 9e0347d976f79179
@@ -20,7 +20,7 @@ sections:
   hide-results: c0873aeafe8feb59
   start-the-poll: 8e7d8e81db57f4f8
   managing-polls: b26fc41e19371d54
-  edit-poll: fd603b15240e6a14
+  edit-poll: ddf392426410ec5a
   make-a-copy: e6d8d4ff9a1325dc
   notification-history: f132def867659f30
   export-poll: 3c015ed01e8e7a6a
@@ -42,7 +42,7 @@ generated:
   hide-results: 14e4e7ab2c34a121
   start-the-poll: 6164fa0284f85db3
   managing-polls: fe0da49986045f8c
-  edit-poll: 59641b16841458de
+  edit-poll: 3ee4ea6e35bd04ca
   make-a-copy: 878afa93cbea2707
   notification-history: ea1aa8a03130b65b
   export-poll: 3b59948798fb6d8c
@@ -227,7 +227,7 @@ title_generated: b1b3d8b8aa661af6
 
 ### Рэдагаваць апытанне
 
-Выкарыстоўвайце **Рэдагаваць апытанне**, каб змяніць змест або налады апытання. Пасля пачатку галасавання змяніць опцыі галасавання нельга.
+Выкарыстоўвайце **Рэдагаваць апытанне**, каб змяніць змест або налады апытання.
 
 <!-- translation-section: make-a-copy -->
 
