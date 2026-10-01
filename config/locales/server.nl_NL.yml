@@ -1,6 +1,6 @@
 ---
 nl_NL:
-  group_export_started: "Groep data export gestart"
+  group_export_started: Groep data export gestart
   discussion_templates:
     blank:
       process_name: Lege sjabloon
@@ -10,27 +10,27 @@ nl_NL:
       title_placeholder: Wat is het onderwerp dat je wilt bespreken?
       process_name: Bespreek een onderwerp
       process_subtitle: Start een discussie met je groep
-      process_introduction: "<p>Is er een probleem, probleem of kans die u met uw groep wilt bespreken?</p><p> Introduceer het onderwerp, link naar eventuele achtergrondinformatie en vraag om commentaar, ideeën en hulp.</p><p> Nodig mensen uit om deel te nemen door hun gedachten en relevante informatie bij te dragen. Gebruik @mention om de aandacht van bepaalde mensen te trekken.</p><p> Werk de threadcontext bij naarmate de discussie vordert om deze naar een resultaat te vergemakkelijken.</p><p> Wacht niet tot je alle informatie hebt om een topic te starten. Gebruik de draad liever om mensen uit te nodigen om u te helpen het onderwerp te verkennen en een oplossing te vinden.</p>"
+      process_introduction: "<p>Is er een kwestie, probleem of kans die je met jouw groep wilt bespreken?</p><p>Introduceer het onderwerp, link naar eventuele achtergrondinformatie en vraag om reacties, ideeën en hulp.</p><p>Nodig mensen uit om deel te nemen door hun gedachten en relevante informatie te delen. Gebruik @vermelding om de aandacht van bepaalde mensen te trekken.</p><p>Werk de threadcontext bij naarmate de discussie vordert om deze naar een conclusie te begeleiden.</p><p>Wacht niet tot je alle informatie hebt om een thread te starten. Gebruik de thread om mensen uit te nodigen je te helpen het onderwerp te verkennen en een oplossing te vinden.</p>"
       description: <h3 id="introduce-and-describe-the-topic">Introduceer en beschrijf het onderwerp</h3><p></p><h3 id="why-is-this-important"> Waarom is dit belangrijk?</h3><p></p><h3 id="how-would-you-like-people-to-respond"> Hoe wil je dat mensen reageren?</h3><p></p>
     onboarding_to_loomio:
       title: Loomio gebruiken voor onze groep
       process_name: Onboarding naar Loomio
-      process_subtitle: Een draad om mensen die nieuw zijn bij Loomio te helpen oefenen met het schrijven van opmerkingen en stemmen.
+      process_subtitle: Een thread om mensen die nieuw zijn bij Loomio te helpen oefenen met het schrijven van reacties en stemmen.
       process_introduction: "<p>Gebruik dit sjabloon om mensen kennis te laten maken met Loomio.</p><p> Een geweldige manier om Loomio te ervaren is door een discussie in Loomio te openen en een beslissing te nemen!</p><p> Breng de discussie op gang door de onderstaande tekstprompts te volgen of uw eigen woorden in te voegen.</p><p> Voer een Sense-check uit, zodat uw groep kan stemmen en de resultaten kan zien.</p><p> Ontgrendel de waarde van Loomio door mensen te betrekken bij hun eerste beslissing.</p>"
       description: <h3 id="why-are-you-interested-in-using-loomio">Waarom ben je geïnteresseerd in het gebruik van Loomio?</h3><p> Wij zijn geïnteresseerd in het gebruik van Loomio om mensen te betrekken bij beslissingen over onze organisatie.</p><h3 id="what-are-you-asking-people-to-do"> Wat vraag je mensen om te doen?</h3><p> Ik hoor graag uw mening! Laat hieronder een reactie achter en stem op het voorstel.</p><p> U kunt op iemands reactie reageren door op het antwoordpictogram rechtsonder de reactie te klikken.</p><p> Gebruik @mention om mensen op de hoogte te stellen.</p>
       onboarding: Aan boord
     consent_process:
       title_placeholder: Het ontwikkelen van ons gezondheids- en veiligheidsbeleid
-      process_name: Toestemmingsproces
+      process_name: Consentproces
       process_subtitle: Neem een beslissing die 'veilig is om te proberen', zonder bezwaren.
-      process_introduction: '<p>Vraag toestemming voor een besluit dat u moet nemen, als er geen zinvolle bezwaren zijn tegen uw voorstel, zodat u snel een besluit kunt nemen dat u nu ''veilig kunt proberen''.</p><p> Typische rollen:</p><ul><li><p> Indiener: De persoon die een onderwerp aan de orde stelt waarover een besluit moet worden genomen.</p></li><li><p> Facilitator: Iemand die de indiener kan helpen zijn werk efficiënt te doen.</p></li></ul><p> Veel voorkomende processtappen:</p><p> Stap 1. Presenteer een voorstel met een Loomio-thread.</p><p> Stap 2. Faciliteer een ronde van vragen, reacties en eventuele opmerkingen om het voorstel te verbeteren met een Betekenischeck.</p><p> Stap 3. Pas het voorstel aan met suggesties en opmerkingen.</p><p> Stap 4. Vraag of iemand een zinvol bezwaar heeft tegen het gewijzigde voorstel met een Consent-voorstel.</p><p> Stap 5. Integreer geldige bezwaren om een gewijzigde versie van het voorstel te creëren waar iedereen mee instemt en die ''veilig is om te proberen'', en vermeld na voltooiing de uitkomst van de beslissing.</p><p> <a target="_blank" rel="noopener noreferrer nofollow" href="/docs/en/guides/making_decisions/consent_process">Lees meer: Toestemmingsproces.</a></p>'
+      process_introduction: '<p>Zoek consent voor een besluit dat je moet nemen, waarbij er geen wezenlijke bezwaren tegen jouw voorstel zijn, zodat je snel een besluit kunt nemen dat je nu ''veilig kunt proberen''.</p><p>Typische rollen:</p><ul><li><p>Indiener: De persoon die een onderwerp aan de orde stelt waarover een besluit moet worden genomen.</p></li><li><p>Facilitator: Iemand die de indiener kan helpen zijn werk efficiënt te doen.</p></li></ul><p>Veel voorkomende processtappen:</p><p>Stap 1. Presenteer een voorstel met een Loomio-thread.</p><p>Stap 2. Begeleid een ronde van vragen, reacties en eventuele opmerkingen om het voorstel te verbeteren met een gevoelscheck.</p><p>Stap 3. Pas het voorstel aan met suggesties en reacties.</p><p>Stap 4. Vraag met een consentvoorstel of iemand een wezenlijk bezwaar heeft tegen het gewijzigde voorstel.</p><p>Stap 5. Verwerk geldige bezwaren in een gewijzigde versie van het voorstel die iedereen ''veilig om te proberen'' vindt, en leg daarna het besluit vast in een conclusie.</p><p><a target="_blank" rel="noopener noreferrer nofollow" href="/docs/en/guides/making_decisions/consent_process">Lees meer: Consentproces.</a></p>'
       description: <h3 id="what-is-the-decision-you-need-to-make">Wat is de beslissing die u moet nemen?</h3><h3 id=""></h3><h3 id="why-is-this-important-and-what-impact-does-it-have"> Waarom is dit belangrijk en welke impact heeft het?</h3><p></p><h3 id="what-information-do-people-need-for-context"> Welke informatie hebben mensen nodig voor context?</h3><p></p><h3 id="who-is-the-facilitator-for-this-process"> Wie is de facilitator van dit proces?</h3><p></p>
-      consent: Toestemming
+      consent: Consent
     advice_process:
       title_placeholder: Advies gevraagd voor de aanschaf van een nieuwe computer
       process_name: Adviesproces
       process_subtitle: Vraag advies over een beslissing die u moet nemen.
-      process_introduction: '<p>Neem een beslissing op basis van het advies van mensen die erdoor getroffen zijn of die expertise hebben, zodat u een betere beslissing kunt nemen voor uw organisatie.</p><p> Typische rollen:</p><ul><li><p> Facilitator: De persoon die de beslissing neemt, of iemand vraagt om te faciliteren.</p></li><li><p> Adviseurs: Mensen die getroffen zijn of expertise hebben die u uitnodigt.</p></li></ul><p> Veel voorkomende processtappen:</p><p> Stap 1. Zoek input om perspectieven te peilen voordat u actie voorstelt.</p><p> Stap 2. Doe een voorstel en vraag advies - voer een adviesvoorstel uit.</p><p> Stap 3. Rekening houdend met de ontvangen adviezen neem je een besluit en informeer je de mensen die advies hebben gegeven - vermeld een uitkomst.</p><p> <a target="_blank" rel="noopener noreferrer nofollow" href="/docs/en/guides/making_decisions/advice_process">Lees meer: Adviestraject.</a></p>'
+      process_introduction: '<p>Neem een besluit met advies van mensen die ermee te maken krijgen of expertise hebben, zodat je een beter besluit kunt nemen voor jouw organisatie.</p><p>Typische rollen:</p><ul><li><p>Facilitator: De persoon die het besluit neemt, of iemand die je vraagt om het proces te begeleiden.</p></li><li><p>Adviseurs: Mensen die je uitnodigt omdat ze ermee te maken krijgen of expertise hebben.</p></li></ul><p>Veel voorkomende processtappen:</p><p>Stap 1. Vraag om input om verschillende perspectieven te verkennen voordat je actie voorstelt.</p><p>Stap 2. Doe een voorstel en vraag advies - start een adviesvoorstel.</p><p>Stap 3. Neem met de ontvangen adviezen een besluit en informeer de mensen die advies hebben gegeven - deel een conclusie.</p><p><a target="_blank" rel="noopener noreferrer nofollow" href="/docs/en/guides/making_decisions/advice_process">Lees meer: Adviestraject.</a></p>'
       description: <h3 id="what-is-the-decision-you-need-to-make">Wat is de beslissing die u moet nemen?</h3><p></p><h3 id="why-is-this-important-and-what-impact-does-it-have"> Waarom is dit belangrijk en welke impact heeft het?</h3><p></p><h3 id="what-advice-are-you-asking-to-help-you-make-a-good-decision"> Welk advies vraagt u om u te helpen een goede beslissing te nemen?</h3><p></p><h3 id="who-is-the-facilitator-for-this-process"> Wie is de facilitator van dit proces?</h3><p></p>
       advice: Advies
     pass_a_resolution:
@@ -44,15 +44,15 @@ nl_NL:
       title_placeholder: Herziening van de statuten van onze organisatie
       process_name: Beslissing bij consensus
       process_subtitle: Zorg voor een collectieve overeenkomst met alle betrokkenen.
-      process_introduction: '<p>Zorg voor consensus over een beslissing die u samen moet nemen, om tot overeenstemming te komen die voldoet aan de behoeften en zorgen van alle deelnemers.</p><p> Typische rollen:</p><ul><li><p> Stel een facilitator aan. (In bestuursvergaderingen is dit meestal de voorzitter.)</p></li><li><p> Een quorum of een supermeerderheid van leden om deel te nemen, zoals gespecificeerd in de statuten van uw organisatie.</p></li></ul><p> Veel voorkomende processtappen:</p><p> Stap 1. Creëer een open ruimte voor discussie over een kwestie of een voorgesteld besluit.</p><p> Stap 2. Test op consensus en breng bezwaren aan het licht met een Sensecheck-voorstel.</p><p> Stap 3. Verduidelijk eventuele punten, nodig constructieve wijzigingen uit en pas het voorstel aan.</p><p> Stap 4. Test de overeenstemming en eventuele resterende bezwaren met een consensusvoorstel.</p><p> Stap 5. Leg het besluit vast met een uitkomst en in de officiële notulen van de organisatie.</p><p> <a target="_blank" rel="noopener noreferrer nofollow" href="/docs/en/guides/making_decisions/consensus_process">Lees meer: Consensusproces.</a></p>'
+      process_introduction: '<p>Zorg voor consensus over een besluit dat je samen moet nemen, om tot overeenstemming te komen die voldoet aan de behoeften en zorgen van alle deelnemers.</p><p>Typische rollen:</p><ul><li><p>Stel een facilitator aan.&nbsp; (In bestuursvergaderingen is dit meestal de voorzitter.)</p></li><li><p>Laat een quorum of een supermeerderheid van leden deelnemen, zoals vastgelegd in de statuten van jouw organisatie.</p></li></ul><p>Veel voorkomende processtappen:</p><p>Stap 1. Creëer een open ruimte voor discussie over een kwestie of een voorgesteld besluit.</p><p>Stap 2. Toets de consensus en breng bezwaren aan het licht met een gevoelscheckvoorstel.&nbsp;</p><p>Stap 3. Verduidelijk eventuele punten, vraag om constructieve wijzigingen en pas het voorstel aan.</p><p>Stap 4. Toets de overeenstemming en eventuele resterende bezwaren met een consensusvoorstel.</p><p>Stap 5. Leg het besluit vast met een conclusie en in de officiële notulen van de organisatie.</p><p><a target="_blank" rel="noopener noreferrer nofollow" href="/docs/en/guides/making_decisions/consensus_process">Lees meer: Consensusproces.</a></p>'
       description: <h3 id="what-is-the-decision-you-need-to-make">Wat is de beslissing die u moet nemen?</h3><p></p><h3 id="why-is-this-important-and-what-impact-does-it-have"> Waarom is dit belangrijk en welke impact heeft het?</h3><p></p><h3 id="what-information-do-people-need-for-context"> Welke informatie hebben mensen nodig voor context?</h3><p></p><h3 id="who-is-the-facilitator"> Wie is de facilitator?</h3><p></p><h3 id="what-conditions-need-to-be-met-for-a-decision"> Aan welke voorwaarden moet worden voldaan voor een besluit?</h3><h3 id=""></h3>
       consensus: Overeenstemming
     share_links_and_info:
       title_placeholder: Deel links en informatie
       process_name: Deel links en informatie
       process_subtitle: Plaats informatie, links en rapporten om te delen voor commentaar en discussie.
-      process_introduction: "<p>Gebruik een draad als 'muur' of 'prikbord' voor uw groep om informatie, nieuwsberichten en ideeën te plaatsen die u met elkaar wilt delen.</p><p> Nodig mensen uit om de video-opmaaktools <strong>Invoegen</strong> en <strong>Insluiten</strong> te gebruiken om de groep toegang te geven tot informatie vanuit Loomio. Gebruik een <strong>kop</strong> bij opmerkingen om de opmerking vast te zetten op de tijdlijn van de discussie, zodat deze gemakkelijk kan worden gevonden.</p><p> <strong>Speld</strong> de draad zo vast dat deze blijft hangen en moedig <strong>Reactions</strong> aan om de draad energiek te houden, zodat mensen weten dat je hun item hebt gezien.</p><p> De standaardweergave van deze discussie is <strong>Nieuwste</strong> , dus de meest recente opmerkingen staan bovenaan de discussie.</p>"
-      description: <p>Gebruik deze draad om informatie, mededelingen en dingen die u wilt delen te posten - een plek waar u kunt zien wat er aan de hand is en waar u bij betrokken kunt raken.</p><p data-text-align="start"> Deel evenementen, rapporten, podcasts en andere interessante online informatie.</p><p data-text-align="start"> Gebruik de tools <strong>voor het invoegen van links</strong> en <strong>het insluiten van video-</strong> opmaak om mensen toegang te geven tot informatie binnen Loomio.</p>
+      process_introduction: "<p>Gebruik een thread als 'muur' of 'prikbord' voor jouw groep om informatie, nieuwsberichten en ideeën te plaatsen die je met elkaar wilt delen.</p><p>Nodig mensen uit om de opmaaktools <strong>Link invoegen</strong> en <strong>Video insluiten</strong> te gebruiken om de groep toegang te geven tot informatie vanuit Loomio. Gebruik een <strong>Kop</strong> in reacties om de reactie vast te zetten op de tijdlijn van de thread, zodat deze gemakkelijk te vinden is.</p><p><strong>Zet vast</strong> om de thread in beeld te houden en moedig <strong>Emoji-reacties</strong> aan om de thread actief te houden en mensen te laten weten dat je hun item hebt gezien.</p><p>De standaardweergave van deze thread is <strong>Nieuwste</strong>, dus de meest recente reacties staan bovenaan de thread.</p>"
+      description: <p>Gebruik deze thread om informatie, mededelingen en dingen die je wilt delen te plaatsen - een plek waar je kunt zien wat er gebeurt en mee kunt doen.</p><p data-text-align="start">Deel evenementen, rapporten, podcasts en andere interessante online informatie.</p><p data-text-align="start">Gebruik de opmaaktools <strong>Link invoegen</strong> en <strong>Video insluiten</strong> om mensen toegang te geven tot informatie binnen Loomio.</p>
       information: Informatie
     prepare_for_a_meeting:
       title_placeholder: Voorbereidingen voor onze volgende bijeenkomst
@@ -79,14 +79,14 @@ nl_NL:
       title_placeholder: Financieringsaanvraag voor de Robotics Roadshow
       process_name: Financieringsbesluit
       process_subtitle: Verwerk een subsidie-, lening- of investeringsaanvraag en neem een financieringsbeslissing.
-      process_introduction: "<p>Dien een financieringsaanvraag in, voeg documenten en ander ondersteunend materiaal toe.</p><p> Vat de toepassing samen in de threadcontext.</p><p> Nodig geautoriseerde personen uit om de aanvraag te beoordelen en vragen te stellen. Zorg voor voldoende tijd voor discussie.</p><p> Een consensusvoorstel indienen om de financiering goed te keuren.</p><p> Als iemand het er niet mee eens is, vraag dan om een reden; er kan bijvoorbeeld meer informatie nodig zijn. Nodig de persoon die het er niet mee eens is uit om zijn stem te wijzigen als hij of zij tevreden is.</p><p> Wanneer u een duidelijke beslissing heeft over de financieringsaanvraag, vermeld dan een uitkomst om de beslissing vast te leggen.</p>"
+      process_introduction: "<p>Dien een financieringsaanvraag in, voeg documenten en ander ondersteunend materiaal toe.</p><p>Vat de aanvraag samen in de threadcontext.</p><p>Nodig bevoegde mensen uit om de aanvraag te beoordelen en vragen te stellen. Zorg voor voldoende tijd voor discussie.</p><p>Start een consensusvoorstel om de financiering goed te keuren.</p><p>Als iemand het er niet mee eens is, vraag dan om een reden - er kan bijvoorbeeld meer informatie nodig zijn. Nodig die persoon uit om de stem te wijzigen wanneer de zorgen zijn weggenomen.</p><p>Wanneer je een duidelijk besluit hebt over de financieringsaanvraag, deel dan een conclusie om het besluit vast te leggen.</p>"
       description: <h3 id="introduce-and-summarize-the-funding-application">Introduceer en vat de financieringsaanvraag samen</h3><p></p><h3 id="how-does-this-application-fit-with-funding-criteria"> Hoe past deze aanvraag binnen de financieringscriteria?</h3><p></p><h3 id="who-is-authorized-to-approve-this-funding-decision"> Wie is bevoegd om dit financieringsbesluit goed te keuren?</h3><p></p><h3 id="invite-questions-from-decision-makers-to-process-the-applica"> Nodig vragen uit van beslissers om de aanvraag te verwerken</h3><p></p>
       funding: Financiering
     approve_a_document:
       title_placeholder: Het ontwikkelen van onze merkstrategie
       process_name: Een document goedkeuren
       process_subtitle: Een belangrijk document, beleid of overeenkomst introduceren, bespreken en ontwikkelen.
-      process_introduction: "<p>Introduceer het document samen met eventuele achtergrondinformatie. Vermeld het doel van het document om gefocust te blijven.</p><p> Nodig mensen uit om informatie en hun expertise bij te dragen, en gebruik dit om het document te kaderen. Erken en overweeg feedback en bijdragen van mensen.</p><p> Integreer bijdragen in een eerste concept van het document en de daaropvolgende concepten totdat het klaar is om te worden goedgekeurd.</p><p> Gebruik een Sense-check-enquête om meningen te peilen en eventuele problemen met het concept op te helderen.</p><p> Zodra de feedback is overwogen en in het document is opgenomen, gaat u over tot goedkeuring of overeenstemming met een toestemmings- of consensusvoorstel.</p><p> De draad wordt een duidelijk overzicht van de voortgang van het maken van documenten en de genomen beslissingen.</p>"
+      process_introduction: "<p>Introduceer het document samen met eventuele achtergrondinformatie. Vermeld het doel van het document om gefocust te blijven.</p><p>Nodig mensen uit om informatie en hun expertise bij te dragen, en gebruik dit om het document vorm te geven. Erken en overweeg feedback en bijdragen van mensen.</p><p>Verwerk bijdragen in een eerste concept van het document en de daaropvolgende concepten totdat het klaar is om te worden goedgekeurd.</p><p>Gebruik een gevoelscheckpeiling om meningen te peilen en eventuele problemen met het concept op te helderen.</p><p>Zodra de feedback is overwogen en in het document is verwerkt, ga je over tot goedkeuring of overeenstemming met een consent- of consensusvoorstel.</p><p>De thread wordt een duidelijk overzicht van de voortgang van het document en de genomen besluiten.</p>"
       description: <h3 id="what-is-the-purpose-of-the-document">Wat is het doel van het document?</h3><p></p><h3 id="why-is-this-important"> Waarom is dit belangrijk?</h3><p></p><h3 id="what-are-you-asking-people-to-do"> Wat vraag je mensen om te doen?</h3><p></p>
       document: Document
     practice_thread:
@@ -180,7 +180,7 @@ nl_NL:
         allocate: Toekennen
         score: Score
         rank: Volgorde
-        time: Moment bevragen
+        time: Tijdpeiling
   user:
     deleted_user: Verwijderde gebruiker
     placeholder_name: Uitgenodigde gebruiker (%{hostname})
@@ -217,9 +217,9 @@ nl_NL:
       details: Details
       group_name: Groepsnaam
       discussion_title: Bordnaam
-      outcome_author: Resultaat auteur
-      outcome_created_at: Resultaat gemaakt op
-      outcome_statement: Resultaat verklaring
+      outcome_author: Auteur conclusie
+      outcome_created_at: Conclusie gemaakt op
+      outcome_statement: Conclusietekst
       poll_url: Peiling URL
       reason: Reden
       participant: Deelnemer
@@ -392,7 +392,7 @@ nl_NL:
       button_text: Opnieuw aanvragen
   announcement_count_emails: "%{count} e-mails"
   email_actions:
-    unfollowed_discussion: Je hebt de e-mails voor het bord afgezet.
+    unfollowed_discussion: Je hebt de e-mails voor de thread uitgezet.
     catch_up_link: Instellingen voor samenvattingsmails
     catch_up_title: Instellingen voor samenvattingsmails
     catch_up_description: Kies hoe vaak je een samenvatting van de activiteiten in je groepen wilt ontvangen
@@ -414,14 +414,14 @@ nl_NL:
     reply_or_view_online_html: Beantwoord deze e-mail onmiddelijk of <a href='%{url}'>bekijk het op %{hostname}</a>.
     turn_off_notifications_html: "<a href='%{url}'>Zet E-mails af</a> voor deze discussie."
     change_email_preferences_html: Verander je <a href='%{email_preferences_url}'>e-mailvoorkeuren</a>.
-    unsubscribe_from_discussion_announced_html: "<a href='%{url}'>Afmelden</a> van aankondigingen op dit bord."
-    unsubscribe_from_new_comment_html: "<a href='%{url}'>Afmelden</a> van reacties op dit bord."
+    unsubscribe_from_discussion_announced_html: "<a href='%{url}'>Afmelden</a> voor verdere aankondigingen in deze thread."
+    unsubscribe_from_new_comment_html: "<a href='%{url}'>Afmelden</a> voor reacties in deze thread."
     unsubscribe_from_comment_replied_to_html: Dit is een reactie melding.
     unsubscribe_from_user_mentioned_html: Dit is een vernoeming melding.
     discussion_edited:
       inline: "%{actor} heeft de threadcontext bewerkt"
     discussion_closed:
-      inline: "%{actor} heeft de draad gesloten"
+      inline: "%{actor} heeft de thread gesloten"
   footer:
     about: Over
     blog: Blog
@@ -478,7 +478,7 @@ nl_NL:
     common:
       why_send_this: Je ontvangt deze e-mail omdat %{reason}
       view_on_loomio: Bekijk het op %{site_name}
-      create_outcome: Deel uitkomst
+      create_outcome: Deel conclusie
       your_response: 'Jij stemde:'
       you_voted: Jij stemde!
       not_invited: Niet uitgenodigd
@@ -514,7 +514,7 @@ nl_NL:
       disagree_prompt: Waarom bent u het daar niet mee eens?
     proposal:
       process_subtitle: Een voorstel indienen om een besluit te nemen
-      process_introduction: '<p>Het klassieke Loomio-voorstel helpt u bij het nemen van een beslissing en zorgt ervoor dat een discussie wordt omgezet in een duidelijke uitkomst.</p><p> Stel een handelwijze voor en nodig mensen uit om te reageren door te stemmen: akkoord, onthouding of oneens.</p><p> Terwijl mensen stemmen, kunnen ze een reden geven waarom ze op die manier hebben gestemd. Je kunt zien waar de rest van de bevolking over de kwestie staat en waarom.</p><p> Op deze manier kunt u een voorstel gebruiken om mensen aan te zetten tot reageren, nieuwe informatie te ontdekken en een gedeeld begrip te creëren. Zo kunt u uw groep helpen om betere, meer geïnformeerde beslissingen te nemen.</p><p> Een voorstel en de bijbehorende discussie vormen een afzonderlijk verslag van hoe het besluit tot stand is gekomen.</p><p> <a target="_blank" href="/docs/en/guides/making_decisions/simple_decision_process"><u>Lees meer over het gebruik van het klassieke Loomio-voorstel in het eenvoudige besluitvormingsproces</u></a> .</p>'
+      process_introduction: '<p>Het klassieke Loomio-voorstel helpt je een besluit te nemen en zet een discussie om in een duidelijke conclusie.</p><p>Stel een handelwijze voor en nodig mensen uit om te stemmen: eens, onthouding of oneens.</p><p>Bij het stemmen kunnen mensen een reden geven voor hun stem. Je kunt zien hoe iedereen over de kwestie denkt, en waarom.</p><p>Zo kun je met een voorstel mensen uitnodigen om te reageren, nieuwe informatie ontdekken en gedeeld begrip opbouwen - om jouw groep te helpen een beter, beter onderbouwd besluit te nemen.</p><p>Een voorstel en de bijbehorende discussie vormen een verslag van hoe het besluit tot stand is gekomen.</p><p><a target="_blank" href="/docs/en/guides/making_decisions/simple_decision_process"><u>Lees meer over het gebruik van het klassieke Loomio-voorstel in het eenvoudige besluitvormingsproces</u></a>.</p>'
       title: Keur het nieuwe merkconcept goed
       details: <h3 id="what-is-the-decision-you-need-to-make"><strong>Welke beslissing moet u nemen?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Waarom is dit belangrijk?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Wat vraag je mensen te doen?</strong></h3><p></p><p> Om dit voorstel te laten slagen, hebben we een meerderheid van de leden nodig die 'Akkoord' stemt.</p><p> Als u het er niet mee eens bent, geef dan aan waarom en wat er moet veranderen zodat u het er wel mee eens kunt zijn.</p>
       agree: Mee eens zijn
@@ -540,19 +540,19 @@ nl_NL:
       outcome_statement: "<p>Bedankt voor uw deelname aan mijn adviesronde!</p>"
     consent:
       process_subtitle: Neem een beslissing die 'veilig is om te proberen', zonder bezwaren
-      process_introduction: <p>Vraag toestemming voor een beslissing die u moet nemen, waarbij er geen zinvolle bezwaren zijn tegen uw voorstel. Zo kunt u snel een besluit nemen voor uw organisatie dat 'veilig is om te proberen'.</p><ul><li><p> Streef naar een 'goed genoeg'-beslissing</p></li><li><p> Betrek veel stemmen bij het ontwikkelen van een werkbaar voorstel</p></li><li><p> Vraag of iemand een geldig bezwaar heeft</p></li><li><p> Wijzig het voorstel om bezwaren op te lossen</p></li></ul><p> <a target="_blank" href="/docs/en/guides/making_decisions/consent_process">Lees meer over het toestemmingsproces</a> .</p>
+      process_introduction: <p>Zoek consent voor een besluit dat je moet nemen, waarbij er geen wezenlijke bezwaren tegen jouw voorstel zijn, zodat je snel een besluit voor jouw organisatie kunt nemen dat 'veilig is om te proberen'.</p><ul><li><p>Streef naar een ‘goed genoeg’ besluit</p></li><li><p>Betrek veel stemmen bij het ontwikkelen van een werkbaar voorstel</p></li><li><p>Vraag of iemand een geldig bezwaar heeft</p></li><li><p>Wijzig het voorstel om bezwaren op te lossen</p></li></ul> <p><a target="_blank" href="/docs/en/guides/making_decisions/consent_process">Lees meer over het consentproces</a>.</p>
       title: Huur Chloe in voor een ontwerpfunctie
-      details: <h3 id="what-is-the-decision-you-need-to-make"><strong>Welke beslissing moet u nemen?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Waarom is dit belangrijk?</strong></h3><p></p><h3 id="what-are-you-asking-of-people-in-this-proposal"> <strong>Wat vraagt u van mensen met dit voorstel?</strong></h3><p></p><p> Als u bezwaar hebt, geef dan aan waarom en stel een wijziging voor in het voorstel waardoor het veilig wordt.</p><p> Bedenk dat we toestemming vragen voor een 'goed genoeg' besluit dat 'veilig is om te proberen', zodat we een goed besluit voor onze organisatie kunnen nemen.</p>
-      consent: Toestemming
+      details: <h3 id="what-is-the-decision-you-need-to-make"><strong>Welk besluit moet je nemen?</strong></h3><p></p><h3 id="why-is-this-important"><strong>Waarom is dit belangrijk?</strong></h3><p></p><h3 id="what-are-you-asking-of-people-in-this-proposal"><strong>Wat vraag je van mensen met dit voorstel?</strong></h3><p></p><p>Als je een bezwaar hebt, zeg dan waarom en stel een wijziging voor die het voorstel veilig maakt.</p><p>Bedenk dat we consent zoeken voor een ‘goed genoeg’ besluit dat 'veilig is om te proberen', zodat we een goed besluit voor onze organisatie kunnen nemen.</p>
+      consent: Consent
       consent_meaning: Het voorstel is veilig om te proberen
       consent_prompt: Wat vindt u goed aan het voorstel en welke voordelen levert het de organisatie op?
       objection: Bezwaar
       objection_meaning: Ik heb een geldig bezwaar en denk dat het voorstel schade zal veroorzaken
       objection_prompt: Welke wijziging moet er aan dit voorstel worden aangebracht om het 'veilig om te proberen' te maken, zodat u het kunt steunen?
-      outcome_statement: "<p>Bedankt voor uw deelname aan het toestemmingsproces.</p>"
+      outcome_statement: "<p>Bedankt voor je deelname aan het consentproces.</p>"
       process_subtitle_v2: Ga door, tenzij iemand bezwaar maakt.
       process_introduction_v2: "<p><strong>Bij een instemmingsvraag</strong> gaat het erom of een voorstel veilig is om uit te proberen, niet of het perfect is. Het voorstel wordt aangenomen zolang niemand een gegronde bezwaar maakt. Als iemand bezwaar maakt, werkt de groep samen om het op te lossen. Omdat deelnemers hun stem kunnen wijzigen naarmate het voorstel zich ontwikkelt, worden bezwaren een middel tot verbetering in plaats van een obstakel.</p>"
-      details_v2: "<h3><strong>Welke beslissing moet je nemen?</strong></h3><p></p><h3> <strong>Waarom is dit belangrijk?</strong></h3><p></p><h3> <strong>Wat wordt er precies van de mensen verwacht in dit voorstel?</strong></h3><p></p><p> We streven niet naar perfectie – geef uw toestemming als het voorstel goed genoeg en veilig genoeg is om uit te proberen. Als u bezwaren heeft, geef dan aan wat er moet veranderen om het werkbaar te maken.</p>"
+      details_v2: "<h3><strong>Welk besluit moet je nemen?</strong></h3><p></p><h3><strong>Waarom is dit belangrijk?</strong></h3><p></p><h3><strong>Wat vraag je van mensen met dit voorstel?</strong></h3><p></p><p>We streven niet naar perfectie — geef je consent als het voorstel goed genoeg en veilig is om te proberen. Als je een bezwaar hebt, zeg dan wat er moet veranderen om het werkbaar te maken.</p>"
     consensus:
       process_subtitle: Bereik een collectieve overeenkomst met alle betrokkenen
       process_introduction: <p>Zorg dat er consensus is over een beslissing die u moet nemen, om tot een overeenkomst te komen die tegemoetkomt aan de behoeften en zorgen van alle deelnemers.</p><ul><li><p> Bespreek en ontwikkel samen een voorstel</p></li><li><p> Betrek en respecteer iedereen die betrokken is</p></li><li><p> Zoek overeenstemming met de meeste mensen</p></li></ul><p> <a target="_blank" href="/docs/en/guides/making_decisions/consensus_process">Lees meer over het Consensusproces</a> .</p>
@@ -567,7 +567,7 @@ nl_NL:
       disagree: Niet mee eens
       disagree_meaning: Er moet iets in dit voorstel worden gewijzigd voordat ik het kan steunen
       disagree_prompt: Hoe kan dit voorstel verbeterd worden zodat u het kunt steunen?
-      block: Blok
+      block: Veto
       block_meaning: Ik blokkeer dit voorstel en vind dat het niet door moet gaan.
       block_prompt: Leg uit waarom u bezwaar heeft tegen dit voorstel en waarom het niet door zou moeten gaan.
       details_v2: "<h3><strong>Welke beslissing moet je nemen?</strong></h3><p></p><h3> <strong>Waarom is dit belangrijk?</strong></h3><p></p><h3> <strong>Wat vraag je de mensen te doen?</strong></h3><p></p><p> Deel je standpunt en leg uit waarom. Als je het er niet mee eens bent, leg dan uit wat er zou moeten veranderen om dit standpunt wel te steunen.</p>"
@@ -575,14 +575,14 @@ nl_NL:
       abstain_prompt: Waarom onthoudt u zich van stemming, of waarom voelt u zich niet in staat om over dit besluit te stemmen?
     question_round:
       process_subtitle: Nodig verduidelijkende vragen uit om mensen te helpen een voorstel te begrijpen
-      process_introduction: <p>Tijdens een vragenronde krijgen deelnemers de kans om verduidelijkende vragen te stellen over het voorstel, zodat iedereen het voorstel begrijpt voordat ze zeggen wat ze ervan vinden.</p><p> De Loomio-vragenronde is een speciaal voorstel zonder stemmogelijkheden. Deelnemers kunnen vragen stellen binnen een door jou ingestelde tijd voor de ronde.</p><p> Een vragenronde wordt vaak gebruikt als stap in het toestemmingsproces.</p><p> <a target="_blank" href="/docs/en/guides/making_decisions/consent_process">Lees meer over het toestemmingsproces</a> .</p>
+      process_introduction: <p>Tijdens een vragenronde krijgen deelnemers de kans om verduidelijkende vragen te stellen over het voorstel, zodat iedereen het voorstel begrijpt voordat ze zeggen wat ze ervan vinden.</p><p>De Loomio-vragenronde is een speciaal voorstel zonder stemopties. Deelnemers kunnen vragen stellen binnen een door jou ingestelde tijd voor de ronde.</p><p>Een vragenronde wordt vaak gebruikt als stap in het consentproces.</p><p><a target="_blank" href="/docs/en/guides/making_decisions/consent_process">Lees meer over het consentproces</a>.</p>
       title: Welke vragen heeft u over het gezondheids- en veiligheidsbeleid?
       details: <h3 id="what-are-you-proposing"><strong>Wat stelt u voor?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Waarom is dit belangrijk?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Wat vraag je mensen te doen?</strong></h3><p></p><p> Dit is een vragenronde, waarin u wordt uitgenodigd om verduidelijkende vragen te stellen.</p><p> Wat moet u weten om het voorstel te begrijpen?</p><p> Reageer alstublieft voordat de vragenronde sluit.</p>
       reason_prompt: Wat moet u weten om het voorstel te begrijpen?
       outcome_statement: "<p>Bedankt voor het indienen van uw vragen tijdens deze ronde</p>"
     sense_check:
       process_subtitle: Vraag om feedback, vragen en zorgen
-      process_introduction: <p>Het Sense Check-voorstel is een goede manier om feedback te krijgen, vragen te stellen en zorgen te bespreken. Het helpt om een voorstel te verduidelijken en te verbeteren voordat er een besluit wordt genomen.</p><p> Sense Check laat mensen weten dat er een voorstel in de maak is en moedigt hen aan om mee te doen. Het biedt een kans om naar mensen te luisteren, aan te voelen hoe ze zich voelen en daarop te reageren. Dit opent de mogelijkheid om hun bijdragen te integreren en zo tot een betere beslissing te komen.</p><p> Gebruik het Sense check-voorstel in het toestemmingsproces om reacties en opmerkingen uit te nodigen om het voorstel te verbeteren, en in een consensusproces om te testen op consensus.</p><p> <a target="_blank" rel="noopener noreferrer nofollow" href="/docs/en/guides/making_decisions/simple_decision_process"><u>Lees meer over het gebruik van Sense check in het Eenvoudige besluitvormingsproces</u></a> <span>.</span></p>
+      process_introduction: <p>Het gevoelscheck-voorstel is een goede manier om feedback te krijgen, vragen uit te nodigen en zorgen boven tafel te krijgen. Het helpt om een voorstel te verduidelijken en te verbeteren voordat er een besluit wordt genomen.</p><p>Een gevoelscheck laat mensen weten dat er een voorstel in de maak is en moedigt hen aan om mee te doen. Het biedt een kans om naar mensen te luisteren, aan te voelen hoe ze zich voelen en daarop te reageren - zodat hun bijdragen kunnen helpen om een beter besluit te nemen.</p> <p>Gebruik het gevoelscheck-voorstel in het consentproces om emoji-reacties en reacties uit te nodigen om het voorstel te verbeteren, en in een consensusproces om te testen op consensus.</p><p><a target="_blank" rel="noopener noreferrer nofollow" href="/docs/en/guides/making_decisions/simple_decision_process"><u>Lees meer over het gebruik van een gevoelscheck in het eenvoudige besluitvormingsproces</u></a><span>.</span></p>
       title: Wat vindt u van de nieuwe merkconcepten?
       details: <h3 id="what-are-you-proposing"><strong>Wat stelt u voor?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Waarom is dit belangrijk?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Wat vraag je mensen te doen?</strong></h3><p></p><p> Wat vindt u van het voorstel? Laat een reactie achter of doe een suggestie voor verbetering.</p><p> Deze Sense-check is een kans voor uw inbreng en bijdrage, zodat wij betere beslissingen kunnen nemen.</p>
       outcome_statement: "<p>Bedankt voor uw deelname aan de zintuigelijke controle.</p>"
@@ -596,7 +596,7 @@ nl_NL:
       abstain_meaning: Ik heb er niets aan toe te voegen, noch bezwaren tegen dit werk.
       abstain_prompt: Onthouding impliceert instemming met de richting van dit voorstel. Is er een reden waarom u onthouding stemt?
       concerned: Bezorgd
-      concerned_meaning: Er moet mogelijk iets aan deze wijziging worden gewijzigd voordat ik toestemming geef of akkoord ga
+      concerned_meaning: Er moet mogelijk iets veranderen voordat ik consent kan geven of het ermee eens kan zijn
       concerned_prompt: Wat is uw zorg en hoe zou dit aangepakt kunnen worden?
       process_subtitle_v2: Kijk of je op de goede weg bent.
       process_introduction_v2: "<p><strong>Een 'sense check'</strong> helpt je om vroegtijdig feedback te krijgen voordat je een definitieve beslissing neemt. Deelnemers geven aan of alles er goed uitziet of uiten hun zorgen, zodat je je koers kunt bijsturen voordat je een formeel voorstel indient. Het is geen beslissing, maar een peiling.</p>"
@@ -643,14 +643,14 @@ nl_NL:
       title: Waar moet de focus van onze strategische richting liggen?
       details: <h3 id="what-is-this-poll-about"><strong>Waar gaat deze poll over?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Waarom is dit belangrijk?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Wat vraag je mensen te doen?</strong></h3><p></p><p> Selecteer de optie(s) die u wenst.</p>
       process_introduction_v2: <p><strong>Met Choose</strong> vind je de meest populaire optie. Deelnemers kiezen uit een lijst; je kunt instellen of ze één of meerdere opties selecteren.</p><p> <a target="_blank" href="/docs/en/user_manual/polls/proposal_types#simple-poll">Lees meer over Choose</a> .</p>
-      process_subtitle_v2: Meet de populariteit met een enquête met één of meerdere antwoordmogelijkheden.
+      process_subtitle_v2: Meet de populariteit met een peiling met één of meer keuzes
     score_poll:
       process_subtitle: Meet de mate van ondersteuning voor elke optie
       process_introduction: <p>Gebruik Score Poll als u mensen wilt ondervragen over hun wensen, voorkeuren of interesses voor elke optie.</p><p> <span>Deelnemers wordt gevraagd om elke optie te beoordelen en een score toe te kennen door een schuifbalk langs een schaal te bewegen.</span></p><p> <span>De resultaten worden grafisch weergegeven, samen met een tabel voor elke optie waarin het totale aantal punten, het gemiddelde aantal punten en het aantal stemmers worden weergegeven.</span></p><p> Geavanceerde instellingen zijn onder meer 'Stemmen zijn anoniem' en 'Opties in willekeurige volgorde weergeven'. Deze worden vaak gebruikt voor Score Polls om eventuele vooringenomenheid bij stemmingen te beperken.</p><p> <a target="_blank"  href="/docs/en/user_manual/polls/proposal_types#score-poll">Lees meer over Score poll</a> .</p>
       title: Beoordelen hoe beslissingen in onze organisatie worden genomen
       details: <h3 id="what-is-this-poll-about"><strong>Waar gaat deze poll over?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Waarom is dit belangrijk?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Wat vraag je mensen te doen?</strong></h3><p></p><p> Selecteer de optie(s) die u wenst.</p>
       process_subtitle_v2: Meet de mate van steun voor elke optie.
-      process_introduction_v2: <p><strong>Met Score</strong> kun je de mate van steun van de groep voor elke optie meten. Deelnemers beoordelen elke optie door een score toe te kennen op een glijdende schaal, zodat je niet alleen kunt zien wat mensen prefereren, maar ook in welke mate.</p><p> <a target="_blank" href="/docs/en/user_manual/polls/proposal_types#score-poll">Lees meer over de Score-enquête</a> .</p>
+      process_introduction_v2: <p><strong>Een scorepeiling</strong> laat je de mate van steun van de groep voor elke optie meten. Deelnemers beoordelen elke optie door een score toe te kennen op een glijdende schaal, zodat je niet alleen kunt zien wat mensen prefereren, maar ook in welke mate.</p><p><a target="_blank" href="/docs/en/user_manual/polls/proposal_types#score-poll">Lees meer over de scorepeiling</a>.</p>
       process_subtitle_v3: Vraag kiezers om aan te geven in hoeverre ze elke optie steunen
     dot_vote:
       process_subtitle: Wijs een budget van punten toe om prioriteiten te onthullen
@@ -670,12 +670,12 @@ nl_NL:
       process_subtitle_v3: Sorteer de opties van meest naar minst gewenst
     time_poll:
       process_subtitle: Ontdek wanneer mensen beschikbaar zijn om te ontmoeten
-      process_introduction: <p><span>Bespaar tijd bij het plannen van een datum voor uw vergadering of evenement.</span></p><p> Met een tijdpeiling kunt u eenvoudig zien of iedereen beschikbaar is en de beste tijd vinden.</p><p> Geef je Time-poll een titel en details. Voer een lijst in met datum- en tijdopties in jouw tijdzone.</p><p> Houd bij het instellen van tijdsloten rekening met mensen in verschillende tijdzones. Deelnemers zien de tijden die in hun tijdzone zijn gelokaliseerd.</p><p> Stel een vergaderduur in.</p><p> Zodra de tijdpeiling sluit, stelt u een uitkomst vast met de beste tijd en eventuele instructies voor de vergadering.</p><p> <span>Loomio voegt een kalenderuitnodiging toe aan de e-mail met de uitslag, zodat deelnemers deze aan hun kalender kunnen toevoegen.</span></p><p> <a target="_blank" href="/docs/en/user_manual/polls/meeting_polls#time-poll">Lees meer over de Time poll</a> .</p>
+      process_introduction: <p>Vind snel de beste tijd voor jouw vergadering of evenement. Voeg een titel, details en datum- en tijdopties in jouw tijdzone toe. Deelnemers zien de tijden in hun eigen tijdzone.</p><p>Wanneer jouw tijdpeiling sluit, schrijf je de conclusie met de beste tijd en eventuele instructies voor de vergadering. Loomio verstuurt de e-mail met de conclusie en een agenda-uitnodiging, zodat deelnemers de afspraak aan hun agenda kunnen toevoegen.</p><p><a target="_blank" href="/docs/en/user_manual/polls/meeting_polls#time-poll">Lees meer over de tijdpeiling</a>.</p>
       title: Laten we een datum vinden voor onze volgende bijeenkomst
       details: "<p><strong>Wat is de bijeenkomst of het evenement?</strong></p><p></p><p> <strong>Waarom is dit belangrijk?</strong></p><p></p><p> <strong>Wat vraag je mensen te doen?</strong></p><p></p><p> <span>Markeer de tijdsloten waarop u beschikbaar bent met het groene 'duim omhoog'-icoontje. Als u niet beschikbaar bent, laat u het rode 'duim omlaag'-icoontje staan.</span></p><p> <span>Gebruik het pictogram 'duimen zijwaarts' om aan te geven dat u beschikbaar bent 'indien nodig'.</span></p>"
       reason_prompt: Kunt u iets zeggen om de organisator te helpen bij het vinden van een geschikt moment?
       process_subtitle_v2: Zoek uit wanneer mensen beschikbaar zijn.
-      process_introduction_v2: <p><strong>Met een tijdpeiling</strong> kun je achterhalen wanneer mensen beschikbaar zijn. Voeg je voorgestelde tijden toe en deelnemers zien deze in hun eigen tijdzone. Wanneer de peiling is gesloten, stel je de uitkomst in en Loomio stuurt iedereen een agenda-uitnodiging.</p><p> <a target="_blank" href="/docs/en/user_manual/polls/meeting_polls#time-poll">Lees meer over de Time-enquête</a> .</p>
+      process_introduction_v2: <p><strong>Met een tijdpeiling</strong> kun je achterhalen wanneer mensen beschikbaar zijn. Voeg je voorgestelde tijden toe en deelnemers zien deze in hun eigen tijdzone. Wanneer de peiling is gesloten, schrijf je de conclusie en Loomio stuurt iedereen een agenda-uitnodiging.</p><p><a target="_blank" href="/docs/en/user_manual/polls/meeting_polls#time-poll">Lees meer over de tijdpeiling</a>.</p>
     opt_in:
       process_subtitle: Vind vrijwilligers of vraag naar deelnemers
       process_introduction: '<p>Met Opt-in kunt u mensen uitnodigen om zich aan te sluiten bij een team, commissie of werkgroep, of om deel te nemen aan een evenement.</p><p> ''Opt-in'' heeft twee stemopties: Accepteren of Weigeren.</p><p> U kunt een doelaantal mensen definiëren dat u zoekt, bijvoorbeeld 3 mensen die zich bij uw werkgroep willen aansluiten.</p><p> <a target="_blank" href="/docs/en/user_manual/polls/meeting_polls#opt-in">Lees meer over Opt-in</a> .</p>'
@@ -691,14 +691,14 @@ nl_NL:
       process_introduction: "<p>Om Loomio optimaal te benutten, is gezamenlijke inzet nodig. Dit voorstel helpt uw groep te bepalen of ze de tijd en moeite willen investeren om Loomio eens goed uit te proberen – of dat nu een proefperiode is of een gezamenlijk abonnement.</p>"
       title: Laten we samen Loomio eens proberen.
       details: "<p>Loomio goed gebruiken vereist een gezamenlijke inspanning — het werkt alleen als mensen aanwezig zijn en meedoen.</p><p> Dit voorstel vraagt iedereen om zich tijdens onze proefperiode actief in te zetten voor het gebruik van Loomio. Dat betekent inloggen, stemmen op voorstellen en deelnemen aan discussies.</p><p> Als u hierover bezwaren hebt, kunt u aangeven wat er veranderd moet worden – daarvoor is de bezwaaroptie bedoeld.</p>"
-      outcome_statement: "<p>Deel de uitkomst van dit voorstel met de groep: wat er is besloten en wat er vervolgens gebeurt.</p>"
+      outcome_statement: "<p>Deel de conclusie van dit voorstel met de groep — wat er is besloten en wat er vervolgens gebeurt.</p>"
       consent_meaning: Ik wil het wel proberen.
       consent_prompt: Waar kijk je het meest naar uit bij het gebruik van Loomio?
       objection_meaning: Ik heb een punt van zorg dat we eerst moeten aanpakken.
       objection_prompt: Wat moet er veranderen voordat je je kunt vastleggen?
     majority:
       process_subtitle: Neem een besluit op basis van de meeste stemmen.
-      process_introduction: "<p><strong>De meerderheidsstemming</strong> is de eenvoudigste manier om een groepsbesluit te nemen: deelnemers stemmen voor of tegen, en het voorstel wordt aangenomen als meer dan de helft voor stemt. Er is geen onthouding of blokkering, dus elke stem telt even zwaar.</p><p> De meerderheidsmethode werkt goed bij eenvoudige beslissingen waarbij een duidelijke uitkomst gewenst is. Voor beslissingen waarbij het belangrijk is dat mensen samenwerken om elkaar te begrijpen en tot overeenstemming te komen, is de instemmingsmethode of consensusmethode een betere keuze.</p>"
+      process_introduction: "<p><strong>De meerderheidsstemming</strong> is de eenvoudigste manier om een groepsbesluit te nemen — deelnemers stemmen Ja of Nee, en het voorstel wordt aangenomen als meer dan de helft Ja stemt. Er is geen onthouding of veto, dus elke stem telt even zwaar.</p><p>De meerderheidsmethode werkt goed bij eenvoudige besluiten waarbij je een duidelijke conclusie nodig hebt. Voor besluiten waarbij het belangrijk is dat mensen samenwerken om elkaar te begrijpen en tot overeenstemming te komen, kun je consent of consensus overwegen.</p>"
       title: Keur het budget voor het derde kwartaal goed.
       details: "<h3><strong>Welke beslissing moet je nemen?</strong></h3><p></p><h3> <strong>Waarom is dit belangrijk?</strong></h3><p></p><h3> <strong>Wat vraag je de mensen te doen?</strong></h3><p></p>"
       yes_meaning: Ik steun dit voorstel.
