@@ -1,10 +1,10 @@
 ---
 title: Adatvédelem
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/groups/settings/privacy.md
+source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
+source_file: docs/en/user_manual/groups/settings/privacy.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 72b58ba22851f914
   open: 1727e8f20fe92fb2
@@ -14,77 +14,77 @@ sections:
   how-people-join: 8b20f2ab6789b0b7
   group-directory: 4ef3023e3cf4efdf
 generated:
-  introduction: 17bcc220492b542e
-  open: b070aeee3414262e
-  follow-an-open-group: 1f9a93bab515a73a
-  closed: c9ed1825a98e672f
-  secret: 1e9339061f73d45a
-  how-people-join: 9689e0518697aeca
-  group-directory: 90cd3cbe9bb5b86b
+  introduction: 0b49629a35143f9f
+  open: 619bdf717a80562e
+  follow-an-open-group: 1ba28db3a5fc5a87
+  closed: 6b9a13fad4223108
+  secret: 606c173ff3ffdce9
+  how-people-join: ab3727fb4f58290e
+  group-directory: cecc19c6947a8ef3
 title_source: 54a57c3147c49f33
 title_generated: ea2f113c76e353a2
 ---
 
 <!-- translation-section: introduction -->
 
-# Csoportok adatvédelme
+# A csoport adatvédelme
 
-Az adatvédelmi beállítások határozzák meg, ki találhatja meg a csoportot, és ki olvashatja a tartalmát. A csoport oldalán nyisd meg **A csoportbeállítások szerkesztése** lehetőséget, majd válaszd az **Adatvédelem** lehetőséget.
+Az adatvédelmi beállítások határozzák meg, ki találhatja meg a csoportot, és ki olvashatja a tartalmát. A csoport oldalán nyisd meg **A csoportbeállítások szerkesztése** menüpontot, majd válaszd ki az **Adatvédelem** lehetőséget.
 
-![Csoport adatvédelmi beállításai](group_privacy_settings.png#width-90)
+![A csoport adatvédelmi beállításai](group_privacy_settings.png#width-90)
 
-Az adatvédelmi beállítás módosítása a csoport meglévő tartalmát is láthatóvá teheti vagy elrejtheti, nem csak az ezután létrehozott tartalmat. Válaszd a legszigorúbb beállítást, amely még megfelel a csoport céljának.
+Az adatvédelmi beállítások módosítása a csoport meglévő tartalmát is láthatóvá teheti vagy elrejtheti, nem csak a később létrehozott tartalmat. Válaszd ki a legszigorúbb beállítást, amely még megfelel a csoport céljának.
 
 <!-- translation-section: open -->
 
-## Nyitva
+## Nyilvános
 
-A nyitott csoportok nyilvánosak. Bárki megtalálhatja a csoportot, és elolvashatja a beszélgetéseit, szavazásait és fájljait. A tagok listáját továbbra is csak a tagok láthatják.
+A nyilvános csoportok nyilvános terek. Bárki megtalálhatja a csoportot, és elolvashatja a beszélgetéseit, szavazásait és fájljait. A taglistát továbbra is csak a tagok láthatják.
 
-A nyitott csoportokhoz az emberek azonnal csatlakozhatnak, a csatlakozáshoz jóváhagyás lehet szükséges, vagy a tagság meghíváshoz köthető.
+A nyilvános csoportok engedélyezhetik az azonnali csatlakozást, jóváhagyást kérhetnek, vagy csak meghívóval fogadhatnak új tagokat.
 
 <!-- translation-section: follow-an-open-group -->
 
-### Nyitott csoport frissítéseinek követése
+### Nyilvános csoport követése
 
-Az emberek csatlakozás nélkül is követhetik egy nyitott csoport tevékenységét. A követett csoport olvasatlan tevékenysége megjelenik a napi összefoglaló e-mailjükben, így akkor nézhetik át, amikor ráérnek. A követéstől nem válnak taggá, nem kapnak tagsághoz kötött szavazati jogot vagy azonnali értesítéseket.
+Csatlakozás nélkül is követheted egy nyilvános csoport tevékenységét. A követés hozzáadja a csoport olvasatlan tevékenységeit az összefoglaló e-mailedhez, így akkor nézheted át őket, amikor neked megfelel. A követők pusztán a követéstől nem válnak taggá, nem kapnak tagoknak járó szavazati jogot, és nem kapnak azonnali értesítéseket.
 
-Kapcsold be a **Frissítések követése** beállítást a csoport oldalán, hogy az olvasatlan beszélgetései, hozzászólásai, szavazásai és egyéb témabeli tevékenységei megjelenjenek az összefoglaló e-mailedben. Ha ezt nem szeretnéd, kapcsold ki a beállítást.
+Kapcsold be a **Frissítések követése** beállítást a csoport oldalán, hogy az olvasatlan beszélgetések, hozzászólások, szavazások és a szálak egyéb tevékenységei bekerüljenek az összefoglaló e-mailedbe. Kapcsold ki a beállítást, ha már nem szeretnéd a csoport tevékenységeit megkapni az összefoglalóban.
 
-![Frissítések követése egy nyitott csoportban](group_follow_updates.png)
+![Frissítések követése egy nyilvános csoportban](group_follow_updates.png)
 
 <!-- translation-section: closed -->
 
-## Zárva
+## Zárt
 
-Bárki megtalálhatja a zárt csoportot, és elolvashatja a nevét és a leírását. A beszélgetéseket, szavazásokat, fájlokat és a tagok listáját csak a tagok és a meghívott vendégek láthatják.
+Bárki megtalálhatja a zárt csoportot, és elolvashatja a nevét és leírását. A beszélgetéseket, szavazásokat, fájlokat és a taglistát csak a tagok és a meghívott vendégek láthatják.
 
-A zárt csoportokban az emberek kérhetik a tagságot, vagy a tagság meghíváshoz köthető. Jóváhagyás nélkül nem lehet azonnal csatlakozni hozzájuk.
+A zárt csoportok engedélyezhetik a tagság kérelmezését, vagy csak meghívóval fogadhatnak új tagokat. Azonnali, jóváhagyás nélküli csatlakozást nem engedélyezhetnek.
 
-Egy zárt alcsoport beállítható úgy, hogy a szülőcsoport tagjai az alcsoporthoz való csatlakozás nélkül is olvashassák a beszélgetéseit.
+Egy szülőcsoport zárt alcsoportja engedélyezheti, hogy a szülőcsoport tagjai az alcsoporthoz való csatlakozás nélkül olvashassák az alcsoport beszélgetéseit.
 
 <!-- translation-section: secret -->
 
 ## Titkos
 
-A titkos csoportokat és tartalmukat csak a meghívott vagy hozzáadott emberek láthatják. Csatlakozni csak meghívással lehet. A titkos csoportok nem jelennek meg a nyilvános csoportjegyzékben.
+A titkos csoportokat és tartalmukat csak azok láthatják, akiket meghívtak vagy hozzáadtak. Taggá válni csak meghívóval lehet. A titkos csoportok nem jelennek meg a nyilvános csoportjegyzékben.
 
 <!-- translation-section: how-people-join -->
 
-## Csatlakozás a csoporthoz
+## Hogyan lehet csatlakozni
 
-Az adatvédelmi beállítás határozza meg, mely csatlakozási lehetőségek érhetők el:
+Az adatvédelmi beállítás határozza meg, milyen csatlakozási módok érhetők el:
 
-| Csoport adatvédelmi beállítása | Elérhető csatlakozási lehetőségek |
+| A csoport adatvédelme | Elérhető csatlakozási módok |
 | --- | --- |
-| **Nyitva** | Bárki csatlakozhat, jóváhagyást kérhet, vagy csak meghívással csatlakozhat |
-| **Zárva** | Jóváhagyás kérése vagy csatlakozás csak meghívással |
-| **Titkos** | Csatlakozás csak meghívással |
+| **Nyitott** | Bárki csatlakozhat, jóváhagyást kérhet, vagy csak meghívóval lehet csatlakozni |
+| **Zárt** | Jóváhagyás kérése vagy csatlakozás csak meghívóval |
+| **Titkos** | Csatlakozás csak meghívóval |
 
-Ha jóváhagyás szükséges, az emberek kiválasztják a **Kapcsolódj a csoporthoz** lehetőséget, válaszolnak a csoport csatlakozási kérdésére, majd elküldik a csatlakozási kérelmüket. A kérdés beállításáról, a kérelmek elbírálásáról és az emberek közvetlen meghívásáról lásd a [Meghívás](/en/user_manual/groups/inviting_people#request-to-join-group) című részt.
+Ha jóváhagyás szükséges, a csatlakozni kívánók kiválasztják a **Csoporthoz csatlakozás** lehetőséget, válaszolnak a csoport csatlakozási kérdésére, és elküldik a csatlakozási kérelmet. A kérdés beállításáról, a kérelmek áttekintéséről és az emberek közvetlen meghívásáról az [Emberek meghívása](/en/user_manual/groups/inviting_people#request-to-join-group) oldalon olvashatsz.
 
 <!-- translation-section: group-directory -->
 
 ## Csoportjegyzék
 
-A nyitott és zárt szülőcsoportok megjelenhetnek a nyilvános csoportjegyzékben, így az emberek megtalálhatják őket. A jegyzékben való megjelenés nem változtat azon, ki olvashatja a csoport tartalmát, vagy ki válhat taggá. Az alcsoportok és a titkos csoportok nem jelenhetnek meg a jegyzékben.
+A nyilvános és zárt szülőcsoportok megjelenhetnek a nyilvános csoportjegyzékben, hogy az emberek megtalálhassák őket. A jegyzékben való megjelenés nem változtat azon, ki olvashatja a csoport tartalmát, vagy ki válhat taggá. Az alcsoportok és a titkos csoportok nem jelenhetnek meg a jegyzékben.

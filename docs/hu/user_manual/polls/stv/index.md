@@ -1,6 +1,6 @@
 ---
 title: STV-választások
-source_revision: cf8da02f691349beecf6ac6444971fad130d4ddd
+source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
 source_file: docs/en/user_manual/polls/stv/index.md
 translated:
   provider: codex/gpt-6.1-sol
@@ -21,20 +21,20 @@ sections:
   exporting-ballots: 582555dd13633bf0
   share-an-outcome: 6a02aed173b368b9
 generated:
-  introduction: 1355ba8d32640fe8
-  when-to-use-stv: c23e90a4472ab173
-  creating-an-stv-election: 4c625b2a18ae3835
-  number-of-seats: 43dff8b74452b4ee
-  counting-method: 6883b32453468c8e
-  quota-type: 5ffd7b1979c262f7
-  how-voting-works: 3643bc60b4df1803
-  how-counting-works: 77a4e764c4569ca7
-  understanding-results: fc73c168a3b2d361
-  method-and-quota: ce683eedf4358a07
-  elected-candidates: 26b645df0e03e9d7
-  round-by-round-details: c44bee17944273c2
-  exporting-ballots: 56e40b2269a91400
-  share-an-outcome: 61926fca089c8389
+  introduction: 39a8c51c88f61b36
+  when-to-use-stv: 375f96d4ca550eab
+  creating-an-stv-election: 2e4396fffe52151f
+  number-of-seats: ba0bbf37aa2cc658
+  counting-method: 90fe8e383deadd8d
+  quota-type: '08342962ba39a28c'
+  how-voting-works: ac03b3388b471971
+  how-counting-works: 4bbc4737e6f9a8fa
+  understanding-results: 9b42c12afd404f68
+  method-and-quota: 8d225149d164a03e
+  elected-candidates: 567d0cf0f90e79ad
+  round-by-round-details: 577de8c35e762e8e
+  exporting-ballots: aeed7970ab0bc490
+  share-an-outcome: 710f776206e6db13
 title_source: cd3e1a4cdc2456a6
 title_generated: 67607ab7fbcfa361
 ---
@@ -43,28 +43,28 @@ title_generated: 67607ab7fbcfa361
 
 # STV-választások
 
-Az **átruházható szavazat (STV)** arányos képviseletet biztosító szavazási módszer, amellyel több jelöltet lehet megválasztani. A megválasztott jelöltek így a szavazók eltérő nézeteit is arányosan képviselhetik.
+Az **egyetlen átruházható szavazat (STV)** olyan arányos képviseletet biztosító szavazási mód, amellyel több jelöltet lehet megválasztani a jelöltek közül. Biztosítja, hogy a megválasztott jelöltek arányosan képviseljék a szavazók eltérő nézeteit.
 
 <!-- translation-section: when-to-use-stv -->
 
 ## Mikor használj STV-t?
 
-Akkor használj STV-választást, ha:
+Használj STV-választást, ha:
 
-- Több jelölt közül szeretnél **bizottságot, vezető testületet vagy küldötteket** választani
-- **Arányos képviseletet** szeretnél biztosítani, hogy a kisebbségben lévő csoportok is a támogatottságuknak megfelelő számú helyet szerezhessenek
-- Olyan választást tartasz, ahol a szavazók rangsorolják a jelölteket
+- **Bizottságot, testületet vagy küldötteket** szeretnél választani a jelöltek közül
+- **Arányos képviseletet** szeretnél biztosítani, amelyben a kisebbségi irányzatok a támogatottságukkal arányos számú helyet szerezhetnek
+- Olyan választást szeretnél tartani, amelyben a szavazók a preferenciáik szerint rangsorolják a jelölteket
 
 >[!NOTE]
->Az STV **nem** azonos a Loomio [rangsoroló szavazásával](/en/user_manual/polls/rank/), amely pontszámok alapján segít kiválasztani egyetlen legjobb lehetőséget. Az STV több jelölt megválasztására szolgál, a szavazatok átruházásával és kieséses fordulókkal.
+>Az STV **nem** azonos a Loomio [Rangsorolás szavazásával](/en/user_manual/polls/rank/), amely egyszerűbb, pontozáson alapuló rangsorolással választja ki az egyetlen legjobb lehetőséget. Az STV több jelölt megválasztására szolgál, szavazatátruházással és kiesési körökkel.
 
 <!-- translation-section: creating-an-stv-election -->
 
 ## STV-választás létrehozása
 
-Szavazás indításakor válaszd a **STV választás** típust, majd add hozzá a jelölteket szavazási lehetőségként. Beállíthatod a **helyek számát**, a **számlálási módszert** és a **kvóta típusát**.
+Szavazás indításakor válaszd ki az **STV választás** típust, majd add hozzá a jelölteket a szavazás lehetőségeiként. A szavazást a **helyek számának**, a **számlálási módszernek** és a **kvóta típusának** beállításával szabhatod testre.
 
-Ebben a példában az Oatmilk Cooperative három embert választ a visszaváltható csomagolás kipróbálásának felügyeletére. Az űrlap ismerteti a feladatot, felsorol öt jelöltet, és skót STV-t használ Droop-kvótával.
+Ebben a példában az Oatmilk Cooperative három embert választ a visszaváltható csomagolás próbaüzemének felügyeletére. Az űrlap ismerteti a feladatkört, felsorol öt jelöltet, és skót STV-t használ Droop-kvótával.
 
 ![](form.png)
 
@@ -72,81 +72,81 @@ Ebben a példában az Oatmilk Cooperative három embert választ a visszaváltha
 
 ### Helyek száma
 
-Ennyi jelöltet választanak meg. A helyek számának kisebbnek kell lennie a jelöltek számánál.
+Hány jelöltet szeretnél megválasztani. Ennek a számnak kisebbnek kell lennie a jelöltek számánál.
 
 <!-- translation-section: counting-method -->
 
 ### Számlálási módszer
 
-A szavazatok kétféle módszerrel számolhatók meg:
+A szavazatok megszámlálására két módszer áll rendelkezésre:
 
-Scottish STV
-  : Ajánlott. A súlyozott inkluzív Gregory-módszer (WIGM), amelyet 2007 óta használnak a skót helyhatósági választásokon. Szabályai egyértelműek és könnyen követhetők. A legtöbb szervezet számára megfelelő.
+Skót STV
+  : Ajánlott. A súlyozott inkluzív Gregory-módszer (Weighted Inclusive Gregory Method, WIGM), amelyet 2007 óta használnak a skót önkormányzati választásokon. Pontosan meghatározott, egyszerű szabályokat alkalmaz. A legtöbb szervezet számára ez a legmegfelelőbb.
   
 Meek STV
-  : Pontosabb módszer, amellyel csak számítógép tudja megszámolni a szavazatokat. Ha egy jelöltet megválasztanak, a Meek-módszer minden szavazatból folyamatosan továbbadja a megválasztásához nem szükséges részt a szavazó később rangsorolt jelöltjeinek. Ez azokra a szavazatokra is vonatkozik, amelyek a számlálás későbbi szakaszában kerülnek hozzá. Ha egy jelölt kiesik, a szavazatokat úgy számolják újra, mintha a jelölt soha nem indult volna. Kevesebb szavazat vész el, mint a Scottish STV esetén, de a számlálás kézzel nem ellenőrizhető.
+  : Pontosabb módszer, amelynek számlálását csak számítógép tudja elvégezni. Amikor egy jelöltet megválasztanak, a Meek-módszer minden szavazatból folyamatosan továbbadja azt a részt, amelyre a jelöltnek nincs szüksége, a szavazó rangsorában később szereplő jelölteknek. Ez azokra a szavazatokra is vonatkozik, amelyek a számlálás későbbi szakaszában jutnak el hozzá. Ha egy jelölt kiesik, a szavazatokat úgy számolják újra, mintha az adott jelölt nem is indult volna. Kevesebb szavazat vész el, mint a skót STV esetében, de a számlálás kézzel nem ellenőrizhető.
 
 <!-- translation-section: quota-type -->
 
 ### Kvóta típusa
 
-A kvóta az a legkevesebb szavazat, amelyre egy jelöltnek szüksége van egy hely megszerzéséhez. Két típusa választható:
+A kvóta az a legkisebb szavazatszám, amelyre egy jelöltnek szüksége van egy hely megszerzéséhez. Kétféle lehet:
 
 Droop
-  : Ajánlott. Az STV-választások szokásos kvótája, amelyet Írországban, Ausztráliában és Skóciában használnak. Ez a legkisebb kvóta, amelyet legfeljebb annyi jelölt érhet el, ahány betöltendő hely van. Az a szavazói csoport, amely a saját jelöltjeit rangsorolja az első helyekre, legalább annyi helyet szerez, ahány kvótányi szavazattal rendelkezik. Így számítható ki:
+  : Ajánlott. Az STV-választások szokásos kvótája, amelyet Írországban, Ausztráliában és Skóciában használnak. Ez a legkisebb kvóta, amelyet legfeljebb annyi jelölt érhet el, ahány hely van. Ha a szavazók egy csoportja a saját jelöltjeit rangsorolja az első helyekre, legalább annyi helyet szerez, ahány kvótányi szavazata van. Kiszámítása:
 \\[ floor(\frac{votes}{(seats + 1)}) + 1 \\]
 
 Hare
-  : Nagyobb kvóta. A sok szavazattal rendelkező csoportok minden megszerzett helyre több szavazatot használnak fel, ezért a kisebb csoportok nagyobb eséllyel szerzik meg az utolsó helyeket. Így számítható ki:
+  : Nagyobb kvóta. A sok szavazattal rendelkező csoportok több szavazatot használnak fel minden megszerzett helyre, így a kisebb csoportok nagyobb eséllyel szerzik meg az utolsó helyeket. Kiszámítása:
     \\[ \frac{votes}{seats}\\]
 
-Mindkét képletben a *votes* azoknak a szavazólapoknak a száma, amelyeken legalább egy jelöltet rangsoroltak.
+Mindkét képletben a *votes* azoknak a szavazólapoknak a száma, amelyeken legalább egy jelölt szerepel a rangsorban.
 
-A Meek STV kerekítés nélkül számítja ki a kvótát; a Droop esetén ez votes ÷ (seats + 1). Minden fordulóban újraszámítja a kvótát a jelölteknél még meglévő szavazatokból, és a megválasztáshoz a jelöltnek meg kell haladnia ezt az értéket.
+A Meek STV kerekítés nélkül számítja ki a kvótát; a Droop-kvóta esetében a képlet votes ÷ (seats + 1). Minden körben újraszámítja a kvótát a jelölteknél még meglévő szavazatok alapján, és a megválasztáshoz a jelöltnek meg kell haladnia ezt az értéket.
   
   >[!TIP]
-  > A Droop-kvóta mindig kevesebb szavazatot jelent, mint a Hare-kvóta. Ha például 100 szavazat érkezik négy helyre, a Droop-kvóta 21, a Hare-kvóta pedig 25.
+  > A Droop-kvóta mindig kisebb szavazatszámot ad, mint a Hare-kvóta. Például egy 100 szavazattal és négy hellyel zajló választáson a Droop-kvóta 21, a Hare-kvóta pedig 25 lenne.
 
 <!-- translation-section: how-voting-works -->
 
 ## Hogyan működik a szavazás?
 
-Ebben a példában az Oatmilk Cooperative három embert választ az újrahasználható csomagolás kipróbálásának felügyeletére. A szavazók a vonal fölé húzzák a jelölteket, majd a kívánt sorrendbe rendezik őket:
+Ebben a példában az Oatmilk Cooperative három embert választ az újrahasználható csomagolás próbaüzemének felügyeletére. A szavazók a vonal fölé húzzák a jelölteket, és a preferenciáik szerint rangsorolják őket:
 
 ![](stv-vote-in-progress.png)
 
 - **1. hely** = a leginkább támogatott jelölt
-- **2. hely** = a második választás
-- Annyi jelöltet rangsorolj, amennyit szeretnél
+- **2. hely** = a másodiknak választott jelölt
+- Folytasd a rangsorolást annyi jelölttel, amennyivel szeretnéd
 
-Legalább egy jelöltet rangsorolni kell, de nem kell minden jelöltet rangsorolni. A rangsorba nem tett jelöltek nem részesülnek az adott szavazó támogatásából.
+A szavazóknak legalább egy jelöltet rangsorolniuk kell, de nem szükséges minden jelöltet rangsorolniuk. A rangsorból kihagyott jelöltek nem kapnak támogatást az adott szavazótól.
 
 <!-- translation-section: how-counting-works -->
 
 ## Hogyan működik a számlálás?
 A számlálás menete:
 
-1. Kiszámítják a **kvótát** (a mandátum megszerzéséhez szükséges legkevesebb szavazatot).
-2. Minden jelöltnél összeszámolják az **Elsődleges beállítások** szerinti szavazatokat.
-3. Minden jelöltet **megválasztanak**, aki eléri a kvótát. A kvótán felüli többletszavazataikat tört értékkel **átruházzák** a szavazók következőként rangsorolt jelöltjeire, a legnagyobb többlettel kezdve. Szavazatokat csak a számlálásban még részt vevő jelöltek kaphatnak.
-4. Ha nem maradt átruházható többlet, a **legkevesebb szavazatot kapott jelölt kiesik**. Szavazatait teljes értékkel átruházzák a szavazók következőként rangsorolt jelöltjeire.
-5. Ha a megmaradt jelöltek száma megegyezik a még betöltendő mandátumok számával, mindegyiküket megválasztják, akkor is, ha nem érték el a kvótát.
-6. Egyébként a számlálás a 3. lépéstől ismétlődik, amíg minden mandátumot be nem töltenek.
+1. Kiszámítják a **kvótát**, vagyis a hely megszerzéséhez szükséges legkisebb szavazatszámot.
+2. Megszámolják az **Elsődleges beállítások** szerinti szavazatokat minden jelöltnél.
+3. Minden jelölt, aki eléri a kvótát, **megválasztott** lesz. A kvóta feletti többletszavazatait tört értékkel **átruházzák** a szavazók rangsorában következő jelöltekre, a legnagyobb többlettel kezdve. Szavazatokat csak olyan jelöltekre ruháznak át, akik még részt vesznek a számlálásban.
+4. Ha nincs több átruházható többlet, a **legkevesebb szavazattal rendelkező jelölt kiesik**. Szavazatait teljes értékkel átruházzák a szavazók rangsorában következő jelöltekre.
+5. Amikor a megmaradt jelöltek száma megegyezik a betöltetlen helyek számával, mindegyiküket megválasztják, akkor is, ha nem érték el a kvótát.
+6. Egyébként a számlálás a 3. lépéstől ismétlődik, amíg minden helyet betöltenek.
 
-A tört értékkel csak a megválasztott jelöltnek már nem szükséges szavazatokat osztják tovább. Ha például a kvóta 26, és egy jelöltnek 40 szavazata van, a többlete 14. Mind a 40 szavazólap a rajta következőként rangsorolt jelölthöz kerül, egyenként 14 ÷ 40 = 0,35 szavazat értékben.
+A tört érték csak azt a szavazatrészt osztja szét, amelyre a megválasztott jelöltnek nincs szüksége. Például ha a kvóta 26, és egy jelöltnek 40 szavazata van, a többlete 14. Mind a 40 szavazólapja a rangsorban következő jelölthöz kerül, egyenként 14 ÷ 40 = 0,35 szavazat értékkel.
 
-A Scottish STV esetén minden átruházott szavazat értékét öt tizedesjegyre lefelé kerekítik, ahogyan a skót önkormányzati választásokon is.
+A skót STV esetében minden átruházott szavazat értékét öt tizedesjegyre lefelé kerekítik, ahogy a skót önkormányzati választásokon is.
 
-Ha két vagy több jelöltnek van a legkevesebb szavazata, az esik ki, akinek a legutóbbi korábbi fordulóban kevesebb szavazata volt.
+Ha két vagy több jelöltnek van a legkevesebb szavazata, az esik ki, akinek a legutóbbi olyan korábbi körben kevesebb szavazata volt, amelyben az állásuk eltért.
 
 >[!TIP]
->Egy szavazólap csak addig számít, amíg szerepel a rangsorában olyan jelölt, aki még részt vesz a számlálásban. Ha egy ilyen jelölt sem marad, a szavazólap „kimerül”, és már nem számít bele az eredménybe.
+>Egy szavazólap csak addig számít, amíg a rangsorában szerepel olyan jelölt, aki még részt vesz a számlálásban. Ha már nincs ilyen jelölt, a szavazólap „kimerül”, és többé nem számít.
 
 <!-- translation-section: understanding-results -->
 
 ## Az eredmények értelmezése
 
-A szavazás lezárása után az eredmények több szakaszban jelennek meg. Ezen a választáson Samira Patel, Alex Morgan és Morgan Price szerzi meg a bizottság három helyét:
+A szavazás lezárása után az eredmények több részben jelennek meg. Ezen a választáson Samira Patel, Alex Morgan és Morgan Price tölti be a három bizottsági helyet:
 
 ![](stv-results-summary.png)
 
@@ -154,39 +154,39 @@ A szavazás lezárása után az eredmények több szakaszban jelennek meg. Ezen 
 
 ### Módszer és kvóta
 
-Felül láthatod a számlálási módszert (skót STV vagy Meek STV), a kvóta típusát (Droop vagy Hare), valamint a kvótát: ennyi szavazatra volt szüksége egy jelöltnek egy hely megszerzéséhez.
+Felül láthatod a számlálási módszert (skót STV vagy Meek STV), a kvóta típusát (Droop vagy Hare), valamint magát a kvótát: azt a szavazatszámot, amelyre egy jelöltnek szüksége volt egy hely megszerzéséhez.
 
 <!-- translation-section: elected-candidates -->
 
 ### Megválasztott jelöltek
 
-A megválasztott jelölteket öt oszlopból álló összefoglaló táblázat mutatja:
+A megválasztott jelölteket összefoglaló táblázat öt oszlopból áll:
 
 | Oszlop | Jelentés |
 |--------|---------|
 | **Jelölt** | A megválasztott jelölt neve |
-| **Megválasztott forduló** | Az a számlálási forduló, amelyben a jelölt elérte a kvótát és helyet szerzett. Az 1. forduló azt jelenti, hogy ehhez elegendők voltak az első helyre sorolások; a későbbi fordulókban kiesett vagy többletszavazattal rendelkező jelöltektől átruházott szavazatokra is szükség volt. |
-| **Elsődleges beállítások** | Hány szavazó sorolta a jelöltet az első helyre. Ez a jelölt közvetlen támogatottságát mutatja a szavazatok átruházása előtt. |
-| **Végső összesítés** | A jelölt szavazatainak száma a megválasztása pillanatában. Az átruházott szavazatok miatt ez gyakran magasabb, mint az első helyre sorolások száma. |
-| **Többlet** | Ennyivel haladta meg a jelölt végső szavazatszáma a kvótát (végső összesítés mínusz kvóta). A nagyobb többlet azt jelzi, hogy a jelölt a megválasztásához szükségesnél több támogatást kapott. A Scottish STV esetén ezt a többletet továbbosztják a szavazók következő választásai között. |
+| **Megválasztott forduló** | Melyik számlálási körben érte el a kvótát és szerzett helyet. Az 1. kör azt jelenti, hogy kizárólag az első helyre rangsoroló szavazatokkal nyert; a későbbi körök azt jelentik, hogy kiesett jelöltektől vagy más jelöltek többletéből átruházott szavazatokra is szüksége volt. |
+| **Elsődleges beállítások** | Hány szavazó rangsorolta ezt a jelöltet az első helyre. Ez a jelölt közvetlen támogatottságát mutatja a szavazatátruházások előtt. |
+| **Végső összesítés** | A jelölt szavazatainak összesített értéke a megválasztásakor. A szavazatátruházások miatt ez gyakran magasabb az első helyre rangsoroló szavazatok számánál. |
+| **Többlet** | Mennyivel haladta meg a jelölt végső összesítése a kvótát (végső összesítés mínusz kvóta). A nagyobb többlet a győzelemhez szükségesnél erősebb támogatottságot jelent. A skót STV esetében ezt a többletet elosztják a szavazók rangsorában következő jelöltek között. |
 
-Néha a korábbi fordulók alapján sem lehet feloldani a döntetlent. Ha a döntetlen nem befolyásolja, hogy kit választanak meg, a számlálás folytatódik. Ha befolyásolja, a számlálás az adott fordulóban megáll. Azok a jelöltek, akik a döntetlen feloldásától függetlenül nyernek, megválasztottként jelennek meg. Azok a jelöltek, akik a döntetlen feloldásától függően nyerhetnek vagy veszíthetnek, külön táblázatban jelennek meg. A Loomio döntetlenként mutatja az eredményüket, ahelyett hogy véletlenszerűen kiválasztaná valamelyiküket.
+Előfordul, hogy a korábbi körök alapján sem lehet feloldani a holtversenyt. Ha a holtverseny nem befolyásolja, hogy kit választanak meg, a számlálás folytatódik. Ha befolyásolja, a számlálás az adott körben megáll. Azok a jelöltek, akik a holtverseny feloldásától függetlenül nyernek, megválasztottként jelennek meg. Azok a jelöltek, akik a holtverseny feloldásától függően nyerhetnek vagy veszíthetnek, külön táblázatban jelennek meg. A Loomio holtversenyben állóként mutatja őket, ahelyett, hogy véletlenszerűen választana közülük.
 
 <!-- translation-section: round-by-round-details -->
 
-### Körről körre részletek
+### Részletek körről körre
 
-Nyisd meg a **Körről körre részletek** szakaszt a szavazatok átruházásának és a jelöltek kiesésének megtekintéséhez. Minden sor egy jelöltet, minden oszlop egy számlálási fordulót jelöl. Minden szám azt mutatja, hogy az adott forduló elején hány szavazata volt a jelöltnek:
+Nyisd le a **Körről körre részletek** részt a szavazatátruházások és a kiesések megtekintéséhez. Minden sor egy jelöltet, minden oszlop egy számlálási kört jelöl. A számok azt mutatják, hogy az adott kör elején hány szavazata volt a jelöltnek:
 
 ![](stv-results.png)
 
-A zöld kiemelés a jelölt megválasztását, a piros a kiesését, a narancssárga pedig a döntetlent jelzi.
+A zöld kiemelés a jelölt megválasztását, a piros a kiesését, a narancssárga pedig a holtversenyét jelzi.
 
 <!-- translation-section: share-an-outcome -->
 
 ## Következtetés megosztása
 
-Amikor a választás lezárul, ossz meg egy következtetést. Nevezd meg a megválasztottakat, és írd le, mikor kezdődik a megbízatásuk. A következtetések működéséről a [Következtetés megosztása](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome) című részben olvashatsz.
+Amikor a választás lezárul, ossz meg egy következtetést. Nevezd meg a megválasztott személyeket, és írd le, mikor kezdődik a megbízatásuk. A következtetések működéséről a [Következtetés megosztása](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome) oldalon olvashatsz.
 
 ![A megválasztott bizottsági tagokat megnevező következtetés](outcome.png)
 
@@ -194,4 +194,4 @@ Amikor a választás lezárul, ossz meg egy következtetést. Nevezd meg a megv�
 
 ## Szavazólapok exportálása
 
-A választás lezárása után az eredmények megtekintésére jogosultak BLT-formátumban exportálhatják a szavazólapokat független újraszámláláshoz vagy ellenőrzéshez. Az export tartalmazza a jelöltek rangsorolását, az azonos rangsorokat pedig egyetlen sorba vonja össze a hozzájuk tartozó szavazólapok számával. Névtelen választás esetén nem tartalmazza a szavazók személyazonosságát, a szavazólapok azonosítóit, a beküldés időpontját vagy sorrendjét.
+A választás lezárása után azok, akik megtekinthetik az eredményeket, BLT formátumban exportálhatják a szavazólapokat független újraszámlálás vagy ellenőrzés céljából. Az export tartalmazza a jelöltek rangsorolását, és az azonos rangsorolásokat egyetlen sorba vonja össze, feltüntetve a szavazólapok számát. Névtelen választások esetén nem tartalmazza a szavazók személyazonosságát, a szavazólapok azonosítóit, a beküldés időpontját vagy sorrendjét.

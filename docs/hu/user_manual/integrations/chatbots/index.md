@@ -1,10 +1,10 @@
 ---
 title: Csevegési integrációk
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/integrations/chatbots/index.md
+source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
+source_file: docs/en/user_manual/integrations/chatbots/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-30'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: af3f509fd0a87c7d
   what-it-looks-like-in-chat: c425490496cb0ed2
@@ -13,12 +13,12 @@ sections:
   invite-to-poll: 70a0e025c79a13f0
   automatic-notifications: 381b622ece95e244
 generated:
-  introduction: 81f4a57a1af8cc0a
+  introduction: 779b2fb09c483fa5
   what-it-looks-like-in-chat: '04819bbcd1b31926'
-  generate-a-webhook-url: aa9457fd03ed2f94
-  set-up-a-chat-integration: 6ed6330937a75541
-  invite-to-poll: 2963690863a3cca8
-  automatic-notifications: e7ab89c6f098fce9
+  generate-a-webhook-url: 792b515bc0f1254e
+  set-up-a-chat-integration: 472b775cb86822fa
+  invite-to-poll: a658a7c34446d38f
+  automatic-notifications: ac7775d8bd814ae7
 title_source: 0eca19d30c6d7d3c
 title_generated: ca0520d18e5461f9
 ---
@@ -27,15 +27,15 @@ title_generated: ca0520d18e5461f9
 
 # Csevegési integrációk
 
-A Loomio értesítéseket küldhet a csevegőszobádba.
+A Loomio értesítéseket tud küldeni a csevegőszobádba.
 
-A csevegőeszközök és a Loomio jól kiegészítik egymást. A csevegést használd gyors beszélgetésekre és időszerű hírek megosztására. A fontos témákat vidd át a Loomióba, ha az embereknek időre van szükségük a részvételhez, döntést kell hozni, vagy a csoportnak később is visszakereshető feljegyzésre lesz szüksége.
+A csevegőeszközök és a Loomio jól működnek együtt. Használd a csevegést gyors beszélgetésekhez és aktuális hírek megosztásához. Vidd át a fontos témákat a Loomióba, amikor a résztvevőknek időre van szükségük a bekapcsolódáshoz, döntést kell hozni, vagy a csoportnak tartósan meg kell őriznie az elhangzottakat.
 
-A Loomio támogatja a Slack, a Discord, a Microsoft Teams, a Matrix és a Mattermost használatát.
+A Loomio támogatja a Slack, Discord, Microsoft Teams, Matrix és Mattermost szolgáltatásokat.
 
-Bármikor küldhetsz értesítést a csevegőszobádba, ahogyan egyes embereket is meghívhatsz szavazásra vagy egy témába.
+Bármikor küldhetsz értesítéseket a csevegőszobádba, ugyanúgy, ahogyan egyes embereket hívnál meg szavazni vagy csatlakozni egy szálhoz.
 
-Azt is beállíthatod, hogy bizonyos eseményekkor, például egy téma indításakor, mindig menjen értesítés.
+Azt is beállíthatod, hogy egy adott esemény bekövetkezésekor mindig értesítést küldjön, például amikor valaki új szálat indít.
 
 <!-- translation-section: what-it-looks-like-in-chat -->
 
@@ -45,7 +45,7 @@ Azt is beállíthatod, hogy bizonyos eseményekkor, például egy téma indítá
 <!-- translation-section: generate-a-webhook-url -->
 
 ## Webhook URL létrehozása
-Minden támogatott szolgáltatáshoz készítettünk részletes útmutatót. A szolgáltatásodhoz tartozó útmutatót követve szerezd be azt a webhook URL-t, amellyel hozzáadhatod a csevegési integrációt a Loomióban.
+Minden támogatott szolgáltatáshoz készítettünk lépésről lépésre követhető útmutatót. Kövesd a szolgáltatásodhoz tartozó útmutatót, hogy megkapd a webhook URL-t, amelyre a csevegési integráció hozzáadásához lesz szükséged a Loomióban.
 
 - [Slack](../slack/)
 - [Microsoft Teams](../microsoft_teams/)
@@ -53,28 +53,28 @@ Minden támogatott szolgáltatáshoz készítettünk részletes útmutatót. A s
 - [Matrix](../matrix/)
 - [Mattermost](../mattermost/)
 
-A webhookokra épülő rendszer más, HTML vagy Markdown formázású bejövő webhookokat fogadó szolgáltatásokkal is működhet, például a Zapierrel vagy a Rocketchattel. Ehhez válaszd a Mattermost botot, és adj meg egy egyéni webhook URL-t.
+Webhookalapú rendszerünk más, HTML- vagy Markdown-formázású bejövő webhookokat támogató rendszerekkel is használható. Ilyen például a Zapier vagy a Rocketchat. Válaszd ki a Mattermost botot, de adj meg egy egyéni webhook URL-t.
 
 <!-- translation-section: set-up-a-chat-integration -->
 
 ## Csevegési integráció beállítása
 
-Miután beállítottad a választott szolgáltatást (lásd fent), lesz egy webhook URL-ed. Nyisd meg a csoport menüjében a **Csevegési integrációk** pontot, és adj hozzá egy új csevegési integrációt a csoportodhoz.
+Miután beállítottad a kiválasztott szolgáltatást (lásd fent), rendelkezésedre áll egy webhook URL. Nyisd meg a **Csevegési integrációk** menüpontot a csoport menüjéből, és adj hozzá egy új csevegési integrációt a csoportodhoz.
 
 ![](loomio-group-settings.png)
 ![](loomio-settings-chatbots.png)
 
-Egyelőre valószínűleg nem kell bejelölnöd semmit. Add meg a nevet (például „Discord #general”) és az URL-t, majd kattints az űrlap alján lévő mentés gombra.
+Egyelőre valószínűleg nem szeretnél egyetlen jelölőnégyzetet sem bejelölni. Csak add meg a nevet (például „Discord #general”) és az URL-t, majd kattints az űrlap alján található mentés gombra.
 
 ![](loomio-chatbot-form.png)
 
-Ha később automatikus értesítéseket szeretnél küldeni az integrációval, térj vissza a beállításaihoz, és válaszd ki a megfelelő eseményeket.
+Ha később úgy döntesz, hogy az integráció automatikus értesítéseket is kapjon, térj vissza a beállításaihoz, és válaszd ki a megfelelő eseményeket.
 
 <!-- translation-section: invite-to-poll -->
 
 ### Meghívás szavazásra
 
-Így küldhetsz értesítést a csevegőszobádba, hogy szavazásra hívd az embereket egy javaslatban. Ugyanígy oszthatsz meg következtetést, hívhatsz meg embereket egy témába, emlékeztethetsz valakit a szavazásra, vagy jelezheted egy szavazás módosítását.
+Így küldhetsz értesítést a csevegőszobádba, amellyel meghívod az embereket, hogy szavazzanak egy javaslatról. Ugyanez a folyamat a következtetés megosztásakor, a szálba való meghíváskor, a szavazásra emlékeztetéskor, a szavazás szerkesztésekor és más hasonló esetekben is.
 
 ![](invite_button_on_proposal.png)
 
@@ -87,6 +87,6 @@ Ha később automatikus értesítéseket szeretnél küldeni az integrációval,
 <!-- translation-section: automatic-notifications -->
 
 ### Automatikus értesítések
-Ha egy adott esemény bekövetkezésekor mindig értesítést szeretnél küldeni, szerkeszd a csevegési integrációt, és válaszd ki az eseményt.
+Ha azt szeretnéd, hogy egy adott esemény bekövetkezésekor mindig értesítést küldjön, szerkeszd a csevegési integrációt, és válaszd ki az eseményt.
 
 ![](chatbot_enable_automatic_notifications.png)

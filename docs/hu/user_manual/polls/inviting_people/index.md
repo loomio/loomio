@@ -1,6 +1,6 @@
 ---
 title: Meghívás szavazásra
-source_revision: 9c60c42fc739483fa23f15d9f34a1e9245518092
+source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
 source_file: docs/en/user_manual/polls/inviting_people/index.md
 translated:
   provider: codex/gpt-6.1-sol
@@ -19,16 +19,16 @@ sections:
   reopen: 9575383179a411cc
 generated:
   introduction: 9b3064a18f5dd331
-  invite-people-to-vote-in-a-poll: 2bc4037fdeae2ba0
-  invite-guests-or-experts: 53cbe7fd15571c53
-  invite-a-subgroup-to-vote: bd8cbfa028e6d487
-  engage-people-while-a-poll-is-running: 5bca502a626157b2
-  add-voters-to-the-poll: daff0ea419ccf2c8
-  remove-people-from-the-poll: c351d2e5c1521ed9
-  remind-people-to-vote: 7dabc1e904e9a85c
-  view-notification-history: 990e77dd100fa2b8
-  close-early: 77a9a6b5438b5378
-  reopen: 95a26d631f5070a1
+  invite-people-to-vote-in-a-poll: e3c8738c8cf13195
+  invite-guests-or-experts: 2812e85918eb383e
+  invite-a-subgroup-to-vote: b7da99d2d3e5f494
+  engage-people-while-a-poll-is-running: 1177d2fe4f8d4a49
+  add-voters-to-the-poll: d34ee53a3eaeebff
+  remove-people-from-the-poll: c5efb5acf1d7bf6e
+  remind-people-to-vote: '0199fa8e792c66b3'
+  view-notification-history: 3a5c68b864d636dc
+  close-early: decba733db1aa50c
+  reopen: 81d7f5034ec86614
 title_source: 4801d1a3dba7ce3d
 title_generated: 71bbaff8a3a40122
 ---
@@ -39,11 +39,11 @@ title_generated: 71bbaff8a3a40122
 
 <!-- translation-section: invite-people-to-vote-in-a-poll -->
 
-## Hívj meg embereket a szavazásra
+## Hívj meg embereket szavazni
 
-Értesítéssel hívhatsz meg embereket a szavazásra.
+Értesítés küldésével hívhatsz meg embereket a szavazásodra.
 
-A szavazás elindítása után megjelenik a **Meghívás szavazásra** mező. Válaszd ki például a **Mindenki ebben a témában** lehetőséget vagy a csoportodat, vagy add meg az emberek nevét és e-mail-címét.
+Miután elindítasz egy szavazást, megjelenik a **Meghívás szavazásra** mező. Válaszd ki a címzetteket, például a **Mindenki ebben a témában** lehetőséget vagy a csoportodat, vagy adj meg neveket és e-mail-címeket.
 
 ![](proposal_invite.png)
 
@@ -51,88 +51,88 @@ A meghívóhoz üzenetet is írhatsz.
 
 ![](proposal_invite_members.png)
 
-Kattints a csoport címkéjére, hogy lásd, kiket hívsz meg. Ha valakit ki szeretnél venni a meghívottak közül, kattints a neve melletti x-re.
+Kattints a csoport címkéjére a meghívottak listájának kibontásához. Kattints a név melletti x-re, ha el szeretnéd távolítani az illetőt a meghívó címzettjei közül.
 
 ![](proposal_invite_expand.png)
 
 <!-- translation-section: invite-guests-or-experts -->
 
-### Vendégek vagy szakértők meghívása
+### Hívj meg vendégeket vagy szakértőket
 
-Vendéget is meghívhatsz a szavazásra az e-mail-címe megadásával. Csak ebben a szavazásban vehet részt.
+Vendéget is meghívhatsz a szavazásra az e-mail-címe megadásával. Csak ebben a szavazásban kap részvételi jogosultságot.
 
-Ha a szavazás egy témához tartozik, a vendég a témát és a hozzászólásait is láthatja. Nem szólhat hozzá, nem vehet részt a téma más szavazásaiban, és nem láthatja a csoport többi témáját.
+Ha a szavazás egy szálban található, a vendég a szálat és annak hozzászólásait is láthatja. Nem írhat hozzászólást, nem vehet részt a szál más szavazásaiban, és nem láthatja a csoport többi szálát.
 
 ![](proposal_invite_guest.png)
 
 <!-- translation-section: invite-a-subgroup-to-vote -->
 
-### Alcsoport meghívása szavazásra
+### Hívj meg egy alcsoportot szavazni
 
-Ha csak a meghívottak szavazhatnak, a szavazás létrehozásakor válaszd a **Csak kiválasztott személyek** lehetőséget. Ezután meghívhatsz egy alcsoportot a szülőcsoportból. Lásd még: [Meghatalmazott szavazók](/en/user_manual/groups/delegated_voters/).
+Ha csak a meghívottaknak szeretnél szavazási lehetőséget adni, a szavazás létrehozásakor válaszd a **Csak kiválasztott személyek** lehetőséget. Ezután meghívhatod a szülőcsoport egyik alcsoportját. Lásd még: [Delegált szavazók](/en/user_manual/groups/delegated_voters/).
 
-![Csak a meghívottak szavazhatnak beállítás kiválasztása](invited-people-only.png)
+![Csak a meghívott személyek kiválasztása](invited-people-only.png)
 ![Alcsoport meghívása szavazásra](invite-voters-subgroup.png)
 
 <!-- translation-section: engage-people-while-a-poll-is-running -->
 
-## Kapcsolattartás a résztvevőkkel a szavazás alatt
+## Tartsd a kapcsolatot a résztvevőkkel a szavazás alatt
 
-A szavazás alján több lehetőséget találsz arra, hogy kapcsolatban maradj a résztvevőkkel a szavazás ideje alatt.
+A szavazás alján több funkció segít kapcsolatot tartani a résztvevőkkel, miután a szavazás elindult.
 
 ![](proposal_after_start.png)
 
 <!-- translation-section: add-voters-to-the-poll -->
 
-### Szavazók hozzáadása
+### Adj hozzá szavazókat a szavazáshoz
 
-Bármikor hozzáadhatsz új szavazókat, akár egy ütemezett szavazás kezdete előtt is.
+Bármikor hozzáadhatsz új embereket a szavazáshoz, időzített szavazás esetén már a szavazatok leadásának kezdete előtt is.
 
-Válaszd ki a **Szavazók kezelése** lehetőséget a szavazókezelő ablak megnyitásához. Meghívhatod a csoport összes tagját, hozzáadhatsz tagokat név alapján, vagy vendégeket e-mail-cím alapján, ha a vendégek meghívása engedélyezett. A **Szavazók keresése vagy meghívása** mezőbe írt szöveg a szavazásban már részt vevő személyek listáját is szűri. A legutóbb hozzáadott szavazók jelennek meg először; a teljes listát a lapozógombokkal böngészheted.
+Válaszd a **Szavazók kezelése** lehetőséget a szavazókezelő ablak megnyitásához. Meghívhatod a csoport minden tagját, név alapján hozzáadhatsz tagokat, vagy e-mail-cím alapján vendégeket, ha a vendégek meghívása engedélyezett. A **Szavazók keresése vagy meghívása** mezőbe írt szöveg a szavazásban már szereplő emberek listáját is szűri. A legutóbb hozzáadott szavazók jelennek meg először; a teljes listát a lapozógombokkal böngészheted.
 
-Ha a szavazásnak ütemezett kezdési időpontja van, és még nem kezdődött el, a szavazók nem kapnak azonnal értesítést. A szavazás kezdetekor kapnak értesítést.
+Ha a szavazás kezdete időzítve van, és még nem lehet szavazatot leadni, a szavazók nem kapnak azonnali értesítést. A szavazatok leadásának kezdetekor kapnak értesítést.
 
 <!-- translation-section: remove-people-from-the-poll -->
 
-### Résztvevők eltávolítása a szavazásból
+### Távolíts el embereket a szavazásból
 
-Válaszd ki a **Szavazók kezelése** lehetőséget, keresd meg a résztvevő nevét a szavazókezelő ablakban, kattints a mellette lévő kuka gombra, majd erősítsd meg az eltávolítást a **Szavazó eltávolítása** lehetőséggel.
+Válaszd a **Szavazók kezelése** lehetőséget, keresd meg az illető nevét a szavazókezelő ablakban, kattints a mellette lévő kuka gombra, majd erősítsd meg az eltávolítást a **Szavazó eltávolítása** lehetőséggel.
 
-![A szavazó neve melletti kuka gomb a szavazókezelő ablakban](proposal_invite_remove.png)
+![Kuka gomb egy szavazó neve mellett a szavazókezelő ablakban](proposal_invite_remove.png)
 
-Névtelen szavazásból nem lehet résztvevőket eltávolítani.
+Névtelen szavazásból nem lehet embereket eltávolítani.
 
-Például ha egy adminisztrátor az igazgatósági tagok nevében hoz létre szavazást, eltávolíthatja magát, ha nincs szavazati joga.
+Például egy adminisztrátor, aki a vezetőség tagjai nevében hoz létre szavazást, eltávolíthatja saját magát, ha nem jogosult szavazni.
 
-Szavazati súlyokat használó szavazásoknál a szavazás adminisztrátorai ugyanebben az ablakban [áttekinthetik és szerkeszthetik a szavazati súlyokat](/en/user_manual/polls/weighted_voting).
+Szavazati súlyokat használó szavazásoknál a szavazás koordinátorai ugyanebben az ablakban [áttekinthetik és módosíthatják a szavazati súlyokat](/en/user_manual/polls/weighted_voting).
 
 <!-- translation-section: remind-people-to-vote -->
 
-### Emlékeztesd a résztvevőket a szavazásra
+### Emlékeztesd az embereket a szavazásra
 
-Válaszd az **Emlékeztet** lehetőséget, hogy értesítést küldj azoknak, akik még nem szavaztak. Alapértelmezés szerint a **Mindenki, aki szavazhat** van kiválasztva. Kattints a címkére a címzettek megtekintéséhez vagy módosításához.
+Válaszd az **Emlékeztet** lehetőséget, hogy értesítést küldj azoknak, akik még nem adtak le szavazatot. Alapértelmezés szerint a **Mindenki, aki szavazhat** lehetőség van kiválasztva. Kattints a címkére a címzettek megtekintéséhez vagy módosításához.
 
 ![](proposal_remind.png)
 
 <!-- translation-section: view-notification-history -->
 
-### Értesítési előzmények megtekintése
+### Tekintsd meg az értesítési előzményeket
 
-Nyisd meg a szavazás alján lévő hárompontos menüt (**⋯**), majd válaszd az **Értesítési előzmények** lehetőséget.
+Nyisd meg a szavazás alján található hárompontos menüt (**⋯**), és válaszd az **Értesítési előzmények** lehetőséget.
 
-![Értesítési előzmények a szavazás műveleteinek menüjében](../../discussions/notifying_people/poll_notification_history.png)
+![Értesítési előzmények a szavazás műveleti menüjében](../../discussions/notifying_people/poll_notification_history.png)
 
-Az előzményekből láthatod, kit hívtak meg szavazni, mikor küldték el az egyes meghívókat, és – ha ez az adat elérhető – elolvasták-e őket.
+Az előzmények megmutatják, kit hívtak meg szavazni, mikor küldték el az egyes meghívókat, és elolvasták-e őket, ha ez az információ rendelkezésre áll.
 
 ![Egy szavazás értesítési előzményei](../../discussions/notifying_people/poll_notification_example.png)
 
 <!-- translation-section: close-early -->
 
-### Korai lezárás
+### Lezárás most
 
-Válaszd a **Korán bezárni** lehetőséget, ha a tervezett zárási időpont előtt le szeretnéd zárni a szavazást.
+Válaszd a **Lezárás most** lehetőséget, ha a szavazást a tervezett záró időpont előtt szeretnéd lezárni.
 
-Ezt akkor teheted meg, ha már mindenki szavazott, vagy a szavazásnak már nem kell nyitva maradnia.
+Erre akkor lehet szükség, ha már mindenki leadta a szavazatát, vagy a szavazásnak már nem kell nyitva maradnia.
 
 ![](proposal_close_early.png)
 
@@ -140,7 +140,7 @@ Ezt akkor teheted meg, ha már mindenki szavazott, vagy a szavazásnak már nem 
 
 ### Újranyitás
 
-Egy lezárt szavazásnál válaszd az **Újranyit** lehetőséget, majd állíts be új zárási dátumot és időpontot.
+Egy lezárt szavazásnál válaszd az **Újranyit** lehetőséget, majd állíts be új záró dátumot és időpontot.
 
 A névtelen szavazásokat nem lehet újranyitni.
 

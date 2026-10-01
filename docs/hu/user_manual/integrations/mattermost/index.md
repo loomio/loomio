@@ -1,14 +1,14 @@
 ---
 title: Mattermost
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/integrations/mattermost/index.md
+source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
+source_file: docs/en/user_manual/integrations/mattermost/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-30'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 5ff78e7362ad4050
 generated:
-  introduction: bfcfff2d2a6bd3ed
+  introduction: 717692bd03599ce8
 title_source: b1ff7bd17092d95e
 title_generated: b1ff7bd17092d95e
 ---
@@ -16,27 +16,27 @@ title_generated: b1ff7bd17092d95e
 <!-- translation-section: introduction -->
 
 # Mattermost-integráció
-_A Loomio-csoportod értesítéseinek összekapcsolása a Mattermost-csapatod csevegésével._
+_A Loomio-csoportod értesítéseinek összekapcsolása a csapatod Mattermost-csevegésével._
 
-A Loomio értesítéseket küldhet a Mattermost-csatornáidba az új beszélgetésekről, javaslatokról, hozzászólásokról, szavazatokról és következtetésekről.
+A Loomio értesítéseket küldhet a Mattermost-csatornáidra, amikor új beszélgetések, javaslatok, hozzászólások, szavazatok és következtetések születnek.
 
 ---
 
-Nyisd meg a Mattermost-csapatodat a böngésződben, majd az integrációs beállításokat.
+Nyisd meg a Mattermost-csapatodat a böngésződben. Ezután nyisd meg az integrációk beállítási oldalát.
 ![](mm1.png)
 
-Kattints a „Bejövő webhookok” lehetőségre.
+Kattints a „Bejövő webhookok” lehetőségre
 ![](mm2.png)
 
-Ezután kattints a „Bejövő webhook hozzáadása” lehetőségre.
+Ezután kattints a „Bejövő webhook hozzáadása” lehetőségre
 ![](mm3.png)
 
-Adj neki egy egyszerű nevet, válaszd ki a csatornát, ahol az értesítések megjelenjenek, majd kattints a „Mentés” gombra.
+Adj neki egy egyszerű nevet, válaszd ki a csatornát, ahol az értesítések megjelenjenek, majd kattints a Mentés gombra
 ![](mm4.png)
 
-Másold a webhook URL-jét a vágólapra. A következő lépésben szükséged lesz rá.
+Másold a webhook URL-jét a vágólapra, mert a következő lépésben szükséged lesz rá.
 ![](mm5.png)
 
-Ellenőrizd, hogy a webhook URL-je a vágólapon van, majd nyisd meg az alábbi hivatkozást.
+Ellenőrizd, hogy a webhook URL-je a vágólapon van-e, majd kattints az alábbi hivatkozásra.
 
 [Csevegési integráció beállítása a Loomióban](../chatbots/#set-up-a-chat-integration)

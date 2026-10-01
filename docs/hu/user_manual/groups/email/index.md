@@ -1,43 +1,43 @@
 ---
 title: E-mail-cím
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/groups/email/index.md
+source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
+source_file: docs/en/user_manual/groups/email/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: bbc0cdb29306b05d
   preventing-unauthorized-emails: 218f730808482c55
 generated:
-  introduction: 1ebfc96c90e2fbda
-  preventing-unauthorized-emails: 38ced4479711abcc
+  introduction: 90deb8f9e89aecd9
+  preventing-unauthorized-emails: 14d2ff9f6ce9c79b
 title_source: f2488fd4ef4adbc6
 title_generated: '032933089746e946'
 ---
 
 <!-- translation-section: introduction -->
 
-# Indíts témát e-mailben a csoportodban
+# Küldj e-mailt egy szál indításához a csoportodban
 
-A Loomio-csoportodnak van e-mail-címe. Küldhetsz vagy továbbíthatsz e-mailt erre a címre, hogy témát indíts a csoportban.
+A Loomio-csoportodnak van e-mail-címe. Erre a címre küldhetsz vagy továbbíthatsz e-mailt, hogy szálat indíts a csoportban.
 
 A csoportod e-mail-címét a csoport oldalán találod:
-![A csoport e-mail-címének helye a csoport oldalán](email_email_button.png)
+![Az e-mail-cím helye a csoport oldalán](email_email_button.png)
 
-Ha e-mailt küldesz erre a címre, új téma indul. Az e-mail tárgya lesz a téma címe, az üzenet szövege pedig a leírása. A csatolt fájlok a témához kerülnek.
+Ha e-mailt küldesz erre a címre, új szál indul. Az e-mail tárgya lesz a szál címe, az e-mail szövege lesz a leírása, a csatolt fájlok pedig a szálhoz kerülnek.
 
-Az e-mail „Feladó” címéből állapítja meg a Loomio, hogy a csoport melyik tagja legyen a téma szerzője.
+Az e-mail „Feladó” címe alapján a Loomio megkeresi azt a csoporttagot, aki a szál szerzője lesz.
 
 <!-- translation-section: preventing-unauthorized-emails -->
 
-## Illetéktelen e-mailek megakadályozása
+## Jogosulatlan e-mailek megakadályozása
 
-Hogy csak a csoportod tagjai használhassák ezt a funkciót, a beérkező e-mail „Feladó” címének egyeznie kell egy csoporttag e-mail-címével.
+Hogy a funkciót csak a csoportod tagjai használhassák, a Loomio megköveteli, hogy a beérkező e-mail „Feladó” címe megegyezzen valamelyik csoporttag e-mail-címével.
 
-Ha több e-mail-címet használsz, adj hozzá egy másodlagos címet, hogy a Loomio felismerje a többi címedet is.
+Ha több e-mail-címet használsz, hozzáadhatsz egy aliast, hogy a Loomio a többi e-mail-címedet is felismerje.
 
-Ha a feladó címe nem egyezik egy csoporttag címével, értesítést kapsz. Ebben hozzáadhatod a címet másodlagos címként, vagy elutasíthatod az erről a címről érkező további e-maileket.
+Ha a feladó címe nem egyezik meg egyik csoporttag e-mail-címével sem, értesítést kapsz, amely arra kér, hogy adj hozzá egy aliast, vagy utasíts el minden további e-mailt erről a címről.
 
-Amikor először küldesz e-mailt egy ismeretlen címről, hozzá kell adnod azt másodlagos címként. Ezután az erről a címről küldött e-maileket a Loomio azonnal elfogadja.
+Ez azt jelenti, hogy amikor először küldesz e-mailt egy ismeretlen címről, hozzá kell adnod egy aliast. Ezután a Loomio azonnal elfogadja az e-maileket.
 
-![Az ismeretlen címről érkezett e-mail jóváhagyási és elutasítási gombjainak helye](email_unreleased_emails.png)
+![Az ismeretlen címről érkező e-mail jóváhagyására és elutasítására szolgáló gombok helye](email_unreleased_emails.png)

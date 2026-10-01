@@ -1,16 +1,16 @@
 ---
 title: Közvetlen beszélgetések
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/discussions/direct_discussions/index.md
+source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
+source_file: docs/en/user_manual/discussions/direct_discussions/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: d84ab1e9a167cdee
   contacting-someone-via-a-direct-discussion: 5a0b9426a2d88e62
 generated:
-  introduction: 6f7e68e0fb0b0034
-  contacting-someone-via-a-direct-discussion: de09e098ef1f9314
+  introduction: 6518594f52812eb3
+  contacting-someone-via-a-direct-discussion: 6199650f6f8ebbe0
 title_source: ccfab058f1f7c146
 title_generated: fc6f5a73d24b3be3
 ---
@@ -19,21 +19,21 @@ title_generated: fc6f5a73d24b3be3
 
 # Közvetlen beszélgetések
 
-A közvetlen beszélgetés privát beszélgetés meghatározott személyek között.
+A közvetlen beszélgetés egy meghatározott kör számára elérhető privát beszélgetés.
 
 A közvetlen beszélgetés nem tartozik csoporthoz. A meghívottaknak nem kell a Loomio-csoportod tagjainak lenniük.
 
-Te döntöd el, ki láthatja a beszélgetést és ki vehet részt benne: add hozzá az embereket vagy az e-mail-címüket a **Meghív** mezőben.
+Te határozod meg, ki láthatja a beszélgetést és ki vehet részt benne: adj hozzá embereket vagy e-mail-címeket a **Meghív** mezőhöz.
 
-A közvetlen beszélgetésekben ugyanúgy használhatsz hozzászólásokat, szavazásokat és más eszközöket, mint a csoportos beszélgetésekben. Akkor hasznosak, ha nincs szükség alcsoport létrehozására.
+A közvetlen beszélgetésekben ugyanúgy használhatók hozzászólások, szavazások és más eszközök, mint a csoportos beszélgetésekben. Hasznosak lehetnek, ha nincs szükség alcsoport létrehozására.
 
 ![Közvetlen beszélgetés űrlapja kiválasztott csoport nélkül, Samira Patellel a Meghív mezőben](direct-discussion-example.png)
 
-A közvetlen beszélgetéseidet az oldalsáv **Közvetlen szálak** menüpontjában találod. Új beszélgetés indításához válaszd az oldalon az **Új beszélgetés** lehetőséget.
+Válaszd ki az oldalsávban a **Közvetlen szálak** menüpontot a közvetlen beszélgetéseid megtekintéséhez. Újabb beszélgetés indításához válaszd ki ezen az oldalon az **Új beszélgetés** lehetőséget.
 
 ![A Közvetlen szálak menüpont az oldalsávban és a közvetlen beszélgetések listája](direct-discussion-sidebar.png)
 
 <!-- translation-section: contacting-someone-via-a-direct-discussion -->
 
 ## Kapcsolatfelvétel közvetlen beszélgetésben
-Közvetlen beszélgetéssel privát módon kapcsolatba léphetsz egy vagy több emberrel, alcsoport létrehozása nélkül.
+Közvetlen beszélgetéssel privát módon kapcsolatba léphetsz egy vagy több emberrel anélkül, hogy alcsoportot hoznál létre.

@@ -1,6 +1,6 @@
 ---
 title: Javaslatok
-source_revision: 9c60c42fc739483fa23f15d9f34a1e9245518092
+source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
 source_file: docs/en/user_manual/polls/proposals/index.md
 translated:
   provider: codex/gpt-6.1-sol
@@ -11,10 +11,10 @@ sections:
   other-proposal-templates: 21ac5a295b8832ab
   proposal-records: ef0d886d3db7a5d1
 generated:
-  introduction: '03519cca59e403c2'
-  choose-a-proposal-template: 4ca394c769dd3c0a
-  other-proposal-templates: 848051877f376621
-  proposal-records: '09a93f7dbed160c3'
+  introduction: 5017838a898b1a9a
+  choose-a-proposal-template: 14bd1d71a0e89c66
+  other-proposal-templates: fd3913f76e61bc18
+  proposal-records: 11649a2b552ef9c4
 title_source: 834cfc1ee23734e1
 title_generated: 3d36a893fa8c5f0b
 ---
@@ -23,33 +23,33 @@ title_generated: 3d36a893fa8c5f0b
 
 # Javaslatok
 
-A javaslat egy állításról vagy tervezett lépésről kér véleményt. A résztvevők a megadott válaszlehetőségek közül választanak, és megindokolhatják a szavazatukat. Javaslattal visszajelzést és tanácsot kérhetsz, feltárhatod a kifogásokat, vagy felmérheted az egyetértést.
+A javaslat arra kéri az embereket, hogy reagáljanak egy állításra vagy tervezett lépésre. A résztvevők előre meghatározott válaszok közül választanak, és megindokolhatják a szavazatukat. Használj javaslatot visszajelzések gyűjtésére, tanácskérésre, kifogások feltárására vagy az egyetértés felmérésére.
 
-Ez a rész segít kiválasztani és használni a Loomio alapértelmezett javaslatsablonjait. Ha a beszélgetéstől a javaslatokon és módosításokon át a következtetésig tartó teljes folyamatot szeretnéd áttekinteni, olvasd el a [döntéshozatali útmutatókat](/en/guides/making_decisions/). A csoportod számára elérhető sablonok módosításáról a [Szavazási sablonok](../poll_templates/) oldalon olvashatsz.
+Ez a rész segít kiválasztani és használni a Loomio alapértelmezett javaslatsablonjait. A beszélgetéstől a javaslatokon és módosításokon át a következtetésig tartó teljes folyamathoz használd a [döntéshozatali útmutatókat](/en/guides/making_decisions/). A csoportod számára elérhető sablonok módosításához nézd meg a [Szavazási sablonok](../poll_templates/) oldalt.
 
 <!-- translation-section: choose-a-proposal-template -->
 
 ## Válassz javaslatsablont
 
-| Sablon | Milyen kérdést tesz fel? | Mikor használd? |
+| Sablon | Mit kérdez? | Akkor használd, ha… |
 |---|---|---|
-| [Érzékellenőrzés](sense_check/) | Jó irányba haladunk? | Amikor az ötlet még alakul |
-| [Tanács](advice/) | Milyen tanácsokat érdemes figyelembe vennie a döntéshozónak? | Amikor egy személy vagy csapat felel a döntésért |
-| [Beleegyezés](consent/) | Biztonságos kipróbálni, vagy van érdemi kifogás? | Amikor a csoport beleegyezésen alapuló döntéshozatalt használ |
-| [Konszenzus](consensus/) | Mi az álláspontod erről a javaslatról? | Amikor a csoport közös egyetértésre törekszik |
+| [Hangulatfelmérés](sense_check/) | Jó irányba haladunk? | Egy ötlet még alakul |
+| [Tanács](advice/) | Milyen tanácsokat vegyen figyelembe a döntéshozó? | Egy személy vagy csapat felelős a döntésért |
+| [Beleegyezés](consent/) | Biztonságosan kipróbálható, vagy van érdemi kifogás? | A csoport beleegyezésen alapuló döntéshozatalt használ |
+| [Konszenzus](consensus/) | Mi az álláspontod erről a javaslatról? | A csoport közös egyetértésre törekszik |
 
 ![](proposal_templates_list.png)
 
-Válaszd azt a sablont, amelynek válaszlehetőségei illenek a kérdésedhez. Minden sablon oldala bemutatja, mikor érdemes használni, hogyan állíthatod be, milyen a szavazási űrlapja, és hogyan jelennek meg az eredmények.
+Válaszd ki azt a sablont, amelynek válaszlehetőségei illenek a megválaszolandó kérdéshez. Minden sablon oldala bemutatja, mikor érdemes használni, hogyan állíthatod be, milyen a szavazati űrlapja, és hogyan jelennek meg az eredmények.
 
 <!-- translation-section: other-proposal-templates -->
 
 ## További javaslatsablonok
 
-A Loomióban más sablonok is vannak, például Javaslat, Az egyetértés gradiensei és Többség. Egyes sablonok kezdetben rejtve vannak. A csoport adminisztrátorai elérhetővé tehetik őket, vagy a csoport saját kifejezéseihez és szabályaihoz illő sablont hozhatnak létre a [Szavazási sablonok](../poll_templates/) oldalon.
+A Loomio további sablonokat is kínál, például a Javaslat, az Egyetértés fokozatai és a Többség sablont. Néhány kezdetben rejtett. A csoport adminisztrátorai elérhetővé tehetik őket, vagy létrehozhatnak egy sablont a csoport saját szóhasználatával és szabályaival a [Szavazási sablonok](../poll_templates/) oldalon.
 
 <!-- translation-section: proposal-records -->
 
-## A javaslat dokumentációja
+## A javaslatok dokumentálása
 
-Amíg a javaslat nyitva van, a szavazatok és az indoklások frissülnek, a résztvevők pedig módosíthatják a válaszukat. A lezárás után tegyél közzé egy [következtetést](../outcomes/), amely rögzíti a döntést vagy a következő lépést. A beszélgetés, a javaslat, a szavazatok, az indoklások és a következtetés együtt dokumentálják, hogyan jutott döntésre a csoport.
+Amíg a javaslat nyitott, a szavazatok és az indoklások frissülnek, és a résztvevők módosíthatják a válaszukat. A lezárás után tegyél közzé egy [következtetést](../outcomes/), amely megfogalmazza a döntést vagy a következő lépést. A beszélgetés, a javaslat, a szavazatok, az indoklások és a következtetés együtt dokumentálják, hogyan jutott el a csoport a döntéséhez.

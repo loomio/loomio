@@ -1,10 +1,10 @@
 ---
 title: Szavazások
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/polls/proposal_types/index.md
+source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
+source_file: docs/en/user_manual/polls/proposal_types/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 286e04a878e4c1d9
   simple-poll: d362d91b19914c39
@@ -14,13 +14,13 @@ sections:
   time-poll: 8b3a09b278bd7fde
   stv-election: e8407157d29424e4
 generated:
-  introduction: edf30d76184075a7
-  simple-poll: ccc415e007c5bb11
-  score-poll: 9369fac118cdad0f
-  dot-vote: '02297cfada485d63'
-  ranked-choice: 43f8a0c6cd799631
-  time-poll: bd64727d33f03df7
-  stv-election: cd7363098bb41168
+  introduction: 8b11cf05ef9ce1ab
+  simple-poll: ee50fcb17cf3a648
+  score-poll: f0866030f2eaeb8f
+  dot-vote: 555ff212c5647541
+  ranked-choice: 4f16c249976740f6
+  time-poll: 6fb5a4cb3808e182
+  stv-election: 00a97713eec902e0
 title_source: 996729458535904a
 title_generated: 21bb4226710ebb6f
 ---
@@ -29,40 +29,40 @@ title_generated: 21bb4226710ebb6f
 
 # Szavazások
 
-A szavazásokkal választásokat, pontszámokat, pontelosztást, rangsorokat, időpontokat és választási szavazatokat gyűjthetsz. Aszerint válassz szavazási módot, hogy mit szeretnének kifejezni a résztvevők, és mire használod majd az eredményt. Használj [javaslatot](/en/user_manual/polls/proposals/), ha egy állításra vagy tervezett lépésre vársz választ.
+A szavazások kiválasztásokat, pontszámokat, pontelosztásokat, rangsorokat, elérhető időpontokat vagy választási szavazatokat gyűjtenek. Válaszd ki a szavazási módot aszerint, hogy mit kell kifejezniük a résztvevőknek, és hogyan szeretnéd felhasználni az eredményt. Használj [javaslatot](/en/user_manual/polls/proposals/), ha az embereknek egy állításra vagy tervezett lépésre kell reagálniuk.
 
 <!-- translation-section: simple-poll -->
 
 ## Egyszerű szavazás
 
-A [szavazásban](/en/user_manual/polls/choose/) a résztvevők egy vagy több lehetőséget választhatnak. Így megtalálhatod a legnépszerűbb lehetőséget, vagy összeállíthatsz egy szűkített listát.
+A [Kiválasztás](/en/user_manual/polls/choose/) lehetővé teszi, hogy a résztvevők egy vagy több lehetőséget válasszanak ki. Használd a legnépszerűbb lehetőség megtalálására vagy egy szűkített lista összeállítására.
 
 <!-- translation-section: score-poll -->
 
-## Pontszám felmérés
+## Pontozás
 
-A [pontszám felmérésben](/en/user_manual/polls/score/) a résztvevők minden lehetőséget ugyanazon a skálán értékelhetnek. Így összehasonlíthatod a lehetőségek támogatottságát, megvalósíthatóságát, alkalmasságát vagy fontosságát.
+A [Pontozás](/en/user_manual/polls/score/) lehetővé teszi, hogy a résztvevők minden lehetőséget ugyanazon a skálán értékeljenek. Használd a lehetőségek támogatottságának, felkészültségének, alkalmasságának vagy fontosságának összehasonlítására.
 
 <!-- translation-section: dot-vote -->
 
-## Pont-szavazás
+## Pontszavazás
 
-A [pont-szavazásban](/en/user_manual/polls/allocate/) minden résztvevő meghatározott számú pontot oszthat szét. Így meghatározhatod a prioritásokat, amikor az egyik lehetőség választása kevesebb figyelmet vagy erőforrást hagy a többire.
+A [Pontelosztás](/en/user_manual/polls/allocate/) minden résztvevőnek meghatározott számú elosztható pontot ad. Használd a prioritások meghatározására, ha az egyik dolog kiválasztása azt jelenti, hogy egy másikra kevesebb figyelem vagy erőforrás jut.
 
 <!-- translation-section: ranked-choice -->
 
-## Sorrend szavazás
+## Rangsorolás
 
-A [sorrend szavazásban](/en/user_manual/polls/rank/) a résztvevők előnyben részesítésük szerint rendezhetik a lehetőségeket. Így megtalálhatod a csoport általános sorrendjét vagy az első helyen álló lehetőséget.
+A [Rangsorolás](/en/user_manual/polls/rank/) lehetővé teszi, hogy a résztvevők a lehetőségeket a saját preferenciáik szerinti sorrendbe rendezzék. Használd a csoport által összességében előnyben részesített sorrend meghatározására vagy a leginkább támogatott lehetőség kiválasztására.
 
 <!-- translation-section: time-poll -->
 
-## Idő-szavazás
+## Időpontszavazás
 
-Az [idő-szavazásban](/en/user_manual/polls/meeting_polls/) a résztvevők jelezhetik, mikor érnek rá. Így különböző időzónákban élő résztvevőkkel is egyeztethetsz találkozót vagy eseményt.
+Az [időpontszavazás](/en/user_manual/polls/meeting_polls/) lehetővé teszi, hogy a résztvevők jelezzék, mikor érnek rá. Használd találkozó vagy esemény időpontjának egyeztetésére különböző időzónákban élő résztvevőkkel.
 
 <!-- translation-section: stv-election -->
 
 ## STV-választás
 
-Az [STV-választásban](/en/user_manual/polls/stv/) a résztvevők rangsorolhatják a jelölteket egy arányos, több győztest választó szavazáson. Ezzel a módszerrel bizottságot, vezető testületet vagy küldötteket választhattok.
+Az [STV-választások](/en/user_manual/polls/stv/) lehetővé teszik, hogy a résztvevők rangsorolják a jelölteket egy arányos, több jelölt megválasztására szolgáló választáson. Használd az STV-t bizottság, vezetőtestület vagy küldöttek csoportjának megválasztására.

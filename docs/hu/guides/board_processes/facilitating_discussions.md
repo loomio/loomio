@@ -1,20 +1,20 @@
 ---
 title: Beszélgetések vezetése
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/guides/board_processes/facilitating_discussions.md
+source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
+source_file: docs/en/guides/board_processes/facilitating_discussions.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-30'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 4fa9b0fbf10bb2eb
   on-loomio: 9ff64037e6b7a7f3
   issues-that-arise-between-board-meetings: ba163d9d1703ff12
   when-there-isn-t-space-during-meetings: 80352b1f1995ff8f
 generated:
-  introduction: bdc3f407637ce5a0
-  on-loomio: cf9d42b496d8e55e
-  issues-that-arise-between-board-meetings: ec546aaebb4041c8
-  when-there-isn-t-space-during-meetings: ca4ae46a4fb64b53
+  introduction: 3b5e7d58ae70581c
+  on-loomio: f6df8b2fe133251d
+  issues-that-arise-between-board-meetings: 786a76eff9927b69
+  when-there-isn-t-space-during-meetings: 82d9dac8c2d80107
 title_source: 6d57aa8c543c9a02
 title_generated: 9926c3d3c764170e
 ---
@@ -23,56 +23,56 @@ title_generated: 9926c3d3c764170e
 
 # Beszélgetések vezetése
 
-Néha két ülés között merül fel olyan téma, amely az igazgatóság vagy egy bizottság tagjainak figyelmét igényli.
+Időnként az ülések között olyan kérdések merülnek fel, amelyek az igazgatóság vagy a bizottság tagjainak figyelmét igénylik.
 
-Máskor az ülésen nincs elég idő egy téma megbeszélésére vagy egy döntés alapos mérlegelésére.
+Máskor az ülésen egyszerűen nincs elég idő a beszélgetésre vagy egy döntés alapos mérlegelésére.
 
 <!-- translation-section: on-loomio -->
 
 ## A Loomióban
 
-Beszélgetéshez használj Loomio-**témát**. Adj neki olyan címet, amelyből a tagok felismerik, miről szól, és írd le a részleteket a téma leírásában. Adj hozzá egy megfelelő kategóriacímkét, hogy a tagok később is könnyen megtalálják.
+Használj egy Loomio-**szálat** a beszélgetés vezetéséhez. Adj a szálnak olyan címet, amelyből a tagok felismerik, miről szól, és írd le a részleteket a szál leírásában. Adj hozzá egy megfelelő kategóriacímkét, hogy a tagok később könnyebben megtalálják a szálat.
 
-Hívd meg a tagokat a témába, hogy e-mailben is megkapják azt. A beszélgetéshez a hivatkozásra kattintva, a Loomióban szólhatnak hozzá. Az értesítő e-mailre is válaszolhatnak; válaszuk hozzászólásként jelenik meg a témában.
+Hívd meg a tagokat a szálba, így emailben is megkapják annak tartalmát. A tagok a linkre kattintva megnyithatják a Loomiót, és részt vehetnek a beszélgetésben, vagy válaszolhatnak az értesítő emailre. A válaszuk hozzászólásként jelenik meg a szálban.
 
 ![](thread_discussion.png#width-90)
 
-A Loomio-témához fájlokat csatolhatsz, vagy online forrásokat hivatkozhatsz a beszélgetés alátámasztására.
+A Loomio-szálban fájlokat csatolhatsz vagy online forrásokra hivatkozhatsz a beszélgetés támogatásához.
 
-Gyakori felhasználási módok:
-- egy szabályzat áttekintése és kidolgozása
-- az igazgatóság tanácsának kérése egy témában vagy kérdésben
-- stratégia megvitatása 
-- egy ötlet vagy lehetőség feltárása
-- kockázatok felmérése
+Néhány gyakori példa:
+- szabályzat felülvizsgálata és kidolgozása
+- tanácskérés az igazgatóságtól egy témával vagy kérdéssel kapcsolatban
+- stratégia megbeszélése
+- ötlet vagy lehetőség feltárása
+- kockázatértékelés
 
 <!-- translation-section: issues-that-arise-between-board-meetings -->
 
 ## Az igazgatósági ülések között felmerülő kérdések
 
-Két ülés között sok minden történhet egy szervezetben. Az igazgatósági tagokat gyakran e-mailben értesítik, de az e-mailes beszélgetéseket nehéz követni: a válaszok elveszhetnek a postafiókokban, és egyesek kimaradhatnak.
+Egy szervezetben sok minden történhet az ülések között, és a legtöbben emailben értesítik az igazgatósági tagokat. Emailben nehéz követni egy beszélgetést: a válaszok gyakran elvesznek a beérkező levelek között, és egyesek kimaradnak belőle.
 
-*„E-mailben nem lehet irányítani egy szervezetet” – Richard Westlake (Westlake Governance).*
+*„Emailben nem lehet egy szervezetet irányítani!” – Richard Westlake (Westlake Governance).*
 
-Ha egy kérdés az igazgatóság figyelmét igényli, indíts Loomio-témát. A tagok e-mailben is válaszolhatnak, és hozzászólásuk megjelenik a témában. Így a beszélgetés egy helyen marad.
+Ha olyan kérdés merül fel, amely az igazgatóság figyelmét igényli, használj Loomio-szálat email helyett. A tagok emailben is válaszolhatnak, és hozzászólásuk megjelenik a Loomio-szálban, így a beszélgetés egy helyen marad.
 
 Így csináld:
-- Az e-mail tárgyát használd a téma címeként,
-- az e-mail szövegét írd a téma leírásába,
-- hívd meg a csapatodat a témába e-mail-cím vagy Loomio-felhasználónév alapján.
+- Legyen az email tárgya a szál címe,
+- írd az email tartalmát a szál leírásába,
+- hívd meg a csapatodat a szálba az email-címük vagy a Loomio-felhasználónevük megadásával.
 
-A Loomio-témában:
-- egy könnyen elérhető helyen található minden információ az adott kérdésről,
-- mindenki válaszolhat anélkül, hogy a válasz és válasz mindenkinek e-mailek láncolatában bárki kimaradna,
-- láthatod, ki olvasta az üzenetet, és kit érdemes emlékeztetni,
-- a közös munkát következtetésig viheted, miközben kevesebb e-mailre van szükség.
+A Loomio-szál segítségével:
+- Egy témáról minden információ egyetlen, könnyen elérhető helyre kerül,
+- az emberek anélkül válaszolhatnak, hogy a válaszokból és a mindenkinek küldött válaszokból olyan emailláncok keletkeznének, amelyekből valaki kimaradhat,
+- láthatod, ki olvasta el az üzenetet, és kit kell emlékeztetned,
+- előreviheted a munkát egy következtetésig, és csökkentheted az emailek számát.
 
 <!-- translation-section: when-there-isn-t-space-during-meetings -->
 
-## Ha az ülésen nincs elég idő
+## Amikor az üléseken nincs elég idő
 
-Ha egy napirendi pontot nem tudtok megtárgyalni az igazgatósági ülésen rendelkezésre álló időben, folytathatjátok a beszélgetést a Loomióban. Irányítsd a résztvevőket a megfelelő témához, vagy indíts újat, és értesítsd az igazgatóság tagjait.
+Ha egy napirendi pontot nem sikerül lezárni az igazgatósági ülésen rendelkezésre álló időben, a beszélgetést folytathatod a Loomióban. Irányítsd az érintetteket a megfelelő szálhoz, vagy indíts egy újat, és értesítsd az igazgatóság tagjait.
 
-Így kevesebb időbeli nyomás nehezedik az igazgatóságra. Több idő jut az információgyűjtésre, a beszélgetésre és az alapos mérlegelésre, ami gyakran jobb döntéshez vezet.
+Ez csökkenti az igazgatóságra nehezedő nyomást, és több időt ad az információgyűjtésre, a beszélgetésre és az alaposabb mérlegelésre, ami gyakran jobb döntéshez vezet.
 
 ![](thread_topic.png#width-90)

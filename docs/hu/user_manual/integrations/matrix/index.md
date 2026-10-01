@@ -1,14 +1,14 @@
 ---
 title: Matrix
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/integrations/matrix/index.md
+source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
+source_file: docs/en/user_manual/integrations/matrix/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-30'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: e54de0b6d9ea9ffb
 generated:
-  introduction: e920dce99b089134
+  introduction: efca9dc4b2044169
 title_source: 76a2171c057b730f
 title_generated: 76a2171c057b730f
 ---
@@ -17,37 +17,37 @@ title_generated: 76a2171c057b730f
 
 # Matrix-integráció
 
-A Loomio értesítéseket küldhet a Matrix-csatornáidba, amikor új beszélgetés, javaslat, hozzászólás, szavazat vagy következtetés születik.
+A Loomio értesítéseket küldhet a Matrix-csatornáidra, amikor új beszélgetések, javaslatok, hozzászólások, szavazatok és következtetések születnek.
 
-A Matrix támogat bizonyos HTML-elemeket a csevegőszobákban, és a Loomio ezt kihasználja.
+A Matrix lehetővé teszi bizonyos HTML-elemek használatát a csevegőszobában, és a Loomio ezt ki is használja.
 
-A Matrix-integráció eltér a többi csevegőintegrációnktól: webhook helyett egy erre készített botklienssel működik.
+A Matrix-integrációnk kissé eltér a többi csevegőintegrációnktól: nem használ webhookot, hanem egy erre a célra készített botklienssel működik.
 
-Hozz létre egy Matrix-felhasználót, amellyel a bot bejelentkezhet.
+Hozz létre egy Matrix-felhasználói fiókot, amellyel a bot bejelentkezhet.
 
-Miután létrehoztad a bot felhasználóját, jelentkezz be ezzel a fiókkal az alábbi adatok megszerzéséhez.
+Miután létrehoztad a bot fiókját, jelentkezz be vele, hogy megszerezd az alábbi adatokat.
 
 Ebben az útmutatóban az Elementet használjuk.
 
 ---
 
-Adj hozzá egy Matrix-csevegőintegrációt a Loomio-csoportodhoz
+A Loomio-csoportodban adj hozzá egy Matrix-csevegőintegrációt
 ![A Loomio Matrix-bot menüje](loomio-add-matrix-bot.png)
 
-Töltsd ki ezt az űrlapot
+Ezt az űrlapot kell kitöltened
 ![A Loomio Matrix-bot űrlapja](loomio-matrix-bot-form.png)
 
 Itt kezdheted el megkeresni a hozzáférési tokenedet
 ![A Matrix beállítások menüje](matrix-settings-menu.png)
 
 Ez a beállítások oldala
-![Matrix-beállítások](matrix-settings.png)
+![A Matrix beállításai](matrix-settings.png)
 
-Itt találod a hozzáférési tokent
-![Matrix-hozzáférési token](matrix-access-token.png)
+Itt találod magát a hozzáférési tokent
+![A Matrix hozzáférési tokenje](matrix-access-token.png)
 
-Most a szobaazonosítóra van szükséged
+Most a szoba azonosítójára lesz szükséged
 ![A Matrix-szoba beállításai](matrix-room-settings.png)
 
 Itt találod
-![Matrix-szobaazonosító](matrix-room-id.png)
+![A Matrix-szoba azonosítója](matrix-room-id.png)

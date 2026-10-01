@@ -1,10 +1,10 @@
 ---
 title: Beszélgetés indítása
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/discussions/starting_a_discussion/index.md
+source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
+source_file: docs/en/user_manual/discussions/starting_a_discussion/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 3789fc666aaa1648
   new-discussion: 523c99827f192f72
@@ -14,13 +14,13 @@ sections:
   title: ba80a903c4ecc7d1
   context: 9dbd5adda4ef4a04
 generated:
-  introduction: e7e7a0cff2e513de
-  new-discussion: 0ca345101e482a24
-  group: 65c82007598324c4
-  invite-and-notify: 239563ec35379bce
-  tags: 53395d4250fa88c5
-  title: d613bd0b49048fca
-  context: 27ef596be3df3e82
+  introduction: 1307e0ea52a37f9d
+  new-discussion: d5299224ec4edd9d
+  group: 4b51648355d2263f
+  invite-and-notify: 11ea46eef09f521a
+  tags: afa72419dc66bc5d
+  title: efc33cf05e527597
+  context: 6cf53481a8c187b4
 title_source: 7373febfac25054c
 title_generated: aeaa6c2777d13da2
 ---
@@ -29,70 +29,70 @@ title_generated: aeaa6c2777d13da2
 
 # Beszélgetés indítása
 
-Egy Loomio-beszélgetés indítása hasonló egy e-mail megírásához. Az e-mail tárgya a beszélgetés címének, az e-mail szövege pedig a beszélgetés hátterének felel meg.
+Beszélgetést indítani a Loomióban olyan, mint e-mailt írni. Az e-mail tárgya a beszélgetés címének felel meg, az e-mail szövege pedig a beszélgetés leírásának.
 
-Ahogy egy e-mail címzettjeit kiválasztod, a Loomióban is meghívhatsz embereket egyenként vagy csoportként a beszélgetésbe. E-mailben értesítést kapnak a beszélgetés tartalmáról.
+Ahogyan az e-mail címzettjeit megadod, a Loomióban egyenként vagy csoportként hívhatsz meg embereket a beszélgetésbe. E-mailes értesítést kapnak a beszélgetés tartalmával.
 
-A résztvevők e-mailben is válaszolhatnak a beszélgetésre. A válaszaik hozzászólásként jelennek meg benne.
+Az emberek e-mailben is válaszolhatnak a beszélgetésedre, és hozzászólásaik megjelennek a beszélgetésben.
 
-Egy beszélgetés lehet egyszerű kérdés, vagy egy téma részletesebb bemutatása háttéranyagként csatolt hivatkozásokkal és fájlokkal.
+Az e-mailhez hasonlóan a beszélgetés lehet egy egyszerű kérdés vagy egy téma részletesebb bemutatása, kiegészítő információkat tartalmazó hivatkozásokkal vagy csatolt fájlokkal.
 
 <!-- translation-section: new-discussion -->
 
 ## Új beszélgetés
 
-Új beszélgetés indításához keresd az **Új beszélgetés** gombot a Loomio-csoportod oldalán.
+Új beszélgetés indításához keresd meg az **Új beszélgetés** gombot a Loomio-csoportod oldalán.
 
-Beszélgetést a Loomio-csoportodban vagy bármelyik alcsoportjában indíthatsz.
+A Loomio-csoportodban vagy bármelyik alcsoportban indíthatsz beszélgetést.
 
-![Új beszélgetés gomb az Oatmilk Cooperative oldalán](new-discussion-button.png)
+![Az Új beszélgetés gomb az Oatmilk Cooperative oldalán](new-discussion-button.png)
 
 ![Új beszélgetés űrlapja a visszaváltható palackok próbaidőszakának megtervezéséhez](new-discussion-example.png)
 
 <!-- translation-section: group -->
 
 ### Csoport
-Ellenőrizd, hogy a megfelelő csoportot vagy alcsoportot választottad-e a beszélgetéshez. A csoport minden tagja láthatja majd a beszélgetést. Másik csoportban vagy közvetlen beszélgetésként (csoport nélkül) is elindíthatod.
+Ellenőrizd, hogy a beszélgetéshez a megfelelő csoport vagy alcsoport neve szerepel-e. A csoport minden tagja láthatja a beszélgetést. Másik csoportban vagy „közvetlen” beszélgetésként is elindíthatod (csoport nélkül).
 
 >[!Tip]
->Ha még nem szeretnéd, hogy a beszélgetés látható legyen a csoportodban, indítsd el közvetlen beszélgetésként. Később áthelyezheted a Loomio-csoportodba.
+>Ha még nem szeretnéd láthatóvá tenni a beszélgetést a csoportodban, indítsd el „közvetlen” beszélgetésként. Amikor készen állsz, áthelyezheted a Loomio-csoportodba.
 
 <!-- translation-section: invite-and-notify -->
 
 ### Meghívás és értesítés
 
-A **Meghív** mezőben adhatod meg, ki kapjon azonnal értesítést az új beszélgetésről.
+A **Meghív** mező határozza meg, hogy ki kapja meg azonnal az új beszélgetést.
 
-A csoport tagjai akkor is láthatják a csoportjukban zajló beszélgetést, ha nem értesíted őket. Ha hozzáadsz egy csoporttagot a **Meghív** mezőhöz, e-mailben és a Loomióban is értesítést kap.
+A csoport tagjai akkor is láthatják a csoportjukban indított beszélgetést, ha nem értesíted őket. Ha hozzáadsz egy csoporttagot a **Meghív** mezőhöz, e-mailes értesítést és Loomio-értesítést kap.
 
-Válassz ki egy csoportot az összes tag értesítéséhez, vagy nyisd le a csoportot, és válassz ki egyes tagokat. Ha valakit törölni szeretnél az értesítettek közül, kattints a neve melletti × jelre.
+Válaszd ki a csoportot, ha minden tagját értesíteni szeretnéd, vagy nyisd le a csoportot az egyes tagok kiválasztásához. Kattints a név melletti × jelre, ha az adott személyt el szeretnéd távolítani az értesítés címzettjei közül.
 
-![Lenyitott Meghív mező az egyes címzettekkel](../notifying_people/thread_notification.png)
+![A Meghív mező lenyitva, az egyes címzettekkel](../notifying_people/thread_notification.png)
 
 Kezdd el beírni egy tag nevét, majd válaszd ki a listából.
 
 ![Samira Patel keresése a Meghív mezőben](../notifying_people/thread_notify_user.png)
 
-Vendég meghívásához adj meg egy e-mail-címet. A vendég láthatja ezt a beszélgetést, és részt vehet benne, de a csoport többi beszélgetését csak akkor láthatja, ha azokba külön meghívják.
+Vendég meghívásához adj meg egy e-mail-címet. A vendég láthatja ezt a szálat, és részt vehet benne, de a csoport többi beszélgetését csak akkor láthatja, ha azokba külön meghívják.
 
 ![Vendég e-mail-címének hozzáadása a Meghív mezőhöz](../notifying_people/thread_notify_email.png)
 
-A beszélgetést úgy is elindíthatod, hogy senkit sem értesítesz. A csoport tagjai így is megtalálhatják a Loomióban, és az értesítési beállításaiktól függően az összefoglaló e-mailjükben is láthatják.
+Úgy is elindíthatod a beszélgetést, hogy senkit sem értesítesz. A csoport tagjai így is megtalálhatják a Loomióban, és az értesítési beállításaiktól függően az összefoglaló e-mailjükben is megjelenhet.
 
 <!-- translation-section: tags -->
 
 ### Címkék
 
-Adj címkéket a beszélgetéshez, hogy mások címke alapján keresve könnyebben megtalálják. Az adminisztrátorok új címkéket hozhatnak létre.
+Adj hozzá címkéket, hogy az emberek címke szerinti kereséssel megtalálhassák a beszélgetésedet. Új címkéket az adminok hozhatnak létre.
 
 <!-- translation-section: title -->
 
 ### Cím
-Adj a beszélgetésnek a témához illő címet. Ez az e-mail tárgyához hasonló.
+Adj a beszélgetésednek a tartalmához illő címet. A beszélgetés címe az e-mail tárgyához hasonló.
 
 <!-- translation-section: context -->
 
-### Háttér
-A beszélgetés hátterében mutasd be a témát, és fogalmazd meg, miről szeretnél beszélgetni vagy dönteni. A formázási eszközökkel emeld ki a fontos pontokat. Adj meg háttérinformációkat, csatolj fájlokat, hivatkozz online dokumentumokra, és ágyazz be videót.
+### Leírás
+A beszélgetés leírásában mutasd be a témát, és határozd meg, miről szeretnétek beszélgetni vagy dönteni. A formázási eszközökkel emeld ki a fontos pontokat. Adj meg kiegészítő információkat, csatolj fájlokat, helyezz el online dokumentumokra mutató hivatkozásokat, és ágyazz be videót.
 
-A háttér mindig a beszélgetés tetején marad, és a beszélgetés során bármikor frissítheted. Amikor a beszélgetés véget ér, egészítsd ki a hátteret a következtetéssel.
+A leírás mindig a beszélgetés tetején marad, és a beszélgetés előrehaladtával bármikor frissítheted. Amikor a beszélgetés véget ér, egészítsd ki a leírást a következtetéssel.

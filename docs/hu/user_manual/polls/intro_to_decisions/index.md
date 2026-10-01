@@ -1,6 +1,6 @@
 ---
 title: Javaslatok és szavazások
-source_revision: 9c60c42fc739483fa23f15d9f34a1e9245518092
+source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
 source_file: docs/en/user_manual/polls/intro_to_decisions/index.md
 translated:
   provider: codex/gpt-6.1-sol
@@ -21,20 +21,20 @@ sections:
   4-it-closes: c0376a9026d18bc3
   5-share-an-outcome: 8339cb332cd8a946
 generated:
-  introduction: 69fd8e237c4aaad0
-  find-the-right-help: d1b6f3354216bce2
-  proposals: 37b96d1c43fab0df
-  polls: 401d2b2e1135894e
-  start-a-proposal-or-poll: ddbafe4c400e1eb7
-  choose-whether-to-use-a-discussion: 8cac5fc4554d7158
-  in-a-discussion: a8ff8bd4da190bc6
-  without-a-discussion: bf0362d77273af2a
-  what-happens-next: c8f7aa5877ba2a13
-  1-create-it: 72d901c1b3bc3c52
-  2-voting-opens: 0e8f460d20ca1568
-  3-people-vote: 91732b8ffca4b720
-  4-it-closes: 4ee5d0f9cc1f0d30
-  5-share-an-outcome: 02db8049ab2ce9eb
+  introduction: 48eb6e96196ccd27
+  find-the-right-help: eab9fd9db254f8d2
+  proposals: c8a187c463c5f544
+  polls: 98039b00e7e9bd34
+  start-a-proposal-or-poll: '0968465bb756317c'
+  choose-whether-to-use-a-discussion: 1db8cd328fb1e46c
+  in-a-discussion: 962b0afe5b031e63
+  without-a-discussion: 713d9bf4a85eee12
+  what-happens-next: 6f9853d1ebd6c0cb
+  1-create-it: f3e8a61816e977ec
+  2-voting-opens: f18c6c078d6ed55a
+  3-people-vote: 4a3a475e41a53461
+  4-it-closes: df952bc070b942d8
+  5-share-an-outcome: d0b571f688f4d60c
 title_source: d45b4ba3cb7a27cb
 title_generated: b90b8b4620a81657
 ---
@@ -43,68 +43,68 @@ title_generated: b90b8b4620a81657
 
 # Javaslatok és szavazások
 
-A javaslatok és szavazások meghatározott formában gyűjtik össze a csoport tagjainak válaszait. Segítenek egy ötlet kipróbálásában, a döntéshozatalban, a fontossági sorrend meghatározásában, egy találkozó időpontjának egyeztetésében vagy képviselők megválasztásában.
+A javaslatok és szavazások strukturált válaszokat gyűjtenek a csoport tagjaitól. Segíthetnek egy ötlet kipróbálásában, egy döntés meghozatalában, a prioritások meghatározásában, egy találkozó időpontjának egyeztetésében vagy képviselők megválasztásában.
 
 <!-- translation-section: find-the-right-help -->
 
-## Találd meg a megfelelő útmutatót
+## Találd meg a megfelelő segítséget
 
-A kézikönyv alábbi részei különböző kérdésekben segítenek:
+A kézikönyv következő részei különböző kérdésekre adnak választ:
 
-| Ha azt szeretnéd… | Olvasd el… |
+| Ha szeretnéd… | Olvasd el… |
 |---|---|
-| Eldönteni, mit fejezzenek ki a résztvevők | A [Javaslatok](../proposals/) vagy a [Szavazások](../proposal_types/) oldalt |
-| Egy adott javaslatsablont használni | Az [Előzetes véleményfelmérés](../proposals/sense_check/), a [Tanácskérés](../proposals/advice/), a [Beleegyezés](../proposals/consent/) vagy a [Konszenzus](../proposals/consensus/) oldalt |
-| Beállítani, mely sablonok érhetők el egy csoportban | A [Szavazási sablonok](../poll_templates/) oldalt |
-| Végigvezetni egy döntést a beszélgetéstől a következtetésig | A [Döntéshozatal](/en/guides/making_decisions/) útmutatót |
+| Kiválasztani, mit fejezzenek ki a résztvevők | [Javaslatok](../proposals/) vagy [Szavazások](../proposal_types/) |
+| Egy adott javaslatsablont használni | [Hangulatfelmérés](../proposals/sense_check/), [Tanács](../proposals/advice/), [Beleegyezés](../proposals/consent/) vagy [Konszenzus](../proposals/consensus/) |
+| Beállítani a csoport számára elérhető sablonokat | [Szavazási sablonok](../poll_templates/) |
+| Segíteni a döntéshozatalt a beszélgetéstől a következtetésig | [Döntéshozatal](/en/guides/making_decisions/) |
 
-A **szavazási módszer** határozza meg, hogyan válaszolhatnak az emberek, és hogyan számítja ki a rendszer az eredményeket. A **szavazási sablon** egy szavazási módszerre épülő, újra felhasználható beállítás, előre megadott útmutatással, válaszlehetőségekkel és egyéb beállításokkal. Egy **döntési folyamat** során a csoport beszélgetést és több sablont is használhat, mielőtt következtetésre jut.
+A **szavazási mód** meghatározza, hogyan válaszolnak az emberek, és hogyan számítja ki a rendszer az eredményeket. A **szavazási sablon** egy szavazási módra épülő, újra felhasználható beállításkészlet, előre megadott utasításokkal, lehetőségekkel és beállításokkal. A **döntési folyamat** során a csoport beszélgetést és több sablont is használhat, mielőtt következtetésre jut.
 
 <!-- translation-section: proposals -->
 
 ## Javaslatok
 
-A javaslat egy állításra vagy tervezett lépésre kér választ. A Loomio több gyakori célhoz kínál sablont:
+A javaslat arra kéri az embereket, hogy reagáljanak egy állításra vagy tervezett lépésre. A Loomio sablonokat kínál a gyakori célokhoz:
 
-- Az [Előzetes véleményfelmérés](../proposals/sense_check/) összegyűjti az első reakciókat;
-- a [Tanácskérés](../proposals/advice/) véleményeket gyűjt a döntéshozó számára;
-- a [Beleegyezés](../proposals/consent/) feltárja a lényeges ellenvetéseket; és
+- A [Hangulatfelmérés](../proposals/sense_check/) kezdeti reakciókat gyűjt;
+- a [Tanács](../proposals/advice/) észrevételeket gyűjt a döntéshozó számára;
+- a [Beleegyezés](../proposals/consent/) feltárja a megalapozott kifogásokat; és
 - a [Konszenzus](../proposals/consensus/) közös egyetértésre törekszik.
 
-A sablonokat a [Javaslatok](../proposals/) oldalon hasonlíthatod össze.
+Az összehasonlításukhoz olvasd el a [Javaslatok](../proposals/) oldalt.
 
 <!-- translation-section: polls -->
 
 ## Szavazások
 
-Akkor használj szavazást, ha a résztvevőknek választaniuk, pontozniuk, pontokat elosztaniuk, lehetőségeket sorba rendezniük, a ráérésüket megadniuk vagy választáson szavazniuk kell:
+Használj szavazást, ha a résztvevőknek lehetőségeket kell kiválasztaniuk, pontozniuk vagy rangsorolniuk, pontokat kell elosztaniuk, jelezniük kell, mikor érnek rá, vagy képviselőkre kell szavazniuk:
 
-- A [Választás](../choose/) megmutatja, mely lehetőségek népszerűek;
+- A [Kiválasztás](../choose/) megmutatja a népszerű lehetőségeket;
 - a [Pontozás](../score/) minden lehetőséget egy skálán értékel;
-- a [Pontok elosztása](../allocate/) meghatározott számú pontot oszt szét;
-- a [Rangsorolás](../rank/) megállapítja a lehetőségek közös sorrendjét;
-- az [Időpont-egyeztetés](../meeting_polls/) megmutatja, mikor érnek rá az emberek; és
-- az [STV-választás](../stv/) arányos módon választ meg több nyertest.
+- a [Pontelosztás](../allocate/) korlátozott számú pontot oszt el;
+- a [Rangsorolás](../rank/) meghatározza a preferenciák összesített sorrendjét;
+- az [Időpontszavazás](../meeting_polls/) megmutatja, mikor érnek rá az emberek; és
+- az [STV-választás](../stv/) arányos képviseletet biztosítva választ meg több jelöltet.
 
-A módszereket a [Szavazások](../proposal_types/) oldalon hasonlíthatod össze.
+Az összehasonlításukhoz olvasd el a [Szavazások](../proposal_types/) oldalt.
 
 <!-- translation-section: start-a-proposal-or-poll -->
 
-## Javaslat vagy szavazás indítása
+## Indíts javaslatot vagy szavazást
 
 <!-- translation-section: choose-whether-to-use-a-discussion -->
 
-### Döntsd el, szükség van-e beszélgetésre
+### Döntsd el, hogy használsz-e beszélgetést
 
-Akkor indítsd a javaslatot vagy szavazást egy beszélgetésen belül, ha a válaszadás előtt háttérinformációra, kérdésekre vagy eszmecserére van szükség. Egy beszélgetés idővel több javaslatot is tartalmazhat, így a módosítások és a végső következtetés ugyanabban a témában maradnak.
+Indítsd a javaslatot vagy szavazást egy beszélgetésen belül, ha az embereknek leírásra, kérdésekre vagy beszélgetésre van szükségük a válaszadás előtt. Egy beszélgetés idővel több javaslatot is tartalmazhat, így a módosítások és a végső következtetés együtt maradnak a téma közös feljegyzésében.
 
-Önálló szavazást akkor indíts, ha a megbeszélés már máshol, például egy találkozón megtörtént, vagy ha a kérdés egyszerű, és csak a válaszokat kell összegyűjtened. Adj meg elég részletet, vagy hivatkozz a kapcsolódó dokumentumra, hogy a szavazók értsék, mire válaszolnak.
+Indíts önálló szavazást, ha a beszélgetés már máshol, például egy találkozón lezajlott, vagy ha a kérdés egyszerű, és csak válaszokat kell gyűjtened. Adj meg elegendő részletet vagy egy hivatkozást a kapcsolódó feljegyzésre, hogy a szavazók értsék, mire válaszolnak.
 
 <!-- translation-section: in-a-discussion -->
 
-### Beszélgetésben
+### Beszélgetésen belül
 
-Nyisd meg a beszélgetést, görgess a válaszadási területhez, válaszd a **Szavazás indítása** lehetőséget, majd válassz egy sablont.
+Nyisd meg a beszélgetést, görgess a válaszok területéhez, válaszd ki a **Szavazás indítása** lehetőséget, majd válassz egy sablont.
 
 ![](process_run.png)
 
@@ -112,56 +112,56 @@ Nyisd meg a beszélgetést, görgess a válaszadási területhez, válaszd a **S
 
 ### Beszélgetés nélkül
 
-Nyisd meg a csoport oldalán a **Szavazások** lapot, válaszd az **Új szavazás** lehetőséget, majd válassz egy sablont.
+Nyisd meg a **Szavazások** lapot a csoport oldalán, válaszd ki az **Új szavazás** lehetőséget, majd válassz egy sablont.
 
 ![](standalone_poll.png)
 
-Ha csak egy szavazás miatt hozol létre egyszerre beszélgetést és szavazást, ne küldj két értesítést az embereknek. Indítsd el a beszélgetést értesítés nélkül, és a szavazás meghívójával értesítsd őket, vagy indíts szavazást beszélgetés nélkül.
+Ha egyszerre hozol létre beszélgetést és szavazást pusztán a szavazatok gyűjtéséhez, kerüld a kétszeri értesítést. Indítsd a beszélgetést értesítés nélkül, és használd a szavazás meghívóját, vagy indítsd a szavazást beszélgetés nélkül.
 
 <!-- translation-section: what-happens-next -->
 
 ## Az indítástól a következtetésig
 
-A javaslat vagy szavazás a következő szakaszokon megy keresztül.
+A javaslat vagy szavazás a következő szakaszokon halad végig.
 
 <!-- translation-section: 1-create-it -->
 
 ### 1. Hozd létre
 
-Adj meg egy címet és részleteket, ellenőrizd a válaszlehetőségeket és a beállításokat, és állítsd be a zárás időpontját. Ezután válaszd ki, mikor nyíljon meg a szavazás:
+Adj meg egy címet és részletes leírást, ellenőrizd a lehetőségeket és a beállításokat, majd állítsd be a lezárás időpontját. Ezután válaszd ki, mikor nyíljon meg a szavazás:
 
 - **A szavazás azonnal megnyílik** beállítással a szavazás az indításkor rögtön megnyílik.
-- A **Nyitás dátuma** beállítással időzítheted a megnyitást. A résztvevők már előtte is láthatják a szavazást, de csak a megnyitás után szavazhatnak.
-- Ha egyiket sem állítod be, a szavazás vázlatként lesz mentve.
+- A **Nyitás dátuma** beállítással későbbre ütemezheted. Az emberek már előtte is láthatják, de csak a megnyitás után szavazhatnak.
+- Ha egyiket sem állítod be, piszkozatként menti a rendszer.
 
 <!-- translation-section: 2-voting-opens -->
 
 ### 2. Megnyílik a szavazás
 
-Amikor megnyílik a szavazás, a Loomio értesíti azokat, akiket meghívtál. Lásd a [Meghívás szavazásra](../inviting_people/) oldalt.
+Amikor megnyílik a szavazás, a Loomio értesíti azokat, akiket meghívtál. Olvasd el a [Meghívás szavazásra](../inviting_people/) oldalt.
 
 <!-- translation-section: 3-people-vote -->
 
-### 3. A résztvevők szavaznak
+### 3. Az emberek szavaznak
 
-Amíg a szavazás nyitva van, a résztvevők szavazhatnak, megindokolhatják a szavazatukat, és módosíthatják azt. Az eredmények a szavazatok beérkezésekor frissülnek, kivéve, ha a lezárásig rejtve maradnak. Alapértelmezés szerint azok, akik még nem szavaztak, a lezárás előtt egy nappal emlékeztetőt kapnak.
+Amíg a szavazás nyitva van, az emberek szavazhatnak, megindokolhatják és módosíthatják a szavazatukat. Az eredmények a szavazatok leadásával frissülnek, kivéve, ha a lezárásig rejtve maradnak. Alapértelmezés szerint azok, akik még nem szavaztak, a lezárás előtt egy nappal emlékeztetőt kapnak.
 
 <!-- translation-section: 4-it-closes -->
 
-### 4. Lezárul a szavazás
+### 4. Lezárul
 
-A szavazás a megadott zárási időpontban automatikusan lezárul. A szavazás adminisztrátora korábban is lezárhatja. A lezárás után a szavazás adminisztrátora új zárási időpont megadásával újra megnyithatja, hogy a résztvevők tovább szavazhassanak. A névtelen szavazásokat nem lehet újra megnyitni.
+A szavazás automatikusan lezárul a lezárási időpontban. A szavazás koordinátora korábban is lezárhatja. A lezárás után a szavazás koordinátora új lezárási időponttal újranyithatja, hogy az emberek tovább szavazhassanak. A névtelen szavazásokat nem lehet újranyitni.
 
 <!-- translation-section: 5-share-an-outcome -->
 
 ### 5. Oszd meg a következtetést
 
-Amikor a szavazás lezárul, a Loomio megkéri a szavazás koordinátorait, hogy osszanak meg egy következtetést.
+Amikor a szavazás lezárul, a Loomio megkéri a szavazás koordinátorait, hogy osszák meg a következtetést.
 
 ![Felhívás a következtetés megadására a javaslat lezárása után](outcome_prompt.png)
 
-A következtetés rögzíti, milyen döntés született, és mi történik ezután. Az eredmények felett jelenik meg, így az emberek ezt olvassák először. Amikor közzéteszed, értesítheted az embereket. E-mailt kapnak az eredményekkel és a következtetéssel.
+A következtetés leírja, milyen döntés született, és mi történik ezután. Az eredmények felett jelenik meg, így az emberek ezt olvassák el először. Amikor közzéteszed, értesítheted az embereket. E-mailt kapnak az eredményekkel és a következtetéssel.
 
-Az **Ellenőrzési dátum** mezőt is beállíthatod. Ezen a napon a Loomio emlékeztet, hogy vizsgáld felül a döntést.
+Az **Ellenőrzési dátum** beállításával megadhatod, mikor szeretnéd felülvizsgálni a döntést. Ezen a napon a Loomio emlékeztet a döntés felülvizsgálatára.
 
 ![Közzétett következtetés ellenőrzési dátummal](outcome_published.png)

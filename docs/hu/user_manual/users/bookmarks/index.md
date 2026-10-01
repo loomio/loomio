@@ -1,20 +1,20 @@
 ---
 title: Könyvjelzők
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/users/bookmarks/index.md
+source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
+source_file: docs/en/user_manual/users/bookmarks/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-30'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 752c1df552c461e6
   save-a-bookmark: ae80e968a14c61b4
   view-your-bookmarks: 66cd0a27cf9bcca2
   remove-a-bookmark: c9ef73967bce0bf8
 generated:
-  introduction: 18c15638177bb193
-  save-a-bookmark: 7d95dbe28fa2114e
-  view-your-bookmarks: 184b142e40658f81
-  remove-a-bookmark: 55e33e21fc07f402
+  introduction: 06ea4efc215e493d
+  save-a-bookmark: e7e1fd6e3a5e3f93
+  view-your-bookmarks: 183c27a094414720
+  remove-a-bookmark: ccba684819a9e122
 title_source: 96316f0f6404dbe1
 title_generated: acb74aba308f4dad
 ---
@@ -23,9 +23,9 @@ title_generated: acb74aba308f4dad
 
 # Könyvjelzők
 
-A könyvjelzők a Loomio azon elemeinek személyes listája, amelyekhez vissza szeretnél térni. A könyvjelzőidet csak te láthatod. Ha elmentesz egy könyvjelzőt, arról senki más nem kap értesítést.
+A könyvjelzők azoknak a Loomio-elemeknek a személyes listája, amelyekhez később vissza szeretnél térni. A könyvjelzőidet csak te látod, és egy elem mentéséről senki más nem kap értesítést.
 
-Könyvjelzővel láthatod el a következőket:
+A következőket mentheted könyvjelzőként:
 
 - beszélgetések
 - hozzászólások
@@ -37,7 +37,7 @@ Könyvjelzővel láthatod el a következőket:
 
 ## Könyvjelző mentése
 
-Nyisd meg az elem műveleti menüjét, és válaszd a **Könyvjelző mentése** lehetőséget. A műveleti menüt általában három pont jelzi. Beszélgetésnél a cím melletti műveleti menüt használd; hozzászólásnál, szavazatnál, javaslatnál, szavazásnál vagy következtetésnél az adott elem menüjét.
+Nyisd meg az elem műveleti menüjét, és válaszd ki a **Könyvjelző mentése** lehetőséget. A műveleti menüt általában három pont jelöli. Beszélgetés esetén használd a beszélgetés címe melletti műveleti menüt; hozzászólás, szavazat, javaslat, szavazás vagy következtetés esetén használd az adott elem menüjét.
 
 ![](save_bookmark.png)
 
@@ -45,9 +45,9 @@ Nyisd meg az elem műveleti menüjét, és válaszd a **Könyvjelző mentése** 
 
 ## Könyvjelzőid megtekintése
 
-Nyisd meg az oldalsávot, és válaszd a **Könyvjelzők** lehetőséget. A hivatkozás melletti szám azt mutatja, hány könyvjelzőt mentettél el.
+Nyisd meg az oldalsávot, és válaszd ki a **Könyvjelzők** lehetőséget. A hivatkozás melletti szám mutatja, hány könyvjelzőt mentettél.
 
-A Könyvjelzők oldalon a legutóbb mentett elemek jelennek meg először. Minden sorban láthatod az elem típusát és szerzőjét. Válassz ki egy sort a könyvjelzővel megjelölt elem megnyitásához.
+A Könyvjelzők oldal a legutóbb mentett elemeket sorolja fel először. Minden sorban látható az elem típusa és szerzője. Válassz ki egy sort, hogy visszatérj a könyvjelzőként mentett elemhez.
 
 ![](bookmarks_page.png)
 
@@ -55,6 +55,6 @@ A Könyvjelzők oldalon a legutóbb mentett elemek jelennek meg először. Minde
 
 ## Könyvjelző eltávolítása
 
-A Könyvjelzők oldalon kattints a sor végén lévő könyvjelző-eltávolító gombra. Megnyithatod a könyvjelzővel megjelölt elem műveleti menüjét is, és kiválaszthatod a **Könyvjelző eltávolítása** lehetőséget.
+A Könyvjelzők oldalon kattints a sor végén található könyvjelző-eltávolító gombra. A könyvjelzőként mentett elem műveleti menüjét is megnyithatod, és kiválaszthatod a **Könyvjelző eltávolítása** lehetőséget.
 
-A könyvjelző eltávolítása csak a személyes listádat érinti. Az elemet később újra elmentheted.
+A könyvjelző eltávolítása csak a személyes listádat érinti. Az elemet később újra mentheted.

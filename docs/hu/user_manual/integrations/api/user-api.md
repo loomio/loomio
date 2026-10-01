@@ -1,10 +1,10 @@
 ---
 title: Felhasználói API
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/integrations/api/user-api.md
+source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
+source_file: docs/en/user_manual/integrations/api/user-api.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-30'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: a43c8b800d13fd33
   authentication-change: 06b5c2cd9d9e72a0
@@ -73,72 +73,72 @@ sections:
   params-13: 249b307203206387
   example-18: ffd950cd7ab5aaec
 generated:
-  introduction: 6a8c304efad5e193
-  authentication-change: 8595394b3e99d846
-  response-size-and-related-records: 336382675a734c26
-  endpoint-summary: 51c20df34e786f90
+  introduction: b1504d9c4e0bd44d
+  authentication-change: 659b7e61f9d0cd93
+  response-size-and-related-records: 1d7260e356d4e886
+  endpoint-summary: b23a26797c6fd55a
   groups: 416e445b12c9f929
-  list-groups: 61e1544f5cab5188
-  get-a-group: 68ef0d7b55abbc68
-  webhooks: de42acce7868f13c
-  list-webhooks: 8ee5dd2b4886dd75
-  create-a-webhook: 68fbc313dec80d7f
-  update-a-webhook: 4607e3f00a9ca2c0
-  test-a-webhook-destination: 1420e3e8a218d19c
-  delete-a-webhook: e071ab6f6c952750
-  event-types: 7c65d4eb4c20984b
-  http-delivery: d9067ca82281461f
-  payload-formats: 0d4aac5d1c4ed0df
-  search: b173b3a8653861fe
-  params: 46689ee9ffc52b36
-  participation-report: db1611172dbee2ba
-  params-2: 7d8173437418226e
-  example: 44005c7a5322bd3c
-  create-discussion: f8af0601adc0926c
-  params-3: 0b68981fa9cfc3c5
+  list-groups: d70459538f37081c
+  get-a-group: a9353e450dc70f22
+  webhooks: 0365275b6819e88d
+  list-webhooks: 91b02af117b78f0d
+  create-a-webhook: 0d0ef8acd63d6ce7
+  update-a-webhook: cc23132a81e3f476
+  test-a-webhook-destination: 1b9ee44679e5b9c8
+  delete-a-webhook: 3cfeef1b5964dba2
+  event-types: 0fcc6450a0622382
+  http-delivery: 705628b930e9a862
+  payload-formats: bed939de29e773ff
+  search: 51bb7be4d587ab4e
+  params: 9e8070d01214b284
+  participation-report: ddc34962dd8e729d
+  params-2: 19f58b7cbd82a90b
+  example: 72c917979d97d8cf
+  create-discussion: 640a1a953be756c7
+  params-3: e9d6d3b49bda879c
   example-2: 1b153746050d6ef7
-  show-discussion: 27bc4592c6b00f18
+  show-discussion: 969ad550c89bd7a7
   example-3: 784553fa46b05a22
-  list-discussions: 07a09ee2cb8ed8af
-  params-4: 51e4e3c0edfbf6a4
+  list-discussions: 773fc193bc501d0b
+  params-4: 4b2b2156fbe56316
   example-4: b4a79b23cff114d4
-  list-threads: 01dfeba9f5e7ddea
-  params-5: efc7a6035ca0f437
+  list-threads: 16d57bb8165810d3
+  params-5: e73d9d2fb92f3d53
   example-5: 5b540b5d089ee459
-  read-thread: 03c47160363d4425
-  example-6: 16028691a5847913
-  edit-discussion: e4471a42a9c8dde8
-  params-6: a68340cd14fe8b03
+  read-thread: 6dea137615d33238
+  example-6: 2a7d10965a917550
+  edit-discussion: 3aab5169d34b379c
+  params-6: 34ad1e3b4c173e95
   example-7: d7a8af42ee8c3b8a
-  soft-delete-discussion: 9fa8c2db73696dac
+  soft-delete-discussion: 789e0d0816511a4f
   example-8: 5c19b934bfd67843
-  create-comment: 53dc3ff4e93bd7a7
-  params-7: 34f67fc6e50337e3
+  create-comment: 72293743ab5be8f2
+  params-7: 47e1bc16d82c1d1b
   example-9: 52a99d7feed14cc1
-  edit-comment: f2a62f719d0b1b22
-  params-8: 3736f49b44d16deb
+  edit-comment: fcf6151b0a3d7221
+  params-8: 3f4d445fc2001990
   example-10: 6420c8e56783fa22
-  soft-delete-comment: 7ff7737773e1eb3d
+  soft-delete-comment: f45d3ecadf01d68a
   example-11: 0f3a5b5abfca4020
-  create-poll: 26cb0dd337e6a248
-  params-9: 4cf39bbf1f354cba
+  create-poll: 490bffddd6312228
+  params-9: 2251bf3e77ae8741
   example-12: 5aa979418c6e1d79
-  show-poll: bbfe46a434896c75
+  show-poll: c8b3157193b261e2
   example-13: 26a88ad91585edd2
-  list-polls: 71465827ba43ab85
-  params-10: 6e8ade5a02484ae7
+  list-polls: ec19520361764e49
+  params-10: 84e2fd6e50cc3e23
   example-14: 6f31a4d032c805bc
-  edit-poll: b9b2061fb45242f1
-  params-11: 5aba3b85e2f52ffa
+  edit-poll: 4aa467ed42a39635
+  params-11: 9403160fffa57be5
   example-15: 65055ca15b3280b4
-  soft-delete-poll: 457528422c6d6d11
+  soft-delete-poll: 6e18189d38623839
   example-16: a719ba5488a406c7
-  list-memberships: ea0647475db52608
-  params-12: bb891859fee16c3a
+  list-memberships: 45ffb335f77cca36
+  params-12: f6d9435a5db343f0
   example-17: 747605072570c858
-  manage-memberships: d4a6c7f85de0935a
-  params-13: 6404df7dc0d7b2a1
-  example-18: 6d6ad447cee9646a
+  manage-memberships: cc1620565578898b
+  params-13: '0359dfdc59860704'
+  example-18: f39cff4e0d3c6d15
 title_source: c23fb6526b722360
 title_generated: 788437eb515e46bd
 ---
@@ -147,64 +147,64 @@ title_generated: 788437eb515e46bd
 
 # A Loomio felhasználói API dokumentációja
 
-<!-- seo-description: A Loomio felhasználói API-jával más szoftverekből hozhatsz létre és kezelhetsz beszélgetéseket, hozzászólásokat, szavazásokat, szálakat és csoporttagságokat. -->
+<!-- seo-description: A Loomio felhasználói API-val más szoftverekből hozhatsz létre és kezelhetsz beszélgetéseket, hozzászólásokat, szavazásokat, szálakat és csoporttagságokat. -->
 
-A `/api/b2` a Loomióval való integrációkhoz készült felhasználói API. Egy felhasználói fiók API-kulcsát használja, és minden műveletet az adott felhasználó nevében hajt végre.
+A `/api/b2` a Loomio-integrációkhoz használható, felhasználóknak szánt API. Egy felhasználói fiók API-kulcsát használja, és minden műveletet az adott felhasználó nevében hajt végre.
 
-A csoportműveleteknél az API-kulcs tulajdonosának tagságai és csoportjogosultságai érvényesek. A példányadminisztrátori szerepkör nem ad az API-kulcsnak további hozzáférést csoportokhoz vagy tartalmakhoz. A példány szintű adminisztrációhoz használd a Server API-t.
+A csoportműveletek az API-kulcshoz tartozó felhasználó tagságait és csoportjogosultságait használják. A példányadminisztrátori szerep nem bővíti az API-kulcs hozzáférését a csoportokhoz vagy a tartalmakhoz; a példányszintű adminisztrációhoz használd a szerver API-t.
 
-Annak a Loomio-fióknak az API-kulcsát használd, amelynek nevében a műveleteket végre szeretnéd hajtani. Külön botfiók hasznos, ha az integrációt nem szeretnéd szavazásokra meghívni, vagy nem szeretnéd, hogy értesítéseket kapjon.
+Annak a Loomio-fióknak az API-kulcsát használd, amely a műveleteket végrehajtja. Egy külön botfiók hasznos, ha az integrációt nem szeretnéd meghívni szavazásokra, vagy nem kell értesítéseket kapnia.
 
-Bejelentkezés után az API-kulcsodat és a csoportazonosítókat az [API-hozzáférési oldalon](/profile/api_access) találod.
+Bejelentkezés után az [API-hozzáférés oldalán](/profile/api_access) találod meg az API-kulcsodat és a csoportazonosítókat.
 
-Az API-kulcsot az `Authorization: Bearer` fejlécben küldd el. A lekérdezési karakterláncban megadott API-kulcsokat a rendszer elutasítja, mert az URL-eket a proxyk és a hozzáférési naplók rögzíthetik.
+Az API-kulcsot az `Authorization: Bearer` fejlécben küldd el. A rendszer elutasítja az URL lekérdezési paramétereiben küldött API-kulcsokat, mert a proxyk és a hozzáférési naplók rögzíthetik az URL-eket.
 
 <!-- translation-section: authentication-change -->
 
 ### A hitelesítés változása
 
-Korábban az API-kulcsot `api_key` URL-paraméterként is meg lehetett adni. A `?api_key=YOUR_API_KEY` paramétert használó kérések már nem működnek. Helyette a HTTP `Authorization` fejlécet használd:
+Korábban az API-kulcsot `api_key` URL-paraméterként is elfogadta a rendszer. A `?api_key=YOUR_API_KEY` paramétert használó kérések már nem működnek. Helyette használd a HTTP `Authorization` fejlécét:
 
 ```text
 Authorization: Bearer YOUR_API_KEY
 ```
 
-A példákban a `YOUR_API_KEY` API-kulcs, a `123` csoportazonosító és a `https://www.loomio.com/` URL szerepel. Cseréld ki ezeket a saját API-kulcsodra, csoportazonosítódra és a Loomio-telepítésed URL-jére.
+A példákban a `YOUR_API_KEY` API-kulcs, a `123` csoportazonosító és a `https://www.loomio.com/` URL szerepel. Cseréld le ezeket a saját API-kulcsodra, csoportazonosítódra és a Loomio-telepítésed URL-jére.
 
 <!-- translation-section: response-size-and-related-records -->
 
-## Válaszméret és kapcsolódó rekordok
+## A válasz mérete és a kapcsolódó rekordok
 
-A felhasználói API válaszai összetett formátumúak: az elsődleges rekordok mellett kapcsolódó rekordokat is tartalmaznak, például témákat, csoportokat, felhasználókat, szavazásokat és reakciókat. Így a kliens egyetlen kérésből feltöltheti a helyi rekordtárát, de a válasz több adatot tartalmazhat, mint amennyire egy egyszerű integrációnak szüksége van.
+A felhasználói API válaszai összetett formátumot használnak: az elsődleges rekordok mellett kapcsolódó rekordokat is tartalmaznak, például témákat, csoportokat, felhasználókat, szavazásokat és reakciókat. Így a kliens egyetlen kérésből feltölthet egy helyi rekordtárat, de a válasz több adatot is tartalmazhat, mint amennyire egy egyszerű integrációnak szüksége van.
 
-A `compact=1` paraméterrel kihagyhatod a nagy méretű kapcsolódó témákat, csoportokat, szülőcsoportokat, tagságokat, reakciókat, címkéket és fordításokat. Az elsődleges rekordok és a tartalmuk értelmezéséhez szükséges kapcsolódó rekordok megmaradnak.
+Add meg a `compact=1` paramétert a nagy méretű kapcsolódó témák, csoportok, szülőcsoportok, tagságok, reakciók, címkék és fordítások kihagyásához. Az elsődleges rekordok és a tartalmuk értelmezéséhez szükséges kapcsolódó rekordok továbbra is szerepelnek a válaszban.
 
 ```bash
 curl -H 'Authorization: Bearer YOUR_API_KEY' 'https://www.loomio.com/api/b2/threads/123/items?compact=1'
 ```
 
-Ha pontosan szeretnéd szabályozni a választ, add meg az `exclude_types` paraméterben az egyes számú rekordtípusokat szóközzel elválasztva. Például az `exclude_types=group reaction` kihagyja a kapcsolódó csoportokat és reakciókat. Gyakori értékek: `topic`, `group`, `parent`, `membership`, `reaction`, `tag`, `translation`, `user`, `discussion`, `poll`, `poll_option`, `stance`, `stance_choice`, `outcome` és `topic_item`. A kizárás a kapcsolódó rekordokra vonatkozik, nem a végponttól kért elsődleges erőforrásra.
+A kihagyások közvetlen szabályozásához add meg az `exclude_types` paraméterben a rekordtípusokat egyes számban, szóközökkel elválasztva. Az `exclude_types=group reaction` például kihagyja a kapcsolódó csoportokat és reakciókat. Gyakori értékek: `topic`, `group`, `parent`, `membership`, `reaction`, `tag`, `translation`, `user`, `discussion`, `poll`, `poll_option`, `stance`, `stance_choice`, `outcome` és `topic_item`. A kizárások a kapcsolódó rekordokra vonatkoznak, nem a végponttól kért elsődleges erőforrásra.
 
-A gyűjteményt visszaadó válaszok tartalmazzák a `meta.total` értéket, ha a gyűjtemény pontos mérete meghatározható. Az összesítést a `limit` és az `offset` alkalmazása előtt számítja ki a rendszer. Azok a végpontok, például a keresés, amelyek szándékosan korlátozott eredményhalmazt adnak vissza, kihagyják a `meta.total` mezőt ahelyett, hogy `null` értéket adnának vissza.
+A gyűjteményeket visszaadó válaszok tartalmazzák a `meta.total` mezőt, ha a gyűjtemény pontos mérete meghatározott. A teljes elemszám kiszámítása a `limit` és az `offset` alkalmazása előtt történik. Azok a végpontok, amelyek szándékosan korlátozott eredményhalmazt adnak vissza, például a keresés, kihagyják a `meta.total` mezőt ahelyett, hogy `null` értéket adnának vissza.
 
 <!-- translation-section: endpoint-summary -->
 
-## Végpontok áttekintése
+## A végpontok áttekintése
 
 | Metódus | Végpont | Cél |
 | --- | --- | --- |
-| `GET` | `/api/b2/groups` | Az API-kulcs tulajdonosához tartozó csoportok listázása |
+| `GET` | `/api/b2/groups` | Az API-kulcshoz tartozó felhasználó csoportjainak listázása |
 | `GET` | `/api/b2/groups/:id_or_key_or_handle` | Egy látható csoport lekérése |
 | `GET` | `/api/b2/reports` | Részvételi jelentés készítése |
-| `GET` | `/api/b2/search` | Keresés a látható beszélgetések, hozzászólások, szavazások, leadott szavazatok és következtetések között |
+| `GET` | `/api/b2/search` | Keresés a látható beszélgetések, hozzászólások, szavazások, szavazatok és következtetések között |
 | `POST` | `/api/b2/discussions` | Beszélgetés létrehozása |
 | `GET` | `/api/b2/discussions/:id` | Beszélgetés lekérése |
 | `GET` | `/api/b2/discussions` | Egy csoport beszélgetéseinek listázása |
 | `PATCH` | `/api/b2/discussions/:id` | Beszélgetés szerkesztése |
 | `DELETE` | `/api/b2/discussions/:id` | Beszélgetés logikai törlése |
-| `GET` | `/api/b2/threads` | Látható beszélgetésszálak és önálló szavazási szálak listázása |
+| `GET` | `/api/b2/threads` | A látható beszélgetési szálak és önálló szavazási szálak listázása |
 | `GET` | `/api/b2/threads/:topic_id` | Szál lekérése |
-| `GET` | `/api/b2/threads/:topic_id/items` | Egy szál elemeinek lekérése sorrendben |
+| `GET` | `/api/b2/threads/:topic_id/items` | Egy szál rendezett elemeinek lekérése |
 | `GET` | `/api/b2/threads/:topic_id/markdown` | Teljes szál lekérése Markdown-formátumban |
 | `POST` | `/api/b2/comments` | Hozzászólás vagy válasz létrehozása |
 | `PATCH` | `/api/b2/comments/:id` | Hozzászólás szerkesztése |
@@ -215,12 +215,12 @@ A gyűjteményt visszaadó válaszok tartalmazzák a `meta.total` értéket, ha 
 | `PATCH` | `/api/b2/polls/:id` | Szavazás szerkesztése |
 | `DELETE` | `/api/b2/polls/:id` | Szavazás logikai törlése |
 | `GET` | `/api/b2/memberships` | Egy csoport tagságainak listázása |
-| `POST` | `/api/b2/memberships` | Tagok hozzáadása és szükség esetén a listából hiányzó tagok eltávolítása |
+| `POST` | `/api/b2/memberships` | Tagok hozzáadása és opcionálisan a listáról hiányzó tagok eltávolítása |
 | `GET` | `/api/b2/chatbots` | Egy csoport csevegési integrációinak és webhookjainak listázása |
 | `POST` | `/api/b2/chatbots` | Csevegési integráció vagy webhook létrehozása |
 | `PATCH` | `/api/b2/chatbots/:id` | Csevegési integráció vagy webhook frissítése |
 | `DELETE` | `/api/b2/chatbots/:id` | Csevegési integráció vagy webhook törlése |
-| `POST` | `/api/b2/chatbots/check` | Webhook-kapcsolat tesztelése |
+| `POST` | `/api/b2/chatbots/check` | Webhook-kapcsolat tesztüzenetének küldése |
 
 <!-- translation-section: groups -->
 
@@ -230,7 +230,7 @@ A gyűjteményt visszaadó válaszok tartalmazzák a `meta.total` értéket, ha 
 
 ### Csoportok listázása
 
-Azoknak a csoportoknak a lekérése, amelyekben az API-kulcs tulajdonosának aktív tagsága van.
+Visszaadja azokat a csoportokat, amelyekben az API-kulcshoz tartozó felhasználónak aktív tagsága van.
 
 `GET /api/b2/groups`
 
@@ -238,71 +238,71 @@ Azoknak a csoportoknak a lekérése, amelyekben az API-kulcs tulajdonosának akt
 curl -H 'Authorization: Bearer YOUR_API_KEY' https://www.loomio.com/api/b2/groups
 ```
 
-A válasz az összes megfelelő rekordot tartalmazza egy lapozás nélküli `groups` tömbben. Szülőcsoportok és alcsoportok is szerepelnek benne, köztük olyan csoportok is, amelyek előfizetése jelenleg nem aktív. Ellenőrizd az `enabled` mezőt, ha az integrációnak csak aktív csoportokkal szabad működnie.
+A válasz az összes megfelelő rekordot egy lapozás nélküli `groups` tömbben tartalmazza. Szülőcsoportokat és alcsoportokat is tartalmaz, köztük olyan csoportokat, amelyek előfizetése jelenleg nem aktív. Ellenőrizd az `enabled` mezőt, ha az integrációnak csak engedélyezett csoportokon kell működnie.
 
 A fontosabb csoportmezők:
 
 | Mező | Leírás |
 | --- | --- |
-| `id` | Más felhasználói API-végpontok által használt numerikus csoportazonosító |
+| `id` | A csoport számszerű azonosítója, amelyet a felhasználói API más végpontjai használnak |
 | `key` | A Loomio URL-jeiben használt állandó rövid kulcs |
-| `handle` | A csoport ember által olvasható azonosítója |
+| `handle` | A csoport ember számára olvasható azonosítója |
 | `name` | A csoport neve |
-| `full_name` | A csoport neve a szülőcsoport megjelölésével |
-| `parent_id` | Alcsoport esetén a szülőcsoport numerikus azonosítója, egyébként `null` |
-| `enabled` | Aktív-e a csoport és az előfizetése |
+| `full_name` | A csoport neve a szülőcsoport nevével együtt |
+| `parent_id` | Alcsoport esetén a szülőcsoport számszerű azonosítója, egyébként `null` |
+| `enabled` | A csoport és az előfizetése aktív-e |
 | `memberships_count` | Az aktív és függőben lévő tagságok száma |
 | `accepted_memberships_count` | Az elfogadott tagságok száma |
-| `pending_memberships_count` | A függőben lévő meghívások száma |
+| `pending_memberships_count` | A függőben lévő meghívók száma |
 | `admin_memberships_count` | A csoportadminisztrátorok száma |
 | `delegates_count` | A küldöttek száma |
-| `discussions_count` | A közvetlenül a csoporthoz tartozó beszélgetések száma |
-| `polls_count` | A közvetlenül a csoporthoz tartozó szavazások száma |
+| `discussions_count` | A közvetlenül a csoportban lévő beszélgetések száma |
+| `polls_count` | A közvetlenül a csoportban lévő szavazások száma |
 | `subgroups_count` | Az alcsoportok száma |
 
-A válasz további csoportbeállításokat, kapcsolódó szülőcsoport-rekordokat és az API-felhasználó tagságait is tartalmazhatja. A kliensek hagyják figyelmen kívül a nem használt mezőket.
+A válasz további csoportbeállításokat, kapcsolódó szülőcsoportrekordokat és az API-felhasználó tagságait is tartalmazhatja. A kliensek hagyják figyelmen kívül azokat a mezőket, amelyeket nem használnak.
 
 <!-- translation-section: get-a-group -->
 
 ### Csoport lekérése
 
-Az API-kulcs tulajdonosa számára látható csoport lekérése.
+Visszaad egy, az API-kulcshoz tartozó felhasználó számára látható csoportot.
 
 `GET /api/b2/groups/:id_or_key_or_handle`
 
-Az azonosító lehet a csoport numerikus azonosítója, kulcsa vagy olvasható azonosítója.
+Az azonosító lehet a csoport számszerű azonosítója, kulcsa vagy olvasható azonosítója.
 
 ```bash
 curl -H 'Authorization: Bearer YOUR_API_KEY' https://www.loomio.com/api/b2/groups/123
 curl -H 'Authorization: Bearer YOUR_API_KEY' https://www.loomio.com/api/b2/groups/example-group
 ```
 
-A válasz a `groups` tömbben tartalmazza a csoportot, ugyanazokkal a mezőkkel, mint a listázó végpont. Ha az API-kulcs tulajdonosa nem fér hozzá a kért csoporthoz, a kérés jogosultsági hibát ad vissza.
+A válasz a `groups` tömbben tartalmazza a csoportot, és ugyanazokat a mezőket használja, mint a listázási végpont. Ha az API-kulcshoz tartozó felhasználó nem fér hozzá a kért csoporthoz, a kérés jogosultsági hibát ad vissza.
 
 <!-- translation-section: webhooks -->
 
 ## Webhookok
 
-A felhasználói API kérésekre válaszol: az integráció akkor hívja meg a Loomiót, amikor adatot szeretne olvasni vagy módosítani. A csoport webhookja az ellenkező irányban továbbít adatot. A Loomio a kiválasztott csoporteseményeket az előfordulásukkor elküldi a végpontodra, így az integrációnak nem kell rendszeresen lekérdeznie a REST API-t a változásokért.
+A felhasználói API kérésekre épül: az integráció akkor hívja meg a Loomiót, amikor adatokat szeretne olvasni vagy módosítani. A csoport webhookja az ellenkező irányú adatküldést biztosítja. A Loomio a kiválasztott csoporteseményeket a bekövetkezésükkor elküldi a végpontodra, így az integrációnak nem kell rendszeresen lekérdeznie a REST API-t a változásokért.
 
-A webhookokat csoportonként kell beállítani, és kezelésükhöz csoportadminisztrátori jogosultság szükséges. A Loomio felületén így kezelheted őket:
+A webhookokat csoportonként kell beállítani, és ehhez csoportadminisztrátori jogosultság szükséges. A Loomio felületén így kezelheted őket:
 
 1. Nyisd meg a csoportot.
-2. Nyisd meg a csoport menüjét, és válaszd a **Csevegési integrációk** lehetőséget.
-3. Add hozzá azt az integrációt, amelynek adatformátumát a végpontod fogadni tudja. Általános célú végponthoz használd a Mattermost/Markdown formátumot.
-4. Adj meg egy nevet és a cél URL-t.
-5. Válaszd ki azokat az eseményeket, amelyeket a Loomio automatikusan elküldjön.
-6. Mentsd az integrációt, majd a **Kapcsolat tesztelése** lehetőséggel küldj tesztüzenetet.
+2. Nyisd meg a csoport menüjét, és válaszd ki a **Csevegési integrációk** menüpontot.
+3. Add hozzá a végpontod által elfogadott adatformátumnak megfelelő integrációt. Általános célú végponthoz használd a Mattermost/Markdown formátumot.
+4. Adj meg egy nevet és a cél URL-jét.
+5. Válaszd ki azokat az eseményeket, amelyeket a Loomiónak automatikusan el kell küldenie.
+6. Mentsd az integrációt, és a **Kapcsolat tesztelése** funkcióval küldj tesztüzenetet.
 
-Olyan HTTPS-címet használj célként, amelynek URL-je nem található ki könnyen. A Loomio megköveteli, hogy a cél nyilvános címre mutasson, és blokkolja a helyi vagy magánhálózati címekre irányuló kéréseket.
+Használj HTTPS-célcímet olyan URL-lel, amelyet nem lehet kitalálni. A Loomio megköveteli, hogy a célcím nyilvános címre oldódjon fel, és blokkolja a helyi vagy privát hálózati címekre irányuló kéréseket.
 
-Az ügynökök és más integrációk az alább ismertetett, Bearer-hitelesítést használó chatbotvégpontokon keresztül is kezelhetik a webhookokat. Az erőforrás neve `chatbots`, hogy kompatibilis legyen a Loomio csevegési integrációival, de általános kimenő webhookokat is jelöl.
+Az ügynökök és más integrációk az alább ismertetett, Bearer-hitelesítést használó chatbot-végpontokon keresztül is kezelhetik a webhookokat. Az erőforrás neve a Loomio csevegési integrációival való kompatibilitás miatt `chatbots`, de általános kimenő webhookokat is jelöl.
 
 <!-- translation-section: list-webhooks -->
 
 ### Webhookok listázása
 
-Egy csoporthoz beállított csevegési integrációk lekérése. Az API-kulcs tulajdonosának a csoport adminisztrátorának kell lennie. A válasz tartalmazza a cél URL-eket, ezért nem szabad elérhetővé tenni a csoport többi tagja számára.
+Visszaadja egy csoport beállított csevegési integrációit. Az API-kulcshoz tartozó felhasználónak az adott csoport adminisztrátorának kell lennie. A válasz cél-URL-eket is tartalmaz, ezért nem tehető hozzáférhetővé a csoport többi tagja számára.
 
 `GET /api/b2/chatbots?group_id=123`
 
@@ -310,18 +310,18 @@ Egy csoporthoz beállított csevegési integrációk lekérése. Az API-kulcs tu
 curl -H 'Authorization: Bearer YOUR_API_KEY' 'https://www.loomio.com/api/b2/chatbots?group_id=123'
 ```
 
-A válasz egy `chatbots` tömböt tartalmaz a következő mezőkkel:
+A válasz egy `chatbots` tömböt tartalmaz az alábbi mezőkkel:
 
 | Mező | Leírás |
 | --- | --- |
-| `id` | Az integráció frissítéséhez és törléséhez használt azonosító |
-| `group_id` | Az eseményekhez tartozó csoport |
-| `name` | Az integráció adminisztrációs neve |
+| `id` | A frissítéshez és törléshez használt integrációazonosító |
+| `group_id` | Az eseményeket fogadó csoport |
+| `name` | Az integráció adminisztrációhoz használt neve |
 | `kind` | Kimenő webhook esetén `webhook`, Matrix-integráció esetén `matrix` |
-| `webhook_kind` | Az adat formátuma: `markdown`, `slack`, `discord`, `microsoft` vagy `webex` |
+| `webhook_kind` | Az elküldött adatok formátuma: `markdown`, `slack`, `discord`, `microsoft` vagy `webex` |
 | `server` | Cél-URL |
 | `event_kinds` | Automatikusan elküldött események |
-| `notification_only` | Az üzenetek csak az értesítés címét tartalmazzák-e |
+| `notification_only` | Az üzenetek csak az értesítés címsorát tartalmazzák-e |
 
 <!-- translation-section: create-a-webhook -->
 
@@ -345,7 +345,7 @@ curl -X POST \
   https://www.loomio.com/api/b2/chatbots
 ```
 
-Az API-kulcshoz tartozó felhasználónak a `group_id` által jelölt csoport adminisztrátorának kell lennie. Mentés előtt a rendszer ellenőrzi, hogy a cél nyilvánosan elérhető URL-e.
+Az API-kulcshoz tartozó felhasználónak a `group_id` által megadott csoport adminisztrátorának kell lennie. Mentés előtt a rendszer ellenőrzi, hogy a célcím nyilvános URL-e.
 
 <!-- translation-section: update-a-webhook -->
 
@@ -353,7 +353,7 @@ Az API-kulcshoz tartozó felhasználónak a `group_id` által jelölt csoport ad
 
 `PATCH /api/b2/chatbots/:id`
 
-Küldd el a módosítani kívánt mezőket. A `group_id` módosításával nem helyezheted át a webhookot másik csoportba.
+Küldd el a módosítandó mezőket. A webhook nem helyezhető át másik csoportba a `group_id` módosításával.
 
 ```bash
 curl -X PATCH \
@@ -365,9 +365,9 @@ curl -X PATCH \
 
 <!-- translation-section: test-a-webhook-destination -->
 
-### Webhook céljának tesztelése
+### Webhook célcímének tesztelése
 
-A beállítások mentése előtt vagy után küldj a cél címére egy Markdown-kompatibilis tesztüzenetet.
+Küldj Markdown-kompatibilis tesztüzenetet egy célcímre a beállításainak mentése előtt vagy után.
 
 `POST /api/b2/chatbots/check`
 
@@ -389,32 +389,32 @@ curl -X POST \
 curl -X DELETE -H 'Authorization: Bearer YOUR_API_KEY' https://www.loomio.com/api/b2/chatbots/456
 ```
 
-A beállítás törlése leállítja a későbbi kézbesítéseket. A Loomio-csoport tartalmát nem törli.
+A konfiguráció törlése leállítja a további kézbesítéseket. A Loomio-csoport tartalmait nem törli.
 
 <!-- translation-section: event-types -->
 
 ### Eseménytípusok
 
-A webhook ezekre az eseménytípusokra iratkozhat fel:
+A webhook a következő eseménytípusokra iratkozhat fel:
 
-| Esemény | Mikor küldi el a rendszer |
+| Esemény | Mikor küldi el a Loomio |
 | --- | --- |
 | `new_discussion` | Beszélgetés indul |
-| `discussion_edited` | Szerkesztenek egy beszélgetést |
-| `new_comment` | Hozzászólás születik |
+| `discussion_edited` | Beszélgetést szerkesztenek |
+| `new_comment` | Hozzászólás jön létre |
 | `poll_created` | Szavazás indul |
-| `poll_edited` | Szerkesztenek egy szavazást |
+| `poll_edited` | Szavazást szerkesztenek |
 | `poll_closing_soon` | Közeledik egy szavazás lezárási ideje |
 | `poll_expired` | Egy szavazás eléri a lezárási idejét |
 | `poll_closed_by_user` | Valaki kézzel lezár egy szavazást |
-| `poll_reopened` | Újra megnyitnak egy szavazást |
-| `outcome_created` | Közzétesznek egy következtetést |
-| `outcome_updated` | Frissítenek egy következtetést |
+| `poll_reopened` | Szavazást újranyitnak |
+| `outcome_created` | Következtetést tesznek közzé |
+| `outcome_updated` | Következtetést frissítenek |
 | `outcome_review_due` | Esedékessé válik egy következtetés felülvizsgálata |
-| `stance_created` | Valaki leadja a szavazatát |
-| `stance_updated` | Valaki módosítja a szavazatát |
+| `stance_created` | Szavazatot adnak le |
+| `stance_updated` | Szavazatot módosítanak |
 
-A webhook egy csoporthoz tartozik, és annak feliratkozott eseményeit fogadja. Az integrációt az emberek egyes értesítések megosztásakor vagy küldésekor külön is kiválaszthatják, akkor is, ha a megfelelő automatikus esemény nincs kiválasztva.
+A webhook egy csoporthoz tartozik, és ebből a csoportból kapja meg azokat az eseményeket, amelyekre feliratkozott. Megosztáskor vagy egyes értesítések küldésekor az emberek külön is kiválaszthatják az integrációt, akkor is, ha a megfelelő automatikus esemény nincs kiválasztva.
 
 <!-- translation-section: http-delivery -->
 
@@ -426,17 +426,17 @@ A Loomio aszinkron HTTP `POST` kérést küld a beállított URL-re ezzel a fejl
 Content-Type: application/json; charset=utf-8
 ```
 
-A kérés időkorlátja öt másodperc. A rendszer minden `2xx` választ sikeresnek tekint, beleértve a `204 No Content` választ is. A webhookot fogadó szolgáltatás válaszoljon gyorsan, a hosszabb feladatokat dolgozza fel aszinkron módon, és kezelje a többször vagy eltérő sorrendben érkező kézbesítéseket.
+A kérés időkorlátja öt másodperc. A `2xx` válaszokat, köztük a `204 No Content` választ is sikeresnek tekinti. A webhookot fogadó szolgáltatásoknak gyorsan kell válaszolniuk, a hosszabb feladatokat aszinkron módon kell feldolgozniuk, és kezelniük kell az ismételt vagy eltérő sorrendben érkező kézbesítéseket.
 
-A Loomio jelenleg nem ad a webhookhoz aláírást, közös titkot tartalmazó fejlécet, eseményazonosítót vagy kézbesítési azonosítót. A teljes cél-URL-t kezeld hozzáférési adatként, ne tedd nyilvánossá, és használj benne nehezen kitalálható tokent, ha a fogadó szolgáltatás ezt támogatja. Ha állandó, géppel feldolgozható eseménysémára vagy aláírt kézbesítésre van szükséged, használd a webhookot változásjelzésként, majd kérd le az aktuális rekordokat a hitelesített felhasználói API-n keresztül.
+A Loomio jelenleg nem ad a kéréshez webhook-aláírást, közös titkot tartalmazó fejlécet, eseményazonosítót vagy kézbesítési azonosítót. Kezeld a teljes cél-URL-t hitelesítő adatként, ne tedd nyilvánossá, és adj hozzá egy kitalálhatatlan tokent az URL-hez, ha a fogadó szolgáltatás támogatja ezt. Ha stabil, géppel olvasható eseménysémára vagy aláírt kézbesítésre van szükséged, használd a webhookot a változások jelzésére, és kérd le az aktuális rekordokat a hitelesített Felhasználói API-n keresztül.
 
 <!-- translation-section: payload-formats -->
 
-### Adatformátumok
+### Üzenetformátumok
 
-A webhookok csevegőszolgáltatásoknak szánt üzeneteket küldenek. Ezek nem teljes Loomio-rekordok. Az üzenetben lévő hivatkozások megmutatják, melyik Loomio-tartalmat érinti az esemény. Ha az integrációnak strukturált, aktuális adatokra van szüksége, lekérheti őket a felhasználói API-n keresztül.
+A webhookok csevegőszolgáltatásokban való megjelenítésre szánt üzeneteket küldenek. Ezek nem teljes, szerializált Loomio-rekordok. Az üzenetben található hivatkozások azonosítják az érintett Loomio-tartalmat; ha az integrációnak strukturált adatokra van szüksége az aktuális állapotról, ezeket a Felhasználói API-n keresztül kérheti le.
 
-| Integráció formátuma | Fő JSON-mezők |
+| Integrációs formátum | Fő JSON-mezők |
 | --- | --- |
 | Mattermost/Markdown | `text`, `icon_url`, `username` |
 | Slack | `text` |
@@ -444,7 +444,7 @@ A webhookok csevegőszolgáltatásoknak szánt üzeneteket küldenek. Ezek nem t
 | Microsoft Teams | `@type`, `@context`, `themeColor`, `text`, `sections` |
 | Webex | `markdown` |
 
-Az általános Markdown-formátum például ilyen szerkezetű üzenettörzset küld:
+Az általános Markdown-formátum például ilyen szerkezetű törzset küld:
 
 ```json
 {
@@ -454,13 +454,13 @@ Az általános Markdown-formátum például ilyen szerkezetű üzenettörzset k�
 }
 ```
 
-Az üzenet pontos szövege az eseménytől, a csoport nyelvi beállításától, a csak értesítést tartalmazó beállítástól és a Loomio verziójától függ. Az üzenetet fogadó szolgáltatás a választott formátum dokumentált felső szintű mezőire támaszkodjon az egyes mondatok elemzése helyett.
+Az üzenet pontos szövege az eseménytől, a csoport nyelvi beállításától, a csak értesítést küldő beállítástól és a Loomio verziójától függ. A fogadó szolgáltatásoknak a kiválasztott formátum dokumentált, legfelső szintű mezőire kell támaszkodniuk a mondatok megfogalmazásának elemzése helyett.
 
 <!-- translation-section: search -->
 
 ## Keresés
 
-Keress az API-kulcshoz tartozó felhasználó számára látható beszélgetések, hozzászólások, szavazások, leadott szavazatok és következtetések között. A találatok között nyilvános tartalom is szerepelhet olyan csoportból, amelynek a felhasználó nem tagja. A privát tartalmakra a témák szokásos láthatósági szabályai vonatkoznak.
+Keress az API-kulcshoz tartozó felhasználó számára látható beszélgetések, hozzászólások, szavazások, szavazatok és következtetések között. A találatok nyilvános tartalmakat akkor is tartalmaznak, ha a felhasználó nem tagja az adott csoportnak; a privát tartalmakra továbbra is a szálak szokásos láthatósági szabályai vonatkoznak.
 
 `GET /api/b2/search`
 
@@ -470,26 +470,26 @@ Keress az API-kulcshoz tartozó felhasználó számára látható beszélgetése
 
 | Név | Leírás |
 | --- | --- |
-| `query` | Keresett szöveg. Pontos és közelítő egyezések is támogatottak |
-| `group_id` | A találatokat egy látható csoportra korlátozza |
-| `org_id` | A találatokat egy látható szülőcsoportra és annak látható alcsoportjaira korlátozza. Közvetlen beszélgetésekhez használd a `0` értéket |
-| `type` | A találatokat egy típusra korlátozza: `Discussion`, `Comment`, `Poll`, `Stance` vagy `Outcome` |
-| `types` | A találattípusok vesszővel elválasztott listája |
-| `tag` | A találatokat az ezzel a címkével ellátott témákra korlátozza |
-| `author_id` | A találatokat egy szerző tartalmaira korlátozza. `query` nélkül a szerző közelmúltbeli, látható tevékenységét adja vissza |
-| `order` | Állítsd `authored_at_desc` értékre, hogy az egyező tartalmakat a létrehozásuk ideje szerint rendezze |
+| `query` | Keresési szöveg. Pontos és közelítő egyezések is támogatottak |
+| `group_id` | Korlátozd a találatokat egy látható csoportra |
+| `org_id` | Korlátozd a találatokat egy látható szülőcsoportra és annak látható alcsoportjaira. Közvetlen beszélgetésekhez használd a `0` értéket |
+| `type` | Korlátozd a találatokat egy típusra: `Discussion`, `Comment`, `Poll`, `Stance` vagy `Outcome` |
+| `types` | Találattípusok vesszővel elválasztott listája |
+| `tag` | Korlátozd a találatokat az ezzel a címkével ellátott szálakra |
+| `author_id` | Korlátozd a találatokat egy szerző tartalmaira. A `query` nélkül a szerző közelmúltbeli, látható tevékenységét adja vissza |
+| `order` | Állítsd `authored_at_desc` értékre, hogy az egyező tartalmakat a létrehozás ideje szerint rendezze |
 
 ```bash
 curl -H 'Authorization: Bearer YOUR_API_KEY' 'https://www.loomio.com/api/b2/search?query=quarterly+planning&type=Discussion'
 ```
 
-A válasz egy `search_results` tömböt tartalmaz. Minden találat azonosítja az egyező rekordot és annak látható környezetét. A mezők között szerepel a `searchable_type`, `searchable_id`, `highlight`, `group_id`, `group_name`, `discussion_key`, `poll_key`, `author_id`, `author_name`, `authored_at` és `tags`. Az adott találatra nem vonatkozó mezők értéke `null`.
+A válasz egy `search_results` tömböt tartalmaz. Minden találat azonosítja az egyező rekordot és annak látható környezetét, többek között a `searchable_type`, `searchable_id`, `highlight`, `group_id`, `group_name`, `discussion_key`, `poll_key`, `author_id`, `author_name`, `authored_at` és `tags` mezőkkel. Az adott találatra nem alkalmazható mezők értéke `null`.
 
 <!-- translation-section: participation-report -->
 
 ## Részvételi jelentés
 
-A Loomio Részvételi jelentésében használt összesített részvételi adatokat adja vissza.
+Ugyanazokat az összesített részvételi adatokat adja vissza, amelyeket a Loomio részvételi jelentése használ.
 
 `GET /api/b2/reports`
 
@@ -500,16 +500,16 @@ A Loomio Részvételi jelentésében használt összesített részvételi adatok
 | Név | Leírás |
 | --- | --- |
 | `section` | A jelentés része: `base`, `users` vagy `countries`. Személyenkénti tevékenységhez használd a `users` értéket |
-| `group_scope` | `custom` vagy `my`. A régi `all` értéket a rendszer `my` értékként kezeli, mert a felhasználói API-kulcsok nem adnak hozzáférést a teljes példányhoz |
-| `group_ids` | Vesszővel elválasztott csoportazonosítók, ha `group_scope=custom`. A rendszer figyelmen kívül hagyja azokat az azonosítókat, amelyekhez az API-felhasználó nem rendelkezik tagsággal |
-| `start_month` | Az első szerepeltetendő hónap `YYYY-MM` formátumban; alapértelmezés szerint 12 hónappal ezelőtt |
-| `end_month` | Az utolsó szerepeltetendő hónap `YYYY-MM` formátumban; alapértelmezés szerint az aktuális hónap |
+| `group_scope` | `custom` vagy `my`. A korábbi `all` értéket `my` értékként kezeli, mert a Felhasználói API kulcsai soha nem biztosítanak a teljes példányra kiterjedő hozzáférést |
+| `group_ids` | Vesszővel elválasztott csoportazonosítók, ha `group_scope=custom`. Az API-felhasználó tagságain kívül eső azonosítókat figyelmen kívül hagyja |
+| `start_month` | Az első figyelembe vett hónap `YYYY-MM` formátumban; alapértelmezés szerint a 12 hónappal ezelőtti hónap |
+| `end_month` | Az utolsó figyelembe vett hónap `YYYY-MM` formátumban; alapértelmezés szerint az aktuális hónap |
 | `interval` | A `base` rész időköze: `day`, `week`, `month` vagy `year` |
-| `member_type` | Állítsd `delegate` értékre a `section=users` mellett, hogy csak a jelenlegi küldöttek jelenjenek meg |
+| `member_type` | A `section=users` mellett állítsd `delegate` értékre, hogy csak a jelenlegi küldötteket adja vissza |
 
-Valaki akkor küldött, ha a kiválasztott csoportok bármelyikében aktív küldötti tagsága van. A rendszer az összes kiválasztott csoportból összesíti az adatait. A küldöttek akkor is szerepelnek a jelentésben, ha minden tevékenységi számuk nulla. A számok a témákat, hozzászólásokat, szavazásokat, leadott szavazatokat, következtetéseket és reakciókat fedik le; nem a szavazási részvételi arányt mutatják. A felhasználói sorok a névhez kötött szavazólapok kiadott, leadott és elmulasztott számát is tartalmazzák. Az anonim szavazások minden személyenkénti szavazatszámból kimaradnak. Az `all_votes_cast` csak akkor igaz, ha legalább egy szavazólapot kiadtak, és mindegyiket leadták.
+Egy személy akkor küldött, ha bármelyik kiválasztott csoportban aktív küldötti tagsággal rendelkezik. A hozzá tartozó darabszámokat az összes kiválasztott csoportból összesíti. A küldöttek sorait akkor is visszaadja, ha minden tevékenység darabszáma nulla. A darabszámok a szálakra, hozzászólásokra, szavazásokra, szavazatokra, következtetésekre és reakciókra vonatkoznak; nem a szavazási részvétel arányát mutatják. A felhasználói sorok a kiadott, leadott és le nem adott, személyhez köthető szavazólapok számát is tartalmazzák. A névtelen szavazások minden személyenkénti szavazati darabszámból kimaradnak. Az `all_votes_cast` értéke csak akkor igaz, ha legalább egy szavazólapot kiadtak, és minden kiadott szavazólapot leadtak.
 
-Az API ugyanazokat a csoportláthatósági szabályokat alkalmazza, mint a Loomio felületén elérhető jelentés. A felhasználói API-kulcs nem teszi elérhetővé azoknak a csoportoknak a jelentésadatait, amelyekhez a felhasználó nem fér hozzá.
+Az API ugyanazokat a csoportláthatósági szabályokat alkalmazza, mint az alkalmazásban elérhető jelentés. Egy felhasználói API-kulcs nem teheti elérhetővé olyan csoportok jelentésadatait, amelyekhez az adott felhasználó nem fér hozzá.
 
 <!-- translation-section: example -->
 
@@ -519,7 +519,7 @@ Az API ugyanazokat a csoportláthatósági szabályokat alkalmazza, mint a Loomi
 curl -H 'Authorization: Bearer YOUR_API_KEY' 'https://www.loomio.com/api/b2/reports?section=users&group_scope=custom&group_ids=123&member_type=delegate&start_month=2026-01&end_month=2026-09'
 ```
 
-A `users` tömb teljes tevékenységi sorokat tartalmaz:
+A `users` tömb teljes tevékenységi adatsorokat tartalmaz:
 
 ```json
 {
@@ -548,7 +548,7 @@ A `users` tömb teljes tevékenységi sorokat tartalmaz:
 
 ## Beszélgetés létrehozása
 
-Hozz létre egy beszélgetést az API-kulcshoz tartozó felhasználóként.
+Hozz létre beszélgetést az API-kulcshoz tartozó felhasználó nevében.
 
 `POST /api/b2/discussions`
 
@@ -558,14 +558,14 @@ Hozz létre egy beszélgetést az API-kulcshoz tartozó felhasználóként.
 
 | Név | Leírás |
 | --- | --- |
-| `group_id` | A csoport, amelyben a téma létrejön |
-| `title` | A téma címe, kötelező |
-| `description` | A téma leírása, nem kötelező |
-| `description_format` | `md` vagy `html`, nem kötelező, alapértelmezett értéke `md` |
-| `recipient_audience` | `group` vagy null. Ha `group`, a teljes csoport értesítést kap az új témáról |
-| `recipient_user_ids` | Az értesítendő vagy a témába meghívandó felhasználók azonosítóinak tömbje |
-| `recipient_emails` | A témába meghívandó személyek e-mail-címeinek tömbje |
-| `recipient_message` | Az e-mailes meghívóban szereplő üzenet |
+| `group_id` | A csoport, amelyben a szál létrejön |
+| `title` | A szál címe, kötelező |
+| `description` | A szál leírása, nem kötelező |
+| `description_format` | `md` vagy `html`, nem kötelező, alapértelmezés szerint `md` |
+| `recipient_audience` | `group` vagy null. Ha `group`, az egész csoport értesítést kap az új szálról |
+| `recipient_user_ids` | A szálról értesítendő vagy a szálba meghívandó felhasználók azonosítóinak tömbje |
+| `recipient_emails` | A szálba meghívandó emberek e-mail-címeinek tömbje |
+| `recipient_message` | Az e-mailes meghívóba kerülő üzenet |
 
 <!-- translation-section: example-2 -->
 
@@ -579,7 +579,7 @@ curl -H 'Authorization: Bearer YOUR_API_KEY' -X POST -H 'Content-Type: applicati
 
 ## Beszélgetés lekérése
 
-Kérj le egy beszélgetést a számmal megadott azonosítója vagy a szöveges kulcsa alapján.
+Kérj le egy beszélgetést az egész számként megadott azonosítójával vagy a karakterláncként megadott kulcsával.
 
 `GET /api/b2/discussions/:id`
 
@@ -595,7 +595,7 @@ curl -H 'Authorization: Bearer YOUR_API_KEY' https://www.loomio.com/api/b2/discu
 
 ## Beszélgetések listázása
 
-Listázd az API-kulcshoz tartozó felhasználó számára látható beszélgetéseket egy csoportban. Nyilvánosan látható csoport esetén a csoporton kívüli felhasználó is listázhatja a nyilvános beszélgetéseket. A privát beszélgetéseket csak azok érhetik el, akik a Loomióban is olvashatják őket.
+Listázd egy csoportban az API-kulcshoz tartozó felhasználó számára látható beszélgetéseket. Egy nyilvánosan látható csoport nyilvános beszélgetéseit olyan felhasználó is listázhatja, aki nem tagja a csoportnak; a privát beszélgetésekhez továbbra is csak azok a felhasználók férhetnek hozzá, akik a Loomióban is olvashatják őket.
 
 `GET /api/b2/discussions`
 
@@ -606,11 +606,11 @@ Listázd az API-kulcshoz tartozó felhasználó számára látható beszélgeté
 | Név | Leírás |
 | --- | --- |
 | `group_id` | Egész szám, kötelező. Annak a csoportnak az azonosítója, amelynek a beszélgetéseit listázni szeretnéd |
-| `status` | Szöveg, nem kötelező, alapértelmezett értéke `open`. Értékek: `open`, `closed`, `all` |
-| `limit` | Egész szám, nem kötelező, alapértelmezett értéke 50. Az oldal mérete |
-| `offset` | Egész szám, nem kötelező, alapértelmezett értéke 0. A lapozás kezdőpozíciója |
+| `status` | Karakterlánc, opcionális, alapértelmezés: `open`. Értékek: `open`, `closed`, `all` |
+| `limit` | Egész szám, opcionális, alapértelmezés: 50. Oldalméret |
+| `offset` | Egész szám, opcionális, alapértelmezés: 0. Eltolás a lapozáshoz |
 
-Korábbi paraméterek: a `per` és a `from` továbbra is használható a `limit`, illetve az `offset` helyett.
+Visszamenőleges kompatibilitás: a `per` és a `from` továbbra is használható a `limit`, illetve az `offset` alternatív neveként.
 
 <!-- translation-section: example-4 -->
 
@@ -622,9 +622,9 @@ curl -H 'Authorization: Bearer YOUR_API_KEY' 'https://www.loomio.com/api/b2/disc
 
 <!-- translation-section: list-threads -->
 
-## Témák listázása
+## Szálak listázása
 
-Listázd az API-kulcshoz tartozó felhasználó számára látható beszélgetések és szavazások témáit, a legutóbbi aktivitás szerint rendezve. A téma azonosítója a `topic_id`.
+Listázd az API-kulcshoz tartozó felhasználó számára látható beszélgetési és szavazási szálakat a legutóbbi aktivitás szerinti sorrendben. A szál azonosítója a `topic_id` értéke.
 
 `GET /api/b2/threads`
 
@@ -634,8 +634,8 @@ Listázd az API-kulcshoz tartozó felhasználó számára látható beszélgeté
 
 | Név | Leírás |
 | --- | --- |
-| `limit` | Egész szám, nem kötelező, alapértelmezett értéke 50. Az oldal mérete |
-| `offset` | Egész szám, nem kötelező, alapértelmezett értéke 0. A lapozás kezdőpozíciója |
+| `limit` | Egész szám, opcionális, alapértelmezés: 50. Oldalméret |
+| `offset` | Egész szám, opcionális, alapértelmezés: 0. Eltolás a lapozáshoz |
 
 <!-- translation-section: example-5 -->
 
@@ -647,9 +647,9 @@ curl -H 'Authorization: Bearer YOUR_API_KEY' 'https://www.loomio.com/api/b2/thre
 
 <!-- translation-section: read-thread -->
 
-## Téma olvasása
+## Szál olvasása
 
-Olvasd el a témát, az eseményeinek rendezett sorát vagy a teljes látható tartalmát Markdown-dokumentumként.
+Olvasd el egy szál tartalmát, a rendezett eseményfolyamát vagy a teljes látható Markdown-dokumentumát.
 
 `GET /api/b2/threads/:topic_id`
 
@@ -667,15 +667,15 @@ GET https://www.loomio.com/api/b2/threads/<topic_id>/items
 GET https://www.loomio.com/api/b2/threads/<topic_id>/markdown
 ```
 
-Az `items` végpont az eseményeket sorrendben adja vissza, beleértve a látható hozzászólásokat, szavazásokat, leadott szavazatokat és következtetéseket. A `markdown` végpont a téma teljes látható tartalmát egyetlen Markdown-dokumentumként adja vissza. A szavazatok indoklása csak akkor szerepel benne, ha látható az API-kulcshoz tartozó felhasználó számára.
+Az `items` végpont a rendezett eseményfolyamot adja vissza, beleértve a látható hozzászólásokat, szavazásokat, szavazatokat és következtetéseket. A `markdown` végpont a teljes látható szálat egyetlen Markdown-dokumentumként adja vissza. A szavazatok indoklásai csak akkor szerepelnek benne, ha az API-kulcshoz tartozó felhasználó számára láthatók.
 
-Minden témához tartozó végpont ugyanazokat a jogosultságokat érvényesíti, mint a Loomio felülete. Az API-kulcs nem ad hozzáférést olyan témához, amelyet a felhasználó egyébként nem nyithat meg.
+A szálakhoz tartozó összes végpont ugyanazokat a jogosultságokat érvényesíti, mint a Loomio felülete. Az API-kulcs nem ad hozzáférést olyan szálhoz, amelyet a felhasználó egyébként nem nyithat meg.
 
 <!-- translation-section: edit-discussion -->
 
 ## Beszélgetés szerkesztése
 
-Szerkessz egy beszélgetést az API-kulcshoz tartozó felhasználóként. Ugyanazok a jogosultságok érvényesek, mint a Loomióban: a felhasználónak jogosultnak kell lennie a beszélgetés szerkesztésére.
+Szerkessz egy beszélgetést az API-kulcshoz tartozó felhasználóként. Ugyanazok a jogosultságok érvényesek, mint a Loomióban: a felhasználónak jogosultnak kell lennie az adott beszélgetés szerkesztésére.
 
 `PATCH /api/b2/discussions/:id`
 
@@ -685,13 +685,13 @@ Szerkessz egy beszélgetést az API-kulcshoz tartozó felhasználóként. Ugyana
 
 | Név | Leírás |
 | --- | --- |
-| `title` | Az új cím |
-| `description` | Az új leírás |
-| `description_format` | `md` vagy `html`, nem kötelező, alapértelmezett értéke `md` |
-| `recipient_audience` | `group` vagy null. Ha `group`, a teljes csoport értesítést kap a módosításról |
-| `recipient_user_ids` | Az értesítendő vagy a témába meghívandó felhasználók azonosítóinak tömbje |
-| `recipient_emails` | A témába meghívandó személyek e-mail-címeinek tömbje |
-| `recipient_message` | Az e-mailes meghívóban szereplő üzenet |
+| `title` | Frissített cím |
+| `description` | Frissített leírás |
+| `description_format` | `md` vagy `html`, opcionális, alapértelmezés: `md` |
+| `recipient_audience` | `group` vagy null. Ha `group`, az egész csoport értesítést kap a szerkesztésről |
+| `recipient_user_ids` | A szálról értesítendő vagy a szálba meghívandó felhasználók azonosítóinak tömbje |
+| `recipient_emails` | A szálba meghívandó emberek e-mail-címeinek tömbje |
+| `recipient_message` | Az e-mailben küldött meghívóba foglalandó üzenet |
 
 <!-- translation-section: example-7 -->
 
@@ -705,7 +705,7 @@ curl -H 'Authorization: Bearer YOUR_API_KEY' -X PATCH -H 'Content-Type: applicat
 
 ## Beszélgetés logikai törlése
 
-Törölj logikailag egy beszélgetést az API-kulcshoz tartozó felhasználóként. A beszélgetés törölt állapotba kerül, de a rekordja megmarad.
+Töröld logikailag a beszélgetést az API-kulcshoz tartozó felhasználó nevében. Ez eltávolítja a beszélgetést, de megőrzi a beszélgetés adatbázisrekordját.
 
 `DELETE /api/b2/discussions/:id`
 
@@ -721,7 +721,7 @@ curl -H 'Authorization: Bearer YOUR_API_KEY' -X DELETE https://www.loomio.com/ap
 
 ## Hozzászólás létrehozása
 
-Hozz létre egy hozzászólást egy beszélgetésben az API-kulcshoz tartozó felhasználóként.
+Hozz létre hozzászólást egy beszélgetésben az API-kulcshoz tartozó felhasználó nevében.
 
 `POST /api/b2/comments`
 
@@ -733,7 +733,7 @@ Hozz létre egy hozzászólást egy beszélgetésben az API-kulcshoz tartozó fe
 | --- | --- |
 | `discussion_id` | Egész szám, kötelező. Annak a beszélgetésnek az azonosítója, amelyhez hozzászólsz |
 | `body` | A hozzászólás szövege, kötelező, kivéve ha mellékletet adsz meg |
-| `body_format` | `md` vagy `html`, nem kötelező, alapértelmezett értéke `md` |
+| `body_format` | `md` vagy `html`, nem kötelező, alapértelmezés: `md` |
 
 <!-- translation-section: example-9 -->
 
@@ -747,7 +747,7 @@ curl -H 'Authorization: Bearer YOUR_API_KEY' -X POST -H 'Content-Type: applicati
 
 ## Hozzászólás szerkesztése
 
-Szerkessz egy hozzászólást az API-kulcshoz tartozó felhasználóként. Ugyanazok a jogosultságok érvényesek, mint a Loomióban: a felhasználónak jogosultnak kell lennie a hozzászólás szerkesztésére.
+Szerkeszd a hozzászólást az API-kulcshoz tartozó felhasználó nevében. Ugyanazok a jogosultságok érvényesek, mint a Loomióban: a felhasználónak jogosultnak kell lennie az adott hozzászólás szerkesztésére.
 
 `PATCH /api/b2/comments/:id`
 
@@ -757,8 +757,8 @@ Szerkessz egy hozzászólást az API-kulcshoz tartozó felhasználóként. Ugyan
 
 | Név | Leírás |
 | --- | --- |
-| `body` | A hozzászólás új szövege |
-| `body_format` | `md` vagy `html`, nem kötelező, alapértelmezett értéke `md` |
+| `body` | A hozzászólás módosított szövege |
+| `body_format` | `md` vagy `html`, nem kötelező, alapértelmezés: `md` |
 
 <!-- translation-section: example-10 -->
 
@@ -772,7 +772,7 @@ curl -H 'Authorization: Bearer YOUR_API_KEY' -X PATCH -H 'Content-Type: applicat
 
 ## Hozzászólás logikai törlése
 
-Törölj logikailag egy hozzászólást az API-kulcshoz tartozó felhasználóként. A hozzászólás szövege rejtetté válik, de a rekordja megmarad.
+Töröld logikailag a hozzászólást az API-kulcshoz tartozó felhasználó nevében. Ez eltávolítja a hozzászólást és elrejti a szövegét, de megőrzi a hozzászólás adatbázisrekordját.
 
 `DELETE /api/b2/comments/:id`
 
@@ -788,7 +788,7 @@ curl -H 'Authorization: Bearer YOUR_API_KEY' -X DELETE https://www.loomio.com/ap
 
 ## Szavazás létrehozása
 
-Hozz létre szavazást az API-kulcshoz tartozó felhasználóként.
+Hozz létre szavazást az API-kulcshoz tartozó felhasználó nevében.
 
 `POST /api/b2/polls`
 
@@ -798,24 +798,24 @@ Hozz létre szavazást az API-kulcshoz tartozó felhasználóként.
 
 | Név | Leírás |
 | --- | --- |
-| `group_id` | Egész szám, nem kötelező, alapértelmezés szerint null. A szavazás csoportjának azonosítója. Ha megadod a `discussion_id` értékét, a rendszer figyelmen kívül hagyja a `group_id` értékét |
-| `discussion_id` | Egész szám, nem kötelező, alapértelmezés szerint null. Annak a beszélgetésnek az azonosítója, amelyhez hozzáadod a szavazást |
-| `title` | Szöveg, kötelező. A szavazás címe |
-| `poll_type` | Szöveg, kötelező. Lehetséges értékek: `proposal`, `poll`, `count`, `score`, `ranked_choice`, `meeting`, `dot_vote` |
-| `details` | Szöveg, nem kötelező. A szavazás leírása |
-| `details_format` | Szöveg, nem kötelező, alapértelmezés szerint `md`. Lehetséges értékek: `md` vagy `html` |
-| `options` | Szövegek tömbje. Ha a `poll_type` értéke `proposal`, az érvényes értékek: `agree`, `disagree`, `abstain`, `block`. Ha a `poll_type` értéke `meeting`, ISO 8601 formátumú dátumokat vagy dátumokat és időpontokat adj meg. Minden más szavazástípusnál bármilyen szöveg megadható |
-| `closing_at` | ISO 8601 formátumú szöveg vagy null, alapértelmezés szerint null. Példa: `2026-09-01T12:00:00Z`. Ha null, a szavazás le van tiltva, és a szavazás előkészítés alatt áll |
-| `specified_voters_only` | Logikai érték, nem kötelező, alapértelmezés szerint false. Ha true, csak a megadott személyek szavazhatnak. Ha false, a csoport minden tagja meghívást kap a szavazásra |
-| `hide_results` | Szöveg, nem kötelező, alapértelmezés szerint `off`. Lehetséges értékek: `off`, `until_vote`, `until_closed` |
-| `shuffle_options` | Logikai érték, alapértelmezés szerint false. A lehetőségeket véletlenszerű sorrendben jeleníti meg a szavazóknak |
-| `anonymous` | Logikai érték, nem kötelező, alapértelmezés szerint false. Elrejti a szavazók személyazonosságát |
-| `recipient_audience` | `group` vagy null, nem kötelező, alapértelmezés szerint null. Ha `group`, a teljes csoport értesítést kap |
-| `notify_on_closing_soon` | Szöveg, nem kötelező, alapértelmezés szerint `nobody`. Lehetséges értékek: `nobody`, `author`, `undecided_voters`, `voters` |
+| `group_id` | Egész szám, nem kötelező, alapértéke null. A szavazás csoportjának azonosítója. Ha megadod a `discussion_id` értékét, a `group_id` figyelmen kívül marad |
+| `discussion_id` | Egész szám, nem kötelező, alapértéke null. Annak a beszélgetési szálnak az azonosítója, amelyhez hozzáadod ezt a szavazást |
+| `title` | Karakterlánc, kötelező. A szavazás címe |
+| `poll_type` | Karakterlánc, kötelező. Értékei: `proposal`, `poll`, `count`, `score`, `ranked_choice`, `meeting`, `dot_vote` |
+| `details` | Karakterlánc, nem kötelező. A szavazás szövege |
+| `details_format` | Karakterlánc, nem kötelező, alapértéke `md`. Értékei: `md` vagy `html` |
+| `options` | Karakterláncok tömbje. Ha a `poll_type` értéke `proposal`, az érvényes értékek: `agree`, `disagree`, `abstain`, `block`. Ha a `poll_type` értéke `meeting`, adj meg ISO 8601 formátumú dátum- vagy dátum- és időkarakterláncokat. Minden más szavazástípusnál bármilyen karakterlánc érvényes |
+| `closing_at` | ISO 8601 formátumú karakterlánc vagy null, alapértéke null. Példa: `2026-09-01T12:00:00Z`. Ha null, nem lehet szavazni, és a szavazás még előkészítés alatt áll |
+| `specified_voters_only` | Logikai érték, nem kötelező, alapértéke false. Ha true, csak a megadott személyek szavazhatnak. Ha false, a csoport minden tagja meghívót kap a szavazásra |
+| `hide_results` | Karakterlánc, nem kötelező, alapértéke `off`. Értékei: `off`, `until_vote`, `until_closed` |
+| `shuffle_options` | Logikai érték, alapértéke false. A lehetőségeket véletlenszerű sorrendben jeleníti meg a szavazóknak |
+| `anonymous` | Logikai érték, nem kötelező, alapértéke false. Elrejti a szavazók személyazonosságát |
+| `recipient_audience` | `group` vagy null, nem kötelező, alapértéke null. Ha `group`, az egész csoport értesítést kap |
+| `notify_on_closing_soon` | Karakterlánc, nem kötelező, alapértéke `nobody`. Értékei: `nobody`, `author`, `undecided_voters`, `voters` |
 | `recipient_user_ids` | Az értesítendő vagy meghívandó felhasználók azonosítóinak tömbje |
 | `recipient_emails` | A szavazásra meghívandó személyek e-mail-címeinek tömbje |
-| `recipient_message` | Az e-mailes meghívóban szereplő üzenet |
-| `notify_recipients` | Logikai érték, alapértelmezés szerint false. Ha false, a személyek értesítés nélkül kerülnek hozzáadásra. Ha true, a kéréssel meghívott minden személy értesítő e-mailt kap |
+| `recipient_message` | Az e-mailes meghívóba kerülő üzenet |
+| `notify_recipients` | Logikai érték, alapértéke false. Ha false, értesítések küldése nélkül adja hozzá a személyeket. Ha true, mindenki, akit ebben a kérésben meghívsz, értesítő e-mailt kap |
 
 <!-- translation-section: example-12 -->
 
@@ -827,9 +827,9 @@ curl -H 'Authorization: Bearer YOUR_API_KEY' -X POST -H 'Content-Type: applicati
 
 <!-- translation-section: show-poll -->
 
-## Szavazás megtekintése
+## Szavazás lekérése
 
-Kérj le egy szavazást a számmal megadott azonosítója vagy a szöveges kulcsa alapján.
+Kérj le egy szavazást az egész számként megadott azonosítójával vagy a karakterláncként megadott kulcsával.
 
 `GET /api/b2/polls/:id`
 
@@ -845,7 +845,7 @@ curl -H 'Authorization: Bearer YOUR_API_KEY' https://www.loomio.com/api/b2/polls
 
 ## Szavazások listázása
 
-Listázd azokat a csoportbeli szavazásokat, amelyeket az API-kulcshoz tartozó felhasználó láthat. Nyilvánosan látható csoport esetén egy nem tag felhasználó is listázhatja a nyilvános szavazásokat. A privát szavazásokat csak azok érhetik el, akik a Loomióban is megtekinthetik őket. A válasz minden látható szavazás aktuális következtetését tartalmazza, így a `status=closed` használatával listázhatod a lezárt javaslatokat.
+Listázd egy csoportnak az API-kulcshoz tartozó felhasználó számára látható szavazásait. Nyilvánosan látható csoport esetén a csoporton kívüli felhasználó is listázhatja a nyilvános szavazásokat; a privát szavazásokhoz továbbra is csak azok a felhasználók férhetnek hozzá, akik a Loomióban is olvashatják őket. A válasz minden látható szavazás aktuális következtetését tartalmazza, így a `status=closed` használatával listázhatod azokat a javaslatokat, amelyekről már döntés született.
 
 `GET /api/b2/polls`
 
@@ -855,12 +855,12 @@ Listázd azokat a csoportbeli szavazásokat, amelyeket az API-kulcshoz tartozó 
 
 | Név | Leírás |
 | --- | --- |
-| `group_id` | Egész szám, kötelező. Annak a csoportnak az azonosítója, amelynek a szavazásait listázni szeretnéd |
-| `status` | Szöveg, nem kötelező, alapértelmezés szerint `active`. Lehetséges értékek: `active`, `closed`, `all` |
-| `limit` | Egész szám, nem kötelező, alapértelmezés szerint 50. Az oldal mérete |
-| `offset` | Egész szám, nem kötelező, alapértelmezés szerint 0. A lapozáshoz használt eltolás |
+| `group_id` | Egész szám, kötelező. Annak a csoportnak az azonosítója, amelynek a szavazásait listázod |
+| `status` | Karakterlánc, nem kötelező, alapértéke `active`. Értékei: `active`, `closed`, `all` |
+| `limit` | Egész szám, nem kötelező, alapértéke 50. Oldalméret |
+| `offset` | Egész szám, nem kötelező, alapértéke 0. A lapozás eltolása |
 
-Korábbi paraméterek: a `per` és a `from` továbbra is használható a `limit`, illetve az `offset` helyett.
+Korábbi paraméterek: a `per` és a `from` a `limit` és az `offset` alternatív neveként használhatók, és továbbra is működni fognak.
 
 <!-- translation-section: example-14 -->
 
@@ -874,7 +874,7 @@ curl -H 'Authorization: Bearer YOUR_API_KEY' 'https://www.loomio.com/api/b2/poll
 
 ## Szavazás szerkesztése
 
-Szerkessz egy szavazást az API-kulcshoz tartozó felhasználóként. Ugyanazok a jogosultságok érvényesek, mint a Loomióban: a felhasználónak jogosultnak kell lennie a szavazás szerkesztésére.
+Szerkessz egy szavazást az API-kulcshoz tartozó felhasználó nevében. Ugyanazok a jogosultságok érvényesek, mint a Loomióban: a felhasználónak jogosultnak kell lennie az adott szavazás szerkesztésére.
 
 `PATCH /api/b2/polls/:id`
 
@@ -884,15 +884,15 @@ Szerkessz egy szavazást az API-kulcshoz tartozó felhasználóként. Ugyanazok 
 
 | Név | Leírás |
 | --- | --- |
-| `title` | Módosított cím |
-| `details` | A szavazás módosított leírása |
-| `details_format` | `md` vagy `html`, nem kötelező, alapértelmezés szerint `md` |
-| `options` | A lehetőségek módosított nevei. A lehetőségek megváltoztatása a szavazás állapotától függően hatással lehet a már leadott szavazatokra |
-| `closing_at` | ISO 8601 formátumú szöveg vagy null |
-| `recipient_audience` | `group` vagy null. Ha `group`, a teljes csoport értesítést kap |
+| `title` | Frissített cím |
+| `details` | A szavazás frissített részletei |
+| `details_format` | `md` vagy `html`, nem kötelező, alapértéke `md` |
+| `options` | A lehetőségek frissített nevei. A lehetőségek módosítása a szavazás állapotától függően hatással lehet a meglévő szavazatokra |
+| `closing_at` | ISO 8601 formátumú karakterlánc vagy null |
+| `recipient_audience` | `group` vagy null. Ha `group`, az egész csoport értesítést kap |
 | `recipient_user_ids` | Az értesítendő vagy meghívandó felhasználók azonosítóinak tömbje |
 | `recipient_emails` | A szavazásra meghívandó személyek e-mail-címeinek tömbje |
-| `recipient_message` | Az e-mailes meghívóban szereplő üzenet |
+| `recipient_message` | Az e-mailes meghívóba kerülő üzenet |
 
 <!-- translation-section: example-15 -->
 
@@ -904,9 +904,9 @@ curl -H 'Authorization: Bearer YOUR_API_KEY' -X PATCH -H 'Content-Type: applicat
 
 <!-- translation-section: soft-delete-poll -->
 
-## Szavazás törlése visszaállítási lehetőséggel
+## Szavazás logikai törlése
 
-Törölj egy szavazást visszaállítási lehetőséggel az API-kulcshoz tartozó felhasználóként. A szavazás kikerül a használatból, de a rekordja megmarad.
+Törölj logikailag egy szavazást az API-kulcshoz tartozó felhasználó nevében. Ez töröltnek jelöli a szavazást, és megőrzi a szavazás rekordját.
 
 `DELETE /api/b2/polls/:id`
 
@@ -922,7 +922,7 @@ curl -H 'Authorization: Bearer YOUR_API_KEY' -X DELETE https://www.loomio.com/ap
 
 ## Tagságok listázása
 
-Listázd az API-kulcshoz tartozó felhasználó számára látható tagságokat. A csoporttagok láthatják a tagok nevét, azonosítóját, beosztását és szerepkörét. Az e-mail-címek csak az API-kulcshoz tartozó felhasználó saját fiókjánál jelennek meg, vagy akkor, ha a felhasználó a csoport adminisztrátora.
+Listázd az API-kulcs felhasználója számára látható tagságokat. A csoport tagjai láthatják a tagok nevét, azonosítóját, tisztségét és szerepkörét. Az e-mail-címek csak az API-kulcs felhasználójának saját fiókjánál szerepelnek, vagy akkor, ha az API-kulcs felhasználója a csoport adminisztrátora.
 
 `GET /api/b2/memberships`
 
@@ -932,7 +932,7 @@ Listázd az API-kulcshoz tartozó felhasználó számára látható tagságokat.
 
 | Név | Leírás |
 | --- | --- |
-| `group_id` | Egész szám, kötelező. Annak a csoportnak az azonosítója, amelynek a tagságait listázni szeretnéd |
+| `group_id` | Egész szám, kötelező. Annak a csoportnak az azonosítója, amelynek tagságait listázni szeretnéd |
 
 <!-- translation-section: example-17 -->
 
@@ -946,7 +946,7 @@ curl -H 'Authorization: Bearer YOUR_API_KEY' 'https://www.loomio.com/api/b2/memb
 
 ## Tagságok kezelése
 
-Küldj el egy e-mail-címeket tartalmazó listát. Az új címek tulajdonosai meghívást kapnak a csoportba. A tagságok listázásával ellentétben ehhez a művelethez csoportadminisztrátori jogosultság szükséges.
+Küldj egy listát az e-mail-címekről. A művelet minden új e-mail-címre meghívót küld a csoportba. A tagságok listázásától eltérően ehhez a művelethez csoportadminisztrátori jogosultság szükséges.
 
 `POST /api/b2/memberships`
 
@@ -956,9 +956,9 @@ Küldj el egy e-mail-címeket tartalmazó listát. Az új címek tulajdonosai me
 
 | Név | Leírás |
 | --- | --- |
-| `group_id` | Egész szám, kötelező. Annak a csoportnak az azonosítója, amelynek a tagságait kezelni szeretnéd |
-| `emails` | Szövegek tömbje, kötelező. A csoportba meghívandó személyek e-mail-címei |
-| `remove_absent` | Logikai érték. Ha true, eltávolítja a csoportból azokat, akiknek az e-mail-címe nem szerepel a listán |
+| `group_id` | Egész szám, kötelező. Annak a csoportnak az azonosítója, amelynek tagságait kezelni szeretnéd |
+| `emails` | Karakterláncok tömbje, kötelező. A csoportba meghívandó emberek e-mail-címei |
+| `remove_absent` | Logikai érték. Ha igaz, eltávolítja a csoportból mindazokat, akiknek az e-mail-címe nem szerepel a listában |
 
 <!-- translation-section: example-18 -->
 
@@ -968,10 +968,10 @@ Küldj el egy e-mail-címeket tartalmazó listát. Az új címek tulajdonosai me
 curl -H 'Authorization: Bearer YOUR_API_KEY' -X POST -H 'Content-Type: application/json' -d '{"group_id": 123, "emails":["person@example.com"]}' https://www.loomio.com/api/b2/memberships
 ```
 
-Ha megadod a `remove_absent=1` értéket, a rendszer eltávolítja a csoportból azokat a tagokat, akik nem szerepelnek a listán. Légy óvatos: akár a csoport összes tagját is eltávolíthatod.
+Ha megadod a `remove_absent=1` paramétert, a csoport minden olyan tagja eltávolításra kerül, aki nem szerepel a listában. Légy óvatos, mert akár mindenkit eltávolíthatsz a csoportodból.
 
 ```bash
 curl -H 'Authorization: Bearer YOUR_API_KEY' -X POST -H 'Content-Type: application/json' -d '{"group_id": 123, "emails":["person@example.com"], "remove_absent": 1}' https://www.loomio.com/api/b2/memberships
 ```
 
-A válasz egy objektum: `{added_emails: ["person@added.com"], removed_emails: ["person@removed.com"]}`.
+Ez egy objektumot ad vissza a következő tartalommal: `{added_emails: ["person@added.com"], removed_emails: ["person@removed.com"]}`.
