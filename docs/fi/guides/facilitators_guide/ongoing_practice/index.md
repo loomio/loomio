@@ -1,10 +1,10 @@
 ---
 title: Jatkuva toiminta
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/guides/facilitators_guide/ongoing_practice/index.md
+source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
+source_file: docs/en/guides/facilitators_guide/ongoing_practice/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-30'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 7bc759fcb1aad21e
   continuous-improvement: 63ab99fd05c7fe85
@@ -14,11 +14,11 @@ sections:
   culture-change: 22420d1e20a424ba
 generated:
   introduction: 46653b7dded8d557
-  continuous-improvement: 93ba72263c17028e
-  distributed-facilitation-self-facilitation: 0f4f8ca8bbc76f23
-  translating-this-into-loomio: a6846f88f1a0e0d7
-  the-art-of-being-facilitated: e6e9554f99ed33f6
-  culture-change: f8e8e69bb3319d1c
+  continuous-improvement: 0c256fcaaa09d16b
+  distributed-facilitation-self-facilitation: 4565d285e6296cdb
+  translating-this-into-loomio: '0724935410219daf'
+  the-art-of-being-facilitated: 57147e4232725411
+  culture-change: de80963f51a6e94e
 title_source: 98f1cbf7fd6448a5
 title_generated: 86d0608385309bd4
 ---
@@ -33,76 +33,76 @@ title_generated: 86d0608385309bd4
 
 ## Jatkuva parantaminen
 
-Ryhmä ja sen ohjaaja voivat aina kehittyä, vaikka he toimisivat jo hyvin. Pienet askeleet oikeaan suuntaan vievät eteenpäin. Jatkuva parantaminen edellyttää toimivaa tapaa keskustella siitä, miten teette yhteistyötä. Sen avulla voitte muuttaa toimintaanne. Ilman sitä kehitys pysähtyy.
+Vaikka ryhmä tai fasilitaattori olisi kuinka taitava, aina voi kehittyä. Pienet askeleet oikeaan suuntaan johtavat parempaan tilanteeseen. Asteittainen parantaminen edellyttää toimivaa käytäntöä yhteistyötavoista keskustelemiseen. Sen avulla kaikki on mahdollista. Ilman sitä kehitys pysähtyy.
 
-Jatkuvaa parantamista voi tehdä monella tavalla. Kaikissa tavoissa varataan aikaa toiminnan arvioinnille ja palautteelle sekä muutetaan toimintaa niiden pohjalta. Säännöllisesti yhdessä työskentelevä tiimi voi käyttää esimerkiksi <a href="https://en.wikipedia.org/wiki/Scrum_(software_development)" target="_blank">scrumia</a>, johon kuuluu jälkiarviointeja ja työtapojen säännöllistä kehittämistä. Yksittäisen tapaamisen jälkeen ohjaaja voi pyytää osallistujilta palautetta.
+Jatkuvaan parantamiseen on monia lähestymistapoja, mutta ne kaikki antavat tilaa pohdinnalle ja palautteelle sekä keinon tehdä muutoksia niiden perusteella. Jatkuvasti yhdessä työskentelevät tiimit voivat käyttää esimerkiksi <a href="https://en.wikipedia.org/wiki/Scrum_(software_development)" target="_blank">scrumia</a>, johon kuuluu toiminnan arviointia ja säännöllisiä toimintatapojen parannuksia. Yksittäisen tapaamisen jälkeen fasilitaattori voi yksinkertaisesti pyytää palautetta.
 
 Loomiossa
 
-* Loomion käyttäjät keskustelevat myös siitä, miten he käyttävät Loomiota. Se tarjoaa paikan keskustella keskustelutavoista.
-* Loomioon liittyminen saa ryhmät pohtimaan yhteistyötään ja päätöksentekoaan. Samalla syntyy tilaisuus parantaa niitä.
+* Ihmiset käyttävät Loomiota keskustellakseen siitä, miten he käyttävät Loomiota. Se tarjoaa luontevan paikan ”keskustella keskustelemisesta”.
+* Loomion käyttöönotto saa ryhmät pohtimaan yhteistyönsä ja päätöksentekonsa eri puolia, mikä luo mahdollisuuden parantaa niitä.
 
 <!-- translation-section: distributed-facilitation-self-facilitation -->
 
-## Jaettu ohjaaminen ja itseohjautuvuus
+## Hajautettu fasilitointi / itsefasilitointi
 
-Kun ryhmälle kertyy kokemusta, yhä useampi jäsen oppii ohjaamaan yhteistä työskentelyä. Ohjaamisen ei tarvitse olla yhden henkilön pysyvä tehtävä, vaan sitä voidaan jakaa. Kuka tahansa voi tehdä ohjaavia tekoja. Osallistujat voivat vuorotellen ottaa aloitteen ja antaa tilaa toisilleen. Tätä kannattaa tukea etenkin ryhmissä, jotka tavoittelevat jaettua johtajuutta ja tasavertaisuutta.
+Kun ryhmän kokemus karttuu, yhä useampi oppii fasilitoimaan. Fasilitointi voi muuttua tietylle henkilölle kuuluvasta roolista tehtäväksi, jonka voi jakaa. Kuka tahansa voi fasilitoida, ja osallistujien välille voi syntyä vuorottelua antamisen ja vastaanottamisen, johtamisen ja seuraamisen välillä. Tätä on erityisen tärkeää tukea ryhmissä, jotka tavoittelevat jaettua johtajuutta ja hierarkiattomuutta.
 
-Jos ohjaavat teot eivät ole jollekulle tuttuja, häntä voi tukea opastuksella, kutsumalla mukaan ja ehdottamalla helppoja ensimmäisiä askelia. Lähes ketä tahansa voi kannustaa kokeilemaan esimerkiksi seuraavia tekoja:
+Ihmisiä, joille fasilitointi on vieraampaa, voi tukea koulutuksella, kutsuilla ja ehdottamalla ensimmäisiä askelia. Tässä on esimerkkejä fasilitointiteoista, joita lähes ketä tahansa voi rohkaista kokeilemaan:
 
-* kerro omin sanoin, mitä kuulit, tai tee yhteenveto
-* kutsu muita osallistumaan
-* esitä kysymyksiä, jotka lisäävät yhteistä ymmärrystä
-* huomaa, ketkä osallistuvat ja ketkä eivät
-* osoita arvostusta muiden panokselle
+* kuulemasi kertominen omin sanoin tai sen tiivistäminen
+* muiden kutsuminen osallistumaan
+* yhteistä ymmärrystä lisäävien kysymysten esittäminen
+* sen huomaaminen, ketkä osallistuvat ja ketkä eivät
+* muiden panoksen arvostaminen ääneen
 
-> <img style="border-radius: 100%; float: right; margin-left: 0.5em; max-width: 96px; " src="../silvia_200.png"> Et tarvitse esityslistaa voidaksesi ohjata ryhmää. Ohjaaminen tarkoittaa sitä, että autat ryhmää toimimaan yhdessä. Kun olet seuraavan kerran perhejuhlassa, kutsuilla tai kahvitilaisuudessa, lähesty tilannetta ohjaajana. Huolehdi siitä, että jokainen tuntee kuuluvansa joukkoon ja voi osallistua. — Silvia Zuur
+> <img style="border-radius: 100%; float: right; margin-left: 0.5em; max-width: 96px; " src="../silvia_200.png"> Et tarvitse esityslistaa toimiaksesi fasilitaattorina. Fasilitoinnissa on kyse ryhmän toiminnan helpottamisesta. Kun seuraavan kerran olet sukutapaamisessa, juhlissa tai aamukahvilla, lähesty tilannetta fasilitaattorina ja varmista, että jokainen ryhmässä tuntee kuuluvansa joukkoon ja voivansa osallistua. — Silvia Zuur
 
-Jaettu ohjaaminen voi toimia hyvin, mutta osallistujat voivat myös toimia toistensa päälle. Aluksi yhteisen rytmin löytäminen voi olla hankalaa. On tärkeää erottaa toisistaan jaettu ohjaaminen (vertaiset auttavat ryhmää), ryhmän ohjailu oman tavoitteen hyväksi sekä ohjaamiseen puuttuminen ilman siihen annettua valtuutusta.
+Hajautettu fasilitointi voi toimia hyvin, mutta se voi myös johtaa siihen, että ihmiset puuttuvat toistensa tekemisiin. Aluksi toiminta voi olla kömpelöä, kun yhteistä rytmiä vasta opetellaan. On tärkeää erottaa toisistaan hajautettu fasilitointi (vertaiset auttavat koko ryhmää), fasilitoinniksi naamioitu manipulointi (ryhmän ohjaaminen omien tavoitteiden suuntaan) ja sivusta ohjaaminen (fasilitointi ilman siihen saatua valtuutusta).
 
-Harkitse, milloin vertaisten jakama ohjaaminen sopii tilanteeseen ja milloin tarvitaan nimetty ohjaaja. Jaettu ohjaaminen ei välttämättä toimi esimerkiksi silloin, kun kiistanalaiseen keskusteluun tarvitaan puolueeton ohjaaja tai osallistujien välillä ei ole luottamusta.
+Päätä tietoisesti, milloin vertaisfasilitointi on hyvä valinta ja milloin tarvitaan nimetty fasilitaattori. Hajautettu fasilitointi ei välttämättä toimi esimerkiksi voimakkaiden ristiriitojen sävyttämässä keskustelussa, johon tarvitaan nimetty puolueeton henkilö, tai tilanteessa, jossa luottamus puuttuu.
 
-> <img style="border-radius: 100%; float: right; margin-left: 0.5em; max-width: 96px; " src="../rich_200.png"> Ohjaavat teot eivät kuulu vain johtajalle tai kokouksen koolle kutsuneelle. Ne kuuluvat kaikille. — Richard Bartlett
+> <img style="border-radius: 100%; float: right; margin-left: 0.5em; max-width: 96px; " src="../rich_200.png"> Fasilitointi ei kuulu vain esihenkilölle tai kokouksen koollekutsujalle — se kuuluu kaikille. — Richard Bartlett
 
 <!-- translation-section: translating-this-into-loomio -->
 
-## Miten tämä näkyy Loomiossa
+## Soveltaminen Loomiossa
 
-* Verkkotila sopii erityisen hyvin jaettuun ohjaamiseen. Eri ihmiset voivat osallistua eri vaiheissa sen mukaan, mitä he huomaavat ja mitä he osaavat.
-* Verkkokeskustelu on lähtökohtaisesti vertaisten yhteistä toimintaa. Muunlainen työnjako täytyy suunnitella erikseen. Kasvokkaisessa tapaamisessa taas joku yleensä kutsuu kokouksen koolle, ja ohjaamisen jakaminen vaatii omaa aloitetta.
-* Loomio on suunniteltu tasavertaiselle ryhmälle. Jaettu ohjaaminen sopii siksi monella tavalla sen käyttöön.
-* Loomion käyttäjät ohjaavat toisiaan jatkuvasti, vaikka eivät aina ajattele tekevänsä niin. Ehdotuksen tekemisen ehdottaminen, ihmisten merkitseminen ja tähänastisen keskustelun tiivistäminen ovat kaikki ohjaavia tekoja.
+* Verkkoympäristö sopii erityisen hyvin hajautettuun fasilitointiin. Eri ihmiset voivat osallistua eri vaiheissa sen mukaan, mitä he huomaavat ja mitä he osaavat.
+* Verkkokeskustelu on lähtökohtaisesti vertaisten välistä hajautettua yhteistyötä. Muut järjestelyt edellyttävät tietoista suunnittelua. Kasvokkaisissa tapaamisissa lähtökohta on päinvastainen: joku on kutsunut kokouksen koolle, ja roolin jakaminen vaatii oma-aloitteisuutta.
+* Loomio on suunniteltu tasavertaisten ihmisten muodostamille ryhmille. Hajautettu fasilitointi sopii monin tavoin parhaiten työkalun käyttöön.
+* Loomion käyttäjät harjoittavat vertaisfasilitointia jatkuvasti riippumatta siitä, tunnistavatko he toimintansa sellaiseksi. Yksinkertaiset teot, kuten ehdotuksen tekemisen ehdottaminen jollekulle, ihmisten mainitseminen tai tähänastisen prosessin tiivistäminen, ovat kaikki fasilitointia.
 
 <!-- translation-section: the-art-of-being-facilitated -->
 
-## Ohjattavana olemisen taito
+## Fasilitoitavana olemisen taito
 
-Kuten paritanssissa seuraaminen, myös ohjattavana oleminen on taito. Ihmiset, jotka ovat itse ohjanneet ryhmiä tai osallistuneet hyvin ohjattuun työskentelyyn, voivat suhtautua ohjaukseen eri tavalla kuin ne, joille se ei ole tuttua.
+Fasilitoitavana oleminen on oma taitonsa, aivan kuten seuraajan rooli paritanssissa. Ihmiset, jotka ovat itse fasilitoineet tai osallistuneet moniin hyvin fasilitoituihin prosesseihin, suhtautuvat fasilitointiin eri tavalla kuin ne, joilla ei ole tällaista kokemusta.
 
-Kyky ottaa ohjausta vastaan kehittyy harjoittelemalla, ja sillä voi olla suuri vaikutus ryhmän onnistumiseen. Kyse voi olla niinkin yksinkertaisista asioista kuin ajoissa saapumisesta ja ohjeiden seuraamisesta. Se voi myös tarkoittaa valmiutta kokeilla uutta tapaa ajatella tai viestiä. Joskus osallistujilla on hyvä kokemus, mutta he eivät tiedä tarkalleen miksi. Kun kerrot, miten ohjaaminen auttoi työskentelyä sujumaan tai syvensi keskustelua, he voivat ymmärtää paremmin, mitä arvostivat.
+Fasilitoinnin vastaanottaminen on taito, jota voi kehittää ja jolla voi olla suuri vaikutus ryhmän onnistumiseen. Se ulottuu yksinkertaisista asioista, kuten ajoissa saapumisesta ja ohjeiden noudattamisesta, halukkuuteen kokeilla uudenlaista ajattelu- tai viestintätapaa. Joskus ihmisillä on hyvä kokemus, mutta he eivät oikein tiedä miksi. Kun heille kertoo, että fasilitointi auttoi toimintaa sujumaan tai keskustelua syvenemään, he voivat ymmärtää paremmin, mitä he prosessissa arvostivat.
 
-Jos osallistujat eivät pysty tai halua ottaa ohjausta vastaan, ryhmän yhteistyö voi vaikeutua. Taitavakaan ohjaaja ei voi tehdä työtään, jos vastustus on liian suurta. Tavallisia ongelmia ovat keskustelun hallitseminen, jatkuva vastaan väittäminen, työskentelyn häiritseminen, ohjaajan tai muiden osallistujien epäkunnioittava kohtelu sekä vetäytyminen. Jokaisen on osaltaan otettava vastuuta siitä, että on valmis ottamaan ohjausta vastaan.
+Ihmiset, jotka eivät pysty tai halua olla fasilitoitavina, voivat puolestaan haitata ryhmän yhteistyötä. Taitavinkaan fasilitaattori ei pysty tekemään työtään, jos vastustus on liian voimakasta. Tavallisia ongelmia ovat keskustelun hallitseminen, vastustaminen vain vastustamisen vuoksi, prosessin häiritseminen, fasilitaattorin tai osallistujien epäkunnioittava kohtelu ja osallistumatta jättäminen. Jokaisen on osaltaan otettava vastuu halukkuudestaan olla fasilitoitavana.
 
 Loomiossa
 
-* Pienellä harjoittelulla useimmat käyttäjät oppivat nopeasti vastaamaan ohjaaviin tekoihin Loomiossa, esimerkiksi silloin, kun heidät mainitaan @-merkillä.
-* Kun ohjaat muita Loomiossa, opit myös itse ottamaan ohjausta paremmin vastaan.
-* Koska kaikki säilyy arkistossa, käyttäjät voivat nähdä aiempia ohjaavia tekoja jälkikäteen ja oppia niistä, vaikka eivät olisi olleet paikalla.
+* Pienellä harjoittelulla useimmat käyttäjät oppivat nopeasti reagoimaan fasilitointiin Loomiossa, esimerkiksi vastaamaan, kun heidät mainitaan @-merkillä.
+* Fasilitointi Loomiossa auttaa ihmisiä myös itse vastaanottamaan fasilitointia paremmin.
+* Koska kaikki arkistoidaan, käyttäjät voivat tarkastella aiempaa fasilitointia ”ajassa pysäytettynä” ja oppia siitä, vaikka eivät olleet itse paikalla.
 
 <!-- translation-section: culture-change -->
 
 ## Kulttuurin muutos
 
-Yhteistyöhön ja osallistumiseen perustuva kulttuuri syntyy ajan myötä harjoittelemalla sekä kokeilemalla, mikä toimii. Ohjaamisen ymmärtäminen, arvostaminen ja siihen kannustaminen voivat olla tärkeä osa tätä kehitystä. Ohjaaminen voi muuttua yksittäisen henkilön tehtävästä yhteiseksi toiminnaksi ja lopulta ajattelutavaksi. Aidosti yhteistyöhön perustuvassa kulttuurissa kaikki auttavat toisiaan osallistumaan monin tavoin.
+Yhteistyöhön ja osallistumiseen perustuva kulttuuri syntyy ajan mittaan harjoittelun, kokeilujen ja virheistä oppimisen kautta. Fasilitoinnin ymmärtäminen, arvostaminen ja siihen kutsuminen voivat olla keskeisiä tämän kulttuurin syntymisessä. Fasilitointi voi kehittyä roolista tehtäväksi ja edelleen ajattelutavaksi. Aidosti yhteistyöhön perustuvassa kulttuurissa kaikki fasilitoivat toisiaan monin eri tavoin.
 
-Voivatko kaikki osallistua yrityksen juhlaan? Syntyvätkö toimiston yhteiset nyyttikestit itsestään? Voivatko ideat tulla keneltä tahansa, kehittyä monen ihmisen käsissä ja toteutua paremmin kuin kukaan aluksi kuvitteli?
+Voivatko kaikki osallistua yrityksen juhlien järjestämiseen? Syntyvätkö toimiston nyyttikestit kuin itsestään? Voivatko ideat tulla keneltä tahansa, kehittyä monien ihmisten ajatusten ja työn kautta ja toteutua paremmin kuin kukaan aluksi osasi kuvitella?
 
-Syvällinen kulttuurin muutos näkyy siinä, että yhteistyö ulottuu sille varattujen tilanteiden ulkopuolelle organisaation kaikkeen toimintaan. Yhteistyö on muutakin kuin muistilappuja ja kuulumiskierroksia: se näkyy siinä, miten organisaatiossa eletään ja työskennellään.
+Syvä kulttuurin muutos tapahtuu, kun yhteistyön kulttuuri alkaa levitä erillisistä ”yhteistyön” tiloista organisaation kaikille osa-alueille. Yhteistyö ei rajoitu muistilappuihin ja kuulumiskierroksiin, vaan se näkyy organisaation koko arjen luonteessa.
 
 Loomiossa
 
-* [Loomion muutosteorian](http://www.loomio.com/about) mukaan tehokasta ja kaikki mukaan ottavaa päätöksentekoa harjoittavat ryhmät voivat muuttaa organisaatioiden toimintaa maailmanlaajuisesti. Tämä ajatus näkyy Loomion suunnittelussa ja siinä, [miten toimimme osuuskuntana](http://loomio.coop). Tavoitteena on muuttaa kulttuuria tekemällä yhteistyötä käytännössä.
-* Loomio-ryhmät ovat kokeneet kulttuurinsa kehittyvän työkalun avulla. Yhteistyöhön perustuva ryhmä on voinut kasvaa ja säilyttää toimintatapansa. Osallistava ryhmä on voinut jatkaa toimintaansa, vaikka kaikkien mukaan ottava päätöksenteko on ollut haastavaa.
-* Loomio auttaa tekemään yhteistyöhön perustuvista toimintatavoista tavallisia, koska niiden käyttäminen on helpompaa.
+* [Loomion muutosteorian](http://www.loomio.com/about) mukaan yhä useampien ryhmien harjoittama tehokas ja kaikki mukaan ottava päätöksenteko voi muuttaa organisaatioiden toimintaa maailmanlaajuisesti. Tämä näkyy työkalun kaikessa suunnittelussa ja [siinä, miten toimimme osuuskuntana](http://loomio.coop). Pohjimmiltaan kyse on kulttuurin muuttamisesta yhteistyön käytäntöjen avulla.
+* Loomiota käyttävät ryhmät ovat kokeneet kulttuurinsa kehittyvän työkalun avulla. Esimerkiksi ryhmät, joilla on jo yhteistyöhön perustuva kulttuuri, ovat voineet kasvaa ja säilyttää sen. Osallistumiseen perustuvat ryhmät ovat puolestaan voineet jatkaa toimintaansa sen sijaan, että ne hajoaisivat kaikkien osallistumisen mahdollistavaan päätöksentekoon liittyvien haasteiden vuoksi.
+* Loomio mahdollistaa yhteistyön käytäntöjen muodostumisen eräänlaiseksi ”uudeksi normaaliksi” tekemällä niistä helpommin lähestyttäviä ja toteutettavia.
 
-Jos haluat lisää esimerkkejä jatkuvasta toiminnasta, lue [Loomio-ryhmien tarinoita](https://blog.loomio.com/?utm_campaign=facilitators_guide_help&utm_term=help).
+Saat ideoita jatkuvaan toimintaan lukemalla [Loomiota käyttävien ryhmien tarinoita](https://blog.loomio.com/?utm_campaign=facilitators_guide_help&utm_term=help).

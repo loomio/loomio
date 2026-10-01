@@ -1,6 +1,6 @@
 ---
 title: Ehdotukset
-source_revision: 9c60c42fc739483fa23f15d9f34a1e9245518092
+source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
 source_file: docs/en/user_manual/polls/proposals/index.md
 translated:
   provider: codex/gpt-6.1-sol
@@ -11,10 +11,10 @@ sections:
   other-proposal-templates: 21ac5a295b8832ab
   proposal-records: ef0d886d3db7a5d1
 generated:
-  introduction: bb73a5b680db5fda
-  choose-a-proposal-template: bb41fe865ffb864e
-  other-proposal-templates: 060774f77d1947bd
-  proposal-records: a9fb726e77e49f47
+  introduction: 254857cd681a0819
+  choose-a-proposal-template: 0a189836514cbc87
+  other-proposal-templates: 0a6fa061a2455b7b
+  proposal-records: 434138d15486a949
 title_source: 834cfc1ee23734e1
 title_generated: b4570fda2785d575
 ---
@@ -23,33 +23,33 @@ title_generated: b4570fda2785d575
 
 # Ehdotukset
 
-Ehdotuksessa pyydetään ihmisiä ottamaan kantaa väitteeseen tai toimintatapaan. Osallistujat valitsevat vastausvaihtoehdon ja voivat perustella äänensä. Ehdotuksella voit kerätä palautetta, pyytää neuvoja, tunnistaa vastalauseita tai selvittää, onko asiasta yhteisymmärrys.
+Ehdotus pyytää ihmisiä ottamaan kantaa väitteeseen tai toimintatapaan. Osallistujat valitsevat ennalta määritellyn vastausvaihtoehdon ja voivat perustella äänensä. Käytä ehdotusta palautteen keräämiseen, neuvojen pyytämiseen, vastaväitteiden tunnistamiseen tai kannatuksen selvittämiseen.
 
-Tässä osiossa opit valitsemaan ja käyttämään Loomion oletusarvoisia ehdotusmalleja. Jos haluat käydä läpi koko päätöksentekoprosessin keskustelusta ehdotuksiin, muutoksiin ja lopputulokseen, tutustu [päätöksenteko-oppaisiin](/en/guides/making_decisions/). Jos haluat muuttaa ryhmäsi käytettävissä olevia malleja, katso [Kyselymallit](../poll_templates/).
+Tämä osio auttaa sinua valitsemaan ja käyttämään Loomion oletusarvoisia ehdotusmalleja. Kun haluat käydä läpi koko prosessin keskustelusta ehdotuksiin, muutosehdotuksiin ja johtopäätökseen, käytä [päätöksenteko-oppaita](/en/guides/making_decisions/). Jos haluat muuttaa ryhmäsi käytettävissä olevia malleja, katso [Kyselymallit](../poll_templates/).
 
 <!-- translation-section: choose-a-proposal-template -->
 
 ## Valitse ehdotusmalli
 
-| Malli | Mitä siinä kysytään | Käytä, kun… |
+| Malli | Mitä se kysyy | Käytä sitä, kun… |
 |---|---|---|
-| [Suunnan tarkistus](sense_check/) | Ollaanko oikealla tiellä? | Ideaa kehitetään vielä |
-| [Neuvojen pyytäminen](advice/) | Mitä neuvoja päätöksentekijän tulisi ottaa huomioon? | Päätös on henkilön tai tiimin vastuulla |
-| [Suostumus](consent/) | Voidaanko tätä turvallisesti kokeilla, vai onko sille painava vastalause? | Ryhmä tekee päätöksiä suostumuksen perusteella |
-| [Konsensus](consensus/) | Mikä on kantasi tähän ehdotukseen? | Ryhmä pyrkii yhteiseen päätökseen |
+| [Tunnustelu](sense_check/) | Onko suunta oikea? | Ideaa kehitetään vielä |
+| [Neuvot](advice/) | Mitä neuvoja päätöksentekijän tulisi ottaa huomioon? | Henkilö tai tiimi vastaa päätöksestä |
+| [Suostumus](consent/) | Onko tätä turvallista kokeilla, vai onko siihen perusteltu vastaväite? | Ryhmä käyttää suostumukseen perustuvaa päätöksentekoa |
+| [Konsensus](consensus/) | Mikä on kantasi tähän ehdotukseen? | Ryhmä etsii yhteisesti hyväksyttävää ratkaisua |
 
 ![](proposal_templates_list.png)
 
-Valitse malli, jonka vastausvaihtoehdot sopivat kysymykseesi. Kunkin mallin sivulla kerrotaan, mihin sitä käytetään sekä miten se otetaan käyttöön, miten sillä äänestetään ja miten tuloksia tarkastellaan.
+Valitse malli, jonka vastausvaihtoehdot sopivat kysymykseen, johon tarvitset vastauksen. Kunkin mallin sivulla kerrotaan sen käyttötarkoituksista, asetuksista, äänestyslomakkeesta ja tuloksista.
 
 <!-- translation-section: other-proposal-templates -->
 
 ## Muut ehdotusmallit
 
-Loomiossa on myös malleja, kuten Ehdotus, Yhteisymmärryksen asteet ja Enemmistö. Osa niistä on aluksi piilotettu. Ryhmän ylläpitäjät voivat ottaa ne käyttöön tai luoda ryhmän omiin termeihin ja sääntöihin sopivan mallin kohdassa [Kyselymallit](../poll_templates/).
+Loomio tarjoaa myös muita malleja, kuten Ehdotus, Kannatuksen asteet ja Enemmistö. Osa on aluksi piilotettu. Ryhmän ylläpitäjät voivat ottaa ne käyttöön tai luoda ryhmän omiin termeihin ja sääntöihin sopivan mallin [Kyselymallit](../poll_templates/)-sivulla.
 
 <!-- translation-section: proposal-records -->
 
 ## Ehdotuksen dokumentointi
 
-Äänet ja perustelut päivittyvät ehdotuksen ollessa avoinna, ja osallistujat voivat muuttaa vastaustaan. Kun ehdotus sulkeutuu, julkaise [lopputulos](../outcomes/), jossa kerrot päätöksen tai seuraavan vaiheen. Keskustelu, ehdotus, äänet, perustelut ja lopputulos dokumentoivat, miten ryhmä päätyi päätökseensä.
+Äänet ja perustelut päivittyvät ehdotuksen ollessa avoinna, ja osallistujat voivat muuttaa vastaustaan. Kun ehdotus on suljettu, julkaise [johtopäätös](../outcomes/), jossa kerrot päätöksen tai seuraavan vaiheen. Keskustelu, ehdotus, äänet, perustelut ja johtopäätös dokumentoivat, miten ryhmä päätyi päätökseensä.

@@ -1,10 +1,10 @@
 ---
 title: Valmistelu
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/guides/facilitators_guide/preparation/index.md
+source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
+source_file: docs/en/guides/facilitators_guide/preparation/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-30'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 71d321ba45b2f805
   understand-purpose: a5a6600eac7b2d16
@@ -18,17 +18,17 @@ sections:
   power: b5f6b4ebd477c97c
   responsiveness: 4038185f64c37fac
 generated:
-  introduction: 612e7bc084739673
-  understand-purpose: 68948a62cf49822b
-  rearrange-the-furniture: 0c511af583ed8ae3
-  supplies-tools-materials: 4e8ae7fb9b0cab2c
-  design-the-experience: 246d174243759635
-  contextualise-the-moment: b4f0e9c2722f07c3
-  the-role-of-the-facilitator: 5e8d33a02318226d
-  consent: f7126cc8b57a80eb
-  responsibility: 76a12024d4fa97e5
-  power: 384f69c5ba782b00
-  responsiveness: 56a3334406b47b97
+  introduction: 397361ef4af82299
+  understand-purpose: 3e00ee081487b652
+  rearrange-the-furniture: e532655a87601b22
+  supplies-tools-materials: 6df8c1e60ece4568
+  design-the-experience: c8d00a445e67be84
+  contextualise-the-moment: aec78e8eaf15e01b
+  the-role-of-the-facilitator: 7004ca4302da8acb
+  consent: 19a924312f741e61
+  responsibility: d4747f915bc1d9d4
+  power: 7fff2ac6a6d2e5ba
+  responsiveness: e5c736693253d324
 title_source: cf2befb0f1a62829
 title_generated: f44c77db0868c584
 ---
@@ -39,7 +39,7 @@ title_generated: f44c77db0868c584
 
 ![](cover.jpg)
 
-> <img style="border-radius: 100%; float: right; margin-left: 0.5em; max-width: 96px; " src="../silvia_200.png"> Harkitse kolmen minuutin suunnittelua jokaista ryhmän kanssa viettämääsi minuuttia kohti. Tunnin tapaamiseen valmistautuminen veisi silloin kolme tuntia. Vähennä suunnitteluun käyttämääsi aikaa vasta kokemuksen karttuessa.
+> <img style="border-radius: 100%; float: right; margin-left: 0.5em; max-width: 96px; " src="../silvia_200.png"> Varaa jokaista ryhmän kanssa vietettävää minuuttia varten 3 minuuttia suunnitteluun. Tämä tarkoittaa kolmen tunnin valmistelua tunnin mittaista tapaamista varten. Vähennä suunnitteluun käyttämääsi aikaa vasta taitojesi kehittyessä.
 >
 > — Silvia Zuur
 
@@ -47,114 +47,117 @@ title_generated: f44c77db0868c584
 
 ## Ymmärrä tarkoitus
 
-Tarkoituksen selventäminen on yksi tärkeimmistä asioista, joissa taitava fasilitaattori voi auttaa ryhmää. Kun tarkoitus on selvä, myös muu työ on mahdollista. Tarkoitus koskee sekä koko ryhmää että yksittäisiä keskusteluja ja päätöksiä. Sen avulla voi arvioida, mitä työkaluja kannattaa käyttää, milloin keskusteluun pitää puuttua ja mihin tuloksiin pyritään. Jos ryhmällä ei ole yhteistä käsitystä tarkoituksesta, keskustelu tai jopa koko ryhmän toiminta voi kariutua.
+Tarkoituksen selkeyttäminen on yksi arvokkaimmista asioista, joita taitava fasilitaattori voi tarjota — jos hän auttaa ryhmää määrittämään sen, kaikki muu on mahdollista. Tarkoitus koskee sekä koko ryhmää että yksittäisiä keskusteluja ja päätöksiä. Sen perusteella voidaan arvioida, mitä työkaluja käytetään, miten työskentelyyn puututaan ja millaisiin johtopäätöksiin pyritään. Yhteisen ymmärryksen puuttuminen tarkoituksesta voi vaarantaa keskustelun tai koko ryhmän toiminnan.
 
-> Palaa aina kysymyksiin, joilla selvitit tarkoitusta. Tarkista niiden avulla, että käsittelette asioita, joita osallistujat haluavat oppia tai saavuttaa. — Silvia Zuur
+> Palaa aina tarkoitusta selvittäviin kysymyksiisi ja tarkista, että käsittelet asioita, joita osallistujat haluavat oppia tai saavuttaa. — Silvia Zuur
 
 Loomiossa
 
-* Sovelluksessa tarkoituksen voi kuvata esimerkiksi [ryhmän kuvauksessa](/en/user_manual/groups/starting_a_group/#group-description) ja [keskustelun taustatiedoissa](/en/user_manual/discussions/using_discussions/#discussion-context).
-* Jos ryhmän tarkoitus ei ole vielä selvä, aloita siitä *keskustelu* Loomiossa.
-* Käyttötilastojemme mukaan ryhmät, joilla on selkeä yhteinen tarkoitus, onnistuvat paremmin.
-* Keräämämme [asiakastarinat ja tapausesimerkit](https://blog.loomio.com/?utm_campaign=facilitators_guide_help&utm_term=help) korostavat yhteisen tarkoituksen määrittelyn merkitystä.
+* Sovelluksessa on tilaa tarkoituksen selittämiselle, esimerkiksi [ryhmän kuvauksen](/en/user_manual/groups/starting_a_group/#group-description) ja [keskustelun kontekstin](/en/user_manual/discussions/using_discussions/#discussion-context) kentissä.
+* Loomiossa käytävä keskustelu *tarkoituksesta* on hyvä tapa aloittaa ryhmäsi kanssa, jos tarkoitus ei ole vielä selvä.
+* Analytiikkamme (tilastot siitä, miten ihmiset käyttävät ohjelmistoa) osoittaa, että ryhmät, joilla on selkeä yhteinen tarkoitus, onnistuvat paremmin.
+* Keräämämme [asiakastarinat ja tapaustutkimukset](https://blog.loomio.com/?utm_campaign=facilitators_guide_help&utm_term=help) korostavat yhteisen tarkoituksen määrittämisen merkitystä.
 
 <!-- translation-section: rearrange-the-furniture -->
 
-## Järjestä tila tarkoitukseen sopivaksi
+## Järjestä kalusteet uudelleen
 
-Tapa, jolla järjestät osallistujille yhteisen tilan, vaikuttaa paljon heidän kokemukseensa. Jokainen kokoontuminen on erilainen ja tarvitsee siihen sopivat puitteet. Tuttu ympäristö luo turvallisuuden tunnetta, kun taas ympäristön muuttaminen voi avata tilaa uusille ajatuksille.
+Sen tilan suunnittelu, johon kutsut ihmiset, vaikuttaa merkittävästi heidän kokemukseensa. Jokainen kokoontuminen on erilainen ja tarvitsee siihen sopivat järjestelyt. Tuttuus luo turvallisuuden tunnetta, kun taas ympäristön muuttaminen kannustaa avoimuuteen uusille ajatuksille.
 
-Kasvokkaisissa tapaamisissa huonekalujen järjestäminen uudelleen auttaa fasilitaattoria valmistautumaan tilanteeseen ja pohtimaan, mikä juuri tässä tapaamisessa on olennaista. Ajattele, miten erilaiselta tuntuu istua riveissä kuin piirissä.
+Fyysisissä tiloissa kalusteiden järjestäminen uudelleen auttaa fasilitaattoria valmistautumaan työskentelyn tukemiseen ja pohtimaan, mikä juuri tässä tapaamisessa on erityistä. Kuvittele, miten tilanne muuttuu sen mukaan, istuvatko kaikki riveissä vai piirissä.
 
 Loomiossa
 
-* Kun kutsut ihmiset uuteen digitaaliseen tilaan nimenomaan päätöksentekoa varten, he siirtyvät selvästi erilaiseen ympäristöön kuin esimerkiksi yhdessäoloon käytetyissä verkkotiloissa.
-* [Ryhmän kuvan muokkaaminen](/en/user_manual/groups/starting_a_group/#upload-a-group-photo) auttaa luomaan tilaan sopivan tunnelman.
-* Ryhmän kuvaus on keskeinen osa ryhmäsivua, ja [voit muokata sitä](/en/user_manual/groups/starting_a_group/#group-description) tarpeen mukaan.
+* Ihmisten kutsuminen uuteen digitaaliseen tilaan nimenomaan päätöksentekoa varten on vaikuttavaa — kokemus ”kynnyksen ylittämisestä” erottaa sen muista verkkotiloista, joita saatetaan käyttää seurusteluun tai muihin tarkoituksiin.
+* [Ryhmän kuvan muokkaaminen](/en/user_manual/groups/starting_a_group/#upload-a-group-photo) tarjoaa hyvän tilaisuuden vaikuttaa tilan tunnelmaan.
+* Ryhmän kuvaus on yksi ryhmäsivun keskeisistä ”kalusteista”, ja [voit muokata sitä](/en/user_manual/groups/starting_a_group/#group-description) tarpeisiisi sopivaksi.
 
 <!-- translation-section: supplies-tools-materials -->
 
-## Tarvikkeet, työkalut ja aineistot
+## Tarvikkeet, työkalut ja materiaalit
 
-Kun fasilitointi sujuu hyvin, kaikki ryhmän tarvitsemat tarvikkeet ovat käden ulottuvilla. Kasvokkaisissa tapaamisissa niitä voivat olla muistilaput, kynät, paperi, nimilaput, tulosteet ja tausta-aineistot. Hyvä valmistautuminen jättää enemmän aikaa ja energiaa itse työhön.
+Kun fasilitointi sujuu hyvin, kaikki ryhmän tarvitsemat tarvikkeet ovat käden ulottuvilla. Fyysisissä tiloissa näitä ovat esimerkiksi muistilaput, kynät, paperi, nimilaput, tulosteet ja taustamateriaalit. Jokainen tällainen valmistelutoimi jättää enemmän aikaa ja energiaa itse työskentelyyn.
 
 Loomiossa
 
-* Monet ryhmät lisäävät ryhmän kuvaukseen linkkejä yhteiseen dokumenttikansioon, taustatietoihin, projektinhallinta- tai tehtäväjärjestelmään ja yhteystietoihin.
-* Mieti jokaisen keskusteluketjun kohdalla, mitä osallistujat tarvitsevat voidakseen osallistua. Tuo tiedot helposti saataville. Jos esimerkiksi viittaat johonkin aineistoon, lisää siihen suora linkki sen sijaan, että osallistujien pitäisi etsiä se itse.
+* Monet ryhmät lisäävät ryhmän kuvaukseen linkkejä yhteiseen verkkolevyyn, jossa on yhdessä työstettäviä asiakirjoja ja taustatietoja, ryhmän projektinhallinta- tai tehtävien seurantajärjestelmään, yhteystietoluetteloon ja muihin materiaaleihin.
+* Mieti jokaisen ketjun kohdalla, mitä ihmiset saattavat tarvita osallistuakseen siihen — kaikkien tietojen on oltava helposti saatavilla (jos esimerkiksi viittaat johonkin, suora linkki siihen toimii paljon paremmin kuin oletus, että ihmiset etsivät sen itse).
 
 <!-- translation-section: design-the-experience -->
 
-## Suunnittele osallistumiskokemus
+## Suunnittele kokemus
 
-Kun tarkoitus, työkalut ja taustatiedot ovat selvillä, hyvä fasilitaattori miettii, millaiseen tilanteeseen hän kutsuu osallistujat. Hän pohtii, miltä onnistuminen voisi näyttää ja mitä eri etenemistapoja ja valintoja on tarjolla. Hän ei aloita ilman harkittua suunnitelmaa.
+Kun perusasiat ovat paikoillaan (tarkoitus, työkalut ja taustatiedot), hyvät fasilitaattorit käyttävät aikaa kutsumansa kokemuksen suunnitteluun: millainen tilanne on, miltä onnistuminen voisi näyttää ja mitä etenemisreittejä ja valintoja on tarjolla. He eivät aloita ilman harkittua suunnitelmaa.
 
-Olemme nähneet yhä uudelleen, että valmisteluun ja suunnitteluun tarvittava aika aliarvioidaan selvästi. Pysähdy miettimään, millaisen kokemuksen haluat järjestää, ennen kuin aloitat. Suunnitteluun käytetty aika maksaa itsensä takaisin myöhemmin.
+Olemme nähneet toistuvasti, että ihmiset aliarvioivat huomattavasti valmistelun ja suunnittelun tarpeen. Pysähdy miettimään kokemusta, jonka haluat järjestää, ennen kuin aloitat. Suunnitteluun käytetty aika maksaa itsensä moninkertaisesti takaisin myöhemmän onnistumisen kautta.
+
 
 Loomiossa
 
-* Loomion perustoiminnot noudattavat hyvän fasilitoinnin rakennetta: kutsu ihmiset mukaan, keskustele aiheesta, kerää erilaisia näkemyksiä, muotoile niistä ehdotus, selvitä kannatus ja vahvista lopputulos.
+* Loomion perustoiminnot on suunniteltu noudattamaan hyvän fasilitoinnin rakennetta: kutsu ihmiset mukaan, keskustele aiheesta, kerää erilaisia näkemyksiä, muotoile niiden pohjalta konkreettinen ehdotus, selvitä, ovatko osallistujat samaa mieltä, ja vahvista johtopäätös.
+
 
 ![](../collaboration-process.png)
 
-* Kokeneet käyttäjät sovittavat Loomiota jo erilaisiin prosesseihin, kuten monivaiheisiin kuulemisiin ja asiakirjojen hyväksymiseen. Hyvin fasilitoituna kullakin tehtävällä on oma toistettava rakenteensa.
-* Verkkoyhteistyötä ei tarvitse suunnitella alusta asti uudelleen. Hyödynnä toimiviksi havaitsemiasi käytäntöjä. Monet kasvokkaisissa tapaamisissa käytetyt menetelmät voi sovittaa verkkoon, esimerkiksi [neuvonpyyntöprosessin](/en/guides/making_decisions/advice_process.html).
-* Huolellisesti suunniteltujen prosessien [tapausesimerkit](https://blog.loomio.com/?utm_campaign=facilitators_guide_help&utm_term=help) voivat toimia malleina. Jos et ole varma, miten prosessi kannattaa suunnitella, katso ensin, mitä muut ovat kokeilleet.
+* Kokeneet käyttäjät soveltavat Loomiota jo erilaisiin työskentelykokonaisuuksiin, kuten monivaiheisiin kuulemisprosesseihin ja asiakirjojen hyväksymiseen. Tehokkaasti fasilitoituna jokainen tehtävä saa tietyn toistettavan muodon.
+* Verkkoyhteistyön suunnittelussa ei tarvitse keksiä pyörää uudelleen. Luota siihen, minkä tiedät toimivan, ja sovella sitä. Monet käytännössä hyväksi todetut kasvokkaisen työskentelyn prosessit voidaan mukauttaa verkkoon (esimerkiksi [neuvonantoprosessi](/en/guides/making_decisions/advice_process.html)).
+* Huolellisesti suunniteltujen prosessien [tapaustutkimuksia](https://blog.loomio.com/?utm_campaign=facilitators_guide_help&utm_term=help) voi käyttää ”resepteinä” — jos et ole varma, millainen suunnitelma sopii tilanteeseesi, tutustu ensin siihen, mitä muut ovat kokeilleet.
 
 <!-- translation-section: contextualise-the-moment -->
 
-## Huomioi tilanne
+## Aseta tilanne osaksi kokonaisuutta
 
-Keskustelut ovat osa ryhmän historiaa ja toimintatapoja. Jotta fasilitointi toimisi, sen ajoituksen on oltava sopiva ja sen on sovittava ryhmän muuhun toimintaan.
+Keskustelut eivät tapahdu tyhjiössä, vaan osana ryhmän historiaa ja toimintatapoja. Jotta fasilitoitu työskentely olisi vaikuttavaa, sen ajoituksen on oltava oikea ja sen on sovittava ryhmän muuhun toimintaan.
 
 Keskeisiä kysymyksiä tilanteesta:
 
-* Onko ryhmä muutoksen keskellä?
-* Kehittääkö tämä nykyistä toimintatapaa?
-* Onko tämä yksi monista samanaikaisista prosesseista vai ryhmän ainoa painopiste?
-* Haluammeko ratkaista ongelman vai tarkastella asiaa syvemmin, laajemmin tai rajatummin?
+* Onko meneillään siirtymävaihe?
+* Parannetaanko nykyistä toimintatapaa?
+* Onko tämä yksi monista samanaikaisista prosesseista vai keskitytäänkö vain tähän?
+* Olemmeko ratkaisemassa ongelmaa vai syventämässä, laajentamassa tai rajaamassa tarkastelua?
 
 Loomiossa
 
-* Loomio-ryhmissä on lähes aina joku, joka tuntee ryhmän tilanteen ja arvioi, kannattaako Loomio ottaa käyttöön.
-* Älä yritä muuttaa kaikkea kerralla. Ryhmät ottavat Loomion helpommin käyttöön, kun se sopii nykyisiin työnkulkuihin.
-* Oikea hetki on silloin, kun ryhmä on valmis hyödyntämään verkkoyhteistyötä. Ryhmän on tunnistettava, että siltä puuttuu yhteinen tila päätöksentekoon verkossa, ja haluttava ratkaista tämä ongelma.
-* Mieti, milloin ryhmällä on aikaa ja huomiota käsitellä tiettyä aihetta. Yhteinen huomio on rajallinen voimavara.
-* Monet ryhmät eivät ole edes tietoisia nykyisistä yhteistyötavoistaan, saati siitä, miten Loomio voisi sopia niihin. Aloita keskustelemalla siitä, miten ryhmä nyt toimii ja mikä toimii tai ei toimi.
+* Loomio-ryhmissä on lähes aina ”edistäjä”, joka ymmärtää ryhmän tilanteen ja arvioi, sopiiko Loomion käyttöönotto ryhmälle.
+* Kaikkea ei kannata yrittää muuttaa kerralla. Ryhmät omaksuvat Loomion paremmin, kun se sopii sujuvasti nykyisiin työnkulkuihin.
+* Ajoitus on hyvä silloin, kun ryhmä on valmis ottamaan verkkoyhteistyön osaksi toimintaansa tehokkaasti. Ryhmän on tunnistettava verkkopäätöksentekoon tarkoitetun tilan puuttumisesta aiheutuvat vaikeudet ja oltava motivoitunut ratkaisemaan tämä ongelma.
+* Pohdi, mihin ryhmän huomio kohdistuu, kun arvioit sopivaa hetkeä tietyn aiheen esiin nostamiseen. Yhteinen huomio on rajallinen voimavara.
+* Monet ryhmät eivät edes tunnista nykyisiä yhteistyötapojaan ja tottumuksiaan, saati tiedä selvästi, miten Loomio voisi sopia niihin. Aloita keskustelemalla nykyisistä toimintatavoista ja siitä, mikä toimii ja mikä ei.
 
 <!-- translation-section: the-role-of-the-facilitator -->
 
 ## Fasilitaattorin rooli
 
-Hyvä fasilitointi edellyttää tietoisuutta omasta ja ryhmän toiminnasta. Jos roolia ei ymmärretä, seurauksena voi olla väärinkäsityksiä, ristiriitoja tai turvattomia tilanteita.
+Hyvä fasilitointi edellyttää tietoisuutta omasta ja ryhmän toiminnasta. Roolin puutteellinen ymmärtäminen voi johtaa väärinkäsityksiin, ristiriitoihin tai turvattomiin tilanteisiin.
 
-> Pyydä, että sinulle annetaan selkeästi valtuudet toimia. Kun sinut kutsutaan uuteen ryhmään tai organisaatioon, osallistujat voivat miettiä: Kuka tämä on? Miksi kuuntelisimme häntä? Pyydä jotakuta osallistujien tuntemaa ja luottamaa henkilöä esittelemään sinut. Se auttaa osallistujia hyväksymään roolisi ja siirtämään sinulle tarvittavat valtuudet. — Silvia Zuur
+> Varmista, että valta annetaan sinulle. Kun sinut kutsutaan uuteen ryhmään tai organisaatioon, kaikki saattavat miettiä: Kuka tämä tyyppi on? Miksi meidän pitäisi kuunnella häntä? Pyydä jotakuta, jonka osallistujat tuntevat ja johon he luottavat, esittelemään sinut. Tämä vahvistaa asemaasi osallistujien silmissä ja auttaa siirtämään valtaa sinulle. — Silvia Zuur
 
 <!-- translation-section: consent -->
 
 ### Suostumus
-On tärkeää, että ryhmä suostuu fasilitointiin. Ilman suostumusta fasilitointi voi pahimmillaan painostaa ryhmää ja asettaa fasilitaattorin vaaralliseen asemaan. Se herättää myös vastustusta ja hämmennystä. Fasilitaattori asettaa itsensä haavoittuvaan asemaan, joten hän tarvitsee ryhmän valtuutuksen ennen tehtävän vastaanottamista. Suostumus on tärkeä sekä fasilitaattorille että osallistujille.
+On olennaista, että ryhmä suostuu fasilitointiin. Fasilitoinnin yrittäminen ilman suostumusta voi pahimmillaan olla pakottavaa (epäreilua ryhmälle) ja vaarallista (epäreilua fasilitaattorille), ja se aiheuttaa vastustusta ja hämmennystä. Fasilitaattorit asettavat itsensä haavoittuvaan asemaan. Heillä on oltava ryhmän valtuutus, tai heidän ei pitäisi ottaa tehtävää vastaan. Suostumus on välttämätön sekä fasilitaattorille että osallistujille.
 
 <!-- translation-section: responsibility -->
 
 ### Vastuu
-Kun fasilitaattori ottaa tehtävän vastaan, hänen vastuunsa kasvaa. Hän voi käyttää muita enemmän puheenvuoroja ja ohjata ryhmän huomiota. Tätä asemaa on käytettävä koko ryhmän hyväksi, ei oman tavoitteen ajamiseen. Fasilitaattorin sanoilla ja käytöksellä on tavallista suurempi vaikutus, joten hänen on toimittava erityisen harkiten.
+Kun fasilitaattori ottaa valtuutuksen vastaan, hänen vastuunsa kasvaa. Fasilitaattorilla on enemmän oikeutta käyttää puheaikaa ja ohjata ryhmän huomiota. Tätä on käytettävä koko ryhmän hyväksi, ei omien tavoitteiden ajamiseen. Myös fasilitaattorin sanat ja käytös vaikuttavat tavallista voimakkaammin, joten hänen on toimittava erityisen harkitusti.
 
 <!-- translation-section: power -->
 
 ### Valta
-Fasilitointi tuo väistämättä mukanaan eroja vallankäytössä. Fasilitaattori ei voi hoitaa tehtäväänsä, ellei hänellä ole tarvittavia valtuuksia. Hän voi esimerkiksi keskeyttää puhujan pitääkseen keskustelun aiheessa tai puuttua sopimattomaan vuorovaikutukseen. Fasilitaattorilta ei voi odottaa vastuuta prosessista antamatta hänelle valtaa onnistua tehtävässään. Sopivalle vallan määrälle ei ole yhtä vastausta, mutta sen on oltava tasapainossa vastuun kanssa.
+Fasilitointi luo luonteensa vuoksi eroja vallan jakautumiseen. Jos fasilitaattori ei voi käyttää valtaa tietyillä tavoilla, hän ei voi tehdä työtään. Esimerkiksi pitääkseen keskustelun aiheessa fasilitaattori saattaa keskeyttää jonkun tai sanoa, ettei tietty tapa olla vuorovaikutuksessa ole hyväksyttävä. Fasilitaattorin ei pidä odottaa kantavan vastuuta työskentelystä ilman, että hänelle annetaan onnistumiseen tarvittavat valtuudet. Vallan määrään ei ole yhtä oikeaa vastausta, mutta sen on oltava tasapainossa vastuun kanssa.
 
 <!-- translation-section: responsiveness -->
 
-### Mukautuminen
-Fasilitaattori onnistuu parhaiten, kun hän pystyy mukautumaan tilanteen muuttuessa. Ihmiset ovat monimutkaisia, ja ryhmien toiminta on vielä monimutkaisempaa. Joustamaton pitäytyminen suunnitelmassa tai toimintamallissa voi johtaa epäonnistumiseen. Jos fasilitaattori ei saa tai halua mukautua muuttuviin olosuhteisiin, hän ei voi tukea ryhmän toimintaa tehokkaasti.
+### Mukautumiskyky
+Fasilitaattorit tekevät parasta työtä silloin, kun he pystyvät mukautumaan tilanteen kehittymiseen. Ihmiset ovat loputtoman monimutkaisia, ja ihmisryhmät vielä monin verroin monimutkaisempia. Jäykkä pitäytyminen suunnitelmassa tai menettelyssä ilman joustavuutta voi johtaa ryhmän epäonnistumiseen. Jos fasilitaattori ei saa tai halua mukautua muuttuviin olosuhteisiin, hän ei pysty tukemaan muuttuvissa tilanteissa toimivia ihmisiä tehokkaasti.
 
-> Siirry tietoisesti fasilitaattorin ja osallistujan roolien välillä. Monen on vaikea fasilitoida oman tiiminsä kokouksia ja työpajoja. Fasilitaattorin on oltava puolueeton, mutta tiimin jäsenellä on myös arvokkaita näkemyksiä jaettavana. Tee selväksi, milloin toimit fasilitaattorina ja milloin osallistujana. — Silvia Zuur
+> Pue fasilitaattorin hattu päähän ja ota se välillä pois. Monille on haastavaa fasilitoida oman tiiminsä kokouksia ja työpajoja. Fasilitaattorina heidän on oltava puolueettomia. Tiimin jäseninä heillä on kuitenkin arvokkaita näkemyksiä jaettavana. Tee selväksi, milloin toimit fasilitaattorina ja milloin osallistujana. — Silvia Zuur
+
 
 Loomiossa
 
-* Monet Loomiota käyttävät ryhmät tuntevat fasilitoinnin ja jakavat käsityksen fasilitaattorin roolista. Ne osaavat jo sovittaa työkalua tarpeisiinsa.
-* Usein keskustelun aloittajan oletetaan myös fasilitoivan sitä, ellei ryhmä ole sopinut muuta. Kun fasilitaattorin rooli on selvä, osallistujien on helpompi toimia turvallisesti ja saavuttaa tavoitteensa yhdessä.
-* Loomio mahdollistaa sen, että useat osallistujat tekevät fasilitointiin kuuluvia asioita: kutsuvat muita mukaan mainitsemalla heidät, pyytävät pysymään aiheessa tai ehdottavat sopivaa hetkeä ehdotukselle. Tätä ei kuitenkaan usein sanota ääneen. Roolia selventää, kun ryhmä nimeää nämä tehtävät ja keskustelee siitä, kuuluvatko ne yhdelle henkilölle vai jakautuvatko ne osallistujien kesken.
-* Verkossa toimiva ryhmä voi aloittaa ilman nimettyä fasilitaattoria ja jakaa tehtävät hiljaisesti osallistujien kesken. Tämä tapa sopii kuitenkin parhaiten kokeneille ryhmille, jotka ovat jo harjoitelleet selkeästi määriteltyä fasilitointia.
+* Monilla Loomiota käyttävillä ryhmillä on kokemusta fasilitoinnista ja yhteinen käsitys fasilitaattorin roolista. Ne soveltavat jo työkalua näihin tarpeisiin ja ovat onnistuneet siinä jossain määrin.
+* Keskustelun aloittajan oletetaan usein fasilitoivan sitä, ellei ryhmässä ole sovittu toisin. Selkeys siitä, kuka fasilitoi, voi parantaa huomattavasti kaikkien turvallisuuden tunnetta ja työskentelyn onnistumista.
+* Loomio luo luontevasti mahdollisuuksia hajautettuun fasilitointiin: käyttäjät voivat esimerkiksi mainita muita kutsuakseen heidät mukaan, pyytää pysymään aiheessa tai ehdottaa sopivaa ajankohtaa ehdotukselle. Tämä jää kuitenkin usein sanomatta. Fasilitointiin kuuluvien toimien nimeäminen ja keskustelu siitä, onko rooli keskitetty vai jaettu, voivat selkeyttää roolia.
+* Hiljainen, hajautettu fasilitointi voi olla verkkoryhmän oletusarvoinen lähtökohta (eli fasilitoinnista ei keskustella erikseen nimettynä roolina). Tämä järjestely sopii kuitenkin parhaiten kokeneille ryhmille, jotka ovat siirtymässä selkeästi määritellystä fasilitoinnista eteenpäin.

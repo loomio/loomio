@@ -1,10 +1,10 @@
 ---
 title: Asiakirjojen säilyttäminen
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/guides/board_processes/admin.md
+source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
+source_file: docs/en/guides/board_processes/admin.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-30'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 7e0918fea08824e3
   administering-discussions: 699ce8bcbf899559
@@ -14,31 +14,31 @@ sections:
   archiving-records: cd0b9c1553b7a49a
   data-storage: 55bc08c1977d3468
 generated:
-  introduction: bc5210944f98293e
-  administering-discussions: d6abbd6e1d98d435
-  category-tags: 8fb0b4fb7da8d37c
-  maintaining-the-discussion-topic: 816f2ca650e0d621
-  subgroups: 8a2093107e2ce81e
-  archiving-records: 7d6da2fa9d51c715
-  data-storage: 314c63862c325b81
+  introduction: ff05e85cdc29b72d
+  administering-discussions: 535bf057c26ab9f3
+  category-tags: e40be453ae27402b
+  maintaining-the-discussion-topic: 4cbfd03c2319c17e
+  subgroups: d0f70c0903c12e3e
+  archiving-records: 92668ab1c5567545
+  data-storage: 3841cdbfcddd00ff
 title_source: ce2fe2e6d832376c
 title_generated: 0737d2c834626d30
 ---
 
 <!-- translation-section: introduction -->
 
-# Hallinnointi ja asiakirjojen säilyttäminen
+# Hallinto ja asiakirjojen säilyttäminen
 
-Hallinnointi ja tarkastusta varten säilytettävät asiakirjat ovat tärkeitä hallituksellesi tai toimikunnallesi. Niiden säilyttäminen on usein myös lakisääteinen velvollisuus.
+Hallinnon hoitaminen ja asiakirjojen asianmukainen säilyttäminen tarkastuksia varten on hallitukselle tai toimikunnalle tärkeää ja usein myös lakisääteinen velvollisuus.
 
-Sähköiset asiakirjat korvaavat yhä useammin paperiset asiakirjat.
+Sähköiset asiakirjat korvaavat yhä useammin vaatimuksen paperisista asiakirjoista.
 
-Digitaalisilla työkaluilla hallituksesi voi kuitenkin tehdä paljon muutakin kuin arkistoida kokouspöytäkirjoja.
+Digitaalisten työkalujen avulla hallituksesi voi kuitenkin tehdä paljon muutakin kuin arkistoida kokouspöytäkirjoja.
 
-Kehitä hallituksesi toimintaa:
+Uudista hallituksesi toimintaa:
 
-*”Hallituksemme ryhmä on muuttanut toimintaamme merkittävästi. Se mahdollistaa jatkuvan hallinnoinnin, nopeuttaa reagointia ja parantaa ketteryyttämme, sopeutumiskykyämme ja kestävyyttämme… Loomio säästää meiltä tuhansia puntia joka vuosi”*
-- Austen Cordasco, Co-operative Assistance Network Limited (CAN), yritystukipalvelut, Yhdistynyt kuningaskunta
+*”Hallituksemme ryhmä on muuttanut toimintaamme merkittävästi: se mahdollistaa jatkuvan hallintotyön, nopeuttaa reagointia ja lisää ketteryyttämme, muutoskestävyyttämme ja toimintamme kestävyyttä… Loomio säästää meille tuhansia puntia joka vuosi”*
+- Austen Cordasco, Co-operative Assistance Network Limited (CAN), yritysten tukipalvelut, Yhdistynyt kuningaskunta
 
 Katsotaan, miten voit järjestää työtä, hallinnoida keskusteluja, pitää tiedot turvassa ja säilyttää asiakirjoja Loomiossa.
 
@@ -46,27 +46,27 @@ Katsotaan, miten voit järjestää työtä, hallinnoida keskusteluja, pitää ti
 
 ## Keskustelujen hallinnointi
 
-Loomiossa on useita keskustelujen hallinnointiin tarkoitettuja toimintoja. Löydät ne keskustelun oikealla puolella olevasta pudotusvalikosta.
+Loomiossa on useita keskustelujen hallinnointia helpottavia toimintoja. Löydät ne keskustelun oikealla puolella olevasta avattavasta valikosta.
 
 Pidä keskusteluluettelo ajan tasalla näillä toiminnoilla:
 
-- **Kiinnitä keskustelu** pitää tärkeät keskustelut luettelon alussa
-- **Muokkaa lankaa** muuttaa keskustelun otsikkoa tai päivittää sen taustatietoja
-- **Siirrä ryhmään** siirtää keskustelun toiseen ryhmään, alaryhmään tai arkistoryhmään
-- **Lukitse ketju** estää uudet kommentit ja muutokset sekä poistaa ketjun avoimien ketjujen luettelosta. Löydät lukitut ketjut keskustelusuodattimella ja hakupalkista. Voit avata ne uudelleen milloin tahansa.
-- **Poista keskustelu** poistaa keskustelun, jos et halua säilyttää sitä. Poistettua keskustelua ei voi palauttaa.
+- **Kiinnitä keskustelu**, kun haluat pitää tärkeät keskustelut luettelon kärjessä
+- **Muokkaa lankaa**, kun haluat muuttaa keskustelun otsikkoa tai päivittää keskustelun kontekstia
+- **Siirrä ryhmään**, kun haluat siirtää keskustelun toiseen ryhmään tai alaryhmään tai arkistoryhmään.
+- **Lukitse ketju**, kun haluat estää uudet kommentit ja muutokset sekä poistaa ketjun avointen ketjujen luettelosta. Löydät lukitut ketjut keskustelusuodattimen ja hakupalkin kautta, ja voit avata niiden lukituksen milloin tahansa.
+- **Poista keskustelu**, kun et halua säilyttää keskustelua. Huomaa, että poistettuja keskusteluja ei voi palauttaa.
 
 ![](thread_admin.png#width-90)
 
 <!-- translation-section: category-tags -->
 
-## Luokkatunnisteet
+## Luokittelutunnisteet
 
-Luokkatunnisteiden avulla keskustelut on helppo löytää. Määritä tunnisteet ja lisää niitä keskusteluihin johdonmukaisesti.
+Tunnisteilla voit luokitella keskusteluja, jotta ne löytyvät helposti. Määritä tunnisteet ja lisää niitä keskusteluihin johdonmukaisesti.
 
-Hallituksen tavallisia tunnisteita ovat esimerkiksi Hallinto, vuosikokous, hallituksen kokous, raportti, talous, lakiasiat, jäsenet, pöytäkirjat, suunnittelu, toimintaperiaatteet, päätökset, säännöt, yleiskokous ja strategia.
+Hallitusten tavallisia tunnisteita ovat esimerkiksi: Hallinto, Vuosikokous, Hallituksen kokous, Raportti, Talous, Lakiasiat, Jäsenet, Pöytäkirjat, Suunnittelu, Toimintaperiaatteet, Päätös, Säännöt, Yleiskokous ja Strategia.
 
-Ryhmän jäsenet voivat hakea keskusteluja tunnisteen perusteella **Tunnisteet**-pudotusvalikosta.
+Ryhmän jäsenet voivat etsiä keskusteluja tunnisteen perusteella **tunnisteet**-valikosta.
 
 ![](thread_tags.png#width-90)
 
@@ -74,9 +74,9 @@ Ryhmän jäsenet voivat hakea keskusteluja tunnisteen perusteella **Tunnisteet**
 
 ## Keskustelun pitäminen aiheessa
 
-Keskustelu toimii parhaiten kaikille, kun se pysyy yhdessä aiheessa.
+Keskustelut toimivat kaikkien kannalta parhaiten, kun ne pysyvät yhdessä aiheessa.
 
-Jos keskustelussa nousee esiin uusi aihe, voit valita ja siirtää siihen liittyvät kommentit toiseen keskusteluun tai aloittaa uuden keskustelun.
+Jos keskustelun keskellä nousee esiin uusi aihe, voit valita yksittäisiä kommentteja ja siirtää ne toiseen keskusteluun tai aloittaa uuden keskustelun.
 
 ![](thread_comments_move.png#width-90)
 
@@ -84,7 +84,7 @@ Jos keskustelussa nousee esiin uusi aihe, voit valita ja siirtää siihen liitty
 
 ## Alaryhmät
 
-Alaryhmät auttavat järjestämään viestintää ja jäseniä niin, että oikeat ihmiset voivat työskennellä yhdessä. Voit esimerkiksi perustaa alaryhmän alatoimikunnalle tai työryhmälle.
+Alaryhmät auttavat järjestämään viestintää ja jäseniä niin, että oikeat ihmiset osallistuvat yhteiseen työhön. Voit käyttää alaryhmää esimerkiksi alatoimikunnan tai työryhmän työskentelyyn.
 
 [Alaryhmien perustaminen.](/en/user_manual/groups/subgroups)
 
@@ -92,20 +92,20 @@ Alaryhmät auttavat järjestämään viestintää ja jäseniä niin, että oikea
 
 ## Asiakirjojen arkistointi
 
-Säilytä ketjun keskustelu ja kyselyissä tehdyt päätökset käyttämällä toimintoa **[Tulosta ketju](/en/user_manual/groups/data_export#print-thread-to-pdf)** ja tulostamalla tiedosto PDF-muotoon. Voit sitten tallentaa ketjun julkaistun kopion valitsemaasi asiakirja-arkistoon.
+Voit säilyttää ketjun keskustelun ja kyselyissä tehdyt päätökset valitsemalla **[Tulosta ketju](/en/user_manual/groups/data_export#print-thread-to-pdf)** ja tulostamalla tiedoston PDF-muotoon. Voit sitten tallentaa ketjun julkaistun kopion valitsemaasi asiakirja-arkistoon.
 
-Säilytä kaikki Loomio-ryhmäsi tiedot käyttämällä toimintoa **[Vie ryhmän tiedot](/en/user_manual/groups/data_export#group-data-backup-or-export)**.
+Voit säilyttää kaikki Loomio-ryhmäsi tiedot valitsemalla **[Vie ryhmän tiedot](/en/user_manual/groups/data_export#group-data-backup-or-export)**.
 
 <!-- translation-section: data-storage -->
 
 ## Tietojen tallennus
 
-Loomion pilvipalvelut suojaavat tietojasi tallentamalla ne heti useille levyille, varmuuskopioimalla ne päivittäin ja säilyttämällä niitä useassa sijainnissa.
+Loomion pilvipalvelut suojaavat tietojasi tallentamalla ne välittömästi useille levyille, varmuuskopioimalla ne päivittäin ja säilyttämällä niitä useissa sijainneissa.
 
-Ketjujen, kommenttien, kyselyjen ja liitetiedostojen tiedot tallennetaan tällä tavalla.
+Kaikki ketjujen, kommenttien, kyselyjen ja liitetiedostojen tiedot tallennetaan näin.
 
-Näet ketjuihin liitetyt tiedostot myös Tiedostot-välilehdellä.
+Ketjuihin liitetyt tiedostot näkyvät myös Tiedostot-välilehdellä.
 
 ![](files_tab.png#width-90)
 
-[Lue lisää Loomion tietoturvasta. ](/en/policy/security)
+[Lisätietoja Loomion tietoturvasta.]( /en/policy/security)

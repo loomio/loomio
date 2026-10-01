@@ -1,16 +1,16 @@
 ---
 title: Ryhmän poistaminen
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/groups/deleting_your_group/index.md
+source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
+source_file: docs/en/user_manual/groups/deleting_your_group/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: d1fb3691890a02b6
   group-data-is-permanently-deleted-after-90-days: e2074e63cb56c4cd
 generated:
-  introduction: e42a43be6c5aa7cc
-  group-data-is-permanently-deleted-after-90-days: e95394d78a9d7d67
+  introduction: 906cbe79633f036f
+  group-data-is-permanently-deleted-after-90-days: ce895144390c895e
 title_source: 9a0868f49f1262ea
 title_generated: cb896766b9865ab0
 ---
@@ -19,32 +19,32 @@ title_generated: cb896766b9865ab0
 
 # Ryhmän poistaminen
 
-Kun poistat Loomio-ryhmäsi, käynnistät prosessin, jossa kaikki ryhmän tiedot poistetaan pysyvästi.
+Loomio-ryhmäsi poistaminen käynnistää prosessin, jossa kaikki ryhmän tiedot poistetaan pysyvästi.
 
-Jos haluat säilyttää tietoja, [vie ryhmän tiedot](/en/user_manual/groups/data_export/) ja lataa käsin kaikki tärkeät tiedostot, jotka olet ladannut ryhmään, ennen kuin jatkat.
+Jos haluat säilyttää tietoja, varmista, että [viet ryhmän tiedot](/en/user_manual/groups/data_export/) ja lataat käsin kaikki tärkeät lataamasi tiedostot ennen kuin jatkat.
 
-Avaa ryhmän pudotusvalikko napsauttamalla kolmea pistettä ja valitse **Poista ryhmä**. Ryhmään ei sen jälkeen enää pääse, ja kaikkien sen tietojen poistaminen rekistereistämme käynnistyy. Ryhmän poistaminen edellyttää ylläpitäjän oikeuksia.
+Avaa ryhmän pudotusvalikko napsauttamalla kolmea pistettä ja valitse **Poista ryhmä**, jolloin pääsy ryhmään estetään ja kaikkien ryhmän tietojen poistaminen rekistereistämme käynnistyy. Sinun on oltava ylläpitäjä, jotta voit poistaa ryhmän.
 
-Kun poistat ryhmän, se katoaa näkyvistä heti ja sen tiedot poistetaan pysyvästi 90 päivän kuluttua. Sinä ja ryhmän jäsenet menetätte pääsyn ryhmään heti. Jos poistit ryhmän vahingossa, ota meihin yhteyttä 90 päivän kuluessa ja pyydä sen palauttamista.
+Kun poistat ryhmän, se katoaa näkyvistä heti ja poistetaan pysyvästi 90 päivän kuluttua. Sinä ja ryhmän jäsenet menetätte pääsyn ryhmään heti. Jos poistit ryhmän vahingossa, ota meihin yhteyttä 90 päivän kuluessa poistamisesta ja pyydä ryhmän palauttamista.
 
-Poistoa odottava ryhmä ja sen alaryhmät eivät ole jäsenten eivätkä ylläpitäjien käytettävissä. Niitä ei voi tarkastella, niihin ei voi osallistua eikä niiden tietoja voi viedä. Myöskään tallennetuista linkeistä avatut kyselyt eivät ole käytettävissä. Jäsenet eivät voi luoda tai muokata sisältöä, äänestää, lähettää ilmoituksia tai muistutuksia eivätkä hyväksyä kutsuja. Vie ryhmän tiedot ja lataa tärkeät tiedostot ennen poistamisen vahvistamista. Suorat keskustelut ja kyselyt säilyvät ennallaan.
+Jäsenet ja koordinaattorit eivät voi tarkastella poistamista odottavia ryhmiä tai niiden alaryhmiä, osallistua niiden toimintaan tai viedä niiden tietoja. Tämä koskee myös tallennetuista linkeistä avattuja kyselyjä. Jäsenet eivät voi luoda tai muokata sisältöä, äänestää, lähettää tiedotteita tai muistutuksia eivätkä hyväksyä kutsuja. Vie ryhmän tiedot ja lataa tärkeät tiedostot ennen kuin vahvistat poistamisen. Poistaminen ei vaikuta suoriin keskusteluihin eikä kyselyihin.
 
-Kun ryhmä ajoitetaan poistettavaksi, ryhmän ja sen alaryhmien lähettämistä odottavat toimintailmoitukset ja kyselymuistutukset perutaan. Jo lähetyksessä olevat viestit voivat silti saapua perille.
+Ryhmän ajastaminen poistettavaksi pysäyttää ryhmän ja sen alaryhmien lähettämistä odottavat toimintailmoitukset ja kyselymuistutukset. Viestit, joiden lähettäminen on jo alkanut, voivat silti saapua.
 
-Varoitussähköpostissa kerrotaan ryhmän alaryhmien, jäsenten, keskustelujen, kyselyiden ja kommenttien määrät. Jos haluat säilyttää ryhmän tai [viedä sen tiedot](/en/user_manual/groups/data_export/), vastaa viestiin 90 päivän kuluessa, jotta pääsy ryhmään voidaan palauttaa ennen sen poistamista.
+Varoitussähköposti sisältää ryhmän alaryhmien, jäsenten, keskustelujen, kyselyjen ja kommenttien lukumäärät. Jos haluat säilyttää ryhmän tai [viedä sen tiedot](/en/user_manual/groups/data_export/), vastaa 90 päivän kuluessa, jotta pääsy ryhmään voidaan palauttaa ennen poistamista.
 
-Ryhmän poistaminen päättää myös Loomio-tilauksesi.
+Ryhmän poistaminen peruuttaa myös Loomio-tilauksesi.
 
-![Poista ryhmä -toiminto Oatmilk Cooperative -ryhmän valikossa](group_delete_group.png)
+![Poista ryhmä -toiminto Oatmilk Cooperativen valikossa](group_delete_group.png)
 
-Vahvista poistaminen kirjoittamalla ryhmäsi nimi (*isot ja pienet kirjaimet on kirjoitettava täsmälleen oikein*).
+Sinua pyydetään kirjoittamaan ryhmäsi nimi (*isot ja pienet kirjaimet erotellaan*) vahvistaaksesi, että haluat poistaa ryhmän.
 
-![Vahvistuslomake, johon on kirjoitettava Oatmilk Cooperative -ryhmän tunnus](group_delete_group_confirm.png)
+![Vahvistuslomake, joka edellyttää Oatmilk Cooperativen tunnusta](group_delete_group_confirm.png)
 
 <!-- translation-section: group-data-is-permanently-deleted-after-90-days -->
 
 ## Ryhmän tiedot poistetaan pysyvästi 90 päivän kuluttua
 
-Kaikki keskusteluketjut, kyselyt, tiedostot ja muu ryhmän sisältö poistetaan pysyvästi 90 päivän kuluttua. ***Poistamista ei voi perua.***
+90 päivän kuluttua kaikki ketjut, kyselyt, tiedostot ja muu ryhmän sisältö poistetaan pysyvästi. ***Poistamista ei voi perua!***
 
-Suosittelemme, että [viet ryhmän tiedot](/en/user_manual/groups/data_export/)ja lataat käsin kaikki tärkeät tiedostot, jotka olet ladannut ryhmään, ennen kuin jatkat.
+Suosittelemme, että [viet ryhmän tiedot](/en/user_manual/groups/data_export/) ja lataat käsin kaikki tärkeät lataamasi tiedostot ennen kuin jatkat.

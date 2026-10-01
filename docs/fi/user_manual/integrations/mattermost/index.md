@@ -1,14 +1,14 @@
 ---
 title: Mattermost
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/integrations/mattermost/index.md
+source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
+source_file: docs/en/user_manual/integrations/mattermost/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-30'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 5ff78e7362ad4050
 generated:
-  introduction: 8225727297679cc4
+  introduction: 0b796d86ee449cf1
 title_source: b1ff7bd17092d95e
 title_generated: b1ff7bd17092d95e
 ---
@@ -16,27 +16,27 @@ title_generated: b1ff7bd17092d95e
 <!-- translation-section: introduction -->
 
 # Mattermost-integraatio
-_Yhdistä Loomio-ryhmäsi ilmoitukset Mattermost-tiimisi keskustelukanavaan._
+_Loomio-ryhmäsi ilmoitusten yhdistäminen tiimisi Mattermost-chattiin._
 
-Loomio voi lähettää Mattermost-kanavillesi ilmoituksia uusista keskusteluista, ehdotuksista, kommenteista, äänistä ja johtopäätöksistä.
+Loomio voi lähettää ilmoituksia Mattermost-kanavillesi uusista keskusteluista, ehdotuksista, kommenteista, äänistä ja johtopäätöksistä.
 
 ---
 
-Avaa Mattermost-tiimisi selaimessa. Siirry sitten **Integrations**-asetussivulle.
+Avaa Mattermost-tiimisi selaimessa. Avaa sitten integraatioiden asetussivu.
 ![](mm1.png)
 
-Napsauta **Incoming Webhooks**.
+Napsauta "Saapuvat webhookit"
 ![](mm2.png)
 
-Napsauta sitten **Add Incoming Webhook**.
+Napsauta sitten "Lisää saapuva webhook"
 ![](mm3.png)
 
-Anna integraatiolle yksinkertainen nimi, valitse kanava, jolla ilmoitukset näytetään, ja napsauta **Save**.
+Anna sille yksinkertainen nimi, valitse kanava, jolla ilmoitukset näytetään, ja napsauta Tallenna
 ![](mm4.png)
 
 Kopioi webhookin URL-osoite leikepöydälle. Tarvitset sitä seuraavassa vaiheessa.
 ![](mm5.png)
 
-Varmista, että webhookin URL-osoite on leikepöydälläsi, ja avaa alla oleva linkki.
+Varmista, että webhookin URL-osoite on leikepöydällä, ja avaa alla oleva linkki.
 
-[Määritä chat-integraatio Loomiossa](../chatbots/#set-up-a-chat-integration)
+[Ota chat-integraatio käyttöön Loomiossa](../chatbots/#set-up-a-chat-integration)

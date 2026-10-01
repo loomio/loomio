@@ -1,16 +1,16 @@
 ---
 title: Päätösten tekeminen
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/guides/making_decisions/index.md
+source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
+source_file: docs/en/guides/making_decisions/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-30'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 5217253d53204654
   choose-a-process: 7a171d01d0da729a
 generated:
-  introduction: db1dd81e5b15133a
-  choose-a-process: fa17503e170c4505
+  introduction: '09d234166cc79cd6'
+  choose-a-process: 7791e2d96ed9f7a6
 title_source: 69b7e6269b6b7f14
 title_generated: 5adf1c73ac08d255
 ---
@@ -19,9 +19,9 @@ title_generated: 5adf1c73ac08d255
 
 # Päätösten tekeminen
 
-Näissä oppaissa kuvataan päätöksentekoprosesseja alusta loppuun: miten määrittelet päätettävän asian, otat oikeat ihmiset mukaan, hyödynnät keskustelua ja ehdotuksia, vastaat huolenaiheisiin ja kirjaat päätöksen.
+Nämä oppaat kuvaavat päätöksentekoprosessin kokonaisuudessaan: miten rajaat päätettävän asian, otat oikeat ihmiset mukaan, käytät keskustelua ja ehdotuksia, vastaat huoliin ja kirjaat johtopäätöksen.
 
-Nämä oppaat eroavat ehdotusmalleja käsittelevistä sivuista. [Ehdotusmalli](/en/user_manual/polls/proposals/) kuvaa yhden ehdotuksen ja sen vastausvaihtoehdot. Päätöksentekoprosessissa voidaan käyttää useita ehdotuksia ajan mittaan.
+Ne eroavat ehdotusmalleja käsittelevistä sivuista. [Ehdotusmalli](/en/user_manual/polls/proposals/) kuvaa yhden ehdotuksen ja sen vastausvaihtoehdot. Päätöksentekoprosessissa voidaan käyttää useita ehdotuksia ajan mittaan.
 
 <!-- translation-section: choose-a-process -->
 
@@ -30,10 +30,10 @@ Nämä oppaat eroavat ehdotusmalleja käsittelevistä sivuista. [Ehdotusmalli](/
 | Prosessi | Kuka päättää? | Keskeinen kysymys |
 |---|---|---|
 | [Yksinkertainen päätöksentekoprosessi](simple_decision_process) | Ryhmä määrittelee | Miten voimme keskustella, kokeilla ja päättää? |
-| [Neuvontaprosessi](advice_process) | Henkilö tai tehtävään valtuutettu tiimi | Mitä neuvoja päätöksentekijän tulisi ottaa huomioon? |
-| [Suostumusprosessi](consent_process) | Ryhmä | Voimmeko kokeilla ehdotusta ilman perusteltua vastalausetta? |
-| [Konsensusprosessi](consensus_process) | Ryhmä | Voimmeko päästä yhteiseen sopimukseen? |
+| [Neuvonantoprosessi](advice_process) | Henkilö tai valtuutettu tiimi | Mitä neuvoja päätöksentekijän tulisi ottaa huomioon? |
+| [Suostumusprosessi](consent_process) | Ryhmä | Voiko ehdotusta kokeilla turvallisesti ilman perusteltua vastaväitettä? |
+| [Konsensusprosessi](consensus_process) | Ryhmä | Voimmeko saavuttaa yhteisen sopimuksen? |
 
-Käytä ryhmäsi sääntöjen tai päätöksentekokäytäntöjen edellyttämää prosessia. Erilaisiin päätöksiin voidaan käyttää eri prosesseja.
+Käytä ryhmäsi sääntöjen tai päätöksentekokäytännön edellyttämää prosessia. Erilaisiin päätöksiin voidaan käyttää erilaisia prosesseja.
 
-Jos tarvitset apua vain vastausmuodon valintaan, vertaile [ehdotuksia](/en/user_manual/polls/proposals/) ja [kyselyitä](/en/user_manual/polls/proposal_types/). Jos hallinnoit uudelleenkäytettäviä vaihtoehtoja, jotka näkyvät, kun joku valitsee **Aloita äänestys**, tutustu [kyselypohjiin](/en/user_manual/polls/poll_templates/).
+Jos tarvitset apua vain vastaustavan valintaan, vertaa [ehdotuksia](/en/user_manual/polls/proposals/) ja [kyselyjä](/en/user_manual/polls/proposal_types/). Jos hallinnoit uudelleenkäytettäviä malleja, jotka näkyvät, kun joku valitsee **Aloita äänestys**, katso [Kyselymallit](/en/user_manual/polls/poll_templates/).

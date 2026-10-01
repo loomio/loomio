@@ -1,20 +1,20 @@
 ---
 title: Yhdistä tilit
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/users/merge_accounts/index.md
+source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
+source_file: docs/en/user_manual/users/merge_accounts/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-30'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: c8d8fc2095fc3cc6
   start-the-merge: c6e92711c5a30576
   verify-the-account-you-want-to-keep: 71e8e6d85492bcf6
   what-happens-after-the-merge: 799c2ddeca8782e3
 generated:
-  introduction: 03fefa25217471af
-  start-the-merge: 285b790e8a303902
-  verify-the-account-you-want-to-keep: ee97d78a1f2b6ee0
-  what-happens-after-the-merge: dc496f8dee1cc794
+  introduction: 6f9cf2fbd03d2fdb
+  start-the-merge: c993691bfa50d6c9
+  verify-the-account-you-want-to-keep: 955ce8d2c57f6474
+  what-happens-after-the-merge: 57a60d205848a8a5
 title_source: 3f284252b3814ab3
 title_generated: 671dfb8c123604eb
 ---
@@ -23,29 +23,29 @@ title_generated: 671dfb8c123604eb
 
 # Yhdistä tilit
 
-Yhdistä kaksi Loomio-tiliä, joilla on eri sähköpostiosoitteet, kun haluat jatkaa yhdellä tilillä.
+Yhdistä kaksi Loomio-tiliä, kun niillä on eri sähköpostiosoitteet ja haluat jatkaa yhden tilin käyttöä.
 
-Päätä ennen aloittamista, kumman tilin haluat säilyttää:
+Ennen kuin aloitat, päätä, kumman tilin haluat säilyttää:
 
 - **Säilytettävä tili** on tili, jonka sähköpostiosoitetta ja profiilia käytät yhdistämisen jälkeen
-- **Poistettava tili** on tili, jolle kirjaudut ensin. Sen sähköpostiosoitteella ei voi enää kirjautua sisään yhdistämisen jälkeen
+- **Poistettava tili** on tili, jolle kirjaudut ensin. Sen sähköpostiosoitteella ei voi enää kirjautua yhdistämisen jälkeen
 
-Tarvitset pääsyn molempiin tileihin sekä säilytettävän tilin sähköpostiosoitteeseen.
+Tarvitset pääsyn molemmille tileille ja säilytettävän tilin sähköpostiin.
 
 > [!WARNING]
-> Tilien yhdistämistä ei voi perua. Tarkista molemmat sähköpostiosoitteet huolellisesti ennen lopullista vahvistusta.
+> Tilien yhdistämistä ei voi perua. Tarkista poistettavan ja säilytettävän tilin sähköpostiosoitteet huolellisesti ennen lopullista vahvistusta.
 
 <!-- translation-section: start-the-merge -->
 
 ## Aloita yhdistäminen
 
-1. Kirjaudu sisään **tilille, jonka haluat poistaa**.
+1. Kirjaudu **tilille, jonka haluat poistaa**.
 2. Avaa sivupalkki, valitse nimesi ja valitse **Muokkaa profiilia**.
 3. Valitse **Yhdistä tilit**.
 
-![Profiilivalikko, jossa Yhdistä tilit on korostettu](merge_accounts_profile.png)
+![Profiilin toiminnot, joissa Yhdistä tilit on korostettu](merge_accounts_profile.png)
 
-4. Anna **säilytettävän tilin** sähköpostiosoite ja valitse **Lähetä vahvistussähköposti**. Loomio näyttää aina saman vahvistusviestin ja kirjaa sinut ulos. Jos osoitteella on tili, Loomio lähettää siihen vahvistussähköpostin.
+4. Anna kohdetilin sähköpostiosoite eli **säilytettävän tilin** osoite ja valitse **Lähetä vahvistussähköposti**. Loomio näyttää aina saman vahvistuksen ja kirjaa sinut ulos. Jos osoite on jonkin tilin käytössä, Loomio lähettää siihen vahvistussähköpostin.
 
 <!-- translation-section: verify-the-account-you-want-to-keep -->
 
@@ -53,9 +53,9 @@ Tarvitset pääsyn molempiin tileihin sekä säilytettävän tilin sähköpostio
 
 5. Avaa säilytettävän tilin osoitteeseen lähetetty vahvistussähköposti ja valitse **Vahvista sähköposti ja jatka**.
 
-![Tilien yhdistämisen vahvistussähköposti, jossa Vahvista sähköposti ja jatka -painike on korostettu](merge_accounts_email.png)
+![Yhdistämisen vahvistussähköposti, jossa Vahvista sähköposti ja jatka -painike on korostettu](merge_accounts_email.png)
 
-6. Kirjaudu sisään säilytettävälle tilille, jos Loomio pyytää sitä.
+6. Kirjaudu säilytettävälle tilille, jos Loomio pyytää sinua kirjautumaan.
 7. Tarkista molemmat sähköpostiosoitteet uudelleen **Vahvista yhdistäminen** -sivulla. Viimeistele yhdistäminen valitsemalla **Yhdistä tilit**.
 
 ![Lopullinen vahvistussivu, jossa Yhdistä tilit -painike on korostettu](merge_accounts_confirm.png)
@@ -64,6 +64,6 @@ Tarvitset pääsyn molempiin tileihin sekä säilytettävän tilin sähköpostio
 
 ## Mitä yhdistämisen jälkeen tapahtuu
 
-Säilytettävä tili pysyy Loomio-käyttäjätilinäsi, jolla kirjaudut sisään. Poistettavan tilin ryhmäjäsenyydet ja toiminta, kuten keskustelut, kommentit, kyselyt ja äänet, siirtyvät säilytettävälle tilille. Jos molemmat tilit kuuluvat jo samaan ryhmään, säilytettävän tilin nykyinen jäsenyys pysyy voimassa.
+Säilytettävä tili jää käyttöösi Loomiossa, ja kirjaudut sillä jatkossakin. Poistettavan tilin ryhmäjäsenyydet ja toiminta, kuten keskustelut, kommentit, kyselyt ja äänet, siirretään säilytettävälle tilille. Jos molemmat tilit kuuluvat jo samaan ryhmään, säilytettävän tilin nykyinen jäsenyys säilyy.
 
-Poistettava tili poistetaan, eikä sen sähköpostiosoitteella voi enää kirjautua sisään. Kun yhdistäminen on valmis, Loomio lähettää vahvistussähköpostin säilytetyn tilin osoitteeseen.
+Poistettava tili poistetaan, eikä sen sähköpostiosoitteella voi enää kirjautua. Loomio lähettää vahvistussähköpostin säilyttämäsi tilin osoitteeseen, kun yhdistäminen on valmis.

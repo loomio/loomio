@@ -1,6 +1,6 @@
 ---
 title: Jaa pisteet
-source_revision: 9c60c42fc739483fa23f15d9f34a1e9245518092
+source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
 source_file: docs/en/user_manual/polls/allocate/index.md
 translated:
   provider: codex/gpt-6.1-sol
@@ -14,84 +14,86 @@ sections:
   read-the-results: 3a66507bd8387273
   share-an-outcome: abb46bfca8b73b7a
 generated:
-  introduction: 57aea43ccd1b7424
-  when-to-use-allocate: 4bb59fd128873875
-  example-set-priorities-for-an-annual-strategy-review: 67a18a17dafbedff
-  set-up-the-poll: '009b1d8b38ca40cf'
-  vote: 68a6ee74a04f2156
-  read-the-results: 1687c1a6c0a33bd2
-  share-an-outcome: 8c3519bbbf57f4a3
+  introduction: 16a9735508823733
+  when-to-use-allocate: b3a297809d0e6271
+  example-set-priorities-for-an-annual-strategy-review: 9f5d22ae88ac72b3
+  set-up-the-poll: de01668e1961e5df
+  vote: 355ad7517ed1d244
+  read-the-results: 45b4ccc53f91f70b
+  share-an-outcome: 523c38e3e4da22ed
 title_source: c927a8a7c2ce230c
 title_generated: cb3ec35a9f381177
+needs_review:
+  when-to-use-allocate: use "Pisteytys" instead of "pisteet" for "Score"
 ---
 
 <!-- translation-section: introduction -->
 
-# Jaa pisteet
+# Pistejako
 
-Pisteiden jakaminen eli pisteäänestys auttaa selvittämään tärkeysjärjestyksen, kun valinnat edellyttävät kompromisseja. Jokainen osallistuja saa tietyn määrän pisteitä ja jakaa ne vaihtoehtojen kesken. Jos annat yhdelle vaihtoehdolle enemmän pisteitä, muille jää vähemmän.
+Pistejako, jota kutsutaan myös pisteäänestykseksi, tuo esiin tärkeysjärjestyksen tilanteissa, joissa on tehtävä valintoja vaihtoehtojen välillä. Jokainen osallistuja saa tietyn määrän pisteitä ja jakaa ne vaihtoehtojen kesken. Kun yhdelle vaihtoehdolle antaa enemmän pisteitä, muille jää vähemmän.
 
 <!-- translation-section: when-to-use-allocate -->
 
-## Milloin pisteiden jakamista kannattaa käyttää
+## Milloin käyttää Pistejakoa
 
-Käytä pisteiden jakamista, kun aikaa, rahaa, huomiota tai muuta resurssia on rajallisesti. Se sopii esimerkiksi:
+Käytä Pistejakoa, kun aikaa, rahaa, huomiota tai muita resursseja on rajallisesti. Se sopii hyvin seuraaviin tilanteisiin:
 
-- seuraavan suunnittelujakson töiden asettamiseen tärkeysjärjestykseen;
-- osallistuvan budjetin jakamiseen hankkeiden kesken;
-- esityslistan ajan jakamiseen usean aiheen kesken;
-- tietyn vapaaehtoistuntimäärän jakamiseen; tai
-- jäsenille tärkeimpien parannusten tunnistamiseen.
+- töiden priorisointi seuraavaa suunnittelukautta varten;
+- osallistuvan budjetin jakaminen hankkeiden kesken;
+- kokousajan jakaminen eri aiheille;
+- rajallisten vapaaehtoistyötuntien jakaminen; tai
+- jäsenille tärkeimpien parannusten tunnistaminen.
 
-Pisteet ilmaisevat suhteellista tärkeyttä. Loomio ei jaa niiden perusteella resursseja automaattisesti. Käytä [pisteytyskyselyä](/en/user_manual/polls/score/), kun jokainen vaihtoehto voi saada korkean arvion ilman, että se vähentää muiden vaihtoehtojen kannatusta.
+Pisteet ilmaisevat suhteellista tärkeyttä, eivät määrää, jonka Loomio jakaa automaattisesti. Käytä [Pisteytystä](/en/user_manual/polls/score/), kun jokainen vaihtoehto voi saada korkean arvosanan vähentämättä muiden vaihtoehtojen kannatusta.
 
 <!-- translation-section: example-set-priorities-for-an-annual-strategy-review -->
 
-## Esimerkki: aseta vuosittaisen strategiatarkastelun painopisteet
+## Esimerkki: määritä vuosittaisen strategia-arvioinnin painopisteet
 
-Kauramaito-osuuskunta suunnittelee vuosittaista strategiatarkasteluaan. Se kysyy jäseniltä, mihin osa-alueisiin tarkastelussa pitäisi käyttää eniten aikaa ja huomiota. Jokainen jäsen saa kymmenen pistettä jaettavaksi viiden osa-alueen kesken. Näin ryhmän suhteelliset painopisteet tulevat näkyviin, ja osallistujien on tehtävä valintoja.
+Oatmilk Cooperative suunnittelee vuosittaista strategia-arviointiaan. Se kysyy jäseniltä, mihin osa-alueisiin arvioinnissa tulisi käyttää eniten aikaa ja huomiota. Jokainen jäsen saa kymmenen pistettä jaettavaksi viiden osa-alueen kesken. Näin ryhmän suhteellinen tärkeysjärjestys tulee esiin, ja osallistujien on tehtävä valintoja osa-alueiden välillä.
 
 <!-- translation-section: set-up-the-poll -->
 
 ## Luo kysely
 
-Kuvaile päätös ja kerro, mitä pisteet tarkoittavat. Lisää laajuudeltaan vertailukelpoiset vaihtoehdot ja määritä sitten **Pisteet per henkilö**. Tässä esimerkissä jokainen äänestäjä saa kymmenen pistettä osoittaakseen, kuinka paljon tarkasteluaikaa kullekin strategiselle osa-alueelle pitäisi antaa.
+Kuvaile päätös ja se, mitä pisteet edustavat. Lisää laajuudeltaan samantasoisia vaihtoehtoja ja määritä sitten **Pisteet per henkilö**. Tässä esimerkissä jokainen äänestäjä saa kymmenen pistettä osoittaakseen, kuinka paljon arviointiaikaa kuhunkin strategiseen osa-alueeseen tulisi käyttää.
 
 ![](form.png)
 
-Hyvin suuri pistemäärä voi antaa harhaanjohtavan vaikutelman tarkkuudesta. Sopiva pistemäärä on yleensä riittävän suuri erojen ilmaisemiseen mutta riittävän pieni pakottamaan valintoihin. Kerro selvästi, saako kaikki pisteet antaa yhdelle vaihtoehdolle.
+Hyvin suuri pistemäärä voi antaa vaikutelman perusteettomasta tarkkuudesta. Sopiva pistemäärä on yleensä riittävän suuri erojen näyttämiseen mutta riittävän pieni valintojen edellyttämiseen. Kerro selvästi, saako kaikki pisteet antaa yhdelle vaihtoehdolle.
 
 <!-- translation-section: vote -->
 
 ## Äänestä
 
-Osallistujat jakavat pisteensä liukusäätimillä. Loomio näyttää jäljellä olevien pisteiden määrän ja estää äänen lähettämisen, kunnes kaikki pisteet on jaettu oikein.
+Osallistujat jakavat pisteensä liukusäätimillä. Loomio näyttää jäljellä olevien pisteiden määrän ja estää äänen lähettämisen, kunnes pistejako on kelvollinen.
 
 ![](voting.png)
 
-Tässä esimerkissä äänestäjä antaa kolme pistettä sekä **Jäsenten osallistumiselle** että **Taloudelliselle kestävyydelle**, kaksi pistettä sekä **Ympäristövaikutuksille** että **Henkilöstön kehittämiselle** ja nolla pistettä **Tuotteille ja palveluille**. Nolla ei välttämättä tarkoita, ettei osa-alueella olisi arvoa. Äänestäjä käytti rajalliset pisteensä muualla.
+Tässä esimerkissä äänestäjä antaa kolme pistettä sekä **Jäsenten osallistumiselle** että **Taloudelliselle kestävyydelle**, kaksi pistettä sekä **Ympäristövaikutuksille** että **Henkilöstön kehittämiselle** eikä yhtään pistettä **Tuotteille ja palveluille**. Nolla ei välttämättä tarkoita, että osa-alue olisi arvoton, vaan että äänestäjä käytti rajalliset pisteensä muualla.
 
 <!-- translation-section: read-the-results -->
 
 ## Tarkastele tuloksia
 
-Tuloksissa vaihtoehdot järjestetään saatujen pisteiden kokonaismäärän mukaan. Niissä näytetään myös:
+Tuloksissa vaihtoehdot järjestetään niiden saamien pisteiden kokonaismäärän mukaan. Tuloksissa näkyvät myös:
 
 - **% pisteistä**: vaihtoehdon osuus kaikista jaetuista pisteistä;
-- **Pisteet**: vaihtoehdolle annettujen pisteiden kokonaismäärä;
-- **Tarkoittaa**: niiden äänestäjien antamien pisteiden keskiarvo, jotka antoivat vaihtoehdolle pisteitä; ja
+- **Pisteet**: jaettujen pisteiden kokonaismäärä;
+- **Tarkoittaa**: keskiarvo niiden äänestäjien kesken, jotka antoivat vaihtoehdolle pisteitä; ja
 - **Äänestäjät**: kuinka moni antoi vaihtoehdolle vähintään yhden pisteen.
 
 ![](results.png)
 
-Tässä esimerkissä **Taloudellinen kestävyys** saa eniten pisteitä ja **Henkilöstön kehittäminen** toiseksi eniten. Jokainen äänestäjä antaa pisteitä taloudelliselle kestävyydelle, mikä viittaa laajaan yksimielisyyteen siitä, että se tarvitsee paljon tarkasteluaikaa. Vertaa kokonaispisteitä äänestäjien määrään, jotta erotat laajasti tärkeinä pidetyt osa-alueet niistä, joita harvemmat kannattavat voimakkaasti.
+Tässä esimerkissä **Taloudellinen kestävyys** saa eniten pisteitä ja **Henkilöstön kehittäminen** toiseksi eniten. Taloudellinen kestävyys saa pisteitä jokaiselta äänestäjältä, mikä viittaa laajaan yksimielisyyteen siitä, että sen arviointiin tarvitaan runsaasti aikaa. Tarkastele kokonaispistemääriä yhdessä äänestäjien määrän kanssa, jotta erotat laajasti tärkeinä pidetyt osa-alueet niistä, joita harvemmat kannattavat vahvasti.
 
-Tarkastele kokonaispisteitä yhdessä äänestäjien määrän ja heidän perustelujensa kanssa.
+Tarkastele kokonaispistemääriä yhdessä äänestäjien määrän ja heidän perustelujensa kanssa.
 
 <!-- translation-section: share-an-outcome -->
 
-## Jaa päätelmä
+## Jaa johtopäätös
 
-Kun kysely päättyy, jaa päätelmä. Kysely ei jaa aikaa tai rahaa automaattisesti, joten kerro, miten tulosta käytetään. Katso [Jaa päätelmä](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome), jos haluat tietää, miten päätelmät toimivat.
+Kun kysely sulkeutuu, jaa johtopäätös. Kysely ei jaa aikaa tai rahaa automaattisesti, joten kerro, miten tuloksia käytetään. Katso johtopäätösten toimintaa koskevat ohjeet sivulta [Jaa johtopäätös](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome).
 
-![Päätelmä, jossa määritellään strategiatarkastelun ajankäyttö](outcome.png)
+![Johtopäätös, jossa määritetään strategia-arvioinnin ajankäyttö](outcome.png)

@@ -1,6 +1,6 @@
 ---
 title: Ehdotukset ja kyselyt
-source_revision: 9c60c42fc739483fa23f15d9f34a1e9245518092
+source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
 source_file: docs/en/user_manual/polls/intro_to_decisions/index.md
 translated:
   provider: codex/gpt-6.1-sol
@@ -21,57 +21,59 @@ sections:
   4-it-closes: c0376a9026d18bc3
   5-share-an-outcome: 8339cb332cd8a946
 generated:
-  introduction: 2e7393cdd32f425a
-  find-the-right-help: 69fe036d9aff4b59
-  proposals: 58a43887871ef080
-  polls: 218459d26802970e
+  introduction: 45c6956fda56168c
+  find-the-right-help: 4915050c4c0f173f
+  proposals: 57711d834581f0a8
+  polls: d6059a73b7585fcb
   start-a-proposal-or-poll: bf672d3d4112087e
-  choose-whether-to-use-a-discussion: 7c70c7620ae70eff
+  choose-whether-to-use-a-discussion: 1593ba6cff80e9b5
   in-a-discussion: 841285b59dd67e77
-  without-a-discussion: 2c6f0139269de154
+  without-a-discussion: ce1a197193f57fce
   what-happens-next: 1d3efb799b626bb6
-  1-create-it: d7800f75d8ebab63
+  1-create-it: 327920790d291c5e
   2-voting-opens: 2d703282ae7e7390
-  3-people-vote: 1b3e4bc3d8876d92
-  4-it-closes: 97c0163356af7ee9
-  5-share-an-outcome: 530f45adb9ecaf93
+  3-people-vote: b1a50acb7e7dad32
+  4-it-closes: ef425430195bd79e
+  5-share-an-outcome: efb5ee0e580948c7
 title_source: d45b4ba3cb7a27cb
 title_generated: a66d8804d0433ec4
 needs_review:
-  5-share-an-outcome: check the interface label "**Tarkistuksen päivämäärä**" for "**Review date**"
+  find-the-right-help: use "vaihtoehto" instead of "asetukset" for "option"; use "johtopäätös" instead of "tulokset" for "outcome"
+  1-create-it: use "vaihtoehto" instead of "asetukset" for "option"
+  5-share-an-outcome: check the interface label "**Tarkistuksen päivämäärä**" for "**Review date**"; use "johtopäätös" instead of "tulokset" for "outcome"
 ---
 
 <!-- translation-section: introduction -->
 
 # Ehdotukset ja kyselyt
 
-Ehdotukset ja kyselyt keräävät ryhmän vastaukset määrämuotoisesti. Niiden avulla voit kokeilla ideaa, tehdä päätöksen, selvittää tärkeysjärjestyksen, sopia tapaamisen ajankohdan tai valita edustajia.
+Ehdotuksilla ja kyselyillä kerätään ryhmältä jäsenneltyjä vastauksia. Ne voivat auttaa testaamaan ideaa, tekemään päätöksen, tunnistamaan prioriteetteja, sopimaan kokousajan tai valitsemaan edustajia.
 
 <!-- translation-section: find-the-right-help -->
 
 ## Löydä oikea ohje
 
-Käsikirjan eri osat vastaavat eri kysymyksiin:
+Nämä käyttöoppaan osat vastaavat eri kysymyksiin:
 
 | Jos haluat… | Lue… |
 |---|---|
-| Valita, millaisen kannan osallistujat ilmaisevat | [Ehdotukset](../proposals/) tai [Kyselyt](../proposal_types/) |
-| Käyttää tiettyä ehdotusmallia | [Tunnustele mielipiteitä](../proposals/sense_check/), [Pyydä neuvoja](../proposals/advice/), [Hae suostumusta](../proposals/consent/) tai [Hae yhteisymmärrystä](../proposals/consensus/) |
+| Valita, mitä osallistujien tulisi ilmaista | [Ehdotukset](../proposals/) tai [Kyselyt](../proposal_types/) |
+| Käyttää tiettyä ehdotusmallia | [Tunnustelu](../proposals/sense_check/), [Neuvonanto](../proposals/advice/), [Suostumus](../proposals/consent/) tai [Konsensus](../proposals/consensus/) |
 | Määrittää ryhmän käytettävissä olevat mallit | [Kyselymallit](../poll_templates/) |
-| Ohjata päätöksentekoa keskustelusta johtopäätökseen | [Päätöksenteko](/en/guides/making_decisions/) |
+| Ohjata päätöksentekoa keskustelusta johtopäätökseen | [Päätösten tekeminen](/en/guides/making_decisions/) |
 
-**Äänestystapa** määrittää, miten ihmiset vastaavat ja miten tulokset lasketaan. **Kyselymalli** on uudelleenkäytettävä äänestystapaan perustuva malli, jossa ohjeet, vaihtoehdot ja asetukset on määritetty valmiiksi. **Päätöksentekoprosessi** voi sisältää keskustelun ja useita malleja ennen kuin ryhmä päätyy johtopäätökseen.
+**Äänestystapa** määrittää, miten ihmiset vastaavat ja miten tulokset lasketaan. **Kyselymalli** on äänestystapaan perustuva uudelleenkäytettävä kokonaisuus, jossa on valmiit ohjeet, vaihtoehdot ja asetukset. **Päätöksentekoprosessissa** voidaan käyttää keskustelua ja useita malleja ennen kuin ryhmä päätyy johtopäätökseen.
 
 <!-- translation-section: proposals -->
 
 ## Ehdotukset
 
-Ehdotus pyytää ihmisiä ottamaan kantaa väitteeseen tai toimintatapaan. Loomiossa on malleja tavallisiin käyttötarkoituksiin:
+Ehdotuksessa ihmisiä pyydetään ottamaan kantaa väittämään tai toimintatapaan. Loomiossa on malleja yleisiin käyttötarkoituksiin:
 
-- [Tunnustele mielipiteitä](../proposals/sense_check/) kerää alustavia näkemyksiä;
-- [Pyydä neuvoja](../proposals/advice/) kerää näkemyksiä päätöksentekijälle;
-- [Hae suostumusta](../proposals/consent/) selvittää, onko merkittäviä vastalauseita; ja
-- [Hae yhteisymmärrystä](../proposals/consensus/) pyrkii yhteiseen näkemykseen.
+- [Tunnustelu](../proposals/sense_check/) kerää alustavia reaktioita;
+- [Neuvot](../proposals/advice/) kerää näkemyksiä päätöksentekijälle;
+- [Suostumus](../proposals/consent/) selvittää, onko perusteltuja vastaväitteitä; ja
+- [Konsensus](../proposals/consensus/) pyrkii yhteiseen hyväksyntään.
 
 Vertaile malleja sivulla [Ehdotukset](../proposals/).
 
@@ -79,16 +81,16 @@ Vertaile malleja sivulla [Ehdotukset](../proposals/).
 
 ## Kyselyt
 
-Käytä kyselyä, kun osallistujien pitää valita, antaa pisteitä, jakaa pisteitä vaihtoehtojen kesken, asettaa vaihtoehtoja järjestykseen, ilmoittaa käytettävyytensä tai äänestää vaalissa:
+Käytä kyselyä, kun osallistujien pitää valita, pisteyttää, jakaa pisteitä, asettaa vaihtoehtoja järjestykseen, ilmoittaa heille sopivat ajat tai äänestää vaaleissa:
 
-- [Valitse](../choose/) selvittää suosituimmat vaihtoehdot;
-- [Pisteytä](../score/) arvioi jokaisen vaihtoehdon asteikolla;
-- [Jaa pisteet](../allocate/) jakaa rajallisen pistemäärän vaihtoehtojen kesken;
-- [Aseta järjestykseen](../rank/) selvittää vaihtoehtojen yleisen suosituimmuusjärjestyksen;
-- [Ajankohtakysely](../meeting_polls/) selvittää, milloin ihmisille sopii; ja
-- [STV-vaali](../stv/) valitsee useita edustajia suhteellisesti.
+- [Valinta](../choose/) selvittää suositut vaihtoehdot;
+- [Pisteytys](../score/) arvioi jokaista vaihtoehtoa asteikolla;
+- [Pistejako](../allocate/) jakaa rajallisen määrän pisteitä;
+- [Järjestys](../rank/) selvittää yhteisen etusijajärjestyksen;
+- [Aikakysely](../meeting_polls/) selvittää ihmisille sopivat ajat; ja
+- [STV-vaalit](../stv/) valitsee useita voittajia suhteellisesti.
 
-Vertaile kyselyitä sivulla [Kyselyt](../proposal_types/).
+Vertaile malleja sivulla [Kyselyt](../proposal_types/).
 
 <!-- translation-section: start-a-proposal-or-poll -->
 
@@ -98,9 +100,9 @@ Vertaile kyselyitä sivulla [Kyselyt](../proposal_types/).
 
 ### Valitse, käytätkö keskustelua
 
-Aloita ehdotus tai kysely keskustelussa, kun ihmiset tarvitsevat taustatietoa tai mahdollisuuden esittää kysymyksiä ja keskustella ennen vastaamista. Keskusteluun voi ajan mittaan kuulua useita ehdotuksia. Näin muutokset ja lopullinen johtopäätös pysyvät saman aiheen yhteydessä.
+Aloita ehdotus tai kysely keskustelussa, kun ihmiset tarvitsevat kontekstia, kysymyksiä tai keskustelua ennen vastaamista. Keskustelu voi sisältää ajan mittaan useita ehdotuksia, jolloin muutokset ja lopullinen johtopäätös säilyvät yhdessä aiheen käsittelyn dokumentaatiossa.
 
-Aloita erillinen kysely, jos keskustelu on jo käyty muualla, esimerkiksi kokouksessa, tai jos kysymys on yksinkertainen ja haluat vain kerätä vastaukset. Lisää riittävästi taustatietoa tai linkki asiaankuuluvaan aineistoon, jotta äänestäjät ymmärtävät, mihin he vastaavat.
+Käytä erillistä kyselyä, kun keskustelu on jo käyty muualla, esimerkiksi kokouksessa, tai kun kysymys on yksinkertainen ja sinun tarvitsee vain kerätä vastauksia. Lisää riittävästi tietoja tai linkki asiaa koskevaan dokumentaatioon, jotta äänestäjät ymmärtävät, mihin he vastaavat.
 
 <!-- translation-section: in-a-discussion -->
 
@@ -118,7 +120,7 @@ Avaa ryhmän sivulla **Kyselyt**-välilehti, valitse **Uusi kysely** ja valitse 
 
 ![](standalone_poll.png)
 
-Jos luot keskustelun ja kyselyn samaan aikaan vain äänestystä varten, vältä ilmoittamasta ihmisille kahdesti. Aloita keskustelu ilmoittamatta heille ja käytä kyselyn kutsua tai järjestä kysely ilman keskustelua.
+Jos luot keskustelun ja kyselyn samaan aikaan vain äänestystä varten, vältä lähettämästä ihmisille kahta ilmoitusta. Aloita keskustelu ilmoittamatta siitä heille ja käytä kyselyn kutsua, tai järjestä kysely ilman keskustelua.
 
 <!-- translation-section: what-happens-next -->
 
@@ -130,10 +132,10 @@ Ehdotus tai kysely etenee näiden vaiheiden kautta.
 
 ### 1. Luo ehdotus tai kysely
 
-Anna sille otsikko ja lisätiedot, tarkista vaihtoehdot ja asetukset ja aseta sulkeutumisaika. Valitse sitten, milloin äänestys alkaa:
+Anna sille otsikko ja kuvaus, tarkista sen vaihtoehdot ja asetukset ja aseta päättymisaika. Valitse sitten, milloin äänestys alkaa:
 
-- **Äänestys alkaa heti** avaa äänestyksen heti, kun aloitat sen.
-- **Avajaispäivä** ajastaa äänestyksen alkamisen. Ihmiset voivat nähdä ehdotuksen tai kyselyn jo ennen sitä, mutta he voivat äänestää vasta äänestyksen alettua.
+- **Äänestys alkaa heti** käynnistää äänestyksen heti, kun aloitat ehdotuksen tai kyselyn.
+- **Avajaispäivä** ajastaa äänestyksen alkamisen. Ihmiset voivat nähdä ehdotuksen tai kyselyn sitä ennen, mutta he voivat äänestää vasta äänestyksen alettua.
 - Jos et valitse kumpaakaan, ehdotus tai kysely tallennetaan luonnoksena.
 
 <!-- translation-section: 2-voting-opens -->
@@ -146,24 +148,24 @@ Kun äänestys alkaa, Loomio ilmoittaa siitä kutsumillesi ihmisille. Katso [Kut
 
 ### 3. Ihmiset äänestävät
 
-Kun ehdotus tai kysely on avoinna, ihmiset voivat äänestää, perustella äänensä ja muuttaa ääntään. Tulokset päivittyvät, kun ihmiset äänestävät, ellei tuloksia ole piilotettu sulkeutumiseen asti. Oletuksena ihmiset, jotka eivät ole äänestäneet, saavat muistutuksen päivää ennen sulkeutumista.
+Kun kysely on avoinna, ihmiset voivat äänestää, perustella äänensä ja muuttaa ääntään. Tulokset päivittyvät ihmisten äänestäessä, ellei niitä piiloteta kyselyn sulkemiseen asti. Oletuksena ihmiset, jotka eivät ole äänestäneet, saavat muistutuksen päivää ennen kyselyn sulkemista.
 
 <!-- translation-section: 4-it-closes -->
 
-### 4. Ehdotus tai kysely sulkeutuu
+### 4. Kysely sulkeutuu
 
-Ehdotus tai kysely sulkeutuu automaattisesti sulkeutumisajan koittaessa. Kyselyn ylläpitäjä voi myös sulkea sen aiemmin. Sulkeutumisen jälkeen kyselyn ylläpitäjä voi avata sen uudelleen ja asettaa uuden sulkeutumisajan, jotta ihmiset voivat jatkaa äänestämistä. Anonyymejä kyselyjä ei voi avata uudelleen.
+Kysely sulkeutuu automaattisesti sulkemisajankohtana. Kyselyn koordinaattori voi myös sulkea sen etuajassa. Sulkemisen jälkeen kyselyn koordinaattori voi avata sen uudelleen ja asettaa uuden sulkemisajankohdan, jotta ihmiset voivat jatkaa äänestämistä. Anonyymejä kyselyjä ei voi avata uudelleen.
 
 <!-- translation-section: 5-share-an-outcome -->
 
 ### 5. Jaa johtopäätös
 
-Kun kysely sulkeutuu, Loomio pyytää kyselyn ylläpitäjiä jakamaan johtopäätöksen.
+Kun kysely sulkeutuu, Loomio pyytää kyselyn koordinaattoreita jakamaan johtopäätöksen.
 
-![Kehote johtopäätöksen kirjoittamiseen ehdotuksen sulkeuduttua](outcome_prompt.png)
+![Kehote kirjoittaa johtopäätös ehdotuksen sulkeuduttua](outcome_prompt.png)
 
-Johtopäätös kertoo, mitä päätettiin ja mitä seuraavaksi tapahtuu. Se näkyy tulosten yläpuolella, joten ihmiset lukevat sen ensimmäisenä. Kun julkaiset sen, voit ilmoittaa siitä ihmisille. He saavat sähköpostin, joka sisältää tulokset ja johtopäätöksen.
+Johtopäätös kertoo, mitä päätettiin ja mitä tapahtuu seuraavaksi. Se näkyy tulosten yläpuolella, joten ihmiset lukevat sen ensimmäisenä. Kun julkaiset johtopäätöksen, voit ilmoittaa siitä ihmisille. He saavat sähköpostin, jossa ovat tulokset ja johtopäätös.
 
-Voit myös asettaa **Tarkistuksen päivämäärän**. Tuona päivänä Loomio muistuttaa sinua tarkistamaan päätöksen.
+Voit myös asettaa **Tarkistuksen päivämäärän**. Sinä päivänä Loomio muistuttaa sinua tarkistamaan päätöksen.
 
-![Julkaistu johtopäätös, jolla on tarkistuksen päivämäärä](outcome_published.png)
+![Julkaistu johtopäätös ja tarkistuksen päivämäärä](outcome_published.png)

@@ -1,20 +1,20 @@
 ---
 title: Kirjanmerkit
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/users/bookmarks/index.md
+source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
+source_file: docs/en/user_manual/users/bookmarks/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-30'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 752c1df552c461e6
   save-a-bookmark: ae80e968a14c61b4
   view-your-bookmarks: 66cd0a27cf9bcca2
   remove-a-bookmark: c9ef73967bce0bf8
 generated:
-  introduction: d20be23e5bf14e3c
-  save-a-bookmark: 56e84b2848012daa
-  view-your-bookmarks: 327458df5fc4cbe1
-  remove-a-bookmark: 93b78ea1276b8558
+  introduction: 5f5ab5a7fe6fb692
+  save-a-bookmark: 106b8c70e4258b57
+  view-your-bookmarks: 0b50706629246b54
+  remove-a-bookmark: 27e15d3c4243080f
 title_source: 96316f0f6404dbe1
 title_generated: 63c63432f2567c97
 ---
@@ -23,31 +23,31 @@ title_generated: 63c63432f2567c97
 
 # Kirjanmerkit
 
-Kirjanmerkit ovat henkilökohtainen luettelo Loomion kohteista, joihin haluat palata. Vain sinä näet kirjanmerkkisi. Kirjanmerkin tallentamisesta ei ilmoiteta muille.
+Kirjanmerkit ovat henkilökohtainen lista Loomion kohteista, joihin haluat palata. Kirjanmerkkisi näkyvät vain sinulle, eikä kohteen tallentamisesta ilmoiteta muille.
 
-Voit lisätä kirjanmerkkeihin:
+Voit tallentaa kirjanmerkkeihin:
 
 - keskusteluja
 - kommentteja
 - ehdotuksia ja kyselyjä
 - ääniä
-- tuloksia
+- johtopäätöksiä
 
 <!-- translation-section: save-a-bookmark -->
 
 ## Tallenna kirjanmerkki
 
-Avaa kohteen toimintovalikko ja valitse **Tallenna kirjanmerkki**. Toimintovalikko näkyy yleensä kolmena pisteenä. Keskustelun toimintovalikko on keskustelun otsikon lähellä. Kommentin, äänen, ehdotuksen, kyselyn tai tuloksen valikko on kyseisen kohteen kohdalla.
+Avaa kohteen toimintovalikko ja valitse **Tallenna kirjanmerkki**. Toimintovalikko näkyy yleensä kolmena pisteenä. Käytä keskustelun otsikon lähellä olevaa toimintovalikkoa, kun tallennat keskustelun. Käytä kohteen omaa valikkoa, kun tallennat kommentin, äänen, ehdotuksen, kyselyn tai johtopäätöksen.
 
 ![](save_bookmark.png)
 
 <!-- translation-section: view-your-bookmarks -->
 
-## Näytä kirjanmerkkisi
+## Katso kirjanmerkkejäsi
 
-Avaa sivupalkki ja valitse **Kirjanmerkit**. Linkin vieressä oleva luku kertoo, kuinka monta kirjanmerkkiä olet tallentanut.
+Avaa sivupalkki ja valitse **Kirjanmerkit**. Linkin vieressä oleva numero kertoo, kuinka monta kirjanmerkkiä olet tallentanut.
 
-Kirjanmerkit-sivulla viimeksi tallennetut kohteet näkyvät ensin. Jokaisella rivillä näkyvät kohteen tyyppi ja tekijä. Palaa kohteeseen valitsemalla sen rivi.
+Kirjanmerkit-sivulla viimeksi tallentamasi kohteet näkyvät ensimmäisinä. Jokaisella rivillä näkyvät kohteen tyyppi ja tekijä. Valitse rivi palataksesi kirjanmerkkiin tallennettuun kohteeseen.
 
 ![](bookmarks_page.png)
 
@@ -55,6 +55,6 @@ Kirjanmerkit-sivulla viimeksi tallennetut kohteet näkyvät ensin. Jokaisella ri
 
 ## Poista kirjanmerkki
 
-Valitse Kirjanmerkit-sivulla rivin lopussa oleva kirjanmerkin poistopainike. Voit myös avata kohteen toimintovalikon ja valita **Poista kirjanmerkki**.
+Valitse Kirjanmerkit-sivulla rivin lopussa oleva kirjanmerkin poistopainike. Voit myös avata kirjanmerkkiin tallennetun kohteen toimintovalikon ja valita **Poista kirjanmerkki**.
 
-Kirjanmerkin poistaminen vaikuttaa vain omaan luetteloosi. Voit tallentaa kohteen uudelleen myöhemmin.
+Kirjanmerkin poistaminen vaikuttaa vain henkilökohtaiseen listaasi. Voit tallentaa kohteen uudelleen myöhemmin.

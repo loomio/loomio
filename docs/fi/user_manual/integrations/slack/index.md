@@ -1,14 +1,14 @@
 ---
 title: Slack
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/integrations/slack/index.md
+source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
+source_file: docs/en/user_manual/integrations/slack/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-30'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 4eb9618f0efb62d7
 generated:
-  introduction: 4ff2b7c4412420a6
+  introduction: 3da8f2a77d532277
 title_source: b27fb38ba323745c
 title_generated: b27fb38ba323745c
 ---
@@ -18,11 +18,11 @@ title_generated: b27fb38ba323745c
 # Slack-integraatio
 _Yhdistä Loomio-ryhmäsi ilmoitukset Slackiin._
 
-Loomio voi lähettää ilmoituksia Slack-kanavillesi uusista keskusteluista, ehdotuksista, kommenteista, äänistä ja kyselyiden johtopäätöksistä. Saat tärkeät päivitykset oikeaan aikaan keskusteluista ja päätöksistä.
+Loomio voi lähettää ilmoituksia Slack-kanavillesi uusista keskusteluista, ehdotuksista, kommenteista, äänistä ja johtopäätöksistä. Saat tärkeät päivitykset keskeisistä keskusteluista ja päätöksistä oikeaan aikaan.
 
 ---
 
-Aloita siirtymällä osoitteeseen [https://api.slack.com](https://api.slack.com). Kirjaudu sisään tarvittaessa ja napsauta sitten Create New App
+Aloita siirtymällä osoitteeseen [https://api.slack.com](https://api.slack.com). Kirjaudu sisään, jos et ole jo kirjautunut, ja napsauta sitten Create New App
 
 ![](s1.png)
 
@@ -30,7 +30,7 @@ Anna Slack-sovelluksellesi nimi
 
 ![](s2.png)
 
-Lisää saapuvien webhookien tuki
+Lisää tuki saapuville webhookeille
 
 ![](s3.png)
 
@@ -50,8 +50,8 @@ Kopioi webhookin URL-osoite leikepöydälle
 
 ![](s7.png)
 
-Kun sinulla on webhookin URL-osoite, jatka chat-integraation määritystä:
+Nyt kun sinulla on webhookin URL-osoite, jatka chat-integraation määrittämistä:
 
 [Määritä chat-integraatio Loomiossa](../chatbots/#set-up-a-chat-integration)
 
-_Slack ei ole luonut Loomiota eikä ole sen yhteistyökumppani tai tukija._
+_Slack ei ole luonut Loomiota, eikä Loomio ole sidoksissa Slackiin tai saa siltä tukea._

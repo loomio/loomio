@@ -1,6 +1,6 @@
 ---
 title: Suostumus
-source_revision: 9c60c42fc739483fa23f15d9f34a1e9245518092
+source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
 source_file: docs/en/user_manual/polls/proposals/consent/index.md
 translated:
   provider: codex/gpt-6.1-sol
@@ -14,13 +14,13 @@ sections:
   read-the-results: 710fb80144e56ea9
   share-an-outcome: 8f8b3f701dc4f516
 generated:
-  introduction: 0efdab85000cfac4
-  when-to-use-consent: 3a78dfed44254b69
-  example-start-a-bottle-trial: 4f58171b873ad4aa
-  set-up-the-proposal: bada9fa9b12519c1
-  vote: 6102216f51351ef4
-  read-the-results: 8432b398803b9327
-  share-an-outcome: f0dfe2fa3c22cd9a
+  introduction: 014e6b6a17024adc
+  when-to-use-consent: '0779d7db8559653b'
+  example-start-a-bottle-trial: 22435f181c967df2
+  set-up-the-proposal: edc102661d548db7
+  vote: d74c06b5a82ea107
+  read-the-results: 3fa7d9b5fffe6924
+  share-an-outcome: 660820dd7b9ecf4a
 title_source: d37e0cd00f18a366
 title_generated: af1f0573cc38933f
 ---
@@ -29,29 +29,29 @@ title_generated: af1f0573cc38933f
 
 # Suostumus
 
-Suostumusehdotuksessa kysytään, onko ehdotettua toimintatapaa turvallista kokeilla. Osallistujat joko antavat suostumuksensa tai esittävät vastalauseen. Vastalauseessa tuodaan esiin konkreettinen riski tai haitta, johon ehdotuksessa on puututtava.
+Suostumusehdotuksessa kysytään, onko toimintatapaa turvallista kokeilla. Osallistujat joko antavat suostumuksensa tai esittävät vastaväitteen. Vastaväite tuo esiin konkreettisen riskin tai haitan, joka ehdotuksessa pitäisi ottaa huomioon.
 
-Tällä sivulla kerrotaan, miten toteutat yhden suostumusehdotuksen. Koko työnkulku kysymyksistä, alustavasta arviosta ja muutoksista vastalauseisiin ja päätelmään kuvataan [suostumusprosessin oppaassa](/en/guides/making_decisions/consent_process).
+Tällä sivulla kerrotaan, miten toteutat yhden suostumusehdotuksen. Katso koko työnkulku [Suostumusprosessista](/en/guides/making_decisions/consent_process). Se sisältää kysymykset, tunnustelun, muutokset, vastaväitteet ja johtopäätöksen.
 
 <!-- translation-section: when-to-use-consent -->
 
-## Milloin suostumusta kannattaa käyttää
+## Milloin käyttää suostumusta
 
-Käytä suostumusta, kun ryhmä tarvitsee toteuttamiskelpoisen päätöksen, joka voi edetä, ellei sille esitetä perusteltua vastalausetta. Se sopii kokeiluihin, toimintakäytäntöihin, rooleja koskeviin sopimuksiin ja muihin päätöksiin, joita ryhmä voi arvioida saatuaan kokemusta.
+Käytä suostumusta, kun ryhmä tarvitsee toimivan päätöksen, jonka voi toteuttaa, ellei sille esitetä pätevää vastaväitettä. Se sopii kokeiluihin, toimintaperiaatteisiin, rooleja koskeviin sopimuksiin ja muihin päätöksiin, joita ryhmä voi arvioida kokemuksen kartuttua.
 
-Suostumus ei edellytä, että ehdotus on kaikkien mielestä paras vaihtoehto. Määrittele ennen äänestystä, mikä lasketaan vastalauseeksi, ja kerro, miten vastalauseet arvioidaan ja ratkaistaan.
+Suostumus ei edellytä, että ehdotus on kaikkien mielestä paras vaihtoehto. Määrittele ennen äänestämistä, mikä lasketaan vastaväitteeksi, ja kerro, miten vastaväitteiden pätevyys arvioidaan ja miten ne ratkaistaan.
 
 <!-- translation-section: example-start-a-bottle-trial -->
 
 ## Esimerkki: aloita pullokokeilu
 
-Oatmilk Cooperative ehdottaa kuuden viikon kokeilua palautettavilla pulloilla ensi kuusta alkaen. Kokeilu on rajattu ja sen tulokset arvioidaan, joten ryhmä pohtii, onko sitä turvallista kokeilla.
+Oatmilk Cooperative ehdottaa kuuden viikon palautuspullokokeilun aloittamista ensi kuussa. Kokeilu on rajattu ja siihen sisältyy arviointi, joten ryhmä kysyy, onko sitä turvallista kokeilla.
 
 <!-- translation-section: set-up-the-proposal -->
 
-## Valmistele ehdotus
+## Luo ehdotus
 
-Kuvaa ehdotettu toiminta, sen rajat, varotoimet ja arviointiajankohta. Määrittele tarkasti, mitä **suostumus** ja **Vastalause** tarkoittavat. Edellytä vastalauseelle perustelua, jotta huoli voidaan ymmärtää ja käsitellä.
+Kuvaa ehdotettu toiminta, sen rajat, suojatoimet ja arvioinnin ajankohta. Määrittele **Suostumus**- ja **Vastalause**-vaihtoehtojen merkitykset tarkasti ja edellytä vastaväitteille perustelua, jotta huolenaihe voidaan ymmärtää ja käsitellä.
 
 ![](form.png)
 
@@ -59,7 +59,7 @@ Kuvaa ehdotettu toiminta, sen rajat, varotoimet ja arviointiajankohta. Määritt
 
 ## Äänestä
 
-Osallistujat valitsevat **suostumus**, kun ehdotusta on riittävän turvallista kokeilla, vaikka se ei olisi heidän ensisijainen vaihtoehtonsa. He valitsevat **Vastalause**, kun he voivat kuvata merkittävän riskin tai haitan.
+Osallistujat valitsevat **Suostumus**, kun ehdotusta on riittävän turvallista kokeilla, vaikka se ei olisi heidän mielestään paras suunnitelma. He valitsevat **Vastalause**, kun he voivat kuvata merkittävän riskin tai haitan.
 
 ![](../proposal_consent_voting.png)
 
@@ -67,14 +67,14 @@ Osallistujat valitsevat **suostumus**, kun ehdotusta on riittävän turvallista 
 
 ## Tarkastele tuloksia
 
-Kaavio näyttää vastalauseet, mutta ryhmän on tarkasteltava niiden perusteluja. Ratkaise perusteltu vastalause muuttamalla ehdotusta, lisäämällä varotoimi, muuttamalla sen laajuutta tai päättämällä olla etenemättä.
+Kaavio tuo vastaväitteet näkyviin, mutta ryhmän on tarkasteltava perusteluja. Ratkaise pätevä vastaväite muuttamalla ehdotusta, lisäämällä suojatoimi, muuttamalla ehdotuksen laajuutta tai päättämällä olla toteuttamatta sitä.
 
 ![](../proposal_consent_results.png)
 
 <!-- translation-section: share-an-outcome -->
 
-## Jaa päätelmä
+## Jaa johtopäätös
 
-Kun ehdotus sulkeutuu, jaa päätelmä. Kirjaa sovittu toiminta, miten mahdolliset vastalauseet ratkaistiin, kuka on vastuussa ja milloin ryhmä arvioi toimintaa. Katso päätelmien käyttöohjeet kohdasta [Jaa päätelmä](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome).
+Kun ehdotus sulkeutuu, jaa johtopäätös. Kirjaa sovittu toiminta, miten mahdolliset vastaväitteet ratkaistiin, kuka vastaa toteutuksesta ja milloin ryhmä arvioi toimintaa. Katso [Jaa johtopäätös](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome) saadaksesi tietoa johtopäätösten käytöstä.
 
-![Päätelmä, johon on kirjattu ratkaistu vastalause, aloituspäivä ja arviointiajankohta](outcome.png)
+![Johtopäätös, johon on kirjattu ratkaistu vastaväite, aloituspäivä ja arvioinnin ajankohta](outcome.png)

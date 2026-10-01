@@ -1,10 +1,10 @@
 ---
 title: Pikakierros
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/overview/orientation.md
+source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
+source_file: docs/en/user_manual/overview/orientation.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: bc1003860d699a8a
   group-page: 1592d5e9a232df4e
@@ -14,13 +14,13 @@ sections:
   notifications: 54d12e26d4e87f79
   what-to-do-next: 2946260092e30e4e
 generated:
-  introduction: 8f1b76af94b3ca33
-  group-page: 6cd0ec4b2d7468ab
-  tabs: 7ee5cf0e4657f267
-  sidebar: 26933b8c3646a046
-  user-settings: bd32e50609b8e1b2
-  notifications: 336da2011125a696
-  what-to-do-next: e4bc79a1e9271a5f
+  introduction: 295f556ce787407f
+  group-page: 20ebbf5f68b41673
+  tabs: 69e9324e941f69ef
+  sidebar: 217094b2312f3f72
+  user-settings: 37cbf030c2d41e85
+  notifications: fa6b7220b8489bfd
+  what-to-do-next: '0652697dff629d8d'
 title_source: c41a33370cd580dd
 title_generated: fa2ae81ceb5a86cf
 ---
@@ -29,13 +29,13 @@ title_generated: fa2ae81ceb5a86cf
 
 # Pikakierros
 
-Tällä sivulla tutustut Loomion käyttöliittymän tärkeimpiin osiin ja löydät sinua koskevat asiat.
+Tämä sivu esittelee Loomion käyttöliittymän tärkeimmät osat ja kertoo, mistä löydät sinua koskevan toiminnan.
 
 <!-- translation-section: group-page -->
 
 ## Ryhmän sivu
 
-Ryhmän etusivulla esitellään ryhmä ja sen toiminta.
+Ryhmäsi etusivu esittelee ryhmän ja tarjoaa pääsyn sen toimintaan.
 
 ![](group_example.png)
 
@@ -43,17 +43,17 @@ Ryhmän etusivulla esitellään ryhmä ja sen toiminta.
 
 ### Välilehdet
 
-Ryhmän kuvauksen alla olevilta välilehdiltä löydät:
+Ryhmän kuvauksen alla olevista välilehdistä löydät:
 
 **Keskustelut** - Ryhmän keskusteluketjut ja viimeaikaisen toiminnan.
 
-**Kyselyt** - Luettelon ryhmäsi käynnissä olevista kyselyistä.
+**Kyselyt** - Luettelon ryhmäsi avoimista kyselyistä.
 
 **Jäsenet** - Ryhmään kuuluvat ihmiset.
 
-**Tiedostot** - Ryhmän eri puolille liitetyt asiakirjat ja muut tiedostot. Välilehti kokoaa yhteen keskustelujen aloituksiin, kommentteihin, ehdotuksiin ja kyselyihin liitetyt tiedostot. Löydät asiakirjan, vaikka et muistaisi, mihin se liitettiin.
+**Tiedostot** - Ryhmän eri osiin liitetyt asiakirjat ja muut tiedostot. Välilehti kokoaa tiedostot keskustelujen konteksteista, kommenteista, ehdotuksista ja kyselyistä, joten löydät asiakirjan muistamatta, mihin se liitettiin.
 
-Katso [Sisällön löytäminen](/en/user_manual/overview/finding-content), kun tarvitset apua hakuun, suodattimiin, tunnisteisiin, kirjanmerkkeihin tai lukemattomiin keskusteluihin.
+Katso [Sisällön löytäminen](/en/user_manual/overview/finding-content), jos tarvitset apua haun, suodattimien, tunnisteiden, kirjanmerkkien ja lukemattomien keskustelujen kanssa.
 
 <!-- translation-section: sidebar -->
 
@@ -63,7 +63,7 @@ Avaa sivupalkki vasemman yläkulman valikkopainikkeella (**☰**).
 
 ![](sidebar.png)
 
-Sivupalkista pääset koontinäyttöösi, ääntäsi odottaviin kyselyihin, lukemattomiin ja suoriin keskusteluihin, tehtäviin sekä ryhmiin. Sieltä löydät myös käyttöoppaan ja tuen.
+Sivupalkista voit avata yleiskatsauksesi, ääntäsi odottavat kyselyt, lukemattomat ja suorat keskustelut, tehtävät ja ryhmät. Siellä on myös linkit käyttöoppaaseen ja tukeen.
 
 <!-- translation-section: user-settings -->
 
@@ -73,13 +73,13 @@ Avaa käyttäjävalikko valitsemalla nimesi sivupalkista.
 
 ![](user_settings_sidebar.png)
 
-Valikossa voit muokata profiiliasi, muuttaa ilmoitusasetuksia, valita teeman, hallita tilisi asetuksia ja kirjautua ulos.
+Tässä valikossa voit muokata profiiliasi, muuttaa ilmoitusasetuksia, valita teeman, hallita tiliasetuksia ja kirjautua ulos.
 
 <!-- translation-section: notifications -->
 
 ## Ilmoitukset
 
-Oikean yläkulman kellopainike avaa sovelluksen sisäiset ilmoituksesi. Painikkeessa näkyy merkki, kun sinulla on katsomattomia ilmoituksia.
+Oikean yläkulman kellopainike avaa sovelluksen sisäiset ilmoituksesi. Painikkeeseen ilmestyy merkki, kun sinulla on ilmoituksia, joita et ole katsonut.
 
 ![](../users/email_settings/in_app_notifications.png)
 
@@ -87,8 +87,8 @@ Lue [Ilmoitukset](/en/user_manual/users/email_settings), niin saat tietoa sovell
 
 <!-- translation-section: what-to-do-next -->
 
-## Mitä seuraavaksi
+## Mitä tehdä seuraavaksi
 
-- Lue [Osallistuminen](/en/user_manual/overview/how-to-participate), niin opit kommentoimaan, vastaamaan, reagoimaan ja äänestämään.
-- Lue [Sisällön löytäminen](/en/user_manual/overview/finding-content), niin opit löytämään keskustelut ja päätökset.
-- Tutustu tarkempiin ohjeisiin sivuilla [Keskustelut](/en/user_manual/discussions) ja [Ehdotukset ja kyselyt](/en/user_manual/polls/intro_to_decisions).
+- Lue [Näin osallistut](/en/user_manual/overview/how-to-participate), niin opit kommentoimaan, vastaamaan, reagoimaan ja äänestämään.
+- Lue [Sisällön löytäminen](/en/user_manual/overview/finding-content), niin opit löytämään keskusteluja ja päätöksiä.
+- Katso tarkemmat ohjeet sivuilta [Keskustelut](/en/user_manual/discussions) tai [Ehdotukset ja kyselyt](/en/user_manual/polls/intro_to_decisions).

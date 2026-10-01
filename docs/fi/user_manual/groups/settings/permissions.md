@@ -1,14 +1,14 @@
 ---
 title: Käyttöoikeudet
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/groups/settings/permissions.md
+source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
+source_file: docs/en/user_manual/groups/settings/permissions.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 89201fa8b1ae8d82
 generated:
-  introduction: '058e968496936fcc'
+  introduction: b45b8a12817f947d
 title_source: abccc78cc93c0793
 title_generated: 1d72200ffa693445
 ---
@@ -17,25 +17,25 @@ title_generated: 1d72200ffa693445
 
 # Ryhmän käyttöoikeudet
 
-Käyttöoikeudet-välilehdellä määrität, mitä tavalliset jäsenet voivat tehdä ryhmässä. Jos ryhmä ei ole salainen, voit määrittää myös ryhmään kuulumattomien henkilöiden oikeuksia. Avaa ryhmän sivulta **Muokkaa ryhmän asetuksia** ja valitse **Käyttöoikeudet**.
+Käyttöoikeudet-välilehti määrittää, mitä toimintoja tavalliset jäsenet voivat tehdä ryhmässä ja mitä muut kuin jäsenet voivat tehdä ryhmissä, jotka eivät ole salaisia. Avaa ryhmän sivulta **Muokkaa ryhmän asetuksia** ja valitse sitten **Käyttöoikeudet**.
 
 ![Ryhmän käyttöoikeusasetukset](group_group_settings_permissions.png)
 
-Järjestelmänvalvojat voivat edelleen hallinnoida ryhmää. Kun annat jäsenille oikeuden tehdä tietyn toiminnon, tavalliset jäsenet voivat tehdä sen. Heistä ei kuitenkaan tule järjestelmänvalvojia.
+Ylläpitäjillä säilyy oikeus hallita ryhmää. Kun otat jäsenille tarkoitetun käyttöoikeuden käyttöön, tavalliset jäsenet saavat oikeuden kyseiseen toimintoon. Se ei tee heistä ylläpitäjiä.
 
-Käyttöoikeuksilla määrität, voivatko jäsenet:
+Käyttöoikeuksilla määritetään muun muassa, voivatko jäsenet:
 
 - lisätä jäseniä tai kutsua vieraita;
-- lähettää ilmoituksia;
+- lähettää tiedotteita;
 - luoda alaryhmiä;
-- aloittaa ja hallinnoida keskusteluja;
-- luoda ja hallinnoida tunnisteita;
-- muokata tai poistaa kommentteja, jos asetus sallii sen;
-- aloittaa ehdotuksia ja kyselyjä; sekä
+- aloittaa ja hallita keskusteluja;
+- luoda ja hallita tunnisteita;
+- muokata tai poistaa kommentteja, kun asetus sallii sen;
+- aloittaa ehdotuksia ja kyselyjä; ja
 - luoda keskustelu- ja kyselymalleja.
 
-Jos ryhmä ei ole salainen, järjestelmänvalvojat voivat erikseen sallia ryhmään kuulumattomien henkilöiden aloittaa keskusteluja. Keskustelun aloittaneesta henkilöstä tulee kyseisen keskustelun vieras. Hän ei saa pääsyä muihin yksityisiin keskusteluihin eikä hänestä tule ryhmän jäsentä.
+Ryhmissä, jotka eivät ole salaisia, ylläpitäjät voivat erikseen sallia keskustelujen aloittamisen muille kuin jäsenille. Keskustelun aloittavasta henkilöstä tulee kyseisen keskustelun vieras, mutta hän ei saa pääsyä muihin yksityisiin keskusteluihin eikä hänestä tule ryhmän jäsentä.
 
-**Järjestelmänvalvojat voivat muokata jäsenten kommentteja** -asetus antaa järjestelmänvalvojille poikkeuksellisen oikeuden muokata jäsenten kirjoittamia kommentteja. Ota se käyttöön vain, jos ryhmä on sopinut tästä oikeudesta.
+**Järjestelmänvalvojat voivat muokata jäsenten kommentteja** -asetus antaa ylläpitäjille poikkeuksellisen moderointioikeuden. Ota se käyttöön vain, jos ryhmä on sopinut, että ylläpitäjät saavat muuttaa jäsenten kirjoittamaa sisältöä.
 
 Tarkista käyttöoikeudet, kun ryhmän tarkoitus, jäsenistö tai moderointivastuut muuttuvat. Anna kullekin roolille vain sen tarvitsemat oikeudet.

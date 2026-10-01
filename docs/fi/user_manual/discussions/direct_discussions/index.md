@@ -1,16 +1,16 @@
 ---
 title: Suorat keskustelut
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/discussions/direct_discussions/index.md
+source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
+source_file: docs/en/user_manual/discussions/direct_discussions/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: d84ab1e9a167cdee
   contacting-someone-via-a-direct-discussion: 5a0b9426a2d88e62
 generated:
-  introduction: f4a3870e5c3011f2
-  contacting-someone-via-a-direct-discussion: 0dee847db380d3cb
+  introduction: 8b5e593504b352b5
+  contacting-someone-via-a-direct-discussion: bcb5007d43000f63
 title_source: ccfab058f1f7c146
 title_generated: be5bd9cd1da45f5b
 ---
@@ -19,21 +19,21 @@ title_generated: be5bd9cd1da45f5b
 
 # Suorat keskustelut
 
-Suora keskustelu on yksityinen keskustelu tietylle joukolle ihmisiä.
+Suora keskustelu on yksityinen keskustelu tiettyjen ihmisten kesken.
 
-Suora keskustelu ei kuulu ryhmään. Kutsuttujen ei tarvitse olla Loomio-ryhmäsi jäseniä.
+Suora keskustelu ei kuulu mihinkään ryhmään. Kutsuttujen ihmisten ei tarvitse olla Loomio-ryhmäsi jäseniä.
 
-Määrität, ketkä voivat nähdä keskustelun ja osallistua siihen, lisäämällä ihmisiä tai sähköpostiosoitteita **Kutsu**-kenttään.
+Päätät, kuka voi nähdä keskustelun ja osallistua siihen, lisäämällä ihmisiä tai sähköpostiosoitteita **Kutsu**-kenttään.
 
-Suorissa keskusteluissa voi käyttää samoja kommentteja, kyselyitä ja muita työkaluja kuin ryhmäkeskusteluissa. Ne sopivat tilanteisiin, joissa alaryhmää ei tarvita.
+Suorissa keskusteluissa voit käyttää samoja kommentteja, kyselyjä ja muita työkaluja kuin ryhmän keskusteluissa. Niistä voi olla hyötyä, kun alaryhmän luominen on tarpeetonta.
 
-![Suoran keskustelun lomake, jossa ryhmää ei ole valittu ja Samira Patel on Kutsu-kentässä](direct-discussion-example.png)
+![Suoran keskustelun lomake, jossa ryhmää ei ole valittu ja Kutsu-kentässä on Samira Patel](direct-discussion-example.png)
 
-Näet suorat keskustelusi valitsemalla sivupalkista **Suorat säikeet**. Aloita uusi keskustelu valitsemalla sivulta **Uusi keskustelu**.
+Valitse sivupalkista **Suorat säikeet**, niin näet suorat keskustelusi. Aloita uusi keskustelu valitsemalla kyseisellä sivulla **Uusi keskustelu**.
 
-![Suorat säikeet sivupalkissa ja suorien keskustelujen luettelo](direct-discussion-sidebar.png)
+![Sivupalkin Suorat säikeet -kohta ja suorien keskustelujen luettelo](direct-discussion-sidebar.png)
 
 <!-- translation-section: contacting-someone-via-a-direct-discussion -->
 
-## Yhteyden ottaminen suoralla keskustelulla
-Voit ottaa yhteyttä yhteen tai useampaan ihmiseen yksityisesti suoran keskustelun kautta ilman alaryhmän luomista.
+## Yhteydenotto suoran keskustelun kautta
+Voit ottaa suoran keskustelun kautta yksityisesti yhteyttä yhteen tai useampaan ihmiseen luomatta alaryhmää.

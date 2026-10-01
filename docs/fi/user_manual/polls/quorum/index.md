@@ -1,16 +1,16 @@
 ---
 title: Päätösvaltaisuus
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/polls/quorum/index.md
+source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
+source_file: docs/en/user_manual/polls/quorum/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 0bf465006210877b
   example-scenario: 6596ad44e1c046b4
 generated:
-  introduction: 3f21e30e9c9f9b42
-  example-scenario: f29f0657c388685a
+  introduction: 5b17c6e06ac6746a
+  example-scenario: 5d1b5b99f55849a2
 title_source: 18ed8b6c5ab90343
 title_generated: 231a357976471e5a
 ---
@@ -19,36 +19,36 @@ title_generated: 231a357976471e5a
 
 # Päätösvaltaisuus
 
-Päätösvaltaisuuden saavuttamiseksi äänestykseen on osallistuttava vähintään tietyn prosenttiosuuden äänioikeutetuista. Voit käyttää osallistumisrajaa, kun päätöksentekotapanne edellyttää tiettyä osallistumistasoa.
+Päätösvaltaisuus tarkoittaa sitä vähimmäisprosenttia äänioikeutetuista äänestäjistä, jonka on osallistuttava, jotta kysely olisi pätevä. Käytä sitä, kun päätöksentekoprosessisi edellyttää tiettyä osallistumistasoa.
 
-Kun luot kyselyn, avaa **Lisää asetuksia** ja syötä vaadittu prosenttiosuus kohtaan **Osallistumispäätösvaltaisuus**. Jätä kenttä tyhjäksi, jos osallistumisrajaa ei tarvita.
+Kun luot kyselyn, avaa **Lisää asetuksia** ja syötä vaadittu prosenttiosuus kenttään **Osallistumispäätösvaltaisuus**. Jätä kenttä tyhjäksi, jos päätösvaltaisuutta ei edellytetä.
 
-![Päätösvaltaisuuden asetus, jossa osallistumisraja on 60 prosenttia](./quorum-section.png)
+![Päätösvaltaisuusasetus, jossa osallistumispäätösvaltaisuus on 60 prosenttia](./quorum-section.png)
 
-Voit asettaa osallistumisrajan myös [kyselymalliin](/en/user_manual/polls/poll_templates/). Silloin mallista luodut kyselyt käyttävät sitä oletusarvoisesti.
+Voit asettaa päätösvaltaisuuden myös [kyselymallissa](/en/user_manual/polls/poll_templates/), jolloin mallista luodut kyselyt käyttävät sitä oletuksena.
 
 <!-- translation-section: example-scenario -->
 
 ## Esimerkkitilanne
 
-Oatmilk-osuuskunta keskustelee kuuden viikon kokeilusta, jossa käytetään palautettavia pulloja. Keskustelu on edennyt vaiheeseen, jossa osuuskunnan on hyväksyttävä kokeilun budjetti.
+Oatmilk Cooperative keskustelee kuuden viikon kokeilusta, jossa käytetään palautettavia pulloja. Keskustelu on edennyt siihen vaiheeseen, että osuuskunnan on hyväksyttävä kokeilun budjetti.
 
-Jamie valitsee **Aloita äänestys**, valitsee **Suostumus**-ehdotusmallin ja täyttää otsikon, kuvauksen, vaihtoehdot, keston ja äänestäjien asetukset.
+Jamie valitsee **Aloita äänestys**, valitsee **Suostumus**-ehdotusmallin ja täyttää otsikon, tiedot, vaihtoehdot, keston ja äänestäjäasetukset.
 
-![Ehdotuksen otsikko, kuvaus, vaihtoehdot, kesto ja äänestäjien asetukset](proposal-options.png)
+![Ehdotuksen otsikko, tiedot, vaihtoehdot, kesto ja äänestäjäasetukset](proposal-options.png)
 
-Jamie rajaa äänestyksen viiteen henkilöön, jotka vastaavat kokeilun budjetista.
+Jamie rajaa äänestyksen viiteen kokeilun budjetista vastaavaan henkilöön.
 
-Osuuskunta edellyttää merkittävissä päätöksissä 60 prosentin osallistumista. Siksi Jamie syöttää osallistumispäätösvaltaisuuden kenttään **60** ja aloittaa ehdotuksen.
+Osuuskunta edellyttää merkittävissä päätöksissä 60 prosentin osallistumista, joten Jamie syöttää osallistumispäätösvaltaisuuden kenttään **60** ja käynnistää ehdotuksen.
 
-Ennen ensimmäistä ääntä tulospaneeli näyttää, ettei osallistumisrajaa ole saavutettu.
+Ennen kuin kukaan äänestää, tulospaneeli näyttää, ettei päätösvaltaisuutta ole saavutettu.
 
-![Yhtään ääntä ei ole annettu eikä 60 prosentin osallistumisrajaa ole saavutettu](pie-chart-0.png)
+![Yhtään ääntä ei ole annettu, eikä 60 prosentin päätösvaltaisuutta ole vielä saavutettu](pie-chart-0.png)
 
-Jamie kannattaa ehdotusta ja Samira vastustaa sitä. Kaavio päivittyy, mutta kaksi viidestä äänioikeutetusta tarkoittaa vain 40 prosentin osallistumista. Osallistumisrajaa ei siis ole vielä saavutettu.
+Jamie on samaa mieltä ja Samira on eri mieltä. Kaavio päivittyy, mutta kaksi viidestä äänioikeutetusta äänestäjästä tarkoittaa vain 40 prosentin osallistumista, joten päätösvaltaisuutta ei vieläkään ole saavutettu.
 
-![Kaksi viidestä äänestä on annettu eikä osallistumisrajaa ole vielä saavutettu](pie-chart-40.png)
+![Kaksi viidestä äänestä on annettu, eikä päätösvaltaisuutta ole vielä saavutettu](pie-chart-40.png)
 
-Sitten Alex kannattaa ehdotusta. Kolme viidestä äänioikeutetusta on osallistunut, joten 60 prosentin osallistumisraja täyttyy. Vaatimuksen kohdalla näkyy nyt vihreä valintamerkki. Jamie voi sulkea kyselyn etuajassa tai odottaa jäljellä olevia äänestäjiä.
+Alex on myös samaa mieltä. Kolme viidestä äänioikeutetusta äänestäjästä on osallistunut, joten 60 prosentin päätösvaltaisuus on saavutettu. Vaatimuksen kohdalla näkyy nyt vihreä valintamerkki. Jamie voi sulkea kyselyn etuajassa tai odottaa muiden äänestäjien ääniä.
 
-![Kolme viidestä äänestä on annettu ja 60 prosentin osallistumisraja on saavutettu](pie-chart-60.png)
+![Kolme viidestä äänestä on annettu, ja 60 prosentin päätösvaltaisuus on saavutettu](pie-chart-60.png)

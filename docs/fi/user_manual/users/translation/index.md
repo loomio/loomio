@@ -1,19 +1,19 @@
 ---
 title: Kieli ja kääntäminen
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/users/translation/index.md
+source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
+source_file: docs/en/user_manual/users/translation/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-30'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 339f8c77362b2d12
   application-translation: e1a57b4f96352649
   content-translation: 427aa006b46961a8
   automatic-translation: 32a1aa99502e1e87
 generated:
-  introduction: 1a89e73e609f3bf3
-  application-translation: 5bd00a48e0d35d76
-  content-translation: b6abeded9eb560ad
+  introduction: 23cc6583cd8c66f5
+  application-translation: 55513b1fa9b42b53
+  content-translation: 9f34d40e00c74ad3
   automatic-translation: c67c4532e242ed87
 title_source: 9fd7f67efecb7288
 title_generated: 1bcd9882ee0c6109
@@ -23,31 +23,31 @@ title_generated: 1bcd9882ee0c6109
 
 # Kielet ja kääntäminen
 
-Loomio tukee useita kieliä kahdella tavalla:
+Loomio tukee useita kieliä kahden toiminnon avulla:
 
-1. Käyttöliittymän kääntäminen – Voit vaihtaa painikkeiden ja muun käyttöliittymätekstin kielen.
-2. Sisällön kääntäminen – Voit kääntää kommentit, keskustelut ja ehdotukset haluamallesi kielelle.
+1. Sovelluksen kääntäminen - Vaihda käyttöliittymän eli painikkeiden ja sovelluksen tekstien kieli.
+2. Sisällön kääntäminen - Käännä kommentit, keskustelut ja ehdotukset haluamallesi kielelle.
 
 <!-- translation-section: application-translation -->
 
-## Käyttöliittymän kääntäminen
+## Sovelluksen kääntäminen
 
-Loomio tunnistaa haluamasi kielen automaattisesti, kun avaat sovelluksen selaimessa.  Jos haluat vaihtaa kieltä, voit tehdä sen "Muokkaa profiilia" -sivulla.
+Loomio tunnistaa haluamasi kielen automaattisesti, kun avaat sovelluksen selaimessasi. Jos haluat vaihtaa kielen, voit tehdä sen "Muokkaa profiilia" -sivulla.
 
 ![Haluamasi kielen vaihtaminen](change_language.png)
 
 <!-- translation-section: content-translation -->
 
 ## Sisällön kääntäminen
-Jos joku ryhmässäsi kirjoittaa viestin muulla kuin valitsemallasi kielellä, viestin alle ilmestyy "Käännä"-painike. Napsauta sitä, niin viesti käännetään automaattisesti valitsemallesi kielelle.
+Kun joku ryhmässäsi kirjoittaa viestin eri kielellä kuin valitsemallasi kielellä, viestin alle ilmestyy "käännä"-painike. Napsauta painiketta kääntääksesi viestin automaattisesti haluamallesi kielelle.
 
 ![Sisällön kääntäminen](content_translation.png)
 
-Käännös korvaa alkuperäisen tekstin keskustelussa. Näytä alkuperäinen teksti uudelleen valitsemalla **Alkuperäinen**.
+Käännetty teksti korvaa alkuperäisen tekstin keskustelussa. Valitse **alkuperäinen**, niin näet alkuperäisen tekstin uudelleen.
 
 ![Espanjasta englanniksi käännetty kommentti](content_translated.png)
 
-Google Kääntäjä kääntää käyttäjien sisältöä käyttäjän pyynnöstä.
+Käyttäjien sisällön kääntämiseen käytetään Google Kääntäjää. Sisältö käännetään käyttäjän pyynnöstä.
 
 <!-- translation-section: automatic-translation -->
 

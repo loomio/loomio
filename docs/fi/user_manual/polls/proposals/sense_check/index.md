@@ -1,6 +1,6 @@
 ---
 title: Sense check
-source_revision: 9c60c42fc739483fa23f15d9f34a1e9245518092
+source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
 source_file: docs/en/user_manual/polls/proposals/sense_check/index.md
 translated:
   provider: codex/gpt-6.1-sol
@@ -14,49 +14,49 @@ sections:
   read-the-results: 9cac8b6f7c7de36f
   share-an-outcome: b05f9f889a838d47
 generated:
-  introduction: 6015328fcedd2fd1
-  when-to-use-sense-check: e25ab96d4cf80fa7
-  example-check-a-trial-plan: bdcdd56fab5ee00d
-  set-up-the-proposal: afc6d205d2721f94
-  vote: f6ecf7a9ec6d3bb4
-  read-the-results: 6507a151ca2835f8
-  share-an-outcome: c04b464c6c808be9
+  introduction: 6c867126d55d7f8d
+  when-to-use-sense-check: 322c9caae40ba932
+  example-check-a-trial-plan: b4a0ec34916b1eb5
+  set-up-the-proposal: 6533aa943612db90
+  vote: 2d32a9975761d972
+  read-the-results: 6c810d04e13efbfa
+  share-an-outcome: b6f30ff7512bcc32
 title_source: e9ac5b767e01ae7b
 title_generated: e9ac5b767e01ae7b
 ---
 
 <!-- translation-section: introduction -->
 
-# Sense check
+# Tunnustelu
 
-Sense check kerää mielipiteitä, kun ideaa vielä kehitetään. Vaihtoehdot **Näyttää hyvältä**, **Voisi olla parempi** ja **Tarvitsee uudelleenarviointia** kertovat, voiko ryhmä edetä vai pitääkö ideaa ensin muokata.
+Tunnustelu kerää reaktioita, kun ideaa vielä kehitetään. Sen vaihtoehdot — **Näyttää hyvältä**, **Voisi olla parempi** ja **Tarvitsee uudelleenarviointia** — osoittavat, onko ryhmä valmis etenemään vai pitäisikö ideaa ensin muokata.
 
-Tällä sivulla kerrotaan, miten teet Sense check -kyselyn. Katso [yksinkertainen päätösprosessi](/en/guides/making_decisions/simple_decision_process), [suostumusprosessi](/en/guides/making_decisions/consent_process) tai [konsensusprosessi](/en/guides/making_decisions/consensus_process), jos haluat nähdä esimerkkejä Sense checkin käytöstä osana laajempaa prosessia.
+Tällä sivulla kerrotaan, miten järjestät yhden tunnustelun. Katso esimerkkejä tunnustelun käyttämisestä osana laajempaa prosessia sivuilta [Yksinkertainen päätösprosessi](/en/guides/making_decisions/simple_decision_process), [Suostumusprosessi](/en/guides/making_decisions/consent_process) ja [Konsensusprosessi](/en/guides/making_decisions/consensus_process).
 
 <!-- translation-section: when-to-use-sense-check -->
 
-## Milloin Sense checkiä kannattaa käyttää
+## Milloin tunnustelua kannattaa käyttää
 
-Käytä Sense checkiä, kun haluat:
+Käytä tunnustelua, kun haluat:
 
-- testata varhaista luonnosta ennen yksityiskohtaisen ehdotuksen laatimista;
-- tuoda kysymykset ja huolenaiheet esiin ennen varsinaista päätöstä;
-- selvittää, tarvitaanko vielä lisää keskustelua; tai
-- verrata idean saamaa kannatusta ennen sen muokkaamista ja sen jälkeen.
+- testata alustavaa luonnosta ennen kuin käytät aikaa yksityiskohtaiseen ehdotukseen;
+- tuoda esiin kysymyksiä ja huolia ennen virallista päätöstä;
+- tarkistaa, tarvitaanko vielä uusi keskustelukierros; tai
+- verrata kannatusta ennen idean muokkaamista ja sen jälkeen.
 
-Älä pidä vastausta **Näyttää hyvältä** muodollisena hyväksyntänä, ellei ryhmä ole nimenomaisesti sopinut siitä. Käytä [suostumusta](../consent/) tai [konsensusta](../consensus/), kun vastausten perusteella on voitava tehdä päätös.
+Älä tulkitse **Näyttää hyvältä** -vastausta viralliseksi hyväksynnäksi, ellei ryhmä ole nimenomaisesti sopinut niin. Käytä [Suostumusta](../consent/) tai [Konsensusta](../consensus/), kun vastauksen on annettava valtuutus päätökseen.
 
 <!-- translation-section: example-check-a-trial-plan -->
 
-## Esimerkki: kokeilusuunnitelman arviointi
+## Esimerkki: tarkista kokeilusuunnitelma
 
-Kauramaito-osuuskunta on laatinut suunnitelman palautuspullojen kokeilusta. Se käyttää Sense checkiä selvittääkseen, ovatko pullojen keräysaikataulu, pesun tarkistukset ja raportointisuunnitelma valmiita lopulliseen arviointiin.
+Oatmilk-osuuskunta on laatinut luonnoksen palautettavien pullojen kokeilusta. Se järjestää tunnustelun selvittääkseen, ovatko keräysaikataulu, pesun tarkistukset ja raportointisuunnitelma valmiita lopulliseen arviointiin.
 
 <!-- translation-section: set-up-the-proposal -->
 
-## Ehdotuksen valmistelu
+## Valmistele ehdotus
 
-Kerro, missä vaiheessa idea on ja miten palautetta käytetään. Säilytä vastausvaihtoehtojen oletusmerkitykset tai muokkaa niitä ryhmän käyttämään kieleen sopiviksi. Aseta sulkeutumisaika niin, että suunnitelman muokkaamiseen jää riittävästi aikaa.
+Kerro, missä vaiheessa idea on ja miten palautetta käytetään. Säilytä vastausten oletusmerkitykset tai muokkaa niitä vastaamaan ryhmän käyttämää kieltä. Aseta sulkemisaika niin, että suunnitelman muokkaamiseen jää riittävästi aikaa.
 
 ![](form.png)
 
@@ -64,15 +64,15 @@ Kerro, missä vaiheessa idea on ja miten palautetta käytetään. Säilytä vast
 
 ## Äänestä
 
-Osallistujat valitsevat nykyistä näkemystään parhaiten kuvaavan vaihtoehdon ja kertovat, mikä on valmista tai mitä pitäisi muuttaa. Hyvä perustelu antaa ehdotuksen tekijälle konkreettisen muutosehdotuksen.
+Osallistujat valitsevat vastauksen, joka parhaiten kuvaa heidän tämänhetkistä näkemystään, ja kertovat, mikä on valmista tai mitä pitäisi muuttaa. Hyödyllinen perustelu antaa ehdotuksen laatijalle konkreettisen asian, johon tarttua.
 
 ![](../proposal_sense_check_voting.png)
 
 <!-- translation-section: read-the-results -->
 
-## Tulosten tarkastelu
+## Lue tulokset
 
-Kaavio näyttää kunkin vastausvaihtoehdon äänimäärän ja osuuden. Tarkastele jakauman lisäksi myös perusteluja: yksikin hyvin perusteltu huolenaihe voi vaatia huomiota, vaikka useimmat osallistujat valitsisivat **Näyttää hyvältä**.
+Kaavio näyttää kunkin vastauksen saamien äänten määrän ja osuuden. Lue myös perustelut äänten jakauman lisäksi: yksi hyvin perusteltu huoli voi vaatia huomiota, vaikka useimmat osallistujat valitsisivat **Näyttää hyvältä**.
 
 ![](../proposal_sense_check_results.png)
 
@@ -80,6 +80,6 @@ Kaavio näyttää kunkin vastausvaihtoehdon äänimäärän ja osuuden. Tarkaste
 
 ## Jaa johtopäätös
 
-Kun Sense check päättyy, jaa johtopäätös. Kerro tiiviisti, mitä ryhmä muuttaa, tai kirjaa, että idea on valmis päätösprosessin seuraavaan vaiheeseen. Katso sivulta [Jaa johtopäätös](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome), miten johtopäätökset toimivat.
+Kun tunnustelu sulkeutuu, jaa johtopäätös. Tiivistä muutokset, jotka ryhmä tekee, tai kirjaa, että idea on valmis päätösprosessin seuraavaan vaiheeseen. Katso sivulta [Jaa johtopäätös](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome), miten johtopäätökset toimivat.
 
 ![Johtopäätös, jossa kerrotaan, että suunnitelmaa muokataan ennen lopullista arviointia](outcome.png)

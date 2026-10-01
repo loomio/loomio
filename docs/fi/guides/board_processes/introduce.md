@@ -1,10 +1,10 @@
 ---
 title: Loomion esittely hallituksellesi
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/guides/board_processes/introduce.md
+source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
+source_file: docs/en/guides/board_processes/introduce.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-30'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: c0d64682f409c229
   check-technical-proficiency: 17e1c92a0214a12c
@@ -16,15 +16,15 @@ sections:
   manage-group-membership: cf3684fe138b05fe
   start-with-a-board-process: 916878a28e4bbe01
 generated:
-  introduction: 86fc1aad0552bbfd
-  check-technical-proficiency: af30f47f78c47efa
-  configure-your-group: d637c4144c571fe6
-  group-description: 581b0bca17629f9f
-  check-privacy-and-permission-settings: de4050a7bd246bcf
-  category-tags: 1fa1916a1fce8e42
-  set-up-your-personal-profile: 854b637f6df3bf03
-  manage-group-membership: 0a9e5201040ec6c6
-  start-with-a-board-process: 44a05dcd76d1a8d3
+  introduction: 54c9cf98b478d84e
+  check-technical-proficiency: 316f73343316e01f
+  configure-your-group: 3a29fa9d076d5804
+  group-description: 42d3e639a458bd58
+  check-privacy-and-permission-settings: 11c49447a90b9ab0
+  category-tags: 98c1d22e58c128a9
+  set-up-your-personal-profile: bf210874c1913035
+  manage-group-membership: ef99cb7d9f986935
+  start-with-a-board-process: 14e70f4500fa380a
 title_source: 0d24828b57de672c
 title_generated: cba3b9c1710f8670
 ---
@@ -33,81 +33,81 @@ title_generated: cba3b9c1710f8670
 
 # Loomion esittely hallituksellesi
 
-Loomio voi olla verkkotila, jossa hallitus tai toimikunta kokoontuu, keskustelee, tekee päätöksiä ja tallentaa organisaatiolleen jäljitettävän päätöshistorian.
+Loomio voi toimia verkkopaikkana, jossa hallituksesi tai toimikuntasi kokoontuu, keskustelee, tekee päätöksiä ja luo organisaatiollesi jälkikäteen tarkastettavan dokumentaation.
 
-Aloita oppaan [Loomion esittely ryhmällesi](/en/user_manual/overview/introducing_loomio) yleisistä vaiheista. Tällä sivulla käsitellään hallitusten ja toimikuntien erityistarpeita.
+Aloita oppaan [Loomion esittely ryhmällesi](/en/user_manual/overview/introducing_loomio) yleisistä vaiheista. Tällä sivulla käsitellään lisäksi hallituksille ja toimikunnille olennaisia asioita.
 
-Loomiosta on vain vähän hyötyä, jos vain osa hallituksen jäsenistä osallistuu. Tiedot ja viestintä jäävät helposti hajalleen eri työkaluihin ja sähköpostilaatikoihin. Tästä syntyvä epäselvyys vie kaikkien aikaa.
+Loomiosta on kuitenkin vain vähän hyötyä, jos vain osa hallituksestasi osallistuu. Tiedot ja viestintä jäävät todennäköisesti hajalleen eri työkaluihin ja hukkuvat sähköpostin Saapuneet-kansioihin, ja epäselvyydet vievät kaikkien aikaa.
 
-Mieti, mitä ongelmaa haluat ratkaista Loomiolla. Voit esimerkiksi parantaa viestintää ja pitää siitä kirjaa tai tallentaa organisaation tietoa myöhempää käyttöä varten. Sopikaa sitten hallituksessa, että siirrätte työnne Loomioon, ja kannustakaa kaikkia osallistumaan.
+Mieti, minkä ongelman haluat ratkaista Loomion avulla: esimerkiksi parantaa ja seurata viestintää tai kerryttää organisaation yhteistä muistia. Sitoutukaa sitten hallituksena siirtämään työskentelynne Loomioon ja kannusta kaikkia panostamaan sen käyttöön.
 
-Ylläpitäjänä tärkein tehtäväsi on ottaa Loomio käyttöön hallituksellesi sopivalla tavalla.
+Ylläpitäjänä tärkein tavoitteesi on määrittää Loomio niin, että se palvelee hallitustasi hyvin.
 
-Kannusta hallituksen jäseniä liittymään ja osallistumaan. Heidän pitäisi osata:
+Kannusta hallituksen jäseniä liittymään ja osallistumaan. Heidän tulisi osata:
 
 - Kirjautua Loomioon
-- Lukea keskusteluketjuja ja kommentoida niitä
+- Lukea ketjuja ja kommentoida niissä
 - Äänestää kyselyissä
-- Nähdä, miten hallituksen toimintatavat toteutuvat Loomiossa
+- Ymmärtää, miten hallintokäytäntönne toimivat Loomiossa
 
 <!-- translation-section: check-technical-proficiency -->
 
-## Tarkista tekniset taidot
+## Tarkista tekniset valmiudet
 
-Hallituksen jäsenet tarvitsevat internetiin yhdistetyn tietokoneen tai älypuhelimen. Heidän on osattava lähettää ja vastaanottaa sähköpostia, käyttää verkkoselainta, lukea digitaalisia asiakirjoja sekä katsoa ja kuunnella videoita.
+Hallituksen jäsenet tarvitsevat internetiin yhdistetyn tietokoneen tai älypuhelimen. Heidän on osattava lähettää ja vastaanottaa sähköpostia, selata verkkosivuja, lukea digitaalisia asiakirjoja sekä katsella ja kuunnella videoita.
 
-Varmista, että kaikilla jäsenillä on seuraavat välineet ja taidot:
+Tarkista, että jäsenillä on kaikki seuraavat:
 
-- Ajantasainen tietokone, tabletti tai älypuhelin, jolla voi käyttää sähköpostia ja nykyaikaista verkkoselainta
-- Internet-yhteys Wi-Fi-verkon, Ethernet-kaapelin tai mobiilidatan kautta (vähintään 3G)
-- Taito lähettää ja vastaanottaa sähköpostia, selata verkkoa, ladata asiakirjoja ja toistaa videoita.
+- ajantasainen laite — tietokone, tabletti tai älypuhelin, jossa on sähköposti ja nykyaikainen verkkoselain
+- internetyhteys WIFI-verkon, Ethernet-kaapelin tai mobiilidataliittymän kautta (3G tai uudempi)
+- valmiudet lähettää ja vastaanottaa sähköpostia, selata internetiä, ladata asiakirjoja ja toistaa videoita.
 
-Loomio toimii yleisillä verkkoselaimilla, kuten Google Chromella, Microsoft Edgellä, Firefoxilla ja Apple Safarilla. Vanhentuneet selaimet, kuten Microsoft Internet Explorer, eivät välttämättä toimi.
+Loomio toimii kaikilla tavallisilla verkkoselaimilla, kuten Google Chromella, Microsoft Edgellä, Firefoxilla ja Apple Safarilla. Vanhat selaimet, kuten Microsoft Internet Explorer, eivät välttämättä toimi.
 
-Jos Loomion käyttö laitteellasi ei onnistu, [ota yhteyttä Loomion tukeen](/contact).
+Jos Loomion käytössä laitteellasi on ongelmia, [ota yhteyttä Loomion tukeen](/contact).
 
 <!-- translation-section: configure-your-group -->
 
-## Määritä ryhmän asetukset
+## Määritä ryhmäsi asetukset
 
 <!-- translation-section: group-description -->
 
 ### Ryhmän kuvaus
-Ryhmän kuvaus on ensimmäinen asia, jonka ihmiset näkevät saapuessaan Loomio-ryhmääsi. Kirjoita kuvaus, joka auttaa uusia jäseniä ymmärtämään ryhmän tarkoituksen ja yhteisen työnne. Lisää myös muuta tietoa, joka auttaa heitä pääsemään mukaan ja osallistumaan.
+Ryhmän kuvaus on ensimmäinen asia, jonka ihmiset näkevät saapuessaan Loomio-ryhmääsi. Kirjoita se niin, että uudet jäsenet ymmärtävät ryhmän tarkoituksen ja sen, mitä teette yhdessä. Lisää myös muita tietoja, jotka auttavat ihmisiä pääsemään alkuun ja kannustavat osallistumaan.
 
-Voit esimerkiksi toivottaa jäsenet tervetulleiksi ja kertoa, että tämä on organisaationne viestinnän ja päätöksenteon verkkotila:
+Voit esimerkiksi toivottaa ihmiset tervetulleiksi ja kertoa, että tämä on heidän yhteinen verkkotilansa organisaation viestintään ja hallintoon:
 
 - Muistuta jäseniä hallituksen tai toimikunnan tarkoituksesta.
-- Kerro, miten aiotte käyttää Loomiota kokouksiin valmistautumiseen, keskustelujen jatkamiseen, päätösten tekemiseen ja asioiden seuraamiseen kokousten välillä.
-- Kerro selvästi, kenellä on pääsy ryhmään ja kuka voi lukea sisältöä ja osallistua.
-- Liitä tai linkitä tausta-aineistot ja hallintoa koskevat asiakirjat.
+- Kuvaile, miten aiotte käyttää Loomiota: valmistautua kokouksiin, edistää keskusteluja, tehdä päätöksiä ja pysyä ajan tasalla kokousten välillä.
+- Kerro selvästi, kenellä on pääsy ryhmään ja kuka voi lukea ja osallistua.
+- Lisää tausta- tai hallintoasiakirjat liitteinä tai linkkeinä.
 
 <!-- translation-section: check-privacy-and-permission-settings -->
 
 ### Tarkista yksityisyys- ja käyttöoikeusasetukset
-Loomio-ryhmät ovat oletusarvoisesti **Salainen**, joten vain erikseen kutsumasi ihmiset tietävät ryhmän olemassaolosta.
+Loomio-ryhmien oletusasetus on **Salainen**, mikä tarkoittaa, että vain ryhmään erikseen kutsumasi ihmiset tietävät sen olemassaolosta.
 
-Tutustu [jäsenten käyttöoikeuksiin](/en/user_manual/groups/settings#permissions) ja määritä ne ryhmäsi jäsenten taitojen mukaan. Aluksi voi olla hyödyllistä poistaa joitakin oikeuksia, jotta käyttö pysyy selkeänä. Voit palauttaa oikeudet myöhemmin, kun Loomio on kaikille tutumpi.
+Tutustu [jäsenten käyttöoikeuksiin](/en/user_manual/groups/settings#permissions) ja määritä ne ryhmäsi jäsenten taitojen mukaan. Joidenkin käyttöoikeuksien poistaminen käytöstä voi auttaa välttämään epäselvyyksiä alkuvaiheessa. Voit palauttaa käyttöoikeudet, kun Loomio tulee kaikille tutummaksi.
 
 <!-- translation-section: category-tags -->
 
-### Luokkatunnisteet
-Lisää organisaatiollesi sopivat [luokkatunnisteet](/en/user_manual/discussions/tags/). Kun määrität ne etukäteen, kaikkien on helpompi käyttää tunnisteita sekä löytää etsimänsä keskusteluketjut ja tiedot.
+### Luokittelutunnisteet
+Lisää organisaatiollesi sopivia [luokittelutunnisteita](/en/user_manual/discussions/tags/). Niiden määrittäminen etukäteen auttaa kaikkia käyttämään tunnisteita ja löytämään etsimänsä ketjut ja tiedot.
 
 <!-- translation-section: set-up-your-personal-profile -->
 
-### Määritä oma profiilisi
-[Oma profiilisi](/en/user_manual/users/user_profile) auttaa ryhmäsi jäseniä tunnistamaan sinut ja varmistumaan siitä, että lähettämäsi viestit ovat sinulta.
+### Täydennä henkilökohtainen profiilisi
+[Henkilökohtainen profiilisi](/en/user_manual/users/user_profile) auttaa ryhmäsi jäseniä tunnistamaan sinut helposti ja luottamaan siihen, että sinulta saamansa viestit ovat todella sinun lähettämiäsi.
 
 <!-- translation-section: manage-group-membership -->
 
-### Hallinnoi ryhmän jäsenyyksiä
-Varmista, että kaikki hallituksen tai toimikunnan jäsenet on [kutsuttu](/en/user_manual/groups/inviting_people/) ryhmään ja että he ovat hyväksyneet kutsunsa.
+### Hallitse ryhmän jäsenyyksiä
+Varmista, että kaikki hallituksesi tai toimikuntasi jäsenet on [kutsuttu](/en/user_manual/groups/inviting_people/) ryhmään ja että he ovat hyväksyneet kutsunsa.
 
 <!-- translation-section: start-with-a-board-process -->
 
-### Aloita hallituksen toistuvasta toimintatavasta
+### Aloita yhdestä hallituksen käytännöstä
 
-Yleisessä aloitusoppaassa kerrotaan, miten autat kaikkia kommentoimaan ja äänestämään kerran. Jatkakaa hallituksessa harjoittelemalla yhtä toistuvaa toimintatapaa, kuten esityslistan valmistelua, pöytäkirjan hyväksymistä, raportin käsittelyä tai pienen päätöksen tekemistä kokousten välillä.
+Yleisessä esittelyoppaassa kerrotaan, miten voit auttaa kaikkia kommentoimaan ja äänestämään kerran. Jatkakaa hallituksessa tämän harjoituksen jälkeen yhdellä toistuvalla hallintokäytännöllä, kuten esityslistan valmistelulla, pöytäkirjan hyväksymisellä, raportin tarkastelulla tai pienen päätöksen tekemisellä kokousten välillä.
 
-Sopikaa, tulevatko Loomiossa tehdyt päätökset voimaan, kun niiden johtopäätös julkaistaan, vai pitääkö ne vahvistaa seuraavassa kokouksessa. Kirjatkaa sovittu päätösvaltaisuus, hyväksymiseen vaadittava äänimäärä, äänioikeutetut ja vahvistamismenettely ryhmän kuvaukseen tai hallintoa koskeviin asiakirjoihin.
+Sopikaa, tulevatko Loomiossa tehdyt päätökset voimaan, kun niiden johtopäätös julkaistaan, vai pitääkö ne vahvistaa seuraavassa kokouksessa. Kirjaa sovittu päätösvaltaisuuden edellyttämä osallistumisosuus, päätökseen vaadittava ääniosuus, äänioikeutetut henkilöt ja vahvistamismenettely ryhmän kuvaukseen tai hallintoasiakirjoihin.

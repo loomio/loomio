@@ -1,10 +1,10 @@
 ---
 title: Osallistumisraportti
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/groups/participation_report/index.md
+source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
+source_file: docs/en/user_manual/groups/participation_report/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 9ec21a12ab444c80
   what-s-in-the-report: 90b9c89c6933eeee
@@ -15,14 +15,14 @@ sections:
   users-per-country: 7f61b0c9a0002eec
   actions-per-country: 900472e9fa675e08
 generated:
-  introduction: 77b7328fee3642ee
+  introduction: 5d7fcc96785fd7d1
   what-s-in-the-report: 9b674853531637f1
-  actions-per-month: d304886f12097b22
-  tag-usage: 3d6d47424222d770
-  actions-per-user: cb659fc39046d563
-  voting-record-per-user: 02722555ed06d1e3
-  users-per-country: 95ad91fc1e07e049
-  actions-per-country: 07ac19dd5add3ef8
+  actions-per-month: 5c583b4c3d18519f
+  tag-usage: f3b5a308c873d06c
+  actions-per-user: 2e5e9d60f7afbafb
+  voting-record-per-user: b18a57c6d0500225
+  users-per-country: 5848a8b79a54deda
+  actions-per-country: a3be43d9f48ed835
 title_source: ee140bf2af2bcf29
 title_generated: b632b2e9779cd2c8
 ---
@@ -31,15 +31,15 @@ title_generated: b632b2e9779cd2c8
 
 # Osallistumisraportti
 
-Ryhmän osallistumisraportti näyttää, miten Loomio-ryhmääsi käytetään.
+Ryhmän osallistumisraportti kertoo, miten Loomio-ryhmääsi käytetään.
 
-Voit valita raporttiin sisällytettävät ryhmät, alku- ja loppupäivän sekä aikavälin, jonka mukaan tulokset ryhmitellään (vuosi, kuukausi, viikko tai päivä).
+Voit valita raporttiin sisällytettävät ryhmät, raportin alku- ja loppupäivän sekä aikavälin (vuosi, kuukausi, viikko tai päivä), jonka mukaan tulokset ryhmitellään.
 
-Raportti on kaikkien ryhmäsi jäsenten saatavilla. Kukin käyttäjä näkee kuitenkin vain niiden ryhmien tulokset, joihin hän kuuluu. Siksi raportti voi näyttää eri käyttäjille hieman erilaiselta.
+Raportti on kaikkien ryhmäsi jäsenten käytettävissä, mutta käyttäjät näkevät tulokset vain ryhmistä, joihin he kuuluvat. Siksi eri käyttäjien raportit voivat poiketa hieman toisistaan.
 
-Löydät raportin napsauttamalla ryhmän asetusvalikon hammasratasta alla olevan kuvan mukaisesti.
+Löydät raportin napsauttamalla ryhmän asetusvalikon hammasrataskuvaketta alla olevan kuvan mukaisesti.
 
-![Osallistumisraportin toiminto Oatmilk Cooperative -ryhmän valikossa](group_participation_report.png)
+![Osallistumisraportin valinta Oatmilk Cooperative -ryhmän valikossa](group_participation_report.png)
 
 <!-- translation-section: what-s-in-the-report -->
 
@@ -47,61 +47,61 @@ Löydät raportin napsauttamalla ryhmän asetusvalikon hammasratasta alla olevan
 
 <!-- translation-section: actions-per-month -->
 
-### Toimet kuukausittain
+### Toiminnot kuukausittain
 
-Näe, kuinka paljon ryhmässäsi osallistutaan valitulla ajanjaksolla.
+Näet, kuinka paljon ryhmässäsi osallistutaan tietyn ajanjakson aikana.
 
-Raportti näyttää kuukausittain keskusteluketjujen, kommenttien, kyselyiden, äänten ja reaktioiden määrän. Kaaviosta näet, miten aktiivisuus vaihtelee.
+Raportti näyttää kuukausittain luotujen ketjujen ja kyselyjen sekä annettujen kommenttien, äänten ja reaktioiden määrät. Kaavio näyttää, miten käyttö vaihtelee.
 
-Poista tietoja kaaviosta napsauttamalla niitä vastaavia selitteitä.
+Piilota tietoja kaaviosta napsauttamalla niiden selitteitä.
 
-Järjestä taulukko sarakkeen mukaan napsauttamalla sen otsikkoa.
+Lajittele taulukko sarakkeen mukaan napsauttamalla sen otsikkoa.
 
-![Osallistumisraportin valinnat, kokonaismäärät ja Oatmilk Cooperative -ryhmän toimintakaavio](group_participation_report_graph.png)
+![Oatmilk Cooperative -ryhmän osallistumisraportin asetukset, kokonaismäärät ja aktiivisuuskaavio](group_participation_report_graph.png)
 
 <!-- translation-section: tag-usage -->
 
 ### Tunnisteiden käyttö
 
-Tästä näet, kuinka usein eri tunnisteita on käytetty valitulla ajanjaksolla. Voit esimerkiksi nähdä, kuinka monessa päätöksessä on käytetty tiettyä päätöksentekotapaa tai mallia.
+Näet, kuinka usein eri tunnisteita on käytetty valitulla ajanjaksolla. Voit esimerkiksi nähdä, kuinka monessa päätöksessä on käytetty tiettyä päätöksentekoprosessia tai mallia.
 
-![Production-, Cafe partnerships- ja Operations-tunnisteiden käyttö ajan mittaan](group_participation_report_tags.png)
+![Tuotannon, kahvilakumppanuuksien ja toiminnan tunnisteiden käyttö ajan mittaan](group_participation_report_tags.png)
 
 <!-- translation-section: actions-per-user -->
 
-### Toimet käyttäjittäin
-Näe, ketkä osallistuvat ryhmässäsi eniten ja vähiten.
+### Toiminnot käyttäjittäin
+Näet, ketkä osallistuvat ryhmässäsi eniten ja ketkä vähiten.
 
-Taulukko näyttää, kuinka monta keskusteluketjua, kommenttia, kyselyä, ääntä ja reaktiota kukin valittujen ryhmien käyttäjä on tuottanut ajanjaksolla. Järjestä taulukko sarakkeen mukaan napsauttamalla sen otsikkoa.
+Taulukko näyttää, kuinka monta ketjua ja kyselyä kukin valittujen ryhmien käyttäjä on luonut sekä kuinka monta kommenttia, ääntä ja reaktiota hän on antanut valitulla ajanjaksolla. Lajittele taulukko sarakkeen mukaan napsauttamalla sen otsikkoa.
 
-Ota **Vain edustajat** käyttöön, niin näet henkilöt, jotka ovat tällä hetkellä edustajia jossakin valituista ryhmistä. Heidän toimintansa ja äänestystietonsa lasketaan yhteen kaikista valituista ryhmistä. Taulukossa näkyvät myös edustajat, jotka eivät olleet aktiivisia valitulla ajanjaksolla. CSV-latauksessa käytetään samaa suodatinta.
+Ota **Vain edustajat** käyttöön, niin näet henkilöt, jotka ovat tällä hetkellä edustajia jossakin valituista ryhmistä. Heidän toimintonsa ja äänestystietonsa lasketaan yhteen kaikista valituista ryhmistä. Myös edustajat, joilla ei ole toimintoja valitulla ajanjaksolla, pysyvät taulukossa. Ladattavassa CSV-tiedostossa käytetään samaa suodatinta.
 
-![Edustajien toimet kolmella osallistumistasolla](group_participation_report_actions_per_user.png)
+![Toiminnot edustajittain kolmella osallistumistasolla](group_participation_report_actions_per_user.png)
 
 <!-- translation-section: voting-record-per-user -->
 
 ### Äänestystiedot käyttäjittäin
 
-Vertaa, kuinka moneen äänestykseen kukin henkilö on kutsuttu ja kuinka monessa hän on äänestänyt. Näet väliin jääneet äänestykset ja henkilöt, jotka ovat osallistuneet jokaiseen heille osoitettuun äänestykseen. Henkilöä, jolle ei ole osoitettu yhtään äänestystä, ei merkitä kaikkiin äänestäneeksi. Nimettömät kyselyt jätetään pois, koska nimetöntä ääntä ei saa yhdistää sen antajaan.
+Vertaa kullekin henkilölle myönnettyjen äänten määrää hänen antamiensa äänten määrään, tarkastele antamatta jääneitä ääniä ja tunnista henkilöt, jotka ovat antaneet kaikki heille myönnetyt äänet. Henkilöä, jolle ei ole myönnetty yhtään ääntä, ei näytetä kaikki äänensä antaneena. Anonyymit kyselyt jätetään pois, koska anonyymiä ääntä ei saa yhdistää sen antaneeseen henkilöön.
 
-Valitse **Vain edustajat**, kun haluat tarkastella nykyisten edustajien äänestystietoja. CSV-latauksessa käytetään samoja nimi- ja edustajasuodattimia.
+Tarkastele nykyisten edustajien äänestystietoja ottamalla **Vain edustajat** käyttöön. Ladattavassa CSV-tiedostossa käytetään samoja nimi- ja edustajasuodattimia.
 
-![Edustajien äänestystiedot: osoitetut, annetut ja väliin jääneet äänet](group_participation_report_voting_record.png)
+![Edustajien äänestystiedot: myönnetyt, annetut ja antamatta jääneet äänet](group_participation_report_voting_record.png)
 
 <!-- translation-section: users-per-country -->
 
-### Käyttäjiä maittain
+### Käyttäjät maittain
 
-Näe, kuinka monta ryhmäsi käyttäjää on kussakin maassa käyttäjien nykyisten IP-osoitteiden perusteella.
+Näet, kuinka monta ryhmäsi käyttäjää on kussakin maassa käyttäjien nykyisten IP-osoitteiden perusteella.
 
 ![Valittujen ryhmien käyttäjät maittain](group_participation_report_users_per_country.png)
 
 <!-- translation-section: actions-per-country -->
 
-### Toimet maittain
+### Toiminnot maittain
 
-Näe, missä maissa käyttäjät osallistuvat eniten ja vähiten.
+Näet, missä maissa käyttäjät osallistuvat eniten ja missä vähiten.
 
-Tiedot ovat samat kuin kohdassa ”Toimet käyttäjittäin”, mutta ne on ryhmitelty sen maan mukaan, jossa käyttäjän havaitaan olevan.
+Tiedot vastaavat Toiminnot käyttäjittäin -taulukkoa, mutta ne ryhmitellään sen maan mukaan, jossa käyttäjän havaitaan olevan.
 
-![Maittain ryhmitellyt toimet](group_participation_report_actions_per_country.png)
+![Toiminnot ryhmiteltyinä maittain](group_participation_report_actions_per_country.png)
