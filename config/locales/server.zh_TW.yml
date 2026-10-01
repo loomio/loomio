@@ -238,7 +238,11 @@ zh_TW:
     via_loomio: "%{name}（透過 %{site_name}）"
   event_mailer:
     received_email:
-      explaination_html: "<p>您收到這封電子郵件是因為您是 Loomio 群組的管理員：%{group}。</p><p>該小組收到了一封來自無法識別的電子郵件地址的電子郵件。</p><p>如果郵件來自群組成員，請查看電子郵件並選擇該成員。</p><p>如果您不需要該郵件，您可以封鎖來自該位址的任何其他電子郵件。</p>"
+      explaination_html: |
+        <p>您收到這封電子郵件是因為您是 Loomio 群組的管理員：%{group}。</p>
+        <p>該群組收到了一封來自無法識別的電子郵件地址的電子郵件。</p>
+        <p>如果郵件來自群組成員，請查看電子郵件並選擇該成員。</p>
+        <p>如果您不需要該郵件，您可以否決來自該地址的任何其他電子郵件。</p>
     notification_reason:
       group_subscribed: 您收到此資訊是因為您訂閱了該小組的所有活動。
       group_mentioned: 您收到此訊息是因為該小組被@提及。
@@ -392,11 +396,11 @@ zh_TW:
   announcement_count_emails: "%{count} 個電子郵件"
   email_actions:
     unfollowed_discussion: 您已經關閉了討論串的電子郵件。
-    catch_up_link: 補發郵件設定
-    catch_up_title: 補發郵件設定
+    catch_up_link: 摘要郵件設定
+    catch_up_title: 摘要郵件設定
     catch_up_description: 選擇接收群組活動摘要的頻率
-    catch_up_schedule: 發送一封補發郵件
-    catch_up_saved: 補發郵件設定已更新
+    catch_up_schedule: 發送一封摘要郵件
+    catch_up_saved: 摘要郵件設定已更新
     catch_up_days:
       never: 絕不
       every_day: 每天
@@ -487,8 +491,8 @@ zh_TW:
       not_invited: 未邀請
       please_respond: 請回應
       time_zone: "（在 %{zone} 顯示的時間）"
-      undecided_members: 未決定的成員（%{count}）
-      undecided_visitors: 未決定的來賓 (%{count})
+      undecided_members: 未投票的成員（%{count}）
+      undecided_visitors: 未投票的訪客 (%{count})
       more_undecided: "%{count} 更多……"
       vote_now: 現在投票
       you_have_until: 您到 %{when} 前都可以參與。
@@ -665,7 +669,7 @@ zh_TW:
       process_subtitle_v3: 當需要權衡取捨時，要明確優先順序。也稱為點投票法。
     ranked_choice:
       process_subtitle: 理解選項的有序偏好
-      process_introduction: <p>當您有大量選擇或正在舉行選舉時，排序選擇很有用。</p><p>此投票範本提供了一系列選項，供人們按照自己喜歡的順序進行投票。</p><p>您可以設定投票者獲得的選擇數量。</p><p><span>投票者按偏好順序拖放選項（#1 是您最喜歡的選項）。</span></p><p><span>高級設定包括“投票匿名”和“按隨機順序顯示選項” - 通常用於排名</span>選擇以減少投票偏見。</p><p>結果按排序順序顯示。結果表提供了額外的數據，以幫助您分析結果。</p><ul><li><p>秩</p></li><li><p>% 點數</p></li><li><p>積分</p></li><li><p>意思是</p></li></ul><p><a target="_blank"  href="/docs/en/user_manual/polls/proposal_types#ranked-choice">閱讀有關排序選擇的更多資訊</a>。</p>
+      process_introduction: <p>排序選擇適用於選項較多或舉行選舉時。</p><p>投票者拖放選項，依偏好順序排列。</p><p>結果依排名顯示。</p><p><a target="_blank"  href="/docs/en/user_manual/polls/proposal_types#ranked-choice">閱讀更多關於排序選擇的資訊</a>。</p>
       title: 選舉董事進入治理委員會
       details: <h3 id="what-is-this-poll-about"><strong>這次投票的內容是什麼？</strong></h3><p></p><h3 id="why-is-this-important"><strong>為什麼這很重要？</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"><strong>您要求人們做什麼？</strong></h3><p></p><p>依照偏好排列選項來投票。  結果中排名第一的選項獲勝。</p>
       process_subtitle_v2: 找出該群體的偏好順序

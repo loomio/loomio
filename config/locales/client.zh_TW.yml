@@ -176,7 +176,7 @@ zh_TW:
     only_show_tags_in_this_group: 僅顯示此群組中的標籤
   poll_types:
     proposal: 提議
-    count: 選擇參加
+    count: 報名
     check: 意見徵詢
     poll: 投票
     dot_vote: 點投票
@@ -421,7 +421,7 @@ zh_TW:
     all_email_will_belong_to_name: 來自 %{email} 的所有郵件將歸屬於 %{name}
     email_aliases: 別名和忽略的地址
     belongs_to_name: 屬於%{name}
-    block_email: 區塊位址
+    block_email: 否決地址
     no_emails_to_release: 沒有等待發布的電子郵件
     release_rules: 發布規則
     confirm_block: 封鎖此電子郵件地址？
@@ -677,13 +677,13 @@ zh_TW:
     email_and_push_when_notified: 收到通知時發送電子郵件和推播通知
     email_when_notified: 收到通知時發送電子郵件
     push_when_notified: 收到通知時發送推播通知
-    daily_catch_up_email: 每日簡報郵件
+    daily_catch_up_email: 每日摘要郵件
     in_app_only: 限應用程式內使用
     email_and_device_when_notified: 收到通知時發送電子郵件和裝置通知
     device_notification_when_notified: 收到通知時發送裝置通知
     no_notifications: 無通知
-    catch_up_email_every_second_day: 每隔一天發送一次進度郵件
-    weekly_catch_up_email: 每週簡報郵件
+    catch_up_email_every_second_day: 每隔一天發送一次摘要郵件
+    weekly_catch_up_email: 每週摘要郵件
   search_modal:
     all_content: 所有內容
     best_match: 最佳匹配
@@ -1005,7 +1005,7 @@ zh_TW:
       topic: 在討論串中的每個人
       voters: 被邀請投票的每個人
       decided_voters: 已經投票的每個人
-      undecided_voters: 未決定的選民
+      undecided_voters: 未投票的投票者
       non_voters: "%{name} 的成員尚未被邀請"
       delegates_of_group: "%{name} 的代表"
     form:
@@ -1746,7 +1746,7 @@ zh_TW:
     group_notifications: 群組通知
     group_notifications_description: 更改群組的活動等級和頻道
     choose_email_and_push_updates: 為電子郵件和推送分別設定。
-    catch_up_email: 補發郵件
+    catch_up_email: 摘要郵件
     catch_up_email_description: 選擇何時接收未讀通知和未讀活動清單的更新訊息
   thread_preview:
     replies_count: "%{count} 個回覆"
@@ -1790,7 +1790,7 @@ zh_TW:
       all: 近期討論
     thread_preview:
       you_voted: 您已經投了 %{position}.
-      undecided: 您尚未決定
+      undecided: 您尚未投票
     threads_from:
       group: 討論串從
       pinned: 已釘選的討論串
@@ -1976,7 +1976,7 @@ zh_TW:
     consent_title: 同意
     consensus_title: 共識
     proposal_title: 提案
-    count_title: 選擇參加
+    count_title: 報名
     check_title: 意見徵詢
     poll_title: 投票
     meeting: 會議
@@ -2299,12 +2299,12 @@ zh_TW:
     started_by: 由 %{name} 啟動
   poll_common_votes_panel:
     vote_removed: 投票已刪除
-    undecided: 未決定
+    undecided: 未投票
     newest_first: 最新的放在最前面
     oldest_first: 最舊的放在最前面
     priority_first: 同意的放在最前面
     priority_last: 否決的放在最前面
-    undecided_first: 未決定優先
+    undecided_first: 未投票優先
     no_votes_yet: 尚未有人投票。
     change_results_order: 變更您的結果順序
     none_of_the_above: "（以上皆非）"
@@ -2326,9 +2326,9 @@ zh_TW:
     participation_records_restricted: 投票結束後，您可以查看所有參與者名單
     vote_weight: 投票權重 %{weight}
   poll_common_undecided_panel:
-    show_undecided: 顯示 %{count} 個未決定
+    show_undecided: 顯示 %{count} 位未投票者
     show_invitations: 顯示擱置中的邀請函
-    undecided_users: 未決定 (%{count})
+    undecided_users: 未投票 (%{count})
     invitation_count_singular: 已透過電子郵件邀請 1 個額外的夥伴參與
     invitation_count_plural: 已透過電子郵件邀請 %{count} 個額外的夥伴參與
   poll_common_undecided_user:
@@ -2471,7 +2471,7 @@ zh_TW:
     total: 全部
   poll_remove_vote:
     title: 刪除您的投票？
-    helptext: 您確定要刪除您的投票嗎？您將被列為未決定，如果您願意，可以稍後再次投票。
+    helptext: 確定要移除您的投票嗎？您將被列為未投票，之後仍可再次投票。
     confirm: 刪除投票
     success: 投票已移除
   poll_poll_vote_form:
@@ -2834,7 +2834,7 @@ zh_TW:
       voting_title: 投票結束前 24 小時，發送提醒至
       nobody: 沒人
       author: 作者（我）
-      undecided_voters: 未決定的選民
+      undecided_voters: 未投票的投票者
       voters: 所有選民
     notify_on_participate:
       title: 當有人參與時通知我
@@ -2900,7 +2900,7 @@ zh_TW:
       ranked_choice_hint: 選民按從最喜歡到最不喜歡的順序排列選項
       time_poll: 時間投票
       time_poll_hint: 選民表明何時可以見面
-      rank: 秩
+      rank: 排序
       time: 時間
       stv: 單記可轉移投票制選舉
       stv_hint: 使用單記可轉移投票制按比例選出多名獲勝者
