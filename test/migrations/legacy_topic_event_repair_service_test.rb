@@ -103,8 +103,7 @@ class LegacyTopicEventRepairServiceTest < ActiveSupport::TestCase
       [:memberships, :volume_email, :volume],
       [:memberships, :volume_push, :later_volume_push],
       [:users, :volume_email_default, :default_membership_volume],
-      [:users, :volume_push_default, :later_volume_push_default],
-      [:polls, :voting_system, :later_voting_system]
+      [:users, :volume_push_default, :later_volume_push_default]
     ].each do |table, current, legacy|
       connection.rename_column(table, current, legacy)
       changes << [:column, table, current, legacy]
