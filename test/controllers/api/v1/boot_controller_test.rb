@@ -1,6 +1,37 @@
 require 'test_helper'
 
 class Api::V1::BootControllerTest < ActionController::TestCase
+  test 'version prompts older clients to reload across a two-digit minor version' do
+    Version.stub(:current, '3.10.0') do
+      ['3.9.0', '3.9.1'].each do |version|
+        get :version, params: {version: version, release: AppConfig.release}, format: :json
+
+        assert_response :success
+        payload = JSON.parse(response.body)
+        assert_equal '3.10.0', payload['version']
+        assert_equal true, payload['reload']
+      end
+    end
+  end
+
+  test 'version does not prompt current or newer clients to reload' do
+    Version.stub(:current, '3.10.0') do
+      ['3.10.0', '3.11.0', '4.0.0'].each do |version|
+        get :version, params: {version: version, release: AppConfig.release}, format: :json
+
+        assert_response :success
+        refute JSON.parse(response.body)['reload']
+      end
+    end
+  end
+
+  test 'version prompts clients without a version to reload' do
+    get :version, params: {release: AppConfig.release}, format: :json
+
+    assert_response :success
+    assert_equal true, JSON.parse(response.body)['reload']
+  end
+
   test 'an unsubscribe token does not boot the account into the app' do
     user = users(:user)
 
