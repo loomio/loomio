@@ -1660,6 +1660,7 @@ sl:
     updated_on_sign_in: Zagotavlja vaš brskalnik in se posodobi, ko se prijavite
     translate_content_automatically: Samodejno prevedi vsebino v moj jezik
     bot_account_warning: Računi botov ne bodo povabljeni k glasovanju v anketah ali sodelovanju v razpravah.
+    translations_are_made_by_machine: Prevodi so strojni. Če je beseda napačna ali nejasna, pišite na %{email} in jo bomo popravili.
   text_editor:
     x_of_y_characters: "%{x} / %{y} znakov"
     select_text_to_link: Izberite besedilo za povezavo in poskusite znova

@@ -1660,6 +1660,7 @@ tr:
     updated_on_sign_in: Tarayıcınız tarafından sağlanır ve oturum açtığınızda güncellenir
     translate_content_automatically: İçeriği otomatik olarak dilime çevir
     bot_account_warning: Bot hesapları anketlere oy vermeye veya tartışmalara katılmaya davet edilmeyecektir.
+    translations_are_made_by_machine: Çeviriler makine tarafından yapılır. Yanlış veya anlaşılmayan bir kelime varsa %{email} adresine e-posta gönderin, düzeltelim.
   text_editor:
     x_of_y_characters: "%{x} / %{y} karakter"
     select_text_to_link: Bağlanacak metni seçin ve tekrar deneyin

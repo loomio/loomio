@@ -1683,6 +1683,7 @@ es:
     updated_on_sign_in: Proporcionado por tu navegador y actualizado al iniciar sesión
     translate_content_automatically: Traducir automáticamente el contenido a mi idioma
     bot_account_warning: Las cuentas de bots no serán invitadas a votar en encuestas ni a participar en debates.
+    translations_are_made_by_machine: Las traducciones son automáticas. Si una palabra es incorrecta o poco clara, escribe a %{email} y la corregiremos.
   text_editor:
     x_of_y_characters: "%{x} / %{y} caractéres"
     select_text_to_link: Selecciona el texto del enlace e inténtalo de nuevo

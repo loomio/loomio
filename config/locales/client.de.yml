@@ -1682,6 +1682,7 @@ de:
     updated_on_sign_in: Wird von deinem Browser bereitgestellt und aktualisiert, wenn du dich anmeldest
     translate_content_automatically: Inhalte automatisch in meine Sprache übersetzen
     bot_account_warning: Bot-Konten werden nicht zur Teilnahme an Umfragen oder Diskussionen eingeladen.
+    translations_are_made_by_machine: Die Übersetzungen werden maschinell erstellt. Wenn ein Wort falsch oder unklar ist, schreib an %{email} und wir korrigieren es.
   text_editor:
     x_of_y_characters: "%{x} / %{y} Zeichen"
     select_text_to_link: Wähle den zu verlinkenden Text aus und versuche es erneut

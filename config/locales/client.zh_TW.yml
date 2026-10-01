@@ -1677,6 +1677,7 @@ zh_TW:
     updated_on_sign_in: 由您的瀏覽器提供並在您登入時更新
     translate_content_automatically: 自動將內容翻譯成我的語言
     bot_account_warning: 機器人帳號將不會被邀請參與投票或討論。
+    translations_are_made_by_machine: 翻譯由機器產生。若有用詞錯誤或不清楚，請寄信至 %{email}，我們會修正。
   text_editor:
     x_of_y_characters: "%{x} / %{y} 個字元"
     select_text_to_link: 選取要連結的文字並再試一次

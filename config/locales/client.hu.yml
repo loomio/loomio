@@ -1666,6 +1666,7 @@ hu:
     updated_on_sign_in: A böngésző biztosítja, és bejelentkezéskor frissül
     translate_content_automatically: Tartalom automatikus fordítása a saját nyelvemre
     bot_account_warning: A botfiókok nem kapnak meghívást szavazásra vagy beszélgetésekben való részvételre.
+    translations_are_made_by_machine: A fordítások géppel készülnek. Ha egy szó hibás vagy nem érthető, írj a %{email} címre, és kijavítjuk.
   text_editor:
     x_of_y_characters: "%{x} / %{y} karakter"
     select_text_to_link: Válassza ki a linkelni kívánt szöveget, és próbálja újra

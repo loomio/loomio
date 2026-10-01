@@ -1662,6 +1662,7 @@ hr:
     updated_on_sign_in: Dostavlja vaš preglednik i ažurira se kada se prijavite
     translate_content_automatically: Automatski prevedi sadržaj na moj jezik
     bot_account_warning: Bot računi neće biti pozvani da glasaju na anketama ili sudjeluju u raspravama
+    translations_are_made_by_machine: Prijevodi su strojni. Ako je neka riječ pogrešna ili nejasna, pišite na %{email} i ispravit ćemo je.
   text_editor:
     x_of_y_characters: "%{x} / %{y} znakova"
     select_text_to_link: Odaberite tekst za povezivanje i pokušajte ponovno

@@ -1740,6 +1740,7 @@ zh_CN:
     delete_account_subtitle: 彻底删除您的账户，并将您的名字从过去的讨论和决定中删除。
     updated_on_sign_in: 由您的浏览器提供，并在您登录时更新。
     bot_account_warning: 机器人账号将不会被邀请参与投票或讨论。
+    translations_are_made_by_machine: 翻译由机器完成。如有用词错误或不清楚的地方，请发邮件至 %{email}，我们会修正。
   text_editor:
     x_of_y_characters: "%{x} / %{y} 个字符"
     select_text_to_link: 选择要链接的文本，然后重试

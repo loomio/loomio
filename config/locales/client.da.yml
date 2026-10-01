@@ -1670,6 +1670,7 @@ da:
     updated_on_sign_in: Leveres af din browser og opdateres, når du logger ind
     translate_content_automatically: Oversæt indhold automatisk til mit sprog
     bot_account_warning: Botkonti vil ikke blive inviteret til at stemme i afstemninger eller deltage i diskussioner
+    translations_are_made_by_machine: Oversættelserne er lavet maskinelt. Hvis et ord er forkert eller uklart, så skriv til %{email}, og vi retter det.
   text_editor:
     x_of_y_characters: "%{x} / %{y} tegn"
     select_text_to_link: Vælg tekst, der skal linkes, og prøv igen

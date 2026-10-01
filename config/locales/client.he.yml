@@ -1672,6 +1672,7 @@ he:
     updated_on_sign_in: מסופק על ידי הדפדפן שלך ומעודכן בעת הכניסה
     translate_content_automatically: תרגם תוכן לשפה שלי באופן אוטומטי
     bot_account_warning: חשבונות בוט לא יוזמנו להצביע בסקרים או להשתתף בדיונים
+    translations_are_made_by_machine: התרגומים נעשים אוטומטית. אם מילה שגויה או לא ברורה, ניתן לשלוח דוא״ל ל־%{email} ונתקן אותה.
   text_editor:
     x_of_y_characters: "%{x} / %{y} תווים"
     select_text_to_link: בחר טקסט לקישור ונסה שוב

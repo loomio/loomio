@@ -1674,6 +1674,7 @@ pl:
     updated_on_sign_in: Dostarczane przez przeglądarkę i aktualizowane po zalogowaniu
     translate_content_automatically: Automatycznie tłumacz treść na mój język
     bot_account_warning: Konta botów nie będą zapraszane do głosowania w ankietach ani do udziału w dyskusjach
+    translations_are_made_by_machine: Tłumaczenia są automatyczne. Jeśli jakieś słowo jest błędne lub niejasne, napisz na %{email}, a poprawimy je.
   text_editor:
     x_of_y_characters: "%{x} / %{y} znaków"
     select_text_to_link: Wybierz tekst do połączenia i spróbuj ponownie

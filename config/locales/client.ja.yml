@@ -1659,6 +1659,7 @@ ja:
     delete_account_subtitle: アカウントを完全に削除し、過去の議論や決定からあなたの名前を削除します。
     translate_content_automatically: コンテンツを自動的に自分の言語に翻訳する
     bot_account_warning: ボットアカウントは、投票やディスカッションへの参加を招待されません。
+    translations_are_made_by_machine: 翻訳は機械翻訳です。誤訳やわかりにくい言葉があれば、%{email} にメールでお知らせください。修正します。
   text_editor:
     x_of_y_characters: "%{x} / %{y} 文字"
     select_text_to_link: リンクするテキストを選択して再試行してください

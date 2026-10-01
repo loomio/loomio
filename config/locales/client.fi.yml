@@ -1660,6 +1660,7 @@ fi:
     updated_on_sign_in: Selaimesi tarjoaa ja päivitetään, kun kirjaudut sisään
     translate_content_automatically: Käännä sisältö kielelleni automaattisesti
     bot_account_warning: Bottitilejä ei kutsuta äänestämään kyselyissä tai osallistumaan keskusteluihin.
+    translations_are_made_by_machine: Käännökset on tehty koneella. Jos jokin sana on väärä tai epäselvä, lähetä sähköpostia osoitteeseen %{email}, niin korjaamme sen.
   text_editor:
     x_of_y_characters: "%{x} / %{y} merkkiä"
     select_text_to_link: Valitse linkitettävä teksti ja yritä uudelleen

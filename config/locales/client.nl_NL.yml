@@ -1674,6 +1674,7 @@ nl_NL:
     updated_on_sign_in: Verstrekt door uw browser en bijgewerkt wanneer u zich aanmeldt
     translate_content_automatically: Vertaal inhoud automatisch naar mijn taal
     bot_account_warning: Botaccounts worden niet uitgenodigd om te stemmen in peilingen of deel te nemen aan discussies.
+    translations_are_made_by_machine: Vertalingen worden automatisch gemaakt. Is een woord fout of onduidelijk? Mail %{email} en we passen het aan.
   text_editor:
     x_of_y_characters: "%{x} / %{y} tekens"
     select_text_to_link: Selecteer tekst om te linken en probeer het opnieuw

@@ -1668,6 +1668,7 @@ sv:
     updated_on_sign_in: Tillhandahålls av din webbläsare och uppdateras när du loggar in
     translate_content_automatically: Översätt innehåll till mitt språk automatiskt
     bot_account_warning: Botkonton kommer inte att bjudas in att rösta i omröstningar eller delta i diskussioner
+    translations_are_made_by_machine: Översättningarna är maskingjorda. Om ett ord är fel eller oklart, mejla %{email} så rättar vi det.
   text_editor:
     x_of_y_characters: "%{x} / %{y} tecken"
     select_text_to_link: Välj text att länka och försök igen
