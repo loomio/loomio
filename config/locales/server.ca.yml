@@ -173,7 +173,7 @@ ca:
         proposal: Proposta
         count: Compte
         choose: Tria
-        allocate: Assignar
+        allocate: Reparteix
         score: Puntuació
         rank: Ordena
         time: Enquesta d'horari
@@ -628,12 +628,12 @@ ca:
       process_introduction_v2: <p><strong>La puntuació</strong> permet mesurar el nivell de suport del grup per a cada opció. Els participants avaluen cada opció assignant una puntuació en una escala variable, de manera que es pot veure no només què prefereix la gent, sinó també en quina mesura.</p><p> <a target="_blank" href="/docs/en/user_manual/polls/proposal_types#score-poll">Més informació sobre l'enquesta de puntuació</a> .</p>
       process_subtitle_v3: Demaneu als votants que valorin quant donen suport a cada opció
     dot_vote:
-      process_subtitle: Assignar un pressupost de punts per revelar prioritats
-      process_introduction: <p>El vot per punts és útil per a grups que intenten assignar un recurs limitat a diverses opcions. Va més enllà d'una simple enquesta, ja que ajuda els participants a adonar-se que hi ha una restricció a l'hora de seleccionar opcions.</p><p> A cada participant se li assigna un nombre determinat de punts. Tu decideixes quants.</p><p> Col·loquen punts al costat de les opcions presentades que els agraden. Els participants poden col·locar tots els seus punts en una sola opció o repartir-los per diverses opcions.</p><p> A mesura que els participants assignen punts, poden superar el límit del pressupost de punts, per la qual cosa s'anima a considerar amb cura com gasten els seus punts.</p><p> Les opcions amb més punts "guanyen". La taula de resultats proporciona dades addicionals per ajudar-vos a analitzar els resultats.</p><ul><li><p> % de punts</p></li><li><p> Punts</p></li><li><p> Mitjana</p></li><li><p> Votants</p></li></ul><p> <a target="_blank"  href="/docs/en/user_manual/polls/proposal_types#dot-vote">Llegiu-ne més sobre el vot de Dot</a> .</p>
+      process_subtitle: Reparteix un pressupost de punts per mostrar les prioritats
+      process_introduction: <p>El vot per punts permet repartir un recurs limitat entre diverses opcions. Va més enllà d'una simple enquesta perquè ajuda els participants a entendre que hi ha un límit a l'hora de triar opcions.</p><p>Cada participant rep un pressupost de punts per repartir.</p><p>Els participants poden donar tots els seus punts a una sola opció o repartir-los entre diverses opcions.</p><p>Els participants no poden superar el seu pressupost, de manera que han de pensar bé com reparteixen els punts.</p><p><a target="_blank"  href="/docs/en/user_manual/polls/proposal_types#dot-vote">Llegeix més sobre el vot per punts</a>.</p>
       title: Escollint temes per a la nostra conferència
-      details: <h3 id="what-is-this-poll-about"><strong>De què tracta aquesta enquesta?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Per què és important això?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Què li demanes a la gent que faci?</strong></h3><p></p><p> En aquesta enquesta tens un pressupost de 8 punts per assignar a les opcions que prefereixes. Pots col·locar tots els punts en una opció o repartir-los.</p>
+      details: <h3 id="what-is-this-poll-about"><strong>De què tracta aquesta enquesta?</strong></h3><p></p><h3 id="why-is-this-important"><strong>Per què és important això?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"><strong>Què demanes a la gent que faci?</strong></h3><p></p><p>En aquesta enquesta tens un pressupost de punts per repartir entre les opcions que prefereixes. Pots donar tots els punts a una opció o repartir-los.</p>
       process_subtitle_v2: Revelar prioritats quan hi hagi compromisos
-      process_introduction_v2: '<p><strong>L''assignació</strong> us ajuda a entendre les prioritats d''un grup quan hi ha compromisos. Cada participant rep un pressupost de punts per distribuir entre les opcions: poden apostar-ho tot en una opció o distribuir els seus punts entre diverses. Com que el pressupost és limitat, cada punt gastat és un senyal genuí de prioritat.</p><p> <a target="_blank" href="/docs/en/user_manual/polls/proposal_types#dot-vote">Llegiu-ne més sobre Assignar</a> .</p>'
+      process_introduction_v2: <p><strong>Reparteix</strong> t'ajuda a entendre les prioritats d'un grup quan cal triar entre opcions. Cada participant rep un pressupost de punts per repartir entre les opcions — pot donar-los tots a una opció o repartir-los entre diverses. Com que el pressupost és limitat, cada punt gastat indica una prioritat real.</p><p><a target="_blank" href="/docs/en/user_manual/polls/proposal_types#dot-vote">Llegeix més sobre Reparteix</a>.</p>
       process_subtitle_v3: Revelar prioritats quan hi hagi compromisos. També conegut com a votació per punts.
     ranked_choice:
       process_subtitle: Comprendre la preferència ordenada d'opcions
@@ -685,7 +685,7 @@ ca:
       process_subtitle: Elegir diversos guanyadors proporcionalment
       process_introduction: <p>El STV (vot únic transferible) és un mètode de representació proporcional per a eleccions amb diversos guanyadors. Els votants classifiquen els candidats per ordre de preferència. Els candidats que arriben a una quota de vot són elegits, i els vots sobrants o eliminats es transfereixen a les següents preferències.</p><p> Configureu el nombre d'escons, el mètode de recompte (escocès o Meek) i el tipus de quota (Droop o Hare). Els resultats mostren un desglossament ronda per ronda de com s'han transferit els vots.</p><p> <a target="_blank" href="/docs/en/user_manual/polls/stv">Més informació sobre les eleccions de STV</a> .</p>
       title: Elegir els membres del comitè
-      details: <h3 id="what-is-this-election-about"><strong>De què tracta aquesta elecció?</strong></h3><p></p><h3 id="how-many-seats"> <strong>Quantes places s'estan omplint?</strong></h3><p></p><h3 id="who-are-the-candidates"> <strong>Qui són els candidats?</strong></h3><p></p><p> Vota arrossegant els candidats al teu ordre preferit. El rang 1 és el teu candidat preferit. Pots classificar tants o tan pocs candidats com vulguis.</p>
+      details: <h3 id="what-is-this-election-about"><strong>De què tracta aquesta elecció?</strong></h3><p></p><h3 id="how-many-seats"><strong>Quantes places s'han de cobrir?</strong></h3><p></p><h3 id="who-are-the-candidates"><strong>Qui són els candidats?</strong></h3><p></p><p>Vota arrossegant els candidats en el teu ordre de preferència. La posició 1 és el teu candidat preferit. Pots ordenar tants o tan pocs candidats com vulguis.</p>
   forward_mailer:
     bounce:
       subject: El teu missatge a Loomio no s'ha lliurat.
@@ -784,7 +784,7 @@ ca:
     voted: "%{author} ha votat %{response}"
     voted_hidden: "%{author} ha votat"
     vote_removed: "%{author}: vot eliminat"
-    undecided: "%{author}: indecís"
+    undecided: "%{author}: sense votar"
     superseded: substituït
     shared_outcome: "%{author} ha compartit una conclusió"
     removed: Eliminat

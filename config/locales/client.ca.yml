@@ -175,7 +175,7 @@ ca:
     only_show_tags_in_this_group: Mostra només les etiquetes d'aquest grup
   poll_types:
     proposal: proposta
-    count: optar a
+    count: inscripció
     check: tempteig
     poll: enquesta
     dot_vote: vot per punts
@@ -1789,7 +1789,7 @@ ca:
       all: Debats recents
     thread_preview:
       you_voted: Has votat %{position}
-      undecided: Esteu indecís
+      undecided: Encara no has votat
     threads_from:
       group: FIls de
       pinned: Fils fixats
@@ -1973,7 +1973,7 @@ ca:
     consent_title: Consentiment
     consensus_title: Consens
     proposal_title: Proposta
-    count_title: Optar a
+    count_title: Inscripció
     check_title: Tempteig
     poll_title: Enquesta
     meeting: Reunió
@@ -2298,7 +2298,7 @@ ca:
     started_by: Iniciat per %{name}
   poll_common_votes_panel:
     vote_removed: S'ha eliminat el vot
-    undecided: Indecís
+    undecided: Sense votar
     newest_first: El més recent primer
     oldest_first: El més antic primer
     priority_first: D'acord primer
@@ -2470,7 +2470,7 @@ ca:
     total: Total
   poll_remove_vote:
     title: Eliminar el teu vot?
-    helptext: Esteu segur que voleu eliminar el vostre vot? Apareixeràs com a indecís i podràs tornar a votar més tard si ho desitja.
+    helptext: Segur que vols eliminar el teu vot? Apareixeràs com a sense votar i podràs tornar a votar més tard si vols.
     confirm: Elimina el vot
     success: S'ha eliminat el vot
   poll_poll_vote_form:
@@ -2893,13 +2893,13 @@ ca:
       choose_hint: Els votants trien la millor opció (o opcions)
       score: Puntuació
       score_hint: Els votants assignen una puntuació a cada opció
-      allocate: Assignar
+      allocate: Reparteix
       allocate_hint: Els votants assignen un pressupost de punts entre les opcions
       ranked_choice: Vot preferencial
       ranked_choice_hint: Els votants ordenen les opcions de més a menys preferides
       time_poll: Enquesta d'horari
       time_poll_hint: Els votants indiquen quan estan disponibles per reunir-se
-      rank: Rang
+      rank: Ordena
       time: Temps
       stv: Eleccions STV
       stv_hint: Elegir diversos guanyadors proporcionalment mitjançant el vot únic transferible
@@ -2951,7 +2951,7 @@ ca:
     how_much_time_to_vote: Quant de temps donareu a la gent per votar?
     default_duration_in_days_hint: Quants dies tindrà la gent per votar?
     define_minimum_and_maxmimum_score: Defineix les puntuacions mínimes i màximes que un votant pot donar a una opció
-    how_many_points_does_each_voter_have_to_allocate: Quants punts ha d'assignar cada votant?
+    how_many_points_does_each_voter_have_to_allocate: Quants punts té cada votant per repartir?
     anonymous_voting_description: Mostra els vots i els motius, però no qui els ha emès. Això no es pot canviar després que %{poll_type} hagi començat.
     vote_reason_description: Demaneu a la gent que comparteixi les seves raons quan votin o que proporcionin més informació.
     hide_results_description: Si voleu que la gent voti sense veure com han votat els altres, podeu amagar els resultats.
@@ -3123,7 +3123,7 @@ ca:
     closed_at: Tancat a les
     closing_at: Tancament a les
   poll_stv_vote_form:
-    helptext: Arrossega els candidats per sobre de la línia per classificar-los. Els elements que hi ha a sota de la línia no estan classificats. El rang 1 és el que prefereixes.
+    helptext: Arrossega els candidats per sobre de la línia per ordenar-los. Els elements de sota la línia queden sense ordenar. La posició 1 és la teva primera preferència.
     divider_text: arrossega els candidats per sobre d'aquesta línia per classificar-los
     stance_created: Vot enregistrat
     stance_updated: Vot actualitzat
