@@ -174,14 +174,14 @@ sl:
     show_all_tags_in_organization: Prikaži vse oznake v organizaciji
     only_show_tags_in_this_group: Prikaži samo oznake v tej skupini
   poll_types:
-    proposal: snubitev
+    proposal: predlog
     count: privolitev
     check: preverjanje čuta
     poll: anketa
-    dot_vote: glasovanje s piko
+    dot_vote: glasovanje s pikami
     meeting: časovna anketa
-    ranked_choice: uvrščena izbira
-    score: rezultat ankete
+    ranked_choice: prednostno razvrščanje
+    score: ocenjevalna anketa
     question: krog vprašanj
     stv: Volitve STV
   timezones:
@@ -280,7 +280,7 @@ sl:
       move: Premakni se
       save_changes: Shrani spremembe
       update_settings: Posodobite nastavitve
-      reply: Odvrni
+      reply: Odgovorite
       edit: Uredi
       remove: Odstrani
       undo_remove: Razveljavi odstranitev
@@ -771,7 +771,7 @@ sl:
   notification_models:
     comment: komentar v
     poll: 'anketa:'
-    outcome: 'izid:'
+    outcome: 'sklep: '
     stance: 'glasovanje:'
     discussion: 'razprava:'
   notifications:
@@ -787,17 +787,17 @@ sl:
       membership_request_approved: "%{actor} je odobril vašo prošnjo za pridružitev %{title}"
       new_comment: "%{actor} je komentiral v: %{title}"
       new_coordinator: "%{actor} vas je postavil za skrbnika %{title}"
-      outcome_announced: "%{actor} je delil rezultat %{poll_type}: %{title}"
-      outcome_created: "%{actor} je delil rezultat %{poll_type}: %{title}"
-      outcome_updated: "%{actor} je posodobil rezultat %{poll_type}: %{title}"
-      outcome_review_due: 'Čas je, da pregledate rezultat: %{title}'
+      outcome_announced: "%{actor} je objavil sklep %{poll_type}: %{title}"
+      outcome_created: "%{actor} je objavil sklep %{poll_type}: %{title}"
+      outcome_updated: "%{actor} je posodobil sklep %{poll_type}: %{title}"
+      outcome_review_due: 'Čas je, da pregledate sklep: %{title}'
       poll_closed_by_user: "%{actor} je zaprl %{poll_type}: %{title}"
       poll_closing_soon: "%{poll_type} se zapre čez 24 ur: %{title}"
       poll_closing_soon_author: 'Vaša %{poll_type} se bo končala čez 24 ur: %{title}'
       poll_created: "%{actor} je začel %{poll_type}: %{title}"
       poll_edited: "%{actor} je posodobil %{poll_type}: %{title}"
       poll_expired: "%{poll_type} je zaprt: %{title}"
-      poll_expired_author: 'Delite rezultat svoje ankete %{poll_type}: %{title}'
+      poll_expired_author: 'Delite sklep svoje ankete %{poll_type}: %{title}'
       poll_option_added: "%{actor} je dodal možnosti %{title}"
       poll_reopened: "%{actor} je ponovno odprl %{poll_type}: %{title}"
       poll_reminder: "%{actor} vas opominja, da glasujete na %{title}"
@@ -826,9 +826,9 @@ sl:
       membership_resent: "%{actor} vas je povabil, da se pridružite skupini"
       membership_requested: "%{actor} je prosil za pridružitev vaši skupini"
       membership_request_approved: "%{actor} je odobril vašo prošnjo za pridružitev %{title}"
-      outcome_announced: "%{actor} je delil rezultat %{poll_type}"
-      outcome_created: "%{actor} je delil rezultat %{poll_type}"
-      outcome_review_due: Čas je, da pregledate izid %{poll_type}
+      outcome_announced: "%{actor} je delil sklep %{poll_type}"
+      outcome_created: "%{actor} je delil sklep %{poll_type}"
+      outcome_review_due: Čas je, da pregledate sklep %{poll_type}
       poll_announced_wip: "%{actor} želi vaše povratne informacije o %{poll_type}"
       poll_closed_by_user: "%{actor} je zaprl %{poll_type}"
       poll_closing_soon: "%{poll_type} se zapre čez 24 ur"
@@ -836,7 +836,7 @@ sl:
       poll_created: "%{actor} je začel %{poll_type}"
       poll_edited: "%{actor} je posodobil %{poll_type}"
       poll_expired: "%{poll_type} je zaprt"
-      poll_expired_author: Delite rezultat svojega %{poll_type}
+      poll_expired_author: Delite sklep svoje ankete %{poll_type}
       poll_option_added: "%{actor} je dodal možnosti %{poll_type}"
       poll_reopened: "%{actor} je ponovno odprl %{poll_type}"
       poll_reminder: "%{actor} vas opominja, da glasujete"
@@ -854,7 +854,7 @@ sl:
       discussion_closed: "%{actor} je zaključil razpravo"
       new_discussion: "%{actor} je začel razpravo"
       new_comment: "%{actor} je komentiral v razpravi"
-      outcome_updated: "%{actor} je posodobil rezultat"
+      outcome_updated: "%{actor} je posodobil sklep"
       thread_locked: "%{actor} je zaklenil nit"
       membership_request_declined: Vaša zahteva za pridružitev %{title} je bila zavrnjena
     hints:
@@ -874,17 +874,17 @@ sl:
       new_coordinator: "%{actor} vas je postavil za administratorja %{title}"
       new_delegate: "%{actor} vas je imenoval za delegata z glasovalno pravico v %{title}"
       new_discussion: "%{title}"
-      outcome_announced: 'Rezultat %{poll_type}: %{title}'
-      outcome_created: 'Rezultat %{poll_type}: %{title}'
-      outcome_updated: 'Posodobljen rezultat ankete %{poll_type}: %{title}'
-      outcome_review_due: 'Čas je, da pregledamo izid: %{title}'
+      outcome_announced: 'Sklep %{poll_type}: %{title}'
+      outcome_created: 'Sklep %{poll_type}: %{title}'
+      outcome_updated: 'Posodobljen sklep ankete %{poll_type}: %{title}'
+      outcome_review_due: 'Čas je, da pregledate sklep: %{title}'
       poll_closed_by_user: "%{actor} je zaprl %{poll_type}: %{title}"
       poll_closing_soon: "%{poll_type} se zapre čez 24 ur: %{title}"
       poll_closing_soon_author: 'Vaša anketa %{poll_type} se zapira čez 24 ur: %{title}'
       poll_created: "%{poll_type}: %{title}"
       poll_edited: "%{actor} je posodobil %{poll_type}: %{title}"
       poll_expired: "%{poll_type} se je zaključil: %{title}"
-      poll_expired_author: 'Objavite rezultat: %{title}'
+      poll_expired_author: 'Objavite sklep: %{title}'
       poll_option_added: "%{actor} je dodal možnosti v %{title}"
       poll_reopened: 'Glasovanje podaljšano: %{title}'
       poll_reminder: "%{actor} vas opominja, da glasujete o %{title}"
@@ -963,7 +963,7 @@ sl:
     send_discussion: Pošlji nit
     send_group: Povabi ljudi v %{name}
     send_poll: Pošlji %{type}
-    send_outcome: Pošlji izid
+    send_outcome: Pošljite sklep
     cannot_reveal_when_anonymous: Žal ne moremo razkriti, kdo je ali ne glasoval v anonimni anketi.
     group_notification_history: Zgodovina povabil skupine
     poll_notification_history: Zgodovina obvestil o anketah
@@ -987,13 +987,13 @@ sl:
     new_discussion: "%{name} je povabil %{length} ljudi v nit:"
     discussion_announced: "%{name} je povabil %{length} ljudi v nit:"
     poll_created: "%{name} je povabil %{length} ljudi h glasovanju:"
-    outcome_created: "%{name} je delil rezultat z %{length} osebami:"
-    outcome_announced: "%{name} je delil rezultat z %{length} osebami:"
+    outcome_created: "%{name} je delil sklep z %{length} osebami:"
+    outcome_announced: "%{name} je delil sklep z %{length} osebami:"
     announcement_created: "%{name} je povabil %{length} ljudi v nit:"
     discussion_edited: "%{name} je uredil nit in obvestil %{length} oseb:"
     poll_edited: "%{name} je uredil anketo in obvestil %{length} oseb:"
-    outcome_edited: "%{name} je uredil izid in obvestil %{length} oseb:"
-    outcome_updated: "%{name} je uredil izid in obvestil %{length} oseb:"
+    outcome_edited: "%{name} je uredil sklep in obvestil %{length} oseb:"
+    outcome_updated: "%{name} je uredil sklep in obvestil %{length} oseb:"
     poll_closing_soon: 'Opomnik o zaprtju ankete osebe %{name} je obvestil %{length} ljudi:'
     poll_reminder: "%{name} je opomnil %{length} oseb, naj glasujejo:"
     audiences:
@@ -1042,7 +1042,7 @@ sl:
         title: Obvesti o popravkih
         helptext: Koga želite obvestiti o tej posodobitvi?
       outcome_announced:
-        title: Delite rezultat
+        title: Delite sklep
         helptext: Povzemite rezultate postopka, vključno z vsemi najdenimi razumevanji ali razkritimi težavami.
       anyone_can_participate: Sodeluje lahko vsak, ki ima povezavo
       placeholder: Vnesete lahko imena ali e-poštne naslove
@@ -1110,12 +1110,12 @@ sl:
     edit_comment: Urejanje komentarja
     delete_comment: Izbriši komentar
     reply_to_comment: Odgovor
-    fork_comment: Viličasti navoj
+    fork_comment: Razvejite nit
     translate_comment: Prevedi komentar
-    edit_outcome: Uredi izid
+    edit_outcome: Uredite sklep
     announce_outcome: Obvestite ljudi o tem rezultatu
     announce_outcome_active: "(Nihče še ni bil obveščen o tem izidu)"
-    translate_outcome: Prevedi rezultat
+    translate_outcome: Prevedite sklep
     show_history: Pokaži zgodovino urejanja
     edited: Urejeno
     show_edits: Pokaži urejanja
@@ -1339,7 +1339,7 @@ sl:
       loud_aria_description: Vaša glasnost obvestil za to skupino je nastavljena na Glasno. Ob vsaki dejavnosti boste prejeli e-poštno sporočilo.
       loud_message: O vseh dejavnostih v »%{name}« boste obveščeni po e-pošti.
       normal: 'Pošlji email samo za pomembne aktivnosti: Nove razprave in predlogi, izidi itd.'
-      normal_aria_description: Vaša glasnost obvestil za to skupino je nastavljena na Normal. Po e-pošti boste prejeli samo pomembno dejavnost, na primer ko nekdo začne novo nit, poda predlog ali določi izid.
+      normal_aria_description: Obvestila za to skupino so nastavljena na običajno raven. Po e-pošti boste obveščeni le o pomembnih dejavnostih, na primer ko nekdo začne novo nit, poda predlog ali določi sklep.
       normal_message: Prejemali boste e-pošto samo o pomembnih dogodkih v »%{name}«.
       quiet: Ne pošiljaj emailov za to skupino. Nove aktivnosti bodo objavljene na nadzorni plošči.
       quiet_aria_description: Vaša glasnost obvestil za to skupino je nastavljena na Tiho. O dejavnostih v tej skupini ne boste obveščeni po e-pošti. Aktivnost skupine bo prikazana na vaši nadzorni plošči.
@@ -1388,7 +1388,7 @@ sl:
     change_cover_image: spremeni naslovno sliko
     change_logo: spremeni logotip
     permissions_explaination: 'Oseba lahko ima dve ravni članstva v skupini: skrbnik in član. Skrbniki lahko urejajo nastavitve skupine, postavijo druge osebe za skrbnike in izvajajo vsa spodaj navedena dejanja.'
-    parent_group: Starševska skupina
+    parent_group: Nadrejena skupina
     new_organisation: Nova organizacija
     new_group: Nova skupina
     new_subgroup: Nova podskupina
@@ -1849,7 +1849,7 @@ sl:
     n_more: Naloži %{count} odgovorov
     add_comment: Dodaj komentar
     add_poll: Dodaj anketo
-    add_outcome: Dodajte rezultat
+    add_outcome: Dodajte sklep
     comment: Komentiraj
     facilitate: Olajšati
     start_decision: Začetek odločitve
@@ -1947,17 +1947,17 @@ sl:
     recommended: Priporočljivo
     question_title: Krog vprašanj
     advice_title: nasvet
-    consent_title: Soglasje
+    consent_title: Privolitev
     consensus_title: Soglasje
     proposal_title: Predlog
     count_title: Prijavite se
     check_title: Preverjanje smisla
     poll_title: Anketa
     meeting: Srečanje
-    score_title: Rezultat ankete
-    dot_vote_title: Glasovanje s piko
+    score_title: Ocenjevalna anketa
+    dot_vote_title: Glasovanje s pikami
     meeting_title: Časovna anketa
-    ranked_choice_title: Uvrščena izbira
+    ranked_choice_title: Prednostno razvrščanje
     gradients_of_agreement_title: Gradienti soglasja
     majority_title: Večina
     stv_title: Volitve STV
@@ -2004,7 +2004,7 @@ sl:
     consensus_process: Postopek soglasja
     question_round: Krog vprašanj
     edit_template: Uredi predlogo
-    proposal: Snubitev
+    proposal: Predlog
     run_process: Zaženi proces
     proposal_templates: Predloge predlogov
     custom: Po meri
@@ -2053,8 +2053,8 @@ sl:
     participate: Sodelujte
     vote: Glasujte
     votes: Glasovi
-    update_outcome: Posodobi rezultat
-    outcome: Izid
+    update_outcome: Posodobite sklep
+    outcome: Sklep
     outcomes: Rezultati
     statement: Izjava
     change_your_stance: Uredi odgovor
@@ -2071,7 +2071,7 @@ sl:
     share_count: Delite ček
     start_poll: Začnite z odločitvijo
     publish_poll: Delite anketo
-    share_outcome: Delite rezultat
+    share_outcome: Delite sklep
     view_all: Poglej vse
     save_changes: Shrani
     change_vote: Spremenite svoj glas
@@ -2081,7 +2081,7 @@ sl:
     too_long: Predolgo
     edit_warning: Urejanje je priporočljivo samo za manjše spremembe ali popravljanje črkovalnih napak. Za večje spremembe zaprite to %{pollType} in začnite novo.
     no_voting: Samo za razpravo, glasovanje onemogočeno
-    post_outcome: Objavi izid
+    post_outcome: Objavite sklep
     view_all_votes: Ogled vseh glasov
     you_voted: Glasovali ste
     these_are_templates: To so predloge odločitev v vaši skupini. Kliknite predlogo, da začnete novo odločitev. Skrbniki lahko prilagodijo vse podrobnosti o predlogi, tako da ustreza praksam vaše organizacije in jo člani enostavno najdejo in uporabljajo.
@@ -2242,7 +2242,7 @@ sl:
     location_placeholder: Kje bo to srečanje?
   poll_common_close_form:
     title: Zapreti %{poll_type} zdaj?
-    helptext: Ali ste prepričani, da želite predčasno zapreti to %{poll_type} in deliti rezultat?
+    helptext: Ali ste prepričani, da želite predčasno zaključiti to %{poll_type} in deliti sklep?
     close_poll_type: Zapri %{poll_type}
     poll_type_closed: "%{poll_type} zaprto"
   poll_common_reopen_form:
@@ -2310,21 +2310,21 @@ sl:
     reminder_sent: Obvestilo o opomniku je poslano
   poll_common_set_outcome_panel:
     enter_outcome: Vnesite rezultat
-    poll_type: Ta %{poll_type} je zaprt. Vzemite si čas za premislek o rezultatih in nato delite rezultat, da bodo ljudje vedeli, kaj se bo zgodilo naslednje.
-    enter_an_outcome: Vnesite rezultat
+    poll_type: Ta %{poll_type} je zaključena. Vzemite si čas za premislek o rezultatih in nato delite sklep, da bodo ljudje vedeli, kaj sledi.
+    enter_an_outcome: Vnesite sklep
   poll_common_outcome_form:
     review_due_in_days: Po koliko dneh preverite odločitev?
     review_date: Datum pregleda
     review_date_hint: Določite datum za pregled odločitve (neobvezno)
     who_to_notify: Koga želite obvestiti o tem izidu? (neobvezno)
     outcome_statement_template: Predloga izjave o rezultatih
-    new_title: Državni rezultat
-    update_title: Posodobi rezultat
-    outcome_created: Izid ustvarjen
-    outcome_updated: Rezultat posodobljen
+    new_title: Delite sklep
+    update_title: Posodobite sklep
+    outcome_created: Sklep ustvarjen
+    outcome_updated: Sklep posodobljen
     statement_placeholder: Povzemite odgovore in pojasnite, kaj se bo zgodilo naslednje.
     you_will_be_notified: O datumu pregleda boste obveščeni.
-    submit: Delite rezultat
+    submit: Delite sklep
     review_due_in_days_hint: Število dni čakanja pred pregledom odločitve (neobvezno).
     statement_template_hint: Navedite predlogo za pisanje izida odločitve. (neobvezno)
     statement_template_placeholder: Hvala za sodelovanje! Kvorum je bil dosežen in imamo podporo za nadaljevanje.
@@ -2385,8 +2385,8 @@ sl:
     add_option_placeholder: Vnesite novo izbiro
     minimum_stance_choices: Možnosti za uvrstitev
     minimum_stance_choices_hint: tj. uvrstite svoje najboljše 3 okuse sladoleda
-    ranked_choice_created: Ustvarjena uvrščena izbira
-    ranked_choice_updated: Uvrščena izbira posodobljena
+    ranked_choice_created: Prednostno razvrščanje ustvarjeno
+    ranked_choice_updated: Prednostno razvrščanje posodobljeno
     rank: Rank
     points: Točke
     average: Povprečje
@@ -2416,7 +2416,7 @@ sl:
     'yes': Da
     'no': Ne
     agree: Se strinjam
-    consent: Soglasje
+    consent: Privolitev
     abstain: Vzdržati se
     unsure: Negotovo
     disagree: Ne strinjam se
@@ -2485,7 +2485,7 @@ sl:
     discussion_closed: "<a class='actor-link' href='/u/%{username}'>%{author} je</a> zaprl nit"
     discussion_reopened: "<a class='actor-link' href='/u/%{username}'>%{author}</a> je ponovno odprl nit"
     new_comment: "<a class='actor-link' href='/u/%{username}'>%{author}</a>"
-    outcome_created: "<a class='actor-link' href='/u/%{username}'>%{author}</a> je delil rezultat"
+    outcome_created: "<a class='actor-link' href='/u/%{username}'>%{author}</a> je delil sklep"
     poll_reopened: "<a class='actor-link' href='/u/%{username}'>%{author}</a> je ponovno odprl %{polltype}"
     poll_closed_by_user: "<a class='actor-link' href='/u/%{username}'>%{author}</a> je zaprl %{polltype}"
     poll_created: "<a class='actor-link' href='/u/%{username}'>%{author}</a> je začel %{polltype}"
@@ -2664,8 +2664,8 @@ sl:
       poll_expired: Anketa poteče
       poll_closed_by_user: Anketa se zapre ročno
       poll_reopened: Anketa je ponovno odprta za glasovanje
-      outcome_created: Rezultat je deljen
-      outcome_updated: Rezultat je posodobljen
+      outcome_created: Sklep je deljen
+      outcome_updated: Sklep je posodobljen
       outcome_review_due: Predviden je pregled rezultatov
       new_discussion: Začne se razprava
       discussion_edited: Razprava je urejena
@@ -2771,8 +2771,11 @@ sl:
         helptext: "<p>V Loomiu uporabljamo predloge, da pokažemo podporo odločitvi ali poiščemo načine za njeno izboljšanje.</p><p> Začnimo s predlogom in prosimo člane vaše skupine, da o njem glasujejo.</p><p> Pripravili smo <b>predlogo za prakso,</b> ki jo lahko uporabite.</p>"
         submit: Oglejte si predloge predlog
       share_an_outcome:
-        title: Delite rezultat predloga
-        helptext: "<p>Za lažje sprejemanje odločitev je za predloge določen rok za glasovanje. Ko rok poteče, se glasovanje zaključi in obveščeni boste, da lahko delite izid predloga.</p><p> Izid je priložnost, da se ugotovi, ali je bil predlog uspešen in kaj se bo zgodilo naprej.</p><p> Če rok za oddajo predloga še ni potekel, vendar želite vseeno nadaljevati, lahko kliknete <b>Zapri predčasno</b> .</p><p> Ko bo pravi čas, <b>vnesite izid</b> svojega predloga.</p>"
+        title: Delite sklep predloga
+        helptext: |
+          <p>Ko poteče rok predloga, se glasovanje zaključi in pozvani boste, da delite sklep.</p>
+          <p>V sklepu po pregledu glasov in komentarjev pojasnite, kaj ste se odločili (ali kaj sledi).</p>
+          <p>Če rok še ni potekel, vendar ste pripravljeni nadaljevati, lahko izberete <b>Zaključite predčasno</b>.</p>
         submit: Ogled predloga
         cancel: Naredi to pozneje
       start_a_discussion:
@@ -2865,7 +2868,7 @@ sl:
       score_hint: Volivci vsaki možnosti dodelijo oceno
       allocate: Dodeli
       allocate_hint: Volivci razdelijo določeno število točk med možnostmi
-      ranked_choice: Uvrščena izbira
+      ranked_choice: Prednostno razvrščanje
       ranked_choice_hint: Volivci razvrstijo možnosti od najbolj priljubljene do najmanj priljubljene
       time_poll: Časovna anketa
       time_poll_hint: Volivci navedejo, kdaj so na voljo za sestanek
@@ -2947,7 +2950,7 @@ sl:
     voter_page_count: "%{first}–%{last} od %{total}"
     vote_weight_for: Teža glasov za %{name}
     save_vote_weights: Shrani uteži glasov
-    vote_weights_updated: Ponderiranje glasov
+    vote_weights_updated: Teže glasov posodobljene
     set_all: Nastavi vse
     find_or_invite_voters: Poiščite ali povabite volivce
     remove_voter_named: Odstrani %{name} iz ankete
@@ -2965,7 +2968,7 @@ sl:
     set_all_vote_weights_the_same: Vse teže glasov nastavi na enako vrednost
     member_vote_weights_hint: Volivci brez trenutnega članstva v skupini dobijo težo glasu 1
     weighted_voting: Ponderirano glasovanje
-    weighted_voting_is_not_available_with_anonymous_voting: "Ponderirano glasovanje ni na voljo pri anonimnem glasovanju"
+    weighted_voting_is_not_available_with_anonymous_voting: Ponderirano glasovanje ni na voljo pri anonimnem glasovanju
     use_weighted_voting: Uporabite ponderirano glasovanje
     weighted_voting_off_warning: Če izklopite uteženo glasovanje, se utež vseh glasov nastavi na 1. Vse uteži glasov, ki ste jih spremenili za to anketo, bodo izgubljene.
     weighted_voting_on_group: Z vklopom uteženega glasovanja se kopira privzeta teža glasu vsakega člana. Drugi volivci dobijo težo glasu 1.
@@ -3129,7 +3132,7 @@ sl:
     view_full_results: Ogled vseh rezultatov
     results_available_when_closed: Rezultati bodo na voljo po zaključku glasovanja
     elected_in_round: Izvoljen v %{round} krogu
-    eliminated_in_round: Izpad v %{round} krogu
+    eliminated_in_round: Izločen v krogu %{round}
     tied_in_round: Izenačeno v %{round} krogu
   lock_thread_modal:
     body: Zaklenite niti, da jih odstranite s seznama odprtih niti in preprečite drugim komentiranje.
@@ -3138,7 +3141,7 @@ sl:
     title: Dodaj v razpravo
     discussion: Razprava
     success: Uspelo, %{pollType} dodan v razpravo!
-    explanation: "%{pollType} in vsi glasovi, komentarji in izid bodo dodani izbrani niti razprave."
+    explanation: "%{pollType} in vsi glasovi, komentarji in sklep bodo dodani izbrani niti razprave."
   bookmarks:
     bookmarks: Zaznamki
     saved: Zaznamek shranjen
