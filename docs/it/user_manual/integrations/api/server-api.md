@@ -1,10 +1,10 @@
 ---
 title: API del server
-source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
+source_revision: c27ee3b193231816878f1c074ff9fc2a086a88c0
 source_file: docs/en/user_manual/integrations/api/server-api.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-02'
 sections:
   introduction: a357cdc2bfc0223e
   authentication: cbabcc874f053455
@@ -26,10 +26,10 @@ sections:
   examples-6: 71ae30577730b261
   sso-profile-sync-settings: 416144004d040e4f
 generated:
-  introduction: a32a4f6088c9b187
+  introduction: 84f1587202b6687a
   authentication: 28eaa840cd3f452d
   user-object: 1725eb51a00632f1
-  list-users: de7f5e3fb73ee799
+  list-users: d9168e09de1e8717
   example: dfe44221be7dda5e
   show-user: 5a20f6944c78628a
   examples: 2d6efddc918bf689
@@ -38,24 +38,24 @@ generated:
   examples-2: 64c6bc11f541a84e
   deactivate-user: 386cfaf95f6c6b42
   examples-3: 6abeaf19808d5841
-  reactivate-user: 972c7a68b3e08d28
+  reactivate-user: c939366d0f223ef5
   examples-4: 512758bd8a575333
-  redact-user: a25d05c50a367b12
+  redact-user: e11345126fa61a6f
   examples-5: 14a3ec9e57da4250
-  delete-user: 4d08e4773de03bb9
+  delete-user: fde62e265dbd7176
   examples-6: f45dd892571c348d
-  sso-profile-sync-settings: 85ad95c15f85bbab
+  sso-profile-sync-settings: d8380e2b0eba60a5
 title_source: 370e81eb20eece44
 title_generated: fb011755307eb06b
 ---
 
 <!-- translation-section: introduction -->
 
-# Documentazione dell'API del server Loomio
+# Documentazione delle API del server Loomio
 
-<!-- seo-description: Usa l'API del server Loomio per gestire gli account utente su un'installazione di Loomio ospitata sul tuo server. -->
+<!-- seo-description: Usa le API del server Loomio per gestire gli account utente su un'installazione Loomio ospitata sul tuo server. -->
 
-`/api/b3` serve per le operazioni a livello di server. Usa `/api/b2` per le azioni rivolte agli utenti ed eseguite con un account utente Loomio.
+`/api/b3` serve per le operazioni a livello di server. Usa `/api/b2` per le azioni eseguite con un account utente Loomio.
 
 <!-- translation-section: authentication -->
 
@@ -101,7 +101,7 @@ Le risposte relative agli utenti usano questa struttura:
 
 ## Elenca gli utenti
 
-Elenca tutti gli account utente dell'installazione di Loomio.
+Elenca tutti gli account utente dell'installazione Loomio.
 
 `GET /api/b3/users`
 
@@ -244,7 +244,7 @@ Restituisce:
 
 <!-- translation-section: reactivate-user -->
 
-## Riattiva un utente
+## Riattiva utente
 
 Riattiva un account utente disattivato individuato tramite il suo ID utente Loomio o la sua identità esterna.
 
@@ -279,7 +279,7 @@ Restituisce:
 
 <!-- translation-section: redact-user -->
 
-## Rimuovi i dati personali di un utente
+## Rimuovi i dati personali dell'utente
 
 La rimozione dei dati personali conserva i commenti dell'utente e gli altri contenuti che ha creato nei suoi gruppi, ma rimuove le informazioni identificative personali note, come nome, biografia, foto del profilo, indirizzo email, credenziali di accesso, identità e sessioni attive.
 
@@ -315,11 +315,11 @@ Restituisce:
 
 <!-- translation-section: delete-user -->
 
-## Elimina un utente
+## Elimina utente
 
 L'eliminazione rimuove l'utente e i record che ha creato. I commenti vengono rimossi dalle conversazioni, i voti vengono rimossi dai sondaggi e anche i gruppi, le discussioni, i sondaggi e gli altri record creati dall'utente possono essere eliminati tramite le associazioni del database.
 
-Questa operazione è molto distruttiva. Si consiglia vivamente di scegliere la rimozione dei dati personali.
+Questa operazione è molto distruttiva. È fortemente consigliato usare invece la rimozione dei dati personali.
 
 `DELETE /api/b3/users/:id`
 
@@ -367,10 +367,10 @@ LOOMIO_DISABLE_EDIT_USER_PROFILE=1
 | `name` | Gestito dalla sincronizzazione esterna |
 | `username` | Gestito dalla sincronizzazione esterna |
 | `email` | Gestito dalla sincronizzazione esterna |
-| `avatar_kind` / `uploaded_avatar` | Gestiti dalla sincronizzazione esterna |
+| `avatar_kind` / `uploaded_avatar` | Gestito dalla sincronizzazione esterna |
 
 Gli utenti possono comunque modificare i campi locali di Loomio, come `short_bio` e `location`.
 
-`LOOMIO_SSO_UPDATE_USER_PROFILE_ON_LOGIN=1` aggiorna `name` ed `email` usando i dati di accesso SSO. Lascia questa impostazione commentata o non impostata quando uno script di sincronizzazione esterno deve essere l'unica fonte di questi aggiornamenti.
+`LOOMIO_SSO_UPDATE_USER_PROFILE_ON_LOGIN=1` aggiorna `name` ed `email` usando i dati di accesso SSO. Lascia questa impostazione commentata o non impostata quando uno script di sincronizzazione esterna deve essere l'unica fonte di questi aggiornamenti.
 
-`LOOMIO_SSO_FORCE_USER_ATTRS` continua a funzionare nelle installazioni esistenti. Impedisce le modifiche da parte degli utenti e aggiorna `name` ed `email` all'accesso tramite SSO.
+`LOOMIO_SSO_FORCE_USER_ATTRS` continua a funzionare per le installazioni esistenti. Impedisce le modifiche da parte degli utenti e aggiorna `name` ed `email` all'accesso tramite SSO.

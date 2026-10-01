@@ -1,10 +1,10 @@
 ---
 title: Trovare contenuti
-source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
+source_revision: c27ee3b193231816878f1c074ff9fc2a086a88c0
 source_file: docs/en/user_manual/overview/finding-content.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-02'
 sections:
   introduction: 91ceec48c5d29a37
   search: 514f599496d28353
@@ -17,12 +17,12 @@ sections:
 generated:
   introduction: 4d0cc5b8cef98e89
   search: 0f7b616246a69fd2
-  search-tips: 8b85943c727de7b4
-  filter-discussions: ef9ffab0f991bf4c
+  search-tips: c6987003f5825b45
+  filter-discussions: a19da6f812e99111
   category-tags: fe1eff63b2f9e467
-  unread-discussions: c9419eca4a137713
-  polls-awaiting-your-vote: bd3eb44518fda6dc
-  bookmarks: 04f602155922f998
+  unread-discussions: 262742674e734fb9
+  polls-awaiting-your-vote: 2db0a40e43d47c5d
+  bookmarks: c5d7a4007bf8bb55
 title_source: 11acd4c6010fc176
 title_generated: 23362d9ab29cf1f2
 ---
@@ -49,19 +49,19 @@ Inserisci una parola o una frase, poi premi Invio o seleziona l'icona di ricerca
 
 <!-- translation-section: search-tips -->
 
-### Consigli per la ricerca
+### Suggerimenti per la ricerca
 
 - Inizia con una o due parole distintive del titolo o del contenuto che ricordi.
 - La ricerca trova corrispondenze con l'inizio di una parola, quindi una parola parziale come **bott** può trovare **bottle**.
-- La ricerca compensa gli errori di ortografia quando i risultati per i termini inseriti sono molto pochi.
+- La ricerca tiene conto degli errori di ortografia quando i risultati per la ricerca inserita sono molto pochi.
 - Usa i filtri per limitare i risultati a un'organizzazione, un sottogruppo, un tag o un tipo di contenuto, come commenti o sondaggi.
-- Ordina per **Migliore abbinamento** quando conta la pertinenza, oppure dai più recenti o dai meno recenti quando sai all'incirca quando è stato pubblicato il contenuto.
+- Ordina per **Migliore abbinamento** quando conta la pertinenza, oppure dal più recente o dal meno recente quando sai approssimativamente quando è stato pubblicato il contenuto.
 
 <!-- translation-section: filter-discussions -->
 
 ## Filtrare le discussioni
 
-Usa i controlli accanto a Cerca per filtrare le discussioni in base allo stato aperto o chiuso oppure a un tag di categoria. Combinando un termine di ricerca con un filtro puoi restringere rapidamente un lungo elenco di discussioni.
+Usa i controlli accanto a Cerca per filtrare le discussioni in base allo stato aperto o chiuso oppure al tag di categoria. Combinare un termine di ricerca con un filtro può restringere rapidamente un lungo elenco di discussioni.
 
 <!-- translation-section: category-tags -->
 
@@ -77,16 +77,16 @@ Seleziona un tag nella scheda **Discussioni** per mostrare le discussioni corris
 
 ## Discussioni non lette
 
-Seleziona **Discussioni non lette** nella barra laterale per vedere le discussioni con attività che non hai letto. All'interno di una discussione, la cronologia ti aiuta a raggiungere gli elementi non letti e gli eventi importanti.
+Seleziona **Discussioni non lette** nella barra laterale per vedere le discussioni con attività che non hai letto. All'interno di una discussione, la cronologia ti aiuta a passare agli elementi non letti e agli eventi importanti.
 
 <!-- translation-section: polls-awaiting-your-vote -->
 
 ## Sondaggi in attesa del tuo voto
 
-Seleziona **Sondaggi da votare** nella barra laterale per vedere i sondaggi attivi a cui sei stato invitato ma in cui non hai ancora votato. Puoi anche aprire la scheda **Sondaggi** di un gruppo per vedere i suoi sondaggi attivi e chiusi.
+Seleziona **Sondaggi da votare** nella barra laterale per vedere i sondaggi attivi a cui hai ricevuto un invito ma in cui non hai ancora votato. Puoi anche aprire la scheda **Sondaggi** di un gruppo per vedere i suoi sondaggi attivi e chiusi.
 
 <!-- translation-section: bookmarks -->
 
 ## Segnalibri
 
-Aggiungi ai segnalibri una discussione, un commento, un sondaggio, un voto o una conclusione quando vuoi ritrovarli in seguito. Apri **Segnalibri** dal tuo menu utente per vedere tutto ciò che hai salvato. Consulta [Segnalibri](/en/user_manual/users/bookmarks) per i dettagli.
+Aggiungi ai segnalibri una discussione, un commento, un sondaggio, un voto o una conclusione quando vuoi tornarci in seguito. Apri **Segnalibri** dal tuo menu utente per vedere tutto ciò che hai salvato. Consulta [Segnalibri](/en/user_manual/users/bookmarks) per i dettagli.
