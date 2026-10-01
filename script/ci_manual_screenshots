@@ -15,11 +15,15 @@ if [ -f "$screenshots_cache/$screenshot_locale/.generation.json" ]; then
   cp "$screenshots_cache/$screenshot_locale/.generation.json" "$screenshots_cache/.generation.json"
 fi
 
-bin/docs-screenshots "$screenshot_locale" --refresh --output "$screenshots_cache"
+# A failed run still stores the images it captured, so publish them before
+# reporting the failure; the next run retries only the remaining images.
+status=0
+bin/docs-screenshots "$screenshot_locale" --refresh --output "$screenshots_cache" || status=$?
 
-# Store the manifest only after all completed images have been uploaded. A
-# failed generation makes no changes to the published images or manifest.
+# Upload the manifest after the images it describes.
 aws --endpoint-url "$r2_endpoint" s3 sync "$screenshots_cache/$screenshot_locale/" "$r2_prefix/" \
   --exclude '.generation.json' --cache-control 'public,max-age=300' --only-show-errors
 aws --endpoint-url "$r2_endpoint" s3 cp "$screenshots_cache/.generation.json" "$r2_prefix/.generation.json" \
   --content-type application/json --cache-control no-store --only-show-errors
+
+exit "$status"

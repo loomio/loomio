@@ -27,6 +27,7 @@ unless ARGV.empty?
 end
 
 FileUtils.mkdir_p(options[:output]) unless options[:status]
+failures = []
 generate = lambda do
   cache = Docs::Screenshots::Cache.new(options[:output])
   locales.each do |locale|
@@ -57,11 +58,14 @@ generate = lambda do
         "NIGHTWATCH_DEVICE_SCALE_FACTOR" => "2"
       }
       success = system(environment, Docs::Screenshots::ROOT.join("bin/e2e-screenshots").to_s, chdir: Docs::Screenshots::ROOT.to_s)
-      abort "#{locale.code}: capture failed; existing cached images retained" unless success
-      pending.each do |recipe, inputs, _|
+      # A capture is written only after its test reached the documented state,
+      # so keep every image a failed run produced and retry only the rest.
+      captured = pending.select { |recipe, _, _| staging.join("images", recipe.fetch("image")).file? }
+      captured.each do |recipe, inputs, _|
         cache.store(locale.code, recipe, inputs, staging.join("images", recipe.fetch("image")))
       end
-      puts "#{locale.code}: stored #{pending.length} compressed screenshots"
+      puts "#{locale.code}: stored #{captured.length} of #{pending.length} compressed screenshots"
+      failures << locale.code unless success && captured.length == pending.length
     end
   end
 end
@@ -76,3 +80,4 @@ else
     generate.call
   end
 end
+abort "Capture failed for #{failures.join(', ')}; their remaining images will be retried" if failures.any?

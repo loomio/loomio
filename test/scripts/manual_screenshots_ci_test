@@ -27,9 +27,10 @@ cat > "$test_path/workspace/bin/docs-screenshots" <<'SH'
 set -euo pipefail
 # The generator must receive the downloaded manifest at its normal cache root.
 grep -Fxq 'old manifest' "$4/.generation.json"
-if [ -n "${FAIL_GENERATION+x}" ]; then exit 73; fi
 printf '%s\n' 'new image' > "$4/fr/example.png"
 printf '%s\n' 'new manifest' > "$4/.generation.json"
+# A failed run keeps the images it captured before the failure.
+if [ -n "${FAIL_GENERATION+x}" ]; then exit 73; fi
 SH
 
 chmod +x "$test_path/bin/aws" "$test_path/workspace/bin/docs-screenshots"
@@ -50,8 +51,8 @@ if FAIL_GENERATION=1 bash "$repository_path/script/ci_manual_screenshots" fr; th
   echo 'Failed generation unexpectedly succeeded' >&2
   exit 1
 fi
-grep -Fxq 'old image' "$MOCK_BUCKET/fr/example.png"
-grep -Fxq 'old manifest' "$MOCK_BUCKET/fr/.generation.json"
+grep -Fxq 'new image' "$MOCK_BUCKET/fr/example.png"
+grep -Fxq 'new manifest' "$MOCK_BUCKET/fr/.generation.json"
 
 reset_published
 if FAIL_UPLOAD=1 bash "$repository_path/script/ci_manual_screenshots" fr; then
