@@ -31,6 +31,11 @@ module Boot
           isAvailable:       TranslationService.available?
         },
         pollTypes:         AppConfig.poll_types,
+        templateSettings: {
+          discussion_template: DiscussionTemplate::SETTINGS,
+          poll_template:       PollTemplate::SETTINGS,
+          poll_option:         PollTemplate::POLL_OPTION_SETTINGS
+        },
         pollColors:        AppConfig.colors,
         webhookEventKinds: AppConfig.webhook_event_kinds,
         identityProviders: AppConfig.providers.fetch('identity', []).map do |provider|

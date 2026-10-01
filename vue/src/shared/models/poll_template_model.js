@@ -1,7 +1,7 @@
 import BaseModel        from '@/shared/record_store/base_model';
 import AppConfig        from '@/shared/services/app_config';
 import Session          from '@/shared/services/session';
-import { pick }            from 'lodash-es';
+import { pick, camelCase } from 'lodash-es';
 import { startOfHour, addDays } from 'date-fns';
 import { I18n }             from '@/i18n';
 import Records from '@/shared/services/records';
@@ -80,7 +80,10 @@ export default class PollTemplateModel extends BaseModel {
   buildPoll() {
     const poll = Records.polls.build();
 
-    const attrs = pick(this, Object.keys(this.defaultValues()));
+    // Options are copied as nested attributes below, not as a plain setting.
+    const settings = AppConfig.templateSettings.poll_template.filter(name => name !== 'poll_options');
+    const attrs = pick(this, settings.map(camelCase));
+    attrs.groupId = this.groupId;
     attrs.pollTemplateId = this.id;
     attrs.pollTemplateKey = this.key;
     attrs.authorId = Session.user().id;

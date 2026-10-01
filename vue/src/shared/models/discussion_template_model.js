@@ -1,7 +1,7 @@
 import BaseModel        from '@/shared/record_store/base_model';
 import AppConfig        from '@/shared/services/app_config';
 import Session          from '@/shared/services/session';
-import { compact, pick }         from 'lodash-es';
+import { compact, pick, camelCase } from 'lodash-es';
 import Records from '@/shared/services/records';
 
 export default class DiscussionTemplateModel extends BaseModel {
@@ -52,7 +52,7 @@ export default class DiscussionTemplateModel extends BaseModel {
   buildDiscussion() {
     const discussion = Records.discussions.build();
 
-    const attrs = pick(this, Object.keys(this.defaultValues()));
+    const attrs = pick(this, AppConfig.templateSettings.discussion_template.map(camelCase));
     attrs.discussionTemplateId = this.id;
     attrs.discussionTemplateKey = this.key;
     attrs.authorId = Session.user().id;

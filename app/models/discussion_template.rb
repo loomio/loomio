@@ -8,6 +8,31 @@ class DiscussionTemplate < ApplicationRecord
   # the template body is saved as a discussion with a real author and participants.
   is_rich_text on: :description, materialize_tasks: false
 
+  # Settings a template carries to the discussions started from it. This single
+  # list drives template files, permitted params, the serializer and the client.
+  SETTINGS = %w[
+    title
+    title_placeholder
+    description
+    description_format
+    process_name
+    process_subtitle
+    process_introduction
+    process_introduction_format
+    recipient_audience
+    newest_first
+    max_depth
+    allow_concurrent_polls
+    allow_comments
+    allow_reactions
+    comment_length_max
+    public
+    default_to_direct_discussion
+    poll_template_keys_or_ids
+    tags
+    content_locale
+  ].freeze
+
   belongs_to :author, class_name: "User", optional: true
   belongs_to :group, class_name: "Group"
 
