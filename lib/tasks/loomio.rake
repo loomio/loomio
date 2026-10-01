@@ -50,35 +50,45 @@ namespace :loomio do
     end
     output_mutex = Mutex.new
     failures = Queue.new
+    queue = Queue.new
+    locales.each { |locale| queue << locale }
+    queue.close
 
-    locales.map do |locale|
+    # Each locale's batches run in order; TRANSLATION_JOBS locales run at once.
+    Array.new([Integer(ENV.fetch("TRANSLATION_JOBS", 6)), locales.size].min) do
       Thread.new do
-        files = %w[client server].to_h do |kind|
-          filename = "config/locales/#{kind}.#{locale}.yml"
-          [kind, File.exist?(filename) ? YAML.load_file(filename).fetch(locale, {}) : {}]
+        while (locale = queue.pop)
+          translate_locale_strings(locale, english, output_mutex, failures) { |*args| yield(*args) }
         end
-        current = files.each_with_object({}) { |(kind, strings), output| flatten_strings(strings, kind, output) }
-        strings, revise = yield(locale, english, current)
-        next if strings.empty?
-
-        output_mutex.synchronize { puts "#{locale}: translating #{strings.size} strings" }
-        translator = AppStringTranslator.new(locale, existing: current)
-        result = translator.translate(strings, current: revise) do |batch|
-          batch.each do |key, translation|
-            kind, *path = key.split(".")
-            files.fetch(kind).bury(*path, translation)
-          end
-          batch.keys.map { |key| key.split(".").first }.uniq.each do |kind|
-            File.write("config/locales/#{kind}.#{locale}.yml", { locale => files.fetch(kind) }.to_yaml(line_width: 2000))
-          end
-        end
-        result.failures.each { |key, message| failures << "#{locale}: #{key}: #{message}" }
-      rescue => error
-        failures << "#{locale}: #{error.class}: #{error.message}"
       end
     end.each(&:join)
 
     raise "Translation failed for #{failures.size} string(s):\n#{Array.new(failures.size) { failures.pop }.join("\n")}" unless failures.empty?
+  end
+
+  def translate_locale_strings(locale, english, output_mutex, failures)
+    files = %w[client server].to_h do |kind|
+      filename = "config/locales/#{kind}.#{locale}.yml"
+      [kind, File.exist?(filename) ? YAML.load_file(filename).fetch(locale, {}) : {}]
+    end
+    current = files.each_with_object({}) { |(kind, strings), output| flatten_strings(strings, kind, output) }
+    strings, revise = yield(locale, english, current)
+    return if strings.empty?
+
+    output_mutex.synchronize { puts "#{locale}: translating #{strings.size} strings" }
+    translator = AppStringTranslator.new(locale, existing: current)
+    result = translator.translate(strings, current: revise) do |batch|
+      batch.each do |key, translation|
+        kind, *path = key.split(".")
+        files.fetch(kind).bury(*path, translation)
+      end
+      batch.keys.map { |key| key.split(".").first }.uniq.each do |kind|
+        File.write("config/locales/#{kind}.#{locale}.yml", { locale => files.fetch(kind) }.to_yaml(line_width: 2000))
+      end
+    end
+    result.failures.each { |key, message| failures << "#{locale}: #{key}: #{message}" }
+  rescue => error
+    failures << "#{locale}: #{error.class}: #{error.message}"
   end
 
   # Strings whose translation breaks the glossary: a rendering it marks as
