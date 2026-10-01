@@ -176,14 +176,14 @@ hr:
   poll_types:
     proposal: prijedlog
     count: uključiti se
-    check: provjera smisla
+    check: provjera stava
     poll: anketa
-    dot_vote: glasovanje s točkom
-    meeting: vremenska anketa
+    dot_vote: raspodjela bodova
+    meeting: anketa o terminu
     ranked_choice: rangirani izbor
-    score: rezultat ankete
+    score: ocjenjivanje
     question: krug pitanja
-    stv: Izbori za STV
+    stv: STV izbori
   timezones:
     local: Lokalno vrijeme (%{value})
   common:
@@ -797,7 +797,7 @@ hr:
       poll_created: "%{actor} je započeo %{poll_type}: %{title}"
       poll_edited: "%{actor} ažurirao je %{poll_type}: %{title}"
       poll_expired: "%{poll_type} je zatvoren: %{title}"
-      poll_expired_author: 'Podijelite rezultat svoje ankete %{poll_type}: %{title}'
+      poll_expired_author: 'Podijelite zaključak za %{poll_type}: %{title}'
       poll_option_added: "%{actor} je dodao opcije u %{title}"
       poll_reopened: "%{actor} ponovno je otvorio %{poll_type}: %{title}"
       poll_reminder: "%{actor} vas podsjeća da glasate na %{title}"
@@ -836,7 +836,7 @@ hr:
       poll_created: "%{actor} je započeo %{poll_type}"
       poll_edited: "%{actor} ažurirao je %{poll_type}"
       poll_expired: "%{poll_type} je zatvoren"
-      poll_expired_author: Podijelite rezultat svog %{poll_type}
+      poll_expired_author: Podijelite zaključak za %{poll_type}
       poll_option_added: "%{actor} dodao je opcije u %{poll_type}"
       poll_reopened: "%{actor} ponovno je otvorio %{poll_type}"
       poll_reminder: "%{actor} vas podsjeća da glasate"
@@ -876,7 +876,7 @@ hr:
       new_discussion: "%{title}"
       outcome_announced: 'Ishod %{poll_type}: %{title}'
       outcome_created: 'Ishod %{poll_type}: %{title}'
-      outcome_updated: 'Rezultat %{poll_type} ažuriran: %{title}'
+      outcome_updated: 'Zaključak za %{poll_type} ažuriran: %{title}'
       outcome_review_due: 'Vrijeme je da pregledamo ishod: %{title}'
       poll_closed_by_user: "%{actor} je zatvorio %{poll_type}: %{title}"
       poll_closing_soon: "%{poll_type} se zatvara za 24 sata: %{title}"
@@ -884,7 +884,7 @@ hr:
       poll_created: "%{poll_type}: %{title}"
       poll_edited: "%{actor} je ažurirao/la %{poll_type}: %{title}"
       poll_expired: "%{poll_type} je zatvoren: %{title}"
-      poll_expired_author: 'Objavite rezultat: %{title}'
+      poll_expired_author: 'Objavite zaključak: %{title}'
       poll_option_added: "%{actor} je dodao opcije za %{title}"
       poll_reopened: 'Glasanje produženo: %{title}'
       poll_reminder: "%{actor} vas podsjeća da glasate za %{title}"
@@ -1110,7 +1110,7 @@ hr:
     edit_comment: Uredi komentar
     delete_comment: Obriši komentar
     reply_to_comment: Odgovor
-    fork_comment: Viličasti navoj
+    fork_comment: Izdvojite u novu nit
     translate_comment: Prevedi komentar
     edit_outcome: Uredi ishod
     announce_outcome: Obavijestite ljude o ovom ishodu
@@ -1121,8 +1121,8 @@ hr:
     show_edits: Prikaži izmjene
     show_notifications: Prikaži obavijesti
     history: Povijest
-    pin_thread: Pin konac
-    unpin_thread: Odspojite konac
+    pin_thread: Prikvačite nit
+    unpin_thread: Otkvačite nit
     pin_event: Prikvači na vremensku traku
     unpin_event: Otkvači s vremenske trake
     comment_copied: URL komentara kopiran je u međuspremnik
@@ -1388,7 +1388,7 @@ hr:
     change_cover_image: promijeni naslovnu sliku
     change_logo: promijeniti logo
     permissions_explaination: 'Postoje dvije razine članstva koje osoba može imati u grupi: administrator i član. Administratori mogu uređivati postavke grupe, postavljati druge osobe za administratore i izvoditi sve radnje navedene u nastavku.'
-    parent_group: Roditeljska grupa
+    parent_group: Matična grupa
     new_organisation: Nova organizacija
     new_group: Nova grupa
     new_subgroup: Nova podskupina
@@ -1951,16 +1951,16 @@ hr:
     consensus_title: Konsenzus
     proposal_title: Prijedlog
     count_title: Uključite se
-    check_title: Provjera smisla
+    check_title: Provjera stava
     poll_title: Anketa
     meeting: Sastanak
-    score_title: Rezultat ankete
-    dot_vote_title: Glasanje s točkom
-    meeting_title: Vremenska anketa
+    score_title: Ocjenjivanje
+    dot_vote_title: Raspodjela bodova
+    meeting_title: Anketa o terminu
     ranked_choice_title: Rangirani izbor
     gradients_of_agreement_title: Gradijenti slaganja
     majority_title: Većina
-    stv_title: Izbori za STV
+    stv_title: STV izbori
   poll_option_form:
     edit_option: Opcija uređivanja
     option_name: Naziv opcije
@@ -2242,7 +2242,7 @@ hr:
     location_placeholder: Gdje će se održati ovaj sastanak?
   poll_common_close_form:
     title: Sada zatvoriti %{poll_type}?
-    helptext: Jeste li sigurni da želite ranije zatvoriti ovaj %{poll_type} i podijeliti rezultat?
+    helptext: Jeste li sigurni da želite ranije zatvoriti %{poll_type} i podijeliti zaključak?
     close_poll_type: Zatvori %{poll_type}
     poll_type_closed: "%{poll_type} zatvoreno"
   poll_common_reopen_form:
@@ -2265,7 +2265,7 @@ hr:
   poll_common_closing_at_field:
     closing: Zatvaranje
     no_closing_date: Nema datuma zatvaranja
-    closing_date: Završni datum
+    closing_date: Datum zatvaranja
     closing_hour: Vrijeme zatvaranja
     invalid_date: Nevažeći datum
   poll_card:
@@ -2311,7 +2311,7 @@ hr:
   poll_common_set_outcome_panel:
     enter_outcome: Unesite ishod
     poll_type: Ovaj %{poll_type} je zatvoren. Odvojite vrijeme za razmatranje rezultata, a zatim podijelite ishod kako bi ljudi znali što će se sljedeće dogoditi.
-    enter_an_outcome: Unesite rezultat
+    enter_an_outcome: Unesite zaključak
   poll_common_outcome_form:
     review_due_in_days: Nakon koliko dana preispitati odluku?
     review_date: Datum pregleda
@@ -2771,7 +2771,7 @@ hr:
         helptext: "<p>U Loomiu koristimo prijedloge kako bismo otkrili podršku odluci ili pronašli načine za njezino poboljšanje.</p><p> Započnimo s prijedlogom i zamolimo članove vaše grupe da glasaju o njemu.</p><p> Izradili smo predložak <b>prijedloga za praksu</b> koji možete koristiti.</p>"
         submit: Pogledajte predloške prijedloga
       share_an_outcome:
-        title: Podijelite rezultat prijedloga
+        title: Podijelite zaključak prijedloga
         helptext: "<p>Kako bi se pomoglo u donošenju odluka, prijedlozi imaju rok za glasanje. Kada rok istekne, glasanje će biti zatvoreno i bit ćete obaviješteni da podijelite ishod prijedloga.</p><p> Ishod je prilika da se kaže je li prijedlog bio uspješan i što će se sljedeće dogoditi.</p><p> Ako rok za predaju prijedloga još nije istekao, ali ipak želite nastaviti, možete kliknuti <b>Zatvori ranije</b> .</p><p> Kada dođe pravo vrijeme, <b>unesite ishod</b> svog prijedloga.</p>"
         submit: Prikaži prijedlog
         cancel: Učini to kasnije
@@ -2867,11 +2867,11 @@ hr:
       allocate_hint: Birači raspoređuju određeni broj bodova između opcija
       ranked_choice: Rangirani izbor
       ranked_choice_hint: Birači slažu opcije redom od najpoželjnijih do najmanje poželjnih
-      time_poll: Vremenska anketa
+      time_poll: Anketa o terminu
       time_poll_hint: Birači navode kada su dostupni za sastanak
       rank: Rang
       time: Vrijeme
-      stv: Izbori za STV
+      stv: STV izbori
       stv_hint: Proporcionalno odaberite više pobjednika koristeći jedan prenosivi glas
     process: Proces
     process_name: Naslov predloška
@@ -2965,7 +2965,7 @@ hr:
     set_all_vote_weights_the_same: Postavi sve težine glasova na istu razinu
     member_vote_weights_hint: Birači bez trenutnog članstva u grupi dobivaju težinu glasa 1
     weighted_voting: Ponderirano glasanje
-    weighted_voting_is_not_available_with_anonymous_voting: "Ponderirano glasanje nije dostupno uz anonimno glasanje"
+    weighted_voting_is_not_available_with_anonymous_voting: Ponderirano glasanje nije dostupno uz anonimno glasanje
     use_weighted_voting: Koristite ponderirano glasanje
     weighted_voting_off_warning: Isključivanjem ponderiranog glasanja svaka težina glasa postavlja se na 1. Sve težine glasova koje ste promijenili za ovu anketu bit će izgubljene.
     weighted_voting_on_group: Uključivanjem ponderiranog glasanja kopira se zadana težina glasa svakog člana. Ostali glasači dobivaju težinu glasa od 1.

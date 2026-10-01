@@ -1,6 +1,6 @@
 ---
 hr:
-  group_export_started: "Pokrenut je izvoz podataka grupe"
+  group_export_started: Pokrenut je izvoz podataka grupe
   discussion_templates:
     blank:
       process_name: Prazan predložak
@@ -51,7 +51,7 @@ hr:
       title_placeholder: Podijelite veze i informacije
       process_name: Podijelite veze i informacije
       process_subtitle: Objavite informacije, veze i izvješća za dijeljenje radi komentara i rasprave.
-      process_introduction: "<p>Koristite nit kao 'zid' ili 'oglasnu ploču' za svoju grupu za objavljivanje informacija, novosti i ideja koje želite podijeliti jedni s drugima.</p><p> Pozovite ljude da koriste alate <strong>za umetanje poveznice</strong> i <strong>ugrađivanje videa</strong> kako bi pomogli grupi da pristupi informacijama unutar Loomija. Upotrijebite <strong>naslov</strong> na komentarima da prikvačite komentar na vremensku traku niti kako biste ga mogli lako pronaći.</p><p> <strong>Pričvrstite</strong> konac tako da se zalijepi i potaknite <strong>Reakcije</strong> da ga održe napetim, dajući ljudima do znanja da ste vidjeli njihov predmet.</p><p> Zadani prikaz ove niti je <strong>Najnoviji</strong> , tako da su najnoviji komentari na vrhu niti.</p>"
+      process_introduction: "<p>Koristite nit kao 'zid' ili 'oglasnu ploču' svoje grupe za objavljivanje informacija, novosti i ideja koje želite podijeliti jedni s drugima.</p><p>Pozovite ljude da koriste alate <strong>Umetnite poveznicu</strong> i <strong>Ugradite video</strong> kako bi grupa mogla pristupiti informacijama unutar Loomija. Upotrijebite <strong>Naslov</strong> u komentaru da ga prikvačite na vremensku traku niti kako bi ga bilo lako pronaći.</p><p><strong>Prikvačite</strong> nit da ostane lako dostupna i potaknite <strong>Reakcije</strong> kako bi ostala aktivna i ljudi znali da ste vidjeli njihovu objavu.</p><p>Zadani prikaz ove niti je <strong>Najnoviji</strong> pa su najnoviji komentari na vrhu niti.</p>"
       description: <p>Koristite ovu nit za objavljivanje informacija, obavijesti i stvari koje želite podijeliti - mjesto gdje možete vidjeti što se događa i uključiti se.</p><p data-text-align="start"> Dijelite događaje, izvješća, podcaste i druge zanimljive online informacije.</p><p data-text-align="start"> Upotrijebite alate <strong>za umetanje veze</strong> i <strong>ugrađivanje videa</strong> kako biste pomogli ljudima da pristupe informacijama unutar Loomija.</p>
       information: Informacija
     prepare_for_a_meeting:
@@ -176,7 +176,7 @@ hr:
         allocate: Dodijeliti
         score: Postići
         rank: Rang
-        time: Vremenska anketa
+        time: Anketa o terminu
   user:
     deleted_user: Izbrisani korisnik
     placeholder_name: Pozvani korisnik (%{hostname})
@@ -487,7 +487,7 @@ hr:
       disagree_prompt: Zašto se ne slažete?
     proposal:
       process_subtitle: Postavite prijedlog za donošenje odluke
-      process_introduction: <p>Klasični Loomio prijedlog pomaže vam u donošenju odluke, pretvarajući raspravu u jasan ishod.</p><p> Predložite postupak i pozovite ljude da odgovore glasanjem za slaganje, suzdržavanje ili neslaganje.</p><p> Dok glasaju, ljudi mogu navesti razlog zašto su glasali na taj način. Možete vidjeti kakav je stav svih ostalih o tom pitanju i zašto.</p><p> Na taj način možete upotrijebiti prijedlog kako biste potaknuli ljude na odgovor, otkrili nove informacije i izgradili zajedničko razumijevanje - kako biste pomogli svojoj grupi da donese bolju i informiraniju odluku.</p><p> Prijedlog i povezana rasprava stvaraju vlastiti zapis o tome kako je do odluke došlo.</p><p> <a target="_blank" href="/docs/en/guides/making_decisions/simple_decision_process"><u>Pročitajte više o korištenju klasičnog Loomio prijedloga u jednostavnom procesu odlučivanja</u></a> .</p>
+      process_introduction: <p>Klasični Loomio prijedlog pomaže vam u donošenju odluke, pretvarajući raspravu u jasan zaključak.</p><p>Predložite postupak i pozovite ljude da odgovore glasom Slažem se, Suzdržavam se ili Ne slažem se.</p><p>Dok glasaju, ljudi mogu navesti razlog zašto su glasali na taj način. Možete vidjeti kakav je stav svih ostalih o tom pitanju i zašto.</p><p>Na taj način možete upotrijebiti prijedlog kako biste potaknuli ljude na odgovor, otkrili nove informacije i izgradili zajedničko razumijevanje - kako biste pomogli svojoj grupi da donese bolju i informiraniju odluku.</p><p>Prijedlog i povezana rasprava stvaraju vlastiti zapis o tome kako je do odluke došlo.</p><p><a target="_blank" href="/docs/en/guides/making_decisions/simple_decision_process"><u>Pročitajte više o korištenju klasičnog Loomio prijedloga u jednostavnom procesu odlučivanja</u></a>.</p>
       title: Odobrite novi koncept robne marke
       details: <h3 id="what-is-the-decision-you-need-to-make"><strong>Koju odluku trebate donijeti?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Zašto je ovo važno?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Što tražite od ljudi da učine?</strong></h3><p></p><p> Da bi ovaj prijedlog bio usvojen, potrebna nam je većina članova da glasa "Slažem se".</p><p> Ako se ne slažete, navedite zašto i što treba promijeniti da biste se složili.</p>
       agree: Slažem se
@@ -555,7 +555,7 @@ hr:
       outcome_statement: "<p>Hvala vam što ste poslali svoja pitanja tijekom ovog kruga</p>"
     sense_check:
       process_subtitle: Zatražite povratne informacije, pitanja i nedoumice
-      process_introduction: <p>Prijedlog provjere smisla dobar je način za dobivanje povratnih informacija, poticanje pitanja i otkrivanje nedoumica. Pomaže u razjašnjavanju i poboljšanju prijedloga prije donošenja odluke.</p><p> Provjera smisla obavještava ljude da se oblikuje prijedlog i potiče ih na sudjelovanje. To je prilika da se slušaju ljudi, osjeti kako se osjećaju i reagira na odgovarajući način - otvarajući potencijal za uključivanje njihovih doprinosa kako bi se donijela bolja odluka.</p><p> Koristite prijedlog za provjeru smisla u procesu suglasnosti kako biste pozvali reakcije i komentare radi poboljšanja prijedloga, a u procesu konsenzusa za testiranje konsenzusa.</p><p> <a target="_blank" rel="noopener noreferrer nofollow" href="/docs/en/guides/making_decisions/simple_decision_process"><u>Više o korištenju Sense checka pročitajte u jednostavnom procesu odlučivanja</u></a> <span>.</span></p>
+      process_introduction: <p>Prijedlog provjere stava dobar je način za dobivanje povratnih informacija, poticanje pitanja i otkrivanje nedoumica. Pomaže u razjašnjavanju i poboljšanju prijedloga prije donošenja odluke.</p><p>Provjera stava obavještava ljude da se oblikuje prijedlog i potiče ih na sudjelovanje. To je prilika da saslušate ljude, razumijete kako se osjećaju i primjereno odgovorite - kako biste uključili njihove doprinose i donijeli bolju odluku.</p> <p>Koristite prijedlog provjere stava u procesu pristanka kako biste potaknuli reakcije i komentare radi poboljšanja prijedloga, a u procesu konsenzusa kako biste provjerili postoji li konsenzus.</p><p><a target="_blank" rel="noopener noreferrer nofollow" href="/docs/en/guides/making_decisions/simple_decision_process"><u>Pročitajte više o korištenju provjere stava u jednostavnom procesu odlučivanja</u></a><span>.</span></p>
       title: Kako vam se čine novi koncepti brenda?
       details: <h3 id="what-are-you-proposing"><strong>Što predlažeš?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Zašto je ovo važno?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Što tražite od ljudi da učine?</strong></h3><p></p><p> Što mislite o prijedlogu? Ostavite komentar ili dajte prijedlog za poboljšanje.</p><p> Ova provjera osjećaja prilika je za vaš doprinos i doprinos kako bismo donijeli bolju odluku.</p>
       outcome_statement: "<p>Hvala što ste sudjelovali u provjeri smisla.</p>"
@@ -643,12 +643,12 @@ hr:
       process_subtitle_v3: Poredaj opcije od najpoželjnijih do najmanje poželjnih
     time_poll:
       process_subtitle: Pronađite kada su ljudi dostupni za sastanak
-      process_introduction: <p><span>Uštedite vrijeme dogovarajući datum za vaš sastanak ili događaj.</span></p><p> Vremenska anketa olakšava uvid u dostupnost svih i pronalaženje najboljeg vremena.</p><p> Dajte svojoj vremenskoj anketi naslov i detalje. Unesite popis opcija datuma i vremena u svojoj vremenskoj zoni.</p><p> Prilikom postavljanja vremenskih intervala, uzmite u obzir ljude u različitim vremenskim zonama. Sudionici će vidjeti vremena lokalizirana u njihovoj vremenskoj zoni.</p><p> Odredite trajanje sastanka.</p><p> Kada se anketa o vremenu zatvori, postavite ishod s najboljim vremenom i svim uputama za sastanak.</p><p> <span>Loomio će uz e-poruku s obavijesti o ishodu uključiti i pozivnicu u kalendar kako bi sudionici mogli dodavati u svoj kalendar.</span></p><p> <a target="_blank" href="/docs/en/user_manual/polls/meeting_polls#time-poll">Pročitajte više o anketi Timea</a> .</p>
+      process_introduction: <p>Brzo pronađite najbolji termin za sastanak ili događaj. Dodajte naslov, detalje i opcije datuma i vremena u svojoj vremenskoj zoni. Sudionici će vidjeti termine u svojoj vremenskoj zoni.</p><p>Kada se vaša anketa o terminu zatvori, postavite zaključak s najboljim terminom i uputama za sastanak. Loomio će poslati e-poruku sa zaključkom i kalendarskom pozivnicom kako bi sudionici mogli dodati sastanak u svoje kalendare.</p><p><a target="_blank" href="/docs/en/user_manual/polls/meeting_polls#time-poll">Pročitajte više o anketi o terminu</a>.</p>
       title: Nađimo datum za naš sljedeći sastanak
       details: "<p><strong>O čemu se radi u sastanku ili događaju?</strong></p><p></p><p> <strong>Zašto je ovo važno?</strong></p><p></p><p> <strong>Što tražite od ljudi da učine?</strong></p><p></p><p> <span>Označite vremenske intervale u kojima ste dostupni zelenom ikonom 'palca gore' ili ostavite crveni 'palac dolje' kada niste dostupni.</span></p><p> <span>Pomoću ikone 'palac okrenut u stranu' možete reći da ste dostupni 'ako bude potrebno'.</span></p>"
       reason_prompt: Možete li reći nešto što bi pomoglo organizatoru da pronađe odgovarajuće vrijeme?
       process_subtitle_v2: Pronađi kada su osobe dostupne
-      process_introduction_v2: <p><strong>Vremenska anketa</strong> vam pomaže da pronađete kada su ljudi dostupni. Dodajte svoja predložena vremena i sudionici će ih vidjeti u svojoj vremenskoj zoni. Kada se anketa zatvori, postavite ishod i Loomio će svima poslati pozivnicu u kalendar.</p><p> <a target="_blank" href="/docs/en/user_manual/polls/meeting_polls#time-poll">Pročitajte više o anketi Timea</a> .</p>
+      process_introduction_v2: <p><strong>Anketa o terminu</strong> pomaže vam da pronađete kada su ljudi dostupni. Dodajte predložene termine i sudionici će ih vidjeti u svojoj vremenskoj zoni. Kada se anketa zatvori, postavite zaključak i Loomio će svima poslati kalendarsku pozivnicu.</p><p><a target="_blank" href="/docs/en/user_manual/polls/meeting_polls#time-poll">Pročitajte više o anketi o terminu</a>.</p>
     opt_in:
       process_subtitle: Pronađite volontere ili zatražite sudionike
       process_introduction: '<p>Pomoću opcije "Prijava" možete pozvati ljude da se pridruže timu, odboru ili radnoj skupini ili da sudjeluju u događaju.</p><p> ''Prijava'' ima dvije mogućnosti glasanja: Prihvati ili Odbij.</p><p> Možete definirati ciljani broj ljudi koje tražite, recimo 3 osobe koje će se pridružiti vašoj radnoj grupi.</p><p> <a target="_blank" href="/docs/en/user_manual/polls/meeting_polls#opt-in">Pročitajte više o prijavi</a> .</p>'
