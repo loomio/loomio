@@ -103,41 +103,11 @@ success messages).
 
 ## i18n / Localization
 
-- **Change an existing English value only together with every translation.** Existing keys are translated into other languages, so an English change alone leaves the translations saying something else. Update every locale for that key in the same change: apply mechanical edits such as links directly, and retranslate changed wording.
-- When you cannot update every translation, create a new key with the new value and update the code to reference the new key.
-- **Use `config/locales/glossary.yml` for Loomio's terms and each locale's style.** It gives every key term (thread, discussion, poll, outcome, proposal options…) one preferred translation per app locale, with its Loomio meaning, and each locale's register. The app string translator (`rake loomio:translate_strings`) and the manual translator both send it to the model. Choose terms by correct Loomio meaning first, then a length close to the English, then the words people know from popular apps (WhatsApp for poll, Slack for thread). Thread and discussion must stay distinct: a thread holds a discussion or a poll. Outcome always uses the word for "conclusion". The amount of existing text a better term changes is not a reason to keep a worse one.
-- **Check and apply the glossary.** `rake loomio:check_glossary` writes `tmp/glossary/<locale>.csv` listing app strings that use a rendering the glossary rules out (or omit a preferred term); `rake loomio:apply_glossary` revises those strings with codex (add `MISSING=1` to include strings missing a preferred term, `LOCALES=fr,de` to limit locales). `bundle exec ruby docs/check_glossary.rb` reports translated manual sections the same way.
-- **Review retranslation PRs against `config/locales/translation_corrections.md`** — that file logs sense-errors Google Translate has made before (polysemous short labels, paired actions drifting, misleading German words, glossary overrides like outcome→conclusion across many locales). If a new translation pass reintroduces one of those patterns, catch it at review.
-- **When you hand-correct a translation, append it to `translation_corrections.md`** with the file, key, before/after, and a one-line "why it was wrong". The point is to accumulate the context Google doesn't have, so reviewers of the next retranslation can watch for the same traps.
-- **translation keys should closely match their values** So that templates are easy to read. Rather than title, call the key what the title says.
-- **Use concise language and a calm tone** For example: Don't use exclamation marks for success flash messages. Just tell the user what happened. Be aware of translation from english when writing english.. choose words with most correct meaning.
-- **Avoid full stops on single-sentence UI strings.** Following Material Design UI copy guidance, omit the final full stop when a UI string is a single sentence; use normal punctuation when the string contains more than one sentence.
-- **Spanish (es): use the informal `tú` register throughout.** The app addresses users with "tu", "tú", informal imperatives ("Suscríbete", "Descubre"), and informal verb forms ("¿Cómo piensas?"). Google Translate often introduces `usted`/`su` — catch and correct this on review.
-- **Dutch (nl_NL): use the informal `je/jouw` register throughout.** The app addresses users with "je", "jouw", and informal verb forms ("Hoe wil je?", "je eigen demogroep"). Google Translate often introduces `u`/`uw` — catch and correct this on review.
-- **Belarusian (be): use `вы`, the official Cyrillic orthography, and gender-inclusive wording.** The app addresses users with lowercase "вы/ваш" and вы imperatives ("Выберыце", "Націсніце"). Belarusian past-tense verbs and many person nouns are gendered, so prefer plural, present-tense or impersonal constructions ("удзельнікі прагаласавалі", "каб прагаласаваць") over masculine singular forms ("ён прагаласаваў", "удзельнік прагаласаваў"). Write Belarusian, not Russian: machine translation often borrows Russian words and spellings — catch and correct these on review.
-- **French (fr): use the neutral `vous` register throughout.** `vous` is the standard address in French software, and Loomio's French users include associations, boards, unions and public bodies. Use `vous/votre/vos`, `vous` imperatives in sentences ("Cliquez", "Choisissez"), and infinitives for short button and menu labels ("Enregistrer"). Watch for `tu/ton/ta` and 2nd-person-singular imperatives from earlier informal wording.
-
-### Making a locale's register consistent
-
-When grooming a locale for register/formality consistency:
-
-1. Work on the locale as a pair: `config/locales/client.<locale>.yml` and `config/locales/server.<locale>.yml`.
-2. Decide the target register before editing (for example informal `tu`, `tú`, `du`, `je/jouw`) and keep it consistent across both files.
-3. Search for formal pronouns, possessives, verb endings, and imperatives that Google Translate commonly introduces; update the surrounding grammar, not just the pronoun.
-4. Preserve i18n keys, interpolation variables (`%{name}`), HTML tags, markdown, YAML quoting, and punctuation semantics exactly unless the locale requires typographic changes.
-5. Watch for grammar changes caused by gender, elision, case, or word order (for example French `ton organisation`, `t'aider`; German `du bist`, `dein`; Spanish informal imperatives).
-6. Parse the changed YAML files and compare key sets with `master` so no keys are added, removed, or renamed.
-7. Run the i18n/pre-push checks where practical, and mention any language-specific review notes in the PR body.
-
-Register-grooming completed so far:
-
-- `de` — German informal `du/dein` in PR #12540.
-- `es` — Spanish informal `tú/tu` in PR #12544.
-- `fr` — French neutral `vous/votre/vos`, replacing the informal `tu` from PR #12541.
-- `it` — Italian informal `tu` in PR #12542.
-- `pt_BR` — Brazilian Portuguese register cleanup in PR #12543.
-- Broad all-locale pass started in PR #12539; prefer dedicated locale PRs for careful review when a language needs substantial grammar fixes.
-- Every app locale's register is now recorded as its `style` in `config/locales/glossary.yml`, the register peers use with each other in everyday apps. Catalan and Romanian use informal `tu` on that basis.
+- **Change an English value only together with every translation.** Retranslate the key in every locale in the same change, or create a new key and reference it instead.
+- **`config/locales/glossary.yml` defines Loomio's terms and each locale's style.** Every key term has its Loomio meaning and one preferred translation per locale, and every locale has its register. Both translators send it to the model. Choose terms by correct Loomio meaning first, then a length close to the English, then the words people know from popular apps (WhatsApp for poll, Slack for thread). Thread and discussion stay distinct: a thread holds a discussion or a poll. Outcome uses the word for "conclusion". How much existing text a better term changes is no reason to keep a worse one. Fix a wrong term in the glossary, then apply it.
+- **Translate and check with the glossary.** `rake loomio:translate_strings` translates missing app strings with codex. `rake loomio:check_glossary` lists strings that break the glossary in `tmp/glossary/<locale>.csv`, and `rake loomio:apply_glossary` revises them (`MISSING=1` also revises strings missing a preferred term; `LOCALES=fr,de` limits locales). `bundle exec ruby docs/check_glossary.rb` checks the manual.
+- **Name keys after their values,** so templates are easy to read.
+- **Write English UI copy plainly and calmly.** No exclamation marks on success messages; say what happened. Omit the final full stop on single-sentence UI strings. Choose words whose meaning survives translation.
 
 ## Frontend / Vue
 

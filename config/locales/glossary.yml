@@ -745,7 +745,7 @@ terms:
     fr:
       use: "demande d’adhésion"
       stems: ["adhésion"]
-      note: "The app splits between demande d’adhésion and demande d’ajout; adhésion matches the earlier correction of membership from abonnement."
+      note: "The app splits between demande d’adhésion and demande d’ajout."
     he:
       use: "בקשת הצטרפות"
       avoid: ["בקשת מנוי", "בקשת חברות"]
@@ -2652,17 +2652,17 @@ terms:
       use: "conclusión"
       avoid: ["resultado"]
       stems: ["conclusi"]
-      note: "Per translation_corrections.md, resultado is reserved for the vote tally."
+      note: "Resultado is reserved for the vote tally."
     fi:
       use: "johtopäätös"
       avoid: ["tulos", "tulokset", "lopputulos"]
       stems: ["johtopäät"]
-      note: "Per translation_corrections.md, outcome is the conclusion; tulos is reserved for results."
+      note: "Outcome is the conclusion; tulos is reserved for results."
     fr:
       use: "conclusion"
       avoid: ["résultat"]
       stems: ["conclusion"]
-      note: "Per translation_corrections.md, résultat is reserved for results."
+      note: "Résultat is reserved for results."
     he:
       use: "מסקנה"
       avoid: ["תוצאה"]
@@ -2682,7 +2682,7 @@ terms:
       use: "conclusione"
       avoid: ["risultato"]
       stems: ["conclusion"]
-      note: "Per translation_corrections.md, risultato is reserved for results; several outcome strings still use risultato."
+      note: "Risultato is reserved for results; several outcome strings still use risultato."
     ja:
       use: "結論"
       avoid: ["結果"]
@@ -2702,7 +2702,7 @@ terms:
       use: "conclusão"
       avoid: ["resultado"]
       stems: ["conclus"]
-      note: "Per translation_corrections.md, resultado is reserved for the vote tally."
+      note: "Resultado is reserved for the vote tally."
     ro:
       use: "concluzie"
       avoid: ["rezultat"]
@@ -2740,7 +2740,7 @@ terms:
       use: "結論"
       avoid: ["結果", "成果"]
       stems: ["結論"]
-      note: "Per translation_corrections.md; 結果 is reserved for results."
+      note: "結果 is reserved for results."
   results:
     means: "The vote tally of a poll, such as counts and percentages for each option."
     be:

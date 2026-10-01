@@ -244,8 +244,7 @@ module Docs
         Translate Loomio documentation into #{@locale.name} (#{@locale.code}).
         Reply only with JSON: {"navigation_title": "translated title", "sections": {"section-id": "translated Markdown"}}.
         #{@locale.style}
-        Use plain factual language and Loomio's terminology from config/locales/client.#{@locale.app_locale}.yml.
-        Read config/locales/translation_corrections.md for known terminology mistakes.
+        Use plain factual language.
         Preserve heading levels, lists, tables, alerts, HTML tags, link and image targets, and all code exactly.
         Translate link text, image alt text, and seo-description comments. Return Markdown, with one line per prose paragraph.
         Use Loomio's terminology wherever the English uses these terms in their Loomio sense, inflected as the grammar requires:
