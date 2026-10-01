@@ -1,10 +1,10 @@
 ---
 title: Mitglieder verwalten
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/groups/member_management/index.md
+source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
+source_file: docs/en/user_manual/groups/member_management/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: f216b18771a2c2a9
   administering-your-group: 27aed40959adef57
@@ -14,13 +14,13 @@ sections:
   set-title: 835b25d246477b4a
   member-email-addresses: cae570f30b671275
 generated:
-  introduction: 44b99f653ac853ad
-  administering-your-group: f152d6993bfa8343
-  managing-subgroups: b9aa8cea3211568f
-  removing-members: 9930450a293ee6f8
-  leaving-group: 59d1b2ee835e6d1a
-  set-title: 9d8d59b42f1d8d5c
-  member-email-addresses: 292dc31f4cb97504
+  introduction: 89b96cc8fdabf34e
+  administering-your-group: 3c2f58a1981e45e4
+  managing-subgroups: 3ceb8b26baf93756
+  removing-members: afd9b4e84cb7a930
+  leaving-group: 6f02e61aa9de898c
+  set-title: 2cd65fb070aa6647
+  member-email-addresses: 48c5e2cefddf18cb
 title_source: 23ac3a7fe9ee72a2
 title_generated: 86b1e1341b307b0b
 ---
@@ -29,35 +29,35 @@ title_generated: 86b1e1341b307b0b
 
 # Mitglieder verwalten
 
-Wenn du Admin bist, kannst du die Mitglieder deiner Gruppe auf der Gruppenseite im Tab **Mitglieder** verwalten.
+Wenn du Admin bist, kannst du Mitglieder über den Tab **Mitglieder** auf deiner Gruppenseite verwalten.
 
-Klicke rechts neben einem Gruppenmitglied auf die drei Punkte (**⋮**), um einen Titel festzulegen, die Person zum Admin oder zur delegierten Person zu machen oder sie aus der Gruppe zu entfernen.
+Klicke auf die drei Punkte (**⋮**) rechts neben dem Gruppenmitglied, um dessen Titel festzulegen, es zum Admin zu machen, als delegierte Person festzulegen oder aus der Gruppe zu entfernen.
 
-![Aktionsmenü für Mitglieder auf der Mitgliederseite der Oatmilk Cooperative](member_management.png)
+![Menü mit Aktionen für Mitglieder auf der Mitgliederseite der Oatmilk Cooperative](member_management.png)
 
 <!-- translation-section: administering-your-group -->
 
 ## Deine Gruppe verwalten
 In einer Loomio-Gruppe gibt es nur zwei Rollen: **Mitglied** und **Admin**.
 
-Admins übernehmen die Verwaltung deiner Gruppe. Sie fügen Mitglieder hinzu oder entfernen sie, verwalten Berechtigungen, legen die Privatsphäre der Gruppe fest und verwalten Abonnements. Außerdem können sie die E-Mail-Adressen der Mitglieder sehen und die Gruppendaten exportieren.
+Admins übernehmen Verwaltungsaufgaben für deine Gruppe. Dazu gehören das Hinzufügen und Entfernen von Mitgliedern, das Verwalten von Mitgliederberechtigungen, das Festlegen der Privatsphäre-Einstellungen der Gruppe und das Verwalten der Abonnements. Außerdem können Admins die E-Mail-Adressen der Mitglieder sehen und die Daten der Gruppe exportieren.
 
-Wer eine neue Loomio-Gruppe erstellt, wird automatisch Admin. Wir empfehlen, mindestens eine weitere Person deines Vertrauens zum Admin zu machen. So kann die Gruppe auch dann verwaltet werden, wenn du nicht verfügbar bist. Eine Gruppe kann beliebig viele Admins haben.
+Wer eine neue Loomio-Gruppe erstellt, wird standardmäßig zum Admin gemacht. Wir empfehlen, mindestens eine weitere Person in deiner Gruppe, der du vertraust, zum Admin zu machen, damit immer jemand deine Gruppe verwalten kann. Deine Gruppe kann beliebig viele Admins haben.
 
-Um ein Mitglied zum **Admin** zu machen, öffne den Tab Mitglieder und suche die Person. Klicke neben ihrem Namen auf die drei Punkte (**⋮**) und wähle **Zum Admin machen**. Neben dem Namen erscheint die Kennzeichnung `Admin`.
+Um ein Mitglied zum **Admin** zu machen, gehe zum Tab Mitglieder, suche das Mitglied und klicke auf die drei Punkte (**⋮**) neben dessen Namen. Wähle **Zum Admin machen**. Neben dem Namen erscheint das Schlagwort `Admin`.
 
-![Option „Zum Admin machen“ im Menü eines Mitglieds](member_make_admin.png)
+![Aktion „Zum Admin machen“ im Menü eines Mitglieds](member_make_admin.png)
 
 <!-- translation-section: managing-subgroups -->
 
 ## Untergruppen verwalten
-Wenn du Admin einer übergeordneten Gruppe oder Organisation bist, hast du zusätzliche Berechtigungen für __geschlossene__ Untergruppen.
+Wenn du Admin einer Hauptgruppe oder Organisation bist, hast du zusätzliche Berechtigungen für alle __geschlossenen__ Untergruppen.
 
-Du kannst jeder geschlossenen Untergruppe beitreten. Klicke dazu auf der Seite der Untergruppe links unter den Tabs auf „Gruppe beitreten“.
+Du kannst jeder geschlossenen Untergruppe beitreten, indem du links auf der jeweiligen Untergruppenseite auf die Schaltfläche „Gruppe beitreten“ klickst (direkt unter den Tabs).
 
 ![Schaltfläche „Gruppe beitreten“ in einer geschlossenen Untergruppe der Oatmilk Cooperative](member_join_subgroup.png)
 
-Nachdem du der Untergruppe beigetreten bist, kannst du dich selbst zum Admin machen, genauso wie jedes andere Mitglied.
+Nachdem du der Untergruppe beigetreten bist, kannst du dich selbst zum Admin dieser Untergruppe machen, genauso wie du andere Personen zum Admin machen würdest.
 
 >[!Note]
 >Diese Berechtigungen gelten nicht für [**geheime** Untergruppen](/en/user_manual/groups/subgroups/?highlight=secret#permissions).
@@ -65,25 +65,25 @@ Nachdem du der Untergruppe beigetreten bist, kannst du dich selbst zum Admin mac
 <!-- translation-section: removing-members -->
 
 ## Mitglieder entfernen
-Wenn du auf **Aus der Gruppe entfernen** klickst, musst du das Entfernen bestätigen. Danach hat die Person keinen Zugriff mehr auf die Gruppenseiten, Diskussionen, Abstimmungen oder Vorschläge. Sie erhält keine weiteren E-Mails oder Benachrichtigungen über Aktivitäten der Gruppe. Ihre Kommentare und Stimmen bleiben jedoch erhalten.
+Wenn du auf **Aus der Gruppe entfernen** klickst, wirst du gebeten, das Entfernen zu bestätigen. Danach hat die Person keinen Zugriff mehr auf die Seiten, Threads, Abstimmungen oder Vorschläge der Gruppe. Sie erhält keine weiteren E-Mails oder Benachrichtigungen über Aktivitäten in der Gruppe. Ihre Kommentare und Stimmen bleiben jedoch unverändert erhalten.
 
-![Option „Aus der Gruppe entfernen“ im Menü eines Mitglieds](member_remove.png)
+![Aktion „Aus der Gruppe entfernen“ im Menü eines Mitglieds](member_remove.png)
 
-Du kannst entfernte Mitglieder später wieder zur Gruppe hinzufügen.
+Du kannst entfernte Mitglieder später wieder zur Gruppe hinzufügen, wenn du möchtest.
 
 <!-- translation-section: leaving-group -->
 
 ## Gruppe verlassen
-Um eine Gruppe zu verlassen, öffne die Gruppenseite, klicke auf das Menü mit den drei Punkten und wähle **Gruppe verlassen**.
+Um eine Gruppe zu verlassen, gehe zur Gruppenseite, öffne das Menü mit den drei Punkten und klicke auf **Gruppe verlassen**.
 
-![Option „Gruppe verlassen“ im Einstellungsmenü der Oatmilk Cooperative](member_leave_group.png)
+![Aktion „Gruppe verlassen“ im Einstellungsmenü der Oatmilk Cooperative](member_leave_group.png)
 
 <!-- translation-section: set-title -->
 
 ## Titel eingeben
-Im Tab Mitglieder kannst du mit einem **Titel** deine Rolle in der Gruppe oder eine Organisation angeben, die du vertrittst. Du oder ein Gruppenadmin könnt den Titel über **Titel eingeben** im Menü mit den drei Punkten neben deinem Namen ändern.
+Im Tab Mitglieder kannst du mit **Titel** auch deine Rolle innerhalb der Gruppe angeben oder eine Organisation nennen, die du vertrittst. Du oder ein Admin der Gruppe kann deinen Titel über **Titel eingeben** im Menü mit den drei Punkten neben deinem Namen ändern.
 
-![Option „Titel eingeben“ im Menü eines Mitglieds](member_set_title.png)
+![Aktion „Titel eingeben“ im Menü eines Mitglieds](member_set_title.png)
 
 Du kannst in verschiedenen Untergruppen unterschiedliche Titel haben.
 
@@ -91,10 +91,10 @@ Du kannst in verschiedenen Untergruppen unterschiedliche Titel haben.
 
 ## E-Mail-Adressen der Mitglieder
 
-Nur Admins können die E-Mail-Adressen der Gruppenmitglieder sehen. Das kann nötig sein, um die Mitgliedschaft in einer Gruppe zu überprüfen.
+Nur Admins können die E-Mail-Adressen der Gruppenmitglieder sehen. Das ist manchmal notwendig, um die Mitgliedschaft in einer Gruppe zu überprüfen.
 
-Um die E-Mail-Adressen zu sehen, lade über den [Datenexport](/en/user_manual/groups/data_export/) eine CSV-Datei herunter und öffne sie in Excel oder Google Tabellen.
+Um die E-Mail-Adressen der Mitglieder zu sehen, lade über den [Datenexport](/en/user_manual/groups/data_export/) eine CSV-Datei herunter und öffne sie in Excel oder Google Sheets.
 
-Die exportierte Datei mit den Gruppendaten enthält alle Personen und ihre E-Mail-Adressen in jeder Untergruppe.
+Die Datei mit den exportierten Gruppendaten enthält jede Person und deren E-Mail-Adresse in jeder Untergruppe.
 
-Im Tab Mitglieder kannst du auch nach E-Mail-Adressen suchen. Wenn du jemanden entfernen möchtest, kannst du die Person so finden und aus der Gruppe entfernen.
+Du kannst im Tab Mitglieder auch anhand der E-Mail-Adresse nach Mitgliedern suchen. Wenn du eine Person entfernen möchtest, kannst du sie anhand ihrer E-Mail-Adresse suchen und dann entfernen.

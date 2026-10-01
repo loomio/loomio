@@ -1,10 +1,10 @@
 ---
 title: Datenschutz
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/groups/settings/privacy.md
+source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
+source_file: docs/en/user_manual/groups/settings/privacy.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 72b58ba22851f914
   open: 1727e8f20fe92fb2
@@ -14,13 +14,13 @@ sections:
   how-people-join: 8b20f2ab6789b0b7
   group-directory: 4ef3023e3cf4efdf
 generated:
-  introduction: 6771f6a7ce9145ba
-  open: 4dc9bc40860fb480
-  follow-an-open-group: 8b25463c0b3a01dd
-  closed: 1f237520ddb2595e
-  secret: 407dd316a6aee2ec
-  how-people-join: 36a08a3553e356f1
-  group-directory: 77ee40e486c347d3
+  introduction: 1b5cc5ea1684a39a
+  open: e60fb423f16d51e9
+  follow-an-open-group: eeea1bb98a0b6064
+  closed: cebd088ffd014e9c
+  secret: c68ce40f3af257fd
+  how-people-join: 05c568b99ae03e5f
+  group-directory: fd07c1014b3af293
 title_source: 54a57c3147c49f33
 title_generated: f624fcf0dcbb39c0
 ---
@@ -29,27 +29,27 @@ title_generated: f624fcf0dcbb39c0
 
 # Datenschutz der Gruppe
 
-Die Datenschutzeinstellung bestimmt, wer eine Gruppe finden und ihre Inhalte lesen kann. Öffne auf der Gruppenseite **Gruppeneinstellungen bearbeiten** und wähle **Datenschutz**.
+Die Datenschutzeinstellungen bestimmen, wer eine Gruppe finden und ihre Inhalte lesen kann. Öffne auf der Gruppenseite **Gruppeneinstellungen bearbeiten** und wähle dann **Datenschutz**.
 
 ![Datenschutzeinstellungen der Gruppe](group_privacy_settings.png#width-90)
 
-Wenn du die Datenschutzeinstellung änderst, können auch bestehende Gruppeninhalte sichtbar oder verborgen werden. Wähle die strengste Einstellung, die noch zum Zweck der Gruppe passt.
+Änderungen an den Datenschutzeinstellungen können auch bestehende Gruppeninhalte sichtbar machen oder verbergen, nicht nur später erstellte Inhalte. Wähle die restriktivste Einstellung, die den Zweck der Gruppe noch unterstützt.
 
 <!-- translation-section: open -->
 
 ## Offen
 
-Offene Gruppen sind öffentlich. Alle können die Gruppe finden und ihre Diskussionen, Umfragen und Dateien lesen. Die Mitgliederliste können nur Mitglieder sehen.
+Offene Gruppen sind öffentliche Räume. Alle können die Gruppe finden und ihre Diskussionen, Abstimmungen und Dateien lesen. Die Mitgliederliste bleibt nur für Mitglieder sichtbar.
 
-Offene Gruppen können den sofortigen Beitritt erlauben, eine Genehmigung verlangen oder nur auf Einladung zugänglich sein.
+Offene Gruppen können einen sofortigen Beitritt ermöglichen, eine Genehmigung verlangen oder den Beitritt auf eingeladene Personen beschränken.
 
 <!-- translation-section: follow-an-open-group -->
 
 ### Einer offenen Gruppe folgen
 
-Du kannst über eine offene Gruppe auf dem Laufenden bleiben, ohne ihr beizutreten. Wenn du der Gruppe folgst, erscheinen ungelesene Gruppenaktivitäten in deiner Zusammenfassungs-E-Mail. So kannst du sie lesen, wann es dir passt. Dadurch wirst du kein Mitglied, erhältst kein Stimmrecht als Mitglied und bekommst nicht automatisch sofortige Benachrichtigungen.
+Personen können bei einer offenen Gruppe auf dem Laufenden bleiben, ohne ihr beizutreten. Wenn sie der Gruppe folgen, werden ungelesene Gruppenaktivitäten in ihre Zusammenfassungs-E-Mail aufgenommen. So können sie diese lesen, wenn sie Zeit haben. Allein durch das Folgen werden sie weder Mitglieder noch erhalten sie Stimmrechte für Mitglieder oder sofortige Benachrichtigungen.
 
-Aktiviere **Folge den Aktualisierungen** auf der Gruppenseite, damit ungelesene Diskussionen, Kommentare, Umfragen und andere Aktivitäten in Threads in deiner Zusammenfassung erscheinen. Deaktiviere die Einstellung, um die Gruppe nicht mehr in die Zusammenfassung aufzunehmen.
+Aktiviere **Folge den Aktualisierungen** auf der Gruppenseite, um ungelesene Diskussionen, Kommentare, Abstimmungen und andere Aktivitäten in Threads in deine Zusammenfassung aufzunehmen. Deaktiviere die Einstellung, um die Gruppe nicht mehr einzubeziehen.
 
 ![Aktualisierungen einer offenen Gruppe folgen](group_follow_updates.png)
 
@@ -57,34 +57,34 @@ Aktiviere **Folge den Aktualisierungen** auf der Gruppenseite, damit ungelesene 
 
 ## Geschlossen
 
-Alle können eine geschlossene Gruppe finden und ihren Namen und ihre Beschreibung lesen. Diskussionen, Umfragen, Dateien und die Mitgliederliste sind nur für Mitglieder und eingeladene Gäste sichtbar.
+Alle können eine geschlossene Gruppe finden und ihren Namen und ihre Beschreibung lesen. Diskussionen, Abstimmungen, Dateien und die Mitgliederliste sind nur für Mitglieder und eingeladene Gäste zugänglich.
 
-Geschlossene Gruppen können Beitrittsanfragen zulassen oder nur auf Einladung zugänglich sein. Ein sofortiger Beitritt ohne Genehmigung ist nicht möglich.
+Geschlossene Gruppen können Anfragen zur Mitgliedschaft zulassen oder den Beitritt auf eingeladene Personen beschränken. Ein sofortiger Beitritt ohne Genehmigung ist nicht möglich.
 
-Eine geschlossene Untergruppe kann Mitgliedern der übergeordneten Gruppe erlauben, ihre Diskussionen zu lesen, ohne der Untergruppe beizutreten.
+Eine geschlossene Untergruppe kann Mitgliedern ihrer Hauptgruppe erlauben, ihre Diskussionen zu lesen, ohne der Untergruppe beizutreten.
 
 <!-- translation-section: secret -->
 
 ## Geheim
 
-Geheime Gruppen und ihre Inhalte sind nur für Personen sichtbar, die eingeladen oder hinzugefügt wurden. Der Beitritt ist nur auf Einladung möglich. Geheime Gruppen erscheinen nicht im öffentlichen Gruppenverzeichnis.
+Geheime Gruppen und ihre Inhalte sind nur für Personen sichtbar, die eingeladen oder hinzugefügt wurden. Eine Mitgliedschaft ist nur auf Einladung möglich. Geheime Gruppen erscheinen nicht im öffentlichen Gruppenverzeichnis.
 
 <!-- translation-section: how-people-join -->
 
 ## So treten Personen bei
 
-Die Datenschutzeinstellung bestimmt, welche Beitrittsmöglichkeiten verfügbar sind:
+Die Datenschutzeinstellungen bestimmen, welche Beitrittsmöglichkeiten verfügbar sind:
 
 | Datenschutz der Gruppe | Verfügbare Beitrittsmöglichkeiten |
 | --- | --- |
-| **Offen** | Sofortiger Beitritt, Beitrittsanfrage oder nur auf Einladung |
-| **Geschlossen** | Beitrittsanfrage oder nur auf Einladung |
+| **Offen** | Alle können beitreten, eine Genehmigung anfragen oder nur auf Einladung beitreten |
+| **Geschlossen** | Genehmigung anfragen oder nur auf Einladung beitreten |
 | **Geheim** | Nur auf Einladung |
 
-Wenn eine Genehmigung erforderlich ist, wählen Personen **Der Gruppe beitreten**, beantworten die Beitrittsfrage der Gruppe und senden eine Beitrittsanfrage. Unter [Personen einladen](/en/user_manual/groups/inviting_people#request-to-join-group) erfährst du, wie du die Frage einrichtest, Anfragen prüfst und Personen direkt einlädst.
+Wenn eine Genehmigung erforderlich ist, wählen Personen **Der Gruppe beitreten**, beantworten die Beitrittsfrage der Gruppe und senden eine Beitrittsanfrage. Unter [Personen einladen](/en/user_manual/groups/inviting_people#request-to-join-group) findest du Anleitungen zum Einrichten der Frage, zum Prüfen von Anfragen und zum direkten Einladen von Personen.
 
 <!-- translation-section: group-directory -->
 
 ## Gruppenverzeichnis
 
-Offene und geschlossene Hauptgruppen können im öffentlichen Gruppenverzeichnis aufgeführt werden, damit andere sie finden. Der Eintrag im Verzeichnis ändert nicht, wer Gruppeninhalte lesen oder Mitglied werden kann. Untergruppen und geheime Gruppen können dort nicht aufgeführt werden.
+Offene und geschlossene Hauptgruppen können im öffentlichen Gruppenverzeichnis aufgeführt werden, damit Personen sie entdecken können. Ein Eintrag im Verzeichnis ändert nicht, wer Gruppeninhalte lesen oder Mitglied werden kann. Untergruppen und geheime Gruppen können nicht aufgeführt werden.

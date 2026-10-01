@@ -1,16 +1,16 @@
 ---
 title: Gruppen
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/groups/index.md
+source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
+source_file: docs/en/user_manual/groups/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 81d8e340d2ee4456
   administration-facilitation-and-moderation-code-of-conduct: f5e0c19c83cba888
 generated:
-  introduction: c58ea48b0e508f10
-  administration-facilitation-and-moderation-code-of-conduct: 33c89ab319a9749d
+  introduction: 8dc09c15e2c5381a
+  administration-facilitation-and-moderation-code-of-conduct: 5324f60d96d365f2
 title_source: 39bbb719fa2b9d22
 title_generated: 8fd276c8ccfa4de9
 ---
@@ -19,32 +19,32 @@ title_generated: 8fd276c8ccfa4de9
 
 # Einführung in Gruppen
 
-Eine Loomio-Gruppe ist ein geschützter Ort, an dem Menschen zusammenkommen, diskutieren und Entscheidungen treffen können.
+Eine Loomio-Gruppe ist ein sicherer Ort, an dem Menschen zusammenkommen, Diskussionen führen und Entscheidungen treffen können.
 
-Hier können Gruppenmitglieder Informationen finden und teilen. Sie können sich an wichtigen Diskussionen und Entscheidungen beteiligen, die ihre Arbeit betreffen.
+Hier können Gruppenmitglieder Informationen finden und teilen sowie an wichtigen Diskussionen und Entscheidungen teilnehmen, die ihre Arbeit betreffen.
 
-So sieht eine Loomio-Gruppe aus. Oben auf der Seite siehst du ein Bild und ein Logo, die du an deine Organisation anpassen kannst. So erkennen Menschen beim Beitritt deine Gruppe wieder und fühlen sich willkommen. In diesem geschützten Raum können sie sich wohlfühlen und wirksam beteiligen.
+So sieht eine Loomio-Gruppe aus. Oben auf der Seite siehst du ein Bild und ein Logo, die du an deine Organisation anpassen kannst. So erkennen Menschen beim Besuch deiner Gruppe, dass sie an einem vertrauten Ort angekommen sind, und fühlen sich willkommen – in einem sicheren Raum, in dem sie sich zu Hause und unter befreundeten Menschen fühlen und sich wirksam beteiligen können.
 
-![Die Gruppenseite der Oatmilk Cooperative mit Beschreibung und Diskussionsliste](group_page.png)
+![Die Gruppenseite der Oatmilk Cooperative mit ihrer Beschreibung und der Liste der Diskussionen](group_page.png)
 
-Wähle einen passenden Namen für deine Gruppe. Beschreibe in der Gruppenbeschreibung:
-- **wofür** die Gruppe da ist,
+Wähle einen passenden Namen für deine Gruppe und erläutere in der Gruppenbeschreibung:
+- **wofür** diese Gruppe genutzt wird,
 - **warum** das wichtig ist,
 - **wer** beteiligt ist und
-- **wie** Mitglieder mitmachen können.
+- **wie** Mitglieder teilnehmen können.
 
-Du kannst auch einen Verhaltenskodex, eine Geschäftsordnung oder andere Regelwerke der Gruppe aufnehmen.
+Du kannst auch einen Verhaltenskodex, eine Beschreibung der Aufgaben und Zuständigkeiten oder andere grundlegende Dokumente für die Gruppe hinzufügen.
 
-Wenn du eine neue Gruppe vorbereitest, findest du unter [Loomio in deiner Gruppe einführen](/en/user_manual/overview/introducing_loomio) eine praktische Anleitung: von der Auswahl der ersten gemeinsamen Aufgabe bis zum Festhalten eines Fazits.
+Wenn du eine neue Gruppe vorbereitest, findest du unter [Loomio in deiner Gruppe einführen](/en/user_manual/overview/introducing_loomio) eine praktische Schrittfolge von der Auswahl der ersten Aufgabe bis zum Festhalten eines Fazits.
 
 <!-- translation-section: administration-facilitation-and-moderation-code-of-conduct -->
 
-## Verwaltung, Begleitung und Moderation – Verhaltenskodex
+## Verwaltung, Prozessbegleitung und Moderation - Verhaltenskodex
 
-Loomio fördert die Beteiligung aller, Vielfalt und Vertrauen. So können Gruppen gemeinsam bessere Entscheidungen treffen.
+Loomio ist darauf ausgelegt, inklusive Beteiligung, Vielfalt und Vertrauen zu fördern und Gruppen dabei zu helfen, gemeinsam bessere Entscheidungen zu treffen.
 
-Manche Themen führen in einer Gruppe zu Spannungen. Eine offene Diskussion soll trotzdem möglich sein. Zugleich muss die Gruppe ein geschützter Raum bleiben, besonders für verletzliche Menschen.
+Manche Themen führen zu Spannungen in einer Gruppe. Deshalb ist es wichtig, eine offene und gründliche Diskussion zu ermöglichen und zugleich einen sicheren Raum zu gewährleisten, besonders für verletzliche Menschen in deiner Gruppe.
 
-Wir empfehlen einen Verhaltenskodex für deine Gruppe. Er macht deutlich, dass alle für einen angemessenen Umgang miteinander verantwortlich sind, und hilft den Mitgliedern, ihr Verhalten selbst zu reflektieren.
+Wir empfehlen, einen Verhaltenskodex für deine Gruppe festzulegen. Er hilft allen, sich ihrer Verantwortung für angemessenes Verhalten bewusst zu sein, und ermutigt sie, selbst auf ihr Verhalten zu achten.
 
-Im [Leitfaden für die Gesprächsleitung](/en/guides/facilitators_guide/commencing#culture-protocol-expectations) erfährst du mehr darüber, warum ein Verhaltenskodex hilfreich ist.
+Im [Leitfaden zur Prozessbegleitung](/en/guides/facilitators_guide/commencing#culture-protocol-expectations) erfährst du mehr darüber, welchen Nutzen ein Verhaltenskodex hat.

@@ -1,20 +1,20 @@
 ---
 title: Benutzerkonten zusammenführen
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/users/merge_accounts/index.md
+source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
+source_file: docs/en/user_manual/users/merge_accounts/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: c8d8fc2095fc3cc6
   start-the-merge: c6e92711c5a30576
   verify-the-account-you-want-to-keep: 71e8e6d85492bcf6
   what-happens-after-the-merge: 799c2ddeca8782e3
 generated:
-  introduction: 877b224ead5c7ed5
-  start-the-merge: ba2455a1a14ad08d
-  verify-the-account-you-want-to-keep: dae5cc305100164a
-  what-happens-after-the-merge: ca432a62cb6b5131
+  introduction: 81a43bb8dae7e51b
+  start-the-merge: 882b1ffd2de735e6
+  verify-the-account-you-want-to-keep: 1d2a870252b37f9a
+  what-happens-after-the-merge: a854fe62c3e3e10f
 title_source: 3f284252b3814ab3
 title_generated: e7357d16d0e2a2d3
 ---
@@ -23,17 +23,17 @@ title_generated: e7357d16d0e2a2d3
 
 # Benutzerkonten zusammenführen
 
-Führe zwei Loomio-Benutzerkonten zusammen, wenn sie unterschiedliche E-Mail-Adressen haben und du künftig nur ein Benutzerkonto verwenden möchtest.
+Führe zwei Loomio-Benutzerkonten zusammen, wenn sie unterschiedliche E-Mail-Adressen verwenden und du mit einem Benutzerkonto weitermachen möchtest.
 
-Entscheide zuerst, welches Benutzerkonto du behalten möchtest:
+Entscheide vor Beginn, welches Benutzerkonto du behalten möchtest:
 
-- Das **Benutzerkonto, das du behalten möchtest**, ist das Konto, dessen E-Mail-Adresse und Profil du nach der Zusammenführung verwendest
-- Das **Benutzerkonto, das du aufgeben möchtest**, ist das Konto, bei dem du dich zuerst anmeldest. Nach der Zusammenführung kannst du dich mit seiner E-Mail-Adresse nicht mehr anmelden
+- Das **Benutzerkonto, das du behalten möchtest**, ist das Benutzerkonto, dessen E-Mail-Adresse und Profil du nach der Zusammenführung verwendest
+- Das **Benutzerkonto, das du aufgeben möchtest**, ist das Benutzerkonto, bei dem du dich zuerst anmeldest. Nach der Zusammenführung kannst du dich mit seiner E-Mail-Adresse nicht mehr anmelden
 
-Du brauchst Zugriff auf beide Benutzerkonten und auf die E-Mail-Adresse des Kontos, das du behalten möchtest.
+Du brauchst Zugriff auf beide Benutzerkonten und auf die E-Mail-Adresse des Benutzerkontos, das du behalten möchtest.
 
 > [!WARNING]
-> Die Zusammenführung lässt sich nicht rückgängig machen. Prüfe die E-Mail-Adressen beider Konten vor der endgültigen Bestätigung sorgfältig.
+> Die Zusammenführung von Benutzerkonten kann nicht rückgängig gemacht werden. Prüfe die E-Mail-Adressen des Ausgangs- und Zielkontos vor der abschließenden Bestätigung sorgfältig.
 
 <!-- translation-section: start-the-merge -->
 
@@ -43,27 +43,27 @@ Du brauchst Zugriff auf beide Benutzerkonten und auf die E-Mail-Adresse des Kont
 2. Öffne die Seitenleiste, wähle deinen Namen und dann **Profil bearbeiten**.
 3. Wähle **Benutzerkonten zusammenführen**.
 
-![Die Profilaktionen mit hervorgehobener Option „Benutzerkonten zusammenführen“](merge_accounts_profile.png)
+![Die Profilaktionen mit hervorgehobenem Eintrag „Benutzerkonten zusammenführen“](merge_accounts_profile.png)
 
-4. Gib die E-Mail-Adresse des Zielkontos ein, also die Adresse des **Benutzerkontos, das du behalten möchtest**, und wähle **Bestätigungs-E-Mail senden**. Loomio zeigt immer dieselbe Bestätigung an und meldet dich ab. Wenn ein Konto mit dieser Adresse existiert, sendet Loomio die Bestätigungs-E-Mail dorthin.
+4. Gib die E-Mail-Adresse des Zielkontos ein – die Adresse des **Benutzerkontos, das du behalten möchtest** – und wähle **Bestätigungs-E-Mail senden**. Loomio zeigt immer dieselbe Bestätigung an und meldet dich ab. Wenn ein Benutzerkonto diese Adresse verwendet, sendet Loomio die Bestätigungs-E-Mail an diese Adresse.
 
 <!-- translation-section: verify-the-account-you-want-to-keep -->
 
-## Benutzerkonto bestätigen, das du behalten möchtest
+## Das Benutzerkonto bestätigen, das du behalten möchtest
 
-5. Öffne die Bestätigungs-E-Mail, die an die Adresse des Kontos gesendet wurde, das du behalten möchtest, und wähle **E-Mail verifizieren und fortfahren**.
+5. Öffne die Bestätigungs-E-Mail, die an die Adresse des Benutzerkontos gesendet wurde, das du behalten möchtest, und wähle **E-Mail verifizieren und fortfahren**.
 
-![Die Bestätigungs-E-Mail mit hervorgehobener Schaltfläche „E-Mail verifizieren und fortfahren“](merge_accounts_email.png)
+![Die Bestätigungs-E-Mail zur Zusammenführung mit hervorgehobener Schaltfläche „E-Mail verifizieren und fortfahren“](merge_accounts_email.png)
 
-6. Melde dich bei dem Benutzerkonto an, das du behalten möchtest, falls Loomio dich dazu auffordert.
-7. Prüfe auf der Seite **Bestätige die Zusammenführung** erneut beide E-Mail-Adressen. Wähle **Benutzerkonten zusammenführen**, um die Zusammenführung abzuschließen.
+6. Melde dich bei dem Benutzerkonto an, das du behalten möchtest, wenn Loomio dich zur Anmeldung auffordert.
+7. Prüfe auf der Seite **Bestätige die Zusammenführung** beide E-Mail-Adressen erneut. Wähle **Benutzerkonten zusammenführen**, um die Zusammenführung abzuschließen.
 
-![Die Seite zur endgültigen Bestätigung mit hervorgehobener Schaltfläche „Benutzerkonten zusammenführen“](merge_accounts_confirm.png)
+![Die abschließende Bestätigungsseite mit hervorgehobener Schaltfläche „Benutzerkonten zusammenführen“](merge_accounts_confirm.png)
 
 <!-- translation-section: what-happens-after-the-merge -->
 
-## Was nach der Zusammenführung geschieht
+## Was nach der Zusammenführung passiert
 
-Das Benutzerkonto, das du behältst, bleibt dein Loomio-Profil und dein Konto für die Anmeldung. Gruppenmitgliedschaften und Aktivitäten des aufgegebenen Kontos, darunter Diskussionen, Kommentare, Abstimmungen und Stimmen, werden diesem Konto zugeordnet. Wenn beide Konten bereits Mitglied derselben Gruppe sind, bleibt die bestehende Mitgliedschaft des Kontos erhalten, das du behältst.
+Das Benutzerkonto, das du behältst, bleibt deine Identität auf Loomio und dein Benutzerkonto für die Anmeldung. Gruppenmitgliedschaften und Aktivitäten des aufgegebenen Benutzerkontos, einschließlich Diskussionen, Kommentaren, Abstimmungen und Stimmen, werden dem Benutzerkonto zugeordnet, das du behältst. Wenn beide Benutzerkonten bereits derselben Gruppe angehören, bleibt die bestehende Mitgliedschaft des Benutzerkontos erhalten, das du behältst.
 
-Das aufgegebene Konto wird gelöscht. Mit seiner E-Mail-Adresse kannst du dich nicht mehr anmelden. Nach Abschluss der Zusammenführung sendet Loomio eine Bestätigungs-E-Mail an die Adresse des Kontos, das du behalten hast.
+Das aufgegebene Benutzerkonto wird gelöscht und seine E-Mail-Adresse kann nicht mehr zur Anmeldung verwendet werden. Sobald die Zusammenführung abgeschlossen ist, sendet Loomio eine Bestätigungs-E-Mail an die Adresse des Benutzerkontos, das du behalten hast.

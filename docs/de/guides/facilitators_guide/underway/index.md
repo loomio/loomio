@@ -1,10 +1,10 @@
 ---
 title: Im Prozess
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/guides/facilitators_guide/underway/index.md
+source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
+source_file: docs/en/guides/facilitators_guide/underway/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-30'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 40747900997bde52
   where-are-we-on-the-map: f20132cc4da45a71
@@ -19,18 +19,21 @@ sections:
   facilitation-interventions: c253f63094ef75de
 generated:
   introduction: 83b24d1c1f49cae4
-  where-are-we-on-the-map: 71dd913c5f50f415
-  the-art-of-noticing: d4e17cb44c96e727
-  hearing-diverse-voices: bd7af42266bb4756
-  counter-cognitive-bias: d3b7c07044ceb551
-  balancing-divergent-convergent: 85c98873fae65e85
-  working-with-scope: b11b3aa3233f8b28
-  a-series-of-small-yes-s: 57617e821dafccdd
-  pacing-timing: 3ab60b7e552c80b7
-  managing-the-attention-economy: 5c7c3cd885d8f65e
-  facilitation-interventions: b01defdd9d85d3dc
+  where-are-we-on-the-map: 4332e04fc39085b2
+  the-art-of-noticing: 00363ce07ffa7739
+  hearing-diverse-voices: 1b5452867479488c
+  counter-cognitive-bias: 86bd72fa5fb008ec
+  balancing-divergent-convergent: bbda714d0d57bc45
+  working-with-scope: b3e9882285cd2ed9
+  a-series-of-small-yes-s: 46dea326c8511ca1
+  pacing-timing: 7e6fd5d70b4e74e8
+  managing-the-attention-economy: d27aeedf855c772a
+  facilitation-interventions: ad0cd6e1211ebbfb
 title_source: 1ecd2476edfd341d
 title_generated: 7de2c5f9a719ecd5
+needs_review:
+  hearing-diverse-voices: use "Zustimmung" instead of "Dafür" for "agree"
+  managing-the-attention-economy: use "Thread" instead of "Thema" for "thread"; use "Zustimmung" instead of "Dafür" for "agree"
 ---
 
 <!-- translation-section: introduction -->
@@ -41,217 +44,218 @@ title_generated: 7de2c5f9a719ecd5
 
 <!-- translation-section: where-are-we-on-the-map -->
 
-## Wo stehen wir im Prozess?
+## Wo stehen wir im Ablauf?
 
-Menschen können sich leichter einbringen, wenn sie sich an einem Zeitplan oder einer Tagesordnung orientieren können. Sie möchten wissen, was gerade passiert, was als Nächstes kommt und was bereits erledigt ist. Wer den gesamten Ablauf kennt, versteht besser, wann und wie ein Beitrag hilfreich ist.
+Menschen fühlen sich sicherer und besser begleitet, wenn sie sich an einem Zeitplan oder einer Tagesordnung orientieren können. Sie möchten wissen, was sie gerade tun, was als Nächstes kommt, und daran erinnert werden, was sie bereits getan haben. Den gesamten Ablauf zu verstehen, hilft ihnen, sich wirksam einzubringen.
 
-Wenn später eine Fragerunde vorgesehen ist, können die Teilnehmenden ihre Fragen während eines Vortrags zurückhalten. Wenn klar ist, dass erst Ideen gesammelt und danach Lösungen ausgewählt werden, springen sie weniger schnell zu einer Lösung. Menschen müssen wissen, welche Beiträge zu welchem Zeitpunkt gefragt sind.
+Wenn sie zum Beispiel sehen, dass später eine Fragerunde vorgesehen ist, sind sie eher bereit, ihre Fragen während einer Präsentation zurückzustellen. Wenn klar ist, dass auf eine öffnende Phase eine bündelnde Phase folgt, werden sie weniger schnell zu Lösungen springen. Menschen müssen wissen, welche Art von Beitrag wann von ihnen gefragt ist.
 
-Um den Ablauf verständlich darzustellen, müssen Moderierende ihn vollständig durchdenken. So können sie prüfen, ob jeder Schritt einen Zweck hat und die Schritte zusammenpassen. Eine gut moderierte Zusammenarbeit folgt einem nachvollziehbaren Ablauf.
+Den Ablauf so klar darzustellen, dass er sich vermitteln lässt, fordert auch Moderierende dazu auf, den gesamten Weg durchzudenken. Es hilft ihnen sicherzustellen, dass jeder Teil des Prozesses einen Zweck erfüllt und zu einem stimmigen Ganzen beiträgt. Ein gut moderierter Prozess folgt einem logischen Ablauf.
 
 Auf Loomio
 
-* Eine Entscheidung auf Loomio folgt bereits einem einfachen Ablauf: Menschen zusammenbringen (eröffnen und einladen), diskutieren (Ideen öffnen), einen Vorschlag machen (Ideen bündeln), entscheiden und handeln (ein Fazit ziehen).
-* Viele Menschen nutzen Loomio im Rahmen eines klar geplanten Ablaufs, etwa für einen mehrstufigen Beratungsprozess.
-* Gruppenbeschreibung und Fristen für Vorschläge helfen Moderierenden, den Ablauf sichtbar zu machen. Damit können sie den Teilnehmenden frühzeitig mehr Kontext geben.
+* Eine Entscheidung auf Loomio folgt bereits einem grundlegenden logischen Ablauf (deshalb funktioniert es): Zusammenkommen (öffnen/einladen), Diskutieren (öffnen), einen Vorschlag machen (bündeln), Entscheiden und Handeln (abschließen).
+* Viele Menschen nutzen Loomio als Teil klar geplanter Abläufe, etwa eines mehrstufigen Beteiligungsprozesses.
+* Wir bieten Moderierenden einige Werkzeuge, um den Ablauf für Nutzende sichtbar zu machen, etwa das Feld für die Gruppenbeschreibung und die Fristen für Vorschläge. Diese lassen sich gezielt einsetzen, um Teilnehmenden mehr Kontext zu geben.
 
 <!-- translation-section: the-art-of-noticing -->
 
 ## Die Kunst des Wahrnehmens
 
-Wahrnehmen ist eine der wichtigsten Fähigkeiten bei der Moderation. Wer moderiert, beobachtet, welche Unterstützung oder Reaktion nötig ist, welche Beiträge gefragt sind und was die Gruppe über sich selbst erkennen kann. Während andere sich auf Inhalte oder eigene Anliegen konzentrieren, achtet eine moderierende Person auf das Geschehen und handelt entsprechend.
+Wahrnehmen ist vermutlich die wichtigste Fähigkeit in der Moderation. Moderierende erkennen dadurch, welche Interventionen oder Reaktionen nötig sind, wie sie zu passenden Beiträgen einladen können und wie sie der Gruppe helfen, sich selbst wahrzunehmen. Der Wert von Moderation liegt darin, dass jemand aufmerksam ist und auf Beobachtungen reagiert, während andere sich möglicherweise auf bestimmte Inhalte oder ihre eigenen Anliegen konzentrieren.
 
-Gutes Wahrnehmen braucht verlässliche Informationen und die Fähigkeit, sie einzuordnen. Viele Moderierende sprechen davon, einen Raum zu „lesen“: emotionale Reaktionen, Spannungen und Machtverhältnisse. Dafür brauchen sie klare Hinweise auf das Geschehen.
+Wirksames Wahrnehmen verbindet gute Informationen mit dem Gespür und der Fähigkeit, sie zu deuten. Viele Moderierende sprechen davon, einen Raum zu „lesen“: emotionale Reaktionen, Spannungen und Machtdynamiken zu erkennen. Dafür brauchen sie wirksame Wege, solche Informationen sichtbar zu machen.
 
 Auf Loomio
 
-* Viele Funktionen helfen dabei, Entwicklungen wahrzunehmen. Besonders deutlich zeigt das Kreisdiagramm eines Vorschlags, wie sich die Stimmen verteilen.
-* Die Software zeigt unter anderem, wer sich bereits beteiligt hat, welche Themen aufkommen und wer eine Einladung zur Gruppe angenommen hat.
-* Auf Loomio kann eine moderierende Person Dutzende Diskussionen zugleich verfolgen, erkennen, was geteilt wird, und darauf reagieren.
-* Online werden Dinge, die sonst unausgesprochen bleiben, oft ausdrücklich benannt. Dadurch sind sie leichter wahrzunehmen.
-* Schriftliche Kommunikation hilft dabei, Beobachtungen und die Gründe für eine Reaktion zu erklären. Du kannst zum Beispiel die genauen Worte einer Person zitieren und beschreiben, was sie erkennen lassen. Du kannst auch Zitate aus einer ganzen Diskussion zusammenstellen und auf gemeinsame Themen oder entstehende Konflikte hinweisen.
-* Wahrnehmen fällt leichter, wenn der Austausch langsamer wird. Das ist ein Vorteil von Loomio: Du kannst asynchrone Beiträge in deinem eigenen Tempo lesen. Du kannst auch Entwicklungen über längere Zeit verfolgen und direkt auf frühere Diskussionen Bezug nehmen.
-* Weil mehrere Diskussionen gleichzeitig stattfinden können, ist neben den eigentlichen Diskussionen auch eine Diskussion über den Gesprächsverlauf möglich. In diesem Raum kann die Gruppe gemeinsam üben, Entwicklungen wahrzunehmen, während die übrigen Diskussionen weitergehen.
+* Viele bestehende Funktionen unterstützen das Wahrnehmen. Die wichtigste ist vermutlich, zu beobachten, wie sich das Kreisdiagramm bei einem Vorschlag entwickelt.
+* Die Software erfasst einiges: wer sich bereits beteiligt hat und wer noch nicht, welche Themen angesprochen werden, wer die Einladung zur Gruppe angenommen hat und wer noch nicht, und so weiter.
+* Auf Loomio kann eine einzelne moderierende Person Dutzende Diskussionen gleichzeitig verfolgen, klar erkennen, was geteilt wird, und entsprechend handeln.
+* Online-Gespräche können Unausgesprochenes sichtbar und damit leichter wahrnehmbar machen.
+* Schriftliche Kommunikation eignet sich gut, um Beobachtungen zu benennen und zu erklären, warum darauf mit einer bestimmten Handlung reagiert wird. Du kannst zum Beispiel die genauen Worte einer Person zitieren und zurückspiegeln, was darin sichtbar wird. Das geht auch auf der Ebene einer ganzen Diskussion: Du kannst mehrere Zitate auswählen und wiederkehrende Themen oder aufkommende Konflikte erkennen.
+* Wahrnehmen fällt deutlich leichter, wenn du das Tempo verlangsamst. Das ist einer der großen Vorteile von Loomio: asynchrone Kommunikation, die du in deinem eigenen Tempo lesen kannst. Sie ermöglicht auch, Entwicklungen über längere Zeit wahrzunehmen und direkt auf frühere Diskussionen zurückzugreifen.
+* Da Diskussionen gleichzeitig stattfinden können, ist eine zusätzliche „Meta-Diskussion“ möglich (auch „blauer Hut“ genannt, also eine Diskussion über die Diskussion), während die eigentlichen Diskussionen weitergehen. So könnt ihr gemeinsam einen Raum schaffen, um das Wahrnehmen zu üben, ohne den Prozess zu verlangsamen.
 
 <!-- translation-section: hearing-diverse-voices -->
 
 ## Unterschiedliche Stimmen hören
 
-Geschichte, Machtverhältnisse, Kultur und Psychologie wirken zusammen: Manche Stimmen bekommen mehr Gewicht, andere werden überhört. Das zeigt sich auf allen Ebenen, von unbewussten Überzeugungen bis zu politischen Institutionen und Gesetzen.
+In unserer Gesellschaft wirken Geschichte, Machtverhältnisse, Kultur und Psychologie auf mehreren Ebenen zusammen und verstärken manche Stimmen, während sie andere unterdrücken. Das zeigt sich auf allen Ebenen unserer Erfahrung, von unseren tiefsten unbewussten Überzeugungen bis hin zu unserem politischen System und unseren Gesetzen.
 
-Die besten Ideen kommen jedoch nicht immer von den lautesten Stimmen. Moderation kann solchen Verzerrungen entgegenwirken. Wer soziale Gerechtigkeit, wirksame Gruppenarbeit und gute Entscheidungen anstrebt, muss diese Dynamiken erkennen.
+Doch die besten Ideen kommen nicht immer von den lautesten Stimmen. Aufgabe der Moderation ist es, diesen Verzerrungen entgegenzuwirken. Wenn wir soziale Gerechtigkeit, wirksame Gruppenarbeit und fundierte Entscheidungen anstreben, müssen wir uns der Dynamiken bewusst sein, mit denen wir gemeinsam umgehen.
 
-> <img style="border-radius: 100%; float: right; margin-left: 0.5em; max-width: 96px; " src="../rich_200.png"> Wenn du Neues entwickeln willst, musst du Raum für unterschiedliche Sichtweisen schaffen. Das brauchst du auch für ein Team, in dem sich alle einbringen können. Kulturelle und technische Faktoren geben manchen Stimmen mehr Gewicht als anderen. Mit verschiedenen Methoden kannst du dieser Verzerrung gezielt entgegenwirken. Schon das Bewusstsein dafür ist ein guter Anfang. — Richard Bartlett
+> <img style="border-radius: 100%; float: right; margin-left: 0.5em; max-width: 96px; " src="../rich_200.png"> Wenn du Neues entwickeln willst, musst du Raum für unterschiedliche Sichtweisen schaffen — das brauchst du auch, wenn du ein Team möchtest, in dem alle handlungsfähig sind. Verschiedene kulturelle und technische Faktoren wirken zusammen und bevorzugen manche Stimmen auf Kosten anderer. Es gibt viele Methoden, mit denen du dieser Verzerrung systematisch entgegenwirken kannst. Sich ihrer bewusst zu sein, ist bereits ein guter Ausgangspunkt. — Richard Bartlett
 
-Jeder Mensch erlebt die Welt aus der eigenen Perspektive. Deshalb vergessen wir leicht, dass andere sie anders erleben. Selbst in einer Gruppe, die einheitlich erscheint, gibt es große Unterschiede bei Sichtweisen, Tempo und Vorlieben. Anzuerkennen, dass andere anders sind als man selbst, ist eine wichtige persönliche Aufgabe.
+Wir erleben die Welt jeweils aus unserem eigenen Bewusstsein heraus. Deshalb vergessen wir leicht, dass andere Menschen die Welt anders erleben. Selbst in einer scheinbar homogenen Gruppe gibt es große Vielfalt — bei Perspektiven, Tempo und Vorlieben. Zu verinnerlichen, dass andere anders sind als ich, ist eine zentrale Herausforderung der persönlichen Entwicklung.
 
-Eine einzige Form der Zusammenarbeit passt nicht für alle. Jede Art des Austauschs gibt manchen Stimmen mehr Raum und anderen weniger. Sie kann auch unterschiedliche Seiten einer Person hervorbringen. Verschiedene Ansätze sind nötig, damit viele Menschen ihre besten Beiträge einbringen können.
+Es gibt keinen Ansatz, der für alle passt. Jede Form der Interaktion verstärkt manche Stimmen und lässt andere leiser werden oder betont unterschiedliche Neigungen einer Person. Deshalb braucht es verschiedene Ansätze, damit unterschiedliche Menschen ihre Beiträge bestmöglich einbringen können.
 
-> <img style="border-radius: 100%; float: right; margin-left: 0.5em; max-width: 96px; " src="../silvia_200.png"> Prüfe, ob du unterschiedliche Lernweisen berücksichtigst. Dabei hilft das Bild von Kopf, Herz und Händen. Menschen, die mit dem Kopf lernen, brauchen Fakten und genaue Informationen. Wer mit dem Herzen lernt, spricht auf Geschichten an und braucht eine emotionale Verbindung zur Arbeit. Mit den Händen zu lernen bedeutet, selbst etwas zu tun und aktiv zu werden. — Silvia Zuur
+> <img style="border-radius: 100%; float: right; margin-left: 0.5em; max-width: 96px; " src="../silvia_200.png"> Prüfe, ob du unterschiedliche Lernstile berücksichtigst. Eine einfache Möglichkeit ist die Metapher von Kopf, Herz und Händen. Menschen, die mit dem Kopf lernen, brauchen Fakten und detaillierte Informationen. Menschen, die mit dem Herzen lernen, sprechen auf Geschichten an. Sie brauchen eine emotionale Verbindung zur Arbeit. Beim Lernen mit den Händen geht es darum, etwas zu tun und aktiv zu werden. — Silvia Zuur
 
-Unterschiedliche Stimmen kommen besser zur Geltung, wenn du verschiedene Formen des Austauschs anbietest. So berücksichtigst du unterschiedliche Bedürfnisse und Vorlieben und erleichterst allen die Beteiligung.
+Eine der besten Möglichkeiten, unterschiedliche Stimmen hörbar zu machen und miteinander zu verbinden, besteht darin, verschiedene Formen der Interaktion anzubieten. Sie berücksichtigen unterschiedliche Bedürfnisse und Vorlieben und schaffen gleichberechtigtere Bedingungen für die Kommunikation.
 
-Diese bewährten Gestaltungselemente helfen, unterschiedlichen Kommunikationsweisen in der Zusammenarbeit Raum zu geben:
+Einige klassische Bausteine, um unterschiedliche Kommunikationsweisen in der Zusammenarbeit zu berücksichtigen:
 
-* **Gruppengröße** — Nachdenken für sich allein, Zweiergespräche, kleine Gruppen, große Gruppen, Gespräche zwischen zwei Personen, von einer Person zu vielen oder zwischen vielen Personen.
-* **Ausdrucksform** — Schreiben, Zeichnen, Video, Singen, Tanzen, Flussdiagramme, Gleichungen, Symbole, Geschichten, Tränen, Lachen, Debatten und mehr.
-* **Gesprächsregeln** — Runden (jede Person kommt einmal zu Wort, bevor es weitergeht), begrenzte Redehäufigkeit (du sprichst erst wieder, nachdem zwei andere gesprochen haben), Redestab (nur wer den Stab hat, spricht; niemand unterbricht), zeitlich begrenzte Beiträge (du hast eine Minute), Beiträge ohne Zeitlimit (du kannst sprechen, solange du möchtest, und alle hören aufmerksam zu), Erfassen der Redeanteile (etwa wie viel Frauen und Männer gesprochen haben), stille Pausen zwischen Beiträgen (zum Verarbeiten und Nachdenken).
-* **Stille zulassen** *Stille ist nur unangenehm, wenn du sie dazu machst. Sie gibt Menschen Zeit zum Nachdenken. — Silvia Zuur*
+* **Gruppengröße** — individuelles Nachdenken, Zweiergespräche, kleine Gruppe, große Gruppe, eine Person mit einer anderen, eine Person mit vielen, viele Personen miteinander.
+* **Ausdrucksform** — Schreiben, Zeichnen, Video, Singen, Tanz, Flussdiagramme, Gleichungen, Symbole, Geschichten, Tränen, Lachen, Debatten usw.
+* **Gesprächsregeln** — Runden (jede Person kommt einmal zu Wort, bevor es weitergeht), Begrenzung der Redebeiträge (du kannst erst wieder sprechen, nachdem zwei andere gesprochen haben), Redestab (sprich nur, wenn du den Stab hast — keine Unterbrechungen), zeitlich begrenzte Beiträge (du kannst nur 1 Minute sprechen), zeitlich unbegrenzte Beiträge (du kannst ohne Zeitbegrenzung sprechen und alle hören aufmerksam zu), Erfassen der Beiträge (wie viel haben Frauen im Vergleich zu Männern gesprochen usw.), stille Pausen zwischen den Redebeiträgen (zum Verarbeiten und Nachdenken).
+* **Stille zulassen** *Stille ist nur unangenehm, wenn du sie unangenehm werden lässt. Stille gibt Menschen Gelegenheit zum Nachdenken. — Silvia Zuur*
 
 Auf Loomio
 
-* Loomio wurde mit dem Ziel gestaltet, alle Stimmen hörbar zu machen. Dazu gehören auch Menschen, die nicht vor Ort sein können, leiser sind oder wenig Zeit haben.
-* Im Text haben alle Stimmen ungefähr die gleiche „Lautstärke“ und „Geschwindigkeit“. Schriftlicher, asynchroner Austausch kann Unterschiede beim Zugang zum Gespräch verringern.
-* Die Vorschlagsfunktion ähnelt einer Gesprächsrunde. Sie hilft Gruppen dabei, jeder Person die gleiche Gelegenheit zu geben, sich zu äußern, wenn sie das möchte.
-* Loomio unterstützt verschiedene Medien wie Links, Videos, Bilder, Diagramme und ergänzende Belege. Das kommt unterschiedlichen Kommunikationsweisen entgegen.
-* Loomio selbst bietet einfache Funktionen. Mit aktiver Moderation und gemeinsam vereinbarten Regeln lassen sich Gesprächsregeln auch von Hand umsetzen. Beispielsweise könnte jede Person erst einen Beitrag schreiben, nachdem alle anderen Gelegenheit dazu hatten.
-* Mit Gruppen und Untergruppen bietet Loomio flexible Möglichkeiten für kleine und große Gruppen. Bei manchen umfangreichen Beratungsprozessen arbeiten mehrere kleinere Gruppen zunächst getrennt. Ihre Beiträge fließen später in ein gemeinsames Fazit ein.
-* Wer Zeit zum Nachdenken braucht, kann eine Pause machen, die eigenen Gedanken ordnen und später einen längeren Kommentar oder einen Link zu einem Dokument teilen. So können sich persönliches Nachdenken und Austausch in der Gruppe ergänzen.
-* Funktionen zur Barrierefreiheit und Übersetzungen in viele Sprachen ermöglichen Menschen mit unterschiedlichen Bedürfnissen, sich gleichberechtigt an einer Diskussion zu beteiligen. Das ist bei einem Treffen vor Ort kaum in gleichem Maß möglich.
-* Wenn eine Person sehr viel schreibt, können andere an ihren Beiträgen vorbeiscrollen. Bei einem Treffen vor Ort kann sie das Gespräch stärker beherrschen. Sehr lange Beiträge können aber auch auf Loomio eine ausgewogene Diskussion erschweren.
+* Loomio wurde von Anfang an so gestaltet, dass „alle Stimmen gehört werden“, auch die von Menschen, die nicht persönlich dabei sein können, sich eher zurückhalten, wenig Zeit haben usw.
+* In Textform hat jede Stimme ungefähr die gleiche „Lautstärke“ und „Geschwindigkeit“. Schriftliche, asynchrone Kommunikation schafft dadurch gleichberechtigtere Bedingungen.
+* Die Vorschlagsfunktion ist im Kern eine „Runde“. Sie hilft Gruppen dabei, jeder einzelnen Person gleichberechtigt die Möglichkeit zu geben, sich zu äußern, wenn sie das möchte.
+* Loomio unterstützt verschiedene Medien (Links, Videos, Bilder, Diagramme, Belege), die unterschiedlichen Kommunikationsweisen entgegenkommen.
+* Loomio selbst ist recht einfach gehalten. Mit aktiver Moderation und einer erfahrenen Gruppe lassen sich Gesprächsregeln jedoch „manuell“ durch gemeinsame Gewohnheiten oder vereinbarte Regeln umsetzen (zum Beispiel eine Diskussion, in der alle nur einmal einen Beitrag schreiben, bis sich alle anderen beteiligt haben).
+* Loomio bietet mit Hauptgruppen und Untergruppen flexible Werkzeuge für den Austausch in kleinen und großen Gruppen. Bei manchen umfangreichen Beteiligungsprozessen haben mehrere kleinere Gruppen mitgewirkt, deren Beiträge anschließend zu einem gemeinsamen Fazit zusammengeführt wurden.
+* Menschen, die Zeit zum individuellen Nachdenken brauchen, können sich zurückziehen und ihre Gedanken ordnen. Anschließend können sie zurückkommen und einen längeren Kommentar oder einen Link zu einem Dokument teilen. Das ist ein Beispiel dafür, wie Menschen selbst entscheiden können, wie sie individuelles Nachdenken und Gruppenkommunikation miteinander verbinden.
+* Die Funktionen zur Barrierefreiheit und die Übersetzungen in mehrere Sprachen ermöglichen es Menschen mit sehr unterschiedlichen Bedürfnissen, gleichberechtigt an einer Diskussion teilzunehmen. Das zeigt, wie Technik eine gleichberechtigte Beteiligung ermöglichen kann, die bei persönlichen Treffen kaum erreichbar ist.
+* Wenn jemand übermäßig viel beiträgt, kannst du einfach weiterscrollen. Bei persönlichen Treffen kann dieses Verhalten den Austausch vollständig dominieren. Allerdings können auch auf Loomio sehr lange Textbeiträge eine ausgewogene Diskussion beeinträchtigen.
 
 <!-- translation-section: counter-cognitive-bias -->
 
 ## Kognitiven Verzerrungen entgegenwirken
 
-Das menschliche Gehirn hat sich über Millionen von Jahren entwickelt. Es verbindet schnelles, zweckmäßiges Denken mit langsamer, aufwendiger Analyse. So können wir uns meistens auf Erfahrung, Faustregeln und Verallgemeinerungen stützen und bei Bedarf gründlicher nachdenken.
+Das menschliche Gehirn hat sich über Millionen von Jahren so entwickelt, dass es schnelles, effizientes und „ausreichend gutes“ Denken mit langsamer, aufwendiger und gründlicher Analyse verbindet. Dadurch können wir meist auf Instinkte, Faustregeln und Verallgemeinerungen als schnelle, wenig aufwendige Lösungen zurückgreifen und bei Bedarf gründlicher analysieren.
 
-Manchmal führt uns das in die Irre. Es gibt bekannte Denkfehler, die gute Entscheidungen erschweren. In Gruppen wird das noch komplexer. Diese Dynamiken müssen wir im Blick behalten.
+Manchmal liegen wir jedoch falsch. Es gibt bekannte „Fehler“ in der menschlichen Denkweise, die uns daran hindern können, die besten Entscheidungen zu treffen. In Gruppen wird das noch komplizierter. Wir müssen uns dieser Dynamiken bewusst sein.
 
-Es gibt viele [kognitive Verzerrungen](https://en.wikipedia.org/wiki/List_of_cognitive_biases) (diese Liste ist lesenswert). Sie alle können Entscheidungen und Zusammenarbeit beeinflussen. Moderation kann helfen, sie sichtbar zu machen und bewusster mit ihnen umzugehen. Eine hilfreiche Frage lautet zum Beispiel: Wann ist eine schnelle Entscheidung wichtiger und wann eine genaue?
+Es gibt eine große [Bandbreite kognitiver Verzerrungen](https://en.wikipedia.org/wiki/List_of_cognitive_biases) (diese Liste ist lesenswert), die sich alle auf Entscheidungen und Zusammenarbeit auswirken können. Moderation kann helfen, damit umzugehen, ihre Existenz bewusst zu machen und einen gezielten Umgang mit ihnen zu fördern. Zum Beispiel durch die Frage, wann es wichtiger ist, schnell voranzukommen, und wann Genauigkeit wichtiger ist.
 
-Strukturierte Abläufe und klare Kommunikation können kognitiven Verzerrungen entgegenwirken und Entscheidungen verbessern. Ein festgelegter Ablauf fordert uns heraus, statt des einfachsten Wegs andere Möglichkeiten zu prüfen. Dadurch werden Denkfehler und Vorannahmen sichtbar. Moderierende regen manchmal bewusst Schritte an, die Widerstand auslösen, weil die Gruppe dafür vertraute Denkmuster verlassen muss. Diese Anstrengung kann einer Gruppe helfen, ihre Ziele zu erreichen.
+Strukturierte Abläufe und Kommunikation sind wirksame Mittel, um kognitiven Verzerrungen entgegenzuwirken und die Qualität von Entscheidungen zu verbessern. Einem Prozess zu folgen statt dem „Weg des geringsten Widerstands“ kann Denkfehler und Verzerrungen sichtbar machen. Moderierende bestehen manchmal auf Dingen, die herausfordernd wirken oder Widerstand auslösen, gerade weil das Gehirn dabei vertraute Muster verlassen muss. Disziplin in diesem Bereich kann Gruppen helfen, ihre weitergehenden Ziele zu erreichen. Dafür kann sich vorübergehendes Unbehagen lohnen.
 
-Beispiele für Abläufe, die kognitive Verzerrungen verringern können:
+Einige Beispiele für Methoden, die kognitive Verzerrungen verringern können:
 
-* [De Bonos Hüte](http://www.debonoforschools.com/asp/six_hats.asp): Verschiedenfarbige Hüte stehen sinnbildlich für unterschiedliche Denkweisen. Die Teilnehmenden können damit Abstand von ihrer eigenen Meinung nehmen und andere Sichtweisen ausprobieren.
-* Checklisten: Vertraute Denkmuster lassen uns selbst offensichtliche Dinge übersehen, besonders in Bereichen, die wir gut kennen. Eine Checkliste hilft, Fehler zu vermeiden.
-* Die fünf Warum-Fragen: Wer nur ein- oder zweimal nach dem Warum fragt, hält eine Antwort vielleicht schon für die Ursache des Problems. Fünfmal nachzufragen hilft, ihr auf den Grund zu gehen.
-* Denkmodelle: Übungen wie die [SWOT-Analyse](https://en.wikipedia.org/wiki/SWOT_analysis), das [Business Model Canvas](https://en.wikipedia.org/wiki/Business_Model_Canvas) und andere strukturierte Verfahren zur Informationssammlung helfen dir, Annahmen offenzulegen und genauer zu analysieren.
+* [De Bonos Denkhüte](http://www.debonoforschools.com/asp/six_hats.asp): verschiedenfarbige Hüte, die Teilnehmende im übertragenen Sinn aufsetzen können, um ihre eigenen Meinungen hinter sich zu lassen und unterschiedliche Denkweisen auszuprobieren.
+* Checklisten: Eingefahrene Denkmuster können dazu führen, dass wir selbst offensichtliche Dinge übersehen, besonders in Bereichen, die uns sehr vertraut sind. Eine Checkliste kann helfen, solche Fehler zu vermeiden.
+* Die fünf Warum-Fragen: Wenn du nur ein- oder zweimal nach dem Warum fragst, kannst du vorschnell glauben, bereits zu einer Schlussfolgerung gelangt zu sein, bevor du die eigentliche Ursache erreicht hast. Fünfmaliges Nachfragen führt eher zum Kern des Problems.
+* Denkmodelle: Übungen wie die [SWOT-Analyse](https://en.wikipedia.org/wiki/SWOT_analysis), das [Business Model Canvas](https://en.wikipedia.org/wiki/Business_Model_Canvas) oder zahlreiche andere Methoden zur strukturierten Informationssammlung können dir helfen, genauer zu analysieren und Annahmen offenzulegen.
 
 Auf Loomio
 
-* Unterschiedliche Informationen und Beiträge können Annahmen und Verzerrungen infrage stellen. Das gehört zum Grundgedanken von Loomio: Wenn sich mehr Menschen gleichberechtigt an einer Diskussion beteiligen können, sinkt die Gefahr des Gruppendenkens.
-* Auf Loomio können Teilnehmende konstruktiv widersprechen. Ein sicherer Raum für Widerspruch und dessen Wertschätzung fördern kritisches Denken.
-* Asynchrone schriftliche Kommunikation verlangsamt das Gespräch. Menschen haben mehr Zeit, Beiträge zu überdenken und Denkfehler zu vermeiden.
-* Loomio bietet einen teilweise strukturierten Ablauf, der überlegte Entscheidungen unterstützt. Es eignet sich für viele verschiedene Prozesse. Schon *etwas* Struktur in einer Diskussion eröffnet weitere Möglichkeiten.
+* Vielfältige Informationen und Beiträge können Annahmen oder Verzerrungen infrage stellen. Das gehört zur grundlegenden Gestaltung von Loomio: Wenn mehr Stimmen unter gleichberechtigteren Bedingungen zu einer Diskussion beitragen können, hast du die Möglichkeit, „Gruppendenken“ zu vermeiden.
+* Loomio ermöglicht Teilnehmenden, konstruktiv zu widersprechen. Widerspruch, der sicher geäußert werden kann und geschätzt wird, ist wesentlich für eine Kultur des kritischen Denkens.
+* Asynchrone schriftliche Kommunikation verlangsamt das Gespräch und ermöglicht eine sorgfältigere Auseinandersetzung. Menschen erhalten dadurch Gelegenheit, gründlicher nachzudenken und Denkfehler zu vermeiden.
+* Loomio lädt Menschen zu einem teilweise strukturierten Prozess ein, der zu überlegteren Entscheidungen führt. Loomio kann für sehr unterschiedliche Abläufe genutzt werden. Schon *ein gewisses Maß* an Struktur in einer Diskussion eröffnet weitere Möglichkeiten.
 
 <!-- translation-section: balancing-divergent-convergent -->
 
-## Offene und bündelnde Phasen ausbalancieren
+## Öffnen und Bündeln ausbalancieren
 
-Der „Diamant“ beschreibt, wie sich ein Gespräch erst öffnet und dann wieder bündelt. Zunächst entsteht Raum für Ideen, Informationen und unterschiedliche Sichtweisen. Danach führt das Gespräch auf einen Punkt zu. Der richtige Zeitpunkt für diesen Übergang ist entscheidend, wenn eine gemeinsame Diskussion zu konkretem Handeln führen soll.
+Die „Raute“ aus Divergenz und Konvergenz beschreibt die Form eines Gesprächs. Zunächst weitet es sich und schafft Raum für Ideen, Informationen und unterschiedliche Perspektiven. Danach läuft es auf einen Punkt zu. Der richtige Zeitpunkt für diesen Wechsel ist entscheidend, um handlungsorientierte, produktive und gemeinschaftliche Diskussionen wirksam zu moderieren.
 
 ![](../collaboration-process.png)
 
-Wenn die offene Phase fehlt oder zu früh endet, fehlen wichtige Informationen. Menschen fühlen sich möglicherweise nicht gehört, und gute Ideen bleiben unausgesprochen. Wenn die bündelnde Phase fehlt oder zu spät beginnt, kann die Diskussion endlos weitergehen, ohne zu einem umsetzbaren Fazit zu führen. Das kostet die Teilnehmenden Energie, ohne ein Ergebnis zu bringen.
+Wenn die öffnende Phase fehlt oder zu früh beendet wird, fehlen Informationen für die weitere Arbeit. Menschen fühlen sich möglicherweise nicht gehört, und gute Ideen bleiben unausgesprochen. Wenn die bündelnde Phase fehlt oder zu spät beginnt, kann eine Diskussion endlos weitergehen, ohne zu einer umsetzbaren Schlussfolgerung zu führen. Das kostet Teilnehmende Energie und führt zu keinen Ergebnissen.
 
-Auch innerhalb der einzelnen Phasen kommt es auf den richtigen Zeitpunkt für einen Eingriff an. Zur offenen Phase gehören Einführung, Klärung und das Entwickeln von Ideen. Zur bündelnden Phase gehören Analyse, Fazit und Verbindlichkeit. Für manche Diskussionen reicht der Diamant als grobe Orientierung. Andere profitieren davon, jede Phase genau zu planen.
+Auch jede Teilphase des Gesamtprozesses erfordert Aufmerksamkeit für den richtigen Zeitpunkt und passende Interventionen. Die öffnende Phase umfasst Einführung, Klärung und Ideenentwicklung. Die bündelnde Phase umfasst Analyse, Schlussfolgerung und verbindliche Zusagen. Manche Diskussionen gelingen mit einer groben Orientierung an der Raute. Andere profitieren von einer genauen Aufteilung in einzelne Phasen und Teilphasen.
 
-In einer Gruppe bevorzugen einzelne Menschen meist eher die offene oder die bündelnde Phase. Auch die Gruppe als Ganzes kann zu einer Seite neigen. Ein Ungleichgewicht zeigt sich etwa darin, dass die Gruppe zu lange frei über Möglichkeiten nachdenkt oder zu schnell Lösungen festlegt. Moderation hilft, beiden Phasen genügend Raum zu geben.
+Innerhalb einer Gruppe bevorzugen einzelne Personen meist die eine oder andere Arbeitsweise. Auch die Gruppe als Ganzes hat gemeinsame Neigungen. Ein Ungleichgewicht zeigt sich etwa darin, dass zu lange ohne Einschränkungen Ideen gesammelt werden oder zu schnell zu Lösungen gesprungen wird. Moderation kann einzelnen Personen und der gesamten Gruppe helfen, angemessen viel Energie in die unterschiedlichen Arbeitsweisen zu investieren.
+
 
 Auf Loomio
 
-* Der grundlegende Ablauf auf Loomio führt Gruppen durch beide Phasen: Diskussionen öffnen den Raum, Vorschläge bündeln ihn. Der Diamant war eine wichtige Anregung für die ursprüngliche Gestaltung dieses Ablaufs.
-* Loomio erlaubt Gruppen, flexibel zwischen den Phasen zu wechseln. Ein Vorschlag kann zum Beispiel neue Meinungsverschiedenheiten sichtbar machen. Die dadurch geklärten Informationen helfen, einen besseren Vorschlag zu entwickeln.
-* Grundlegende Funktionen unterstützen beide Phasen. Benachrichtigungen über neue Diskussionen laden Gruppenmitglieder ein, Ideen einzubringen. Fristen für Vorschläge regen dazu an, sich an der Entscheidung zu beteiligen.
-* Mit den vorhandenen Funktionen können Gruppen die bündelnde Phase einleiten, indem sie einen Vorschlag starten. Gruppen, die Vorschläge sinnvoll nutzen, kommen oft gut voran. Manchmal hilft schon der Hinweis, häufiger Vorschläge zu machen, wenn eine Gruppe feststeckt.
+* Der grundlegende Loomio-Prozess führt Gruppen durch jede Phase: Die Diskussion öffnet den Raum, Vorschläge bündeln ihn. Das Modell der Raute war eine wichtige Inspiration für die ursprüngliche Gestaltung des Loomio-Prozesses.
+* Loomio hilft Gruppen, die Raute dynamisch zu nutzen. So kann ein Versuch zu bündeln (ein Vorschlag) zu einer vertieften Öffnung führen (unterschiedliche Meinungen). Dabei werden Informationen sichtbar oder geklärt, die eine noch bessere Bündelung ermöglichen (ein überarbeiteter Vorschlag).
+* Einige grundlegende Funktionen von Loomio unterstützen beide Arbeitsweisen. Dazu gehören Benachrichtigungen an Gruppenmitglieder, wenn eine neue Diskussion beginnt (sie regen vielfältige Beiträge an), und Fristen für Vorschläge (sie fördern die Beteiligung an der Bündelung).
+* Nutzende können mit den bestehenden Funktionen von Loomio bereits die Bündelung fördern, indem sie einen Vorschlag starten. Vorschläge gut zu nutzen, ist eines der deutlichsten Merkmale einer wirksamen Loomio-Gruppe. Schon der Hinweis, häufiger Vorschläge zu starten, hilft vielen Gruppen, die nicht weiterkommen.
 
 <!-- translation-section: working-with-scope -->
 
-## Den Umfang festlegen
+## Den Umfang gestalten
 
-Gute Zusammenarbeit hängt oft davon ab, Aufgaben in passende Teile zu zerlegen und sie in der richtigen Reihenfolge anzugehen.
+Erfolgreiche Zusammenarbeit hängt oft davon ab, Aufgaben in passend große Teile zu zerlegen und sie in der richtigen Reihenfolge anzugehen.
 
-Du kannst die Moderation wie ein Projekt planen und dabei Fragen wie diese stellen:
+Du kannst bei der Moderation mit einer „Projektmanagement“-Perspektive arbeiten und dabei Fragen wie diese berücksichtigen:
 
-* Welche Schritte hängen voneinander ab? Was muss zuerst geschehen, damit anderes möglich wird?
-* Was ist am wichtigsten? Was kann weggelassen werden?
-* Welchen Umfang können wir mit der verfügbaren Zeit, Energie und Information bewältigen, um zu einem brauchbaren Ergebnis zu kommen?
+* Welche Abhängigkeiten gibt es (was ist der kritische Pfad, welche Dinge müssen zuerst erledigt werden, damit andere möglich werden)?
+* Auf welche Teile sollten wir uns vor allem konzentrieren? Was können wir weglassen?
+* Welcher Umfang lässt sich zu einem bestimmten Zeitpunkt mit der verfügbaren Zeit, Energie und Information bewältigen, um zu einem brauchbaren Stand zu kommen?
 
-Versuche nicht, alles auf einmal zu lösen. Teile die Arbeit in überschaubare Schritte auf. Mehrere kleine Schritte können zu einem größeren Ergebnis führen. Oft ist es besser, etwas Kleines und Nützliches zu erreichen, als zu keinem Fazit zu kommen. Wer sich zu sehr in Details verliert, übersieht womöglich die größeren Fragen.
+Versuche nicht, alles auf einmal zu lösen, sondern teile die Arbeit in überschaubare Schritte auf. Mit einer Reihe kleinerer Schritte kannst du auf ein größeres Fazit hinarbeiten. Oft ist es besser, etwas Kleines, aber Nützliches zu erreichen, als zu gar keiner Schlussfolgerung zu gelangen. Umgekehrt kannst du dich auch zu sehr in Einzelheiten verlieren und die größeren Fragen verfehlen.
 
-Bei einer Zusammenarbeit weiß niemand genau, was entstehen wird. Deshalb muss sich der Umfang mit der Diskussion entwickeln. Ob ein neuer Zweig gerade ablenkt oder die Arbeit voranbringt, musst du abwägen. Zu starre wie auch zu flexible Grenzen können schaden. Häufig geht es weniger darum, ob etwas relevant ist, sondern darum, wann und in welcher Reihenfolge es am meisten beiträgt.
+Bei einer Zusammenarbeit weiß niemand genau, was entstehen wird. Deshalb muss sich der Umfang mit der Diskussion weiterentwickeln. Ob eine Erweiterung gerade ablenkt oder den Prozess weiterbringt, erfordert eine Einschätzung. Zu viel Starrheit und zu viel Flexibilität können beide schaden. Oft geht es weniger darum, ob etwas relevant ist, sondern darum, welche Reihenfolge und welcher Zeitpunkt am hilfreichsten sind.
 
-> Wenn du eine Sitzung mit mehreren verknüpften Teilen planst, die aufeinander aufbauen und zu einer lebensverändernden Erkenntnis führen sollen, ist es großartig, wenn das gelingt. Häufiger dauert eine komplexe Sitzung jedoch länger als geplant und geht an den Wünschen und Bedürfnissen der Teilnehmenden vorbei. - Silvia Zuur
+> Wenn du eine Sitzung mit mehreren miteinander verbundenen Teilen planst, die alle aufeinander aufbauen und zu einer lebensverändernden, überwältigenden Schlussfolgerung führen, und das tatsächlich gelingt, ist das großartig. Meistens dauert eine komplizierte Sitzung jedoch länger als geplant und geht möglicherweise an den Wünschen und Bedürfnissen der Teilnehmenden vorbei. - Silvia Zuur
 
 <!-- translation-section: a-series-of-small-yes-s -->
 
 ## Eine Reihe kleiner Zustimmungen
-Zu viele Gespräche zusammenzufassen schafft Verwirrung. Gruppen, die nicht weiterkommen, hilft es oft, die Fragen aufzuteilen. Wenn ein Thema aussichtslos, komplex oder umstritten erscheint, kannst du einzelne Fragen herauslösen und dazu Einigkeit finden. Beginne mit dem, worüber sich alle leicht einigen können. Anschließend kannst du die strittigen Punkte auf ihren Kern reduzieren und gezielt bearbeiten.
+Zu viele Gespräche zusammenzufassen, schafft Verwirrung. Frustrierten Gruppen hilft es oft, die Fragen einzeln zu behandeln. Wenn ein Anliegen aussichtslos, komplex oder konfliktgeladen erscheint, kannst du einzelne Fragen herauslösen und dazu Konsens erreichen. Beginne mit den Punkten, bei denen Zustimmung am leichtesten möglich ist. Bei den strittigen Punkten kannst du dich anschließend auf den Kern der Probleme beschränken und gezielt daran arbeiten.
 
 Auf Loomio
 
-* Thematisch getrennte Diskussionen helfen, den Umfang klar zu halten. In Loomio lässt sich der Fokus auf eine bestimmte Frage oft besser wahren als in einem Gespräch vor Ort. Andere Aspekte können gleichzeitig in anderen Diskussionen behandelt werden.
-* Häufig greifen Nutzerinnen und Nutzer moderierend ein, etwa mit: „Das gehört nicht zu diesem Thema. Möchtest du dazu eine neue Diskussion starten?“
-* Eine Loomio-Gruppe zu erstellen hilft zu klären, wer dazugehört und worüber die Gruppe sprechen möchte. So können die Teilnehmenden den Umfang ihrer Gespräche besser einschätzen.
-* Loomios aufeinanderfolgende Vorschläge eignen sich gut für eine Reihe kleiner Zustimmungen. In einer Diskussion könnt ihr einzelne Vereinbarungen treffen, den Zusammenhang bewahren und auf früheren Vorschlägen aufbauen.
-* Bei zeitversetzter Online-Kommunikation können manche Menschen ein Thema weit vertiefen, ohne andere aufzuhalten. Sie können eine neue Diskussion oder Untergruppe starten, während die Hauptgruppe bei ihrem Thema bleibt.
-* Die Beschreibung einer Diskussion und die Gruppenbeschreibung bieten Platz, um den Umfang des jeweiligen Gesprächs oder der Gruppe festzulegen.
+* Thematisch abgegrenzte Diskussions-Threads helfen dabei, den Umfang eines Gesprächs sinnvoll zu begrenzen. Noch besser als Gespräche bei persönlichen Treffen lassen sich Loomio-Diskussionen auf eine bestimmte Frage konzentrieren, während andere Aspekte gleichzeitig in anderen Threads behandelt werden.
+* Wir sehen oft, dass Menschen moderierend eingreifen, etwa mit: „Das geht über den Rahmen dieses Themas hinaus. Warum startest du dazu nicht eine neue Diskussion?“
+* Eine Loomio-Gruppe zu erstellen, hilft dabei, zu klären, wer wir sind und was wir hier diskutieren wollen. Das hilft Teilnehmenden, den Rahmen der Diskussion zu steuern.
+* Die aufeinanderfolgenden Vorschläge in Loomio eignen sich gut für eine „Reihe kleiner Zustimmungen“. Du kannst schrittweise Einigungen erreichen, dabei den Kontext in einem einzigen Diskussions-Thread bewahren und auf früheren Vorschlägen aufbauen.
+* Durch asynchrone Online-Kommunikation können manche Menschen weit über den vereinbarten Rahmen hinausgehen, ohne andere aufzuhalten. Sie können eine neue Diskussion oder Untergruppe starten und sich so ausführlich und lange damit befassen, wie sie möchten, während der Hauptfokus der Gruppe erhalten bleibt.
+* Im Kontextfeld der Diskussion kannst du den Rahmen eines Gesprächs festlegen, in der Gruppenbeschreibung den Rahmen der Gruppe.
 
 <!-- translation-section: pacing-timing -->
 
 ## Tempo und Zeitpunkt
 
-Ein produktives Gespräch hat einen Rhythmus. Das passende Tempo hängt von vielen Faktoren ab und ergibt sich oft aus dem Gefühl heraus, ähnlich wie beim Improvisieren in der Musik. Wann ist es Zeit, tiefer einzusteigen oder einen Schritt zurückzutreten? Wann helfen neue Informationen, und wann solltet ihr das Vorhandene genauer betrachten? Darum geht es bei der Steuerung des Tempos.
+Ein produktives Gespräch hat einen Rhythmus. Der passende Takt entsteht aus einem komplexen Zusammenspiel verschiedener Faktoren und fühlt sich oft intuitiv an, ähnlich wie beim Improvisieren in der Musik. Wann ist es Zeit, tiefer einzusteigen oder einen Schritt zurückzugehen? Wann sollten neue Informationen hinzukommen, und wann sollten wir uns genauer mit dem beschäftigen, was bereits vorliegt? Darum geht es bei der Gestaltung des Tempos.
 
-Teilnehmende haben unterschiedliche Bedürfnisse und Vorlieben. Manche müssen gebremst, andere ermutigt werden, weiterzugehen. Ein gutes Tempo entsteht aus dem Zusammenspiel von Vertiefung und Fortschritt. Stimmt es nicht, werden manche ungeduldig, während andere nicht mehr mitkommen.
+Teilnehmende haben unterschiedliche Bedürfnisse und Vorlieben. Manche müssen gebremst, andere zum Weitergehen ermutigt werden. Das passende Tempo entsteht aus einer produktiven Spannung zwischen Vertiefen und Vorankommen. Stimmt es nicht, sind Menschen frustriert: Sie werden ungeduldig oder fühlen sich abgehängt.
 
 Auf Loomio
 
-* Weil die Kommunikation zeitversetzt stattfindet, können Menschen auf Loomio in ihrem eigenen Tempo lesen und antworten. So kann sich ein natürlicher Rhythmus entwickeln.
-* Du kannst an langsameren Beiträgen vorbeiscrollen und die Diskussion voranbringen. Zugleich kannst du ein Thema weiter vertiefen, während andere schon vorangehen. In einem Gespräch zur selben Zeit ist das nicht möglich.
-* Fristen für Vorschläge helfen, das Tempo zu bestimmen. Dringende Themen bekommen kürzere Fristen, andere mehr Zeit. Verschiedene Entscheidungen können unterschiedlich schnell getroffen werden.
-* Du kannst dein eigenes Beteiligungstempo leicht anpassen. Wenn dir eine Diskussion zu schnell oder zu langsam verläuft, kannst du deinen Beitrag schreiben, dich zurückziehen und später zu einem Vorschlag zurückkehren.
-* Eine „schnelle“ Entscheidung auf Loomio dauert vielleicht ein oder zwei Tage, bei einem Treffen vor Ort eher fünf Minuten. Trotzdem wirkt Loomio nicht so langsam, wie es ein zweitägiges Treffen wäre. Entscheidungen laufen parallel zur übrigen Arbeit. Beiträge von allen über zwei Tage auf Loomio zu sammeln, ist oft einfacher, als ein Treffen vor Ort zu organisieren.
-* Moderation auf Loomio lässt sich mit „Bullet Time“ vergleichen: In Matrix kann Neo die Zeit anhalten und an einer Kugel vorbeigehen. Ähnlich kannst du ein laufendes Gespräch Schritt für Schritt betrachten. Das eröffnet besondere Möglichkeiten.
+* Da die Kommunikation asynchron ist, können Menschen auf Loomio in ihrem eigenen Tempo lesen und antworten. So kann sich ein natürliches Tempo entwickeln.
+* Du kannst an Beiträgen von Menschen vorbeiscrollen, die langsamer vorangehen, und auf Fortschritte drängen. Gleichzeitig kannst du dich langsam weiter in etwas vertiefen, während andere bereits vorangehen. Bei synchroner Kommunikation ist das nicht möglich.
+* Fristen für Vorschläge helfen, das Tempo festzulegen. Themen, die schnell vorankommen müssen, erhalten kürzere Zeiträume. Für aufwendigere Themen kann mehr Zeit vorgesehen werden. Unterschiedliche Entscheidungen können unterschiedlich schnell getroffen werden.
+* Du kannst das Tempo deiner eigenen Beteiligung leicht anpassen. Wenn ein Gespräch für dich zu schnell oder zu langsam verläuft, kannst du deinen Beitrag hinterlassen, dich zurückziehen und später wieder einsteigen, wenn ein Vorschlag eingebracht wird.
+* Eine „schnelle“ Entscheidung auf Loomio dauert 1 oder 2 Tage, während eine „schnelle“ Entscheidung bei einem persönlichen Treffen eher 5 Minuten dauert. Trotzdem wirkt Loomio nicht so „langsam“, wie ein persönliches Treffen wirken würde, bei dem eine Entscheidung 2 Tage dauert. Auf Loomio laufen Entscheidungen parallel zur übrigen Arbeit. Die Beiträge aller über 2 Tage auf Loomio zu sammeln, ist deutlich effizienter, als ein persönliches Treffen zu organisieren.
+* Moderation auf Loomio lässt sich mit „Bullet Time“ vergleichen (wenn Neo in Matrix die Zeit anhalten und um eine Kugel herumgehen kann): Du kannst ein lebendiges Gespräch Bild für Bild durchgehen. Das ist wie eine Superkraft.
 
 <!-- translation-section: managing-the-attention-economy -->
 
-## Mit Aufmerksamkeit umgehen
+## Mit begrenzter Aufmerksamkeit umgehen
 
-Wer moderiert, lenkt die Aufmerksamkeit. Die verfügbare Informationsmenge kann praktisch unbegrenzt sein. Deshalb ist es wichtig, Informationen zu filtern, damit die Gruppe den Überblick behält. Mit Aufmerksamkeit umzugehen heißt, Wichtigkeit, Zeit und Kapazität gegeneinander abzuwägen.
+Wer moderiert, lenkt Aufmerksamkeit. Die verfügbaren Informationen können unbegrenzt sein. Um Überforderung zu vermeiden, müssen sie gefiltert werden. Mit begrenzter Aufmerksamkeit umzugehen bedeutet, die Wichtigkeit von Informationen gegen die verfügbare Zeit und Kapazität abzuwägen.
 
-Moderation kann der Gruppe helfen, sich über Ziel und Umfang einer Diskussion oder eines Prozesses zu verständigen. Damit hat sie einen Maßstab dafür, worauf sie ihre Aufmerksamkeit richtet. Ablenkungen zu begrenzen und das Gespräch zum Thema zurückzuführen, sind häufige Eingriffe.
+Moderation kann der Gruppe helfen, sich über den Zweck und den Rahmen einer Diskussion oder eines Prozesses zu verständigen. Das schafft einen Maßstab dafür, worauf sie ihre Aufmerksamkeit zuerst richtet. Ablenkungen zu begrenzen und das Gespräch wieder auf Kurs zu bringen, sind häufige Eingriffe.
 
-Zur Moderation gehört auch, die Aufmerksamkeit der Gruppe lange genug bei einem Thema zu halten. Wenn es schwierig, unklar oder unangenehm wird, möchten Menschen manchmal zu früh aufgeben, das Thema wechseln oder wegsehen. Die Moderation kann der Gruppe helfen, dranzubleiben und ihre gemeinsamen Ziele zu verfolgen.
+Eine weitere wichtige Aufgabe der Moderation ist es, darauf zu achten, dass die Gruppe lange genug bei einer Sache bleibt. Wenn etwas schwierig, unklar oder unangenehm wird, möchten Menschen oft zu früh aufgeben, zu einem anderen Thema wechseln oder wegsehen. Moderation kann der Gruppe helfen, dranzubleiben und ihre gemeinsamen Ziele zu verfolgen.
 
-Strukturierte Abläufe und Übungen zum Ordnen von Informationen sind dafür wichtige Werkzeuge. Einige Beispiele:
+Strukturierte Prozesse und Übungen zum Ordnen von Informationen sind dabei wichtige Moderationswerkzeuge. Einige Beispiele:
 
-* **Zeitbegrenzung** — einen festen Zeitraum für ein Brainstorming oder ein Gespräch über ein bestimmtes Thema festlegen.
-* **Themen der Tagesordnung priorisieren** — alles sammeln, worüber die Teilnehmenden sprechen möchten, und vor der inhaltlichen Diskussion die wichtigsten Punkte auswählen.
-* **Haftnotizen ordnen** — viele Ideen oder Fragen sammeln, thematisch gruppieren und zu Themen verdichten.
-* **Themenspeicher** — einen Platz für Ideen oder Fragen schaffen, die gerade nicht relevant sind und später aufgegriffen werden sollen.
-* **Woran erkennen wir Erfolg?** Erfolgskriterien festlegen und die Aufmerksamkeit der Gruppe darauf richten, bis sie erfüllt sind.
+* **Zeitliche Begrenzung** — einen Zeitraum für das Sammeln von Ideen oder das Gespräch über ein bestimmtes Thema festlegen.
+* **Tagesordnung priorisieren** — alles auflisten, worüber die Menschen sprechen möchten, und dann die wichtigsten Punkte auswählen, bevor die inhaltliche Arbeit beginnt.
+* **Haftnotizen sammeln und ordnen** — Ideen oder Fragen sammeln, thematisch gruppieren und anschließend zu Themen zusammenfassen.
+* **Themenspeicher** — ein Ort für aufkommende Ideen oder Fragen, die gerade nicht relevant sind und später behandelt werden sollen.
+* **Wie sieht Erfolg aus??** Erfolgskriterien festlegen und die Aufmerksamkeit der Gruppe darauf richten, bis diese Kriterien erfüllt sind.
 
 Auf Loomio
 
-* Eine der wichtigsten Möglichkeiten, Aufmerksamkeit auf Loomio zu steuern, sind thematisch getrennte Diskussionen. Dieses Format entstand schon früh in der Online-Kommunikation und wird bis heute häufig genutzt, weil es Aufmerksamkeit wirksam ordnet. Wenn das Thema oben auf der Seite steht, fällt es den meisten leicht, dabei zu bleiben.
-* Aktivität ist die Währung der Aufmerksamkeit auf Loomio. Jede Benachrichtigung beansprucht einen Teil davon. Auf Grundlage von Rückmeldungen der Nutzerinnen und Nutzer entscheidet die Software, welche Aktivitäten eine Benachrichtigung auslösen: etwa Kommentare, Stimmen und Fazits, aber keine „Gefällt mir“-Angabe zu einem Kommentar.
-* Über die Benachrichtigungseinstellungen können Nutzerinnen und Nutzer weitgehend selbst steuern, welche Aktivitäten auf Loomio ihre Aufmerksamkeit beanspruchen. Ihnen beim Einstellen dieser Vorlieben zu helfen, unterstützt einen bewussten Umgang mit der Aufmerksamkeit der Gruppe.
-* Untergruppen können helfen, Aufmerksamkeit gezielt einzusetzen. Wenn ein Thema nur einige Menschen betrifft, könnt ihr es in eine Untergruppe verlagern.
-* Dass auf Loomio nicht mehrere Vorschläge gleichzeitig laufen können, ist eine bewusste, wenn auch nicht bei allen beliebte Entscheidung. Sie hilft der Gruppe, einen Vorschlag vollständig zu bearbeiten, bevor sie zum nächsten übergeht.
+* Eine der wichtigsten Funktionen zum Lenken der Aufmerksamkeit in Loomio ist die Aufteilung von Diskussionen in thematisch abgegrenzte Threads. Es gibt einen Grund, warum dieses Format schon vor Jahrzehnten zu den ersten Formen der Online-Kommunikation gehörte und bis heute weit verbreitet ist: Es hilft sehr wirksam dabei, Aufmerksamkeit zu ordnen. Die meisten Menschen auf Loomio verstehen intuitiv, wie sie beim Thema bleiben, wenn es in großen Buchstaben oben auf der Seite steht.
+* Aktivität in Loomio ist die Währung seiner Aufmerksamkeitsökonomie. Alles, was eine Benachrichtigung erzeugt, verbraucht diese Währung. Auf Grundlage von Rückmeldungen wurde festgelegt, welche Aktivitäten als relevant gelten und Benachrichtigungen auslösen: zum Beispiel Kommentare, Stimmen und Fazits, aber keine „Gefällt mir“-Reaktion auf einen Kommentar.
+* Über die Benachrichtigungseinstellungen kannst du weitgehend selbst bestimmen, wie Loomio deine Aufmerksamkeit beansprucht. Menschen beim Anpassen dieser Einstellungen zu helfen, ist ein wichtiges Mittel, um mit der Aufmerksamkeit der Gruppe sinnvoll umzugehen.
+* Untergruppen können Menschen helfen, ihre Aufmerksamkeit gezielter einzusetzen. Wenn sich nur einige Personen mit etwas befassen müssen, kannst du es in eine Untergruppe auslagern.
+* Die bewusste, aber nicht besonders beliebte Entscheidung, in Loomio keine gleichzeitigen Vorschläge zuzulassen, soll die Aufmerksamkeit lenken: Die Gruppe soll einen Vorschlag vollständig bearbeiten, bevor sie zum nächsten übergeht.
 
-> Viele Menschen, die Informationssysteme gestalten, haben das Problem fälschlich als Mangel an Informationen statt als Mangel an Aufmerksamkeit verstanden. Deshalb entwickelten sie Systeme, die immer mehr Informationen bereitstellen. Gebraucht wurden jedoch Systeme, die unwichtige oder irrelevante Informationen gut herausfiltern. — **[Wikipedia](https://en.wikipedia.org/wiki/Attention_economy)**
+> Viele Menschen, die Informationssysteme entwarfen, betrachteten fälschlicherweise Informationsmangel statt Aufmerksamkeitsmangel als ihr Gestaltungsproblem. Deshalb entwickelten sie Systeme, die Menschen immer mehr Informationen bereitstellten. Gebraucht wurden jedoch Systeme, die unwichtige oder irrelevante Informationen wirksam herausfilterten. — **[Wikipedia](https://en.wikipedia.org/wiki/Attention_economy)**
 
 <!-- translation-section: facilitation-interventions -->
 
-## Moderierende Eingriffe
+## Interventionen in der Moderation
 
-Es gibt so viele Moderationstechniken wie Menschen, die moderieren. Ganze Bibliotheken wurden darüber geschrieben. Eine vollständige Liste möglicher Eingriffe ist daher nicht möglich.
+Es gibt so viele Moderationstechniken wie moderierende Menschen auf der Welt, und ganze Bibliotheken wurden zu diesem Thema geschrieben. Eine vollständige Liste von Interventionen lässt sich nicht erstellen.
 
-Es kann jedoch helfen, zwei Arten von Eingriffen zu unterscheiden:
+Es kann jedoch hilfreich sein, zwei Kategorien von Interventionen zu betrachten:
 
-1. **Unterstützende Eingriffe**: zur Beteiligung einladen, vertiefen, nachfragen, ermutigen, fördern, schützen und Raum schaffen.
-2. **Bestimmende Eingriffe**: bremsen, beenden, Grenzen setzen, unterbrechen, herausfordern, zum Thema zurückführen und unangemessenes Verhalten ausschließen.
+1. **Unterstützende Interventionen**: zu Beiträgen einladen, vertiefen, Gedanken hervorlocken, ermutigen, fördern, schützen, Raum schaffen.
+2. **Lenkende Interventionen**: einen Schritt zurückgehen, beenden, Grenzen setzen, unterbrechen, hinterfragen, auf Kurs bringen, unangemessenes Verhalten unterbinden.
 
-Fast alle Eingriffe aus der Moderation vor Ort lassen sich auch online einsetzen, wenn sie an das Format angepasst werden.
+Fast alle Interventionen aus der Moderation persönlicher Treffen lassen sich neu denken und online einsetzen.
 
-> Einzelne Personen direkt um einen Beitrag zu bitten, kann ihnen das Gefühl geben, wie ein Kind im Unterricht dazustehen, das die Antwort nicht weiß. Eine allgemeine Einladung an alle, die noch nichts gesagt haben, signalisiert den regelmäßig Beitragenden, sich zurückzuhalten. Zugleich gibt sie stilleren Menschen Gelegenheit, sich zu äußern. — Silvia Zuur
+> Einzelne Personen gezielt zu einem Beitrag aufzufordern, lässt sie nur fühlen wie das dumme Kind in der Klasse, das die Antwort nicht kennt. Eine allgemeine Einladung an Menschen, die noch nicht gesprochen haben, signalisiert dagegen den regelmäßigen Beitragenden, still zu bleiben, und gibt ruhigeren Menschen die Gelegenheit, sich einzubringen. — Silvia Zuur
 
 Auf Loomio
 
-* Zu den Werkzeugen für moderierende Eingriffe auf Loomio gehören Kommentare, @Erwähnungen, das Hinzufügen und Entfernen von Nutzerinnen und Nutzern sowie das Starten und Löschen von Diskussionen. Damit lassen sich unterstützende und bestimmende Eingriffe umsetzen.
-* Am häufigsten wird ein Kommentar genutzt: Du sprichst zur Gruppe, ermutigst zu einem Verhalten oder versuchst, es zu begrenzen.
-* [Berechtigungen zur Teilnahme](/en/user_manual/groups/settings/#permissions) bieten einfache, aber wirksame Möglichkeiten zur Moderation. Du kannst zum Beispiel festlegen, ob Nutzerinnen und Nutzer Diskussionen oder Vorschläge veröffentlichen dürfen.
-* Loomio bietet einige Funktionen, die auf Vertrauen beruhen und bei anderen Werkzeugen fehlen. Standardmäßig können alle Teilnehmenden die Beschreibung einer Diskussion bearbeiten, auch wenn jemand anderes sie ursprünglich geschrieben hat. Vorbilder dafür sind unter anderem Wikipedia und die Entwicklung quelloffener Software.
+* Zu den Werkzeugen für Interventionen auf Loomio gehören Kommentare, @Erwähnungen, das Hinzufügen oder Entfernen von Nutzenden und das Starten oder Löschen von Diskussionen. Sie können für verschiedene unterstützende und lenkende Interventionen eingesetzt werden.
+* Die häufigste Intervention ist der Kommentar: mit der Gruppe sprechen und zu einem bestimmten Verhalten einladen oder versuchen, es zu verringern.
+* [Beteiligungsberechtigungen](/en/user_manual/groups/settings/#permissions) bieten relativ grobe, aber wirksame Werkzeuge zur Moderation von Nutzenden. Du kannst damit etwa erlauben oder untersagen, Diskussionen oder Vorschläge zu veröffentlichen.
+* Loomio bietet einige vertrauensbasierte Funktionen, die anderen Werkzeugen fehlen. So können standardmäßig alle Teilnehmenden den Kontext einer Diskussion bearbeiten, auch wenn er ursprünglich von einer anderen Person veröffentlicht wurde. Als Vorbilder dienen unter anderem Wikipedia und die Entwicklung von Open-Source-Software.

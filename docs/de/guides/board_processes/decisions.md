@@ -1,10 +1,10 @@
 ---
 title: Beschlüsse fassen
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/guides/board_processes/decisions.md
+source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
+source_file: docs/en/guides/board_processes/decisions.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-30'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 6c619a2500c9b018
   on-loomio: fd8ae80ddea0ea14
@@ -16,104 +16,106 @@ sections:
   keeping-a-record-of-decisions-made-and-supporting-discussion: fe8d98d6b8d50a2a
   on-loomio-2: 5ef094900505a875
 generated:
-  introduction: b37e066d52a9f57e
-  on-loomio: 47ea09364a82564b
-  examples-of-out-of-session-decisions: 2fe3ac0cc0b8ff33
-  decision-about-property-purchase: 56b06f1c20daf47b
-  decision-to-accept-directors-and-officers-liability-insurance: 89a7ed440a974933
-  a-security-breach-has-occurred-at-one-of-our-facilities: 9a954321fc4fd51c
-  a-director-has-challenged-the-board-about-gender-and-diversity-of-board-membership: 351068e09f623206
-  keeping-a-record-of-decisions-made-and-supporting-discussion: c6fc1290f5c6f4ed
-  on-loomio-2: 56e1471614646115
+  introduction: a8f26422e61105b8
+  on-loomio: a353106174a8fbeb
+  examples-of-out-of-session-decisions: 4a26a859c0f2e45f
+  decision-about-property-purchase: 2393c77ecdc6c63f
+  decision-to-accept-directors-and-officers-liability-insurance: 8703500e2f9f5463
+  a-security-breach-has-occurred-at-one-of-our-facilities: 3fd6a31210897675
+  a-director-has-challenged-the-board-about-gender-and-diversity-of-board-membership: 3ce9748c198a2717
+  keeping-a-record-of-decisions-made-and-supporting-discussion: 90255e9612493498
+  on-loomio-2: 48b36354e97cbece
 title_source: 9a7f398684e7c05f
 title_generated: 80e5bda534914821
+needs_review:
+  on-loomio-2: use "Entscheidung" instead of "Abstimmung" for "decision"; use "Stimme" instead of "Abstimmung" for "vote"
 ---
 
 <!-- translation-section: introduction -->
 
 # Beschlüsse fassen und online entscheiden
 
-Vorstands- und Ausschussmitglieder müssen häufig Entscheidungen zwischen Sitzungen treffen. Das betrifft Entscheidungen und Beratungen zur Leitung der Organisation, wenn:
+Vorstands- und Ausschussmitglieder müssen häufig Entscheidungen außerhalb von Sitzungen treffen. Dabei geht es um Entscheidungen und Diskussionen zur Leitung der Organisation, wenn einer der folgenden Fälle vorliegt:
 
-- in der Vorstandssitzung nicht genug Zeit für eine Entscheidung war,
-- die Entscheidung wenig Diskussion erfordert, etwa bei Verwaltungsfragen,
-- ein internes oder externes Ereignis erfordert, dass der Vorstand vor der nächsten Sitzung handelt,
-- ein Vorstandsmitglied ein bestimmtes Thema mit dem Vorstand besprechen möchte.
+- In der Vorstandssitzung war nicht genügend Zeit, um eine Entscheidung zu treffen,
+- die Entscheidung erfordert wenig Diskussion (einschließlich Verwaltungsentscheidungen),
+- intern oder extern ist etwas geschehen, das ein Handeln des Vorstands vor der nächsten Sitzung erfordert,
+- ein Vorstandsmitglied möchte ein bestimmtes Anliegen mit dem Vorstand besprechen.
 
 <!-- translation-section: on-loomio -->
 
 ## Auf Loomio
-Starte eine **Diskussion**:
-- Stelle das Thema oder die anstehende Entscheidung vor,
-- lade die Vorstandsmitglieder ein, ihre Gedanken, Meinungen und Informationen zu teilen, damit alle ihre Sicht auf das Thema oder die Entscheidung zwischen den Sitzungen verstehen können,
-- ermutige die Mitglieder, sich mit Beiträgen und Antworten auf Kommentare zu beteiligen.
+Starte einen **Thread** und eröffne eine Diskussion:
+- Stelle das Thema oder die Entscheidung vor, die du treffen möchtest,
+- lade die Vorstandsmitglieder ein, ihre Gedanken, Meinungen und verfügbaren Informationen in Kommentaren zu teilen, damit alle ihre Sicht auf das Thema oder die Entscheidung außerhalb der Sitzung verstehen können,
+- ermutige die Mitglieder, sich mit Kommentaren oder Antworten auf Kommentare zu beteiligen.
 
-Wenn ihr bereit seid, starte eine **Abstimmung** und lade die Mitglieder zur Stimmabgabe ein. 
-Bei einer einfachen Frage nutze einen **Vorschlag**. Bei einer komplexeren Frage kannst du mit einer **Sinnesprüfung** erfragen, wie die anderen Mitglieder zum Vorschlag stehen.
-- Formuliere die Entscheidung und lade zur Abstimmung ein,
-- bitte die Mitglieder, ihre Stimme zu begründen, besonders wenn sie einzelne Punkte erläutern möchten,
-- wähle Abstimmungsoptionen, die zum Entscheidungsverfahren deines Vorstands passen.
-- Ihr könnt die Entscheidung zwischen den Sitzungen bei der nächsten Vorstandssitzung bestätigen und protokollieren.
+Wenn alles bereit ist, starte eine **Abstimmung** und lade die Mitglieder ein, abzustimmen.
+Bei einer einfachen Frage nutze einen **Vorschlag**. Bei einer komplexeren Frage nutze eine **Stimmungsbild**-Abstimmung, um die anderen Mitglieder gezielt nach ihrer Haltung zum Vorschlag zu fragen.
+- Formuliere die anstehende Entscheidung und lade die Beteiligten ein, abzustimmen,
+- bitte die Beteiligten, eine Begründung für ihre Stimme anzugeben, besonders wenn sie einzelne Punkte einschränken oder präzisieren möchten,
+- wähle die Optionen, die zu den Entscheidungsverfahren deines Vorstands passen.
+- Du kannst die außerhalb der Sitzung getroffene Entscheidung bei der nächsten Vorstandssitzung bestätigen und im Protokoll festhalten.
 
-Wenn keine Einigung zustande kommt, ist das kein Scheitern. Frage die Mitglieder, welche Änderungen ihnen eine Zustimmung ermöglichen würden. So könnt ihr den Vorschlag verbessern. Ein neuer Vorschlag mit diesen Änderungen hat bessere Chancen auf Zustimmung.
+Wenn eine Entscheidung keine Zustimmung erhält, ist das kein Scheitern. Du kannst die Mitglieder fragen, welche Änderungen nötig wären, damit sie der Entscheidung zustimmen können. So kannst du eine bessere Entscheidung erarbeiten. Ein neuer Vorschlag mit entsprechenden Änderungen hat dann eher Aussicht auf Zustimmung.
 
-Teile ein **Fazit**, wenn der Vorschlag geschlossen wird. Informiere alle über die Entscheidung und die nächsten Schritte.
+Halte ein **Fazit** fest, wenn die Abstimmung über den Vorschlag beendet ist. Teile allen mit, wie die Entscheidung ausgefallen ist und was als Nächstes geschieht.
 
 ![](thread_funding.png#width-90)
 
 <!-- translation-section: examples-of-out-of-session-decisions -->
 
-## Beispiele für Entscheidungen zwischen Sitzungen
+## Beispiele für Entscheidungen außerhalb von Sitzungen
 
 <!-- translation-section: decision-about-property-purchase -->
 
 ### Entscheidung über einen Immobilienkauf
-In der letzten Vorstandssitzung wurde ein Immobilienkauf besprochen. Ein Vorstandsmitglied verlangte vor der Entscheidung ein unabhängiges technisches Gutachten. Der Vorstand stimmte dem Kauf unter der Voraussetzung zu, dass das Gutachten zufriedenstellend ausfällt. Da der Kauf vor der nächsten Sitzung erfolgen muss, vereinbarte der Vorstand, das Gutachten nach Fertigstellung auf Loomio hochzuladen, dort zu besprechen und die endgültige Entscheidung über den Kauf auf Loomio zu treffen.
+Bei der letzten Vorstandssitzung wurde ein Immobilienkauf besprochen. Ein Vorstandsmitglied verlangte vor der Entscheidung ein unabhängiges technisches Gutachten. Der Vorstand beschloss in der Sitzung, die Immobilie zu kaufen, sofern das Gutachten zufriedenstellend ausfällt. Da der Kauf jedoch vor der nächsten Vorstandssitzung erfolgen muss, vereinbarte der Vorstand, das fertige Gutachten auf Loomio hochzuladen, dort zu besprechen und die endgültige Entscheidung über den Immobilienkauf auf Loomio zu treffen.
 
 <!-- translation-section: decision-to-accept-directors-and-officers-liability-insurance -->
 
-### Entscheidung über den Abschluss einer Organhaftpflichtversicherung
-In der Vorstandssitzung wurde darauf hingewiesen, dass die jährliche Verlängerung der Versicherung ansteht. Da dies als Verwaltungsangelegenheit galt, beschloss der Vorstand, den Verlängerungsantrag auf Loomio zu besprechen, die erforderlichen Angaben von allen Vorstandsmitgliedern einzuholen, den Antrag einzureichen und das Angebot zur Verlängerung anzunehmen.
+### Entscheidung über die Verlängerung einer D&O-Haftpflichtversicherung
+Während der Vorstandssitzung wurde darauf hingewiesen, dass die jährliche Verlängerung der Versicherung ansteht. Da dies als Verwaltungsangelegenheit betrachtet wurde, vereinbarte der Vorstand, auf Loomio den Verlängerungsantrag zu besprechen, die erforderlichen Informationen von jedem Vorstandsmitglied einzuholen, den Antrag einzureichen und das Angebot zur Versicherungsverlängerung anzunehmen.
 
 <!-- translation-section: a-security-breach-has-occurred-at-one-of-our-facilities -->
 
-### Sicherheitsvorfall an einem unserer Standorte
-Bei einem Einbruch wurden Gegenstände gestohlen. Dadurch sind die Organisation und ihre Mitarbeitenden gefährdet. Die Vorstandsmitglieder müssen über den Vorfall und die Risiken informiert werden und eine angemessene Reaktion prüfen.
+### In einer unserer Einrichtungen gab es einen Sicherheitsvorfall
+Ein Einbruch und der Diebstahl von Eigentum haben die Organisation und ihre Mitarbeitenden gefährdet. Die Vorstandsmitglieder müssen über den Vorfall und die Risiken informiert werden und eine angemessene Reaktion prüfen.
 
 <!-- translation-section: a-director-has-challenged-the-board-about-gender-and-diversity-of-board-membership -->
 
-### Ein Vorstandsmitglied spricht die Geschlechterverteilung und Vielfalt im Vorstand an
-Das Vorstandsmitglied hat gute Gründe und Belege dafür vorgebracht, dass der Vorstand vielfältiger besetzt sein sollte, um die Organisation besser zu repräsentieren. Die Vorstandsmitglieder müssen die Informationen prüfen, Fragen stellen, das Thema besprechen und über eine Antwort entscheiden.
+### Ein Vorstandsmitglied hat die Geschlechterverteilung und Vielfalt im Vorstand zur Diskussion gestellt
+Das Vorstandsmitglied hat nachvollziehbare Begründungen und Belege dafür vorgelegt, dass der Vorstand vielfältiger zusammengesetzt sein sollte, um die Organisation besser zu repräsentieren. Die Vorstandsmitglieder müssen sich mit den Informationen auseinandersetzen, Fragen stellen, das Thema diskutieren und über eine Reaktion entscheiden.
 
 ![](thread_insurance.png#width-90)
 
 <!-- translation-section: keeping-a-record-of-decisions-made-and-supporting-discussion -->
 
-## Entscheidungen und zugehörige Diskussionen dokumentieren
+## Getroffene Entscheidungen und zugehörige Diskussionen dokumentieren
 
-Für Vorstände ist die Dokumentation gesetzlich vorgeschrieben. Auch für Ausschüsse ist sie eine bewährte Praxis.
+Für Vorstände ist die Dokumentation gesetzlich vorgeschrieben, für Ausschüsse ist sie gute Praxis.
 
-Viele Organisationen erfassen und speichern heute Protokolle, Beschlüsse, Richtlinien und wichtige Entscheidungen elektronisch. Dokumente werden erstellt und genehmigt, verteilt und genutzt, aufbewahrt und schließlich gelöscht.
+Viele Organisationen dokumentieren und speichern heute formelle Protokolle, Beschlüsse, Richtlinien und wichtige Entscheidungen elektronisch. Dokumente werden erstellt und genehmigt, verteilt und genutzt, aufbewahrt und gespeichert und schließlich entsorgt.
 
 <!-- translation-section: on-loomio-2 -->
 
 ### Auf Loomio
-Protokolle, Berichte, Beschlüsse und andere Dokumente kannst du an eine **Diskussion** zu einer Sitzung anhängen: im Diskussionskontext, innerhalb einer Abstimmung oder an einen Kommentar. So bleiben die Dokumente mit der jeweiligen Diskussion verbunden.
+Protokolle, Berichte, Beschlüsse und andere Dokumente können im Kontext eines Sitzungs-**Threads**, in einer Abstimmung oder in einem Kommentar im Thread angehängt werden. So bleiben die Dokumente immer mit der zugehörigen Diskussion verknüpft.
 
-Eine Liste der Dateien findest du auch unter **Dokumente**.
+Eine Liste der Dateien findest du auch im Tab **Dokumente**.
 
 ![](files_tab.png#width-90)
 
-Du kannst in jeder Diskussion oder Abstimmung auch einen Link zu einem Dokument in deinem bevorzugten Dokumentenverwaltungssystem einfügen. Suche den teilbaren Link zum Dokument, kopiere ihn und füge ihn in die Diskussion, Abstimmung oder einen Kommentar ein.
+Du kannst außerdem in jedem Thread oder jeder Abstimmung einen Link zu einem Dokument einfügen, das in deinem bevorzugten Dokumentenverwaltungssystem gespeichert ist. Suche den Freigabelink zum Dokument, kopiere ihn und füge ihn in deinen Thread, deine Abstimmung oder deinen Kommentar ein.
 
-Alle Personen mit entsprechender Berechtigung können das Dokument dann über den Link öffnen und lesen.
+Alle mit der entsprechenden Berechtigung können dann auf den Link klicken, um das Dokument zu öffnen und zu lesen.
 
 ![](thread_link.png#width-90)
 
-Diskussionen und Entscheidungen sind auf Loomio bereits dokumentiert. So kannst du die Entscheidungen deines Vorstands nachvollziehen und leicht zeigen, was wann beschlossen wurde. Wenn die Vorstandsmitglieder einen Beschluss besprochen, kommentiert und darüber abgestimmt haben, kannst du auch nachvollziehen, wie und warum die Entscheidung zustande kam.
+Da Diskussionen und Entscheidungen auf Loomio bereits dokumentiert sind, kannst du die Entscheidungsprozesse deines Vorstands zuverlässig nachvollziehen. Du kannst leicht belegen, was wann entschieden wurde. Wenn Vorstandsmitglieder einen Beschluss diskutiert, kommentiert und ihre Stimme dazu abgegeben haben, kannst du auch nachvollziehen, wie und warum jede Entscheidung zustande kam.
 
-Mit der Zeit entsteht eine Chronik deiner Organisation, in der du frühere Entscheidungen und zugehörige Diskussionen leicht suchen und finden kannst.
+Mit der Zeit entsteht eine Chronik deiner Organisation, in der du frühere Entscheidungen und die zugehörigen Diskussionen leicht suchen und finden kannst.
 
 ![](thread_search.png#width-90)
 
-Auf Loomio werden alle Daten auf mehreren Datenträgern und an mehreren Standorten *in der Cloud* gespeichert und täglich gesichert. Hochgeladene Dateien liegen auf Servern, die mit modernen Verfahren Engpässe und einzelne Ausfallpunkte vermeiden.
+Auf Loomio werden alle Daten auf mehreren Datenträgern an mehreren Standorten *in der Cloud* gespeichert und täglich gesichert. Hochgeladene Dateien werden auf Servern gespeichert, die moderne Verfahren einsetzen, um Engpässe und Ausfallstellen zu vermeiden.

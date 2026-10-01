@@ -1,10 +1,10 @@
 ---
 title: Inhalte finden
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/overview/finding-content.md
+source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
+source_file: docs/en/user_manual/overview/finding-content.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 91ceec48c5d29a37
   search: 514f599496d28353
@@ -15,78 +15,80 @@ sections:
   polls-awaiting-your-vote: 037bf208ec166e84
   bookmarks: 06b79827757caeeb
 generated:
-  introduction: 785ebee81e88cc8e
-  search: f6d173031fbc8f62
-  search-tips: 8b156dc9d9e4bc7a
-  filter-discussions: 64f119d6d548dcae
-  category-tags: 7a0dcf457c41081d
-  unread-discussions: da94653676a3deb9
-  polls-awaiting-your-vote: f97f38dcf19fa7d6
-  bookmarks: c90ca5e973d0613e
+  introduction: 4e633afc9317ad6a
+  search: 297053715280e21f
+  search-tips: ab8817e3c5df4be5
+  filter-discussions: 70155d7e42f8af43
+  category-tags: 7dfb0d079429553c
+  unread-discussions: 2bfc622d985e22f4
+  polls-awaiting-your-vote: 3dbe915779869dec
+  bookmarks: b4177a1e490d5f98
 title_source: 11acd4c6010fc176
 title_generated: 7c17d11d2290cb79
+needs_review:
+  bookmarks: use "Stimme" instead of "Abstimmung" for "vote"
 ---
 
 <!-- translation-section: introduction -->
 
 # Inhalte finden
 
-Loomio bietet dir mehrere Möglichkeiten, Diskussionen und Entscheidungen in deinen Gruppen zu finden.
+Loomio bietet mehrere Möglichkeiten, Diskussionen und Entscheidungen in all deinen Gruppen zu finden.
 
 <!-- translation-section: search -->
 
 ## Suche
 
-Über die Schaltfläche „Suchen“ in der oberen Navigationsleiste kannst du von jeder Loomio-Seite aus die globale Suche öffnen.
+Die Schaltfläche Suche in der oberen Navigationsleiste öffnet die globale Suche von jeder Seite in Loomio aus.
 
 ![](search_button.png)
 
-Die Suche umfasst Inhalte, auf die du in deinen Gruppen und direkten Diskussionen zugreifen kannst. Sie findet Diskussionstitel und Beschreibungen, Kommentare, Abstimmungen, Stimmen und Fazits.
+Die Suche umfasst Inhalte, auf die du in all deinen Gruppen und direkten Diskussionen zugreifen kannst. Sie findet Diskussionstitel und Kontext, Kommentare, Abstimmungen, Stimmen und Fazits.
 
-Gib ein Wort oder eine Wortgruppe ein und drücke die Eingabetaste oder wähle das Suchsymbol. Wenn du zum Beispiel nach **bottle** suchst, findest du Inhalte der Oatmilk Cooperative mit diesem Wort.
+Gib ein Wort oder eine Wortgruppe ein und drücke dann die Eingabetaste oder wähle das Suchsymbol. Eine Suche nach **bottle** findet beispielsweise Inhalte der Oatmilk Cooperative, die dieses Wort enthalten.
 
 ![](search_strategy.png)
 
 <!-- translation-section: search-tips -->
 
-### Tipps für die Suche
+### Tipps zur Suche
 
 - Beginne mit einem oder zwei markanten Wörtern aus dem Titel oder Inhalt, an die du dich erinnerst.
-- Die Suche erkennt Wortanfänge. Ein Wortteil wie **bott** kann daher **bottle** finden. 
-- Wenn es für deine Suchanfrage nur sehr wenige Ergebnisse gibt, berücksichtigt die Suche auch mögliche Tippfehler.
-- Nutze die Filter, um die Ergebnisse auf eine Organisation, Untergruppe, ein Schlagwort oder eine Inhaltsart wie Kommentare oder Abstimmungen einzugrenzen.
-- Sortiere nach **Bester Treffer**, wenn du die relevantesten Ergebnisse zuerst sehen möchtest. Wenn du ungefähr weißt, wann der Inhalt veröffentlicht wurde, sortiere nach den neuesten oder ältesten Einträgen.
+- Die Suche berücksichtigt Wortanfänge, sodass ein Wortteil wie **bott** auch **bottle** finden kann.
+- Wenn es nur sehr wenige Ergebnisse für die Suchanfrage gibt, gleicht die Suche Rechtschreibfehler aus.
+- Verwende die Filter, um die Ergebnisse auf eine Organisation, Untergruppe, ein Schlagwort oder einen Inhaltstyp wie Kommentare oder Abstimmungen einzugrenzen.
+- Sortiere nach **Bester Treffer**, wenn die Relevanz wichtig ist, oder nach den neuesten oder ältesten Inhalten, wenn du ungefähr weißt, wann der Inhalt veröffentlicht wurde.
 
 <!-- translation-section: filter-discussions -->
 
 ## Diskussionen filtern
 
-Mit den Steuerelementen neben der Suche kannst du Diskussionen nach offenem oder geschlossenem Status oder nach Schlagwort filtern. Kombiniere einen Suchbegriff mit einem Filter, um eine lange Liste von Diskussionen schnell einzugrenzen.
+Verwende die Bedienelemente neben der Suche, um Diskussionen nach ihrem offenen oder geschlossenen Status oder nach einem Kategorie-Schlagwort zu filtern. Die Kombination aus Suchbegriff und Filter kann eine lange Liste von Diskussionen schnell eingrenzen.
 
 <!-- translation-section: category-tags -->
 
-## Schlagwörter
+## Kategorie-Schlagwörter
 
-Schlagwörter fassen zusammengehörige Diskussionen und Abstimmungen unter Namen zusammen, die deine Gruppe festlegt, zum Beispiel für ein Projekt, ein Team oder einen Arbeitsbereich.
+Schlagwörter bündeln zusammengehörige Diskussionen und Abstimmungen unter Bezeichnungen, die deine Gruppe wählt, etwa für ein Projekt, ein Team oder einen Arbeitsbereich.
 
 ![](tags.png)
 
-Wähle im Tab **Diskussionen** ein Schlagwort aus, um passende Diskussionen anzuzeigen. Personen, die Diskussionen starten oder bearbeiten dürfen, können Schlagwörter vergeben. Unter [Schlagwörter](/en/user_manual/discussions/tags) erfährst du mehr über die Einrichtung und Berechtigungen.
+Wähle im Tab **Diskussionen** ein Schlagwort aus, um passende Diskussionen anzuzeigen. Personen mit der Berechtigung, Diskussionen zu starten oder zu bearbeiten, können Schlagwörter zuweisen. Einzelheiten zur Einrichtung und zu den Berechtigungen findest du unter [Kategorie-Schlagwörter](/en/user_manual/discussions/tags).
 
 <!-- translation-section: unread-discussions -->
 
 ## Ungelesene Diskussionen
 
-Wähle in der Seitenleiste **Ungelesene Diskussionen**, um Diskussionen mit Aktivitäten zu sehen, die du noch nicht gelesen hast. In einer Diskussion hilft dir die Zeitleiste, ungelesene Beiträge und wichtige Ereignisse zu finden.
+Wähle **Ungelesene Diskussionen** in der Seitenleiste, um Diskussionen mit Aktivitäten anzuzeigen, die du noch nicht gelesen hast. Innerhalb einer Diskussion hilft dir die Zeitleiste, zu ungelesenen Einträgen und wichtigen Ereignissen zu springen.
 
 <!-- translation-section: polls-awaiting-your-vote -->
 
-## Abstimmungen, bei denen deine Stimme aussteht
+## Abstimmungen, die auf deine Stimme warten
 
-Wähle in der Seitenleiste **Umfragen zum Abstimmen**, um laufende Abstimmungen zu sehen, zu denen du eingeladen wurdest und bei denen du noch nicht abgestimmt hast. Im Tab **Abstimmungen** einer Gruppe findest du deren laufende und abgeschlossene Abstimmungen.
+Wähle **Umfragen zum Abstimmen** in der Seitenleiste, um aktive Abstimmungen anzuzeigen, zu denen du eingeladen wurdest, bei denen du aber noch nicht abgestimmt hast. Du kannst auch den Tab **Abstimmungen** einer Gruppe öffnen, um ihre aktiven und beendeten Abstimmungen anzuzeigen.
 
 <!-- translation-section: bookmarks -->
 
 ## Lesezeichen
 
-Setze ein Lesezeichen für eine Diskussion, einen Kommentar, eine Abstimmung, eine Stimme oder ein Fazit, wenn du später darauf zurückkommen möchtest. Öffne **Lesezeichen** in deinem Benutzermenü, um alle gespeicherten Inhalte zu sehen. Weitere Informationen findest du unter [Lesezeichen](/en/user_manual/users/bookmarks).
+Setze ein Lesezeichen für eine Diskussion, einen Kommentar, eine Abstimmung, eine Stimme oder ein Fazit, wenn du später darauf zurückkommen möchtest. Öffne **Lesezeichen** in deinem Benutzermenü, um alles zu sehen, was du gespeichert hast. Weitere Informationen findest du unter [Lesezeichen](/en/user_manual/users/bookmarks).

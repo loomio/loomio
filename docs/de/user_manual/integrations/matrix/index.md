@@ -1,14 +1,14 @@
 ---
 title: Matrix
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/integrations/matrix/index.md
+source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
+source_file: docs/en/user_manual/integrations/matrix/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-30'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: e54de0b6d9ea9ffb
 generated:
-  introduction: d268fdfb28208bac
+  introduction: 0ad9094152e66e2c
 title_source: 76a2171c057b730f
 title_generated: 76a2171c057b730f
 ---
@@ -17,30 +17,30 @@ title_generated: 76a2171c057b730f
 
 # Matrix-Integration
 
-Loomio kann Benachrichtigungen an deine Matrix-Räume senden, wenn neue Diskussionen, Vorschläge, Kommentare, Stimmen und Fazits hinzukommen.
+Loomio kann Benachrichtigungen an deine Matrix-Kanäle senden, wenn neue Diskussionen, Vorschläge, Kommentare, Stimmen und Fazits hinzugefügt werden.
 
-Matrix unterstützt HTML im Chatraum. Loomio nutzt das für die Benachrichtigungen.
+Matrix erlaubt die Verwendung einiger HTML-Elemente im Chatraum. Loomio nutzt diese Möglichkeit.
 
-Die Matrix-Integration funktioniert anders als unsere anderen Chat-Integrationen: Sie verwendet keinen Webhook, sondern einen eigens dafür entwickelten Bot-Client.
+Unsere Matrix-Integration unterscheidet sich etwas von unseren anderen Chat-Integrationen: Sie verwendet keinen Webhook. Dafür haben wir einen eigenen Bot-Client entwickelt.
 
-Erstelle einen Matrix-Benutzer, mit dem sich der Bot anmelden kann.
+Erstelle ein Matrix-Konto, mit dem sich der Bot anmelden kann.
 
-Melde dich nach dem Erstellen mit diesem Benutzerkonto an, um die folgenden Angaben zu finden.
+Melde dich nach dem Erstellen mit diesem Konto an, um die folgenden Informationen abzurufen.
 
-In dieser Anleitung verwenden wir Element.
+Für diese Anleitung verwenden wir Element.
 
 ---
 
 Füge in deiner Loomio-Gruppe eine Matrix-Chat-Integration hinzu
-![Menü für den Loomio-Matrix-Bot](loomio-add-matrix-bot.png)
+![Menü zum Hinzufügen eines Matrix-Bots in Loomio](loomio-add-matrix-bot.png)
 
 Fülle dieses Formular aus
-![Formular für den Loomio-Matrix-Bot](loomio-matrix-bot-form.png)
+![Formular für den Matrix-Bot in Loomio](loomio-matrix-bot-form.png)
 
-Hier beginnt die Suche nach deinem Zugriffstoken
+Hier beginnst du die Suche nach deinem Zugriffstoken
 ![Matrix-Einstellungsmenü](matrix-settings-menu.png)
 
-Das ist die Einstellungsseite
+Hier ist die Einstellungsseite
 ![Matrix-Einstellungen](matrix-settings.png)
 
 Hier findest du das Zugriffstoken
@@ -49,5 +49,5 @@ Hier findest du das Zugriffstoken
 Jetzt brauchst du die Raum-ID
 ![Matrix-Raumeinstellungen](matrix-room-settings.png)
 
-Hier findest du sie.
+Hier findest du sie
 ![Matrix-Raum-ID](matrix-room-id.png)

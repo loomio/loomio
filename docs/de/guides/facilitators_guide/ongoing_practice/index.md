@@ -1,10 +1,10 @@
 ---
 title: Kontinuierliche Praxis
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/guides/facilitators_guide/ongoing_practice/index.md
+source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
+source_file: docs/en/guides/facilitators_guide/ongoing_practice/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-30'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 7bc759fcb1aad21e
   continuous-improvement: 63ab99fd05c7fe85
@@ -14,11 +14,11 @@ sections:
   culture-change: 22420d1e20a424ba
 generated:
   introduction: 7c10e45ad51b3c51
-  continuous-improvement: 55785c9193a7ca7a
-  distributed-facilitation-self-facilitation: a0a222b72a26f51f
-  translating-this-into-loomio: bfbd7db8b1878669
-  the-art-of-being-facilitated: 23c49629f9b69af5
-  culture-change: 451c39a3e9b018cb
+  continuous-improvement: 556ef1adb0064f5a
+  distributed-facilitation-self-facilitation: 592143defe87ef64
+  translating-this-into-loomio: ce650e30b9ffde5a
+  the-art-of-being-facilitated: '08b44accf6b56a8e'
+  culture-change: 94e6d5c6fa2fd9be
 title_source: 98f1cbf7fd6448a5
 title_generated: 5455ab625b1b107c
 ---
@@ -33,76 +33,76 @@ title_generated: 5455ab625b1b107c
 
 ## Kontinuierliche Verbesserung
 
-Auch eine sehr erfahrene Gruppe oder Moderation kann sich weiterentwickeln. Viele kleine Schritte in die richtige Richtung führen zu Verbesserungen. Dafür braucht es eine gute Möglichkeit, über die Zusammenarbeit selbst zu sprechen. So kann die Gruppe erkennen, was funktioniert und was sie ändern möchte. Ohne solche Gespräche bleibt sie leicht stehen.
+Auch eine sehr erfahrene Gruppe oder moderierende Person kann sich weiter verbessern. Kleine Schritte in die richtige Richtung führen zu besseren Ergebnissen. Schrittweise Verbesserung braucht einen wirksamen Rahmen für Gespräche darüber, wie ihr zusammenarbeitet. Damit ist vieles möglich. Ohne ihn stagniert ihr.
 
-Es gibt viele Wege, sich kontinuierlich zu verbessern. Sie alle schaffen Raum für Reflexion und Rückmeldungen und ermöglichen Veränderungen. Teams, die dauerhaft zusammenarbeiten, können eine Methode wie <a href="https://en.wikipedia.org/wiki/Scrum_(software_development)" target="_blank">Scrum</a> nutzen, mit Rückblicken und regelmäßigen Verbesserungen ihrer Abläufe. Nach einer einzelnen Veranstaltung kann die Moderation einfach um Rückmeldungen bitten.
+Es gibt viele Ansätze zur kontinuierlichen Verbesserung. Sie alle schaffen Raum für Reflexion und Feedback sowie Möglichkeiten, darauf mit Veränderungen zu reagieren. Teams, die dauerhaft zusammenarbeiten, können eine Methode wie <a href="https://en.wikipedia.org/wiki/Scrum_(software_development)" target="_blank">Scrum</a> nutzen, einschließlich Retrospektiven und regelmäßiger Prozessverbesserungen. Nach einem einzelnen Treffen kann die moderierende Person einfach um Feedback bitten.
 
 Auf Loomio
 
-* Menschen nutzen Loomio, um darüber zu sprechen, wie sie Loomio nutzen. So können sie ihre Gespräche und Abläufe gemeinsam betrachten.
-* Wenn Gruppen Loomio nutzen, denken sie über viele Aspekte ihrer Zusammenarbeit und Entscheidungsfindung nach. Das eröffnet Möglichkeiten zur Verbesserung.
+* Menschen nutzen Loomio selbst, um darüber zu sprechen, wie sie Loomio verwenden. Die Plattform bietet einen naheliegenden Ort, um „über das Sprechen zu sprechen“.
+* Der Einstieg in Loomio regt Gruppen dazu an, viele Aspekte ihrer Zusammenarbeit und ihrer Entscheidungsprozesse zu reflektieren. Das schafft Möglichkeiten zur Verbesserung.
 
 <!-- translation-section: distributed-facilitation-self-facilitation -->
 
 ## Verteilte Moderation / Selbstmoderation
 
-Wenn eine Gruppe Erfahrung sammelt, können mehr Mitglieder Moderationsaufgaben übernehmen. Moderation muss dann nicht mehr die Rolle einer bestimmten Person sein. Sie kann zu einer Aufgabe werden, die mehrere Menschen teilen. Alle können zur Moderation beitragen. Dabei entsteht ein Wechselspiel aus Anleiten und Folgen, Geben und Nehmen. Für Gruppen, die gemeinsame Führung und flache Hierarchien anstreben, ist es wichtig, das zu fördern.
+Je mehr Erfahrung eine Gruppe sammelt, desto mehr Menschen entwickeln Fähigkeiten zur Moderation. Moderation muss dann keine Rolle mehr sein, die eine bestimmte Person übernimmt, sondern kann zu einer Aufgabe werden, die sich verteilen lässt. Alle können moderierend tätig werden. Unter den Teilnehmenden kann sich ein Zusammenspiel von Geben und Nehmen, Führen und Folgen entwickeln. Für Gruppen, die geteilte Führung und eine Zusammenarbeit ohne Hierarchien anstreben, ist es besonders wichtig, dies zu fördern.
 
-Wer noch wenig Erfahrung mit Moderationsaufgaben hat, kann durch Schulungen, Einladungen und Vorschläge für erste Schritte unterstützt werden. Fast alle können zum Beispiel Folgendes ausprobieren:
+Menschen, die weniger Erfahrung mit Moderation haben, lassen sich durch Schulungen, Einladungen und Vorschläge für erste Schritte unterstützen. Hier sind einige moderierende Handlungen, die fast alle ausprobieren können:
 
-* Gehörtes wiedergeben oder zusammenfassen
-* Andere einladen, sich einzubringen
+* Wiedergeben oder zusammenfassen, was du hörst
+* Andere einladen, etwas beizutragen
 * Fragen stellen, die das gemeinsame Verständnis vertiefen
 * Darauf achten, wer sich beteiligt und wer nicht
 * Beiträge ausdrücklich würdigen
 
-> <img style="border-radius: 100%; float: right; margin-left: 0.5em; max-width: 96px; " src="../silvia_200.png"> Du brauchst keine Tagesordnung, um eine Gruppe zu moderieren. Moderation bedeutet, es einer Gruppe leichter zu machen, miteinander umzugehen. Wenn du das nächste Mal bei einem Familientreffen, einer Feier oder einer Kaffeerunde bist, geh die Situation wie eine Moderation an: Achte darauf, dass sich alle einbezogen fühlen und mitmachen können. — Silvia Zuur
+> <img style="border-radius: 100%; float: right; margin-left: 0.5em; max-width: 96px; " src="../silvia_200.png"> Du brauchst keine Tagesordnung, um zu moderieren. Moderation bedeutet einfach, das Miteinander in einer Gruppe zu erleichtern. Wenn du das nächste Mal bei einem Familientreffen, einer Feier oder einer gemeinsamen Teepause bist: Geh mit dem Blick einer moderierenden Person heran und sorge dafür, dass sich alle in der Gruppe einbezogen fühlen und beteiligen können. — Silvia Zuur
 
-Verteilte Moderation kann sehr gut funktionieren. Sie kann aber auch dazu führen, dass sich Menschen gegenseitig ins Wort fallen oder in die Quere kommen. Am Anfang ist das Zusammenspiel oft ungewohnt. Wichtig ist die Unterscheidung zwischen verteilter Moderation (Mitglieder unterstützen die Gruppe), „Facipulation“ (jemand lenkt die Gruppe zugunsten eigener Ziele) und ungefragter Moderation (jemand übernimmt Moderationsaufgaben ohne entsprechenden Auftrag).
+Verteilte Moderation kann sehr gut funktionieren, aber auch dazu führen, dass sich Menschen gegenseitig in die Quere kommen. Anfangs ist das Zusammenspiel oft unbeholfen, weil es erst gelernt werden muss. Es ist wichtig, zwischen verteilter Moderation (Gleichgestellte unterstützen die Gruppe), „Facipulation“ (die Gruppe zugunsten eigener Ziele manipulieren) und ungefragter Moderation (ohne entsprechenden Auftrag moderierend eingreifen) zu unterscheiden.
 
-Entscheide bewusst, wann Moderation durch Gruppenmitglieder sinnvoll ist und wann eine bestimmte Person moderieren sollte. Bei einer konfliktreichen Diskussion kann zum Beispiel eine ausdrücklich benannte neutrale Person nötig sein. Auch wenn Vertrauen fehlt, funktioniert verteilte Moderation möglicherweise nicht.
+Entscheide bewusst, wann gegenseitige Moderation sinnvoll ist und wann eine bestimmte Person die Moderation übernehmen sollte. In manchen Situationen funktioniert verteilte Moderation möglicherweise nicht, etwa bei einer konfliktreichen Diskussion, die eine benannte neutrale Person braucht, oder wenn Vertrauen fehlt.
 
-> <img style="border-radius: 100%; float: right; margin-left: 0.5em; max-width: 96px; " src="../rich_200.png"> Moderationsaufgaben sind nicht nur Sache der Führungskraft oder der Person, die das Treffen einberufen hat — alle können sie übernehmen. — Richard Bartlett
+> <img style="border-radius: 100%; float: right; margin-left: 0.5em; max-width: 96px; " src="../rich_200.png"> Moderierende Handlungen sind nicht nur Aufgabe der Führungskraft oder der Person, die das Treffen einberufen hat — alle können sie übernehmen. — Richard Bartlett
 
 <!-- translation-section: translating-this-into-loomio -->
 
-## So lässt sich das auf Loomio übertragen
+## Umsetzung auf Loomio
 
-* Online eignet sich verteilte Moderation besonders gut. Verschiedene Menschen können sich zu unterschiedlichen Zeitpunkten einbringen, je nachdem, was ihnen auffällt und welche Fähigkeiten sie haben.
-* Eine Online-Diskussion ist zunächst eine Zusammenarbeit unter Gleichgestellten. Eine andere Rollenverteilung muss bewusst gestaltet werden. Bei Treffen vor Ort ist es oft umgekehrt: Jemand beruft das Treffen ein, und die Moderation auf mehrere Personen zu verteilen erfordert Initiative.
-* Loomio ist für Gruppen gedacht, deren Mitglieder gleichberechtigt zusammenarbeiten. Deshalb passt verteilte Moderation in vieler Hinsicht gut zum Werkzeug.
-* Menschen, die Loomio nutzen, moderieren ihre Gruppen bereits gegenseitig, ob ihnen das bewusst ist oder nicht. Einen Vorschlag anzuregen, andere zu markieren oder den bisherigen Verlauf zusammenzufassen: All das sind Moderationsaufgaben.
+* Der Online-Raum eignet sich besonders gut für verteilte Moderation. Verschiedene Menschen können zu unterschiedlichen Zeitpunkten aktiv werden, je nachdem, was ihnen auffällt und welche Fähigkeiten sie mitbringen.
+* Eine Online-Diskussion ist grundsätzlich eine verteilte Zusammenarbeit unter Gleichgestellten. Jede andere Form muss bewusst gestaltet werden. Bei Treffen vor Ort ist es meist umgekehrt: Eine Person hat das Treffen einberufen, und die Verteilung der Moderation erfordert aktive Schritte.
+* Loomio ist für Gruppen gleichberechtigter Menschen konzipiert. In vielerlei Hinsicht passt verteilte Moderation am besten zur Plattform.
+* Menschen, die Loomio nutzen, moderieren laufend füreinander, ob ihnen das bewusst ist oder nicht. Einfache Handlungen wie anzuregen, dass jemand einen Vorschlag einbringt, Menschen zu erwähnen oder den bisherigen Prozess zusammenzufassen, sind alles Formen der Moderation.
 
 <!-- translation-section: the-art-of-being-facilitated -->
 
 ## Die Kunst, sich moderieren zu lassen
 
-Beim Paartanz braucht auch die folgende Person Übung. Ähnlich ist es eine Fähigkeit, sich moderieren zu lassen. Wer selbst schon moderiert oder an vielen gut moderierten Prozessen teilgenommen hat, nimmt Moderation anders an als jemand ohne diese Erfahrung.
+Wie das Folgen beim Paartanz ist auch das Sich-moderieren-Lassen eine eigene Kunst. Menschen, die selbst Erfahrung mit Moderation haben oder an vielen gut moderierten Prozessen teilgenommen haben, nehmen Moderation anders auf als Menschen ohne diese Erfahrung.
 
-Die Fähigkeit, auf Moderation einzugehen, lässt sich entwickeln. Sie kann viel zum Erfolg einer Gruppe beitragen. Dazu gehört, pünktlich zu erscheinen, Anleitungen zu folgen oder eine neue Art des Denkens oder Kommunizierens auszuprobieren. Manchmal erleben Menschen einen guten gemeinsamen Prozess, ohne genau zu wissen, warum. Wenn du darauf hinweist, wie die Moderation zu einem reibungslosen oder tiefgehenden Austausch beigetragen hat, können sie besser verstehen, was ihnen daran wichtig war.
+Die Fähigkeit, Moderation konstruktiv anzunehmen, lässt sich entwickeln und kann wesentlich zum Erfolg einer Gruppe beitragen. Das beginnt mit einfachen Dingen wie pünktlichem Erscheinen und dem Befolgen von Anweisungen und reicht bis zur Bereitschaft, neue Denk- oder Kommunikationsweisen auszuprobieren. Manchmal erleben Menschen einen Prozess als positiv, ohne genau zu wissen, warum. Ein Hinweis darauf, dass die Moderation für den reibungslosen Ablauf oder die Tiefe des Austauschs gesorgt hat, kann ihnen helfen zu verstehen, was sie an dem Prozess geschätzt haben.
 
-Menschen, die sich nicht moderieren lassen können oder wollen, können die Zusammenarbeit erschweren. Selbst eine erfahrene Moderation kann ihre Aufgabe bei starkem Widerstand nicht erfüllen. Häufige Probleme sind, die Diskussion zu beherrschen, ständig Gegenpositionen einzunehmen, den Ablauf zu stören, die Moderation oder andere Beteiligte respektlos zu behandeln oder sich nicht einzubringen. Jede Person trägt einen Teil der Verantwortung dafür, offen für Moderation zu sein.
+Menschen, die sich nicht moderieren lassen können oder wollen, können dagegen die Zusammenarbeit in einer Gruppe beeinträchtigen. Auch eine erfahrene moderierende Person kann ihre Aufgabe bei zu starkem Widerstand nicht erfüllen. Häufige Probleme sind das Dominieren der Diskussion, Widerspruch um des Widerspruchs willen, Störungen des Ablaufs, respektloses Verhalten gegenüber der moderierenden Person oder den Teilnehmenden sowie mangelnde Beteiligung. Jede Person muss Verantwortung für ihre Bereitschaft übernehmen, sich moderieren zu lassen.
 
 Auf Loomio
 
-* Mit etwas Übung lernen die meisten Menschen schnell, auf Moderation in Loomio einzugehen, etwa indem sie antworten, wenn sie mit @ erwähnt werden.
-* Wer auf Loomio Moderationsaufgaben übernimmt, lernt auch selbst besser, auf Moderation einzugehen.
-* Weil alles archiviert wird, können Menschen frühere Moderationsbeiträge später nachlesen und daraus lernen, auch wenn sie nicht dabei waren.
+* Mit etwas Übung lernen die meisten Menschen schnell, auf moderierende Handlungen auf Loomio einzugehen, etwa zu antworten, wenn sie mit @ erwähnt werden.
+* Wer auf Loomio selbst moderierend tätig wird, lernt auch, besser auf die Moderation durch andere einzugehen.
+* Da alles archiviert wird, können Menschen frühere moderierende Handlungen im Nachhinein betrachten und daraus lernen, auch wenn sie damals nicht dabei waren.
 
 <!-- translation-section: culture-change -->
 
 ## Kulturwandel
 
-Eine Kultur der Zusammenarbeit und Beteiligung entsteht mit der Zeit, durch viel Übung, Ausprobieren und Korrigieren. Wenn Menschen Moderation verstehen, schätzen und dazu einladen, kann das diesen Wandel wesentlich unterstützen. Moderation kann sich von einer Rolle über eine gemeinsame Aufgabe zu einer Haltung entwickeln. In einer Kultur echter Zusammenarbeit unterstützen sich alle auf unterschiedliche Weise dabei, gut zusammenzuarbeiten.
+Eine Kultur der Zusammenarbeit und Beteiligung entsteht mit der Zeit, durch viel Übung, Ausprobieren und Lernen aus Fehlern. Moderation zu verstehen, wertzuschätzen und dazu einzuladen, kann dabei eine zentrale Rolle spielen. Moderation kann sich von einer Rolle über eine Aufgabe zu einer Haltung entwickeln. In einer Kultur der Zusammenarbeit unterstützen sich alle auf vielfältige Weise gegenseitig durch Moderation.
 
-Können sich alle an der Betriebsfeier beteiligen? Entsteht das gemeinsame Essen im Büro scheinbar wie von selbst? Können Ideen von überall kommen, durch viele Köpfe und Hände weiterentwickelt und schließlich besser umgesetzt werden, als anfangs irgendjemand dachte?
+Können alle die Betriebsfeier mitgestalten? Entsteht das gemeinsame Buffet im Büro wie von selbst? Können Ideen überall entstehen, von vielen Menschen weiterentwickelt und so umgesetzt werden, dass sie die ursprünglichen Vorstellungen übertreffen?
 
-Ein tiefgreifender Kulturwandel zeigt sich, wenn Zusammenarbeit nicht mehr auf bestimmte Räume oder Anlässe beschränkt bleibt, sondern jeden Bereich der Organisation prägt. Zusammenarbeit besteht nicht nur aus Haftnotizen und kurzen Gesprächsrunden. Sie wird Teil des alltäglichen Miteinanders.
+Ein tiefgreifender Kulturwandel zeigt sich, wenn die Kultur der Zusammenarbeit über eigens dafür vorgesehene Räume hinausgeht und alle Bereiche der Organisation prägt. Zusammenarbeit umfasst mehr als Haftnotizen und kurze Befindlichkeitsrunden: Sie prägt den gesamten Alltag einer Organisation.
 
 Auf Loomio
 
-* Die [Theorie des Wandels von Loomio](http://www.loomio.com/about) besagt: Wenn mehr Gruppen wirksame und inklusive Entscheidungsfindung praktizieren, können sich die Abläufe in Organisationen weltweit verändern. Dieser Gedanke prägt die Gestaltung von Loomio und [unsere Arbeit als Genossenschaft](http://loomio.coop). Letztlich geht es um Kulturwandel durch gelebte Zusammenarbeit.
-* Loomio-Gruppen haben erlebt, wie sich ihre Kultur mit dem Werkzeug weiterentwickelt. Manche konnten wachsen und ihre Kultur der Zusammenarbeit bewahren. Andere konnten trotz der Herausforderungen inklusiver Entscheidungen als beteiligungsorientierte Gruppe bestehen bleiben.
-* Loomio macht eine neue Form alltäglicher Zusammenarbeit möglich, indem das Werkzeug gemeinsame Entscheidungen leichter zugänglich und umsetzbar macht.
+* Die [Wirkungstheorie von Loomio](http://www.loomio.com/about) besagt, dass sich die Dynamik von Organisationen weltweit verändern kann, wenn mehr Gruppen wirksame Entscheidungen unter Einbeziehung aller treffen. Das zeigt sich sowohl in der Gestaltung der Plattform als auch darin, [wie wir als Genossenschaft arbeiten](http://loomio.coop). Letztlich geht es um Kulturwandel durch gelebte Zusammenarbeit.
+* Loomio-Gruppen haben erlebt, wie sich ihre Kultur durch die Plattform weiterentwickelt. Beispielsweise können Gruppen mit einer bestehenden Kultur der Zusammenarbeit wachsen und diese bewahren. Oder eine auf Beteiligung ausgerichtete Gruppe kann weiterbestehen, statt an Schwierigkeiten bei der gemeinsamen Entscheidungsfindung zu zerbrechen.
+* Loomio ermöglicht eine neue Normalität der Zusammenarbeit, indem es diese leichter zugänglich und umsetzbar macht.
 
-Weitere Anregungen für kontinuierliche Praxis findest du in den [Geschichten von Loomio-Gruppen](https://blog.loomio.com/?utm_campaign=facilitators_guide_help&utm_term=help).
+Anregungen für kontinuierliche Praxis findest du in den [Geschichten von Loomio-Gruppen](https://blog.loomio.com/?utm_campaign=facilitators_guide_help&utm_term=help).

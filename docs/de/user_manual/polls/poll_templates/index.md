@@ -1,6 +1,6 @@
 ---
 title: Umfragevorlagen
-source_revision: 71554be8e61a76613b0707b8262302c22299a5d0
+source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
 source_file: docs/en/user_manual/polls/poll_templates/index.md
 translated:
   provider: codex/gpt-6.1-sol
@@ -19,152 +19,159 @@ sections:
   save-and-test-the-template: 8c48386c69ea309a
   manage-the-template-list: 0c124d7958c3f80a
 generated:
-  introduction: b204c10e6733d07f
-  voting-methods-and-templates: 19a18d59c7bba3c6
-  use-a-template: d14e2c1b365a2cbe
-  who-can-manage-templates: e9702059df48e0f9
-  create-a-poll-template: 67492b429cf6c3ac
-  template-title-subtitle-and-help: b372791a0184b04e
-  voting-method: 7d6f49b469bacc87
-  example-title-details-and-tags: 02d141e47cae957a
-  response-options: f1f1312a9e64c1c2
-  duration-and-settings: 40f0712596c33bcc
-  save-and-test-the-template: d0fef729ad0f499e
-  manage-the-template-list: dd3168390a569c89
+  introduction: 5e38faa539c5e4a0
+  voting-methods-and-templates: 2f71bfce130f850c
+  use-a-template: 851735915b4e4202
+  who-can-manage-templates: 539c1ad1a5526c0a
+  create-a-poll-template: fe00c6b8e918fcb3
+  template-title-subtitle-and-help: 48e71c6e6576c818
+  voting-method: '0920295379277a1b'
+  example-title-details-and-tags: 477c79f93cc25bc5
+  response-options: bb24a8d1d824a768
+  duration-and-settings: a8cf47e7a2e961bb
+  save-and-test-the-template: 4fe92d94726f91c2
+  manage-the-template-list: 6ada7d3dc1969be0
 title_source: 114cca246e357304
 title_generated: 2f338bb1d4e6c8b2
+needs_review:
+  introduction: use "Entscheidung" instead of "Abstimmung" for "decision"; use "Stimme" instead of "Abstimmung" for "vote"
+  voting-methods-and-templates: use "Bewerten" instead of "Ergebnis" for "Score"
+  use-a-template: use "Entscheidung" instead of "Abstimmung" for "decision"; use "Stimme" instead of "Abstimmung" for "vote"
+  voting-method: use "Bewerten" instead of "Ergebnis" for "Score"
+  example-title-details-and-tags: use "Stimme" instead of "Abstimmung" for "vote"
+  duration-and-settings: use "Stimme" instead of "Abstimmung" for "vote"
 ---
 
 <!-- translation-section: introduction -->
 
-# Umfragevorlagen
+# Abstimmungsvorlagen
 
-Umfragevorlagen sind wiederverwendbare Ausgangspunkte, die angezeigt werden, wenn jemand **Jetzt abstimmen** oder **Neue Umfrage** auswählt. Eine Vorlage verbindet eine Abstimmungsmethode mit vorbereiteten Hinweisen, Antwortoptionen und Einstellungen.
+Abstimmungsvorlagen sind wiederverwendbare Ausgangspunkte, die angezeigt werden, wenn jemand **Jetzt abstimmen** oder **Neue Abstimmung** auswählt. Eine Vorlage kombiniert eine Abstimmungsart mit voreingestellten Hinweisen, Antwortoptionen und Einstellungen.
 
-Auf dieser Seite erfährst du, welche Vorlagen du für eine Gruppe verfügbar machen und wie du eine Vorlage für deinen eigenen Ablauf erstellen kannst. Wie du eine Vorlage für eine bestimmte Abstimmung auswählst, erfährst du unter [Vorschläge](../proposals/) und [Umfragen](../proposal_types/). Wie du einen vollständigen Entscheidungsprozess begleitest, erfährst du unter [Entscheidungen treffen](/en/guides/making_decisions/).
+Auf dieser Seite erfährst du, wie du festlegst, welche Vorlagen einer Gruppe zur Verfügung stehen, oder eine Vorlage für deinen eigenen Prozess erstellst. Wie du eine Vorlage für eine bestimmte Stimmabgabe auswählst, erfährst du unter [Vorschläge](../proposals/) oder [Abstimmungen](../proposal_types/). Hinweise zur Begleitung eines vollständigen Entscheidungsprozesses findest du unter [Entscheidungen treffen](/en/guides/making_decisions/).
 
 <!-- translation-section: voting-methods-and-templates -->
 
-## Abstimmungsmethoden und Vorlagen
+## Abstimmungsarten und Vorlagen
 
-Die Abstimmungsmethode bestimmt, wie Teilnehmende antworten und wie Loomio das Ergebnis berechnet. Dazu gehören Vorschlag, Wählen, Ergebnis, Zuweisen, Rang, Zeitumfrage und STV.
+Eine Abstimmungsart bestimmt, wie Teilnehmende antworten und wie Loomio das Ergebnis berechnet. Beispiele sind Vorschlag, Auswählen, Bewerten, Verteilen, Ordnen, Terminfindung und STV.
 
-Eine Umfragevorlage verwendet eine dieser Methoden und ergänzt sie um wiederverwendbare Voreinstellungen. Zum Beispiel sind Stimmungsbild, Rat, Zustimmung und Konsens verschiedene Vorlagen auf Grundlage der Abstimmungsmethode Vorschlag. Ihre Anleitungen und Antwortoptionen unterscheiden sich, auch wenn Loomio die Stimmen auf dieselbe Weise verarbeitet.
+Eine Abstimmungsvorlage verwendet eine dieser Abstimmungsarten und ergänzt wiederverwendbare Voreinstellungen. Zum Beispiel sind Stimmungsbild, Beratung, Konsent und Konsens verschiedene Vorlagen, die auf der Abstimmungsart Vorschlag basieren. Ihre Anleitungen und Antwortoptionen unterscheiden sich, obwohl Loomio die abgegebenen Stimmen auf dieselbe Weise verarbeitet.
 
 <!-- translation-section: use-a-template -->
 
 ## Eine Vorlage verwenden
 
-Wenn du eine Abstimmung startest, wähle den Reiter **Vorschlag** oder **Umfrage** und dann eine der Vorlagen, die für die Gruppe verfügbar sind.
+Wenn du zur Stimmabgabe einlädst, wähle den Reiter **Vorschläge** oder **Abstimmung** und dann eine der Vorlagen, die der Gruppe zur Verfügung stehen.
 
 ![](proposal_templates_list.png)
 
-Die Vorlage enthält eine Einführung, Beispielinhalte, Optionen und Einstellungen. Prüfe und bearbeite sie für die jeweilige Entscheidung, bevor du die Abstimmung startest. Änderungen an der neuen Abstimmung ändern die wiederverwendbare Vorlage nicht.
+Die Vorlage enthält eine Einführung, Beispielinhalte, Optionen und Einstellungen. Prüfe diese und passe sie an die jeweilige Entscheidung an, bevor du zur Stimmabgabe einlädst. Änderungen an den Inhalten für die neue Stimmabgabe ändern die wiederverwendbare Vorlage nicht.
 
 <!-- translation-section: who-can-manage-templates -->
 
 ## Wer Vorlagen verwalten kann
 
-Gruppenadministratoren können alle Umfragevorlagen ihrer Gruppe erstellen und verwalten. Unter **Gruppen-Einstellungen** → **Berechtigungen** können sie **Mitglieder können Vorlagen erstellen.** aktivieren. Danach können Mitglieder Vorlagen erstellen und die von ihnen erstellten Vorlagen verwalten.
+Gruppenadministrierende können alle Abstimmungsvorlagen ihrer Gruppe erstellen und verwalten. Sie können unter **Gruppen-Einstellungen** → **Berechtigungen** die Einstellung **Mitglieder können Vorlagen erstellen.** aktivieren. Wenn sie aktiviert ist, können Mitglieder Vorlagen erstellen und ihre selbst erstellten Vorlagen verwalten.
 
 <!-- translation-section: create-a-poll-template -->
 
-## Eine Umfragevorlage erstellen
+## Eine Abstimmungsvorlage erstellen
 
-Öffne die Vorlagenliste und wähle **Neue Vorlage**. Beginne mit einem Beispiel oder einer leeren Vorlage. Wähle dann die Gruppe aus, die sie verwenden soll.
+Öffne die Vorlagenliste und wähle **Neue Vorlage**. Beginne mit einem Beispiel oder einer leeren Vorlage und wähle dann die Gruppe, die sie verwenden wird.
 
 ![](proposal_template_setting.png)
 
-Im Vorlagenformular legst du fest, welche Hinweise und Voreinstellungen Menschen erhalten, wenn sie eine Abstimmung starten.
+Das Vorlagenformular legt die Hinweise und Voreinstellungen fest, die Personen erhalten, wenn sie zur Stimmabgabe einladen.
 
 ![](poll_template_new.png)
 
 <!-- translation-section: template-title-subtitle-and-help -->
 
-### Vorlagentitel, Vorlagenuntertitel und Vorlagenhilfe
+### Vorlagentitel, Untertitel und Hilfe
 
-- **Vorlagentitel** ist der kurze Name in der Vorlagenliste.
+- **Vorlagentitel** ist der kurze Name, der in der Vorlagenliste angezeigt wird.
 - **Vorlagenuntertitel** erklärt in einem Satz, wann die Vorlage verwendet werden sollte.
-- **Vorlagenhilfe** erscheint im Informationsbereich, wenn jemand die Vorlage verwendet. Erkläre dort ihren Zweck, wichtige Regeln für Teilnehmende und verlinke relevante Richtlinien oder Anleitungen.
+- **Vorlagenhilfe** erscheint im Informationsbereich, wenn jemand die Vorlage verwendet. Erkläre ihren Zweck und alle Regeln, die Teilnehmende kennen sollten, und füge Links zu relevanten Richtlinien oder Anleitungen hinzu.
 
 ![](template_WAAP_intro.png)
 
-Verwende klare, konkrete Namen, an denen sich die Vorlage von anderen Vorlagen der Gruppe unterscheiden lässt.
+Verwende einfache, eindeutige Namen, die die Vorlage von anderen Vorlagen in der Gruppe unterscheiden.
 
 <!-- translation-section: voting-method -->
 
-### Abstimmungsmethode
+### Abstimmungsart
 
-Überlege, was die Teilnehmenden ausdrücken sollen und wie das Ergebnis berechnet werden soll.
+Wähle, was Teilnehmende ausdrücken sollen und wie das Ergebnis berechnet werden soll.
 
 ![](poll_type_voting_method.png)
 
 - **Vorschlag**: mit festgelegten Positionen auf eine Aussage antworten;
 - **Wählen**: eine oder mehrere Optionen auswählen;
-- **Ergebnis**: jede Option auf einer Skala bewerten;
-- **Zuweisen**: eine begrenzte Anzahl von Punkten verteilen;
-- **Rang**: Optionen nach Präferenz ordnen;
-- **Zeitumfrage**: Verfügbarkeit angeben; und
-- **STV**: Kandidierende bei einer Verhältniswahl mit mehreren zu vergebenden Sitzen nach Präferenz ordnen.
+- **Bewerten**: jede Option auf einer Skala bewerten;
+- **Verteilen**: ein begrenztes Kontingent an Punkten verteilen;
+- **Ordnen**: Optionen nach Präferenz ordnen;
+- **Terminfindung**: die eigene Verfügbarkeit angeben; und
+- **STV**: Kandidierende bei einer Verhältniswahl mit mehreren zu besetzenden Plätzen nach Präferenz ordnen.
 
-Wenn du die Abstimmungsmethode änderst, ändern sich die verfügbaren Felder und die Berechnung des Ergebnisses.
+Wenn du die Abstimmungsart änderst, ändern sich die verfügbaren Felder und die Ergebnisberechnung der Vorlage.
 
 <!-- translation-section: example-title-details-and-tags -->
 
-### Beispieltitel, Details und Tags
+### Beispieltitel, Details und Schlagwörter
 
-Gib Beispielinhalte an, die beim Formulieren der Abstimmung helfen. Diese Werte werden in einen neuen Vorschlag oder eine neue Umfrage übernommen und können vor dem Start bearbeitet werden.
+Gib Beispielinhalte an, die der erstellenden Person helfen, die Inhalte für die Stimmabgabe zu formulieren. Diese Angaben werden in einen neuen Vorschlag oder eine neue Abstimmung kopiert und können vor Beginn bearbeitet werden.
 
 ![](template_WAAP_details.png)
 
-Verwende Leitfragen statt fester Inhalte, wenn bei jeder Verwendung ein anderer Titel oder andere Details nötig sind. Füge standardmäßige Kategorie-Tags nur hinzu, wenn sie bei jeder Verwendung der Vorlage passen.
+Verwende Formulierungshilfen statt fester Inhalte, wenn bei jeder Verwendung ein anderer Titel oder andere Details benötigt werden. Füge voreingestellte Schlagwörter zur Kategorisierung nur hinzu, wenn sie bei jeder Verwendung der Vorlage zutreffen.
 
 <!-- translation-section: response-options -->
 
 ### Antwortoptionen
 
-Bei Methoden wie Vorschlag und Wählen kannst du Antwortoptionen konfigurieren. Wähle das Stiftsymbol neben einer Option, um Folgendes zu bearbeiten:
+Bei Abstimmungsarten wie Vorschlag und Auswählen kannst du Antwortoptionen konfigurieren. Wähle das Stiftsymbol neben einer Option, um Folgendes zu bearbeiten:
 
 - **Optionsname**: die kurze Bezeichnung der Antwort;
-- **Symbol**: die grafische Kennzeichnung;
+- **Symbol**: ihre visuelle Kennzeichnung;
 - **Bedeutung**: was die Auswahl der Option ausdrückt; und
-- **Grundaufforderung**: die Frage, die angezeigt wird, wenn jemand seine Antwort begründet.
+- **Grundaufforderung**: die Frage, die angezeigt wird, wenn jemand die eigene Antwort begründet.
 
 ![](poll_type_edit_option.png)
 
-Definiere die Optionen so, dass Teilnehmende den Unterschied zwischen ihnen erkennen können. Ihre Bedeutungen sollten zu den Entscheidungsregeln passen, die deine Gruppe tatsächlich verwendet.
+Definiere Optionen so, dass Teilnehmende sie unterscheiden können, ohne raten zu müssen. Ihre Bedeutungen sollten den Entscheidungsregeln entsprechen, die deine Gruppe tatsächlich verwendet.
 
 <!-- translation-section: duration-and-settings -->
 
 ### Dauer und Einstellungen
 
-Lege eine Standarddauer fest, die für die meisten Anwendungen der Vorlage passt. Wer eine Abstimmung erstellt, kann ihre Schlusszeit ändern.
+Lege eine voreingestellte Dauer fest, die für die meisten Verwendungen der Vorlage geeignet ist. Die erstellende Person kann den Schlusszeitpunkt für eine einzelne Stimmabgabe ändern.
 
 ![](poll_type_duration.png)
 
-Weitere Voreinstellungen regeln, wer Ergebnisse sehen kann, anonymes Abstimmen, [gewichtete Abstimmung](../weighted_voting/), die Pflicht zur Begründung einer Stimme, Erinnerungen, das Quorum und methodenspezifisches Verhalten. Die Auswirkungen werden unter [Einstellungen für Vorschläge und Umfragen](../settings/) erklärt.
+Weitere Voreinstellungen können die Sichtbarkeit der Ergebnisse, die anonyme Stimmabgabe, die [gewichtete Abstimmung](../weighted_voting/), Anforderungen an die Begründung einer Stimme, Erinnerungen, das Quorum und das Verhalten der jeweiligen Abstimmungsart steuern. Ihre Auswirkungen werden unter [Einstellungen für Vorschläge und Abstimmungen](../settings/) erklärt.
 
 <!-- translation-section: save-and-test-the-template -->
 
-### Vorlage speichern und testen
+### Die Vorlage speichern und testen
 
-Starte nach dem Speichern einen Abstimmungsentwurf mit der Vorlage. Prüfe, ob die Einführung, Leitfragen, Optionen und Voreinstellungen auch für jemanden verständlich sind, der die Vorlage nicht erstellt hat. Mit einem Entwurf kannst du außerdem prüfen, ob die gewählte Abstimmungsmethode das von der Gruppe erwartete Ergebnis liefert.
+Erstelle nach dem Speichern einen Abstimmungsentwurf aus der Vorlage. Prüfe, ob die Einführung, Formulierungshilfen, Optionen und Voreinstellungen für jemanden verständlich sind, der die Vorlage nicht erstellt hat. Mit einem Entwurf kannst du auch prüfen, ob die gewählte Abstimmungsart das Ergebnis liefert, das die Gruppe erwartet.
 
 <!-- translation-section: manage-the-template-list -->
 
-## Vorlagenliste verwalten
+## Die Vorlagenliste verwalten
 
-Im Aktionsmenü neben einer Vorlage kannst du:
+Verwende das Aktionsmenü neben einer Vorlage für folgende Aktionen:
 
-- **Bearbeiten** wählen, um ihre wiederverwendbaren Inhalte und Voreinstellungen zu ändern;
-- **Verschieben** wählen, um ihre Position in der Liste zu ändern;
-- **Verstecken** wählen, damit sie beim Starten einer Abstimmung nicht angezeigt wird; oder
-- **Löschen** wählen, um eine nicht mehr benötigte eigene Vorlage zu entfernen.
+- **Bearbeiten**: ihre wiederverwendbaren Inhalte und Voreinstellungen bearbeiten;
+- **Verschieben**: ihre Position in der Liste ändern;
+- **Verstecken**: sie für Personen ausblenden, die Abstimmungen starten; oder
+- **Löschen**: eine selbst erstellte Vorlage löschen, die nicht mehr benötigt wird.
 
 ![](template_manage.png)
 
-Wähle **Ausgeblendete Vorlagen anzeigen**, um ausgeblendete Vorlagen zu prüfen oder wiederherzustellen. Standardvorlagen können für die Gruppe ausgeblendet oder angepasst, aber nicht gelöscht werden.
+Wähle **Ausgeblendete Vorlagen anzeigen**, um ausgeblendete Vorlagen zu prüfen oder wieder einzublenden. Standardvorlagen können ausgeblendet oder für die Gruppe angepasst, aber nicht gelöscht werden.
 
 ![](template_manage_settings.png)
 
-Änderungen an einer Vorlage wirken sich nicht auf Vorschläge oder Umfragen aus, die bereits damit gestartet wurden.
+Wenn du eine Vorlage änderst, hat das keine Auswirkungen auf Vorschläge oder Abstimmungen, die bereits mit dieser Vorlage gestartet wurden.

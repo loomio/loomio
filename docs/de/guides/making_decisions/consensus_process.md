@@ -1,10 +1,10 @@
 ---
 title: Konsensprozess
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/guides/making_decisions/consensus_process.md
+source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
+source_file: docs/en/guides/making_decisions/consensus_process.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-30'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 28806ba051102030
   key-points: 4a0e2e253a175fb9
@@ -19,67 +19,70 @@ sections:
   step-4-agreement: 6245b14acb3654c7
   step-5-outcome: c398241dcfeb89ef
 generated:
-  introduction: 3448990849e9e635
-  key-points: 1081ee315a0aa0d5
-  consensus-process-steps: 25c834073a880929
-  benefits: 86d6947878d2a463
-  applying-the-consensus-process-on-loomio: 47aab2007a304119
-  example-of-a-consensus-process-on-loomio: b4c8268e51a5a8ff
-  step-0-you-notice-a-problem-or-opportunity-and-take-the-initiative: 3adf039f5d0ac937
-  step-1-state-the-problem-or-issue: cd02bab4097e01b4
-  step-2-present-a-proposal: bd173522faf88fdf
-  step-3-amendment: b40d1e5ed0569791
-  step-4-agreement: 46495f69f485ae98
-  step-5-outcome: d1b055882652e403
+  introduction: 68dd09c0d564621b
+  key-points: 4ed11abefbd3deec
+  consensus-process-steps: 760d33a9d1bbe09d
+  benefits: 01a5cfca85d4c84c
+  applying-the-consensus-process-on-loomio: da41da1bceda6147
+  example-of-a-consensus-process-on-loomio: 2de5242506e076b6
+  step-0-you-notice-a-problem-or-opportunity-and-take-the-initiative: 9eabf65356252a29
+  step-1-state-the-problem-or-issue: 73d3ef442a1352b0
+  step-2-present-a-proposal: 20c189f81da9bcef
+  step-3-amendment: 06d9d6cddf97dd8f
+  step-4-agreement: adc7a7a5637f808e
+  step-5-outcome: d2d7b373e264e7d0
 title_source: 688b46cc92fcb129
 title_generated: cf9219e48590881b
+needs_review:
+  applying-the-consensus-process-on-loomio: use "Entscheidung" instead of "Abstimmung" for "decision"; use "Stimme" instead of "Abstimmung" for "vote"; use "Fazit" instead of "Abstimmungsergebnis" for "outcome"; use "Ergebnis" instead of "Fazit" for "results"
+  step-3-amendment: use "Ergebnis" instead of "Fazit" for "results"
 ---
 
 <!-- translation-section: introduction -->
 
 # Konsensprozess
 
-Diese Anleitung beschreibt den gesamten Konsensprozess. Wie du einen einzelnen Konsensvorschlag einrichtest und auswertest, erfährst du unter [Konsens](/en/user_manual/polls/proposals/consensus/).
+Diese Anleitung beschreibt den vollständigen Konsensprozess. Hilfe beim Einrichten und Auswerten eines einzelnen Konsensvorschlags findest du unter [Konsens](/en/user_manual/polls/proposals/consensus/).
 
 ![Foto von Aaron Burden auf Unsplash *Foto von Aaron Burden auf Unsplash*](aaron-burden-NXt5PrOb_7U-unsplash.jpg)
 
-Erziele eine gemeinsame Einigung mit allen Beteiligten.
+Erreiche eine gemeinsame Einigung mit allen Beteiligten.
 
-Findet für eine gemeinsame Entscheidung einen Konsens, der die Bedürfnisse und Bedenken aller Beteiligten berücksichtigt.
+Entwickle einen Konsens für eine Entscheidung, die ihr gemeinsam treffen müsst, um eine Einigung zu erreichen, die den Bedürfnissen und Anliegen aller Teilnehmenden gerecht wird.
 
-> *„Konsens ist der Prozess – ein gemeinschaftlicher Prozess, in dem eine Gruppe auf dem Weg zu ihrer Entscheidung zusammen denkt und fühlt.“ – Sam Kaner, Community at Work*
+> *„Konsens ist der Prozess – ein partizipativer Prozess, in dem eine Gruppe auf dem Weg zu ihrer Entscheidung gemeinsam denkt und fühlt.“ - Sam Kaner, Community at Work*
 
 <!-- translation-section: key-points -->
 
-## Das Wichtigste
-- Einen Vorschlag gemeinsam besprechen und entwickeln
-- Alle Beteiligten einbeziehen und respektieren
-- Die Zustimmung der meisten Beteiligten anstreben
+## Kernpunkte
+- Diskutiert und entwickelt gemeinsam einen Vorschlag
+- Beziehe alle Beteiligten ein und respektiere sie
+- Strebe die Zustimmung der meisten Beteiligten an
 
-**Ein Konsensprozess wird häufig genutzt für:**
-- Arbeitsteams, die ein gemeinsames Verständnis für ein Problem oder eine Möglichkeit entwickeln, an einem Vorschlag zusammenarbeiten und das weitere Vorgehen entscheiden.
-- Entscheidungen von Leitungsgremien, die gemeinsam handeln, etwa zu Leitbild, Richtlinien, strategischer Planung und Budget.
-- Mitgliederversammlungen und Vollversammlungen, bei denen Mitglieder und andere Beteiligte eine breite Einigung über wichtige Entscheidungen suchen, etwa Satzungsänderungen, größere Geschäfte oder die Wahl von Vorstands- oder Ratsmitgliedern.
+**Konsens wird typischerweise eingesetzt bei:**
+- Arbeitsteams, die ein gemeinsames Verständnis eines Problems oder einer Chance entwickeln, gemeinsam einen Vorschlag erarbeiten und über das weitere Vorgehen entscheiden.
+- Entscheidungen eines Leitungsgremiums, bei denen das Gremium zeigt, dass es gemeinsam handelt, etwa zu Vision, Richtlinien, strategischer Planung und Budget.
+- Jahreshauptversammlungen und Generalversammlungen, bei denen Mitglieder und Interessengruppen eine allgemeine Einigung über wichtige Entscheidungen anstreben, etwa Satzungsänderungen, bedeutende Geschäfte und die Wahl von Vorstands- oder Ratsmitgliedern.
 
 **Typische Rollen:**
-- Bestimme eine Person für die Moderation.  Bei Sitzungen eines Leitungsgremiums übernimmt das meist der Vorsitz.
-- Ein in der Satzung festgelegtes Quorum oder eine qualifizierte Mehrheit der Mitglieder nimmt teil.
+- Bestimme eine Person für die Moderation. Bei Vorstandssitzungen ist dies meist die vorsitzende Person.
+- Ein Quorum oder eine qualifizierte Mehrheit der Mitglieder muss teilnehmen, wie in der Satzung der Organisation festgelegt.
 
 <!-- translation-section: consensus-process-steps -->
 
-## Schritte im Konsensprozess
+## Schritte des Konsensprozesses
 1. Benenne die Frage, über die entschieden werden soll – starte eine Loomio-**Diskussion**.
-2. Stelle einen Vorschlag vor, um ein erstes Meinungsbild einzuholen – starte einen **Vorschlag zur Sinnesprüfung**.
-3. Kläre offene Punkte, lade zu konstruktiven Änderungen ein und überarbeite den Vorschlag.
-4. Prüfe, ob Einigkeit besteht – starte einen **Konsensvorschlag**.
-5. Halte die Entscheidung im **Fazit** fest.
+2. Stelle einen Vorschlag vor, um zu prüfen, ob Konsens besteht – starte einen **Stimmungsbild-Vorschlag**.
+3. Kläre offene Punkte, bitte um konstruktive Änderungen und überarbeite den Vorschlag.
+4. Prüfe die Zustimmung – starte einen **Konsensvorschlag**.
+5. Fazit – halte die Entscheidung im **Fazit** fest.
 
 <!-- translation-section: benefits -->
 
 ## Vorteile
 - Ein gemeinsames Verständnis entwickeln.
-- Entscheidungen treffen, die den gemeinsamen Willen der Gruppe ausdrücken.
-- Die Beteiligten ermutigen, die Interessen der Gruppe über persönliche Vorlieben zu stellen.
+- Entscheidungen treffen, die dem gemeinsamen Willen der Gruppe entsprechen.
+- Menschen dazu ermutigen, die Gruppe über ihre persönlichen Vorlieben zu stellen.
 
 <!-- translation-section: applying-the-consensus-process-on-loomio -->
 
@@ -88,39 +91,39 @@ Findet für eine gemeinsame Entscheidung einen Konsens, der die Bedürfnisse und
 | **Konsensprozess** | **Auf Loomio** |
 |---|---|
 | Du erkennst ein Problem oder eine Möglichkeit und ergreifst die Initiative. |  |
-| **Die Entscheidungsfrage benennen**  <br /><br />Gib Hintergrundinformationen und eröffne eine breite Diskussion, um ein gemeinsames Verständnis zu entwickeln. Achte auf erste Vorschläge. | Starte eine Loomio-Diskussion. <br /><br />Benenne im Titel das Diskussionsthema und das Ziel. <br /><br />Füge Hintergrundinformationen als Anhang oder Link hinzu. Lade andere ein, Fragen zu stellen, Informationen beizutragen und Kommentare zu schreiben. |
-| **Einen Vorschlag vorstellen** <br /><br />Prüfe, ob sich ein Konsens abzeichnet. | Starte einen [Vorschlag zur Sinnesprüfung](/en/user_manual/polls/proposals/sense_check/). <br /><br />*Im Titel:* Benenne den Vorschlag. <br /><br />*In den Vorschlagsdetails:* Beschreibe den Vorschlag klar und erkläre, warum er wichtig ist. Füge nötige Hintergrundinformationen und einen Link zum Vorschlag hinzu. <br /><br />Lade alle ein, vor Ablauf des Vorschlags zu antworten. |
-| **Überarbeitung** <br /><br />Besprecht, klärt und überarbeitet den Vorschlag. <br /><br />Versucht, Einwände zu verstehen und auszuräumen. <br /><br />Bitte Personen mit Einwänden, eine konstruktive und umsetzbare Änderung der vorgeschlagenen Entscheidung oder Vorgehensweise vorzuschlagen. | Modere die Diskussion im Thread, um Bedenken aufzugreifen und den Vorschlag zu überarbeiten. |
-| **Einigung** <br /><br />Besteht Einigkeit? Prüfe die Antworten: <br /><br />Dafür: Ich unterstütze den Vorschlag. <br /><br />Enthaltung: Diese Entscheidung betrifft mich nicht, und ich bin mit der Entscheidung der Gruppe einverstanden. <br /><br />Dagegen: Am Vorschlag muss sich etwas ändern, bevor ich ihn unterstützen kann. <br /><br />Veto: Ich habe einen grundlegenden Einwand gegen den Vorschlag, der sich nicht ausräumen lässt. | Starte einen [Konsensvorschlag](/en/user_manual/polls/proposals/consensus/) mit der aktuellen Fassung. <br /><br />*Im Titel:* Benenne die anstehende Entscheidung. <br /><br />*In den Vorschlagsdetails:* Stelle den Vorschlag vor und lade zur Abstimmung ein. <br /><br />Erkläre klar, welche Zustimmung nötig ist, etwa: „Damit dieser Vorschlag angenommen wird, müssen alle mit Dafür stimmen“ oder „Damit dieser Vorschlag angenommen wird, müssen 75 % der Mitglieder mit Dafür stimmen“. <br /><br />Bitte die Beteiligten, eine „Begründung“ für ihre Stimme anzugeben. Wer nicht zustimmt, sollte erklären, warum und was sich ändern müsste. <br /><br />Manche Organisationen verwenden auch die Abstimmungsoption Veto. <br /><br />Während der Abstimmung kannst du auf Kommentare antworten, Neuigkeiten mitteilen, den Vorschlag vorzeitig schließen oder ihn bis zum geplanten Ende laufen lassen. <br /><br />Die Beteiligten können ihre *„Stimme ändern“*, bis der Vorschlag schließt, etwa wenn während der Abstimmung neue Informationen auftauchen. |
-| **Fazit** <br /><br />Halte fest, ob eine Einigung erzielt wurde und welche Entscheidung getroffen wurde. <br /><br />Setze die Entscheidung um und plane die nächsten Schritte. | Sieh dir die Abstimmungsergebnisse an und halte die Entscheidung fest. <br /><br />Fasse die Ergebnisse des Prozesses zusammen und erkläre, was als Nächstes geschieht. <br /><br />Wenn die Ergebnisse nicht eindeutig sind, kannst du die Diskussion erneut öffnen und einen neuen Vorschlag starten. <br /><br />Das Fazit hält die Entscheidung fest und kann später als Referenz dienen. |
+| **Benenne die Frage, über die entschieden werden soll**  <br /><br />Stelle Hintergrundinformationen bereit und eröffne eine breit angelegte Diskussion, um ein gemeinsames Verständnis aufzubauen. Achte auf Vorschläge, die sich dabei entwickeln. | Starte eine Loomio-Diskussion <br /><br />Benenne im Diskussionstitel den Gegenstand der Diskussion und was du erreichen möchtest. <br /><br />Füge Hintergrundinformationen als Anhang oder Link hinzu. Lade die Menschen ein, Fragen zu stellen, Informationen beizutragen und Kommentare zu schreiben. |
+| **Stelle einen Vorschlag vor** <br /><br />Prüfe, ob Konsens besteht. | Starte einen [Stimmungsbild-Vorschlag](/en/user_manual/polls/proposals/sense_check/). <br /><br />*Im Titel:* Benenne den Vorschlag. <br /><br />*In den Vorschlagsdetails:* Beschreibe den Vorschlag klar und erkläre, warum er wichtig ist. Füge alle nötigen Hintergrundinformationen und einen Link zum Vorschlag hinzu. <br /><br />Lade alle ein, vor dem Ende des Vorschlags zu antworten. |
+| **Überarbeitung** <br /><br />Diskutiere, kläre und überarbeite den Vorschlag. <br /><br />Versuche, Einwände zu verstehen und auszuräumen. <br /><br />Lade Menschen mit Einwänden ein, eine konstruktive und praktische Änderung der vorgeschlagenen Entscheidung oder Vorgehensweise vorzuschlagen. | Moderiere die Diskussion im Thread, um Bedenken zu klären und den Vorschlag anzupassen. |
+| **Zustimmung** <br /><br />Besteht Einigkeit? Prüfe folgende Positionen: <br /><br />Zustimmung: Ich unterstütze den Vorschlag. <br /><br />Enthaltung: Diese Entscheidung betrifft mich nicht, und ich bin mit jeder Entscheidung der Gruppe einverstanden. <br /><br />Ablehnung: Etwas am Vorschlag muss geändert werden, bevor ich ihn unterstützen kann. <br /><br />Veto: Ich habe einen grundlegenden Einwand gegen den Vorschlag, der sich nicht ausräumen lässt. | Starte einen [Konsens-Vorschlag](/en/user_manual/polls/proposals/consensus/) mit der aktuellen Fassung des Vorschlags. <br /><br />*Im Titel:* Benenne die Entscheidung, die getroffen werden soll. <br /><br />*In den Vorschlagsdetails:* Stelle den Vorschlag vor und lade die Menschen ein, ihre Stimme abzugeben. <br /><br />Erkläre klar, was Zustimmung bedeutet, zum Beispiel: „Damit dieser Vorschlag angenommen wird, müssen alle mit Zustimmung stimmen“ oder „Damit dieser Vorschlag angenommen wird, müssen 75 % der Mitglieder zustimmen“. <br /><br />Bitte die Teilnehmenden, zu ihrer Stimme eine „Begründung“ anzugeben. Wenn sie nicht zustimmen, sollen sie erklären, warum und was sich ändern muss, damit sie zustimmen können. <br /><br />Einige Organisationen verwenden auch die Option Veto. <br /><br />Antworte während der Abstimmung auf Kommentare, veröffentliche neue Informationen, beende den Vorschlag vorzeitig oder lasse ihn bis zum vorgesehenen Ende laufen. <br /><br />Teilnehmende können bis zum Ende des Vorschlags ihre *„Stimme ändern“*, etwa als Reaktion auf neue Informationen, die während der Abstimmung hinzukommen. |
+| **Fazit** <br /><br />Gib an, ob Einigkeit erreicht wurde und welche Entscheidung getroffen wurde. <br /><br />Setze die Entscheidung um und plane die nächsten Schritte. | Berücksichtige das Abstimmungsergebnis und benenne die getroffene Entscheidung. <br /><br />Fasse die Ergebnisse des Prozesses zusammen und erkläre, was als Nächstes passiert. <br /><br />Wenn die Ergebnisse nicht eindeutig sind, kannst du die Diskussion wieder aufnehmen und einen neuen Vorschlag starten. <br /><br />Das Fazit hält die Entscheidung fest, damit später darauf zurückgegriffen werden kann. |
 
 <!-- translation-section: example-of-a-consensus-process-on-loomio -->
 
-## Beispiel für einen Konsensprozess auf Loomio
+## Beispiel eines Konsensprozesses auf Loomio
 
 <!-- translation-section: step-0-you-notice-a-problem-or-opportunity-and-take-the-initiative -->
 
-### Schritt 0. Du erkennst ein Problem oder eine Möglichkeit und ergreifst die Initiative
+### Schritt 0. Du erkennst ein Problem oder eine Chance und ergreifst die Initiative
 
-*Lohnt es sich, das Problem oder die Möglichkeit weiterzuverfolgen?* Vivien stellt fest, dass es Zeit ist, die Marke der Oatmilk Coop zu überprüfen.
+*Lohnt es sich, das Problem oder die Chance weiterzuverfolgen?* Vivien hat festgestellt, dass es Zeit ist, die Marke der Oatmilk Coop zu überprüfen.
 
-*Steht eine Entscheidung an?* Das Leitungsgremium ist für die Genehmigung eines neuen Markenkonzepts zuständig.
+*Muss eine Entscheidung getroffen werden?* Das Leitungsgremium ist dafür verantwortlich, ein neues Markenkonzept zu genehmigen.
 
-*Betrifft es andere Menschen und deine Organisation?* Die Marke prägt die Wahrnehmung der Genossenschaft und betrifft alle in der Organisation.
+*Betrifft es andere Menschen und deine Organisation?* Die Marke beeinflusst die Wahrnehmung der Genossenschaft und betrifft alle in der Organisation.
 
 <!-- translation-section: step-1-state-the-problem-or-issue -->
 
-### Schritt 1. Das Problem oder die Frage benennen
+### Schritt 1. Benenne das Problem oder die Frage
 
-Vivien startet eine Loomio-Diskussion über die nötige Überprüfung der Marke. Sie lädt alle ein, ein neues Markenkonzept zu entwickeln, und erklärt, dass das Leitungsgremium im Konsensprozess über dessen Genehmigung entscheidet.
+Vivien startet eine Loomio-Diskussion und erläutert, warum die Marke der Organisation überprüft werden muss. Vivien lädt dazu ein, gemeinsam ein neues Markenkonzept zu entwickeln, und erklärt, dass das Leitungsgremium im Konsensprozess über die Genehmigung entscheiden soll.
 
 ![](discussion_consensus_process_refresh_brand.png)
 
 <!-- translation-section: step-2-present-a-proposal -->
 
-### Schritt 2. Einen Vorschlag vorstellen
+### Schritt 2. Stelle einen Vorschlag vor
 
-Vivien startet einen Vorschlag zur Sinnesprüfung, um Meinungen zu wichtigen Teilen des Markenkonzepts einzuholen und zu prüfen, ob sich ein Konsens abzeichnet. So erfahren die Beteiligten, dass ein Vorschlag entsteht, und können sich einbringen. Dabei können auch Bedenken sichtbar werden.
+Vivien startet einen Stimmungsbild-Vorschlag, um Meinungen zu wichtigen Elementen des Markenkonzepts einzuholen und zu prüfen, ob Konsens besteht. Der Stimmungsbild-Vorschlag zeigt den Beteiligten, dass ein Vorschlag entsteht, und regt sie zur Beteiligung an. So lassen sich Bedenken sichtbar machen.
 
 ![](proposal_sense_check_refresh_brand.png)
 
@@ -128,7 +131,7 @@ Vivien startet einen Vorschlag zur Sinnesprüfung, um Meinungen zu wichtigen Tei
 
 ### Schritt 3. Überarbeitung
 
-Als der Vorschlag zur Sinnesprüfung schließt, teilt Vivien ein Fazit mit und informiert alle über die Ergebnisse und die nächsten Schritte. Vivien moderiert eine Diskussion, um Bedenken aufzugreifen und das Dokument zum Markenkonzept zu überarbeiten.
+Wenn der Stimmungsbild-Vorschlag beendet ist, formuliert Vivien ein Fazit und informiert alle über die Ergebnisse und die nächsten Schritte. Vivien moderiert eine Diskussion, um Bedenken zu klären und das Dokument zum Markenkonzept zu überarbeiten.
 
 ![](proposal_outcome_sense_check_refresh_brand.png)
 
@@ -136,13 +139,13 @@ Als der Vorschlag zur Sinnesprüfung schließt, teilt Vivien ein Fazit mit und i
 
 ### Schritt 4. Einigung
 
-Nachdem Vivien die aktuelle Fassung des Dokuments zum Markenkonzept fertiggestellt hat, startet sie einen Konsensvorschlag, um die Zustimmung des Leitungsgremiums einzuholen.
+Nachdem die neueste Version des Dokuments zum Markenkonzept fertiggestellt ist, startet Vivien einen Konsensvorschlag, um die Genehmigung des Leitungsgremiums einzuholen.
 
 ![](proposal_consensus_process_refresh_brand.png)
 
-Die Mitglieder des Leitungsgremiums werden eingeladen, über das Markenkonzept abzustimmen. Das Gremium hat zuvor vereinbart, dass Vorschläge dieser Art nur angenommen werden, wenn >75 % der Mitglieder mit Dafür stimmen.
+Die Mitglieder des Leitungsgremiums werden eingeladen, abzustimmen und das Markenkonzept zu genehmigen. Das Gremium hat zuvor vereinbart, dass bei solchen Vorschlägen >75% der Mitglieder mit Zustimmung abstimmen müssen, damit der Vorschlag angenommen wird.
 
-Diese Vorlage enthält standardmäßig die Option Veto. Ein Veto passt nicht zu jeder Gruppe: Es kann umstritten sein oder missbraucht werden. Wenn ihr in eurem Entscheidungsprozess kein Veto verwendet, empfehlen wir, die Option aus der Vorlage zu entfernen.
+Diese Vorlage enthält standardmäßig eine Veto-Option. Ein Veto eignet sich nicht für jede Gruppe – es kann umstritten sein oder missbraucht werden. Wenn du in deinem Entscheidungsprozess kein Veto verwendest, empfehlen wir, die Vorlage zu bearbeiten und diese Option zu entfernen.
 
 ![](proposal_vote_consensus_process_refresh_brand.png)
 
@@ -150,6 +153,6 @@ Diese Vorlage enthält standardmäßig die Option Veto. Ein Veto passt nicht zu 
 
 ### Schritt 5. Fazit
 
-Als der Konsensvorschlag schließt, teilt Vivien ein Fazit mit. Sie informiert alle darüber, dass eine Einigung erzielt wurde und die Umsetzung der neuen Marke beginnt.
+Wenn der Konsensvorschlag beendet ist, hält Vivien ein Fazit fest und informiert alle darüber, dass eine Einigung erreicht wurde und die Arbeit zur Umsetzung der neuen Marke beginnt.
 
 ![](proposal_outcome_consensus_process_refresh_brand.png)

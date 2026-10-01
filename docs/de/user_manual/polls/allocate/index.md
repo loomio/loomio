@@ -1,6 +1,6 @@
 ---
 title: Punkte verteilen
-source_revision: 71554be8e61a76613b0707b8262302c22299a5d0
+source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
 source_file: docs/en/user_manual/polls/allocate/index.md
 translated:
   provider: codex/gpt-6.1-sol
@@ -14,84 +14,87 @@ sections:
   read-the-results: 3a66507bd8387273
   share-an-outcome: abb46bfca8b73b7a
 generated:
-  introduction: 3395035845bb0d78
-  when-to-use-allocate: 22a7a09d5c278c2f
-  example-set-priorities-for-an-annual-strategy-review: 49e644b734417bc1
-  set-up-the-poll: 6a1d56fe5c5748c8
-  vote: cf3403f5d0f4bc66
-  read-the-results: f2a401fe0a350bc6
-  share-an-outcome: a5614459bb002829
+  introduction: 765e02a12b99874c
+  when-to-use-allocate: 9980e9be043add80
+  example-set-priorities-for-an-annual-strategy-review: ca42555f14488733
+  set-up-the-poll: def48656bc2b8c89
+  vote: f24236513ae6fef6
+  read-the-results: 3f647e09fa7899c8
+  share-an-outcome: ef1ca6b574714e77
 title_source: c927a8a7c2ce230c
 title_generated: 42b7ab2170081617
+needs_review:
+  set-up-the-poll: use "Entscheidung" instead of "Abstimmung" for "decision"
+  share-an-outcome: use "Fazit" instead of "Ergebnis" for "outcome"
 ---
 
 <!-- translation-section: introduction -->
 
-# Punkte verteilen
+# Verteilen
 
-Bei „Punkte verteilen“, auch Punktabstimmung genannt, werden Prioritäten sichtbar, wenn Entscheidungen gegeneinander abgewogen werden müssen. Alle Teilnehmenden erhalten eine feste Anzahl von Punkten und verteilen sie auf die Optionen. Wer einer Option mehr Punkte gibt, hat für die anderen weniger übrig.
+Verteilen, auch als Punktabstimmung bekannt, zeigt Prioritäten, wenn Abwägungen nötig sind. Alle Teilnehmenden erhalten ein festes Punktebudget und verteilen es auf die Optionen. Wer einer Option mehr Punkte gibt, hat weniger Punkte für die anderen übrig.
 
 <!-- translation-section: when-to-use-allocate -->
 
-## Wann du Punkte verteilen solltest
+## Wann du Verteilen verwendest
 
-Nutze „Punkte verteilen“, wenn Zeit, Geld, Aufmerksamkeit oder eine andere Ressource begrenzt ist. Das eignet sich zum Beispiel, um:
+Verwende Verteilen, wenn Zeit, Geld, Aufmerksamkeit oder andere Ressourcen begrenzt sind. Es eignet sich gut dafür:
 
 - Aufgaben für den nächsten Planungszeitraum zu priorisieren;
-- ein gemeinschaftlich verwaltetes Budget auf Projekte zu verteilen;
-- zu entscheiden, wie viel Zeit mehrere Themen auf der Tagesordnung erhalten;
-- eine feste Anzahl von Stunden für ehrenamtliche Arbeit zu verteilen; oder
-- zu erkennen, welche Verbesserungen den Mitgliedern am wichtigsten sind.
+- ein Beteiligungsbudget auf Projekte aufzuteilen;
+- festzulegen, wie viel Zeit mehrere Themen auf der Tagesordnung erhalten;
+- eine feste Anzahl ehrenamtlicher Arbeitsstunden zu verteilen; oder
+- herauszufinden, welche Verbesserungen den Mitgliedern am wichtigsten sind.
 
-Die Punkte zeigen relative Prioritäten. Loomio weist dadurch keine Ressourcen automatisch zu. Nutze [Bewertung](/en/user_manual/polls/score/), wenn jede Option eine hohe Bewertung erhalten kann, ohne dass dadurch für eine andere weniger übrig bleibt.
+Die Punkte drücken relative Prioritäten aus, keine Menge, die Loomio automatisch zuteilt. Verwende [Bewerten](/en/user_manual/polls/score/), wenn jede Option eine hohe Bewertung erhalten können soll, ohne dass dadurch die Unterstützung für eine andere sinkt.
 
 <!-- translation-section: example-set-priorities-for-an-annual-strategy-review -->
 
-## Beispiel: Prioritäten für die jährliche Strategieüberprüfung festlegen
+## Beispiel: Prioritäten für eine jährliche Strategieüberprüfung festlegen
 
-Die Hafermilch-Genossenschaft plant ihre jährliche Strategieüberprüfung. Sie fragt ihre Mitglieder, welchen Bereichen sie dabei die meiste Zeit und Aufmerksamkeit widmen soll. Jedes Mitglied erhält zehn Punkte und kann sie auf fünf Bereiche verteilen. So werden die Prioritäten der Gruppe sichtbar. Zugleich müssen die Teilnehmenden abwägen, wofür sie ihre Punkte einsetzen.
+Die Oatmilk Cooperative plant ihre jährliche Strategieüberprüfung. Sie fragt ihre Mitglieder, welche Bereiche dabei die meiste Zeit und Aufmerksamkeit erhalten sollen. Jedes Mitglied erhält zehn Punkte, die es auf fünf Bereiche verteilen kann. So werden die relativen Prioritäten der Gruppe sichtbar, während die Teilnehmenden zugleich abwägen müssen.
 
 <!-- translation-section: set-up-the-poll -->
 
-## Abstimmung einrichten
+## Richte die Abstimmung ein
 
-Beschreibe die Entscheidung und erkläre, wofür die Punkte stehen. Füge Optionen mit einem ähnlichen Umfang hinzu und lege dann **Punkte pro Person** fest. In diesem Beispiel erhalten alle Abstimmenden zehn Punkte, um anzugeben, wie viel Zeit jeder strategische Bereich bei der Überprüfung erhalten soll.
+Beschreibe die Entscheidung und was die Punkte darstellen. Füge Optionen mit vergleichbarem Umfang hinzu und lege dann **Punkte pro Person** fest. In diesem Beispiel erhält jede abstimmende Person zehn Punkte, um anzugeben, wie viel Zeit für die Überprüfung jedes strategischen Bereichs vorgesehen werden soll.
 
 ![](form.png)
 
-Eine sehr hohe Punktzahl kann eine Genauigkeit vortäuschen, die nicht besteht. Eine sinnvolle Punktzahl ist meist hoch genug, um Unterschiede sichtbar zu machen, und niedrig genug, um Entscheidungen zu erfordern. Stelle klar, ob alle Punkte auf eine einzige Option entfallen dürfen.
+Ein sehr großes Punktebudget kann eine falsche Genauigkeit vermitteln. Ein sinnvolles Budget ist meist groß genug, um Unterschiede sichtbar zu machen, aber klein genug, um Entscheidungen zu erfordern. Stelle klar, ob alle Punkte auf eine einzige Option verteilt werden dürfen.
 
 <!-- translation-section: vote -->
 
-## Abstimmen
+## Stimme ab
 
-Die Teilnehmenden verteilen ihre Punkte mit den Schiebereglern. Loomio zeigt an, wie viele Punkte übrig sind, und lässt die Stimmabgabe erst zu, wenn die Verteilung gültig ist.
+Die Teilnehmenden bewegen die Schieberegler, um ihr Punktebudget zu verteilen. Loomio zeigt an, wie viele Punkte übrig sind, und lässt die Abgabe der Stimme erst zu, wenn die Verteilung gültig ist.
 
 ![](voting.png)
 
-In diesem Beispiel vergibt die abstimmende Person je drei Punkte an **Mitgliederbeteiligung** und **Finanzielle Nachhaltigkeit**, je zwei an **Umweltauswirkungen** und **Personalentwicklung** und keinen an **Produkte und Dienstleistungen**. Null Punkte bedeuten nicht unbedingt, dass ein Bereich unwichtig ist. Die Person hat ihre begrenzten Punkte für andere Bereiche verwendet.
+In diesem Beispiel gibt die abstimmende Person jeweils drei Punkte für **Mitgliederbeteiligung** und **Finanzielle Nachhaltigkeit**, jeweils zwei für **Umweltauswirkungen** und **Personalentwicklung** und keine für **Produkte und Dienstleistungen**. Null Punkte bedeuten nicht unbedingt, dass ein Bereich keinen Wert hat; sie bedeuten, dass die abstimmende Person ihre begrenzten Punkte anderswo eingesetzt hat.
 
 <!-- translation-section: read-the-results -->
 
-## Ergebnisse lesen
+## Lies das Ergebnis
 
-Die Ergebnisse ordnen die Optionen nach der Gesamtzahl der erhaltenen Punkte. Sie zeigen außerdem:
+Im Ergebnis werden die Optionen nach der Gesamtzahl der erhaltenen Punkte geordnet. Außerdem werden folgende Angaben angezeigt:
 
-- **% der Punkte**: den Anteil der Option an allen vergebenen Punkten;
-- **Punkte**: die insgesamt an die Option vergebenen Punkte;
-- **Bedeuten**: den Durchschnitt unter den Abstimmenden, die der Option Punkte gegeben haben; und
-- **Wähler*innen**: wie viele Personen der Option mindestens einen Punkt gegeben haben.
+- **% der Punkte**: der Anteil der Option an allen verteilten Punkten;
+- **Punkte**: die Gesamtzahl der verteilten Punkte;
+- **Bedeuten**: der Durchschnitt unter den Abstimmenden, die der Option Punkte gegeben haben; und
+- **Abstimmende**: wie viele Personen der Option mindestens einen Punkt gegeben haben.
 
 ![](results.png)
 
-In diesem Beispiel erhält **Finanzielle Nachhaltigkeit** die meisten Punkte, gefolgt von **Personalentwicklung**. Alle Abstimmenden geben der finanziellen Nachhaltigkeit Punkte. Das deutet auf breite Zustimmung hin, diesem Bereich bei der Überprüfung viel Zeit zu widmen. Vergleiche die Gesamtpunktzahl mit der Zahl der Abstimmenden. So erkennst du, ob ein Bereich vielen wichtig ist oder von wenigen besonders stark unterstützt wird.
+In diesem Beispiel erhält **Finanzielle Nachhaltigkeit** die meisten Punkte, gefolgt von **Personalentwicklung**. Finanzielle Nachhaltigkeit erhält von allen Abstimmenden Punkte. Das deutet auf eine breite Übereinstimmung hin, dass dieser Bereich bei der Überprüfung viel Zeit benötigt. Betrachte die Gesamtpunktzahlen zusammen mit der Anzahl der Abstimmenden, um breit getragene Prioritäten von Bereichen zu unterscheiden, die von weniger Personen stark unterstützt werden.
 
-Betrachte die Gesamtpunktzahlen zusammen mit der Zahl der Abstimmenden und ihren Begründungen.
+Betrachte die Gesamtpunktzahlen zusammen mit der Anzahl der Abstimmenden und ihren Begründungen.
 
 <!-- translation-section: share-an-outcome -->
 
-## Ein Fazit teilen
+## Teile ein Fazit
 
-Wenn die Abstimmung endet, teile ein Fazit. Die Abstimmung weist Zeit oder Geld nicht automatisch zu. Erkläre deshalb, wie das Ergebnis genutzt wird. Unter [Ein Fazit teilen](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome) erfährst du, wie Fazits funktionieren.
+Wenn die Abstimmung beendet ist, teile ein Fazit. Die Abstimmung weist weder Zeit noch Geld automatisch zu. Erkläre daher, wie das Ergebnis verwendet wird. Unter [Ein Fazit teilen](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome) erfährst du, wie Fazits funktionieren.
 
-![Ein Fazit, das festlegt, wie die Zeit bei der Strategieüberprüfung aufgeteilt wird](outcome.png)
+![Ein Fazit, das festlegt, wie die Zeit für die Strategieüberprüfung aufgeteilt wird](outcome.png)

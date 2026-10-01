@@ -1,6 +1,6 @@
 ---
 title: Konsens
-source_revision: 71554be8e61a76613b0707b8262302c22299a5d0
+source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
 source_file: docs/en/user_manual/polls/proposals/consensus/index.md
 translated:
   provider: codex/gpt-6.1-sol
@@ -14,13 +14,13 @@ sections:
   read-the-results: e60abb3a43a86d6e
   share-an-outcome: a7febe19484c20b3
 generated:
-  introduction: ca95073f23c2ff44
-  when-to-use-consensus: e48d81b35aa9af5c
-  example-adopt-a-bottle-return-standard: 9b8cd1a41afd9939
-  set-up-the-proposal: 4140d0fb5c5faaa1
-  vote: 592ea6fb52c538de
-  read-the-results: 1b4baf8013c0a4b5
-  share-an-outcome: a7177c3886ae3fa1
+  introduction: 52a2feac7c98b9bd
+  when-to-use-consensus: 7db29c2cc06b8580
+  example-adopt-a-bottle-return-standard: ff81bd6d577e8d34
+  set-up-the-proposal: cb8052b549757ee4
+  vote: 84bef0c506c98667
+  read-the-results: e9287f1d75617b50
+  share-an-outcome: 9cbabbe4d58db86c
 title_source: 8abe09bf65aefdb8
 title_generated: f120acdf5f752fdb
 ---
@@ -29,29 +29,29 @@ title_generated: f120acdf5f752fdb
 
 # Konsens
 
-Ein Konsensvorschlag soll eine gemeinsame Einigung aller Beteiligten erreichen. Die Standardantworten sind Zustimmung, Enthaltung, Ablehnung und Veto.
+Ein Konsensvorschlag zielt auf die gemeinsame Zustimmung aller Beteiligten ab. Mit den standardmäßigen Antwortoptionen können Teilnehmende zustimmen, sich enthalten, widersprechen oder ein Veto einlegen.
 
-Diese Seite erklärt, wie du einen Konsensvorschlag durchführst. Der [Konsensprozess](/en/guides/making_decisions/consensus_process) beschreibt den gesamten Ablauf von der Diskussion und der Prüfung des Meinungsbilds über Änderungen bis zum Fazit.
+Diese Seite erklärt, wie du einen einzelnen Konsensvorschlag durchführst. Den vollständigen Ablauf von der Diskussion und dem Stimmungsbild über die Überarbeitung bis zum Fazit findest du unter [Konsensprozess](/en/guides/making_decisions/consensus_process).
 
 <!-- translation-section: when-to-use-consensus -->
 
 ## Wann du Konsens verwenden solltest
 
-Verwende Konsens für Entscheidungen, die von der Gruppe gemeinsam getragen werden sollen und bei denen ihr Bedenken zusammen klären möchtet. Dazu gehören gemeinsame Standards, Vereinbarungen zur Leitung der Gruppe, strategische Verpflichtungen und Entscheidungen, die die ganze Gruppe betreffen.
+Verwende Konsens für Entscheidungen, bei denen es darauf ankommt, dass viele die Entscheidung mittragen, und die Gruppe bereit ist, Bedenken gemeinsam zu bearbeiten. Konsens eignet sich für gemeinsame Standards, Vereinbarungen zur Organisation und Leitung, strategische Verpflichtungen und Entscheidungen, die die ganze Gruppe betreffen.
 
-Konsens erfordert meist eine Diskussion und die Ausarbeitung des Vorschlags vor der Abstimmung. Legt fest, was ein **Veto** für eure Gruppe bedeutet und welche Folgen es hat. Wenn euer Verfahren keine Vetos vorsieht, entferne diese Antwort aus der Vorlage.
+Konsens erfordert in der Regel eine Diskussion und die Ausarbeitung eines Vorschlags, bevor abgestimmt wird. Lege fest, welche Bedeutung und Folgen ein **Veto** für deine Gruppe hat. Wenn euer Verfahren keine Vetos vorsieht, bearbeite die Vorlage und entferne diese Option.
 
 <!-- translation-section: example-adopt-a-bottle-return-standard -->
 
-## Beispiel: Einen Standard für die Rückgabe von Flaschen einführen
+## Beispiel: einen Standard für die Flaschenrückgabe beschließen
 
-Die Hafermilch-Genossenschaft hat einen Standard für Pfand, Sammlung, Reinigung, Dokumentation der Lebensmittelsicherheit und Berichterstattung ausgearbeitet. Da alle Teams ihn anwenden werden, strebt die Genossenschaft vor der Einführung einen Konsens an.
+Die Oatmilk Cooperative hat einen Standard entwickelt, der Pfand, Sammlung, Reinigung, Dokumentation zur Lebensmittelsicherheit und Berichterstattung umfasst. Da jedes Team ihn verwenden wird, strebt die Genossenschaft vor seiner Einführung einen Konsens an.
 
 <!-- translation-section: set-up-the-proposal -->
 
-## Den Vorschlag vorbereiten
+## Den Vorschlag einrichten
 
-Beschreibe die gesamte Vereinbarung, über die entschieden werden soll, und verlinke ergänzende Informationen. Erkläre jede Antwortmöglichkeit, besonders den Unterschied zwischen Ablehnung und Veto. Plane genug Zeit für Fragen und Änderungen ein.
+Beschreibe die zur Entscheidung stehende Vereinbarung vollständig und verlinke ergänzende Informationen. Erkläre jede Antwortoption, insbesondere den Unterschied zwischen Widerspruch und Veto. Plane genügend Zeit für Fragen und Änderungen ein.
 
 ![](form.png)
 
@@ -59,15 +59,15 @@ Beschreibe die gesamte Vereinbarung, über die entschieden werden soll, und verl
 
 ## Abstimmen
 
-Die Teilnehmenden wählen die Antwort, die ihrer Haltung entspricht, und erläutern ihre Interessen oder Bedenken. Wer ein Veto einlegt, sollte begründen, warum die Annahme des Vorschlags ein grundlegendes Bedürfnis oder einen vereinbarten Grundsatz verletzen würde.
+Teilnehmende wählen die Antwort, die ihrer Position entspricht, und erklären die dahinterstehenden Interessen oder Bedenken. Die Begründung für ein Veto sollte deutlich machen, warum die Annahme des Vorschlags ein grundlegendes Bedürfnis oder einen vereinbarten Grundsatz verletzen würde.
 
 ![](../proposal_consensus_voting.png)
 
 <!-- translation-section: read-the-results -->
 
-## Ergebnisse auswerten
+## Das Ergebnis lesen
 
-Das Diagramm zeigt die Verteilung der Antworten. Prüfe jede Ablehnung und jede Begründung für ein Veto. Bei einem Konsens geht es darum, Bedenken zu klären und nicht nur Zustimmungen zu zählen.
+Das Diagramm zeigt die Verteilung der Antworten. Prüfe jede Begründung für einen Widerspruch oder ein Veto; Konsens ist ein Prozess, bei dem Bedenken ausgeräumt werden, und besteht nicht nur darin, zustimmende Stimmen zu zählen.
 
 ![](../proposal_consensus_results.png)
 
@@ -75,6 +75,6 @@ Das Diagramm zeigt die Verteilung der Antworten. Prüfe jede Ablehnung und jede 
 
 ## Ein Fazit teilen
 
-Wenn der Vorschlag geschlossen wird, teile ein Fazit. Wenn die Gruppe eine Einigung erzielt hat, halte die endgültige Vereinbarung und die Zuständigkeiten fest. Andernfalls halte fest, was überarbeitet wird und wann die Gruppe den Vorschlag erneut bespricht. Unter [Ein Fazit teilen](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome) erfährst du, wie Fazits funktionieren.
+Teile ein Fazit, wenn der Vorschlag beendet ist. Wenn die Gruppe eine Einigung erzielt hat, halte die endgültige Vereinbarung und die Verantwortlichkeiten fest. Andernfalls halte fest, was überarbeitet wird und wann die Gruppe den Vorschlag erneut aufgreift. Unter [Ein Fazit teilen](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome) erfährst du, wie Fazits funktionieren.
 
-![Ein Fazit, das festhält, dass kein Konsens erzielt wurde und der Standard überarbeitet wird](outcome.png)
+![Ein Fazit, das festhält, dass kein Konsens erreicht wurde und der Standard überarbeitet wird](outcome.png)

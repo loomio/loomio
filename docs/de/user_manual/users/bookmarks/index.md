@@ -1,31 +1,33 @@
 ---
 title: Lesezeichen
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/users/bookmarks/index.md
+source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
+source_file: docs/en/user_manual/users/bookmarks/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 752c1df552c461e6
   save-a-bookmark: ae80e968a14c61b4
   view-your-bookmarks: 66cd0a27cf9bcca2
   remove-a-bookmark: c9ef73967bce0bf8
 generated:
-  introduction: f58f8e8a4d4083f5
-  save-a-bookmark: 40bd68013081190e
-  view-your-bookmarks: c6c22d7fa14d8c20
-  remove-a-bookmark: 0dd95b8f2bb1b949
+  introduction: fdd367e347c4c108
+  save-a-bookmark: 99b93e9bef63089b
+  view-your-bookmarks: 8cf7d2e748618f24
+  remove-a-bookmark: 762da913c308b1be
 title_source: 96316f0f6404dbe1
 title_generated: d8e6102b81efddc2
+needs_review:
+  save-a-bookmark: use "Stimme" instead of "Abstimmung" for "vote"
 ---
 
 <!-- translation-section: introduction -->
 
 # Lesezeichen
 
-Lesezeichen sind deine persönliche Liste mit Inhalten auf Loomio, zu denen du zurückkehren möchtest. Deine Lesezeichen sind nur für dich sichtbar. Wenn du ein Lesezeichen speicherst, wird niemand benachrichtigt.
+Lesezeichen sind deine persönliche Liste von Inhalten in Loomio, zu denen du zurückkehren möchtest. Deine Lesezeichen sind nur für dich sichtbar. Wenn du einen Inhalt speicherst, wird niemand sonst benachrichtigt.
 
-Du kannst Lesezeichen speichern für:
+Du kannst Lesezeichen für folgende Inhalte speichern:
 
 - Diskussionen
 - Kommentare
@@ -35,9 +37,9 @@ Du kannst Lesezeichen speichern für:
 
 <!-- translation-section: save-a-bookmark -->
 
-## Lesezeichen speichern
+## Ein Lesezeichen speichern
 
-Öffne das Aktionsmenü des Inhalts und wähle **Lesezeichen speichern**. Das Aktionsmenü wird meist als drei Punkte angezeigt. Bei einer Diskussion findest du es neben dem Diskussionstitel. Bei einem Kommentar, einer Stimme, einem Vorschlag, einer Abstimmung oder einem Fazit findest du es direkt am jeweiligen Inhalt.
+Öffne das Aktionsmenü des Eintrags und wähle **Lesezeichen speichern**. Das Aktionsmenü wird meist als drei Punkte angezeigt. Verwende bei einer Diskussion das Aktionsmenü neben dem Diskussionstitel; bei einem Kommentar, einer Stimme, einem Vorschlag, einer Abstimmung oder einem Fazit das Menü direkt am jeweiligen Eintrag.
 
 ![](save_bookmark.png)
 
@@ -47,14 +49,14 @@ Du kannst Lesezeichen speichern für:
 
 Öffne die Seitenleiste und wähle **Lesezeichen**. Die Zahl neben dem Link zeigt, wie viele Lesezeichen du gespeichert hast.
 
-Auf der Seite „Lesezeichen“ stehen die zuletzt gespeicherten Inhalte zuerst. Jede Zeile zeigt die Art des Inhalts und wer ihn verfasst hat. Wähle eine Zeile aus, um den gespeicherten Inhalt zu öffnen.
+Auf der Seite Lesezeichen stehen die zuletzt gespeicherten Inhalte zuerst. Jede Zeile zeigt die Art des Inhalts und die Person, die ihn verfasst hat. Wähle eine Zeile, um zum gespeicherten Inhalt zurückzukehren.
 
 ![](bookmarks_page.png)
 
 <!-- translation-section: remove-a-bookmark -->
 
-## Lesezeichen entfernen
+## Ein Lesezeichen entfernen
 
-Wähle auf der Seite „Lesezeichen“ die Schaltfläche zum Entfernen am Ende einer Zeile. Du kannst auch das Aktionsmenü des gespeicherten Inhalts öffnen und **Lesezeichen entfernen** wählen.
+Wähle auf der Seite Lesezeichen die Schaltfläche zum Entfernen des Lesezeichens am Ende einer Zeile. Du kannst auch das Aktionsmenü des gespeicherten Inhalts öffnen und **Lesezeichen entfernen** wählen.
 
-Wenn du ein Lesezeichen entfernst, ändert sich nur deine persönliche Liste. Du kannst den Inhalt später erneut speichern.
+Wenn du ein Lesezeichen entfernst, betrifft das nur deine persönliche Liste. Du kannst den Inhalt später erneut speichern.

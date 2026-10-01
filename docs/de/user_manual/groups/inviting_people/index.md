@@ -1,10 +1,10 @@
 ---
 title: Leute einladen
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/groups/inviting_people/index.md
+source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
+source_file: docs/en/user_manual/groups/inviting_people/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 55a6bcc670aa6224
   send-invitations-via-email: bbc814cba35c9541
@@ -17,16 +17,16 @@ sections:
   re-send-invitations: 76c7fc660f7e3d42
   cancelling-invitations: f3df8386eeda62f5
 generated:
-  introduction: 752ebaff58ae5579
-  send-invitations-via-email: a3b349eaaa5626c8
-  invite-many-at-once: 2ca55a6dc42d1468
-  invite-people-to-subgroups: 4e29e8edb0a17ff5
-  share-a-link-to-your-group: 1b859dd81f666339
-  request-to-join-group: be1e240214845118
-  review-membership-requests: c71c96806a9d9eda
-  managing-invitations: 3ece06a4b2687ae9
-  re-send-invitations: 94c388168af8420f
-  cancelling-invitations: ab2ee578bd8ea78a
+  introduction: 597adff623b5dfbe
+  send-invitations-via-email: 8ef2c71dbacdf0dc
+  invite-many-at-once: 6e5fab9d5b61658d
+  invite-people-to-subgroups: 409d415fe7276d2b
+  share-a-link-to-your-group: b196234088f75c1a
+  request-to-join-group: 4353ca153f9191ea
+  review-membership-requests: 6182cbfeffeb3592
+  managing-invitations: 7b7fde2e84cd9bc3
+  re-send-invitations: 82377653e3d1426c
+  cancelling-invitations: 99758ebaaea65cd4
 title_source: b926eb8921d85971
 title_generated: 3e0831d8f76bf916
 ---
@@ -35,9 +35,9 @@ title_generated: 3e0831d8f76bf916
 
 # Leute einladen
 
-Öffne deine Gruppenseite und klicke auf den Tab **Mitglieder**, um die Mitglieder zu verwalten.
+Gehe auf deine Gruppenseite und klicke auf den Tab **Mitglieder**, um die Mitgliederverwaltung zu öffnen.
 
-Du kannst bestimmte Personen über ihre E-Mail-Adresse in deine Gruppe **Einladen** oder einen Link zu deiner Gruppe per E-Mail, Newsletter, Chat oder über deine Website **Teilen**.
+Mit **Einladen** kannst du bestimmte Personen über ihre E-Mail-Adresse in deine Gruppe einladen. Mit **Teilen** kannst du einen Link zu deiner Gruppe per E-Mail, Newsletter, Chat oder über deine Website teilen.
 
 ![](group_join_group_invite.png)
 
@@ -45,30 +45,30 @@ Du kannst bestimmte Personen über ihre E-Mail-Adresse in deine Gruppe **Einlade
 
 ## Einladungen per E-Mail versenden
 
-Klicke im Tab **Mitglieder** auf **Einladen**, um eine E-Mail mit einem einmalig verwendbaren Einladungslink zu versenden. Die empfangende Person kann ein Loomio-Konto erstellen und deiner Gruppe beitreten.
+Klicke im Tab **Mitglieder** auf **Einladen**, um eine E-Mail mit einem einmalig verwendbaren Einladungslink zu versenden. Die eingeladene Person kann ein Loomio-Konto erstellen und deiner Gruppe beitreten.
 
-Wenn die Person bereits ein Loomio-Konto hat, kann sie die Einladung auch mit diesem Konto annehmen und deiner Gruppe beitreten.
+Wenn die eingeladene Person bereits ein Loomio-Konto hat, kann sie die Einladung auch mit ihrem bestehenden Konto annehmen und deiner Gruppe beitreten.
 
 ![](group_invite_email.png)
 
 <!-- translation-section: invite-many-at-once -->
 
-### Mehrere Personen gleichzeitig einladen
+### Viele Personen gleichzeitig einladen
 
-Du kannst bis zu 100 Personen gleichzeitig per E-Mail einladen. Gib dazu mehrere E-Mail-Adressen in das Feld „Wen möchtest du einladen?“ ein oder füge sie dort ein. Trenne die Adressen durch Kommas oder Leerzeichen.
+Du kannst Einladungen per E-Mail an bis zu 100 Personen gleichzeitig versenden, indem du mehrere E-Mail-Adressen in das Feld „Wen möchtest du einladen?“ eingibst oder kopierst und einfügst. Trenne die E-Mail-Adressen durch Kommas oder Leerzeichen.
 
-Wenn du Personen in eine Gruppe innerhalb einer Organisation einlädst, werden dir die übergeordnete Gruppe und zugehörige Untergruppen, denen du angehörst, als Vorschläge angezeigt. Wähle eine Gruppe und dann ihren Chip aus, um die einzelnen Personen anzuzeigen. Vor dem Versenden kannst du Personen entfernen, die du nicht einladen möchtest. Personen, die bereits Mitglied der Zielgruppe sind, werden ausgeschlossen.
+Wenn du Personen in eine Gruppe innerhalb einer Organisation einlädst, werden die Hauptgruppe und zugehörige Untergruppen, denen du angehörst, als Vorschläge für den Personenkreis angezeigt. Wähle eine Gruppe und klicke dann auf ihre Auswahlmarkierung, um die einzelnen Personen anzuzeigen. Du kannst alle Personen entfernen, die du nicht einladen möchtest, bevor du die Einladungen versendest. Personen, die bereits zur Zielgruppe gehören, werden ausgeschlossen.
 
 >[!Tip]
 >Kopiere E-Mail-Adressen aus einer Spalte in einer Google- oder Excel-Tabelle und füge sie in das Einladungsfeld ein.
 
-Wenn du auf **Einladen** klickst, wird an jede angegebene E-Mail-Adresse eine Nachricht mit einem eigenen, einmalig verwendbaren Einladungslink gesendet. Die E-Mail wird in der Sprache versendet, die du gerade verwendest.
+Wenn du auf **Einladen** klickst, wird an jede angegebene E-Mail-Adresse eine E-Mail mit einem eindeutigen Einladungslink gesendet, der nur einmal verwendet werden kann. Diese E-Mail wird in deiner aktuell eingestellten Sprache versendet.
 
 <!-- translation-section: invite-people-to-subgroups -->
 
-### Personen in Untergruppen einladen
+### Leute in Untergruppen einladen
 
-Auf dieselbe Weise kannst du Personen gleichzeitig in eine übergeordnete Gruppe und eine oder mehrere Untergruppen einladen. Klicke dazu auf **Leute einladen**. Markiere die Untergruppen, denen sie beim Beitritt sofort angehören sollen.
+Mit dem oben beschriebenen Verfahren kannst du Personen gleichzeitig in eine Hauptgruppe und eine oder mehrere Untergruppen einladen, indem du die Schaltfläche **Leute einladen** verwendest. Aktiviere die Kästchen neben den Untergruppen, denen die Personen direkt beim Beitritt zur Gruppe angehören sollen.
 
 ![](group_invite_email_subgroups.png)
 
@@ -76,41 +76,41 @@ Auf dieselbe Weise kannst du Personen gleichzeitig in eine übergeordnete Gruppe
 
 ## Einen Link zu deiner Gruppe teilen
 
-Mit **Teilen** kannst du einen Link zu deiner Gruppe weitergeben. Du kannst ihn per E-Mail, Newsletter oder Chat versenden oder auf deiner Website veröffentlichen.
+Mit der Schaltfläche **Teilen** kannst du einen Link zu deiner Gruppe teilen. Das ist hilfreich, wenn du einen Link per E-Mail, Newsletter oder Chat versenden oder auf deiner Website veröffentlichen möchtest.
 
 ![](group_invite_sharable_link.png)
 
-Klicke auf das Symbol „Kopieren“, um den Link in die Zwischenablage zu kopieren. Füge ihn dann in deine E-Mail, deinen Newsletter oder deinen Chat ein.
+Klicke auf das Symbol „Kopieren“, um den Link in deine Zwischenablage zu kopieren, und füge ihn dann in deine E-Mail, deinen Newsletter oder deinen Chatkanal ein.
 
-Wenn niemand mehr über diesen Link beitreten können soll, klicke auf „Diesen Link zurücksetzen“. Der bisherige Link funktioniert dann nicht mehr und ein neuer wird erstellt.
+Wenn du verhindern möchtest, dass Personen über diesen Link beitreten, klicke auf „Diesen Link zurücksetzen“. Der bestehende Link funktioniert dann nicht mehr, und ein neuer Link wird erstellt.
 
 <!-- translation-section: request-to-join-group -->
 
-## Beitritt zu einer Gruppe beantragen
+## Den Beitritt zu einer Gruppe anfragen
 
-Personen können den Beitritt zu einer offenen oder geschlossenen Gruppe beantragen. Teile dazu die Gruppen-URL, zum Beispiel `https://www.loomio.com/group-name`. Auf der Gruppenseite sehen sie die öffentlichen Informationen zur Gruppe. Mit **Der Gruppe beitreten** können sie die Beitrittsfrage beantworten und ihre Anfrage senden.
+Personen können eine Beitrittsanfrage für eine offene oder geschlossene Gruppe stellen. Teile die URL der Gruppe, zum Beispiel `https://www.loomio.com/group-name`. Auf der Gruppenseite können Personen die öffentlichen Gruppeninformationen sehen und **Der Gruppe beitreten** auswählen, um die Beitrittsfrage zu beantworten und ihre Anfrage zu senden.
 
 ![](group_join_group.png)
 
-Die Beitrittsfrage gibt Personen die Möglichkeit, sich vorzustellen und zu erklären, warum sie der Gruppe beitreten möchten.
+Die Beitrittsfrage gibt Personen die Möglichkeit, sich vorzustellen und zu erklären, warum sie beitreten möchten.
 
 ![](group_request_to_join.png)
 
-Wähle unter [Gruppenprivatsphäre](/en/user_manual/groups/settings/privacy#how-people-join) die Option **Genehmigung anfordern**, damit Beitrittsanfragen geprüft werden müssen. Du kannst die Beitrittsfrage auch in den Gruppeneinstellungen anpassen.
+Wähle unter [Privatsphäre der Gruppe](/en/user_manual/groups/settings/privacy#how-people-join) **Zustimmung anfordern**, damit Anfragen geprüft werden müssen. Du kannst die Beitrittsfrage auch in den Gruppeneinstellungen anpassen.
 
 <!-- translation-section: review-membership-requests -->
 
-### Mitgliedschaftsanfragen prüfen
+### Beitrittsanfragen prüfen
 
-Gruppenadmins und Mitglieder mit der Berechtigung, Mitglieder hinzuzufügen, prüfen Anfragen im Bereich **Mitgliedschaftsanfragen** des Tabs **Mitglieder**. Du kannst:
+Personen mit Administrationsrechten für die Gruppe und Mitglieder mit der Berechtigung, Mitglieder hinzuzufügen, prüfen Anfragen im Abschnitt **Beitrittsanfragen** des Tabs **Mitglieder**. Wer eine Anfrage prüft, kann:
 
 ![](group_review_request_to_join.png)
 
-- Der Anfrage **Zustimmen**, um die anfragende Person als Mitglied hinzuzufügen und sie zu benachrichtigen.
-- Die Anfrage **Ignorieren**, um sie ohne Benachrichtigung zu schließen und eine erneute Anfrage zu verhindern.
-- Die Anfrage **Ablehnen** und die Entscheidung in einer Nachricht erklären. Loomio sendet die Nachricht per E-Mail und Benachrichtigung an die anfragende Person. Sie kann danach eine neue Anfrage stellen.
+- Der Anfrage mit **Zustimmen** zustimmen, um die anfragende Person als Mitglied hinzuzufügen und sie zu benachrichtigen.
+- Die Anfrage mit **Ignorieren** abschließen, ohne die anfragende Person zu benachrichtigen oder eine weitere Anfrage zuzulassen.
+- Die Anfrage mit **Ablehnen** ablehnen und eine Nachricht hinzufügen, die die Entscheidung erklärt. Loomio sendet die Nachricht per E-Mail und Benachrichtigung an die anfragende Person. Diese kann eine neue Anfrage stellen.
 
-Wähle „Ablehnen“, um eine Nachricht zu schreiben, oder ignoriere die Anfrage.
+Wähle die Schaltfläche zum Ablehnen, um eine Nachricht zu schreiben oder die Anfrage zu ignorieren.
 
 ![](group_decline_request_to_join.png)
 
@@ -118,25 +118,25 @@ Wähle „Ablehnen“, um eine Nachricht zu schreiben, oder ignoriere die Anfrag
 
 ## Einladungen verwalten
 
-Öffne auf deiner Gruppenseite im Tab „Mitglieder“ das Filtermenü und wähle **Einladungen**. Einzelne Einladungen kannst du über das Menü mit den drei Punkten (**⋮**) rechts neben der Person verwalten.
+Um Einladungen zu verwalten, öffne das Filtermenü im Tab Mitglieder auf deiner Gruppenseite und wähle **Einladungen**. Einzelne Einladungen kannst du verwalten, indem du auf das Drei-Punkte-Menü (**⋮**) rechts neben dem Mitglied klickst.
 
 ![](group_invite_members_filter.png)
 
-Du kannst Personen auch zu Admins machen oder ihren Titel in der Gruppe festlegen, zum Beispiel „IT-Support“, bevor sie ihre Einladung annehmen.
+Du kannst Personen auch Administrationsrechte geben oder ihre Bezeichnung innerhalb der Gruppe festlegen, zum Beispiel „IT-Support“, bevor sie ihre Einladung annehmen.
 
 <!-- translation-section: re-send-invitations -->
 
 ### Einladungen erneut versenden
 
-Wenn jemand der Gruppe noch nicht beigetreten ist, kannst du nachfragen. Falls die Person ihre Einladungs-E-Mail verloren oder vergessen hat, kannst du die Einladung über das Menü neben ihrem Namen auf der Mitgliederseite erneut versenden.
+Erinnere Personen, die der Gruppe noch nicht beigetreten sind, an ihre Einladung. Wenn jemand die Einladungs-E-Mail verloren oder vergessen hat, kannst du sie über das Dropdown-Menü neben dem Namen auf der Mitgliederseite erneut versenden.
 
-Klicke neben der Person auf die drei Punkte (**⋮**) und wähle **Einladung erneut versenden**.
+Klicke auf die drei Punkte (**⋮**) neben der Person, der du die Einladung erneut senden möchtest, und wähle **Einladung erneut versenden**.
 
 ![](group_invite_resend_invitation.png)
 
 <!-- translation-section: cancelling-invitations -->
 
-### Einladungen abbrechen
-Wenn du eine falsche E-Mail-Adresse eingegeben hast oder jemanden doch nicht einladen möchtest, kannst du die Einladung im Tab „Mitglieder“ auf deiner Gruppenseite abbrechen. Wähle im Menü rechts neben der Einladung (**⋮**) die Option **Einladung abbrechen**.
+### Einladungen zurückziehen
+Wenn du eine falsche E-Mail-Adresse eingegeben hast oder jemanden doch nicht einladen möchtest, kannst du die Einladung im Tab Mitglieder auf deiner Gruppenseite zurückziehen. Wähle **Einladung zurückziehen** im Dropdown-Menü rechts neben der Mitgliedseinladung (**⋮**).
 
 ![](group_invite_cancel_invitation.png)
