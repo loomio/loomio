@@ -40,8 +40,9 @@ module Docs
     end
 
     def self.fingerprint(recipe, app_locale)
+      # English strings reach a translated image only through its own locale
+      # files, so a new English string does not recapture every language.
       paths = ["docs/en/#{recipe.fetch('image')}", "vue/tests/e2e/screenshots/#{recipe.fetch('spec')}",
-        "config/locales/client.en.yml", "config/locales/server.en.yml",
         "config/locales/client.#{app_locale}.yml", "config/locales/server.#{app_locale}.yml", *SHARED_INPUTS].uniq
       digest = Digest::SHA256.new
       digest.update("#{app_locale}\0#{recipe.fetch('testcase')}\0scale=2\0")
