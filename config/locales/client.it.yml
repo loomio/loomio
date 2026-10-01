@@ -183,7 +183,7 @@ it:
     only_show_tags_in_this_group: Mostra solo i tag di questo gruppo
   poll_types:
     proposal: proposta
-    count: opt-in
+    count: iscrizione
     check: verifica delle opinioni
     poll: Sondaggio
     dot_vote: voto a punti
@@ -550,7 +550,7 @@ it:
     volume_push_label: Push
     all_activity_option: Tutte le attività
     when_notified_option: Quando viene notificato
-    muted_option: Attutito
+    muted_option: Silenziato
     volume_channel_label: Come preferiremmo tenervi aggiornati?
     email_channel: E-mail
     push_channel: Push
@@ -729,7 +729,7 @@ it:
     search_discussions_in_group: Cerca discussioni in %{name}
     thread_nav: Menu del thread
   user_dropdown:
-    pin_sidebar: Attiva la barra laterale
+    pin_sidebar: Fissa la barra laterale
     unpin_sidebar: Rimuovi la barra laterale
     enable_beta_features: Abilita le funzionalità beta
     disable_beta_features: Disattiva le funzionalità beta
@@ -1012,7 +1012,7 @@ it:
       topic: Tutti nella conversazione
       voters: Tutti invitati a votare
       decided_voters: Tutti coloro che hanno votato
-      undecided_voters: Elettore indecisi
+      undecided_voters: Elettori in attesa
       non_voters: Membri di %{name} non ancora invitati
       delegates_of_group: Delegati di %{name}
     form:
@@ -1810,7 +1810,7 @@ it:
       thisweek: Questa Settimana
       thismonth: Questo mese
       older: Più di un mese fa
-    dashboard: Pannello di controllo
+    dashboard: Dashboard
     recent_discussions: Discussioni recenti
     view_recent: Visualizzare tutte le discussioni recenti?
     discussion_marked_as_read: Discussione contrassegnata come letta
@@ -1978,7 +1978,7 @@ it:
     consent_title: Consenso
     consensus_title: Consenso
     proposal_title: Proposta
-    count_title: Attiva
+    count_title: Iscrizione
     check_title: Verifica delle opinioni
     poll_title: Sondaggio
     meeting: Incontro
@@ -2301,12 +2301,12 @@ it:
     started_by: Iniziato da %{name}
   poll_common_votes_panel:
     vote_removed: Voto rimosso
-    undecided: Indecisi
+    undecided: In attesa
     newest_first: I voti più nuovi prima
     oldest_first: I voti più vecchi prima
     priority_first: I voti favorevole prima
     priority_last: 'I voti blocco prima '
-    undecided_first: Indecisi prima
+    undecided_first: Prima chi è in attesa
     no_votes_yet: Nessun voto è stato finora espresso.
     change_results_order: Modifica l'ordine dei risultati
     none_of_the_above: "(Nessuno dei precedenti)"
@@ -2328,9 +2328,9 @@ it:
     participation_records_restricted: Potrai vedere chi ha partecipato dopo la chiusura delle votazioni
     vote_weight: Peso del voto %{weight}
   poll_common_undecided_panel:
-    show_undecided: Mostra %{count} Indecisi
+    show_undecided: Mostra %{count} in attesa
     show_invitations: Mostra inviti pendenti
-    undecided_users: Indecisi (%{count})
+    undecided_users: In attesa (%{count})
     invitation_count_singular: una persona in più è stata invitata a partecipare via email
     invitation_count_plural: "%{count} persone in più sono state invitate a partecipare via email"
   poll_common_undecided_user:
@@ -2398,7 +2398,7 @@ it:
     option_already_added: Opzione già aggiunta al sondaggio
   poll_dot_vote_form:
     dots_per_person: Punti per persona
-    dots_per_person_helptext: Il numero totale di punti che viene chiesto a ogni persona di assegnare
+    dots_per_person_helptext: Il numero totale di punti che viene chiesto a ogni persona di ripartire
   poll_meeting_form:
     timeslots: Fasce orarie
     no_options: Inserisci gli orari nel tuo attuale fuso orario (%{zone}). I partecipanti vedranno gli orari nel proprio fuso orario.
@@ -2415,7 +2415,7 @@ it:
     minimum_stance_choices_hint: ie Classifica i tuoi primi 3 gusti di gelato
     ranked_choice_created: Scelta di preferenze creata
     ranked_choice_updated: Scelta di preferenze aggiornata
-    rank: Posizione
+    rank: Classifica
     points: Punti
     average: Media
     mean: Significare
@@ -2834,7 +2834,7 @@ it:
       voting_title: 24 ore prima della chiusura delle votazioni, invia un promemoria a
       nobody: Nessuno
       author: Autore (io)
-      undecided_voters: elettori indecisi
+      undecided_voters: elettori in attesa
       voters: Tutti gli elettori
     notify_on_participate:
       title: Avvisami quando le persone partecipano
@@ -2892,15 +2892,15 @@ it:
       choose: Scegliere
       simple_poll: Sondaggio semplice
       choose_hint: Gli elettori scelgono l'opzione (o le opzioni) migliore
-      score: Punto
+      score: Punteggio
       score_hint: Gli elettori assegnano un punteggio a ciascuna opzione
-      allocate: Assegnare
+      allocate: Ripartizione
       allocate_hint: Gli elettori assegnano un budget di punti tra le opzioni
       ranked_choice: Classifica delle preferenze
       ranked_choice_hint: Gli elettori dispongono le opzioni in ordine dalla più alla meno preferita
       time_poll: Sondaggio appuntamento
       time_poll_hint: Gli elettori indicano quando sono disponibili per l'incontro
-      rank: Rango
+      rank: Classifica
       time: Tempo
       stv: Elezioni STV
       stv_hint: Eleggere più vincitori in modo proporzionale utilizzando il voto singolo trasferibile
@@ -2952,7 +2952,7 @@ it:
     how_much_time_to_vote: Quanto tempo darai alle persone per votare?
     default_duration_in_days_hint: Quanti giorni avranno le persone per votare?
     define_minimum_and_maxmimum_score: Definisci i punteggi minimi e massimi che un elettore può dare a un'opzione
-    how_many_points_does_each_voter_have_to_allocate: Quanti punti deve assegnare ogni elettore?
+    how_many_points_does_each_voter_have_to_allocate: Quanti punti deve ripartire ogni elettore?
     anonymous_voting_description: Mostra i voti e le motivazioni, ma non chi li ha espressi. Questa impostazione non può essere modificata dopo l'avvio di %{poll_type}.
     vote_reason_description: Chiedete alle persone di condividere le loro motivazioni quando votano o di fornire ulteriori informazioni.
     hide_results_description: Se vuoi che le persone votino senza vedere come hanno votato gli altri, puoi nascondere i risultati.
@@ -3124,7 +3124,7 @@ it:
     closed_at: Chiuso alle
     closing_at: Chiude alle
   poll_stv_vote_form:
-    helptext: Trascina i candidati sopra la linea per classificarli. Gli elementi sotto la linea non sono classificati. Il rango 1 è quello che preferisci in assoluto.
+    helptext: Trascina i candidati sopra la linea per classificarli. Gli elementi sotto la linea non sono classificati. Il primo in classifica è quello che preferisci in assoluto.
     divider_text: Trascina i candidati sopra questa linea per classificarli
     stance_created: Votazione registrata
     stance_updated: Voto aggiornato
