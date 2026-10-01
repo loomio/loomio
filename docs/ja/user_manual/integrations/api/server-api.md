@@ -1,10 +1,10 @@
 ---
 title: サーバー API
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
+source_revision: c27ee3b193231816878f1c074ff9fc2a086a88c0
 source_file: docs/en/user_manual/integrations/api/server-api.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-02'
 sections:
   introduction: a357cdc2bfc0223e
   authentication: cbabcc874f053455
@@ -26,25 +26,25 @@ sections:
   examples-6: 71ae30577730b261
   sso-profile-sync-settings: 416144004d040e4f
 generated:
-  introduction: ed9db2dec737b16b
-  authentication: 39f6343c79a0711b
+  introduction: e4068667c6bae0ee
+  authentication: 3d5959d1c6caae6d
   user-object: 15a82288e941eebc
-  list-users: 337a3ce2a9751cb7
-  example: 03fc41ea50f85735
-  show-user: d3c15907f342f436
-  examples: 740094053406452d
-  update-user: 586d9bca8af2f801
-  params: 4df254fe05c69d4f
-  examples-2: 0161ec36e49710eb
-  deactivate-user: 2d90607108cde26b
-  examples-3: 608d2019b2df1748
-  reactivate-user: 3dd8d19bca3d01da
-  examples-4: 42e800938fb55b29
-  redact-user: 0a27346629a67d26
-  examples-5: d6a77841dd2fc9b0
-  delete-user: 82827fc930da9a40
-  examples-6: 58c6e7add6479fe6
-  sso-profile-sync-settings: 3a0abeb4d6d7748b
+  list-users: 5968d737b21206fb
+  example: 8ca4a50914f75bea
+  show-user: 4e832bae294cb5fe
+  examples: 5d5fd2df61ffb744
+  update-user: c93e3e9b28a34e48
+  params: 52f8ef47c03db108
+  examples-2: e968aa54e387bba8
+  deactivate-user: 70c52ed33881ac16
+  examples-3: cf59e5b94febf6b1
+  reactivate-user: 2b483871ac808c26
+  examples-4: 8d73c205d34410da
+  redact-user: 5da8bf0cefced95f
+  examples-5: 2720441e028231cb
+  delete-user: 1ab6b263cf5fdddd
+  examples-6: 5a2a8ccecacae5f1
+  sso-profile-sync-settings: be27cb70115591ea
 title_source: 370e81eb20eece44
 title_generated: 6693a36a8fbd5ef0
 ---
@@ -53,23 +53,23 @@ title_generated: 6693a36a8fbd5ef0
 
 # Loomio サーバー API ドキュメント
 
-<!-- seo-description: Loomio サーバー API を使用して、セルフホスト環境の Loomio のユーザーアカウントを管理できます。 -->
+<!-- seo-description: Loomio サーバー API を使用して、セルフホストの Loomio 環境でユーザーアカウントを管理できます。 -->
 
-`/api/b3` はサーバーレベルの操作に使用します。Loomio のユーザーアカウントとして行う操作には `/api/b2` を使用してください。
+`/api/b3` はサーバーレベルの操作に使用します。Loomio のユーザーアカウントとして行うユーザー向けの操作には、`/api/b2` を使用してください。
 
 <!-- translation-section: authentication -->
 
 ## 認証
 
-`B3_API_KEY` に、16文字を超える秘密の文字列を設定してください。
+`B3_API_KEY` に、16 文字を超える秘密の文字列を設定してください。
 
-キーを Bearer トークンとして送信してください。
+キーを Bearer トークンとして送信します。
 
 ```bash
 curl -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/b3/users
 ```
 
-認証情報は `Authorization` ヘッダーでのみ送信してください。クエリ文字列やリクエストボディに含まれる API キーは拒否されます。
+認証情報は `Authorization` ヘッダーでのみ送信してください。クエリ文字列やリクエスト本文に含まれる API キーは拒否されます。
 
 <!-- translation-section: user-object -->
 
@@ -101,13 +101,13 @@ curl -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/b
 
 ## ユーザー一覧の取得
 
-この Loomio 環境のすべてのユーザーアカウントを一覧で取得します。
+Loomio 環境のすべてのユーザーアカウントを一覧で取得します。
 
 `GET /api/b3/users`
 
 <!-- translation-section: example -->
 
-### 例
+### 使用例
 
 ```bash
 curl -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/b3/users
@@ -125,7 +125,7 @@ curl -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/b
 
 ## ユーザーの取得
 
-Loomio のユーザー ID または外部システムの識別情報でユーザーを検索します。
+Loomio のユーザー ID または外部の識別情報でユーザーを検索します。
 
 `GET /api/b3/users/:id`
 
@@ -133,7 +133,7 @@ Loomio のユーザー ID または外部システムの識別情報でユーザ
 
 <!-- translation-section: examples -->
 
-### 例
+### 使用例
 
 Loomio のユーザー ID を使用する場合：
 
@@ -141,7 +141,7 @@ Loomio のユーザー ID を使用する場合：
 curl -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/b3/users/123
 ```
 
-外部システムの識別情報を使用する場合：
+外部の識別情報を使用する場合：
 
 ```bash
 curl -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/b3/users/identity/oauth/external-123
@@ -159,7 +159,7 @@ curl -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/b
 
 ## ユーザーの更新
 
-Loomio のユーザー ID または外部システムの識別情報で検索したユーザーのプロフィール項目を更新します。
+Loomio のユーザー ID または外部の識別情報で検索したユーザーのプロフィール項目を更新します。
 
 `PATCH /api/b3/users/:id`
 
@@ -167,7 +167,7 @@ Loomio のユーザー ID または外部システムの識別情報で検索し
 
 <!-- translation-section: params -->
 
-### パラメータ
+### パラメーター
 
 | 項目 | 説明 |
 | --- | --- |
@@ -177,7 +177,7 @@ Loomio のユーザー ID または外部システムの識別情報で検索し
 
 <!-- translation-section: examples-2 -->
 
-### 例
+### 使用例
 
 Loomio のユーザー ID を使用する場合：
 
@@ -189,7 +189,7 @@ curl -X PATCH \
   https://www.loomio.com/api/b3/users/123
 ```
 
-外部システムの識別情報を使用する場合：
+外部の識別情報を使用する場合：
 
 ```bash
 curl -X PATCH \
@@ -199,7 +199,7 @@ curl -X PATCH \
   https://www.loomio.com/api/b3/users/identity/oauth/external-123
 ```
 
-更新したユーザーを返します。
+更新後のユーザーを返します。
 
 ```json
 {
@@ -211,7 +211,7 @@ curl -X PATCH \
 
 ## ユーザーの無効化
 
-Loomio のユーザー ID または外部システムの識別情報で検索したユーザーアカウントを無効化します。
+Loomio のユーザー ID または外部の識別情報で検索したユーザーアカウントを無効化します。
 
 `POST /api/b3/users/:id/deactivate`
 
@@ -219,7 +219,7 @@ Loomio のユーザー ID または外部システムの識別情報で検索し
 
 <!-- translation-section: examples-3 -->
 
-### 例
+### 使用例
 
 Loomio のユーザー ID を使用する場合：
 
@@ -227,7 +227,7 @@ Loomio のユーザー ID を使用する場合：
 curl -X POST -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/b3/users/123/deactivate
 ```
 
-外部システムの識別情報を使用する場合：
+外部の識別情報を使用する場合：
 
 ```bash
 curl -X POST -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/b3/users/identity/oauth/external-123/deactivate
@@ -246,7 +246,7 @@ curl -X POST -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.c
 
 ## ユーザーの再有効化
 
-Loomio のユーザー ID または外部 ID で特定した、無効化済みのユーザーアカウントを再有効化します。
+Loomio のユーザー ID または外部 ID でユーザーアカウントを検索し、無効化されているアカウントを再有効化します。
 
 `POST /api/b3/users/:id/reactivate`
 
@@ -254,21 +254,21 @@ Loomio のユーザー ID または外部 ID で特定した、無効化済み�
 
 <!-- translation-section: examples-4 -->
 
-### 使用例
+### 例
 
-Loomio のユーザー ID を使用する場合：
+Loomio のユーザー ID を使用する場合:
 
 ```bash
 curl -X POST -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/b3/users/123/reactivate
 ```
 
-外部 ID を使用する場合：
+外部 ID を使用する場合:
 
 ```bash
 curl -X POST -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/b3/users/identity/oauth/external-123/reactivate
 ```
 
-戻り値：
+レスポンス:
 
 ```json
 {
@@ -281,7 +281,7 @@ curl -X POST -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.c
 
 ## ユーザーの個人情報の削除
 
-個人情報の削除では、ユーザーのコメントやその他の投稿コンテンツを所属グループ内に残し、名前、自己紹介、プロフィール写真、メールアドレス、ログイン認証情報、認証 ID、有効なセッションなど、個人の特定につながる既知の情報を削除します。
+個人情報の削除では、ユーザーがグループ内に投稿したコメントやその他のコンテンツは保持されますが、名前、自己紹介、プロフィール写真、メールアドレス、ログイン認証情報、外部 ID、有効なセッションなど、個人の特定につながる既知の情報は削除されます。
 
 Loomio からユーザーを削除する際は、この方法を推奨します。
 
@@ -291,21 +291,21 @@ Loomio からユーザーを削除する際は、この方法を推奨します�
 
 <!-- translation-section: examples-5 -->
 
-### 使用例
+### 例
 
-Loomio のユーザー ID を使用する場合：
+Loomio のユーザー ID を使用する場合:
 
 ```bash
 curl -X POST -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/b3/users/123/redact
 ```
 
-外部 ID を使用する場合：
+外部 ID を使用する場合:
 
 ```bash
 curl -X POST -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/b3/users/identity/oauth/external-123/redact
 ```
 
-戻り値：
+レスポンス:
 
 ```json
 {
@@ -317,9 +317,9 @@ curl -X POST -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.c
 
 ## ユーザーの削除
 
-削除では、ユーザーとそのユーザーが作成したレコードを削除します。スレッドからコメントが削除され、アンケートから投票が削除されます。また、データベースの関連付けにより、そのユーザーが作成したグループ、ディスカッション、アンケート、その他のレコードも削除される場合があります。
+削除では、ユーザーと、そのユーザーが作成したレコードが削除されます。スレッドからコメントが削除され、アンケートから投票が削除されます。また、データベースの関連付けによって、そのユーザーが作成したグループ、ディスカッション、アンケート、その他のレコードも削除される場合があります。
 
-この操作では多くのデータが失われます。代わりに個人情報の削除を強く推奨します。
+この操作では多くのデータが失われます。代わりに個人情報の削除を行うことを強く推奨します。
 
 `DELETE /api/b3/users/:id`
 
@@ -327,21 +327,21 @@ curl -X POST -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.c
 
 <!-- translation-section: examples-6 -->
 
-### 使用例
+### 例
 
-Loomio のユーザー ID を使用する場合：
+Loomio のユーザー ID を使用する場合:
 
 ```bash
 curl -X DELETE -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/b3/users/123
 ```
 
-外部 ID を使用する場合：
+外部 ID を使用する場合:
 
 ```bash
 curl -X DELETE -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/b3/users/identity/oauth/external-123
 ```
 
-戻り値：
+レスポンス:
 
 ```json
 {
@@ -351,16 +351,16 @@ curl -X DELETE -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio
 
 <!-- translation-section: sso-profile-sync-settings -->
 
-## SSO プロフィール同期設定
+## SSO プロフィール同期の設定
 
-別のシステムで Loomio のプロフィール項目を管理する場合は、これらの設定を使用します。
+別のシステムで Loomio のプロフィール項目を管理する場合は、以下の設定を使用します。
 
 ```env
 LOOMIO_DISABLE_EDIT_USER_PROFILE=1
 # LOOMIO_SSO_UPDATE_USER_PROFILE_ON_LOGIN=1
 ```
 
-`LOOMIO_DISABLE_EDIT_USER_PROFILE=1` を設定すると、ユーザーは次の項目を自分で編集できなくなります。
+`LOOMIO_DISABLE_EDIT_USER_PROFILE=1` を設定すると、ユーザー自身による以下の項目の編集を禁止します:
 
 | 項目 | 備考 |
 | --- | --- |
@@ -369,8 +369,8 @@ LOOMIO_DISABLE_EDIT_USER_PROFILE=1
 | `email` | 外部同期で管理します |
 | `avatar_kind` / `uploaded_avatar` | 外部同期で管理します |
 
-`short_bio` や `location` など、Loomio 内で管理する項目は引き続き編集できます。
+ユーザーは引き続き、`short_bio` や `location` などの Loomio 内で管理する項目を編集できます。
 
-`LOOMIO_SSO_UPDATE_USER_PROFILE_ON_LOGIN=1` を設定すると、SSO のログインデータから `name` と `email` を更新します。これらの更新を外部同期スクリプトだけで行う場合は、コメントアウトしたままにするか、設定しないでください。
+`LOOMIO_SSO_UPDATE_USER_PROFILE_ON_LOGIN=1` を設定すると、SSO ログインデータから `name` と `email` を更新します。これらの更新を外部同期スクリプトのみで行う場合は、コメントアウトしたままにするか、設定しないでください。
 
-`LOOMIO_SSO_FORCE_USER_ATTRS` は既存のインストール環境でも引き続き機能します。ユーザーによる編集を無効にし、SSO ログイン時に `name` と `email` を更新します。
+既存のインストール環境では、引き続き `LOOMIO_SSO_FORCE_USER_ATTRS` を使用できます。この設定は、ユーザーによる編集を禁止するとともに、SSO ログイン時に `name` と `email` を更新します。

@@ -1,10 +1,10 @@
 ---
 title: ユーザーAPI
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
+source_revision: c27ee3b193231816878f1c074ff9fc2a086a88c0
 source_file: docs/en/user_manual/integrations/api/user-api.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-02'
 sections:
   introduction: a43c8b800d13fd33
   authentication-change: 06b5c2cd9d9e72a0
@@ -73,119 +73,121 @@ sections:
   params-13: 249b307203206387
   example-18: ffd950cd7ab5aaec
 generated:
-  introduction: fc7e8136159a73ce
-  authentication-change: ffbd7c9b0f5d008f
-  response-size-and-related-records: 2e0e51d9125083e7
-  endpoint-summary: '019d544008540f95'
+  introduction: f4504033053fd555
+  authentication-change: 445fb5012ef66fcf
+  response-size-and-related-records: 0dce4fa080ace983
+  endpoint-summary: 05443bbe78d93fa1
   groups: 95e133438e155e03
-  list-groups: dc0a213db13991f4
-  get-a-group: f5099b59ce71efad
-  webhooks: fee55121f971013b
-  list-webhooks: d01ff33cf65f244d
-  create-a-webhook: c9e2261279945c5e
-  update-a-webhook: 833b7232e9def901
-  test-a-webhook-destination: 592189c9a2f3f8ce
-  delete-a-webhook: d6f03f1f56118417
-  event-types: 80d8cb18b94fe2d8
-  http-delivery: d2bc45a19e8b81ec
-  payload-formats: 64b1fd11bf775f06
-  search: e124a87ca1126491
-  params: bae804f4e4f4edbe
-  participation-report: a7b7d25cd0629752
-  params-2: a8991a2831b30a16
-  example: dcc9deb9c3e11b8f
-  create-discussion: 14315f0a75e5f581
-  params-3: 6c618ec142da5ec8
+  list-groups: 0a055b237198c8ef
+  get-a-group: 7830c66e98310029
+  webhooks: a97fdb82fc1bf29e
+  list-webhooks: 0fa9102d1342f51f
+  create-a-webhook: f1d3af8c65abed95
+  update-a-webhook: c7ca6006b3319fe6
+  test-a-webhook-destination: 6ef63f6f3927f257
+  delete-a-webhook: fa05cd9105fe6559
+  event-types: 58b300d9c7dff84b
+  http-delivery: d426ce00962fbf95
+  payload-formats: 7f06ed33b553976f
+  search: 76bd16eff39d8e6e
+  params: e825314583844ba8
+  participation-report: 9451a8c2e0e36f7a
+  params-2: 52cec69d241a4f8a
+  example: 69849361e6ddd8a6
+  create-discussion: fa93b8b105386d01
+  params-3: a5035eac6f2b87c6
   example-2: 322e97033d399586
-  show-discussion: c7245a95cde29a87
+  show-discussion: ce83d3c52b5e5c57
   example-3: 712619f54575a362
-  list-discussions: 69c20ac847d68c44
-  params-4: 3eed4bd2fe01f785
+  list-discussions: 72b377fede45b61c
+  params-4: 756d075c44ca479c
   example-4: cebc17f5571ba071
-  list-threads: 7b5305b035581d54
-  params-5: eb598e93636f7141
+  list-threads: 7f0e990697039cf3
+  params-5: 0001d9d04fc39121
   example-5: ca1359000d3c7019
-  read-thread: 85286e754419ecc8
-  example-6: 49162bcc8c1304e7
-  edit-discussion: 48623968ce5adeac
-  params-6: 0c1e4ba5a820764c
+  read-thread: 670349c5b47bd431
+  example-6: a44b3e16a8b766a4
+  edit-discussion: 1395b4bad3050fc8
+  params-6: 4deb36dd299a5b0b
   example-7: a730d5c27bc549e1
-  soft-delete-discussion: cbbed1474ebf9615
+  soft-delete-discussion: 35267b1b15614e15
   example-8: 134016325f19f153
-  create-comment: 45c29b4c7c6326a5
-  params-7: b8d2ddd9e6bb61a5
+  create-comment: 48e9e68e4512b507
+  params-7: b6f0a150b8ea540e
   example-9: f88a0ce7f4f15878
-  edit-comment: 2314102a92fe23c6
-  params-8: 63914f2da2b3b2ca
+  edit-comment: 375e7e7ecab9de09
+  params-8: 3e3b011497b2db8e
   example-10: 21c7b429b9735dac
-  soft-delete-comment: e0a8cd5e8a77e354
+  soft-delete-comment: a3a9a79babd1cdd5
   example-11: 61cbd7161ee80cef
-  create-poll: ea267e5a3f549ab4
-  params-9: ea85602b317c3ea7
+  create-poll: a3c92fd7c07ca54b
+  params-9: f27569f7b10ffa2e
   example-12: e5593f67b390b6bb
-  show-poll: 7c07cafb461074f1
+  show-poll: 893197a6f761e7cb
   example-13: 6ed56e1e8f602af8
-  list-polls: 3cc81a86da9187ce
-  params-10: '038cd367674e0717'
+  list-polls: 3e188557d4cb1658
+  params-10: 41977c3ca5a14e6b
   example-14: bdce543069a50223
-  edit-poll: da00d64adaef7695
-  params-11: 18fc01723d6e7c91
+  edit-poll: 7fc2bb7f4f4580af
+  params-11: b47eeec28336e0a4
   example-15: b1aac01bc7f5c9a5
-  soft-delete-poll: caa6283baa421bf1
+  soft-delete-poll: 6ecab1be4e364dc6
   example-16: a71589325f948993
-  list-memberships: 027e902c87b05ca5
-  params-12: 99a630eb1149a28f
+  list-memberships: 218096c36b14b043
+  params-12: d0005a638a43d88b
   example-17: 06b87e38b698f4c5
-  manage-memberships: 6d2efc9008daa606
-  params-13: 69d7b818af65eefe
-  example-18: 404613276b7f5c2d
+  manage-memberships: 44d561dc25224ba8
+  params-13: 199560c30505d40d
+  example-18: d3d14377c72060e6
 title_source: c23fb6526b722360
 title_generated: 9d80e3857ccdabb2
+needs_review:
+  response-size-and-related-records: use "結論" instead of "結果" for "outcome"
 ---
 
 <!-- translation-section: introduction -->
 
 # LoomioユーザーAPIドキュメント
 
-<!-- seo-description: LoomioユーザーAPIを使って、他のソフトウェアからディスカッション、コメント、アンケート、スレッド、グループのメンバー登録を作成・管理できます。 -->
+<!-- seo-description: LoomioユーザーAPIを使用して、他のソフトウェアからディスカッション、コメント、アンケート、スレッド、グループのメンバー登録を作成・管理できます。 -->
 
-`/api/b2` は、Loomioとの連携に使用するユーザー向けAPIです。ユーザーアカウントのAPIキーを使用し、すべての操作はそのユーザーとして実行されます。
+`/api/b2`は、Loomioとの連携に使用するユーザー向けAPIです。ユーザーアカウントのAPIキーを使用し、すべての操作はそのユーザーとして実行されます。
 
-グループの操作には、APIキーのユーザーのメンバー登録とグループ内の権限が適用されます。インスタンス管理者であっても、APIキーでアクセスできるグループやコンテンツは増えません。インスタンス全体の管理にはサーバーAPIを使用してください。
+グループに対する操作には、APIキーのユーザーのメンバー登録とグループ権限が適用されます。インスタンス管理者であっても、APIキーでアクセスできるグループやコンテンツの範囲は広がりません。インスタンス全体の管理にはサーバーAPIを使用してください。
 
-操作を実行するLoomioユーザーアカウントのAPIキーを使用してください。連携用アカウントをアンケートに招待したり、通知を送ったりする必要がない場合は、専用のボットアカウントが便利です。
+操作を実行するLoomioユーザーアカウントのAPIキーを使用してください。連携用のアカウントをアンケートに招待したり、通知を送信したりする必要がない場合は、専用のボットアカウントが役立ちます。
 
-ログイン済みのユーザーは、[APIアクセスページ](/profile/api_access)でAPIキーとグループIDを確認できます。
+ログインしているユーザーは、[APIアクセスページ](/profile/api_access)でAPIキーとグループIDを確認できます。
 
-APIキーは `Authorization: Bearer` ヘッダーで送信してください。URLはプロキシやアクセスログに記録される可能性があるため、クエリ文字列に含まれるAPIキーは拒否されます。
+APIキーは`Authorization: Bearer`ヘッダーで送信してください。URLはプロキシやアクセスログに記録される可能性があるため、クエリ文字列に含まれるAPIキーは拒否されます。
 
 <!-- translation-section: authentication-change -->
 
 ### 認証方法の変更
 
-以前は、URLパラメーター `api_key` でAPIキーを指定できました。現在、`?api_key=YOUR_API_KEY` を使用したリクエストは機能しません。代わりにHTTPの `Authorization` ヘッダーを使用してください。
+以前は、URLパラメーターの`api_key`でAPIキーを指定できました。現在、`?api_key=YOUR_API_KEY`を使用するリクエストは機能しません。代わりにHTTPの`Authorization`ヘッダーを使用してください。
 
 ```text
 Authorization: Bearer YOUR_API_KEY
 ```
 
-例では `YOUR_API_KEY`、グループID `123`、`https://www.loomio.com/` を使用しています。使用するAPIキー、グループID、Loomioの設置先URLに置き換えてください。
+例では、`YOUR_API_KEY`、グループIDの`123`、`https://www.loomio.com/`を使用しています。これらを、使用するAPIキー、グループID、Loomioの設置先URLに置き換えてください。
 
 <!-- translation-section: response-size-and-related-records -->
 
 ## レスポンスのサイズと関連レコード
 
-ユーザーAPIのレスポンスは複合形式です。主要なレコードに加えて、トピック、グループ、ユーザー、アンケート、リアクションなどの関連レコードが含まれます。これにより、クライアントは1回のリクエストでローカルのレコードストアにデータを格納できますが、単純な連携に必要な量を超えるデータが含まれる場合があります。
+ユーザーAPIのレスポンスは複合形式を使用します。主要レコードに加えて、トピック、グループ、ユーザー、アンケート、リアクションなどの関連レコードが含まれます。これにより、クライアントは1回のリクエストでローカルのレコードストアにデータを格納できますが、単純な連携に必要な量を超えるデータが含まれる場合があります。
 
-`compact=1`を指定すると、データ量の多い関連トピック、グループ、親グループ、メンバーシップ、リアクション、タグ、翻訳を省略できます。主要なレコードと、その内容を解釈するために必要な関連レコードは引き続き含まれます。
+`compact=1`を指定すると、データ量の多い関連トピック、グループ、親グループ、メンバーシップ、リアクション、タグ、翻訳を省略できます。主要レコードと、その内容を解釈するために必要な関連レコードは引き続き含まれます。
 
 ```bash
 curl -H 'Authorization: Bearer YOUR_API_KEY' 'https://www.loomio.com/api/b2/threads/123/items?compact=1'
 ```
 
-省略する種類を直接指定するには、単数形のレコード種別をスペースで区切って`exclude_types`に指定します。例えば、`exclude_types=group reaction`を指定すると、関連するグループとリアクションが省略されます。よく使われる値は、`topic`、`group`、`parent`、`membership`、`reaction`、`tag`、`translation`、`user`、`discussion`、`poll`、`poll_option`、`stance`、`stance_choice`、`outcome`（結論）、`topic_item`です。省略の対象は関連レコードであり、エンドポイントでリクエストした主要なリソースには適用されません。
+省略する種類を直接指定するには、単数形のレコード種別をスペースで区切って`exclude_types`に指定します。例えば、`exclude_types=group reaction`は関連するグループとリアクションを省略します。よく使われる値は、`topic`、`group`、`parent`、`membership`、`reaction`、`tag`、`translation`、`user`、`discussion`、`poll`、`poll_option`、`stance`、`stance_choice`、`outcome`（結論）、`topic_item`です。除外は関連レコードに適用され、エンドポイントで要求した主要リソースには適用されません。
 
-コレクションの正確な件数が定義されている場合、コレクションのレスポンスには`meta.total`が含まれます。総件数は`limit`と`offset`を適用する前に計算されます。検索など、返すレコード数を意図的に制限するエンドポイントでは、`null`を返す代わりに`meta.total`を省略します。
+コレクションのレスポンスには、正確な件数が定義されている場合に`meta.total`が含まれます。合計件数は、`limit`と`offset`を適用する前に計算されます。検索など、意図的に件数を制限した結果を返すエンドポイントでは、`null`を返す代わりに`meta.total`を省略します。
 
 <!-- translation-section: endpoint-summary -->
 
@@ -193,30 +195,30 @@ curl -H 'Authorization: Bearer YOUR_API_KEY' 'https://www.loomio.com/api/b2/thre
 
 | メソッド | エンドポイント | 用途 |
 | --- | --- | --- |
-| `GET` | `/api/b2/groups` | APIキーのユーザーのグループ一覧を取得します |
-| `GET` | `/api/b2/groups/:id_or_key_or_handle` | 閲覧可能なグループを取得します |
+| `GET` | `/api/b2/groups` | APIキーのユーザーのグループを一覧表示します |
+| `GET` | `/api/b2/groups/:id_or_key_or_handle` | 閲覧できるグループを取得します |
 | `GET` | `/api/b2/reports` | 参加状況レポートを生成します |
-| `GET` | `/api/b2/search` | 閲覧可能なディスカッション、コメント、アンケート、投票、結論を検索します |
+| `GET` | `/api/b2/search` | 閲覧できるディスカッション、コメント、アンケート、投票、結論を検索します |
 | `POST` | `/api/b2/discussions` | ディスカッションを作成します |
 | `GET` | `/api/b2/discussions/:id` | ディスカッションを取得します |
-| `GET` | `/api/b2/discussions` | グループ内のディスカッション一覧を取得します |
+| `GET` | `/api/b2/discussions` | グループ内のディスカッションを一覧表示します |
 | `PATCH` | `/api/b2/discussions/:id` | ディスカッションを編集します |
 | `DELETE` | `/api/b2/discussions/:id` | ディスカッションを論理削除します |
-| `GET` | `/api/b2/threads` | 閲覧可能なディスカッションのスレッドと単独のアンケートのスレッドの一覧を取得します |
+| `GET` | `/api/b2/threads` | 閲覧できるディスカッションのスレッドと単独のアンケートのスレッドを一覧表示します |
 | `GET` | `/api/b2/threads/:topic_id` | スレッドを取得します |
-| `GET` | `/api/b2/threads/:topic_id/items` | スレッド内の項目を順序どおりに取得します |
-| `GET` | `/api/b2/threads/:topic_id/markdown` | スレッド全体をMarkdown形式で取得します |
+| `GET` | `/api/b2/threads/:topic_id/items` | スレッド内の項目を順序付きで取得します |
+| `GET` | `/api/b2/threads/:topic_id/markdown` | スレッド全体をMarkdownで取得します |
 | `POST` | `/api/b2/comments` | コメントまたは返信を作成します |
 | `PATCH` | `/api/b2/comments/:id` | コメントを編集します |
 | `DELETE` | `/api/b2/comments/:id` | コメントを論理削除します |
 | `POST` | `/api/b2/polls` | アンケートを作成します |
 | `GET` | `/api/b2/polls/:id` | アンケートを取得します |
-| `GET` | `/api/b2/polls` | グループ内のアンケート一覧を取得します |
+| `GET` | `/api/b2/polls` | グループ内のアンケートを一覧表示します |
 | `PATCH` | `/api/b2/polls/:id` | アンケートを編集します |
 | `DELETE` | `/api/b2/polls/:id` | アンケートを論理削除します |
-| `GET` | `/api/b2/memberships` | グループのメンバー登録一覧を取得します |
-| `POST` | `/api/b2/memberships` | メンバーを追加し、必要に応じて一覧に含まれないメンバーを削除します |
-| `GET` | `/api/b2/chatbots` | グループのチャット連携とWebhookの一覧を取得します |
+| `GET` | `/api/b2/memberships` | グループのメンバー登録を一覧表示します |
+| `POST` | `/api/b2/memberships` | メンバーを追加し、必要に応じてリストに含まれないメンバーを削除します |
+| `GET` | `/api/b2/chatbots` | グループのチャット連携とWebhookを一覧表示します |
 | `POST` | `/api/b2/chatbots` | チャット連携またはWebhookを作成します |
 | `PATCH` | `/api/b2/chatbots/:id` | チャット連携またはWebhookを更新します |
 | `DELETE` | `/api/b2/chatbots/:id` | チャット連携またはWebhookを削除します |
@@ -228,7 +230,7 @@ curl -H 'Authorization: Bearer YOUR_API_KEY' 'https://www.loomio.com/api/b2/thre
 
 <!-- translation-section: list-groups -->
 
-### グループ一覧の取得
+### グループの一覧取得
 
 APIキーのユーザーが有効なメンバー登録を持つグループを返します。
 
@@ -238,27 +240,27 @@ APIキーのユーザーが有効なメンバー登録を持つグループを�
 curl -H 'Authorization: Bearer YOUR_API_KEY' https://www.loomio.com/api/b2/groups
 ```
 
-レスポンスには、条件に一致するすべてのレコードが、ページ分割されていない `groups` 配列に含まれます。親グループとサブグループが含まれ、サブスクリプションが現在有効でないグループも含まれます。有効なグループのみを連携の対象にする場合は、`enabled` フィールドを確認してください。
+レスポンスには、条件に一致するすべてのレコードが、ページ分割されない`groups`配列に含まれます。親グループとサブグループが含まれ、現在サブスクリプションが有効でないグループも含まれます。有効なグループだけを連携の対象にする場合は、`enabled`フィールドを確認してください。
 
-主なグループのフィールドは次のとおりです。
+主なグループフィールドは次のとおりです。
 
 | フィールド | 説明 |
 | --- | --- |
-| `id` | 他のユーザーAPIエンドポイントで使用する数値のグループID |
-| `key` | LoomioのURLで使用する固定の短いキー |
-| `handle` | 人が読みやすいグループのハンドル |
-| `name` | グループ名 |
-| `full_name` | 親グループの情報を含むグループ名 |
-| `parent_id` | サブグループの場合は数値の親グループID、それ以外は `null` |
-| `enabled` | グループとそのサブスクリプションが有効かどうか |
-| `memberships_count` | 有効なメンバー登録と承認待ちのメンバー登録の数 |
-| `accepted_memberships_count` | 承認済みのメンバー登録数 |
-| `pending_memberships_count` | 承認待ちの招待数 |
-| `admin_memberships_count` | グループ管理者数 |
-| `delegates_count` | 代表者数 |
-| `discussions_count` | グループに直接属するディスカッション数 |
-| `polls_count` | グループに直接属するアンケート数 |
-| `subgroups_count` | サブグループ数 |
+| `id` | 他のユーザーAPIエンドポイントで使用する数値のグループIDです |
+| `key` | LoomioのURLで使用する、変わらない短いキーです |
+| `handle` | 人が読みやすいグループのハンドル名です |
+| `name` | グループ名です |
+| `full_name` | 親グループの情報を含むグループ名です |
+| `parent_id` | サブグループの場合は数値の親グループID、それ以外は`null`です |
+| `enabled` | グループとそのサブスクリプションが有効かどうかを示します |
+| `memberships_count` | 有効なメンバー登録と承認待ちのメンバー登録の合計件数です |
+| `accepted_memberships_count` | 承認済みのメンバー登録の件数です |
+| `pending_memberships_count` | 承認待ちの招待の件数です |
+| `admin_memberships_count` | グループ管理者の人数です |
+| `delegates_count` | 代表者の人数です |
+| `discussions_count` | グループ直下のディスカッションの件数です |
+| `polls_count` | グループ直下のアンケートの件数です |
+| `subgroups_count` | サブグループの件数です |
 
 レスポンスには、追加のグループ設定、関連する親グループのレコード、APIユーザーのメンバー登録が含まれる場合があります。クライアントでは、使用しないフィールドを無視してください。
 
@@ -270,37 +272,37 @@ APIキーのユーザーが閲覧できるグループを1件返します。
 
 `GET /api/b2/groups/:id_or_key_or_handle`
 
-識別子には、グループの数値ID、キー、ハンドルを使用できます。
+識別子には、グループの数値ID、キー、ハンドル名を使用できます。
 
 ```bash
 curl -H 'Authorization: Bearer YOUR_API_KEY' https://www.loomio.com/api/b2/groups/123
 curl -H 'Authorization: Bearer YOUR_API_KEY' https://www.loomio.com/api/b2/groups/example-group
 ```
 
-レスポンスには `groups` 配列にグループが含まれ、一覧取得のエンドポイントと同じフィールドを使用します。APIキーのユーザーがアクセスできないグループを要求すると、権限エラーが返されます。
+レスポンスには、一覧取得エンドポイントと同じフィールドを持つグループが`groups`配列に含まれます。APIキーのユーザーがアクセスできないグループを要求すると、権限エラーが返されます。
 
 <!-- translation-section: webhooks -->
 
 ## Webhook
 
-ユーザーAPIはリクエストに基づいて動作し、連携先がデータを読み取ったり変更したりする際にLoomioを呼び出します。グループのWebhookは、Loomioから連携先へのプッシュ通知を提供します。選択されたグループのイベントが発生すると、Loomioがエンドポイントに送信するため、連携先で変更を確認するためにREST APIを定期的に呼び出す必要はありません。
+ユーザーAPIはリクエストに基づいて動作します。連携システムは、データを読み取ったり変更したりするときにLoomioを呼び出します。グループのWebhookでは、Loomioから連携システムへデータを送信できます。選択したグループのイベントが発生すると、Loomioが指定のエンドポイントに送信するため、連携システムが変更を確認するためにREST APIを繰り返し呼び出す必要はありません。
 
-Webhookはグループごとに設定し、グループ管理者の権限が必要です。Loomioの画面から次の手順で管理できます。
+Webhookはグループごとに設定し、設定にはグループ管理者の権限が必要です。Loomioの画面から次の手順で管理できます。
 
 1. グループを開きます。
 2. グループメニューを開き、**チャット連携**を選択します。
-3. エンドポイントが受け付けるペイロード形式に対応する連携を追加します。汎用のエンドポイントには、Mattermost/Markdown形式を使用してください。
+3. エンドポイントが受け付けるペイロード形式に合う連携を追加します。汎用のエンドポイントには、Mattermost/Markdown形式を使用してください。
 4. 名前と送信先URLを入力します。
 5. Loomioが自動送信するイベントを選択します。
-6. 連携を保存し、**テスト接続**を使ってテストメッセージを送信します。
+6. 連携を保存し、**テスト接続**でテストメッセージを送信します。
 
 推測できないURLを持つHTTPSの送信先を使用してください。Loomioでは、送信先が公開アドレスに名前解決される必要があり、ローカルまたはプライベートネットワークのアドレスへのリクエストはブロックされます。
 
-エージェントや他の連携は、以下に記載するBearer認証のchatbotエンドポイントを使ってWebhookを管理することもできます。このリソースはLoomioのチャット連携との互換性のために `chatbots` と呼ばれていますが、汎用の送信Webhookも表します。
+エージェントやその他の連携システムでは、代わりに、以下で説明するBearer認証のチャットボットエンドポイントを通じてWebhookを管理できます。このリソースは、Loomioのチャット連携との互換性のために`chatbots`という名前になっていますが、一般的な送信用Webhookも表します。
 
 <!-- translation-section: list-webhooks -->
 
-### Webhook一覧の取得
+### Webhookの一覧取得
 
 グループに設定されているチャット連携を返します。APIキーのユーザーは、そのグループの管理者である必要があります。レスポンスには送信先URLが含まれるため、一般のグループメンバーに公開してはいけません。
 
@@ -310,18 +312,18 @@ Webhookはグループごとに設定し、グループ管理者の権限が必�
 curl -H 'Authorization: Bearer YOUR_API_KEY' 'https://www.loomio.com/api/b2/chatbots?group_id=123'
 ```
 
-レスポンスには、次のフィールドを持つ `chatbots` 配列が含まれます。
+レスポンスには、次のフィールドを持つ`chatbots`配列が含まれます。
 
 | フィールド | 説明 |
 | --- | --- |
-| `id` | 更新と削除に使用する連携ID |
-| `group_id` | イベントを受信するグループ |
-| `name` | 連携の管理用の名前 |
-| `kind` | 送信Webhookの場合は `webhook`、Matrix連携の場合は `matrix` |
-| `webhook_kind` | ペイロード形式：`markdown`、`slack`、`discord`、`microsoft`、`webex` |
-| `server` | 送信先URL |
-| `event_kinds` | 自動送信するイベント |
-| `notification_only` | メッセージに通知の見出しのみを含めるかどうか |
+| `id` | 更新と削除に使用する連携IDです |
+| `group_id` | イベントの対象となるグループです |
+| `name` | 連携の管理用の名前です |
+| `kind` | 送信用Webhookの場合は`webhook`、Matrix連携の場合は`matrix`です |
+| `webhook_kind` | ペイロード形式です。`markdown`、`slack`、`discord`、`microsoft`、`webex`のいずれかです |
+| `server` | 送信先URLです |
+| `event_kinds` | 自動送信するイベントです |
+| `notification_only` | メッセージに通知の見出しだけを含めるかどうかを示します |
 
 <!-- translation-section: create-a-webhook -->
 
@@ -345,7 +347,7 @@ curl -X POST \
   https://www.loomio.com/api/b2/chatbots
 ```
 
-APIキーのユーザーは、`group_id` で指定したグループの管理者である必要があります。保存する前に、送信先が公開URLであることが検証されます。
+APIキーのユーザーは、`group_id`で指定したグループの管理者である必要があります。送信先は、保存される前に公開URLであることが検証されます。
 
 <!-- translation-section: update-a-webhook -->
 
@@ -353,7 +355,7 @@ APIキーのユーザーは、`group_id` で指定したグループの管理者
 
 `PATCH /api/b2/chatbots/:id`
 
-変更するフィールドを送信してください。`group_id` を変更してWebhookを別のグループに移すことはできません。
+変更するフィールドを送信してください。`group_id`を変更してWebhookを別のグループに移すことはできません。
 
 ```bash
 curl -X PATCH \
@@ -367,7 +369,7 @@ curl -X PATCH \
 
 ### Webhook送信先のテスト
 
-設定の保存前または保存後に、Markdown対応のテストメッセージを送信先に送信します。
+設定を保存する前または保存した後に、Markdownに対応したテストメッセージを送信先へ送信します。
 
 `POST /api/b2/chatbots/check`
 
@@ -381,7 +383,7 @@ curl -X POST \
 
 <!-- translation-section: delete-a-webhook -->
 
-### Webhook を削除する
+### Webhookの削除
 
 `DELETE /api/b2/chatbots/:id`
 
@@ -389,62 +391,62 @@ curl -X POST \
 curl -X DELETE -H 'Authorization: Bearer YOUR_API_KEY' https://www.loomio.com/api/b2/chatbots/456
 ```
 
-設定を削除すると、以後の送信は停止します。Loomio のグループ内のコンテンツは削除されません。
+設定を削除すると、以後の配信が停止します。Loomioのグループ内のコンテンツは削除されません。
 
 <!-- translation-section: event-types -->
 
 ### イベントの種類
 
-Webhook では、次の種類のイベントを受信対象にできます。
+Webhookでは、次の種類のイベントを受信するよう設定できます。
 
 | イベント | 送信されるタイミング |
 | --- | --- |
 | `new_discussion` | ディスカッションが開始されたとき |
 | `discussion_edited` | ディスカッションが編集されたとき |
 | `new_comment` | コメントが作成されたとき |
-| `poll_created` | 投票が開始されたとき |
-| `poll_edited` | 投票が編集されたとき |
-| `poll_closing_soon` | 投票の締め切りが近づいたとき |
-| `poll_expired` | 投票の締め切りに達したとき |
-| `poll_closed_by_user` | ユーザーが投票を手動で締め切ったとき |
-| `poll_reopened` | 投票が再開されたとき |
+| `poll_created` | アンケートが開始されたとき |
+| `poll_edited` | アンケートが編集されたとき |
+| `poll_closing_soon` | アンケートの締め切り時刻が近づいたとき |
+| `poll_expired` | アンケートの締め切り時刻になったとき |
+| `poll_closed_by_user` | アンケートが手動で締め切られたとき |
+| `poll_reopened` | アンケートが再開されたとき |
 | `outcome_created` | 結論が公開されたとき |
 | `outcome_updated` | 結論が更新されたとき |
 | `outcome_review_due` | 結論の見直し期限になったとき |
-| `stance_created` | 票が投じられたとき |
-| `stance_updated` | 投票内容が変更されたとき |
+| `stance_created` | 投票が行われたとき |
+| `stance_updated` | 投票が変更されたとき |
 
-Webhook は 1 つのグループに属し、そのグループで受信対象に設定したイベントを受け取ります。対応する自動送信イベントが選択されていなくても、一部の通知を共有または送信するときに連携を明示的に選択できます。
+Webhookは1つのグループに属し、そのグループで受信対象に設定したイベントを受信します。対応する自動送信イベントが選択されていない場合でも、共有や一部の通知の送信時に、連携先を明示的に選択できます。
 
 <!-- translation-section: http-delivery -->
 
-### HTTP による送信
+### HTTP配信
 
-Loomio は、次のヘッダーを付けた非同期の HTTP `POST` を設定済みの URL に送信します。
+Loomioは、次のヘッダーを付けて、設定されたURLに非同期のHTTP `POST`を送信します。
 
 ```text
 Content-Type: application/json; charset=utf-8
 ```
 
-リクエストのタイムアウトは 5 秒です。`204 No Content` を含む `2xx` 応答は成功として扱われます。Webhook の受信側は速やかに応答し、時間のかかる処理は非同期で行ってください。重複した送信や順序の前後にも対応してください。
+リクエストのタイムアウトは5秒です。`204 No Content`を含む`2xx`レスポンスは成功として扱われます。Webhookの受信側は速やかに応答し、時間のかかる処理は非同期で実行してください。また、配信の重複や順序の入れ替わりに対応できるようにしてください。
 
-現在、Loomio は Webhook の署名、共有シークレットのヘッダー、イベント ID、送信 ID を付けません。送信先 URL 全体を認証情報として扱い、公開しないでください。受信サービスが対応している場合は、推測されにくいトークンを URL に含めてください。安定した機械可読のイベント形式や署名付きの送信が必要な場合は、Webhook を変更通知として使い、認証済みのユーザー API から最新のレコードを取得してください。
+現在、LoomioはWebhookの署名、共有シークレットのヘッダー、イベントID、配信IDを付加しません。送信先URL全体を認証情報として扱い、公開しないでください。受信側のサービスが対応している場合は、推測できないトークンをURLに含めてください。安定した機械可読のイベントスキーマや署名付き配信が必要な場合は、Webhookを変更通知として使い、認証付きのユーザーAPIから現在のレコードを取得してください。
 
 <!-- translation-section: payload-formats -->
 
-### ペイロード形式
+### ペイロードの形式
 
-Webhook のペイロードは、チャットサービス向けの表示用メッセージです。Loomio のレコード全体をシリアライズしたものではありません。メッセージ内のリンクは、対象となる Loomio のコンテンツを示します。構造化された最新の状態が必要な場合は、ユーザー API で取得できます。
+Webhookのペイロードは、チャットサービスでの表示を目的としたメッセージです。Loomioのレコードを完全にシリアライズしたものではありません。メッセージ内のリンクは、対象のLoomioコンテンツを示します。連携先で構造化された現在の状態が必要な場合は、ユーザーAPIから追加で取得できます。
 
-| 連携形式 | 主な JSON フィールド |
+| 連携形式 | 主なJSONフィールド |
 | --- | --- |
-| Mattermost/Markdown | `text`、`icon_url`、`username` |
+| Mattermost/Markdown | `text`, `icon_url`, `username` |
 | Slack | `text` |
-| Discord | `content`、約 1,900 文字まで |
-| Microsoft Teams | `@type`、`@context`、`themeColor`、`text`、`sections` |
+| Discord | `content`。約1,900文字に制限されます |
+| Microsoft Teams | `@type`, `@context`, `themeColor`, `text`, `sections` |
 | Webex | `markdown` |
 
-たとえば、一般的な Markdown 形式では、次のような本文を送信します。
+例えば、汎用のMarkdown形式では、次のような構造の本文を送信します。
 
 ```json
 {
@@ -454,62 +456,62 @@ Webhook のペイロードは、チャットサービス向けの表示用メッ
 }
 ```
 
-メッセージの正確な文面は、イベント、グループの言語設定、通知のみの設定、Loomio のバージョンによって異なります。受信側では文章を解析せず、選択した形式で定義されている最上位のフィールドを使用してください。
+実際のメッセージの文面は、イベント、グループの言語設定、通知のみの設定、Loomioのバージョンによって異なります。受信側では、文面を解析するのではなく、選択した形式のドキュメントに記載された最上位のフィールドを使用してください。
 
 <!-- translation-section: search -->
 
 ## 検索
 
-API キーのユーザーに表示できるディスカッション、コメント、投票、票、結論を検索します。グループのメンバーでなくても、公開コンテンツは結果に含まれます。非公開コンテンツには、通常のトピックの閲覧権限が適用されます。
+APIキーのユーザーが閲覧できるディスカッション、コメント、アンケート、投票、結論を検索します。グループのメンバーでなくても、そのグループの公開コンテンツは結果に含まれます。非公開コンテンツには、通常のトピックの閲覧権限が適用されます。
 
 `GET /api/b2/search`
 
 <!-- translation-section: params -->
 
-### パラメータ
+### パラメーター
 
 | 名前 | 説明 |
 | --- | --- |
-| `query` | 検索文字列。完全一致とあいまい一致に対応します |
-| `group_id` | 表示できる 1 つのグループに結果を限定します |
-| `org_id` | 表示できる親グループと、その表示できるサブグループに結果を限定します。直接ディスカッションには `0` を使います |
-| `type` | 結果を `Discussion`、`Comment`、`Poll`、`Stance`、`Outcome` のいずれか 1 種類に限定します |
-| `types` | 結果の種類をカンマで区切ったリスト |
-| `tag` | このタグが付いたトピックに結果を限定します |
-| `author_id` | 1 人の投稿者によるコンテンツに結果を限定します。`query` がない場合は、その投稿者の最近の閲覧可能な活動を返します |
-| `order` | `authored_at_desc` を指定すると、一致したコンテンツを投稿日時の降順に並べます |
+| `query` | 検索するテキストです。完全一致とあいまい一致に対応しています |
+| `group_id` | 結果を閲覧可能な1つのグループに限定します |
+| `org_id` | 結果を閲覧可能な親グループと、その閲覧可能なサブグループに限定します。ダイレクトディスカッションには`0`を使用します |
+| `type` | 結果を`Discussion`、`Comment`、`Poll`、`Stance`、`Outcome`のいずれか1種類に限定します |
+| `types` | 結果の種類をカンマ区切りで指定します |
+| `tag` | 結果をこのタグが付いたトピックに限定します |
+| `author_id` | 結果を1人の作成者によるコンテンツに限定します。`query`を指定しない場合は、その作成者の最近の活動のうち閲覧可能なものを返します |
+| `order` | `authored_at_desc`に設定すると、一致するコンテンツを作成日時順に並べます |
 
 ```bash
 curl -H 'Authorization: Bearer YOUR_API_KEY' 'https://www.loomio.com/api/b2/search?query=quarterly+planning&type=Discussion'
 ```
 
-応答には `search_results` 配列が含まれます。各結果には、一致したレコードと閲覧可能な関連情報を示す `searchable_type`、`searchable_id`、`highlight`、`group_id`、`group_name`、`discussion_key`、`poll_key`、`author_id`、`author_name`、`authored_at`、`tags` などのフィールドがあります。結果に該当しないフィールドは `null` になります。
+レスポンスには`search_results`配列が含まれます。各結果は、`searchable_type`、`searchable_id`、`highlight`、`group_id`、`group_name`、`discussion_key`、`poll_key`、`author_id`、`author_name`、`authored_at`、`tags`などのフィールドで、一致したレコードと、その閲覧可能な関連情報を示します。その結果に該当しないフィールドは`null`になります。
 
 <!-- translation-section: participation-report -->
 
-## 参加レポート
+## 参加状況レポート
 
-Loomio の参加レポートと同じ集計データを返します。
+Loomioの参加状況レポートで使用されるものと同じ、集計済みの参加データを返します。
 
 `GET /api/b2/reports`
 
 <!-- translation-section: params-2 -->
 
-### パラメータ
+### パラメーター
 
 | 名前 | 説明 |
 | --- | --- |
-| `section` | レポートのセクション: `base`、`users`、`countries`。個人ごとの活動には `users` を使います |
-| `group_scope` | `custom` または `my`。ユーザー API キーにインスタンス全体へのアクセス権はないため、従来の値 `all` は `my` として扱われます |
-| `group_ids` | `group_scope=custom` の場合に指定する、カンマで区切ったグループ ID。API ユーザーがメンバーでないグループの ID は無視されます |
-| `start_month` | 集計を開始する月。形式は `YYYY-MM`。既定値は 12 か月前です |
-| `end_month` | 集計を終了する月。形式は `YYYY-MM`。既定値は当月です |
-| `interval` | `base` セクションの集計間隔: `day`、`week`、`month`、`year` |
-| `member_type` | `section=users` とともに `delegate` を指定すると、現在の代表者のみを返します |
+| `section` | レポートのセクションです。`base`、`users`、`countries`のいずれかを指定します。個人別の活動には`users`を使用します |
+| `group_scope` | `custom`または`my`です。ユーザーAPIキーにはインスタンス全体へのアクセス権が付与されないため、旧形式の値`all`は`my`として扱われます |
+| `group_ids` | `group_scope=custom`の場合に、グループIDをカンマ区切りで指定します。APIユーザーがメンバーとして所属していないグループのIDは無視されます |
+| `start_month` | 集計対象の最初の月を`YYYY-MM`形式で指定します。既定値は12か月前です |
+| `end_month` | 集計対象の最後の月を`YYYY-MM`形式で指定します。既定値は今月です |
+| `interval` | `base`セクションの集計間隔です。`day`、`week`、`month`、`year`のいずれかを指定します |
+| `member_type` | `section=users`とともに`delegate`を指定すると、現在の代表者のみを返します |
 
-選択したグループのいずれかで有効な代表者メンバーシップを持つ人が、代表者です。活動件数は、選択したすべてのグループを通じて集計されます。すべての活動件数がゼロでも、代表者の行は返されます。件数にはスレッド、コメント、投票、票、結論、リアクションが含まれますが、投票参加率ではありません。ユーザーの行には、記名投票で割り当てられた投票機会、投じられた票、投じられなかった票の数も含まれます。匿名投票は、個人ごとの投票件数からすべて除外されます。`all_votes_cast` が true になるのは、少なくとも 1 件の投票機会が割り当てられ、そのすべてで票が投じられた場合だけです。
+選択したグループのいずれかで、有効な代表者のメンバー資格を持つ人を代表者として扱います。件数は、選択したすべてのグループを通じて集計されます。すべての活動件数がゼロでも、代表者の行は返されます。集計対象はスレッド、コメント、アンケート、投票、結論、リアクションの件数であり、投票参加率ではありません。ユーザーの行には、記名式の投票について、投票権が付与された件数、投票済みの件数、未投票の件数も含まれます。匿名アンケートは、個人別のすべての投票件数から除外されます。`all_votes_cast`がtrueになるのは、少なくとも1件の投票権が付与され、付与されたすべての投票権について投票済みの場合のみです。
 
-この API には、Loomio 内のレポートと同じグループ閲覧ルールが適用されます。ユーザー API キーでは、そのユーザーがアクセスできないグループのレポートデータは取得できません。
+APIには、アプリ内のレポートと同じグループの閲覧権限が適用されます。ユーザーAPIキーでは、そのユーザーがアクセスできないグループのレポートデータを取得できません。
 
 <!-- translation-section: example -->
 
@@ -519,7 +521,7 @@ Loomio の参加レポートと同じ集計データを返します。
 curl -H 'Authorization: Bearer YOUR_API_KEY' 'https://www.loomio.com/api/b2/reports?section=users&group_scope=custom&group_ids=123&member_type=delegate&start_month=2026-01&end_month=2026-09'
 ```
 
-`users` 配列には、活動データの各項目を含む行が入ります。
+`users`配列には、活動データの全項目を含む行が格納されます。
 
 ```json
 {
@@ -546,7 +548,7 @@ curl -H 'Authorization: Bearer YOUR_API_KEY' 'https://www.loomio.com/api/b2/repo
 
 <!-- translation-section: create-discussion -->
 
-## ディスカッションを作成する
+## ディスカッションの作成
 
 APIキーのユーザーとしてディスカッションを作成します。
 
@@ -554,18 +556,18 @@ APIキーのユーザーとしてディスカッションを作成します。
 
 <!-- translation-section: params-3 -->
 
-### パラメータ
+### パラメーター
 
 | 名前 | 説明 |
 | --- | --- |
-| `group_id` | スレッドを作成するグループ |
-| `title` | スレッドのタイトル。必須 |
-| `description` | スレッドの背景情報。省略可能 |
-| `description_format` | `md` または `html`。省略可能。既定値は `md` |
-| `recipient_audience` | `group` または null。`group` の場合は、新しいスレッドについてグループ全体に通知します |
-| `recipient_user_ids` | 通知する、またはスレッドに招待するユーザーのIDの配列 |
-| `recipient_emails` | スレッドに招待する人のメールアドレスの配列 |
-| `recipient_message` | 招待メールに含めるメッセージ |
+| `group_id` | スレッドを作成するグループです |
+| `title` | スレッドのタイトルです。必須です |
+| `description` | スレッドの背景説明です。任意です |
+| `description_format` | `md`または`html`です。任意で、既定値は`md`です |
+| `recipient_audience` | `group`またはnullです。`group`の場合は、新しいスレッドについてグループ全体に通知します |
+| `recipient_user_ids` | 通知するユーザー、またはスレッドに招待するユーザーのIDの配列です |
+| `recipient_emails` | スレッドに招待する人のメールアドレスの配列です |
+| `recipient_message` | 招待メールに含めるメッセージです |
 
 <!-- translation-section: example-2 -->
 
@@ -577,9 +579,9 @@ curl -H 'Authorization: Bearer YOUR_API_KEY' -X POST -H 'Content-Type: applicati
 
 <!-- translation-section: show-discussion -->
 
-## ディスカッションを取得する
+## ディスカッションの取得
 
-整数のディスカッションID、または文字列のキーを指定して、ディスカッションを取得します。
+整数のディスカッションID、または文字列のキーを使ってディスカッションを取得します。
 
 `GET /api/b2/discussions/:id`
 
@@ -593,24 +595,24 @@ curl -H 'Authorization: Bearer YOUR_API_KEY' https://www.loomio.com/api/b2/discu
 
 <!-- translation-section: list-discussions -->
 
-## ディスカッションの一覧を取得する
+## ディスカッションの一覧取得
 
-グループ内でAPIキーのユーザーに表示されるディスカッションの一覧を取得します。公開グループでは、メンバー以外も公開ディスカッションの一覧を取得できます。非公開ディスカッションは、Loomioで閲覧権限のあるユーザーにのみ表示されます。
+グループ内でAPIキーのユーザーが閲覧できるディスカッションの一覧を取得します。公開グループでは、メンバーでなくても公開ディスカッションの一覧を取得できます。非公開ディスカッションは、Loomioでその内容を閲覧できるユーザーのみが取得できます。
 
 `GET /api/b2/discussions`
 
 <!-- translation-section: params-4 -->
 
-### パラメータ
+### パラメーター
 
 | 名前 | 説明 |
 | --- | --- |
-| `group_id` | 整数。必須。ディスカッションの一覧を取得するグループのID |
-| `status` | 文字列。省略可能。既定値は `open`。指定できる値: `open`、`closed`、`all` |
-| `limit` | 整数。省略可能。既定値は50。1ページあたりの件数 |
-| `offset` | 整数。省略可能。既定値は0。ページ分割の開始位置 |
+| `group_id` | 整数、必須。ディスカッションの一覧を取得するグループのID |
+| `status` | 文字列、省略可能、既定値は`open`。値：`open`、`closed`、`all` |
+| `limit` | 整数、省略可能、既定値は50。1ページあたりの件数 |
+| `offset` | 整数、省略可能、既定値は0。ページ分割のオフセット |
 
-従来の指定方法: `per` と `from` は、それぞれ `limit` と `offset` の別名として引き続き使用できます。
+従来のパラメーター：`per`と`from`は、それぞれ`limit`と`offset`の別名として受け付けられ、引き続き使用できます。
 
 <!-- translation-section: example-4 -->
 
@@ -622,20 +624,20 @@ curl -H 'Authorization: Bearer YOUR_API_KEY' 'https://www.loomio.com/api/b2/disc
 
 <!-- translation-section: list-threads -->
 
-## スレッドの一覧を取得する
+## スレッドの一覧取得
 
-APIキーのユーザーに表示されるディスカッションと投票のスレッドを、最近のアクティビティ順に取得します。スレッドIDは `topic_id` です。
+APIキーのユーザーが閲覧できるディスカッションのスレッドとアンケートのスレッドの一覧を、最新のアクティビティ順に取得します。スレッドのIDは、そのスレッドの`topic_id`です。
 
 `GET /api/b2/threads`
 
 <!-- translation-section: params-5 -->
 
-### パラメータ
+### パラメーター
 
 | 名前 | 説明 |
 | --- | --- |
-| `limit` | 整数。省略可能。既定値は50。1ページあたりの件数 |
-| `offset` | 整数。省略可能。既定値は0。ページ分割の開始位置 |
+| `limit` | 整数、省略可能、既定値は50。1ページあたりの件数 |
+| `offset` | 整数、省略可能、既定値は0。ページ分割のオフセット |
 
 <!-- translation-section: example-5 -->
 
@@ -647,9 +649,9 @@ curl -H 'Authorization: Bearer YOUR_API_KEY' 'https://www.loomio.com/api/b2/thre
 
 <!-- translation-section: read-thread -->
 
-## スレッドを読む
+## スレッドの取得
 
-スレッド、時系列に並んだイベント、または表示可能な内容をまとめたMarkdown文書を取得します。
+スレッド、順序付けられたイベントストリーム、または閲覧可能な内容全体を含むMarkdown文書を取得します。
 
 `GET /api/b2/threads/:topic_id`
 
@@ -667,29 +669,29 @@ GET https://www.loomio.com/api/b2/threads/<topic_id>/items
 GET https://www.loomio.com/api/b2/threads/<topic_id>/markdown
 ```
 
-`items` エンドポイントは、表示可能なコメント、投票、投票内容、結論を含むイベントを時系列順に返します。`markdown` エンドポイントは、表示可能なスレッド全体を1つのMarkdown文書として返します。投票理由は、APIキーのユーザーに表示される場合にのみ含まれます。
+`items`エンドポイントは、閲覧可能なコメント、アンケート、投票、結論を含む、順序付けられたイベントストリームを返します。`markdown`エンドポイントは、スレッドの閲覧可能な内容全体を1つのMarkdown文書として返します。投票の理由は、APIキーのユーザーが閲覧できる場合にのみ含まれます。
 
-すべてのスレッドエンドポイントには、Loomioの画面と同じ権限が適用されます。APIキーを使っても、通常は開けないスレッドにはアクセスできません。
+すべてのスレッドエンドポイントには、Loomioの画面と同じ権限が適用されます。APIキーを使っても、そのユーザーが通常開けないスレッドにはアクセスできません。
 
 <!-- translation-section: edit-discussion -->
 
-## ディスカッションを編集する
+## ディスカッションの編集
 
-APIキーのユーザーとしてディスカッションを編集します。Loomioと同じ権限が適用され、そのディスカッションの編集権限が必要です。
+APIキーのユーザーとしてディスカッションを編集します。Loomioと同じ権限が適用されるため、そのディスカッションを編集する権限が必要です。
 
 `PATCH /api/b2/discussions/:id`
 
 <!-- translation-section: params-6 -->
 
-### パラメータ
+### パラメーター
 
 | 名前 | 説明 |
 | --- | --- |
 | `title` | 更新後のタイトル |
-| `description` | 更新後の背景情報 |
-| `description_format` | `md` または `html`。省略可能。既定値は `md` |
-| `recipient_audience` | `group` または null。`group` の場合は、編集についてグループ全体に通知します |
-| `recipient_user_ids` | 通知する、またはスレッドに招待するユーザーのIDの配列 |
+| `description` | 更新後の背景説明 |
+| `description_format` | `md`または`html`、省略可能、既定値は`md` |
+| `recipient_audience` | `group`またはnull。`group`の場合、編集についてグループ全体に通知します |
+| `recipient_user_ids` | 通知を送る、またはスレッドに招待するユーザーのIDの配列 |
 | `recipient_emails` | スレッドに招待する人のメールアドレスの配列 |
 | `recipient_message` | 招待メールに含めるメッセージ |
 
@@ -703,9 +705,9 @@ curl -H 'Authorization: Bearer YOUR_API_KEY' -X PATCH -H 'Content-Type: applicat
 
 <!-- translation-section: soft-delete-discussion -->
 
-## ディスカッションをソフト削除する
+## ディスカッションの論理削除
 
-APIキーのユーザーとしてディスカッションをソフト削除します。ディスカッションは削除済みとして扱われますが、レコードは残ります。
+APIキーのユーザーとしてディスカッションを論理削除します。ディスカッションは削除済みになりますが、レコードは保持されます。
 
 `DELETE /api/b2/discussions/:id`
 
@@ -719,7 +721,7 @@ curl -H 'Authorization: Bearer YOUR_API_KEY' -X DELETE https://www.loomio.com/ap
 
 <!-- translation-section: create-comment -->
 
-## コメントを作成する
+## コメントの作成
 
 APIキーのユーザーとしてディスカッションにコメントを作成します。
 
@@ -727,13 +729,13 @@ APIキーのユーザーとしてディスカッションにコメントを作�
 
 <!-- translation-section: params-7 -->
 
-### パラメータ
+### パラメーター
 
 | 名前 | 説明 |
 | --- | --- |
-| `discussion_id` | 整数。必須。コメントを投稿するディスカッションのID |
-| `body` | コメント本文。添付ファイルを指定しない場合は必須 |
-| `body_format` | `md` または `html`。省略可能。既定値は `md` |
+| `discussion_id` | 整数、必須。コメントを投稿するディスカッションのIDです |
+| `body` | コメントの本文です。添付ファイルがない場合は必須です |
+| `body_format` | `md` または `html`、任意。既定値は `md` です |
 
 <!-- translation-section: example-9 -->
 
@@ -745,20 +747,20 @@ curl -H 'Authorization: Bearer YOUR_API_KEY' -X POST -H 'Content-Type: applicati
 
 <!-- translation-section: edit-comment -->
 
-## コメントを編集する
+## コメントの編集
 
-APIキーのユーザーとしてコメントを編集します。Loomioと同じ権限が適用され、そのコメントの編集権限が必要です。
+APIキーのユーザーとしてコメントを編集します。Loomioと同じ権限が適用されるため、そのユーザーには対象のコメントを編集する権限が必要です。
 
 `PATCH /api/b2/comments/:id`
 
 <!-- translation-section: params-8 -->
 
-### パラメータ
+### パラメーター
 
 | 名前 | 説明 |
 | --- | --- |
-| `body` | 更新後のコメント本文 |
-| `body_format` | `md` または `html`。省略可能。既定値は `md` |
+| `body` | 更新後のコメント本文です |
+| `body_format` | `md` または `html`、任意。既定値は `md` です |
 
 <!-- translation-section: example-10 -->
 
@@ -770,9 +772,9 @@ curl -H 'Authorization: Bearer YOUR_API_KEY' -X PATCH -H 'Content-Type: applicat
 
 <!-- translation-section: soft-delete-comment -->
 
-## コメントをソフト削除する
+## コメントの論理削除
 
-APIキーのユーザーとしてコメントをソフト削除します。コメントは削除済みとして扱われ、本文は非表示になりますが、レコードは残ります。
+APIキーのユーザーとしてコメントを論理削除します。コメントは削除済みになり、本文は非表示になりますが、レコードは保持されます。
 
 `DELETE /api/b2/comments/:id`
 
@@ -786,36 +788,36 @@ curl -H 'Authorization: Bearer YOUR_API_KEY' -X DELETE https://www.loomio.com/ap
 
 <!-- translation-section: create-poll -->
 
-## 投票を作成する
+## アンケートの作成
 
-API キーのユーザーとして投票を作成します。
+APIキーのユーザーとしてアンケートを作成します。
 
 `POST /api/b2/polls`
 
 <!-- translation-section: params-9 -->
 
-### パラメータ
+### パラメーター
 
 | 名前 | 説明 |
 | --- | --- |
-| `group_id` | 整数。省略可能。既定値は null。投票を作成するグループの ID です。`discussion_id` を指定した場合、`group_id` は無視されます |
-| `discussion_id` | 整数。省略可能。既定値は null。投票を追加するディスカッションのスレッド ID です |
-| `title` | 文字列。必須。投票のタイトルです |
-| `poll_type` | 文字列。必須。値は `proposal`、`poll`、`count`、`score`、`ranked_choice`、`meeting`、`dot_vote` です |
-| `details` | 文字列。省略可能。投票の本文です |
-| `details_format` | 文字列。省略可能。既定値は `md`。値は `md` または `html` です |
-| `options` | 文字列の配列です。`poll_type` が `proposal` の場合、有効な値は `agree`、`disagree`、`abstain`、`block` です。`poll_type` が `meeting` の場合、ISO 8601 形式の日付または日時の文字列を指定します。その他の投票形式では任意の文字列を指定できます |
-| `closing_at` | ISO 8601 形式の文字列または null。既定値は null。例: `2026-09-01T12:00:00Z`。null の場合、投票は無効になり、作成中として扱われます |
-| `specified_voters_only` | 真偽値。省略可能。既定値は false。true の場合、指定された人だけが投票できます。false の場合、グループ全員に投票への招待が送られます |
-| `hide_results` | 文字列。省略可能。既定値は `off`。値は `off`、`until_vote`、`until_closed` です |
-| `shuffle_options` | 真偽値。既定値は false。選択肢を投票者ごとにランダムな順序で表示します |
-| `anonymous` | 真偽値。省略可能。既定値は false。投票者の身元を隠します |
-| `recipient_audience` | `group` または null。省略可能。既定値は null。`group` の場合、グループ全員に通知します |
-| `notify_on_closing_soon` | 文字列。省略可能。既定値は `nobody`。値は `nobody`、`author`、`undecided_voters`、`voters` です |
-| `recipient_user_ids` | 通知または招待するユーザー ID の配列です |
+| `group_id` | 整数、省略可能、既定値は null。アンケートが属するグループのIDです。`discussion_id` を指定した場合、`group_id` は無視されます |
+| `discussion_id` | 整数、省略可能、既定値は null。このアンケートを追加するディスカッションのスレッドのIDです |
+| `title` | 文字列、必須。アンケートのタイトルです |
+| `poll_type` | 文字列、必須。値：`proposal`、`poll`、`count`、`score`、`ranked_choice`、`meeting`、`dot_vote` |
+| `details` | 文字列、省略可能。アンケートの本文です |
+| `details_format` | 文字列、省略可能、既定値は `md`。値：`md` または `html` |
+| `options` | 文字列の配列。`poll_type` が `proposal` の場合、有効な値は `agree`、`disagree`、`abstain`、`block` です。`poll_type` が `meeting` の場合、ISO 8601形式の日付または日時の文字列を指定します。その他のアンケートの種類では、任意の文字列が有効です |
+| `closing_at` | ISO 8601形式の文字列または null、既定値は null。例：`2026-09-01T12:00:00Z`。null の場合、投票は無効になり、アンケートは作成中として扱われます |
+| `specified_voters_only` | 真偽値、省略可能、既定値は false。true の場合、指定された人だけが投票できます。false の場合、グループの全員が投票に招待されます |
+| `hide_results` | 文字列、省略可能、既定値は `off`。値：`off`、`until_vote`、`until_closed` |
+| `shuffle_options` | 真偽値、既定値は false。投票者に選択肢をランダムな順序で表示します |
+| `anonymous` | 真偽値、省略可能、既定値は false。投票者が誰であるかを非表示にします |
+| `recipient_audience` | `group` または null、省略可能、既定値は null。`group` の場合、グループ全体に通知されます |
+| `notify_on_closing_soon` | 文字列、省略可能、既定値は `nobody`。値：`nobody`、`author`、`undecided_voters`、`voters` |
+| `recipient_user_ids` | 通知または招待するユーザーのIDの配列です |
 | `recipient_emails` | 投票に招待する人のメールアドレスの配列です |
-| `recipient_message` | メールの招待状に含めるメッセージです |
-| `notify_recipients` | 真偽値。既定値は false。false の場合、通知せずに人を追加します。true の場合、このリクエストで招待した全員に通知メールを送ります |
+| `recipient_message` | 招待メールに含めるメッセージです |
+| `notify_recipients` | 真偽値、既定値は false。false の場合、通知を送信せずに人を追加します。true の場合、このリクエストで招待された全員に通知メールが送信されます |
 
 <!-- translation-section: example-12 -->
 
@@ -827,9 +829,9 @@ curl -H 'Authorization: Bearer YOUR_API_KEY' -X POST -H 'Content-Type: applicati
 
 <!-- translation-section: show-poll -->
 
-## 投票を取得する
+## アンケートの取得
 
-整数の投票 ID または文字列のキーを使って投票を取得します。
+整数のアンケートID、または文字列のキーを使用してアンケートを取得します。
 
 `GET /api/b2/polls/:id`
 
@@ -843,24 +845,24 @@ curl -H 'Authorization: Bearer YOUR_API_KEY' https://www.loomio.com/api/b2/polls
 
 <!-- translation-section: list-polls -->
 
-## 投票の一覧を取得する
+## アンケートの一覧取得
 
-グループ内で API キーのユーザーに表示できる投票を一覧表示します。公開グループでは、メンバー以外も公開投票を一覧表示できます。非公開の投票は、Loomio で閲覧権限があるユーザーに限られます。レスポンスには表示可能な各投票の現在の結論も含まれます。`status=closed` を使うと、決定済みの提案を一覧表示できます。
+グループ内でAPIキーのユーザーが閲覧できるアンケートの一覧を取得します。公開されているグループでは、メンバーでなくても公開アンケートの一覧を取得できます。非公開アンケートは、Loomioで閲覧権限を持つユーザーだけが取得できます。レスポンスには、閲覧可能な各アンケートの現在の結論が含まれるため、`status=closed` を使用すると、決定済みの提案の一覧を取得できます。
 
 `GET /api/b2/polls`
 
 <!-- translation-section: params-10 -->
 
-### パラメータ
+### パラメーター
 
 | 名前 | 説明 |
 | --- | --- |
-| `group_id` | 整数。必須。投票を一覧表示するグループの ID です |
-| `status` | 文字列。省略可能。既定値は `active`。値は `active`、`closed`、`all` です |
-| `limit` | 整数。省略可能。既定値は 50。1 ページあたりの件数です |
-| `offset` | 整数。省略可能。既定値は 0。ページ送りの開始位置です |
+| `group_id` | 整数、必須。アンケートの一覧を取得するグループのIDです |
+| `status` | 文字列、省略可能、既定値は `active`。値：`active`、`closed`、`all` |
+| `limit` | 整数、省略可能、既定値は 50。1ページあたりの件数です |
+| `offset` | 整数、省略可能、既定値は 0。ページ分割のためのオフセットです |
 
-従来の指定方法: `per` と `from` は、それぞれ `limit` と `offset` の別名として引き続き使用できます。
+従来のパラメーター：`per` と `from` はそれぞれ `limit` と `offset` の別名として受け付けられ、引き続き使用できます。
 
 <!-- translation-section: example-14 -->
 
@@ -872,27 +874,27 @@ curl -H 'Authorization: Bearer YOUR_API_KEY' 'https://www.loomio.com/api/b2/poll
 
 <!-- translation-section: edit-poll -->
 
-## 投票を編集する
+## アンケートの編集
 
-API キーのユーザーとして投票を編集します。Loomio と同じ権限が適用され、その投票の編集権限が必要です。
+APIキーのユーザーとしてアンケートを編集します。Loomioと同じ権限が適用されるため、そのユーザーには対象のアンケートを編集する権限が必要です。
 
 `PATCH /api/b2/polls/:id`
 
 <!-- translation-section: params-11 -->
 
-### パラメータ
+### パラメーター
 
 | 名前 | 説明 |
 | --- | --- |
 | `title` | 更新後のタイトルです |
-| `details` | 更新後の投票の詳細です |
-| `details_format` | `md` または `html`。省略可能。既定値は `md` です |
-| `options` | 更新後の選択肢名です。選択肢の変更は、投票の状態によって既存の票に影響する場合があります |
-| `closing_at` | ISO 8601 形式の文字列または null です |
-| `recipient_audience` | `group` または null。`group` の場合、グループ全員に通知します |
-| `recipient_user_ids` | 通知または招待するユーザー ID の配列です |
+| `details` | 更新後のアンケートの詳細です |
+| `details_format` | `md` または `html`、省略可能、既定値は `md` |
+| `options` | 更新後の選択肢の名前です。選択肢を変更すると、アンケートの状態によっては既存の投票に影響する場合があります |
+| `closing_at` | ISO 8601形式の文字列または null |
+| `recipient_audience` | `group` または null。`group` の場合、グループ全体に通知されます |
+| `recipient_user_ids` | 通知または招待するユーザーのIDの配列です |
 | `recipient_emails` | 投票に招待する人のメールアドレスの配列です |
-| `recipient_message` | メールの招待状に含めるメッセージです |
+| `recipient_message` | 招待メールに含めるメッセージです |
 
 <!-- translation-section: example-15 -->
 
@@ -904,9 +906,9 @@ curl -H 'Authorization: Bearer YOUR_API_KEY' -X PATCH -H 'Content-Type: applicat
 
 <!-- translation-section: soft-delete-poll -->
 
-## 投票を論理削除する
+## アンケートの論理削除
 
-API キーのユーザーとして投票を論理削除します。投票は破棄されますが、レコードは残ります。
+APIキーのユーザーとしてアンケートを論理削除します。アンケートを削除済みとして扱い、アンケートのレコードは保持します。
 
 `DELETE /api/b2/polls/:id`
 
@@ -920,19 +922,19 @@ curl -H 'Authorization: Bearer YOUR_API_KEY' -X DELETE https://www.loomio.com/ap
 
 <!-- translation-section: list-memberships -->
 
-## メンバーシップの一覧を取得する
+## メンバー登録の一覧取得
 
-API キーのユーザーに表示できるメンバーシップを一覧表示します。グループのメンバーは、メンバーの名前、ID、肩書き、役割を閲覧できます。メールアドレスが含まれるのは、API キーのユーザー自身のアカウントか、そのユーザーがグループ管理者の場合だけです。
+APIキーのユーザーが閲覧できるメンバー登録を一覧で取得します。グループのメンバーは、メンバーの名前、ID、肩書き、役割を閲覧できます。メールアドレスは、APIキーのユーザー自身のアカウントの場合、またはAPIキーのユーザーがグループ管理者の場合にのみ含まれます。
 
 `GET /api/b2/memberships`
 
 <!-- translation-section: params-12 -->
 
-### パラメータ
+### パラメーター
 
 | 名前 | 説明 |
 | --- | --- |
-| `group_id` | 整数。必須。メンバーシップを一覧表示するグループの ID です |
+| `group_id` | 整数、必須。メンバー登録を一覧で取得するグループのID |
 
 <!-- translation-section: example-17 -->
 
@@ -944,21 +946,21 @@ curl -H 'Authorization: Bearer YOUR_API_KEY' 'https://www.loomio.com/api/b2/memb
 
 <!-- translation-section: manage-memberships -->
 
-## メンバーシップを管理する
+## メンバー登録の管理
 
-メールアドレスの一覧を送信すると、新しいメールアドレスの人をグループに招待します。メンバーシップの一覧取得とは異なり、この操作にはグループ管理者の権限が必要です。
+メールアドレスのリストを送信します。新しいメールアドレスすべてにグループへの招待を送ります。メンバー登録の一覧取得とは異なり、この操作にはグループ管理者の権限が必要です。
 
 `POST /api/b2/memberships`
 
 <!-- translation-section: params-13 -->
 
-### パラメータ
+### パラメーター
 
 | 名前 | 説明 |
 | --- | --- |
-| `group_id` | 整数。必須。メンバーシップを管理するグループの ID です |
-| `emails` | 文字列の配列。必須。グループに招待する人のメールアドレスです |
-| `remove_absent` | 真偽値。true の場合、メールアドレスが一覧にない人をグループから削除します |
+| `group_id` | 整数、必須。メンバー登録を管理するグループのID |
+| `emails` | 文字列の配列、必須。グループに招待する人のメールアドレス |
+| `remove_absent` | 真偽値。trueの場合、メールアドレスがリストに含まれていない人をグループから削除します |
 
 <!-- translation-section: example-18 -->
 
@@ -968,10 +970,10 @@ curl -H 'Authorization: Bearer YOUR_API_KEY' 'https://www.loomio.com/api/b2/memb
 curl -H 'Authorization: Bearer YOUR_API_KEY' -X POST -H 'Content-Type: application/json' -d '{"group_id": 123, "emails":["person@example.com"]}' https://www.loomio.com/api/b2/memberships
 ```
 
-`remove_absent=1` を指定すると、一覧に含まれないグループのメンバーが削除されます。グループの全員が削除される可能性があるため、注意してください。
+`remove_absent=1`を指定すると、リストに含まれていないグループのメンバーはすべてグループから削除されます。グループの全メンバーを削除する可能性があるため、注意してください。
 
 ```bash
 curl -H 'Authorization: Bearer YOUR_API_KEY' -X POST -H 'Content-Type: application/json' -d '{"group_id": 123, "emails":["person@example.com"], "remove_absent": 1}' https://www.loomio.com/api/b2/memberships
 ```
 
-レスポンスは `{added_emails: ["person@added.com"], removed_emails: ["person@removed.com"]}` を含むオブジェクトです。
+この操作は、`{added_emails: ["person@added.com"], removed_emails: ["person@removed.com"]}`を含むオブジェクトを返します。
