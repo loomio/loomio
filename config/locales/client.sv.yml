@@ -268,7 +268,7 @@ sv:
     action:
       print: Skriva ut
       preview: Förhandsvisning
-      pin: Stift
+      pin: Fäst
       unpin: Lossa
       search: Sök
       filter: Filtrera
@@ -679,8 +679,8 @@ sv:
     email_and_device_when_notified: E-post- och enhetsaviseringar vid avisering
     device_notification_when_notified: Enhetsmeddelande vid meddelande
     no_notifications: Inga aviseringar
-    catch_up_email_every_second_day: Mejl om uppföljning varannan dag
-    weekly_catch_up_email: Veckovis e-postmeddelande med uppföljning
+    catch_up_email_every_second_day: Sammanfattningsmejl varannan dag
+    weekly_catch_up_email: Sammanfattningsmejl varje vecka
   search_modal:
     all_content: Allt innehåll
     best_match: Bästa matchningen
@@ -1121,7 +1121,7 @@ sv:
     show_edits: Visa redigeringar
     show_notifications: Visa notifikationer
     history: Historia
-    pin_thread: Pintråd
+    pin_thread: Fäst tråd
     unpin_thread: Lossa gängan
     pin_event: Fäst till tidslinjen
     unpin_event: Lossa från tidslinjen
@@ -1781,7 +1781,7 @@ sv:
       all: Senaste diskussionerna
     thread_preview:
       you_voted: Du röstade %{position}
-      undecided: Du är obestämd
+      undecided: Du har inte röstat
     threads_from:
       group: Trådar från
       pinned: Nålade trådar
@@ -2281,12 +2281,12 @@ sv:
     started_by: Startade av %{name}
   poll_common_votes_panel:
     vote_removed: Rösten togs bort
-    undecided: Obeslutsam
+    undecided: Har inte röstat
     newest_first: Nyaste först
     oldest_first: Äldst först
     priority_first: Håller med först
     priority_last: Blockera först
-    undecided_first: Obestämd först
+    undecided_first: De som inte har röstat först
     no_votes_yet: Inga röster har lagts ännu.
     change_results_order: Ändra resultatordning
     none_of_the_above: "(Inget av ovanstående)"
@@ -2310,7 +2310,7 @@ sv:
   poll_common_undecided_panel:
     show_undecided: Visa %{count} osäkra
     show_invitations: Visa väntande inbjudningar
-    undecided_users: Obestämd (%{count})
+    undecided_users: Har inte röstat (%{count})
     invitation_count_singular: Ytterligare 1 person har bjudits in att delta via e-post
     invitation_count_plural: "%{count} ytterligare personer har bjudits in att delta via e-post"
   poll_common_undecided_user:
@@ -2395,7 +2395,7 @@ sv:
     minimum_stance_choices_hint: dvs. Rangordna dina topp 3 smaker av glass
     ranked_choice_created: Rangordnat val skapat
     ranked_choice_updated: Rangordnat val uppdaterat
-    rank: Rang
+    rank: Rangordning
     points: Poäng
     average: Genomsnitt
     mean: Betyda
@@ -2453,7 +2453,7 @@ sv:
     total: Totalt
   poll_remove_vote:
     title: Ta bort din röst?
-    helptext: Är du säker på att du vill ta bort din röst? Du kommer att listas som obestämd och kan rösta igen senare om du vill.
+    helptext: Är du säker på att du vill ta bort din röst? Du kommer att listas bland dem som inte har röstat och kan rösta igen senare om du vill.
     confirm: Ta bort röst
     success: Röst borttagen
   poll_poll_vote_form:
@@ -2869,10 +2869,10 @@ sv:
       question_hint: Be om frågor och kommentarer om ditt förslag
       show_thumbs: Räcka upp tummar
       show_thumbs_hint: Väljarna väljer tummen upp, ner, åt sidan eller handen upp
-      choose: Välja
+      choose: Val
       simple_poll: Enkel omröstning
       choose_hint: Väljarna väljer det bästa alternativet (eller alternativen)
-      score: Göra
+      score: Poäng
       score_hint: Väljarna tilldelar en poäng till varje alternativ
       allocate: Fördela
       allocate_hint: Väljarna fördelar en budget på poäng mellan alternativen
@@ -2880,7 +2880,7 @@ sv:
       ranked_choice_hint: Väljarna ordnar alternativen i ordning från mest till minst föredragna
       time_poll: Tidsomröstning
       time_poll_hint: Väljarna anger när de är tillgängliga för att mötas
-      rank: Rang
+      rank: Rangordning
       time: Tid
       stv: STV-val
       stv_hint: Välj flera vinnare proportionellt med hjälp av enkel överförbar röst

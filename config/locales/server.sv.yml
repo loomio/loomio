@@ -65,7 +65,7 @@ sv:
       title_placeholder: Reviderar vår anställningspolicy
       process_name: Bygg en policy
       process_subtitle: Arbeta med ditt team för att skapa och komma överens om ett policy- eller procedurdokument.
-      process_introduction: <p><span>Tråden är behållaren för diskussion om policyn, där du kan komma överens om krav och principer och lägga upp dokumentutkast för kommentarer.</span></p><p> <span>Använd mallen för att utveckla policyer med en liten grupp människor, eller göra den transparent för hela organisationen och bjuda in kommentarer om progressiva versioner av dokumentet.</span></p><p> <span>Använd ett Sense-kontrollförslag för att meddela gruppmedlemmarna att ett utkast till dokument är redo för granskning, och bjud in personer att läsa dokumentet och svara med eventuella kommentarer eller frågor.</span></p><p> <span>När ett "slutligt" utkast är klart, ta fram ett samtycke eller konsensusförslag för att godkänna dokumentet.</span></p>
+      process_introduction: "<p><span>Tråden är behållaren för diskussion om policyn, där du kan hålla med om krav och principer och lägga upp dokumentutkast för kommentarer.</span></p><p><span>Använd mallen för att utveckla en policy med en liten grupp människor, eller göra arbetet öppet för hela organisationen och bjuda in kommentarer om nya versioner av dokumentet.</span></p><p><span>Använd ett stämningskollförslag för att meddela gruppmedlemmarna att ett dokumentutkast är redo för granskning, och bjud in personer att läsa dokumentet och svara med eventuella kommentarer eller frågor.</span></p><p><span>När ett 'slutligt' utkast är klart, lägg fram ett samtyckes- eller konsensusförslag för att godkänna dokumentet.</span></p>"
       description: "<p><strong><span>Vilken policy eller dokument behöver du bygga?</span></strong></p><p></p><p> <strong><span>Varför är detta viktigt?</span></strong></p><p></p><p> <strong><span>Vad ber du folk att göra?</span></strong></p><p></p>"
       policy: Politik
     elect_a_governance_position:
@@ -172,10 +172,10 @@ sv:
       poll_types:
         proposal: Förslag
         count: Räkna
-        choose: Välja
+        choose: Val
         allocate: Fördela
-        score: Göra
-        rank: Rang
+        score: Poäng
+        rank: Rangordning
         time: Tidsröstning
   user:
     deleted_user: Ta bort användare
@@ -371,7 +371,7 @@ sv:
     catch_up_link: Inställningar för e-postmeddelanden för att komma ikapp
     catch_up_title: Inställningar för e-postmeddelanden för att komma ikapp
     catch_up_description: Välj hur ofta du vill få en sammanfattning av aktiviteten i dina grupper
-    catch_up_schedule: Skicka ett mejl om uppföljning
+    catch_up_schedule: Skicka ett sammanfattningsmejl
     catch_up_saved: Inställningar för e-post för att komma ikapp har uppdaterats
     catch_up_days:
       never: Aldrig
@@ -635,7 +635,7 @@ sv:
       process_subtitle_v3: Avslöja prioriteringar när det finns avvägningar. Även känt som punktröstning.
     ranked_choice:
       process_subtitle: Förstå den ordnade preferensen för alternativ
-      process_introduction: <p>Rangordnat val är användbart när du har ett stort antal alternativ eller håller ett val.</p><p> Den här omröstningsmallen erbjuder en rad alternativ för att folk ska kunna rösta i den ordning de föredrar.</p><p> Du kan ställa in antalet valmöjligheter väljaren får.</p><p> <span>Väljarna drar och släpper alternativ i preferensordning (#1 är ditt mest föredragna alternativ).</span></p><p> <span>Avancerade inställningar inkluderar "Rösterna är anonyma" och "Visa alternativ i slumpmässig ordning" – används ofta för</span> rankade val för att minska eventuell röstningsbias.</p><p> Resultaten visas i rangordning. Resultattabellen ger ytterligare data som hjälper dig att analysera resultaten.</p><ul><li><p> Rang</p></li><li><p> % av poängen</p></li><li><p> Poäng</p></li><li><p> Betyda</p></li></ul><p> <a target="_blank"  href="/docs/en/user_manual/polls/proposal_types#ranked-choice">Läs mer om rankat val</a> .</p>
+      process_introduction: <p>Rangordning är användbart när du har många alternativ eller håller ett val.</p><p>Väljarna drar och släpper alternativ för att ordna dem efter vad de föredrar.</p><p>Resultaten visas i rangordning.</p><p><a target="_blank"  href="/docs/en/user_manual/polls/proposal_types#ranked-choice">Läs mer om Rangordning</a>.</p>
       title: Välja styrelseledamöter till styrelsen
       details: <h3 id="what-is-this-poll-about"><strong>Vad handlar den här omröstningen om?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Varför är detta viktigt?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Vad ber du folk att göra?</strong></h3><p></p><p> Rösta genom att rangordna alternativen efter din preferens. Det alternativ som rankas först i resultaten vinner.</p>
       process_subtitle_v2: Hitta gruppens preferensordning
@@ -782,7 +782,7 @@ sv:
     voted: "%{author} röstade %{response}"
     voted_hidden: "%{author} röstade"
     vote_removed: "%{author}: röst borttagen"
-    undecided: "%{author}: obeslutsam"
+    undecided: "%{author}: har inte röstat"
     superseded: ersatt
     shared_outcome: "%{author} delade en slutsats"
     removed: Borttagen
