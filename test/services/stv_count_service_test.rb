@@ -168,6 +168,45 @@ class StvCountServiceTest < ActiveSupport::TestCase
     assert first_round[:transfers].any?, "Should have transfer data"
   end
 
+  test "scottish: candidates reaching quota together are elected before any surplus moves" do
+    # 3 seats, 17 voters, Droop quota = 5.
+    # Stage 1: A=7 and B=5 both reach quota and are elected together.
+    # A's surplus of 2 skips B (already elected) and goes to C, giving C 4.
+    # D (3) is excluded and C takes the last seat.
+    options = build_options(%w[A B C D])
+    ballots = []
+    7.times { ballots << [1, 2, 3] }
+    5.times { ballots << [2, 4] }
+    2.times { ballots << [3] }
+    3.times { ballots << [4] }
+
+    result = StvCountService::ScottishCounter.new(ballots, 3, 'droop', options).count
+
+    assert_equal %w[A B C], result[:elected].map { |e| e[:name] }
+    assert_equal [1, 2], result[:rounds].first[:elected]
+    assert_equal({ "3" => 2.0 }, result[:rounds].first[:transfers]["1"])
+  end
+
+  test "scottish: surpluses are transferred largest first" do
+    # 3 seats, Droop quota = 26. A (40) and B (35) are elected at stage 1.
+    # A's surplus of 14 is transferred before B's surplus of 9, which elects
+    # C at stage 2 and ends the count with B's surplus untransferred.
+    options = build_options(%w[A B C D])
+    ballots = []
+    40.times { ballots << [1, 2, 3, 4] }
+    35.times { ballots << [2, 3, 1, 4] }
+    15.times { ballots << [3, 4, 1, 2] }
+    10.times { ballots << [4, 3, 2, 1] }
+
+    result = StvCountService::ScottishCounter.new(ballots, 3, 'droop', options).count
+
+    assert_equal [1, 2], result[:rounds][0][:elected]
+    assert_equal ["1"], result[:rounds][0][:transfers].keys
+    assert_equal [3], result[:rounds][1][:elected]
+    assert_equal 2, result[:rounds].size
+    assert_equal %w[A B C], result[:elected].map { |e| e[:name] }
+  end
+
   # ── Meek STV ──────────────────────────────────────────────────────
 
   test "meek droop: simple election" do

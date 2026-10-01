@@ -1,16 +1,24 @@
 module StvCountService
   class ScottishCounter
-    # Weighted Inclusive Gregory Method (WIGM) as used in Scottish local elections.
+    # Weighted Inclusive Gregory Method (WIGM) as used in Scottish local
+    # elections (Scottish Local Government Elections Order 2011, Schedule 1,
+    # rules 46–53).
     #
-    # When a candidate is elected with a surplus:
-    #   transfer_value = surplus / total_votes_for_candidate
-    #   Each ballot sitting with the elected candidate has its weight multiplied
-    #   by transfer_value and moves to the next continuing preference.
-    #   Exhausted ballots lose their weight (non-transferable).
+    # The count proceeds in stages. At the start of each stage every continuing
+    # candidate whose votes reach the quota is elected, all together. The stage
+    # then does one thing:
     #
-    # When a candidate is eliminated:
-    #   Each ballot sitting with them transfers to next continuing preference
-    #   at its current weight (unchanged).
+    #   * transfers the largest untransferred surplus, moving every paper the
+    #     elected candidate holds to its next continuing preference at
+    #     value × surplus / total; or, when no surplus remains,
+    #   * excludes the continuing candidate with the fewest votes, moving their
+    #     papers to the next continuing preference at their current value.
+    #
+    # Papers only ever move to continuing candidates, so a surplus never lands
+    # on a candidate who has already been elected. Papers with no further
+    # continuing preference become non-transferable.
+
+    Paper = Struct.new(:prefs, :count, :value, :holder)
 
     def initialize(ballots, seats, quota_type, poll_options)
       @seats = seats
@@ -18,95 +26,61 @@ module StvCountService
       @candidate_ids = poll_options.map(&:id)
       @candidate_names = poll_options.each_with_object({}) { |po, h| h[po.id] = po.name }
 
-      # Each ballot: { prefs: [ordered poll_option_ids], weight: Float }
-      @ballots = ballots.map { |prefs| { prefs: prefs.dup, weight: 1.0 } }
+      # Identical ballots follow identical paths, so count them as one parcel.
+      @papers = ballots.tally.map { |prefs, count| Paper.new(prefs.dup, count, 1.0, nil) }
     end
 
     def count
+      return empty_result if @papers.empty?
+
       @elected = []
-      @eliminated = []
       @rounds = []
-      @continuing = @candidate_ids.dup
-
+      @continuing = Set.new(@candidate_ids)
+      @surplus_pending = []
+      @retained = {}
       @tied = []
+      @quota = QuotaCalculator.calculate(@papers.sum(&:count), @seats, @quota_type)
 
-      return empty_result if @ballots.empty?
-
-      @quota = QuotaCalculator.calculate(@ballots.size, @seats, @quota_type)
+      @papers.each { |paper| paper.holder = next_continuing(paper) }
 
       loop do
-        break if @elected.size >= @seats
-        break if @continuing.empty?
-
-        tallies = tally_votes
-
+        totals = current_totals
         round_data = {
           round: @rounds.size + 1,
-          tallies: format_tallies(tallies),
+          tallies: format_tallies(totals),
           elected: [],
           eliminated: [],
           transfers: {},
           quota: round_to(6, @quota)
         }
+        @rounds << round_data
 
-        # If remaining candidates <= remaining seats, elect them all
-        remaining_seats = @seats - @elected.size
-        if @continuing.size <= remaining_seats
-          @continuing.each do |cid|
-            elect_candidate(cid, round_data)
-          end
+        elect_reaching_quota(totals, round_data)
+        break if @elected.size >= @seats
+
+        # Rule 53: when the continuing candidates fit the remaining seats,
+        # they are all elected.
+        if @continuing.size <= @seats - @elected.size
+          @continuing.sort_by { |cid| -totals[cid] }.each { |cid| elect_candidate(cid, round_data) }
           @continuing.clear
-          @rounds << round_data
           break
         end
 
-        # Elect candidates meeting quota (highest first)
-        over_quota = tallies.select { |_cid, votes| votes >= @quota }
-                           .sort_by { |_cid, votes| -votes }
-
-        if over_quota.any?
-          over_quota.each do |cid, votes|
-            break if @elected.size >= @seats
-            elect_candidate(cid, round_data)
-            @continuing.delete(cid)
-
-            surplus = votes - @quota
-            if surplus > 0 && @continuing.any?
-              transfer_value = surplus / votes
-              transfers = redistribute_elected(cid, transfer_value)
-              round_data[:transfers][cid.to_s] = format_tallies(transfers) if transfers.any?
-            else
-              # No surplus or no continuing candidates — zero out ballots for this candidate
-              zero_out_ballots_for(cid)
-            end
-          end
+        if (cid = @surplus_pending.max_by { |pending| totals[pending] })
+          transfer_surplus(cid, totals[cid], round_data)
         else
-          # Eliminate candidate with fewest votes
-          min_votes = tallies.values.min
-          tied_cids = tallies.select { |_cid, v| v == min_votes }.keys
+          lowest = totals.slice(*@continuing).values.min
+          tied_cids = @continuing.select { |cid| totals[cid] == lowest }
 
-          if tied_cids.size > 1 && @continuing.size - 1 <= (@seats - @elected.size)
-            # Tie affects the outcome: eliminating different candidates could change who wins.
-            # Record the tie and stop counting.
+          if tied_cids.size > 1 && @continuing.size - 1 <= @seats - @elected.size
+            # Tie affects the outcome: record it and stop counting.
             @tied = @continuing.map { |cid| { poll_option_id: cid, name: @candidate_names[cid] } }
             round_data[:tied] = @continuing.to_a
-            @rounds << round_data
             break
           end
 
-          eliminated_cid = tied_cids.min
-          @eliminated << eliminated_cid
-          @continuing.delete(eliminated_cid)
-          round_data[:eliminated] << eliminated_cid
-
-          transfers = redistribute_eliminated(eliminated_cid)
-          round_data[:transfers][eliminated_cid.to_s] = format_tallies(transfers) if transfers.any?
+          exclude(tied_cids.min, round_data)
         end
-
-        @rounds << round_data
-
-        # Safety: prevent infinite loops
-        break if @rounds.size > @candidate_ids.size * 2
       end
 
       {
@@ -126,6 +100,28 @@ module StvCountService
       { quota: 0, seats: @seats, method: 'scottish', quota_type: @quota_type, elected: [], tied: [], rounds: [] }
     end
 
+    # Votes held by each continuing or elected candidate. An elected candidate
+    # whose surplus has been transferred keeps exactly the quota.
+    def current_totals
+      totals = @continuing.each_with_object({}) { |cid, h| h[cid] = 0.0 }
+      @elected.each { |e| totals[e[:poll_option_id]] = @retained.fetch(e[:poll_option_id], 0.0) }
+      @papers.each do |paper|
+        totals[paper.holder] += paper.count * paper.value if paper.holder && totals.key?(paper.holder)
+      end
+      totals
+    end
+
+    def elect_reaching_quota(totals, round_data)
+      reached = @continuing.select { |cid| totals[cid] >= @quota }.sort_by { |cid| -totals[cid] }
+      reached.each do |cid|
+        break if @elected.size >= @seats
+
+        elect_candidate(cid, round_data)
+        @continuing.delete(cid)
+        @surplus_pending << cid if totals[cid] > @quota
+      end
+    end
+
     def elect_candidate(cid, round_data)
       @elected << {
         poll_option_id: cid,
@@ -135,71 +131,38 @@ module StvCountService
       round_data[:elected] << cid
     end
 
-    def tally_votes
-      tallies = @continuing.each_with_object({}) { |cid, h| h[cid] = 0.0 }
-      @ballots.each do |ballot|
-        next if ballot[:weight] <= 0
-        top = top_continuing(ballot[:prefs])
-        tallies[top] += ballot[:weight] if top
-      end
-      tallies
+    # Rule 49: every paper the candidate holds moves on at
+    # value × surplus / total, leaving the candidate with the quota.
+    def transfer_surplus(cid, total, round_data)
+      @surplus_pending.delete(cid)
+      surplus = total - @quota
+      transfers = move_papers_from(cid) { |value| value * surplus / total }
+      @retained[cid] = @quota
+      round_data[:transfers][cid.to_s] = format_tallies(transfers) if transfers.any?
     end
 
-    def top_continuing(prefs)
-      prefs.find { |cid| @continuing.include?(cid) }
+    # Rule 51: the excluded candidate's papers move on at their current value.
+    def exclude(cid, round_data)
+      @continuing.delete(cid)
+      round_data[:eliminated] << cid
+      transfers = move_papers_from(cid) { |value| value }
+      round_data[:transfers][cid.to_s] = format_tallies(transfers) if transfers.any?
     end
 
-    # For a candidate who just got elected: find all ballots currently sitting
-    # with them, multiply weight by transfer_value, and let them flow to next pref.
-    def redistribute_elected(elected_cid, transfer_value)
+    def move_papers_from(cid)
       transfers = Hash.new(0.0)
-      @ballots.each do |ballot|
-        next if ballot[:weight] <= 0
-        top = top_sitting_with(ballot[:prefs], elected_cid)
-        next unless top == elected_cid
+      @papers.each do |paper|
+        next unless paper.holder == cid
 
-        next_pref = ballot[:prefs].find { |cid| @continuing.include?(cid) }
-        old_weight = ballot[:weight]
-        ballot[:weight] = old_weight * transfer_value
-
-        if next_pref
-          transfers[next_pref] += ballot[:weight]
-        end
-        # If exhausted, weight is effectively lost (ballot still exists but
-        # won't tally for anyone since no continuing preference found)
+        paper.value = yield(paper.value)
+        paper.holder = next_continuing(paper)
+        transfers[paper.holder] += paper.count * paper.value if paper.holder
       end
       transfers
     end
 
-    # For an eliminated candidate: transfer ballots at full weight to next preference.
-    def redistribute_eliminated(eliminated_cid)
-      transfers = Hash.new(0.0)
-      @ballots.each do |ballot|
-        next if ballot[:weight] <= 0
-        top = top_sitting_with(ballot[:prefs], eliminated_cid)
-        next unless top == eliminated_cid
-
-        next_pref = ballot[:prefs].find { |cid| @continuing.include?(cid) }
-        if next_pref
-          transfers[next_pref] += ballot[:weight]
-        end
-        # Weight unchanged; ballot naturally flows to next continuing pref on re-tally
-      end
-      transfers
-    end
-
-    # Find the top preference that is either the target candidate or still continuing.
-    # This tells us which candidate this ballot is "sitting with".
-    def top_sitting_with(prefs, target_cid)
-      prefs.find { |cid| cid == target_cid || @continuing.include?(cid) }
-    end
-
-    # Zero out ballots sitting with a candidate who was elected with no surplus.
-    def zero_out_ballots_for(cid)
-      @ballots.each do |ballot|
-        top = top_sitting_with(ballot[:prefs], cid)
-        ballot[:weight] = 0.0 if top == cid
-      end
+    def next_continuing(paper)
+      paper.prefs.find { |cid| @continuing.include?(cid) }
     end
 
     def format_tallies(hash)
