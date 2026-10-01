@@ -1,10 +1,10 @@
 ---
 title: Server-API
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
+source_revision: c27ee3b193231816878f1c074ff9fc2a086a88c0
 source_file: docs/en/user_manual/integrations/api/server-api.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-02'
 sections:
   introduction: a357cdc2bfc0223e
   authentication: cbabcc874f053455
@@ -26,25 +26,25 @@ sections:
   examples-6: 71ae30577730b261
   sso-profile-sync-settings: 416144004d040e4f
 generated:
-  introduction: efe90e0a3265ea52
-  authentication: 552588cedfe8c5e1
+  introduction: 616cc29d6b8577fc
+  authentication: c1bbbba346b6c4a0
   user-object: b52df738c172f57b
   list-users: 96a22d3fe82474a5
   example: fd1b4660e2c0a7e7
-  show-user: a1cd67123b233029
-  examples: 9edf25fda5c3d290
-  update-user: aa3a57f09c9c7585
+  show-user: 7fe79e6c272dd86e
+  examples: 3685117d142e09fe
+  update-user: aded4c4f83ac4442
   params: a58deea182d61629
-  examples-2: af9fae447afdba8b
-  deactivate-user: 816730a624c25fc8
-  examples-3: 81675121ddd1eb1f
+  examples-2: 37e396a4ce0741c5
+  deactivate-user: c91fe6b7a837bb09
+  examples-3: f99f5be0463e3e67
   reactivate-user: 5c78d09ef3a08ec3
-  examples-4: 043a4499017eb3e8
-  redact-user: eae4afc394f93d2b
-  examples-5: 6d2fcb5b525dc7fd
-  delete-user: 1eb626c5edbf8105
-  examples-6: 780d13b6eda648d2
-  sso-profile-sync-settings: e8440a65c88df6c9
+  examples-4: 2c86dad407e9b2c5
+  redact-user: c2476a7acc1c3069
+  examples-5: d23652d2d650c235
+  delete-user: de66e470913a72f5
+  examples-6: e0695c18e79c6ade
+  sso-profile-sync-settings: 5d80d185e6028502
 title_source: 370e81eb20eece44
 title_generated: 110d7181b51daf50
 ---
@@ -53,9 +53,9 @@ title_generated: 110d7181b51daf50
 
 # Documentatie van de Loomio Server-API
 
-<!-- seo-description: Gebruik de Loomio Server-API om gebruikersaccounts te beheren op een Loomio-installatie die je zelf host. -->
+<!-- seo-description: Gebruik de Loomio Server-API om gebruikersaccounts te beheren op een zelfgehoste Loomio-installatie. -->
 
-`/api/b3` is bedoeld voor bewerkingen op serverniveau. Gebruik `/api/b2` voor gebruikersgerichte acties die je uitvoert met een Loomio-gebruikersaccount.
+`/api/b3` is voor bewerkingen op serverniveau. Gebruik `/api/b2` voor gebruikersgerichte acties die je uitvoert met een Loomio-gebruikersaccount.
 
 <!-- translation-section: authentication -->
 
@@ -69,7 +69,7 @@ Stuur de sleutel als een bearer-token:
 curl -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/b3/users
 ```
 
-Stuur authenticatiegegevens alleen in de `Authorization`-header. API-sleutels in querystrings of aanvraagbodies worden geweigerd.
+Stuur inloggegevens alleen in de `Authorization`-header. API-sleutels in querystrings of de inhoud van verzoeken worden geweigerd.
 
 <!-- translation-section: user-object -->
 
@@ -125,7 +125,7 @@ Geeft terug:
 
 ## Gebruiker tonen
 
-Zoek een gebruiker op via diens Loomio-gebruikers-ID of externe identiteit.
+Zoek een gebruiker op basis van het Loomio-gebruikers-ID of de externe identiteit.
 
 `GET /api/b3/users/:id`
 
@@ -135,13 +135,13 @@ Zoek een gebruiker op via diens Loomio-gebruikers-ID of externe identiteit.
 
 ### Voorbeelden
 
-Via Loomio-gebruikers-ID:
+Op basis van het Loomio-gebruikers-ID:
 
 ```bash
 curl -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/b3/users/123
 ```
 
-Via externe identiteit:
+Op basis van de externe identiteit:
 
 ```bash
 curl -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/b3/users/identity/oauth/external-123
@@ -159,7 +159,7 @@ Geeft terug:
 
 ## Gebruiker bijwerken
 
-Werk de profielvelden bij van een gebruiker die je opzoekt via diens Loomio-gebruikers-ID of externe identiteit.
+Werk de profielvelden bij van een gebruiker die je vindt op basis van het Loomio-gebruikers-ID of de externe identiteit.
 
 `PATCH /api/b3/users/:id`
 
@@ -179,7 +179,7 @@ Werk de profielvelden bij van een gebruiker die je opzoekt via diens Loomio-gebr
 
 ### Voorbeelden
 
-Via Loomio-gebruikers-ID:
+Op basis van het Loomio-gebruikers-ID:
 
 ```bash
 curl -X PATCH \
@@ -189,7 +189,7 @@ curl -X PATCH \
   https://www.loomio.com/api/b3/users/123
 ```
 
-Via externe identiteit:
+Op basis van de externe identiteit:
 
 ```bash
 curl -X PATCH \
@@ -211,7 +211,7 @@ Geeft de bijgewerkte gebruiker terug:
 
 ## Gebruiker deactiveren
 
-Deactiveer een gebruikersaccount dat je opzoekt via het Loomio-gebruikers-ID of de externe identiteit.
+Deactiveer een gebruikersaccount dat je vindt op basis van het Loomio-gebruikers-ID of de externe identiteit.
 
 `POST /api/b3/users/:id/deactivate`
 
@@ -221,13 +221,13 @@ Deactiveer een gebruikersaccount dat je opzoekt via het Loomio-gebruikers-ID of 
 
 ### Voorbeelden
 
-Via Loomio-gebruikers-ID:
+Op basis van het Loomio-gebruikers-ID:
 
 ```bash
 curl -X POST -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/b3/users/123/deactivate
 ```
 
-Via externe identiteit:
+Op basis van de externe identiteit:
 
 ```bash
 curl -X POST -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/b3/users/identity/oauth/external-123/deactivate
@@ -268,7 +268,7 @@ Op basis van de externe identiteit:
 curl -X POST -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/b3/users/identity/oauth/external-123/reactivate
 ```
 
-Geeft terug:
+Retourneert:
 
 ```json
 {
@@ -279,9 +279,9 @@ Geeft terug:
 
 <!-- translation-section: redact-user -->
 
-## Persoonsgegevens van gebruiker wissen
+## Persoonsgegevens van gebruiker verwijderen
 
-Bij het wissen van persoonsgegevens blijven de reacties en andere door de gebruiker gemaakte inhoud binnen diens groepen behouden, maar worden bekende gegevens waarmee de persoon kan worden geïdentificeerd verwijderd, zoals naam, bio, profielfoto, e-mailadres, inloggegevens, identiteiten en actieve sessies.
+Bij het verwijderen van persoonsgegevens blijven de reacties van de gebruiker en andere door de gebruiker gemaakte inhoud in diens groepen behouden, maar worden bekende persoonlijk identificeerbare gegevens verwijderd, zoals naam, bio, profielfoto, e-mailadres, inloggegevens, identiteiten en actieve sessies.
 
 Dit is de aanbevolen manier om een gebruiker uit Loomio te verwijderen.
 
@@ -305,7 +305,7 @@ Op basis van de externe identiteit:
 curl -X POST -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/b3/users/identity/oauth/external-123/redact
 ```
 
-Geeft terug:
+Retourneert:
 
 ```json
 {
@@ -317,9 +317,9 @@ Geeft terug:
 
 ## Gebruiker verwijderen
 
-Verwijderen wist de gebruiker en de records die de gebruiker heeft aangemaakt. Reacties worden uit threads verwijderd, stemmen worden uit peilingen verwijderd en groepen, discussies, peilingen en andere records die de gebruiker heeft aangemaakt, kunnen ook via databaserelaties worden verwijderd.
+Verwijderen wist de gebruiker en de records die de gebruiker heeft aangemaakt. Reacties worden uit threads verwijderd en stemmen uit peilingen. Ook groepen, discussies, peilingen en andere records die de gebruiker heeft aangemaakt, kunnen via databasekoppelingen worden verwijderd.
 
-Hierbij worden veel gegevens verwijderd. Het wordt sterk aanbevolen om in plaats daarvan de persoonsgegevens te wissen.
+Hierdoor gaan veel gegevens verloren. Het wordt sterk aanbevolen om in plaats daarvan de persoonsgegevens te verwijderen.
 
 `DELETE /api/b3/users/:id`
 
@@ -341,7 +341,7 @@ Op basis van de externe identiteit:
 curl -X DELETE -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/b3/users/identity/oauth/external-123
 ```
 
-Geeft terug:
+Retourneert:
 
 ```json
 {
@@ -353,7 +353,7 @@ Geeft terug:
 
 ## Instellingen voor SSO-profielsynchronisatie
 
-Gebruik deze instellingen wanneer een ander systeem de profielvelden van Loomio beheert.
+Gebruik deze instellingen wanneer een ander systeem de profielvelden in Loomio beheert.
 
 ```env
 LOOMIO_DISABLE_EDIT_USER_PROFILE=1
@@ -371,6 +371,6 @@ LOOMIO_DISABLE_EDIT_USER_PROFILE=1
 
 Gebruikers kunnen velden die alleen in Loomio worden gebruikt, zoals `short_bio` en `location`, nog steeds bewerken.
 
-`LOOMIO_SSO_UPDATE_USER_PROFILE_ON_LOGIN=1` werkt `name` en `email` bij op basis van SSO-inloggegevens. Laat deze instelling als commentaar staan of stel deze niet in wanneer een extern synchronisatiescript de enige bron van deze updates moet zijn.
+`LOOMIO_SSO_UPDATE_USER_PROFILE_ON_LOGIN=1` werkt `name` en `email` bij op basis van SSO-inloggegevens. Laat deze instelling als commentaar staan of stel deze niet in wanneer alleen een extern synchronisatiescript deze velden moet bijwerken.
 
-`LOOMIO_SSO_FORCE_USER_ATTRS` werkt nog steeds voor bestaande installaties. Deze instelling voorkomt zowel dat gebruikers de velden bewerken als dat `name` en `email` ongewijzigd blijven bij het inloggen via SSO: deze velden worden dan bijgewerkt.
+`LOOMIO_SSO_FORCE_USER_ATTRS` werkt nog steeds voor bestaande installaties. Deze instelling voorkomt dat gebruikers de velden bewerken en werkt `name` en `email` bij wanneer ze via SSO inloggen.

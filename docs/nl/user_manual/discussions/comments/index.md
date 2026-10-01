@@ -1,10 +1,10 @@
 ---
 title: Reacties
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
+source_revision: c27ee3b193231816878f1c074ff9fc2a086a88c0
 source_file: docs/en/user_manual/discussions/comments/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-02'
 sections:
   introduction: 5de86c47a823daf0
   reading-comments: 4b20b215ad06a596
@@ -22,17 +22,17 @@ sections:
 generated:
   introduction: e4d051e26528c26a
   reading-comments: c1713e8d763e1c97
-  writing-a-comment: 58eab5007e640e0c
-  mentioning-people: 3a5edacee8f71729
-  replying-to-a-comment: f159c9cc9e1f5cda
-  reactions: '0812928a3da2325e'
-  translating-comments: 411aec72695c0bce
-  comment-actions: 9eb9c397fed01351
-  add-a-comment-to-jump-to: 02c1c2f519957da3
-  edit-a-comment-and-view-changes: 4a1595ae550e3786
-  copy-a-comment-link: 828dd028baf93ca0
-  view-notification-history: a640b03b0c81c7d2
-  discard-restore-or-delete-a-comment: db069ad55883fbf3
+  writing-a-comment: 20efc1896b68bc45
+  mentioning-people: d4ff0f2cbaed802c
+  replying-to-a-comment: 5777b66598d6fe95
+  reactions: ea59bceffa549699
+  translating-comments: fa2bdb121e6f6b61
+  comment-actions: cc94f8497f41b487
+  add-a-comment-to-jump-to: 3fe841f7e824adf0
+  edit-a-comment-and-view-changes: 5aeceeae04f79895
+  copy-a-comment-link: ddc38ea77c198d14
+  view-notification-history: 4f891858547ed11b
+  discard-restore-or-delete-a-comment: 05d60688d45deb28
 title_source: 355f79f29d7d3c2d
 title_generated: 2f4abc2e5018fdf4
 needs_review:
@@ -59,25 +59,25 @@ Ongelezen reacties hebben een blauw label **nieuw** naast het tijdstip waarop ze
 
 ## Een reactie schrijven
 
-Schrijf een reactie om bij te dragen aan de discussie. Andere mensen kunnen antwoorden, een emoji-reactie geven of zelf een reactie plaatsen.
+Schrijf een reactie om bij te dragen aan de discussie. Andere mensen kunnen antwoorden, een emoji-reactie geven of hun eigen reacties plaatsen.
 
 Selecteer **Reactie plaatsen** om je reactie te publiceren. Je reactie is zichtbaar voor iedereen die toestemming heeft om de discussie te bekijken.
 
 ![](../using_discussions/comment.png)
 
-De hulpmiddelen die worden beschreven bij [Opmaak](/en/user_manual/discussions/formatting/) zijn beschikbaar wanneer je reacties schrijft.
+De hulpmiddelen die worden beschreven in [Opmaak](/en/user_manual/discussions/formatting/) zijn beschikbaar wanneer je reacties schrijft.
 
 <!-- translation-section: mentioning-people -->
 
 ## Mensen vermelden
 
-Typ **@**, begin de naam van een persoon te typen en selecteer die persoon vervolgens uit de lijst. Een vermelding stuurt die persoon meteen een melding en is een handige manier om aandacht of een antwoord te vragen.
+Typ **@**, begin de naam van iemand te typen en selecteer die persoon vervolgens in de lijst. Een vermelding stuurt die persoon meteen een melding en is een handige manier om aandacht of een antwoord te vragen.
 
 ![Samira Patel vermelden in een reactie](../notifying_people/comment_mention.png)
 
-Om iedereen in de groep een melding te sturen, typ je **@**, begin je de groepsnaam te typen en selecteer je de groep vervolgens uit de lijst.
+Om iedereen in de groep een melding te sturen, typ je **@**, begin je de groepsnaam te typen en selecteer je de groep vervolgens in de lijst.
 
-![Zoeken naar Oatmilk Cooperative tijdens het schrijven van een groepsvermelding](../notifying_people/mentioning_group_1.png)
+![Zoeken naar Oatmilk Cooperative bij het schrijven van een groepsvermelding](../notifying_people/mentioning_group_1.png)
 
 ![Oatmilk Cooperative geselecteerd als groepsvermelding](../notifying_people/mentioning_group_2.png)
 
@@ -87,19 +87,19 @@ Iemand vermelden geeft die persoon geen toegang tot de thread. Gebruik **Mensen 
 
 ## Antwoorden op een reactie
 
-Selecteer **Antwoorden** onder een reactie om erop te antwoorden. Het antwoord bevat alvast een @vermelding van de schrijver van de reactie, die een melding krijgt wanneer je het antwoord plaatst. Verwijder de vermelding als je die persoon geen melding wilt sturen.
+Selecteer **Antwoorden** onder een reactie om erop te antwoorden. Het antwoord bevat al een @vermelding van de auteur van de reactie, die een melding krijgt wanneer je het antwoord plaatst. Verwijder de vermelding als je die persoon geen melding wilt sturen.
 
 ![](../using_discussions/comment_reply.png)
 
 Je kunt ook op je eigen reactie antwoorden om er een antwoord onder te plaatsen.
 
-Als een e-mail van Loomio aangeeft dat je per e-mail kunt antwoorden, verschijnt je antwoord per e-mail in de thread.
+Als een e-mail van Loomio aangeeft dat je per e-mail kunt antwoorden, verschijnt jouw antwoord per e-mail in de thread.
 
 <!-- translation-section: reactions -->
 
 ## Emoji-reacties
 
-Gebruik de smileyknop om met een emoji te reageren. Emoji-reacties sturen de schrijver van de reactie een melding binnen Loomio, maar geen e-mail.
+Gebruik de smileyknop om met een emoji te reageren. Emoji-reacties sturen de auteur van de reactie een melding binnen Loomio, maar geen e-mail.
 
 ![](../using_discussions/reaction.png)
 
@@ -107,7 +107,7 @@ Gebruik de smileyknop om met een emoji te reageren. Emoji-reacties sturen de sch
 
 ## Reacties vertalen
 
-Als de schrijver een andere taal gebruikt dan jij, verschijnt de actie **Vertalen** onder de reactie.
+Als de auteur een andere taal gebruikt dan jij, verschijnt de actie **Vertalen** onder de reactie.
 
 ![](../using_discussions/comment_translate.png)
 
@@ -119,7 +119,7 @@ Selecteer **Reactie vertalen** om de reactie in jouw taal te bekijken.
 
 ## Acties voor reacties
 
-Veelgebruikte acties verschijnen direct onder een reactie. Meer acties vind je in het menu met drie puntjes (**⋯**).
+Veelgebruikte acties staan direct onder een reactie. Meer acties zijn beschikbaar via het menu met drie puntjes (**⋯**).
 
 <!-- translation-section: add-a-comment-to-jump-to -->
 
@@ -127,7 +127,7 @@ Veelgebruikte acties verschijnen direct onder een reactie. Meer acties vind je i
 
 Gebruik **Pin vast aan de tijdslijn** om een reactie toe te voegen aan de lijst **Spring naar** van de thread.
 
-Je kunt het label in **Spring naar** bewerken. Maak de reactie los en zet deze daarna opnieuw vast om de linktekst te wijzigen.
+Je kunt het label in **Spring naar** bewerken. Maak de reactie los en zet deze opnieuw vast om de linktekst te wijzigen.
 
 >[!Tip]
 >Selecteer de woorden die je als linktekst wilt gebruiken voordat je **Pin vast aan de tijdslijn** selecteert.
@@ -138,7 +138,7 @@ Selecteer **Ontprikken** om het item uit **Spring naar** te verwijderen.
 
 ### Een reactie bewerken en wijzigingen bekijken
 
-Selecteer **Bewerken** onder een van je reacties om deze te wijzigen. Groepsadmins kunnen ook reacties van leden bewerken wanneer de bijbehorende groepsmachtiging is ingeschakeld.
+Selecteer **Bewerken** onder een van jouw reacties om deze te wijzigen. Groepsadmins kunnen ook reacties van leden bewerken wanneer de bijbehorende groepsrechten zijn ingeschakeld.
 
 ![](../using_discussions/comment_edit.png)
 
@@ -159,7 +159,7 @@ Je kunt een reactie bewerken wanneer:
 
 ### Een link naar een reactie kopiëren
 
-Selecteer **Link kopieren** om de unieke URL van de reactie te kopiëren. Je kunt de link ergens anders plakken om rechtstreeks naar die reactie te verwijzen.
+Selecteer **Link kopieren** om de unieke URL van de reactie te kopiëren. Je kunt de link elders plakken om rechtstreeks naar die reactie te verwijzen.
 
 ![](../using_discussions/comment_copy_link.png)
 
@@ -171,7 +171,7 @@ Open het menu met drie puntjes (**⋯**) naast een reactie en selecteer **Meldin
 
 ![Meldingsgeschiedenis in het actiemenu van een reactie](../notifying_people/comment_notification_history.png)
 
-De meldingsgeschiedenis laat zien wie een melding over de reactie heeft gekregen, wanneer de melding is verstuurd en of deze is gelezen, wanneer die informatie beschikbaar is.
+De meldingsgeschiedenis laat zien wie een melding over de reactie heeft gekregen, wanneer de melding is verstuurd en, als die informatie beschikbaar is, of de melding is gelezen.
 
 ![Meldingsgeschiedenis voor een reactie waarin Samira Patel wordt vermeld](../notifying_people/comment_notification_example.png)
 
@@ -179,7 +179,7 @@ De meldingsgeschiedenis laat zien wie een melding over de reactie heeft gekregen
 
 ### Een reactie weggooien, herstellen of verwijderen
 
-Als je een reactie weggooit, verdwijnt deze uit de thread maar blijft deze bewaard in een prullenbak. Je kunt jouw eigen reacties weggooien met **Weggooien** in het menu met drie puntjes. Groepsadmins kunnen ook reacties weggooien.
+Als je een reactie weggooit, verdwijnt deze uit de thread, maar blijft deze bewaard in de prullenbak. Je kunt je eigen reacties weggooien met **Weggooien** in het menu met drie puntjes. Groepsadmins kunnen ook reacties weggooien.
 
 ![](../using_discussions/comment_discard.png)
 
@@ -191,9 +191,9 @@ Op de plek van een weggegooide reactie staat **Item verwijderd**. Open het menu 
 
 **Een reactie verwijderen**
 
-Als je een reactie verwijdert, wordt deze permanent verwijderd. Je kunt deze niet herstellen.
+Als je een reactie verwijdert, wordt deze definitief verwijderd. Je kunt deze niet herstellen.
 
-Als **Leden kunnen hun eigen opmerkingen verwijderen** is ingeschakeld bij [Groepsrechten](/en/user_manual/groups/settings/permissions), kunnen leden hun eigen weggegooide reacties permanent verwijderen. Groepsadmins kunnen elke reactie verwijderen.
+Als **Leden kunnen hun eigen opmerkingen verwijderen** is ingeschakeld bij [Groepsrechten](/en/user_manual/groups/settings/permissions), kunnen leden hun eigen weggegooide reacties definitief verwijderen. Groepsadmins kunnen elke reactie verwijderen.
 
 ![](../using_discussions/permissions_delete_comment.png)
 
@@ -201,6 +201,6 @@ Open het menu met drie puntjes bij **Item verwijderd** en selecteer **Delete**.
 
 ![](../using_discussions/comment_delete.png)
 
-Een bevestigingsbericht legt uit dat de reactie permanent wordt verwijderd.
+Een bevestigingsbericht legt uit dat de reactie definitief wordt verwijderd.
 
 ![](../using_discussions/comment_delete_message.png)

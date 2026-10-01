@@ -1,10 +1,10 @@
 ---
 title: Opmaak
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
+source_revision: c27ee3b193231816878f1c074ff9fc2a086a88c0
 source_file: docs/en/user_manual/discussions/formatting/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-02'
 sections:
   introduction: e5ed11fef349b38c
   attach-file: 772ed69602535db7
@@ -27,24 +27,24 @@ sections:
   markdown: 6ee2783ba81363fd
   rich-text: 9136c76bfd5409a9
 generated:
-  introduction: d137688a31efe36b
-  attach-file: 55517b0883c7750c
+  introduction: 61008fbffdc74f54
+  attach-file: 5c8e241f954fb9f6
   remove-attachments: 1ac9ddb9b78b79eb
-  insert-image: 1db6653a2b6c270d
-  insert-link: 180dfd86bd3359b9
-  insert-emoji: e4331237a6113e2a
-  headings: adadfb513e87347e
+  insert-image: ad00460b98a69981
+  insert-link: cc74342f21fdc875
+  insert-emoji: fe46e50a0296b238
+  headings: e573f1b7d7c366de
   bold-italicize-strikethrough: 2b98e96ed4f67ebd
   list: baa30e0fc72596e5
-  numbered-list: 5976d3a2672667f9
-  task-list: 3332aa50eee005f4
+  numbered-list: dd9a761c21332815
+  task-list: 71359fa1eda76691
   colors: c0886f512431629f
-  align: 0f93e4c4205dd0ba
-  embed-videos-and-webpages: ebc61ffbf39a06ae
+  align: 0fe453b5256a860d
+  embed-videos-and-webpages: 026c91117edfef08
   quote: 711032de634d1228
-  code-block: 35bea35f3314c3b1
-  divider: a1eef5b8ab1b0731
-  add-table: e24643d9f04c8155
+  code-block: 33440f4656ccb3c9
+  divider: 893426388097ba6b
+  add-table: ba09728b39f251a5
   markdown: 2903146aba57e756
   rich-text: 5734488dc6171b2d
 title_source: 29d4198e41d8221a
@@ -55,19 +55,19 @@ title_generated: 7d7a9ce4e4aad2d0
 
 # Opmaak
 
-Als je een discussie of peiling start of bewerkt, of een reactie schrijft, zie je een opmaakbalk onder het tekstveld. Selecteer de pijl aan het einde van de balk om alle hulpmiddelen te tonen of te verbergen.
+Wanneer je een discussie of peiling start of bewerkt, of een reactie schrijft, zie je een opmaakbalk onder het tekstveld. Selecteer de pijl aan het einde van de balk om alle hulpmiddelen te tonen of te verbergen.
 
-Beweeg de muisaanwijzer over elk pictogram om de naam van het hulpmiddel te zien.
+Beweeg de muis of cursor over elk pictogram om de naam van het hulpmiddel te zien.
 
 ![](thread_format_bar.png)
 
-Gebruik opmaak om structuur en nadruk aan te brengen, zodat informatie makkelijker te overzien is.
+Gebruik opmaak om structuur aan te brengen en tekst te benadrukken, zodat informatie gemakkelijker te overzien is.
 
 <!-- translation-section: attach-file -->
 
-## Bestand bijvoegen
+## Bestand toevoegen
 
-Gebruik het paperclippictogram direct onder het tekstveld om bestanden van jouw computer als bijlage toe te voegen.
+Gebruik het paperclippictogram direct onder het tekstveld om bestanden van je computer als bijlage toe te voegen.
 
 ![](format_attach.png)
 
@@ -87,7 +87,7 @@ Gebruik dit hulpmiddel om een afbeelding in te voegen en weer te geven.
 
 ![](format_insert_image.png)
 
-Selecteer een afbeeldingsbestand op jouw computer. Na het uploaden wordt de afbeelding in de editor ingevoegd.
+Selecteer een afbeeldingsbestand op je computer. Na het uploaden wordt de afbeelding in de editor ingevoegd.
 
 ![](format_insert_example.png)
 
@@ -102,7 +102,7 @@ De afbeelding wordt weergegeven in de gepubliceerde discussie, peiling of reacti
 
 ## Link invoegen
 
-Je kunt een link toevoegen naar elk deelbaar document of elke deelbare pagina op internet.  
+Je kunt een link toevoegen naar elk document of elke pagina op internet die je kunt delen.  
 
 Zo voeg je een link toe:
 
@@ -114,7 +114,7 @@ Controleer bij een document dat elders wordt gehost de instellingen voor delen, 
 
 Onder het tekstveld verschijnt een voorbeeld van het document. Je kunt dit verwijderen als je wilt.
 
-Iedereen die toegang heeft tot jouw Loomio-discussie en toestemming heeft om het document te bekijken, kan het nu openen en lezen.
+Iedereen met toegang tot jouw Loomio-discussie en toestemming om het document te bekijken, kan het nu openen en lezen.
 
 ![](format_link.png)
 
@@ -122,7 +122,7 @@ Iedereen die toegang heeft tot jouw Loomio-discussie en toestemming heeft om het
 
 ## Emoji invoegen
 
-Selecteer de smileyknop en kies een emoji uit de lijst.
+Selecteer de smileyknop en kies een emoji uit het keuzemenu.
 
 ![](thread_insert_emoji.png)
 
@@ -132,7 +132,7 @@ Selecteer de smileyknop en kies een emoji uit de lijst.
 
 Kop 1, Kop 2 en Kop 3 kunnen helpen om een discussie of reactie structuur te geven.
 
-Selecteer de tekst die je als kop wilt gebruiken en klik op het hulpmiddel voor kopopmaak.
+Selecteer de tekst die je als kop wilt opmaken en klik op het hulpmiddel voor kopopmaak.
 
 Als je een kop gebruikt in een reactie, wordt de reactie automatisch vastgezet op de tijdlijn van de discussie.
 
@@ -158,7 +158,7 @@ Gebruik **Lijst** om items als opsomming met opsommingstekens op te maken.
 
 ## Genummerde lijst
 
-Gebruik **Genummerde lijst** als de volgorde van de items van belang is.
+Gebruik **Genummerde lijst** wanneer de volgorde van de items van belang is.
 
 ![](format_numbers.png)
 
@@ -166,11 +166,11 @@ Gebruik **Genummerde lijst** als de volgorde van de items van belang is.
 
 ## Takenlijst
 
-Gebruik **Takenlijst** om selectievakjes toe te voegen. Nadat je de lijst hebt geplaatst, kun je taken aan iemand toewijzen en een deadline geven.
+Gebruik **Takenlijst** om selectievakjes toe te voegen. Nadat je de lijst hebt geplaatst, kun je taken aan iemand toewijzen en een vervaldatum instellen.
 
 ![](format_tasks.png)
 
-Bekijk de pagina over [Taken](/en/user_manual/discussions/tasks/) voor meer informatie.
+Zie de pagina over [Taken](/en/user_manual/discussions/tasks/) voor meer informatie.
 
 <!-- translation-section: colors -->
 
@@ -184,7 +184,7 @@ Gebruik **Kleuren** om geselecteerde tekst met een kleur te markeren.
 
 ## Uitlijnen
 
-Selecteer om tekst links, in het midden of rechts uit te lijnen.
+Kies om tekst links, in het midden of rechts uit te lijnen.
 
 ![](thread_align.png)
 
@@ -192,7 +192,7 @@ Selecteer om tekst links, in het midden of rechts uit te lijnen.
 
 ## Video's en webpagina's integreren
 
-Je kunt ondersteunde video's en webpagina's integreren op elke plek waar een opmaakbalk beschikbaar is.
+Je kunt ondersteunde video's en webpagina's integreren overal waar een opmaakbalk beschikbaar is.
 
 Om een video te integreren:
 1. Kopieer het adres van de video of webpagina.
@@ -203,7 +203,7 @@ Om een video te integreren:
 <iframe width="100%" height="380px" src="https://www.youtube-nocookie.com/embed/AJnjTd9u4zg" frameborder="0" allowfullscreen></iframe>
 
 >[!Tip]
->Zorg ervoor dat iedereen die aan de discussie kan deelnemen toegang heeft tot de video. Een video die alleen via een link toegankelijk is, kan bijvoorbeeld geschikt zijn als deze niet in openbare zoekresultaten mag verschijnen.
+>Zorg dat iedereen die aan de discussie kan deelnemen toegang heeft tot de video. Een verborgen video kan bijvoorbeeld geschikt zijn als deze niet in openbare zoekresultaten mag verschijnen.
 
 <!-- translation-section: quote -->
 
@@ -217,7 +217,7 @@ Een citaat benadrukt je tekst en kan helpen om de aandacht op een instructie te 
 
 ## Codeblok
 
-De opmaak voor codeblokken wordt meestal gebruikt om code in tekst weer te geven, maar je kunt deze ook gebruiken om tekst in jouw discussie te onderscheiden.
+Codeblokopmaak wordt meestal gebruikt om code in tekst weer te geven, maar je kunt deze ook gebruiken om tekst in je discussie te laten opvallen.
 
 ![](thread_codeblock.png)
 
@@ -225,7 +225,7 @@ De opmaak voor codeblokken wordt meestal gebruikt om code in tekst weer te geven
 
 ## Scheidingslijn
 
-Gebruik de scheidingslijn om een horizontale lijn tussen onderdelen te plaatsen.
+Gebruik de scheidingslijn om een horizontale lijn te plaatsen die onderdelen van elkaar scheidt.
 
 ![](thread_line.png)
 
@@ -233,7 +233,7 @@ Gebruik de scheidingslijn om een horizontale lijn tussen onderdelen te plaatsen.
 
 ## Tabel toevoegen
 
-Voeg een tabel toe aan jouw discussie.
+Voeg een tabel toe aan je discussie.
 
 Er zijn extra hulpmiddelen beschikbaar om kolommen en rijen toe te voegen of te verwijderen.
 
