@@ -1,10 +1,10 @@
 ---
 title: Propostas e enquetes
-source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
+source_revision: c27ee3b193231816878f1c074ff9fc2a086a88c0
 source_file: docs/en/user_manual/polls/intro_to_decisions/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-02'
 sections:
   introduction: d7cf8a871d9af6ea
   find-the-right-help: 4bb04c002cbbde42
@@ -22,19 +22,19 @@ sections:
   5-share-an-outcome: 8339cb332cd8a946
 generated:
   introduction: '028072c21697cf1b'
-  find-the-right-help: dc0503952d4db49e
-  proposals: 884282c2941164d3
-  polls: 024b06b7f274a9c3
+  find-the-right-help: 10a47566b7c37fda
+  proposals: d5aa93cc7c794ec1
+  polls: 532ae5aefbe19c11
   start-a-proposal-or-poll: 6249174107e14824
-  choose-whether-to-use-a-discussion: 418d766145d7b250
+  choose-whether-to-use-a-discussion: 9d4e626c242abc1a
   in-a-discussion: cdf8999aa5c57a20
   without-a-discussion: 3dc21420635ceaf4
   what-happens-next: 5d6dcfbe18796f63
-  1-create-it: 7dcef3ed67f4eca7
+  1-create-it: 02b90f37de129c8a
   2-voting-opens: b5a16dddd50f899d
   3-people-vote: 8cb83f7781708a6b
   4-it-closes: a3b5c488d964eb38
-  5-share-an-outcome: 3445e65c691bbab3
+  5-share-an-outcome: 9554110fffe5a5f0
 title_source: d45b4ba3cb7a27cb
 title_generated: 841343fc302f1038
 ---
@@ -56,37 +56,37 @@ Estas partes do manual respondem a diferentes perguntas:
 | Escolher o que os participantes devem expressar | [Propostas](../proposals/) ou [Enquetes](../proposal_types/) |
 | Usar um modelo específico de proposta | [Verificação de opinião](../proposals/sense_check/), [Aconselhamento](../proposals/advice/), [Consentimento](../proposals/consent/) ou [Consenso](../proposals/consensus/) |
 | Configurar os modelos disponíveis para um grupo | [Modelos de enquete](../poll_templates/) |
-| Facilitar uma decisão desde a discussão até a conclusão | [Como tomar decisões](/en/guides/making_decisions/) |
+| Facilitar uma decisão desde a discussão até a conclusão | [Tomar decisões](/en/guides/making_decisions/) |
 
-Um **método de votação** define como as pessoas respondem e como os resultados são calculados. Um **modelo de enquete** é uma configuração reutilizável baseada em um método de votação, com instruções, opções e configurações predefinidas. Um **processo de decisão** pode usar uma discussão e vários modelos antes que o grupo chegue a uma conclusão.
+Um **método de votação** define como as pessoas respondem e como os resultados são calculados. Um **modelo de enquete** é uma configuração reutilizável baseada em um método de votação, com instruções, opções e configurações predefinidas. Um **processo de decisão** pode usar uma discussão e vários modelos antes de o grupo chegar a uma conclusão.
 
 <!-- translation-section: proposals -->
 
 ## Propostas
 
-Uma proposta pede que as pessoas respondam a uma afirmação ou a um curso de ação. O Loomio inclui modelos para finalidades comuns:
+Uma proposta pede que as pessoas respondam a uma declaração ou a um curso de ação. O Loomio inclui modelos para finalidades comuns:
 
 - [Verificação de opinião](../proposals/sense_check/) reúne reações iniciais;
 - [Aconselhamento](../proposals/advice/) reúne contribuições para quem vai tomar uma decisão;
 - [Consentimento](../proposals/consent/) verifica se há objeções fundamentadas; e
 - [Consenso](../proposals/consensus/) busca um acordo coletivo.
 
-Consulte [Propostas](../proposals/) para comparar os modelos.
+Consulte [Propostas](../proposals/) para compará-las.
 
 <!-- translation-section: polls -->
 
 ## Enquetes
 
-Use uma enquete quando os participantes precisarem selecionar, pontuar, distribuir pontos, classificar, informar sua disponibilidade ou votar em uma eleição:
+Use uma enquete quando os participantes precisarem selecionar, pontuar, distribuir, classificar, informar sua disponibilidade ou votar em uma eleição:
 
 - [Escolher](../choose/) identifica opções populares;
 - [Pontuar](../score/) avalia cada opção em uma escala;
 - [Distribuir](../allocate/) distribui uma quantidade limitada de pontos;
 - [Classificar](../rank/) identifica uma ordem geral de preferência;
 - [Enquete de horário](../meeting_polls/) identifica quando as pessoas estão disponíveis; e
-- [Eleição STV](../stv/) elege vários representantes de forma proporcional.
+- [Eleição STV](../stv/) elege vários candidatos de forma proporcional.
 
-Consulte [Enquetes](../proposal_types/) para comparar os modelos.
+Consulte [Enquetes](../proposal_types/) para compará-las.
 
 <!-- translation-section: start-a-proposal-or-poll -->
 
@@ -94,11 +94,11 @@ Consulte [Enquetes](../proposal_types/) para comparar os modelos.
 
 <!-- translation-section: choose-whether-to-use-a-discussion -->
 
-### Escolha se deseja usar uma discussão
+### Escolha se vai usar uma discussão
 
 Inicie a proposta ou enquete dentro de uma discussão quando as pessoas precisarem de contexto, perguntas ou conversa antes de responder. Uma discussão pode conter várias propostas ao longo do tempo, mantendo as alterações e a conclusão final juntas em um único registro do assunto.
 
-Use uma enquete independente quando a discussão já tiver acontecido em outro lugar, como em uma reunião, ou quando a pergunta for simples e você só precisar coletar respostas. Inclua detalhes suficientes ou um link para o registro relevante para que os eleitores entendam ao que estão respondendo.
+Realize uma enquete independente quando a discussão já tiver acontecido em outro lugar, como em uma reunião, ou quando a pergunta for simples e você só precisar coletar respostas. Inclua detalhes suficientes ou um link para o registro relevante para que os eleitores entendam a que estão respondendo.
 
 <!-- translation-section: in-a-discussion -->
 
@@ -128,10 +128,10 @@ Uma proposta ou enquete passa por estas etapas.
 
 ### 1. Crie a proposta ou enquete
 
-Defina um título e os detalhes, confira as opções e configurações e defina um horário de encerramento. Depois, escolha quando a votação começa:
+Dê um título e forneça detalhes, verifique as opções e configurações e defina um horário de encerramento. Depois, escolha quando a votação começa:
 
 - **A votação começa imediatamente.** abre a votação assim que você a inicia.
-- Uma **Data de abertura** agenda o início da votação. As pessoas podem ver a proposta ou enquete antes dessa data, mas só podem votar quando a votação começar.
+- Uma **Data de abertura** agenda o início da votação. As pessoas podem ver a proposta ou enquete antes dessa data, mas não podem votar até a votação começar.
 - Se você não escolher nenhuma dessas opções, a proposta ou enquete será salva como rascunho.
 
 <!-- translation-section: 2-voting-opens -->
@@ -158,9 +158,9 @@ A enquete é encerrada automaticamente no horário de encerramento. Um coordenad
 
 Quando a enquete é encerrada, o Loomio pede aos coordenadores da enquete que compartilhem uma conclusão.
 
-![A solicitação para registrar uma conclusão após o encerramento de uma proposta](outcome_prompt.png)
+![A solicitação para inserir uma conclusão após o encerramento de uma proposta](outcome_prompt.png)
 
-A conclusão informa o que foi decidido e o que acontecerá em seguida. Ela aparece acima dos resultados, sendo a primeira informação que as pessoas leem. Ao publicá-la, você pode notificar as pessoas. Elas recebem um email com os resultados e a conclusão.
+A conclusão informa o que foi decidido e o que acontecerá a seguir. Ela aparece acima dos resultados, sendo a primeira coisa que as pessoas leem. Ao publicá-la, você pode notificar as pessoas. Elas recebem um e-mail com os resultados e a conclusão.
 
 Você também pode definir uma **Data de revisão**. Nessa data, o Loomio lembra você de revisar a decisão.
 
