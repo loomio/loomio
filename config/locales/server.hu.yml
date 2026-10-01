@@ -1,6 +1,6 @@
 ---
 hu:
-  group_export_started: "A csoport adatok exportálása megkezdődött"
+  group_export_started: A csoport adatok exportálása megkezdődött
   discussion_templates:
     blank:
       process_name: Üres sablon
@@ -10,7 +10,7 @@ hu:
       title_placeholder: Mi az a téma, amit meg akarsz vitatni?
       process_name: Megbeszélni egy témát
       process_subtitle: Kezdjen beszélgetést a csoportjával
-      process_introduction: "<p>Van olyan probléma, probléma vagy lehetőség, amelyet fel szeretne vetni a csoportjával?</p><p> Mutassa be a témát, linkeljen bármilyen háttérinformációt, és kérjen észrevételeket, ötleteket és segítséget.</p><p> Hívja meg az embereket, hogy vegyenek részt gondolataikkal és releváns információikkal. Használja a @említést, hogy felhívja bizonyos emberek figyelmét.</p><p> Frissítse a szál kontextusát a vita előrehaladtával, hogy elősegítse az eredmény elérését.</p><p> Ne várja meg, amíg minden információ birtokában lesz a szál indításához. Inkább használja a szálat arra, hogy meghívjon embereket, hogy segítsenek felfedezni a témát és kitalálni a megoldást.</p>"
+      process_introduction: "<p>Van olyan ügy, probléma vagy lehetőség, amelyet fel szeretnél vetni a csoportodban?</p><p>Mutasd be a témát, linkeld a háttérinformációkat, és kérj hozzászólásokat, ötleteket és segítséget.</p><p>Hívd meg az embereket, hogy osszák meg gondolataikat és a kapcsolódó információkat. Használj @említést, hogy felhívd egyes emberek figyelmét.</p><p>Frissítsd a szál leírását a beszélgetés során, hogy segítsd a következtetés kialakítását.</p><p>Ne várj a szál indításával, amíg minden információt összegyűjtesz. Inkább a szálban kérj segítséget a téma feltárásához és a megoldás megtalálásához.</p>"
       description: <h3 id="introduce-and-describe-the-topic">Mutassa be és írja le a témát</h3><p></p><h3 id="why-is-this-important"> Ez miért fontos?</h3><p></p><h3 id="how-would-you-like-people-to-respond"> Hogyan reagálnak az emberek?</h3><p></p>
     onboarding_to_loomio:
       title: A Loomio használata a csoportunkban
@@ -50,7 +50,7 @@ hu:
     share_links_and_info:
       title_placeholder: Ossz meg linkeket és információkat
       process_name: Ossz meg linkeket és információkat
-      process_subtitle: Tegyen közzé információkat, linkeket és jelentéseket, amelyeket megoszthat megjegyzések és vita céljából.
+      process_subtitle: Tegyél közzé információkat, linkeket és jelentéseket, hogy mások hozzászólhassanak és beszélgethessenek róluk.
       process_introduction: "<p>Használjon egy szálat „falként” vagy „hirdetőtáblaként” csoportja számára, hogy információkat, híreket és ötleteket tegyen közzé, amelyeket meg szeretne osztani egymással.</p><p> Hívja meg az embereket a <strong>Hivatkozás beszúrása</strong> és <strong>a Beágyazás videóformázó</strong> eszközök használatára, amelyek segítségével a csoport hozzáférhet az információkhoz a Loomión belül. A megjegyzések <strong>fejlécével</strong> rögzítse a megjegyzést a szál idővonalához, így könnyen megtalálható.</p><p> <strong>Rögzítse</strong> a cérnát, hogy ragadjon, és ösztönözze <strong>a Reactions-t</strong> , hogy tartsa feszültség alatt, így tudatja az emberekkel, hogy látta a tárgyukat.</p><p> Ennek a szálnak az alapértelmezett megjelenítése a <strong>Legújabb</strong> , így a legutóbbi megjegyzések a szál tetején találhatók.</p>"
       description: <p>Használja ezt a szálat információk, értesítések és megosztani kívánt dolgok közzétételére – egy olyan hely, ahol láthatja, hogy mi történik, és részt vehet benne.</p><p data-text-align="start"> Ossza meg eseményeket, jelentéseket, podcastokat és egyéb érdekes online információkat.</p><p data-text-align="start"> Használja a <strong>Beszúrás hivatkozást</strong> és <strong>a Beágyazás videó</strong> formázási eszközöket, hogy segítsenek az embereknek hozzáférni az információkhoz a Loomio rendszeren belül.</p>
       information: Információ
@@ -213,11 +213,11 @@ hu:
       details: Részletek
       group_name: Csoport név
       discussion_title: Téma címe
-      outcome_author: Eredmény szerzője
-      outcome_created_at: 'Eredmény létrehozva: '
-      outcome_statement: Eredmény nyilatkozat
+      outcome_author: Következtetés szerzője
+      outcome_created_at: Következtetés létrehozásának időpontja
+      outcome_statement: Következtetés szövege
       poll_url: Szavazási hivatkozás
-      reason: Ok
+      reason: Indoklás
       participant: Résztvevő
       also_available: Szintén elérhető
       total: Összesen
@@ -499,7 +499,7 @@ hu:
       disagree_prompt: Miért nem értesz egyet?
     proposal:
       process_subtitle: Javaslatot tesz döntéshozatalra
-      process_introduction: '<p>A klasszikus Loomio-javaslat segít a döntéshozatalban, a megbeszélést egyértelmű eredményre konvertálva.</p><p> Javasolj egy cselekvési irányt, és kérd meg az embereket, hogy szavazással válaszoljanak: egyetértés, tartózkodás vagy egyet nem értés.</p><p> Szavazás közben az emberek megindokolhatják, hogy miért szavaztak így. Láthatjuk, hogy mások hogyan állnak ehhez a kérdéshez, és miért.</p><p> Így egy javaslat segítségével válaszra ösztönözheted az embereket, új információkat tárhatsz fel, és közös megértést építhetsz ki – ezzel is segítve a csoportodat egy jobb, megalapozottabb döntés meghozatalában.</p><p> Egy javaslat és a hozzá kapcsolódó vita saját feljegyzést hoz létre arról, hogyan született meg a döntés.</p><p> <a target="_blank" href="/docs/en/guides/making_decisions/simple_decision_process"><u>Tudjon meg többet a klasszikus Loomio-javaslat használatáról az Egyszerű döntési folyamatban</u></a> .</p>'
+      process_introduction: '<p>A klasszikus Loomio-javaslat segít döntést hozni, és a beszélgetést egyértelmű következtetéssé alakítani.</p><p>Javasolj egy cselekvési irányt, és kérd meg az embereket, hogy szavazzanak: Egyetértek, Tartózkodom vagy Nem értek egyet.</p><p>Szavazás közben az emberek indoklást adhatnak arról, miért szavaztak így. Láthatod, hogy mások hogyan állnak a kérdéshez, és miért.</p><p>Így egy javaslat segítségével válaszra ösztönözheted az embereket, új információkat tárhatsz fel, és közös megértést építhetsz ki - ezzel segítve a csoportodat egy jobb, megalapozottabb döntés meghozatalában.</p><p>A javaslat és a hozzá kapcsolódó beszélgetés rögzíti, hogyan született meg a döntés.</p><p><a target="_blank" href="/docs/en/guides/making_decisions/simple_decision_process"><u>Olvass többet a klasszikus Loomio-javaslat használatáról az Egyszerű döntési folyamatban</u></a>.</p>'
       title: Jóváhagyja az új márkakoncepciót
       details: <h3 id="what-is-the-decision-you-need-to-make"><strong>Milyen döntést kell meghoznod?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Miért fontos ez?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Mit kérsz az emberektől?</strong></h3><p></p><p> Ahhoz, hogy ez a javaslat elfogadásra kerüljön, a képviselők többségének szavazatára van szükség.</p><p> Ha nem értesz egyet, írd le, miért, és mit kellene megváltoztatni ahhoz, hogy egyetérts.</p>
       agree: Egyetért
@@ -552,7 +552,7 @@ hu:
       disagree: Nem ért egyet
       disagree_meaning: Valamit meg kell változtatni ebben a javaslatban, mielőtt támogatni tudom.
       disagree_prompt: Hogyan lehetne ezt a javaslatot úgy javítani, hogy támogatni tudja?
-      block: Tömb
+      block: Vétózom
       block_meaning: Blokkolom ezt a javaslatot, és úgy gondolom, hogy nem szabadna folytatni.
       block_prompt: Indokolja meg kifogását ezzel a javaslattal szemben, és indokolja meg, hogy miért nem szabadna elfogadni.
       details_v2: "<h3><strong>Milyen döntést kell meghoznod?</strong></h3><p></p><h3> <strong>Miért fontos ez?</strong></h3><p></p><h3> <strong>Mit kérsz az emberektől?</strong></h3><p></p><p> Mondd el, hogy hol állsz, és miért. Ha nem értesz egyet, magyarázd el, min kellene változtatni ahhoz, hogy ezt alátámasztsd.</p>"
@@ -560,9 +560,9 @@ hu:
       abstain_prompt: Miért tartózkodik, vagy miért nem érzi magát képesnek szavazni erről a döntésről?
     question_round:
       process_subtitle: Tegyen fel tisztázó kérdéseket, hogy segítsen az embereknek megérteni a javaslatot
-      process_introduction: <p>A kérdések köre lehetőséget ad arra, hogy a résztvevők tisztázó kérdéseket tegyenek fel a javaslattal kapcsolatban, hogy mindenki megértse a javaslatot, mielőtt elmondaná a véleményét róla.</p><p> A Loomio kérdéskör egy speciális javaslat szavazási lehetőségek nélkül. Lehetővé teszi a résztvevők számára, hogy a körre beállított időtartamon belül kérdéseket tegyenek fel.</p><p> A kérdezz-felelek kört gyakran alkalmazzák a beleegyezési folyamat egyik lépéseként.</p><p> <a target="_blank" href="/docs/en/guides/making_decisions/consent_process">Tudjon meg többet a hozzájárulási folyamatról</a> .</p>
+      process_introduction: <p>A kérdezési kör lehetőséget ad arra, hogy az emberek tisztázó kérdéseket tegyenek fel a javaslatról, hogy mindenki megértse, mielőtt elmondaná róla a véleményét.</p><p>A Loomio kérdezési köre egy különleges javaslat szavazási lehetőségek nélkül. A résztvevők a körre beállított időtartamon belül kérdéseket tehetnek fel.</p><p>A kérdezési kör gyakran a beleegyezési folyamat egyik lépése.</p><p><a target="_blank" href="/docs/en/guides/making_decisions/consent_process">Olvass többet a beleegyezési folyamatról</a>.</p>
       title: Milyen kérdései vannak a munkaegészségügyi és biztonsági irányelvekkel kapcsolatban?
-      details: <h3 id="what-are-you-proposing"><strong>Mit javasolsz?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Miért fontos ez?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Mit kérsz az emberektől?</strong></h3><p></p><p> Ez egy kérdéskör, ahol tisztázó kérdéseket tehetsz fel.</p><p> Mit kell tudnod ahhoz, hogy megértsd a javaslatot?</p><p> Kérlek, válaszolj, mielőtt lezárul a kérdéskör.</p>
+      details: <h3 id="what-are-you-proposing"><strong>Mit javasolsz?</strong></h3><p></p><h3 id="why-is-this-important"><strong>Miért fontos ez?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"><strong>Mit kérsz az emberektől?</strong></h3><p></p><p>Ez egy kérdezési kör, ahol tisztázó kérdéseket tehetsz fel.</p> <p>Mit kell tudnod ahhoz, hogy megértsd a javaslatot?</p> <p>Kérlek, válaszolj, mielőtt lezárul a kérdezési kör.</p>
       reason_prompt: Mit kell tudnod ahhoz, hogy megértsd a javaslatot?
       outcome_statement: "<p>Köszönjük, hogy ebben a fordulóban beküldte kérdéseit</p>"
     sense_check:
@@ -626,14 +626,14 @@ hu:
       process_subtitle: Keresse meg a legnépszerűbb opciót
       process_introduction: <p>Mielőtt döntést hoznál, nézd meg, melyik lehetőség(ek) érdeklik a legjobban az embereket.</p><p> Az egyszerű szavazás segít megtalálni a legnépszerűbb opciót vagy opciókat egyetlen vagy többes választási lehetőséggel.</p><p> Írd be a részleteket a lehetőségekről a részletek mezőbe, majd add meg a lehetőség nevét, és kattints a + jelre a hozzáadáshoz.</p><p> Állítsa be a szavazó által választható <strong>minimális</strong> és <strong>maximális választási lehetőségek számát</strong> . Egyetlen választási lehetőség esetén hagyja a maximális választási lehetőséget 1-en.</p><p> Az egyes opciók melletti ceruza ikonnal hozzáadhatod az opció <strong>jelentését</strong> , és részletesebben is kifejtheted, hogy segítsd az embereket a szavazás során.</p><p> <a target="_blank"  href="/docs/en/user_manual/polls/proposal_types#simple-poll">További információ az Egyszerű szavazásról</a> .</p>
       title: Mire kellene összpontosítanunk stratégiai irányunkban?
-      details: <h3 id="what-is-this-poll-about"><strong>Miről szól ez a közvélemény-kutatás?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Miért fontos ez?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Mit kérsz az emberektől?</strong></h3><p></p><p> Válassza ki az Önnek tetsző opció(ka)t.</p>
+      details: <h3 id="what-is-this-poll-about"><strong>Miről szól ez a szavazás?</strong></h3><p></p><h3 id="why-is-this-important"><strong>Miért fontos ez?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"><strong>Mit kérsz az emberektől?</strong></h3><p></p><p>Válaszd ki a neked tetsző lehetősége(ke)t.</p>
       process_introduction_v2: <p><strong>A Choose (Válassz) funkció</strong> segít megtalálni a legnépszerűbb lehetőséget. A résztvevők egy listából választanak – beállíthatod, hogy egy vagy több lehetőséget válasszanak.</p><p> <a target="_blank" href="/docs/en/user_manual/polls/proposal_types#simple-poll">További információ a Choose-ról</a> .</p>
       process_subtitle_v2: Népszerűség mérése egy- vagy feleletválasztós szavazással
     score_poll:
       process_subtitle: Mérje fel az egyes lehetőségek támogatottságának mértékét
       process_introduction: <p>Használd a Score poll-t, ha fel szeretnéd mérni az emberek vágyait, preferenciáit vagy érdeklődését az egyes lehetőségek iránt.</p><p> <span>A résztvevőket arra kérik, hogy értékeljék az egyes opciókat, és egy csúszka skálán történő mozgatásával rendeljenek hozzájuk pontszámot.</span></p><p> <span>Az eredményeket grafikusan jelenítjük meg, valamint minden opcióhoz táblázatot, amely mutatja az összesített pontszámot, az átlagpontszámokat és a szavazók számát.</span></p><p> A speciális beállítások között megtalálható a „Névtelen szavazatok” és az „Opciók véletlenszerű sorrendben megjelenítése” – ezeket gyakran használják a pontszám-felmérésnél a szavazási torzítás csökkentése érdekében.</p><p> <a target="_blank"  href="/docs/en/user_manual/polls/proposal_types#score-poll">Tudjon meg többet a Score szavazásról</a> .</p>
       title: A döntéshozatal folyamatának értékelése a szervezetünkben
-      details: <h3 id="what-is-this-poll-about"><strong>Miről szól ez a közvélemény-kutatás?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Miért fontos ez?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Mit kérsz az emberektől?</strong></h3><p></p><p> Válassza ki az Önnek tetsző opció(ka)t.</p>
+      details: <h3 id="what-is-this-poll-about"><strong>Miről szól ez a szavazás?</strong></h3><p></p><h3 id="why-is-this-important"><strong>Miért fontos ez?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"><strong>Mit kérsz az emberektől?</strong></h3><p></p><p>Válaszd ki a neked tetsző lehetősége(ke)t.</p>
       process_subtitle_v2: Mérje fel az egyes lehetőségek támogatottságának szintjét
       process_introduction_v2: <p><strong>A pontszám</strong> segítségével mérheted a csoport támogatottságának szintjét az egyes lehetőségek esetében. A résztvevők minden lehetőséget egy csúszó skálán pontszám hozzárendelésével értékelnek, így nem csak azt láthatod, hogy az emberek mit preferálnak, hanem azt is, hogy mennyire.</p><p> <a target="_blank" href="/docs/en/user_manual/polls/proposal_types#score-poll">Tudjon meg többet a Score szavazásról</a> .</p>
       process_subtitle_v3: Kérd meg a szavazókat, hogy értékeljék, mennyire támogatják az egyes lehetőségeket
@@ -641,7 +641,7 @@ hu:
       process_subtitle: Pontok költségvetésének kiosztása a prioritások feltárása érdekében
       process_introduction: <p>A pontozott szavazás hasznos azoknak a csoportoknak, amelyek korlátozott erőforrást próbálnak több lehetőség között elosztani. Túlmutat egy egyszerű közvélemény-kutatáson, mivel segít a résztvevőknek felismerni, hogy a lehetőségek kiválasztása során korlátozások vannak.</p><p> A résztvevők mindegyike meghatározott számú pontot kap. Te döntöd el, hogy hányat.</p><p> A résztvevők pontokat helyezhetnek a nekik tetsző lehetőségek mellé. Az összes pontjukat elhelyezhetik egyetlen lehetőségre, vagy több lehetőségre is eloszthatják.</p><p> A pontok kiosztása során a résztvevők túlléphetik a pontokra vonatkozó költségvetési korlátot, ezért arra biztatjuk őket, hogy gondosan gondolják át, mire költik el a pontjaikat.</p><p> A legtöbb ponttal rendelkező lehetőségek „nyernek”. Az eredménytáblázat további adatokat tartalmaz az eredmények elemzéséhez.</p><ul><li><p> Pontok %-a</p></li><li><p> Pontok</p></li><li><p> Átlagos</p></li><li><p> Választók</p></li></ul><p> <a target="_blank"  href="/docs/en/user_manual/polls/proposal_types#dot-vote">Tudj meg többet a Dot szavazásról</a> .</p>
       title: Témák kiválasztása a konferenciánkhoz
-      details: <h3 id="what-is-this-poll-about"><strong>Miről szól ez a közvélemény-kutatás?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Miért fontos ez?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Mit kérsz az emberektől?</strong></h3><p></p><p> Ebben a szavazásban 8 pontból álló költségvetésed van, amit a kívánt lehetőségekhez rendelhetsz. Elhelyezheted az összes pontot egyetlen lehetőségre, vagy szétszórhatod őket.</p>
+      details: <h3 id="what-is-this-poll-about"><strong>Miről szól ez a szavazás?</strong></h3><p></p><h3 id="why-is-this-important"><strong>Miért fontos ez?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"><strong>Mit kérsz az emberektől?</strong></h3><p></p><p>Ebben a szavazásban pontokat oszthatsz el a neked tetsző lehetőségek között. Az összes pontot egy lehetőségnek adhatod, vagy több között oszthatod el.</p>
       process_subtitle_v2: Feltárja a prioritásokat, ha kompromisszumok vannak
       process_introduction_v2: <p><strong>Az Allocate</strong> segít megérteni egy csoport prioritásait kompromisszumok esetén. Minden résztvevő kap egy pontokból álló keretet, amelyet eloszthat a lehetőségek között – mindent befektethetnek egy lehetőségbe, vagy eloszthatják a pontjaikat több között. Mivel a költségvetés korlátozott, minden elköltött pont a prioritás valódi jelzése.</p><p> <a target="_blank" href="/docs/en/user_manual/polls/proposal_types#dot-vote">További információ az Allocate-ról</a> .</p>
       process_subtitle_v3: Prioritások feltárása kompromisszumok esetén. Más néven pontszavazás.
@@ -649,7 +649,7 @@ hu:
       process_subtitle: Értsd meg a lehetőségek rendezett preferenciáját
       process_introduction: <p>A rangsorolt választás akkor hasznos, ha sok lehetőség közül választhatsz, vagy választást tartasz.</p><p> Ez a szavazássablon számos lehetőséget kínál arra, hogy a felhasználók a kívánt sorrendben szavazhassanak.</p><p> Beállíthatod, hogy a szavazó hány választási lehetőséget kapjon.</p><p> <span>A szavazók a kívánt beállításokat húzással helyezhetik el preferencia sorrendben (az első a legkedveltebb opció).</span></p><p> <span>A speciális beállítások között megtalálható a „Névtelen szavazatok” és az „Opciók véletlenszerű sorrendben megjelenítése” – ezeket gyakran használják a rangsorolt</span> választási lehetőségeknél a szavazási elfogultság csökkentése érdekében.</p><p> Az eredmények rangsorolva jelennek meg. Az eredménytáblázat további adatokat tartalmaz, amelyek segítenek az eredmények elemzésében.</p><ul><li><p> Rang</p></li><li><p> Pontok %-a</p></li><li><p> Pontok</p></li><li><p> Átlagos</p></li></ul><p> <a target="_blank"  href="/docs/en/user_manual/polls/proposal_types#ranked-choice">További információ a rangsorolt választásról</a> .</p>
       title: Igazgatótanács megválasztása
-      details: <h3 id="what-is-this-poll-about"><strong>Miről szól ez a közvélemény-kutatás?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Miért fontos ez?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Mit kérsz az emberektől?</strong></h3><p></p><p> Szavazz a lehetőségek sorrendjében a preferenciáid szerint. Az a lehetőség nyer, amelyik az első helyen áll a találatokban.</p>
+      details: <h3 id="what-is-this-poll-about"><strong>Miről szól ez a szavazás?</strong></h3><p></p><h3 id="why-is-this-important"><strong>Miért fontos ez?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"><strong>Mit kérsz az emberektől?</strong></h3><p></p><p>Szavazz a lehetőségek rangsorolásával aszerint, hogy melyiket kedveled jobban.  Az a lehetőség nyer, amelyik az első helyen áll az eredményekben.</p>
       process_subtitle_v2: Keresd meg a csoport preferencia sorrendjét
       process_introduction_v2: <p><strong>A rangsor</strong> a csoport preferenciáinak sorrendjét mutatja. A résztvevők húzással rendezhetik el a lehetőségeket a legkedvezőtlenebbtől a legkedvezőtlenebbig, az eredmények pedig az összesített rangsort mutatják.</p><p> <a target="_blank" href="/docs/en/user_manual/polls/proposal_types#ranked-choice">További információ a Rankról</a> .</p>
       process_subtitle_v3: Rendezd a lehetőségeket a leginkább kedvelttől a legkevésbé kedveltig
