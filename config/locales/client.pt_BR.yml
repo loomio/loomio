@@ -449,7 +449,7 @@ pt_BR:
     loud: Alto
     normal: Normal
     quiet: Quieto
-    mute: Mudo
+    mute: Silenciar
     unmute: Com som
   pin_event_form:
     title: Fixar na timeline
@@ -479,7 +479,7 @@ pt_BR:
     loud_label: Toda atividade
     normal_label: Anúncios
     quiet_label: Sem e-mails
-    mute_label: Mudo
+    mute_label: Silenciar
     saved: As configurações de notificação foram atualizadas
     discussion:
       loud_description: Você receberá um email sobre todas as atividades nessa conversa.
@@ -689,7 +689,7 @@ pt_BR:
     email_and_device_when_notified: E-mail e notificação no dispositivo ao receber uma notificação
     device_notification_when_notified: Notificação no dispositivo ao receber uma notificação
     no_notifications: Nenhuma notificação
-    catch_up_email_every_second_day: E-mail de atualização a cada dois dias
+    catch_up_email_every_second_day: E-mail de resumo a cada dois dias
     weekly_catch_up_email: E-mail semanal de atualização
   search_modal:
     all_content: Todo o conteúdo
@@ -1012,7 +1012,7 @@ pt_BR:
       topic: Todos no tópico
       voters: Todos convidados a votar
       decided_voters: Todos que votaram
-      undecided_voters: Eleitores indecisos
+      undecided_voters: Eleitores que não votaram
       non_voters: Membros de %{name} ainda não convidados
       delegates_of_group: Delegados de %{name}
     form:
@@ -1369,7 +1369,7 @@ pt_BR:
       quiet: Não enviar e-mail sobre esse grupo. Atividades serão exibidas no painel.
       quiet_aria_description: O seu volume de notificação para este grupo está definido como Quieto. Você não receberá e-mail sobre atividades deste grupo. Eles serão mostradas no seu Painel.
       quiet_message: Você não receberá e-mail sobre as atividades em "%{name}".
-      mute_aria_description: O seu volume de notificação para este grupo está definido como Mudo. Você não receberá e-mail, a não ser que mencionem você, e atividades do grupo não serão mostradas no seu Painel.
+      mute_aria_description: O seu volume de notificação para este grupo está definido como Silenciar. Você não receberá e-mail, a não ser que mencionem você, e atividades do grupo não serão mostradas no seu Painel.
       mute_message: '"%{name}" foi removido do seu painel.'
       mute: Oculte este grupo do painel e não notifique, a menos que {'@'}seja mencionado.
     privacy:
@@ -1764,7 +1764,7 @@ pt_BR:
     group_notifications: Notificações de grupo
     group_notifications_description: Altere o nível de atividade e o canal para seus grupos
     choose_email_and_push_updates: Escolha configurações separadas para e-mail e notificações push.
-    catch_up_email: E-mail de atualização
+    catch_up_email: E-mail de resumo
     catch_up_email_description: Escolha quando receber um resumo das notificações não visualizadas e das atividades não lidas.
   thread_preview:
     replies_count: "%{count} respostas"
@@ -1994,7 +1994,7 @@ pt_BR:
     consent_title: Consentimento
     consensus_title: Consenso
     proposal_title: Proposta
-    count_title: Aceitar
+    count_title: Inscrição
     check_title: Verificação de opinião
     poll_title: Consulta
     meeting: Reunião
@@ -2319,12 +2319,12 @@ pt_BR:
     started_by: Iniciado por %{name}
   poll_common_votes_panel:
     vote_removed: Voto removido
-    undecided: Indecisos
+    undecided: Não votaram
     newest_first: Mais recentes primeiro
     oldest_first: Mais antigos primeiro
     priority_first: De acordo primeiro
     priority_last: Bloqueado primeiro
-    undecided_first: Indecisos primeiro
+    undecided_first: Quem não votou primeiro
     no_votes_yet: Nenhum voto foi registrado ainda.
     change_results_order: Mudar ordem dos resultados
     none_of_the_above: "(Nenhuma das opções acima)"
@@ -2851,7 +2851,7 @@ pt_BR:
       voting_title: 24 horas antes do encerramento da votação, envie um lembrete para
       nobody: Ninguém
       author: Autor (eu)
-      undecided_voters: Eleitores indecisos
+      undecided_voters: Eleitores que não votaram
       voters: Todos os eleitores
     notify_on_participate:
       title: Avise-me quando as pessoas participarem

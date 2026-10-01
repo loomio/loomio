@@ -176,7 +176,7 @@ pt_BR:
         proposal: Proposta
         count: Contagem
         choose: Escolha
-        allocate: Aloque
+        allocate: Distribuir
         score: Pontuação
         rank: Classificar
         time: Enquete de horário
@@ -395,7 +395,7 @@ pt_BR:
     catch_up_link: Configurações de e-mail de recuperação
     catch_up_title: Configurações de e-mail de recuperação
     catch_up_description: Escolha a frequência com que deseja receber um resumo das atividades dos seus grupos.
-    catch_up_schedule: Enviar um e-mail de atualização
+    catch_up_schedule: Enviar um e-mail de resumo
     catch_up_saved: Configurações de e-mail de recuperação atualizadas
     catch_up_days:
       never: Nunca
@@ -487,8 +487,8 @@ pt_BR:
       not_invited: Não convidado
       please_respond: Por favor responda
       time_zone: "(Horário mostrado em %{zone})"
-      undecided_members: Membros indecisos (%{count})
-      undecided_visitors: Convidados indecisos (%{count})
+      undecided_members: Membros que não votaram (%{count})
+      undecided_visitors: Convidados que não votaram (%{count})
       more_undecided: "%{count} mais..."
       vote_now: Vote agora
       you_have_until: Você tem até %{when} para participar.
@@ -656,7 +656,7 @@ pt_BR:
       process_introduction_v2: <p><strong>A enquete de pontuação</strong> permite medir o nível de apoio do grupo a cada opção. Os participantes avaliam cada opção atribuindo uma pontuação em uma escala deslizante, permitindo ver não apenas o que as pessoas preferem, mas também o quanto preferem.</p><p><a target="_blank" href="/docs/en/user_manual/polls/proposal_types#score-poll">Leia mais sobre a enquete de pontuação</a>.</p>
       process_subtitle_v3: Peça aos eleitores que avaliem o quanto apoiam cada opção
     dot_vote:
-      process_subtitle: Aloque um orçamento de pontos para revelar prioridades
+      process_subtitle: Distribua um orçamento de pontos para revelar prioridades
       process_introduction: <p>A votação por pontos é útil para grupos que tentam alocar um recurso limitado a um conjunto de opções. Ela vai além de uma simples enquete, ajudando os participantes a compreender que há uma restrição na seleção de opções.</p><p> Cada participante recebe um número definido de pontos. Você decide quantos.</p><p> Eles colocam pontos ao lado das opções apresentadas que gostam. Os participantes podem colocar todos os pontos em uma única opção ou distribuí-los por várias opções.</p><p> À medida que os participantes alocam pontos, eles podem exceder o limite do orçamento de pontos e, portanto, são incentivados a considerar cuidadosamente como gastam seus pontos.</p><p> As opções com mais pontos "ganham". A tabela de resultados fornece dados adicionais para ajudar você a analisar os resultados.</p><ul><li><p> % de pontos</p></li><li><p> Pontos</p></li><li><p> Significar</p></li><li><p> Eleitores</p></li></ul><p> <a target="_blank"  href="/docs/en/user_manual/polls/proposal_types#dot-vote">Leia mais sobre o Dot vote</a> .</p>
       title: Escolhendo temas para nossa conferência
       details: <h3 id="what-is-this-poll-about"><strong>Sobre o que é essa enquete?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Por que isso é importante?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>O que você está pedindo para as pessoas fazerem?</strong></h3><p></p><p> Nesta enquete, você tem um orçamento de 8 pontos para alocar às opções de sua preferência. Você pode colocar todos os pontos em uma opção ou distribuí-los.</p>
