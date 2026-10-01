@@ -1,4 +1,34 @@
 class RecordCloner
+  # Columns not copied from the source record. Every other column is copied,
+  # so a new column is cloned by default. Blocked: identity and secrets,
+  # foreign keys the cloner points at cloned records, and counters and caches
+  # that are recalculated after cloning.
+  BLOCKED_COLUMNS = {
+    Group => %w[
+      id key token parent_id creator_id subscription_id full_name info attachments
+      admin_memberships_count closed_polls_count delegates_count discussion_templates_count
+      discussions_count memberships_count org_members_count pending_memberships_count
+      poll_templates_count polls_count subgroups_count
+    ],
+    Discussion => %w[id key topic_id attachments versions_count],
+    Topic => %w[
+      id group_id topicable_id topicable_type ranges_string
+      active_polls_count anonymous_polls_count closed_polls_count items_count members_count seen_by_count
+    ],
+    Poll => %w[
+      id key topic_id attachments versions_count
+      voters_count undecided_voters_count none_of_the_above_count stance_counts
+    ],
+    PollOption => %w[id poll_id],
+    Stance => %w[id poll_id token attachments versions_count option_scores],
+    StanceChoice => %w[id stance_id poll_option_id],
+    Outcome => %w[id poll_id poll_option_id attachments versions_count],
+    TopicItem => %w[id topic_id itemable_id itemable_type itemable_version_id parent_id],
+    Membership => %w[id group_id token],
+    Comment => %w[id parent_id parent_type attachments versions_count],
+    Tag => %w[id group_id taggings_count used_group_ids]
+  }.freeze
+
   def initialize(recorded_at:)
     @recorded_at = recorded_at
     @cache = {}
@@ -89,27 +119,6 @@ class RecordCloner
   end
 
   def new_clone_group(group, clone_parent = nil)
-    copy_fields = %w[
-      name
-      description
-      description_format
-      members_can_add_members
-      members_can_edit_discussions
-      members_can_edit_comments
-      members_can_raise_motions
-      members_can_vote
-      members_can_start_discussions
-      non_members_can_start_discussions
-      members_can_create_subgroups
-      members_can_announce
-      admins_can_edit_user_content
-      members_can_add_guests
-      members_can_delete_comments
-      link_previews
-      created_at
-      updated_at
-      category
-    ]
 
     required_values = {
       handle: nil,
@@ -121,7 +130,7 @@ class RecordCloner
     }
     attachments = [:cover_photo, :logo, :files, :image_files]
 
-    clone_group = new_clone(group, copy_fields, required_values, attachments)
+    clone_group = new_clone(group, required_values, attachments)
     clone_group.parent = clone_parent
     clone_group.tags = group.tags.map { |tag| new_clone_tag(tag) }
 
@@ -139,41 +148,13 @@ class RecordCloner
   end
 
   def new_clone_discussion(discussion)
-    copy_fields = %w[
-      author_id
-      title
-      discussion_template_id
-      discussion_template_key
-      description
-      description_format
-      content_locale
-      link_previews
-      created_at
-      updated_at
-      discarded_at
-      template
-      tags
-    ]
 
     attachments = [:files, :image_files]
-    new_clone(discussion, copy_fields, {}, attachments)
+    new_clone(discussion, {}, attachments)
   end
 
   def new_clone_topic(topic, topicable)
-    copy_fields = %w[
-      max_depth
-      newest_first
-      private
-      comment_length_max
-      locked_at
-      locker_id
-      pinned_at
-      last_activity_at
-      tags
-      created_at
-      updated_at
-    ]
-    clone_topic = new_clone(topic, copy_fields)
+    clone_topic = new_clone(topic)
     clone_topic.topicable = topicable
     clone_topic
   end
@@ -197,54 +178,9 @@ class RecordCloner
   end
 
   def new_clone_poll(poll)
-    copy_fields = %w[
-      author_id
-      opening_at
-      opened_at
-      closing_at
-      closed_at
-      created_at
-      updated_at
-      discarded_at
-      title
-      details
-      poll_type
-      process_name
-      process_subtitle
-      anonymous
-      weighted_voting
-      details_format
-      hide_results
-      discarded_by
-      specified_voters_only
-      notify_on_closing_soon
-      notify_on_open
-      content_locale
-      link_previews
-      shuffle_options
-      limit_reason_length
-      meeting_duration
-      time_zone
-      dots_per_person
-      minimum_stance_choices
-      maximum_stance_choices
-      can_respond_maybe
-      min_score
-      max_score
-      template
-      agree_target
-      chart_type
-      default_duration_in_days
-      stance_reason_required
-      poll_option_name_format
-      reason_prompt
-      tags
-      poll_template_id
-      poll_template_key
-    ]
     attachments = [:files, :image_files]
 
-    clone_poll = new_clone(poll, copy_fields, {}, attachments)
+    clone_poll = new_clone(poll, {}, attachments)
     # In-thread polls share the discussion's cloned topic;
     # standalone polls get their own topic
     clone_poll.topic = existing_clone(poll.topic) || new_clone_topic(poll.topic, clone_poll)
@@ -266,83 +202,33 @@ class RecordCloner
   end
 
   def new_clone_poll_option(poll_option)
-    copy_fields = %w[
-      name
-      icon
-      meaning
-      prompt
-      priority
-      score_counts
-      total_score
-      voter_scores
-      voter_count
-    ]
-    clone_poll_option = new_clone(poll_option, copy_fields)
+    clone_poll_option = new_clone(poll_option)
     clone_poll_option.poll = existing_clone(poll_option.poll)
     clone_poll_option
   end
 
   def new_clone_stance(stance)
-    copy_fields = %w[
-      accepted_at
-      cast_at
-      content_locale
-      inviter_id
-      latest
-      link_previews
-      weight
-      participant_id
-      reason
-      reason_format
-      revoked_at
-      created_at
-      updated_at
-    ]
     attachments = [:files, :image_files]
-    clone_stance = new_clone(stance, copy_fields, {}, attachments)
+    clone_stance = new_clone(stance, {}, attachments)
     clone_stance.stance_choices = stance.stance_choices.map {|sc| new_clone_stance_choice(sc) }
     clone_stance.poll = existing_clone(stance.poll)
     clone_stance
   end
 
   def new_clone_stance_choice(sc)
-    copy_fields = %w[ score ]
-    clone_sc = new_clone(sc, copy_fields)
+    clone_sc = new_clone(sc)
     clone_sc.poll_option = existing_clone(sc.poll_option)
     clone_sc
   end
 
   def new_clone_outcome(outcome)
-    copy_fields = %w[
-      statement
-      latest
-      statement_format
-      author_id
-      review_on
-      content_locale
-      link_previews
-      created_at
-      updated_at
-    ]
 
     attachments = [:files, :image_files]
-    clone_outcome = new_clone(outcome, copy_fields, {}, attachments)
+    clone_outcome = new_clone(outcome, {}, attachments)
   end
 
   def new_clone_event(topic_item)
-    copy_fields = %w[
-      user_id
-      kind
-      depth
-      sequence_id
-      position
-      position_key
-      child_count
-      pinned
-      pinned_title
-      created_at
-    ]
-    new_clone(topic_item, copy_fields)
+    new_clone(topic_item)
   end
 
   def new_clone_event_and_itemable(topic_item)
@@ -369,51 +255,28 @@ class RecordCloner
   end
 
   def new_clone_membership(membership)
-    copy_fields = %w[
-      user_id
-      inviter_id
-      revoked_at
-      revoker_id
-      admin
-      volume_email
-      volume_push
-      experiences
-      accepted_at
-      title
-      weight
-    ]
-    clone_membership = new_clone(membership, copy_fields)
+    clone_membership = new_clone(membership)
     clone_membership.group = existing_clone(membership.group)
     clone_membership
   end
 
   def new_clone_comment(comment)
-    copy_fields = %w[
-      user_id
-      body
-      body_format
-      discarded_at
-      discarded_by
-      content_locale
-      link_previews
-      created_at
-    ]
     attachments = [:files, :image_files]
-    clone_comment = new_clone(comment, copy_fields, {}, attachments)
+    clone_comment = new_clone(comment, {}, attachments)
     clone_comment.parent = existing_clone(comment.parent)
     clone_comment
   end
 
   def new_clone_tag(tag)
-    clone_tag = new_clone(tag, %w[name color])
+    clone_tag = new_clone(tag)
     clone_tag.group = existing_clone(tag.group)
     clone_tag
   end
 
-  def new_clone(record, copy_fields = [], required_values = {}, attachments = [])
+  def new_clone(record, required_values = {}, attachments = [])
     @cache["#{record.class}-#{record.id}"] ||= begin
       clone = record.class.new
-      record_type = record.class.to_s.underscore.to_sym
+      copy_fields = record.class.column_names - BLOCKED_COLUMNS.fetch(record.class.base_class)
 
       clone.attributes = new_clone_attributes(record, copy_fields, required_values)
 
@@ -432,7 +295,7 @@ class RecordCloner
   def new_clone_attributes(record, copy_fields = [], required_values = {})
     attrs = {}
     copy_fields.each do |field|
-      value = record.send(field)
+      value = record.read_attribute(field)
       if value.nil?
         attrs[field] = value
       elsif field.ends_with?('_at')
