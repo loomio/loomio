@@ -517,6 +517,15 @@ thead {
   padding-inline-start: 14px;
 }
 
+.translation-notice {
+  border-top: 1px solid var(--border);
+  color: var(--foreground-muted);
+  font-size: 14px;
+  grid-column: 1;
+  margin: 28px 0 0;
+  padding-top: 12px;
+}
+
 .page-navigation {
   display: grid;
   gap: 18px;

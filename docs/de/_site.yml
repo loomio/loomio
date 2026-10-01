@@ -15,6 +15,7 @@ copy: Kopieren
 copy_label: Code in die Zwischenablage kopieren
 copied: Kopiert
 copy_failed: Kopieren fehlgeschlagen
+machine_translation_notice: "Diese Seite wurde maschinell übersetzt. Wenn ein Wort falsch oder unklar ist, schreib eine E-Mail an %{email}, und wir korrigieren es."
 alerts:
   note: Hinweis
   tip: Tipp

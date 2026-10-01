@@ -15,6 +15,7 @@ copy: Kopioi
 copy_label: Kopioi koodi leikepöydälle
 copied: Kopioitu
 copy_failed: Kopiointi epäonnistui
+machine_translation_notice: "Tämä sivu on konekäännetty. Jos jokin sana on väärä tai epäselvä, lähetä sähköpostia osoitteeseen %{email}, niin korjaamme sen."
 alerts:
   note: Huomautus
   tip: Vinkki

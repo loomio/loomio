@@ -15,6 +15,7 @@ copy: Másolás
 copy_label: Kód másolása a vágólapra
 copied: Másolva
 copy_failed: A másolás sikertelen
+machine_translation_notice: "Ezt az oldalt gépi fordítással készítettük. Ha egy szó hibás vagy nem egyértelmű, írj a %{email} címre, és kijavítjuk."
 alerts:
   note: Megjegyzés
   tip: Tipp

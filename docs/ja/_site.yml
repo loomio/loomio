@@ -15,6 +15,7 @@ copy: コピー
 copy_label: コードをクリップボードにコピー
 copied: コピーしました
 copy_failed: コピーできませんでした
+machine_translation_notice: "このページは機械翻訳されています。誤った言葉やわかりにくい表現がありましたら、%{email} までメールでお知らせください。修正します。"
 alerts:
   note: 注記
   tip: ヒント

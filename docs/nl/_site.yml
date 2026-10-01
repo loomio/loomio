@@ -15,6 +15,7 @@ copy: Kopiëren
 copy_label: Code naar klembord kopiëren
 copied: Gekopieerd
 copy_failed: Kopiëren mislukt
+machine_translation_notice: "Deze pagina is automatisch vertaald. Als een woord niet klopt of onduidelijk is, stuur dan een e-mail naar %{email} en we passen het aan."
 alerts:
   note: Opmerking
   tip: Tip

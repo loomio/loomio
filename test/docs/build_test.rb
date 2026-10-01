@@ -34,6 +34,13 @@ class DocsBuildTest < Minitest::Test
     assert_nil fragment.at_css('img[src="animation.gif"]')["srcset"]
   end
 
+  def test_every_published_language_explains_machine_translation_with_the_feedback_email
+    Docs::Localization.locales.select(&:published).each do |locale|
+      notice = Docs::Localization.site_strings(locale.code).fetch("machine_translation_notice")
+      assert_includes notice, "%{email}", locale.code
+    end
+  end
+
   def test_leaves_ordinary_blockquotes_unchanged
     fragment = render_markdown("> This is a quotation.\n")
 

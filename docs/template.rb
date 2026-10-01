@@ -24,6 +24,8 @@ class DocsTemplate < Phlex::HTML
     "copy_label" => "Copy code to clipboard",
     "copied" => "Copied",
     "copy_failed" => "Copy failed",
+    # Shown on translated pages only; %{email} becomes a link.
+    "machine_translation_notice" => "This page was translated by machine. If a word is wrong or unclear, email %{email} and we'll fix it.",
     "alerts" => {"note" => "Note", "tip" => "Tip", "important" => "Important", "warning" => "Warning", "caution" => "Caution"},
     "sections" => {}
   }.freeze
@@ -60,6 +62,7 @@ class DocsTemplate < Phlex::HTML
         div(class: "page") do
           div(class: "content-grid") do
             main(**pagefind_attributes) { raw safe(@page.html) }
+            render_translation_notice
             render_page_toc
             render_page_navigation
           end
@@ -202,6 +205,21 @@ class DocsTemplate < Phlex::HTML
           end
         end
       end
+    end
+  end
+
+  FEEDBACK_EMAIL = "contact@loomio.org"
+
+  # Translations are machine-made and unreviewed, so translated pages say so
+  # and ask readers to report wording that is wrong or unclear.
+  def render_translation_notice
+    return if @page.locale == "en"
+
+    before, after = t("machine_translation_notice").split("%{email}", 2)
+    p(class: "translation-notice") do
+      plain before
+      a(href: "mailto:#{FEEDBACK_EMAIL}") { plain FEEDBACK_EMAIL }
+      plain after.to_s
     end
   end
 
