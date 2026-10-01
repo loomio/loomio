@@ -1729,7 +1729,7 @@ ro:
     group_notifications: Notificări de grup
     group_notifications_description: Schimbă nivelul de activitate și canalul pentru grupurile tale
     choose_email_and_push_updates: Alegeți setări separate pentru e-mail și push
-    catch_up_email: E-mail de recuperare
+    catch_up_email: E-mail de rezumat
     catch_up_email_description: Alege când vrei să primești o actualizare cu notificări nevăzute și activitate necitită
   thread_preview:
     replies_count: "%{count} răspunsuri"
@@ -1761,7 +1761,7 @@ ro:
     filtering:
       filter_threads: Filtreaza discutiile
       filter_threads_aria_label: Filtreaza discutiile
-      dropdown_heading: Filtru de bord
+      dropdown_heading: Filtrează tabloul de bord
       all_aria_label: Discutii recente in curs
       all_description: Vezi discuțiile recente
       proposals: Propuneri
@@ -1773,7 +1773,7 @@ ro:
       all: Discuții recente
     thread_preview:
       you_voted: Ai votat %{position}
-      undecided: Esti indecis
+      undecided: Nu ai votat
     threads_from:
       group: Discutii de la
       pinned: Fire fixate
@@ -1784,7 +1784,7 @@ ro:
       thisweek: În această săptămână
       thismonth: Luna aceasta
       older: Mai vechi de o lună
-    dashboard: Bord
+    dashboard: Tablou de bord
     recent_discussions: Discuții recente
     view_recent: Vizualizați toate discuțiile recente?
     discussion_marked_as_read: Discuție marcată ca citită
@@ -2273,12 +2273,12 @@ ro:
     started_by: Început de %{name}
   poll_common_votes_panel:
     vote_removed: Votul a fost eliminat
-    undecided: Nehotărât
+    undecided: Nu au votat
     newest_first: Cel mai nou primul
     oldest_first: Cei mai in varsta primii
     priority_first: Mai întâi de acord
     priority_last: Blocați mai întâi
-    undecided_first: Mai întâi nehotărât
+    undecided_first: Mai întâi cei care nu au votat
     no_votes_yet: Nu au fost plasate încă voturi.
     change_results_order: Modificați ordinea rezultatelor
     none_of_the_above: "(Nici una dintre cele de mai sus)"
@@ -2302,7 +2302,7 @@ ro:
   poll_common_undecided_panel:
     show_undecided: Afișați %{count} nehotărâți
     show_invitations: Afișați invitațiile în așteptare
-    undecided_users: Nehotărât (%{count})
+    undecided_users: Nu au votat (%{count})
     invitation_count_singular: O persoană suplimentară a fost invitată să participe prin e-mail
     invitation_count_plural: "%{count} persoane suplimentare au fost invitate să participe prin e-mail"
   poll_common_undecided_user:
@@ -2387,7 +2387,7 @@ ro:
     minimum_stance_choices_hint: Adică Clasează-ți primele 3 arome de înghețată
     ranked_choice_created: S-a creat alegerea clasată
     ranked_choice_updated: Alegerea clasată a fost actualizată
-    rank: Rang
+    rank: Ordonează
     points: Puncte
     average: In medie
     mean: Rău
@@ -2445,7 +2445,7 @@ ro:
     total: Total
   poll_remove_vote:
     title: Îți elimini votul?
-    helptext: Sigur doriți să vă eliminați votul? Veți fi listat ca indecis și puteți vota din nou mai târziu, dacă doriți.
+    helptext: Sigur vrei să îți ștergi votul? Vei apărea printre cei care nu au votat și poți vota din nou mai târziu, dacă vrei.
     confirm: Eliminați votul
     success: Vot sters
   poll_poll_vote_form:
@@ -2866,13 +2866,13 @@ ro:
       choose_hint: Alegătorii aleg cea mai bună opțiune (sau opțiuni)
       score: Scor
       score_hint: Alegătorii atribuie un scor fiecărei opțiuni
-      allocate: Aloca
+      allocate: Distribuie
       allocate_hint: Alegătorii alocă un buget de puncte între opțiuni
       ranked_choice: Vot preferențial
       ranked_choice_hint: Alegătorii își ordonează opțiunile de la cea mai preferată la cea mai puțin preferată
       time_poll: Sondaj de timp
       time_poll_hint: Alegătorii indică când sunt disponibili să se întâlnească
-      rank: Rang
+      rank: Ordonează
       time: Timp
       stv: Alegeri STV
       stv_hint: Alegeți mai mulți câștigători proporțional folosind votul unic transferabil

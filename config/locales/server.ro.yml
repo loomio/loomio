@@ -173,9 +173,9 @@ ro:
         proposal: Propunere
         count: Numara
         choose: Alege
-        allocate: Aloca
+        allocate: Distribuie
         score: Scor
-        rank: Rang
+        rank: Ordonează
         time: Sondaj de timp
   user:
     deleted_user: Utilizator șters
@@ -371,7 +371,7 @@ ro:
     catch_up_link: Setări pentru e-mailuri de recuperare
     catch_up_title: Setări pentru e-mailuri de recuperare
     catch_up_description: Alegeți cât de des doriți să primiți un rezumat al activității din grupurile dvs.
-    catch_up_schedule: Trimiteți un e-mail de recuperare
+    catch_up_schedule: Trimite un e-mail de rezumat
     catch_up_saved: Setările pentru e-mailurile de recuperare au fost actualizate
     catch_up_days:
       never: Nu
@@ -629,17 +629,17 @@ ro:
       process_subtitle: Alocă un buget de puncte pentru a identifica prioritățile
       process_introduction: <p>Votul cu puncte este util pentru grupurile care încearcă să aloce o resursă limitată unui număr de opțiuni. Depășește un simplu sondaj, ajutând participanții să înțeleagă că există o constrângere atunci când selectează opțiuni.</p><p> Fiecare participant primește un număr fix de puncte. Tu decizi câte.</p><p> Ei plasează puncte lângă opțiunile prezentate care le plac. Participanții își pot plasa toate punctele pe o singură opțiune sau le pot distribui pe mai multe opțiuni.</p><p> Pe măsură ce participanții alocă puncte, este posibil să depășească limita bugetului pentru puncte, așa că sunt încurajați să analizeze cu atenție modul în care își cheltuiesc punctele.</p><p> Opțiunile cu cele mai multe puncte „câștigă”. Tabelul cu rezultate oferă date suplimentare care vă ajută să analizați rezultatele.</p><ul><li><p> % din puncte</p></li><li><p> Puncte</p></li><li><p> Medie</p></li><li><p> Alegătorii</p></li></ul><p> <a target="_blank"  href="/docs/en/user_manual/polls/proposal_types#dot-vote">Citește mai multe despre votul Dot</a> .</p>
       title: Alegerea temelor pentru conferința noastră
-      details: <h3 id="what-is-this-poll-about"><strong>Despre ce este vorba în acest sondaj?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>De ce este important acest lucru?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Ce le ceri oamenilor să facă?</strong></h3><p></p><p> În acest sondaj aveți un buget de 8 puncte pe care le puteți aloca opțiunilor preferate. Puteți plasa toate punctele pe o singură opțiune sau le puteți dispersa.</p>
+      details: <h3 id="what-is-this-poll-about"><strong>Despre ce este vorba în acest sondaj?</strong></h3><p></p><h3 id="why-is-this-important"><strong>De ce este important acest lucru?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"><strong>Ce le ceri oamenilor să facă?</strong></h3><p></p><p>În acest sondaj ai un buget de puncte de distribuit opțiunilor preferate. Poți distribui toate punctele unei singure opțiuni sau le poți împărți.</p>
       process_subtitle_v2: Dezvăluiți prioritățile atunci când există compromisuri
       process_introduction_v2: <p>Funcția <strong>„Alocare”</strong> vă ajută să înțelegeți prioritățile unui grup atunci când există compromisuri. Fiecare participant primește un buget de puncte pe care să le distribuie între opțiuni — poate miza all-in pe o singură opțiune sau își poate distribui punctele pe mai multe. Deoarece bugetul este limitat, fiecare punct cheltuit este un semnal real de prioritate.</p><p> <a target="_blank" href="/docs/en/user_manual/polls/proposal_types#dot-vote">Citește mai multe despre Alocare</a> .</p>
       process_subtitle_v3: Dezvăluie prioritățile atunci când există compromisuri. Cunoscut și sub denumirea de vot cu puncte.
     ranked_choice:
       process_subtitle: Înțelegerea preferințelor ordonate ale opțiunilor
-      process_introduction: <p>Alegerea clasificată este utilă atunci când aveți un număr mare de opțiuni sau organizați alegeri.</p><p> Acest șablon de sondaj oferă o serie de opțiuni pentru ca oamenii să voteze în ordinea preferată.</p><p> Puteți seta numărul de opțiuni pe care le primește alegătorul.</p><p> <span>Votanții trageți și plasați opțiunile în ordinea preferințelor (#1 fiind opțiunea preferată).</span></p><p> <span>Setările avansate includ „Voturile sunt anonime” și „Afișează opțiunile în ordine aleatorie” - utilizate în mod obișnuit pentru</span> alegerile clasificate pentru a reduce orice părtinire a votului.</p><p> Rezultatele sunt afișate în ordine ierarhică. Tabelul cu rezultate oferă date suplimentare care vă ajută să analizați rezultatele.</p><ul><li><p> Rang</p></li><li><p> % din puncte</p></li><li><p> Puncte</p></li><li><p> Medie</p></li></ul><p> <a target="_blank"  href="/docs/en/user_manual/polls/proposal_types#ranked-choice">Citește mai multe despre alegerea clasată</a> .</p>
+      process_introduction: <p>Votul preferențial este util când ai multe opțiuni sau organizezi alegeri.</p><p>Alegătorii trag și plasează opțiunile pentru a le aranja în ordinea preferințelor.</p><p>Rezultatele sunt afișate în ordinea clasamentului.</p><p><a target="_blank"  href="/docs/en/user_manual/polls/proposal_types#ranked-choice">Citește mai multe despre votul preferențial</a>.</p>
       title: Alegerea directorilor în consiliul de administrație
       details: <h3 id="what-is-this-poll-about"><strong>Despre ce este vorba în acest sondaj?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>De ce este important acest lucru?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Ce le ceri oamenilor să facă?</strong></h3><p></p><p> Votează ierarhizarea opțiunilor în ordinea preferințelor tale. Opțiunea care se clasează pe primul loc în rezultate câștigă.</p>
       process_subtitle_v2: Găsiți ordinea de preferințe a grupului
-      process_introduction_v2: <p><strong>Clasamentul</strong> dezvăluie ordinea preferințelor grupului. Participanții trag și plasează opțiunile pentru a le aranja de la cele mai preferate la cele mai puțin preferate, iar rezultatele arată clasamentul general.</p><p> <a target="_blank" href="/docs/en/user_manual/polls/proposal_types#ranked-choice">Citește mai multe despre Rang</a> .</p>
+      process_introduction_v2: <p><strong>Ordonează</strong> arată ordinea preferințelor grupului. Participanții trag și plasează opțiunile pentru a le aranja de la cea mai preferată la cea mai puțin preferată, iar rezultatele arată clasamentul general.</p><p><a target="_blank" href="/docs/en/user_manual/polls/proposal_types#ranked-choice">Citește mai multe despre Ordonează</a>.</p>
       process_subtitle_v3: Ordonați opțiunile de la cea mai preferată la cea mai puțin preferată
     time_poll:
       process_subtitle: Află când sunt disponibile persoane pentru întâlniri
@@ -782,7 +782,7 @@ ro:
     voted: "%{author} a votat %{response}"
     voted_hidden: "%{author} a votat"
     vote_removed: "%{author}: vot eliminat"
-    undecided: "%{author}: nehotărât"
+    undecided: "%{author}: nu a votat"
     superseded: înlocuit
     shared_outcome: "%{author} a distribuit o concluzie"
     removed: Eliminat
