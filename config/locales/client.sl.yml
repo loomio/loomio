@@ -175,7 +175,7 @@ sl:
     only_show_tags_in_this_group: Prikaži samo oznake v tej skupini
   poll_types:
     proposal: predlog
-    count: privolitev
+    count: zbiranje prijav
     check: preverjanje čuta
     poll: anketa
     dot_vote: glasovanje s pikami
@@ -439,7 +439,7 @@ sl:
     loud: Glasno
     normal: Normalno
     quiet: Tiho
-    mute: Neslišno
+    mute: Utišajte
     unmute: Vklop zvoka
   pin_event_form:
     title: Pripni na časovnico
@@ -565,7 +565,7 @@ sl:
     push_when_notified_with_catch_up_description: Pošlji potisno obvestilo, ko prejmem obvestilo, ostalo pa vključi v moje poročilo o zamujenem
     email_all_activity_description: Pošlji mi e-pošto, kadar koli bo v %{context} kakšna aktivnost
     push_all_activity_description: Pošlji potisno obvestilo vsakič, ko je v %{context} aktivnost
-    mute_label: Izklopi zvok
+    mute_label: Utišajte
   inbox:
     clear: Počisti
     latest: Zadnje
@@ -679,7 +679,7 @@ sl:
     email_and_device_when_notified: Obvestila po e-pošti in v napravi ob prejemu obvestila
     device_notification_when_notified: Obvestilo v napravi ob prejemu obvestila
     no_notifications: Brez obvestil
-    catch_up_email_every_second_day: E-poštno sporočilo za nadoknaditev zamujenega vsak drugi dan
+    catch_up_email_every_second_day: E-poštni povzetek vsak drugi dan
     weekly_catch_up_email: Tedensko e-poštno sporočilo za nadoknaditev
   search_modal:
     all_content: Vse vsebine
@@ -1729,7 +1729,7 @@ sl:
     group_notifications: Obvestila skupine
     group_notifications_description: Spremenite raven aktivnosti in kanal za svoje skupine
     choose_email_and_push_updates: Izberite ločene nastavitve za e-pošto in potisne sporočila
-    catch_up_email: E-poštno sporočilo za nadoknaditev zamujenega
+    catch_up_email: E-poštni povzetek
     catch_up_email_description: Izberite, kdaj želite prejemati obvestila o neprebranih obvestilih in neprebrani dejavnosti
   thread_preview:
     replies_count: "%{count} odgovorov"
@@ -1773,7 +1773,7 @@ sl:
       all: Nedavne razprave
     thread_preview:
       you_voted: Glasovali ste za %{position}
-      undecided: Neodločen si
+      undecided: Še niste glasovali
     threads_from:
       group: Niti iz
       pinned: Pripete niti
@@ -2076,7 +2076,7 @@ sl:
     save_changes: Shrani
     change_vote: Spremenite svoj glas
     change_response: Spremenite svoj odziv
-    max_score: Največji rezultat
+    max_score: Najvišja ocena
     min_score: Minimalna ocena
     too_long: Predolgo
     edit_warning: Urejanje je priporočljivo samo za manjše spremembe ali popravljanje črkovalnih napak. Za večje spremembe zaprite to %{pollType} in začnite novo.
@@ -2278,7 +2278,7 @@ sl:
     oldest_first: Najprej najstarejši
     priority_first: Najprej se strinjaj
     priority_last: Najprej blokiraj
-    undecided_first: Najprej neodločen
+    undecided_first: Najprej tisti, ki še niso glasovali
     no_votes_yet: Oddanih še ni bilo nobenih glasov.
     change_results_order: Spremenite vrstni red rezultatov
     none_of_the_above: "(Nič od naštetega)"
@@ -2383,7 +2383,7 @@ sl:
   poll_ranked_choice_form:
     no_options: Dodali niste še nobene možnosti.
     add_option_placeholder: Vnesite novo izbiro
-    minimum_stance_choices: Možnosti za uvrstitev
+    minimum_stance_choices: Možnosti za razvrščanje
     minimum_stance_choices_hint: tj. uvrstite svoje najboljše 3 okuse sladoleda
     ranked_choice_created: Prednostno razvrščanje ustvarjeno
     ranked_choice_updated: Prednostno razvrščanje posodobljeno
@@ -2861,18 +2861,18 @@ sl:
       question_hint: Povabite k postavljanju vprašanj in komentarjev na vaš predlog
       show_thumbs: Pokaži palec
       show_thumbs_hint: Volivci izbirajo med palcem gor, dol, vstran ali roko gor
-      choose: Izberite
+      choose: Izbira
       simple_poll: Preprosta anketa
       choose_hint: Volivci izberejo najboljšo možnost (ali možnosti)
-      score: Rezultat
+      score: Ocenjevanje
       score_hint: Volivci vsaki možnosti dodelijo oceno
-      allocate: Dodeli
+      allocate: Razdelitev
       allocate_hint: Volivci razdelijo določeno število točk med možnostmi
       ranked_choice: Prednostno razvrščanje
       ranked_choice_hint: Volivci razvrstijo možnosti od najbolj priljubljene do najmanj priljubljene
       time_poll: Časovna anketa
       time_poll_hint: Volivci navedejo, kdaj so na voljo za sestanek
-      rank: Uvrstitev
+      rank: Razvrščanje
       time: Čas
       stv: Volitve STV
       stv_hint: Sorazmerno izvolite več zmagovalcev z uporabo enega prenosljivega glasu
@@ -2967,9 +2967,9 @@ sl:
     set_all_vote_weights: Nastavi vse teže glasov
     set_all_vote_weights_the_same: Vse teže glasov nastavi na enako vrednost
     member_vote_weights_hint: Volivci brez trenutnega članstva v skupini dobijo težo glasu 1
-    weighted_voting: Ponderirano glasovanje
-    weighted_voting_is_not_available_with_anonymous_voting: Ponderirano glasovanje ni na voljo pri anonimnem glasovanju
-    use_weighted_voting: Uporabite ponderirano glasovanje
+    weighted_voting: Uteženo glasovanje
+    weighted_voting_is_not_available_with_anonymous_voting: Uteženo glasovanje ni na voljo pri anonimnem glasovanju
+    use_weighted_voting: Uporabite uteženo glasovanje
     weighted_voting_off_warning: Če izklopite uteženo glasovanje, se utež vseh glasov nastavi na 1. Vse uteži glasov, ki ste jih spremenili za to anketo, bodo izgubljene.
     weighted_voting_on_group: Z vklopom uteženega glasovanja se kopira privzeta teža glasu vsakega člana. Drugi volivci dobijo težo glasu 1.
     weighted_voting_on_direct: Z vklopom uteženega glasovanja se teža vsakega glasu nastavi na 1
@@ -3096,7 +3096,7 @@ sl:
     closed_at: Zaprto ob
     closing_at: Zapiranje ob
   poll_stv_vote_form:
-    helptext: Kandidate povlecite nad črto, da jih razvrstite. Postavke pod črto niso razvrščene. 1. uvrstitev je vaša najprimernejša.
+    helptext: Kandidate povlecite nad črto, da jih razvrstite. Postavke pod črto niso razvrščene. Na 1. mestu je kandidat, ki ga najbolj podpirate.
     divider_text: povlecite kandidate nad to črto, da jih razvrstite
     stance_created: Glas je bil zabeležen
     stance_updated: Glasovanje posodobljeno

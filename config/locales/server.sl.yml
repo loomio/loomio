@@ -172,9 +172,9 @@ sl:
       poll_types:
         proposal: Predlog
         count: štetje
-        choose: Izberite
-        allocate: Dodeli
-        score: rezultat
+        choose: Izbira
+        allocate: Razdelitev
+        score: Ocenjevanje
         rank: Rank
         time: Časovna anketa
   user:
@@ -368,11 +368,11 @@ sl:
   announcement_count_emails: "%{count} e-poštnih sporočil"
   email_actions:
     unfollowed_discussion: Izklopili ste e-pošto za nit.
-    catch_up_link: Nastavitve e-pošte za nadoknaditev zamujenega
-    catch_up_title: Nastavitve e-pošte za nadoknaditev zamujenega
+    catch_up_link: Nastavitve e-poštnega povzetka
+    catch_up_title: Nastavitve e-poštnega povzetka
     catch_up_description: Izberite, kako pogosto želite prejemati povzetek dejavnosti v svojih skupinah
     catch_up_schedule: Pošljite e-poštno sporočilo za nadoknaditev
-    catch_up_saved: Nastavitve e-pošte za nadoknaditev zamujenega so posodobljene
+    catch_up_saved: Nastavitve e-poštnega povzetka so posodobljene
     catch_up_days:
       never: Nikoli
       every_day: Vsak dan
@@ -384,7 +384,7 @@ sl:
       friday: Petek
       saturday: sobota
       sunday: Nedelja
-    catch_up_all_groups: E-poštna sporočila za nadoknaditev zamujenega (vse skupine)
+    catch_up_all_groups: E-poštni povzetki (vse skupine)
   discussion_mailer:
     reply_or_view_online_html: Odgovori na ta email, ali <a href='%{url}'>ga poglej na %{hostname}</a>.
     turn_off_notifications_html: "<a href='%{url}'>Izklopi emaile</a> za to razpravo."
@@ -775,14 +775,14 @@ sl:
     unavailable: Ni na voljo
     anonymous: Anonimno
     no_voters: Brez volivcev
-    score: 'rezultat: %{value}'
+    score: 'ocena: %{value}'
     none_of_the_above: Nič od naštetega
     no_option_selected: Ni izbrane možnosti
     review_date: "**Datum pregleda:** %{value}"
     voted: "%{author} je glasoval/a za %{response}"
     voted_hidden: "%{author} je glasoval"
     vote_removed: "%{author}: glas odstranjen"
-    undecided: "%{author}: neodločen"
+    undecided: "%{author}: še ni glasoval/-a"
     superseded: nadomeščen
     shared_outcome: "%{author} je delil/a sklep"
     removed: Odstranjeno
