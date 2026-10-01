@@ -176,9 +176,9 @@ he:
   poll_types:
     proposal: הצעה
     count: לבחור ב
-    check: בדיקת חושים
+    check: בדיקת כיוון
     poll: מִשׁאָל
-    dot_vote: הצבעה נקודה
+    dot_vote: הצבעת נקודות
     meeting: סקר זמן
     ranked_choice: בחירה מדורגת
     score: סקר ציון
@@ -787,8 +787,8 @@ he:
       membership_request_approved: "%{actor} אישר את בקשתך להצטרף ל-%{title}"
       new_comment: "%{actor} הגיב ב: %{title}"
       new_coordinator: "%{actor} הפך אותך למנהל של %{title}"
-      outcome_announced: "%{actor} שיתף תוצאה של %{poll_type}: %{title}"
-      outcome_created: "%{actor} שיתף תוצאה של %{poll_type}: %{title}"
+      outcome_announced: "%{actor} פרסם/ה מסקנה של %{poll_type}: %{title}"
+      outcome_created: "%{actor} פרסם/ה מסקנה של %{poll_type}: %{title}"
       outcome_updated: "%{actor} עדכנה את התוצאה של %{poll_type}: %{title}"
       outcome_review_due: 'הגיע הזמן לבדוק את התוצאה של: %{title}'
       poll_closed_by_user: "%{actor} סגר את %{poll_type}: %{title}"
@@ -826,8 +826,8 @@ he:
       membership_resent: "%{actor} הזמין אותך להצטרף לקבוצה"
       membership_requested: "%{actor} ביקש להצטרף לקבוצה שלך"
       membership_request_approved: "%{actor} אישר את בקשתך להצטרף ל-%{title}"
-      outcome_announced: "%{actor} שיתף תוצאה של %{poll_type}"
-      outcome_created: "%{actor} שיתף תוצאה של %{poll_type}"
+      outcome_announced: "%{actor} שיתף/ה מסקנה של %{poll_type}"
+      outcome_created: "%{actor} שיתף/ה מסקנה של %{poll_type}"
       outcome_review_due: הגיע הזמן לסקור את התוצאה של %{poll_type}
       poll_announced_wip: "%{actor} רוצה את המשוב שלך על %{poll_type}"
       poll_closed_by_user: "%{actor} סגר את %{poll_type}"
@@ -874,8 +874,8 @@ he:
       new_coordinator: "%{actor} הפך אותך למנהל של %{title}"
       new_delegate: "%{actor} מינה אותך לנציג עם זכות הצבעה ב-%{title}"
       new_discussion: "%{title}"
-      outcome_announced: 'תוצאה %{poll_type}: %{title}'
-      outcome_created: 'תוצאה %{poll_type}: %{title}'
+      outcome_announced: 'מסקנה של %{poll_type}: %{title}'
+      outcome_created: 'מסקנה של %{poll_type}: %{title}'
       outcome_updated: 'תוצאות %{poll_type} עודכנו: %{title}'
       outcome_review_due: 'הגיע הזמן לבחון את התוצאה של: %{title}'
       poll_closed_by_user: "%{actor} סגר את %{poll_type}: %{title}"
@@ -884,7 +884,7 @@ he:
       poll_created: "%{poll_type}: %{title}"
       poll_edited: "%{actor} עדכן את %{poll_type}: %{title}"
       poll_expired: "%{poll_type} נסגר: %{title}"
-      poll_expired_author: 'פרסם תוצאה: %{title}'
+      poll_expired_author: 'לפרסם מסקנה: %{title}'
       poll_option_added: "%{actor} הוסיף אפשרויות ל-%{title}"
       poll_reopened: 'ההצבעה הוארכה: %{title}'
       poll_reminder: "%{actor} מזכיר לך להצביע על %{title}"
@@ -1046,7 +1046,7 @@ he:
         title: עידכוני עריכות
         helptext: למי תרצה להודיע על עדכון זה?
       outcome_announced:
-        title: שתפ/י תוצאה
+        title: לשתף מסקנה
         helptext: סכמו את תוצאות התהליך, כולל כל הבנות שנמצאו או נושאים שהובאו לאור.
       anyone_can_participate: כל אחד עם לינק יכול להשתתף
       placeholder: אתה יכול להזין שמות או כתובות מייל
@@ -1070,7 +1070,7 @@ he:
       last_notified: עודכן
       not_notified: לא עודכן עוד
       no_members: זה לא שותף עם אף אחד עוד!
-      group_admin: אחראי קבוצה
+      group_admin: מנהל קבוצה
       thread_admin: מנהל שרשור
       last_read_at: נצפה לאחרונה %{time}
       has_not_read_thread: לא צפה בשרשור
@@ -1095,10 +1095,10 @@ he:
     react: לְהָגִיב
     notify: לְהוֹדִיעַ
     add_resource: צרוף קובץ
-    edit_group: עריכת תוכן הקבוצה
+    edit_group: עריכת הקשר הקבוצה
     add_comment: הערה
     copy_url: העתק קישור
-    edit_thread: ערוך תוכן
+    edit_thread: עריכת הקשר
     announce_thread: שלח שרשור
     invite_guests: הזמן אורחים
     translate_thread: תרגום תוכן
@@ -1250,12 +1250,12 @@ he:
     introduction_over_limit: תגובה ארוכה מידי
     messages:
       membership_requested: ביקשת להצטרף ל-%{group}
-    aria_label: טופס בקשת חברות
+    aria_label: טופס בקשת הצטרפות
   revision_history_modal:
     discussion_header: עריכות דיון
     comment_header: עריכות הערות
     poll_header: עריכות סקר
-    outcome_header: עריכות תוצאה
+    outcome_header: עריכות מסקנה
     stance_header: עריכות הצבעה
     started_by: התחיל ע"י <strong>%{name}</strong>
     edited_by: נערך ע"י <strong>%{name}</strong>
@@ -1343,7 +1343,7 @@ he:
       loud_aria_description: עוצמת ההתראות שלך לקבוצה מוגדרת לרועש. מייל יישלח לך כשיש פעילות כלשהי בה.
       loud_message: הודעה תשלח לך במייל על כל פעילות ב"%{name}."
       normal: 'שלח מייל רק לפעילות חשובה: שיחות חדשות, הצעות, תוצאות וכו''.'
-      normal_aria_description: 'עוצמת ההתראות שלך לקבוצה מוגדרת כרגילה. מייל יישלח לך על פעילות חשובה, כגון: מישהו התחיל שיחה חדשה, העלה הצעה או קבע תוצאה.'
+      normal_aria_description: רמת ההתראות לקבוצה זו מוגדרת כרגילה. יישלחו מיילים רק על פעילות חשובה, כגון פתיחת שרשור חדש, העלאת הצעה או פרסום מסקנה.
       normal_message: אתה תקבל מיילים רק על אירועים חשובים ב"%{name}".
       quiet: אל תשלחו מיילים על הקבוצה הזו. פעילות תופיע בדשבורד בלבד.
       quiet_aria_description: 'עוצמת ההתראות שלך לקבוצה מוגדרת כשקטה. לא תקבל כל מייל על פעילויות בקבוצה. פעילות בה תופיע בדשבורד בלבד. '
@@ -1392,7 +1392,7 @@ he:
     change_cover_image: לשנות את תמונת השער
     change_logo: לשנות לוגו
     permissions_explaination: 'ישנן שתי רמות חברות שיכולות להיות לאדם בקבוצה: מנהל וחבר. מנהלי מערכת יכולים לערוך את הגדרות הקבוצה, להפוך אנשים אחרים למנהלים ולבצע את כל הפעולות המפורטות למטה.'
-    parent_group: קבוצת הורים
+    parent_group: קבוצת אם
     new_organisation: ארגון חדש
     new_group: קבוצה חדשה
     new_subgroup: תת קבוצה חדשה
@@ -1531,8 +1531,8 @@ he:
     previous_requests: בקשות קודמות
     previous_request_response: '%{response} ע"י %{responder} '
     messages:
-      request_approved_success: בקשת מנוי אושרה
-      request_ignored_success: בקשת מנוי ללא התייחסות
+      request_approved_success: בקשת הצטרפות אושרה
+      request_ignored_success: בקשת הצטרפות ללא התייחסות
       request_declined_success: בקשת החברות נדחתה
     decline: יְרִידָה
     decline_request: דחה את בקשת החברות
@@ -1599,12 +1599,12 @@ he:
       flash: הזמנה בוטלה
       submit: בטל הזמנה
     membership:
-      title: הסרת משתתף
+      title: הסרת חבר
       message: אתה בטוח שאתה רוצה להסיר את %{name}?
       impact_for_subgroup: פעולה זו תסיר את הגישה שלהם לתת-הקבוצה (כולל שרשורים וסקרים), אך הם יישארו חברים בקבוצת האם.
       impact_for_group: פעולה זו תסיר את הגישה שלהם לקבוצה (כולל שרשורים וסקרים) ולתת-קבוצות כלשהן.
-      flash: משתתף הוסר
-      submit: הסרת משתתף
+      flash: חבר הוסר
+      submit: הסרת חבר
   memberships_panel:
     add_coordinator: הפוך למנהל
     remove_coordinator: הורדת אדמין
@@ -1873,7 +1873,7 @@ he:
     start_a_vote: התחל הצבעה
   thread_arrangement_form:
     edit: ערוך פריסה
-    title: פריסת חוט
+    title: פריסת שרשור
     for_everyone: זה משנה את הפריסה עבור כולם, לא רק לך.
     sorting: הכי ישן או הכי חדש קודם?
     latest: החדש ביותר
@@ -1970,13 +1970,13 @@ he:
     consensus_title: קוֹנסֶנזוּס
     proposal_title: הצעה
     count_title: לבחור ב
-    check_title: בדיקת חושים
+    check_title: בדיקת כיוון
     poll_title: סקר
     meeting: פְּגִישָׁה
-    score_title: ניקוד סקר
-    dot_vote_title: הצבעה נקודה
-    meeting_title: הצבעת זמן
-    ranked_choice_title: דירוג בחירה
+    score_title: סקר ציון
+    dot_vote_title: הצבעת נקודות
+    meeting_title: סקר זמן
+    ranked_choice_title: בחירה מדורגת
     gradients_of_agreement_title: שיפועים של הסכמה
     majority_title: רוֹב
     stv_title: בחירות STV
@@ -2090,7 +2090,7 @@ he:
     share_count: שתף בדיקה
     start_poll: התחל החלטה
     publish_poll: שתף סקר
-    share_outcome: שתפ/י תוצאה
+    share_outcome: לשתף מסקנה
     view_all: צפה בכל
     save_changes: שמירה
     change_vote: שנה את ההצבעה שלך
@@ -2100,7 +2100,7 @@ he:
     too_long: יותר מדי זמן
     edit_warning: עריכה מומלצת רק עבור שינויים קלים או תיקון שגיאות כתיב. לשינויים משמעותיים, סגור את ה-%{pollType} הזה והתחל חדש.
     no_voting: לדיון בלבד, ההצבעה מושבתת
-    post_outcome: פרסם תוצאה
+    post_outcome: לפרסם מסקנה
     view_all_votes: הצג את כל ההצבעות
     you_voted: הצבעת
     these_are_templates: אלו הן תבניות ההחלטות בקבוצה שלך. לחץ על תבנית כדי להתחיל החלטה חדשה. מנהלים יכולים להתאים אישית את כל הפרטים אודות תבנית כך שתתאים לנוהלי הארגון שלך ותהיה קלה לחברים למצוא ולהשתמש בה.
@@ -2248,7 +2248,7 @@ he:
   poll_common_collapsed:
     by_who: על פי %{name}
   poll_common_calendar_invite:
-    calendar_invite: הוסף הזמנה ליומן עם תוצאה זו
+    calendar_invite: לצרף הזמנה ליומן למסקנה זו
     poll_option_id: זמן פגישה
     helptext_on: משתמשים יועלו להוסיף פגישה זו ליומן שלהם
     helptext_off: הזמנה לפגישה לא תשלח
@@ -2261,7 +2261,7 @@ he:
     location_placeholder: איפה תתקיים הפגישה?
   poll_common_close_form:
     title: לסגור את %{poll_type} עכשיו?
-    helptext: האם אתה בטוח שברצונך לסגור את ה-%{poll_type} הזה מוקדם ולשתף תוצאה?
+    helptext: לסגור את ה-%{poll_type} הזה מוקדם ולשתף מסקנה?
     close_poll_type: סגור %{poll_type}
     poll_type_closed: "%{poll_type} נסגר"
   poll_common_reopen_form:
@@ -2329,21 +2329,21 @@ he:
     reminder_sent: הודעת תזכורת נשלחה
   poll_common_set_outcome_panel:
     enter_outcome: הזן מסקנה
-    poll_type: "%{poll_type} זה נסגר. קח זמן לשקול את התוצאות ואז שתף תוצאה כדי שאנשים ידעו מה יקרה אחר כך."
+    poll_type: "%{poll_type} זה נסגר. כדאי לשקול את התוצאות ואז לשתף מסקנה כדי שאנשים ידעו מה יקרה אחר כך."
     enter_an_outcome: הזן מסקנה
   poll_common_outcome_form:
     review_due_in_days: לבדוק את ההחלטה לאחר כמה ימים?
     review_date: תאריך ביקורת
     review_date_hint: קבע תאריך לבדיקת ההחלטה (אופציונלי)
     who_to_notify: למי אתה רוצה להודיע על התוצאה הזו? (אופציונאלי)
-    outcome_statement_template: תבנית הצהרת תוצאה
-    new_title: תוצאה של המדינה
-    update_title: עדכן תוצאה
+    outcome_statement_template: תבנית הצהרת מסקנה
+    new_title: לשתף את המסקנה
+    update_title: לעדכן מסקנה
     outcome_created: מסקנה נוצרה
     outcome_updated: מסקנה עודכנה
     statement_placeholder: סכם את התגובות והסבר מה יקרה בהמשך.
     you_will_be_notified: תקבל הודעה בתאריך הבדיקה.
-    submit: שתפ/י תוצאה
+    submit: לשתף מסקנה
     review_due_in_days_hint: מספר הימים שיש להמתין לפני בחינת ההחלטה (אופציונלי).
     statement_template_hint: ספקו תבנית לכתיבת תוצאת ההחלטה. (אופציונלי)
     statement_template_placeholder: תודה על ההשתתפות! הגענו למניין חוקי ויש לנו תמיכה להמשיך.
@@ -2434,14 +2434,14 @@ he:
     select_an_option: בחר אפשרות
     'yes': כן
     'no': לא
-    agree: בעד
+    agree: מסכים/ה
     consent: הַסכָּמָה
     abstain: נמנע
     unsure: לא בטוח
-    disagree: נגד
+    disagree: לא מסכים/ה
     objection: הִתנַגְדוּת
     object: לְהִתְנַגֵד
-    block: חסום
+    block: וטו
     no_voting: אין הצבעה
   poll_count_form:
     pct_of_target: "% מהיעד"
@@ -2504,7 +2504,7 @@ he:
     discussion_closed: "<a class='actor-link' href='/u/%{username}'>%{author}</a> סגר את השרשור"
     discussion_reopened: "<a class='actor-link' href='/u/%{username}'>%{author}</a> פתח מחדש את השרשור"
     new_comment: "<a class='actor-link' href='/u/%{username}'>%{author}</a>"
-    outcome_created: "<a class='actor-link' href='/u/%{username}'>%{author}</a> שיתף תוצאה"
+    outcome_created: "<a class='actor-link' href='/u/%{username}'>%{author}</a> שיתף/ה מסקנה"
     poll_reopened: "<a class='actor-link' href='/u/%{username}'>%{author}</a> פתח מחדש את ה-%{polltype}"
     poll_closed_by_user: "<a class='actor-link' href='/u/%{username}'>%{author}</a> סגר את ה-%{polltype}"
     poll_created: "<a class='actor-link' href='/u/%{username}'>%{author}</a> התחיל %{polltype}"
@@ -2682,9 +2682,9 @@ he:
       poll_closing_soon: סקר נסגר בקרוב
       poll_expired: תוקף סקר יפוג
       poll_closed_by_user: סקר נסגר באופן ידני
-      poll_reopened: משאל נפתח מחדש להצבעה
-      outcome_created: תוצאה משותפת
-      outcome_updated: תוצאה מתעדכנת
+      poll_reopened: סקר נפתח מחדש להצבעה
+      outcome_created: מסקנה שותפה
+      outcome_updated: מסקנה עודכנה
       outcome_review_due: יש לבצע סקירת תוצאות
       new_discussion: דיון מתחיל
       discussion_edited: דיון נערך
@@ -2791,7 +2791,10 @@ he:
         submit: ראה תבניות הצעות
       share_an_outcome:
         title: שתף את תוצאת ההצעה
-        helptext: <p style=";text-align:right;direction:rtl">כדי לסייע בקידום החלטות, להצעות יש מועד אחרון להצבעה. כאשר המועד האחרון יגיע, ההצבעה תיסגר ותקבלו הודעה לשתף תוצאת הצעה.</p><p style=";text-align:right;direction:rtl"> התוצאה היא הזדמנות לומר האם ההצעה הצליחה ומה יקרה בהמשך.</p><p style=";text-align:right;direction:rtl"> אם המועד האחרון להגשת ההצעה שלך טרם חלף, אך בכל זאת ברצונך להמשיך, תוכל ללחוץ <b>על סגור מוקדם</b> .</p><p style=";text-align:right;direction:rtl"> כאשר יגיע הזמן הנכון, <b>הזן תוצאה</b> עבור ההצעה שלך.</p>
+        helptext: |
+          <p>כשמועד סגירת ההצעה מגיע, ההצבעה נסגרת ומופיעה בקשה לשתף מסקנה.</p>
+          <p>במסקנה מסבירים מה הוחלט (או מה יקרה בהמשך) לאחר עיון בהצבעות ובתגובות.</p>
+          <p>אם מועד הסגירה טרם עבר אך ניתן כבר להתקדם, אפשר לבחור <b>לסגור מוקדם</b>.</p>
         submit: הצג הצעה
         cancel: תעשה זאת מאוחר יותר
       start_a_discussion:
@@ -2984,7 +2987,7 @@ he:
     set_all_vote_weights_the_same: קבע את משקלי הקולות של כל הקולות זהים
     member_vote_weights_hint: מצביעים ללא חברות קבוצתית נוכחית מקבלים משקל קולות של 1
     weighted_voting: הצבעה משוקללת
-    weighted_voting_is_not_available_with_anonymous_voting: "הצבעה משוקללת אינה זמינה בהצבעה אנונימית"
+    weighted_voting_is_not_available_with_anonymous_voting: הצבעה משוקללת אינה זמינה בהצבעה אנונימית
     use_weighted_voting: השתמש בהצבעה משוקללת
     weighted_voting_off_warning: כיבוי הצבעה משוקללת מגדיר את משקל כל הקולות ל-1. כל משקלי הקולות ששיניתם עבור סקר זה יאבדו.
     weighted_voting_on_group: הפעלת הצבעה משוקללת מעתיקה את משקל ההצבעה המוגדר כברירת מחדל של כל חבר. שאר המצביעים מקבלים משקל הצבעה של 1.
@@ -3080,7 +3083,7 @@ he:
       success: הדיון הועבר ל-%{name}
     move_thread_title: הזזת שרשור
     destination: יַעַד
-    direct_thread: חוט ישיר
+    direct_thread: שרשור ישיר
     direct_thread_hint: כל מי שהשתתף ישמור על הגישה. אתה ויוצר השרשור תהיו מנהלי השרשור.
     direct_thread_anonymous_poll: לא ניתן להמיר שרשורים המכילים סקרים אנונימיים לשרשורים ישירים מכיוון שזה עלול לחשוף מי הצביע
   auth:

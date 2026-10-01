@@ -1,6 +1,6 @@
 ---
 he:
-  group_export_started: "יצוא תוכן הקבוצה החלה"
+  group_export_started: יצוא תוכן הקבוצה החלה
   discussion_templates:
     blank:
       process_name: תבנית ריקה
@@ -10,7 +10,7 @@ he:
       title_placeholder: מהו הנושא שאתה רוצה לדון בו?
       process_name: לדון בנושא
       process_subtitle: התחל דיון עם הקבוצה שלך
-      process_introduction: <p style=";text-align:right;direction:rtl">האם יש בעיה, בעיה או הזדמנות שאתה רוצה להעלות עם הקבוצה שלך?</p><p style=";text-align:right;direction:rtl"> הצג את הנושא, קישור לכל מידע רקע ובקש הערות, רעיונות ועזרה.</p><p style=";text-align:right;direction:rtl"> הזמן אנשים להשתתף על ידי תרומה של מחשבותיהם ומידע רלוונטי. השתמש ב-@mention כדי למשוך את תשומת הלב של אנשים מסוימים.</p><p style=";text-align:right;direction:rtl"> עדכן את הקשר השרשור ככל שהדיון מתקדם כדי להקל עליו לקראת תוצאה.</p><p style=";text-align:right;direction:rtl"> אל תחכה עד שיהיה לך את כל המידע כדי לפתוח שרשור. השתמש בשרשור כדי להזמין אנשים לעזור לך לחקור את הנושא ולהבין פתרון.</p>
+      process_introduction: "<p>יש נושא, בעיה או הזדמנות שכדאי להעלות בקבוצה?</p><p>יש להציג את הנושא, לקשר למידע רקע ולבקש תגובות, רעיונות ועזרה.</p><p>יש להזמין אנשים להשתתף ולשתף מחשבות ומידע רלוונטי. ניתן להשתמש באזכור @ כדי למשוך את תשומת הלב של אנשים מסוימים.</p><p>יש לעדכן את הקשר השרשור ככל שהדיון מתקדם, כדי להוביל אותו למסקנה.</p><p>אין צורך לחכות עד שכל המידע זמין כדי לפתוח שרשור. אפשר להשתמש בשרשור כדי להזמין אנשים לעזור בבחינת הנושא ובמציאת פתרון.</p>"
       description: <h3 id="introduce-and-describe-the-topic" style=";text-align:right;direction:rtl">הצג ותאר את הנושא</h3><p style=";text-align:right;direction:rtl"></p><h3 id="why-is-this-important" style=";text-align:right;direction:rtl"> למה זה חשוב?</h3><p style=";text-align:right;direction:rtl"></p><h3 id="how-would-you-like-people-to-respond" style=";text-align:right;direction:rtl"> איך היית רוצה שאנשים יגיבו?</h3><p style=";text-align:right;direction:rtl"></p>
     onboarding_to_loomio:
       title: שימוש ב-Loomio עבור הקבוצה שלנו
@@ -23,14 +23,14 @@ he:
       title_placeholder: פיתוח מדיניות הבריאות והבטיחות שלנו
       process_name: תהליך הסכמה
       process_subtitle: קבלו החלטה שהיא 'בטוחה לנסות', ללא התנגדויות.
-      process_introduction: '<p style=";text-align:right;direction:rtl">בקש הסכמה על החלטה שאתה צריך לקבל, כאשר אין התנגדויות משמעותיות להצעה שלך, כדי שתוכל לקבל החלטה מהירה ש''בטוח לנסות'' עכשיו.</p><p style=";text-align:right;direction:rtl"> תפקידים אופייניים:</p><ul style=";text-align:right;direction:rtl"><li style=";text-align:right;direction:rtl"><p style=";text-align:right;direction:rtl"> מציע: מי שמעלה נושא שדורש הכרעה.</p></li><li style=";text-align:right;direction:rtl"><p style=";text-align:right;direction:rtl"> מנחה: מישהו שיכול לעזור למציע לעשות את עבודתו ביעילות.</p></li></ul><p style=";text-align:right;direction:rtl"> שלבי תהליך נפוצים:</p><p style=";text-align:right;direction:rtl"> שלב 1. הצג הצעה עם חוט של Loomio.</p><p style=";text-align:right;direction:rtl"> שלב 2. הנח סבב של שאלות, תגובות וכל הערה כדי לשפר את ההצעה עם בדיקת Sense.</p><p style=";text-align:right;direction:rtl"> שלב 3. תקן את ההצעה עם הצעות והערות.</p><p style=";text-align:right;direction:rtl"> שלב 4. שאל אם למישהו יש התנגדות משמעותית להצעה המתוקנת עם הצעת הסכמה.</p><p style=";text-align:right;direction:rtl"> שלב 5. שלב התנגדויות תקפות כדי ליצור גרסה מתוקנת של ההצעה שכולם מסכימים שהיא ''בטוחה לנסות'', וכשתשלמה ציינו את תוצאת ההחלטה.</p><p style=";text-align:right;direction:rtl"> <a target="_blank" rel="noopener noreferrer nofollow" href="/docs/en/guides/making_decisions/consent_process">קרא עוד: תהליך הסכמה.</a></p>'
+      process_introduction: '<p>יש לבקש הסכמה להחלטה שצריך לקבל, ללא התנגדויות משמעותיות להצעה, כדי לקבל במהירות החלטה ש''בטוח לנסות'' כעת.</p><p>תפקידים מקובלים:</p><ul><li><p>הצעת הנושא: העלאת נושא שדורש החלטה.</p></li><li><p>הנחיה: סיוע למי שהעלה את הנושא לפעול ביעילות.</p></li></ul><p>שלבי תהליך מקובלים:</p><p>שלב 1. יש להציג הצעה בשרשור ב-Loomio.</p><p>שלב 2. יש להנחות סבב של שאלות, תגובות אימוג׳י ותגובות לשיפור ההצעה באמצעות בדיקת כיוון.</p><p>שלב 3. יש לתקן את ההצעה לפי ההצעות והתגובות.</p><p>שלב 4. יש לשאול אם יש התנגדות משמעותית להצעה המתוקנת באמצעות הצעת הסכמה.</p><p>שלב 5. יש לשלב התנגדויות מוצדקות כדי ליצור גרסה מתוקנת של ההצעה שיש הסכמה של כולם ש‘בטוח לנסות’ אותה, ובסיום לשתף מסקנה המתארת את ההחלטה.</p><p><a target="_blank" rel="noopener noreferrer nofollow" href="/docs/en/guides/making_decisions/consent_process">למידע נוסף: תהליך הסכמה.</a></p>'
       description: <h3 id="what-is-the-decision-you-need-to-make" style=";text-align:right;direction:rtl">מהי ההחלטה שאתה צריך לקבל?</h3><h3 id="" style=";text-align:right;direction:rtl"></h3><h3 id="why-is-this-important-and-what-impact-does-it-have" style=";text-align:right;direction:rtl"> למה זה חשוב ואיזו השפעה יש לזה?</h3><p style=";text-align:right;direction:rtl"></p><h3 id="what-information-do-people-need-for-context" style=";text-align:right;direction:rtl"> איזה מידע אנשים צריכים להקשר?</h3><p style=";text-align:right;direction:rtl"></p><h3 id="who-is-the-facilitator-for-this-process" style=";text-align:right;direction:rtl"> מי המנחה בתהליך זה?</h3><p style=";text-align:right;direction:rtl"></p>
       consent: הַסכָּמָה
     advice_process:
       title_placeholder: מבקש ייעוץ לרכישת מחשב חדש
       process_name: תהליך ייעוץ
       process_subtitle: בקש עצה לגבי החלטה שאתה צריך לקבל.
-      process_introduction: '<p style=";text-align:right;direction:rtl">קבל החלטה בעזרת עצות של אנשים שהושפעו או שיש להם מומחיות, כדי שתוכל לקבל החלטה טובה יותר עבור הארגון שלך.</p><p style=";text-align:right;direction:rtl"> תפקידים אופייניים:</p><ul style=";text-align:right;direction:rtl"><li style=";text-align:right;direction:rtl"><p style=";text-align:right;direction:rtl"> מנחה: האדם שמקבל את ההחלטה, או בקש ממישהו להקל.</p></li><li style=";text-align:right;direction:rtl"><p style=";text-align:right;direction:rtl"> יועצים: אנשים שהושפעו או שיש להם מומחיות שאתה מזמין.</p></li></ul><p style=";text-align:right;direction:rtl"> שלבי תהליך נפוצים:</p><p style=";text-align:right;direction:rtl"> שלב 1. חפש קלט כדי להשמיע נקודות מבט לפני שאתה מציע פעולה.</p><p style=";text-align:right;direction:rtl"> שלב 2. הצע הצעה ופנה לייעוץ - הפעל הצעת ייעוץ.</p><p style=";text-align:right;direction:rtl"> שלב 3. בהתחשב בעצות שהתקבלו, אתה מקבל החלטה ומודיע לאנשים שנתנו עצות - ציינו תוצאה.</p><p style=";text-align:right;direction:rtl"> <a target="_blank" rel="noopener noreferrer nofollow" href="/docs/en/guides/making_decisions/advice_process">קרא עוד: תהליך ייעוץ.</a></p>'
+      process_introduction: '<p>ניתן לקבל החלטה בעזרת עצות מאנשים שיושפעו ממנה או שיש להם מומחיות, כדי לקבל החלטה טובה יותר עבור הארגון.</p><p>תפקידים מקובלים:</p><ul><li><p>הנחיה: בידי מי שמקבל את ההחלטה, או אדם אחר שמוזמן להנחות.</p></li><li><p>ייעוץ: אנשים שיושפעו מההחלטה או שיש להם מומחיות ומוזמנים לתהליך.</p></li></ul><p>שלבי תהליך מקובלים:</p><p>שלב 1. יש לבקש התייחסויות כדי להכיר נקודות מבט לפני שמציעים פעולה.</p><p>שלב 2. יש להעלות הצעה ולבקש עצות - לפתוח הצעת ייעוץ.</p><p>שלב 3. יש לקבל החלטה בהתחשב בעצות שהתקבלו, ולעדכן את מי שנתנו עצות - לשתף מסקנה.</p><p><a target="_blank" rel="noopener noreferrer nofollow" href="/docs/en/guides/making_decisions/advice_process">למידע נוסף: תהליך ייעוץ.</a></p>'
       description: <h3 id="what-is-the-decision-you-need-to-make" style=";text-align:right;direction:rtl">מהי ההחלטה שאתה צריך לקבל?</h3><p style=";text-align:right;direction:rtl"></p><h3 id="why-is-this-important-and-what-impact-does-it-have" style=";text-align:right;direction:rtl"> למה זה חשוב ואיזו השפעה יש לזה?</h3><p style=";text-align:right;direction:rtl"></p><h3 id="what-advice-are-you-asking-to-help-you-make-a-good-decision" style=";text-align:right;direction:rtl"> איזו עצה אתה מבקש כדי לעזור לך לקבל החלטה טובה?</h3><p style=";text-align:right;direction:rtl"></p><h3 id="who-is-the-facilitator-for-this-process" style=";text-align:right;direction:rtl"> מי המנחה של התהליך הזה?</h3><p style=";text-align:right;direction:rtl"></p>
       advice: עֵצָה
     pass_a_resolution:
@@ -44,7 +44,7 @@ he:
       title_placeholder: תיקון חוקת הארגון שלנו
       process_name: החלטה בהסכמה
       process_subtitle: להגיע להסכם קיבוצי עם כל המעורבים.
-      process_introduction: '<p style=";text-align:right;direction:rtl">בנו קונצנזוס להחלטה שאתם צריכים לקבל ביחד, כדי להגיע להסכמה שתספק את הצרכים והחששות של כל המשתתפים.</p><p style=";text-align:right;direction:rtl"> תפקידים אופייניים:</p><ul style=";text-align:right;direction:rtl"><li style=";text-align:right;direction:rtl"><p style=";text-align:right;direction:rtl"> למנות מנחה. (בישיבות דירקטוריון זה בדרך כלל היושב-ראש.)</p></li><li style=";text-align:right;direction:rtl"><p style=";text-align:right;direction:rtl"> מניין או רוב על של חברים להשתתף, כמפורט בתקנון הארגון שלך.</p></li></ul><p style=";text-align:right;direction:rtl"> שלבי תהליך נפוצים:</p><p style=";text-align:right;direction:rtl"> שלב 1. צור מקום פתוח לדיון על נושא או הצעת החלטה.</p><p style=";text-align:right;direction:rtl"> שלב 2. בדוק קונצנזוס וחשוף התנגדויות עם הצעת בדיקת Sense.</p><p style=";text-align:right;direction:rtl"> שלב 3. הבהירו את כל הנקודות, הזמינו שינויים בונים ותקן את ההצעה.</p><p style=";text-align:right;direction:rtl"> שלב 4. בדוק את ההסכמה ואת כל ההתנגדויות שנותרו עם הצעת קונצנזוס.</p><p style=";text-align:right;direction:rtl"> שלב 5. רשמו את ההחלטה עם תוצאה ובפרוטוקול הרשמי של הארגון.</p><p style=";text-align:right;direction:rtl"> <a target="_blank" rel="noopener noreferrer nofollow" href="/docs/en/guides/making_decisions/consensus_process">קרא עוד: תהליך קונצנזוס.</a></p>'
+      process_introduction: '<p>יש לבנות קונצנזוס להחלטה שצריך לקבל יחד, כדי להגיע להסכמה שנותנת מענה לצרכים ולחששות של כל המשתתפים.</p><p>תפקידים מקובלים:</p><ul><li><p>יש למנות מנחה.&nbsp; (בישיבות דירקטוריון זה בדרך כלל תפקיד היו״ר.)</p></li><li><p>נדרשת השתתפות של מניין חוקי או רוב מיוחס של חברים, כפי שנקבע בתקנון הארגון.</p></li></ul><p>שלבי תהליך מקובלים:</p><p>שלב 1. יש ליצור מרחב פתוח לדיון בנושא או בהחלטה מוצעת.</p><p>שלב 2. יש לבדוק אם יש קונצנזוס ולחשוף התנגדויות באמצעות הצעת בדיקת כיוון.&nbsp;</p><p>שלב 3. יש להבהיר נקודות, להזמין שיפורים ולתקן את ההצעה.</p><p>שלב 4. יש לבדוק אם יש הסכמה ואם נותרו התנגדויות באמצעות הצעת קונצנזוס.</p><p>שלב 5. יש לתעד את ההחלטה במסקנה ובפרוטוקול הרשמי של הארגון.</p><p><a target="_blank" rel="noopener noreferrer nofollow" href="/docs/en/guides/making_decisions/consensus_process">למידע נוסף: תהליך קונצנזוס.</a></p>'
       description: <h3 id="what-is-the-decision-you-need-to-make" style=";text-align:right;direction:rtl">מהי ההחלטה שאתה צריך לקבל?</h3><p style=";text-align:right;direction:rtl"></p><h3 id="why-is-this-important-and-what-impact-does-it-have" style=";text-align:right;direction:rtl"> למה זה חשוב ואיזו השפעה יש לזה?</h3><p style=";text-align:right;direction:rtl"></p><h3 id="what-information-do-people-need-for-context" style=";text-align:right;direction:rtl"> איזה מידע אנשים צריכים להקשר?</h3><p style=";text-align:right;direction:rtl"></p><h3 id="who-is-the-facilitator" style=";text-align:right;direction:rtl"> מי המנחה?</h3><p style=";text-align:right;direction:rtl"></p><h3 id="what-conditions-need-to-be-met-for-a-decision" style=";text-align:right;direction:rtl"> אילו תנאים צריכים להתקיים כדי לקבל החלטה?</h3><h3 id="" style=";text-align:right;direction:rtl"></h3>
       consensus: קוֹנסֶנזוּס
     share_links_and_info:
@@ -79,7 +79,7 @@ he:
       title_placeholder: בקשת מימון ל-Robotics Roadshow
       process_name: החלטת מימון
       process_subtitle: טפל בבקשת מענק, הלוואה או השקעה וקבל החלטת מימון.
-      process_introduction: <p style=";text-align:right;direction:rtl">הגש בקשה למימון, צרף מסמכים וחומרים תומכים נוספים.</p><p style=";text-align:right;direction:rtl"> סכמו את היישום בהקשר השרשור.</p><p style=";text-align:right;direction:rtl"> הזמן אנשים מורשים לעיין באפליקציה ולשאול שאלות. אפשר מספיק זמן לדיון.</p><p style=";text-align:right;direction:rtl"> העלה הצעת קונצנזוס לאישור המימון.</p><p style=";text-align:right;direction:rtl"> אם מישהו לא מסכים, בקש סיבה - למשל, ייתכן שיהיה צורך במידע נוסף. הזמן את האדם שאינו מסכים לשנות את הצבעתו כאשר הוא מרוצה.</p><p style=";text-align:right;direction:rtl"> כאשר יש לך החלטה ברורה לגבי בקשת המימון, ציינו תוצאה לרישום ההחלטה.</p>
+      process_introduction: "<p>יש להציג בקשת מימון ולצרף מסמכים וחומרים תומכים נוספים.</p><p>יש לסכם את הבקשה בהקשר השרשור.</p><p>יש להזמין אנשים בעלי הרשאה לעיין בבקשה ולשאול שאלות. יש להקצות מספיק זמן לדיון.</p><p>יש להעלות הצעת קונצנזוס לאישור המימון.</p><p>אם יש אי־הסכמה, יש לבקש נימוק - למשל, ייתכן שנדרש מידע נוסף. יש להזמין את מי שלא הסכימו לשנות את הצבעתם לאחר שניתן מענה מספק.</p><p>כשיש החלטה ברורה לגבי בקשת המימון, יש לשתף מסקנה כדי לתעד את ההחלטה.</p>"
       description: <h3 id="introduce-and-summarize-the-funding-application" style=";text-align:right;direction:rtl">הצג וסכם את בקשת המימון</h3><p style=";text-align:right;direction:rtl"></p><h3 id="how-does-this-application-fit-with-funding-criteria" style=";text-align:right;direction:rtl"> איך הבקשה הזו מתאימה לקריטריונים למימון?</h3><p style=";text-align:right;direction:rtl"></p><h3 id="who-is-authorized-to-approve-this-funding-decision" style=";text-align:right;direction:rtl"> מי מוסמך לאשר החלטת מימון זו?</h3><p style=";text-align:right;direction:rtl"></p><h3 id="invite-questions-from-decision-makers-to-process-the-applica" style=";text-align:right;direction:rtl"> הזמינו שאלות ממקבלי ההחלטות לטיפול בבקשה</h3><p style=";text-align:right;direction:rtl"></p>
       funding: מימון
     approve_a_document:
@@ -176,7 +176,7 @@ he:
         allocate: לְהַקְצוֹת
         score: ציון
         rank: דַרגָה
-        time: הצבעת זמן
+        time: סקר זמן
   user:
     deleted_user: משתמש מחוק
     placeholder_name: משתמש מוזמן (%{hostname})
@@ -212,7 +212,7 @@ he:
       group_name: שם הקבוצה
       discussion_title: כותרת השיחה
       outcome_author: מחבר התוצאה
-      outcome_created_at: תוצאה נוצרה ב
+      outcome_created_at: מועד יצירת המסקנה
       outcome_statement: הצהרת התוצאה
       poll_url: כתובת הURL של הסקר
       reason: סיבה
@@ -463,7 +463,7 @@ he:
     common:
       why_send_this: אתה מקבל את המייל הזה בגלל %{reason}
       view_on_loomio: צפה בו ב-%{site_name}
-      create_outcome: שתפ/י תוצאה
+      create_outcome: לשתף מסקנה
       your_response: 'בחירתך:'
       you_voted: אתה הצבעת!
       not_invited: לא מוזמן
@@ -501,7 +501,7 @@ he:
       process_subtitle: העלה הצעה לקבלת החלטה
       process_introduction: <p style=";text-align:right;direction:rtl">הצעת Loomio הקלאסית עוזרת לך לקבל החלטה, והופכת דיון לתוצאה ברורה.</p><p style=";text-align:right;direction:rtl"> הציעו דרך פעולה והזמינו אנשים להגיב על ידי הצבעה בהסכמה, הימנעות או אי הסכמה.</p><p style=";text-align:right;direction:rtl"> כאשר אנשים מצביעים, הם יכולים לתת סיבה מדוע הצביעו כך. ניתן לראות את עמדות כולם בנושא, ומדוע.</p><p style=";text-align:right;direction:rtl"> בדרך זו תוכלו להשתמש בהצעה כדי לעודד אנשים להגיב, לחשוף מידע חדש ולבנות הבנה משותפת - כדי לעזור לקבוצה שלכם לקבל החלטה טובה ומושכלת יותר.</p><p style=";text-align:right;direction:rtl"> הצעה ודיון נלווה יוצרים תיעוד משלהם של אופן קבלת ההחלטה.</p><p style=";text-align:right;direction:rtl"> <a target="_blank" href="/docs/en/guides/making_decisions/simple_decision_process"><u>קרא עוד על השימוש בהצעת Loomio הקלאסית בתהליך ההחלטה הפשוט</u></a> .</p>
       title: לאשר את קונספט המותג החדש
-      details: <h3 id="what-is-the-decision-you-need-to-make" style=";text-align:right;direction:rtl"><strong>מהי ההחלטה שאתה צריך לקבל?</strong></h3><p style=";text-align:right;direction:rtl"></p><h3 id="why-is-this-important" style=";text-align:right;direction:rtl"> <strong>למה זה חשוב?</strong></h3><p style=";text-align:right;direction:rtl"></p><h3 id="what-are-you-asking-people-to-do" style=";text-align:right;direction:rtl"> <strong>מה אתה מבקש מאנשים לעשות?</strong></h3><p style=";text-align:right;direction:rtl"></p><p style=";text-align:right;direction:rtl"> כדי שההצעה הזו תעבור, אנחנו צריכים שרוב חברי הכנסת יצביעו בעד.</p><p style=";text-align:right;direction:rtl"> אם אינך מסכים, ספר מדוע ומה צריך להשתנות כדי שתסכים.</p>
+      details: <h3 id="what-is-the-decision-you-need-to-make"><strong>מה ההחלטה שצריך לקבל?</strong></h3><p></p><h3 id="why-is-this-important"><strong>למה זה חשוב?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"><strong>מה מבקשים מאנשים לעשות?</strong></h3><p></p> <p>כדי שההצעה תעבור, רוב החברים צריכים להצביע מסכים/ה.</p><p>בבחירה בלא מסכים/ה, יש להסביר מדוע ומה צריך להשתנות כדי לבחור במסכים/ה.</p>
       agree: לְהַסכִּים
       agree_meaning: אני תומך בהצעה
       agree_prompt: מה מוצא חן בעיניך בהצעה ואיך היא תועיל לקבוצה?
@@ -542,7 +542,7 @@ he:
       process_subtitle: להגיע להסכם קיבוצי עם כל המעורבים
       process_introduction: <p style=";text-align:right;direction:rtl">בנו קונצנזוס לקראת החלטה שעליכם לקבל, כדי להגיע להסכם שיספק את הצרכים והדאגות של כל המשתתפים.</p><ul style=";text-align:right;direction:rtl"><li style=";text-align:right;direction:rtl"><p style=";text-align:right;direction:rtl"> לדון ולפתח הצעה יחד</p></li><li style=";text-align:right;direction:rtl"><p style=";text-align:right;direction:rtl"> לכלול ולכבד את כל המעורבים</p></li><li style=";text-align:right;direction:rtl"><p style=";text-align:right;direction:rtl"> לבקש הסכמה מרוב האנשים</p></li></ul><p style=";text-align:right;direction:rtl"> <a target="_blank" href="/docs/en/guides/making_decisions/consensus_process">קראו עוד על תהליך הקונצנזוס</a> .</p>
       title: לאשר את קונספט המותג החדש
-      details: <h3 id="what-is-the-decision-you-need-to-make" style=";text-align:right;direction:rtl"><strong>מהי ההחלטה שאתה צריך לקבל?</strong></h3><p style=";text-align:right;direction:rtl"></p><h3 id="why-is-this-important" style=";text-align:right;direction:rtl"> <strong>למה זה חשוב?</strong></h3><p style=";text-align:right;direction:rtl"></p><h3 id="what-are-you-asking-people-to-do" style=";text-align:right;direction:rtl"> <strong>מה אתה מבקש מאנשים לעשות?</strong></h3><p style=";text-align:right;direction:rtl"></p><p style=";text-align:right;direction:rtl"> כדי שההצעה הזו תעבור, אנחנו צריכים שרוב חברי הכנסת יצביעו בעד.</p><p style=";text-align:right;direction:rtl"> אם אינך מסכים, ספר מדוע ומה צריך להשתנות כדי שתסכים.</p>
+      details: <h3 id="what-is-the-decision-you-need-to-make"><strong>מה ההחלטה שצריך לקבל?</strong></h3><p></p><h3 id="why-is-this-important"><strong>למה זה חשוב?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"><strong>מה מבקשים מאנשים לעשות?</strong></h3><p></p><p>כדי שההצעה תעבור, רוב החברים צריכים להצביע מסכים/ה. </p><p>בבחירה בלא מסכים/ה, יש להסביר מדוע ומה צריך להשתנות כדי לבחור במסכים/ה.</p>
       outcome_statement: <p style=";text-align:right;direction:rtl">תודה על השתתפותך בתהליך הקונצנזוס.</p>
       agree: לְהַסכִּים
       agree_meaning: אני תומך בהצעה
@@ -581,7 +581,7 @@ he:
       abstain_meaning: אין לי מה להוסיף, וגם לא התנגדות לעבודה הזו.
       abstain_prompt: הימנעות מרמזת על הסכמה עם כיוון ההצעה הזו. האם יש סיבה שאתה מצביע בעד הימנעות?
       concerned: מוּדְאָג
-      concerned_meaning: משהו בזה אולי צריך להשתנות כדי שאוכל להסכים או להסכים
+      concerned_meaning: ייתכן שצריך לשנות משהו כדי שאוכל לתת הסכמה או לבחור מסכים/ה
       concerned_prompt: מהי דאגתך וכיצד ניתן לטפל בה?
       process_subtitle_v2: תראה אם אתה בדרך הנכונה
       process_introduction_v2: <p style=";text-align:right;direction:rtl"><strong>בדיקת חוש</strong> עוזרת לך לקבל משוב מוקדם לפני שאתה מתחייב להחלטה. המשתתפים אומרים אם הדברים נראים טוב או מדווחים על חששות, כך שתוכל להתאים את הכיוון לפני שאתה עובר להצעה רשמית. זו לא החלטה - זו בדיקת חום.</p>
@@ -655,7 +655,7 @@ he:
       process_subtitle_v3: דרגו את האפשרויות מהמועדפת ביותר לפחות מועדפת
     time_poll:
       process_subtitle: גלה מתי אנשים זמינים להיפגש
-      process_introduction: <p style=";text-align:right;direction:rtl"><span>חסכו זמן בקביעת תאריך לפגישה או לאירוע שלכם.</span></p><p style=";text-align:right;direction:rtl"> סקר זמן מאפשר לראות בקלות את הזמינות של כולם ולמצוא את הזמן הטוב ביותר.</p><p style=";text-align:right;direction:rtl"> תן לסקר הזמן שלך כותרת ופרטים. הזן רשימה של אפשרויות תאריך ושעה באזור הזמן שלך.</p><p style=";text-align:right;direction:rtl"> בעת הגדרת משבצות זמן, יש לקחת בחשבון אנשים באזורי זמן שונים. המשתתפים יראו זמנים המותאמים לאזור הזמן שלהם.</p><p style=";text-align:right;direction:rtl"> קבעו משך זמן פגישה.</p><p style=";text-align:right;direction:rtl"> כאשר סקר הזמן נסגר, קבע תוצאה עם הזמן הטוב ביותר וכל ההוראות לפגישה.</p><p style=";text-align:right;direction:rtl"> <span>Loomio תכלול הזמנה ליומן עם דוא"ל ההודעה על התוצאות, כך שמשתתפים יוכלו להוסיף ליומן שלהם.</span></p><p style=";text-align:right;direction:rtl"> <a target="_blank" href="/docs/en/user_manual/polls/meeting_polls#time-poll">קרא עוד על סקר טיים</a> .</p>
+      process_introduction: <p>אפשר למצוא במהירות את הזמן המתאים ביותר לפגישה או לאירוע. יש להוסיף כותרת, פרטים ואפשרויות תאריך ושעה באזור הזמן המקומי. המשתתפים יראו את השעות באזור הזמן שלהם.</p><p>כשסקר הזמן נסגר, יש לשתף מסקנה עם הזמן המתאים ביותר והנחיות לפגישה. Loomio תשלח את המסקנה בדוא״ל עם הזמנה ליומן, כדי שהמשתתפים יוכלו להוסיף אותה ליומנים שלהם.</p><p><a target="_blank" href="/docs/en/user_manual/polls/meeting_polls#time-poll">למידע נוסף על סקר זמן</a>.</p>
       title: בואו נמצא תאריך לפגישה הבאה שלנו
       details: <p style=";text-align:right;direction:rtl"><strong>מהו הפגישה או האירוע?</strong></p><p style=";text-align:right;direction:rtl"></p><p style=";text-align:right;direction:rtl"> <strong>למה זה חשוב?</strong></p><p style=";text-align:right;direction:rtl"></p><p style=";text-align:right;direction:rtl"> <strong>מה אתה מבקש מאנשים לעשות?</strong></p><p style=";text-align:right;direction:rtl"></p><p style=";text-align:right;direction:rtl"> <span>סמנו את משבצות הזמנים הזמינות לכם באמצעות סמל ה'אגודל למעלה' הירוק או השאירו את ה'אגודל למטה' האדום במקומן כאשר אינן זמינות.</span></p><p style=";text-align:right;direction:rtl"> <span>השתמשו בסמל 'אגודל הצידה' כדי לציין שאתם זמינים 'במידת הצורך'.</span></p>
       reason_prompt: האם יש משהו שתוכלו לומר כדי לעזור למארגן למצוא זמן מתאים?
@@ -683,7 +683,7 @@ he:
       objection_prompt: מה צריך להשתנות לפני שתוכלו להתחייב?
     majority:
       process_subtitle: קבלו החלטה במספר הקולות הגבוה ביותר
-      process_introduction: <p style=";text-align:right;direction:rtl"><strong>רוב</strong> הוא הדרך הפשוטה ביותר לקבל החלטה קבוצתית - המשתתפים מצביעים כן או לא, וההצעה עוברת אם יותר ממחצית מצביעים כן. אין הימנעות או חסימה, כך שלכל קול יש משקל שווה.</p><p style=";text-align:right;direction:rtl"> רוב עובד היטב לקבלת החלטות פשוטות שבהן צריך תוצאה ברורה. לקבלת החלטות שבהן חשוב שאנשים יעבדו יחד כדי להבין זה את זה ולמצוא בסיס משותף, שקלו הסכמה או קונצנזוס.</p>
+      process_introduction: "<p><strong>רוב</strong> הוא הדרך הפשוטה ביותר לקבל החלטה בקבוצה — המשתתפים מצביעים כן או לא, וההצעה עוברת אם יותר ממחצית מצביעים כן. אין הימנעות או וטו, כך שלכל קול יש משקל שווה.</p><p>רוב מתאים להחלטות פשוטות שבהן נדרשת מסקנה ברורה. בהחלטות שבהן חשוב לעבוד יחד כדי להבין זה את זה ולמצוא בסיס משותף, כדאי לשקול הסכמה או קונצנזוס.</p>"
       title: לאשר את התקציב לרבעון השלישי
       details: <h3 style=";text-align:right;direction:rtl"><strong>מהי ההחלטה שאתה צריך לקבל?</strong></h3><p style=";text-align:right;direction:rtl"></p><h3 style=";text-align:right;direction:rtl"> <strong>למה זה חשוב?</strong></h3><p style=";text-align:right;direction:rtl"></p><h3 style=";text-align:right;direction:rtl"> <strong>מה אתה מבקש מאנשים לעשות?</strong></h3><p style=";text-align:right;direction:rtl"></p>
       yes_meaning: אני תומך בהצעה הזו
