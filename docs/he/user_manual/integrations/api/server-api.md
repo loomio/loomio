@@ -1,10 +1,10 @@
 ---
 title: API השרת
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/integrations/api/server-api.md
+source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
+source_file: docs/en/user_manual/integrations/api/server-api.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-30'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: a357cdc2bfc0223e
   authentication: cbabcc874f053455
@@ -26,25 +26,25 @@ sections:
   examples-6: 71ae30577730b261
   sso-profile-sync-settings: 416144004d040e4f
 generated:
-  introduction: e1f9f4ffb344c755
-  authentication: 4497b1d2a25e2c1a
-  user-object: 671ba8274d284640
-  list-users: 8088eded1df2ff0c
-  example: 4c14e04f9c696c67
-  show-user: 91e2d7393bd094a9
-  examples: 8087247827e7e159
-  update-user: f5085577d4230958
-  params: b03c601bbde002d8
-  examples-2: 9f567d7d8e96c75f
-  deactivate-user: 7dfe5cd70c7b3db4
-  examples-3: f465524c7dea89de
-  reactivate-user: bc82714fc5fc823d
-  examples-4: 4e0c43e30520097d
-  redact-user: 394fdea16b70fbca
-  examples-5: 92f95cbe6a545ca8
-  delete-user: b9247dab36d2dcc2
-  examples-6: '08c3d1e1ba9cdb1a'
-  sso-profile-sync-settings: 2285697531d0c061
+  introduction: bc372ece08ee1602
+  authentication: 3d86e75800069482
+  user-object: 4cc1839c9ea2488e
+  list-users: 57ef409f012e8403
+  example: 3b6f31c888966421
+  show-user: 11e709ab30355d5e
+  examples: 68b3e7c30709b272
+  update-user: 9fe9f1bf6714635e
+  params: 2d6c9cbe5d869681
+  examples-2: f6b02fc05e03ead2
+  deactivate-user: e4ae5d2b7c11dd6f
+  examples-3: 61339975c5e4ef63
+  reactivate-user: 25cbd4320128a1c1
+  examples-4: 17539b5a5093cf95
+  redact-user: 42f20e1d21671c38
+  examples-5: 266eff02ce099a0c
+  delete-user: e858ac01dfb8bfda
+  examples-6: b231fb99e7bec705
+  sso-profile-sync-settings: 19f51ee598df132e
 title_source: 370e81eb20eece44
 title_generated: d867b511d9d6c400
 ---
@@ -55,7 +55,7 @@ title_generated: d867b511d9d6c400
 
 <!-- seo-description: ניתן להשתמש ב-API השרת של Loomio לניהול חשבונות משתמשים בהתקנת Loomio באירוח עצמי. -->
 
-`/api/b3` מיועד לפעולות ברמת השרת. לפעולות המתבצעות באמצעות חשבון משתמש של Loomio, יש להשתמש ב-`/api/b2`.
+`/api/b3` מיועד לפעולות ברמת השרת. לפעולות ברמת המשתמש המתבצעות באמצעות חשבון משתמש ב-Loomio, יש להשתמש ב-`/api/b2`.
 
 <!-- translation-section: authentication -->
 
@@ -69,13 +69,13 @@ title_generated: d867b511d9d6c400
 curl -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/b3/users
 ```
 
-יש לשלוח פרטי אימות רק בכותרת `Authorization`. מפתחות API שנשלחים בפרמטרים של כתובת הבקשה או בגוף הבקשה נדחים.
+יש לשלוח פרטי אימות רק בכותרת `Authorization`. מפתחות API במחרוזות שאילתה או בגופי בקשות נדחים.
 
 <!-- translation-section: user-object -->
 
 ## אובייקט משתמש
 
-תגובות הכוללות משתמש הן במבנה הבא:
+תגובות המכילות נתוני משתמש הן במבנה הבא:
 
 ```json
 {
@@ -101,7 +101,7 @@ curl -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/b
 
 ## רשימת משתמשים
 
-הצגת כל חשבונות המשתמשים בהתקנת Loomio.
+ניתן לקבל רשימה של כל חשבונות המשתמשים בהתקנת Loomio.
 
 `GET /api/b3/users`
 
@@ -113,7 +113,7 @@ curl -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/b
 curl -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/b3/users
 ```
 
-מוחזר:
+התגובה:
 
 ```json
 {
@@ -125,7 +125,7 @@ curl -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/b
 
 ## הצגת משתמש
 
-איתור משתמש לפי מזהה המשתמש ב-Loomio או לפי זהות חיצונית.
+ניתן לאתר חשבון משתמש לפי מזהה המשתמש ב-Loomio או לפי זהות חיצונית.
 
 `GET /api/b3/users/:id`
 
@@ -147,7 +147,7 @@ curl -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/b
 curl -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/b3/users/identity/oauth/external-123
 ```
 
-מוחזר:
+התגובה:
 
 ```json
 {
@@ -159,7 +159,7 @@ curl -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/b
 
 ## עדכון משתמש
 
-עדכון שדות הפרופיל של משתמש שאותר לפי מזהה המשתמש ב-Loomio או לפי זהות חיצונית.
+ניתן לעדכן את שדות הפרופיל של חשבון משתמש שאותר לפי מזהה המשתמש ב-Loomio או לפי זהות חיצונית.
 
 `PATCH /api/b3/users/:id`
 
@@ -171,7 +171,7 @@ curl -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/b
 
 | שדה | תיאור |
 | --- | --- |
-| `name` | שם תצוגה |
+| `name` | שם לתצוגה |
 | `username` | שם משתמש ב-Loomio |
 | `email` | כתובת דוא״ל |
 
@@ -199,7 +199,7 @@ curl -X PATCH \
   https://www.loomio.com/api/b3/users/identity/oauth/external-123
 ```
 
-פרטי המשתמש המעודכנים מוחזרים:
+התגובה מכילה את נתוני המשתמש המעודכנים:
 
 ```json
 {
@@ -211,7 +211,7 @@ curl -X PATCH \
 
 ## השבתת משתמש
 
-השבתת חשבון משתמש לפי מזהה המשתמש ב-Loomio או לפי זהות חיצונית.
+ניתן להשבית חשבון משתמש שאותר לפי מזהה המשתמש ב-Loomio או לפי זהות חיצונית.
 
 `POST /api/b3/users/:id/deactivate`
 
@@ -233,7 +233,7 @@ curl -X POST -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.c
 curl -X POST -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/b3/users/identity/oauth/external-123/deactivate
 ```
 
-מוחזר:
+התגובה:
 
 ```json
 {
@@ -244,9 +244,9 @@ curl -X POST -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.c
 
 <!-- translation-section: reactivate-user -->
 
-## הפעלה מחדש של משתמש
+## הפעלה מחדש של חשבון
 
-הפעלה מחדש של חשבון משתמש שהושבת, לפי מזהה המשתמש ב-Loomio או לפי זהות חיצונית.
+ניתן להפעיל מחדש חשבון מושבת באמצעות מזהה החשבון ב־Loomio או זהות חיצונית.
 
 `POST /api/b3/users/:id/reactivate`
 
@@ -256,7 +256,7 @@ curl -X POST -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.c
 
 ### דוגמאות
 
-לפי מזהה המשתמש ב-Loomio:
+לפי מזהה החשבון ב־Loomio:
 
 ```bash
 curl -X POST -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/b3/users/123/reactivate
@@ -268,7 +268,7 @@ curl -X POST -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.c
 curl -X POST -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/b3/users/identity/oauth/external-123/reactivate
 ```
 
-מוחזר:
+התשובה המוחזרת:
 
 ```json
 {
@@ -279,11 +279,11 @@ curl -X POST -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.c
 
 <!-- translation-section: redact-user -->
 
-## הסרת פרטים מזהים של משתמש
+## הסרת פרטים מזהים מחשבון
 
-הסרת פרטים מזהים משאירה בקבוצות את התגובות ותכנים אחרים שיצר המשתמש, אך מסירה מידע אישי מזהה ידוע, כגון שם, ביוגרפיה, תמונת פרופיל, כתובת דוא״ל, פרטי התחברות, זהויות והפעלות פעילות.
+הסרת פרטים מזהים משאירה בקבוצות את התגובות ואת התוכן האחר שנוצר באמצעות החשבון, אך מסירה מידע אישי מזהה ידוע כגון שם, תיאור אישי, תמונת פרופיל, כתובת דוא״ל, פרטי התחברות, זהויות והפעלות פעילות.
 
-זו הדרך המומלצת להסיר משתמש מ-Loomio.
+זו הדרך המומלצת להסרת חשבון מ־Loomio.
 
 `POST /api/b3/users/:id/redact`
 
@@ -293,7 +293,7 @@ curl -X POST -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.c
 
 ### דוגמאות
 
-לפי מזהה המשתמש ב-Loomio:
+לפי מזהה החשבון ב־Loomio:
 
 ```bash
 curl -X POST -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/b3/users/123/redact
@@ -305,7 +305,7 @@ curl -X POST -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.c
 curl -X POST -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/b3/users/identity/oauth/external-123/redact
 ```
 
-מוחזר:
+התשובה המוחזרת:
 
 ```json
 {
@@ -315,11 +315,11 @@ curl -X POST -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.c
 
 <!-- translation-section: delete-user -->
 
-## מחיקת משתמש
+## מחיקת חשבון
 
-מחיקה מסירה את המשתמש ואת הרשומות שיצר. תגובות מוסרות משרשורים והצבעות מוסרות מסקרים. קשרים בין רשומות במסד הנתונים עשויים לגרום למחיקה גם של קבוצות, דיונים, סקרים ורשומות אחרות שיצר המשתמש.
+מחיקה מסירה את החשבון ואת הרשומות שנוצרו באמצעותו. תגובות מוסרות משרשורים, הצבעות מוסרות מסקרים, וגם קבוצות, דיונים, סקרים ורשומות אחרות שנוצרו באמצעות החשבון עשויים להימחק עקב קשרים בין רשומות במסד הנתונים.
 
-פעולה זו מוחקת מידע רב. מומלץ מאוד להסיר פרטים מזהים במקום זאת.
+פעולה זו גורמת למחיקה נרחבת של נתונים. מומלץ מאוד להסיר פרטים מזהים במקום זאת.
 
 `DELETE /api/b3/users/:id`
 
@@ -329,7 +329,7 @@ curl -X POST -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.c
 
 ### דוגמאות
 
-לפי מזהה המשתמש ב-Loomio:
+לפי מזהה החשבון ב־Loomio:
 
 ```bash
 curl -X DELETE -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/b3/users/123
@@ -341,7 +341,7 @@ curl -X DELETE -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio
 curl -X DELETE -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/b3/users/identity/oauth/external-123
 ```
 
-מוחזר:
+התשובה המוחזרת:
 
 ```json
 {
@@ -351,7 +351,7 @@ curl -X DELETE -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio
 
 <!-- translation-section: sso-profile-sync-settings -->
 
-## הגדרות לסנכרון פרופיל באמצעות SSO
+## הגדרות סנכרון פרופיל באמצעות SSO
 
 יש להשתמש בהגדרות אלה כאשר מערכת אחרת מנהלת את שדות הפרופיל ב־Loomio.
 
@@ -360,7 +360,7 @@ LOOMIO_DISABLE_EDIT_USER_PROFILE=1
 # LOOMIO_SSO_UPDATE_USER_PROFILE_ON_LOGIN=1
 ```
 
-`LOOMIO_DISABLE_EDIT_USER_PROFILE=1` מונע ממשתמשים לערוך בעצמם את השדות האלה:
+`LOOMIO_DISABLE_EDIT_USER_PROFILE=1` מונע עריכה עצמאית של השדות הבאים:
 
 | שדה | הערות |
 | --- | --- |
@@ -369,8 +369,8 @@ LOOMIO_DISABLE_EDIT_USER_PROFILE=1
 | `email` | מנוהל באמצעות סנכרון חיצוני |
 | `avatar_kind` / `uploaded_avatar` | מנוהל באמצעות סנכרון חיצוני |
 
-עדיין ניתן לערוך שדות מקומיים של Loomio, כגון `short_bio` ו־`location`.
+עדיין ניתן לערוך שדות מקומיים של Loomio כגון `short_bio` ו־`location`.
 
-`LOOMIO_SSO_UPDATE_USER_PROFILE_ON_LOGIN=1` מעדכן את `name` ואת `email` לפי נתוני ההתחברות באמצעות SSO. אם סקריפט סנכרון חיצוני אמור להיות המקור היחיד לעדכונים אלה, יש להשאיר את השורה כהערה או לא להגדיר את המשתנה.
+`LOOMIO_SSO_UPDATE_USER_PROFILE_ON_LOGIN=1` מעדכן את `name` ואת `email` מתוך נתוני ההתחברות באמצעות SSO. יש להשאיר שורה זו כהערה או לא להגדיר את המשתנה כאשר סקריפט סנכרון חיצוני אמור להיות המקור היחיד לעדכונים אלה.
 
-`LOOMIO_SSO_FORCE_USER_ATTRS` ממשיך לפעול בהתקנות קיימות. הוא מונע ממשתמשים לערוך את שדות הפרופיל, ומעדכן את `name` ואת `email` בעת התחברות באמצעות SSO.
+`LOOMIO_SSO_FORCE_USER_ATTRS` ממשיך לפעול בהתקנות קיימות. הוא גם מונע עריכה עצמאית וגם מעדכן את `name` ואת `email` בעת התחברות באמצעות SSO.

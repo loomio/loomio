@@ -1,10 +1,10 @@
 ---
 title: פתיחת קבוצה
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/groups/starting_a_group/index.md
+source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
+source_file: docs/en/user_manual/groups/starting_a_group/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 221cb19d87a4f2d6
   group-details: 0fcf6c809c12050b
@@ -12,11 +12,11 @@ sections:
   group-handle: 1696339219760afb
   group-description: b585bd5a1b0b1bff
 generated:
-  introduction: 80f6bc3459a2ac96
+  introduction: 3e9b1a7bf9b0166e
   group-details: b230cdb2d5eaae16
-  group-name: 92eba52c4e744d0a
-  group-handle: ceb96fbd15b69707
-  group-description: 5ae2095f7e9e195c
+  group-name: 7d41772b95cfd173
+  group-handle: 9d2efae952c0809d
+  group-description: ef6410d6c3ea4bfc
 title_source: c5a16dbe0863ecd7
 title_generated: e1f28364a62dc255
 ---
@@ -25,9 +25,9 @@ title_generated: e1f28364a62dc255
 
 # פתיחת קבוצה חדשה
 
-אם השימוש ב-Loomio חדש, ניתן לפתוח קבוצה לתקופת ניסיון בחינם בכל עת דרך [אתר Loomio](https://www.loomio.com/). אם כבר משתמשים ב-Loomio ורוצים לפתוח קבוצה חדשה לארגון אחר או למטרה אחרת, יש לבחור **קבוצה חדשה** בתפריט הצד.
+בתחילת השימוש ב־Loomio, ניתן לפתוח קבוצה לתקופת ניסיון בחינם בכל עת דרך [אתר Loomio](https://www.loomio.com/). אם כבר נעשה שימוש ב־Loomio ונדרשת קבוצה חדשה לארגון אחר או למטרה אחרת, ניתן לפתוח אותה דרך תפריט הצד - יש לבחור **קבוצה חדשה**.
 
-לארגונים רבים מספיקה קבוצה אחת ב-Loomio. ניתן לפתוח בתוכה כמה תת-קבוצות שצריך. למידע נוסף, ראו [תת-קבוצות](/en/user_manual/groups/subgroups/).
+לארגונים רבים מספיקה קבוצה אחת ב־Loomio. ניתן לפתוח בתוך הקבוצה תת־קבוצות ככל שנדרש. למידע נוסף, ניתן לעיין בעמוד [תת־קבוצות](/en/user_manual/groups/subgroups/).
 
 ![](new_group.png)
 
@@ -41,22 +41,22 @@ title_generated: e1f28364a62dc255
 
 ### שם הקבוצה
 
-יש להזין שם לקבוצה. מומלץ לבחור שם קצר וברור.
+יש להזין את שם הקבוצה. מומלץ לבחור שם קצר ותמציתי.
 
 <!-- translation-section: group-handle -->
 
 ### מזהה הקבוצה
 
-לקבוצה מוקצה מזהה באופן אוטומטי. המזהה מופיע בכתובת האתר ובכתובת הדוא״ל של הקבוצה, למשל **loomio.com/your-group-handle** ו-**your-group-handle@loomio.com**.
+לקבוצה מוקצה מזהה באופן אוטומטי. המזהה משמש בכתובת האתר ובכתובת הדוא״ל של הקבוצה, כגון **loomio.com/your-group-handle** ו־**your-group-handle@loomio.com**.
 
-ניתן לערוך את המזהה בעת יצירת הקבוצה ולשנות אותו בהמשך בהגדרות הקבוצה. לאחר שינוי המזהה, קישורים וכתובות דוא״ל שמשתמשים במזהה הישן ממשיכים לפעול. Loomio שומרת עד שלושה מזהים ישנים; לאחר מכן, המזהה הישן ביותר מפסיק לפעול.
+ניתן לערוך את המזהה בעת יצירת הקבוצה ולשנות אותו בהמשך בהגדרות הקבוצה. לאחר שינוי המזהה, קישורים וכתובות דוא״ל שמשתמשים במזהה הישן ממשיכים לפעול. Loomio שומר עד שלושה מזהים ישנים; מעבר לכך, תוקפו של המזהה הישן ביותר פג.
 
 <!-- translation-section: group-description -->
 
 ### תיאור הקבוצה
 
-התיאור הקצר הזה יופיע בראש לוח המחוונים ויספק לחברים חדשים את ההקשר הדרוש.
+התיאור הקצר הזה יופיע בראש לוח הבקרה כדי לספק לחברים חדשים את ההקשר הנדרש.
 
-**בחירה ב״פתח קבוצה״ יוצרת את הקבוצה החדשה באופן אוטומטי**
+**לאחר בחירה ב'פתיחת קבוצה', הקבוצה החדשה נוצרת באופן אוטומטי!**
 
 ---
