@@ -778,12 +778,6 @@ it:
     revoke_admin: Revoca amministratore
     make_delegate: Rendi delegato
     revoke_delegate: Revoca delegato
-  notification_models:
-    comment: 'commenta in '
-    poll: 'sondaggio:'
-    outcome: 'conclusione:'
-    stance: 'voto:'
-    discussion: 'discussione:'
   notifications:
     header: Notifiche
     no_notifications: Non hai notifiche
@@ -3237,3 +3231,8 @@ it:
   account_completion:
     complete_your_account: Completa il tuo account
     continue: Continuare
+  notification_nouns:
+    comment: commento
+    discussion: discussione
+    outcome: conclusione
+    stance: voto

@@ -768,12 +768,6 @@ el:
     revoke_admin: Ανάκληση διαχειριστή
     make_delegate: Κάντε ανάθεση
     revoke_delegate: Ανάκληση εκπροσώπου
-  notification_models:
-    comment: σχόλιο μέσα
-    poll: 'ψηφοφορία:'
-    outcome: 'συμπέρασμα: '
-    stance: 'ψήφος:'
-    discussion: 'συζήτηση:'
   notifications:
     header: Ειδοποιήσεις
     no_notifications: Δεν έχετε καμία ειδοποίηση
@@ -3209,3 +3203,8 @@ el:
   account_completion:
     complete_your_account: Ολοκληρώστε τον λογαριασμό σας
     continue: Συνεχίζω
+  notification_nouns:
+    comment: σχόλιο
+    discussion: συζήτηση
+    outcome: συμπέρασμα
+    stance: ψήφος

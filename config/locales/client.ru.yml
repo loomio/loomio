@@ -768,12 +768,6 @@ ru:
     revoke_admin: Отозвать администратора
     make_delegate: Сделать делегатом
     revoke_delegate: Отозвать делегата
-  notification_models:
-    comment: прокомментируйте в
-    poll: 'голосование:'
-    outcome: 'вывод: '
-    stance: 'голосование:'
-    discussion: 'обсуждение:'
   notifications:
     header: Уведомления
     no_notifications: У Вас нет уведомлений
@@ -3209,3 +3203,8 @@ ru:
   account_completion:
     complete_your_account: Завершите создание своей учетной записи
     continue: Продолжать
+  notification_nouns:
+    comment: комментарий
+    discussion: обсуждение
+    outcome: вывод
+    stance: голос

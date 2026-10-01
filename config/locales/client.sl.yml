@@ -768,12 +768,6 @@ sl:
     revoke_admin: Preklic skrbnika
     make_delegate: Naredi pooblaščenca
     revoke_delegate: Prekliči pooblaščenca
-  notification_models:
-    comment: komentar v
-    poll: 'anketa:'
-    outcome: 'sklep: '
-    stance: 'glasovanje:'
-    discussion: 'razprava:'
   notifications:
     header: Obvestila
     no_notifications: Nimate nobenih obvestil
@@ -3209,3 +3203,8 @@ sl:
   account_completion:
     complete_your_account: Dokončajte svoj račun
     continue: Nadaljuj
+  notification_nouns:
+    comment: komentar
+    discussion: razprava
+    outcome: sklep
+    stance: glas

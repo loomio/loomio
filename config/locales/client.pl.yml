@@ -770,12 +770,6 @@ pl:
     revoke_admin: Odwołaj uprawnienia administratora
     make_delegate: Utwórz delegata
     revoke_delegate: Odwołaj delegata
-  notification_models:
-    comment: skomentuj w
-    poll: 'głosowanie:'
-    outcome: 'konkluzja: '
-    stance: 'głosować:'
-    discussion: 'dyskusja:'
   notifications:
     header: Powiadomienia
     no_notifications: Nie masz żadnych powiadomień
@@ -3236,3 +3230,8 @@ pl:
   account_completion:
     complete_your_account: Uzupełnij swoje konto
     continue: Kontynuować
+  notification_nouns:
+    comment: komentarz
+    discussion: dyskusja
+    outcome: konkluzja
+    stance: głos

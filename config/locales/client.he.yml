@@ -768,12 +768,6 @@ he:
     revoke_admin: בטל את הניהול
     make_delegate: לעשות נציג
     revoke_delegate: בטל נציג
-  notification_models:
-    comment: הערה ב
-    poll: 'מִשׁאָל:'
-    outcome: 'מסקנה:'
-    stance: 'הַצבָּעָה:'
-    discussion: 'דִיוּן:'
   notifications:
     header: התרעות
     no_notifications: אין לך עדכונים
@@ -3228,3 +3222,8 @@ he:
   account_completion:
     complete_your_account: השלם את חשבונך
     continue: לְהַמשִׁיך
+  notification_nouns:
+    comment: תגובה
+    discussion: דיון
+    outcome: מסקנה
+    stance: הצבעה

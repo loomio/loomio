@@ -768,12 +768,6 @@ ro:
     revoke_admin: Revocați admin
     make_delegate: Faceți delegat
     revoke_delegate: Revocați delegatul
-  notification_models:
-    comment: comenta in
-    poll: 'sondaj:'
-    outcome: 'concluzie:'
-    stance: 'vot:'
-    discussion: 'discuţie:'
   notifications:
     header: Notificari
     no_notifications: Nu ai nici o notificare
@@ -3209,3 +3203,8 @@ ro:
   account_completion:
     complete_your_account: Completează-ți contul
     continue: Continua
+  notification_nouns:
+    comment: comentariu
+    discussion: discuție
+    outcome: concluzie
+    stance: vot

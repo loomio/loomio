@@ -768,12 +768,6 @@ da:
     revoke_admin: Tilbagekald admin
     make_delegate: Gør delegeret
     revoke_delegate: Tilbagekald delegeret
-  notification_models:
-    comment: kommentere ind
-    poll: 'afstemning:'
-    outcome: 'konklusion:'
-    stance: 'stemme:'
-    discussion: 'diskussion:'
   notifications:
     header: Notifikationer
     no_notifications: Du har ikke nogen notifikationer
@@ -3221,3 +3215,8 @@ da:
   account_completion:
     complete_your_account: Færdiggør din konto
     continue: Fortsætte
+  notification_nouns:
+    comment: kommentar
+    discussion: diskussion
+    outcome: konklusion
+    stance: stemme

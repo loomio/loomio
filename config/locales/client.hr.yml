@@ -768,12 +768,6 @@ hr:
     revoke_admin: Opozovi administratora
     make_delegate: Napravi delegata
     revoke_delegate: Opozovi delegata
-  notification_models:
-    comment: komentirati
-    poll: 'anketa:'
-    outcome: 'ishod:'
-    stance: 'glasanje:'
-    discussion: 'rasprava:'
   notifications:
     header: Notifikacije
     no_notifications: Nemate nijednu obavijest
@@ -3210,3 +3204,8 @@ hr:
   account_completion:
     complete_your_account: Dovršite svoj račun
     continue: Nastaviti
+  notification_nouns:
+    comment: komentar
+    discussion: rasprava
+    outcome: zaključak
+    stance: glas

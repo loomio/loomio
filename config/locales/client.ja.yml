@@ -767,12 +767,6 @@ ja:
     revoke_admin: 管理者の取り消し
     make_delegate: 委任する
     revoke_delegate: 委任を取り消す
-  notification_models:
-    comment: コメントイン
-    poll: '投票:'
-    outcome: 結論：
-    stance: 投票する：
-    discussion: 議論：
   notifications:
     header: 通知
     no_notifications: 通知はありません
@@ -3208,3 +3202,8 @@ ja:
   account_completion:
     complete_your_account: アカウントを完成させる
     continue: 続く
+  notification_nouns:
+    comment: コメント
+    discussion: ディスカッション
+    outcome: 結論
+    stance: 投票

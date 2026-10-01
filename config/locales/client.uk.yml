@@ -771,12 +771,6 @@ uk:
     revoke_admin: Відкликати адміністратора
     make_delegate: Делегувати
     revoke_delegate: Відкликати делегата
-  notification_models:
-    comment: прокоментувати в
-    poll: 'опитування:'
-    outcome: 'висновок:'
-    stance: 'голосування:'
-    discussion: 'обговорення:'
   notifications:
     header: Сповіщення
     no_notifications: У Вас нема жодних сповіщень
@@ -3239,3 +3233,8 @@ uk:
   account_completion:
     complete_your_account: Заповніть свій обліковий запис
     continue: Продовжити
+  notification_nouns:
+    comment: коментар
+    discussion: обговорення
+    outcome: висновок
+    stance: голос

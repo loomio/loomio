@@ -781,12 +781,6 @@ be:
       group: Выдаліць з групы
       poll: Выдаліць з %{pollType}
     cancel_invitation: Адмяніць запрашэнне
-  notification_models:
-    discussion: 'абмеркаванне:'
-    comment: каментар у
-    poll: 'апытанне:'
-    outcome: 'выснова:'
-    stance: 'галасаваць:'
   notifications:
     header: Апавяшчэнні
     no_notifications: У вас няма апавяшчэнняў
@@ -3111,3 +3105,8 @@ be:
   account_completion:
     complete_your_account: Запоўніце свой уліковы запіс
     continue: Працягнуць
+  notification_nouns:
+    comment: каментарый
+    discussion: абмеркаванне
+    outcome: выснова
+    stance: голас

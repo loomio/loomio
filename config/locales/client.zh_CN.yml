@@ -771,12 +771,6 @@ zh_CN:
       group: 从组中移除
       poll: 从 %{pollType} 中移除
     cancel_invitation: 取消邀请
-  notification_models:
-    discussion: 讨论：
-    comment: 评论
-    poll: '投票： '
-    outcome: '结论： '
-    stance: 投票：
   notifications:
     header: 通知
     no_notifications: 您没有任何通知
@@ -3133,3 +3127,8 @@ zh_CN:
   account_completion:
     complete_your_account: 完善您的账户
     continue: 继续
+  notification_nouns:
+    comment: 评论
+    discussion: 讨论
+    outcome: 结论
+    stance: 投票

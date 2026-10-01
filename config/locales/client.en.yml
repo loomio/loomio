@@ -826,12 +826,11 @@ en:
       group: Remove from group
       poll: Remove from %{pollType}
     cancel_invitation: Cancel invitation
-  notification_models:
-    discussion: 'discussion: '
-    comment: 'comment in '
-    poll: 'poll: '
-    outcome: 'outcome: '
-    stance: 'vote: '
+  notification_nouns:
+    comment: comment
+    discussion: discussion
+    outcome: outcome
+    stance: vote
   notifications:
     header: Notifications
     no_notifications: You don't have any notifications

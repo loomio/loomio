@@ -768,12 +768,6 @@ fi:
     revoke_admin: Poista ylläpitäjän oikeudet
     make_delegate: Tee valtuutettu
     revoke_delegate: Peruuta edustaja
-  notification_models:
-    comment: kommentoida sisään
-    poll: 'kysely:'
-    outcome: 'johtopäätös: '
-    stance: 'äänestys:'
-    discussion: 'keskustelu:'
   notifications:
     header: Ilmoitukset
     no_notifications: Sinulla ei ole ilmoituksia
@@ -3209,3 +3203,8 @@ fi:
   account_completion:
     complete_your_account: Viimeistele tilisi
     continue: Jatkaa
+  notification_nouns:
+    comment: kommentti
+    discussion: keskustelu
+    outcome: johtopäätös
+    stance: ääni

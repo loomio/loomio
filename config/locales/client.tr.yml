@@ -768,12 +768,6 @@ tr:
     revoke_admin: Yöneticiyi iptal et
     make_delegate: Delege et
     revoke_delegate: Temsilciyi iptal et
-  notification_models:
-    comment: yorum yapın
-    poll: 'anket:'
-    outcome: 'vargı: '
-    stance: 'oy:'
-    discussion: 'tartışma:'
   notifications:
     header: Bildirimler
     no_notifications: Hiçbir bildiriminiz yok
@@ -3206,3 +3200,8 @@ tr:
   account_completion:
     complete_your_account: Hesabınızı tamamlayın
     continue: Devam etmek
+  notification_nouns:
+    comment: yorum
+    discussion: tartışma
+    outcome: vargı
+    stance: oy

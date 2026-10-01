@@ -768,12 +768,6 @@ sv:
     revoke_admin: Återkalla admin
     make_delegate: Gör ombud
     revoke_delegate: Återkalla delegat
-  notification_models:
-    comment: kommentera in
-    poll: 'omröstning: '
-    outcome: 'slutsats:'
-    stance: 'rösta:'
-    discussion: 'diskussion:'
   notifications:
     header: Notifieringar
     no_notifications: Du har inga aviseringar
@@ -3217,3 +3211,8 @@ sv:
   account_completion:
     complete_your_account: Slutför ditt konto
     continue: Fortsätta
+  notification_nouns:
+    comment: kommentar
+    discussion: diskussion
+    outcome: slutsats
+    stance: röst

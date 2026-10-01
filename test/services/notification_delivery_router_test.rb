@@ -158,6 +158,21 @@ class NotificationDeliveryRouterTest < ActiveSupport::TestCase
     end
   end
 
+  test "reaction notifications name the reacted record once, using the poll type for polls" do
+    {
+      comments(:public_discussion_comment) => "to your comment in",
+      @poll => "to your proposal in"
+    }.each do |reactable, phrase|
+      reaction = Reaction.create!(reactable: reactable, user: @author, reaction: "smiley")
+      notification = Notification.new(kind: "reaction_created", subject: reaction, actor: @author)
+      values = NotificationDeliveryRouter.for(notification).translated_values(locale: :en)
+      text = I18n.t("notifications.with_title.reaction_created", **values.merge(actor: values[:name]), locale: :en)
+
+      assert_includes text, phrase
+      assert_not_includes text, " in in "
+    end
+  end
+
 
   test "selected-recipient routers deliver to a normal-volume eligible user" do
     recipient = users(:member)

@@ -778,12 +778,6 @@ fr:
     revoke_admin: Révoquer l'administrateur
     make_delegate: Faire déléguer
     revoke_delegate: Révoquer le délégué
-  notification_models:
-    comment: commentaire dans
-    poll: 'sondage:'
-    outcome: 'conclusion :'
-    stance: 'vote:'
-    discussion: 'discussion:'
   notifications:
     header: Notifications
     no_notifications: Aucune nouvelle notification
@@ -3254,3 +3248,8 @@ fr:
   account_completion:
     complete_your_account: Complétez votre compte
     continue: Continuer
+  notification_nouns:
+    comment: commentaire
+    discussion: discussion
+    outcome: conclusion
+    stance: vote

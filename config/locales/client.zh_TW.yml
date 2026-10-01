@@ -771,12 +771,6 @@ zh_TW:
     revoke_admin: 撤銷管理員
     make_delegate: 任命代表
     revoke_delegate: 撤銷委託
-  notification_models:
-    comment: 評論於
-    poll: 投票：
-    outcome: 結論：
-    stance: 投票：
-    discussion: 討論：
   notifications:
     header: 通知
     no_notifications: 您沒有任何通知
@@ -3237,3 +3231,8 @@ zh_TW:
   account_completion:
     complete_your_account: 完善您的帳戶
     continue: 繼續
+  notification_nouns:
+    comment: 評論
+    discussion: 討論
+    outcome: 結論
+    stance: 投票

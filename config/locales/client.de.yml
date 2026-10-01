@@ -776,12 +776,6 @@ de:
     revoke_admin: Administrator widerrufen
     make_delegate: Delegieren
     revoke_delegate: Delegierten widerrufen
-  notification_models:
-    comment: kommentieren in
-    poll: 'Abstimmung: '
-    outcome: 'Fazit:'
-    stance: 'Abstimmen:'
-    discussion: 'Diskussion:'
   notifications:
     header: Benachrichtigungen
     no_notifications: Es liegen keine Benachrichtigungen vor
@@ -3244,3 +3238,8 @@ de:
   account_completion:
     complete_your_account: Vervollständigen Sie Ihr Konto
     continue: Weitermachen
+  notification_nouns:
+    comment: Kommentar
+    discussion: Diskussion
+    outcome: Fazit
+    stance: Stimme

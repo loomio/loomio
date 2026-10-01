@@ -770,12 +770,6 @@ hu:
     revoke_admin: Adminjog visszavonása
     make_delegate: Legyen küldött
     revoke_delegate: Meghatalmazott visszavonása
-  notification_models:
-    comment: hozzászólás itt
-    poll: 'szavazás: '
-    outcome: 'következtetés:'
-    stance: 'szavazás:'
-    discussion: 'beszélgetés: '
   notifications:
     header: Értesítések
     no_notifications: Nincsenek új értesítéseid
@@ -3220,3 +3214,8 @@ hu:
   account_completion:
     complete_your_account: Fiókod kitöltése
     continue: Folytatás
+  notification_nouns:
+    comment: hozzászólás
+    discussion: beszélgetés
+    outcome: következtetés
+    stance: szavazat

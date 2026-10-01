@@ -778,12 +778,6 @@ pt_BR:
     revoke_admin: Revogar administrador
     make_delegate: Fazer delegado
     revoke_delegate: Revogar delegado
-  notification_models:
-    comment: comentar em
-    poll: 'enquete:'
-    outcome: 'conclusão:'
-    stance: 'voto:'
-    discussion: 'discussão:'
   notifications:
     header: Notificações
     no_notifications: Você não possui nenhuma notificação.
@@ -3254,3 +3248,8 @@ pt_BR:
   account_completion:
     complete_your_account: Complete o cadastro da sua conta.
     continue: Continuar
+  notification_nouns:
+    comment: comentário
+    discussion: discussão
+    outcome: conclusão
+    stance: voto

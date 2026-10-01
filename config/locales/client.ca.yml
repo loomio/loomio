@@ -770,12 +770,6 @@ ca:
     revoke_admin: Revoca l'administrador
     make_delegate: Fer delegat
     revoke_delegate: Revocar delegat
-  notification_models:
-    comment: Comenta a
-    poll: 'enquesta:'
-    outcome: 'conclusió: '
-    stance: 'votar:'
-    discussion: 'discussió:'
   notifications:
     header: Notificacions
     no_notifications: No teniu cap notificació
@@ -3236,3 +3230,8 @@ ca:
   account_completion:
     complete_your_account: Completa el teu compte
     continue: Continua
+  notification_nouns:
+    comment: comentari
+    discussion: discussió
+    outcome: conclusió
+    stance: vot
