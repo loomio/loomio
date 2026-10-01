@@ -1,6 +1,6 @@
 ---
 da:
-  group_export_started: "Eksport af gruppedata startede"
+  group_export_started: Eksport af gruppedata startede
   discussion_templates:
     blank:
       process_name: Tom skabelon
@@ -10,7 +10,7 @@ da:
       title_placeholder: Hvad er det emne, du vil diskutere?
       process_name: Diskuter et emne
       process_subtitle: Start en diskussion med din gruppe
-      process_introduction: "<p>Er der et problem, et problem eller en mulighed, du ønsker at tage op med din gruppe?</p><p> Introducer emnet, link til enhver baggrundsinformation og bed om kommentarer, ideer og hjælp.</p><p> Inviter folk til at deltage ved at bidrage med deres tanker og relevant information. Brug @omtale for at få bestemte personers opmærksomhed.</p><p> Opdater trådkonteksten, efterhånden som diskussionen skrider frem for at lette den mod et resultat.</p><p> Vent ikke med at starte en tråd, til du har alle oplysningerne. Brug hellere tråden til at invitere folk til at hjælpe dig med at udforske emnet og finde en løsning.</p>"
+      process_introduction: "<p>Er der en sag, et problem eller en mulighed, du ønsker at tage op med din gruppe?</p><p>Introducer emnet, link til baggrundsinformation og bed om kommentarer, ideer og hjælp.</p><p>Inviter folk til at deltage ved at bidrage med deres tanker og relevant information. Brug @omtale for at få bestemte personers opmærksomhed.</p><p>Opdater trådens kontekst, efterhånden som diskussionen skrider frem, for at hjælpe den frem mod en konklusion.</p><p>Vent ikke med at starte en tråd, til du har alle oplysningerne. Brug hellere tråden til at invitere folk til at hjælpe dig med at udforske emnet og finde en løsning.</p>"
       description: <h3 id="introduce-and-describe-the-topic">Introducer og beskriv emnet</h3><p></p><h3 id="why-is-this-important"> Hvorfor er dette vigtigt?</h3><p></p><h3 id="how-would-you-like-people-to-respond"> Hvordan vil du have folk til at reagere?</h3><p></p>
     onboarding_to_loomio:
       title: Bruger Loomio til vores gruppe
@@ -30,7 +30,7 @@ da:
       title_placeholder: Søger råd til at købe en ny computer
       process_name: Rådgivningsproces
       process_subtitle: Søg råd om en beslutning, du skal træffe.
-      process_introduction: '<p>Træf en beslutning med råd fra personer, der er berørt, eller som har ekspertise, så du kan træffe en bedre beslutning for din organisation.</p><p> Typiske roller:</p><ul><li><p> Facilitator: Den person, der træffer beslutningen, eller bed nogen om at facilitere.</p></li><li><p> Rådgivere: Personer, der er berørt eller har ekspertise, som du inviterer.</p></li></ul><p> Almindelige procestrin:</p><p> Trin 1. Søg input til at aflæse perspektiver, før du foreslår handling.</p><p> Trin 2. Lav et forslag og søg råd – kør et Rådgivningsforslag.</p><p> Trin 3. Under hensyntagen til modtagne råd træffer du en beslutning og informerer de personer, der har givet råd – angiv et resultat.</p><p> <a target="_blank" rel="noopener noreferrer nofollow" href="/docs/en/guides/making_decisions/advice_process">Læs mere: Rådgivningsproces.</a></p>'
+      process_introduction: '<p>Træf en beslutning med råd fra personer, der er berørt, eller som har ekspertise, så du kan træffe en bedre beslutning for din organisation.</p><p>Typiske roller:</p><ul><li><p>Facilitator: Den person, der træffer beslutningen, eller bed nogen om at facilitere.</p></li><li><p>Rådgivere: Personer, der er berørt eller har ekspertise, som du inviterer.</p></li></ul><p>Almindelige procestrin:</p><p>Trin 1. Søg input for at høre forskellige perspektiver, før du foreslår handling.</p><p>Trin 2. Lav et forslag og søg råd – start et rådgivningsforslag.</p><p>Trin 3. Tag de modtagne råd i betragtning, træf en beslutning og informer de personer, der har givet råd – angiv en konklusion.</p><p><a target="_blank" rel="noopener noreferrer nofollow" href="/docs/en/guides/making_decisions/advice_process">Læs mere: Rådgivningsproces.</a></p>'
       description: <h3 id="what-is-the-decision-you-need-to-make">Hvad er den beslutning, du skal tage?</h3><p></p><h3 id="why-is-this-important-and-what-impact-does-it-have"> Hvorfor er dette vigtigt, og hvilken effekt har det?</h3><p></p><h3 id="what-advice-are-you-asking-to-help-you-make-a-good-decision"> Hvilket råd beder du om for at hjælpe dig med at træffe en god beslutning?</h3><p></p><h3 id="who-is-the-facilitator-for-this-process"> Hvem er facilitator for denne proces?</h3><p></p>
       advice: Råd
     pass_a_resolution:
@@ -44,8 +44,8 @@ da:
       title_placeholder: Revision af vores organisations vedtægter
       process_name: Beslutning ved konsensus
       process_subtitle: Indgå overenskomst med alle involverede.
-      process_introduction: '<p>Skab konsensus for en beslutning, I skal træffe sammen, for at nå frem til en aftale, der tilfredsstiller alle deltageres behov og bekymringer.</p><p> Typiske roller:</p><ul><li><p> Udpeg en facilitator. (På bestyrelsesmøder er dette normalt formanden.)</p></li><li><p> Et kvorum eller overflertal af medlemmer til at deltage, som specificeret i din organisations vedtægter.</p></li></ul><p> Almindelige procestrin:</p><p> Trin 1. Skab et åbent rum for diskussion om et problem eller en foreslået beslutning.</p><p> Trin 2. Test for konsensus og afslør indsigelser med et Sense-tjekforslag.</p><p> Trin 3. Klargør eventuelle punkter, inviter til konstruktive ændringer og ændr forslaget.</p><p> Trin 4. Test for enighed og eventuelle resterende indvendinger med et konsensusforslag.</p><p> Trin 5. Notér beslutningen med et resultat og i organisationens officielle referat.</p><p> <a target="_blank" rel="noopener noreferrer nofollow" href="/docs/en/guides/making_decisions/consensus_process">Læs mere: Konsensusproces.</a></p>'
-      description: <h3 id="what-is-the-decision-you-need-to-make">Hvad er den beslutning, du skal tage?</h3><p></p><h3 id="why-is-this-important-and-what-impact-does-it-have"> Hvorfor er dette vigtigt, og hvilken effekt har det?</h3><p></p><h3 id="what-information-do-people-need-for-context"> Hvilken information har folk brug for til kontekst?</h3><p></p><h3 id="who-is-the-facilitator"> Hvem er facilitatoren?</h3><p></p><h3 id="what-conditions-need-to-be-met-for-a-decision"> Hvilke betingelser skal være opfyldt for en afgørelse?</h3><h3 id=""></h3>
+      process_introduction: '<p>Skab konsensus for en beslutning, I skal træffe sammen, for at nå frem til en aftale, der tilfredsstiller alle deltageres behov og bekymringer.</p><p>Typiske roller:</p><ul><li><p>Udpeg en facilitator.&nbsp; (På bestyrelsesmøder er dette normalt formanden.)</p></li><li><p>Et kvorum eller et kvalificeret flertal af medlemmerne skal deltage, som angivet i din organisations vedtægter.</p></li></ul><p>Almindelige procestrin:</p><p>Trin 1. Skab et åbent rum for diskussion om et problem eller en foreslået beslutning.</p><p>Trin 2. Afprøv konsensus og afdæk indvendinger med et stemningstjekforslag.&nbsp;</p><p>Trin 3. Afklar eventuelle punkter, inviter til konstruktive ændringer og ændr forslaget.</p><p>Trin 4. Afprøv enigheden og afdæk eventuelle resterende indvendinger med et konsensusforslag.</p><p>Trin 5. Notér beslutningen med en konklusion og i organisationens officielle referat.</p><p><a target="_blank" rel="noopener noreferrer nofollow" href="/docs/en/guides/making_decisions/consensus_process">Læs mere: Konsensusproces.</a></p>'
+      description: <h3 id="what-is-the-decision-you-need-to-make">Hvad er den beslutning, du skal tage?</h3><p></p><h3 id="why-is-this-important-and-what-impact-does-it-have"> Hvorfor er dette vigtigt, og hvilken effekt har det?</h3><p></p><h3 id="what-information-do-people-need-for-context"> Hvilken information har folk brug for til kontekst?</h3><p></p><h3 id="who-is-the-facilitator"> Hvem er facilitatoren?</h3><p></p><h3 id="what-conditions-need-to-be-met-for-a-decision"> Hvilke betingelser skal være opfyldt for en beslutning?</h3><h3 id=""></h3>
       consensus: Konsensus
     share_links_and_info:
       title_placeholder: Del links og info
@@ -79,7 +79,7 @@ da:
       title_placeholder: Finansieringsansøgning til Robotics Roadshow
       process_name: Finansieringsbeslutning
       process_subtitle: Behandl en ansøgning om tilskud, lån eller investering og tag en finansieringsbeslutning.
-      process_introduction: "<p>Indfør en ansøgning om støtte, vedlæg dokumenter og andet støttemateriale.</p><p> Opsummer ansøgningen i trådkonteksten.</p><p> Inviter autoriserede personer til at gennemgå ansøgningen og stille spørgsmål. Giv tilstrækkelig tid til diskussion.</p><p> Rejs et konsensusforslag for at godkende finansieringen.</p><p> Hvis nogen er uenige, så spørg om en årsag – for eksempel kan der være behov for flere oplysninger. Inviter personen, der er uenig, til at ændre sin stemme, når han er tilfreds.</p><p> Når du har en klar afgørelse om støtteansøgningen, skal du angive et resultat for at registrere afgørelsen.</p>"
+      process_introduction: "<p>Præsenter en ansøgning om støtte, vedlæg dokumenter og andet støttemateriale.</p><p>Opsummer ansøgningen i trådens kontekst.</p><p>Inviter personer med den rette tilladelse til at gennemgå ansøgningen og stille spørgsmål. Giv tilstrækkelig tid til diskussion.</p><p>Stil et konsensusforslag for at godkende finansieringen.</p><p>Hvis nogen er uenige, så bed om en begrundelse – for eksempel kan der være behov for flere oplysninger. Inviter den, der er uenig, til at ændre sin stemme, når vedkommende er tilfreds.</p><p>Når du har en klar beslutning om støtteansøgningen, skal du angive en konklusion for at registrere beslutningen.</p>"
       description: <h3 id="introduce-and-summarize-the-funding-application">Introducer og opsummer finansieringsansøgningen</h3><p></p><h3 id="how-does-this-application-fit-with-funding-criteria"> Hvordan passer denne ansøgning med finansieringskriterier?</h3><p></p><h3 id="who-is-authorized-to-approve-this-funding-decision"> Hvem er bemyndiget til at godkende denne finansieringsbeslutning?</h3><p></p><h3 id="invite-questions-from-decision-makers-to-process-the-applica"> Inviter spørgsmål fra beslutningstagere til at behandle ansøgningen</h3><p></p>
       funding: Finansiering
     approve_a_document:
@@ -212,7 +212,7 @@ da:
       group_name: Gruppenavn
       discussion_title: Trådtitel
       outcome_author: Resultatforfatter
-      outcome_created_at: Resultat oprettet kl
+      outcome_created_at: Konklusion oprettet kl
       outcome_statement: Resultaterklæring
       poll_url: Afstemnings-URL
       reason: Begrundelse
@@ -457,7 +457,7 @@ da:
     common:
       why_send_this: Du modtager denne email fordi %{reason}
       view_on_loomio: Se det på %{site_name}
-      create_outcome: Del resultat
+      create_outcome: Del konklusion
       your_response: 'Du stemte:'
       you_voted: Du stemte!
       not_invited: Ikke inviteret
@@ -493,7 +493,7 @@ da:
       disagree_prompt: Hvorfor er du uenig?
     proposal:
       process_subtitle: Fremsæt et forslag for at træffe en beslutning
-      process_introduction: <p>Det klassiske Loomio-forslag hjælper dig med at træffe en beslutning og omdanner en diskussion til et klart resultat.</p><p> Foreslå en handlingsplan, og bed folk om at stemme enig, undlader at stemme eller er uenig.</p><p> Når folk stemmer, kan de give en begrundelse for, hvorfor de har stemt på denne måde. Man kan se, hvor alle andre står i sagen, og hvorfor.</p><p> På denne måde kan du bruge et forslag til at få folk til at reagere, afdække nye oplysninger og opbygge fælles forståelse – for at hjælpe din gruppe med at træffe en bedre og mere informeret beslutning.</p><p> Et forslag og den tilhørende diskussion skaber sin egen registrering af, hvordan beslutningen blev truffet.</p><p> <a target="_blank" href="/docs/en/guides/making_decisions/simple_decision_process"><u>Læs mere om brugen af det klassiske Loomio-forslag i den enkle beslutningsproces</u></a> .</p>
+      process_introduction: <p>Det klassiske Loomio-forslag hjælper dig med at træffe en beslutning og omdanner en diskussion til en klar konklusion.</p><p>Foreslå en handlingsplan, og bed folk om at svare ved at vælge Enig, Undlader at stemme eller Uenig.</p><p>Når folk stemmer, kan de give en begrundelse for, hvorfor de har stemt på denne måde. Du kan se, hvor alle andre står i sagen, og hvorfor.</p><p>På denne måde kan du bruge et forslag til at få folk til at reagere, afdække nye oplysninger og opbygge fælles forståelse – for at hjælpe din gruppe med at træffe en bedre og mere informeret beslutning.</p><p>Et forslag og den tilhørende diskussion dokumenterer, hvordan beslutningen blev truffet.</p><p><a target="_blank" href="/docs/en/guides/making_decisions/simple_decision_process"><u>Læs mere om brugen af det klassiske Loomio-forslag i den enkle beslutningsproces</u></a>.</p>
       title: Godkend det nye brandkoncept
       details: <h3 id="what-is-the-decision-you-need-to-make"><strong>Hvilken beslutning skal du træffe?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Hvorfor er dette vigtigt?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Hvad beder du folk om at gøre?</strong></h3><p></p><p> For at dette forslag kan vedtages, kræver det, at et flertal af medlemmerne stemmer for.</p><p> Hvis du er uenig, så forklar hvorfor, og hvad der skal ændres, for at du kan være enig.</p>
       agree: Enig
@@ -546,7 +546,7 @@ da:
       disagree: Være uenig
       disagree_meaning: Noget i dette forslag skal ændres, før jeg kan støtte det.
       disagree_prompt: Hvordan kan dette forslag forbedres, så du kan støtte det?
-      block: Blok
+      block: Blokerer
       block_meaning: Jeg blokerer dette forslag og mener, at det ikke bør fortsætte
       block_prompt: Forklar din indvending mod forslaget, og hvorfor det ikke bør fortsætte
       details_v2: "<h3><strong>Hvilken beslutning skal du træffe?</strong></h3><p></p><h3> <strong>Hvorfor er dette vigtigt?</strong></h3><p></p><h3> <strong>Hvad beder du folk om at gøre?</strong></h3><p></p><p> Del din holdning og hvorfor. Hvis du er uenig, så forklar hvad der skal ændres for at du kan støtte dette.</p>"
@@ -649,7 +649,7 @@ da:
       process_subtitle_v3: Sortér muligheder fra mest til mindst foretrukken
     time_poll:
       process_subtitle: Find ud af, hvornår folk er tilgængelige til at mødes
-      process_introduction: <p><span>Spar tid ved at planlægge en dato for dit møde eller arrangement.</span></p><p> Tidsmåling gør det nemt at se alles tilgængelighed og finde det bedste tidspunkt.</p><p> Giv din tidsafstemning en titel og detaljer. Indtast en liste over dato- og tidsindstillinger i din tidszone.</p><p> Når du angiver tidsintervaller, skal du tage højde for personer i forskellige tidszoner. Deltagerne vil se tidspunkter lokaliseret i deres tidszone.</p><p> Angiv en mødevarighed.</p><p> Når tidsafstemningen lukker, skal du angive et resultat med det bedste tidspunkt og eventuelle instruktioner til mødet.</p><p> <span>Loomio vil inkludere en kalenderinvitation i e-mailen med resultatet, så deltagerne kan tilføje dem til deres kalender.</span></p><p> <a target="_blank" href="/docs/en/user_manual/polls/meeting_polls#time-poll">Læs mere om Time-afstemningen</a> .</p>
+      process_introduction: <p>Find hurtigt det bedste tidspunkt for dit møde eller arrangement. Tilføj en titel, detaljer og datoer og tidspunkter som muligheder i din tidszone. Deltagerne ser tidspunkterne i deres egen tidszone.</p><p>Når din tidsafstemning lukker, skal du angive en konklusion med det bedste tidspunkt og eventuelle instruktioner til mødet. Loomio sender konklusionen via e-mail med en kalenderinvitation, så deltagerne kan tilføje mødet til deres kalendere.</p><p><a target="_blank" href="/docs/en/user_manual/polls/meeting_polls#time-poll">Læs mere om tidsafstemning</a>.</p>
       title: Lad os finde en dato for vores næste møde
       details: "<p><strong>Hvad er mødet eller begivenheden?</strong></p><p></p><p> <strong>Hvorfor er dette vigtigt?</strong></p><p></p><p> <strong>Hvad beder du folk om at gøre?</strong></p><p></p><p> <span>Marker de tidsrum, du er ledige, med det grønne 'tommelfinger op'-ikon, eller lad det røde 'tommelfinger ned' være på plads, når de ikke er tilgængelige.</span></p><p> <span>Brug ikonet 'tommelfingeren til siden' for at vise, at du er tilgængelig, 'hvis det er nødvendigt'.</span></p>"
       reason_prompt: Er der noget, du kan sige for at hjælpe arrangøren med at finde et passende tidspunkt?
@@ -677,7 +677,7 @@ da:
       objection_prompt: Hvad skal ændres, før du kan forpligte dig?
     majority:
       process_subtitle: Træf en beslutning med flest stemmer
-      process_introduction: "<p><strong>Flertal</strong> er den enkleste måde at træffe en gruppebeslutning på – deltagerne stemmer ja eller nej, og forslaget vedtages, hvis mere end halvdelen stemmer ja. Der er ingen undladelse eller blokering, så hver stemme vejer lige tungt.</p><p> Flertal fungerer godt til enkle beslutninger, hvor du har brug for et klart resultat. Til beslutninger, hvor det er vigtigt, at folk arbejder sammen for at forstå hinanden og finde et fælles grundlag, kan du overveje samtykke eller konsensus.</p>"
+      process_introduction: "<p><strong>Flertal</strong> er den enkleste måde at træffe en gruppebeslutning på – deltagerne stemmer ja eller nej, og forslaget vedtages, hvis mere end halvdelen stemmer ja. Du kan hverken vælge Undlader at stemme eller Blokerer, så hver stemme vejer lige tungt.</p><p>Flertal fungerer godt til enkle beslutninger, hvor du har brug for en klar konklusion. Til beslutninger, hvor det er vigtigt, at folk arbejder sammen for at forstå hinanden og finde et fælles grundlag, kan du overveje samtykke eller konsensus.</p>"
       title: Godkend budgettet for 3. kvartal
       details: "<h3><strong>Hvilken beslutning skal du træffe?</strong></h3><p></p><h3> <strong>Hvorfor er dette vigtigt?</strong></h3><p></p><h3> <strong>Hvad beder du folk om at gøre?</strong></h3><p></p>"
       yes_meaning: Jeg støtter dette forslag
