@@ -1,14 +1,14 @@
 ---
 title: Mover itens entre conversas
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/discussions/moving_items/index.md
+source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
+source_file: docs/en/user_manual/discussions/moving_items/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 6ac6ede9e57c77aa
 generated:
-  introduction: 711f104c1bab9de8
+  introduction: d441159b2ac332d2
 title_source: d5f8d27c1ae21eb0
 title_generated: '0791a7b46727d48d'
 ---
@@ -17,25 +17,25 @@ title_generated: '0791a7b46727d48d'
 
 # Mover itens entre conversas
 
-Mova itens selecionados quando uma conversa pertencer a outra discussão, quando uma conversa se dividir em assuntos diferentes ou quando você quiser reunir discussões relacionadas. Não há um comando separado para **Mesclar discussões**.
+Mova os itens selecionados quando uma discussão pertencer a outra conversa, quando uma conversa tiver se dividido em assuntos separados ou quando você quiser combinar discussões relacionadas. Não há um comando separado para **Mesclar discussões**.
 
-A opção está disponível para administradores do grupo e para membros quando **Os membros podem gerenciar discussões e comentários.** estiver ativada em [Permissões do grupo](/en/user_manual/groups/settings/permissions).
+A opção está disponível para admins do grupo e para membros quando **Os membros podem gerenciar discussões e comentários.** estiver habilitado em [Permissões do grupo](/en/user_manual/groups/settings/permissions).
 
 Abra o menu de três pontos (**⋯**) de um item e selecione **Mover item**.
 
 ![](../using_discussions/comment_move.png)
 
-Selecione os itens que você deseja mover.
+Selecione os itens que você quer mover.
 
 ![](../using_discussions/comment_select.png)
 
-Selecione outros itens pelas caixas de seleção e clique em **Mover** na faixa na parte superior da discussão.
+Selecione outros itens usando as caixas de seleção e clique em **Mover** na faixa no topo da discussão.
 
 ![](../using_discussions/move_items.png)
 
 Escolha o grupo ou subgrupo e procure a discussão de destino.
 
-Para mover os itens para uma nova discussão, selecione **Nova discussão** e adicione um título e um contexto.
+Para mover os itens para uma nova discussão, selecione **Nova discussão** e adicione o título e o contexto.
 
 ![](../using_discussions/move_items_new_thread.png)
 

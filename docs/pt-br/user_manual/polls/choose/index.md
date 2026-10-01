@@ -1,6 +1,6 @@
 ---
 title: Escolher
-source_revision: 9c60c42fc739483fa23f15d9f34a1e9245518092
+source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
 source_file: docs/en/user_manual/polls/choose/index.md
 translated:
   provider: codex/gpt-6.1-sol
@@ -14,13 +14,13 @@ sections:
   read-the-results: e675d12da1a4ba8a
   share-an-outcome: f6afc1713b921265
 generated:
-  introduction: 0a6ff82d79cdaf20
-  when-to-use-choose: ce038880ed890b42
-  example-set-a-planning-meeting-agenda: 50eebed310a4e767
-  set-up-the-poll: 335a6022992e5931
-  vote: 908c52671eeacf7a
-  read-the-results: 19e5a9b068b0a393
-  share-an-outcome: 74fe37afbc659792
+  introduction: f31494c0476f1cb7
+  when-to-use-choose: 5fbf9dea77de0f70
+  example-set-a-planning-meeting-agenda: 8ce0aee2f89904aa
+  set-up-the-poll: eebdcce3600063e1
+  vote: 5eb490f66aed2231
+  read-the-results: f82dea5056ebd604
+  share-an-outcome: 89742de8262a3332
 title_source: c7f937836f5d82d5
 title_generated: f1fbc08af75d979e
 ---
@@ -29,38 +29,38 @@ title_generated: f1fbc08af75d979e
 
 # Escolher
 
-Escolher é uma enquete simples para identificar a opção mais popular ou criar uma lista de opções. As pessoas selecionam uma ou mais opções, conforme os limites que você definir. Esse método de votação é conhecido como múltipla escolha.
+Escolher é uma enquete simples para identificar a opção mais popular ou criar uma lista de opções selecionadas. Os participantes selecionam uma ou mais opções, dependendo dos limites que você definir. Esse método de votação é conhecido como múltipla escolha.
 
 <!-- translation-section: when-to-use-choose -->
 
 ## Quando usar Escolher
 
-Use Escolher quando as opções forem distintas e você precisar contar quantas pessoas selecionaram cada uma. É útil para:
+Use Escolher quando as opções forem distintas e você precisar contar quantas pessoas selecionam cada uma. Esse método funciona bem para:
 
-- escolher um local entre algumas opções;
+- escolher um local entre opções selecionadas;
 - selecionar até três assuntos para uma pauta;
-- decidir qual projeto deve avançar para a próxima etapa; ou
+- decidir qual proposta de design deve avançar para a próxima rodada; ou
 - verificar quais serviços os membros pretendem usar.
 
-Escolher registra as opções selecionadas, mas não a intensidade nem a ordem das preferências de cada pessoa. Use [Pontuação](/en/user_manual/polls/score/) para medir o apoio a cada opção, [Alocar](/en/user_manual/polls/allocate/) quando houver um orçamento limitado ou [Classificação](/en/user_manual/polls/rank/) quando a ordem de preferência for importante.
+Escolher registra as seleções, não a intensidade nem a ordem das preferências de uma pessoa. Use [Pontuar](/en/user_manual/polls/score/) para medir a intensidade do apoio das pessoas a cada opção, [Distribuir](/en/user_manual/polls/allocate/) quando houver um orçamento limitado ou [Classificar](/en/user_manual/polls/rank/) quando a ordem de preferência for importante.
 
 <!-- translation-section: example-set-a-planning-meeting-agenda -->
 
-## Exemplo: definir a pauta de uma reunião de planejamento
+## Exemplo: defina a pauta de uma reunião de planejamento
 
-A Cooperativa Oatmilk precisa decidir quais partes de um teste com garrafas retornáveis exigem mais tempo na próxima reunião de planejamento. A enquete pede que cada pessoa escolha até dois assuntos. Os detalhes explicam como o resultado será usado, e cada opção traz informações suficientes para distingui-la das demais.
+A cooperativa Oatmilk precisa decidir quais partes de um teste com garrafas retornáveis precisam de mais tempo na próxima reunião de planejamento. A enquete pede que cada pessoa escolha até dois assuntos. Os detalhes explicam como os resultados serão usados, e cada opção inclui informações suficientes para diferenciá-la das demais.
 
 <!-- translation-section: set-up-the-poll -->
 
 ## Configure a enquete
 
-Use uma pergunta específica como título da enquete. Em **Detalhes**, explique o que as pessoas devem considerar e o que acontecerá com o resultado. Adicione cada opção disponível e defina **Escolhas mínimas** e **Máxima escolha**.
+Use uma pergunta específica como título da enquete. Em **Detalhes**, explique o que os participantes devem considerar e como os resultados serão usados. Adicione cada opção disponível e defina **Escolhas mínimas** e **Máxima escolha**.
 
 ![](form.png)
 
-Defina os dois limites como 1 quando cada pessoa precisar escolher exatamente uma opção. Defina um limite máximo maior para formar uma lista de opções. Evite permitir que as pessoas selecionem quase todas as opções, pois isso torna o resultado menos útil.
+Defina os dois limites como 1 quando os participantes precisarem escolher exatamente uma opção. Defina um máximo maior quando você quiser criar uma lista de opções selecionadas. Evite permitir tantas escolhas que os participantes possam selecionar quase todas as opções, pois isso torna os resultados menos úteis.
 
-Use o ícone de lápis ao lado de uma opção para explicar seu significado ou acrescentar informações. Isso ajuda quando um nome curto pode ter mais de uma interpretação.
+Use o ícone de lápis ao lado de uma opção para explicar seu significado ou adicionar mais informações. Isso é útil quando o nome curto de uma opção pode ser interpretado de maneiras diferentes.
 
 ![](edit_option.png)
 
@@ -72,26 +72,26 @@ Em **Mais configurações**, **Mostrar opções em ordem aleatória** pode reduz
 
 ## Vote
 
-O formulário de votação informa quantas opções cada pessoa pode selecionar. Neste exemplo, a pessoa seleciona **Cronograma de coleta nos cafés** e **Processo de lavagem**. Depois, apresenta uma justificativa que relaciona essas escolhas ao teste.
+O formulário de votação informa aos participantes quantas opções eles podem selecionar. Neste exemplo, o eleitor seleciona **Cronograma de coleta nas cafeterias** e **Fluxo de trabalho de lavagem** e informa um motivo que relaciona essas escolhas ao teste.
 
 ![](voting.png)
 
-Uma justificativa pode mostrar por que uma opção é importante e que trabalho as pessoas esperam que ela inclua. Se as justificativas forem importantes para a decisão, configure essa opção antes de iniciar a enquete.
+Um motivo pode revelar por que uma opção é importante e quais atividades os participantes esperam que ela abranja. Se os motivos forem importantes para a decisão, configure a opção de motivo do voto antes de iniciar a enquete.
 
 <!-- translation-section: read-the-results -->
 
 ## Leia os resultados
 
-Os resultados mostram a parcela do total de seleções recebida por cada opção, quantas pessoas a selecionaram e quem ainda não votou. Como cada pessoa podia escolher duas opções, os percentuais representam seleções, não uma porcentagem de pessoas.
+Os resultados mostram a proporção do total de seleções recebida por cada opção, o número de eleitores que a selecionaram e quem ainda não votou. Como cada pessoa podia escolher duas opções, as porcentagens representam as seleções, e não a proporção de pessoas.
 
 ![](results.png)
 
-Neste exemplo, **Cronograma de coleta nos cafés** recebeu três seleções. **Processo de lavagem** e **Relatório da taxa de devolução** receberam duas cada. O resultado indica que a coleta nos cafés deve receber mais tempo na pauta, mas quem organiza a reunião ainda precisa decidir como dividir o tempo restante entre os assuntos empatados.
+Neste exemplo, **Cronograma de coleta nas cafeterias** recebeu três seleções. **Fluxo de trabalho de lavagem** e **Relatórios da taxa de devolução** receberam duas seleções cada. Os resultados indicam que as coletas nas cafeterias devem receber mais tempo na pauta, mas o empate entre os outros assuntos ainda exige que a pessoa responsável pela organização decida como dividir o tempo restante.
 
 <!-- translation-section: share-an-outcome -->
 
 ## Compartilhe uma conclusão
 
-Quando a enquete for encerrada, compartilhe uma conclusão. Explique o que o grupo fará com o resultado, incluindo como os empates serão resolvidos. Consulte [Compartilhe uma conclusão](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome) para entender como as conclusões funcionam.
+Quando a enquete for encerrada, compartilhe uma conclusão. Informe o que o grupo fará com os resultados, incluindo como os empates serão resolvidos. Consulte [Compartilhe uma conclusão](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome) para saber como as conclusões funcionam.
 
-![Uma conclusão que dedica mais tempo da reunião à coleta nos cafés](outcome.png)
+![Uma conclusão que destina mais tempo da reunião às coletas nas cafeterias](outcome.png)

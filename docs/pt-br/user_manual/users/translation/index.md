@@ -1,20 +1,20 @@
 ---
 title: Idioma e tradução
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/users/translation/index.md
+source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
+source_file: docs/en/user_manual/users/translation/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-30'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 339f8c77362b2d12
   application-translation: e1a57b4f96352649
   content-translation: 427aa006b46961a8
   automatic-translation: 32a1aa99502e1e87
 generated:
-  introduction: 32ddcd2dbdbbe8b9
-  application-translation: f52519cfb8cc2f6f
-  content-translation: 3499af62fba606c4
-  automatic-translation: ba5dfda62d0fbad4
+  introduction: 49692e16d55723b3
+  application-translation: d84d04f446a4a525
+  content-translation: 33bf422225ace2a6
+  automatic-translation: 2560e3466f20781f
 title_source: 9fd7f67efecb7288
 title_generated: 7aa7aa64e2ae3862
 ---
@@ -23,31 +23,31 @@ title_generated: 7aa7aa64e2ae3862
 
 # Idiomas e tradução
 
-O Loomio oferece suporte a vários idiomas de duas formas:
+O Loomio oferece suporte a vários idiomas com estes dois recursos:
 
-1. Tradução da interface - Altere o idioma dos botões e dos textos do aplicativo.
-2. Tradução de conteúdo - Traduza comentários, discussões e propostas para o idioma de sua preferência.
+1. Tradução do aplicativo - Altere o idioma da interface, ou seja, dos botões e textos do aplicativo.
+2. Tradução de conteúdo - Traduza comentários, discussões e propostas para o seu idioma preferido.
 
 <!-- translation-section: application-translation -->
 
-## Tradução da interface
+## Tradução do aplicativo
 
-O Loomio detecta automaticamente o idioma de sua preferência quando você acessa o aplicativo pelo navegador.  Para alterar esse idioma, acesse a página "Editar perfil".
+O Loomio detecta automaticamente o seu idioma preferido quando você acessa o aplicativo pelo navegador. Se quiser alterar o idioma preferido, você pode fazer isso na página "Editar perfil".
 
-![Alteração do idioma de sua preferência](change_language.png)
+![Alterando seu idioma preferido](change_language.png)
 
 <!-- translation-section: content-translation -->
 
 ## Tradução de conteúdo
-Quando alguém do seu grupo escreve uma mensagem em outro idioma, o botão "Traduzir" aparece abaixo dela. Selecione esse botão para traduzir a mensagem automaticamente para o idioma de sua preferência.
+Quando alguém do seu grupo escreve uma mensagem em um idioma diferente do seu idioma preferido, um botão "traduzir" aparece abaixo da mensagem. Você pode clicar nesse botão para traduzir automaticamente a mensagem para o seu idioma preferido.
 
 ![Tradução de conteúdo](content_translation.png)
 
-O texto traduzido substitui o original na discussão. Selecione **Original** para exibir o texto original novamente.
+O texto traduzido substitui o texto original na discussão. Selecione **original** para mostrar o texto original novamente.
 
 ![Um comentário traduzido do espanhol para o inglês](content_translated.png)
 
-A tradução do conteúdo dos usuários é fornecida pelo Google Tradutor e feita quando um usuário a solicita.
+A tradução do conteúdo dos usuários é fornecida pelo Google Tradutor e realizada quando um usuário a solicita.
 
 <!-- translation-section: automatic-translation -->
 
@@ -55,4 +55,4 @@ A tradução do conteúdo dos usuários é fornecida pelo Google Tradutor e feit
 
 Para traduzir automaticamente o conteúdo compatível, abra **Editar perfil** e selecione **Traduzir conteúdo para o meu idioma automaticamente**. O Loomio usa o idioma selecionado no seu perfil.
 
-![A opção de tradução automática de conteúdo na página Editar perfil](automatic_translation.png)
+![A preferência de tradução automática de conteúdo na página Editar perfil](automatic_translation.png)

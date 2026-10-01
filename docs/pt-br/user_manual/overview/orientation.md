@@ -1,10 +1,10 @@
 ---
 title: Visão geral rápida
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/overview/orientation.md
+source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
+source_file: docs/en/user_manual/overview/orientation.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: bc1003860d699a8a
   group-page: 1592d5e9a232df4e
@@ -14,13 +14,13 @@ sections:
   notifications: 54d12e26d4e87f79
   what-to-do-next: 2946260092e30e4e
 generated:
-  introduction: 6dd25a124f36c870
-  group-page: 073a90f04098d52c
-  tabs: 81ef25327dd73cd3
-  sidebar: 5e76608548699337
-  user-settings: d81dba671efc7192
-  notifications: 68974c1b712b5476
-  what-to-do-next: f25489a5be081d3b
+  introduction: e1154a67cbbaa4b9
+  group-page: 5096228542dbbefb
+  tabs: 175cffa35de92675
+  sidebar: 330465cb376dbc1e
+  user-settings: ec431f015f8d7e38
+  notifications: c22514237cebb1e3
+  what-to-do-next: 11dce04a938e9ff0
 title_source: c41a33370cd580dd
 title_generated: 7332722d7395c1a6
 ---
@@ -29,13 +29,13 @@ title_generated: 7332722d7395c1a6
 
 # Visão geral rápida
 
-Esta página apresenta as principais partes da interface do Loomio e mostra onde encontrar as atividades que envolvem você.
+Esta página apresenta as principais partes da interface do Loomio e onde encontrar o trabalho que envolve você.
 
 <!-- translation-section: group-page -->
 
 ## Página do grupo
 
-A página inicial do seu grupo apresenta o grupo e dá acesso às suas atividades.
+A página inicial do seu grupo apresenta o grupo e dá acesso ao seu trabalho.
 
 ![](group_example.png)
 
@@ -45,50 +45,50 @@ A página inicial do seu grupo apresenta o grupo e dá acesso às suas atividade
 
 As abas abaixo da descrição do grupo dão acesso a:
 
-**Discussões** - As discussões do grupo e as atividades recentes.
+**Discussões** - As conversas de discussão do grupo e as atividades recentes.
 
-**Consultas** - Uma lista das consultas ativas no seu grupo.
+**Enquetes** - Uma lista das enquetes ativas no seu grupo.
 
-**Membros** - As pessoas que fazem parte do grupo.
+**Membros** - As pessoas que pertencem ao grupo.
 
-**Arquivos** - Documentos e outros arquivos anexados em diferentes partes do grupo. A aba reúne arquivos de contextos de discussão, comentários, propostas e consultas. Assim, você pode encontrar um documento sem precisar lembrar onde ele foi anexado.
+**Arquivos** - Documentos e outros arquivos anexados em todo o grupo. A aba reúne arquivos dos contextos das discussões, comentários, propostas e enquetes, para que você possa encontrar um documento sem precisar lembrar onde ele foi anexado.
 
-Consulte [Como encontrar conteúdo](/en/user_manual/overview/finding-content) para saber como usar a busca, os filtros, as etiquetas, os favoritos e as discussões não lidas.
+Consulte [Encontrar conteúdo](/en/user_manual/overview/finding-content) para obter ajuda com buscas, filtros, tags, favoritos e discussões não lidas.
 
 <!-- translation-section: sidebar -->
 
 ## Barra lateral
 
-Abra a barra lateral pelo botão de menu (**☰**) no canto superior esquerdo.
+Abra a barra lateral usando o botão de menu (**☰**) no canto superior esquerdo.
 
 ![](sidebar.png)
 
-Use a barra lateral para acessar seu painel, as consultas que aguardam seu voto, as discussões não lidas e diretas, as tarefas e os grupos. Ela também contém links para o manual do usuário e o suporte.
+Use a barra lateral para abrir seu painel, enquetes que aguardam seu voto, discussões não lidas e diretas, tarefas e grupos. Ela também oferece links para o manual do usuário e o suporte.
 
 <!-- translation-section: user-settings -->
 
 ### Configurações do usuário
 
-Selecione seu nome na barra lateral para abrir o menu do usuário.
+Selecione seu nome na barra lateral para abrir seu menu de usuário.
 
 ![](user_settings_sidebar.png)
 
-Use esse menu para editar seu perfil, alterar as configurações de notificação, escolher um tema, gerenciar as configurações da conta e sair.
+Use este menu para editar seu perfil, alterar as configurações de notificação, escolher um tema, gerenciar as configurações da conta e sair.
 
 <!-- translation-section: notifications -->
 
 ## Notificações
 
-O botão de sino no canto superior direito abre suas notificações no aplicativo. Um indicador aparece quando há notificações que você ainda não visualizou.
+O botão com o sino no canto superior direito abre suas notificações no aplicativo. Um indicador aparece quando você tem notificações que ainda não visualizou.
 
 ![](../users/email_settings/in_app_notifications.png)
 
-Consulte [Notificações](/en/user_manual/users/email_settings) para saber mais sobre as notificações no aplicativo, as preferências de e-mail e as configurações de notificação de grupos e discussões.
+Consulte [Notificações](/en/user_manual/users/email_settings) para saber mais sobre notificações no aplicativo, preferências de e-mail e configurações de notificação para grupos e discussões.
 
 <!-- translation-section: what-to-do-next -->
 
 ## Próximos passos
 
-- Leia [Como participar](/en/user_manual/overview/how-to-participate) para saber como comentar, responder, reagir e votar.
-- Leia [Como encontrar conteúdo](/en/user_manual/overview/finding-content) para saber como localizar discussões e decisões.
-- Acesse [Discussões](/en/user_manual/discussions) ou [Propostas e consultas](/en/user_manual/polls/intro_to_decisions) para ver orientações detalhadas.
+- Leia [Como participar](/en/user_manual/overview/how-to-participate) para aprender a comentar, responder, reagir e votar.
+- Leia [Encontrar conteúdo](/en/user_manual/overview/finding-content) para aprender a localizar discussões e decisões.
+- Acesse [Discussões](/en/user_manual/discussions) ou [Propostas e enquetes](/en/user_manual/polls/intro_to_decisions) para obter orientações detalhadas.

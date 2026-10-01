@@ -1,10 +1,10 @@
 ---
 title: Integrações
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/integrations/index.md
+source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
+source_file: docs/en/user_manual/integrations/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-30'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 80f9609a4bd3028f
   choose-where-work-belongs: 83df4af89736ee60
@@ -12,9 +12,9 @@ sections:
   api: 7d7fc35e2287c6cf
 generated:
   introduction: 93e6c8428db41b84
-  choose-where-work-belongs: 336d753eccf783ed
-  chat-integrations: 219b6c70d8a3e539
-  api: 1e9e5e34ec5aa638
+  choose-where-work-belongs: d31ce130bd40bc16
+  chat-integrations: 3b15b5f4fb7c405e
+  api: 7ce9074cf513cb88
 title_source: '090512d93fcc3c0d'
 title_generated: 02cba44bb25bac01
 ---
@@ -27,27 +27,27 @@ Conecte o Loomio a outras ferramentas usadas pelo seu grupo.
 
 <!-- translation-section: choose-where-work-belongs -->
 
-## Escolha a ferramenta para cada tipo de trabalho
+## Escolha onde realizar o trabalho
 
-O Loomio complementa ferramentas de conversa, documentos compartilhados e ferramentas de gestão de tarefas. Cada uma atende a necessidades diferentes.
+O Loomio complementa o chat, os documentos compartilhados e as ferramentas de gestão de tarefas, em vez de substituir todas as formas de trabalho.
 
 | Trabalho | Ferramenta sugerida |
 |---|---|
-| Perguntas rápidas, conversas informais e atualizações que exigem atenção imediata | Ferramenta de conversa |
+| Perguntas rápidas, conversas informais e atualizações oportunas | Chat |
 | Edição colaborativa de um documento em constante atualização | Documento compartilhado |
-| Distribuição e acompanhamento de tarefas | Ferramenta de gestão de projetos ou tarefas |
-| Discussões importantes sobre um assunto, ampla participação, decisões e conclusões | Loomio |
+| Atribuição e acompanhamento de tarefas | Ferramenta de gestão de projetos ou tarefas |
+| Discussão de temas importantes, ampla participação, decisões e conclusões | Loomio |
 
-Use o Loomio quando as pessoas precisarem de tempo para considerar um assunto, quando todos os envolvidos precisarem de uma oportunidade real de participar ou quando o grupo precisar consultar a discussão e a decisão mais tarde. Inclua um link para o documento ou a tarefa relevante na discussão do Loomio para facilitar o acesso ao contexto.
+Use o Loomio quando as pessoas precisarem de tempo para considerar um tema, quando todas as pessoas afetadas precisarem de uma oportunidade efetiva de participar ou quando o grupo precisar encontrar a discussão e a decisão mais tarde. Inclua na discussão do Loomio um link para o documento ou a tarefa relevante, para que seu contexto continue fácil de encontrar.
 
 <!-- translation-section: chat-integrations -->
 
-## Integrações com ferramentas de conversa
+## Integrações com chat
 
-As [integrações com ferramentas de conversa](/en/user_manual/integrations/chatbots) publicam atividades do Loomio em serviços como Discord, Matrix, Mattermost, Microsoft Teams e Slack.
+As [integrações com chat](/en/user_manual/integrations/chatbots) publicam atividades do Loomio em serviços de chat, incluindo Discord, Matrix, Mattermost, Microsoft Teams e Slack.
 
 <!-- translation-section: api -->
 
 ## API
 
-Use a [API do Loomio](/en/user_manual/integrations/api) para conectar o Loomio aos seus programas e fluxos de trabalho automatizados.
+Use a [API do Loomio](/en/user_manual/integrations/api) para conectar o Loomio ao seu próprio software e a fluxos de trabalho automatizados.

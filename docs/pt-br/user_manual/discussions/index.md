@@ -1,10 +1,10 @@
 ---
 title: Discussões
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/discussions/index.md
+source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
+source_file: docs/en/user_manual/discussions/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: c76a7d182c14a283
   common-uses: 2fd96fe8c6ddddc4
@@ -12,11 +12,11 @@ sections:
   member-participation: b087accb54a595dc
   self-organizing-working-teams: 8679ba6f65c230ab
 generated:
-  introduction: 5d520cabc56aa179
+  introduction: eb1744925b45db2a
   common-uses: 5595e2b21f646464
-  boards-and-governance: 9b601bd3dea22a83
-  member-participation: 300942176e4551f6
-  self-organizing-working-teams: 42f2a1779faaccef
+  boards-and-governance: 4782ce2f0a20fe89
+  member-participation: bcada4794e517bef
+  self-organizing-working-teams: f336dbb8587daefa
 title_source: 60157cfcfe3f31c3
 title_generated: 8d1f1d8a3d3aab02
 ---
@@ -25,20 +25,20 @@ title_generated: 8d1f1d8a3d3aab02
 
 # Introdução às discussões
 
-Nas discussões do Loomio, você pode compartilhar informações, debater assuntos e tomar decisões com seu grupo. As pessoas participam publicando comentários e respostas.
+As discussões do Loomio são espaços onde você pode compartilhar informações, discutir assuntos e tomar decisões com seu grupo. As pessoas participam publicando comentários e respostas.
 
-- Todas as informações sobre um assunto ficam em um só lugar, fácil de acessar.
-- As pessoas podem responder por e-mail, e os comentários aparecem na discussão.
+- Todas as informações sobre um assunto ficam em um único lugar de fácil acesso.
+- As pessoas podem responder por email, e seus comentários aparecem na discussão.
 - Você pode ver quem leu a discussão e quem precisa de um lembrete.
-- O registro da discussão fica disponível para você consultar depois.
+- A discussão fica registrada para você encontrá-la novamente com facilidade.
 
-As discussões servem para muitos fins, desde um fórum geral até processos de trabalho e tomada de decisão.
+As discussões têm vários usos, desde um fórum de discussão geral até a condução de processos específicos de trabalho e tomada de decisão.
 
-Por exemplo, você pode iniciar uma discussão sobre um assunto, convidar as pessoas a compartilhar ideias e informações e ajudar o grupo a chegar a uma conclusão em comum.
+Por exemplo, você pode apresentar uma discussão sobre um assunto específico, convidar as pessoas a contribuir com suas ideias e compartilhar informações, e facilitar o avanço em direção a uma conclusão acordada.
 
-Você também pode convidar as pessoas a participar de uma decisão por meio de um processo baseado em consentimento ou aconselhamento.
+Ou você pode convidar as pessoas a participar de uma decisão específica, usando um processo de tomada de decisão por consentimento ou aconselhamento.
 
-As discussões também podem incluir enquetes e propostas para ajudar o grupo a chegar a uma conclusão. À medida que as pessoas comentam e votam, forma-se uma linha do tempo da discussão, na qual você pode encontrar os principais marcos.
+As discussões também podem conter enquetes e propostas para ajudar a chegar a uma conclusão. À medida que as pessoas comentam na discussão e votam nas enquetes, forma-se uma linha do tempo da discussão para você encontrar facilmente os principais marcos.
 
 ![A discussão sobre garrafas retornáveis para clientes do café, com um comentário e uma proposta](discussion-example.png)
 
@@ -52,36 +52,36 @@ Veja alguns usos comuns das discussões:
 
 ### Conselhos e governança
 
-**Prepare-se para uma reunião** - Monte a pauta, publique os documentos do conselho e organize as questões administrativas para que todos tenham as informações e o contexto necessários para se preparar.
+**Prepare-se para uma reunião** - Monte uma pauta, publique documentos do conselho e organize questões administrativas para que todos estejam atualizados, conheçam o contexto e estejam preparados.
 
-**Aprovar uma resolução** - Publique o contexto e as informações relevantes, responda a perguntas e apresente uma proposta para aprovar a resolução.
+**Aprovar uma resolução** - Publique o contexto e as informações de referência, responda às perguntas e apresente uma proposta para aprovar uma resolução.
 
-**Discutir um item da pauta no Loomio** - Inicie a discussão sobre um item da pauta antes da reunião. Se faltar tempo durante a reunião, continue a discussão no Loomio.
+**Discuta um item da pauta no Loomio** - Inicie uma discussão sobre um item da pauta antes da sua reunião. Ou, se o tempo da reunião acabar, continue a discussão no Loomio.
 
-**Aprovar atas e acompanhar tarefas** - Publique as atas e atribua tarefas. Use uma enquete para aprovar as atas.
+**Aprove atas e acompanhe ações** - Publique atas e atribua ações. Use uma enquete para aprovar as atas.
 
 <!-- translation-section: member-participation -->
 
 ### Participação dos membros
 
-**Compartilhar notícias (substituir a lista de e-mails)** - Publique informações para os membros e convide-os a comentar.
+**Compartilhe notícias (substitua a lista de emails)** - Publique informações para os membros e convide-os a comentar.
 
-**Organizar um evento** - Defina os detalhes com a equipe organizadora. Mantenha a discussão e as informações na conversa. Depois, anuncie o evento aos demais membros.
+**Organize um evento** - Trabalhe nos detalhes com sua equipe de organização. Mantenha toda a discussão e as informações na conversa. Depois, anuncie o evento aos demais membros.
 
-**Desenvolver uma política** - Publique uma minuta, peça opiniões e contribuições dos membros, finalize o texto e aprove a política.
+**Desenvolva uma política** - Publique uma versão preliminar da política, peça opiniões e contribuições dos membros, finalize e ratifique a política.
 
-**Assembleia geral** - Organize, prepare e conduza uma reunião formal com todos os membros para debater e decidir questões estratégicas.
+**Assembleia geral** - Organize, prepare e conduza uma reunião formal com todos os membros para deliberar e tomar decisões sobre questões estratégicas.
 
 <!-- translation-section: self-organizing-working-teams -->
 
-### Equipes de trabalho auto-organizadas
+### Equipes de trabalho autogeridas
 
-**Compartilhar informações** - Publique informações e relatórios de interesse da equipe e convide as pessoas a comentar e discutir.
+**Compartilhe informações** - Publique informações e relatórios de interesse da sua equipe e convide as pessoas a comentar e discutir.
 
-**Dar andamento ao trabalho** - Descreva uma tarefa e peça conselhos, contribuições e opiniões aos membros da equipe até sua conclusão.
+**Avance com o trabalho** - Descreva uma tarefa de trabalho e peça orientações, contribuições e opiniões dos membros da equipe até sua conclusão.
 
-**Notas de reunião e tarefas** - Publique as notas da reunião para registrar a discussão e acompanhe as tarefas.
+**Notas de reunião e ações** - Publique notas de reunião como registro da discussão e acompanhe as tarefas.
 
-**Explorar ideias** - Compartilhe suas ideias e convide as pessoas a discutir uma questão que você identificou ou uma possível melhoria.
+**Explore ideias** - Compartilhe ideias e convide as pessoas a discutir uma preocupação que você identificou ou uma melhoria que pode ser feita.
 
-**Tomada de decisão por aconselhamento, consentimento e criação conjunta** - Prepare, proponha, esclareça, responda a reações e objeções, chegue a um acordo e coloque a decisão em prática, tudo em uma discussão no Loomio.
+**Tomada de decisão por aconselhamento, consentimento e processos generativos** - Prepare, proponha, esclareça, responda a reações e objeções, concorde e implemente - tudo em uma discussão no Loomio.

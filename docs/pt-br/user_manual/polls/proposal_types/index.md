@@ -1,10 +1,10 @@
 ---
 title: Enquetes
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/polls/proposal_types/index.md
+source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
+source_file: docs/en/user_manual/polls/proposal_types/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 286e04a878e4c1d9
   simple-poll: d362d91b19914c39
@@ -14,13 +14,13 @@ sections:
   time-poll: 8b3a09b278bd7fde
   stv-election: e8407157d29424e4
 generated:
-  introduction: b6486747640dc213
-  simple-poll: bcf5b74bd23650e5
-  score-poll: 48fc7964924dab7f
-  dot-vote: 376124bf8c28972d
-  ranked-choice: 3c9febbaff628ae6
-  time-poll: 4c03b958bc34b5d6
-  stv-election: d0d9f031b5076177
+  introduction: a9cffe2617d5f103
+  simple-poll: a4b59ef35f8c9eb6
+  score-poll: 3c3955685a6cc6db
+  dot-vote: 4fe6b1ffa387d925
+  ranked-choice: f0bd7a7c586fd325
+  time-poll: c7745d85e761cbfb
+  stv-election: 01d0b64fffe98b18
 title_source: 996729458535904a
 title_generated: 7a15afaf1bd7bdbf
 ---
@@ -29,40 +29,40 @@ title_generated: 7a15afaf1bd7bdbf
 
 # Enquetes
 
-As enquetes coletam escolhas, pontuações, distribuições de pontos, classificações, disponibilidade ou votos em eleições. Escolha o método de votação conforme o que os participantes precisam expressar e como você pretende usar o resultado. Use uma [Proposta](/en/user_manual/polls/proposals/) quando as pessoas precisarem responder a uma declaração ou a um plano de ação.
+As enquetes coletam seleções, pontuações, distribuições de pontos, classificações, disponibilidade ou votos em eleições. Escolha o método de votação com base no que os participantes precisam expressar e em como você pretende usar o resultado. Use uma [Proposta](/en/user_manual/polls/proposals/) quando as pessoas precisarem responder a uma declaração ou a um curso de ação.
 
 <!-- translation-section: simple-poll -->
 
-## Enquete de escolha
+## Enquete simples
 
-A [enquete de escolha](/en/user_manual/polls/choose/) permite que os participantes selecionem uma ou mais opções. Use-a para identificar a opção mais popular ou criar uma lista de opções preferidas.
+[Escolher](/en/user_manual/polls/choose/) permite que os participantes selecionem uma ou mais opções. Use esse método para encontrar a opção mais popular ou criar uma lista reduzida de opções.
 
 <!-- translation-section: score-poll -->
 
 ## Enquete de pontuação
 
-A [enquete de pontuação](/en/user_manual/polls/score/) permite que os participantes avaliem cada opção na mesma escala. Use-a para comparar o grau de apoio, preparo, adequação ou importância das opções.
+[Pontuar](/en/user_manual/polls/score/) permite que os participantes avaliem cada opção na mesma escala. Use esse método para comparar o grau de apoio, preparo, adequação ou importância entre as opções.
 
 <!-- translation-section: dot-vote -->
 
 ## Enquete de distribuição
 
-A [enquete de distribuição](/en/user_manual/polls/allocate/) dá a cada participante uma quantidade fixa de pontos para distribuir. Use-a para identificar prioridades quando dedicar mais atenção ou recursos a uma opção significa dedicar menos a outra.
+[Distribuir](/en/user_manual/polls/allocate/) dá a cada participante uma quantidade fixa de pontos para distribuir. Use esse método para identificar prioridades quando escolher uma coisa significa dedicar menos atenção ou recursos a outra.
 
 <!-- translation-section: ranked-choice -->
 
 ## Enquete de classificação
 
-A [enquete de classificação](/en/user_manual/polls/rank/) permite que os participantes ordenem as opções por preferência. Use-a para encontrar a ordem de preferência geral do grupo ou selecionar a opção mais bem colocada.
+[Classificar](/en/user_manual/polls/rank/) permite que os participantes organizem as opções em ordem de preferência. Use esse método para identificar a ordem de preferência geral do grupo ou selecionar a opção preferida.
 
 <!-- translation-section: time-poll -->
 
 ## Enquete de horário
 
-A [enquete de horário](/en/user_manual/polls/meeting_polls/) permite que os participantes indiquem quando estão disponíveis. Use-a para marcar uma reunião ou um evento entre diferentes fusos horários.
+A [Enquete de horário](/en/user_manual/polls/meeting_polls/) permite que os participantes indiquem quando estão disponíveis. Use essa enquete para agendar uma reunião ou um evento com pessoas em diferentes fusos horários.
 
 <!-- translation-section: stv-election -->
 
 ## Eleição STV
 
-As [Eleições STV](/en/user_manual/polls/stv/) permitem que os participantes classifiquem candidatos em uma eleição proporcional com várias vagas. Use STV para eleger um comitê, conselho ou grupo de representantes.
+As [Eleições STV](/en/user_manual/polls/stv/) permitem que os participantes classifiquem candidatos em uma eleição proporcional com várias vagas. Use STV para eleger um comitê, um conselho ou um grupo de delegados.

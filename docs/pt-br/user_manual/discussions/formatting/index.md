@@ -1,10 +1,10 @@
 ---
 title: Formatação
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/discussions/formatting/index.md
+source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
+source_file: docs/en/user_manual/discussions/formatting/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: e5ed11fef349b38c
   attach-file: 772ed69602535db7
@@ -27,26 +27,26 @@ sections:
   markdown: 6ee2783ba81363fd
   rich-text: 9136c76bfd5409a9
 generated:
-  introduction: 7a82686c5990f64d
-  attach-file: 312c69263c129ed8
-  remove-attachments: dd769ccd3e6c11b4
-  insert-image: 2984849320dbd270
-  insert-link: c3bcb30f81129ca7
-  insert-emoji: e924ac3f85d8b4ef
-  headings: a46df235042a95e4
-  bold-italicize-strikethrough: 4ad4a9dbc1fc9715
-  list: 21f561e402d5f343
+  introduction: 625801af0063fe4a
+  attach-file: 75f1fa85c6ef68de
+  remove-attachments: 85b9f32a09b114d1
+  insert-image: f93639da62b6d89f
+  insert-link: 7b5da44b981bf9de
+  insert-emoji: 32ca4961ba573fb7
+  headings: a6a4f3d2268ab5c9
+  bold-italicize-strikethrough: a37c42bc03fea707
+  list: 3242b9bcd932f2de
   numbered-list: 8dfefe2791dea4e0
-  task-list: b230f2193b5282b2
+  task-list: 680cde4924db796e
   colors: 2453355f6d8039f3
-  align: 44c55e87a7c59993
-  embed-videos-and-webpages: 368eb18ff02a89b6
-  quote: 3027354f3c883455
-  code-block: 23245be9ea1ecace
-  divider: 55977fbc36528062
-  add-table: c09e30ebd2f0b105
-  markdown: a3dd83aded6c1599
-  rich-text: '019f5da1f0908571'
+  align: b5c8f2852ec30585
+  embed-videos-and-webpages: b0cb93cc3eb0e689
+  quote: 1767b7ffa8b0a135
+  code-block: 96a600ef5606b7dd
+  divider: 4027e2ce59a3df62
+  add-table: 64cdc3ab460eedeb
+  markdown: 53f456c2abe5ee5a
+  rich-text: a242c8db9819c8fe
 title_source: 29d4198e41d8221a
 title_generated: '0892aea16806ed17'
 ---
@@ -55,19 +55,19 @@ title_generated: '0892aea16806ed17'
 
 # Formatação
 
-Ao iniciar ou editar uma discussão ou enquete, ou escrever um comentário, você verá uma barra de formatação abaixo do campo de texto. Selecione a seta no fim da barra para mostrar ou ocultar todas as ferramentas.
+Ao iniciar ou editar uma discussão ou enquete, ou escrever um comentário, você verá uma barra de formatação abaixo do campo de texto. Selecione a seta no final da barra para mostrar ou ocultar todas as ferramentas.
 
-Passe o cursor sobre cada item para ver o nome da ferramenta.
+Passe o mouse ou cursor sobre cada item para ver o nome da ferramenta.
 
 ![](thread_format_bar.png)
 
-Use a formatação para organizar e destacar as informações, facilitando a leitura.
+Use a formatação para estruturar e destacar o conteúdo, facilitando a leitura das informações.
 
 <!-- translation-section: attach-file -->
 
 ## Anexar arquivo
 
-Use o ícone de clipe, logo abaixo do campo de texto, para anexar arquivos do seu computador.
+Use o ícone de clipe de papel, logo abaixo do campo de texto, para anexar arquivos do seu computador.
 
 ![](format_attach.png)
 
@@ -75,7 +75,7 @@ Use o ícone de clipe, logo abaixo do campo de texto, para anexar arquivos do se
 
 ### Remover anexos
 
-Ao editar a descrição, clique no **X** à direita do nome do arquivo para removê-lo.
+Ao editar o contexto, clique no **X** à direita do nome do arquivo para removê-lo.
 
 ![](thread_file_remove.png)
 
@@ -87,11 +87,11 @@ Use esta ferramenta para inserir e exibir uma imagem.
 
 ![](format_insert_image.png)
 
-Selecione um arquivo de imagem no seu computador. Após o envio, a imagem será inserida no editor.
+Selecione um arquivo de imagem do seu computador. A imagem será inserida no editor após o envio.
 
 ![](format_insert_example.png)
 
-A imagem aparecerá na discussão, enquete ou comentário publicado.
+A imagem será exibida na discussão, enquete ou comentário publicado.
 
 >[!Tip]
 >Você também pode copiar e colar uma imagem diretamente no Loomio.
@@ -102,19 +102,19 @@ A imagem aparecerá na discussão, enquete ou comentário publicado.
 
 ## Inserir link
 
-Você pode adicionar um link para qualquer documento compartilhável ou página da internet.
+Você pode adicionar um link para qualquer documento ou página na internet que possa ser compartilhado.  
 
 Para adicionar um link:
 
-1. Selecione o texto que receberá o link, como o nome de um documento.
+1. Selecione o texto ao qual você quer adicionar o link, como o nome de um documento.
 2. Clique no ícone de link.
 3. Cole o endereço no campo **Inserir link** e selecione **Aplicar**.
 
-Se o documento estiver hospedado em outro serviço, confira as permissões de compartilhamento para que os participantes da discussão possam abri-lo.
+Se o documento estiver hospedado em outro serviço, verifique as permissões de compartilhamento para que os participantes da discussão possam abri-lo.
 
-Uma prévia do documento aparecerá abaixo do campo de texto. Você pode removê-la.
+Uma prévia do documento aparecerá abaixo do campo de texto. Você pode removê-la se quiser.
 
-Qualquer pessoa com acesso à sua discussão no Loomio e permissão para visualizar o documento poderá abri-lo e lê-lo.
+Agora, qualquer pessoa com acesso à sua discussão no Loomio e permissão para visualizar o documento poderá abri-lo e lê-lo.
 
 ![](format_link.png)
 
@@ -122,7 +122,7 @@ Qualquer pessoa com acesso à sua discussão no Loomio e permissão para visuali
 
 ## Inserir emoji
 
-Selecione o botão com a carinha e escolha um emoji.
+Selecione o botão com o rosto sorridente e escolha um emoji no seletor.
 
 ![](thread_insert_emoji.png)
 
@@ -130,9 +130,9 @@ Selecione o botão com a carinha e escolha um emoji.
 
 ## Títulos
 
-Os títulos de níveis 1, 2 e 3 ajudam a organizar uma discussão ou um comentário.
+Título 1, Título 2 e Título 3 podem ajudar a estruturar uma discussão ou comentário.
 
-Selecione o texto que deseja transformar em título e clique na ferramenta de formatação de títulos.
+Selecione o texto que você quer marcar como título e clique na ferramenta de formatação de títulos.
 
 Se você usar um título em um comentário, o comentário será fixado automaticamente na linha do tempo da discussão.
 
@@ -140,9 +140,9 @@ Se você usar um título em um comentário, o comentário será fixado automatic
 
 <!-- translation-section: bold-italicize-strikethrough -->
 
-## Negrito, itálico e tachado
+## Negrito, itálico, tachado
 
-Selecione o texto e clique na ferramenta de formatação desejada.
+Selecione o texto que você quer formatar e clique na ferramenta de formatação desejada.
 
 ![](format_bold.png)
 
@@ -150,7 +150,7 @@ Selecione o texto e clique na ferramenta de formatação desejada.
 
 ## Lista
 
-Use **Lista** para organizar itens com marcadores.
+Use **Lista** para formatar itens com marcadores.
 
 ![](thread_bullets.png)
 
@@ -166,11 +166,11 @@ Use **Lista enumerada** quando a ordem dos itens for importante.
 
 ## Lista de tarefas
 
-Use **Lista de tarefas** para adicionar caixas de seleção. Depois de publicar a lista, você pode atribuir as tarefas a alguém e definir uma data de entrega.
+Use **Lista de tarefas** para adicionar caixas de seleção. Após publicar a lista, você pode atribuir as tarefas a alguém e definir uma data de entrega.
 
 ![](format_tasks.png)
 
-Consulte a página sobre [Tarefas](/en/user_manual/discussions/tasks/) para saber mais.
+Consulte a página sobre [Tarefas](/en/user_manual/discussions/tasks/) para mais informações.
 
 <!-- translation-section: colors -->
 
@@ -184,18 +184,18 @@ Use **Cores** para destacar o texto selecionado com uma cor.
 
 ## Alinhar
 
-Selecione o alinhamento do texto à esquerda, ao centro ou à direita.
+Selecione para alinhar o texto à esquerda, ao centro ou à direita.
 
 ![](thread_align.png)
 
 <!-- translation-section: embed-videos-and-webpages -->
 
-## Incorporar vídeos e páginas da internet
+## Incorporar vídeos e páginas da web
 
-Você pode incorporar vídeos e páginas da web compatíveis em qualquer campo com uma barra de formatação.
+Você pode incorporar vídeos e páginas da web compatíveis em qualquer lugar que tenha uma barra de ferramentas de formatação.
 
-Para incorporar um vídeo ou uma página da web: 
-1. Copie o endereço do vídeo ou da página.
+Para usar o recurso de incorporar vídeo:
+1. Copie o endereço do vídeo ou da página da web.
 2. Selecione **Anexar video**, cole o endereço e selecione **Aplicar**.
 
 ![](format_embed.png)
@@ -203,21 +203,21 @@ Para incorporar um vídeo ou uma página da web:
 <iframe width="100%" height="380px" src="https://www.youtube-nocookie.com/embed/AJnjTd9u4zg" frameborder="0" allowfullscreen></iframe>
 
 >[!Tip]
->Confira se todas as pessoas que podem participar da discussão conseguem acessar o vídeo. Um vídeo não listado pode ser adequado quando ele não deve aparecer nos resultados de buscas públicas.
+>Verifique se todas as pessoas que podem participar da discussão conseguem acessar o vídeo. Por exemplo, um vídeo não listado pode ser adequado quando ele não deve aparecer nos resultados de buscas públicas.
 
 <!-- translation-section: quote -->
 
 ## Citação
 
-Use uma citação para destacar um trecho do texto, por exemplo, uma instrução.
+A citação dá destaque ao seu texto e pode ser útil para chamar a atenção para uma instrução.
 
 ![](thread_quote.png)
 
 <!-- translation-section: code-block -->
 
-## Bloco de código
+## Bloqueio de código
 
-O bloco de código costuma ser usado para mostrar código, mas também pode ajudar a distinguir um trecho de texto na discussão.
+Normalmente usada para exibir código no texto, a formatação de bloqueio de código também pode ajudar você a destacar trechos de texto na sua discussão.
 
 ![](thread_codeblock.png)
 
@@ -225,15 +225,15 @@ O bloco de código costuma ser usado para mostrar código, mas também pode ajud
 
 ## Divisor
 
-Use o divisor para inserir uma linha horizontal entre seções.
+Use o divisor para inserir uma linha horizontal que separe as seções.
 
 ![](thread_line.png)
 
 <!-- translation-section: add-table -->
 
-## Inserir tabela
+## Adicionar tabela
 
-Insira uma tabela na discussão.
+Adicione uma tabela à sua discussão.
 
 Há ferramentas adicionais para adicionar ou remover colunas e linhas.
 
@@ -245,12 +245,12 @@ Há ferramentas adicionais para adicionar ou remover colunas e linhas.
 
 Para editar em Markdown, selecione **Editar Markdown**.
 
-Se já houver texto no campo, parte da formatação poderá se perder durante a conversão.
+Se você selecionar essa opção enquanto houver texto no formulário, parte da formatação poderá ser perdida na conversão.
 
 <!-- translation-section: rich-text -->
 
-### Texto rico
+### Texto formatado
 
-Selecione **Editar texto rico** para voltar às ferramentas de formatação. O Markdown compatível será convertido para sua forma visual.
+Selecione **Editar texto formatado** para voltar às ferramentas de formatação. Isso converte o Markdown compatível para sua forma de exibição.
 
 **Pré-visualizar** mostra como o Markdown aparecerá após a publicação, sem convertê-lo.

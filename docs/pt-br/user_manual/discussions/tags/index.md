@@ -1,10 +1,10 @@
 ---
 title: Tags de categoria
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/discussions/tags/index.md
+source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
+source_file: docs/en/user_manual/discussions/tags/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 6197fb807c2f1fc7
   apply-tags: 8ea708f54f6f5df5
@@ -12,11 +12,11 @@ sections:
   edit-tags: 9a7b6c0f3c647b2d
   edit-tag-in-thread-or-poll: 5410f62c3b8c9417
 generated:
-  introduction: a14d940a0ac123f2
-  apply-tags: c2e7033fabcc9a30
-  create-tags: 93d2892710d89581
-  edit-tags: caa3c428c59b62fc
-  edit-tag-in-thread-or-poll: c4462f4168ec7533
+  introduction: 3718dc09cc0cc0a2
+  apply-tags: 8c228517616ff437
+  create-tags: 28e6bbf7e64ee425
+  edit-tags: fa0c73932fa1cbae
+  edit-tag-in-thread-or-poll: 9f63b09a94d14bf1
 title_source: c86f6830bf302394
 title_generated: '04853111899cd0c4'
 ---
@@ -25,11 +25,11 @@ title_generated: '04853111899cd0c4'
 
 # Tags de categoria
 
-As tags de categoria ajudam você a encontrar discussões e enquetes sobre um tipo de trabalho ou assunto.
+As tags de categoria facilitam encontrar conversas e enquetes sobre um determinado tipo de trabalho ou assunto.
 
-As tags pertencem à organização inteira. Uma tag usada no grupo principal é a mesma em seus subgrupos. Assim, você pode organizar trabalhos relacionados em toda a organização. O Loomio exibe os nomes das tags em ordem alfabética e mostra suas cores como pontos ao lado dos nomes.
+As tags pertencem a toda a organização. Uma tag usada em um grupo principal é a mesma nos seus subgrupos, permitindo organizar trabalhos relacionados em toda a organização. O Loomio exibe os nomes das tags em ordem alfabética e mostra suas cores como pontos ao lado dos nomes.
 
-Na página do seu grupo, clique em **Tags** acima da lista de discussões para ver as tags usadas no grupo atual. Selecione uma tag para mostrar apenas as discussões com essa tag. Use o campo de filtro para pesquisar em uma lista longa ou selecione **Mostrar mais** para incluir todas as tags da organização. Selecione **Mostrar menos** para voltar às tags do grupo atual.
+Na página do seu grupo, clique em **Tags** acima da lista de conversas para ver as tags usadas no grupo atual. Selecione uma tag para mostrar apenas as conversas com essa tag. Use o campo de filtro para pesquisar em uma lista longa ou selecione **Mostrar mais** para incluir todas as tags da organização. Selecione **Mostrar menos** para voltar às tags do grupo atual.
 
 ![](tags_view.png)
 
@@ -37,33 +37,33 @@ Na página do seu grupo, clique em **Tags** acima da lista de discussões para v
 
 ## Aplicar tags
 
-Membros que podem editar uma discussão ou enquete também podem aplicar tags a ela.
+Membros que podem editar uma conversa ou enquete podem aplicar tags a ela.
 
-Ao iniciar uma discussão ou enquete, clique no campo **Tags** e selecione uma ou mais tags.
+Ao iniciar uma conversa ou enquete, clique no campo **Tags** e selecione uma ou mais tags.
 
 ![](tags_add_new.png)
 
-Comece a digitar para filtrar a lista. Para remover uma tag, selecione-a novamente ou clique no × ao lado de seu nome.
+Comece a digitar para filtrar a lista. Selecione uma tag novamente ou clique no × ao lado do nome dela para removê-la.
 
 <!-- translation-section: create-tags -->
 
 ## Criar tags
 
-Administradores do grupo principal sempre podem criar tags para ele e seus subgrupos. Administradores de subgrupos podem criar tags ao marcar conteúdo em seus subgrupos. A permissão **Os membros podem criar etiquetas.**, ativada por padrão, permite que outros membros que podem marcar uma discussão ou enquete criem novas tags. Se a permissão estiver desativada, os membros ainda poderão aplicar tags existentes.
+Admins do grupo principal sempre podem criar tags para o grupo principal e seus subgrupos. Admins de subgrupos podem criar tags ao aplicá-las ao conteúdo do seu subgrupo. A permissão do grupo **Os membros podem criar etiquetas.**, ativada por padrão, permite que outros membros que podem aplicar tags a uma conversa ou enquete criem novos nomes de tags. Se a permissão estiver desativada, os membros ainda poderão aplicar tags existentes.
 
-Para criar uma tag ao iniciar uma discussão ou enquete, digite o nome dela no campo **Tags** e pressione Enter.
+Para criar uma tag ao iniciar uma conversa ou enquete, digite seu nome no campo **Tags** e pressione Enter.
 
 ![criar nova tag](tags_create_new.png)
 
 ![nova tag criada](tags_created_new.png)
 
-Use nomes curtos e conhecidos pelos membros do grupo, como Finanças, Governança, Embalagens ou Parcerias com cafeterias.
+Use nomes curtos e conhecidos que os membros do grupo reconheçam, como Finanças, Governança, Embalagens ou Parcerias com cafeterias.
 
 <!-- translation-section: edit-tags -->
 
 ## Editar tags
 
-Somente administradores do grupo principal podem renomear, mudar a cor, mesclar ou excluir tags. Essas alterações se aplicam a toda a organização, inclusive aos subgrupos.
+Somente admins do grupo principal podem renomear, alterar as cores, mesclar ou deletar tags. Essas alterações se aplicam a toda a organização, incluindo seus subgrupos.
 
 Na página do grupo, abra **Tags** e selecione **Editar tags**.
 
@@ -75,18 +75,18 @@ Selecione o ícone de lápis ao lado de uma tag.
 
 Edite o nome da tag ou escolha uma cor e clique em **Salvar**.
 
-![editar a cor da tag](tags_edit_name.png)
+![editar cor da tag](tags_edit_name.png)
 
-Clique em **Deletar** para remover a tag de todas as discussões e enquetes da organização.
+Clique em **Deletar** para remover a tag de todas as conversas e enquetes da organização.
 
 ![deletar tag](tags_delete.png)
 
 <!-- translation-section: edit-tag-in-thread-or-poll -->
 
-### Editar tags em uma discussão ou enquete
+### Editar tag em uma conversa ou enquete
 
-Para alterar as tags de uma discussão ou enquete existente, abra-a e clique no botão de tags ao lado das tags atuais, perto do título.
+Para alterar as tags de uma conversa ou enquete existente, abra a conversa ou enquete e clique no botão de tags ao lado das tags atuais, perto do título.
 
-Selecione as tags que deseja adicionar ou remover. As alterações são salvas imediatamente.
+Selecione tags para adicioná-las ou removê-las. As alterações são salvas imediatamente.
 
-![editar tags em uma discussão](tags_thread_edit.png)
+![editar tags na conversa](tags_thread_edit.png)

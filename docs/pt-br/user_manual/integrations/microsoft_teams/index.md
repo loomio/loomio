@@ -1,14 +1,14 @@
 ---
 title: Microsoft Teams
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/integrations/microsoft_teams/index.md
+source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
+source_file: docs/en/user_manual/integrations/microsoft_teams/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-30'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 905a1586a1f760e0
 generated:
-  introduction: 7bf82ed753fdb588
+  introduction: 970d3a3911c9b948
 title_source: a7b52b269a23c025
 title_generated: a7b52b269a23c025
 ---
@@ -18,14 +18,14 @@ title_generated: a7b52b269a23c025
 # Integração com o Microsoft Teams
 _Conecte as notificações do seu grupo no Loomio ao Microsoft Teams._
 
-O Loomio pode enviar notificações ao Microsoft Teams quando houver novas discussões, propostas, comentários, votos e conclusões.
+O Loomio pode enviar notificações para o seu Microsoft Teams quando houver novas discussões, propostas, comentários, votos e conclusões.
 
 ---
 
 Acesse [https://teams.microsoft.com](https://teams.microsoft.com) e clique em Aplicativos
 ![](t1.png)
 
-Busque por "webhook" no campo de pesquisa e clique em Webhook de entrada
+Pesquise por "webhook" no campo de busca e clique em Webhook de Entrada
 ![](t2.png)
 
 Clique em "Adicionar a uma equipe"
@@ -37,11 +37,11 @@ Digite e selecione o canal em que você quer receber as notificações do Loomio
 Dê um nome, como "Notificações do Loomio", e clique em "Criar"
 ![](t5.png)
 
-Copie a URL fornecida. Você vai inseri-la no Loomio na última etapa.
+Copie a URL fornecida. Você vai colá-la no Loomio na última etapa.
 ![](t6.png)
 
-_O Loomio não foi criado pela Microsoft, não é afiliado a ela e não recebe suporte dela._
+_O Loomio não é criado nem apoiado pela Microsoft e não tem vínculo com ela._
 
-Com a URL do webhook em mãos, continue a configurar sua integração com o chat:
+Agora que você tem uma URL de webhook, continue configurando sua integração de chat:
 
-[Configure uma integração com o chat no Loomio](../chatbots/#set-up-a-chat-integration)
+[Configure uma integração de chat no Loomio](../chatbots/#set-up-a-chat-integration)

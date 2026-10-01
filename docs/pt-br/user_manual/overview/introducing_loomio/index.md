@@ -1,6 +1,6 @@
 ---
 title: Apresentando o Loomio ao seu grupo
-source_revision: 9c60c42fc739483fa23f15d9f34a1e9245518092
+source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
 source_file: docs/en/user_manual/overview/introducing_loomio/index.md
 translated:
   provider: codex/gpt-6.1-sol
@@ -18,17 +18,17 @@ sections:
   use-notifications-deliberately: a532d30c36993c6a
   complete-the-first-process: fd49ec812c1265e7
 generated:
-  introduction: 578de2bd48d19a5c
-  choose-one-useful-starting-point: d020bfe54b53c332
-  prepare-the-group-before-inviting-people: ae5c9759991abd75
-  decide-where-work-belongs: e32c961bf1543b74
-  decide-how-your-group-decides: 3267104df802fa93
-  if-your-process-is-already-established: '0349c2d5eb856f2e'
-  if-your-group-is-still-deciding: 4b5e5d0928b67fa4
-  invite-people: a4d027acaafc5846
-  help-everyone-participate-once: 357e085306dcd5cf
-  use-notifications-deliberately: e10ea3eaf1ecbc01
-  complete-the-first-process: cb5a145ce247ac31
+  introduction: a9ea44f865312ea6
+  choose-one-useful-starting-point: e92b315fbbcad87f
+  prepare-the-group-before-inviting-people: 434194dc636584be
+  decide-where-work-belongs: 65ff8310bc7509fc
+  decide-how-your-group-decides: 4518e6e6a643b525
+  if-your-process-is-already-established: 34d4a9aa37ea8772
+  if-your-group-is-still-deciding: 8e86ffed969a0c76
+  invite-people: 166f02f1865aa46c
+  help-everyone-participate-once: abeafc97f0e863fe
+  use-notifications-deliberately: b7bfa9ac27f87ff5
+  complete-the-first-process: cbf3d777a993e9f5
 title_source: 4f1540fbaadc657b
 title_generated: 91b28f763f27d81c
 ---
@@ -37,146 +37,146 @@ title_generated: 91b28f763f27d81c
 
 # Apresentando o Loomio ao seu grupo
 
-Apresente o Loomio por meio de uma atividade útil. Prepare o grupo antes de convidar as pessoas, ajude cada uma a participar e conduza o processo até uma conclusão.
+Apresente o Loomio por meio de uma atividade útil. Prepare o grupo antes de convidar as pessoas, ajude todos a participar pelo menos uma vez e conduza o processo até uma conclusão.
 
 <!-- translation-section: choose-one-useful-starting-point -->
 
 ## Escolha um ponto de partida útil
 
-Comece com um processo real de que seu grupo já precisa. Para o primeiro uso, escolha algo que possa ser concluído em pouco tempo e seja relevante o bastante para motivar a participação.
+Comece com um processo real de que seu grupo já precisa. Um bom primeiro uso tem um escopo pequeno o suficiente para ser concluído em breve, mas é relevante o suficiente para que as pessoas tenham um motivo para participar.
 
 Por exemplo:
 
-- preparar a pauta de uma próxima reunião;
-- revisar e aprovar a ata de uma reunião;
-- colher comentários sobre a versão preliminar de um documento;
-- decidir uma pequena questão operacional; ou
-- definir as prioridades para o próximo mês.
+- prepare a pauta de uma próxima reunião;
+- revise e aprove atas de reuniões;
+- reúna comentários sobre uma versão preliminar de um documento;
+- decida uma pequena questão operacional; ou
+- identifique prioridades para o próximo mês.
 
-Evite transferir todas as discussões e decisões para o Loomio de uma vez. Um processo que pode ser repetido dá ao grupo um motivo claro para voltar e permite melhorar a forma de conduzi-lo a cada vez.
+Evite transferir todas as discussões e decisões para o Loomio de uma só vez. Um processo que pode ser repetido dá ao grupo um motivo claro para voltar e permite que você melhore a forma de conduzi-lo a cada vez.
 
 <!-- translation-section: prepare-the-group-before-inviting-people -->
 
 ## Prepare o grupo antes de convidar as pessoas
 
-Prepare um espaço útil e fácil de reconhecer para quem chegar:
+Ofereça às pessoas um espaço útil e reconhecível ao chegarem:
 
 - adicione o nome, o logotipo, a imagem de capa, o propósito e os links importantes do grupo;
 - confira a privacidade e as permissões do grupo;
-- adicione as [tags de categoria](/en/user_manual/discussions/tags) que o grupo usará com frequência;
-- crie a primeira discussão real, com as informações necessárias para as pessoas participarem; e
-- crie uma discussão de teste se for útil para os membros experimentarem comentários, reações e votações sem consequências.
+- adicione as [tags de categoria](/en/user_manual/discussions/tags) que o grupo usará regularmente;
+- crie a primeira discussão real, com as informações de que as pessoas precisam para entender o assunto; e
+- crie uma discussão de prática se os membros puderem se beneficiar de experimentar comentários, reações e votos sem consequências.
 
-Use sua própria foto no perfil e o logotipo da organização no grupo. Isso ajuda as pessoas a reconhecer quem as convidou e a identificar a organização mencionada nos e-mails.
+Use sua própria foto no seu perfil e o logotipo da organização no grupo. Isso ajuda as pessoas a reconhecer quem as convidou e a qual organização um e-mail se refere.
 
 <!-- translation-section: decide-where-work-belongs -->
 
-## Decida onde cada atividade acontece
+## Decida onde realizar cada atividade
 
 O Loomio pode ser usado junto com as ferramentas que seu grupo já utiliza:
 
-| Uso | Onde fazer |
+| Uso | Local adequado |
 |---|---|
-| Perguntas rápidas, conversas informais e atualizações oportunas | Um chat, como Slack, Teams, Matrix ou Discord |
-| Edição colaborativa de um documento em constante atualização | Uma ferramenta de documentos compartilhados |
-| Distribuição de tarefas e acompanhamento da sua conclusão | Uma ferramenta de gestão de tarefas ou projetos |
-| Uma discussão focada, ampla participação, uma decisão e seu registro permanente | Loomio |
+| Perguntas rápidas, conversas informais e atualizações oportunas | Chat, como Slack, Teams, Matrix ou Discord |
+| Edição colaborativa de um documento atualizado continuamente | Uma ferramenta de documentos compartilhados |
+| Atribuição de tarefas e acompanhamento de sua conclusão | Uma ferramenta de gestão de tarefas ou projetos |
+| Uma discussão focada, participação ampla, uma decisão e seu registro duradouro | Loomio |
 
-Inclua links para documentos e outros sistemas na descrição do grupo ou no contexto da discussão. Use as [integrações com chats](/en/user_manual/integrations/chatbots) para levar atividades importantes do Loomio a um canal que as pessoas já acompanham.
+Adicione links para documentos e outros sistemas na descrição do grupo ou no contexto da discussão. Use [integrações com chat](/en/user_manual/integrations/chatbots) para levar atividades importantes do Loomio a um canal que as pessoas já acompanham.
 
-Diga aos membros o que você espera que aconteça no Loomio. Uma orientação simples, como “discussões e decisões importantes ficam no Loomio; a coordenação rápida fica no chat”, é mais fácil de seguir do que começar a usar uma nova ferramenta sem explicação.
+Diga aos membros o que você espera que aconteça no Loomio. Uma orientação simples, como “discussões e decisões importantes ficam no Loomio; a coordenação rápida fica no chat”, é mais fácil de adotar do que uma ferramenta nova sem explicação.
 
 <!-- translation-section: decide-how-your-group-decides -->
 
-## Decida como seu grupo toma decisões
+## Defina como seu grupo toma decisões
 
-O Loomio não exige que todos os grupos, ou todas as decisões, sigam o mesmo processo. Alguns grupos já têm regras definidas. Outros usam o Loomio enquanto desenvolvem juntos uma forma mais clara de tomar decisões.
+O Loomio não exige que todos os grupos, ou todas as decisões, usem o mesmo processo. Alguns grupos chegam com regras estabelecidas. Outros usam o Loomio enquanto desenvolvem juntos uma prática mais clara de tomada de decisões.
 
 <!-- translation-section: if-your-process-is-already-established -->
 
-### Se o processo já está definido
+### Se seu processo já está estabelecido
 
-Adapte as regras existentes do grupo ao Loomio. Antes de conduzir uma decisão formal, garanta que os participantes saibam:
+Adapte os requisitos existentes do grupo ao Loomio. Antes de conduzir uma decisão formal, certifique-se de que os participantes saibam:
 
-- que tipos de decisão podem ser tomados no Loomio;
-- quem contribui com opiniões e quem tem autoridade para decidir;
+- quais tipos de decisão podem ser tomados no Loomio;
+- quem contribui e quem tem autoridade para decidir;
 - quem pode votar;
-- se é necessário atingir um [quórum](/en/user_manual/polls/quorum);
-- se a decisão exige maioria, maioria qualificada, unanimidade, consentimento ou outro [percentual de votos exigido](/en/user_manual/polls/vote_share_requirements);
-- se a decisão passa a valer quando sua conclusão é publicada ou se precisa ser ratificada em outro lugar; e
-- quem registrará e executará a conclusão.
+- se é necessário um [quórum](/en/user_manual/polls/quorum);
+- se a decisão exige maioria, maioria qualificada, concordância unânime, consentimento ou outro [requisito de proporção de votos](/en/user_manual/polls/vote_share_requirements);
+- se a decisão entra em vigor quando sua conclusão é publicada ou se precisa ser ratificada em outro espaço; e
+- quem registrará e colocará em prática a conclusão.
 
-Se o estatuto, o regimento, uma política ou a legislação local estabelece regras para decisões eletrônicas, garanta que o processo no Loomio as cumpra. Configure os [votantes delegados](/en/user_manual/groups/delegated_voters), as opções das propostas e os [modelos de enquete](/en/user_manual/polls/poll_templates) para facilitar a repetição do processo acordado.
+Se a constituição, o estatuto, uma política do seu grupo ou a legislação local rege as decisões eletrônicas, certifique-se de que o processo no Loomio siga esses requisitos. Configure [eleitores delegados](/en/user_manual/groups/delegated_voters), as configurações das propostas e os [modelos de enquete](/en/user_manual/polls/poll_templates) para facilitar a repetição do processo acordado.
 
 <!-- translation-section: if-your-group-is-still-deciding -->
 
-### Se seu grupo ainda está decidindo
+### Se seu grupo ainda está definindo como decidir
 
-Inicie uma discussão sobre como as decisões devem ser tomadas. Antes de escolher uma ferramenta de votação, convide o grupo a considerar:
+Inicie uma discussão sobre como as decisões devem ser tomadas. Em vez de começar com uma ferramenta de votação, peça ao grupo que considere:
 
-- Que tipos de decisão tomamos?
+- Que tipos de decisões tomamos?
 - Quem é afetado, quem deve ser consultado e quem é responsável por decidir?
-- Quais decisões exigem aconselhamento, consentimento, consenso, votação ou autoridade delegada?
+- Quais decisões precisam de orientação, consentimento, consenso, um voto ou autoridade delegada?
 - Que nível de participação ou apoio torna uma decisão válida?
-- Como responderemos a objeções, empates ou participação insuficiente?
+- Como responderemos a objeções, resultados empatados ou participação insuficiente?
 - Como comunicaremos, registraremos, revisaremos e alteraremos uma decisão?
 
-As respostas podem variar entre uma decisão operacional, uma política, uma eleição e uma mudança no estatuto. Consulte [Tomando decisões](/en/guides/making_decisions) para comparar diferentes processos completos.
+As respostas podem ser diferentes para uma decisão operacional, uma política, uma eleição e uma alteração estatutária. Consulte [Como tomar decisões](/en/guides/making_decisions) para comparar vários processos completos.
 
-Se o grupo ainda não estiver pronto para definir todas as regras, combine um processo provisório para uma decisão de baixo risco. Explique o que o resultado significará antes de pedir a participação das pessoas. Depois, publique uma conclusão e avalie como o processo funcionou. Registre o que o grupo aprendeu na descrição, nos documentos de governança ou em modelos reutilizáveis.
+Se o grupo ainda não estiver pronto para definir todas as regras, combine um processo provisório para uma decisão de baixo risco. Explique o que os resultados significarão antes de pedir às pessoas que participem, publique uma conclusão e depois avalie como o processo funcionou. Registre o que o grupo aprender na descrição do grupo, nos documentos de governança ou em modelos reutilizáveis.
 
 <!-- translation-section: invite-people -->
 
 ## Convide as pessoas
 
-[Convide as pessoas](/en/user_manual/groups/inviting_people) com uma mensagem pessoal e breve que explique:
+[Convide as pessoas](/en/user_manual/groups/inviting_people) com uma mensagem pessoal curta que explique:
 
 - por que o grupo está usando o Loomio;
-- o que você está pedindo que façam primeiro;
-- até quando você precisa de uma resposta; e
-- onde podem obter ajuda.
+- o que você está pedindo que elas façam primeiro;
+- quando você precisa da resposta delas; e
+- onde elas podem obter ajuda.
 
-Você pode começar com um pequeno grupo de pessoas que testarão o processo ou convidar o grupo inteiro quando todos precisarem participar desde o início. Em qualquer caso, tenha uma discussão pronta para elas antes de enviar os convites.
+Você pode começar com um pequeno grupo de pessoas que testarão ativamente o processo ou convidar o grupo inteiro quando todos precisarem participar desde o início. Em qualquer caso, deixe uma discussão pronta para elas, em vez de convidá-las para um grupo vazio.
 
 <!-- translation-section: help-everyone-participate-once -->
 
-## Ajude cada pessoa a participar uma vez
+## Ajude todos a participar pelo menos uma vez
 
-O primeiro objetivo é ajudar cada pessoa a passar de receber um convite a fazer alguma contribuição.
+O primeiro objetivo é que cada pessoa passe do recebimento de um convite à contribuição de algo.
 
 Peça às pessoas que:
 
-1. entrem no Loomio e adicionem uma foto de perfil;
-2. abram a discussão de boas-vindas ou de teste;
+1. entrem e adicionem uma foto de perfil;
+2. abram a discussão de boas-vindas ou de prática;
 3. publiquem um comentário curto ou uma reação; e
-4. votem em uma proposta de baixo risco e, se for útil, expliquem o motivo.
+4. votem em uma proposta de baixo risco e, se for útil, deixem um motivo.
 
-Os membros não precisam criar uma senha. Eles podem [entrar por e-mail](/en/user_manual/users/signing_in) e responder aos e-mails de discussões que permitem respostas, sem precisar voltar à conversa primeiro.
+Os membros não precisam criar uma senha. Eles podem [entrar por e-mail](/en/user_manual/users/signing_in) e responder aos e-mails de discussão que permitem respostas sem precisar voltar à conversa primeiro.
 
 <!-- translation-section: use-notifications-deliberately -->
 
-## Use as notificações de forma deliberada
+## Use as notificações de forma consciente
 
-O acesso ao conteúdo e as notificações sobre ele funcionam separadamente. Os membros podem encontrar as discussões do grupo mesmo quando não recebem uma notificação imediata.
+O acesso ao conteúdo e as notificações sobre ele são coisas distintas. Os membros podem encontrar discussões no seu grupo mesmo quando não recebem uma notificação imediata.
 
-Ao iniciar uma discussão, notifique as pessoas cuja contribuição é necessária nessa etapa. Use @menções e respostas para pedir a participação de pessoas específicas. Quando a votação começar, convide quem pode votar.
+Ao iniciar uma discussão, notifique as pessoas cuja contribuição é necessária nessa etapa. Use @menções e respostas ao pedir que pessoas específicas respondam. Quando a votação for aberta mais tarde, convide os eleitores que podem votar.
 
-Se você criar uma discussão e uma enquete juntas apenas para colher votos, evite enviar um convite para a discussão seguido imediatamente por outro para a enquete. Inicie a discussão sem notificar as pessoas e convide-as pela enquete, ou faça uma [enquete independente](/en/user_manual/polls/intro_to_decisions#without-a-discussion).
+Se você criar uma discussão e uma enquete juntas apenas para registrar uma votação, evite enviar um convite para a discussão seguido imediatamente de um convite para a enquete. Inicie a discussão sem notificar as pessoas e convide-as pela enquete, ou realize uma [enquete independente](/en/user_manual/polls/intro_to_decisions#without-a-discussion).
 
-Mostre aos membros as [configurações de resumo e notificações](/en/user_manual/users/email_settings), especialmente se eles não pretendem acessar o Loomio todos os dias.
+Mostre aos membros as [configurações de acompanhamento e notificações](/en/user_manual/users/email_settings), especialmente se eles não pretendem acessar o Loomio todos os dias.
 
 <!-- translation-section: complete-the-first-process -->
 
 ## Conclua o primeiro processo
 
-O primeiro processo deve mostrar todas as etapas:
+O primeiro processo deve demonstrar todas as etapas:
 
-1. Apresente o assunto e forneça o contexto.
+1. Apresente o assunto e forneça contexto.
 2. Convide as pessoas a discutir ou fazer perguntas quando necessário.
 3. Inicie a proposta ou enquete adequada.
-4. Lembre quem ainda não participou, se necessário.
-5. Publique uma [conclusão](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome) que diga o que foi decidido e quais são os próximos passos.
+4. Envie lembretes às pessoas que ainda não participaram quando necessário.
+5. Publique uma [conclusão](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome) informando o que foi decidido e quais são os próximos passos.
 
-A conclusão encerra o processo e cria um registro que os membros podem consultar depois. Em seguida, pergunte o que funcionou, ajuste o processo e escolha a próxima atividade recorrente para realizar no Loomio.
+A conclusão completa o ciclo e cria um registro que os membros podem consultar mais tarde. Depois, pergunte o que funcionou, ajuste o processo e escolha a próxima atividade recorrente a realizar no Loomio.
 
-Para seguir um processo conduzido da discussão à decisão, consulte [Tomando decisões](/en/guides/making_decisions). Para práticas específicas de conselhos, consulte [Apresentando o Loomio ao seu conselho](/en/guides/board_processes/introduce).
+Para uma sequência facilitada da discussão à decisão, consulte [Tomando decisões](/en/guides/making_decisions). Para práticas específicas de conselhos, consulte [Apresentando o Loomio ao seu conselho](/en/guides/board_processes/introduce).
