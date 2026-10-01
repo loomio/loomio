@@ -1,10 +1,10 @@
 ---
 title: Práctica continua
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/guides/facilitators_guide/ongoing_practice/index.md
+source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
+source_file: docs/en/guides/facilitators_guide/ongoing_practice/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-30'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 7bc759fcb1aad21e
   continuous-improvement: 63ab99fd05c7fe85
@@ -14,11 +14,11 @@ sections:
   culture-change: 22420d1e20a424ba
 generated:
   introduction: bf8b43cb9df4e3c3
-  continuous-improvement: 3f174863d9d0c643
-  distributed-facilitation-self-facilitation: cb9030fa1c5e9f11
-  translating-this-into-loomio: 6adbef28335ccfb1
-  the-art-of-being-facilitated: bae115a6a00cc376
-  culture-change: 1fbaf4dbb2bea6ca
+  continuous-improvement: 3eee4ec4bbcd1620
+  distributed-facilitation-self-facilitation: 8553827c05fea8a5
+  translating-this-into-loomio: a4fd9941ff45dd09
+  the-art-of-being-facilitated: cf0867f6accc4675
+  culture-change: 8d5b2c8d81752b51
 title_source: 98f1cbf7fd6448a5
 title_generated: ed8ce46f3b7a2c94
 ---
@@ -33,76 +33,76 @@ title_generated: ed8ce46f3b7a2c94
 
 ## Mejora continua
 
-Por muy bueno que sea un grupo o quien lo facilita, siempre puede mejorar. Avanzar poco a poco en una buena dirección permite llegar más lejos. La mejora gradual requiere una forma eficaz de hablar sobre cómo colaboráis. Con ella, se abren muchas posibilidades. Sin ella, el grupo se estanca.
+Por muy competente que sea un grupo o una persona facilitadora, siempre puede mejorar. Si avanza poco a poco en una buena dirección, llegará a una situación mejor. La mejora gradual requiere un método eficaz para conversar sobre cómo colaboras. Con él, todo es posible. Sin él, te estancas.
 
-Hay muchas formas de mejorar continuamente. Todas ofrecen espacio para reflexionar, recibir comentarios y hacer cambios a partir de ellos. Los equipos que trabajan juntos de forma habitual pueden usar una metodología como <a href="https://en.wikipedia.org/wiki/Scrum_(software_development)" target="_blank">scrum</a>, con retrospectivas y mejoras periódicas del proceso. Después de una sesión puntual, quien la facilita puede simplemente pedir comentarios.
+Hay muchos enfoques para la mejora continua, pero todos crean un espacio para la reflexión y los comentarios, y una forma de introducir cambios en respuesta. Los equipos que trabajan juntos de forma continua pueden emplear una metodología como <a href="https://en.wikipedia.org/wiki/Scrum_(software_development)" target="_blank">scrum</a>, que incluye retrospectivas y mejoras periódicas de los procesos. Para una sesión puntual, una persona facilitadora puede limitarse a pedir comentarios después.
 
 En Loomio
 
-* Las personas usan Loomio para hablar sobre cómo usan Loomio. Es un espacio natural para «hablar sobre cómo hablamos».
-* Al empezar a usar Loomio, los grupos reflexionan sobre muchos aspectos de su colaboración y su forma de tomar decisiones. Esto les da oportunidades para mejorar.
+* Las personas usan el propio Loomio para hablar de cómo lo utilizan. Ofrece una plataforma evidente para «hablar sobre cómo hablamos».
+* El proceso de incorporarse a Loomio lleva a los grupos a reflexionar sobre muchos aspectos de la colaboración y del proceso de toma de decisiones, lo que crea oportunidades para mejorar.
 
 <!-- translation-section: distributed-facilitation-self-facilitation -->
 
-## Facilitación distribuida y autofacilitación
+## Facilitación distribuida / Autofacilitación
 
-A medida que un grupo adquiere experiencia, más personas desarrollan habilidades de facilitación. La facilitación puede dejar de ser una función de una sola persona y repartirse entre varias. Cualquiera puede contribuir a facilitar. Entre quienes participan puede surgir una dinámica de dar y recibir, de guiar y seguir. Conviene fomentar esta práctica en los grupos que aspiran a compartir el liderazgo y evitar las jerarquías.
+A medida que un grupo adquiere experiencia, más personas desarrollan habilidades de facilitación. La facilitación puede dejar de ser un rol que ocupa una persona concreta y convertirse en una función que se puede repartir. Cualquier persona puede realizar acciones de facilitación, y entre los participantes puede surgir una dinámica de dar y recibir, de guiar y seguir. Para los grupos que aspiran a un liderazgo compartido y a una organización sin jerarquías, es muy importante fomentar esta práctica.
 
-Quienes tienen menos experiencia en la facilitación pueden recibir formación, invitaciones y sugerencias para dar los primeros pasos. Casi cualquier persona puede probar acciones como estas:
+Se puede apoyar a las personas menos acostumbradas a realizar acciones de facilitación mediante formación, invitaciones y sugerencias de primeros pasos. Algunos ejemplos de acciones de facilitación que casi cualquier persona puede animarse a probar:
 
-* repetir con tus palabras lo que has escuchado o resumirlo
+* expresar lo que estás escuchando o resumirlo
 * invitar a otras personas a contribuir
 * hacer preguntas para mejorar la comprensión colectiva
 * observar quién participa y quién no
-* reconocer expresamente las contribuciones
+* reconocer explícitamente las contribuciones
 
-> <img style="border-radius: 100%; float: right; margin-left: 0.5em; max-width: 96px; " src="../silvia_200.png"> No necesitas un orden del día para facilitar. Facilitar consiste en ayudar a que un grupo funcione bien. La próxima vez que estés en una reunión familiar, una fiesta o un encuentro para tomar algo, actúa como facilitador y procura que todas las personas se sientan incluidas y puedan participar. — Silvia Zuur
+> <img style="border-radius: 100%; float: right; margin-left: 0.5em; max-width: 96px; " src="../silvia_200.png"> No necesitas un orden del día para facilitar. Facilitar consiste simplemente en hacer más fácil una situación grupal. La próxima vez que estés en una reunión familiar, una fiesta o un desayuno: adopta el enfoque de una persona facilitadora y asegúrate de que todas las personas del grupo se sientan incluidas y puedan participar. — Silvia Zuur
 
-La facilitación distribuida puede funcionar muy bien, pero también puede hacer que las personas se estorben entre sí. Al principio puede resultar incómoda mientras aprenden a coordinarse. Conviene distinguir entre la facilitación distribuida (personas que ayudan al grupo), la «facipulación» (manipular al grupo para promover tus propios objetivos) y la facilitación sin mandato (intervenir como facilitador sin tener autorización para hacerlo).
+La facilitación distribuida puede funcionar muy bien, pero también puede hacer que las personas interfieran unas con otras. Al principio resulta incómoda, mientras se aprende esta dinámica. Es importante distinguir entre la facilitación distribuida (personas que ayudan al colectivo como iguales), la «facipulación» (manipular al grupo para favorecer tus propios objetivos) y la facilitación sin mandato (realizar acciones de facilitación cuando no se te ha encomendado esa función).
 
-Decide de forma consciente cuándo conviene que el grupo comparta la facilitación y cuándo hace falta una persona encargada de ella. La facilitación distribuida puede no funcionar si hay poca confianza o si una discusión muy conflictiva requiere una persona neutral designada.
+Decide conscientemente cuándo la facilitación entre iguales es una buena opción y cuándo hace falta una persona facilitadora concreta. En determinadas situaciones, como una discusión con mucho conflicto que requiere una persona neutral designada, o cuando falta confianza, la facilitación distribuida puede no funcionar.
 
-> <img style="border-radius: 100%; float: right; margin-left: 0.5em; max-width: 96px; " src="../rich_200.png"> Facilitar no es tarea exclusiva de quien dirige el equipo o convocó la reunión: es algo que todas las personas pueden hacer. — Richard Bartlett
+> <img style="border-radius: 100%; float: right; margin-left: 0.5em; max-width: 96px; " src="../rich_200.png"> Las acciones de facilitación no corresponden solo a quien dirige o a quien convocó la reunión — son para todas las personas. — Richard Bartlett
 
 <!-- translation-section: translating-this-into-loomio -->
 
-## Cómo llevar esto a Loomio
+## Aplicar esto en Loomio
 
-* El espacio en línea se presta especialmente a la facilitación distribuida. Distintas personas pueden intervenir en distintos momentos según lo que observen y las habilidades que tengan.
-* Una discusión en línea es, por defecto, una colaboración distribuida entre iguales. Cualquier otra forma de organizarla requiere una decisión explícita. En los espacios presenciales suele ocurrir lo contrario: alguien convoca la reunión y compartir la facilitación exige tomar la iniciativa.
-* Loomio está diseñado pensando en un grupo de iguales. Por eso, la facilitación distribuida encaja bien con la herramienta.
-* Quienes usan Loomio facilitan la participación de otras personas constantemente, aunque no siempre lo llamen así. Sugerir que alguien presente una propuesta, etiquetar a otras personas o resumir el proceso hasta ese momento son formas de facilitar.
+* El espacio en línea es especialmente adecuado para la facilitación distribuida. Distintas personas pueden intervenir en distintos momentos, según lo que observen y las habilidades que tengan.
+* Una discusión en línea es, por defecto, una colaboración distribuida entre iguales. Cualquier otra organización requiere un diseño explícito. En los espacios presenciales ocurre lo contrario: por defecto, alguien ha convocado una reunión y repartir el rol requiere iniciativa.
+* Loomio está diseñado pensando en un grupo de iguales. En muchos sentidos, la facilitación distribuida es el enfoque que mejor encaja con la herramienta.
+* Las personas que usan Loomio practican la facilitación entre iguales constantemente, sean conscientes de ello o no. Acciones sencillas como sugerir que alguien plantee una propuesta, mencionar a otras personas o resumir el proceso hasta ese momento son acciones de facilitación.
 
 <!-- translation-section: the-art-of-being-facilitated -->
 
 ## El arte de dejarse facilitar
 
-Dejarse facilitar también requiere práctica, como seguir a tu pareja en un baile de salón. Quienes han facilitado procesos o han participado en muchos procesos bien facilitados responden a la facilitación de otra manera que quienes no tienen esa experiencia.
+Al igual que seguir a tu pareja en un baile de salón requiere habilidad, dejarse facilitar es un arte en sí mismo. Las personas con experiencia en facilitación, o que han participado en muchos procesos bien facilitados, reciben la facilitación de forma distinta a quienes no tienen esa experiencia.
 
-La capacidad de responder bien a la facilitación se puede desarrollar y puede influir mucho en el éxito de un grupo. Abarca desde llegar a tiempo y seguir indicaciones hasta estar dispuesto a probar nuevas formas de pensar o comunicarse. A veces, las personas disfrutan de un proceso sin saber muy bien por qué. Señalar que la facilitación contribuyó a que fuera fluido o profundo puede ayudarlas a reconocer qué valoraron de la experiencia.
+En el lado positivo, la receptividad a la facilitación es una capacidad que se puede desarrollar y que puede influir mucho en el éxito del grupo. Abarca desde cosas tan sencillas como llegar a tiempo o seguir instrucciones hasta estar dispuesto a probar una nueva forma de pensar o comunicarse. A veces las personas tienen una buena experiencia y no saben muy bien por qué. Señalar que la facilitación ha permitido que el proceso fluya o alcance mayor profundidad puede ayudarles a entender qué valoraron de él.
 
-Por otra parte, cuando alguien no puede o no quiere dejarse facilitar, la colaboración del grupo puede resentirse. Por mucha experiencia que tenga quien facilita, no podrá hacer bien su trabajo si encuentra demasiada resistencia. Entre los problemas habituales están acaparar la discusión, llevar la contraria por sistema, interrumpir el proceso, faltar al respeto a quien facilita o a otras personas, y desentenderse. Cada persona debe asumir cierta responsabilidad por su disposición a dejarse facilitar.
+En el lado negativo, las personas que no pueden o no quieren dejarse facilitar pueden perjudicar la colaboración del grupo. Por muy hábil que sea una persona facilitadora, si encuentra cierto nivel de resistencia no podrá hacer su trabajo. Entre los problemas habituales están dominar la discusión, hacer de abogado del diablo, interrumpir el proceso, faltar al respeto a la persona facilitadora o a los participantes, o no implicarse. Cada persona debe asumir cierta responsabilidad por la disposición a dejarse facilitar.
 
 En Loomio
 
-* Con un poco de práctica, la mayoría de quienes usan Loomio aprenden pronto a responder a las acciones de facilitación, por ejemplo, contestando cuando alguien les menciona con @.
-* Facilitar en Loomio ayuda a las personas a responder mejor cuando otras facilitan.
-* Como todo queda archivado, las personas pueden observar acciones de facilitación anteriores, aunque no estuvieran presentes cuando ocurrieron.
+* Con un poco de práctica, la mayoría de las personas que usan Loomio aprenden rápidamente a responder a las acciones de facilitación, por ejemplo, respondiendo cuando alguien las menciona con @.
+* Realizar acciones de facilitación en Loomio ayuda a las personas a ser más receptivas a la facilitación.
+* Como todo queda archivado, las personas pueden ver acciones de facilitación anteriores «congeladas en el tiempo» y aprender al observarlas sin haber estado presentes.
 
 <!-- translation-section: culture-change -->
 
 ## Cambio cultural
 
-Una cultura colaborativa y participativa surge con el tiempo, mediante la práctica, los intentos y los errores. Comprender, valorar y promover la facilitación puede ser decisivo para desarrollarla. La facilitación puede pasar de ser una función asignada a una persona, a una tarea compartida y, después, a una forma de pensar. En una cultura verdaderamente colaborativa, todas las personas ayudan a las demás a participar de muchas maneras.
+Una cultura colaborativa y participativa surge con el tiempo, con mucha práctica y mediante ensayo y error. Comprender, valorar e invitar a la facilitación puede desempeñar un papel fundamental en la aparición de esta cultura. La facilitación puede evolucionar de un rol a una función y después a una forma de pensar. Una cultura verdaderamente colaborativa es aquella en la que todas las personas facilitan la participación de las demás de muchas formas distintas.
 
-¿Participa todo el mundo en la fiesta de la empresa? ¿La comida compartida de la oficina se organiza como por arte de magia? ¿Pueden surgir ideas de cualquier persona, desarrollarse con las aportaciones de muchas otras y llevarse a la práctica de una forma mejor de lo que nadie imaginó al principio?
+¿La fiesta de la empresa es participativa? ¿La comida compartida de la oficina se organiza como por arte de magia? ¿Pueden las ideas surgir de cualquier parte, desarrollarse con las aportaciones de muchas personas y ponerse en práctica de una forma mejor de lo que nadie había imaginado al principio?
 
-Un cambio cultural profundo ocurre cuando la colaboración sale de los espacios dedicados expresamente a ella y aparece en todos los ámbitos de la organización. La colaboración va más allá de las notas adhesivas y las rondas de apertura: forma parte de la vida cotidiana de la organización.
+El cambio cultural profundo ocurre cuando la cultura de colaboración empieza a extenderse más allá de los espacios específicos de «colaboración» y aparece en todos los aspectos de la organización. La colaboración va más allá de las notas adhesivas y las rondas para saber cómo está cada persona: forma parte del carácter de la vida de la organización.
 
 En Loomio
 
-* La [teoría del cambio de Loomio](http://www.loomio.com/about) plantea que, si más grupos practican una toma de decisiones eficaz e inclusiva, pueden cambiar las dinámicas de las organizaciones a escala mundial. Esta idea se refleja en el diseño de la herramienta y en [cómo nos organizamos como cooperativa](http://loomio.coop). El objetivo es cambiar la cultura mediante la práctica colaborativa.
-* Algunos grupos han visto evolucionar su cultura con Loomio. Por ejemplo, grupos que crecieron sin perder su cultura colaborativa, o grupos participativos que pudieron mantenerse unidos pese a las dificultades de tomar decisiones inclusivas.
-* Loomio ayuda a que ciertas prácticas colaborativas se vuelvan habituales, al hacerlas más accesibles y fáciles de llevar a cabo.
+* La [teoría del cambio de Loomio](http://www.loomio.com/about) plantea que, si más grupos practican una toma de decisiones eficaz e inclusiva, pueden cambiar las dinámicas organizativas a escala mundial. Esto se refleja tanto en el diseño de la herramienta como en [cómo funcionamos como cooperativa](http://loomio.coop). El objetivo es lograr un cambio cultural mediante la práctica colaborativa.
+* Los grupos de Loomio han experimentado cambios en la cultura del grupo a través de la herramienta. Por ejemplo, grupos que ya tenían una cultura colaborativa han crecido sin perderla, y grupos participativos han logrado mantenerse en lugar de desintegrarse por las dificultades de una toma de decisiones inclusiva.
+* Loomio hace posible que la práctica colaborativa se convierta en una «nueva normalidad», al hacerla más accesible y viable.
 
-Si buscas inspiración sobre la práctica continua, lee las [historias de grupos de Loomio](https://blog.loomio.com/?utm_campaign=facilitators_guide_help&utm_term=help).
+Para encontrar inspiración sobre la práctica continua, consulta las [historias de grupos de Loomio](https://blog.loomio.com/?utm_campaign=facilitators_guide_help&utm_term=help).

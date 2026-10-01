@@ -1,10 +1,10 @@
 ---
 title: Proceso de consenso
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/guides/making_decisions/consensus_process.md
+source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
+source_file: docs/en/guides/making_decisions/consensus_process.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-30'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 28806ba051102030
   key-points: 4a0e2e253a175fb9
@@ -19,18 +19,18 @@ sections:
   step-4-agreement: 6245b14acb3654c7
   step-5-outcome: c398241dcfeb89ef
 generated:
-  introduction: 53d054704fe157ea
-  key-points: ead33ba5bafdb9f5
-  consensus-process-steps: d01a20a50f51dd56
-  benefits: 4623ba5601fb7f74
-  applying-the-consensus-process-on-loomio: 7dde5f5debcd9aa8
+  introduction: caa7b30acf5df762
+  key-points: ea6d05d1b15da5a6
+  consensus-process-steps: f933ef60f59763a7
+  benefits: b269d0bacd67b307
+  applying-the-consensus-process-on-loomio: eda959345b298bec
   example-of-a-consensus-process-on-loomio: 232b663141bcde3c
-  step-0-you-notice-a-problem-or-opportunity-and-take-the-initiative: e6d7f45faf740906
-  step-1-state-the-problem-or-issue: c5bd0b6b7f364a21
-  step-2-present-a-proposal: f00226b2fad7068e
-  step-3-amendment: f4135c5778af701b
-  step-4-agreement: a878e92f71f03a64
-  step-5-outcome: 7edff5cf79d4ca7f
+  step-0-you-notice-a-problem-or-opportunity-and-take-the-initiative: 20f0f6c0b4bdd4d4
+  step-1-state-the-problem-or-issue: 54eb8371d3e87bfb
+  step-2-present-a-proposal: a5e69fb9b18defe3
+  step-3-amendment: 32812aa3d92489d6
+  step-4-agreement: 98ba5ac430428102
+  step-5-outcome: bd58643128098c13
 title_source: 688b46cc92fcb129
 title_generated: eb488319b61686cb
 ---
@@ -39,47 +39,49 @@ title_generated: eb488319b61686cb
 
 # Proceso de consenso
 
-Esta guía describe el proceso de consenso completo. Si necesitas ayuda para configurar e interpretar una propuesta de consenso, consulta [Consenso](/en/user_manual/polls/proposals/consensus/).
+Esta guía describe el proceso de consenso completo. Para obtener ayuda sobre cómo configurar e interpretar una propuesta de consenso, consulta [Consenso](/en/user_manual/polls/proposals/consensus/).
 
 ![Foto de Aaron Burden en Unsplash *Foto de Aaron Burden en Unsplash*](aaron-burden-NXt5PrOb_7U-unsplash.jpg)
 
-Llega a un acuerdo colectivo con todas las personas implicadas.
+Alcanza un acuerdo colectivo con todas las personas involucradas.
 
-Construye un consenso sobre una decisión que debéis tomar en conjunto. Busca un acuerdo que atienda las necesidades e inquietudes de todas las personas participantes.
+Construye un consenso para una decisión que necesitáis tomar en conjunto, para alcanzar un acuerdo que satisfaga las necesidades y preocupaciones de todos los participantes.
 
-> *«El consenso es el proceso: un proceso participativo en el que un grupo piensa y siente en conjunto mientras avanza hacia una decisión». - Sam Kaner, Community at Work*
+> *“El consenso es el proceso: un proceso participativo mediante el cual un grupo piensa y siente en conjunto, en camino hacia una decisión.” - Sam Kaner, Community at Work*
 
 <!-- translation-section: key-points -->
 
 ## Puntos clave
-- Debatir y elaborar una propuesta en conjunto
-- Incluir y respetar a todas las personas implicadas
-- Buscar el acuerdo de la mayoría
+- Debate y desarrolla una propuesta en conjunto
+- Incluye y respeta a todas las personas involucradas
+- Busca el acuerdo de la mayoría de las personas
 
 **El consenso suele utilizarse en:**
-- Equipos de trabajo que buscan comprender en conjunto un problema o una oportunidad, colaborar en una propuesta y decidir qué hacer.
-- Decisiones de juntas directivas que actúan de forma conjunta, como las relacionadas con la visión, las políticas, la planificación estratégica y el presupuesto.
-- Asambleas generales ordinarias y otras asambleas generales en las que los miembros y otras partes interesadas buscan un acuerdo amplio sobre decisiones importantes, como cambios en los estatutos, transacciones de gran alcance y elecciones de integrantes de la junta o del consejo.
+- Equipos de trabajo que desarrollan una comprensión compartida de un problema u oportunidad, colaboran en una propuesta y deciden cómo actuar.
+- Decisiones del consejo de administración en las que el consejo demuestra que actúa de forma conjunta, como las decisiones sobre la visión, las políticas, la planificación estratégica y el presupuesto.
+- Asambleas generales anuales y otras asambleas generales en las que los miembros y las partes interesadas buscan un acuerdo general para decisiones importantes, como modificaciones de los estatutos, operaciones de gran envergadura y la elección de directores o miembros del consejo.
 
-**Funciones habituales:**
-- Designar a una persona facilitadora. En las reuniones de la junta, suele ser quien la preside.
-- Contar con la participación del quórum o de la mayoría cualificada de miembros que establezcan los estatutos de la organización.
+**Roles habituales:**
+- Designa a una persona facilitadora. En las reuniones del consejo, suele ser quien ocupa la presidencia.
+- La participación de un quórum o una mayoría cualificada de miembros, según lo establecido en los estatutos de la organización.
 
 <!-- translation-section: consensus-process-steps -->
 
 ## Pasos del proceso de consenso
-1. Plantea el asunto que hay que decidir: inicia una **discusión** en Loomio.
-2. Presenta una propuesta para comprobar si hay consenso: inicia una **propuesta de comprobación de sentido**.
-3. Aclara las dudas, invita a hacer modificaciones constructivas y modifica la propuesta.
+
+1. Expón el asunto que hay que decidir: inicia una **discusión** en Loomio.
+2. Presenta una propuesta para comprobar si hay consenso: inicia una **propuesta de toma de pulso**.
+3. Aclara cualquier punto, invita a plantear modificaciones constructivas y modifica la propuesta.
 4. Comprueba si hay acuerdo: inicia una **propuesta de consenso**.
-5. Conclusión: comunica la **conclusión** de la decisión.
+5. Conclusión: establece la **Conclusión** de la decisión.
 
 <!-- translation-section: benefits -->
 
-## Ventajas
-- Desarrollar una comprensión compartida.
-- Tomar decisiones que expresen la voluntad colectiva del grupo.
-- Animar a las personas a valorar al grupo por encima de sus preferencias individuales.
+## Beneficios
+
+- Amplía la comprensión compartida.
+- Toma decisiones que reflejen la voluntad colectiva del grupo.
+- Anima a las personas a valorar al grupo por encima de las preferencias personales.
 
 <!-- translation-section: applying-the-consensus-process-on-loomio -->
 
@@ -88,11 +90,11 @@ Construye un consenso sobre una decisión que debéis tomar en conjunto. Busca u
 | **Proceso de consenso** | **En Loomio** |
 |---|---|
 | Detectas un problema o una oportunidad y tomas la iniciativa. |  |
-| **Plantear el asunto que hay que decidir**  <br /><br />Aporta información de contexto y abre una discusión amplia para desarrollar una comprensión compartida. Presta atención a las propuestas que vayan surgiendo. | Inicia una discusión en Loomio. <br /><br />Indica el tema en el título de la discusión y explica qué esperas conseguir. <br /><br />Adjunta información de contexto o incluye enlaces a ella. Invita a las personas a hacer preguntas, aportar información y escribir comentarios. |
-| **Presentar una propuesta** <br /><br />Comprueba si hay consenso. | Inicia una [propuesta de comprobación de sentido](/en/user_manual/polls/proposals/sense_check/). <br /><br />*En el título:* Nombra la propuesta. <br /><br />*En los detalles de la propuesta:* Expón claramente la propuesta y explica por qué es importante. Incluye la información de contexto necesaria y un enlace a la propuesta. <br /><br />Invita a todas las personas a responder antes de que se cierre la propuesta. |
-| **Modificación** <br /><br />Debate, aclara y modifica la propuesta. <br /><br />Intenta comprender y resolver las objeciones. <br /><br />Invita a quienes tengan objeciones a proponer cambios constructivos y viables a la decisión o al curso de acción planteado. | Facilita la discusión en el hilo para atender las inquietudes y modificar la propuesta. |
-| **Acuerdo** <br /><br />¿Hay acuerdo? Comprueba estas respuestas: <br /><br />De acuerdo: Apoyo la propuesta. <br /><br />Abstenerse: Esta decisión no me afecta y estoy conforme con lo que decida el grupo. <br /><br />Desacuerdo: Hay algo en la propuesta que debe cambiar antes de que pueda apoyarla. <br /><br />Bloquear: Tengo un desacuerdo fundamental con la propuesta que no se puede resolver. | Inicia una [propuesta de consenso](/en/user_manual/polls/proposals/consensus/) con la versión actual de la propuesta. <br /><br />*En el título:* Nombra la decisión que hay que tomar. <br /><br />*En los detalles de la propuesta:* Presenta la propuesta e invita a las personas a votar. <br /><br />Explica claramente qué significa llegar a un acuerdo. Por ejemplo: «Para aprobar esta propuesta, todas las personas deben votar De acuerdo» o «Para aprobar esta propuesta, el 75 % de los miembros deben votar De acuerdo». <br /><br />Pide a las personas participantes que indiquen una «Razón» al votar. Si no están de acuerdo, pídeles que expliquen por qué y qué tendría que cambiar para que pudieran estarlo. <br /><br />Algunas organizaciones también utilizan la opción de voto Bloquear (o veto). <br /><br />Mientras avanza la votación, responde a los comentarios, publica actualizaciones, cierra la propuesta antes de tiempo o deja que llegue a su fecha de cierre. <br /><br />Las personas participantes pueden *«cambiar su voto»* hasta que se cierre la propuesta, por ejemplo, si aparece nueva información durante la votación. |
-| **Conclusión** <br /><br />Indica si se llegó a un acuerdo y cuál fue la decisión. <br /><br />Pon en práctica la decisión y planifica las acciones necesarias. | Examina los resultados de la votación y comunica la decisión. <br /><br />Resume los resultados del proceso y explica qué sucederá después. <br /><br />Si los resultados no son concluyentes, puedes reabrir la discusión e iniciar una nueva propuesta. <br /><br />La conclusión deja constancia de la decisión para futuras consultas. |
+| **Expón el asunto que hay que decidir** <br /><br />Proporciona información de contexto y abre una discusión amplia para desarrollar una comprensión compartida. Busca propuestas que vayan surgiendo. | Inicia una discusión en Loomio <br /><br />Indica en el título de la discusión el tema que se va a tratar y lo que esperas conseguir. <br /><br />Adjunta información de contexto o incluye enlaces a ella. Invita a las personas a hacer preguntas, aportar información y escribir comentarios. |
+| **Presenta una propuesta** <br /><br />Comprueba si hay consenso. | Inicia una [propuesta de toma de pulso](/en/user_manual/polls/proposals/sense_check/). <br /><br />*En el título:* Da un nombre a la propuesta. <br /><br />*En los detalles de la propuesta:* Expón claramente la propuesta y explica por qué es importante. Incluye la información de contexto necesaria y un enlace a la propuesta. <br /><br />Invita a todas las personas a responder antes de que se cierre la propuesta. |
+| **Modificación** <br /><br />Debate, aclara y modifica la propuesta. <br /><br />Busca comprender y resolver cualquier objeción. <br /><br />Invita a quienes planteen objeciones a proponer una modificación constructiva y práctica de la decisión o del curso de acción propuesto. | Facilita la discusión en el hilo para abordar las preocupaciones y modificar la propuesta. |
+| **Acuerdo** <br /><br />¿Hay acuerdo? Comprueba estas posiciones: <br /><br />De acuerdo: Apoyo la propuesta. <br /><br />Abstención: Esta decisión no me afecta y me parece bien lo que decida el grupo. <br /><br />En desacuerdo: Hay algo en la propuesta que debe cambiar antes de que pueda apoyarla. <br /><br />Bloqueo: Tengo un desacuerdo fundamental con la propuesta que no se puede resolver. | Inicia una [propuesta de consenso](/en/user_manual/polls/proposals/consensus/) con la versión actual de la propuesta. <br /><br />*En el título:* Indica la decisión que hay que tomar. <br /><br />*En los detalles de la propuesta:* Presenta la propuesta e invita a las personas a votar. <br /><br />Incluye una explicación clara de lo que significa alcanzar un acuerdo, por ejemplo: 'para aprobar esta propuesta, necesitamos que todas las personas voten De acuerdo' o 'para aprobar esta propuesta, necesitamos que el 75% de los miembros estén de acuerdo'. <br /><br />Pide a los participantes que indiquen un 'Motivo' para el voto y, si no están de acuerdo, que expliquen por qué y qué debe cambiar para que estén de acuerdo. <br /><br />Algunas organizaciones también utilizan la opción de voto Bloqueo (o veto). <br /><br />A medida que avance la votación, responde a los comentarios, publica actualizaciones, cierra la propuesta antes de tiempo o deja que continúe hasta el cierre previsto. <br /><br />Los participantes pueden *“cambiar el voto”* hasta la hora de cierre de la propuesta, por ejemplo, en respuesta a nueva información que llegue durante la votación. |
+| **Conclusión** <br /><br />Indica si se alcanzó un acuerdo y qué decisión se tomó. <br /><br />Pon en práctica la decisión y planifica las acciones que se llevarán a cabo. | Considera los resultados de la votación e indica la decisión tomada. <br /><br />Resume los resultados del proceso y explica qué ocurrirá después. <br /><br />Si los resultados no son concluyentes, puedes optar por reabrir la discusión e iniciar una nueva propuesta. <br /><br />El texto de la conclusión es un registro importante de la decisión para futuras consultas. |
 
 <!-- translation-section: example-of-a-consensus-process-on-loomio -->
 
@@ -102,17 +104,17 @@ Construye un consenso sobre una decisión que debéis tomar en conjunto. Busca u
 
 ### Paso 0. Detectas un problema o una oportunidad y tomas la iniciativa
 
-*¿Merece la pena abordar el problema o la oportunidad?* Vivien observó que había llegado el momento de revisar la marca de Oatmilk Coop.
+*¿Merece la pena abordar el problema o la oportunidad?* Vivien se dio cuenta de que era el momento de revisar la marca de Oatmilk Coop.
 
-*¿Hay que tomar una decisión?* La junta directiva es responsable de aprobar un nuevo concepto de marca.
+*¿Hay una decisión que tomar?* El consejo de administración tiene la responsabilidad de aprobar un nuevo concepto de marca.
 
-*¿Afecta a otras personas y a tu organización?* La marca influye en cómo se percibe la cooperativa y afecta a todas las personas de la organización.
+*¿Afecta a otras personas y a tu organización?* La marca influye en la percepción de la cooperativa y afecta a todas las personas de la organización.
 
 <!-- translation-section: step-1-state-the-problem-or-issue -->
 
-### Paso 1. Plantea el problema o asunto
+### Paso 1. Expón el problema o el asunto
 
-Vivien inicia una discusión en Loomio. Explica la necesidad de revisar la marca de la organización, invita a participar en el desarrollo de un nuevo concepto de marca e indica que la junta directiva tomará la decisión de aprobación mediante el proceso de consenso.
+Vivien inicia una discusión en Loomio en la que explica la necesidad de revisar la marca de la organización, invita a participar en el desarrollo de un nuevo concepto de marca e indica que el consejo de administración tomará la decisión de aprobación mediante el proceso de consenso.
 
 ![](discussion_consensus_process_refresh_brand.png)
 
@@ -120,7 +122,7 @@ Vivien inicia una discusión en Loomio. Explica la necesidad de revisar la marca
 
 ### Paso 2. Presenta una propuesta
 
-Vivien inicia una propuesta de comprobación de sentido para conocer las opiniones sobre los elementos clave del concepto de marca y comprobar si hay consenso. Esta propuesta informa a las personas de que se está preparando una propuesta y las anima a participar. También ayuda a identificar inquietudes.
+Vivien inicia una propuesta de toma de pulso para recoger opiniones sobre los elementos clave del concepto de marca y comprobar si hay consenso. La propuesta de toma de pulso informa a las personas de que se está elaborando una propuesta y las anima a participar. Es una buena forma de identificar preocupaciones.
 
 ![](proposal_sense_check_refresh_brand.png)
 
@@ -128,7 +130,7 @@ Vivien inicia una propuesta de comprobación de sentido para conocer las opinion
 
 ### Paso 3. Modificación
 
-Cuando se cierra la propuesta de comprobación de sentido, Vivien publica una conclusión e informa a todas las personas de los resultados y los próximos pasos. Vivien facilita una discusión para atender las inquietudes y modificar el documento sobre el concepto de marca.
+Cuando se cierra la propuesta de toma de pulso, Vivien establece una conclusión e informa a todas las personas sobre los resultados y lo que ocurrirá después. Vivien facilita una discusión para abordar las preocupaciones y modificar el documento del concepto de marca.
 
 ![](proposal_outcome_sense_check_refresh_brand.png)
 
@@ -136,13 +138,13 @@ Cuando se cierra la propuesta de comprobación de sentido, Vivien publica una co
 
 ### Paso 4. Acuerdo
 
-Tras completar la versión más reciente del documento sobre el concepto de marca, Vivien inicia una propuesta de consenso para solicitar la aprobación de la junta directiva.
+Una vez terminada la última versión del documento del concepto de marca, Vivien inicia una propuesta de consenso para solicitar la aprobación del consejo de administración.
 
 ![](proposal_consensus_process_refresh_brand.png)
 
-Se invita a los miembros de la junta directiva a votar para aprobar el concepto de marca. La junta ya había acordado que, para aprobar propuestas como esta, más del 75 % de sus miembros deben votar De acuerdo.
+Se invita a los miembros del consejo de administración a votar y aprobar el concepto de marca. El consejo ha acordado previamente que, para aprobar propuestas como esta, >75% de los miembros deben votar De acuerdo.
 
-Esta plantilla incluye la opción Bloquear de forma predeterminada. Bloquear no es adecuado para todos los grupos: puede generar controversia o utilizarse de forma indebida. Si tu proceso de decisión no incluye esta opción, te recomendamos editar la plantilla para eliminarla.
+Esta plantilla incluye una opción de Bloqueo por defecto. El bloqueo no es adecuado para todos los grupos: puede generar controversia o utilizarse de forma indebida. Si no utilizas el bloqueo en tu proceso de toma de decisiones, te recomendamos editar la plantilla para eliminarlo.
 
 ![](proposal_vote_consensus_process_refresh_brand.png)
 
@@ -150,6 +152,6 @@ Esta plantilla incluye la opción Bloquear de forma predeterminada. Bloquear no 
 
 ### Paso 5. Conclusión
 
-Cuando se cierra la propuesta de consenso, Vivien publica una conclusión e informa a todas las personas de que se ha llegado a un acuerdo y comenzará el trabajo para poner en práctica la nueva marca.
+Cuando se cierra la propuesta de consenso, Vivien establece una conclusión e informa a todas las personas de que se ha alcanzado un acuerdo y de que comenzará el trabajo para poner en práctica la nueva marca.
 
 ![](proposal_outcome_consensus_process_refresh_brand.png)

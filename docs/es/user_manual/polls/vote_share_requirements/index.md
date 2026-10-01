@@ -1,6 +1,6 @@
 ---
 title: Requisitos de porcentaje de votos
-source_revision: 3a315412c646d254c8426be5c436a4e593f6011f
+source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
 source_file: docs/en/user_manual/polls/vote_share_requirements/index.md
 translated:
   provider: codex/gpt-6.1-sol
@@ -11,10 +11,10 @@ sections:
   different-vote-share-requirements: cfdfd13a0a6a8b38
   detailed-example: 395dbccb0e6427fc
 generated:
-  introduction: 464405d6abfe8738
-  eligible-voters-and-votes-cast: 7dc48f7557c99413
-  different-vote-share-requirements: 62f8d433f3035995
-  detailed-example: 19ce4188abbc74cd
+  introduction: 1f8a0b614c5f6c77
+  eligible-voters-and-votes-cast: 0706e1c2e264ba9b
+  different-vote-share-requirements: ceb69aa9949c03a0
+  detailed-example: 7002299c5e00e48d
 title_source: a654891ca817844e
 title_generated: 6c881bd77d508e47
 ---
@@ -23,9 +23,9 @@ title_generated: 6c881bd77d508e47
 
 # Requisitos de porcentaje de votos
 
-Establece un porcentaje de votos requerido para una opción cuando una propuesta necesita alcanzar un porcentaje determinado de apoyo, o mantenerse por debajo de un porcentaje determinado de oposición, para aprobarse.
+Establece un requisito de porcentaje de votos para una opción cuando una propuesta deba recibir un porcentaje determinado de apoyo, o mantenerse por debajo de un porcentaje determinado de oposición, para aprobarse.
 
-Puedes combinar los requisitos de porcentaje de votos con un [cuórum](/en/user_manual/polls/quorum/) para exigir tanto una participación suficiente como una distribución determinada de los votos.
+Los requisitos de porcentaje de votos se pueden combinar con un [quórum](/en/user_manual/polls/quorum/) para exigir tanto una participación suficiente como una distribución determinada de los votos.
 
 En el formulario de la propuesta, selecciona el icono de edición junto a una opción.
 
@@ -35,44 +35,44 @@ En el formulario de la propuesta, selecciona el icono de edición junto a una op
 
 ## Votantes elegibles y votos emitidos
 
-El porcentaje puede calcularse sobre los **Votos emitidos** o los **votantes elegibles**.
+El porcentaje puede basarse en los **Votos emitidos** o en los **votantes elegibles**.
 
-![Elección de votos emitidos o votantes elegibles para calcular el porcentaje requerido](./eligible-vs-cast.png)
+![Elección entre votos emitidos y votantes elegibles como base de un requisito de porcentaje de votos](./eligible-vs-cast.png)
 
-**votantes elegibles** son todas las personas que pueden votar en la propuesta. **Votos emitidos** son únicamente los votos que se han enviado.
+**votantes elegibles** se refiere a todas las personas que pueden votar en la propuesta. **Votos emitidos** se refiere únicamente a los votos que se han enviado.
 
-Un requisito del 75 % de apoyo entre los votantes elegibles solo se cumple si al menos el 75 % de todas las personas elegibles vota por esa opción.
+Un requisito de un 75 por ciento de acuerdo entre los votantes elegibles solo se cumple cuando al menos el 75 por ciento de todos los votantes elegibles vota por esa opción.
 
-Un requisito del 60 % de apoyo entre los votos emitidos se cumple si el 60 % de los votos enviados apoya la opción, independientemente de la participación total. Añade un cuórum si tu proceso también exige un nivel mínimo de participación.
+Un requisito de un 60 por ciento de acuerdo entre los votos emitidos se cumple cuando el 60 por ciento de los votos enviados apoya la opción, independientemente de la participación total. Añade un quórum cuando tu proceso también requiera un nivel mínimo de participación.
 
 <!-- translation-section: different-vote-share-requirements -->
 
 ## Distintos requisitos de porcentaje de votos
 
-Una propuesta puede tener requisitos en más de una opción. Por ejemplo:
+Una propuesta puede tener requisitos para más de una opción. Por ejemplo:
 
-- El apoyo debe alcanzar al menos el 75 % de los votantes elegibles
-- La abstención no debe superar el 30 % de los votos emitidos
-- El bloqueo no debe superar el 0 % de los votos emitidos
+- De acuerdo debe representar al menos el 75 por ciento de los votantes elegibles
+- Abstención debe representar como máximo el 30 por ciento de los votos emitidos
+- Bloqueo debe representar como máximo el 0 por ciento de los votos emitidos
 
-Establecer una opción en **No más que 0 %** es una práctica habitual. Significa que la propuesta no puede aprobarse si alguien elige esa opción. Usa este requisito en **Bloquear** para que un solo bloqueo impida que la propuesta se apruebe.
+Establecer una opción en **Como máximo un 0%** es una práctica habitual. Significa que la propuesta no puede aprobarse si alguien elige esa opción. Úsalo en **Bloquear** para que un solo bloqueo detenga la propuesta.
 
-También puedes añadir requisitos a una [plantilla de encuesta](/en/user_manual/polls/poll_templates/) para que las nuevas propuestas creadas a partir de ella los utilicen de forma predeterminada.
+También puedes añadir requisitos a una [plantilla de encuesta](/en/user_manual/polls/poll_templates/) para que las nuevas propuestas creadas a partir de la plantilla los usen de forma predeterminada.
 
 <!-- translation-section: detailed-example -->
 
 ## Ejemplo detallado
 
-La cooperativa Oatmilk está decidiendo si realiza una prueba de seis semanas con botellas retornables. Cinco personas pueden votar.
+La cooperativa Oatmilk está decidiendo si realizar una prueba de seis semanas con botellas retornables. Cinco personas pueden votar.
 
-El proceso de la cooperativa exige el apoyo de al menos el 75 % de los votantes elegibles. Jamie edita la opción **De acuerdo** de la propuesta, activa su requisito de porcentaje de votos y lo establece en **Al menos el 75 % de los votantes elegibles**.
+El proceso de la cooperativa requiere que al menos el 75 por ciento de los votantes elegibles esté de acuerdo. Jamie edita la opción **De acuerdo** de la propuesta, activa el requisito de porcentaje de votos y lo establece en **Al menos el 75% de los votantes elegibles**.
 
-![La opción De acuerdo exige el apoyo de al menos el 75 % de los votantes elegibles](./agree-vote-option.png)
+![La opción De acuerdo requiere al menos el 75 por ciento de los votantes elegibles](./agree-vote-option.png)
 
-Jamie también establece un cuórum del 60 %. Jamie y Samira votan a favor. Todos los votos emitidos apoyan la propuesta, pero representan solo el 40 % de los votantes elegibles. Por eso, aún no se cumple ninguno de los dos requisitos.
+Jamie también establece un quórum del 60 por ciento. Jamie y Samira votan De acuerdo. Todos los votos enviados apoyan la propuesta, pero representan solo el 40 por ciento de los votantes elegibles, por lo que no se ha cumplido ninguno de los dos requisitos.
 
-![Dos de las cinco personas han votado a favor y no se cumple ninguno de los requisitos](./first-vote-breakdown.png)
+![Dos de las cinco personas han votado De acuerdo y no se ha cumplido ninguno de los dos requisitos](./first-vote-breakdown.png)
 
-Después, Alex y Morgan votan a favor, mientras que Taylor vota en contra. Las cinco personas han votado, por lo que se alcanza el cuórum, y cuatro de las cinco personas elegibles apoyan la propuesta. El 80 % de apoyo supera el requisito del 75 %, así que ambos requisitos muestran marcas verdes de verificación.
+Después, Alex y Morgan votan De acuerdo, mientras que Taylor vota En desacuerdo. Las cinco personas han votado, con lo que se alcanza el quórum, y cuatro de los cinco votantes elegibles están de acuerdo. El 80 por ciento de acuerdo supera el requisito de porcentaje de votos del 75 por ciento, por lo que ambos requisitos muestran marcas de verificación verdes.
 
-![Las cinco personas han votado y se cumplen ambos requisitos](./final-vote-breakdown.png)
+![Las cinco personas han votado y se han cumplido ambos requisitos](./final-vote-breakdown.png)

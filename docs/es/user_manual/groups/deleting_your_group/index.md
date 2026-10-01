@@ -1,16 +1,16 @@
 ---
 title: Eliminar tu grupo
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/groups/deleting_your_group/index.md
+source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
+source_file: docs/en/user_manual/groups/deleting_your_group/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: d1fb3691890a02b6
   group-data-is-permanently-deleted-after-90-days: e2074e63cb56c4cd
 generated:
-  introduction: 71eb8025b1bf0ac8
-  group-data-is-permanently-deleted-after-90-days: a9de858c6a21a281
+  introduction: f1300089f7950c3f
+  group-data-is-permanently-deleted-after-90-days: eb20280f8a698767
 title_source: 9a0868f49f1262ea
 title_generated: 4b8bbecb323ce936
 ---
@@ -19,32 +19,32 @@ title_generated: 4b8bbecb323ce936
 
 # Eliminar tu grupo
 
-Al eliminar tu grupo de Loomio, se inicia un proceso para borrar permanentemente todos sus datos.
+Eliminar tu grupo de Loomio inicia un proceso para borrar permanentemente todos los datos del grupo.
 
-Si quieres conservar algún dato, [exporta los datos del grupo](/en/user_manual/groups/data_export/) y descarga manualmente los archivos importantes que hayas subido antes de continuar.
+Si quieres conservar algún dato, asegúrate de [exportar los datos del grupo](/en/user_manual/groups/data_export/) y descargar manualmente los archivos importantes que hayas subido antes de continuar.
 
-Haz clic en los tres puntos para abrir el menú desplegable del grupo y selecciona **Eliminar grupo**. Esto te quitará el acceso al grupo e iniciará la eliminación de todos sus datos de nuestros registros. Debes ser administrador para eliminar un grupo.
+Abre el menú desplegable del grupo haciendo clic en los tres puntos y selecciona la opción **Eliminar grupo** para retirar el acceso al grupo e iniciar la eliminación de todos los datos del grupo de nuestros registros. Debes ser admin para eliminar un grupo.
 
-Cuando eliminas un grupo, deja de estar visible de inmediato y se borra permanentemente después de 90 días. Tú y los miembros del grupo perdéis el acceso de inmediato. Si lo eliminaste por error, ponte en contacto con nosotros en un plazo de 90 días para solicitar su restauración.
+Cuando eliminas un grupo, deja de estar visible inmediatamente y se elimina permanentemente después de 90 días. Tú y los miembros del grupo perdéis el acceso al grupo inmediatamente. Si ha habido un error, contacta con nosotros dentro de los 90 días posteriores a la eliminación de tu grupo para solicitar que lo restauremos.
 
-Los grupos pendientes de eliminación y sus subgrupos no están disponibles para que los miembros y administradores los vean, participen en ellos o exporten sus datos. Esto incluye los sondeos abiertos desde enlaces guardados. Los miembros no pueden crear ni editar contenido, votar, enviar anuncios o recordatorios ni aceptar invitaciones. Exporta los datos del grupo y descarga los archivos importantes antes de confirmar la eliminación. Las discusiones directas y los sondeos no se ven afectados.
+Los grupos pendientes de eliminación y sus subgrupos no están disponibles para que los miembros y coordinadores los consulten, participen en ellos o los exporten. Esto incluye las encuestas abiertas desde enlaces guardados. Los miembros no pueden crear ni editar contenido, votar, enviar anuncios o recordatorios ni aceptar invitaciones. Exporta el grupo y descarga los archivos importantes antes de confirmar la eliminación. Las discusiones y encuestas directas no se ven afectadas.
 
-Al programar la eliminación del grupo, se detienen las notificaciones de actividad y los recordatorios de sondeos pendientes del grupo y sus subgrupos. Es posible que lleguen mensajes que ya se estén enviando.
+Programar la eliminación del grupo detiene las notificaciones de actividad y los recordatorios de encuestas pendientes del grupo y sus subgrupos. Los mensajes que ya se estén enviando pueden llegar igualmente.
 
-El correo de aviso incluye el número de subgrupos, miembros, discusiones, sondeos y comentarios del grupo. Si necesitas conservar el grupo o [exportar sus datos](/en/user_manual/groups/data_export/), responde en un plazo de 90 días para que podamos restaurar el acceso antes de la eliminación.
+El correo de advertencia incluye el número de subgrupos, miembros, discusiones, encuestas y comentarios del grupo. Si necesitas conservar el grupo o [exportar sus datos](/en/user_manual/groups/data_export/), responde dentro de los 90 días para que podamos restablecer el acceso antes de la eliminación.
 
-Al eliminar tu grupo, también se cancelará tu suscripción a Loomio.
+Eliminar tu grupo también cancelará tu suscripción a Loomio.
 
-![Opción Eliminar grupo en el menú de Oatmilk Cooperative](group_delete_group.png)
+![Acción Eliminar grupo en el menú de Oatmilk Cooperative](group_delete_group.png)
 
-Para confirmar que quieres eliminar el grupo, tendrás que escribir su nombre (*respetando las mayúsculas y minúsculas*).
+Se te pedirá que escribas el nombre de tu grupo (*distingue entre mayúsculas y minúsculas*) para confirmar que quieres eliminarlo.
 
-![Formulario de confirmación que solicita el identificador de Oatmilk Cooperative](group_delete_group_confirm.png)
+![Formulario de confirmación que requiere el identificador de Oatmilk Cooperative](group_delete_group_confirm.png)
 
 <!-- translation-section: group-data-is-permanently-deleted-after-90-days -->
 
 ## Los datos del grupo se eliminan permanentemente después de 90 días
 
-Después de 90 días, todos los hilos, sondeos, archivos y demás contenido del grupo se eliminarán permanentemente. ***No podrás recuperarlos.***
+Después de 90 días, todos los hilos, encuestas, archivos y demás contenido del grupo se eliminarán permanentemente. ***Esta acción es irreversible.***
 
-Te recomendamos [exportar los datos del grupo](/en/user_manual/groups/data_export/) y descargar manualmente los archivos importantes que hayas subido antes de continuar.
+Te recomendamos que [exportes los datos del grupo](/en/user_manual/groups/data_export/) y descargues manualmente los archivos importantes que hayas subido antes de continuar.

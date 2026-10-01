@@ -1,10 +1,10 @@
 ---
 title: Discusiones
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/discussions/index.md
+source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
+source_file: docs/en/user_manual/discussions/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: c76a7d182c14a283
   common-uses: 2fd96fe8c6ddddc4
@@ -12,11 +12,11 @@ sections:
   member-participation: b087accb54a595dc
   self-organizing-working-teams: 8679ba6f65c230ab
 generated:
-  introduction: 98a92eb0b64568b7
+  introduction: 63da33b0f4f2f23f
   common-uses: 358ca3e55491018f
-  boards-and-governance: c0b375a78e8b9c5d
-  member-participation: c2db1d25b6b661ca
-  self-organizing-working-teams: d5a26f289603036c
+  boards-and-governance: efd931a06f9eeb42
+  member-participation: 92b494d43cfd5614
+  self-organizing-working-teams: 586c3ed0e55a1209
 title_source: 60157cfcfe3f31c3
 title_generated: edb17ff418192837
 ---
@@ -25,22 +25,22 @@ title_generated: edb17ff418192837
 
 # Introducción a las discusiones
 
-En las discusiones de Loomio puedes compartir información, hablar de distintos temas y tomar decisiones con tu grupo. Las personas participan publicando comentarios y respuestas.
+Las discusiones de Loomio te permiten compartir información, hablar sobre temas y tomar decisiones con tu grupo. Las personas participan publicando comentarios y respuestas.
 
-- Toda la información sobre un tema está en un lugar fácil de encontrar.
+- Toda la información sobre un tema está en un lugar de fácil acceso.
 - Las personas pueden responder por correo electrónico y sus comentarios aparecen en la discusión.
-- Puedes ver quién ha leído la discusión y a quién conviene enviarle un recordatorio.
-- Queda un registro de la discusión que puedes volver a consultar fácilmente.
+- Puedes ver quién ha leído la discusión y quién necesita un recordatorio.
+- Queda un registro de la discusión que puedes volver a encontrar fácilmente.
 
-Las discusiones sirven para muchos fines, desde mantener un foro general hasta coordinar procesos de trabajo y toma de decisiones.
+Las discusiones tienen muchos usos: desde un foro de discusión general hasta la gestión de procesos específicos de trabajo y toma de decisiones.
 
-Por ejemplo, puedes iniciar una discusión sobre un tema, invitar a otras personas a compartir sus ideas e información, y ayudar al grupo a alcanzar una conclusión acordada.
+Por ejemplo, puedes plantear una discusión sobre un tema concreto, invitar a las personas a aportar ideas y compartir información, y facilitar el avance hacia una conclusión acordada.
 
-También puedes invitar a otras personas a participar en una decisión mediante un proceso basado en el consentimiento o el asesoramiento.
+También puedes invitar a las personas a participar en una decisión concreta mediante un proceso de toma de decisiones por consentimiento o asesoramiento.
 
-Las discusiones también pueden incluir sondeos y propuestas para avanzar hacia una conclusión. A medida que las personas comentan y votan, se crea una cronología de la discusión en la que puedes encontrar fácilmente los momentos clave.
+Las discusiones también pueden incluir encuestas y propuestas para avanzar hacia una conclusión. A medida que las personas comentan en la discusión y votan en las encuestas, se crea una cronología de la discusión que te permite encontrar fácilmente los momentos clave.
 
-![La discusión sobre botellas retornables para clientes de la cafetería, con un comentario y una propuesta](discussion-example.png)
+![La discusión «Botellas retornables para clientes de la cafetería», con un comentario y una propuesta](discussion-example.png)
 
 <!-- translation-section: common-uses -->
 
@@ -52,36 +52,36 @@ Estos son algunos usos habituales de las discusiones:
 
 ### Juntas directivas y gobernanza
 
-**Prepárate para una reunión** - Prepara el orden del día, publica los documentos de la junta y organiza los asuntos administrativos para que todas las personas tengan la información necesaria y puedan prepararse.
+**Prepárate para una reunión** - Elabora un orden del día, publica documentos de la junta y organiza los asuntos administrativos para que todas las personas estén al día, conozcan el contexto y estén preparadas.
 
-**Pasar una resolución** - Publica el contexto y los antecedentes, responde a las preguntas y presenta una propuesta para aprobar una resolución.
+**Pasar una resolución** - Publica el contexto y la información de fondo, responde a las preguntas y presenta una propuesta para aprobar una resolución.
 
-**Debatir un punto del orden del día en Loomio** - Inicia la discusión antes de la reunión. Si se acaba el tiempo durante la reunión, continúa la discusión en Loomio.
+**Discute un punto del orden del día en Loomio** - Inicia una discusión sobre un punto del orden del día antes de tu reunión. O, si se acaba el tiempo en la reunión, continúa la discusión en Loomio.
 
-**Aprobar el acta y hacer seguimiento de las tareas** - Publica el acta y asigna tareas. Usa un sondeo para aprobar el acta.
+**Aprueba actas y haz seguimiento de las acciones** - Publica las actas y asigna acciones. Usa una encuesta para aprobar las actas.
 
 <!-- translation-section: member-participation -->
 
 ### Participación de los miembros
 
-**Compartir novedades (en lugar de una lista de correo)** - Publica información para los miembros e invita a comentar.
+**Comparte noticias (sustituye la lista de correo)** - Publica información para los miembros e invítalos a comentar.
 
-**Organizar un evento** - Coordina los detalles con el equipo organizador. Mantén toda la conversación y la información en el hilo. Después, anuncia el evento al resto de los miembros.
+**Organiza un evento** - Trabaja en los detalles con tu equipo organizador. Mantén toda la discusión y la información dentro del hilo. Después, anuncia el evento al resto de los miembros.
 
-**Elaborar una política** - Publica un borrador, pide opiniones y aportaciones a los miembros, y termina y ratifica la política.
+**Elabora una política** - Publica un borrador de la política, solicita comentarios y aportaciones de los miembros, y finaliza y ratifica la política.
 
-**Asamblea general** - Organiza, prepara y celebra una reunión formal con todos los miembros para deliberar y tomar decisiones sobre asuntos estratégicos.
+**Asamblea general** - Organiza, prepara y dirige una reunión formal con todos los miembros para deliberar y tomar decisiones sobre asuntos estratégicos.
 
 <!-- translation-section: self-organizing-working-teams -->
 
-### Equipos de trabajo autogestionados
+### Equipos de trabajo autoorganizados
 
-**Compartir información** - Publica información e informes de interés para tu equipo e invita a comentar y debatir.
+**Comparte información** - Publica información e informes de interés para tu equipo e invita a comentar y discutir.
 
-**Avanzar en el trabajo** - Describe una tarea y pide consejos, aportaciones y opiniones a los miembros del equipo hasta completarla.
+**Avanza en el trabajo** - Describe una tarea de trabajo y solicita consejos, aportaciones y comentarios de los miembros del equipo hasta completarla.
 
-**Notas de reunión y tareas** - Publica las notas de la reunión como registro de lo hablado y haz seguimiento de las tareas.
+**Notas de reuniones y acciones** - Publica las notas de las reuniones como registro de la discusión y haz seguimiento de las tareas.
 
-**Explorar ideas** - Comparte tus ideas e invita a debatir sobre un problema que hayas detectado o una posible mejora.
+**Explora ideas** - Comparte ideas e invita a discutir sobre una preocupación que hayas detectado o una mejora que se pueda hacer.
 
-**Tomar decisiones mediante asesoramiento, consentimiento y generación de propuestas** - Prepara, propón, aclara, responde a las reacciones y objeciones, llega a un acuerdo y ponlo en práctica, todo dentro de una discusión de Loomio.
+**Toma de decisiones por asesoramiento, consentimiento y procesos generativos** - Prepara, propone, aclara, responde a las reacciones y objeciones, llega a acuerdos y ponlos en práctica, todo dentro de una discusión de Loomio.

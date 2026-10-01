@@ -1,6 +1,6 @@
 ---
 title: Conclusión
-source_revision: 3a315412c646d254c8426be5c436a4e593f6011f
+source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
 source_file: docs/en/guides/facilitators_guide/concluding/index.md
 translated:
   provider: codex/gpt-6.1-sol
@@ -13,10 +13,10 @@ sections:
   it-ain-t-over-til-it-s-over: 9edb6ef0bcb17938
 generated:
   introduction: a51647d18a741349
-  outcomes-next-steps: 04073e76269b540b
-  reporting-harvesting: 893ed0b36fb5769a
-  turning-discussion-into-action: c09b14d9c668a89a
-  it-ain-t-over-til-it-s-over: 4fa0b15ced430441
+  outcomes-next-steps: 37c2128ef992b5a9
+  reporting-harvesting: 989c52db27622575
+  turning-discussion-into-action: eeb608c151c47848
+  it-ain-t-over-til-it-s-over: 73a167a72a996e9f
 title_source: 10899efb27fe6a92
 title_generated: 2cc17842a47ef962
 ---
@@ -31,71 +31,72 @@ title_generated: 2cc17842a47ef962
 
 ## Conclusiones y próximos pasos
 
-Confirmar la conclusión puede ayudar al grupo a reconocer que ha alcanzado los objetivos de una discusión colaborativa. Quien facilita puede reunir lo que se ha decidido y compartir un resumen para que el grupo termine con respuestas a algunas preguntas clave:
+Confirmar la conclusión puede ser fundamental para sentir que se han alcanzado los objetivos de una discusión colaborativa. Quien facilita puede reunir lo que se ha decidido y presentarlo al grupo, para ayudarle a terminar con respuestas a algunas preguntas clave:
 
 * ¿Qué hicimos?
 * ¿Qué significa?
 * ¿Qué pasará ahora?
 * ¿Cuál es mi responsabilidad?
-* ¿Qué cambiará gracias a esta experiencia?
+* ¿Qué será diferente gracias a esta experiencia?
 
-A veces las respuestas son concretas, como las tareas pendientes. Otras veces son más abstractas, como una comprensión compartida más profunda.
+A veces las respuestas a estas preguntas son muy concretas, como acciones pendientes, mientras que otras veces son más abstractas, como profundizar en la comprensión compartida.
 
 En Loomio
 
-* Las [conclusiones](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome) son una herramienta importante. Que termine una propuesta no significa que el proceso haya concluido: todavía hace falta resumir lo acordado. Para eso sirve la función de conclusiones.
-* Muchas discusiones de Loomio terminan de forma natural sin usar propuestas ni publicar conclusiones. Aun así, aportan valor. Puede ser útil actualizar el cuadro de contexto con un resumen de la conclusión para consultarlo más adelante.
-* Si algunas personas tienen tareas pendientes, puedes @mencionar sus nombres para que reciban una notificación.
+* Las [conclusiones](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome) son una herramienta muy importante. El cierre de una propuesta no es del todo el final: hace falta resumir lo decidido para concluir. Para eso sirve la función de conclusión.
+* Muchas discusiones en Loomio terminan de forma natural sin usar propuestas ni publicar conclusiones. Estas discusiones siguen aportando mucho valor, y puede ser útil actualizar el cuadro de contexto con un resumen de la conclusión para consultarlo más adelante.
+* Si hay personas concretas con acciones pendientes, puedes mencionar sus nombres con @ y recibirán una notificación.
 
 <!-- translation-section: reporting-harvesting -->
 
-## Documentar y recoger lo aprendido
+## Informes y recopilación
 
-Para entender el significado de una experiencia, piensa cómo encaja en un contexto más amplio. ¿Qué representó este momento en el avance del grupo? ¿Qué forma tomará lo aprendido: una historia, un informe, un cambio o una llamada a la acción?
+Para comprender el significado de una experiencia, tienes que explorar cómo encaja en el contexto más amplio. ¿Qué lugar ocupó este momento en el ritmo general de nuestro progreso? ¿Qué forma tomará lo que hemos aprendido de esta experiencia: un relato, un informe, un cambio, una llamada a la acción?
 
-La experiencia ocurre en un momento concreto, pero su impacto suele depender de que podamos darle un nombre, usarla y hacer referencia a ella. De lo contrario, podemos olvidarla, dejar fuera a quienes no estuvieron presentes o tener que repetirla después. La documentación y los informes concretos suelen favorecer una colaboración productiva.
+La experiencia ocurre en el momento, pero a menudo adquiere impacto cuando le damos una forma concreta, un nombre y podemos aprovecharla y referirnos a ella. De lo contrario, corres el riesgo de olvidarla, dejar fuera a quienes no estuvieron presentes o tener que repetirla más adelante. La documentación o los informes concretos suelen ayudar a que la colaboración sea productiva.
 
 En Loomio
 
-* Loomio documenta el proceso a medida que ocurre: las notas quedan registradas como parte de él. Así, los grupos crean un archivo de contenido sin trabajo adicional.
-* Hay varias funciones para recoger y archivar lo aprendido: la búsqueda, la lista de «decisiones anteriores» y la opción de imprimir la discusión.
-* Los planes Premium permiten exportar todos los datos de tu grupo en Loomio.
-* Muchos grupos usan Loomio para reunir contenido de distintos canales. Por ejemplo, anuncian una reunión y preparan el orden del día en Loomio, se reúnen en persona, publican las notas en Loomio y toman las decisiones relacionadas en el mismo hilo. Así pueden documentar en Loomio también lo que ocurre fuera de internet.
+* Loomio se documenta automáticamente: las notas se escriben como parte integral del proceso. Esto crea un valioso archivo de contenido para los grupos, sin ningún esfuerzo adicional.
+* Tenemos algunas funciones para facilitar la recopilación y el archivo: la búsqueda, la lista de «decisiones anteriores» y la opción de imprimir la discusión.
+* Los planes prémium ofrecen la opción de exportar todos los datos de tu grupo en Loomio.
+* Muchos grupos usan Loomio para integrar contenido de distintos canales. Por ejemplo, publicar el anuncio de una reunión y preparar el orden del día en Loomio, celebrar la reunión en persona, publicar las notas en Loomio y tomar decisiones relacionadas en el mismo hilo. Esto amplía la capacidad de Loomio para recopilar información automáticamente más allá del espacio en línea.
 
 <!-- translation-section: turning-discussion-into-action -->
 
-## Llevar la discusión a la acción
+## Convertir la discusión en acción
 
-Llega un momento en que hay que volver a la realidad fuera del espacio de discusión. A veces basta con explorar ideas y sentimientos sin preocuparse por ponerlos en práctica. Pero, por lo general, un grupo necesita convertir sus conclusiones en acciones para alcanzar sus objetivos. Esta transición forma parte del proceso facilitado.
+Llega un momento en que tienes que volver a conectar con la realidad fuera de la sala. A veces, basta con trabajar con ideas y sentimientos, sin preocuparte por llevarlos a la práctica. Pero, por lo general, un grupo no alcanzará sus objetivos sin convertir sus conclusiones en acciones concretas. Esta transición forma parte de toda la experiencia facilitada.
 
-En ese momento, el proceso colaborativo se encuentra con otros sistemas de la organización. Quien facilita debe ayudar a definir cómo se relacionarán. Esos sistemas pueden incluir:
+En este punto, el proceso colaborativo se cruza con otros sistemas de la organización, y quien facilita tiene que ayudar a determinar cómo funcionará. Estos otros sistemas pueden incluir:
 
-* **Poder** — ¿Quién toma realmente las decisiones? ¿Qué tiene que ocurrir para que las ideas se hagan realidad?
-* **Gestión** — ¿Cómo encaja esto con las demás prioridades? ¿De qué otras tareas depende?
-* **Delegación** — ¿Quién asumirá la responsabilidad de los próximos pasos? ¿Cómo rendirá cuentas?
+* **Poder** — ¿Quién toma realmente las decisiones? ¿Qué tiene que ocurrir aquí para que las ideas se hagan realidad?
+* **Gestión** — ¿Cómo encaja esto con otras prioridades? ¿Qué dependencias puede haber?
+* **Delegación** — ¿Quién asumirá la responsabilidad de los próximos pasos? ¿Tendrá que rendir cuentas?
 * **Comunicación** — ¿Cómo se comunicará este proceso o discusión a otras personas? ¿Qué necesitan saber?
-* **Administración** — ¿Cómo se trasladará la información de un sistema a otro, como una herramienta de seguimiento de tareas o de comunicación? ¿Dónde se guardará?
+* **Administración** — ¿Cómo se trasladará la información de un sistema a otro, como una herramienta de seguimiento de tareas o de comunicación? ¿Dónde se guardará la información?
 
-Si hay obstáculos relacionados con estas cuestiones, puede ser perjudicial descubrirlos al final. Por ejemplo, si quienes participan no tienen autoridad para llevar a cabo el cambio que han decidido, pueden sentirse desalentados. Ten en cuenta estas condiciones al diseñar el proceso y define el alcance de la colaboración en consecuencia.
+Si hay obstáculos relacionados con estas cuestiones, puede ser perjudicial detectarlos solo al llegar al cierre. Por ejemplo, si los participantes no tienen realmente el poder de llevar a cabo un cambio que han decidido, se sentirán derrotados. Al preparar el proceso, piensa de antemano en cómo afrontar la realidad y define el alcance de la colaboración en consecuencia.
+
 
 En Loomio
 
-* Puedes @mencionar a las personas que llevarán a cabo las acciones derivadas de una decisión.
-* Muchos usuarios integran el contenido de Loomio en otros sistemas de la organización por distintos medios. Por ejemplo, revisan las decisiones de Loomio en reuniones presenciales periódicas o trasladan las conclusiones a su sistema de seguimiento de tareas.
-* Tomar una decisión explícita lleva de forma natural a preguntar: «Bien, ¿cómo vamos a llevarla adelante?».
-* Crear un grupo en Loomio suele plantear preguntas importantes, como «¿Quién tiene que participar para convertir estas decisiones en acciones?». Si faltan personas clave, responsables o administradores, el proceso puede quedar bloqueado.
+* Puedes mencionar con @ los nombres de las personas que llevarán a cabo acciones derivadas de una decisión.
+* Muchos usuarios integran el contenido de Loomio en otros sistemas de la organización a través de otros canales, por ejemplo, revisando las decisiones de Loomio en reuniones presenciales periódicas o trasladando las conclusiones a su proceso de seguimiento de tareas.
+* Tomar una decisión explícita lleva de forma natural a preguntar: «De acuerdo, pero ¿cómo vamos a llevar esto adelante?»
+* Crear un grupo en Loomio suele plantear preguntas importantes, como: «¿Quién necesita participar aquí para convertir estas decisiones en acciones?» Si faltan personas clave, responsables o administradores, no podrás avanzar.
 
 <!-- translation-section: it-ain-t-over-til-it-s-over -->
 
-## Cerrar el proceso
+## No termina hasta que termina
 
-Es importante cerrar bien un proceso. El cierre suele tener sus propios pasos, y omitirlos puede dejar a las personas con la sensación de que algo quedó pendiente. A veces el proceso termina porque se acaba el tiempo; otras, porque se han alcanzado ciertos objetivos. Presta atención a las señales, explícitas o no, de que cada persona y el grupo en conjunto sienten que una fase o un proceso ha concluido.
+Terminar bien es importante. Cerrar un proceso tiene un ritual, y si se omite, las personas pueden sentir que queda algo pendiente. A veces el final llega cuando se agota el tiempo, y otras, cuando se alcanzan ciertos objetivos. Reconoce las señales implícitas y explícitas que indican si las personas y el grupo en conjunto pueden sentir que un proceso o una fase han concluido.
 
-Quienes participan suelen esperar que la persona que lidera o facilita confirme cuándo termina el proceso. Conviene decirlo con claridad. A veces basta con anunciar que la sesión está terminando, repasar las decisiones o los próximos pasos y despedirse. Otros grupos tienen prácticas establecidas, como una ronda de cierre. Dejar que una sesión se apague sin un cierre claro puede causar una mala impresión.
+Los participantes suelen esperar que quien lidera o facilita confirme cuándo ha terminado realmente, y suele ser útil indicarlo de forma explícita. A veces la señal consiste en anunciar claramente que la sesión está terminando, repasar las decisiones o los próximos pasos y despedirse de todos. Otras veces, los grupos tienen prácticas establecidas, como una ronda de cierre. Dejar que una sesión termine de forma imprecisa dejará una mala impresión.
 
 En Loomio
 
-* La señal más clara de que algo ha concluido en Loomio es publicar la conclusión de una decisión.
-* Algunos grupos usan la función de [bloquear hilo](/en/user_manual/discussions/using_discussions/#lock-or-unlock-a-thread) para impedir nuevos cambios y reducir el desorden.
+* La señal más clara de cierre en Loomio es publicar la conclusión de una decisión.
+* Algunos grupos usan la función de [bloquear el hilo](/en/user_manual/discussions/using_discussions/#lock-or-unlock-a-thread) para impedir más cambios y reducir el contenido innecesario.
 * Desactivar un grupo es la forma más definitiva de cerrarlo. Después, nadie puede añadir nada más.
-* Los grupos de Loomio pueden mantenerse aunque su actividad varíe. Por eso puede ser útil reconocer hitos como el cierre de una fase, incluso si el grupo vuelve a activarse más adelante.
+* Como los grupos de Loomio pueden mantenerse aunque su actividad aumente o disminuya, puede ser útil reconocer hitos como el cierre de una fase concreta, incluso si el grupo volverá a activarse en el futuro.

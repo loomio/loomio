@@ -1,10 +1,10 @@
 ---
 title: Tomar decisiones
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/guides/board_processes/decisions.md
+source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
+source_file: docs/en/guides/board_processes/decisions.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-30'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 6c619a2500c9b018
   on-loomio: fd8ae80ddea0ea14
@@ -16,104 +16,104 @@ sections:
   keeping-a-record-of-decisions-made-and-supporting-discussion: fe8d98d6b8d50a2a
   on-loomio-2: 5ef094900505a875
 generated:
-  introduction: 2139415a92b31ea7
-  on-loomio: f93028b533fe2ac2
-  examples-of-out-of-session-decisions: 5adbed8c5f1ee2b0
-  decision-about-property-purchase: 0c1b49808c8b619d
-  decision-to-accept-directors-and-officers-liability-insurance: 8ddca504a428ef10
-  a-security-breach-has-occurred-at-one-of-our-facilities: 6070df44f2c13b5c
-  a-director-has-challenged-the-board-about-gender-and-diversity-of-board-membership: 566169fc082c601c
-  keeping-a-record-of-decisions-made-and-supporting-discussion: 1961133562fcc285
-  on-loomio-2: b8cfc5d9d6e4e38f
+  introduction: 3214a260863c8169
+  on-loomio: '08605ed7aa4a2a3b'
+  examples-of-out-of-session-decisions: d9f2a0fc80c1ee37
+  decision-about-property-purchase: 06a75b1538dae288
+  decision-to-accept-directors-and-officers-liability-insurance: 06d0ee0daad2e2b0
+  a-security-breach-has-occurred-at-one-of-our-facilities: aded1a69ae257789
+  a-director-has-challenged-the-board-about-gender-and-diversity-of-board-membership: b9d952c4cbd1b6c6
+  keeping-a-record-of-decisions-made-and-supporting-discussion: 2b0b98ceb133a1d2
+  on-loomio-2: 62889dec754f344f
 title_source: 9a7f398684e7c05f
 title_generated: 83c2ebdf90c1d668
 ---
 
 <!-- translation-section: introduction -->
 
-# Tomar decisiones y aprobar resoluciones en línea
+# Adoptar resoluciones y tomar decisiones en línea
 
-Los miembros de juntas directivas y comités a menudo necesitan tomar decisiones entre reuniones. Son decisiones de gobierno que requieren discusión cuando:
+Los miembros de consejos y comités a menudo necesitan tomar decisiones «fuera de las reuniones». Se trata de decisiones y discusiones sobre la gestión de la organización que surgen cuando:
 
-- No hubo tiempo suficiente para tomar una decisión durante la reunión de la junta directiva,
-- la decisión no requiere mucha discusión, como ocurre con algunas decisiones administrativas,
-- ha sucedido algo, dentro o fuera de la organización, que exige actuar antes de la próxima reunión,
-- un miembro de la junta directiva tiene un asunto que quiere tratar con los demás.
+- No hubo tiempo suficiente para tomar una decisión en la reunión del consejo,
+- la decisión no requiere mucha discusión (incluidas las decisiones administrativas),
+- ha ocurrido algo (dentro o fuera de la organización) que requiere que el consejo actúe antes de la próxima reunión,
+- un miembro del consejo tiene un interés concreto que quiere explorar con el consejo.
 
 <!-- translation-section: on-loomio -->
 
 ## En Loomio
-Inicia un **hilo** para abrir la discusión:
+Inicia un **hilo** y abre una discusión:
 - Presenta el tema o la decisión que quieres tomar,
-- invita a los miembros de la junta directiva a compartir sus ideas, opiniones y cualquier información que ayude a los demás a comprender su perspectiva sobre el asunto que se tratará entre reuniones,
-- anima a los miembros a participar mediante publicaciones o respuestas a los comentarios.
+- invita a los miembros del consejo a comentar sus ideas, opiniones y cualquier información que tengan para ayudar a todos a entender su perspectiva sobre el tema o la decisión que se tratará fuera de una reunión,
+- anima a los miembros a participar publicando comentarios o respondiendo a ellos.
 
-Cuando llegue el momento, abre un **sondeo** e invita a los miembros a votar. 
-Si el asunto es sencillo, usa una **Propuesta**. Si es más complejo, usa un sondeo de **Comprobación de sentido** para preguntar claramente a los demás miembros qué opinan de la propuesta.
+Cuando todo esté listo, crea un **sondeo** e invita a los miembros a votar.
+Si el asunto es sencillo, utiliza una **Propuesta**; si es más complejo, utiliza una encuesta de **Toma de pulso** para preguntar claramente a los demás miembros qué piensan de la propuesta.
 - Expón la decisión e invita a las personas a votar,
-- pide que expliquen el motivo de su voto, especialmente si quieren hacer alguna salvedad,
-- elige las opciones de decisión que se ajusten al proceso de toma de decisiones de tu junta directiva.
-- Puedes ratificar la decisión tomada entre reuniones y dejarla asentada en el acta de la próxima reunión de la junta directiva.
+- pide que indiquen el motivo de su voto, especialmente si quieren matizar algún punto,
+- elige las opciones de decisión que se ajusten a los procesos de toma de decisiones de tu consejo.
+- Puedes ratificar la decisión tomada fuera de una reunión y dejar constancia de ella en el acta de la próxima reunión del consejo.
 
-Si no se alcanza un acuerdo, puedes preguntar a los miembros qué cambios les permitirían apoyar la decisión. Esto ayuda a formular una decisión mejor. Una nueva propuesta con esas modificaciones tendrá más posibilidades de lograr un acuerdo.
+Que una decisión no alcance un acuerdo no es un fracaso. Puedes preguntar a los miembros qué cambios harían para estar de acuerdo con una decisión. Esto te ayuda a llegar a una decisión mejor. Una nueva Propuesta con modificaciones tendrá más probabilidades de alcanzar un acuerdo.
 
-Publica una **conclusión** cuando se cierre la propuesta. Comunica a todos el resultado de la decisión y qué sucederá después.
+Establece una **conclusión** cuando se cierre la propuesta. Informa a todos de qué se ha decidido y qué ocurrirá a continuación.
 
 ![](thread_funding.png#width-90)
 
 <!-- translation-section: examples-of-out-of-session-decisions -->
 
-## Ejemplos de decisiones tomadas entre reuniones
+## Ejemplos de decisiones tomadas fuera de las reuniones
 
 <!-- translation-section: decision-about-property-purchase -->
 
 ### Decisión sobre la compra de un inmueble
-En la última reunión de la junta directiva se debatió la compra de un inmueble. Uno de sus miembros pidió un informe técnico independiente antes de tomar la decisión. La junta acordó comprar el inmueble si el informe era satisfactorio. Como la compra debía realizarse antes de la siguiente reunión, acordó subir el informe a Loomio cuando estuviera listo, debatirlo allí y tomar la decisión final sobre la compra.
+En la última reunión del consejo se discutió la compra de un inmueble. Un miembro del consejo solicitó un informe técnico independiente antes de tomar la decisión. En la reunión, el consejo acordó comprar el inmueble siempre que el informe técnico fuera satisfactorio. Sin embargo, como la compra debe realizarse antes de la próxima reunión, el consejo acordó subir el informe a Loomio cuando estuviera listo para discutirlo y tomar en Loomio la decisión definitiva sobre la compra.
 
 <!-- translation-section: decision-to-accept-directors-and-officers-liability-insurance -->
 
-### Decisión sobre la renovación del seguro de responsabilidad civil de directivos
-Durante la reunión de la junta directiva se señaló que se acercaba la renovación anual del seguro. Como se consideró un asunto administrativo, la junta acordó usar Loomio para debatir la solicitud de renovación, recabar la información necesaria de cada miembro, presentar la solicitud y aceptar la cotización para renovar el seguro.
+### Decisión sobre la contratación del seguro de responsabilidad civil para consejeros y directivos
+Durante la reunión del consejo se señaló que se acercaba la renovación anual del seguro. Como se consideró un asunto administrativo, el consejo estuvo de acuerdo en utilizar Loomio para discutir la solicitud de renovación, recabar la información necesaria de cada miembro del consejo, presentar la solicitud y dar el visto bueno al presupuesto de renovación del seguro.
 
 <!-- translation-section: a-security-breach-has-occurred-at-one-of-our-facilities -->
 
-### Se ha producido una brecha de seguridad en una de nuestras instalaciones
-Se ha producido una entrada por la fuerza y un robo que han puesto en riesgo a la organización y al personal. Es necesario informar a los miembros de la junta directiva sobre lo sucedido y los riesgos, y evaluar una respuesta adecuada.
+### Se ha producido un incidente de seguridad en una de nuestras instalaciones
+Se ha producido una entrada forzada y un robo de bienes que han puesto en riesgo a la organización y al personal. Los miembros del consejo deben conocer lo ocurrido y los riesgos, y evaluar una respuesta adecuada.
 
 <!-- translation-section: a-director-has-challenged-the-board-about-gender-and-diversity-of-board-membership -->
 
-### Un miembro de la junta directiva plantea la diversidad de género entre sus integrantes
-Este miembro ha aportado razones y pruebas para diversificar la composición de la junta y hacerla más representativa de la organización. Los demás miembros necesitan examinar la información, hacer preguntas, debatir el asunto y decidir cómo responder.
+### Un miembro del consejo ha cuestionado su composición en cuanto a género y diversidad
+El miembro del consejo ha aportado motivos y pruebas que respaldan la necesidad de diversificar la composición del consejo para que sea más representativo de la organización. Los miembros del consejo necesitan analizar la información, hacer preguntas, discutir el asunto y decidir una respuesta.
 
 ![](thread_insurance.png#width-90)
 
 <!-- translation-section: keeping-a-record-of-decisions-made-and-supporting-discussion -->
 
-## Conservar un registro de las decisiones y las discusiones que las respaldan
+## Mantener un registro de las decisiones tomadas y de las discusiones que las sustentan
 
-Conservar registros es un requisito legal para las juntas directivas y una buena práctica para los comités.
+Mantener registros es un requisito legal para los consejos de administración y una buena práctica para los comités.
 
-Hoy, muchas organizaciones registran y almacenan electrónicamente actas formales, resoluciones, políticas y decisiones importantes. Los documentos se crean y aprueban, se distribuyen y utilizan, se conservan y almacenan y, finalmente, se eliminan.
+Hoy en día, muchas organizaciones registran y almacenan electrónicamente las actas oficiales, las resoluciones, las políticas y las decisiones clave. Los registros documentales se crean y aprueban, se distribuyen y utilizan, se conservan y almacenan y, finalmente, se eliminan.
 
 <!-- translation-section: on-loomio-2 -->
 
 ### En Loomio
-Puedes adjuntar actas, informes, resoluciones y otros documentos a un **hilo** de una reunión, al contexto del hilo, a un sondeo o a cualquier comentario del hilo.  Así, los documentos quedan asociados a la discusión correspondiente.
+Puedes adjuntar actas, informes, resoluciones y otros documentos a un **hilo** de una reunión, en el contexto del hilo, en una encuesta o en cualquier comentario del hilo. Así, los documentos quedan siempre asociados a la discusión correspondiente.
 
-También encontrarás una lista de archivos en la pestaña **Archivos**.
+También puedes encontrar una lista de archivos en la pestaña **Archivos**.
 
 ![](files_tab.png#width-90)
 
-También puedes añadir en cualquier hilo o sondeo un enlace a un documento almacenado en el sistema de gestión documental que prefieras.  Busca el enlace que permite compartir el documento en línea, cópialo y pégalo en el hilo, el sondeo o un comentario.
+También puedes añadir, en cualquier hilo o encuesta, un enlace a un documento almacenado en tu sistema de gestión documental preferido. Busca el enlace que permite compartir el documento en línea, cópialo y pégalo en tu hilo, encuesta o comentario.
 
 Cualquier persona con permiso podrá hacer clic en el enlace para abrir y leer el documento.
 
 ![](thread_link.png#width-90)
 
-Las discusiones y decisiones en Loomio quedan documentadas, lo que permite verificar las decisiones de tu junta directiva. Puedes mostrar fácilmente qué se decidió y cuándo. Si los miembros debatieron, comentaron y votaron una resolución, también podrás saber cómo y por qué se tomó cada decisión.
+Como las discusiones y decisiones de Loomio quedan documentadas desde el principio, puedes verificar cómo se han tomado las decisiones de tu consejo. Puedes demostrar fácilmente qué se decidió y cuándo. Si los miembros del consejo han discutido y dejado comentarios, además de votar sobre una resolución, también sabrás cómo y por qué se llegó a cada decisión.
 
-Con el tiempo, crearás un historial de tu organización en el que podrás buscar y encontrar decisiones anteriores y las discusiones relacionadas.
+Con el tiempo, creas un historial de tu organización en el que puedes buscar y encontrar fácilmente decisiones anteriores y las discusiones relacionadas.
 
 ![](thread_search.png#width-90)
 
-En Loomio, todos los datos se escriben y almacenan en varios discos y ubicaciones, *en la nube*, y se realizan copias de seguridad a diario.  Los archivos subidos se almacenan en servidores que utilizan técnicas modernas para evitar cuellos de botella y puntos únicos de fallo.
+En Loomio, todos los datos se escriben y almacenan en varios discos y ubicaciones, *en la nube*, y se hacen copias de seguridad a diario. Los archivos que subes se almacenan en servidores que utilizan técnicas modernas para eliminar cuellos de botella y puntos de fallo.

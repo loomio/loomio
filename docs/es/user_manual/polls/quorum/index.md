@@ -1,54 +1,54 @@
 ---
 title: Cuórum
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/polls/quorum/index.md
+source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
+source_file: docs/en/user_manual/polls/quorum/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 0bf465006210877b
   example-scenario: 6596ad44e1c046b4
 generated:
-  introduction: a43657732aa060e9
-  example-scenario: 866935d980276bf1
+  introduction: 9eabda93ec428d90
+  example-scenario: 8851316d1f8e92cc
 title_source: 18ed8b6c5ab90343
 title_generated: 654fa046f1980103
 ---
 
 <!-- translation-section: introduction -->
 
-# Cuórum
+# Quórum
 
-El cuórum es el porcentaje mínimo de personas con derecho a voto que deben participar para que una votación sea válida. Úsalo cuando el proceso de toma de decisiones de tu grupo requiera un nivel determinado de participación.
+El quórum es el porcentaje mínimo de votantes con derecho a votar que deben participar para que una encuesta sea válida. Úsalo cuando tu proceso de gobernanza requiera un nivel determinado de participación.
 
-Al crear una votación, abre **Más configuraciones** e introduce el porcentaje requerido en **Cuórum de participación**. Deja el campo en blanco si no se requiere un cuórum.
+Al crear una encuesta, abre **Más configuraciones** e introduce el porcentaje requerido en **Cuórum de participación**. Deja el campo en blanco cuando no se requiera quórum.
 
-![La configuración del cuórum con un cuórum de participación del 60 por ciento](./quorum-section.png)
+![La configuración de quórum con un quórum de participación del 60 por ciento](./quorum-section.png)
 
-También puedes establecer un cuórum en una [plantilla de votación](/en/user_manual/polls/poll_templates/) para que las votaciones creadas con esa plantilla lo incluyan de forma predeterminada.
+También puedes establecer un quórum en una [plantilla de encuesta](/en/user_manual/polls/poll_templates/) para que las encuestas creadas a partir de esa plantilla lo usen de forma predeterminada.
 
 <!-- translation-section: example-scenario -->
 
-## Ejemplo
+## Ejemplo de situación
 
-La Cooperativa Oatmilk está debatiendo una prueba de seis semanas con botellas retornables. La discusión ha llegado al punto en que la cooperativa debe aprobar el presupuesto de la prueba.
+La cooperativa Oatmilk está debatiendo una prueba de seis semanas con botellas retornables. La discusión ha llegado al punto en que la cooperativa necesita aprobar el presupuesto de la prueba.
 
-Jamie selecciona **Iniciar una votación**, elige la plantilla de propuesta **Consentimiento** y completa el título, los detalles, las opciones, la duración y la configuración de las personas con derecho a voto.
+Jamie selecciona **Iniciar una votación**, elige la plantilla de propuesta **Consentimiento** y completa el título, los detalles, las opciones, la duración y la configuración de votantes.
 
-![El título, los detalles, las opciones, la duración y la configuración de las personas con derecho a voto de la propuesta](proposal-options.png)
+![El título, los detalles, las opciones, la duración y la configuración de votantes de la propuesta](proposal-options.png)
 
 Jamie limita la votación a las cinco personas responsables del presupuesto de la prueba.
 
-La cooperativa exige una participación del 60 por ciento para las decisiones importantes. Por eso, Jamie introduce **60** en el campo de cuórum de participación e inicia la propuesta.
+La cooperativa requiere un 60 por ciento de participación para las decisiones importantes, así que Jamie introduce **60** en el campo de quórum de participación e inicia la propuesta.
 
-Antes de que nadie vote, el panel de resultados muestra que aún no se ha alcanzado el cuórum.
+Antes de que alguien vote, el panel de resultados muestra que no se ha alcanzado el quórum.
 
-![Nadie ha votado y aún no se ha alcanzado el cuórum del 60 por ciento](pie-chart-0.png)
+![Ningún voto emitido y el quórum del 60 por ciento aún sin alcanzar](pie-chart-0.png)
 
-Jamie está de acuerdo y Samira está en desacuerdo. El gráfico se actualiza, pero solo han participado dos de las cinco personas con derecho a voto: un 40 por ciento. Por tanto, aún no se ha alcanzado el cuórum.
+Jamie vota De acuerdo y Samira vota En desacuerdo. El gráfico se actualiza, pero la participación de dos de los cinco votantes con derecho a votar representa solo un 40 por ciento, por lo que aún no se alcanza el quórum.
 
-![Han votado dos de cinco personas y aún no se ha alcanzado el cuórum](pie-chart-40.png)
+![Dos de los cinco votos emitidos y el quórum aún sin alcanzar](pie-chart-40.png)
 
-Después, Alex está de acuerdo. Han participado tres de las cinco personas con derecho a voto y se alcanza el cuórum del 60 por ciento. El requisito muestra ahora una marca de verificación verde. Jamie puede cerrar la votación antes de tiempo o esperar a las demás personas.
+A continuación, Alex vota De acuerdo. Han participado tres de los cinco votantes con derecho a votar, lo que alcanza el quórum del 60 por ciento. El requisito ahora muestra una marca de verificación verde. Jamie puede cerrar la encuesta antes de tiempo o esperar a los votantes restantes.
 
-![Han votado tres de cinco personas y se ha alcanzado el cuórum del 60 por ciento](pie-chart-60.png)
+![Tres de los cinco votos emitidos y el quórum del 60 por ciento alcanzado](pie-chart-60.png)

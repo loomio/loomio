@@ -1,10 +1,10 @@
 ---
 title: Informe de participación
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/groups/participation_report/index.md
+source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
+source_file: docs/en/user_manual/groups/participation_report/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 9ec21a12ab444c80
   what-s-in-the-report: 90b9c89c6933eeee
@@ -15,14 +15,14 @@ sections:
   users-per-country: 7f61b0c9a0002eec
   actions-per-country: 900472e9fa675e08
 generated:
-  introduction: 6c6df6104eecfde6
+  introduction: 894be7fb83b98e48
   what-s-in-the-report: 26a4b0d0637b227b
-  actions-per-month: 6d2d8208ebdfda7a
-  tag-usage: 46fa7f5ef3dca3d6
-  actions-per-user: e7b806deafe31003
-  voting-record-per-user: 6597a352b45994c5
-  users-per-country: bcdbe9735ea077d1
-  actions-per-country: 24d0456a68dc67eb
+  actions-per-month: bfc630af538389b9
+  tag-usage: 5186904937fcc808
+  actions-per-user: 37c2c814064fedce
+  voting-record-per-user: 5e0b07ed9cfefc69
+  users-per-country: d93a09d683f8fa78
+  actions-per-country: 0d93e72f7611d13b
 title_source: ee140bf2af2bcf29
 title_generated: a323079aff30e401
 ---
@@ -31,13 +31,13 @@ title_generated: a323079aff30e401
 
 # Informe de participación
 
-El informe de participación muestra cómo se utiliza tu grupo de Loomio.
+El informe de participación del grupo ofrece información sobre el uso de tu grupo de Loomio.
 
-Puedes elegir qué grupos incluir en el informe, las fechas de inicio y fin, y el intervalo para agrupar los resultados (año, mes, semana o día).
+Puedes elegir qué grupos incluir en el informe, las fechas de inicio y fin y el intervalo (año, mes, semana o día) para agrupar los resultados.
 
-Todas las personas de tu grupo pueden acceder al informe, pero cada una solo puede ver los resultados de los grupos a los que pertenece. Por eso, los informes pueden variar ligeramente entre personas.
+El informe está disponible para todas las personas de tu grupo, pero cada usuario solo puede ver los resultados de los grupos a los que pertenece. Por eso, distintos usuarios pueden ver informes ligeramente diferentes.
 
-Para encontrar el informe, haz clic en el icono de engranaje del menú de configuración del grupo, como se muestra a continuación.
+Puedes encontrar el informe haciendo clic en el icono de engranaje del menú de configuración del grupo, como se muestra a continuación.
 
 ![Opción del informe de participación en el menú de Oatmilk Cooperative](group_participation_report.png)
 
@@ -49,13 +49,13 @@ Para encontrar el informe, haz clic en el icono de engranaje del menú de config
 
 ### Acciones por mes
 
-Consulta cuánto se ha participado en tu grupo durante un período determinado.
+Consulta cuánta participación hay en tu grupo durante un periodo determinado.
 
-El informe muestra cuántos hilos, comentarios, encuestas, votos y reacciones hubo cada mes. El gráfico permite ver cómo varía la actividad.
+El informe muestra cuántos hilos, comentarios, encuestas, votos y reacciones ha habido por mes. Estos datos se presentan en un gráfico para que puedas ver los aumentos y descensos del uso.
 
-Haz clic en las etiquetas del gráfico para ocultar las categorías correspondientes.
+Haz clic en las etiquetas del gráfico para ocultar los datos correspondientes.
 
-Haz clic en los encabezados de la tabla para ordenar los datos por columna.
+Haz clic en los encabezados de la tabla para ordenarla por esa columna.
 
 ![Controles, totales y gráfico de actividad del informe de participación de Oatmilk Cooperative](group_participation_report_graph.png)
 
@@ -63,36 +63,36 @@ Haz clic en los encabezados de la tabla para ordenar los datos por columna.
 
 ### Uso de etiquetas
 
-Esta sección muestra con qué frecuencia se han aplicado las distintas etiquetas durante el período seleccionado. Por ejemplo, puedes ver cuántas decisiones utilizaron un proceso de decisión o una plantilla determinados.
+Muestra con qué frecuencia se han aplicado distintas etiquetas durante el periodo indicado. Por ejemplo, puedes ver el número de decisiones que usan un proceso de decisión o una plantilla específicos.
 
 ![Actividad de las etiquetas Producción, Colaboraciones con cafeterías y Operaciones a lo largo del tiempo](group_participation_report_tags.png)
 
 <!-- translation-section: actions-per-user -->
 
 ### Acciones por usuario
-Consulta quiénes participan más y menos en tu grupo.
+Identifica quiénes participan más y menos en tu grupo.
 
-Esta tabla muestra cuántos hilos, comentarios, encuestas, votos y reacciones aportó cada persona de los grupos seleccionados durante el período indicado. Haz clic en los encabezados para ordenar los datos por columna.
+Esta tabla muestra cuántos hilos, comentarios, encuestas, votos y reacciones ha creado o emitido cada usuario de los grupos indicados durante el periodo seleccionado. Haz clic en los encabezados de la tabla para ordenarla por esa columna.
 
-Activa **Solo delegados** para mostrar a las personas que actualmente son delegadas en cualquiera de los grupos seleccionados. Sus actividades y votos se suman entre todos los grupos seleccionados. Quienes no tuvieron actividad durante el período también aparecen en la tabla. La descarga CSV utiliza el mismo filtro.
+Activa **Solo delegados** para mostrar a las personas que actualmente son delegadas en cualquiera de los grupos seleccionados. La actividad y el registro de votos de cada persona se suman entre todos los grupos seleccionados, y los delegados sin actividad durante el periodo seleccionado permanecen en la tabla. La descarga en CSV usa el mismo filtro.
 
-![Acciones por delegado con tres niveles de participación](group_participation_report_actions_per_user.png)
+![Acciones por delegado que muestran tres niveles de participación](group_participation_report_actions_per_user.png)
 
 <!-- translation-section: voting-record-per-user -->
 
-### Registro de votación por usuario
+### Registro de votos por usuario
 
-Compara el número de votos que cada persona podía emitir con los que emitió. Consulta los votos que no emitió e identifica a quienes emitieron todos los votos disponibles. Si una persona no tenía votos disponibles, no aparece como si hubiera emitido todos los votos. Se excluyen las encuestas anónimas porque no se debe asociar un voto anónimo con quien lo emitió.
+Compara el número de votos que se han solicitado a cada persona con el número de votos que ha emitido, consulta los votos pendientes e identifica a las personas que han emitido todos los votos solicitados. Una persona a la que no se le ha solicitado ningún voto no aparece como si hubiera emitido todos los votos. Las encuestas anónimas se excluyen porque un voto anónimo no debe asociarse con la persona que lo emitió.
 
-Usa **Solo delegados** para consultar el registro de votación de quienes actualmente son delegados. La descarga CSV utiliza los mismos filtros de nombre y delegados.
+Usa **Solo delegados** para revisar el registro de votos de los delegados actuales. La descarga en CSV usa los mismos filtros de nombre y delegados.
 
-![Registro de votación de delegados con votos disponibles, emitidos y no emitidos](group_participation_report_voting_record.png)
+![Registro de votos de los delegados que muestra los votos solicitados, emitidos y pendientes](group_participation_report_voting_record.png)
 
 <!-- translation-section: users-per-country -->
 
 ### Usuarios por país
 
-Muestra cuántas personas de tu grupo hay en cada país, según sus direcciones IP actuales.
+Muestra cuántos usuarios de tu grupo hay en cada país, según la dirección IP actual de cada usuario.
 
 ![Usuarios por país en los grupos seleccionados](group_participation_report_users_per_country.png)
 
@@ -100,8 +100,8 @@ Muestra cuántas personas de tu grupo hay en cada país, según sus direcciones 
 
 ### Acciones por país
 
-Consulta en qué países participan más y menos las personas.
+Consulta en qué países los usuarios participan más y menos.
 
-Es similar a «Acciones por usuario», pero los datos se agrupan según el país en el que se detecta a cada persona.
+Es similar a «Acciones por usuario», pero los datos se agrupan según el país en el que se detecta que está cada usuario.
 
 ![Acciones agrupadas por país](group_participation_report_actions_per_country.png)

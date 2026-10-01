@@ -1,10 +1,10 @@
 ---
 title: Formato
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/discussions/formatting/index.md
+source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
+source_file: docs/en/user_manual/discussions/formatting/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: e5ed11fef349b38c
   attach-file: 772ed69602535db7
@@ -27,26 +27,26 @@ sections:
   markdown: 6ee2783ba81363fd
   rich-text: 9136c76bfd5409a9
 generated:
-  introduction: 74c43dda4afa6230
-  attach-file: a7261decdbbcd1c8
+  introduction: 488ff9d0181c432f
+  attach-file: ec69bb05d178183c
   remove-attachments: 9f7ae648a6b052b2
-  insert-image: 9b5b46ce64b25ab2
-  insert-link: 31a15d9970552d19
-  insert-emoji: 173d3211b4f26d94
-  headings: 0a2ac4f7b0c43e0e
-  bold-italicize-strikethrough: 434f4583633e5137
-  list: 21fcbce10f9aa6bf
-  numbered-list: 953ba4d4701d7b7a
+  insert-image: bd58a19a1b66afe0
+  insert-link: 2b3ff9c0a3ea4b91
+  insert-emoji: bf71cc026c397814
+  headings: 886497c9aaee0b7c
+  bold-italicize-strikethrough: cec78f9215511e32
+  list: a92be26df82bc461
+  numbered-list: '049ed50183aab008'
   task-list: e80a8578ecd8c568
-  colors: '04893ed5e46863eb'
-  align: 9932c073a275fd30
-  embed-videos-and-webpages: 69ef992eae080a97
-  quote: cdb6907826f2b95a
-  code-block: 8aaa564e7e4c6a21
-  divider: 0fbea90651fb49c2
-  add-table: 2f14550b7508fced
-  markdown: 51f47f5d0a0d12c5
-  rich-text: f6c1622c3aa3504e
+  colors: 0b3769e3a3bcb614
+  align: e0eb044b7e4fd454
+  embed-videos-and-webpages: 6af33526b9732805
+  quote: d75b444061b12aaf
+  code-block: 3d8447383aceb36b
+  divider: c877a935e0258330
+  add-table: 5ba8df61a2230c59
+  markdown: 2e30351fd78cc5d4
+  rich-text: 1de2937098739000
 title_source: 29d4198e41d8221a
 title_generated: 73e1804eb968f73e
 ---
@@ -55,19 +55,19 @@ title_generated: 73e1804eb968f73e
 
 # Formato
 
-Al iniciar o editar una discusión o un sondeo, o al escribir un comentario, verás una barra de formato debajo del campo de texto. Selecciona la flecha al final de la barra para mostrar u ocultar todas las herramientas.
+Al iniciar o editar una discusión o encuesta, o al escribir un comentario, verás una barra de formato debajo del campo de texto. Selecciona la flecha al final de la barra para mostrar u ocultar el conjunto completo de herramientas.
 
-Coloca el cursor sobre cada elemento para ver el nombre de la herramienta.
+Pasa el ratón o el cursor sobre cada elemento para ver el nombre de la herramienta.
 
 ![](thread_format_bar.png)
 
-Usa el formato para organizar y destacar la información, y facilitar su lectura.
+Usa el formato para estructurar y destacar la información, de modo que sea más fácil de leer.
 
 <!-- translation-section: attach-file -->
 
 ## Adjuntar archivo
 
-Usa el icono del clip, justo debajo del campo de texto, para adjuntar archivos desde tu computadora.
+Usa el icono del clip, justo debajo del formulario de texto, para adjuntar archivos de tu ordenador.
 
 ![](format_attach.png)
 
@@ -87,11 +87,11 @@ Usa esta herramienta para insertar y mostrar una imagen.
 
 ![](format_insert_image.png)
 
-Selecciona un archivo de imagen de tu computadora. La imagen se insertará en el editor cuando termine de cargarse.
+Selecciona un archivo de imagen de tu ordenador. La imagen se inserta en el editor cuando termina de subirse.
 
 ![](format_insert_example.png)
 
-La imagen aparecerá en la discusión, el sondeo o el comentario publicados.
+La imagen se muestra dentro de la discusión, encuesta o comentario publicado.
 
 >[!Tip]
 >También puedes copiar y pegar una imagen directamente en Loomio.
@@ -102,19 +102,19 @@ La imagen aparecerá en la discusión, el sondeo o el comentario publicados.
 
 ## Insertar enlace
 
-Puedes añadir un enlace a cualquier documento o página de internet que se pueda compartir.
+Puedes añadir un enlace a cualquier documento o página de internet que se pueda compartir.  
 
 Para añadir un enlace:
 
-1. Selecciona el texto que quieres enlazar, por ejemplo, el nombre de un documento.
-2. Haz clic en el icono de enlace.
+1. Selecciona el texto al que quieres añadir el enlace, por ejemplo, el nombre de un documento.
+2. Haz clic en el icono del enlace.
 3. Pega la dirección en el campo **Inserte un enlace** y selecciona **Enviar una solicitud**.
 
-Si el documento está alojado en otro sitio, comprueba sus permisos de uso compartido para que los participantes de la discusión puedan abrirlo.
+Si el documento está alojado en otro sitio, revisa los permisos para compartirlo, de modo que los participantes de la discusión puedan abrirlo.
 
-Aparecerá una vista previa del documento debajo del campo de texto. Puedes eliminarla si quieres.
+Aparecerá una vista previa del documento debajo del espacio de texto. Puedes eliminarla si quieres.
 
-Ahora, cualquier persona con acceso a tu discusión de Loomio y permiso para ver el documento podrá abrirlo y leerlo.
+Ahora, cualquier persona con acceso a tu discusión de Loomio y permiso para ver el documento puede abrirlo y leerlo.
 
 ![](format_link.png)
 
@@ -122,7 +122,7 @@ Ahora, cualquier persona con acceso a tu discusión de Loomio y permiso para ver
 
 ## Insertar emoji
 
-Selecciona el botón de la cara sonriente y elige un emoji.
+Selecciona el botón de la cara sonriente y elige un emoji del selector.
 
 ![](thread_insert_emoji.png)
 
@@ -130,9 +130,9 @@ Selecciona el botón de la cara sonriente y elige un emoji.
 
 ## Encabezados
 
-Los encabezados de nivel 1, 2 y 3 ayudan a organizar una discusión o un comentario.
+Los encabezados de nivel 1, 2 y 3 pueden ayudar a estructurar una discusión o un comentario.
 
-Selecciona el texto que quieres convertir en encabezado y haz clic en la herramienta de formato de encabezados.
+Selecciona el texto que quieres marcar como encabezado y haz clic en la herramienta de formato de encabezados.
 
 Si usas un encabezado en un comentario, el comentario se fijará automáticamente en la cronología de la discusión.
 
@@ -142,7 +142,7 @@ Si usas un encabezado en un comentario, el comentario se fijará automáticament
 
 ## Negrita, cursiva y tachado
 
-Selecciona el texto y haz clic en la herramienta de formato que necesites.
+Selecciona el texto al que quieres dar formato y haz clic en la herramienta de formato que necesites.
 
 ![](format_bold.png)
 
@@ -150,7 +150,7 @@ Selecciona el texto y haz clic en la herramienta de formato que necesites.
 
 ## Lista
 
-Usa **Lista** para crear una lista con viñetas.
+Usa **Lista** para dar formato a los elementos como una lista con viñetas.
 
 ![](thread_bullets.png)
 
@@ -158,7 +158,7 @@ Usa **Lista** para crear una lista con viñetas.
 
 ## Lista numerada
 
-Usa **Lista numerada** cuando importe el orden de los elementos.
+Usa **Lista numerada** cuando el orden de los elementos sea importante.
 
 ![](format_numbers.png)
 
@@ -176,7 +176,7 @@ Consulta la página sobre [Tareas](/en/user_manual/discussions/tasks/) para obte
 
 ## Colores
 
-Usa **Colores** para resaltar el texto seleccionado.
+Usa **Colores** para resaltar con un color el texto seleccionado.
 
 ![](thread_colors.png)
 
@@ -184,18 +184,18 @@ Usa **Colores** para resaltar el texto seleccionado.
 
 ## Alinear
 
-Selecciona esta opción para alinear el texto a la izquierda, al centro o a la derecha.
+Selecciona esta herramienta para alinear el texto a la izquierda, al centro o a la derecha.
 
 ![](thread_align.png)
 
 <!-- translation-section: embed-videos-and-webpages -->
 
-## Insertar videos y páginas web
+## Insertar vídeos y páginas web
 
-Puedes insertar videos y páginas web compatibles donde haya una barra de herramientas de formato.
+Puedes insertar vídeos y páginas web compatibles en cualquier lugar donde haya una barra de herramientas de formato.
 
-Para insertar un video: 
-1. Copia la dirección del video o de la página web.
+Para usar la función de insertar vídeos:
+1. Copia la dirección del vídeo o de la página web.
 2. Selecciona **Video integrado**, pega la dirección y selecciona **Enviar una solicitud**.
 
 ![](format_embed.png)
@@ -203,13 +203,13 @@ Para insertar un video:
 <iframe width="100%" height="380px" src="https://www.youtube-nocookie.com/embed/AJnjTd9u4zg" frameborder="0" allowfullscreen></iframe>
 
 >[!Tip]
->Asegúrate de que todas las personas que pueden participar en la discusión tengan acceso al video. Por ejemplo, un video no listado puede servir si no quieres que aparezca en los resultados de búsquedas públicas.
+>Asegúrate de que todas las personas que puedan participar en la discusión tengan acceso al vídeo. Por ejemplo, un vídeo no listado puede ser adecuado cuando no debe aparecer en los resultados de búsqueda públicos.
 
 <!-- translation-section: quote -->
 
 ## Cita
 
-Una cita destaca el texto y puede ayudarte a llamar la atención sobre una instrucción.
+El formato de cita añade énfasis a tu texto y puede servir para destacar una instrucción.
 
 ![](thread_quote.png)
 
@@ -217,7 +217,7 @@ Una cita destaca el texto y puede ayudarte a llamar la atención sobre una instr
 
 ## Bloque de código
 
-Los bloques de código suelen usarse para mostrar código, pero también puedes usarlos para distinguir texto en tu discusión.
+El formato de bloque de código suele usarse para mostrar código en el texto, pero también puedes usarlo para diferenciar partes del texto de tu discusión.
 
 ![](thread_codeblock.png)
 
@@ -225,7 +225,7 @@ Los bloques de código suelen usarse para mostrar código, pero también puedes 
 
 ## Separador
 
-Usa el separador para trazar una línea horizontal entre secciones.
+Usa el separador para trazar una línea horizontal que separe las secciones.
 
 ![](thread_line.png)
 
@@ -235,7 +235,7 @@ Usa el separador para trazar una línea horizontal entre secciones.
 
 Añade una tabla a tu discusión.
 
-Hay otras herramientas para añadir o quitar columnas y filas.
+Hay herramientas adicionales para añadir o eliminar columnas y filas.
 
 ![](thread_table.png)
 
@@ -243,14 +243,14 @@ Hay otras herramientas para añadir o quitar columnas y filas.
 
 ## Markdown
 
-Para editar en Markdown, selecciona **Editar el descuento**.
+Para cambiar a la edición en Markdown, selecciona **Editar el descuento**.
 
-Si seleccionas esta opción cuando ya hay texto en el formulario, parte del formato puede perderse durante la conversión.
+Si seleccionas esta opción cuando ya hay texto en el formulario, puede perderse parte del formato durante la conversión.
 
 <!-- translation-section: rich-text -->
 
 ### Texto enriquecido
 
-Selecciona **Editar texto enriquecido** para volver a las herramientas de formato. Esto convierte el Markdown compatible a su forma visual.
+Selecciona **Editar texto enriquecido** para volver a las herramientas de formato. Esta opción convierte el Markdown compatible en su formato visual.
 
-**Vista anticipada** muestra cómo se verá el Markdown al publicarlo, sin convertirlo.
+**Vista anticipada** muestra cómo aparecerá el Markdown al publicarlo, sin convertirlo.
