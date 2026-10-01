@@ -16,6 +16,8 @@ module StvCountService
     # ballot and each new keep value is rounded up, so the ballot's remaining
     # weight never goes negative and comparisons with the quota are exact.
 
+    include TieExploration
+
     SCALE = 1_000_000_000
     OMEGA = 100        # convergence threshold, 0.0000001 votes
     MAX_ITERATIONS = 1000
@@ -26,17 +28,21 @@ module StvCountService
       @candidate_ids = poll_options.map(&:id)
       @candidate_names = poll_options.each_with_object({}) { |po, h| h[po.id] = po.name }
 
-      # Each ballot is an ordered array of poll_option_ids
-      # Blank ballots hold no votes. Identical ballots follow identical paths,
+      # Each ballot is an ordered array of poll_option_ids. Blank ballots hold
+      # no votes. Identical ballots follow identical paths,
       # so count them together.
       @ballots = ballots.reject(&:empty?).tally.map { |prefs, count| [prefs.dup, count] }
     end
 
-    def count
+    # One pass of the count, choosing from `tie_choices` at each tie that
+    # earlier rounds cannot break (see TieExploration).
+    def count_pass(tie_choices)
       return empty_result if @ballots.empty?
 
+      @tie_choices = tie_choices.dup
+      @history = []
+      @unresolved_tie = nil
       @elected = []
-      @tied = []
       @eliminated_set = Set.new
       @rounds = []
       @continuing = Set.new(@candidate_ids)
@@ -50,6 +56,7 @@ module StvCountService
 
         # Iterate to find stable vote distribution
         tallies, quota, excess = iterate_to_stability
+        @history << tallies
 
         round_data = {
           round: @rounds.size + 1,
@@ -85,19 +92,21 @@ module StvCountService
           end
         else
           # Eliminate candidate with fewest votes
-          continuing_tallies = tallies.select { |cid, _| @continuing.include?(cid) }
-          min_votes = continuing_tallies.values.min
-          tied_cids = continuing_tallies.select { |_cid, v| v == min_votes }.keys
+          min_votes = @continuing.map { |cid| tallies[cid] }.min
+          tied_cids = @continuing.select { |cid| tallies[cid] == min_votes }.sort
 
-          if tied_cids.size > 1 && @continuing.size - 1 <= (@seats - @elected.size)
-            # Tie affects the outcome: record tie and stop counting
-            @tied = @continuing.map { |cid| { poll_option_id: cid, name: @candidate_names[cid] } }
-            round_data[:tied] = @continuing.to_a
-            @rounds << round_data
-            break
+          # Excluding candidates with no votes moves no votes, so when none of
+          # them can be elected the order they go in cannot matter.
+          if min_votes.zero? && @continuing.size - tied_cids.size >= @seats - @elected.size
+            eliminated_cid = tied_cids.min
+          else
+            eliminated_cid = break_tie(tied_cids, :min, round_data)
+            unless eliminated_cid
+              @rounds << round_data
+              break
+            end
           end
 
-          eliminated_cid = tied_cids.min
           @eliminated_set.add(eliminated_cid)
           @continuing.delete(eliminated_cid)
           @keep[eliminated_cid] = 0
@@ -116,9 +125,10 @@ module StvCountService
         method: 'meek',
         quota_type: @quota_type,
         elected: @elected,
-        tied: @tied,
-        rounds: @rounds
-      }
+        tied: [],
+        rounds: @rounds,
+        unresolved_tie: @unresolved_tie
+      }.compact
     end
 
     private

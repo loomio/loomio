@@ -23,6 +23,8 @@ module StvCountService
     # every value and total is a whole number of 0.00001 votes and comparisons
     # with the quota are exact.
 
+    include TieExploration
+
     VALUE_SCALE = 100_000
 
     Paper = Struct.new(:prefs, :count, :value, :holder)
@@ -36,18 +38,23 @@ module StvCountService
       # Blank ballots are not valid votes (rule 47 counts valid papers for the
       # quota). Identical ballots follow identical paths, so count them as one
       # parcel.
-      @papers = ballots.reject(&:empty?).tally.map { |prefs, count| Paper.new(prefs.dup, count, Rational(1), nil) }
+      @ballots = ballots.reject(&:empty?).tally
     end
 
-    def count
-      return empty_result if @papers.empty?
+    # One pass of the count, choosing from `tie_choices` at each tie the rules
+    # cannot break (see TieExploration).
+    def count_pass(tie_choices)
+      return empty_result if @ballots.empty?
 
+      @tie_choices = tie_choices.dup
+      @papers = @ballots.map { |prefs, count| Paper.new(prefs, count, Rational(1), nil) }
+      @history = []
+      @unresolved_tie = nil
       @elected = []
       @rounds = []
       @continuing = Set.new(@candidate_ids)
       @surplus_pending = []
       @retained = {}
-      @tied = []
       @quota = QuotaCalculator.calculate(@papers.sum(&:count), @seats, @quota_type)
 
       @papers.each { |paper| paper.holder = next_continuing(paper) }
@@ -63,6 +70,7 @@ module StvCountService
           quota: format_number(@quota)
         }
         @rounds << round_data
+        @history << totals
 
         elect_reaching_quota(totals, round_data)
         break if @elected.size >= @seats
@@ -75,20 +83,28 @@ module StvCountService
           break
         end
 
-        if (cid = @surplus_pending.max_by { |pending| totals[pending] })
+        if @surplus_pending.any?
+          # Rule 50: transfer the largest surplus first.
+          largest = @surplus_pending.map { |cid| totals[cid] }.max
+          cid = break_tie(@surplus_pending.select { |pending| totals[pending] == largest }, :max, round_data)
+          break unless cid
+
           transfer_surplus(cid, totals[cid], round_data)
         else
-          lowest = totals.slice(*@continuing).values.min
+          # Rule 51: exclude the candidate with the fewest votes.
+          lowest = @continuing.map { |cid| totals[cid] }.min
           tied_cids = @continuing.select { |cid| totals[cid] == lowest }
 
-          if tied_cids.size > 1 && @continuing.size - 1 <= @seats - @elected.size
-            # Tie affects the outcome: record it and stop counting.
-            @tied = @continuing.map { |cid| { poll_option_id: cid, name: @candidate_names[cid] } }
-            round_data[:tied] = @continuing.to_a
-            break
+          # Excluding candidates with no votes moves no papers, so when none of
+          # them can be elected the order they go in cannot matter.
+          if lowest.zero? && @continuing.size - tied_cids.size >= @seats - @elected.size
+            cid = tied_cids.min
+          else
+            cid = break_tie(tied_cids, :min, round_data)
+            break unless cid
           end
 
-          exclude(tied_cids.min, round_data)
+          exclude(cid, round_data)
         end
       end
 
@@ -98,9 +114,10 @@ module StvCountService
         method: 'scottish',
         quota_type: @quota_type,
         elected: @elected,
-        tied: @tied,
-        rounds: @rounds
-      }
+        tied: [],
+        rounds: @rounds,
+        unresolved_tie: @unresolved_tie
+      }.compact
     end
 
     private
