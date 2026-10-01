@@ -1,16 +1,16 @@
 ---
 title: ダイレクトディスカッション
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/discussions/direct_discussions/index.md
+source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
+source_file: docs/en/user_manual/discussions/direct_discussions/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: d84ab1e9a167cdee
   contacting-someone-via-a-direct-discussion: 5a0b9426a2d88e62
 generated:
-  introduction: 8866bf65499fa329
-  contacting-someone-via-a-direct-discussion: 57ec58a8df0bec9d
+  introduction: 13b46e69da9a0756
+  contacting-someone-via-a-direct-discussion: 223ab3d30420b061
 title_source: ccfab058f1f7c146
 title_generated: 7965ee1c404fae4a
 ---
@@ -19,21 +19,21 @@ title_generated: 7965ee1c404fae4a
 
 # ダイレクトディスカッション
 
-ダイレクトディスカッションは、特定の人だけが参加できる非公開の議論です。
+ダイレクトディスカッションは、特定の人たちだけで行う非公開のディスカッションです。
 
-ダイレクトディスカッションはグループに属しません。招待する人がLoomioグループのメンバーである必要はありません。
+ダイレクトディスカッションはグループに属しません。招待する人は、Loomioグループのメンバーである必要はありません。
 
-**招待する**欄に人やメールアドレスを追加すると、閲覧と参加ができる人を指定できます。
+**招待する**欄に人やメールアドレスを追加して、閲覧や参加ができる人を指定します。
 
-ダイレクトディスカッションでも、グループの議論と同じようにコメントや投票などの機能を使えます。サブグループを作る必要がない場合に便利です。
+ダイレクトディスカッションでは、グループのディスカッションと同じコメント、アンケート、その他のツールを使えます。サブグループを作成する必要がない場合に役立ちます。
 
-![グループが選択されておらず、招待する欄にSamira Patelが入力されたダイレクトディスカッションのフォーム](direct-discussion-example.png)
+![グループが選択されておらず、招待する欄にSamira Patelが追加されているダイレクトディスカッションのフォーム](direct-discussion-example.png)
 
-ダイレクトディスカッションを見るには、サイドバーの**ダイレクトスレッド**を選択します。新しく始めるには、そのページで**新しい議論**を選択します。
+サイドバーで**ダイレクトスレッド**を選択すると、ダイレクトディスカッションが表示されます。そのページで**新しい議論**を選択すると、新たにダイレクトディスカッションを開始できます。
 
 ![サイドバーのダイレクトスレッド項目とダイレクトディスカッションの一覧](direct-discussion-sidebar.png)
 
 <!-- translation-section: contacting-someone-via-a-direct-discussion -->
 
 ## ダイレクトディスカッションで連絡する
-サブグループを作らずに、1人または複数の人へ非公開で連絡できます。
+ダイレクトディスカッションを使うと、サブグループを作成せずに、1人または複数の人に非公開で連絡できます。

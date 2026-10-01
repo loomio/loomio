@@ -1,47 +1,47 @@
 ---
 title: Microsoft Teams
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/integrations/microsoft_teams/index.md
+source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
+source_file: docs/en/user_manual/integrations/microsoft_teams/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-30'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 905a1586a1f760e0
 generated:
-  introduction: deb4fbe963e1599f
+  introduction: 58785474fd26a51e
 title_source: a7b52b269a23c025
 title_generated: a7b52b269a23c025
 ---
 
 <!-- translation-section: introduction -->
 
-# Microsoft Teams 連携
-_Loomio グループの通知を Microsoft Teams に送信します。_
+# Microsoft Teams連携
+_Loomioグループの通知をMicrosoft Teamsに連携します。_
 
-Loomio では、新しいディスカッション、提案、コメント、投票、結論があったときに、Microsoft Teams に通知を送信できます。
+新しいディスカッションや提案が作成されたとき、コメントや投票が投稿されたとき、結論が設定されたときに、LoomioからMicrosoft Teamsへ通知を送信できます。
 
 ---
 
-[https://teams.microsoft.com](https://teams.microsoft.com) にアクセスし、**アプリ**をクリックします。
+[https://teams.microsoft.com](https://teams.microsoft.com)にアクセスし、「アプリ」をクリックします。
 ![](t1.png)
 
-検索欄に「webhook」と入力し、**Incoming Webhook**をクリックします。
+検索欄で「webhook」を検索し、「受信 Webhook」をクリックします。
 ![](t2.png)
 
-**Add to a team**をクリックします。
+「チームに追加」をクリックします。
 ![](t3.png)
 
-Loomio の通知を表示するチャネルの名前を入力し、候補から選択します。
+Loomioの通知を表示するチャネルの名前を入力し、選択します。
 ![](t4.png)
 
-「Loomio の通知」などの名前を付け、**Create**をクリックします。
+「Loomioの通知」などの名前を付け、「作成」をクリックします。
 ![](t5.png)
 
-表示された URL をコピーします。最後の手順で Loomio に貼り付けます。
+表示されたURLをコピーします。最後の手順でLoomioに貼り付けます。
 ![](t6.png)
 
-_Loomio は Microsoft が作成、提携、サポートする製品ではありません。_
+_LoomioはMicrosoftが作成したものではなく、Microsoftとの提携関係やMicrosoftによるサポートもありません。_
 
-Webhook URL を取得したら、チャット連携の設定を続けます。
+Webhook URLを取得したら、チャット連携の設定を続けます。
 
-[Loomio でチャット連携を設定する](../chatbots/#set-up-a-chat-integration)
+[Loomioでチャット連携を設定する](../chatbots/#set-up-a-chat-integration)

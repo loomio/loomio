@@ -1,14 +1,14 @@
 ---
 title: Matrix
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/integrations/matrix/index.md
+source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
+source_file: docs/en/user_manual/integrations/matrix/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-30'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: e54de0b6d9ea9ffb
 generated:
-  introduction: '048815d7af84fd02'
+  introduction: 9b923eadb01d1eff
 title_source: 76a2171c057b730f
 title_generated: 76a2171c057b730f
 ---
@@ -17,37 +17,37 @@ title_generated: 76a2171c057b730f
 
 # Matrix連携
 
-新しいディスカッション、提案、コメント、投票、結論があると、LoomioからMatrixのチャンネルに通知を送れます。
+Loomioでは、新しいディスカッション、提案、コメント、投票、結論が投稿されると、Matrixのチャンネルに通知を送信できます。
 
-Matrixのチャットルームでは一部のHTMLを使えます。Loomioもこの機能を利用しています。
+Matrixではチャットルーム内で一部のHTMLを使用でき、Loomioもこの機能を活用しています。
 
-Matrix連携には、ほかのチャット連携と異なり、Webhookを使いません。専用のボットクライアントを使います。
+Matrix連携は、他のチャット連携とは少し異なります。Webhookは使用せず、この連携専用に開発したボットクライアントを使用します。
 
-ボットがログインするためのMatrixユーザーを作成します。
+ボットがログインするためのMatrixユーザーを作成する必要があります。
 
-ボット用のユーザーを作成したら、そのユーザーでログインし、次の情報を確認します。
+ボット用のユーザーを作成したら、そのユーザーでログインして、以下の情報を取得します。
 
 このガイドではElementを使用します。
 
 ---
 
-LoomioのグループからMatrixチャット連携を追加します
+Loomioのグループから、Matrixチャット連携を追加します
 ![LoomioのMatrixボットメニュー](loomio-add-matrix-bot.png)
 
-次のフォームに入力します
+以下のフォームに必要な情報を入力します
 ![LoomioのMatrixボット設定フォーム](loomio-matrix-bot-form.png)
 
-アクセストークンを確認するには、ここから始めます
+アクセストークンを確認するには、まず設定メニューを開きます
 ![Matrixの設定メニュー](matrix-settings-menu.png)
 
-設定ページを開きます
+以下が設定ページです
 ![Matrixの設定](matrix-settings.png)
 
-アクセストークンはここに表示されます
+以下がアクセストークンです
 ![Matrixのアクセストークン](matrix-access-token.png)
 
-次にルームIDを確認します
+次に、ルームIDを確認します
 ![Matrixのルーム設定](matrix-room-settings.png)
 
-ルームIDはここに表示されます
+以下の場所に表示されています。
 ![MatrixのルームID](matrix-room-id.png)

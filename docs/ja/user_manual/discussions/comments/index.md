@@ -1,10 +1,10 @@
 ---
 title: コメント
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/discussions/comments/index.md
+source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
+source_file: docs/en/user_manual/discussions/comments/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 5de86c47a823daf0
   reading-comments: 4b20b215ad06a596
@@ -20,19 +20,19 @@ sections:
   view-notification-history: '0186c24ddde89f56'
   discard-restore-or-delete-a-comment: f7fcdf12cf61a764
 generated:
-  introduction: f2f760c7611c9403
-  reading-comments: 2c9fb03552ac795c
-  writing-a-comment: 6e0fe07ef096247f
-  mentioning-people: b014db80d6d96f93
-  replying-to-a-comment: dfb20c6692fb7fd4
-  reactions: 2933f1f6b67181f1
-  translating-comments: 27b00c8d16ff842e
-  comment-actions: 80de666ae556f7bb
-  add-a-comment-to-jump-to: 79fd87b1e76f5c41
-  edit-a-comment-and-view-changes: 8d62ffc7ef56fd86
-  copy-a-comment-link: '0708b723dc7e40db'
-  view-notification-history: c110f4d47cff02a0
-  discard-restore-or-delete-a-comment: 55058209eeaa441e
+  introduction: f5436faff2a24b17
+  reading-comments: 1e01e474d8236032
+  writing-a-comment: 6c70895c401ec94a
+  mentioning-people: f28c797f06f3adec
+  replying-to-a-comment: f1f91d56a5ef723f
+  reactions: bed6fc92031586d7
+  translating-comments: 96e09747c6dc2c22
+  comment-actions: 3f74c786066c65f4
+  add-a-comment-to-jump-to: 8a77e5b43e8c0e16
+  edit-a-comment-and-view-changes: 629b3614bdf387fe
+  copy-a-comment-link: 5243a7bad0aaf485
+  view-notification-history: 9b3c463096d5e966
+  discard-restore-or-delete-a-comment: 1268b5a5baa08cf1
 title_source: 355f79f29d7d3c2d
 title_generated: 6b9190f59aa3a51f
 ---
@@ -41,13 +41,13 @@ title_generated: 6b9190f59aa3a51f
 
 # コメント
 
-コメントは、ディスカッションに参加するための主な方法です。スレッドを見る権限がある人は誰でもコメントを見ることができます。
+コメントは、ディスカッションに参加する主な方法です。スレッドを閲覧する権限がある人なら誰でも見ることができます。
 
 <!-- translation-section: reading-comments -->
 
 ## コメントを読む
 
-ディスカッションを開くと、Loomioはまだ見ていない新しい活動を表示します。
+ディスカッションを開くと、Loomioは未読のアクティビティを表示します。
 
 未読のコメントには、投稿時刻の横に青い**新しい**ラベルが表示されます。
 
@@ -57,47 +57,47 @@ title_generated: 6b9190f59aa3a51f
 
 ## コメントを書く
 
-コメントを書いてディスカッションに参加できます。他の人は返信やリアクションをしたり、自分のコメントを投稿したりできます。
+コメントを書いてディスカッションに参加します。他の人は返信したり、リアクションしたり、自分のコメントを投稿したりできます。
 
-**コメントを投稿します**を選択すると、コメントが公開されます。ディスカッションを見る権限がある人は誰でも、そのコメントを見ることができます。
+**コメントを投稿**を選択すると公開されます。コメントは、ディスカッションを閲覧する権限がある人なら誰でも見ることができます。
 
 ![](../using_discussions/comment.png)
 
-コメントを書くときは、[書式設定](/en/user_manual/discussions/formatting/)で説明しているツールを使えます。
+コメントを書く際には、[書式設定](/en/user_manual/discussions/formatting/)で説明しているツールを利用できます。
 
 <!-- translation-section: mentioning-people -->
 
-## 人にメンションする
+## 人をメンションする
 
-**@**を入力してから相手の名前を入力し始め、一覧から選択します。メンションすると相手にすぐ通知が届くため、注意を向けてほしいときや返答を求めたいときに使えます。
+**@**を入力し、名前を入力し始めて、一覧から該当する人を選択します。メンションすると、その人にすぐに通知が届くため、注目や返信を求める際に役立ちます。
 
-![コメントでSamira Patelにメンションする](../notifying_people/comment_mention.png)
+![コメントでSamira Patelをメンションする](../notifying_people/comment_mention.png)
 
-グループの全員に通知するには、**@**を入力してからグループ名を入力し始め、一覧から選択します。
+グループの全員に通知するには、**@**を入力し、グループ名を入力し始めて、一覧から選択します。
 
-![グループへのメンションを入力しながらOatmilk Cooperativeを検索する](../notifying_people/mentioning_group_1.png)
+![グループへのメンションを入力中にOatmilk Cooperativeを検索する](../notifying_people/mentioning_group_1.png)
 
-![グループへのメンションとしてOatmilk Cooperativeを選択した状態](../notifying_people/mentioning_group_2.png)
+![グループへのメンションとして選択されたOatmilk Cooperative](../notifying_people/mentioning_group_2.png)
 
-メンションしても、その人にスレッドへのアクセス権は付与されません。まだスレッドのメンバーでない場合は、スレッドのサイドバーにある**メンバーを招待する**を使います。
+メンションしても、その人にスレッドへのアクセス権は付与されません。まだスレッドのメンバーでない場合は、スレッドのサイドバーにある**メンバーを招待する**を使用します。
 
 <!-- translation-section: replying-to-a-comment -->
 
 ## コメントに返信する
 
-コメントの下にある**返信**を選択すると、そのコメントに返答できます。返信にはコメントの投稿者への@メンションがあらかじめ入力されており、投稿すると相手に通知が届きます。通知したくない場合は、メンションを削除します。
+コメントの下にある**返信**を選択して返信します。返信にはコメントの投稿者への@メンションがあらかじめ入力されており、投稿するとその人に通知が届きます。通知しない場合は、メンションを削除します。
 
 ![](../using_discussions/comment_reply.png)
 
-自分のコメントに返信して、その下に返答を表示することもできます。
+自分のコメントに返信して、その下に返信を表示することもできます。
 
-Loomioからのメールに返信できると書かれている場合は、メールで送った返信がスレッドに表示されます。
+Loomioからのメールにメールで返信できると記載されている場合、メールで送った返信がスレッドに表示されます。
 
 <!-- translation-section: reactions -->
 
 ## リアクション
 
-スマイルマークのボタンを使うと、絵文字で反応できます。リアクションはLoomio内でコメントの投稿者に通知されますが、メールは送信されません。
+スマイルマークのボタンを使って、絵文字でリアクションします。リアクションすると、コメントの投稿者にLoomio内で通知が届きますが、メールは送信されません。
 
 ![](../using_discussions/reaction.png)
 
@@ -105,11 +105,11 @@ Loomioからのメールに返信できると書かれている場合は、メ�
 
 ## コメントを翻訳する
 
-投稿者が自分とは異なる言語を使っている場合、コメントの下に**翻訳する**が表示されます。
+投稿者が利用中の言語とは異なる言語を使用している場合、コメントの下に**翻訳する**が表示されます。
 
 ![](../using_discussions/comment_translate.png)
 
-**コメントを翻訳**を選択すると、自分の言語でコメントを読めます。
+**コメントを翻訳**を選択すると、利用中の言語でコメントを読むことができます。
 
 ![](../using_discussions/comment_translated.png)
 
@@ -117,67 +117,67 @@ Loomioからのメールに返信できると書かれている場合は、メ�
 
 ## コメントの操作
 
-よく使う操作はコメントのすぐ下に表示されます。その他の操作は、三点メニュー（**⋯**）から選べます。
+よく使う操作は、コメントのすぐ下に表示されます。その他の操作は、三点メニュー（**⋯**）から利用できます。
 
 <!-- translation-section: add-a-comment-to-jump-to -->
 
 ### コメントをジャンプに追加する
 
-**タイムラインにピン留めする**を使うと、コメントをスレッドの**ジャンプ**一覧に追加できます。
+**タイムラインにピン留めする**を使って、スレッドの**ジャンプ**一覧にコメントを追加します。
 
-**ジャンプ**に表示されるラベルは変更できます。リンクの文言を変えるには、コメントのピン留めを解除してから、もう一度ピン留めします。
+**ジャンプ**に表示されるラベルは変更できます。リンクのテキストを変更するには、コメントのピン留めを外してから、もう一度ピン留めします。
 
 >[!Tip]
->**タイムラインにピン留めする**を選択する前に、リンクの文言にしたい語句を選択してください。
+>**タイムラインにピン留めする**を選択する前に、リンクのテキストとして使う文字列を選択します。
 
-**Unpin**を選択すると、項目を**ジャンプ**から削除できます。
+**Unpin**を選択すると、**ジャンプ**から項目が削除されます。
 
 <!-- translation-section: edit-a-comment-and-view-changes -->
 
-### コメントを編集して変更内容を確認する
+### コメントを編集し、変更を確認する
 
-自分のコメントの下にある**編集**を選択すると、内容を変更できます。該当するグループの権限設定が有効な場合は、グループ管理者もメンバーのコメントを編集できます。
+自分のコメントの下にある**編集**を選択して変更します。グループの管理者も、該当するグループ権限が有効な場合は、メンバーのコメントを編集できます。
 
 ![](../using_discussions/comment_edit.png)
 
-編集されたコメントの下には**編集済み**が表示されます。
+編集されたコメントの下には、**編集済み**が表示されます。
 
 ![](../using_discussions/comment_show_edits.png)
 
-**編集済み**を選択すると、変更内容を確認できます。削除された文章は赤色、追加された文章は緑色で示されます。Loomioには、編集した人と日時が記録されます。
+**編集済み**を選択すると、変更内容を確認できます。削除されたテキストは赤色、追加されたテキストは緑色で強調表示されます。Loomioは、各編集を誰がいつ行ったかを記録します。
 
 ![](../using_discussions/comment_edits.png)
 
 次の場合にコメントを編集できます。
 
 - 自分が書いたコメントで、グループがメンバーによる自分のコメントの編集を許可している場合
-- グループ管理者で、[管理者がメンバーのコメントを編集できる](/en/user_manual/groups/settings/permissions)が有効な場合
+- グループの管理者で、[管理者はメンバーのコメントを編集できます](/en/user_manual/groups/settings/permissions)が有効になっている場合
 
 <!-- translation-section: copy-a-comment-link -->
 
-### コメントへのリンクをコピーする
+### コメントのリンクをコピーする
 
-**リンクをコピーする**を選択すると、そのコメント固有のURLをコピーできます。リンクを別の場所に貼り付けると、そのコメントを直接参照できます。
+**リンクをコピーする**を選択すると、コメント固有のURLがコピーされます。リンクを別の場所に貼り付けると、そのコメントを直接参照できます。
 
 ![](../using_discussions/comment_copy_link.png)
 
 <!-- translation-section: view-notification-history -->
 
-### 通知履歴を見る
+### 通知履歴を確認する
 
 コメントの横にある三点メニュー（**⋯**）を開き、**通知履歴**を選択します。
 
 ![コメントの操作メニューにある通知履歴](../notifying_people/comment_notification_history.png)
 
-通知履歴には、コメントについて誰にいつ通知したか、また確認できる場合は通知が読まれたかどうかが表示されます。
+通知履歴には、コメントについて誰に通知したか、いつ通知を送信したかが表示されます。既読情報を取得できる場合は、通知が読まれたかどうかも表示されます。
 
-![Samira Patelにメンションしたコメントの通知履歴](../notifying_people/comment_notification_example.png)
+![Samira Patelをメンションしたコメントの通知履歴](../notifying_people/comment_notification_example.png)
 
 <!-- translation-section: discard-restore-or-delete-a-comment -->
 
-### コメントを破棄、復元、消去する
+### コメントの破棄、復元、削除
 
-コメントを破棄すると、スレッドから取り除かれ、ゴミ箱に保管されます。自分のコメントは三点メニューの**破棄**で破棄できます。グループ管理者もコメントを破棄できます。
+コメントを破棄すると、スレッドから取り除かれますが、ゴミ箱には残ります。三点メニューの**破棄**で自分のコメントを破棄できます。グループの管理者もコメントを破棄できます。
 
 ![](../using_discussions/comment_discard.png)
 
@@ -187,11 +187,11 @@ Loomioからのメールに返信できると書かれている場合は、メ�
 
 ![](../using_discussions/comment_restore.png)
 
-**コメントを消去する**
+**コメントを削除する**
 
-コメントを消去すると、完全に削除されます。復元はできません。
+コメントを削除すると、完全に削除されます。復元はできません。
 
-[グループの権限](/en/user_manual/groups/settings/permissions)で**メンバーは自分のコメントを削除できます**が有効な場合、メンバーは破棄した自分のコメントを完全に削除できます。グループ管理者はどのコメントも削除できます。
+[グループの権限](/en/user_manual/groups/settings/permissions)で**メンバーは自分のコメントを削除できます**が有効になっている場合、メンバーは自分が破棄したコメントを完全に削除できます。グループの管理者は、どのコメントでも削除できます。
 
 ![](../using_discussions/permissions_delete_comment.png)
 
@@ -199,6 +199,6 @@ Loomioからのメールに返信できると書かれている場合は、メ�
 
 ![](../using_discussions/comment_delete.png)
 
-確認メッセージに、コメントが完全に削除されることが表示されます。
+コメントが完全に削除されることを説明する確認メッセージが表示されます。
 
 ![](../using_discussions/comment_delete_message.png)
