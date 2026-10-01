@@ -173,24 +173,24 @@ fr:
     new_named_tag: Nouveau mot-clé « %{name} »
     edit_tags: Modifier les mots-clés
     select_tags: Sélectionner les étiquettes
-    merge_tag: Balise de fusion
+    merge_tag: Fusionner le tag
     merge: Fusionner
     merge_into: Fusionner dans
-    merge_helptext: Fusionnez "%{name}" avec une autre balise. Les discussions utilisant "%{name}" utiliseront la balise sélectionnée à la place.
-    tag_merged: Balise fusionnée
+    merge_helptext: Fusionnez "%{name}" avec un autre tag. Les fils utilisant "%{name}" utiliseront le tag sélectionné à la place
+    tag_merged: Tag fusionné
     show_tags_used_in_this_group: Afficher les étiquettes utilisées dans ce groupe
     show_all_tags_in_organization: Afficher toutes les étiquettes de l'organisation
     only_show_tags_in_this_group: Afficher uniquement les tags de ce groupe
   poll_types:
     proposal: Proposition
     count: opt-in
-    check: vérification des sens
+    check: prise de température
     poll: Sondage
     dot_vote: Vote à points
     meeting: Sondage horaire de réunion
     ranked_choice: 'Classement par préférence '
-    score: Sondage pondéré
-    question: ronde de questions
+    score: notation
+    question: tour de questions
     stv: Élection STV
   timezones:
     local: Heure locale (%{value})
@@ -694,7 +694,7 @@ fr:
   search_modal:
     all_content: Tout le contenu
     best_match: Meilleure correspondance
-    any_tag: N'importe quelle balise
+    any_tag: N'importe quel tag
     all_subgroups: Tous les sous-groupes
     parent_only: Parents seulement
   navbar:
@@ -1993,10 +1993,10 @@ fr:
     consensus_title: Consensus
     proposal_title: Proposition
     count_title: Opt-in
-    check_title: Vérification des sens
+    check_title: Prise de température
     poll_title: Sondage
     meeting: Réunion
-    score_title: Vote pondéré
+    score_title: Notation
     dot_vote_title: Vote à points
     meeting_title: Sondage horaire de réunion
     ranked_choice_title: Classement par préférence
@@ -2248,7 +2248,7 @@ fr:
     default_templates: Modèles par défaut
     default_template: Modèle par défaut
     custom_template: Modèle personnalisé
-    default_poll_types: Types d’interrogation par défaut
+    default_poll_types: Types de sondage par défaut
     suggested_templates: Modèles suggérés
     group_templates: Modèles de groupe
     basic_templates: Modèles de base
@@ -2271,7 +2271,7 @@ fr:
   poll_common_collapsed:
     by_who: par %{name}
   poll_common_calendar_invite:
-    calendar_invite: Inclure une invitation au calendrier avec ce résultat
+    calendar_invite: Inclure une invitation au calendrier avec cette conclusion
     poll_option_id: Heure de réunion
     helptext_on: Les utilisateurs pourront ajouter cette réunion à leur calendrier
     helptext_off: Aucune invitation à la réunion ne sera envoyée
@@ -2284,7 +2284,7 @@ fr:
     location_placeholder: Où se déroulera cette réunion ?
   poll_common_close_form:
     title: Fermer %{poll_type} maintenant?
-    helptext: Êtes-vous sûr de vouloir clôturer ce %{poll_type} tôt et partager un résultat ?
+    helptext: Êtes-vous sûr de vouloir clôturer ce %{poll_type} avant la date prévue et partager une conclusion ?
     close_poll_type: Fermer %{poll_type}
     poll_type_closed: "%{poll_type} est terminé"
   poll_common_reopen_form:
@@ -2458,13 +2458,13 @@ fr:
     'yes': Oui
     'no': Non
     agree: D’accord
-    consent: Autorisation
+    consent: Consentement
     abstain: S’abstenir
     unsure: Incertain
     disagree: Désaccord
     objection: Objection
     object: Objet
-    block: Contre
+    block: Blocage
     no_voting: 'Pas de vote '
   poll_count_form:
     pct_of_target: "% de l’objectif"
@@ -2909,9 +2909,9 @@ fr:
       score_hint: Les électeurs attribuent un score à chaque option
       allocate: Allouer
       allocate_hint: Les électeurs répartissent un budget de points entre les options
-      ranked_choice: Choix classé
+      ranked_choice: Classement par préférence
       ranked_choice_hint: Les électeurs classent les options par ordre décroissant de préférence.
-      time_poll: Sondage temporel
+      time_poll: Sondage horaire
       time_poll_hint: Les électeurs indiquent quand ils sont disponibles pour se réunir
       rank: Rang
       time: Temps
@@ -3009,7 +3009,7 @@ fr:
     set_all_vote_weights_the_same: Même poids de vote pour tous
     member_vote_weights_hint: Les électeurs sans appartenance actuelle à un groupe ont un poids de vote de 1
     weighted_voting: Vote pondéré
-    weighted_voting_is_not_available_with_anonymous_voting: "Le vote pondéré n'est pas disponible avec le vote anonyme"
+    weighted_voting_is_not_available_with_anonymous_voting: Le vote pondéré n'est pas disponible avec le vote anonyme
     use_weighted_voting: Utiliser le vote pondéré
     weighted_voting_off_warning: La désactivation du vote pondéré met chaque poids de vote à 1. Tous les poids de vote que vous avez modifiés pour ce sondage seront perdus.
     weighted_voting_on_group: L'activation du vote pondéré reprend le poids de vote par défaut de chaque membre. Les autres votants reçoivent un poids de vote de 1.
@@ -3106,7 +3106,7 @@ fr:
       success: Discussion déplacée vers %{name}
     move_thread_title: Déplacer le sujet
     destination: Destination
-    direct_thread: Discussion directe
+    direct_thread: Fil direct
     direct_thread_hint: Toutes les personnes ayant participé conserveront leur accès. Vous et la personne qui a créé la discussion en serez les administrateurs.
     direct_thread_anonymous_poll: Les discussions contenant des sondages anonymes ne peuvent pas être converties en discussions directes car cela pourrait révéler qui a voté.
   auth:
@@ -3143,7 +3143,7 @@ fr:
     stance_created: Vote enregistré
     stance_updated: Vote mis à jour
   poll_stv_form:
-    settings_title: Paramètres électoraux STV
+    settings_title: Paramètres de l’élection STV
     settings_helptext: Configurez le nombre de sièges à pourvoir, la méthode de comptage et le type de quota pour cette élection.
     seats_label: Nombre de sièges à remplir
     method_label: Méthode de comptage
