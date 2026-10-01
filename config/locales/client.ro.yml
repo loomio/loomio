@@ -176,7 +176,7 @@ ro:
   poll_types:
     proposal: propunere
     count: înscriere
-    check: verificarea sensului
+    check: tatonare
     poll: sondaj
     dot_vote: vot cu puncte
     meeting: sondaj pe perioadă
@@ -787,8 +787,8 @@ ro:
       membership_request_approved: "%{actor} a aprobat solicitarea ta de a te alătura %{title}"
       new_comment: "%{actor} a comentat în: %{title}"
       new_coordinator: "%{actor} te-a făcut administrator al lui %{title}"
-      outcome_announced: "%{actor} a distribuit un rezultat %{poll_type}: %{title}"
-      outcome_created: "%{actor} a distribuit un rezultat %{poll_type}: %{title}"
+      outcome_announced: "%{actor} a publicat o concluzie pentru %{poll_type}: %{title}"
+      outcome_created: "%{actor} a publicat o concluzie pentru %{poll_type}: %{title}"
       outcome_updated: "%{actor} a actualizat rezultatul %{poll_type}: %{title}"
       outcome_review_due: 'Este timpul să revizuim rezultatul: %{title}'
       poll_closed_by_user: "%{actor} a închis %{poll_type}: %{title}"
@@ -826,8 +826,8 @@ ro:
       membership_resent: "%{actor} v-a invitat să vă alăturați unui grup"
       membership_requested: "%{actor} a solicitat să se alăture grupului dvs"
       membership_request_approved: "%{actor} a aprobat solicitarea ta de a te alătura %{title}"
-      outcome_announced: "%{actor} a distribuit un rezultat %{poll_type}"
-      outcome_created: "%{actor} a distribuit un rezultat %{poll_type}"
+      outcome_announced: "%{actor} a distribuit o concluzie pentru %{poll_type}"
+      outcome_created: "%{actor} a distribuit o concluzie pentru %{poll_type}"
       outcome_review_due: Este timpul să revizuim rezultatul %{poll_type}
       poll_announced_wip: "%{actor} dorește feedbackul dvs. la un %{poll_type}"
       poll_closed_by_user: "%{actor} a închis %{poll_type}"
@@ -884,7 +884,7 @@ ro:
       poll_created: "%{poll_type}: %{title}"
       poll_edited: "%{actor} a actualizat %{poll_type}: %{title}"
       poll_expired: "%{poll_type} s-a închis: %{title}"
-      poll_expired_author: 'Publică un rezultat: %{title}'
+      poll_expired_author: 'Publică o concluzie: %{title}'
       poll_option_added: "%{actor} a adăugat opțiuni la %{title}"
       poll_reopened: 'Votarea a fost prelungită: %{title}'
       poll_reminder: "%{actor} vă reamintește să votați pentru %{title}"
@@ -1112,10 +1112,10 @@ ro:
     reply_to_comment: Raspunde
     fork_comment: File de furcă
     translate_comment: Traducere comentariu
-    edit_outcome: Editare rezultat
-    announce_outcome: Anunțați oamenii despre acest rezultat
-    announce_outcome_active: "(Nimeni nu a fost anunțat încă despre acest rezultat)"
-    translate_outcome: Traducere rezultat
+    edit_outcome: Editează concluzia
+    announce_outcome: Anunță oamenii despre această concluzie
+    announce_outcome_active: "(Nimeni nu a fost anunțat încă despre această concluzie)"
+    translate_outcome: Tradu concluzia
     show_history: Arata istorie editari
     edited: Editat
     show_edits: Afișează editările
@@ -1339,7 +1339,7 @@ ro:
       loud_aria_description: Volumul notificărilor pentru acest grup este setat la Tare. Veți primi un e-mail ori de câte ori există activitate.
       loud_message: Veți primi un e-mail despre toată activitatea din „%{name}”.
       normal: 'Trimite email pentru fiecare activitate importanta: discutii si propuneri noi, rezultate, etc.'
-      normal_aria_description: Volumul notificarilor pentru acest grup este pozitionat la Normal. Vei primi emailuri doar pentru activitatea importanta, cum ar fi initierea unei discutii noi, ridicarea unei propuneri sau  stabilirea unui rezultat.
+      normal_aria_description: Nivelul notificărilor tale pentru acest grup este setat la Normal. Vei primi e-mailuri doar despre activități importante, cum ar fi când cineva începe un fir nou, face o propunere sau stabilește o concluzie.
       normal_message: Veți primi doar un e-mail despre evenimente importante din „%{name}”.
       quiet: Nu trimite email pentru acest grup. Activitatea va fi afisata pe tabloul de bord.
       quiet_aria_description: Volumul notificărilor pentru acest grup este setat la Silențios. Nu veți primi e-mailuri despre activitatea din acest grup. Activitatea grupului va fi afișată pe tabloul de bord.
@@ -1388,7 +1388,7 @@ ro:
     change_cover_image: schimba imaginea de copertă
     change_logo: schimba sigla
     permissions_explaination: 'Există două niveluri de apartenență pe care o persoană le poate avea la un grup: administrator și membru. Administratorii pot edita setările de grup, pot face alte persoane administratori și pot efectua toate acțiunile enumerate mai jos.'
-    parent_group: Grupul de părinți
+    parent_group: Grup părinte
     new_organisation: Noua organizare
     new_group: Grup nou
     new_subgroup: Grup nou subordonat
@@ -1951,13 +1951,13 @@ ro:
     consensus_title: Consens
     proposal_title: Propunere
     count_title: Înscrieți-vă
-    check_title: Verificarea simțului
+    check_title: Tatonare
     poll_title: Sondaj
     meeting: Întâlnire
-    score_title: Scor sondaj
-    dot_vote_title: Dot votează
+    score_title: Sondaj cu scor
+    dot_vote_title: Vot cu puncte
     meeting_title: Sondaj de timp
-    ranked_choice_title: Alegere clasată
+    ranked_choice_title: Vot preferențial
     gradients_of_agreement_title: Gradiente de acord
     majority_title: Majoritate
     stv_title: Alegeri STV
@@ -2167,7 +2167,7 @@ ro:
     invitations: Invitații
     requests: Cereri
     admin: Admin
-    guest: Oaspete
+    guest: Invitat
     sharable_link: Link care poate fi partajat
     last_seen: Văzut ultima dată %{date}
     invited_by_name: Invitat de %{name}
@@ -2229,7 +2229,7 @@ ro:
   poll_common_collapsed:
     by_who: dupa %{name}
   poll_common_calendar_invite:
-    calendar_invite: Includeți o invitație în calendar cu acest rezultat
+    calendar_invite: Include o invitație în calendar cu această concluzie
     poll_option_id: Ora întâlnirii
     helptext_on: Utilizatorii vor putea adăuga această întâlnire în calendarul lor
     helptext_off: Nu va fi trimisă nicio invitație la întâlnire
@@ -2242,7 +2242,7 @@ ro:
     location_placeholder: Unde va avea loc această întâlnire?
   poll_common_close_form:
     title: Închideți %{poll_type} acum?
-    helptext: Sigur doriți să închideți acest %{poll_type} mai devreme și să împărtășiți un rezultat?
+    helptext: Sigur vrei să închizi acest %{poll_type} mai devreme și să distribui o concluzie?
     close_poll_type: Închide %{poll_type}
     poll_type_closed: "%{poll_type} închis"
   poll_common_reopen_form:
@@ -2310,14 +2310,14 @@ ro:
     reminder_sent: Notificare de memento trimisă
   poll_common_set_outcome_panel:
     enter_outcome: Introduceți rezultatul
-    poll_type: Acest %{poll_type} s-a închis. Fă-ți timp pentru a lua în considerare rezultatele, apoi împărtășește un rezultat, astfel încât oamenii să știe ce se va întâmpla în continuare.
-    enter_an_outcome: Introduceți un rezultat
+    poll_type: Acest %{poll_type} s-a închis. Fă-ți timp să analizezi rezultatele, apoi distribuie o concluzie ca oamenii să știe ce urmează.
+    enter_an_outcome: Introdu o concluzie
   poll_common_outcome_form:
     review_due_in_days: Revizuiți decizia după câte zile?
     review_date: Data revizuirii
     review_date_hint: Stabiliți o dată pentru a revizui decizia (opțional)
-    who_to_notify: Pe cine vrei să anunți despre acest rezultat? (optional)
-    outcome_statement_template: Șablon de declarație de rezultat
+    who_to_notify: Pe cine vrei să anunți despre această concluzie? (opțional)
+    outcome_statement_template: Șablon pentru concluzie
     new_title: Rezultatul de stat
     update_title: Actualizați rezultatul
     outcome_created: Rezultatul creat
@@ -2422,7 +2422,7 @@ ro:
     disagree: Dezacord
     objection: Obiecţie
     object: Obiect
-    block: bloc
+    block: Veto
     no_voting: Fără vot
   poll_count_form:
     pct_of_target: "% din țintă"
@@ -2485,7 +2485,7 @@ ro:
     discussion_closed: "<a class='actor-link' href='/u/%{username}'>%{author}</a> a închis firul"
     discussion_reopened: "<a class='actor-link' href='/u/%{username}'>%{author}</a> a redeschis firul"
     new_comment: "<a class='actor-link' href='/u/%{username}'>%{author}</a>"
-    outcome_created: "<a class='actor-link' href='/u/%{username}'>%{author}</a> a distribuit un rezultat"
+    outcome_created: "<a class='actor-link' href='/u/%{username}'>%{author}</a> a distribuit o concluzie"
     poll_reopened: "<a class='actor-link' href='/u/%{username}'>%{author}</a> a redeschis %{polltype}"
     poll_closed_by_user: "<a class='actor-link' href='/u/%{username}'>%{author}</a> a închis %{polltype}"
     poll_created: "<a class='actor-link' href='/u/%{username}'>%{author}</a> a început un %{polltype}"
@@ -2664,8 +2664,8 @@ ro:
       poll_expired: Un sondaj expiră
       poll_closed_by_user: Un sondaj este închis manual
       poll_reopened: Un sondaj este redeschis pentru vot
-      outcome_created: Un rezultat este împărtășit
-      outcome_updated: Un rezultat este actualizat
+      outcome_created: O concluzie este distribuită
+      outcome_updated: O concluzie este actualizată
       outcome_review_due: Urmează o analiză a rezultatului
       new_discussion: Se începe o discuție
       discussion_edited: O discuție este editată
@@ -2772,7 +2772,10 @@ ro:
         submit: Vedeți șabloanele de propuneri
       share_an_outcome:
         title: Distribuiți rezultatul unei propuneri
-        helptext: "<p>Pentru a facilita luarea deciziilor, propunerile au un termen limită pentru votare. Când termenul limită este atins, votarea se va închide și veți fi notificat(ă) să împărtășiți rezultatul propunerii.</p><p> Rezultatul este o oportunitate de a spune dacă propunerea a avut succes și ce se va întâmpla în continuare.</p><p> Dacă termenul limită pentru propunerea dvs. nu a expirat încă, dar doriți să continuați oricum, puteți face clic <b>pe Închidere mai devreme</b> .</p><p> Când este momentul potrivit, <b>introduceți un rezultat</b> pentru propunerea dvs.</p>"
+        helptext: |
+          <p>Când se ajunge la data limită a propunerii, votarea se închide și ți se va cere să distribui o concluzie.</p>
+          <p>În concluzie explici ce ai decis (sau ce urmează) după ce ai analizat voturile și comentariile.</p>
+          <p>Dacă data limită nu a trecut, dar ești gata să mergi mai departe, poți alege <b>Închide mai devreme</b>.</p>
         submit: Vizualizați propunerea
         cancel: Fă asta mai târziu
       start_a_discussion:
@@ -2865,7 +2868,7 @@ ro:
       score_hint: Alegătorii atribuie un scor fiecărei opțiuni
       allocate: Aloca
       allocate_hint: Alegătorii alocă un buget de puncte între opțiuni
-      ranked_choice: Alegere clasată
+      ranked_choice: Vot preferențial
       ranked_choice_hint: Alegătorii își ordonează opțiunile de la cea mai preferată la cea mai puțin preferată
       time_poll: Sondaj de timp
       time_poll_hint: Alegătorii indică când sunt disponibili să se întâlnească
@@ -2965,7 +2968,7 @@ ro:
     set_all_vote_weights_the_same: Setați toate ponderile voturilor la fel
     member_vote_weights_hint: Votanții care nu sunt membri ai unui grup primesc o pondere de vot de 1
     weighted_voting: Votul ponderat
-    weighted_voting_is_not_available_with_anonymous_voting: "Votul ponderat nu este disponibil cu votul anonim"
+    weighted_voting_is_not_available_with_anonymous_voting: Votul ponderat nu este disponibil cu votul anonim
     use_weighted_voting: Folosește votul ponderat
     weighted_voting_off_warning: Dezactivarea votului ponderat setează ponderea fiecărei voturi la 1. Orice ponderi ale votului modificate pentru acest sondaj se vor pierde.
     weighted_voting_on_group: Activarea votului ponderat copiază ponderea implicită a voturilor fiecărui membru. Ceilalți votanți primesc o pondere de 1.
