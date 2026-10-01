@@ -175,7 +175,7 @@ pl:
     only_show_tags_in_this_group: Pokaż tylko tagi w tej grupie
   poll_types:
     proposal: propozycja
-    count: wyrazić zgodę
+    count: zapisy
     check: sondowanie nastrojów
     poll: głosowanie
     dot_vote: podział punktów
@@ -1004,7 +1004,7 @@ pl:
       topic: Wszyscy w wątku
       voters: Wszyscy zaproszeni do głosowania
       decided_voters: Wszyscy, którzy zagłosowali
-      undecided_voters: Niezdecydowani głosujący
+      undecided_voters: Głosujący, którzy jeszcze nie głosowali
       non_voters: Osoby z %{name} nie zostały jeszcze zaproszone
       delegates_of_group: Delegaci %{name}
     form:
@@ -1787,7 +1787,7 @@ pl:
       all: Ostatnie dyskusje
     thread_preview:
       you_voted: Głosowałeś %{position}
-      undecided: Jesteś niezdecydowany
+      undecided: Jeszcze nie masz oddanego głosu
     threads_from:
       group: Wątki od
       pinned: Przypięte wątki
@@ -1971,9 +1971,9 @@ pl:
     question_title: Runda pytań
     advice_title: Rada
     consent_title: Zgoda
-    consensus_title: Zgoda
+    consensus_title: Konsensus
     proposal_title: Propozycja
-    count_title: Zgoda
+    count_title: Zapisy
     check_title: Sondowanie nastrojów
     poll_title: Ankieta
     meeting: Spotkanie
@@ -2099,8 +2099,8 @@ pl:
     save_changes: Zapisz
     change_vote: Zmień swój głos
     change_response: Zmień swoją odpowiedź
-    max_score: Maksymalny wynik
-    min_score: Minimalny wynik
+    max_score: Maksymalna ocena
+    min_score: Minimalna ocena
     too_long: Za długo
     edit_warning: Edycja jest zalecana tylko w przypadku drobnych zmian lub napraw błędów pisowni. W przypadku istotnych zmian zakończ %{pollType} i utwórz nową.
     no_voting: Wyłącznie do dyskusji, głosowanie wyłączone
@@ -2298,7 +2298,7 @@ pl:
     started_by: Rozpoczęte przez %{name}
   poll_common_votes_panel:
     vote_removed: Głos usunięty
-    undecided: Niezdecydowany
+    undecided: Nie głosowali
     newest_first: Od najnowszych
     oldest_first: 'Od najstarszych '
     priority_first: Najpierw wyraź zgodę
@@ -2327,7 +2327,7 @@ pl:
   poll_common_undecided_panel:
     show_undecided: Pokaż %{count} niezdecydowanych
     show_invitations: Pokaż Oczekujące Zaproszenia
-    undecided_users: Niezdecydowany (%{count})
+    undecided_users: Nie głosowali (%{count})
     invitation_count_singular: 1 dodatkowa osoba została zaproszona do wzięcia udziału poprzez e-mail
     invitation_count_plural: "%{count} dodatkowych osób zostało zaproszonych do udziału przez e-mail"
   poll_common_undecided_user:
@@ -2412,7 +2412,7 @@ pl:
     minimum_stance_choices_hint: tj. uszereguj swoje 3 najlepsze smaki lodów
     ranked_choice_created: Utworzono wybór rankingowy
     ranked_choice_updated: 'Zaktualizowano wybór rankingowy '
-    rank: Ranga
+    rank: Ranking
     points: Punkty
     average: Przeciętny
     mean: Mieć na myśli
@@ -2470,7 +2470,7 @@ pl:
     total: W sumie
   poll_remove_vote:
     title: Usunąć swój głos?
-    helptext: Czy na pewno chcesz usunąć swój głos? Zostaniesz wymieniony jako niezdecydowany i możesz głosować ponownie później, jeśli chcesz.
+    helptext: Czy na pewno chcesz usunąć swój głos? Trafisz na listę osób, które jeszcze nie głosowały, i możesz zagłosować ponownie później, jeśli chcesz.
     confirm: Usuń głosowanie
     success: Głos usunięty
   poll_poll_vote_form:
@@ -2833,7 +2833,7 @@ pl:
       voting_title: 24 godziny przed zakończeniem głosowania wyślij przypomnienie na adres
       nobody: Nikt
       author: Autor (ja)
-      undecided_voters: Niezdecydowani wyborcy
+      undecided_voters: Głosujący, którzy jeszcze nie głosowali
       voters: Wszyscy wyborcy
     notify_on_participate:
       title: Powiadom mnie, gdy ktoś weźmie udział
@@ -2888,18 +2888,18 @@ pl:
       question_hint: Zaproś do zadawania pytań i komentowania swojej propozycji
       show_thumbs: Pokazanie kciuków
       show_thumbs_hint: Wyborcy wybierają kciuk skierowany w górę, w dół, na bok lub rękę w górę
-      choose: Wybierać
+      choose: Wybór
       simple_poll: Prosta ankieta
       choose_hint: Wyborcy wybierają najlepszą opcję (lub opcje)
-      score: Wynik
+      score: Ocena
       score_hint: Wyborcy przypisują punktację każdej opcji
-      allocate: Przeznaczyć
+      allocate: Podział
       allocate_hint: Wyborcy rozdzielają budżet punktów pomiędzy opcje
       ranked_choice: Wybór rankingowy
       ranked_choice_hint: Wyborcy porządkują opcje od najbardziej do najmniej preferowanych
       time_poll: Wybór terminu
       time_poll_hint: Wyborcy wskazują, kiedy są dostępni na spotkanie
-      rank: Stopień
+      rank: Ranking
       time: Czas
       stv: Wybory STV
       stv_hint: Wybierz wielu zwycięzców proporcjonalnie, korzystając z jednego głosu przenoszalnego

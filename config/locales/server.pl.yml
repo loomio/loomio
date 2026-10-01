@@ -46,7 +46,7 @@ pl:
       process_subtitle: Osiągnij porozumienie zbiorowe ze wszystkimi zaangażowanymi stronami.
       process_introduction: '<p>Zbuduj konsensus w sprawie decyzji, którą musisz podjąć wspólnie, aby osiągnąć porozumienie, które zaspokoi potrzeby i obawy wszystkich uczestników.</p><p> Typowe role:</p><ul><li><p> Wyznacz facylitatora. (W przypadku posiedzeń zarządu jest to zazwyczaj przewodniczący.)</p></li><li><p> Kworum lub większość członków uczestniczących zgodnie ze statutem organizacji.</p></li></ul><p> Typowe etapy procesu:</p><p> Krok 1. Stwórz otwartą przestrzeń do dyskusji na temat problemu lub proponowanej decyzji.</p><p> Krok 2. Sprawdź konsensus i ujawnij zastrzeżenia, korzystając z propozycji kontroli Sense.</p><p> Krok 3. Wyjaśnij wszelkie punkty, zaproś do konstruktywnych modyfikacji i zmień propozycję.</p><p> Krok 4. Sprawdź zgodę i wszelkie pozostałe zastrzeżenia, korzystając z propozycji konsensusu.</p><p> Krok 5. Zapisz decyzję z wynikiem oraz w oficjalnych protokołach organizacji.</p><p> <a target="_blank" rel="noopener noreferrer nofollow" href="/docs/en/guides/making_decisions/consensus_process">Czytaj więcej: Proces konsensusu.</a></p>'
       description: <h3 id="what-is-the-decision-you-need-to-make">Jaką decyzję musisz podjąć?</h3><p></p><h3 id="why-is-this-important-and-what-impact-does-it-have"> Dlaczego jest to ważne i jaki ma wpływ?</h3><p></p><h3 id="what-information-do-people-need-for-context"> Jakich informacji ludzie potrzebują dla kontekstu?</h3><p></p><h3 id="who-is-the-facilitator"> Kto jest koordynatorem?</h3><p></p><h3 id="what-conditions-need-to-be-met-for-a-decision"> Jakie warunki trzeba spełnić, aby otrzymać decyzję?</h3><h3 id=""></h3>
-      consensus: Zgoda
+      consensus: Konsensus
     share_links_and_info:
       title_placeholder: Udostępnij linki i informacje
       process_name: Udostępnij linki i informacje
@@ -178,8 +178,8 @@ pl:
         count: Licz
         choose: Wybierz
         allocate: Przydziel
-        score: Wynik
-        rank: Ranga
+        score: Ocena
+        rank: Ranking
         time: Wybór terminu
   user:
     deleted_user: Usunięty użytkownik
@@ -484,7 +484,7 @@ pl:
       not_invited: Nie zaproszona
       please_respond: Odpowiedz
       time_zone: "(Czas wyświetlany w %{zone})"
-      undecided_members: Niezdecydowani członkowie (%{count})
+      undecided_members: Członkowie, którzy nie głosowali (%{count})
       undecided_visitors: Niezdecydowane zaproszone osoby (%{count})
       more_undecided: "%{count} więcej..."
       vote_now: Głosuj teraz
@@ -650,7 +650,7 @@ pl:
       title: Ocena sposobu podejmowania decyzji w naszej organizacji
       details: <h3 id="what-is-this-poll-about"><strong>Czego dotyczy ta ankieta?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Dlaczego to jest ważne?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>O co prosisz ludzi?</strong></h3><p></p><p> Wybierz opcję(y), które Cię interesują.</p>
       process_subtitle_v2: Zmierz poziom poparcia dla każdej opcji
-      process_introduction_v2: <p><strong>Wynik</strong> pozwala zmierzyć poziom poparcia grupy dla każdej opcji. Uczestnicy oceniają każdą opcję, przypisując jej wynik na skali przesuwnej, dzięki czemu można zobaczyć nie tylko, co ludzie preferują, ale także, jak bardzo.</p><p> <a target="_blank" href="/docs/en/user_manual/polls/proposal_types#score-poll">Przeczytaj więcej o ankiecie Score</a> .</p>
+      process_introduction_v2: <p><strong>Ocena</strong> pozwala zmierzyć poziom poparcia grupy dla każdej opcji. Uczestnicy oceniają każdą opcję, przyznając jej punkty na skali, dzięki czemu można zobaczyć nie tylko, co ludzie preferują, ale także, jak bardzo.</p><p><a target="_blank" href="/docs/en/user_manual/polls/proposal_types#score-poll">Przeczytaj więcej o ocenie</a>.</p>
       process_subtitle_v3: Poproś wyborców o ocenę, w jakim stopniu popierają każdą z opcji
     dot_vote:
       process_subtitle: Przydziel budżet punktów, aby ujawnić priorytety
@@ -662,7 +662,7 @@ pl:
       process_subtitle_v3: Ujawnij priorytety, gdy pojawiają się kompromisy. Znane również jako głosowanie kropkowe.
     ranked_choice:
       process_subtitle: Zrozumieć uporządkowaną preferencję opcji
-      process_introduction: <p>Wybór rankingowy jest przydatny, gdy masz dużą liczbę opcji lub gdy przeprowadzasz wybory.</p><p> Ten szablon ankiety oferuje szereg opcji, dzięki którym ludzie mogą głosować w preferowanej kolejności.</p><p> Możesz ustalić liczbę wyborów, jakie będzie miał wyborca.</p><p> <span>Głosujący przeciągają i upuszczają opcje w kolejności preferencji (gdzie nr 1 oznacza opcję najbardziej preferowaną).</span></p><p> <span>Zaawansowane ustawienia obejmują opcje „Głosy są anonimowe” i „Pokaż opcje w kolejności losowej” - powszechnie używane w przypadku</span> wyborów ocenianych w celu zminimalizowania ryzyka stronniczości podczas głosowania.</p><p> Wyniki są wyświetlane w kolejności rankingowej. Tabela wyników zawiera dodatkowe dane, które pomogą Ci analizować wyniki.</p><ul><li><p> Stopień</p></li><li><p> % punktów</p></li><li><p> Zwrotnica</p></li><li><p> Mieć na myśli</p></li></ul><p> <a target="_blank"  href="/docs/en/user_manual/polls/proposal_types#ranked-choice">Przeczytaj więcej o wyborze rankingowym</a> .</p>
+      process_introduction: <p>Ranking jest przydatny, gdy masz dużo opcji lub przeprowadzasz wybory.</p><p>Głosujący przeciągają i upuszczają opcje, aby ułożyć je w kolejności preferencji.</p><p>Wyniki są wyświetlane w kolejności rankingu.</p><p><a target="_blank"  href="/docs/en/user_manual/polls/proposal_types#ranked-choice">Przeczytaj więcej o rankingu</a>.</p>
       title: Wybierz dyrektorów do rady nadzorczej
       details: <h3 id="what-is-this-poll-about"><strong>Czego dotyczy ta ankieta?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Dlaczego to jest ważne?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>O co prosisz ludzi?</strong></h3><p></p><p> Zagłosuj, klasyfikując opcje według swoich preferencji. Opcja, która zajmie pierwsze miejsce w wynikach, wygrywa.</p>
       process_subtitle_v2: Znajdź kolejność preferencji grupy
@@ -802,14 +802,14 @@ pl:
     unavailable: Nie płynny
     anonymous: Anonimowy
     no_voters: Brak wyborców
-    score: 'wynik: %{value}'
+    score: 'ocena: %{value}'
     none_of_the_above: Żadne z powyższych
     no_option_selected: Nie wybrano opcji
     review_date: "**Data przeglądu:** %{value}"
     voted: "%{author} zagłosował na %{response}"
     voted_hidden: "%{author} zagłosował"
     vote_removed: "%{author}: głos usunięty"
-    undecided: "%{author}: niezdecydowany"
+    undecided: "%{author}: brak głosu"
     superseded: zastąpiony
     shared_outcome: "%{author} udostępnił wniosek"
     removed: Usunięto
