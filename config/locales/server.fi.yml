@@ -44,9 +44,9 @@ fi:
       title_placeholder: Uudistetaan organisaatiomme sääntöä
       process_name: Päätös yksimielisesti
       process_subtitle: Tee työehtosopimus kaikkien asianosaisten kanssa.
-      process_introduction: '<p>Rakenna yksimielisyyttä päätöksestä, joka sinun on tehtävä yhdessä, jotta pääset sopimukseen, joka tyydyttää kaikkien osallistujien tarpeet ja huolenaiheet.</p><p> Tyypilliset roolit:</p><ul><li><p> Nimitä avustaja. (Hallituksen kokouksissa tämä on yleensä puheenjohtaja.)</p></li><li><p> Päätösvaltaisuus tai suurin enemmistö jäsenistä osallistua organisaatiosi sääntöjen mukaisesti.</p></li></ul><p> Yleiset prosessin vaiheet:</p><p> Vaihe 1. Luo avoin tila keskustelulle aiheesta tai päätösehdotuksesta.</p><p> Vaihe 2. Testaa konsensusta ja esitä vastalauseet Sense check -ehdotuksella.</p><p> Vaihe 3. Selvennä mahdollisia kohtia, pyydä rakentavia muutoksia ja muuta ehdotusta.</p><p> Vaihe 4. Testaa yksimielisyys ja mahdolliset jäljellä olevat vastalauseet konsensusehdotuksella.</p><p> Vaihe 5. Kirjaa päätös tulosineen ja organisaation viralliseen pöytäkirjaan.</p><p> <a target="_blank" rel="noopener noreferrer nofollow" href="/docs/en/guides/making_decisions/consensus_process">Lue lisää: Konsensusprosessi.</a></p>'
+      process_introduction: '<p>Rakenna konsensusta yhteisestä päätöksestä, jotta löydätte ratkaisun, joka vastaa kaikkien osallistujien tarpeisiin ja huoliin.</p><p>Tyypilliset roolit:</p><ul><li><p>Nimeä keskustelun vetäjä.&nbsp; (Hallituksen kokouksissa tämä on yleensä puheenjohtaja.)</p></li><li><p>Osallistuvien jäsenten määrän tulee täyttää organisaation sääntöjen päätösvaltaisuus- tai määräenemmistövaatimus.</p></li></ul><p>Prosessin tavalliset vaiheet:</p><p>Vaihe 1. Luo avoin tila keskustelulle aiheesta tai ehdotetusta päätöksestä.</p><p>Vaihe 2. Testaa konsensusta ja tuo vastaväitteet esiin tunnusteluehdotuksella.&nbsp;</p><p>Vaihe 3. Selvennä epäselviä kohtia, pyydä rakentavia muutoksia ja muokkaa ehdotusta.</p><p>Vaihe 4. Testaa hyväksyntää ja jäljellä olevia vastaväitteitä konsensusehdotuksella.</p><p>Vaihe 5. Kirjaa päätös johtopäätökseen ja organisaation viralliseen pöytäkirjaan.</p><p><a target="_blank" rel="noopener noreferrer nofollow" href="/docs/en/guides/making_decisions/consensus_process">Lue lisää: Konsensusprosessi.</a></p>'
       description: <h3 id="what-is-the-decision-you-need-to-make">Mikä on päätös, joka sinun on tehtävä?</h3><p></p><h3 id="why-is-this-important-and-what-impact-does-it-have"> Miksi tämä on tärkeää ja mitä vaikutuksia sillä on?</h3><p></p><h3 id="what-information-do-people-need-for-context"> Mitä tietoa ihmiset tarvitsevat kontekstiin?</h3><p></p><h3 id="who-is-the-facilitator"> Kuka on fasilitaattori?</h3><p></p><h3 id="what-conditions-need-to-be-met-for-a-decision"> Mitä edellytyksiä päätöksen tekemiseksi on täytettävä?</h3><h3 id=""></h3>
-      consensus: Yhteisymmärrys
+      consensus: Konsensus
     share_links_and_info:
       title_placeholder: Jaa linkkejä ja tietoa
       process_name: Jaa linkkejä ja tietoa
@@ -174,8 +174,8 @@ fi:
         count: Kreivi
         choose: Valita
         allocate: jakaa
-        score: Pisteet
-        rank: Sijoitus
+        score: Pisteytys
+        rank: Järjestys
         time: Aikakysely
   user:
     deleted_user: Poistettu käyttäjä
@@ -532,7 +532,7 @@ fi:
       details_v2: "<h3><strong>Mikä päätös sinun on tehtävä?</strong></h3><p></p><h3> <strong>Miksi tämä on tärkeää?</strong></h3><p></p><h3> <strong>Mitä pyydät ihmisiltä tässä ehdotuksessa?</strong></h3><p></p><p> Emme pyri täydellisyyteen – anna suostumuksesi, jos ehdotus on riittävän hyvä ja turvallinen kokeilla. Jos sinulla on vastalauseita, kerro, mitä pitää muuttaa, jotta se olisi toimiva.</p>"
     consensus:
       process_subtitle: Tee työehtosopimus kaikkien asianosaisten kanssa
-      process_introduction: <p>Rakenna yksimielisyys päätöksestä, joka sinun on tehtävä, jotta pääset sopimukseen, joka tyydyttää kaikkien osallistujien tarpeet ja huolenaiheet.</p><ul><li><p> Keskustelkaa ja kehittäkää ehdotus yhdessä</p></li><li><p> Ota mukaan ja kunnioita kaikkia asianosaisia</p></li><li><p> Hae useimpien ihmisten suostumusta</p></li></ul><p> <a target="_blank" href="/docs/en/guides/making_decisions/consensus_process">Lue lisää konsensusprosessista</a> .</p>
+      process_introduction: <p>Rakenna konsensusta päätöksestä, jotta löydätte ratkaisun, joka vastaa kaikkien osallistujien tarpeisiin ja huoliin.</p><ul><li><p>Keskustele ja kehitä ehdotusta yhdessä muiden kanssa</p></li><li><p>Ota kaikki asianosaiset mukaan ja kunnioita heitä</p></li><li><p>Pyri saamaan useimpien hyväksyntä&nbsp;</p></li></ul><p><a target="_blank" href="/docs/en/guides/making_decisions/consensus_process">Lue lisää konsensusprosessista</a>.</p>
       title: Hyväksy uusi brändikonsepti
       details: <h3 id="what-is-the-decision-you-need-to-make"><strong>Mikä päätös sinun on tehtävä?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Miksi tämä on tärkeää?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Mitä pyydät ihmisiä tekemään?</strong></h3><p></p><p> Jotta tämä ehdotus hyväksyttäisiin, tarvitsemme enemmistön jäsenistä äänestää sen puolesta.</p><p> Jos olet eri mieltä, kerro miksi ja mitä pitäisi muuttaa, jotta olisit samaa mieltä.</p>
       outcome_statement: "<p>Kiitos osallistumisestasi konsensusprosessiin.</p>"
@@ -639,11 +639,11 @@ fi:
       process_subtitle_v3: Paljasta prioriteetit, kun on kompromisseja. Tunnetaan myös pisteäänestyksenä.
     ranked_choice:
       process_subtitle: Ymmärrä vaihtoehtojen järjestetty mieltymys
-      process_introduction: <p>Roolijako on hyödyllinen, kun vaihtoehtoja on paljon tai kun olet järjestämässä vaaleja.</p><p> Tämä kyselymalli tarjoaa useita vaihtoehtoja, joiden avulla ihmiset voivat äänestää haluamassaan järjestyksessä.</p><p> Voit asettaa äänestäjän saamien vaihtoehtojen määrän.</p><p> <span>Äänestäjät vetävät ja pudottavat vaihtoehtoja mieltymysjärjestyksessä (#1 on mieluisin vaihtoehto).</span></p><p> <span>Lisäasetuksiin kuuluvat ”Äänet ovat anonyymejä” ja ”Näytä vaihtoehdot satunnaisessa järjestyksessä” – näitä käytetään yleisesti rankattujen valintojen yhteydessä</span> äänestysvinouman vähentämiseksi.</p><p> Tulokset näytetään paremmuusjärjestyksessä. Tulostaulukko tarjoaa lisätietoja tulosten analysoinnin helpottamiseksi.</p><ul><li><p> Sijoitus</p></li><li><p> % pisteistä</p></li><li><p> Pisteet</p></li><li><p> Tarkoittaa</p></li></ul><p> <a target="_blank"  href="/docs/en/user_manual/polls/proposal_types#ranked-choice">Lue lisää Ranked choice -vaihtoehdosta</a> .</p>
+      process_introduction: <p>Etusijajärjestys sopii tilanteisiin, joissa vaihtoehtoja on paljon tai järjestät vaalit.</p><p>Äänestäjät vetävät ja pudottavat vaihtoehdot etusijajärjestykseen.</p><p>Tulokset näytetään etusijajärjestyksessä.</p><p><a target="_blank"  href="/docs/en/user_manual/polls/proposal_types#ranked-choice">Lue lisää etusijajärjestyksestä</a>.</p>
       title: Valitse hallintoneuvoston jäsenet
       details: <h3 id="what-is-this-poll-about"><strong>Mistä tässä kyselyssä on kyse?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Miksi tämä on tärkeää?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Mitä pyydät ihmisiä tekemään?</strong></h3><p></p><p> Äänestä asettamalla vaihtoehdot mieltymystesi mukaiseen järjestykseen. Tuloksissa ensimmäisenä oleva vaihtoehto voittaa.</p>
       process_subtitle_v2: Selvitä ryhmän mieltymysjärjestys
-      process_introduction_v2: <p><strong>Sijoitus</strong> näyttää ryhmän mieltymysjärjestyksen. Osallistujat vetävät ja pudottavat vaihtoehtoja järjestääkseen ne mieluummin mieluummin, ja tulokset näyttävät kokonaissijoituksen.</p><p> <a target="_blank" href="/docs/en/user_manual/polls/proposal_types#ranked-choice">Lue lisää Rankista</a> .</p>
+      process_introduction_v2: <p><strong>Järjestys</strong> näyttää ryhmän etusijajärjestyksen. Osallistujat vetävät ja pudottavat vaihtoehdot mieluisimmasta vähiten mieluisaan, ja tulokset näyttävät yhteisen järjestyksen.</p><p><a target="_blank" href="/docs/en/user_manual/polls/proposal_types#ranked-choice">Lue lisää Järjestys-menetelmästä</a>.</p>
       process_subtitle_v3: Järjestä vaihtoehdot suosituimmasta vähiten suosituimpaan
     time_poll:
       process_subtitle: Selvitä, milloin ihmiset ovat käytettävissä tapaamiseen
@@ -786,7 +786,7 @@ fi:
     voted: "%{author} äänesti %{response}"
     voted_hidden: "%{author} äänesti"
     vote_removed: "%{author}: ääni poistettu"
-    undecided: "%{author}: epävarma"
+    undecided: "%{author}: äänestämättä"
     superseded: korvattu
     shared_outcome: "%{author} jakoi johtopäätöksen"
     removed: Poistettu

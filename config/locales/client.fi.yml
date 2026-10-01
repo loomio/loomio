@@ -175,7 +175,7 @@ fi:
     only_show_tags_in_this_group: Näytä vain tämän ryhmän tunnisteet
   poll_types:
     proposal: ehdotus
-    count: opt-in
+    count: ilmoittautuminen
     check: tunnustelu
     poll: kysely
     dot_vote: pisteäänestys
@@ -268,7 +268,7 @@ fi:
     action:
       print: Tulosta
       preview: Esikatselu
-      pin: Pin
+      pin: Kiinnitä
       unpin: Irrota kiinnitys
       search: Hae
       filter: Suodattaa
@@ -1773,7 +1773,7 @@ fi:
       all: Viimeaikaiset keskustelut
     thread_preview:
       you_voted: Äänestit %{position}
-      undecided: Olet päättämätön
+      undecided: Et ole vielä äänestänyt
     threads_from:
       group: Viestit osoitteesta
       pinned: Kiinnitetyt langat
@@ -1948,7 +1948,7 @@ fi:
     question_title: Kysymyskierros
     advice_title: Neuvoja
     consent_title: suostumus
-    consensus_title: Yhteisymmärrys
+    consensus_title: Konsensus
     proposal_title: Ehdotus
     count_title: Osallistu
     check_title: Tunnustelu
@@ -2273,12 +2273,12 @@ fi:
     started_by: 'Aloittaja: %{name}'
   poll_common_votes_panel:
     vote_removed: Ääni poistettu
-    undecided: Päättämätön
+    undecided: Äänestämättä
     newest_first: Uusin ensin
     oldest_first: Vanhin ensin
     priority_first: Ensin samaa mieltä
     priority_last: Estä ensin
-    undecided_first: Päättämätön ensin
+    undecided_first: Äänestämättömät ensin
     no_votes_yet: Ääniä ei ole vielä annettu.
     change_results_order: Muuta tulosten järjestystä
     none_of_the_above: "(Ei mikään ylläolevista)"
@@ -2302,7 +2302,7 @@ fi:
   poll_common_undecided_panel:
     show_undecided: Näytä %{count} epävarmaa
     show_invitations: Näytä odottavat kutsut
-    undecided_users: Päättämätön (%{count})
+    undecided_users: Äänestämättä (%{count})
     invitation_count_singular: 1 lisähenkilö on kutsuttu osallistumaan sähköpostitse
     invitation_count_plural: "%{count} muuta henkilöä on kutsuttu osallistumaan sähköpostitse"
   poll_common_undecided_user:
@@ -2387,7 +2387,7 @@ fi:
     minimum_stance_choices_hint: eli Sijoita 3 parasta jäätelömakuasi
     ranked_choice_created: Etusijajärjestys luotu
     ranked_choice_updated: Etusijajärjestys päivitetty
-    rank: Sijoitus
+    rank: Järjestys
     points: Pisteet
     average: Keskiverto
     mean: Tarkoittaa
@@ -2859,20 +2859,20 @@ fi:
     voting_methods:
       question: Kysymyskierros
       question_hint: Pyydä kysymyksiä ja kommentteja ehdotuksestasi
-      show_thumbs: Peukaloiden näyttäminen
+      show_thumbs: Peukkuäänestys
       show_thumbs_hint: Äänestäjät valitsevat peukalon ylös, alas, sivuttain tai käden ylös
       choose: Valita
       simple_poll: Yksinkertainen kysely
       choose_hint: Äänestäjät valitsevat parhaan vaihtoehdon (tai vaihtoehdot)
-      score: Pisteet
+      score: Pisteytys
       score_hint: Äänestäjät antavat pistemäärän jokaiselle vaihtoehdolle
-      allocate: Kohdista
+      allocate: Pistejako
       allocate_hint: Äänestäjät jakavat pisteistä koostuvan budjetin vaihtoehtojen kesken
       ranked_choice: Etusijajärjestys
       ranked_choice_hint: Äänestäjät järjestävät vaihtoehdot mieluisimman ja vähiten toivotun mukaiseen järjestykseen
       time_poll: Aikakysely
       time_poll_hint: Äänestäjät ilmoittavat, milloin he ovat käytettävissä tapaamiseen
-      rank: Sijoitus
+      rank: Järjestys
       time: Aika
       stv: STV-vaalit
       stv_hint: Valitse useita voittajaa suhteellisesti käyttämällä yhtä siirrettävää ääntä
@@ -3096,7 +3096,7 @@ fi:
     closed_at: Suljettu klo
     closing_at: Sulkeutuu klo
   poll_stv_vote_form:
-    helptext: Vedä ehdokkaita viivan yläpuolelle asettaaksesi ne järjestykseen. Viivan alapuolella olevat kohteet ovat järjestykseen asettamattomia. Sijoitus 1 on suosikkisi.
+    helptext: Vedä ehdokkaat viivan yläpuolelle etusijajärjestykseen. Viivan alapuolella olevia ehdokkaita ei aseteta järjestykseen. Numero 1 on suosikkisi.
     divider_text: vedä ehdokkaita tämän viivan yläpuolelle asettaaksesi heidät järjestykseen
     stance_created: Äänestys kirjattu
     stance_updated: Äänestys päivitetty
