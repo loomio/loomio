@@ -68,10 +68,8 @@ module Dev::ScenariosHelper
         group_id: group.id,
         wip: params[:wip]),
       actor: observer)
-    Stance.where(poll_id: poll.id, participant_id: observer.id).delete_all
-
-    stance = fake_stance(poll: poll)
-    StanceService.create(stance: stance, actor: observer)
+    stance = poll.stances.latest.find_by!(participant: observer)
+    StanceService.update(stance: stance, actor: observer, params: cast_stance_params(poll))
 
     PollService.close(poll: poll, actor: observer)
 
