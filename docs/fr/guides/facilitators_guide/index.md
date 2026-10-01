@@ -1,18 +1,18 @@
 ---
 title: Guide de la facilitation avec Loomio
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/guides/facilitators_guide/index.md
+source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
+source_file: docs/en/guides/facilitators_guide/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-30'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 628a5f77d03d4072
   more-about-this-guide: 8b34560fd09fc9f6
   about-the-author: 422600a40ea3f9da
 generated:
-  introduction: 145f813e2dba89a7
-  more-about-this-guide: 2ce1604cc56b0b4c
-  about-the-author: ab196e77ba568174
+  introduction: 5d269362f7ddaca4
+  more-about-this-guide: d7a78e4748000c6b
+  about-the-author: 363beb092c495e11
 title_source: aba3680c1ed2a220
 title_generated: 93c02bd25fd81bab
 ---
@@ -21,21 +21,21 @@ title_generated: 93c02bd25fd81bab
 
 # Guide de la facilitation avec Loomio
 
-Un guide approfondi pour appliquer les principes de la facilitation en ligne.
+Un guide approfondi pour appliquer les principaux concepts de la facilitation en ligne.
 
-Loomio a été créé par des personnes qui pratiquent la facilitation, et cette expérience a largement influencé sa conception. Ce guide présente ce contexte et montre comment appliquer en ligne des principes de facilitation utilisés en présentiel.
+Loomio est conçu par des personnes qui pratiquent la facilitation, ce qui influence fortement sa conception. Ce guide présente ce contexte et explique comment transposer les concepts de la facilitation en présentiel à l’espace en ligne.
 
 <!-- translation-section: more-about-this-guide -->
 
 ## À propos de ce guide
 
-Qu’il soit utilisé par une personne dont la facilitation est le métier, par des personnes qui s’entraident dans ce rôle ou par un groupe sans expérience de la facilitation, Loomio aide les groupes à communiquer et à avancer vers un objectif commun. C’est le rôle de la facilitation.
+Que Loomio soit utilisé par une personne dont la facilitation est le métier, par des personnes qui facilitent mutuellement leurs échanges ou par un groupe qui ne connaît pas du tout la facilitation, sa fonction essentielle est de servir d’intermédiaire et de soutenir la communication du groupe pour atteindre un objectif souhaité. Autrement dit, de faciliter les échanges.
 
-Loomio est un *logiciel collaboratif* :
+Loomio est un *logiciel collaboratif* :
 
-> Un logiciel collaboratif aide les personnes qui travaillent sur une tâche commune à atteindre leurs objectifs. Selon l’une des premières définitions, il associe « des processus de groupe intentionnels et des logiciels qui les soutiennent ». -- Wikipédia
+> Un logiciel collaboratif, ou groupware, est conçu pour aider des personnes qui participent à une tâche commune à atteindre leurs objectifs. L’une des premières définitions du logiciel collaboratif est « des processus de groupe intentionnels, accompagnés d’un logiciel pour les soutenir ». -- Wikipédia
 
-La facilitation en présentiel et la modération en ligne s’appuient chacune sur de nombreux savoirs, pratiques et traditions. Leur rencontre reste un domaine en développement. C’est dans ce domaine que Loomio cherche à être utile.
+La facilitation en présentiel et la modération en ligne s’appuient toutes deux sur un vaste ensemble de connaissances, de bonnes pratiques et de traditions, mais l’art et la science qui les réunissent commencent tout juste à émerger. C’est précisément dans ce domaine que Loomio cherche à exceller.
 
 ***
 
@@ -45,12 +45,12 @@ La facilitation en présentiel et la modération en ligne s’appuient chacune s
 
 <img style="border-radius: 100%; float: right; margin: 0 0 2em 2em; max-width: 200px;" src="alanna_fringe_s.jpg">
 
-Bonjour, je m’appelle Alanna.
+Bonjour ! Je m’appelle Alanna.
 
-Je fais partie des personnes qui ont fondé Loomio. Depuis le début, je réfléchis à son fonctionnement sous l’angle de la facilitation. Je ne suis pas une référence dans ce domaine : je me considère encore comme une débutante dans une pratique que l’on peut approfondir toute sa vie.
+Je suis l’une des fondatrices de Loomio et, depuis le début, je réfléchis en profondeur à son fonctionnement sous l’angle de la facilitation. Je ne suis pas une experte de référence en facilitation ; je me considère simplement comme une débutante dans cet art que l’on pourrait perfectionner toute une vie.
 
-Je peux toutefois aider à faire le lien entre la facilitation en présentiel et en ligne, car je pratique les deux. J’ai accompagné de nombreux groupes qui utilisent Loomio et j’ai appris de leurs expériences.
+Ce que je peux vous apporter, c’est une aide pour faire le lien entre le présentiel et l’espace en ligne, grâce à ma pratique dans les deux. J’ai facilité les échanges de nombreux groupes qui utilisent Loomio et j’ai appris de leurs expériences.
 
-Vous pouvez [en savoir plus sur moi sur mon site](http://alanna.space).
+Vous pouvez [en savoir plus sur moi sur mon site web](http://alanna.space).
 
-Je ne représente qu’un point de vue parmi les nombreuses façons de pratiquer la facilitation. J’ai donc invité d’autres personnes à partager le leur dans ce guide, notamment [Rich](http://richdecibels.com/), de Loomio, et Silvia, de [EXP](http://exp.agency).
+Je ne suis qu’une personne, avec un point de vue et une approche de la facilitation, alors qu’il en existe une multitude. J’ai essayé d’inclure ici les voix d’autres personnes qui pratiquent la facilitation, notamment [Rich](http://richdecibels.com/) de Loomio et Silvia de [EXP](http://exp.agency).

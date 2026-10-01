@@ -1,6 +1,6 @@
 ---
 title: Consentement
-source_revision: 3a315412c646d254c8426be5c436a4e593f6011f
+source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
 source_file: docs/en/user_manual/polls/proposals/consent/index.md
 translated:
   provider: codex/gpt-6.1-sol
@@ -14,13 +14,13 @@ sections:
   read-the-results: 710fb80144e56ea9
   share-an-outcome: 8f8b3f701dc4f516
 generated:
-  introduction: 3434366c2ccaa35a
-  when-to-use-consent: d05d3aa99eb5eb74
-  example-start-a-bottle-trial: 457c1638f77c6d1d
-  set-up-the-proposal: 606eb8c6cf1082fc
-  vote: 267b83d112a72771
-  read-the-results: 2e9085c1c08a44a1
-  share-an-outcome: af683137ff3cf9a9
+  introduction: 8a5cf485acff9e8f
+  when-to-use-consent: 53abac6c30f92ce4
+  example-start-a-bottle-trial: 3e5bcb22f6f0cb23
+  set-up-the-proposal: 888544a7d850fdfd
+  vote: 8eb657ebcef22392
+  read-the-results: 044f8b93ce9a6efa
+  share-an-outcome: 1087265975ab4dc0
 title_source: d37e0cd00f18a366
 title_generated: 64a281ac3a69713f
 ---
@@ -29,29 +29,29 @@ title_generated: 64a281ac3a69713f
 
 # Consentement
 
-Une proposition par consentement demande si une action peut être essayée sans risque majeur. Les participants donnent leur consentement ou soulèvent une objection. Une objection signale un risque ou un préjudice concret auquel la proposition doit répondre.
+Une proposition de consentement demande si une action peut être essayée sans risque inacceptable. Les participants donnent leur consentement ou soulèvent une objection. Une objection identifie un risque concret ou un préjudice auquel la proposition doit répondre.
 
-Cette page explique comment mener une proposition par consentement. Consultez le [processus de consentement](/en/guides/making_decisions/consent_process) pour connaître toutes les étapes, notamment les questions, la vérification de la compréhension, les modifications, les objections et la conclusion.
+Cette page explique comment mener une proposition de consentement. Consultez le [Processus de consentement](/en/guides/making_decisions/consent_process) pour connaître le déroulement complet, y compris les questions, la prise de température, les amendements, les objections et la conclusion.
 
 <!-- translation-section: when-to-use-consent -->
 
 ## Quand utiliser le consentement
 
-Utilisez le consentement lorsque le groupe a besoin d’une décision applicable, qui peut être mise en œuvre en l’absence d’objection valable. Cette méthode convient aux expérimentations, aux règles de fonctionnement, aux accords sur les rôles et aux autres décisions que le groupe pourra réexaminer après avoir acquis de l’expérience.
+Utilisez le consentement lorsque le groupe a besoin d’une décision applicable qui peut être mise en œuvre en l’absence d’objection valide. Il convient aux expérimentations, aux règles de fonctionnement, aux accords sur les rôles et à d’autres décisions que le groupe peut réexaminer après avoir acquis de l’expérience.
 
-Le consentement n’exige pas que tout le monde préfère la proposition. Définissez ce qui constitue une objection avant le vote et expliquez comment les objections seront examinées et résolues.
+Le consentement n’exige pas que la proposition soit le choix préféré de chacun. Définissez ce qui constitue une objection avant le vote et expliquez comment les objections seront évaluées et résolues.
 
 <!-- translation-section: example-start-a-bottle-trial -->
 
-## Exemple : lancer un essai de bouteilles consignées
+## Exemple : lancer un essai de bouteilles consignées
 
-La coopérative Oatmilk propose de lancer le mois prochain un essai de bouteilles consignées pendant six semaines. L’essai a une portée limitée et prévoit un bilan. Le groupe cherche donc à savoir s’il peut être mené sans risque majeur.
+La coopérative Oatmilk propose de lancer le mois prochain un essai de bouteilles consignées pendant six semaines. L’essai a un périmètre limité et prévoit un bilan ; le groupe demande donc s’il peut être lancé sans risque inacceptable.
 
 <!-- translation-section: set-up-the-proposal -->
 
 ## Préparer la proposition
 
-Décrivez l’action proposée, ses limites, les mesures de précaution et le moment prévu pour son réexamen. Précisez le sens de **Consentement** et d’**Objection**. Demandez de motiver les objections afin que les préoccupations puissent être comprises et prises en compte.
+Décrivez l’action proposée, ses limites, les mesures de protection et le moment prévu pour son réexamen. Définissez précisément le sens de **Consentement** et d’**Objection**, et exigez une raison pour chaque objection afin que la préoccupation puisse être comprise et traitée.
 
 ![](form.png)
 
@@ -59,15 +59,15 @@ Décrivez l’action proposée, ses limites, les mesures de précaution et le mo
 
 ## Voter
 
-Les participants choisissent **Consentement** lorsque la proposition peut être essayée sans risque majeur, même s’ils préféreraient une autre solution. Ils choisissent **Objection** lorsqu’ils peuvent décrire un risque ou un préjudice important.
+Les participants choisissent **Consentement** lorsque la proposition peut être essayée sans risque inacceptable, même si elle ne correspond pas à leur préférence. Ils choisissent **Objection** lorsqu’ils peuvent décrire un risque ou un préjudice significatif.
 
 ![](../proposal_consent_voting.png)
 
 <!-- translation-section: read-the-results -->
 
-## Examiner les résultats
+## Lire les résultats
 
-Le graphique montre les objections, mais le groupe doit en examiner les motifs. Pour résoudre une objection valable, modifiez la proposition, ajoutez une mesure de précaution, changez sa portée ou décidez de ne pas donner suite.
+Le graphique rend les objections visibles, mais le groupe doit examiner les raisons. Résolvez une objection valide en amendant la proposition, en ajoutant une mesure de protection, en modifiant son périmètre ou en décidant de ne pas la mettre en œuvre.
 
 ![](../proposal_consent_results.png)
 
@@ -75,6 +75,6 @@ Le graphique montre les objections, mais le groupe doit en examiner les motifs. 
 
 ## Partager une conclusion
 
-Lorsque la proposition est close, partagez une conclusion. Précisez l’action convenue, la manière dont les éventuelles objections ont été résolues, les personnes responsables et la date à laquelle le groupe réexaminera la décision. Consultez [Partager une conclusion](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome) pour comprendre le fonctionnement des conclusions.
+Lorsque la proposition est clôturée, partagez une conclusion. Consignez l’action convenue, la manière dont les objections ont été résolues, les personnes responsables et le moment où le groupe réexaminera la décision. Consultez [Partager une conclusion](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome) pour comprendre le fonctionnement des conclusions.
 
-![Une conclusion précisant une objection résolue, une date de début et un moment prévu pour réexaminer la décision](outcome.png)
+![Une conclusion consignant une objection résolue, une date de début et un moment prévu pour le réexamen](outcome.png)

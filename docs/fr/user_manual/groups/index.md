@@ -1,16 +1,16 @@
 ---
 title: Groupes
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/groups/index.md
+source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
+source_file: docs/en/user_manual/groups/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 81d8e340d2ee4456
   administration-facilitation-and-moderation-code-of-conduct: f5e0c19c83cba888
 generated:
-  introduction: a9d07e72974f076f
-  administration-facilitation-and-moderation-code-of-conduct: 32414076b9e40086
+  introduction: 127d2425a2da0c66
+  administration-facilitation-and-moderation-code-of-conduct: 2383dd480fe05200
 title_source: 39bbb719fa2b9d22
 title_generated: 0144dbff81bec13a
 ---
@@ -19,32 +19,32 @@ title_generated: 0144dbff81bec13a
 
 # Présentation des groupes
 
-Un groupe Loomio est un espace sûr où les personnes peuvent se retrouver, discuter et prendre des décisions.
+Un groupe Loomio est un espace sûr où les personnes peuvent se retrouver, avoir des discussions et prendre des décisions.
 
-Les membres du groupe peuvent y trouver et partager des informations, et participer aux discussions et aux décisions importantes pour leur travail.
+C’est un espace où les membres du groupe peuvent trouver et partager des informations, participer aux discussions importantes et aux décisions qui concernent leur travail.
 
-Voici à quoi ressemble un groupe Loomio. En haut de la page, vous pouvez personnaliser une image et un logo pour représenter votre organisation. Les personnes qui rejoignent votre groupe reconnaissent ainsi l’espace dans lequel elles arrivent et peuvent s’y sentir accueillies, à l’aise et libres de participer.
+Voici à quoi ressemble un groupe Loomio. En haut de la page, vous verrez une image et un logo que vous pouvez personnaliser pour représenter votre organisation. Les personnes qui arrivent dans votre groupe peuvent ainsi reconnaître cet espace et s’y sentir les bienvenues, comme chez elles, parmi des amis, pour participer pleinement.
 
-![Page du groupe The Oatmilk Cooperative, avec sa description et sa liste de discussions](group_page.png)
+![La page du groupe Oatmilk Cooperative, avec sa description et sa liste de discussions](group_page.png)
 
-Choisissez un nom représentatif pour votre groupe et utilisez sa description pour préciser :
+Choisissez un nom représentatif pour votre groupe et utilisez sa description pour préciser ;
 - **à quoi** sert ce groupe,
-- **pourquoi** il est important,
+- **pourquoi** c’est important,
 - **qui** y participe, et
 - **comment** les membres peuvent participer.
 
-Vous pouvez aussi ajouter un code de conduite, un mandat ou d’autres documents qui définissent le fonctionnement du groupe.
+Vous pouvez également inclure un code de conduite, un mandat ou d’autres documents qui définissent le fonctionnement du groupe.
 
-Si vous préparez un nouveau groupe, consultez [Présenter Loomio à votre groupe](/en/user_manual/overview/introducing_loomio) pour suivre les étapes, du choix d’un premier sujet de travail à la consignation d’une conclusion.
+Si vous préparez un nouveau groupe, consultez [Présenter Loomio à votre groupe](/en/user_manual/overview/introducing_loomio) pour suivre une démarche pratique, du choix du premier travail à réaliser jusqu’à la consignation d’une conclusion.
 
 <!-- translation-section: administration-facilitation-and-moderation-code-of-conduct -->
 
-## Administration, facilitation et modération - Code de conduite
+## Administration, animation et modération - Code de conduite
 
-Loomio favorise la participation de toutes et tous, la diversité et la confiance pour aider les groupes à prendre de meilleures décisions ensemble.
+Loomio est conçu pour favoriser la participation inclusive, la diversité et la confiance, afin d’aider les groupes à prendre de meilleures décisions ensemble.
 
-Certains sujets peuvent créer des tensions dans un groupe. Il est important de permettre une discussion approfondie tout en préservant un espace sûr, en particulier pour les personnes vulnérables de votre groupe.
+Certains sujets créent des tensions dans un groupe. Il est donc important de permettre une discussion approfondie, tout en veillant à ce que le groupe reste un espace sûr, particulièrement pour les personnes vulnérables qui en font partie.
 
-Nous vous recommandons d’établir un code de conduite pour votre groupe. Il aide chacun à comprendre sa responsabilité d’adopter un comportement approprié et encourage l’autorégulation.
+Nous vous recommandons d’établir un code de conduite pour votre groupe, afin d’aider chaque personne à prendre conscience de sa responsabilité d’adopter un comportement approprié et d’encourager l’autorégulation.
 
-Consultez le [Guide de facilitation](/en/guides/facilitators_guide/commencing#culture-protocol-expectations) pour en savoir plus sur l’intérêt d’un code de conduite.
+Consultez le [Guide d’animation](/en/guides/facilitators_guide/commencing#culture-protocol-expectations) pour approfondir l’intérêt d’un code de conduite.

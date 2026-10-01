@@ -1,10 +1,10 @@
 ---
 title: Sondages
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/polls/proposal_types/index.md
+source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
+source_file: docs/en/user_manual/polls/proposal_types/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 286e04a878e4c1d9
   simple-poll: d362d91b19914c39
@@ -14,13 +14,13 @@ sections:
   time-poll: 8b3a09b278bd7fde
   stv-election: e8407157d29424e4
 generated:
-  introduction: d6d1c0117a906b1c
+  introduction: ebe21808fead9e79
   simple-poll: 71f618c9babb5721
-  score-poll: 4b1133eee9fc10d6
-  dot-vote: 5685b1738b1bd672
-  ranked-choice: 815de935c8a8c36f
-  time-poll: cd3552b6e7e727d2
-  stv-election: 36affa6a06b2ccf6
+  score-poll: d8600f0c6bcb97c2
+  dot-vote: d156c5da26dfb6a4
+  ranked-choice: 3e95298fdbfee9ee
+  time-poll: 83e39b8ff7d13b8c
+  stv-election: 7b72364aaab81e49
 title_source: 996729458535904a
 title_generated: bbe617b2a20fb27b
 ---
@@ -29,7 +29,7 @@ title_generated: bbe617b2a20fb27b
 
 # Sondages
 
-Les sondages permettent de recueillir des choix, des scores, des répartitions de points, des classements, des disponibilités ou des votes lors d’une élection. Choisissez la méthode de vote selon ce que les participants doivent exprimer et l’usage prévu des résultats. Utilisez une [proposition](/en/user_manual/polls/proposals/) lorsque les personnes doivent se prononcer sur une affirmation ou une action envisagée.
+Les sondages recueillent des choix, des notes, des répartitions de points, des classements, des disponibilités ou des bulletins de vote pour une élection. Choisissez la méthode de vote selon ce que les participants doivent exprimer et la manière dont vous comptez utiliser le résultat. Utilisez une [proposition](/en/user_manual/polls/proposals/) lorsque les participants doivent se prononcer sur un énoncé ou une ligne d’action.
 
 <!-- translation-section: simple-poll -->
 
@@ -39,30 +39,30 @@ Les sondages permettent de recueillir des choix, des scores, des répartitions d
 
 <!-- translation-section: score-poll -->
 
-## Sondage pondéré
+## Notation
 
-[Score](/en/user_manual/polls/score/) permet aux participants d’évaluer chaque option sur la même échelle. Utilisez cette méthode pour comparer le degré de soutien, de préparation, de pertinence ou d’importance des options.
+[Noter](/en/user_manual/polls/score/) permet aux participants d’évaluer chaque option sur la même échelle. Utilisez cette méthode pour comparer le degré de soutien, de préparation, d’adéquation ou d’importance des différentes options.
 
 <!-- translation-section: dot-vote -->
 
 ## Vote à points
 
-[Allouer](/en/user_manual/polls/allocate/) donne à chaque participant un nombre fixe de points à répartir. Utilisez cette méthode pour définir des priorités lorsque choisir une option réduit l’attention ou les ressources accordées à une autre.
+[Répartir](/en/user_manual/polls/allocate/) donne à chaque participant un nombre fixe de points à distribuer. Utilisez cette méthode pour identifier les priorités lorsque privilégier une option signifie accorder moins d’attention ou de ressources à une autre.
 
 <!-- translation-section: ranked-choice -->
 
 ## Classement par préférence
 
-[Classer](/en/user_manual/polls/rank/) permet aux participants de ranger les options par ordre de préférence. Utilisez cette méthode pour établir l’ordre de préférence du groupe ou choisir l’option qui arrive en tête.
+[Classer](/en/user_manual/polls/rank/) permet aux participants de ranger les options par ordre de préférence. Utilisez cette méthode pour déterminer l’ordre de préférence global du groupe ou sélectionner l’option qui arrive en tête.
 
 <!-- translation-section: time-poll -->
 
 ## Sondage horaire
 
-[Sondage horaire](/en/user_manual/polls/meeting_polls/) permet aux participants d’indiquer leurs disponibilités. Utilisez cette méthode pour planifier une réunion ou un événement entre plusieurs fuseaux horaires.
+Le [sondage horaire](/en/user_manual/polls/meeting_polls/) permet aux participants d’indiquer leurs disponibilités. Utilisez-le pour planifier une réunion ou un événement en tenant compte des différents fuseaux horaires.
 
 <!-- translation-section: stv-election -->
 
 ## Élection STV
 
-Les [élections STV](/en/user_manual/polls/stv/) permettent aux participants de classer les candidats lors d’une élection proportionnelle à plusieurs sièges. Utilisez cette méthode pour élire un comité, un conseil d’administration ou un groupe de délégués.
+Les [élections STV](/en/user_manual/polls/stv/) permettent aux participants de classer les candidats dans une élection proportionnelle à plusieurs sièges. Utilisez le système STV pour élire un comité, un conseil d’administration ou un groupe de délégués.

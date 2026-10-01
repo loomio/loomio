@@ -1,20 +1,20 @@
 ---
 title: Paramètres du groupe
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/groups/settings/index.md
+source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
+source_file: docs/en/user_manual/groups/settings/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: b975fe0dc7787563
   group-profile: 673d2b31980f069a
   group-privacy: c6031b3bd445f30e
   group-permissions: 3ddfc79177b464e5
 generated:
-  introduction: 47c87e1b66e816d0
-  group-profile: dc6a93fda460c5a5
-  group-privacy: 82e070bfeff5bdf4
-  group-permissions: 5ac64a4d97d4b19a
+  introduction: 2f4027ae1ed6a536
+  group-profile: 2eaa81e2b171684d
+  group-privacy: da46cb5336a18db3
+  group-permissions: a202003bd3cc7a2f
 title_source: ba4062f844a984f5
 title_generated: 1e687cf13fc53296
 ---
@@ -23,28 +23,28 @@ title_generated: 1e687cf13fc53296
 
 # Paramètres du groupe
 
-Les paramètres du groupe définissent sa présentation, qui peut le trouver et le rejoindre, et ce que ses membres peuvent faire. Seuls les administrateurs du groupe peuvent modifier ces paramètres.
+Les paramètres du groupe déterminent la manière dont votre groupe est présenté, qui peut le trouver et le rejoindre, et ce que les membres sont autorisés à faire. Seuls les administrateurs du groupe peuvent modifier ces paramètres.
 
-Sur la page du groupe, ouvrez le menu des actions et choisissez **Modifier les paramètres du groupe**.
+Sur la page du groupe, ouvrez le menu des actions et sélectionnez **Modifier les paramètres du groupe**.
 
-![Modifier les paramètres du groupe depuis sa page](group_settings.png)
+![Modifier les paramètres du groupe depuis la page du groupe](group_settings.png)
 
-Le formulaire des paramètres comprend trois sections :
+Le formulaire des paramètres est divisé en trois parties :
 
 <!-- translation-section: group-profile -->
 
 ## Profil du groupe
 
-Le [profil du groupe](/en/user_manual/groups/settings/profile) comprend son nom, son identifiant, sa description, son image de couverture et son logo.
+Le [profil du groupe](/en/user_manual/groups/settings/profile) comprend le nom du groupe, son identifiant, sa description, son image de couverture et son logo.
 
 <!-- translation-section: group-privacy -->
 
 ## Confidentialité du groupe
 
-La [confidentialité du groupe](/en/user_manual/groups/settings/privacy) définit qui peut trouver le groupe et lire son contenu, comment le rejoindre, sa présence dans l’annuaire et la possibilité de suivre un groupe ouvert.
+Les paramètres de [confidentialité du groupe](/en/user_manual/groups/settings/privacy) déterminent qui peut trouver le groupe, qui peut lire son contenu, comment les personnes peuvent le rejoindre, son affichage dans l’annuaire et la possibilité de suivre un groupe public.
 
 <!-- translation-section: group-permissions -->
 
 ## Permissions du groupe
 
-Les [permissions du groupe](/en/user_manual/groups/settings/permissions) définissent les actions autorisées pour les membres, les personnes qui ne sont pas membres et les administrateurs.
+Les [permissions du groupe](/en/user_manual/groups/settings/permissions) déterminent les actions que les membres, les non-membres et les administrateurs peuvent effectuer.

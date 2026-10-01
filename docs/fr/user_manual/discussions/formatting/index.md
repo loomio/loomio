@@ -1,10 +1,10 @@
 ---
 title: Mise en forme
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/discussions/formatting/index.md
+source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
+source_file: docs/en/user_manual/discussions/formatting/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: e5ed11fef349b38c
   attach-file: 772ed69602535db7
@@ -27,26 +27,26 @@ sections:
   markdown: 6ee2783ba81363fd
   rich-text: 9136c76bfd5409a9
 generated:
-  introduction: c51aa533e0dbec85
-  attach-file: b8431a518232e006
-  remove-attachments: d8b9796c947c040c
-  insert-image: 6c2d2160b86b678e
-  insert-link: c89a42eeae2850cd
-  insert-emoji: 5be73d054a0151fc
-  headings: b50c7da7291cac25
-  bold-italicize-strikethrough: db3eac1f2ee6d68b
-  list: 38b9d9216edd25a3
+  introduction: 4fa10a4e84fb7d19
+  attach-file: 1cb16da4ed156643
+  remove-attachments: fe695370c1e1910f
+  insert-image: 658038b8b139e07b
+  insert-link: e7c78e0527abcca7
+  insert-emoji: 70c57cf8363c03d3
+  headings: 3702aa276e0dadc4
+  bold-italicize-strikethrough: 0a826174b85b7451
+  list: 481c0280da55ce5b
   numbered-list: e26ea5210bb42106
-  task-list: b43a7e3e07575a36
-  colors: 57dcb23a726df6cf
-  align: 638a2f07e7b8a525
-  embed-videos-and-webpages: 7d2c4ec197ff75e3
-  quote: c76360a9ff5c3922
-  code-block: 30649951a73f4ded
-  divider: 37dd4fa30abb8b99
+  task-list: 843ff33314da9fb9
+  colors: 7fdef7ab3cfe91b3
+  align: 4aec058a85341764
+  embed-videos-and-webpages: f6a2ac3e1ea3d372
+  quote: 604b9b7cee45ef8a
+  code-block: 390e27cca3a8b953
+  divider: 8ea6c97110cba443
   add-table: dfde25a38574182e
-  markdown: 90de8d39e6fddc29
-  rich-text: 22650aa2af7199b9
+  markdown: e435a50c2f1999bc
+  rich-text: a602dad753a1660c
 title_source: 29d4198e41d8221a
 title_generated: 40d0b370bbf7ea55
 ---
@@ -55,19 +55,19 @@ title_generated: 40d0b370bbf7ea55
 
 # Mise en forme
 
-Lorsque vous créez ou modifiez une discussion ou un sondage, ou que vous rédigez un commentaire, une barre de mise en forme apparaît sous le champ de texte. Cliquez sur la flèche au bout de la barre pour afficher ou masquer tous les outils.
+Lorsque vous créez ou modifiez une discussion ou un sondage, ou rédigez un commentaire, une barre de mise en forme apparaît sous le champ de texte. Cliquez sur la flèche à l’extrémité de la barre pour afficher ou masquer l’ensemble des outils.
 
-Passez le pointeur sur chaque icône pour voir le nom de l’outil.
+Survolez chaque élément avec le pointeur pour afficher le nom de l’outil.
 
 ![](thread_format_bar.png)
 
-Utilisez la mise en forme pour structurer le contenu et mettre en évidence les informations importantes.
+Utilisez la mise en forme pour structurer le contenu et mettre en évidence les informations afin de faciliter leur lecture.
 
 <!-- translation-section: attach-file -->
 
 ## Joindre un fichier
 
-Cliquez sur l’icône en forme de trombone, juste sous le champ de texte, pour joindre des fichiers depuis votre ordinateur.
+Utilisez l’icône en forme de trombone, juste sous le champ de texte, pour ajouter des pièces jointes depuis votre ordinateur.
 
 ![](format_attach.png)
 
@@ -75,7 +75,7 @@ Cliquez sur l’icône en forme de trombone, juste sous le champ de texte, pour 
 
 ### Supprimer des pièces jointes
 
-Lorsque vous modifiez le contexte, cliquez sur le **X** à droite du nom du fichier pour le supprimer.
+Lorsque vous modifiez le contexte, cliquez sur le **X** à droite du nom du fichier pour supprimer la pièce jointe.
 
 ![](thread_file_remove.png)
 
@@ -87,14 +87,14 @@ Utilisez cet outil pour insérer et afficher une image.
 
 ![](format_insert_image.png)
 
-Sélectionnez une image sur votre ordinateur. Une fois téléversée, elle apparaît dans l’éditeur.
+Sélectionnez un fichier image sur votre ordinateur. L’image est insérée dans l’éditeur une fois son transfert terminé.
 
 ![](format_insert_example.png)
 
-L’image apparaît dans la discussion, le sondage ou le commentaire publié.
+L’image s’affiche dans la discussion, le sondage ou le commentaire publié.
 
 >[!Tip]
->Vous pouvez aussi copier-coller une image directement dans Loomio.
+>Vous pouvez aussi copier et coller une image directement dans Loomio.
 
 ![](format_image_example.png)
 
@@ -102,27 +102,27 @@ L’image apparaît dans la discussion, le sondage ou le commentaire publié.
 
 ## Insérer un lien
 
-Vous pouvez ajouter un lien vers un document partageable ou une page web.
+Vous pouvez ajouter un lien vers tout document ou toute page sur Internet pouvant être partagé.  
 
-Pour ajouter un lien :
+Pour ajouter un lien :
 
-1. Sélectionnez le texte à transformer en lien, par exemple le nom d’un document.
+1. Sélectionnez le texte auquel vous souhaitez associer un lien, par exemple le nom d’un document.
 2. Cliquez sur l’icône de lien.
-3. Collez l’adresse dans le champ **Insérer un lien**, puis cliquez sur **Appliquer**.
+3. Collez l’adresse dans le champ **Insérer un lien**, puis sélectionnez **Appliquer**.
 
-Si le document est hébergé ailleurs, vérifiez ses autorisations de partage pour que les personnes participant à la discussion puissent l’ouvrir.
+Pour un document hébergé ailleurs, vérifiez ses autorisations de partage afin que les participants à la discussion puissent l’ouvrir.
 
-Un aperçu du document apparaît sous le champ de texte. Vous pouvez le supprimer.
+Un aperçu du document apparaît sous le champ de texte. Vous pouvez le supprimer si vous le souhaitez.
 
-Toute personne ayant accès à votre discussion Loomio et l’autorisation de consulter le document peut alors l’ouvrir et le lire.
+Toute personne ayant accès à votre discussion Loomio et disposant de l’autorisation de consulter le document peut alors l’ouvrir et le lire.
 
 ![](format_link.png)
 
 <!-- translation-section: insert-emoji -->
 
-## Insérer un émoji
+## Insérer un emoji
 
-Cliquez sur le bouton représentant un visage souriant, puis choisissez un émoji.
+Cliquez sur le bouton en forme de visage souriant, puis choisissez un emoji dans le sélecteur.
 
 ![](thread_insert_emoji.png)
 
@@ -130,11 +130,11 @@ Cliquez sur le bouton représentant un visage souriant, puis choisissez un émoj
 
 ## Titres
 
-Les titres de niveau 1, 2 et 3 vous aident à structurer une discussion ou un commentaire.
+Les titres de niveaux 1, 2 et 3 peuvent vous aider à structurer une discussion ou un commentaire.
 
-Sélectionnez le texte à utiliser comme titre, puis cliquez sur l’outil de mise en forme des titres.
+Sélectionnez le texte à transformer en titre, puis cliquez sur l’outil de mise en forme des titres.
 
-Si vous utilisez un titre dans un commentaire, celui-ci est automatiquement épinglé dans la chronologie de la discussion.
+Si un commentaire contient un titre, il est automatiquement épinglé dans la chronologie de la discussion.
 
 ![](format_heading.png)
 
@@ -142,7 +142,7 @@ Si vous utilisez un titre dans un commentaire, celui-ci est automatiquement épi
 
 ## Gras, italique, barré
 
-Sélectionnez le texte à mettre en forme, puis cliquez sur l’outil souhaité.
+Sélectionnez le texte à mettre en forme, puis cliquez sur l’outil de mise en forme souhaité.
 
 ![](format_bold.png)
 
@@ -150,7 +150,7 @@ Sélectionnez le texte à mettre en forme, puis cliquez sur l’outil souhaité.
 
 ## Liste
 
-Utilisez **Liste** pour créer une liste à puces.
+Utilisez **Liste** pour présenter les éléments sous forme de liste à puces.
 
 ![](thread_bullets.png)
 
@@ -166,25 +166,25 @@ Utilisez **Liste numérotée** lorsque l’ordre des éléments compte.
 
 ## Liste des tâches
 
-Utilisez **Liste des tâches** pour ajouter des cases à cocher. Après la publication de la liste, vous pouvez attribuer les tâches à une personne et fixer une date d’échéance.
+Utilisez **Liste des tâches** pour ajouter des cases à cocher. Une fois la liste publiée, vous pouvez attribuer les tâches à une personne et leur donner une date d’échéance.
 
 ![](format_tasks.png)
 
-Pour en savoir plus, consultez la page [Tâches](/en/user_manual/discussions/tasks/).
+Consultez la page sur les [tâches](/en/user_manual/discussions/tasks/) pour en savoir plus.
 
 <!-- translation-section: colors -->
 
 ## Couleurs
 
-Utilisez **Couleurs** pour surligner le texte sélectionné.
+Utilisez **Couleurs** pour appliquer une couleur de surlignage au texte sélectionné.
 
 ![](thread_colors.png)
 
 <!-- translation-section: align -->
 
-## Alignement
+## Aligner
 
-Choisissez un alignement à gauche, au centre ou à droite.
+Choisissez l’alignement du texte à gauche, au centre ou à droite.
 
 ![](thread_align.png)
 
@@ -192,32 +192,32 @@ Choisissez un alignement à gauche, au centre ou à droite.
 
 ## Intégrer des vidéos et des pages web
 
-Vous pouvez intégrer des vidéos et des pages web compatibles partout où se trouve une barre d’outils de mise en forme.
+Vous pouvez intégrer des vidéos et des pages web compatibles partout où une barre d’outils de mise en forme est disponible.
 
-Pour intégrer une vidéo ou une page web : 
-1. Copiez son adresse.
-2. Sélectionnez **Intégrer la vidéo**, collez l’adresse, puis sélectionnez **Appliquer**.
+Pour utiliser la fonction d’intégration de vidéo :
+1. Copiez l’adresse de la vidéo ou de la page web.
+2. Choisissez **Intégrer la vidéo**, collez l’adresse et choisissez **Appliquer**.
 
 ![](format_embed.png)
 
 <iframe width="100%" height="380px" src="https://www.youtube-nocookie.com/embed/AJnjTd9u4zg" frameborder="0" allowfullscreen></iframe>
 
 >[!Tip]
->Vérifiez que toutes les personnes qui peuvent participer à la discussion ont accès à la vidéo. Une vidéo non répertoriée peut convenir si elle ne doit pas apparaître dans les résultats de recherche publics.
+>Assurez-vous que toutes les personnes pouvant participer à la discussion ont accès à la vidéo. Par exemple, une vidéo non répertoriée peut convenir si elle ne doit pas apparaître dans les résultats de recherche publics.
 
 <!-- translation-section: quote -->
 
 ## Citation
 
-Une citation met le texte en évidence. Elle peut servir à attirer l’attention sur une instruction.
+La mise en forme en citation met votre texte en valeur et peut servir à attirer l’attention sur une consigne.
 
 ![](thread_quote.png)
 
 <!-- translation-section: code-block -->
 
-## Bloc de code
+## Code préformaté
 
-Le bloc de code sert généralement à afficher du code. Vous pouvez aussi l’utiliser pour distinguer un passage dans votre discussion.
+Généralement utilisée pour afficher du code dans un texte, cette mise en forme permet aussi de distinguer certains passages dans votre discussion.
 
 ![](thread_codeblock.png)
 
@@ -225,7 +225,7 @@ Le bloc de code sert généralement à afficher du code. Vous pouvez aussi l’u
 
 ## Séparateur
 
-Utilisez le séparateur pour tracer une ligne horizontale entre deux sections.
+Utilisez le séparateur pour tracer une ligne horizontale entre les sections.
 
 ![](thread_line.png)
 
@@ -243,14 +243,14 @@ Des outils supplémentaires permettent d’ajouter ou de supprimer des colonnes 
 
 ## Markdown
 
-Pour passer à l’édition en Markdown, sélectionnez **Editer Markdown**.
+Pour passer à l’édition en Markdown, choisissez **Editer Markdown**.
 
-Si le champ contient déjà du texte, une partie de la mise en forme peut être perdue lors de la conversion.
+Si le formulaire contient déjà du texte lorsque vous cliquez sur cette option, une partie de la mise en forme peut être perdue lors de la conversion.
 
 <!-- translation-section: rich-text -->
 
 ### Texte enrichi
 
-Sélectionnez **Editer le texte enrichi** pour retrouver les outils de mise en forme. Le Markdown pris en charge est alors converti en texte mis en forme.
+Choisissez **Éditer le texte enrichi** pour revenir aux outils de mise en forme. Cette action convertit le Markdown pris en charge en sa forme affichée.
 
-**Prévisualiser** montre l’apparence du Markdown une fois publié, sans le convertir.
+**Prévisualiser** montre comment le Markdown apparaîtra une fois publié, sans le convertir.

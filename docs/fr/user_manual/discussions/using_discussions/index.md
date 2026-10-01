@@ -1,6 +1,6 @@
 ---
 title: Utiliser les fils de discussion
-source_revision: 3a315412c646d254c8426be5c436a4e593f6011f
+source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
 source_file: docs/en/user_manual/discussions/using_discussions/index.md
 translated:
   provider: codex/gpt-6.1-sol
@@ -25,167 +25,169 @@ sections:
   lock-or-unlock-a-thread: d3f671e631c8a0bc
   delete-a-thread: 9b4c6437ff8102eb
 generated:
-  introduction: ec44f55e0bcbdd17
-  thread-anatomy: 76dae2fa8028253c
-  discussion-context: 592e484713d90ea6
-  notify-people-about-context-changes: 4c2914e64f8461b1
-  navigation: 6e42a5401de9676d
-  notifications-and-members: fa4cc183e9cad8e5
-  email-notifications-for-this-thread: 0d17b218d973a644
-  invite-people: 5f89e8ec116c65fe
-  seen-by: d5da42a2d06d3204
-  notified: 35653165cee968f0
-  actions: 0a80480546ad630d
+  introduction: 3b64d53cca0abd7b
+  thread-anatomy: 0b9484dbc2285aff
+  discussion-context: d8ff6f48e792c56b
+  notify-people-about-context-changes: f9191e0775c65362
+  navigation: 43d3c2aa2be58dd4
+  notifications-and-members: 8fd18a179bf481f7
+  email-notifications-for-this-thread: bed8ccae87882d00
+  invite-people: b9a6f2bef65be3e7
+  seen-by: e22b59398147e401
+  notified: 6a9b539b8cbe56b5
+  actions: 835500a4514efafd
   print: 0f31c6373354dabb
-  markdown: 7810f4bcd1613ae6
-  thread-settings-and-display: a5d3396421c3677d
-  pin-or-unpin-a-thread: 2c7e0a55a403d717
-  move-a-thread: 9845263f4f6fae23
-  lock-or-unlock-a-thread: 2c9ee28e545264a7
-  delete-a-thread: 77001b253471a2e1
+  markdown: b143c858bbfa8989
+  thread-settings-and-display: beb48d96f1b6392c
+  pin-or-unpin-a-thread: 3cb7608b7a17df07
+  move-a-thread: c5cedca872ca4f35
+  lock-or-unlock-a-thread: e2ab8a53b462b11d
+  delete-a-thread: 0ae686392ccdea30
 title_source: 99e2d1eb313f35c4
 title_generated: f56dc994cbc2ff13
+needs_review:
+  notify-people-about-context-changes: check the interface label "**Qu'est ce qui a changé ? **" for "**What's changed?**"
 ---
 
 <!-- translation-section: introduction -->
 
-# Utiliser les fils de discussion
+# Utiliser les fils
 
-Une discussion rassemble son contexte, ses commentaires, ses décisions et ses conclusions dans un même fil. Cette page explique comment y participer, s’y déplacer et utiliser les actions disponibles.
+Une discussion rassemble son contexte, ses commentaires, ses décisions et ses conclusions dans un même fil. Cette page explique comment participer à un fil et utiliser sa navigation et ses actions.
 
 <!-- translation-section: thread-anatomy -->
 
-## Les éléments d’un fil de discussion
+## Structure d’un fil
 
-Voici à quoi ressemble un fil de discussion :
+Voici à quoi ressemble un fil type :
 
 ![](thread_navigation.png)
 
-De haut en bas, un fil de discussion contient les éléments suivants :
+Depuis le haut de la page, un fil contient :
 
-**Nom du groupe** - En haut à gauche de la page de discussion figure le nom du groupe ou du sous-groupe auquel elle appartient. Cliquez sur ce nom pour revenir à la page du groupe.
+**Nom du groupe** - En haut à gauche de la page de discussion figure le nom du groupe ou du sous-groupe auquel appartient la discussion. Cliquez sur ce nom pour revenir à la page du groupe.
 
-**Accès à la discussion** - L’icône d’accès en haut à droite ouvre les paramètres d’accès à la discussion. Une discussion de groupe est accessible aux membres du groupe et aux personnes qui y ont été invitées, selon les paramètres de confidentialité du groupe.
+**Accès à la discussion** - L’icône d’accès en haut à droite ouvre les paramètres d’accès à la discussion. Une discussion de groupe est accessible aux membres du groupe et aux personnes qui y sont expressément invitées, selon les paramètres de confidentialité du groupe.
 
 **Titre de la discussion** - Le nom de la discussion.
 
-**Classement par tags** - Une discussion peut avoir un ou plusieurs tags de catégorie. Des tags simples aident à retrouver les discussions du même type.
+**Classement par tags** - La discussion peut avoir un ou plusieurs tags de catégorie. Des tags simples permettent de trouver plus facilement des discussions du même type.
 
-**Auteur de la discussion** - Le nom et l’avatar de la personne qui a lancé la discussion, affichés sous le titre.
+**Auteur de la discussion** - Le nom et l’avatar de la personne qui a démarré la discussion, affichés sous le titre.
 
-**Date** - Passez la souris sur la date pour voir la date et l’heure exactes du début de la discussion.
+**Date** - Survolez la date pour voir la date et l’heure complètes du début de la discussion.
 
-**Vu par** - Dans la barre latérale de droite, indique qui a lu la discussion et quand.
+**Vu par** - Dans la barre latérale droite, indique qui a lu la discussion et quand.
 
-**Notifié⋅e(s)** - Dans la barre latérale de droite, indique qui a reçu une notification concernant la discussion et si chaque notification a été lue ou son courriel ouvert.
+**Notifié⋅e(s)** - Dans la barre latérale droite, indique qui a reçu une notification concernant la discussion et si chaque notification a été lue ou si l’e-mail correspondant a été ouvert.
 
 **Contexte de la discussion** - Le contenu qui présente le cadre de la discussion.
 
-**Outils d’interaction et d’administration de la discussion** - Le contexte de la discussion comporte des commandes pour y réagir et le modifier. La barre latérale de droite contient les actions liées aux notifications, aux membres et à l’administration.
+**Outils d’interaction et d’administration de la discussion** - Le contexte de la discussion comporte des commandes pour y réagir et le modifier. La barre latérale droite contient les actions de notification, de gestion des membres et d’administration.
 
-**Commentaires** - Les commentaires s’affichent sous le contexte de la discussion. Le nom et l’avatar de leur auteur, ainsi que l’heure de publication, indiquent qui a écrit chaque commentaire et quand. Chaque commentaire comporte des outils d’interaction et d’administration.
+**Commentaires** - Les commentaires s’affichent sous le contexte de la discussion. Le nom de l’auteur, son avatar et l’heure de publication indiquent qui a écrit chaque commentaire et quand. Chaque commentaire dispose d’outils d’interaction et d’administration.
 
-**Navigation, notifications et actions** - La barre latérale de droite contient des raccourcis vers les activités et les étapes importantes, des informations sur les notifications et les membres, ainsi que les actions que vous pouvez effectuer sur le fil de discussion.
+**Navigation, notifications et actions** - La barre latérale droite contient des raccourcis vers l’activité et les étapes importantes, des informations sur les notifications et les membres, ainsi que les actions du fil auxquelles vous avez accès.
 
 <!-- translation-section: discussion-context -->
 
 ## Contexte de la discussion
 
-Le **contexte** se trouve toujours en haut de la discussion. Utilisez-le pour présenter le cadre de la discussion ou de la décision.
+Le **contexte** de la discussion se trouve toujours en haut de celle-ci. Utilisez le contexte pour présenter le cadre de la discussion ou de la décision.
 
-Pensez aux membres de votre groupe lorsque vous rédigez le contexte. Pour lancer la discussion, donnez-leur des raisons de participer. En général, un contexte simple et clair suffit.
+Pensez à votre groupe lorsque vous rédigez le contexte de la discussion. Votre objectif est de lancer une discussion : réfléchissez à la manière d’encourager les personnes à participer. En général, gardez le contexte simple et clair.
 
 ![](thread_context.png)
 
-Rédigez le contexte lorsque vous lancez ou modifiez une discussion. Pour modifier une discussion, cliquez sur l’icône en forme de crayon (**Modifier**).
+Rédigez le contexte lorsque vous démarrez ou modifiez une discussion. Utilisez **Modifier**, avec l’icône en forme de crayon, pour modifier une discussion.
 
-Mettez le contexte à jour au fil de la discussion. Vous pouvez l’utiliser comme le tableau blanc d’une salle de réunion : inscrivez-y l’ordre du jour, les conclusions attendues et la façon dont vous comptez y parvenir.
+À mesure que la discussion avance, mettez son contexte à jour. Considérez le contexte comme un tableau blanc dans votre salle de réunion, où vous pouvez écrire l’ordre du jour, les conclusions souhaitées et la manière dont vous comptez y parvenir.
 
-Au bas du panneau de contexte, une barre de mise en forme vous permet de formater le texte, de joindre des fichiers et des images, et d’intégrer une vidéo.
+En bas du panneau de contexte se trouve une barre de mise en forme, qui permet de mettre en forme le texte, de joindre des fichiers et des images et d’intégrer une vidéo.
 
 ![](thread_context_edit.png)
 
 <!-- translation-section: notify-people-about-context-changes -->
 
-### Informer les personnes des changements apportés au contexte
+### Notifier les personnes des modifications du contexte
 
-Lorsque vous modifiez le contexte de la discussion, utilisez **Qu'est ce qui a changé ? ** pour résumer la modification et choisir les personnes à notifier.
+Lorsque vous modifiez le contexte de la discussion, utilisez **Qu'est ce qui a changé ? ** pour résumer la mise à jour et choisir les personnes à notifier.
 
-![Modification du contexte d’une discussion avec un résumé des changements et le choix des destinataires de la notification](../notifying_people/thread_editcontext.png)
+![Modification du contexte d’une discussion avec un résumé des changements et les destinataires des notifications](../notifying_people/thread_editcontext.png)
 
-Le fil de discussion indique que vous avez modifié le contexte. Les personnes que vous notifiez reçoivent votre résumé avec la notification.
+Le fil indique que vous avez modifié le contexte. Les personnes que vous notifiez reçoivent votre résumé avec la notification.
 
-![Élément du fil de discussion indiquant que le contexte de la discussion a été modifié](../notifying_people/thread_edit_comment.png)
+![Élément du fil indiquant que le contexte de la discussion a été modifié](../notifying_people/thread_edit_comment.png)
 
 <!-- translation-section: navigation -->
 
 ## Navigation
 
-La section **Aller à** de la barre latérale de droite vous aide à parcourir le fil de discussion :
+La section **Aller à** de la barre latérale droite vous aide à parcourir un fil :
 
 - **Démarrer** mène au contexte de la discussion
-- **Nouveau pour toi** apparaît lorsque le fil contient des activités que vous n’avez pas lues
-- **Dernier** apparaît lorsque des activités plus récentes existent au-delà des éléments actuellement chargés
-- les liens vers les étapes importantes mènent directement aux commentaires, sondages et conclusions concernés
-- **Fin** mène au dernier élément du fil de discussion
+- **Nouveau pour vous** apparaît lorsque le fil contient une activité que vous n’avez pas lue
+- **Dernier** apparaît lorsqu’une activité plus récente est disponible au-delà des éléments actuellement chargés
+- les liens vers les étapes importantes mènent directement aux commentaires, sondages et conclusions importants
+- **Fin** mène au dernier élément du fil
 
-Les commentaires qui comportent un titre H2 ou H3, les sondages et les propositions sont automatiquement ajoutés aux liens vers les étapes importantes. Sélectionnez une étape pour y accéder directement.
+Les commentaires contenant un titre H2 ou H3, les sondages et les propositions sont automatiquement inclus dans les liens vers les étapes importantes. Sélectionnez une étape pour y accéder directement.
 
 ![](thread_timeline_1.png)
 
-Lorsque vous ajoutez un commentaire, un sondage, un vote ou une conclusion, Loomio marque ce nouvel élément comme lu pour vous. Il n’apparaîtra donc pas parmi les nouveautés à consulter.
+Lorsque vous ajoutez un commentaire, un sondage, un vote ou une conclusion, Loomio marque votre nouvel élément comme lu. Il n’apparaîtra pas comme un nouvel élément à consulter pour vous.
 
 <!-- translation-section: notifications-and-members -->
 
 ## Notifications et membres
 
-La barre latérale de droite permet de régler vos notifications par courriel. Elle indique aussi qui a été invité, qui a vu le fil de discussion et qui a reçu une notification.
+La barre latérale droite permet de gérer vos notifications par e-mail et indique qui a été invité, qui a vu le fil et qui a reçu une notification.
 
 <!-- translation-section: email-notifications-for-this-thread -->
 
-### Notifications par courriel pour ce fil de discussion
+### Notifications par e-mail pour ce fil
 
-Sélectionnez le réglage actuel des notifications pour choisir si Loomio vous envoie un courriel pour toute activité, uniquement pour les activités qui vous notifient directement, ou pour aucune activité. Dans un fil de discussion actif, les courriels pour toute activité peuvent être nombreux.
+Sélectionnez le paramètre de notification actuel pour choisir si Loomio vous envoie des e-mails pour toute l’activité, uniquement pour l’activité qui vous notifie expressément, ou pour aucune activité. Recevoir des e-mails pour toute l’activité peut générer de nombreux messages dans un fil actif.
 
-![Option d’envoi d’un courriel en cas de notification sélectionnée dans la barre latérale de la discussion](../notifying_people/thread_interact.png)
+![Option d’envoi d’un e-mail en cas de notification sélectionnée dans la barre latérale de la discussion](../notifying_people/thread_interact.png)
 
 <!-- translation-section: invite-people -->
 
 ### Inviter des personnes
 
-Sélectionnez **Inviter des personnes** pour ajouter des participants après le début du fil de discussion.
+Sélectionnez **Inviter des personnes** pour ajouter des personnes après le démarrage du fil.
 
-![Inviter des personnes depuis la barre latérale du fil de discussion](../notifying_people/thread_invite_icon.png)
+![Inviter des personnes dans la barre latérale du fil](../notifying_people/thread_invite_icon.png)
 
-Sélectionnez un groupe ou un sous-groupe, saisissez le nom des membres à inviter individuellement, ou saisissez une adresse e-mail pour inviter une personne extérieure.
+Sélectionnez un groupe ou un sous-groupe, saisissez les noms de membres ou saisissez une adresse e-mail pour inviter un invité.
 
-Le champ **Trouver ou inviter des personnes** permet aussi de filtrer la liste des personnes déjà présentes dans le fil de discussion. Effacez le contenu du champ pour afficher à nouveau la liste complète, et utilisez les commandes de pagination s’il y a plus de 50 personnes. Après la sélection des destinataires, la liste des membres laisse place au champ de message facultatif. Les nouvelles personnes sont invitées ; celles qui ont déjà accès à la discussion reçoivent une nouvelle notification lorsque vous sélectionnez **Inviter ou notifier**.
+Le champ **Trouver ou inviter des personnes** filtre également la liste des personnes déjà présentes dans le fil. Effacez le contenu du champ pour afficher à nouveau la liste complète et utilisez les commandes de pagination si elle compte plus de 50 personnes. Une fois les destinataires sélectionnés, la liste des membres laisse place au champ de message facultatif. Les nouvelles personnes sont invitées ; celles qui ont déjà accès reçoivent une nouvelle notification lorsque vous sélectionnez **Inviter ou notifier**.
 
 ![Fenêtre d’invitation avec un champ pour les noms et les adresses e-mail](../notifying_people/thread_invite.png)
 
-Une personne invitée peut voir ce fil de discussion et y participer. Elle ne peut pas voir les autres discussions du groupe sans y avoir été invitée séparément.
+Un invité peut voir ce fil et y participer, mais ne peut pas voir les autres discussions du groupe sans y être invité séparément.
 
-Vous pouvez masquer les messages d’aide en haut de la fenêtre. Loomio mémorise les messages que vous avez masqués pour votre compte.
+Vous pouvez fermer les notices d’aide en haut de la fenêtre. Loomio mémorise les notices que vous avez fermées pour votre compte.
 
-![Invitation d’une personne extérieure par adresse e-mail](../notifying_people/invite_guest.png)
+![Invitation d’un invité par adresse e-mail](../notifying_people/invite_guest.png)
 
-Pour retirer une personne, ouvrez le menu à trois points (**⋯**) à côté de son nom, puis sélectionnez **Retirer de la discussion**.
+Pour retirer une personne, ouvrez le menu à trois points (**⋯**) à côté de son nom et sélectionnez **Retirer de la discussion**.
 
 <!-- translation-section: seen-by -->
 
 ### Vu par
 
-**Vu par** indique qui a ouvert le fil de discussion et quand. Vous pouvez ainsi repérer les personnes qui n’ont peut-être pas encore vu des informations importantes.
+**Vu par** indique qui a ouvert le fil et quand. Cette information peut vous aider à repérer les personnes qui n’ont peut-être pas encore vu des informations importantes.
 
-![Vu par et Notifié⋅e(s) dans la section des membres du fil de discussion](../notifying_people/thread_engagement.png)
+![Vu par et Notifié⋅e(s) dans la section des membres du fil](../notifying_people/thread_engagement.png)
 
-![Fenêtre Vu par affichant la liste des membres du fil de discussion](../notifying_people/thread_seenby.png)
+![Fenêtre Vu par affichant la liste des membres du fil](../notifying_people/thread_seenby.png)
 
 <!-- translation-section: notified -->
 
 ### Notifié⋅e(s)
 
-**Notifié⋅e(s)** ouvre l’historique des notifications de la discussion. Il comprend les invitations, les mentions et les réponses. Il indique qui a reçu une notification et, lorsque cette information est disponible, si elle a été lue.
+**Notifié⋅e(s)** ouvre l’historique des notifications de la discussion. Il comprend les invitations, les mentions et les réponses, et indique qui a reçu une notification et si chaque notification a été lue, lorsque cette information est disponible.
 
 ![Historique des notifications de la discussion](../notifying_people/thread_notified.png)
 
@@ -193,9 +195,9 @@ Pour retirer une personne, ouvrez le menu à trois points (**⋯**) à côté de
 
 ## Actions
 
-La barre latérale droite contient les actions qui s’appliquent à l’ensemble du fil de discussion. Certaines sont aussi accessibles depuis le menu à trois points (**⋯**) à côté du fil sur la page du groupe.
+La barre latérale droite contient des actions qui s’appliquent à l’ensemble du fil. Certaines actions sont également accessibles depuis le menu à trois points (**⋯**) à côté d’un fil sur la page du groupe.
 
-Les actions affichées dépendent de vos autorisations. Les administrateurs du groupe peuvent gérer les fils de discussion. Selon les paramètres du groupe, les membres peuvent aussi effectuer certaines actions de gestion. Consultez [Autorisations du groupe](/en/user_manual/groups/settings/permissions).
+Les actions affichées dépendent de vos permissions. Les administrateurs du groupe peuvent gérer les fils, et les paramètres du groupe peuvent autoriser les membres à effectuer certaines actions de gestion. Consultez les [Permissions du groupe](/en/user_manual/groups/settings/permissions).
 
 ![](thread_admin.png)
 
@@ -211,17 +213,17 @@ Sélectionnez **Imprimer** pour générer une page adaptée à l’impression. U
 
 ### Markdown
 
-Sélectionnez **Markdown** pour enregistrer l’intégralité du fil de discussion dans un document Markdown structuré. Choisissez **Copier le Markdown** pour le copier dans le presse-papiers, ou **Télécharger Markdown** pour l’enregistrer dans un fichier `.md`. Vous pouvez l’utiliser comme compte rendu de réunion, document ou archive des décisions, ou l’importer dans un assistant IA ou un autre outil compatible avec Markdown.
+Sélectionnez **Markdown** pour enregistrer le fil complet au format Markdown structuré. Choisissez **Copier le Markdown** pour le copier dans votre presse-papiers, ou **Télécharger Markdown** pour l’enregistrer dans un fichier `.md`. Vous pouvez l’utiliser pour un compte rendu de réunion, un document, une archive de décisions, un assistant IA ou un autre outil prenant en charge Markdown.
 
 ![](../discussion_management/copy_markdown_menu.png)
 
-Le document commence par un en-tête YAML contenant la clé du fil de discussion, le groupe, la date de création, la date de la dernière activité et les tags. Il contient ensuite le contexte de la discussion, puis chaque commentaire, sondage, vote et conclusion, dans le même ordre et avec la même imbrication que dans l’affichage en fils.
+Le document commence par un en-tête YAML contenant la clé du fil, le groupe, la date de création, la date de la dernière activité et les tags. Il contient ensuite le contexte de la discussion et chaque commentaire, sondage, vote et conclusion, dans le même ordre et avec la même imbrication que dans la vue en fils.
 
-Chaque sondage forme une section. Les commentaires, les votes et les conclusions sont présentés en citations. Les réponses sont citées sous l’élément auquel elles répondent. Vous pouvez ainsi voir où commence et où se termine le texte de chaque personne. Chaque citation commence par une ligne indiquant la personne, la date de publication, le numéro de l’élément dans le fil de discussion et les éventuelles réactions. Les votes et les conclusions sont également identifiés comme tels. La clé du fil de discussion et le numéro de l’élément permettent de retrouver chaque élément dans Loomio.
+Chaque sondage constitue une section. Les commentaires, les votes et les conclusions sont présentés sous forme de citations, et les réponses sont citées sous l’élément auquel elles répondent. Cela permet de voir où commence et où se termine le texte de chaque personne. Chaque citation commence par une ligne indiquant la personne, la date et l’heure de publication, le numéro de l’élément dans le fil et les éventuelles réactions. Les votes et les conclusions sont également identifiés comme tels. La clé du fil et le numéro de l’élément identifient chaque élément dans Loomio.
 
-Loomio applique les mêmes règles de visibilité que dans le fil de discussion. Les résultats et les motifs de vote auxquels vous n’avez pas accès sont omis, et les personnes ayant voté ne sont pas identifiées dans les sondages anonymes. Si un sondage ouvert masque les résultats jusqu’à votre vote, votez avant d’exporter le fil de discussion. Les options **Markdown** et **Imprimer** ne sont pas disponibles avant votre vote.
+Loomio applique les mêmes règles de visibilité que dans le fil. Les résultats et les raisons des votes que vous ne pouvez pas voir ne sont pas inclus, et les électeurs ne sont pas identifiés dans les sondages anonymes. Si un sondage ouvert masque les résultats jusqu’à ce que vous votiez, votez avant d’exporter le fil. **Markdown** et **Imprimer** restent indisponibles tant que vous n’avez pas voté.
 
-Par exemple, une discussion contenant un commentaire, des réactions, une proposition, deux votes, une réponse et une conclusion produit ce document Markdown :
+Par exemple, une discussion contenant un commentaire, des réactions, une proposition, deux votes, une réponse et une conclusion produit ce Markdown :
 
 ```markdown
 ---
@@ -288,57 +290,57 @@ Les titres et les libellés utilisent la langue que vous avez choisie. Le conten
 
 <!-- translation-section: thread-settings-and-display -->
 
-### Paramètres et affichage du fil de discussion
+### Paramètres et affichage du fil
 
-Les administrateurs du groupe peuvent sélectionner **Paramètres du fil de discussion** pour modifier l’agencement des réponses et configurer d’autres options de la discussion.
+Les administrateurs du groupe peuvent sélectionner **Paramètres du fil de discussion** pour modifier la disposition des réponses et configurer d’autres options de discussion.
 
 ![](thread_display.png)
 
-Choisissez **Chronologie** pour afficher les éléments dans leur ordre de publication, ou **En fils** pour regrouper les réponses sous l’élément auquel elles répondent. Les paramètres du fil de discussion permettent aussi d’autoriser plusieurs sondages simultanés et de fixer une longueur maximale pour les commentaires. Ils s’appliquent à toutes les personnes qui participent à la discussion.
+Choisissez **Chronologie** pour afficher les éléments dans leur ordre de publication, ou **En fils** pour regrouper les réponses sous l’élément auquel elles répondent. Les paramètres du fil permettent également de définir si plusieurs sondages peuvent être ouverts en même temps et de fixer une longueur maximale pour les commentaires. Ces paramètres s’appliquent à toutes les personnes participant à la discussion.
 
 ![](thread_layout_options.png)
 
 <!-- translation-section: pin-or-unpin-a-thread -->
 
-### Mettre en avant ou retirer la mise en avant d’un fil de discussion
+### Épingler ou désépingler un fil
 
-Les fils de discussion mis en avant apparaissent au-dessus des autres sur la page du groupe. Cette option peut servir pour les discussions de bienvenue, les actualités et les annonces.
+Les fils épinglés apparaissent au-dessus des autres fils sur la page du groupe. Les discussions de bienvenue, les actualités et les annonces sont des usages courants des fils épinglés.
 
-Ouvrez le menu à trois points (**⋯**) à côté du fil de discussion sur la page du groupe, puis sélectionnez **Mettre en avant la discussion**. Les fils de discussion mis en avant sont classés selon la date de leur mise en avant. Pour modifier leur ordre, retirez leur mise en avant, puis mettez-les de nouveau en avant.
+Ouvrez le menu à trois points (**⋯**) à côté du fil sur la page du groupe et sélectionnez **Épingler le fil**. Les fils épinglés sont classés selon le moment où ils ont été épinglés. Pour modifier leur ordre, désépinglez-les puis épinglez-les à nouveau.
 
-Sélectionnez **Ne plus mettre en avant la discussion** pour que le fil de discussion retrouve sa place selon son activité.
+Sélectionnez **Désépingler le fil** pour replacer un fil dans l’ordre fondé sur l’activité.
 
 ![](../discussion_management/pin_thread.png)
 
 <!-- translation-section: move-a-thread -->
 
-### Déplacer un fil de discussion
+### Déplacer un fil
 
-Sélectionnez **Déplacer le sujet** pour déplacer un fil de discussion vers un autre groupe, un sous-groupe ou une discussion directe. Il sera visible par les membres du groupe de destination et par toute personne invitée à y participer.
+Sélectionnez **Déplacer le sujet** pour déplacer un fil vers un autre groupe ou sous-groupe, ou le convertir en fil direct. Il sera visible par les membres du groupe de destination et par toute personne qui y est spécifiquement invitée.
 
 ![](../discussion_management/move_thread_select.png)
 
 >[!Tip]
->Commencez un brouillon dans une discussion directe ou un sous-groupe privé, puis déplacez-le vers le groupe lorsqu’il est prêt.
+>Commencez un brouillon dans un fil direct ou dans un sous-groupe privé, puis déplacez-le vers le groupe lorsqu’il est prêt.
 
-Pour déplacer seulement certains éléments plutôt que l’ensemble du fil de discussion, consultez [Déplacer des éléments entre des fils de discussion](/en/user_manual/discussions/moving_items/).
+Pour déplacer certains éléments d’activité plutôt que le fil entier, consultez [Déplacer des éléments entre les fils](/en/user_manual/discussions/moving_items/).
 
 <!-- translation-section: lock-or-unlock-a-thread -->
 
-### Verrouiller ou déverrouiller un fil de discussion
+### Verrouiller ou déverrouiller un fil
 
-Verrouillez un fil de discussion pour empêcher l’ajout de commentaires ou toute autre modification. Vous ne pouvez le verrouiller qu’une fois tous ses sondages actifs terminés.
+Verrouillez un fil pour empêcher l’ajout de commentaires ou toute autre modification. Un fil ne peut être verrouillé qu’une fois ses sondages actifs clôturés.
 
-Sélectionnez **Verrouiller la discussion** dans **Actions**. Les fils de discussion verrouillés disparaissent de la liste des discussions ouvertes et portent le tag **Verrouillé**.
+Sélectionnez **Verrouiller la discussion** sous **Actions**. Les fils verrouillés sont retirés de la liste des discussions ouvertes et portent le tag **Verrouillé**.
 
-Pour retrouver un fil de discussion verrouillé, ouvrez le filtre des discussions sur la page du groupe et sélectionnez **Verrouillé**. Ouvrez le fil, puis sélectionnez **Déverrouiller le fil de discussion** pour autoriser de nouveau les commentaires et les modifications.
+Pour retrouver un fil verrouillé, ouvrez le filtre des discussions sur la page du groupe et sélectionnez **Verrouillé**. Ouvrez le fil et sélectionnez **Déverrouiller le fil de discussion** pour autoriser à nouveau les commentaires et les modifications.
 
 <!-- translation-section: delete-a-thread -->
 
-### Supprimer un fil de discussion
+### Supprimer un fil
 
-La suppression d’un fil de discussion est définitive. Si vous pensez en avoir encore besoin, verrouillez-le plutôt.
+La suppression d’un fil est définitive et ne peut pas être annulée. Verrouillez le fil si vous pensez en avoir à nouveau besoin.
 
-Sélectionnez **Supprimer la discussion**, puis confirmez la suppression.
+Sélectionnez **Supprimer la discussion** et confirmez la suppression.
 
 ![](../discussion_management/thread_delete.png)

@@ -1,10 +1,10 @@
 ---
 title: Rapport de participation
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/groups/participation_report/index.md
+source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
+source_file: docs/en/user_manual/groups/participation_report/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 9ec21a12ab444c80
   what-s-in-the-report: 90b9c89c6933eeee
@@ -15,14 +15,14 @@ sections:
   users-per-country: 7f61b0c9a0002eec
   actions-per-country: 900472e9fa675e08
 generated:
-  introduction: 9286e954326d36e4
-  what-s-in-the-report: 175a3fe1ed81698f
-  actions-per-month: a45e16b96ba97e09
-  tag-usage: ad7038a26c92a576
-  actions-per-user: eb9a69b44b5f05ea
-  voting-record-per-user: ff468de6b700b6c5
-  users-per-country: b090ee1ed7424cda
-  actions-per-country: 3bc3aaafa254767d
+  introduction: cf5846e1a9f0207d
+  what-s-in-the-report: cbf3d746e42f1f29
+  actions-per-month: b5e2b3b7221289ee
+  tag-usage: e39462e3ef8cff20
+  actions-per-user: 9d29980c3daaa5b7
+  voting-record-per-user: 1e58303f0370ef36
+  users-per-country: 89f81814ab11fe2d
+  actions-per-country: 19a0af5a6464c3d1
 title_source: ee140bf2af2bcf29
 title_generated: 412a25e410d4f97f
 ---
@@ -31,68 +31,68 @@ title_generated: 412a25e410d4f97f
 
 # Rapport de participation
 
-Le rapport de participation vous permet de suivre l’activité de votre groupe Loomio.
+Le rapport de participation du groupe vous renseigne sur l’utilisation de votre groupe Loomio.
 
-Vous pouvez choisir les groupes à inclure, les dates de début et de fin, ainsi que l’intervalle de regroupement des résultats (année, mois, semaine ou jour).
+Vous pouvez choisir les groupes à inclure dans le rapport, les dates de début et de fin, ainsi que l’intervalle (année, mois, semaine ou jour) pour regrouper les résultats.
 
-Le rapport est accessible à tous les membres de votre groupe. Chaque personne ne voit toutefois que les résultats des groupes dont elle est membre. Les rapports peuvent donc varier légèrement d’une personne à l’autre.
+Le rapport est accessible à toutes les personnes de votre groupe. Toutefois, les utilisateurs ne peuvent voir que les résultats des groupes auxquels ils appartiennent. Les rapports peuvent donc varier légèrement d’une personne à l’autre.
 
-Pour ouvrir le rapport, cliquez sur l’icône en forme d’engrenage du menu des paramètres du groupe, comme ci-dessous.
+Pour accéder au rapport, cliquez sur l’icône d’engrenage du menu des paramètres du groupe, comme illustré ci-dessous.
 
-![Accès au rapport de participation dans le menu d’Oatmilk Cooperative](group_participation_report.png)
+![Option Rapport de participation dans le menu de la coopérative Oatmilk](group_participation_report.png)
 
 <!-- translation-section: what-s-in-the-report -->
 
-## Que contient le rapport ?
+## Que contient le rapport ?
 
 <!-- translation-section: actions-per-month -->
 
 ### Actions par mois
 
-Consultez le niveau de participation dans votre groupe sur une période donnée.
+Découvrez le niveau de participation dans votre groupe sur une période donnée.
 
-Le rapport indique le nombre de discussions, de commentaires, de sondages, de votes et de réactions par mois. Le graphique montre les variations de l’activité.
+Le rapport indique le nombre de fils, de commentaires, de sondages, de votes et de réactions par mois. Un graphique vous permet de voir les variations de l’utilisation.
 
-Cliquez sur les libellés du graphique pour masquer les données correspondantes.
+Cliquez sur les éléments de la légende du graphique pour masquer les données correspondantes.
 
-Cliquez sur un en-tête du tableau pour trier les données selon cette colonne.
+Cliquez sur un en-tête de colonne du tableau pour trier les données selon cette colonne.
 
-![Filtres, totaux et graphique d’activité du rapport de participation d’Oatmilk Cooperative](group_participation_report_graph.png)
+![Commandes, totaux et graphique d’activité du rapport de participation de la coopérative Oatmilk](group_participation_report_graph.png)
 
 <!-- translation-section: tag-usage -->
 
-### Utilisation des étiquettes
+### Utilisation des tags
 
-Cette section indique la fréquence d’utilisation des étiquettes pendant la période choisie. Vous pouvez, par exemple, voir le nombre de décisions prises avec un processus de décision ou un modèle donné.
+Cette section indique la fréquence d’utilisation des différents tags pendant la période choisie. Vous pouvez, par exemple, voir le nombre de décisions utilisant un processus de décision ou un modèle particulier.
 
-![Évolution de l’utilisation des étiquettes Production, Partenariats avec les cafés et Opérations](group_participation_report_tags.png)
+![Activité des tags Production, Partenariats avec des cafés et Opérations au fil du temps](group_participation_report_tags.png)
 
 <!-- translation-section: actions-per-user -->
 
 ### Actions par utilisateur
-Repérez les personnes qui participent le plus et le moins dans votre groupe.
+Découvrez qui contribue le plus et le moins activement dans votre groupe.
 
-Ce tableau indique le nombre de discussions, de commentaires, de sondages, de votes et de réactions de chaque personne dans les groupes sélectionnés pendant la période choisie. Cliquez sur un en-tête pour trier le tableau selon cette colonne.
+Ce tableau indique le nombre de fils, de commentaires, de sondages, de votes et de réactions de chaque utilisateur dans les groupes sélectionnés pendant la période choisie. Cliquez sur un en-tête de colonne du tableau pour trier les données selon cette colonne.
 
-Activez **Délégués seulement** pour afficher les personnes qui sont actuellement déléguées dans au moins un des groupes sélectionnés. Leur activité et leurs votes sont regroupés pour l’ensemble des groupes sélectionnés. Les personnes déléguées sans activité pendant la période choisie restent dans le tableau. Le téléchargement CSV applique le même filtre.
+Activez **Délégués seulement** pour afficher les personnes qui sont actuellement déléguées dans au moins un des groupes sélectionnés. Leur activité et leur historique de vote sont regroupés pour l’ensemble des groupes sélectionnés. Les délégués sans activité pendant la période choisie restent dans le tableau. Le téléchargement CSV utilise le même filtre.
 
-![Actions par personne déléguée montrant trois niveaux de participation](group_participation_report_actions_per_user.png)
+![Actions par délégué montrant trois niveaux de participation](group_participation_report_actions_per_user.png)
 
 <!-- translation-section: voting-record-per-user -->
 
-### Votes par utilisateur
+### Historique de vote par utilisateur
 
-Comparez le nombre de votes proposés à chaque personne au nombre de votes qu’elle a exprimés. Repérez les votes manqués et les personnes qui ont participé à tous les votes qui leur ont été proposés. Une personne à qui aucun vote n’a été proposé n’est pas considérée comme ayant participé à tous les votes. Les sondages anonymes sont exclus, car un bulletin anonyme ne doit pas être associé à la personne qui l’a déposé.
+Comparez le nombre de votes auxquels chaque personne a été invitée à participer avec le nombre de votes qu’elle a exprimés, consultez les votes manqués et identifiez les personnes qui ont voté à chaque fois. Une personne qui n’a été invitée à aucun vote n’est pas présentée comme ayant participé à tous les votes. Les sondages anonymes sont exclus, car un bulletin anonyme ne doit pas être associé à la personne qui l’a soumis.
 
-Utilisez **Délégués seulement** pour consulter les votes des personnes actuellement déléguées. Le téléchargement CSV applique les mêmes filtres par nom et par statut de délégué.
+Utilisez **Délégués seulement** pour consulter l’historique de vote des délégués actuels. Le téléchargement CSV utilise les mêmes filtres par nom et par statut de délégué.
 
-![Votes des personnes déléguées : votes proposés, exprimés et manqués](group_participation_report_voting_record.png)
+![Historique de vote des délégués indiquant les invitations à voter, les votes exprimés et les votes manqués](group_participation_report_voting_record.png)
 
 <!-- translation-section: users-per-country -->
 
 ### Utilisateurs par pays
 
-Consultez le nombre de personnes de votre groupe dans chaque pays, d’après leur adresse IP actuelle.
+Cette section indique le nombre d’utilisateurs de votre groupe dans chaque pays, d’après leur adresse IP actuelle.
 
 ![Utilisateurs par pays dans les groupes sélectionnés](group_participation_report_users_per_country.png)
 
@@ -100,8 +100,8 @@ Consultez le nombre de personnes de votre groupe dans chaque pays, d’après le
 
 ### Actions par pays
 
-Repérez les pays où les personnes participent le plus et le moins.
+Découvrez dans quels pays les utilisateurs participent le plus et le moins.
 
-Cette section présente les mêmes données que « Actions par utilisateur », regroupées selon le pays détecté pour chaque personne.
+Cette section est similaire à « Actions par utilisateur », mais les données sont regroupées selon le pays dans lequel chaque utilisateur est détecté.
 
 ![Actions regroupées par pays](group_participation_report_actions_per_country.png)

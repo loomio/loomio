@@ -1,16 +1,16 @@
 ---
 title: Supprimer votre groupe
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/groups/deleting_your_group/index.md
+source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
+source_file: docs/en/user_manual/groups/deleting_your_group/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: d1fb3691890a02b6
   group-data-is-permanently-deleted-after-90-days: e2074e63cb56c4cd
 generated:
-  introduction: 93e7d3ecb19bcb81
-  group-data-is-permanently-deleted-after-90-days: 0415a14d590a12cc
+  introduction: 9be7e6f20c56c52f
+  group-data-is-permanently-deleted-after-90-days: fbd0e614c35765b4
 title_source: 9a0868f49f1262ea
 title_generated: 276b9af64d1f291a
 ---
@@ -19,25 +19,25 @@ title_generated: 276b9af64d1f291a
 
 # Supprimer votre groupe
 
-La suppression de votre groupe Loomio lance un processus qui supprimera définitivement toutes les données du groupe.
+La suppression de votre groupe Loomio lance un processus de suppression définitive de toutes les données du groupe.
 
-Si vous souhaitez conserver des données, veillez à [exporter les données du groupe](/en/user_manual/groups/data_export/) et à télécharger manuellement les fichiers importants que vous avez ajoutés avant de continuer.
+Si vous souhaitez conserver certaines données, veillez à [exporter les données du groupe](/en/user_manual/groups/data_export/) et à télécharger manuellement les fichiers importants que vous avez importés avant de continuer.
 
-Cliquez sur les trois points pour ouvrir le menu du groupe, puis choisissez **Supprimer le groupe**. Cette action retire l’accès au groupe et lance la suppression de toutes ses données de nos systèmes. Vous devez être administrateur pour supprimer un groupe.
+Ouvrez le menu déroulant du groupe en cliquant sur les trois points, puis choisissez l’option **Supprimer le groupe** pour retirer l’accès au groupe et lancer la suppression de toutes ses données de nos systèmes. Vous devez être administrateur pour supprimer un groupe.
 
-Lorsque vous supprimez un groupe, il disparaît immédiatement et ses données sont définitivement supprimées après 90 jours. Vous et les membres du groupe perdez immédiatement l’accès au groupe. Si vous l’avez supprimé par erreur, contactez-nous dans les 90 jours pour demander sa restauration.
+Lorsque vous supprimez un groupe, il disparaît immédiatement de l’interface et sera définitivement supprimé après 90 jours. Vous et les membres du groupe perdez immédiatement l’accès au groupe. En cas d’erreur, contactez-nous dans les 90 jours suivant la suppression de votre groupe pour demander sa restauration.
 
-Les membres et les administrateurs ne peuvent plus consulter les groupes en attente de suppression ni leurs sous-groupes, y participer ou en exporter les données. Cela comprend les sondages ouverts à partir de liens enregistrés. Les membres ne peuvent plus créer ni modifier de contenu, voter, envoyer des annonces ou des rappels, ni accepter des invitations. Exportez les données du groupe et téléchargez les fichiers importants avant de confirmer la suppression. Les discussions directes et les sondages directs ne sont pas concernés.
+Les groupes en attente de suppression et leurs sous-groupes ne sont plus accessibles aux membres et aux coordinateurs pour les consulter, y participer ou les exporter. Cela inclut les sondages ouverts à partir de liens enregistrés. Les membres ne peuvent plus créer ou modifier du contenu, voter, envoyer des annonces ou des rappels, ni accepter des invitations. Exportez le groupe et téléchargez les fichiers importants avant de confirmer la suppression. Les discussions et les sondages directs ne sont pas affectés.
 
 La programmation de la suppression du groupe arrête les notifications d’activité et les rappels de sondage en attente pour le groupe et ses sous-groupes. Les messages déjà en cours d’envoi peuvent encore arriver.
 
-L’e-mail d’avertissement indique le nombre de sous-groupes, de membres, de discussions, de sondages et de commentaires du groupe. Si vous souhaitez conserver le groupe ou [exporter ses données](/en/user_manual/groups/data_export/), répondez dans les 90 jours afin que l’accès puisse être rétabli avant la suppression.
+L’e-mail d’avertissement indique le nombre de sous-groupes, de membres, de discussions, de sondages et de commentaires du groupe. Si vous devez conserver le groupe ou [exporter ses données](/en/user_manual/groups/data_export/), répondez dans les 90 jours afin que l’accès puisse être rétabli avant la suppression.
 
-La suppression de votre groupe résilie également votre abonnement Loomio.
+La suppression de votre groupe entraînera également la résiliation de votre abonnement Loomio.
 
 ![Option de suppression du groupe dans le menu d’Oatmilk Cooperative](group_delete_group.png)
 
-Pour confirmer la suppression, vous devrez saisir le nom de votre groupe (*en respectant les majuscules et les minuscules*).
+Vous devrez saisir le nom de votre groupe (*en respectant les majuscules et les minuscules*) pour confirmer que vous souhaitez le supprimer.
 
 ![Formulaire de confirmation demandant l’identifiant d’Oatmilk Cooperative](group_delete_group_confirm.png)
 
@@ -45,6 +45,6 @@ Pour confirmer la suppression, vous devrez saisir le nom de votre groupe (*en re
 
 ## Les données du groupe sont définitivement supprimées après 90 jours
 
-Après 90 jours, toutes les discussions, tous les sondages, les fichiers et les autres contenus du groupe seront définitivement supprimés. ***Cette suppression est irréversible.***
+Après 90 jours, tous les fils, sondages, fichiers et autres contenus du groupe seront définitivement supprimés. ***Cette action est irréversible !***
 
-Nous vous recommandons d’[exporter les données du groupe](/en/user_manual/groups/data_export/) et de télécharger manuellement les fichiers importants que vous avez ajoutés avant de continuer.
+Nous vous recommandons d’[exporter les données du groupe](/en/user_manual/groups/data_export/) et de télécharger manuellement les fichiers importants que vous avez importés avant de continuer.

@@ -1,6 +1,6 @@
 ---
 title: Propositions
-source_revision: 3a315412c646d254c8426be5c436a4e593f6011f
+source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
 source_file: docs/en/user_manual/polls/proposals/index.md
 translated:
   provider: codex/gpt-6.1-sol
@@ -11,10 +11,10 @@ sections:
   other-proposal-templates: 21ac5a295b8832ab
   proposal-records: ef0d886d3db7a5d1
 generated:
-  introduction: 4c2d5a45de355f85
-  choose-a-proposal-template: af2dba177bab885e
-  other-proposal-templates: 006bcb7247ff9937
-  proposal-records: b174039cf5405ec0
+  introduction: feddaf124e2b4c0d
+  choose-a-proposal-template: 5771b6ace491b166
+  other-proposal-templates: f6856f6dcfed7485
+  proposal-records: 8d44d0067047039f
 title_source: 834cfc1ee23734e1
 title_generated: 26014b6e06736f94
 ---
@@ -23,33 +23,33 @@ title_generated: 26014b6e06736f94
 
 # Propositions
 
-Une proposition invite les personnes à réagir à une affirmation ou à une action envisagée. Les participants choisissent une réponse parmi les options définies et peuvent expliquer leur vote. Utilisez une proposition pour recueillir des avis, demander conseil, repérer des objections ou vérifier si un accord se dégage.
+Une proposition invite les personnes à se prononcer sur un énoncé ou une action envisagée. Les participants choisissent une réponse parmi les options définies et peuvent expliquer leur vote. Utilisez une proposition pour recueillir des retours, demander des conseils, identifier des objections ou évaluer le degré d’accord.
 
-Cette section vous aide à choisir et à utiliser les modèles de proposition proposés par défaut dans Loomio. Pour suivre toutes les étapes, de la discussion à la conclusion en passant par les propositions et les amendements, consultez les [guides de prise de décision](/en/guides/making_decisions/). Pour modifier les modèles proposés à votre groupe, consultez les [Modèles de sondage](../poll_templates/).
+Cette section vous aide à choisir et à utiliser les modèles de proposition par défaut de Loomio. Pour suivre un processus complet comprenant une discussion, des propositions, des amendements et une conclusion, consultez les [guides de prise de décision](/en/guides/making_decisions/). Pour modifier les modèles disponibles dans votre groupe, consultez [Modèles de sondage](../poll_templates/).
 
 <!-- translation-section: choose-a-proposal-template -->
 
-## Choisir un modèle de proposition
+## Choisissez un modèle de proposition
 
-| Modèle | Question posée | À utiliser quand… |
+| Modèle | Question posée | À utiliser lorsque… |
 |---|---|---|
-| [Vérification des sens](sense_check/) | Sommes-nous sur la bonne voie ? | Une idée est encore en cours d’élaboration |
-| [Conseil](advice/) | Quels conseils la personne qui prend la décision devrait-elle prendre en compte ? | Une personne ou une équipe est responsable de la décision |
-| [Consentement](consent/) | Peut-on essayer sans risque, ou existe-t-il une objection importante ? | Le groupe prend ses décisions par consentement |
-| [Consensus](consensus/) | Quelle est votre position sur cette proposition ? | Le groupe cherche à parvenir à un accord collectif |
+| [Prise de température](sense_check/) | Est-ce que cela va dans la bonne direction ? | Une idée est encore en cours d’élaboration |
+| [Conseil](advice/) | Quels conseils la personne responsable de la décision devrait-elle prendre en compte ? | Une personne ou une équipe est responsable de la décision |
+| [Consentement](consent/) | Peut-on essayer sans risque, ou existe-t-il une objection fondée ? | Le groupe prend ses décisions par consentement |
+| [Consensus](consensus/) | Quelle est votre position sur cette proposition ? | Le groupe recherche un accord collectif |
 
 ![](proposal_templates_list.png)
 
-Choisissez le modèle dont les options de réponse correspondent à la question que vous souhaitez poser. La page de chaque modèle explique quand l’utiliser, comment le configurer, comment voter et comment consulter les résultats.
+Choisissez le modèle dont les options de réponse correspondent à la question que vous souhaitez poser. La page de chaque modèle explique ses cas d’utilisation, sa configuration, son formulaire de vote et ses résultats.
 
 <!-- translation-section: other-proposal-templates -->
 
 ## Autres modèles de proposition
 
-Loomio propose aussi des modèles comme Proposition, Gradients d’accord et Majorité. Certains sont masqués au départ. Les administrateurs du groupe peuvent les rendre disponibles ou créer un modèle adapté aux termes et aux règles du groupe depuis les [Modèles de sondage](../poll_templates/).
+Loomio propose également des modèles tels que Proposition, Degrés d’accord et Majorité. Certains sont masqués au départ. Les administrateurs du groupe peuvent les rendre disponibles ou créer un modèle adapté à la terminologie et aux règles du groupe depuis [Modèles de sondage](../poll_templates/).
 
 <!-- translation-section: proposal-records -->
 
 ## Historique des propositions
 
-Les votes et leurs motifs sont mis à jour tant que la proposition est ouverte, et les participants peuvent modifier leur réponse. Une fois la proposition close, publiez une [conclusion](../outcomes/) qui indique la décision ou la prochaine étape. La discussion, la proposition, les votes, leurs motifs et la conclusion constituent un historique de la façon dont le groupe a pris sa décision.
+Les votes et les raisons sont mis à jour tant que la proposition est ouverte, et les participants peuvent modifier leur réponse. Après sa clôture, publiez une [conclusion](../outcomes/) qui précise la décision ou la prochaine étape. La discussion, la proposition, les votes, les raisons et la conclusion constituent un historique de la manière dont le groupe a pris sa décision.

@@ -1,20 +1,20 @@
 ---
 title: Signets
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/users/bookmarks/index.md
+source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
+source_file: docs/en/user_manual/users/bookmarks/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 752c1df552c461e6
   save-a-bookmark: ae80e968a14c61b4
   view-your-bookmarks: 66cd0a27cf9bcca2
   remove-a-bookmark: c9ef73967bce0bf8
 generated:
-  introduction: fdf335cb8827f4f9
-  save-a-bookmark: 744b64df552a4d8f
-  view-your-bookmarks: 845e885956254b60
-  remove-a-bookmark: 95fea9c04912e850
+  introduction: bcc67a115060ed9f
+  save-a-bookmark: e02eb5e058fb0f09
+  view-your-bookmarks: 45f3cddf345d169f
+  remove-a-bookmark: d52fa73369a65ceb
 title_source: 96316f0f6404dbe1
 title_generated: e0a402588c50bd65
 ---
@@ -23,31 +23,31 @@ title_generated: e0a402588c50bd65
 
 # Signets
 
-Les signets sont une liste personnelle d’éléments Loomio que vous souhaitez retrouver. Vos signets ne sont visibles que par vous. Enregistrer un élément n’en informe personne d’autre.
+Les signets constituent une liste personnelle d’éléments Loomio auxquels vous souhaitez revenir. Vos signets ne sont visibles que par vous, et l’enregistrement d’un élément n’envoie de notification à personne.
 
-Vous pouvez enregistrer des signets pour :
+Vous pouvez enregistrer les éléments suivants dans vos signets :
 
-- les discussions
-- les commentaires
-- les propositions et les sondages
-- les votes
-- les conclusions
+- discussions
+- commentaires
+- propositions et sondages
+- votes
+- conclusions
 
 <!-- translation-section: save-a-bookmark -->
 
 ## Enregistrer un signet
 
-Ouvrez le menu d’actions de l’élément et choisissez **Enregistrer le signet**. Ce menu est généralement représenté par trois points. Pour une discussion, utilisez le menu près du titre de la discussion. Pour un commentaire, un vote, une proposition, un sondage ou une conclusion, utilisez le menu de l’élément concerné.
+Ouvrez le menu d’actions de l’élément et sélectionnez **Enregistrer le signet**. Le menu d’actions est généralement représenté par trois points. Pour une discussion, utilisez le menu d’actions situé près du titre de la discussion ; pour un commentaire, un vote, une proposition, un sondage ou une conclusion, utilisez le menu de cet élément.
 
 ![](save_bookmark.png)
 
 <!-- translation-section: view-your-bookmarks -->
 
-## Voir vos signets
+## Consulter vos signets
 
-Ouvrez la barre latérale et choisissez **Signets**. Le nombre à côté du lien indique combien de signets vous avez enregistrés.
+Ouvrez la barre latérale et sélectionnez **Signets**. Le nombre à côté du lien indique combien de signets vous avez enregistrés.
 
-La page Signets affiche d’abord les éléments enregistrés le plus récemment. Chaque ligne indique le type d’élément et son auteur. Sélectionnez une ligne pour retrouver l’élément enregistré.
+La page Signets affiche d’abord les éléments enregistrés le plus récemment. Chaque ligne indique le type d’élément et son auteur. Sélectionnez une ligne pour revenir à l’élément enregistré dans vos signets.
 
 ![](bookmarks_page.png)
 
@@ -55,6 +55,6 @@ La page Signets affiche d’abord les éléments enregistrés le plus récemment
 
 ## Supprimer un signet
 
-Sur la page Signets, sélectionnez le bouton de suppression du signet à la fin d’une ligne. Vous pouvez aussi ouvrir le menu d’actions de l’élément et choisir **Supprimer le signet**.
+Sur la page Signets, sélectionnez le bouton de suppression du signet à la fin d’une ligne. Vous pouvez également ouvrir le menu d’actions de l’élément enregistré dans vos signets et sélectionner **Supprimer le signet**.
 
-La suppression d’un signet ne concerne que votre liste personnelle. Vous pouvez enregistrer l’élément à nouveau plus tard.
+La suppression d’un signet ne concerne que votre liste personnelle. Vous pouvez enregistrer à nouveau l’élément plus tard.

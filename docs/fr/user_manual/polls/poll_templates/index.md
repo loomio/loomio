@@ -1,6 +1,6 @@
 ---
 title: Modèles de sondage
-source_revision: 3a315412c646d254c8426be5c436a4e593f6011f
+source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
 source_file: docs/en/user_manual/polls/poll_templates/index.md
 translated:
   provider: codex/gpt-6.1-sol
@@ -19,18 +19,18 @@ sections:
   save-and-test-the-template: 8c48386c69ea309a
   manage-the-template-list: 0c124d7958c3f80a
 generated:
-  introduction: a44775cbee5af081
-  voting-methods-and-templates: 51f239214f34b292
-  use-a-template: abb19b99ed8a0351
-  who-can-manage-templates: 8b7a94799ce5955d
-  create-a-poll-template: 2724f84df46a357c
-  template-title-subtitle-and-help: de0d5b8d1d9e9d36
-  voting-method: d4035c964dc7d99b
-  example-title-details-and-tags: aa28219deb825aea
-  response-options: f73b8622cf9c9d3b
-  duration-and-settings: 17932de315e03ac8
-  save-and-test-the-template: ab4269cb1e361b55
-  manage-the-template-list: 884a5ba9e6104d99
+  introduction: 3b5c1e900db47812
+  voting-methods-and-templates: 3ae0a1ba990cb7b0
+  use-a-template: e6607e25b98dd0f4
+  who-can-manage-templates: d1bd889e236e1db2
+  create-a-poll-template: b25361f35e9e0e82
+  template-title-subtitle-and-help: 270850bbc3fbf63c
+  voting-method: 05b2f9a6490adf8a
+  example-title-details-and-tags: e5528669c9ec563b
+  response-options: 60c3084a72cb9aa0
+  duration-and-settings: 7aacad5031a2cb16
+  save-and-test-the-template: 94d4c482b1b79ba2
+  manage-the-template-list: aa8bbd115e5bb6e5
 title_source: 114cca246e357304
 title_generated: cd672e826498e8c7
 ---
@@ -39,33 +39,33 @@ title_generated: cd672e826498e8c7
 
 # Modèles de sondage
 
-Les modèles de sondage sont des points de départ réutilisables, proposés lorsque vous sélectionnez **Lancer un vote** ou **Nouveau sondage**. Un modèle associe une méthode de vote à des instructions, des options de réponse et des paramètres prédéfinis.
+Les modèles de sondage sont des points de départ réutilisables qui s’affichent lorsqu’une personne sélectionne **Lancer un vote** ou **Nouveau sondage**. Un modèle associe une méthode de vote à des consignes, des options de réponse et des paramètres prédéfinis.
 
-Cette page explique comment choisir les modèles disponibles pour un groupe ou en créer un pour votre propre processus. Pour choisir un modèle pour un vote précis, consultez [Propositions](../proposals/) ou [Sondages](../proposal_types/). Pour accompagner l’ensemble du processus, consultez [Prendre des décisions](/en/guides/making_decisions/).
+Utilisez cette page pour configurer les modèles disponibles dans un groupe ou en créer un pour votre propre processus. Pour choisir un modèle pour un vote particulier, consultez [Propositions](../proposals/) ou [Sondages](../proposal_types/). Pour faciliter un processus de décision complet, consultez [Prendre des décisions](/en/guides/making_decisions/).
 
 <!-- translation-section: voting-methods-and-templates -->
 
 ## Méthodes de vote et modèles
 
-La méthode de vote détermine comment les participants répondent et comment Loomio calcule le résultat. Il existe notamment Proposition, Choisir, Score, Allouer, Classer, Sondage horaire de réunion et STV.
+Une méthode de vote détermine comment les participants répondent et comment Loomio calcule le résultat. Les méthodes comprennent notamment Proposition, Choisir, Noter, Répartir, Classer, Sondage horaire et STV.
 
-Un modèle de sondage utilise l’une de ces méthodes et y ajoute des valeurs par défaut réutilisables. Par exemple, Vérification du ressenti, Avis, Consentement et Consensus sont des modèles différents fondés sur la méthode de vote Proposition. Leurs instructions et leurs options de réponse diffèrent, même si Loomio traite les votes de la même façon.
+Un modèle de sondage utilise l’une de ces méthodes et y ajoute des valeurs par défaut réutilisables. Par exemple, Prise de température, Avis, Consentement et Consensus sont différents modèles fondés sur la méthode de vote Proposition. Leurs consignes et leurs options de réponse diffèrent, même si Loomio traite leurs bulletins de vote de la même manière.
 
 <!-- translation-section: use-a-template -->
 
 ## Utiliser un modèle
 
-Lorsque vous lancez un vote, sélectionnez l’onglet **Proposition** ou **Sondage**, puis choisissez un modèle disponible pour le groupe.
+Lorsque vous lancez un vote, sélectionnez l’onglet **Proposition** ou **Sondage** et choisissez l’un des modèles disponibles dans le groupe.
 
 ![](proposal_templates_list.png)
 
-Le modèle fournit une introduction, un exemple de contenu, des options et des paramètres. Vérifiez et adaptez ces éléments à la décision avant de lancer le vote. Les modifications apportées au nouveau vote ne changent pas le modèle réutilisable.
+Le modèle fournit une introduction, un exemple de contenu, des options et des paramètres. Vérifiez et modifiez ces éléments en fonction de la décision à prendre avant de lancer le vote. Modifier le nouveau vote ne change pas le modèle réutilisable.
 
 <!-- translation-section: who-can-manage-templates -->
 
 ## Qui peut gérer les modèles
 
-Les administrateurs d’un groupe peuvent créer et gérer tous ses modèles de sondage. Ils peuvent activer **Les membres peuvent créer des modèles** dans **Paramètres de groupe** → **Permissions**. Les membres peuvent alors créer des modèles et gérer ceux dont ils sont les auteurs.
+Les administrateurs de groupe peuvent créer et gérer tous les modèles de sondage de leur groupe. Ils peuvent activer **Les membres peuvent créer des modèles** dans **Paramètres de groupe** → **Permissions**. Lorsque cette permission est activée, les membres peuvent créer des modèles et gérer ceux dont ils sont les auteurs.
 
 <!-- translation-section: create-a-poll-template -->
 
@@ -75,7 +75,7 @@ Ouvrez la liste des modèles et sélectionnez **Nouveau modèle**. Partez d’un
 
 ![](proposal_template_setting.png)
 
-Le formulaire du modèle définit les instructions et les valeurs par défaut proposées aux personnes qui lancent un vote.
+Le formulaire du modèle définit les consignes et les valeurs par défaut fournies aux personnes lorsqu’elles lancent un vote.
 
 ![](poll_template_new.png)
 
@@ -85,11 +85,11 @@ Le formulaire du modèle définit les instructions et les valeurs par défaut pr
 
 - **Titre du modèle** est le nom court affiché dans la liste des modèles.
 - **Sous-titre du modèle** explique en une phrase quand l’utiliser.
-- **Aide sur les modèles** apparaît dans le panneau d’information lorsque quelqu’un utilise le modèle. Expliquez son objectif, les règles que les participants doivent connaître et, si nécessaire, ajoutez des liens vers les politiques ou guides pertinents.
+- **Aide sur les modèles** apparaît dans le panneau d’information lorsqu’une personne utilise le modèle. Expliquez son objectif et les règles que les participants doivent connaître, et ajoutez des liens vers les politiques ou les guides pertinents.
 
 ![](template_WAAP_intro.png)
 
-Choisissez des noms simples et précis pour distinguer ce modèle des autres modèles du groupe.
+Utilisez des noms simples et précis qui distinguent le modèle des autres modèles du groupe.
 
 <!-- translation-section: voting-method -->
 
@@ -99,40 +99,40 @@ Choisissez ce que les participants doivent exprimer et comment le résultat doit
 
 ![](poll_type_voting_method.png)
 
-- **Proposition** : répondre à une affirmation en choisissant parmi des positions définies ;
-- **Choisir** : sélectionner une ou plusieurs options ;
-- **Score** : évaluer chaque option sur une échelle ;
-- **Allouer** : répartir un nombre limité de points ;
-- **Classer** : classer les options par ordre de préférence ;
-- **Sondage horaire de réunion** : indiquer ses disponibilités ; et
-- **STV** : classer des candidats dans le cadre d’une élection proportionnelle à plusieurs sièges.
+- **Proposition** : répondre à un énoncé en utilisant des positions définies ;
+- **Choisir** : sélectionner une ou plusieurs options ;
+- **Score** : évaluer chaque option sur une échelle ;
+- **Allouer** : répartir un nombre limité de points ;
+- **Classer** : ranger les options par ordre de préférence ;
+- **Sondage horaire** : indiquer les disponibilités ; et
+- **STV** : classer les candidats dans une élection proportionnelle à plusieurs sièges.
 
-Changer de méthode de vote modifie les champs et le calcul du résultat disponibles dans le modèle.
+Changer la méthode de vote modifie les champs et le calcul du résultat disponibles dans le modèle.
 
 <!-- translation-section: example-title-details-and-tags -->
 
-### Exemple de titre, de détails et d’étiquettes
+### Exemples de titre, de détails et de tags
 
-Fournissez un exemple de contenu pour aider l’auteur à formuler le vote. Ces valeurs sont copiées dans une nouvelle proposition ou un nouveau sondage et peuvent être modifiées avant son lancement.
+Fournissez un exemple de contenu qui aide l’auteur à formuler le vote. Ces valeurs sont copiées dans une nouvelle proposition ou un nouveau sondage et peuvent être modifiées avant son lancement.
 
 ![](template_WAAP_details.png)
 
-Utilisez des invites plutôt qu’un contenu fixe si chaque utilisation demande un titre ou des détails différents. Ajoutez des étiquettes de catégorie par défaut uniquement si elles s’appliquent à chaque utilisation du modèle.
+Utilisez des consignes plutôt qu’un contenu fixe lorsque chaque utilisation nécessite un titre ou des détails différents. Ajoutez des tags de catégorie par défaut uniquement s’ils s’appliquent à chaque utilisation du modèle.
 
 <!-- translation-section: response-options -->
 
 ### Options de réponse
 
-Des méthodes comme Proposition et Choisir permettent de configurer les options de réponse. Sélectionnez l’icône en forme de crayon à côté d’une option pour modifier :
+Les méthodes telles que Proposition et Choisir vous permettent de configurer les options de réponse. Sélectionnez l’icône de crayon à côté d’une option pour modifier :
 
-- **Nom de l’option** : le libellé court de la réponse ;
-- **Icône** : son repère visuel ;
-- **Signification** : ce qu’exprime le choix de cette option ; et
-- **Invite de raison** : la question affichée lorsqu’une personne explique sa réponse.
+- **Nom de l’option** : le libellé court de la réponse ;
+- **Icône** : son repère visuel ;
+- **Signification** : ce que le choix de l’option exprime ; et
+- **Invite de raison** : la question affichée lorsqu’une personne explique sa réponse.
 
 ![](poll_type_edit_option.png)
 
-Définissez les options de façon à ce que les participants puissent les distinguer sans avoir à deviner. Leur signification doit correspondre aux règles de décision réellement utilisées par votre groupe.
+Définissez les options pour que les participants puissent les distinguer sans avoir à deviner leur sens. Les significations doivent correspondre aux règles de décision que votre groupe utilise réellement.
 
 <!-- translation-section: duration-and-settings -->
 
@@ -142,29 +142,29 @@ Définissez une durée par défaut adaptée à la plupart des utilisations du mo
 
 ![](poll_type_duration.png)
 
-D’autres paramètres par défaut peuvent régir la visibilité des résultats, le vote anonyme, le [vote pondéré](../weighted_voting/), l’obligation de justifier son vote, les rappels, le quorum et les fonctions propres à chaque méthode. Consultez [Paramètres des propositions et des sondages](../settings/) pour connaître leurs effets.
+D’autres paramètres par défaut peuvent déterminer la visibilité des résultats, le vote anonyme, le [vote pondéré](../weighted_voting/), l’obligation de fournir une raison du vote, les rappels, le quorum et le fonctionnement propre à chaque méthode. Consultez [Paramètres des propositions et des sondages](../settings/) pour connaître leurs effets.
 
 <!-- translation-section: save-and-test-the-template -->
 
 ### Enregistrer et tester le modèle
 
-Après avoir enregistré le modèle, créez un brouillon de vote à partir de celui-ci. Vérifiez que son introduction, ses invites, ses options et ses paramètres par défaut sont compréhensibles pour une personne qui ne l’a pas créé. Ce brouillon permet aussi de vérifier que la méthode de vote choisie produit le résultat attendu par le groupe.
+Après l’enregistrement, créez un brouillon de vote à partir du modèle. Vérifiez que son introduction, ses consignes, ses options et ses valeurs par défaut sont compréhensibles pour une personne qui ne l’a pas créé. Créer un brouillon permet aussi de confirmer que la méthode de vote choisie produit le résultat attendu par le groupe.
 
 <!-- translation-section: manage-the-template-list -->
 
 ## Gérer la liste des modèles
 
-Utilisez le menu d’actions à côté d’un modèle pour :
+Utilisez le menu d’actions à côté d’un modèle pour :
 
-- **Modifier** son contenu réutilisable et ses paramètres par défaut ;
-- **Déplacer** le modèle à une autre position dans la liste ;
-- **Cacher** le modèle aux personnes qui lancent un vote ; ou
-- **Supprimer** un modèle personnalisé devenu inutile.
+- **Modifier** son contenu réutilisable et ses valeurs par défaut ;
+- **Déplacer** le modèle à une autre position dans la liste ;
+- **Cacher** le modèle aux personnes qui lancent des votes ; ou
+- **Supprimer** un modèle personnalisé qui n’est plus nécessaire.
 
 ![](template_manage.png)
 
-Sélectionnez **Afficher les modèles cachés** pour examiner ou rétablir les modèles cachés. Les modèles par défaut peuvent être cachés ou adaptés au groupe, mais ils ne peuvent pas être supprimés.
+Sélectionnez **Afficher les modèles cachés** pour consulter ou rétablir les modèles cachés. Les modèles par défaut peuvent être cachés ou adaptés au groupe, mais ne peuvent pas être supprimés.
 
 ![](template_manage_settings.png)
 
-La modification d’un modèle ne change pas les propositions ou sondages déjà lancés à partir de celui-ci.
+Modifier un modèle ne change pas les propositions ou les sondages déjà lancés à partir de celui-ci.

@@ -1,10 +1,10 @@
 ---
 title: En cours
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/guides/facilitators_guide/underway/index.md
+source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
+source_file: docs/en/guides/facilitators_guide/underway/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-30'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 40747900997bde52
   where-are-we-on-the-map: f20132cc4da45a71
@@ -19,16 +19,16 @@ sections:
   facilitation-interventions: c253f63094ef75de
 generated:
   introduction: c7d643180bed6202
-  where-are-we-on-the-map: 3bdde136d9471fc5
-  the-art-of-noticing: fa7c11c902d35054
-  hearing-diverse-voices: e99dde5c394d3864
-  counter-cognitive-bias: a89f82bbde2fb6e0
-  balancing-divergent-convergent: 1e3da2946af5ccd6
-  working-with-scope: 0bf4d61c263b665e
-  a-series-of-small-yes-s: 210a159a36f55807
-  pacing-timing: ddc4d488adc5505e
-  managing-the-attention-economy: d2224eefdef532d3
-  facilitation-interventions: 1bbe7909c08f35bc
+  where-are-we-on-the-map: 883e4ba62cbf33f8
+  the-art-of-noticing: b8206d0839d374aa
+  hearing-diverse-voices: ad15b12f0c4df702
+  counter-cognitive-bias: 757fa4cc9a034d0f
+  balancing-divergent-convergent: d4b11ec5d4180f3a
+  working-with-scope: ce13dbfbddbc695a
+  a-series-of-small-yes-s: e9dc15c4b82453a2
+  pacing-timing: d5d490f4edff6ca3
+  managing-the-attention-economy: b7ce329a1c1baadb
+  facilitation-interventions: 344926b0d815f613
 title_source: 1ecd2476edfd341d
 title_generated: 797f5dcd0217e2b9
 ---
@@ -41,217 +41,217 @@ title_generated: 797f5dcd0217e2b9
 
 <!-- translation-section: where-are-we-on-the-map -->
 
-## Où en sommes-nous dans le processus ?
+## Où en sommes-nous dans le parcours ?
 
-Les personnes participent avec plus d’assurance lorsqu’elles peuvent se situer dans un calendrier ou un ordre du jour. Elles veulent savoir ce qu’elles font maintenant, ce qui vient ensuite et ce qu’elles ont déjà accompli. Une vue d’ensemble du processus les aide à comprendre comment contribuer efficacement.
+Les personnes se sentent plus en confiance et mieux accompagnées lorsqu’elles peuvent se repérer dans un calendrier ou un ordre du jour. Elles veulent savoir ce qu’elles font maintenant, ce qui vient ensuite, et se rappeler ce qu’elles ont déjà accompli. Comprendre le déroulement général du processus les aide à savoir comment contribuer efficacement.
 
-Par exemple, si une séance de questions-réponses est prévue plus tard, les personnes seront plus disposées à garder leurs questions pendant une présentation. Si une phase d’exploration précède clairement une phase de convergence, elles éviteront de proposer des solutions trop tôt. Chacun doit savoir quel type de contribution est attendu et à quel moment.
+Par exemple, si elles savent qu’un temps de questions-réponses est prévu plus tard, elles seront plus disposées à garder leurs questions pendant une présentation. Si une phase de divergence puis une phase de convergence sont clairement annoncées, elles éviteront de passer trop vite aux solutions. Les personnes doivent savoir quel type de contribution est attendu de leur part, et à quel moment.
 
-Définir assez précisément le processus pour pouvoir l’expliquer pousse aussi les personnes qui l’animent à réfléchir à l’ensemble du parcours. Cela les aide à vérifier que chaque étape a une raison d’être et contribue à un tout cohérent. Un processus bien animé suit une progression logique.
+Définir le parcours assez précisément pour pouvoir le communiquer oblige aussi les personnes qui facilitent à réfléchir à l’ensemble du cheminement. Cela les aide à vérifier que chaque étape a une fonction et contribue à un ensemble cohérent. Un processus bien facilité suit une progression logique.
 
 Sur Loomio
 
-* Une décision sur Loomio suit déjà une progression logique simple : réunir les personnes (ouvrir et inviter), discuter (diverger), faire une proposition (converger), décider et agir (conclure).
-* Beaucoup de personnes utilisent Loomio dans le cadre d’un processus dont les étapes sont clairement définies, comme une consultation en plusieurs phases.
-* Certains outils aident à rendre ce parcours visible, notamment la description du groupe et les dates limites des propositions. Ils permettent de donner davantage de contexte aux personnes qui participent.
+* Une décision sur Loomio suit déjà une progression logique simple (ce qui explique son fonctionnement) : rassembler (ouvrir/inviter), discuter (divergence), proposer (convergence), décider et agir (conclure).
+* De nombreux utilisateurs de Loomio emploient l’outil dans le cadre de parcours explicitement définis, comme un processus de consultation en plusieurs étapes.
+* Nous proposons des outils de facilitation pour rendre le parcours visible aux utilisateurs, comme le champ de description du groupe et les dates limites des propositions. Vous pouvez les utiliser en amont pour donner davantage de contexte aux participants.
 
 <!-- translation-section: the-art-of-noticing -->
 
-## L’art de l’observation
+## L’art d’observer
 
-Observer est sans doute la compétence la plus importante pour animer un groupe. L’observation aide à déterminer quand intervenir, comment répondre et quelles contributions solliciter. Elle aide aussi le groupe à prendre conscience de son propre fonctionnement. L’animation apporte une personne qui prête attention à ce qui se passe et agit en conséquence, pendant que les autres se concentrent sur le sujet ou sur leurs propres priorités.
+L’observation est probablement la compétence la plus importante en facilitation. La personne qui facilite s’appuie sur ses observations pour déterminer les interventions ou les réponses nécessaires, solliciter les contributions appropriées et aider le groupe à observer son propre fonctionnement. L’intérêt de la facilitation est qu’une personne prête attention à ce qui se passe et agit en conséquence, tandis que les autres peuvent se concentrer sur un contenu précis ou leurs propres objectifs.
 
-Une observation efficace repose sur de bonnes informations et sur la capacité de les interpréter avec sensibilité. Les personnes qui animent un groupe parlent souvent de « lire » la salle : réactions émotionnelles, tensions et rapports de pouvoir. Elles ont besoin de moyens efficaces pour repérer ces signaux.
+Une observation efficace repose à la fois sur des informations pertinentes et sur la sensibilité et les compétences nécessaires pour les interpréter. De nombreuses personnes qui facilitent parlent de « lire » une salle : réactions émotionnelles, tensions, rapports de pouvoir. Elles ont besoin de moyens efficaces pour repérer ces signaux.
 
 Sur Loomio
 
-* Plusieurs fonctionnalités facilitent l’observation. L’une des plus utiles consiste à suivre l’évolution du graphique des réponses à une proposition.
-* Le logiciel permet de voir qui a participé ou non, quels sujets sont soulevés et qui a accepté ou non son invitation à rejoindre le groupe.
-* Sur Loomio, une seule personne peut suivre des dizaines de discussions à la fois, voir clairement ce qui s’y dit et agir en conséquence.
-* Les échanges en ligne peuvent rendre explicite ce qui resterait implicite et donc plus difficile à remarquer.
-* L’écrit aide à nommer ce qui a été observé et à expliquer une intervention. Vous pouvez, par exemple, citer les mots exacts d’une personne et expliquer ce qu’ils révèlent. Vous pouvez aussi relever plusieurs citations dans une discussion pour faire ressortir des thèmes ou des désaccords naissants.
-* Il est plus facile d’observer quand le rythme ralentit. C’est l’un des avantages de Loomio : les échanges asynchrones peuvent être lus à votre rythme. Vous pouvez aussi suivre leur évolution dans le temps en revenant directement aux discussions précédentes.
-* Plusieurs discussions peuvent avancer en même temps. Vous pouvez donc ouvrir une discussion sur la manière dont les échanges se déroulent, parfois appelée « méta-discussion » ou « chapeau bleu », tout en poursuivant les discussions principales. Le groupe dispose ainsi d’un espace pour observer son fonctionnement sans ralentir le processus.
+* De nombreuses fonctionnalités aident à observer ce qui se passe — la principale est probablement le suivi de l’évolution du diagramme circulaire d’une proposition.
+* Le logiciel repère certains éléments : qui a déjà participé ou non, quels sujets sont abordés, qui a accepté ou non son invitation au groupe, etc.
+* Sur Loomio, une seule personne peut suivre des dizaines de discussions en même temps, voir clairement ce qui est partagé et agir en conséquence.
+* Les échanges en ligne peuvent rendre explicite ce qui était implicite, et donc plus facile à observer.
+* Communiquer par écrit permet de nommer précisément ce qui est observé et d’expliquer pourquoi une action est entreprise en réponse. Par exemple, vous pouvez citer les mots exacts d’une personne et lui renvoyer ce qu’ils révèlent. Vous pouvez aussi faire de même à l’échelle d’une discussion entière, en sélectionnant plusieurs citations et en repérant des thèmes ou des conflits émergents.
+* Il est beaucoup plus facile d’observer lorsque vous ralentissez les échanges. C’est l’un des grands avantages de Loomio : une communication asynchrone que vous pouvez lire à votre rythme. Cela permet aussi de suivre les évolutions dans le temps en vous référant directement aux discussions passées.
+* Comme plusieurs discussions peuvent avoir lieu simultanément, vous pouvez mener une « métadiscussion » (aussi appelée « chapeau bleu », ou discussion sur la discussion) tout en faisant avancer les discussions principales. Vous disposez ainsi d’un espace collectif pour pratiquer l’observation sans ralentir le processus.
 
 <!-- translation-section: hearing-diverse-voices -->
 
-## Faire entendre des voix diverses
+## Entendre des voix diverses
 
-Dans notre société, l’histoire, les rapports de pouvoir, la culture et la psychologie se conjuguent pour donner plus de place à certaines voix qu’à d’autres. Cette dynamique agit à tous les niveaux, de nos croyances les plus profondes à notre système politique et à nos lois.
+Dans notre société, l’histoire, les rapports de pouvoir, la culture et la psychologie se combinent pour amplifier certaines voix et en étouffer d’autres. Cela se manifeste à tous les niveaux de l’expérience, de nos croyances inconscientes les plus profondes à notre système politique et à nos lois.
 
-Les meilleures idées ne viennent pourtant pas toujours des personnes qui parlent le plus fort. L’animation peut aider à réduire ces biais. Pour favoriser la justice sociale, l’efficacité du groupe et la qualité des décisions, il faut prendre conscience des dynamiques auxquelles nous sommes collectivement confrontés.
+Les meilleures idées ne viennent pourtant pas toujours des personnes qui parlent le plus fort, et la facilitation a pour rôle de contrer ces biais. Il est important de prendre conscience des dynamiques auxquelles nous sommes collectivement confrontés lorsque nos objectifs sont la justice sociale, l’efficacité du groupe et la qualité des décisions.
 
-> <img style="border-radius: 100%; float: right; margin-left: 0.5em; max-width: 96px; " src="../rich_200.png"> Si vous voulez innover, faites une place à différents points de vue. C’est aussi nécessaire pour que chaque membre d’une équipe puisse agir pleinement. De nombreux facteurs culturels et techniques favorisent certaines voix aux dépens d’autres. Vous pouvez adopter diverses pratiques pour contrer ce biais de manière systématique. En prendre conscience est déjà un bon point de départ. — Richard Bartlett
+> <img style="border-radius: 100%; float: right; margin-left: 0.5em; max-width: 96px; " src="../rich_200.png"> Si vous voulez innover, vous devez faire une place à des points de vue différents — c’est aussi ce qu’il faut faire pour que chaque personne de votre équipe ait les moyens d’agir. Toutes sortes de facteurs culturels et techniques favorisent certaines voix au détriment d’autres. De nombreuses pratiques permettent de remettre systématiquement en question ce biais, mais en prendre conscience est déjà un bon point de départ. — Richard Bartlett
 
-Nous vivons chacun à travers notre propre conscience et avons tendance à oublier que les autres perçoivent le monde différemment. Même dans un groupe qui semble homogène, les perspectives, les rythmes et les préférences varient beaucoup. Reconnaître pleinement que les autres sont différents de soi est un enjeu majeur du développement personnel.
+Nous faisons l’expérience du monde à travers notre propre conscience, ce qui nous conduit souvent à oublier que les autres le vivent différemment. Même dans un groupe apparemment homogène, il existe une grande diversité de points de vue, de rythmes et de préférences. Intégrer cette réalité — les autres sont différents de moi — est un enjeu central du développement personnel.
 
-Aucune méthode ne convient à tout le monde. Chaque mode d’échange donne plus de place à certaines voix et moins à d’autres, ou fait ressortir différents aspects d’une même personne. Il faut donc varier les approches pour permettre à des personnes diverses d’apporter le meilleur de leurs contributions.
+Aucune approche ne convient à tout le monde. Chaque mode d’interaction favorise certaines voix et en atténue d’autres, ou fait ressortir différentes tendances chez une même personne. Il est donc nécessaire de varier les approches pour permettre à des voix diverses d’apporter le meilleur de leurs contributions.
 
-> <img style="border-radius: 100%; float: right; margin-left: 0.5em; max-width: 96px; " src="../silvia_200.png"> Veillez à tenir compte de différentes façons d’apprendre. La métaphore de la tête, du cœur et des mains offre un repère simple. Les personnes qui apprennent par la tête ont besoin de faits et d’informations détaillées. Celles qui apprennent par le cœur sont sensibles aux récits et ont besoin d’un lien émotionnel avec le travail. Apprendre par les mains, c’est agir et faire des choses concrètes. — Silvia Zuur
+> <img style="border-radius: 100%; float: right; margin-left: 0.5em; max-width: 96px; " src="../silvia_200.png"> Vérifiez que vous prenez en compte différentes façons d’apprendre. La métaphore de la tête, du cœur et des mains est un moyen simple de le faire. Les personnes qui apprennent avec la tête ont besoin de faits et d’informations détaillées. Celles qui apprennent avec le cœur s’appuient sur les récits. Elles ont besoin d’un lien émotionnel avec le travail. Apprendre avec les mains consiste à faire et à passer à l’action. — Silvia Zuur
 
-Pour faire émerger des voix diverses et les relier entre elles, proposez plusieurs modes d’échange. Vous répondrez ainsi à différents besoins et préférences tout en donnant à chacun davantage de possibilités de s’exprimer.
+L’une des meilleures approches pour faire émerger et relier des voix diverses consiste à proposer différents modes d’interaction. Ils répondent à des besoins et à des préférences variés et donnent à chacun des possibilités de communication plus équitables.
 
-Voici quelques éléments classiques pour tenir compte de la diversité des modes de communication dans un travail collectif :
+Voici quelques éléments classiques pour concevoir des échanges collaboratifs qui tiennent compte de cette diversité :
 
-* **Taille du groupe** — réflexion individuelle, binômes, petits groupes, grands groupes, échanges entre deux personnes, d’une personne vers plusieurs ou de plusieurs personnes entre elles.
-* **Moyen d’expression** — écriture, dessin, vidéo, chant, danse, schémas, équations, symboles, récits, larmes, rires, débat, etc.
-* **Règles de discussion** — tours de parole (écouter chaque personne une fois avant de poursuivre), limitation des prises de parole (attendre que deux autres personnes aient parlé avant de reprendre la parole), bâton de parole (parler uniquement quand on le tient, sans interrompre), interventions limitées dans le temps (une minute par personne), interventions sans limite de temps (laisser une personne parler aussi longtemps qu’elle le souhaite et l’écouter attentivement), suivi de la participation (comparer, par exemple, le temps de parole des femmes et des hommes), moments de silence entre les interventions (pour réfléchir et prendre du recul).
-* **Accueillir le silence** *Le silence n’est gênant que si vous le laissez devenir gênant. Il donne aux personnes le temps de réfléchir. — Silvia Zuur*
+* **Taille du groupe** — réflexion individuelle, binômes, petit groupe, grand groupe, échanges entre deux personnes, d’une personne vers plusieurs, ou entre plusieurs personnes.
+* **Moyen d’expression** — écriture, dessin, vidéo, chant, danse, organigrammes, équations, symboles, récits, larmes, rires, débat, etc.
+* **Protocoles de discussion** — tours de parole (écouter chaque personne une fois avant de poursuivre), limitation des prises de parole (vous ne pouvez reprendre la parole qu’après deux autres personnes), bâton de parole (parler uniquement lorsque vous avez le bâton, sans interruption), contributions à durée limitée (vous pouvez parler pendant une minute seulement), contributions sans limite de durée (vous pouvez garder la parole aussi longtemps que nécessaire, avec une écoute attentive de tous), suivi des contributions (temps de parole des femmes par rapport à celui des hommes, etc.), temps de silence entre les prises de parole (pour assimiler et réfléchir).
+* **Accueillez le silence** *Le silence n’est gênant que si vous le laissez le devenir. Il donne aux personnes l’occasion de réfléchir. — Silvia Zuur*
 
 Sur Loomio
 
-* Loomio a toujours été conçu pour « faire entendre toutes les voix », y compris celles des personnes qui ne peuvent pas être présentes, qui parlent moins ou qui manquent de temps.
-* À l’écrit, toutes les voix ont à peu près le même « volume » et le même « rythme ». Les échanges écrits et asynchrones réduisent ainsi certaines inégalités de prise de parole.
-* Une proposition fonctionne comme un tour de parole : elle aide chaque membre du groupe à donner son avis, s’il le souhaite, sur un pied d’égalité.
-* Loomio permet de partager plusieurs types de contenus (liens, vidéos, images, schémas et documents à l’appui), adaptés à différents modes de communication.
-* Les outils de Loomio sont simples, mais une animation active et un groupe habitué à travailler ensemble peuvent appliquer des règles de discussion convenues. Par exemple, chaque personne peut attendre que les autres aient participé avant de publier une deuxième fois.
-* Loomio offre des outils souples pour les échanges dans les petits et les grands groupes, grâce aux groupes principaux et aux sous-groupes. Certaines consultations de grande ampleur réunissent les contributions de plusieurs petits groupes dans une conclusion commune.
-* Les personnes qui ont besoin de réfléchir seules peuvent prendre du temps, puis revenir partager un commentaire plus long ou un lien vers un document. Elles choisissent ainsi elles-mêmes comment alterner réflexion individuelle et échanges collectifs.
-* Les fonctionnalités d’accessibilité et les traductions de Loomio permettent à des personnes aux besoins très différents de participer à une même discussion sur un pied d’égalité. La technologie peut ainsi rendre possible une participation équitable qu’il serait très difficile d’obtenir en personne.
-* Si une personne contribue beaucoup plus que les autres, il est techniquement possible de passer ses messages en faisant défiler la page. En personne, elle pourrait dominer l’échange. Toutefois, de très longs messages peuvent aussi nuire à l’équilibre d’une discussion sur Loomio.
+* Loomio a toujours été conçu pour « entendre toutes les voix », y compris celles des personnes qui ne peuvent pas être présentes physiquement, qui sont plus réservées, qui sont occupées, etc.
+* À l’écrit, chaque voix a plus ou moins le même « volume » et la même « vitesse ». La communication écrite asynchrone contribue à mettre les personnes sur un pied d’égalité.
+* La fonctionnalité de proposition constitue essentiellement un « tour », qui aide les groupes à donner à chaque personne la possibilité de s’exprimer, si elle le souhaite, sur un pied d’égalité.
+* Loomio permet d’utiliser plusieurs médias (liens, vidéos, images, schémas, éléments à l’appui), adaptés à différents styles de communication.
+* Loomio reste un outil assez simple, mais une facilitation active et un groupe expérimenté permettent d’appliquer « manuellement » des protocoles de discussion, en s’appuyant sur des habitudes collectives ou des règles convenues (par exemple, une discussion où chaque personne ne publie qu’une fois tant que toutes les autres n’ont pas participé).
+* Loomio propose des outils souples pour les échanges en petits et grands groupes, grâce aux groupes parents et aux sous-groupes. Certains grands processus de consultation ont mobilisé plusieurs petits groupes, dont les contributions ont ensuite été synthétisées dans une conclusion plus globale.
+* Les personnes qui souhaitent réfléchir individuellement peuvent prendre du recul, organiser leurs idées, puis revenir partager un commentaire plus long ou un lien vers un document. C’est un exemple d’articulation entre communication individuelle et collective que chacun peut choisir selon ses besoins.
+* Les fonctionnalités d’accessibilité et les traductions multilingues de Loomio permettent à des personnes ayant des besoins très différents de participer sur un pied d’égalité à une même discussion. C’est un exemple de la manière dont la technologie peut permettre une participation équitable qu’il serait très difficile d’obtenir en personne.
+* Si quelqu’un contribue plus que les autres (parle trop), vous pouvez simplement faire défiler la page pour passer ses contributions, alors qu’en personne ce comportement peut dominer entièrement les échanges. Cependant, les personnes qui publient des « pavés de texte » peuvent tout de même nuire à l’équilibre d’une discussion sur Loomio.
 
 <!-- translation-section: counter-cognitive-bias -->
 
-## Réduire les biais cognitifs
+## Contrer les biais cognitifs
 
-Au fil de millions d’années, le cerveau humain a appris à combiner une réflexion rapide et suffisamment efficace avec une analyse plus lente et approfondie, qui demande davantage d’efforts. Nous pouvons ainsi nous appuyer la plupart du temps sur nos intuitions, nos raccourcis mentaux et nos généralisations, puis analyser plus en profondeur quand c’est nécessaire.
+Le cerveau humain a évolué pendant des millions d’années pour trouver un équilibre entre une pensée rapide, efficace et « suffisante », et une analyse approfondie, lente et coûteuse en ressources. Cela nous permet d’utiliser le plus souvent nos instincts, des heuristiques et des généralisations comme solutions rapides et peu coûteuses, et de mener une analyse approfondie lorsque c’est nécessaire.
 
-Mais ces raccourcis nous induisent parfois en erreur. Certains biais connus de la pensée humaine peuvent empêcher de prendre les meilleures décisions. La situation se complique encore au sein d’un groupe. Il faut garder ces dynamiques à l’esprit.
+Mais il nous arrive de nous tromper. Il existe en effet des « bugs » bien connus dans le fonctionnement de la cognition humaine, qui peuvent empêcher de prendre les meilleures décisions. La situation se complique encore dans un groupe. Nous devons prendre conscience de ces dynamiques.
 
-Il existe de nombreux [biais cognitifs](https://en.wikipedia.org/wiki/List_of_cognitive_biases), qui peuvent tous influencer les décisions et la collaboration. L’animation peut aider le groupe à les reconnaître et à choisir comment y répondre. Vous pouvez, par exemple, lui demander quand il vaut mieux aller vite et quand il vaut mieux privilégier la précision.
+Il existe une grande [variété de biais cognitifs](https://en.wikipedia.org/wiki/List_of_cognitive_biases) (cette liste mérite d’être lue), qui peuvent tous avoir des effets sur la prise de décision et la collaboration. La facilitation peut aider à y faire face, à prendre conscience de leur existence et à choisir activement comment les gérer. Par exemple, en demandant dans quelles situations il est plus important d’avancer vite, et dans lesquelles il est plus important d’être précis.
 
-Des processus et des échanges structurés peuvent réduire les biais cognitifs et améliorer la qualité des décisions. Suivre un processus plutôt que la voie la plus facile aide à repérer les erreurs de raisonnement. Il arrive que les personnes qui animent un groupe proposent une démarche exigeante, même si elle suscite des résistances, pour aider le groupe à sortir de ses habitudes. Cet effort peut lui permettre d’atteindre ses objectifs, malgré un inconfort passager.
+Structurer les processus et la communication est un moyen efficace de contrer les biais cognitifs et d’améliorer la qualité des décisions. L’effort nécessaire pour suivre un processus plutôt que la « voie de la moindre résistance » peut mettre en évidence des erreurs de raisonnement et des biais. Les personnes qui facilitent insistent parfois sur des démarches qui semblent difficiles ou suscitent des résistances, précisément parce qu’elles demandent de sortir des schémas habituels. Cette discipline peut aider les groupes à atteindre leurs objectifs de fond, ce qui peut justifier un inconfort temporaire.
 
-Voici quelques méthodes qui peuvent atténuer les biais cognitifs :
+Voici quelques exemples de processus qui peuvent atténuer les biais cognitifs :
 
-* [Les chapeaux de De Bono](http://www.debonoforschools.com/asp/six_hats.asp) : les personnes portent symboliquement des chapeaux de couleurs différentes pour prendre du recul par rapport à leurs opinions et essayer d’autres modes de pensée.
-* Les listes de vérification : les habitudes de pensée peuvent nous faire manquer même des éléments évidents, surtout dans un domaine familier. Une liste aide à repérer ces oublis.
-* Les cinq pourquoi : demander « pourquoi » une ou deux fois peut donner l’impression d’avoir trouvé la réponse avant d’avoir atteint la cause profonde du problème. Répéter la question cinq fois aide à aller au fond des choses.
-* Les modèles d’analyse : des exercices comme [l’analyse SWOT](https://en.wikipedia.org/wiki/SWOT_analysis), le [canevas de modèle économique](https://en.wikipedia.org/wiki/Business_Model_Canvas) et d’autres méthodes structurées de collecte d’informations peuvent guider l’analyse et révéler des hypothèses implicites.
+* [Les chapeaux de De Bono](http://www.debonoforschools.com/asp/six_hats.asp) : des chapeaux de différentes couleurs que les participants peuvent porter métaphoriquement pour prendre du recul par rapport à leurs propres opinions et essayer différentes façons de penser.
+* Listes de vérification : nos habitudes de pensée peuvent nous faire manquer des éléments pourtant évidents, surtout dans les domaines qui nous sont très familiers. Une liste de vérification peut donc aider à éliminer les erreurs.
+* Les cinq pourquoi : demander pourquoi une ou deux fois seulement peut vous donner l’impression d’avoir trouvé la conclusion avant d’avoir atteint la cause profonde du problème. Poser la question cinq fois aide généralement à aller au fond des choses.
+* Modèles mentaux : des exercices comme l’[analyse SWOT](https://en.wikipedia.org/wiki/SWOT_analysis), le [canevas de modèle économique](https://en.wikipedia.org/wiki/Business_Model_Canvas), ou d’autres exercices structurés de collecte d’informations peuvent vous aider à mener une analyse plus claire et à mettre au jour les présupposés.
 
 Sur Loomio
 
-* Des informations et des contributions variées peuvent remettre en question les hypothèses et les biais. Ce principe fait partie de la conception de Loomio : en donnant à davantage de personnes la possibilité de contribuer à une discussion sur un pied d’égalité, le groupe peut échapper à la pensée de groupe.
-* Loomio permet aux personnes participantes d’exprimer un désaccord constructif. Pouvoir exprimer un désaccord sans crainte, et savoir qu’il sera pris en compte, est essentiel à une culture de l’esprit critique.
-* Les échanges écrits et asynchrones ralentissent la conversation. Chacun a ainsi plus de temps pour examiner ses idées et éviter certaines erreurs de raisonnement.
-* Loomio propose un processus en partie structuré qui favorise des décisions réfléchies. Il peut servir à de nombreux types de processus. Même une structure légère ouvre de nouvelles possibilités dans une discussion.
+* Des informations et des contributions diverses peuvent remettre en question les présupposés ou les biais. Cela fait partie de la conception de Loomio : en permettant à davantage de voix de contribuer à une discussion de manière plus équitable, vous pouvez échapper à la « pensée de groupe ».
+* Loomio permet aux participants d’exprimer un désaccord constructif. Pouvoir exprimer un désaccord sans crainte, et voir ce désaccord reconnu, est essentiel à une culture de pensée critique.
+* La communication écrite asynchrone ralentit les échanges et permet de les examiner plus attentivement. Elle donne aux personnes le temps de réfléchir davantage et d’éviter des erreurs de raisonnement.
+* Loomio invite les personnes à suivre un processus partiellement structuré qui favorise des décisions plus réfléchies. Loomio peut servir à une grande variété de processus, mais le simple fait d’apporter *un peu* de structure à une discussion ouvre d’autres possibilités.
 
 <!-- translation-section: balancing-divergent-convergent -->
 
-## Trouver l’équilibre entre divergence et convergence
+## Équilibrer divergence et convergence
 
-Le « diamant » de la divergence et de la convergence représente la forme d’une conversation. Elle s’élargit d’abord pour accueillir des idées, des informations et des points de vue différents, puis se resserre progressivement. Choisir le bon moment pour passer d’une phase à l’autre est essentiel pour animer des discussions collectives productives qui débouchent sur une action.
+Le « losange » de la divergence et de la convergence représente la forme d’une conversation. Celle-ci s’élargit d’abord pour laisser place aux idées, aux informations et aux différents points de vue, puis se resserre progressivement. Choisir le bon moment pour cette transition est essentiel pour faciliter efficacement des discussions collaboratives, productives et orientées vers l’action.
 
 ![](../collaboration-process.png)
 
-Si la phase de divergence est omise ou interrompue trop tôt, le groupe manque d’informations, certaines personnes peuvent ne pas se sentir écoutées et de bonnes idées restent inexprimées. Si la convergence est omise ou arrive trop tard, la discussion peut se prolonger sans aboutir à une conclusion applicable. Les personnes participantes y consacrent alors de l’énergie sans obtenir de résultat.
+Si la divergence est omise ou interrompue trop tôt, les informations disponibles seront insuffisantes, certaines personnes risquent de ne pas se sentir écoutées et de bonnes idées resteront inexprimées. Si la convergence est omise ou intervient trop tard, la discussion peut se poursuivre indéfiniment sans aboutir à une conclusion permettant d’agir, épuisant les participants sans produire de résultats.
 
-Chaque étape du processus demande aussi une intervention au bon moment. La divergence comprend la présentation du sujet, sa clarification et la recherche d’idées. La convergence comprend l’analyse, la conclusion et l’engagement. Pour certaines discussions, il suffit de suivre ces grandes phases. Pour d’autres, il est utile de définir précisément chaque étape.
+Chaque sous-phase du processus global exige aussi de choisir le bon moment et la bonne intervention. La divergence comprend l’introduction, la clarification et la production d’idées. La convergence comprend l’analyse, la conclusion et l’engagement. Certaines discussions aboutissent en suivant ce losange de façon très souple, tandis que d’autres bénéficient d’un découpage précis de chaque phase et sous-phase.
 
-Dans un groupe, certaines personnes préfèrent généralement l’un de ces modes à l’autre. Le groupe a aussi ses propres tendances. Un déséquilibre peut se traduire par trop d’idées abstraites ou par une recherche de solutions trop rapide. L’animation aide chacun et le groupe entier à consacrer l’énergie nécessaire à chaque phase.
+Dans un groupe, les personnes ont généralement une préférence pour l’un ou l’autre mode, et le groupe dans son ensemble a aussi ses tendances collectives. Un déséquilibre peut se traduire par une exploration excessive des possibilités ou par un passage trop rapide aux solutions. La facilitation peut aider chaque personne et le groupe à consacrer une énergie adaptée aux différents modes.
 
 Sur Loomio
 
-* Le processus de base de Loomio guide les groupes à travers ces phases : la discussion favorise la divergence et les propositions favorisent la convergence. Le modèle du diamant a fortement inspiré la conception initiale de ce processus.
-* Loomio aide les groupes à suivre ce modèle avec souplesse. Une proposition destinée à faire converger les avis peut, par exemple, révéler un désaccord. Celui-ci apporte de nouvelles informations, qui permettent ensuite de formuler une meilleure proposition.
-* Des fonctionnalités simples soutiennent chaque phase. Les notifications envoyées aux membres du groupe au début d’une discussion encouragent l’exploration des idées. Les dates limites des propositions encouragent la participation à la convergence.
-* Pour faciliter la convergence, les personnes qui utilisent Loomio peuvent lancer une proposition. Un groupe qui utilise bien les propositions prend souvent des décisions plus efficacement. Conseiller à un groupe en difficulté de lancer davantage de propositions peut l’aider à avancer.
+* Le processus de base de Loomio guide les groupes à travers chaque phase : la discussion favorise la divergence et les propositions favorisent la convergence. Le modèle du losange a largement inspiré la conception initiale du processus de Loomio.
+* Loomio aide les groupes à utiliser le losange de manière dynamique. Par exemple, une tentative de convergence (une proposition) peut susciter une divergence plus approfondie (un désaccord), qui révèle ou clarifie des informations permettant une meilleure convergence (une proposition retravaillée).
+* Certaines fonctionnalités de base de Loomio soutiennent ces deux modes, comme les notifications envoyées aux membres du groupe lorsqu’une nouvelle discussion commence (pour susciter des contributions divergentes), et les dates limites des propositions (pour encourager la participation à la convergence).
+* Les utilisateurs de Loomio peuvent déjà faciliter la convergence avec les fonctionnalités existantes, notamment en lançant une proposition. Une bonne utilisation des propositions est l’un des signes les plus visibles d’un groupe Loomio efficace. Conseiller simplement aux utilisateurs de lancer davantage de propositions aide de nombreux groupes à surmonter leurs difficultés.
 
 <!-- translation-section: working-with-scope -->
 
-## Définir la portée du travail
+## Gérer le périmètre
 
-Une collaboration réussie dépend souvent de la capacité du groupe à traiter des sujets de taille adaptée, dans le bon ordre.
+Une collaboration réussie dépend souvent du découpage du travail en éléments de taille adaptée, abordés dans le bon ordre.
 
-Pour animer le groupe, vous pouvez adopter une approche de gestion de projet et vous poser les questions suivantes :
+Vous pouvez appliquer une logique de « gestion de projet » à la facilitation en préparant le processus à partir de questions comme celles-ci :
 
-* Quelles sont les dépendances ? Quel est le chemin critique ? Que faut-il faire d’abord pour pouvoir avancer sur le reste ?
-* Quels sont les points les plus importants ? Que peut-on laisser de côté ?
-* Quelle portée est réaliste à ce stade pour obtenir un résultat utile avec le temps, l’énergie et les informations disponibles ?
+* Quelles sont les dépendances (quel est le chemin critique, que faut-il faire d’abord pour permettre la suite) ?
+* Quels sont les éléments les plus importants sur lesquels se concentrer ? Que peut-on laisser de côté ?
+* Quel périmètre est-il possible de traiter à un moment donné pour aboutir à quelque chose d’utile avec le temps, l’énergie et les informations disponibles ?
 
-Il est important de ne pas vouloir tout traiter à la fois. Découpez plutôt le travail en étapes gérables. Une série de petites avancées peut mener à une conclusion plus ambitieuse. Mieux vaut souvent accomplir quelque chose de modeste mais utile que ne parvenir à aucune conclusion. À l’inverse, s’attarder trop sur les détails peut faire perdre de vue les questions essentielles.
+Il est important de ne pas essayer de tout résoudre d’un coup, mais de décomposer le travail en éléments gérables. Vous pouvez avancer vers une conclusion plus globale par une série de petites étapes. Il vaut souvent mieux accomplir quelque chose de modeste mais utile que ne parvenir à aucune conclusion. À l’inverse, vous pouvez aussi vous perdre dans les détails et manquer les enjeux majeurs.
 
-Dans une collaboration, personne ne sait exactement ce qui va émerger. Le périmètre doit donc évoluer avec la discussion. Déterminer si une nouvelle piste est une distraction ou une évolution demande du discernement. Trop de rigidité comme trop de souplesse peuvent nuire au travail. Souvent, la question est moins de savoir si un sujet est pertinent que de choisir le bon moment et le bon ordre pour l’aborder.
+Dans une collaboration, personne ne sait exactement ce qui va émerger. Le périmètre doit donc évoluer avec la discussion. Déterminer si l’exploration d’une nouvelle piste est une distraction ou une évolution pertinente demande du discernement. Trop de rigidité comme trop de souplesse peuvent nuire au processus. Souvent, la question n’est pas de savoir si un élément est pertinent, mais dans quel ordre et à quel moment l’aborder pour qu’il soit le plus constructif.
 
-> Si vous prévoyez une séance composée de plusieurs parties liées entre elles, chacune s’appuyant sur la précédente et menant à une conclusion qui bouleverse les perspectives, et que vous y parvenez, c’est remarquable. Mais, le plus souvent, une séance compliquée dépasse le temps prévu et risque de ne pas répondre aux attentes et aux besoins des personnes qui y participent. - Silvia Zuur
+> Si vous préparez une séance avec plusieurs parties liées entre elles, chacune s’appuyant sur la précédente et toutes menant à une conclusion qui transforme votre vie et bouleverse votre façon de penser, et que vous y parvenez, c’est remarquable. Mais le plus souvent, une séance compliquée dépasse le temps prévu et risque de ne pas répondre aux attentes et aux besoins des participants. - Silvia Zuur
 
 <!-- translation-section: a-series-of-small-yes-s -->
 
-## Une série de petits accords
-Regrouper trop de conversations ne fait qu’ajouter de la confusion. Décomposer le travail aide souvent les groupes qui rencontrent des difficultés. Quand une question semble insoluble, complexe ou conflictuelle, vous pouvez parfois la diviser en questions distinctes et chercher un consensus sur chacune, en commençant par les points les plus faciles à approuver. Vous pourrez ensuite vous concentrer sur les principaux points de désaccord.
+## Une série de petits oui
+Regrouper trop de conversations crée de la confusion. Décomposer les questions aide souvent les groupes qui rencontrent des difficultés. Si un problème semble sans issue, complexe ou conflictuel, vous pouvez parfois en isoler les différentes questions et parvenir à un consensus sur chacune, en commençant par les points sur lesquels il est le plus facile de s’accorder. Lorsque vous abordez ensuite les désaccords, vous pouvez vous concentrer sur le cœur des problèmes et les traiter de manière ciblée.
 
 Sur Loomio
 
-* Les fils de discussion centrés sur un sujet aident à définir un périmètre clair. Plus encore que dans une conversation en personne, les discussions sur Loomio peuvent rester centrées sur une question précise, tandis que d’autres aspects sont traités en parallèle dans d’autres fils.
-* Il arrive souvent qu’une personne intervienne pour faciliter la discussion en disant : « Cela sort du cadre de ce sujet. Pourquoi ne pas lancer une nouvelle discussion à ce propos ? »
-* Créer un groupe Loomio aide à définir qui en fait partie et ce dont ses membres souhaitent discuter. Cela aide les personnes participantes à délimiter les sujets.
-* La succession des propositions sur Loomio se prête à une série de petits accords. Vous pouvez progresser par étapes dans un même fil de discussion, tout en conservant le contexte et en vous appuyant sur les propositions précédentes.
-* La communication asynchrone permet à certaines personnes d’explorer un sujet annexe sans ralentir les autres. Elles peuvent ouvrir une nouvelle discussion ou créer un sous-groupe et approfondir ce sujet autant qu’elles le souhaitent, tandis que le groupe reste concentré sur son sujet principal.
-* Le contexte d’une discussion et la description d’un groupe permettent de définir le périmètre de leurs échanges respectifs.
+* Les fils de discussion organisés par sujet sont un outil efficace pour délimiter le périmètre. Plus encore que les conversations en personne, les discussions sur Loomio peuvent être clairement délimitées pour se concentrer sur une question précise, tandis que d’autres aspects sont traités simultanément dans d’autres fils.
+* Nous voyons souvent des utilisateurs intervenir pour faciliter les échanges, par exemple : « Cela dépasse le périmètre de ce sujet, mais pourquoi ne pas lancer une nouvelle discussion à ce propos ? »
+* Créer un groupe Loomio aide à définir qui nous sommes et ce dont nous voulons discuter ensemble. Cela aide les participants à gérer le périmètre.
+* Le fonctionnement de Loomio par propositions successives convient bien à une approche par « série de petits oui ». Vous pouvez construire de petits accords tout en conservant le contexte dans un seul fil de discussion et en vous appuyant sur l’historique des propositions précédentes.
+* La communication en ligne asynchrone permet à certaines personnes d’explorer bien au-delà du périmètre sans retarder les autres. Elles peuvent simplement lancer une nouvelle discussion ou un sous-groupe et approfondir autant et aussi longtemps qu’elles le souhaitent, tandis que le périmètre principal du groupe est maintenu.
+* Le champ de contexte de la discussion et la description du groupe permettent de définir respectivement le périmètre d’une conversation et celui d’un groupe.
 
 <!-- translation-section: pacing-timing -->
 
-## Rythme et calendrier
+## Le rythme et le choix du moment
 
-Une conversation productive a son propre rythme. Ce rythme dépend de nombreux facteurs et se règle souvent à l’intuition, comme lorsqu’une personne improvise en musique. Quand faut-il approfondir un point ou prendre du recul ? Quand faut-il apporter de nouvelles informations ou examiner davantage celles dont on dispose déjà ? C’est tout l’enjeu du rythme.
+Une conversation productive a un rythme. Le bon tempo résulte d’une combinaison complexe de facteurs et paraît souvent intuitif, comme pour un musicien qui improvise. Quand faut-il approfondir ou prendre du recul ? Quand faut-il apporter de nouvelles informations ou examiner davantage ce qui est déjà sur la table ? C’est cela, gérer le rythme.
 
-Les personnes participantes ont des besoins et des préférences différents : certaines ont besoin d’être freinées, d’autres d’être encouragées à avancer. Le bon rythme naît d’un équilibre entre approfondissement et progression. Sans cet équilibre, certaines personnes s’impatientent tandis que d’autres peinent à suivre.
+Les participants ont des besoins et des préférences différents : certaines personnes ont besoin d’être freinées, d’autres d’être encouragées à avancer. Le bon rythme apparaît lorsqu’un équilibre dynamique se crée entre approfondissement et progression. Lorsque cet équilibre manque, les personnes ressentent de la frustration, soit par impatience, soit parce qu’elles se sentent laissées de côté.
 
 Sur Loomio
 
-* Grâce aux échanges asynchrones sur Loomio, chacun peut lire et répondre à son rythme. Un rythme collectif peut ainsi se former naturellement.
-* Vous pouvez avancer sans attendre les personnes qui prennent plus de temps, tout en continuant à approfondir un point pendant que d’autres progressent. Une communication synchrone ne permet pas ces deux mouvements simultanés.
-* Les dates limites des propositions permettent de régler le rythme. Les sujets urgents peuvent avoir des délais courts, tandis que d’autres disposent de plus de temps. Chaque décision peut avancer à sa propre vitesse.
-* Vous pouvez facilement adapter votre niveau de participation. Si une conversation avance trop vite ou trop lentement pour vous, vous pouvez apporter votre contribution, prendre du recul, puis revenir lorsqu’une proposition est présentée.
-* Sur Loomio, une décision « rapide » prend un ou deux jours, contre environ cinq minutes en personne. Pourtant, Loomio ne paraît pas lent comme le serait une réunion en personne qui durerait deux jours pour prendre une décision. Les décisions avancent en parallèle des autres activités. Recueillir les avis de tout le monde sur Loomio pendant deux jours est bien plus efficace que d’organiser une réunion en personne.
-* Faciliter une discussion sur Loomio ressemble à l’effet « bullet time » de Matrix, lorsque Neo arrête le temps pour contourner une balle : vous pouvez parcourir une conversation vivante image par image. C’est presque un superpouvoir.
+* Grâce à la communication asynchrone, les personnes peuvent lire et répondre à leur rythme sur Loomio, ce qui permet à un rythme naturel de s’installer.
+* Vous pouvez faire défiler la page pour dépasser les contributions des personnes qui avancent lentement et encourager la progression. En même temps, vous pouvez continuer à approfondir tranquillement un point pendant que d’autres avancent. Cela n’est pas possible dans une communication synchrone.
+* Les dates limites des propositions permettent de fixer le rythme. Les sujets qui doivent avancer rapidement peuvent avoir des délais courts, tandis que ceux qui demandent plus de temps peuvent bénéficier de délais plus longs. Les décisions peuvent progresser à des vitesses différentes.
+* Vous pouvez facilement ajuster votre propre rythme de participation. Si une conversation avance trop vite ou trop lentement pour vous, vous pouvez déposer votre contribution, prendre du recul, puis revenir lorsqu’une proposition est lancée.
+* Une décision « rapide » sur Loomio prend un ou deux jours, alors qu’en personne elle prend plutôt cinq minutes. Pourtant, Loomio ne semble pas « lent » comme le serait une réunion où il faudrait deux jours pour décider. Les décisions sur Loomio avancent en parallèle des autres travaux en cours. Recueillir les contributions de chacun sur Loomio pendant deux jours est bien plus efficace que de devoir organiser une réunion en personne.
+* La facilitation sur Loomio peut être comparée au « bullet time » (lorsque Neo peut arrêter le temps et se déplacer autour d’une balle dans Matrix) : vous pouvez parcourir une conversation vivante image par image. C’est comme un superpouvoir.
 
 <!-- translation-section: managing-the-attention-economy -->
 
-## Gérer l’attention
+## Gérer l’économie de l’attention
 
-La personne qui facilite les échanges aide le groupe à orienter son attention. La quantité d’informations disponibles peut être presque infinie. Il faut donc les filtrer pour éviter la surcharge. Gérer l’attention consiste à tenir compte à la fois de l’importance des sujets, du temps disponible et des capacités du groupe.
+La personne qui facilite organise l’attention du groupe. Les informations disponibles peuvent être littéralement infinies. Il devient donc essentiel de les filtrer pour éviter d’être submergé. Gérer l’économie de l’attention consiste à mettre en balance l’importance des sujets avec le temps et les capacités disponibles.
 
-La facilitation peut aider le groupe à s’accorder sur le but et le périmètre d’une discussion ou d’un processus. Il dispose ainsi de critères pour déterminer où porter son attention. Limiter les distractions et recentrer la conversation sont des interventions courantes.
+La facilitation peut aider le groupe à s’accorder sur l’objectif et le périmètre d’une discussion ou d’un processus, afin de disposer de critères pour décider où porter son attention. Limiter les distractions et ramener la conversation vers son objectif sont des interventions courantes.
 
-La personne qui facilite les échanges aide aussi le groupe à maintenir son attention assez longtemps. Quand un sujet devient difficile, flou ou inconfortable, certaines personnes veulent abandonner trop tôt, passer à autre chose ou détourner le regard. La facilitation peut aider le groupe à poursuivre son travail jusqu’au bout, au service de ses objectifs communs.
+Une autre manière importante de travailler sur l’attention consiste à encourager le groupe à la maintenir assez longtemps. Lorsque les choses deviennent difficiles, floues ou inconfortables, les personnes peuvent vouloir abandonner trop tôt, passer à un autre sujet ou détourner le regard. La personne qui facilite peut aider le groupe à aller au bout du travail pour atteindre ses objectifs collectifs.
 
-Les processus structurés et les exercices de tri des informations sont utiles pour gérer l’attention. Par exemple :
+Les processus structurés et les exercices de tri de l’information sont des outils de facilitation importants dans ce domaine. Quelques exemples :
 
-* **Limiter le temps** — fixer une durée pour la recherche d’idées ou la discussion d’un sujet.
-* **Définir les priorités de l’ordre du jour** — recenser tous les sujets que les personnes souhaitent aborder, puis choisir les principaux avant de commencer la discussion.
-* **Regrouper les notes adhésives** — recueillir des idées ou des questions, les classer par thème, puis les réunir en quelques sujets.
-* **Mettre des sujets de côté** — prévoir un espace pour noter les idées et les questions qui ne sont pas immédiatement pertinentes, afin d’y revenir plus tard.
-* **À quoi reconnaîtra-t-on la réussite ?** Définir des critères de réussite et aider le groupe à rester concentré jusqu’à ce qu’ils soient atteints.
+* **Temps délimité** — fixer une durée pour une séance de recherche d’idées ou une conversation sur un sujet donné.
+* **Priorisation de l’ordre du jour** — lister tous les sujets que les personnes souhaitent aborder, puis choisir les plus importants avant d’entrer dans le contenu.
+* **Nuage de notes adhésives** — produire des idées ou des questions, les regrouper par thème, puis les synthétiser en sujets.
+* **Espace de mise en attente** — un espace où noter les idées ou les questions qui émergent sans être immédiatement pertinentes, pour les traiter plus tard.
+* **À quoi ressemble la réussite ??** Définir des critères de réussite et maintenir l’attention du groupe sur ces critères jusqu’à ce qu’ils soient atteints.
 
 Sur Loomio
 
-* Les fils de discussion centrés sur un sujet sont l’un des principaux moyens de gérer l’attention sur Loomio. Ce format est apparu très tôt dans les échanges en ligne et reste largement utilisé, car il aide à répartir l’attention. Quand le sujet est clairement indiqué en haut de la page, la plupart des utilisateurs de Loomio comprennent spontanément comment s’y tenir.
-* Sur Loomio, l’activité mobilise l’attention du groupe. Chaque notification sollicite une part de cette attention. À partir des retours des utilisateurs, le logiciel distingue les activités qui justifient une notification, comme les commentaires, les votes et les conclusions, de celles qui n’en justifient pas, comme une mention « J’aime » sur un commentaire.
-* Les paramètres de notification permettent aux utilisateurs de choisir ce qui sollicite leur attention sur Loomio. Les aider à régler ces préférences contribue à une bonne gestion de l’attention du groupe.
-* Les sous-groupes peuvent aider à limiter les sollicitations. Si un sujet ne concerne qu’une partie des personnes, vous pouvez le traiter dans un sous-groupe.
-* Sur Loomio, le choix de ne pas autoriser plusieurs propositions simultanées vise à concentrer l’attention du groupe sur une proposition jusqu’à son examen complet. Cette décision de conception est volontaire, même si elle ne plaît pas à tout le monde.
+* Les fils de discussion organisés par sujet sont l’une des principales fonctionnalités de gestion de l’attention sur Loomio. Ce format a été l’un des premiers à apparaître dans la communication en ligne il y a plusieurs décennies et reste largement utilisé aujourd’hui, car il permet d’organiser efficacement l’attention. La plupart des utilisateurs de Loomio comprennent intuitivement comment rester dans le sujet lorsqu’il est affiché en grandes lettres en haut de la page.
+* L’activité sur Loomio est la monnaie de son économie de l’attention, et tout ce qui génère une notification dépense cette monnaie. À partir des retours des utilisateurs, le logiciel définit les activités jugées assez importantes pour générer des notifications : par exemple, les commentaires, les votes et les conclusions en génèrent, mais pas une mention « J’aime » sur un commentaire.
+* Les paramètres de notification permettent aux utilisateurs de personnaliser largement la gestion de leur attention sur Loomio. Les aider à définir ces préférences est un moyen important de faire bon usage de l’attention du groupe.
+* Les sous-groupes peuvent aider les personnes à mieux gérer leur attention. Si seules certaines personnes doivent suivre un sujet, vous pouvez le traiter dans un espace distinct.
+* Le choix délibéré, mais parfois peu apprécié, de ne pas autoriser les propositions simultanées sur Loomio concerne la circulation de l’attention : il encourage le groupe à examiner pleinement une proposition avant de passer à la suivante.
 
-> Beaucoup de personnes qui conçoivent des systèmes d’information ont cru, à tort, que le problème était le manque d’informations plutôt que le manque d’attention. Elles ont donc créé des systèmes capables de fournir toujours plus d’informations, alors qu’il fallait surtout des systèmes capables d’écarter les informations sans importance ou sans pertinence. — **[Wikipédia](https://en.wikipedia.org/wiki/Attention_economy)**
+> De nombreuses personnes qui conçoivent des systèmes d’information ont défini à tort leur problème comme une pénurie d’information plutôt qu’une pénurie d’attention. Elles ont ainsi construit des systèmes capables de fournir toujours plus d’informations, alors qu’il fallait surtout des systèmes capables de filtrer les informations sans importance ou sans pertinence. — **[Wikipédia](https://en.wikipedia.org/wiki/Attention_economy)**
 
 <!-- translation-section: facilitation-interventions -->
 
-## Interventions de facilitation
+## Les interventions de facilitation
 
-Il existe autant de techniques de facilitation que de personnes qui les pratiquent, et des bibliothèques entières leur sont consacrées. Il est impossible d’en dresser une liste exhaustive.
+Il existe autant de techniques de facilitation que de personnes qui facilitent dans le monde, et des bibliothèques entières ont été consacrées au sujet. Il n’est pas possible de fournir une liste exhaustive des interventions.
 
-Il peut toutefois être utile de distinguer deux catégories d’interventions :
+Il peut toutefois être utile de distinguer deux catégories d’interventions :
 
-1. **Interventions de soutien** : inviter à contribuer, approfondir, faire émerger des idées, encourager, accompagner, protéger et faire de la place aux autres.
-2. **Interventions de cadrage** : prendre du recul, mettre fin à un échange, fixer des limites, interrompre, remettre en question, recentrer et écarter les comportements inappropriés.
+1. **Interventions de soutien** : inviter à contribuer, approfondir, faire émerger des idées, encourager, accompagner, protéger, créer de l’espace.
+2. **Interventions de cadrage** : prendre du recul, mettre fin à un échange, fixer des limites, interrompre, remettre en question, ramener vers l’objectif, écarter les comportements inappropriés.
 
-Presque toutes les interventions utilisées pour faciliter des échanges en personne peuvent être adaptées aux échanges en ligne.
+Presque toutes les interventions de facilitation en personne peuvent être repensées et utilisées en ligne.
 
-> Demander à une personne en particulier de contribuer peut lui donner l’impression d’être l’élève qui ne connaît pas la réponse. Inviter plutôt toutes les personnes qui ne se sont pas encore exprimées à contribuer indique aux personnes qui parlent souvent de laisser de la place, et donne aux plus discrètes la possibilité de prendre la parole. — Silvia Zuur
+> Désigner une personne pour qu’elle contribue risque simplement de lui donner l’impression d’être l’élève qui ne connaît pas la réponse en classe. Une invitation générale à contribuer, adressée aux personnes qui n’ont pas encore parlé, indique aux personnes qui interviennent régulièrement de laisser la place et donne aux plus réservées l’occasion de s’exprimer. — Silvia Zuur
 
 Sur Loomio
 
-* Sur Loomio, les outils d’intervention comprennent les commentaires, les @mentions, l’ajout ou le retrait d’utilisateurs, ainsi que la création ou la suppression de discussions. Ils peuvent servir à soutenir les échanges ou à les recadrer.
-* L’intervention la plus courante est le commentaire : il permet de s’adresser au groupe pour encourager certains comportements ou tenter d’en limiter d’autres.
-* Les [permissions de participation](/en/user_manual/groups/settings/#permissions) offrent des moyens assez directs, mais efficaces, de modérer les utilisateurs, notamment en autorisant ou en interdisant la publication de discussions ou de propositions.
-* Loomio propose des fonctionnalités fondées sur la confiance qui manquent à d’autres outils. Par défaut, toutes les personnes participantes peuvent par exemple modifier le contexte d’une discussion, même si une autre personne l’a rédigé. Ce fonctionnement s’inspire notamment de Wikipédia et du développement de logiciels libres.
+* Les outils d’intervention de Loomio comprennent les commentaires, les @mentions, l’ajout ou le retrait d’utilisateurs et le lancement ou la suppression de discussions. Ils permettent différentes formes d’interventions de soutien et de cadrage.
+* L’intervention la plus courante est le commentaire : parler simplement au groupe pour encourager certains comportements ou tenter d’en limiter d’autres.
+* Les [permissions de participation](/en/user_manual/groups/settings/#permissions) offrent des outils de modération assez généraux mais efficaces, comme autoriser ou interdire la publication de discussions ou de propositions.
+* Loomio propose certaines fonctionnalités fondées sur la confiance que d’autres outils n’offrent pas, comme la possibilité donnée par défaut à tous les participants de modifier le contexte d’une discussion, même s’il a été rédigé par un autre utilisateur. Ces fonctionnalités s’inspirent notamment de Wikipédia et du développement de logiciels libres.

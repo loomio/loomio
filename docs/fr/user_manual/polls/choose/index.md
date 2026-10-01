@@ -1,6 +1,6 @@
 ---
 title: Choix
-source_revision: 3a315412c646d254c8426be5c436a4e593f6011f
+source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
 source_file: docs/en/user_manual/polls/choose/index.md
 translated:
   provider: codex/gpt-6.1-sol
@@ -14,53 +14,55 @@ sections:
   read-the-results: e675d12da1a4ba8a
   share-an-outcome: f6afc1713b921265
 generated:
-  introduction: f02ffa7146879d12
-  when-to-use-choose: 184b5cb500c067e2
-  example-set-a-planning-meeting-agenda: 43f29cfa83643470
-  set-up-the-poll: d3a9919ce612b374
-  vote: a9534c9b7481b8af
-  read-the-results: a66da8caff643bd6
-  share-an-outcome: 38fc9e98a3b4ed09
+  introduction: 18c79caede14ee9b
+  when-to-use-choose: 4d258ba9f97cadd6
+  example-set-a-planning-meeting-agenda: b31f180e639473c7
+  set-up-the-poll: 674a0892011031b2
+  vote: 1b189aad5bab4195
+  read-the-results: f7d5acfbdd898dd1
+  share-an-outcome: ead3cca4c308b173
 title_source: c7f937836f5d82d5
 title_generated: 48fa1f2a871106e1
+needs_review:
+  share-an-outcome: use "conclusion" instead of "résultat" for "outcome"
 ---
 
 <!-- translation-section: introduction -->
 
-# Choix
+# Choisir
 
-Le sondage Choix permet de trouver l’option la plus populaire ou d’établir une liste restreinte. Les personnes qui participent sélectionnent une ou plusieurs options, selon les limites que vous définissez. Cette méthode de vote est aussi appelée « choix multiple ».
+Choisir est un sondage simple pour trouver l’option la plus populaire ou établir une présélection. Les participants sélectionnent une ou plusieurs options, selon les limites que vous définissez. Cette méthode de vote est couramment appelée choix multiple.
 
 <!-- translation-section: when-to-use-choose -->
 
-## Quand utiliser Choix
+## Quand utiliser Choisir
 
-Utilisez Choix lorsque les options sont distinctes et que vous devez compter combien de personnes sélectionnent chacune d’elles. Ce sondage convient notamment pour :
+Utilisez Choisir lorsque les options sont distinctes et que vous devez compter combien de personnes sélectionnent chacune d’elles. Cette méthode convient pour :
 
-- choisir un lieu parmi une liste restreinte ;
-- sélectionner jusqu’à trois sujets pour un ordre du jour ;
-- décider quel projet passera à l’étape suivante ; ou
-- savoir quels services les membres comptent utiliser.
+- choisir un lieu parmi une présélection ;
+- sélectionner jusqu’à trois sujets pour un ordre du jour ;
+- décider quelle proposition de conception doit passer au tour suivant ; ou
+- vérifier quels services les membres comptent utiliser.
 
-Choix enregistre les options sélectionnées, mais pas l’intensité ni l’ordre des préférences. Utilisez [Sondage pondéré](/en/user_manual/polls/score/) pour mesurer le degré de soutien à chaque option, [Répartition](/en/user_manual/polls/allocate/) lorsque le budget est limité, ou [Classement par préférence](/en/user_manual/polls/rank/) lorsque l’ordre des préférences compte.
+Choisir enregistre les sélections, sans mesurer l’intensité ni l’ordre des préférences d’une personne. Utilisez [Noter](/en/user_manual/polls/score/) pour mesurer le degré de soutien à chaque option, [Répartir](/en/user_manual/polls/allocate/) lorsque le budget est limité, ou [Classer](/en/user_manual/polls/rank/) lorsque l’ordre des préférences compte.
 
 <!-- translation-section: example-set-a-planning-meeting-agenda -->
 
-## Exemple : établir l’ordre du jour d’une réunion de planification
+## Exemple : établir l’ordre du jour d’une réunion de planification
 
-La coopérative Oatmilk doit décider quelles parties d’un essai de bouteilles consignées nécessitent le plus de temps lors de sa prochaine réunion de planification. Le sondage demande à chaque personne de choisir jusqu’à deux sujets. Les détails expliquent comment le résultat sera utilisé, et chaque option contient assez d’informations pour être distinguée des autres.
+La coopérative Oatmilk doit décider quels aspects d’un essai de bouteilles consignées nécessitent le plus de temps lors de sa prochaine réunion de planification. Le sondage demande à chaque personne de choisir jusqu’à deux sujets. Ses détails expliquent comment le résultat sera utilisé, et chaque option contient assez d’informations pour la distinguer des autres.
 
 <!-- translation-section: set-up-the-poll -->
 
-## Configurer le sondage
+## Configurez le sondage
 
-Donnez au sondage un titre sous forme de question précise. Dans **Détails**, expliquez ce que les personnes qui participent doivent prendre en compte et ce qui sera fait du résultat. Ajoutez chaque option proposée, puis définissez les **Choix minimum** et **Choix maximum**.
+Donnez au sondage une question précise comme titre. Dans **Détails**, expliquez ce que les participants doivent prendre en compte et comment le résultat sera utilisé. Ajoutez chaque option disponible, puis définissez **Choix minimum** et **Choix maximum**.
 
 ![](form.png)
 
-Fixez les deux limites à 1 si chaque personne doit choisir exactement une option. Fixez un maximum plus élevé si vous souhaitez établir une liste restreinte. Évitez de permettre la sélection de presque toutes les options : le résultat serait moins utile.
+Fixez les deux limites à 1 lorsque les participants doivent choisir exactement une option. Fixez un maximum plus élevé lorsque vous souhaitez établir une présélection. Évitez d’autoriser tant de choix que les participants peuvent sélectionner presque toutes les options, car cela rend le résultat moins utile.
 
-Utilisez l’icône en forme de crayon à côté d’une option pour en préciser le sens ou ajouter une explication. C’est utile si un nom court peut être interprété de plusieurs façons.
+Utilisez l’icône en forme de crayon à côté d’une option pour préciser son sens ou ajouter une explication. Cela est utile lorsqu’un intitulé court peut être interprété de différentes façons.
 
 ![](edit_option.png)
 
@@ -70,28 +72,28 @@ Dans **Plus de paramètres**, **Afficher les options dans un ordre aléatoire** 
 
 <!-- translation-section: vote -->
 
-## Voter
+## Votez
 
-Le formulaire de vote indique combien d’options chaque personne peut sélectionner. Dans cet exemple, la personne choisit **Calendrier de collecte dans les cafés** et **Processus de lavage**, puis explique le lien entre ses choix et l’essai.
+Le formulaire de vote indique aux participants combien d’options ils peuvent sélectionner. Dans cet exemple, l’électeur sélectionne **Calendrier de collecte auprès des cafés** et **Organisation du lavage**, puis donne une raison reliant ces choix à l’essai.
 
 ![](voting.png)
 
-Une explication peut montrer pourquoi une option compte et quel travail les personnes qui participent lui associent. Si ces explications sont importantes pour la décision, configurez le paramètre relatif aux motifs de vote avant de lancer le sondage.
+Une raison peut expliquer pourquoi une option compte et quelles tâches les participants s’attendent à ce qu’elle couvre. Si les raisons sont importantes pour la décision, configurez le paramètre de raison du vote avant de lancer le sondage.
 
 <!-- translation-section: read-the-results -->
 
-## Lire les résultats
+## Lisez les résultats
 
-Les résultats indiquent la part de l’ensemble des sélections reçue par chaque option, le nombre de personnes qui l’ont choisie et les personnes qui n’ont pas voté. Comme chacun pouvait choisir deux options, les pourcentages portent sur les sélections, et non sur les personnes.
+Les résultats indiquent la part de l’ensemble des sélections reçue par chaque option, le nombre d’électeurs qui l’ont sélectionnée et les personnes qui n’ont pas voté. Comme chaque personne pouvait choisir deux options, les pourcentages portent sur les sélections plutôt que sur les personnes.
 
 ![](results.png)
 
-Dans cet exemple, **Calendrier de collecte dans les cafés** a été sélectionné trois fois. **Processus de lavage** et **Suivi du taux de retour** ont chacun été sélectionnés deux fois. Le résultat suggère d’accorder le plus de temps aux collectes dans les cafés, mais la personne qui organise la réunion doit encore décider comment répartir le temps restant entre les sujets à égalité.
+Dans cet exemple, **Calendrier de collecte auprès des cafés** est sélectionné trois fois. **Organisation du lavage** et **Suivi du taux de retour** le sont deux fois chacun. Le résultat justifie de consacrer le plus de temps à la collecte auprès des cafés dans l’ordre du jour, mais l’organisateur doit encore décider comment répartir le temps restant entre les sujets à égalité.
 
 <!-- translation-section: share-an-outcome -->
 
 ## Partager une conclusion
 
-À la clôture du sondage, partagez une conclusion. Indiquez ce que le groupe fera du résultat, notamment comment les égalités seront départagées. Consultez [Partager une conclusion](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome) pour comprendre le fonctionnement des conclusions.
+Lorsque le sondage est clôturé, partagez une conclusion. Indiquez ce que le groupe fera du résultat, y compris la manière de départager les options à égalité. Consultez [Partager une conclusion](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome) pour comprendre le fonctionnement des conclusions.
 
 ![Une conclusion accordant le plus de temps de réunion aux collectes dans les cafés](outcome.png)

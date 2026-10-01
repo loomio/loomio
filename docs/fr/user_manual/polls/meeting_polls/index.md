@@ -1,6 +1,6 @@
 ---
 title: Sondage horaire de réunion
-source_revision: 3a315412c646d254c8426be5c436a4e593f6011f
+source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
 source_file: docs/en/user_manual/polls/meeting_polls/index.md
 translated:
   provider: codex/gpt-6.1-sol
@@ -11,19 +11,21 @@ sections:
   voting: c50083234167a0f9
   outcome: 74db36d36fa18798
 generated:
-  introduction: 3f0c5960133a68eb
-  time-poll: 591e8587a4197e60
-  voting: fb4701785529193b
-  outcome: 9ba5c40ef372eda7
+  introduction: 40d286b1e29d8397
+  time-poll: fd7600443681cd2c
+  voting: '07913b5142a62a62'
+  outcome: d8c9fb9daaaa204b
 title_source: 8e2a07d7257fbc04
 title_generated: ceca793eb22c2d93
+needs_review:
+  outcome: use "conclusion" instead of "résultat" for "outcome"
 ---
 
 <!-- translation-section: introduction -->
 
 # Sondage horaire de réunion
 
-Utilisez un **Sondage horaire de réunion** pour trouver une date et une heure pour une réunion ou un événement. Il remplit le même rôle que des outils de planification comme Doodle, tout en gardant l'organisation de la réunion avec les autres activités du groupe sur Loomio. Les personnes participantes voient les créneaux dans leur propre fuseau horaire.
+Utilisez un **Sondage horaire de réunion** pour trouver un horaire pour une réunion ou un événement. Il remplit la même fonction que les outils de planification comme Doodle, tout en intégrant la planification aux autres activités du groupe sur Loomio. Les participants voient les options dans leur propre fuseau horaire.
 
 ![](meeting_polls.png)
 
@@ -31,17 +33,17 @@ Utilisez un **Sondage horaire de réunion** pour trouver une date et une heure p
 
 ## Sondage horaire de réunion
 
-_Trouvez quand les personnes sont disponibles pour se réunir_
+_Trouvez quand les participants sont disponibles pour se réunir_
 
 Gagnez du temps pour fixer la date de votre réunion ou de votre événement.
 
 ![](timepoll_label.png)
 
-Le sondage horaire de réunion permet de voir les disponibilités de chacun et de trouver le meilleur créneau.
+Le sondage horaire permet de voir facilement les disponibilités de chacun et de trouver le meilleur horaire.
 
-Donnez un titre à votre sondage horaire de réunion et ajoutez des précisions. Saisissez une liste de dates et d'heures dans votre fuseau horaire.
+Donnez un titre à votre sondage horaire et ajoutez des précisions. Saisissez une liste d’options de date et d’heure dans votre fuseau horaire.
 
-Lorsque vous définissez les créneaux, tenez compte des personnes situées dans d'autres fuseaux horaires. Chaque personne verra les heures dans son propre fuseau horaire.
+Lorsque vous définissez les créneaux horaires, tenez compte des personnes dans différents fuseaux horaires. Les participants verront les horaires dans leur propre fuseau horaire.
 
 Définissez la durée de la réunion.
 
@@ -51,32 +53,32 @@ Définissez la durée de la réunion.
 
 ### Vote
 
-Pour chaque créneau, les personnes indiquent leur disponibilité avec l'icône verte représentant un pouce levé, leur disponibilité sous réserve avec l'icône jaune représentant un pouce sur le côté, ou leur indisponibilité avec l'icône rouge représentant un pouce baissé.
+Pour chaque horaire, les participants sélectionnent l’icône verte avec le pouce levé lorsqu’ils sont disponibles, le pouce jaune à l’horizontale lorsqu’ils peuvent participer si nécessaire, ou l’icône rouge avec le pouce baissé lorsqu’ils ne sont pas disponibles.
 
-Les personnes participantes peuvent expliquer leur réponse dans un commentaire pour aider la personne qui organise la réunion à trouver un créneau adapté.
+Les participants peuvent expliquer la raison de leur vote dans un commentaire pour aider la personne qui organise la réunion à trouver un horaire qui convient.
 
-Si aucun créneau ne convient, les personnes participantes peuvent proposer d'autres horaires dans le champ de message. Vous pouvez ensuite ajouter ces horaires au sondage.
+Si les horaires ne conviennent pas, les participants peuvent proposer d’autres horaires dans le champ de message. Vous pouvez ensuite mettre à jour le sondage avec de nouveaux horaires.
 
 ![](timepoll_vote.png)
 
-Les résultats se mettent à jour au fil des votes. Un tableau indique les disponibilités de chaque personne afin que tout le monde puisse voir les créneaux qui conviennent au plus grand nombre.
+Les résultats sont mis à jour au fil des votes dans un tableau indiquant les disponibilités de chacun, afin que tout le monde puisse voir quels créneaux horaires conviennent au plus grand nombre.
 
 <!-- translation-section: outcome -->
 
 ### Partager une conclusion
 
-À la clôture du sondage horaire de réunion, choisissez le meilleur créneau et partagez une conclusion. Consultez [Partager une conclusion](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome) pour savoir comment fonctionnent les conclusions.
+Lorsque le sondage horaire est clôturé, choisissez l’horaire qui convient le mieux et partagez une conclusion. Consultez [Partager une conclusion](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome) pour comprendre le fonctionnement des conclusions.
 
 ![](timepoll_outcome.png)
 
-**Notifier** : Ajoutez les personnes que vous invitez à la réunion ou à l'événement
+**Notifier** : Ajoutez les personnes que vous invitez à la réunion ou à l’événement
 
-**Heure de réunion** : Sélectionnez le créneau qui convient le mieux
+**Heure de réunion** : Sélectionnez l’horaire qui convient le mieux
 
-**Titre de la réunion** : Donnez un nom à votre réunion. Le titre du sondage horaire de réunion est utilisé par défaut
+**Titre de la réunion** : Donnez un titre à votre réunion. Le titre du sondage horaire est utilisé par défaut
 
-**Lieu** : Ajoutez une adresse ou un lien vers la réunion
+**Lieu** : Ajoutez un lieu physique ou un lien vers la réunion
 
-**Déclaration** : Résumez le résultat et ajoutez toute consigne pour la réunion
+**Déclaration** : Résumez le résultat et ajoutez les consignes pour la réunion
 
-Loomio inclut le créneau choisi, le titre de la réunion, sa durée, le lieu et la déclaration dans la notification de conclusion et l'invitation de calendrier.
+Loomio inclut l’horaire choisi, le titre de la réunion, la durée, le lieu et la déclaration dans la notification de conclusion et l’invitation de calendrier.
