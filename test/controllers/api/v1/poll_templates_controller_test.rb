@@ -105,6 +105,31 @@ class Api::V1::PollTemplatesControllerTest < ActionController::TestCase
     refute template.hidden?, "admin-created template should not be auto-hidden"
   end
 
+  test "create saves STV settings in a poll template" do
+    sign_in @admin
+
+    post :create, params: {
+      poll_template: {
+        group_id: @group.id,
+        process_name: "Board election",
+        process_subtitle: "Elect three seats",
+        poll_type: "stv",
+        default_duration_in_days: 7,
+        stv_seats: 3,
+        stv_method: "meek",
+        stv_quota: "hare"
+      }
+    }
+
+    assert_response :success
+    template = PollTemplate.last
+    assert_equal [ 3, "meek", "hare" ], [ template.stv_seats, template.stv_method, template.stv_quota ]
+
+    get :export, params: { id: template.id, group_id: @group.id }
+    exported = JSON.parse(response.body).dig("loomio_template", "template")
+    assert_equal [ 3, "meek", "hare" ], exported.values_at("stv_seats", "stv_method", "stv_quota")
+  end
+
   # Groups save weighted voting in templates for established processes, and
   # polls started from the template copy it.
   test "create saves weighted voting in a poll template" do

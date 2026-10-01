@@ -50,6 +50,9 @@ class PollTemplate < ApplicationRecord
     allow_comments
     allow_reactions
     comment_length_max
+    stv_seats
+    stv_method
+    stv_quota
   ].freeze
 
   POLL_OPTION_SETTINGS = %w[

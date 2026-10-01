@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_10_01_000000) do
+ActiveRecord::Schema[8.1].define(version: 2026_10_01_000001) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "hstore"
@@ -694,6 +694,9 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_01_000000) do
     t.boolean "shuffle_options", default: false, null: false
     t.boolean "specified_voters_only", default: false, null: false
     t.integer "stance_reason_required", default: 1, null: false
+    t.string "stv_method", default: "scottish", null: false
+    t.string "stv_quota", default: "droop", null: false
+    t.integer "stv_seats", default: 1, null: false
     t.string "tags", default: [], array: true
     t.string "title"
     t.string "title_placeholder"

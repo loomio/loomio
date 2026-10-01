@@ -24,6 +24,14 @@ export default {
       newOption: null,
       lastPollType: this.pollTemplate.pollType,
       pollOptions: this.pollTemplate.pollOptionsAttributes(),
+      stvMethodItems: [
+        { title: this.$t('poll_stv_form.method_scottish'), value: 'scottish' },
+        { title: this.$t('poll_stv_form.method_meek'), value: 'meek' }
+      ],
+      stvQuotaItems: [
+        { title: this.$t('poll_stv_form.quota_droop'), value: 'droop' },
+        { title: this.$t('poll_stv_form.quota_hare'), value: 'hare' }
+      ],
 
       votingMethodsI18n: {
         proposal: {
@@ -383,6 +391,27 @@ export default {
               min="1"
               v-model="pollTemplate.dotsPerPerson"
               :rules="validate('dotsPerPerson')"
+            )
+
+          template(v-if="pollTemplate.pollType == 'stv'")
+            v-divider.my-4
+            p.mt-4.text-body-large.mb-2 {{ $t('poll_stv_form.settings_title') }}
+            .text-body-medium.pb-4.text-medium-emphasis {{ $t('poll_stv_form.settings_helptext') }}
+            v-text-field.lmo-number-input(
+              v-model="pollTemplate.stvSeats"
+              :label="$t('poll_stv_form.seats_label')"
+              type="number"
+              :min="1"
+            )
+            v-select.mt-2(
+              v-model="pollTemplate.stvMethod"
+              :items="stvMethodItems"
+              :label="$t('poll_stv_form.method_label')"
+            )
+            v-select.mt-2(
+              v-model="pollTemplate.stvQuota"
+              :items="stvQuotaItems"
+              :label="$t('poll_stv_form.quota_label')"
             )
 
         template(v-if="pollTemplate.config().allow_none_of_the_above")
