@@ -1,6 +1,6 @@
 ---
 title: Score
-source_revision: 9c60c42fc739483fa23f15d9f34a1e9245518092
+source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
 source_file: docs/en/user_manual/polls/score/index.md
 translated:
   provider: codex/gpt-6.1-sol
@@ -14,85 +14,85 @@ sections:
   read-the-results: 3e996e9bcc830d1d
   share-an-outcome: 243aaac17e645331
 generated:
-  introduction: 334a886b96b388bd
-  when-to-use-score: 500a0f0b9532566c
-  example-score-possible-trial-locations: e8e08431bdcf6293
-  set-up-the-poll: 8f20d88c114a8a23
-  vote: a97372206fb5a6b1
-  read-the-results: c63799c217beaa11
-  share-an-outcome: b79946aee4a22e8f
+  introduction: 6f021b306ed299b3
+  when-to-use-score: a3f0387d0cf8391d
+  example-score-possible-trial-locations: adccbd157e26a6c6
+  set-up-the-poll: c40b5ec22112a228
+  vote: 3eb88d4966d94585
+  read-the-results: 5ec6722e56c78810
+  share-an-outcome: e0ba459f98e85162
 title_source: 38e5a46cbc5ad328
 title_generated: 38e5a46cbc5ad328
 ---
 
 <!-- translation-section: introduction -->
 
-# Score
+# Beoordelen
 
-Met Score beoordelen deelnemers elke optie op dezelfde numerieke schaal. Anders dan bij Choose geven ze elke optie een score. De resultaten laten zien welke opties mensen verkiezen en hoe sterk hun voorkeur is.
+Beoordelen meet hoe deelnemers elke optie beoordelen op een gedeelde numerieke schaal. Anders dan bij Kiezen reageren mensen op elke optie, zodat het resultaat zowel laat zien wat hun voorkeur heeft als hoe sterk die voorkeur is.
 
 <!-- translation-section: when-to-use-score -->
 
-## Wanneer gebruik je Score
+## Wanneer gebruik je Beoordelen
 
-Gebruik Score wanneer je elke optie afzonderlijk kunt beoordelen aan de hand van dezelfde vraag. Score is geschikt voor:
+Gebruik Beoordelen wanneer elke optie onafhankelijk kan worden beoordeeld aan de hand van dezelfde vraag. Het werkt goed voor:
 
-- beoordelen hoe ver elk onderdeel van een project is;
-- de belangrijkheid van verschillende principes beoordelen;
-- de belangstelling voor mogelijke gespreksonderwerpen meten;
-- subsidieaanvragen aan de hand van hetzelfde criterium beoordelen; of
-- vergelijken hoe geschikt verschillende voorstellen zijn.
+- beoordelen hoe ver elk onderdeel van een project gevorderd is;
+- beoordelen hoe belangrijk verschillende principes zijn;
+- meten hoeveel belangstelling er is voor mogelijke gespreksonderwerpen;
+- beoordelen van subsidieaanvragen aan de hand van een gemeenschappelijk criterium; of
+- vergelijken van de geschiktheid van verschillende voorstellen.
 
-Leg uit wat de onderkant en bovenkant van de schaal betekenen. Zonder gedeelde betekenis kan hetzelfde cijfer voor verschillende stemmers iets anders betekenen. Gebruik [Choose](/en/user_manual/polls/choose/) als je alleen wilt weten welke opties mensen kiezen, of [Allocate](/en/user_manual/polls/allocate/) als deelnemers keuzes moeten maken binnen een beperkt budget.
+Leg vast wat de onderkant en bovenkant van de schaal betekenen. Zonder een gedeelde definitie kan een getal voor verschillende kiezers iets anders betekenen. Gebruik [Kiezen](/en/user_manual/polls/choose/) wanneer je alleen opties wilt laten selecteren, of [Verdelen](/en/user_manual/polls/allocate/) wanneer deelnemers afwegingen moeten maken binnen een beperkt budget.
 
 <!-- translation-section: example-score-possible-trial-locations -->
 
 ## Voorbeeld: mogelijke proeflocaties beoordelen
 
-Oatmilk Cooperative kiest locaties voor een proef met herbruikbare flessen. De coöperatie vraagt leden om vier locaties een score van 0 (**ongeschikt**) tot 10 (**ideaal**) te geven. Daarbij letten ze op de bereikbaarheid voor klanten, de capaciteit van het personeel, opslagruimte en het vervoer van ingezamelde flessen.
+Oatmilk Cooperative kiest locaties voor een proef met retourflessen. De coöperatie vraagt leden om vier locaties een score te geven van 0 (**ongeschikt**) tot 10 (**ideaal**), rekening houdend met bereikbaarheid voor klanten, personeelscapaciteit, opslag en vervoer voor het ophalen van flessen.
 
 <!-- translation-section: set-up-the-poll -->
 
-## Stel de peiling in
+## De peiling instellen
 
-Stel één vraag die voor elke optie geldt. Voeg toe wat je wilt beoordelen, stel de **Minimum score** en **Maximum score** in en leg in de beschrijving uit wat de uiteinden van de schaal betekenen. Met een toelichting bij elke optie kun je verduidelijken wat er precies wordt beoordeeld.
+Formuleer één vraag die op elke optie op dezelfde manier van toepassing is. Voeg de te beoordelen items toe, stel de **Minimum score** en **Maximum score** in en leg de uiteinden van de schaal uit in de details. Met omschrijvingen van de opties kun je verduidelijken wat elk item omvat.
 
 ![](form.png)
 
-Kies een schaal die deelnemers consequent kunnen toepassen. Een schaal van 0–5 is snel te gebruiken; met een schaal van 0–10 kun je kleinere verschillen aangeven. Meer precisie levert niet altijd betere informatie op. Kies daarom de kortste schaal die bij de vraag past.
+Kies een schaal die deelnemers consequent kunnen toepassen. Een schaal van 0–5 is snel te gebruiken; een schaal van 0–10 maakt fijnere verschillen mogelijk. Meer precisie levert niet noodzakelijk betere informatie op, dus gebruik de kortste schaal die bij de vraag past.
 
-Anoniem stemmen en de opties in willekeurige volgorde tonen kan helpen om sociale invloed en de invloed van de volgorde te beperken.
+Anoniem stemmen en opties in willekeurige volgorde tonen kunnen nuttig zijn wanneer je de invloed van anderen of van de volgorde wilt verminderen.
 
 <!-- translation-section: vote -->
 
-## Stem
+## Stemmen
 
-Deelnemers geven elke optie een score met een schuifregelaar. In dit voorbeeld geeft de stemmer het café bij het Centraal Station een 8, de markt aan de rivier een 6, de foodcourt van de universiteit een 7 en de kantoren aan de haven een 5.
+Deelnemers verplaatsen een schuifregelaar om elke optie een score te geven. In dit voorbeeld geeft de kiezer Central Station cafe een 8, Riverside market een 6, University food court een 7 en Harbour offices een 5.
 
 ![](voting.png)
 
-In de toelichting legt de stemmer uit hoe die de schaal heeft toegepast. Zo kan de groep zien of een lage score komt door ontbrekende informatie of door inhoudelijke bezwaren.
+De reden legt uit hoe de kiezer de schaal heeft toegepast. Dit helpt de groep om een lage score door ontbrekende informatie te onderscheiden van een lage score door inhoudelijke bezwaren.
 
 <!-- translation-section: read-the-results -->
 
-## Bekijk de resultaten
+## Het resultaat lezen
 
-Voor elke optie tonen de resultaten:
+Voor elke optie toont het resultaat:
 
 - **Punten**: de som van alle scores;
 - **Gemeen**: de gemiddelde score; en
-- **Stemmers**: het aantal mensen dat de optie een score heeft gegeven.
+- **Kiezers**: hoeveel mensen de optie een score hebben gegeven.
 
 ![](results.png)
 
-In dit voorbeeld heeft **het café bij het Centraal Station** met 7,5 de hoogste gemiddelde score. **De kantoren aan de haven** hebben met 5,25 de laagste gemiddelde score. De markt aan de rivier en de foodcourt van de universiteit staan allebei op 7. Vier van de vijf uitgenodigde mensen hebben gestemd. De groep kan dus ook zien dat er nog één stem ontbreekt.
+In dit voorbeeld heeft **Central Station cafe** het hoogste gemiddelde met 7,5. **Harbour offices** heeft het laagste gemiddelde met 5,25, terwijl Riverside market en University food court allebei een gemiddelde van 7 hebben. Vier van de vijf uitgenodigde mensen hebben gestemd, dus de groep kan ook zien dat er nog één reactie ontbreekt.
 
-Vergelijk gemiddelde scores alleen als ongeveer evenveel mensen de opties hebben beoordeeld. Lees de toelichtingen bij de stemmen voordat je een klein verschil betekenis geeft.
+Vergelijk gemiddelden alleen wanneer de opties ongeveer evenveel kiezers hebben. Lees de redenen bij de stemmen voordat je een klein verschil als betekenisvol beschouwt.
 
 <!-- translation-section: share-an-outcome -->
 
-## Deel een conclusie
+## Een conclusie delen
 
-Deel een conclusie wanneer de peiling sluit. Geef aan welke actie op basis van de scores volgt en hoe je eventuele gelijke scores afhandelt. Lees [Deel een conclusie](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome) voor uitleg over hoe conclusies werken.
+Deel een conclusie wanneer de peiling sluit. Geef aan welke actie volgt uit de scores en hoe eventuele gelijke scores worden afgehandeld. Zie [Een conclusie delen](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome) voor uitleg over hoe conclusies werken.
 
 ![Een conclusie waarin de locatie met de hoogste gemiddelde score wordt gekozen](outcome.png)

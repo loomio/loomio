@@ -1,10 +1,10 @@
 ---
 title: Voorbereiding
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/guides/facilitators_guide/preparation/index.md
+source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
+source_file: docs/en/guides/facilitators_guide/preparation/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-30'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 71d321ba45b2f805
   understand-purpose: a5a6600eac7b2d16
@@ -18,17 +18,17 @@ sections:
   power: b5f6b4ebd477c97c
   responsiveness: 4038185f64c37fac
 generated:
-  introduction: 565f7b959f48ec40
-  understand-purpose: '09dd8ba4f9ff5209'
-  rearrange-the-furniture: 3b38fd48f89e49ed
-  supplies-tools-materials: 6de72bcf1dc32be2
-  design-the-experience: c7fde9dcdbf206c1
-  contextualise-the-moment: ecee538fe02c3dc8
-  the-role-of-the-facilitator: 29ab1d3b98c6dcc0
-  consent: 32a7a85c7627ccad
-  responsibility: a53fcd5a448d6303
-  power: 137b5aa7c8a8c879
-  responsiveness: 597fa99b8960aafb
+  introduction: 3fd862ada84594d8
+  understand-purpose: 45fb418e9ff03e2b
+  rearrange-the-furniture: 89957451c8c59e05
+  supplies-tools-materials: df8cf961a0e0adc9
+  design-the-experience: 6e72f81f341909c1
+  contextualise-the-moment: a1eff142998c2a77
+  the-role-of-the-facilitator: be00754270bbdc62
+  consent: 5d6be314fde78789
+  responsibility: 63a57361deedfc67
+  power: 804b63536077a440
+  responsiveness: 6a6bc9ce23071044
 title_source: cf2befb0f1a62829
 title_generated: 26ec780337abd00e
 ---
@@ -39,7 +39,7 @@ title_generated: 26ec780337abd00e
 
 ![](cover.jpg)
 
-> <img style="border-radius: 100%; float: right; margin-left: 0.5em; max-width: 96px; " src="../silvia_200.png"> Overweeg om voor elke minuut met de groep drie minuten aan planning te besteden. Voor een bijeenkomst van een uur betekent dat drie uur voorbereiding. Pas wanneer je er beter in wordt, kun je minder tijd aan planning besteden.
+> <img style="border-radius: 100%; float: right; margin-left: 0.5em; max-width: 96px; " src="../silvia_200.png"> Overweeg om voor elke minuut met de groep 3 minuten aan planning te besteden. Dat betekent drie uur voorbereiding voor een sessie van één uur. Besteed pas minder tijd aan planning wanneer je er beter in wordt.
 >
 > — Silvia Zuur
 
@@ -47,114 +47,117 @@ title_generated: 26ec780337abd00e
 
 ## Begrijp het doel
 
-Een van de belangrijkste bijdragen van een ervaren facilitator is het doel helder krijgen. Als de groep weet wat zij wil bereiken, wordt de rest mogelijk. Een groep als geheel heeft een doel, maar ook afzonderlijke discussies en besluiten hebben dat. Het doel helpt je bepalen welke hulpmiddelen je inzet, wanneer je ingrijpt en naar welke conclusies je toewerkt. Zonder gedeeld begrip van het doel kan een discussie vastlopen, of zelfs de groep uiteenvallen.
+Het doel verduidelijken is een van de waardevolste bijdragen van een ervaren facilitator — als die de groep kan helpen het doel helder te krijgen, wordt al het andere mogelijk. Het doel speelt zowel op het niveau van de groep als geheel als op het niveau van afzonderlijke discussies en besluiten. Het helpt je te bepalen welke hulpmiddelen je inzet, welke interventies je doet en welke conclusies je nastreeft. Een gebrek aan gedeeld begrip van het doel kan een discussie, of de groep zelf, doen vastlopen.
 
-> Kom steeds terug op de vragen waarmee je het doel hebt bepaald. Zo controleer je of je aandacht besteedt aan wat deelnemers willen leren of bereiken. — Silvia Zuur
+> Pak steeds je vragen over het doel erbij om te controleren of je behandelt wat de deelnemers willen leren of bereiken. — Silvia Zuur
 
 Op Loomio
 
-* De app biedt ruimte om het doel uit te leggen, bijvoorbeeld in de [groepsbeschrijving](/en/user_manual/groups/starting_a_group/#group-description) en de [context van de discussie](/en/user_manual/discussions/using_discussions/#discussion-context).
-* Als het doel nog niet duidelijk is, kun je met je groep beginnen met een Loomio-discussie *over* dat doel.
-* Onze gebruiksstatistieken laten zien dat groepen met een duidelijk gedeeld doel meer bereiken.
-* De [verhalen en praktijkvoorbeelden van klanten](https://blog.loomio.com/?utm_campaign=facilitators_guide_help&utm_term=help) die we hebben verzameld, benadrukken het belang van een gezamenlijk doel.
+* De app biedt ruimte om het doel toe te lichten, zoals de velden voor de [groepsbeschrijving](/en/user_manual/groups/starting_a_group/#group-description) en de [context van de discussie](/en/user_manual/discussions/using_discussions/#discussion-context).
+* Een Loomio-discussie *over* het doel is een goed begin voor jouw groep als dat doel nog niet duidelijk is.
+* Onze gebruiksanalyses (statistieken over hoe mensen de software gebruiken) laten zien dat groepen met een duidelijk gedeeld doel succesvoller zijn.
+* De [klantverhalen en praktijkvoorbeelden](https://blog.loomio.com/?utm_campaign=facilitators_guide_help&utm_term=help) die we hebben verzameld, benadrukken het belang van een gezamenlijk doel.
 
 <!-- translation-section: rearrange-the-furniture -->
 
-## Richt de ruimte anders in
+## Verplaats de meubels
 
-De inrichting van de ruimte waarin je mensen uitnodigt, heeft veel invloed op hun ervaring. Elke bijeenkomst is anders en vraagt om een passende opzet. Een vertrouwde omgeving geeft houvast. Een andere inrichting kan mensen openstellen voor nieuwe ideeën.
+De inrichting van de ruimte waarin je mensen uitnodigt, heeft veel invloed op hun ervaring. Elke bijeenkomst is anders en verdient een passende opstelling. Een vertrouwde omgeving geeft een gevoel van veiligheid, terwijl een veranderde omgeving uitnodigt tot nieuwe ideeën.
 
-Bij een fysieke bijeenkomst kunnen facilitators het meubilair letterlijk verplaatsen. Dat helpt hen zich op de bijeenkomst voor te bereiden en na te denken over wat deze bijzonder maakt. Stel je het verschil voor tussen mensen die in rijen zitten en mensen die in een kring zitten.
+In fysieke ruimtes helpt het letterlijk verplaatsen van meubels facilitators om zich in te stellen op het begeleiden van de bijeenkomst en na te denken over wat deze sessie bijzonder maakt. Stel je het verschil voor tussen iedereen in rijen en iedereen in een kring.
 
 Op Loomio
 
-* Mensen uitnodigen in een nieuwe digitale ruimte speciaal voor besluitvorming kan veel betekenen. De overstap naar die ruimte maakt duidelijk dat deze een ander doel heeft dan online plekken voor sociaal contact of andere activiteiten.
-* Met [een aangepaste groepsfoto](/en/user_manual/groups/starting_a_group/#upload-a-group-photo) kun je de sfeer van de ruimte vormgeven.
-* De groepsbeschrijving is een belangrijk onderdeel van de groepspagina. Je kunt [de beschrijving aanpassen](/en/user_manual/groups/starting_a_group/#group-description) aan de groep.
+* Mensen uitnodigen in een nieuwe digitale ruimte die speciaal bedoeld is om besluiten te nemen, heeft een sterk effect — het voelt alsof je een drempel overgaat, waardoor de ruimte zich onderscheidt van andere online ruimtes (die bijvoorbeeld voor sociale contacten of andere activiteiten bedoeld zijn).
+* [Je groepsfoto aanpassen](/en/user_manual/groups/starting_a_group/#upload-a-group-photo) biedt een goede gelegenheid om de sfeer van de ruimte te bepalen.
+* De groepsbeschrijving is een belangrijk stuk “meubilair” op de groepspagina, en [je kunt die aanpassen](/en/user_manual/groups/starting_a_group/#group-description) aan wat je nodig hebt.
 
 <!-- translation-section: supplies-tools-materials -->
 
-## Benodigdheden, hulpmiddelen en materiaal
+## Benodigdheden, hulpmiddelen, materialen
 
-Als de begeleiding soepel verloopt, heeft de groep alles wat zij nodig heeft binnen handbereik. Bij een fysieke bijeenkomst zijn dat bijvoorbeeld plakbriefjes, pennen, papier, naamkaartjes, afdrukken en achtergrondinformatie. Goede voorbereiding op dit gebied geeft een facilitator meer tijd en aandacht voor het werk zelf.
+Wanneer de begeleiding soepel verloopt, heeft de groep alle benodigdheden bij de hand. In fysieke ruimtes zijn dat bijvoorbeeld plakbriefjes, pennen, papier, naambadges, afdrukken en achtergrondmateriaal. Elke stap die een facilitator zet om zo goed voorbereid te zijn, maakt meer tijd en energie vrij voor het werk.
 
 Op Loomio
 
-* Veel groepen gebruiken de groepsbeschrijving voor links naar gedeelde documenten, achtergrondinformatie, hun projectbeheer of takenlijst en contactgegevens.
-* Denk bij elke discussie na over wat mensen nodig hebben om mee te doen. Zet die informatie binnen handbereik. Als je bijvoorbeeld naar iets verwijst, helpt een directe link meer dan wanneer mensen er zelf naar moeten zoeken.
+* Veel groepen gebruiken de groepsbeschrijving om te linken naar een gedeelde schijf met documenten waaraan ze samen werken, achtergrondinformatie, het systeem voor projectbeheer of het bijhouden van taken van de groep, een lijst met contactpersonen, enzovoort.
+* Denk bij elke thread na over wat mensen nodig hebben om eraan deel te nemen — het is essentieel dat alle informatie direct beschikbaar is (als je bijvoorbeeld ergens naar verwijst, is een directe link veel effectiever dan verwachten dat mensen er zelf naar zoeken).
 
 <!-- translation-section: design-the-experience -->
 
 ## Ontwerp de ervaring
 
-Als het doel, de hulpmiddelen en de achtergrondinformatie duidelijk zijn, denken goede facilitators na over de ervaring waarvoor zij mensen uitnodigen. Ze kijken naar de situatie, wat een geslaagde bijeenkomst zou zijn en welke routes en keuzes mogelijk zijn. Ze beginnen met een doordachte opzet.
+Zodra de basis op orde is (doel, hulpmiddelen, achtergrondinformatie), nemen goede facilitators de tijd om na te denken over de ervaring die ze willen bieden: de situatie, hoe succes eruit kan zien en alle mogelijke routes en keuzes. Ze beginnen met een doordacht ontwerp.
 
-We zien telkens weer dat mensen onderschatten hoeveel voorbereiding en ontwerp nodig zijn. Neem voordat je begint de tijd om na te denken over de ervaring die je wilt begeleiden. Die voorbereiding betaalt zich later terug.
+We hebben keer op keer gezien dat mensen de noodzaak van voorbereiding en ontwerp sterk onderschatten. Sta stil bij de ervaring die je wilt bieden voordat je begint. De tijd die je in het ontwerp steekt, betaalt zich later ruimschoots terug in het succes van het proces.
+
 
 Op Loomio
 
-* De basisfuncties van Loomio volgen de opzet van goede begeleiding: nodig mensen uit, bespreek een onderwerp, verzamel verschillende meningen, werk toe naar een concreet voorstel, toets of er overeenstemming is en bevestig de conclusie.
+* De basisfuncties van Loomio volgen bewust de structuur van goede begeleiding: nodig mensen uit, bespreek een onderwerp, verzamel uiteenlopende inbreng, werk toe naar een concreet voorstel, toets of mensen het eens zijn en bevestig de conclusie.
+
 
 ![](../collaboration-process.png)
 
-* Ervaren gebruikers passen Loomio al aan voor verschillende werkwijzen, zoals raadplegingen in meerdere stappen of het goedkeuren van documenten. Een goed begeleid proces krijgt vaak een vorm die je kunt herhalen.
-* Voor online samenwerking hoef je niet opnieuw te beginnen. Ga uit van wat volgens jou werkt en pas dat aan. Veel beproefde werkwijzen voor fysieke bijeenkomsten zijn ook online te gebruiken, zoals het [adviesproces](/en/guides/making_decisions/advice_process.html).
-* [Praktijkvoorbeelden](https://blog.loomio.com/?utm_campaign=facilitators_guide_help&utm_term=help) van doordacht ontworpen processen kunnen als leidraad dienen. Weet je niet welke opzet je moet kiezen, kijk dan eerst wat anderen hebben geprobeerd.
+* Ervaren gebruikers passen Loomio al aan voor verschillende procesontwerpen — zoals raadplegingen in meerdere stappen, het goedkeuren van documenten, enzovoort. Elke taak krijgt bij effectieve begeleiding een bepaalde, herhaalbare vorm.
+* Bij het ontwerpen van online samenwerking hoef je het wiel niet opnieuw uit te vinden. Vertrouw op wat volgens jouw ervaring werkt en vertaal dat naar de online omgeving. Veel beproefde offline processen zijn daarvoor geschikt (bijvoorbeeld het [adviesproces](/en/guides/making_decisions/advice_process.html)).
+* [Praktijkvoorbeelden](https://blog.loomio.com/?utm_campaign=facilitators_guide_help&utm_term=help) van doordachte processen kunnen als “recepten” dienen — als je niet weet welk ontwerp je moet kiezen, bekijk dan eerst wat anderen hebben geprobeerd.
 
 <!-- translation-section: contextualise-the-moment -->
 
-## Plaats het moment in de juiste context
+## Plaats het moment in de context
 
-Discussies staan niet op zichzelf. Ze maken deel uit van de geschiedenis en de werkwijze van de groep. Goede begeleiding vraagt om het juiste moment en moet passen bij de rest van het groepsproces.
+Discussies staan niet op zichzelf, maar maken deel uit van de geschiedenis en werkwijze van de groep. Om effectief te zijn, moeten begeleide processen op het juiste moment plaatsvinden en aansluiten bij de rest van het groepsproces.
 
 Belangrijke vragen over de context:
 
 * Is dit een overgangsmoment?
-* Bouwen we voort op een bestaande werkwijze?
-* Is dit een van meerdere processen die tegelijk lopen, of krijgt dit alle aandacht?
-* Willen we een probleem oplossen, of het onderwerp verder verdiepen, verbreden of afbakenen?
+* Is dit een verbetering van de bestaande werkwijze?
+* Is dit een van meerdere processen die tegelijk lopen, of staat dit op zichzelf centraal?
+* Zijn we hier om een probleem op te lossen, of om te verdiepen, te verbreden of de focus te versmallen?
 
 Op Loomio
 
-* Loomio-groepen hebben bijna altijd iemand die het initiatief neemt. Die persoon kent de context van de groep en beoordeelt of Loomio daarbij past.
-* Probeer niet alles tegelijk te veranderen. Groepen nemen Loomio makkelijker in gebruik als het goed aansluit op hun bestaande werkwijze.
-* Het juiste moment is wanneer de groep klaar is om online samen te werken. Mensen moeten merken dat zij een online ruimte voor besluitvorming missen en dat willen oplossen.
-* Houd rekening met de beschikbare aandacht van de groep wanneer je bepaalt wanneer je een onderwerp aan de orde stelt. De gezamenlijke aandacht is beperkt.
-* Veel groepen staan nauwelijks stil bij hoe zij nu samenwerken. Daardoor is ook niet duidelijk hoe Loomio daarbij kan passen. Begin met een discussie over de huidige werkwijze en wat wel en niet werkt.
+* Loomio-groepen hebben bijna altijd een “trekker” die de context van de groep begrijpt en beoordeelt of de invoering van Loomio bij de groep past.
+* Het is niet verstandig om alles tegelijk te veranderen. Groepen nemen Loomio gemakkelijker in gebruik wanneer het goed aansluit bij bestaande werkprocessen.
+* Het juiste moment is wanneer de groep klaar is om online samenwerking effectief in haar werkwijze op te nemen. De groep moet de nadelen ervaren van het ontbreken van een online ruimte om besluiten te nemen en gemotiveerd zijn om dat probleem op te lossen.
+* Houd rekening met wat al de aandacht van de groep vraagt om te bepalen wanneer je een onderwerp het beste kunt aankaarten. Gezamenlijke aandacht is beperkt.
+* Veel groepen zijn zich niet eens bewust van hun bestaande manier van samenwerken en hun gewoonten, laat staan dat ze weten hoe Loomio daarbij kan passen. Begin met een discussie over de huidige werkwijze en wat wel en niet werkt.
 
 <!-- translation-section: the-role-of-the-facilitator -->
 
 ## De rol van de facilitator
 
-Goede begeleiding vraagt dat zowel de facilitator als de groep zich bewust is van de eigen rol. Onduidelijkheid over die rol kan leiden tot misverstanden, conflicten of onveilige situaties.
+Goede begeleiding vraagt om zelfbewustzijn op individueel en groepsniveau. Een onduidelijk begrip van de rol kan leiden tot misverstanden, conflicten of onveilige situaties.
 
-> Zorg dat iemand het vertrouwen aan je overdraagt. Als je bij een nieuwe groep of organisatie wordt uitgenodigd, zullen mensen zich afvragen: wie is die persoon en waarom zouden we luisteren? Vraag iemand die de deelnemers kennen en vertrouwen om je voor te stellen. Dat helpt hen vertrouwen in je te krijgen en geeft je de ruimte om je rol te vervullen. — Silvia Zuur
+> Laat de bevoegdheid aan je overdragen. Wanneer je wordt uitgenodigd in een nieuwe groep of organisatie, denkt iedereen: Wie is deze figuur? Waarom zouden we naar die persoon luisteren? Laat iemand die de deelnemers kennen en vertrouwen je voorstellen. Dat versterkt je positie bij de deelnemers en helpt om de bevoegdheid aan je over te dragen. — Silvia Zuur
 
 <!-- translation-section: consent -->
 
 ### Instemming
-Het is essentieel dat de groep instemt met de begeleiding. Zonder die instemming kan begeleiding in het ergste geval dwingend zijn voor de groep en riskant voor de facilitator. Ook kan het weerstand en verwarring oproepen. Facilitators stellen zich kwetsbaar op. Ze hebben een mandaat nodig en moeten de rol anders niet aannemen. Instemming is belangrijk voor zowel de facilitator als de deelnemers.
+Het is essentieel dat de groep instemt met de begeleiding. Zonder die instemming kan een poging tot begeleiding in het ergste geval dwingend zijn (onrechtvaardig voor de groep) en gevaarlijk (onrechtvaardig voor de facilitator) — en leidt die tot weerstand en verwarring. Facilitators stellen zich kwetsbaar op; ze moeten een mandaat hebben en anders de opdracht niet aannemen. Instemming is essentieel voor zowel de facilitator als de deelnemers.
 
 <!-- translation-section: responsibility -->
 
 ### Verantwoordelijkheid
-Zodra een facilitator een mandaat aanneemt, krijgt die extra verantwoordelijkheden. Facilitators nemen vaker het woord en sturen de aandacht van de groep. Dat moeten ze doen in het belang van de hele groep, niet voor een eigen agenda. Hun woorden en houding hebben ook meer invloed. Daarom moeten ze extra zorgvuldig handelen.
+Zodra een facilitator een mandaat aanvaardt, krijgt die extra verantwoordelijkheden. Facilitators hebben meer recht op spreektijd en op het sturen van de aandacht van de groep. Dat moet het geheel dienen, niet een persoonlijke agenda. Ook de woorden en houding van de facilitator hebben een grotere invloed, waardoor die extra zorgvuldig moet handelen.
 
 <!-- translation-section: power -->
 
 ### Macht
-Begeleiding brengt van nature een verschil in zeggenschap met zich mee. Een facilitator kan het werk niet doen zonder die zeggenschap soms te gebruiken. Om een discussie bij het onderwerp te houden, kan die bijvoorbeeld iemand onderbreken of aangeven dat een bepaalde manier van omgaan met elkaar niet goed is. Je kunt een facilitator niet verantwoordelijk maken voor het verloop zonder de bevoegdheden die daarvoor nodig zijn. Hoeveel zeggenschap passend is, hangt af van de verantwoordelijkheid.
+Begeleiding brengt van nature machtsverschillen met zich mee. Als de facilitator bepaalde bevoegdheden niet kan uitoefenen, kan die het werk niet doen. Om een discussie bij het onderwerp te houden, kan de facilitator bijvoorbeeld iemand onderbreken of zeggen dat een bepaalde manier van omgaan met elkaar niet acceptabel is. Je kunt van een facilitator niet verwachten dat die verantwoordelijkheid draagt voor het verloop zonder de bevoegdheden te geven die nodig zijn om dat goed te begeleiden. Er is geen eenduidig antwoord op de vraag hoeveel macht passend is, maar die moet in verhouding staan tot de verantwoordelijkheid.
 
 <!-- translation-section: responsiveness -->
 
 ### Aanpassingsvermogen
-Facilitators werken het best wanneer ze kunnen inspelen op wat er tijdens een bijeenkomst gebeurt. Mensen zijn complex, en groepen nog meer. Strikt vasthouden aan een plan of werkwijze kan de groep in de weg staan. Als een facilitator zich niet mag of wil aanpassen aan veranderende omstandigheden, kan die de groep niet goed begeleiden.
+Facilitators doen hun werk het beste wanneer ze zich effectief kunnen aanpassen aan wat zich voordoet. Mensen zijn zeer complex, en groepen mensen nog veel meer. Star vasthouden aan een plan of protocol kan de groep laten vastlopen. Als een facilitator zich niet mag of wil aanpassen aan veranderende omstandigheden, kan die mensen en hun onderlinge dynamiek niet effectief begeleiden.
 
-> Zet je facilitatorpet op en af. Veel mensen vinden het lastig om bijeenkomsten en workshops van hun eigen team te begeleiden. Als facilitator moeten ze neutraal zijn. Als teamlid hebben ze waardevolle inzichten te delen. Maak duidelijk wanneer je de facilitator bent en wanneer je als deelnemer spreekt. — Silvia Zuur
+> Zet je facilitatorpet op en af. Veel mensen vinden het lastig om bijeenkomsten en workshops met hun eigen team te begeleiden. Als facilitator moeten ze neutraal zijn. Maar als teamlid hebben ze waardevolle inzichten te delen. Maak heel duidelijk wanneer je facilitator bent en wanneer je deelnemer bent. — Silvia Zuur
+
 
 Op Loomio
 
-* Veel groepen die Loomio gebruiken, hebben ervaring met begeleiding en delen al een beeld van de rol van de facilitator. Zij passen Loomio aan hun behoeften aan.
-* Vaak gaan mensen ervan uit dat degene die een discussie start, deze ook begeleidt, tenzij de groep iets anders heeft afgesproken. Duidelijkheid over wie de discussie begeleidt, helpt mensen zich veilig te voelen en goed samen te werken.
-* Loomio maakt het makkelijk om de begeleiding te verdelen. Mensen kunnen anderen vermelden, vragen om bij het onderwerp te blijven of een goed moment voor een voorstel suggereren. Vaak blijft onuitgesproken dat dit vormen van begeleiding zijn. Benoem deze handelingen en bespreek of één persoon de rol heeft of dat de groep haar verdeelt.
-* Een online groep kan beginnen zonder iemand expliciet als facilitator aan te wijzen. Die impliciete verdeling werkt echter het best voor ervaren groepen die eerder met expliciete begeleiding hebben gewerkt.
+* Veel groepen die Loomio gebruiken, hebben ervaring met begeleiding en delen al een begrip van de rol. Ze passen het hulpmiddel al met enig succes aan om in deze behoeften te voorzien.
+* Vaak wordt aangenomen dat de persoon die een discussie start, die ook begeleidt, tenzij de groep daar andere afspraken over heeft. Duidelijkheid over wie de begeleiding op zich neemt, kan het gevoel van veiligheid en het succes sterk vergroten.
+* Loomio biedt vanzelf ruimte voor gedeelde begeleiding, zoals gebruikers die anderen erbij betrekken, verzoeken om bij het onderwerp te blijven, suggesties voor het juiste moment voor een voorstel, enzovoort — maar dit blijft vaak impliciet. Benoem expliciet welke handelingen onder begeleiding vallen en bespreek of deze rol bij één persoon ligt of wordt gedeeld. Dat kan de rol verduidelijken.
+* Impliciete, gedeelde begeleiding kan het vertrekpunt zijn voor een online groep (dus zonder begeleiding als een benoemde rol te bespreken), maar deze opzet past eigenlijk het beste bij ervaren groepen die verder zijn dan werken met expliciete begeleiding.

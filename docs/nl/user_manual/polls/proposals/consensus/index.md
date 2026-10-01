@@ -1,6 +1,6 @@
 ---
 title: Consensus
-source_revision: 9c60c42fc739483fa23f15d9f34a1e9245518092
+source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
 source_file: docs/en/user_manual/polls/proposals/consensus/index.md
 translated:
   provider: codex/gpt-6.1-sol
@@ -14,13 +14,13 @@ sections:
   read-the-results: e60abb3a43a86d6e
   share-an-outcome: a7febe19484c20b3
 generated:
-  introduction: b682d25cd375efd0
-  when-to-use-consensus: 9b61662a1d1fec8f
-  example-adopt-a-bottle-return-standard: b912b654b7ec5f7b
-  set-up-the-proposal: 6abbaace0e80a998
-  vote: 7891f9fc38f3fb49
-  read-the-results: 2531e1f61b3ce6d3
-  share-an-outcome: 39cc63c6a5da039b
+  introduction: e0ce65a27be05dcb
+  when-to-use-consensus: 77c70e4e03c611e7
+  example-adopt-a-bottle-return-standard: 32eec1dfd9b5fe10
+  set-up-the-proposal: bb0e2fe6e1024f96
+  vote: cc11c5dac6cf89e8
+  read-the-results: 45d42fba0d0b6ac5
+  share-an-outcome: 33a460e441569f09
 title_source: 8abe09bf65aefdb8
 title_generated: 8abe09bf65aefdb8
 ---
@@ -29,29 +29,29 @@ title_generated: 8abe09bf65aefdb8
 
 # Consensus
 
-Een consensusvoorstel is bedoeld om met alle betrokkenen tot overeenstemming te komen. De standaardreacties zijn eens, onthouden, oneens en blokkeren.
+Een consensusvoorstel zoekt overeenstemming tussen alle betrokkenen. Met de standaardantwoorden kunnen deelnemers aangeven dat ze het eens zijn, zich onthouden, het oneens zijn of een veto uitspreken.
 
-Deze pagina legt uit hoe je één consensusvoorstel behandelt. Bekijk het [consensusproces](/en/guides/making_decisions/consensus_process) voor het volledige verloop: van discussie en een peiling van de standpunten tot aanpassingen en een conclusie.
+Deze pagina legt uit hoe je één consensusvoorstel gebruikt. Bekijk het [Consensusproces](/en/guides/making_decisions/consensus_process) voor het volledige proces, van discussie en gevoelscheck tot aanpassing en conclusie.
 
 <!-- translation-section: when-to-use-consensus -->
 
-## Wanneer gebruik je consensus?
+## Wanneer gebruik je Consensus?
 
-Gebruik consensus voor besluiten waarbij brede betrokkenheid belangrijk is en de groep bereid is zorgen samen te bespreken. Het past bij gezamenlijke standaarden, afspraken over bestuur, strategische toezeggingen en besluiten die de hele groep raken.
+Gebruik Consensus voor besluiten waarbij breed gedragen verantwoordelijkheid belangrijk is en de groep bereid is om samen bezwaren te bespreken en op te lossen. Het is geschikt voor gezamenlijke normen, afspraken over bestuur, strategische toezeggingen en besluiten die de hele groep raken.
 
-Voor consensus zijn meestal een discussie en de uitwerking van een voorstel nodig voordat er wordt gestemd. Spreek met je groep af wat **Blokkeer** betekent en wat de gevolgen ervan zijn. Gebruikt jouw groep deze optie niet, verwijder die dan uit het sjabloon.
+Consensus vereist meestal discussie en het uitwerken van een voorstel voordat deelnemers stemmen. Bepaal wat **Veto** voor jouw groep betekent en welke gevolgen het heeft. Als jouw proces geen veto's gebruikt, pas dan het sjabloon aan om die optie te verwijderen.
 
 <!-- translation-section: example-adopt-a-bottle-return-standard -->
 
-## Voorbeeld: een standaard voor het retourneren van flessen invoeren
+## Voorbeeld: een norm voor het inleveren van flessen vaststellen
 
-Oatmilk Cooperative heeft een standaard opgesteld voor statiegeld, inzameling, reiniging, voedselveiligheidsregistratie en verslaglegging. Omdat elk team de standaard gaat gebruiken, zoekt de coöperatie eerst consensus over de invoering ervan.
+Oatmilk Cooperative heeft een norm ontwikkeld voor statiegeld, inzameling, reiniging, voedselveiligheidsregistratie en rapportage. Omdat elk team deze norm zal gebruiken, zoekt de coöperatie consensus voordat ze de norm vaststelt.
 
 <!-- translation-section: set-up-the-proposal -->
 
 ## Stel het voorstel op
 
-Beschrijf de volledige afspraak waarover de groep beslist en verwijs naar ondersteunende informatie. Leg elke reactie uit, vooral het verschil tussen oneens zijn en blokkeren. Geef voldoende tijd voor vragen en aanpassingen.
+Beschrijf de volledige afspraak die ter overweging ligt en link naar ondersteunende informatie. Leg elk antwoord uit, vooral het verschil tussen het oneens zijn en een veto uitspreken. Geef voldoende tijd voor vragen en aanpassingen.
 
 ![](form.png)
 
@@ -59,15 +59,15 @@ Beschrijf de volledige afspraak waarover de groep beslist en verwijs naar onders
 
 ## Stem
 
-Deelnemers kiezen de reactie die bij hun standpunt past en leggen uit welke belangen of zorgen eraan ten grondslag liggen. Wie blokkeert, moet aangeven waarom het voorstel een fundamentele behoefte of een afgesproken principe zou schenden.
+Deelnemers kiezen het antwoord dat bij hun standpunt past en leggen de achterliggende belangen of bezwaren uit. De reden voor een veto moet duidelijk maken waarom het aannemen van het voorstel een fundamentele behoefte of een afgesproken principe zou schenden.
 
 ![](../proposal_consensus_voting.png)
 
 <!-- translation-section: read-the-results -->
 
-## Bekijk de resultaten
+## Bekijk het resultaat
 
-De grafiek laat de verdeling van de reacties zien. Bekijk elke reden om het oneens te zijn of te blokkeren. Consensus draait om het oplossen van zorgen, niet alleen om het tellen van stemmen vóór het voorstel.
+De grafiek toont de verdeling van de antwoorden. Bekijk elke stem voor Oneens en elke reden voor een veto; consensus is een proces om bezwaren op te lossen, niet alleen om stemmen voor Eens te tellen.
 
 ![](../proposal_consensus_results.png)
 
@@ -75,6 +75,6 @@ De grafiek laat de verdeling van de reacties zien. Bekijk elke reden om het onee
 
 ## Deel een conclusie
 
-Deel een conclusie wanneer het voorstel sluit. Heeft de groep overeenstemming bereikt, leg dan de definitieve afspraak vast en vermeld wie verantwoordelijk is. Leg anders vast wat er wordt aangepast en wanneer de groep het voorstel opnieuw bespreekt. Zie [Deel een conclusie](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome) voor uitleg over hoe conclusies werken.
+Deel een conclusie wanneer het voorstel sluit. Als de groep overeenstemming heeft bereikt, leg dan de definitieve afspraak vast en vermeld wie verantwoordelijk is. Leg anders vast wat wordt aangepast en wanneer de groep het voorstel opnieuw bespreekt. Bekijk [Deel een conclusie](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome) voor uitleg over hoe conclusies werken.
 
-![Een conclusie waarin staat dat er geen consensus is bereikt en dat de standaard wordt aangepast](outcome.png)
+![Een conclusie waarin staat dat er geen consensus is bereikt en dat de norm wordt aangepast](outcome.png)

@@ -1,20 +1,20 @@
 ---
 title: Groepsinstellingen
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/groups/settings/index.md
+source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
+source_file: docs/en/user_manual/groups/settings/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: b975fe0dc7787563
   group-profile: 673d2b31980f069a
   group-privacy: c6031b3bd445f30e
   group-permissions: 3ddfc79177b464e5
 generated:
-  introduction: 1220acbc356d2f96
-  group-profile: 0b24e8dec24c6fca
-  group-privacy: 367330b6be7f4932
-  group-permissions: 8eb6613c384b9ad1
+  introduction: 4082da6a50102f41
+  group-profile: c041416159b99aa1
+  group-privacy: c84ea89fe5d81f42
+  group-permissions: 2c61e7f5273c4e46
 title_source: ba4062f844a984f5
 title_generated: a93752d8c7c0fef1
 ---
@@ -23,28 +23,28 @@ title_generated: a93752d8c7c0fef1
 
 # Groepsinstellingen
 
-Met de groepsinstellingen bepaal je hoe jouw groep wordt weergegeven, wie de groep kan vinden en lid kan worden, en wat leden mogen doen. Alleen groepsbeheerders kunnen deze instellingen bewerken.
+Groepsinstellingen bepalen hoe jouw groep wordt weergegeven, wie de groep kan vinden en er lid van kan worden, en wat leden mogen doen. Alleen groepsbeheerders kunnen deze instellingen bewerken.
 
-Open op de groepspagina het actiemenu en kies **Bewerk groepsinstellingen**.
+Open op de groepspagina het actiemenu en selecteer **Bewerk groepsinstellingen**.
 
-![Bewerk groepsinstellingen vanaf de groepspagina](group_settings.png)
+![Groepsinstellingen bewerken vanaf de groepspagina](group_settings.png)
 
-Het instellingenformulier heeft drie onderdelen:
+Het instellingenformulier is verdeeld in drie onderdelen:
 
 <!-- translation-section: group-profile -->
 
 ## Groepsprofiel
 
-[Groepsprofiel](/en/user_manual/groups/settings/profile) gaat over de groepsnaam, gebruikersnaam, beschrijving, omslagafbeelding en het logo.
+[Groepsprofiel](/en/user_manual/groups/settings/profile) bevat de groepsnaam, de gebruikersnaam, de beschrijving, de omslagafbeelding en het logo.
 
 <!-- translation-section: group-privacy -->
 
 ## Groepsprivacy
 
-[Groepsprivacy](/en/user_manual/groups/settings/privacy) gaat over wie de groep kan vinden, wie de inhoud kan lezen, hoe mensen lid worden, de vermelding in de groepsgids en het volgen van een openbare groep.
+[Groepsprivacy](/en/user_manual/groups/settings/privacy) bepaalt wie de groep kan vinden, wie de inhoud kan lezen, hoe mensen lid worden, of de groep in de groepslijst staat en hoe mensen een openbare groep kunnen volgen.
 
 <!-- translation-section: group-permissions -->
 
-## Groepstoestemmingen
+## Groepsrechten
 
-Bij [Groepstoestemmingen](/en/user_manual/groups/settings/permissions) bepaal je welke acties leden, niet-leden en beheerders kunnen uitvoeren.
+[Groepsrechten](/en/user_manual/groups/settings/permissions) bepaalt welke acties leden, niet-leden en beheerders kunnen uitvoeren.

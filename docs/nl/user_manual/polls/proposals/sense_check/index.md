@@ -1,6 +1,6 @@
 ---
 title: Gevoelscontrole
-source_revision: 9c60c42fc739483fa23f15d9f34a1e9245518092
+source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
 source_file: docs/en/user_manual/polls/proposals/sense_check/index.md
 translated:
   provider: codex/gpt-6.1-sol
@@ -14,49 +14,49 @@ sections:
   read-the-results: 9cac8b6f7c7de36f
   share-an-outcome: b05f9f889a838d47
 generated:
-  introduction: 3d2e2f6c844a6ce9
-  when-to-use-sense-check: 60e58575939f68d4
-  example-check-a-trial-plan: 64555e4aa4648d64
-  set-up-the-proposal: a4ddc4f8b8385ac6
-  vote: 1424ad1344126646
-  read-the-results: 4dc968a12502b13a
-  share-an-outcome: 22b42af0d430a548
+  introduction: dfa89cced81974c5
+  when-to-use-sense-check: 8398a55742d5d98f
+  example-check-a-trial-plan: 2c9ad2cf941bbf72
+  set-up-the-proposal: 47a3c6431fcd95dd
+  vote: 537e97154ff55eac
+  read-the-results: 5b75c079013c667b
+  share-an-outcome: c5280fb937602bbf
 title_source: e9ac5b767e01ae7b
 title_generated: 8e953c8075ac8fb2
 ---
 
 <!-- translation-section: introduction -->
 
-# Gevoelscontrole
+# Gevoelscheck
 
-Met een gevoelscontrole verzamel je reacties terwijl een idee nog wordt uitgewerkt. De opties **Ziet er goed uit**, **Het zou beter kunnen.** en **Moet opnieuw worden bekeken** laten zien of de groep verder kan of het idee eerst moet aanpassen.
+Een gevoelscheck verzamelt emoji-reacties terwijl een idee nog wordt ontwikkeld. De opties—**Ziet er goed uit**, **Het zou beter kunnen.** en **Moet opnieuw worden bekeken**—laten zien of de groep klaar is om verder te gaan of het idee eerst moet aanpassen.
 
-Op deze pagina lees je hoe je een gevoelscontrole uitvoert. Bekijk het [eenvoudige besluitvormingsproces](/en/guides/making_decisions/simple_decision_process), het [toestemmingsproces](/en/guides/making_decisions/consent_process) of het [consensusproces](/en/guides/making_decisions/consensus_process) voor voorbeelden waarin een gevoelscontrole deel uitmaakt van een groter proces.
+Deze pagina legt uit hoe je een gevoelscheck uitvoert. Bekijk het [Eenvoudige besluitvormingsproces](/en/guides/making_decisions/simple_decision_process), het [Consentproces](/en/guides/making_decisions/consent_process) of het [Consensusproces](/en/guides/making_decisions/consensus_process) voor voorbeelden waarin een gevoelscheck één stap in een groter proces is.
 
 <!-- translation-section: when-to-use-sense-check -->
 
-## Wanneer gebruik je een gevoelscontrole?
+## Wanneer gebruik je een gevoelscheck?
 
-Gebruik een gevoelscontrole om:
+Gebruik een gevoelscheck om:
 
-- een eerste concept te toetsen voordat je tijd steekt in een uitgewerkt voorstel;
-- vragen en zorgen boven tafel te krijgen vóór een formeel besluit;
-- te bepalen of er nog een discussieronde nodig is; of
-- de steun voor een idee vóór en na een aanpassing te vergelijken.
+- een eerste concept te toetsen voordat je tijd steekt in een gedetailleerd voorstel;
+- vragen en zorgen naar boven te halen vóór een formeel besluit;
+- te controleren of er nog een discussieronde nodig is; of
+- de steun vóór en na het aanpassen van een idee te vergelijken.
 
-Beschouw **Ziet er goed uit** alleen als formele goedkeuring als de groep dat uitdrukkelijk heeft afgesproken. Gebruik [Toestemming](../consent/) of [Overeenstemming](../consensus/) als de reacties een besluit moeten bekrachtigen.
+Beschouw **Ziet er goed uit** niet als formele goedkeuring, tenzij de groep dit expliciet heeft afgesproken. Gebruik [Consent](../consent/) of [Consensus](../consensus/) wanneer het antwoord een besluit moet bekrachtigen.
 
 <!-- translation-section: example-check-a-trial-plan -->
 
-## Voorbeeld: een proefplan toetsen
+## Voorbeeld: toets een proefplan
 
-Oatmilk Cooperative heeft een proef met herbruikbare flessen uitgewerkt. De coöperatie gebruikt een gevoelscontrole om te zien of het inzamelschema, de controles op het reinigen en het plan voor verslaglegging klaar zijn voor de laatste beoordeling.
+Oatmilk Cooperative heeft een proef met retourflessen uitgewerkt. De coöperatie voert een gevoelscheck uit om te bepalen of het inzamelschema, de controles op het wassen en het rapportageplan klaar zijn voor de definitieve beoordeling.
 
 <!-- translation-section: set-up-the-proposal -->
 
 ## Stel het voorstel op
 
-Beschrijf in welke fase het idee zich bevindt en wat er met de feedback gebeurt. Behoud de standaardbetekenis van de reacties of pas die aan het taalgebruik van de groep aan. Kies een sluitingstijd die genoeg ruimte laat om het plan te herzien.
+Geef aan in welke fase het idee zich bevindt en wat er met de feedback gebeurt. Behoud de standaardbetekenissen van de antwoorden of pas ze aan het taalgebruik van de groep aan. Stel een sluitingstijd in die genoeg tijd overlaat om het plan aan te passen.
 
 ![](form.png)
 
@@ -64,15 +64,15 @@ Beschrijf in welke fase het idee zich bevindt en wat er met de feedback gebeurt.
 
 ## Stem
 
-Deelnemers kiezen de reactie die het best bij hun huidige mening past. Ze leggen uit wat al goed is of wat moet veranderen. Een concrete reden geeft de indiener van het voorstel iets om mee aan de slag te gaan.
+Deelnemers kiezen het antwoord dat hun huidige mening het beste weergeeft en leggen uit wat klaar is of wat moet veranderen. Een bruikbare reden geeft de auteur van het voorstel iets concreets om mee aan de slag te gaan.
 
 ![](../proposal_sense_check_voting.png)
 
 <!-- translation-section: read-the-results -->
 
-## Bekijk de resultaten
+## Bekijk het resultaat
 
-De grafiek toont het aantal stemmen en het aandeel per reactie. Lees zowel de redenen achter de stemmen als de verdeling: één goed onderbouwde zorg kan aandacht vragen, zelfs als de meeste deelnemers **Ziet er goed uit** kiezen.
+De grafiek toont het aantal en het aandeel stemmen voor elk antwoord. Lees naast de verdeling ook de redenen: één goed onderbouwde zorg kan aandacht vragen, zelfs als de meeste deelnemers **Ziet er goed uit** selecteren.
 
 ![](../proposal_sense_check_results.png)
 
@@ -80,6 +80,6 @@ De grafiek toont het aantal stemmen en het aandeel per reactie. Lees zowel de re
 
 ## Deel een conclusie
 
-Deel een conclusie wanneer de gevoelscontrole sluit. Vat samen welke veranderingen de groep gaat aanbrengen, of leg vast dat het idee klaar is voor de volgende stap in de besluitvorming. Bekijk [Deel een conclusie](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome) voor uitleg over hoe conclusies werken.
+Deel een conclusie wanneer de gevoelscheck sluit. Vat samen welke wijzigingen de groep zal aanbrengen, of leg vast dat het idee klaar is voor de volgende stap in het besluitvormingsproces. Bekijk [Deel een conclusie](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome) voor uitleg over hoe conclusies werken.
 
-![Een conclusie waarin staat dat het plan vóór de definitieve beoordeling wordt herzien](outcome.png)
+![Een conclusie waarin staat dat het plan vóór de definitieve beoordeling wordt aangepast](outcome.png)

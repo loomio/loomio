@@ -1,10 +1,10 @@
 ---
 title: Peilingen
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/polls/proposal_types/index.md
+source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
+source_file: docs/en/user_manual/polls/proposal_types/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 286e04a878e4c1d9
   simple-poll: d362d91b19914c39
@@ -14,13 +14,13 @@ sections:
   time-poll: 8b3a09b278bd7fde
   stv-election: e8407157d29424e4
 generated:
-  introduction: 90658e8a508e57e3
-  simple-poll: 7f81e3a18f8d6c57
-  score-poll: e97cf75e5644d65c
-  dot-vote: 0e6e6b1cd63531a5
-  ranked-choice: ac0d8743b29d0c00
-  time-poll: 47c69a8ca4431aa6
-  stv-election: d74911f3b8575f3d
+  introduction: eb06308bcd5e3b08
+  simple-poll: 7e88506ba763b2da
+  score-poll: 61fd2c0c603d7ccf
+  dot-vote: 58cbf637a035f7b4
+  ranked-choice: f4329f126555b593
+  time-poll: 5b110c6d75db522a
+  stv-election: a07038d1d2cdaeb2
 title_source: 996729458535904a
 title_generated: 70a5a9cd525d0591
 ---
@@ -29,40 +29,40 @@ title_generated: 70a5a9cd525d0591
 
 # Peilingen
 
-Met peilingen verzamel je keuzes, scores, puntverdelingen, rangschikkingen, beschikbaarheid of stemmen bij een verkiezing. Kies de stemmethode op basis van wat deelnemers willen aangeven en hoe je de uitslag wilt gebruiken. Gebruik een [Voorstel](/en/user_manual/polls/proposals/) als mensen moeten reageren op een stelling of plan.
+Peilingen verzamelen keuzes, scores, puntenverdelingen, rangschikkingen, beschikbaarheid of stemmen voor verkiezingen. Kies de stemmethode op basis van wat deelnemers moeten kunnen aangeven en hoe je het resultaat wilt gebruiken. Gebruik een [voorstel](/en/user_manual/polls/proposals/) wanneer mensen moeten reageren op een stelling of een voorgestelde aanpak.
 
 <!-- translation-section: simple-poll -->
 
 ## Eenvoudige peiling
 
-Met [Kiezen](/en/user_manual/polls/choose/) kunnen deelnemers een of meer opties selecteren. Gebruik deze methode om de populairste optie te vinden of een shortlist te maken.
+Met [Kiezen](/en/user_manual/polls/choose/) kunnen deelnemers één of meer opties selecteren. Gebruik deze methode om de populairste optie te vinden of een shortlist te maken.
 
 <!-- translation-section: score-poll -->
 
 ## Scorepeiling
 
-Met [Score](/en/user_manual/polls/score/) beoordelen deelnemers elke optie op dezelfde schaal. Zo vergelijk je hoeveel steun er voor opties is en hoe gereed, geschikt of belangrijk ze worden gevonden.
+Met [Beoordelen](/en/user_manual/polls/score/) kunnen deelnemers elke optie op dezelfde schaal beoordelen. Gebruik deze methode om de mate van steun, gereedheid, geschiktheid of belang van opties te vergelijken.
 
 <!-- translation-section: dot-vote -->
 
-## Punten verdelen
+## Puntenverdeling
 
-Bij [Toewijzen](/en/user_manual/polls/allocate/) krijgt elke deelnemer een vast aantal punten om te verdelen. Gebruik deze methode om prioriteiten te bepalen wanneer meer aandacht of middelen voor de ene optie ten koste gaan van een andere.
+Met [Verdelen](/en/user_manual/polls/allocate/) krijgt elke deelnemer een vast aantal punten om te verdelen. Gebruik deze methode om prioriteiten te bepalen wanneer de keuze voor het ene betekent dat er minder aandacht of middelen voor het andere zijn.
 
 <!-- translation-section: ranked-choice -->
 
-## Gerangschikte keuze
+## Ranking
 
-Met [Rang](/en/user_manual/polls/rank/) zetten deelnemers opties in volgorde van voorkeur. Gebruik deze methode om de gezamenlijke voorkeursvolgorde van de groep te bepalen of één optie te kiezen.
+Met [Rangschikken](/en/user_manual/polls/rank/) kunnen deelnemers opties op volgorde van voorkeur zetten. Gebruik deze methode om de gezamenlijke voorkeursvolgorde van de groep te bepalen of de optie met de meeste voorkeur te selecteren.
 
 <!-- translation-section: time-poll -->
 
 ## Tijdpeiling
 
-Met een [Tijd peiling](/en/user_manual/polls/meeting_polls/) geven deelnemers aan wanneer ze beschikbaar zijn. Gebruik deze methode om een vergadering of evenement te plannen met deelnemers in verschillende tijdzones.
+Met een [tijdpeiling](/en/user_manual/polls/meeting_polls/) kunnen deelnemers aangeven wanneer ze beschikbaar zijn. Gebruik deze methode om een vergadering of evenement te plannen met deelnemers in verschillende tijdzones.
 
 <!-- translation-section: stv-election -->
 
 ## STV-verkiezing
 
-Bij [STV-verkiezingen](/en/user_manual/polls/stv/) rangschikken deelnemers kandidaten voor een evenredige verkiezing met meerdere winnaars. Gebruik STV om een commissie, bestuur of groep afgevaardigden te kiezen.
+Met [STV-verkiezingen](/en/user_manual/polls/stv/) kunnen deelnemers kandidaten op volgorde van voorkeur zetten in een evenredige verkiezing met meerdere winnaars. Gebruik STV om een commissie, bestuur of groep afgevaardigden te kiezen.

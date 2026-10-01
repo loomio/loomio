@@ -1,6 +1,6 @@
 ---
 title: Voorstellen en peilingen
-source_revision: 9c60c42fc739483fa23f15d9f34a1e9245518092
+source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
 source_file: docs/en/user_manual/polls/intro_to_decisions/index.md
 translated:
   provider: codex/gpt-6.1-sol
@@ -21,72 +21,75 @@ sections:
   4-it-closes: c0376a9026d18bc3
   5-share-an-outcome: 8339cb332cd8a946
 generated:
-  introduction: dd7ad22eaf5d75b8
-  find-the-right-help: 3ebf3b452b41cdff
-  proposals: 2e77c8f7c01bbb01
-  polls: a8db33cb02bd6303
+  introduction: ce5bd7cc4e1e97db
+  find-the-right-help: 5dfa3d499cca1678
+  proposals: 2e0b0ea75772625a
+  polls: 37d2e5ee24516fd9
   start-a-proposal-or-poll: f4f95d92b1d2fd2f
-  choose-whether-to-use-a-discussion: f9459cb86e3788da
-  in-a-discussion: 85acf299c136322c
-  without-a-discussion: 959873e28c2d8887
+  choose-whether-to-use-a-discussion: 57df9a8f7a158e4b
+  in-a-discussion: e6fc8c4ce50f1403
+  without-a-discussion: ad5940df4c42a6ad
   what-happens-next: 73b669d773048305
-  1-create-it: b34308350166e6ea
-  2-voting-opens: c973f3d558ca0e2b
-  3-people-vote: 5e651ecdf4f8569c
-  4-it-closes: 8d8856eddf3a3d99
-  5-share-an-outcome: b30f1ffdbc3df763
+  1-create-it: '00008b55bb4ba4f6'
+  2-voting-opens: 2c99150f025c4b96
+  3-people-vote: ad5c075672e6016b
+  4-it-closes: ed24d4ee7ee274e0
+  5-share-an-outcome: bf51900fe1f6aa72
 title_source: d45b4ba3cb7a27cb
 title_generated: 95457704989e4140
+needs_review:
+  find-the-right-help: use "conclusie" instead of "resultaat" for "outcome"; use "resultaat" instead of "conclusie" for "results"
+  5-share-an-outcome: use "conclusie" instead of "resultaat" for "outcome"; use "resultaat" instead of "conclusie" for "results"
 ---
 
 <!-- translation-section: introduction -->
 
 # Voorstellen en peilingen
 
-Met voorstellen en peilingen verzamel je gestructureerde reacties van een groep. Je kunt er een idee mee toetsen, een beslissing nemen, prioriteiten bepalen, een vergadering plannen of vertegenwoordigers kiezen.
+Voorstellen en peilingen verzamelen gestructureerde antwoorden van een groep. Ze kunnen helpen om een idee te toetsen, een besluit te nemen, prioriteiten te bepalen, een bijeenkomst te plannen of vertegenwoordigers te kiezen.
 
 <!-- translation-section: find-the-right-help -->
 
-## Vind de juiste informatie
+## Vind de juiste hulp
 
 Deze onderdelen van de handleiding beantwoorden verschillende vragen:
 
-| Als je wilt… | Lees dan… |
+| Als je wilt… | Lees… |
 |---|---|
-| Bepalen wat deelnemers kunnen aangeven | [Voorstellen](../proposals/) of [Peilingen](../proposal_types/) |
-| Een specifiek voorstelsjabloon gebruiken | [Peilen](../proposals/sense_check/), [Advies](../proposals/advice/), [Toestemming](../proposals/consent/) of [Consensus](../proposals/consensus/) |
-| De beschikbare sjablonen voor een groep instellen | [Peilingsjablonen](../poll_templates/) |
-| Een besluit begeleiden van discussie tot conclusie | [Beslissingen nemen](/en/guides/making_decisions/) |
+| Kiezen wat deelnemers moeten aangeven | [Voorstellen](../proposals/) of [Peilingen](../proposal_types/) |
+| Een specifiek voorstelsjabloon gebruiken | [Gevoelscheck](../proposals/sense_check/), [Advies](../proposals/advice/), [Consent](../proposals/consent/) of [Consensus](../proposals/consensus/) |
+| Instellen welke sjablonen beschikbaar zijn voor een groep | [Peilingssjablonen](../poll_templates/) |
+| Een besluit begeleiden van discussie tot conclusie | [Besluiten nemen](/en/guides/making_decisions/) |
 
-Een **stemmethode** bepaalt hoe mensen reageren en hoe de resultaten worden berekend. Een **peilingssjabloon** is een herbruikbare configuratie op basis van een stemmethode, met vooraf ingestelde instructies, opties en instellingen. Een **besluitvormingsproces** kan een discussie en meerdere sjablonen omvatten voordat de groep een conclusie bereikt.
+Een **stemmethode** bepaalt hoe mensen reageren en hoe het resultaat wordt berekend. Een **peilingssjabloon** is een herbruikbare configuratie op basis van een stemmethode, met vooraf ingestelde instructies, opties en instellingen. Een **besluitvormingsproces** kan een discussie en meerdere sjablonen gebruiken voordat de groep tot een conclusie komt.
 
 <!-- translation-section: proposals -->
 
 ## Voorstellen
 
-Met een voorstel vraag je mensen te reageren op een stelling of plan. Loomio heeft sjablonen voor veelvoorkomende doelen:
+Een voorstel vraagt mensen te reageren op een stelling of een voorgestelde aanpak. Loomio bevat sjablonen voor veelvoorkomende doelen:
 
-- [Peilen](../proposals/sense_check/) verzamelt eerste reacties;
-- [Advies](../proposals/advice/) verzamelt inbreng voor degene die de beslissing neemt;
-- [Toestemming](../proposals/consent/) toetst of er wezenlijke bezwaren zijn; en
-- [Consensus](../proposals/consensus/) zoekt naar gezamenlijke overeenstemming.
+- [Gevoelscheck](../proposals/sense_check/) verzamelt eerste reacties;
+- [Advies](../proposals/advice/) verzamelt inbreng voor iemand die een besluit neemt;
+- [Consent](../proposals/consent/) toetst of er inhoudelijke bezwaren zijn; en
+- [Consensus](../proposals/consensus/) zoekt overeenstemming binnen de groep.
 
-Vergelijk ze op de pagina [Voorstellen](../proposals/).
+Bekijk [Voorstellen](../proposals/) om ze te vergelijken.
 
 <!-- translation-section: polls -->
 
 ## Peilingen
 
-Gebruik een peiling als deelnemers opties moeten kiezen, beoordelen, punten verdelen of rangschikken, hun beschikbaarheid moeten aangeven of een stem moeten uitbrengen bij een verkiezing:
+Gebruik een peiling wanneer deelnemers opties moeten kiezen, beoordelen of rangschikken, punten moeten verdelen, hun beschikbaarheid moeten aangeven of een stem moeten uitbrengen bij een verkiezing:
 
-- [Kiezen](../choose/) laat zien welke opties populair zijn;
+- [Kiezen](../choose/) vindt populaire opties;
 - [Beoordelen](../score/) beoordeelt elke optie op een schaal;
-- [Punten verdelen](../allocate/) verdeelt een beperkt aantal punten;
+- [Verdelen](../allocate/) verdeelt een beperkt aantal punten;
 - [Rangschikken](../rank/) bepaalt een algemene voorkeursvolgorde;
-- [Tijdpeiling](../meeting_polls/) laat zien wanneer mensen beschikbaar zijn; en
-- [STV-verkiezing](../stv/) kiest meerdere winnaars naar evenredigheid.
+- [Tijdpeiling](../meeting_polls/) vindt wanneer mensen beschikbaar zijn; en
+- [STV-verkiezing](../stv/) kiest meerdere winnaars op basis van evenredige vertegenwoordiging.
 
-Vergelijk ze op de pagina [Peilingen](../proposal_types/).
+Bekijk [Peilingen](../proposal_types/) om ze te vergelijken.
 
 <!-- translation-section: start-a-proposal-or-poll -->
 
@@ -94,17 +97,17 @@ Vergelijk ze op de pagina [Peilingen](../proposal_types/).
 
 <!-- translation-section: choose-whether-to-use-a-discussion -->
 
-### Kies of je een discussie gebruikt
+### Kies of je een discussie wilt gebruiken
 
-Start het voorstel of de peiling in een discussie als mensen eerst context nodig hebben, vragen willen stellen of met elkaar willen praten. Een discussie kan in de loop van de tijd meerdere voorstellen bevatten. Zo blijven wijzigingen en de uiteindelijke conclusie samen bewaard bij het onderwerp.
+Start het voorstel of de peiling binnen een discussie wanneer mensen context, vragen of een gesprek nodig hebben voordat ze antwoorden. Een discussie kan in de loop van de tijd meerdere voorstellen bevatten, zodat wijzigingen en de uiteindelijke conclusie samen één verslag van het onderwerp vormen.
 
-Start een zelfstandige peiling als de discussie al ergens anders heeft plaatsgevonden, bijvoorbeeld tijdens een vergadering. Dat kan ook als de vraag eenvoudig is en je alleen reacties wilt verzamelen. Geef voldoende uitleg of voeg een link naar het relevante verslag toe, zodat stemmers weten waarop ze reageren.
+Start een losse peiling wanneer de discussie al ergens anders heeft plaatsgevonden, bijvoorbeeld tijdens een bijeenkomst, of wanneer de vraag eenvoudig is en je alleen antwoorden hoeft te verzamelen. Voeg voldoende informatie of een link naar het relevante verslag toe, zodat kiezers begrijpen waarop ze antwoorden.
 
 <!-- translation-section: in-a-discussion -->
 
-### In een discussie
+### Binnen een discussie
 
-Open de discussie, scrol naar het reactieveld, selecteer **Start een stemming** en kies een sjabloon.
+Open de discussie, scrol naar het antwoordveld, selecteer **Start een stemming** en kies een sjabloon.
 
 ![](process_run.png)
 
@@ -116,7 +119,7 @@ Open het tabblad **Peilingen** op de groepspagina, selecteer **Nieuwe peiling** 
 
 ![](standalone_poll.png)
 
-Als je tegelijk een discussie en een peiling maakt om te stemmen, voorkom dan dat mensen twee meldingen krijgen. Start de discussie zonder hen op de hoogte te stellen en nodig hen uit via de peiling. Je kunt de peiling ook zonder discussie starten.
+Als je tegelijk een discussie en een peiling aanmaakt alleen om mensen te laten stemmen, voorkom dan dat mensen twee meldingen krijgen. Start de discussie zonder mensen een melding te sturen en gebruik de uitnodiging voor de peiling, of start de peiling zonder discussie.
 
 <!-- translation-section: what-happens-next -->
 
@@ -126,42 +129,42 @@ Een voorstel of peiling doorloopt deze stappen.
 
 <!-- translation-section: 1-create-it -->
 
-### 1. Maak een voorstel of peiling
+### 1. Maak het aan
 
-Geef een titel en toelichting op, controleer de opties en instellingen en stel een sluitingstijd in. Kies vervolgens wanneer de stemming opent:
+Geef het een titel en toelichting, controleer de opties en instellingen en stel een sluitingstijd in. Kies vervolgens wanneer de stemming opent:
 
 - **De stemming is direct geopend.** opent de stemming zodra je het voorstel of de peiling start.
-- Met een **Openingsdatum** plan je de stemming in. Mensen kunnen het voorstel of de peiling al eerder bekijken, maar pas stemmen zodra de stemming opent.
-- Als je geen van beide kiest, wordt het voorstel of de peiling als concept opgeslagen.
+- Met een **Openingsdatum** plan je wanneer de stemming opent. Mensen kunnen het voorstel of de peiling al eerder bekijken, maar pas stemmen zodra de stemming opent.
+- Als je geen van beide kiest, wordt het als concept opgeslagen.
 
 <!-- translation-section: 2-voting-opens -->
 
 ### 2. De stemming opent
 
-Wanneer de stemming opent, informeert Loomio de mensen die je hebt uitgenodigd. Zie [Uitnodigen om te stemmen](../inviting_people/).
+Wanneer de stemming opent, stuurt Loomio een melding naar de mensen die je hebt uitgenodigd. Zie [Uitnodigen om te stemmen](../inviting_people/).
 
 <!-- translation-section: 3-people-vote -->
 
 ### 3. Mensen stemmen
 
-Zolang de stemming open is, kunnen mensen stemmen, hun stem toelichten en hun stem wijzigen. De resultaten worden bijgewerkt zodra stemmen binnenkomen, tenzij de resultaten tot de sluiting verborgen blijven. Mensen die nog niet hebben gestemd, krijgen standaard een dag voor de sluiting een herinnering.
+Zolang het voorstel of de peiling open is, kunnen mensen stemmen, hun stem toelichten en hun stem wijzigen. Het resultaat wordt bijgewerkt wanneer mensen stemmen, tenzij het verborgen blijft tot het voorstel of de peiling sluit. Mensen die nog niet hebben gestemd, krijgen standaard een dag voor de sluiting een herinnering.
 
 <!-- translation-section: 4-it-closes -->
 
-### 4. De stemming sluit
+### 4. De peiling sluit
 
-De stemming sluit automatisch op de ingestelde sluitingstijd. Een peilingbeheerder kan de stemming ook eerder sluiten. Na de sluiting kan een peilingbeheerder de stemming heropenen met een nieuwe sluitingstijd, zodat mensen verder kunnen stemmen. Anonieme peilingen kunnen niet worden heropend.
+De peiling sluit automatisch op het sluitingstijdstip. Een peilingcoördinator kan de peiling ook eerder sluiten. Nadat de peiling is gesloten, kan een peilingcoördinator deze heropenen met een nieuw sluitingstijdstip, zodat mensen verder kunnen stemmen. Anonieme peilingen kunnen niet worden heropend.
 
 <!-- translation-section: 5-share-an-outcome -->
 
 ### 5. Deel een conclusie
 
-Wanneer de stemming sluit, vraagt Loomio de peilingbeheerders om een conclusie te delen.
+Wanneer de peiling sluit, vraagt Loomio de peilingcoördinatoren om een conclusie te delen.
 
-![De melding om een conclusie in te voeren nadat een voorstel is gesloten](outcome_prompt.png)
+![De vraag om een conclusie in te voeren nadat een voorstel is gesloten](outcome_prompt.png)
 
-De conclusie beschrijft wat er is besloten en wat er daarna gebeurt. De conclusie verschijnt boven de resultaten en is dus het eerste wat mensen lezen. Wanneer je de conclusie publiceert, kun je mensen informeren. Zij ontvangen een e-mail met de resultaten en de conclusie.
+De conclusie beschrijft welk besluit is genomen en wat er daarna gebeurt. Ze verschijnt boven het resultaat, zodat mensen haar als eerste lezen. Wanneer je de conclusie publiceert, kun je mensen op de hoogte stellen. Ze ontvangen een e-mail met het resultaat en de conclusie.
 
-Je kunt ook een **Beoordelingsdatum** instellen. Op die datum herinnert Loomio je eraan om de beslissing te herzien.
+Je kunt ook een **Beoordelingsdatum** instellen. Op die datum herinnert Loomio je eraan om het besluit te beoordelen.
 
 ![Een gepubliceerde conclusie met een beoordelingsdatum](outcome_published.png)

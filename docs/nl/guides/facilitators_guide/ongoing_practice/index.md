@@ -1,10 +1,10 @@
 ---
 title: Blijven verbeteren
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/guides/facilitators_guide/ongoing_practice/index.md
+source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
+source_file: docs/en/guides/facilitators_guide/ongoing_practice/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-30'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 7bc759fcb1aad21e
   continuous-improvement: 63ab99fd05c7fe85
@@ -14,11 +14,11 @@ sections:
   culture-change: 22420d1e20a424ba
 generated:
   introduction: 65c355ee3b2525ab
-  continuous-improvement: eeb85e46d22f6285
-  distributed-facilitation-self-facilitation: 35cd583755fb9ad9
-  translating-this-into-loomio: 243c91ead987ed67
-  the-art-of-being-facilitated: 2452bac44bc68b59
-  culture-change: 5073fcf4b515cd6e
+  continuous-improvement: 34dd6b13032fd92c
+  distributed-facilitation-self-facilitation: 49202634a9c5b859
+  translating-this-into-loomio: 4d2a94a7f7a7c900
+  the-art-of-being-facilitated: c8fca31e77308c56
+  culture-change: 78e5d208c0726da2
 title_source: 98f1cbf7fd6448a5
 title_generated: 2f74dcf78dd6ed56
 ---
@@ -33,76 +33,76 @@ title_generated: 2f74dcf78dd6ed56
 
 ## Voortdurend verbeteren
 
-Hoe goed een groep of facilitator ook is, er is altijd ruimte voor verbetering. Door steeds kleine stappen in de goede richting te zetten, kom je verder. Daarvoor moet je goed met elkaar kunnen praten over hoe je samenwerkt. Zo kun je blijven verbeteren. Zonder dat gesprek kom je niet verder.
+Hoe goed een groep of procesbegeleider ook is, er is altijd ruimte voor verbetering. Door stap voor stap de goede kant op te gaan, kom je verder. Stapsgewijze verbetering vraagt om een effectieve werkwijze om te bespreken hoe je samenwerkt. Daarmee is alles mogelijk. Zonder zo'n werkwijze sta je stil.
 
-Er zijn veel manieren om voortdurend te verbeteren. Ze bieden allemaal ruimte voor reflectie en feedback, en een manier om op basis daarvan iets te veranderen. Teams die langdurig samenwerken, kunnen een methode gebruiken zoals <a href="https://en.wikipedia.org/wiki/Scrum_(software_development)" target="_blank">scrum</a>, met terugblikken en regelmatige verbeteringen van hun werkwijze. Na een eenmalige bijeenkomst kan een facilitator ook eenvoudig om feedback vragen.
+Er zijn veel manieren om voortdurend te verbeteren, maar ze maken allemaal ruimte voor reflectie en feedback, en bieden een manier om op basis daarvan veranderingen door te voeren. Teams die doorlopend samenwerken, kunnen een methode gebruiken zoals <a href="https://en.wikipedia.org/wiki/Scrum_(software_development)" target="_blank">scrum</a>, met terugblikken en regelmatige verbeteringen van het proces. Na een eenmalige sessie kan een procesbegeleider eenvoudigweg om feedback vragen.
 
 Op Loomio
 
-* Mensen gebruiken Loomio om te bespreken hoe ze Loomio gebruiken. Het is een plek om te praten over de manier waarop ze met elkaar praten.
-* Wanneer groepen Loomio gaan gebruiken, denken ze na over verschillende kanten van hun samenwerking en besluitvorming. Dat biedt kansen om hun werkwijze te verbeteren.
+* Mensen gebruiken Loomio zelf om te bespreken hoe ze Loomio gebruiken. Het biedt een vanzelfsprekende plek om te ‘praten over het praten’.
+* Wanneer groepen Loomio gaan gebruiken, denken ze na over allerlei aspecten van hun samenwerking en besluitvorming. Dat biedt kansen om te verbeteren.
 
 <!-- translation-section: distributed-facilitation-self-facilitation -->
 
-## Gedeelde begeleiding / Zelf begeleiden
+## Gedeelde procesbegeleiding / Zelfbegeleiding
 
-Naarmate een groep meer ervaring opdoet, leren meer mensen het groepsproces te begeleiden. Die taak hoeft dan niet meer bij één persoon te liggen. Iedereen kan bijdragen aan de begeleiding. Deelnemers kunnen afwisselend het initiatief nemen en anderen volgen. Voor groepen die gedeeld leiderschap en gelijkwaardigheid nastreven, is het belangrijk om dit aan te moedigen.
+Naarmate een groep meer ervaring krijgt, ontwikkelen meer mensen vaardigheden in procesbegeleiding. Procesbegeleiding hoeft dan niet meer de rol van één persoon te zijn, maar kan een functie worden die je deelt. Iedereen kan bijdragen aan de procesbegeleiding, en tussen deelnemers kan een samenspel ontstaan van geven en nemen, leiden en volgen. Voor groepen die streven naar gedeeld leiderschap en werken zonder hiërarchie, is het belangrijk om dit aan te moedigen.
 
-Je kunt mensen die minder gewend zijn om een groepsproces te begeleiden, helpen met uitleg, uitnodigingen en suggesties voor een eerste stap. Bijna iedereen kan bijvoorbeeld:
+Mensen die minder gewend zijn om het proces te begeleiden, kun je ondersteunen met uitleg, uitnodigingen en suggesties voor eerste stappen. Een paar voorbeelden van bijdragen aan procesbegeleiding die vrijwel iedereen kan proberen:
 
-* herhalen wat je hoort of het samenvatten
+* teruggeven wat je hoort of samenvatten
 * anderen uitnodigen om bij te dragen
-* vragen stellen om samen tot meer begrip te komen
+* vragen stellen om het gezamenlijke begrip te vergroten
 * opmerken wie wel en niet deelneemt
-* bijdragen uitdrukkelijk waarderen
+* expliciet waardering uitspreken voor bijdragen
 
-> <img style="border-radius: 100%; float: right; margin-left: 0.5em; max-width: 96px; " src="../silvia_200.png"> Je hebt geen agenda nodig om een groep te begeleiden. Het gaat erom dat je het mensen makkelijker maakt om samen te komen. Benader je volgende familiebijeenkomst, feest of koffiepauze eens als facilitator. Zorg dat iedereen zich betrokken voelt en kan meedoen. — Silvia Zuur
+> <img style="border-radius: 100%; float: right; margin-left: 0.5em; max-width: 96px; " src="../silvia_200.png"> Je hebt geen agenda nodig om procesbegeleider te zijn. Procesbegeleiding draait er gewoon om het samenzijn van een groep makkelijker te maken. Benader de volgende familiebijeenkomst, het volgende feest of koffiemoment als een procesbegeleider en zorg dat iedereen in de groep zich betrokken voelt en kan deelnemen. — Silvia Zuur
 
-Gedeelde begeleiding kan goed werken, maar mensen kunnen elkaar ook in de weg zitten. In het begin is het wennen om elkaar af te wisselen. Maak onderscheid tussen gedeelde begeleiding (groepsleden die de groep helpen), ‘facipulatie’ (de groep naar je eigen agenda sturen) en ongevraagde begeleiding (de begeleiding op je nemen zonder daarvoor een mandaat te hebben).
+Gedeelde procesbegeleiding kan heel goed werken, maar kan er ook toe leiden dat mensen elkaar voor de voeten lopen. In het begin is het onwennig, terwijl mensen leren hoe ze op elkaar kunnen inspelen. Het is belangrijk om onderscheid te maken tussen gedeelde procesbegeleiding (groepsgenoten die de groep helpen), ‘facipulatie’ (de groep manipuleren om jouw eigen agenda te volgen) en ongevraagde procesbegeleiding (het proces begeleiden zonder dat je daarvoor een mandaat hebt).
 
-Bepaal bewust wanneer groepsleden elkaar kunnen helpen bij de begeleiding en wanneer je een aangewezen facilitator nodig hebt. Bij een discussie met veel conflicten, waarin een neutrale persoon nodig is, of bij gebrek aan vertrouwen werkt gedeelde begeleiding mogelijk niet.
+Kies bewust wanneer procesbegeleiding door groepsgenoten geschikt is en wanneer een specifieke procesbegeleider nodig is. In bepaalde situaties werkt gedeelde procesbegeleiding mogelijk niet, bijvoorbeeld bij een discussie met veel conflicten waarvoor een aangewezen neutrale partij nodig is, of wanneer er onvoldoende vertrouwen is.
 
-> <img style="border-radius: 100%; float: right; margin-left: 0.5em; max-width: 96px; " src="../rich_200.png"> Het begeleiden van een groep is niet alleen de taak van de manager of van degene die de bijeenkomst heeft georganiseerd — iedereen kan eraan bijdragen. — Richard Bartlett
+> <img style="border-radius: 100%; float: right; margin-left: 0.5em; max-width: 96px; " src="../rich_200.png"> Bijdragen aan procesbegeleiding zijn niet alleen iets voor de manager of degene die de vergadering heeft bijeengeroepen — iedereen kan ze leveren. — Richard Bartlett
 
 <!-- translation-section: translating-this-into-loomio -->
 
-## Zo werkt dit op Loomio
+## Dit toepassen op Loomio
 
-* Een online omgeving is bijzonder geschikt voor gedeelde begeleiding. Verschillende mensen kunnen op verschillende momenten bijdragen, afhankelijk van wat ze opmerken en waar ze goed in zijn.
-* Een online discussie is van nature een samenwerking tussen gelijkwaardige deelnemers. Voor een andere werkwijze moet je bewust kiezen. Bij een fysieke bijeenkomst is het meestal anders: iemand roept de bijeenkomst bijeen en moet actief ruimte maken om de begeleiding te delen.
-* Loomio is ontworpen voor groepen waarin mensen gelijkwaardig samenwerken. Gedeelde begeleiding past daar goed bij.
-* Mensen die Loomio gebruiken, helpen elkaar voortdurend om discussies te begeleiden, ook als ze het zelf niet zo noemen. Iemand voorstellen om een voorstel te doen, mensen taggen of het verloop van een discussie samenvatten: het zijn allemaal manieren om de groep te begeleiden.
+* De online omgeving is bijzonder geschikt voor gedeelde procesbegeleiding. Verschillende mensen kunnen op verschillende momenten bijdragen, afhankelijk van wat ze opmerken en welke vaardigheden ze hebben.
+* Een online discussie is in beginsel een gedeelde samenwerking tussen gelijkwaardige deelnemers. Elke andere opzet vraagt om bewuste inrichting. Bij fysieke bijeenkomsten is dat anders: meestal heeft iemand een vergadering bijeengeroepen en moet je actief stappen zetten om de begeleidende rol te delen.
+* Loomio is ontworpen voor een groep van gelijkwaardige mensen. In veel opzichten past gedeelde procesbegeleiding het beste bij het platform.
+* Loomio-gebruikers begeleiden voortdurend het proces voor elkaar, of ze dat nu beseffen of niet. Eenvoudige dingen zoals iemand voorstellen om een voorstel te starten, mensen vermelden en het proces tot nu toe samenvatten, zijn allemaal bijdragen aan procesbegeleiding.
 
 <!-- translation-section: the-art-of-being-facilitated -->
 
-## De kunst om je te laten begeleiden
+## De kunst van je laten begeleiden
 
-Net zoals je bij een stijldans moet leren volgen, moet je ook leren hoe je je laat begeleiden. Mensen die zelf ervaring hebben met het begeleiden van groepen, of vaak aan goed begeleide processen hebben deelgenomen, reageren anders op begeleiding dan mensen zonder die ervaring.
+Net als volgen bij stijldansen is je laten begeleiden een vaardigheid op zich. Mensen die zelf ervaring hebben met procesbegeleiding of aan veel goed begeleide processen hebben deelgenomen, reageren anders op begeleiding dan mensen zonder die ervaring.
 
-Leren om begeleiding aan te nemen kan veel bijdragen aan het succes van een groep. Het begint bij eenvoudige dingen, zoals op tijd komen en aanwijzingen volgen. Het vraagt ook de bereidheid om een andere manier van denken of communiceren te proberen. Soms ervaren mensen een bijeenkomst als prettig zonder precies te weten waarom. Door te benoemen hoe de begeleiding zorgde voor een soepel of diepgaand gesprek, help je hen begrijpen wat ze aan het proces waardeerden.
+Je kunt leren om goed met procesbegeleiding om te gaan, en dat kan veel bijdragen aan het succes van een groep. Het gaat om eenvoudige dingen zoals op tijd komen en instructies volgen, maar ook om bereid zijn een nieuwe manier van denken of communiceren te proberen. Soms hebben mensen een goede ervaring zonder precies te weten waarom. Door uit te leggen dat de procesbegeleiding ervoor zorgde dat het proces soepel verliep of diepgang kreeg, help je hen begrijpen wat ze eraan waardeerden.
 
-Mensen die zich niet kunnen of willen laten begeleiden, kunnen de samenwerking in een groep bemoeilijken. Ook een ervaren facilitator kan het werk niet doen als er te veel weerstand is. Veelvoorkomende problemen zijn de discussie overheersen, steeds de rol van advocaat van de duivel aannemen, het proces verstoren, de facilitator of deelnemers niet respecteren, of niet betrokken zijn. Iedereen draagt een deel van de verantwoordelijkheid om zich te laten begeleiden.
+Mensen die zich niet kunnen of willen laten begeleiden, kunnen de samenwerking in een groep belemmeren. Hoe vaardig een procesbegeleider ook is, bij te veel weerstand kan die het werk niet doen. Veelvoorkomende problemen zijn de discussie domineren, advocaat van de duivel spelen, het proces verstoren, respectloos omgaan met de procesbegeleider of deelnemers, of niet betrokken zijn. Mensen moeten zelf verantwoordelijkheid nemen voor hun bereidheid om zich te laten begeleiden.
 
 Op Loomio
 
-* Met een beetje oefening leren de meeste mensen snel te reageren wanneer iemand op Loomio de discussie helpt begeleiden, bijvoorbeeld door te antwoorden als ze met @ worden genoemd.
-* Door zelf op Loomio een discussie te helpen begeleiden, leer je ook beter op de begeleiding van anderen te reageren.
-* Omdat alles wordt bewaard, kunnen mensen eerdere vormen van begeleiding terugzien. Zo kunnen ze ervan leren zonder erbij te zijn geweest.
+* Met een beetje oefening leren de meeste gebruikers snel om te reageren op bijdragen aan procesbegeleiding op Loomio, bijvoorbeeld door te antwoorden wanneer ze met @ worden vermeld.
+* Door zelf het proces op Loomio te begeleiden, leren mensen ook beter om te gaan met begeleiding door anderen.
+* Omdat alles wordt gearchiveerd, kunnen gebruikers eerdere bijdragen aan procesbegeleiding terugzien. Zo kunnen ze ervan leren zonder erbij te zijn geweest.
 
 <!-- translation-section: culture-change -->
 
 ## Cultuurverandering
 
-Een cultuur waarin mensen samenwerken en deelnemen, ontstaat na verloop van tijd, door veel te oefenen en dingen uit te proberen. Als mensen begrijpen wat begeleiding kan bijdragen, die waarderen en anderen uitnodigen om eraan mee te doen, helpt dat de cultuur te veranderen. Begeleiding kan groeien van een rol naar een gedeelde taak en uiteindelijk een manier van denken worden. In een cultuur van samenwerking helpt iedereen op allerlei manieren anderen om mee te doen.
+Een cultuur van samenwerking en deelname ontstaat geleidelijk, door veel te oefenen en met vallen en opstaan. Procesbegeleiding begrijpen, waarderen en uitnodigen kan daarin een centrale rol spelen. Procesbegeleiding kan zich ontwikkelen van een rol naar een functie en vervolgens naar een manier van denken. In een cultuur waarin mensen volop samenwerken, begeleidt iedereen elkaar op allerlei manieren.
 
-Kan iedereen meedoen aan het bedrijfsfeest? Ontstaat de gezamenlijke lunch op kantoor vanzelf? Kunnen ideeën overal vandaan komen, door veel mensen verder worden ontwikkeld en uiteindelijk beter worden uitgevoerd dan iemand aanvankelijk had bedacht?
+Kan iedereen bijdragen aan het bedrijfsfeest? Komt de gezamenlijke lunch op kantoor, waarvoor iedereen iets meebrengt, schijnbaar vanzelf tot stand? Kunnen ideeën overal ontstaan, door de inbreng van veel mensen verder groeien en worden uitgevoerd op een manier die beter is dan iemand aanvankelijk had bedacht?
 
-Een diepgaande cultuurverandering zie je wanneer samenwerking niet beperkt blijft tot momenten die daarvoor zijn ingericht, maar in de hele organisatie zichtbaar wordt. Samenwerking gaat verder dan briefjes plakken en korte rondjes aan het begin van een bijeenkomst. Je merkt haar in de dagelijkse gang van zaken.
+Diepgaande cultuurverandering ontstaat wanneer de cultuur van samenwerking zich buiten de daarvoor bestemde plekken verspreidt en zichtbaar wordt in elk aspect van de organisatie. Samenwerking gaat dan niet om plakbriefjes en check-ins, maar bepaalt hoe het dagelijkse leven in de organisatie aanvoelt.
 
 Op Loomio
 
-* Volgens de [verandertheorie van Loomio](http://www.loomio.com/about) kunnen meer groepen die doeltreffend en inclusief besluiten nemen, wereldwijd veranderen hoe organisaties werken. Die gedachte zie je terug in het ontwerp van Loomio en in [hoe we als coöperatie werken](http://loomio.coop). Het doel is cultuurverandering door samen te werken.
-* Groepen hebben via Loomio hun cultuur zien veranderen. Groepen met een bestaande samenwerkingscultuur konden groeien en die cultuur behouden. Andere groepen konden blijven bestaan ondanks de uitdagingen van inclusieve besluitvorming.
-* Loomio maakt samenwerking voor meer mensen toegankelijk en uitvoerbaar. Daardoor kan deze manier van werken vanzelfsprekender worden.
+* De [verandertheorie van Loomio](http://www.loomio.com/about) is dat meer groepen die effectieve, inclusieve besluitvorming in de praktijk brengen, de dynamiek binnen organisaties wereldwijd kunnen veranderen. Dat zie je terug in het hele ontwerp van het platform en in [hoe we als coöperatie werken](http://loomio.coop). Uiteindelijk gaat het om cultuurverandering door samen te werken.
+* Groepen op Loomio hebben ervaren hoe hun cultuur door het platform verandert. Bijvoorbeeld groepen die groeien en hun bestaande samenwerkingscultuur behouden, of groepen waarin iedereen kan deelnemen die blijven bestaan in plaats van uiteen te vallen door problemen met inclusieve besluitvorming.
+* Loomio maakt een ‘nieuw normaal’ van samenwerken mogelijk door samenwerking toegankelijker en haalbaarder te maken.
 
-Lees voor inspiratie over hoe je kunt blijven verbeteren de [verhalen van Loomio-groepen](https://blog.loomio.com/?utm_campaign=facilitators_guide_help&utm_term=help).
+Lees ter inspiratie voor het blijven verbeteren de [verhalen van groepen op Loomio](https://blog.loomio.com/?utm_campaign=facilitators_guide_help&utm_term=help).

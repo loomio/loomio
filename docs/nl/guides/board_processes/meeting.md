@@ -1,10 +1,10 @@
 ---
 title: Een vergadering voorbereiden
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/guides/board_processes/meeting.md
+source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
+source_file: docs/en/guides/board_processes/meeting.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-30'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 20305b2bbbcd9088
   meeting-focus-and-review-actions: e43829ab612a2070
@@ -19,18 +19,18 @@ sections:
   approve-reports: e322912e5f5b1e32
   on-loomio-5: 15e0c45a512cd84f
 generated:
-  introduction: eb0506557010ff38
-  meeting-focus-and-review-actions: b392d40d5ac9e644
-  on-loomio: 79edc298f1f1b72a
-  agenda-and-notify: 5bad4fc61208bd95
-  on-loomio-2: fb6f48677240d033
-  confirm: 2d36999ef8b150b7
-  find-a-time-for-meeting: 17ecf46ad38674fe
-  on-loomio-3: 50efbac1f62b8497
-  sign-off-minutes: 4ababf59f40355e7
-  on-loomio-4: bd25e1e098a088e1
-  approve-reports: b862eb2d8d178c34
-  on-loomio-5: 70b9c7c471ab710b
+  introduction: 94a7434b19058f59
+  meeting-focus-and-review-actions: 5627cf4e11239dba
+  on-loomio: 186df1afeb152434
+  agenda-and-notify: bb10ea4c28b8e450
+  on-loomio-2: 3b246a8ccfb0baaf
+  confirm: 9116501c6be28a1f
+  find-a-time-for-meeting: f060e6d9bc607899
+  on-loomio-3: 0becea1ddee91fb2
+  sign-off-minutes: baeebb640f943864
+  on-loomio-4: 9d9b654d50a341ef
+  approve-reports: a1708b32fd74f359
+  on-loomio-5: 48fe30b64c9c247c
 title_source: 7fe4f2dbd8ccfc94
 title_generated: 98c40fa1fb1978d3
 ---
@@ -39,31 +39,31 @@ title_generated: 98c40fa1fb1978d3
 
 # Een vergadering voorbereiden
 
-Effectieve vergaderingen zijn productief, inclusief en gericht op samenwerking. Ze vergroten de betrokkenheid, versterken relaties en helpen mensen op één lijn te komen. Ze maken betere en snellere besluiten, creatief denken, vernieuwing, feedback en voortdurende verbetering mogelijk.
+Effectieve vergaderingen zijn productief, inclusief en gericht op samenwerking. Ze vergroten de betrokkenheid, helpen sterke relaties op te bouwen, zorgen voor afstemming, leiden tot betere en snellere besluiten, bevorderen inclusie, ondersteunen creatief denken en innovatie en bieden ruimte voor feedback en voortdurende verbetering.
 
-Gebruik Loomio om een effectieve vergadering te plannen. Betrek mensen vanaf het begin, bepaal samen welke onderwerpen het belangrijkst zijn en benut de tijd die je samen hebt.
+Gebruik Loomio om een effectieve vergadering te plannen: betrek mensen vanaf het begin, stem af over de belangrijkste onderwerpen en benut jullie waardevolle tijd samen beter.
 
-Als de groep nieuw is met Loomio, begin dan met [Loomio introduceren bij je groep](/en/user_manual/overview/introducing_loomio). Gebruik daarna dit vergaderproces als eerste terugkerende werkwijze.
+Als je groep nieuw is op Loomio, begin dan met [Loomio introduceren bij je groep](/en/user_manual/overview/introducing_loomio). Gebruik daarna dit vergaderproces als eerste praktische, terugkerende werkwijze.
 
 Je kunt verschillende dingen doen om je volgende bestuurs- of commissievergadering effectief te maken...
 
-- [De focus van de vergadering bepalen en acties bespreken](#meeting-focus-and-review-actions)
+- [De focus bepalen en actiepunten doornemen](#meeting-focus-and-review-actions)
 - [De agenda bekendmaken en leden informeren](#agenda-and-notify)
-- [Een tijd voor de vergadering vinden](#find-a-time-for-meeting)
-- [De notulen goedkeuren](#sign-off-minutes)
-- [Verslagen goedkeuren](#approve-reports)
+- [Een tijdstip voor de vergadering vinden](#find-a-time-for-meeting)
+- [Notulen goedkeuren](#sign-off-minutes)
+- [Rapporten goedkeuren](#approve-reports)
 
 <!-- translation-section: meeting-focus-and-review-actions -->
 
-## De focus van de vergadering bepalen en acties bespreken
+## Focus van de vergadering en opvolging van acties
 
-Bepaal waarop de vergadering zich richt, zodat je de tijd samen besteedt aan de belangrijkste onderwerpen.
+Bepaal de focus van de vergadering, zodat je de waardevolle tijd samen besteedt aan de belangrijkste onderwerpen.  
 
-Als je leden uitnodigt om onderwerpen voor de agenda aan te dragen, kan iedereen zich voorbereiden en ontstaat er een gedeeld beeld van wat besproken moet worden.
+Door leden uit te nodigen om bij te dragen aan de agenda, help je iedereen op één lijn te komen, over onderwerpen na te denken en zich voor te bereiden op de vergadering.
 
 Acties:
-- richt de vergadering op de belangrijkste onderwerpen,
-- bespreek met leden de acties uit eerdere vergaderingen.
+- richt de vergadering op de belangrijkste zaken,
+- volg acties uit eerdere vergaderingen op en bespreek ze met leden.
 
 ![](meeting_prep.png#width-90)
 
@@ -72,20 +72,20 @@ Acties:
 ### Op Loomio
 Gebruik een **Discussie** op Loomio om je vergadering voor te bereiden:
 * herinner leden aan de komende vergadering,
-* vraag welke onderwerpen volgens hen aandacht verdienen,
-* vat de acties uit de vorige vergadering samen en vraag om een update.
+* nodig leden uit om te reageren op de belangrijkste zaken die aandacht verdienen,
+* vat de acties uit de vorige vergadering samen en vraag naar de voortgang.
 
 <!-- translation-section: agenda-and-notify -->
 
-## Agenda en kennisgeving
+## Agenda en melding
 
-Kondig de vergadering aan met een duidelijke agenda. Voeg vergaderstukken toe, link naar belangrijke documenten en informeer de leden.
+Kondig de vergadering aan met een duidelijke agenda. Voeg stukken toe, plaats links naar belangrijke documenten en stuur leden een melding.
 
-Zo kan iedereen zich voorbereiden door de stukken te lezen en na te denken over de onderwerpen en besluiten. Leden weten dan wat ze kunnen verwachten wanneer ze naar de vergadering komen.
+Zo kan iedereen zich op de vergadering voorbereiden door de stukken te lezen en na te denken over de discussieonderwerpen en de te nemen besluiten. Leden komen dan eerder goed geïnformeerd en voorbereid naar de vergadering.
 
 Acties:
-- bereid de agenda, documenten en vergaderstukken voor,
-- informeer leden over de vergadering en stuur de stukken mee.
+- bereid de agenda, documenten, materialen en bestuursstukken voor,
+- breng leden op de hoogte van de vergadering en stuur de stukken mee.
 
 ![](meeting_notify.png#width-90)
 
@@ -93,87 +93,92 @@ Acties:
 
 ### Op Loomio
 Gebruik een **Discussie** op Loomio om je bestuursvergadering voor te bereiden:
-* vermeld de gegevens van de vergadering,
-* voeg de agenda, documenten en andere vergaderstukken toe of link ernaar,
+* vermeld de details van de vergadering,
+* voeg de agenda, documenten en andere vergaderstukken toe of plaats links ernaar,
 * nodig leden uit met een melding,
-* kijk bij 'Gezien door' wie de thread heeft gelezen.
+* houd 'Gezien door' bij om te zien wie de thread heeft gelezen.
 
-Een thread op Loomio lijkt op een e-mail, maar biedt een aantal voordelen:
-- je kunt zien wie de thread heeft gelezen en de anderen eraan herinneren,
-- reacties van leden zijn zichtbaar voor iedereen die de thread mag bekijken,
-- vragen en gesprekken over de agenda of vergaderstukken blijven op één plek.
+Een Loomio-thread lijkt op een e-mail, maar biedt voordelen:
+- je kunt zien wie de thread heeft gelezen en degenen die dat nog niet hebben gedaan een herinnering sturen,
+- antwoorden of reacties van leden zijn zichtbaar voor iedereen die de thread mag bekijken,
+- alle discussies en vragen over de agenda of vergaderstukken staan op één plek.
 
-Leden vinden alle informatie over de vergadering op één plek. Zo raken belangrijke gegevens minder snel zoek in lange e-mailgesprekken of volle inboxen.
+Leden kunnen alle informatie over de vergadering gemakkelijk op één plek vinden. Zo voorkomen ze verwarrende e-mailwisselingen en raken ze geen belangrijke informatie kwijt in hun e-mailinbox.
 
 <!-- translation-section: confirm -->
 
-### Bevestiging
-Vraag leden in een reactie te bevestigen dat ze de agenda en vergaderstukken hebben gelezen en voorbereid zijn. Gebruik **Gezien door** om te zien wie mogelijk een herinnering nodig heeft.
+### Bevestigen
+
+Vraag leden om in een reactie te bevestigen dat ze de agenda en vergaderstukken hebben gelezen en voorbereid zijn op de vergadering. Gebruik **Gezien door** om te zien wie mogelijk een herinnering nodig heeft.
 
 <!-- translation-section: find-a-time-for-meeting -->
 
-## Een tijd voor de vergadering vinden
-Voor beheerders kost het vaak moeite om een tijd te vinden waarop iedereen kan.
+## Een tijdstip voor de vergadering vinden
+
+Een geschikt tijdstip vinden om te vergaderen kost veel admins regelmatig moeite.
 
 <!-- translation-section: on-loomio-3 -->
 
 ### Op Loomio
-Als de datum en tijd nog niet vaststaan, of als je een tijd voor een toekomstige vergadering zoekt, gebruik dan **Moment bevragen**.
 
-Met een peiling van het type Moment bevragen zie je eenvoudig wanneer iedereen beschikbaar is. Zo vind je een geschikt moment en kost het plannen minder tijd.
+Als je nog geen datum en tijd voor de vergadering hebt vastgesteld of een tijdstip voor een toekomstige vergadering wilt vinden, kun je een **Tijdpeiling** gebruiken.
 
-Leden in verschillende tijdzones zien de datums en tijden in hun eigen tijdzone.
+Met een tijdpeiling zie je eenvoudig wanneer iedereen beschikbaar is en vind je het beste tijdstip. Dat bespaart tijd en moeite bij deze veelvoorkomende taak voor admins.
+
+Leden in verschillende tijdzones zien datums en tijden in hun eigen tijdzone.
 
 ![](timepoll_vote.png#width-90)
 
-Wanneer de peiling sluit, kies je het beste moment en deel je een conclusie met een agenda-uitnodiging. Leden kunnen de vergadering dan aan hun agenda toevoegen.
+Kies het beste tijdstip wanneer de tijdpeiling sluit en stuur een melding over de conclusie met een agenda-uitnodiging, zodat leden de vergadering aan hun agenda kunnen toevoegen.
 
 <!-- translation-section: sign-off-minutes -->
 
-## De notulen goedkeuren
-Notulen goedkeuren of bekrachtigen is gebruikelijk bij formele vergaderingen en zinvol bij andere vergaderingen.
+## Notulen goedkeuren
 
-In de notulen staan de belangrijkste besproken punten, de genomen besluiten en hoe mensen hebben gestemd. Ze vermelden ook de afgesproken acties en wie daarvoor verantwoordelijk is. Vaak vormen ze het vertrekpunt voor de volgende vergadering.
+Notulen goedkeuren of bekrachtigen is gebruikelijk bij formele vergaderingen en zinvol bij alle vergaderingen.
 
-De notulen herinneren aanwezigen aan wat is besproken, houden afwezigen op de hoogte en bieden een verslag om bij een meningsverschil te raadplegen.
+Notulen leggen de vergadering vast, met de belangrijkste punten uit de discussie, de genomen besluiten en hoe mensen hebben gestemd. Ze bevatten de afgesproken actiepunten en wie daarvoor verantwoordelijk is, en vormen vaak het uitgangspunt voor de volgende vergadering.
+
+Notulen helpen aanwezigen om terug te kijken, informeren afwezigen en bieden een verslag dat je bij een conflict kunt raadplegen.
 
 <!-- translation-section: on-loomio-4 -->
 
 ### Op Loomio
 
-Plaats de notulen binnen enkele dagen na de vergadering in de thread op Loomio en nodig deelnemers uit om ze goed te keuren. Dan ligt de vergadering nog vers in het geheugen en worden leden herinnerd aan hun acties. Het bespaart ook tijd tijdens de volgende vergadering.
+Plaats de notulen binnen enkele dagen na de vergadering in de Loomio-thread voor de vergadering en nodig deelnemers uit om ze goed te keuren. Zo blijven de notulen actueel terwijl de vergadering nog vers in het geheugen van de leden ligt, en herinner je leden aan hun actiepunten. Het bespaart ook tijd tijdens je vergadering.
 
 ![](poll_minutes.png#width-90)
 
-In het voorbeeld hierboven staat een peiling van het type **Kiezen** met twee opties: 'Accepteren' en 'Herzien'.
+Het bovenstaande voorbeeld gebruikt een peiling met **Kiezen** en twee opties: 'Goedkeuren' en 'Herzien'.
 
-Wanneer iedereen heeft gestemd en de peiling sluit, deel je een conclusie zodat iedereen weet wat er is besloten.
+Publiceer een conclusie wanneer iedereen heeft gestemd en de peiling sluit, zodat iedereen weet wat er is gebeurd.
 
-Als besluiten volgens jullie werkwijze formeel tijdens de volgende vergadering moeten worden goedgekeurd, zet dit dan op de agenda. Bevestig daar de peilingen en besluiten op Loomio en leg dit vast in de notulen.
+Als jullie werkwijze formele goedkeuring tijdens de volgende vergadering vereist, voeg dan een agendapunt toe om de peilingen en besluiten op Loomio te bespreken en te bevestigen. Leg dit vast in de notulen.
 
-Bijvoorbeeld: *"Wil iemand zijn stem op Loomio wijzigen? Zo niet, laten we dan de peilingen van de afgelopen periode op Loomio formeel goedkeuren."*
+Bijvoorbeeld: *"Wil iemand zijn of haar stemmen op Loomio wijzigen? Zo niet, laten we dan besluiten om de peilingen van de afgelopen periode op Loomio formeel goed te keuren."*
 
 <!-- translation-section: approve-reports -->
 
-## Verslagen goedkeuren
-Op de meeste vergaderagenda's staat tijd om verslagen te presenteren, bespreken en goed te keuren. Denk aan verslagen van de directeur, over financiën, bedrijfsvoering, gezondheid en veiligheid, of over projecten.
+## Rapporten goedkeuren
 
-Verslagen helpen iedereen dezelfde informatie te krijgen. De bespreking ervan kan echter veel vergadertijd kosten die je ook anders kunt gebruiken.
+De meeste vergaderagenda's bevatten tijd om rapporten te presenteren, te bespreken en goed te keuren. Denk aan rapporten van de directeur, financiële en operationele rapporten, rapporten over gezondheid en veiligheid en projectrapporten.
+
+Rapporten helpen iedereen om over dezelfde informatie te beschikken, maar kunnen veel vergadertijd in beslag nemen die je effectiever kunt besteden.
 
 <!-- translation-section: on-loomio-5 -->
 
 ### Op Loomio
 
-Voeg verslagen toe aan de **thread** voor je vergadering of link ernaar, en nodig leden uit om vooraf vragen te stellen.
+Voeg rapporten toe aan de **thread** voor je vergadering of link ernaar, en vraag leden om vóór de vergadering vragen over de rapporten te stellen.
 
-Leden kunnen de verslagen lezen op een tijd en plaats die hun uitkomen. Tijdens het lezen kunnen ze op Loomio reageren, vragen stellen en antwoorden bekijken.
+Leden ontvangen en lezen de rapporten op een tijdstip en plek die voor hen passen. Terwijl ze de rapporten lezen en erover nadenken, kunnen ze op Loomio reageren, vragen stellen en antwoorden bekijken.
 
-Een vraag van één lid is vaak ook interessant voor andere leden. Als iemand antwoord geeft, kan iedereen in de Loomio-groep dat antwoord zien.
+Een vraag van één lid is waarschijnlijk ook interessant voor andere leden. Als iemand de vraag beantwoordt, is dat antwoord zichtbaar voor iedereen in de Loomio-groep.
 
-Als leden gewend zijn om verslagen op Loomio te bespreken, kun je meer vergadertijd besparen door ze ook vóór de vergadering ter goedkeuring voor te leggen.
+Wanneer leden gewend raken aan het bespreken van rapporten op Loomio, kun je nog meer tijd besparen door een stap verder te gaan: vraag vóór de vergadering om goedkeuring van de rapporten.
 
 ![](poll_approve_report.png#width-90)
 
-Als besluiten volgens jullie werkwijze formeel tijdens de volgende vergadering moeten worden goedgekeurd, zet dit dan op de agenda. Bevestig daar de peilingen en besluiten op Loomio en leg dit vast in de notulen.
+Als jullie werkwijze formele goedkeuring tijdens de volgende vergadering vereist, voeg dan een agendapunt toe om de peilingen en besluiten op Loomio te bespreken en te bevestigen. Leg dit vast in de notulen.
 
-Bijvoorbeeld: *"Wil iemand zijn stem op Loomio wijzigen? Zo niet, laten we dan de peilingen van de afgelopen periode op Loomio formeel goedkeuren."*
+Bijvoorbeeld: *"Wil iemand zijn of haar stemmen op Loomio wijzigen? Zo niet, laten we dan besluiten om de peilingen van de afgelopen periode op Loomio formeel goed te keuren."*

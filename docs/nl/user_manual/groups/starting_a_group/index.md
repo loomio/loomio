@@ -1,10 +1,10 @@
 ---
 title: Een groep starten
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/groups/starting_a_group/index.md
+source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
+source_file: docs/en/user_manual/groups/starting_a_group/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 221cb19d87a4f2d6
   group-details: 0fcf6c809c12050b
@@ -12,11 +12,11 @@ sections:
   group-handle: 1696339219760afb
   group-description: b585bd5a1b0b1bff
 generated:
-  introduction: fc6872125c231b0d
+  introduction: db0cc1945aa66a6b
   group-details: e6c384328a7f7fbf
-  group-name: 8b50877287caa72a
-  group-handle: 39cb42ec2ce8cbf9
-  group-description: ff849fe129d5a10c
+  group-name: 44f10302c38793a0
+  group-handle: ad5d3653de9525f9
+  group-description: bbcb3d9f83cd3175
 title_source: c5a16dbe0863ecd7
 title_generated: 0d5fac820457fc1a
 ---
@@ -25,9 +25,9 @@ title_generated: 0d5fac820457fc1a
 
 # Een nieuwe groep starten
 
-Als je nieuw bent bij Loomio, kun je via de [Loomio-website](https://www.loomio.com/) op elk moment een groep starten met een gratis proefperiode. Gebruik je Loomio al en wil je een nieuwe groep starten voor een andere organisatie of een ander doel? Klik dan in het zijmenu op **Nieuwe groep**.
+Als je nieuw bent bij Loomio, kun je op elk moment een groep starten met een gratis proefperiode via de [Loomio-website](https://www.loomio.com/). Als je Loomio al gebruikt en een nieuwe groep wilt starten voor een andere organisatie of een ander doel, kun je dit doen via het zijbalkmenu: klik op **Nieuwe groep**.
 
-Voor veel organisaties is één Loomio-groep voldoende. Binnen die groep kun je zoveel subgroepen starten als je nodig hebt. Lees meer bij [Subgroepen](/en/user_manual/groups/subgroups/).
+Voor veel organisaties is één Loomio-groep voldoende. Binnen de groep kun je zoveel subgroepen starten als je nodig hebt. Zie [Subgroepen](/en/user_manual/groups/subgroups/) voor meer informatie.
 
 ![](new_group.png)
 
@@ -41,22 +41,22 @@ Voor veel organisaties is één Loomio-groep voldoende. Binnen die groep kun je 
 
 ### Groepsnaam
 
-Vul de naam van je groep in. Houd de naam kort en duidelijk.
+Typ de naam van je groep. Houd de groepsnaam kort en bondig.
 
 <!-- translation-section: group-handle -->
 
-### Gebruikersnaam van de groep
+### Groepshandle
 
-Je groep krijgt automatisch een gebruikersnaam. Die wordt gebruikt in de URL en het e-mailadres van de groep, zoals **loomio.com/your-group-handle** en **your-group-handle@loomio.com**.
+Je groep krijgt automatisch een handle toegewezen. De handle wordt gebruikt in de URL en het e-mailadres van de groep, zoals **loomio.com/your-group-handle** en **your-group-handle@loomio.com**.
 
-Je kunt de gebruikersnaam aanpassen wanneer je de groep aanmaakt en later wijzigen in de groepsinstellingen. Als je de naam wijzigt, blijven links en e-mailadressen met de oude naam werken. Loomio bewaart maximaal drie oude gebruikersnamen. Daarna vervalt de oudste.
+Je kunt de handle aanpassen wanneer je de groep aanmaakt en later wijzigen in de groepsinstellingen. Als je de handle wijzigt, blijven links en e-mailadressen die de oude handle gebruiken werken. Loomio bewaart maximaal drie oude handles; daarna vervalt de oudste handle.
 
 <!-- translation-section: group-description -->
 
 ### Groepsbeschrijving
 
-Deze korte beschrijving staat bovenaan het dashboard en geeft nieuwe leden de nodige context.
+Deze korte beschrijving verschijnt bovenaan het dashboard om nieuwe leden de nodige context te geven.
 
-**Als je op 'Start groep' klikt, wordt je nieuwe groep automatisch aangemaakt.**
+**Wanneer je op 'Groep starten' klikt, wordt je nieuwe groep automatisch aangemaakt!**
 
 ---

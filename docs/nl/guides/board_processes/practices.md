@@ -1,47 +1,47 @@
 ---
 title: Bestuurspraktijken
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/guides/board_processes/practices.md
+source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
+source_file: docs/en/guides/board_processes/practices.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-30'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: df31098ab2c954df
   on-loomio: cbd48580a2ecbb96
 generated:
-  introduction: ceef83a2c7b5376c
-  on-loomio: 31ce81525032f6d6
+  introduction: '5935976284964396'
+  on-loomio: 5245edf9f1356a8c
 title_source: 1273225ad1abd403
 title_generated: 27bf15a4d5cd2372
 ---
 
 <!-- translation-section: introduction -->
 
-# Bestuurspraktijken en werkwijzen
+# Bestuurspraktijken en benaderingen
 
-Goed bestuur vraagt om het vaststellen, beoordelen en kritisch bekijken van werkwijzen, beleid en procedures. Zo kan het bestuur steeds beter functioneren.
+Goed bestuur omvat het vaststellen, evalueren en kritisch beoordelen van bestuurspraktijken, beleid en procedures om de effectiviteit van het bestuur voortdurend te verbeteren.
 
-Veel besturen hebben echter weinig tijd. Bestuursstukken, naleving van regels en risico's vragen veel aandacht, waardoor er te weinig tijd overblijft om belangrijke strategische kwesties en prestaties te bespreken.
+Veel besturen hebben echter weinig tijd en worden vaak belast met bestuursstukken, naleving van regelgeving en risico's, waardoor er onvoldoende tijd overblijft om belangrijke vraagstukken over strategie en prestaties te bespreken.
 
 <!-- translation-section: on-loomio -->
 
 ## Op Loomio
-Met Loomio kun je online aan een document, beleid of procedure werken. Discussies en besluiten staan in een discussie die leden kunnen bekijken waar en wanneer het hun uitkomt.
+Loomio biedt de mogelijkheid om online aan een document, beleid of procedure te werken. Discussies en besluiten staan in een thread die leden kunnen openen waar en wanneer het hun uitkomt.
 
-Gebruik voor elk document, beleid of elke procedure een **discussie**. Daarin bespreek je het werk en bewaar je concepten en latere versies van het document.
+Gebruik een **thread** voor elk document, beleid of elke procedure. De thread biedt ruimte voor de discussie en bevat concepten en latere versies van het document.
 
-In een Loomio-discussie kunnen de 2 à 3 mensen die de tekst schrijven de details bespreken. Je kunt de discussie privé houden voor deze mensen of openstellen voor de groep, zodat alle leden het werk kunnen volgen.
+Met een Loomio-thread kun je het werk zo organiseren dat de 2-3 mensen die aan de tekst van het document werken, de details in de thread bespreken. De thread kan besloten zijn voor alleen die 2-3 mensen, of toegankelijk zijn voor de hele groep, zodat alle leden het werk kunnen volgen.
 
 ![](document_introduce.png#width-90)
 
-Zodra er een conceptversie is, kun je met een **peiling om een eerste indruk** de leden laten weten dat het document klaar is om te beoordelen. Nodig hen uit het document te lezen en opmerkingen of vragen te delen. Zo weet iedereen dat het werk vordert. De sluitingsdatum van de peiling moedigt leden aan om te reageren.
+Zodra er een conceptversie van het document is, gebruik je een **gevoelscheck-peiling** om leden te laten weten dat het concept klaar is voor beoordeling. Nodig leden uit om het document te lezen en te reageren met reacties of vragen. Zo laat je iedereen weten dat het werk vordert, en moedigt de sluitingsdatum van de peiling mensen aan om deel te nemen.
 
 ![](document_integrate.png#width-90)
 
-Het document kan meerdere conceptrondes nodig hebben.
+Er kunnen meerdere conceptversies nodig zijn.
 
-Is de definitieve conceptversie klaar, start dan een **Voorstel** om het document goed te keuren.
+Wanneer een 'definitief' concept klaar is, start je een **Voorstel** om het document goed te keuren.
 
 ![](document_approval.png#width-90)
 
-Met Loomio kan een bestuur tussen vergaderingen door werken aan beter bestuur, zonder daarvoor kostbare vergadertijd te gebruiken.
+Met Loomio kan een bestuur tussen vergaderingen door werken aan het verbeteren van het bestuur, zonder dat dit kostbare vergadertijd in beslag neemt.

@@ -1,10 +1,10 @@
 ---
 title: Verzamel privé-inzendingen
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/discussions/private_submissions/index.md
+source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
+source_file: docs/en/user_manual/discussions/private_submissions/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 1d263d407af586d9
   enable-private-submissions: 3520fbea1fb1267f
@@ -12,11 +12,11 @@ sections:
   make-a-submission: ac6611a046f0bf9f
   review-submissions: 7014e6ac14301129
 generated:
-  introduction: 43ba292f6de60a0c
-  enable-private-submissions: 5f02816fd178719f
-  set-up-a-private-submission-process: f8a1448fc80a992d
-  make-a-submission: 50e87d20ec4bb008
-  review-submissions: cc49ecc308b5bab0
+  introduction: ecd5b67b9e3d8f79
+  enable-private-submissions: a1a5e1dbeb457cb5
+  set-up-a-private-submission-process: 178a07fe820a891d
+  make-a-submission: da478de2ee1d74cc
+  review-submissions: c5a669bd634e34b6
 title_source: e82ab76916d594f4
 title_generated: a6e79e4c3991b0fe
 ---
@@ -25,64 +25,64 @@ title_generated: a6e79e4c3991b0fe
 
 # Verzamel privé-inzendingen
 
-Gebruik een gesloten groep om privé-inzendingen te verzamelen van mensen die geen lid zijn van de groep. Elke inzending wordt een aparte discussie. De inzender en het beoordelingsteam van de groep kunnen daarin informatie uitwisselen, vragen stellen en een besluit vastleggen. Inzenders kunnen andere privéd discussies of inzendingen in de groep niet zien.
+Gebruik een besloten groep om privé-inzendingen te verzamelen van mensen die geen lid zijn van de groep. Elke inzending wordt een aparte discussie waarin de indiener en het beoordelingsteam van de groep informatie kunnen uitwisselen, vragen kunnen stellen en een besluit kunnen vastleggen. Indieners kunnen andere privédiscussies of inzendingen in de groep niet zien.
 
-Nominaties zijn een duidelijk voorbeeld wanneer gegevens van kandidaten of de lijst met genomineerden tijdens de selectie privé moeten blijven. Iemand kan zichzelf of een ander nomineren voor een verkiezing, benoeming, commissie, bestuur of vertegenwoordigende functie. Een selectiecommissie beoordeelt elke nominatie in een aparte discussie.
+Nominaties zijn een duidelijk voorbeeld wanneer kandidaatgegevens of de lijst met genomineerden tijdens de selectie privé moeten blijven. Iemand kan zichzelf of iemand anders nomineren voor een verkiezing, benoeming, commissie, bestuur of vertegenwoordigende rol, terwijl een selectiecommissie elke nominatie in een eigen discussie beoordeelt.
 
-Andere situaties waarin inzendingen privé moeten blijven, zijn:
+Andere geschikte toepassingen waarbij inzendingen niet openbaar mogen zijn:
 
 - Klachten, meldingen over de bescherming van kwetsbare personen, zorgen over veiligheid en incidentmeldingen
-- Bezwaren en verzoeken om een besluit over een individuele zaak te heroverwegen
+- Bezwaren en verzoeken om een besluit over een individueel geval te heroverwegen
 - Verzoeken om bemiddeling, conflictoplossing of persoonlijke ondersteuning
-- Aanvragen met persoonlijke of financiële gegevens of informatie over toelatingsvoorwaarden, zoals aanvragen voor noodhulp of studiebeurzen
-- Gesloten biedingen of reacties op aanbestedingen die tijdens de beoordeling privé moeten blijven
+- Aanvragen met persoonlijke of financiële gegevens of informatie over het voldoen aan voorwaarden, zoals aanvragen voor financiële noodhulp of studiebeurzen
+- Verzegelde biedingen of inschrijvingen op aanbestedingen die tijdens de beoordeling privé moeten blijven
 
-Inzenders kunnen elkaars inzendingen niet zien, maar dit proces is niet anoniem. Inzenders hebben een gebruikersaccount nodig en elk lid van de gesloten groep kan de inzendingen zien. Bedenk wie lid is van de beoordelingsgroep voordat je deze gebruikt voor gevoelige informatie.
+Bij deze werkwijze kunnen indieners elkaars inzendingen niet zien, maar de inzendingen zijn niet anoniem. Indieners hebben een gebruikersaccount nodig en elk lid van de besloten groep kan de inzendingen zien. Denk na over wie lid is van de beoordelingsgroep voordat je deze gebruikt voor gevoelige informatie.
 
 <!-- translation-section: enable-private-submissions -->
 
-## Privé-inzendingen inschakelen
+## Schakel privé-inzendingen in
 
-Je moet beheerder zijn van de groep of subgroep waarin je inzendingen wilt verzamelen.
+Je moet admin zijn van de groep of subgroep waarin je inzendingen wilt verzamelen.
 
 1. Open de groep.
-2. Selecteer **Instellingen** (of **Meer** en daarna **Bewerk groepsinstellingen**).
+2. Selecteer **Instellingen** (of **Meer** en vervolgens **Bewerk groepsinstellingen**).
 3. Open **Toestemmingen**.
 4. Schakel **Niet-leden kunnen discussies starten** in.
 5. Sla de groepsinstellingen op.
 
 ![Het tabblad Toestemmingen in de groepsinstellingen, met Niet-leden kunnen discussies starten gemarkeerd](non_members_can_start_discussions.png)
 
-Deze optie is alleen beschikbaar voor **Open** en **Gesloten** groepen. Ze is verborgen voor **Geheim** groepen. Zie je de optie niet, open dan **Privacy** in de groepsinstellingen en verander **Groepsprivacy** in **Gesloten** (aanbevolen voor privé-inzendingen) of **Open**. Ga daarna terug naar **Toestemmingen**.
+Deze optie is alleen beschikbaar voor groepen met de privacyinstelling **Open** of **Gesloten**. De optie is verborgen voor groepen met de instelling **Geheim**. Als je de optie niet ziet, open dan **Privacy** in de groepsinstellingen en wijzig **Groepsprivacy** naar **Gesloten** (aanbevolen voor privé-inzendingen) of **Open**. Ga vervolgens terug naar **Toestemmingen**.
 
-Door deze toestemming in te schakelen worden de discussies van de groep niet openbaar. Een niet-lid kan een nieuwe discussie starten en die als gast openen, maar kan de andere privéd discussies van de groep niet zien.
+Als je deze toestemming inschakelt, worden de discussies van de groep niet openbaar. Een niet-lid kan een nieuwe discussie starten en die discussie als gast bekijken, maar kan de andere privédiscussies van de groep niet zien.
 
 <!-- translation-section: set-up-a-private-submission-process -->
 
-## Een proces voor privé-inzendingen opzetten
+## Richt een proces voor privé-inzendingen in
 
-1. Maak een aparte subgroep voor de inzendingen en stel de privacy in op **Gesloten**. Zo blijven de inzendingen gescheiden van het andere werk van de hoofdgroep.
-2. Voeg de selectiecommissie of andere beoordelaars toe als leden van de subgroep. Elk lid van de subgroep kan alle inzendingen zien. Voeg daarom alleen mensen toe die deze toegang nodig hebben.
-3. Maak een [discussiesjabloon](/en/user_manual/discussions/templates) in de subgroep. Neem daarin de vragen en informatie op die inzenders moeten aanleveren. Je kunt voor verschillende soorten inzendingen verschillende discussiesjablonen maken.
-4. Als inzenders geen lidmaatschap van de subgroep mogen aanvragen, stel het lidmaatschap dan in op **Alleen op uitnodiging**.
+1. Maak een aparte subgroep voor het inzendingsproces en stel de privacy in op **Gesloten**. Een subgroep houdt de inzendingen gescheiden van het andere werk van de hoofdgroep.
+2. Voeg de selectiecommissie of andere mensen die verantwoordelijk zijn voor het beoordelen van inzendingen toe als leden van de subgroep. Elk lid van de subgroep kan elke inzending zien, dus voeg alleen mensen toe die deze toegang moeten hebben.
+3. Maak een [discussiesjabloon](/en/user_manual/discussions/templates) in de subgroep. Neem de vragen en informatie op die indieners moeten beantwoorden en verstrekken. Je kunt verschillende discussiesjablonen maken voor verschillende soorten inzendingen.
+4. Als indieners geen lidmaatschap van de subgroep mogen aanvragen, stel het lidmaatschap dan in op **Alleen op uitnodiging**.
 5. [Schakel privé-inzendingen in](#enable-private-submissions) bij de toestemmingen van de subgroep.
 6. Test het proces met een account dat geen lid is van de subgroep.
-7. Deel de pagina van de subgroep met mogelijke inzenders. Zij moeten inloggen op hun gebruikersaccount voordat ze iets kunnen inzenden.
+7. Deel de pagina van de subgroep met mogelijke indieners. Zij moeten inloggen op hun gebruikersaccount voordat ze een inzending kunnen doen.
 
 <!-- translation-section: make-a-submission -->
 
-## Een inzending doen
+## Doe een inzending
 
-De inzender opent de subgroep en selecteert **Start discussie**. Loomio toont de beschikbare discussiesjablonen van de subgroep. De inzender kiest het juiste sjabloon, beantwoordt de vragen en start de discussie.
+De indiener opent de subgroep en selecteert **Start discussie**. Loomio toont de beschikbare discussiesjablonen van de subgroep. De indiener selecteert het passende discussiesjabloon, beantwoordt de vragen en start de discussie.
 
-De discussie hoort bij de subgroep, maar de inzender wordt geen lid van de subgroep. Loomio voegt de inzender als gast toe aan de discussiethread. Zo kan die de discussie zien en deelnemen aan het gesprek met de commissie of het beoordelingsteam. Andere privéd discussies of inzendingen in de subgroep blijven verborgen.
+De discussie hoort bij de subgroep, maar de indiener wordt geen lid van de subgroep. Loomio voegt de indiener toe als gast aan de eigen discussiethread, zodat die de discussie kan bekijken en eraan kan deelnemen met de commissie of het beoordelingsteam. De indiener kan andere privédiscussies of inzendingen in de subgroep niet zien.
 
 <!-- translation-section: review-submissions -->
 
-## Inzendingen beoordelen
+## Beoordeel inzendingen
 
-Leden van de subgroep kunnen elke discussie over een inzending zien. Ze kunnen aanvullende vragen stellen en reacties, peilingen of andere hulpmiddelen in de discussie gebruiken om hun beoordeling af te ronden.
+Leden van de subgroep kunnen elke discussie over een inzending in de subgroep zien. Ze kunnen vervolgvragen stellen en reacties, peilingen of andere discussietools gebruiken om hun beoordeling af te ronden.
 
-Als iemand anders informatie moet aanleveren, kan een lid van de subgroep met de juiste toestemming die persoon uitnodigen voor de discussie over de inzending. Als iemand bijvoorbeeld een ander nomineert, kan de subgroep de genomineerde uitnodigen voor de thread wanneer deelname nodig is. De uitgenodigde persoon neemt als gast deel en krijgt geen toegang tot de andere privéd discussies van de subgroep.
+Als iemand anders informatie moet verstrekken, kan een lid van de subgroep met de juiste toestemming die persoon uitnodigen voor de discussie over de inzending. Als iemand bijvoorbeeld een nominatie indient, kan de subgroep de genomineerde uitnodigen voor de thread als diens deelname nodig is. De uitgenodigde persoon neemt deel als gast zonder toegang te krijgen tot de andere privédiscussies van de subgroep.
 
-Elke inzender kan de eigen inzending zien, maar niet de andere privéd discussies of inzendingen in de subgroep. Schakel **Niet-leden kunnen discussies starten** uit wanneer de inzendperiode sluit. Bestaande discussies en toegang voor gasten blijven ongewijzigd.
+Elke indiener kan de eigen inzending zien, maar kan de andere privédiscussies of inzendingen van de subgroep niet zien. Schakel **Niet-leden kunnen discussies starten** uit wanneer de inzendingsperiode sluit. Bestaande discussies en gasttoegang blijven ongewijzigd.

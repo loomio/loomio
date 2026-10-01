@@ -1,10 +1,10 @@
 ---
 title: Hoe je kunt deelnemen
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/overview/how-to-participate.md
+source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
+source_file: docs/en/user_manual/overview/how-to-participate.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 4337bfc044fc30d1
   comment: 66cebed9d4121cb8
@@ -17,16 +17,16 @@ sections:
   results: 6fe0d5a60acc75eb
   outcome: 8cb16ab9afb55fb8
 generated:
-  introduction: 6f6b1893f7901c2b
-  comment: 5e4c246b47c33a1a
-  reply-to-a-comment: 79fae3caf0546a2e
+  introduction: 419bff83b3fea321
+  comment: 5c0e7f7da9e81673
+  reply-to-a-comment: 998119506800c5e9
   get-someone-s-attention: 1210a3fdbd56428f
-  reactions: 4cb18392ecdda54d
-  vote: 8b0fa39ce2a7578b
-  state-a-reason: 3813893baeaea22b
-  change-your-vote: 1bbd22a7e15c93d7
-  results: 5157793b6e9c21ae
-  outcome: ff54d9d3ac303b54
+  reactions: fed446e84627468a
+  vote: 4a9fb187857be387
+  state-a-reason: b7ad71d9ba510291
+  change-your-vote: 5d38ad092f0a1091
+  results: 3647734e3e21c649
+  outcome: de57ceff8d255d32
 title_source: a7854841fbd99ee4
 title_generated: d3b32dbe8687b489
 ---
@@ -35,17 +35,17 @@ title_generated: d3b32dbe8687b489
 
 # Hoe je kunt deelnemen
 
-Zodra je bent ingelogd bij een Loomio-groep waarvoor je bent uitgenodigd, kun je deelnemen aan een discussie of besluitvorming.
+Zodra je bent ingelogd bij een Loomio-groep waarvoor je bent uitgenodigd, kun je deelnemen aan een discussie of besluitvorming in Loomio.
 
-Lees hoe je een reactie schrijft in een thread en stemt in een peiling.
+Lees verder om te zien hoe je een reactie schrijft in een thread en hoe je stemt in een peiling.
 
 <!-- translation-section: comment -->
 
 ## Reageren
 
-Je kunt een reactie schrijven in een thread. Anderen kunnen antwoorden, een emoji toevoegen of zelf reageren om de discussie voort te zetten.
+Je kunt een reactie schrijven in een thread. Mensen kunnen daarop antwoorden, een emoji-reactie geven of zelf een reactie plaatsen om de discussie voort te zetten.
 
-Gebruik **Plaats reactie** om je tekst direct te publiceren. Je reactie is zichtbaar voor iedereen die de thread mag zien.
+Gebruik **Reactie plaatsen** zodra je tekst klaar is om je reactie direct te publiceren. Je reactie is zichtbaar voor iedereen die toestemming heeft om de thread te bekijken.
 
 ![](comment_add.png#width-90)
 
@@ -53,9 +53,9 @@ Gebruik **Plaats reactie** om je tekst direct te publiceren. Je reactie is zicht
 
 ### Antwoorden op een reactie
 
-Klik op het antwoordpictogram onder een reactie om erop te antwoorden.
+Je kunt op iemands reactie antwoorden door op het antwoordpictogram onder de reactie te klikken.
 
-Je antwoord wordt in de thread gepubliceerd. De schrijver van de reactie krijgt een e-mailmelding.
+Je antwoord wordt in de thread gepubliceerd en de auteur van de reactie ontvangt een melding per e-mail.
 
 ![](comment_reply.png#width-90)
 
@@ -71,7 +71,7 @@ Je kunt mensen een melding sturen wanneer je een reactie schrijft.
 
 ### Emoji-reacties
 
-Met een emoji-reactie laat je de schrijver weten wat je van een reactie vindt. Zo kun je snel deelnemen zonder tekst te schrijven of een e-mail te versturen. Klik op het smileypictogram onder een reactie om een emoji-reactie achter te laten.
+Met een emoji-reactie kun je waardering voor een reactie tonen en de auteur laten weten hoe je erover denkt. Het is een snelle manier om deel te nemen, zonder tekst te schrijven of een e-mail te versturen. Klik op het pictogram met de lachende emoji onder een reactie om een emoji-reactie te plaatsen.
 
 ![](comment_reaction.png#width-90)
 
@@ -79,56 +79,56 @@ Met een emoji-reactie laat je de schrijver weten wat je van een reactie vindt. Z
 
 ## Stemmen
 
-Je kunt per e-mail of via een melding in Loomio een uitnodiging krijgen om te stemmen in een peiling. Klik op de link in de e-mail om te stemmen.
+Je kunt per e-mail of via een melding in Loomio een uitnodiging ontvangen om te stemmen in een peiling. Klik op de link in de e-mail om te stemmen.
 
-Klik of tik op het pictogram van de optie die je kiest.
+Klik of tik op het pictogram van jouw keuze om te stemmen.
 
-Er zijn verschillende soorten peilingen. Het voorbeeld hieronder toont een voorstel met de stemopties **Eens**, **Onthouden** en **Oneens**. Er kunnen ook andere opties beschikbaar zijn.
+Er zijn verschillende soorten peilingen. Het voorbeeld hieronder toont een gebruikelijk voorstel met de stemopties **Eens**, **Onthouden** en **Oneens**. Er kunnen ook andere opties beschikbaar zijn.
 
-Lees de peiling en eventuele bijlagen. Kies daarna een optie om je stem uit te brengen.
+Lees de peiling en eventuele bijlagen en breng daarna je stem uit door een van de opties te selecteren.
 
 ![](proposal_example.png#width-90)
 
 <!-- translation-section: state-a-reason -->
 
-### Een reden geven
+### Geef een reden
 
-Als je stemt, kun je bij **Reden** uitleggen waarom je deze optie kiest. Dit is niet verplicht.
+Bij het stemmen kun je ook een **Reden** opgeven om uit te leggen waarom je zo hebt gestemd. Dit is optioneel.
 
 ![](vote_reason.png#width-90)
 
 <!-- translation-section: change-your-vote -->
 
-### Je stem wijzigen
+### Wijzig je stem
 
 Je kunt **je stem wijzigen** totdat het voorstel sluit.
 
 ![](vote_change.png#width-90)
 
-Er kunnen verschillende redenen zijn om je stem te wijzigen. Nieuwe informatie kan je bijvoorbeeld anders over het voorstel laten denken.
+Er zijn verschillende redenen om je stem te wijzigen. Nieuwe informatie kan je bijvoorbeeld aanleiding geven om je besluit te heroverwegen en je stem te wijzigen.
 
-Je kunt opnieuw een reden geven om uit te leggen waarom je je stem hebt gewijzigd.
+Je kunt opnieuw een reden opgeven om uit te leggen waarom je je stem hebt gewijzigd.
 
 ![](vote_edit.png#width-90)
 
 <!-- translation-section: results -->
 
-### Resultaten
+### Resultaat
 
-De resultaten worden bijgewerkt wanneer mensen stemmen. Zo kun je zien hoe de stemming over het voorstel verloopt.
+Het resultaat van het voorstel wordt bijgewerkt wanneer mensen stemmen, zodat je kunt zien hoe de steun voor een voorstel zich ontwikkelt.
 
 ![](proposal_results.png#width-90)
 
-Bij een omstreden voorstel zijn de resultaten vaak verdeeld. Dat betekent niet dat het voorstel is mislukt.
+Bij een omstreden voorstel zijn de stemmen vaak verdeeld. Dit betekent echter niet dat het voorstel is mislukt.
 
-Nieuwe informatie die tijdens de stemming naar voren komt, helpt vaak om een beter voorstel te maken dat meer kans maakt op instemming.
+Nieuwe informatie die tijdens het voorstel naar voren komt, helpt vaak om een beter voorstel te formuleren dat meer kans heeft om te worden aangenomen.
 
 <!-- translation-section: outcome -->
 
 ### Conclusie
 
-Wanneer het voorstel sluit, wordt de schrijver gevraagd de **Conclusie** te formuleren.
+Wanneer het voorstel sluit, wordt de auteur gevraagd om de **Conclusie** te formuleren.
 
-Dit is de laatste stap om de uitkomst van de besluitvorming vast te leggen en iedereen te laten weten wat er daarna gebeurt.
+Dit is een belangrijke laatste stap om het genomen besluit vast te leggen en iedereen te laten weten wat er daarna gebeurt.
 
 ![](proposal_outcome.png#width-90)

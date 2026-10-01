@@ -1,6 +1,6 @@
 ---
 title: Rang
-source_revision: 9c60c42fc739483fa23f15d9f34a1e9245518092
+source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
 source_file: docs/en/user_manual/polls/rank/index.md
 translated:
   provider: codex/gpt-6.1-sol
@@ -14,85 +14,85 @@ sections:
   read-the-results: 18fbb0f9a5a866bc
   share-an-outcome: c9dcebf155d64c65
 generated:
-  introduction: 375fe6df018067ec
-  when-to-use-rank: 22b5321210fc195e
-  example-rank-bottle-designs: debba79a1c290e2e
-  set-up-the-poll: 94fd9d4af6c77fd8
-  vote: 4b8da0caa857f085
-  read-the-results: 61a3d19de7a18dc5
-  share-an-outcome: f16d3af49dab5348
+  introduction: 0c8d21348e26e4d5
+  when-to-use-rank: dbf653bafc20554e
+  example-rank-bottle-designs: 5f9a0811b04c699b
+  set-up-the-poll: f48d84f0f7086d87
+  vote: 23c55f6d5922447b
+  read-the-results: 5d0f96ddc3607466
+  share-an-outcome: '0696775426d23128'
 title_source: a4130d7d2c3a137f
 title_generated: 7186e02bc731a8e5
 ---
 
 <!-- translation-section: introduction -->
 
-# Rang
+# Rangschikken
 
-Met Rang bepaal je de gezamenlijke voorkeursvolgorde van de groep. Deelnemers zetten opties van hun grootste naar hun kleinste voorkeur. Loomio geeft hoger geplaatste opties meer punten.
+Rangschikken bepaalt de gezamenlijke voorkeursvolgorde van de groep. Deelnemers zetten opties op volgorde van meest naar minst gewenst, en Loomio kent meer punten toe aan opties die hoger staan.
 
 <!-- translation-section: when-to-use-rank -->
 
-## Wanneer gebruik je Rang?
+## Wanneer gebruik je Rangschikken?
 
-Gebruik Rang als de volgorde van voorkeuren belangrijk is en je één gezamenlijke rangschikking wilt. Bijvoorbeeld voor:
+Gebruik Rangschikken wanneer de voorkeursvolgorde belangrijk is en je één gezamenlijke volgorde wilt bepalen. Het werkt goed voor:
 
-- één kandidaat kiezen voor een functie;
-- projecten ordenen voor een werkplan;
-- conferentieonderwerpen prioriteren;
-- naast een eerste keuze ook alternatieven kiezen; of
-- een lange lijst terugbrengen tot een gerangschikte shortlist.
+- het selecteren van één kandidaat voor een functie;
+- het ordenen van projecten voor een werkplan;
+- het prioriteren van conferentieonderwerpen;
+- het kiezen van reserveopties naast een eerste keuze; of
+- het terugbrengen van een lange lijst tot een geordende shortlist.
 
-Rang bepaalt de volgorde op basis van punten. Het is geen methode voor evenredige verkiezingen. Wil je meerdere mensen kiezen en daarbij verschillende groepen kiezers vertegenwoordigen, gebruik dan een [STV-verkiezing](/en/user_manual/polls/stv/).
+Rangschikken bepaalt de volgorde op basis van punten. Het is geen evenredige verkiezingsmethode. Gebruik een [STV-verkiezing](/en/user_manual/polls/stv/) om meerdere mensen te kiezen en daarbij verschillende groepen kiezers te vertegenwoordigen.
 
 <!-- translation-section: example-rank-bottle-designs -->
 
 ## Voorbeeld: flesontwerpen rangschikken
 
-Oatmilk Cooperative vraagt leden vier flesontwerpen te rangschikken voor een proef met herbruikbare flessen. Deelnemers letten op gebruiksgemak, duurzaamheid, behoeften van klanten, opslag en geschiktheid voor de wasapparatuur.
+Oatmilk Cooperative vraagt leden om vier flesontwerpen te rangschikken voor een proef met retourflessen. Deelnemers houden rekening met gebruiksgemak, duurzaamheid, klantbehoeften, opslag en geschiktheid voor de wasapparatuur.
 
 <!-- translation-section: set-up-the-poll -->
 
 ## Stel de peiling in
 
-Beschrijf wat de rangschikking zal bepalen en voeg de opties toe. Stel **Aantal keuzes** in om te bepalen hoeveel opties iemand mag rangschikken. De eerste keuze krijgt de meeste punten, de volgende keuze één punt minder. Opties die iemand niet rangschikt, krijgen geen punten.
+Geef aan wat de rangschikking zal bepalen en voeg de opties toe. Stel **Aantal keuzes** in om te bepalen hoeveel opties elke persoon mag rangschikken. Een eerste keuze krijgt de meeste punten, de volgende keuze krijgt één punt minder en opties die niet zijn gerangschikt krijgen geen punten.
 
 ![](form.png)
 
-Laat deelnemers alle opties rangschikken als je een volledige volgorde nodig hebt. Sta minder keuzes toe als deelnemers mogelijk niet genoeg weten om alles te rangschikken. Door opties in willekeurige volgorde te tonen, kun je de invloed van hun oorspronkelijke volgorde verkleinen.
+Maak het rangschikken van alle opties verplicht als je een volledige volgorde nodig hebt. Sta minder keuzes toe als deelnemers mogelijk niet genoeg weten om alles te rangschikken. Door opties in willekeurige volgorde te tonen, kun je de invloed van hun oorspronkelijke volgorde verkleinen.
 
 <!-- translation-section: vote -->
 
-## Stem
+## Stemmen
 
-Deelnemers slepen de opties naar de volgorde van hun voorkeur, met nummer 1 als eerste keuze. Ze kunnen een reden toevoegen om uit te leggen waarop hun rangschikking is gebaseerd.
+Deelnemers slepen de opties naar hun voorkeursvolgorde, met nummer 1 als eerste keuze. Ze kunnen een reden toevoegen om de criteria achter hun rangschikking toe te lichten.
 
 ![](voting.png)
 
-In dit voorbeeld zet de kiezer de **amberkleurige fles van 500 ml** op de eerste plaats en de **doorzichtige fles van 500 ml** op de tweede. Beide passen in de bestaande opslagruimte en wasapparatuur van het café.
+In dit voorbeeld zet de kiezer de **amberkleurige fles van 500 ml** op de eerste plaats en de **heldere fles van 500 ml** op de tweede plaats, omdat beide geschikt zijn voor de bestaande opslag en wasapparatuur van het café.
 
 <!-- translation-section: read-the-results -->
 
-## Bekijk de resultaten
+## Bekijk het resultaat
 
-De resultaten combineren alle stemmen tot een gezamenlijke rangschikking op basis van punten. Voor elke optie tonen ze:
+Het resultaat combineert alle stembiljetten tot een gezamenlijke rangschikking op basis van punten. Voor elke optie zie je:
 
-- **Rang**: de plaats in het gezamenlijke resultaat;
-- **% van de punten**: het aandeel van alle punten voor de rangschikking;
-- **Punten**: het totale aantal punten uit alle stemmen;
+- **Volgorde**: de positie in het gezamenlijke resultaat;
+- **% van de punten**: het aandeel van alle toegekende punten;
+- **Punten**: het totale aantal punten van alle stembiljetten;
 - **Gemeen**: het gemiddelde aantal punten per kiezer; en
-- **Stemmers**: hoeveel mensen de optie hebben gerangschikt.
+- **Kiezers**: hoeveel mensen de optie hebben gerangschikt.
 
 ![](results.png)
 
-In dit voorbeeld staat de **amberkleurige fles van 500 ml** bovenaan, gevolgd door de **doorzichtige fles van 500 ml** en de **amberkleurige fles van 750 ml**. De groep kan eerst het ontwerp met de hoogste voorkeur onderzoeken en de rest van de volgorde bewaren als reeks alternatieven.
+In dit voorbeeld staat de **amberkleurige fles van 500 ml** op de eerste plaats, gevolgd door de **heldere fles van 500 ml** en de **amberkleurige fles van 750 ml**. De groep kan het voorkeursontwerp als eerste onderzoeken en de overige volgorde aanhouden als reeks alternatieven.
 
-Achter dezelfde puntentotaalscore kunnen verschillende voorkeurspatronen schuilgaan. Bekijk de afzonderlijke stemmen en de redenen erbij als opties dicht bij elkaar liggen of de beslissing grote gevolgen heeft.
+Een resultaat op basis van punten kan verschillende voorkeurspatronen verbergen die hetzelfde totaal opleveren. Bekijk afzonderlijke stembiljetten en redenen bij stemmen wanneer opties dicht bij elkaar liggen of het besluit grote gevolgen heeft.
 
 <!-- translation-section: share-an-outcome -->
 
 ## Deel een conclusie
 
-Deel een conclusie wanneer de peiling sluit. Geef aan met welke optie de groep verdergaat en wat er gebeurt als die niet doorgaat. Lees [Deel een conclusie](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome) voor uitleg over hoe conclusies werken.
+Deel een conclusie wanneer de peiling sluit. Geef aan met welke optie de groep verdergaat en wat er gebeurt als die optie niet haalbaar blijkt. Zie [Deel een conclusie](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome) voor uitleg over conclusies.
 
-![Een conclusie waarin het flesontwerp met de hoogste rang wordt gekozen](outcome.png)
+![Een conclusie waarin het hoogst gerangschikte flesontwerp wordt gekozen](outcome.png)
