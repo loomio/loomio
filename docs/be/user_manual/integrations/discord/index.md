@@ -1,14 +1,14 @@
 ---
 title: Discord
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/integrations/discord/index.md
+source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
+source_file: docs/en/user_manual/integrations/discord/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-30'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 39ded52449532722
 generated:
-  introduction: 41e0ac7a236c9417
+  introduction: cef103fd56ac006a
 title_source: 053bc65874ad6098
 title_generated: 053bc65874ad6098
 ---
@@ -17,22 +17,22 @@ title_generated: 053bc65874ad6098
 
 # Інтэграцыя з Discord
 
-_Падключэнне апавяшчэнняў вашай групы Loomio да каманднага чата ў Discord._
+_Падключэнне апавяшчэнняў вашай групы Loomio да каманднага чата Discord._
 
-Loomio можа адпраўляць апавяшчэнні ў вашы каналы Discord, калі з'яўляюцца новыя абмеркаванні, прапановы, каментарыі, галасы і высновы. Вы таксама можаце ўручную адправіць апавяшчэнне ў чат, каб нагадаць людзям пра рашэнне.
+Loomio можа адпраўляць апавяшчэнні ў вашы каналы Discord, калі з'яўляюцца новыя абмеркаванні, прапановы, каментарыі, галасы і высновы. Вы таксама можаце ўручную адпраўляць апавяшчэнні ў чат, калі трэба нагадаць людзям пра рашэнне.
 
 ---
 
 Адкрыйце ваш сервер Discord і знайдзіце меню налад сервера.
 ![](server-settings.png)
 
-Націсніце «Інтэграцыі».
+Націсніце «Інтэграцыі»
 ![](integrations.png)
 
-Затым націсніце «Дадаць вебхук» і дайце яму назву, напрыклад «Бот Loomio».
+Затым націсніце «Дадаць вэбхук» і дайце яму назву, напрыклад «Бот Loomio»
 
 ![](add-webhook.png)
 
-Скапіруйце URL вебхука ў буфер абмену і перайдзіце па спасылцы ніжэй.
+Пераканайцеся, што URL вэбхука скапіяваны ў буфер абмену, і перайдзіце па спасылцы ніжэй.
 
-[Наладзіць інтэграцыю з чатам у Loomio](../chatbots/#set-up-a-chat-integration)
+[Наладзьце інтэграцыю з чатам у Loomio](../chatbots/#set-up-a-chat-integration)
