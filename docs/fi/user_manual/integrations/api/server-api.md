@@ -1,10 +1,10 @@
 ---
 title: Palvelimen API
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
+source_revision: c27ee3b193231816878f1c074ff9fc2a086a88c0
 source_file: docs/en/user_manual/integrations/api/server-api.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-02'
 sections:
   introduction: a357cdc2bfc0223e
   authentication: cbabcc874f053455
@@ -26,42 +26,42 @@ sections:
   examples-6: 71ae30577730b261
   sso-profile-sync-settings: 416144004d040e4f
 generated:
-  introduction: 3b7adf7c100298e3
-  authentication: ae7a3d2416a21d01
-  user-object: 75913cd0fd24d9ab
+  introduction: fc89bb6ac120603a
+  authentication: 76c4ebae56d9e683
+  user-object: 8a20bcf532e639a0
   list-users: dfecbabec62a5002
   example: 3849933612930aeb
-  show-user: d8b7983ed84e2087
-  examples: d2751508eb33480a
-  update-user: 0b1749b278aca484
+  show-user: 488193629bd5a028
+  examples: 04b02e2452f8d449
+  update-user: '09daabaa021ff5fb'
   params: b29f72f9f8367e50
-  examples-2: 863b6f5a7f852fa5
-  deactivate-user: 4105588f39af51f2
-  examples-3: bb762640d349ebb4
+  examples-2: 0fad539c38c70148
+  deactivate-user: cf07e34cc9850e2e
+  examples-3: '082ccd9158a69ae7'
   reactivate-user: 1a743e4153c6eea6
   examples-4: '09d1f8c1ba598db8'
-  redact-user: ae4db835ea764a14
+  redact-user: 6c1a2029e16a9f70
   examples-5: ddba94c3f79d9465
-  delete-user: c8772856db2a725b
+  delete-user: e2dbdde89b12df85
   examples-6: 5ee22a0723a6b25f
-  sso-profile-sync-settings: 340017f579ed2dc4
+  sso-profile-sync-settings: 0e8908951c1924fc
 title_source: 370e81eb20eece44
 title_generated: 6b950a4b886b152a
 ---
 
 <!-- translation-section: introduction -->
 
-# Loomion palvelimen API-dokumentaatio
+# Loomion palvelimen API:n dokumentaatio
 
-<!-- seo-description: Hallitse käyttäjätilejä omalla palvelimella ylläpidetyssä Loomio-asennuksessa Loomion palvelimen API:n avulla. -->
+<!-- seo-description: Hallitse itse ylläpitämäsi Loomio-asennuksen käyttäjätilejä Loomion palvelimen API:n avulla. -->
 
 `/api/b3` on tarkoitettu palvelintason toimintoihin. Käytä `/api/b2`-rajapintaa käyttäjäkohtaisiin toimintoihin, jotka suoritetaan Loomion käyttäjätilillä.
 
 <!-- translation-section: authentication -->
 
-## Tunnistautuminen
+## Todennus
 
-Aseta `B3_API_KEY`-muuttujan arvoksi yli 16 merkkiä pitkä salainen avain.
+Aseta `B3_API_KEY`-muuttujan arvoksi yli 16 merkin pituinen salainen avain.
 
 Lähetä avain bearer-tokenina:
 
@@ -69,13 +69,13 @@ Lähetä avain bearer-tokenina:
 curl -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/b3/users
 ```
 
-Lähetä tunnistautumistiedot vain `Authorization`-otsakkeessa. Kyselymerkkijonossa tai pyynnön rungossa lähetetyt API-avaimet hylätään.
+Lähetä tunnistetiedot vain `Authorization`-otsakkeessa. Kyselymerkkijonoissa tai pyyntöjen rungoissa lähetetyt API-avaimet hylätään.
 
 <!-- translation-section: user-object -->
 
 ## Käyttäjäobjekti
 
-Käyttäjätietoja sisältävät vastaukset ovat tässä muodossa:
+Käyttäjätietoja sisältävien vastausten rakenne on seuraava:
 
 ```json
 {
@@ -125,7 +125,7 @@ Palauttaa:
 
 ## Näytä käyttäjä
 
-Hae käyttäjä Loomion käyttäjätunnisteen tai ulkoisen identiteetin perusteella.
+Etsi käyttäjä Loomion käyttäjä-ID:n tai ulkoisen identiteetin perusteella.
 
 `GET /api/b3/users/:id`
 
@@ -135,7 +135,7 @@ Hae käyttäjä Loomion käyttäjätunnisteen tai ulkoisen identiteetin perustee
 
 ### Esimerkkejä
 
-Loomion käyttäjätunnisteen perusteella:
+Loomion käyttäjä-ID:n perusteella:
 
 ```bash
 curl -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/b3/users/123
@@ -159,7 +159,7 @@ Palauttaa:
 
 ## Päivitä käyttäjä
 
-Päivitä Loomion käyttäjätunnisteen tai ulkoisen identiteetin perusteella löydetyn käyttäjän profiilikentät.
+Päivitä Loomion käyttäjä-ID:n tai ulkoisen identiteetin perusteella löydetyn käyttäjän profiilikentät.
 
 `PATCH /api/b3/users/:id`
 
@@ -179,7 +179,7 @@ Päivitä Loomion käyttäjätunnisteen tai ulkoisen identiteetin perusteella l�
 
 ### Esimerkkejä
 
-Loomion käyttäjätunnisteen perusteella:
+Loomion käyttäjä-ID:n perusteella:
 
 ```bash
 curl -X PATCH \
@@ -211,7 +211,7 @@ Palauttaa päivitetyn käyttäjän:
 
 ## Poista käyttäjätili käytöstä
 
-Poista käytöstä Loomion käyttäjätunnisteen tai ulkoisen identiteetin perusteella löydetty käyttäjätili.
+Poista käytöstä käyttäjätili, joka on löydetty Loomion käyttäjä-ID:n tai ulkoisen identiteetin perusteella.
 
 `POST /api/b3/users/:id/deactivate`
 
@@ -221,7 +221,7 @@ Poista käytöstä Loomion käyttäjätunnisteen tai ulkoisen identiteetin perus
 
 ### Esimerkkejä
 
-Loomion käyttäjätunnisteen perusteella:
+Loomion käyttäjä-ID:n perusteella:
 
 ```bash
 curl -X POST -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/b3/users/123/deactivate
@@ -279,9 +279,9 @@ Palauttaa:
 
 <!-- translation-section: redact-user -->
 
-## Poista käyttäjän henkilötiedot
+## Poista käyttäjän tunnistetiedot
 
-Henkilötietojen poisto säilyttää käyttäjän kommentit ja muun hänen luomansa sisällön hänen ryhmissään, mutta poistaa tiedossa olevat henkilön tunnistamisen mahdollistavat tiedot, kuten nimen, esittelytekstin, profiilikuvan, sähköpostiosoitteen, kirjautumistiedot, identiteetit ja aktiiviset istunnot.
+Tunnistetietojen poistaminen säilyttää käyttäjän kommentit ja muun käyttäjän luoman sisällön hänen ryhmissään, mutta poistaa tiedossa olevat henkilön tunnistamiseen käytettävät tiedot, kuten nimen, esittelyn, profiilikuvan, sähköpostiosoitteen, kirjautumistiedot, identiteetit ja aktiiviset istunnot.
 
 Tämä on suositeltu tapa poistaa käyttäjä Loomiosta.
 
@@ -317,9 +317,9 @@ Palauttaa:
 
 ## Poista käyttäjä
 
-Poistaminen poistaa käyttäjän ja hänen luomansa tietueet. Kommentit poistetaan ketjuista ja äänet kyselyistä. Myös käyttäjän luomat ryhmät, keskustelut, kyselyt ja muut tietueet voivat poistua tietokannan suhteiden kautta.
+Poistaminen poistaa käyttäjän ja hänen luomansa tietueet. Kommentit poistetaan ketjuista ja äänet kyselyistä. Myös käyttäjän luomat ryhmät, keskustelut, kyselyt ja muut tietueet voivat poistua tietokannan tietueiden välisten suhteiden kautta.
 
-Tämä poistaa paljon tietoja. Suosittelemme vahvasti henkilötietojen poistoa sen sijaan.
+Tämä poistaa laajasti tietoja. Käyttäjän tunnistetietojen poistaminen on vahvasti suositeltu vaihtoehto.
 
 `DELETE /api/b3/users/:id`
 
@@ -360,7 +360,7 @@ LOOMIO_DISABLE_EDIT_USER_PROFILE=1
 # LOOMIO_SSO_UPDATE_USER_PROFILE_ON_LOGIN=1
 ```
 
-`LOOMIO_DISABLE_EDIT_USER_PROFILE=1` estää käyttäjiä muokkaamasta näitä kenttiä itse:
+`LOOMIO_DISABLE_EDIT_USER_PROFILE=1` estää käyttäjiä muokkaamasta itse seuraavia kenttiä:
 
 | Kenttä | Huomautukset |
 | --- | --- |
@@ -371,6 +371,6 @@ LOOMIO_DISABLE_EDIT_USER_PROFILE=1
 
 Käyttäjät voivat edelleen muokata Loomion paikallisia kenttiä, kuten `short_bio` ja `location`.
 
-`LOOMIO_SSO_UPDATE_USER_PROFILE_ON_LOGIN=1` päivittää kentät `name` ja `email` SSO-kirjautumistiedoista. Jätä asetus kommentoiduksi tai määrittämättä, kun vain ulkoisen synkronointiskriptin tulee tehdä nämä päivitykset.
+`LOOMIO_SSO_UPDATE_USER_PROFILE_ON_LOGIN=1` päivittää kentät `name` ja `email` SSO-kirjautumistiedoista. Jätä asetus kommentoiduksi tai määrittämättä, kun vain ulkoisen synkronointiskriptin on tarkoitus päivittää näitä kenttiä.
 
-`LOOMIO_SSO_FORCE_USER_ATTRS` toimii edelleen nykyisissä asennuksissa. Se estää käyttäjiä muokkaamasta kenttiä ja päivittää kentät `name` ja `email` SSO-kirjautumisen yhteydessä.
+`LOOMIO_SSO_FORCE_USER_ATTRS` toimii edelleen olemassa olevissa asennuksissa. Se sekä estää käyttäjiä muokkaamasta kenttiä että päivittää kentät `name` ja `email` SSO-kirjautumisen yhteydessä.

@@ -1,10 +1,10 @@
 ---
 title: Chat-integraatiot
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
+source_revision: c27ee3b193231816878f1c074ff9fc2a086a88c0
 source_file: docs/en/user_manual/integrations/chatbots/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-02'
 sections:
   introduction: af3f509fd0a87c7d
   what-it-looks-like-in-chat: c425490496cb0ed2
@@ -13,12 +13,12 @@ sections:
   invite-to-poll: 70a0e025c79a13f0
   automatic-notifications: 381b622ece95e244
 generated:
-  introduction: a75babac5890ac57
+  introduction: d7779dd39f0f53dc
   what-it-looks-like-in-chat: fa55abaf399a7070
-  generate-a-webhook-url: eecf0f79210b4ca8
-  set-up-a-chat-integration: 40bd0330bc094f30
-  invite-to-poll: 0c0ca0df4435b0f7
-  automatic-notifications: 44f4f7a058d945fd
+  generate-a-webhook-url: fae1c4727b0fb237
+  set-up-a-chat-integration: 51240364969ecc72
+  invite-to-poll: 80371497b2bda5ec
+  automatic-notifications: 1104e02ce6bcedac
 title_source: 0eca19d30c6d7d3c
 title_generated: 28857b17fdd84c01
 ---
@@ -29,13 +29,13 @@ title_generated: 28857b17fdd84c01
 
 Loomio voi lähettää ilmoituksia chat-huoneeseesi.
 
-Chat-työkalut ja Loomio toimivat hyvin yhdessä. Käytä chatia nopeaan keskusteluun ja ajankohtaisten päivitysten jakamiseen. Siirrä tärkeät aiheet Loomioon, kun ihmiset tarvitsevat aikaa osallistumiseen, kun on tehtävä päätös tai kun ryhmä tarvitsee pysyvän tallenteen.
+Chat-työkalut ja Loomio toimivat hyvin yhdessä. Käytä chatia nopeaan keskusteluun ja ajankohtaisten tietojen jakamiseen. Siirrä tärkeät aiheet Loomioon, kun ihmiset tarvitsevat aikaa osallistumiseen, kun on tehtävä päätös tai kun ryhmä tarvitsee pysyvän kirjauksen asiasta.
 
 Loomio tukee Slackia, Discordia, Microsoft Teamsia, Matrixia ja Mattermostia.
 
-Voit lähettää ilmoituksia chat-huoneeseesi milloin haluat samalla tavalla kuin kutsuisit yksittäisiä ihmisiä äänestämään tai liittymään ketjuun.
+Voit lähettää ilmoituksia chat-huoneeseesi milloin haluat, samalla tavalla kuin kutsuisit yksittäisiä ihmisiä äänestämään tai liittymään ketjuun.
 
-Voit myös määrittää ilmoitukset lähetettäviksi aina tietyn tapahtuman yhteydessä, esimerkiksi kun joku aloittaa ketjun.
+Voit myös määrittää ilmoitukset lähetettäviksi aina, kun tietty tapahtuma toteutuu, esimerkiksi kun joku aloittaa ketjun.
 
 <!-- translation-section: what-it-looks-like-in-chat -->
 
@@ -45,7 +45,7 @@ Voit myös määrittää ilmoitukset lähetettäviksi aina tietyn tapahtuman yht
 <!-- translation-section: generate-a-webhook-url -->
 
 ## Luo webhook-URL
-Olemme laatineet vaiheittaiset ohjeet jokaiselle tukemallemme palvelulle. Noudata käyttämäsi palvelun ohjeita saadaksesi webhook-URL:n, jota tarvitset chat-integraation lisäämiseen Loomiossa.
+Olemme laatineet vaiheittaiset ohjeet jokaiselle tukemallemme palvelulle. Noudata käyttämäsi palvelun ohjeita saadaksesi webhook-URL:n, jonka tarvitset chat-integraation lisäämiseen Loomiossa.
 
 - [Slack](../slack/)
 - [Microsoft Teams](../microsoft_teams/)
@@ -53,18 +53,18 @@ Olemme laatineet vaiheittaiset ohjeet jokaiselle tukemallemme palvelulle. Noudat
 - [Matrix](../matrix/)
 - [Mattermost](../mattermost/)
 
-Webhook-pohjaista järjestelmäämme voi käyttää myös muiden järjestelmien kanssa, jotka tukevat saapuvia webhookeja HTML- tai Markdown-muodossa. Tällaisia ovat esimerkiksi Zapier ja Rocketchat. Valitse Mattermost-botti ja käytä omaa webhook-URL:ää.
+Webhook-pohjaista järjestelmäämme voi käyttää myös muiden järjestelmien kanssa, jotka tukevat saapuvia webhooks-kutsuja HTML- tai Markdown-muodossa. Tällaisia ovat esimerkiksi Zapier ja Rocketchat. Valitse Mattermost-botti ja käytä oman palvelusi webhook-URL:ää.
 
 <!-- translation-section: set-up-a-chat-integration -->
 
 ## Ota chat-integraatio käyttöön
 
-Kun olet määrittänyt valitsemasi palvelun asetukset (katso yllä), sinulla on webhook-URL. Avaa ryhmän valikosta **Chat-integraatiot** ja lisää ryhmällesi uusi chat-integraatio.
+Kun olet määrittänyt valitsemasi palvelun (katso yllä), sinulla on webhook-URL. Avaa ryhmän valikosta **Chat-integraatiot** ja lisää ryhmällesi uusi chat-integraatio.
 
 ![](loomio-group-settings.png)
 ![](loomio-settings-chatbots.png)
 
-Et todennäköisesti halua vielä valita mitään valintaruuduista. Syötä vain nimi (esimerkiksi "Discord #general") ja URL ja napsauta lomakkeen alareunan tallennuspainiketta.
+Et luultavasti halua vielä valita mitään valintaruutuja. Syötä vain nimi (esimerkiksi "Discord #general") ja URL ja napsauta lomakkeen alareunassa olevaa tallennuspainiketta.
 
 ![](loomio-chatbot-form.png)
 
@@ -74,7 +74,7 @@ Jos haluat myöhemmin integraation vastaanottavan automaattisia ilmoituksia, pal
 
 ### Kutsu kyselyyn
 
-Näin lähetät chat-huoneeseesi ilmoituksen, jossa kutsut ihmisiä äänestämään ehdotuksesta. Samat vaiheet koskevat myös toimintoja Jaa johtopäätös, Kutsu ketjuun, Muistuta äänestämään, Kyselyä muokattu ja muita vastaavia toimintoja.
+Näin lähetät chat-huoneeseesi ilmoituksen, joka kutsuu ihmisiä äänestämään ehdotuksesta. Samat vaiheet koskevat myös toimintoja Jaa johtopäätös, Kutsu ketjuun, Muistuta äänestämään, Kyselyä muokattu ja muita vastaavia toimintoja.
 
 ![](invite_button_on_proposal.png)
 
@@ -87,6 +87,6 @@ Näin lähetät chat-huoneeseesi ilmoituksen, jossa kutsut ihmisiä äänestäm�
 <!-- translation-section: automatic-notifications -->
 
 ### Automaattiset ilmoitukset
-Jos haluat lähettää ilmoituksen aina tietyn tapahtuman yhteydessä, muokkaa chat-integraatiota ja valitse kyseinen tapahtuma.
+Jos haluat lähettää ilmoituksen aina, kun tietty tapahtuma toteutuu, muokkaa chat-integraatiota ja valitse kyseinen tapahtuma.
 
 ![](chatbot_enable_automatic_notifications.png)
