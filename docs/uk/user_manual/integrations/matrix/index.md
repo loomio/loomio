@@ -1,14 +1,14 @@
 ---
 title: Matrix
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/integrations/matrix/index.md
+source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
+source_file: docs/en/user_manual/integrations/matrix/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-30'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: e54de0b6d9ea9ffb
 generated:
-  introduction: d81ad2bc830f9a31
+  introduction: 987f5ab1803426db
 title_source: 76a2171c057b730f
 title_generated: 76a2171c057b730f
 ---
@@ -17,37 +17,37 @@ title_generated: 76a2171c057b730f
 
 # Інтеграція з Matrix
 
-Loomio може надсилати сповіщення у ваші канали Matrix про нові обговорення, пропозиції, коментарі, голоси та висновки.
+Loomio може надсилати сповіщення у ваші канали Matrix, коли з’являються нові обговорення, пропозиції, коментарі, голоси та висновки.
 
-Matrix підтримує деякі HTML-елементи в чаті, і Loomio використовує цю можливість.
+Matrix підтримує деякі HTML-теги в кімнатах чату, і Loomio використовує цю можливість.
 
-Інтеграція з Matrix працює інакше, ніж інші інтеграції з чатами: замість вебхука вона використовує спеціально створеного бота.
+Наша інтеграція з Matrix дещо відрізняється від інших інтеграцій із чатами: вона не використовує вебхук. Для неї ми створили власний клієнт бота.
 
-Створіть користувача Matrix, від імені якого входитиме бот.
+Вам потрібно створити обліковий запис у Matrix, під яким бот входитиме в систему.
 
-Після створення користувача увійдіть до його облікового запису, щоб отримати наведені нижче дані.
+Створивши обліковий запис для бота, увійдіть під ним, щоб отримати наведені нижче дані.
 
-У цьому посібнику використано Element.
+У цьому посібнику ми використовуємо Element.
 
 ---
 
-У своїй групі Loomio додайте інтеграцію з чатом Matrix
-![Меню додавання бота Matrix у Loomio](loomio-add-matrix-bot.png)
+У вашій групі Loomio додайте інтеграцію з чатом Matrix
+![меню додавання бота Matrix у Loomio](loomio-add-matrix-bot.png)
 
-Заповніть цю форму
-![Форма налаштування бота Matrix у Loomio](loomio-matrix-bot-form.png)
+Ось форма, яку потрібно заповнити
+![форма налаштування бота Matrix у Loomio](loomio-matrix-bot-form.png)
 
-Щоб знайти токен доступу, почніть із цього меню
-![Меню налаштувань Matrix](matrix-settings-menu.png)
+Тут можна почати пошук вашого токена доступу
+![меню налаштувань Matrix](matrix-settings-menu.png)
 
-Відкрийте сторінку налаштувань
-![Налаштування Matrix](matrix-settings.png)
+Ось сторінка налаштувань
+![налаштування Matrix](matrix-settings.png)
 
-Тут ви знайдете токен доступу
-![Токен доступу Matrix](matrix-access-token.png)
+Ось сам токен доступу
+![токен доступу Matrix](matrix-access-token.png)
 
-Тепер знайдіть ідентифікатор кімнати
-![Налаштування кімнати Matrix](matrix-room-settings.png)
+Тепер вам потрібен ідентифікатор кімнати
+![налаштування кімнати Matrix](matrix-room-settings.png)
 
-Ось ідентифікатор кімнати
-![Ідентифікатор кімнати Matrix](matrix-room-id.png)
+Ось він.
+![ідентифікатор кімнати Matrix](matrix-room-id.png)

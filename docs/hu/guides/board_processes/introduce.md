@@ -1,10 +1,10 @@
 ---
 title: A Loomio bevezetése az igazgatóságodban
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/guides/board_processes/introduce.md
+source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
+source_file: docs/en/guides/board_processes/introduce.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-30'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: c0d64682f409c229
   check-technical-proficiency: 17e1c92a0214a12c
@@ -16,15 +16,15 @@ sections:
   manage-group-membership: cf3684fe138b05fe
   start-with-a-board-process: 916878a28e4bbe01
 generated:
-  introduction: 41a2490724ccf139
-  check-technical-proficiency: 4fb391ca18530e41
+  introduction: d0e599f5dea32de8
+  check-technical-proficiency: 94943ca183674fa0
   configure-your-group: 76d713fc4b0d4beb
-  group-description: 132193c54d4cf4f5
-  check-privacy-and-permission-settings: e9d276a1d433e36e
-  category-tags: 5fccfaa7e1a2cfe9
-  set-up-your-personal-profile: f162cf0cf9292b10
-  manage-group-membership: f08d69d4a1026040
-  start-with-a-board-process: 1a884941b95efe62
+  group-description: '08aff7db16d3c1ad'
+  check-privacy-and-permission-settings: 83a252065e0c6edb
+  category-tags: e0b154210b656406
+  set-up-your-personal-profile: 59da68804495187b
+  manage-group-membership: 86e71866a0e59d63
+  start-with-a-board-process: 34b5d95f2a1db05f
 title_source: 0d24828b57de672c
 title_generated: c9ebf56fd1156f1b
 ---
@@ -33,38 +33,38 @@ title_generated: c9ebf56fd1156f1b
 
 # A Loomio bevezetése az igazgatóságodban
 
-A Loomio online teret adhat az igazgatóságodnak vagy bizottságodnak a találkozókhoz, a megbeszélésekhez és a döntésekhez. A szervezet munkájáról visszakövethető dokumentáció is készülhet benne.
+A Loomio olyan online hely lehet, ahol az igazgatóságod vagy bizottságod találkozik, beszélget, döntéseket hoz, és ellenőrizhető nyilvántartást vezet a szervezeted számára.
 
-Kezdd az [Így vezesd be a Loomiót a csoportodban](/en/user_manual/overview/introducing_loomio) című útmutató általános lépéseivel. Ez az oldal az igazgatóságokra és bizottságokra vonatkozó szempontokat egészíti ki.
+Kezdd [A Loomio bevezetése a csoportodban](/en/user_manual/overview/introducing_loomio) című útmutató általános lépéseivel. Ez az oldal az igazgatóságokra és bizottságokra vonatkozó szempontokkal egészíti ki őket.
 
-Ha az igazgatóságnak csak néhány tagja vesz részt, a Loomio kevés hasznot hoz. Az információk és a beszélgetések valószínűleg továbbra is több eszköz között szóródnak szét, elvesznek az e-mail-fiókokban, a zavar pedig mindenki idejét veszi el.
+A Loomio azonban kevés hasznot hoz, ha az igazgatóságodnak csak néhány tagja vesz részt benne. Az információk és az üzenetek valószínűleg továbbra is több eszköz között szóródnak szét, elvesznek az e-mailek között, és a zavar mindenki idejét pazarolja.
 
-Gondold át, milyen problémát szeretnétek megoldani a Loomióval: például javítani és követni a kommunikációt, vagy megőrizni a szervezeti tudást.  Ezután az igazgatóság közösen kötelezze el magát amellett, hogy a munkáját áthelyezi a Loomióba, és ösztönözz mindenkit az érdemi részvételre.
+Gondold át, milyen problémát szeretnél megoldani a Loomio használatával: például javítani és követhetővé tenni a kommunikációt, vagy megőrizni a szervezetben felhalmozott tudást. Ezután az igazgatóság közösen vállalja, hogy a munkát áthelyezi a Loomióba, te pedig ösztönözz mindenkit arra, hogy tegyen erőfeszítést ennek érdekében.
 
-Adminisztrátorként az a fő feladatod, hogy az igazgatóság igényeihez igazítva állítsd be a Loomiót.
+Adminisztrátorként az elsődleges célod az, hogy az igazgatóságod munkájához megfelelően állítsd be a Loomiót.
 
-Ösztönözd az igazgatóság tagjait, hogy csatlakozzanak és részt vegyenek a munkában. Legyenek képesek:
+Ösztönözd az igazgatósági tagokat a csatlakozásra és a részvételre. Legyenek képesek:
 
 - Bejelentkezni a Loomióba
-- Elolvasni a szálakat és hozzászólni
+- Elolvasni a szálakat és hozzászólni azokhoz
 - Szavazni a szavazásokon
-- Átlátni, hogyan működnek az igazgatóság döntéshozatali eljárásai a Loomióban
+- Megérteni, hogyan működnek a szervezetirányítási gyakorlatok a Loomióban
 
 <!-- translation-section: check-technical-proficiency -->
 
 ## Ellenőrizd a technikai felkészültséget
 
-Az igazgatóság tagjainak internetkapcsolattal rendelkező számítógépre vagy okostelefonra lesz szükségük. Tudniuk kell e-mailt küldeni és fogadni, böngészni az interneten, digitális dokumentumokat olvasni, valamint videókat nézni és hallgatni.
+Az igazgatósági tagoknak internethez csatlakozó számítógépre vagy okostelefonra lesz szükségük. Tudniuk kell e-mailt küldeni és fogadni, böngészni a weben, digitális dokumentumokat olvasni, valamint videókat nézni és azok hangját meghallgatni.
 
-Ellenőrizd, hogy minden tagnak rendelkezésére állnak-e a következők:
+Ellenőrizd, hogy a tagok rendelkeznek-e az alábbiakkal:
 
-- korszerű eszköz: számítógép, táblagép vagy okostelefon e-mail-hozzáféréssel és modern böngészővel
-- internetkapcsolat Wi-Fi-n, Ethernet-kábelen vagy mobiladat-kapcsolaton keresztül (3G vagy gyorsabb)
-- az e-mail-küldés és -fogadás, az internetes böngészés, a dokumentumok letöltése és a videók lejátszása.
+- naprakész eszköz: számítógép, táblagép vagy okostelefon e-mail-hozzáféréssel és modern internetböngészővel
+- internetkapcsolat WIFI-n, Ethernet-kábelen vagy mobiladat-előfizetésen keresztül (3G vagy újabb)
+- az e-mailek küldéséhez és fogadásához, az internetes böngészéshez, a dokumentumok letöltéséhez és a videók lejátszásához szükséges ismeretek.
 
-A Loomio minden elterjedt böngészővel működik, például a Google Chrome-mal, a Microsoft Edge-dzsel, a Firefoxszal és az Apple Safarival. A régi, elavult böngészők, például a Microsoft Internet Explorer, nem feltétlenül működnek.
+A Loomio minden szokásos internetböngészővel működik, például a Google Chrome, a Microsoft Edge, a Firefox és az Apple Safari böngészővel. A régi, elavult böngészők, például a Microsoft Internet Explorer, nem feltétlenül működnek.
 
-Ha gondod van a Loomio használatával az eszközödön, [fordulj a Loomio ügyfélszolgálatához](/contact).
+Ha problémád van a Loomio használatával az eszközödön, [lépj kapcsolatba a Loomio ügyfélszolgálatával](/contact).
 
 <!-- translation-section: configure-your-group -->
 
@@ -73,41 +73,41 @@ Ha gondod van a Loomio használatával az eszközödön, [fordulj a Loomio ügyf
 <!-- translation-section: group-description -->
 
 ### A csoport leírása
-A csoport leírása az első, amit az emberek látnak, amikor megérkeznek a Loomio-csoportodba. Írd le benne a csoport célját és a közös munkát, hogy az új tagok könnyen eligazodjanak. Adj meg minden további információt, amely segíti a tájékozódást és a részvételt.
+A csoport leírását látják először az emberek, amikor megérkeznek a Loomio-csoportodba. Írd meg úgy, hogy az új tagok megértsék a csoport célját és a közösen végzendő munkát. Adj meg minden további információt, amely segíti a tájékozódást és ösztönzi a részvételt.
 
-Például köszöntsd a tagokat, és írd le, hogy ez a szervezet kommunikációjának és irányításának online tere:
+Például üdvözöld az embereket, és mondd el nekik, hogy ez a közös online helyük a szervezet kommunikációjához és irányításához:
 
 - Emlékeztesd a tagokat az igazgatóság vagy bizottság céljára.
-- Vázold fel, hogyan használjátok majd a Loomiót: az ülések előkészítésére, a megbeszélések folytatására, a döntéshozatalra és az ülések közötti munka követésére.
-- Tedd egyértelművé, ki fér hozzá a csoporthoz, ki olvashatja a tartalmát, és ki vehet részt benne.
-- Csatold vagy linkeld a háttéranyagokat és a szervezet irányításával kapcsolatos dokumentumokat.
+- Vázold fel, hogyan tervezitek használni a Loomiót: felkészülés az ülésekre, a beszélgetések előrevitele, döntéshozatal és a folyamatban lévő ügyek követése az ülések között.
+- Tisztázd, ki fér hozzá a csoporthoz, ki olvashatja a tartalmát és ki vehet részt a munkájában.
+- Csatold vagy linkeld a háttéranyagokat és a szervezetirányítási dokumentumokat.
 
 <!-- translation-section: check-privacy-and-permission-settings -->
 
 ### Ellenőrizd az adatvédelmi és jogosultsági beállításokat
-A Loomio-csoportok alapértelmezés szerint **Titkos** beállításúak. Ez azt jelenti, hogy csak azok tudnak a csoport létezéséről, akiket kifejezetten meghívsz.
+A Loomio-csoportok alapértelmezés szerint **Titkos** csoportok, ami azt jelenti, hogy csak azok tudnak a csoport létezéséről, akiket kifejezetten meghívsz oda.
 
-Nézd át a [tagok jogosultságait](/en/user_manual/groups/settings#permissions), és igazítsd őket a csoport tagjainak tapasztalatához.  Kezdetben segíthet, ha néhány jogosultságot kikapcsolsz, hogy egyszerűbb legyen az indulás. Később bármikor visszaállíthatod őket, amikor mindenki jobban megismerte a Loomiót.
+Nézd meg a [tagok jogosultságait](/en/user_manual/groups/settings#permissions), és állítsd be őket a csoportod tagjainak felkészültségéhez igazodva. Kezdetben segíthet néhány jogosultság elvétele, hogy elkerüld a zavart. A jogosultságokat bármikor visszaállíthatod, ahogy mindenki egyre jobban megismeri a Loomiót.
 
 <!-- translation-section: category-tags -->
 
 ### Kategóriacímkék
-Adj hozzá a szervezetedhez illő [kategóriacímkéket](/en/user_manual/discussions/tags/).  Ha előre beállítod őket, mindenki könnyebben használhatja a címkéket, és megtalálhatja a keresett szálakat és információkat.
+Adj hozzá a szervezetednek megfelelő [kategóriacímkéket](/en/user_manual/discussions/tags/). Ha előre beállítod őket, mindenkinek könnyebb lesz használni a címkéket, és megtalálni a keresett szálakat és információkat.
 
 <!-- translation-section: set-up-your-personal-profile -->
 
 ### Állítsd be a személyes profilodat
-A [személyes profilod](/en/user_manual/users/user_profile) segít a csoport tagjainak felismerni téged, és megbizonyosodni arról, hogy a tőled kapott üzenetek valóban tőled származnak.
+A [személyes profilod](/en/user_manual/users/user_profile) segít a csoportod tagjainak könnyen azonosítani téged, és megbizonyosodni arról, hogy a tőled kapott üzenetek valóban tőled származnak.
 
 <!-- translation-section: manage-group-membership -->
 
-### Kezeld a csoport tagságát
-Ellenőrizd, hogy az igazgatóság vagy bizottság minden tagját [meghívtad](/en/user_manual/groups/inviting_people/) a csoportba, és mindenki elfogadta a meghívását.
+### Kezeld a csoporttagságot
+Ellenőrizd, hogy az igazgatóságod vagy bizottságod minden tagja [kapott-e meghívót](/en/user_manual/groups/inviting_people/) a csoportba, és elfogadta-e a meghívóját.
 
 <!-- translation-section: start-with-a-board-process -->
 
 ### Kezdj egy igazgatósági folyamattal
 
-Az általános bevezető útmutató bemutatja, hogyan segíthetsz mindenkinek legalább egyszer hozzászólni és szavazni. Az igazgatóságban ezután próbáljatok ki egy rendszeresen visszatérő eljárást, például a napirend előkészítését, a jegyzőkönyv jóváhagyását, egy jelentés áttekintését vagy egy kisebb döntés meghozatalát két ülés között.
+Az általános bevezető útmutató elmagyarázza, hogyan segíthetsz mindenkinek egyszer hozzászólni és szavazni. Igazgatóság esetén ezt a gyakorlást egy rendszeres szervezetirányítási folyamattal folytasd, például napirend összeállításával, jegyzőkönyv jóváhagyásával, jelentés áttekintésével vagy egy kisebb döntés meghozatalával az ülések között.
 
-Állapodjatok meg arról, hogy a Loomióban hozott döntések a következtetés közzétételekor lépnek-e hatályba, vagy a következő ülésen kell jóváhagyni őket. Rögzítsétek a megállapított határozatképességi feltételt, a szükséges szavazati arányt, a szavazásra jogosultak körét és az utólagos jóváhagyás menetét a csoport leírásában vagy az irányítási dokumentumokban.
+Állapodj meg a többi taggal abban, hogy a Loomióban hozott döntések a következtetésük közzétételekor lépnek-e hatályba, vagy a következő ülésen meg kell erősíteni őket. Rögzítsd a határozatképesség elfogadott feltételeit, a szavazati küszöböt, a szavazásra jogosultakat és a megerősítés folyamatát a csoport leírásában vagy a szervezetirányítási dokumentumokban.

@@ -175,10 +175,10 @@ he:
     only_show_tags_in_this_group: הצג רק תגיות בקבוצה זו
   poll_types:
     proposal: הצעה
-    count: לבחור ב
-    check: בדיקת חושים
+    count: הרשמה
+    check: בדיקת כיוון
     poll: מִשׁאָל
-    dot_vote: הצבעה נקודה
+    dot_vote: הצבעת נקודות
     meeting: סקר זמן
     ranked_choice: בחירה מדורגת
     score: סקר ציון
@@ -268,7 +268,7 @@ he:
     action:
       print: הדפס
       preview: תצוגה מקדימה
-      pin: סיכה
+      pin: הצמדה
       unpin: הסר סיכה
       search: חיפוש
       filter: לְסַנֵן
@@ -418,7 +418,7 @@ he:
     all_email_will_belong_to_name: כל ההודעות מ-%{email} ייוחסו ל-%{name}
     email_aliases: כינויים וכתובות שהתעלמו מהן
     belongs_to_name: שייך ל-%{name}
-    block_email: כתובת חסום
+    block_email: חסימת כתובת
     no_emails_to_release: אין מיילים שמחכים לשחרור
     release_rules: חוקי שחרור
     confirm_block: לחסום את כתובת האימייל הזו?
@@ -787,8 +787,8 @@ he:
       membership_request_approved: "%{actor} אישר את בקשתך להצטרף ל-%{title}"
       new_comment: "%{actor} הגיב ב: %{title}"
       new_coordinator: "%{actor} הפך אותך למנהל של %{title}"
-      outcome_announced: "%{actor} שיתף תוצאה של %{poll_type}: %{title}"
-      outcome_created: "%{actor} שיתף תוצאה של %{poll_type}: %{title}"
+      outcome_announced: "%{actor} פרסם/ה מסקנה של %{poll_type}: %{title}"
+      outcome_created: "%{actor} פרסם/ה מסקנה של %{poll_type}: %{title}"
       outcome_updated: "%{actor} עדכנה את התוצאה של %{poll_type}: %{title}"
       outcome_review_due: 'הגיע הזמן לבדוק את התוצאה של: %{title}'
       poll_closed_by_user: "%{actor} סגר את %{poll_type}: %{title}"
@@ -826,8 +826,8 @@ he:
       membership_resent: "%{actor} הזמין אותך להצטרף לקבוצה"
       membership_requested: "%{actor} ביקש להצטרף לקבוצה שלך"
       membership_request_approved: "%{actor} אישר את בקשתך להצטרף ל-%{title}"
-      outcome_announced: "%{actor} שיתף תוצאה של %{poll_type}"
-      outcome_created: "%{actor} שיתף תוצאה של %{poll_type}"
+      outcome_announced: "%{actor} שיתף/ה מסקנה של %{poll_type}"
+      outcome_created: "%{actor} שיתף/ה מסקנה של %{poll_type}"
       outcome_review_due: הגיע הזמן לסקור את התוצאה של %{poll_type}
       poll_announced_wip: "%{actor} רוצה את המשוב שלך על %{poll_type}"
       poll_closed_by_user: "%{actor} סגר את %{poll_type}"
@@ -874,8 +874,8 @@ he:
       new_coordinator: "%{actor} הפך אותך למנהל של %{title}"
       new_delegate: "%{actor} מינה אותך לנציג עם זכות הצבעה ב-%{title}"
       new_discussion: "%{title}"
-      outcome_announced: 'תוצאה %{poll_type}: %{title}'
-      outcome_created: 'תוצאה %{poll_type}: %{title}'
+      outcome_announced: 'מסקנה של %{poll_type}: %{title}'
+      outcome_created: 'מסקנה של %{poll_type}: %{title}'
       outcome_updated: 'תוצאות %{poll_type} עודכנו: %{title}'
       outcome_review_due: 'הגיע הזמן לבחון את התוצאה של: %{title}'
       poll_closed_by_user: "%{actor} סגר את %{poll_type}: %{title}"
@@ -884,7 +884,7 @@ he:
       poll_created: "%{poll_type}: %{title}"
       poll_edited: "%{actor} עדכן את %{poll_type}: %{title}"
       poll_expired: "%{poll_type} נסגר: %{title}"
-      poll_expired_author: 'פרסם תוצאה: %{title}'
+      poll_expired_author: 'לפרסם מסקנה: %{title}'
       poll_option_added: "%{actor} הוסיף אפשרויות ל-%{title}"
       poll_reopened: 'ההצבעה הוארכה: %{title}'
       poll_reminder: "%{actor} מזכיר לך להצביע על %{title}"
@@ -1012,8 +1012,8 @@ he:
 
         '
       no_invitations_remaining: |
-        <p>השתמשת בכל %{maxMembers} ההזמנות האפשרויות לקבוצה זו.</p>
-        <p>שלב הבא, <a href="%{upgradeUrl}" target="_blank">בחר חבילה</a> כדי להמשיך לשתף פעולה ב-Loomio.</p>
+        <p>כל %{maxMembers} ההזמנות הזמינות לקבוצה זו נוצלו.</p>
+        <p>השלב הבא הוא <a href="%{upgradeUrl}" target="_blank">בחירת תוכנית</a> כדי להמשיך לשתף פעולה ב-Loomio.</p>
       invitations_remaining: נותרו %{count} הזמנות. <a href="%{upgradeUrl}" target="_blank">שדרוג</a>
       who_to_invite: את מי היית רוצה להזמין?
       invitation_message_placeholder: הודעה לכלול במייל ההזמנה. (אופציונאלי)
@@ -1046,7 +1046,7 @@ he:
         title: עידכוני עריכות
         helptext: למי תרצה להודיע על עדכון זה?
       outcome_announced:
-        title: שתפ/י תוצאה
+        title: לשתף מסקנה
         helptext: סכמו את תוצאות התהליך, כולל כל הבנות שנמצאו או נושאים שהובאו לאור.
       anyone_can_participate: כל אחד עם לינק יכול להשתתף
       placeholder: אתה יכול להזין שמות או כתובות מייל
@@ -1070,7 +1070,7 @@ he:
       last_notified: עודכן
       not_notified: לא עודכן עוד
       no_members: זה לא שותף עם אף אחד עוד!
-      group_admin: אחראי קבוצה
+      group_admin: מנהל קבוצה
       thread_admin: מנהל שרשור
       last_read_at: נצפה לאחרונה %{time}
       has_not_read_thread: לא צפה בשרשור
@@ -1095,10 +1095,10 @@ he:
     react: לְהָגִיב
     notify: לְהוֹדִיעַ
     add_resource: צרוף קובץ
-    edit_group: עריכת תוכן הקבוצה
+    edit_group: עריכת הקשר הקבוצה
     add_comment: הערה
     copy_url: העתק קישור
-    edit_thread: ערוך תוכן
+    edit_thread: עריכת הקשר
     announce_thread: שלח שרשור
     invite_guests: הזמן אורחים
     translate_thread: תרגום תוכן
@@ -1125,7 +1125,7 @@ he:
     show_edits: הצג עריכות
     show_notifications: תראה התראות
     history: הִיסטוֹרִיָה
-    pin_thread: דקור שיחה
+    pin_thread: הצמדת שרשור
     unpin_thread: הסר דקירה של שיחה
     pin_event: הצמד לציר הזמן
     unpin_event: בטל את ההצמדה מציר הזמן
@@ -1250,12 +1250,12 @@ he:
     introduction_over_limit: תגובה ארוכה מידי
     messages:
       membership_requested: ביקשת להצטרף ל-%{group}
-    aria_label: טופס בקשת חברות
+    aria_label: טופס בקשת הצטרפות
   revision_history_modal:
     discussion_header: עריכות דיון
     comment_header: עריכות הערות
     poll_header: עריכות סקר
-    outcome_header: עריכות תוצאה
+    outcome_header: עריכות מסקנה
     stance_header: עריכות הצבעה
     started_by: התחיל ע"י <strong>%{name}</strong>
     edited_by: נערך ע"י <strong>%{name}</strong>
@@ -1343,7 +1343,7 @@ he:
       loud_aria_description: עוצמת ההתראות שלך לקבוצה מוגדרת לרועש. מייל יישלח לך כשיש פעילות כלשהי בה.
       loud_message: הודעה תשלח לך במייל על כל פעילות ב"%{name}."
       normal: 'שלח מייל רק לפעילות חשובה: שיחות חדשות, הצעות, תוצאות וכו''.'
-      normal_aria_description: 'עוצמת ההתראות שלך לקבוצה מוגדרת כרגילה. מייל יישלח לך על פעילות חשובה, כגון: מישהו התחיל שיחה חדשה, העלה הצעה או קבע תוצאה.'
+      normal_aria_description: רמת ההתראות לקבוצה זו מוגדרת כרגילה. יישלחו מיילים רק על פעילות חשובה, כגון פתיחת שרשור חדש, העלאת הצעה או פרסום מסקנה.
       normal_message: אתה תקבל מיילים רק על אירועים חשובים ב"%{name}".
       quiet: אל תשלחו מיילים על הקבוצה הזו. פעילות תופיע בדשבורד בלבד.
       quiet_aria_description: 'עוצמת ההתראות שלך לקבוצה מוגדרת כשקטה. לא תקבל כל מייל על פעילויות בקבוצה. פעילות בה תופיע בדשבורד בלבד. '
@@ -1392,7 +1392,7 @@ he:
     change_cover_image: לשנות את תמונת השער
     change_logo: לשנות לוגו
     permissions_explaination: 'ישנן שתי רמות חברות שיכולות להיות לאדם בקבוצה: מנהל וחבר. מנהלי מערכת יכולים לערוך את הגדרות הקבוצה, להפוך אנשים אחרים למנהלים ולבצע את כל הפעולות המפורטות למטה.'
-    parent_group: קבוצת הורים
+    parent_group: קבוצת אם
     new_organisation: ארגון חדש
     new_group: קבוצה חדשה
     new_subgroup: תת קבוצה חדשה
@@ -1531,8 +1531,8 @@ he:
     previous_requests: בקשות קודמות
     previous_request_response: '%{response} ע"י %{responder} '
     messages:
-      request_approved_success: בקשת מנוי אושרה
-      request_ignored_success: בקשת מנוי ללא התייחסות
+      request_approved_success: בקשת הצטרפות אושרה
+      request_ignored_success: בקשת הצטרפות ללא התייחסות
       request_declined_success: בקשת החברות נדחתה
     decline: יְרִידָה
     decline_request: דחה את בקשת החברות
@@ -1599,12 +1599,12 @@ he:
       flash: הזמנה בוטלה
       submit: בטל הזמנה
     membership:
-      title: הסרת משתתף
+      title: הסרת חבר
       message: אתה בטוח שאתה רוצה להסיר את %{name}?
       impact_for_subgroup: פעולה זו תסיר את הגישה שלהם לתת-הקבוצה (כולל שרשורים וסקרים), אך הם יישארו חברים בקבוצת האם.
       impact_for_group: פעולה זו תסיר את הגישה שלהם לקבוצה (כולל שרשורים וסקרים) ולתת-קבוצות כלשהן.
-      flash: משתתף הוסר
-      submit: הסרת משתתף
+      flash: חבר הוסר
+      submit: הסרת חבר
   memberships_panel:
     add_coordinator: הפוך למנהל
     remove_coordinator: הורדת אדמין
@@ -1672,6 +1672,7 @@ he:
     updated_on_sign_in: מסופק על ידי הדפדפן שלך ומעודכן בעת הכניסה
     translate_content_automatically: תרגם תוכן לשפה שלי באופן אוטומטי
     bot_account_warning: חשבונות בוט לא יוזמנו להצביע בסקרים או להשתתף בדיונים
+    translations_are_made_by_machine: התרגומים נעשים אוטומטית. אם מילה שגויה או לא ברורה, ניתן לשלוח דוא״ל ל־%{email} ונתקן אותה.
   text_editor:
     x_of_y_characters: "%{x} / %{y} תווים"
     select_text_to_link: בחר טקסט לקישור ונסה שוב
@@ -1734,13 +1735,13 @@ he:
       updated: הגדרות מייל עודכנו
     learn_more: למד עוד על הגדרות מייל...
     mentioned_description: כאשר מישהו {'@'}מזכיר אותך בתגובה, תקבל התראה בדוא"ל
-    daily_summary_description: בחר מתי לקבל את דוא"ל סיכום העדכון. דוא"ל זה מכיל כל פעילות חדשה שלא ראית. דרך טובה להישאר מעודכנים אם אינך משתמש קבוע.
-    digest_email_description: בחר מתי לקבל את דוא"ל סיכום העדכון. דוא"ל זה מכיל כל פעילות חדשה שלא ראית. דרך טובה להישאר מעודכנים אם אינך משתמש קבוע.
+    daily_summary_description: בחירת מועד לקבלת אימייל עם סיכום הפעילות שלא נצפתה. האימייל כולל כל פעילות חדשה שטרם נצפתה. דרך טובה להתעדכן גם כשהשימוש אינו קבוע.
+    digest_email_description: בחירת מועד לקבלת סיכום של התראות שלא נצפו ופעילות שלא נקראה
     never: לְעוֹלָם לֹא
     send_email: שלח אימייל
     group_notifications: התראות קבוצתיות
     group_notifications_description: שנה את רמת הפעילות והערוץ עבור הקבוצות שלך
-    choose_email_and_push_updates: בחר הגדרות נפרדות עבור דוא"ל ודחיפה
+    choose_email_and_push_updates: בחירת הגדרות נפרדות לאימייל ולהתראות פוש
     catch_up_email: אימייל השלמה
     catch_up_email_description: בחרו מתי לקבל עדכונים על התראות שלא נראו ופעילות שלא נקראה
   thread_preview:
@@ -1825,8 +1826,8 @@ he:
     invite_only: מוזמנים בלבד
     private_thread: שרשור פרטי
     max_threads_reached: |
-      <p>השתמשת בכל %{maxThreads} השירשורים הפנויים בקבוצה זו.</p>
-      <p>שלב הבא, <a href="%{upgradeUrl}" target="_blank">בחר חבילה</a> בכדי להמשיך לשתף פעולה בLoomio.</p>
+      <p>כל %{maxThreads} השרשורים הזמינים לקבוצה זו נוצלו.</p>
+      <p>השלב הבא הוא <a href="%{upgradeUrl}" target="_blank">בחירת תוכנית</a> כדי להמשיך לשתף פעולה ב-Loomio.</p>
     subscription_canceled: <p style=";text-align:right;direction:rtl">המנוי שלך אינו פעיל.</p><p style=";text-align:right;direction:rtl"> אנא <a href="%{upgradeUrl}" target="_blank">שדרג</a> כדי להמשיך להשתמש ב-Loomio.</p>
     activity: פעילות
     activity_placeholder: אין פעילות עוד!
@@ -1873,7 +1874,7 @@ he:
     start_a_vote: התחל הצבעה
   thread_arrangement_form:
     edit: ערוך פריסה
-    title: פריסת חוט
+    title: פריסת שרשור
     for_everyone: זה משנה את הפריסה עבור כולם, לא רק לך.
     sorting: הכי ישן או הכי חדש קודם?
     latest: החדש ביותר
@@ -1961,7 +1962,7 @@ he:
       reload: טען מחדש
       app_update: גרסה חדשה של Loomio יצאה. אנא טען מחדש.
   decision_tools_card:
-    choose_type: בחר סוג סקר
+    choose_type: בחירת סוג סקר
     title: לסייע
     recommended: מוּמלָץ
     question_title: סבב שאלות
@@ -1969,14 +1970,14 @@ he:
     consent_title: הַסכָּמָה
     consensus_title: קוֹנסֶנזוּס
     proposal_title: הצעה
-    count_title: לבחור ב
-    check_title: בדיקת חושים
+    count_title: הרשמה
+    check_title: בדיקת כיוון
     poll_title: סקר
     meeting: פְּגִישָׁה
-    score_title: ניקוד סקר
-    dot_vote_title: הצבעה נקודה
-    meeting_title: הצבעת זמן
-    ranked_choice_title: דירוג בחירה
+    score_title: סקר ציון
+    dot_vote_title: הצבעת נקודות
+    meeting_title: סקר זמן
+    ranked_choice_title: בחירה מדורגת
     gradients_of_agreement_title: שיפועים של הסכמה
     majority_title: רוֹב
     stv_title: בחירות STV
@@ -2090,7 +2091,7 @@ he:
     share_count: שתף בדיקה
     start_poll: התחל החלטה
     publish_poll: שתף סקר
-    share_outcome: שתפ/י תוצאה
+    share_outcome: לשתף מסקנה
     view_all: צפה בכל
     save_changes: שמירה
     change_vote: שנה את ההצבעה שלך
@@ -2100,7 +2101,7 @@ he:
     too_long: יותר מדי זמן
     edit_warning: עריכה מומלצת רק עבור שינויים קלים או תיקון שגיאות כתיב. לשינויים משמעותיים, סגור את ה-%{pollType} הזה והתחל חדש.
     no_voting: לדיון בלבד, ההצבעה מושבתת
-    post_outcome: פרסם תוצאה
+    post_outcome: לפרסם מסקנה
     view_all_votes: הצג את כל ההצבעות
     you_voted: הצבעת
     these_are_templates: אלו הן תבניות ההחלטות בקבוצה שלך. לחץ על תבנית כדי להתחיל החלטה חדשה. מנהלים יכולים להתאים אישית את כל הפרטים אודות תבנית כך שתתאים לנוהלי הארגון שלך ותהיה קלה לחברים למצוא ולהשתמש בה.
@@ -2248,7 +2249,7 @@ he:
   poll_common_collapsed:
     by_who: על פי %{name}
   poll_common_calendar_invite:
-    calendar_invite: הוסף הזמנה ליומן עם תוצאה זו
+    calendar_invite: לצרף הזמנה ליומן למסקנה זו
     poll_option_id: זמן פגישה
     helptext_on: משתמשים יועלו להוסיף פגישה זו ליומן שלהם
     helptext_off: הזמנה לפגישה לא תשלח
@@ -2261,7 +2262,7 @@ he:
     location_placeholder: איפה תתקיים הפגישה?
   poll_common_close_form:
     title: לסגור את %{poll_type} עכשיו?
-    helptext: האם אתה בטוח שברצונך לסגור את ה-%{poll_type} הזה מוקדם ולשתף תוצאה?
+    helptext: לסגור את ה-%{poll_type} הזה מוקדם ולשתף מסקנה?
     close_poll_type: סגור %{poll_type}
     poll_type_closed: "%{poll_type} נסגר"
   poll_common_reopen_form:
@@ -2329,21 +2330,21 @@ he:
     reminder_sent: הודעת תזכורת נשלחה
   poll_common_set_outcome_panel:
     enter_outcome: הזן מסקנה
-    poll_type: "%{poll_type} זה נסגר. קח זמן לשקול את התוצאות ואז שתף תוצאה כדי שאנשים ידעו מה יקרה אחר כך."
+    poll_type: "%{poll_type} זה נסגר. כדאי לשקול את התוצאות ואז לשתף מסקנה כדי שאנשים ידעו מה יקרה אחר כך."
     enter_an_outcome: הזן מסקנה
   poll_common_outcome_form:
     review_due_in_days: לבדוק את ההחלטה לאחר כמה ימים?
     review_date: תאריך ביקורת
     review_date_hint: קבע תאריך לבדיקת ההחלטה (אופציונלי)
     who_to_notify: למי אתה רוצה להודיע על התוצאה הזו? (אופציונאלי)
-    outcome_statement_template: תבנית הצהרת תוצאה
-    new_title: תוצאה של המדינה
-    update_title: עדכן תוצאה
+    outcome_statement_template: תבנית הצהרת מסקנה
+    new_title: לשתף את המסקנה
+    update_title: לעדכן מסקנה
     outcome_created: מסקנה נוצרה
     outcome_updated: מסקנה עודכנה
     statement_placeholder: סכם את התגובות והסבר מה יקרה בהמשך.
     you_will_be_notified: תקבל הודעה בתאריך הבדיקה.
-    submit: שתפ/י תוצאה
+    submit: לשתף מסקנה
     review_due_in_days_hint: מספר הימים שיש להמתין לפני בחינת ההחלטה (אופציונלי).
     statement_template_hint: ספקו תבנית לכתיבת תוצאת ההחלטה. (אופציונלי)
     statement_template_placeholder: תודה על ההשתתפות! הגענו למניין חוקי ויש לנו תמיכה להמשיך.
@@ -2434,14 +2435,14 @@ he:
     select_an_option: בחר אפשרות
     'yes': כן
     'no': לא
-    agree: בעד
+    agree: מסכים/ה
     consent: הַסכָּמָה
     abstain: נמנע
     unsure: לא בטוח
-    disagree: נגד
+    disagree: לא מסכים/ה
     objection: הִתנַגְדוּת
     object: לְהִתְנַגֵד
-    block: חסום
+    block: וטו
     no_voting: אין הצבעה
   poll_count_form:
     pct_of_target: "% מהיעד"
@@ -2504,7 +2505,7 @@ he:
     discussion_closed: "<a class='actor-link' href='/u/%{username}'>%{author}</a> סגר את השרשור"
     discussion_reopened: "<a class='actor-link' href='/u/%{username}'>%{author}</a> פתח מחדש את השרשור"
     new_comment: "<a class='actor-link' href='/u/%{username}'>%{author}</a>"
-    outcome_created: "<a class='actor-link' href='/u/%{username}'>%{author}</a> שיתף תוצאה"
+    outcome_created: "<a class='actor-link' href='/u/%{username}'>%{author}</a> שיתף/ה מסקנה"
     poll_reopened: "<a class='actor-link' href='/u/%{username}'>%{author}</a> פתח מחדש את ה-%{polltype}"
     poll_closed_by_user: "<a class='actor-link' href='/u/%{username}'>%{author}</a> סגר את ה-%{polltype}"
     poll_created: "<a class='actor-link' href='/u/%{username}'>%{author}</a> התחיל %{polltype}"
@@ -2682,9 +2683,9 @@ he:
       poll_closing_soon: סקר נסגר בקרוב
       poll_expired: תוקף סקר יפוג
       poll_closed_by_user: סקר נסגר באופן ידני
-      poll_reopened: משאל נפתח מחדש להצבעה
-      outcome_created: תוצאה משותפת
-      outcome_updated: תוצאה מתעדכנת
+      poll_reopened: סקר נפתח מחדש להצבעה
+      outcome_created: מסקנה שותפה
+      outcome_updated: מסקנה עודכנה
       outcome_review_due: יש לבצע סקירת תוצאות
       new_discussion: דיון מתחיל
       discussion_edited: דיון נערך
@@ -2791,7 +2792,10 @@ he:
         submit: ראה תבניות הצעות
       share_an_outcome:
         title: שתף את תוצאת ההצעה
-        helptext: <p style=";text-align:right;direction:rtl">כדי לסייע בקידום החלטות, להצעות יש מועד אחרון להצבעה. כאשר המועד האחרון יגיע, ההצבעה תיסגר ותקבלו הודעה לשתף תוצאת הצעה.</p><p style=";text-align:right;direction:rtl"> התוצאה היא הזדמנות לומר האם ההצעה הצליחה ומה יקרה בהמשך.</p><p style=";text-align:right;direction:rtl"> אם המועד האחרון להגשת ההצעה שלך טרם חלף, אך בכל זאת ברצונך להמשיך, תוכל ללחוץ <b>על סגור מוקדם</b> .</p><p style=";text-align:right;direction:rtl"> כאשר יגיע הזמן הנכון, <b>הזן תוצאה</b> עבור ההצעה שלך.</p>
+        helptext: |
+          <p>כשמועד סגירת ההצעה מגיע, ההצבעה נסגרת ומופיעה בקשה לשתף מסקנה.</p>
+          <p>במסקנה מסבירים מה הוחלט (או מה יקרה בהמשך) לאחר עיון בהצבעות ובתגובות.</p>
+          <p>אם מועד הסגירה טרם עבר אך ניתן כבר להתקדם, אפשר לבחור <b>לסגור מוקדם</b>.</p>
         submit: הצג הצעה
         cancel: תעשה זאת מאוחר יותר
       start_a_discussion:
@@ -2805,7 +2809,7 @@ he:
     specified_voters_only_true: רק אנשים מוזמנים
     specified_voters_only_false_group: כל מי שנמצא בקבוצה
     specified_voters_only_false_discussion: כל מי שנמצא בשרשור
-    invite_people_next: ניתן לבחור מי מוזמן להצביע לאחר שתתחיל את %{poll_type}
+    invite_people_next: בחירת המוזמנים להצביע אפשרית לאחר פתיחת %{poll_type}
     show_none_of_the_above: כלול אפשרות של "אף אחת מהאפשרויות הנ"ל"
     show_options_in_random_order: הצג אפשרויות בסדר אקראי
     reduce_bias_by_showing_options_in_random_order: צמצם הטיה על ידי הצגת אפשרויות בסדר אקראי.
@@ -2855,8 +2859,8 @@ he:
     advanced_settings: הגדרות מתקדמות
     show_advanced_settings: הצג הגדרות מתקדמות
     hide_advanced_settings: הסתר הגדרות מתקדמות
-    choose_at_least: בחר לפחות
-    choose_at_most: בחר לכל היותר
+    choose_at_least: בחירה של לפחות
+    choose_at_most: בחירה של לכל היותר
     please_review_the_form: אנא עיין בטופס
     option_added_please_add_details: אפשרות נוספת! אנא הוסיפו פרטים כדי שאנשים יבינו מה המשמעות.
     default_duration_in_days: משך ברירת מחדל בימים
@@ -2940,7 +2944,7 @@ he:
     how_much_time_to_vote: כמה זמן אתם נותנים לאנשים להצביע?
     default_duration_in_days_hint: כמה ימים יהיו לאנשים להצביע?
     define_minimum_and_maxmimum_score: הגדירו את הציונים המינימליים והמקסימליים שבוחר יכול לתת לאפשרות
-    how_many_points_does_each_voter_have_to_allocate: כמה נקודות כל בוחר צריך להקצות?
+    how_many_points_does_each_voter_have_to_allocate: כמה נקודות זמינות להקצאה לכל מצביע?
     anonymous_voting_description: הצג את ההצבעות והסיבות אך לא את מי שהצביע. לא ניתן לשנות זאת לאחר שה-%{poll_type} התחיל.
     vote_reason_description: בקשו מאנשים לשתף את הנימוקים שלהם כשהם מצביעים, או לספק מידע נוסף.
     hide_results_description: אם אתם רוצים שאנשים יצביעו בלי לראות איך אחרים הצביעו, אתם יכולים להסתיר את התוצאות.
@@ -2984,7 +2988,7 @@ he:
     set_all_vote_weights_the_same: קבע את משקלי הקולות של כל הקולות זהים
     member_vote_weights_hint: מצביעים ללא חברות קבוצתית נוכחית מקבלים משקל קולות של 1
     weighted_voting: הצבעה משוקללת
-    weighted_voting_is_not_available_with_anonymous_voting: "הצבעה משוקללת אינה זמינה בהצבעה אנונימית"
+    weighted_voting_is_not_available_with_anonymous_voting: הצבעה משוקללת אינה זמינה בהצבעה אנונימית
     use_weighted_voting: השתמש בהצבעה משוקללת
     weighted_voting_off_warning: כיבוי הצבעה משוקללת מגדיר את משקל כל הקולות ל-1. כל משקלי הקולות ששיניתם עבור סקר זה יאבדו.
     weighted_voting_on_group: הפעלת הצבעה משוקללת מעתיקה את משקל ההצבעה המוגדר כברירת מחדל של כל חבר. שאר המצביעים מקבלים משקל הצבעה של 1.
@@ -3030,10 +3034,10 @@ he:
     default_title_placeholder: לדוגמה סטנדאפ - 15 בינואר
     more_templates: תבניות נוספות
     fewer_templates: פחות תבניות
-    choose_a_group: בחר קבוצה
+    choose_a_group: בחירת קבוצה
     default_templates: תבניות ברירת מחדל
     or_start_a_direct_discussion: או להתחיל דיון ישיר
-    choose_group_for_templates: בחר קבוצה כדי לצפות בתבניות הדיון שלה
+    choose_group_for_templates: בחירת קבוצה לצפייה בתבניות הדיון שלה
     start_direct_discussion: התחל דיון ישיר
     poll_templates: תבניות סקר
     poll_templates_help: תבניות שתבחרו כאן יופיעו ראשונות כאשר מישהו ילחץ על התחל הצבעה
@@ -3080,7 +3084,7 @@ he:
       success: הדיון הועבר ל-%{name}
     move_thread_title: הזזת שרשור
     destination: יַעַד
-    direct_thread: חוט ישיר
+    direct_thread: שרשור ישיר
     direct_thread_hint: כל מי שהשתתף ישמור על הגישה. אתה ויוצר השרשור תהיו מנהלי השרשור.
     direct_thread_anonymous_poll: לא ניתן להמיר שרשורים המכילים סקרים אנונימיים לשרשורים ישירים מכיוון שזה עלול לחשוף מי הצביע
   auth:

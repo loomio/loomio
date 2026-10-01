@@ -1,6 +1,6 @@
 ---
 title: Névtelen szavazás
-source_revision: 9c60c42fc739483fa23f15d9f34a1e9245518092
+source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
 source_file: docs/en/user_manual/polls/anonymous_voting/index.md
 translated:
   provider: codex/gpt-6.1-sol
@@ -24,23 +24,23 @@ sections:
   does-a-public-poll-reveal-more-information: 27acfa7744a0790d
   is-anonymous-voting-suitable-for-every-election: d1b723178449c0da
 generated:
-  introduction: f92951f194bc7c2c
-  how-anonymous-voting-protects-voters: efbb1b05a58feab1
-  while-voting-is-open: 9c75f2cff798bc71
-  votes-cannot-be-changed: da9f55d7ce132e1b
-  why-anonymous-votes-do-not-have-reasons: 9d55496278209a06
-  results-and-exports: 5bc23d98a91d03d4
-  participation-verification: 1defc88a529d7e5f
-  reminders: 6977d9f0579fe2f0
-  what-coordinators-and-administrators-can-see: a3aab7646d5f316d
-  limits-of-anonymous-voting: c08f3cdc54be2f73
+  introduction: 2adb64c67ec4a37b
+  how-anonymous-voting-protects-voters: 6148b5938f7b434e
+  while-voting-is-open: 4ce6fb67585eafbd
+  votes-cannot-be-changed: d46e5d276c32812b
+  why-anonymous-votes-do-not-have-reasons: a4c41c47a40dacd6
+  results-and-exports: 2ddae1eb2986cf79
+  participation-verification: b330a3399a0ff953
+  reminders: 6c429a1c23d63d39
+  what-coordinators-and-administrators-can-see: 3518f56047bfcd8d
+  limits-of-anonymous-voting: bb689a71f029522f
   questions: da64f98c28ad9eee
-  can-a-coordinator-see-how-i-voted: 219bd2f201dbb1b7
-  can-i-see-my-vote-after-submitting-it: a0cef9bc880e956d
-  can-i-change-or-withdraw-my-vote: 31c74b9264a93266
-  will-i-receive-an-email-confirming-my-vote: e7b30694ab5eb316
-  does-a-public-poll-reveal-more-information: 7c6f72212c734905
-  is-anonymous-voting-suitable-for-every-election: 6b09aab1145e8978
+  can-a-coordinator-see-how-i-voted: c346c6d212702e6b
+  can-i-see-my-vote-after-submitting-it: 92156275f68bd541
+  can-i-change-or-withdraw-my-vote: 1fc597af0ae63186
+  will-i-receive-an-email-confirming-my-vote: f88c509d3d45bafa
+  does-a-public-poll-reveal-more-information: 4e3512d8c036f81c
+  is-anonymous-voting-suitable-for-every-election: 231378ba745c0662
 title_source: 1bc4567506ad4d51
 title_generated: afeda824cbeb1a7d
 ---
@@ -49,121 +49,121 @@ title_generated: afeda824cbeb1a7d
 
 # Névtelen szavazás
 
-A névtelen szavazás, más néven titkos szavazás, elkülöníti a részvételi adatokat a leadott szavazatoktól. A szavazás lezárása után mindenki láthatja, ki vett részt, aki láthatja az eredményeket. A Loomio felhasználói nem tudják összekapcsolni a leadott szavazatot azzal, aki leadta.
+A névtelen szavazás, más néven vak szavazás, elkülöníti a szavazókról vezetett nyilvántartást maguktól a szavazatoktól. A szavazás lezárása után mindenki, aki látja az eredményeket, azt is láthatja, hogy ki vett részt. A Loomio használatával senki sem kapcsolhatja össze a leadott szavazatot azzal, aki leadta.
 
-Ez az oldal bemutatja, hogyan védi a szavazókat a névtelen szavazás, milyen adatok maradnak meg, és hol vannak a védelem korlátai.
+Ez az oldal bemutatja a névtelen szavazás által nyújtott védelmet, a megőrzött információkat és a garancia korlátait.
 
 <!-- translation-section: how-anonymous-voting-protects-voters -->
 
 ## Hogyan védi a névtelen szavazás a szavazókat
 
-A névtelen szavazás két külön adathalmazt tart fenn:
+A névtelen szavazás két külön adathalmazt tárol:
 
-| Részvételi adatok | Leadott szavazatok |
+| Részvételi nyilvántartás | Leadott szavazatok |
 | --- | --- |
-| Ki szavazhat | A kiválasztott lehetőségek vagy pontszámok |
-| Kit hívtak meg, és ki hívta meg | Melyik szavazáshoz tartozik a szavazat |
-| Szavazott-e az adott személy | Nincs név vagy felhasználói fiók |
-| Nincsenek kiválasztott lehetőségek vagy pontszámok | Nincs kapcsolat a részvételi adatokkal |
+| Ki jogosult szavazni | A kiválasztott lehetőségek vagy pontszámok |
+| Kit hívtak meg, és ki hívta meg | A szavazás, amelyhez a szavazat tartozik |
+| Szavazott-e az egyes jogosult személy | Nincs név vagy felhasználói fiók |
+| Nincsenek kiválasztott lehetőségek vagy pontszámok | Nincs kapcsolat a részvételi nyilvántartással |
 
-Nincs olyan közös azonosító, amely összekötné ezeket az adatokat. A leadott szavazatok nem tartalmazzák a leadás pontos idejét, a meghívási adatokat, az írásos indoklásokat, a mellékleteket és más olyan metaadatokat sem, amelyek segíthetnének azonosítani a szavazót.
+Nincs közös azonosító, amely összekapcsolná ezeket az adatokat. A leadott szavazatokból a leadás tényleges időpontja, a meghívó adatai, az írásos indoklások, a mellékletek és a szavazó azonosítását segítő egyéb metaadatok is hiányoznak.
 
-Az elkülönítés már a szavazat tárolásakor megtörténik. A védelem nem pusztán azon múlik, hogy a felület elrejti a neveket.
+Az elkülönítés a szavazat tárolásakor történik. Nem csupán a nevek felületen való elrejtésén múlik.
 
 <!-- translation-section: while-voting-is-open -->
 
-## Amíg tart a szavazás
+## Amíg a szavazás nyitva van
 
-Az eredmények a szavazás lezárásáig mindenki elől rejtve maradnak. Ez a szavazás koordinátoraira, a csoportadminisztrátorokra és az alkalmazást használó példányadminisztrátorokra is vonatkozik.
+Az eredmények a szavazás lezárásáig mindenki elől rejtve maradnak. Ez az alkalmazást használó szavazási koordinátorokra, csoportadminokra és a Loomio-példány adminjaira is vonatkozik.
 
 Amikor valaki szavaz:
 
-- a szavazatát a neve és a részvételi adatai nélkül tárolja a rendszer;
-- a részvételi adatai jelzik, hogy szavazott;
-- nem jön létre szavazási esemény, értesítés, e-mail, hozzászólás vagy aktivitási bejegyzés;
-- a leadás után nem kap másolatot a választásairól; és
-- a felület csak azt erősíti meg, hogy a szavazatát rögzítette a rendszer.
+- a leadott szavazatát a neve és a részvételi nyilvántartásával való kapcsolat nélkül tárolja az alkalmazás;
+- a részvételi nyilvántartásában jelzi, hogy szavazott;
+- nem hoz létre szavazati eseményt, értesítést, e-mailt, hozzászólást vagy tevékenységbejegyzést;
+- a leadás után nem küldi vissza a kiválasztott lehetőségek másolatát; és
+- a felület csak azt erősíti meg, hogy a szavazatot rögzítette.
 
-A részvételi adatok nem tárolják pontosan, mikor szavazott az adott személy. A leadott szavazatok nem a leadás ideje szerint vannak rendezve.
+A részvételi nyilvántartás nem tárolja a szavazás pontos időpontját. A leadott szavazatok nincsenek a leadás időpontja szerint rendezve.
 
 <!-- translation-section: votes-cannot-be-changed -->
 
 ## A szavazatok nem módosíthatók
 
-Minden szavazásra jogosult személy egyszer szavazhat. A leadott névtelen szavazatot senki sem tekintheti meg, módosíthatja, vonhatja vissza vagy cserélheti le, a koordinátorok és az adminisztrátorok sem.
+Minden jogosult személy egyszer szavazhat. A leadott névtelen szavazat nem tekinthető meg újra, nem módosítható, nem vonható vissza és nem cserélhető le, még koordinátor vagy admin által sem.
 
-Ahhoz, hogy valaki később előhívhassa vagy lecserélhesse a szavazatát, tartós kapcsolatot kellene fenntartani közte és a szavazata között. A névtelen szavazás szándékosan nem hoz létre ilyen kapcsolatot.
+Ahhoz, hogy valaki visszakereshesse vagy lecserélhesse a szavazatát, tartós kapcsolatra lenne szükség közte és a szavazat között. A névtelen szavazás szándékosan nem hoz létre ilyen kapcsolatot.
 
-Leadás előtt gondosan nézd át a választásaidat.
+Leadás előtt gondosan ellenőrizd a kiválasztott lehetőségeket.
 
 <!-- translation-section: why-anonymous-votes-do-not-have-reasons -->
 
 ## Miért nincs indoklás a névtelen szavazatokhoz
 
-Az új névtelen szavazatokhoz nem lehet írásos indoklást vagy mellékletet csatolni. Az indoklás tartalmazhat neveket, személyes adatokat, felismerhető írásmódot, említéseket vagy más, a szavazót azonosító információt. Az egyes szavazatokat is könnyebben megkülönböztethetővé tenné az összesített eredménytől.
+Az új névtelen szavazatok nem tartalmazhatnak írásos indoklást vagy mellékletet. Az indoklások neveket, személyes adatokat, jellegzetes írásmódot, említéseket vagy más, a szavazót azonosító információt tartalmazhatnak. Az egyes szavazatokat is könnyebb lenne megkülönböztetni az összesített eredménytől.
 
-A résztvevők továbbra is megvitathatják a szavazást a hozzá tartozó témában, ha ott lehetőség van hozzászólni. Ezek a hozzászólások névvel megjelenő, szokásos beszélgetési bejegyzések, és nem kapcsolódnak a névtelen szavazathoz.
+A résztvevők továbbra is beszélgethetnek a szavazásról annak szálában, ahol elérhető a beszélgetés. Ezek a hozzászólások névvel ellátott, szokásos hozzászólások a beszélgetésben, és nem kapcsolódnak névtelen szavazathoz.
 
 <!-- translation-section: results-and-exports -->
 
 ## Eredmények és exportálás
 
-A szavazás lezárása után a rendszer az elkülönített szavazatokból számítja ki az eredményeket. Ezeket összesítve, valamint a szavazás típusának megfelelő más összesített eredményekkel együtt jeleníti meg.
+A szavazás lezárása után az alkalmazás az elkülönített szavazatokból számítja ki az eredményeket, és összesített számokként, valamint a szavazástípus által támogatott egyéb összesített eredményekként jeleníti meg őket.
 
-Az alkalmazás nem teszi közzé a szavazatok azonosítóit, leadási sorrendjét vagy leadási idejét. A szavazások exportja összesített eredményeket tartalmaz, nem külön sort minden névtelen szavazathoz. Kivétel a lezárt STV-választás, amely BLT-formátumban exportálható. A BLT-export tartalmazza a választás újraszámlálásához szükséges jelöltsorrendeket. Az azonos sorrendű szavazólapokat csoportosítja, és nem tartalmazza a szavazók személyazonosságát vagy a szavazólapok metaadatait.
+Az alkalmazás nem teszi közzé a szavazatok azonosítóit, leadási sorrendjét vagy leadási időpontját. A szavazások exportjai összesített eredményeket tartalmaznak, nem pedig minden névtelen szavazathoz külön sort. Kivétel a lezárt STV-választás, amely BLT formátumban exportálható. A BLT-export a szavazatok újraszámlálásához szükséges jelöltrangsorokat tartalmazza, az azonos rangsorú szavazólapokat csoportosítva, a szavazók személyazonossága és a szavazólapok metaadatai nélkül.
 
-A lezárt névtelen szavazást nem lehet újranyitni.
+A névtelen szavazás a lezárása után nem nyitható újra.
 
 <!-- translation-section: participation-verification -->
 
 ## Ki vett részt
 
-A névtelen szavazás lezárása után mindenki láthatja, ki vett részt, aki láthatja az eredményeket. A szavazás ideje alatt ezt senki sem láthatja.
+A névtelen szavazás lezárása után mindenki, aki látja az eredményeket, azt is láthatja, hogy ki vett részt. Amíg a szavazás nyitva van, ezt senki sem láthatja.
 
-A lista megtekintéséhez válaszd ki a **Szavazatok megtekintése** lehetőséget. A lista mindig megmutatja, kik szavazhattak. Azt csak akkor mutatja meg, hogy az egyes személyek szavaztak-e, ha elegen szavaztak. Ehhez el kell érni a szavazásban meghatározott határozatképző létszámot, vagy ha nincs ilyen, a szavazásra jogosultak felének kell szavaznia, de mindenképpen legalább három szavazat szükséges. A lista soha nem mutatja meg, hogy ki hogyan vagy mikor szavazott.
+A lista megtekintéséhez válaszd ki a **Szavazatok megtekintése** lehetőséget. A lista mindig megmutatja, hogy ki volt jogosult szavazni. Azt csak akkor mutatja meg, hogy az egyes személyek szavaztak-e, ha elegen szavaztak. Ehhez el kell érni a szavazás határozatképességi küszöbét, ha van ilyen; egyébként a jogosult szavazók legalább felének kell szavaznia, de minden esetben legalább három szavazat szükséges. A lista soha nem mutatja meg, hogy ki hogyan vagy mikor szavazott.
 
-A csoport tagjai és a szavazás résztvevői azt is láthatják, hogy az egyes személyek mikor csatlakoztak a csoporthoz, és ki hívta meg őket. A csoportadminisztrátorok az e-mail-címeket is láthatják, hogy meg tudják különböztetni az azonos nevű személyeket.
+A csoport tagjai és a szavazás szavazói azt is látják, hogy az egyes személyek mikor csatlakoztak a csoporthoz, és ki hívta meg őket. A csoport adminjai az e-mail-címeket is látják, hogy meg tudják különböztetni az azonos nevű embereket.
 
-Mivel mindenki láthatja, ki szavazott, aki láthatja az eredményeket, az egyoldalú eredmény felfedheti, hogyan szavaztak az emberek. Ha például minden szavazat az Egyetért lehetőségre érkezett, minden szavazó egyetértett.
+Mivel mindenki, aki látja az eredményeket, azt is láthatja, hogy ki szavazott, az egyoldalú eredmény felfedheti, hogy az emberek hogyan szavaztak. Ha például minden szavazat az Egyetértek lehetőségre érkezett, akkor minden szavazó egyetértett.
 
-A koordinátorok a szavazás ideje alatt további szavazásra jogosult személyeket adhatnak hozzá, akkor is, ha mások már szavaztak. A már szavazó személyeket nem lehet eltávolítani a névtelen szavazásból.
+A koordinátorok újabb szavazásra jogosult személyeket adhatnak hozzá, amíg a szavazás nyitva van, akkor is, ha mások már szavaztak. A meglévő szavazók nem távolíthatók el a névtelen szavazásból.
 
 <!-- translation-section: reminders -->
 
 ## Emlékeztetők
 
-A legalább 24 órán át tartó névtelen szavazásnál a még nem szavazó jogosultak egy automatikus emlékeztetőt kapnak az utolsó 24 órában.
+A legalább 24 órán át tartó névtelen szavazás utolsó 24 órájában egy automatikus emlékeztetőt kapnak azok a jogosult személyek, akik még nem szavaztak.
 
-Az emlékeztető címzettjeit a rendszer kizárólag a részvételi adatok alapján választja ki. Nem vizsgálja a leadott szavazatokat, és nem hoz létre kapcsolatot velük. Ha módosul a határidő, az óránkénti ellenőrzés az aktuális határidőt használja; a szavazáshoz nem tart fenn külön időzített emlékeztetőt.
+Az emlékeztető címzettjeinek kiválasztása kizárólag a részvételi nyilvántartás alapján történik. Az alkalmazás ehhez nem vizsgálja meg a leadott szavazatokat, és nem hoz létre kapcsolatot velük. Ha a határidő megváltozik, az óránkénti emlékeztető-ellenőrzés az aktuális határidőt használja, és nem tart fenn külön ütemezett emlékeztetőt a szavazáshoz.
 
-A 24 óránál rövidebb szavazási időszakú szavazásokhoz nem küld automatikus emlékeztetőt a rendszer.
+Az összesen 24 óránál rövidebb ideig tartó szavazásoknál az alkalmazás nem küld ilyen automatikus emlékeztetőt.
 
 <!-- translation-section: what-coordinators-and-administrators-can-see -->
 
-## Mit láthatnak a koordinátorok és az adminisztrátorok
+## Mit láthatnak a koordinátorok és az adminok
 
-Az alkalmazásban a szavazás koordinátora, egy csoportadminisztrátor vagy egy példányadminisztrátor a jogosultságaitól függően láthatja:
+Az alkalmazáson keresztül a szavazás koordinátora, a csoport adminja vagy a Loomio-példány adminja a következőket láthatja:
 
 - a szavazást és a szavazásra jogosult személyeket;
-- hogy az egyes jogosultak szavaztak-e, ha a szerepkörük ezt lehetővé teszi, és már elegen szavaztak; és
-- a szavazás lezárása után az összesített eredményeket.
+- azt, hogy az egyes jogosult személyek szavaztak-e, ha a szerepkörük hozzáférést biztosít ehhez, és elegen szavaztak; és
+- az összesített eredményeket a szavazás lezárása után.
 
 Az alkalmazás funkcióival nem láthatják:
 
-- hogy mely választások tartoznak egy adott személyhez;
+- hogy melyik személyhez mely kiválasztott lehetőségek tartoznak;
 - az egyes szavazatokat vagy szavazási mintázatokat;
-- hogy egy adott szavazatot mikor adtak le; vagy
+- egy adott szavazat leadásának időpontját; vagy
 - a leadott szavazathoz kapcsolódó indoklást, mellékletet, eseményt vagy értesítést.
 
 <!-- translation-section: limits-of-anonymous-voting -->
 
 ## A névtelen szavazás korlátai
 
-Ezek a védelmek megakadályozzák, hogy az alkalmazás felhasználói összekapcsolják a leadott szavazatot a szavazóval. Nem nyújtanak kriptográfiai védelmet olyan üzemeltetővel szemben, aki hozzáfér az adatbázishoz, a biztonsági mentésekhez, a szervernaplókhoz, a folyamatmemóriához, a hálózati forgalomhoz vagy az alkalmazás módosított változatához.
+Ezek a védelmi intézkedések megakadályozzák, hogy az alkalmazás felhasználói összekapcsolják a leadott szavazatot a szavazójával. Nem nyújtanak kriptográfiai védelmet olyan üzemeltetővel szemben, aki hozzáfér az adatbázishoz, a biztonsági mentésekhez, a szervernaplókhoz, a folyamatok memóriájához, a hálózati forgalomhoz vagy az alkalmazás módosított változatához.
 
-Maga az eredmény is árulkodhat. Kevés szavazó, egyhangú eredmény, a választások jellegzetes kombinációja vagy a szavazáson kívül megosztott információk alapján könnyebb lehet kikövetkeztetni valakinek a döntését. A szavazók a leadott szavazatuktól független beszélgetésben maguk is felfedhetik kilétüket.
+Maga az eredmény is felfedhet információkat. A szavazók kis száma, az egyhangú eredmény, a kiválasztott lehetőségek jellegzetes kombinációja vagy a szavazáson kívül megosztott információk megkönnyíthetik annak kikövetkeztetését, hogy valaki mit választott. A szavazók a leadott szavazatuktól független beszélgetésben is dönthetnek úgy, hogy felfedik a kilétüket.
 
-Amikor eldöntöd, hogy megfelelő-e az alkalmazáson belüli névtelen szavazás, vedd figyelembe a szavazók számát és a döntés érzékenységét.
+Vedd figyelembe a szavazók számát és a döntés érzékenységét, amikor eldöntöd, hogy megfelelő-e az alkalmazásszintű névtelen szavazás.
 
 <!-- translation-section: questions -->
 
@@ -173,34 +173,34 @@ Amikor eldöntöd, hogy megfelelő-e az alkalmazáson belüli névtelen szavazá
 
 ### Láthatja bárki, hogyan szavaztam?
 
-Nem. Ha már elegen szavaztak, azok, akik láthatják az eredményeket, azt is láthatják, hogy szavaztál-e. Az alkalmazásban senki sem kapcsolhatja össze a személyedet egy leadott szavazattal. Addig az sem látható, hogy szavaztál-e.
+Nem. Ha már elegen szavaztak, azok, akik látják az eredményeket, azt is láthatják, hogy szavaztál-e. Az alkalmazáson keresztül senki sem kapcsolhat össze téged egy leadott szavazattal. Addig az is rejtve marad, hogy szavaztál-e.
 
 <!-- translation-section: can-i-see-my-vote-after-submitting-it -->
 
-### Megnézhetem a szavazatomat a leadása után?
+### Megnézhetem a szavazatomat, miután leadtam?
 
-Nem. Az alkalmazás visszajelzi, hogy rögzítette a szavazatodat, majd eltávolítja a választásaidat a szavazási felületről. A szavazatodat csak akkor tudná visszakeresni, ha létrehozná azt a kapcsolatot, amelyet a névtelen szavazás kizár.
+Nem. Az alkalmazás megerősíti, hogy rögzítette a szavazatodat, majd törli a választásaidat a szavazási felületről. Nem tudja visszakeresni a szavazatodat anélkül, hogy létrehozná azt a kapcsolatot, amelyet a névtelen szavazás szándékosan elkerül.
 
 <!-- translation-section: can-i-change-or-withdraw-my-vote -->
 
-### Megváltoztathatom vagy visszavonhatom a szavazatomat?
+### Módosíthatom vagy visszavonhatom a szavazatomat?
 
-Nem. Nincs olyan kapcsolat a személyed és a szavazatod között, amely alapján az alkalmazás azonosíthatná, melyik leadott szavazatot kell módosítani vagy eltávolítani.
+Nem. Nincs olyan kapcsolat, amely alapján az alkalmazás azonosítani tudná, melyik leadott szavazatot kell módosítania vagy eltávolítania.
 
 <!-- translation-section: will-i-receive-an-email-confirming-my-vote -->
 
-### Kapok e-mailes visszaigazolást a szavazatomról?
+### Kapok emailt a szavazatom megerősítéséről?
 
-Nem. Szavazáskor csak a képernyőn jelenik meg visszajelzés, és frissül a részvételi nyilvántartásod. Az alkalmazás nem küld visszaigazoló e-mailt, és nem hoz létre értesítést vagy tevékenységi eseményt.
+Nem. A szavazat leadásakor csak a képernyőn jelenik meg visszaigazolás, és frissül a részvételi nyilvántartásod. Az alkalmazás nem küld megerősítő emailt, és nem hoz létre értesítést vagy tevékenységi eseményt.
 
 <!-- translation-section: does-a-public-poll-reveal-more-information -->
 
-### Több információt fed fel egy nyilvános szavazás?
+### Több információt tesz láthatóvá egy nyilvános szavazás?
 
-A nyilvános szavazás lezárása után bárki láthatja az eredményeket és azt, hogy ki vett részt. Az egyes szavazatokat, valamint a tagság és a meghívások részleteit nem láthatják.
+Egy nyilvános szavazás lezárása után bárki láthatja az eredményeket és azt, hogy kik vettek részt. Az egyéni szavazatokat, valamint a tagság és a meghívók részleteit nem láthatják.
 
 <!-- translation-section: is-anonymous-voting-suitable-for-every-election -->
 
 ### Minden választáshoz megfelelő a névtelen szavazás?
 
-Nem. Az alkalmazáson belül elkülöníti a szavazók személyazonosságát a szavazatoktól. Ha a döntéshez a rendszer üzemeltetőivel szembeni védelemre vagy függetlenül ellenőrizhető kriptográfiai választásra van szükség, olyan rendszert kell használni, amely megfelel ezeknek a követelményeknek.
+Nem. Az alkalmazáson belül elkülöníti a személyazonosságokat a szavazatoktól. A rendszer üzemeltetőivel szembeni védelmet igénylő döntésekhez vagy a függetlenül ellenőrizhető kriptográfiai választásokhoz olyan rendszerre van szükség, amelyet ezekre a követelményekre terveztek.

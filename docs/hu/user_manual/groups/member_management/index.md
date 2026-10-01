@@ -1,10 +1,10 @@
 ---
 title: Tagok kezelése
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/groups/member_management/index.md
+source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
+source_file: docs/en/user_manual/groups/member_management/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: f216b18771a2c2a9
   administering-your-group: 27aed40959adef57
@@ -14,13 +14,13 @@ sections:
   set-title: 835b25d246477b4a
   member-email-addresses: cae570f30b671275
 generated:
-  introduction: 1b125ef157a0b2b9
-  administering-your-group: f0158e8878f5e7c3
-  managing-subgroups: d989f2685b3a054c
-  removing-members: bc718e807b47927c
-  leaving-group: 146e7f872044caec
-  set-title: c34695ef53f54969
-  member-email-addresses: 9d3ac910e81649b9
+  introduction: 94d82cee3ecb6496
+  administering-your-group: f88971e605ec8115
+  managing-subgroups: c32e1d345983473b
+  removing-members: 87a2d7584a591beb
+  leaving-group: febb3e91c9bc92b4
+  set-title: ff532d79fa2da32f
+  member-email-addresses: 8e86cd0869710340
 title_source: 23ac3a7fe9ee72a2
 title_generated: e9f1ed3c33a8ce3e
 ---
@@ -29,35 +29,35 @@ title_generated: e9f1ed3c33a8ce3e
 
 # Tagok kezelése
 
-Ha adminisztrátor vagy, a csoportod oldalán, a **Tagok** lapon kezelheted a tagokat.
+Ha admin vagy, a csoportod oldalán a **Tagok** fülön kezelheted a tagokat.
 
-Kattints a csoporttag neve mellett jobbra lévő három pontra (**⋮**). Itt megadhatod a címét, adminisztrátorrá vagy delegálttá teheted, illetve eltávolíthatod a csoportból.
+Kattints a csoporttagtól jobbra található három pontra (**⋮**), hogy megadd a címét, adminná vagy delegálttá tedd, vagy eltávolítsd a csoportból.
 
-![Tagok műveleteinek menüje az Oatmilk Cooperative tagjainak oldalán](member_management.png)
+![Tagműveletek menüje az Oatmilk Cooperative tagjainak oldalán](member_management.png)
 
 <!-- translation-section: administering-your-group -->
 
-## A csoport adminisztrálása
-Egy Loomio-csoportban kétféle felhasználó van: **tag** és **adminisztrátor**.
+## A csoportod adminisztrálása
+A Loomio-csoportokban csak két felhasználótípus van: **tag** és **admin**.
 
-Az adminisztrátorok tagokat adhatnak hozzá és távolíthatnak el, kezelhetik a tagok jogosultságait, beállíthatják a csoport láthatóságát, és kezelhetik az előfizetéseket. Emellett láthatják a tagok e-mail-címét, és exportálhatják a csoport adatait.
+Az adminok végzik a csoport adminisztratív feladatait: tagokat adnak hozzá és távolítanak el, kezelik a tagok jogosultságait, beállítják a csoport adatvédelmi szintjét, és kezelik az előfizetési csomagokat. Emellett láthatják a tagok e-mail-címét, és exportálhatják a csoport adatait.
 
-Az új Loomio-csoport létrehozója alapértelmezés szerint adminisztrátor lesz. Érdemes legalább egy másik megbízható tagot is adminisztrátorrá tenni, hogy mindig legyen, aki kezelni tudja a csoportot. A csoportnak tetszőleges számú adminisztrátora lehet.
+Az új Loomio-csoportot létrehozó személy alapértelmezés szerint admin lesz. Javasoljuk, hogy a csoportodban legalább egy másik megbízható személynek is adj adminjogokat, hogy mindig legyen valaki, aki kezelni tudja a csoportot. A csoportodban tetszőleges számú admin lehet.
 
-Ha egy tagot **adminisztrátorrá** szeretnél tenni, nyisd meg a Tagok lapot, keresd meg a tagot, és kattints a neve melletti három pontra (**⋮**). Válaszd az **Adminisztrátor jogok megadása** lehetőséget. A neve mellett megjelenik az `Admin` címke.
+Ha egy tagot **adminná** szeretnél tenni, nyisd meg a Tagok fület, keresd meg a tagot, és kattints a neve melletti három pontra (**⋮**). Válaszd ki az **Adminisztrátor jogok megadása** lehetőséget. A neve mellett megjelenik egy `Admin` címke.
 
-![Adminisztrátor jogok megadása a tag menüjében](member_make_admin.png)
+![Adminisztrátor jogok megadása művelet egy tag menüjében](member_make_admin.png)
 
 <!-- translation-section: managing-subgroups -->
 
 ## Alcsoportok kezelése
-Ha egy szülőcsoport vagy szervezet adminisztrátora vagy, további jogosultságaid vannak a __zárt__ alcsoportokban.
+Ha egy szülőcsoport vagy szervezet adminja vagy, további jogosultságaid vannak a __zárt__ alcsoportokban.
 
-Bármelyik zárt alcsoporthoz csatlakozhatsz, ha az alcsoport oldalának bal oldalán, közvetlenül a lapok alatt a „Kapcsolódj a csoporthoz” gombra kattintasz.
+Bármely zárt alcsoporthoz csatlakozhatsz, ha az adott alcsoport oldalának bal oldalán, közvetlenül a fülek alatt a „Csatlakozás a csoporthoz” gombra kattintasz.
 
-![Csatlakozás gomb az Oatmilk Cooperative egyik zárt alcsoportjában](member_join_subgroup.png)
+![Csatlakozás a csoporthoz gomb az Oatmilk Cooperative egyik zárt alcsoportjában](member_join_subgroup.png)
 
-Miután csatlakoztál az alcsoporthoz, saját magadat is adminisztrátorrá teheted, ugyanúgy, mint bármelyik másik tagot.
+Miután csatlakoztál az alcsoporthoz, magadnak is adhatsz adminjogokat, ugyanúgy, ahogyan bárki másnak.
 
 >[!Note]
 >Ezek a jogosultságok nem terjednek ki a [**titkos** alcsoportokra](/en/user_manual/groups/subgroups/?highlight=secret#permissions).
@@ -65,36 +65,36 @@ Miután csatlakoztál az alcsoporthoz, saját magadat is adminisztrátorrá tehe
 <!-- translation-section: removing-members -->
 
 ## Tagok eltávolítása
-Ha az **Eltávolítás a csoportból** lehetőségre kattintasz, meg kell erősítened az eltávolítást. Az eltávolított tag többé nem fér hozzá a csoport oldalaihoz, témáihoz, szavazásaihoz és javaslataihoz. Nem kap több e-mailt vagy értesítést a csoport tevékenységéről. A hozzászólásai és szavazatai megmaradnak.
+Ha az **Eltávolítás a csoportból** lehetőségre kattintasz, meg kell erősítened az eltávolítást. Az eltávolítás után a felhasználó többé nem fér hozzá a csoport oldalaihoz, szálaihoz, szavazásaihoz vagy javaslataihoz. Nem kap több e-mailt vagy értesítést a csoport tevékenységéről. A felhasználó korábbi hozzászólásai és szavazatai azonban változatlanul megmaradnak.
 
-![Eltávolítás a csoportból a tag menüjében](member_remove.png)
+![Eltávolítás a csoportból művelet egy tag menüjében](member_remove.png)
 
-Az eltávolított tagokat később újra hozzáadhatod a csoporthoz.
+Ha szeretnéd, később újra hozzáadhatod az eltávolított tagokat a csoporthoz.
 
 <!-- translation-section: leaving-group -->
 
 ## Kilépés a csoportból
-Ha ki szeretnél lépni egy csoportból, nyisd meg a csoport oldalát, majd a hárompontos menüben kattints a **Kilépés a csoportból** lehetőségre.
+Ha ki szeretnél lépni egy csoportból, nyisd meg a csoport oldalát, nyisd meg a hárompontos menüt, és kattints a **Kilépés a csoportból** lehetőségre.
 
-![Kilépés a csoportból az Oatmilk Cooperative beállításainak menüjében](member_leave_group.png)
+![Kilépés a csoportból művelet az Oatmilk Cooperative beállítási menüjében](member_leave_group.png)
 
 <!-- translation-section: set-title -->
 
 ## Cím megadása
-A Tagok lapon a **cím** segítségével megadhatod a csoportban betöltött szerepedet vagy az általad képviselt szervezetet. A neved melletti hárompontos menü **Cím megadása** lehetőségével te vagy a csoport egyik adminisztrátora módosíthatja a címedet.
+A Tagok fülön a **cím** mezővel megadhatod a csoportban betöltött szerepedet vagy az általad képviselt szervezetet. Te vagy a csoport egyik adminja a neved melletti hárompontos menü **Cím megadása** lehetőségével módosíthatja a címedet.
 
-![Cím megadása a tag menüjében](member_set_title.png)
+![Cím megadása művelet egy tag menüjében](member_set_title.png)
 
-A különböző alcsoportokban eltérő címed lehet.
+A különböző alcsoportokban eltérő címeid lehetnek.
 
 <!-- translation-section: member-email-addresses -->
 
-## Tagok e-mail-címei
+## A tagok e-mail-címei
 
-A csoporttagok e-mail-címét csak az adminisztrátorok láthatják. Erre időnként szükség van a csoport tagságának ellenőrzéséhez.
+Csak az adminok láthatják a csoporttagok e-mail-címeit. Erre időnként szükség lehet a csoport tagságának ellenőrzéséhez.
 
 A tagok e-mail-címeinek megtekintéséhez tölts le egy CSV-fájlt az [adatexportálással](/en/user_manual/groups/data_export/), majd nyisd meg Excelben vagy Google Táblázatokban.
 
-Az exportált csoportadatokat tartalmazó fájl minden alcsoport összes tagját és e-mail-címét megmutatja.
+A csoport exportált adatfájlja minden alcsoport minden tagját és e-mail-címét tartalmazza.
 
-A Tagok lapon e-mail-cím alapján is kereshetsz. Ha el szeretnél távolítani valakit, az e-mail-címével megkeresheted.
+A Tagok fülön e-mail-cím alapján is kereshetsz tagokat. Ha valakit el szeretnél távolítani, az e-mail-címe alapján megkeresheted, majd eltávolíthatod.

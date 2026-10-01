@@ -1,10 +1,10 @@
 ---
 title: Loomio in deinem Vorstand einführen
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/guides/board_processes/introduce.md
+source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
+source_file: docs/en/guides/board_processes/introduce.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-30'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: c0d64682f409c229
   check-technical-proficiency: 17e1c92a0214a12c
@@ -16,15 +16,15 @@ sections:
   manage-group-membership: cf3684fe138b05fe
   start-with-a-board-process: 916878a28e4bbe01
 generated:
-  introduction: 2187bf2b15ac5cb8
-  check-technical-proficiency: 0c42c59811e66954
-  configure-your-group: 68fd926ce2903714
-  group-description: b0102581b9bdb4f1
-  check-privacy-and-permission-settings: b7bcaf80001ec570
-  category-tags: '0814dfd615cb214d'
-  set-up-your-personal-profile: b4bbff38fade05b4
-  manage-group-membership: 753014fa427b7973
-  start-with-a-board-process: fe60b65e33115207
+  introduction: ad8d641a98f1b424
+  check-technical-proficiency: fc1e5f684cd8edfe
+  configure-your-group: d846b17c69df40b3
+  group-description: 554062891fc771b5
+  check-privacy-and-permission-settings: 115def156a3d40e0
+  category-tags: dcb2ffcb9e3784d9
+  set-up-your-personal-profile: 24abab5d04f38d4b
+  manage-group-membership: 1c2fc75895ec5bce
+  start-with-a-board-process: b46104bd1b78bbec
 title_source: 0d24828b57de672c
 title_generated: a7da5eb7a5e41196
 ---
@@ -33,81 +33,81 @@ title_generated: a7da5eb7a5e41196
 
 # Loomio in deinem Vorstand einführen
 
-Loomio kann der Online-Ort sein, an dem sich dein Vorstand oder Ausschuss trifft, Themen bespricht und Entscheidungen trifft. So entsteht eine nachvollziehbare Dokumentation für deine Organisation.
+Loomio kann der Online-Ort werden, an dem dein Vorstand oder Ausschuss zusammenkommt, diskutiert, entscheidet und eine überprüfbare Dokumentation für deine Organisation aufbaut.
 
-Beginne mit der allgemeinen Anleitung unter [Loomio in deiner Gruppe einführen](/en/user_manual/overview/introducing_loomio). Diese Seite ergänzt Hinweise für Vorstände und Ausschüsse.
+Beginne mit dem allgemeinen Ablauf in [Loomio in deiner Gruppe einführen](/en/user_manual/overview/introducing_loomio). Diese Seite ergänzt Hinweise speziell für Vorstände und Ausschüsse.
 
-Wenn nur ein Teil des Vorstands mitmacht, bringt Loomio wenig. Informationen und Gespräche bleiben dann wahrscheinlich auf mehrere Werkzeuge und E-Mail-Postfächer verteilt. Die Unübersichtlichkeit kostet alle Zeit.
+Loomio wird jedoch wenig Nutzen bringen, wenn sich nur ein Teil deines Vorstands beteiligt. Informationen und Kommunikation bleiben dann wahrscheinlich auf mehrere Werkzeuge verteilt, gehen in E-Mail-Posteingängen verloren, und die Unübersichtlichkeit kostet alle Zeit.
 
-Überlege, welches Problem ihr mit Loomio lösen wollt: etwa die Kommunikation verbessern und nachvollziehbar machen oder Wissen für die Organisation bewahren. Vereinbart dann im Vorstand, eure Arbeit nach Loomio zu verlagern, und ermutige alle, sich ernsthaft darauf einzulassen.
+Überlege, welches Problem du mit Loomio lösen möchtest, etwa die Kommunikation zu verbessern und nachvollziehbar zu machen oder das Wissen der Organisation zu bewahren. Vereinbart dann als Vorstand, eure Arbeit in Loomio zu verlagern, und ermutige alle, sich aktiv daran zu beteiligen.
 
-Als Administrator ist es deine wichtigste Aufgabe, Loomio so einzurichten, dass dein Vorstand gut damit arbeiten kann.
+Als administrierende Person ist dein wichtigstes Ziel, Loomio für deinen Vorstand sinnvoll einzurichten.
 
-Ermutige die Vorstandsmitglieder, sich anzumelden und mitzumachen. Sie sollten Folgendes können:
+Ermutige die Vorstandsmitglieder, beizutreten und sich zu beteiligen. Sie sollten Folgendes können:
 
 - Sich bei Loomio anmelden
-- Diskussionen lesen und kommentieren
-- An Abstimmungen teilnehmen
-- Verstehen, wie eure Entscheidungsprozesse in Loomio ablaufen
+- Threads lesen und kommentieren
+- In Abstimmungen abstimmen
+- Verstehen, wie die Verfahren zur Leitung deiner Organisation in Loomio funktionieren
 
 <!-- translation-section: check-technical-proficiency -->
 
-## Technische Kenntnisse prüfen
+## Prüfe die technischen Voraussetzungen
 
-Vorstandsmitglieder brauchen einen Computer oder ein Smartphone mit Internetzugang. Sie müssen E-Mails senden und empfangen, im Web surfen, digitale Dokumente lesen sowie Videos ansehen und anhören können.
+Vorstandsmitglieder benötigen einen Computer oder ein Smartphone mit Internetverbindung. Sie müssen E-Mails senden und empfangen, im Internet surfen, digitale Dokumente lesen sowie Videos ansehen und deren Ton hören können.
 
 Prüfe, ob die Mitglieder über Folgendes verfügen:
 
-- ein aktuelles Gerät – einen Computer, ein Tablet oder ein Smartphone mit E-Mail-Zugang und einem modernen Webbrowser
-- eine Internetverbindung über WLAN, Ethernetkabel oder mobile Daten (3G oder schneller)
+- ein aktuelles Gerät – einen Computer, ein Tablet oder ein Smartphone mit E-Mail-Zugang und einem modernen Internetbrowser
+- einen Internetzugang über WLAN, Ethernet-Kabel oder einen mobilen Datentarif (3G oder höher)
 - die Fähigkeit, E-Mails zu senden und zu empfangen, im Internet zu surfen, Dokumente herunterzuladen und Videos abzuspielen.
 
-Loomio funktioniert mit gängigen Webbrowsern wie Google Chrome, Microsoft Edge, Firefox und Apple Safari. Veraltete Browser wie Microsoft Internet Explorer funktionieren möglicherweise nicht.
+Loomio funktioniert mit allen gängigen Internetbrowsern wie Google Chrome, Microsoft Edge, Firefox und Apple Safari. Veraltete Browser wie Microsoft Internet Explorer funktionieren möglicherweise nicht.
 
-Wenn du Loomio auf deinem Gerät nicht verwenden kannst, [kontaktiere den Loomio-Support](/contact).
+Wenn du Probleme bei der Nutzung von Loomio auf deinem Gerät hast, [kontaktiere den Loomio-Support](/contact).
 
 <!-- translation-section: configure-your-group -->
 
-## Deine Gruppe einrichten
+## Richte deine Gruppe ein
 
 <!-- translation-section: group-description -->
 
 ### Gruppenbeschreibung
-Die Gruppenbeschreibung ist das Erste, was Menschen sehen, wenn sie deine Loomio-Gruppe öffnen. Erkläre darin neuen Mitgliedern den Zweck der Gruppe und woran ihr gemeinsam arbeiten werdet. Ergänze weitere Informationen, die ihnen die Orientierung und Teilnahme erleichtern.
+Die Gruppenbeschreibung ist das Erste, was Menschen sehen, wenn sie deine Loomio-Gruppe aufrufen. Schreibe sie so, dass neue Mitglieder den Zweck der Gruppe und eure gemeinsame Arbeit verstehen. Ergänze weitere Informationen, die Orientierung geben und zur Beteiligung ermutigen.
 
-Begrüße die Mitglieder zum Beispiel und erkläre ihnen, dass dies der Online-Raum für die Kommunikation und die Entscheidungsprozesse deiner Organisation ist:
+Begrüße die Menschen zum Beispiel und erkläre, dass dies ihr Online-Raum für die Kommunikation und Leitung eurer Organisation ist:
 
 - Erinnere die Mitglieder an den Zweck des Vorstands oder Ausschusses.
-- Beschreibe, wie ihr Loomio nutzen wollt: um Sitzungen vorzubereiten, Diskussionen voranzubringen, Entscheidungen zu treffen und zwischen Sitzungen den Zusammenhang zu bewahren.
-- Erkläre, wer Zugang zur Gruppe hat, mitlesen und mitmachen kann.
-- Hänge Hintergrundinformationen und Dokumente zu euren Entscheidungsprozessen an oder verlinke sie.
+- Beschreibe, wie ihr Loomio nutzen möchtet: Sitzungen vorbereiten, Diskussionen voranbringen, Entscheidungen treffen und zwischen Sitzungen auf dem Laufenden bleiben.
+- Stelle klar, wer Zugang zur Gruppe hat, mitlesen und sich beteiligen kann.
+- Füge Hintergrunddokumente oder Dokumente zur Leitung der Organisation als Anhang oder Link hinzu.
 
 <!-- translation-section: check-privacy-and-permission-settings -->
 
-### Datenschutz- und Berechtigungseinstellungen prüfen
-Loomio-Gruppen sind standardmäßig **Geheim**. Nur Personen, die du ausdrücklich in die Gruppe einlädst, wissen dann von ihrer Existenz.
+### Prüfe die Einstellungen zu Privatsphäre und Berechtigungen
+Loomio-Gruppen sind standardmäßig **Geheim**. Das bedeutet, dass nur die Menschen von der Gruppe wissen, die du gezielt dazu einlädst.
 
-Sieh dir die [Berechtigungen für Mitglieder](/en/user_manual/groups/settings#permissions) an und passe sie an die Erfahrung der Mitglieder deiner Gruppe an. Am Anfang kann es helfen, einige Berechtigungen zu entfernen, damit die Bedienung übersichtlich bleibt. Du kannst sie wiederherstellen, sobald alle mit Loomio vertrauter sind.
+Sieh dir die [Mitgliedsberechtigungen](/en/user_manual/groups/settings#permissions) an und passe sie an die Kenntnisse der Mitglieder deiner Gruppe an. Für den Einstieg kann es helfen, einige Berechtigungen zu entziehen, um Verwirrung zu vermeiden. Du kannst die Berechtigungen jederzeit wieder erteilen, wenn alle mit Loomio vertrauter werden.
 
 <!-- translation-section: category-tags -->
 
-### Kategorie-Schlagwörter
-Füge [Kategorie-Schlagwörter](/en/user_manual/discussions/tags/) hinzu, die zu deiner Organisation passen. Wenn du sie vorab einrichtest, können alle Schlagwörter nutzen und gesuchte Diskussionen und Informationen leichter finden.
+### Schlagwörter zur Kategorisierung
+Füge [Schlagwörter zur Kategorisierung](/en/user_manual/discussions/tags/) hinzu, die zu deiner Organisation passen. Wenn du diese im Voraus einrichtest, erleichtert das allen die Verwendung von Schlagwörtern und die Suche nach Threads und Informationen.
 
 <!-- translation-section: set-up-your-personal-profile -->
 
-### Dein persönliches Profil einrichten
-Dein [persönliches Profil](/en/user_manual/users/user_profile) hilft den Mitgliedern deiner Gruppe, dich zu erkennen und Nachrichten von dir zuzuordnen.
+### Richte dein persönliches Profil ein
+Dein [persönliches Profil](/en/user_manual/users/user_profile) hilft den Mitgliedern deiner Gruppe, dich leicht zu erkennen und darauf zu vertrauen, dass die Nachrichten, die sie von dir erhalten, tatsächlich von dir stammen.
 
 <!-- translation-section: manage-group-membership -->
 
-### Gruppenmitgliedschaft verwalten
-Stelle sicher, dass alle Mitglieder deines Vorstands oder Ausschusses in die Gruppe [eingeladen wurden](/en/user_manual/groups/inviting_people/) und ihre Einladung angenommen haben.
+### Verwalte die Gruppenmitgliedschaft
+Stelle sicher, dass alle Mitglieder deines Vorstands oder Ausschusses zur Gruppe [eingeladen wurden](/en/user_manual/groups/inviting_people/) und ihre Einladung angenommen haben.
 
 <!-- translation-section: start-with-a-board-process -->
 
-### Mit einem Vorstandsprozess beginnen
+### Beginne mit einem Vorstandsablauf
 
-Die allgemeine Einführungsanleitung erklärt, wie du allen hilfst, einmal zu kommentieren und abzustimmen. Wende das danach auf einen wiederkehrenden Vorstandsprozess an: etwa eine Tagesordnung vorbereiten, ein Protokoll genehmigen, einen Bericht prüfen oder zwischen Sitzungen eine kleine Entscheidung treffen.
+Die allgemeine Anleitung zur Einführung erklärt, wie du allen dabei hilfst, einmal zu kommentieren und abzustimmen. Übe danach mit deinem Vorstand einen wiederkehrenden Ablauf, etwa eine Tagesordnung vorzubereiten, ein Protokoll zu genehmigen, einen Bericht zu prüfen oder eine kleinere Entscheidung außerhalb einer Sitzung zu treffen.
 
-Vereinbart, ob Entscheidungen in Loomio mit der Veröffentlichung ihres Fazits wirksam werden oder bei der nächsten Sitzung bestätigt werden müssen. Haltet das vereinbarte Quorum, die erforderliche Stimmenzahl, die Stimmberechtigten und das Verfahren zur Bestätigung in der Gruppenbeschreibung oder euren Dokumenten zu Entscheidungsprozessen fest.
+Vereinbart, ob Entscheidungen in Loomio mit der Veröffentlichung ihres Fazits wirksam werden oder in der nächsten Sitzung bestätigt werden müssen. Halte das vereinbarte Quorum, die erforderliche Stimmenmehrheit, den Kreis der stimmberechtigten Abstimmenden und das Verfahren zur Bestätigung in der Gruppenbeschreibung oder in den Dokumenten zur Leitung der Organisation fest.

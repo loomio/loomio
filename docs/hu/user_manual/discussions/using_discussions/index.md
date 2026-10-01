@@ -1,6 +1,6 @@
 ---
 title: Témák használata
-source_revision: 9c60c42fc739483fa23f15d9f34a1e9245518092
+source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
 source_file: docs/en/user_manual/discussions/using_discussions/index.md
 translated:
   provider: codex/gpt-6.1-sol
@@ -25,157 +25,159 @@ sections:
   lock-or-unlock-a-thread: d3f671e631c8a0bc
   delete-a-thread: 9b4c6437ff8102eb
 generated:
-  introduction: ea81bfcb871026bf
-  thread-anatomy: 3a81605b866c9b43
-  discussion-context: 87be741cc344465b
-  notify-people-about-context-changes: 34c0d8fc06283e93
-  navigation: 3e9635b81af1d118
-  notifications-and-members: 44fe7ec77c8b46f4
-  email-notifications-for-this-thread: 686c8f9abec4b10e
-  invite-people: f5192c8d4907f1fb
-  seen-by: c0fa3a0ced11a22a
-  notified: eafaaf554a061184
-  actions: df157228aa187692
-  print: 885691c150f421e1
-  markdown: 709f0b3879a429f6
-  thread-settings-and-display: eb8e813774a45310
-  pin-or-unpin-a-thread: 41ef522606e4e9f7
-  move-a-thread: 567055bd54273887
-  lock-or-unlock-a-thread: 22d4b99ecff58621
-  delete-a-thread: baf3a2cb4a0c2ebc
+  introduction: 9b5e6b9c1c67ff4c
+  thread-anatomy: 85f3f9929778753a
+  discussion-context: 6e327eae5291bb65
+  notify-people-about-context-changes: 0b2493832cf1d794
+  navigation: 46068dff287bd6ba
+  notifications-and-members: 467edc2330c0c48a
+  email-notifications-for-this-thread: 8685521ee36888e2
+  invite-people: 646cc519de0a6fe3
+  seen-by: 68972002f77ea8e6
+  notified: 7046f5aa76c8ea31
+  actions: 01e122860b46a4af
+  print: 771c0dbde4b51a61
+  markdown: d938722c2d8f8df1
+  thread-settings-and-display: 5358a272e7860c1a
+  pin-or-unpin-a-thread: 85f49bd712d7c920
+  move-a-thread: c28c9825e4fd4e31
+  lock-or-unlock-a-thread: df3e8f559d2e1d15
+  delete-a-thread: f8b84a81b49e6777
 title_source: 99e2d1eb313f35c4
 title_generated: 34d29fa6046f953a
+needs_review:
+  markdown: check the interface label "**Egyetért**" for "**Agree**"
 ---
 
 <!-- translation-section: introduction -->
 
-# Témák használata
+# Szálak használata
 
-Egy beszélgetés egy témában tartja együtt a leírást, a hozzászólásokat, a döntéseket és a döntések összegzését. Ez az oldal bemutatja, hogyan vehetsz részt egy témában, és hogyan használhatod a navigációs és műveleti eszközöket.
+A beszélgetés leírása, hozzászólásai, döntései és következtetései egy szálban maradnak együtt. Ez az oldal bemutatja, hogyan vehetsz részt egy szálban, és hogyan használhatod a navigációját és a műveleteit.
 
 <!-- translation-section: thread-anatomy -->
 
-## A téma részei
+## A szál felépítése
 
-Egy jellemző téma így néz ki:
+Egy szál általában így néz ki:
 
 ![](thread_navigation.png)
 
-Az oldal tetejétől lefelé haladva a téma részei:
+Az oldal tetejétől haladva a szál a következőket tartalmazza:
 
-**Csoport neve** - A beszélgetés oldalának bal felső sarkában annak a csoportnak vagy alcsoportnak a neve látható, amelyhez a beszélgetés tartozik. Kattints a névre a csoport oldalának megnyitásához.
+**Csoport neve** - A beszélgetés oldalának bal felső sarkában látható annak a csoportnak vagy alcsoportnak a neve, amelyhez a beszélgetés tartozik. Kattints erre a névre, hogy visszatérj a csoport oldalára.
 
-**Hozzáférés a beszélgetéshez** - A jobb felső sarokban lévő ikon megnyitja a beszélgetés hozzáférési beállításait. A csoportos beszélgetést a csoport tagjai és a külön meghívott személyek érhetik el, a csoport adatvédelmi beállításaitól függően.
+**Hozzáférés a beszélgetéshez** - A jobb felső sarokban lévő hozzáférési ikon megnyitja a beszélgetés hozzáférési beállításait. A csoport beszélgetése a csoport adatvédelmi beállításainak megfelelően elérhető a csoport tagjai és a kifejezetten oda meghívott emberek számára.
 
 **Beszélgetés címe** - A beszélgetés neve.
 
-**Kategóriacímkék** - Egy beszélgetéshez egy vagy több kategóriacímke tartozhat. Az egyszerű címkék megkönnyítik a hasonló beszélgetések megtalálását.
+**Kategóriacímkék** - A beszélgetéshez egy vagy több kategóriacímke tartozhat. Az egyszerű címkék segítenek könnyebben megtalálni a hasonló típusú beszélgetéseket.
 
-**A beszélgetés indítója** - A címsor alatt a beszélgetést indító személy neve és profilképe látható.
+**Beszélgetés szerzője** - A beszélgetést indító személy neve és profilképe, amely a cím alatt jelenik meg.
 
-**Dátum** - Vidd a mutatót a dátum fölé a beszélgetés kezdésének teljes dátumáért és időpontjáért.
+**Dátum** - Vidd az egérmutatót a dátum fölé, hogy lásd a beszélgetés indításának teljes dátumát és időpontját.
 
-**Látta** - A jobb oldalsávban láthatod, ki és mikor olvasta el a beszélgetést.
+**Látta** - A jobb oldalsávban megmutatja, ki és mikor olvasta a beszélgetést.
 
-**Értesített** - A jobb oldalsávban láthatod, ki kapott értesítést a beszélgetésről, valamint hogy elolvasta-e az értesítést vagy megnyitotta-e az e-mailt.
+**Értesített** - A jobb oldalsávban megmutatja, ki kapott értesítést a beszélgetésről, és hogy az egyes értesítéseket elolvasták-e, illetve az e-maileket megnyitották-e.
 
 **Beszélgetés leírása** - A beszélgetés kereteit meghatározó tartalom.
 
-**Részvételi és kezelési eszközök** - A beszélgetés leírásánál reagálhatsz a tartalomra és szerkesztheted azt. A jobb oldalsávban az értesítésekkel, a résztvevőkkel és a kezelésükkel kapcsolatos műveletek találhatók.
+**A beszélgetés részvételi és kezelési eszközei** - A beszélgetés leírásánál reagálhatsz a tartalomra és szerkesztheted azt. A jobb oldalsávban értesítési, tagsági és kezelési műveletek találhatók.
 
 **Hozzászólások** - A hozzászólások a beszélgetés leírása alatt jelennek meg. A szerző neve, profilképe és a közzététel időpontja mutatja, ki és mikor írta az egyes hozzászólásokat. Minden hozzászólásnál elérhetők részvételi és kezelési eszközök.
 
-**Navigáció, értesítések és műveletek** - A jobb oldalsávban az eseményekhez és a fontos pontokhoz vezető hivatkozások, az értesítésekkel és a résztvevőkkel kapcsolatos adatok, valamint a számodra elérhető témaműveletek találhatók.
+**Navigáció, értesítések és műveletek** - A jobb oldalsávban a tevékenységekhez és mérföldkövekhez vezető hivatkozások, értesítési és tagsági információk, valamint a számodra elérhető szálműveletek találhatók.
 
 <!-- translation-section: discussion-context -->
 
 ## A beszélgetés leírása
 
-A beszélgetés **leírása** mindig a beszélgetés tetején található. Ezzel adhatod meg a beszélgetés vagy a döntés kereteit.
+A beszélgetés **leírása** mindig a beszélgetés tetején található. A leírással határozd meg a beszélgetés vagy a döntés kereteit.
 
-A beszélgetés leírását a csoportodnak írd. Gondold át, mi segíti a tagokat a részvételben. Általában érdemes egyszerűen és világosan fogalmazni.
+A beszélgetés leírásának megírásakor gondolj a csoportodra. A célod a beszélgetés elindítása, ezért gondold át, hogyan ösztönözheted az embereket a részvételre. A beszélgetés leírását általában tartsd egyszerűnek és érthetőnek.
 
 ![](thread_context.png)
 
-A beszélgetés indításakor vagy szerkesztésekor írd meg a leírást. A ceruza ikonnal **Szerkesztés** műveletet indíthatsz.
+A beszélgetés indításakor vagy szerkesztésekor írd meg a leírást. A ceruzaikonnal érheted el a beszélgetés **szerkesztését**.
 
-A beszélgetés előrehaladtával frissítsd a leírást. Használd úgy, mint egy tárgyalótermi táblát: felírhatod rá a napirendet, a kívánt eredményeket és az elérésükhöz tervezett lépéseket.
+A beszélgetés előrehaladtával frissítsd a leírást. Gondolj a leírásra úgy, mint a tárgyalóban lévő táblára, amelyre felírhatod a napirendet, az elérni kívánt következtetéseket és az ezekhez vezető tervet.
 
-A leíráspanel alján formázási eszköztár található. Itt formázhatod a szöveget, fájlokat és képeket csatolhatsz, valamint videót ágyazhatsz be.
+A leírás paneljének alján található a formázási eszköztár, ahol formázhatod a szöveget, fájlokat és képeket csatolhatsz, valamint videót ágyazhatsz be.
 
 ![](thread_context_edit.png)
 
 <!-- translation-section: notify-people-about-context-changes -->
 
-### Értesítés a leírás változásairól
+### Értesítsd az embereket a leírás változásairól
 
-Amikor szerkeszted a beszélgetés leírását, a **Mi változott?** mezőben foglald össze a módosítást, és válaszd ki, kik kapjanak értesítést.
+Amikor szerkeszted a beszélgetés leírását, a **Mi változott?** mezőben foglald össze a módosítást, és válaszd ki, ki kapjon értesítést.
 
-![Beszélgetés leírásának szerkesztése a változás összefoglalásával és az értesítendők kiválasztásával](../notifying_people/thread_editcontext.png)
+![A beszélgetés leírásának szerkesztése a módosítás összefoglalójával és az értesítés címzettjeivel](../notifying_people/thread_editcontext.png)
 
-A témában látható, hogy szerkesztetted a leírást. Az értesített emberek az értesítéssel együtt megkapják az összefoglalódat.
+A szálban megjelenik, hogy szerkesztetted a leírást. Az értesített emberek az értesítéssel együtt megkapják az összefoglalódat.
 
-![A téma egyik eleme, amely jelzi, hogy a beszélgetés leírását szerkesztették](../notifying_people/thread_edit_comment.png)
+![A szál egyik eleme jelzi, hogy a beszélgetés leírását szerkesztették](../notifying_people/thread_edit_comment.png)
 
 <!-- translation-section: navigation -->
 
 ## Navigáció
 
-A jobb oldalsáv **Ugrás ide:** részével navigálhatsz a témában:
+A jobb oldalsáv **Ugrás ide:** része segít a szálon belüli navigációban:
 
-- Az **Indítás** a beszélgetés leírásához visz
-- Az **Új számodra** akkor jelenik meg, ha a témában van olyan esemény, amelyet még nem olvastál
-- A **Legújabb** akkor jelenik meg, ha a betöltött elemek után újabb események is vannak
-- a fontos pontokra mutató hivatkozások közvetlenül a fontos hozzászólásokhoz, szavazásokhoz és döntések összegzéséhez visznek
-- A **Vége** a téma legutolsó eleméhez visz
+- **Indítás** a beszélgetés leírásához visz
+- **Új számodra** akkor jelenik meg, ha a szálban olyan tevékenység van, amelyet még nem olvastál
+- **Legutóbbi** akkor jelenik meg, ha a jelenleg betöltött elemeken túl újabb tevékenység érhető el
+- a mérföldkövek hivatkozásai közvetlenül a fontos hozzászólásokhoz, szavazásokhoz és következtetésekhez vezetnek
+- **Vége** a szál legutóbbi eleméhez visz
 
-A H2 vagy H3 címsort tartalmazó hozzászólások, a szavazások és a javaslatok automatikusan bekerülnek a fontos pontokra mutató hivatkozások közé. Válassz ki egy fontos pontot, ha közvetlenül oda szeretnél ugrani.
+A H2 vagy H3 szintű címsort tartalmazó hozzászólások, a szavazások és a javaslatok automatikusan megjelennek a mérföldkövek hivatkozásai között. Válassz ki egy mérföldkövet, hogy közvetlenül oda ugorj.
 
 ![](thread_timeline_1.png)
 
-Amikor hozzászólást, szavazást, szavazatot vagy döntésösszegzést teszel közzé, a Loomio olvasottnak jelöli a saját új elemedet. Nem jelenik meg számodra átnézendő újdonságként.
+Amikor hozzászólást, szavazást, szavazatot vagy következtetést adsz hozzá, a Loomio olvasottként jelöli a saját új elemedet. Ez nem jelenik meg számodra átnézendő új tartalomként.
 
 <!-- translation-section: notifications-and-members -->
 
-## Értesítések és résztvevők
+## Értesítések és tagok
 
-A jobb oldalsávban beállíthatod az e-mail-értesítéseidet, és láthatod, kit hívtak meg, ki látta a témát, valamint ki kapott értesítést.
+A jobb oldalsávban kezelheted az e-mailes értesítéseidet, és láthatod, kit hívtak meg, ki látta a szálat, és ki kapott értesítést.
 
 <!-- translation-section: email-notifications-for-this-thread -->
 
-### E-mail-értesítések erről a témáról
+### E-mailes értesítések erről a szálról
 
-Válaszd ki a jelenlegi értesítési beállítást, majd állítsd be, hogy a Loomio minden eseményről, csak a kifejezetten neked szóló értesítésekről, vagy egyáltalán ne küldjön e-mailt. Egy aktív témában a minden eseményről szóló értesítés sok e-mailt eredményezhet.
+Válaszd ki az aktuális értesítési beállítást, és állítsd be, hogy a Loomio minden tevékenységről küldjön e-mailt, csak a kifejezetten neked szóló értesítésekről küldjön, vagy egyáltalán ne küldjön. Ha minden tevékenységről kapsz e-mailt, egy aktív szál sok üzenetet eredményezhet.
 
-![E-mail küldése értesítéskor beállítás kiválasztva a beszélgetés oldalsávjában](../notifying_people/thread_interact.png)
+![Az értesítéskor küldött e-mail beállítása kiválasztva a beszélgetés oldalsávjában](../notifying_people/thread_interact.png)
 
 <!-- translation-section: invite-people -->
 
-### Emberek meghívása
+### Hívj meg embereket
 
-A téma elindítása után a **Hívj meg embereket** lehetőséggel adhatsz hozzá résztvevőket.
+Válaszd a **Hívj meg embereket** lehetőséget, hogy a szál elindítása után további embereket adj hozzá.
 
-![Hívj meg embereket a szál oldalsávjában](../notifying_people/thread_invite_icon.png)
+![A Hívj meg embereket lehetőség a szál oldalsávjában](../notifying_people/thread_invite_icon.png)
 
-Válassz egy csoportot vagy alcsoportot, add meg az egyes tagok nevét, vagy írj be egy e-mail-címet egy vendég meghívásához.
+Válassz ki egy csoportot vagy alcsoportot, írd be az egyes tagok nevét, vagy adj meg egy e-mail-címet egy vendég meghívásához.
 
-A **Személyek keresése vagy meghívása** mező a szálban már részt vevő emberek listáját is szűri. Ürítsd ki a mezőt a teljes lista újbóli megjelenítéséhez, és használd a lapozókat, ha több mint 50 ember szerepel rajta. Miután kiválasztottad a címzetteket, a taglista helyén megjelenik a nem kötelező üzenetmező. A **Meghívás vagy értesítés** lehetőség kiválasztásakor az új emberek meghívást kapnak, a már hozzáféréssel rendelkezők pedig újabb értesítést.
+A **Személyek keresése vagy meghívása** mező a szálban már részt vevő emberek listáját is szűri. Töröld a mező tartalmát, hogy ismét a teljes listát lásd, és használd a lapozókat, ha több mint 50 ember szerepel rajta. A címzettek kiválasztása után a tagok listájának helyén megjelenik a nem kötelező üzenetmező. A **Meghívás vagy értesítés** kiválasztásakor az új emberek meghívót kapnak, a már hozzáféréssel rendelkezők pedig újabb értesítést.
 
-![Meghívási ablak név- és e-mail-címmezővel](../notifying_people/thread_invite.png)
+![Az emberek meghívására szolgáló ablak a nevek és e-mail-címek mezőjével](../notifying_people/thread_invite.png)
 
-A vendég láthatja ezt a szálat és részt vehet benne, de a csoport többi beszélgetését csak akkor láthatja, ha külön meghívják.
+A vendég láthatja ezt a szálat, és részt vehet benne, de a csoport többi beszélgetését csak akkor láthatja, ha azokba külön meghívják.
 
-Bezárhatod az ablak tetején megjelenő útmutatókat. A Loomio megjegyzi a fiókodban, hogy mely útmutatókat zártad be.
+Az ablak tetején lévő útmutatókat bezárhatod. A Loomio megjegyzi a fiókodhoz, mely útmutatókat zártad be.
 
 ![Vendég meghívása e-mail-címmel](../notifying_people/invite_guest.png)
 
-Ha el szeretnél távolítani valakit, nyisd meg a neve melletti hárompontos menüt (**⋯**), és válaszd az **Eltávolítás a beszélgetésből** lehetőséget.
+Valaki eltávolításához nyisd meg a neve melletti hárompontos menüt (**⋯**), és válaszd az **Eltávolítás a beszélgetésből** lehetőséget.
 
 <!-- translation-section: seen-by -->
 
 ### Látta
 
-A **Látta** megmutatja, ki és mikor nyitotta meg a szálat. Így láthatod, ki az, aki esetleg még nem olvasott fontos információt.
+A **Látta** megmutatja, ki és mikor nyitotta meg a szálat. Segíthet azonosítani azokat, akik esetleg még nem láttak fontos információkat.
 
 ![A Látta és az Értesített a szál tagjainak részében](../notifying_people/thread_engagement.png)
 
@@ -185,7 +187,7 @@ A **Látta** megmutatja, ki és mikor nyitotta meg a szálat. Így láthatod, ki
 
 ### Értesített
 
-Az **Értesített** megnyitja a beszélgetés értesítési előzményeit. Itt láthatod a meghívásokat, az említéseket és a válaszokat, valamint azt, hogy ki kapott értesítést, és ahol ez az adat elérhető, elolvasta-e.
+Az **Értesített** megnyitja a beszélgetés értesítési előzményeit. Ezek között meghívók, említések és válaszok szerepelnek. Láthatod, ki kapott értesítést, és ha ez az információ elérhető, azt is, hogy az egyes értesítéseket elolvasták-e.
 
 ![A beszélgetés értesítési előzményei](../notifying_people/thread_notified.png)
 
@@ -193,9 +195,9 @@ Az **Értesített** megnyitja a beszélgetés értesítési előzményeit. Itt l
 
 ## Műveletek
 
-A jobb oldalsávban az egész szálra vonatkozó műveleteket találod. Egyes műveletek a csoport oldalán, a szál melletti hárompontos menüben (**⋯**) is elérhetők.
+A jobb oldalsávban az egész szálra vonatkozó műveletek találhatók. Néhány művelet a csoport oldalán, a szál melletti hárompontos menüből (**⋯**) is elérhető.
 
-Az elérhető műveletek a jogosultságaidtól függenek. A csoportadminisztrátorok kezelhetik a szálakat, és a csoport beállításai egyes kezelési műveleteket a tagoknak is engedélyezhetnek. Lásd: [Csoportjogosultságok](/en/user_manual/groups/settings/permissions).
+A megjelenő műveletek a jogosultságaidtól függnek. A csoport adminjai kezelhetik a szálakat, és a csoport beállításai a tagoknak is engedélyezhetnek bizonyos kezelési műveleteket. Lásd a [Csoportjogosultságok](/en/user_manual/groups/settings/permissions) oldalt.
 
 ![](thread_admin.png)
 
@@ -203,7 +205,7 @@ Az elérhető műveletek a jogosultságaidtól függenek. A csoportadminisztrát
 
 ### Nyomtatás
 
-Válaszd a **Nyomtatás** lehetőséget egy nyomtatásra alkalmas oldal létrehozásához. A böngésződ nyomtatási ablakában PDF-ként is mentheted.
+Válaszd a **Nyomtatás** lehetőséget egy nyomtatásra alkalmas oldal létrehozásához. A böngésződ nyomtatási párbeszédablakával PDF-ként is elmentheted.
 
 ![](thread_print_thread.png)
 
@@ -211,17 +213,17 @@ Válaszd a **Nyomtatás** lehetőséget egy nyomtatásra alkalmas oldal létreho
 
 ### Markdown
 
-Válaszd a **Markdown** lehetőséget a teljes szál strukturált Markdown formátumú mentéséhez. A **Markdown másolása** a vágólapra másolja, a **Markdown letöltése** pedig `.md` fájlként menti. Használhatod jegyzőkönyvhöz, dokumentumhoz, döntések archiválásához, mesterségesintelligencia-asszisztenssel vagy más, Markdownt támogató eszközzel.
+Válaszd ki a **Markdown** lehetőséget a teljes szál strukturált Markdown formátumban történő mentéséhez. Válaszd a **Markdown másolása** lehetőséget a vágólapra másoláshoz, vagy a **Markdown letöltése** lehetőséget a `.md` fájlként történő mentéshez. Használhatod ülésjegyzőkönyvhöz, dokumentumhoz, döntések archívumához, AI-asszisztenshez vagy más, a Markdown formátumot támogató eszközhöz.
 
 ![](../discussion_management/copy_markdown_menu.png)
 
-A dokumentum elején YAML-metaadatok szerepelnek a szál azonosítójával, a csoporttal, a létrehozás és az utolsó aktivitás dátumával, valamint a címkékkel. Ezután a beszélgetés kontextusa, majd minden hozzászólás, szavazás, leadott szavazat és következtetés következik a szálas nézettel azonos sorrendben és egymásba ágyazva.
+A dokumentum egy YAML-metaadatblokkal kezdődik, amely tartalmazza a szál kulcsát, a csoportot, a létrehozás dátumát, az utolsó aktivitás dátumát és a címkéket. Ezt követi a beszélgetés leírása és minden hozzászólás, szavazás, szavazat és következtetés, a szálas nézettel megegyező sorrendben és egymásba ágyazással.
 
-Minden szavazás külön szakasz. A hozzászólások, a leadott szavazatok és a következtetések idézetként jelennek meg, a válaszok pedig az alatt az elem alatt, amelyre érkeztek. Így látható, hol kezdődik és végződik az egyes résztvevők szövege. Minden idézet első sora megadja a résztvevő nevét, a közzététel idejét, az elem sorszámát a szálban és az esetleges reakciókat. A leadott szavazatoknál és a következtetéseknél az elemtípus is szerepel. A szál azonosítója és az elem sorszáma együtt azonosítja az elemet a Loomióban.
+Minden szavazás külön szakaszt alkot. A hozzászólások, szavazatok és következtetések idézetként jelennek meg, a válaszok pedig az alatt az elem alatt szerepelnek idézetként, amelyre válaszolnak. Így látható, hol kezdődik és végződik az egyes résztvevők szövege. Minden idézet egy sorral kezdődik, amely megadja a személyt, a közzététel időpontját, az elem szálon belüli sorszámát és az esetleges reakciókat. A szavazatok és következtetések típusát is jelzi. A szál kulcsa és az elem sorszáma azonosítja az egyes elemeket a Loomióban.
 
-A Loomio ugyanazokat a láthatósági szabályokat alkalmazza, mint a szálban. Az általad nem látható eredmények és szavazási indokok kimaradnak, névtelen szavazásnál pedig nem derül ki, ki hogyan szavazott. Ha egy nyitott szavazás a szavazatod leadásáig elrejti az eredményeket, a szál exportálása előtt szavazz. Addig a **Markdown** és a **Nyomtatás** nem érhető el.
+A Loomio ugyanazokat a láthatósági szabályokat alkalmazza, mint a szálban. Az általad nem látható eredmények és szavazati indoklások nem kerülnek bele, a névtelen szavazásokban pedig a szavazók nem azonosíthatók. Ha egy nyitott szavazás elrejti az eredményeket, amíg nem szavazol, szavazz a szál exportálása előtt. Addig a **Markdown** és a **Nyomtatás** nem érhető el.
 
-Például egy hozzászólást, reakciókat, egy javaslatot, két leadott szavazatot, egy választ és egy következtetést tartalmazó beszélgetésből ilyen Markdown készül:
+Például egy hozzászólást, reakciókat, javaslatot, két szavazatot, egy választ és egy következtetést tartalmazó beszélgetésből ez a Markdown készül:
 
 ```markdown
 ---
@@ -284,29 +286,29 @@ Supply returnable glass bottles to three cafe customers for six weeks, with one 
 > Run the six-week bottle trial with three cafes. Review return rates, washing time, and transport costs each week.
 ```
 
-A címsorok és a címkék a kiválasztott nyelven jelennek meg. A résztvevők által írt tartalom az eredeti nyelvén marad.
+A címsorok és feliratok a kiválasztott nyelven jelennek meg. A résztvevők által írt tartalom az eredeti nyelvén marad.
 
 <!-- translation-section: thread-settings-and-display -->
 
 ### Szálbeállítások és megjelenítés
 
-A csoportadminisztrátorok a **Szálbeállítások** alatt módosíthatják a válaszok elrendezését és a beszélgetés további beállításait.
+A csoport adminjai a **Szálbeállítások** lehetőséggel módosíthatják a válaszok elrendezését és a beszélgetés egyéb beállításait.
 
 ![](thread_display.png)
 
-Válaszd az **Idővonal** lehetőséget, ha az elemeket közzétételi sorrendben szeretnéd látni, vagy a **Threaded** lehetőséget, ha a válaszokat az általuk megválaszolt elem alatt szeretnéd csoportosítani. A szálbeállításokkal azt is szabályozhatod, futhat-e egyszerre több szavazás, és megadhatod a hozzászólások maximális hosszát. Ezek a beállítások a beszélgetés minden résztvevőjére érvényesek.
+Válaszd ki az **Idővonal** lehetőséget az elemek közzétételi sorrendben történő megjelenítéséhez, vagy a **Threaded** lehetőséget a válaszok azon elemek alá rendezéséhez, amelyekre válaszolnak. A szálbeállítások azt is szabályozzák, hogy futhat-e egyszerre több szavazás, és megadható bennük a hozzászólások legnagyobb hossza. Ezek a beállítások a beszélgetés minden résztvevőjére érvényesek.
 
 ![](thread_layout_options.png)
 
 <!-- translation-section: pin-or-unpin-a-thread -->
 
-### Szál rögzítése vagy rögzítésének megszüntetése
+### Szál kitűzése vagy kitűzésének megszüntetése
 
-A rögzített szálak a többi szál fölött jelennek meg a csoport oldalán. Így például üdvözlő beszélgetéseket, híreket és közleményeket emelhetsz ki.
+A kitűzött szálak a többi szál fölött jelennek meg a csoport oldalán. A kitűzést általában üdvözlő beszélgetésekhez, hírekhez és bejelentésekhez használják.
 
-Nyisd meg a csoport oldalán a szál melletti hárompontos menüt (**⋯**), és válaszd a **Téma rögzítése** lehetőséget. A rögzített szálak a rögzítésük időpontja szerint követik egymást. A sorrend módosításához szüntesd meg a rögzítésüket, majd rögzítsd őket újra.
+Nyisd meg a hárompontos menüt (**⋯**) a szál mellett a csoport oldalán, és válaszd ki a **Téma rögzítése** lehetőséget. A kitűzött szálak a kitűzésük időpontja szerint rendeződnek. A sorrendjük módosításához szüntesd meg a kitűzésüket, majd tűzd ki őket újra.
 
-Válaszd a **Téma rögzítésének megszüntetése** lehetőséget, hogy a szál ismét az aktivitás szerinti sorrendben jelenjen meg.
+Válaszd ki a **Szál kitűzésének megszüntetése** lehetőséget, hogy a szál ismét az aktivitás szerinti sorrendben jelenjen meg.
 
 ![](../discussion_management/pin_thread.png)
 
@@ -314,31 +316,31 @@ Válaszd a **Téma rögzítésének megszüntetése** lehetőséget, hogy a szá
 
 ### Szál áthelyezése
 
-Válaszd a **Szál áthelyezése** lehetőséget, ha a szálat másik csoportba, alcsoportba vagy közvetlen szálba szeretnéd áthelyezni. Ezután a célcsoport tagjai és a külön meghívott személyek láthatják.
+Válaszd ki a **Szál áthelyezése** lehetőséget, ha egy szálat másik csoportba vagy alcsoportba szeretnél áthelyezni, vagy közvetlen szállá szeretnél alakítani. A célcsoport tagjai és a külön meghívott személyek láthatják majd.
 
 ![](../discussion_management/move_thread_select.png)
 
 >[!Tip]
->Kezdd a piszkozatot közvetlen beszélgetésként vagy egy privát alcsoportban, majd amikor elkészült, helyezd át a csoportba.
+>Kezdj egy piszkozatot közvetlen beszélgetésként vagy egy privát alcsoportban, majd helyezd át a csoportba, amikor elkészült.
 
-Ha nem az egész szálat, hanem csak bizonyos elemeket szeretnél áthelyezni, lásd: [Elemek áthelyezése szálak között](/en/user_manual/discussions/moving_items/).
+Ha a teljes szál helyett csak kiválasztott elemeket szeretnél áthelyezni, lásd az [Elemek áthelyezése szálak között](/en/user_manual/discussions/moving_items/) oldalt.
 
 <!-- translation-section: lock-or-unlock-a-thread -->
 
 ### Szál zárolása vagy zárolásának feloldása
 
-Zárold a szálat a további hozzászólások és módosítások megakadályozásához. A szálat csak az aktív szavazások lezárása után lehet zárolni.
+Zárold a szálat a hozzászólások és a további módosítások megakadályozásához. Egy szálat csak akkor lehet zárolni, ha az aktív szavazásai már lezárultak.
 
-Válaszd a **Téma zárolása** lehetőséget a **Műveletek** alatt. A zárolt szálak eltűnnek a nyitott beszélgetések listájából, és **Zárolva** címkét kapnak.
+Válaszd ki a **Téma zárolása** lehetőséget a **Műveletek** alatt. A zárolt szálak kikerülnek a nyitott beszélgetések listájából, és **Zárolva** címkét kapnak.
 
-Zárolt szál kereséséhez nyisd meg a beszélgetések szűrőjét a csoport oldalán, és válaszd a **Zárolva** lehetőséget. Nyisd meg a szálat, majd válaszd a **Téma zárolásának feloldása** lehetőséget, hogy újra lehessen hozzászólni és módosításokat végezni.
+Egy zárolt szál megkereséséhez nyisd meg a beszélgetések szűrőjét a csoport oldalán, és válaszd ki a **Zárolva** lehetőséget. Nyisd meg a szálat, és válaszd ki a **Téma zárolásának feloldása** lehetőséget, hogy ismét lehessen hozzászólni és módosításokat végezni.
 
 <!-- translation-section: delete-a-thread -->
 
-### Téma törlése
+### Szál törlése
 
-A téma törlése végleges, és nem vonható vissza. Ha később még szükséged lehet rá, inkább zárold.
+A szál törlése végleges, és nem vonható vissza. Ha később még szükséged lehet rá, inkább zárold.
 
-Válaszd a **Téma törlése** lehetőséget, majd erősítsd meg a törlést.
+Válaszd ki a **Téma törlése** lehetőséget, és erősítsd meg a törlést.
 
 ![](../discussion_management/thread_delete.png)

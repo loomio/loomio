@@ -1,14 +1,14 @@
 ---
 title: Slack
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/integrations/slack/index.md
+source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
+source_file: docs/en/user_manual/integrations/slack/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-30'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 4eb9618f0efb62d7
 generated:
-  introduction: c80cb4792151d7ef
+  introduction: 8671c0110ee65f03
 title_source: b27fb38ba323745c
 title_generated: b27fb38ba323745c
 ---
@@ -18,11 +18,11 @@ title_generated: b27fb38ba323745c
 # Integração com o Slack
 _Conecte as notificações do seu grupo no Loomio ao Slack._
 
-O Loomio pode enviar notificações aos seus canais do Slack quando houver novas discussões, propostas, comentários, votos e conclusões. Acompanhe as atualizações importantes sobre discussões e decisões no momento certo.
+O Loomio pode enviar notificações para seus canais do Slack quando houver novas discussões, propostas, comentários, votos e conclusões. Receba atualizações essenciais, no momento certo, sobre discussões e decisões importantes.
 
 ---
 
-Primeiro, acesse [https://api.slack.com](https://api.slack.com), entre na sua conta se necessário e clique em Create New App
+Comece acessando [https://api.slack.com](https://api.slack.com), entre na sua conta se ainda não estiver conectado e clique em Criar novo aplicativo
 
 ![](s1.png)
 
@@ -38,7 +38,7 @@ Em seguida, ative a função
 
 ![](s4.png)
 
-Adicione um novo webhook
+Depois, adicione um novo webhook
 
 ![](s5.png)
 
@@ -46,12 +46,12 @@ Selecione um canal
 
 ![](s6.png)
 
-Copie a URL do webhook para a área de transferência
+Copie a URL do webhook para sua área de transferência
 
 ![](s7.png)
 
-Com a URL do webhook em mãos, continue a configuração da integração com o chat:
+Agora que você tem uma URL de webhook, continue configurando sua integração de chat:
 
-[Configure uma integração com o chat no Loomio](../chatbots/#set-up-a-chat-integration)
+[Configure uma integração de chat no Loomio](../chatbots/#set-up-a-chat-integration)
 
-_O Loomio não foi criado pelo Slack e não é afiliado nem recebe suporte do Slack._
+_O Loomio não é criado pelo Slack, não tem vínculo com ele e não recebe seu suporte._

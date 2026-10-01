@@ -1,6 +1,6 @@
 ---
 title: Vote anonyme
-source_revision: 3a315412c646d254c8426be5c436a4e593f6011f
+source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
 source_file: docs/en/user_manual/polls/anonymous_voting/index.md
 translated:
   provider: codex/gpt-6.1-sol
@@ -24,23 +24,23 @@ sections:
   does-a-public-poll-reveal-more-information: 27acfa7744a0790d
   is-anonymous-voting-suitable-for-every-election: d1b723178449c0da
 generated:
-  introduction: 8cac7205ab7e5fe5
-  how-anonymous-voting-protects-voters: c4e8af91a5bfadc2
-  while-voting-is-open: 6114745dc05f4347
-  votes-cannot-be-changed: 11fe346c4be49745
-  why-anonymous-votes-do-not-have-reasons: a1a0195c20d53a42
-  results-and-exports: 195248b5718ed9e3
-  participation-verification: 3b04f8304836d583
-  reminders: bde6d44c58193f80
-  what-coordinators-and-administrators-can-see: 8fe3c91524726b4a
-  limits-of-anonymous-voting: 38c1e7744460be65
+  introduction: b97bdf2862e4ec7a
+  how-anonymous-voting-protects-voters: d136bc2501a72059
+  while-voting-is-open: 7218d0269e6c6bbc
+  votes-cannot-be-changed: 47e26bade58623cb
+  why-anonymous-votes-do-not-have-reasons: 0c4f22c307749d21
+  results-and-exports: 3378fed87dc33ee5
+  participation-verification: 8290bee2156868d5
+  reminders: 0a68333c75993339
+  what-coordinators-and-administrators-can-see: 4f8335d9f1a4f99c
+  limits-of-anonymous-voting: '06209050d317de16'
   questions: 60cc6f1a0163ec5d
-  can-a-coordinator-see-how-i-voted: 56439c0a9ebd6a1b
-  can-i-see-my-vote-after-submitting-it: 531adb0ff94594a4
-  can-i-change-or-withdraw-my-vote: c44f10ca4f1d38f2
-  will-i-receive-an-email-confirming-my-vote: 750f2fd2f3fdbe8c
-  does-a-public-poll-reveal-more-information: 7b353692b04a0b12
-  is-anonymous-voting-suitable-for-every-election: 7a9e083d5029d25f
+  can-a-coordinator-see-how-i-voted: c8866e96b45c008a
+  can-i-see-my-vote-after-submitting-it: 8a63344a5172970d
+  can-i-change-or-withdraw-my-vote: e083aa388aa0fc7f
+  will-i-receive-an-email-confirming-my-vote: e731feb06a287566
+  does-a-public-poll-reveal-more-information: 592c8c7da22ac750
+  is-anonymous-voting-suitable-for-every-election: 145abfba67f35287
 title_source: 1bc4567506ad4d51
 title_generated: bbc8939bb7f73487
 ---
@@ -49,24 +49,24 @@ title_generated: bbc8939bb7f73487
 
 # Vote anonyme
 
-Le vote anonyme, aussi appelé vote à bulletin secret, sépare les informations sur la participation des votes eux-mêmes. Après la clôture du sondage, toute personne pouvant consulter les résultats peut voir qui a participé. Aucune personne utilisant Loomio ne peut relier un vote enregistré à la personne qui l’a exprimé.
+Le vote anonyme, également appelé vote à l’aveugle, sépare les données indiquant qui a voté des votes eux-mêmes. Après la clôture du sondage, toute personne pouvant voir les résultats peut voir qui a participé. Aucune personne utilisant Loomio ne peut relier un vote soumis à la personne qui l’a soumis.
 
 Cette page explique les protections offertes par le vote anonyme, les informations conservées et les limites de cette garantie.
 
 <!-- translation-section: how-anonymous-voting-protects-voters -->
 
-## Comment le vote anonyme protège les votants
+## Comment le vote anonyme protège les électeurs
 
-Un sondage anonyme conserve deux ensembles de données distincts :
+Un sondage anonyme conserve deux ensembles de données distincts :
 
-| Données de participation | Votes enregistrés |
+| Données de participation | Votes soumis |
 | --- | --- |
-| Les personnes ayant le droit de voter | Les options choisies ou les notes attribuées |
-| Les personnes invitées et l’auteur de chaque invitation | Le sondage auquel appartient le vote |
-| Le fait que chaque personne ayant le droit de voter ait voté ou non | Aucun nom ni compte utilisateur |
-| Aucune option choisie ni note attribuée | Aucun lien vers une donnée de participation |
+| Qui est autorisé à voter | Les options ou les notes sélectionnées |
+| Qui a été invité, et par qui | Le sondage auquel le vote appartient |
+| Si chaque personne autorisée à voter a voté | Aucun nom ni compte utilisateur |
+| Aucune option ni note sélectionnée | Aucun lien vers les données de participation |
 
-Aucun identifiant commun ne relie ces données. Les votes enregistrés ne contiennent pas non plus l’heure exacte de leur envoi, les informations d’invitation, les raisons écrites, les pièces jointes ou d’autres métadonnées susceptibles d’identifier un votant.
+Aucun identifiant commun ne relie ces données. Les votes soumis ne contiennent pas non plus l’heure réelle de soumission, les informations sur l’invitation, les raisons écrites, les pièces jointes ni d’autres métadonnées qui pourraient aider à identifier un électeur.
 
 Cette séparation est appliquée lors de l’enregistrement du vote. Elle ne repose pas uniquement sur le masquage des noms dans l’interface.
 
@@ -76,41 +76,41 @@ Cette séparation est appliquée lors de l’enregistrement du vote. Elle ne rep
 
 Les résultats restent masqués pour tout le monde jusqu’à la clôture du sondage. Cela inclut les coordinateurs du sondage, les administrateurs du groupe et les administrateurs de l’instance qui utilisent l’application.
 
-Lorsqu’une personne vote :
+Lorsqu’une personne vote :
 
-- son vote est enregistré sans son nom ni ses données de participation ;
-- ses données de participation indiquent qu’elle a voté ;
-- aucun événement de vote, notification, e-mail, commentaire ou entrée d’activité n’est créé ;
-- aucune copie de ses choix ne lui est renvoyée après l’envoi ; et
+- son vote est enregistré sans son nom ni ses données de participation ;
+- ses données de participation sont mises à jour pour indiquer qu’elle a voté ;
+- aucun événement de vote, notification, e-mail, commentaire ni entrée d’activité n’est créé ;
+- aucune copie de ses choix ne lui est renvoyée après la soumission ; et
 - l’interface confirme uniquement que son vote a été enregistré.
 
-Les données de participation ne conservent pas l’heure précise à laquelle la personne a voté. Les votes enregistrés ne sont pas classés par ordre d’envoi.
+Les données de participation ne conservent pas l’heure précise à laquelle la personne a voté. Les votes soumis ne sont pas classés par heure de soumission.
 
 <!-- translation-section: votes-cannot-be-changed -->
 
 ## Les votes ne peuvent pas être modifiés
 
-Chaque personne ayant le droit de voter ne peut voter qu’une fois. Un vote anonyme enregistré ne peut pas être consulté, modifié, retiré ou remplacé, même par un coordinateur ou un administrateur.
+Chaque personne autorisée à voter peut voter une seule fois. Un vote anonyme soumis ne peut pas être consulté, modifié, retiré ni remplacé, même par un coordinateur ou un administrateur.
 
-Permettre à une personne de retrouver ou de remplacer son vote nécessiterait un lien permanent entre cette personne et son vote. Le vote anonyme ne crée pas ce lien.
+Permettre à une personne de retrouver ou de remplacer son vote nécessiterait un lien permanent entre cette personne et le vote. Le vote anonyme ne crée volontairement pas ce lien.
 
-Vérifiez attentivement vos choix avant d’envoyer votre vote.
+Vérifiez soigneusement vos choix avant de soumettre votre vote.
 
 <!-- translation-section: why-anonymous-votes-do-not-have-reasons -->
 
-## Pourquoi les votes anonymes ne comportent pas de raisons
+## Pourquoi les votes anonymes ne comportent pas de raison
 
-Les nouveaux votes anonymes ne peuvent contenir ni raison écrite ni pièce jointe. Une raison peut contenir des noms, des détails personnels, des habitudes d’écriture, des mentions ou d’autres informations permettant d’identifier la personne qui a voté. Elle peut aussi rendre un vote individuel plus facile à distinguer du résultat global.
+Les nouveaux votes anonymes ne peuvent pas inclure de raison écrite ni de pièce jointe. Les raisons peuvent contenir des noms, des informations personnelles, des particularités d’écriture, des mentions ou d’autres informations permettant d’identifier l’électeur. Elles rendraient aussi les votes individuels plus faciles à distinguer du résultat global.
 
-Les participants peuvent toujours parler du sondage dans son fil de discussion, lorsque la discussion est disponible. Ces commentaires sont des contributions ordinaires portant le nom de leur auteur. Ils ne sont pas associés à un vote anonyme.
+Les participants peuvent toujours discuter du sondage dans son fil lorsque la discussion est disponible. Ces commentaires sont des contributions ordinaires à la discussion, associées au nom de leur auteur, et ne sont pas rattachés à un vote anonyme.
 
 <!-- translation-section: results-and-exports -->
 
-## Résultats et exportations
+## Résultats et exports
 
-Après la clôture du sondage, les résultats sont calculés à partir des votes séparés des données de participation. Ils sont affichés sous forme de totaux et d’autres résultats globaux selon le type de sondage.
+Après la clôture du sondage, les résultats sont calculés à partir des votes séparés des données de participation et affichés sous forme de totaux et d’autres résultats agrégés pris en charge par le type de sondage.
 
-L’application ne publie ni les identifiants des votes, ni leur ordre d’envoi, ni l’heure à laquelle ils ont été envoyés. Les exportations de sondages contiennent des résultats globaux plutôt qu’une ligne par vote anonyme. Une élection STV clôturée peut toutefois être exportée au format BLT. Cette exportation contient les classements des candidats nécessaires pour recompter les voix. Les bulletins ayant le même classement sont regroupés, sans identité des votants ni métadonnées des bulletins.
+L’application ne publie ni les identifiants des votes, ni leur ordre de soumission, ni leurs heures de soumission. Les exports de sondages contiennent des résultats agrégés plutôt qu’une ligne pour chaque vote anonyme, sauf qu’une élection STV clôturée peut être exportée au format BLT. Un export BLT contient les classements des candidats nécessaires au recomptage de l’élection, regroupés lorsque plusieurs bulletins présentent le même classement, sans l’identité des électeurs ni les métadonnées des bulletins.
 
 Un sondage anonyme ne peut pas être rouvert après sa clôture.
 
@@ -118,52 +118,52 @@ Un sondage anonyme ne peut pas être rouvert après sa clôture.
 
 ## Qui a participé
 
-Après la clôture d’un sondage anonyme, toute personne pouvant consulter ses résultats peut voir qui a participé. Personne ne peut voir cette information tant que le vote est ouvert.
+Après la clôture d’un sondage anonyme, toute personne pouvant voir ses résultats peut voir qui a participé. Personne ne peut voir cette information pendant que le vote est ouvert.
 
-Sélectionnez **Voir les votes** pour consulter la liste. Elle indique toujours qui avait le droit de voter. Elle indique si chaque personne a voté uniquement si suffisamment de personnes ont voté. Le seuil correspond au quorum du sondage s’il en a un, sinon à la moitié des personnes ayant le droit de voter, avec un minimum de trois votes dans tous les cas. La liste n’indique jamais comment ni quand une personne a voté.
+Sélectionnez **Voir les votes** pour consulter la liste. Elle indique toujours qui était autorisé à voter. Elle indique si chaque personne a voté uniquement lorsqu’un nombre suffisant de personnes a voté. Ce seuil correspond au quorum du sondage s’il en a un, sinon à la moitié des électeurs autorisés à voter, avec un minimum de trois votes dans tous les cas. La liste n’indique jamais comment une personne a voté, ni quand.
 
-Les membres du groupe et les personnes ayant le droit de voter dans le sondage peuvent également voir quand chaque personne a rejoint le groupe et qui l’a invitée. Les administrateurs du groupe peuvent aussi voir les adresses e-mail pour distinguer les personnes portant le même nom.
+Les membres du groupe et les électeurs du sondage voient également quand chaque personne a rejoint le groupe et qui l’a invitée. Les administrateurs du groupe voient aussi les adresses e-mail pour distinguer les personnes qui portent le même nom.
 
-Puisque toute personne pouvant consulter les résultats peut voir qui a voté, un résultat unanime peut révéler les choix des personnes ayant voté. Par exemple, si tous les votes sont « D’accord », toutes les personnes ayant voté ont exprimé leur accord.
+Comme toute personne pouvant voir les résultats peut voir qui a voté, un résultat unanime peut révéler comment les personnes ont voté. Par exemple, si tous les votes sont Accord, toutes les personnes qui ont voté ont exprimé leur accord.
 
-Les coordinateurs peuvent ajouter des personnes ayant le droit de voter tant que le vote reste ouvert, y compris après que d’autres personnes ont voté. Les personnes ayant déjà voté ne peuvent pas être retirées d’un sondage anonyme.
+Les coordinateurs peuvent ajouter des personnes autorisées à voter tant que le vote reste ouvert, y compris après que d’autres personnes ont voté. Les électeurs déjà présents ne peuvent pas être retirés d’un sondage anonyme.
 
 <!-- translation-section: reminders -->
 
 ## Rappels
 
-Pour un sondage anonyme qui dure au moins 24 heures, les personnes ayant le droit de voter qui ne l’ont pas encore fait reçoivent un rappel automatique au cours des dernières 24 heures.
+Pour un sondage anonyme d’une durée d’au moins 24 heures, les personnes autorisées à voter qui n’ont pas voté reçoivent un rappel automatique au cours des dernières 24 heures.
 
-Les destinataires du rappel sont déterminés uniquement à partir des données de participation. Le rappel ne consulte pas les votes enregistrés et ne crée aucun lien avec eux. Si l’échéance change, la vérification horaire des rappels utilise la nouvelle échéance, sans conserver de rappel programmé séparément pour le sondage.
+Les destinataires du rappel sont sélectionnés uniquement à partir des données de participation. Cette sélection n’examine pas les votes soumis et ne crée aucun lien avec eux. Si la date limite change, la vérification horaire des rappels utilise la date limite actuelle sans conserver de rappel programmé séparément pour le sondage.
 
-Les sondages dont la période de vote totale est inférieure à 24 heures n’envoient pas ce rappel automatique.
+Les sondages dont la durée totale de vote est inférieure à 24 heures n’envoient pas ce rappel automatique.
 
 <!-- translation-section: what-coordinators-and-administrators-can-see -->
 
-## Ce que peuvent voir les coordinateurs et les administrateurs
+## Ce que les coordinateurs et les administrateurs peuvent voir
 
-Dans l’application, un coordinateur du sondage, un administrateur du groupe ou un administrateur de l’instance peut, selon ses droits, voir :
+Dans l’application, un coordinateur de sondage, un administrateur de groupe ou un administrateur d’instance peut avoir accès aux informations suivantes :
 
-- le sondage et les personnes ayant le droit de voter ;
-- si chaque personne ayant le droit de voter a voté, lorsque son rôle lui donne accès à cette information et que suffisamment de personnes ont voté ; et
-- les résultats globaux après la clôture du sondage.
+- le sondage et ses électeurs autorisés à voter ;
+- si chaque personne autorisée à voter a voté, lorsque son rôle permet cet accès et qu’un nombre suffisant de personnes a voté ; et
+- les résultats agrégés après la clôture du sondage.
 
-Les fonctionnalités de l’application ne leur permettent pas de voir :
+Les fonctionnalités de l’application ne leur permettent pas de voir :
 
-- les choix d’une personne ;
-- les votes individuels ou les tendances de vote ;
-- le moment où un vote particulier a été envoyé ; ou
-- une raison, une pièce jointe, un événement ou une notification associé à un vote enregistré.
+- quels choix appartiennent à une personne ;
+- les votes individuels ou les tendances de vote individuelles ;
+- quand un vote particulier a été soumis ; ou
+- une raison, une pièce jointe, un événement ou une notification associés à un vote soumis.
 
 <!-- translation-section: limits-of-anonymous-voting -->
 
 ## Limites du vote anonyme
 
-Ces protections empêchent les utilisateurs de l’application de relier un vote enregistré à la personne qui l’a exprimé. Elles ne constituent pas une protection cryptographique contre un opérateur capable d’inspecter la base de données, les sauvegardes, les journaux du serveur, la mémoire des processus, le trafic réseau ou une version modifiée de l’application.
+Ces protections empêchent les utilisateurs de l’application de relier un vote soumis à son électeur. Elles ne constituent pas une protection cryptographique contre un opérateur pouvant examiner la base de données, les sauvegardes, les journaux du serveur, la mémoire des processus, le trafic réseau ou une version modifiée de l’application.
 
-Le résultat lui-même peut aussi révéler des informations. Un petit nombre de votants, un résultat unanime, une combinaison de choix distinctive ou des informations partagées hors du sondage peuvent faciliter la déduction des choix d’une personne. Les votants peuvent également choisir de révéler leur identité dans une discussion, en dehors de leur vote enregistré.
+Le résultat lui-même peut aussi révéler des informations. Un petit nombre d’électeurs, un résultat unanime, une combinaison distinctive de choix ou des informations partagées en dehors du sondage peuvent faciliter la déduction des choix d’une personne. Les électeurs peuvent aussi choisir de s’identifier dans la discussion, indépendamment du vote qu’ils ont soumis.
 
-Pour déterminer si le vote anonyme proposé par l’application convient, tenez compte du nombre de personnes appelées à voter et de la sensibilité de la décision.
+Tenez compte du nombre d’électeurs et du caractère sensible de la décision pour déterminer si le vote anonyme au niveau de l’application convient.
 
 <!-- translation-section: questions -->
 
@@ -171,36 +171,36 @@ Pour déterminer si le vote anonyme proposé par l’application convient, tenez
 
 <!-- translation-section: can-a-coordinator-see-how-i-voted -->
 
-### Quelqu’un peut-il voir comment j’ai voté ?
+### Quelqu’un peut-il voir comment j’ai voté ?
 
-Non. Dès que suffisamment de personnes ont voté, les personnes pouvant consulter les résultats peuvent voir si vous avez voté. L’application ne permet à personne de vous associer à un vote enregistré. Tant que ce seuil n’est pas atteint, votre participation reste masquée.
+Non. Dès qu’un nombre suffisant de personnes a voté, les personnes pouvant voir les résultats peuvent voir si vous avez voté. Personne ne peut vous relier à un vote soumis par l’intermédiaire de l’application. Jusque-là, le fait que vous ayez voté ou non reste masqué.
 
 <!-- translation-section: can-i-see-my-vote-after-submitting-it -->
 
-### Puis-je consulter mon vote après l’avoir envoyé ?
+### Puis-je voir mon vote après l’avoir soumis ?
 
-Non. L’application confirme que votre vote a été enregistré, puis retire vos choix de l’interface de vote. Elle ne peut pas retrouver votre vote sans créer le lien que le vote anonyme vise à éviter.
+Non. L’application confirme que votre vote a été enregistré, puis efface vos choix de l’interface de vote. Elle ne peut pas retrouver votre vote sans créer le lien que le vote anonyme vise à éviter.
 
 <!-- translation-section: can-i-change-or-withdraw-my-vote -->
 
-### Puis-je modifier ou retirer mon vote ?
+### Puis-je modifier ou retirer mon vote ?
 
-Non. Aucun lien ne permet à l’application de déterminer quel vote modifier ou retirer.
+Non. Aucun lien ne permet à l’application d’identifier le vote soumis à modifier ou à supprimer.
 
 <!-- translation-section: will-i-receive-an-email-confirming-my-vote -->
 
-### Vais-je recevoir un courriel confirmant mon vote ?
+### Vais-je recevoir un e-mail confirmant mon vote ?
 
-Non. Lorsque vous votez, l’application affiche une confirmation à l’écran et met à jour votre dossier de participation. Elle n’envoie pas de courriel de confirmation et ne crée ni notification ni événement d’activité.
+Non. Le vote affiche uniquement une confirmation à l’écran et met à jour votre enregistrement de participation. Il n’envoie pas d’e-mail de confirmation et ne crée ni notification ni événement d’activité.
 
 <!-- translation-section: does-a-public-poll-reveal-more-information -->
 
-### Un sondage public révèle-t-il davantage d’informations ?
+### Un sondage public révèle-t-il davantage d’informations ?
 
-Après la clôture d’un sondage public, toute personne peut consulter ses résultats et voir qui a participé. Elle ne peut pas voir les votes individuels ni les détails concernant l’adhésion au groupe et les invitations.
+Après la clôture d’un sondage public, tout le monde peut voir ses résultats et qui y a participé. Les votes individuels et les détails concernant l’adhésion et les invitations ne sont pas visibles.
 
 <!-- translation-section: is-anonymous-voting-suitable-for-every-election -->
 
-### Le vote anonyme convient-il à toutes les élections ?
+### Le vote anonyme convient-il à toutes les élections ?
 
-Non. Il sépare les identités des votes au sein de l’application. Les décisions qui exigent une protection contre les personnes qui exploitent le système ou une vérification cryptographique indépendante nécessitent un système conçu pour répondre à ces exigences.
+Non. Il sépare les identités des votes au sein de l’application. Les décisions nécessitant une protection contre les opérateurs du système ou des élections cryptographiques vérifiables de manière indépendante exigent un système conçu pour répondre à ces besoins.

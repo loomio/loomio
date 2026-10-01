@@ -1,6 +1,6 @@
 ---
 title: Vorschläge und Umfragen
-source_revision: 71554be8e61a76613b0707b8262302c22299a5d0
+source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
 source_file: docs/en/user_manual/polls/intro_to_decisions/index.md
 translated:
   provider: codex/gpt-6.1-sol
@@ -21,90 +21,96 @@ sections:
   4-it-closes: c0376a9026d18bc3
   5-share-an-outcome: 8339cb332cd8a946
 generated:
-  introduction: '09ebeafa2ac9a6ef'
-  find-the-right-help: acc7b98e900ddacc
-  proposals: 368dd891a1d3f7c8
-  polls: c3426e43a9c2a362
-  start-a-proposal-or-poll: 980db6065caf583f
-  choose-whether-to-use-a-discussion: '3736847817680258'
-  in-a-discussion: bba61d9bef7b4397
-  without-a-discussion: a9ea7c47e1723634
-  what-happens-next: 926110046d628df3
-  1-create-it: 11afa465106fdab6
-  2-voting-opens: 2fb5f9a0f04e84f8
-  3-people-vote: 6ad026c6f6be99fd
-  4-it-closes: 3718edf7f6edcba5
-  5-share-an-outcome: 5bf560b67703e0ca
+  introduction: 278e78e8621ec3e0
+  find-the-right-help: 37e7190cb10dc5cf
+  proposals: '6083800300439521'
+  polls: 854ea55dcc25d285
+  start-a-proposal-or-poll: 37ba841d9df62ed8
+  choose-whether-to-use-a-discussion: 6a9e4f15f7dfcef2
+  in-a-discussion: 4029e2480243b39f
+  without-a-discussion: f6581dd6272f664e
+  what-happens-next: f5f4c3be874ef3d1
+  1-create-it: 071ae177fa0a21dd
+  2-voting-opens: d24cd5262c637da0
+  3-people-vote: 57cfb38790162a7b
+  4-it-closes: 5912aa84081fc2b1
+  5-share-an-outcome: bd86e5c1e0eae3cc
 title_source: d45b4ba3cb7a27cb
 title_generated: 06a783699efefdc4
+needs_review:
+  find-the-right-help: use "Fazit" instead of "Ergebnis" for "outcome"; use "Ergebnis" instead of "Fazit" for "results"
+  without-a-discussion: use "Stimme" instead of "Abstimmung" for "vote"
+  1-create-it: use "Stimme" instead of "Abstimmung" for "vote"
+  3-people-vote: use "Stimme" instead of "Abstimmung" for "vote"
+  5-share-an-outcome: use "Entscheidung" instead of "Abstimmung" for "decision"; use "Fazit" instead of "Ergebnis" for "outcome"; use "Ergebnis" instead of "Fazit" for "results"
 ---
 
 <!-- translation-section: introduction -->
 
-# Vorschläge und Umfragen
+# Vorschläge und Abstimmungen
 
-Mit Vorschlägen und Umfragen lassen sich Antworten einer Gruppe strukturiert sammeln. So kannst du eine Idee prüfen, eine Entscheidung treffen, Prioritäten erkennen, ein Treffen planen oder Vertretungen wählen.
+Vorschläge und Abstimmungen sammeln strukturierte Antworten aus einer Gruppe. Sie können helfen, eine Idee zu prüfen, eine Entscheidung zu treffen, Prioritäten zu erkennen, ein Treffen zu planen oder Vertretungen zu wählen.
 
 <!-- translation-section: find-the-right-help -->
 
-## Die passende Hilfe finden
+## Finde die passende Hilfe
 
-Diese Teile des Handbuchs helfen dir bei unterschiedlichen Fragen:
+Diese Teile des Handbuchs beantworten unterschiedliche Fragen:
 
-| Wenn du … | Lies … |
+| Wenn du … möchtest | Lies … |
 |---|---|
-| festlegen möchtest, welche Art von Antwort die Teilnehmenden geben sollen | [Vorschläge](../proposals/) oder [Umfragen](../proposal_types/) |
-| eine bestimmte Vorschlagsvorlage verwenden möchtest | [Stimmungsbild](../proposals/sense_check/), [Rat einholen](../proposals/advice/), [Zustimmung](../proposals/consent/) oder [Konsens](../proposals/consensus/) |
-| die verfügbaren Vorlagen einer Gruppe einrichten möchtest | [Umfragevorlagen](../poll_templates/) |
-| eine Entscheidung von der Diskussion bis zum Fazit begleiten möchtest | [Entscheidungen treffen](/en/guides/making_decisions/) |
+| auswählen, was Teilnehmende ausdrücken sollen | [Vorschläge](../proposals/) oder [Abstimmungen](../proposal_types/) |
+| eine bestimmte Vorschlagsvorlage verwenden | [Stimmungsbild](../proposals/sense_check/), [Beratung](../proposals/advice/), [Konsent](../proposals/consent/) oder [Konsens](../proposals/consensus/) |
+| die für eine Gruppe verfügbaren Vorlagen konfigurieren | [Abstimmungsvorlagen](../poll_templates/) |
+| eine Entscheidung von der Diskussion bis zum Fazit begleiten | [Entscheidungen treffen](/en/guides/making_decisions/) |
 
-Eine **Abstimmungsmethode** legt fest, wie Menschen antworten und wie die Ergebnisse berechnet werden. Eine **Umfragevorlage** ist eine wiederverwendbare Konfiguration auf Basis einer Abstimmungsmethode. Sie enthält vorgegebene Anweisungen, Optionen und Einstellungen. Ein **Entscheidungsprozess** kann eine Diskussion und mehrere Vorlagen umfassen, bevor die Gruppe zu einem Fazit kommt.
+Eine **Abstimmungsart** legt fest, wie Menschen antworten und wie das Ergebnis berechnet wird. Eine **Abstimmungsvorlage** ist eine wiederverwendbare Konfiguration auf Grundlage einer Abstimmungsart mit voreingestellten Anweisungen, Optionen und Einstellungen. Ein **Entscheidungsprozess** kann eine Diskussion und mehrere Vorlagen umfassen, bevor die Gruppe zu einem Fazit kommt.
 
 <!-- translation-section: proposals -->
 
 ## Vorschläge
 
-Ein Vorschlag bittet Menschen, auf eine Aussage oder einen Handlungsvorschlag zu reagieren. Loomio bietet Vorlagen für häufige Zwecke:
+Ein Vorschlag fordert Menschen auf, zu einer Aussage oder einem geplanten Vorgehen Stellung zu nehmen. Loomio bietet Vorlagen für häufige Zwecke:
 
 - [Stimmungsbild](../proposals/sense_check/) sammelt erste Reaktionen;
-- [Rat einholen](../proposals/advice/) sammelt Beiträge für die Person, die entscheidet;
-- [Zustimmung](../proposals/consent/) prüft, ob es wesentliche Einwände gibt; und
-- [Konsens](../proposals/consensus/) sucht nach einer gemeinsamen Einigung.
+- [Beratung](../proposals/advice/) sammelt Beiträge für eine Person, die eine Entscheidung trifft;
+- [Konsent](../proposals/consent/) prüft, ob begründete Einwände bestehen; und
+- [Konsens](../proposals/consensus/) strebt eine gemeinsame Einigung an.
 
-Unter [Vorschläge](../proposals/) kannst du die Vorlagen vergleichen.
+Unter [Vorschläge](../proposals/) kannst du sie vergleichen.
 
 <!-- translation-section: polls -->
 
-## Umfragen
+## Abstimmungen
 
-Verwende eine Umfrage, wenn Teilnehmende Optionen auswählen, bewerten, Punkte verteilen, Rangfolgen festlegen, ihre Verfügbarkeit angeben oder bei einer Wahl abstimmen sollen:
+Nutze eine Abstimmung, wenn Teilnehmende Optionen auswählen, bewerten oder ordnen, Punkte verteilen, ihre Verfügbarkeit angeben oder eine Stimme bei einer Wahl abgeben sollen:
 
-- [Auswählen](../choose/) zeigt, welche Optionen beliebt sind;
+- [Auswählen](../choose/) ermittelt beliebte Optionen;
 - [Bewerten](../score/) bewertet jede Option auf einer Skala;
-- [Punkte verteilen](../allocate/) verteilt eine begrenzte Zahl von Punkten;
-- [Prioritäten setzen](../rank/) ermittelt eine gemeinsame Rangfolge;
-- [Terminumfrage](../meeting_polls/) zeigt, wann Menschen Zeit haben; und
-- [STV-Wahl](../stv/) wählt mehrere Personen nach dem Verhältnis der Stimmen.
+- [Verteilen](../allocate/) verteilt ein begrenztes Budget an Punkten;
+- [Ordnen](../rank/) ermittelt eine gemeinsame Rangfolge der Präferenzen;
+- [Terminfindung](../meeting_polls/) ermittelt, wann Menschen Zeit haben; und
+- [STV-Wahl](../stv/) wählt mehrere Personen nach dem Verhältniswahlprinzip.
 
-Unter [Umfragen](../proposal_types/) kannst du die Umfragearten vergleichen.
+Unter [Abstimmungen](../proposal_types/) kannst du sie vergleichen.
 
 <!-- translation-section: start-a-proposal-or-poll -->
 
-## Einen Vorschlag oder eine Umfrage starten
+## Starte einen Vorschlag oder eine Abstimmung
 
 <!-- translation-section: choose-whether-to-use-a-discussion -->
 
-### Entscheiden, ob du eine Diskussion verwenden möchtest
+### Entscheide, ob du eine Diskussion nutzen möchtest
 
-Starte den Vorschlag oder die Umfrage in einer Diskussion, wenn die Teilnehmenden vor ihrer Antwort Hintergrundinformationen, Fragen oder einen Austausch brauchen. Eine Diskussion kann im Laufe der Zeit mehrere Vorschläge enthalten. So bleiben Änderungen und das spätere Fazit gemeinsam als Verlauf des Themas erhalten.
+Starte den Vorschlag oder die Abstimmung innerhalb einer Diskussion, wenn Menschen vor ihrer Antwort Kontext benötigen, Fragen stellen oder sich austauschen möchten. Eine Diskussion kann im Laufe der Zeit mehrere Vorschläge enthalten. So bleiben Änderungen und das spätere Fazit als gemeinsame Dokumentation des Themas zusammen.
 
-Starte eine eigenständige Umfrage, wenn die Diskussion bereits anderswo stattgefunden hat, etwa bei einem Treffen. Das passt auch, wenn die Frage einfach ist und du nur Antworten sammeln möchtest. Gib genug Einzelheiten an oder verlinke den passenden Gesprächsverlauf, damit die Abstimmenden wissen, worauf sie antworten.
+Starte eine eigenständige Abstimmung, wenn die Diskussion bereits an anderer Stelle stattgefunden hat, etwa bei einem Treffen, oder wenn die Frage einfach ist und du nur Antworten sammeln möchtest. Füge genügend Details oder einen Link zur entsprechenden Dokumentation hinzu, damit Abstimmende verstehen, worauf sie antworten.
 
 <!-- translation-section: in-a-discussion -->
 
 ### In einer Diskussion
 
-Öffne die Diskussion, scrolle zum Antwortbereich, wähle **Jetzt abstimmen** und dann eine Vorlage.
+Öffne die Diskussion, scrolle zum Antwortbereich, wähle **Jetzt abstimmen** und wähle eine Vorlage.
 
 ![](process_run.png)
 
@@ -112,55 +118,55 @@ Starte eine eigenständige Umfrage, wenn die Diskussion bereits anderswo stattge
 
 ### Ohne Diskussion
 
-Öffne auf der Gruppenseite den Tab **Abstimmungen**, wähle **Neue Umfrage** und dann eine Vorlage.
+Öffne den Tab **Abstimmungen** auf der Gruppenseite, wähle **Neue Abstimmung** und wähle eine Vorlage.
 
 ![](standalone_poll.png)
 
-Wenn du nur für eine Abstimmung gleichzeitig eine Diskussion und eine Umfrage erstellst, vermeide doppelte Benachrichtigungen. Starte die Diskussion, ohne die Teilnehmenden zu benachrichtigen, und lade sie über die Umfrage ein. Du kannst die Umfrage auch ohne Diskussion starten.
+Wenn du gleichzeitig eine Diskussion und eine Abstimmung erstellst, nur damit Menschen ihre Stimme abgeben können, vermeide doppelte Benachrichtigungen. Starte die Diskussion ohne Benachrichtigung und nutze die Einladung zur Abstimmung, oder führe die Abstimmung ohne Diskussion durch.
 
 <!-- translation-section: what-happens-next -->
 
 ## Vom Start bis zum Fazit
 
-Ein Vorschlag oder eine Umfrage durchläuft diese Phasen.
+Ein Vorschlag oder eine Abstimmung durchläuft diese Phasen.
 
 <!-- translation-section: 1-create-it -->
 
-### 1. Erstellen
+### 1. Erstelle sie
 
-Gib einen Titel und Einzelheiten an, prüfe die Optionen und Einstellungen und lege einen Schließzeitpunkt fest. Wähle dann, wann die Abstimmung beginnt:
+Gib ihr einen Titel und eine Beschreibung, prüfe ihre Optionen und Einstellungen und lege einen Endzeitpunkt fest. Wähle dann, wann die Stimmabgabe beginnt:
 
-- **Die Abstimmung beginnt sofort.** startet die Abstimmung, sobald du den Vorschlag oder die Umfrage startest.
-- Mit einem **Eröffnungsdatum** planst du den Beginn. Die Teilnehmenden können den Vorschlag oder die Umfrage vorher sehen, aber erst abstimmen, wenn die Abstimmung beginnt.
-- Wenn du keines von beidem wählst, wird der Vorschlag oder die Umfrage als Entwurf gespeichert.
+- **Die Abstimmung beginnt sofort.** ermöglicht die Stimmabgabe, sobald du sie startest.
+- Mit einem **Eröffnungsdatum** planst du den Beginn. Menschen können sie vorher sehen, aber ihre Stimme erst ab diesem Zeitpunkt abgeben.
+- Wenn du keines von beiden festlegst, wird sie als Entwurf gespeichert.
 
 <!-- translation-section: 2-voting-opens -->
 
-### 2. Die Abstimmung beginnt
+### 2. Die Stimmabgabe beginnt
 
-Wenn die Abstimmung beginnt, benachrichtigt Loomio die Personen, die du eingeladen hast. Siehe [Zur Abstimmung einladen](../inviting_people/).
+Wenn die Stimmabgabe beginnt, benachrichtigt Loomio die Menschen, die du eingeladen hast. Siehe [Zur Stimmabgabe einladen](../inviting_people/).
 
 <!-- translation-section: 3-people-vote -->
 
-### 3. Die Teilnehmenden stimmen ab
+### 3. Menschen geben ihre Stimme ab
 
-Solange die Abstimmung offen ist, können die Teilnehmenden abstimmen, ihre Stimme erläutern und ihre Stimme ändern. Die Ergebnisse werden mit jeder abgegebenen Stimme aktualisiert, sofern sie nicht bis zum Ende der Abstimmung verborgen bleiben. Standardmäßig erhalten Personen, die noch nicht abgestimmt haben, einen Tag vor dem Ende eine Erinnerung.
+Solange die Abstimmung offen ist, können Menschen ihre Stimme abgeben, begründen und ändern. Das Ergebnis wird mit jeder Stimmabgabe aktualisiert, sofern es nicht bis zum Ende verborgen bleibt. Standardmäßig erhalten Menschen, die noch keine Stimme abgegeben haben, einen Tag vor dem Ende eine Erinnerung.
 
 <!-- translation-section: 4-it-closes -->
 
 ### 4. Die Abstimmung endet
 
-Die Abstimmung endet automatisch zum Schließzeitpunkt. Ein Umfrage-Admin kann sie auch vorzeitig schließen. Nach dem Ende kann ein Umfrage-Admin die Abstimmung mit einem neuen Schließzeitpunkt wieder öffnen, damit die Teilnehmenden weiter abstimmen können. Anonyme Umfragen können nicht wieder geöffnet werden.
+Die Abstimmung wird automatisch zum festgelegten Endzeitpunkt beendet. Koordinierende der Abstimmung können sie auch vorzeitig beenden. Nach dem Ende können sie die Abstimmung mit einem neuen Endzeitpunkt wieder öffnen, damit Teilnehmende weiter abstimmen können. Anonyme Abstimmungen können nicht wieder geöffnet werden.
 
 <!-- translation-section: 5-share-an-outcome -->
 
-### 5. Ein Fazit teilen
+### 5. Teile ein Fazit
 
-Wenn die Abstimmung endet, bittet Loomio die Umfrage-Admins, ein Fazit zu teilen.
+Wenn die Abstimmung beendet ist, bittet Loomio die Abstimmungskoordinierenden, ein Fazit zu teilen.
 
 ![Die Aufforderung, nach dem Ende eines Vorschlags ein Fazit einzugeben](outcome_prompt.png)
 
-Das Fazit hält fest, was entschieden wurde und wie es weitergeht. Es erscheint über den Ergebnissen und wird daher zuerst gelesen. Wenn du es veröffentlichst, kannst du die Teilnehmenden benachrichtigen. Sie erhalten eine E-Mail mit den Ergebnissen und dem Fazit.
+Das Fazit beschreibt, was entschieden wurde und was als Nächstes geschieht. Es erscheint über dem Ergebnis und ist damit das Erste, was die Teilnehmenden lesen. Wenn du es veröffentlichst, kannst du die Teilnehmenden benachrichtigen. Sie erhalten eine E-Mail mit dem Ergebnis und dem Fazit.
 
 Du kannst auch ein **Prüfungsdatum** festlegen. An diesem Tag erinnert dich Loomio daran, die Entscheidung zu überprüfen.
 

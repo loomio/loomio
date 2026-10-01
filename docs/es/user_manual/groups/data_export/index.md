@@ -1,10 +1,10 @@
 ---
 title: Exportación de datos
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/groups/data_export/index.md
+source_revision: c27ee3b193231816878f1c074ff9fc2a086a88c0
+source_file: docs/en/user_manual/groups/data_export/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-02'
 sections:
   introduction: 5e29f67f9a2084ec
   export-data: 58b5e1d4e6f0b917
@@ -14,46 +14,46 @@ sections:
   print-thread-to-pdf: 39c48383953f9fd5
   import-your-group-data-on-another-loomio-server: 910ee8af48049e82
 generated:
-  introduction: 9c692aed3ac8693a
-  export-data: f4d1c607f4eee0fa
-  export-group-data-as-csv: 58ef10ae9bc05484
-  export-group-data-as-html: 13085db3719df15e
-  export-group-data-as-json: bd1b60236555affc
-  print-thread-to-pdf: 6d25cdabad673768
-  import-your-group-data-on-another-loomio-server: 0be6acc9b528d5ec
+  introduction: 85c71e74107c0f3b
+  export-data: 2a5f05b00c92ace1
+  export-group-data-as-csv: 2f651efaa83a0177
+  export-group-data-as-html: 62e7f80228582296
+  export-group-data-as-json: 9eba5c7f1bbcd6e2
+  print-thread-to-pdf: f303311479bef81d
+  import-your-group-data-on-another-loomio-server: b28edad206709848
 title_source: 29049648f87b87f5
 title_generated: e5c1f8189ac77167
 ---
 
 <!-- translation-section: introduction -->
 
-# Copia de seguridad o exportación de los datos del grupo
+# Copia de seguridad o exportación de datos del grupo
 
 Con la función de exportación de datos del grupo puedes:
 
-- Descargar un archivo con los datos de los miembros para revisar quién pertenece al grupo.
-- Descargar el contenido del grupo, incluido el texto de los hilos y sondeos, para archivarlo o analizarlo.
-- Abrir los resultados de los sondeos en una hoja de cálculo o con un lenguaje de programación.
-- [Imprimir un hilo o sondeo, o guardarlo como PDF para archivarlo.](#print-thread-to-pdf)
-- Trasladar tu grupo, con todos sus usuarios, hilos, sondeos y archivos, a otro servidor de Loomio.
+- Descargar un archivo con datos de los miembros para auditar quién pertenece al grupo.
+- Descargar el contenido de tu grupo, incluido el texto de los hilos y las encuestas, para archivarlo o analizarlo.
+- Abrir los resultados de las encuestas en una hoja de cálculo o un lenguaje de programación de scripts.
+- [Imprimir o guardar un hilo o una encuesta en PDF para archivarlo.](#print-thread-to-pdf)
+- Trasladar tu grupo, incluidos todos los usuarios, hilos, encuestas y archivos, a otro servidor de Loomio.
 
-Si alguna vez quieres pasar de los servidores gestionados por Loomio [a uno propio](https://github.com/loomio/loomio), puedes usar esta función.
+Si en algún momento quieres pasar de los servidores gestionados por Loomio [a tu propio servidor](https://github.com/loomio/loomio), puedes usar esta función.
 
-Si tienes tu propio servidor de Loomio y prefieres dejar de administrarlo, Loomio ofrece alojamiento gestionado en Estados Unidos, la Unión Europea y Australia. Si quieres trasladar tu grupo a uno de estos servidores, [ponte en contacto con nosotros](/contact).
+Si tienes tu propio servidor de Loomio y prefieres dejar de gestionarlo, Loomio ofrece alojamiento gestionado en Estados Unidos, la Unión Europea y Australia. Si quieres migrar tu grupo a uno de estos servidores, [contacta con nosotros](/contact).
 
-[Ponte en contacto con nosotros](/contact) si quieres trasladar tu grupo del servicio global de Loomio en loomio.com a uno de nuestros servicios regionales: loomio.eu para Europa o loomio.nz para Australia y Nueva Zelanda.
+[Contacta con nosotros](/contact) si quieres trasladar tu grupo de Loomio desde el servicio global alojado en loomio.com a uno de nuestros servicios regionales: loomio.eu para Europa o loomio.nz para Australia y Nueva Zelanda.
 
 <!-- translation-section: export-data -->
 
 ## Exportar datos
 
-Haz clic en los tres puntos para abrir el menú del grupo y selecciona **Exportar la data grupal**.
+Abre el menú desplegable del grupo haciendo clic en los tres puntos y selecciona **Exportar la data grupal**.
 
-![Opción Exportar la data grupal en el menú de la Cooperativa Oatmilk](group_export_group_data.png)
+![Acción Exportar la data grupal en el menú de Oatmilk Cooperative](group_export_group_data.png)
 
 <!-- translation-section: export-group-data-as-csv -->
 
-### Exportar los datos del grupo como CSV
+### Exportar datos del grupo en CSV
 
 *Para trabajar con los datos del grupo en una hoja de cálculo, como MS Excel o Google Sheets.*
 
@@ -61,33 +61,33 @@ Loomio prepara el archivo CSV en segundo plano y te envía por correo electróni
 
 <!-- translation-section: export-group-data-as-html -->
 
-### Exportar los datos del grupo como HTML
+### Exportar datos del grupo en HTML
 
-*Para guardar los datos en un archivo.*
+*Para guardar los datos y archivarlos.*
 
 Loomio prepara el archivo HTML en segundo plano y te envía por correo electrónico un enlace de descarga cuando está listo. El enlace está disponible durante una semana.
 
 <!-- translation-section: export-group-data-as-json -->
 
-### Exportar los datos del grupo como JSON
+### Exportar datos del grupo en JSON
 
-*Para trasladar los datos del grupo a una instancia de Loomio alojada en tu propio servidor.*
+*Para trasladar los datos de tu grupo a una instancia de Loomio alojada en tu propio servidor.*
 
-Debes ser administrador del grupo para exportarlo. La exportación JSON incluye:
+Debes ser admin del grupo para exportarlo. La exportación en JSON incluye:
 
 - El grupo, sus miembros y las solicitudes de ingreso
 - Hilos, comentarios, reacciones, etiquetas, plantillas, notificaciones y registros relacionados de los grupos incluidos
-- Sondeos, opciones, votos y conclusiones; los sondeos anónimos solo se incluyen después de cerrarse
-- Los subgrupos a los que perteneces
-- Los subgrupos abiertos y cerrados cuando exportas el grupo principal como administrador de ese grupo, aunque no pertenezcas a esos subgrupos
+- Encuestas, opciones, votos y conclusiones; una encuesta anónima solo se incluye después de haberse cerrado
+- Subgrupos a los que perteneces
+- Subgrupos abiertos y cerrados cuando exportas el grupo principal como admin de ese grupo principal, aunque no pertenezcas a esos subgrupos
 - Referencias a los archivos e imágenes adjuntos al contenido incluido
 
-La exportación JSON no incluye:
+La exportación en JSON no incluye:
 
-- Los subgrupos secretos a los que no perteneces, incluidos sus miembros y contenido
-- Los subgrupos pendientes de eliminación
-- Los sondeos anónimos que aún no se han cerrado
-- Los hilos y sondeos directos que no pertenecen al grupo
+- Subgrupos secretos a los que no perteneces, incluidos sus miembros y contenido
+- Subgrupos pendientes de eliminación
+- Encuestas anónimas que no se han cerrado
+- Hilos directos y encuestas que no pertenecen al grupo
 
 En breve recibirás un correo electrónico con un enlace para descargar el archivo JSON.
 
@@ -95,29 +95,29 @@ En breve recibirás un correo electrónico con un enlace para descargar el archi
 
 ## Imprimir un hilo en PDF
 
-Puedes guardar una copia de un hilo en un archivo independiente.
+Puede que necesites extraer una copia de un hilo para guardarla en un archivo separado.
 
-La opción **Imprimir ** conserva todos los comentarios, sondeos, votos y conclusiones, además del formato del hilo.
+La opción **Imprimir ** del hilo conserva todos los comentarios, encuestas, votos y conclusiones, además del formato del hilo.
 
-En el menú del hilo, haz clic en los tres puntos (⋯) y elige **Imprimir **. Loomio generará una página HTML que podrás imprimir o «guardar como PDF» con la función de impresión del navegador.
+En el hilo, haz clic en el menú de tres puntos (⋯) y elige **Imprimir **. Loomio generará una página HTML que podrás imprimir o "guardar en PDF" con la herramienta de impresión de tu navegador.
 
-Puedes copiar la página y pegarla en un editor de documentos, un archivo o un repositorio de datos.
+Puedes copiar la página para pegarla en un editor de documentos, un archivo o un repositorio de datos.
 
-![Opción Imprimir para la discusión sobre botellas retornables](discussion_print_discussion.png#width-90)
+![Acción Imprimir para la discusión sobre botellas retornables](discussion_print_discussion.png#width-90)
 
 <!-- translation-section: import-your-group-data-on-another-loomio-server -->
 
 ## Importar los datos de tu grupo en otro servidor de Loomio
 
-Para obtener instrucciones sobre cómo configurar tu propio servidor de Loomio, visita: https://github.com/loomio/loomio
+Para consultar las instrucciones sobre cómo configurar tu propio servidor de Loomio, visita: https://github.com/loomio/loomio
 
-Si alojas tu propia instancia de Loomio y quieres importar los datos exportados:
+Si alojas tu propia instalación de Loomio y quieres importar los datos que has exportado:
 
-Copia el archivo .json en la carpeta `import` de la instancia del contenedor:
+Copia el archivo .json a la carpeta `import` de la instancia del contenedor:
 
 `scp your-group-data.json username@some-domain.org:loomio-deploy/import`
 
-Accede a la consola Rails en ejecución:
+Accede a la consola de Rails en ejecución:
 
 `docker exec -ti loomio-app rails console`
 

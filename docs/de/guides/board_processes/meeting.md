@@ -1,10 +1,10 @@
 ---
 title: Ein Treffen vorbereiten
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/guides/board_processes/meeting.md
+source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
+source_file: docs/en/guides/board_processes/meeting.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-30'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 20305b2bbbcd9088
   meeting-focus-and-review-actions: e43829ab612a2070
@@ -19,51 +19,54 @@ sections:
   approve-reports: e322912e5f5b1e32
   on-loomio-5: 15e0c45a512cd84f
 generated:
-  introduction: 475c29e21a2b5ec3
-  meeting-focus-and-review-actions: f0c8f57c2e2f7619
-  on-loomio: 6d0dbe8edba2cb55
-  agenda-and-notify: 6e0df70e60d89bbb
-  on-loomio-2: 1f7d553c02ad8c7b
-  confirm: 93b840a5fcac4a91
-  find-a-time-for-meeting: 1bf4c3efe1fe3888
-  on-loomio-3: 10f76a809e0c85ee
-  sign-off-minutes: c88a2598bb4e98ff
-  on-loomio-4: 43d66122c7f4800c
-  approve-reports: d4580b86833c1d7f
-  on-loomio-5: 5dc20063e81074f5
+  introduction: 8521c7818edf5c96
+  meeting-focus-and-review-actions: 6d3db2dd15e3b35e
+  on-loomio: dfda7869b324efba
+  agenda-and-notify: c25aa6793838ad81
+  on-loomio-2: 60e854370805b63f
+  confirm: 10bc4f2409d94eb4
+  find-a-time-for-meeting: bd43c1c269e1093f
+  on-loomio-3: e64dbd2fa95659e4
+  sign-off-minutes: 31200861a0bbee73
+  on-loomio-4: be9815e08b64a1e6
+  approve-reports: fc22f9ac21ff0350
+  on-loomio-5: 0a39c2c4a12c8b01
 title_source: 7fe4f2dbd8ccfc94
 title_generated: 86fcdffab8de63d5
+needs_review:
+  sign-off-minutes: use "Zustimmung" instead of "Dafür" for "agree"
+  on-loomio-4: use "Entscheidung" instead of "Abstimmung" for "decision"; use "Stimme" instead of "Abstimmung" for "vote"
 ---
 
 <!-- translation-section: introduction -->
 
 # Ein Treffen vorbereiten
 
-Gute Treffen sind produktiv, offen für alle und gemeinschaftlich. Sie fördern die Beteiligung, stärken Beziehungen und schaffen ein gemeinsames Verständnis. Sie helfen dabei, bessere Entscheidungen schneller zu treffen, neue Ideen zu entwickeln und Rückmeldungen für Verbesserungen zu sammeln.
+Wirksame Treffen sind produktiv, inklusiv und gemeinschaftlich: Sie stärken die Beteiligung, helfen beim Aufbau tragfähiger Beziehungen, schaffen ein gemeinsames Verständnis, ermöglichen bessere und schnellere Entscheidungen, fördern die Einbeziehung aller sowie kreatives Denken und Innovation und bieten Raum für Rückmeldungen und kontinuierliche Verbesserung.
 
-Nutze Loomio, um ein gutes Treffen zu planen. Beziehe die Beteiligten von Anfang an ein, verständige dich mit ihnen über die wichtigsten Themen und nutze eure gemeinsame Zeit gut.
+Nutze Loomio, um ein wirksames Treffen zu planen: Beziehe Menschen von Anfang an ein, verständigt euch auf die wichtigsten Themen und nutzt eure wertvolle gemeinsame Zeit besser.
 
-Wenn deine Gruppe Loomio noch nicht kennt, beginne mit [Loomio in deiner Gruppe vorstellen](/en/user_manual/overview/introducing_loomio). Nutze diesen Ablauf dann als ersten regelmäßigen Arbeitsprozess.
+Wenn deine Gruppe Loomio noch nicht kennt, beginne mit [Loomio in deiner Gruppe einführen](/en/user_manual/overview/introducing_loomio). Nutze anschließend diesen Ablauf zur Vorbereitung von Treffen als ersten praktischen, wiederkehrenden Arbeitsablauf.
 
-So kannst du dein nächstes Vorstands- oder Ausschusstreffen vorbereiten:
+Du kannst einiges tun, damit eure nächste Vorstands- oder Ausschusssitzung wirksam ist …
 
-- [Schwerpunkte festlegen und Aufgaben prüfen](#meeting-focus-and-review-actions)
-- [Tagesordnung ankündigen und Mitglieder benachrichtigen](#agenda-and-notify)
-- [Einen Termin finden](#find-a-time-for-meeting)
-- [Protokoll bestätigen](#sign-off-minutes)
+- [Schwerpunkte setzen und Aufgaben nachverfolgen](#meeting-focus-and-review-actions)
+- [Tagesordnung bekannt geben und Mitglieder benachrichtigen](#agenda-and-notify)
+- [Einen Termin für das Treffen finden](#find-a-time-for-meeting)
+- [Protokolle genehmigen](#sign-off-minutes)
 - [Berichte genehmigen](#approve-reports)
 
 <!-- translation-section: meeting-focus-and-review-actions -->
 
-## Schwerpunkte festlegen und Aufgaben prüfen
+## Schwerpunkt des Treffens festlegen und Aufgaben überprüfen
 
-Lege Schwerpunkte für das Treffen fest, damit ihr eure gemeinsame Zeit für die wichtigsten Themen nutzt.
+Lege einen Schwerpunkt für das Treffen fest, damit ihr eure wertvolle gemeinsame Zeit für die wichtigsten Themen nutzt.
 
-Wenn Mitglieder zur Tagesordnung beitragen, können sich alle auf die Themen einstellen und auf das Treffen vorbereiten.
+Wenn du Mitglieder einlädst, zur Tagesordnung beizutragen, hilft das allen, sich abzustimmen, über die Themen nachzudenken und sich auf das Treffen vorzubereiten.
 
 Aufgaben:
-- das Treffen auf die wichtigsten Themen ausrichten,
-- Aufgaben aus früheren Treffen nachverfolgen und mit den Mitgliedern besprechen.
+- Richte das Treffen auf die wichtigsten Themen aus,
+- frage bei Mitgliedern nach und besprich mit ihnen die Aufgaben aus früheren Treffen.
 
 ![](meeting_prep.png#width-90)
 
@@ -71,21 +74,21 @@ Aufgaben:
 
 ### Auf Loomio
 Nutze eine Loomio-**Diskussion**, um dein Treffen vorzubereiten:
-* erinnere die Mitglieder an das bevorstehende Treffen,
-* bitte um Vorschläge für die wichtigsten Themen,
-* fasse die Aufgaben aus dem letzten Treffen zusammen und bitte um einen aktuellen Stand.
+* Erinnere Mitglieder an das bevorstehende Treffen,
+* bitte um Kommentare zu den wichtigsten Themen, die im Mittelpunkt stehen sollen,
+* fasse die Aufgaben aus dem letzten Treffen zusammen und frage nach dem aktuellen Stand.
 
 <!-- translation-section: agenda-and-notify -->
 
-## Tagesordnung ankündigen und Mitglieder benachrichtigen
+## Tagesordnung bekannt geben und Mitglieder benachrichtigen
 
 Kündige das Treffen mit einer klaren Tagesordnung an. Hänge Unterlagen an, verlinke wichtige Dokumente und benachrichtige die Mitglieder.
 
-So können alle die Unterlagen lesen und sich mit den Gesprächsthemen und anstehenden Entscheidungen befassen. Die Mitglieder kommen besser vorbereitet zum Treffen.
+So können sich alle auf das Treffen vorbereiten, indem sie die Unterlagen lesen und über die Diskussionsthemen und die anstehenden Entscheidungen nachdenken. Dadurch kommen Mitglieder eher gut informiert und vorbereitet zum Treffen.
 
 Aufgaben:
-- Tagesordnung, Dokumente und weitere Sitzungsunterlagen vorbereiten,
-- Mitglieder über das Treffen benachrichtigen und ihnen die Unterlagen schicken.
+- Bereite die Tagesordnung, Dokumente, Materialien und Vorstandsunterlagen vor,
+- benachrichtige Mitglieder über das Treffen und sende ihnen die Unterlagen.
 
 ![](meeting_notify.png#width-90)
 
@@ -93,87 +96,87 @@ Aufgaben:
 
 ### Auf Loomio
 Nutze eine Loomio-**Diskussion**, um dein Vorstandstreffen vorzubereiten:
-* nenne die Einzelheiten des Treffens,
-* hänge die Tagesordnung, Dokumente und weitere Unterlagen an oder verlinke sie,
+* Gib die Einzelheiten zum Treffen an,
+* hänge die Tagesordnung, Dokumente und weitere Unterlagen zum Treffen an oder verlinke sie,
 * lade Mitglieder mit einer Benachrichtigung ein,
-* prüfe unter „Angesehen von“, wer die Diskussion gelesen hat.
+* prüfe unter 'Angesehen von', wer den Thread gelesen hat.
 
-Eine Loomio-Diskussion ähnelt einer E-Mail, bietet aber weitere Möglichkeiten:
-- du siehst, wer die Diskussion gelesen hat, und kannst die anderen daran erinnern,
-- Antworten und Kommentare der Mitglieder sind für alle sichtbar, die Zugriff auf die Diskussion haben,
-- Fragen und Gespräche zur Tagesordnung und zu den Unterlagen bleiben an einem Ort.
+Ein Loomio-Thread ähnelt einer E-Mail, bietet aber einige Vorteile:
+- Du kannst sehen, wer den Thread gelesen hat, und diejenigen erinnern, die ihn noch nicht gelesen haben,
+- Antworten oder Kommentare von Mitgliedern sind für alle sichtbar, die den Thread ansehen dürfen,
+- alle Diskussionen und Fragen zur Tagesordnung oder zu den Unterlagen finden an einem Ort statt.
 
-Die Mitglieder finden alle Informationen zum Treffen an einem Ort. So gehen wichtige Angaben nicht in langen E-Mail-Verläufen oder Posteingängen verloren.
+Mitglieder finden alle Informationen zum Treffen leicht zugänglich an einem Ort. So vermeiden sie unübersichtliche E-Mail-Ketten und verlieren keine wichtigen Informationen in ihrem E-Mail-Posteingang.
 
 <!-- translation-section: confirm -->
 
-### Bestätigung einholen
-Bitte die Mitglieder, in einem Kommentar zu bestätigen, dass sie die Tagesordnung und die Unterlagen gelesen haben und auf das Treffen vorbereitet sind. Unter **Angesehen von** siehst du, wen du noch erinnern solltest.
+### Bestätigung
+Bitte Mitglieder, mit einem Kommentar zu bestätigen, dass sie die Tagesordnung und die Unterlagen gelesen haben und auf das Treffen vorbereitet sind. Nutze **Angesehen von**, um festzustellen, wer möglicherweise eine Erinnerung braucht.
 
 <!-- translation-section: find-a-time-for-meeting -->
 
-## Einen Termin finden
-Einen gemeinsamen Termin zu finden, kostet Verantwortliche oft viel Zeit.
+## Einen Termin für das Treffen finden
+Einen gemeinsamen Termin zu finden, kann für viele Admins immer wieder aufwendig sein.
 
 <!-- translation-section: on-loomio-3 -->
 
 ### Auf Loomio
-Wenn Datum und Uhrzeit noch nicht feststehen oder du einen Termin für ein späteres Treffen suchst, nutze eine **Zeitumfrage**.
+Wenn du Datum und Uhrzeit für das Treffen noch nicht festgelegt hast oder einen Termin für ein zukünftiges Treffen finden musst, kannst du die **Terminfindung** nutzen.
 
-Mit einer Zeitumfrage siehst du, wann alle Zeit haben, und findest einen passenden Termin. Das spart Zeit bei der Organisation.
+Mit der Terminfindung kannst du leicht sehen, wann alle Zeit haben, und den passendsten Termin finden. Das verringert den Zeit- und Arbeitsaufwand für diese häufige Verwaltungsaufgabe.
 
-Mitglieder in unterschiedlichen Zeitzonen sehen Datum und Uhrzeit jeweils in ihrer eigenen Zeitzone.
+Mitglieder in verschiedenen Zeitzonen sehen Datum und Uhrzeit jeweils in ihrer eigenen Zeitzone.
 
 ![](timepoll_vote.png#width-90)
 
-Wenn die Zeitumfrage endet, wähle den besten Termin und verschicke ein Fazit mit einer Kalendereinladung. So können die Mitglieder das Treffen in ihren Kalender eintragen.
+Wenn die Terminfindung beendet ist, wähle den passendsten Termin und sende eine Benachrichtigung zum Fazit mit einer Kalendereinladung, damit die Mitglieder das Treffen in ihren Kalender eintragen können.
 
 <!-- translation-section: sign-off-minutes -->
 
-## Protokoll bestätigen
-Protokolle zu genehmigen oder förmlich zu bestätigen, ist bei formellen Treffen üblich und auch bei anderen Treffen sinnvoll.
+## Protokolle genehmigen
+Das Genehmigen oder formelle Bestätigen von Protokollen ist bei formellen Treffen üblich und bei allen Treffen sinnvoll.
 
-Ein Protokoll hält das Treffen, wichtige Gesprächspunkte, Entscheidungen und Abstimmungen fest. Es nennt die vereinbarten Aufgaben und die verantwortlichen Personen. Oft bildet es die Grundlage für das nächste Treffen.
+Protokolle dokumentieren das Treffen, wichtige Punkte aus der Diskussion, die getroffenen Entscheidungen und wie die Beteiligten abgestimmt haben. Sie halten die vereinbarten Aufgaben und die dafür verantwortlichen Personen fest und bilden oft den Ausgangspunkt für das nächste Treffen.
 
-Das Protokoll erinnert die Anwesenden an die besprochenen Punkte, informiert abwesende Personen und kann bei Unstimmigkeiten herangezogen werden.
+Protokolle dienen den Anwesenden als Erinnerung, helfen Abwesenden, sich zu informieren, und können bei Konflikten herangezogen werden.
 
 <!-- translation-section: on-loomio-4 -->
 
 ### Auf Loomio
 
-Veröffentliche das Protokoll innerhalb weniger Tage nach dem Treffen in der zugehörigen Loomio-Diskussion und bitte die Teilnehmenden um Zustimmung. So ist das Treffen noch gut in Erinnerung, und die Mitglieder werden an ihre Aufgaben erinnert. Beim nächsten Treffen spart ihr dadurch Zeit.
+Veröffentliche das Protokoll innerhalb weniger Tage nach dem Treffen im Loomio-Thread zum Treffen und lade die Teilnehmenden ein, es zu genehmigen. So bleibt das Protokoll aktuell, während die Mitglieder das Treffen noch gut in Erinnerung haben. Außerdem erinnert es sie an ihre Aufgaben und spart Zeit beim nächsten Treffen.
 
 ![](poll_minutes.png#width-90)
 
-Das Beispiel oben zeigt eine **Wählen**-Umfrage mit den beiden Optionen „Annehmen“ und „Überarbeiten“.
+Das Beispiel oben verwendet eine **Wählen**-Abstimmung mit den beiden Optionen 'Annehmen' und 'Überprüfen'.
 
-Wenn alle abgestimmt haben und die Umfrage endet, veröffentliche ein Fazit, damit alle über den Stand informiert sind.
+Wenn alle abgestimmt haben und die Abstimmung beendet ist, formuliere ein Fazit, damit alle wissen, was geschehen ist.
 
-Wenn eure Sitzungsregeln eine förmliche Bestätigung beim nächsten Treffen verlangen, nimm die auf Loomio durchgeführten Umfragen und getroffenen Entscheidungen auf die Tagesordnung. Bestätigt sie dort und haltet das im Protokoll fest.
+Wenn eure Vorgehensweise eine formelle Genehmigung beim nächsten Treffen vorsieht, plane einen Tagesordnungspunkt ein, um die Abstimmungen und die auf Loomio getroffenen Entscheidungen festzuhalten und zu bestätigen. Halte dies im Protokoll fest.
 
-Zum Beispiel: *„Möchte jemand seine Stimme auf Loomio ändern? Wenn nicht, beschließen wir, die seit dem letzten Treffen auf Loomio durchgeführten Umfragen förmlich zu bestätigen.“*
+Zum Beispiel: *"Möchte jemand seine Stimmen in Loomio ändern? Falls nicht, beschließen wir, die Abstimmungen, die im vergangenen Zeitraum auf Loomio durchgeführt wurden, formell zu genehmigen."*
 
 <!-- translation-section: approve-reports -->
 
 ## Berichte genehmigen
-Auf den Tagesordnungen vieler Treffen stehen Berichte, die vorgestellt, besprochen und genehmigt werden. Dazu gehören etwa Berichte der Geschäftsführung, Finanzberichte, Berichte zu Abläufen und Arbeitsschutz sowie Projektberichte.
+Die meisten Tagesordnungen sehen Zeit vor, um Berichte vorzustellen, zu besprechen und zu genehmigen, zum Beispiel Berichte der Geschäftsführung, zu Finanzen, zum laufenden Betrieb, zu Gesundheit und Sicherheit sowie Projektberichte.
 
-Berichte helfen allen, denselben Informationsstand zu erreichen. Sie können jedoch viel Zeit im Treffen beanspruchen, die sich anders nutzen ließe.
+Berichte helfen allen, auf demselben Stand zu sein. Sie können jedoch viel Zeit im Treffen beanspruchen, die sich wirksamer nutzen ließe.
 
 <!-- translation-section: on-loomio-5 -->
 
 ### Auf Loomio
 
-Hänge Berichte an die **Diskussion** zu deinem Treffen an oder verlinke sie dort. Bitte die Mitglieder, ihre Fragen schon vor dem Treffen zu stellen.
+Hänge Berichte an den **Thread** für dein Treffen an oder verlinke sie dort und bitte schon vor dem Treffen um Fragen zu den Berichten.
 
-Die Mitglieder können die Berichte lesen, wann und wo es für sie passt. Dabei können sie auf Loomio kommentieren, Fragen stellen und Antworten lesen.
+Mitglieder erhalten die Berichte und lesen sie zu einer Zeit und an einem Ort, die für sie passen. Beim Lesen und Nachdenken können sie auf Loomio Kommentare schreiben, Fragen stellen und Antworten lesen.
 
-Die Frage eines Mitglieds interessiert oft auch andere. Wenn jemand darauf antwortet, ist die Antwort für alle Mitglieder der Loomio-Gruppe sichtbar.
+Eine Frage eines Mitglieds ist wahrscheinlich auch für andere Mitglieder interessant. Wenn jemand darauf antwortet, ist die Antwort für alle in der Loomio-Gruppe sichtbar.
 
-Wenn die Mitglieder Berichte regelmäßig auf Loomio besprechen, kannst du noch mehr Zeit im Treffen sparen: Bitte sie schon vor dem Treffen um die Genehmigung der Berichte.
+Wenn die Mitglieder damit vertraut sind, Berichte auf Loomio zu besprechen, kannst du noch mehr Zeit sparen: Bitte bereits vor dem Treffen um die Genehmigung der Berichte.
 
 ![](poll_approve_report.png#width-90)
 
-Wenn eure Sitzungsregeln eine förmliche Bestätigung beim nächsten Treffen verlangen, nimm die auf Loomio durchgeführten Umfragen und getroffenen Entscheidungen auf die Tagesordnung. Bestätigt sie dort und haltet das im Protokoll fest.
+Wenn eure Abläufe eine formelle Genehmigung beim nächsten Treffen vorsehen, plane einen Tagesordnungspunkt ein, um die Abstimmungen und Entscheidungen auf Loomio zur Kenntnis zu nehmen und zu bestätigen. Halte dies im Protokoll fest.  
 
-Zum Beispiel: *„Möchte jemand seine Stimme auf Loomio ändern? Wenn nicht, beschließen wir, die seit dem letzten Treffen auf Loomio durchgeführten Umfragen förmlich zu bestätigen.“*
+Zum Beispiel: *"Möchte jemand die eigenen Stimmen auf Loomio ändern? Wenn nicht, beschließen wir, die Abstimmungen auf Loomio aus dem letzten Zeitraum formell zu genehmigen."*

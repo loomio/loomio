@@ -1,10 +1,10 @@
 ---
 title: Näin osallistut
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/overview/how-to-participate.md
+source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
+source_file: docs/en/user_manual/overview/how-to-participate.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 4337bfc044fc30d1
   comment: 66cebed9d4121cb8
@@ -17,16 +17,16 @@ sections:
   results: 6fe0d5a60acc75eb
   outcome: 8cb16ab9afb55fb8
 generated:
-  introduction: 6ed41006d9a21748
-  comment: 548c5c4d2560dea2
-  reply-to-a-comment: 3a8b99fd05f99069
-  get-someone-s-attention: 5a726bd918e6b494
-  reactions: 741f484045b6d152
-  vote: 71bc200a8a039d26
-  state-a-reason: 0fa8e14188858ba9
-  change-your-vote: f7f3dfea31318225
-  results: 035c0193876e099b
-  outcome: 55e64b80f9ddb6ee
+  introduction: a20c7f5ed7ea05b8
+  comment: 158b8e26caeba33d
+  reply-to-a-comment: 214cdbe0167ad394
+  get-someone-s-attention: 8d3a7691913a9303
+  reactions: '07630391138a8a8a'
+  vote: 06be72b73b702ed6
+  state-a-reason: 26140543c1425211
+  change-your-vote: 4c4f1860a5983e1b
+  results: d3f3556b3a007dc0
+  outcome: e3473cc1ca8b2fcf
 title_source: a7854841fbd99ee4
 title_generated: 64ea4637329eb447
 ---
@@ -35,17 +35,17 @@ title_generated: 64ea4637329eb447
 
 # Näin osallistut
 
-Kun olet kirjautunut Loomio-ryhmään, johon sinut on kutsuttu, voit osallistua keskusteluun tai päätöksentekoon.
+Kun olet kirjautunut Loomion ryhmään, johon sinut on kutsuttu, voit osallistua keskusteluun tai päätöksentekoon.
 
-Lue, miten kirjoitat kommentin keskusteluketjuun ja äänestät kyselyssä.
+Lue alta, miten kirjoitat kommentin ketjuun ja äänestät kyselyssä.
 
 <!-- translation-section: comment -->
 
 ## Kommentoi
 
-Voit kirjoittaa kommentin keskusteluketjuun. Muut voivat vastata siihen, reagoida siihen tai jatkaa keskustelua omalla kommentillaan.
+Voit kirjoittaa kommentin ketjuun. Muut voivat jatkaa keskustelua vastaamalla, reagoimalla tai julkaisemalla oman kommenttinsa.
 
-Kun olet kirjoittanut kommenttisi, julkaise se heti valitsemalla **Lähetä Kommentti**. Kommenttisi näkyy kaikille, joilla on oikeus nähdä keskusteluketju.
+Kun olet kirjoittanut tekstisi, julkaise kommentti heti valitsemalla **Julkaise kommentti**. Kommenttisi näkyy kaikille, joilla on oikeus nähdä ketju.
 
 ![](comment_add.png#width-90)
 
@@ -53,9 +53,9 @@ Kun olet kirjoittanut kommenttisi, julkaise se heti valitsemalla **Lähetä Komm
 
 ### Vastaa kommenttiin
 
-Voit vastata kommenttiin napsauttamalla sen alla olevaa vastauskuvaketta.
+Voit vastata toisen kommenttiin napsauttamalla kommentin alla olevaa vastauskuvaketta.
 
-Vastauksesi julkaistaan keskusteluketjussa, ja kommentin kirjoittajalle lähetetään sähköposti-ilmoitus.
+Vastauksesi julkaistaan ketjussa, ja kommentin kirjoittajalle lähetetään sähköposti-ilmoitus.
 
 ![](comment_reply.png#width-90)
 
@@ -63,7 +63,7 @@ Vastauksesi julkaistaan keskusteluketjussa, ja kommentin kirjoittajalle lähetet
 
 ### Kiinnitä jonkun huomio
 
-Voit lähettää ihmisille ilmoituksen, kun kirjoitat kommentin.
+Voit lähettää muille ilmoituksen kirjoittaessasi kommenttia.
 
 ![](comment_mention.png#width-90)
 
@@ -71,7 +71,7 @@ Voit lähettää ihmisille ilmoituksen, kun kirjoitat kommentin.
 
 ### Reaktiot
 
-Voit osoittaa kommentin kirjoittajalle, mitä ajattelet hänen kommentistaan, reagoimalla siihen. Se on nopea tapa osallistua ilman tekstiä tai sähköposti-ilmoitusta. Lisää emojireaktio napsauttamalla kommentin alla olevaa hymiökuvaketta.
+Reagoimalla kommenttiin voit kannustaa sen kirjoittajaa ja kertoa, mitä ajattelet kommentista. Se on nopea ja vaivaton tapa osallistua: sinun ei tarvitse kirjoittaa tekstiä, eikä reaktiosta lähetetä sähköpostia. Lisää emojireaktio napsauttamalla kommentin alla olevaa hymyilevää emojikuvaketta.
 
 ![](comment_reaction.png#width-90)
 
@@ -81,19 +81,19 @@ Voit osoittaa kommentin kirjoittajalle, mitä ajattelet hänen kommentistaan, re
 
 Voit saada kutsun äänestää kyselyssä sähköpostitse tai Loomion ilmoituksena. Äänestä napsauttamalla sähköpostissa olevaa linkkiä.
 
-Äänestä napsauttamalla tai napauttamalla haluamasi vaihtoehdon kuvaketta.
+Äänestä napsauttamalla tai napauttamalla valitsemasi vaihtoehdon kuvaketta.
 
-Kyselyitä on monenlaisia. Alla olevassa ehdotuksessa äänestysvaihtoehdot ovat **Samaa mieltä**, **Pidättäydy äänestämästä** ja **Eri mieltä**. Muitakin vaihtoehtoja voi olla.
+Kyselyitä on monenlaisia. Alla olevassa esimerkissä on tavallinen ehdotus, jonka vaihtoehdot ovat **Samaa mieltä**, **Pidättäydy äänestämästä** ja **Eri mieltä**. Myös muita vaihtoehtoja voi olla saatavilla.
 
-Lue kysely ja mahdolliset liitetiedostot. Äänestä sitten valitsemalla yksi vaihtoehdoista.
+Lue kysely ja mahdolliset liitetiedostot. Anna sitten äänesi valitsemalla jokin vaihtoehdoista.
 
 ![](proposal_example.png#width-90)
 
 <!-- translation-section: state-a-reason -->
 
-### Kerro perustelusi
+### Kerro perustelu
 
-Voit äänestäessäsi kertoa, miksi valitsit tämän vaihtoehdon, kirjoittamalla **Syy**-kenttään. Tämä on vapaaehtoista.
+Kun äänestät, voit myös kirjoittaa **Syy**-kenttään perustelun sille, miksi äänestit näin. Tämä on vapaaehtoista.
 
 ![](vote_reason.png#width-90)
 
@@ -105,9 +105,9 @@ Voit **muuttaa ääntäsi**, kunnes ehdotus sulkeutuu.
 
 ![](vote_change.png#width-90)
 
-Voit haluta muuttaa ääntäsi monesta syystä. Esimerkiksi uusi tieto voi saada sinut harkitsemaan päätöstäsi uudelleen.
+Voit haluta muuttaa ääntäsi monesta syystä. Esimerkiksi uusi tieto voi saada sinut harkitsemaan päätöstäsi uudelleen ja muuttamaan ääntäsi.
 
-Voit myös kertoa, miksi muutit ääntäsi.
+Voit myös tällä kertaa kertoa perustelun sille, miksi muutit ääntäsi.
 
 ![](vote_edit.png#width-90)
 
@@ -115,20 +115,20 @@ Voit myös kertoa, miksi muutit ääntäsi.
 
 ### Tulokset
 
-Ehdotuksen tulokset päivittyvät sitä mukaa, kun ihmiset äänestävät. Näet, millaista kannatusta ehdotus saa.
+Ehdotuksen tulokset päivittyvät sitä mukaa kuin ihmiset äänestävät, joten näet, mihin suuntaan ehdotuksen kannatus kehittyy.
 
 ![](proposal_results.png#width-90)
 
-Kiistanalaisen ehdotuksen tulokset voivat olla jakautuneet. Se ei kuitenkaan tarkoita, että ehdotus olisi epäonnistunut.
+Mielipiteitä jakavan ehdotuksen äänet jakautuvat usein eri vaihtoehtojen kesken. Tämä ei kuitenkaan tarkoita, että ehdotus olisi epäonnistunut.
 
-Ehdotuksen aikana esiin tullut uusi tieto auttaa usein laatimaan paremman ehdotuksen, jolla on enemmän mahdollisuuksia saada kannatusta.
+Ehdotuksen käsittelyn aikana esiin tuleva uusi tieto auttaa usein laatimaan paremman ehdotuksen, joka hyväksytään todennäköisemmin.
 
 <!-- translation-section: outcome -->
 
 ### Johtopäätös
 
-Kun ehdotus sulkeutuu, sen tekijää pyydetään kirjoittamaan **Johtopäätös**.
+Kun ehdotus sulkeutuu, sen laatijaa pyydetään kirjaamaan **Johtopäätös**.
 
-Tässä viimeisessä vaiheessa kirjataan päätöksen tulos ja kerrotaan kaikille, mitä seuraavaksi tapahtuu.
+Tämä on tärkeä viimeinen vaihe: siinä kirjataan, mitä päätettiin, ja kerrotaan kaikille, mitä seuraavaksi tapahtuu.
 
 ![](proposal_outcome.png#width-90)

@@ -1,10 +1,10 @@
 ---
 title: Como participar
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/overview/how-to-participate.md
+source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
+source_file: docs/en/user_manual/overview/how-to-participate.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 4337bfc044fc30d1
   comment: 66cebed9d4121cb8
@@ -17,16 +17,16 @@ sections:
   results: 6fe0d5a60acc75eb
   outcome: 8cb16ab9afb55fb8
 generated:
-  introduction: 52e7da74535925ec
-  comment: 7b1fef3c8cf63248
-  reply-to-a-comment: d45c11c38336b6e6
-  get-someone-s-attention: c09c1057717b4883
-  reactions: dcb9778db40a28a8
-  vote: 5e2b742ffe9b7f90
-  state-a-reason: 9fb24952a43786fa
-  change-your-vote: 93b06ff676303fc8
-  results: f8befa17b3b0aa33
-  outcome: bf2e0456750dcdd2
+  introduction: 84f72eec3de6b576
+  comment: 73b6c31c74add2af
+  reply-to-a-comment: 71460fc32a18ca52
+  get-someone-s-attention: 7b8815fc0b273327
+  reactions: 77458c916fc094f8
+  vote: 0fc26812aa7c2b94
+  state-a-reason: be39413197cf04e1
+  change-your-vote: 59db55be3aedaed2
+  results: 9edee09902b8d43a
+  outcome: adb6bb09ba2c75a5
 title_source: a7854841fbd99ee4
 title_generated: e5f8f7d1e631a473
 ---
@@ -35,17 +35,17 @@ title_generated: e5f8f7d1e631a473
 
 # Como participar
 
-Depois de entrar em um grupo do Loomio para o qual você recebeu um convite, você pode participar de uma discussão ou decisão.
+Depois de entrar em um grupo do Loomio para o qual você recebeu um convite, você pode participar de uma discussão ou decisão no Loomio.  
 
-Veja como escrever um comentário em uma discussão e votar em uma enquete.
+Continue lendo para saber como escrever um comentário em uma conversa e como votar em uma enquete.
 
 <!-- translation-section: comment -->
 
-## Comentar
+## Comentário
 
-Você pode escrever um comentário em uma discussão. Outras pessoas podem responder, reagir ou publicar comentários para continuar a conversa.
+Você pode escrever um comentário em uma conversa, e as pessoas podem responder, reagir ou publicar seus próprios comentários para continuar a discussão.
 
-Depois de escrever seu texto, selecione **Postar comentário** para publicá-lo. Seu comentário ficará visível para todas as pessoas com permissão para ver a discussão.
+Quando terminar de escrever seu texto, use **Publicar comentário** para publicar o comentário imediatamente. Seu comentário ficará visível para qualquer pessoa que tenha permissão para ver a conversa.
 
 ![](comment_add.png#width-90)
 
@@ -53,9 +53,9 @@ Depois de escrever seu texto, selecione **Postar comentário** para publicá-lo.
 
 ### Responder a um comentário
 
-Para responder ao comentário de alguém, selecione o ícone de resposta abaixo dele.
+Você pode responder ao comentário de alguém clicando no ícone de resposta abaixo do comentário.
 
-Sua resposta será publicada na discussão, e a pessoa que escreveu o comentário receberá uma notificação por e-mail.
+Sua resposta é publicada na conversa, e uma notificação por e-mail é enviada ao autor do comentário.
 
 ![](comment_reply.png#width-90)
 
@@ -63,7 +63,7 @@ Sua resposta será publicada na discussão, e a pessoa que escreveu o comentári
 
 ### Chamar a atenção de alguém
 
-Você pode notificar outras pessoas ao escrever um comentário.
+Você pode notificar pessoas ao escrever um comentário.
 
 ![](comment_mention.png#width-90)
 
@@ -71,7 +71,7 @@ Você pode notificar outras pessoas ao escrever um comentário.
 
 ### Reações
 
-Reagir a um comentário permite mostrar à pessoa que o escreveu o que você achou. É uma forma rápida de participar, sem escrever nada nem enviar um e-mail. Selecione o ícone de rosto sorridente abaixo de um comentário para deixar uma reação com emoji.
+Reagir a um comentário é uma forma de incentivar e reconhecer a contribuição, mostrando ao autor como você se sente. É uma maneira rápida e simples de participar, que não exige texto nem envia um e-mail. Clique no ícone de emoji sorridente abaixo de um comentário para adicionar uma reação com emoji.
 
 ![](comment_reaction.png#width-90)
 
@@ -79,13 +79,13 @@ Reagir a um comentário permite mostrar à pessoa que o escreveu o que você ach
 
 ## Votar
 
-Você pode receber um convite para votar em uma enquete por e-mail ou por uma notificação no Loomio. Para votar, selecione o link no e-mail.
+Você pode receber um convite para votar em uma enquete por e-mail ou por uma notificação no Loomio. Clique no link do e-mail para votar.
 
-Para votar, basta selecionar o ícone da opção desejada.
+Para votar, basta clicar ou tocar no ícone da sua escolha.
 
-Há vários tipos de enquete. O exemplo abaixo mostra uma proposta com as opções de voto **Concordar**, **Abstenção** e **Discordo**. Outras opções também podem estar disponíveis.
+Existem vários tipos de enquetes. O exemplo abaixo mostra uma proposta típica com as opções de voto **Concordar**, **Abster-se** ou **Discordo**. Outras opções podem estar disponíveis.
 
-Leia a enquete e os arquivos anexados, se houver. Depois, selecione uma das opções para votar.
+Leia a enquete e os arquivos anexados e, em seguida, vote selecionando uma das opções.
 
 ![](proposal_example.png#width-90)
 
@@ -93,21 +93,21 @@ Leia a enquete e os arquivos anexados, se houver. Depois, selecione uma das opç
 
 ### Informar um motivo
 
-Ao votar, você também pode preencher o campo **Motivo** para explicar sua escolha. Isso é opcional.
+Ao votar, você também pode deixar um **Motivo** para explicar por que votou dessa forma. Isso é opcional.
 
 ![](vote_reason.png#width-90)
 
 <!-- translation-section: change-your-vote -->
 
-### Mudar seu voto
+### Alterar seu voto
 
-Você pode **mudar seu voto** até o encerramento da proposta.
+Você pode **alterar seu voto** até que a proposta seja encerrada.
 
 ![](vote_change.png#width-90)
 
-Você pode querer mudar seu voto por vários motivos. Por exemplo, uma nova informação pode levar você a reconsiderar sua decisão.
+Existem vários motivos para você querer alterar seu voto. Por exemplo, novas informações podem levar você a repensar sua decisão e alterar seu voto.
 
-Você também pode informar por que mudou seu voto.
+Você também pode deixar um motivo para explicar por que alterou seu voto.
 
 ![](vote_edit.png#width-90)
 
@@ -115,20 +115,20 @@ Você também pode informar por que mudou seu voto.
 
 ### Resultados
 
-Os resultados da proposta são atualizados conforme as pessoas votam. Assim, você pode acompanhar como a votação está evoluindo.
+Os resultados da proposta são atualizados à medida que as pessoas votam, para que você possa acompanhar a tendência dos votos.
 
 ![](proposal_results.png#width-90)
 
-Em uma proposta controversa, é comum haver votos diferentes. Isso não significa que a proposta foi rejeitada.
+Em uma proposta controversa, é comum haver resultados divididos, mas isso não significa que a proposta tenha fracassado.  
 
-Muitas vezes, as informações apresentadas durante a votação ajudam a formular uma proposta melhor, com mais chances de aprovação.
+Muitas vezes, as novas informações que surgem durante a proposta ajudam a formular uma proposta melhor, com mais chances de ser aprovada.
 
 <!-- translation-section: outcome -->
 
 ### Conclusão
 
-Quando a proposta é encerrada, a pessoa que a criou recebe uma solicitação para registrar a **Conclusão**.
+Quando a proposta é encerrada, o autor recebe uma solicitação para registrar a **Conclusão**.
 
-Essa etapa final registra o resultado da decisão e informa a todas as pessoas o que acontecerá em seguida.
+Essa é uma etapa final importante para registrar o que foi decidido e informar a todos o que acontecerá em seguida.
 
 ![](proposal_outcome.png#width-90)

@@ -1827,6 +1827,7 @@ en:
     locale_label: Language
     short_bio_placeholder: Please introduce yourself, include areas of expertise, topics of interest, and any affiliated organizations
     locale_placeholder: Select your preferred language
+    translations_are_made_by_machine: Translations are made by machine. If a word is wrong or unclear, email %{email} and we'll fix it.
     location_label: Location
     location_placeholder: Where are you based?
     update_profile: Update profile

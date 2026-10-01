@@ -26,49 +26,82 @@ namespace :loomio do
     paths
   end
 
-  # Translation imports can contain thousands of strings. Batch requests and
-  # retry transient connection and service-capacity failures without changing
-  # result ordering.
-  def translate_strings(google, source_strings, google_locale)
-    retry_count = 0
-
-    begin
-      Array(google.translate(*source_strings, to: google_locale)).map do |translation|
-        CGI.unescapeHTML(translation.text)
-      end
-    rescue Faraday::ConnectionFailed,
-           Faraday::SSLError,
-           Faraday::TimeoutError,
-           Google::Cloud::ResourceExhaustedError
-      retry_count += 1
-      raise if retry_count > 5
-
-      sleep(2**(retry_count - 1))
-      retry
+  # Flattens a locale file's nested strings to {"a.b.c" => string}.
+  def flatten_strings(hash, prefix = nil, output = {})
+    hash.each do |key, value|
+      path = prefix ? "#{prefix}.#{key}" : key.to_s
+      value.is_a?(Hash) ? flatten_strings(value, path, output) : output[path] = value
     end
+    output
   end
 
-  # Stay below Google's per-request limits of 128 strings and 30,000 codepoints,
-  # with margin for request encoding and future source-string growth.
-  def translation_batches(paths, source, batch_size_max: 100, batch_length_max: 20_000)
-    batches = []
-    batch = []
-    batch_length = 0
+  def translation_locales
+    ENV["LOCALES"].present? ? ENV["LOCALES"].split(",") : AppConfig.locales["supported"] - ["en"]
+  end
 
-    paths.each do |path|
-      source_string = (source.dig(*path.split('.')) || "").strip
-      if batch.any? && (batch.length >= batch_size_max || batch_length + source_string.length > batch_length_max)
-        batches << batch
-        batch = []
-        batch_length = 0
-      end
-
-      batch << [ path, source_string ]
-      batch_length += source_string.length
+  # Runs the codex translator over each locale's client and server strings, in
+  # parallel across locales. The block picks the strings to translate from the
+  # English and the locale's current strings, returning them as
+  # {key => English}, and current translations to revise as {key => text}.
+  # Keys are "client.…" or "server.…". Each file is saved after every batch.
+  def translate_app_strings(locales)
+    english = %w[client server].each_with_object({}) do |kind, strings|
+      flatten_strings(YAML.load_file("config/locales/#{kind}.en.yml")["en"], kind, strings)
     end
+    output_mutex = Mutex.new
+    failures = Queue.new
+    queue = Queue.new
+    locales.each { |locale| queue << locale }
+    queue.close
 
-    batches << batch if batch.any?
-    batches
+    # Each locale's batches run in order; TRANSLATION_JOBS locales run at once.
+    Array.new([Integer(ENV.fetch("TRANSLATION_JOBS", 6)), locales.size].min) do
+      Thread.new do
+        while (locale = queue.pop)
+          translate_locale_strings(locale, english, output_mutex, failures) { |*args| yield(*args) }
+        end
+      end
+    end.each(&:join)
+
+    raise "Translation failed for #{failures.size} string(s):\n#{Array.new(failures.size) { failures.pop }.join("\n")}" unless failures.empty?
+  end
+
+  def translate_locale_strings(locale, english, output_mutex, failures)
+    files = %w[client server].to_h do |kind|
+      filename = "config/locales/#{kind}.#{locale}.yml"
+      [kind, File.exist?(filename) ? YAML.load_file(filename).fetch(locale, {}) : {}]
+    end
+    current = files.each_with_object({}) { |(kind, strings), output| flatten_strings(strings, kind, output) }
+    strings, revise = yield(locale, english, current)
+    return if strings.empty?
+
+    output_mutex.synchronize { puts "#{locale}: translating #{strings.size} strings" }
+    translator = AppStringTranslator.new(locale, existing: current)
+    result = translator.translate(strings, current: revise) do |batch|
+      batch.each do |key, translation|
+        kind, *path = key.split(".")
+        files.fetch(kind).bury(*path, translation)
+      end
+      batch.keys.map { |key| key.split(".").first }.uniq.each do |kind|
+        File.write("config/locales/#{kind}.#{locale}.yml", { locale => files.fetch(kind) }.to_yaml(line_width: 2000))
+      end
+    end
+    result.failures.each { |key, message| failures << "#{locale}: #{key}: #{message}" }
+  rescue => error
+    failures << "#{locale}: #{error.class}: #{error.message}"
+  end
+
+  # Strings whose translation breaks the glossary: a rendering it marks as
+  # wrong, or (with missing: true) no preferred term where the English uses one.
+  def glossary_problems(locale, english, current, missing:)
+    current.each_with_object({}) do |(key, translation), problems|
+      source = english[key]
+      next unless source.is_a?(String) && translation.is_a?(String) && translation.present?
+
+      messages = TranslationGlossary.wrong_terms(source, translation, locale)
+      messages += TranslationGlossary.missing_terms(source, translation, locale) if missing
+      problems[key] = messages if messages.any?
+    end
   end
 
   def delete_keys(hash, keys)
@@ -195,77 +228,38 @@ namespace :loomio do
     end
   end
 
+  desc "Translate English app strings missing from each locale with codex and the glossary (optional LOCALES=fr,de)"
   task translate_strings: :environment do
-    sources = %w[server client].to_h do |source_name|
-      source = YAML.load_file("config/locales/#{source_name}.en.yml")['en']
-      [source_name, { strings: source, paths: list_paths(source, []) }]
+    translate_app_strings(translation_locales) do |_locale, english, current|
+      [english.reject { |key, value| current.key?(key) || value.to_s.strip.empty? }, {}]
     end
+  end
 
-    output_mutex = Mutex.new
-    errors = Queue.new
-
-    AppConfig.locales['supported'].map do |file_locale|
-      Thread.new do
-        google = Google::Cloud::Translate.translation_v2_service
-        google_locale = file_locale == 'nl_NL' ? 'nl' : file_locale
-
-        sources.each do |source_name, source_data|
-          source = source_data[:strings]
-          source_paths = source_data[:paths]
-          filename = "config/locales/#{source_name}.#{file_locale}.yml"
-
-          file_was_new = !File.exist?(filename)
-          foreign = {}
-          foreign_paths = []
-          unless file_was_new
-            foreign = YAML.load_file(filename)[file_locale]
-            foreign_paths = list_paths(foreign, [])
-          end
-
-          paths_missing = source_paths - foreign_paths
-          paths_blank, paths_translate = paths_missing.partition do |path|
-            (source.dig(*path.split('.')) || "").strip.blank?
-          end
-
-          if file_was_new
-            paths_blank.each { |path| foreign.bury(*path.split('.'), "") }
-            File.write(filename, { file_locale => foreign }.to_yaml(line_width: 2000)) if paths_blank.any?
-          end
-
-          translation_batches(paths_translate, source).each do |batch|
-            paths, source_strings = batch.transpose
-
-            output_mutex.synchronize do
-              puts "#{file_locale}: translating #{source_name} strings #{paths.first} to #{paths.last}"
-            end
-
-            begin
-              translated_strings = translate_strings(google, source_strings, google_locale)
-              raise "translation count mismatch" unless translated_strings.length == paths.length
-
-              paths.zip(translated_strings).each do |path, translated_string|
-                foreign.bury(*path.split('.'), translated_string)
-              end
-
-              File.write(filename, { file_locale => foreign }.to_yaml(line_width: 2000))
-            rescue => error
-              errors << [file_locale, "#{source_name}.#{paths.first}..#{paths.last}", error]
-            end
-          end
-        end
-      rescue => e
-        errors << [file_locale, nil, e]
+  desc "Report app strings that break config/locales/glossary.yml to tmp/glossary/<locale>.csv (optional LOCALES)"
+  task check_glossary: :environment do
+    english = %w[client server].each_with_object({}) do |kind, strings|
+      flatten_strings(YAML.load_file("config/locales/#{kind}.en.yml")["en"], kind, strings)
+    end
+    FileUtils.mkdir_p("tmp/glossary")
+    translation_locales.each do |locale|
+      current = %w[client server].each_with_object({}) do |kind, strings|
+        flatten_strings(YAML.load_file("config/locales/#{kind}.#{locale}.yml").fetch(locale, {}), kind, strings)
       end
-    end.each(&:join)
+      problems = glossary_problems(locale, english, current, missing: true)
+      CSV.open("tmp/glossary/#{locale}.csv", "w") do |csv|
+        csv << %w[key english translation problems]
+        problems.each { |key, messages| csv << [key, english[key], current[key], messages.join("; ")] }
+      end
+      wrong = problems.count { |_, messages| messages.any? { |message| message.include?(" instead of ") } }
+      puts "#{locale}: #{wrong} wrong terms, #{problems.size - wrong} missing terms"
+    end
+  end
 
-    unless errors.empty?
-      messages = []
-      messages << "Translation failed for #{errors.length} batch(es):"
-      messages.concat(errors.size.times.map do
-        file_locale, path, error = errors.pop
-        "#{file_locale}#{path ? ": #{path}" : nil}: #{error.class}: #{error.message}"
-      end)
-      raise messages.join("\n")
+  desc "Revise app strings that break the glossary with codex (optional LOCALES; MISSING to also revise strings missing a preferred term)"
+  task apply_glossary: :environment do
+    translate_app_strings(translation_locales) do |locale, english, current|
+      problems = glossary_problems(locale, english, current, missing: ENV["MISSING"].present?)
+      [english.slice(*problems.keys), current.slice(*problems.keys)]
     end
   end
 

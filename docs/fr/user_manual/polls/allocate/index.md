@@ -1,6 +1,6 @@
 ---
 title: Allouer
-source_revision: 3a315412c646d254c8426be5c436a4e593f6011f
+source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
 source_file: docs/en/user_manual/polls/allocate/index.md
 translated:
   provider: codex/gpt-6.1-sol
@@ -14,84 +14,86 @@ sections:
   read-the-results: 3a66507bd8387273
   share-an-outcome: abb46bfca8b73b7a
 generated:
-  introduction: d28a0ff4d4d85f39
-  when-to-use-allocate: d3103c99855dd546
-  example-set-priorities-for-an-annual-strategy-review: ced8ea74d3d324ed
-  set-up-the-poll: ed9a1d866a952a43
-  vote: c4c451b763acb362
-  read-the-results: fe2bb8276105375a
-  share-an-outcome: 79e080b1fd808a10
+  introduction: 27ced44224bf3791
+  when-to-use-allocate: d04997244f1a4336
+  example-set-priorities-for-an-annual-strategy-review: c975665aa1d29fd9
+  set-up-the-poll: d36531a30614e89b
+  vote: fb334f643fddeaac
+  read-the-results: 70af311691332f28
+  share-an-outcome: b146408ad3c968d9
 title_source: c927a8a7c2ce230c
 title_generated: 0fee5d0b0df53184
+needs_review:
+  share-an-outcome: use "conclusion" instead of "résultat" for "outcome"
 ---
 
 <!-- translation-section: introduction -->
 
-# Allouer
+# Répartir
 
-Le vote à points, appelé « Allouer » dans Loomio, permet de faire ressortir les priorités lorsque des choix s’imposent. Chaque personne dispose d’un nombre fixe de points à répartir entre les options. Plus elle donne de points à une option, moins il lui en reste pour les autres.
+Répartir, parfois appelé vote à points, permet de dégager les priorités lorsque des arbitrages sont nécessaires. Chaque participant reçoit un nombre fixe de points et les répartit entre les options. Accorder davantage de points à une option en laisse moins pour les autres.
 
 <!-- translation-section: when-to-use-allocate -->
 
-## Quand utiliser Allouer
+## Quand utiliser Répartir
 
-Utilisez Allouer lorsque le temps, l’argent, l’attention ou une autre ressource est limité. Ce type de vote convient notamment pour :
+Utilisez Répartir lorsque le temps, l’argent, l’attention ou une autre ressource est limité. Cette méthode convient pour :
 
-- définir les priorités de travail pour la prochaine période de planification ;
-- répartir un budget participatif entre plusieurs projets ;
-- décider du temps à consacrer à plusieurs sujets lors d’une réunion ;
-- répartir un nombre fixe d’heures de bénévolat ; ou
+- définir les priorités de travail pour la prochaine période de planification ;
+- répartir un budget participatif entre des projets ;
+- choisir le temps à consacrer à plusieurs sujets à l’ordre du jour ;
+- répartir un nombre fixe d’heures de bénévolat ; ou
 - déterminer quelles améliorations comptent le plus pour les membres.
 
-Les points indiquent une priorité relative, pas une quantité que Loomio attribuera automatiquement. Utilisez [Score](/en/user_manual/polls/score/) si chaque option peut recevoir une note élevée sans réduire le soutien accordé aux autres.
+Les points expriment une priorité relative, et non une quantité que Loomio attribuera automatiquement. Utilisez [Noter](/en/user_manual/polls/score/) lorsque chaque option peut recevoir une note élevée sans réduire le soutien accordé à une autre.
 
 <!-- translation-section: example-set-priorities-for-an-annual-strategy-review -->
 
-## Exemple : définir les priorités d’une revue stratégique annuelle
+## Exemple : définir les priorités d’une revue stratégique annuelle
 
-La coopérative Oatmilk prépare sa revue stratégique annuelle. Elle demande à ses membres quels domaines devraient recevoir le plus de temps et d’attention pendant cette revue. Chaque membre dispose de dix points à répartir entre cinq domaines. Le résultat montre les priorités relatives du groupe tout en obligeant les personnes à faire des choix.
+La coopérative Oatmilk prépare sa revue stratégique annuelle. Elle demande aux membres quels domaines devraient recevoir le plus de temps et d’attention pendant cette revue. Chaque membre reçoit dix points à répartir entre cinq domaines. Cela fait apparaître les priorités relatives du groupe tout en obligeant les participants à faire des arbitrages.
 
 <!-- translation-section: set-up-the-poll -->
 
-## Configurer le vote
+## Configurer le sondage
 
-Décrivez la décision à prendre et ce que représentent les points. Ajoutez des options de portée comparable, puis définissez **Points par personne**. Dans cet exemple, chaque personne dispose de dix points pour indiquer le temps à consacrer à l’examen de chaque domaine stratégique.
+Décrivez la décision et ce que représentent les points. Ajoutez des options de portée comparable, puis définissez les **Points par personne**. Dans cet exemple, chaque électeur reçoit dix points pour indiquer le temps à consacrer à chaque domaine stratégique pendant la revue.
 
 ![](form.png)
 
-Un nombre de points très élevé peut donner une fausse impression de précision. Choisissez-en assez pour faire apparaître les différences, mais assez peu pour imposer des choix. Précisez s’il est acceptable d’attribuer tous ses points à une seule option.
+Un nombre de points très élevé peut donner une fausse impression de précision. Un nombre adapté est généralement assez élevé pour faire apparaître les différences, mais assez limité pour imposer des choix. Précisez s’il est acceptable de concentrer tous les points sur une seule option.
 
 <!-- translation-section: vote -->
 
 ## Voter
 
-Les personnes qui votent déplacent les curseurs pour répartir leurs points. Loomio affiche le nombre de points restants et empêche l’envoi du vote tant que la répartition n’est pas valide.
+Les participants déplacent les curseurs pour répartir leurs points. Loomio affiche le nombre de points restants et empêche l’envoi du vote tant que la répartition n’est pas valide.
 
 ![](voting.png)
 
-Dans cet exemple, une personne attribue trois points à **Participation des membres** et à **Viabilité financière**, deux points à **Impact environnemental** et à **Développement du personnel**, et aucun à **Produits et services**. Un zéro ne signifie pas nécessairement qu’un domaine est sans valeur ; il signifie que la personne a utilisé ses points limités ailleurs.
+Dans cet exemple, l’électeur attribue trois points à la **Participation des membres** et trois à la **Viabilité financière**, deux à l’**Impact environnemental** et deux au **Développement du personnel**, et aucun aux **Produits et services**. Un zéro ne signifie pas nécessairement qu’un domaine n’a aucune valeur ; il signifie que l’électeur a utilisé ses points limités ailleurs.
 
 <!-- translation-section: read-the-results -->
 
 ## Lire les résultats
 
-Les options sont classées selon le nombre total de points reçus. Les résultats indiquent aussi :
+Les résultats classent les options selon le nombre total de points reçus. Ils indiquent également :
 
-- **% de points** : la part de l’option dans l’ensemble des points attribués ;
-- **Points** : le nombre total de points attribués ;
-- **Moyenne** : la moyenne parmi les personnes qui ont attribué des points à l’option ; et
-- **Votants** : le nombre de personnes qui ont attribué au moins un point à l’option.
+- **% de points** : la part de l’option dans l’ensemble des points répartis ;
+- **Points** : le nombre total de points attribués ;
+- **Moyenne** : la moyenne parmi les électeurs ayant attribué des points à l’option ; et
+- **Votants** : le nombre de personnes ayant attribué au moins un point à l’option.
 
 ![](results.png)
 
-Dans cet exemple, **Viabilité financière** reçoit le plus de points, suivie de **Développement du personnel**. Toutes les personnes qui ont voté ont attribué des points à la viabilité financière, ce qui suggère un large accord sur la nécessité de lui consacrer beaucoup de temps pendant la revue. Comparez les totaux au nombre de votants pour distinguer les priorités largement partagées des domaines fortement soutenus par moins de personnes.
+Dans cet exemple, la **Viabilité financière** reçoit le plus de points, suivie du **Développement du personnel**. La viabilité financière reçoit des points de chaque électeur, ce qui suggère un large accord sur la nécessité de lui consacrer un temps conséquent pendant la revue. Examinez les totaux avec le nombre d’électeurs pour distinguer les priorités largement partagées des domaines fortement soutenus par un plus petit nombre de personnes.
 
-Examinez les totaux, le nombre de votants et les raisons qu’ils ont données.
+Examinez les totaux avec le nombre d’électeurs et leurs raisons.
 
 <!-- translation-section: share-an-outcome -->
 
-## Partager une conclusion
+## Partagez une conclusion
 
-À la clôture du sondage, partagez une conclusion. Le sondage n’attribue pas automatiquement de temps ou d’argent : indiquez donc comment le résultat sera utilisé. Consultez [Partager une conclusion](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome) pour comprendre le fonctionnement des conclusions.
+Lorsque le sondage est clôturé, partagez une conclusion. Le sondage n’attribue pas automatiquement de temps ni d’argent : précisez donc comment le résultat sera utilisé. Consultez [Partagez une conclusion](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome) pour comprendre le fonctionnement des conclusions.
 
-![Une conclusion précisant comment le temps sera réparti pendant la revue stratégique](outcome.png)
+![Une conclusion précisant la répartition du temps consacré à la revue stratégique](outcome.png)

@@ -1,10 +1,10 @@
 ---
 title: Tehtävät
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/discussions/tasks/index.md
+source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
+source_file: docs/en/user_manual/discussions/tasks/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 5d689ea44215eba6
   add-a-task: 2e3141ad862d640d
@@ -12,11 +12,11 @@ sections:
   set-a-reminder: 5991fc639ca19605
   mark-it-as-done: 793004b43676d64e
 generated:
-  introduction: d0b6094ccb792309
-  add-a-task: f36809500e68461f
-  name-and-assign-the-task-to-a-person: 3228cd17374b9b35
-  set-a-reminder: 43138efd2ab6dfc0
-  mark-it-as-done: 3b8bf50d1dc86d32
+  introduction: b2ab847467ce91e2
+  add-a-task: 24841ef70679c4dd
+  name-and-assign-the-task-to-a-person: c71b58ccf8898643
+  set-a-reminder: e00429bb3ec23674
+  mark-it-as-done: c3b148222ffda3de
 title_source: b3a60e61a5233d05
 title_generated: 2de9a1d4c9155aef
 ---
@@ -25,25 +25,25 @@ title_generated: 2de9a1d4c9155aef
 
 # Tehtävät
 
-Tehtävillä voit kirjata toimenpiteitä keskusteluketjuihin ja kommentteihin, antaa niitä muille, asettaa eräpäiviä ja seurata niiden valmistumista.
+Ketjujen ja kommenttien tehtävillä voit kuvata tehtävän asian, määrittää sille vastuuhenkilön ja eräpäivän sekä seurata, onko se valmis.
 
 <!-- translation-section: add-a-task -->
 
 ## Lisää tehtävä
 
-Kun kirjoitat keskusteluketjua tai kommenttia, laajenna muotoilutyökalurivi ja napsauta **Tehtävälista**. Kirjoita tehtävä valintaruudun viereen.
+Kun kirjoitat ketjua tai kommenttia, laajenna muotoilutyökalurivi ja napsauta **Tehtävälista**. Kirjoita tehtävä asia valintaruudun viereen.
 
 ![](tasklist1.png)
 
 <!-- translation-section: name-and-assign-the-task-to-a-person -->
 
-## Nimeä tehtävä ja anna se toiselle
+## Nimeä tehtävä ja määritä sille vastuuhenkilö
 
-Anna tehtävä ryhmän jäsenelle mainitsemalla hänet tehtävässä @-merkillä. **Lisää eräpäivä** -painike tulee näkyviin, kun tehtävälle on nimetty vastuuhenkilö.
+Määritä ryhmän jäsen tehtävän vastuuhenkilöksi käyttämällä tehtävässä @mainintaa. **Lisää eräpäivä** -painike tulee näkyviin, kun tehtävällä on vastuuhenkilö.
 
 ![](tasklist2.png)
 
-Sinulle annetut tehtävät näkyvät **Tehtävät**-sivulla. Avaa **Tehtävät** sivupalkista, niin näet ne keskusteluketjun tai kyselyn mukaan ryhmiteltyinä.
+Sinulle osoitetut tehtävät näkyvät **Tehtävät**-sivullasi. Avaa **Tehtävät** sivupalkista nähdäksesi ne ketjun tai kyselyn mukaan ryhmiteltyinä.
 
 ![](task_list.png)
 
@@ -51,14 +51,14 @@ Sinulle annetut tehtävät näkyvät **Tehtävät**-sivulla. Avaa **Tehtävät**
 
 ## Aseta muistutus
 
-Napsauta **Lisää eräpäivä** ja valitse eräpäivä sekä ajankohta, jolloin Loomio lähettää vastuuhenkilölle muistutuksen sähköpostitse. Voit myös poistaa aiemmin asetetun eräpäivän tästä valintaikkunasta.
+Napsauta **Lisää eräpäivä** ja valitse eräpäivä sekä ajankohta, jolloin Loomio lähettää vastuuhenkilölle muistutuksen sähköpostitse. Voit myös poistaa nykyisen eräpäivän tästä valintaikkunasta.
 
 ![](taskreminderform.png)
 
 <!-- translation-section: mark-it-as-done -->
 
-## Merkitse tehtävä tehdyksi
+## Merkitse tehtävä valmiiksi
 
 ![](taskdone.png)
 
-Merkitse tehtävä tehdyksi napsauttamalla sen vieressä olevaa valintaruutua. Voit tehdä sen muokatessasi tekstiä, lukiessasi sitä, jos tehtävä on annettu sinulle, tai **Tehtävät**-sivulla. Avaa tehtävä uudelleen napsauttamalla valintaruutua toisen kerran.
+Merkitse tehtävä valmiiksi napsauttamalla sen vieressä olevaa valintaruutua. Voit tehdä tämän muokatessasi tekstiä, lukiessasi sitä, jos olet vastuuhenkilö, tai **Tehtävät**-sivulla. Avaa tehtävä uudelleen napsauttamalla valintaruutua uudestaan.

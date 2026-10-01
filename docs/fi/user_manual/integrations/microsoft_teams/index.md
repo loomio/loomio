@@ -1,14 +1,14 @@
 ---
 title: Microsoft Teams
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/integrations/microsoft_teams/index.md
+source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
+source_file: docs/en/user_manual/integrations/microsoft_teams/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-30'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 905a1586a1f760e0
 generated:
-  introduction: 2b6f16d9d2b98762
+  introduction: 4acaf63ae0d2d872
 title_source: a7b52b269a23c025
 title_generated: a7b52b269a23c025
 ---
@@ -22,26 +22,26 @@ Loomio voi lähettää Microsoft Teamsiin ilmoituksia uusista keskusteluista, eh
 
 ---
 
-Siirry osoitteeseen [https://teams.microsoft.com](https://teams.microsoft.com) ja napsauta **Sovellukset**
+Siirry osoitteeseen [https://teams.microsoft.com](https://teams.microsoft.com) ja napsauta Sovellukset
 ![](t1.png)
 
-Kirjoita hakukenttään "webhook" ja napsauta **Incoming Webhook**
+Kirjoita hakukenttään "webhook" ja napsauta Saapuva webhook
 ![](t2.png)
 
-Napsauta **Add to a team**
+Napsauta "Lisää tiimiin"
 ![](t3.png)
 
-Kirjoita sen kanavan nimi, jossa haluat Loomion ilmoitusten näkyvän, ja valitse kanava.
+Kirjoita kanavan nimi ja valitse kanava, jossa haluat Loomion ilmoitusten näkyvän.
 ![](t4.png)
 
-Anna integraatiolle nimi, esimerkiksi "Loomion ilmoitukset", ja napsauta **Create**
+Anna sille nimi, esimerkiksi "Loomion ilmoitukset", ja napsauta "Luo"
 ![](t5.png)
 
 Kopioi saamasi URL-osoite. Liität sen Loomioon viimeisessä vaiheessa.
 ![](t6.png)
 
-_Microsoft ei ole luonut Loomiota eikä ole sen yhteistyökumppani tai tarjoa sille tukea._
+_Microsoft ei ole luonut Loomiota, ei ole sidoksissa siihen eikä tarjoa sille tukea._
 
-Kun sinulla on webhookin URL-osoite, jatka chat-integraation määrittämistä:
+Nyt kun sinulla on webhook-URL-osoite, jatka chat-integraation määrittämistä:
 
 [Määritä chat-integraatio Loomiossa](../chatbots/#set-up-a-chat-integration)

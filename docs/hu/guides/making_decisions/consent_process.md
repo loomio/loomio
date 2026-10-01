@@ -1,10 +1,10 @@
 ---
 title: Hozzájárulási folyamat
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/guides/making_decisions/consent_process.md
+source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
+source_file: docs/en/guides/making_decisions/consent_process.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-30'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 14ce5d3ef8d9b5e2
   key-points: fe3eeececdfd3651
@@ -21,20 +21,20 @@ sections:
   step-5-seek-consent-to-adopt-the-policy: 4825f0d553324303
   step-6-integrate-valid-objections-to-create-an-amended-version-of-the-proposal-that-everyone-consents-is-safe-to-try: 500641ddfe3fc5bb
 generated:
-  introduction: ab1ff954e9327457
-  key-points: d2f73844c861c1c5
-  consent-process-steps: 8b04f8b21c800229
-  benefits: 6fd4e19f2fa97282
-  applying-the-consent-process-on-loomio: 5a1768b9d5dea823
-  objections: 5f61057a3ad6895b
+  introduction: 82c0e2a93603c03d
+  key-points: cd7df6e26d9c4a13
+  consent-process-steps: 39b2a821e3bcb02d
+  benefits: 07d242197b6adf2a
+  applying-the-consent-process-on-loomio: 66e836aae9fed80e
+  objections: 28f38194ef2834bb
   example-of-a-consent-process-on-loomio: 644495c5ec33a4b4
-  step-0-you-notice-a-problem-or-opportunity-and-take-the-initiative: 1b69de34ce33dfaf
-  step-1-present-a-proposal: 03d19f216eb3e5c5
-  step-2-facilitate-a-clarifying-question-round: 28e6cb62f2b23f3f
-  step-3-facilitate-a-reactions-round: 776f13f499b78703
-  step-4-amend-the-proposal: 5c8dfc156bfd7a95
-  step-5-seek-consent-to-adopt-the-policy: f850de749acb4735
-  step-6-integrate-valid-objections-to-create-an-amended-version-of-the-proposal-that-everyone-consents-is-safe-to-try: 7acc2b809547be12
+  step-0-you-notice-a-problem-or-opportunity-and-take-the-initiative: e5973b81d3fdcb1b
+  step-1-present-a-proposal: 1718960d60c55f11
+  step-2-facilitate-a-clarifying-question-round: 9fe722e3bd0be71f
+  step-3-facilitate-a-reactions-round: '078efe52085b2cf8'
+  step-4-amend-the-proposal: 430b5cd2ea609539
+  step-5-seek-consent-to-adopt-the-policy: b9fbb89e11be1120
+  step-6-integrate-valid-objections-to-create-an-amended-version-of-the-proposal-that-everyone-consents-is-safe-to-try: bd8752cba3d5946c
 title_source: '0193bbf359328832'
 title_generated: 0f95013b530057fe
 ---
@@ -43,47 +43,47 @@ title_generated: 0f95013b530057fe
 
 # Hozzájárulási folyamat
 
-Ez az útmutató a teljes hozzájárulási folyamatot mutatja be. Ha egyetlen hozzájárulási javaslat beállításához és értelmezéséhez keresel segítséget, olvasd el a [Hozzájárulás](/en/user_manual/polls/proposals/consent/) oldalt.
+Ez az útmutató a teljes hozzájárulási folyamatot ismerteti. Egy beleegyezési javaslat beállításához és értelmezéséhez a [Beleegyezés](/en/user_manual/polls/proposals/consent/) oldalon találsz segítséget.
 
-![együtt dolgozó emberek](better_collaboration.jpg)
+![együtt dolgozó emberek fényképe](better_collaboration.jpg)
 
-Hozz kifogások nélküli, „kipróbálható” döntést.
+Hozz olyan döntést, amely „biztonságosan kipróbálható”, és amellyel szemben nincs kifogás.
 
-Kérj hozzájárulást egy meghozandó döntéshez. Ha nincs érdemi kifogás a javaslatoddal szemben, gyorsan meghozhatsz egy most „kipróbálható” döntést.
+Kérj beleegyezést egy meghozandó döntéshez, hogy ha nincs érdemi kifogás a javaslatoddal szemben, gyorsan dönthess valamiről, ami már most „biztonságosan kipróbálható”.
 
-> *„A hozzájárulás megfordítja a kérdést: ahelyett, hogy azt kérdeznénk, mit szeretnénk, azt kérdezzük, van-e okunk arra, hogy ne lépjünk tovább.” – Ted Rau, Sociocracy For All*
+> *„A beleegyezés megfordítja a kérdést: ahelyett, hogy azt kérdeznénk, mit szeretnénk, azt kérdezzük, van-e indok arra, hogy ne lépjünk tovább.” - Ted Rau, Sociocracy For All*
 
 <!-- translation-section: key-points -->
 
-## Főbb pontok
-- Törekedj egy „elég jó” döntésre.
-- Vonj be sokféle véleményt egy megvalósítható javaslat kidolgozásába.
-- Kérdezd meg, van-e bárkinek megalapozott kifogása.
+## Fő szempontok
+- Törekedj „elég jó” döntésre.
+- Vonj be sokféle véleményt egy működőképes javaslat kidolgozásába.
+- Kérdezd meg, van-e valakinek megalapozott kifogása.
 - Módosítsd a javaslatot a kifogások feloldásához.
 
 **Jellemző szerepek:**
-- Javaslattevő: Aki felvet egy döntést igénylő témát.
-- Folyamatsegítő: Aki segít a javaslattevőnek hatékonyan elvégezni a feladatát.
+- Javaslattevő: Az a személy, aki felvet egy döntést igénylő témát.
+- Facilitátor: Valaki, aki segít a javaslattevőnek hatékonyan végezni a feladatát.
 
 <!-- translation-section: consent-process-steps -->
 
 ## A hozzájárulási folyamat lépései
 Észreveszel egy problémát vagy lehetőséget, és kezdeményezel.
-1. Mutass be egy javaslatot – indíts egy Loomio-**beszélgetést**.
-2. Vezess le egy kört, amelyben a résztvevők kérdezhetnek, reagálhatnak és hozzászólhatnak a javaslat javításához – indíts egy **Véleményfelmérés javaslatot**.
-3. Módosítsd a javaslatot a felvetések és hozzászólások alapján.
-4. Kérdezd meg, van-e bárkinek érdemi kifogása a módosított javaslattal szemben – indíts egy **Hozzájárulási javaslatot**.
-5. Építsd be a megalapozott kifogásokat, hogy a javaslat módosított változatát mindenki „kipróbálhatónak” tartsa – fogalmazd meg a döntés **következtetését**.
+1. Mutass be egy javaslatot - indíts egy Loomio-**beszélgetést**.
+2. Vezess egy kört a kérdések, reakciók és hozzászólások összegyűjtésére, hogy javítsd a javaslatot - indíts egy **hangulatfelmérési javaslatot**.
+3. Módosítsd a javaslatot az ötletek és hozzászólások alapján.
+4. Kérdezd meg, van-e valakinek érdemi kifogása a módosított javaslattal szemben - indíts egy **beleegyezési javaslatot**.
+5. Építsd be a megalapozott kifogásokat, és készíts olyan módosított javaslatot, amelyet mindenki „biztonságosan kipróbálhatónak” tart - fogalmazd meg a döntés **következtetését**.
 
 >[!Tip]
->Összetettebb döntéseknél a 2. lépésbe egy tisztázó **Kérdés kört** is beilleszthetsz. Ez segít megérteni a javaslatot, mielőtt reakciókat és hozzászólásokat kérsz.
+>Összetettebb döntéseknél a 2. lépésben egy tisztázó **Kérdezési kört** is beiktathatsz, hogy mindenki megértse a javaslatot, mielőtt reakciókat és hozzászólásokat kérsz.
 
 <!-- translation-section: benefits -->
 
 ## Előnyök
-- Gyorsabb, hatékonyabb, egyértelműbb és könnyebben módosítható döntések.
-- A különböző nézőpontok és az érdemi részvétel bizalmat építenek.
-- Rugalmasabb, átláthatóbb és befogadóbb működés.
+- Gyorsabb, hatékony, egyértelmű és könnyebben módosítható döntések.
+- A sokféle nézőpont és az érdemi részvétel lehetősége bizalmat épít.
+- Rugalmasabb, átláthatóbb és befogadóbb kultúra.
 
 <!-- translation-section: applying-the-consent-process-on-loomio -->
 
@@ -92,24 +92,24 @@ Kérj hozzájárulást egy meghozandó döntéshez. Ha nincs érdemi kifogás a 
 | **Hozzájárulási folyamat** | **A Loomióban** |
 |---|---|
 | Észreveszel egy problémát vagy lehetőséget, és kezdeményezel. |  |
-| **Javaslat bemutatása** <br /><br />Írj világos, tömör javaslatot, és oszd meg az érintettekkel. Úgy fogalmazz, hogy mások is megértsék, mit javasolsz. | Indíts egy Loomio-**beszélgetést**. <br /><br />A beszélgetés címében nevezd meg a javaslatot, a leírásban pedig ismertesd a hátterét. |
-| **Kérdések** (nem kötelező) <br /><br />Kérj tisztázó kérdéseket, hogy mindenki megérthesse a javaslatot. <br /><br />*„A tisztázó kérdések köre segít abban, hogy mindenki megértse a javaslatot, mielőtt elmondja róla a véleményét.”* | Indíts egy **Kérdés kört**. Ha nem látható, egy csoportadminisztrátor elérhetővé teheti a [Szavazási sablonok](/en/user_manual/polls/poll_templates/) között. <br /><br />Kérdezd meg: „Mit kell még tudnod ahhoz, hogy megértsd a javaslatot?” |
-| **Reakciók** <br /><br />Kérj reakciókat és hozzászólásokat a javaslat javításához. <br /><br />Ebben a körben a csoporttól érkező információkat figyelitek és értelmezitek, majd ezek alapján reagáltok vagy változtattok. | Indíts egy **[Véleményfelmérés](/en/user_manual/polls/proposals/sense_check/)** javaslatot. <br /><br />*A címben:* Nevezd meg a javaslatot, és jelezd, hogy itt lehet reagálni és hozzászólni. <br /><br />*A javaslat részleteiben:* Világosan mutasd be a javaslatot és annak jelentőségét. Adj meg minden szükséges háttérinformációt és a javaslat aktuális változatára mutató hivatkozást. <br /><br />Kérj mindenkitől választ a javaslat lezárása előtt. |
-| **Módosítás** <br /><br />Mérlegeld a hozzászólásokat és javaslatokat, majd szükség szerint módosítsd a javaslatot a szervezeted érdekében. <br /><br />Gondold át, milyen változtatásokat szeretnél beépíteni az új változatba. | Válaszolj a Véleményfelmérés javaslatban felvetett hozzászólásokra és javaslatokra. <br /><br />Fogalmazz meg egy **következtetést**, amely összefoglalja a javaslat eredményét. <br /><br />Rögzítsd a felmerült aggályokat és új információkat, és írd le, hogyan módosítod a javaslatot. <br /><br />Mondd el, mi történik ezután, és értesítsd a résztvevőket a következtetésről. |
-| **Kifogások** <br /><br />Mutasd be a javaslat módosított változatát, és kérj megalapozott kifogásokat, vagyis olyanokat, amelyek lehetséges káros következményre mutatnak rá. <br /><br />Válaszolj minden kifogásra, és építsd be őket a javaslat módosításával. | Indíts egy **[Hozzájárulási javaslatot](/en/user_manual/polls/proposals/consent/)** a módosított javaslattal. <br /><br />*A címben:* Nevezd meg a meghozandó döntést. <br /><br />*A javaslat részleteiben:* Mutasd be a javaslatot, és kérd meg a résztvevőket, hogy szavazzanak a hozzájárulásukról, vagy jelezzenek egy megalapozott kifogást, amely lehetséges káros következményre mutat rá. A cél annak megállapítása, hogy a javaslat „kipróbálható-e”. <br /><br />Válaszolj minden kifogásra, és építsd be őket a javaslat új változatába. <br /><br />Értesíts mindenkit az újabb módosításról, és kérd meg őket, hogy gondolják át újra a hozzájárulásukat, és „módosítsák a szavazatukat”. <br /><br />Szükség esetén indíts további hozzájárulási javaslatokat, amíg a kifogások meg nem oldódnak. |
-| **Következtetés** <br /><br />Ha nem maradt kifogás, és mindenki hozzájárult, kihirdetitek a döntést. | Fogalmazz meg egy **következtetést**. <br /><br />Zárd le a javaslatot. Fogalmazd meg a következtetést, és értesíts minden érintettet. <br /><br />Írd le a meghozott döntést, és köszönd meg a részvételt. <br /><br />Foglald össze a folyamat eredményeit, és mondd el, mi történik ezután. <br /><br />Ha nem maradt megalapozott kifogás, rögzítsd, hogy a résztvevők egyetértenek abban: a javaslat „kipróbálható”. <br /><br />A következtetés később is visszakereshetővé teszi a döntést. |
+| **Mutass be egy javaslatot** <br /><br />Írj világos és tömör javaslatot, és oszd meg az érintettekkel. Úgy fogalmazz, hogy mások megértsék, mit javasolsz. | Indíts egy **beszélgetést** a Loomióban. <br /><br />Nevezd meg a javaslatot a beszélgetés címében, és fejtsd ki a leírásban. |
+| **Kérdések** (Nem kötelező) <br /><br />Kérd meg a résztvevőket, hogy tegyenek fel tisztázó kérdéseket a javaslat megértéséhez. <br /><br />*„A tisztázó kérdezési kör segít abban, hogy mindenki megértse a javaslatot, mielőtt elmondja róla a véleményét.”* | Indíts egy **Kérdezési kör** szavazást. Ha rejtett, a csoport adminisztrátora elérhetővé teheti a [Szavazási sablonok](/en/user_manual/polls/poll_templates/) között. <br /><br />Kérdezd meg: „Mit kell tudnod ahhoz, hogy megértsd a javaslatot?” |
+| **Reakciók** <br /><br />Kérd meg a résztvevőket, hogy reakcióikkal és hozzászólásaikkal segítsenek javítani a javaslaton. <br /><br />Ez a kör a megértésről és a reagálásról szól - *figyeld meg és értelmezd a csoporttól érkező információkat, majd reagálj vagy igazítsd hozzájuk a javaslatot.* | Indíts egy **[Hangulatfelmérés](/en/user_manual/polls/proposals/sense_check/)** javaslatot. <br /><br />*A címben:* Nevezd meg a javaslatot, és jelezd, hogy itt lehet reagálni és hozzászólni. <br /><br />*A javaslat részleteiben:* Fogalmazd meg világosan a javaslatot, és mondd el, miért fontos. Add meg a szükséges háttérinformációkat és a javaslat aktuális változatára mutató hivatkozást. <br /><br />Kérj mindenkitől választ a javaslat lezárása előtt. |
+| **Módosítás** <br /><br />Mérlegeld a résztvevők hozzászólásait és ötleteit, és módosítsd a javaslatot a szervezeted érdekében. <br /><br />Gondold át, milyen módosításokat szeretnél beépíteni a javaslat új változatába. | Válaszolj a hangulatfelmérés javaslatban felmerült hozzászólásokra és ötletekre. <br /><br />Írj egy **Következtetést**, amely összefoglalja a javaslat eredményeit. <br /><br />Jegyezd fel a felmerült aggályokat és az új információkat, és vázold fel, hogyan módosul a javaslat. <br /><br />Mondd el, mi történik ezután, és értesítsd a résztvevőket a következtetésről. |
+| **Kifogások** <br /><br />Mutasd be a javaslat módosított változatát, és kérd meg a résztvevőket, hogy jelezzék a megalapozott kifogásaikat - azokat, amelyek lehetséges károkra mutatnak rá. <br /><br />Válaszolj minden kifogásra, és módosítsd a javaslatot úgy, hogy kezelje azokat. | Indíts egy **[Beleegyezési javaslatot](/en/user_manual/polls/proposals/consent/)** a módosított javaslattal. <br /><br />*A címben:* Nevezd meg a meghozandó döntést. <br /><br />*A javaslat részleteiben:* Mutasd be a javaslatot, és kérd meg a résztvevőket, hogy szavazzanak beleegyezéssel, vagy jelezzenek egy megalapozott kifogást - olyat, amely lehetséges kárra mutat rá. Tartsd szem előtt, hogy ahhoz kérünk beleegyezést, hogy a javaslat „biztonságosan kipróbálható”. <br /><br />Válaszolj minden kifogásra, és készíts egy módosított javaslatot, amely kezeli azokat. <br /><br />Értesíts mindenkit az újabb módosításról, és kérd meg őket, hogy gondolják át újra a beleegyezésüket, és „módosítsák a szavazatukat”. <br /><br />Vagy indíts szükség szerint egymást követő beleegyezési javaslatokat, amíg minden kifogást sikerül rendezni. |
+| **Következtetés** <br /><br />Amikor már nincs kifogás, és mindenki beleegyezett, kihirdetik a meghozott döntést. | Írj egy **Következtetést**. <br /><br />Zárd le a javaslatot. Írj egy következtetést, és értesíts minden érintettet. <br /><br />Mondd el, milyen döntés született, és köszönd meg a résztvevőknek, hogy részt vettek a folyamatban. <br /><br />Foglald össze a folyamat eredményeit, és mondd el, mi történik ezután. <br /><br />Ha már nincs megalapozott kifogás, jelezd, hogy mindenki beleegyezett abba, hogy a javaslat „biztonságosan kipróbálható”. <br /><br />A következtetés fontos feljegyzés a döntésről, amelyre később is lehet hivatkozni. |
 
 <!-- translation-section: objections -->
 
 ### Kifogások
 
-A hozzájárulási folyamatban a kifogás olyan körülményre mutat rá, amely **kárt okozhat a csapatnak vagy a szervezetnek**.
+A hozzájárulási folyamatban a kifogás olyan aggályt jelent, amely szerint valami **kárt okozhat a csapatnak vagy a szervezetnek**.
 
-Egy megalapozott kifogásnak meg kell felelnie ezeknek a feltételeknek:
-- Konkrét: *Érvekkel tudom alátámasztani*
-- Nem személyes: *Nem pusztán személyes preferencia*
-- Tapasztalaton alapul: *Nem jóslat, hanem tapasztalat támasztja alá*
-- Nem „biztonságosan elbukhat”: *Nem csupán arról van szó, hogy van egy „jobb ötletem”*
+A kifogásoknak az alábbi feltételeknek kell megfelelniük ahhoz, hogy megalapozottak legyenek:
+- Egyértelmű: *Érvekkel alá tudom támasztani*
+- Személytelen: *Nem pusztán személyes preferenciáról van szó*
+- Bizonyítékokra épül: *Tapasztalaton alapul, nem jóslaton*
+- A kudarc nem lenne biztonságos: *Nem arról van szó, hogy van egy „jobb ötletem”*
 
 <!-- translation-section: example-of-a-consent-process-on-loomio -->
 
@@ -119,41 +119,41 @@ Egy megalapozott kifogásnak meg kell felelnie ezeknek a feltételeknek:
 
 ### 0. lépés. Észreveszel egy problémát vagy lehetőséget, és kezdeményezel
 
-*Érdemes foglalkozni a problémával vagy lehetőséggel?* Chloe észrevette, hogy hamarosan új munkavédelmi jogszabályok lépnek hatályba, ezért vállalta, hogy szabályzattervezetet készít a szervezetének.
+*Érdemes foglalkozni a problémával vagy lehetőséggel?* Chloe észrevette, hogy hamarosan új munkavédelmi jogszabályok lépnek hatályba, és vállalta, hogy elkészíti a szervezete munkavédelmi szabályzatának tervezetét.
 
-*Szükség van döntésre?* A munkavédelmi szabályzatot hivatalosan jóvá kell hagyni.
+*Van meghozandó döntés?* A munkavédelmi szabályzatot hivatalos szabályzatként kell jóváhagyni.
 
-*Érint másokat és a szervezetedet?* A szabályzat a szervezet minden tagját érinti. A munkatársaknak be kell tartaniuk, a szervezet számára pedig jogi kötelezettséget jelent.
+*Érint másokat és a szervezetedet?* A szabályzat a szervezet minden tagját érinti. A munkatársaknak be kell tartaniuk, és a betartása a szervezet jogi kötelezettségévé válik.
 
 <!-- translation-section: step-1-present-a-proposal -->
 
 ### 1. lépés. Mutass be egy javaslatot
 
-Chloe egy Loomio-témát indít a munkavédelmi szabályzat kidolgozásáról. Vállalja az első tervezet elkészítését, másokat is hozzájárulásra hív, és jelzi, hogy hozzájárulási folyamatot indít a szabályzat elfogadásához.
+Chloe indít egy Loomio-szálat, amelyben leírja, miért szükséges munkavédelmi szabályzatot kidolgozni. Javasolja, hogy egy első tervezet elkészítésével ő vezesse ezt a munkát, hozzájárulásokat kér a szabályzat kidolgozásához, és jelzi, hogy hozzájárulási folyamatot indít a szabályzat elfogadására.
 
 ![](discussion_context_health_and_safety.png)
 
 <!-- translation-section: step-2-facilitate-a-clarifying-question-round -->
 
-### 2. lépés. Vezess le egy tisztázó kérdéskört
+### 2. lépés. Vezess egy tisztázó kérdezési kört
 
-Chloe egy Kérdés kör javaslatot indít, amelyben meghatározott ideig tisztázó kérdéseket lehet feltenni a munkavédelmi szabályzatról. A tervezet mellé további háttérinformációkat is ad.
+Chloe kérdezési javaslatot indít egy kérdezési kör megnyitásához, és arra kéri a résztvevőket, hogy a megadott időszakon belül tegyenek fel tisztázó kérdéseket a munkavédelmi szabályzatról. A tervezet mellett további háttérinformációkat is megad a megértéshez.
 
-Ebben a szakaszban az a cél, hogy a résztvevők megértsék a szabályzatot, mielőtt véleményt mondanak róla.
+Ebben a szakaszban az a cél, hogy mindenki megértse a szabályzatot, mielőtt elmondja róla a véleményét.
 
 ![](proposal_question_health_and_safety.png)
 
-A résztvevők a javaslat „Ok” szövegmezőjében teszik fel kérdéseiket, majd a „Szavazat leadása” gombra kattintanak. Chloe válaszol a kérdésekre.
+A résztvevők a javaslat „Indoklás” szövegmezőjébe írják a kérdéseiket, majd a „Szavazat elküldése” gombra kattintanak. Chloe válaszol a kérdésekre.
 
 ![](proposal_reply_health_and_safety.png)
 
 <!-- translation-section: step-3-facilitate-a-reactions-round -->
 
-### 3. lépés. Vezess le egy reakciókört
+### 3. lépés. Vezess egy reakciókört
 
-Chloe egy Véleményfelmérés javaslattal reakciókört indít. A résztvevők reakciókkal és hozzászólásokkal segíthetik a szabályzat javítását.
+Chloe most egy hangulatfelmérési javaslattal nyitja meg a reakciókörét. Arra kéri a résztvevőket, hogy reakciókkal és hozzászólásokkal segítsenek javítani a szabályzatot.
 
-Ebben a körben a csoporttól érkező információkat figyelik és értelmezik, majd ezek alapján reagálnak vagy változtatnak.
+Ez a kör lehetőséget ad a csoporttól kapott információk megfigyelésére és értelmezésére, majd az ezek alapján történő reagálásra vagy módosításra.
 
 ![](proposal_reaction_round_health_and_safety.png)
 
@@ -161,24 +161,24 @@ Ebben a körben a csoporttól érkező információkat figyelik és értelmezik,
 
 ### 4. lépés. Módosítsd a javaslatot
 
-Amikor a Véleményfelmérés javaslat lezárul, Chloe értesít mindenkit, és a visszajelzések alapján módosítja a szabályzatot.
+Amikor a hangulatfelmérési javaslat lezárul, Chloe értesít mindenkit, és elvégzi a szabályzat szükséges módosításait.
 
 ![](proposal_outcome_reaction_round_health_and_safety.png)
 
 <!-- translation-section: step-5-seek-consent-to-adopt-the-policy -->
 
-### 5. lépés. Kérj hozzájárulást a szabályzat elfogadásához
+### 5. lépés. Kérj beleegyezést a szabályzat elfogadásához
 
-A munkavédelmi szabályzat tervezete elkészült. A résztvevők feltehették kérdéseiket, és javaslatokat tehettek a javítására.
+A munkavédelmi szabályzat megfelelőnek tűnik. Az embereknek lehetőségük volt kérdéseket feltenni és javaslatokat tenni a szabályzat javítására.
 
-Chloe most egy Hozzájárulási javaslattal kéri a résztvevők hozzájárulását a szabályzat elfogadásához.
+Chloe most egy beleegyezési javaslat indításával kér beleegyezést a szabályzat elfogadásához.
 
 ![](proposal_consent_process_health_and_safety.png)
 
 <!-- translation-section: step-6-integrate-valid-objections-to-create-an-amended-version-of-the-proposal-that-everyone-consents-is-safe-to-try -->
 
-### 6. lépés. Építsd be a megalapozott kifogásokat, hogy a javaslat módosított változatát mindenki „kipróbálhatónak” tartsa
+### 6. lépés. Építsd be a megalapozott kifogásokat, és készíts olyan módosított javaslatot, amelyről mindenki elfogadja, hogy „biztonságosan kipróbálható”
 
-Miután minden kifogást beépítettek, létrejön a hozzájárulás, Chloe pedig megfogalmazza a döntés következtetését :-)
+Miután minden kifogást beépítettek, megszületett a beleegyezés, és Chloe megfogalmazza a döntés következtetését :-)
 
 ![](proposal_outcome_consent_process_health_and_safety.png)

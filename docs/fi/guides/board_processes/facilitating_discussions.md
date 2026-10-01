@@ -1,20 +1,20 @@
 ---
 title: Keskustelujen ohjaaminen
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/guides/board_processes/facilitating_discussions.md
+source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
+source_file: docs/en/guides/board_processes/facilitating_discussions.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-30'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 4fa9b0fbf10bb2eb
   on-loomio: 9ff64037e6b7a7f3
   issues-that-arise-between-board-meetings: ba163d9d1703ff12
   when-there-isn-t-space-during-meetings: 80352b1f1995ff8f
 generated:
-  introduction: 150f2eb80e93cfad
-  on-loomio: a89e81fe63e58773
-  issues-that-arise-between-board-meetings: 9032afec345e50a3
-  when-there-isn-t-space-during-meetings: 77a5aa4a4e7dbc6b
+  introduction: 9c3b4b7ffe28fbf1
+  on-loomio: a0cfbe395aedfbc3
+  issues-that-arise-between-board-meetings: 2fcf7d1643bcc2ab
+  when-there-isn-t-space-during-meetings: 26bd396bec7892f1
 title_source: 6d57aa8c543c9a02
 title_generated: 727abcd9611934cb
 ---
@@ -23,56 +23,56 @@ title_generated: 727abcd9611934cb
 
 # Keskustelujen ohjaaminen
 
-Joskus hallituksen tai toimikunnan jäsenten huomiota vaativa aihe tulee esiin kokousten välillä.
+Toisinaan kokousten välillä nousee esiin asioita, jotka vaativat hallituksen tai toimikunnan jäsenten huomiota.
 
-Joskus kokouksessa ei myöskään ole riittävästi aikaa keskustella asiasta tai harkita päätöstä perusteellisesti.
+Joskus kokouksessa ei myöskään ole riittävästi aikaa keskusteluun tai päätöksen perusteelliseen harkintaan.
 
 <!-- translation-section: on-loomio -->
 
 ## Loomiossa
 
-Ohjaa keskustelua Loomion **keskusteluketjussa**. Anna ketjulle kuvaava otsikko, jonka jäsenet tunnistavat, ja kerro tarvittavat tiedot ketjun kuvauksessa. Lisää aiheeseen sopiva luokittelutunniste, jotta jäsenet löytävät ketjun myöhemmin.
+Käytä Loomion **ketjua** keskustelun ohjaamiseen. Anna ketjulle kuvaava otsikko, jonka jäsenet tunnistavat, ja kerro yksityiskohdat ketjun kontekstissa. Lisää sopiva luokittelutunniste, jotta jäsenet löytävät ketjun myöhemmin.
 
-Kutsu jäsenet ketjuun, jotta he saavat siitä kopion sähköpostitse. Jäsenet voivat osallistua keskusteluun avaamalla Loomion sähköpostissa olevasta linkistä. He voivat myös vastata ilmoitusviestiin, jolloin heidän vastauksensa näkyy kommenttina ketjussa.
+Ilmoita jäsenille ketjusta kutsumalla heidät siihen, jolloin he saavat kopion ketjusta sähköpostitse. Jäsenet voivat osallistua keskusteluun napsauttamalla Loomioon vievää linkkiä tai vastaamalla ilmoitussähköpostiin, jolloin heidän kommenttinsa näkyy ketjussa.
 
 ![](thread_discussion.png#width-90)
 
-Voit liittää Loomion keskusteluketjuun tiedostoja tai linkkejä verkkoaineistoihin keskustelun tueksi.
+Loomion ketjuun voit liittää tiedostoja tai linkkejä verkossa oleviin aineistoihin keskustelun tueksi.
 
-Keskusteluketjussa voi esimerkiksi:
-- tarkastella ja kehittää toimintaperiaatetta
-- pyytää hallitukselta neuvoa aiheeseen tai ongelmaan
-- keskustella strategiasta
-- tutkia ideaa tai mahdollisuutta
-- arvioida riskejä
+Tavallisia käyttötapoja ovat:
+- toimintaperiaatteen arviointi ja kehittäminen
+- neuvojen pyytäminen hallitukselta jostakin aiheesta tai asiasta
+- strategiasta keskusteleminen
+- idean tai mahdollisuuden tarkastelu
+- riskien arviointi
 
 <!-- translation-section: issues-that-arise-between-board-meetings -->
 
-## Kokousten välillä esiin tulevat asiat
+## Hallituksen kokousten välillä esiin nousevat asiat
 
-Organisaatiossa voi tapahtua paljon kokousten välillä, ja hallituksen jäsenille ilmoitetaan asioista usein sähköpostitse. Sähköpostikeskustelua on vaikea seurata: vastauksia voi hukkua postilaatikoihin ja osa ihmisistä voi jäädä keskustelun ulkopuolelle.
+Organisaatiossa voi tapahtua paljon kokousten välillä, ja useimmat ilmoittavat asioista hallituksen jäsenille sähköpostitse. Keskustelun seuraaminen sähköpostissa on hankalaa: vastaukset hukkuvat usein postilaatikoihin ja osa ihmisistä jää keskustelun ulkopuolelle.
 
-*”Hallintoa ei voi hoitaa sähköpostitse”, Richard Westlake (Westlake Governance).*
+*”Hallintoa ei voi hoitaa sähköpostitse!”, Richard Westlake (Westlake Governance).*
 
-Kun hallituksen huomiota vaativa asia tulee esiin, aloita Loomiossa keskusteluketju sähköpostikeskustelun sijaan. Jäsenet voivat vastata sähköpostitse, ja heidän kommenttinsa näkyvät Loomion ketjussa. Näin keskustelu pysyy yhdessä paikassa.
+Kun esiin nousee hallituksen huomiota vaativa asia, käytä sähköpostin sijaan Loomion ketjua. Jäsenet voivat vastata sähköpostitse, ja heidän kommenttinsa näkyy Loomion ketjussa, jolloin keskustelu pysyy yhdessä paikassa.
 
 Toimi näin:
 - Käytä sähköpostin aihetta ketjun otsikkona,
-- kirjoita sähköpostiviestin sisältö ketjun kuvaukseen,
-- kutsu muut ketjuun heidän sähköpostiosoitteellaan tai Loomion käyttäjänimellään.
+- kirjoita sähköpostin sisältö ketjun kontekstiin,
+- kutsu tiimisi ketjuun sähköpostiosoitteilla tai Loomion käyttäjänimillä.
 
-Loomion keskusteluketjussa:
-- kaikki aiheeseen liittyvät tiedot ovat yhdessä paikassa ja helposti saatavilla,
-- ihmiset voivat vastata ilman vastaus- ja vastaa kaikille -sähköpostiketjuja, joissa joku voi jäädä keskustelun ulkopuolelle,
-- näet, ketkä ovat lukeneet viestin ja ketä kannattaa muistuttaa,
-- voitte viedä asian johtopäätökseen ja vähentää sähköpostin määrää.
+Loomion ketjun avulla:
+- Kaikki aihetta koskeva tieto on järjestetty yhteen helposti saatavilla olevaan paikkaan,
+- ihmiset voivat vastata ilman vastaa- tai vastaa kaikille -toiminnoilla syntyviä sähköpostiketjuja, joissa osa ihmisistä saattaa jäädä ulkopuolelle,
+- näet, kuka on lukenut viestin ja ketä pitää muistuttaa,
+- voit edistää työtä kohti johtopäätöstä ja vähentää sähköpostin määrää.
 
 <!-- translation-section: when-there-isn-t-space-during-meetings -->
 
-## Kun kokouksessa ei ole riittävästi aikaa
+## Kun kokouksissa ei ole riittävästi aikaa
 
-Jos esityslistan kohtaa ei ehditä käsitellä loppuun hallituksen kokouksessa, jatka keskustelua Loomiossa. Ohjaa osallistujat sopivaan keskusteluketjuun tai aloita uusi ketju ja ilmoita siitä hallituksen jäsenille.
+Jos esityslistan asiaa ei ehditä ratkaista hallituksen kokouksessa, voit siirtää sen jatkokeskusteluun Loomioon. Ohjaa ihmiset asiaa käsittelevään ketjuun tai aloita uusi ketju ja ilmoita siitä hallituksen jäsenille.
 
-Tämä vähentää hallituksen aikapainetta ja antaa enemmän aikaa tiedonkeruulle, keskustelulle ja perusteelliselle harkinnalle. Näin päätöksen laatu voi parantua.
+Tämä vähentää hallituksen aikapainetta ja antaa enemmän aikaa tiedon keräämiseen, keskusteluun ja perusteelliseen harkintaan, mikä johtaa usein parempaan päätökseen.
 
 ![](thread_topic.png#width-90)

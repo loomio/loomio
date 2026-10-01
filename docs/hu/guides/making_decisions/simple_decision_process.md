@@ -1,10 +1,10 @@
 ---
 title: Egyszerű döntési folyamat
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/guides/making_decisions/simple_decision_process.md
+source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
+source_file: docs/en/guides/making_decisions/simple_decision_process.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-30'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 4181c35d7bb80d36
   simple-decision-making-in-3-steps: 2e27700e7ce074d8
@@ -14,13 +14,13 @@ sections:
   outcome: 22c7e31a66929ef6
   proposals-can-help-in-many-situations: 3e3757bc31211752
 generated:
-  introduction: de86ef6a5bcb9ed3
-  simple-decision-making-in-3-steps: 315849e82b842eaf
-  step-1-introduce-and-discuss: 359dc5e818cbc29d
-  step-2-sense-check: 632bd6a032cb1a90
-  step-3-proposal: 39c4397eaca1eb47
-  outcome: 7cebef82ae86af15
-  proposals-can-help-in-many-situations: 3e81f288be31fb4c
+  introduction: 52adcf46ba0063f2
+  simple-decision-making-in-3-steps: 99a09efeb41afde0
+  step-1-introduce-and-discuss: eb68386315b50fb8
+  step-2-sense-check: 93370ae23d530163
+  step-3-proposal: 7a528d296b57aa0f
+  outcome: 3d87b52b1c54c9fb
+  proposals-can-help-in-many-situations: 85b68c6d8a3a3129
 title_source: c3bdf7193b944a7d
 title_generated: f0e8241ec4961c7a
 ---
@@ -29,76 +29,76 @@ title_generated: f0e8241ec4961c7a
 
 # Egyszerű döntési folyamat
 
-Ez az útmutató egy teljes döntési folyamatot mutat be: beszélgetés, Érzékellenőrzés, végső javaslat és következtetés. Ha egy javaslat mezőiről és válaszlehetőségeiről szeretnél többet megtudni, olvasd el a [Javaslatok](/en/user_manual/polls/proposals/) oldalt.
+Ez az útmutató egy teljes folyamatot mutat be, amely beszélgetésből, hangulatfelmérésből, végleges javaslatból és következtetésből áll. Egy javaslat mezőiről és válaszlehetőségeiről a [Javaslatok](/en/user_manual/polls/proposals/) oldalon találsz segítséget.
 
-Néhány szervezet már kialakult közös döntéshozatali gyakorlattal kezdi használni a Loomiót. Gyakran kézikönyvben is rögzítették a módszereiket. Sok szervezet azonban még keresi az első lépéseket ahhoz, hogy jobb döntéseket hozzon közösen. Ha nálatok is fontos kérdés, hogy **hogyan hozzunk közösen döntéseket?**, ez az útmutató neked szól.
+Egyes szervezetek már a közös döntéshozatal kialakult kultúrájával és gyakorlatával érkeznek a Loomióhoz. Ezek a szervezetek gyakran kézikönyveket írtak és rögzítették a gyakorlataikat, de a legtöbb szervezet még keresi az utat, és hasznos első lépéseket szeretne találni a jobb közös döntésekhez. Ha a szervezetedben a legfontosabb kérdés az, hogy **hogyan hozunk közösen döntéseket?**, akkor ez az útmutató neked szól.
 
-***Ez a három lépés segít abban, hogy közösen jobb, átgondoltabb döntést hozzatok kevesebb feszültséggel.***
+***Ez a három lépés segít abban, hogy közösen jobb, egységesebb döntést hozzatok, kevesebb stresszel és szorongással.***
 
 <!-- translation-section: simple-decision-making-in-3-steps -->
 
-## Egyszerű döntéshozatal 3 lépésben
+## Egyszerű döntéshozatal - 3 lépésben
 
-A jó közös döntések ritkán születnek meg maguktól. Többnyire segít, ha valaki a döntésig vezeti a beszélgetést. Amikor beszélgetést indítasz, ezt a szerepet vállalod, hacsak nem valaki más vezeti azt.
+A jó közös döntések ritkán születnek meg maguktól. Szinte mindig segít, ha valaki a döntésig vezeti a beszélgetést. Amikor tehát beszélgetési szálat indítasz, vállalod a beszélgetés vezetését is, hacsak nem valaki más vezeti.
 
-Kövesd ezt a három lépést, miközben segíted a csoportodat a döntéshozatalban.
+Kövesd ezt a 3 lépést, amikor segíted a csoportodat egy jó döntés meghozatalában.
 
 <!-- translation-section: step-1-introduce-and-discuss -->
 
-### 1. lépés – Mutasd be a témát, és beszéljétek meg
-Indíts **beszélgetést** a Loomióban: mutasd be a témát, és hívd meg a résztvevőket. Adj meg minden információt és háttéranyagot, amelyre a csoportodnak szüksége van az érdemi részvételhez és a cél megértéséhez.
+### 1. lépés - Mutasd be és beszéljétek át
+Indíts egy **beszélgetést** a Loomióban a téma bemutatásához, a párbeszéd megnyitásához és az emberek meghívásához. Adj meg minden olyan információt, amelyre a csoportodnak szüksége van az érdemi részvételhez, és ismertesd a fontos előzményeket, hogy mindenki értse a célt.
 
-Fogalmazd meg egyértelműen a célt: milyen döntést kell meghoznotok, vagy milyen eredményt vártok a beszélgetéstől?
+Fogalmazd meg világosan a célodat - milyen döntést kell meghozni, vagy milyen következtetésre szeretnétek jutni a beszélgetéssel?
 
-A beszélgetés során adj teret a különböző nézőpontoknak. A legjobb ötletek néha váratlan helyről érkeznek. Közösen vizsgáljátok meg és próbáljátok ki az ötleteket, és tartsátok nyitva a beszélgetést.
+A beszélgetés során adj teret a különböző véleményeknek - néha a legjobb ötletek és hozzászólások szokatlan nézőpontokból születnek. Közösen tárjátok fel és próbáljátok ki az ötleteket, és ösztönözz nyílt, konstruktív beszélgetést.
 
-Figyeld meg, ha mindig ugyanazok szólnak hozzá. Az @jellel megemlítve hívj meg néhány csendesebb résztvevőt is, és kérdezd meg a véleményüket.
+Figyelj arra, ha mindig ugyanazok uralják a beszélgetést, és kérj hozzászólást a csendesebb résztvevőktől is: használd az @említést, és kérdezd meg, mit gondolnak.
 
-Egy összetett beszélgetést könnyebb követni, ha a kontextus részt a főbb pontok összefoglalásával frissíted.
+Egy összetett beszélgetésbe könnyebb bekapcsolódni, ha a leírást frissíted a főbb pontok összefoglalásával.
 
 ![](discussion_simple_decision_refresh_brand.png)
 
 <!-- translation-section: step-2-sense-check -->
 
-### 2. lépés – Érzékellenőrzés
-Amikor a csoportod kezd közös irányt találni, indíts **Érzékellenőrzés** szavazást, hogy megismerd a véleményeket és felmérd, hogyan látják a résztvevők a helyzetet.
+### 2. lépés - Hangulatfelmérés
+Amikor a csoportod kezd közös irányt találni, indíts egy **Hangulatfelmérés** szavazást a vélemények megismeréséhez és annak felméréséhez, hogyan érez a csoport.
 
-Az „Érzékellenőrzés” jelzi a résztvevőknek, hogy kezd kialakulni egy javaslat, és részvételre ösztönzi őket. Egy kérdés tisztázására is használhatod, akkor is, ha a megoldás még nem látszik.
+A „Hangulatfelmérés” jelzi az embereknek, hogy egy javaslat készül, és részvételre ösztönzi őket. Egy kérdés tisztázására is használható, akkor is, ha a megoldás még nem látható.
 
-Az Érzékellenőrzés segít felszínre hozni az aggályokat, mielőtt hivatalos megállapodásra törekednétek. Megtudhatod, hogy a résztvevők elégedettek-e az iránnyal, vannak-e kérdéseik, több időre van-e szükségük, vagy aggódnak-e valami miatt.
+A hangulatfelmérés segít felszínre hozni az aggályokat, mielőtt hivatalos megállapodásra törekednétek. Megtudhatod, hogy az emberek elégedettek-e az iránnyal, vannak-e kérdéseik, több időre van-e szükségük, vagy vannak-e aggályaik.
 
-A visszajelzések alapján javítsd és pontosítsd a javaslatot. Ha még van mit átgondolni, térj vissza az 1. lépéshez, majd indíts újabb Érzékellenőrzést.
+Használd a visszajelzéseket a javaslat javításához és pontosításához. Ha még van rajta mit dolgozni, szükség lehet arra, hogy visszatérj az 1. lépéshez, majd újabb hangulatfelmérési kört indíts.
 
-Az aktív részvétel segít felmérni, mikor álltok készen a javaslatra.
+Az érdemi részvétel segít felmérni, mikor álltok készen arra, hogy továbblépjetek egy javaslatra.
 
 ![](proposal_sense_check_simple_process_refresh_brand.png)
 
 <!-- translation-section: step-3-proposal -->
 
-### 3. lépés – Javaslat
-Ekkor már abban a tudatban tehetsz hivatalos **Javaslat**ot, hogy várhatóan elfogadják.
+### 3. lépés - Javaslat
+Amikor most hivatalos **Javaslat** formájában indítasz szavazást, már bízhatsz abban, hogy a csoport elfogadja.
 
-Lehet, hogy sok változat felmerült a beszélgetésben. Pontosan fogalmazd meg, miről szól a döntés, hogy mindenki értse a szavazási lehetőségeket.
+Lehet, hogy sok beszélgetés előzte meg, és több változatot is javasoltak, ezért pontosan fogalmazd meg, milyen döntést kell meghozni, hogy mindenki értse, mit jelentenek a szavazásban szereplő lehetőségek.
 
-Úgy állítsd be a javaslat határidejét, hogy a csoport tagjainak legyen idejük átgondolni és megvitatni azt. Szükség esetén meghosszabbíthatod a határidőt.
+Tudatosan határozd meg a javaslat határidejét, hogy a csoport tagjainak legyen idejük átgondolni és részt venni benne. Szükség esetén bármikor későbbre teheted a záró dátumot.
 
-Ebben a lépésben a résztvevők szavazataival rögzítitek a megállapodást, majd következtetésben foglaljátok össze, mi történt és mi következik.
+Ez a lépés azért fontos, hogy a résztvevők szavazataival hivatalossá váljon a megállapodás, és megfogalmazd a következtetést: mi történt, és mi fog történni ezután.
 
-A rendszer rögzíti a javaslat eredményét és a döntéshez vezető beszélgetést.
+A javaslat eredményeit a rendszer rögzíti a döntéshez vezető beszélgetéssel együtt.
 
 ![](proposal_consent_simple_process_refresh_brand.png)
 
 <!-- translation-section: outcome -->
 
 ### Következtetés
-Amikor egy Loomio-szavazás lezárul, a rendszer felkér, hogy írj **következtetést**, amelyből mindenki megtudhatja, mi történt és mi következik.
+Amikor egy Loomio-szavazás lezárul, a rendszer felkér egy **következtetés** megadására, hogy mindenki tudja, mi történt, és mi következik ezután.
 
 ![](proposal_outcome_simple_process_refresh_brand.png)
 
 <!-- translation-section: proposals-can-help-in-many-situations -->
 
-## A javaslatok sokféle helyzetben segíthetnek
+## A javaslatok sok helyzetben segíthetnek
 
-Akkor is indíthatsz javaslatot, ha nem vagy biztos benne, hogy mindenki egyetért. A javaslatok segítenek felszínre hozni a megoldandó kérdéseket és tisztázni a nézeteltéréseket.
+Ne habozz javaslatot indítani csak azért, mert nem vagy biztos abban, hogy mindenki egyetért majd - a javaslatok nemcsak akkor hasznosak, ha már konszenzus van. Segítenek felszínre hozni a megoldandó kérdéseket és tisztázni a nézeteltéréseket.
 
-A következő oldalakon összetettebb döntési folyamatokat találsz: [tanácskérés](/en/guides/making_decisions/advice_process), [beleegyezés](/en/guides/making_decisions/consent_process ) és [konszenzus](/en/guides/making_decisions/consensus_process ).
+A következő oldalak néhány összetettebb döntési folyamatot mutatnak be, amelyek [tanácskérésen](/en/guides/making_decisions/advice_process), [beleegyezésen](/en/guides/making_decisions/consent_process ) vagy [konszenzuson](/en/guides/making_decisions/consensus_process ) alapulnak.

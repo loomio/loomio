@@ -1,6 +1,6 @@
 ---
 title: Ergebnis
-source_revision: 71554be8e61a76613b0707b8262302c22299a5d0
+source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
 source_file: docs/en/user_manual/polls/score/index.md
 translated:
   provider: codex/gpt-6.1-sol
@@ -14,85 +14,88 @@ sections:
   read-the-results: 3e996e9bcc830d1d
   share-an-outcome: 243aaac17e645331
 generated:
-  introduction: bbbe49ec9049151f
-  when-to-use-score: 91039eb2687a9f1d
-  example-score-possible-trial-locations: a25fe534d1da1507
-  set-up-the-poll: 1b5e3fc0f13bf918
-  vote: 7fa377cc1d17652d
-  read-the-results: b7170fb5dfea1fde
-  share-an-outcome: 7e6ab505b448d008
+  introduction: 2d21dc5feefcd5dd
+  when-to-use-score: e7a2f43bc81010d1
+  example-score-possible-trial-locations: 9c12da9956bf1d7c
+  set-up-the-poll: c7de4f32812d8f45
+  vote: 4f44e71f044a8856
+  read-the-results: 11e2af6ef4e97e78
+  share-an-outcome: 4c675bb310fd3c2a
 title_source: 38e5a46cbc5ad328
 title_generated: cd8e22cf7439433d
+needs_review:
+  introduction: use "Bewerten" instead of "Ergebnis" for "Score"
+  read-the-results: use "Bewerten" instead of "Ergebnis" for "Score"
 ---
 
 <!-- translation-section: introduction -->
 
-# Ergebnis
+# Bewerten
 
-Mit Ergebnis bewerten Teilnehmende jede Option auf derselben Zahlenskala. Anders als bei Auswählen geben sie zu jeder Option eine Bewertung ab. So zeigen die Ergebnisse, welche Optionen sie bevorzugen und wie stark ihre Präferenz ist.
+Bewerten erfasst, wie Teilnehmende jede Option auf einer gemeinsamen numerischen Skala bewerten. Anders als bei Auswählen geben sie zu jeder Option eine Bewertung ab. So zeigt das Ergebnis sowohl, was die Teilnehmenden bevorzugen, als auch, wie stark sie es bevorzugen.
 
 <!-- translation-section: when-to-use-score -->
 
-## Wann du Ergebnis verwenden kannst
+## Wann du Bewerten verwenden kannst
 
-Verwende Ergebnis, wenn sich jede Option unabhängig anhand derselben Frage bewerten lässt. Das eignet sich zum Beispiel dafür:
+Verwende Bewerten, wenn sich jede Option unabhängig anhand derselben Frage bewerten lässt. Die Methode eignet sich gut, um:
 
-- einzuschätzen, wie weit die einzelnen Teile eines Projekts sind;
+- einzuschätzen, wie weit einzelne Teile eines Projekts sind;
 - die Bedeutung mehrerer Grundsätze zu bewerten;
-- das Interesse an möglichen Besprechungsthemen zu messen;
-- Förderanträge nach einem gemeinsamen Kriterium zu bewerten; oder
+- das Interesse an möglichen Besprechungsthemen zu erfassen;
+- Förderanträge anhand eines gemeinsamen Kriteriums zu bewerten; oder
 - die Eignung mehrerer Vorschläge zu vergleichen.
 
-Lege fest, was das untere und obere Ende der Skala bedeuten. Ohne gemeinsame Definition können Abstimmende dieselbe Zahl unterschiedlich verstehen. Verwende [Auswählen](/en/user_manual/polls/choose/), wenn du nur eine Auswahl brauchst, oder [Verteilen](/en/user_manual/polls/allocate/), wenn Teilnehmende ein begrenztes Budget aufteilen müssen.
+Lege fest, was der unterste und der oberste Wert der Skala bedeuten. Ohne eine gemeinsame Definition kann eine Zahl für verschiedene Abstimmende Unterschiedliches bedeuten. Verwende [Auswählen](/en/user_manual/polls/choose/), wenn du nur eine Auswahl brauchst, oder [Verteilen](/en/user_manual/polls/allocate/), wenn Teilnehmende innerhalb eines begrenzten Budgets abwägen müssen.
 
 <!-- translation-section: example-score-possible-trial-locations -->
 
-## Beispiel: Mögliche Teststandorte bewerten
+## Beispiel: mögliche Teststandorte bewerten
 
-Die Hafermilch-Genossenschaft sucht Standorte für einen Test mit Mehrwegflaschen. Sie bittet ihre Mitglieder, vier Standorte auf einer Skala von 0 (**ungeeignet**) bis 10 (**ideal**) zu bewerten. Dabei sollen sie die Erreichbarkeit für Kundinnen und Kunden, die Kapazität des Personals, die Lagerung und den Transport der gesammelten Flaschen berücksichtigen.
+Oatmilk Cooperative wählt Standorte für einen Test mit Mehrwegflaschen aus. Die Mitglieder sollen vier Standorte von 0 (**ungeeignet**) bis 10 (**ideal**) bewerten und dabei die Erreichbarkeit für die Kundschaft, die Personalkapazität, die Lagerung und den Transport zur Abholung berücksichtigen.
 
 <!-- translation-section: set-up-the-poll -->
 
-## Umfrage einrichten
+## Die Abstimmung einrichten
 
-Formuliere eine Frage, die für jede Option gleichermaßen gilt. Füge die zu bewertenden Punkte hinzu, lege das **Minimale Ergebnis** und das **Maximale Ergebnis** fest und erkläre die Endpunkte in den Details. Mit einer Beschreibung der Optionen kannst du verdeutlichen, was jeweils dazugehört.
+Formuliere eine Frage, die gleichermaßen für jede Option gilt. Füge die zu bewertenden Optionen hinzu, lege die **Niedrigste Bewertung** und die **Höchste Bewertung** fest und erkläre die beiden Endpunkte in den Details. Beschreibungen der Optionen können verdeutlichen, was jeweils bewertet werden soll.
 
 ![](form.png)
 
-Wähle eine Skala, die Teilnehmende einheitlich anwenden können. Eine Skala von 0 bis 5 ist schnell zu verwenden. Eine Skala von 0 bis 10 erlaubt feinere Abstufungen. Mehr Abstufungen liefern nicht unbedingt bessere Informationen. Wähle daher die kürzeste Skala, die zur Frage passt.
+Wähle eine Skala, die Teilnehmende einheitlich anwenden können. Eine Skala von 0–5 lässt sich schnell nutzen; eine Skala von 0–10 ermöglicht feinere Unterscheidungen. Mehr Genauigkeit liefert nicht unbedingt bessere Informationen. Verwende deshalb die kürzeste Skala, die zur Frage passt.
 
-Anonyme Stimmabgabe und eine zufällige Reihenfolge der Optionen können helfen, soziale Einflüsse und Reihenfolgeeffekte zu verringern.
+Anonymes Abstimmen und eine zufällige Reihenfolge der Optionen können hilfreich sein, wenn du den Einfluss anderer Personen oder der Reihenfolge verringern möchtest.
 
 <!-- translation-section: vote -->
 
 ## Abstimmen
 
-Teilnehmende bewerten jede Option mit einem Schieberegler. In diesem Beispiel gibt eine abstimmende Person dem Café am Hauptbahnhof 8 Punkte, dem Markt am Fluss 6, der Mensa der Universität 7 und den Büros am Hafen 5.
+Teilnehmende bewegen einen Schieberegler, um jede Option zu bewerten. In diesem Beispiel bewertet die abstimmende Person das Café am Hauptbahnhof mit 8, den Markt am Fluss mit 6, die Mensa der Universität mit 7 und die Büros am Hafen mit 5.
 
 ![](voting.png)
 
-Die Begründung erklärt, wie die abstimmende Person die Skala angewendet hat. So kann die Gruppe erkennen, ob eine niedrige Bewertung auf fehlenden Informationen oder auf inhaltlichen Bedenken beruht.
+Die Begründung erklärt, wie die abstimmende Person die Skala angewendet hat. Das hilft der Gruppe zu unterscheiden, ob eine niedrige Bewertung auf fehlenden Informationen oder auf inhaltlichen Bedenken beruht.
 
 <!-- translation-section: read-the-results -->
 
-## Ergebnisse lesen
+## Das Ergebnis lesen
 
-Für jede Option zeigen die Ergebnisse:
+Für jede Option zeigt das Ergebnis:
 
 - **Punkte**: die Summe aller Bewertungen;
 - **Bedeuten**: die durchschnittliche Bewertung; und
-- **Wähler*innen**: wie viele Personen die Option bewertet haben.
+- **Abstimmende**: wie viele Personen die Option bewertet haben.
 
 ![](results.png)
 
-In diesem Beispiel hat das **Café am Hauptbahnhof** mit 7,5 den höchsten Durchschnitt. Die **Büros am Hafen** haben mit 5,25 den niedrigsten. Der Markt am Fluss und die Mensa der Universität liegen mit jeweils 7 gleichauf. Vier von fünf eingeladenen Personen haben abgestimmt. Die Gruppe sieht also auch, dass noch eine Antwort aussteht.
+In diesem Beispiel hat das **Café am Hauptbahnhof** mit 7,5 den höchsten Durchschnitt. Die **Büros am Hafen** haben mit 5,25 den niedrigsten Durchschnitt, während der Markt am Fluss und der Gastronomiebereich der Universität mit jeweils 7 gleichauf liegen. Vier von fünf eingeladenen Personen haben abgestimmt. Die Gruppe kann also auch sehen, dass eine Antwort noch aussteht.
 
-Vergleiche Durchschnittswerte nur, wenn die Optionen von ähnlich vielen Personen bewertet wurden. Lies die Begründungen, bevor du kleine Unterschiede als bedeutsam einstufst.
+Vergleiche die Durchschnittswerte nur, wenn die Optionen von einer ähnlichen Anzahl an Abstimmenden bewertet wurden. Lies die Begründungen zu den Stimmen, bevor du einen kleinen Unterschied als bedeutsam einordnest.
 
 <!-- translation-section: share-an-outcome -->
 
 ## Ein Fazit teilen
 
-Teile ein Fazit, wenn die Abstimmung geschlossen ist. Erkläre, welche Schritte aus den Bewertungen folgen und wie bei Gleichstand entschieden wird. Unter [Ein Fazit teilen](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome) erfährst du, wie Fazits funktionieren.
+Teile ein Fazit, wenn die Abstimmung beendet ist. Beschreibe, welche Handlung aus den Bewertungen folgt und wie Gleichstände aufgelöst werden. Unter [Ein Fazit teilen](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome) erfährst du, wie Fazits funktionieren.
 
 ![Ein Fazit, das den Standort mit der höchsten durchschnittlichen Bewertung auswählt](outcome.png)

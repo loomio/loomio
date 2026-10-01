@@ -1,6 +1,6 @@
 ---
 title: Beratungsprozess
-source_revision: 9c60c42fc739483fa23f15d9f34a1e9245518092
+source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
 source_file: docs/en/guides/making_decisions/advice_process.md
 translated:
   provider: codex/gpt-6.1-sol
@@ -17,16 +17,16 @@ sections:
   step-2-clarify-and-strengthen-the-advice-through-discussion: a3b5393138bde245
   step-3-make-a-decision-with-advice-and-inform-people: c55b6d9c9ad0961c
 generated:
-  introduction: a9a973ae4446c692
-  key-points: ead76db86a3a690f
-  steps-in-the-advice-process: e02ed0419e29d71c
-  benefits: c57a62efdd0331f8
-  applying-the-advice-process-on-loomio: a677f5b219e22d58
+  introduction: 844baf9d669976dd
+  key-points: 6bf257f33df69ff1
+  steps-in-the-advice-process: 3f5752a0bd367938
+  benefits: 3167974418d707ef
+  applying-the-advice-process-on-loomio: 831aeaac8d7c5828
   example-of-an-advice-process-on-loomio: 9c1c9d0144b742b4
-  step-0-you-notice-a-problem-or-opportunity-and-take-the-initiative: d51f8ad3cf8c40f2
-  step-1-seek-input-to-sound-out-perspectives-before-proposing-action: 0b10156936debae2
-  step-2-clarify-and-strengthen-the-advice-through-discussion: e18f32405eb06af1
-  step-3-make-a-decision-with-advice-and-inform-people: 8f58b51196d54375
+  step-0-you-notice-a-problem-or-opportunity-and-take-the-initiative: 5ff321356a25286a
+  step-1-seek-input-to-sound-out-perspectives-before-proposing-action: 2e3626d8bd23ac65
+  step-2-clarify-and-strengthen-the-advice-through-discussion: 7ddedb578bb2528d
+  step-3-make-a-decision-with-advice-and-inform-people: f628034aecd62ca3
 title_source: 290fb74b7be97f31
 title_generated: e9d42500bab73430
 ---
@@ -35,38 +35,40 @@ title_generated: e9d42500bab73430
 
 # Beratungsprozess
 
-Dieser Leitfaden beschreibt den gesamten Beratungsprozess. Wie du einen einzelnen Beratungsvorschlag einrichtest und auswertest, erfährst du unter [Beratung](/en/user_manual/polls/proposals/advice/).
+Dieser Leitfaden beschreibt den vollständigen Beratungsprozess. Hilfe beim Einrichten und Auswerten eines einzelnen Beratungsvorschlags findest du unter [Beratung](/en/user_manual/polls/proposals/advice/).
 
-![Foto von Yoda als Sinnbild für weisen Rat – *Foto von Nadir sYzYgY auf Unsplash*](nadir-syzygy-den6gTowZKs-unsplash.jpg)
+![Foto von Yoda als Sinnbild für weisen Rat - *Foto von Nadir sYzYgY auf Unsplash*](nadir-syzygy-den6gTowZKs-unsplash.jpg)
 
-Hol dir Rat für eine Entscheidung, die du treffen musst.
+Hole Rat zu einer Entscheidung ein, die du treffen musst.
 
-Beziehe den Rat von betroffenen Personen und Fachleuten in deine Entscheidung ein. So kannst du eine bessere Entscheidung für deine Organisation treffen.
+Triff eine Entscheidung mit dem Rat von betroffenen Personen oder Personen mit Fachwissen, damit du eine bessere Entscheidung für deine Organisation treffen kannst.
 
-> *„Im Beratungsprozess kann jede Person jede Entscheidung treffen, muss aber die Betroffenen und Menschen mit Fachwissen um Rat fragen.“ – Frederick Laloux, Reinventing Organizations.*
+> *„Im Beratungsprozess kann jede Person jede Entscheidung treffen, muss aber Rat von Betroffenen und Personen mit Fachwissen einholen.“ - Frederick Laloux, Reinventing Organizations.*
 
 <!-- translation-section: key-points -->
 
-## Das Wichtigste
-- Du kannst selbst entscheiden.
-- Lade andere ein, dir Rat zu geben.
-- Berücksichtige ihre Sichtweisen.
+## Kernpunkte
+
+- Freiheit, eine Entscheidung zu treffen.
+- Lade Menschen ein, ihren Rat zu geben.
+- Berücksichtige die Stimmen anderer.
 
 <!-- translation-section: steps-in-the-advice-process -->
 
 ## Schritte im Beratungsprozess
-Du erkennst ein Problem oder eine Chance und ergreifst die Initiative.
-1. Beschreibe die anstehende Entscheidung, kläre, wer sie trifft, und lade betroffene Personen und Fachleute ein.
-2. Starte eine **Diskussion** auf Loomio. Wenn du strukturierte Antworten oder eine Frist brauchst, starte einen **Beratungsvorschlag**.
-3. Kläre offene Fragen und vertiefe den Rat anhand der Begründungen zu den Stimmen und der Kommentare in der Diskussion.
-4. Triff die Entscheidung und veröffentliche ein **Fazit**. Erkläre darin, was entschieden wurde und wie der Rat dazu beigetragen hat.
+Du bemerkst ein Problem oder eine Gelegenheit und ergreifst die Initiative.
+1. Beschreibe die anstehende Entscheidung, kläre, wer dafür verantwortlich ist, und lade betroffene Personen und relevante Fachleute ein.
+2. Starte eine **Diskussion** in Loomio und führe einen **Beratungsvorschlag** durch, wenn strukturierte Antworten oder eine Frist hilfreich sind.
+3. Kläre und vertiefe die Ratschläge anhand der Begründungen zu den Stimmen und der Kommentare in der Diskussion.
+4. Triff die Entscheidung und veröffentliche anschließend ein **Fazit**, das erklärt, was entschieden wurde und wie die Ratschläge dazu beigetragen haben.
 
 <!-- translation-section: benefits -->
 
 ## Vorteile
-- Der Rat anderer hilft dir, eine bessere Entscheidung für deine Organisation zu treffen. 
-- Er stärkt Beziehungen, schafft Gelegenheiten zum Lernen und bringt unterschiedliche Sichtweisen ein.
-- Er fördert Eigeninitiative, Kreativität und Freude an der Arbeit.
+
+- Rat hilft dir, eine bessere Entscheidung für deine Organisation zu treffen.
+- Fördere Beziehungen, Lernmöglichkeiten und vielfältige Beiträge.
+- Rege Eigeninitiative und Kreativität an und mache die Arbeit angenehmer.
 
 <!-- translation-section: applying-the-advice-process-on-loomio -->
 
@@ -74,9 +76,9 @@ Du erkennst ein Problem oder eine Chance und ergreifst die Initiative.
 
 | **Beratungsprozess** | **Auf Loomio** |
 |---|---|
-| Du erkennst ein Problem oder eine Chance und ergreifst die Initiative. |  |
-| Hol dir verschiedene Sichtweisen ein, bevor du eine Maßnahme vorschlägst. | Starte eine **Diskussion** auf Loomio, um den Hintergrund zu erklären und ein Gespräch zu eröffnen. Starte einen **[Beratungsvorschlag](/en/user_manual/polls/proposals/advice/)**, wenn du einen festgelegten Antwortzeitraum, Begründungen zu den Stimmen und eine klare Übersicht über die Beteiligten möchtest. |
-| Du berücksichtigst den erhaltenen Rat, triffst eine Entscheidung und informierst die Menschen, die dich beraten haben. | Füge der Diskussion ein **Fazit** hinzu.   <br /><br />Beschreibe deine Entscheidung und bedanke dich für den Rat und die Rückmeldungen.  <br /><br />   Erkläre, was als Nächstes geschieht, und benachrichtige die Beteiligten über das Fazit.  <br /><br />Das Fazit hält die Entscheidung fest, damit sie später nachvollziehbar bleibt. <br /> <br /> Ergänze das Fazit entweder im Kontext der Diskussion oder schreibe es in einen Kommentar, den du an der Zeitleiste anheftest. So findest du es später schnell wieder.<br /><br/> |
+| Du erkennst ein Problem oder eine Gelegenheit und ergreifst die Initiative. |  |
+| Hole Beiträge ein, um unterschiedliche Sichtweisen kennenzulernen, bevor du eine Handlung vorschlägst. | Starte eine **Diskussion** auf Loomio, um Kontext bereitzustellen und das Gespräch zu eröffnen. Führe einen **[Beratungsvorschlag](/en/user_manual/polls/proposals/advice/)** durch, wenn du einen festgelegten Zeitraum für Antworten, Begründungen zu den Stimmen und eine klare Dokumentation der Teilnehmenden möchtest. |
+| Du berücksichtigst den erhaltenen Rat, triffst eine Entscheidung und informierst die Personen, die Rat gegeben haben. | Füge dem Diskussions-Thread ein **Fazit** hinzu.   <br /><br />Beschreibe die getroffene Entscheidung und danke den Personen für ihren Rat und ihre Rückmeldungen.  <br /><br />   Erkläre, was als Nächstes geschieht, und benachrichtige die Personen über das Fazit.  <br /><br />Das Fazit dokumentiert die Entscheidung, damit du später darauf zurückgreifen kannst. <br /> <br /> Ergänze entweder den Kontext um dieses Fazit oder schreibe es in einen Kommentar, den du an der Zeitleiste anheftest, damit du es später schnell wiederfindest.<br /><br/> |
 
 <!-- translation-section: example-of-an-advice-process-on-loomio -->
 
@@ -84,44 +86,44 @@ Du erkennst ein Problem oder eine Chance und ergreifst die Initiative.
 
 <!-- translation-section: step-0-you-notice-a-problem-or-opportunity-and-take-the-initiative -->
 
-### Schritt 0 – Du erkennst ein Problem oder eine Chance und ergreifst die Initiative.
+### Schritt 0 - Du erkennst ein Problem oder eine Gelegenheit und ergreifst die Initiative.
 
-Lohnt es sich, dem Problem oder der Chance nachzugehen?  Takashi hat Probleme mit seinem alten Computer. Bei einer kürzlichen Präsentation ist er abgestürzt.
+Lohnt es sich, das Problem anzugehen oder die Gelegenheit zu nutzen? Takashi hat Probleme mit seinem alten Computer, der bei einer kürzlich gehaltenen Präsentation abgestürzt ist.
 
-Steht eine Entscheidung an?  Der Computer muss ersetzt werden.
+Steht eine Entscheidung an? Es ist Zeit, den Computer zu ersetzen.
 
-Betrifft das andere Menschen und deine Organisation?  Takashis Kolleginnen und Kollegen möchten, dass er seine Aufgaben gut erfüllen kann und in Besprechungen keine Zeit durch Computerprobleme verliert. Sie verstehen daher, dass er einen funktionierenden Computer braucht.  Der Kauf betrifft auch das Budget und die Beschaffungsregeln der Organisation und muss möglicherweise mit anderen Teammitgliedern abgestimmt werden.
+Betrifft das andere Personen und deine Organisation? Takashis Team möchte, dass er seine Aufgaben wirksam erfüllt und keine Zeit in Besprechungen verliert. Deshalb versteht es, dass er einen funktionierenden Computer braucht. Die Anschaffung eines Geräts wirkt sich auch auf das Budget der Organisation aus, muss die Beschaffungsrichtlinien berücksichtigen und muss möglicherweise mit anderen Teammitgliedern abgestimmt werden.
 
 <!-- translation-section: step-1-seek-input-to-sound-out-perspectives-before-proposing-action -->
 
-### Schritt 1. Hol dir verschiedene Sichtweisen ein, bevor du handelst
+### Schritt 1. Hole Beiträge ein, um unterschiedliche Sichtweisen kennenzulernen, bevor du eine Handlung vorschlägst
 
-Takashi startet eine Diskussion auf Loomio und beschreibt klar, welche Entscheidung er treffen muss.  Er erläutert den Hintergrund und erklärt, dass er einen Beratungsprozess beginnt.
+Takashi startet eine Diskussion auf Loomio und beschreibt klar, welche Entscheidung er treffen muss. Er stellt Kontext bereit, um die Diskussion zu eröffnen, und erklärt, dass er einen Beratungsprozess beginnt.
 
 ![](discussion_takashi_computer.png)
 
-Er kann in der Diskussion auch einen [Beratungsvorschlag](/en/user_manual/polls/proposals/advice/) starten, um bis zu einem festgelegten Termin strukturierte Antworten einzuholen.
+Er kann in der Diskussion auch einen [Beratungsvorschlag](/en/user_manual/polls/proposals/advice/) durchführen, um strukturierte Antworten bis zu einem Enddatum einzuholen.
 
 <!-- translation-section: step-2-clarify-and-strengthen-the-advice-through-discussion -->
 
-### Schritt 2.  Kläre und vertiefe den Rat in der Diskussion
+### Schritt 2. Kläre und vertiefe die Ratschläge durch die Diskussion
 
-Takashi antwortet auf Ratschläge in den Kommentaren der Diskussion. Er erläutert seine Situation und stellt Fragen, um mehr über die Vorschläge zu erfahren.
+Takashi antwortet auf die Ratschläge in den Kommentaren im Diskussions-Thread, erläutert seine Situation und stellt Fragen, um die erhaltenen Ratschläge zu vertiefen.
 
 ![](discussion_comments_advice_process_new_computer.png)
 
-Durch die Ratschläge und Kommentare wird Takashi sicherer in seiner Entscheidung.
+Während die Personen Rat geben und Kommentare schreiben, wird Takashi in seiner Entscheidung sicherer.
 
 <!-- translation-section: step-3-make-a-decision-with-advice-and-inform-people -->
 
-### Schritt 3. Triff eine Entscheidung und informiere die Beteiligten
+### Schritt 3. Triff eine Entscheidung unter Berücksichtigung des Rats und informiere die Personen
 
-Wenn alle ihren Rat gegeben haben oder der Vorschlag geschlossen wird, trifft Takashi eine Entscheidung und veröffentlicht das **[Fazit](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome)**.
+Wenn alle ihren Rat gegeben haben oder der Vorschlag beendet ist, trifft Takashi eine Entscheidung und hält das **[Fazit](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome)** fest.
 
-Das Fazit beschreibt klar, was entschieden wurde und was als Nächstes geschieht. Es hält die Entscheidung für die Organisation fest.
+Das Fazit beschreibt klar die getroffene Entscheidung und die nächsten Schritte. Es wird zu einer wichtigen Dokumentation für die Organisation.
 
-Takashi bearbeitet den Kontext der Diskussion und ergänzt dort das Fazit.
+Takashi bearbeitet den Kontext der Diskussion, um dieses Fazit hinzuzufügen.
 
 ![](decision_outcome_advice_process_new_computer.png)
 
-Alternativ könnte er das Fazit in einem Kommentar festhalten und diesen an der Diskussion anheften. So ist es in der Zeitleiste gut sichtbar.
+Alternativ könnte er es in einem Kommentar festhalten, den er im Thread anheftet, damit das Fazit in der Zeitleiste der Diskussion gut sichtbar erscheint.

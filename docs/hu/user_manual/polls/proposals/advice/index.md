@@ -1,6 +1,6 @@
 ---
 title: Tanács
-source_revision: 9c60c42fc739483fa23f15d9f34a1e9245518092
+source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
 source_file: docs/en/user_manual/polls/proposals/advice/index.md
 translated:
   provider: codex/gpt-6.1-sol
@@ -14,13 +14,13 @@ sections:
   read-the-results: 937eff4c74abcc79
   share-an-outcome: 1f762148d1f18b1d
 generated:
-  introduction: cc49f8a3b2b89a23
-  when-to-use-advice: c41fe039e232ad9a
-  example-choose-a-washing-supplier: 90cdb21ad29696c7
-  set-up-the-proposal: f3f9947feee36689
-  vote: 967fb76c24b6de0b
-  read-the-results: da04a98b884704c8
-  share-an-outcome: 5f6e157912712deb
+  introduction: ea0cc3345df861d7
+  when-to-use-advice: 7982b07514a555ab
+  example-choose-a-washing-supplier: fcc3edc711b1f426
+  set-up-the-proposal: 04c38d65dbbf282d
+  vote: 135973e6b68d4b3d
+  read-the-results: 929c82f719aa8dbe
+  share-an-outcome: f9170cf5d518ba94
 title_source: 305f5e5463e18d7f
 title_generated: df602162bbbf058d
 ---
@@ -29,52 +29,52 @@ title_generated: df602162bbbf058d
 
 # Tanács
 
-A Tanács javaslat olyan döntéshez gyűjt véleményeket, amelyet egy személynek vagy csapatnak kell meghoznia. A résztvevők tanácsot adhatnak, vagy jelezhetik, hogy nincs hozzáfűznivalójuk.
+A Tanács típusú javaslat véleményeket gyűjt egy olyan döntéshez, amelynek meghozataláért egy személy vagy csapat felelős. A résztvevők tanácsot adhatnak, vagy jelezhetik, hogy nincs hozzáfűznivalójuk.
 
-Ez az oldal bemutatja a Tanács javaslat űrlapját, a szavazást és az eredményeket. A döntés megfogalmazásától a következtetés közzétételéig tartó teljes folyamatot a [Tanácsadási folyamat](/en/guides/making_decisions/advice_process) oldalon találod.
+Ez az oldal bemutatja a Tanács típusú javaslat űrlapját, a szavazatok leadását és az eredményeket. A döntés megfogalmazásától a következtetés közzétételéig tartó teljes folyamatot a [Tanácsadási folyamat](/en/guides/making_decisions/advice_process) oldalon találod.
 
 <!-- translation-section: when-to-use-advice -->
 
-## Mikor használd a Tanács javaslatot
+## Mikor használd a Tanács típust?
 
-A Tanács javaslatot akkor használd, ha a döntéshozó az érintettek vagy a témában jártas emberek véleményét szeretné megismerni. Jól használható beszállítóválasztáshoz, működési döntésekhez, szabályzattervezetekhez és átruházott hatáskörben hozott döntésekhez.
+Használd a Tanács típust, ha a döntéshozó olyan emberek véleményét szeretné megismerni, akik megfelelő szakértelemmel rendelkeznek, vagy akiket érint a döntés. Jól használható beszállítók kiválasztásához, működési döntésekhez, szabályzattervezetekhez és egy átruházott szerepkörön belüli döntésekhez.
 
-A Tanács javaslat nem jóváhagyó szavazás. Írd le, ki hozza meg a döntést, milyen korlátok érvényesek, és hogyan veszi figyelembe a válaszokat.
+A Tanács nem jóváhagyó szavazás. Írd le, ki hozza meg a döntést, milyen korlátok érvényesek, és hogyan veszi figyelembe a válaszokat.
 
 <!-- translation-section: example-choose-a-washing-supplier -->
 
-## Példa: mosási szolgáltató kiválasztása
+## Példa: válassz mosási szolgáltatót
 
-A Zabtej Szövetkezet működési koordinátorának mosási szolgáltatót kell választania. Tanácsot kér a kapacitásról, az élelmiszer-biztonsági nyilvántartásokról, a vízfelhasználásról, a megkeresésekre adott válaszidőről és a támogatásról.
+Az Oatmilk Cooperative működési koordinátorának mosási szolgáltatót kell választania. Tanácsot kér a kapacitásról, az élelmiszer-biztonsági nyilvántartásokról, a vízfelhasználásról, a szolgáltató válaszidejéről és a támogatásról.
 
 <!-- translation-section: set-up-the-proposal -->
 
-## A javaslat létrehozása
+## Állítsd be a javaslatot
 
-Írd le a döntést, nevezd meg a döntéshozót, és adj meg minden információt, amelyre a résztvevőknek szükségük van. Hívd meg az érintetteket és a témában jártas embereket. Az alapértelmezett lehetőségek közül választhatnak tanácsadást vagy tartózkodást.
+Írd le a döntést, nevezd meg a döntéshozót, és add meg a résztvevők számára szükséges információkat. Hívd meg az érintetteket és azokat, akik megfelelő ismeretekkel rendelkeznek. Az alapértelmezett lehetőségekkel a résztvevők tanácsot adhatnak vagy tartózkodhatnak.
 
 ![](form.png)
 
 <!-- translation-section: vote -->
 
-## Szavazás
+## Szavazz
 
-A résztvevők kiválasztják a **Tanács** lehetőséget, és konkrét javaslatot, kockázatot, kérdést vagy kapcsolódó tapasztalatot osztanak meg. Tartózkodhatnak is, ha nincs hasznos észrevételük.
+A résztvevők kiválasztják a **Tanács** lehetőséget, és megadnak egy konkrét ajánlást, kockázatot, kérdést vagy kapcsolódó tapasztalatot. Tartózkodhatnak, ha nincs hasznos hozzáfűznivalójuk.
 
 ![](../proposal_advice_voting.png)
 
 <!-- translation-section: read-the-results -->
 
-## Az eredmények áttekintése
+## Tekintsd át az eredményeket
 
-A diagram megmutatja, ki válaszolt, de a Tanács javaslat lényegét az indoklások adják. Figyelj a korlátokra, az egyetértési pontokra és az egymásnak ellentmondó ajánlásokra. A leggyakoribb választ ne tekintsd döntésnek.
+A diagram megmutatja, ki válaszolt, de a Tanács típusú javaslat lényegét az indoklások tartalmazzák. Keresd a korlátokat, az egyetértési pontokat és az egymásnak ellentmondó ajánlásokat ahelyett, hogy a leggyakoribb választ tekintenéd a döntésnek.
 
 ![](../proposal_advice_results.png)
 
 <!-- translation-section: share-an-outcome -->
 
-## Következtetés megosztása
+## Oszd meg a következtetést
 
-Amikor a javaslat lezárul, a döntéshozó megoszt egy következtetést. Ebben leírja, mit döntött, és hogyan vette figyelembe a kapott tanácsokat. A következtetések működéséről a [Következtetés megosztása](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome) oldalon olvashatsz.
+Amikor a javaslat lezárul, a döntéshozó megoszt egy következtetést. Ebben leírja, mit döntött, és hogyan járultak hozzá a tanácsok a döntéshez. A következtetések használatáról a [Következtetés megosztása](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome) oldalon olvashatsz.
 
-![Következtetés, amely megnevezi a kiválasztott beszállítót és a figyelembe vett tanácsokat](outcome.png)
+![A kiválasztott szolgáltatót és a követett tanácsokat megnevező következtetés](outcome.png)

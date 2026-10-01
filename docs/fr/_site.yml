@@ -15,6 +15,7 @@ copy: Copier
 copy_label: Copier le code dans le presse-papiers
 copied: Copié
 copy_failed: Échec de la copie
+machine_translation_notice: "Cette page a été traduite automatiquement. Si un mot est incorrect ou peu clair, écrivez à %{email} et nous le corrigerons."
 alerts:
   note: Remarque
   tip: Astuce

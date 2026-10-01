@@ -1,14 +1,14 @@
 ---
 title: Mattermost
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/integrations/mattermost/index.md
+source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
+source_file: docs/en/user_manual/integrations/mattermost/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-30'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 5ff78e7362ad4050
 generated:
-  introduction: 20e90cdff74ad096
+  introduction: 7fdb86e10e2eff9d
 title_source: b1ff7bd17092d95e
 title_generated: b1ff7bd17092d95e
 ---
@@ -16,27 +16,27 @@ title_generated: b1ff7bd17092d95e
 <!-- translation-section: introduction -->
 
 # שילוב עם Mattermost
-_חיבור ההתראות מקבוצת Loomio לצ׳אט הצוות ב-Mattermost._
+_חיבור ההתראות של קבוצת Loomio לצ׳אט הצוות ב-Mattermost._
 
-Loomio יכולה לשלוח התראות לערוצים ב-Mattermost על דיונים, הצעות, תגובות, הצבעות ומסקנות חדשות.
+Loomio יכול לשלוח התראות לערוצים ב-Mattermost כשנוצרים דיונים, הצעות, תגובות, הצבעות ומסקנות חדשים.
 
 ---
 
-יש לפתוח בדפדפן את הצוות ב-Mattermost, ואז את דף הגדרות השילובים.
+יש לפתוח את צוות Mattermost בדפדפן. לאחר מכן יש לפתוח את דף הגדרות השילובים.
 ![](mm1.png)
 
-יש לבחור ב-"Incoming Webhooks"
+יש ללחוץ על "Webhooks נכנסים"
 ![](mm2.png)
 
-לאחר מכן יש לבחור ב-"Add Incoming Webhook"
+לאחר מכן יש ללחוץ על "הוספת Webhook נכנס"
 ![](mm3.png)
 
-יש לתת לו שם פשוט, לבחור את הערוץ שבו יופיעו ההתראות ולבחור ב-Save
+יש לתת לו שם פשוט, לבחור את הערוץ שבו יופיעו ההתראות וללחוץ על שמירה
 ![](mm4.png)
 
-יש להעתיק את כתובת ה-Webhook ללוח. היא תידרש בשלב הבא.
+יש להעתיק את כתובת ה-Webhook ללוח, לשימוש בשלב הבא.
 ![](mm5.png)
 
-יש לוודא שכתובת ה-Webhook נמצאת בלוח, ואז לפתוח את הקישור הבא.
+יש לוודא שכתובת ה-Webhook נמצאת בלוח ולפתוח את הקישור הבא.
 
 [הגדרת שילוב צ׳אט ב-Loomio](../chatbots/#set-up-a-chat-integration)

@@ -1,10 +1,10 @@
 ---
 title: Käsittelyn aikana
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/guides/facilitators_guide/underway/index.md
+source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
+source_file: docs/en/guides/facilitators_guide/underway/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-30'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 40747900997bde52
   where-are-we-on-the-map: f20132cc4da45a71
@@ -19,16 +19,16 @@ sections:
   facilitation-interventions: c253f63094ef75de
 generated:
   introduction: 182d5056159344f2
-  where-are-we-on-the-map: 7e8d3cca337ff8e2
-  the-art-of-noticing: 150e9ca7b76fcc0a
-  hearing-diverse-voices: 8401ba570ecd4623
-  counter-cognitive-bias: 29c58feffcdd5a50
-  balancing-divergent-convergent: ecd13f67cb7954fc
-  working-with-scope: 586e2526bf7f90ae
-  a-series-of-small-yes-s: f4d17ac2e6a2a1f3
-  pacing-timing: 969ed4cad6892f53
-  managing-the-attention-economy: 400fc80a1f7e5aee
-  facilitation-interventions: 246064cffd22872a
+  where-are-we-on-the-map: 27c61761eb611f46
+  the-art-of-noticing: 5172bfbe5447e9bb
+  hearing-diverse-voices: 07357acb07b17b59
+  counter-cognitive-bias: fc51c165d2e3ad9f
+  balancing-divergent-convergent: d43cafb0b096fef5
+  working-with-scope: 5ef617bee872cf15
+  a-series-of-small-yes-s: c003587c40fb535c
+  pacing-timing: 7b230e233f474a25
+  managing-the-attention-economy: 3dccb921b6e9e38c
+  facilitation-interventions: cebf879089d1755e
 title_source: 1ecd2476edfd341d
 title_generated: 671532528c7f0b4d
 ---
@@ -41,217 +41,219 @@ title_generated: 671532528c7f0b4d
 
 <!-- translation-section: where-are-we-on-the-map -->
 
-## Missä vaiheessa olemme?
+## Missä kohdassa karttaa olemme?
 
-Ihmisten on helpompi osallistua, kun he tietävät, missä vaiheessa prosessia ollaan. He haluavat tietää, mitä nyt tehdään, mitä seuraavaksi tapahtuu ja mitä on jo tehty. Kokonaisuuden hahmottaminen auttaa heitä osallistumaan tarkoituksenmukaisesti.
+Ihmiset tuntevat olonsa varmemmaksi ja paremmin tuetuksi, kun he voivat hahmottaa paikkansa aikajanalla tai asialistalla. He haluavat tietää, mitä tehdään nyt ja mitä seuraavaksi, ja saada muistutuksia siitä, mitä on jo tehty. Prosessin kokonaisuuden ymmärtäminen auttaa ihmisiä osallistumaan tarkoituksenmukaisesti.
 
-Jos ihmiset tietävät, että kysymyksille on varattu aikaa myöhemmin, heidän on helpompi odottaa esityksen loppuun. Jos ensin kerätään erilaisia näkökulmia ja vasta sitten etsitään yhteistä ratkaisua, ratkaisuihin ei tarvitse kiirehtiä. Ihmisten täytyy tietää, millaista osallistumista heiltä odotetaan ja milloin.
+Jos ihmiset esimerkiksi tietävät, että esityksen jälkeen on varattu aikaa kysymyksille ja vastauksille, he odottavat mieluummin kysymystensä kanssa. Jos on selvää, että ensin avataan erilaisia näkökulmia ja sitten rajataan vaihtoehtoja, ihmiset eivät kiirehdi ratkaisuihin liian varhain. Ihmisten on tiedettävä, millaista panosta heiltä pyydetään ja milloin.
 
-Jotta ohjaaja voi kuvata prosessin muille, hänen täytyy miettiä sen kulku kunnolla läpi. Samalla hän voi varmistaa, että jokaisella vaiheella on tarkoitus ja että vaiheet muodostavat johdonmukaisen kokonaisuuden. Hyvin ohjattu prosessi etenee loogisesti.
+Prosessin kuvaaminen niin selkeästi, että sen voi välittää muille, haastaa myös fasilitaattorit miettimään sen kulun loppuun asti. Se auttaa varmistamaan, että jokaisella vaiheella on tarkoitus ja että vaiheet muodostavat johdonmukaisen kokonaisuuden. Hyvin fasilitoitu prosessi etenee loogisesti.
 
 Loomiossa
 
-* Päätöksenteko Loomiossa etenee jo loogisessa järjestyksessä: kokoa osallistujat (avaa ja kutsu), keskustele (kerää näkökulmia), tee ehdotus (etsi yhteistä ratkaisua), päätä ja toimi (tee johtopäätös).
-* Monet käyttävät Loomiota osana ennalta suunniteltua prosessia, kuten monivaiheista kuulemista.
-* Ohjaaja voi näyttää prosessin kulun osallistujille esimerkiksi ryhmän kuvauksen ja ehdotusten määräaikojen avulla. Näin osallistujat saavat enemmän tietoa siitä, missä vaiheessa ollaan.
+* Päätöksenteko Loomiossa etenee jo perusmuodossaan loogisesti (minkä vuoksi se toimii): Kokoa ihmiset (avaa/kutsu), Keskustele (avaa näkökulmia), Tee ehdotus (rajaa vaihtoehtoja), Päätä ja toimi (vie päätökseen).
+* Monet Loomion käyttäjät käyttävät työkalua osana selkeästi kuvattuja prosesseja, kuten monivaiheista kuulemista.
+* Tarjoamme fasilitaattoreille työkaluja, joilla prosessin ”kartan” voi tehdä näkyväksi käyttäjille. Näitä ovat esimerkiksi ryhmän kuvauskenttä ja ehdotusten määräajat. Niitä voi käyttää ennakoivasti, jotta osallistujat ymmärtävät paremmin asiayhteyden.
 
 <!-- translation-section: the-art-of-noticing -->
 
 ## Havainnoinnin taito
 
-Havainnointi on ehkä ohjaajan tärkein taito. Sen avulla ohjaaja arvioi, milloin hänen pitää puuttua tilanteeseen tai vastata, miten hän voi kutsua oikeanlaista osallistumista ja miten hän voi auttaa ryhmää huomaamaan oman toimintansa. Ohjauksen arvo on siinä, että joku seuraa kokonaisuutta ja toimii havaintojensa perusteella, kun muut keskittyvät käsiteltävään asiaan tai omiin tavoitteisiinsa.
+Havainnointi on todennäköisesti tärkein fasilitointitaito. Sen avulla fasilitaattori selvittää, millaisia toimenpiteitä tai vastauksia tarvitaan, miten saada mukaan tarvittavat näkökulmat ja miten auttaa ryhmää havainnoimaan omaa toimintaansa. Fasilitoinnin arvo on siinä, että joku seuraa tilannetta ja toimii havaintojensa perusteella, kun muut saattavat keskittyä tiettyyn sisältöön tai omiin tavoitteisiinsa.
 
-Hyvä havainnointi edellyttää riittävästi tietoa sekä herkkyyttä ja taitoa tulkita sitä. Ohjaajat puhuvat usein tilanteen lukemisesta: tunteiden, jännitteiden ja valtasuhteiden huomaamisesta. He tarvitsevat toimivia tapoja saada tietoa siitä, mitä tapahtuu.
+Hyvä havainnointi yhdistää laadukkaan tiedon sekä herkkyyden ja taidon tulkita sitä. Monet fasilitaattorit puhuvat tilan ”lukemisesta”: tunnereaktioiden, jännitteiden ja valtasuhteiden havaitsemisesta. Fasilitaattorit tarvitsevat toimivia tapoja saada tietoa tilanteesta.
 
 Loomiossa
 
-* Monet nykyiset ominaisuudet auttavat havainnoimaan. Yksi tärkeimmistä on seurata, miten ehdotuksen äänet jakautuvat ympyräkaaviossa.
-* Ohjelmisto näyttää esimerkiksi, ketkä ovat osallistuneet, mitä aiheita nostetaan esiin ja ketkä ovat hyväksyneet ryhmäkutsunsa.
-* Yksi ohjaaja voi seurata Loomiossa kymmeniä keskusteluja yhtä aikaa, nähdä, mitä niissä jaetaan, ja toimia sen mukaan.
-* Verkossa keskustelu voi tehdä piileviä asioita näkyviksi ja siten helpommin havaittaviksi.
-* Kirjoittaminen auttaa kertomaan, mitä on huomattu ja miksi siihen reagoidaan tietyllä tavalla. Voit esimerkiksi lainata jonkun sanoja tarkasti ja pohtia, mitä ne tuovat esiin. Voit myös poimia lainauksia kokonaisesta keskustelusta ja tunnistaa teemoja tai esiin nousevia ristiriitoja.
-* Havaitseminen helpottuu, kun tahti hidastuu. Tämä on yksi Loomion eduista: voit lukea eriaikaista viestintää omaan tahtiisi. Voit myös palata aiempiin keskusteluihin ja huomata muutoksia ajan mittaan.
-* Koska keskusteluja voi käydä samanaikaisesti, varsinaisten keskustelujen rinnalla voi olla keskustelu itse keskustelusta eli metakeskustelu (niin sanottu sininen hattu). Ryhmä voi näin harjoitella havainnointia hidastamatta muuta prosessia.
+* Monet nykyiset ominaisuudet auttavat havainnoinnissa. Tärkein niistä on luultavasti ehdotuksen ympyräkaavion muodostumisen seuraaminen.
+* Ohjelmisto seuraa joitakin asioita: ketkä ovat osallistuneet ja ketkä eivät vielä, mitä aiheita nostetaan esiin, ketkä ovat hyväksyneet kutsunsa ryhmään ja ketkä eivät, ja niin edelleen.
+* Loomiossa yksi fasilitaattori voi seurata kymmeniä keskusteluja samanaikaisesti, nähdä selkeästi, mitä niissä jaetaan, ja toimia sen mukaan.
+* Verkkokeskustelu voi tehdä sanomattoman näkyväksi ja siten helpommaksi havaita.
+* Kirjallinen viestintä auttaa nimeämään havaintoja ja selittämään, miksi niiden perusteella toimitaan tietyllä tavalla. Voit esimerkiksi lainata jonkun sanoja täsmällisesti ja kertoa, mitä ne tuovat esiin. Voit tehdä saman koko keskustelun tasolla poimimalla useita lainauksia ja tunnistamalla teemoja tai syntyviä ristiriitoja.
+* Havainnointi on paljon helpompaa, kun hidastat tahtia. Tämä on yksi Loomion eduista: eriaikaista viestintää voi lukea omaan tahtiin. Voit myös tarkastella muutoksia ajan kuluessa viittaamalla suoraan aiempiin keskusteluihin.
+* Koska keskusteluja voi käydä samanaikaisesti, varsinaisten keskustelujen rinnalla voi käydä ”metakeskustelua” eli keskustelua keskustelusta (niin sanottu ”sininen hattu”). Näin voitte harjoitella havainnointia yhdessä hidastamatta prosessia.
 
 <!-- translation-section: hearing-diverse-voices -->
 
 ## Erilaisten äänten kuuleminen
 
-Yhteiskunnassamme historia, valtasuhteet, kulttuuri ja psykologia vahvistavat joidenkin ihmisten ääntä ja vaimentavat toisten. Tämä näkyy kaikkialla sisäisistä uskomuksistamme poliittiseen järjestelmään ja lakeihin.
+Yhteiskunnassamme historian, valtasuhteiden, kulttuurin ja psykologian monet kerrokset vahvistavat joidenkin ääntä ja vaimentavat toisten. Tämä näkyy kaikilla kokemuksen tasoilla, syvimmistä tiedostamattomista uskomuksistamme poliittiseen järjestelmään ja lakeihin.
 
-Parhaat ideat eivät silti aina tule niiltä, jotka puhuvat eniten. Ohjaajan tehtävä on tasapainottaa näitä vinoumia. Jos tavoitteena ovat sosiaalinen oikeudenmukaisuus, ryhmän toimivuus ja laadukkaat päätökset, meidän on tunnistettava yhdessä vaikuttavat valtasuhteet ja toimintatavat.
+Parhaat ideat eivät kuitenkaan aina tule äänekkäimmiltä, ja fasilitoinnin tehtävänä on vähentää näitä vinoumia. Jos tavoittelemme sosiaalista oikeudenmukaisuutta, ryhmän toimivuutta ja laadukasta päätöksentekoa, meidän on tunnistettava nämä yhteiseen toimintaamme vaikuttavat ilmiöt.
 
-> <img style="border-radius: 100%; float: right; margin-left: 0.5em; max-width: 96px; " src="../rich_200.png"> Jos haluat kehittää uusia ratkaisuja, tee tilaa erilaisille näkökulmille. Sitä tarvitset myös tiimissä, jossa jokainen voi vaikuttaa. Monet kulttuuriset ja tekniset tekijät suosivat joidenkin ääntä toisten kustannuksella. Voit käyttää monia käytäntöjä tämän vinouman korjaamiseen, mutta jo sen tiedostaminen on hyvä alku. — Richard Bartlett
+> <img style="border-radius: 100%; float: right; margin-left: 0.5em; max-width: 96px; " src="../rich_200.png"> Jos haluat luoda uutta, sinun on annettava tilaa erilaisille näkökulmille. Onneksi samaa tarvitaan myös silloin, kun haluat tiimin, jossa jokainen voi vaikuttaa. Monet kulttuuriset ja tekniset tekijät suosivat joitakin ääniä toisten kustannuksella. Voit ottaa käyttöön monia käytäntöjä tämän vinouman järjestelmälliseksi haastamiseksi, mutta jo sen tiedostaminen on hyvä lähtökohta. — Richard Bartlett
 
-Koemme maailman kukin omasta näkökulmastamme, joten unohdamme helposti, että muut kokevat sen eri tavalla. Näennäisesti yhtenäisessäkin ryhmässä on paljon erilaisia näkökulmia, työskentelytahtia ja mieltymyksiä. Sen ymmärtäminen, että muut ovat erilaisia kuin minä, on tärkeä osa henkilökohtaista kasvua.
 
-Yksi tapa ei sovi kaikille. Jokainen vuorovaikutuksen tapa tuo joidenkin ääntä esiin ja vaimentaa toisia tai korostaa ihmisessä eri puolia. Siksi tarvitaan erilaisia lähestymistapoja, jotta monenlaiset ihmiset voivat antaa parastaan.
+Koemme maailman oman tietoisuutemme kautta, joten unohdamme helposti, että muut kokevat sen eri tavalla. Jopa näennäisesti yhtenäisessä ryhmässä on paljon erilaisuutta: näkökulmia, etenemistahtia ja mieltymyksiä. Sen sisäistäminen, että muut ovat erilaisia kuin minä, on keskeinen henkilökohtaisen kasvun haaste.
 
-> <img style="border-radius: 100%; float: right; margin-left: 0.5em; max-width: 96px; " src="../silvia_200.png"> Tarkista, että huomioit erilaiset oppimistavat. Yksi helppo tapa on käyttää pään, sydämen ja käsien vertausta. Pään kautta oppivat tarvitsevat faktoja ja yksityiskohtaista tietoa. Sydämen kautta oppivat hyötyvät tarinoista ja tarvitsevat tunneyhteyden työhön. Käsien kautta oppivat oppivat tekemällä ja osallistumalla toimintaan. — Silvia Zuur
+Yksi tapa ei sovi kaikille. Jokainen vuorovaikutustapa vahvistaa joidenkin ääntä ja vaimentaa toisten tai korostaa saman ihmisen erilaisia taipumuksia. Siksi tarvitaan useita lähestymistapoja, jotta erilaiset ihmiset voivat antaa parhaan panoksensa.
 
-Erilaisia ääniä saa esiin ja yhteen kutsumalla ihmisiä osallistumaan eri tavoin. Näin voidaan vastata erilaisiin tarpeisiin ja mieltymyksiin sekä antaa kaikille tasavertaisempi mahdollisuus viestiä.
+> <img style="border-radius: 100%; float: right; margin-left: 0.5em; max-width: 96px; " src="../silvia_200.png"> Tarkista, että huomioit erilaiset oppimistyylit. Yksi helppo tapa on käyttää pää, sydän ja kädet -vertauskuvaa. Pään avulla oppivat tarvitsevat faktoja ja yksityiskohtaista tietoa. Sydämen avulla oppivat saavat paljon irti tarinoista. He tarvitsevat työhön tunneyhteyden. Käsien avulla oppiminen tarkoittaa tekemistä ja aktiivista toimintaa. — Silvia Zuur
 
-Yhteiseen keskusteluun voi tuoda erilaisia osallistumistapoja esimerkiksi näillä keinoilla:
+Yksi parhaista tavoista tuoda erilaiset äänet esiin ja yhdistää niitä on tarjota erilaisia vuorovaikutustapoja. Ne vastaavat erilaisiin tarpeisiin ja mieltymyksiin ja tasoittavat osallistumisen mahdollisuuksia.
 
-* **Ryhmän koko** — yksilöllinen pohdinta, parit, pienryhmä, suuri ryhmä, kahdenkeskinen keskustelu, yhdeltä monelle tai monelta monelle.
-* **Ilmaisutapa** — kirjoittaminen, piirtäminen, video, laulaminen, tanssi, vuokaaviot, yhtälöt, symbolit, tarinat, kyyneleet, nauru ja väittely.
-* **Keskustelun säännöt** — kierrokset (jokainen saa puheenvuoron ennen seuraavaa kierrosta), puheenvuorojen rajoittaminen (saat puhua uudelleen vasta kahden muun jälkeen), puhekeppi (vain kepin haltija puhuu eikä häntä keskeytetä), rajatut puheenvuorot (saat puhua minuutin), rajoittamattomat puheenvuorot (saat puhua niin kauan kuin tarvitset ja muut kuuntelevat), osallistumisen seuranta (esimerkiksi kuinka paljon naiset ja miehet ovat puhuneet) sekä hiljaiset hetket puhujien välissä ajatusten käsittelyä varten.
-* **Anna tilaa hiljaisuudelle** *Hiljaisuus tuntuu kiusalliselta vain, jos annat sen tuntua siltä. Se antaa ihmisille aikaa ajatella. — Silvia Zuur*
+Joitakin tavallisia keinoja huomioida erilaiset viestintätavat yhteistyössä:
+
+* **Ryhmän koko** — itsenäinen pohdinta, parit, pieni ryhmä, suuri ryhmä, kahdenkeskinen viestintä, yhden viestintä monelle, monien keskinäinen viestintä.
+* **Ilmaisutapa** — kirjoittaminen, piirtäminen, video, laulaminen, tanssi, vuokaaviot, yhtälöt, symbolit, tarinat, kyyneleet, nauru, väittely ja niin edelleen.
+* **Keskustelukäytännöt** — kierrokset (kuullaan jokaista kerran ennen kuin jatketaan), puheenvuorojen rajoittaminen (voit puhua uudelleen vasta kahden muun puhuttua), puhekeppi (puhu vain, kun keppi on sinulla, älä keskeytä), määräaikaiset puheenvuorot (voit puhua vain yhden minuutin), ajallisesti rajoittamattomat puheenvuorot (voit puhua niin kauan kuin haluat, ja kaikki kuuntelevat tarkasti), puheenvuorojen seuranta (kuinka paljon esimerkiksi naiset ja miehet ovat puhuneet), hiljaiset hetket puhujien välillä (asioiden käsittelyä ja pohdintaa varten).
+* **Anna tilaa hiljaisuudelle** *Hiljaisuus on kiusallista vain, jos annat sen olla kiusallista. Hiljaisuus antaa ihmisille mahdollisuuden ajatella. — Silvia Zuur*
 
 Loomiossa
 
-* Loomion suunnittelussa on alusta asti pyritty kuulemaan kaikkia, myös niitä, jotka eivät pääse paikalle, puhuvat vähemmän tai ovat kiireisiä.
-* Tekstissä jokaisen ääni näkyy suunnilleen samalla voimakkuudella ja nopeudella. Eriaikainen kirjallinen viestintä tasaa osallistumismahdollisuuksia.
-* Ehdotus toimii eräänlaisena puheenvuorokierroksena: jokainen voi halutessaan ilmaista kantansa tasavertaisesti.
-* Loomiossa voi jakaa linkkejä, videoita, kuvia, kaavioita ja tausta-aineistoa, jotka tukevat erilaisia viestintätapoja.
-* Loomion ominaisuudet ovat yksinkertaisia, mutta aktiivinen ohjaus ja ryhmän yhteiset käytännöt mahdollistavat myös sovitut keskustelusäännöt. Ryhmä voi esimerkiksi päättää, että jokainen kirjoittaa vain kerran, kunnes kaikki muut ovat osallistuneet.
-* Loomio tarjoaa joustavia välineitä pienille ja suurille ryhmille pääryhmien ja alaryhmien avulla. Joissakin laajoissa kuulemisissa usean pienryhmän työ on koottu yhteiseksi lopputulokseksi.
-* Jos haluat aikaa omaan pohdintaan, voit pitää tauon, jäsentää ajatuksesi ja palata kirjoittamaan pidemmän kommentin tai jakamaan linkin asiakirjaan. Näin voit itse valita, miten yhdistät yksilöllisen pohdinnan ja ryhmäkeskustelun.
-* Loomion saavutettavuusominaisuudet ja monikieliset käännökset auttavat hyvin erilaisia ihmisiä osallistumaan samaan keskusteluun tasavertaisesti. Teknologia voi näin mahdollistaa sellaista tasavertaista osallistumista, joka olisi kasvokkain lähes mahdotonta.
-* Jos joku osallistuu suhteettoman paljon, hänen viestiensä ohi voi vierittää. Kasvokkain sama toiminta voi hallita koko keskustelua. Pitkät tekstimuurit voivat silti heikentää Loomio-keskustelun tasapainoa.
+* Loomion suunnittelun lähtökohtana on aina ollut ”kaikkien äänten kuuleminen”, myös niiden, jotka eivät pääse paikalle, ovat hiljaisempia tai kiireisiä.
+* Tekstissä jokaisen äänen ”voimakkuus” ja ”nopeus” ovat suunnilleen samat. Kirjallinen, eriaikainen viestintä tasoittaa osallistumisen mahdollisuuksia.
+* Ehdotustoiminto on pohjimmiltaan ”kierros”, joka auttaa ryhmiä antamaan jokaiselle tasavertaisen mahdollisuuden sanoa mielipiteensä, jos hän haluaa.
+* Loomiossa voi käyttää erilaisia sisältömuotoja (linkkejä, videoita, kuvia, kaavioita ja väitteitä tukevaa aineistoa), jotka palvelevat erilaisia viestintätyylejä.
+* Loomio itsessään on melko yksinkertainen, mutta aktiivisen fasilitoinnin ja ryhmän kehittyneiden toimintatapojen avulla keskustelukäytäntöjä voi toteuttaa ”käsin” yhteisten tapojen tai sovittujen sääntöjen pohjalta. Esimerkiksi keskustelussa jokainen voi kirjoittaa vain kerran, kunnes kaikki muutkin ovat osallistuneet.
+* Loomio tarjoaa joustavia työkaluja pienten ja suurten ryhmien vuorovaikutukseen pääryhmien ja alaryhmien avulla. Joissakin laajoissa kuulemisprosesseissa on ollut useita pienempiä ryhmiä, joiden työstä on koottu yhteinen johtopäätös.
+* Jos tarvitset aikaa itsenäiseen pohdintaan, voit pitää tauon ja jäsentää ajatuksiasi. Voit sitten palata ja jakaa pidemmän kommentin tai linkin asiakirjaan. Tämä on esimerkki siitä, miten yksilön ja ryhmän viestintää voi yhdistää osallistujan oman valinnan perusteella.
+* Loomion saavutettavuusominaisuudet ja eri kielille tehdyt käännökset mahdollistavat sen, että hyvin erilaisia tarpeita omaavat ihmiset voivat osallistua tasavertaisesti samaan keskusteluun. Tämä osoittaa, miten teknologia voi mahdollistaa yhdenvertaisen osallistumisen tavalla, joka olisi kasvokkain lähes mahdoton.
+* Jos joku osallistuu muita enemmän eli puhuu liikaa, voit vierittää hänen tekstinsä ohi. Kasvokkain sama käytös voi hallita koko vuorovaikutusta. Pitkien ”tekstiseinien” julkaiseminen voi silti haitata tasapainoista keskustelua Loomiossa.
 
 <!-- translation-section: counter-cognitive-bias -->
 
-## Ajattelun vinoumien ehkäiseminen
+## Vähennä ajattelun vinoumia
 
-Ihmisaivot ovat kehittyneet miljoonien vuosien aikana tasapainottamaan nopeaa ja tehokasta, riittävän hyvää ajattelua sekä hidasta ja perusteellista analyysia. Useimmiten voimme turvautua vaistoihin, nyrkkisääntöihin ja yleistyksiin. Tarvittaessa voimme perehtyä asiaan syvemmin.
+Ihmisaivot ovat kehittyneet miljoonien vuosien aikana tasapainottamaan nopeaa, tehokasta ja ”riittävän hyvää” ajattelua sekä hidasta, kuormittavaa ja syvällistä analyysia. Siksi voimme useimmiten käyttää vaistoja, heuristiikkoja ja yleistyksiä nopeina ja vähän vaivaa vaativina ratkaisuina ja siirtyä syvälliseen analyysiin tarvittaessa.
 
-Joskus ajattelumme kuitenkin johtaa harhaan. Ihmisen ajattelussa tunnetaan vinoumia, jotka voivat estää parhaan päätöksen tekemisen. Ryhmätilanteet tekevät niistä vielä monimutkaisempia. Siksi ne on hyvä tunnistaa.
+Joskus kuitenkin erehdymme. Ihmisen ajattelussa on tunnettuja ”ohjelmavirheitä”, jotka voivat estää parhaiden päätösten tekemisen. Ryhmätilanteissa asia mutkistuu entisestään. Meidän on tiedostettava nämä ilmiöt.
 
-[Ajattelun vinoumia](https://en.wikipedia.org/wiki/List_of_cognitive_biases) on paljon (luettelo kannattaa lukea), ja ne voivat vaikuttaa päätöksentekoon ja yhteistyöhön. Ohjaus voi auttaa tunnistamaan niitä ja tekemään tietoisia valintoja. Ryhmä voi esimerkiksi pohtia, milloin nopeus on tärkeämpää ja milloin tarkkuus.
+[Ajattelun vinoumia](https://en.wikipedia.org/wiki/List_of_cognitive_biases) on valtava määrä (tähän luetteloon kannattaa tutustua), ja ne kaikki voivat vaikuttaa päätöksentekoon ja yhteistyöhön. Fasilitointi voi auttaa käsittelemään niitä, lisäämään tietoisuutta niistä ja tekemään tietoisia valintoja niiden suhteen. Voit esimerkiksi kysyä, milloin nopea eteneminen on tärkeämpää ja milloin tarkkuus.
 
-Selkeästi jäsennetty prosessi ja viestintä voivat ehkäistä ajattelun vinoumia ja parantaa päätösten laatua. Kun ryhmä seuraa sovittua prosessia helpoimman reitin sijaan, ajatusvirheet ja vinoumat tulevat helpommin näkyviin. Ohjaaja voi joskus ehdottaa haastavalta tuntuvaa toimintatapaa juuri siksi, että se auttaa irtautumaan tutuista ajattelumalleista. Tämä voi auttaa ryhmää saavuttamaan tärkeämmät tavoitteensa, vaikka se tuntuisikin hetken epämukavalta.
+Jäsennellyt prosessit ja viestintä ovat tehokas keino vähentää ajattelun vinoumia ja parantaa päätösten laatua. Prosessin seuraaminen helpoimman reitin sijaan voi tuoda ajatusvirheet ja vinoumat näkyviin. Fasilitaattorit ehdottavat joskus asioita, jotka tuntuvat haastavilta tai herättävät vastustusta, juuri siksi, että ne vaativat irtautumista tutuista ajattelumalleista. Johdonmukaisuus tässä voi auttaa ryhmiä saavuttamaan syvempiä tavoitteitaan, mikä voi olla tilapäisen epämukavuuden arvoista.
 
-Esimerkkejä tavoista ehkäistä ajattelun vinoumia:
+Esimerkkejä menetelmistä, jotka voivat auttaa vähentämään ajattelun vinoumia:
 
-* [De Bonon hatut](http://www.debonoforschools.com/asp/six_hats.asp): osallistujat voivat kuvitella käyttävänsä erivärisiä hattuja, jotta he pääsevät irti omista mielipiteistään ja kokeilevat erilaisia ajattelutapoja.
-* Tarkistuslistat: totutut ajatusurat voivat saada meidät ohittamaan ilmeisiäkin asioita, etenkin tutuissa aiheissa. Tarkistuslista auttaa löytämään virheitä.
-* Viisi miksi-kysymystä: jos kysyt miksi vain kerran tai kahdesti, saatat luulla löytäneesi vastauksen ennen kuin pääset ongelman perimmäiseen syyhyn. Viisi kysymystä vie usein asian ytimeen.
-* Ajattelumallit: esimerkiksi [SWOT-analyysi](https://en.wikipedia.org/wiki/SWOT_analysis), [liiketoimintamallipohja](https://en.wikipedia.org/wiki/Business_Model_Canvas) ja monet muut jäsennetyt tiedonkeruumenetelmät voivat selkeyttää analyysia ja paljastaa oletuksia.
+* [De Bonon hatut](http://www.debonoforschools.com/asp/six_hats.asp): erivärisiä hattuja, jotka osallistujat voivat kuvainnollisesti pukea päähänsä irtautuakseen omista mielipiteistään ja kokeillakseen erilaisia ajattelutapoja.
+* Tarkistuslistat: vakiintuneet ajattelutavat voivat saada meidät sivuuttamaan ilmeisiäkin asioita, erityisesti hyvin tutuilla alueilla. Tarkistuslista voi auttaa karsimaan virheitä.
+* Viisi miksi-kysymystä: jos kysyt miksi vain kerran tai kahdesti, saatat luulla päässeesi johtopäätökseen ennen kuin olet löytänyt asian perimmäisen syyn. Viisi kysymyskertaa auttaa yleensä pääsemään asian ytimeen.
+* Ajattelumallit: harjoitukset, kuten [SWOT-analyysi](https://en.wikipedia.org/wiki/SWOT_analysis), [liiketoimintamallipohja](https://en.wikipedia.org/wiki/Business_Model_Canvas) ja monet muut jäsennellyt tiedonkeruumenetelmät, voivat auttaa tekemään selkeämpää analyysia ja paljastamaan oletuksia.
 
 Loomiossa
 
-* Erilainen tieto ja erilaiset näkökulmat voivat horjuttaa oletuksia ja vinoumia. Tämä kuuluu Loomion perusrakenteeseen: kun useampi voi osallistua keskusteluun tasavertaisesti, ryhmällä on paremmat mahdollisuudet välttää ryhmäajattelu.
-* Loomiossa osallistujat voivat ilmaista eriävän mielipiteensä rakentavasti. Turvallinen ja arvostettu erimielisyys on kriittisen ajattelun edellytys.
-* Eriaikainen kirjallinen viestintä hidastaa keskustelua ja antaa aikaa harkita sanottavaa. Se auttaa välttämään ajatusvirheitä.
-* Loomio tarjoaa osittain jäsennetyn prosessin, joka tukee harkittua päätöksentekoa. Sitä voi käyttää monenlaisissa prosesseissa, mutta jo *jonkinlainen* keskustelun rakenne avaa uusia mahdollisuuksia.
+* Monipuolinen tieto ja erilaiset näkemykset voivat horjuttaa oletuksia ja vinoumia. Tämä on osa Loomion perussuunnittelua: kun useampi ääni voi osallistua keskusteluun tasavertaisemmin, ryhmäajattelusta on mahdollista irtautua.
+* Loomio antaa osallistujille mahdollisuuden olla rakentavasti eri mieltä. Turvallinen ja arvostettu erimielisyys on olennainen osa kriittisen ajattelun kulttuuria.
+* Eriaikainen kirjallinen viestintä hidastaa keskustelua ja antaa tilaa harkinnalle. Ihmiset voivat pohtia asioita huolellisemmin ja välttää ajatusvirheitä.
+* Loomio kutsuu ihmiset osittain jäsenneltyyn prosessiin, joka tukee harkitumpaa päätöksentekoa. Loomiota voi käyttää hyvin erilaisissa prosesseissa, mutta jo *jonkinlainen* rakenne keskustelussa avaa uusia mahdollisuuksia.
 
 <!-- translation-section: balancing-divergent-convergent -->
 
-## Näkökulmien avaamisen ja yhteisen ratkaisun tasapaino
+## Näkökulmien avaamisen ja vaihtoehtojen rajaamisen tasapaino
 
-Näkökulmien avaamista ja yhteistä ratkaisua voi kuvata timantin muodolla. Keskustelu laajenee ensin, kun ideoille, tiedolle ja eri näkökulmille annetaan tilaa. Sen jälkeen se alkaa kaventua kohti ratkaisua. Oikea hetki siirtyä vaiheesta toiseen on tärkeä tuloksellisen ja toimintaan johtavan keskustelun ohjaamisessa.
+Näkökulmien avaamisen ja vaihtoehtojen rajaamisen ”timantti” kuvaa keskustelun muotoa. Se laajenee ensin ja antaa tilaa ideoille, tiedolle ja erilaisille näkökulmille. Sitten se alkaa kaventua kohti ratkaisua. Tämän muutoksen oikea ajoitus on keskeistä, kun fasilitoidaan toimintaan tähtääviä, tuottavia ja yhteistyöhön perustuvia keskusteluja.
 
 ![](../collaboration-process.png)
 
-Jos näkökulmia ei avata riittävästi tai vaihe lopetetaan liian aikaisin, päätöksen pohjaksi ei saada tarpeeksi tietoa. Ihmisistä voi tuntua, ettei heitä ole kuultu, ja hyviä ideoita jää sanomatta. Jos yhteistä ratkaisua ei aleta etsiä ajoissa, keskustelu voi jatkua loputtomiin ilman toteutettavaa päätelmää. Osallistujien energia kuluu eikä tuloksia synny.
+Jos näkökulmien avaaminen ohitetaan tai lopetetaan liian aikaisin, tietoa ei ole riittävästi, ihmiset eivät välttämättä koe tulleensa kuulluiksi ja hyviä ideoita jää sanomatta. Jos vaihtoehtojen rajaaminen ohitetaan tai jätetään liian myöhäiseksi, keskustelu voi jatkua loputtomasti ilman toimintaan johtavaa johtopäätöstä. Se kuluttaa osallistujien voimia eikä tuota tuloksia.
 
-Myös prosessin pienemmät vaiheet vaativat oikeaa ajoitusta ja ohjausta. Näkökulmien avaamiseen kuuluvat aiheen esittely, selventäminen ja ideointi. Yhteisen ratkaisun etsimiseen kuuluvat analyysi, johtopäätös ja sitoutuminen. Joillekin keskusteluille riittää väljä eteneminen tämän mallin mukaan, kun taas toisissa jokainen vaihe kannattaa suunnitella tarkasti.
+Myös laajemman prosessin jokainen osavaihe vaatii tietoisuutta oikeasta ajoituksesta ja tarvittavista toimenpiteistä. Näkökulmien avaamiseen kuuluvat aiheeseen tutustuminen, selventäminen ja ideointi. Vaihtoehtojen rajaamiseen kuuluvat analyysi, johtopäätös ja sitoutuminen. Joissakin keskusteluissa riittää timanttimallin väljä huomioiminen, kun taas toisissa kannattaa eritellä tarkasti jokainen vaihe ja osavaihe.
 
-Ryhmän jäsenet suosivat yleensä eri vaiheita, ja myös ryhmällä kokonaisuutena on omat taipumuksensa. Epätasapaino voi näkyä loputtomana ideointina tai liian nopeana siirtymisenä ratkaisuihin. Ohjaus auttaa ihmisiä ja koko ryhmää käyttämään sopivasti aikaa ja energiaa kumpaankin vaiheeseen.
+Ryhmän eri jäsenet suosivat yleensä jompaakumpaa toimintatapaa, ja myös ryhmällä kokonaisuutena on omat taipumuksensa. Epätasapaino voi näkyä liiallisena vapaana ideointina tai kiirehtimisenä ratkaisuihin. Fasilitointi voi auttaa jokaista ja koko ryhmää käyttämään sopivasti voimavaroja eri toimintatapoihin.
+
 
 Loomiossa
 
-* Loomion perusprosessi ohjaa ryhmää vaiheesta toiseen: keskustelussa avataan näkökulmia ja ehdotuksissa etsitään yhteistä ratkaisua. Timanttimalli vaikutti vahvasti Loomion alkuperäiseen suunnitteluun.
-* Loomio auttaa ryhmää liikkumaan vaiheiden välillä tarpeen mukaan. Yritys löytää yhteinen ratkaisu ehdotuksella voi esimerkiksi paljastaa erimielisyyttä ja uutta tietoa. Sen pohjalta voidaan laatia parempi ehdotus.
-* Loomion perusominaisuudet tukevat molempia vaiheita. Ilmoitus uudesta keskustelusta kutsuu ryhmän jäseniä tuomaan esiin näkökulmia, ja ehdotuksen määräaika kannustaa osallistumaan ratkaisun löytämiseen.
-* Loomion nykyisillä ominaisuuksilla ryhmä voi edetä kohti yhteistä ratkaisua aloittamalla ehdotuksen. Ehdotusten tarkoituksenmukainen käyttö on toimivan Loomio-ryhmän selvä merkki. Monen ryhmän ongelmat helpottuvat, kun se tekee ehdotuksia useammin.
+* Loomion perusprosessi ohjaa ryhmiä käsittelemään kaikki vaiheet: keskustelu avaa näkökulmia ja ehdotukset rajaavat vaihtoehtoja. Timanttimalli oli tärkeä lähtökohta Loomion alkuperäisen prosessin suunnittelussa.
+* Loomio auttaa ryhmiä käyttämään timanttimallia joustavasti. Esimerkiksi yritys rajata vaihtoehtoja ehdotuksella voi johtaa näkökulmien syvempään avaamiseen erimielisyyksien kautta. Tämä voi tuoda esiin tai selventää tietoa, jonka avulla muokattu ehdotus johtaa parempaan ratkaisuun.
+* Jotkin Loomion perusominaisuudet tukevat kumpaakin toimintatapaa. Esimerkiksi ilmoitukset uuden keskustelun alkamisesta kannustavat ryhmän jäseniä tuomaan esiin näkökulmia, ja ehdotusten määräajat kannustavat osallistumaan vaihtoehtojen rajaamiseen.
+* Loomion käyttäjät voivat jo tukea vaihtoehtojen rajaamista nykyisillä ominaisuuksilla eli aloittamalla ehdotuksen. Ehdotusten tarkoituksenmukainen käyttö on yksi toimivan Loomio-ryhmän selkeimmistä merkeistä. Jo pelkkä neuvo aloittaa enemmän ehdotuksia auttaa monia vaikeuksiin joutuneita ryhmiä etenemään.
 
 <!-- translation-section: working-with-scope -->
 
-## Sopivan laajuuden valinta
+## Aiheen rajaaminen
 
-Yhteistyö onnistuu usein parhaiten, kun asiat käsitellään sopivan kokoisina osina oikeassa järjestyksessä.
+Onnistunut yhteistyö riippuu usein siitä, että käsitellään sopivan kokoisia kokonaisuuksia oikeassa järjestyksessä.
 
-Voit suunnitella ohjausta projektinhallinnan näkökulmasta ja kysyä esimerkiksi:
+Voit soveltaa fasilitointiin projektinhallinnan ajattelutapaa ja suunnitella prosessia esimerkiksi näiden kysymysten avulla:
 
-* Mistä asiat riippuvat? Mitkä asiat on tehtävä ensin, jotta muut voivat edetä?
-* Mitkä asiat ovat tärkeimpiä? Mitä voidaan jättää pois?
-* Minkä laajuisen asian ryhmä voi käsitellä hyödyllisesti käytettävissä olevan ajan, energian ja tiedon avulla?
+* Mitkä asiat riippuvat toisistaan (mikä on kriittinen polku, mitä on tehtävä ensin, jotta muut asiat ovat mahdollisia)?
+* Mihin on tärkeintä keskittyä? Mitä voi jättää pois?
+* Kuinka laaja kokonaisuus on mahdollista käsitellä kerrallaan niin, että käytettävissä olevalla ajalla, voimavaroilla ja tiedolla saadaan jotain hyödyllistä aikaan?
 
-Älä yritä ratkaista kaikkea kerralla, vaan jaa työ hallittaviin osiin. Voit edetä kohti suurempaa lopputulosta pienin askelin. Pieni mutta hyödyllinen tulos on usein parempi kuin keskustelu, jossa ei päästä mihinkään johtopäätökseen. Yksityiskohtiin voi myös juuttua niin, että suuret kysymykset jäävät käsittelemättä.
+Älä yritä ratkaista kaikkea kerralla, vaan jaa asiat hallittaviin osiin. Voit edetä kohti laajempaa johtopäätöstä pienempien vaiheiden kautta. Usein on parempi saada aikaan jotain pientä mutta hyödyllistä kuin jäädä kokonaan ilman johtopäätöksiä. Toisaalta yksityiskohtiin voi myös juuttua niin, että suuremmat kysymykset jäävät käsittelemättä.
 
-Yhteistyössä kukaan ei tiedä tarkalleen, mitä keskustelusta syntyy. Siksi käsiteltävän asian rajauksen on voitava muuttua keskustelun mukana. Tilanteesta riippuu, viekö uusi sivuhaara työtä eteenpäin vai pois olennaisesta. Liiallinen jäykkyys ja liiallinen joustavuus voivat kumpikin haitata työtä. Usein kyse ei ole siitä, onko asia olennainen, vaan siitä, missä järjestyksessä ja milloin se kannattaa käsitellä.
+Yhteistyössä kukaan ei tiedä tarkasti, mitä syntyy, joten aiheen rajauksen on kehityttävä keskustelun mukana. On harkittava tapauskohtaisesti, viekö laajentaminen tietyllä hetkellä huomion sivuun vai kehittääkö se keskustelua. Sekä liiallinen jäykkyys että liiallinen joustavuus voivat olla haitaksi. Usein kyse ei ole siitä, liittyykö jokin asia aiheeseen, vaan siitä, missä järjestyksessä ja milloin sitä on rakentavinta käsitellä.
 
-> Jos suunnittelet tapaamisen, jossa on monta toisiinsa liittyvää osaa, jokainen osa rakentuu edellisen varaan ja kaikki johtaa mullistavaan lopputulokseen, hienoa, jos suunnitelma onnistuu. Monimutkainen tapaaminen kuitenkin venyy usein eikä välttämättä vastaa osallistujien toiveisiin ja tarpeisiin. - Silvia Zuur
+> Jos suunnittelet tapaamisen, jossa on useita toisiinsa liittyviä osia, joista jokainen rakentuu edellisen varaan ja kaikki johtavat elämää muuttavaan, ajattelua mullistavaan johtopäätökseen, ja onnistut toteuttamaan sen, se on hienoa. Useimmiten monimutkainen tapaaminen kuitenkin venyy eikä välttämättä vastaa osallistujien toiveisiin ja tarpeisiin. - Silvia Zuur
 
 <!-- translation-section: a-series-of-small-yes-s -->
 
-## Sarja pieniä hyväksyntöjä
-Liian monen keskustelun niputtaminen yhteen aiheuttaa hämmennystä. Asioiden jakaminen osiin auttaa usein ryhmää etenemään. Jos kysymys tuntuu mahdottomalta, monimutkaiselta tai ristiriitaiselta, erota siitä yksittäisiä kysymyksiä ja etsi niihin yhteisymmärrystä. Aloita asioista, joista on helpointa päästä sopuun. Sen jälkeen voitte rajata erimielisyydet ydinkysymyksiin ja käsitellä niitä yksi kerrallaan.
+## Sarja pieniä kyllä-vastauksia
+Liian monen keskustelun yhdistäminen aiheuttaa sekaannusta. Turhautuneita ryhmiä auttaa usein asioiden jakaminen pienempiin osiin. Jos jokin kysymys vaikuttaa toivottomalta, monimutkaiselta tai ristiriitaiselta, siitä voi erottaa yksittäisiä kysymyksiä ja saavuttaa niistä konsensuksen. Aloita niistä, joista on helpointa olla samaa mieltä. Kun siirrytte erimielisyyksiin, voit rajata käsittelyn vain niiden ydinkohtiin ja keskittyä niihin.
 
 Loomiossa
 
-* Aihekohtaiset keskusteluketjut auttavat rajaamaan käsiteltävää asiaa. Loomiossa yksittäiseen kysymykseen voi keskittyä jopa helpommin kuin kasvokkaisessa keskustelussa, koska muita kysymyksiä voi käsitellä samaan aikaan omissa ketjuissaan.
-* Käyttäjät ohjaavat keskustelua usein esimerkiksi näin: ”Tämä ei kuulu tämän aiheen piiriin. Voisitko aloittaa siitä uuden keskustelun?”
-* Loomio-ryhmän perustaminen auttaa määrittelemään, keitä ryhmään kuuluu ja mistä siellä keskustellaan. Näin osallistujien on helpompi pitää keskustelu sovituissa rajoissa.
-* Loomion peräkkäiset ehdotukset sopivat pienten hyväksyntöjen sarjaan. Voitte tehdä pieniä sopimuksia saman keskusteluketjun sisällä ja rakentaa aiempien ehdotusten varaan.
-* Verkossa käytävä eriaikainen keskustelu antaa osallistujille tilaa käsitellä sivuaiheita hidastamatta muita. He voivat aloittaa uuden keskustelun tai alaryhmän ja perehtyä aiheeseen haluamallaan tarkkuudella, kun ryhmän pääasia pysyy rajattuna.
-* Keskustelun kontekstikentässä ja ryhmän kuvauksessa voi määritellä keskustelun tai ryhmän aihepiirin.
+* Aihekohtaiset keskusteluketjut auttavat rajaamaan käsittelyä. Loomion keskusteluja voi rajata kasvokkaisia keskusteluja selkeämmin tietyn kysymyksen ympärille, samalla kun muita näkökulmia käsitellään muissa ketjuissa.
+* Käyttäjät ohjaavat usein keskustelua esimerkiksi näin: ”Tämä ei kuulu tämän aiheen rajaukseen, mutta aloita siitä uusi keskustelu.”
+* Loomio-ryhmän luominen auttaa määrittelemään, keitä olemme ja mistä olemme täällä keskustelemassa. Tämä auttaa osallistujia hallitsemaan aiheen rajausta.
+* Loomion peräkkäisiin ehdotuksiin perustuva rakenne sopii hyvin ”pienten kyllä-vastausten sarjaan”. Voitte päästä yhteisymmärrykseen pienistä asioista, säilyttää kontekstin yhdessä keskusteluketjussa ja rakentaa aiempien ehdotusten varaan.
+* Eriaikainen verkkoviestintä antaa joillekin mahdollisuuden laajentaa käsittelyä huomattavasti viivyttämättä muita. He voivat aloittaa uuden keskustelun tai alaryhmän ja käsitellä asiaa niin syvällisesti ja pitkään kuin haluavat, samalla kun ryhmän pääasiallinen rajaus säilyy.
+* Keskustelun kontekstikentässä voit määritellä keskustelun rajauksen ja ryhmän kuvauksessa ryhmän toiminnan rajauksen.
 
 <!-- translation-section: pacing-timing -->
 
 ## Tahti ja ajoitus
 
-Tuloksellisella keskustelulla on rytmi. Sopiva tahti syntyy monesta tekijästä ja löytyy usein tuntuman perusteella, kuten muusikon improvisoidessa. Milloin aiheeseen kannattaa syventyä ja milloin ottaa etäisyyttä? Milloin on aika tuoda mukaan uutta tietoa ja milloin tarkastella lähemmin sitä, mitä jo tiedetään? Tästä tahdittamisessa on kyse.
+Tuottavalla keskustelulla on rytmi. Sopiva rytmi syntyy monen tekijän yhdistelmästä ja tuntuu usein intuitiiviselta, kuten muusikon improvisointi. Milloin on aika syventyä tai ottaa askel taaksepäin? Milloin kannattaa tuoda mukaan uutta tietoa tai tarkastella jo esillä olevia asioita tarkemmin? Tästä tahdin säätelyssä on kyse.
 
-Osallistujilla on erilaisia tarpeita ja mieltymyksiä. Joidenkin etenemistä täytyy hillitä, toisia kannustaa mukaan. Sopiva tahti löytyy, kun syventyminen ja eteenpäin meneminen ovat tasapainossa. Jos tahti ei sovi, osa osallistujista turhautuu odottamiseen ja osa jää jälkeen.
+Osallistujilla on erilaisia tarpeita ja mieltymyksiä: joitakin pitää hillitä ja toisia kannustaa eteenpäin. Sopiva tahti löytyy, kun syventymisen ja etenemisen välille syntyy rakentava jännite. Jos tahti ei toimi, ihmiset turhautuvat: he joko käyvät kärsimättömiksi tai kokevat jäävänsä jälkeen.
 
 Loomiossa
 
-* Loomion keskustelut ovat eriaikaisia, joten ihmiset voivat lukea ja vastata omaan tahtiinsa. Keskustelulle voi näin löytyä luonteva rytmi.
-* Voit jatkaa keskustelua eteenpäin odottamatta hitaammin eteneviä. Samalla he voivat perehtyä asiaan tarkemmin, vaikka muut jatkavat jo eteenpäin. Reaaliaikaisessa keskustelussa tämä ei ole mahdollista samalla tavalla.
-* Ehdotusten määräajat auttavat säätämään tahtia. Kiireellisille asioille voi asettaa lyhyemmän ajan ja muille pidemmän. Eri päätökset voivat edetä eri nopeuksilla.
-* Voit myös säädellä omaa osallistumistasi. Jos keskustelu etenee sinulle liian nopeasti tai hitaasti, voit kertoa näkemyksesi, pitää tauon ja palata asiaan, kun ehdotus tehdään.
-* Loomiossa ”nopea” päätös vie päivän tai kaksi, kun kasvokkain se voisi syntyä viidessä minuutissa. Loomio ei silti välttämättä tunnu hitaalta. Päätöksiä voi käsitellä muun työn rinnalla, ja kaikkien näkemysten kokoaminen kahdessa päivässä voi olla tehokkaampaa kuin yhteisen tapaamisen järjestäminen.
-* Loomiossa keskustelua voi ohjata kuin hidastettua elokuvaa: voit seurata elävää keskustelua vaihe vaiheelta ja valita, milloin puutut siihen.
+* Koska viestintä on eriaikaista, ihmiset voivat lukea ja vastata Loomiossa omaan tahtiinsa. Näin luonteva etenemistahti voi muodostua.
+* Voit vierittää hitaasti etenevien osallistujien viestien ohi ja edistää etenemistä. Samalla voit jatkaa jonkin asian rauhallista tarkastelua, vaikka muut etenevät. Samanaikaisessa viestinnässä tämä ei ole mahdollista.
+* Ehdotusten määräajat auttavat säätelemään tahtia. Nopeasti eteneville aiheille voi varata lyhyemmän ajan ja pidempää käsittelyä vaativille enemmän aikaa. Eri päätökset voivat edetä eri nopeuksilla.
+* Voit helposti säädellä oman osallistumisesi tahtia. Jos keskustelu etenee sinulle liian nopeasti tai hitaasti, voit kertoa näkemyksesi, ottaa etäisyyttä ja palata myöhemmin, kun ehdotus on tehty.
+* Loomiossa ”nopea” päätös syntyy yhdessä tai kahdessa päivässä, kun kasvokkain ”nopea” päätös voi syntyä noin viidessä minuutissa. Silti Loomio ei tunnu ”hitaalta” samalla tavalla kuin kahden päivän päätöksenteko kasvokkain tuntuisi. Päätöksenteko Loomiossa etenee muun työn rinnalla, ja kaikkien näkemysten kerääminen kahden päivän aikana on paljon tehokkaampaa kuin yhteisen tapaamisen järjestäminen.
+* Fasilitointia Loomiossa voi verrata Matrix-elokuvan ”luotiaikaan”, jossa Neo voi pysäyttää ajan ja kävellä luodin ympäri. Voit tarkastella elävää keskustelua hetki hetkeltä. Se on kuin supervoima.
 
 <!-- translation-section: managing-the-attention-economy -->
 
-## Huomion suuntaaminen
+## Huomion hallinta
 
-Keskustelun ohjaaja auttaa suuntaamaan huomiota. Saatavilla olevaa tietoa voi olla rajattomasti, joten sitä täytyy suodattaa, jotta määrä pysyy hallittavana. Huomion suuntaaminen tarkoittaa tärkeiden asioiden sovittamista käytettävissä olevaan aikaan ja voimavaroihin.
+Fasilitaattori ohjaa huomion kohdentamista. Saatavilla olevaa tietoa voi olla kirjaimellisesti rajattomasti. Sen suodattaminen on välttämätöntä, jotta tietotulva ei kuormita liikaa. Huomion hallinta tarkoittaa asioiden tärkeyden suhteuttamista käytettävissä olevaan aikaan ja voimavaroihin.
 
-Ohjaaja voi auttaa ryhmää sopimaan keskustelun tai prosessin tarkoituksesta ja rajauksesta. Silloin ryhmä voi päättää, mihin sen kannattaa keskittyä. Tavallisia keinoja ovat häiriöiden vähentäminen ja keskustelun palauttaminen aiheeseen.
+Fasilitointi voi auttaa ryhmää sopimaan keskustelun tai prosessin tarkoituksesta ja rajauksesta. Näin ryhmä saa perusteet sille, mihin huomio kannattaa kohdistaa ensin. Häiriötekijöiden rajoittaminen ja keskustelun ohjaaminen takaisin aiheeseen ovat tavallisia toimenpiteitä.
 
-Ohjaajan tehtävä on myös auttaa ryhmää pysymään aiheen äärellä riittävän kauan. Kun asia muuttuu vaikeaksi, epäselväksi tai epämukavaksi, ihmiset saattavat haluta luovuttaa liian varhain tai siirtyä toiseen aiheeseen. Ohjaaja voi auttaa ryhmää käsittelemään asian loppuun yhteisten tavoitteiden vuoksi.
+Toinen tärkeä tapa ohjata huomiota on huolehtia siitä, että ryhmä pysyy asian äärellä riittävän pitkään. Kun asiat muuttuvat haastaviksi, epäselviksi tai epämukaviksi, ihmiset voivat haluta luovuttaa liian pian, siirtyä toiseen aiheeseen tai kääntää katseensa pois. Fasilitaattori voi auttaa ryhmää viemään asiat loppuun yhteisten tavoitteiden hyväksi.
 
-Jäsennellyt prosessit ja tiedon lajitteluun tarkoitetut harjoitukset auttavat suuntaamaan huomiota. Esimerkiksi:
+Jäsennellyt prosessit ja tiedon järjestämiseen tarkoitetut harjoitukset ovat tässä tärkeitä fasilitointityökaluja. Esimerkkejä:
 
-* **Aikarajaus** — varaa tietty aika ideoinnille tai jonkin aiheen käsittelylle.
-* **Esityslistan priorisointi** — listaa ensin kaikki asiat, joista ihmiset haluavat puhua, ja valitse tärkeimmät ennen kuin aloitatte keskustelun.
-* **Muistilappujen ryhmittely** — kerää ideoita tai kysymyksiä, ryhmittele ne teemoittain ja tiivistä teemat aiheiksi.
-* **Sivuun jätettävät asiat** — kirjaa paikkaan, johon voi palata myöhemmin, ideat ja kysymykset, jotka eivät juuri nyt liity käsiteltävään asiaan.
-* **Miltä onnistuminen näyttää?** Määrittele onnistumisen kriteerit ja auta ryhmää keskittymään niihin, kunnes ne täyttyvät.
+* **Ajan rajaaminen** — määritellään tietty aika ideoinnille tai tietystä aiheesta keskustelemiselle.
+* **Asialistan priorisointi** — luetellaan kaikki asiat, joista ihmiset haluavat keskustella, ja valitaan tärkeimmät ennen sisältöön siirtymistä.
+* **Muistilappupilvi** — tuotetaan joukko ideoita tai kysymyksiä, ryhmitellään ne teemoittain ja tiivistetään sitten aiheiksi.
+* **Parkkipaikka** — paikka esiin tuleville ideoille ja kysymyksille, jotka eivät ole juuri nyt olennaisia ja joita käsitellään myöhemmin.
+* **Miltä onnistuminen näyttää??** Määritellään onnistumisen kriteerit ja pidetään ryhmän huomio niissä, kunnes ne täyttyvät.
 
 Loomiossa
 
-* Aihekohtaiset keskusteluketjut ovat yksi Loomion tärkeimmistä tavoista auttaa suuntaamaan huomiota. Keskustelujen jakaminen aiheisiin yleistyi verkossa jo vuosikymmeniä sitten ja on yhä käytössä, koska se auttaa keskittymään. Kun aihe näkyy selvästi sivun yläreunassa, useimmat Loomion käyttäjät ymmärtävät pysyä siinä.
-* Loomiossa ilmoitukset vievät osallistujien huomiota. Ohjelmisto lähettää ilmoituksia toiminnasta, jonka on käyttäjäpalautteen perusteella katsottu olevan olennaista. Esimerkiksi kommentit, äänet ja päätelmät synnyttävät ilmoituksia, mutta kommentin tykkäys ei.
-* Käyttäjät voivat hallita Loomioon käyttämäänsä huomiota ilmoitusasetuksilla. Asetusten valinnassa auttaminen tukee koko ryhmän ajankäyttöä.
-* Alaryhmät voivat auttaa rajaamaan, kenen tarvitsee seurata mitäkin asiaa. Jos asia koskee vain osaa ihmisistä, sen voi käsitellä erillisessä alaryhmässä.
-* Loomiossa ei voi käsitellä useita ehdotuksia yhtä aikaa samassa keskustelussa. Tällä tietoisella, joskin hieman epäsuositulla ratkaisulla ryhmää kannustetaan käsittelemään ehdotus loppuun ennen seuraavaan siirtymistä.
+* Yksi Loomion tärkeimmistä huomion hallinnan ominaisuuksista on keskustelujen jakaminen aihekohtaisiin ketjuihin. Tämä muoto oli yksi ensimmäisistä verkkoviestinnässä vuosikymmeniä sitten, ja sitä käytetään edelleen laajasti, koska se ohjaa huomiota tehokkaasti. Useimmat Loomion käyttäjät ymmärtävät luontevasti, miten pysyä aiheessa, kun aihe näkyy suurin kirjaimin sivun yläosassa.
+* Toiminta Loomiossa on sen huomiotalouden valuuttaa, ja kaikki ilmoituksen tuottava toiminta kuluttaa sitä. Käyttäjäpalautteen perusteella ohjelmistossa on määritelty, mikä toiminta on riittävän olennaista tuottamaan ilmoituksia. Esimerkiksi kommentit, äänet ja johtopäätökset tuottavat niitä, mutta kommentista ”tykkääminen” ei.
+* Käyttäjät voivat hallita Loomion vaatimaa huomiota monipuolisesti ilmoitusasetuksilla. Käyttäjien auttaminen näiden asetusten valinnassa on tärkeä keino käyttää ryhmän huomiota tarkoituksenmukaisesti.
+* Alaryhmät voivat auttaa ihmisiä säätelemään huomionsa käyttöä. Jos vain osan tarvitsee seurata asiaa, voit erottaa sen omaan alaryhmäänsä.
+* Loomion tietoinen mutta osittain epäsuosittu päätös estää samanaikaiset ehdotukset liittyy huomion ohjaamiseen. Se kannustaa ryhmää käsittelemään ehdotuksen loppuun ennen seuraavaan siirtymistä.
 
-> Monet tietojärjestelmien suunnittelijat ovat virheellisesti pitäneet ongelmana tiedon niukkuutta, vaikka niukkaa on ihmisten huomio. Siksi he ovat rakentaneet järjestelmiä, jotka tarjoavat ihmisille yhä enemmän tietoa. Tarvittaisiin järjestelmiä, jotka osaavat suodattaa pois epäolennaisen tiedon. — **[Wikipedia](https://en.wikipedia.org/wiki/Attention_economy)**
+> Monet tietojärjestelmien suunnittelijat määrittelivät suunnitteluongelmansa virheellisesti tiedon niukkuudeksi huomion niukkuuden sijaan. Siksi he rakensivat järjestelmiä, jotka tarjosivat ihmisille yhä enemmän tietoa, vaikka todellisuudessa tarvittiin järjestelmiä, jotka suodattavat tehokkaasti pois epäolennaisen tai asiaan liittymättömän tiedon. — **[Wikipedia](https://en.wikipedia.org/wiki/Attention_economy)**
 
 <!-- translation-section: facilitation-interventions -->
 
-## Keinot ohjata keskustelua
+## Fasilitoinnin toimenpiteet
 
-Keskustelun ohjaamisen keinoja on yhtä paljon kuin ohjaajia, ja aiheesta on kirjoitettu kokonaisia kirjastoja. Kaikkia keinoja ei voi luetella kattavasti.
+Fasilitointitekniikoita on yhtä paljon kuin fasilitaattoreita maailmassa, ja aiheesta on kirjoitettu kokonaisia kirjastoja. Kattavaa luetteloa toimenpiteistä ei ole mahdollista antaa.
 
-Keinot voi kuitenkin olla hyödyllistä jakaa kahteen ryhmään:
+Voi kuitenkin olla hyödyllistä tarkastella kahta toimenpiteiden luokkaa:
 
-1. **Tukevat keinot**: osallistumaan kutsuminen, syventyminen, ajatusten esiin tuominen, rohkaiseminen, tukeminen, suojaaminen ja tilan antaminen.
-2. **Jämäkät keinot**: keskustelun rajaaminen, lopettaminen tai keskeyttäminen, rajojen asettaminen, haastaminen, suunnan korjaaminen ja epäasiallisen käytöksen estäminen.
+1. **Tukevat toimenpiteet**: osallistumaan kutsuminen, syventyminen, näkemysten esiin auttaminen, rohkaiseminen, tukeminen, suojaaminen ja tilan antaminen.
+2. **Jämäkät toimenpiteet**: askelen ottaminen taaksepäin, toiminnan lopettaminen, rajojen asettaminen, keskeyttäminen, haastaminen, takaisin aiheeseen ohjaaminen ja huonon käytöksen estäminen.
 
-Lähes kaikkia kasvokkaisen keskustelun ohjaamisen keinoja voi soveltaa myös verkossa.
+Lähes kaikki kasvokkaisen fasilitoinnin toimenpiteet voi sovittaa verkkoympäristöön.
 
-> Jos pyydät yksittäistä ihmistä puhumaan, hänestä voi tuntua samalta kuin oppilaasta, joka ei tiedä vastausta mutta joutuu vastaamaan koko luokan edessä. Kutsu sen sijaan yleisesti mukaan niitä, jotka eivät ole vielä puhuneet. Se viestii usein puhuville, että nyt on muiden vuoro, ja antaa hiljaisemmille tilaisuuden osallistua. — Silvia Zuur
+> Jos pyydät yksittäistä ihmistä osallistumaan, hän voi tuntea itsensä luokan tyhmäksi oppilaaksi, joka ei tiedä vastausta. Yleinen kutsu niille, jotka eivät ole vielä puhuneet, viestii sen sijaan aktiivisille osallistujille, että heidän on aika olla hiljaa, ja antaa hiljaisemmille mahdollisuuden tulla esiin. — Silvia Zuur
 
 Loomiossa
 
-* Loomiossa keskustelua voi ohjata kommenteilla ja @maininnoilla, lisäämällä tai poistamalla käyttäjiä sekä aloittamalla tai poistamalla keskusteluja. Näitä voi käyttää sekä tukeviin että jämäköihin toimiin.
-* Yleisin keino on kommentti: voit puhua ryhmälle, kutsua sitä toimimaan tietyllä tavalla tai pyytää sitä vähentämään jotakin toimintaa.
-* [Osallistumisoikeudet](/en/user_manual/groups/settings/#permissions) ovat melko suorasukainen mutta toimiva tapa säädellä osallistumista. Niillä voi esimerkiksi sallia tai estää keskustelujen ja ehdotusten aloittamisen.
-* Loomiossa on myös luottamukseen perustuvia ominaisuuksia, joita kaikissa muissa työkaluissa ei ole. Lähtökohtaisesti kaikki osallistujat voivat esimerkiksi muokata keskustelun kontekstia, vaikka joku muu olisi kirjoittanut sen alun perin. Tällaiset ominaisuudet ovat saaneet vaikutteita Wikipediasta ja avoimen lähdekoodin kehityksestä.
+* Loomion toimintakeinoja ovat kommentit, @maininnat, käyttäjien lisääminen ja poistaminen sekä keskustelujen aloittaminen ja poistaminen. Niitä voi käyttää erilaisiin tukeviin ja jämäkkiin toimenpiteisiin.
+* Tavallisin toimenpide on kommentti: puhut ryhmälle ja kannustat tiettyyn toimintaan tai pyrit vähentämään sitä.
+* [Osallistumisoikeudet](/en/user_manual/groups/settings/#permissions) tarjoavat melko karkeita mutta tehokkaita keinoja käyttäjien toiminnan ohjaamiseen. Voit esimerkiksi sallia tai estää keskustelujen tai ehdotusten julkaisemisen.
+* Loomio tarjoaa joitakin luottamukseen perustuvia ominaisuuksia, joita muista työkaluista puuttuu. Esimerkiksi kaikki osallistujat voivat oletusarvoisesti muokata keskustelun kontekstia, vaikka sen olisi alun perin julkaissut toinen käyttäjä. Näiden ominaisuuksien taustalla ovat esimerkiksi Wikipedia ja avoimen lähdekoodin ohjelmistokehitys.

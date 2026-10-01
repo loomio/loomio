@@ -1,6 +1,6 @@
 ---
 title: Rang
-source_revision: 71554be8e61a76613b0707b8262302c22299a5d0
+source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
 source_file: docs/en/user_manual/polls/rank/index.md
 translated:
   provider: codex/gpt-6.1-sol
@@ -14,85 +14,85 @@ sections:
   read-the-results: 18fbb0f9a5a866bc
   share-an-outcome: c9dcebf155d64c65
 generated:
-  introduction: 9155c3276b0a0195
-  when-to-use-rank: 3250e0073621183f
-  example-rank-bottle-designs: be8824dd96051190
-  set-up-the-poll: 39461d4e5bc62e47
-  vote: 71ed92154c537d7c
-  read-the-results: d32239ed7e99ca0b
-  share-an-outcome: bda484bec5042529
+  introduction: 51bcda72e2ce9f47
+  when-to-use-rank: 38ec76e48467bab2
+  example-rank-bottle-designs: 96324f1ea3deaa01
+  set-up-the-poll: bc9eeba93f7fac54
+  vote: 97a37341bc5bbb0b
+  read-the-results: e7e7060d554de048
+  share-an-outcome: af3176b7e577ae5f
 title_source: a4130d7d2c3a137f
 title_generated: 7186e02bc731a8e5
 ---
 
 <!-- translation-section: introduction -->
 
-# Rang
+# Ordnen
 
-Mit Rang ermittelt die Gruppe eine gemeinsame Reihenfolge ihrer Präferenzen. Die Teilnehmenden ordnen die Optionen von der bevorzugten bis zur am wenigsten bevorzugten. Loomio vergibt für höher platzierte Optionen mehr Punkte.
+Ordnen ermittelt die gemeinsame Präferenzreihenfolge der Gruppe. Teilnehmende ordnen die Optionen von der bevorzugtesten bis zur am wenigsten bevorzugten, und Loomio vergibt mehr Punkte für höher platzierte Optionen.
 
 <!-- translation-section: when-to-use-rank -->
 
-## Wann du Rang verwenden kannst
+## Wann du Ordnen verwendest
 
-Verwende Rang, wenn die Reihenfolge der Präferenzen wichtig ist und du eine gemeinsame Rangfolge ermitteln möchtest. Das eignet sich zum Beispiel, um:
+Verwende Ordnen, wenn die Präferenzreihenfolge wichtig ist und du eine gemeinsame Rangfolge ermitteln möchtest. Es eignet sich gut, um:
 
 - eine Person für eine Position auszuwählen;
 - Projekte für einen Arbeitsplan zu ordnen;
 - Konferenzthemen zu priorisieren;
-- neben der ersten Wahl auch Alternativen festzulegen; oder
-- aus einer langen Liste eine geordnete Auswahlliste zu erstellen.
+- neben einer ersten Wahl auch Ersatzoptionen auszuwählen; oder
+- eine lange Liste auf eine geordnete engere Auswahl zu reduzieren.
 
-Rang ordnet die Optionen nach Punkten. Es ist kein proportionales Wahlverfahren. Wenn du mehrere Personen wählen und dabei verschiedene Gruppen von Wähler*innen vertreten möchtest, verwende eine [STV-Wahl](/en/user_manual/polls/stv/).
+Ordnen erstellt eine Rangfolge anhand von Punkten. Es ist kein Verhältniswahlverfahren. Um mehrere Personen zu wählen und dabei verschiedene Gruppen von Abstimmenden zu berücksichtigen, verwende eine [STV-Wahl](/en/user_manual/polls/stv/).
 
 <!-- translation-section: example-rank-bottle-designs -->
 
-## Beispiel: Flaschendesigns ordnen
+## Beispiel: Flaschenentwürfe ordnen
 
-Die Hafermilch-Genossenschaft bittet ihre Mitglieder, vier Flaschendesigns für einen Test mit Mehrwegflaschen zu ordnen. Die Teilnehmenden berücksichtigen Handhabung, Haltbarkeit, Kundenbedürfnisse, Lagerung und die Eignung für die Waschanlage.
+Die Oatmilk Cooperative bittet ihre Mitglieder, vier Flaschenentwürfe für einen Mehrwegflaschenversuch zu ordnen. Teilnehmende berücksichtigen Handhabung, Haltbarkeit, Kundenbedürfnisse, Lagerung und die Kompatibilität mit der Reinigungsanlage.
 
 <!-- translation-section: set-up-the-poll -->
 
-## Abstimmung einrichten
+## Die Abstimmung einrichten
 
-Erkläre, was die Rangfolge bestimmen soll, und füge die Optionen hinzu. Mit **Anzahl der Auswahlmöglichkeiten** legst du fest, wie viele Optionen jede Person einordnen kann. Die erste Wahl erhält die meisten Punkte, die nächste einen Punkt weniger. Nicht eingeordnete Optionen erhalten keine Punkte.
+Beschreibe, was die Rangfolge bestimmen soll, und füge die Optionen hinzu. Lege mit **Anzahl der Auswahlmöglichkeiten** fest, wie viele Optionen jede Person ordnen darf. Die erste Wahl erhält die meisten Punkte, die nächste Wahl einen Punkt weniger, und nicht eingeordnete Optionen erhalten keine Punkte.
 
 ![](form.png)
 
-Wenn du eine vollständige Reihenfolge brauchst, müssen alle Optionen eingeordnet werden. Erlaube weniger Auswahlmöglichkeiten, wenn Teilnehmende möglicherweise nicht genug wissen, um alle Optionen einzuordnen. Eine zufällige Reihenfolge der Optionen kann den Einfluss ihrer anfänglichen Darstellung verringern.
+Verlange, dass alle Optionen eingeordnet werden, wenn du eine vollständige Rangfolge brauchst. Erlaube weniger Auswahlmöglichkeiten, wenn Teilnehmende möglicherweise nicht genug wissen, um alle Optionen einzuordnen. Eine zufällige Anzeigereihenfolge der Optionen kann den Einfluss ihrer ursprünglichen Anordnung verringern.
 
 <!-- translation-section: vote -->
 
 ## Abstimmen
 
-Die Teilnehmenden ziehen die Optionen in ihre bevorzugte Reihenfolge. Nummer 1 ist ihre erste Wahl. Sie können eine Begründung hinzufügen und erklären, nach welchen Kriterien sie die Optionen geordnet haben.
+Teilnehmende ziehen die Optionen in ihre bevorzugte Reihenfolge, wobei Nummer 1 die erste Wahl ist. Sie können eine Begründung hinzufügen, die die Kriterien für ihre Rangfolge erklärt.
 
 ![](voting.png)
 
-In diesem Beispiel setzt die abstimmende Person die **500-ml-Braunglasflasche** auf Platz eins und die **500-ml-Klarglasflasche** auf Platz zwei, weil beide in die vorhandenen Lagerflächen des Cafés und in die Waschanlage passen.
+In diesem Beispiel setzt die abstimmende Person die **500-ml-Braunglasflasche** auf den ersten und die **500-ml-Klarglasflasche** auf den zweiten Platz, weil beide zur vorhandenen Lagerung und Reinigungsanlage im Café passen.
 
 <!-- translation-section: read-the-results -->
 
-## Ergebnisse lesen
+## Das Ergebnis lesen
 
-Die Ergebnisse fassen alle Stimmzettel zu einer Rangfolge nach Punkten zusammen. Für jede Option zeigen sie:
+Das Ergebnis führt alle Stimmzettel zu einer gemeinsamen Rangfolge anhand von Punkten zusammen. Für jede Option wird Folgendes angezeigt:
 
-- **Rang**: ihre Position im Gesamtergebnis;
-- **% der Punkte**: ihren Anteil an allen vergebenen Punkten;
-- **Punkte**: die Gesamtzahl ihrer Punkte aus allen Stimmzetteln;
+- **Ordnen**: ihre Position im Gesamtergebnis;
+- **% der Punkte**: ihr Anteil an allen vergebenen Punkten;
+- **Punkte**: die Gesamtpunktzahl aus allen Stimmzetteln;
 - **Bedeuten**: ihre durchschnittliche Punktzahl pro abstimmender Person; und
-- **Wähler*innen**: wie viele Personen sie eingeordnet haben.
+- **Abstimmende**: wie viele Personen sie eingeordnet haben.
 
 ![](results.png)
 
-In diesem Beispiel liegt die **500-ml-Braunglasflasche** auf Platz eins, gefolgt von der **500-ml-Klarglasflasche** und der **750-ml-Braunglasflasche**. Die Gruppe kann zuerst das bevorzugte Design genauer prüfen und die übrige Reihenfolge als Liste von Alternativen nutzen.
+In diesem Beispiel steht die **500-ml-Braunglasflasche** an erster Stelle, gefolgt von der **500-ml-Klarglasflasche** und der **750-ml-Braunglasflasche**. Die Gruppe kann zuerst den bevorzugten Entwurf prüfen und die übrige Rangfolge als Reihenfolge für Alternativen beibehalten.
 
-Dieselbe Gesamtpunktzahl kann aus unterschiedlichen Präferenzen entstehen. Sieh dir die einzelnen Stimmzettel und Begründungen an, wenn Optionen nah beieinanderliegen oder die Entscheidung weitreichende Folgen hat.
+Ein Ergebnis anhand von Punkten kann unterschiedliche Präferenzmuster verbergen, die dieselbe Gesamtpunktzahl ergeben. Prüfe einzelne Stimmzettel und Begründungen zu den Stimmen, wenn Optionen nahe beieinanderliegen oder die Entscheidung weitreichende Folgen hat.
 
 <!-- translation-section: share-an-outcome -->
 
-## Teile ein Fazit
+## Ein Fazit teilen
 
-Teile ein Fazit, wenn die Umfrage geschlossen ist. Gib an, welche Option die Gruppe verfolgen wird und was passiert, wenn sie sich nicht umsetzen lässt. Unter [Teile ein Fazit](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome) erfährst du, wie Fazits funktionieren.
+Teile ein Fazit, wenn die Abstimmung beendet ist. Beschreibe, welche Option die Gruppe weiterverfolgen wird und was passiert, wenn sie sich nicht umsetzen lässt. Unter [Ein Fazit teilen](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome) erfährst du, wie Fazits funktionieren.
 
-![Ein Fazit, das das Flaschendesign auf dem ersten Rang auswählt](outcome.png)
+![Ein Fazit, das den erstplatzierten Flaschenentwurf auswählt](outcome.png)

@@ -1,6 +1,6 @@
 ---
 title: Adviesproces
-source_revision: 9c60c42fc739483fa23f15d9f34a1e9245518092
+source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
 source_file: docs/en/guides/making_decisions/advice_process.md
 translated:
   provider: codex/gpt-6.1-sol
@@ -17,16 +17,16 @@ sections:
   step-2-clarify-and-strengthen-the-advice-through-discussion: a3b5393138bde245
   step-3-make-a-decision-with-advice-and-inform-people: c55b6d9c9ad0961c
 generated:
-  introduction: 3b787dd44116a70a
-  key-points: 2b3c96e7ba106793
-  steps-in-the-advice-process: 140cc05034fdd282
-  benefits: 68b8ba5480515f86
-  applying-the-advice-process-on-loomio: e27d6f14dd4b12c9
+  introduction: e6ca4257eca029e7
+  key-points: a5105463aa0b4b02
+  steps-in-the-advice-process: dfc930325ac43ea2
+  benefits: 7c7896132b6421f0
+  applying-the-advice-process-on-loomio: f4f00a61030855dd
   example-of-an-advice-process-on-loomio: e0f0ccd86e3014c6
-  step-0-you-notice-a-problem-or-opportunity-and-take-the-initiative: b945442314d94554
-  step-1-seek-input-to-sound-out-perspectives-before-proposing-action: 7d2ae698dea7f740
-  step-2-clarify-and-strengthen-the-advice-through-discussion: f1847fc3aedce8de
-  step-3-make-a-decision-with-advice-and-inform-people: 9fa8ad9e8c2dd698
+  step-0-you-notice-a-problem-or-opportunity-and-take-the-initiative: 1c13fbd7ff7ec26d
+  step-1-seek-input-to-sound-out-perspectives-before-proposing-action: eaa9e751e080e260
+  step-2-clarify-and-strengthen-the-advice-through-discussion: 7e3a01196485ada6
+  step-3-make-a-decision-with-advice-and-inform-people: cee64afd8eafc4ba
 title_source: 290fb74b7be97f31
 title_generated: 2e6c94f67f18f1fc
 ---
@@ -35,38 +35,38 @@ title_generated: 2e6c94f67f18f1fc
 
 # Adviesproces
 
-Deze gids beschrijft het volledige adviesproces. Lees [Advies](/en/user_manual/polls/proposals/advice/) voor hulp bij het opzetten en interpreteren van een adviesvoorstel.
+Deze handleiding beschrijft het volledige adviesproces. Voor hulp bij het opzetten en interpreteren van één adviesvoorstel, zie [Advies](/en/user_manual/polls/proposals/advice/).
 
-![Foto van Yoda die wijze raad suggereert - *Foto door Nadir sYzYgY op Unsplash*](nadir-syzygy-den6gTowZKs-unsplash.jpg)
+![Foto van Yoda die wijs advies suggereert - *Foto door Nadir sYzYgY op Unsplash*](nadir-syzygy-den6gTowZKs-unsplash.jpg)
 
-Vraag advies over een beslissing die je moet nemen.
+Vraag advies over een besluit dat je moet nemen.
 
-Neem een beslissing met advies van mensen op wie de beslissing invloed heeft of die deskundig zijn. Zo kun je een betere beslissing nemen voor jouw organisatie.
+Neem een besluit met advies van mensen die ermee te maken krijgen of deskundig zijn, zodat je een beter besluit voor jouw organisatie kunt nemen.
 
-> *“In een adviesproces mag iedereen elke beslissing nemen, maar moet diegene advies vragen aan betrokkenen en deskundigen.” - Frederick Laloux, Reinventing Organizations.*
+> *“Met het adviesproces kan iedereen elk besluit nemen, maar moet diegene advies vragen aan betrokkenen en mensen met deskundigheid.” - Frederick Laloux, Reinventing Organizations.*
 
 <!-- translation-section: key-points -->
 
 ## Kernpunten
-- Je hebt de vrijheid om een beslissing te nemen.
+- Vrijheid om een besluit te nemen.
 - Nodig mensen uit om advies te geven.
 - Houd rekening met de inbreng van anderen.
 
 <!-- translation-section: steps-in-the-advice-process -->
 
 ## Stappen in het adviesproces
-Je ziet een probleem of kans en neemt het initiatief.
-1. Beschrijf de beslissing, bepaal wie ervoor verantwoordelijk is en nodig de betrokkenen en relevante deskundigen uit.
-2. Start een Loomio-**discussie** en gebruik een **adviesvoorstel** als een gestructureerde reactie of een deadline nuttig is.
-3. Verduidelijk en verdiep het advies aan de hand van stemverklaringen en reacties in de discussie.
-4. Neem de beslissing en publiceer een **conclusie** waarin je uitlegt wat is besloten en hoe het advies daaraan heeft bijgedragen.
+Je merkt een probleem of kans op en neemt het initiatief.
+1. Omschrijf het te nemen besluit, bepaal wie ervoor verantwoordelijk is en nodig de betrokken mensen en relevante deskundigen uit.
+2. Start een **discussie** in Loomio en start een **adviesvoorstel** wanneer een gestructureerde reactie of deadline nuttig is.
+3. Verduidelijk het advies en bouw erop voort via redenen bij stemmen en reacties in de discussie.
+4. Neem het besluit en publiceer vervolgens een **conclusie** waarin je uitlegt wat er is besloten en hoe het advies daaraan heeft bijgedragen.
 
 <!-- translation-section: benefits -->
 
 ## Voordelen
-- Advies helpt je een betere beslissing te nemen voor jouw organisatie. 
-- Het versterkt relaties en biedt ruimte om te leren en verschillende inzichten te horen.
-- Het stimuleert initiatief en creativiteit en maakt het werk prettiger.
+- Advies helpt je een beter besluit voor jouw organisatie te nemen.
+- Versterk relaties, creëer leermogelijkheden en verzamel uiteenlopende inzichten.
+- Stimuleer initiatief en creativiteit en maak het werk prettiger.
 
 <!-- translation-section: applying-the-advice-process-on-loomio -->
 
@@ -74,9 +74,9 @@ Je ziet een probleem of kans en neemt het initiatief.
 
 | **Adviesproces** | **In Loomio** |
 |---|---|
-| Je ziet een probleem of kans en neemt het initiatief. |  |
-| Vraag om inbreng om verschillende perspectieven te verkennen voordat je een actie voorstelt. | Start een Loomio-**discussie** om context te geven en het gesprek te openen. Gebruik een **[adviesvoorstel](/en/user_manual/polls/proposals/advice/)** als je een vaste reactietermijn, stemverklaringen en een duidelijk overzicht van de deelnemers wilt. |
-| Je weegt het ontvangen advies mee, neemt een beslissing en informeert de mensen die advies hebben gegeven. | Voeg een **conclusie** toe aan de discussiedraad.   <br /><br />Beschrijf de beslissing en bedank mensen voor hun advies en feedback.  <br /><br />   Vertel wat er hierna gebeurt en breng mensen op de hoogte van de conclusie.  <br /><br />De conclusie legt de beslissing vast zodat je die later kunt terugvinden. <br /> <br /> Werk de context bij met deze conclusie, of zet haar in een reactie die je vastzet op de tijdlijn.<br /><br/> |
+| Je merkt een probleem of kans op en neemt het initiatief. |  |
+| Vraag om inbreng om verschillende perspectieven te verkennen voordat je een actie voorstelt. | Start een **discussie** in Loomio om context te geven en het gesprek te openen. Start een **[adviesvoorstel](/en/user_manual/polls/proposals/advice/)** wanneer je een vaste reactieperiode, redenen bij stemmen en een duidelijk overzicht van de deelnemers wilt. |
+| Je houdt rekening met het ontvangen advies, neemt een besluit en informeert de mensen die advies hebben gegeven. | Voeg een **conclusie** toe aan de discussiethread.   <br /><br />Beschrijf het genomen besluit en bedank mensen voor hun advies en feedback.  <br /><br />   Vertel wat er daarna gaat gebeuren en informeer mensen over de conclusie.  <br /><br />De conclusie is een belangrijke vastlegging van het besluit om later op terug te kunnen kijken. <br /> <br /> Werk de context bij met deze conclusie, of plaats de conclusie in een reactie die je vastzet op de tijdlijn om deze later snel terug te vinden.<br /><br/> |
 
 <!-- translation-section: example-of-an-advice-process-on-loomio -->
 
@@ -84,44 +84,44 @@ Je ziet een probleem of kans en neemt het initiatief.
 
 <!-- translation-section: step-0-you-notice-a-problem-or-opportunity-and-take-the-initiative -->
 
-### Stap 0 - Je ziet een probleem of kans en neemt het initiatief.
+### Stap 0 - Je merkt een probleem of kans op en neemt het initiatief.
 
-Is het probleem of de kans de moeite waard om aan te pakken?  Takashi heeft problemen met zijn oude computer. Tijdens een recente presentatie liep die vast.
+Is het de moeite waard om het probleem aan te pakken of de kans te benutten? Takashi heeft problemen met zijn oude computer, die tijdens een recente presentatie vastliep.
 
-Moet er een beslissing worden genomen?  Het is tijd om de computer te vervangen.
+Moet er een besluit worden genomen? Het is tijd om de computer te vervangen.
 
-Heeft dit gevolgen voor anderen en jouw organisatie?  Takashi's collega's willen dat hij zijn werk goed kan doen en geen tijd verliest tijdens vergaderingen. Ze begrijpen daarom dat hij een werkende computer nodig heeft.  De aanschaf heeft ook gevolgen voor het budget en het inkoopbeleid van de organisatie. Mogelijk moet hij zijn keuze afstemmen met andere teamleden.
+Heeft dit gevolgen voor andere mensen en jouw organisatie? Takashi's collega's willen dat hij zijn werk goed kan doen en geen tijd verspilt tijdens vergaderingen. Daarom begrijpen ze dat hij een werkende computer nodig heeft. De aanschaf van apparatuur heeft ook gevolgen voor het budget en het inkoopbeleid van de organisatie en moet mogelijk met andere teamleden worden afgestemd.
 
 <!-- translation-section: step-1-seek-input-to-sound-out-perspectives-before-proposing-action -->
 
-### Stap 1. Vraag om inbreng om perspectieven te verkennen voordat je een actie voorstelt
+### Stap 1. Vraag om inbreng om verschillende perspectieven te verkennen voordat je een actie voorstelt
 
-Takashi start een Loomio-discussie en beschrijft duidelijk welke beslissing hij moet nemen.  Hij geeft context en vertelt dat hij een adviesproces begint.
+Takashi start een discussie in Loomio met een duidelijke omschrijving van het besluit dat hij moet nemen. Hij geeft context om de discussie te openen en legt uit dat hij een adviesproces start.
 
 ![](discussion_takashi_computer.png)
 
-Hij kan in de discussie ook een [adviesvoorstel](/en/user_manual/polls/proposals/advice/) starten om vóór een sluitingsdatum gestructureerde reacties te vragen.
+Hij kan ook een [adviesvoorstel](/en/user_manual/polls/proposals/advice/) in de discussie starten om gestructureerde reacties te vragen vóór een sluitingsdatum.
 
 <!-- translation-section: step-2-clarify-and-strengthen-the-advice-through-discussion -->
 
-### Stap 2.  Verduidelijk en verdiep het advies in de discussie
+### Stap 2.  Verduidelijk en versterk het advies via discussie
 
-Takashi reageert op het advies in de discussiedraad. Hij verduidelijkt zijn situatie en stelt vragen om meer inzicht te krijgen in het advies.
+Takashi reageert op advies dat in reacties in de discussiethread wordt gegeven. Hij verduidelijkt zijn situatie en stelt vragen om het ontvangen advies verder uit te werken.
 
 ![](discussion_comments_advice_process_new_computer.png)
 
-Terwijl mensen advies en reacties geven, krijgt Takashi meer duidelijkheid over zijn beslissing.
+Naarmate mensen advies geven en reageren, wordt Takashi zekerder over zijn besluit.
 
 <!-- translation-section: step-3-make-a-decision-with-advice-and-inform-people -->
 
-### Stap 3. Neem een beslissing met het advies en informeer de betrokkenen
+### Stap 3. Neem een besluit op basis van advies en informeer mensen
 
-Wanneer iedereen advies heeft gegeven of het voorstel sluit, neemt Takashi een beslissing en deelt hij de **[conclusie](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome)**.
+Wanneer iedereen advies heeft gegeven of het voorstel sluit, neemt Takashi een besluit en beschrijft hij de **[conclusie](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome)**.
 
-De conclusie beschrijft duidelijk welke beslissing is genomen en wat er hierna gebeurt. Ze legt de beslissing vast voor de organisatie.
+De conclusie beschrijft duidelijk het genomen besluit en wat er daarna gaat gebeuren. Zo vormt de conclusie een belangrijke vastlegging voor de organisatie.
 
-Takashi bewerkt de context van de discussie en voegt de conclusie toe.
+Takashi bewerkt de context van de discussie om deze conclusie erin op te nemen.
 
 ![](decision_outcome_advice_process_new_computer.png)
 
-Hij kan de conclusie ook in een reactie zetten en die vastzetten op de discussiedraad. Zo is ze duidelijk zichtbaar op de tijdlijn van de discussie.
+Hij kan de conclusie ook in een reactie plaatsen die hij vastzet in de thread, zodat de conclusie duidelijk zichtbaar is in de tijdlijn van de discussie.

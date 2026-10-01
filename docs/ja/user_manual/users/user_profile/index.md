@@ -1,10 +1,10 @@
 ---
 title: プロフィール
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/users/user_profile/index.md
+source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
+source_file: docs/en/user_manual/users/user_profile/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-30'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: c9002e77f5270003
   edit-profile: 7bfe2795d9b01549
@@ -16,15 +16,15 @@ sections:
   merge-accounts: e1190f5e224e1047
   deleting-your-account: 2799d5bcc8d5b528
 generated:
-  introduction: d559af20220da325
-  edit-profile: 8609e7635b0176a2
-  update-your-personal-info: 73786caa7760bf20
-  viewing-another-person-s-profile: 6e7ba9812d84909b
-  uploading-a-profile-photo: fb517c07c92edb32
-  language-settings: a032383cdd545261
-  resetting-your-password: 17a9023472a4637e
-  merge-accounts: 5213b7fa51043f59
-  deleting-your-account: 7e6db7a9ceea0b32
+  introduction: 9811766c78c2117a
+  edit-profile: 33eca9d5afd202ac
+  update-your-personal-info: ea027b0f57e581db
+  viewing-another-person-s-profile: 3a6c36cfe2df8089
+  uploading-a-profile-photo: 661298d01104e879
+  language-settings: b87ac045c31a9c0e
+  resetting-your-password: 0cf1012b2363e60a
+  merge-accounts: 64ac83c28cba0693
+  deleting-your-account: cba72719e6844da2
 title_source: 528d89ad72cba22e
 title_generated: d9251b856c472b7a
 ---
@@ -32,21 +32,21 @@ title_generated: d9251b856c472b7a
 <!-- translation-section: introduction -->
 
 # プロフィール
-Loomioのプロフィールは、ほかの人が誰かを見分けるための情報です。
+Loomioのユーザープロフィールは、他の人が誰であるかを確認するための情報です。  
 
-Loomioで誰が参加しているか分かると、信頼関係を築きやすくなります。できるだけ本人と分かる名前を使い、写真やアバターを追加することをおすすめします。
+Loomioで参加者が誰であるかを確認できることは、信頼関係を築き、安心して参加する助けになります。できる限り自分らしいプロフィールにし、写真やアバターを追加することをおすすめします。
 
 <!-- translation-section: edit-profile -->
 
-## プロファイル編集
+## プロフィールの編集
 
-プロフィールページでは、Loomioで表示する情報を設定できます。プロフィールページを開くには、サイドバー上部の名前をクリックし、ユーザーメニューから**プロファイル編集**を選択します。
+プロフィールページでは、Loomioで表示される自分の情報を変更できます。プロフィールページを開くには、サイドバー上部の自分の名前をクリックし、ユーザーメニューから**プロファイル編集**を選択します。
 
 サイドバーが閉じている場合は、メニューアイコン（**☰**）をクリックして開きます。
 
 ![](sidebar_menu.png)
 
-名前の右にある下向き矢印をクリックします。
+自分の名前の右側にある下向きの矢印をクリックします。
 
 ![](sidebar_profile.png)
 
@@ -56,30 +56,30 @@ Loomioで誰が参加しているか分かると、信頼関係を築きやす�
 
 <!-- translation-section: update-your-personal-info -->
 
-## 個人情報を更新する
+## 個人情報の更新
 
-次の項目を変更すると、個人情報を更新できます。
+次の項目を変更して、個人情報を更新できます。
 
 * **氏名**
-* **Eメールアドレス** - Loomioアカウントに登録されているアドレスです。Loomioからの通知はこのアドレスに届きます。
-* **ユーザー名** - ほかの人が見分けたり、@mentionで通知したりするときに使う名前です。小文字の英字、数字、アンダースコア、単語の間のハイフンを使用できます。
-* **導入** - グループのほかのメンバーに自分のことを伝える短い文章です。
-* **位置** - 離れた場所で活動するグループで、どこにいるかを伝えるのに役立ちます。
+* **Eメールアドレス** - Loomioアカウントに登録されているメールアドレスです。Loomioからの通知はこのアドレスに届きます。
+* **ユーザー名** - 他の人が誰であるかを確認したり、@メンションで通知したりする際に使う名前です。小文字の英字、数字、アンダースコア、先頭と末尾以外のハイフンを使用できます。
+* **導入** - グループの他のメンバーに向けて、自分について数行で紹介します。
+* **位置** - メンバーが各地にいるグループやリモートで活動するグループで、所在地を伝えるのに役立ちます。
 
 ![](user_profile.png)
 
 <!-- translation-section: viewing-another-person-s-profile -->
 
-## ほかの人のプロフィールを見る
+## 他の人のプロフィールの表示
 
-名前またはアバターを選択すると、その人のプロフィールが開きます。プロフィール情報と所属グループに加え、最近のディスカッション、コメント、投票が表示されます。表示される活動は、閲覧権限のあるものだけです。ログインしていない人には、公開されている活動だけが表示されます。
+名前やアバターを選択すると、その人のプロフィールが開きます。プロフィールの詳細やグループとともに、最近のディスカッション、コメント、アンケートが表示されます。一覧には、アクセス権限のある活動だけが表示されます。ログインしていない訪問者には、公開されている活動だけが表示されます。
 
 <!-- translation-section: uploading-a-profile-photo -->
 
-## プロフィール写真をアップロードする
-Loomioアカウントを作成した直後は、名前の頭文字がプロフィール画像になります。プロフィールページで画像をクリックすると、写真をアップロードできます。
+## プロフィール写真のアップロード
+Loomioアカウントを作成すると、名前の頭文字がプロフィールの初期画像として表示されます。プロフィールページの自分の画像をクリックすると、プロフィール写真をアップロードできます。
 
-[Gravatar](https://en.gravatar.com/)を利用している場合は、**グラバターを使用する**を選択すると、その画像をプロフィール写真に設定できます。ほかの一般的なサービスで使用している写真をLoomioで使うこともできます。
+[Gravatar](https://en.gravatar.com/)を利用している場合は、**グラバターを使用する**を選択してプロフィール画像に設定できます。他の一般的なプラットフォームやツールで使っている写真をLoomioでも使うように選択することもできます。
 
 ![](profile_photo.png)
 
@@ -88,27 +88,27 @@ Loomioアカウントを作成した直後は、名前の頭文字がプロフ�
 ## 言語設定
 Loomioは英語で開発されていますが、[ボランティアによって多くの言語に翻訳されています](https://www.loomio.com/g/cpaM3Hsv/loomio-community-translation)。
 
-Loomioはブラウザーの言語設定を検出します。プロフィールページで、利用可能な言語から希望する言語を手動で選ぶこともできます。
+Loomioはブラウザーの言語設定を検出します。プロフィールページで、利用可能な言語から希望する言語を手動で設定することもできます。
 
 ![](profile_language.png)
 
 <!-- translation-section: resetting-your-password -->
 
-## パスワードを再設定する
-パスワードを変更するには、プロフィールページで**パスワードをリセット**をクリックします。
+## パスワードの再設定
+プロフィールページで**パスワードを再設定**をクリックすると、パスワードを変更できます。
 
 ![](reset_password.png#width-90)
 
 <!-- translation-section: merge-accounts -->
 
-## アカウントを統合する
+## アカウントの統合
 
-Loomioのアカウントを2つ持っている場合は、1つに統合できます。
+Loomioのユーザーアカウントが2つある場合は、1つのアカウントに統合できます。
 
-詳しくは[アカウントを統合する](../merge_accounts)をご覧ください。
+[アカウントの統合](../merge_accounts)を参照してください。
 
 <!-- translation-section: deleting-your-account -->
 
-## アカウントを削除する
+## アカウントの削除
 
-Loomioアカウントを削除し、参加しているすべてのLoomioグループから退出する場合は、[Loomioアカウントを削除する](../deleting_your_account)をご覧ください。
+Loomioのユーザーアカウントを削除し、所属しているすべてのLoomioグループから退会する場合は、[Loomioアカウントの削除](../deleting_your_account)を参照してください。

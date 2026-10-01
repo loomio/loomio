@@ -1,10 +1,10 @@
 ---
 title: Opmaak
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/discussions/formatting/index.md
+source_revision: c27ee3b193231816878f1c074ff9fc2a086a88c0
+source_file: docs/en/user_manual/discussions/formatting/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-02'
 sections:
   introduction: e5ed11fef349b38c
   attach-file: 772ed69602535db7
@@ -27,26 +27,26 @@ sections:
   markdown: 6ee2783ba81363fd
   rich-text: 9136c76bfd5409a9
 generated:
-  introduction: 3779605b25cfb44d
-  attach-file: 29536a8460004c1b
+  introduction: 61008fbffdc74f54
+  attach-file: 5c8e241f954fb9f6
   remove-attachments: 1ac9ddb9b78b79eb
-  insert-image: c5bec881e57b8331
-  insert-link: 9f07e6822a09bab9
-  insert-emoji: 63caff0512d71931
-  headings: 0e5932dafe77c999
-  bold-italicize-strikethrough: 1f4ef5991cbd308f
-  list: 9690a4609a0774dd
-  numbered-list: 610012384ebe574c
-  task-list: 9ca45d4276e6ea58
-  colors: e2a51a58fc7092d4
-  align: e112e571abcc89a3
-  embed-videos-and-webpages: 421c43acac070dcd
-  quote: 9366458b9532cdbd
-  code-block: d5965e6bb1ac664c
-  divider: 41f2ce31f0c4c7e3
-  add-table: 1046aa4a265becfd
-  markdown: 2fefcef6a1959103
-  rich-text: 275fcdf14540ca55
+  insert-image: ad00460b98a69981
+  insert-link: cc74342f21fdc875
+  insert-emoji: fe46e50a0296b238
+  headings: e573f1b7d7c366de
+  bold-italicize-strikethrough: 2b98e96ed4f67ebd
+  list: baa30e0fc72596e5
+  numbered-list: dd9a761c21332815
+  task-list: 71359fa1eda76691
+  colors: c0886f512431629f
+  align: 0fe453b5256a860d
+  embed-videos-and-webpages: 026c91117edfef08
+  quote: 711032de634d1228
+  code-block: 33440f4656ccb3c9
+  divider: 893426388097ba6b
+  add-table: ba09728b39f251a5
+  markdown: 2903146aba57e756
+  rich-text: 5734488dc6171b2d
 title_source: 29d4198e41d8221a
 title_generated: 7d7a9ce4e4aad2d0
 ---
@@ -55,19 +55,19 @@ title_generated: 7d7a9ce4e4aad2d0
 
 # Opmaak
 
-Als je een discussie of peiling begint of bewerkt, of een reactie schrijft, zie je onder het tekstveld een opmaakbalk. Selecteer de pijl aan het einde van de balk om alle hulpmiddelen te tonen of te verbergen.
+Wanneer je een discussie of peiling start of bewerkt, of een reactie schrijft, zie je een opmaakbalk onder het tekstveld. Selecteer de pijl aan het einde van de balk om alle hulpmiddelen te tonen of te verbergen.
 
-Beweeg de muisaanwijzer over een onderdeel om de naam van het hulpmiddel te zien.
+Beweeg de muis of cursor over elk pictogram om de naam van het hulpmiddel te zien.
 
 ![](thread_format_bar.png)
 
-Gebruik opmaak om structuur en nadruk aan te brengen, zodat informatie makkelijker te scannen is.
+Gebruik opmaak om structuur aan te brengen en tekst te benadrukken, zodat informatie gemakkelijker te overzien is.
 
 <!-- translation-section: attach-file -->
 
-## Bestand bijvoegen
+## Bestand toevoegen
 
-Gebruik het paperclippictogram onder het tekstveld om bestanden vanaf je computer bij te voegen.
+Gebruik het paperclippictogram direct onder het tekstveld om bestanden van je computer als bijlage toe te voegen.
 
 ![](format_attach.png)
 
@@ -87,11 +87,11 @@ Gebruik dit hulpmiddel om een afbeelding in te voegen en weer te geven.
 
 ![](format_insert_image.png)
 
-Selecteer een afbeeldingsbestand op je computer. Na het uploaden verschijnt de afbeelding in de editor.
+Selecteer een afbeeldingsbestand op je computer. Na het uploaden wordt de afbeelding in de editor ingevoegd.
 
 ![](format_insert_example.png)
 
-De afbeelding verschijnt in de gepubliceerde discussie, peiling of reactie.
+De afbeelding wordt weergegeven in de gepubliceerde discussie, peiling of reactie.
 
 >[!Tip]
 >Je kunt een afbeelding ook rechtstreeks in Loomio kopiëren en plakken.
@@ -102,19 +102,19 @@ De afbeelding verschijnt in de gepubliceerde discussie, peiling of reactie.
 
 ## Link invoegen
 
-Je kunt een link toevoegen naar elk deelbaar document of elke pagina op internet.
+Je kunt een link toevoegen naar elk document of elke pagina op internet die je kunt delen.  
 
 Zo voeg je een link toe:
 
-1. Selecteer de tekst waarvan je een link wilt maken, bijvoorbeeld de naam van een document.
+1. Selecteer de tekst waaraan je de link wilt toevoegen, bijvoorbeeld de naam van een document.
 2. Klik op het linkpictogram.
 3. Plak het adres in het veld **Link invoegen** en selecteer **Toepassen**.
 
-Controleer bij een document dat elders is opgeslagen de deelrechten, zodat deelnemers aan de discussie het kunnen openen.
+Controleer bij een document dat elders wordt gehost de instellingen voor delen, zodat deelnemers aan de discussie het kunnen openen.
 
 Onder het tekstveld verschijnt een voorbeeld van het document. Je kunt dit verwijderen als je wilt.
 
-Iedereen die toegang heeft tot jouw Loomio-discussie en het document mag bekijken, kan het nu openen en lezen.
+Iedereen met toegang tot jouw Loomio-discussie en toestemming om het document te bekijken, kan het nu openen en lezen.
 
 ![](format_link.png)
 
@@ -122,7 +122,7 @@ Iedereen die toegang heeft tot jouw Loomio-discussie en het document mag bekijke
 
 ## Emoji invoegen
 
-Selecteer de knop met de smiley en kies een emoji.
+Selecteer de smileyknop en kies een emoji uit het keuzemenu.
 
 ![](thread_insert_emoji.png)
 
@@ -130,11 +130,11 @@ Selecteer de knop met de smiley en kies een emoji.
 
 ## Koppen
 
-Met Kop 1, Kop 2 en Kop 3 kun je een discussie of reactie indelen.
+Kop 1, Kop 2 en Kop 3 kunnen helpen om een discussie of reactie structuur te geven.
 
-Selecteer de tekst die je als kop wilt opmaken en klik op het hulpmiddel voor koppen.
+Selecteer de tekst die je als kop wilt opmaken en klik op het hulpmiddel voor kopopmaak.
 
-Als je een kop in een reactie gebruikt, wordt die reactie automatisch vastgezet op de tijdlijn van de discussie.
+Als je een kop gebruikt in een reactie, wordt de reactie automatisch vastgezet op de tijdlijn van de discussie.
 
 ![](format_heading.png)
 
@@ -142,7 +142,7 @@ Als je een kop in een reactie gebruikt, wordt die reactie automatisch vastgezet 
 
 ## Vet, cursief, doorhalen
 
-Selecteer de tekst die je wilt opmaken en klik op het bijbehorende opmaakhulpmiddel.
+Selecteer de tekst die je wilt opmaken en klik op het gewenste opmaakhulpmiddel.
 
 ![](format_bold.png)
 
@@ -150,7 +150,7 @@ Selecteer de tekst die je wilt opmaken en klik op het bijbehorende opmaakhulpmid
 
 ## Lijst
 
-Gebruik **Lijst** om items als opsomming weer te geven.
+Gebruik **Lijst** om items als opsomming met opsommingstekens op te maken.
 
 ![](thread_bullets.png)
 
@@ -158,7 +158,7 @@ Gebruik **Lijst** om items als opsomming weer te geven.
 
 ## Genummerde lijst
 
-Gebruik **Genummerde lijst** als de volgorde van de items belangrijk is.
+Gebruik **Genummerde lijst** wanneer de volgorde van de items van belang is.
 
 ![](format_numbers.png)
 
@@ -166,17 +166,17 @@ Gebruik **Genummerde lijst** als de volgorde van de items belangrijk is.
 
 ## Takenlijst
 
-Gebruik **Takenlijst** om selectievakjes toe te voegen. Nadat je de lijst hebt geplaatst, kun je taken aan iemand toewijzen en een einddatum instellen.
+Gebruik **Takenlijst** om selectievakjes toe te voegen. Nadat je de lijst hebt geplaatst, kun je taken aan iemand toewijzen en een vervaldatum instellen.
 
 ![](format_tasks.png)
 
-Lees de pagina over [Taken](/en/user_manual/discussions/tasks/) voor meer informatie.
+Zie de pagina over [Taken](/en/user_manual/discussions/tasks/) voor meer informatie.
 
 <!-- translation-section: colors -->
 
 ## Kleuren
 
-Gebruik **Kleuren** om geselecteerde tekst een markeringskleur te geven.
+Gebruik **Kleuren** om geselecteerde tekst met een kleur te markeren.
 
 ![](thread_colors.png)
 
@@ -184,7 +184,7 @@ Gebruik **Kleuren** om geselecteerde tekst een markeringskleur te geven.
 
 ## Uitlijnen
 
-Selecteer een optie om tekst links, in het midden of rechts uit te lijnen.
+Kies om tekst links, in het midden of rechts uit te lijnen.
 
 ![](thread_align.png)
 
@@ -192,9 +192,9 @@ Selecteer een optie om tekst links, in het midden of rechts uit te lijnen.
 
 ## Video's en webpagina's integreren
 
-Je kunt ondersteunde video's en webpagina's insluiten waar een opmaakbalk beschikbaar is.
+Je kunt ondersteunde video's en webpagina's integreren overal waar een opmaakbalk beschikbaar is.
 
-Zo sluit je een video of webpagina in: 
+Om een video te integreren:
 1. Kopieer het adres van de video of webpagina.
 2. Selecteer **Video integreren**, plak het adres en selecteer **Toepassen**.
 
@@ -203,13 +203,13 @@ Zo sluit je een video of webpagina in:
 <iframe width="100%" height="380px" src="https://www.youtube-nocookie.com/embed/AJnjTd9u4zg" frameborder="0" allowfullscreen></iframe>
 
 >[!Tip]
->Zorg dat iedereen die aan de discussie kan deelnemen de video kan bekijken. Een verborgen video kan bijvoorbeeld geschikt zijn als deze niet in openbare zoekresultaten mag verschijnen.
+>Zorg dat iedereen die aan de discussie kan deelnemen toegang heeft tot de video. Een verborgen video kan bijvoorbeeld geschikt zijn als deze niet in openbare zoekresultaten mag verschijnen.
 
 <!-- translation-section: quote -->
 
 ## Citaat
 
-Met een citaat kun je tekst benadrukken, bijvoorbeeld om de aandacht op een instructie te vestigen.
+Een citaat benadrukt je tekst en kan helpen om de aandacht op een instructie te vestigen.
 
 ![](thread_quote.png)
 
@@ -217,7 +217,7 @@ Met een citaat kun je tekst benadrukken, bijvoorbeeld om de aandacht op een inst
 
 ## Codeblok
 
-Een codeblok wordt meestal gebruikt om code weer te geven. Je kunt het ook gebruiken om tekst in jouw discussie te onderscheiden.
+Codeblokopmaak wordt meestal gebruikt om code in tekst weer te geven, maar je kunt deze ook gebruiken om tekst in je discussie te laten opvallen.
 
 ![](thread_codeblock.png)
 
@@ -225,7 +225,7 @@ Een codeblok wordt meestal gebruikt om code weer te geven. Je kunt het ook gebru
 
 ## Scheidingslijn
 
-Gebruik een scheidingslijn om delen van de tekst van elkaar te scheiden.
+Gebruik de scheidingslijn om een horizontale lijn te plaatsen die onderdelen van elkaar scheidt.
 
 ![](thread_line.png)
 
@@ -233,9 +233,9 @@ Gebruik een scheidingslijn om delen van de tekst van elkaar te scheiden.
 
 ## Tabel toevoegen
 
-Voeg een tabel toe aan jouw discussie.
+Voeg een tabel toe aan je discussie.
 
-Met extra hulpmiddelen kun je kolommen en rijen toevoegen of verwijderen.
+Er zijn extra hulpmiddelen beschikbaar om kolommen en rijen toe te voegen of te verwijderen.
 
 ![](thread_table.png)
 
@@ -243,14 +243,14 @@ Met extra hulpmiddelen kun je kolommen en rijen toevoegen of verwijderen.
 
 ## Markdown
 
-Selecteer **Markdown bewerken** om over te schakelen naar Markdown.
+Selecteer **Markdown bewerken** om over te schakelen naar bewerken in Markdown.
 
-Als er al tekst in het veld staat, kan bij het omzetten een deel van de opmaak verloren gaan.
+Als je hierop klikt terwijl er tekst in het formulier staat, kan bij de omzetting een deel van de opmaak verloren gaan.
 
 <!-- translation-section: rich-text -->
 
 ### Opgemaakte tekst
 
-Selecteer **Opgemaakte tekst bewerken** om terug te gaan naar de opmaakhulpmiddelen. Ondersteunde Markdown wordt dan omgezet naar de opgemaakte weergave.
+Selecteer **Opgemaakte tekst bewerken** om terug te keren naar de opmaakhulpmiddelen. Hiermee wordt ondersteunde Markdown omgezet naar opgemaakte tekst.
 
-**Voorbeeld** laat zien hoe Markdown eruitziet na plaatsing, zonder de tekst om te zetten.
+**Voorbeeld** laat zien hoe Markdown er na het plaatsen uitziet, zonder deze om te zetten.

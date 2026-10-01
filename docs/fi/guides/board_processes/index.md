@@ -1,18 +1,18 @@
 ---
 title: Loomion opas hyvään hallintoon
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/guides/board_processes/index.md
+source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
+source_file: docs/en/guides/board_processes/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-30'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: c3b73b3c01154e3f
   demo-of-loomio-for-boards: ef96736259264497
   why-does-your-board-need-an-online-place-for-discussion-and-decisions: 5e6f7fcfe5b53726
 generated:
-  introduction: d442abee90310df0
-  demo-of-loomio-for-boards: b4981c852f0605f5
-  why-does-your-board-need-an-online-place-for-discussion-and-decisions: a9d58fe70a2fa6f2
+  introduction: 6690cb54d7c49003
+  demo-of-loomio-for-boards: ef0471d22dcbdad7
+  why-does-your-board-need-an-online-place-for-discussion-and-decisions: 590ef244fbec5025
 title_source: c85c3a86780156de
 title_generated: 10c350828d4a9156
 ---
@@ -21,17 +21,17 @@ title_generated: 10c350828d4a9156
 
 # Loomion opas hyvään hallintoon
 
-Hyvä hallinto ei rajoitu hallituksen kokouksiin. Se edellyttää hyvää viestintää ennen kokouksia ja niiden jälkeen.
+Hyvä hallinto on muutakin kuin hallituksen kokouksia. Se edellyttää hyvää viestintää ennen kokouksia ja niiden jälkeen.
 
-Tämä opas auttaa sinua käyttämään Loomiota hallituksessa tai toimikunnassa. Voitte pitää yhteyttä kokousten välillä, käsitellä kiireellisiä asioita ja vähentää hallinnollista työtä.
-- Jatkakaa hallintotyötä kokousten välillä
-- Pitäkää viestintä tallessa
-- Käyttäkää kokoukset tärkeiden asioiden käsittelyyn
-- Säilyttäkää organisaation muisti yksityiskohtaisen dokumentoinnin avulla
+Tämä opas auttaa sinua käyttämään Loomiota hallituksessasi tai toimikunnassasi, jotta voit pitää yhteyttä kokousten välillä, käsitellä kiireellisiä asioita ja vähentää hallituksen hallinnollista työtä.
+- Jatka hallitustyötä kokousten välillä
+- Pidä kirjaa viestinnästä
+- Käytä hallituksen kokoukset olennaisten asioiden käsittelyyn
+- Säilytä organisaation muisti yksityiskohtaisten kirjausten avulla
 
-Loomio on monipuolinen työkalu hallitusten ja toimikuntien yhteisiin keskusteluihin ja päätöksentekoon.
+Loomio on monipuolinen keskustelun ja päätöksenteon työkalu yhteistyötä tekeville hallituksille ja toimikunnille.
 
-Seuraavissa esimerkeissä näytetään hallitusten ja toimikuntien yleisiä käytäntöjä ja miten niitä voi soveltaa Loomiossa.
+Seuraavassa on esimerkkejä hallitusten ja toimikuntien yleisistä käytännöistä ja siitä, miten voit soveltaa niitä Loomiossa.
 
 <!-- translation-section: demo-of-loomio-for-boards -->
 
@@ -43,37 +43,37 @@ Rahul esittelee, miten hallitus voi käyttää Loomiota.
 <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/VSuFvlbAEVA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 
-Tallenne on Australian alkuperäiskansojen yhteisöjen rekisteriviranomaisen (ORIC) järjestämästä hallinnon verkkofoorumista 30. marraskuuta 2021.
+Tallennettu alun perin osana australialaisen Office of the Registrar of Indigenous Corporations (ORIC) -viraston järjestämää hallintoaiheista verkkofoorumia 30. marraskuuta 2021.
 
 Tässä oppaassa:
 
-- [Kokoukseen valmistautuminen](meeting.md)
+- [Valmistaudu kokoukseen](meeting.md)
 - [Keskustelujen ohjaaminen](facilitating_discussions.md)
-- [Päätöslauselmat ja päätöksenteko verkossa](decisions.md)
-- [Hallinnon käytännöt ja toimintatavat](practices.md)
-- [Hallinnointi ja dokumentointi](admin.md)
-- [Loomion esittely hallituksellesi](introduce.md)
+- [Virallisten päätösten ja verkkopäätösten tekeminen](decisions.md)
+- [Hallinnon käytännöt ja lähestymistavat](practices.md)
+- [Hallinnollinen työ ja kirjaaminen](admin.md)
+- [Loomion esitteleminen hallituksellesi](introduce.md)
 
 <!-- translation-section: why-does-your-board-need-an-online-place-for-discussion-and-decisions -->
 
-## Miksi hallituksenne tarvitsee verkkotilan keskustelulle ja päätöksenteolle?
+## Miksi hallituksesi tarvitsee verkossa paikan keskustelulle ja päätöksille?
 
-Hyvä hallinto perustuu organisaation tilanteeseen sopiviin järjestelmiin ja prosesseihin. Niiden avulla organisaatio voi toteuttaa tarkoitustaan tehokkaasti ja täyttää lakisääteiset velvoitteensa.
+Hyvä hallinto perustuu organisaation tilanteeseen sopiviin järjestelmiin ja prosesseihin, joiden avulla organisaatio voi toteuttaa tarkoitustaan tehokkaasti ja täyttää lakisääteiset velvoitteensa.
 
-*”Se on osallistavaa, yhteisymmärrykseen pyrkivää, vastuullista, avointa, tarpeisiin vastaavaa, tuloksellista ja tehokasta, oikeudenmukaista ja kaikkia osallistavaa sekä oikeusvaltioperiaatteen mukaista.”* [Yhdistyneiden kansakuntien Aasian ja Tyynenmeren talous- ja sosiaalikomissio](https://www.unescap.org/sites/default/d8files/knowledge-products/good-governance.pdf).
+*”Hyvä hallinto on osallistavaa, konsensukseen pyrkivää, vastuullista, läpinäkyvää, tarpeisiin vastaavaa, vaikuttavaa ja tehokasta, oikeudenmukaista ja kaikkia mukaan ottavaa sekä oikeusvaltioperiaatetta noudattavaa.”* [Yhdistyneiden kansakuntien Aasian ja Tyynenmeren talous- ja sosiaalikomissio](https://www.unescap.org/sites/default/d8files/knowledge-products/good-governance.pdf).
 
-Kaikkien näiden periaatteiden perustana on hyvä viestintä.
+Kaikkien näiden periaatteiden toteutuminen edellyttää hyvää viestintää.
 
-Hallitukset ja niiden jäsenet kohtaavat muun muassa seuraavia haasteita:
+Hallitusten jäsenet ja hallitukset kohtaavat esimerkiksi seuraavia haasteita:
 
-* Hallituksen jäsenten kokoaminen samaan paikkaan
-* Ajan löytäminen tärkeiden asioiden harkintaan 
+* Hallituksen jäsenten saaminen yhteen kasvokkain
+* Tärkeiden asioiden harkintaan käytettävissä oleva aika
 * Viestinnän seuraaminen
 * Kriittisten asioiden kiireellisyys
 * Videokokousten aiheuttama väsymys
-* Hallituksen jäsenet asuvat eri paikoissa, joskus kaukana toisistaan ja heikkojen verkkoyhteyksien alueilla
-* Vaihtelevat hallintokäytännöt ja kokemustasot
-* Suuren rutiiniasioiden määrän käsittely 
+* Hallituksen jäsenten sijainti eri paikoissa kaukana toisistaan, joskus heikkojen verkkoyhteyksien varassa
+* Vaihtelevat hallintokäytännöt ja kokemustaustat
+* Suuren rutiiniasioiden määrän käsittely
 * Organisaation muistin säilyttäminen
 
-Loomio auttaa vahvistamaan hallintoa ja jatkamaan yhteistyötä hallituksen kokousten ulkopuolella. Kaikki voivat osallistua avoimeen, rehelliseen ja kunnioittavaan keskusteluun, joka jää dokumentoiduksi.
+Loomion avulla voit vahvistaa hallintoa, jatkaa yhteistyötä hallituksen kokousten ulkopuolella ja ottaa kaikki mukaan avoimeen, rehelliseen ja kunnioittavaan keskusteluun samalla, kun kaikki dokumentoidaan.

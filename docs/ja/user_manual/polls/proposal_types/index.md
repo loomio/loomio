@@ -1,10 +1,10 @@
 ---
 title: 投票
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/polls/proposal_types/index.md
+source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
+source_file: docs/en/user_manual/polls/proposal_types/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 286e04a878e4c1d9
   simple-poll: d362d91b19914c39
@@ -14,55 +14,55 @@ sections:
   time-poll: 8b3a09b278bd7fde
   stv-election: e8407157d29424e4
 generated:
-  introduction: 6c7c53b735d08e0a
-  simple-poll: b1a9e0512cf30c1f
-  score-poll: 596744429ab63439
-  dot-vote: 4d160cd1a6e24cee
-  ranked-choice: acd8c994bbf7b418
-  time-poll: 95fea33f83cc060c
-  stv-election: cd5050fff0ff5e1b
+  introduction: added00b667cb2a5
+  simple-poll: 7276517d5a795e2e
+  score-poll: 6c7b4492bef97220
+  dot-vote: 0e6f871fc1c73649
+  ranked-choice: 07eb8208106e6795
+  time-poll: 83809b604b8cf9f8
+  stv-election: 46c87cb426099b9c
 title_source: 996729458535904a
 title_generated: 3c5a0fdbcf55aaa8
 ---
 
 <!-- translation-section: introduction -->
 
-# 投票
+# アンケート
 
-投票では、選択、評価、ポイントの配分、順位、参加できる日時、選挙の票を集められます。参加者が何を表明するか、結果をどう使うかに合わせて投票方法を選びます。方針や行動案への賛否を尋ねる場合は、[提案](/en/user_manual/polls/proposals/)を使います。
+アンケートでは、選択、スコア、ポイントの配分、順位、参加可能な日時、選挙の投票を集めます。参加者が何を表明する必要があるか、結果をどのように使うかに応じて、投票方法を選びます。声明や行動方針への意思を確認する場合は、[提案](/en/user_manual/polls/proposals/)を使います。
 
 <!-- translation-section: simple-poll -->
 
-## シンプルな投票
+## シンプルなアンケート
 
-[選択](/en/user_manual/polls/choose/)では、参加者が選択肢を1つまたは複数選べます。最も支持される選択肢を見つけたり、候補を絞り込んだりするときに使います。
+[選択](/en/user_manual/polls/choose/)では、参加者が1つ以上の選択肢を選べます。最も人気のある選択肢を見つけたり、候補を絞り込んだりするために使います。
 
 <!-- translation-section: score-poll -->
 
 ## スコア投票
 
-[スコア](/en/user_manual/polls/score/)では、参加者がすべての選択肢を同じ尺度で評価できます。選択肢ごとの支持の強さ、準備状況、適合性、重要度を比べるときに使います。
+[スコア](/en/user_manual/polls/score/)では、参加者がすべての選択肢を同じ尺度で評価できます。選択肢ごとの支持の強さ、準備状況、適合性、重要度を比較するために使います。
 
 <!-- translation-section: dot-vote -->
 
 ## ドット投票
 
-[配分](/en/user_manual/polls/allocate/)では、各参加者に決められた数のポイントを配分してもらいます。ある選択肢を優先すると、別の選択肢に使える時間や資源が減る場合に、優先順位を決めるために使います。
+[配分](/en/user_manual/polls/allocate/)では、各参加者が一定のポイントを選択肢に配分します。あるものを選ぶことで、ほかのものに向ける関心や資源が減る場合に、優先順位を明らかにするために使います。
 
 <!-- translation-section: ranked-choice -->
 
-## 順位付けされた選択肢
+## ランク投票
 
-[順位付け](/en/user_manual/polls/rank/)では、参加者が選択肢を希望順に並べられます。グループ全体で望まれる順序を調べたり、最も支持される選択肢を1つ選んだりするときに使います。
+[ランク](/en/user_manual/polls/rank/)では、参加者が希望する順に選択肢を並べられます。グループ全体が希望する順位を把握したり、最も支持される選択肢を1つ選んだりするために使います。
 
 <!-- translation-section: time-poll -->
 
-## 時間投票
+## 日程調整
 
-[時間投票](/en/user_manual/polls/meeting_polls/)では、参加者が参加できる日時を示せます。異なるタイムゾーンの参加者がいる会議やイベントの日程調整に使います。
+[日程調整](/en/user_manual/polls/meeting_polls/)では、参加者が参加可能な日時を示せます。異なるタイムゾーンの参加者が集まる会議やイベントの日程を決めるために使います。
 
 <!-- translation-section: stv-election -->
 
 ## STV選挙
 
-[STV選挙](/en/user_manual/polls/stv/)では、参加者が複数の当選者を比例的に選ぶ選挙で、候補者に順位を付けられます。委員会や理事会のメンバー、代議員を選ぶときに使います。
+[STV選挙](/en/user_manual/polls/stv/)では、参加者が候補者に順位を付け、支持の割合に応じて複数の当選者を選びます。委員会の委員、理事会の理事、代表者を選出するためにSTVを使います。

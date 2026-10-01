@@ -152,7 +152,7 @@ fi:
     destroy_tag: Poista tunniste
     destroy_helptext: Tämä poistaa tämän tunnisteen ja poistaa sen kaikista ryhmän säikeistä. Oletko varma?
     helptext: Tunnisteiden avulla voit luokitella keskustelut ja löytää ne helposti myöhemmin
-    discussions_count_singular: "(%{count} lanka)"
+    discussions_count_singular: "(%{count} ketju)"
     discussions_count_plural: "(%{count} säiettä)"
     tag_created: Tagi tallennettu
     tag_destroyed: Tunniste poistettu
@@ -175,13 +175,13 @@ fi:
     only_show_tags_in_this_group: Näytä vain tämän ryhmän tunnisteet
   poll_types:
     proposal: ehdotus
-    count: opt-in
-    check: aistien tarkistus
+    count: ilmoittautuminen
+    check: tunnustelu
     poll: kysely
     dot_vote: pisteäänestys
     meeting: aikakysely
-    ranked_choice: rankattu valinta
-    score: tulos kysely
+    ranked_choice: etusijajärjestys
+    score: pisteytys
     question: kysymyskierros
     stv: STV-vaalit
   timezones:
@@ -216,7 +216,7 @@ fi:
     time_zone: Aikavyöhyke
     local_time: Paikallinen aika
     attachments: Liitteet
-    template: Sapluuna
+    template: Malli
     links: Linkit
     active_time_ago: Viimeksi aktiivinen %{time_ago}
     confirm_discard_changes: Hylätäänkö muutoksesi?
@@ -268,7 +268,7 @@ fi:
     action:
       print: Tulosta
       preview: Esikatselu
-      pin: Pin
+      pin: Kiinnitä
       unpin: Irrota kiinnitys
       search: Hae
       filter: Suodattaa
@@ -343,7 +343,7 @@ fi:
     formatting_help:
       label: Muotoilu
       title: Opi käyttämään Markdownia tekstin muotoiluun
-    thread: Kierre
+    thread: Ketju
     commercial: Kaupallinen
     nonprofit: Voittoa tavoittelematon
     opening_in: Avautuminen %{time}
@@ -733,7 +733,7 @@ fi:
     contact_support: Ota yhteyttä tukeen
     sign_out: Kirjaudu ulos
     beta_collab: "\U0001F9EA Beta-ominaisuudet käytössä!"
-    outcomes: Tulokset
+    outcomes: Johtopäätökset
     theme: Teema
     light: Kevyt
     dark: Tumma
@@ -765,13 +765,13 @@ fi:
       discussion: Poista keskustelusta
     cancel_invitation: Peruuta kutsu
     view_profile: Näytä profiili
-    revoke_admin: Peruuta järjestelmänvalvoja
+    revoke_admin: Poista ylläpitäjän oikeudet
     make_delegate: Tee valtuutettu
     revoke_delegate: Peruuta edustaja
   notification_models:
     comment: kommentoida sisään
     poll: 'kysely:'
-    outcome: 'tulokset:'
+    outcome: 'johtopäätös: '
     stance: 'äänestys:'
     discussion: 'keskustelu:'
   notifications:
@@ -797,7 +797,7 @@ fi:
       poll_created: "%{actor} aloitti %{poll_type}: %{title}"
       poll_edited: "%{actor} päivitti %{poll_type}: %{title}"
       poll_expired: "%{poll_type} on sulkeutunut: %{title}"
-      poll_expired_author: 'Jaa %{poll_type}:n tulos: %{title}'
+      poll_expired_author: 'Jaa %{poll_type}:n johtopäätös: %{title}'
       poll_option_added: "%{actor} lisäsi valintoja kohteeseen %{title}"
       poll_reopened: "%{actor} avasi uudelleen %{poll_type}: %{title}"
       poll_reminder: "%{actor} muistuttaa sinua äänestämään %{title}"
@@ -828,7 +828,7 @@ fi:
       membership_request_approved: "%{actor} hyväksyi liittymispyyntösi %{title}"
       outcome_announced: "%{actor} jakoi %{poll_type} tuloksen"
       outcome_created: "%{actor} jakoi %{poll_type} tuloksen"
-      outcome_review_due: On aika tarkistaa %{poll_type} tulos
+      outcome_review_due: On aika tarkistaa %{poll_type}:n johtopäätös
       poll_announced_wip: "%{actor} haluaa palautteesi aiheesta %{poll_type}"
       poll_closed_by_user: "%{actor} sulki %{poll_type}"
       poll_closing_soon: "%{poll_type} sulkeutuu 24 tunnin kuluttua"
@@ -836,7 +836,7 @@ fi:
       poll_created: "%{actor} aloitti %{poll_type}"
       poll_edited: "%{actor} päivitti %{poll_type}"
       poll_expired: "%{poll_type} on sulkeutunut"
-      poll_expired_author: Jaa %{poll_type} tulos
+      poll_expired_author: Jaa %{poll_type}:n johtopäätös
       poll_option_added: "%{actor} lisäsi valintoja kyselyyn %{poll_type}"
       poll_reopened: "%{actor} avasi uudelleen %{poll_type}"
       poll_reminder: "%{actor} muistuttaa sinua äänestämään"
@@ -874,9 +874,9 @@ fi:
       new_coordinator: "%{actor} teki sinusta sivuston %{title} ylläpitäjän"
       new_delegate: "%{actor} teki sinusta äänioikeutetun edustajan kokouksessa %{title}"
       new_discussion: "%{title}"
-      outcome_announced: "%{poll_type} -tulos: %{title}"
-      outcome_created: "%{poll_type} -tulos: %{title}"
-      outcome_updated: "%{poll_type} -tulos päivitetty: %{title}"
+      outcome_announced: "%{poll_type}: johtopäätös: %{title}"
+      outcome_created: "%{poll_type}: johtopäätös: %{title}"
+      outcome_updated: "%{poll_type}: johtopäätös päivitetty: %{title}"
       outcome_review_due: On aika tarkastella seuraavan kohteen %{title} tulosta.
       poll_closed_by_user: "%{actor} sulki %{poll_type} -kyselyn: %{title}"
       poll_closing_soon: "%{poll_type} sulkeutuu 24 tunnin kuluttua: %{title}"
@@ -884,7 +884,7 @@ fi:
       poll_created: "%{poll_type}: %{title}"
       poll_edited: "%{actor} päivitti %{poll_type}: %{title}"
       poll_expired: "%{poll_type} on sulkeutunut: %{title}"
-      poll_expired_author: 'Julkaise tulos: %{title}'
+      poll_expired_author: 'Julkaise johtopäätös: %{title}'
       poll_option_added: "%{actor} lisäsi vaihtoehtoja artikkeliin %{title}"
       poll_reopened: 'Äänestystä jatkettu: %{title}'
       poll_reminder: "%{actor} muistuttaa sinua äänestämään aiheesta %{title}"
@@ -942,7 +942,7 @@ fi:
     privacy_label: Yksityisyys
     privacy_public: Kuka tahansa voi tarkastella tätä ketjua, jos heillä on linkki
     privacy_private: Vain ryhmän jäsenet voivat tarkastella tätä viestiketjua
-    privacy_organisation: Säie näkyy ryhmän %{parent} ja %{group} jäsenille.
+    privacy_organisation: Ketju näkyy ryhmien %{parent} ja %{group} jäsenille.
     fork_notice: Uusi säiettä luodaan %{count} kohdetta käyttäjältä %{title}
     notify_group: Ilmoita ryhmälle
     none_invite_only_discussion: Ei mitään (keskustelu vain kutsusta)
@@ -960,10 +960,10 @@ fi:
     edit_discussion_context: Muokkaa keskustelun kontekstia
     tags_field_moved: Tunnisteet on siirretty. Klikkaa tunnistekuvaketta ketjusivun oikeassa yläkulmassa, keskustelun otsikon oikealla puolella.
   announcement:
-    send_discussion: Lähetä lanka
+    send_discussion: Lähetä ketju
     send_group: Kutsu ihmisiä %{name}
     send_poll: Lähetä %{type}
-    send_outcome: Lähetä tulos
+    send_outcome: Lähetä johtopäätös
     cannot_reveal_when_anonymous: Valitettavasti emme voi paljastaa, kuka on äänestänyt tai ei ole äänestänyt nimettömässä kyselyssä.
     group_notification_history: Ryhmäkutsuhistoria
     poll_notification_history: Äänestyksen ilmoitushistoria
@@ -1042,7 +1042,7 @@ fi:
         title: Ilmoita muokkauksista
         helptext: Kenelle haluat ilmoittaa tästä päivityksestä?
       outcome_announced:
-        title: Jaa tulos
+        title: Jaa johtopäätös
         helptext: Tee yhteenveto prosessin tuloksista, mukaan lukien löydetyt ymmärrykset tai esiin tulleet ongelmat.
       anyone_can_participate: Kaikki linkin saaneet voivat osallistua
       placeholder: Voit kirjoittaa nimiä tai sähköpostiosoitteita
@@ -1095,7 +1095,7 @@ fi:
     add_comment: Kommentti
     copy_url: Kopioi linkki
     edit_thread: Muokkaa kontekstia
-    announce_thread: Lähetä lanka
+    announce_thread: Lähetä ketju
     invite_guests: Kutsu vieraita
     translate_thread: Käännä konteksti
     edit_poll: Muokkaa kyselyä
@@ -1110,19 +1110,19 @@ fi:
     edit_comment: Muokkaa kommenttia
     delete_comment: Poista kommentti
     reply_to_comment: Vastaa
-    fork_comment: Haarukka lanka
+    fork_comment: Haarauta ketju
     translate_comment: Käännä kommentti
     edit_outcome: Muokkaa tulosta
     announce_outcome: Ilmoita ihmisille tästä tuloksesta
     announce_outcome_active: "(Tästä tuloksesta ei ole vielä ilmoitettu kenellekään)"
-    translate_outcome: Käännä tulos
+    translate_outcome: Käännä johtopäätös
     show_history: Näytä muokkaushistoria
     edited: Muokattu
     show_edits: Näytä muokkaukset
     show_notifications: Näytä ilmoitukset
     history: Historia
-    pin_thread: Kiinnitä lanka
-    unpin_thread: Irrota lanka
+    pin_thread: Kiinnitä ketju
+    unpin_thread: Irrota ketju
     pin_event: Kiinnitä aikajanalle
     unpin_event: Irrota aikajanalta
     comment_copied: Kommentin URL-osoite kopioitu leikepöydälle
@@ -1131,7 +1131,7 @@ fi:
     discussion_copied: Viestiketjun URL-osoite kopioitu leikepöydälle
     url_copied: Linkki kopioitu leikepöydälle
     tag_thread: Hallitse tunnisteita
-    delete_thread: Poista lanka
+    delete_thread: Poista ketju
     notification_history: Ilmoitushistoria
     move_item: Siirrä kohde
     add_poll_to_thread: Lisää ketjuun
@@ -1310,7 +1310,7 @@ fi:
     new_cover_photo: Lataa uusi kansikuva
     new_group_logo: Lataa uusi ryhmän logo
     open_discussions: Avaa ketjut
-    discussions_placeholder: Lanka on, jossa kaikki voivat keskustella aiheesta ja tehdä päätöksiä yhdessä.
+    discussions_placeholder: Ketjussa kaikki voivat keskustella aiheesta ja tehdä päätöksiä yhdessä.
     members_placeholder: 'Olet täällä ainoa: kutsu ihmisiä mukaan!'
     member_options: Jäsenvaihtoehdot
     see_all_members: Näytä kaikki %{count} jäsentä
@@ -1338,7 +1338,7 @@ fi:
       loud: Sähköpostia aina kun on toimintaa.
       loud_aria_description: Tämän ryhmän ilmoitusten äänenvoimakkuus on Kova. Saat sähköpostin aina, kun toimintaa on.
       loud_message: Saat sähköpostin kaikesta toiminnasta kohteessa %{name}.
-      normal: 'Lähetä vain sähköpostia tärkeästä toiminnasta: uudet viestiketjut ja ehdotukset, tulokset jne.'
+      normal: 'Lähetä sähköpostia vain tärkeästä toiminnasta: uudet ketjut ja ehdotukset, johtopäätökset jne.'
       normal_aria_description: Tämän ryhmän ilmoitusten äänenvoimakkuus on Normaali. Saat vain sähköpostiviestin tärkeästä toiminnasta, kuten kun joku aloittaa uuden ketjun, tekee ehdotuksen tai asettaa tuloksen.
       normal_message: Sinulle lähetetään sähköpostia vain tärkeistä tapahtumista kohteessa %{name}.
       quiet: Älä lähetä sähköpostia tästä ryhmästä. Toiminta näkyy kojelaudassa.
@@ -1388,7 +1388,7 @@ fi:
     change_cover_image: vaihda kansikuva
     change_logo: vaihtaa logoa
     permissions_explaination: 'Henkilöllä voi olla kaksi jäsenyystasoa ryhmään: admin ja jäsen. Järjestelmänvalvojat voivat muokata ryhmän asetuksia, tehdä muista ihmisistä järjestelmänvalvojia ja suorittaa kaikki alla luetellut toiminnot.'
-    parent_group: Vanhempi ryhmä
+    parent_group: Pääryhmä
     new_organisation: Uusi organisaatio
     new_group: Uusi ryhmä
     new_subgroup: Uusi alaryhmä
@@ -1576,10 +1576,10 @@ fi:
     only_one_admin: Tässä ryhmässä on vain yksi ylläpitäjä. On suositeltavaa nimetä vähintään yksi jäsen lisää järjestelmänvalvojaksi.
     messages:
       remove_member_success: Poistettu %{name}
-      make_admin_success: "%{name} on nyt järjestelmänvalvoja"
-      remove_admin_success: "%{name} ei ole enää järjestelmänvalvoja"
+      make_admin_success: "%{name} on nyt ylläpitäjä"
+      remove_admin_success: "%{name} ei ole enää ylläpitäjä"
     remove_admin_from_self:
-      question: Oletko varma, että et enää halua olla järjestelmänvalvoja?
+      question: Oletko varma, että et enää halua olla ylläpitäjä?
   membership_remove_modal:
     invitation:
       title: Peruuta kutsu
@@ -1660,6 +1660,7 @@ fi:
     updated_on_sign_in: Selaimesi tarjoaa ja päivitetään, kun kirjaudut sisään
     translate_content_automatically: Käännä sisältö kielelleni automaattisesti
     bot_account_warning: Bottitilejä ei kutsuta äänestämään kyselyissä tai osallistumaan keskusteluihin.
+    translations_are_made_by_machine: Käännökset on tehty koneella. Jos jokin sana on väärä tai epäselvä, lähetä sähköpostia osoitteeseen %{email}, niin korjaamme sen.
   text_editor:
     x_of_y_characters: "%{x} / %{y} merkkiä"
     select_text_to_link: Valitse linkitettävä teksti ja yritä uudelleen
@@ -1773,7 +1774,7 @@ fi:
       all: Viimeaikaiset keskustelut
     thread_preview:
       you_voted: Äänestit %{position}
-      undecided: Olet päättämätön
+      undecided: Et ole vielä äänestänyt
     threads_from:
       group: Viestit osoitteesta
       pinned: Kiinnitetyt langat
@@ -1849,7 +1850,7 @@ fi:
     n_more: Lataa %{count} vastausta
     add_comment: Lisää kommentti
     add_poll: Lisää kysely
-    add_outcome: Lisää tulos
+    add_outcome: Lisää johtopäätös
     comment: Kommentti
     facilitate: Helpottaa
     start_decision: Aloita päätös
@@ -1948,16 +1949,16 @@ fi:
     question_title: Kysymyskierros
     advice_title: Neuvoja
     consent_title: suostumus
-    consensus_title: Yhteisymmärrys
+    consensus_title: Konsensus
     proposal_title: Ehdotus
     count_title: Osallistu
-    check_title: Aistitarkistus
+    check_title: Tunnustelu
     poll_title: Poll
     meeting: Tapaaminen
-    score_title: Pisteet kyselyssä
+    score_title: Pisteytys
     dot_vote_title: Pisteäänestys
     meeting_title: Aikakysely
-    ranked_choice_title: Sijoitettu valinta
+    ranked_choice_title: Etusijajärjestys
     gradients_of_agreement_title: Sopimuksen gradientit
     majority_title: Enemmistö
     stv_title: STV-vaalit
@@ -2053,9 +2054,9 @@ fi:
     participate: Osallistua
     vote: Äänestys
     votes: Äänet
-    update_outcome: Päivitä tulos
-    outcome: Tulokset
-    outcomes: Tulokset
+    update_outcome: Päivitä johtopäätös
+    outcome: Johtopäätös
+    outcomes: Johtopäätökset
     statement: lausunto
     change_your_stance: Muokkaa vastausta
     load_more: Lataa lisää
@@ -2071,7 +2072,7 @@ fi:
     share_count: Jaa sekki
     start_poll: Aloita päätös
     publish_poll: Jaa kysely
-    share_outcome: Jaa tulos
+    share_outcome: Jaa johtopäätös
     view_all: Näytä kaikki
     save_changes: Tallenna
     change_vote: Vaihda äänesi
@@ -2273,12 +2274,12 @@ fi:
     started_by: 'Aloittaja: %{name}'
   poll_common_votes_panel:
     vote_removed: Ääni poistettu
-    undecided: Päättämätön
+    undecided: Äänestämättä
     newest_first: Uusin ensin
     oldest_first: Vanhin ensin
     priority_first: Ensin samaa mieltä
     priority_last: Estä ensin
-    undecided_first: Päättämätön ensin
+    undecided_first: Äänestämättömät ensin
     no_votes_yet: Ääniä ei ole vielä annettu.
     change_results_order: Muuta tulosten järjestystä
     none_of_the_above: "(Ei mikään ylläolevista)"
@@ -2302,7 +2303,7 @@ fi:
   poll_common_undecided_panel:
     show_undecided: Näytä %{count} epävarmaa
     show_invitations: Näytä odottavat kutsut
-    undecided_users: Päättämätön (%{count})
+    undecided_users: Äänestämättä (%{count})
     invitation_count_singular: 1 lisähenkilö on kutsuttu osallistumaan sähköpostitse
     invitation_count_plural: "%{count} muuta henkilöä on kutsuttu osallistumaan sähköpostitse"
   poll_common_undecided_user:
@@ -2310,21 +2311,21 @@ fi:
     reminder_sent: Muistutusilmoitus lähetetty
   poll_common_set_outcome_panel:
     enter_outcome: Syötä tulos
-    poll_type: Tämä %{poll_type} on suljettu. Käytä aikaa tulosten pohtimiseen ja jaa sitten tulos, jotta ihmiset tietävät, mitä tapahtuu seuraavaksi.
-    enter_an_outcome: Syötä tulos
+    poll_type: Tämä %{poll_type} on suljettu. Käytä aikaa tulosten pohtimiseen ja jaa sitten johtopäätös, jotta ihmiset tietävät, mitä tapahtuu seuraavaksi.
+    enter_an_outcome: Syötä johtopäätös
   poll_common_outcome_form:
     review_due_in_days: Tarkista päätös kuinka monen päivän kuluttua?
     review_date: Tarkistuksen päivämäärä
     review_date_hint: Aseta päivämäärä päätöksen tarkistamiselle (valinnainen)
     who_to_notify: Kenelle haluat ilmoittaa tästä tuloksesta? (valinnainen)
     outcome_statement_template: Tuloslausunnon malli
-    new_title: Valtion tulos
-    update_title: Päivitä tulos
-    outcome_created: Tulos luotu
-    outcome_updated: Tulos päivitetty
+    new_title: Jaa johtopäätös
+    update_title: Päivitä johtopäätös
+    outcome_created: Johtopäätös luotu
+    outcome_updated: Johtopäätös päivitetty
     statement_placeholder: Tee yhteenveto vastauksista ja selitä, mitä tapahtuu seuraavaksi.
     you_will_be_notified: Sinulle ilmoitetaan tarkastelupäivänä.
-    submit: Jaa tulos
+    submit: Jaa johtopäätös
     review_due_in_days_hint: Päätöksen tarkistamisen odottamispäivien lukumäärä (valinnainen).
     statement_template_hint: Anna pohja päätöksen lopputuloksen kirjoittamista varten. (valinnainen)
     statement_template_placeholder: Kiitos osallistumisesta! Päätösvaltainen joukko on saavutettu ja meillä on kannatusta jatkaa.
@@ -2385,9 +2386,9 @@ fi:
     add_option_placeholder: Anna uusi valinta
     minimum_stance_choices: Sijoitusvaihtoehdot
     minimum_stance_choices_hint: eli Sijoita 3 parasta jäätelömakuasi
-    ranked_choice_created: Sijoitettu valinta luotu
-    ranked_choice_updated: Sijoitettu valinta päivitetty
-    rank: Sijoitus
+    ranked_choice_created: Etusijajärjestys luotu
+    ranked_choice_updated: Etusijajärjestys päivitetty
+    rank: Järjestys
     points: Pisteet
     average: Keskiverto
     mean: Tarkoittaa
@@ -2422,7 +2423,7 @@ fi:
     disagree: eri mieltä
     objection: Vastalause
     object: Esine
-    block: Lohko
+    block: Veto
     no_voting: Ei äänestystä
   poll_count_form:
     pct_of_target: "% tavoitteesta"
@@ -2664,8 +2665,8 @@ fi:
       poll_expired: Äänestys vanhenee
       poll_closed_by_user: Äänestys suljetaan manuaalisesti
       poll_reopened: Äänestys avataan uudelleen äänestämistä varten
-      outcome_created: Tulos jaetaan
-      outcome_updated: Tulos päivitetään
+      outcome_created: Johtopäätös jaetaan
+      outcome_updated: Johtopäätös päivitetään
       outcome_review_due: Tulosarviointi on luvassa
       new_discussion: Keskustelu on aloitettu
       discussion_edited: Keskustelua on muokattu
@@ -2771,8 +2772,11 @@ fi:
         helptext: "<p>Loomiossa käytämme ehdotuksia osoittaaksemme, että jokin päätös kannattaa tai että löydämme tapoja parantaa sitä.</p><p> Aloitetaan ehdotus ja pyydetään ryhmääsi äänestämään siitä.</p><p> Olemme luoneet sinulle <b>harjoitusehdotuspohjan</b> käytettäväksi.</p>"
         submit: Katso tarjouspohjat
       share_an_outcome:
-        title: Jaa ehdotuksen tulos
-        helptext: "<p>Päätöksenteon edistämiseksi ehdotuksilla on äänestyksen määräaika. Kun määräaika umpeutuu, äänestys päättyy ja sinulle ilmoitetaan, että voit jakaa ehdotuksen tuloksen.</p><p> Tulos on tilaisuus sanoa, oliko ehdotus onnistunut ja mitä tapahtuu seuraavaksi.</p><p> Jos ehdotuksesi määräaika ei ole vielä umpeutunut, mutta haluat silti jatkaa, voit napsauttaa <b>Sulje aikaisin -painiketta</b> .</p><p> Kun aika on oikea, <b>anna ehdotuksellesi tulos</b> .</p>"
+        title: Jaa ehdotuksen johtopäätös
+        helptext: |
+          <p>Kun ehdotuksen määräaika umpeutuu, äänestys päättyy ja sinua pyydetään jakamaan johtopäätös.</p>
+          <p>Johtopäätöksessä kerrot, mitä olet päättänyt (tai mitä tapahtuu seuraavaksi) tutustuttuasi ääniin ja kommentteihin.</p>
+          <p>Jos määräaika ei ole vielä umpeutunut mutta olet valmis etenemään, voit valita <b>Sulje etuajassa</b>.</p>
         submit: Näytä ehdotus
         cancel: Tee tämä myöhemmin
       start_a_discussion:
@@ -2819,7 +2823,7 @@ fi:
       title: Piilota tulokset suljettuun asti
       helptext_on: Älä näytä, miten ihmiset ovat äänestäneet, ennen kuin äänestys on suljettu
     short_reason_can_be_helpful: Lyhyet äänestysperustelut ovat helpompia ymmärtää. Ytimekkäiden perustelujen kokoelma on loistava resurssi päätöksentekoon.
-    shuffle_options: Satunnaistoiston asetukset
+    shuffle_options: Sekoita vaihtoehdot
     selected_people_only: Vain valitut henkilöt
   poll_common_form:
     quorum: Päätösvaltaisuus
@@ -2856,20 +2860,20 @@ fi:
     voting_methods:
       question: Kysymyskierros
       question_hint: Pyydä kysymyksiä ja kommentteja ehdotuksestasi
-      show_thumbs: Peukaloiden näyttäminen
+      show_thumbs: Peukkuäänestys
       show_thumbs_hint: Äänestäjät valitsevat peukalon ylös, alas, sivuttain tai käden ylös
       choose: Valita
       simple_poll: Yksinkertainen kysely
       choose_hint: Äänestäjät valitsevat parhaan vaihtoehdon (tai vaihtoehdot)
-      score: Pisteet
+      score: Pisteytys
       score_hint: Äänestäjät antavat pistemäärän jokaiselle vaihtoehdolle
-      allocate: Kohdista
+      allocate: Pistejako
       allocate_hint: Äänestäjät jakavat pisteistä koostuvan budjetin vaihtoehtojen kesken
-      ranked_choice: Sijoitettu valinta
+      ranked_choice: Etusijajärjestys
       ranked_choice_hint: Äänestäjät järjestävät vaihtoehdot mieluisimman ja vähiten toivotun mukaiseen järjestykseen
       time_poll: Aikakysely
       time_poll_hint: Äänestäjät ilmoittavat, milloin he ovat käytettävissä tapaamiseen
-      rank: Sijoitus
+      rank: Järjestys
       time: Aika
       stv: STV-vaalit
       stv_hint: Valitse useita voittajaa suhteellisesti käyttämällä yhtä siirrettävää ääntä
@@ -2888,7 +2892,7 @@ fi:
     details: Tiedot
     example_details: Esimerkkitiedot
     details_placeholder: Tämä on tilaisuutesi selittää, mistä ihmiset äänestävät
-    options: Asetukset
+    options: Vaihtoehdot
     options_placeholder: Listaa käytettävissä olevat vaihtoehdot
     no_options: Et ole vielä lisännyt vaihtoehtoja.
     closing: Sulkeminen
@@ -2965,7 +2969,7 @@ fi:
     set_all_vote_weights_the_same: Aseta kaikkien äänien painotukset samaksi
     member_vote_weights_hint: Äänestäjät, joilla ei ole nykyistä ryhmän jäsenyyttä, saavat äänen painoarvon 1
     weighted_voting: Painotettu äänestys
-    weighted_voting_is_not_available_with_anonymous_voting: "Painotettu äänestys ei ole käytettävissä anonyymissä äänestyksessä"
+    weighted_voting_is_not_available_with_anonymous_voting: Painotettu äänestys ei ole käytettävissä anonyymissä äänestyksessä
     use_weighted_voting: Käytä painotettua äänestystä
     weighted_voting_off_warning: Painotetun äänestyksen poistaminen käytöstä asettaa jokaisen äänen painoarvon arvoon 1. Tässä kyselyssä muuttamasi äänipainotukset menetetään.
     weighted_voting_on_group: Painotetun äänestyksen päälle ottaminen kopioi jokaisen jäsenen oletusäänipainotuksen. Muut äänestäjät saavat äänipainotuksen 1.
@@ -3093,7 +3097,7 @@ fi:
     closed_at: Suljettu klo
     closing_at: Sulkeutuu klo
   poll_stv_vote_form:
-    helptext: Vedä ehdokkaita viivan yläpuolelle asettaaksesi ne järjestykseen. Viivan alapuolella olevat kohteet ovat järjestykseen asettamattomia. Sijoitus 1 on suosikkisi.
+    helptext: Vedä ehdokkaat viivan yläpuolelle etusijajärjestykseen. Viivan alapuolella olevia ehdokkaita ei aseteta järjestykseen. Numero 1 on suosikkisi.
     divider_text: vedä ehdokkaita tämän viivan yläpuolelle asettaaksesi heidät järjestykseen
     stance_created: Äänestys kirjattu
     stance_updated: Äänestys päivitetty
@@ -3138,7 +3142,7 @@ fi:
     title: Lisää keskusteluun
     discussion: Keskustelu
     success: Onnistui, %{pollType} lisättiin keskusteluun!
-    explanation: "%{pollType} ja kaikki äänet, kommentit ja tulokset lisätään valittuun keskusteluketjuun."
+    explanation: "%{pollType} ja kaikki äänet, kommentit ja johtopäätös lisätään valittuun keskusteluketjuun."
   bookmarks:
     bookmarks: Kirjanmerkit
     saved: Kirjanmerkki tallennettu

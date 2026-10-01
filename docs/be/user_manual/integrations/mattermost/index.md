@@ -1,14 +1,14 @@
 ---
 title: Mattermost
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/integrations/mattermost/index.md
+source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
+source_file: docs/en/user_manual/integrations/mattermost/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-30'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 5ff78e7362ad4050
 generated:
-  introduction: 4e65422b83b48c00
+  introduction: 303d6c9da8c932dc
 title_source: b1ff7bd17092d95e
 title_generated: b1ff7bd17092d95e
 ---
@@ -16,27 +16,27 @@ title_generated: b1ff7bd17092d95e
 <!-- translation-section: introduction -->
 
 # Інтэграцыя з Mattermost
-_Падключэнне апавяшчэнняў вашай групы Loomio да каманднага чата Mattermost._
+_Падключэнне апавяшчэнняў вашай групы Loomio да каманднага чата ў Mattermost._
 
 Loomio можа адпраўляць апавяшчэнні ў вашы каналы Mattermost, калі з’яўляюцца новыя абмеркаванні, прапановы, каментарыі, галасы і высновы.
 
 ---
 
-Адкрыйце сваю каманду Mattermost у браўзеры. Затым адкрыйце старонку налад інтэграцый.
+Адкрыйце вашу каманду Mattermost у браўзеры. Затым адкрыйце старонку налад інтэграцый.
 ![](mm1.png)
 
-Націсніце «Уваходныя вэбхукі».
+Націсніце «Уваходныя вэбхукі»
 ![](mm2.png)
 
-Затым націсніце «Дадаць уваходны вэбхук».
+Затым націсніце «Дадаць уваходны вэбхук»
 ![](mm3.png)
 
-Дайце яму простую назву, выберыце канал для апавяшчэнняў і націсніце «Захаваць».
+Дайце яму простую назву, выберыце канал для апавяшчэнняў і націсніце «Захаваць»
 ![](mm4.png)
 
-Скапіруйце URL вэбхука ў буфер абмену. Ён спатрэбіцца на наступным кроку.
+Скапіруйце URL вэбхука ў буфер абмену — ён спатрэбіцца вам на наступным кроку.
 ![](mm5.png)
 
-Пераканайцеся, што URL вэбхука ёсць у буферы абмену, і перайдзіце па спасылцы ніжэй.
+Пераканайцеся, што URL вэбхука знаходзіцца ў буферы абмену, і перайдзіце па спасылцы ніжэй.
 
-[Наладзіць інтэграцыю з чатам у Loomio](../chatbots/#set-up-a-chat-integration)
+[Наладзьце інтэграцыю з чатам у Loomio](../chatbots/#set-up-a-chat-integration)

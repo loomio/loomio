@@ -1,10 +1,10 @@
 ---
 title: Formázás
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/discussions/formatting/index.md
+source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
+source_file: docs/en/user_manual/discussions/formatting/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: e5ed11fef349b38c
   attach-file: 772ed69602535db7
@@ -27,26 +27,26 @@ sections:
   markdown: 6ee2783ba81363fd
   rich-text: 9136c76bfd5409a9
 generated:
-  introduction: 00eec08bcf244c1c
-  attach-file: f503da67145b7b40
-  remove-attachments: 1c96941f206fc33d
-  insert-image: d8710f774553257d
-  insert-link: 95351489e97d0e43
-  insert-emoji: cfd0cb39e6b29f3e
-  headings: bde76837c8ba55aa
-  bold-italicize-strikethrough: 6146e8a14ad6b3ff
-  list: 7d715a14e32b5a30
-  numbered-list: a478a9f73bcd028a
-  task-list: f6157553ad3ff7ae
-  colors: 8c226d8890c58106
-  align: ad534b01779ab344
-  embed-videos-and-webpages: a8f92c01de777c4d
-  quote: 4fa8f5c681c0f941
-  code-block: b753384b47ba20ca
+  introduction: 5b7a10ffacf59c1c
+  attach-file: 96a249746dcd4f52
+  remove-attachments: f68ac4a24e7b7c86
+  insert-image: e8737c79986232b5
+  insert-link: 2a91091525497431
+  insert-emoji: 3f90cfa2b39e6fb4
+  headings: e1a7888305cf63cb
+  bold-italicize-strikethrough: 46b3ccf64bcd81bf
+  list: e226e92792260315
+  numbered-list: 1476507a7d0f6aed
+  task-list: f8bc5acee134d492
+  colors: b13933b136b7ecd1
+  align: b4441c4b8f5d320c
+  embed-videos-and-webpages: 4582d773f67a4b38
+  quote: 3b0e3622f6954866
+  code-block: 26be87d02a225914
   divider: 1eb3207a6e7894e6
-  add-table: 4893353dfb02aee8
-  markdown: d53be2b7dc3679f6
-  rich-text: 42279b21a1151867
+  add-table: 86ac95ed11222527
+  markdown: 427fcb58f8bbc50f
+  rich-text: 122b6d4244105e0e
 title_source: 29d4198e41d8221a
 title_generated: f69549cfa8a49f53
 ---
@@ -55,19 +55,19 @@ title_generated: f69549cfa8a49f53
 
 # Formázás
 
-Amikor beszélgetést vagy szavazást indítasz vagy szerkesztesz, illetve hozzászólást írsz, a szövegmező alatt megjelenik a formázási eszköztár. Az eszköztár végén lévő nyíllal megjelenítheted vagy elrejtheted az összes eszközt.
+Amikor beszélgetést vagy szavazást indítasz vagy szerkesztesz, illetve hozzászólást írsz, a szövegmező alatt megjelenik egy formázási eszköztár. Kattints az eszköztár végén lévő nyílra az összes eszköz megjelenítéséhez vagy elrejtéséhez.
 
-Vidd az egérmutatót az egyes elemek fölé az eszközök nevének megtekintéséhez.
+Vidd az egérmutatót az egyes eszközök fölé a nevük megjelenítéséhez.
 
 ![](thread_format_bar.png)
 
-Formázással tagolhatod és kiemelheted a szöveget, hogy könnyebb legyen áttekinteni.
+Használd a formázást a szöveg tagolásához és a fontos részek kiemeléséhez, hogy az információ könnyebben áttekinthető legyen.
 
 <!-- translation-section: attach-file -->
 
 ## Fájl csatolása
 
-A szövegmező alatt lévő gemkapocs ikonnal fájlokat csatolhatsz a számítógépedről.
+A szövegmező alatt található gemkapocs ikonnal csatolhatsz fájlokat a számítógépedről.
 
 ![](format_attach.png)
 
@@ -75,7 +75,7 @@ A szövegmező alatt lévő gemkapocs ikonnal fájlokat csatolhatsz a számító
 
 ### Mellékletek eltávolítása
 
-A leírás szerkesztése közben kattints a fájlnév jobb oldalán lévő **X** jelre az eltávolításához.
+A leírás szerkesztése közben kattints a fájlnévtől jobbra lévő **X** gombra a melléklet eltávolításához.
 
 ![](thread_file_remove.png)
 
@@ -87,14 +87,14 @@ Ezzel az eszközzel képet szúrhatsz be és jeleníthetsz meg.
 
 ![](format_insert_image.png)
 
-Válassz ki egy képfájlt a számítógépedről. A kép a feltöltés után bekerül a szerkesztőbe.
+Válaszd ki a képfájlt a számítógépedről. A feltöltés után a kép bekerül a szerkesztőbe.
 
 ![](format_insert_example.png)
 
-A kép a közzétett beszélgetésben, szavazásban vagy hozzászólásban jelenik meg.
+A kép megjelenik a közzétett beszélgetésben, szavazásban vagy hozzászólásban.
 
 >[!Tip]
->Képet közvetlenül is bemásolhatsz a Loomióba.
+>Képet közvetlenül is másolhatsz és beilleszthetsz a Loomióba.
 
 ![](format_image_example.png)
 
@@ -102,19 +102,19 @@ A kép a közzétett beszélgetésben, szavazásban vagy hozzászólásban jelen
 
 ## Hivatkozás beszúrása
 
-Bármely megosztható internetes dokumentumra vagy oldalra mutató hivatkozást hozzáadhatsz.
+Az interneten elérhető bármely megosztható dokumentumra vagy oldalra hivatkozhatsz.  
 
-Hivatkozás hozzáadása:
+Hivatkozás hozzáadásához:
 
-1. Jelöld ki a hivatkozással ellátni kívánt szöveget, például egy dokumentum címét.
-2. Kattints a hivatkozás ikonjára.
-3. Illeszd be a címet az **Illessz be egy hivatkozást** mezőbe, majd válaszd az **Alkalmaz** lehetőséget.
+1. Jelöld ki a szöveget, amelyhez hivatkozást szeretnél hozzáadni, például egy dokumentum nevét.
+2. Kattints a hivatkozás ikonra.
+3. Illeszd be a címet az **Illessz be egy hivatkozást** mezőbe, majd kattints az **Alkalmaz** gombra.
 
-Ha a dokumentumot máshol tárolják, ellenőrizd a megosztási jogosultságait, hogy a beszélgetés résztvevői meg tudják nyitni.
+Ha a dokumentumot máshol tárolod, ellenőrizd a megosztási jogosultságait, hogy a beszélgetés résztvevői meg tudják nyitni.
 
-A dokumentum előnézete megjelenik a szövegmező alatt. Ha szeretnéd, eltávolíthatod.
+A szövegmező alatt megjelenik a dokumentum előnézete. Ezt eltávolíthatod, ha szeretnéd.
 
-Ezután bárki megnyithatja és elolvashatja a dokumentumot, aki hozzáfér a Loomio-beszélgetéshez, és jogosult a dokumentum megtekintésére.
+Ezután bárki megnyithatja és elolvashatja a dokumentumot, aki hozzáfér a Loomio-beszélgetésedhez, és jogosult a dokumentum megtekintésére.
 
 ![](format_link.png)
 
@@ -122,7 +122,7 @@ Ezután bárki megnyithatja és elolvashatja a dokumentumot, aki hozzáfér a Lo
 
 ## Emoji beszúrása
 
-Kattints a mosolygó arcot ábrázoló gombra, és válassz egy emojit.
+Kattints a mosolygó arcot ábrázoló gombra, majd válassz egy emojit a választóból.
 
 ![](thread_insert_emoji.png)
 
@@ -130,11 +130,11 @@ Kattints a mosolygó arcot ábrázoló gombra, és válassz egy emojit.
 
 ## Címsorok
 
-Az 1., 2. és 3. szintű címsorok segítenek tagolni a beszélgetést vagy a hozzászólást.
+Az 1., 2. és 3. szintű címsorokkal tagolhatod a beszélgetést vagy a hozzászólást.
 
-Jelöld ki a címsornak szánt szöveget, majd kattints a címsorformázó eszközre.
+Jelöld ki a címsorrá alakítandó szöveget, majd kattints a címsorformázó eszközre.
 
-Ha címsort használsz egy hozzászólásban, a hozzászólás automatikusan rögzül a beszélgetés idővonalán.
+Ha egy hozzászólásban címsort használsz, a hozzászólás automatikusan rögzítve lesz a beszélgetés idővonalán.
 
 ![](format_heading.png)
 
@@ -142,7 +142,7 @@ Ha címsort használsz egy hozzászólásban, a hozzászólás automatikusan rö
 
 ## Félkövér, dőlt, áthúzott
 
-Jelöld ki a formázni kívánt szöveget, majd kattints a megfelelő formázóeszközre.
+Jelöld ki a formázandó szöveget, majd kattints a kívánt formázási eszközre.
 
 ![](format_bold.png)
 
@@ -150,7 +150,7 @@ Jelöld ki a formázni kívánt szöveget, majd kattints a megfelelő formázóe
 
 ## Lista
 
-A **Lista** segítségével felsorolásként formázhatod az elemeket.
+A **Lista** eszközzel felsorolássá alakíthatod az elemeket.
 
 ![](thread_bullets.png)
 
@@ -158,7 +158,7 @@ A **Lista** segítségével felsorolásként formázhatod az elemeket.
 
 ## Számozott lista
 
-Használd a **Számozott lista** lehetőséget, ha számít az elemek sorrendje.
+Használd a **Számozott lista** eszközt, ha számít az elemek sorrendje.
 
 ![](format_numbers.png)
 
@@ -166,7 +166,7 @@ Használd a **Számozott lista** lehetőséget, ha számít az elemek sorrendje.
 
 ## Feladatlista
 
-A **Feladatlista** segítségével jelölőnégyzeteket adhatsz hozzá. A lista közzététele után a feladatokat hozzárendelheted valakihez, és határidőt adhatsz meg hozzájuk.
+A **Feladatlista** eszközzel jelölőnégyzeteket adhatsz a szöveghez. A lista közzététele után a feladatokat hozzárendelheted valakihez, és határidőt adhatsz meg hozzájuk.
 
 ![](format_tasks.png)
 
@@ -176,7 +176,7 @@ További információt a [Feladatok](/en/user_manual/discussions/tasks/) oldalon
 
 ## Színek
 
-A **Színek** segítségével háttérszínnel emelheted ki a kijelölt szöveget.
+A **Színek** eszközzel színes kiemelést adhatsz a kijelölt szöveghez.
 
 ![](thread_colors.png)
 
@@ -184,7 +184,7 @@ A **Színek** segítségével háttérszínnel emelheted ki a kijelölt szövege
 
 ## Igazítás
 
-Válaszd ki, hogy a szöveg balra, középre vagy jobbra legyen igazítva.
+Válaszd ki, hogy a szöveget balra, középre vagy jobbra szeretnéd igazítani.
 
 ![](thread_align.png)
 
@@ -192,24 +192,24 @@ Válaszd ki, hogy a szöveg balra, középre vagy jobbra legyen igazítva.
 
 ## Videók és weboldalak beágyazása
 
-A formázási eszköztárral rendelkező szövegmezőkbe támogatott videókat és weboldalakat ágyazhatsz be.
+A támogatott videókat és weboldalakat bárhol beágyazhatod, ahol van formázási eszköztár.
 
-Videó vagy weboldal beágyazása:
-1. Másold ki a videó vagy a weboldal címét.
-2. Válaszd a **Videó beágyazása** lehetőséget, illeszd be a címet, majd válaszd az **Alkalmaz** gombot.
+A videóbeágyazás használatához:
+1. Másold ki a videó vagy weboldal címét.
+2. Válaszd ki a **Videó beágyazása** lehetőséget, illeszd be a címet, majd válaszd az **Alkalmaz** lehetőséget.
 
 ![](format_embed.png)
 
 <iframe width="100%" height="380px" src="https://www.youtube-nocookie.com/embed/AJnjTd9u4zg" frameborder="0" allowfullscreen></iframe>
 
 >[!Tip]
->Ügyelj arra, hogy a videót mindenki elérhesse, aki részt vehet a beszélgetésben. Ha nem szeretnéd, hogy megjelenjen a nyilvános keresési találatok között, megfelelő lehet egy nem nyilvános videó.
+>Ellenőrizd, hogy a videó mindenki számára elérhető, aki részt vehet a beszélgetésben. Például egy nem listázott videó megfelelő lehet, ha nem szeretnéd, hogy megjelenjen a nyilvános keresési eredményekben.
 
 <!-- translation-section: quote -->
 
 ## Idézet
 
-Az idézet formázással kiemelhetsz egy szövegrészt, például egy utasítást.
+Az idézetformázás kiemeli a szöveget, és segíthet felhívni a figyelmet egy utasításra.
 
 ![](thread_quote.png)
 
@@ -217,7 +217,7 @@ Az idézet formázással kiemelhetsz egy szövegrészt, például egy utasítás
 
 ## Kódblokk
 
-A kódblokkot általában kód megjelenítésére használják, de a beszélgetésben más szövegrészek elkülönítésére is használhatod.
+A kódblokk formázását általában kód megjelenítésére használják, de más szövegrészeket is elkülöníthetsz vele a beszélgetésben.
 
 ![](thread_codeblock.png)
 
@@ -233,7 +233,7 @@ Az elválasztóval vízszintes vonalat húzhatsz a szakaszok közé.
 
 ## Táblázat hozzáadása
 
-Adj táblázatot a beszélgetéshez.
+Adj hozzá egy táblázatot a beszélgetésedhez.
 
 További eszközökkel oszlopokat és sorokat adhatsz hozzá vagy távolíthatsz el.
 
@@ -243,14 +243,14 @@ További eszközökkel oszlopokat és sorokat adhatsz hozzá vagy távolíthatsz
 
 ## Markdown
 
-A Markdown szerkesztésére a **Markdown szerkesztése** lehetőséggel válthatsz.
+A Markdown-szerkesztésre váltáshoz válaszd a **Markdown szerkesztése** lehetőséget.
 
-Ha a szövegmezőben már van szöveg, az átalakítás során egyes formázások elveszhetnek.
+Ha erre kattintasz, amikor már van szöveg a mezőben, az átalakítás során a formázás egy része elveszhet.
 
 <!-- translation-section: rich-text -->
 
 ### Formázott szöveg
 
-A formázási eszközökhöz az **Edit rich text** lehetőséggel térhetsz vissza. Ekkor a támogatott Markdown-formázás megjelenített formára alakul.
+A formázási eszközökhöz való visszatéréshez válaszd a **Formázott szöveg szerkesztése** lehetőséget. Ez a támogatott Markdown-formázást a megjelenített alakjára alakítja át.
 
-Az **Előnézet** megmutatja, hogyan jelenik meg a Markdown közzététel után, átalakítás nélkül.
+Az **Előnézet** átalakítás nélkül megmutatja, hogyan jelenik majd meg a Markdown közzététel után.

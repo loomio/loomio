@@ -1,10 +1,10 @@
 ---
 title: Teilnahmebericht
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/groups/participation_report/index.md
+source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
+source_file: docs/en/user_manual/groups/participation_report/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 9ec21a12ab444c80
   what-s-in-the-report: 90b9c89c6933eeee
@@ -15,14 +15,14 @@ sections:
   users-per-country: 7f61b0c9a0002eec
   actions-per-country: 900472e9fa675e08
 generated:
-  introduction: '041383ecf600a9c7'
-  what-s-in-the-report: 2d501cfa6f1f6654
-  actions-per-month: 808411c712d8b0dd
-  tag-usage: 293ebc8b4d8a3c32
-  actions-per-user: 7bc297e33209d3e5
-  voting-record-per-user: 44ba37820540291e
-  users-per-country: b7c6f76d868ff1d0
-  actions-per-country: 76c4c56593b090a1
+  introduction: 75405361f4641a6c
+  what-s-in-the-report: 199b6db24887610e
+  actions-per-month: 71932610f1385e46
+  tag-usage: 999c173f0d05f848
+  actions-per-user: 04115406f89fc9da
+  voting-record-per-user: 53f7dfbcf4bfc222
+  users-per-country: '08cdc6b8e49e18c0'
+  actions-per-country: b5a36c9770c334f5
 title_source: ee140bf2af2bcf29
 title_generated: 287e1fa0641001b4
 ---
@@ -31,68 +31,68 @@ title_generated: 287e1fa0641001b4
 
 # Teilnahmebericht
 
-Der Teilnahmebericht zeigt dir, wie deine Loomio-Gruppe genutzt wird.
+Der Teilnahmebericht gibt dir Einblicke in die Nutzung deiner Loomio-Gruppe.
 
-Du kannst auswählen, welche Gruppen im Bericht enthalten sind, den Beginn und das Ende des Berichtszeitraums festlegen und die Ergebnisse nach Jahr, Monat, Woche oder Tag gruppieren.
+Du kannst auswählen, welche Gruppen der Bericht umfasst, das Start- und Enddatum festlegen und das Intervall (Jahr, Monat, Woche oder Tag) für die Gruppierung der Ergebnisse bestimmen.
 
-Alle in deiner Gruppe können den Bericht aufrufen. Sie sehen jedoch nur Ergebnisse für Gruppen, denen sie angehören. Deshalb kann der Bericht für verschiedene Personen etwas anders aussehen.
+Der Bericht ist für alle in deiner Gruppe verfügbar. Personen können jedoch nur Ergebnisse für Gruppen sehen, denen sie angehören. Deshalb können die Berichte für verschiedene Personen leicht unterschiedlich aussehen.
 
-Du findest den Bericht über das Zahnrad für die Gruppeneinstellungen, wie unten gezeigt.
+Du findest den Bericht, indem du auf das Zahnrad für das Menü der Gruppeneinstellungen klickst, wie unten gezeigt.
 
 ![Teilnahmebericht im Menü der Oatmilk Cooperative](group_participation_report.png)
 
 <!-- translation-section: what-s-in-the-report -->
 
-## Was steht im Bericht?
+## Was enthält der Bericht?
 
 <!-- translation-section: actions-per-month -->
 
 ### Aktionen pro Monat
 
-Sieh dir an, wie viel Beteiligung es in deiner Gruppe innerhalb eines bestimmten Zeitraums gab.
+Erfahre, wie viel Beteiligung es in deiner Gruppe während eines bestimmten Zeitraums gibt.
 
-Der Bericht zeigt, wie viele Diskussionen, Kommentare, Umfragen, Stimmen und Reaktionen es pro Monat gab. Im Diagramm erkennst du, wie sich die Nutzung im Laufe der Zeit verändert hat.
+Der Bericht zeigt, wie viele Threads, Kommentare, Abstimmungen, Stimmen und Reaktionen es pro Monat gab. Die grafische Darstellung zeigt dir, wie sich die Nutzung im Zeitverlauf verändert.
 
-Klicke auf eine Beschriftung im Diagramm, um die zugehörigen Daten auszublenden.
+Klicke auf einzelne Beschriftungen im Diagramm, um die zugehörigen Daten auszublenden.
 
-Klicke auf eine Spaltenüberschrift, um die Tabelle nach dieser Spalte zu sortieren.
+Klicke auf eine Spaltenüberschrift in der Tabelle, um die Tabelle nach dieser Spalte zu sortieren.
 
-![Bedienelemente, Gesamtzahlen und Aktivitätsdiagramm im Teilnahmebericht der Oatmilk Cooperative](group_participation_report_graph.png)
+![Bedienelemente, Gesamtzahlen und Aktivitätsdiagramm des Teilnahmeberichts für die Oatmilk Cooperative](group_participation_report_graph.png)
 
 <!-- translation-section: tag-usage -->
 
-### Verwendung von Tags
+### Verwendung von Schlagwörtern
 
-Hier siehst du, wie häufig einzelne Tags im ausgewählten Zeitraum verwendet wurden. Du kannst zum Beispiel sehen, wie viele Entscheidungen einen bestimmten Entscheidungsprozess oder eine bestimmte Vorlage verwenden.
+Hier siehst du, wie häufig verschiedene Schlagwörter im angegebenen Zeitraum verwendet wurden. Du kannst beispielsweise sehen, wie viele Entscheidungen mit einem bestimmten Entscheidungsverfahren oder einer bestimmten Vorlage getroffen wurden.
 
-![Tag-Aktivität im Zeitverlauf für Produktion, Café-Partnerschaften und Betrieb](group_participation_report_tags.png)
+![Verwendung der Schlagwörter Produktion, Café-Partnerschaften und Betriebsabläufe im Zeitverlauf](group_participation_report_tags.png)
 
 <!-- translation-section: actions-per-user -->
 
 ### Aktionen pro Person
-Sieh dir an, wer sich in deiner Gruppe am meisten und am wenigsten beteiligt.
+Erfahre, wer sich in deiner Gruppe am meisten und am wenigsten beteiligt.
 
-Die Tabelle zeigt, wie viele Diskussionen, Kommentare, Umfragen, Stimmen und Reaktionen jede Person in den ausgewählten Gruppen im festgelegten Zeitraum beigetragen hat. Klicke auf eine Spaltenüberschrift, um die Tabelle nach dieser Spalte zu sortieren.
+Diese Tabelle zeigt, wie viele Threads, Kommentare, Abstimmungen, Stimmen und Reaktionen jede Person in den angegebenen Gruppen während des Zeitraums beigetragen hat. Klicke auf eine Spaltenüberschrift in der Tabelle, um die Tabelle nach dieser Spalte zu sortieren.
 
-Aktiviere **Nur Delegierte**, um Personen anzuzeigen, die derzeit in mindestens einer der ausgewählten Gruppen delegiert sind. Ihre Aktivitäten und abgegebenen Stimmen werden über alle ausgewählten Gruppen zusammengefasst. Delegierte ohne Aktivität im ausgewählten Zeitraum bleiben in der Tabelle. Für den CSV-Download gilt derselbe Filter.
+Aktiviere **Nur Delegierte**, um Personen anzuzeigen, die aktuell in mindestens einer der ausgewählten Gruppen delegiert sind. Ihre Aktivitäten und ihre Stimmbeteiligung werden über alle ausgewählten Gruppen hinweg zusammengefasst. Delegierte ohne Aktivität im ausgewählten Zeitraum bleiben in der Tabelle. Für den CSV-Download gilt derselbe Filter.
 
 ![Aktionen pro delegierter Person mit drei Beteiligungsstufen](group_participation_report_actions_per_user.png)
 
 <!-- translation-section: voting-record-per-user -->
 
-### Abstimmungsverhalten pro Person
+### Stimmbeteiligung pro Person
 
-Vergleiche, zu wie vielen Abstimmungen eine Person eingeladen wurde und bei wie vielen sie abgestimmt hat. So erkennst du verpasste Abstimmungen und Personen, die an allen Abstimmungen teilgenommen haben, zu denen sie eingeladen wurden. Personen ohne Einladung zu einer Abstimmung werden nicht als vollständig beteiligt angezeigt. Anonyme Umfragen sind ausgeschlossen, da eine anonyme Stimmabgabe nicht mit der abstimmenden Person verknüpft werden darf.
+Vergleiche die Anzahl der Stimmen, die jede Person abgeben konnte, mit der Anzahl ihrer abgegebenen Stimmen. Sieh dir nicht abgegebene Stimmen an und erkenne, wer jede mögliche Stimme abgegeben hat. Eine Person, die keine Stimmen abgeben konnte, wird nicht als Person angezeigt, die alle Stimmen abgegeben hat. Anonyme Abstimmungen werden ausgeschlossen, da eine anonyme Stimme nicht mit der Person verknüpft werden darf, die sie abgegeben hat.
 
-Verwende **Nur Delegierte**, um das Abstimmungsverhalten der derzeit Delegierten zu prüfen. Für den CSV-Download gelten dieselben Namens- und Delegiertenfilter.
+Verwende **Nur Delegierte**, um die Stimmbeteiligung der aktuell delegierten Personen zu prüfen. Für den CSV-Download gelten dieselben Filter für Namen und Delegierte.
 
-![Abstimmungsverhalten der Delegierten mit Einladungen, abgegebenen und verpassten Stimmen](group_participation_report_voting_record.png)
+![Stimmbeteiligung von Delegierten mit möglichen, abgegebenen und nicht abgegebenen Stimmen](group_participation_report_voting_record.png)
 
 <!-- translation-section: users-per-country -->
 
 ### Personen pro Land
 
-Hier siehst du, wie viele Personen deiner Gruppe sich in den einzelnen Ländern befinden. Die Zuordnung basiert auf ihrer aktuellen IP-Adresse.
+Hier siehst du, wie viele Personen aus deiner Gruppe sich in den jeweiligen Ländern befinden. Die Zuordnung basiert auf ihrer aktuellen IP-Adresse.
 
 ![Personen pro Land in den ausgewählten Gruppen](group_participation_report_users_per_country.png)
 
@@ -100,8 +100,8 @@ Hier siehst du, wie viele Personen deiner Gruppe sich in den einzelnen Ländern 
 
 ### Aktionen pro Land
 
-Sieh dir an, in welchen Ländern sich Personen am meisten und am wenigsten beteiligen.
+Erfahre, in welchen Ländern sich Personen am meisten und am wenigsten beteiligen.
 
-Wie bei „Aktionen pro Person“, aber die Daten sind nach dem Land gruppiert, in dem sich die Person laut Standortbestimmung befindet.
+Ähnlich wie bei „Aktionen pro Person“, aber die Daten werden nach dem Land gruppiert, in dem sich die jeweilige Person laut Standorterkennung befindet.
 
-![Nach Land gruppierte Aktionen](group_participation_report_actions_per_country.png)
+![Aktionen nach Land gruppiert](group_participation_report_actions_per_country.png)

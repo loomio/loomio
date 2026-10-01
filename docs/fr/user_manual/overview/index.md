@@ -1,10 +1,10 @@
 ---
 title: Premiers pas
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/overview/index.md
+source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
+source_file: docs/en/user_manual/overview/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: ef3f289c364ccc11
   how-loomio-works: 73cb4ad13aa3e86b
@@ -14,13 +14,13 @@ sections:
   try-it-out: 4e0a31e65733ef2a
   how-people-use-loomio: b2d45fb7ddf29461
 generated:
-  introduction: 54fda754070cb14b
-  how-loomio-works: 85d5b2dd201984f0
-  groups: f51342adf0872b67
-  discussions: bbfcf30f4dfffd60
-  polls-and-proposals: 5adec5a9fda00df9
-  try-it-out: b74eefd0ec2c56c0
-  how-people-use-loomio: 919c8d206c736166
+  introduction: a6132020c4df28c9
+  how-loomio-works: 6be545c9e54236d8
+  groups: 9c31efa6075b053e
+  discussions: 2c12cbe0ddce058c
+  polls-and-proposals: 4fe48303b94e4670
+  try-it-out: 21cff8fdc6f7ce7f
+  how-people-use-loomio: b6092c96f80b654e
 title_source: 831d0f72d242b7d1
 title_generated: cf8001f189a4662b
 ---
@@ -29,7 +29,7 @@ title_generated: cf8001f189a4662b
 
 # Premiers pas
 
-Loomio est un outil de discussion et de prise de décision pour les organisations qui travaillent ensemble.
+Loomio est un outil de discussion et de prise de décision pour les organisations collaboratives.
 
 Il vous permet de réunir des personnes pour discuter de sujets, examiner des propositions et prendre des décisions.
 
@@ -41,13 +41,13 @@ Il vous permet de réunir des personnes pour discuter de sujets, examiner des pr
 
 ## Comment fonctionne Loomio
 
-Loomio comporte trois éléments principaux : les groupes, les discussions et les sondages.
+Loomio comporte trois éléments principaux : les groupes, les discussions et les sondages.
 
 <!-- translation-section: groups -->
 
 ### Groupes
 
-Un groupe est un espace où une organisation, une équipe ou une communauté peut travailler ensemble. Sa page d’accueil présente son objectif et donne accès à ses discussions, sondages, membres et fichiers.
+Un groupe est un espace où une organisation, une équipe ou une communauté peut travailler ensemble. Sa page d’accueil explique l’objectif du groupe et donne accès à ses discussions, sondages, membres et fichiers.
 
 ![](orientation_group.png)
 
@@ -55,40 +55,40 @@ Un groupe est un espace où une organisation, une équipe ou une communauté peu
 
 ### Discussions
 
-Les discussions rassemblent les informations et les échanges sur un sujet. Les personnes peuvent apporter du contexte, laisser des commentaires, répondre, réagir et utiliser des sondages pour faire avancer la discussion vers une conclusion.
+Les discussions regroupent les informations et les échanges sur un sujet. Les personnes peuvent partager du contexte, publier des commentaires, répondre, réagir et utiliser des sondages pour faire avancer la discussion vers une conclusion.
 
 ![](orientation_discussion.png)
 
-Au fil du temps, les discussions constituent une archive consultable des informations examinées et des décisions prises par votre groupe.
+Au fil du temps, les discussions constituent un historique consultable des informations examinées et des décisions prises par votre groupe.
 
 <!-- translation-section: polls-and-proposals -->
 
 ### Sondages et propositions
 
-Les sondages aident un groupe à connaître les préférences de ses membres, à recueillir des avis et à prendre des décisions. Différents modèles de sondage correspondent à différents processus. Une proposition invite les personnes à se prononcer sur une action suggérée et à expliquer leur réponse.
+Les sondages aident un groupe à comprendre les préférences, à recueillir des avis et à prendre des décisions. Différents modèles de sondage permettent de suivre différents processus. Une proposition invite les personnes à se prononcer sur une ligne d’action suggérée et à expliquer la raison de leur réponse.
 
 ![](orientation_proposal.png)
 
-Les sondages peuvent faire partie d’une discussion ou être lancés séparément depuis l’onglet **Sondages** de la page d’un groupe.
+Les sondages peuvent faire partie d’une discussion ou être menés indépendamment depuis l’onglet **Sondages** de la page d’un groupe.
 
-Pour voir où se trouvent ces éléments dans l’interface, consultez le [Tour rapide](/en/user_manual/overview/orientation). Pour commencer à contribuer, consultez [Comment participer](/en/user_manual/overview/how-to-participate).
+Pour savoir où ces éléments se trouvent dans l’interface, consultez la [Visite guidée](/en/user_manual/overview/orientation). Pour commencer à contribuer, consultez [Comment participer](/en/user_manual/overview/how-to-participate).
 
 <!-- translation-section: try-it-out -->
 
 ## Essayez Loomio
 
-Pour découvrir Loomio, le plus simple est de [commencer un essai gratuit](/try)
+La meilleure façon de découvrir Loomio est de [commencer un essai gratuit](/try)
 
 <!-- translation-section: how-people-use-loomio -->
 
-## Comment Loomio est utilisé
+## Comment les organisations utilisent Loomio
 
-**Organisations de membres** pour associer leurs membres aux décisions à grande échelle. Les partis politiques, les coopératives de consommateurs et de travailleurs et les associations utilisent Loomio pour offrir à leurs membres un espace sûr et ouvert à toutes et tous. Ils peuvent y partager des informations, soulever des sujets, participer aux décisions importantes et voter en assemblée générale. Loomio les aide à simplifier les processus de décision, à renforcer la transparence et la responsabilité, à documenter les discussions et les décisions, et à tenir compte de la voix des membres pour organiser l’action.
+**Organisations de membres**, pour faire participer les membres aux décisions à grande échelle. Les partis politiques, les coopératives de consommateurs et de travailleurs et les associations utilisent Loomio pour offrir un espace sûr et inclusif où les membres peuvent partager des informations, soulever des sujets, participer aux décisions importantes et voter en assemblée générale. Simplifiez les processus de décision, améliorez la transparence et la responsabilité, documentez les discussions, consignez les décisions et prenez en compte la voix des membres pour organiser l’action.
 
-**Organisations autogérées** pour associer leur personnel aux décisions. Les équipes autogérées, les coopératives de travailleurs et les organisations sociocratiques utilisent Loomio pour mener des processus de décision fondés sur le consentement, le consensus ou la consultation, même lorsque les équipes sont réparties entre plusieurs lieux et fuseaux horaires. Elles peuvent mettre en commun leurs connaissances, répartir la prise de décision, élaborer ensemble leurs règles et leurs politiques, et documenter leurs décisions et leurs discussions.
+**Organisations autogérées**, pour faire participer le personnel aux décisions. Les équipes autogérées, les coopératives de travailleurs et les organisations sociocratiques utilisent Loomio pour mener des processus de décision fondés sur le consentement, le consensus et la sollicitation d’avis au sein d’équipes réparties dans différents lieux et fuseaux horaires. Mobilisez l’intelligence collective, répartissez la prise de décision, définissez ensemble la gouvernance et les règles de fonctionnement, et documentez les décisions et les discussions.
 
-**Conseils, assemblées et réseaux répartis** pour associer les parties prenantes aux décisions. Loomio leur offre un espace sûr pour discuter, suivre les échanges et se coordonner malgré la distance et les fuseaux horaires. Ils peuvent structurer leurs processus de décision, réagir plus rapidement et conserver la mémoire de leur organisation.
+**Conseils d’administration, conseils et réseaux distribués**, pour faire participer les parties prenantes aux décisions. Créez un espace sûr pour la discussion, gardez une trace des communications et coordonnez vos activités entre différents lieux et fuseaux horaires. Structurez les processus de décision, améliorez votre capacité d’adaptation et vos délais de réponse, et préservez la mémoire de votre organisation.
 
-**Communautés résidentielles et coopératives** pour prendre des décisions entre voisins. Les habitats participatifs, écovillages, coopératives d’habitat partagé, coopératives de logement et fiducies foncières utilisent Loomio pour remplacer ou compléter la gestion immobilière traditionnelle par une gouvernance démocratique. Les résidents participent aux décisions concernant les terrains partagés, les espaces communs et les accords de vie collective. Grâce aux discussions asynchrones, les membres peuvent participer pleinement, qu’ils soient sur place ou en voyage. La communauté conserve ainsi une trace claire de ses choix de vie commune.
+**Communautés résidentielles et coopératives d’habitation**, pour prendre des décisions entre voisins. Les communautés d’habitat participatif, les écovillages, les coopératives de coliving, les coopératives d’habitation et les fiducies foncières utilisent Loomio pour remplacer ou compléter la gestion traditionnelle des copropriétés et des biens immobiliers par une gouvernance démocratique. Les résidents contribuent aux décisions concernant les terrains partagés, les espaces communs et les accords de la communauté. Les discussions asynchrones permettent aux membres de participer pleinement, qu’ils soient sur place ou en voyage, tout en conservant une trace claire de la manière dont la communauté a choisi de vivre ensemble.
 
-Loomio constitue une archive vivante de votre organisation : les décisions prises, les personnes qui y ont participé et les discussions qui ont mené à ces décisions.
+Loomio constitue une mémoire vivante de votre organisation : les décisions prises, les personnes qui y ont participé et les discussions qui ont conduit à ces décisions.

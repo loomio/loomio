@@ -1,10 +1,10 @@
 ---
 title: Primeiros passos
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/overview/index.md
+source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
+source_file: docs/en/user_manual/overview/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: ef3f289c364ccc11
   how-loomio-works: 73cb4ad13aa3e86b
@@ -14,13 +14,13 @@ sections:
   try-it-out: 4e0a31e65733ef2a
   how-people-use-loomio: b2d45fb7ddf29461
 generated:
-  introduction: 38b64482aeb530db
+  introduction: bc74f557844e43aa
   how-loomio-works: 4ad3541dac7638d0
-  groups: 90dc1066e4fb542d
-  discussions: 8f2125f0decccd76
-  polls-and-proposals: 651d5458554f2b30
-  try-it-out: 920e44cbc68f4421
-  how-people-use-loomio: 687c9678bc74b740
+  groups: 00f0c470c6ccb81d
+  discussions: 1c1943c580a08da4
+  polls-and-proposals: 8be2e63d23579fb7
+  try-it-out: 757dd3a78d687d09
+  how-people-use-loomio: 3ea6d0f716515618
 title_source: 831d0f72d242b7d1
 title_generated: 6254a4354624a855
 ---
@@ -31,7 +31,7 @@ title_generated: 6254a4354624a855
 
 O Loomio é uma ferramenta de discussão e tomada de decisões para organizações colaborativas.
 
-Com ele, você reúne pessoas para discutir assuntos, explorar propostas e tomar decisões.
+Com ele, você pode reunir pessoas para discutir temas, explorar propostas e tomar decisões.
 
 <div class="iframe-container">
 <iframe width="660" height="415" src="https://www.youtube-nocookie.com/embed/K8ZRNtlRvAI" title="Loomio in 2 minutes" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -47,7 +47,7 @@ O Loomio tem três partes principais: grupos, discussões e enquetes.
 
 ### Grupos
 
-Um grupo é um espaço onde uma organização, equipe ou comunidade trabalha em conjunto. A página inicial explica o propósito do grupo e dá acesso às discussões, enquetes, aos membros e arquivos.
+Um grupo é um espaço para uma organização, equipe ou comunidade trabalhar em conjunto. Sua página inicial explica o propósito do grupo e dá acesso às suas discussões, enquetes, membros e arquivos.
 
 ![](orientation_group.png)
 
@@ -55,40 +55,40 @@ Um grupo é um espaço onde uma organização, equipe ou comunidade trabalha em 
 
 ### Discussões
 
-As discussões reúnem as informações e conversas sobre um assunto. As pessoas podem compartilhar o contexto, comentar, responder, reagir e usar enquetes para chegar a uma conclusão.
+As discussões reúnem as informações e a conversa sobre um tema. As pessoas podem compartilhar contexto, comentar, responder, reagir e usar enquetes para conduzir a discussão a uma conclusão.
 
 ![](orientation_discussion.png)
 
-Com o tempo, as discussões formam um registro pesquisável das informações consideradas e das decisões tomadas pelo seu grupo.
+Com o tempo, as discussões criam um registro pesquisável das informações consideradas e das decisões tomadas pelo seu grupo.
 
 <!-- translation-section: polls-and-proposals -->
 
 ### Enquetes e propostas
 
-As enquetes ajudam o grupo a entender preferências, reunir opiniões e tomar decisões. Diferentes modelos de enquete atendem a diferentes processos. Uma proposta pede que as pessoas respondam a uma sugestão de ação e expliquem o motivo da resposta.
+As enquetes ajudam um grupo a entender preferências, reunir sugestões e tomar decisões. Diferentes modelos de enquete apoiam diferentes processos. Uma proposta pede que as pessoas respondam a uma sugestão de ação e expliquem o motivo de sua resposta.
 
 ![](orientation_proposal.png)
 
-As enquetes podem fazer parte de uma discussão ou ser realizadas separadamente na aba **Consultas** da página de um grupo.
+As enquetes podem fazer parte de uma discussão ou acontecer de forma independente na aba **Enquetes** da página de um grupo.
 
-Para saber onde encontrar essas partes na interface, consulte o [Tour rápido](/en/user_manual/overview/orientation). Para começar a contribuir, veja [Como participar](/en/user_manual/overview/how-to-participate).
+Para saber onde essas partes aparecem na interface, veja a [Visita rápida](/en/user_manual/overview/orientation). Para começar a contribuir, veja [Como participar](/en/user_manual/overview/how-to-participate).
 
 <!-- translation-section: try-it-out -->
 
 ## Experimente
 
-A melhor maneira de conhecer o Loomio é [iniciar um período de teste gratuito](/try)
+A melhor maneira de conhecer o Loomio é [iniciar um teste gratuito](/try)
 
 <!-- translation-section: how-people-use-loomio -->
 
 ## Como as pessoas usam o Loomio
 
-**Organizações de membros** usam o Loomio para envolver seus membros em decisões de grande escala. Partidos políticos, cooperativas de consumo e de trabalho e associações usam o Loomio para oferecer um espaço seguro e inclusivo. Nele, os membros compartilham informações, levantam assuntos, participam de decisões importantes e votam em assembleias gerais. As organizações podem organizar seus processos de decisão, aumentar a transparência e a prestação de contas, documentar discussões e decisões e incluir as vozes dos membros na organização de ações.
+**Organizações com membros** para envolver membros em decisões em grande escala. Partidos políticos, cooperativas de consumidores e de trabalhadores e associações usam o Loomio para oferecer um espaço seguro e inclusivo onde os membros podem compartilhar informações, trazer temas para discussão, participar de decisões importantes e votar em assembleias gerais. Simplifique os processos de decisão, melhore a transparência e a prestação de contas, documente discussões, registre decisões e inclua a voz dos membros na organização de ações.
 
-**Organizações autogeridas** usam o Loomio para envolver suas equipes nas decisões. Equipes autogeridas, cooperativas de trabalho e organizações sociocráticas usam o Loomio para conduzir processos de decisão por consentimento, consenso e aconselhamento, mesmo quando trabalham em lugares e fusos horários diferentes. Elas podem reunir o conhecimento coletivo, distribuir a tomada de decisões, construir juntas suas formas de governança e suas políticas e documentar decisões e discussões.
+**Organizações autogeridas** para envolver a equipe nas decisões. Equipes autogeridas, cooperativas de trabalhadores e organizações sociocráticas usam o Loomio para conduzir processos de decisão por consentimento, consenso e consulta a outras pessoas, com equipes distribuídas em diferentes fusos horários. Aproveite a inteligência coletiva, distribua a tomada de decisões, construa a governança e as políticas em conjunto e documente decisões e discussões.
 
-**Conselhos e redes distribuídas** usam o Loomio para envolver as partes interessadas nas decisões. Eles podem criar um espaço seguro para discussão, acompanhar as comunicações e coordenar o trabalho entre lugares e fusos horários diferentes. Também podem estruturar os processos de decisão, responder mais rapidamente e preservar a memória da organização.
+**Conselhos, colegiados e redes distribuídas** para envolver as partes interessadas nas decisões. Crie um espaço seguro para discussão, acompanhe as comunicações e coordene o trabalho entre diferentes regiões e fusos horários. Estruture os processos de tomada de decisões, melhore a agilidade e os tempos de resposta e preserve a memória da organização.
 
-**Comunidades residenciais e cooperativas** usam o Loomio para tomar decisões entre vizinhos. Comunidades de moradia compartilhada, ecovilas, cooperativas de habitação e organizações comunitárias de gestão de terras usam o Loomio para substituir ou complementar a administração tradicional de condomínios e imóveis com uma governança democrática. Os moradores participam das decisões sobre terrenos compartilhados, espaços comuns e acordos da comunidade. Como as discussões podem ocorrer em momentos diferentes, os membros conseguem participar tanto quando estão no local quanto quando estão viajando. Assim, fica registrado como a comunidade decidiu viver em conjunto.
+**Comunidades residenciais e cooperativas** para tomar decisões em conjunto como vizinhos. Comunidades de moradia compartilhada, ecovilas, cooperativas de moradia coletiva, cooperativas habitacionais e organizações de gestão coletiva de terras usam o Loomio para substituir ou complementar a administração tradicional de condomínios e imóveis com uma governança democrática. Os moradores participam das decisões sobre terrenos compartilhados, espaços comuns e acordos da comunidade. As discussões assíncronas permitem que os membros participem plenamente, estejam no local ou viajando, e mantêm um registro claro de como a comunidade escolheu viver em conjunto.
 
-O Loomio cria um registro contínuo da sua organização: as decisões tomadas, quem participou delas e as discussões que levaram a cada decisão.
+O Loomio cria um registro vivo da sua organização: as decisões tomadas, quem participou e a discussão que levou a cada decisão.

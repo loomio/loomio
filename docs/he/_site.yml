@@ -15,6 +15,7 @@ copy: העתקה
 copy_label: העתקת קוד ללוח הכתיבה
 copied: הועתק
 copy_failed: ההעתקה נכשלה
+machine_translation_notice: "עמוד זה תורגם בתרגום מכונה. אם מילה שגויה או לא ברורה, ניתן לשלוח הודעה לכתובת %{email} ונתקן אותה."
 alerts:
   note: הערה
   tip: טיפ

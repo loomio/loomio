@@ -1,6 +1,6 @@
 ---
 title: Szavazási sablonok
-source_revision: 9c60c42fc739483fa23f15d9f34a1e9245518092
+source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
 source_file: docs/en/user_manual/polls/poll_templates/index.md
 translated:
   provider: codex/gpt-6.1-sol
@@ -19,18 +19,18 @@ sections:
   save-and-test-the-template: 8c48386c69ea309a
   manage-the-template-list: 0c124d7958c3f80a
 generated:
-  introduction: ca49914c7ea16a02
-  voting-methods-and-templates: b26a19cea30777a7
-  use-a-template: 67b687ea39ff106f
-  who-can-manage-templates: 293a55a5adf3ad30
-  create-a-poll-template: a12fb236e296c014
-  template-title-subtitle-and-help: bd8d463f8ad83d30
-  voting-method: 13cc370e5e4ac5d0
-  example-title-details-and-tags: '094db61a99e25980'
-  response-options: e39237b0f500595d
-  duration-and-settings: 98d0d9467f76e7e0
-  save-and-test-the-template: 2eca983dac40ae1e
-  manage-the-template-list: 2cc44fe48d43d5d8
+  introduction: 90776350e8371577
+  voting-methods-and-templates: 7034ca65c73320f6
+  use-a-template: 95fbde37f42a7d5a
+  who-can-manage-templates: d23915dc8f1143dd
+  create-a-poll-template: b4a55a14ef0ca319
+  template-title-subtitle-and-help: 3e09ec00082ba0ec
+  voting-method: d531810f0756c5d7
+  example-title-details-and-tags: 43c546aabbe67d80
+  response-options: 969ece4fd4afe274
+  duration-and-settings: 04dfa77a83d57426
+  save-and-test-the-template: 71f228badf8b54a2
+  manage-the-template-list: e6a63dd30ffafa9c
 title_source: 114cca246e357304
 title_generated: bf81c7a2bbcc8a9b
 ---
@@ -39,43 +39,43 @@ title_generated: bf81c7a2bbcc8a9b
 
 # Szavazási sablonok
 
-A szavazási sablonok újra felhasználható kiindulópontok, amelyek a **Szavazás indítása** vagy az **Új szavazás** kiválasztásakor jelennek meg. Egy sablon szavazási módszert, előre megadott útmutatást, válaszlehetőségeket és beállításokat tartalmaz.
+A szavazási sablonok újra felhasználható kiindulópontok, amelyek a **Szavazás indítása** vagy az **Új szavazás** kiválasztásakor jelennek meg. A sablon egy szavazási módot kapcsol össze előre megadott útmutatással, válaszlehetőségekkel és beállításokkal.
 
-Ezen az oldalon beállíthatod, mely sablonok érhetők el egy csoportban, vagy létrehozhatsz egyet a saját döntési folyamatotokhoz. Ha egy adott szavazáshoz szeretnél sablont választani, olvasd el a [Javaslatok](../proposals/) vagy a [Szavazások](../proposal_types/) oldalát. A teljes döntési folyamat támogatásához olvasd el a [Döntéshozatal](/en/guides/making_decisions/) útmutatót.
+Ezen az oldalon beállíthatod, hogy mely sablonok legyenek elérhetők egy csoport számára, vagy létrehozhatsz egyet a saját folyamatodhoz. Egy adott szavazáshoz a [Javaslatok](../proposals/) vagy a [Szavazások](../proposal_types/) oldalon találsz segítséget a sablon kiválasztásához. Egy teljes döntési folyamat támogatásához lásd a [Döntéshozatal](/en/guides/making_decisions/) oldalt.
 
 <!-- translation-section: voting-methods-and-templates -->
 
-## Szavazási módszerek és sablonok
+## Szavazási módok és sablonok
 
-A szavazási módszer határozza meg, hogyan válaszolnak a résztvevők, és hogyan számítja ki a Loomio az eredményt. Ilyen módszer a Javaslat, a Választ, a Pontszám, a Kiosztás, a Rangsorolás, az Időpont választás és az STV.
+A szavazási mód határozza meg, hogyan válaszolnak a résztvevők, és hogyan számítja ki a Loomio az eredményt. Ilyen például a Javaslat, a Kiválasztás, a Pontozás, a Pontelosztás, a Rangsorolás, az Időpontszavazás és az STV.
 
-A szavazási sablon ezek egyikét használja, és újra felhasználható alapbeállításokat ad hozzá. Például a helyzetfelmérés, a tanácskérés, a hozzájárulás és a konszenzus különböző, a Javaslat módszerre épülő sablonok. Az útmutatásuk és a válaszlehetőségeik eltérnek, bár a Loomio ugyanúgy kezeli a leadott szavazatokat.
+A szavazási sablon ezek egyikét használja, és újra felhasználható alapbeállításokat ad hozzá. A Hangulatfelmérés, a Tanácskérés, a Beleegyezés és a Konszenzus például különböző sablonok, amelyek a Javaslat szavazási módra épülnek. Az útmutatásuk és a válaszlehetőségeik eltérnek, bár a Loomio ugyanúgy kezeli a bennük leadott szavazatokat.
 
 <!-- translation-section: use-a-template -->
 
 ## Sablon használata
 
-Szavazás indításakor válaszd a **Javaslat** vagy a **Szavazás** fület, majd válassz egyet a csoport számára elérhető sablonok közül.
+Szavazás indításakor válaszd ki a **Javaslat** vagy a **Szavazás** fület, majd válassz a csoport számára elérhető sablonok közül.
 
 ![](proposal_templates_list.png)
 
-A sablon bevezetőt, példatartalmat, lehetőségeket és beállításokat ad meg. A szavazás indítása előtt nézd át és igazítsd ezeket az adott döntéshez. Az új szavazás szerkesztése nem módosítja az újra felhasználható sablont.
+A sablon bevezetőt, mintatartalmat, lehetőségeket és beállításokat ad meg. A szavazás indítása előtt nézd át és igazítsd ezeket az adott döntéshez. Az új szavazás szerkesztése nem módosítja az újra felhasználható sablont.
 
 <!-- translation-section: who-can-manage-templates -->
 
-## Ki kezelheti a sablonokat?
+## Ki kezelheti a sablonokat
 
-A csoportadminisztrátorok a csoport összes szavazási sablonját létrehozhatják és kezelhetik. A **Csoport beállítások** → **Engedélyek** alatt bekapcsolhatják az **A tagok sablonokat hozhatnak létre** beállítást. Ha ez be van kapcsolva, a tagok sablonokat hozhatnak létre, és kezelhetik az általuk készített sablonokat.
+A csoport adminisztrátorai a csoportjuk összes szavazási sablonját létrehozhatják és kezelhetik. A **Csoport beállítások** → **Engedélyek** alatt bekapcsolhatják az **A tagok sablonokat hozhatnak létre** beállítást. Ha ez be van kapcsolva, a tagok sablonokat hozhatnak létre, és kezelhetik a saját maguk által létrehozott sablonokat.
 
 <!-- translation-section: create-a-poll-template -->
 
 ## Szavazási sablon létrehozása
 
-Nyisd meg a sablonok listáját, és válaszd az **Új sablon** lehetőséget. Indulj ki egy példából vagy egy üres sablonból, majd válaszd ki a csoportot, amely használni fogja.
+Nyisd meg a sablonlistát, és válaszd az **Új sablon** lehetőséget. Indulj ki egy példából vagy egy üres sablonból, majd válaszd ki a csoportot, amely használni fogja.
 
 ![](proposal_template_setting.png)
 
-A sablon űrlapján adhatod meg azt az útmutatást és azokat az alapbeállításokat, amelyeket az emberek szavazás indításakor látnak.
+A sablon űrlapján határozhatod meg az útmutatást és az alapbeállításokat, amelyeket az emberek a szavazás indításakor kapnak.
 
 ![](poll_template_new.png)
 
@@ -83,87 +83,87 @@ A sablon űrlapján adhatod meg azt az útmutatást és azokat az alapbeállít�
 
 ### A sablon címe, alcíme és súgója
 
-- A **Sablon címe** a sablonok listájában megjelenő rövid név.
-- A **Sablon alcíme** egy mondatban elmagyarázza, mikor érdemes használni.
-- A **Sablon súgó** az információs panelen jelenik meg, amikor valaki használja a sablont. Írd le a sablon célját, a résztvevők számára fontos szabályokat, és adj meg hivatkozásokat a kapcsolódó szabályzatokra vagy útmutatókra.
+- **Sablon címe**: a sablonlistában megjelenő rövid név.
+- **Sablon alcíme**: egy mondatban elmagyarázza, mikor érdemes használni.
+- **Sablon súgó**: a sablon használatakor az információs panelen jelenik meg. Ismertesd a célját és azokat a szabályokat, amelyeket a résztvevőknek ismerniük kell, és adj meg hivatkozásokat a kapcsolódó szabályzatokra vagy útmutatókra.
 
 ![](template_WAAP_intro.png)
 
-Használj egyszerű, egyértelmű neveket, amelyek megkülönböztetik a sablont a csoport többi sablonjától.
+Használj egyszerű, pontos neveket, amelyek megkülönböztetik a sablont a csoport többi sablonjától.
 
 <!-- translation-section: voting-method -->
 
-### Szavazási módszer
+### Szavazási mód
 
-Válassz aszerint, hogy mit kell kifejezniük a résztvevőknek, és hogyan kell kiszámítani az eredményt.
+Válaszd ki, mit kell kifejezniük a résztvevőknek, és hogyan kell kiszámítani az eredményt.
 
 ![](poll_type_voting_method.png)
 
-- **Javaslat**: válasz egy állításra előre meghatározott álláspontokkal;
-- **Választ**: egy vagy több lehetőség kiválasztása;
-- **Pontszám**: minden lehetőség értékelése egy skálán;
-- **Kiosztás**: korlátozott számú pont elosztása;
-- **Rangsorolás**: a lehetőségek sorrendbe állítása a preferenciák szerint;
-- **Időpont választás**: a ráérés jelzése; és
-- **STV**: jelöltek rangsorolása arányos, több győztest eredményező választáson.
+- **Javaslat**: válaszolj egy állításra a meghatározott álláspontok egyikével;
+- **Kiválasztás**: válassz ki egy vagy több lehetőséget;
+- **Pontozás**: értékelj minden lehetőséget egy skálán;
+- **Pontelosztás**: oszd el a rendelkezésre álló korlátozott számú pontot;
+- **Rangsorolás**: rendezd a lehetőségeket a preferenciáid sorrendjébe;
+- **Időpontszavazás**: jelezd, mikor érsz rá; és
+- **STV**: rangsorold a jelölteket egy arányos, több győztest választó szavazáson.
 
-A szavazási módszer megváltoztatásával a sablonban elérhető mezők és az eredmény kiszámítása is változik.
+A szavazási mód megváltoztatása módosítja a sablonban elérhető mezőket és az eredmény kiszámítását.
 
 <!-- translation-section: example-title-details-and-tags -->
 
-### Példacím, részletek és címkék
+### Mintacím, részletek és címkék
 
-Adj meg példatartalmat, amely segít a szavazás megfogalmazásában. Ezek az értékek bekerülnek az új javaslatba vagy szavazásba, és az indítás előtt szerkeszthetők.
+Adj meg olyan mintatartalmat, amely segít a szerzőnek megfogalmazni a szavazást. Ezek az értékek átkerülnek az új javaslatba vagy szavazásba, és az indítás előtt szerkeszthetők.
 
 ![](template_WAAP_details.png)
 
-Ha a sablon minden használatakor más címre vagy részletekre van szükség, rögzített szöveg helyett adj meg kitöltési útmutatást. Alapértelmezett kategóriacímkéket csak akkor adj hozzá, ha a sablon minden használatakor érvényesek.
+Használj segítő kérdéseket vagy útmutatást rögzített tartalom helyett, ha minden használatkor más címre vagy részletekre van szükség. Csak akkor adj meg alapértelmezett kategóriacímkéket, ha azok a sablon minden használatakor érvényesek.
 
 <!-- translation-section: response-options -->
 
 ### Válaszlehetőségek
 
-Egyes módszereknél, például a Javaslat és a Választ esetében beállíthatod a válaszlehetőségeket. A szerkesztéshez kattints a lehetőség melletti ceruzaikonra:
+Az olyan szavazási módoknál, mint a Javaslat és a Kiválasztás, beállíthatod a válaszlehetőségeket. Válaszd ki a lehetőség melletti ceruza ikont az alábbiak szerkesztéséhez:
 
-- **Opció neve**: a válasz rövid neve;
-- **Ikon**: a lehetőség képi jelölése;
+- **Opció neve**: a válasz rövid megnevezése;
+- **Ikon**: a válasz vizuális jelölése;
 - **Jelentése**: mit fejez ki a lehetőség kiválasztása; és
 - **Indoklás kérése**: a kérdés, amely akkor jelenik meg, amikor valaki megindokolja a válaszát.
 
 ![](poll_type_edit_option.png)
 
-Úgy határozd meg a lehetőségeket, hogy a résztvevők találgatás nélkül megértsék a különbséget köztük. A jelentésük feleljen meg a csoport tényleges döntési szabályainak.
+Úgy határozd meg a lehetőségeket, hogy a résztvevők találgatás nélkül meg tudják különböztetni őket. A jelentésük feleljen meg a csoportod által ténylegesen használt döntési szabályoknak.
 
 <!-- translation-section: duration-and-settings -->
 
 ### Időtartam és beállítások
 
-Állíts be olyan alapértelmezett időtartamot, amely a sablon legtöbb használatához megfelelő. Az indító az egyes szavazások zárási idejét módosíthatja.
+Állíts be olyan alapértelmezett időtartamot, amely a sablon legtöbb használatához megfelelő. A szerző az egyes szavazásoknál módosíthatja a lezárás időpontját.
 
 ![](poll_type_duration.png)
 
-Más alapbeállítások szabályozhatják az eredmény láthatóságát, a névtelen szavazást, a [súlyozott szavazást](../weighted_voting/), az indoklás kötelező megadását, az emlékeztetőket, a részvételi küszöböt és a választott módszer sajátos működését. A hatásukat a [Javaslatok és szavazások beállításai](../settings/) oldalon találod.
+Más alapbeállítások az eredmények láthatóságát, a névtelen szavazást, a [súlyozott szavazást](../weighted_voting/), a szavazatok indoklásának követelményeit, az emlékeztetőket, a határozatképességet és az adott szavazási mód működését szabályozhatják. A hatásukról a [Javaslatok és szavazások beállításai](../settings/) oldalon olvashatsz.
 
 <!-- translation-section: save-and-test-the-template -->
 
 ### A sablon mentése és kipróbálása
 
-Mentés után indíts egy szavazástervezetet a sablonból. Ellenőrizd, hogy a bevezető, a kitöltési útmutatás, a lehetőségek és az alapbeállítások annak is érthetők-e, aki nem készítette a sablont. A tervezetben azt is ellenőrizheted, hogy a választott szavazási módszer a csoport által várt eredményt adja-e.
+Mentés után hozz létre szavazástervezetet a sablonból. Ellenőrizd, hogy a bevezető, a segítő kérdések, a lehetőségek és az alapbeállítások annak is érthetők-e, aki nem vett részt a sablon létrehozásában. Egy tervezet létrehozásával azt is ellenőrizheted, hogy a kiválasztott szavazási mód a csoport által várt eredményt adja-e.
 
 <!-- translation-section: manage-the-template-list -->
 
-## A sablonok listájának kezelése
+## A sablonlista kezelése
 
 A sablon melletti műveleti menüben a következőket teheted:
 
-- **Szerkesztés**: módosíthatod az újra felhasználható tartalmat és az alapbeállításokat;
-- **Mozgat**: áthelyezheted a sablont a lista másik helyére;
-- **Elrejt**: elrejtheted a sablont a szavazást indítók elől; vagy
-- **Törlés**: törölhetsz egy egyéni sablont, amelyre már nincs szükség.
+- **Szerkesztés**: módosíthatod az újra felhasználható tartalmát és alapbeállításait;
+- **Mozgat**: másik helyre teheted a listában;
+- **Elrejt**: elrejtheted a szavazást indító emberek elől; vagy
+- **Törlés**: törölheted azt az egyéni sablont, amelyre már nincs szükség.
 
 ![](template_manage.png)
 
-A rejtett sablonok áttekintéséhez vagy visszaállításához válaszd a **Rejtett sablonok megjelenítése** lehetőséget. Az alapértelmezett sablonok elrejthetők vagy a csoport igényeihez igazíthatók, de nem törölhetők.
+Válaszd a **Rejtett sablonok megjelenítése** lehetőséget az elrejtett sablonok áttekintéséhez vagy visszaállításához. Az alapértelmezett sablonok elrejthetők vagy a csoporthoz igazíthatók, de nem törölhetők.
 
 ![](template_manage_settings.png)
 

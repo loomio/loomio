@@ -1,10 +1,10 @@
 ---
 title: Kyselyt
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/polls/proposal_types/index.md
+source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
+source_file: docs/en/user_manual/polls/proposal_types/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 286e04a878e4c1d9
   simple-poll: d362d91b19914c39
@@ -14,13 +14,13 @@ sections:
   time-poll: 8b3a09b278bd7fde
   stv-election: e8407157d29424e4
 generated:
-  introduction: 35e882123e85195b
-  simple-poll: '0695df8ac015ad73'
-  score-poll: bd0fa7f084ceae74
-  dot-vote: bfea1bfbe6870460
-  ranked-choice: e1f5d5d6eebd1bb5
-  time-poll: e35396a10d73fae6
-  stv-election: d194fe139a619ba8
+  introduction: 5e7b997f7e2f78a3
+  simple-poll: 3824b6e1873ca44d
+  score-poll: c79a526a798d88c8
+  dot-vote: bea83a9dbecdec18
+  ranked-choice: ee9d492ec90d547f
+  time-poll: 24e0812ad4fdfcdc
+  stv-election: 4be3deafa637b6ed
 title_source: 996729458535904a
 title_generated: dbda99a26349e313
 ---
@@ -29,40 +29,40 @@ title_generated: dbda99a26349e313
 
 # Kyselyt
 
-Kyselyissä osallistujat voivat valita vaihtoehtoja, antaa pisteitä, jakaa pisteitä vaihtoehtojen kesken, asettaa vaihtoehtoja järjestykseen, ilmoittaa saatavuutensa tai äänestää vaaleissa. Valitse äänestystapa sen mukaan, mitä osallistujien pitää ilmaista ja miten aiot käyttää tulosta. Käytä [ehdotusta](/en/user_manual/polls/proposals/), kun haluat osallistujien ottavan kantaa väitteeseen tai toimintatapaan.
+Kyselyillä kerätään valintoja, pisteytyksiä, pistejakoja, etusijajärjestyksiä, tietoja sopivista ajankohdista tai vaaliääniä. Valitse äänestystapa sen perusteella, mitä osallistujien tarvitsee ilmaista ja miten aiot käyttää tulosta. Käytä [ehdotusta](/en/user_manual/polls/proposals/), kun osallistujien pitää ottaa kantaa väittämään tai toimintatapaan.
 
 <!-- translation-section: simple-poll -->
 
 ## Yksinkertainen kysely
 
-[Valitse](/en/user_manual/polls/choose/) antaa osallistujien valita yhden tai useamman vaihtoehdon. Käytä sitä suosituimman vaihtoehdon löytämiseen tai vaihtoehtojen karsimiseen.
+[Valinta](/en/user_manual/polls/choose/) antaa osallistujien valita yhden tai useamman vaihtoehdon. Käytä sitä suosituimman vaihtoehdon löytämiseen tai vaihtoehtojen rajaamiseen.
 
 <!-- translation-section: score-poll -->
 
-## Pistekysely
+## Pisteytys
 
-[Pisteet](/en/user_manual/polls/score/) antaa osallistujien arvioida jokaisen vaihtoehdon samalla asteikolla. Käytä sitä vaihtoehtojen kannatuksen, valmiuden, sopivuuden tai tärkeyden vertailuun.
+[Pisteytys](/en/user_manual/polls/score/) antaa osallistujien arvioida jokaisen vaihtoehdon samalla asteikolla. Käytä sitä vaihtoehtojen kannatuksen, valmiuden, sopivuuden tai tärkeyden vertailuun.
 
 <!-- translation-section: dot-vote -->
 
 ## Pisteäänestys
 
-[Kohdista](/en/user_manual/polls/allocate/) antaa jokaiselle osallistujalle tietyn määrän pisteitä jaettavaksi vaihtoehtojen kesken. Käytä sitä tärkeimpien vaihtoehtojen tunnistamiseen, kun yhden vaihtoehdon valinta jättää vähemmän huomiota tai resursseja muille.
+[Pistejako](/en/user_manual/polls/allocate/) antaa jokaiselle osallistujalle tietyn määrän pisteitä jaettavaksi. Käytä sitä tärkeysjärjestyksen selvittämiseen, kun yhden asian valitseminen tarkoittaa, että toiselle jää vähemmän huomiota tai resursseja.
 
 <!-- translation-section: ranked-choice -->
 
-## Vaihtoehtojen järjestäminen
+## Etusijajärjestys
 
-[Sijoitus](/en/user_manual/polls/rank/) antaa osallistujien asettaa vaihtoehdot mieluisuusjärjestykseen. Käytä sitä ryhmän suosiman järjestyksen tai yhden suosituimman vaihtoehdon löytämiseen.
+[Järjestys](/en/user_manual/polls/rank/) antaa osallistujien asettaa vaihtoehdot etusijajärjestykseen. Käytä sitä ryhmän yhteisen etusijajärjestyksen selvittämiseen tai yhden suosituimman vaihtoehdon valitsemiseen.
 
 <!-- translation-section: time-poll -->
 
 ## Aikakysely
 
-[Aikakysely](/en/user_manual/polls/meeting_polls/) antaa osallistujien ilmoittaa, milloin heille sopii. Käytä sitä kokouksen tai tapahtuman aikatauluttamiseen myös eri aikavyöhykkeillä oleville osallistujille.
+[Aikakysely](/en/user_manual/polls/meeting_polls/) antaa osallistujien ilmoittaa, mitkä ajankohdat sopivat heille. Käytä sitä kokouksen tai tapahtuman ajankohdan sopimiseen eri aikavyöhykkeillä olevien osallistujien kesken.
 
 <!-- translation-section: stv-election -->
 
 ## STV-vaalit
 
-[STV-vaaleissa](/en/user_manual/polls/stv/) osallistujat asettavat ehdokkaat järjestykseen suhteellisessa vaalissa, jossa valitaan useita voittajia. Käytä STV-vaalia toimikunnan, hallituksen tai edustajaryhmän valitsemiseen.
+[STV-vaaleissa](/en/user_manual/polls/stv/) osallistujat asettavat ehdokkaat etusijajärjestykseen suhteellisissa vaaleissa, joissa valitaan useita henkilöitä. Käytä STV-vaaleja toimikunnan, hallituksen tai edustajaryhmän valitsemiseen.

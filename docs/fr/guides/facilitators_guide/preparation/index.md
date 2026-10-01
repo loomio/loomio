@@ -1,10 +1,10 @@
 ---
 title: Préparation
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/guides/facilitators_guide/preparation/index.md
+source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
+source_file: docs/en/guides/facilitators_guide/preparation/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-30'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 71d321ba45b2f805
   understand-purpose: a5a6600eac7b2d16
@@ -18,17 +18,17 @@ sections:
   power: b5f6b4ebd477c97c
   responsiveness: 4038185f64c37fac
 generated:
-  introduction: 7e0a27011e856931
-  understand-purpose: 5b2eea8dd88ad3d4
-  rearrange-the-furniture: dd881164dc5b95c8
-  supplies-tools-materials: 4539cdf2c1e8061f
-  design-the-experience: 2989d18ae982fdd1
-  contextualise-the-moment: 4e6ffbddb5fa3104
-  the-role-of-the-facilitator: ea408f89f9cd5078
-  consent: 39a32fe717c3975d
-  responsibility: e3146e338e70e6d8
-  power: e3e012dd4eade3ae
-  responsiveness: b86122aa48d86ff9
+  introduction: 760a82aadbe04bc9
+  understand-purpose: 7cf03c98b56467a4
+  rearrange-the-furniture: 10264fc1ce17afab
+  supplies-tools-materials: dae24177686912df
+  design-the-experience: bc1462d9d58cbf3f
+  contextualise-the-moment: 7d3aa5148915d3dd
+  the-role-of-the-facilitator: 51c48e86b0d58432
+  consent: 6a08e8c05783339b
+  responsibility: 92647994fc708292
+  power: 71a8d5b7dde236ac
+  responsiveness: cc822050d5963fef
 title_source: cf2befb0f1a62829
 title_generated: efd84d6a3a29e1d4
 ---
@@ -39,122 +39,125 @@ title_generated: efd84d6a3a29e1d4
 
 ![](cover.jpg)
 
-> <img style="border-radius: 100%; float: right; margin-left: 0.5em; max-width: 96px; " src="../silvia_200.png"> Pour chaque minute passée avec le groupe, envisagez de consacrer trois minutes à la préparation. Une séance d’une heure demande donc trois heures de préparation. Réduisez ce temps seulement lorsque vous aurez acquis de l’expérience.
+> <img style="border-radius: 100%; float: right; margin-left: 0.5em; max-width: 96px; " src="../silvia_200.png"> Pour chaque minute passée avec le groupe, prévoyez 3 minutes de préparation. Cela signifie consacrer trois heures à préparer une séance d’une heure. Ne réduisez votre temps de préparation qu’à mesure que vous gagnez en expérience.
 >
 > — Silvia Zuur
 
 <!-- translation-section: understand-purpose -->
 
-## Comprendre l’objectif
+## Comprendre la finalité
 
-Clarifier l’objectif est l’une des contributions les plus précieuses d’une personne qui anime un groupe. Une fois l’objectif défini, le reste devient possible. Il concerne aussi bien le groupe dans son ensemble que chaque discussion ou décision. Il aide à choisir les outils, les interventions et les conclusions à viser. Sans compréhension commune de l’objectif, une discussion, voire le groupe lui-même, peut échouer.
+Clarifier la finalité est l’une des contributions les plus utiles d’une personne expérimentée en facilitation — si elle aide le groupe à bien la définir, tout le reste devient possible. La finalité concerne aussi bien le groupe dans son ensemble que chaque discussion ou décision. Elle permet de choisir les outils à utiliser, les interventions à mener et les conclusions à viser. L’absence de compréhension commune de cette finalité peut compromettre une discussion, voire le groupe lui-même.
 
-> Revenez toujours aux questions qui vous ont aidé à définir l’objectif. Vérifiez que vous répondez bien à ce que les personnes participantes souhaitent apprendre ou accomplir. — Silvia Zuur
+> Revenez toujours aux questions qui vous ont permis de définir la finalité pour vérifier que vous répondez à ce que les participants souhaitent apprendre ou accomplir. — Silvia Zuur
 
 Sur Loomio
 
-* L’application permet de préciser l’objectif dans des champs comme la [description du groupe](/en/user_manual/groups/starting_a_group/#group-description) et le [contexte de la discussion](/en/user_manual/discussions/using_discussions/#discussion-context).
-* Si l’objectif du groupe n’est pas encore clair, commencez par une discussion *sur* cet objectif dans Loomio.
-* Nos statistiques d’utilisation montrent que les groupes qui partagent un objectif clair réussissent mieux.
-* Les [témoignages et études de cas](https://blog.loomio.com/?utm_campaign=facilitators_guide_help&utm_term=help) que nous avons recueillis soulignent l’importance de définir un objectif collectif.
+* L’application propose des espaces pour préciser la finalité, comme les champs [description du groupe](/en/user_manual/groups/starting_a_group/#group-description) et [contexte de la discussion](/en/user_manual/discussions/using_discussions/#discussion-context).
+* Si la finalité de votre groupe n’est pas encore claire, une discussion Loomio *sur* cette finalité est un bon point de départ.
+* Nos analyses (statistiques sur l’utilisation du logiciel) montrent que les groupes dont la finalité est claire et partagée réussissent mieux.
+* Les [témoignages de clients et études de cas](https://blog.loomio.com/?utm_campaign=facilitators_guide_help&utm_term=help) que nous avons recueillis soulignent l’importance de définir une finalité collective.
 
 <!-- translation-section: rearrange-the-furniture -->
 
-## Réaménager l’espace
+## Réorganiser le mobilier
 
-La façon dont vous aménagez l’espace influe beaucoup sur l’expérience des personnes que vous y invitez. Chaque rencontre est différente et mérite un cadre adapté. Un environnement familier peut rassurer, tandis qu’un changement de cadre peut favoriser de nouvelles idées.
+L’aménagement de l’espace dans lequel vous invitez les personnes influence fortement leur expérience. Chaque rencontre est unique et mérite un aménagement adapté. Un cadre familier procure un sentiment de sécurité, tandis qu’un changement d’environnement encourage l’ouverture à de nouvelles idées.
 
-Dans un espace physique, déplacer les meubles aide les personnes qui animent à se préparer et à réfléchir aux particularités de la séance. Imaginez la différence entre des personnes assises en rangées et des personnes assises en cercle.
+Dans les espaces physiques, réorganiser le mobilier aide les personnes chargées de la facilitation à se préparer à accueillir le groupe et les invite à réfléchir aux particularités de la séance. Imaginez la différence entre des personnes assises en rangées et des personnes assises en cercle.
 
 Sur Loomio
 
-* Inviter des personnes dans un nouvel espace numérique consacré à la prise de décision marque une étape. Cet espace se distingue ainsi des autres lieux en ligne, qui servent peut-être à échanger de manière informelle ou à d’autres activités.
-* [Personnaliser la photo de votre groupe](/en/user_manual/groups/starting_a_group/#upload-a-group-photo) vous permet de donner à cet espace une identité qui lui convient.
-* La description du groupe occupe une place importante sur sa page. [Vous pouvez la personnaliser](/en/user_manual/groups/starting_a_group/#group-description) selon vos besoins.
+* Inviter des personnes dans un nouvel espace numérique consacré à la prise de décision a un effet important — cette expérience de « franchissement d’un seuil » le distingue des autres espaces en ligne, qui peuvent servir aux échanges sociaux ou à d’autres fonctions.
+* [Personnaliser la photo de votre groupe](/en/user_manual/groups/starting_a_group/#upload-a-group-photo) vous permet de façonner l’ambiance de cet espace.
+* La description du groupe est un élément central du « mobilier » de sa page, et [vous pouvez la personnaliser](/en/user_manual/groups/starting_a_group/#group-description) selon vos besoins.
 
 <!-- translation-section: supplies-tools-materials -->
 
-## Fournitures, outils et documents
+## Fournitures, outils et matériel
 
-Quand l’animation se déroule bien, le groupe dispose de tout ce dont il a besoin. Dans un espace physique, cela peut comprendre des notes autocollantes, des stylos, du papier, des badges, des documents imprimés et des informations de référence. Chaque élément préparé à l’avance libère du temps et de l’énergie pour le travail du groupe.
+Lorsque la facilitation se déroule bien, toutes les fournitures dont le groupe a besoin sont à portée de main. Dans les espaces physiques, cela comprend les notes adhésives, les stylos, le papier, les badges nominatifs, les documents imprimés et les documents de référence. Chaque effort de préparation permet de consacrer davantage de temps et d’énergie au travail du groupe.
 
 Sur Loomio
 
-* Beaucoup de groupes utilisent leur description pour donner accès à un espace partagé contenant des documents collaboratifs, des informations de référence, leur outil de gestion de projet ou de suivi des tâches, une liste de contacts, etc.
-* Pour chaque fil de discussion, réfléchissez à ce dont les personnes auront besoin pour participer. Mettez les informations à leur portée : si vous mentionnez une ressource, un lien direct leur sera plus utile que de devoir la chercher.
+* De nombreux groupes utilisent leur description pour ajouter des liens vers un espace de stockage partagé contenant des documents collaboratifs, des informations de référence, le système de gestion de projet ou de suivi des tâches du groupe, une liste de contacts, etc.
+* Pour chaque fil, réfléchissez à ce dont les personnes pourraient avoir besoin pour participer — il est essentiel de mettre toutes les informations à portée de main (par exemple, lorsque vous faites référence à un document, un lien direct est bien plus efficace que de demander aux personnes de le chercher).
 
 <!-- translation-section: design-the-experience -->
 
 ## Concevoir l’expérience
 
-Une fois l’objectif, les outils et les informations de référence en place, les personnes qui animent prennent le temps de concevoir l’expérience proposée. Elles réfléchissent à la situation, à ce qui constituerait une réussite, ainsi qu’aux différents parcours et choix possibles. Elles ne se lancent pas sans préparation.
+Une fois les éléments de base en place (finalité, outils, informations de référence), les personnes expérimentées en facilitation prennent le temps de concevoir l’expérience qu’elles proposent : la situation, ce qui constituerait une réussite, tous les parcours et choix possibles. Elles ne se lancent pas sans avoir réfléchi à cette conception.
 
-Nous constatons souvent que le temps nécessaire à la préparation et à la conception est largement sous-estimé. Avant de vous lancer, prenez le temps de réfléchir à l’expérience que vous souhaitez proposer. Ce travail porte ses fruits par la suite.
+Nous avons souvent constaté que les personnes sous-estiment fortement le besoin de préparation et de conception. Prenez le temps de réfléchir à l’expérience que vous souhaitez proposer avant de vous lancer. Le temps consacré à sa conception contribue largement à sa réussite ultérieure.
+
 
 Sur Loomio
 
-* Le fonctionnement de base de Loomio suit les étapes d’une bonne animation : inviter les personnes, discuter d’un sujet, recueillir des points de vue différents, formuler une proposition précise, vérifier l’accord et confirmer la conclusion.
+* Les fonctions de base de Loomio suivent, par conception, la structure d’une facilitation efficace : inviter les personnes, discuter d’un sujet, recueillir des points de vue divergents, converger vers une proposition précise, vérifier l’accord et confirmer la conclusion.
+
 
 ![](../collaboration-process.png)
 
-* Des personnes expérimentées adaptent déjà Loomio à différents types de démarches, comme les consultations en plusieurs étapes ou la validation de documents. Chaque démarche bien animée suit une structure qui peut être réutilisée.
-* Pour concevoir une collaboration en ligne, appuyez-vous sur les méthodes qui fonctionnent déjà. De nombreuses démarches éprouvées en présentiel peuvent être adaptées en ligne, comme le [processus de consultation](/en/guides/making_decisions/advice_process.html).
-* Les [études de cas](https://blog.loomio.com/?utm_campaign=facilitators_guide_help&utm_term=help) de démarches soigneusement conçues peuvent servir de modèles. Si vous ne savez pas quelle approche choisir, regardez ce que d’autres ont essayé.
+* Les utilisateurs expérimentés adaptent déjà Loomio à différents formats — consultations en plusieurs étapes, validation de documents, etc. Chaque travail, lorsqu’il est facilité efficacement, suit une structure qui peut être reproduite.
+* Concevoir la collaboration en ligne ne nécessite pas de réinventer la roue. Appuyez-vous sur ce qui fonctionne selon votre expérience et adaptez-le. De nombreux processus éprouvés en présentiel peuvent être adaptés à un espace en ligne (par exemple, le [processus de sollicitation d’avis](/en/guides/making_decisions/advice_process.html)).
+* Les [études de cas](https://blog.loomio.com/?utm_campaign=facilitators_guide_help&utm_term=help) présentant des processus soigneusement conçus peuvent servir de « recettes » — si vous ne savez pas quel format choisir, commencez par découvrir ce que d’autres ont essayé.
 
 <!-- translation-section: contextualise-the-moment -->
 
-## Tenir compte du contexte
+## Situer le moment dans son contexte
 
-Une discussion s’inscrit dans l’histoire et les pratiques du groupe. Pour être efficace, une démarche animée doit intervenir au bon moment et s’intégrer au reste du travail du groupe.
+Les discussions ne se déroulent pas isolément, mais dans le contexte plus large de l’histoire et des pratiques du groupe. Pour être efficaces, les expériences facilitées doivent avoir lieu au bon moment et s’inscrire dans l’ensemble des processus du groupe.
 
-Questions essentielles sur le contexte :
+Questions clés sur le contexte :
 
-* Le groupe traverse-t-il une période de transition ?
-* S’agit-il d’améliorer une pratique existante ?
-* Cette démarche fait-elle partie de plusieurs processus en cours, ou constitue-t-elle l’unique priorité ?
-* Cherchons-nous à résoudre un problème, à approfondir un sujet, à élargir la réflexion ou à la préciser ?
+* Est-ce un moment de transition ?
+* S’agit-il d’améliorer une pratique existante ?
+* Est-ce un processus parmi plusieurs menés en parallèle, ou le seul centre d’attention ?
+* Sommes-nous ici pour résoudre un problème, approfondir un sujet, élargir la réflexion ou la recentrer ?
 
 Sur Loomio
 
-* Dans les groupes qui utilisent Loomio, une personne connaît presque toujours bien le contexte et peut déterminer si le moment convient pour présenter l’outil au groupe.
-* Évitez de tout changer en même temps. Les groupes adoptent plus facilement Loomio lorsqu’il s’intègre à leurs méthodes de travail existantes.
-* Le bon moment arrive lorsque le groupe est prêt à collaborer efficacement en ligne. Il doit percevoir le besoin d’un espace de décision en ligne et vouloir répondre à ce besoin.
-* Tenez compte de l’attention disponible dans le groupe pour choisir quand aborder un sujet. L’attention collective est limitée.
-* Beaucoup de groupes ne connaissent pas bien leurs propres habitudes de collaboration et ne savent pas encore quelle place Loomio pourrait y prendre. Commencez par discuter des pratiques actuelles, de ce qui fonctionne et de ce qui ne fonctionne pas.
+* Les groupes Loomio ont presque toujours une personne motrice, qui comprend le contexte du groupe et détermine si l’introduction de Loomio lui convient.
+* Il est préférable de ne pas chercher à tout changer en même temps. Lorsque Loomio s’intègre bien aux méthodes de travail existantes, les groupes l’adoptent plus facilement.
+* Le bon moment est celui où le groupe est prêt à intégrer efficacement la collaboration en ligne à ses pratiques. Il doit ressentir les difficultés liées à l’absence d’un espace de décision en ligne et être motivé pour y remédier.
+* Tenez compte de la disponibilité de l’attention du groupe pour déterminer quand aborder un sujet donné. L’attention collective est une ressource limitée.
+* De nombreux groupes n’ont pas conscience de leurs pratiques et habitudes de collaboration existantes, et savent encore moins comment Loomio pourrait s’y intégrer. Commencez par une discussion sur les façons de faire actuelles et sur ce qui fonctionne ou ne fonctionne pas.
 
 <!-- translation-section: the-role-of-the-facilitator -->
 
-## Le rôle de la personne qui anime
+## Le rôle de la personne chargée de la facilitation
 
-Une bonne animation demande de comprendre son propre rôle et le fonctionnement du groupe. Si ce rôle est mal compris, des malentendus, des conflits ou des situations difficiles peuvent apparaître.
+Une bonne facilitation exige une conscience de soi et du fonctionnement collectif. Une mauvaise compréhension de ce rôle peut entraîner des malentendus, des conflits ou des situations dans lesquelles les personnes ne se sentent pas en sécurité.
 
-> Faites-vous transmettre le mandat d’animer. Quand vous arrivez dans un nouveau groupe ou une nouvelle organisation, les personnes se demanderont qui vous êtes et pourquoi elles devraient vous écouter. Demandez à une personne qu’elles connaissent et en qui elles ont confiance de vous présenter. Cela vous donnera leur confiance et rendra votre rôle légitime. — Silvia Zuur
+> Faites-vous confier l’autorité nécessaire. Lorsque vous êtes invité dans un nouveau groupe ou une nouvelle organisation, tout le monde se demande : Qui est cette personne ? Pourquoi devrions-nous l’écouter ? Demandez à une personne que les participants connaissent et en qui ils ont confiance de vous présenter. Cela renforce votre légitimité à leurs yeux et facilite le transfert d’autorité. — Silvia Zuur
 
 <!-- translation-section: consent -->
 
 ### Consentement
-Il est essentiel que le groupe accepte d’être accompagné par une personne qui anime. Sans cet accord, l’animation peut devenir contraignante pour le groupe et risquée pour cette personne. Elle risque aussi de susciter de la résistance et de la confusion. La personne qui anime se place dans une position vulnérable : elle doit avoir un mandat, ou refuser ce rôle. Le consentement protège à la fois le groupe et la personne qui anime.
+Il est essentiel que le groupe consente à la facilitation. Sans ce consentement, tenter de faciliter peut, dans le pire des cas, devenir coercitif (au détriment du groupe) et dangereux (au détriment de la personne chargée de la facilitation), et susciter résistance et confusion. Les personnes chargées de la facilitation se placent dans une position vulnérable ; elles doivent disposer d’un mandat, sans lequel elles ne devraient pas accepter d’intervenir. Le consentement est essentiel tant pour la personne chargée de la facilitation que pour les participants.
 
 <!-- translation-section: responsibility -->
 
 ### Responsabilité
-Lorsqu’une personne accepte un mandat d’animation, elle assume des responsabilités supplémentaires. Elle peut prendre davantage la parole et orienter l’attention du groupe. Elle doit exercer ce rôle au service de l’ensemble du groupe, sans poursuivre un objectif personnel. Ses paroles et son attitude ont aussi une influence particulière. Elle doit donc agir avec une attention accrue.
+Lorsqu’une personne accepte un mandat de facilitation, elle assume des responsabilités accrues. Elle dispose d’une plus grande latitude pour prendre la parole et orienter l’attention du groupe. Elle doit l’utiliser au service de l’ensemble du groupe, et non d’objectifs personnels. Ses paroles et son attitude auront également un effet plus important que celles des autres participants, ce qui exige une attention particulière à sa manière d’agir.
 
 <!-- translation-section: power -->
 
 ### Pouvoir
-L’animation crée nécessairement des différences de pouvoir. Pour remplir son rôle, la personne qui anime doit pouvoir exercer une certaine autorité. Par exemple, elle peut interrompre quelqu’un pour recentrer la discussion ou signaler qu’une manière d’interagir ne convient pas. On ne peut pas lui confier la responsabilité de la démarche sans lui donner les moyens de la mener à bien. Il n’existe pas de degré de pouvoir idéal, mais celui-ci doit correspondre au niveau de responsabilité confié.
+La facilitation introduit, par nature, des différences de pouvoir. Si la personne chargée de la facilitation ne peut pas exercer certaines formes d’autorité, elle ne peut pas accomplir son travail. Par exemple, pour maintenir une discussion sur son sujet, elle peut interrompre quelqu’un ou indiquer qu’une certaine façon d’interagir n’est pas acceptable. Il n’est pas approprié de lui demander d’assumer la responsabilité de l’expérience sans lui donner les pouvoirs nécessaires pour la mener à bien. Il n’existe pas de réponse unique quant à l’étendue de ces pouvoirs, mais ils doivent être proportionnés au niveau de responsabilité.
 
 <!-- translation-section: responsiveness -->
 
 ### Capacité d’adaptation
-Les personnes qui animent travaillent mieux lorsqu’elles peuvent s’adapter à ce qui se passe. Les êtres humains sont complexes, et les groupes le sont encore davantage. Suivre un plan ou un protocole de façon rigide peut empêcher le groupe d’avancer. Si la personne qui anime ne peut pas ou ne veut pas s’adapter aux changements de situation, elle ne peut pas accompagner efficacement le groupe.
+Les personnes chargées de la facilitation travaillent au mieux lorsqu’elles peuvent s’adapter efficacement à la situation qui se développe. Les êtres humains sont infiniment complexes, et les groupes le sont bien davantage encore. Suivre rigidement un plan ou un protocole, sans souplesse, peut conduire le groupe à l’échec. Si la personne chargée de la facilitation n’est pas autorisée à s’adapter aux circonstances ou ne souhaite pas le faire, elle ne peut pas offrir un cadre adapté à des personnes dont les besoins et les interactions évoluent.
 
-> Sachez quand prendre et quitter votre rôle d’animation. Beaucoup de personnes animent des réunions ou des ateliers avec leur propre équipe. Dans le rôle d’animation, elles doivent rester neutres. Comme membres de l’équipe, elles ont aussi des idées utiles à partager. Indiquez clairement quand vous animez et quand vous participez. — Silvia Zuur
+> Endossez le rôle de facilitation, puis quittez-le. Faciliter des réunions et des ateliers avec sa propre équipe est un défi pour de nombreuses personnes. Dans leur rôle de facilitation, elles doivent rester neutres. Mais en tant que membres de l’équipe, elles ont des points de vue utiles à partager. Indiquez très clairement quand vous assurez la facilitation et quand vous intervenez en tant que participant. — Silvia Zuur
+
 
 Sur Loomio
 
-* Beaucoup de groupes qui utilisent Loomio ont déjà l’habitude de l’animation et partagent une compréhension de ce rôle. Ils adaptent déjà l’outil à leurs besoins.
-* Souvent, le groupe suppose que la personne qui lance une discussion l’anime, sauf s’il en a convenu autrement. Définir clairement qui anime renforce la confiance mutuelle et aide la discussion à avancer.
-* Loomio permet naturellement à plusieurs personnes de contribuer à l’animation : elles peuvent inviter d’autres personnes dans la discussion, demander de rester sur le sujet ou suggérer le bon moment pour faire une proposition. Ce rôle reste toutefois souvent implicite. Nommer ces actions et discuter de la répartition de ce rôle aide à le clarifier.
-* Un groupe en ligne peut commencer avec une animation répartie de façon implicite, sans discussion sur ce rôle. Cette formule convient surtout aux groupes expérimentés qui ont déjà pratiqué une animation aux responsabilités clairement définies.
+* De nombreux groupes utilisant Loomio ont une expérience de la facilitation et partagent déjà une compréhension de ce rôle. Ils adaptent déjà l’outil à ces besoins avec un certain succès.
+* On suppose souvent que la personne qui lance une discussion en assure la facilitation, sauf si le groupe en a convenu autrement. Préciser qui assure la facilitation peut renforcer le sentiment de sécurité de chacun et contribuer à la réussite de la discussion.
+* Loomio favorise naturellement une dynamique ouverte à des interventions de facilitation réparties entre plusieurs personnes : mentionner d’autres utilisateurs pour les inviter à participer, demander de rester sur le sujet, suggérer le bon moment pour une proposition, etc. Ces interventions restent toutefois souvent implicites. Les nommer explicitement et discuter de la répartition ou de la centralisation de ce rôle permet de le clarifier.
+* Une facilitation répartie et implicite peut être le fonctionnement initial d’un groupe en ligne (sans discussion sur la facilitation en tant que rôle défini). Cette organisation convient toutefois mieux aux groupes expérimentés qui ont déjà travaillé avec une facilitation explicite et souhaitent aller au-delà.

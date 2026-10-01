@@ -1,6 +1,6 @@
 ---
 title: Keskusteluketjujen käyttö
-source_revision: 9c60c42fc739483fa23f15d9f34a1e9245518092
+source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
 source_file: docs/en/user_manual/discussions/using_discussions/index.md
 translated:
   provider: codex/gpt-6.1-sol
@@ -25,147 +25,151 @@ sections:
   lock-or-unlock-a-thread: d3f671e631c8a0bc
   delete-a-thread: 9b4c6437ff8102eb
 generated:
-  introduction: 1878f06415720ccc
-  thread-anatomy: e7b8ff877395c90a
-  discussion-context: 7f28c2a4f2968034
-  notify-people-about-context-changes: 735b21f5d8253fca
-  navigation: 8068d99fa497d848
-  notifications-and-members: 3e3b2ee2bca036fd
-  email-notifications-for-this-thread: 979620b2f10b9e2a
-  invite-people: c338ef5f56aa2fd2
-  seen-by: f51909b1b3ecddf8
-  notified: 9cb5a378c23e162f
-  actions: 706670b7efb49b63
-  print: c152e8c32a115230
-  markdown: ef0b69afa5dfd1d0
-  thread-settings-and-display: c8ddfeb17ac2dae3
-  pin-or-unpin-a-thread: 4b26e9456157f7b9
-  move-a-thread: 14c24c3cf1654eee
-  lock-or-unlock-a-thread: 68567a4cce240c06
-  delete-a-thread: a283bf070e693767
+  introduction: 5733d122ff3586fc
+  thread-anatomy: d5462789bdb8e9f0
+  discussion-context: 5dd31d34a0bb45d1
+  notify-people-about-context-changes: 0bc12f00db551578
+  navigation: 2394827457461d6f
+  notifications-and-members: c968956946ff5866
+  email-notifications-for-this-thread: c3d20c7d1ae7be2b
+  invite-people: fd1610d4ad7b356c
+  seen-by: 825e81733ff2b1c9
+  notified: 077cdb228ecb0c3a
+  actions: 7640a063f929b3ab
+  print: '019a05246c3ea0bc'
+  markdown: ab17326766133535
+  thread-settings-and-display: 0d71c7e52a8077d6
+  pin-or-unpin-a-thread: d81d501c2b75c9e9
+  move-a-thread: f0b7a83519058ef4
+  lock-or-unlock-a-thread: 18b3090e8625fb81
+  delete-a-thread: 38f65e0e18241eda
 title_source: 99e2d1eb313f35c4
 title_generated: cf8604cd3cd81e88
+needs_review:
+  markdown: use "johtopäätös" instead of "tulokset" for "outcome"
+  thread-settings-and-display: use "vaihtoehto" instead of "asetukset" for "option"
+  pin-or-unpin-a-thread: use "kiinnittää" instead of "pin" for "pin"
 ---
 
 <!-- translation-section: introduction -->
 
-# Keskusteluketjujen käyttö
+# Ketjujen käyttö
 
-Keskustelun konteksti, kommentit, päätökset ja johtopäätökset pysyvät yhdessä keskusteluketjussa. Tällä sivulla kerrotaan, miten osallistut keskusteluketjuun ja käytät sen siirtymislinkkejä ja toimintoja.
+Keskustelun konteksti, kommentit, päätökset ja johtopäätökset pysyvät yhdessä ketjussa. Tällä sivulla kerrotaan, miten osallistut ketjuun ja käytät sen navigointia ja toimintoja.
 
 <!-- translation-section: thread-anatomy -->
 
-## Keskusteluketjun osat
+## Ketjun rakenne
 
-Tavallinen keskusteluketju näyttää tältä:
+Tavallinen ketju näyttää tältä:
 
 ![](thread_navigation.png)
 
-Sivun yläosasta alkaen keskusteluketjussa on seuraavat osat:
+Ketju sisältää sivun yläreunasta alkaen seuraavat osat:
 
-**Ryhmän nimi** - Keskustelusivun vasemmassa yläkulmassa näkyy sen ryhmän tai alaryhmän nimi, johon keskustelu kuuluu.  Palaa ryhmän sivulle napsauttamalla nimeä.
+**Ryhmän nimi** - Keskustelusivun vasemmassa yläkulmassa on sen ryhmän tai alaryhmän nimi, johon keskustelu kuuluu. Napsauta nimeä palataksesi ryhmän sivulle.
 
-**Keskustelun käyttöoikeudet** - Oikeassa yläkulmassa oleva käyttöoikeuskuvake avaa keskustelun käyttöoikeusasetukset. Ryhmäkeskustelu on ryhmän jäsenten ja siihen erikseen kutsuttujen käytettävissä ryhmän yksityisyysasetusten mukaisesti.
+**Keskustelun käyttöoikeudet** - Oikean yläkulman käyttöoikeuskuvake avaa keskustelun käyttöoikeusasetukset. Ryhmän keskustelu on ryhmän jäsenten ja siihen erikseen kutsuttujen ihmisten käytettävissä ryhmän yksityisyysasetusten mukaisesti.
 
 **Keskustelun otsikko** - Keskustelun nimi.
 
-**Luokkatunnisteet** - Keskustelulla voi olla yksi tai useampi luokkatunniste. Selkeät tunnisteet auttavat löytämään samankaltaisia keskusteluja.
+**Luokkatunnisteet** - Keskustelulla voi olla yksi tai useampi luokkatunniste. Yksinkertaiset tunnisteet auttavat ihmisiä löytämään samantyyppisiä keskusteluja helpommin.
 
 **Keskustelun aloittaja** - Keskustelun aloittaneen henkilön nimi ja profiilikuva näkyvät otsikon alla.
 
-**Päivämäärä** - Näet keskustelun aloituksen tarkan päivämäärän ja kellonajan viemällä osoittimen päivämäärän päälle.
+**Päivämäärä** - Vie osoitin päivämäärän päälle nähdäksesi keskustelun tarkan alkamispäivän ja kellonajan.
 
-**Nähnyt** - Oikeassa sivupalkissa näkyy, kuka on lukenut keskustelun ja milloin.
+**Nähnyt** - Näyttää oikeassa sivupalkissa, kuka on lukenut keskustelun ja milloin.
 
-**Ilmoitettu** - Oikeassa sivupalkissa näkyy, kenelle keskustelusta on ilmoitettu ja onko kukin ilmoitus luettu tai sitä koskeva sähköposti avattu.
+**Ilmoitettu** - Näyttää oikeassa sivupalkissa, kenelle keskustelusta on ilmoitettu ja onko kukin ilmoitus luettu tai sitä koskeva sähköposti avattu.
 
-**Keskustelun konteksti** - Teksti, joka antaa keskustelulle taustan.
+**Keskustelun konteksti** - Sisältö, joka antaa keskustelulle taustan.
 
-**Keskustelun vuorovaikutus- ja hallintatyökalut** - Keskustelun kontekstissa on toimintoja siihen reagoimista ja sen muokkaamista varten. Oikeassa sivupalkissa on ilmoituksiin, jäsenyyteen ja hallintaan liittyviä toimintoja.
+**Keskustelun vuorovaikutus- ja hallintatyökalut** - Keskustelun kontekstissa on toimintoja, joilla voit reagoida siihen ja muokata sitä. Oikeassa sivupalkissa on ilmoituksiin, jäsenyyteen ja hallintaan liittyviä toimintoja.
 
-**Kommentit** - Kommentit näkyvät keskustelun kontekstin alla. Kirjoittajan nimi, profiilikuva ja julkaisuajankohta kertovat, kuka kirjoitti kommentin ja milloin. Jokaisella kommentilla on omat vuorovaikutus- ja hallintatyökalunsa.
+**Kommentit** - Kommentit näkyvät keskustelun kontekstin alla. Kirjoittajan nimi, profiilikuva ja julkaisuajankohta kertovat, kuka kirjoitti kunkin kommentin ja milloin. Jokaisessa kommentissa on vuorovaikutus- ja hallintatyökaluja.
 
-**Siirtyminen, ilmoitukset ja toiminnot** - Oikeassa sivupalkissa on pikavalintoja tapahtumiin ja merkkipaaluihin, tietoja ilmoituksista ja jäsenistä sekä käytettävissäsi olevat keskusteluketjun toiminnot.
+**Navigointi, ilmoitukset ja toiminnot** - Oikeassa sivupalkissa on pikalinkkejä tapahtumiin ja tärkeisiin kohtiin, tietoja ilmoituksista ja jäsenyydestä sekä käytettävissäsi olevat ketjun toiminnot.
 
 <!-- translation-section: discussion-context -->
 
 ## Keskustelun konteksti
 
-Keskustelun **konteksti** on aina keskustelun alussa. Sen avulla voit antaa taustan keskustelulle tai päätökselle.
+Keskustelun **konteksti** on aina keskustelun yläosassa. Käytä kontekstia keskustelun tai päätöksen taustoittamiseen.
 
-Ajattele ryhmääsi, kun kirjoitat keskustelun kontekstia.  Tarkoitus on saada keskustelu käyntiin, joten mieti, miten kannustat ihmisiä osallistumaan.  Pidä konteksti yleensä yksinkertaisena ja selkeänä.
+Pidä ryhmäsi mielessä, kun kirjoitat keskustelun kontekstia. Tavoitteesi on saada keskustelu käyntiin, joten mieti, miten voit kannustaa ihmisiä osallistumaan. Pidä keskustelun konteksti yleensä yksinkertaisena ja selkeänä.
 
 ![](thread_context.png)
 
-Kirjoita keskustelun konteksti, kun aloitat keskustelun tai muokkaat sitä. Muokkaa keskustelua kynäkuvakkeesta valitsemalla **Muokkaa**.
+Kirjoita keskustelun konteksti, kun aloitat keskustelun tai muokkaat sitä. **Muokkaa** keskustelua kynäkuvakkeesta.
 
-Päivitä keskustelun kontekstia keskustelun edetessä.  Voit ajatella sitä kokoushuoneen valkotauluna, johon kirjaat esityslistan, tavoitellut johtopäätökset ja suunnitelman niiden saavuttamiseksi.
+Päivitä keskustelun kontekstia keskustelun edetessä. Ajattele kontekstia kokoushuoneen valkotauluna, johon voit kirjoittaa esityslistan, tavoitellut johtopäätökset ja suunnitelman niiden saavuttamiseksi.
 
-Kontekstipaneelin alareunassa on muotoilupalkki. Sen avulla voit muotoilla tekstiä, liittää tiedostoja ja kuvia sekä upottaa videon.
+Kontekstipaneelin alareunassa on muotoilupalkki, jolla voit muotoilla tekstiä, liittää tiedostoja ja kuvia sekä upottaa videon.
 
 ![](thread_context_edit.png)
 
 <!-- translation-section: notify-people-about-context-changes -->
 
-### Ilmoita ihmisille kontekstin muutoksista
+### Ilmoita kontekstin muutoksista
 
-Kun muokkaat keskustelun kontekstia, tiivistä päivitys kohdassa **Mikä on muuttunut?** ja valitse, kenelle siitä ilmoitetaan.
+Kun muokkaat keskustelun kontekstia, kirjoita yhteenveto muutoksesta kohtaan **Mikä on muuttunut?** ja valitse, kenelle ilmoitetaan.
 
-![Keskustelun kontekstin muokkaus sekä muutoksen yhteenveto ja ilmoituksen vastaanottajat](../notifying_people/thread_editcontext.png)
+![Keskustelun kontekstin muokkaus, muutoksen yhteenveto ja ilmoituksen vastaanottajat](../notifying_people/thread_editcontext.png)
 
-Keskusteluketjussa näkyy, että muokkasit kontekstia. Ihmiset, joille ilmoitat muutoksesta, saavat yhteenvedon ilmoituksen mukana.
+Ketjussa näkyy, että muokkasit kontekstia. Ihmiset, joille ilmoitat, saavat yhteenvedon ilmoituksen mukana.
 
-![Keskusteluketjun kohta, jossa näkyy, että keskustelun kontekstia on muokattu](../notifying_people/thread_edit_comment.png)
+![Ketjun merkintä, joka kertoo keskustelun kontekstin muokkaamisesta](../notifying_people/thread_edit_comment.png)
 
 <!-- translation-section: navigation -->
 
-## Siirtyminen keskusteluketjussa
+## Navigointi
 
-Oikean sivupalkin **Siirry kohtaan** -osio auttaa sinua liikkumaan keskusteluketjussa:
+Oikean sivupalkin **Siirry kohtaan** -osio auttaa sinua liikkumaan ketjussa:
 
 - **Aloita** vie keskustelun kontekstiin
-- **Uusi sinulle** näkyy, kun keskusteluketjussa on tapahtumia, joita et ole lukenut
-- **Uusin** näkyy, kun ladattujen kohtien jälkeen on uudempia tapahtumia
-- merkkipaalulinkit vievät suoraan tärkeisiin kommentteihin, kyselyihin ja johtopäätöksiin
-- **Loppu** vie keskusteluketjun uusimpaan kohtaan
+- **Uusi sinulle** näkyy, kun ketjussa on tapahtumia, joita et ole lukenut
+- **Uusin** näkyy, kun ketjussa on uudempia tapahtumia kuin parhaillaan ladatut kohdat
+- tärkeiden kohtien linkit vievät suoraan tärkeisiin kommentteihin, kyselyihin ja johtopäätöksiin
+- **Loppu** vie ketjun uusimpaan kohtaan
 
-H2- tai H3-otsikon sisältävät kommentit sekä kyselyt ja ehdotukset lisätään automaattisesti merkkipaalulinkeiksi. Siirry merkkipaaluun valitsemalla se.
+Kommentit, joissa on H2- tai H3-otsikko, sekä kyselyt ja ehdotukset lisätään automaattisesti tärkeiden kohtien linkkeihin. Valitse haluamasi kohta siirtyäksesi suoraan siihen.
 
 ![](thread_timeline_1.png)
 
-Kun lisäät kommentin, kyselyn, äänen tai johtopäätöksen, Loomio merkitsee lisäämäsi kohdan luetuksi. Se ei näy sinulle uutena tarkistettavana sisältönä.
+Kun lisäät kommentin, kyselyn, äänen tai johtopäätöksen, Loomio merkitsee oman uuden sisältösi luetuksi. Se ei näy sinulle uutena tarkasteltavana sisältönä.
 
 <!-- translation-section: notifications-and-members -->
 
 ## Ilmoitukset ja jäsenet
 
-Oikeassa sivupalkissa voit hallita sähköposti-ilmoituksiasi. Siellä näet myös, keitä on kutsuttu, ketkä ovat nähneet keskusteluketjun ja keille on ilmoitettu.
+Oikeassa sivupalkissa voit hallita sähköposti-ilmoituksiasi ja nähdä, keitä on kutsuttu, ketkä ovat nähneet ketjun ja kenelle on ilmoitettu.
 
 <!-- translation-section: email-notifications-for-this-thread -->
 
-### Tämän keskusteluketjun sähköposti-ilmoitukset
+### Tämän ketjun sähköposti-ilmoitukset
 
-Valitse nykyinen ilmoitusasetus ja määritä, lähettääkö Loomio sinulle sähköpostia kaikesta toiminnasta, vain sinulle erikseen ilmoitetusta toiminnasta vai ei mistään toiminnasta. Kaikesta toiminnasta ilmoittaminen voi tuottaa paljon viestejä aktiivisessa keskusteluketjussa.
+Valitse nykyinen ilmoitusasetus määrittääksesi, lähettääkö Loomio sinulle sähköpostia kaikista tapahtumista, vain tapahtumista, joista ilmoitetaan juuri sinulle, vai ei mistään tapahtumista. Kaikkien tapahtumien sähköposti-ilmoitukset voivat tuottaa paljon viestejä aktiivisessa ketjussa.
 
-![Sähköposti ilmoitettaessa valittuna keskustelun sivupalkissa](../notifying_people/thread_interact.png)
+![Keskustelun sivupalkissa valittuna sähköposti-ilmoitukset silloin, kun sinulle ilmoitetaan](../notifying_people/thread_interact.png)
 
 <!-- translation-section: invite-people -->
 
 ### Kutsu ihmisiä
 
-Lisää ihmisiä keskusteluketjun aloittamisen jälkeen valitsemalla **Kutsu ihmisiä**.
+Valitse **Kutsu ihmisiä** lisätäksesi ihmisiä ketjun aloittamisen jälkeen.
 
-![Kutsu ihmisiä ketjun sivupalkista](../notifying_people/thread_invite_icon.png)
+![Kutsu ihmisiä ketjun sivupalkissa](../notifying_people/thread_invite_icon.png)
 
-Valitse ryhmä tai alaryhmä, kirjoita yksittäisten jäsenten nimet tai kutsu vieras sähköpostiosoitteella.
+Valitse ryhmä tai alaryhmä, kirjoita yksittäisten jäsenten nimet tai kirjoita sähköpostiosoite kutsuaksesi vieraan.
 
-**Etsi tai kutsu ihmisiä** -kenttä suodattaa myös luetteloa ketjussa jo olevista ihmisistä. Tyhjennä kenttä, niin näet taas koko luettelon. Käytä sivutuspainikkeita, jos ihmisiä on yli 50. Kun olet valinnut vastaanottajat, jäsenluettelon tilalle tulee kenttä vapaaehtoiselle viestille. Uudet ihmiset saavat kutsun, ja ihmiset, joilla on jo pääsy ketjuun, saavat uuden ilmoituksen, kun valitset **Kutsu tai ilmoita**.
+**Etsi tai kutsu ihmisiä** -kenttä suodattaa myös ketjussa jo olevien ihmisten luetteloa. Tyhjennä kenttä näyttääksesi koko luettelon uudelleen ja käytä sivutuspainikkeita, jos ihmisiä on yli 50. Kun olet valinnut vastaanottajat, jäsenluettelon tilalle tulee vapaaehtoinen viestikenttä. Uudet ihmiset saavat kutsun, ja ihmiset, joilla on jo käyttöoikeus, saavat uuden ilmoituksen, kun valitset **Kutsu tai ilmoita**.
 
 ![Kutsu ihmisiä -ikkuna, jossa on kenttä nimille ja sähköpostiosoitteille](../notifying_people/thread_invite.png)
 
-Vieras voi nähdä tämän ketjun ja osallistua siihen. Hän ei näe ryhmän muita keskusteluja, ellei häntä kutsuta niihin erikseen.
+Vieras voi nähdä tämän ketjun ja osallistua siihen, mutta hän ei näe ryhmän muita keskusteluja ilman erillistä kutsua.
 
-Voit sulkea ikkunan yläreunassa näkyvät ohjeet. Loomio muistaa tililläsi, mitkä ohjeet olet sulkenut.
+Voit sulkea ikkunan yläosassa olevat ohjeet. Loomio muistaa tililläsi, mitkä ohjeet olet sulkenut.
 
 ![Vieraan kutsuminen sähköpostiosoitteella](../notifying_people/invite_guest.png)
 
@@ -175,7 +179,7 @@ Poista henkilö avaamalla hänen nimensä vieressä oleva kolmen pisteen valikko
 
 ### Nähnyt
 
-**Nähnyt** näyttää, ketkä ovat avanneet ketjun ja milloin. Sen avulla näet, ketkä eivät ehkä ole vielä nähneet tärkeää tietoa.
+**Nähnyt** näyttää, kuka on avannut ketjun ja milloin. Sen avulla voit tunnistaa ihmiset, jotka eivät ehkä vielä ole nähneet tärkeitä tietoja.
 
 ![Nähnyt ja Ilmoitettu Ketjun jäsenet -osiossa](../notifying_people/thread_engagement.png)
 
@@ -185,7 +189,7 @@ Poista henkilö avaamalla hänen nimensä vieressä oleva kolmen pisteen valikko
 
 ### Ilmoitettu
 
-**Ilmoitettu** avaa keskustelun ilmoitushistorian. Siinä näkyvät kutsut, maininnat ja vastaukset sekä se, kenelle ilmoitus lähetettiin. Jos tieto on saatavilla, näet myös, onko ilmoitus luettu.
+**Ilmoitettu** avaa keskustelun ilmoitushistorian. Se sisältää kutsut, maininnat ja vastaukset sekä näyttää, kenelle ilmoitettiin ja onko kukin ilmoitus luettu, kun tämä tieto on saatavilla.
 
 ![Keskustelun ilmoitushistoria](../notifying_people/thread_notified.png)
 
@@ -193,9 +197,9 @@ Poista henkilö avaamalla hänen nimensä vieressä oleva kolmen pisteen valikko
 
 ## Toiminnot
 
-Oikeassa sivupalkissa on koko ketjua koskevia toimintoja. Osa niistä on myös ryhmäsivulla ketjun vieressä olevassa kolmen pisteen valikossa (**⋯**).
+Oikeassa sivupalkissa on koko ketjua koskevia toimintoja. Osa toiminnoista on käytettävissä myös ryhmän sivulla ketjun vieressä olevasta kolmen pisteen valikosta (**⋯**).
 
-Näkyvät toiminnot riippuvat käyttöoikeuksistasi. Ryhmän ylläpitäjät voivat hallita ketjuja. Ryhmän asetukset voivat sallia myös jäsenille joitakin hallintatoimia. Katso [Ryhmän käyttöoikeudet](/en/user_manual/groups/settings/permissions).
+Näkyvät toiminnot riippuvat käyttöoikeuksistasi. Ryhmän ylläpitäjät voivat hallita ketjuja, ja ryhmän asetukset voivat sallia jäsenille joitakin hallintatoimintoja. Katso [Ryhmän käyttöoikeudet](/en/user_manual/groups/settings/permissions).
 
 ![](thread_admin.png)
 
@@ -203,7 +207,7 @@ Näkyvät toiminnot riippuvat käyttöoikeuksistasi. Ryhmän ylläpitäjät voiv
 
 ### Tulosta
 
-Valitse **Tulosta**, niin saat tulostamiseen sopivan sivun. Voit tallentaa sen PDF-tiedostoksi selaimen tulostusikkunassa.
+Valitse **Tulosta** luodaksesi tulostukseen sopivan sivun. Tallenna se PDF-tiedostona selaimesi tulostusikkunassa.
 
 ![](thread_print_thread.png)
 
@@ -211,17 +215,17 @@ Valitse **Tulosta**, niin saat tulostamiseen sopivan sivun. Voit tallentaa sen P
 
 ### Markdown
 
-Valitse **Markdown**, kun haluat tallentaa koko ketjun jäsenneltynä Markdown-tekstinä. Valitse **Kopioi Markdown**, jos haluat kopioida sen leikepöydälle, tai **Lataa Markdown**, jos haluat tallentaa sen `.md`-tiedostoksi. Voit käyttää sitä kokousmuistiona, asiakirjana, päätösarkistona tai tekoälyavustajassa tai muussa Markdownia tukevassa työkalussa.
+Valitse **Markdown**, kun haluat tallentaa koko ketjun jäsenneltynä Markdownina. Valitse **Kopioi Markdown**, jos haluat kopioida sen leikepöydälle, tai **Lataa Markdown**, jos haluat tallentaa sen `.md`-tiedostona. Voit käyttää sitä kokouspöytäkirjana, asiakirjana, päätösarkistona tai tekoälyavustajassa tai muussa Markdownia tukevassa työkalussa.
 
 ![](../discussion_management/copy_markdown_menu.png)
 
-Asiakirjan alussa on YAML-alkuosa, joka sisältää ketjun tunnisteen, ryhmän, luontipäivän, viimeisimmän toiminnan päivämäärän ja tunnisteet. Sen jälkeen tulevat keskustelun konteksti sekä kaikki kommentit, kyselyt, äänet ja lopputulokset samassa järjestyksessä ja sisäkkäisessä rakenteessa kuin ketjunäkymässä.
+Asiakirjan alussa on YAML-metatieto-osio, joka sisältää ketjun avaimen, ryhmän, luontipäivän, viimeisimmän toiminnan päivämäärän ja tunnisteet. Sen jälkeen tulevat keskustelun konteksti sekä jokainen kommentti, kysely, ääni ja johtopäätös samassa järjestyksessä ja samalla tavalla sisennettyinä kuin ketjutetussa näkymässä.
 
-Jokainen kysely muodostaa oman osionsa. Kommentit, äänet ja lopputulokset esitetään lainauksina. Vastaukset lainataan sen kohdan alla, johon ne vastaavat. Näin näet, mistä kunkin henkilön teksti alkaa ja mihin se päättyy. Jokaisen lainauksen ensimmäisellä rivillä näkyvät kirjoittaja, julkaisuajankohta, kohdan numero ketjussa ja mahdolliset reaktiot. Äänistä ja lopputuloksista näkyy myös niiden tyyppi. Ketjun tunniste ja kohdan numero yksilöivät kunkin kohdan Loomiossa.
+Jokainen kysely muodostaa oman osionsa. Kommentit, äänet ja johtopäätökset esitetään lainauksina, ja vastaukset esitetään lainauksina sen kohdan alla, johon ne vastaavat. Näin näet, mistä kunkin henkilön teksti alkaa ja mihin se päättyy. Jokaisen lainauksen ensimmäisellä rivillä näkyvät henkilö, julkaisuajankohta, kohdan numero ketjussa ja mahdolliset reaktiot. Äänien ja johtopäätösten yhteydessä kerrotaan myös, mistä on kyse. Ketjun avain ja kohdan numero yksilöivät jokaisen kohdan Loomiossa.
 
-Loomio noudattaa samoja näkyvyyssääntöjä kuin ketjussa. Tulokset ja äänestyksen perustelut, joita et voi nähdä, jätetään pois. Anonyymeissä kyselyissä äänestäjiä ei nimetä. Jos avoimen kyselyn tulokset ovat piilossa äänestämiseen asti, äänestä ennen ketjun vientiä. **Markdown** ja **Tulosta** ovat käytettävissä vasta sen jälkeen.
+Loomio noudattaa samoja näkyvyyssääntöjä kuin ketjussa. Tuloksia ja äänten perusteluja, joita et voi nähdä, ei sisällytetä asiakirjaan, eikä anonyymien kyselyjen äänestäjiä yksilöidä. Jos avoin kysely piilottaa tulokset siihen asti, että äänestät, äänestä ennen ketjun vientiä. **Markdown** ja **Tulosta** eivät ole käytettävissä ennen sitä.
 
-Esimerkiksi keskustelu, jossa on kommentti, reaktioita, ehdotus, kaksi ääntä, vastaus ja lopputulos, tuottaa tällaisen Markdown-tekstin:
+Esimerkiksi keskustelu, joka sisältää kommentin, reaktioita, ehdotuksen, kaksi ääntä, vastauksen ja johtopäätöksen, tuottaa seuraavan Markdownin:
 
 ```markdown
 ---
@@ -284,29 +288,29 @@ Supply returnable glass bottles to three cafe customers for six weeks, with one 
 > Run the six-week bottle trial with three cafes. Review return rates, washing time, and transport costs each week.
 ```
 
-Otsikot ja tunnisteet ovat valitsemallasi kielellä. Osallistujien kirjoittama sisältö säilyy alkuperäisellä kielellään.
+Otsikot ja nimikkeet ovat valitsemallasi kielellä. Osallistujien kirjoittama sisältö säilyy alkuperäisellä kielellään.
 
 <!-- translation-section: thread-settings-and-display -->
 
 ### Ketjun asetukset ja näkymä
 
-Ryhmän ylläpitäjät voivat valita **Ketjun asetukset**, jos he haluavat muuttaa vastausten järjestystä tai muita keskustelun asetuksia.
+Ryhmän ylläpitäjät voivat valita **Ketjun asetukset**, kun he haluavat muuttaa vastausten järjestelyä ja määrittää muita keskustelun vaihtoehtoja.
 
 ![](thread_display.png)
 
-Valitse **Aikajana**, jos haluat nähdä kohdat julkaisujärjestyksessä, tai **Threaded**, jos haluat nähdä vastaukset sen kohdan alla, johon ne vastaavat. Ketjun asetuksissa voi myös määrittää, voiko useita kyselyitä olla käynnissä yhtä aikaa, sekä asettaa kommentin enimmäispituuden. Asetukset koskevat kaikkia keskustelun osallistujia.
+Valitse **Aikajana**, jos haluat näyttää sisällön julkaisujärjestyksessä, tai **Threaded**, jos haluat ryhmitellä vastaukset sen kohdan alle, johon ne vastaavat. Ketjun asetuksissa voit myös määrittää, saako useita kyselyjä olla käynnissä yhtä aikaa, ja asettaa kommentin enimmäispituuden. Nämä asetukset koskevat kaikkia keskustelun osallistujia.
 
 ![](thread_layout_options.png)
 
 <!-- translation-section: pin-or-unpin-a-thread -->
 
-### Kiinnitä ketju tai poista sen kiinnitys
+### Ketjun kiinnittäminen ja irrottaminen
 
-Kiinnitetyt ketjut näkyvät ryhmäsivulla muiden ketjujen yläpuolella. Niihin sopivat esimerkiksi tervetulokeskustelut, uutiset ja ilmoitukset.
+Kiinnitetyt ketjut näkyvät ryhmän sivulla muiden ketjujen yläpuolella. Tervetulokeskustelut, uutiset ja tiedotteet ovat tavallisia käyttökohteita kiinnitetyille ketjuille.
 
-Avaa ryhmäsivulla ketjun vieressä oleva kolmen pisteen valikko (**⋯**) ja valitse **Kiinnitä lanka**. Kiinnitetyt ketjut järjestetään kiinnitysajankohdan mukaan. Jos haluat muuttaa järjestystä, poista kiinnitykset ja kiinnitä ketjut uudelleen.
+Avaa ryhmän sivulla ketjun vieressä oleva kolmen pisteen valikko (**⋯**) ja valitse **Kiinnitä ketju**. Kiinnitetyt ketjut järjestetään kiinnitysajankohdan mukaan. Voit muuttaa niiden järjestystä irrottamalla ne ja kiinnittämällä ne uudelleen.
 
-Valitse **Irrota lanka**, jos haluat palauttaa ketjun toiminnan mukaiseen järjestykseen.
+Valitse **Irrota ketju**, kun haluat palauttaa ketjun toiminnan mukaiseen järjestykseen.
 
 ![](../discussion_management/pin_thread.png)
 
@@ -314,31 +318,31 @@ Valitse **Irrota lanka**, jos haluat palauttaa ketjun toiminnan mukaiseen järje
 
 ### Siirrä ketju
 
-Valitse **Siirrä ketju**, jos haluat siirtää ketjun toiseen ryhmään, alaryhmään tai suoraksi ketjuksi. Kohderyhmän jäsenet ja ketjuun erikseen kutsutut henkilöt voivat nähdä sen.
+Valitse **Siirrä ketju**, kun haluat siirtää ketjun toiseen ryhmään, alaryhmään tai suoraksi ketjuksi. Se näkyy kohderyhmän jäsenille ja kaikille siihen erikseen kutsutuille.
 
 ![](../discussion_management/move_thread_select.png)
 
 >[!Tip]
->Aloita luonnos suorana keskusteluna tai yksityisessä alaryhmässä. Siirrä se ryhmään, kun se on valmis.
+>Aloita luonnos suorana keskusteluna tai yksityisessä alaryhmässä ja siirrä se ryhmään, kun se on valmis.
 
-Jos haluat siirtää vain valittuja kohtia koko ketjun sijaan, katso [Kohtien siirtäminen ketjujen välillä](/en/user_manual/discussions/moving_items/).
+Jos haluat siirtää valittuja kohteita koko ketjun sijaan, katso [Kohteiden siirtäminen ketjujen välillä](/en/user_manual/discussions/moving_items/).
 
 <!-- translation-section: lock-or-unlock-a-thread -->
 
 ### Lukitse ketju tai avaa sen lukitus
 
-Lukitse ketju, jos haluat estää kommentoinnin ja muut muutokset. Ketjun voi lukita vasta, kun kaikki sen käynnissä olevat kyselyt ovat päättyneet.
+Lukitse ketju, kun haluat estää kommentoinnin ja muut muutokset. Ketjun voi lukita vasta, kun sen käynnissä olevat kyselyt on suljettu.
 
-Valitse **Toiminnot**-osiosta **Lukitse ketju**. Lukitut ketjut poistuvat avoimien keskustelujen luettelosta ja saavat **Lukittu**-tunnisteen.
+Valitse **Lukitse ketju** kohdasta **Toiminnot**. Lukitut ketjut poistetaan avoimien keskustelujen luettelosta ja merkitään **Lukittu**-tunnisteella.
 
-Löydät lukitun ketjun avaamalla keskustelujen suodattimen ryhmäsivulla ja valitsemalla **Lukittu**. Avaa ketju ja valitse **Avaa ketju**, jos haluat sallia kommentoinnin ja muut muutokset uudelleen.
+Löydät lukitun ketjun avaamalla ryhmän sivulla keskustelusuodattimen ja valitsemalla **Lukittu**. Avaa ketju ja valitse **Avaa ketju**, kun haluat sallia kommentoinnin ja muutokset uudelleen.
 
 <!-- translation-section: delete-a-thread -->
 
-### Ketjun poistaminen
+### Poista ketju
 
-Ketjun poistaminen poistaa sen pysyvästi, eikä sitä voi perua. Lukitse ketju, jos saatat tarvita sitä myöhemmin.
+Ketjun poistaminen poistaa sen pysyvästi, eikä poistoa voi kumota. Lukitse ketju sen sijaan, jos saatat tarvita sitä myöhemmin.
 
-Valitse **Poista lanka** ja vahvista poistaminen.
+Valitse **Poista ketju** ja vahvista poisto.
 
 ![](../discussion_management/thread_delete.png)

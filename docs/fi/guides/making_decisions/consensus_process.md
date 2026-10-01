@@ -1,10 +1,10 @@
 ---
 title: Konsensusprosessi
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/guides/making_decisions/consensus_process.md
+source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
+source_file: docs/en/guides/making_decisions/consensus_process.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-30'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 28806ba051102030
   key-points: 4a0e2e253a175fb9
@@ -19,80 +19,82 @@ sections:
   step-4-agreement: 6245b14acb3654c7
   step-5-outcome: c398241dcfeb89ef
 generated:
-  introduction: c22d9fe375299d3b
-  key-points: 94fe9b64101201f7
-  consensus-process-steps: 5c0430cb387f0e82
-  benefits: 19055df1b5a6da52
-  applying-the-consensus-process-on-loomio: 42ccdb7b52d5d9ed
+  introduction: '0592c5844a768faf'
+  key-points: 2ce5881c9eac8e4c
+  consensus-process-steps: 9da1206d6f9d0f4d
+  benefits: 3b0d8027cb4e94f6
+  applying-the-consensus-process-on-loomio: 28009f9bf7e44080
   example-of-a-consensus-process-on-loomio: a55cb38979aa6d52
-  step-0-you-notice-a-problem-or-opportunity-and-take-the-initiative: 2be8e03e25df49d3
-  step-1-state-the-problem-or-issue: 7cfb13b510608a6e
-  step-2-present-a-proposal: feb57be7d4392806
-  step-3-amendment: 401e4f57e8955713
-  step-4-agreement: f23474c905df5fce
-  step-5-outcome: db5d2061d186255b
+  step-0-you-notice-a-problem-or-opportunity-and-take-the-initiative: a3463a373a8ee246
+  step-1-state-the-problem-or-issue: e346fbe843f4aea1
+  step-2-present-a-proposal: 798ef9f6dac0693f
+  step-3-amendment: 99a738d9b1db62aa
+  step-4-agreement: 1a31b8832591913a
+  step-5-outcome: 921f55cfe097a7c7
 title_source: 688b46cc92fcb129
 title_generated: 6a5263ef9c826f9e
+needs_review:
+  applying-the-consensus-process-on-loomio: use "johtopäätös" instead of "tulokset" for "outcome"
 ---
 
 <!-- translation-section: introduction -->
 
 # Konsensusprosessi
 
-Tässä oppaassa kuvataan koko konsensusprosessi. Jos tarvitset apua yksittäisen konsensusehdotuksen laatimiseen ja tulkitsemiseen, katso [Konsensus](/en/user_manual/polls/proposals/consensus/).
+Tämä opas kuvaa koko konsensusprosessin. Ohjeita yksittäisen konsensusehdotuksen luomiseen ja tulkintaan löydät sivulta [Konsensus](/en/user_manual/polls/proposals/consensus/).
 
-![Aaron Burdenin kuva Unsplashissa *Aaron Burdenin kuva Unsplashissa*](aaron-burden-NXt5PrOb_7U-unsplash.jpg)
+![Kuva: Aaron Burden, Unsplash *Kuva: Aaron Burden, Unsplash*](aaron-burden-NXt5PrOb_7U-unsplash.jpg)
 
-Pääskää yhteisymmärrykseen kaikkien asianosaisten kanssa.
+Saavuta yhteinen hyväksyntä kaikkien mukana olevien kanssa.
 
-Rakentakaa yhteisymmärrystä yhdessä tehtävästä päätöksestä, jotta ratkaisu vastaa kaikkien osallistujien tarpeisiin ja huoliin.
+Rakenna konsensusta yhdessä tehtävään päätökseen, jotta saavutatte ratkaisun, joka ottaa huomioon kaikkien osallistujien tarpeet ja huolenaiheet.
 
-> *”Konsensus on prosessi – osallistava tapa, jolla ryhmä ajattelee ja tuntee yhdessä matkalla kohti päätöstään.” – Sam Kaner, Community at Work*
+> *”Konsensus on prosessi – osallistava prosessi, jossa ryhmä ajattelee ja tuntee yhdessä matkalla kohti päätöstään.” - Sam Kaner, Community at Work*
 
 <!-- translation-section: key-points -->
 
 ## Keskeiset asiat
-- Keskustelkaa ehdotuksesta ja kehittäkää sitä yhdessä
-- Ottakaa kaikki asianosaiset mukaan ja kunnioittakaa heitä
-- Pyrkikää saamaan useimpien hyväksyntä
+- Keskustele ja kehitä ehdotusta yhdessä muiden kanssa
+- Ota kaikki mukana olevat mukaan ja kunnioita heitä
+- Tavoittele useimpien hyväksyntää
 
-**Konsensusprosessia käytetään tavallisesti:**
-- Työryhmissä, jotka rakentavat yhteistä ymmärrystä asiasta tai mahdollisuudesta, laativat ehdotuksen yhdessä ja päättävät toimintatavasta.
-- Hallitusten päätöksenteossa, kun hallitus toimii yhdessä esimerkiksi visiota, toimintaperiaatteita, strategista suunnittelua tai talousarviota koskevissa päätöksissä.
-- Vuosikokouksissa ja yleiskokouksissa, joissa jäsenet ja sidosryhmät etsivät laajaa yhteisymmärrystä merkittävistä päätöksistä, kuten sääntömuutoksista, suurista liiketoimista sekä hallituksen tai neuvoston jäsenten valinnasta.
+**Konsensusta käytetään tyypillisesti seuraavissa tilanteissa:**
+- Työryhmät rakentavat yhteistä ymmärrystä asiasta tai mahdollisuudesta, valmistelevat ehdotusta yhdessä ja päättävät toimintatavasta.
+- Hallitus tekee päätöksiä yhdessä esimerkiksi visiosta, toimintaperiaatteista, strategisesta suunnittelusta ja budjetista.
+- Vuosikokouksissa ja yleiskokouksissa jäsenet ja sidosryhmät tavoittelevat yleistä hyväksyntää merkittäville päätöksille, kuten sääntömuutoksille, merkittäville liiketoimille sekä hallituksen tai valtuuston jäsenten valinnalle.
 
 **Tyypilliset roolit:**
-- Nimetkää keskustelun ohjaaja.  Hallituksen kokouksissa tämä on yleensä puheenjohtaja.
-- Osallistumiseen tarvitaan järjestön säännöissä määritelty päätösvaltainen määrä tai määräenemmistö jäseniä.
+- Nimeä fasilitaattori. Hallituksen kokouksissa tämä on yleensä puheenjohtaja.
+- Osallistuvien jäsenten määrän tulee täyttää organisaation sääntöjen mukainen päätösvaltaisuuden tai määräenemmistön vaatimus.
 
 <!-- translation-section: consensus-process-steps -->
 
 ## Konsensusprosessin vaiheet
-1. Kerro, mistä asiasta on päätettävä – aloita Loomiossa **keskustelu**.
-2. Esitä ehdotus yhteisymmärryksen kartoittamiseksi – aloita **tunnusteluehdotus**.
-3. Selvennä epäselvät kohdat, pyydä rakentavia muutosehdotuksia ja muokkaa ehdotusta.
-4. Selvitä, onko ehdotuksella hyväksyntä – aloita **konsensusehdotus**.
-5. Kerro päätöksen **johtopäätös**.
+1. Määrittele päätettävä asia - aloita Loomiossa **keskustelu**.
+2. Esitä ehdotus konsensuksen tunnustelemiseksi - aloita **tunnusteluehdotus**.
+3. Selvennä epäselviä kohtia, pyydä rakentavia muutosehdotuksia ja muokkaa ehdotusta.
+4. Selvitä, hyväksytäänkö ehdotus - aloita **konsensusehdotus**.
+5. Johtopäätös - kirjaa päätöksen **johtopäätös**.
 
 <!-- translation-section: benefits -->
 
 ## Hyödyt
-- Yhteinen ymmärrys kasvaa.
-- Päätökset heijastavat ryhmän yhteistä tahtoa.
-- Osallistujat oppivat asettamaan ryhmän tarpeet omien mieltymystensä edelle.
+- Syvennä yhteistä ymmärrystä.
+- Tee päätöksiä, jotka vastaavat ryhmän yhteistä tahtoa.
+- Kannusta ihmisiä asettamaan ryhmä omien mieltymystensä edelle.
 
 <!-- translation-section: applying-the-consensus-process-on-loomio -->
 
-## Konsensusprosessin käyttö Loomiossa
+## Konsensusprosessin soveltaminen Loomiossa
 
 | **Konsensusprosessi** | **Loomiossa** |
 |---|---|
 | Huomaat ongelman tai mahdollisuuden ja teet aloitteen. |  |
-| **Kerro, mistä asiasta on päätettävä**  <br /><br />Anna taustatiedot ja aloita laaja keskustelu yhteisen ymmärryksen rakentamiseksi. Tarkkaile keskustelussa syntyviä ehdotuksia. | Aloita Loomiossa keskustelu <br /><br />Kerro keskustelun otsikossa, mistä aiheesta keskustellaan ja mitä haluatte saavuttaa. <br /><br />Liitä tai linkitä taustatiedot. Kutsu ihmisiä esittämään kysymyksiä, jakamaan tietoa ja kirjoittamaan kommentteja. |
-| **Esitä ehdotus** <br /><br />Kartoita yhteisymmärrystä. | Aloita [tunnusteluehdotus](/en/user_manual/polls/proposals/sense_check/). <br /><br />*Otsikossa:* Nimeä ehdotus. <br /><br />*Ehdotuksen tiedoissa:* Kuvaa ehdotus selkeästi ja kerro, miksi se on tärkeä. Lisää tarvittavat taustatiedot ja linkki ehdotukseen. <br /><br />Kutsu kaikki vastaamaan ennen ehdotuksen sulkeutumista. |
-| **Muokkaaminen** <br /><br />Keskustelkaa ehdotuksesta, selventäkää sitä ja muokatkaa sitä. <br /><br />Pyrkikää ymmärtämään ja ratkaisemaan vastalauseet. <br /><br />Pyydä ehdotusta vastustavia ihmisiä esittämään rakentava ja toteuttamiskelpoinen muutos päätökseen tai toimintatapaan. | Ohjaa keskustelua ketjussa, jotta huoliin voidaan vastata ja ehdotusta muokata. |
-| **Hyväksyntä** <br /><br />Onko ehdotuksella hyväksyntä? Tarkista vastaukset: <br /><br />Samaa mieltä: Kannatan ehdotusta. <br /><br />Pidättäydyn: Päätös ei vaikuta minuun, ja ryhmän ratkaisu sopii minulle. <br /><br />Eri mieltä: Ehdotuksessa on jotain, mitä on muutettava ennen kuin voin kannattaa sitä. <br /><br />Estän: Olen ehdotuksesta perustavanlaatuisesti eri mieltä, eikä erimielisyyttä voida ratkaista. | Aloita [konsensusehdotus](/en/user_manual/polls/proposals/consensus/) ehdotuksen nykyisestä versiosta. <br /><br />*Otsikossa:* Nimeä tehtävä päätös. <br /><br />*Ehdotuksen tiedoissa:* Esitä ehdotus ja kutsu ihmiset äänestämään. <br /><br />Kerro selkeästi, mitä hyväksyntä edellyttää. Voit esimerkiksi kirjoittaa: ”Ehdotus hyväksytään, jos kaikki äänestävät samaa mieltä” tai ”Ehdotus hyväksytään, jos 75 % jäsenistä äänestää samaa mieltä”. <br /><br />Pyydä osallistujia kirjoittamaan äänelleen ”Syy”. Jos he eivät ole samaa mieltä, pyydä heitä kertomaan miksi ja mitä pitäisi muuttaa, jotta he voisivat kannattaa ehdotusta. <br /><br />Jotkin järjestöt käyttävät myös Estän-äänestysvaihtoehtoa eli veto-oikeutta. <br /><br />Äänestyksen aikana voit vastata kommentteihin, julkaista päivityksiä, sulkea ehdotuksen etuajassa tai antaa sen olla avoinna sulkeutumisaikaan asti. <br /><br />Osallistujat voivat *”muuttaa ääntään”* ehdotuksen sulkeutumiseen asti esimerkiksi äänestyksen aikana saatujen uusien tietojen perusteella. |
-| **Johtopäätös** <br /><br />Kerro, saavutettiinko yhteisymmärrys ja mikä päätös tehtiin. <br /><br />Toteuttakaa päätös ja suunnitelkaa tarvittavat toimet. | Tarkastele äänestystuloksia ja kerro tehty päätös. <br /><br />Tee yhteenveto prosessin tuloksista ja kerro, mitä seuraavaksi tapahtuu. <br /><br />Jos tulokset eivät anna selvää vastausta, voit avata keskustelun uudelleen ja aloittaa uuden ehdotuksen. <br /><br />Johtopäätös on tärkeä päätöksen kirjaus myöhempää käyttöä varten. |
+| **Kerro, mistä asiasta päätetään**  <br /><br />Anna taustatietoja ja aloita laaja keskustelu yhteisen ymmärryksen rakentamiseksi. Tunnista keskustelussa muotoutuvia ehdotuksia. | Aloita keskustelu Loomiossa <br /><br />Kerro keskustelun otsikossa keskustelun aihe ja mitä haluat saavuttaa. <br /><br />Liitä taustatietoja tai linkitä niihin. Kutsu ihmisiä esittämään kysymyksiä, jakamaan tietoa ja kirjoittamaan kommentteja. |
+| **Esitä ehdotus** <br /><br />Selvitä, onko konsensus saavutettavissa. | Aloita [tunnusteluehdotus](/en/user_manual/polls/proposals/sense_check/). <br /><br />*Otsikossa:* Nimeä ehdotus. <br /><br />*Ehdotuksen tiedoissa:* Kuvaa ehdotus selkeästi ja kerro, miksi se on tärkeä. Lisää tarvittavat taustatiedot ja linkki ehdotukseen. <br /><br />Kutsu kaikkia vastaamaan ennen ehdotuksen sulkeutumista. |
+| **Muokkaaminen** <br /><br />Keskustele ehdotuksesta, selvennä sitä ja muokkaa sitä. <br /><br />Pyri ymmärtämään ja ratkaisemaan vastaväitteet. <br /><br />Pyydä vastaväitteitä esittäviä ihmisiä ehdottamaan rakentavaa ja käytännöllistä muutosta ehdotettuun päätökseen tai toimintatapaan. | Ohjaa keskustelua ketjussa huolenaiheiden käsittelemiseksi ja ehdotuksen muokkaamiseksi. |
+| **Hyväksyntä** <br /><br />Onko ehdotus saanut hyväksynnän? Tarkista vastaukset: <br /><br />Samaa mieltä: Kannatan ehdotusta. <br /><br />Pidättäydyn: Tämä päätös ei vaikuta minuun, ja hyväksyn ryhmän päätöksen riippumatta siitä, mikä se on. <br /><br />Eri mieltä: Ehdotuksessa on muutettava jotakin, ennen kuin voin kannattaa sitä. <br /><br />Veto: Olen ehdotuksesta perustavanlaatuisesti eri mieltä, eikä erimielisyyttä voida ratkaista. | Aloita [konsensusehdotus](/en/user_manual/polls/proposals/consensus/) ehdotuksen nykyisestä versiosta. <br /><br />*Otsikossa:* Nimeä tehtävä päätös. <br /><br />*Ehdotuksen tiedoissa:* Esitä ehdotus ja kutsu ihmisiä äänestämään. <br /><br />Kerro selkeästi, mitä hyväksyntä tarkoittaa, esimerkiksi 'ehdotuksen hyväksyminen edellyttää, että kaikki äänestävät Samaa mieltä' tai 'ehdotuksen hyväksyminen edellyttää, että 75 % jäsenistä on samaa mieltä'. <br /><br />Pyydä osallistujia kirjoittamaan äänelleen 'Perustelu'. Jos he ovat eri mieltä, pyydä heitä kertomaan miksi ja mitä on muutettava, jotta he voivat kannattaa ehdotusta. <br /><br />Jotkin organisaatiot käyttävät myös Veto-vaihtoehtoa. <br /><br />Äänestyksen edetessä vastaa kommentteihin, julkaise päivityksiä, sulje ehdotus etuajassa tai anna sen jatkua sulkeutumisaikaan asti. <br /><br />Osallistujat voivat *“muuttaa ääntään”* ehdotuksen sulkeutumiseen asti esimerkiksi äänestyksen aikana saatujen uusien tietojen perusteella. |
+| **Johtopäätös** <br /><br />Kerro, saavutettiinko hyväksyntä ja mikä päätös tehtiin. <br /><br />Toteuta päätös ja suunnittele tarvittavat toimet. | Tarkastele äänestyksen tuloksia ja kerro tehty päätös. <br /><br />Tee yhteenveto prosessin tuloksista ja kerro, mitä seuraavaksi tapahtuu. <br /><br />Jos tulokset eivät ole selkeitä, voit avata keskustelun uudelleen ja aloittaa uuden ehdotuksen. <br /><br />Johtopäätös on tärkeä päätöksen kirjaus, johon voi palata myöhemmin. |
 
 <!-- translation-section: example-of-a-consensus-process-on-loomio -->
 
@@ -102,17 +104,17 @@ Rakentakaa yhteisymmärrystä yhdessä tehtävästä päätöksestä, jotta ratk
 
 ### Vaihe 0. Huomaat ongelman tai mahdollisuuden ja teet aloitteen
 
-*Kannattaako ongelmaan tai mahdollisuuteen tarttua?* Vivien huomaa, että on aika tarkastella Oatmilk Coop -osuuskunnan brändiä.
+*Kannattaako ongelmaan tai mahdollisuuteen tarttua?* Vivien huomasi, että on aika tarkastella Oatmilk Coop -osuuskunnan brändiä.
 
-*Onko tehtävä päätös?* Hallituksen vastuulla on hyväksyä uusi brändikonsepti.
+*Onko asiasta tehtävä päätös?* Hallituksen vastuulla on hyväksyä uusi brändikonsepti.
 
-*Vaikuttaako asia muihin ihmisiin ja järjestöönne?* Brändi vaikuttaa siihen, miten osuuskunta nähdään, sekä kaikkiin järjestössä toimiviin.
+*Vaikuttaako asia muihin ihmisiin ja organisaatioosi?* Brändi vaikuttaa mielikuvaan osuuskunnasta ja kaikkiin organisaatiossa.
 
 <!-- translation-section: step-1-state-the-problem-or-issue -->
 
-### Vaihe 1. Kerro ongelmasta tai käsiteltävästä asiasta
+### Vaihe 1. Määrittele ongelma tai asia
 
-Vivien aloittaa Loomiossa keskustelun järjestön brändin uudistamistarpeesta. Hän kutsuu muut mukaan kehittämään uutta brändikonseptia ja kertoo, että hallitus tekee hyväksymispäätöksen konsensusprosessilla.
+Vivien aloittaa Loomiossa keskustelun, jossa hän kuvaa tarpeen tarkastella organisaation brändiä ja kutsuu ihmisiä osallistumaan uuden brändikonseptin kehittämiseen. Hän kertoo myös, että hallitus päättää hyväksynnästä konsensusprosessilla.
 
 ![](discussion_consensus_process_refresh_brand.png)
 
@@ -120,7 +122,7 @@ Vivien aloittaa Loomiossa keskustelun järjestön brändin uudistamistarpeesta. 
 
 ### Vaihe 2. Esitä ehdotus
 
-Vivien aloittaa tunnusteluehdotuksen selvittääkseen, mitä ihmiset ajattelevat brändikonseptin keskeisistä osista ja onko niistä yhteisymmärrystä. Tunnusteluehdotus kertoo, että ehdotus on muotoutumassa, ja kannustaa osallistumaan. Se auttaa tuomaan huolia esiin.
+Vivien käynnistää tunnusteluehdotuksen selvittääkseen, mitä ihmiset ajattelevat brändikonseptin keskeisistä osista, ja tunnustellakseen konsensusta. Tunnusteluehdotus kertoo ihmisille, että ehdotus on muotoutumassa, ja kannustaa heitä osallistumaan. Se on hyvä tapa tuoda huolenaiheita esiin.
 
 ![](proposal_sense_check_refresh_brand.png)
 
@@ -128,7 +130,8 @@ Vivien aloittaa tunnusteluehdotuksen selvittääkseen, mitä ihmiset ajattelevat
 
 ### Vaihe 3. Muokkaaminen
 
-Kun tunnusteluehdotus sulkeutuu, Vivien kirjoittaa johtopäätöksen ja kertoo kaikille tuloksista ja seuraavista vaiheista. Vivien ohjaa keskustelua, jossa käsitellään huolia ja muokataan brändikonseptia kuvaavaa asiakirjaa.
+Kun tunnusteluehdotus sulkeutuu, Vivien kirjaa johtopäätöksen ja ilmoittaa kaikille tuloksista ja siitä, mitä tapahtuu seuraavaksi.
+Vivien fasilitoi keskustelua huolenaiheiden käsittelemiseksi ja Brändikonsepti-asiakirjan muokkaamiseksi.
 
 ![](proposal_outcome_sense_check_refresh_brand.png)
 
@@ -136,13 +139,13 @@ Kun tunnusteluehdotus sulkeutuu, Vivien kirjoittaa johtopäätöksen ja kertoo k
 
 ### Vaihe 4. Hyväksyntä
 
-Kun brändikonseptia kuvaavan asiakirjan uusin versio on valmis, Vivien pyytää hallituksen hyväksyntää aloittamalla konsensusehdotuksen.
+Saatuaan Brändikonsepti-asiakirjan uusimman version valmiiksi Vivien on valmis hakemaan hallituksen hyväksyntää käynnistämällä konsensusehdotuksen.
 
 ![](proposal_consensus_process_refresh_brand.png)
 
-Hallituksen jäseniä pyydetään äänestämään brändikonseptin hyväksymisestä. Hallitus on aiemmin sopinut, että tällainen ehdotus hyväksytään, jos >75% jäsenistä äänestää Samaa mieltä.
+Hallituksen jäsenet kutsutaan äänestämään ja hyväksymään brändikonsepti. Hallitus on aiemmin sopinut, että tällaisen ehdotuksen hyväksyminen edellyttää, että >75% jäsenistä äänestää Samaa mieltä.
 
-Tässä mallissa on oletuksena Estän-vaihtoehto. Se ei sovi kaikille ryhmille, sillä se voi aiheuttaa kiistaa tai sitä voidaan käyttää väärin. Jos ette käytä estämistä päätöksenteossa, suosittelemme poistamaan vaihtoehdon mallista.
+Tämä malli sisältää oletuksena Veto-vaihtoehdon. Veto ei sovi kaikille ryhmille — se voi aiheuttaa kiistoja tai sitä voidaan käyttää väärin. Jos et käytä vetoa päätöksentekoprosessissasi, suosittelemme poistamaan sen mallista.
 
 ![](proposal_vote_consensus_process_refresh_brand.png)
 
@@ -150,6 +153,6 @@ Tässä mallissa on oletuksena Estän-vaihtoehto. Se ei sovi kaikille ryhmille, 
 
 ### Vaihe 5. Johtopäätös
 
-Kun konsensusehdotus sulkeutuu, Vivien kirjoittaa johtopäätöksen ja kertoo kaikille, että yhteisymmärrys on saavutettu ja uuden brändin toteutus alkaa.
+Kun konsensusehdotus sulkeutuu, Vivien kirjaa johtopäätöksen ja ilmoittaa kaikille, että hyväksyntä on saavutettu ja uuden brändin käyttöönotto alkaa.
 
 ![](proposal_outcome_consensus_process_refresh_brand.png)

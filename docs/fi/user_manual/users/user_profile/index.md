@@ -1,10 +1,10 @@
 ---
 title: Oma profiili
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/users/user_profile/index.md
+source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
+source_file: docs/en/user_manual/users/user_profile/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-30'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: c9002e77f5270003
   edit-profile: 7bfe2795d9b01549
@@ -16,15 +16,15 @@ sections:
   merge-accounts: e1190f5e224e1047
   deleting-your-account: 2799d5bcc8d5b528
 generated:
-  introduction: dd2d88464a89c36e
-  edit-profile: 9faeac4176c4e818
-  update-your-personal-info: a33746aad4848752
-  viewing-another-person-s-profile: e5fc549d13b555ed
-  uploading-a-profile-photo: 25fa59ea73bae05f
-  language-settings: c188e19d2c81d7e3
-  resetting-your-password: e2349f4720427098
-  merge-accounts: c5c80361bbb50390
-  deleting-your-account: 77d9b4a8777f4111
+  introduction: aeb2c44728a7c7f1
+  edit-profile: 2d1d6467154c33a0
+  update-your-personal-info: 0040c8c7161c9760
+  viewing-another-person-s-profile: 6a93d366833c63f9
+  uploading-a-profile-photo: b09cc830e155de25
+  language-settings: cd4a662f5f79df5c
+  resetting-your-password: c472a651f96d11a9
+  merge-accounts: dfab1a97536c18e9
+  deleting-your-account: 3182c32334024c77
 title_source: 528d89ad72cba22e
 title_generated: f036aa770febacfc
 ---
@@ -32,15 +32,15 @@ title_generated: f036aa770febacfc
 <!-- translation-section: introduction -->
 
 # Oma profiili
-Loomio-profiilisi auttaa muita tunnistamaan sinut.
+Ihmiset tunnistavat sinut Loomiossa käyttäjäprofiilisi perusteella.  
 
-Kun ihmiset tunnistavat toisensa Loomiossa, heidän on helpompi luottaa toisiinsa ja osallistua keskusteluun omana itsenään. Lisää profiiliisi kuva tai avatar, jos mahdollista.
+Kun ihmiset tunnistavat toisensa Loomiossa, luottamus vahvistuu ja osallistuminen on luontevampaa. Siksi kannustamme sinua esiintymään omana itsenäsi ja lisäämään valokuvan tai avatarin aina kun mahdollista.
 
 <!-- translation-section: edit-profile -->
 
 ## Muokkaa profiilia
 
-Profiilisivulla voit muokata sitä, miten näyt muille Loomiossa. Avaa profiilisivusi valitsemalla **Muokkaa profiilia** käyttäjävalikosta. Avaa valikko napsauttamalla nimeäsi sivupalkin yläosassa.
+Profiilisivulla voit muokata sitä, miten näyt Loomiossa. Avaa profiilisivusi valitsemalla käyttäjävalikosta **Muokkaa profiilia**. Käyttäjävalikko avautuu napsauttamalla nimeäsi sivupalkin yläreunassa.
 
 Jos sivupalkki on suljettu, avaa se napsauttamalla valikkokuvaketta (**☰**).
 
@@ -56,54 +56,54 @@ Napsauta **Muokkaa profiilia**
 
 <!-- translation-section: update-your-personal-info -->
 
-## Päivitä henkilötietojasi
+## Päivitä henkilötietosi
 
-Voit päivittää henkilötietojasi muuttamalla seuraavia kenttiä:
+Voit päivittää henkilötietosi muuttamalla seuraavia kenttiä:
 
 * **Nimi**
-* **Sähköpostiosoite** - Loomio-tiliisi liitetty osoite, johon saat Loomion ilmoitukset.
-* **Käyttäjätunnus** - nimi, josta muut tunnistavat sinut ja jolla he voivat kutsua sinut mukaan @maininnalla. Käyttäjätunnuksessa voi olla pieniä kirjaimia, numeroita, alaviivoja ja sanojen välisiä yhdysmerkkejä.
-* **Johdanto** - kerro muutamalla rivillä itsestäsi muille ryhmäsi jäsenille.
-* **Sijainti** - auttaa eri paikoissa toimivan ryhmän jäseniä hahmottamaan, missä olet.
+* **Sähköpostiosoite** - Loomio-tiliisi liitetty sähköpostiosoite, johon saat Loomion ilmoitukset.
+* **Käyttäjätunnus** - nimi, josta muut tunnistavat sinut ja jolla he voivat mainita sinut @-maininnalla, jolloin saat ilmoituksen. Se voi sisältää pieniä kirjaimia, numeroita, alaviivoja ja yhdysmerkkejä muualla kuin alussa tai lopussa.
+* **Johdanto** - muutama rivi, joilla kerrot itsestäsi ryhmäsi muille jäsenille.
+* **Sijainti** - hyödyllinen eri paikoissa tai etänä toimiville ryhmille, jotta muut tietävät, missä olet.
 
 ![](user_profile.png)
 
 <!-- translation-section: viewing-another-person-s-profile -->
 
-## Toisen henkilön profiilin katselu
+## Toisen henkilön profiilin katsominen
 
-Avaa henkilön profiili valitsemalla hänen nimensä tai avatarinsa. Profiilitietojen ja ryhmien vieressä näkyvät hänen viimeaikaiset keskustelunsa, kommenttinsa ja kyselynsä. Luettelossa näkyy vain toiminta, johon sinulla on pääsy. Kirjautumattomat vierailijat näkevät vain julkisen toiminnan.
+Avaa henkilön profiili valitsemalla hänen nimensä tai avatarinsa. Hänen viimeisimmät keskustelunsa, kommenttinsa ja kyselynsä näkyvät profiilitietojen ja ryhmien rinnalla. Luettelossa näkyy vain toiminta, jota sinulla on oikeus nähdä. Kirjautumattomat vierailijat näkevät vain julkisen toiminnan.
 
 <!-- translation-section: uploading-a-profile-photo -->
 
-## Profiilikuvan lataaminen
-Kun luot Loomio-tilin, profiilisi oletuskuvana näkyvät nimikirjaimesi. Voit ladata profiilikuvan napsauttamalla kuvaasi profiilisivulla.
+## Profiilikuvan lisääminen
+Kun luot Loomio-tilin, profiilisi oletuskuvana näkyvät nimikirjaimesi. Voit lisätä profiilikuvan napsauttamalla kuvaasi profiilisivulla.
 
-Jos sinulla on [Gravatar](https://en.gravatar.com/), voit käyttää sitä profiilikuvanasi valitsemalla **Käytä Gravataria**. Voit myös valita kuvan, jota käytät muissa palveluissa tai työkaluissa.
+Jos sinulla on [Gravatar](https://en.gravatar.com/), voit asettaa sen profiilikuvaksesi valitsemalla **Käytä Gravataria**. Voit myös valita Loomion käyttämään kuvaa, jota käytät muilla yleisillä alustoilla tai työkaluissa.
 
 ![](profile_photo.png)
 
 <!-- translation-section: language-settings -->
 
 ## Kieliasetukset
-Loomio kehitetään englanniksi, mutta [vapaaehtoiset kääntävät sitä monille kielille](https://www.loomio.com/g/cpaM3Hsv/loomio-community-translation).
+Loomiota kehitetään englanniksi, mutta [vapaaehtoiset kääntävät sitä monille kielille](https://www.loomio.com/g/cpaM3Hsv/loomio-community-translation).
 
-Loomio tunnistaa selaimesi kieliasetuksen. Voit myös valita haluamasi kielen profiilisivun vaihtoehdoista.
+Loomio tunnistaa selaimesi kieliasetukset, mutta voit myös valita haluamasi kielen profiilisivulla käytettävissä olevista vaihtoehdoista.
 
 ![](profile_language.png)
 
 <!-- translation-section: resetting-your-password -->
 
 ## Salasanan vaihtaminen
-Voit vaihtaa salasanasi avaamalla profiilisivusi ja napsauttamalla **Nollaa salasana**.
+Voit vaihtaa salasanasi avaamalla profiilisivusi ja napsauttamalla **Vaihda salasana**.
 
 ![](reset_password.png#width-90)
 
 <!-- translation-section: merge-accounts -->
 
-## Tilien yhdistäminen
+## Yhdistä tilit
 
-Jos sinulla on kaksi Loomio-tiliä, voit yhdistää ne yhdeksi tiliksi.
+Jos sinulla on kaksi Loomio-käyttäjätiliä, voit yhdistää ne yhdeksi tiliksi.
 
 Katso [Tilien yhdistäminen](../merge_accounts).
 
@@ -111,4 +111,4 @@ Katso [Tilien yhdistäminen](../merge_accounts).
 
 ## Tilin poistaminen
 
-Jos haluat poistaa Loomio-tilisi ja erota kaikista Loomio-ryhmistäsi, katso [Loomio-tilin poistaminen](../deleting_your_account).
+Jos haluat poistaa Loomio-käyttäjätilisi ja erota kaikista Loomio-ryhmistä, joiden jäsen olet, katso [Loomio-tilin poistaminen](../deleting_your_account).

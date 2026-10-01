@@ -1,6 +1,6 @@
 ---
 title: Neuvoja
-source_revision: 9c60c42fc739483fa23f15d9f34a1e9245518092
+source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
 source_file: docs/en/user_manual/polls/proposals/advice/index.md
 translated:
   provider: codex/gpt-6.1-sol
@@ -14,44 +14,46 @@ sections:
   read-the-results: 937eff4c74abcc79
   share-an-outcome: 1f762148d1f18b1d
 generated:
-  introduction: 8732827d90fd27f5
-  when-to-use-advice: 520774de84c96738
-  example-choose-a-washing-supplier: 97f2e32cf8a79e33
-  set-up-the-proposal: eeb1b10928498c29
-  vote: 44a914c2ca832c2b
-  read-the-results: eaa60423292afe45
-  share-an-outcome: b72a74a6731a7273
+  introduction: 4859d0da5b4b8f2a
+  when-to-use-advice: f1ac3ee180b7bb28
+  example-choose-a-washing-supplier: 04a1193ec0c317c6
+  set-up-the-proposal: '082fe51100eb450c'
+  vote: 201bba39c03f0320
+  read-the-results: a105de54fad04804
+  share-an-outcome: 7d1f5dcc1c6791f0
 title_source: 305f5e5463e18d7f
 title_generated: 99221c07d0a16699
+needs_review:
+  introduction: use "johtopäätös" instead of "tulokset" for "outcome"
 ---
 
 <!-- translation-section: introduction -->
 
 # Neuvoja
 
-Neuvoja-ehdotuksella kerätään näkemyksiä päätökseen, jonka tekemisestä vastaa henkilö tai tiimi. Osallistujat voivat antaa neuvoja tai ilmoittaa, ettei heillä ole neuvoja lisättäväksi.
+Neuvoja-ehdotuksella kerätään näkemyksiä päätökseen, jonka tekemisestä vastaa henkilö tai tiimi. Osallistujat voivat antaa neuvoja tai ilmoittaa, ettei heillä ole lisättävää.
 
-Tällä sivulla kerrotaan Neuvoja-ehdotuksen lomakkeesta, äänestämisestä ja tuloksista. [Neuvontaprosessi](/en/guides/making_decisions/advice_process) kuvaa koko työnkulun päätöksen määrittelystä johtopäätöksen julkaisemiseen.
+Tällä sivulla esitellään Neuvoja-ehdotuksen lomake, äänestäminen ja tulokset. Katso [Neuvontaprosessi](/en/guides/making_decisions/advice_process), jossa kuvataan koko työnkulku päätöksen määrittelystä johtopäätöksen julkaisemiseen.
 
 <!-- translation-section: when-to-use-advice -->
 
 ## Milloin Neuvoja-ehdotusta kannattaa käyttää
 
-Käytä Neuvoja-ehdotusta, kun päätöksentekijä haluaa kuulla asiasta tietäviä tai päätöksen vaikutuspiirissä olevia ihmisiä. Se sopii esimerkiksi toimittajan valintaan, käytännön toimintaan liittyviin päätöksiin, toimintaperiaatteiden luonnoksiin ja päätöksiin, jotka kuuluvat henkilölle annettuun tehtävään.
+Käytä Neuvoja-ehdotusta, kun päätöksentekijä haluaa näkemyksiä ihmisiltä, joilla on asiaan liittyvää asiantuntemusta tai joihin päätös vaikuttaa. Se sopii toimittajien valintaan, toiminnallisiin päätöksiin, toimintaperiaatteiden luonnoksiin ja päätöksiin, jotka kuuluvat delegoidun tehtävän vastuisiin.
 
-Neuvoja-ehdotus ei ole hyväksymisäänestys. Kerro, kuka tekee päätöksen, mitä reunaehtoja siihen liittyy ja miten vastaukset otetaan huomioon.
+Neuvoja-ehdotuksessa ei äänestetä hyväksymisestä. Kerro, kuka tekee päätöksen, mitä rajoitteita siihen liittyy ja miten päätöksentekijä ottaa vastaukset huomioon.
 
 <!-- translation-section: example-choose-a-washing-supplier -->
 
-## Esimerkki: pesupalvelun toimittajan valinta
+## Esimerkki: valitse pesupalvelun toimittaja
 
-Oatmilk-osuuskunnan toiminnan koordinaattorin on valittava pesupalvelun toimittaja. Hän pyytää neuvoja kapasiteetista, elintarviketurvallisuustiedoista, vedenkulutuksesta, palvelun vasteajoista ja tuesta.
+Oatmilk-osuuskunnan toimintakoordinaattorin on valittava pesupalvelun toimittaja. Hän pyytää neuvoja kapasiteetista, elintarviketurvallisuuden seurantatiedoista, vedenkäytöstä, palvelun vasteajoista ja tuesta.
 
 <!-- translation-section: set-up-the-proposal -->
 
-## Määritä ehdotus
+## Luo ehdotus
 
-Kuvaa päätös, nimeä päätöksentekijä ja lisää osallistujien tarvitsemat tiedot. Kutsu mukaan ihmisiä, joihin päätös vaikuttaa tai joilla on aiheesta olennaista tietoa. Oletusvaihtoehdot antavat osallistujan joko tarjota neuvoja tai pidättäytyä.
+Kuvaile päätös, nimeä päätöksentekijä ja lisää osallistujien tarvitsemat tiedot. Kutsu ihmisiä, joihin päätös vaikuttaa tai joilla on asiaan liittyvää tietoa. Oletusvaihtoehdoilla osallistuja voi antaa neuvoja tai pidättäytyä ottamasta kantaa.
 
 ![](form.png)
 
@@ -59,15 +61,15 @@ Kuvaa päätös, nimeä päätöksentekijä ja lisää osallistujien tarvitsemat
 
 ## Äänestä
 
-Osallistujat valitsevat **Neuvoja** ja kertovat konkreettisen suosituksen, riskin, kysymyksen tai aiheeseen liittyvän kokemuksen. He voivat pidättäytyä, jos heillä ei ole hyödyllistä lisättävää.
+Osallistujat valitsevat **Neuvoja** ja esittävät konkreettisen suosituksen, riskin, kysymyksen tai asiaan liittyvän kokemuksen. He voivat pidättäytyä ottamasta kantaa, jos heillä ei ole hyödyllistä lisättävää.
 
 ![](../proposal_advice_voting.png)
 
 <!-- translation-section: read-the-results -->
 
-## Lue tulokset
+## Tarkastele tuloksia
 
-Kaaviosta näet, ketkä ovat vastanneet, mutta vastausten perustelut ovat Neuvoja-ehdotuksen tärkein sisältö. Etsi niistä reunaehtoja, yhteisymmärrystä ja ristiriitaisia suosituksia. Älä pidä yleisintä vastausta päätöksenä.
+Kaavio näyttää, ketkä ovat vastanneet, mutta Neuvoja-ehdotuksen varsinainen sisältö on perusteluissa. Etsi rajoitteita, yhteneviä näkemyksiä ja ristiriitaisia suosituksia sen sijaan, että pitäisit yleisintä vastausta päätöksenä.
 
 ![](../proposal_advice_results.png)
 
@@ -75,6 +77,6 @@ Kaaviosta näet, ketkä ovat vastanneet, mutta vastausten perustelut ovat Neuvoj
 
 ## Jaa johtopäätös
 
-Kun ehdotus sulkeutuu, päätöksentekijä jakaa johtopäätöksen. Siinä hän kertoo, mitä päätti ja miten neuvot vaikuttivat päätökseen. Katso [Jaa johtopäätös](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome), jos haluat tietää, miten johtopäätökset toimivat.
+Kun ehdotus sulkeutuu, päätöksentekijä jakaa johtopäätöksen. Siinä kerrotaan, mitä hän päätti ja miten neuvot vaikuttivat päätökseen. Katso johtopäätösten käyttöohjeet sivulta [Jaa johtopäätös](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome).
 
-![Johtopäätös, jossa kerrotaan valittu toimittaja ja neuvot, joita päätöksessä noudatettiin](outcome.png)
+![Johtopäätös, jossa nimetään valittu toimittaja ja kerrotaan, mitä neuvoja valinnassa noudatettiin](outcome.png)

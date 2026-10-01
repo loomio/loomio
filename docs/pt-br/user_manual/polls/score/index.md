@@ -1,6 +1,6 @@
 ---
 title: Pontuação
-source_revision: 9c60c42fc739483fa23f15d9f34a1e9245518092
+source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
 source_file: docs/en/user_manual/polls/score/index.md
 translated:
   provider: codex/gpt-6.1-sol
@@ -14,64 +14,64 @@ sections:
   read-the-results: 3e996e9bcc830d1d
   share-an-outcome: 243aaac17e645331
 generated:
-  introduction: b10d2fa259a3d5f6
-  when-to-use-score: 05207c6eb31fa324
-  example-score-possible-trial-locations: 90fef7b27969ef3d
-  set-up-the-poll: 3791008451db02a0
-  vote: 505269d59c34988f
-  read-the-results: 236de0a05f533d99
-  share-an-outcome: af2f3caa36e6f4bd
+  introduction: 5f873f31e1680be0
+  when-to-use-score: b37f855f408cf847
+  example-score-possible-trial-locations: 4572376e1aca2b09
+  set-up-the-poll: 4b71cd7b95ee36d7
+  vote: 7d8841a0277f7113
+  read-the-results: d906e0fe295890a5
+  share-an-outcome: a3b6cbed200ead76
 title_source: 38e5a46cbc5ad328
 title_generated: b60e4b3dcf0768af
 ---
 
 <!-- translation-section: introduction -->
 
-# Pontuação
+# Pontuar
 
-A enquete de pontuação mede como os participantes avaliam cada opção em uma escala numérica comum. Diferentemente da enquete de escolha, ela pede que as pessoas respondam a todas as opções. Assim, os resultados mostram quais opções elas preferem e com que intensidade.
+Pontuar mede como os participantes avaliam cada opção em uma escala numérica comum. Diferentemente de Escolher, pede que as pessoas respondam a todas as opções, de modo que os resultados mostrem tanto o que elas preferem quanto a intensidade dessa preferência.
 
 <!-- translation-section: when-to-use-score -->
 
-## Quando usar a enquete de pontuação
+## Quando usar Pontuar
 
-Use a enquete de pontuação quando cada opção puder ser avaliada de forma independente pela mesma pergunta. Ela funciona bem para:
+Use Pontuar quando cada opção puder ser avaliada de forma independente com base na mesma pergunta. Funciona bem para:
 
-- avaliar o quanto cada parte de um projeto está pronta;
-- classificar a importância de vários princípios;
-- medir o interesse em possíveis temas para uma reunião;
-- avaliar pedidos de financiamento com base em um critério comum; ou
+- avaliar o grau de preparo de cada parte de um projeto;
+- avaliar a importância de vários princípios;
+- medir o interesse em possíveis temas de reunião;
+- avaliar solicitações de financiamento com base em um critério comum; ou
 - comparar a adequação de várias propostas.
 
-Defina o que significam os extremos da escala. Sem uma definição comum, o mesmo número pode ter significados diferentes para cada eleitor. Use [Escolha](/en/user_manual/polls/choose/) quando você precisar apenas que as pessoas selecionem opções, ou [Distribuição](/en/user_manual/polls/allocate/) quando os participantes precisarem distribuir um número limitado de pontos entre elas.
+Defina o que os extremos inferior e superior da escala significam. Um número sem uma definição comum pode significar coisas diferentes para diferentes eleitores. Use [Escolher](/en/user_manual/polls/choose/) quando você precisar apenas de seleções, ou [Distribuir](/en/user_manual/polls/allocate/) quando os participantes precisarem fazer escolhas dentro de um orçamento limitado.
 
 <!-- translation-section: example-score-possible-trial-locations -->
 
-## Exemplo: pontuar possíveis locais para um projeto piloto
+## Exemplo: pontuar possíveis locais para um teste
 
-A Cooperativa Oatmilk está escolhendo locais para um projeto piloto de garrafas retornáveis. Ela pede aos membros que atribuam uma pontuação de 0 (**inadequado**) a 10 (**ideal**) a quatro locais, considerando o acesso dos clientes, a capacidade da equipe, o armazenamento e o transporte para coleta.
+A Cooperativa Oatmilk está escolhendo locais para um teste com garrafas retornáveis. Ela pede aos membros que pontuem quatro locais de 0 (**inadequado**) a 10 (**ideal**), considerando o acesso dos clientes, a capacidade da equipe, o armazenamento e o transporte para coleta.
 
 <!-- translation-section: set-up-the-poll -->
 
 ## Configure a enquete
 
-Formule uma pergunta que se aplique igualmente a todas as opções. Adicione os itens a serem avaliados, defina a **Pontuação mínima** e a **Pontuação máxima** e explique o que significam os extremos da escala nos detalhes. A descrição de cada opção pode esclarecer o que está incluído no item.
+Formule uma pergunta que se aplique igualmente a todas as opções. Adicione os itens a serem avaliados, defina a **Pontuação mínima** e a **Pontuação máxima** e explique os extremos da escala nos detalhes. Os significados das opções podem esclarecer o escopo de cada item.
 
 ![](form.png)
 
-Escolha uma escala que os participantes possam usar de forma consistente. Uma escala de 0 a 5 é rápida de usar; uma escala de 0 a 10 permite distinções mais detalhadas. Mais precisão nem sempre traz informações melhores. Use a escala mais curta que atenda à pergunta.
+Escolha uma escala que os participantes possam aplicar de forma consistente. Uma escala de 0–5 é rápida de usar; uma escala de 0–10 permite distinções mais precisas. Mais precisão não produz necessariamente informações melhores, então use a menor escala que se ajuste à pergunta.
 
-O voto anônimo e a exibição das opções em ordem aleatória podem ajudar a reduzir a influência de outras pessoas e da ordem das opções.
+A votação anônima e a exibição das opções em ordem aleatória podem ser úteis quando você quiser reduzir a influência social ou os efeitos da ordem de apresentação.
 
 <!-- translation-section: vote -->
 
 ## Vote
 
-Os participantes movem um controle deslizante para pontuar cada opção. Neste exemplo, o eleitor atribui 8 pontos ao Café da Estação Central, 6 ao Mercado da Beira-Rio, 7 à Praça de Alimentação da Universidade e 5 aos Escritórios do Porto.
+Os participantes movem um controle deslizante para pontuar cada opção. Neste exemplo, o eleitor atribui 8 ao café da Estação Central, 6 ao mercado à beira do rio, 7 à praça de alimentação da universidade e 5 aos escritórios do porto.
 
 ![](voting.png)
 
-A justificativa explica como o eleitor usou a escala. Isso ajuda o grupo a distinguir uma pontuação baixa causada pela falta de informações de outra causada por uma preocupação concreta.
+O motivo explica como o eleitor aplicou a escala. Isso ajuda o grupo a distinguir uma pontuação baixa causada por falta de informação de uma causada por uma preocupação concreta.
 
 <!-- translation-section: read-the-results -->
 
@@ -85,14 +85,14 @@ Para cada opção, os resultados mostram:
 
 ![](results.png)
 
-Neste exemplo, o **Café da Estação Central** tem a maior média, de 7,5. Os **Escritórios do Porto** têm a menor média, de 5,25, enquanto o Mercado da Beira-Rio e a Praça de Alimentação da Universidade estão empatados com 7. Quatro das cinco pessoas convidadas votaram, então o grupo também pode ver que falta uma resposta.
+Neste exemplo, o **café da Estação Central** tem a maior média, de 7,5. Os **escritórios do porto** têm a menor média, de 5,25, enquanto o mercado à beira do rio e a praça de alimentação da universidade estão empatados com 7. Quatro das cinco pessoas convidadas votaram, então o grupo também pode ver que ainda falta uma resposta.
 
-Compare as médias apenas quando as opções tiverem um número semelhante de eleitores. Leia as justificativas dos votos antes de considerar significativa uma pequena diferença.
+Compare as médias apenas quando as opções tiverem um número semelhante de eleitores. Leia os motivos dos votos antes de considerar uma pequena diferença significativa.
 
 <!-- translation-section: share-an-outcome -->
 
 ## Compartilhe uma conclusão
 
-Quando a enquete encerrar, compartilhe uma conclusão. Diga qual ação será tomada com base nas pontuações e como os empates serão resolvidos. Veja [Compartilhe uma conclusão](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome) para entender como as conclusões funcionam.
+Quando a enquete for encerrada, compartilhe uma conclusão. Diga qual ação será tomada com base nas pontuações e como os empates serão resolvidos. Consulte [Compartilhe uma conclusão](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome) para saber como as conclusões funcionam.
 
 ![Uma conclusão que escolhe o local com a maior pontuação média](outcome.png)

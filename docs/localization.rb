@@ -5,6 +5,7 @@ require "digest"
 require "pathname"
 require "yaml"
 require_relative "markdown"
+require_relative "../lib/translation_glossary"
 
 module Docs
   # English and translated pages share paths under docs/<locale>/. Stable
@@ -34,11 +35,14 @@ module Docs
     Locale = Data.define(:code, :name, :published, :style, :hreflang, :app_locale, :dir)
     ENGLISH = Locale.new(code: "en", name: "English", published: true, style: nil, hreflang: "en", app_locale: "en", dir: "ltr")
 
+    # A language's style comes from the glossary its app locale shares with
+    # the interface strings, so both are translated in the same register.
     def self.locales
       YAML.safe_load_file(LOCALES_FILE).map do |code, config|
+        app_locale = config.fetch("app_locale", code)
         Locale.new(code: code, name: config.fetch("name"), published: config.fetch("published"),
-          style: config.fetch("style"), hreflang: config.fetch("hreflang", code),
-          app_locale: config.fetch("app_locale", code), dir: config.fetch("dir", "ltr"))
+          style: TranslationGlossary.style(app_locale), hreflang: config.fetch("hreflang", code),
+          app_locale: app_locale, dir: config.fetch("dir", "ltr"))
       end
     end
 

@@ -1,15 +1,15 @@
 ---
 title: Discussioni dirette
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/discussions/direct_discussions/index.md
+source_revision: c27ee3b193231816878f1c074ff9fc2a086a88c0
+source_file: docs/en/user_manual/discussions/direct_discussions/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-02'
 sections:
   introduction: d84ab1e9a167cdee
   contacting-someone-via-a-direct-discussion: 5a0b9426a2d88e62
 generated:
-  introduction: e6f82e405899731e
+  introduction: abe97263d14c0d56
   contacting-someone-via-a-direct-discussion: 5aa23a82a2342803
 title_source: ccfab058f1f7c146
 title_generated: ca035eeb1726915a
@@ -19,15 +19,15 @@ title_generated: ca035eeb1726915a
 
 # Discussioni dirette
 
-Una discussione diretta è una discussione privata tra persone specifiche.
+Una discussione diretta è una discussione privata per un insieme specifico di persone.
 
 Una discussione diretta non appartiene a un gruppo. Le persone invitate non devono essere membri del tuo gruppo Loomio.
 
-Puoi decidere chi può vedere la discussione e partecipare aggiungendo persone o indirizzi email nel campo **Invita**.
+Decidi chi può vedere la discussione e partecipare aggiungendo persone o indirizzi email al campo **Invita**.
 
-Le discussioni dirette offrono gli stessi commenti, sondaggi e altri strumenti delle discussioni di gruppo. Sono utili quando non serve creare un sottogruppo.
+Le discussioni dirette offrono gli stessi commenti, sondaggi e altri strumenti delle discussioni di gruppo. Possono essere utili quando non è necessario creare un sottogruppo.
 
-![Il modulo di una discussione diretta senza un gruppo selezionato e con Samira Patel nel campo Invita](direct-discussion-example.png)
+![Un modulo per una discussione diretta senza alcun gruppo selezionato e con Samira Patel nel campo Invita](direct-discussion-example.png)
 
 Seleziona **Thread diretti** nella barra laterale per vedere le tue discussioni dirette. Seleziona **Nuova discussione** in quella pagina per avviarne un'altra.
 

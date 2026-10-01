@@ -16,7 +16,7 @@ Translated pages are ordinary Markdown. Stable `translation-section` comments id
 
 Small page frontmatter holds the translated navigation title, source fingerprints by section ID, generated text fingerprints by section ID, available Git source provenance, the last translation provider/date and exceptional terminology warnings. Keep metadata outside the prose. Source fingerprints detect changed English; generated fingerprints recognize human corrections without asking contributors to set review flags. Repeated English text and routine per-paragraph provider/date fields are unnecessary.
 
-Send parsed section HTML to the translation service with the full page for context, the app glossary and any previous corrected wording. Return Markdown and validate its structure using the same parser settings as the site renderer. Preserve URLs, image paths, code, heading levels, lists, tables, literal HTML and alert markers. Preserve the established language register and use `config/locales/translation_corrections.md` for known terminology errors. Inflected interface labels may produce an informational terminology note rather than blocking a valid translation.
+Send parsed section HTML to the translation service with the full page for context, the glossary and any previous corrected wording. Return Markdown and validate its structure using the same parser settings as the site renderer. Preserve URLs, image paths, code, heading levels, lists, tables, literal HTML and alert markers. Follow the locale's style and terminology in `config/locales/glossary.yml`. Inflected interface labels may produce an informational terminology note rather than blocking a valid translation.
 
 ## Customer corrections
 

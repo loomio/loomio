@@ -1,14 +1,14 @@
 ---
 title: Microsoft Teams
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/integrations/microsoft_teams/index.md
+source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
+source_file: docs/en/user_manual/integrations/microsoft_teams/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-30'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 905a1586a1f760e0
 generated:
-  introduction: 2d2790cdaa6d8764
+  introduction: 1e20dd23fb34ffa4
 title_source: a7b52b269a23c025
 title_generated: a7b52b269a23c025
 ---
@@ -18,30 +18,30 @@ title_generated: a7b52b269a23c025
 # Integrazione con Microsoft Teams
 _Collega le notifiche del tuo gruppo Loomio a Microsoft Teams._
 
-Loomio può inviare notifiche a Microsoft Teams quando vengono create nuove discussioni o proposte, pubblicati commenti o conclusioni, oppure espressi voti.
+Loomio può inviare notifiche a Microsoft Teams quando vengono pubblicate nuove discussioni, proposte, commenti, voti e conclusioni.
 
 ---
 
-Vai su [https://teams.microsoft.com](https://teams.microsoft.com), poi seleziona **App**
+Visita [https://teams.microsoft.com](https://teams.microsoft.com), poi fai clic su App
 ![](t1.png)
 
-Cerca «webhook» nel campo di ricerca, poi seleziona **Webhook in ingresso**
+Cerca "webhook" nel campo di ricerca, poi fai clic su Webhook in ingresso
 ![](t2.png)
 
-Seleziona **Aggiungi a un team**
+Fai clic su "Aggiungi a un team"
 ![](t3.png)
 
-Digita e seleziona il canale in cui vuoi ricevere le notifiche di Loomio.
+Digita e seleziona il canale in cui vuoi visualizzare le notifiche di Loomio.
 ![](t4.png)
 
-Assegna un nome, per esempio «Notifiche Loomio», poi seleziona **Crea**
+Assegna un nome, ad esempio "Notifiche di Loomio", poi fai clic su "Crea"
 ![](t5.png)
 
-Copia l'URL che viene generato. Lo incollerai in Loomio nell'ultimo passaggio.
+Copia l'URL fornito: lo incollerai in Loomio nell'ultimo passaggio.
 ![](t6.png)
 
-_Loomio non è creato, affiliato o supportato da Microsoft._
+_Loomio non è creato né supportato da Microsoft e non è affiliato a Microsoft._
 
-Ora che hai l'URL del webhook, continua a configurare l'integrazione con la chat:
+Ora che hai un URL del webhook, continua a configurare l'integrazione con la chat:
 
 [Configura un'integrazione con la chat in Loomio](../chatbots/#set-up-a-chat-integration)

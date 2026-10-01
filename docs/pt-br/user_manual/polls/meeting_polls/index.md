@@ -1,6 +1,6 @@
 ---
 title: Enquete de horário
-source_revision: 9c60c42fc739483fa23f15d9f34a1e9245518092
+source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
 source_file: docs/en/user_manual/polls/meeting_polls/index.md
 translated:
   provider: codex/gpt-6.1-sol
@@ -11,19 +11,21 @@ sections:
   voting: c50083234167a0f9
   outcome: 74db36d36fa18798
 generated:
-  introduction: f7166b2b8fe94f5e
-  time-poll: 4d0c983df7c14378
-  voting: 28f589a981d617e7
-  outcome: 58dcb0d70023fa59
+  introduction: cb5b84872e0a0051
+  time-poll: 7b65b2d3bfe83ca2
+  voting: 72d10de2be075735
+  outcome: e793a81323222be4
 title_source: 8e2a07d7257fbc04
 title_generated: 04060d737aa295bd
+needs_review:
+  outcome: use "conclusão" instead of "resultado" for "outcome"
 ---
 
 <!-- translation-section: introduction -->
 
 # Enquete de horário
 
-Use uma **Enquete de horário** para encontrar um horário para uma reunião ou evento. Ela ajuda a organizar a agenda junto às outras atividades do grupo no Loomio, como ferramentas de agendamento como o Doodle. Os participantes veem as opções no próprio fuso horário.
+Use uma **Enquete de horário** para encontrar um horário para uma reunião ou evento. Ela tem a mesma finalidade que ferramentas de agendamento como o Doodle, mantendo o agendamento junto às outras atividades do grupo no Loomio. Os participantes veem as opções em seu próprio fuso horário.
 
 ![](meeting_polls.png)
 
@@ -31,17 +33,17 @@ Use uma **Enquete de horário** para encontrar um horário para uma reunião ou 
 
 ## Enquete de horário
 
-_Descubra quando as pessoas podem se reunir_
+_Descubra quando as pessoas estão disponíveis para se reunir_
 
-Economize tempo ao marcar sua reunião ou evento.
+Economize tempo ao definir uma data para sua reunião ou evento.
 
 ![](timepoll_label.png)
 
 A enquete de horário facilita a visualização da disponibilidade de todos e a escolha do melhor horário.
 
-Dê um título à sua enquete de horário e acrescente os detalhes. Informe as opções de data e horário no seu fuso horário.
+Dê um título à sua enquete de horário e adicione detalhes. Insira uma lista de opções de data e horário no seu fuso horário.
 
-Ao definir os horários, considere as pessoas em outros fusos horários. Cada participante verá os horários ajustados ao próprio fuso.
+Ao definir os horários, considere as pessoas em diferentes fusos horários. Os participantes verão os horários convertidos para seu próprio fuso horário.
 
 Defina a duração da reunião.
 
@@ -51,21 +53,21 @@ Defina a duração da reunião.
 
 ### Votação
 
-Para cada horário, as pessoas usam o ícone verde de polegar para cima quando estão disponíveis, o ícone amarelo de polegar de lado quando podem participar se necessário ou o ícone vermelho de polegar para baixo quando não estão disponíveis.
+As pessoas marcam cada horário com o ícone verde de polegar para cima quando estão disponíveis, o polegar amarelo de lado quando podem participar se necessário ou o ícone vermelho de polegar para baixo quando estão indisponíveis.
 
-Os participantes podem deixar um comentário explicando sua escolha para ajudar quem organiza a reunião a encontrar um horário adequado.
+Os participantes podem deixar um comentário com o motivo do voto para ajudar quem organiza a encontrar um horário adequado.
 
-Se nenhum horário funcionar, os participantes podem sugerir alternativas no campo de mensagem. Você pode então atualizar a enquete com novos horários.
+Se os horários não forem adequados, os participantes podem sugerir alternativas usando o campo de mensagem. Você pode então atualizar a enquete com novos horários.
 
 ![](timepoll_vote.png)
 
-Os resultados são atualizados conforme a votação avança. Uma tabela mostra quem está disponível em cada horário, para que todos vejam quais opções são mais populares.
+Os resultados são atualizados à medida que a votação avança, em uma tabela que mostra quem está disponível em cada horário, para que todos possam ver quais horários são mais populares.
 
 <!-- translation-section: outcome -->
 
-### Compartilhar uma conclusão
+### Compartilhe uma conclusão
 
-Quando a enquete de horário terminar, escolha o melhor horário e compartilhe uma conclusão. Consulte [Compartilhar uma conclusão](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome) para saber como as conclusões funcionam.
+Quando a enquete de horário for encerrada, escolha o melhor horário e compartilhe uma conclusão. Consulte [Compartilhe uma conclusão](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome) para saber como as conclusões funcionam.
 
 ![](timepoll_outcome.png)
 
@@ -73,10 +75,10 @@ Quando a enquete de horário terminar, escolha o melhor horário e compartilhe u
 
 **Horário da reunião**: Selecione o horário mais adequado
 
-**Nome da reunião**: Dê um nome à reunião. O título da enquete de horário é usado por padrão
+**Nome da reunião**: Dê um nome à sua reunião. O título da enquete de horário é usado por padrão
 
 **Localização**: Adicione um local físico ou um link para a reunião
 
-**Resultado**: Resuma a conclusão e acrescente as instruções para a reunião
+**Resultado**: Resuma o resultado e adicione as instruções para a reunião
 
-O Loomio inclui o horário selecionado, o nome da reunião, a duração, a localização e o resultado na notificação da conclusão e no convite de calendário.
+O Loomio inclui o horário selecionado, o nome da reunião, a duração, a localização e o texto do campo Resultado na notificação da conclusão e no convite de calendário.

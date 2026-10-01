@@ -1,6 +1,6 @@
 ---
 title: Ääniosuusvaatimukset
-source_revision: 9c60c42fc739483fa23f15d9f34a1e9245518092
+source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
 source_file: docs/en/user_manual/polls/vote_share_requirements/index.md
 translated:
   provider: codex/gpt-6.1-sol
@@ -11,10 +11,10 @@ sections:
   different-vote-share-requirements: cfdfd13a0a6a8b38
   detailed-example: 395dbccb0e6427fc
 generated:
-  introduction: c6375836afa2867f
-  eligible-voters-and-votes-cast: 00f56fe9161667e6
-  different-vote-share-requirements: da851b255793bf5e
-  detailed-example: '0428d2fc493422a4'
+  introduction: c10b52e202ae3194
+  eligible-voters-and-votes-cast: 21bd5da2dbae05e0
+  different-vote-share-requirements: 355553d529308add
+  detailed-example: c8bf82311c2e1fb4
 title_source: a654891ca817844e
 title_generated: 49e9c181193d6bed
 ---
@@ -25,54 +25,54 @@ title_generated: 49e9c181193d6bed
 
 Aseta vaihtoehdolle ääniosuusvaatimus, kun ehdotuksen hyväksyminen edellyttää tiettyä kannatusprosenttia tai sitä, että vastustus jää tietyn prosenttiosuuden alle.
 
-Voit yhdistää ääniosuusvaatimuksen [päätösvaltaisuusvaatimukseen](/en/user_manual/polls/quorum/), jolloin ehdotuksen hyväksyminen edellyttää sekä riittävää osallistumista että tiettyä äänten jakautumista.
+Ääniosuusvaatimukset voi yhdistää [päätösvaltaisuuteen](/en/user_manual/polls/quorum/), jolloin vaaditaan sekä riittävää osallistumista että tiettyä äänten jakaumaa.
 
 Valitse ehdotuslomakkeessa vaihtoehdon vieressä oleva muokkauskuvake.
 
-![Samaa mieltä -vaihtoehdon vieressä oleva muokkauskuvake](edit-highlight-on-option.png)
+![Muokkauskuvake Samaa mieltä -vaihtoehdon vieressä](edit-highlight-on-option.png)
 
 <!-- translation-section: eligible-voters-and-votes-cast -->
 
 ## Äänestäjäoikeutetut ja annetut äänet
 
-Prosenttiosuuden perusteeksi voit valita joko **Annetut äänet** tai **Äänestäjäoikeutetut**.
+Prosenttiosuus voi perustua joko **Annettuihin ääniin** tai **Äänestäjäoikeutettuihin**.
 
-![Valinta, lasketaanko ääniosuusvaatimus annetuista äänistä vai äänestäjäoikeutetuista](./eligible-vs-cast.png)
+![Valinta, perustuuko ääniosuusvaatimus annettuihin ääniin vai äänestäjäoikeutettuihin](./eligible-vs-cast.png)
 
-**Äänestäjäoikeutetut** tarkoittaa kaikkia, jotka voivat äänestää ehdotuksessa. **Annetut äänet** tarkoittaa vain lähetettyjä ääniä.
+**Äänestäjäoikeutetut** tarkoittaa kaikkia, jotka voivat äänestää ehdotuksessa. **Annetut äänet** tarkoittaa vain jo annettuja ääniä.
 
-Jos vaatimus on 75 prosenttia äänestäjäoikeutetuista, ehdotus voidaan hyväksyä vain, kun vähintään 75 prosenttia kaikista äänestäjäoikeutetuista äänestää kyseisen vaihtoehdon puolesta.
+Vaatimus, jonka mukaan 75 prosentin äänestäjäoikeutetuista on oltava samaa mieltä, voi täyttyä vain, kun vähintään 75 prosenttia kaikista äänestäjäoikeutetuista äänestää kyseistä vaihtoehtoa.
 
-Jos vaatimus on 60 prosenttia annetuista äänistä, ehdotus voidaan hyväksyä, kun 60 prosenttia lähetetyistä äänistä kannattaa vaihtoehtoa, vaikka kaikki äänestäjäoikeutetut eivät äänestäisi. Lisää päätösvaltaisuusvaatimus, jos prosessisi edellyttää myös osallistumisen vähimmäistasoa.
+Vaatimus, jonka mukaan 60 prosentin annetuista äänistä on tuettava vaihtoehtoa, voi täyttyä osallistumisasteesta riippumatta. Lisää päätösvaltaisuusvaatimus, jos toimintatapasi edellyttää myös tiettyä vähimmäisosallistumista.
 
 <!-- translation-section: different-vote-share-requirements -->
 
-## Useita ääniosuusvaatimuksia
+## Erilaiset ääniosuusvaatimukset
 
-Voit asettaa vaatimuksia ehdotuksen useammalle vaihtoehdolle. Esimerkiksi:
+Ehdotuksessa voi olla vaatimuksia usealle vaihtoehdolle. Esimerkiksi:
 
-- Kannatuksen on oltava vähintään 75 prosenttia äänestäjäoikeutetuista
-- Äänestämisestä pidättäytyvien osuus saa olla enintään 30 prosenttia annetuista äänistä
-- Ehdotuksen estävien äänten osuus saa olla enintään 0 prosenttia annetuista äänistä
+- Samaa mieltä on oltava vähintään 75 prosenttia äänestäjäoikeutetuista
+- Tyhjiä ääniä saa olla enintään 30 prosenttia annetuista äänistä
+- Vetoääniä saa olla enintään 0 prosenttia annetuista äänistä
 
-Vaihtoehdon vaatimukseksi asetetaan usein **Enintään 0%**. Se tarkoittaa, ettei ehdotusta voida hyväksyä, jos joku valitsee kyseisen vaihtoehdon. Käytä tätä vaatimusta **Lohko**-vaihtoehdossa, jotta yksikin estävä ääni estää ehdotuksen hyväksymisen.
+Vaihtoehdon asettaminen arvoon **Enintään 0 %** on yleinen käytäntö. Se tarkoittaa, ettei ehdotusta voi hyväksyä, jos yksikin henkilö valitsee kyseisen vaihtoehdon. Käytä tätä **Veto**-vaihtoehdossa, jotta yksikin veto estää ehdotuksen hyväksymisen.
 
-Voit lisätä vaatimukset myös [kyselymalliin](/en/user_manual/polls/poll_templates/), jolloin mallista luodut uudet ehdotukset käyttävät niitä oletusarvoisesti.
+Voit lisätä vaatimuksia myös [kyselymalliin](/en/user_manual/polls/poll_templates/), jolloin mallista luodut uudet ehdotukset käyttävät niitä oletusarvoisesti.
 
 <!-- translation-section: detailed-example -->
 
 ## Yksityiskohtainen esimerkki
 
-Oatmilk-osuuskunta päättää, toteuttaako se kuuden viikon palautuspullokokeilun. Viidellä henkilöllä on äänioikeus.
+Oatmilk-osuuskunta päättää, kokeileeko se palautettavia pulloja kuuden viikon ajan. Viidellä henkilöllä on äänestysoikeus.
 
-Osuuskunnan prosessi edellyttää, että vähintään 75 prosenttia äänestäjäoikeutetuista kannattaa ehdotusta. Jamie muokkaa ehdotuksen **Samaa mieltä** -vaihtoehtoa, ottaa sen ääniosuusvaatimuksen käyttöön ja asettaa vaatimukseksi **Vähintään 75% äänestäjäoikeutetuista**.
+Osuuskunnan toimintatapa edellyttää, että vähintään 75 prosenttia äänestäjäoikeutetuista on samaa mieltä. Jamie muokkaa ehdotuksen **Samaa mieltä** -vaihtoehtoa, ottaa sen ääniosuusvaatimuksen käyttöön ja asettaa sen arvoon **Vähintään 75 % äänestäjäoikeutetuista**.
 
-![Samaa mieltä -vaihtoehto, jota vähintään 75 prosentin äänestäjäoikeutetuista on kannatettava](./agree-vote-option.png)
+![Samaa mieltä -vaihtoehto, joka edellyttää vähintään 75 prosentin kannatusta äänestäjäoikeutetuilta](./agree-vote-option.png)
 
-Jamie asettaa myös 60 prosentin päätösvaltaisuusvaatimuksen. Jamie ja Samira äänestävät ehdotuksen puolesta. Kaikki annetut äänet kannattavat ehdotusta, mutta ne edustavat vain 40 prosenttia äänestäjäoikeutetuista. Kumpikaan vaatimus ei siis täyty.
+Jamie asettaa myös 60 prosentin päätösvaltaisuusvaatimuksen. Jamie ja Samira äänestävät Samaa mieltä -vaihtoehtoa. Kaikki annetut äänet tukevat ehdotusta, mutta ne edustavat vain 40 prosenttia äänestäjäoikeutetuista, joten kumpikaan vaatimus ei täyty.
 
-![Kaksi viidestä henkilöstä on äänestänyt ehdotuksen puolesta, eikä kumpikaan vaatimus täyty](./first-vote-breakdown.png)
+![Kaksi viidestä henkilöstä on äänestänyt Samaa mieltä -vaihtoehtoa, eikä kumpikaan vaatimus täyty](./first-vote-breakdown.png)
 
-Sen jälkeen Alex ja Morgan äänestävät ehdotuksen puolesta ja Taylor sitä vastaan. Kaikki viisi ovat nyt äänestäneet, joten päätösvaltaisuusvaatimus täyttyy. Neljä viidestä äänestäjäoikeutetusta kannattaa ehdotusta. Kannatus on 80 prosenttia, mikä ylittää 75 prosentin ääniosuusvaatimuksen. Molempien vaatimusten kohdalla näkyy vihreä valintamerkki.
+Seuraavaksi Alex ja Morgan äänestävät Samaa mieltä -vaihtoehtoa ja Taylor Eri mieltä -vaihtoehtoa. Kaikki viisi henkilöä ovat äänestäneet, joten päätösvaltaisuusvaatimus täyttyy, ja neljä viidestä äänestäjäoikeutetusta on samaa mieltä. 80 prosentin kannatus ylittää 75 prosentin ääniosuusvaatimuksen, joten kummankin vaatimuksen kohdalla näkyy vihreä valintamerkki.
 
 ![Kaikki viisi henkilöä ovat äänestäneet, ja molemmat vaatimukset täyttyvät](./final-vote-breakdown.png)

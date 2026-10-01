@@ -1,14 +1,14 @@
 ---
 title: Slack
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/integrations/slack/index.md
+source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
+source_file: docs/en/user_manual/integrations/slack/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-30'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 4eb9618f0efb62d7
 generated:
-  introduction: 646d9679866ae699
+  introduction: e3d06728a1b42c30
 title_source: b27fb38ba323745c
 title_generated: b27fb38ba323745c
 ---
@@ -18,11 +18,11 @@ title_generated: b27fb38ba323745c
 # Slack-integráció
 _Kapcsold össze a Loomio-csoportod értesítéseit a Slackkel._
 
-A Loomio értesítéseket küldhet a Slack-csatornáidba az új beszélgetésekről, javaslatokról, hozzászólásokról, szavazatokról és következtetésekről. Így időben értesülhetsz a fontos beszélgetések és döntések fejleményeiről.
+A Loomio értesítéseket küldhet a Slack-csatornáidba új beszélgetésekről, javaslatokról, hozzászólásokról, szavazatokról és következtetésekről. Kapj időben tájékoztatást a fontos beszélgetésekről és döntésekről.
 
 ---
 
-Először nyisd meg a [https://api.slack.com](https://api.slack.com) oldalt, jelentkezz be, ha még nem tetted meg, majd kattints a Create New App gombra
+Először látogass el a [https://api.slack.com](https://api.slack.com) oldalra, jelentkezz be, ha még nem tetted meg, majd kattints a Create New App (Új alkalmazás létrehozása) lehetőségre
 
 ![](s1.png)
 
@@ -50,8 +50,8 @@ Másold a webhook URL-jét a vágólapra
 
 ![](s7.png)
 
-Ha megvan a webhook URL-je, folytasd a chatintegráció beállítását:
+Most, hogy megvan a webhook URL-je, folytasd a csevegőintegráció beállítását:
 
-[Chatintegráció beállítása a Loomióban](../chatbots/#set-up-a-chat-integration)
+[Csevegőintegráció beállítása a Loomióban](../chatbots/#set-up-a-chat-integration)
 
-_A Loomiót nem a Slack hozta létre, és a Slack nem áll kapcsolatban vele, illetve nem támogatja._
+_A Loomiót nem a Slack készíti, nem áll kapcsolatban a Slackkel, és a Slack nem nyújt hozzá támogatást._

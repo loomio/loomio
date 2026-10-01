@@ -1,6 +1,6 @@
 ---
 title: Szavazati arányra vonatkozó követelmények
-source_revision: 9c60c42fc739483fa23f15d9f34a1e9245518092
+source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
 source_file: docs/en/user_manual/polls/vote_share_requirements/index.md
 translated:
   provider: codex/gpt-6.1-sol
@@ -11,10 +11,10 @@ sections:
   different-vote-share-requirements: cfdfd13a0a6a8b38
   detailed-example: 395dbccb0e6427fc
 generated:
-  introduction: a033bf0acbdea486
-  eligible-voters-and-votes-cast: 2d01bc7655195e4f
-  different-vote-share-requirements: 282001c229690c9e
-  detailed-example: 1f15a1144c4e971e
+  introduction: dd647f06e3600784
+  eligible-voters-and-votes-cast: 5933f0fc011fa890
+  different-vote-share-requirements: '09b534e644fda4c0'
+  detailed-example: c5d02cc747af70bb
 title_source: a654891ca817844e
 title_generated: 899d1458530748ec
 ---
@@ -23,56 +23,56 @@ title_generated: 899d1458530748ec
 
 # Szavazati arányra vonatkozó követelmények
 
-Állíts be szavazati arányra vonatkozó követelményt egy lehetőségnél, ha a javaslat elfogadásához a támogatásnak el kell érnie egy meghatározott százalékot, vagy az ellenző szavazatok arányának egy meghatározott százalék alatt kell maradnia.
+Állíts be egy lehetőséghez szavazati arányra vonatkozó követelményt, ha a javaslat elfogadásához meghatározott százalékú támogatás szükséges, vagy az ellenző szavazatok arányának egy meghatározott százalék alatt kell maradnia.
 
-A szavazati arányra vonatkozó követelményt [részvételi küszöbbel](/en/user_manual/polls/quorum/) is kombinálhatod. Így a javaslat elfogadásához elegendő részvétel és megfelelő szavazati arány is szükséges.
+A szavazati arányra vonatkozó követelményeket [határozatképességi küszöbbel](/en/user_manual/polls/quorum/) is kombinálhatod, hogy elegendő részvételre és a szavazatok meghatározott megoszlására is szükség legyen.
 
-A javaslat űrlapján kattints az egyik lehetőség melletti szerkesztés ikonra.
+A javaslat űrlapján válaszd ki az egyik lehetőség melletti szerkesztés ikont.
 
-![A szerkesztés ikon az Egyetért lehetőség mellett](edit-highlight-on-option.png)
+![A szerkesztés ikon az Egyetértek lehetőség mellett](edit-highlight-on-option.png)
 
 <!-- translation-section: eligible-voters-and-votes-cast -->
 
 ## Jogosult szavazók és leadott szavazatok
 
-A százalékot a **Leadott szavazatok** vagy a **Jogosult szavazók** alapján számíthatod.
+A százalék alapja a **Leadott szavazatok** vagy a **Jogosult szavazók** száma lehet.
 
-![Annak kiválasztása, hogy a szavazati arányra vonatkozó követelmény a leadott szavazatokon vagy a jogosult szavazókon alapuljon](./eligible-vs-cast.png)
+![Annak kiválasztása, hogy a szavazati arányra vonatkozó követelmény alapja a leadott szavazatok vagy a jogosult szavazók száma legyen](./eligible-vs-cast.png)
 
-A **Jogosult szavazók** a javaslatban szavazásra jogosult összes embert jelenti. A **Leadott szavazatok** csak a beküldött szavazatokat jelenti.
+A **Jogosult szavazók** közé mindenki beletartozik, aki szavazhat a javaslatról. A **Leadott szavazatok** csak a már beküldött szavazatokat jelentik.
 
-Ha a követelmény a jogosult szavazók legalább 75 százalékának egyetértése, az csak akkor teljesülhet, ha az összes jogosult szavazó legalább 75 százaléka erre a lehetőségre szavaz.
+Ha a követelmény a jogosult szavazók 75 százalékának egyetértése, a javaslat csak akkor fogadható el, ha az összes jogosult szavazó legalább 75 százaléka erre a lehetőségre szavaz.
 
-Ha a követelmény a leadott szavazatok legalább 60 százalékának egyetértése, az akkor is teljesülhet, ha nem mindenki szavaz, feltéve hogy a beküldött szavazatok 60 százaléka támogatja a lehetőséget. Állíts be részvételi küszöböt is, ha a folyamatod minimális részvételt ír elő.
+Ha a követelmény a leadott szavazatok 60 százalékának egyetértése, a javaslat akkor fogadható el, ha a beküldött szavazatok 60 százaléka támogatja a lehetőséget, a teljes részvételi aránytól függetlenül. Állíts be határozatképességi küszöböt, ha a folyamatotok minimális részvételi arányt is megkövetel.
 
 <!-- translation-section: different-vote-share-requirements -->
 
-## Többféle szavazati arányra vonatkozó követelmény
+## Különböző szavazati arányra vonatkozó követelmények
 
-Egy javaslat több lehetőségéhez is beállíthatsz követelményt. Például:
+Egy javaslat több lehetőségéhez is tartozhat követelmény. Például:
 
-- Az egyetértők aránya érje el a jogosult szavazók legalább 75 százalékát
-- A Tartózkodik lehetőségre leadott szavazatok aránya legfeljebb a leadott szavazatok 30 százaléka lehet
-- A Tiltakozás lehetőségre leadott szavazatok aránya legfeljebb a leadott szavazatok 0 százaléka lehet
+- Az egyetértő szavazatok arányának el kell érnie a jogosult szavazók 75 százalékát
+- A tartózkodó szavazatok aránya legfeljebb a leadott szavazatok 30 százaléka lehet
+- A vétók aránya legfeljebb a leadott szavazatok 0 százaléka lehet
 
-Gyakori beállítás a **Legfeljebb 0%** követelmény. Ez azt jelenti, hogy a javaslat nem fogadható el, ha bárki ezt a lehetőséget választja. Használd a **Tiltakozás** lehetőségnél, hogy egyetlen tiltakozás is megakadályozza a javaslat elfogadását.
+Gyakori beállítás a **Legfeljebb 0%** követelmény használata egy lehetőségnél. Ez azt jelenti, hogy a javaslat nem fogadható el, ha bárki ezt a lehetőséget választja. Használd a **Vétózom** lehetőségnél, hogy egyetlen vétó is megakadályozza a javaslat elfogadását.
 
-A követelményeket [szavazássablonhoz](/en/user_manual/polls/poll_templates/) is hozzáadhatod. Így a sablonból létrehozott új javaslatok alapértelmezés szerint használják őket.
+Egy [szavazási sablonhoz](/en/user_manual/polls/poll_templates/) is hozzáadhatsz követelményeket, így a sablonból létrehozott új javaslatok alapértelmezetten ezeket használják.
 
 <!-- translation-section: detailed-example -->
 
 ## Részletes példa
 
-A Zabtej Szövetkezet arról dönt, hogy indítson-e hathetes próbaidőszakot a visszaváltható palackok használatára. Öten jogosultak szavazni.
+Az Oatmilk Cooperative arról dönt, hogy hat héten át kipróbálja-e a visszaváltható palackok használatát. Öt ember jogosult szavazni.
 
-A szövetkezet szabályai szerint a jogosult szavazók legalább 75 százalékának egyet kell értenie. Jamie szerkeszti a javaslat **Egyetért** lehetőségét, bekapcsolja a szavazati arányra vonatkozó követelményt, és **Legalább 75% a Jogosult szavazókból** értékre állítja.
+A szövetkezet döntési folyamata a jogosult szavazók legalább 75 százalékának egyetértését követeli meg. Jamie szerkeszti a javaslat **Egyetért** lehetőségét, bekapcsolja a szavazati arányra vonatkozó követelményt, és **A Jogosult szavazók legalább 75%-a** értékre állítja.
 
-![Az Egyetért lehetőséghez a jogosult szavazók legalább 75 százalékának támogatása szükséges](./agree-vote-option.png)
+![Az Egyetértek lehetőség, amelyhez a jogosult szavazók legalább 75 százalékának támogatása szükséges](./agree-vote-option.png)
 
-Jamie 60 százalékos részvételi küszöböt is beállít. Jamie és Samira az Egyetért lehetőségre szavaz. Minden leadott szavazat támogatja a javaslatot, de ez a jogosult szavazók mindössze 40 százalékát jelenti, így egyik követelmény sem teljesül.
+Jamie 60 százalékos határozatképességi küszöböt is beállít. Jamie és Samira egyetértő szavazatot ad le. Minden beküldött szavazat támogatja a javaslatot, de ezek a jogosult szavazók mindössze 40 százalékát képviselik, így egyik követelmény sem teljesült.
 
-![Ötből ketten szavaztak az Egyetért lehetőségre, és egyik követelmény sem teljesül](./first-vote-breakdown.png)
+![Öt emberből ketten adtak le egyetértő szavazatot, és egyik követelmény sem teljesült](./first-vote-breakdown.png)
 
-Ezután Alex és Morgan az Egyetért, Taylor pedig a Nem ért egyet lehetőségre szavaz. Mind az öten szavaztak, így teljesül a részvételi küszöb. Az öt jogosult szavazóból négyen egyetértenek. A 80 százalékos egyetértés meghaladja a 75 százalékos követelményt, ezért mindkét követelménynél zöld pipa jelenik meg.
+Ezután Alex és Morgan egyetértő, Taylor pedig ellenző szavazatot ad le. Mind az öt ember szavazott, így teljesült a határozatképességi követelmény, és az öt jogosult szavazóból négy egyetért. A 80 százalékos egyetértési arány meghaladja az előírt 75 százalékos szavazati arányt, ezért mindkét követelmény mellett zöld pipa jelenik meg.
 
-![Mind az öten szavaztak, és mindkét követelmény teljesül](./final-vote-breakdown.png)
+![Mind az öt ember szavazott, és mindkét követelmény teljesült](./final-vote-breakdown.png)

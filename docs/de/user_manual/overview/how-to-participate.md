@@ -1,10 +1,10 @@
 ---
 title: So beteiligst du dich
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/overview/how-to-participate.md
+source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
+source_file: docs/en/user_manual/overview/how-to-participate.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 4337bfc044fc30d1
   comment: 66cebed9d4121cb8
@@ -17,35 +17,41 @@ sections:
   results: 6fe0d5a60acc75eb
   outcome: 8cb16ab9afb55fb8
 generated:
-  introduction: 5c525c2f47b6e2ce
-  comment: b0c659c51fad2c2a
-  reply-to-a-comment: e76edbb7664bf389
-  get-someone-s-attention: ada32873d1c900b5
-  reactions: 44b13de267419c9e
-  vote: 922184b6f56c4bad
-  state-a-reason: 12dd7b29b0c29066
-  change-your-vote: 8248ffff8810584a
-  results: 901a9c1bfd869ef6
-  outcome: 543d4ff788199e6d
+  introduction: a3bb9f2a69d84f15
+  comment: 36aea6ab2ef0a874
+  reply-to-a-comment: 481c1d23f31a8290
+  get-someone-s-attention: 28e4fb0f2d05ff9e
+  reactions: 5dbbb4eb7139340a
+  vote: ec211bd10bedcb0f
+  state-a-reason: e328cfa3326db25d
+  change-your-vote: ab50a6dc8e10f498
+  results: 37f0042c4804b784
+  outcome: 6e499e1c3ad4c258
 title_source: a7854841fbd99ee4
 title_generated: cdcf5e524629f63b
+needs_review:
+  introduction: use "Entscheidung" instead of "Abstimmung" for "decision"; use "Stimme" instead of "Abstimmung" for "vote"
+  vote: use "Stimme" instead of "Abstimmung" for "vote"
+  change-your-vote: use "Entscheidung" instead of "Abstimmung" for "decision"; use "Stimme" instead of "Abstimmung" for "vote"
+  results: use "Stimme" instead of "Abstimmung" for "vote"
+  outcome: use "Entscheidung" instead of "Abstimmung" for "decision"
 ---
 
 <!-- translation-section: introduction -->
 
 # So beteiligst du dich
 
-Wenn du dich bei einer Loomio-Gruppe angemeldet hast, zu der du eingeladen wurdest, kannst du dich an Diskussionen und Entscheidungen beteiligen.
+Sobald du dich in einer Loomio-Gruppe angemeldet hast, zu der du eingeladen wurdest, kannst du dich an einer Diskussion oder Entscheidung in Loomio beteiligen.  
 
-Hier erfährst du, wie du einen Kommentar in einer Diskussion schreibst und bei einer Abstimmung abstimmst.
+Hier erfährst du, wie du einen Kommentar in einem Thread schreibst und deine Stimme in einer Abstimmung abgibst.
 
 <!-- translation-section: comment -->
 
-## Kommentieren
+## Kommentar
 
-Du kannst in einer Diskussion einen Kommentar schreiben. Andere können darauf antworten, mit einer Reaktion reagieren oder einen eigenen Kommentar schreiben und so die Diskussion fortsetzen.
+Du kannst einen Kommentar in einem Thread schreiben. Andere können darauf antworten, reagieren oder einen eigenen Kommentar schreiben, um die Diskussion fortzusetzen.
 
-Wenn du deinen Text geschrieben hast, veröffentliche ihn mit **Kommentar abschicken**. Dein Kommentar ist für alle sichtbar, die Zugriff auf die Diskussion haben.
+Wenn du deinen Text geschrieben hast, klicke auf **Kommentar veröffentlichen**, um den Kommentar sofort zu veröffentlichen. Dein Kommentar ist für alle sichtbar, die den Thread sehen dürfen.
 
 ![](comment_add.png#width-90)
 
@@ -53,17 +59,17 @@ Wenn du deinen Text geschrieben hast, veröffentliche ihn mit **Kommentar abschi
 
 ### Auf einen Kommentar antworten
 
-Klicke auf das Antwortsymbol unter einem Kommentar, um darauf zu antworten.
+Du kannst auf einen Kommentar antworten, indem du auf das Antwortsymbol unter dem Kommentar klickst.
 
-Deine Antwort erscheint in der Diskussion. Die Person, die den Kommentar geschrieben hat, erhält eine E-Mail-Benachrichtigung.
+Deine Antwort wird im Thread veröffentlicht. Die Person, die den Kommentar geschrieben hat, erhält eine Benachrichtigung per E-Mail.
 
 ![](comment_reply.png#width-90)
 
 <!-- translation-section: get-someone-s-attention -->
 
-### Jemanden benachrichtigen
+### Jemanden aufmerksam machen
 
-Wenn du einen Kommentar schreibst, kannst du andere Personen benachrichtigen.
+Du kannst Personen benachrichtigen, wenn du einen Kommentar schreibst.
 
 ![](comment_mention.png#width-90)
 
@@ -71,21 +77,21 @@ Wenn du einen Kommentar schreibst, kannst du andere Personen benachrichtigen.
 
 ### Reaktionen
 
-Mit einer Reaktion kannst du zeigen, wie du einen Kommentar findest, und der Person, die ihn geschrieben hat, eine Rückmeldung geben. Du brauchst dafür keinen Text zu schreiben, und es wird keine E-Mail versendet. Klicke auf das Smiley-Symbol unter einem Kommentar, um mit einem Emoji zu reagieren.
+Mit einer Reaktion auf einen Kommentar kannst du Anerkennung ausdrücken und der Person, die ihn geschrieben hat, zeigen, wie du dazu stehst. So kannst du dich schnell und unkompliziert beteiligen, ohne Text zu schreiben oder eine E-Mail auszulösen. Klicke auf das lächelnde Emoji-Symbol unter einem Kommentar, um eine Emoji-Reaktion hinzuzufügen.
 
 ![](comment_reaction.png#width-90)
 
 <!-- translation-section: vote -->
 
-## Abstimmen
+## Stimme abgeben
 
-Du kannst per E-Mail oder über eine Benachrichtigung in Loomio eingeladen werden, an einer Abstimmung teilzunehmen. Klicke auf den Link in der E-Mail, um abzustimmen.
+Du kannst per E-Mail oder über eine Benachrichtigung in Loomio eine Einladung erhalten, deine Stimme in einer Abstimmung abzugeben. Klicke auf den Link in der E-Mail, um deine Stimme abzugeben.
 
-Klicke oder tippe auf das Symbol für die gewünschte Option, um abzustimmen.
+Klicke oder tippe auf das Symbol deiner Wahl, um deine Stimme abzugeben.
 
-Es gibt verschiedene Arten von Abstimmungen. Das folgende Beispiel zeigt einen typischen Vorschlag mit den Optionen **Dafür**, **Enthaltung** und **Dagegen**. Bei anderen Abstimmungen können weitere Optionen verfügbar sein.
+Es gibt verschiedene Arten von Abstimmungen. Das folgende Beispiel zeigt einen typischen Vorschlag mit den Optionen **Zustimmung**, **Enthaltung** oder **Widerspruch**. Es können weitere Optionen verfügbar sein.
 
-Lies die Abstimmung und alle angehängten Dateien. Wähle dann eine Option, um deine Stimme abzugeben.
+Lies die Abstimmung und alle angehängten Dateien. Gib dann deine Stimme ab, indem du eine der Optionen auswählst.
 
 ![](proposal_example.png#width-90)
 
@@ -93,7 +99,7 @@ Lies die Abstimmung und alle angehängten Dateien. Wähle dann eine Option, um d
 
 ### Eine Begründung angeben
 
-Beim Abstimmen kannst du unter **Begründung** erklären, warum du dich so entschieden hast. Das ist freiwillig.
+Beim Abstimmen kannst du auch eine **Begründung** angeben, um zu erklären, warum du so abgestimmt hast. Das ist optional.
 
 ![](vote_reason.png#width-90)
 
@@ -101,34 +107,34 @@ Beim Abstimmen kannst du unter **Begründung** erklären, warum du dich so entsc
 
 ### Deine Stimme ändern
 
-Du kannst **deine Stimme ändern**, bis der Vorschlag geschlossen wird.
+Du kannst **deine Stimme ändern**, bis die Abstimmung über den Vorschlag beendet ist.
 
 ![](vote_change.png#width-90)
 
-Dafür kann es viele Gründe geben. Neue Informationen können dich zum Beispiel dazu bringen, deine Entscheidung zu überdenken und deine Stimme zu ändern.
+Es gibt viele Gründe, warum du deine Stimme ändern möchtest. Neue Informationen können dich zum Beispiel dazu bringen, deine Entscheidung zu überdenken und deine Stimme zu ändern.
 
-Du kannst erneut eine Begründung angeben und erklären, warum du deine Stimme geändert hast.
+Du kannst erneut eine Begründung angeben, um zu erklären, warum du deine Stimme geändert hast.
 
 ![](vote_edit.png#width-90)
 
 <!-- translation-section: results -->
 
-### Ergebnisse
+### Ergebnis
 
-Die Abstimmungsergebnisse werden laufend aktualisiert. So kannst du sehen, wie sich die Stimmen für den Vorschlag entwickeln.
+Das Ergebnis des Vorschlags wird aktualisiert, sobald Stimmen abgegeben werden. So kannst du sehen, wie sich die Zustimmung zum Vorschlag entwickelt.
 
 ![](proposal_results.png#width-90)
 
-Bei einem umstrittenen Vorschlag sind gemischte Ergebnisse üblich. Das bedeutet nicht, dass der Vorschlag gescheitert ist.
+Bei einem umstrittenen Vorschlag sind gemischte Ergebnisse üblich. Das bedeutet jedoch nicht, dass der Vorschlag gescheitert ist.  
 
-Oft helfen neue Informationen aus der Abstimmung dabei, einen besseren Vorschlag zu formulieren, der mehr Zustimmung findet.
+Neue Informationen, die während der Abstimmung über den Vorschlag bekannt werden, helfen oft dabei, einen besseren Vorschlag zu entwickeln, der eher angenommen wird.
 
 <!-- translation-section: outcome -->
 
 ### Fazit
 
-Wenn der Vorschlag geschlossen wird, wird die Person, die ihn erstellt hat, aufgefordert, das **Fazit** festzuhalten.
+Wenn die Abstimmung über den Vorschlag beendet ist, wird die Person, die ihn erstellt hat, aufgefordert, das **Fazit** zu formulieren.
 
-Dieser letzte Schritt hält das Ergebnis der Entscheidung fest und informiert alle darüber, wie es weitergeht.
+Dieser wichtige letzte Schritt hält fest, welche Entscheidung getroffen wurde, und informiert alle darüber, was als Nächstes geschieht.
 
 ![](proposal_outcome.png#width-90)

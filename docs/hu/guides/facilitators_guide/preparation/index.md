@@ -1,10 +1,10 @@
 ---
 title: Felkészülés
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/guides/facilitators_guide/preparation/index.md
+source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
+source_file: docs/en/guides/facilitators_guide/preparation/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-30'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 71d321ba45b2f805
   understand-purpose: a5a6600eac7b2d16
@@ -18,17 +18,17 @@ sections:
   power: b5f6b4ebd477c97c
   responsiveness: 4038185f64c37fac
 generated:
-  introduction: 9da91d43d99f4219
-  understand-purpose: 285e4f75e15f172c
-  rearrange-the-furniture: 2b6fc94f1d56f242
-  supplies-tools-materials: 2c2f1c25f6278d11
-  design-the-experience: b0f1a79d066a152e
-  contextualise-the-moment: 8ea8ff8c1f607c85
-  the-role-of-the-facilitator: 5ac401e091dfee77
-  consent: f5c6b60badc93302
-  responsibility: d298a40e93d522c2
-  power: 66eef34b4fa4496f
-  responsiveness: 224822ebde2b2376
+  introduction: 0740d60fa996a647
+  understand-purpose: 691ff40ddc47e1ed
+  rearrange-the-furniture: 4bb3eee5432c2511
+  supplies-tools-materials: '035050964803308f'
+  design-the-experience: 5955419606725d1c
+  contextualise-the-moment: '09b5139f45c8a7dd'
+  the-role-of-the-facilitator: 7045bbcf99f413fc
+  consent: e4afa029d164d71c
+  responsibility: dc4eeff275934f61
+  power: 1f768e030b821ee1
+  responsiveness: 2c0558b7bd4ac96f
 title_source: cf2befb0f1a62829
 title_generated: f85647de4205e8e9
 ---
@@ -39,122 +39,125 @@ title_generated: f85647de4205e8e9
 
 ![](cover.jpg)
 
-> <img style="border-radius: 100%; float: right; margin-left: 0.5em; max-width: 96px; " src="../silvia_200.png"> Minden, a csoporttal töltött percre számolj három perc tervezést. Ez egy egyórás alkalomhoz három óra felkészülést jelent. Ahogy fejlődsz, fokozatosan kevesebb időt kell tervezésre fordítanod.
+> <img style="border-radius: 100%; float: right; margin-left: 0.5em; max-width: 96px; " src="../silvia_200.png"> A csoporttal töltött minden percre tervezz 3 perc felkészülést. Ez egy egyórás alkalomhoz három óra felkészülést jelent. Csak akkor csökkentsd a tervezésre szánt időt, amikor már több gyakorlatot szereztél.
 >
 > — Silvia Zuur
 
 <!-- translation-section: understand-purpose -->
 
-## Tisztázd a célt
+## Értsd meg a célt
 
-Egy tapasztalt facilitátor egyik legértékesebb hozzájárulása a cél tisztázása. Ha ebben segít a csoportnak, a többi kérdéssel is könnyebb foglalkozni. A célnak a csoport egésze és az egyes beszélgetések vagy döntések szintjén is jelentősége van. Ez alapján lehet eldönteni, milyen eszközöket használjatok, mikor avatkozzatok be, és milyen eredményre törekedjetek. Ha nincs közös értelmezés a célról, az a beszélgetést vagy akár a csoport működését is meghiúsíthatja.
+A cél tisztázása az egyik legértékesebb segítség, amit egy felkészült facilitátor nyújthat — ha ebben segít a csoportnak, minden más is lehetővé válik. A cél a csoport egészének szintjén és az egyes beszélgetések, döntések szintjén is fontos. A cél alapján lehet eldönteni, milyen eszközöket használjunk, hogyan avatkozzunk be, és milyen következtetésekre törekedjünk. Ha nincs közös értelmezés a célról, az a beszélgetés vagy akár a csoport működését is ellehetetlenítheti.
 
-> Térj vissza rendszeresen a cél tisztázását segítő kérdésekhez. Így ellenőrizheted, hogy foglalkoztok-e azzal, amit a résztvevők meg szeretnének tanulni vagy el szeretnének érni. — Silvia Zuur
+> Mindig térj vissza a cél feltárását segítő kérdéseidhez, hogy ellenőrizd: foglalkoztok-e azzal, amit a résztvevők tanulni vagy elérni szeretnének. — Silvia Zuur
 
 A Loomióban
 
-* Az alkalmazásban több helyen is megfogalmazhatjátok a célt, például a [csoport leírásában](/en/user_manual/groups/starting_a_group/#group-description) és a [beszélgetés kontextusában](/en/user_manual/discussions/using_discussions/#discussion-context).
-* Ha a cél még nem világos, érdemes egy Loomio-beszélgetést indítani *magáról* a célról.
-* A használati statisztikáink szerint az egyértelmű, közös céllal rendelkező csoportok sikeresebbek.
-* Az összegyűjtött [ügyféltörténetek és esettanulmányok](https://blog.loomio.com/?utm_campaign=facilitators_guide_help&utm_term=help) is hangsúlyozzák a közös cél meghatározásának fontosságát.
+* Az alkalmazásban több helyen is kifejtheted a célt, például a [csoport leírásában](/en/user_manual/groups/starting_a_group/#group-description) és a [beszélgetés leírásában](/en/user_manual/discussions/using_discussions/#discussion-context).
+* Ha a cél még nem világos, jó kiindulópont lehet egy Loomio-beszélgetés *a célról* a csoportoddal.
+* Elemzéseink (a szoftver használatáról gyűjtött statisztikák) szerint a világos, közös céllal rendelkező csoportok sikeresebbek.
+* Az általunk összegyűjtött [ügyféltörténetek és esettanulmányok](https://blog.loomio.com/?utm_campaign=facilitators_guide_help&utm_term=help) is hangsúlyozzák a közös cél meghatározásának fontosságát.
 
 <!-- translation-section: rearrange-the-furniture -->
 
-## Rendezd át a teret
+## Rendezd át a bútorokat
 
-A tér kialakítása nagyban befolyásolja a meghívottak élményét. Minden találkozó más, ezért a teret is az alkalomhoz érdemes igazítani. Az ismerős környezet biztonságérzetet adhat, a változás pedig nyitottságra ösztönözhet az új ötletek iránt.
+Annak a térnek a kialakítása, ahová meghívod az embereket, nagyban befolyásolja az élményüket. Minden találkozó egyedi, és hozzá illő elrendezést igényel. Az ismerős környezet biztonságot sugall, a környezet megváltoztatása pedig az új ötletek iránti nyitottságot jelzi.
 
-Személyes találkozókon a bútorok átrendezése segít a facilitátornak ráhangolódni az alkalomra, és átgondolni, mitől egyedi. Másként alakulhat a beszélgetés, ha mindenki sorokban ül, mint ha körben helyezkedik el.
+Személyes találkozókon a bútorok tényleges átrendezése olyan szokás, amely segít a facilitátoroknak ráhangolódni a támogató tér megteremtésére, és átgondolni, mi teszi egyedivé az adott alkalmat. Képzeld el a különbséget aközött, hogy mindenki sorokban ül, vagy mindenki egy körben foglal helyet.
 
 A Loomióban
 
-* Ha kifejezetten a döntéshozatalhoz hívsz meg embereket egy új digitális térbe, az belépési pontot teremt. Ez segít elkülöníteni a teret más online helyektől, amelyek például társas kapcsolattartásra szolgálnak.
-* [A csoportkép személyre szabásával](/en/user_manual/groups/starting_a_group/#upload-a-group-photo) alakíthatod a tér hangulatát.
-* A csoport leírása a csoportoldal egyik meghatározó eleme, és [az alkalomhoz igazíthatod](/en/user_manual/groups/starting_a_group/#group-description).
+* Ha kifejezetten döntéshozatalra hívod meg az embereket egy új digitális térbe, annak jelentős hatása lehet — a „küszöb átlépésének” élménye megkülönbözteti ezt más online terektől, amelyek kapcsolattartásra vagy más célokra szolgálhatnak.
+* [A csoport képének testreszabása](/en/user_manual/groups/starting_a_group/#upload-a-group-photo) jó lehetőség a tér hangulatának alakítására.
+* A csoport leírása a csoport oldalának egyik fő „bútordarabja”, és [az igényeidhez igazíthatod](/en/user_manual/groups/starting_a_group/#group-description).
 
 <!-- translation-section: supplies-tools-materials -->
 
-## Kellékek, eszközök és anyagok
+## Kellékek, eszközök, anyagok
 
-A jól vezetett folyamatban minden szükséges kellék kéznél van. Személyes találkozókon ilyenek lehetnek az öntapadós jegyzetlapok, tollak, papírok, névkitűzők, nyomtatott anyagok és háttérinformációk. Minél jobban felkészül a facilitátor, annál több idő és energia marad a közös munkára.
+Amikor a facilitálás gördülékenyen zajlik, minden kellék kéznél van, amire a csoportnak szüksége lehet. Személyes találkozókon ilyenek az öntapadós jegyzetlapok, tollak, papírok, névkitűzők, nyomtatott anyagok és háttéranyagok. Minden ilyen előkészület több időt és energiát hagy a közös munkára.
 
 A Loomióban
 
-* Sok csoport a csoport leírásában helyez el hivatkozásokat a közösen szerkesztett dokumentumok tárhelyére, háttéranyagokra, a projekt- vagy feladatkezelő rendszerére és a kapcsolattartók listájára.
-* Minden témánál gondold át, mire lehet szükségük a résztvevőknek. Legyenek kéznél a fontos információk: ha például hivatkozol valamire, adj hozzá közvetlen linket, hogy ne kelljen külön megkeresniük.
+* Sok csoport a csoport leírásában helyez el hivatkozásokat a közösen szerkesztett dokumentumokat tartalmazó megosztott tárhelyre, háttérinformációkra, a csoport projektkezelő vagy feladatkövető rendszerére, a kapcsolattartók listájára és más anyagokra.
+* Minden szálnál gondold át, mire lehet szükségük az embereknek a részvételhez — alapvető, hogy minden információ könnyen elérhető legyen (ha például hivatkozol valamire, sokkal hatékonyabb közvetlen linket adni hozzá, mint elvárni, hogy az emberek megkeressék).
 
 <!-- translation-section: design-the-experience -->
 
-## Tervezd meg a részvétel élményét
+## Tervezd meg az élményt
 
-Ha az alapok már megvannak – a cél, az eszközök és a háttérinformációk –, a jó facilitátorok átgondolják, milyen folyamatba hívják a résztvevőket. Mérlegelik a helyzetet, a siker lehetséges formáit, valamint a választható utakat és döntéseket. Átgondolt tervvel kezdenek hozzá.
+Ha az alapok már megvannak (cél, eszközök, háttérinformációk), a jó facilitátorok időt szánnak annak átgondolására, milyen élményre hívják a résztvevőket: milyen a helyzet, mit jelenthet a siker, és milyen utak és választási lehetőségek állnak rendelkezésre. Átgondolt tervvel vágnak bele.
 
-Újra és újra azt látjuk, hogy az emberek jelentősen alábecsülik a felkészülés és a tervezés szükségességét. Mielőtt belevágsz, gondold át, milyen élményt szeretnél teremteni. A tervezésre fordított idő később sokszorosan megtérülhet.
+Újra és újra azt látjuk, hogy az emberek jelentősen alábecsülik a felkészülés és a tervezés szükségességét. Mielőtt belevágsz, állj meg, és gondold át, milyen élményt szeretnél nyújtani. A tervezésbe fektetett munka a későbbi siker révén sokszorosan megtérül.
+
 
 A Loomióban
 
-* A Loomio alapvető működése a jó facilitálás lépéseit követi: hívd meg az embereket, beszéljetek meg egy témát, gyűjtsétek össze a különböző nézőpontokat, fogalmazzatok meg egy konkrét javaslatot, mérjétek fel az egyetértést, majd erősítsétek meg a következtetést.
+* A Loomio alapvető működése eleve a jó facilitálás felépítését követi: hívd meg az embereket, beszéljétek át a témát, gyűjtsétek össze a különböző véleményeket, alakítsatok ki egy konkrét javaslatot, ellenőrizzétek az egyetértést, majd erősítsétek meg a következtetést.
+
 
 ![](../collaboration-process.png)
 
-* A tapasztalt felhasználók már most is különféle folyamatokhoz igazítják a Loomiót, például több lépésből álló egyeztetéshez vagy dokumentumok jóváhagyásához. A hatékonyan vezetett feladatoknak gyakran felismerhető, megismételhető menete van.
-* Az online együttműködés folyamatát nem kell a semmiből megtervezni. Építs arra, ami már bevált, és ültesd át az online térbe. Sok kipróbált személyes folyamat adaptálható, például a [tanácskérési folyamat](/en/guides/making_decisions/advice_process.html).
-* Az átgondolt folyamatokról szóló [esettanulmányok](https://blog.loomio.com/?utm_campaign=facilitators_guide_help&utm_term=help) mintaként szolgálhatnak. Ha nem tudod, milyen folyamatot válassz, nézd meg, mások mit próbáltak ki.
+* A gyakorlott felhasználók már különféle folyamatokhoz igazítják a Loomiót — például többlépcsős egyeztetéshez, dokumentumok jóváhagyásához és más feladatokhoz. Hatékony facilitálással minden feladatnak kialakul egy megismételhető menete.
+* Az online együttműködés megtervezéséhez nem kell újra feltalálnod a kereket. Támaszkodj arra, amiről tudod, hogy működik, és ültesd át az online térbe. Sok bevált, személyes részvételre épülő folyamat online is alkalmazható (például a [tanácskérési folyamat](/en/guides/making_decisions/advice_process.html)).
+* Az átgondoltan megtervezett folyamatokról szóló [esettanulmányok](https://blog.loomio.com/?utm_campaign=facilitators_guide_help&utm_term=help) „receptként” is szolgálhatnak — ha nem vagy biztos abban, milyen felépítést válassz, először nézd meg, mások mit próbáltak ki.
 
 <!-- translation-section: contextualise-the-moment -->
 
-## Vedd figyelembe a helyzetet
+## Helyezd el az alkalmat a csoport folyamatában
 
-A beszélgetések a csoport történetének és szokásainak részei. A vezetett folyamat akkor lehet hatékony, ha jókor történik, és illeszkedik a csoport többi tevékenységéhez.
+A beszélgetések nem légüres térben zajlanak, hanem a csoport történetébe és gyakorlatába ágyazódnak. A facilitált alkalmak akkor lehetnek hatékonyak, ha megfelelő az időzítésük, és illeszkednek a csoport többi folyamatához.
 
-Fontos kérdések a helyzetről:
+Fontos kérdések a helyzet megértéséhez:
 
-* Átmeneti időszakban van a csoport?
-* Egy meglévő gyakorlatot szeretnétek továbbfejleszteni?
-* Ez egy a párhuzamosan zajló folyamatok közül, vagy most erre összpontosít a csoport?
-* Egy problémát szeretnétek megoldani, vagy inkább mélyebben, tágabb vagy szűkebb körben foglalkoznátok egy témával?
+* Átmeneti időszakban vagyunk?
+* A meglévő gyakorlatot fejlesztjük tovább?
+* Ez több párhuzamos folyamat egyike, vagy kizárólag erre összpontosítunk?
+* Egy problémát szeretnénk megoldani, vagy mélyebben, tágabban, esetleg szűkebben vizsgálni valamit?
 
 A Loomióban
 
-* A Loomio-csoportokban szinte mindig van valaki, aki ismeri a csoport helyzetét, és eldönti, hogy érdemes-e bevezetni a Loomiót.
-* Nem érdemes mindent egyszerre megváltoztatni. A csoportok könnyebben veszik használatba a Loomiót, ha jól illeszkedik a meglévő munkafolyamataikhoz.
-* Akkor érdemes bevezetni, amikor a csoport készen áll a hatékony online együttműködésre. A tagoknak látniuk kell, milyen nehézséget okoz az online döntéshozatali tér hiánya, és szeretnék megoldani ezt a problémát.
-* Amikor eldöntöd, mikor hozz fel egy témát, vedd figyelembe, mire irányul a csoport figyelme. A közös figyelem korlátozott erőforrás.
-* Sok csoport nem is tudatosítja, hogyan működik együtt jelenleg, és azt sem látja világosan, hogyan illeszkedhetne ebbe a Loomio. Kezdjetek egy beszélgetéssel arról, hogyan dolgoztok most, és mi működik vagy nem működik.
+* A Loomio-csoportokban szinte mindig van egy „kezdeményező”, aki ismeri a csoport helyzetét, és eldönti, hogy megfelelő-e számukra a Loomio bevezetése.
+* Nem célszerű mindent egyszerre megváltoztatni. A csoportok könnyebben kezdik használni a Loomiót, ha az jól illeszkedik a meglévő munkafolyamataikhoz.
+* Akkor megfelelő az időzítés, amikor a csoport készen áll arra, hogy hatékonyan beépítse az online együttműködést a gyakorlatába. Érezniük kell, milyen nehézséget okoz az online döntéshozatali tér hiánya, és motiváltnak kell lenniük a probléma megoldására.
+* Gondold át, mire fordítja a csoport a figyelmét, hogy eldönthesd, mikor érdemes felvetni egy adott témát. A közös figyelem korlátozott erőforrás.
+* Sok csoport még a meglévő együttműködési gyakorlatával és szokásaival sincs tisztában, így azzal sem, hogyan illeszkedhet ezekhez a Loomio. Kezdj egy beszélgetéssel arról, hogyan dolgoztok jelenleg, és mi működik, illetve mi nem.
 
 <!-- translation-section: the-role-of-the-facilitator -->
 
 ## A facilitátor szerepe
 
-A jó facilitáláshoz egyéni és közös önismeret kell. Ha a szerep nem világos, az félreértésekhez, konfliktusokhoz vagy bizonytalan helyzetekhez vezethet.
+A jó facilitáláshoz egyéni és közösségi szinten is önismeretre van szükség. A szerep tisztázatlansága félreértésekhez, konfliktusokhoz vagy olyan helyzetekhez vezethet, amelyekben a résztvevők nem érzik magukat biztonságban.
 
-> Gondoskodj róla, hogy átadják neked a vezetéshez szükséges felhatalmazást. Amikor meghívnak egy új csoportba vagy szervezetbe, sokan azt kérdezik magukban: Ki ez az ember? Miért hallgassunk rá? Kérj meg valakit, akit a résztvevők ismernek és akiben megbíznak, hogy mutasson be téged. Ez segít elnyerni a bizalmukat, és egyértelművé teszi a felhatalmazásodat. — Silvia Zuur
+> Kérd, hogy adják át neked a felhatalmazást. Amikor meghívnak egy új csoportba vagy szervezetbe, mindenkiben felmerülhet: Ki ez az alak? Miért hallgassunk rá? Kérj meg valakit, akit a résztvevők ismernek és akiben megbíznak, hogy mutasson be. Ez megalapozza a résztvevők bizalmát irántad, és segít átadni neked a felhatalmazást. — Silvia Zuur
 
 <!-- translation-section: consent -->
 
 ### Beleegyezés
-Fontos, hogy a csoport beleegyezzen a facilitálásba. Enélkül a folyamat a csoport számára kényszerítő, a facilitátor számára veszélyes lehet, és ellenállást vagy zavart válthat ki. A facilitátor kiszolgáltatott helyzetbe kerül, ezért felhatalmazásra van szüksége. Ha ezt nem kapja meg, ne vállalja a feladatot. A beleegyezés a facilitátor és a résztvevők számára egyaránt fontos.
+Alapvető, hogy a csoport beleegyezzen a facilitálásba. Enélkül a facilitálási kísérlet a legrosszabb esetben kényszerítő lehet (ami méltánytalan a csoporttal szemben) és veszélyes (ami méltánytalan a facilitátorral szemben), továbbá ellenállást és zavart vált ki. A facilitátorok kiszolgáltatott helyzetet vállalnak; felhatalmazásra van szükségük, enélkül nem szabad elvállalniuk a feladatot. A beleegyezés a facilitátor és a résztvevők számára egyaránt alapvető.
 
 <!-- translation-section: responsibility -->
 
 ### Felelősség
-A felhatalmazással a facilitátor nagyobb felelősséget is vállal. Több lehetősége van megszólalni és irányítani a csoport figyelmét. Ezt az egész csoport érdekében kell használnia, nem személyes célokra. Szavai és viselkedése különösen erősen hatnak a résztvevőkre, ezért fokozott figyelemmel kell eljárnia.
+Amint egy facilitátor elfogadja a felhatalmazást, nagyobb felelősséget vállal. A facilitátorok több időt kapnak a megszólalásra, és nagyobb szerepük van a csoport figyelmének irányításában. Ezt az egész csoport szolgálatában kell használniuk, nem személyes céljaik érdekében. A facilitátor szavainak és viselkedésének is az átlagosnál nagyobb hatása van, ezért fokozott körültekintéssel kell eljárnia.
 
 <!-- translation-section: power -->
 
 ### Hatalom
-A facilitálás természetéből adódóan különbséget teremt a résztvevők és a facilitátor befolyása között. A facilitátornak bizonyos helyzetekben élnie kell a felhatalmazásával, különben nem tudja ellátni a feladatát. Például félbeszakíthat valakit, hogy a beszélgetés a témánál maradjon, vagy jelezheti, hogy egy adott viselkedés nem elfogadható. Nem méltányos felelőssé tenni a folyamatért, ha nem kapja meg a sikeres vezetéshez szükséges jogköröket. Nincs minden helyzetre érvényes válasz arra, mekkora felhatalmazás kell, de annak arányban kell állnia a felelősséggel.
+A facilitálás természetéből adódóan különbséget teremt a résztvevők befolyásában. Ha a facilitátor bizonyos módokon nem gyakorolhat hatalmat, nem tudja ellátni a feladatát. Például ahhoz, hogy a beszélgetés a témánál maradjon, félbeszakíthat valakit, vagy jelezheti, hogy egy adott viselkedés nem elfogadható. Nem helyénvaló felelősséget várni a facilitátortól az alkalomért anélkül, hogy megkapná a sikeres munkához szükséges jogköröket. Nincs egyetlen helyes válasz arra, mekkora hatalmat kapjon, de annak arányban kell állnia a felelősségével.
 
 <!-- translation-section: responsiveness -->
 
 ### Alkalmazkodás
-A facilitátorok akkor tudnak a legjobban dolgozni, ha alkalmazkodnak a kialakuló helyzethez. Az emberek összetettek, a csoportok pedig még inkább azok. Ha valaki rugalmatlanul ragaszkodik egy tervhez vagy szabályrendszerhez, az akadályozhatja a csoportot. Ha a facilitátor nem tud vagy nem akar alkalmazkodni a változó körülményekhez, nem tudja hatékonyan vezetni a közös munkát.
+A facilitátorok akkor dolgoznak a legjobban, ha hatékonyan tudnak alkalmazkodni a kibontakozó helyzethez. Az emberek rendkívül összetettek, a csoportjaik pedig még sokkal összetettebbek. Ha valaki rugalmatlanul ragaszkodik egy tervhez vagy eljáráshoz, az kudarchoz vezethet. Ha a facilitátor nem alkalmazkodhat vagy nem akar alkalmazkodni a változó körülményekhez, nem tud megfelelő teret biztosítani a folyamatosan változó embereknek.
 
-> Tedd fel és vedd le a facilitátori kalapot. Sokaknak nehéz a saját csapatuk megbeszéléseit és műhelymunkáit vezetni. Facilitátorként pártatlannak kell lenniük, csapattagként viszont értékes meglátásaik vannak. Tedd egyértelművé, mikor vezeted a folyamatot, és mikor veszel részt benne csapattagként. — Silvia Zuur
+> Vedd fel, majd vedd le a facilitátori kalapot. Sokaknak kihívást jelent, amikor a saját csapatuk megbeszéléseit és műhelymunkáit próbálják facilitálni. Facilitátorként semlegesnek kell lenniük, csapattagként viszont értékes meglátásaik vannak, amelyeket szeretnének megosztani. Tedd teljesen egyértelművé, mikor vagy facilitátor, és mikor résztvevő. — Silvia Zuur
+
 
 A Loomióban
 
-* Sok Loomiót használó csoportnak van tapasztalata a facilitálásban, és közösen értik ezt a szerepet. Már most is sikerrel igazítják az eszközt a saját igényeikhez.
-* Ha a csoport nem állapodott meg másként, gyakran feltételezik, hogy a beszélgetést indító személy vezeti is azt. A résztvevők nagyobb biztonságban dolgozhatnak együtt, ha világos, ki a facilitátor.
-* A Loomio teret ad annak, hogy többen is részt vegyenek a facilitálásban: például másokat bevonjanak a beszélgetésbe, kérjék a témánál maradást, vagy javasolják, mikor érdemes javaslatot tenni. Ez a szerep azonban gyakran kimondatlan marad. Segít tisztázni, ha megnevezitek ezeket a feladatokat, és megbeszélitek, hogy egy emberhez tartoznak-e, vagy megosztjátok őket.
-* Egy online csoport kiindulhat abból, hogy a facilitálás feladatai kimondatlanul megoszlanak, és nem beszél külön a facilitátori szerepről. Ez a működés azonban inkább azoknak a tapasztalt csoportoknak megfelelő, amelyek már túlléptek a kijelölt facilitátorral végzett munkán.
+* A Loomiót használó csoportok közül soknak van tapasztalata a facilitálásban, és már kialakult közös értelmezésük erről a szerepről. Az eszközt már most is bizonyos sikerrel igazítják ezekhez az igényekhez.
+* Gyakran azt tekintik a beszélgetés facilitátorának, aki elindítja azt, hacsak a csoport másként nem állapodott meg. Ha világos, ki facilitál, az jelentősen javíthatja a kölcsönös biztonságérzetet és az eredményes együttműködést.
+* A Loomio természetes módon teret ad annak, hogy többen is végezzenek facilitátori feladatokat: a felhasználók megemlíthetnek másokat, kérhetik, hogy a beszélgetés maradjon a témánál, javasolhatják, mikor érdemes javaslatot tenni, és így tovább — de ez gyakran kimondatlan marad. A szerep tisztázásában segít, ha megnevezitek, mely tevékenységek számítanak facilitálásnak, és megbeszélitek, hogy ezt a szerepet egy ember látja-e el, vagy megosztjátok.
+* Egy online csoport indulhat úgy is, hogy a facilitálás kimondatlanul megoszlik a résztvevők között (vagyis nem beszélnek a facilitálásról mint megnevezett szerepről). Ez a felállás azonban valójában azoknak a tapasztalt csoportoknak a legmegfelelőbb, amelyek már továbblépnek a kifejezetten kijelölt facilitátori szereppel végzett munkából.

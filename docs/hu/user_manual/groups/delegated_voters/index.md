@@ -1,14 +1,14 @@
 ---
 title: Szavazati joggal rendelkező küldöttek
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/groups/delegated_voters/index.md
+source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
+source_file: docs/en/user_manual/groups/delegated_voters/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: b7bb98cef1cbcc28
 generated:
-  introduction: 35e502e65f37a572
+  introduction: f0f66618f51654f1
 title_source: 71bebf9802e7d67d
 title_generated: 4910d028d8ce6748
 ---
@@ -17,18 +17,18 @@ title_generated: 4910d028d8ce6748
 
 # Szavazati joggal rendelkező küldöttek
 
-Ha a csoportod egyes tagjai szavazhatnak, mások pedig nem, a „Legyen küldött” művelettel jelölheted ki a szavazati joggal rendelkező tagokat. A kijelölést a „Meghatalmazott visszavonása” művelettel vonhatod vissza.
+Ha a csoportod egyes tagjainak szavazati joggal kell rendelkezniük, másoknak viszont nem, a „Küldötté kinevezés” funkcióval jelölheted ki a szavazati joggal rendelkező tagokat. A „Küldötti megbízatás visszavonása” művelettel vissza is vonhatod ezt a jogot.
 
-Akkor használj küldötteket, ha mindenki ugyanabban a térben beszélgethet, de csak egy meghatározott kör, például az igazgatók vagy a választott képviselők szavazhatnak. Ez általában egyszerűbb, mint külön alcsoportot fenntartani csak azért, hogy elkülönítsd a szavazókat a többi tagtól.
+Használj küldötteket, ha a tagoknak közös térre van szükségük a beszélgetésekhez, de csak egy meghatározott kör, például az igazgatók vagy a megválasztott képviselők szavazhatnak. Ez általában egyszerűbb, mint egy második alcsoport fenntartása, amelynek egyetlen célja a szavazók elkülönítése azoktól, akik nem szavazhatnak.
 
-Ha a tagoknak olyan beszélgetésekhez, fájlokhoz vagy tagsági adatokhoz is hozzá kell férniük, amelyeket mások nem láthatnak, használj inkább privát alcsoportot.
+Használj inkább privát alcsoportot, ha a tagjainak olyan beszélgetésekre, fájlokra vagy tagsági információkra is szükségük van, amelyeket a többi tag nem láthat.
 
-![Legyen küldött művelet egy tag menüjében](member_make_delegate.png)
+![Küldötté kinevezés művelet egy tag menüjében](member_make_delegate.png)
 
-Ha szavazást vagy javaslatot indítasz, és csak a küldötteket szeretnéd meghívni, válaszd a „Csak kiválasztott személyek” beállítást.
-![Csak kiválasztott személyek beállítás javaslat indításakor](poll_invited_people_only.png)
-Amikor szavazásra hívsz meg embereket, megjelenik a „csoportnév küldöttei” lehetőség.
+Ha szavazást vagy javaslatot szeretnél létrehozni, és csak a küldötteket szeretnéd meghívni, használd a „Csak a kiválasztott személyek” szavazási beállítást.
+![Csak a kiválasztott személyek beállítás egy javaslat indításakor](poll_invited_people_only.png)
+Ezután, amikor szavazásra hívod meg a tagokat, megjelenik „A csoportnév küldöttei” lehetőség.
 ![Az Oatmilk Cooperative küldöttei lehetőség a szavazásra meghívó űrlapon](poll_invite_delegates_group.png)
 
-A csoportod oldalán, a tagok lapján láthatod a küldöttek listáját. Nyisd meg a szűrő menüt, és válaszd a „Küldöttek” lehetőséget.
+A küldöttek listáját a csoportod oldalának tagok lapján láthatod. Nyisd meg a szűrőmenüt, és válaszd ki a „Küldöttek” lehetőséget.
 ![Küldöttek lehetőség a tagok szűrőjében](members_list_delegates.png)

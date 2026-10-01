@@ -1,6 +1,6 @@
 ---
 title: Rango
-source_revision: 3a315412c646d254c8426be5c436a4e593f6011f
+source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
 source_file: docs/en/user_manual/polls/rank/index.md
 translated:
   provider: codex/gpt-6.1-sol
@@ -14,85 +14,85 @@ sections:
   read-the-results: 18fbb0f9a5a866bc
   share-an-outcome: c9dcebf155d64c65
 generated:
-  introduction: 76506b84373055c7
-  when-to-use-rank: 0f9e6bd57bd35876
-  example-rank-bottle-designs: 741b09713c1152d8
-  set-up-the-poll: 37d070499efd0987
-  vote: 5c89cff06db81463
-  read-the-results: 1e96f0fa370ce77d
-  share-an-outcome: 9c09c79f4b548302
+  introduction: 17c540f0c4195bd2
+  when-to-use-rank: 126bb84e0d42b2c3
+  example-rank-bottle-designs: f8eb41d77472c73c
+  set-up-the-poll: de032b35c98e97e4
+  vote: fde5512f8566dc67
+  read-the-results: adfe2f865bc03503
+  share-an-outcome: b91a3d121733d572
 title_source: a4130d7d2c3a137f
 title_generated: b3255287db980add
 ---
 
 <!-- translation-section: introduction -->
 
-# Rango
+# Ordenar
 
-Rango muestra el orden general de preferencias del grupo. Los participantes ordenan las opciones de la más preferida a la menos preferida, y Loomio asigna más puntos a las opciones mejor situadas.
+Ordenar permite conocer el orden general de preferencia del grupo. Los participantes ordenan las opciones de mayor a menor preferencia y Loomio asigna más puntos a las opciones situadas en los primeros puestos.
 
 <!-- translation-section: when-to-use-rank -->
 
-## Cuándo usar Rango
+## Cuándo usar Ordenar
 
-Usa Rango cuando importe el orden de preferencia y quieras obtener una clasificación general. Resulta útil para:
+Usa Ordenar cuando el orden de preferencia sea importante y quieras obtener una única clasificación general. Funciona bien para:
 
-- seleccionar a una persona para un puesto;
+- seleccionar a una persona candidata para un puesto;
 - ordenar proyectos para un plan de trabajo;
-- priorizar temas de una conferencia;
-- elegir alternativas además de una primera opción; o
+- priorizar temas para una conferencia;
+- elegir opciones alternativas además de una primera opción; o
 - reducir una lista larga a una selección ordenada.
 
-Rango ordena las opciones por puntos. No es un método de elección proporcional. Para elegir a varias personas y representar a distintos grupos de votantes, usa una [elección STV](/en/user_manual/polls/stv/).
+Ordenar utiliza una clasificación basada en puntos. No es un método de elección proporcional. Para elegir a varias personas y representar a distintos grupos de votantes, usa una [elección STV](/en/user_manual/polls/stv/).
 
 <!-- translation-section: example-rank-bottle-designs -->
 
 ## Ejemplo: ordenar diseños de botellas
 
-La Cooperativa Oatmilk pide a sus miembros que ordenen cuatro diseños de botellas para una prueba de botellas retornables. Los participantes tienen en cuenta la facilidad de uso, la durabilidad, las necesidades de los clientes, el almacenamiento y la compatibilidad con el equipo de lavado.
+Oatmilk Cooperative pide a los miembros que ordenen cuatro diseños de botellas para una prueba de botellas retornables. Los participantes tienen en cuenta la facilidad de manejo, la durabilidad, las necesidades de los clientes, el almacenamiento y la compatibilidad con el equipo de lavado.
 
 <!-- translation-section: set-up-the-poll -->
 
-## Configurar la encuesta
+## Configura la encuesta
 
-Indica qué decidirá la clasificación y añade las opciones. Configura **Número de opciones** para controlar cuántas puede ordenar cada persona. La primera opción recibe más puntos; la siguiente recibe un punto menos y las opciones que no se ordenen no reciben puntos.
+Explica qué determinará la clasificación y añade las opciones. Configura **Número de opciones** para controlar cuántas opciones puede ordenar cada persona. La primera opción recibe el mayor número de puntos, la siguiente recibe un punto menos y las opciones que no se incluyen en la clasificación no reciben puntos.
 
 ![](form.png)
 
-Exige que se ordenen todas las opciones si necesitas una clasificación completa. Permite elegir menos opciones si los participantes quizá no conozcan lo suficiente todas ellas. Mostrar las opciones en orden aleatorio puede reducir la influencia del orden en que aparecen.
+Exige que se ordenen todas las opciones cuando necesites una clasificación completa. Permite elegir menos opciones cuando los participantes no tengan suficiente información para ordenarlas todas. Mostrar las opciones en orden aleatorio puede reducir la influencia de la presentación inicial.
 
 <!-- translation-section: vote -->
 
-## Votar
+## Vota
 
-Los participantes arrastran las opciones hasta colocarlas en el orden que prefieran, con el número 1 como primera opción. Pueden añadir una razón que explique los criterios de su clasificación.
+Los participantes arrastran las opciones para colocarlas en el orden que prefieren, con el número 1 como primera opción. Pueden añadir un motivo que explique los criterios de la clasificación.
 
 ![](voting.png)
 
-En este ejemplo, la persona votante coloca la **botella ámbar de 500 ml** en primer lugar y la **botella transparente de 500 ml** en segundo porque ambas caben en el espacio de almacenamiento de la cafetería y son compatibles con el equipo de lavado.
+En este ejemplo, el votante coloca la **botella ámbar de 500 ml** en primer lugar y la **botella transparente de 500 ml** en segundo lugar porque ambas son compatibles con el espacio de almacenamiento y el equipo de lavado existentes en la cafetería.
 
 <!-- translation-section: read-the-results -->
 
-## Interpretar los resultados
+## Lee los resultados
 
-Los resultados combinan todos los votos en una clasificación general por puntos. Para cada opción muestran:
+Los resultados combinan todos los votos en una clasificación general basada en puntos. Para cada opción muestran:
 
-- **Rango**: su posición en el resultado conjunto;
-- **% de puntos**: su porcentaje del total de puntos asignados;
-- **Puntos**: el total de puntos recibidos en todos los votos;
-- **Principal**: su promedio de puntos por votante; y
-- **Votantes**: cuántas personas la incluyeron en su clasificación.
+- **Ordenar**: la posición en el resultado conjunto;
+- **% de puntos**: la proporción de todos los puntos de la clasificación que recibe;
+- **Puntos**: el total de puntos de todos los votos;
+- **Principal**: el promedio de puntos por votante; y
+- **Votantes**: cuántas personas la incluyeron en la clasificación.
 
 ![](results.png)
 
-En este ejemplo, la **botella ámbar de 500 ml** ocupa el primer lugar, seguida de la **botella transparente de 500 ml** y la **botella ámbar de 750 ml**. El grupo puede estudiar primero el diseño preferido y conservar el resto del orden como secuencia de alternativas.
+En este ejemplo, la **botella ámbar de 500 ml** ocupa el primer lugar, seguida de la **botella transparente de 500 ml** y la **botella ámbar de 750 ml**. El grupo puede estudiar primero el diseño preferido y mantener el resto de la clasificación como una secuencia de alternativas.
 
-Un resultado basado en puntos puede ocultar patrones de preferencia distintos que producen el mismo total. Revisa los votos individuales y sus razones cuando las opciones estén muy igualadas o la decisión tenga consecuencias importantes.
+Un resultado basado en puntos puede ocultar distintos patrones de preferencia que producen el mismo total. Revisa los votos individuales y los motivos de los votos cuando las opciones tengan puntuaciones similares o la decisión tenga consecuencias importantes.
 
 <!-- translation-section: share-an-outcome -->
 
 ## Comparte una conclusión
 
-Cuando se cierre la encuesta, comparte una conclusión. Indica qué opción llevará adelante el grupo y qué ocurrirá si no se puede concretar. Consulta [Comparte una conclusión](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome) para saber cómo funcionan las conclusiones.
+Cuando se cierre la encuesta, comparte una conclusión. Indica qué opción llevará adelante el grupo y qué pasará si no se puede realizar. Consulta [Comparte una conclusión](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome) para saber cómo funcionan las conclusiones.
 
-![Una conclusión que elige el diseño de botella mejor clasificado](outcome.png)
+![Una conclusión que elige el diseño de botella situado en primer lugar](outcome.png)

@@ -1,20 +1,20 @@
 ---
 title: Discussies begeleiden
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/guides/board_processes/facilitating_discussions.md
+source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
+source_file: docs/en/guides/board_processes/facilitating_discussions.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-30'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 4fa9b0fbf10bb2eb
   on-loomio: 9ff64037e6b7a7f3
   issues-that-arise-between-board-meetings: ba163d9d1703ff12
   when-there-isn-t-space-during-meetings: 80352b1f1995ff8f
 generated:
-  introduction: 1d7093be99ee866c
-  on-loomio: d4b48b4163201b0a
-  issues-that-arise-between-board-meetings: f73e56cc624f2e35
-  when-there-isn-t-space-during-meetings: 4fe7fcf393fa732e
+  introduction: b1bb2abda501a946
+  on-loomio: 98925d2f208daa6f
+  issues-that-arise-between-board-meetings: f277046bfbf9afbc
+  when-there-isn-t-space-during-meetings: a69c4367c49790c3
 title_source: 6d57aa8c543c9a02
 title_generated: 3b53178f30e08e64
 ---
@@ -23,56 +23,56 @@ title_generated: 3b53178f30e08e64
 
 # Discussies begeleiden
 
-Soms komen er tussen vergaderingen onderwerpen op die aandacht vragen van bestuurs- of commissieleden.
+Soms komen er tussen vergaderingen onderwerpen op die de aandacht van bestuurs- of commissieleden vereisen.
 
-En soms is er tijdens een vergadering te weinig tijd om een onderwerp te bespreken of zorgvuldig over een besluit na te denken.
+En soms is er tijdens een vergadering gewoon geen ruimte voor discussie of om een besluit voldoende te overwegen.
 
 <!-- translation-section: on-loomio -->
 
 ## Op Loomio
 
-Gebruik een Loomio-**discussie** om een gesprek te begeleiden. Geef de discussie een duidelijke titel die leden herkennen en beschrijf het onderwerp in de context van de discussie. Voeg een relevante categorietag toe, zodat leden de discussie later kunnen terugvinden.
+Gebruik een Loomio-**thread** om een discussie te begeleiden. Geef de thread een beschrijvende titel die leden herkennen en voeg details toe aan de context van de thread. Voeg een relevant categorielabel toe zodat leden de thread later kunnen terugvinden.
 
-Nodig leden uit voor de discussie. Zij krijgen dan een kopie per e-mail. Leden kunnen deelnemen door via de link naar Loomio te gaan. Ze kunnen ook op de e-mailmelding reageren; hun antwoord verschijnt dan als reactie in de discussie.
+Nodig leden uit voor de thread, zodat ze per e-mail een kopie van de thread ontvangen. Leden kunnen aan de discussie deelnemen door op de link naar Loomio te klikken, of door de e-mailmelding te beantwoorden. Hun antwoord verschijnt dan als reactie in de thread.
 
 ![](thread_discussion.png#width-90)
 
-In een Loomio-discussie kun je bestanden toevoegen of naar online bronnen linken om het gesprek te ondersteunen.
+In een Loomio-thread kun je bestanden bijvoegen of links naar online bronnen toevoegen om de discussie te ondersteunen.
 
 Veelvoorkomende voorbeelden zijn:
 - beleid beoordelen en ontwikkelen
-- het bestuur om advies vragen over een onderwerp of probleem
+- het bestuur om advies vragen over een onderwerp of kwestie
 - strategie bespreken
 - een idee of kans verkennen
 - risico's beoordelen
 
 <!-- translation-section: issues-that-arise-between-board-meetings -->
 
-## Onderwerpen die tussen bestuursvergaderingen opkomen
+## Kwesties die tussen bestuursvergaderingen ontstaan
 
-Tussen vergaderingen kan er veel gebeuren in een organisatie. Veel mensen gebruiken e-mail om bestuursleden op de hoogte te stellen. Een discussie per e-mail is lastig te volgen: antwoorden raken zoek in inboxen en niet iedereen wordt erbij betrokken.
+Tussen vergaderingen kan er veel gebeuren in een organisatie, en de meeste mensen gebruiken e-mail om bestuursleden op de hoogte te brengen. Een discussie via e-mail volgen is lastig: antwoorden raken vaak zoek in inboxen en mensen worden niet betrokken.
 
-*“Je kunt geen bestuur voeren via e-mail!”, Richard Westlake (Westlake Governance).*
+*“Je kunt niet besturen via e-mail!”, Richard Westlake (Westlake Governance).*
 
-Als een onderwerp aandacht van het bestuur vraagt, gebruik dan een Loomio-discussie in plaats van e-mail. Leden kunnen per e-mail reageren. Hun reactie verschijnt in de Loomio-discussie, zodat het gesprek op één plek blijft.
+Gebruik een Loomio-thread in plaats van e-mail wanneer er een kwestie ontstaat die de aandacht van het bestuur vereist. Leden kunnen via e-mail antwoorden en hun reactie verschijnt in de Loomio-thread, zodat de discussie op één plek blijft.
 
 Zo doe je dat:
-- Gebruik het onderwerp van je e-mail als titel van je discussie,
-- zet de inhoud van je e-mail in de context van de discussie,
-- nodig je team uit voor de discussie met hun e-mailadres of Loomio-gebruikersnaam.
+- Gebruik de onderwerpregel van de e-mail als titel van jouw thread,
+- schrijf de inhoud van jouw e-mail in de context van de thread,
+- nodig jouw team uit voor de thread met hun e-mailadres of Loomio-gebruikersnaam.
 
-Met een Loomio-discussie:
-- staat alle informatie over een onderwerp op één goed toegankelijke plek,
-- kunnen mensen reageren zonder e-mailketens met beantwoorden en allen beantwoorden, waarbij mensen buiten het gesprek kunnen vallen,
+Met een Loomio-thread:
+- staat alle informatie over een onderwerp overzichtelijk op één gemakkelijk toegankelijke plek,
+- kunnen mensen reageren zonder e-mailketens met antwoorden en antwoorden aan iedereen waarin mensen buiten de discussie kunnen vallen,
 - kun je zien wie het bericht heeft gelezen en wie een herinnering nodig heeft,
-- kun je het werk naar een conclusie brengen en het aantal e-mails beperken.
+- kun je het werk naar een conclusie toewerken en de hoeveelheid e-mail verminderen.
 
 <!-- translation-section: when-there-isn-t-space-during-meetings -->
 
-## Als er tijdens vergaderingen te weinig tijd is
+## Wanneer er tijdens vergaderingen geen ruimte is
 
-Als er tijdens een bestuursvergadering niet genoeg tijd is om een agendapunt af te ronden, kun je de bespreking voortzetten op Loomio. Verwijs mensen naar de juiste discussie, of start een nieuwe en stel de bestuursleden op de hoogte.
+Als je een agendapunt niet kunt afronden binnen de beschikbare tijd van jouw bestuursvergadering, kun je het verder bespreken op Loomio. Verwijs mensen naar de relevante thread, of start een nieuwe thread en breng jouw bestuursleden op de hoogte.
 
-Dit vermindert de druk op het bestuur. Er is meer tijd om informatie te verzamelen, het onderwerp te bespreken en er goed over na te denken. Dat leidt vaak tot een beter besluit.
+Dit vermindert de druk op jouw bestuur en geeft meer tijd om informatie te verzamelen, te discussiëren en verder na te denken, wat vaak tot een beter besluit leidt.
 
 ![](thread_topic.png#width-90)

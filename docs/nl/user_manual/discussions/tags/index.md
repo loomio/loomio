@@ -1,10 +1,10 @@
 ---
 title: Categorielabels
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/discussions/tags/index.md
+source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
+source_file: docs/en/user_manual/discussions/tags/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 6197fb807c2f1fc7
   apply-tags: 8ea708f54f6f5df5
@@ -12,11 +12,11 @@ sections:
   edit-tags: 9a7b6c0f3c647b2d
   edit-tag-in-thread-or-poll: 5410f62c3b8c9417
 generated:
-  introduction: 3b1661423d3d8cac
-  apply-tags: fd3d73f9d7929d71
-  create-tags: 58072688c16eca4c
-  edit-tags: 704a068f88a0f0e1
-  edit-tag-in-thread-or-poll: 8993da538f66a023
+  introduction: 514c6b00f3ecd59a
+  apply-tags: e059cec1e36adcdc
+  create-tags: 75ee2cfbb6d1c91f
+  edit-tags: 9457d0f2d8351310
+  edit-tag-in-thread-or-poll: 57dce12d0e3b63bd
 title_source: c86f6830bf302394
 title_generated: a390fa68f1924439
 ---
@@ -25,45 +25,45 @@ title_generated: a390fa68f1924439
 
 # Categorielabels
 
-Met categorielabels vind je gemakkelijk discussies en peilingen over een bepaald soort werk of onderwerp.
+Met categorielabels vind je gemakkelijk threads en peilingen over een bepaald soort werk of onderwerp.
 
-Labels gelden voor de hele organisatie. Een label in een hoofdgroep is hetzelfde label in de subgroepen. Zo kun je samenhangend werk in de hele organisatie ordenen. Loomio toont labelnamen in alfabetische volgorde, met hun kleuren als stippen naast de namen.
+Labels horen bij de hele organisatie. Een label in een hoofdgroep is hetzelfde label in de subgroepen. Zo kun je samenhangend werk binnen de hele organisatie organiseren. Loomio toont labelnamen in alfabetische volgorde en geeft hun kleuren weer als stippen naast de namen.
 
-Klik op je groepspagina op **Labels** boven de lijst met discussies om de labels van de huidige groep te zien. Selecteer een label om alleen discussies met dat label te tonen. Gebruik het filterveld om in een lange lijst te zoeken, of kies **Laat meer zien** om alle labels in de organisatie te tonen. Kies **Toon minder** om terug te keren naar de labels van de huidige groep.
+Klik op je groepspagina op **Labels** boven de lijst met threads om de labels van de huidige groep te zien. Selecteer een label om alleen threads met dat label te tonen. Gebruik het filterveld om in een lange lijst te zoeken, of selecteer **Laat meer zien** om alle labels van de organisatie te tonen. Selecteer **Toon minder** om terug te gaan naar de labels van de huidige groep.
 
 ![](tags_view.png)
 
 <!-- translation-section: apply-tags -->
 
-## Labels toekennen
+## Labels toepassen
 
-Leden die een discussie of peiling kunnen bewerken, kunnen er labels aan toekennen.
+Leden die een thread of peiling kunnen bewerken, kunnen er labels op toepassen.
 
-Klik bij het starten van een discussie of peiling op het veld **Labels** en selecteer een of meer labels.
+Klik bij het starten van een thread of peiling op het veld **Labels** en selecteer een of meer labels.
 
 ![](tags_add_new.png)
 
-Begin te typen om de lijst te filteren. Selecteer een label opnieuw of klik op de × in het label om het te verwijderen.
+Begin te typen om de lijst te filteren. Selecteer een label opnieuw, of klik op de × op het label, om het te verwijderen.
 
 <!-- translation-section: create-tags -->
 
 ## Labels aanmaken
 
-Beheerders van de hoofdgroep kunnen altijd labels aanmaken voor de hoofdgroep en haar subgroepen. Beheerders van een subgroep kunnen labels aanmaken wanneer ze inhoud in hun subgroep labelen. De groepsmachtiging **Leden kunnen tags aanmaken.** staat standaard aan. Daarmee kunnen andere leden die een discussie of peiling kunnen labelen ook nieuwe labels aanmaken. Als de machtiging uitstaat, kunnen leden nog steeds bestaande labels toekennen.
+Admins van de hoofdgroep kunnen altijd labels aanmaken voor de hoofdgroep en de subgroepen. Admins van subgroepen kunnen labels aanmaken terwijl ze inhoud in hun subgroep van labels voorzien. De groepsmachtiging **Leden kunnen tags aanmaken.**, die standaard is ingeschakeld, laat andere leden die een thread of peiling van labels kunnen voorzien ook nieuwe labelnamen aanmaken. Als deze machtiging is uitgeschakeld, kunnen leden nog steeds bestaande labels toepassen.
 
-Typ bij het starten van een discussie of peiling de naam van een nieuw label in het veld **Labels** en druk op Enter.
+Om bij het starten van een thread of peiling een label aan te maken, typ je de naam in het veld **Labels** en druk je op Enter.
 
 ![nieuw label aanmaken](tags_create_new.png)
 
 ![nieuw label aangemaakt](tags_created_new.png)
 
-Gebruik korte, bekende namen die groepsleden herkennen, zoals Financiën, Bestuur, Verpakking of Samenwerkingen met cafés.
+Gebruik korte, bekende namen die groepsleden herkennen, zoals Financiën, Bestuur, Verpakkingen of Samenwerking met cafés.
 
 <!-- translation-section: edit-tags -->
 
 ## Labels bewerken
 
-Alleen beheerders van de hoofdgroep kunnen labels hernoemen, een andere kleur geven, samenvoegen of verwijderen. Deze wijzigingen gelden in de hele organisatie, ook in de subgroepen.
+Alleen admins van de hoofdgroep kunnen labels hernoemen, een andere kleur geven, samenvoegen of verwijderen. Deze wijzigingen gelden voor de hele organisatie, inclusief de subgroepen.
 
 Open **Labels** op de groepspagina en selecteer **Labels bewerken**.
 
@@ -77,16 +77,16 @@ Bewerk de labelnaam of kies een kleur en klik op **Bewaren**.
 
 ![labelkleur bewerken](tags_edit_name.png)
 
-Klik op **Delete** om het label uit alle discussies en peilingen in de organisatie te verwijderen.
+Klik op **Delete** om het label uit alle threads en peilingen in de organisatie te verwijderen.
 
 ![label verwijderen](tags_delete.png)
 
 <!-- translation-section: edit-tag-in-thread-or-poll -->
 
-### Label in een discussie of peiling bewerken
+### Label bewerken in een thread of peiling
 
-Open een bestaande discussie of peiling en klik naast de huidige labels bij de titel op de labelknop om de labels te wijzigen.
+Om de labels van een bestaande thread of peiling te wijzigen, open je deze en klik je op de labelknop naast de huidige labels bij de titel.
 
 Selecteer labels om ze toe te voegen of te verwijderen. Wijzigingen worden direct opgeslagen.
 
-![labels in discussie bewerken](tags_thread_edit.png)
+![labels in een thread bewerken](tags_thread_edit.png)

@@ -175,13 +175,13 @@ ru:
     only_show_tags_in_this_group: Отображать только теги из этой группы.
   poll_types:
     proposal: предложение
-    count: выбрать в
-    check: проверка чувств
+    count: запись
+    check: проверка мнений
     poll: голосование
-    dot_vote: точечное голосование
+    dot_vote: распределение баллов
     meeting: опрос времени
     ranked_choice: ранжированный выбор
-    score: опрос по очкам
+    score: оценка
     question: раунд вопросов
     stv: выборы STV
   timezones:
@@ -343,7 +343,7 @@ ru:
     formatting_help:
       label: Форматирование
       title: Узнайте, как использовать Markdown для форматирования текста.
-    thread: Нить
+    thread: Ветка
     commercial: Коммерческий
     nonprofit: Некоммерческая организация
     opening_in: Время открытия %{time}
@@ -439,7 +439,7 @@ ru:
     loud: Заметный
     normal: Нормальный
     quiet: Ограниченный
-    mute: Заглушен
+    mute: Без звука
     unmute: Включить
   pin_event_form:
     title: Закрепить на временной шкале
@@ -469,7 +469,7 @@ ru:
     loud_label: Вся активность
     normal_label: Объявления
     quiet_label: 'Нет '
-    mute_label: Заглушен
+    mute_label: Без звука
     saved: Настройки уведомлений обновлены.
     discussion:
       loud_description: Обо всех действиях в этой теме вы будете получать по электронной почте.
@@ -540,7 +540,7 @@ ru:
     volume_push_label: Push
     all_activity_option: Вся деятельность
     when_notified_option: При получении уведомления
-    muted_option: Приглушенный
+    muted_option: Без звука
     volume_channel_label: Как нам следует вас информировать?
     email_channel: Электронная почта
     push_channel: Push
@@ -771,7 +771,7 @@ ru:
   notification_models:
     comment: прокомментируйте в
     poll: 'голосование:'
-    outcome: 'исход:'
+    outcome: 'вывод: '
     stance: 'голосование:'
     discussion: 'обсуждение:'
   notifications:
@@ -789,7 +789,7 @@ ru:
       new_coordinator: "%{actor} назначил вас администратором %{title}"
       outcome_announced: "%{actor} поделился результатом %{poll_type}: %{title}"
       outcome_created: "%{actor} поделился результатом %{poll_type}: %{title}"
-      outcome_updated: "%{actor} обновил результат %{poll_type}: %{title}"
+      outcome_updated: "%{actor} обновил вывод по %{poll_type}: %{title}"
       outcome_review_due: 'Пришло время подвести итоги: %{title}'
       poll_closed_by_user: "%{actor} закрыл %{poll_type}: %{title}"
       poll_closing_soon: "%{poll_type} закроется через 24 часа: %{title}"
@@ -828,7 +828,7 @@ ru:
       membership_request_approved: "%{actor} одобрил ваш запрос на присоединение к %{title}"
       outcome_announced: "%{actor} поделился результатом %{poll_type}"
       outcome_created: "%{actor} поделился результатом %{poll_type}"
-      outcome_review_due: Пришло время просмотреть результат %{poll_type}
+      outcome_review_due: Пришло время пересмотреть вывод по %{poll_type}
       poll_announced_wip: "%{actor} хочет получить ваш отзыв о %{poll_type}"
       poll_closed_by_user: "%{actor} закрыл %{poll_type}"
       poll_closing_soon: "%{poll_type} закроется через 24 часа"
@@ -854,7 +854,7 @@ ru:
       discussion_closed: "%{actor} закрыл обсуждение"
       new_discussion: "%{actor} начал обсуждение"
       new_comment: "%{actor} прокомментировал в обсуждении"
-      outcome_updated: "%{actor} обновил результат"
+      outcome_updated: "%{actor} обновил вывод"
       thread_locked: "%{actor} заблокировал тему"
       membership_request_declined: Ваш запрос на присоединение к %{title} был отклонен
     hints:
@@ -874,9 +874,9 @@ ru:
       new_coordinator: "%{actor} сделал вас администратором %{title}"
       new_delegate: "%{actor} сделал вас делегатом с правом голоса в %{title}"
       new_discussion: "%{title}"
-      outcome_announced: "%{poll_type} результат: %{title}"
-      outcome_created: "%{poll_type} результат: %{title}"
-      outcome_updated: 'Результат %{poll_type} обновлен: %{title}'
+      outcome_announced: 'Вывод по %{poll_type}: %{title}'
+      outcome_created: 'Вывод по %{poll_type}: %{title}'
+      outcome_updated: 'Вывод по %{poll_type} обновлен: %{title}'
       outcome_review_due: 'Пришло время подвести итоги: %{title}'
       poll_closed_by_user: "%{actor} закрыл %{poll_type}: %{title}"
       poll_closing_soon: "%{poll_type} закрывается через 24 часа: %{title}"
@@ -884,7 +884,7 @@ ru:
       poll_created: "%{poll_type}: %{title}"
       poll_edited: "%{actor} обновил %{poll_type}: %{title}"
       poll_expired: "%{poll_type} закрыт: %{title}"
-      poll_expired_author: 'Опубликовать результат: %{title}'
+      poll_expired_author: 'Опубликовать вывод: %{title}'
       poll_option_added: "%{actor} добавил опции в %{title}"
       poll_reopened: 'Голосование продлено: %{title}'
       poll_reminder: "%{actor} напоминает вам проголосовать за %{title}"
@@ -963,7 +963,7 @@ ru:
     send_discussion: Отправить тему
     send_group: Пригласить людей в %{name}
     send_poll: Отправить %{type}
-    send_outcome: Отправить результат
+    send_outcome: Отправить вывод
     cannot_reveal_when_anonymous: К сожалению, мы не можем раскрыть, кто голосовал или не голосовал в анонимном опросе.
     group_notification_history: История приглашений в группы
     poll_notification_history: История уведомлений об опросах
@@ -992,8 +992,8 @@ ru:
     announcement_created: "%{name} пригласил %{length} человек в ветку:"
     discussion_edited: "%{name} отредактировал тред, уведомив %{length} человек:"
     poll_edited: "%{name} отредактировал опрос, уведомив %{length} человек:"
-    outcome_edited: "%{name} отредактировал результат, уведомив %{length} человек:"
-    outcome_updated: "%{name} отредактировал результат, уведомив %{length} человек:"
+    outcome_edited: "%{name} отредактировал вывод, уведомив %{length} человек:"
+    outcome_updated: "%{name} отредактировал вывод, уведомив %{length} человек:"
     poll_closing_soon: 'Напоминание о закрытии опроса пользователя %{name} уведомило %{length} человек:'
     poll_reminder: "%{name} напомнил %{length} людям проголосовать:"
     audiences:
@@ -1002,7 +1002,7 @@ ru:
       topic: Все в теме
       voters: Приглашаем всех голосовать
       decided_voters: Все, кто голосовал
-      undecided_voters: Неопределившиеся избиратели
+      undecided_voters: Не проголосовали
       non_voters: Участники %{name} еще не приглашены
       delegates_of_group: Делегаты %{name}
     form:
@@ -1110,19 +1110,19 @@ ru:
     edit_comment: Редактировать коментарий
     delete_comment: Удалить комментарий
     reply_to_comment: Ответить
-    fork_comment: Вилочная нить
+    fork_comment: Создать отдельную ветку
     translate_comment: Перевести комментарий
-    edit_outcome: Редактировать результат
+    edit_outcome: Редактировать вывод
     announce_outcome: Сообщите людям об этом результате
     announce_outcome_active: "(Никто еще не был уведомлен об этом результате)"
-    translate_outcome: Перевести результат
+    translate_outcome: Перевести вывод
     show_history: Показать историю изменений
     edited: Изменено
     show_edits: Показать изменения
     show_notifications: Показать уведомления
     history: История
     pin_thread: Закрепить тему
-    unpin_thread: Открепить нить
+    unpin_thread: Открепить ветку
     pin_event: Закрепить на временной шкале
     unpin_event: Открепить от временной шкалы
     comment_copied: URL комментария скопирован в буфер обмена.
@@ -1339,7 +1339,7 @@ ru:
       loud_aria_description: Громкость уведомлений для этой группы установлена на Громко. Вы будете получать электронное письмо, когда будет активность.
       loud_message: Вы будете получать по электронной почте обо всех действиях в «%{name}».
       normal: 'Просто отправьте электронное письмо о важных событиях: новые темы и предложения, результаты и т. д.'
-      normal_aria_description: Громкость уведомлений для этой группы установлена на «Обычная». Вам просто будут приходить по электронной почте сообщения о важных событиях, например, когда кто-то начинает новую беседу, выдвигает предложение или устанавливает результат.
+      normal_aria_description: Для этой группы у вас выбран обычный уровень уведомлений. Вы будете получать письма только о важных событиях, например, когда кто-то начинает новую ветку, выдвигает предложение или публикует вывод.
       normal_message: Вы будете получать электронные письма только о важных событиях в "%{name}".
       quiet: Не пишите об этой группе. Активность будет отображаться на информационной панели.
       quiet_aria_description: Громкость уведомлений для этой группы установлена на «Тихо». Вы не будете получать электронные письма о активности в этой группе. Активность группы будет отображаться на вашей информационной панели.
@@ -1660,6 +1660,7 @@ ru:
     updated_on_sign_in: Предоставляется вашим браузером и обновляется при входе в систему.
     translate_content_automatically: Переводить контент на мой язык автоматически
     bot_account_warning: Боты не будут приглашаться к голосованию в опросах или участию в обсуждениях.
+    translations_are_made_by_machine: Переводы сделаны автоматически. Если слово неверное или непонятное, напишите на %{email}, и мы исправим.
   text_editor:
     x_of_y_characters: "%{x}/%{y} символов"
     select_text_to_link: Выделите текст для ссылки и повторите попытку.
@@ -1729,7 +1730,7 @@ ru:
     group_notifications: Групповые уведомления
     group_notifications_description: Измените уровень активности и канал для ваших групп
     choose_email_and_push_updates: Выберите отдельные настройки для электронной почты и push-уведомлений.
-    catch_up_email: Электронное письмо с наверстыванием упущенного
+    catch_up_email: Письмо со сводкой
     catch_up_email_description: Выберите, когда получать уведомления о непрочитанных сообщениях и информацию о непрочитанной активности.
   thread_preview:
     replies_count: "%{count} ответов"
@@ -1784,7 +1785,7 @@ ru:
       thisweek: На этой неделе
       thismonth: Этот месяц
       older: Старше месяца
-    dashboard: Панель инструментов
+    dashboard: Лента
     recent_discussions: Недавние обсуждения
     view_recent: Просмотреть все недавние обсуждения?
     discussion_marked_as_read: Обсуждение отмечено как прочитанное
@@ -1849,7 +1850,7 @@ ru:
     n_more: Загрузить %{count} ответов
     add_comment: Добавить комментарий
     add_poll: Добавить опрос
-    add_outcome: Добавить результат
+    add_outcome: Добавить вывод
     comment: Комментарий
     facilitate: Способствовать
     start_decision: Начать решение
@@ -1950,13 +1951,13 @@ ru:
     consent_title: Согласие
     consensus_title: Консенсус
     proposal_title: Предложение
-    count_title: Выбрать в
-    check_title: Проверка чувств
+    count_title: Запись
+    check_title: Проверка мнений
     poll_title: Опрос
     meeting: Встреча
     score_title: Оценка опроса
-    dot_vote_title: Точечное голосование
-    meeting_title: Голосование за время встречи
+    dot_vote_title: Распределение баллов
+    meeting_title: Опрос времени
     ranked_choice_title: Порядок ранжированния
     gradients_of_agreement_title: Градиенты согласия
     majority_title: Большинство
@@ -1991,7 +1992,7 @@ ru:
     name_lte_voter_percent: "%{name} не должен превышать %{percent}% от числа имеющих право голоса избирателей"
     vote_share_requirement: Требование к доле голосов
     for_the_proposal_to_pass: Для того чтобы предложение было принято, этот вариант должен получить…
-    for_the_poll_to_be_valid: Чтобы %{poll_type} был действительным, этот параметр должен получить…
+    for_the_poll_to_be_valid: Чтобы признать %{poll_type} действительным, этот вариант должен получить…
     points_cast: Начисленные баллы
   poll_common:
     superseded: Заменено
@@ -2053,8 +2054,8 @@ ru:
     participate: Участвовать
     vote: Голосование
     votes: Голоса
-    update_outcome: Обновить результат
-    outcome: Исход
+    update_outcome: Обновить вывод
+    outcome: Вывод
     outcomes: Результаты
     statement: Заявление
     change_your_stance: Изменить ответ
@@ -2081,7 +2082,7 @@ ru:
     too_long: Слишком долго
     edit_warning: Редактирование рекомендуется только для внесения незначительных изменений или исправления орфографических ошибок. Если есть существенные изменения, закройте этот %{pollType} и начните новый.
     no_voting: Только для обсуждения, голосование отключено
-    post_outcome: Опубликовать результат
+    post_outcome: Опубликовать вывод
     view_all_votes: Посмотреть все голоса
     you_voted: Вы проголосовали
     these_are_templates: Это шаблоны решений в вашей группе. Щелкните по шаблону, чтобы начать принятие нового решения. Администраторы могут настроить все параметры шаблона, чтобы он соответствовал правилам вашей организации и был удобен для поиска и использования участниками.
@@ -2273,12 +2274,12 @@ ru:
     started_by: Автор %{name}
   poll_common_votes_panel:
     vote_removed: Голосование удалено
-    undecided: Не определился
+    undecided: Не проголосовали
     newest_first: Новички вперед
     oldest_first: Сначала старые
     priority_first: Согласитесь сначала
     priority_last: Сначала заблокировать
-    undecided_first: Сначала не определился
+    undecided_first: Сначала не проголосовавшие
     no_votes_yet: Голоса еще не поданы.
     change_results_order: Изменить порядок результатов
     none_of_the_above: "(Ни один из вышеперечисленных)"
@@ -2300,7 +2301,7 @@ ru:
     participation_records_restricted: Список участников можно посмотреть после завершения голосования
     vote_weight: Вес голоса %{weight}
   poll_common_undecided_panel:
-    show_undecided: Показать %{count} не определился
+    show_undecided: Показать не проголосовавших (%{count})
     show_invitations: Показать ожидающие приглашения
     undecided_users: Не определено (%{count})
     invitation_count_singular: Еще 1 человек был приглашен к участию по электронной почте
@@ -2311,17 +2312,17 @@ ru:
   poll_common_set_outcome_panel:
     enter_outcome: Введите результат
     poll_type: Этот %{poll_type} закрыт. Уделите время обдумыванию результатов, а затем поделитесь ими, чтобы люди знали, что будет дальше.
-    enter_an_outcome: Введите результат
+    enter_an_outcome: Введите вывод
   poll_common_outcome_form:
     review_due_in_days: Пересмотреть решение через сколько дней?
     review_date: Дата рассмотрения
     review_date_hint: Установите дату пересмотра решения (необязательно)
     who_to_notify: Кого вы хотите уведомить о таком результате? (необязательный)
     outcome_statement_template: Образец отчета о результатах
-    new_title: Государственный результат
-    update_title: Обновить результат
-    outcome_created: Результат создан
-    outcome_updated: Результат обновлен
+    new_title: Поделиться выводом
+    update_title: Обновить вывод
+    outcome_created: Вывод создан
+    outcome_updated: Вывод обновлен
     statement_placeholder: Обобщите ответы и объясните, что будет дальше.
     you_will_be_notified: Вы будете уведомлены о дате рассмотрения.
     submit: Поделиться результатами
@@ -2361,12 +2362,12 @@ ru:
     title_placeholder: Например, куда вы хотите поехать в отпуск?
     details_placeholder: Укажите любую уточняющую информацию, которая может понадобиться людям для ответа на вопрос.
     add_option_placeholder: Добавить вариант
-    new_option: Новая опция
+    new_option: Новый вариант
     add_option_hint: Введите короткое имя для опции
     remove_option: Удалить опцию
     poll_created: Опрос создан
     poll_updated: Опрос обновлен
-    option_added: Опция добавлена
+    option_added: Вариант добавлен
     option_already_added: Вариант уже добавлен в опрос
   poll_dot_vote_form:
     dots_per_person: Баллы на человека
@@ -2385,9 +2386,9 @@ ru:
     add_option_placeholder: Введите новый выбор
     minimum_stance_choices: Варианты ранжирования
     minimum_stance_choices_hint: т.е. Оцените 3 лучших вкуса мороженого
-    ranked_choice_created: Рейтинговый выбор создан.
-    ranked_choice_updated: Рейтинговый выбор обновлен.
-    rank: Классифицировать
+    ranked_choice_created: Ранжирование создано
+    ranked_choice_updated: Ранжирование обновлено
+    rank: Ранжирование
     points: Точки
     average: Средний
     mean: Иметь в виду
@@ -2415,7 +2416,7 @@ ru:
     select_an_option: Выберите вариант
     'yes': Да
     'no': Нет
-    agree: Соглашаться
+    agree: Согласен
     consent: Согласие
     abstain: Воздерживаться
     unsure: Не уверен
@@ -2664,8 +2665,8 @@ ru:
       poll_expired: Срок опроса истекает
       poll_closed_by_user: Опрос закрывается вручную
       poll_reopened: Опрос вновь открыт для голосования
-      outcome_created: Результат общий
-      outcome_updated: Результат обновлен
+      outcome_created: Вывод опубликован
+      outcome_updated: Вывод обновлен
       outcome_review_due: Ожидается рассмотрение результатов
       new_discussion: Обсуждение началось
       discussion_edited: Обсуждение редактируется
@@ -2772,7 +2773,10 @@ ru:
         submit: Посмотреть шаблоны предложений
       share_an_outcome:
         title: Поделитесь результатом предложения
-        helptext: "<p>Чтобы помочь продвинуть решения, предложения имеют крайний срок для голосования. Когда крайний срок будет достигнут, голосование будет закрыто, и вы получите уведомление о том, что вам нужно поделиться результатом предложения.</p><p> Результат — это возможность сказать, было ли предложение успешным и что будет дальше.</p><p> Если срок подачи вашего предложения еще не истек, но вы все равно хотите продолжить, вы можете нажать <b>«Закрыть досрочно»</b> .</p><p> Когда придет время, <b>введите результат</b> вашего предложения.</p>"
+        helptext: |
+          <p>Когда наступит крайний срок предложения, голосование закроется и вам предложат поделиться выводом.</p>
+          <p>В выводе вы объясняете, что решили (или что будет дальше), изучив голоса и комментарии.</p>
+          <p>Если срок ещё не истёк, но вы готовы двигаться дальше, можно <b>Закрыть досрочно</b>.</p>
         submit: Посмотреть предложение
         cancel: Сделай это позже
       start_a_discussion:
@@ -2803,7 +2807,7 @@ ru:
       voting_title: За 24 часа до окончания голосования отправьте напоминание
       nobody: Никто
       author: Автор (я)
-      undecided_voters: Неопределившиеся избиратели
+      undecided_voters: Не проголосовали
       voters: Все избиратели
     notify_on_participate:
       title: Сообщите мне, когда люди примут участие
@@ -2839,7 +2843,7 @@ ru:
     choose_at_least: Выберите по крайней мере
     choose_at_most: Выбирайте максимум
     please_review_the_form: Пожалуйста, просмотрите форму.
-    option_added_please_add_details: Добавлена опция! Пожалуйста, добавьте подробности, чтобы люди понимали, что это значит.
+    option_added_please_add_details: Вариант добавлен. Добавьте подробности, чтобы люди понимали, что он означает.
     default_duration_in_days: Длительность по умолчанию в днях
     how_many_options_can_a_voter_choose: Сколько вариантов может выбрать избиратель?
     minimum_choices: Минимальный выбор
@@ -2858,18 +2862,18 @@ ru:
       question_hint: Приглашаем задавать вопросы и оставлять комментарии по вашему предложению
       show_thumbs: Поднятие большого пальца
       show_thumbs_hint: Избиратели выбирают большой палец вверх, вниз, в сторону или поднятую руку.
-      choose: Выбирать
+      choose: Выбор
       simple_poll: Простой опрос
       choose_hint: Избиратели выбирают лучший вариант (или варианты)
-      score: Счет
+      score: Оценка
       score_hint: Избиратели присваивают оценку каждому варианту
-      allocate: Выделить
+      allocate: Распределение
       allocate_hint: Избиратели распределяют бюджет баллов между вариантами
-      ranked_choice: Рейтинговый выбор
+      ranked_choice: Ранжирование
       ranked_choice_hint: Избиратели располагают варианты в порядке от наиболее к наименее предпочтительному
       time_poll: Опрос времени
       time_poll_hint: Избиратели указывают, когда они готовы встретиться
-      rank: Классифицировать
+      rank: Ранжирование
       time: Время
       stv: Выборы STV
       stv_hint: Пропорциональное избрание нескольких победителей с использованием единого передаваемого голоса.
@@ -2917,7 +2921,7 @@ ru:
     anonymous_voting: Анонимное голосование
     votes_are_anonymous: Голосование анонимно.
     vote_reason: Причина голосования
-    quorum_tip_vote_share_requirement: 'Совет: Вы также можете указать уровень согласия, необходимый для принятия предложения. Измените параметр, чтобы определить требуемое количество голосов.'
+    quorum_tip_vote_share_requirement: 'Совет: вы также можете указать уровень согласия для принятия предложения. Измените вариант, чтобы задать требуемую долю голосов'
     how_much_time_to_vote: Сколько времени вы дадите людям для голосования?
     default_duration_in_days_hint: Сколько дней людям предстоит голосовать?
     define_minimum_and_maxmimum_score: Определите минимальную и максимальную оценку, которую избиратель может дать варианту
@@ -2965,7 +2969,7 @@ ru:
     set_all_vote_weights_the_same: Установите одинаковый вес для всех голосов
     member_vote_weights_hint: Избиратели, не являющиеся действующими членами какой-либо группы, получают вес голоса, равный 1
     weighted_voting: Взвешенное голосование
-    weighted_voting_is_not_available_with_anonymous_voting: "Взвешенное голосование недоступно при анонимном голосовании"
+    weighted_voting_is_not_available_with_anonymous_voting: Взвешенное голосование недоступно при анонимном голосовании
     use_weighted_voting: Используйте взвешенное голосование
     weighted_voting_off_warning: Отключение взвешенного голосования устанавливает вес каждого голоса равным 1. Все веса голосов, которые вы изменили для этого опроса, будут потеряны.
     weighted_voting_on_group: Включение взвешенного голосования копирует вес голоса каждого участника по умолчанию. Другим избирателям присваивается вес голоса, равный 1.
@@ -3061,7 +3065,7 @@ ru:
       success: Обсуждение перенесено в %{name}
     move_thread_title: Переместить тему
     destination: Место назначения
-    direct_thread: Прямая тема
+    direct_thread: Личная ветка
     direct_thread_hint: Все участники сохранят доступ. Вы и создатель темы будете администраторами темы.
     direct_thread_anonymous_poll: Темы, содержащие анонимные опросы, нельзя преобразовать в прямые сообщения, поскольку это может раскрыть, кто голосовал.
   auth:
@@ -3129,7 +3133,7 @@ ru:
     view_full_results: Посмотреть полные результаты
     results_available_when_closed: Результаты будут доступны после закрытия голосования.
     elected_in_round: Избран в раунде %{round}
-    eliminated_in_round: Устранен в раунде %{round}
+    eliminated_in_round: Выбыл в раунде %{round}
     tied_in_round: Ничья в раунде %{round}
   lock_thread_modal:
     body: Блокировка тем позволяет удалить их из списка открытых тем и предотвратить комментирование.
@@ -3151,7 +3155,7 @@ ru:
       Poll: Голосование
       Comment: Комментарий
       Stance: Голосование
-      Outcome: Исход
+      Outcome: Вывод
   set_password_prompt:
     title: Установить пароль?
     helptext: В следующий раз вы сможете войти в систему, используя пароль, вместо того чтобы ждать ссылку по электронной почте.

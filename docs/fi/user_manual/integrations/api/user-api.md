@@ -1,10 +1,10 @@
 ---
 title: Käyttäjän API
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/integrations/api/user-api.md
+source_revision: c27ee3b193231816878f1c074ff9fc2a086a88c0
+source_file: docs/en/user_manual/integrations/api/user-api.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-30'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-02'
 sections:
   introduction: a43c8b800d13fd33
   authentication-change: 06b5c2cd9d9e72a0
@@ -73,72 +73,72 @@ sections:
   params-13: 249b307203206387
   example-18: ffd950cd7ab5aaec
 generated:
-  introduction: 6c95f0ef2a5d0747
-  authentication-change: ef5565f4bac05366
-  response-size-and-related-records: 1ea8996ccd5ca9e4
-  endpoint-summary: 812a669b54bbc4d0
+  introduction: d07b87d84d8a2d84
+  authentication-change: b29de95ecde78917
+  response-size-and-related-records: ba02666ea46d2e10
+  endpoint-summary: fcb70b7c0cea3f0c
   groups: 90cb5d1f24e992a5
-  list-groups: df684aa56efc78a1
-  get-a-group: 87ced5f9a42a7d8d
-  webhooks: f565394547a58b3a
-  list-webhooks: 98f8a771a4c04f09
-  create-a-webhook: e0c7dbd1c08c271a
-  update-a-webhook: a25fbbf239fcc11f
-  test-a-webhook-destination: 27f192cbf55a4f93
-  delete-a-webhook: 80a1f3375889563e
-  event-types: dd8f8986f1e24c8f
-  http-delivery: eada4d7167eb42ce
-  payload-formats: 92f516b8fb744530
-  search: da94961f07100d11
-  params: 5f1f26fbf3a48a0f
-  participation-report: e4b9c69857540db3
-  params-2: 59e72438bd28860c
-  example: 7dfb3f60859b9fe8
+  list-groups: a0216170b5516e8f
+  get-a-group: 8ce5f7e4ca42def1
+  webhooks: e73d4cb7f83c25b4
+  list-webhooks: '0387f1d6cc96806d'
+  create-a-webhook: 5c42ceb979bf7be7
+  update-a-webhook: 7fe0a1d8d85a045f
+  test-a-webhook-destination: 2203bfb14340e55e
+  delete-a-webhook: ee38768ab918d87f
+  event-types: 9f9748babb039cae
+  http-delivery: 2d1d6fc5d7922698
+  payload-formats: d394fecd58bbed23
+  search: 5ab45c77ade684bf
+  params: 18b48012ddcd0572
+  participation-report: 55fd9e3db40b5ff0
+  params-2: 3ce560e91874fccf
+  example: 01d33d8209063373
   create-discussion: da1c062e7de1bcd0
-  params-3: 6a86b878a64e712c
+  params-3: 9ae4acf51195bbf4
   example-2: 0fba0ddffe1d1f8f
-  show-discussion: 2778ff537e0822fa
+  show-discussion: a0f0fd98588caee0
   example-3: c7ed6992d843dd65
-  list-discussions: a872d7d650b3be39
-  params-4: 1cd0fa9d9232c807
+  list-discussions: 31c839cd56ed070c
+  params-4: 136152ba8bae6165
   example-4: b222dce2575e8280
-  list-threads: f5fde109cca72501
-  params-5: 388daffe7494ea6d
+  list-threads: 0d23c4d0ca44592d
+  params-5: 0b0fe85e8e19ca8a
   example-5: d6cf4d886a1df9b7
-  read-thread: 8f5a6754db1648ba
-  example-6: e2131309d330a532
+  read-thread: bea454a082df94fd
+  example-6: 798c96404980d157
   edit-discussion: ade6029d0315e52e
-  params-6: 570e1d19835a4a95
+  params-6: 4326a178b57c8764
   example-7: d08e45b4083b8410
-  soft-delete-discussion: 7ebe8097253c1030
+  soft-delete-discussion: 22a822b4aaaee4a5
   example-8: f962c071ea9159d2
   create-comment: c539a5a7b04b4033
-  params-7: dab88b27a02241be
+  params-7: 2c59a4319642bac9
   example-9: '00959cecc9acc4ae'
   edit-comment: 603505df828e5c81
-  params-8: 0f1d5296a760810f
+  params-8: e80313ec8cce7257
   example-10: 7364c0a3dbb727dd
-  soft-delete-comment: e87c02ef4f7709c6
+  soft-delete-comment: 7c3aa060d0bbcb08
   example-11: 8c932571964443df
   create-poll: 93833cd2686a96d2
-  params-9: 3582d580d886d879
+  params-9: 27f2c2fc396c2f30
   example-12: 9611661842c9b137
-  show-poll: f438fecfa0feeff2
+  show-poll: 86b2d478fd42b23f
   example-13: 0ecae479bcd60370
-  list-polls: b530a76d4a046042
-  params-10: 68d03ea84e14b66c
+  list-polls: 59956b0a0f9baee4
+  params-10: 9485f84bbec4b30c
   example-14: 25eed6385a44588a
   edit-poll: 8cefc97698f1d60b
-  params-11: e8b3287ff6fb1af7
+  params-11: d9f882c7f9142eb8
   example-15: 95f3d16271c830f4
-  soft-delete-poll: 4ddd6e9f63ec1b7a
+  soft-delete-poll: 2cff9010c57d9ff4
   example-16: a8cd755e3914d3c2
-  list-memberships: e8217cfaaddebed2
-  params-12: 6446f97d4bee530c
+  list-memberships: 94318c793bc7bc72
+  params-12: c1652df746fd2551
   example-17: ead5bc61074133f2
-  manage-memberships: 709e8d046137c799
-  params-13: 516005428bce7726
-  example-18: 3ec1f78536421977
+  manage-memberships: 1f3c0ebc29a57f78
+  params-13: 9015b8df81da3faa
+  example-18: 225d4952c4d2130d
 title_source: c23fb6526b722360
 title_generated: 5b15ba096ff57860
 ---
@@ -147,75 +147,75 @@ title_generated: 5b15ba096ff57860
 
 # Loomion käyttäjän API:n dokumentaatio
 
-<!-- seo-description: Loomion käyttäjän API:n avulla voit luoda ja hallita keskusteluja, kommentteja, kyselyitä, ketjuja ja ryhmäjäsenyyksiä muista ohjelmistoista. -->
+<!-- seo-description: Luo ja hallitse keskusteluja, kommentteja, kyselyjä, ketjuja ja ryhmien jäsenyyksiä muista ohjelmistoista Loomion käyttäjän API:n avulla. -->
 
-`/api/b2` on Loomio-integraatioiden käyttäjäkohtainen API. Se käyttää käyttäjätilin API-avainta, ja kaikki toiminnot tehdään kyseisen käyttäjän nimissä.
+`/api/b2` on käyttäjille tarkoitettu API Loomio-integraatioita varten. Se käyttää käyttäjätilin API-avainta, ja jokainen toiminto suoritetaan kyseisenä käyttäjänä.
 
-Ryhmiä koskevissa toiminnoissa noudatetaan API-avaimen käyttäjän jäsenyyksiä ja ryhmäoikeuksia. Instanssin ylläpitäjän asema ei laajenna API-avaimen pääsyä ryhmiin tai sisältöön. Käytä instanssin hallintaan palvelimen API:a.
+Ryhmiin kohdistuvat toiminnot käyttävät API-avaimen käyttäjän jäsenyyksiä ja ryhmäkohtaisia käyttöoikeuksia. Loomio-asennuksen ylläpitäjän asema ei laajenna API-avaimen pääsyä ryhmiin tai sisältöön. Käytä palvelimen API:a asennustason hallintaan.
 
-Käytä sen Loomio-käyttäjätilin API-avainta, jonka nimissä toiminnot tehdään. Erillinen bottitili on hyödyllinen, jos integraatiota ei pidä kutsua kyselyihin tai sen ei pidä saada ilmoituksia.
+Käytä sen Loomio-käyttäjätilin API-avainta, joka suorittaa toiminnot. Erillinen bottitili on hyödyllinen, kun integraatiota ei pidä kutsua kyselyihin tai sen ei pidä saada ilmoituksia.
 
-Kirjautuneet käyttäjät löytävät API-avaimensa ja ryhmiensä tunnukset [API-käyttösivulta](/profile/api_access).
+Kirjautuneet käyttäjät löytävät API-avaimensa ja ryhmien tunnukset [API-käyttöoikeuksien sivulta](/profile/api_access).
 
-Lähetä API-avain `Authorization: Bearer` -otsakkeessa. Kyselymerkkijonossa lähetetyt API-avaimet hylätään, koska välityspalvelimet ja käyttölokit voivat tallentaa URL-osoitteita.
+Lähetä API-avain `Authorization: Bearer` -otsakkeessa. Kyselymerkkijonoissa olevat API-avaimet hylätään, koska URL-osoitteet voivat tallentua välityspalvelimiin ja käyttölokeihin.
 
 <!-- translation-section: authentication-change -->
 
 ### Todennuksen muutos
 
-API-avain hyväksyttiin aiemmin URL-parametrina `api_key`. Pyynnöt, joissa käytetään parametria `?api_key=YOUR_API_KEY`, eivät enää toimi. Käytä sen sijaan HTTP-otsaketta `Authorization`:
+API-avain hyväksyttiin aiemmin URL-osoitteen `api_key`-parametrina. Pyynnöt, joissa käytetään `?api_key=YOUR_API_KEY`, eivät enää toimi. Käytä sen sijaan HTTP:n `Authorization`-otsaketta:
 
 ```text
 Authorization: Bearer YOUR_API_KEY
 ```
 
-Esimerkeissä käytetään arvoja `YOUR_API_KEY`, ryhmätunnusta `123` ja osoitetta `https://www.loomio.com/`. Korvaa ne omalla API-avaimellasi, ryhmätunnuksellasi ja Loomio-asennuksesi URL-osoitteella.
+Esimerkeissä käytetään arvoja `YOUR_API_KEY`, ryhmän tunnusta `123` ja osoitetta `https://www.loomio.com/`. Korvaa ne omalla API-avaimellasi, ryhmän tunnuksella ja Loomio-asennuksesi URL-osoitteella.
 
 <!-- translation-section: response-size-and-related-records -->
 
 ## Vastauksen koko ja liittyvät tietueet
 
-Käyttäjän API:n vastaukset ovat yhdistelmämuotoisia: ensisijaisten tietueiden mukana tulee niihin liittyviä tietueita, kuten aiheita, ryhmiä, käyttäjiä, kyselyitä ja reaktioita. Näin asiakasohjelma voi täyttää paikallisen tietuevarastonsa yhdellä pyynnöllä, mutta vastaus voi sisältää enemmän tietoa kuin yksinkertainen integraatio tarvitsee.
+Käyttäjän API:n vastaukset käyttävät yhdistelmämuotoa: ensisijaisten tietueiden mukana palautetaan liittyviä tietueita, kuten aiheita, ryhmiä, käyttäjiä, kyselyjä ja reaktioita. Näin asiakasohjelma voi täyttää paikallisen tietuevaraston yhdellä pyynnöllä, mutta vastaus voi sisältää enemmän tietoa kuin yksinkertainen integraatio tarvitsee.
 
-Anna parametri `compact=1`, jos haluat jättää pois tilaa vievät liittyvät aiheet, ryhmät, pääryhmät, jäsenyydet, reaktiot, tunnisteet ja käännökset. Ensisijaiset tietueet ja niiden sisällön tulkintaan tarvittavat liittyvät tietueet säilyvät vastauksessa.
+Anna `compact=1`, jos haluat jättää pois paljon tilaa vievät liittyvät aiheet, ryhmät, pääryhmät, jäsenyydet, reaktiot, tunnisteet ja käännökset. Ensisijaiset tietueet ja niiden sisällön tulkintaan tarvittavat liittyvät tietueet säilyvät vastauksessa.
 
 ```bash
 curl -H 'Authorization: Bearer YOUR_API_KEY' 'https://www.loomio.com/api/b2/threads/123/items?compact=1'
 ```
 
-Jos haluat valita pois jätettävät tyypit itse, anna parametrille `exclude_types` välilyönneillä erotetut tietuetyypit yksikkömuodossa. Esimerkiksi `exclude_types=group reaction` jättää pois liittyvät ryhmät ja reaktiot. Tavallisia arvoja ovat `topic`, `group`, `parent`, `membership`, `reaction`, `tag`, `translation`, `user`, `discussion`, `poll`, `poll_option`, `stance`, `stance_choice`, `outcome` ja `topic_item`. Poisjättö koskee liittyviä tietueita, ei päätepisteestä pyydettyä ensisijaista resurssia.
+Jos haluat hallita poissulkemista tarkemmin, anna `exclude_types` ja välilyönneillä erotetut tietuetyypit yksikkömuodossa. Esimerkiksi `exclude_types=group reaction` jättää pois liittyvät ryhmät ja reaktiot. Tavallisia arvoja ovat `topic`, `group`, `parent`, `membership`, `reaction`, `tag`, `translation`, `user`, `discussion`, `poll`, `poll_option`, `stance`, `stance_choice`, `outcome` ja `topic_item`. Poissulkeminen koskee liittyviä tietueita, ei rajapintapisteeltä pyydettyä ensisijaista resurssia.
 
-Kokoelmavastauksissa on `meta.total`, kun kokoelman tarkka koko on määritetty. Kokonaismäärä lasketaan ennen parametrien `limit` ja `offset` käyttöä. Esimerkiksi hakupäätepiste jättää `meta.total`-kentän pois, kun se palauttaa tarkoituksella rajatun tulosjoukon. Se ei palauta arvoa `null`.
+Kokoelmavastaukset sisältävät kentän `meta.total`, kun kokoelman tarkka koko on määritelty. Kokonaismäärä lasketaan ennen parametrien `limit` ja `offset` soveltamista. Rajapintapisteet, kuten haku, jotka palauttavat tarkoituksella rajatun tulosjoukon, jättävät kentän `meta.total` pois sen sijaan, että palauttaisivat arvon `null`.
 
 <!-- translation-section: endpoint-summary -->
 
-## Päätepisteiden yhteenveto
+## Rajapintapisteiden yhteenveto
 
-| Menetelmä | Päätepiste | Tarkoitus |
+| Metodi | Rajapintapiste | Tarkoitus |
 | --- | --- | --- |
 | `GET` | `/api/b2/groups` | Listaa API-avaimen käyttäjän ryhmät |
-| `GET` | `/api/b2/groups/:id_or_key_or_handle` | Hae käyttäjälle näkyvä ryhmä |
+| `GET` | `/api/b2/groups/:id_or_key_or_handle` | Hae näkyvissä oleva ryhmä |
 | `GET` | `/api/b2/reports` | Luo osallistumisraportti |
-| `GET` | `/api/b2/search` | Hae näkyvistä keskusteluista, kommenteista, kyselyistä, äänistä ja yhteenvedoista |
+| `GET` | `/api/b2/search` | Hae näkyvissä olevia keskusteluja, kommentteja, kyselyjä, ääniä ja johtopäätöksiä |
 | `POST` | `/api/b2/discussions` | Luo keskustelu |
 | `GET` | `/api/b2/discussions/:id` | Hae keskustelu |
 | `GET` | `/api/b2/discussions` | Listaa ryhmän keskustelut |
 | `PATCH` | `/api/b2/discussions/:id` | Muokkaa keskustelua |
-| `DELETE` | `/api/b2/discussions/:id` | Poista keskustelu pehmeästi |
-| `GET` | `/api/b2/threads` | Listaa näkyvät keskusteluketjut ja erillisten kyselyiden ketjut |
+| `DELETE` | `/api/b2/discussions/:id` | Poista keskustelu säilyttäen sen tietue |
+| `GET` | `/api/b2/threads` | Listaa näkyvissä olevat keskusteluketjut ja itsenäisten kyselyjen ketjut |
 | `GET` | `/api/b2/threads/:topic_id` | Hae ketju |
 | `GET` | `/api/b2/threads/:topic_id/items` | Hae ketjun kohteet järjestyksessä |
 | `GET` | `/api/b2/threads/:topic_id/markdown` | Hae koko ketju Markdown-muodossa |
 | `POST` | `/api/b2/comments` | Luo kommentti tai vastaus |
 | `PATCH` | `/api/b2/comments/:id` | Muokkaa kommenttia |
-| `DELETE` | `/api/b2/comments/:id` | Poista kommentti pehmeästi |
+| `DELETE` | `/api/b2/comments/:id` | Poista kommentti säilyttäen sen tietue |
 | `POST` | `/api/b2/polls` | Luo kysely |
 | `GET` | `/api/b2/polls/:id` | Hae kysely |
 | `GET` | `/api/b2/polls` | Listaa ryhmän kyselyt |
 | `PATCH` | `/api/b2/polls/:id` | Muokkaa kyselyä |
-| `DELETE` | `/api/b2/polls/:id` | Poista kysely pehmeästi |
+| `DELETE` | `/api/b2/polls/:id` | Poista kysely säilyttäen sen tietue |
 | `GET` | `/api/b2/memberships` | Listaa ryhmän jäsenyydet |
-| `POST` | `/api/b2/memberships` | Lisää jäseniä ja halutessasi poista luettelosta puuttuvat jäsenet |
+| `POST` | `/api/b2/memberships` | Lisää jäseniä ja poista halutessasi luettelosta puuttuvat jäsenet |
 | `GET` | `/api/b2/chatbots` | Listaa ryhmän chat-integraatiot ja webhookit |
 | `POST` | `/api/b2/chatbots` | Luo chat-integraatio tai webhook |
 | `PATCH` | `/api/b2/chatbots/:id` | Päivitä chat-integraatio tai webhook |
@@ -230,7 +230,7 @@ Kokoelmavastauksissa on `meta.total`, kun kokoelman tarkka koko on määritetty.
 
 ### Listaa ryhmät
 
-Palauta ryhmät, joissa API-avaimen käyttäjällä on aktiivinen jäsenyys.
+Palauttaa ryhmät, joissa API-avaimen käyttäjällä on aktiivinen jäsenyys.
 
 `GET /api/b2/groups`
 
@@ -238,17 +238,17 @@ Palauta ryhmät, joissa API-avaimen käyttäjällä on aktiivinen jäsenyys.
 curl -H 'Authorization: Bearer YOUR_API_KEY' https://www.loomio.com/api/b2/groups
 ```
 
-Vastaus sisältää kaikki ehdot täyttävät tietueet sivuttamattomassa `groups`-taulukossa. Mukana ovat pääryhmät ja alaryhmät, myös ryhmät, joiden tilaus ei ole tällä hetkellä voimassa. Tarkista `enabled`-kenttä, jos integraation pitää käsitellä vain käytössä olevia ryhmiä.
+Vastaus sisältää kaikki hakuehtoja vastaavat tietueet sivuttamattomassa `groups`-taulukossa. Mukana ovat pääryhmät ja alaryhmät, myös ryhmät, joiden tilaus ei ole tällä hetkellä aktiivinen. Tarkista `enabled`-kenttä, kun integraation pitää toimia vain käytössä olevissa ryhmissä.
 
-Tärkeitä ryhmän kenttiä ovat:
+Keskeisiä ryhmän kenttiä ovat:
 
 | Kenttä | Kuvaus |
 | --- | --- |
-| `id` | Numeerinen ryhmätunnus, jota muut käyttäjän API:n päätepisteet käyttävät |
-| `key` | Loomion URL-osoitteissa käytetty pysyvä lyhyt tunnus |
-| `handle` | Ihmiselle luettava ryhmätunniste |
+| `id` | Ryhmän numeerinen tunnus, jota muut käyttäjän API:n rajapintapisteet käyttävät |
+| `key` | Pysyvä lyhyt avain, jota käytetään Loomion URL-osoitteissa |
+| `handle` | Ryhmän helppolukuinen tunniste |
 | `name` | Ryhmän nimi |
-| `full_name` | Ryhmän nimi pääryhmän yhteydessä |
+| `full_name` | Ryhmän nimi pääryhmän konteksti mukaan lukien |
 | `parent_id` | Alaryhmän pääryhmän numeerinen tunnus, muuten `null` |
 | `enabled` | Ovatko ryhmä ja sen tilaus aktiivisia |
 | `memberships_count` | Aktiivisten ja odottavien jäsenyyksien määrä |
@@ -257,52 +257,52 @@ Tärkeitä ryhmän kenttiä ovat:
 | `admin_memberships_count` | Ryhmän ylläpitäjien määrä |
 | `delegates_count` | Edustajien määrä |
 | `discussions_count` | Suoraan ryhmään kuuluvien keskustelujen määrä |
-| `polls_count` | Suoraan ryhmään kuuluvien kyselyiden määrä |
+| `polls_count` | Suoraan ryhmään kuuluvien kyselyjen määrä |
 | `subgroups_count` | Alaryhmien määrä |
 
-Vastaus voi sisältää myös muita ryhmäasetuksia, liittyviä pääryhmän tietueita ja API-käyttäjän jäsenyyksiä. Asiakasohjelman tulee ohittaa kentät, joita se ei käytä.
+Vastaus voi sisältää myös muita ryhmän asetuksia, liittyviä pääryhmän tietueita ja API-käyttäjän jäsenyyksiä. Asiakasohjelmien tulee jättää huomiotta kentät, joita ne eivät käytä.
 
 <!-- translation-section: get-a-group -->
 
 ### Hae ryhmä
 
-Palauta yksi API-avaimen käyttäjälle näkyvä ryhmä.
+Palauttaa yhden API-avaimen käyttäjälle näkyvän ryhmän.
 
 `GET /api/b2/groups/:id_or_key_or_handle`
 
-Tunnisteena voi käyttää ryhmän numeerista tunnusta, lyhyttä tunnusta tai ryhmätunnistetta.
+Tunniste voi olla ryhmän numeerinen tunnus, avain tai helppolukuinen tunniste.
 
 ```bash
 curl -H 'Authorization: Bearer YOUR_API_KEY' https://www.loomio.com/api/b2/groups/123
 curl -H 'Authorization: Bearer YOUR_API_KEY' https://www.loomio.com/api/b2/groups/example-group
 ```
 
-Vastaus sisältää ryhmän `groups`-taulukossa ja käyttää samoja kenttiä kuin listauspäätepiste. Jos API-avaimen käyttäjällä ei ole pääsyä pyydettyyn ryhmään, palvelin palauttaa oikeusvirheen.
+Vastaus sisältää ryhmän `groups`-taulukossa ja käyttää samoja kenttiä kuin listauksen rajapintapiste. Jos pyyntö koskee ryhmää, johon API-avaimen käyttäjällä ei ole pääsyä, palautetaan käyttöoikeusvirhe.
 
 <!-- translation-section: webhooks -->
 
 ## Webhookit
 
-Käyttäjän API perustuu pyyntöihin: integraatio kutsuu Loomiota, kun se haluaa lukea tai muuttaa tietoja. Ryhmän webhook lähettää tietoa toiseen suuntaan. Loomio lähettää valitut ryhmän tapahtumat päätepisteeseesi niiden tapahtuessa, joten integraation ei tarvitse kysellä muutoksia REST API:sta.
+Käyttäjän API perustuu pyyntöihin: integraatio kutsuu Loomiota, kun se haluaa lukea tai muuttaa tietoja. Ryhmän webhook mahdollistaa tiedon lähettämisen toiseen suuntaan. Loomio lähettää valitut ryhmän tapahtumat rajapintapisteeseesi niiden tapahtuessa, joten integraation ei tarvitse kysellä muutoksia REST API:sta.
 
-Webhookit määritetään ryhmäkohtaisesti, ja niiden hallintaan tarvitaan ryhmän ylläpitäjän oikeudet. Voit hallita niitä Loomion käyttöliittymässä:
+Webhookit määritetään ryhmäkohtaisesti, ja niiden hallinta vaatii ryhmän ylläpitäjän oikeudet. Voit hallita niitä Loomion käyttöliittymässä:
 
 1. Avaa ryhmä.
 2. Avaa ryhmän valikko ja valitse **Chat-integraatiot**.
-3. Lisää integraatio, jonka sisältömuoto sopii päätepisteellesi. Yleiskäyttöiselle päätepisteelle sopii Mattermost/Markdown-muoto.
+3. Lisää integraatio, jonka viestimuodon rajapintapisteesi hyväksyy. Käytä yleiskäyttöiselle rajapintapisteelle Mattermost/Markdown-muotoa.
 4. Anna nimi ja kohteen URL-osoite.
-5. Valitse tapahtumat, jotka Loomion pitää lähettää automaattisesti.
+5. Valitse tapahtumat, jotka Loomion tulee lähettää automaattisesti.
 6. Tallenna integraatio ja lähetä testiviesti valitsemalla **Testaa yhteys**.
 
-Käytä HTTPS-kohdetta, jonka URL-osoitetta ei voi arvata. Loomio edellyttää, että kohdeosoite vastaa julkista osoitetta, ja estää pyynnöt paikallisiin tai yksityisiin verkko-osoitteisiin.
+Käytä HTTPS-kohdetta, jonka URL-osoitetta ei voi arvata. Loomio edellyttää, että kohde ratkeaa julkiseksi osoitteeksi, ja estää pyynnöt paikallisiin tai yksityisiin verkko-osoitteisiin.
 
-Agentit ja muut integraatiot voivat hallita webhookeja myös alla kuvattujen Bearer-todennettujen chatbot-päätepisteiden kautta. Resurssin nimi on `chatbots`, jotta se on yhteensopiva Loomion chat-integraatioiden kanssa. Se kattaa myös yleiset lähtevät webhookit.
+Agentit ja muut integraatiot voivat myös hallita webhookeja alla kuvattujen chatbot-rajapintapisteiden kautta käyttäen Bearer-todennusta. Resurssin nimi on `chatbots`, jotta se on yhteensopiva Loomion chat-integraatioiden kanssa, mutta se kattaa myös yleiset lähtevät webhookit.
 
 <!-- translation-section: list-webhooks -->
 
 ### Listaa webhookit
 
-Palauta ryhmälle määritetyt chat-integraatiot. API-avaimen käyttäjän on oltava kyseisen ryhmän ylläpitäjä. Vastaus sisältää kohteiden URL-osoitteet, joten sitä ei saa näyttää tavallisille ryhmän jäsenille.
+Palauttaa ryhmälle määritetyt chat-integraatiot. API-avaimen käyttäjän on oltava kyseisen ryhmän ylläpitäjä. Vastaus sisältää kohteiden URL-osoitteet, joten sitä ei saa näyttää ryhmän tavallisille jäsenille.
 
 `GET /api/b2/chatbots?group_id=123`
 
@@ -310,15 +310,15 @@ Palauta ryhmälle määritetyt chat-integraatiot. API-avaimen käyttäjän on ol
 curl -H 'Authorization: Bearer YOUR_API_KEY' 'https://www.loomio.com/api/b2/chatbots?group_id=123'
 ```
 
-Vastaus sisältää `chatbots`-taulukon, jossa on seuraavat kentät:
+Vastaus sisältää `chatbots`-taulukon, jossa on nämä kentät:
 
 | Kenttä | Kuvaus |
 | --- | --- |
-| `id` | Integraation tunnus, jota käytetään päivittämiseen ja poistamiseen |
-| `group_id` | Ryhmä, jonka tapahtumia lähetetään |
-| `name` | Integraation ylläpidossa käytettävä nimi |
-| `kind` | `webhook` tarkoittaa lähtevää webhookia ja `matrix` Matrix-integraatiota |
-| `webhook_kind` | Viestin muoto: `markdown`, `slack`, `discord`, `microsoft` tai `webex` |
+| `id` | Integraation tunnus, jota käytetään päivityksiin ja poistamiseen |
+| `group_id` | Tapahtumat vastaanottava ryhmä |
+| `name` | Integraation hallinnollinen nimi |
+| `kind` | `webhook` lähtevälle webhookille tai `matrix` Matrix-integraatiolle |
+| `webhook_kind` | Viestimuoto: `markdown`, `slack`, `discord`, `microsoft` tai `webex` |
 | `server` | Kohteen URL-osoite |
 | `event_kinds` | Automaattisesti lähetettävät tapahtumat |
 | `notification_only` | Sisältävätkö viestit vain ilmoituksen otsikon |
@@ -345,7 +345,7 @@ curl -X POST \
   https://www.loomio.com/api/b2/chatbots
 ```
 
-API-avaimen käyttäjän on oltava `group_id`-ryhmän ylläpitäjä. Ennen tallennusta tarkistetaan, että kohteen URL-osoite on julkinen.
+API-avaimen käyttäjän on oltava `group_id`-arvon määrittämän ryhmän ylläpitäjä. Ennen tallentamista tarkistetaan, että kohde on julkinen URL-osoite.
 
 <!-- translation-section: update-a-webhook -->
 
@@ -353,7 +353,7 @@ API-avaimen käyttäjän on oltava `group_id`-ryhmän ylläpitäjä. Ennen talle
 
 `PATCH /api/b2/chatbots/:id`
 
-Lähetä kentät, joita haluat muuttaa. Webhookia ei voi siirtää toiseen ryhmään muuttamalla `group_id`-kenttää.
+Lähetä kentät, joita haluat muuttaa. Webhookia ei voi siirtää toiseen ryhmään muuttamalla `group_id`-arvoa.
 
 ```bash
 curl -X PATCH \
@@ -367,7 +367,7 @@ curl -X PATCH \
 
 ### Testaa webhookin kohde
 
-Lähetä kohteeseen Markdown-muotoinen testiviesti ennen asetusten tallentamista tai sen jälkeen.
+Lähetä Markdown-yhteensopiva testiviesti kohteeseen ennen sen asetusten tallentamista tai sen jälkeen.
 
 `POST /api/b2/chatbots/check`
 
@@ -389,7 +389,7 @@ curl -X POST \
 curl -X DELETE -H 'Authorization: Bearer YOUR_API_KEY' https://www.loomio.com/api/b2/chatbots/456
 ```
 
-Asetusten poistaminen lopettaa tulevat lähetykset. Se ei poista ryhmän sisältöä Loomiosta.
+Asetusten poistaminen lopettaa tulevat toimitukset. Se ei poista mitään Loomio-ryhmän sisältöä.
 
 <!-- translation-section: event-types -->
 
@@ -404,9 +404,9 @@ Webhook voi tilata seuraavat tapahtumatyypit:
 | `new_comment` | Kommentti luodaan |
 | `poll_created` | Kysely aloitetaan |
 | `poll_edited` | Kyselyä muokataan |
-| `poll_closing_soon` | Kyselyn sulkeutumisaika lähestyy |
-| `poll_expired` | Kyselyn sulkeutumisaika saavutetaan |
-| `poll_closed_by_user` | Käyttäjä sulkee kyselyn käsin |
+| `poll_closing_soon` | Kyselyn sulkemisaika lähestyy |
+| `poll_expired` | Kyselyn sulkemisaika saavutetaan |
+| `poll_closed_by_user` | Henkilö sulkee kyselyn manuaalisesti |
 | `poll_reopened` | Kysely avataan uudelleen |
 | `outcome_created` | Johtopäätös julkaistaan |
 | `outcome_updated` | Johtopäätöstä päivitetään |
@@ -414,11 +414,11 @@ Webhook voi tilata seuraavat tapahtumatyypit:
 | `stance_created` | Ääni annetaan |
 | `stance_updated` | Ääntä muutetaan |
 
-Webhook kuuluu yhteen ryhmään ja vastaanottaa ryhmästä tilaamansa tapahtumat. Käyttäjät voivat myös valita integraation erikseen jakaessaan sisältöä tai lähettäessään joitakin ilmoituksia, vaikka vastaavaa automaattista tapahtumaa ei olisi valittu.
+Webhook kuuluu yhteen ryhmään ja vastaanottaa tilaamansa tapahtumat kyseisestä ryhmästä. Ihmiset voivat myös valita integraation erikseen jakaessaan sisältöä tai lähettäessään tiettyjä ilmoituksia, vaikka vastaavaa automaattista tapahtumaa ei olisi valittu.
 
 <!-- translation-section: http-delivery -->
 
-### HTTP-lähetys
+### HTTP-toimitus
 
 Loomio lähettää määritettyyn URL-osoitteeseen asynkronisen HTTP `POST` -pyynnön, jossa on seuraava otsake:
 
@@ -426,17 +426,17 @@ Loomio lähettää määritettyyn URL-osoitteeseen asynkronisen HTTP `POST` -pyy
 Content-Type: application/json; charset=utf-8
 ```
 
-Pyynnön aikakatkaisu on viisi sekuntia. `2xx`-vastaus, myös `204 No Content`, tulkitaan onnistumiseksi. Webhookin vastaanottajan kannattaa vastata nopeasti, käsitellä pidemmät tehtävät asynkronisesti ja varautua päällekkäisiin tai väärässä järjestyksessä saapuviin lähetyksiin.
+Pyynnön aikakatkaisu on viisi sekuntia. `2xx`-vastaus, mukaan lukien `204 No Content`, tulkitaan onnistuneeksi. Webhookin vastaanottajan tulee vastata nopeasti, käsitellä pidempään kestävät tehtävät asynkronisesti ja sietää päällekkäisiä tai väärässä järjestyksessä saapuvia toimituksia.
 
-Loomio ei tällä hetkellä lisää webhookin allekirjoitusta, jaetun salaisuuden otsaketta, tapahtumatunnusta eikä lähetystunnusta. Käsittele koko kohteen URL-osoitetta tunnistetietona äläkä julkaise sitä. Lisää URL-osoitteeseen vaikeasti arvattava tunniste, jos vastaanottava palvelu tukee sitä. Jos tarvitset vakaan, koneellisesti luettavan tapahtumamallin tai allekirjoitetun lähetyksen, käytä webhookia muutosilmoituksena ja hae ajantasaiset tietueet tunnistautumista edellyttävän käyttäjän API:n kautta.
+Loomio ei tällä hetkellä lisää webhook-allekirjoitusta, jaetun salaisuuden sisältävää otsaketta, tapahtumatunnusta tai toimitustunnusta. Käsittele koko kohde-URL-osoitetta tunnistetietona, älä paljasta sitä julkisesti ja sisällytä URL-osoitteeseen tunniste, jota ei voi arvata, jos vastaanottava palvelu tukee sitä. Jos tarvitset vakaan koneluettavan tapahtumarakenteen tai allekirjoitetun toimituksen, käytä webhookia muutosilmoituksena ja hae ajantasaiset tietueet käyttäjän API:n kautta todennettuna.
 
 <!-- translation-section: payload-formats -->
 
-### Viestien muodot
+### Viestisisällön muodot
 
-Webhookin viestit on tarkoitettu näytettäviksi chat-palveluissa. Ne eivät sisällä täydellisiä Loomio-tietueita. Viestin linkit osoittavat sisältöön, jota tapahtuma koskee. Integraatio voi hakea ajantasaiset rakenteiset tiedot käyttäjän API:n kautta.
+Webhookien viestisisällöt on tarkoitettu chat-palveluissa esitettäviksi viesteiksi. Ne eivät ole täydellisiä sarjallistettuja Loomio-tietueita. Viestin linkit yksilöivät Loomio-sisällön, jota tapahtuma koskee. Integraatio voi hakea lisätietoja käyttäjän API:n kautta, kun se tarvitsee ajantasaisen tilan rakenteisessa muodossa.
 
-| Integraation muoto | JSON-pääkentät |
+| Integraation muoto | Keskeiset JSON-kentät |
 | --- | --- |
 | Mattermost/Markdown | `text`, `icon_url`, `username` |
 | Slack | `text` |
@@ -444,7 +444,7 @@ Webhookin viestit on tarkoitettu näytettäviksi chat-palveluissa. Ne eivät sis
 | Microsoft Teams | `@type`, `@context`, `themeColor`, `text`, `sections` |
 | Webex | `markdown` |
 
-Esimerkiksi yleisen Markdown-muodon viestin runko on seuraavanlainen:
+Esimerkiksi yleinen Markdown-muoto lähettää seuraavan rakenteisen viestirungon:
 
 ```json
 {
@@ -454,13 +454,13 @@ Esimerkiksi yleisen Markdown-muodon viestin runko on seuraavanlainen:
 }
 ```
 
-Viestin tarkka teksti riippuu tapahtumasta, ryhmän kieliasetuksesta, pelkän ilmoituksen asetuksesta ja Loomion versiosta. Vastaanottajan kannattaa käyttää valitun muodon dokumentoituja ylimmän tason kenttiä sen sijaan, että se tulkitsisi lauseiden sanamuotoa.
+Viestin tarkka teksti riippuu tapahtumasta, ryhmän kieliasetuksesta, pelkän ilmoituksen lähettämistä koskevasta asetuksesta ja Loomion versiosta. Vastaanottajan tulee käyttää valitun muodon dokumentoituja ylimmän tason kenttiä sen sijaan, että se jäsentäisi lauseiden sanamuotoja.
 
 <!-- translation-section: search -->
 
 ## Haku
 
-Hae keskusteluja, kommentteja, kyselyitä, ääniä ja johtopäätöksiä, jotka API-avaimen käyttäjä voi nähdä. Tuloksiin sisältyy julkista sisältöä, vaikka käyttäjä ei olisi ryhmän jäsen. Yksityisen sisällön näkyvyys määräytyy aiheen tavallisten käyttöoikeuksien mukaan.
+Hae API-avaimen käyttäjälle näkyviä keskusteluja, kommentteja, kyselyitä, ääniä ja johtopäätöksiä. Hakutulokset sisältävät julkista sisältöä myös silloin, kun käyttäjä ei ole kyseisen ryhmän jäsen. Yksityiseen sisältöön sovelletaan ketjun tavallisia näkyvyyssääntöjä.
 
 `GET /api/b2/search`
 
@@ -472,24 +472,24 @@ Hae keskusteluja, kommentteja, kyselyitä, ääniä ja johtopäätöksiä, jotka
 | --- | --- |
 | `query` | Hakuteksti. Tukee tarkkoja ja likimääräisiä osumia |
 | `group_id` | Rajaa tulokset yhteen näkyvään ryhmään |
-| `org_id` | Rajaa tulokset näkyvään pääryhmään ja sen näkyviin alaryhmiin. Käytä suorille keskusteluille arvoa `0` |
+| `org_id` | Rajaa tulokset näkyvään pääryhmään ja sen näkyviin alaryhmiin. Käytä arvoa `0` suorille keskusteluille |
 | `type` | Rajaa tulokset yhteen tyyppiin: `Discussion`, `Comment`, `Poll`, `Stance` tai `Outcome` |
-| `types` | Pilkuilla erotettu luettelo tulostyypeistä |
-| `tag` | Rajaa tulokset aiheisiin, joissa on tämä tunniste |
-| `author_id` | Rajaa tulokset yhden kirjoittajan sisältöön. Ilman `query`-parametria palauttaa kirjoittajan viimeaikaisen näkyvän toiminnan |
-| `order` | Käytä arvoa `authored_at_desc`, jos haluat järjestää osumat kirjoitusajan mukaan |
+| `types` | Pilkuilla erotettu luettelo hakutulosten tyypeistä |
+| `tag` | Rajaa tulokset ketjuihin, joilla on tämä tunniste |
+| `author_id` | Rajaa tulokset yhden tekijän sisältöön. Ilman `query`-parametria palauttaa kyseisen tekijän viimeaikaisen näkyvän toiminnan |
+| `order` | Aseta arvoksi `authored_at_desc`, jos haluat järjestää hakua vastaavan sisällön luomisajan mukaan |
 
 ```bash
 curl -H 'Authorization: Bearer YOUR_API_KEY' 'https://www.loomio.com/api/b2/search?query=quarterly+planning&type=Discussion'
 ```
 
-Vastaus sisältää `search_results`-taulukon. Jokainen tulos yksilöi löytyneen tietueen ja sen näkyvän asiayhteyden. Kenttiä ovat esimerkiksi `searchable_type`, `searchable_id`, `highlight`, `group_id`, `group_name`, `discussion_key`, `poll_key`, `author_id`, `author_name`, `authored_at` ja `tags`. Kentän arvo on `null`, jos kenttä ei koske tulosta.
+Vastaus sisältää `search_results`-taulukon. Jokainen hakutulos yksilöi hakua vastaavan tietueen ja sen näkyvän kontekstin kentillä, joihin kuuluvat `searchable_type`, `searchable_id`, `highlight`, `group_id`, `group_name`, `discussion_key`, `poll_key`, `author_id`, `author_name`, `authored_at` ja `tags`. Kentät, jotka eivät koske kyseistä hakutulosta, saavat arvon `null`.
 
 <!-- translation-section: participation-report -->
 
 ## Osallistumisraportti
 
-Palauta samat koostetut osallistumistiedot, joita Loomion osallistumisraportti käyttää.
+Palauttaa samat koostetut osallistumistiedot, joita Loomion osallistumisraportti käyttää.
 
 `GET /api/b2/reports`
 
@@ -499,17 +499,17 @@ Palauta samat koostetut osallistumistiedot, joita Loomion osallistumisraportti k
 
 | Nimi | Kuvaus |
 | --- | --- |
-| `section` | Raportin osio: `base`, `users` tai `countries`. Käytä arvoa `users`, kun haluat nähdä toiminnan henkilöittäin |
-| `group_scope` | `custom` tai `my`. Vanhaa arvoa `all` käsitellään arvona `my`, koska käyttäjän API-avaimet eivät anna pääsyä koko Loomio-asennuksen tietoihin |
-| `group_ids` | Pilkuilla erotetut ryhmätunnukset, kun `group_scope=custom`. Ryhmät, joiden jäsen API:n käyttäjä ei ole, jätetään huomiotta |
-| `start_month` | Ensimmäinen mukaan otettava kuukausi muodossa `YYYY-MM`. Oletus on 12 kuukautta sitten |
-| `end_month` | Viimeinen mukaan otettava kuukausi muodossa `YYYY-MM`. Oletus on nykyinen kuukausi |
+| `section` | Raportin osio: `base`, `users` tai `countries`. Käytä arvoa `users` henkilökohtaisten toimintatietojen hakemiseen |
+| `group_scope` | `custom` tai `my`. Vanha arvo `all` käsitellään arvona `my`, koska käyttäjän API-avaimet eivät koskaan anna koko instanssin kattavaa käyttöoikeutta |
+| `group_ids` | Pilkuilla erotetut ryhmätunnukset, kun `group_scope=custom`. Sellaisten ryhmien tunnukset ohitetaan, joihin API-käyttäjä ei kuulu |
+| `start_month` | Ensimmäinen mukaan otettava kuukausi muodossa `YYYY-MM`. Oletuksena 12 kuukautta sitten |
+| `end_month` | Viimeinen mukaan otettava kuukausi muodossa `YYYY-MM`. Oletuksena kuluva kuukausi |
 | `interval` | `base`-osion aikaväli: `day`, `week`, `month` tai `year` |
-| `member_type` | Käytä arvoa `delegate` yhdessä arvon `section=users` kanssa, kun haluat palauttaa vain nykyiset delegaatit |
+| `member_type` | Aseta arvoksi `delegate`, kun `section=users`, jos haluat palauttaa vain nykyiset edustajat |
 
-Henkilö on delegaatti, jos hänellä on aktiivinen delegaatin jäsenyys jossakin valitussa ryhmässä. Hänen lukumääränsä lasketaan yhteen kaikista valituista ryhmistä. Delegaatin rivi palautetaan, vaikka kaikki toiminnan lukumäärät olisivat nollia. Lukumäärät kattavat ketjut, kommentit, kyselyt, äänet, johtopäätökset ja reaktiot. Ne eivät kuvaa äänestysaktiivisuutta. Käyttäjän riveillä näkyvät myös tunnistettujen äänestyslippujen määrät: lähetetyt, annetut ja käyttämättä jääneet. Nimettömät kyselyt eivät sisälly henkilökohtaisiin äänimääriin. `all_votes_cast` on tosi vain, jos vähintään yksi äänestyslippu on lähetetty ja kaikki lähetetyt äänestysliput on käytetty.
+Henkilö on edustaja, jos hänellä on aktiivinen edustajajäsenyys jossakin valituista ryhmistä. Hänen toimintansa määrät lasketaan yhteen kaikista valituista ryhmistä. Edustajien rivit palautetaan myös silloin, kun kaikki toimintamäärät ovat nollia. Määrät kattavat ketjut, kommentit, kyselyt, äänet, johtopäätökset ja reaktiot. Ne eivät ole äänestämisen osallistumisasteita. Käyttäjärivit sisältävät myös tunnistettujen äänestyslippujen määrät: myönnetyt, käytetyt ja käyttämättä jääneet. Anonyymit kyselyt jätetään pois kaikista henkilökohtaisista äänestysmääristä. `all_votes_cast` on tosi vain, kun vähintään yksi äänestyslippu on myönnetty ja kaikki myönnetyt äänestysliput on käytetty.
 
-API noudattaa samoja ryhmän näkyvyyssääntöjä kuin Loomion oma raportti. Käyttäjän API-avain ei voi paljastaa raporttitietoja ryhmistä, joihin käyttäjällä ei ole pääsyä.
+API soveltaa samoja ryhmien näkyvyyssääntöjä kuin sovelluksen raportti. Käyttäjän API-avain ei voi paljastaa raporttitietoja ryhmistä, joihin käyttäjällä ei ole pääsyä.
 
 <!-- translation-section: example -->
 
@@ -519,7 +519,7 @@ API noudattaa samoja ryhmän näkyvyyssääntöjä kuin Loomion oma raportti. K�
 curl -H 'Authorization: Bearer YOUR_API_KEY' 'https://www.loomio.com/api/b2/reports?section=users&group_scope=custom&group_ids=123&member_type=delegate&start_month=2026-01&end_month=2026-09'
 ```
 
-`users`-taulukko sisältää täydet toimintatiedot kullakin rivillä:
+`users`-taulukko sisältää täydelliset toimintatietorivit:
 
 ```json
 {
@@ -558,14 +558,14 @@ Luo keskustelu API-avaimen käyttäjänä.
 
 | Nimi | Kuvaus |
 | --- | --- |
-| `group_id` | Ryhmä, johon keskusteluketju luodaan |
-| `title` | Keskusteluketjun otsikko, pakollinen |
-| `description` | Keskusteluketjun taustatiedot, valinnainen |
-| `description_format` | `md` tai `html`, valinnainen, oletus `md` |
-| `recipient_audience` | `group` tai null. Jos arvo on `group`, koko ryhmä saa ilmoituksen uudesta keskusteluketjusta |
-| `recipient_user_ids` | Niiden käyttäjien tunnukset taulukkona, joille lähetetään ilmoitus tai kutsu keskusteluketjuun |
-| `recipient_emails` | Keskusteluketjuun kutsuttavien henkilöiden sähköpostiosoitteet taulukkona |
-| `recipient_message` | Sähköpostikutsuun lisättävä viesti |
+| `group_id` | Ryhmä, johon ketju luodaan |
+| `title` | Ketjun otsikko, pakollinen |
+| `description` | Ketjun konteksti, valinnainen |
+| `description_format` | Joko `md` tai `html`, valinnainen, oletuksena `md` |
+| `recipient_audience` | `group` tai null. Jos arvo on `group`, koko ryhmälle ilmoitetaan uudesta ketjusta |
+| `recipient_user_ids` | Taulukko niiden käyttäjien tunnuksista, joille ilmoitetaan ketjusta tai jotka kutsutaan siihen |
+| `recipient_emails` | Taulukko ketjuun kutsuttavien henkilöiden sähköpostiosoitteista |
+| `recipient_message` | Sähköpostikutsuun sisällytettävä viesti |
 
 <!-- translation-section: example-2 -->
 
@@ -577,9 +577,9 @@ curl -H 'Authorization: Bearer YOUR_API_KEY' -X POST -H 'Content-Type: applicati
 
 <!-- translation-section: show-discussion -->
 
-## Hae keskustelu
+## Näytä keskustelu
 
-Hae keskustelu sen numeerisella tunnuksella tai merkkijonomuotoisella avaimella.
+Hae keskustelu käyttämällä keskustelun tunnusta (kokonaisluku) tai avainta (merkkijono).
 
 `GET /api/b2/discussions/:id`
 
@@ -595,7 +595,7 @@ curl -H 'Authorization: Bearer YOUR_API_KEY' https://www.loomio.com/api/b2/discu
 
 ## Listaa keskustelut
 
-Listaa ryhmän keskustelut, jotka API-avaimen käyttäjä näkee. Julkisesti näkyvän ryhmän julkiset keskustelut voi listata myös henkilö, joka ei kuulu ryhmään. Yksityiset keskustelut näkyvät vain käyttäjille, joilla on niihin lukuoikeus Loomiossa.
+Listaa ryhmän keskustelut, jotka näkyvät API-avaimen käyttäjälle. Julkisesti näkyvän ryhmän julkiset keskustelut voi listata myös käyttäjä, joka ei ole ryhmän jäsen. Yksityiset keskustelut näkyvät vain käyttäjille, joilla on oikeus lukea niitä Loomiossa.
 
 `GET /api/b2/discussions`
 
@@ -608,9 +608,9 @@ Listaa ryhmän keskustelut, jotka API-avaimen käyttäjä näkee. Julkisesti nä
 | `group_id` | Kokonaisluku, pakollinen. Sen ryhmän tunnus, jonka keskustelut listataan |
 | `status` | Merkkijono, valinnainen, oletus `open`. Arvot: `open`, `closed`, `all` |
 | `limit` | Kokonaisluku, valinnainen, oletus 50. Sivun koko |
-| `offset` | Kokonaisluku, valinnainen, oletus 0. Sivutuksen aloituskohta |
+| `offset` | Kokonaisluku, valinnainen, oletus 0. Sivutuksessa ohitettavien tietueiden määrä |
 
-Vanhat parametrit `per` ja `from` toimivat edelleen parametrien `limit` ja `offset` vaihtoehtoisina niminä.
+Vanhojen versioiden yhteensopivuus: `per` ja `from` hyväksytään parametrien `limit` ja `offset` vaihtoehtoisina niminä, ja ne toimivat jatkossakin.
 
 <!-- translation-section: example-4 -->
 
@@ -622,9 +622,9 @@ curl -H 'Authorization: Bearer YOUR_API_KEY' 'https://www.loomio.com/api/b2/disc
 
 <!-- translation-section: list-threads -->
 
-## Listaa keskusteluketjut
+## Listaa ketjut
 
-Listaa API-avaimen käyttäjälle näkyvät keskustelu- ja kyselyketjut viimeisimmän toiminnan mukaan järjestettyinä. Keskusteluketjun tunnus on sen `topic_id`.
+Listaa API-avaimen käyttäjälle näkyvät keskustelu- ja kyselyketjut viimeisimmän toiminnan mukaan järjestettyinä. Ketjun tunnus on sen `topic_id`.
 
 `GET /api/b2/threads`
 
@@ -635,7 +635,7 @@ Listaa API-avaimen käyttäjälle näkyvät keskustelu- ja kyselyketjut viimeisi
 | Nimi | Kuvaus |
 | --- | --- |
 | `limit` | Kokonaisluku, valinnainen, oletus 50. Sivun koko |
-| `offset` | Kokonaisluku, valinnainen, oletus 0. Sivutuksen aloituskohta |
+| `offset` | Kokonaisluku, valinnainen, oletus 0. Sivutuksessa ohitettavien tietueiden määrä |
 
 <!-- translation-section: example-5 -->
 
@@ -647,9 +647,9 @@ curl -H 'Authorization: Bearer YOUR_API_KEY' 'https://www.loomio.com/api/b2/thre
 
 <!-- translation-section: read-thread -->
 
-## Lue keskusteluketju
+## Lue ketju
 
-Lue keskusteluketju, sen aikajärjestyksessä olevat tapahtumat tai koko näkyvä Markdown-asiakirja.
+Lue ketju, sen järjestetty tapahtumavirta tai sen koko näkyvä sisältö Markdown-dokumenttina.
 
 `GET /api/b2/threads/:topic_id`
 
@@ -667,9 +667,9 @@ GET https://www.loomio.com/api/b2/threads/<topic_id>/items
 GET https://www.loomio.com/api/b2/threads/<topic_id>/markdown
 ```
 
-`items`-rajapinta palauttaa tapahtumat järjestyksessä, mukaan lukien näkyvät kommentit, kyselyt, äänet ja johtopäätökset. `markdown`-rajapinta palauttaa koko näkyvän keskusteluketjun yhtenä Markdown-asiakirjana. Äänten perustelut sisältyvät vastaukseen vain, jos API-avaimen käyttäjä saa nähdä ne.
+`items`-päätepiste palauttaa järjestetyn tapahtumavirran, joka sisältää näkyvät kommentit, kyselyt, äänet ja johtopäätökset. `markdown`-päätepiste palauttaa koko näkyvän ketjun yhtenä Markdown-dokumenttina. Äänten perustelut sisällytetään vain, jos ne näkyvät API-avaimen käyttäjälle.
 
-Kaikki keskusteluketjujen rajapinnat noudattavat samoja käyttöoikeuksia kuin Loomion käyttöliittymä. API-avain ei anna pääsyä keskusteluketjuun, jota käyttäjä ei normaalisti voi avata.
+Kaikki ketjujen päätepisteet noudattavat samoja käyttöoikeuksia kuin Loomion käyttöliittymä. API-avain ei anna pääsyä ketjuun, jota käyttäjä ei normaalisti voi avata.
 
 <!-- translation-section: edit-discussion -->
 
@@ -686,12 +686,12 @@ Muokkaa keskustelua API-avaimen käyttäjänä. Samat käyttöoikeudet pätevät
 | Nimi | Kuvaus |
 | --- | --- |
 | `title` | Päivitetty otsikko |
-| `description` | Päivitetyt taustatiedot |
-| `description_format` | `md` tai `html`, valinnainen, oletus `md` |
-| `recipient_audience` | `group` tai null. Jos arvo on `group`, koko ryhmä saa ilmoituksen muokkauksesta |
-| `recipient_user_ids` | Niiden käyttäjien tunnukset taulukkona, joille lähetetään ilmoitus tai kutsu keskusteluketjuun |
-| `recipient_emails` | Keskusteluketjuun kutsuttavien henkilöiden sähköpostiosoitteet taulukkona |
-| `recipient_message` | Sähköpostikutsuun lisättävä viesti |
+| `description` | Päivitetty konteksti |
+| `description_format` | Joko `md` tai `html`, valinnainen, oletus `md` |
+| `recipient_audience` | `group` tai null. Jos arvo on `group`, koko ryhmälle ilmoitetaan muokkauksesta |
+| `recipient_user_ids` | Taulukko niiden käyttäjien tunnuksista, joille ilmoitetaan tai jotka kutsutaan ketjuun |
+| `recipient_emails` | Taulukko ketjuun kutsuttavien henkilöiden sähköpostiosoitteista |
+| `recipient_message` | Sähköpostikutsuun sisällytettävä viesti |
 
 <!-- translation-section: example-7 -->
 
@@ -703,9 +703,9 @@ curl -H 'Authorization: Bearer YOUR_API_KEY' -X PATCH -H 'Content-Type: applicat
 
 <!-- translation-section: soft-delete-discussion -->
 
-## Poista keskustelu pehmeästi
+## Poista keskustelu säilyttäen tietue
 
-Poista keskustelu pehmeästi API-avaimen käyttäjänä. Keskustelu poistuu käytöstä, mutta sen tietue säilyy.
+Poista keskustelu API-avaimen käyttäjänä. Tämä poistaa keskustelun käytöstä mutta säilyttää keskustelun tietueen.
 
 `DELETE /api/b2/discussions/:id`
 
@@ -731,9 +731,9 @@ Luo kommentti keskusteluun API-avaimen käyttäjänä.
 
 | Nimi | Kuvaus |
 | --- | --- |
-| `discussion_id` | Kokonaisluku, pakollinen. Sen keskustelun tunnus, johon kommentti lisätään |
-| `body` | Kommentin teksti, pakollinen, ellei liitettä ole annettu |
-| `body_format` | `md` tai `html`, valinnainen, oletus `md` |
+| `discussion_id` | Kokonaisluku, pakollinen. Kommentoitavan keskustelun tunniste |
+| `body` | Kommentin sisältö, pakollinen, ellei mukana ole liitettä |
+| `body_format` | Joko `md` tai `html`, valinnainen, oletus `md` |
 
 <!-- translation-section: example-9 -->
 
@@ -757,8 +757,8 @@ Muokkaa kommenttia API-avaimen käyttäjänä. Samat käyttöoikeudet pätevät 
 
 | Nimi | Kuvaus |
 | --- | --- |
-| `body` | Päivitetty kommentin teksti |
-| `body_format` | `md` tai `html`, valinnainen, oletus `md` |
+| `body` | Päivitetty kommentin sisältö |
+| `body_format` | Joko `md` tai `html`, valinnainen, oletus `md` |
 
 <!-- translation-section: example-10 -->
 
@@ -770,9 +770,9 @@ curl -H 'Authorization: Bearer YOUR_API_KEY' -X PATCH -H 'Content-Type: applicat
 
 <!-- translation-section: soft-delete-comment -->
 
-## Poista kommentti pehmeästi
+## Poista kommentti säilyttäen tietue
 
-Poista kommentti pehmeästi API-avaimen käyttäjänä. Kommentti poistuu käytöstä ja sen teksti piilotetaan, mutta kommentin tietue säilyy.
+Poista kommentti API-avaimen käyttäjänä. Tämä poistaa kommentin käytöstä, piilottaa sen sisällön ja säilyttää kommentin tietueen.
 
 `DELETE /api/b2/comments/:id`
 
@@ -798,24 +798,24 @@ Luo kysely API-avaimen käyttäjänä.
 
 | Nimi | Kuvaus |
 | --- | --- |
-| `group_id` | Kokonaisluku, valinnainen, oletusarvo null. Sen ryhmän tunnus, johon kysely luodaan. Jos annat `discussion_id`-arvon, `group_id` ohitetaan |
-| `discussion_id` | Kokonaisluku, valinnainen, oletusarvo null. Sen keskusteluketjun tunnus, johon kysely lisätään |
+| `group_id` | Kokonaisluku, valinnainen, oletus null. Kyselyn ryhmän tunniste. Jos `discussion_id` annetaan, `group_id` jätetään huomiotta |
+| `discussion_id` | Kokonaisluku, valinnainen, oletus null. Keskusteluketjun tunniste, johon kysely lisätään |
 | `title` | Merkkijono, pakollinen. Kyselyn otsikko |
 | `poll_type` | Merkkijono, pakollinen. Arvot: `proposal`, `poll`, `count`, `score`, `ranked_choice`, `meeting`, `dot_vote` |
-| `details` | Merkkijono, valinnainen. Kyselyn sisältöteksti |
-| `details_format` | Merkkijono, valinnainen, oletusarvo `md`. Arvot: `md` tai `html` |
-| `options` | Merkkijonojen taulukko. Jos `poll_type` on `proposal`, kelvolliset arvot ovat `agree`, `disagree`, `abstain` ja `block`. Jos `poll_type` on `meeting`, anna ISO 8601 -muotoisia päivämääriä tai päivämääriä ja kellonaikoja. Muissa kyselytyypeissä mikä tahansa merkkijono kelpaa |
-| `closing_at` | ISO 8601 -muotoinen merkkijono tai null, oletusarvo null. Esimerkki: `2026-09-01T12:00:00Z`. Jos arvo on null, äänestäminen on pois käytöstä ja kysely katsotaan keskeneräiseksi |
-| `specified_voters_only` | Totuusarvo, valinnainen, oletusarvo false. Jos arvo on true, vain nimetyt henkilöt voivat äänestää. Jos arvo on false, kaikki ryhmän jäsenet kutsutaan äänestämään |
-| `hide_results` | Merkkijono, valinnainen, oletusarvo `off`. Arvot: `off`, `until_vote`, `until_closed` |
-| `shuffle_options` | Totuusarvo, oletusarvo false. Näytä vaihtoehdot äänestäjille satunnaisessa järjestyksessä |
-| `anonymous` | Totuusarvo, valinnainen, oletusarvo false. Piilota äänestäjien henkilöllisyydet |
-| `recipient_audience` | `group` tai null, valinnainen, oletusarvo null. Jos arvo on `group`, koko ryhmälle lähetetään ilmoitus |
-| `notify_on_closing_soon` | Merkkijono, valinnainen, oletusarvo `nobody`. Arvot: `nobody`, `author`, `undecided_voters`, `voters` |
-| `recipient_user_ids` | Ilmoitettavien tai kutsuttavien käyttäjien tunnusten taulukko |
-| `recipient_emails` | Äänestämään kutsuttavien henkilöiden sähköpostiosoitteiden taulukko |
-| `recipient_message` | Sähköpostikutsuun lisättävä viesti |
-| `notify_recipients` | Totuusarvo, oletusarvo false. Jos arvo on false, henkilöt lisätään lähettämättä ilmoituksia. Jos arvo on true, kaikki tällä pyynnöllä kutsutut saavat ilmoituksen sähköpostitse |
+| `details` | Merkkijono, valinnainen. Kyselyn leipäteksti |
+| `details_format` | Merkkijono, valinnainen, oletus `md`. Arvot: `md` tai `html` |
+| `options` | Merkkijonotaulukko. Jos `poll_type` on `proposal`, kelvolliset arvot ovat `agree`, `disagree`, `abstain`, `block`. Jos `poll_type` on `meeting`, anna päivämäärät tai päivämäärät ja kellonajat ISO 8601 -muotoisina merkkijonoina. Muissa kyselytyypeissä mikä tahansa merkkijono kelpaa |
+| `closing_at` | ISO 8601 -muotoinen merkkijono tai null, oletus null. Esimerkki: `2026-09-01T12:00:00Z`. Jos arvo on null, äänestäminen on pois käytöstä ja kysely katsotaan keskeneräiseksi |
+| `specified_voters_only` | Totuusarvo, valinnainen, oletus false. Jos arvo on true, vain määritetyt henkilöt voivat äänestää. Jos arvo on false, kaikki ryhmän jäsenet kutsutaan äänestämään |
+| `hide_results` | Merkkijono, valinnainen, oletus `off`. Arvot: `off`, `until_vote`, `until_closed` |
+| `shuffle_options` | Totuusarvo, oletus false. Näytä vaihtoehdot äänestäjille satunnaisessa järjestyksessä |
+| `anonymous` | Totuusarvo, valinnainen, oletus false. Piilota äänestäjien henkilöllisyydet |
+| `recipient_audience` | `group` tai null, valinnainen, oletus null. Jos arvo on `group`, koko ryhmälle lähetetään ilmoitus |
+| `notify_on_closing_soon` | Merkkijono, valinnainen, oletus `nobody`. Arvot: `nobody`, `author`, `undecided_voters`, `voters` |
+| `recipient_user_ids` | Taulukko niiden käyttäjien tunnisteista, joille lähetetään ilmoitus tai kutsu |
+| `recipient_emails` | Taulukko äänestämään kutsuttavien henkilöiden sähköpostiosoitteista |
+| `recipient_message` | Sähköpostikutsuun sisällytettävä viesti |
+| `notify_recipients` | Totuusarvo, oletus false. Jos arvo on false, lisää henkilöt lähettämättä ilmoituksia. Jos arvo on true, kaikki tässä pyynnössä kutsutut saavat sähköposti-ilmoituksen |
 
 <!-- translation-section: example-12 -->
 
@@ -829,7 +829,7 @@ curl -H 'Authorization: Bearer YOUR_API_KEY' -X POST -H 'Content-Type: applicati
 
 ## Näytä kysely
 
-Hae kysely sen numeerisella tunnuksella tai merkkijonomuotoisella avaimella.
+Hae kysely sen kokonaislukumuotoisella tunnisteella tai merkkijonomuotoisella avaimella.
 
 `GET /api/b2/polls/:id`
 
@@ -845,7 +845,7 @@ curl -H 'Authorization: Bearer YOUR_API_KEY' https://www.loomio.com/api/b2/polls
 
 ## Listaa kyselyt
 
-Listaa ryhmän kyselyt, jotka näkyvät API-avaimen käyttäjälle. Julkisesti näkyvän ryhmän julkiset kyselyt voi listata myös henkilö, joka ei kuulu ryhmään. Yksityiset kyselyt näkyvät vain käyttäjille, joilla on oikeus lukea niitä Loomiossa. Vastaus sisältää kunkin näkyvän kyselyn nykyisen lopputuloksen, joten voit käyttää arvoa `status=closed` päätettyjen ehdotusten listaamiseen.
+Listaa ryhmän kyselyt, jotka näkyvät API-avaimen käyttäjälle. Julkisesti näkyvän ryhmän julkiset kyselyt voi listata myös henkilö, joka ei ole ryhmän jäsen. Yksityiset kyselyt näkyvät vain käyttäjille, jotka voivat lukea niitä Loomiossa. Vastaus sisältää kunkin näkyvän kyselyn nykyisen johtopäätöksen, joten voit listata ratkaistut ehdotukset parametrilla `status=closed`.
 
 `GET /api/b2/polls`
 
@@ -855,12 +855,12 @@ Listaa ryhmän kyselyt, jotka näkyvät API-avaimen käyttäjälle. Julkisesti n
 
 | Nimi | Kuvaus |
 | --- | --- |
-| `group_id` | Kokonaisluku, pakollinen. Sen ryhmän tunnus, jonka kyselyt listataan |
-| `status` | Merkkijono, valinnainen, oletusarvo `active`. Arvot: `active`, `closed`, `all` |
-| `limit` | Kokonaisluku, valinnainen, oletusarvo 50. Sivun koko |
-| `offset` | Kokonaisluku, valinnainen, oletusarvo 0. Sivutuksen aloituskohta |
+| `group_id` | Kokonaisluku, pakollinen. Sen ryhmän tunniste, jonka kyselyt listataan |
+| `status` | Merkkijono, valinnainen, oletus `active`. Arvot: `active`, `closed`, `all` |
+| `limit` | Kokonaisluku, valinnainen, oletus 50. Sivun koko |
+| `offset` | Kokonaisluku, valinnainen, oletus 0. Sivutuksessa ohitettavien tietueiden määrä |
 
-Vanhat parametrit `per` ja `from` toimivat edelleen parametrien `limit` ja `offset` vaihtoehtoisina niminä.
+Vanhojen parametrien tuki: `per` ja `from` hyväksytään parametrien `limit` ja `offset` vaihtoehtoisina niminä, ja ne toimivat jatkossakin.
 
 <!-- translation-section: example-14 -->
 
@@ -885,14 +885,14 @@ Muokkaa kyselyä API-avaimen käyttäjänä. Samat käyttöoikeudet pätevät ku
 | Nimi | Kuvaus |
 | --- | --- |
 | `title` | Päivitetty otsikko |
-| `details` | Päivitetty kyselyn kuvaus |
-| `details_format` | `md` tai `html`, valinnainen, oletusarvo `md` |
-| `options` | Päivitetyt vaihtoehtojen nimet. Vaihtoehtojen muuttaminen voi vaikuttaa annettuihin ääniin kyselyn tilan mukaan |
+| `details` | Päivitetyt kyselyn tiedot |
+| `details_format` | Joko `md` tai `html`, valinnainen, oletus `md` |
+| `options` | Päivitetyt vaihtoehtojen nimet. Vaihtoehtojen muuttaminen voi vaikuttaa annettuihin ääniin kyselyn tilasta riippuen |
 | `closing_at` | ISO 8601 -muotoinen merkkijono tai null |
 | `recipient_audience` | `group` tai null. Jos arvo on `group`, koko ryhmälle lähetetään ilmoitus |
-| `recipient_user_ids` | Ilmoitettavien tai kutsuttavien käyttäjien tunnusten taulukko |
-| `recipient_emails` | Äänestämään kutsuttavien henkilöiden sähköpostiosoitteiden taulukko |
-| `recipient_message` | Sähköpostikutsuun lisättävä viesti |
+| `recipient_user_ids` | Taulukko niiden käyttäjien tunnisteista, joille lähetetään ilmoitus tai kutsu |
+| `recipient_emails` | Taulukko äänestämään kutsuttavien henkilöiden sähköpostiosoitteista |
+| `recipient_message` | Sähköpostikutsuun sisällytettävä viesti |
 
 <!-- translation-section: example-15 -->
 
@@ -904,9 +904,9 @@ curl -H 'Authorization: Bearer YOUR_API_KEY' -X PATCH -H 'Content-Type: applicat
 
 <!-- translation-section: soft-delete-poll -->
 
-## Poista kysely pehmeästi
+## Poista kysely loogisesti
 
-Poista kysely pehmeästi API-avaimen käyttäjänä. Kysely poistuu käytöstä, mutta sen tietue säilyy.
+Poista kysely loogisesti API-avaimen käyttäjänä. Tämä merkitsee kyselyn poistetuksi mutta säilyttää sen tietueen.
 
 `DELETE /api/b2/polls/:id`
 
@@ -922,7 +922,7 @@ curl -H 'Authorization: Bearer YOUR_API_KEY' -X DELETE https://www.loomio.com/ap
 
 ## Listaa jäsenyydet
 
-Listaa jäsenyydet, jotka näkyvät API-avaimen käyttäjälle. Ryhmän jäsenet voivat nähdä jäsenten nimet, tunnukset, tittelit ja roolit. Sähköpostiosoitteet näkyvät vain API-avaimen käyttäjän omalta tililtä tai silloin, kun API-avaimen käyttäjä on ryhmän ylläpitäjä.
+Listaa API-avaimen käyttäjälle näkyvät jäsenyydet. Ryhmän jäsenet voivat lukea jäsenten nimet, tunnisteet, nimikkeet ja roolit. Sähköpostiosoitteet sisältyvät tietoihin vain API-avaimen käyttäjän oman tilin osalta tai silloin, kun API-avaimen käyttäjä on ryhmän ylläpitäjä.
 
 `GET /api/b2/memberships`
 
@@ -932,7 +932,7 @@ Listaa jäsenyydet, jotka näkyvät API-avaimen käyttäjälle. Ryhmän jäsenet
 
 | Nimi | Kuvaus |
 | --- | --- |
-| `group_id` | Kokonaisluku, pakollinen. Sen ryhmän tunnus, jonka jäsenyydet listataan |
+| `group_id` | Kokonaisluku, pakollinen. Sen ryhmän tunniste, jonka jäsenyydet listataan |
 
 <!-- translation-section: example-17 -->
 
@@ -944,9 +944,9 @@ curl -H 'Authorization: Bearer YOUR_API_KEY' 'https://www.loomio.com/api/b2/memb
 
 <!-- translation-section: manage-memberships -->
 
-## Hallinnoi jäsenyyksiä
+## Hallitse jäsenyyksiä
 
-Lähetä luettelo sähköpostiosoitteista. Uudet osoitteet kutsutaan ryhmään. Toisin kuin jäsenyyksien listaaminen, tämä toiminto edellyttää ryhmän ylläpitäjän oikeuksia.
+Lähetä luettelo sähköpostiosoitteista. Kaikki uudet sähköpostiosoitteet kutsutaan ryhmään. Toisin kuin jäsenyyksien listaaminen, tämä toiminto edellyttää ryhmän ylläpitäjän oikeuksia.
 
 `POST /api/b2/memberships`
 
@@ -956,9 +956,9 @@ Lähetä luettelo sähköpostiosoitteista. Uudet osoitteet kutsutaan ryhmään. 
 
 | Nimi | Kuvaus |
 | --- | --- |
-| `group_id` | Kokonaisluku, pakollinen. Sen ryhmän tunnus, jonka jäsenyyksiä hallinnoidaan |
-| `emails` | Merkkijonojen taulukko, pakollinen. Ryhmään kutsuttavien henkilöiden sähköpostiosoitteet |
-| `remove_absent` | Totuusarvo. Jos arvo on true, ryhmästä poistetaan kaikki, joiden sähköpostiosoite ei ole luettelossa |
+| `group_id` | Kokonaisluku, pakollinen. Sen ryhmän tunniste, jonka jäsenyyksiä hallitaan |
+| `emails` | Merkkijonotaulukko, pakollinen. Ryhmään kutsuttavien henkilöiden sähköpostiosoitteet |
+| `remove_absent` | Totuusarvo. Jos arvo on true, poista ryhmästä kaikki, joiden sähköpostiosoite ei ole luettelossa |
 
 <!-- translation-section: example-18 -->
 
@@ -968,10 +968,10 @@ Lähetä luettelo sähköpostiosoitteista. Uudet osoitteet kutsutaan ryhmään. 
 curl -H 'Authorization: Bearer YOUR_API_KEY' -X POST -H 'Content-Type: application/json' -d '{"group_id": 123, "emails":["person@example.com"]}' https://www.loomio.com/api/b2/memberships
 ```
 
-Jos annat arvon `remove_absent=1`, kaikki ryhmän jäsenet, joita ei ole luettelossa, poistetaan ryhmästä. Ole varovainen: voit poistaa ryhmästäsi kaikki jäsenet.
+Jos annat parametrin `remove_absent=1`, kaikki ryhmän jäsenet, jotka eivät ole luettelossa, poistetaan ryhmästä. Ole varovainen, sillä saatat poistaa kaikki ryhmäsi jäsenet.
 
 ```bash
 curl -H 'Authorization: Bearer YOUR_API_KEY' -X POST -H 'Content-Type: application/json' -d '{"group_id": 123, "emails":["person@example.com"], "remove_absent": 1}' https://www.loomio.com/api/b2/memberships
 ```
 
-Vastaus on olio, jossa on `{added_emails: ["person@added.com"], removed_emails: ["person@removed.com"]}`.
+Tämä palauttaa objektin, jonka sisältö on `{added_emails: ["person@added.com"], removed_emails: ["person@removed.com"]}`.

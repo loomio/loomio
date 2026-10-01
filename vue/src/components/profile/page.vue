@@ -43,6 +43,12 @@ export default {
     localLogin() { return AppConfig.features.app.local_login; },
     showHelpTranslate() { return AppConfig.features.app.help_link; },
     availableLocales() { return AppConfig.locales.map(h => { return {title: h.name, value: h.key} }) ; },
+    // Translations are machine-made, so non-English speakers are told where to report a wrong word.
+    machineTranslationHint() {
+      const locale = this.user.selectedLocale || this.user.locale;
+      if (!locale || locale === 'en') { return undefined; }
+      return this.$t('profile_page.translations_are_made_by_machine', { email: 'contact@loomio.org' });
+    },
     dateTimeFormats() {
       const observeLocale = this.user.selectedLocale; // tell vue this matters
       return 'iso day_iso abbr day_abbr'.split(' ').map(pref => {
@@ -150,6 +156,8 @@ v-main
             v-select#user-locale-field(
               :label="$t('profile_page.locale_label')"
               :items="availableLocales"
+              :hint="machineTranslationHint"
+              persistent-hint
               v-model="user.selectedLocale")
 
             v-checkbox(v-model="user.autoTranslate" :label="$t('profile_page.translate_content_automatically')")

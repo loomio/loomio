@@ -1,14 +1,14 @@
 ---
 title: Slack
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/integrations/slack/index.md
+source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
+source_file: docs/en/user_manual/integrations/slack/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-30'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 4eb9618f0efb62d7
 generated:
-  introduction: 2e8aab58ddced8d4
+  introduction: 01613104e99e9926
 title_source: b27fb38ba323745c
 title_generated: b27fb38ba323745c
 ---
@@ -18,15 +18,15 @@ title_generated: b27fb38ba323745c
 # Інтэграцыя са Slack
 _Падключыце апавяшчэнні вашай групы ў Loomio да Slack._
 
-Loomio можа адпраўляць апавяшчэнні ў вашы каналы Slack, калі з’яўляюцца новыя абмеркаванні, прапановы, каментарыі, галасы і высновы. Так вы своечасова атрымліваеце важныя навіны пра абмеркаванні і рашэнні.
+Loomio можа адпраўляць апавяшчэнні ў вашы каналы Slack, калі з’яўляюцца новыя абмеркаванні, прапановы, каментарыі, галасы і высновы. Своечасова атрымлівайце асноўныя навіны пра важныя абмеркаванні і рашэнні.
 
 ---
 
-Спачатку перайдзіце на [https://api.slack.com](https://api.slack.com), увайдзіце ў свой уліковы запіс, калі яшчэ не ўвайшлі, і націсніце Create New App
+Спачатку перайдзіце на [https://api.slack.com](https://api.slack.com), увайдзіце ў свой уліковы запіс, калі яшчэ не ўвайшлі, і націсніце «Стварыць новую праграму» (Create New App)
 
 ![](s1.png)
 
-Назавіце сваю праграму Slack
+Дайце назву вашай праграме Slack
 
 ![](s2.png)
 
@@ -38,7 +38,7 @@ Loomio можа адпраўляць апавяшчэнні ў вашы кана
 
 ![](s4.png)
 
-Пасля гэтага дадайце новы вэбхук
+Затым дадайце новы вэбхук
 
 ![](s5.png)
 
@@ -52,6 +52,6 @@ Loomio можа адпраўляць апавяшчэнні ў вашы кана
 
 Цяпер, калі ў вас ёсць URL вэбхука, працягніце наладжванне інтэграцыі з чатам:
 
-[Наладзіць інтэграцыю з чатам у Loomio](../chatbots/#set-up-a-chat-integration)
+[Наладзьце інтэграцыю з чатам у Loomio](../chatbots/#set-up-a-chat-integration)
 
-_Slack не стварае і не падтрымлівае Loomio, і Loomio не звязаны са Slack._
+_Loomio не створаны Slack, не звязаны са Slack і не падтрымліваецца Slack._

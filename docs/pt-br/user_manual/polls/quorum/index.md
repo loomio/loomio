@@ -1,16 +1,16 @@
 ---
 title: Quórum
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/polls/quorum/index.md
+source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
+source_file: docs/en/user_manual/polls/quorum/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 0bf465006210877b
   example-scenario: 6596ad44e1c046b4
 generated:
-  introduction: dac7b848a5af6d4b
-  example-scenario: 2827d2aa72141877
+  introduction: 0abacfeecb1e0e38
+  example-scenario: 0eb256030516d265
 title_source: 18ed8b6c5ab90343
 title_generated: 87368b7c44ece4c1
 ---
@@ -19,36 +19,36 @@ title_generated: 87368b7c44ece4c1
 
 # Quórum
 
-O quórum é a porcentagem mínima de pessoas aptas a votar que precisam participar para que uma votação seja válida. Use-o quando o processo de decisão do seu grupo exigir um nível específico de participação.
+O quórum é a porcentagem mínima de eleitores aptos a votar que devem participar para que uma enquete seja válida. Use esse recurso quando seu processo de governança exigir um determinado nível de participação.
 
-Ao criar uma votação, abra **Mais configurações** e informe a porcentagem exigida em **Quórum de participação**. Deixe o campo em branco se não houver quórum obrigatório.
+Ao criar uma enquete, abra **Mais configurações** e informe a porcentagem exigida em **Quórum de participação**. Deixe o campo em branco quando não houver exigência de quórum.
 
-![A configuração de quórum com 60% de participação exigida](./quorum-section.png)
+![A configuração de quórum com um quórum de participação de 60 por cento](./quorum-section.png)
 
-Você também pode definir um quórum em um [modelo de votação](/en/user_manual/polls/poll_templates/) para que as votações criadas a partir dele usem esse valor por padrão.
+Você também pode definir um quórum em um [modelo de enquete](/en/user_manual/polls/poll_templates/) para que as enquetes criadas a partir desse modelo usem esse quórum por padrão.
 
 <!-- translation-section: example-scenario -->
 
-## Exemplo
+## Exemplo de cenário
 
 A Cooperativa Oatmilk está discutindo um teste de seis semanas com garrafas retornáveis. A discussão chegou ao ponto em que a cooperativa precisa aprovar o orçamento do teste.
 
-Jamie seleciona **Iniciar uma votação**, escolhe o modelo de proposta **Consentimento** e preenche o título, os detalhes, as opções, a duração e as configurações de quem pode votar.
+Jamie seleciona **Iniciar uma votação**, escolhe o modelo de proposta **Consentimento** e preenche o título, os detalhes, as opções, a duração e as configurações dos eleitores.
 
-![O título, os detalhes, as opções, a duração e as configurações de quem pode votar na proposta](proposal-options.png)
+![O título, os detalhes, as opções, a duração e as configurações dos eleitores da proposta](proposal-options.png)
 
 Jamie limita a votação às cinco pessoas responsáveis pelo orçamento do teste.
 
-A cooperativa exige 60% de participação em decisões importantes. Por isso, Jamie informa **60** no campo de quórum de participação e inicia a proposta.
+A cooperativa exige 60 por cento de participação para decisões importantes, então Jamie informa **60** no campo de quórum de participação e inicia a proposta.
 
-Antes de qualquer pessoa votar, o painel de resultados mostra que o quórum ainda não foi atingido.
+Antes que alguém vote, o painel de resultados mostra que o quórum ainda não foi atingido.
 
-![Nenhum voto registrado e o quórum de 60% ainda não atingido](pie-chart-0.png)
+![Nenhum voto registrado e o quórum de 60 por cento ainda não atingido](pie-chart-0.png)
 
-Jamie concorda e Samira discorda. O gráfico é atualizado, mas duas das cinco pessoas aptas a votar representam apenas 40% de participação. O quórum ainda não foi atingido.
+Jamie concorda e Samira discorda. O gráfico é atualizado, mas a participação de dois dos cinco eleitores aptos a votar corresponde a apenas 40 por cento, então o quórum ainda não foi atingido.
 
-![Duas das cinco pessoas votaram e o quórum ainda não foi atingido](pie-chart-40.png)
+![Dois dos cinco votos registrados e o quórum ainda não atingido](pie-chart-40.png)
 
-Alex então concorda. Três das cinco pessoas aptas a votar participaram, atingindo o quórum de 60%. Uma marca de seleção verde indica que a exigência foi atendida. Jamie pode encerrar a votação antes do prazo ou esperar pelas demais pessoas.
+Alex então concorda. Três dos cinco eleitores aptos a votar participaram, atingindo o quórum de 60 por cento. A exigência agora aparece com uma marca de seleção verde. Jamie pode encerrar a enquete antecipadamente ou aguardar os demais eleitores.
 
-![Três das cinco pessoas votaram e o quórum de 60% foi atingido](pie-chart-60.png)
+![Três dos cinco votos registrados e o quórum de 60 por cento atingido](pie-chart-60.png)

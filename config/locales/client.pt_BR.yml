@@ -184,7 +184,7 @@ pt_BR:
   poll_types:
     proposal: proposta
     count: opt-in
-    check: Verificação de sentido
+    check: Verificação de opinião
     poll: enquete de escolha
     dot_vote: enquete de distribuição
     meeting: enquete de horário
@@ -351,7 +351,7 @@ pt_BR:
     formatting_help:
       label: Formatação
       title: Aprenda como usar Markdown para formatar seu texto
-    thread: Fio
+    thread: Conversa
     commercial: Comercial
     nonprofit: Organização sem fins lucrativos
     opening_in: Abertura %{time}
@@ -449,7 +449,7 @@ pt_BR:
     loud: Alto
     normal: Normal
     quiet: Quieto
-    mute: Mudo
+    mute: Silenciar
     unmute: Com som
   pin_event_form:
     title: Fixar na timeline
@@ -479,7 +479,7 @@ pt_BR:
     loud_label: Toda atividade
     normal_label: Anúncios
     quiet_label: Sem e-mails
-    mute_label: Mudo
+    mute_label: Silenciar
     saved: As configurações de notificação foram atualizadas
     discussion:
       loud_description: Você receberá um email sobre todas as atividades nessa conversa.
@@ -689,7 +689,7 @@ pt_BR:
     email_and_device_when_notified: E-mail e notificação no dispositivo ao receber uma notificação
     device_notification_when_notified: Notificação no dispositivo ao receber uma notificação
     no_notifications: Nenhuma notificação
-    catch_up_email_every_second_day: E-mail de atualização a cada dois dias
+    catch_up_email_every_second_day: E-mail de resumo a cada dois dias
     weekly_catch_up_email: E-mail semanal de atualização
   search_modal:
     all_content: Todo o conteúdo
@@ -864,13 +864,13 @@ pt_BR:
       discussion_closed: "%{actor} encerrou a discussão"
       new_discussion: "%{actor} iniciou uma discussão"
       new_comment: "%{actor} comentou em uma discussão"
-      outcome_updated: "%{actor} atualizou o resultado"
+      outcome_updated: "%{actor} atualizou a conclusão"
       thread_locked: "%{actor} bloqueou a thread"
       membership_request_declined: Seu pedido para participar do %{title} foi recusado
     hints:
       poll_closing_soon: Agora é um bom momento para votar, mudar de ideia ou encorajar outras pessoas a participar.
       poll_closing_soon_author: Você pode querer lembrar as pessoas de votar ou estender o prazo.
-      outcome_review_due: Considere iniciar uma pesquisa de opinião ou uma nova discussão, convidando à reflexão sobre como a decisão foi implementada.
+      outcome_review_due: Considere iniciar uma enquete de opinião ou uma nova discussão, convidando à reflexão sobre como a decisão foi implementada.
     email_subject:
       unknown_sender: Analisar e-mail de remetente desconhecido
       comment_replied_to: "%{actor} respondeu a você em: %{title}"
@@ -966,7 +966,7 @@ pt_BR:
     none_direct_discussion: Nenhuma (discussão direta)
     direct_discussion: Discussão direta
     direct_discussion_hint: Uma conversa direta só é visível para as pessoas específicas que você convida. Ela não aparecerá na lista de discussões de nenhum grupo — você pode encontrá-la na sua página de conversas diretas.
-    recommended_poll_templates: Modelos de pesquisa recomendados
+    recommended_poll_templates: Modelos de enquete recomendados
     edit_discussion_context: Editar contexto de discussão
     tags_field_moved: As etiquetas mudaram de lugar. Clique no ícone da etiqueta no canto superior direito da página da discussão, à direita do título.
   announcement:
@@ -1012,7 +1012,7 @@ pt_BR:
       topic: Todos no tópico
       voters: Todos convidados a votar
       decided_voters: Todos que votaram
-      undecided_voters: Eleitores indecisos
+      undecided_voters: Eleitores que não votaram
       non_voters: Membros de %{name} ainda não convidados
       delegates_of_group: Delegados de %{name}
     form:
@@ -1246,7 +1246,7 @@ pt_BR:
   join_group_button:
     not_a_member: No momento, você não é um membro deste grupo.
     join_group: Entrar no grupo
-    membership_requested: Inclusão de membro solicitada
+    membership_requested: Adesão solicitada
     messages:
       joined_group: Você agora é um membro do(a) %{group}
     membership_request_declined: 'Seu pedido de adesão foi recusado: %{reason}'
@@ -1292,9 +1292,9 @@ pt_BR:
     title: Deletar grupo
     subgroup_title: Deletar subgrupo
     parent_body: |
-      <h2>Este é o seu grupo pai - não um subgrupo!</h2>
+      <h2>Este é o seu grupo principal - não um subgrupo!</h2>
       <br>
-      Se você excluir isso, todos os subgrupos também serão excluídos permanentemente.
+      Se você excluir este grupo, todos os subgrupos também serão excluídos permanentemente.
 
       Sua assinatura do Loomio também será cancelada.
 
@@ -1369,7 +1369,7 @@ pt_BR:
       quiet: Não enviar e-mail sobre esse grupo. Atividades serão exibidas no painel.
       quiet_aria_description: O seu volume de notificação para este grupo está definido como Quieto. Você não receberá e-mail sobre atividades deste grupo. Eles serão mostradas no seu Painel.
       quiet_message: Você não receberá e-mail sobre as atividades em "%{name}".
-      mute_aria_description: O seu volume de notificação para este grupo está definido como Mudo. Você não receberá e-mail, a não ser que mencionem você, e atividades do grupo não serão mostradas no seu Painel.
+      mute_aria_description: O seu volume de notificação para este grupo está definido como Silenciar. Você não receberá e-mail, a não ser que mencionem você, e atividades do grupo não serão mostradas no seu Painel.
       mute_message: '"%{name}" foi removido do seu painel.'
       mute: Oculte este grupo do painel e não notifique, a menos que {'@'}seja mencionado.
     privacy:
@@ -1554,8 +1554,8 @@ pt_BR:
     previous_requests: Pedidos Anteriores
     previous_request_response: "%{response} por %{responder}"
     messages:
-      request_approved_success: Inclusão de membro aprovada
-      request_ignored_success: Solicitação de inclusão de membro ignorada
+      request_approved_success: Pedido de adesão aprovado
+      request_ignored_success: Pedido de adesão ignorado
       request_declined_success: Pedido de adesão recusado
     decline: Declínio
     decline_request: Recusar pedido de adesão
@@ -1695,6 +1695,7 @@ pt_BR:
     updated_on_sign_in: Fornecido pelo seu navegador e atualizado quando você faz login
     translate_content_automatically: Traduzir conteúdo para o meu idioma automaticamente
     bot_account_warning: Contas de bots não serão convidadas a votar em enquetes ou participar de discussões.
+    translations_are_made_by_machine: As traduções são automáticas. Se uma palavra estiver errada ou pouco clara, envie um e-mail para %{email} e vamos corrigir.
   text_editor:
     x_of_y_characters: "%{x} / %{y} caracteres"
     select_text_to_link: Selecione o texto para vincular e tente novamente
@@ -1764,7 +1765,7 @@ pt_BR:
     group_notifications: Notificações de grupo
     group_notifications_description: Altere o nível de atividade e o canal para seus grupos
     choose_email_and_push_updates: Escolha configurações separadas para e-mail e notificações push.
-    catch_up_email: E-mail de atualização
+    catch_up_email: E-mail de resumo
     catch_up_email_description: Escolha quando receber um resumo das notificações não visualizadas e das atividades não lidas.
   thread_preview:
     replies_count: "%{count} respostas"
@@ -1994,12 +1995,12 @@ pt_BR:
     consent_title: Consentimento
     consensus_title: Consenso
     proposal_title: Proposta
-    count_title: Aceitar
-    check_title: Verificação de sentido
+    count_title: Inscrição
+    check_title: Verificação de opinião
     poll_title: Consulta
     meeting: Reunião
     score_title: Enquete de pontuação
-    dot_vote_title: Voto de ponto
+    dot_vote_title: Enquete de distribuição
     meeting_title: Enquete de horário
     ranked_choice_title: Enquete de classificação
     gradients_of_agreement_title: Gradientes de concordância
@@ -2130,23 +2131,23 @@ pt_BR:
     you_voted: Você votou
     these_are_templates: Estes são os modelos de decisão do seu grupo. Clique em um modelo para iniciar uma nova decisão. Os administradores podem personalizar todos os detalhes de um modelo para que ele corresponda às práticas da sua organização e seja fácil de encontrar e usar para os membros.
     example_templates: Modelos de exemplo
-    example_poll_templates: Exemplos de modelos de pesquisa
+    example_poll_templates: Exemplos de modelos de enquete
     browse_example_templates: Veja modelos de exemplo
-    browse_example_templates_hint: Crie um novo modelo de pesquisa do zero ou use um exemplo para começar.
+    browse_example_templates_hint: Crie um novo modelo de enquete do zero ou use um exemplo para começar.
     browse_example_use_hint: Clique no título do modelo para <b>iniciar uma enquete</b> .
     browse_example_fork_hint: "<b>Clique no ícone de garfo</b> para criar um novo modelo de enquete, usando o exemplo como ponto de partida."
     browse_unsure_help: Não sabe como usar os modelos de enquete?
     all_templates_hidden: Todos os modelos foram ocultados.
-    new_poll_template_title: Novo modelo de pesquisa
+    new_poll_template_title: Novo modelo de enquete
     new_template_from_blank: Novo modelo a partir de um modelo em branco
     new_template_from_blank_subtitle: Crie um novo modelo que se adapte a um processo existente na sua organização.
     blank: Novo
-    blank_subtitle: Crie um novo modelo de pesquisa para um processo específico.
+    blank_subtitle: Crie um novo modelo de enquete para um processo específico
     start_a_poll: Iniciar uma enquete
     export_blt: Cédulas de exportação (BLT)
     status: Status
     your_vote_is_requested: Seu voto é solicitado.
-    browse_example_make_a_copy_hint: "<b>Clique no ícone de copiar</b> para criar um novo modelo de pesquisa, usando o exemplo como ponto de partida."
+    browse_example_make_a_copy_hint: "<b>Clique no ícone de copiar</b> para criar um novo modelo de enquete, usando o exemplo como ponto de partida"
     view_votes: Ver votos
     weighted_votes: Votos ponderados
     weighted_points: Pontos ponderados
@@ -2319,12 +2320,12 @@ pt_BR:
     started_by: Iniciado por %{name}
   poll_common_votes_panel:
     vote_removed: Voto removido
-    undecided: Indecisos
+    undecided: Não votaram
     newest_first: Mais recentes primeiro
     oldest_first: Mais antigos primeiro
     priority_first: De acordo primeiro
     priority_last: Bloqueado primeiro
-    undecided_first: Indecisos primeiro
+    undecided_first: Quem não votou primeiro
     no_votes_yet: Nenhum voto foi registrado ainda.
     change_results_order: Mudar ordem dos resultados
     none_of_the_above: "(Nenhuma das opções acima)"
@@ -2851,7 +2852,7 @@ pt_BR:
       voting_title: 24 horas antes do encerramento da votação, envie um lembrete para
       nobody: Ninguém
       author: Autor (eu)
-      undecided_voters: Eleitores indecisos
+      undecided_voters: Eleitores que não votaram
       voters: Todos os eleitores
     notify_on_participate:
       title: Avise-me quando as pessoas participarem
@@ -2913,9 +2914,9 @@ pt_BR:
       score_hint: Os eleitores atribuem uma pontuação a cada opção
       allocate: Alocar
       allocate_hint: Os eleitores alocam um orçamento de pontos entre as opções
-      ranked_choice: Escolha classificada
+      ranked_choice: Enquete de classificação
       ranked_choice_hint: Os eleitores organizam as opções em ordem da mais para a menos preferida
-      time_poll: Enquete de tempo
+      time_poll: Enquete de horário
       time_poll_hint: Os eleitores indicam quando estão disponíveis para se reunir
       rank: Classificação
       time: Tempo
@@ -2973,7 +2974,7 @@ pt_BR:
     anonymous_voting_description: Exibe votos e justificativas, mas não quem os emitiu. Isso não pode ser alterado após o início da %{poll_type}.
     vote_reason_description: Peça às pessoas que compartilhem suas justificativas quando votarem ou que forneçam mais informações.
     hide_results_description: Se você quiser que as pessoas votem sem ver como os outros votaram, você pode ocultar os resultados.
-    process_helptext: Nomeie e descreva o processo que está sendo usado para executar esta pesquisa.
+    process_helptext: Nomeie e descreva o processo que está sendo usado para conduzir esta enquete.
     reminder_helptext: Envie uma notificação de "Fechamento em breve" 24 horas antes do prazo final. Isso pode aumentar a participação e criar uma oportunidade para as pessoas reconsiderarem suas posições.
     voting_duration: Duração
     voting_duration_hint: Quando começa e quando termina a votação?
@@ -3003,7 +3004,7 @@ pt_BR:
     edit_vote_weight: Editar peso do voto
     edit_vote_weight_for: Editar peso do voto para %{name} (atualmente %{weight})
     set_all_vote_weights_title: Defina todos os pesos de voto
-    set_all_vote_weights_search_note: Isso altera a ponderação dos votos de todos os eleitores na pesquisa, incluindo aqueles que não constam nos resultados da sua busca.
+    set_all_vote_weights_search_note: Isso altera os pesos dos votos de todos os eleitores na enquete, incluindo aqueles que não constam nos resultados da sua busca
     set_each_member_default_vote_weight: Defina o peso de voto padrão de cada membro.
     voters_will_not_be_notified: Os eleitores não serão notificados. Informe-os sobre a votação de outra forma.
     give_voters_different_vote_weights: Atribua pesos diferentes aos votos dos eleitores. Os resultados mostram os totais brutos e ponderados.
@@ -3013,7 +3014,7 @@ pt_BR:
     set_all_vote_weights_the_same: Defina o mesmo peso para todos os votos
     member_vote_weights_hint: Os eleitores que não são membros de nenhum grupo atualmente têm um peso de voto de 1
     weighted_voting: Votação ponderada
-    weighted_voting_is_not_available_with_anonymous_voting: "A votação ponderada não está disponível com a votação anônima"
+    weighted_voting_is_not_available_with_anonymous_voting: A votação ponderada não está disponível com a votação anônima
     use_weighted_voting: Usar votação ponderada
     weighted_voting_off_warning: Desativar a votação ponderada define o peso de cada voto para 1. Quaisquer alterações na ponderação dos votos feitas para esta enquete serão perdidas.
     weighted_voting_on_group: Ao ativar a votação ponderada, o peso de voto padrão de cada membro é copiado. Os demais votantes recebem um peso de voto de 1.
@@ -3048,8 +3049,8 @@ pt_BR:
     hidden_templates: Modelos ocultos
     confirm_delete: Tem certeza de que deseja excluir este modelo de discussão?
     add_poll_template: Adicionar modelo de enquete
-    add_poll_template_help: Selecione quaisquer modelos de pesquisa que ajudem a concluir este processo.
-    recommended_poll_templates: Modelos de pesquisa recomendados
+    add_poll_template_help: Selecione quaisquer modelos de enquete que ajudem a concluir este processo
+    recommended_poll_templates: Modelos de enquete recomendados
     share_in_template_gallery: Compartilhe este modelo na galeria de modelos públicos.
     browse_example_templates: Veja modelos de exemplo
     example_templates: Modelos de exemplo
@@ -3064,7 +3065,7 @@ pt_BR:
     or_start_a_direct_discussion: Ou inicie uma discussão direta.
     choose_group_for_templates: Selecione um grupo para visualizar seus modelos de discussão.
     start_direct_discussion: Iniciar discussão direta
-    poll_templates: Modelos de pesquisa
+    poll_templates: Modelos de enquete
     poll_templates_help: Os modelos que você selecionar aqui serão exibidos primeiro quando alguém clicar em "Iniciar uma votação".
     start_direct_discussion_from_blank: Inicie uma discussão direta a partir de um modelo em branco.
     default_to_direct_discussion: Comece com uma discussão direta (sem grupo).

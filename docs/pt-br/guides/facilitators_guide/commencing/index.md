@@ -1,10 +1,10 @@
 ---
 title: Começando
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/guides/facilitators_guide/commencing/index.md
+source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
+source_file: docs/en/guides/facilitators_guide/commencing/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-30'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 87ee3ad32a430187
   invitation: b671f8d5413b5b4d
@@ -17,14 +17,14 @@ sections:
   culture-protocol-expectations: ee488948ed8403ca
 generated:
   introduction: 522f49993ecaa05c
-  invitation: a09feb77a5318d6e
-  arrival: 9d3e45685e966be7
-  welcoming: 3dbec4b54e76331f
-  settling: d3f4e7ac3459f380
-  who-s-in-the-room: 97470581d633cb49
-  check-in: 89a3f597a2451826
-  who-s-not-in-the-room: 4052bdb42aa7b0d2
-  culture-protocol-expectations: 37668f0e72b8804b
+  invitation: 0e61f5f16b47a7e1
+  arrival: 9b232a496583005a
+  welcoming: d96fc46bcaa5830a
+  settling: dd2c9530e68a118e
+  who-s-in-the-room: 87e961699b3c9b35
+  check-in: d5a21159dfe713b5
+  who-s-not-in-the-room: c207dc08058655fc
+  culture-protocol-expectations: e8699416e59d420c
 title_source: a595572326eb8669
 title_generated: b548b2d827488fa1
 ---
@@ -39,116 +39,117 @@ title_generated: b548b2d827488fa1
 
 ## Convite
 
-A forma de convidar participantes para um espaço de diálogo facilitado é muito importante. O convite transmite muitas informações. Com base nele, as pessoas avaliam como o espaço será conduzido e se há lugar para elas. O momento do convite é uma oportunidade decisiva para definir o tom e estabelecer confiança.
+A forma como os participantes são convidados para um espaço facilitado é muito importante. As pessoas extraem muitas informações do convite e as usam para avaliar como o espaço será conduzido e se fazem parte dele. O momento do convite é, de muitas maneiras, a principal oportunidade para definir o tom e estabelecer confiança.
 
-> <img style="border-radius: 100%; float: right; margin-left: 0.5em; max-width: 96px; " src="../rich_200.png"> Tomar decisões depende de comunicação. Seu grupo só consegue tomar boas decisões em conjunto quando existe uma boa base de comunicação. Isso significa deixar claro o propósito da discussão ou reunião, quem precisa participar, qual é o prazo e o que as pessoas podem esperar.
+> <img style="border-radius: 100%; float: right; margin-left: 0.5em; max-width: 96px; " src="../rich_200.png"> A tomada de decisões depende da comunicação: seu grupo só pode tomar boas decisões em conjunto se houver primeiro uma base de boa comunicação. Isso significa deixar claro qual é o objetivo de uma discussão ou reunião, quem precisa participar, qual é o prazo e o que as pessoas podem esperar.
 >
 > — Richard Bartlett
 
-Aspectos importantes de um convite:
+Aspectos principais de um convite:
 
-* **Informações básicas.** Do que se trata? O que estão me pedindo para fazer? Quem está por trás da iniciativa? Quem mais vai participar? Quanto tempo precisarei dedicar? Qual é o tema e como será o processo?
-* **Contexto.** Como será esta participação específica? Entre os formatos e caminhos possíveis, qual foi escolhido? Por que agora e por que dessa forma?
-* **Pertencimento.** Sou bem-vindo? Este espaço é para mim? Minha participação é necessária? Que contribuição posso oferecer? Por que vale a pena participar?
-* **Segurança.** O convite demonstra cuidado, confiança e compreensão? A estrutura do processo consegue lidar com as relações de poder envolvidas? Quanto de honestidade ou vulnerabilidade será exigido de mim? Confio que a pessoa que convida vai cuidar bem desse espaço?
-* **Acessibilidade.** Minhas necessidades básicas para participar serão atendidas? Isso inclui idioma, tecnologia assistiva e explicações para termos desconhecidos. Conseguirei participar?
+* **Informações iniciais.** O que é isso? O que estão me pedindo para fazer? Quem está por trás disso? Quem mais participará? Quanto tempo será necessário, qual é o tema central e quais são os procedimentos?
+* **Contexto.** Quais são as características desta atividade específica? Entre todos os formatos e caminhos possíveis, qual será adotado? Por que agora e por que desta forma?
+* **Pertencimento.** Sou bem-vindo? Isso é para mim? Minha presença é necessária neste processo? Qual é meu valor e minha contribuição específica? Por que eu, em particular, deveria me interessar em participar?
+* **Segurança.** Este convite demonstra cuidado, confiança e compreensão? A estrutura da atividade consegue lidar com as dinâmicas de poder presentes? Que nível de honestidade ou vulnerabilidade isso exigirá de mim? Acredito que a pessoa que está me convidando saberá me acolher?
+* **Acessibilidade.** Minhas necessidades básicas de participação serão atendidas? Idioma, tecnologia assistiva, termos técnicos desconhecidos etc. Será possível participar?
 
 No Loomio
 
-* O Loomio permite [convidar usuários](/en/user_manual/groups/inviting_people/) por e-mail ou por um link especial. As pessoas também podem solicitar entrada no seu grupo, se as configurações permitirem.
-* Os recursos de convite do software são básicos. Receber sem contexto um pedido inesperado para entrar em um software novo pode causar estranhamento. Por isso, quem cria grupos costuma apresentar o Loomio às pessoas por outros meios antes de enviar o convite.
-* Vários recursos do Loomio ajudam a criar um espaço seguro e respeitoso, no qual as pessoas queiram participar. Entre eles estão as [opções de privacidade](/en/user_manual/groups/starting_a_group/#privacy).
-* O próprio software foi projetado para ser simples, acolhedor e profissional, de modo a transmitir confiança.
-* O Loomio oferece recursos de acessibilidade para quem usa tecnologias assistivas, como leitores de tela, e recursos de tradução para quem fala outros idiomas. Mencionar esses recursos no convite pode ajudar algumas pessoas a se sentirem mais bem-vindas.
+* A ferramenta tem uma função integrada para [convidar usuários](/en/user_manual/groups/inviting_people/) por e-mail ou pelo envio de um link especial. Os usuários também podem solicitar entrada no seu grupo, se suas configurações permitirem.
+* As ferramentas de convite integradas ao software são muito básicas, e receber uma solicitação inesperada para entrar em um novo software, sem contexto, não é muito acolhedor. Por isso, quem cria grupos costuma apresentar o Loomio às pessoas por meio de um processo separado.
+* Muitos aspectos do Loomio já foram projetados para criar um espaço seguro e respeitoso do qual os usuários queiram participar — como as [opções de privacidade](/en/user_manual/groups/starting_a_group/#privacy), pensadas com cuidado.
+* O design do próprio software busca ser acolhedor, simples e profissional, com a intenção de transmitir confiança.
+* O Loomio tem recursos de acessibilidade para pessoas que usam tecnologia assistiva, como leitores de tela, e recursos de tradução para pessoas que falam diferentes idiomas. Destacar esses aspectos em um convite pode fazer algumas pessoas se sentirem mais acolhidas.
 
 <!-- translation-section: arrival -->
 
 ## Chegada
 
-A chegada é a primeira impressão que a pessoa tem do processo e influencia o que acontece depois. Ela aceitou o convite e decidiu participar. Está aberta à experiência e tem expectativas. A impressão que tiver nesse momento terá grande impacto em sua participação.
+O momento da chegada é a “primeira impressão” de uma atividade e define seu rumo a partir daí. A pessoa aceitou um convite e decidiu participar. Ela está aberta à experiência e tem expectativas, e a impressão que tiver terá um grande impacto na sua experiência.
 
 <!-- translation-section: welcoming -->
 
 ### Acolhimento
-Para se sentir à vontade para participar, se envolver e ouvir, a pessoa precisa se sentir bem-vinda. Ela precisa perceber que sua presença foi reconhecida e que foi recebida com atenção.
+Para ter abertura ao envolvimento, à participação e à escuta, a pessoa precisa se sentir bem-vinda. Ela precisa ter sua presença reconhecida e sentir que está sendo acolhida.
 
 <!-- translation-section: settling -->
 
-### Familiarização
-Ao entrar em uma sala, uma pessoa quer saber onde pode sentar, onde fica a saída, como chegar ao banheiro e se há café. Ela precisa conhecer o espaço e entender seu lugar nele.
+### Ambientação
+Quando alguém entra em uma sala física, quer saber onde se sentar, onde fica a saída, onde fica o banheiro e se há café disponível. A pessoa precisa de uma apresentação básica do espaço e de seu lugar nele.
 
 No Loomio
 
-* Os campos de descrição do grupo e de contexto da discussão são os principais lugares para deixar uma mensagem de boas-vindas a quem chega.
-* Explore o espaço no Loomio e ajuste o que for necessário para se sentir à vontade, como as [configurações de notificação](/en/user_manual/users/email_settings/) e sua [foto de perfil](/en/user_manual/users/user_profile/).
-* Veja as informações da forma que preferir. Experimente diferentes visualizações das conversas e opções como Recentes, Não lidas, Silenciar e Favoritos. Familiarize-se com o espaço.
+* Os campos de descrição do grupo e a caixa de contexto da discussão são os principais espaços para colocar uma “mensagem de boas-vindas” para quem está chegando.
+* Explore o espaço do Loomio e ajuste o que precisar para se sentir à vontade (como as [configurações de notificação](/en/user_manual/users/email_settings/) e sua [foto de perfil](/en/user_manual/users/user_profile/).
+* Veja as informações da forma que preferir, usando diferentes visualizações de conversas e opções como Recentes, Não lidas, Silenciar e Marcar com estrela. Sinta-se à vontade.
 
 <!-- translation-section: who-s-in-the-room -->
 
-## Quem está presente
+## Quem está na sala
 
-Apresentar-se e conhecer outras pessoas é uma das funções sociais humanas mais básicas e importantes. Do *mihimihi* maori ao cumprimento britânico “how do you do” e à troca de cartões de visita no Japão, todas as culturas dão importância a esse momento. Ele vai além das questões práticas e da cortesia: atende a uma necessidade humana profunda, essencial para que as pessoas se sintam à vontade, abertas e concentradas.
+Apresentar-se e conhecer outras pessoas é uma das funções sociais humanas mais básicas e importantes. Do *mihimihi* Māori ao “como vai?” britânico e às trocas de cartões de visita no Japão, todas as culturas dão muita importância a isso. Vai além de questões práticas e de educação e atende a uma necessidade humana profunda, que é um pré-requisito para o conforto, a abertura e a concentração.
 
-Se você facilita um encontro e não dá às pessoas a oportunidade de se apresentar e conhecer quem está por perto, elas geralmente voltam sua atenção a isso, mesmo quando você tenta conduzi-las a outra atividade. Inclua as apresentações no planejamento e use esse momento para contribuir com os objetivos do encontro.
+Como facilitador, se você não der às pessoas a oportunidade de se apresentar e descobrir quem está ao redor delas, em geral elas desviarão a atenção de qualquer outra coisa para a qual você tente direcioná-las, até que você permita esse processo. Planeje as apresentações como parte da atividade e use-as como uma oportunidade para promover os objetivos gerais da interação.
 
 <!-- translation-section: check-in -->
 
-### Rodada de abertura
+### Como você está?
 
-Mesmo em grupos nos quais as pessoas já se conhecem bem, as apresentações continuam em rodadas de abertura. No início de uma reunião, todos têm a oportunidade de falar, muitas vezes em resposta a perguntas como “O que está ocupando sua atenção?”, “Como você está?” ou “Há algo que dificulte sua presença aqui?”. Essa e outras práticas ajudam a fortalecer os vínculos da equipe. As pessoas têm muitas identidades, que mudam conforme o contexto. Elas respondem repetidamente à pergunta “Quem sou eu neste momento?”, e isso as ajuda a se situarem umas em relação às outras.
+Mesmo em grupos cujas pessoas já se conhecem bem, esse processo de apresentação continua com uma rodada de “como você está?” — em que todos têm a oportunidade de falar no início de uma reunião (muitas vezes respondendo a perguntas como “o que mais ocupa sua atenção neste momento?”, “como você está?” ou “há algo impedindo você de estar presente?”) — e outras boas práticas de coesão da equipe. As pessoas têm múltiplas identidades, que mudam conforme o contexto. Elas respondem repetidamente à pergunta “quem sou eu neste momento?”, e é isso que lhes permite se situar em relação umas às outras.
 
-O que uma pessoa expressa não existe isoladamente: está ligado a quem ela é. Conhecer as diferentes dimensões da identidade de alguém é essencial para interpretar suas contribuições.
+As pessoas não se expressam no vazio, mas no contexto de quem são. Uma visão das várias dimensões da identidade de alguém é essencial para interpretar suas contribuições.
 
-> Começamos muitas de nossas reuniões com uma rodada em que todos dizem como estão, antes de entrar na pauta. O foco não são as tarefas de trabalho, mas como cada pessoa está. Se você está passando por dificuldades em casa, está doente ou tem uma boa notícia para compartilhar, conhecer seu estado de espírito ajuda todo o grupo a entender o contexto em que você se comunica. — Richard Bartlett
+
+> Começamos muitas de nossas reuniões com uma rodada de “como você está?” antes de passar à pauta. Essas rodadas se concentram em como você está como pessoa, e não nas suas tarefas de trabalho. Se você está passando por dificuldades em casa, está doente ou tem boas notícias para compartilhar, compreender seu estado de espírito ajudará todo o grupo a ter o contexto adequado para interpretar como você está se comunicando. — Richard Bartlett
 
 No Loomio
 
-* Crie uma conversa chamada “Apresente-se” ou “Como você está?”. Ela oferece uma primeira _ação_ clara para quem chega.
-* Em grupos nos quais é possível solicitar entrada, um recurso permite que a pessoa se apresente à coordenação ao fazer a solicitação. Alguns grupos publicam essa apresentação novamente na conversa de apresentações para dar as boas-vindas à pessoa.
-* Adicione fotos de perfil. Ver os rostos das pessoas é uma das formas mais eficazes de reconhecer quem participa com você de um espaço online.
+* Crie uma conversa chamada "Apresente-se" ou "Como você está?". Ela oferece uma primeira _chamada à ação_ útil, que todos que chegam vão entender.
+* Para grupos em que é necessário solicitar entrada, temos uma função que permite à pessoa solicitante se apresentar ao coordenador para obter acesso ao grupo. Alguns grupos têm um processo de republicação desse conteúdo na conversa de apresentação para dar boas-vindas às pessoas.
+* Envie fotos de perfil. Fotos de rostos são uma das formas mais eficazes de sentir que você sabe quem está na sala com você no ambiente online.
 
 <!-- translation-section: who-s-not-in-the-room -->
 
-## Quem não está presente
+## Quem NÃO está na sala
 
-A diversidade é essencial para a qualidade das decisões em grupo. A chamada “sabedoria das multidões” (inteligência coletiva) depende da combinação de diferentes pontos de vista. As conclusões de processos colaborativos dependem muito de quais vozes estão representadas e quais não estão. É impossível incluir todo mundo de forma perfeitamente representativa, mas você precisa considerar quem pode estar faltando.
+A diversidade é fundamental para que o grupo tome decisões de qualidade. O “efeito da sabedoria das multidões” (inteligência coletiva) só funciona ao combinar diferentes pontos de vista. Os resultados dos processos de colaboração dependem muito de quais vozes estão ou não representadas. É impossível ter uma inclusão perfeitamente representativa, mas você precisa considerar quem pode estar faltando.
 
-É muito comum não perceber os efeitos dos próprios privilégios. As pessoas nem sempre reconhecem seus vieses e costumam notar melhor a presença de algo do que sua ausência. Nossa percepção pode nos enganar. Por exemplo, quando mulheres e homens recebem deliberadamente o mesmo tempo de fala, muitas vezes surge a impressão de que as mulheres falaram mais do que deveriam. Isso ocorre por causa de diferentes expectativas sobre quanto elas “deveriam” falar ([mais detalhes](https://www.quora.com/Do-women-tend-to-talk-more-than-men)). Para ter uma visão precisa, às vezes é necessário medir ou contar, em vez de confiar apenas na intuição.
+É muito comum que as pessoas não percebam certos aspectos do privilégio. Não somos bons em identificar vieses pela intuição e percebemos muito melhor a presença de algo do que sua ausência. Nossa mente nos engana. Por exemplo, quando mulheres e homens recebem deliberadamente o mesmo tempo de fala, muitas vezes há a percepção de que as mulheres estão falando mais do que seria justo, devido a diferentes ideias sobre quanto elas “deveriam” falar ([mais detalhes](https://www.quora.com/Do-women-tend-to-talk-more-than-men)). Pode ser necessário medir ou contar para ter uma visão precisa, em vez de confiar na intuição.
 
-Uma pessoa sem necessidades específicas de acessibilidade talvez nem perceba que um local não permite o acesso de cadeiras de rodas, que um documento não funciona com leitores de tela ou que uma situação exclui pessoas com perda auditiva. Mas quem enfrenta essas barreiras percebe. Quem não tem filhos talvez não considere que uma reunião às 19h pode ser inviável para mães, pais ou responsáveis. Esses e muitos outros fatores práticos, sociais e culturais podem impedir alguém de *estar presente*.
+Uma pessoa que não tem necessidades específicas de acessibilidade talvez nem perceba que um local não é acessível para cadeiras de rodas, que um documento não está formatado para leitores de tela ou que uma situação está excluindo alguém com perda auditiva. Mas as pessoas que enfrentam essas dificuldades vão perceber. Quem não tem filhos talvez não considere que uma reunião às 19h pode não funcionar para mães e pais. Esses e muitos outros fatores práticos, sociais e culturais podem impedir alguém de *estar na sala*.
 
-Pensar em quem não está presente é especialmente importante quando você tenta resolver problemas de outras pessoas: construa com elas, não para elas; converse com elas, não apenas sobre elas. Se as pessoas que você quer atender não participam, é muito improvável que você tenha todas as informações necessárias para agir de forma eficaz. Isso diz respeito tanto à eficácia dos resultados de uma organização quanto à justiça social. Quase sempre é melhor planejar a colaboração *com* usuários ou outras pessoas envolvidas.
+É especialmente importante pensar em quem não está na sala quando você tenta resolver problemas de outras pessoas: construa com elas, não para elas; converse com as pessoas, não sobre elas. Se as pessoas que você está tentando atender não estão na sala, é muito improvável que você tenha todas as contribuições necessárias para ser eficaz. Isso diz respeito tanto à eficácia dos resultados de negócios quanto à justiça social; quase sempre é melhor planejar a colaboração *com* os usuários ou as partes interessadas.
 
 No Loomio
 
-* A colaboração online pode ampliar muito a inclusão. Em vez de pensar apenas na “exclusão digital”, pense em como a tecnologia pode criar uma “ponte digital”. Ela pode incluir pessoas que não conseguem comparecer a reuniões presenciais ou participar em um horário específico, além de abrir possibilidades como discussões em vários idiomas.
-* O Loomio mostra claramente quem foi convidado para um grupo e quem participou de uma discussão. Essas informações ajudam a avaliar a inclusão. Se alguém estiver ausente, você poderá perceber.
-* Se decisões inclusivas e a diversidade de perspectivas são importantes para você, pergunte-se de tempos em tempos: “Quem não está presente? Por quê?”
+* Colaborar online pode permitir outros níveis de inclusão. Em vez de pensar em uma “exclusão digital”, pense em uma “ponte digital” — como a tecnologia pode incluir pessoas que não conseguem comparecer a reuniões presenciais ou participar em um horário específico e abrir novas possibilidades, como discussões em vários idiomas.
+* O Loomio mostra com clareza quem foi convidado para um grupo e quem participou de uma discussão, oferecendo informações importantes para pensar sobre inclusão. Se faltam pessoas, você consegue perceber.
+* Se a tomada de decisões inclusiva e a diversidade de pensamento são importantes para você, pergunte-se periodicamente: “Quem não está na sala? Por quê?”
 
 <!-- translation-section: culture-protocol-expectations -->
 
-## Cultura, protocolos e expectativas
+## Cultura, procedimentos e expectativas
 
-Cultura pode ser um conceito difícil de definir e atua em vários níveis. A cultura da sociedade tem grande influência, mas cada grupo, encontro ou discussão também tem sua própria cultura.
+A cultura pode ser um conceito bastante vago e atua em vários níveis. A cultura da sociedade em geral tem grande influência, mas você pode considerar que cada grupo e cada sessão ou discussão tem uma cultura própria.
 
-Como agimos? Como conversamos uns com os outros? O que é aceitável aqui e o que não é? Quais são as regras da nossa convivência?
+Como fazemos as coisas? Como conversamos uns com os outros? O que é e o que não é aceitável aqui? Quais são as regras de como interagimos?
 
-Enfrentar essas questões culturais pode ser um momento importante de reflexão para o grupo. Evitá-las pode dificultar o alcance dos objetivos e, em alguns casos, até desintegrar o grupo.
+O processo de abordar questões culturais pode ser um momento importante de autoconhecimento para um grupo. Deixar de abordá-las pode prejudicar a capacidade de alcançar objetivos ou, às vezes, desintegrar completamente um grupo.
 
-A cultura, os protocolos e as expectativas podem ser implícitos ou explícitos. Por sua natureza, eles se relacionam de maneiras complexas com as relações de poder e o capital social. É difícil manter abertura suficiente para permitir mudanças, criatividade e liberdade e, ao mesmo tempo, definir limites claros que garantam a segurança.
+Cultura, procedimentos e expectativas podem ser implícitos ou explícitos e, por sua natureza, se cruzam de formas complexas com as dinâmicas de poder e o capital social. É difícil manter as coisas flexíveis o suficiente para permitir que surjam novas possibilidades, evolução, criatividade e liberdade e, ao mesmo tempo, explicitar os requisitos básicos e os limites necessários para garantir segurança.
 
-Quem facilita um grupo muitas vezes ajuda as pessoas a respeitar a cultura que estabeleceram, seguir os protocolos acordados e cumprir as expectativas. Para exercer esse papel, a pessoa precisa de acordos suficientemente claros e de respaldo do grupo. Sem isso, surgem dificuldades.
+Facilitadores costumam orientar o grupo a colocar em prática a cultura que definiu, seguir os procedimentos que acordou e cumprir as expectativas estabelecidas. Se essa função for atribuída a um facilitador, os acordos precisam estar suficientemente claros, e ele precisa ter autorização para exercer esse papel. Caso contrário, podem surgir conflitos.
 
-Muitas pessoas preferem deixar as coisas a cargo do “bom senso” e evitar um código de conduta ou protocolos explícitos. Isso, porém, pode prejudicar de forma desproporcional os membros mais vulneráveis do grupo. Eles costumam sentir primeiro e com mais intensidade os efeitos de comportamentos ou práticas prejudiciais e têm menos condições de enfrentá-los sozinhos. Cabe aos membros com mais privilégios ou influência considerar essas questões com cuidado.
+As pessoas muitas vezes preferem deixar as coisas ao “bom senso” e evitar acordar um código de conduta ou procedimentos explícitos. No entanto, isso pode afetar de forma desproporcional os membros mais vulneráveis do grupo, pois eles sentirão primeiro e com maior intensidade os impactos negativos de comportamentos ou de uma cultura prejudiciais e terão menos poder para enfrentá-los por conta própria. Cabe aos membros com mais privilégios ou influência no grupo pensar cuidadosamente sobre essas questões.
 
-Como acontece com um contrato, você espera nunca precisar aplicar um código de conduta, mas fica satisfeito por ele existir quando é necessário. O ideal é chegar a um acordo *antes* de precisar dele. Para que quem facilita ou qualquer membro do grupo possa dizer com firmeza “isso não é aceitável aqui”, o grupo precisa ter dedicado tempo à construção de sua cultura e à definição de expectativas.
+Assim como acontece com um contrato jurídico, você espera nunca precisar exigir o cumprimento de um código de conduta, mas, se precisar, ficará muito satisfeito por ele existir. É melhor chegar a um acordo *antes* que ele se torne necessário. Para que um facilitador ou qualquer membro do grupo possa se posicionar e dizer “isso não é aceitável aqui”, você precisa já ter investido na construção da cultura e na definição de expectativas.
 
 No Loomio
 
-* Como o Loomio costuma ser usado para deliberações construtivas em grupos com objetivos e membros definidos, as pessoas geralmente participam de boa-fé e agem com respeito.
-* O Loomio foi projetado para dar voz a cada pessoa e permitir que ela comunique suas necessidades e preocupações. Mesmo que a maioria não veja um problema, uma única pessoa pode levantá-lo e ser ouvida.
-* A comunicação online oferece certo grau de segurança física, pois as pessoas não estão frente a frente.
-* Alguns grupos usam o campo de descrição para registrar um código de conduta ou expectativas de comportamento. Outros definem coletivamente as expectativas que orientam a participação.
-* Muitos grupos usam o próprio Loomio para decidir seus protocolos: como participar, o que é permitido, o que significa uma decisão e o que a torna válida, entre outras questões.
-* O uso do Loomio ajuda a responder a algumas questões básicas de protocolo: quem pode estar aqui? Como nos comunicamos?
-* Uma das decisões mais básicas que os usuários do Loomio enfrentam diz respeito às regras para tomar decisões: consenso? Maioria? Quórum? Unanimidade? Discutir essas regras abertamente pode ser um passo produtivo para desenvolver a cultura do grupo.
+* Como o Loomio costuma ser usado como um espaço de deliberação construtiva entre grupos com um objetivo específico e um conjunto de membros, em geral as pessoas participam de boa-fé e se comportam com respeito.
+* O Loomio foi projetado especificamente para dar voz a cada pessoa e permitir que ela comunique suas necessidades e preocupações. Mesmo que a maioria não veja um problema, uma única pessoa pode levantá-lo e ser ouvida.
+* A comunicação online oferece um certo nível de segurança física, pois as pessoas não estão frente a frente.
+* Alguns grupos já usam o campo de descrição do grupo para registrar um código de conduta ou expectativas de comportamento. Outros acordaram coletivamente um conjunto de expectativas que orientam a participação.
+* Muitos grupos usam o próprio Loomio para decidir seus procedimentos, como a forma de participar, o que é permitido, o que uma decisão significa e o que a torna válida etc.
+* Algumas questões básicas sobre procedimentos são respondidas pelo simples uso do Loomio: Quem pode participar aqui? Como nos comunicamos?
+* Uma das decisões mais básicas que todos os usuários do Loomio encontram diz respeito ao procedimento de tomada de decisões — Consenso? Maioria? Quórum? Unanimidade? Colocar essa questão em destaque pode ser um passo muito produtivo no desenvolvimento da cultura.

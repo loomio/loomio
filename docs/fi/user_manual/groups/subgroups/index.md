@@ -1,10 +1,10 @@
 ---
 title: Alaryhmät
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/groups/subgroups/index.md
+source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
+source_file: docs/en/user_manual/groups/subgroups/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 63e6e23d24e80919
   add-a-subgroup: 0bc0e5f99eb074c3
@@ -17,16 +17,16 @@ sections:
   administer-a-subgroup: 58fa95833f79dd01
   delete-a-subgroup: 2c6e76ec78386443
 generated:
-  introduction: 52babfb48b2d7d5f
-  add-a-subgroup: 63f760dd9f82d991
+  introduction: 751f6b5395cbd1f7
+  add-a-subgroup: 62a6338ca49e4894
   subgroup-settings: eb275d9b7dad3776
-  privacy: 3a8e67df316b561a
-  permissions: 71a8335b3b9687b3
-  find-subgroups: b9773ed1a67ce688
-  invite-to-a-subgroup: 6e13cf3b1952ef62
-  simultaneously-invite-people-to-subgroups-and-parent-group: e1ef12dede301a20
-  administer-a-subgroup: f13c378375c35065
-  delete-a-subgroup: 27060b5a9bc43bc4
+  privacy: b51ea3a0a5c38677
+  permissions: e851e46f87170f9d
+  find-subgroups: fb8a0662cdff75b5
+  invite-to-a-subgroup: aa0041c6a3913691
+  simultaneously-invite-people-to-subgroups-and-parent-group: cad30b323bd6e7d9
+  administer-a-subgroup: f8d9fc86d743f211
+  delete-a-subgroup: 93cdc7731d9d4c71
 title_source: 9f81e728f70cae3e
 title_generated: 1df663e60675db34
 ---
@@ -35,35 +35,35 @@ title_generated: 1df663e60675db34
 
 # Alaryhmät
 
-Alaryhmien avulla voit järjestää viestintää ja jäseniä niin, että oikeat ihmiset voivat työskennellä yhdessä.
+Alaryhmät auttavat sinua järjestämään viestinnän ja jäsenet niin, että oikeat ihmiset voivat työskennellä yhdessä.
 
-Organisaatiolla voi esimerkiksi olla seuraavia alaryhmiä:
+Organisaatiolla voi olla esimerkiksi seuraavat alaryhmät:
 - hallitus
-- työryhmä tai projektiryhmä
-- tiettyä aihetta, kuten strategiaa tai oppimista, käsittelevä ryhmä
+- tiimi tai projektin työryhmä
+- tiettyyn aiheeseen keskittyvä ryhmä (esimerkiksi strategia tai oppiminen)
 
-Alaryhmät toimivat kuten muutkin ryhmät, mutta ne kuuluvat pääryhmän alle. Useimmat ominaisuudet ja asetukset ovat samoja kuin pääryhmässä. Henkilö voi kuulua esimerkiksi hallituksen alaryhmään kuulumatta pääryhmään.
+Alaryhmät toimivat samalla tavalla kuin ryhmät, mutta ne sijaitsevat pääryhmäsi sisällä. Useimmat ominaisuudet ja asetukset ovat samat kuin pääryhmässä. Henkilö voi myös olla alaryhmäsi, kuten hallituksen, jäsen kuulumatta pääryhmääsi.
 
 <!-- translation-section: add-a-subgroup -->
 
 ## Lisää alaryhmä
 
 >[!Note]
->Uusien alaryhmien lisääminen määräytyy ryhmän [käyttöoikeusasetusten](/en/user_manual/groups/settings/permissions) mukaan. Oletusarvoisesti vain ylläpitäjät voivat aloittaa uusia alaryhmiä.
+>Oikeus lisätä uusia alaryhmiä määritetään ryhmän [käyttöoikeusasetuksissa](/en/user_manual/groups/settings/permissions). Oletusarvoisesti vain ylläpitäjät voivat aloittaa uusia alaryhmiä.
 
-Lisää alaryhmä siirtymällä pääryhmäsi sivulle ja napsauttamalla sivupalkissa **Uusi alaryhmä**.
+Lisää alaryhmä siirtymällä pääryhmäsi sivulle ja napsauttamalla sivupalkista **Uusi alaryhmä**.  
 
-![Uusi alaryhmä -painike Oatmilk Cooperativen sivupalkissa](subgroups-sidebar.png)
+![Uusi alaryhmä -painike Oatmilk Cooperative -ryhmän sivupalkissa](subgroups-sidebar.png)
 
 Napsauta **Uusi alaryhmä** -painiketta, anna alaryhmälle nimi ja valitse yksityisyysasetus. Napsauta sitten **Aloita alaryhmä**.
 
-![Packaging Working Group -alaryhmän luontilomake](subgroups_new.png)
+![Packaging Working Group -alaryhmän luomislomake](subgroups_new.png)
 
 Kun olet valmis, [kutsu ihmisiä](/en/user_manual/groups/inviting_people/) alaryhmään.
 
-Voit muokata alaryhmän [ryhmäasetuksia](/en/user_manual/groups/settings/) napsauttamalla rataskuvaketta alaryhmän sivulla.
+Voit muokata alaryhmän [ryhmäasetuksia](/en/user_manual/groups/settings/) napsauttamalla alaryhmän sivulla olevaa rataskuvaketta.
 
-![Ryhmäasetusten muokkaustoiminto Packaging Working Group -alaryhmässä](subgroups_edit_group_settings.png)
+![Ryhmän asetusten muokkaaminen Packaging Working Group -alaryhmässä](subgroups_edit_group_settings.png)
 
 <!-- translation-section: subgroup-settings -->
 
@@ -73,13 +73,13 @@ Voit muokata alaryhmän [ryhmäasetuksia](/en/user_manual/groups/settings/) naps
 
 ### Yksityisyys
 
-Alaryhmien yksityisyysasetukset ovat samankaltaiset kuin pääryhmän.
+Alaryhmien yksityisyysasetukset ovat samankaltaiset kuin pääryhmän asetukset.
 
-**Salainen** alaryhmä näkyy vain siihen kutsutuille ihmisille.
+Alaryhmät, joiden yksityisyysasetus on **Salainen**, eivät näy ihmisille, joita ei ole kutsuttu alaryhmään.
 
-**Suljettu** alaryhmä näkyy pääryhmän Alaryhmät-välilehdellä ja käyttäjän sivupalkissa. Pääryhmän jäsenet voivat pyytää pääsyä alaryhmään. Alaryhmän ylläpitäjä hyväksyy jäsenyyden.
+Alaryhmät, joiden yksityisyysasetus on **Suljettu**, näkyvät pääryhmän Alaryhmät-välilehdellä ja käyttäjän sivupalkin valikossa. Pääryhmän jäsenet voivat pyytää liittymistä alaryhmään. Alaryhmän ylläpitäjä hyväksyy jäsenyyden.
 
-Suljetuissa alaryhmissä on lisäasetus, jonka avulla pääryhmän jäsenet voivat nähdä yksityiset keskusteluketjut.
+Suljetuissa alaryhmissä on lisäasetus, joka antaa pääryhmän jäsenille oikeuden nähdä yksityiset ketjut.
 
 [Lue lisää ryhmän yksityisyydestä](/en/user_manual/groups/settings/privacy).
 
@@ -87,11 +87,11 @@ Suljetuissa alaryhmissä on lisäasetus, jonka avulla pääryhmän jäsenet voiv
 
 ### Käyttöoikeudet
 
-Alaryhmät toimivat pääryhmästä riippumatta. Jos alaryhmän yksityisyysasetuksena on esimerkiksi **Salainen**, vain kutsutut jäsenet voivat löytää alaryhmän sekä nähdä sen jäsenet ja keskusteluketjut.
+Alaryhmät toimivat itsenäisesti pääryhmästä. Jos esimerkiksi alaryhmän yksityisyysasetus on **Salainen**, vain kutsutut jäsenet voivat löytää alaryhmän, nähdä sen jäsenet ja lukea ketjuja.
 
-**Suljettu** alaryhmä voidaan määrittää niin, että pääryhmän jäsenet näkevät sen yksityiset keskusteluketjut. Näin pääryhmän jäsenet voivat seurata alaryhmän toimintaa.
+Alaryhmissä, joiden yksityisyysasetus on **Suljettu**, on lisäasetus, joka antaa pääryhmän jäsenille oikeuden nähdä yksityiset ketjut. Näin alaryhmän toiminta voi olla avointa pääryhmän jäsenille.
 
-![Asetus, jonka avulla pääryhmän jäsenet näkevät alaryhmän yksityiset keskusteluketjut](subgroups_private_threads_settings.png)
+![Asetus, joka antaa pääryhmän jäsenille oikeuden nähdä alaryhmän yksityiset ketjut](subgroups_private_threads_settings.png)
 
 <!-- translation-section: find-subgroups -->
 
@@ -99,19 +99,19 @@ Alaryhmät toimivat pääryhmästä riippumatta. Jos alaryhmän yksityisyysasetu
 
 Avaa sivupalkin valikko ja napsauta ryhmäsi nimeä nähdäksesi sen alaryhmät.
 
-![Oatmilk Cooperativen alaryhmät sivupalkissa](subgroups_find_subgroups.png)
+![Oatmilk Cooperative -ryhmän alaryhmät sivupalkissa](subgroups_find_subgroups.png)
 
 <!-- translation-section: invite-to-a-subgroup -->
 
-## Kutsu ihmisiä alaryhmään
+## Kutsu alaryhmään
 
-Kutsu ihmisiä alaryhmään samalla tavalla kuin ryhmään. Jos kutsuttava kuuluu jo pääryhmään tai saman organisaation toiseen alaryhmään, johon sinäkin kuulut, voit kirjoittaa hänen nimensä tai valita kyseisen ryhmän vastaanottajiksi. Napsauta vastaanottajaryhmän tunnistetta nähdäksesi yksittäiset ihmiset ja poista ne, joita et halua kutsua.
+Kutsu ihmisiä alaryhmään samalla tavalla kuin ryhmään. Jos he kuuluvat jo pääryhmään tai saman organisaation toiseen alaryhmään, johon sinäkin kuulut, voit kirjoittaa heidän nimensä tai valita kyseisen ryhmän vastaanottajiksi. Valitse vastaanottajaryhmän tunniste, jotta se avautuu yksittäisten ihmisten luetteloksi. Poista sitten ihmiset, joita et halua kutsua.
 
 <!-- translation-section: simultaneously-invite-people-to-subgroups-and-parent-group -->
 
-### Kutsu ihmisiä pääryhmään ja alaryhmiin samalla kertaa
+### Kutsu ihmisiä alaryhmiin ja pääryhmään samalla kertaa
 
-Kun käytät pääryhmäsi **Jäsenet**-välilehden **Kutsu ihmisiä** -painiketta, voit kutsua ihmisiä samalla kertaa useisiin alaryhmiin. Valitse niiden alaryhmien valintaruudut, joihin haluat heidän liittyvän heti.
+Kun käytät pääryhmäsi **Jäsenet**-välilehden **Kutsu ihmisiä** -painiketta, voit kutsua ihmisiä useisiin alaryhmiin samalla kertaa. Valitse niiden alaryhmien valintaruudut, joihin haluat heidän liittyvän heti.
 
 ![Pääryhmän ja alaryhmän valitseminen kutsulomakkeessa](group_invite_email_subgroups.png)
 
@@ -119,22 +119,22 @@ Kun käytät pääryhmäsi **Jäsenet**-välilehden **Kutsu ihmisiä** -painiket
 
 ## Hallinnoi alaryhmää
 
-Alaryhmällä voi olla omat ylläpitäjänsä, jotka voivat olla eri ihmisiä kuin pääryhmän ylläpitäjät.
+Alaryhmillä voi olla omat ylläpitäjänsä, jotka voivat olla eri henkilöitä kuin pääryhmän ylläpitäjät.
 
-Pääryhmän ylläpitäjä voi kuitenkin tehdä itsestään minkä tahansa alaryhmän ylläpitäjän. Näin hän voi hallinnoida alaryhmiä tarvittaessa.
+Pääryhmän ylläpitäjä voi kuitenkin antaa itselleen ylläpitäjän oikeudet missä tahansa alaryhmässä. Näin pääryhmän ylläpitäjät voivat hallinnoida alaryhmiä tarvittaessa.
 
 Siirry Alaryhmät-välilehdelle, etsi alaryhmä ja napsauta **Liittyä ryhmään**.
 
 ![Liittyä ryhmään -painike suljetussa alaryhmässä](member_join_subgroup.png)
 
-Liityttyään alaryhmään pääryhmän ylläpitäjä voi tehdä itsestään myös alaryhmän ylläpitäjän.
+Kun pääryhmän ylläpitäjä on liittynyt alaryhmän jäseneksi, hän voi antaa itselleen alaryhmän ylläpitäjän oikeudet.
 
-![Toiminto, jolla pääryhmän ylläpitäjästä tehdään alaryhmän ylläpitäjä](member_make_admin.png)
+![Ylläpitäjän oikeuksien antaminen pääryhmän ylläpitäjälle](member_make_admin.png)
 
 <!-- translation-section: delete-a-subgroup -->
 
 ## Poista alaryhmä
 
-Ylläpitäjät voivat poistaa alaryhmän samalla tavalla kuin ryhmän. Kun poistat alaryhmän, varmista, ettet poista yläryhmää.
+Ylläpitäjät voivat poistaa alaryhmän samalla tavalla kuin ryhmän. Kun poistat alaryhmän, varmista, ettet poista pääryhmää.
 
-Lue, [miten ryhmä poistetaan](/en/user_manual/groups/deleting_your_group/).
+Lue, [miten ryhmiä poistetaan](/en/user_manual/groups/deleting_your_group/).

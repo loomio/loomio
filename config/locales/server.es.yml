@@ -1,6 +1,6 @@
 ---
 es:
-  group_export_started: "Iniciada la exportación de datos del grupo"
+  group_export_started: Iniciada la exportación de datos del grupo
   discussion_templates:
     blank:
       process_name: Plantilla en blanco
@@ -10,7 +10,7 @@ es:
       title_placeholder: "¿Cuál es el tema que quieres discutir?"
       process_name: Discutir un tema
       process_subtitle: Inicia una discusión con tu grupo
-      process_introduction: "<p>¿Hay algún asunto, problema u oportunidad que desees plantear a tu grupo?</p><p> Presenta el tema, enlaza a cualquier información general y solicita comentarios, ideas y ayuda.</p><p> Invita a las personas a participar contribuyendo con sus pensamientos e información relevante. Usa @mention para llamar la atención de personas concretas.</p><p> Actualiza el contexto del hilo a medida que avanza la discusión para facilitar el logro de un resultado.</p><p> No esperes hasta tener toda la información para iniciar un hilo. Más bien, utiliza el hilo para invitar a personas que te ayuden a explorar el tema y encontrar una solución.</p>"
+      process_introduction: "<p>¿Hay algún asunto, problema u oportunidad que desees plantear a tu grupo?</p><p>Presenta el tema, enlaza a cualquier información general y solicita comentarios, ideas y ayuda.</p><p>Invita a las personas a participar contribuyendo con sus pensamientos e información relevante. Usa @mention para llamar la atención de personas concretas.</p><p>Actualiza el contexto del hilo a medida que avanza la discusión para facilitar el logro de una conclusión.</p><p>No esperes hasta tener toda la información para iniciar un hilo. Más bien, utiliza el hilo para invitar a personas que te ayuden a explorar el tema y encontrar una solución.</p>"
       description: <h3 id="introduce-and-describe-the-topic">Introduce y describe el tema.</h3><p></p><h3 id="why-is-this-important"> ¿Porque es esto importante?</h3><p></p><h3 id="how-would-you-like-people-to-respond"> ¿Cómo te gustaría que respondiera la gente?</h3><p></p>
     onboarding_to_loomio:
       title: Usando Loomio para nuestro grupo
@@ -23,14 +23,14 @@ es:
       title_placeholder: Desarrollando nuestra Política de Salud y Seguridad
       process_name: Proceso de consentimiento
       process_subtitle: Toma una decisión que sea "segura de intentar", sin objeciones.
-      process_introduction: '<p>Busca el consentimiento para una decisión que necesites tomar, donde no haya objeciones significativas a tu propuesta, para que puedas tomar una decisión rápida que sea "segura de intentar" ahora.</p><p> Roles típicos:</p><ul><li><p> Proponente: La persona que plantea un tema que requiere una decisión.</p></li><li><p> Facilitador: Alguien que puede ayudar al proponente a hacer su trabajo de manera eficiente.</p></li></ul><p> Pasos comunes del proceso:</p><p> Paso 1. Presentar una propuesta con un hilo de Loomio.</p><p> Paso 2. Facilita una ronda de preguntas, reacciones y comentarios para mejorar la propuesta con una prueba de sentido.</p><p> Paso 3. Modificar la propuesta con sugerencias y comentarios.</p><p> Paso 4. Pregunta si alguien tiene una objeción significativa a la propuesta enmendada con una propuesta de Consentimiento.</p><p> Paso 5. Integra objeciones válidas para crear una versión enmendada de la propuesta que todos estén de acuerdo en que es "seguro probar" y, cuando esté completa, indica el resultado de la decisión.</p><p> <a target="_blank" rel="noopener noreferrer nofollow" href="/docs/en/guides/making_decisions/consent_process">Lee más: Proceso de consentimiento.</a></p>'
+      process_introduction: '<p>Busca el consentimiento para una decisión que necesites tomar, sin objeciones importantes a tu propuesta, para tomar una decisión rápida que sea ''segura de probar'' ahora.</p><p>Roles típicos:</p><ul><li><p>Proponente: La persona que plantea un tema que requiere una decisión.</p></li><li><p>Facilitador: Alguien que puede ayudar al proponente a hacer su trabajo de manera eficiente.</p></li></ul><p>Pasos comunes del proceso:</p><p>Paso 1. Presenta una propuesta con un hilo de Loomio.</p><p>Paso 2. Facilita una ronda de preguntas, reacciones y comentarios para mejorar la propuesta con una toma de pulso.</p><p>Paso 3. Modifica la propuesta con sugerencias y comentarios.</p><p>Paso 4. Pregunta si alguien tiene una objeción importante a la propuesta modificada con una propuesta de consentimiento.</p><p>Paso 5. Integra las objeciones válidas para crear una versión modificada de la propuesta que todos consideren ‘segura de probar’ y, al terminar, comparte la conclusión de la decisión.</p><p><a target="_blank" rel="noopener noreferrer nofollow" href="/docs/en/guides/making_decisions/consent_process">Lee más: Proceso de consentimiento.</a></p>'
       description: <h3 id="what-is-the-decision-you-need-to-make">¿Cuál es la decisión que debes tomar?</h3><h3 id=""></h3><h3 id="why-is-this-important-and-what-impact-does-it-have"> ¿Por qué es esto importante y qué impacto tiene?</h3><p></p><h3 id="what-information-do-people-need-for-context"> ¿Qué información necesita la gente para el contexto?</h3><p></p><h3 id="who-is-the-facilitator-for-this-process"> ¿Quién es el facilitador de este proceso?</h3><p></p>
       consent: Consentir
     advice_process:
       title_placeholder: Buscando consejo para comprar una computadora nueva
       process_name: Proceso de asesoramiento
       process_subtitle: Busca asesoramiento sobre una decisión que debas tomar.
-      process_introduction: '<p>Toma una decisión con el asesoramiento de las personas impactadas o que tienen experiencia, para que puedas tomar una mejor decisión para tu organización.</p><p> Roles típicos:</p><ul><li><p> Facilitador: La persona que toma la decisión o pide a alguien que facilite.</p></li><li><p> Asesores: personas que se ven afectadas o tienen experiencia que tú invitas.</p></li></ul><p> Pasos comunes del proceso:</p><p> Paso 1. Busca opiniones para sondear perspectivas antes de proponer acciones.</p><p> Paso 2. Haz una propuesta y busca asesoramiento: ejecuta una propuesta de asesoramiento.</p><p> Paso 3. Teniendo en cuenta los consejos recibidos, se toma una decisión, se informa a las personas que han dado los consejos y se indica un resultado.</p><p> <a target="_blank" rel="noopener noreferrer nofollow" href="/docs/en/guides/making_decisions/advice_process">Lee más: Proceso de asesoramiento.</a></p>'
+      process_introduction: '<p>Toma una decisión con el asesoramiento de las personas afectadas o que tienen experiencia, para tomar una mejor decisión para tu organización.</p><p>Roles típicos:</p><ul><li><p>Facilitador: La persona que toma la decisión, o alguien a quien pides que facilite.</p></li><li><p>Asesores: Personas afectadas o con experiencia a las que invitas.</p></li></ul><p>Pasos comunes del proceso:</p><p>Paso 1. Busca opiniones para conocer distintas perspectivas antes de proponer acciones.</p><p>Paso 2. Haz una propuesta y busca asesoramiento - inicia una propuesta de asesoramiento.</p><p>Paso 3. Teniendo en cuenta los consejos recibidos, toma una decisión e informa a las personas que te han aconsejado - comparte una conclusión.</p><p><a target="_blank" rel="noopener noreferrer nofollow" href="/docs/en/guides/making_decisions/advice_process">Lee más: Proceso de asesoramiento.</a></p>'
       description: <h3 id="what-is-the-decision-you-need-to-make">¿Cuál es la decisión que debes tomar?</h3><p></p><h3 id="why-is-this-important-and-what-impact-does-it-have"> ¿Por qué es esto importante y qué impacto tiene?</h3><p></p><h3 id="what-advice-are-you-asking-to-help-you-make-a-good-decision"> ¿Qué consejo estás pidiendo para ayudarte a tomar una buena decisión?</h3><p></p><h3 id="who-is-the-facilitator-for-this-process"> ¿Quién es el facilitador de este proceso?</h3><p></p>
       advice: Consejo
     pass_a_resolution:
@@ -44,7 +44,7 @@ es:
       title_placeholder: Revisando los estatutos de nuestra organización
       process_name: Decisión por consenso
       process_subtitle: Llegar a un acuerdo colectivo con todos los involucrados.
-      process_introduction: '<p>Genera consenso para una decisión que deben tomar juntos, para llegar a un acuerdo que satisfaga las necesidades e inquietudes de todos los participantes.</p><p> Roles típicos:</p><ul><li><p> Designar un facilitador. (En las reuniones de la junta directiva suele ser el presidente).</p></li><li><p> Un quórum o supermayoría de miembros para participar, según lo especificado en los estatutos de tu organización.</p></li></ul><p> Pasos comunes del proceso:</p><p> Paso 1. Crea un espacio abierto para la discusión sobre un tema o una decisión propuesta.</p><p> Paso 2. Prueba el consenso y expón las objeciones con una propuesta de verificación de sentido.</p><p> Paso 3. Aclara cualquier punto, invita a realizar modificaciones constructivas y modifica la propuesta.</p><p> Paso 4. Prueba el acuerdo y las objeciones restantes con una propuesta de consenso.</p><p> Paso 5. Registra la decisión con un resultado y en el acta oficial de la organización.</p><p> <a target="_blank" rel="noopener noreferrer nofollow" href="/docs/en/guides/making_decisions/consensus_process">Lee más: Proceso de consenso.</a></p>'
+      process_introduction: '<p>Genera consenso para una decisión que deben tomar juntos, para llegar a un acuerdo que satisfaga las necesidades e inquietudes de todos los participantes.</p><p>Roles típicos:</p><ul><li><p>Designa un facilitador.&nbsp; (En las reuniones de la junta directiva suele ser el presidente.)</p></li><li><p>Un quórum o supermayoría de miembros que participen, según los estatutos de tu organización.</p></li></ul><p>Pasos comunes del proceso:</p><p>Paso 1. Crea un espacio abierto para la discusión sobre un tema o una decisión propuesta.</p><p>Paso 2. Comprueba el consenso y descubre las objeciones con una propuesta de toma de pulso.&nbsp;</p><p>Paso 3. Aclara cualquier punto, invita a realizar modificaciones constructivas y modifica la propuesta.</p><p>Paso 4. Comprueba el acuerdo y las objeciones restantes con una propuesta de consenso.</p><p>Paso 5. Registra la decisión con una conclusión y en el acta oficial de la organización.</p><p><a target="_blank" rel="noopener noreferrer nofollow" href="/docs/en/guides/making_decisions/consensus_process">Lee más: Proceso de consenso.</a></p>'
       description: <h3 id="what-is-the-decision-you-need-to-make">¿Cuál es la decisión que debes tomar?</h3><p></p><h3 id="why-is-this-important-and-what-impact-does-it-have"> ¿Por qué es esto importante y qué impacto tiene?</h3><p></p><h3 id="what-information-do-people-need-for-context"> ¿Qué información necesita la gente para el contexto?</h3><p></p><h3 id="who-is-the-facilitator"> ¿Quién es el facilitador?</h3><p></p><h3 id="what-conditions-need-to-be-met-for-a-decision"> ¿Qué condiciones deben cumplirse para tomar una decisión?</h3><h3 id=""></h3>
       consensus: Consenso
     share_links_and_info:
@@ -72,14 +72,14 @@ es:
       title_placeholder: Nominación y elección del consejo
       process_name: Elegir un puesto de gobierno
       process_subtitle: Nominar y elegir a alguien para un puesto de gobierno en el consejo, comité o junta.
-      process_introduction: "<p>Introducir la función de gobierno y los criterios para el puesto para ayudar a los miembros a evaluar a los candidatos.</p><p> Convocatoria de nominaciones con una encuesta de aceptación. Invita a los nominados a publicar una foto del candidato junto con tu biografía y referencias. Inserta un mensaje de video del candidato para que los miembros puedan verlo y escucharlo directamente.</p><p> Si estás listo para elegir un candidato, usa una propuesta de consentimiento.</p><p> Si tienes varios candidatos para un puesto, usa la propuesta de elección clasificada donde los votantes pueden clasificar a los candidatos en orden de preferencia.</p>"
+      process_introduction: "<p>Presenta el cargo de gobierno y los criterios para el puesto para ayudar a los miembros a evaluar a los candidatos.</p><p>Solicita candidaturas con una encuesta de participación voluntaria. Invita a los nominados a publicar una foto del candidato junto con su biografía y referencias. Inserta un mensaje de vídeo del candidato para que los miembros puedan verlo y escucharlo directamente.</p><p>Si ya puedes elegir un candidato, usa una propuesta de consentimiento.</p><p>Si tienes varios candidatos para un puesto, usa una propuesta de votación preferencial para que los votantes puedan ordenar a los candidatos por preferencia.</p>"
       description: '<h3 id="what-position-do-you-need-to-fill">¿Qué puesto necesitas cubrir?</h3><p></p><h3 id="why-is-this-important"> ¿Porque es esto importante?</h3><p></p><h3 id="what-qualifications-skills-and-experiences-make-a-good-cand"> ¿Qué calificaciones, habilidades y experiencias hacen que un buen candidato?</h3><p></p><h3 id="what-is-the-election-process"> ¿Cuál es el proceso electoral?</h3><p> Etapa 1: Nominaciones: estamos invitando a nominar a candidatos adecuados.</p><p> Etapa 2: Presentar a los candidatos: incluye una fotografía, una breve biografía y una referencia de cada candidato.</p><p> Etapa 3: Elección: votar para nombrar a un candidato para el puesto.</p>'
       election: Elección
     funding_decision:
       title_placeholder: Solicitud de financiación para el Robotics Roadshow
       process_name: Decisión de financiación
       process_subtitle: Procesar una solicitud de subvención, préstamo o inversión y tomar una decisión de financiación.
-      process_introduction: "<p>Presenta una solicitud de financiación, adjunta documentos y otros materiales de apoyo.</p><p> Resume la aplicación en el contexto del hilo.</p><p> Invita a personas autorizadas a revisar la solicitud y hacer preguntas. Deja suficiente tiempo para la discusión.</p><p> Plantea una propuesta de Consenso para aprobar la financiación.</p><p> Si alguien no está de acuerdo, pregunta el motivo; por ejemplo, es posible que necesite más información. Invita a la persona que no está de acuerdo a cambiar su voto cuando esté satisfecho.</p><p> Cuando tengas una decisión clara sobre la solicitud de financiación, indica un resultado para registrar la decisión.</p>"
+      process_introduction: "<p>Presenta una solicitud de financiación, adjunta documentos y otros materiales de apoyo.</p><p>Resume la solicitud en el contexto del hilo.</p><p>Invita a personas autorizadas a revisar la solicitud y hacer preguntas. Deja suficiente tiempo para la discusión.</p><p>Plantea una propuesta de Consenso para aprobar la financiación.</p><p>Si alguien no está de acuerdo, pregunta el motivo - por ejemplo, puede que haga falta más información. Invita a esa persona a cambiar su voto cuando se resuelvan sus dudas.</p><p>Cuando tengas una decisión clara sobre la solicitud de financiación, comparte una conclusión para registrar la decisión.</p>"
       description: <h3 id="introduce-and-summarize-the-funding-application">Presenta y resume la solicitud de financiación.</h3><p></p><h3 id="how-does-this-application-fit-with-funding-criteria"> ¿Cómo encaja esta solicitud con los criterios de financiación?</h3><p></p><h3 id="who-is-authorized-to-approve-this-funding-decision"> ¿Quién está autorizado a aprobar esta decisión de financiación?</h3><p></p><h3 id="invite-questions-from-decision-makers-to-process-the-applica"> Invita a quienes deciden a hacer preguntas para procesar la solicitud</h3><p></p>
       funding: Fondos
     approve_a_document:
@@ -174,7 +174,7 @@ es:
         choose: Elegir
         allocate: Asignar
         score: 'Puntuación '
-        rank: Rango
+        rank: Ordenar
         time: Coordinar horario
   user:
     deleted_user: Usuario Eliminado
@@ -212,9 +212,9 @@ es:
       details: Detalles
       group_name: Nombre del Grupo
       discussion_title: Título del hilo
-      outcome_author: Autor del resultado
-      outcome_created_at: Resultado creado
-      outcome_statement: Declaración de resultado
+      outcome_author: Autor de la conclusión
+      outcome_created_at: Fecha de creación de la conclusión
+      outcome_statement: Texto de la conclusión
       poll_url: URL de la encuesta
       reason: Razón
       participant: Participante
@@ -475,7 +475,7 @@ es:
     common:
       why_send_this: Recibes este correo porque %{reason}
       view_on_loomio: Ver en %{site_name}
-      create_outcome: Compartr resultado
+      create_outcome: Compartir conclusión
       your_response: 'Tú votaste:'
       you_voted: "¡Votaste!"
       not_invited: No invitado
@@ -511,14 +511,14 @@ es:
       disagree_prompt: "¿Por qué no estás de acuerdo?"
     proposal:
       process_subtitle: Plantear una propuesta para tomar una decisión
-      process_introduction: <p>La clásica propuesta de Loomio te ayuda a tomar una decisión, convirtiendo una discusión en un resultado claro.</p><p> Sugiere un curso de acción e invita a la gente a responder votando de acuerdo, absteniéndose o en desacuerdo.</p><p> Al votar, las personas pueden justificar su voto. Puedes ver la postura de los demás al respecto y por qué.</p><p> De esta manera, puedes utilizar una propuesta para motivar a las personas a responder, descubrir nueva información y generar un entendimiento compartido, para ayudar a tu grupo a tomar una decisión mejor y más informada.</p><p> Una propuesta y la discusión asociada crean su propio registro de cómo se tomó la decisión.</p><p> <a target="_blank" href="/docs/en/guides/making_decisions/simple_decision_process"><u>Lee más sobre el uso de la propuesta clásica de Loomio en el proceso de decisión simple</u></a> .</p>
+      process_introduction: <p>La clásica propuesta de Loomio te ayuda a tomar una decisión, convirtiendo una discusión en una conclusión clara.</p><p>Sugiere un curso de acción e invita a la gente a responder votando De acuerdo, Abstención o En desacuerdo.</p><p>Al votar, las personas pueden dar un motivo para su voto. Puedes ver la postura de los demás al respecto y por qué.</p><p>De esta manera, puedes utilizar una propuesta para motivar a las personas a responder, descubrir nueva información y generar un entendimiento compartido - para ayudar a tu grupo a tomar una decisión mejor y más informada.</p><p>Una propuesta y la discusión asociada crean su propio registro de cómo se tomó la decisión.</p><p><a target="_blank" href="/docs/en/guides/making_decisions/simple_decision_process"><u>Lee más sobre el uso de la propuesta clásica de Loomio en el proceso de decisión simple</u></a>.</p>
       title: Aprobar el nuevo concepto de marca
       details: <h3 id="what-is-the-decision-you-need-to-make"><strong>¿Cuál es la decisión que debes tomar?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>¿Por qué es esto importante?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>¿Qué le estás pidiendo a la gente que haga?</strong></h3><p></p><p> Para que esta propuesta se apruebe, necesitamos que la mayoría de los miembros voten "De acuerdo".</p><p> Si no estás de acuerdo, explica por qué y qué debería cambiar para que estés de acuerdo.</p>
-      agree: Aceptar
+      agree: De acuerdo
       agree_meaning: Apoyo la propuesta
       agree_prompt: "¿Qué te gusta de la propuesta y cómo beneficiará al grupo?"
       abstain: Abstenerse
-      disagree: Discrepar
+      disagree: En desacuerdo
       disagree_meaning: Es necesario cambiar algo en esta propuesta antes de poder apoyarla.
       disagree_prompt: "¿Cómo se podría mejorar esta propuesta para que puedas apoyarla?"
       abstain_meaning: Optar por no votar o no poder votar sobre esta decisión.
@@ -528,7 +528,7 @@ es:
       process_introduction: <p>Busca asesoramiento sobre una decisión que necesitas tomar, con el asesoramiento de personas afectadas o que tengan experiencia, para que puedas tomar una mejor decisión para tu organización.</p><ul><li><p> El asesoramiento te ayudará a tomar una mejor decisión para tu organización.</p></li><li><p> Fomentar las relaciones, las oportunidades de aprendizaje y la diversidad de aportaciones.</p></li><li><p> Estimular la iniciativa y la creatividad y hacer más agradable el trabajo.</p></li></ul><p> <a target="_blank" href="/docs/en/guides/making_decisions/advice_process"><u>Lee más acerca del proceso de Asesoramiento</u></a> .</p>
       title: Ayuda a Takashi a comprar una computadora nueva
       details: <h3 id="what-is-the-decision-you-need-to-make"><strong>¿Cuál es la decisión que debes tomar?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>¿Por qué es esto importante?</strong></h3><p></p><h3 id="what-advice-are-you-asking-from-people-to-help-you-make-a-go"> <strong>¿Qué consejo le pides a la gente para ayudarte a tomar una buena decisión?</strong></h3><p></p><p> Estoy buscando tu opinión para ayudarme a tomar una buena decisión para nuestra organización.</p>
-      agree: Aceptar
+      agree: De acuerdo
       agree_meaning: He ofrecido mi consejo sobre esta decisión.
       agree_prompt: Resume tus consejos o haz un comentario útil.
       abstain: Abstenerse
@@ -556,12 +556,12 @@ es:
       title: Aprobar el nuevo concepto de marca
       details: <h3 id="what-is-the-decision-you-need-to-make"><strong>¿Cuál es la decisión que debes tomar?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>¿Por qué es esto importante?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>¿Qué le estás pidiendo a la gente que haga?</strong></h3><p></p><p> Para que esta propuesta se apruebe, necesitamos que la mayoría de los miembros voten "De acuerdo".</p><p> Si no estás de acuerdo, explica por qué y qué debería cambiar para que estés de acuerdo.</p>
       outcome_statement: "<p>Gracias por participar en el proceso de consenso.</p>"
-      agree: Aceptar
+      agree: De acuerdo
       agree_meaning: Apoyo la propuesta
       agree_prompt: "¿Qué te gusta de la propuesta y cómo beneficiará a la organización?"
       abstain: Abstenerse
       abstain_meaning: Esta decisión no me afecta y estoy contento con lo que decida el grupo.
-      disagree: Discrepar
+      disagree: En desacuerdo
       disagree_meaning: Es necesario cambiar algo en esta propuesta antes de poder apoyarla.
       disagree_prompt: "¿Cómo se podría mejorar esta propuesta para que puedas apoyarla?"
       block: Bloquear
@@ -582,7 +582,7 @@ es:
       process_introduction: <p>La propuesta de verificación de sentido es una buena manera de obtener retroalimentación, generar preguntas y detectar inquietudes. Ayuda a aclarar y mejorar una propuesta antes de tomar una decisión.</p><p> La verificación de sentido permite a las personas saber que se está formando una propuesta y las anima a participar. Es una oportunidad para escucharlas, percibir sus sentimientos y responder adecuadamente, lo que abre la posibilidad de incorporar sus contribuciones para tomar una mejor decisión.</p><p> Usa la propuesta de verificación de sentido en el proceso de consentimiento para invitar reacciones y comentarios para mejorar la propuesta, y en un proceso de consenso para probar el consenso.</p><p> <a target="_blank" rel="noopener noreferrer nofollow" href="/docs/en/guides/making_decisions/simple_decision_process"><u>Obtén más información sobre el uso de Sense Check en el proceso de decisión simple</u></a> <span>.</span></p>
       title: "¿Qué opinas de los nuevos conceptos de marca?"
       details: <h3 id="what-are-you-proposing"><strong>¿Qué propones?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>¿Por qué es esto importante?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>¿Qué le estás pidiendo a la gente que haga?</strong></h3><p></p><p> ¿Qué te parece la propuesta? Deja un comentario o una sugerencia para mejorarla.</p><p> Esta verificación de sentido es una oportunidad para que aportes y contribuyas, para ayudarnos a tomar una mejor decisión.</p>
-      outcome_statement: "<p>Gracias por participar en la prueba de sentido.</p>"
+      outcome_statement: "<p>Gracias por participar en la toma de pulso.</p>"
       not_sure: No estoy seguro
       not_sure_meaning: Tengo una pregunta o necesito más tiempo.
       not_sure_prompt: "¿Qué partes no te quedan claras? ¿Cómo se podría solucionar?"
@@ -659,7 +659,7 @@ es:
       process_subtitle_v3: Revelar prioridades cuando hay que hacer concesiones. También conocido como votación por puntos.
     ranked_choice:
       process_subtitle: Comprender la preferencia ordenada de opciones
-      process_introduction: <p>La elección por orden de preferencia es útil cuando se dispone de un gran número de opciones o se están celebrando elecciones.</p><p> Esta plantilla de encuesta ofrece una serie de opciones para que las personas voten en su orden preferido.</p><p> Puedes establecer el número de opciones que recibe el votante.</p><p> <span>Los votantes arrastran y sueltan opciones en orden de preferencia (el número 1 es su opción más preferida).</span></p><p> <span>Las configuraciones avanzadas incluyen 'Los votos son anónimos' y 'Mostrar opciones en orden aleatorio', que se usan comúnmente para</span> opciones clasificadas para reducir cualquier sesgo en la votación.</p><p> Los resultados se muestran en orden jerárquico. La tabla de resultados proporciona datos adicionales para ayudarte a analizarlos.</p><ul><li><p> Rango</p></li><li><p> % de puntos</p></li><li><p> Agujas</p></li><li><p> Significar</p></li></ul><p> <a target="_blank"  href="/docs/en/user_manual/polls/proposal_types#ranked-choice">Lee más acerca de la elección clasificada</a> .</p>
+      process_introduction: <p>La votación preferencial es útil cuando tienes muchas opciones o celebras una elección.</p><p>Los votantes arrastran y sueltan las opciones para ordenarlas por preferencia.</p><p>Los resultados se muestran en orden de preferencia.</p><p><a target="_blank"  href="/docs/en/user_manual/polls/proposal_types#ranked-choice">Lee más sobre la votación preferencial</a>.</p>
       title: Elegir directores para la junta directiva
       details: <h3 id="what-is-this-poll-about"><strong>¿De qué trata esta encuesta?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>¿Por qué es esto importante?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>¿Qué le estás pidiendo a la gente que haga?</strong></h3><p></p><p> Vota ordenando las opciones según tu preferencia. La opción que ocupe el primer lugar en los resultados gana.</p>
       process_subtitle_v2: Encuentra el orden de preferencia del grupo
@@ -667,12 +667,12 @@ es:
       process_subtitle_v3: Ordena las opciones de la más preferida a la menos preferida
     time_poll:
       process_subtitle: Descubre cuándo las personas están disponibles para reunirse
-      process_introduction: <p><span>Ahorra tiempo al concertar una fecha para tu reunión o evento.</span></p><p> La encuesta de tiempo facilita ver la disponibilidad de todos y encontrar el mejor momento.</p><p> Asigna un título y detalles a tu encuesta sobre el tiempo. Introduce una lista de opciones de fecha y hora en tu zona horaria.</p><p> Al establecer franjas horarias, ten en cuenta a las personas en diferentes zonas horarias. Los participantes verán las horas correspondientes a tu zona horaria.</p><p> Establece una duración para la reunión.</p><p> Cuando se cierre la encuesta de Tiempo, establece un resultado con el mejor tiempo y las instrucciones para la reunión.</p><p> <span>Loomio incluirá una invitación de calendario con el correo electrónico de notificación de resultados, para que los participantes puedan agregarlo a su calendario.</span></p><p> <a target="_blank" href="/docs/en/user_manual/polls/meeting_polls#time-poll">Lee más sobre la encuesta de Time</a> .</p>
+      process_introduction: <p>Encuentra rápidamente el mejor horario para tu reunión o evento. Añade un título, detalles y opciones de fecha y hora en tu zona horaria. Los participantes verán las horas en su propia zona horaria.</p><p>Cuando se cierre tu encuesta de horario, escribe la conclusión con el mejor horario y las instrucciones para la reunión. Loomio enviará la conclusión por correo con una invitación de calendario para que los participantes puedan añadirla a sus calendarios.</p><p><a target="_blank" href="/docs/en/user_manual/polls/meeting_polls#time-poll">Lee más sobre la encuesta de horario</a>.</p>
       title: Encontremos una fecha para nuestra próxima reunión.
       details: <p><strong>¿Qué es la reunión o evento?</strong></p><p></p><p> <strong>¿Por qué es esto importante?</strong></p><p></p><p> <strong>¿Qué le estás pidiendo a la gente que haga?</strong></p><p></p><p> <span>Marca los horarios en los que estás disponible con el ícono verde de “pulgar hacia arriba” o deja el ícono rojo de “pulgar hacia abajo” en tu lugar cuando no esté disponible.</span></p><p> <span>Usa el icono de "pulgares hacia los lados" para indicar que estás disponible "si es necesario".</span></p>
       reason_prompt: "¿Hay algo que puedas decir para ayudar al organizador a encontrar un horario adecuado?"
       process_subtitle_v2: Descubre cuándo las personas están disponibles
-      process_introduction_v2: <p><strong>La encuesta de tiempo</strong> te ayuda a saber cuándo hay disponibilidad. Añade tus propuestas de horario y los participantes las verán en tu zona horaria. Al cerrar la encuesta, define el resultado y Loomio enviará a todos una invitación de calendario.</p><p> <a target="_blank" href="/docs/en/user_manual/polls/meeting_polls#time-poll">Lee más sobre la encuesta de Time</a> .</p>
+      process_introduction_v2: <p><strong>La encuesta de horario</strong> te ayuda a saber cuándo hay disponibilidad. Añade tus propuestas de horario y los participantes las verán en su propia zona horaria. Al cerrar la encuesta, define la conclusión y Loomio enviará a todos una invitación de calendario.</p><p><a target="_blank" href="/docs/en/user_manual/polls/meeting_polls#time-poll">Lee más sobre la encuesta de horario</a>.</p>
     opt_in:
       process_subtitle: Encuentra voluntarios o pide participantes
       process_introduction: '<p>Usa Opt-in para invitar a personas a unirse a un equipo, comité o grupo de trabajo, o para participar en un evento.</p><p> ''Opt-in'' tiene dos opciones de votación: Aceptar o Rechazar.</p><p> Puedes definir un número objetivo de personas que buscas, digamos 3 personas para que se unan a tu grupo de trabajo.</p><p> <a target="_blank" href="/docs/en/user_manual/polls/meeting_polls#opt-in">Lee más acerca de Opt-in</a> .</p>'
@@ -688,14 +688,14 @@ es:
       process_introduction: "<p>Aprovechar Loomio al máximo requiere un compromiso grupal. Esta propuesta ayuda a tu grupo a decidir si invertir tiempo y esfuerzo en probar Loomio como es debido, ya sea comprometiéndose a un periodo de prueba o a inscribirse en un plan conjunto.</p>"
       title: Comprometámonos a probar Loomio juntos
       details: "<p>Usar Loomio bien requiere un esfuerzo grupal: solo funciona cuando la gente se presenta y participa.</p><p> Esta propuesta pide a todos que se comprometan a usar Loomio activamente durante el periodo de prueba. Esto significa registrarse, votar propuestas y participar en debates.</p><p> Si tiene inquietudes sobre esto, plantee una objeción y diga qué sería necesario cambiar: para eso existe la opción de objeción.</p>"
-      outcome_statement: "<p>Comparte el resultado de esta propuesta con el grupo: qué se decidió y qué sucederá a continuación.</p>"
+      outcome_statement: "<p>Comparte la conclusión de esta propuesta con el grupo — qué se decidió y qué sucederá a continuación.</p>"
       consent_meaning: Estoy dispuesto a intentarlo
       consent_prompt: "¿Qué es lo que esperas de usar Loomio?"
       objection_meaning: Tengo una preocupación que debemos abordar primero.
       objection_prompt: "¿Qué necesita cambiar antes de poder comprometerse?"
     majority:
       process_subtitle: Tomar una decisión por el mayor número de votos
-      process_introduction: "<p><strong>La mayoría</strong> es la forma más sencilla de tomar una decisión grupal: los participantes votan Sí o No, y la propuesta se aprueba si más de la mitad vota Sí. No hay abstenciones ni bloqueos, por lo que cada voto tiene el mismo peso.</p><p> La mayoría funciona bien para decisiones sencillas donde se necesita un resultado claro. Para decisiones donde es importante que las personas colaboren para comprenderse y encontrar puntos en común, considera el consentimiento o consenso.</p>"
+      process_introduction: "<p><strong>La mayoría</strong> es la forma más sencilla de tomar una decisión grupal — los participantes votan Sí o No, y la propuesta se aprueba si más de la mitad vota Sí. No hay abstenciones ni bloqueos, por lo que cada voto tiene el mismo peso.</p><p>La mayoría funciona bien para decisiones sencillas donde se necesita una conclusión clara. Para decisiones donde es importante que las personas colaboren para comprenderse y encontrar puntos en común, considera el consentimiento o consenso.</p>"
       title: Aprobar el presupuesto para el tercer trimestre
       details: "<h3><strong>¿Cuál es la decisión que debes tomar?</strong></h3><p></p><h3> <strong>¿Por qué es esto importante?</strong></h3><p></p><h3> <strong>¿Qué le estás pidiendo a la gente que haga?</strong></h3><p></p>"
       yes_meaning: Apoyo esta propuesta

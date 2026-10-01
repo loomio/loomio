@@ -1,53 +1,53 @@
 ---
 title: Matrix
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/integrations/matrix/index.md
+source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
+source_file: docs/en/user_manual/integrations/matrix/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-30'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: e54de0b6d9ea9ffb
 generated:
-  introduction: 2a343ac7d543481c
+  introduction: 371571ac957e3428
 title_source: 76a2171c057b730f
 title_generated: 76a2171c057b730f
 ---
 
 <!-- translation-section: introduction -->
 
-# שילוב Matrix
+# שילוב עם Matrix
 
-Loomio יכולה לשלוח התראות לערוצי Matrix כשנוצרים דיונים, הצעות, הערות, הצבעות ומסקנות חדשות.
+Loomio יכולה לשלוח התראות לערוצי Matrix כאשר נוצרים דיונים, הצעות, תגובות, הצבעות ומסקנות.
 
-Matrix מאפשרת להציג HTML מסוים בחדר הצ'אט, ו-Loomio משתמשת באפשרות הזאת.
+Matrix מאפשרת להשתמש בחלק מתגי HTML בחדר הצ׳אט, ו-Loomio משתמשת באפשרות זו.
 
-השילוב של Matrix שונה משילובי הצ'אט האחרים של Loomio. הוא אינו משתמש ב-webhook; נבנה עבורו לקוח בוט ייעודי.
+השילוב עם Matrix שונה מעט משילובי הצ׳אט האחרים שלנו: הוא אינו משתמש ב-webhook, אלא בלקוח בוט ייעודי שפיתחנו עבורו.
 
-יש ליצור משתמש Matrix שהבוט יוכל להתחבר באמצעותו.
+יש ליצור חשבון משתמש ב-Matrix שבאמצעותו הבוט יתחבר.
 
-לאחר יצירת המשתמש עבור הבוט, יש להתחבר באמצעותו כדי לקבל את הפרטים הבאים.
+לאחר יצירת חשבון המשתמש עבור הבוט, יש להתחבר באמצעותו כדי לקבל את הפרטים הבאים.
 
-מדריך זה משתמש ב-Element.
+במדריך זה נעשה שימוש ב-Element.
 
 ---
 
-מתוך הקבוצה ב-Loomio, יש להוסיף שילוב צ'אט של Matrix
-![תפריט הבוט של Matrix ב-Loomio](loomio-add-matrix-bot.png)
+מתוך הקבוצה ב-Loomio, יש להוסיף שילוב צ׳אט עם Matrix
+![תפריט הוספת בוט Matrix ב-Loomio](loomio-add-matrix-bot.png)
 
-זה הטופס שיש למלא
-![טופס הבוט של Matrix ב-Loomio](loomio-matrix-bot-form.png)
+זהו הטופס שיש למלא
+![טופס בוט Matrix ב-Loomio](loomio-matrix-bot-form.png)
 
-כאן מתחילים למצוא את אסימון הגישה
+כאן מתחילים בחיפוש אסימון הגישה
 ![תפריט ההגדרות של Matrix](matrix-settings-menu.png)
 
-זה דף ההגדרות
+זהו עמוד ההגדרות
 ![הגדרות Matrix](matrix-settings.png)
 
-זה אסימון הגישה
+זהו אסימון הגישה עצמו
 ![אסימון הגישה של Matrix](matrix-access-token.png)
 
 כעת יש למצוא את מזהה החדר
 ![הגדרות החדר ב-Matrix](matrix-room-settings.png)
 
-זה מזהה החדר
+כאן מופיע מזהה החדר.
 ![מזהה החדר ב-Matrix](matrix-room-id.png)

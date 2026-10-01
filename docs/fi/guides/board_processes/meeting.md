@@ -1,10 +1,10 @@
 ---
 title: Valmistaudu kokoukseen
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/guides/board_processes/meeting.md
+source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
+source_file: docs/en/guides/board_processes/meeting.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-30'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 20305b2bbbcd9088
   meeting-focus-and-review-actions: e43829ab612a2070
@@ -19,18 +19,18 @@ sections:
   approve-reports: e322912e5f5b1e32
   on-loomio-5: 15e0c45a512cd84f
 generated:
-  introduction: 380491995b87a75e
-  meeting-focus-and-review-actions: 25586c75f4764db0
-  on-loomio: 94fe435e6b041f31
-  agenda-and-notify: 68402f342fbfc6b1
-  on-loomio-2: 3691a2013cca5e22
-  confirm: 40ac0fd30e7037e3
-  find-a-time-for-meeting: 14866f147aa15812
-  on-loomio-3: 467178bee549cbe6
-  sign-off-minutes: ccbb3270392b92cb
-  on-loomio-4: e66afd48386ed1f4
-  approve-reports: 51b4153a7a3f7d8a
-  on-loomio-5: 668d3659e7be5979
+  introduction: c3c1ec38fcc6999f
+  meeting-focus-and-review-actions: 50cd95fb1a07ac61
+  on-loomio: 93e06fe7e33a31f8
+  agenda-and-notify: fbe59c60de525c75
+  on-loomio-2: 273be0e74057eeed
+  confirm: '0692a01dce79ab35'
+  find-a-time-for-meeting: 6532a1988b42f4b6
+  on-loomio-3: 438f69ded6b02c3c
+  sign-off-minutes: 62c7225d6d93e14e
+  on-loomio-4: 2e9e4f183a747bb3
+  approve-reports: 17ed1a9bc2d5f0d3
+  on-loomio-5: f5eedf46c68f749b
 title_source: 7fe4f2dbd8ccfc94
 title_generated: caddd6bf2fbd9d87
 ---
@@ -39,141 +39,141 @@ title_generated: caddd6bf2fbd9d87
 
 # Valmistaudu kokoukseen
 
-Toimiva kokous on tuottava, osallistava ja yhteistyöhön perustuva. Se lisää sitoutumista, vahvistaa ihmissuhteita, auttaa löytämään yhteisen suunnan, parantaa ja nopeuttaa päätöksentekoa sekä tukee luovaa ajattelua, palautetta ja jatkuvaa kehittämistä.
+Tehokkaat kokoukset ovat tuloksellisia, osallistavia ja yhteistyöhön perustuvia. Ne vahvistavat sitoutumista, auttavat rakentamaan vahvoja suhteita ja yhteistä näkemystä, edistävät parempia ja nopeampia päätöksiä sekä tukevat luovaa ajattelua ja uusia ideoita. Ne tarjoavat myös tilaisuuden palautteelle ja jatkuvalle parantamiselle.
 
-Suunnittele toimiva kokous Loomiossa. Ota ihmiset mukaan alusta asti, keskity tärkeimpiin aiheisiin ja käytä yhteinen aika hyvin.
+Suunnittele tehokas kokous Loomion avulla: ota ihmiset mukaan alusta lähtien, keskity yhdessä tärkeimpiin aiheisiin ja käytä yhteinen aikanne paremmin.
 
-Jos Loomio on ryhmällesi uusi, aloita sivusta [Esittele Loomio ryhmällesi](/en/user_manual/overview/introducing_loomio). Käytä sitten tätä kokousprosessia ensimmäisenä säännöllisenä toimintatapana.
+Jos ryhmäsi on uusi Loomiossa, aloita ohjeesta [Loomion esittely ryhmällesi](/en/user_manual/overview/introducing_loomio) ja ota sitten tämä kokouskäytäntö ensimmäiseksi säännölliseksi työnkuluksi.
 
-Voit tehdä seuraavan hallituksen tai toimikunnan kokouksesta toimivamman usealla tavalla...
+Voit tehdä seuraavasta hallituksen tai toimikunnan kokouksesta tehokkaan monella tavalla...
 
-- [Keskity tärkeimpiin aiheisiin ja käy toimenpiteet läpi](#meeting-focus-and-review-actions)
-- [Jaa esityslista ja ilmoita kokouksesta](#agenda-and-notify)
-- [Etsi kokoukselle sopiva aika](#find-a-time-for-meeting)
-- [Hyväksy pöytäkirja](#sign-off-minutes)
-- [Hyväksy raportit](#approve-reports)
+- [Kokouksen painopiste ja aiempien toimenpiteiden seuranta](#meeting-focus-and-review-actions)
+- [Esityslistan julkaiseminen ja jäsenille ilmoittaminen](#agenda-and-notify)
+- [Kokousajan löytäminen](#find-a-time-for-meeting)
+- [Pöytäkirjan hyväksyminen](#sign-off-minutes)
+- [Raporttien hyväksyminen](#approve-reports)
 
 <!-- translation-section: meeting-focus-and-review-actions -->
 
-## Keskity tärkeimpiin aiheisiin ja käy toimenpiteet läpi
+## Kokouksen painopiste ja aiempien toimenpiteiden seuranta
 
-Määritä kokoukselle painopiste, jotta käytätte yhteisen ajan tärkeimpien aiheiden käsittelyyn.
+Määritä kokouksen painopiste, jotta käytätte yhteisen aikanne tärkeimmistä aiheista keskustelemiseen.  
 
-Kun kutsut jäsenet osallistumaan esityslistan laatimiseen, kaikki voivat valmistautua aiheisiin ja löytää yhteisen suunnan.
+Kun pyydät jäseniä osallistumaan esityslistan laatimiseen, autat kaikkia muodostamaan yhteisen näkemyksen, pohtimaan aiheita ja valmistautumaan kokoukseen.
 
 Toimenpiteet:
 - keskity kokouksessa tärkeimpiin asioihin,
-- seuraa aiemmissa kokouksissa sovittuja toimenpiteitä ja keskustele niistä jäsenten kanssa.
+- seuraa aiemmissa kokouksissa sovittujen toimenpiteiden edistymistä ja keskustele niistä jäsenten kanssa.
 
 ![](meeting_prep.png#width-90)
 
 <!-- translation-section: on-loomio -->
 
 ### Loomiossa
-Valmistele kokous Loomion **Keskustelu**-toiminnolla:
+Valmistaudu kokoukseen luomalla Loomiossa **Keskustelu**:
 * muistuta jäseniä tulevasta kokouksesta,
-* pyydä heitä kertomaan, mihin asioihin kokouksessa pitäisi keskittyä,
-* tee yhteenveto edellisen kokouksen toimenpiteistä ja pyydä tilannepäivitys.
+* pyydä kommentteja tärkeimmistä asioista, joihin kokouksessa tulisi keskittyä,
+* tee yhteenveto edellisessä kokouksessa sovituista toimista ja pyydä tietoa niiden etenemisestä.
 
 <!-- translation-section: agenda-and-notify -->
 
-## Esityslista ja ilmoitukset
+## Esityslistan julkaiseminen ja jäsenille ilmoittaminen
 
-Ilmoita kokouksesta ja jaa selkeä esityslista. Liitä kokousasiakirjat, lisää linkit keskeisiin dokumentteihin ja lähetä jäsenille ilmoitus.
+Ilmoita kokouksesta ja julkaise selkeä esityslista. Liitä mukaan aineistot, lisää linkit keskeisiin asiakirjoihin ja ilmoita jäsenille.
 
-Näin kaikki voivat valmistautua kokoukseen lukemalla aineiston ja pohtimalla keskustelunaiheita sekä tehtäviä päätöksiä. Jäsenet tuntevat silloin kokouksen taustan jo etukäteen.
+Näin kaikki voivat valmistautua kokoukseen lukemalla aineistot ja pohtimalla keskustelun aiheita sekä tehtäviä päätöksiä. Jäsenet saapuvat silloin todennäköisemmin kokoukseen taustatiedot tuntevina ja valmistautuneina.
 
 Toimenpiteet:
-- valmistele esityslista, asiakirjat ja muu kokousaineisto,
-- ilmoita kokouksesta jäsenille ja lähetä aineisto.
+- valmistele esityslista, asiakirjat, aineistot ja hallituksen kokousasiakirjat,
+- ilmoita jäsenille kokouksesta ja lähetä aineistot.
 
 ![](meeting_notify.png#width-90)
 
 <!-- translation-section: on-loomio-2 -->
 
 ### Loomiossa
-Valmistele hallituksen kokous Loomion **Keskustelu**-toiminnolla:
+Valmistaudu hallituksen kokoukseen luomalla Loomiossa **Keskustelu**:
 * kerro kokouksen tiedot,
-* liitä esityslista, asiakirjat ja muu kokousaineisto tai lisää niihin linkit,
-* kutsu jäsenet mukaan ilmoituksella,
-* tarkista **Nähnyt**-tiedosta, ketkä ovat lukeneet keskusteluketjun.
+* liitä tai linkitä esityslista, asiakirjat ja muut kokousmateriaalit,
+* kutsu jäsenet ilmoituksella,
+* seuraa 'Nähnyt'-tietoa nähdäksesi, ketkä ovat lukeneet ketjun.
 
-Loomion keskusteluketju muistuttaa sähköpostia, mutta siinä on hyödyllisiä ominaisuuksia:
-- näet, ketkä ovat lukeneet keskusteluketjun, ja voit muistuttaa muita,
-- jäsenten vastaukset ja kommentit näkyvät kaikille, joilla on oikeus nähdä keskusteluketju,
-- esityslistaa ja kokousaineistoa koskevat keskustelut ja kysymykset pysyvät yhdessä paikassa.
+Loomion ketju muistuttaa sähköpostiviestiä, mutta sillä on etuja:
+- näet, ketkä ovat lukeneet ketjun, ja voit muistuttaa niitä, jotka eivät ole vielä lukeneet sitä,
+- jäsenten vastaukset ja kommentit näkyvät kaikille, joilla on oikeus nähdä ketju,
+- kaikki esityslistaa tai kokousmateriaaleja koskeva keskustelu ja kysymykset ovat yhdessä paikassa.
 
-Jäsenet löytävät kaikki kokoustiedot yhdestä paikasta. Tiedot eivät huku pitkiin sähköpostiketjuihin tai postilaatikoihin.
+Jäsenet löytävät kaikki kokousta koskevat tiedot helposti yhdestä paikasta. Näin vältetään sekavat sähköpostiketjut ja tärkeiden tietojen katoaminen sähköpostin Saapuneet-kansioon.
 
 <!-- translation-section: confirm -->
 
-### Vahvista valmistautuminen
-Pyydä jäseniä vahvistamaan kommentilla, että he ovat lukeneet esityslistan ja kokousaineiston ja ovat valmiita kokoukseen. Tarkista **Nähnyt**-tiedosta, ketkä saattavat tarvita muistutuksen.
+### Vahvistus
+Pyydä jäseniä vahvistamaan kommentilla, että he ovat lukeneet esityslistan ja kokousasiakirjat ja valmistautuneet kokoukseen. Tarkista **Nähnyt**-tiedosta, ketkä saattavat tarvita muistutuksen.
 
 <!-- translation-section: find-a-time-for-meeting -->
 
-## Etsi kokoukselle sopiva aika
-Sopivan kokousajan löytäminen voi viedä järjestäjältä paljon aikaa.
+## Kokousajan löytäminen
+Sopivan kokousajan löytäminen voi olla monelle ylläpitäjälle toistuva haaste.
 
 <!-- translation-section: on-loomio-3 -->
 
 ### Loomiossa
-Jos kokouksen päivää ja aikaa ei ole vielä sovittu tai etsit aikaa tulevalle kokoukselle, käytä **Aikakysely**-toimintoa.
+Jos et ole vielä määrittänyt kokouksen päivämäärää ja kellonaikaa tai sinun on löydettävä aika tulevalle kokoukselle, käytä **Aikakysely**-toimintoa.
 
-Aikakyselystä näet helposti, milloin kukin pääsee osallistumaan. Näin sopivan ajan löytäminen vie vähemmän aikaa ja vaivaa.
+Aikakysely auttaa näkemään, mitkä ajat sopivat kullekin, ja löytämään parhaan ajankohdan. Näin tähän tavalliseen ylläpitäjän tehtävään kuluu vähemmän aikaa ja vaivaa.
 
 Eri aikavyöhykkeillä olevat jäsenet näkevät päivämäärät ja kellonajat omalla aikavyöhykkeellään.
 
 ![](timepoll_vote.png#width-90)
 
-Kun aikakysely sulkeutuu, valitse sopivin aika ja lähetä tulosilmoitus sekä kalenterikutsu, jotta jäsenet voivat lisätä kokouksen kalenteriinsa.
+Kun aikakysely sulkeutuu, valitse paras ajankohta ja lähetä johtopäätöksestä ilmoitus sekä kalenterikutsu, jotta jäsenet voivat lisätä kokouksen kalenteriinsa.
 
 <!-- translation-section: sign-off-minutes -->
 
-## Hyväksy pöytäkirja
-Pöytäkirjan hyväksyminen tai vahvistaminen on vakiokäytäntö virallisissa kokouksissa ja hyödyllistä myös muissa kokouksissa.
+## Pöytäkirjan hyväksyminen
+Pöytäkirjan hyväksyminen tai vahvistaminen on vakiintunut käytäntö virallisissa kokouksissa ja hyvä käytäntö kaikissa kokouksissa.  
 
-Pöytäkirjaan kirjataan kokous, keskustelun keskeiset asiat, päätökset ja äänestystulokset. Siihen merkitään myös sovitut toimenpiteet ja niiden vastuuhenkilöt. Pöytäkirja toimii usein seuraavan kokouksen lähtökohtana.
+Pöytäkirjaan kirjataan kokouksen kulku, keskustelussa esiin nousseet keskeiset asiat, tehdyt päätökset ja se, miten osallistujat äänestivät. Siihen kirjataan myös sovitut toimenpiteet ja niiden vastuuhenkilöt, ja se toimii usein seuraavan kokouksen lähtökohtana.  
 
-Pöytäkirja muistuttaa osallistujia sovituista asioista, auttaa poissaolleita pysymään ajan tasalla ja toimii tarvittaessa kirjallisena tietolähteenä ristiriitatilanteissa.
+Pöytäkirja auttaa läsnä olleita muistamaan käsitellyt asiat, antaa tietoa poissa olleille ja tarjoaa asiakirjan, johon voi palata erimielisyyksien yhteydessä.
 
 <!-- translation-section: on-loomio-4 -->
 
 ### Loomiossa
 
-Julkaise pöytäkirja Loomion kokouskeskusteluketjussa muutaman päivän kuluessa kokouksesta ja pyydä osallistujia hyväksymään se. Asiat ovat silloin vielä tuoreessa muistissa. Samalla voit muistuttaa jäseniä heidän toimenpiteistään ja säästää aikaa seuraavassa kokouksessa.
+Julkaise pöytäkirja kokouksen Loomio-ketjussa muutaman päivän kuluessa kokouksesta ja pyydä osallistujia hyväksymään se. Näin pöytäkirja käsitellään asioiden ollessa vielä tuoreessa muistissa, ja jäsenet saavat muistutuksen sovituista toimenpiteistä. Tämä säästää myös aikaa kokouksessa.
 
 ![](poll_minutes.png#width-90)
 
 Yllä olevassa esimerkissä käytetään **Valita**-kyselyä, jossa on kaksi vaihtoehtoa: 'Hyväksy' ja 'Tarkista'.
 
-Kun kaikki ovat äänestäneet ja kysely sulkeutuu, julkaise lopputulos, jotta kaikki tietävät, mitä päätettiin.
+Kun kaikki ovat äänestäneet ja kysely sulkeutuu, kirjaa johtopäätös, jotta kaikki tietävät, mitä on päätetty.  
 
-Jos kokouskäytäntönne edellyttää muodollista hyväksyntää seuraavassa kokouksessa, lisää esityslistalle kohta Loomiossa tehtyjen kyselyiden ja päätösten vahvistamiseksi. Kirjaa vahvistus pöytäkirjaan.
+Jos kokouskäytäntönne edellyttää virallista hyväksyntää seuraavassa kokouksessa, lisää esityslistalle kohta Loomiossa tehtyjen kyselyjen ja päätösten toteamista ja vahvistamista varten ja kirjaa tämä kokouksen pöytäkirjaan.  
 
-Esimerkiksi: *"Haluaako joku muuttaa Loomiossa antamaansa ääntä? Jos ei, vahvistetaan viime kokouksen jälkeen Loomiossa tehtyjen kyselyiden tulokset."*
+Esimerkiksi: *"Haluaako joku muuttaa ääniään Loomiossa? Jos ei, päätetään hyväksyä virallisesti Loomiossa edellisen jakson aikana tehdyt kyselyt."*
 
 <!-- translation-section: approve-reports -->
 
-## Hyväksy raportit
-Useimpien kokousten esityslistoilla varataan aikaa raporttien esittelyyn, käsittelyyn ja hyväksymiseen. Näitä voivat olla esimerkiksi toimitusjohtajan raportti, talous-, toiminta- ja työturvallisuusraportit sekä projektiraportit.
+## Raporttien hyväksyminen
+Useimpien kokousten esityslistoilla varataan aikaa raporttien esittelyyn, käsittelyyn ja hyväksymiseen. Näitä ovat esimerkiksi toimitusjohtajan raportti sekä talous-, toiminta-, työturvallisuus- ja projektiraportit.
 
-Raportit auttavat kaikkia saamaan saman tilannekuvan. Niiden käsittely voi kuitenkin viedä kokouksessa aikaa, jonka voisi käyttää tehokkaammin.
+Raportit auttavat kaikkia muodostamaan yhteisen käsityksen tilanteesta. Niiden käsittely voi kuitenkin viedä kokouksessa aikaa, jonka voisi käyttää tehokkaammin.
 
 <!-- translation-section: on-loomio-5 -->
 
 ### Loomiossa
 
-Liitä raportit kokouksen **keskusteluketjuun** tai lisää niihin linkit. Pyydä jäseniä esittämään raportteja koskevat kysymykset ennen kokousta.
+Liitä tai linkitä raportit kokouksesi **ketjuun** ja pyydä jäseniä esittämään niistä kysymyksiä ennen kokousta.
 
-Jäsenet voivat lukea raportit itselleen sopivaan aikaan ja paikassa. Lukiessaan ja pohtiessaan raportteja he voivat kommentoida, esittää kysymyksiä ja nähdä vastaukset Loomiossa.
+Jäsenet saavat raportit ja voivat lukea ne itselleen sopivaan aikaan ja sopivassa paikassa. Lukiessaan ja pohtiessaan raportteja he voivat kommentoida, esittää kysymyksiä ja nähdä vastaukset Loomiossa.
 
-Yhden jäsenen esittämä kysymys kiinnostaa todennäköisesti muitakin. Kun joku vastaa siihen, vastaus näkyy kaikille Loomio-ryhmän jäsenille.
+Yhden jäsenen esittämä kysymys kiinnostaa todennäköisesti muitakin jäseniä. Kun joku vastaa kysymykseen, vastaus näkyy kaikille Loomio-ryhmän jäsenille.
 
-Kun jäsenet ovat tottuneet käsittelemään raportteja Loomiossa, voit säästää lisää kokousaikaa pyytämällä heitä hyväksymään raportit jo ennen kokousta.
+Kun raporttien käsittely Loomiossa tulee jäsenille tutuksi, säästä vielä hieman aikaa pyytämällä raporttien hyväksyntää ennen kokousta.
 
 ![](poll_approve_report.png#width-90)
 
-Jos kokouskäytäntönne edellyttää muodollista hyväksyntää seuraavassa kokouksessa, lisää esityslistalle kohta Loomiossa tehtyjen kyselyiden ja päätösten vahvistamiseksi. Kirjaa vahvistus pöytäkirjaan.
+Jos kokouskäytäntönne edellyttää virallista hyväksyntää seuraavassa kokouksessa, lisää esityslistalle kohta Loomiossa tehtyjen kyselyjen ja päätösten toteamista ja vahvistamista varten ja kirjaa tämä kokouksen pöytäkirjaan.  
 
-Esimerkiksi: *"Haluaako joku muuttaa Loomiossa antamaansa ääntä? Jos ei, vahvistetaan viime kokouksen jälkeen Loomiossa tehtyjen kyselyiden tulokset."*
+Esimerkiksi: *"Haluaako joku muuttaa ääniään Loomiossa? Jos ei, päätetään hyväksyä virallisesti Loomiossa edellisen jakson aikana tehdyt kyselyt."*

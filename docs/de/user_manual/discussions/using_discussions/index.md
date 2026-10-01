@@ -1,6 +1,6 @@
 ---
 title: Threads verwenden
-source_revision: 71554be8e61a76613b0707b8262302c22299a5d0
+source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
 source_file: docs/en/user_manual/discussions/using_discussions/index.md
 translated:
   provider: codex/gpt-6.1-sol
@@ -25,33 +25,36 @@ sections:
   lock-or-unlock-a-thread: d3f671e631c8a0bc
   delete-a-thread: 9b4c6437ff8102eb
 generated:
-  introduction: d9c57108bb00267d
-  thread-anatomy: 59be6d89feaacbf5
-  discussion-context: fc0dd71a00912b83
-  notify-people-about-context-changes: 951d4d0507cb39b4
-  navigation: 07c6363a06499d48
-  notifications-and-members: a189eb00158c1829
-  email-notifications-for-this-thread: 9666682e58d36a0c
-  invite-people: 7f5a2e51aacef3e4
-  seen-by: 30647e711f4d009b
-  notified: 46476020f1adaf80
-  actions: 86c4d7d8e0b600fe
-  print: c4d181262d56e436
-  markdown: ff3d114a279ac3d6
-  thread-settings-and-display: 215d57433e5d5a94
-  pin-or-unpin-a-thread: 386c4009957d6b5e
-  move-a-thread: 107f4c697cb39d60
-  lock-or-unlock-a-thread: b598de4811041d39
-  delete-a-thread: 9b7aafc9161614c8
+  introduction: 14bed27dc74e5a2b
+  thread-anatomy: b367be0031cf0070
+  discussion-context: 31ef70f9d276521c
+  notify-people-about-context-changes: 07abcd24321a5af7
+  navigation: 3e8fc23a3a8cf2e5
+  notifications-and-members: c3e86d113a420a3c
+  email-notifications-for-this-thread: 8ef242e55d892a7c
+  invite-people: be2b7a497f0046f8
+  seen-by: 2de7381b0d70fd91
+  notified: ea98543142d6e416
+  actions: 8c8be25fa54c0adc
+  print: a338e05fc2833d18
+  markdown: a1acbe154c0a24f4
+  thread-settings-and-display: b5e22ab11c5259aa
+  pin-or-unpin-a-thread: 5de696dc7828f152
+  move-a-thread: 83ffef8883555192
+  lock-or-unlock-a-thread: 21e8fde5c6647fd2
+  delete-a-thread: 3c5ba71bef15b9ef
 title_source: 99e2d1eb313f35c4
 title_generated: 59731df42f979665
+needs_review:
+  navigation: use "Stimme" instead of "Abstimmung" for "vote"
+  markdown: check the interface label "**Enthaltung**" for "**Abstain**"; use "Entscheidung" instead of "Abstimmung" for "decision"; use "Stimme" instead of "Abstimmung" for "vote"; use "Ergebnis" instead of "Fazit" for "results"
 ---
 
 <!-- translation-section: introduction -->
 
 # Threads verwenden
 
-Eine Diskussion hält ihren Kontext, Kommentare, Abstimmungen und Fazits in einem Thread zusammen. Auf dieser Seite erfährst du, wie du dich an einem Thread beteiligst und seine Navigation und Aktionen nutzt.
+Eine Diskussion hält ihren Kontext, ihre Kommentare, Entscheidungen und Fazits in einem Thread zusammen. Diese Seite erklärt, wie du an einem Thread teilnimmst und seine Navigation und Aktionen nutzt.
 
 <!-- translation-section: thread-anatomy -->
 
@@ -61,47 +64,47 @@ Ein typischer Thread sieht so aus:
 
 ![](thread_navigation.png)
 
-Von oben nach unten enthält ein Thread:
+Von oben nach unten enthält ein Thread folgende Elemente:
 
-**Gruppenname** - Oben links auf der Diskussionsseite steht der Name der Gruppe oder Untergruppe, zu der die Diskussion gehört. Klicke auf den Namen, um zur Gruppenseite zurückzukehren.
+**Gruppenname** - Oben links auf der Diskussionsseite steht der Name der Gruppe oder Untergruppe, zu der die Diskussion gehört. Klicke auf diesen Namen, um zur Gruppenseite zurückzukehren.
 
-**Zugriff auf die Diskussion** - Das Zugriffssymbol oben rechts öffnet die Zugriffseinstellungen der Diskussion. Eine Gruppendiskussion ist für Gruppenmitglieder und eigens eingeladene Personen zugänglich, soweit die Privatsphäre-Einstellungen der Gruppe es erlauben.
+**Zugang zur Diskussion** - Das Zugangssymbol oben rechts öffnet die Zugangseinstellungen der Diskussion. Eine Gruppendiskussion ist für Gruppenmitglieder und alle ausdrücklich dazu eingeladenen Personen zugänglich, abhängig von den Datenschutzeinstellungen der Gruppe.
 
 **Diskussionstitel** - Der Name der Diskussion.
 
-**Schlagwörter für Kategorien** - Eine Diskussion kann ein oder mehrere Schlagwörter für Kategorien haben. Einfache Schlagwörter helfen dabei, ähnliche Diskussionen zu finden.
+**Schlagwörter für Kategorien** - Die Diskussion kann ein oder mehrere Schlagwörter für Kategorien haben. Einfache Schlagwörter helfen dabei, Diskussionen ähnlicher Art leichter zu finden.
 
-**Autor der Diskussion** - Name und Profilbild der Person, die die Diskussion begonnen hat, stehen unter dem Titel.
+**Verfassende Person der Diskussion** - Name und Avatar der Person, die die Diskussion begonnen hat, werden unter dem Titel angezeigt.
 
 **Datum** - Bewege den Mauszeiger über das Datum, um das vollständige Datum und die Uhrzeit des Diskussionsbeginns zu sehen.
 
 **Angesehen von** - Zeigt in der rechten Seitenleiste, wer die Diskussion gelesen hat und wann.
 
-**benachrichtigt** - Zeigt in der rechten Seitenleiste, wer über die Diskussion benachrichtigt wurde und ob die jeweilige Benachrichtigung gelesen oder ihre E-Mail geöffnet wurde.
+**benachrichtigt** - Zeigt in der rechten Seitenleiste, wer über die Diskussion benachrichtigt wurde und ob die jeweilige Benachrichtigung gelesen oder die zugehörige E-Mail geöffnet wurde.
 
-**Diskussionskontext** - Inhalte, die den Rahmen für die Diskussion bilden.
+**Diskussionskontext** - Inhalt, der den Rahmen für die Diskussion setzt.
 
-**Werkzeuge für Beteiligung und Verwaltung** - Beim Diskussionskontext findest du Steuerelemente, um darauf zu reagieren und ihn zu bearbeiten. Die rechte Seitenleiste enthält Aktionen für Benachrichtigungen, Mitglieder und die Verwaltung.
+**Werkzeuge für Interaktion und Verwaltung der Diskussion** - Der Diskussionskontext enthält Bedienelemente zum Reagieren und Bearbeiten. Die rechte Seitenleiste enthält Aktionen für Benachrichtigungen, Mitgliedschaft und Verwaltung.
 
-**Kommentare** - Kommentare stehen unter dem Diskussionskontext. Name, Profilbild und Zeitpunkt der Veröffentlichung zeigen, wer den jeweiligen Kommentar wann geschrieben hat. Für jeden Kommentar stehen Werkzeuge zur Beteiligung und Verwaltung bereit.
+**Kommentare** - Kommentare werden unter dem Diskussionskontext angezeigt. Name, Avatar und Veröffentlichungszeit zeigen, wer den jeweiligen Kommentar geschrieben hat und wann. Für jeden Kommentar stehen Werkzeuge für Interaktion und Verwaltung zur Verfügung.
 
-**Navigation, Benachrichtigungen und Aktionen** - Die rechte Seitenleiste enthält Verknüpfungen zu Aktivitäten und Meilensteinen, Angaben zu Benachrichtigungen und Mitgliedern sowie die Thread-Aktionen, die dir zur Verfügung stehen.
+**Navigation, Benachrichtigungen und Aktionen** - Die rechte Seitenleiste enthält Verknüpfungen zu Aktivitäten und Meilensteinen, Informationen zu Benachrichtigungen und Mitgliedschaft sowie die Thread-Aktionen, die dir zur Verfügung stehen.
 
 <!-- translation-section: discussion-context -->
 
 ## Diskussionskontext
 
-Der **Kontext** steht immer am Anfang der Diskussion. Nutze ihn, um den Rahmen für die Diskussion oder Entscheidung zu setzen.
+Der **Kontext** der Diskussion steht immer oben in der Diskussion. Nutze den Kontext, um den Rahmen für die Diskussion oder Entscheidung zu setzen.
 
-Denke beim Schreiben des Diskussionskontexts an deine Gruppe. Der Kontext soll eine Diskussion anstoßen. Überlege deshalb, was andere zur Teilnahme ermutigt. Halte ihn möglichst einfach und klar.
+Denke an deine Gruppe, wenn du den Diskussionskontext schreibst. Dein Ziel ist es, eine Diskussion in Gang zu bringen. Überlege deshalb, wie du Menschen zur Teilnahme motivieren kannst. Halte den Diskussionskontext grundsätzlich einfach und klar.
 
 ![](thread_context.png)
 
-Schreibe den Diskussionskontext, wenn du eine Diskussion beginnst oder bearbeitest. Mit dem Stiftsymbol kannst du eine Diskussion **Bearbeiten**.
+Schreibe den Diskussionskontext, wenn du eine Diskussion beginnst oder bearbeitest. Über das Stiftsymbol kannst du eine Diskussion **Bearbeiten**.
 
-Aktualisiere den Diskussionskontext im Verlauf der Diskussion. Du kannst ihn wie eine Tafel in einem Besprechungsraum nutzen: Halte dort die Tagesordnung, die angestrebten Fazits und die nächsten Schritte fest.
+Aktualisiere den Diskussionskontext im Verlauf der Diskussion. Stell dir den Kontext wie ein Whiteboard in deinem Besprechungsraum vor, auf dem du die Tagesordnung, die angestrebten Ergebnisse und den geplanten Weg dorthin festhalten kannst.
 
-Unten im Kontextfeld befindet sich eine Formatierungsleiste. Dort kannst du Text formatieren, Dateien und Bilder anhängen und ein Video einbetten.
+Am unteren Rand des Kontextbereichs befindet sich eine Formatierungsleiste. Dort kannst du Text formatieren, Dateien und Bilder anhängen sowie ein Video einbetten.
 
 ![](thread_context_edit.png)
 
@@ -109,13 +112,13 @@ Unten im Kontextfeld befindet sich eine Formatierungsleiste. Dort kannst du Text
 
 ### Personen über Änderungen am Kontext benachrichtigen
 
-Wenn du den Diskussionskontext bearbeitest, fasse die Änderung unter **Was hat sich geändert?** zusammen und wähle aus, wer benachrichtigt werden soll.
+Wenn du den Diskussionskontext bearbeitest, nutze **Was hat sich geändert?**, um die Änderung zusammenzufassen und auszuwählen, wer benachrichtigt werden soll.
 
-![Bearbeitung eines Diskussionskontexts mit einer Zusammenfassung der Änderung und Empfängern der Benachrichtigung](../notifying_people/thread_editcontext.png)
+![Bearbeitung eines Diskussionskontexts mit einer Zusammenfassung der Änderung und den zu benachrichtigenden Personen](../notifying_people/thread_editcontext.png)
 
-Im Thread wird angezeigt, dass du den Kontext bearbeitet hast. Die Personen, die du benachrichtigst, erhalten deine Zusammenfassung mit der Benachrichtigung.
+Der Thread zeigt an, dass du den Kontext bearbeitet hast. Die Personen, die du benachrichtigst, erhalten deine Zusammenfassung mit der Benachrichtigung.
 
-![Ein Eintrag im Thread, der zeigt, dass der Diskussionskontext bearbeitet wurde](../notifying_people/thread_edit_comment.png)
+![Ein Eintrag im Thread zeigt, dass der Diskussionskontext bearbeitet wurde](../notifying_people/thread_edit_comment.png)
 
 <!-- translation-section: navigation -->
 
@@ -123,69 +126,69 @@ Im Thread wird angezeigt, dass du den Kontext bearbeitet hast. Die Personen, die
 
 Der Bereich **Springen zu** in der rechten Seitenleiste hilft dir, dich durch einen Thread zu bewegen:
 
-- **Start** führt zum Diskussionskontext
+- **Start** führt zum Kontext der Diskussion
 - **Neu für dich** erscheint, wenn der Thread Aktivitäten enthält, die du noch nicht gelesen hast
-- **Letzte** erscheint, wenn es neuere Aktivitäten gibt als die bisher geladenen Einträge
+- **Letzte** erscheint, wenn neuere Aktivitäten als die derzeit geladenen Einträge verfügbar sind
 - Meilenstein-Links führen direkt zu wichtigen Kommentaren, Abstimmungen und Fazits
 - **Ende** führt zum neuesten Eintrag im Thread
 
-Kommentare mit einer H2- oder H3-Überschrift, Abstimmungen und Vorschläge werden automatisch als Meilenstein-Links angezeigt. Wähle einen Meilenstein aus, um direkt dorthin zu gelangen.
+Kommentare mit einer H2- oder H3-Überschrift, Abstimmungen und Vorschläge werden automatisch als Meilenstein-Links aufgenommen. Wähle einen Meilenstein, um direkt dorthin zu gelangen.
 
 ![](thread_timeline_1.png)
 
-Wenn du einen Kommentar, eine Abstimmung, eine Stimme oder ein Fazit hinzufügst, markiert Loomio deinen neuen Eintrag als gelesen. Er erscheint für dich nicht als ungelesene Aktivität.
+Wenn du einen Kommentar, eine Abstimmung, eine Stimme oder ein Fazit hinzufügst, markiert Loomio deinen eigenen neuen Eintrag als gelesen. Er erscheint für dich nicht als neuer Eintrag, den du noch lesen musst.
 
 <!-- translation-section: notifications-and-members -->
 
 ## Benachrichtigungen und Mitglieder
 
-In der rechten Seitenleiste stellst du deine E-Mail-Benachrichtigungen ein. Dort siehst du auch, wer eingeladen wurde, wer den Thread angesehen hat und wer benachrichtigt wurde.
+In der rechten Seitenleiste kannst du deine E-Mail-Benachrichtigungen einstellen und sehen, wer eingeladen wurde, wer den Thread angesehen hat und wer benachrichtigt wurde.
 
 <!-- translation-section: email-notifications-for-this-thread -->
 
 ### E-Mail-Benachrichtigungen für diesen Thread
 
-Wähle die aktuelle Benachrichtigungseinstellung aus. Dort legst du fest, ob Loomio dir E-Mails zu allen Aktivitäten sendet, nur zu Aktivitäten, über die du ausdrücklich benachrichtigt wirst, oder zu keinen Aktivitäten. Bei einem aktiven Thread können E-Mails zu allen Aktivitäten viele Nachrichten erzeugen.
+Wähle die aktuelle Benachrichtigungseinstellung aus, um festzulegen, ob Loomio dir E-Mails zu allen Aktivitäten, nur zu Aktivitäten mit einer gezielten Benachrichtigung an dich oder zu keinen Aktivitäten sendet. E-Mails zu allen Aktivitäten können in einem aktiven Thread zu vielen Nachrichten führen.
 
-![Die Einstellung „Bei Benachrichtigung“ in der Seitenleiste der Diskussion](../notifying_people/thread_interact.png)
+![In der Diskussionsseitenleiste ist die Option für E-Mails bei Benachrichtigungen ausgewählt](../notifying_people/thread_interact.png)
 
 <!-- translation-section: invite-people -->
 
 ### Leute einladen
 
-Wähle **Leute einladen**, um nach dem Beginn des Threads weitere Personen hinzuzufügen.
+Wähle **Leute einladen**, um nach dem Start des Threads weitere Personen hinzuzufügen.
 
-![Leute in der Seitenleiste des Threads einladen](../notifying_people/thread_invite_icon.png)
+![Leute einladen in der Thread-Seitenleiste](../notifying_people/thread_invite_icon.png)
 
-Wähle eine Gruppe oder Untergruppe aus, gib die Namen einzelner Mitglieder ein oder lade einen Gast mit seiner E-Mail-Adresse ein.
+Wähle eine Gruppe oder Untergruppe aus, gib die Namen einzelner Mitglieder ein oder gib eine E-Mail-Adresse ein, um einen Gast einzuladen.
 
-Das Feld **Finde oder lade Leute ein** filtert auch die Liste der Personen, die bereits im Thread sind. Leere das Feld, um wieder die vollständige Liste anzuzeigen, und nutze bei mehr als 50 Personen die Seitennavigation. Nachdem du die Empfänger ausgewählt hast, wird die Mitgliederliste durch das Feld für eine optionale Nachricht ersetzt. Neue Personen werden eingeladen; Personen, die bereits Zugriff haben, erhalten eine weitere Benachrichtigung, wenn du **Einladen oder benachrichtigen** wählst.
+Das Feld **Finde oder lade Leute ein** filtert auch die Liste der Personen, die bereits im Thread sind. Leere das Feld, um wieder die vollständige Liste anzuzeigen. Nutze die Seitennavigation, wenn es mehr als 50 Personen gibt. Nachdem du die zu benachrichtigenden Personen ausgewählt hast, wird die Mitgliederliste durch das optionale Nachrichtenfeld ersetzt. Neue Personen werden eingeladen. Personen, die bereits Zugang haben, erhalten eine weitere Benachrichtigung, wenn du **Einladen oder benachrichtigen** auswählst.
 
-![Fenster „Leute einladen“ mit einem Feld für Namen und E-Mail-Adressen](../notifying_people/thread_invite.png)
+![Fenster zum Einladen von Personen mit einem Feld für Namen und E-Mail-Adressen](../notifying_people/thread_invite.png)
 
-Ein Gast kann diesen Thread sehen und daran teilnehmen. Andere Diskussionen der Gruppe kann er nur sehen, wenn er dazu gesondert eingeladen wurde.
+Ein Gast kann diesen Thread sehen und daran teilnehmen, aber keine anderen Diskussionen in der Gruppe sehen, sofern er nicht gesondert dazu eingeladen wurde.
 
 Du kannst die Hinweise oben im Fenster ausblenden. Loomio merkt sich für dein Konto, welche Hinweise du ausgeblendet hast.
 
-![Einen Gast per E-Mail-Adresse einladen](../notifying_people/invite_guest.png)
+![Einladung eines Gastes über eine E-Mail-Adresse](../notifying_people/invite_guest.png)
 
-Um jemanden zu entfernen, öffne das Drei-Punkte-Menü (**⋯**) neben dem Namen und wähle **Aus der Diskussion entfernen**.
+Um eine Person zu entfernen, öffne das Drei-Punkte-Menü (**⋯**) neben ihrem Namen und wähle **Aus der Diskussion entfernen**.
 
 <!-- translation-section: seen-by -->
 
 ### Angesehen von
 
-**Angesehen von** zeigt, wer den Thread wann geöffnet hat. So kannst du erkennen, wer wichtige Informationen möglicherweise noch nicht gesehen hat.
+**Angesehen von** zeigt, wer den Thread geöffnet hat und wann. So kannst du erkennen, welche Personen wichtige Informationen möglicherweise noch nicht gesehen haben.
 
-![Angesehen von und benachrichtigt im Bereich für Thread-Mitglieder](../notifying_people/thread_engagement.png)
+![Angesehen von und benachrichtigt im Bereich der Thread-Mitglieder](../notifying_people/thread_engagement.png)
 
-![Fenster „Angesehen von“ mit einer Liste der Thread-Mitglieder](../notifying_people/thread_seenby.png)
+![Fenster Angesehen von mit einer Liste der Thread-Mitglieder](../notifying_people/thread_seenby.png)
 
 <!-- translation-section: notified -->
 
 ### benachrichtigt
 
-**benachrichtigt** öffnet den Benachrichtigungsverlauf der Diskussion. Er umfasst Einladungen, Erwähnungen und Antworten. Du siehst, wer benachrichtigt wurde und, sofern diese Information verfügbar ist, ob die Benachrichtigung gelesen wurde.
+**benachrichtigt** öffnet den Benachrichtigungsverlauf der Diskussion. Er enthält Einladungen, Erwähnungen und Antworten und zeigt, wer benachrichtigt wurde und ob die jeweilige Benachrichtigung gelesen wurde, sofern diese Information verfügbar ist.
 
 ![Benachrichtigungsverlauf der Diskussion](../notifying_people/thread_notified.png)
 
@@ -193,9 +196,9 @@ Um jemanden zu entfernen, öffne das Drei-Punkte-Menü (**⋯**) neben dem Namen
 
 ## Aktionen
 
-Die rechte Seitenleiste enthält Aktionen für den gesamten Thread. Einige Aktionen findest du auch im Drei-Punkte-Menü (**⋯**) neben dem Thread auf der Gruppenseite.
+Die rechte Seitenleiste enthält Aktionen für den gesamten Thread. Einige Aktionen sind auch über das Drei-Punkte-Menü (**⋯**) neben einem Thread auf der Gruppenseite verfügbar.
 
-Welche Aktionen angezeigt werden, hängt von deinen Berechtigungen ab. Gruppenadministratoren können Threads verwalten. Je nach Gruppeneinstellungen dürfen Mitglieder einige Verwaltungsaktionen ausführen. Siehe [Gruppenberechtigungen](/en/user_manual/groups/settings/permissions).
+Die angezeigten Aktionen hängen von deinen Berechtigungen ab. Gruppen-Admins können Threads verwalten. Die Gruppeneinstellungen können auch Mitgliedern bestimmte Verwaltungsaktionen erlauben. Siehe [Gruppenberechtigungen](/en/user_manual/groups/settings/permissions).
 
 ![](thread_admin.png)
 
@@ -203,7 +206,7 @@ Welche Aktionen angezeigt werden, hängt von deinen Berechtigungen ab. Gruppenad
 
 ### Drucken
 
-Wähle **Drucken**, um eine druckbare Seite zu erstellen. Über den Druckdialog deines Browsers kannst du sie als PDF speichern.
+Wähle **Drucken**, um eine zum Drucken geeignete Seite zu erstellen. Nutze den Druckdialog deines Browsers, um sie als PDF zu speichern.
 
 ![](thread_print_thread.png)
 
@@ -211,15 +214,15 @@ Wähle **Drucken**, um eine druckbare Seite zu erstellen. Über den Druckdialog 
 
 ### Markdown
 
-Wähle **Markdown**, um den vollständigen Thread als strukturiertes Markdown zu speichern. Mit **Markdown kopieren** kopierst du ihn in die Zwischenablage. Mit **Markdown herunterladen** speicherst du ihn als `.md`-Datei. Du kannst ihn für ein Sitzungsprotokoll, ein Dokument, ein Archiv von Entscheidungen, einen KI-Assistenten oder ein anderes Werkzeug verwenden, das Markdown unterstützt.
+Wähle **Markdown**, um den gesamten Thread als strukturiertes Markdown zu speichern. Wähle **Markdown kopieren**, um ihn in deine Zwischenablage zu kopieren, oder **Markdown herunterladen**, um ihn als `.md`-Datei zu speichern. Du kannst ihn für Sitzungsprotokolle, ein Dokument, ein Archiv von Entscheidungen, einen KI-Assistenten oder ein anderes Werkzeug verwenden, das Markdown unterstützt.
 
 ![](../discussion_management/copy_markdown_menu.png)
 
-Das Dokument beginnt mit YAML-Kopfdaten. Sie enthalten den Thread-Schlüssel, die Gruppe, das Erstellungsdatum, das Datum der letzten Aktivität und die Schlagwörter. Danach folgen der Diskussionskontext und alle Kommentare, Abstimmungen, Stimmen und Fazits in derselben Reihenfolge und Verschachtelung wie in der Thread-Ansicht.
+Das Dokument beginnt mit einem YAML-Metadatenblock, der den Thread-Schlüssel, die Gruppe, das Erstellungsdatum, das Datum der letzten Aktivität und die Schlagwörter enthält. Danach folgen der Diskussionskontext und alle Kommentare, Abstimmungen, Stimmen und Fazits in derselben Reihenfolge und Verschachtelung wie in der Ansicht **Als Thread**.
 
-Jede Abstimmung bildet einen Abschnitt. Kommentare, Stimmen und Fazits werden als Zitate dargestellt. Antworten stehen als Zitate unter dem jeweiligen Beitrag. So ist erkennbar, wo der Text einer Person beginnt und endet. Jedes Zitat beginnt mit einer Zeile, die die Person, den Zeitpunkt des Beitrags, die Nummer des Beitrags im Thread und etwaige Reaktionen zeigt. Bei Stimmen und Fazits wird außerdem angegeben, worum es sich handelt. Der Thread-Schlüssel und die Beitragsnummer kennzeichnen jeden Beitrag in Loomio.
+Jede Abstimmung bildet einen Abschnitt. Kommentare, Stimmen und Fazits werden als Zitate dargestellt. Antworten stehen als Zitate unter dem Eintrag, auf den sie antworten. So ist erkennbar, wo der Text jeder Person beginnt und endet. Jedes Zitat beginnt mit einer Zeile, die die Person, den Zeitpunkt ihres Beitrags, die Nummer des Eintrags im Thread und etwaige Reaktionen zeigt. Stimmen und Fazits werden zusätzlich als solche gekennzeichnet. Der Thread-Schlüssel und die Eintragsnummer identifizieren jeden Eintrag in Loomio.
 
-Loomio wendet dieselben Sichtbarkeitsregeln wie im Thread an. Ergebnisse und Begründungen für Stimmen, die du nicht sehen darfst, werden nicht übernommen. Bei anonymen Abstimmungen werden die Abstimmenden nicht genannt. Wenn die Ergebnisse einer offenen Abstimmung bis zu deiner Stimmabgabe verborgen sind, stimme vor dem Export des Threads ab. Bis dahin sind **Markdown** und **Drucken** nicht verfügbar.
+Loomio wendet dieselben Sichtbarkeitsregeln wie im Thread an. Ergebnisse und Begründungen zu Stimmen, die du nicht sehen kannst, werden nicht aufgenommen. Bei anonymen Abstimmungen werden Abstimmende nicht identifiziert. Wenn eine offene Abstimmung die Ergebnisse verbirgt, bis du abgestimmt hast, stimme vor dem Exportieren des Threads ab. **Markdown** und **Drucken** sind erst danach verfügbar.
 
 Eine Diskussion mit einem Kommentar, Reaktionen, einem Vorschlag, zwei Stimmen, einer Antwort und einem Fazit erzeugt beispielsweise dieses Markdown:
 
@@ -284,17 +287,17 @@ Supply returnable glass bottles to three cafe customers for six weeks, with one 
 > Run the six-week bottle trial with three cafes. Review return rates, washing time, and transport costs each week.
 ```
 
-Überschriften und Bezeichnungen erscheinen in der von dir gewählten Sprache. Von Teilnehmenden verfasste Inhalte bleiben in ihrer ursprünglichen Sprache.
+Die Überschriften und Beschriftungen verwenden die von dir ausgewählte Sprache. Inhalte von Teilnehmenden bleiben in ihrer ursprünglichen Sprache.
 
 <!-- translation-section: thread-settings-and-display -->
 
 ### Thread-Einstellungen und Anzeige
 
-Gruppenadministratoren können unter **Thread-Einstellungen** festlegen, wie Antworten angeordnet werden, und weitere Optionen für die Diskussion einstellen.
+Gruppen-Admins können **Thread-Einstellungen** auswählen, um die Anordnung von Antworten zu ändern und weitere Diskussionsoptionen einzustellen.
 
 ![](thread_display.png)
 
-Wähle **Zeitleiste**, um Beiträge in der Reihenfolge ihrer Veröffentlichung anzuzeigen, oder **Als Thread**, um Antworten unter dem Beitrag anzuordnen, auf den sie sich beziehen. In den Thread-Einstellungen kannst du auch festlegen, ob mehrere Abstimmungen gleichzeitig laufen dürfen, und eine maximale Kommentarlänge einstellen. Diese Einstellungen gelten für alle in der Diskussion.
+Wähle **Zeitleiste**, um Beiträge in der Reihenfolge ihrer Veröffentlichung aufzulisten, oder **Als Thread**, um Antworten unter dem Beitrag zu gruppieren, auf den sie antworten. In den Thread-Einstellungen lässt sich außerdem festlegen, ob mehrere Abstimmungen gleichzeitig laufen dürfen und wie lang Kommentare höchstens sein dürfen. Diese Einstellungen gelten für alle in der Diskussion.
 
 ![](thread_layout_options.png)
 
@@ -302,11 +305,11 @@ Wähle **Zeitleiste**, um Beiträge in der Reihenfolge ihrer Veröffentlichung a
 
 ### Einen Thread anheften oder lösen
 
-Angeheftete Threads erscheinen auf der Gruppenseite über den anderen Threads. Häufig werden Begrüßungsdiskussionen, Neuigkeiten und Ankündigungen angeheftet.
+Angeheftete Threads erscheinen auf der Gruppenseite über anderen Threads. Begrüßungsdiskussionen, Neuigkeiten und Ankündigungen sind typische Verwendungszwecke für angeheftete Threads.
 
 Öffne auf der Gruppenseite das Drei-Punkte-Menü (**⋯**) neben dem Thread und wähle **Diskussion anheften**. Angeheftete Threads werden nach dem Zeitpunkt des Anheftens sortiert. Um ihre Reihenfolge zu ändern, löse sie und hefte sie erneut an.
 
-Wähle **Anheftung lösen**, damit der Thread wieder nach Aktivität einsortiert wird.
+Wähle **Thread lösen**, um einen Thread wieder nach Aktivität einzuordnen.
 
 ![](../discussion_management/pin_thread.png)
 
@@ -314,30 +317,30 @@ Wähle **Anheftung lösen**, damit der Thread wieder nach Aktivität einsortiert
 
 ### Einen Thread verschieben
 
-Wähle **Thema verschieben**, um einen Thread in eine andere Gruppe oder Untergruppe zu verschieben oder daraus einen direkten Thread zu machen. Er ist dann für die Mitglieder der Zielgruppe und für alle Personen sichtbar, die eigens dazu eingeladen wurden.
+Wähle **Thread verschieben**, um einen Thread in eine andere Gruppe oder Untergruppe zu verschieben oder in einen direkten Thread umzuwandeln. Er ist dann für Mitglieder der Zielgruppe und alle ausdrücklich dazu eingeladenen Personen sichtbar.
 
 ![](../discussion_management/move_thread_select.png)
 
 >[!Tip]
->Beginne einen Entwurf als direkte Diskussion oder in einer privaten Untergruppe. Wenn er fertig ist, verschiebe ihn in die Gruppe.
+>Beginne einen Entwurf als direkte Diskussion oder in einer privaten Untergruppe und verschiebe ihn in die Gruppe, wenn er fertig ist.
 
-Wenn du nur ausgewählte Aktivitäten statt des ganzen Threads verschieben möchtest, lies [Beiträge zwischen Threads verschieben](/en/user_manual/discussions/moving_items/).
+Wie du einzelne Beiträge statt des gesamten Threads verschiebst, erfährst du unter [Beiträge zwischen Threads verschieben](/en/user_manual/discussions/moving_items/).
 
 <!-- translation-section: lock-or-unlock-a-thread -->
 
 ### Einen Thread sperren oder entsperren
 
-Sperre einen Thread, um Kommentare und weitere Änderungen zu verhindern. Du kannst ihn erst sperren, wenn alle laufenden Abstimmungen geschlossen sind.
+Sperre einen Thread, um Kommentare oder weitere Änderungen zu verhindern. Ein Thread kann erst gesperrt werden, wenn seine aktiven Abstimmungen beendet sind.
 
-Wähle unter **Aktionen ** die Option **Thread sperren**. Gesperrte Threads werden aus der Liste offener Diskussionen entfernt und mit **Gesperrt** gekennzeichnet.
+Wähle unter **Aktionen ** die Option **Thread sperren**. Gesperrte Threads werden aus der Liste der offenen Diskussionen entfernt und mit dem Schlagwort **Gesperrt** gekennzeichnet.
 
 Um einen gesperrten Thread zu finden, öffne den Diskussionsfilter auf der Gruppenseite und wähle **Gesperrt**. Öffne den Thread und wähle **Thread entsperren**, um Kommentare und Änderungen wieder zuzulassen.
 
 <!-- translation-section: delete-a-thread -->
 
-### Eine Diskussion löschen
+### Einen Thread löschen
 
-Wenn du eine Diskussion löschst, wird sie dauerhaft entfernt. Das lässt sich nicht rückgängig machen. Sperre den Thread stattdessen, wenn du ihn später noch brauchen könntest.
+Das Löschen eines Threads entfernt ihn dauerhaft und lässt sich nicht rückgängig machen. Sperre den Thread stattdessen, wenn du ihn möglicherweise wieder brauchst.
 
 Wähle **Diskussion löschen** und bestätige das Löschen.
 

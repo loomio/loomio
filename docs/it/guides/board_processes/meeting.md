@@ -1,10 +1,10 @@
 ---
 title: Preparare una riunione
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/guides/board_processes/meeting.md
+source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
+source_file: docs/en/guides/board_processes/meeting.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-30'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 20305b2bbbcd9088
   meeting-focus-and-review-actions: e43829ab612a2070
@@ -19,18 +19,18 @@ sections:
   approve-reports: e322912e5f5b1e32
   on-loomio-5: 15e0c45a512cd84f
 generated:
-  introduction: 2335cbb1d6ab4168
-  meeting-focus-and-review-actions: 8477aa4488e30aae
-  on-loomio: dc61af0a82b433cc
-  agenda-and-notify: ace4e3b4f2d671ba
-  on-loomio-2: 99e7b23a287a119e
-  confirm: 889632f73fe7e6b6
-  find-a-time-for-meeting: 8498676e3e11ed22
-  on-loomio-3: b4aabc83346f54b0
-  sign-off-minutes: 9bf2b4b90d9f7372
-  on-loomio-4: 15fd48ecc3388fc8
-  approve-reports: 36c4b89ee576dcb7
-  on-loomio-5: a38be34aed050a79
+  introduction: 2c8b907f451d9100
+  meeting-focus-and-review-actions: ae20ae3db4172300
+  on-loomio: 8851c8d1ede00f25
+  agenda-and-notify: 464022ac209c94ab
+  on-loomio-2: 503e2638dd9b6486
+  confirm: 74b9ff8997a3e33d
+  find-a-time-for-meeting: fa276af5ef47e95e
+  on-loomio-3: a50580319abf8dac
+  sign-off-minutes: 845cda09695642ae
+  on-loomio-4: aab01e04e008d1bc
+  approve-reports: 5d61e8d0f79502ef
+  on-loomio-5: 1a6a78380b0e5174
 title_source: 7fe4f2dbd8ccfc94
 title_generated: 7d1978bf00f32238
 ---
@@ -39,41 +39,41 @@ title_generated: 7d1978bf00f32238
 
 # Preparare una riunione
 
-Le riunioni efficaci sono produttive, inclusive e collaborative. Favoriscono la partecipazione, rafforzano le relazioni, aiutano a trovare una direzione comune e a prendere decisioni migliori e più rapide. Inoltre, stimolano la creatività e offrono occasioni per raccogliere riscontri e migliorare.
+Le riunioni efficaci sono produttive, inclusive e collaborative: migliorano la partecipazione, aiutano a costruire relazioni solide, creano una visione condivisa, permettono di prendere decisioni migliori e più rapide, promuovono l'inclusione, facilitano il pensiero creativo e l'innovazione e offrono uno spazio per il riscontro e il miglioramento continuo.
 
-Usa Loomio per organizzare una riunione efficace: coinvolgi le persone fin dall'inizio, individua gli argomenti più importanti e sfrutta al meglio il tempo trascorso insieme.
+Usa Loomio per pianificare una riunione efficace: coinvolgi le persone fin dall'inizio, concentrati insieme a loro sugli argomenti più importanti e usa meglio il tempo prezioso che trascorrete insieme.
 
-Se il gruppo non conosce ancora Loomio, inizia da [Presentare Loomio al tuo gruppo](/en/user_manual/overview/introducing_loomio), poi usa questo processo come prima attività ricorrente.
+Se il gruppo non ha ancora usato Loomio, inizia con [Presentare Loomio al tuo gruppo](/en/user_manual/overview/introducing_loomio), poi usa questo processo di preparazione delle riunioni come primo flusso di lavoro pratico e ricorrente.
 
-Ecco cosa puoi fare per rendere efficace la prossima riunione del consiglio o del comitato...
+Puoi fare diverse cose per rendere efficace la prossima riunione del consiglio o del comitato...
 
-- [Definire le priorità e rivedere le attività](#meeting-focus-and-review-actions)
+- [Definire le priorità della riunione e rivedere le azioni](#meeting-focus-and-review-actions)
 - [Comunicare l'ordine del giorno e inviare una notifica](#agenda-and-notify)
-- [Trovare una data per la riunione](#find-a-time-for-meeting)
+- [Trovare un orario per la riunione](#find-a-time-for-meeting)
 - [Approvare il verbale](#sign-off-minutes)
 - [Approvare le relazioni](#approve-reports)
 
 <!-- translation-section: meeting-focus-and-review-actions -->
 
-## Definire le priorità e rivedere le attività
+## Definire le priorità della riunione e rivedere le azioni
 
-Definisci le priorità della riunione, così potrete dedicare il tempo insieme agli argomenti più importanti.
+Definisci le priorità della riunione, così potrete dedicare il tempo prezioso che trascorrete insieme agli argomenti più importanti.  
 
-Invitare i membri a contribuire all'ordine del giorno aiuta tutti a prepararsi, riflettere sugli argomenti e arrivare alla riunione pronti a partecipare.
+Invitare i membri a contribuire all'ordine del giorno aiuta tutti a condividere le priorità, riflettere sugli argomenti e prepararsi a partecipare alla riunione.
 
-Attività:
-- concentra la riunione sulle questioni più importanti,
-- verifica le attività concordate nelle riunioni precedenti e parlane con i membri.
+Azioni:
+- concentra la riunione sugli argomenti più importanti,
+- verifica i progressi e parla con i membri delle azioni concordate nelle riunioni precedenti.
 
 ![](meeting_prep.png#width-90)
 
 <!-- translation-section: on-loomio -->
 
 ### Su Loomio
-Usa una **Discussione** su Loomio per preparare la riunione:
-* ricorda ai membri la prossima riunione,
-* chiedi quali sono gli argomenti più importanti da affrontare,
-* riepiloga le attività concordate nella riunione precedente e chiedi un aggiornamento.
+Usa una **Discussione** di Loomio per preparare la tua riunione:
+* ricorda ai membri che la riunione si avvicina,
+* invita a commentare gli argomenti più importanti su cui concentrarsi,
+* riepiloga le azioni concordate nella riunione precedente e chiedi un aggiornamento.
 
 <!-- translation-section: agenda-and-notify -->
 
@@ -81,10 +81,10 @@ Usa una **Discussione** su Loomio per preparare la riunione:
 
 Annuncia la riunione con un ordine del giorno chiaro. Allega i materiali, inserisci i link ai documenti principali e invia una notifica ai membri.
 
-In questo modo, tutti possono prepararsi leggendo i materiali e riflettendo sugli argomenti da discutere e sulle decisioni da prendere.  I membri arriveranno alla riunione conoscendo il contesto.
+Questo aiuta tutti a prepararsi alla riunione, leggendo i materiali e riflettendo sugli argomenti della discussione e sulle decisioni da prendere. È quindi più probabile che i membri arrivino informati e pronti per la riunione.
 
-Attività:
-- prepara l'ordine del giorno, i documenti e gli altri materiali per il consiglio,
+Azioni:
+- prepara l'ordine del giorno, i documenti, i materiali e la documentazione per il consiglio,
 - informa i membri della riunione e invia i materiali.
 
 ![](meeting_notify.png#width-90)
@@ -92,88 +92,88 @@ Attività:
 <!-- translation-section: on-loomio-2 -->
 
 ### Su Loomio
-Usa una **Discussione** su Loomio per preparare la riunione del consiglio:
+Usa una **Discussione** di Loomio per preparare la riunione del tuo consiglio:
 * indica i dettagli della riunione,
-* allega l'ordine del giorno, i documenti e gli altri materiali oppure inserisci i relativi link,
-* invita i membri inviando una notifica,
-* controlla «Visto da» per sapere chi ha letto la discussione.
+* allega l'ordine del giorno, i documenti e gli altri materiali della riunione oppure inserisci i relativi link,
+* invita i membri con una notifica,
+* controlla 'Visto da' per vedere chi ha letto la conversazione.
 
-Una discussione su Loomio offre alcuni vantaggi rispetto a un'email:
-- puoi vedere chi l'ha letta e inviare un promemoria a chi non l'ha ancora fatto,
-- le risposte e i commenti dei membri sono visibili a tutte le persone autorizzate a vedere la discussione,
-- le domande e gli scambi sull'ordine del giorno e sui materiali restano in un unico posto.
+Pur essendo simile all'invio di un'email, una conversazione di Loomio offre alcuni vantaggi:
+- puoi vedere chi ha letto la conversazione e inviare un promemoria a chi non l'ha ancora letta,
+- le risposte o i commenti dei membri sono visibili a tutti coloro che hanno il permesso di visualizzare la conversazione,
+- tutte le discussioni o le domande sull'ordine del giorno o sui materiali della riunione si trovano in un unico posto.
 
-I membri trovano tutte le informazioni sulla riunione in un unico posto, senza dover seguire lunghe catene di email o cercare informazioni importanti nella posta in arrivo.
+I membri possono trovare facilmente tutte le informazioni sulla riunione in un unico posto, evitando catene di email confuse e la perdita di informazioni importanti nella posta in arrivo.
 
 <!-- translation-section: confirm -->
 
-### Confermare
-Chiedi ai membri di lasciare un commento per confermare che hanno letto l'ordine del giorno e i materiali e che sono pronti per la riunione. Usa **Visto da** per individuare chi potrebbe aver bisogno di un promemoria.
+### Conferma
+Chiedi ai membri di lasciare un commento per confermare di aver letto l'ordine del giorno e i documenti della riunione e di essere pronti a partecipare. Usa **Visto da** per individuare chi potrebbe aver bisogno di un promemoria.
 
 <!-- translation-section: find-a-time-for-meeting -->
 
-## Trovare una data per la riunione
-Trovare un momento in cui tutti possano partecipare richiede spesso molto lavoro a chi organizza le riunioni.
+## Trovare un orario per la riunione
+Trovare un orario per riunirsi può essere una difficoltà ricorrente per molti amministratori.
 
 <!-- translation-section: on-loomio-3 -->
 
 ### Su Loomio
-Se non hai ancora fissato la data e l'ora della riunione, oppure devi organizzare una riunione futura, puoi usare un **Sondaggio temporale**.
+Se non hai ancora fissato una data e un orario per la riunione o devi trovare un orario per una riunione futura, puoi usare un **Sondaggio appuntamento**.
 
-Il sondaggio temporale ti permette di vedere facilmente quando tutti sono disponibili e di trovare il momento migliore, riducendo il tempo necessario per organizzare la riunione.
+Il sondaggio appuntamento permette di vedere facilmente la disponibilità di tutti e trovare l'orario migliore, riducendo il tempo e le energie necessari per questa comune operazione di amministrazione.
 
-I membri che si trovano in fusi orari diversi vedranno date e orari nel proprio fuso orario.
+I membri in fusi orari diversi vedranno le date e gli orari nel proprio fuso orario.
 
 ![](timepoll_vote.png#width-90)
 
-Quando il sondaggio temporale si chiude, scegli il momento migliore e invia una notifica con la conclusione e un invito di calendario, così i membri possono aggiungere la riunione al proprio calendario.
+Quando il sondaggio appuntamento si chiude, scegli l'orario migliore e invia una notifica della conclusione con un invito di calendario, così i membri potranno aggiungere la riunione al proprio calendario.
 
 <!-- translation-section: sign-off-minutes -->
 
 ## Approvare il verbale
-Approvare o ratificare il verbale è una pratica standard nelle riunioni formali e utile anche nelle altre riunioni.
+Approvare o ratificare il verbale è una prassi standard per le riunioni formali e una buona pratica per tutte le riunioni.  
 
-Il verbale documenta la riunione, i punti principali emersi nella discussione, le decisioni prese e come hanno votato le persone. Include le attività concordate e le persone responsabili e spesso costituisce il punto di partenza per la riunione successiva.
+Il verbale documenta la riunione, i punti principali emersi durante la discussione, i risultati delle decisioni e i voti espressi. Include le azioni concordate e le persone responsabili, ed è spesso il punto di partenza per la riunione successiva.  
 
-Il verbale serve da promemoria a chi era presente, informa chi era assente e offre un riferimento in caso di disaccordo.
+Il verbale serve da promemoria per chi era presente, è utile a chi era assente e costituisce un documento da consultare in caso di conflitto.
 
 <!-- translation-section: on-loomio-4 -->
 
 ### Su Loomio
 
-Pubblica il verbale nella discussione della riunione su Loomio entro pochi giorni e invita i partecipanti ad approvarlo.  Così i contenuti sono ancora recenti e puoi ricordare ai membri le attività concordate.  Questo consente anche di risparmiare tempo durante la riunione successiva.
+Pubblica il verbale nella conversazione della riunione su Loomio entro pochi giorni dalla riunione e invita i partecipanti ad approvarlo. In questo modo il verbale resta attuale e i membri hanno ancora un ricordo recente della riunione; inoltre, ricorda loro le azioni da svolgere. Questo permette anche di risparmiare tempo durante la riunione.
 
 ![](poll_minutes.png#width-90)
 
-L'esempio qui sopra usa un sondaggio **Scegliere** con due opzioni: «Accetta» e «Rivedi».
+L'esempio qui sopra usa un sondaggio **Scegliere** con due opzioni: 'Accetta' o 'Rivedi'.
 
-Quando tutti hanno votato e il sondaggio si chiude, pubblica una conclusione per comunicare a tutti che cosa è stato deciso.
+Quando tutti hanno votato e il sondaggio si chiude, scrivi una conclusione così tutti sapranno che cosa è stato deciso.  
 
-Se la procedura del tuo gruppo richiede un'approvazione formale nella riunione successiva, aggiungi un punto all'ordine del giorno per prendere atto e confermare i sondaggi e le decisioni su Loomio. Riportalo nel verbale.
+Se la tua prassi richiede un'approvazione formale alla riunione successiva, inserisci nell'ordine del giorno un punto per prendere atto e confermare i sondaggi e le decisioni prese su Loomio, e riportalo nel verbale della riunione.  
 
-Per esempio: *"Qualcuno vuole cambiare il proprio voto su Loomio?  Se nessuno vuole cambiarlo, approviamo formalmente i sondaggi svolti su Loomio dall'ultima riunione."*
+Per esempio: *"Qualcuno desidera modificare i propri voti su Loomio? Se nessuno desidera farlo, deliberiamo di approvare formalmente i sondaggi svolti su Loomio nell'ultimo periodo."*
 
 <!-- translation-section: approve-reports -->
 
 ## Approvare le relazioni
-La maggior parte degli ordini del giorno prevede la presentazione, la discussione e l'approvazione di relazioni, per esempio quelle della direzione, dell'area finanziaria, delle attività operative, della salute e sicurezza o dei progetti.
+La maggior parte degli ordini del giorno prevede del tempo per presentare, discutere e approvare le relazioni, per esempio quelle della direzione generale, delle aree finanza, operazioni, salute e sicurezza e dei progetti.
 
-Le relazioni aiutano tutti a condividere le stesse informazioni, ma possono occupare tempo prezioso durante una riunione.
+Le relazioni sono molto importanti per aiutare tutti a condividere le stesse informazioni, ma possono occupare tempo prezioso durante una riunione che potrebbe essere impiegato più efficacemente.
 
 <!-- translation-section: on-loomio-5 -->
 
 ### Su Loomio
 
-Allega le relazioni alla **discussione** della riunione, oppure inserisci i relativi link, e invita i membri a porre domande prima dell'incontro.
+Allega le relazioni alla **conversazione** della tua riunione oppure inserisci i relativi link, e invita a porre domande sulle relazioni prima della riunione.
 
-I membri ricevono e leggono le relazioni quando e dove preferiscono.  Mentre le leggono e ci riflettono, possono commentare, fare domande e vedere le risposte su Loomio.
+I membri ricevono e leggono le relazioni nel momento e nel luogo più adatti a loro. Mentre leggono e riflettono sulle relazioni, possono commentare, fare domande e vedere le risposte su Loomio.
 
-Una domanda posta da un membro può interessare anche agli altri. Quando qualcuno risponde, la risposta è visibile a tutto il gruppo su Loomio.
+Una domanda posta da un membro probabilmente interessa anche ad altri membri, quindi quando qualcuno risponde, la risposta è visibile a tutti nel gruppo Loomio.
 
-Quando i membri hanno preso familiarità con la discussione delle relazioni su Loomio, puoi risparmiare altro tempo chiedendo di approvarle prima della riunione.
+Man mano che i membri si abituano a discutere le relazioni su Loomio, risparmia altro tempo facendo un passo in più: chiedi l'approvazione delle relazioni prima della riunione.
 
 ![](poll_approve_report.png#width-90)
 
-Se la procedura del tuo gruppo richiede un'approvazione formale nella riunione successiva, aggiungi un punto all'ordine del giorno per prendere atto e confermare i sondaggi e le decisioni su Loomio. Riportalo nel verbale.
+Se la tua prassi richiede un'approvazione formale alla riunione successiva, inserisci nell'ordine del giorno un punto per prendere atto e confermare i sondaggi e le decisioni prese su Loomio, e riportalo nel verbale della riunione.  
 
-Per esempio: *"Qualcuno vuole cambiare il proprio voto su Loomio?  Se nessuno vuole cambiarlo, approviamo formalmente i sondaggi svolti su Loomio dall'ultima riunione."*
+Per esempio: *"Qualcuno desidera modificare i propri voti su Loomio? Se nessuno desidera farlo, deliberiamo di approvare formalmente i sondaggi svolti su Loomio nell'ultimo periodo."*

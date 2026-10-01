@@ -1,43 +1,43 @@
 ---
 title: Sähköpostiosoite
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/groups/email/index.md
+source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
+source_file: docs/en/user_manual/groups/email/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: bbc0cdb29306b05d
   preventing-unauthorized-emails: 218f730808482c55
 generated:
-  introduction: 55383b0e58e1d42d
-  preventing-unauthorized-emails: 9551919c4e9c25a6
+  introduction: 5f7c8adfae17c07f
+  preventing-unauthorized-emails: 7d32dd121b82a3c9
 title_source: f2488fd4ef4adbc6
 title_generated: c326de2e675782c3
 ---
 
 <!-- translation-section: introduction -->
 
-# Aloita viestiketju ryhmässäsi sähköpostitse
+# Aloita ketju ryhmässäsi lähettämällä sähköpostia
 
-Loomio-ryhmälläsi on sähköpostiosoite. Voit aloittaa viestiketjun ryhmässä lähettämällä tai välittämällä sähköpostin tähän osoitteeseen.
+Loomio-ryhmälläsi on sähköpostiosoite. Voit aloittaa ketjun ryhmässä lähettämällä tai välittämällä sähköpostia tähän osoitteeseen.
 
 Näet ryhmäsi sähköpostiosoitteen ryhmän sivulla:
 ![Sähköpostiosoitteen sijainti ryhmän sivulla](email_email_button.png)
 
-Kun lähetät sähköpostin tähän osoitteeseen, ryhmään syntyy uusi viestiketju. Sähköpostin aiheesta tulee viestiketjun otsikko ja viestin tekstistä sen kuvaus. Liitetiedostot lisätään viestiketjuun.
+Kun lähetät sähköpostia tähän osoitteeseen, uusi ketju luodaan. Sähköpostin aiheesta tulee ketjun otsikko, viestin sisällöstä tulee kuvaus ja liitetiedostot lisätään ketjuun.
 
-Sähköpostin Lähettäjä-osoitteen perusteella tunnistetaan ryhmän jäsen, joka merkitään viestiketjun kirjoittajaksi.
+Sähköpostin lähettäjän osoitteen perusteella tunnistetaan ryhmän jäsen, josta tulee ketjun kirjoittaja.
 
 <!-- translation-section: preventing-unauthorized-emails -->
 
 ## Luvattomien sähköpostien estäminen
 
-Jotta ryhmään kuulumattomat eivät voi käyttää tätä ominaisuutta, Loomio edellyttää, että saapuvan sähköpostin Lähettäjä-osoite kuuluu ryhmän jäsenelle.
+Jotta ryhmän ulkopuoliset eivät voi käyttää tätä toimintoa, Loomio edellyttää, että saapuvan sähköpostin lähettäjän osoite vastaa jonkun ryhmän jäsenen sähköpostiosoitetta.
 
-Jos käytät useita sähköpostiosoitteita, voit lisätä muut osoitteesi aliaksiksi Loomioon.
+Jos käytät useita sähköpostiosoitteita, voit lisätä rinnakkaisosoitteen, jotta Loomio tunnistaa myös muut sähköpostiosoitteesi.
 
-Jos lähettäjän osoite ei vastaa ryhmän jäsenen osoitetta, saat ilmoituksen, jossa sinua pyydetään lisäämään alias tai estämään kaikki myöhemmät viestit kyseisestä osoitteesta.
+Jos lähettäjän osoite ei vastaa yhdenkään ryhmän jäsenen sähköpostiosoitetta, saat ilmoituksen, jossa sinua pyydetään lisäämään rinnakkaisosoite tai hylkäämään kaikki tästä osoitteesta jatkossa saapuvat sähköpostit.
 
-Kun lähetät ensimmäisen kerran sähköpostin osoitteesta, jota Loomio ei tunnista, sinun täytyy lisätä osoite aliakseksi. Sen jälkeen sähköpostit hyväksytään heti.
+Kun lähetät ensimmäisen kerran sähköpostia osoitteesta, jota Loomio ei tunnista, sinun on siis lisättävä rinnakkaisosoite. Sen jälkeen sähköpostit hyväksytään heti.
 
-![Tuntemattomasta osoitteesta lähetetyn sähköpostin hyväksymis- ja estopainikkeiden sijainti](email_unreleased_emails.png)
+![Tunnistamattomasta osoitteesta saapuneen sähköpostin hyväksymis- ja hylkäyspainikkeiden sijainti](email_unreleased_emails.png)

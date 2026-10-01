@@ -1,6 +1,6 @@
 ---
 zh_CN:
-  group_export_started: "群组数据导出已开始"
+  group_export_started: 群组数据导出已开始
   locale_names:
     en: 英语
     be-BY: 白俄罗斯
@@ -73,18 +73,18 @@ zh_CN:
       agree_prompt: 你为什么同意？
       abstain_meaning: 我对此没有意见。
       abstain_prompt: 有什么想法吗？
-      disagree_meaning: 我不同意这种说法。
-      disagree_prompt: 你为什么不同意？
+      disagree_meaning: 我不赞同
+      disagree_prompt: 为什么不赞同？
     proposal:
       process_subtitle: 提出一项决定建议
-      process_introduction: <p>经典的 Loomio 提案功能可帮助您做出决定，将讨论转化为明确的结果。</p><p>提出行动方案，并邀请人们投票表示同意、弃权或不同意。</p><p>人们投票时可以说明自己投票的理由。你可以看到其他人对此事的立场以及原因。</p><p>通过这种方式，你可以利用提案来促使人们做出回应，发现新的信息，并建立共同的理解，从而帮助你的团队做出更好、更明智的决定。</p><p>提案及其相关讨论本身就会记录下决策是如何产生的。</p><p><a target="_blank" href="/docs/en/guides/making_decisions/simple_decision_process"><u>阅读更多关于在简单决策过程中使用经典 Loomio 提案的信息</u></a>。</p>
+      process_introduction: <p>经典的 Loomio 提案功能可帮助您做出决定，将讨论转化为明确的结论。</p><p>提出行动方案，并邀请人们投票表示赞同、弃权或不赞同。</p><p>人们投票时可以说明自己投票的理由。您可以看到其他人对此事的立场以及理由。</p><p>通过这种方式，您可以利用提案来促使人们做出回应，发现新的信息，并建立共同的理解，从而帮助您的群组做出更好、更明智的决定。</p><p>提案及其相关讨论本身就会记录下决定是如何产生的。</p><p><a target="_blank" href="/docs/en/guides/making_decisions/simple_decision_process"><u>阅读更多关于在简单决策过程中使用经典 Loomio 提案的信息</u></a>。</p>
       title: 批准新的品牌概念
-      details: <h3 id="what-is-the-decision-you-need-to-make"><strong>你需要做出什么决定？</strong></h3><p></p><h3 id="why-is-this-important"><strong>为什么这很重要？</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"><strong>你要求人们做什么？</strong></h3><p></p><p>该提案要想获得通过，需要大多数成员投票赞成。</p><p>如果您不同意，请说明原因以及需要做出哪些改变才能让您同意。</p>
+      details: <h3 id="what-is-the-decision-you-need-to-make"><strong>需要做出什么决定？</strong></h3><p></p><h3 id="why-is-this-important"><strong>为什么这很重要？</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"><strong>希望大家做什么？</strong></h3><p></p> <p>该提案要想获得通过，需要大多数成员投票赞同。</p><p>如果您不赞同，请说明理由以及需要做出哪些改变才能让您赞同。</p>
       agree: 同意
       agree_meaning: 我支持这项提议。
       agree_prompt: 你觉得这个方案有哪些优点？它将如何使团队受益？
       abstain: 弃权
-      disagree: 不同意
+      disagree: 不赞同
       disagree_meaning: 这项提案需要修改一些内容，我才能支持它。
       disagree_prompt: 如何改进这项提案才能让您支持它？
       abstain_meaning: 选择不参与投票，或无法参与投票。
@@ -120,21 +120,21 @@ zh_CN:
       process_subtitle: 与所有相关人员达成集体协议
       process_introduction: <p>就你需要做出的决定达成共识，从而达成一项能够满足所有参与者的需求和关切的协议。</p><ul><li><p>共同讨论并制定提案</p></li><li><p>包容并尊重所有参与者</p></li><li><p>寻求大多数人的同意</p></li></ul><p><a target="_blank" href="/docs/en/guides/making_decisions/consensus_process">阅读更多关于共识流程的信息</a>。</p>
       title: 批准新的品牌概念
-      details: <h3 id="what-is-the-decision-you-need-to-make"><strong>你需要做出什么决定？</strong></h3><p></p><h3 id="why-is-this-important"><strong>为什么这很重要？</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"><strong>你要求人们做什么？</strong></h3><p></p><p>该提案要想获得通过，需要大多数成员投票赞成。</p><p>如果您不同意，请说明原因以及需要做出哪些改变才能让您同意。</p>
+      details: <h3 id="what-is-the-decision-you-need-to-make"><strong>需要做出什么决定？</strong></h3><p></p><h3 id="why-is-this-important"><strong>为什么这很重要？</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"><strong>希望大家做什么？</strong></h3><p></p><p>该提案要想获得通过，需要大多数成员投票赞同。 </p><p>如果您不赞同，请说明理由以及需要做出哪些改变才能让您赞同。</p>
       outcome_statement: "<p>感谢您参与共识过程。</p>"
       agree: 同意
       agree_meaning: 我支持这项提议。
       agree_prompt: 您觉得这个方案有哪些优点？它将如何使组织受益？
       abstain: 弃权
       abstain_meaning: 这个决定对我没有影响，我对小组的任何决定都表示理解和支持。
-      disagree: 不同意
+      disagree: 不赞同
       disagree_meaning: 这份提案需要修改一些内容，我才能支持它。
       disagree_prompt: 如何改进这项提案才能让您支持它？
-      block: 堵塞
+      block: 否决
       block_meaning: 我反对这项提案，认为它不应该进行。
       block_prompt: 请解释您反对这项提议的原因以及它为何不应实施。
-      details_v2: "<h3><strong>你需要做出什么决定？</strong></h3><p></p><h3><strong>为什么这很重要？</strong></h3><p></p><h3><strong>你要求人们做什么？</strong></h3><p></p><p>请分享您的立场以及原因。如果您不同意，请解释需要做出哪些改变才能让您支持。</p>"
-      process_introduction_v2: "<p><strong>共识</strong>适用于需要所有人积极同意的决策。参与者共同努力，了解彼此的需求，并不断完善提案，直至获得全体成员的支持。由于人们可以在讨论过程中改变投票，因此该过程鼓励真诚的对话，而非一蹴而就的决定。与其他方法相比，它需要更多的耐心，但也能建立最牢固的承诺。</p><p>此模板默认包含<strong>“阻止”</strong>选项。“阻止”功能并非适用于所有群体——它可能引发争议或被滥用。如果您在决策过程中不使用“阻止”功能，我们建议您编辑模板将其移除。</p>"
+      details_v2: "<h3><strong>您需要做出什么决定？</strong></h3><p></p><h3><strong>为什么这很重要？</strong></h3><p></p><h3><strong>希望大家做什么？</strong></h3><p></p><p>请分享您的立场和理由。如果不赞同，请说明需要做出哪些改变才能让您支持。</p>"
+      process_introduction_v2: "<p><strong>共识</strong>适用于需要所有人积极赞同的决定。参与者共同努力，了解彼此的需求，并不断完善提案，直至整个群组都能支持。由于人们可以在讨论过程中更改投票，因此该流程鼓励真诚的对话，而非一次投票就做出决定。与其他方法相比，它需要更多的耐心，但也能建立最牢固的承诺。</p><p>此模板默认包含<strong>否决</strong>选项。否决并非适用于所有群组——它可能引发争议或被滥用。如果您在决策流程中不使用否决，建议编辑模板将其移除。</p>"
       abstain_prompt: 你为什么弃权，或者为什么觉得自己无法就此决定投票？
     question_round:
       process_subtitle: 邀请提问者提出澄清问题，以帮助人们理解提案。
@@ -148,7 +148,7 @@ zh_CN:
       process_introduction: <p>方案审核是获取反馈、提出问题和发现疑虑的好方法。它有助于在做出决定前澄清和改进方案。</p><p>意见征询环节旨在让人们了解提案正在形成，并鼓励他们积极参与。这是一个倾听他人意见、了解他们感受并做出适当回应的机会，从而有可能将他们的建议纳入最终决策，做出更明智的决定。</p><p>在同意流程中使用“感觉检查”提案，以邀请各方反馈和评论来改进提案；在共识流程中使用“感觉检查”提案，以测试是否达成共识。</p><p> <a target="_blank" rel="noopener noreferrer nofollow" href="/docs/en/guides/making_decisions/simple_decision_process"><u>阅读更多关于在简单决策过程中使用感知检查的内容</u></a><span>。</span></p>
       title: 您对新的品牌理念有何看法？
       details: <h3 id="what-are-you-proposing"><strong>你的提议是什么？</strong></h3><p></p><h3 id="why-is-this-important"><strong>为什么这很重要？</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"><strong>你要求人们做什么？</strong></h3><p></p><p>您对这项提议有何看法？请留言或提出改进建议。</p><p>本次意见征询旨在收集您的意见和建议，以帮助我们做出更好的决策。</p>
-      outcome_statement: "<p>感谢您参与此次常识检验。</p>"
+      outcome_statement: "<p>感谢您参与此次意见征询。</p>"
       not_sure: 没有把握
       not_sure_meaning: 我有问题或需要更多时间
       not_sure_prompt: 哪些部分你不明白？这个问题该如何解决？
@@ -174,7 +174,7 @@ zh_CN:
       needs_a_rethink_meaning: 我认为这种做法是错误的。
     gradients_of_agreement:
       process_subtitle: 请用 8 分制表达您对该提案的支持程度
-      process_introduction: "<p>同意程度梯度提案允许小组成员以等级的方式表达他们对提案的支持，提供的表达支持的方式比“同意”和“不同意”更多。</p><p>使用“同意梯度”作为初步阶段，在达成正式协议之前测试对提案的支持度。</p><p>意见分歧程度的差异让人们知道提案正在形成，并鼓励他们参与讨论。这是一个倾听他人意见、了解他们感受并做出适当回应的机会，从而有可能将他们的建议纳入决策，做出更明智的决定。</p>"
+      process_introduction: "<p>赞同程度提案让群组成员按等级表达对提案的支持程度，比“赞同”和“不赞同”提供更多表达支持的方式。</p> <p>将赞同程度作为初步环节，在正式达成一致之前检验对提案的支持度。</p><p>赞同程度让人们了解提案正在形成，并鼓励他们参与。这是一个倾听他人意见、了解他们感受并做出适当回应的机会，从而有可能采纳他们的建议，做出更好的决定。</p>"
       title: 你觉得新的价值观声明怎么样？
       details: <h3 id="what-are-you-proposing"><strong>你的提议是什么？</strong></h3><p></p><h3 id="why-is-this-important"><strong>为什么这很重要？</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"><strong>你要求人们做什么？</strong></h3><p></p><p>您觉得这个方案怎么样？请在下方评分标准中表达您的支持，并留下评论或改进建议。</p><p>这项“协议梯度”提案旨在测试公众对该提案的支持度，并为您提供在达成正式协议之前提出意见的机会。</p>
       whole_hearted_endorsement: 全心全意的认可
@@ -196,7 +196,7 @@ zh_CN:
       don_t_like_but_will_support_prompt: 您希望看到哪些方面的改进？
       serious_disagreement: 严重分歧
       serious_disagreement_meaning: 我不赞成这样做——别指望我。
-      serious_disagreement_prompt: 你不同意什么？
+      serious_disagreement_prompt: 您不赞同哪些内容？
       veto: 否决
       veto_meaning: 我反对这项提案。
       veto_prompt: 你为什么反对这项提案？需要做出哪些改变你才会支持它？
@@ -209,7 +209,7 @@ zh_CN:
       process_subtitle_v2: 通过单选或多选投票来衡量受欢迎程度
     score_poll:
       process_subtitle: 衡量每个选项的支持程度
-      process_introduction: <p>当您想调查人们对每个选项的愿望、偏好或兴趣时，请使用评分投票。</p><p><span>参与者需要评估每个选项，并通过沿刻度移动滑块来分配分数。</span></p><p> <a target="_blank"  href="/docs/en/user_manual/polls/proposal_types#score-poll">阅读更多关于评分投票的信息</a>。</p>
+      process_introduction: <p>当您想了解人们对每个选项的意愿、偏好或兴趣时，请使用评分投票。</p><p><span>参与者需要评估每个选项，并通过沿刻度移动滑块来评分。</span></p><p><a target="_blank"  href="/docs/en/user_manual/polls/proposal_types#score-poll">阅读更多关于评分投票的信息</a>。</p>
       title: 评估我们组织如何做出决策
       details: <h3 id="what-is-this-poll-about"><strong>这个投票是关于什么的？</strong></h3><p></p><h3 id="why-is-this-important"><strong>为什么这很重要？</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"><strong>你要求人们做什么？</strong></h3><p></p><p>选择您喜欢的选项。</p>
       process_subtitle_v2: 衡量每项选择的支持程度
@@ -233,15 +233,15 @@ zh_CN:
       process_subtitle_v3: 按偏好程度从高到低排序
     time_poll:
       process_subtitle: 找到人们何时有空见面
-      process_introduction: <p>快速找到最适合您会议或活动的时间。添加标题、详细信息以及您所在时区的日期/时间选项。参会者将看到根据他们所在时区自动调整的时间。</p><p>当您的时间投票结束后，请设置最佳时间结果以及任何会议说明。Loomio 会发送一封包含日历邀请的电子邮件，以便参与者将其添加到自己的日历中。</p><p> <a target="_blank" href="/docs/en/user_manual/polls/meeting_polls#time-poll">阅读更多关于《时代》杂志民意调查的内容</a>。</p>
+      process_introduction: <p>快速找到最适合您会议或活动的时间。添加标题、详细信息以及您所在时区的日期/时间选项。参与者将看到根据他们所在时区自动调整的时间。</p><p>时间投票结束后，请在结论中写明最佳时间及会议说明。Loomio 会发送包含日历邀请的结论邮件，以便参与者将其添加到自己的日历中。</p><p><a target="_blank" href="/docs/en/user_manual/polls/meeting_polls#time-poll">阅读更多关于时间投票的信息</a>。</p>
       title: 我们来确定一下下次会议的日期吧。
       details: "<p><strong>会议或活动是什么？</strong></p><p></p><p><strong>为什么这很重要？</strong></p><p></p><p><strong>你要求人们做什么？</strong></p><p></p><p><span>请用绿色“点赞”图标标记您有空的时间段，或用红色“点踩”图标标记您无空的时间段。</span></p><p><span>使用“拇指向侧”图标表示“如有需要，您可以提供帮助”。</span></p>"
       reason_prompt: 您能否提供一些建议，帮助组织者找到合适的时间？
       process_subtitle_v2: 查找人们的空闲时间
-      process_introduction_v2: <p><strong>时间投票</strong>可以帮助您了解人们的空闲时间。添加您建议的时间，参与者将在其所在时区看到这些时间。投票结束后，设置结果，Loomio 会自动向所有人发送日历邀请。</p><p> <a target="_blank" href="/docs/en/user_manual/polls/meeting_polls#time-poll">阅读更多关于《时代》杂志民意调查的内容</a>。</p>
+      process_introduction_v2: <p><strong>时间投票</strong>可以帮助您了解人们的空闲时间。添加您建议的时间，参与者将在其所在时区看到这些时间。投票结束后，设置结论，Loomio 会向所有人发送日历邀请。</p><p><a target="_blank" href="/docs/en/user_manual/polls/meeting_polls#time-poll">阅读更多关于时间投票的信息</a>。</p>
     opt_in:
       process_subtitle: 寻找志愿者或招募参与者
-      process_introduction: <p>使用选择加入功能邀请人们加入团队、委员会或工作组，或参加活动。</p><p> “选择加入”有两种投票选项：接受或拒绝。</p><p>您可以设定一个目标人数，例如 3 人加入您的工作组。</p><p> <a target="_blank" href="/docs/en/user_manual/polls/meeting_polls#opt-in">了解更多关于选择加入的信息</a>。</p>
+      process_introduction: '<p>使用报名功能邀请人们加入团队、委员会或工作组，或参加活动。&nbsp;&nbsp;</p><p>“报名”有两种投票选项：接受或拒绝。&nbsp;</p><p>您可以设定目标人数，例如邀请 3 人加入您的工作组。</p> <p><a target="_blank" href="/docs/en/user_manual/polls/meeting_polls#opt-in">了解更多关于报名的信息</a>。</p> '
       title: 成立工作组，负责起草新的可持续发展政策
       details: "<p><strong>您邀请大家参加的是什么团队、工作组或活动？</strong></p><p></p><p><strong>为什么这很重要？</strong></p><p></p><p><strong>你要求人们做什么？</strong></p><p></p><p>选择“接受”即可参与！</p>"
       accept_meaning: 我愿意参加
@@ -254,14 +254,14 @@ zh_CN:
       process_introduction: "<p>充分利用 Loomio 需要团队的共同努力。这份提案旨在帮助您的团队决定是否投入时间和精力来认真体验 Loomio——无论是参与试用期还是共同注册套餐。</p>"
       title: 让我们一起尝试一下 Loomio 吧。
       details: "<p>要想成功使用 Loomio，需要团队合作——只有当人们参与其中时，它才能发挥作用。</p><p>本提案要求所有用户在试用期内积极使用 Loomio。这意味着要定期签到、对提案进行投票并参与讨论。</p><p>如果您对此有任何疑虑，请提出异议并说明需要做出哪些改变——这就是提出异议的用途。</p>"
-      outcome_statement: "<p>与小组分享该提案的结果——决定了什么以及接下来要做什么。</p>"
+      outcome_statement: "<p>与群组分享该提案的结论——做出了什么决定以及接下来要做什么。</p>"
       consent_meaning: 我愿意尝试一下。
       consent_prompt: 您期待使用 Loomio 的哪些方面？
       objection_meaning: 我有一个需要先解决的问题。
       objection_prompt: 在你做出承诺之前，需要做出哪些改变？
     majority:
       process_subtitle: 以票数最多者为准做出决定
-      process_introduction: "<p><strong>多数决</strong>是群体决策中最简单的方式——参与者投票赞成或反对，如果超过半数投赞成票，提案即获通过。没有弃权或否决，因此每一票都具有同等效力。</p><p>对于结果明确的简单决策，多数投票制非常适用。而对于需要大家通力合作、相互理解、寻求共识的决策，则应考虑同意或共识制。</p>"
+      process_introduction: "<p><strong>多数决</strong>是群组做出决定最简单的方式——参与者投票赞成或反对，如果超过半数投赞成票，提案即获通过。没有弃权或否决，因此每一票都具有同等效力。</p><p>对于需要明确结论的简单决定，多数决非常适用。对于需要大家共同努力、相互理解、寻找共同点的决定，可以考虑同意或共识流程。</p>"
       title: 批准第三季度预算
       details: "<h3><strong>你需要做出什么决定？</strong></h3><p></p><h3><strong>为什么这很重要？</strong></h3><p></p><h3><strong>你要求人们做什么？</strong></h3><p></p>"
       yes_meaning: 我支持这项提议。
@@ -273,7 +273,7 @@ zh_CN:
       process_subtitle: 按比例选出多名获胜者。
       process_introduction: <p>单记可转移投票制（STV）是一种适用于多席位选举的比例代表制投票方式。选民按偏好顺序对候选人进行排序。达到规定得票数的候选人当选，剩余或被淘汰的选票将转入下一轮投票。</p><p>配置席位数量、计票方法（苏格兰式或米克式）和配额类型（德鲁普式或黑尔式）。结果会逐轮显示选票转移情况。</p><p><a target="_blank" href="/docs/en/user_manual/polls/stv">阅读更多关于单记可转移投票制（STV）选举的信息</a>。</p>
       title: 选举委员会成员
-      details: <h3 id="what-is-this-election-about"><strong>这次选举的意义何在？</strong></h3><p></p><h3 id="how-many-seats"><strong>有多少座位被填满了？</strong></h3><p></p><h3 id="who-are-the-candidates"><strong>候选人有哪些？</strong></h3><p></p><p>请通过拖动候选人来投票，按您喜欢的顺序排列。排名第一的候选人是您最喜欢的。您可以对任意数量的候选人进行排名。</p>
+      details: <h3 id="what-is-this-election-about"><strong>这次选举是为了什么？</strong></h3><p></p><h3 id="how-many-seats"><strong>要选出多少个席位？</strong></h3><p></p><h3 id="who-are-the-candidates"><strong>候选人有哪些？</strong></h3><p></p><p>拖动候选人，按偏好顺序排列以投票。排名第 1 的是您最偏好的候选人。可以自行选择为多少位候选人排名。</p>
   discussion_templates:
     practice_thread:
       process_name: 练习讨论
@@ -313,7 +313,7 @@ zh_CN:
       title_placeholder: 寻求购买新电脑的建议
       process_name: 咨询流程
       process_subtitle: 就你需要做的决定寻求建议。
-      process_introduction: <p>听取受影响人员或具有专业知识的人员的建议，以便为你的组织做出更好的决策。</p><p>典型角色：</p><ul><li><p>协调人：做出决定的人，或者请别人来协调的人。</p></li><li><p>顾问：受其影响或拥有专业知识的人员，由您邀请。</p></li></ul><p>常见流程步骤：</p><p>第一步：在提出行动方案之前，征求意见以了解各方观点。</p><p>步骤 2. 提出建议并寻求建议 - 开展咨询提案。</p><p>步骤 3. 考虑收到的建议，做出决定并告知提供建议的人——说明结果。</p><p> <a target="_blank" rel="noopener noreferrer nofollow" href="/docs/en/guides/making_decisions/advice_process">阅读更多：咨询流程。</a></p>
+      process_introduction: <p>听取受影响人员或具有专业知识的人员的建议，以便为您的组织做出更好的决定。</p><p>典型角色：</p><ul><li><p>协调人：做出决定的人，也可以请他人协调。</p></li><li><p>顾问：您邀请的受影响人员或具有专业知识的人。</p></li></ul><p>常见流程步骤：</p><p>步骤 1. 在提出行动方案之前，征求意见以了解各方观点。</p><p>步骤 2. 提出提案并寻求建议 - 发起咨询提案。</p><p>步骤 3. 考虑收到的建议，做出决定并告知提供建议的人 - 写明结论。</p><p><a target="_blank" rel="noopener noreferrer nofollow" href="/docs/en/guides/making_decisions/advice_process">阅读更多：咨询流程。</a></p>
       description: <h3 id="what-is-the-decision-you-need-to-make">你需要做出什么决定？</h3><p></p><h3 id="why-is-this-important-and-what-impact-does-it-have">为什么这件事很重要？它会产生什么影响？</h3><p></p><h3 id="what-advice-are-you-asking-to-help-you-make-a-good-decision">你想寻求哪些建议来帮助你做出正确的决定？</h3><p></p><h3 id="who-is-the-facilitator-for-this-process">这个过程的协调人是谁？</h3><p></p>
       advice: 建议
     pass_a_resolution:
@@ -327,7 +327,7 @@ zh_CN:
       title_placeholder: 修订本组织章程
       process_name: 以共识方式作出的决定
       process_subtitle: 与所有相关方达成集体协议。
-      process_introduction: <p>就需要共同做出的决定达成共识，从而达成一项能够满足所有参与者的需求和关切的协议。</p><p>典型角色：</p><ul><li><p>指定一名主持人。（在董事会会议中，通常由主席担任。）</p></li><li><p>根据贵组织章程的规定，需达到法定人数或绝对多数成员方可参加。</p></li></ul><p>常见流程步骤：</p><p>第一步：创造一个开放的空间，供大家讨论某个问题或拟议的决定。</p><p>步骤 2. 通过 Sense 检查提案来检验共识并指出反对意见。</p><p>步骤 3. 澄清任何要点，邀请提出建设性修改意见，并修改提案。</p><p>步骤 4. 对共识提案进行测试，以检验是否达成一致意见并消除任何剩余的异议。</p><p>第五步：将决定及其结果记录在组织的正式会议记录中。</p><p> <a target="_blank" rel="noopener noreferrer nofollow" href="/docs/en/guides/making_decisions/consensus_process">阅读更多：共识过程。</a></p>
+      process_introduction: <p>就需要共同做出的决定达成共识，从而达成一项能够满足所有参与者的需求和关切的协议。</p><p>典型角色：</p><ul><li><p>指定一名主持人。&nbsp;（在董事会会议中，通常由主席担任。）</p></li><li><p>根据组织章程，参与成员需达到法定人数或特定的高多数比例。</p></li></ul><p>常见流程步骤：</p><p>步骤 1. 创造一个开放的空间，供大家讨论某个问题或拟议的决定。</p><p>步骤 2. 通过意见征询提案检验共识并了解异议。&nbsp;</p><p>步骤 3. 澄清各个要点，邀请提出建设性修改意见，并修改提案。</p><p>步骤 4. 通过共识提案检验是否达成一致，以及是否仍有异议。</p><p>步骤 5. 发布结论，并在组织的正式会议记录中记录决定。</p><p><a target="_blank" rel="noopener noreferrer nofollow" href="/docs/en/guides/making_decisions/consensus_process">阅读更多：共识流程。</a></p>
       description: <h3 id="what-is-the-decision-you-need-to-make">你需要做出什么决定？</h3><p></p><h3 id="why-is-this-important-and-what-impact-does-it-have">为什么这件事很重要？它会产生什么影响？</h3><p></p><h3 id="what-information-do-people-need-for-context">人们需要哪些背景信息？</h3><p></p><h3 id="who-is-the-facilitator">谁是协调员？</h3><p></p><h3 id="what-conditions-need-to-be-met-for-a-decision">做出决定需要满足哪些条件？</h3><h3 id=""></h3>
       consensus: 共识
     share_links_and_info:
@@ -362,14 +362,14 @@ zh_CN:
       title_placeholder: 机器人巡回展的资金申请
       process_name: 拨款决定
       process_subtitle: 处理拨款、贷款或投资申请，并做出资助决定。
-      process_introduction: "<p>提交资金申请，并附上文件和其他证明材料。</p><p>在主题上下文中总结应用程序。</p><p>邀请授权人员审阅申请并提出问题。预留充足的讨论时间。</p><p>提出一项共识性提案，以批准拨款。</p><p>如果有人持不同意见，请询问原因——例如，可能需要更多信息。邀请持不同意见者在满意后更改投票。</p><p>当你对资助申请有了明确的决定后，请说明结果以记录该决定。</p>"
+      process_introduction: "<p>提交资金申请，并附上文件和其他证明材料。</p><p>在帖子背景中概述申请。</p><p>邀请授权人员审阅申请并提出问题。预留充足的讨论时间。</p><p>发起共识提案，以批准拨款。</p><p>如果有人不赞同，请询问理由——例如，可能需要更多信息。邀请不赞同的人在满意后更改投票。</p><p>对资金申请做出明确决定后，发布结论以记录该决定。</p>"
       description: <h3 id="introduce-and-summarize-the-funding-application">介绍并概述资助申请</h3><p></p><h3 id="how-does-this-application-fit-with-funding-criteria">该申请如何符合资助标准？</h3><p></p><h3 id="who-is-authorized-to-approve-this-funding-decision">谁有权批准这项拨款决定？</h3><p></p><h3 id="invite-questions-from-decision-makers-to-process-the-applica">邀请决策者提出问题以处理申请</h3><p></p>
       funding: 资金
     approve_a_document:
       title_placeholder: 制定我们的品牌战略
       process_name: 批准一份文件
       process_subtitle: 介绍、讨论和制定重要文件、政策或协议。
-      process_introduction: "<p>介绍文件及其背景信息。阐明文件的目的，以帮助读者集中注意力。</p><p>邀请大家贡献信息和专业知识，并以此为基础构建文档。重视并认真考虑大家的反馈和意见。</p><p>将各方贡献融入到文件的初稿和后续草稿中，直到文件达到可以批准的程度。</p><p>使用 Sense 检查民意调查来调查意见并澄清草案中的任何问题。</p><p>在考虑反馈意见并将其纳入文件后，即可通过同意或共识提案进行批准或达成一致。</p><p>该讨论串清晰地记录了文档创建过程和所做的决定。</p>"
+      process_introduction: "<p>介绍文件及其背景信息。阐明文件的目的，以帮助读者集中注意力。</p><p>邀请大家贡献信息和专业知识，并以此为基础构建文档。重视并认真考虑大家的反馈和意见。</p><p>将各方贡献融入到文件的初稿和后续草稿中，直到文件达到可以批准的程度。</p><p>使用意见征询投票收集意见并澄清草稿中的问题。</p><p>在考虑反馈意见并将其纳入文件后，即可通过同意或共识提案进行批准或达成一致。</p><p>该帖子清晰地记录了文档创建过程和所做的决定。</p>"
       description: <h3 id="what-is-the-purpose-of-the-document">这份文件的目的是什么？</h3><p></p><h3 id="why-is-this-important">为什么这很重要？</h3><p></p><h3 id="what-are-you-asking-people-to-do">你要求人们做什么？</h3><p></p>
       document: 文档
   explore:
@@ -421,7 +421,7 @@ zh_CN:
       spoofed_media_type: 该文件的内容与其文件名不匹配。
       pwned_password: 此密码曾出现在数据泄露事件中，绝对不能使用。
     new_account_trial_group_limit: 新账号仅限加入一个群组。如需加入更多群组，请联系客服。
-    direct_thread_anonymous_poll: 包含匿名投票的帖子无法转换为直接帖子。
+    direct_thread_anonymous_poll: 包含匿名投票的帖子无法转换为私人帖子
     invitation_rate_limit_reached_contact_support: 每日邀请名额已满，请立即联系客服。
     subscription_thread_limit_reached: 此组织已达到帖子上限。请升级以继续使用 Loomio。
   group:
@@ -431,12 +431,12 @@ zh_CN:
       handle_must_be_url_friendly: 仅使用小写字母（a-z）、数字（0-9）和连字符（-）。
     stats:
       group_stats: 小组统计数据
-      org_stats: 组织统计数据（包括子组）
+      org_stats: 组织统计数据（包括子群组）
       visits: 访问
       members: 成员
-      subgroups: 亚组
-      threads: 线程
-      polls: 民意调查
+      subgroups: 子群组
+      threads: 帖子
+      polls: 投票
       votes: 投票
       comments: 评论
       general: 一般的
@@ -446,7 +446,7 @@ zh_CN:
         choose: 选择
         allocate: 分配
         score: 分数
-        rank: 秩
+        rank: 排名
         time: 时间投票
   user:
     deleted_user: 已删除用户
@@ -481,9 +481,9 @@ zh_CN:
       details: 细节
       group_name: 组名
       discussion_title: 主题标题
-      outcome_author: 结果作者
+      outcome_author: 结论作者
       outcome_created_at: 成果创造于
-      outcome_statement: 结果声明
+      outcome_statement: 结论内容
       poll_url: 投票网址
       reason: 原因
       participant: 参与者
@@ -637,11 +637,11 @@ zh_CN:
   announcement_count_emails: "%{count}封邮件"
   email_actions:
     unfollowed_discussion: 您已关闭此邮件主题的电子邮件通知。
-    catch_up_link: 补发邮件设置
-    catch_up_title: 补发邮件设置
+    catch_up_link: 摘要邮件设置
+    catch_up_title: 摘要邮件设置
     catch_up_description: 选择接收群组活动摘要的频率
-    catch_up_schedule: 发送一封补发邮件
-    catch_up_saved: 补发邮件设置已更新
+    catch_up_schedule: 发送一封摘要邮件
+    catch_up_saved: 摘要邮件设置已更新
     catch_up_days:
       never: 绝不
       every_day: 每天
@@ -662,9 +662,9 @@ zh_CN:
     unsubscribe_from_new_comment_html: "<a href='%{url}'>取消订阅</a>此主题的评论。"
     unsubscribe_from_user_mentioned_html: 您收到此邮件是因为您被@提及。
     discussion_edited:
-      inline: "%{actor} 编辑了线程上下文"
+      inline: "%{actor} 编辑了帖子背景"
     discussion_closed:
-      inline: "%{actor} 关闭了该线程"
+      inline: "%{actor} 关闭了该帖子"
   footer:
     about: 关于
     blog: 博客
@@ -707,10 +707,10 @@ zh_CN:
       trial_expired_process: 您的群组已被标记为删除，因此暂时无法使用。如果您仍然希望群组能够继续讨论和决策，现在重新开始还不算晚。如果您想申请延长试用期、升级到付费订阅或需要更多时间导出数据，请在 %{grace_days} 天内回复此邮件。逾期后，群组及其数据将被永久删除。
       trial_expired: 您的 Loomio 群组“%{group}”已处于试用期至少 60 天，试用期已过期。该群组将在 %{days} 天后被永久删除。
       usage_heading: 组数据汇总：
-      subgroups: 亚组
+      subgroups: 子群组
       members: 现任成员
       discussions: 讨论
-      polls: 民意调查
+      polls: 投票
       comments: 评论
       export: 如需保留该群组或导出其数据副本，请在 %{days} 天内回复此邮件。我们可以在删除前恢复访问权限。
       export_link: 了解如何导出群组数据
@@ -729,14 +729,14 @@ zh_CN:
     common:
       why_send_this: 您收到此邮件的原因是 %{reason}
       view_on_loomio: 在 %{site_name} 上查看
-      create_outcome: 分享结果
+      create_outcome: 分享结论
       your_response: 你投票了：
       you_voted: 你投票了！
       not_invited: 未受邀
       please_respond: 请回复
       time_zone: "（时间以%{zone}显示）"
-      undecided_members: 未决成员（%{count}）
-      undecided_visitors: 未决定宾客人数 (%{count})
+      undecided_members: 未投票成员 (%{count})
+      undecided_visitors: 未投票访客 (%{count})
       more_undecided: 还有 %{count} 个...
       vote_now: 立即投票
       you_have_until: 您可以在 %{when} 之前参与。
@@ -750,8 +750,8 @@ zh_CN:
   merge_users:
     not_target_user: 您必须以目标帐户身份登录才能确认合并。
   thread_markdown:
-    poll: 轮询
-    no_activity: 目前尚无评论、投票或结果
+    poll: 投票
+    no_activity: 尚无评论、投票、投票记录或结论
     status: "**状态：** %{value}"
     anonymous_voting: "**匿名投票：** %{value}"
     options: "**选项：** %{value}"
@@ -779,7 +779,7 @@ zh_CN:
     vote_removed: "%{author}：投票已移除"
     undecided: "%{author}：未定"
     superseded: 被取代
-    shared_outcome: "%{author} 分享了总结"
+    shared_outcome: "%{author} 分享了结论"
     removed: 已移除
   error:
     access_denied: 你没有权限这样做。

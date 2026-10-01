@@ -1,10 +1,10 @@
 ---
 title: Csoport indítása
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/groups/starting_a_group/index.md
+source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
+source_file: docs/en/user_manual/groups/starting_a_group/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 221cb19d87a4f2d6
   group-details: 0fcf6c809c12050b
@@ -12,11 +12,11 @@ sections:
   group-handle: 1696339219760afb
   group-description: b585bd5a1b0b1bff
 generated:
-  introduction: e83d0c76c1a6ed32
+  introduction: 61e91589a7073369
   group-details: ce336c3095b8ff96
-  group-name: a9f76a66b947865c
-  group-handle: 34b3d7f508ba5b35
-  group-description: 3d8fca14ab7064d4
+  group-name: 24892533ff3d08a5
+  group-handle: ca3145ab4498f7f9
+  group-description: 0f7be148efb0dc5c
 title_source: c5a16dbe0863ecd7
 title_generated: a40889da54a4f18b
 ---
@@ -25,9 +25,9 @@ title_generated: a40889da54a4f18b
 
 # Új csoport indítása
 
-Ha még nem használtad a Loomiót, bármikor indíthatsz csoportot ingyenes próbaidőszakkal a [Loomio weboldalán](https://www.loomio.com/). Ha már használod a Loomiót, és másik szervezet vagy cél számára szeretnél új csoportot indítani, kattints az oldalsáv menüjében az **Új csoport** lehetőségre.
+Ha még nem használod a Loomiót, bármikor indíthatsz egy csoportot ingyenes próbaidőszakkal a [Loomio weboldalán](https://www.loomio.com/). Ha már használod a Loomiót, és szeretnél új csoportot indítani egy másik szervezet számára vagy más célra, ezt az oldalsáv menüjéből teheted meg – kattints az **Új csoport** lehetőségre.
 
-Sok szervezetnek elég egyetlen Loomio-csoport. Ezen belül annyi alcsoportot indíthatsz, amennyire szükséged van. További információt az [Alcsoportok](/en/user_manual/groups/subgroups/) oldalon találsz.
+Sok szervezet számára egyetlen Loomio-csoport is elegendő. A csoporton belül annyi alcsoportot indíthatsz, amennyire szükséged van. További információt az [Alcsoportok](/en/user_manual/groups/subgroups/) oldalon találsz.
 
 ![](new_group.png)
 
@@ -39,24 +39,24 @@ Sok szervezetnek elég egyetlen Loomio-csoport. Ezen belül annyi alcsoportot in
 
 <!-- translation-section: group-name -->
 
-### Csoport neve
+### A csoport neve
 
-Írd be a csoport nevét. Érdemes rövid, tömör nevet választani.
+Írd be a csoportod nevét. Érdemes rövid és tömör nevet választanod.
 
 <!-- translation-section: group-handle -->
 
-### Csoportazonosító
+### A csoport azonosítója
 
-A csoport automatikusan kap egy azonosítót. Ez szerepel a csoport URL-jében és e-mail-címében, például: **loomio.com/your-group-handle** és **your-group-handle@loomio.com**.
+A csoportod automatikusan kap egy azonosítót. Ez az azonosító szerepel a csoport URL-jében és e-mail-címében, például: **loomio.com/your-group-handle** és **your-group-handle@loomio.com**.
 
-Az azonosítót a csoport létrehozásakor szerkesztheted, később pedig a csoport beállításaiban módosíthatod. Módosítás után a régi azonosítót használó linkek és e-mail-címek továbbra is működnek. A Loomio legfeljebb három korábbi azonosítót őriz meg; ezután a legrégebbi érvényét veszti.
+Az azonosítót a csoport létrehozásakor szerkesztheted, később pedig a csoport beállításaiban módosíthatod. Ha megváltoztatod, a régi azonosítót használó hivatkozások és e-mail-címek továbbra is működnek. A Loomio legfeljebb három korábbi azonosítót őriz meg; ezután a legrégebbi azonosító lejár.
 
 <!-- translation-section: group-description -->
 
-### Csoport leírása
+### A csoport leírása
 
-Ez a rövid leírás az áttekintés tetején jelenik meg, és segít az új tagoknak megérteni, mire szolgál a csoport.
+Ez a rövid leírás az áttekintés tetején jelenik meg, hogy az új tagok megkapják a szükséges tájékoztatást.
 
-**Amikor az „Indíts csoportot” gombra kattintasz, az új csoportod automatikusan létrejön.**
+**Amikor a „Csoport indítása” gombra kattintasz, az új csoportod automatikusan létrejön!**
 
 ---

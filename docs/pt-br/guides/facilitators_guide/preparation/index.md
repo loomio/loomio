@@ -1,10 +1,10 @@
 ---
 title: Preparação
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/guides/facilitators_guide/preparation/index.md
+source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
+source_file: docs/en/guides/facilitators_guide/preparation/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-30'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 71d321ba45b2f805
   understand-purpose: a5a6600eac7b2d16
@@ -18,17 +18,17 @@ sections:
   power: b5f6b4ebd477c97c
   responsiveness: 4038185f64c37fac
 generated:
-  introduction: 0aa0febc5d3afa7d
-  understand-purpose: 2b5b5324a4d07591
-  rearrange-the-furniture: 4f98eb5a9a276b8b
-  supplies-tools-materials: e64876498d4e2cc6
-  design-the-experience: 6560b72fdb2ba355
-  contextualise-the-moment: abb59927c0e24c0f
-  the-role-of-the-facilitator: a06da9053747babe
-  consent: a88990c5deb4a5a6
-  responsibility: 350a3db17b34d7d7
-  power: e86b96f6f26e402f
-  responsiveness: 8e9277986543bfb3
+  introduction: 486e14e920487afc
+  understand-purpose: 999aaf1eabb56695
+  rearrange-the-furniture: c42643429fb717a7
+  supplies-tools-materials: 43718886344d65eb
+  design-the-experience: 4712b905782a92f9
+  contextualise-the-moment: afb378f4a45ccee5
+  the-role-of-the-facilitator: 2af7ac4e65dcac1a
+  consent: 4c7510d0f0c10e55
+  responsibility: efa1406efac3e01a
+  power: 6c4f39323d7e08a0
+  responsiveness: 761bb458c67fa29c
 title_source: cf2befb0f1a62829
 title_generated: fee472aae98005ac
 ---
@@ -39,7 +39,7 @@ title_generated: fee472aae98005ac
 
 ![](cover.jpg)
 
-> <img style="border-radius: 100%; float: right; margin-left: 0.5em; max-width: 96px; " src="../silvia_200.png"> Para cada minuto com o grupo, considere dedicar três minutos ao planejamento. Isso significa passar três horas se preparando para uma sessão de uma hora. Reduza esse tempo de planejamento apenas à medida que ganhar experiência.
+> <img style="border-radius: 100%; float: right; margin-left: 0.5em; max-width: 96px; " src="../silvia_200.png"> Para cada minuto com o grupo, considere dedicar 3 minutos ao planejamento. Isso significa dedicar três horas à preparação de uma sessão de uma hora. Só reduza o tempo de planejamento à medida que você ganhar experiência.
 >
 > — Silvia Zuur
 
@@ -47,114 +47,117 @@ title_generated: fee472aae98005ac
 
 ## Entenda o propósito
 
-Esclarecer o propósito é uma das contribuições mais valiosas de quem facilita um grupo. Quando o grupo entende seu propósito, fica mais fácil avançar. Isso vale tanto para o grupo como um todo quanto para cada discussão ou decisão. O propósito orienta a escolha das ferramentas, das intervenções e dos resultados desejados. Sem um entendimento comum do propósito, uma discussão — ou mesmo o grupo — pode não prosperar.
+Esclarecer o propósito é uma das contribuições mais valiosas de um facilitador experiente — se ele ajudar o grupo a defini-lo bem, todo o resto se torna possível. O propósito se aplica tanto ao grupo como um todo quanto a cada discussão ou decisão. É ele que permite avaliar quais ferramentas usar, quais intervenções fazer e quais conclusões buscar. A falta de um entendimento compartilhado sobre o propósito pode comprometer uma discussão ou o próprio grupo.
 
-> Volte sempre às perguntas que ajudaram a definir o propósito. Assim, você pode verificar se está abordando o que as pessoas participantes querem aprender ou alcançar. — Silvia Zuur
+> Retome sempre suas perguntas sobre o propósito para verificar se você está contemplando o que os participantes querem aprender ou alcançar. — Silvia Zuur
 
 No Loomio
 
 * O aplicativo oferece espaços para explicar o propósito, como os campos de [descrição do grupo](/en/user_manual/groups/starting_a_group/#group-description) e [contexto da discussão](/en/user_manual/discussions/using_discussions/#discussion-context).
-* Se o propósito ainda não estiver claro, comece uma discussão *sobre* ele com o grupo.
-* Nossos dados de uso mostram que grupos com um propósito comum e claro têm mais sucesso.
-* As [histórias de clientes e estudos de caso](https://blog.loomio.com/?utm_campaign=facilitators_guide_help&utm_term=help) que reunimos destacam a importância de definir um propósito coletivo.
+* Uma discussão no Loomio *sobre* o propósito é um bom ponto de partida para seu grupo, caso ele ainda não esteja claro.
+* Nossas análises de uso (estatísticas sobre como as pessoas usam o software) mostram que grupos com um propósito claro e compartilhado têm mais sucesso.
+* Os [relatos de clientes e estudos de caso](https://blog.loomio.com/?utm_campaign=facilitators_guide_help&utm_term=help) que reunimos ressaltam a importância de definir um propósito coletivo.
 
 <!-- translation-section: rearrange-the-furniture -->
 
-## Reorganize o espaço
+## Reorganize os móveis
 
-A forma como você organiza o espaço influencia a experiência das pessoas convidadas. Cada encontro é diferente e merece uma organização adequada. Um ambiente familiar pode transmitir segurança; uma mudança no ambiente pode favorecer a abertura a novas ideias.
+A organização do espaço para o qual você convida as pessoas influencia muito a experiência delas. Cada encontro é único e merece uma organização adequada. A familiaridade transmite segurança, enquanto mudanças no ambiente sinalizam abertura a novas ideias.
 
-Em encontros presenciais, reorganizar os móveis ajuda quem facilita a se preparar e a pensar no que torna aquela sessão específica. Imagine a diferença entre sentar todas as pessoas em fileiras ou em círculo.
+Em espaços presenciais, reorganizar os móveis é um hábito que ajuda os facilitadores a se preparar para acolher e conduzir o encontro, além de incentivá-los a pensar no que torna aquela sessão única. Imagine a diferença entre todos sentados em fileiras e todos sentados em círculo.
 
 No Loomio
 
-* Convidar pessoas para um novo espaço digital dedicado à tomada de decisões marca uma transição. Isso ajuda a diferenciá-lo de outros espaços online usados para socializar ou para outras atividades.
-* [Personalizar a foto do grupo](/en/user_manual/groups/starting_a_group/#upload-a-group-photo) ajuda a definir a aparência e a atmosfera desse espaço.
-* A descrição do grupo é uma parte importante da página do grupo. [Você pode personalizá-la](/en/user_manual/groups/starting_a_group/#group-description) conforme suas necessidades.
+* Convidar pessoas para um novo espaço digital dedicado à tomada de decisões tem um efeito significativo — há uma experiência de “cruzar um limiar” que o distingue de outros espaços online (que podem servir para socializar ou para outras funções).
+* [Personalizar a foto do seu grupo](/en/user_manual/groups/starting_a_group/#upload-a-group-photo) é uma boa oportunidade para criar a atmosfera do espaço.
+* A descrição do grupo é uma das principais peças de “mobiliário” da página do grupo, e [você pode personalizá-la](/en/user_manual/groups/starting_a_group/#group-description) conforme suas necessidades.
 
 <!-- translation-section: supplies-tools-materials -->
 
-## Recursos, ferramentas e materiais
+## Suprimentos, ferramentas e materiais
 
-Quando a facilitação funciona bem, o grupo tem à mão tudo de que precisa. Em encontros presenciais, isso pode incluir notas adesivas, canetas, papel, crachás, materiais impressos e informações de apoio. Cada etapa de preparação deixa mais tempo e energia para o trabalho do grupo.
+Quando a facilitação funciona bem, todos os materiais de que o grupo precisa estão à mão. Em espaços presenciais, isso inclui notas adesivas, canetas, papel, crachás, documentos impressos e material de referência. Cada medida que o facilitador toma para se preparar dessa forma deixa mais tempo e energia para o trabalho.
 
 No Loomio
 
-* Muitos grupos usam a descrição do grupo para incluir links para documentos colaborativos, informações de apoio, sistemas de gestão de projetos ou tarefas, listas de contatos e outros recursos.
-* Em cada discussão, pense no que as pessoas precisam para participar. Deixe as informações necessárias ao alcance delas. Por exemplo, se você mencionar um material, inclua um link direto em vez de esperar que as pessoas o procurem.
+* Muitos grupos usam a descrição do grupo para incluir links para uma unidade compartilhada com documentos colaborativos, informações de referência, o sistema de gestão de projetos ou acompanhamento de tarefas do grupo, uma lista de contatos etc.
+* Em cada conversa, considere o que as pessoas podem precisar para participar — deixar todas as informações à mão é essencial (por exemplo, se você mencionar algo, incluir um link direto é muito mais eficaz do que esperar que as pessoas procurem).
 
 <!-- translation-section: design-the-experience -->
 
 ## Planeje a experiência
 
-Depois de definir o propósito e reunir as ferramentas e informações de apoio, quem facilita deve pensar na experiência que está propondo. Considere a situação, o que seria um bom resultado e os diferentes caminhos e escolhas possíveis. Dedique tempo a esse planejamento antes de começar.
+Depois de organizar os elementos básicos (propósito, ferramentas e informações de referência), bons facilitadores dedicam tempo a planejar a experiência para a qual estão convidando as pessoas: a situação, o que caracterizaria o sucesso e todos os caminhos e escolhas possíveis. Eles não começam sem um planejamento cuidadoso.
 
-Vemos com frequência pessoas subestimarem o tempo necessário para preparar e planejar uma atividade. Antes de começar, pare e pense na experiência que você quer oferecer. Esse investimento pode contribuir muito para os resultados posteriores.
+Vemos repetidamente pessoas subestimarem muito a necessidade de preparação e planejamento. Pare e pense na experiência que você quer conduzir antes de começar. O investimento no planejamento se paga muitas vezes com o sucesso posterior.
+
 
 No Loomio
 
-* As funções básicas do Loomio seguem uma sequência de facilitação: convidar pessoas, discutir um tema, reunir diferentes pontos de vista, chegar a uma proposta específica, verificar se há acordo e confirmar a conclusão.
+* As funcionalidades básicas do Loomio foram concebidas para seguir a estrutura de uma boa facilitação: convidar pessoas, discutir um assunto, reunir contribuições divergentes, chegar a uma proposta específica, verificar a concordância e confirmar a conclusão.
+
 
 ![](../collaboration-process.png)
 
-* Pessoas com experiência já adaptam o Loomio a diferentes processos, como consultas em várias etapas e aprovação de documentos. Quando bem facilitado, cada tipo de trabalho pode seguir uma estrutura que se repete.
-* Para planejar a colaboração online, aproveite o que já funciona. Muitos processos presenciais podem ser adaptados ao ambiente online, como o [Processo de aconselhamento](/en/guides/making_decisions/advice_process.html).
-* [Estudos de caso](https://blog.loomio.com/?utm_campaign=facilitators_guide_help&utm_term=help) de processos bem planejados podem servir como exemplos. Se você não souber por onde começar, veja o que outros grupos já experimentaram.
+* Usuários experientes já estão adaptando o Loomio para diferentes formatos de experiência — como processos de consulta em várias etapas, aprovação de documentos etc. Cada trabalho, quando facilitado de forma eficaz, assume um formato que pode ser repetido.
+* Planejar a colaboração online não exige reinventar a roda. Confie no que você sabe que funciona e adapte. Muitos processos presenciais já testados podem ser adaptados ao espaço online (por exemplo, o [Processo de aconselhamento](/en/guides/making_decisions/advice_process.html)).
+* [Estudos de caso](https://blog.loomio.com/?utm_campaign=facilitators_guide_help&utm_term=help) de processos planejados com cuidado podem servir como “receitas” — se você não tiver certeza de qual formato usar, comece vendo o que outras pessoas já experimentaram.
 
 <!-- translation-section: contextualise-the-moment -->
 
-## Considere o contexto
+## Contextualize o momento
 
-As discussões fazem parte da história e das práticas do grupo. Para que uma atividade facilitada funcione, ela precisa acontecer no momento certo e se integrar aos demais processos do grupo.
+As discussões não acontecem isoladamente, mas no contexto mais amplo da história e das práticas do grupo. Para serem eficazes, as experiências facilitadas precisam ocorrer no momento adequado e se integrar ao restante do processo do grupo.
 
-Perguntas importantes sobre o contexto:
+Perguntas essenciais sobre o contexto:
 
 * Este é um momento de transição?
-* Estamos aprimorando uma prática existente?
-* Este é um entre vários processos simultâneos ou o foco principal do grupo?
-* Queremos resolver um problema ou explorar o tema com mais profundidade, amplitude ou foco?
+* Trata-se de aprimorar uma prática existente?
+* Este é um entre vários processos simultâneos ou o único foco?
+* Estamos aqui para resolver um problema, aprofundar a análise, ampliar o escopo ou delimitá-lo?
 
 No Loomio
 
-* Quase sempre há alguém no grupo que conhece seu contexto e avalia se faz sentido introduzir o Loomio.
-* Evite mudar tudo de uma vez. Os grupos tendem a adotar melhor o Loomio quando ele se encaixa nos processos que já usam.
-* O momento adequado é quando o grupo está pronto para colaborar online. As pessoas precisam perceber a falta de um espaço para tomar decisões online e querer resolver esse problema.
-* Considere quanto da atenção do grupo está disponível antes de levantar um tema. A atenção coletiva é limitada.
-* Muitos grupos ainda não identificaram seus próprios hábitos de colaboração e não sabem como o Loomio pode se encaixar neles. Comece com uma discussão sobre como o grupo trabalha hoje e o que funciona ou precisa mudar.
+* Os grupos do Loomio quase sempre têm uma pessoa que promove seu uso, entende o contexto do grupo e avalia se a introdução do Loomio é adequada para ele.
+* Não é aconselhável tentar mudar tudo de uma vez. Quando o Loomio se integra bem aos fluxos de trabalho existentes, os grupos o adotam com mais facilidade.
+* O momento adequado é quando o grupo está pronto para incorporar a colaboração online de forma eficaz. As pessoas precisam sentir a dificuldade de não ter um espaço online para tomar decisões e estar motivadas a resolver esse problema.
+* Considere como o grupo distribui sua atenção para determinar o momento adequado de abordar um assunto. A atenção coletiva é um recurso limitado.
+* Muitos grupos nem sequer têm consciência de suas práticas e hábitos de colaboração atuais, muito menos clareza sobre como o Loomio poderia se integrar a eles. Comece com uma discussão sobre a forma atual de fazer as coisas e o que funciona ou não.
 
 <!-- translation-section: the-role-of-the-facilitator -->
 
-## O papel de quem facilita
+## O papel do facilitador
 
-Uma boa facilitação exige que cada pessoa e o grupo reconheçam seu próprio papel. Quando o papel de quem facilita não está claro, podem surgir mal-entendidos, conflitos ou situações inseguras.
+Uma boa facilitação exige consciência de si e do grupo. A falta de entendimento sobre esse papel pode levar a mal-entendidos, conflitos ou situações inseguras.
 
-> Peça que alguém apresente você ao grupo. Quando você é convidado a entrar em um grupo ou organização, as pessoas podem se perguntar quem você é e por que deveriam ouvi-lo. Peça a alguém que elas conheçam e em quem confiem para fazer a apresentação. Isso ajuda as pessoas a reconhecerem seu papel e a confiarem a você a condução do encontro. — Silvia Zuur
+> Faça com que a autoridade seja delegada a você. Quando você recebe um convite para entrar em um novo grupo ou organização, todos estarão pensando: quem é essa figura? Por que deveríamos ouvir essa pessoa? Peça a alguém que os participantes conheçam e em quem confiem para apresentar você. Isso fortalece sua credibilidade perante os participantes e ajuda a delegar a autoridade a você. — Silvia Zuur
 
 <!-- translation-section: consent -->
 
 ### Consentimento
-É essencial que o grupo concorde em ser facilitado. Tentar facilitar sem esse consentimento pode ser coercitivo para o grupo e arriscado para quem facilita, além de gerar resistência e confusão. Quem facilita se coloca em uma posição vulnerável e precisa receber um mandato claro antes de assumir esse papel. O consentimento é importante para todas as pessoas envolvidas.
+É essencial que o grupo dê seu consentimento à facilitação. Tentar facilitar sem isso pode, nos casos mais graves, ser coercitivo (injusto com o grupo) e perigoso (injusto com o facilitador) — e encontrará resistência e confusão. Os facilitadores se colocam em uma posição vulnerável; precisam ter autorização do grupo ou não devem aceitar o trabalho. O consentimento é essencial tanto para o facilitador quanto para os participantes.
 
 <!-- translation-section: responsibility -->
 
 ### Responsabilidade
-Ao aceitar esse mandato, quem facilita assume responsabilidades adicionais. Essa pessoa pode ocupar mais tempo de fala e direcionar a atenção do grupo. Deve usar essa posição em benefício de todos, sem promover interesses pessoais. Suas palavras e atitudes também têm um efeito maior sobre o grupo, por isso exigem mais cuidado.
+Ao assumir a função com a autorização do grupo, o facilitador passa a ter responsabilidades maiores. Os facilitadores têm mais espaço para falar e direcionar a atenção do grupo. Isso deve servir ao conjunto, não a interesses pessoais. As palavras e a postura do facilitador também terão um efeito desproporcional, o que exige cuidado redobrado ao agir.
 
 <!-- translation-section: power -->
 
 ### Poder
-A facilitação cria diferenças de poder. Quem facilita precisa exercer certa autoridade para cumprir seu papel. Por exemplo, pode ser necessário interromper alguém para manter a discussão no tema ou dizer que determinada forma de interação não é aceitável. Não é adequado atribuir a uma pessoa a responsabilidade pela experiência sem lhe dar a autoridade necessária para conduzi-la. Não existe uma medida única de poder: ela precisa ser proporcional à responsabilidade.
+A facilitação, por sua natureza, introduz diferenças de poder. Se o facilitador não puder exercer poder de determinadas formas, não conseguirá fazer seu trabalho. Por exemplo, para manter uma discussão no assunto, o facilitador pode interromper alguém ou dizer que determinada forma de interação não é aceitável. Não é adequado esperar que um facilitador assuma a responsabilidade pela experiência sem lhe dar os poderes necessários para conduzi-la bem. Não há uma única resposta certa sobre quanto poder conceder, mas ele precisa ser proporcional ao nível de responsabilidade.
 
 <!-- translation-section: responsiveness -->
 
 ### Capacidade de adaptação
-Quem facilita trabalha melhor quando consegue se adaptar ao que acontece no grupo. As pessoas são complexas, e a dinâmica entre elas acrescenta ainda mais complexidade. Seguir um plano ou protocolo rigidamente pode prejudicar o grupo. Sem disposição ou liberdade para se adaptar às mudanças, fica difícil conduzir um espaço em que as pessoas possam participar de forma efetiva.
+Os facilitadores trabalham melhor quando conseguem se adaptar de forma eficaz à realidade que surge. Os seres humanos são extremamente complexos, e os grupos são exponencialmente mais complexos. Seguir rigidamente um plano ou protocolo, sem flexibilidade, pode levar o grupo ao fracasso. Se o facilitador não tiver permissão ou disposição para se adaptar às mudanças nas circunstâncias, não conseguirá sustentar um espaço adequado para pessoas em constante mudança.
 
-> Deixe claro quando você está facilitando e quando está participando. Facilitar reuniões e oficinas da própria equipe pode ser difícil. No papel de facilitador, você precisa manter a neutralidade. Como integrante da equipe, também pode ter contribuições valiosas. Avise ao grupo quando estiver atuando em cada papel. — Silvia Zuur
+> Assuma e deixe de lado o papel de facilitador. Um desafio que muitas pessoas enfrentam é tentar facilitar reuniões e oficinas com sua própria equipe. Como facilitadoras, precisam ser neutras. Mas, como membros da equipe, têm contribuições valiosas para compartilhar. Deixe bem claro quando você está atuando como facilitador e quando está atuando como participante. — Silvia Zuur
+
 
 No Loomio
 
-* Muitos grupos que usam o Loomio já têm experiência com facilitação e compartilham um entendimento desse papel. Eles adaptam a ferramenta às suas necessidades.
-* Muitas vezes, presume-se que a pessoa que iniciou uma discussão também vai facilitá-la, a menos que o grupo tenha combinado outra coisa. Deixar claro quem facilita pode tornar a participação mais segura e ajudar o grupo a avançar.
-* O Loomio permite que diferentes pessoas realizem ações de facilitação, como chamar outras pessoas para a conversa, pedir que a discussão continue no tema ou sugerir o momento de apresentar uma proposta. Muitas vezes, porém, esse papel fica implícito. Identificar essas ações e discutir se a facilitação ficará com uma pessoa ou será compartilhada ajuda a esclarecer as responsabilidades.
-* Um grupo online pode começar compartilhando a facilitação sem definir esse papel explicitamente. Essa forma de trabalho, porém, costuma funcionar melhor para grupos experientes, que já passaram por processos com facilitação explícita.
+* Muitos grupos que usam o Loomio têm experiência com facilitação e já compartilham um entendimento sobre esse papel. Eles já adaptam a ferramenta para atender a essas necessidades com algum sucesso.
+* Muitas vezes, presume-se que a pessoa que inicia uma discussão está facilitando-a, a menos que o grupo tenha feito outro acordo. Ter clareza sobre quem está facilitando pode melhorar muito a segurança de todos e o sucesso do processo.
+* O Loomio cria naturalmente uma dinâmica aberta a ações distribuídas de facilitação, como mencionar outras pessoas para envolvê-las, pedir que a discussão se mantenha no assunto, sugerir o momento adequado para uma proposta etc. — mas isso costuma ficar implícito. Identificar explicitamente quais ações constituem facilitação e discutir se esse papel é centralizado ou distribuído pode torná-lo mais claro.
+* A facilitação distribuída implícita pode ser o ponto de partida padrão de um grupo online (ou seja, sem discutir a facilitação como um papel definido), mas essa configuração é mais adequada a grupos experientes que já passaram pela prática de facilitação explícita.

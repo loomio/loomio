@@ -1,10 +1,10 @@
 ---
 title: Sisällön löytäminen
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/overview/finding-content.md
+source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
+source_file: docs/en/user_manual/overview/finding-content.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 91ceec48c5d29a37
   search: 514f599496d28353
@@ -15,14 +15,14 @@ sections:
   polls-awaiting-your-vote: 037bf208ec166e84
   bookmarks: 06b79827757caeeb
 generated:
-  introduction: 7cc3113a0788b2c4
-  search: ac1800c6a91193d4
-  search-tips: 322fbff154041294
-  filter-discussions: f740906f861815c6
-  category-tags: 7d558a1db51fc0d2
-  unread-discussions: f78dce3073d98ea7
-  polls-awaiting-your-vote: aa5d1afc13b1cbc9
-  bookmarks: 4bc242801ae39b05
+  introduction: a5c50bacd68ae46a
+  search: 31a1e2a08cfa1ae7
+  search-tips: b7a45ef5fe5f6ec9
+  filter-discussions: 7aebe0484ff86ee1
+  category-tags: 650e24529a06125d
+  unread-discussions: 942ccc0d2e219dd3
+  polls-awaiting-your-vote: 32111a6d1850435f
+  bookmarks: 6b45eb4aa8d22ff3
 title_source: 11acd4c6010fc176
 title_generated: 6c7ee66860203e3b
 ---
@@ -31,19 +31,19 @@ title_generated: 6c7ee66860203e3b
 
 # Sisällön löytäminen
 
-Loomiossa voit löytää keskusteluja ja päätöksiä eri tavoilla kaikista ryhmistäsi.
+Loomio tarjoaa useita tapoja löytää keskusteluja ja päätöksiä kaikista ryhmistäsi.
 
 <!-- translation-section: search -->
 
 ## Haku
 
-Yläreunan navigointipalkin Hakupainikkeella voit hakea sisältöä miltä tahansa Loomion sivulta.
+Yläreunan navigointipalkin Haku-painike avaa yleisen haun miltä tahansa Loomion sivulta.
 
 ![](search_button.png)
 
-Haku kattaa sisällön, johon sinulla on pääsy kaikissa ryhmissäsi ja suorissa keskusteluissasi. Voit hakea keskustelujen otsikoita ja kuvauksia, kommentteja, kyselyitä, ääniä ja tuloksia.
+Haku kattaa sisällön, johon sinulla on pääsy kaikissa ryhmissäsi ja suorissa keskusteluissa. Voit löytää keskustelujen otsikoita ja kontekstia, kommentteja, kyselyjä, ääniä ja johtopäätöksiä.
 
-Kirjoita sana tai ilmaus ja paina Enter-näppäintä tai valitse hakukuvake. Esimerkiksi haku sanalla **bottle** löytää Oatmilk Cooperativen sisältöä, jossa sana esiintyy.
+Kirjoita sana tai ilmaus ja paina Enter tai valitse hakukuvake. Esimerkiksi haku sanalla **bottle** löytää Oatmilk Cooperativen sisältöä, jossa kyseinen sana esiintyy.
 
 ![](search_strategy.png)
 
@@ -52,41 +52,41 @@ Kirjoita sana tai ilmaus ja paina Enter-näppäintä tai valitse hakukuvake. Esi
 ### Hakuvinkkejä
 
 - Aloita yhdellä tai kahdella erottuvalla sanalla muistamastasi otsikosta tai sisällöstä.
-- Haku tunnistaa sanan alun, joten esimerkiksi **bott** voi löytää sanan **bottle**. 
-- Jos hakutuloksia on hyvin vähän, haku ottaa huomioon myös kirjoitusvirheet.
-- Rajaa tuloksia suodattimilla organisaation, alaryhmän, tunnisteen tai sisältötyypin, kuten kommenttien tai kyselyiden, mukaan.
-- Järjestä tulokset valinnalla **Paras ottelu**, kun haluat osuvimmat tulokset ensin. Jos tiedät suunnilleen, milloin sisältö julkaistiin, järjestä tulokset uusimmasta tai vanhimmasta alkaen.
+- Haku tunnistaa sanan alun, joten sanan osa, kuten **bott**, voi löytää sanan **bottle**.
+- Haku huomioi kirjoitusvirheet, jos hakulausekkeella löytyy hyvin vähän tuloksia.
+- Rajaa tulokset suodattimilla organisaatioon, alaryhmään, tunnisteeseen tai sisältötyyppiin, kuten kommentteihin tai kyselyihin.
+- Valitse lajitteluksi **Paras ottelu**, kun osuvuus on tärkeää, tai lajittele uusimmasta tai vanhimmasta alkaen, kun tiedät suunnilleen, milloin sisältö julkaistiin.
 
 <!-- translation-section: filter-discussions -->
 
 ## Keskustelujen suodattaminen
 
-Rajaa keskusteluja Haun vieressä olevilla valinnoilla avoimen tai suljetun tilan tai luokkatunnisteen mukaan. Yhdistä hakusana ja suodatin, jotta löydät etsimäsi pitkästä keskusteluluettelosta.
+Suodata keskusteluja haun vieressä olevilla valinnoilla sen mukaan, ovatko ne avoimia vai suljettuja, tai luokittelutunnisteen perusteella. Yhdistämällä hakusanan ja suodattimen voit rajata pitkää keskusteluluetteloa nopeasti.
 
 <!-- translation-section: category-tags -->
 
-## Luokkatunnisteet
+## Luokittelutunnisteet
 
-Tunnisteet kokoavat yhteen samaan aiheeseen liittyviä keskusteluja ja kyselyitä. Ryhmäsi voi nimetä tunnisteet esimerkiksi projektin, tiimin tai työalueen mukaan.
+Tunnisteet kokoavat toisiinsa liittyviä keskusteluja ja kyselyjä ryhmäsi valitsemien nimien alle. Nimi voi viitata esimerkiksi projektiin, tiimiin tai työn osa-alueeseen.
 
 ![](tags.png)
 
-Valitse tunniste **Keskustelut**-välilehdellä nähdäksesi siihen liittyvät keskustelut. Tunnisteita voivat lisätä henkilöt, joilla on oikeus aloittaa tai muokata keskusteluja. Ohjeet käyttöönottoon ja käyttöoikeuksiin löydät sivulta [Luokkatunnisteet](/en/user_manual/discussions/tags).
+Valitse tunniste **Keskustelut**-välilehdellä nähdäksesi sitä vastaavat keskustelut. Ihmiset, joilla on oikeus aloittaa tai muokata keskusteluja, voivat lisätä tunnisteita. Katso määritysten ja käyttöoikeuksien tiedot sivulta [Luokittelutunnisteet](/en/user_manual/discussions/tags).
 
 <!-- translation-section: unread-discussions -->
 
 ## Lukemattomat keskustelut
 
-Valitse sivupalkista **Lukemattomat keskustelut**, niin näet keskustelut, joissa on toimintaa, jota et ole vielä lukenut. Keskustelun aikajanalla voit siirtyä lukemattomiin kohtiin ja tärkeisiin tapahtumiin.
+Valitse sivupalkista **Lukemattomat keskustelut** nähdäksesi keskustelut, joissa on tapahtumia, joita et ole vielä lukenut. Keskustelun aikajana auttaa sinua siirtymään lukemattomaan sisältöön ja tärkeisiin tapahtumiin.
 
 <!-- translation-section: polls-awaiting-your-vote -->
 
-## Äänestystäsi odottavat kyselyt
+## Ääntäsi odottavat kyselyt
 
-Valitse sivupalkista **Äänestykset, joista äänestää**, niin näet käynnissä olevat kyselyt, joihin sinut on kutsuttu mutta joissa et ole vielä äänestänyt. Ryhmän **Kyselyt**-välilehdellä näet myös sen käynnissä olevat ja päättyneet kyselyt.
+Valitse sivupalkista **Äänestykset, joista äänestää** nähdäksesi avoimet kyselyt, joihin sinut on kutsuttu mutta joissa et ole vielä äänestänyt. Voit myös avata ryhmän **Kyselyt**-välilehden nähdäksesi sen avoimet ja suljetut kyselyt.
 
 <!-- translation-section: bookmarks -->
 
 ## Kirjanmerkit
 
-Lisää keskustelu, kommentti, kysely, ääni tai tulos kirjanmerkkeihin, kun haluat palata siihen myöhemmin. Avaa käyttäjävalikosta **Kirjanmerkit**, niin näet kaiken tallentamasi. Lisätietoja löydät sivulta [Kirjanmerkit](/en/user_manual/users/bookmarks).
+Lisää keskustelu, kommentti, kysely, ääni tai johtopäätös kirjanmerkkeihin, kun haluat palata siihen myöhemmin. Avaa käyttäjävalikostasi **Kirjanmerkit** nähdäksesi kaiken tallentamasi sisällön. Katso lisätietoja sivulta [Kirjanmerkit](/en/user_manual/users/bookmarks).

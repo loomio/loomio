@@ -1,20 +1,20 @@
 ---
 title: הגדרות הקבוצה
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/groups/settings/index.md
+source_revision: c27ee3b193231816878f1c074ff9fc2a086a88c0
+source_file: docs/en/user_manual/groups/settings/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-02'
 sections:
   introduction: b975fe0dc7787563
   group-profile: 673d2b31980f069a
   group-privacy: c6031b3bd445f30e
   group-permissions: 3ddfc79177b464e5
 generated:
-  introduction: e8e981402d799587
-  group-profile: e7a442d0af8787e7
-  group-privacy: 204f9754da14478a
-  group-permissions: 02dc35b046ff502f
+  introduction: 6f0875a2f90901cd
+  group-profile: eacfbabc5725066f
+  group-privacy: e7eaada4b3ab94b1
+  group-permissions: 78ffe415ed255e8e
 title_source: ba4062f844a984f5
 title_generated: 032fb662c048b3d5
 ---
@@ -23,28 +23,28 @@ title_generated: 032fb662c048b3d5
 
 # הגדרות הקבוצה
 
-הגדרות הקבוצה קובעות כיצד הקבוצה מוצגת, מי יכול למצוא אותה ולהצטרף אליה, ומה מותר לחברי הקבוצה לעשות. רק מנהלי הקבוצה יכולים לערוך את ההגדרות האלה.
+הגדרות הקבוצה קובעות כיצד הקבוצה מוצגת, מי יכול למצוא אותה ולהצטרף אליה, ואילו פעולות מותר לחברים לבצע. רק מנהלי הקבוצה יכולים לערוך הגדרות אלה.
 
-בדף הקבוצה יש לפתוח את תפריט הפעולות ולבחור באפשרות **ערוך הגדרות קבוצה**.
+בעמוד הקבוצה, יש לפתוח את תפריט הפעולות ולבחור **ערוך הגדרות קבוצה**.
 
-![עריכת הגדרות הקבוצה מדף הקבוצה](group_settings.png)
+![עריכת הגדרות הקבוצה מתוך עמוד הקבוצה](group_settings.png)
 
-טופס ההגדרות מחולק לשלושה חלקים:
+טופס ההגדרות מחולק לשלושה תחומים:
 
 <!-- translation-section: group-profile -->
 
 ## פרופיל הקבוצה
 
-[פרופיל הקבוצה](/en/user_manual/groups/settings/profile) כולל את שם הקבוצה, המזהה שלה, התיאור, תמונת השער והלוגו.
+[פרופיל הקבוצה](/en/user_manual/groups/settings/profile) כולל את שם הקבוצה, המזהה שלה, התיאור, תמונת הנושא והלוגו.
 
 <!-- translation-section: group-privacy -->
 
 ## פרטיות הקבוצה
 
-[פרטיות הקבוצה](/en/user_manual/groups/settings/privacy) קובעת מי יכול למצוא את הקבוצה ולקרוא את התוכן שלה, כיצד ניתן להצטרף אליה, אם היא מופיעה במדריך הקבוצות ואם ניתן לעקוב אחר קבוצה פתוחה.
+[פרטיות הקבוצה](/en/user_manual/groups/settings/privacy) כוללת הגדרות הקובעות מי יכול למצוא את הקבוצה, מי יכול לקרוא את התוכן שלה, כיצד ניתן להצטרף אליה, אם היא מופיעה במדריך הקבוצות וכיצד ניתן לעקוב אחר קבוצה ציבורית.
 
 <!-- translation-section: group-permissions -->
 
 ## הרשאות הקבוצה
 
-[הרשאות הקבוצה](/en/user_manual/groups/settings/permissions) קובעות אילו פעולות יכולים לבצע חברי הקבוצה, מי שאינם חברים בה ומנהלי הקבוצה.
+[הרשאות הקבוצה](/en/user_manual/groups/settings/permissions) קובעות אילו פעולות יכולים לבצע חברים, אנשים שאינם חברי הקבוצה ומנהלי הקבוצה.

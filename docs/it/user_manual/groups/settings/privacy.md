@@ -1,10 +1,10 @@
 ---
 title: Privacy
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/groups/settings/privacy.md
+source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
+source_file: docs/en/user_manual/groups/settings/privacy.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 72b58ba22851f914
   open: 1727e8f20fe92fb2
@@ -14,13 +14,13 @@ sections:
   how-people-join: 8b20f2ab6789b0b7
   group-directory: 4ef3023e3cf4efdf
 generated:
-  introduction: 4bd930e08657ec06
-  open: acc9f6b2e4720b11
-  follow-an-open-group: 78d89191e815c516
-  closed: 665e67602b908b18
-  secret: 8d9c36047fdf8a9b
-  how-people-join: d4db38a7551141e8
-  group-directory: 8622993e44422ab7
+  introduction: cee2a9a36bb01fa7
+  open: 35c7153f309da0c1
+  follow-an-open-group: e9ff36a97818b1a2
+  closed: 04140770df210a5f
+  secret: 9ce35b653c0fe5a2
+  how-people-join: b254f98275d90705
+  group-directory: be3521113008f2eb
 title_source: 54a57c3147c49f33
 title_generated: 54a57c3147c49f33
 ---
@@ -29,62 +29,62 @@ title_generated: 54a57c3147c49f33
 
 # Privacy del gruppo
 
-La privacy determina chi può trovare un gruppo e leggere i suoi contenuti. Nella pagina del gruppo, apri **Modifica le impostazioni del gruppo** e seleziona **Privacy**.
+La privacy determina chi può trovare un gruppo e chi può leggerne i contenuti. Apri **Modifica le impostazioni del gruppo** dalla pagina del gruppo, poi seleziona **Privacy**.
 
 ![Impostazioni della privacy del gruppo](group_privacy_settings.png#width-90)
 
-Cambiare la privacy può rendere visibili o nascondere anche i contenuti già presenti nel gruppo. Scegli l'impostazione più restrittiva che consenta comunque al gruppo di raggiungere il suo scopo.
+Modificare la privacy può rendere visibili o nascondere i contenuti già presenti nel gruppo, non solo quelli creati in seguito. Scegli l'impostazione più restrittiva che consente comunque al gruppo di raggiungere il proprio scopo.
 
 <!-- translation-section: open -->
 
-## Aperto
+## Pubblico
 
-I gruppi aperti sono spazi pubblici. Chiunque può trovare il gruppo e leggere le discussioni, i sondaggi e i file. L'elenco dei membri resta visibile solo ai membri.
+I gruppi pubblici sono spazi pubblici. Chiunque può trovare il gruppo e leggerne discussioni, sondaggi e file. L'elenco dei membri rimane visibile solo ai membri.
 
-I gruppi aperti possono consentire l'iscrizione immediata, richiedere un'approvazione oppure accettare nuovi membri solo su invito.
+I gruppi pubblici possono consentire l'iscrizione immediata, richiedere un'approvazione o consentire l'iscrizione solo su invito.
 
 <!-- translation-section: follow-an-open-group -->
 
-### Seguire un gruppo aperto
+### Seguire un gruppo pubblico
 
-Puoi seguire le attività di un gruppo aperto senza iscriverti. Le attività non lette del gruppo vengono aggiunte alla tua email di riepilogo, così puoi consultarle quando vuoi. Seguire un gruppo non ti rende membro, non ti dà diritto di voto come membro e non attiva le notifiche immediate.
+Le persone possono restare aggiornate su un gruppo pubblico senza iscriversi. Seguire un gruppo aggiunge le attività non lette del gruppo alla loro email di riepilogo, così possono consultarle quando preferiscono. Seguire il gruppo non rende le persone membri, non conferisce loro i diritti di voto dei membri e non comporta la ricezione di notifiche immediate.
 
-Attiva **Segui gli aggiornamenti** nella pagina del gruppo per includere nel tuo riepilogo le discussioni, i commenti, i sondaggi e le altre attività delle discussioni che non hai ancora letto. Disattiva l'impostazione per escludere il gruppo.
+Attiva **Segui gli aggiornamenti** nella pagina del gruppo per includere nella tua email di riepilogo discussioni, commenti, sondaggi e altre attività non lette nelle conversazioni del gruppo. Disattiva l'impostazione per smettere di includere il gruppo.
 
-![Segui gli aggiornamenti in un gruppo aperto](group_follow_updates.png)
+![Segui gli aggiornamenti di un gruppo pubblico](group_follow_updates.png)
 
 <!-- translation-section: closed -->
 
 ## Chiuso
 
-Chiunque può trovare un gruppo chiuso e leggerne il nome e la descrizione. Le discussioni, i sondaggi, i file e l'elenco dei membri sono visibili solo ai membri e agli ospiti invitati.
+Chiunque può trovare un gruppo chiuso e leggerne il nome e la descrizione. Discussioni, sondaggi, file e l'elenco dei membri sono visibili solo ai membri e agli ospiti invitati.
 
-I gruppi chiusi possono consentire di richiedere l'iscrizione oppure accettare nuovi membri solo su invito. Non possono consentire l'iscrizione immediata senza approvazione.
+I gruppi chiusi possono consentire alle persone di richiedere l'iscrizione o consentire l'iscrizione solo su invito. Non possono consentire l'iscrizione immediata senza approvazione.
 
-Un sottogruppo chiuso può consentire ai membri del gruppo principale di leggere le sue discussioni senza iscriversi al sottogruppo.
+Un sottogruppo chiuso può consentire ai membri del gruppo principale di leggerne le discussioni senza iscriversi al sottogruppo.
 
 <!-- translation-section: secret -->
 
 ## Segreto
 
-I gruppi segreti e i loro contenuti sono visibili solo alle persone invitate o aggiunte. L'iscrizione avviene solo su invito. I gruppi segreti non compaiono nell'elenco pubblico dei gruppi.
+I gruppi segreti e i loro contenuti sono visibili solo alle persone invitate o aggiunte. L'iscrizione è solo su invito. I gruppi segreti non compaiono nell'elenco pubblico dei gruppi.
 
 <!-- translation-section: how-people-join -->
 
-## Come ci si iscrive
+## Come iscriversi
 
-La privacy determina le opzioni disponibili per iscriversi:
+La privacy determina quali opzioni di iscrizione sono disponibili:
 
-| Privacy del gruppo | Opzioni disponibili per iscriversi |
+| Privacy del gruppo | Opzioni di iscrizione disponibili |
 | --- | --- |
-| **Aperto** | Iscrizione libera, richiesta di approvazione o solo su invito |
+| **Aperto** | Iscrizione aperta a chiunque, richiesta di approvazione o solo su invito |
 | **Chiuso** | Richiesta di approvazione o solo su invito |
 | **Segreto** | Solo su invito |
 
-Quando è richiesta l'approvazione, le persone selezionano **Iscriviti al gruppo**, rispondono alla domanda per l'iscrizione e inviano una richiesta. Consulta [Invitare persone](/en/user_manual/groups/inviting_people#request-to-join-group) per sapere come configurare la domanda, esaminare le richieste e invitare direttamente le persone.
+Quando è richiesta l'approvazione, le persone selezionano **Iscriviti al gruppo**, rispondono alla domanda di iscrizione del gruppo e inviano una richiesta di iscrizione. Consulta [Invitare persone](/en/user_manual/groups/inviting_people#request-to-join-group) per le istruzioni su come configurare la domanda, esaminare le richieste e invitare direttamente le persone.
 
 <!-- translation-section: group-directory -->
 
 ## Elenco dei gruppi
 
-I gruppi principali aperti e chiusi possono comparire nell'elenco pubblico dei gruppi, dove le persone possono trovarli. La presenza nell'elenco non cambia chi può leggere i contenuti del gruppo o diventarne membro. I sottogruppi e i gruppi segreti non possono comparire nell'elenco.
+I gruppi principali pubblici e chiusi possono comparire nell'elenco pubblico dei gruppi per consentire alle persone di trovarli. La presenza nell'elenco non cambia chi può leggere i contenuti del gruppo o diventarne membro. I sottogruppi e i gruppi segreti non possono comparire nell'elenco.

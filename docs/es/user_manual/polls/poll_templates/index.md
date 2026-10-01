@@ -1,6 +1,6 @@
 ---
 title: Plantillas de sondeo
-source_revision: 3a315412c646d254c8426be5c436a4e593f6011f
+source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
 source_file: docs/en/user_manual/polls/poll_templates/index.md
 translated:
   provider: codex/gpt-6.1-sol
@@ -19,59 +19,59 @@ sections:
   save-and-test-the-template: 8c48386c69ea309a
   manage-the-template-list: 0c124d7958c3f80a
 generated:
-  introduction: 5228eab7d773bdf5
-  voting-methods-and-templates: 477459bcbd13123a
-  use-a-template: 7ce983ecaa79708f
-  who-can-manage-templates: 0e07c784dc71994c
-  create-a-poll-template: 07e9fc7e524ec1d8
-  template-title-subtitle-and-help: abdc1a6d1721784d
-  voting-method: aabf9ee3e037aad3
-  example-title-details-and-tags: e6e5c0f85d0a5502
-  response-options: 7c4e9318c5dea508
-  duration-and-settings: b7dd9765d34f360f
-  save-and-test-the-template: 5408eaeda10025e6
-  manage-the-template-list: 60edd845a45cf6d9
+  introduction: 4d2c737a57d941cd
+  voting-methods-and-templates: 83e4e089c64ebfe0
+  use-a-template: 16de23bc6ee838a3
+  who-can-manage-templates: 7a1ed57ad6f6c566
+  create-a-poll-template: '0994c4c59f24ce4c'
+  template-title-subtitle-and-help: 1f4481d78a16843f
+  voting-method: 55e812a407db06ba
+  example-title-details-and-tags: '00592bdf56d4ff0d'
+  response-options: 237eadd4bca2e332
+  duration-and-settings: dbd95bc91bc8b98a
+  save-and-test-the-template: cec9634c8fd1406c
+  manage-the-template-list: 43d6f49e2fcb397f
 title_source: 114cca246e357304
 title_generated: ab9dd5c48dbfb316
 ---
 
 <!-- translation-section: introduction -->
 
-# Plantillas de sondeo
+# Plantillas de encuesta
 
-Las plantillas de sondeo son puntos de partida reutilizables que aparecen al seleccionar **Iniciar una votación** o **Nuevo sondeo**. Cada plantilla combina un método de votación con instrucciones, opciones de respuesta y ajustes predefinidos.
+Las plantillas de encuesta son puntos de partida reutilizables que aparecen cuando alguien selecciona **Iniciar una votación** o **Nuevo sondeo**. Una plantilla combina un método de votación con instrucciones, opciones de respuesta y ajustes predefinidos.
 
-Usa esta página para configurar qué plantillas están disponibles para un grupo o crear una para tu propio proceso. Para elegir una plantilla para una votación concreta, consulta [Propuestas](../proposals/) o [Sondeos](../proposal_types/). Para facilitar un proceso de decisión completo, consulta [Tomar decisiones](/en/guides/making_decisions/).
+Usa esta página para configurar qué plantillas están disponibles para un grupo o para crear una para tu propio proceso. Para elegir una plantilla para una votación concreta, consulta [Propuestas](../proposals/) o [Encuestas](../proposal_types/). Para facilitar un proceso de decisión completo, consulta [Tomar decisiones](/en/guides/making_decisions/).
 
 <!-- translation-section: voting-methods-and-templates -->
 
 ## Métodos de votación y plantillas
 
-El método de votación determina cómo responden los participantes y cómo calcula Loomio el resultado. Algunos ejemplos son Propuesta, Elegir, Puntaje, Asignar, Rango, Coordinar horario y STV.
+Un método de votación determina cómo responden los participantes y cómo calcula Loomio el resultado. Algunos ejemplos son Propuesta, Elegir, Puntuar, Repartir, Ordenar, Encuesta de horario y STV.
 
-Una plantilla de sondeo utiliza uno de esos métodos y añade valores predeterminados reutilizables. Por ejemplo, Comprobación de opiniones, Asesoramiento, Consentimiento y Consenso son plantillas distintas basadas en el método de votación Propuesta. Sus instrucciones y opciones de respuesta son diferentes, aunque Loomio procesa los votos de la misma manera.
+Una plantilla de encuesta usa uno de esos métodos y añade valores predeterminados reutilizables. Por ejemplo, Toma de pulso, Consejo, Consentimiento y Consenso son distintas plantillas basadas en el método de votación Propuesta. Sus instrucciones y opciones de respuesta son diferentes, aunque Loomio procesa sus votos de la misma manera.
 
 <!-- translation-section: use-a-template -->
 
-## Usar una plantilla
+## Usa una plantilla
 
 Al iniciar una votación, selecciona la pestaña **Propuesta** o **Encuesta** y elige una de las plantillas disponibles para el grupo.
 
 ![](proposal_templates_list.png)
 
-La plantilla incluye una introducción, contenido de ejemplo, opciones y ajustes. Revísalos y edítalos para la decisión concreta antes de iniciar la votación. Los cambios que hagas en la nueva votación no modifican la plantilla reutilizable.
+La plantilla proporciona una introducción, contenido de ejemplo, opciones y ajustes. Revísalos y edítalos para la decisión concreta antes de iniciar la votación. Editar la nueva votación no modifica la plantilla reutilizable.
 
 <!-- translation-section: who-can-manage-templates -->
 
 ## Quién puede gestionar las plantillas
 
-Los administradores de un grupo pueden crear y gestionar todas sus plantillas de sondeo. Pueden activar **Los miembros pueden crear plantillas** en **Configuración del grupo** → **Permisos**. Si esta opción está activada, los miembros pueden crear plantillas y gestionar las que hayan creado.
+Los administradores del grupo pueden crear y gestionar todas las plantillas de encuesta de su grupo. Pueden activar **Los miembros pueden crear plantillas** en **Configuración del grupo** → **Permisos**. Cuando esta opción está activada, los miembros pueden crear plantillas y gestionar las que han creado.
 
 <!-- translation-section: create-a-poll-template -->
 
-## Crear una plantilla de sondeo
+## Crea una plantilla de encuesta
 
-Abre la lista de plantillas y selecciona **Nueva plantilla**. Empieza con un ejemplo o una plantilla en blanco y elige el grupo que la utilizará.
+Abre la lista de plantillas y selecciona **Nueva plantilla**. Empieza con un ejemplo o una plantilla en blanco y luego elige el grupo que la usará.
 
 ![](proposal_template_setting.png)
 
@@ -85,11 +85,11 @@ El formulario de la plantilla define las instrucciones y los valores predetermin
 
 - **Título de la plantilla** es el nombre breve que aparece en la lista de plantillas.
 - **Subtítulo de plantilla** explica en una frase cuándo usarla.
-- **Ayuda con la plantilla** aparece en el panel de información cuando alguien utiliza la plantilla. Explica su propósito, las reglas que deben conocer los participantes y los enlaces a políticas o guías pertinentes.
+- **Ayuda con la plantilla** aparece en el panel de información cuando alguien usa la plantilla. Explica para qué sirve, qué reglas deben conocer los participantes e incluye enlaces a las políticas o guías pertinentes.
 
 ![](template_WAAP_intro.png)
 
-Usa nombres claros y específicos que permitan distinguir la plantilla de las demás del grupo.
+Usa nombres claros y concretos que distingan la plantilla de las demás del grupo.
 
 <!-- translation-section: voting-method -->
 
@@ -99,72 +99,72 @@ Elige qué necesitan expresar los participantes y cómo debe calcularse el resul
 
 ![](poll_type_voting_method.png)
 
-- **Propuesta**: responder a una afirmación con posturas definidas;
-- **Elegir**: seleccionar una o varias opciones;
-- **Puntaje**: evaluar cada opción en una escala;
-- **Asignar**: distribuir una cantidad limitada de puntos;
-- **Rango**: ordenar las opciones según las preferencias;
-- **Coordinar horario**: indicar la disponibilidad; y
-- **STV**: ordenar candidatos por preferencia en una elección proporcional con varios puestos.
+- **Propuesta**: responde a un enunciado usando posiciones definidas;
+- **Elegir**: selecciona una o varias opciones;
+- **Puntuar**: evalúa cada opción en una escala;
+- **Asignar**: reparte una cantidad limitada de puntos;
+- **Ordenar**: ordena las opciones según tus preferencias;
+- **Encuesta de horario**: indica tu disponibilidad; y
+- **STV**: ordena los candidatos en una elección proporcional con varios ganadores.
 
-Al cambiar el método de votación, cambian los campos y el cálculo del resultado disponibles para la plantilla.
+Cambiar el método de votación modifica los campos disponibles en la plantilla y la forma de calcular el resultado.
 
 <!-- translation-section: example-title-details-and-tags -->
 
 ### Título, detalles y etiquetas de ejemplo
 
-Incluye contenido de ejemplo que ayude a plantear la votación. Estos valores se copian en una nueva propuesta o encuesta y pueden editarse antes de iniciarla.
+Proporciona contenido de ejemplo que ayude a quien crea la votación a plantearla. Estos valores se copian en una nueva propuesta o encuesta y pueden editarse antes de que empiece.
 
 ![](template_WAAP_details.png)
 
-Usa indicaciones en lugar de contenido fijo cuando cada votación necesite un título o unos detalles diferentes. Añade etiquetas de categoría predeterminadas solo si corresponden en todos los usos de la plantilla.
+Usa indicaciones en lugar de contenido fijo cuando cada uso requiera un título o unos detalles diferentes. Añade etiquetas de categoría predeterminadas solo cuando sean pertinentes cada vez que se use la plantilla.
 
 <!-- translation-section: response-options -->
 
 ### Opciones de respuesta
 
-Métodos como Propuesta y Elegir permiten configurar las opciones de respuesta. Selecciona el icono del lápiz junto a una opción para editar:
+Métodos como Propuesta y Elegir te permiten configurar las opciones de respuesta. Selecciona el icono del lápiz junto a una opción para editar:
 
 - **Nombre de la opción**: la etiqueta breve de la respuesta;
-- **Icono**: su símbolo visual;
+- **Icono**: su marcador visual;
 - **Significado**: lo que comunica seleccionar la opción; y
 - **Mensaje de motivo**: la pregunta que aparece cuando alguien explica su respuesta.
 
 ![](poll_type_edit_option.png)
 
-Define las opciones de forma que los participantes puedan distinguirlas sin tener que adivinar. Sus significados deben corresponder a las reglas de decisión que utiliza tu grupo.
+Define las opciones para que los participantes puedan distinguirlas sin tener que adivinar. Los significados deben corresponder a las reglas de decisión que tu grupo usa realmente.
 
 <!-- translation-section: duration-and-settings -->
 
 ### Duración y ajustes
 
-Establece una duración predeterminada adecuada para la mayoría de los usos de la plantilla. Quien cree una votación puede cambiar su hora de cierre.
+Establece una duración predeterminada adecuada para la mayoría de los usos de la plantilla. Quien crea la votación puede cambiar la hora de cierre de una votación concreta.
 
 ![](poll_type_duration.png)
 
-Otros valores predeterminados pueden controlar la visibilidad de los resultados, el voto anónimo, la [votación ponderada](../weighted_voting/), la obligación de explicar el voto, los recordatorios, el cuórum y las funciones propias de cada método. Consulta [Ajustes de propuestas y encuestas](../settings/) para conocer sus efectos.
+Otros ajustes predeterminados pueden controlar la visibilidad de los resultados, la votación anónima, la [votación ponderada](../weighted_voting/), los requisitos para explicar el motivo del voto, los recordatorios, el quórum y el comportamiento específico del método. Consulta [Ajustes de propuestas y encuestas](../settings/) para conocer sus efectos.
 
 <!-- translation-section: save-and-test-the-template -->
 
-### Guardar y probar la plantilla
+### Guarda y prueba la plantilla
 
-Después de guardar la plantilla, inicia un borrador de votación a partir de ella. Comprueba que la introducción, las indicaciones, las opciones y los valores predeterminados resulten claros para alguien que no la haya creado. El borrador también te permite confirmar que el método de votación elegido produce el resultado que espera el grupo.
+Después de guardar, inicia una votación en borrador a partir de la plantilla. Comprueba que la introducción, las indicaciones, las opciones y los valores predeterminados sean claros para alguien que no la haya creado. Iniciar un borrador también sirve para confirmar que el método de votación elegido produce el resultado que espera el grupo.
 
 <!-- translation-section: manage-the-template-list -->
 
-## Gestionar la lista de plantillas
+## Gestiona la lista de plantillas
 
 Usa el menú de acciones junto a una plantilla para:
 
 - **Editar** su contenido reutilizable y sus valores predeterminados;
 - **Mover** la plantilla a otra posición de la lista;
-- **Esconder** la plantilla a quienes inician votaciones; o
+- **Esconder** la plantilla para que no aparezca cuando alguien inicia una votación; o
 - **Eliminar** una plantilla personalizada que ya no se necesite.
 
 ![](template_manage.png)
 
-Selecciona **Mostrar plantillas ocultas** para revisar o restaurar las plantillas ocultas. Las plantillas predeterminadas pueden ocultarse o adaptarse para el grupo, pero no eliminarse.
+Selecciona **Mostrar plantillas ocultas** para revisar o restaurar las plantillas ocultas. Las plantillas predeterminadas se pueden ocultar o adaptar para el grupo, pero no se pueden eliminar.
 
 ![](template_manage_settings.png)
 
-Los cambios en una plantilla no modifican las propuestas ni las encuestas que ya se hayan iniciado a partir de ella.
+Modificar una plantilla no altera las propuestas ni las encuestas que ya se hayan iniciado a partir de ella.

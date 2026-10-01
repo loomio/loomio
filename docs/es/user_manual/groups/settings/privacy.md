@@ -1,10 +1,10 @@
 ---
 title: Privacidad
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/groups/settings/privacy.md
+source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
+source_file: docs/en/user_manual/groups/settings/privacy.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 72b58ba22851f914
   open: 1727e8f20fe92fb2
@@ -14,13 +14,13 @@ sections:
   how-people-join: 8b20f2ab6789b0b7
   group-directory: 4ef3023e3cf4efdf
 generated:
-  introduction: dce5333d7823025e
-  open: bcf6f9799ade178d
-  follow-an-open-group: 818f2a1a9654234b
-  closed: 7e1be6d3191400a9
-  secret: c92ec88f93650b4d
-  how-people-join: c28f0b0582dad6b1
-  group-directory: ee276df64b2c290b
+  introduction: b09fe9b44b10d12b
+  open: 73ffbe645be01ea4
+  follow-an-open-group: 99f35f1d55a7e211
+  closed: 153919cd02bf6fd9
+  secret: 4c11cca2d7496c36
+  how-people-join: e65b73c621cae06b
+  group-directory: 48d925ceb92be2d2
 title_source: 54a57c3147c49f33
 title_generated: 52233e2c4d6b2e9a
 ---
@@ -29,17 +29,17 @@ title_generated: 52233e2c4d6b2e9a
 
 # Privacidad del grupo
 
-La privacidad determina quién puede encontrar un grupo y leer su contenido. En la página del grupo, abre **Editar la configuración del grupo** y selecciona **Privacidad**.
+La privacidad controla quién puede encontrar un grupo y quién puede leer su contenido. Abre **Editar la configuración del grupo** desde la página del grupo y selecciona **Privacidad**.
 
 ![Configuración de privacidad del grupo](group_privacy_settings.png#width-90)
 
-Cambiar la privacidad puede mostrar u ocultar contenido que ya existe en el grupo, no solo el que se cree después. Elige la configuración más restrictiva que permita cumplir el propósito del grupo.
+Cambiar la privacidad puede mostrar u ocultar el contenido existente del grupo, no solo el que se cree después. Elige la configuración más restrictiva que permita cumplir el propósito del grupo.
 
 <!-- translation-section: open -->
 
 ## Abierto
 
-Los grupos abiertos son espacios públicos. Cualquier persona puede encontrar el grupo y leer sus discusiones, encuestas y archivos. Solo los miembros pueden ver la lista de miembros.
+Los grupos abiertos son espacios públicos. Cualquier persona puede encontrar el grupo y leer sus discusiones, encuestas y archivos. La lista de miembros sigue siendo visible solo para los miembros.
 
 Los grupos abiertos pueden permitir que las personas se unan de inmediato, exigir aprobación o admitir miembros solo por invitación.
 
@@ -47,19 +47,19 @@ Los grupos abiertos pueden permitir que las personas se unan de inmediato, exigi
 
 ### Seguir un grupo abierto
 
-Las personas pueden seguir la actividad de un grupo abierto sin unirse. Al seguirlo, la actividad no leída del grupo se incluye en su correo de resumen para que puedan revisarla cuando quieran. Seguir un grupo no las convierte en miembros, no les da derecho a votar como miembros ni hace que reciban notificaciones inmediatas.
+Las personas pueden mantenerse al día con un grupo abierto sin unirse. Seguir un grupo añade la actividad no leída del grupo a su correo de resumen para que puedan revisarla cuando les convenga. Seguir el grupo no convierte a las personas en miembros, no les otorga los derechos de voto de los miembros ni hace que reciban notificaciones inmediatas.
 
-Activa **Sigue las actualizaciones** en la página del grupo para incluir sus discusiones, comentarios, encuestas y otras actividades no leídas de los hilos en tu correo de resumen. Desactiva la opción para dejar de incluir el grupo.
+Activa **Sigue las actualizaciones** en la página del grupo para incluir las discusiones, los comentarios, las encuestas y otras actividades de los hilos que no hayas leído en tu correo de resumen. Desactiva esta opción para dejar de incluir el grupo.
 
-![Sigue las actualizaciones en un grupo abierto](group_follow_updates.png)
+![Seguir las actualizaciones de un grupo abierto](group_follow_updates.png)
 
 <!-- translation-section: closed -->
 
 ## Cerrado
 
-Cualquier persona puede encontrar un grupo cerrado y leer su nombre y descripción. Solo los miembros y los invitados pueden acceder a sus discusiones, encuestas, archivos y lista de miembros.
+Cualquier persona puede encontrar un grupo cerrado y leer su nombre y descripción. Las discusiones, las encuestas, los archivos y la lista de miembros son privados y solo están disponibles para los miembros y los invitados.
 
-Los grupos cerrados pueden permitir que las personas soliciten unirse o admitir miembros solo por invitación. No pueden permitir que alguien se una de inmediato sin aprobación.
+Los grupos cerrados pueden permitir que las personas soliciten unirse o admitir miembros solo por invitación. No pueden permitir que las personas se unan de inmediato sin aprobación.
 
 Un subgrupo cerrado puede permitir que los miembros del grupo principal lean sus discusiones sin unirse al subgrupo.
 
@@ -67,24 +67,24 @@ Un subgrupo cerrado puede permitir que los miembros del grupo principal lean sus
 
 ## Secreto
 
-Solo las personas invitadas o añadidas pueden ver los grupos secretos y su contenido. Solo se puede acceder a ellos por invitación. Los grupos secretos no aparecen en el directorio público de grupos.
+Los grupos secretos y su contenido son visibles solo para las personas que hayan sido invitadas o añadidas. Solo es posible unirse por invitación. Los grupos secretos no aparecen en el directorio público de grupos.
 
 <!-- translation-section: how-people-join -->
 
-## Cómo se unen las personas
+## Cómo unirse
 
-La privacidad determina qué opciones hay para unirse:
+La privacidad determina qué opciones están disponibles para unirse:
 
 | Privacidad del grupo | Opciones disponibles para unirse |
 | --- | --- |
-| **Abierto** | Cualquiera puede unirse, solicitar aprobación o unirse solo por invitación |
+| **Abierto** | Cualquier persona puede unirse, solicitar aprobación o unirse solo por invitación |
 | **Cerrado** | Solicitar aprobación o unirse solo por invitación |
 | **Secreto ** | Solo por invitación |
 
-Cuando se requiere aprobación, las personas seleccionan **Unirse al grupo**, responden a la pregunta para unirse y envían una solicitud. Consulta [Invitar a personas](/en/user_manual/groups/inviting_people#request-to-join-group) para saber cómo configurar la pregunta, revisar las solicitudes e invitar a personas directamente.
+Cuando se requiere aprobación, las personas seleccionan **Unirse al grupo**, responden a la pregunta del grupo para unirse y envían una solicitud. Consulta [Invitar a personas](/en/user_manual/groups/inviting_people#request-to-join-group) para saber cómo configurar la pregunta, revisar las solicitudes e invitar a personas directamente.
 
 <!-- translation-section: group-directory -->
 
 ## Directorio de grupos
 
-Los grupos principales abiertos y cerrados pueden aparecer en el directorio público de grupos para que las personas los encuentren. Aparecer en el directorio no cambia quién puede leer el contenido del grupo ni quién puede unirse. Los subgrupos y los grupos secretos no pueden aparecer allí.
+Los grupos principales abiertos y cerrados pueden aparecer en el directorio público de grupos para que las personas puedan encontrarlos. Aparecer en el directorio no cambia quién puede leer el contenido del grupo o convertirse en miembro. Los subgrupos y los grupos secretos no pueden aparecer en el directorio.

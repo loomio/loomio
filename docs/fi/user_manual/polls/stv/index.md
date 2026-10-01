@@ -1,6 +1,6 @@
 ---
 title: STV-vaalit
-source_revision: cf8da02f691349beecf6ac6444971fad130d4ddd
+source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
 source_file: docs/en/user_manual/polls/stv/index.md
 translated:
   provider: codex/gpt-6.1-sol
@@ -21,20 +21,20 @@ sections:
   exporting-ballots: 582555dd13633bf0
   share-an-outcome: 6a02aed173b368b9
 generated:
-  introduction: 569d21ad446c2872
-  when-to-use-stv: 1caf09fbbb8fe453
-  creating-an-stv-election: f01dc501105b5238
-  number-of-seats: 8d89a096d3ab638c
-  counting-method: 5f40bce25f95850c
-  quota-type: 5851d86a48e80121
-  how-voting-works: 0d977600aad6c011
-  how-counting-works: 16585abd0d2e6e23
-  understanding-results: c3a407cdefa4c7dd
-  method-and-quota: 8d63ccc6a847fcf8
-  elected-candidates: 48577fca647fb798
-  round-by-round-details: ccecb10c6e7ed304
-  exporting-ballots: 96ebf656aa7c85d4
-  share-an-outcome: dc08d971a6e91fdd
+  introduction: 68b8b8feb6549c78
+  when-to-use-stv: 59b07f03d2112224
+  creating-an-stv-election: bb9f4fddb6f11622
+  number-of-seats: 57a64a8a633bd658
+  counting-method: f2ce1d1650138002
+  quota-type: 203478e87fa93d24
+  how-voting-works: 2599ede84ef7f5b6
+  how-counting-works: 68feaac7e24776ca
+  understanding-results: 8de9cde353ad71d3
+  method-and-quota: 67344bd4b5a1542e
+  elected-candidates: b1c501489ee425e1
+  round-by-round-details: 697065e385581a07
+  exporting-ballots: d226f324af38bbd6
+  share-an-outcome: 89428b23fffa8b24
 title_source: cd3e1a4cdc2456a6
 title_generated: 5db74b13bec93710
 ---
@@ -43,110 +43,110 @@ title_generated: 5db74b13bec93710
 
 # STV-vaalit
 
-**Siirtoäänivaali (STV)** on suhteellinen vaalitapa, jolla valitaan useita ehdokkaita. Sen avulla valitut ehdokkaat edustavat äänestäjien erilaisia näkemyksiä suhteellisesti.
+**Siirtoäänivaali (STV)** on suhteellista edustusta tuottava äänestystapa, jolla valitaan useita voittajia ehdokkaiden joukosta. Se varmistaa, että valitut ehdokkaat edustavat suhteellisesti äänestäjien erilaisia näkemyksiä.
 
 <!-- translation-section: when-to-use-stv -->
 
-## Milloin käyttää STV-vaaleja
+## Milloin STV-vaaleja kannattaa käyttää
 
 Käytä STV-vaaleja, kun haluat:
 
-- Valita ehdokkaiden joukosta **toimikunnan, hallituksen tai edustajaryhmän**
-- Varmistaa **suhteellisen edustuksen**, jossa myös vähemmistöt voivat saada kannatustaan vastaavan määrän paikkoja
-- Järjestää vaalit, joissa äänestäjät asettavat ehdokkaat mieluisuusjärjestykseen
+- Valita **toimikunnan, hallituksen tai edustajajoukon** ehdokkaiden joukosta
+- Varmistaa **suhteellisen edustuksen**, jossa vähemmistöryhmät voivat saada paikkoja kannatuksensa suhteessa
+- Järjestää vaalit, joissa äänestäjät asettavat ehdokkaat mieltymysjärjestykseen
 
 >[!NOTE]
->STV **eroaa** Loomion [järjestyskyselystä](/en/user_manual/polls/rank/), jossa vaihtoehdot pisteytetään yhden parhaan vaihtoehdon valitsemiseksi. STV-vaaleissa valitaan useita ehdokkaita siirtämällä ääniä ja pudottamalla ehdokkaita laskentakierroksilla.
+>STV **ei** ole sama kuin Loomion [Järjestys-kysely](/en/user_manual/polls/rank/), joka käyttää yksinkertaisempaa pisteisiin perustuvaa järjestystä yhden parhaan vaihtoehdon valitsemiseen. STV-vaaleissa valitaan useita voittajia siirtämällä ääniä ja pudottamalla ehdokkaita eri kierroksilla.
 
 <!-- translation-section: creating-an-stv-election -->
 
 ## STV-vaalien luominen
 
-Kun aloitat kyselyn, valitse kyselyn tyypiksi **STV-vaalit** ja lisää ehdokkaat vaihtoehdoiksi. Voit määrittää **täytettävien paikkojen määrän**, **laskentamenetelmän** ja **kiintiötyypin**.
+Kun aloitat kyselyn, valitse kyselytyypiksi **STV-vaalit** ja lisää sitten ehdokkaat kyselyn vaihtoehdoiksi. Voit mukauttaa kyselyä määrittämällä **paikkojen määrän**, **laskentamenetelmän** ja **kiintiötyypin**.
 
-Tässä esimerkissä Oatmilk Cooperative valitsee kolme henkilöä valvomaan palautettavien pakkausten kokeilua. Lomakkeessa kuvataan tehtävä, luetellaan viisi ehdokasta ja käytetään Scottish STV -laskentamenetelmää sekä Droop-kiintiötä.
+Tässä esimerkissä Oatmilk Cooperative valitsee kolme henkilöä valvomaan palautettavien pakkausten kokeilua. Lomakkeessa kuvataan tehtävä, luetellaan viisi ehdokasta ja käytetään skotlantilaista STV-menetelmää sekä Droopin kiintiötä.
 
 ![](form.png)
 
 <!-- translation-section: number-of-seats -->
 
-### Täytettävien paikkojen määrä
+### Paikkojen määrä
 
-Valittavien henkilöiden määrä. Sen on oltava pienempi kuin ehdokkaiden määrä.
+Kuinka monta voittajaa valitaan. Määrän on oltava pienempi kuin ehdokkaiden määrä.
 
 <!-- translation-section: counting-method -->
 
 ### Laskentamenetelmä
 
-Äänten laskentaan on kaksi menetelmää:
+Äänten laskemiseen on käytettävissä kaksi menetelmää:
 
-Scottish STV
-  : Suositeltu. Weighted Inclusive Gregory Method (WIGM) -menetelmää on käytetty Skotlannin paikallisvaaleissa vuodesta 2007. Sen säännöt ovat selkeät ja tarkasti määritellyt. Se sopii useimmille organisaatioille.
+Skotlantilainen STV
+  : Suositeltu. Painotettu kattava Gregoryn menetelmä (Weighted Inclusive Gregory Method, WIGM), jota on käytetty Skotlannin paikallisvaaleissa vuodesta 2007. Säännöt ovat täsmälliset ja selkeät. Sopii parhaiten useimmille organisaatioille.
   
-Meek STV
-  : Tarkempi menetelmä, jossa äänten laskeminen vaatii tietokoneen. Kun ehdokas valitaan, Meek siirtää kustakin äänestä sen osan, jota ehdokas ei tarvitse, äänestäjän seuraaville ehdokkaille. Tämä koskee myös ääniä, jotka siirtyvät valitulle ehdokkaalle myöhemmin laskennan aikana. Kun ehdokas putoaa, äänet lasketaan uudelleen ikään kuin hän ei olisi ollut mukana vaalissa. Ääniä menee hukkaan vähemmän kuin Scottish STV -menetelmässä, mutta laskentaa ei voi tarkistaa käsin.
+Meekin STV
+  : Tarkempi menetelmä, jossa äänten laskeminen vaatii tietokoneen. Kun ehdokas on valittu, Meekin menetelmä siirtää jatkuvasti sen osan kustakin äänestä, jota ehdokas ei tarvitse, äänestäjän seuraaville mieltymyksille. Tämä koskee myös ääniä, jotka siirtyvät ehdokkaalle myöhemmin laskennassa. Kun ehdokas putoaa, äänet lasketaan uudelleen kuin hän ei olisi koskaan ollut ehdolla. Ääniä menee hukkaan vähemmän kuin skotlantilaisessa STV-menetelmässä, mutta laskentaa ei voi tarkistaa käsin.
 
 <!-- translation-section: quota-type -->
 
 ### Kiintiötyyppi
 
-Kiintiö on äänimäärä, jonka ehdokas vähintään tarvitsee tullakseen valituksi. Vaihtoehtoja on kaksi:
+Kiintiö on vähimmäisäänimäärä, jonka ehdokas tarvitsee saadakseen paikan. Vaihtoehdot ovat:
 
 Droop
-  : Suositeltu. STV-vaalien vakiokiintiö, jota käytetään Irlannissa, Australiassa ja Skotlannissa. Se on pienin kiintiö, jonka voi saavuttaa enintään yhtä moni ehdokas kuin paikkoja on täytettävänä. Äänestäjäryhmä, joka asettaa omat ehdokkaansa ensimmäisiksi, saa vähintään yhtä monta paikkaa kuin sen äänimäärään sisältyy täysiä kiintiöitä. Kiintiö lasketaan näin:
+  : Suositeltu. STV-vaalien tavallinen kiintiö, jota käytetään Irlannissa, Australiassa ja Skotlannissa. Se on pienin kiintiö, jonka voi saavuttaa enintään yhtä moni ehdokas kuin paikkoja on. Äänestäjäjoukko, joka asettaa omat ehdokkaansa ensimmäisiksi, saa vähintään yhtä monta paikkaa kuin sen äänimäärään sisältyy kokonaisia kiintiöitä. Se lasketaan näin:
 \\[ floor(\frac{votes}{(seats + 1)}) + 1 \\]
 
 Hare
-  : Suurempi kiintiö. Paljon ääniä saaneet ryhmät käyttävät enemmän ääniä kuhunkin saamaansa paikkaan, joten pienemmät ryhmät saavat todennäköisemmin viimeiset paikat. Kiintiö lasketaan näin:
+  : Suurempi kiintiö. Suuren äänimäärän saaneet joukot käyttävät enemmän ääniään kuhunkin saamaansa paikkaan, joten pienemmät joukot saavat todennäköisemmin viimeiset paikat. Se lasketaan näin:
     \\[ \frac{votes}{seats}\\]
 
-Molemmissa kaavoissa *votes* tarkoittaa niiden äänestyslippujen määrää, joissa on asetettu vähintään yksi ehdokas mieluisuusjärjestykseen.
+Molemmissa kaavoissa *votes* tarkoittaa niiden äänestyslippujen määrää, joissa vähintään yksi ehdokas on asetettu mieltymysjärjestykseen.
 
-Meek STV laskee kiintiön pyöristämättä. Droop-kiintiön kaava on votes ÷ (seats + 1). Kiintiö lasketaan uudelleen joka kierroksella ehdokkailla yhä olevien äänten perusteella, ja ehdokkaan on ylitettävä kiintiö tullakseen valituksi.
+Meekin STV laskee kiintiön ilman pyöristystä. Droopin kiintiön kaava on votes ÷ (seats + 1). Menetelmä laskee kiintiön uudelleen jokaisella kierroksella ehdokkailla yhä olevien äänten perusteella, ja ehdokkaan on ylitettävä kiintiö tullakseen valituksi.
   
   >[!TIP]
-  > Droop-kiintiö on aina pienempi kuin Hare-kiintiö. Esimerkiksi vaalissa, jossa on 100 ääntä ja neljä paikkaa, Droop-kiintiö on 21 ääntä ja Hare-kiintiö 25 ääntä.
+  > Droopin kiintiö on aina äänimäärältään pienempi kuin Haren kiintiö. Esimerkiksi vaaleissa, joissa on 100 ääntä ja neljä paikkaa, Droopin kiintiö olisi 21 ja Haren kiintiö 25.
 
 <!-- translation-section: how-voting-works -->
 
-## Näin äänestäminen toimii
+## Miten äänestäminen toimii
 
-Tässä esimerkissä Oatmilk Cooperative valitsee kolme henkilöä valvomaan uudelleenkäytettävien pakkausten kokeilua. Äänestäjät vetävät ehdokkaat viivan yläpuolelle ja asettavat heidät mieluisuusjärjestykseen:
+Tässä esimerkissä Oatmilk Cooperative valitsee kolme henkilöä valvomaan uudelleenkäytettävien pakkausten kokeilua. Äänestäjät vetävät ehdokkaat viivan yläpuolelle ja asettavat heidät mieltymysjärjestykseen:
 
 ![](stv-vote-in-progress.png)
 
-- **Sija 1** = mieluisin ehdokas
-- **Sija 2** = toiseksi mieluisin ehdokas
-- Jatka ehdokkaiden järjestämistä niin pitkälle kuin haluat
+- **Järjestys 1** = mieluisin ehdokas
+- **Järjestys 2** = toiseksi mieluisin ehdokas
+- Jatka asettamalla järjestykseen niin monta ehdokasta kuin haluat
 
-Äänestäjän on asetettava vähintään yksi ehdokas mieluisuusjärjestykseen, mutta kaikkia ehdokkaita ei tarvitse järjestää. Äänestäjän ääni ei siirry ehdokkaille, joita hän ei ole järjestänyt.
+Äänestäjien on asetettava järjestykseen vähintään yksi ehdokas, mutta kaikkia ehdokkaita ei tarvitse järjestää. Järjestämättä jätetyt ehdokkaat eivät saa lainkaan kyseisen äänestäjän tukea.
 
 <!-- translation-section: how-counting-works -->
 
-## Näin ääntenlaskenta toimii
+## Miten äänten laskenta toimii
 Äänet lasketaan seuraavasti:
 
-1. Lasketaan **kiintiö** eli vähimmäisäänimäärä, jolla ehdokas saa paikan.
+1. Lasketaan **kiintiö** eli paikan saamiseen tarvittava vähimmäisäänimäärä.
 2. Lasketaan kunkin ehdokkaan **Ensimmäiset mieltymykset**.
-3. Jokainen kiintiön saavuttanut ehdokas **valitaan**. Kiintiön ylittävät äänet **siirretään** murto-osaisina äänestäjien seuraaville ehdokkaille, suurin ylijäämä ensin. Äänet siirtyvät vain ehdokkaille, jotka ovat yhä mukana laskennassa.
-4. Jos siirrettävää ylijäämää ei enää ole, **vähiten ääniä saanut ehdokas putoaa**. Hänen äänensä siirtyvät täysimääräisinä äänestäjien seuraaville ehdokkaille.
-5. Kun jäljellä olevia ehdokkaita on yhtä monta kuin täyttämättömiä paikkoja, heidät kaikki valitaan, vaikka he eivät olisi saavuttaneet kiintiötä.
-6. Muussa tapauksessa laskentaa jatketaan kohdasta 3, kunnes kaikki paikat on täytetty.
+3. Jokainen kiintiön saavuttanut ehdokas on **valittu**. Hänen ylijäämä-äänensä eli kiintiön ylittävä osuus **siirretään** äänestäjien seuraaville mieltymyksille murto-osan arvoisina, suurin ylijäämä ensin. Äänet siirtyvät vain ehdokkaille, jotka ovat yhä mukana laskennassa.
+4. Jos siirrettävää ylijäämää ei ole jäljellä, **vähiten ääniä saanut ehdokas putoaa**. Hänen äänensä siirtyvät äänestäjien seuraaville mieltymyksille täysimääräisinä.
+5. Kun jäljellä olevia ehdokkaita on yhtä monta kuin jäljellä olevia paikkoja, heidät kaikki valitaan, vaikka he eivät olisi saavuttaneet kiintiötä.
+6. Muussa tapauksessa laskenta jatkuu kohdasta 3, kunnes kaikki paikat on täytetty.
 
-Murto-osainen siirto jakaa eteenpäin vain ne äänet, joita valittu ehdokas ei tarvitse. Jos esimerkiksi kiintiö on 26 ja ehdokkaalla on 40 ääntä, hänen ylijäämänsä on 14. Jokainen hänen 40 äänestyslipustaan siirtyy seuraavalle ehdokkaalle arvolla 14 ÷ 40 = 0.35 ääntä.
+Murto-osan arvoisina jaetaan vain ne äänet, joita voittaja ei tarvitse. Jos esimerkiksi kiintiö on 26 ja ehdokkaalla on 40 ääntä, hänen ylijäämänsä on 14. Jokainen hänen 40 äänestyslipustaan siirtyy seuraavalle mieltymykselle arvolla 14 ÷ 40 = 0,35 ääntä.
 
-Scottish STV -menetelmässä kunkin siirretyn äänen arvo pyöristetään alaspäin viiden desimaalin tarkkuuteen, kuten Skotlannin paikallisvaaleissa.
+Skotlantilaisessa STV-menetelmässä jokaisen siirretyn äänen arvo pyöristetään alaspäin viiden desimaalin tarkkuuteen, kuten Skotlannin paikallisvaaleissa.
 
-Jos kahdella tai useammalla ehdokkaalla on yhtä vähän ääniä, pudotetaan se, jolla oli vähemmän ääniä viimeisimmällä aiemmalla kierroksella, jolla heidän äänimääränsä erosivat.
+Jos kahdella tai useammalla ehdokkaalla on vähiten ääniä, heistä putoaa se, jolla oli vähemmän ääniä viimeisimmällä aiemmalla kierroksella, jolla heidän äänimääränsä erosivat.
 
 >[!TIP]
->Äänestyslippu lasketaan mukaan vain niin kauan kuin siinä on mukana laskennassa oleva ehdokas. Kun yhtään tällaista ehdokasta ei ole jäljellä, äänestyslippu on "loppuun käytetty", eikä sitä enää lasketa mukaan.
+>Äänestyslippu lasketaan mukaan vain niin kauan kuin siinä on asetettu mieltymysjärjestykseen ehdokas, joka on yhä mukana laskennassa. Kun yhtään tällaista ehdokasta ei ole jäljellä, äänestyslippu on "loppuun käytetty", eikä sitä enää lasketa mukaan.
 
 <!-- translation-section: understanding-results -->
 
-## Tulosten tarkastelu
+## Tulosten tulkitseminen
 
-Kyselyn sulkeuduttua tulokset näkyvät useassa osiossa. Tässä vaalissa Samira Patel, Alex Morgan ja Morgan Price saavat toimikunnan kolme paikkaa:
+Kyselyn sulkeuduttua tulokset näkyvät useassa osiossa. Näissä vaaleissa Samira Patel, Alex Morgan ja Morgan Price saavat toimikunnan kolme paikkaa:
 
 ![](stv-results-summary.png)
 
@@ -154,44 +154,44 @@ Kyselyn sulkeuduttua tulokset näkyvät useassa osiossa. Tässä vaalissa Samira
 
 ### Menetelmä ja kiintiö
 
-Ylhäällä näet laskentamenetelmän (Scottish STV tai Meek STV), kiintiötyypin (Droop tai Hare) ja kiintiön eli äänimäärän, jonka ehdokas tarvitsi tullakseen valituksi.
+Yläosassa näet laskentamenetelmän (skotlantilainen STV tai Meekin STV), kiintiötyypin (Droop tai Hare) sekä kiintiön eli äänimäärän, jonka ehdokas tarvitsi saadakseen paikan.
 
 <!-- translation-section: elected-candidates -->
 
 ### Valitut ehdokkaat
 
-Valitut ehdokkaat esitetään viisi saraketta sisältävässä yhteenvetotaulukossa:
+Voittajien yhteenvetotaulukossa on viisi saraketta:
 
 | Sarake | Merkitys |
 |--------|---------|
 | **Ehdokas** | Valitun ehdokkaan nimi |
-| **Kierros valittu** | Laskentakierros, jolla ehdokas saavutti kiintiön ja sai paikan. Kierros 1 tarkoittaa, että ehdokas valittiin pelkillä ensimmäisillä mieltymyksillä. Myöhemmillä kierroksilla valittu tarvitsi pudonneilta ehdokkailta tai muiden ehdokkaiden ylijäämästä siirtyneitä ääniä. |
-| **Ensimmäiset mieltymykset** | Kuinka moni äänestäjä asetti ehdokkaan ensimmäiseksi. Luku kertoo ehdokkaan suoran kannatuksen ennen äänten siirtoja. |
-| **Loppusumma** | Ehdokkaan äänimäärä valintahetkellä. Äänten siirtojen vuoksi se on usein suurempi kuin ensimmäisten mieltymysten määrä. |
-| **Ylijäämä** | Kuinka paljon ehdokkaan loppusumma ylitti kiintiön (loppusumma miinus kiintiö). Suurempi ylijäämä kertoo vahvemmasta kannatuksesta kuin valintaan tarvittiin. Scottish STV -menetelmässä ylijäämä jaetaan äänestäjien seuraaville ehdokkaille. |
+| **Kierros valittu** | Millä laskentakierroksella ehdokas saavutti kiintiön ja sai paikan. Kierros 1 tarkoittaa, että hän tuli valituksi pelkillä ensimmäisillä mieltymyksillä. Myöhemmillä kierroksilla hän tarvitsi pudonneilta ehdokkailta tai valittujen ehdokkaiden ylijäämästä siirrettyjä ääniä. |
+| **Ensimmäiset mieltymykset** | Kuinka moni äänestäjä asetti tämän ehdokkaan ensimmäiseksi. Tämä näyttää ehdokkaan suoran kannatuksen ennen äänten siirtoja. |
+| **Loppusumma** | Ehdokkaan äänimäärä sillä hetkellä, kun hän tuli valituksi. Äänten siirtojen vuoksi se on usein suurempi kuin ensimmäisten mieltymysten määrä. |
+| **Ylijäämä** | Kuinka paljon ehdokkaan loppusumma ylitti kiintiön (loppusumma miinus kiintiö). Suurempi ylijäämä tarkoittaa vahvempaa kannatusta yli valintaan tarvittavan määrän. Skotlantilaisessa STV-menetelmässä tämä ylijäämä jaetaan äänestäjien seuraaville mieltymyksille. |
 
-Joskus tasatilannetta ei voida ratkaista aiempien kierrosten perusteella. Jos tasatilanteen ratkaisu ei vaikuta siihen, ketkä valitaan, laskenta jatkuu. Jos se vaikuttaa, laskenta pysähtyy kyseiselle kierrokselle. Ehdokkaat, jotka tulevat valituiksi riippumatta tasatilanteen ratkaisusta, näytetään valittuina. Ehdokkaat, jotka voivat tulla valituiksi tai pudota tasatilanteen ratkaisusta riippuen, näytetään erillisessä taulukossa. Loomio näyttää heidät tasatilanteessa sen sijaan, että valitsisi jonkun satunnaisesti.
+Aiemmat kierrokset eivät aina ratkaise tasatilannetta. Jos tasatilanne ei vaikuta siihen, ketkä valitaan, laskenta jatkuu. Jos se vaikuttaa valintaan, laskenta pysähtyy kyseiselle kierrokselle. Ehdokkaat, jotka tulevat valituiksi riippumatta siitä, miten tasatilanne ratkaistaan, näytetään valittuina. Ehdokkaat, jotka voivat tulla valituiksi tai jäädä valitsematta tasatilanteen ratkaisusta riippuen, näytetään erillisessä taulukossa. Loomio näyttää heidät tasatilanteessa sen sijaan, että valitsisi yhden sattumanvaraisesti.
 
 <!-- translation-section: round-by-round-details -->
 
 ### Kierros kierrokselta yksityiskohdat
 
-Avaa **Kierros kierrokselta yksityiskohdat**, niin näet äänten siirrot ja ehdokkaiden putoamiset. Kukin rivi kuvaa ehdokasta ja kukin sarake laskentakierrosta. Kukin luku kertoo ehdokkaan äänimäärän kyseisen kierroksen alussa:
+Avaa **Kierros kierrokselta yksityiskohdat**, niin näet äänten siirrot ja ehdokkaiden putoamiset. Kukin rivi vastaa ehdokasta ja kukin sarake laskentakierrosta. Jokainen luku kertoo ehdokkaan äänimäärän kyseisen kierroksen alussa:
 
 ![](stv-results.png)
 
-Vihreä korostus näyttää, milloin ehdokas valittiin, punainen näyttää putoamisen ja oranssi tasatilanteen.
+Vihreä korostus näyttää, milloin ehdokas tuli valituksi, punainen näyttää, milloin hän putosi, ja oranssi näyttää, milloin hän oli tasatilanteessa.
 
 <!-- translation-section: share-an-outcome -->
 
 ## Jaa johtopäätös
 
-Kun vaalit päättyvät, jaa johtopäätös. Nimeä valitut henkilöt ja kerro, milloin heidän tehtävänsä alkaa. Lue johtopäätösten käytöstä kohdasta [Jaa johtopäätös](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome).
+Kun vaalit suljetaan, jaa johtopäätös. Nimeä valitut henkilöt ja kerro, milloin heidän tehtävänsä alkaa. Lue johtopäätösten käytöstä kohdasta [Jaa johtopäätös](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome).
 
-![Johtopäätös, jossa nimetään valitut toimikunnan jäsenet](outcome.png)
+![Johtopäätös, jossa nimetään toimikuntaan valitut jäsenet](outcome.png)
 
 <!-- translation-section: exporting-ballots -->
 
 ## Äänestyslippujen vienti
 
-Vaalin sulkeuduttua tuloksia tarkastelemaan oikeutetut voivat viedä äänestysliput BLT-muodossa riippumatonta uudelleenlaskentaa tai tarkastusta varten. Vienti sisältää ehdokkaiden järjestykset ja yhdistää samanlaiset järjestykset yhdelle riville sekä ilmoittaa äänestyslippujen määrän. Nimettömissä vaaleissa vienti ei sisällä äänestäjien henkilöllisyyksiä, äänestyslippujen tunnisteita, lähetysaikoja eikä lähetysjärjestystä.
+Kun vaalit on suljettu, tulokset näkevät henkilöt voivat viedä äänestysliput BLT-muodossa riippumatonta uudelleenlaskentaa tai tarkastusta varten. Vienti sisältää ehdokkaiden suosituimmuusjärjestykset ja yhdistää samat järjestykset yhdeksi riviksi, jolla ilmoitetaan äänestyslippujen määrä. Anonyymeissä vaaleissa vienti ei sisällä äänestäjien henkilöllisyyksiä, äänestyslippujen tunnisteita, lähetysaikoja tai lähetysjärjestystä.

@@ -1,10 +1,10 @@
 ---
 title: Einwilligungsprozess
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/guides/making_decisions/consent_process.md
+source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
+source_file: docs/en/guides/making_decisions/consent_process.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-30'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 14ce5d3ef8d9b5e2
   key-points: fe3eeececdfd3651
@@ -21,164 +21,166 @@ sections:
   step-5-seek-consent-to-adopt-the-policy: 4825f0d553324303
   step-6-integrate-valid-objections-to-create-an-amended-version-of-the-proposal-that-everyone-consents-is-safe-to-try: 500641ddfe3fc5bb
 generated:
-  introduction: 44ba909de93ec8a4
-  key-points: dc016aef5decd5ca
-  consent-process-steps: 75337f5c024f1a28
-  benefits: ac350148d4307c01
-  applying-the-consent-process-on-loomio: fb5e025395b0bd5b
-  objections: d6f64bfc6ae743f6
-  example-of-a-consent-process-on-loomio: 294011cf4f57d612
-  step-0-you-notice-a-problem-or-opportunity-and-take-the-initiative: aa87b74e4bd957e5
-  step-1-present-a-proposal: baaa09e0c6fde196
-  step-2-facilitate-a-clarifying-question-round: 62d3602bceb701d2
-  step-3-facilitate-a-reactions-round: f5db6ab47fb4c9eb
-  step-4-amend-the-proposal: f7b42987d718b51c
-  step-5-seek-consent-to-adopt-the-policy: c1bd3a2fd8b70cdd
-  step-6-integrate-valid-objections-to-create-an-amended-version-of-the-proposal-that-everyone-consents-is-safe-to-try: 88ef3648f88eea3e
+  introduction: 3d12653bc24cabe6
+  key-points: a09e6f5ab30ae85e
+  consent-process-steps: 51b8f1d5bfeff0b3
+  benefits: 1c22ca9f9c29cc20
+  applying-the-consent-process-on-loomio: c9d6511ca0748191
+  objections: cae2c3f445e69bbb
+  example-of-a-consent-process-on-loomio: 55571190e57c86ac
+  step-0-you-notice-a-problem-or-opportunity-and-take-the-initiative: 589628564f9d7ea2
+  step-1-present-a-proposal: 31d90bbe0ded682f
+  step-2-facilitate-a-clarifying-question-round: bba106b198f95080
+  step-3-facilitate-a-reactions-round: e5f5f55b866591ed
+  step-4-amend-the-proposal: d6115d050e8aa964
+  step-5-seek-consent-to-adopt-the-policy: 145e17159a3f513c
+  step-6-integrate-valid-objections-to-create-an-amended-version-of-the-proposal-that-everyone-consents-is-safe-to-try: c9b204ff51396c85
 title_source: '0193bbf359328832'
 title_generated: 94a21c21a81dd89d
+needs_review:
+  applying-the-consent-process-on-loomio: use "Entscheidung" instead of "Abstimmung" for "decision"; use "Stimme" instead of "Abstimmung" for "vote"; use "Fazit" instead of "Ergebnis" for "outcome"; use "Ergebnis" instead of "Fazit" for "results"
 ---
 
 <!-- translation-section: introduction -->
 
-# Einwilligungsprozess
+# Konsentverfahren
 
-Diese Anleitung beschreibt den gesamten Einwilligungsprozess. Hilfe zum Einrichten und Auswerten eines einzelnen Vorschlags findest du unter [Zustimmung](/en/user_manual/polls/proposals/consent/).
+Dieser Leitfaden beschreibt das gesamte Konsentverfahren. Hilfe beim Einrichten und Auswerten eines einzelnen Konsentvorschlags findest du unter [Konsent](/en/user_manual/polls/proposals/consent/).
 
-![Menschen arbeiten zusammen](better_collaboration.jpg)
+![Foto von Menschen bei der Zusammenarbeit](better_collaboration.jpg)
 
-Triff eine Entscheidung, die sich ohne Einwände ausprobieren lässt.
+Triff eine Entscheidung, die sich ohne Bedenken ausprobieren lässt und gegen die es keine Einwände gibt.
 
-Hole Zustimmung für eine anstehende Entscheidung ein. Wenn es keine wesentlichen Einwände gegen deinen Vorschlag gibt, kannst du rasch entscheiden, ihn auszuprobieren.
+Suche Konsent für eine anstehende Entscheidung: Wenn es keine begründeten Einwände gegen deinen Vorschlag gibt, kannst du schnell eine Entscheidung treffen, die sich jetzt ohne Bedenken ausprobieren lässt.
 
-> *„Zustimmung kehrt die Frage um: Statt zu fragen, was wir wollen, fragen wir, ob es Gründe gibt, nicht fortzufahren.“ – Ted Rau, Sociocracy For All*
+> *„Konsent dreht die Frage um: Statt zu fragen, was wir wollen, fragen wir, ob es Gründe gibt, nicht weiterzumachen.“ - Ted Rau, Sociocracy For All*
 
 <!-- translation-section: key-points -->
 
-## Das Wichtigste
-- Strebe eine Entscheidung an, die gut genug ist.
+## Wichtige Punkte
+- Strebe eine Entscheidung an, die „gut genug“ ist.
 - Beziehe viele Stimmen ein, um einen umsetzbaren Vorschlag zu entwickeln.
-- Frage, ob jemand einen begründeten Einwand hat.
+- Frage, ob jemand einen berechtigten Einwand hat.
 - Überarbeite den Vorschlag, um Einwände auszuräumen.
 
 **Typische Rollen:**
-- Vorschlagende Person: Bringt ein Thema ein, zu dem eine Entscheidung nötig ist.
-- Moderierende Person: Hilft der vorschlagenden Person, ihre Aufgabe gut zu erfüllen.
+- Vorschlagende Person: Die Person, die ein Thema einbringt, zu dem eine Entscheidung nötig ist.
+- Moderierende Person: Jemand, der die vorschlagende Person dabei unterstützt, ihre Aufgabe effizient zu erledigen.
 
 <!-- translation-section: consent-process-steps -->
 
-## Schritte des Einwilligungsprozesses
-Du bemerkst ein Problem oder eine Gelegenheit und ergreifst die Initiative.
-1. Stelle einen Vorschlag vor – starte eine Loomio-**Diskussion**.
-2. Moderiere eine Runde für Fragen, Reaktionen und Kommentare, um den Vorschlag zu verbessern – starte einen **Vorschlag zur Meinungsabfrage**.
-3. Überarbeite den Vorschlag anhand der Anregungen und Kommentare.
-4. Frage, ob jemand einen wesentlichen Einwand gegen den überarbeiteten Vorschlag hat – starte einen **Zustimmungsvorschlag**.
-5. Berücksichtige begründete Einwände und überarbeite den Vorschlag, bis alle zustimmen, dass er sich ausprobieren lässt – halte die Entscheidung im **Fazit** fest.
+## Schritte des Konsentverfahrens
+Du erkennst ein Problem oder eine Möglichkeit und ergreifst die Initiative.
+1. Stelle einen Vorschlag vor - starte eine **Diskussion** auf Loomio.
+2. Moderiere eine Runde mit Fragen, Reaktionen und Kommentaren, um den Vorschlag zu verbessern - starte einen **Stimmungsbild-Vorschlag**.
+3. Überarbeite den Vorschlag anhand von Anregungen und Kommentaren.
+4. Frage, ob jemand einen begründeten Einwand gegen den überarbeiteten Vorschlag hat - starte einen **Konsentvorschlag**.
+5. Berücksichtige berechtigte Einwände in einer überarbeiteten Fassung des Vorschlags, die nach dem Konsent aller ohne Bedenken ausprobiert werden kann - halte das **Fazit** der Entscheidung fest.
 
 >[!Tip]
->Bei komplexeren Entscheidungen kannst du in Schritt 2 auch eine klärende **Fragerunde** einplanen. So können alle den Vorschlag verstehen, bevor du sie um Reaktionen und Kommentare bittest.
+>Bei komplexeren Entscheidungen kannst du in Schritt 2 auch eine klärende **Fragerunde** einfügen. Sie hilft den Teilnehmenden, den Vorschlag zu verstehen, bevor du sie zu Reaktionen und Kommentaren einlädst.
 
 <!-- translation-section: benefits -->
 
 ## Vorteile
-- Entscheidungen werden schneller, klarer und anpassungsfähiger.
-- Unterschiedliche Perspektiven und aktive Beteiligung schaffen Vertrauen.
-- Die Zusammenarbeit wird beweglicher, transparenter und offener für alle.
+- Schnellere, effiziente, klare und leichter anpassbare Entscheidungen.
+- Vielfältige Perspektiven und die Möglichkeit, aktiv mitzuwirken, schaffen Vertrauen.
+- Eine flexiblere, transparentere und inklusivere Kultur.
 
 <!-- translation-section: applying-the-consent-process-on-loomio -->
 
-## Den Einwilligungsprozess auf Loomio anwenden
+## Das Konsentverfahren auf Loomio anwenden
 
-| **Einwilligungsprozess** | **Auf Loomio** |
+| **Konsentverfahren** | **Auf Loomio** |
 |---|---|
-| Du bemerkst ein Problem oder eine Gelegenheit und ergreifst die Initiative. |  |
-| **Vorschlag vorstellen** <br /><br />Schreibe einen klaren, knappen Vorschlag und teile ihn mit den betroffenen Personen. Beschreibe ihn so, dass andere verstehen, was du vorschlägst. | Starte eine Loomio-**Diskussion**. <br /><br />Nenne den Vorschlag im Titel der Diskussion und beschreibe ihn im Diskussionskontext. |
-| **Fragen** (optional) <br /><br />Lade zu klärenden Fragen ein, damit alle den Vorschlag verstehen. <br /><br />*„Eine Fragerunde hilft sicherzustellen, dass alle den Vorschlag verstehen, bevor sie ihre Meinung dazu äußern.“* | Starte eine **Fragerunde**. Falls sie ausgeblendet ist, kann ein Gruppenadmin sie unter [Umfragevorlagen](/en/user_manual/polls/poll_templates/) verfügbar machen. <br /><br />Frage: „Was musst du wissen, um den Vorschlag zu verstehen?“ |
-| **Reaktionen** <br /><br />Lade zu Reaktionen und Kommentaren ein, um den Vorschlag zu verbessern. <br /><br />In dieser Runde geht es darum, *Informationen aus der Gruppe wahrzunehmen und einzuordnen und den Vorschlag entsprechend anzupassen.* | Starte einen Vorschlag zur **[Meinungsabfrage](/en/user_manual/polls/proposals/sense_check/)**. <br /><br />*Im Titel:* Benenne den Vorschlag und mache deutlich, dass alle reagieren und kommentieren können. <br /><br />*In den Vorschlagsdetails:* Beschreibe den Vorschlag klar und erkläre, warum er wichtig ist. Füge nötige Hintergrundinformationen und einen Link zur aktuellen Version hinzu. <br /><br />Lade alle ein, vor dem Ende des Vorschlags zu antworten. |
-| **Überarbeitung** <br /><br />Prüfe die Kommentare und Anregungen und überarbeite den Vorschlag so, wie es für deine Organisation sinnvoll ist. <br /><br />Überlege, welche Änderungen du in die neue Version aufnehmen willst. | Antworte auf Kommentare und Anregungen zum Vorschlag der Meinungsabfrage. <br /><br />Halte die Ergebnisse des Vorschlags in einem **Fazit** fest. <br /><br />Notiere Bedenken und neue Erkenntnisse und beschreibe, wie du den Vorschlag überarbeiten wirst. <br /><br />Erkläre die nächsten Schritte und benachrichtige alle über das Fazit. |
-| **Einwände** <br /><br />Stelle den überarbeiteten Vorschlag vor und lade zu begründeten Einwänden ein, etwa wenn der Vorschlag Schaden verursachen könnte. <br /><br />Gehe auf jeden Einwand ein und berücksichtige ihn bei der Überarbeitung. | Starte mit dem überarbeiteten Vorschlag einen **[Zustimmungsvorschlag](/en/user_manual/polls/proposals/consent/)**. <br /><br />*Im Titel:* Benenne die anstehende Entscheidung. <br /><br />*In den Vorschlagsdetails:* Stelle den Vorschlag vor und lade alle ein, zuzustimmen oder einen begründeten Einwand zu nennen, etwa wenn der Vorschlag Schaden verursachen könnte. Es geht um die Zustimmung, dass sich der Vorschlag ausprobieren lässt. <br /><br />Gehe auf jeden Einwand ein und erstelle eine überarbeitete Version des Vorschlags. <br /><br />Benachrichtige alle über die weitere Änderung und lade sie ein, ihre Zustimmung zu überdenken und ihre „Stimme zu ändern“. <br /><br />Starte bei Bedarf weitere Zustimmungsvorschläge, bis die Einwände ausgeräumt sind. |
-| **Fazit** <br /><br />Wenn keine Einwände mehr bestehen und alle zugestimmt haben, wird die Entscheidung bekannt gegeben. | Halte ein **Fazit** fest. <br /><br />Schließe den Vorschlag, halte das Fazit fest und benachrichtige alle Beteiligten. <br /><br />Nenne die getroffene Entscheidung und danke allen für ihre Beteiligung. <br /><br />Fasse den Prozess zusammen und erkläre die nächsten Schritte. <br /><br />Wenn keine begründeten Einwände mehr bestehen, halte fest, dass alle zustimmen, den Vorschlag auszuprobieren. <br /><br />Das Fazit dokumentiert die Entscheidung für später. |
+| Du erkennst ein Problem oder eine Gelegenheit und ergreifst die Initiative. |  |
+| **Einen Vorschlag vorstellen** <br /><br />Schreibe einen klaren, knappen Vorschlag und teile ihn mit den betroffenen Personen. Beschreibe ihn so, dass andere verstehen, was du vorschlägst. | Starte eine Loomio-**Diskussion**. <br /><br />Benenne den Vorschlag im Diskussionstitel und beschreibe ihn im Kontext. |
+| **Fragen** (optional) <br /><br />Lade zu Verständnisfragen ein, damit alle den Vorschlag verstehen. <br /><br />*„Eine klärende Fragerunde hilft sicherzustellen, dass alle den Vorschlag verstehen, bevor sie sagen, was sie davon halten.“* | Starte eine **Fragerunde**. Wenn sie ausgeblendet ist, kann eine Person mit Administrationsrechten für die Gruppe sie unter [Abstimmungsvorlagen](/en/user_manual/polls/poll_templates/) verfügbar machen. <br /><br />Frage: „Was musst du wissen, um den Vorschlag zu verstehen?“ |
+| **Reaktionen** <br /><br />Lade alle ein, mit Reaktionen und Kommentaren zur Verbesserung des Vorschlags beizutragen. <br /><br />In dieser Runde geht es darum, wahrzunehmen und darauf zu reagieren – *Informationen aus der Gruppe aktiv aufzunehmen und einzuordnen und dann entsprechend zu reagieren oder Anpassungen vorzunehmen.* | Starte einen Vorschlag vom Typ **[Stimmungsbild](/en/user_manual/polls/proposals/sense_check/)**. <br /><br />*Im Titel:* Benenne den Vorschlag und erkläre, dass dies eine Gelegenheit für Reaktionen und Kommentare ist. <br /><br />*In den Vorschlagsdetails:* Beschreibe den Vorschlag klar und erkläre, warum er wichtig ist. Füge alle nötigen Hintergrundinformationen und einen Link zur aktuellen Version des Vorschlags hinzu. <br /><br />Lade alle ein, vor dem Ende der Abstimmung zu antworten. |
+| **Überarbeitung** <br /><br />Berücksichtige die Kommentare und Anregungen der Teilnehmenden und überarbeite den Vorschlag so, dass er deiner Organisation zugutekommt. <br /><br />Überlege, welche Änderungen du in die neue Version des Vorschlags aufnehmen möchtest. | Antworte auf die Kommentare und Anregungen zum Vorschlag vom Typ Stimmungsbild. <br /><br />Verfasse ein **Fazit**, um das Ergebnis der Abstimmung über den Vorschlag zusammenzufassen. <br /><br />Halte alle Bedenken und neu gewonnenen Informationen fest und erläutere, wie der Vorschlag überarbeitet wird. <br /><br />Erkläre, was als Nächstes passiert, und benachrichtige die Teilnehmenden über das Fazit. |
+| **Einwände** <br /><br />Stelle die überarbeitete Version des Vorschlags vor und lade alle ein, begründete Einwände zu benennen – also auf mögliche Schäden durch den Vorschlag hinzuweisen. <br /><br />Gehe auf jeden Einwand ein und berücksichtige ihn bei der Überarbeitung des Vorschlags. | Starte einen **[Konsentvorschlag](/en/user_manual/polls/proposals/consent/)** mit dem überarbeiteten Vorschlag. <br /><br />*Im Titel:* Benenne die anstehende Entscheidung. <br /><br />*In den Vorschlagsdetails:* Stelle den Vorschlag vor und lade alle ein, für Konsent zu stimmen oder einen begründeten Einwand zu benennen – also auf einen möglichen Schaden durch den Vorschlag hinzuweisen. Denke daran, dass wir Konsent darüber suchen, dass sich der Vorschlag „sicher erproben“ lässt. <br /><br />Gehe auf jeden Einwand ein und berücksichtige ihn in einer überarbeiteten Version des Vorschlags. <br /><br />Benachrichtige alle über die erneute Überarbeitung und lade sie ein, ihren Konsent zu überdenken und ihre Stimme zu ändern. <br /><br />Starte bei Bedarf weitere Konsentvorschläge, bis die Einwände ausgeräumt sind. |
+| **Fazit** <br /><br />Wenn keine Einwände mehr bestehen und alle ihren Konsent gegeben haben, wird die getroffene Entscheidung bekannt gegeben. | Verfasse ein **Fazit**. <br /><br />Beende die Abstimmung über den Vorschlag. Verfasse ein Fazit und benachrichtige alle Beteiligten. <br /><br />Halte die getroffene Entscheidung fest und danke allen für ihre Teilnahme am Verfahren. <br /><br />Fasse die Ergebnisse des Verfahrens zusammen und erkläre, was als Nächstes passiert. <br /><br />Wenn keine begründeten Einwände mehr bestehen, halte fest, dass Konsent darüber besteht, dass sich der Vorschlag „sicher erproben“ lässt. <br /><br />Das Fazit dokumentiert die Entscheidung, damit später darauf zurückgegriffen werden kann. |
 
 <!-- translation-section: objections -->
 
 ### Einwände
 
-Im Einwilligungsprozess ist ein Einwand ein Hinweis darauf, dass etwas **dem Team oder der Organisation schaden könnte**.
+Im Konsentverfahren bezeichnet ein Einwand etwas, das **dem Team oder der Organisation schaden könnte**.
 
-Ein begründeter Einwand sollte diese Kriterien erfüllen:
-- Konkret: *Ich kann ihn nachvollziehbar begründen*
+Einwände sollten diese Kriterien erfüllen, um berechtigt zu sein:
+- Klar begründet: *Ich kann meinen Einwand nachvollziehbar begründen*
 - Sachlich: *Es geht nicht nur um eine persönliche Vorliebe*
-- Auf Erfahrung gestützt: *Er beruht nicht bloß auf einer Vermutung*
-- Nicht gefahrlos auszuprobieren: *Es geht nicht darum, dass ich eine „bessere Idee“ habe*
+- Belegt: *Auf Erfahrung gestützt, nicht auf Vorhersagen*
+- Nicht ohne Bedenken auszuprobieren: *Es geht nicht darum, dass ich eine „bessere Idee“ habe*
 
 <!-- translation-section: example-of-a-consent-process-on-loomio -->
 
-## Beispiel für einen Einwilligungsprozess auf Loomio
+## Beispiel für ein Konsentverfahren auf Loomio
 
 <!-- translation-section: step-0-you-notice-a-problem-or-opportunity-and-take-the-initiative -->
 
-### Schritt 0. Du bemerkst ein Problem oder eine Gelegenheit und ergreifst die Initiative
+### Schritt 0. Du erkennst ein Problem oder eine Möglichkeit und ergreifst die Initiative
 
-*Lohnt es sich, das Problem oder die Gelegenheit aufzugreifen?* Chloe hat bemerkt, dass bald neue Vorschriften für Gesundheit und Sicherheit in Kraft treten. Sie übernimmt die Aufgabe, einen Richtlinienentwurf für ihre Organisation zu erstellen.
+*Lohnt es sich, das Problem anzugehen oder die Möglichkeit zu verfolgen?* Chloe hat bemerkt, dass bald neue gesetzliche Vorschriften zu Gesundheit und Sicherheit am Arbeitsplatz in Kraft treten. Sie hat die Initiative ergriffen, eine Richtlinie für ihre Organisation zu entwerfen.
 
-*Ist eine Entscheidung nötig?* Das Dokument zu Gesundheit und Sicherheit muss als offizielle Richtlinie verabschiedet werden.
+*Steht eine Entscheidung an?* Das Dokument zu Gesundheit und Sicherheit am Arbeitsplatz muss als verbindliche Richtlinie verabschiedet werden.
 
-*Betrifft es andere Menschen und deine Organisation?* Die Richtlinie betrifft alle in der Organisation. Mitarbeitende müssen sie einhalten, und sie wird für die Organisation rechtlich verbindlich.
+*Betrifft es andere Personen und deine Organisation?* Die Richtlinie betrifft alle in der Organisation. Die Mitarbeitenden müssen sie einhalten, und ihre Umsetzung wird zu einer gesetzlichen Verpflichtung der Organisation.
 
 <!-- translation-section: step-1-present-a-proposal -->
 
-### Schritt 1. Einen Vorschlag vorstellen
+### Schritt 1. Stelle einen Vorschlag vor
 
-Chloe startet einen Loomio-Thread. Sie erklärt, warum eine Richtlinie zu Gesundheit und Sicherheit nötig ist, und bietet an, einen ersten Entwurf zu erstellen. Sie lädt alle ein, an der Richtlinie mitzuwirken, und kündigt einen Einwilligungsprozess zu ihrer Verabschiedung an.
+Chloe startet einen Thread auf Loomio und erläutert, warum eine Richtlinie zu Gesundheit und Sicherheit am Arbeitsplatz entwickelt werden muss. Sie schlägt vor, die Arbeit mit einem ersten Entwurf zu leiten, lädt zu Beiträgen zur Weiterentwicklung der Richtlinie ein und kündigt ein Konsentverfahren an, um die Richtlinie zu verabschieden.
 
 ![](discussion_context_health_and_safety.png)
 
 <!-- translation-section: step-2-facilitate-a-clarifying-question-round -->
 
-### Schritt 2. Eine klärende Fragerunde moderieren
+### Schritt 2. Moderiere eine klärende Fragerunde
 
-Chloe startet einen Vorschlag für eine Fragerunde. Innerhalb einer festgelegten Frist können alle klärende Fragen zur Richtlinie für Gesundheit und Sicherheit stellen. Sie stellt weitere Hintergrundinformationen und den Entwurf zur Verfügung.
+Chloe startet einen Fragevorschlag, um eine Fragerunde zu eröffnen. Sie lädt die Teilnehmenden ein, innerhalb eines festgelegten Zeitraums klärende Fragen zur Richtlinie zu Gesundheit und Sicherheit am Arbeitsplatz zu stellen. Zusammen mit dem Entwurf stellt sie weitere Hintergrundinformationen bereit.
 
-In dieser Phase sollen alle die Richtlinie verstehen, bevor sie ihre Meinung dazu äußern.
+In dieser Phase sollen alle die Richtlinie verstehen können, bevor sie sagen, was sie davon halten.
 
 ![](proposal_question_health_and_safety.png)
 
-Die Teilnehmenden schreiben ihre Fragen in das Textfeld „Begründung“ und klicken auf „Stimme abschicken“. Chloe beantwortet die Fragen.
+Die Teilnehmenden stellen ihre Fragen im Textfeld „Begründung“ des Vorschlags und klicken auf „Stimme abgeben“. Chloe antwortet auf die Fragen.
 
 ![](proposal_reply_health_and_safety.png)
 
 <!-- translation-section: step-3-facilitate-a-reactions-round -->
 
-### Schritt 3. Eine Reaktionsrunde moderieren
+### Schritt 3. Moderiere eine Reaktionsrunde
 
-Chloe startet nun mit einem Vorschlag zur Meinungsabfrage eine Reaktionsrunde. Alle sind eingeladen, mit ihren Reaktionen und Kommentaren zur Verbesserung der Richtlinie beizutragen.
+Chloe eröffnet nun eine Reaktionsrunde mit einem Stimmungsbild-Vorschlag. Die Teilnehmenden werden eingeladen, Reaktionen und Kommentare einzubringen, um die Richtlinie zu verbessern.
 
-In dieser Runde kann Chloe Informationen aus der Gruppe aufnehmen und einordnen und die Richtlinie entsprechend anpassen.
+Diese Runde bietet die Gelegenheit, Informationen aus der Gruppe aktiv aufzunehmen und zu deuten und dann entsprechend darauf zu reagieren oder Anpassungen vorzunehmen.
 
 ![](proposal_reaction_round_health_and_safety.png)
 
 <!-- translation-section: step-4-amend-the-proposal -->
 
-### Schritt 4. Den Vorschlag überarbeiten
+### Schritt 4. Überarbeite den Vorschlag
 
-Wenn der Vorschlag zur Meinungsabfrage endet, benachrichtigt Chloe alle und überarbeitet die Richtlinie entsprechend.
+Wenn der Stimmungsbild-Vorschlag beendet ist, benachrichtigt Chloe alle und überarbeitet die Richtlinie entsprechend.
 
 ![](proposal_outcome_reaction_round_health_and_safety.png)
 
 <!-- translation-section: step-5-seek-consent-to-adopt-the-policy -->
 
-### Schritt 5. Zustimmung zur Verabschiedung der Richtlinie einholen
+### Schritt 5. Suche Konsent zur Verabschiedung der Richtlinie
 
-Die Richtlinie zu Gesundheit und Sicherheit ist inzwischen gut ausgearbeitet. Alle konnten Fragen stellen und Vorschläge zu ihrer Verbesserung machen.
+Die Richtlinie für Gesundheit und Sicherheit am Arbeitsplatz ist gut ausgearbeitet. Die Teilnehmenden hatten Gelegenheit, Fragen zu stellen und Vorschläge zur Verbesserung der Richtlinie einzubringen.
 
-Nun startet Chloe einen Zustimmungsvorschlag, um die Zustimmung zur Verabschiedung der Richtlinie einzuholen.
+Nun startet Chloe einen Konsent-Vorschlag, um Konsent zur Verabschiedung der Richtlinie zu suchen.
 
 ![](proposal_consent_process_health_and_safety.png)
 
 <!-- translation-section: step-6-integrate-valid-objections-to-create-an-amended-version-of-the-proposal-that-everyone-consents-is-safe-to-try -->
 
-### Schritt 6. Begründete Einwände berücksichtigen und den Vorschlag überarbeiten, bis alle zustimmen, ihn auszuprobieren
+### Schritt 6. Arbeite berechtigte Einwände ein, um eine überarbeitete Fassung des Vorschlags zu erstellen, die alle als „sicher genug zum Ausprobieren“ akzeptieren
 
-Nachdem alle Einwände berücksichtigt wurden, haben alle zugestimmt. Chloe hält die Entscheidung im Fazit fest.
+Sobald alle Einwände eingearbeitet sind, ist Konsent erreicht und Chloe hält das Fazit der Entscheidung fest :-)
 
 ![](proposal_outcome_consent_process_health_and_safety.png)

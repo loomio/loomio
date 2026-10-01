@@ -1,6 +1,6 @@
 ---
 title: Lezárás
-source_revision: 9c60c42fc739483fa23f15d9f34a1e9245518092
+source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
 source_file: docs/en/guides/facilitators_guide/concluding/index.md
 translated:
   provider: codex/gpt-6.1-sol
@@ -13,10 +13,10 @@ sections:
   it-ain-t-over-til-it-s-over: 9edb6ef0bcb17938
 generated:
   introduction: e9afcde2492f5f16
-  outcomes-next-steps: 1f2102feb9b26a72
-  reporting-harvesting: e68d8cc80ec6b305
-  turning-discussion-into-action: f9b975b28958504a
-  it-ain-t-over-til-it-s-over: 8fa684392cbb6230
+  outcomes-next-steps: ce8205c3de438c87
+  reporting-harvesting: e353e2727cd4b915
+  turning-discussion-into-action: 610df9f459effa67
+  it-ain-t-over-til-it-s-over: '0681cb4f756cabc8'
 title_source: 10899efb27fe6a92
 title_generated: a2ad9f9d52ed0ec3
 ---
@@ -31,71 +31,72 @@ title_generated: a2ad9f9d52ed0ec3
 
 ## Következtetések és következő lépések
 
-A következtetés megerősítése segíthet abban, hogy a csoport tagjai lássák: a közös beszélgetés elérte a célját. A facilitátor összefoglalhatja a döntéseket, és visszajelezheti őket a csoportnak. Így mindenki választ kaphat néhány fontos kérdésre:
+A következtetés megerősítése fontos lehet ahhoz, hogy a résztvevők úgy érezzék, elérték a közös beszélgetés céljait. A facilitátor összefoglalhatja a meghozott döntéseket, és visszajelezheti ezeket a csoportnak, hogy a résztvevők néhány alapvető kérdésre választ kapva távozhassanak:
 
 * Mit tettünk?
 * Mit jelent ez?
 * Mi történik most?
-* Mi az én feladatom?
-* Mi változik azért, mert részt vettünk ebben a folyamatban?
+* Mi az én felelősségem?
+* Mi lesz más attól, hogy végigmentünk ezen a folyamaton?
 
-Ezekre a kérdésekre néha konkrét válaszok születnek, például elvégzendő feladatok. Máskor a válasz elvontabb, például a közös megértés elmélyülése.
+Ezekre a kérdésekre néha nagyon konkrét válaszok születnek, például elvégzendő feladatok, máskor elvontabbak, például a közös megértés elmélyítése.
 
 A Loomióban
 
-* A [következtetések](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome) fontos eszközök. Egy javaslat lezárása még nem zárja le a folyamatot: a döntést is össze kell foglalni. Erre szolgál a következtetés funkció.
-* Sok Loomio-beszélgetés javaslat vagy közzétett következtetés nélkül ér természetes véget. Ezek a beszélgetések is értékesek. A későbbi tájékozódáshoz hasznos lehet a leírásban összefoglalni, mire jutott a csoport.
-* Ha egyes embereknek feladatuk van, @megemlítheted őket név szerint. Erről értesítést kapnak.
+* A [következtetések](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome) nagyon fontos eszközök. Egy javaslat lezárása még nem jelenti a folyamat végét: egyértelműen össze kell foglalni, mire jutott a csoport. Erre szolgál a következtetés funkció.
+* Sok Loomio-beszélgetés természetesen ér véget, javaslatok használata vagy következtetések közzététele nélkül is. Ezek a beszélgetések is sok értéket adnak, és a későbbi visszakereséshez hasznos lehet a leírás mezőjét kiegészíteni a következtetés rövid összefoglalásával.
+* Ha egyes embereknek konkrét feladataik vannak, @említéssel megjelölheted őket, így értesítést kapnak.
 
 <!-- translation-section: reporting-harvesting -->
 
-## Beszámolás és a tanulságok összegyűjtése
+## Beszámolók és a tanulságok összegyűjtése
 
-Egy tapasztalat jelentését akkor értheted meg, ha a tágabb összefüggéseket is megvizsgálod. Hol volt ennek a pillanatnak a helye a közös munkában? Milyen formában adjátok tovább a tanulságokat: történetként, beszámolóként, változtatásként vagy cselekvésre szóló felhívásként?
+Ahhoz, hogy megértsd egy tapasztalat jelentőségét, meg kell vizsgálnod, hogyan illeszkedik a tágabb összefüggésekbe. Mi volt ennek a pillanatnak a szerepe a közös haladásban? Milyen formát ölt az, amit ebből a tapasztalatból megértettünk: történet, beszámoló, változás vagy cselekvésre való felhívás lesz belőle?
 
-A tapasztalat egy adott pillanatban születik, de a hatása gyakran attól függ, hogy nevet adtok neki, rögzítitek, és később is hivatkozni tudtok rá. Enélkül feledésbe merülhet, kimaradhatnak belőle azok, akik nem voltak jelen, vagy újra végig kell mennetek ugyanazon. A kézzelfogható dokumentáció és a beszámolók segítik a közös munkát.
+A tapasztalat az adott pillanatban születik, de a hatása gyakran abból ered, hogy megfoghatóvá tesszük, nevet adunk neki, és később fel tudjuk használni, illetve hivatkozni tudunk rá. Különben azt kockáztatod, hogy feledésbe merül, kimaradnak belőle azok, akik nem voltak jelen, vagy később meg kell ismételni a folyamatot. A kézzelfogható dokumentáció vagy beszámoló gyakran segíti az eredményes együttműködést.
 
 A Loomióban
 
-* A Loomio a folyamat részeként dokumentálja a munkát: a bejegyzésekből külön ráfordítás nélkül alakul ki a csoport számára később is használható archívum.
-* A tanulságok összegyűjtését és megőrzését több funkció segíti: a keresés, a korábbi döntések listája és a beszélgetés nyomtatása.
-* A prémium csomagokban a csoport összes Loomio-adatát exportálhatod.
-* Sok csoport a Loomióban gyűjti össze a különböző csatornákon keletkező tartalmakat. Például közzéteszik egy találkozó meghívóját, összeállítják a napirendet, személyesen megtartják a találkozót, majd a jegyzeteket és a kapcsolódó döntéseket ugyanabban a témában rögzítik. Így a Loomio a személyes találkozók tanulságainak megőrzésében is segít.
+* A Loomio önmagát dokumentálja: a feljegyzések a folyamat szerves részeként keletkeznek. Így a csoportok külön erőfeszítés nélkül gazdag, később is visszakereshető anyagot gyűjtenek össze.
+* Több funkció is segíti a tanulságok összegyűjtését és az archiválást: a keresés, a „korábbi döntések” listája és a beszélgetés nyomtatása.
+* A prémium csomagok lehetővé teszik a csoportod összes Loomio-adatának exportálását.
+* Sok csoport különböző csatornák tartalmát kapcsolja össze a Loomióban. Például közzéteszik egy találkozó meghívóját, és összeállítják a napirendet a Loomióban, személyesen megtartják a találkozót, majd közzéteszik a jegyzeteket a Loomióban, és ugyanabban a szálban hozzák meg a kapcsolódó döntéseket. Így a Loomio automatikus dokumentálása az online téren túlra is kiterjed.
 
 <!-- translation-section: turning-discussion-into-action -->
 
 ## A beszélgetéstől a cselekvésig
 
-Eljön a pillanat, amikor a megbeszélteknek a csoporton kívüli valóságban is működniük kell. Néha elég az ötletekkel és érzésekkel foglalkozni, megvalósítás nélkül. A csoport azonban többnyire csak akkor éri el a célját, ha a következtetéseit tettekre váltja. Ez az átmenet is a facilitált folyamat része.
+Eljön az a pillanat, amikor újra foglalkoznod kell a termen kívüli valósággal. Néha elég az ötletekkel és érzésekkel dolgozni, anélkül, hogy a megvalósítással foglalkoznál. A csoport azonban általában csak akkor éri el a céljait, ha a következtetéseit konkrét cselekvéssé alakítja. Ez az átmenet is része a teljes facilitált folyamatnak.
 
-Ezen a ponton a közös folyamat más szervezeti rendszerekkel találkozik. A facilitátornak segítenie kell tisztázni, hogyan kapcsolódnak egymáshoz. Ilyen rendszerek lehetnek:
+Ezen a ponton az együttműködési folyamat a szervezet más rendszereihez kapcsolódik, és a facilitátornak segítenie kell tisztázni, hogyan fog ez működni. Ezek közé tartozhatnak:
 
-* **Döntési jogkör** — Ki hozza meg ténylegesen a döntéseket? Mi kell ahhoz, hogy az ötletekből valóság legyen?
-* **Vezetés** — Hogyan illeszkedik ez a többi feladathoz? Milyen más feladatoktól függhet?
-* **Feladatok átadása** — Ki vállalja a felelősséget a következő lépésekért? Hogyan számol be a munkájáról?
-* **Kommunikáció** — Hogyan értesülnek mások a folyamatról vagy a beszélgetésről? Mit kell tudniuk?
-* **Adminisztráció** — Hogyan kerülnek át az információk egyik rendszerből a másikba, például egy feladatkezelő vagy kommunikációs eszközbe? Hol tároljátok őket?
+* **Döntési jogkör** — Ki hozza meg ténylegesen a döntéseket? Minek kell történnie ahhoz, hogy az ötletek itt megvalósuljanak?
+* **Irányítás** — Hogyan illeszkedik ez a többi prioritáshoz? Milyen függőségek lehetnek?
+* **Feladatok delegálása** — Ki vállal felelősséget a következő lépésekért? Számon kérik majd rajta a teljesítést?
+* **Kommunikáció** — Hogyan tájékoztatják a többieket erről a folyamatról vagy beszélgetésről? Mit kell tudniuk?
+* **Adminisztráció** — Hogyan kerül át az információ az egyik rendszerből a másikba, például egy feladatkövető vagy kommunikációs eszközbe? Hol tárolják majd az információt?
 
-Ha ezek között akadályok vannak, gondot okozhat, ha csak a lezáráskor derülnek ki. Például a résztvevők csalódhatnak, ha nincs jogkörük végrehajtani az általuk eldöntött változtatást. A folyamat megtervezésekor gondold végig a megvalósítás feltételeit, és ehhez igazítsd a közös munka kereteit.
+Ha ezekben a kérdésekben akadályok vannak, káros lehet, ha csak a lezáráskor derülnek ki. Ha például a résztvevőknek valójában nincs jogkörük végrehajtani azt a változtatást, amelyről döntöttek, kudarcnak élik meg a helyzetet. A folyamat megtervezésekor gondold végig a megvalósítás feltételeit, és ezekhez igazítsd az együttműködés kereteit.
+
 
 A Loomióban
 
-* @Megemlítheted név szerint azokat, akik a döntés nyomán feladatot vállalnak.
-* Sokan más módon kapcsolják össze a Loomióban rögzített tartalmakat a szervezet többi rendszerével. Például rendszeres személyes találkozókon áttekintik a döntéseket, vagy a következtetésekből feladatokat hoznak létre a feladatkezelőjükben.
-* Egy egyértelmű döntés után természetes kérdés: „Rendben, de hogyan lépünk tovább?”
-* Egy Loomio-csoport létrehozásakor gyakran fontos kérdések merülnek fel, például: „Kinek kell részt vennie ahhoz, hogy ezekből a döntésekből tettek legyenek?” Ha hiányoznak a fontos érintettek, vezetők vagy adminisztrátorok, a megvalósítás elakadhat.
+* @említéssel megjelölheted azokat, akik a döntés alapján cselekedni fognak.
+* Sok felhasználó más csatornákon keresztül kapcsolja össze a Loomio tartalmát a szervezet egyéb rendszereivel: például rendszeres személyes találkozókon áttekintik a Loomióban hozott döntéseket, vagy átviszik a következtetéseket a feladatkövetési folyamatukba.
+* Egy egyértelmű döntés természetesen felveti a kérdést: „Rendben, de hogyan visszük ezt tovább?”
+* Egy Loomio-csoport létrehozásakor gyakran felmerülnek olyan fontos kérdések, mint például: „Kinek kell itt részt vennie ahhoz, hogy ezekből a döntésekből cselekvés legyen?” Ha kulcsfontosságú érintettek, vezetők vagy adminisztrátorok hiányoznak, el fogsz akadni.
 
 <!-- translation-section: it-ain-t-over-til-it-s-over -->
 
-## Akkor van vége, amikor lezárjátok
+## Akkor van vége, amikor lezárjuk
 
-Fontos, hogy a folyamatnak egyértelmű vége legyen. A lezárásnak megvan a maga rendje; ha elmarad, a résztvevőkben maradhat hiányérzet. Néha az idő lejárta, máskor bizonyos célok elérése jelenti a végét. Figyelj a kimondott és kimondatlan jelekre, amelyekből látszik, hogy az egyes résztvevők és a csoport egésze lezártnak érzi-e a folyamatot vagy annak egy szakaszát.
+Fontos, hogy megfelelően zárd le a folyamatot. A lezárásnak megvan a maga rítusa, és ha ez elmarad, a résztvevőkben bizonytalanság maradhat. Néha azért ér véget a folyamat, mert elfogy az idő, máskor azért, mert bizonyos célok teljesültek. Figyelj a kimondott és kimondatlan jelzésekre, amelyek megmutatják, hogy az egyes résztvevők és a csoport egésze lezártnak érzik-e a folyamatot vagy az adott szakaszt.
 
-A résztvevők gyakran a vezetőtől vagy a facilitátortól várják a megerősítést, hogy valóban véget ért-e a folyamat. Érdemes ezt egyértelműen kimondani. Ez jelentheti a találkozó lezárásának bejelentését, a döntések és a következő lépések összefoglalását, majd az elköszönést. Más csoportoknak bevett lezárási szokásaik vannak, például egy zárókör. Ha a találkozó határozott lezárás nélkül ér véget, az kellemetlen érzést hagyhat a résztvevőkben.
+A résztvevők gyakran a vezetőtől vagy a facilitátortól várják annak megerősítését, hogy valóban vége van, és ezt általában érdemes egyértelműen jelezni. Néha ehhez elég világosan kimondani, hogy az alkalom a végéhez közeledik, összefoglalni a döntéseket vagy a következő lépéseket, és elköszönni mindenkitől. Máskor a csoportnak már bevett gyakorlata van erre, például egy zárókör. Ha hagyod, hogy az alkalom egyértelmű lezárás nélkül érjen véget, az rossz érzést hagyhat a résztvevőkben.
 
 A Loomióban
 
-* A Loomióban a döntés következtetésének közzététele jelzi legegyértelműbben a lezárást.
-* Egyes csoportok a [téma zárolása](/en/user_manual/discussions/using_discussions/#lock-or-unlock-a-thread) funkcióval akadályozzák meg a további változtatásokat, és csökkentik a felesleges bejegyzések számát.
-* A csoport deaktiválása a legerősebb lezárási lépés. Ezután senki sem írhat bele újabb bejegyzést.
-* A Loomio-csoportok akkor is megmaradhatnak, ha időnként csökken az aktivitásuk. Ezért érdemes jelezni a mérföldköveket, például egy szakasz lezárását, akkor is, ha a csoport később újra aktív lesz.
+* A lezárás legegyértelműbb jelzése a Loomióban a döntés következtetésének közzététele.
+* Egyes csoportok a [szál zárolása](/en/user_manual/discussions/using_discussions/#lock-or-unlock-a-thread) funkcióval akadályozzák meg a további módosításokat, és teszik áttekinthetőbbé a felületet.
+* A csoport deaktiválása a lezárás leghatározottabb módja. Ezután már senki sem szólhat hozzá.
+* Mivel a Loomio-csoportok akkor is megmaradhatnak, ha a csoport aktivitása változik, hasznos lehet megjelölni az olyan mérföldköveket, mint egy adott szakasz lezárása, még akkor is, ha a csoport később újra aktív lesz.

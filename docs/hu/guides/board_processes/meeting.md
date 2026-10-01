@@ -1,10 +1,10 @@
 ---
 title: Felkészülés egy értekezletre
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/guides/board_processes/meeting.md
+source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
+source_file: docs/en/guides/board_processes/meeting.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-30'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 20305b2bbbcd9088
   meeting-focus-and-review-actions: e43829ab612a2070
@@ -19,161 +19,169 @@ sections:
   approve-reports: e322912e5f5b1e32
   on-loomio-5: 15e0c45a512cd84f
 generated:
-  introduction: 42658995b2ac32f6
-  meeting-focus-and-review-actions: 9c481832b9494bfb
-  on-loomio: d7638da6816bb101
-  agenda-and-notify: 5d8360e612816037
-  on-loomio-2: c6d9e2b334a7ca4d
-  confirm: d15b49b59e92c7c7
-  find-a-time-for-meeting: 99d338dad99aff94
-  on-loomio-3: 54e31123851566c6
-  sign-off-minutes: 0b4f0f87dabc3b65
-  on-loomio-4: ba3b405cd9412a1d
-  approve-reports: 6314b509825d3402
-  on-loomio-5: cf9f15fc278986c5
+  introduction: d6ac6d2f4752d8d7
+  meeting-focus-and-review-actions: 2a01dab97e23e8ce
+  on-loomio: 18ce6267831cd1d2
+  agenda-and-notify: a0f479e2ad8374b3
+  on-loomio-2: 66c0ed744809213a
+  confirm: 52e4e5663620bb4a
+  find-a-time-for-meeting: 27b72965f7cfa410
+  on-loomio-3: 894ddf5ab1f66572
+  sign-off-minutes: ad634086c3d3ef58
+  on-loomio-4: b1288666670183cd
+  approve-reports: 1289c56f95da7f9b
+  on-loomio-5: dc2803678b28c96a
 title_source: 7fe4f2dbd8ccfc94
 title_generated: 2bb9b7e017a4fe50
+needs_review:
+  on-loomio: check the interface label "**Beszélgetés**" for "**Discussion**"
+  on-loomio-2: check the interface label "**Beszélgetés**" for "**Discussion**"
 ---
 
 <!-- translation-section: introduction -->
 
 # Felkészülés egy értekezletre
 
-A jól működő értekezletek eredményesek és mindenkit bevonnak. Segítik az együttműködést, erősítik a kapcsolatokat, támogatják a közös álláspont kialakítását és a jobb, gyorsabb döntéseket. Teret adnak az ötleteknek, a visszajelzéseknek és a folyamatos fejlődésnek.
+A hatékony értekezletek eredményesek, mindenkit bevonnak, és együttműködésre épülnek. Növelik az aktív részvételt, segítenek erős kapcsolatokat kialakítani és közös álláspontra jutni, jobb és gyorsabb döntésekhez vezetnek, támogatják a kreatív gondolkodást és az innovációt, valamint lehetőséget adnak a visszajelzésre és a folyamatos fejlődésre.
 
-Tervezd meg az értekezletet a Loomióban. Vond be a résztvevőket már az elején, összpontosítsatok a legfontosabb témákra, és használjátok ki jobban az együtt töltött időt.
+Használd a Loomiót egy hatékony értekezlet megtervezéséhez: vond be az embereket már az elején, alakítsatok ki közös álláspontot a legfontosabb témákról, és használjátok ki jobban az együtt töltött értékes időt.
 
-Ha a csoport még nem használta a Loomiót, kezdd a [Loomio bemutatásával a csoportodnak](/en/user_manual/overview/introducing_loomio). Ezután próbáljátok ki ezt az értekezleti folyamatot első rendszeres munkamenetként.
+Ha a csoport még nem használta a Loomiót, kezdd [A Loomio bemutatása a csoportodnak](/en/user_manual/overview/introducing_loomio) útmutatóval, majd alkalmazd ezt az értekezleti folyamatot első rendszeresen ismétlődő munkafolyamatként.
 
-Több lépéssel is eredményesebbé teheted a következő vezetőségi vagy bizottsági értekezletet...
+Több dolgot is tehetsz azért, hogy a következő vezetőségi vagy bizottsági értekezlet hatékony legyen...
 
-- [Az értekezlet fő témái és a korábbi teendők áttekintése](#meeting-focus-and-review-actions)
+- [Az értekezlet fókusza és a teendők áttekintése](#meeting-focus-and-review-actions)
 - [A napirend közzététele és a tagok értesítése](#agenda-and-notify)
-- [Időpont keresése az értekezlethez](#find-a-time-for-meeting)
+- [Az értekezlet időpontjának kiválasztása](#find-a-time-for-meeting)
 - [A jegyzőkönyv jóváhagyása](#sign-off-minutes)
 - [A beszámolók jóváhagyása](#approve-reports)
 
 <!-- translation-section: meeting-focus-and-review-actions -->
 
-## Az értekezlet fő témái és a korábbi teendők áttekintése
+## Az értekezlet fókusza és a teendők áttekintése
 
-Határozd meg az értekezlet fő témáit, hogy az együtt töltött időt a legfontosabb kérdésekre fordíthassátok.
+Határozd meg az értekezlet fókuszát, hogy az értékes közös időt a legfontosabb témák megbeszélésére fordítsátok.  
 
-Ha meghívod a tagokat a napirend összeállításába, mindenkinek lesz ideje átgondolni a témákat és felkészülni az értekezletre.
+Ha felkéred a tagokat, hogy járuljanak hozzá a napirendhez, az segít összehangolódni, átgondolni a témákat és felkészülni az értekezletre.
 
 Teendők:
-- összpontosítsatok a legfontosabb kérdésekre,
-- kövesd nyomon a korábbi értekezletek teendőit, és beszélj róluk a tagokkal.
+- összpontosítsd az értekezletet a legfontosabb kérdésekre,
+- kövesd nyomon a korábbi értekezleteken meghatározott teendőket, és beszélj róluk a tagokkal.
 
 ![](meeting_prep.png#width-90)
 
 <!-- translation-section: on-loomio -->
 
 ### A Loomióban
-Készülj fel az értekezletre egy Loomio-**Vita** segítségével:
+Használj egy Loomio-**Beszélgetést** az értekezlet előkészítéséhez:
 * emlékeztesd a tagokat a közelgő értekezletre,
-* kérdezd meg, mely témákat tartják a legfontosabbnak,
-* foglald össze az előző értekezlet teendőit, és kérj tájékoztatást az állásukról.
+* kérj hozzászólásokat arról, hogy melyek a legfontosabb kérdések, amelyekre érdemes összpontosítani,
+* foglald össze az előző értekezleten meghatározott teendőket, és kérj tájékoztatást az előrehaladásról.
 
 <!-- translation-section: agenda-and-notify -->
 
 ## Napirend és értesítés
 
-Hirdesd meg az értekezletet világos napirenddel. Csatold az előterjesztéseket, hivatkozz a fontos dokumentumokra, és értesítsd a tagokat.
+Hirdesd meg az értekezletet egyértelmű napirenddel. Csatold az anyagokat, adj meg hivatkozásokat a fontos dokumentumokhoz, és értesítsd a tagokat.
 
-Így mindenki elolvashatja az anyagokat, és átgondolhatja a megvitatandó témákat és a meghozandó döntéseket.  A tagok felkészülten érkezhetnek az értekezletre.
+Ez segít mindenkinek felkészülni az értekezletre: elolvashatják az anyagokat, és átgondolhatják a beszélgetés témáit és a meghozandó döntéseket. Így a tagok nagyobb valószínűséggel érkeznek tájékozottan és felkészülten az értekezletre.
 
 Teendők:
-- készítsd elő a napirendet, a dokumentumokat és az előterjesztéseket,
-- értesítsd a tagokat az értekezletről, és küldd el nekik az anyagokat.
+- készítsd elő a napirendet, a dokumentumokat, az anyagokat és a vezetőségi előterjesztéseket,
+- értesítsd a tagokat az értekezletről, és küldd el az anyagokat.
 
 ![](meeting_notify.png#width-90)
 
 <!-- translation-section: on-loomio-2 -->
 
 ### A Loomióban
-Készülj fel a vezetőségi értekezletre egy Loomio-**Vita** segítségével:
+Használj egy Loomio-**Beszélgetést** a vezetőségi értekezlet előkészítéséhez:
 * add meg az értekezlet részleteit,
-* csatold a napirendet, a dokumentumokat és az egyéb anyagokat, vagy helyezz el rájuk mutató hivatkozásokat,
-* küldj értesítést a tagoknak,
-* a „Látta” jelzés alapján kövesd nyomon, ki olvasta el a témát.
+* csatold a napirendet, a dokumentumokat és az értekezlet egyéb anyagait, vagy adj meg hivatkozásokat hozzájuk,
+* hívd meg a tagokat egy értesítéssel,
+* figyeld a 'Látta' jelzést, hogy megtudd, ki olvasta a szálat.
 
-A Loomio-téma az e-mailhez hasonlóan használható, és több előnye is van:
-- láthatod, ki olvasta el a témát, és emlékeztetheted azokat, akik még nem tették meg,
-- a tagok válaszait és hozzászólásait mindenki láthatja, aki hozzáfér a témához,
-- a napirenddel és az anyagokkal kapcsolatos kérdések és hozzászólások egy helyen maradnak.
+Bár hasonlít az e-mail-küldéshez, a Loomio-szálnak több előnye is van:
+- láthatod, ki olvasta a szálat, és emlékeztetheted azokat, akik még nem olvasták,
+- a tagok válaszai és hozzászólásai mindenki számára láthatók, akinek jogosultsága van a szál megtekintésére,
+- a napirendről vagy az értekezlet anyagairól szóló beszélgetések és kérdések egy helyen maradnak.
 
-A tagok egy helyen megtalálják az értekezlet összes tudnivalóját, így nem kell e-mail-láncokban keresniük a fontos információkat.
+A tagok egy helyen, könnyen elérhetik az értekezlettel kapcsolatos összes információt, így elkerülhetik a nehezen követhető e-mail-láncokat és azt, hogy fontos információk vesszenek el a beérkezett üzenetek között.
 
 <!-- translation-section: confirm -->
 
-### Megerősítés
-Kérd meg a tagokat, hogy hozzászólásban erősítsék meg: elolvasták a napirendet és az értekezlet anyagait, és felkészültek. A **Látta** jelzés alapján megállapíthatod, kit érdemes emlékeztetni.
+### Visszaigazolás
+
+Kérd meg a tagokat, hogy egy hozzászólásban erősítsék meg: elolvasták a napirendet és az értekezlet anyagait, és felkészültek az értekezletre. A **Látta** jelzés segítségével állapítsd meg, kinek lehet szüksége emlékeztetőre.
 
 <!-- translation-section: find-a-time-for-meeting -->
 
-## Időpont keresése az értekezlethez
-Az értekezlet időpontjának egyeztetése gyakran sok munkát ad az adminisztrátoroknak.
+## Az értekezlet időpontjának kiválasztása
+
+Az értekezlet időpontjának egyeztetése sok adminnak rendszeresen nehézséget okoz.
 
 <!-- translation-section: on-loomio-3 -->
 
 ### A Loomióban
-Ha még nincs kitűzve az értekezlet időpontja, vagy egy későbbi értekezlethez keresel időpontot, használhatod az **Időpont választás** szavazást.
 
-Az időpontválasztással könnyen áttekintheted, mikor érnek rá a tagok, és megtalálhatod a legjobb időpontot. Így kevesebb időt kell az egyeztetésre fordítanod.
+Ha még nem határoztad meg az értekezlet dátumát és időpontját, vagy egy későbbi értekezlethez keresel időpontot, használd az **Időpontszavazást**.
+
+Az időpontszavazás megkönnyíti annak áttekintését, hogy ki mikor ér rá, és segít megtalálni a legjobb időpontot. Így kevesebb időt és energiát igényel ez a gyakori adminfeladat.
 
 A különböző időzónákban élő tagok a saját időzónájuk szerint látják a dátumokat és időpontokat.
 
 ![](timepoll_vote.png#width-90)
 
-Amikor lezárul az időpontválasztás, válaszd ki a legjobb időpontot, és küldj értesítést a következtetésről naptármeghívóval. Így a tagok felvehetik az értekezletet a naptárukba.
+Amikor az időpontszavazás lezárul, válaszd ki a legjobb időpontot, és küldj értesítést a következtetésről egy naptármeghívóval együtt, hogy a tagok hozzáadhassák az értekezletet a naptárukhoz.
 
 <!-- translation-section: sign-off-minutes -->
 
 ## A jegyzőkönyv jóváhagyása
-A jegyzőkönyv jóváhagyása a hivatalos értekezleteken bevett eljárás, és más értekezleteken is hasznos.
 
-A jegyzőkönyv rögzíti az értekezletet, a vita főbb pontjait, a döntéseket és a szavazatokat. Tartalmazza az elfogadott teendőket és azok felelőseit. Gyakran ez adja a következő értekezlet kiindulópontját.
+A jegyzőkönyv jóváhagyása vagy megerősítése a hivatalos értekezleteken bevett eljárás, és minden értekezleten hasznos gyakorlat.  
 
-A résztvevőket emlékezteti az elhangzottakra, a távol maradóknak tájékoztatást ad, és vita esetén visszakereshető feljegyzésként szolgál.
+A jegyzőkönyv rögzíti az értekezletet, a beszélgetés során felmerült főbb pontokat, a döntések eredményeit és azt, hogy ki hogyan szavazott. Tartalmazza az egyeztetett teendőket és azok felelőseit, és gyakran a következő értekezlet kiindulópontja.  
+
+A jegyzőkönyv emlékeztetőként szolgál a jelenlévőknek, tájékoztatja a távolmaradókat, és konfliktus esetén hivatkozási alapot ad.
 
 <!-- translation-section: on-loomio-4 -->
 
 ### A Loomióban
 
-Az értekezlet utáni néhány napon belül tedd közzé a jegyzőkönyvet az értekezlet Loomio-témájában, és kérd meg a résztvevőket, hogy hagyják jóvá.  Ekkor még jól emlékeznek a történtekre, és a jegyzőkönyv a vállalt teendőikre is emlékezteti őket.  Ezzel az értekezleten is időt takaríthattok meg.
+Az értekezlet után néhány napon belül tedd közzé a jegyzőkönyvet az értekezlet Loomio-szálában, és kérd fel a résztvevőket a jóváhagyására. Így a tagok még friss emlékek alapján tekinthetik át a jegyzőkönyvet, és a teendőikre is emlékeztetheted őket. Ezzel az értekezleten is időt takaríthatsz meg.
 
 ![](poll_minutes.png#width-90)
 
-A fenti példa egy **Választ** szavazást használ két lehetőséggel: „Elfogadás” és „Áttekintés”.
+A fenti példa egy **Kiválasztás** típusú szavazást használ két lehetőséggel: „Elfogadás” és „Felülvizsgálat”.
 
-Miután mindenki szavazott, és a szavazás lezárult, tedd közzé a következtetést, hogy mindenki tudja, mi történt.
+Amikor mindenki szavazott, és a szavazás lezárul, írj következtetést, hogy mindenki tudja, mi történt.  
 
-Ha a csoport eljárása szerint a következő értekezleten hivatalos jóváhagyás szükséges, vegyétek napirendre a Loomióban tartott szavazások és meghozott döntések megerősítését, és rögzítsétek ezt a jegyzőkönyvben.
+Ha az értekezleti gyakorlatotok megköveteli a hivatalos elfogadást a következő értekezleten, vegyél fel egy napirendi pontot a Loomióban lezajlott szavazások és meghozott döntések áttekintésére és megerősítésére, és rögzítsd ezt az értekezlet jegyzőkönyvében.  
 
-Például: *„Szeretné valaki módosítani a Loomióban leadott szavazatát?  Ha nem, akkor hagyjuk jóvá hivatalosan az előző időszak Loomio-szavazásait.”*
+Például: *„Szeretné valaki módosítani a Loomióban leadott szavazatait? Ha nem, akkor határozzunk az elmúlt időszakban a Loomióban lezajlott szavazások hivatalos jóváhagyásáról.”*
 
 <!-- translation-section: approve-reports -->
 
 ## A beszámolók jóváhagyása
-A legtöbb értekezlet napirendjén szerepel beszámolók bemutatása, megvitatása és jóváhagyása. Ilyen lehet a vezérigazgatói, pénzügyi, működési, munkaegészségügyi és munkabiztonsági vagy projektbeszámoló.
 
-A beszámolók segítenek abban, hogy mindenki ugyanazokból az információkból induljon ki. Megvitatásuk azonban sok időt vehet el az értekezletből, amelyet másra is fordíthatnátok.
+A legtöbb értekezlet napirendje időt biztosít a beszámolók bemutatására, megbeszélésére és jóváhagyására. Ilyenek például az ügyvezetői, pénzügyi, működési, munkavédelmi és projektbeszámolók.
+
+A beszámolók segítenek abban, hogy mindenki ugyanazokkal az információkkal rendelkezzen, de az értekezlet értékes idejéből sokat igénybe vehetnek, amit hatékonyabban is fel lehetne használni.
 
 <!-- translation-section: on-loomio-5 -->
 
 ### A Loomióban
 
-Csatold a beszámolókat az értekezlet **témájához**, vagy helyezz el rájuk mutató hivatkozásokat, és kérd meg a tagokat, hogy még az értekezlet előtt tegyék fel a kérdéseiket.
+Csatold a beszámolókat az értekezlet **szálához**, vagy add meg a hivatkozásaikat, és kérd meg a tagokat, hogy már az értekezlet előtt tegyék fel a beszámolókkal kapcsolatos kérdéseiket.
 
-A tagok a nekik megfelelő időben és helyen olvashatják el a beszámolókat.  Olvasás közben hozzászólhatnak, kérdezhetnek, és láthatják a Loomióban érkező válaszokat.
+A tagok a számukra megfelelő időben és helyen kaphatják meg és olvashatják el a beszámolókat. Olvasás és átgondolás közben hozzászólhatnak, kérdéseket tehetnek fel, és megnézhetik a válaszokat a Loomióban.
 
-Egy tag kérdése másokat is érdekelhet. Ha valaki válaszol rá, a válasz a Loomio-csoport minden tagja számára látható.
+Egy tag kérdése valószínűleg más tagokat is érdekel, ezért amikor valaki válaszol rá, a válasza a Loomio-csoport minden tagja számára látható.
 
-Ha a tagok már megszokták a beszámolók megvitatását a Loomióban, további időt takaríthattok meg azzal, hogy még az értekezlet előtt jóváhagyást kértek rájuk.
+Amint a tagok megszokják a beszámolók megbeszélését a Loomióban, további időt takaríthatsz meg: kérd a beszámolók jóváhagyását már az értekezlet előtt.
 
 ![](poll_approve_report.png#width-90)
 
-Ha a csoport eljárása szerint a következő értekezleten hivatalos jóváhagyás szükséges, vegyétek napirendre a Loomióban tartott szavazások és meghozott döntések megerősítését, és rögzítsétek ezt a jegyzőkönyvben.
+Ha az értekezleti gyakorlatotok megköveteli a hivatalos elfogadást a következő értekezleten, vegyél fel egy napirendi pontot a Loomióban lezajlott szavazások és meghozott döntések áttekintésére és megerősítésére, és rögzítsd ezt az értekezlet jegyzőkönyvében.  
 
-Például: *„Szeretné valaki módosítani a Loomióban leadott szavazatát?  Ha nem, akkor hagyjuk jóvá hivatalosan az előző időszak Loomio-szavazásait.”*
+Például: *„Szeretné valaki módosítani a Loomióban leadott szavazatait? Ha nem, akkor határozzunk az elmúlt időszakban a Loomióban lezajlott szavazások hivatalos jóváhagyásáról.”*

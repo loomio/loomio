@@ -1,10 +1,10 @@
 ---
 title: Subgroepen
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/groups/subgroups/index.md
+source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
+source_file: docs/en/user_manual/groups/subgroups/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-30'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 63e6e23d24e80919
   add-a-subgroup: 0bc0e5f99eb074c3
@@ -17,16 +17,16 @@ sections:
   administer-a-subgroup: 58fa95833f79dd01
   delete-a-subgroup: 2c6e76ec78386443
 generated:
-  introduction: 7850693ec9f1dcc6
-  add-a-subgroup: 17dd5897e45fbddb
-  subgroup-settings: 20d70a40536a784e
-  privacy: 30f0ef8e1175e123
-  permissions: 28e47610e3010f73
-  find-subgroups: a8901f309da0f6f2
-  invite-to-a-subgroup: 03bb408f3a296270
-  simultaneously-invite-people-to-subgroups-and-parent-group: bab3d47f2ff954d1
-  administer-a-subgroup: 95639ba8fa1ab953
-  delete-a-subgroup: 887d3aecf28afb62
+  introduction: 75c64ddaa880134c
+  add-a-subgroup: 0ceef6cb6b4e97f4
+  subgroup-settings: ad0c7b923b9ddc01
+  privacy: 8844aa1ef192b577
+  permissions: 83f1ee5a66282dd3
+  find-subgroups: f3c8f74d99c5b1e1
+  invite-to-a-subgroup: f9298311957d4afd
+  simultaneously-invite-people-to-subgroups-and-parent-group: 54e5ac5efa9afc0c
+  administer-a-subgroup: a34d9628137e3175
+  delete-a-subgroup: c0cf3d3472210145
 title_source: 9f81e728f70cae3e
 title_generated: 6fe3105765e4acd6
 ---
@@ -35,69 +35,69 @@ title_generated: 6fe3105765e4acd6
 
 # Subgroepen
 
-Met subgroepen organiseer je gesprekken en leden, zodat de juiste mensen kunnen samenwerken.
+Subgroepen helpen je om je communicatie en leden te organiseren, zodat de juiste mensen samen aan hun werk kunnen deelnemen.
 
-Een organisatie kan bijvoorbeeld deze subgroepen hebben:
-- een bestuur
-- een team of projectgroep
+Een organisatie kan bijvoorbeeld de volgende subgroepen hebben:
+- bestuur
+- werkteam of projectwerkgroep
 - een onderwerp (zoals 'strategie' of 'leren')
 
-Subgroepen werken hetzelfde als groepen, maar bevinden zich binnen een bovenliggende groep. De meeste functies en instellingen zijn hetzelfde. Iemand kan lid zijn van een subgroep, zoals het bestuur, zonder lid te zijn van de bovenliggende groep.
+Subgroepen werken net als groepen, maar bevinden zich binnen jouw hoofdgroep. De meeste beschikbare functies en instellingen zijn hetzelfde als in de hoofdgroep. Dit betekent ook dat iemand lid kan zijn van jouw subgroep, zoals je bestuur, zonder lid te zijn van jouw hoofdgroep.
 
 <!-- translation-section: add-a-subgroup -->
 
 ## Een subgroep toevoegen
 
 >[!Note]
->Of je nieuwe subgroepen kunt toevoegen, hangt af van de [machtigingsinstellingen](/en/user_manual/groups/settings/permissions) van de groep. Standaard kunnen alleen beheerders nieuwe subgroepen starten.
+>De mogelijkheid om nieuwe subgroepen toe te voegen maakt deel uit van de [rechteninstellingen](/en/user_manual/groups/settings/permissions) van de groep. Standaard kunnen alleen admins nieuwe subgroepen starten.
 
-Ga naar de pagina van je hoofdgroep en klik in de zijbalk op **Nieuwe subgroep**.
+Ga naar de pagina van je hoofdgroep om een subgroep toe te voegen en klik in de zijbalk op **Nieuwe subgroep**.  
 
 ![Knop Nieuwe subgroep in de zijbalk van Oatmilk Cooperative](subgroups-sidebar.png)
 
-Klik op **Nieuwe subgroep**, geef de subgroep een naam, kies de privacyinstelling en klik op **Start subgroep**.
+Klik op de knop **Nieuwe subgroep**, geef de subgroep een naam en selecteer de privacyinstelling. Klik vervolgens op **Start subgroep**.
 
 ![Formulier voor een nieuwe subgroep voor de Packaging Working Group](subgroups_new.png)
 
-Als je zover bent, kun je [mensen uitnodigen](/en/user_manual/groups/inviting_people/) voor de subgroep.
+Als je klaar bent, kun je [mensen uitnodigen](/en/user_manual/groups/inviting_people/) voor de subgroep.
 
-Je kunt de [groepsinstellingen](/en/user_manual/groups/settings/) van de subgroep bewerken via het tandwielpictogram op de pagina van de subgroep.
+Je kunt de [groepsinstellingen](/en/user_manual/groups/settings/) van de subgroep bewerken door op het tandwielpictogram op de pagina van de subgroep te klikken.
 
-![Optie om de groepsinstellingen van de Packaging Working Group te bewerken](subgroups_edit_group_settings.png)
+![Actie om de groepsinstellingen van de Packaging Working Group te bewerken](subgroups_edit_group_settings.png)
 
 <!-- translation-section: subgroup-settings -->
 
-## Instellingen van subgroepen
+## Subgroepinstellingen
 
 <!-- translation-section: privacy -->
 
 ### Privacy
 
-De privacyinstellingen van subgroepen lijken op die van de bovenliggende groep.
+De privacyinstellingen voor subgroepen zijn vergelijkbaar met die van de hoofdgroep.
 
-**Geheim** subgroepen zijn alleen zichtbaar voor mensen die voor de subgroep zijn uitgenodigd.
+**Geheim** ingestelde subgroepen zijn niet zichtbaar voor mensen die niet voor de subgroep zijn uitgenodigd.
 
-**Gesloten** subgroepen staan op het tabblad Subgroepen van de bovenliggende groep en in het zijbalkmenu van gebruikers. Leden van de bovenliggende groep kunnen vragen om lid te worden van de subgroep. Een beheerder van de subgroep keurt het lidmaatschap goed.
+**Gesloten** subgroepen staan op het tabblad Subgroepen van de hoofdgroep en in het zijbalkmenu van de gebruiker. Leden van de hoofdgroep kunnen een verzoek indienen om lid te worden van de subgroep. Een admin van de subgroep keurt het lidmaatschap goed.
 
-Gesloten subgroepen hebben een extra instelling waarmee leden van de bovenliggende groep privédiscussies kunnen zien.
+Gesloten subgroepen hebben een extra instelling waarmee leden van de hoofdgroep privéthreads kunnen bekijken.
 
-[Lees meer over de privacy van groepen](/en/user_manual/groups/settings/privacy).
+[Lees hier over de privacy van groepen](/en/user_manual/groups/settings/privacy).
 
 <!-- translation-section: permissions -->
 
-### Machtigingen
+### Rechten
 
-Subgroepen werken onafhankelijk van de hoofdgroep. Als de privacyinstelling van een subgroep bijvoorbeeld op **Geheim** staat, kunnen alleen uitgenodigde leden de subgroep vinden, zien wie lid is en discussies bekijken.
+Subgroepen werken onafhankelijk van de hoofdgroep. Als de privacyinstelling van de subgroep bijvoorbeeld op **Geheim** staat, kunnen alleen uitgenodigde leden deze subgroep vinden, zien wie er lid van is en threads bekijken.
 
-**Gesloten** subgroepen hebben een extra instelling waarmee leden van de bovenliggende groep privédiscussies kunnen zien. Zo kunnen zij volgen wat er in de subgroep gebeurt.
+**Gesloten** subgroepen hebben een extra instelling waarmee leden van de hoofdgroep privéthreads kunnen bekijken. Zo kan de subgroep transparant zijn voor leden van de hoofdgroep.
 
-![Instelling waarmee leden van de bovenliggende groep privédiscussies van de subgroep kunnen zien](subgroups_private_threads_settings.png)
+![Instelling waarmee leden van de hoofdgroep privéthreads van de subgroep kunnen bekijken](subgroups_private_threads_settings.png)
 
 <!-- translation-section: find-subgroups -->
 
 ## Subgroepen vinden
 
-Open het zijbalkmenu en klik op de naam van je groep om de subgroepen te zien.
+Open het zijbalkmenu en klik op de naam van je groep om de subgroepen te bekijken.
 
 ![Subgroepen van Oatmilk Cooperative in de zijbalk](subgroups_find_subgroups.png)
 
@@ -105,36 +105,36 @@ Open het zijbalkmenu en klik op de naam van je groep om de subgroepen te zien.
 
 ## Mensen uitnodigen voor een subgroep
 
-Je nodigt mensen voor een subgroep uit zoals je ze voor een groep uitnodigt. Als ze al lid zijn van een bovenliggende groep of een andere subgroep binnen dezelfde organisatie waarvan jij ook lid bent, kun je hun naam invoeren of die groep als doelgroep selecteren. Selecteer het label van de doelgroep om de afzonderlijke mensen te zien. Verwijder daarna iedereen die je niet wilt uitnodigen.
+Nodig mensen uit voor een subgroep zoals je ze uitnodigt voor een groep. Als ze al lid zijn van een hoofdgroep of een andere subgroep in dezelfde organisatie waar jij ook lid van bent, kun je hun naam typen of die groep als doelgroep selecteren. Selecteer het label van de doelgroep om de afzonderlijke mensen weer te geven en verwijder vervolgens iedereen die je niet wilt uitnodigen.
 
 <!-- translation-section: simultaneously-invite-people-to-subgroups-and-parent-group -->
 
-### Mensen tegelijk uitnodigen voor subgroepen en de bovenliggende groep
+### Mensen tegelijk uitnodigen voor subgroepen en de hoofdgroep
 
-Gebruik je de knop **Mensen uitnodigen** op het tabblad **Leden** van de bovenliggende groep? Dan kun je mensen tegelijk voor meerdere subgroepen uitnodigen. Vink de subgroepen aan waarvan ze meteen lid moeten worden.
+Als je de knop **Mensen uitnodigen** op het tabblad **Leden** van je hoofdgroep gebruikt, kun je mensen tegelijk voor meerdere subgroepen uitnodigen. Vink de vakjes aan van de subgroepen waarvan je wilt dat ze meteen lid worden.
 
-![De bovenliggende groep en een subgroep selecteren in het uitnodigingsformulier](group_invite_email_subgroups.png)
+![De hoofdgroep en subgroep selecteren in het uitnodigingsformulier](group_invite_email_subgroups.png)
 
 <!-- translation-section: administer-a-subgroup -->
 
 ## Een subgroep beheren
 
-Subgroepen kunnen eigen beheerders hebben. Dat hoeven niet dezelfde mensen te zijn als de beheerders van de bovenliggende groep.
+Subgroepen kunnen hun eigen admins hebben. De admins van een subgroep hoeven niet dezelfde te zijn als de admins van de hoofdgroep.
 
-Een beheerder van de bovenliggende groep kan zichzelf wel beheerder maken van elke subgroep. Zo kan die de subgroepen beheren wanneer dat nodig is.
+Een admin van de hoofdgroep kan zichzelf echter admin maken van elke subgroep. Zo kunnen admins van de hoofdgroep subgroepen beheren wanneer dat nodig is.
 
 Ga naar het tabblad Subgroepen, zoek de subgroep en klik op **Word lid van de groep**.
 
 ![Knop Word lid van de groep bij een gesloten subgroep](member_join_subgroup.png)
 
-Zodra de beheerder van de bovenliggende groep lid is van de subgroep, kan die zichzelf beheerder van de subgroep maken.
+Zodra de admin van de hoofdgroep lid is van de subgroep, kan die zichzelf admin van de subgroep maken.
 
-![Optie om een beheerder van de bovenliggende groep beheerder van de subgroep te maken](member_make_admin.png)
+![Actie om een admin van de hoofdgroep admin van de subgroep te maken](member_make_admin.png)
 
 <!-- translation-section: delete-a-subgroup -->
 
 ## Een subgroep verwijderen
 
-Beheerders kunnen een subgroep op dezelfde manier verwijderen als een groep. Let erop dat je de bovenliggende groep niet verwijdert.
+Admins kunnen een subgroep op dezelfde manier verwijderen als een groep. Let er bij het verwijderen van een subgroep op dat je niet de hoofdgroep verwijdert.
 
 Lees [hoe je groepen verwijdert](/en/user_manual/groups/deleting_your_group/).

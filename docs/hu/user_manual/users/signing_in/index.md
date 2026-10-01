@@ -1,10 +1,10 @@
 ---
 title: Bejelentkezés
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/users/signing_in/index.md
+source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
+source_file: docs/en/user_manual/users/signing_in/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-30'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 9aa03b133cc213ce
   sign-in-with-a-passkey: c685bd268243f8f5
@@ -15,14 +15,14 @@ sections:
   other-loomio-sites: 123e31828ab49002
   sign-out: 96c8936d1a7aef07
 generated:
-  introduction: b1478d7911dec91b
-  sign-in-with-a-passkey: 05d0584e53f6b6df
-  sign-in-with-email-and-password: 0a6cdb6d959278db
-  get-a-sign-in-code: 24ea6f61bbe8c994
-  create-an-account: f3eefd5b99452285
-  sign-in-with-google: 7d50c1a4cff9ffed
-  other-loomio-sites: 98a324800b341054
-  sign-out: 88be737822f9ab2b
+  introduction: 5d131418eb0ef50b
+  sign-in-with-a-passkey: 83b0e4b78d929bfa
+  sign-in-with-email-and-password: af07286b9ca6a2ed
+  get-a-sign-in-code: 9c60084910d29434
+  create-an-account: 1f5e3f04df0a0a7a
+  sign-in-with-google: 26773c02c542a9d2
+  other-loomio-sites: 66f9da877c6486a8
+  sign-out: c32dce0c1bde14c2
 title_source: 824a1d703ce676bb
 title_generated: 1338de4e9c32ed95
 ---
@@ -31,25 +31,25 @@ title_generated: 1338de4e9c32ed95
 
 # Bejelentkezés
 
-A Loomio.com oldalon passkeyjel, e-mail-címmel és jelszóval, e-mailben kapott bejelentkezési kóddal vagy Google-fiókkal jelentkezhetsz be. Válaszd a számodra legkényelmesebb elérhető módot.
+A Loomio.com oldalon hozzáférési kulccsal, e-mail-címmel és jelszóval, e-mailben kapott bejelentkezési kóddal vagy Google-fiókkal jelentkezhetsz be. Válaszd ki az elérhető módszerek közül azt, amelyik számodra a legkényelmesebb.
 
-![A Loomio bejelentkezési űrlapja passkey, e-mail-cím, jelszó és e-mailben küldött kód lehetőségével](sign_in_email.png)
+![A Loomio bejelentkezési űrlapja hozzáférési kulccsal, e-mail-címmel, jelszóval és e-mailben kapott kóddal történő bejelentkezéshez](sign_in_email.png)
 
 <!-- translation-section: sign-in-with-a-passkey -->
 
-## Bejelentkezés passkeyjel
+## Bejelentkezés hozzáférési kulccsal
 
-Válaszd a **Használjon jelszót** lehetőséget. A böngésződ vagy az eszközöd megmutatja az elérhető Loomio-passkeyeket. A kiválasztott passkey feloldásához a megszokott képernyőzárat, ujjlenyomatot, arcfelismerést, PIN-kódot vagy biztonsági kulcsot kéri. Előtte nem kell megadnod az e-mail-címedet.
+Válaszd ki a **Használjon jelszót** lehetőséget. A böngésződ vagy az eszközöd megjeleníti a számodra elérhető Loomio-hozzáférési kulcsokat, és arra kér, hogy oldd fel a kiválasztott kulcsot a szokásos képernyőzárral, ujjlenyomattal, arcfelismeréssel, PIN-kóddal vagy biztonsági kulccsal. Előtte nem kell megadnod az e-mail-címedet.
 
-A profilodban hozzáadhatsz, elnevezhetsz és eltávolíthatsz passkeyeket. Biztonsági okból a Loomio kérheti, hogy a módosításuk előtt jelentkezz be újra. Adj mindegyiknek könnyen felismerhető nevet, például „Munkahelyi laptop” vagy „Telefon”. A passkeyek ahhoz a Loomio-oldalhoz tartoznak, amelyen létrehoztad őket. Az eszközöd vagy a jelszókezelőd szinkronizálhatja őket.
+A profilodban hozzáadhatsz, elnevezhetsz és eltávolíthatsz hozzáférési kulcsokat. Biztonsági okokból a Loomio újabb bejelentkezést kérhet, mielőtt módosítod őket. Adj minden hozzáférési kulcsnak könnyen felismerhető nevet, például „Munkahelyi laptop” vagy „Telefon”. A hozzáférési kulcsok ahhoz a Loomio-oldalhoz kötődnek, ahol létrehoztad őket, és az eszközöd vagy a jelszókezelőd szinkronizálhatja őket.
 
 <!-- translation-section: sign-in-with-email-and-password -->
 
 ## Bejelentkezés e-mail-címmel és jelszóval
 
-Add meg az e-mail-címedet és a jelszavadat, majd válaszd a **Bejelentkezés** lehetőséget. A fiókok védelme érdekében a Loomio ugyanazt a hibaüzenetet jeleníti meg, ha az e-mail-címmel vagy a jelszóval nem lehet bejelentkezni.
+Add meg az e-mail-címedet és a jelszavadat, majd válaszd ki a **Bejelentkezés** lehetőséget. A fiókadatok védelme érdekében a Loomio ugyanazt a hibaüzenetet jeleníti meg, ha az e-mail-címmel vagy a jelszóval nem lehet bejelentkezni.
 
-Ha még nem adtál hozzá passkeyt, a Loomio a jelszavas bejelentkezés után felajánlja ezt. Elutasíthatod az ajánlatot; a Loomio megjegyzi a döntésedet.
+Ha még nem adtál hozzá hozzáférési kulcsot, a Loomio a jelszavas bejelentkezés után felajánlja ezt. Elutasíthatod az ajánlatot, és a Loomio megjegyzi a döntésedet.
 
 Ha nincs jelszavad, vagy nem emlékszel rá, válaszd inkább a **Küldj nekem egy kódot** lehetőséget.
 
@@ -57,40 +57,40 @@ Ha nincs jelszavad, vagy nem emlékszel rá, válaszd inkább a **Küldj nekem e
 
 ## Bejelentkezési kód kérése
 
-Válaszd a **Küldj nekem egy kódot** lehetőséget, add meg az e-mail-címedet, majd küldd el az űrlapot. A Loomio ugyanazt a megerősítést jeleníti meg akkor is, ha a címhez nem tartozik fiók. Így mások nem tudhatják meg az űrlap segítségével, hogy ki használja a Loomiót.
+Válaszd ki a **Küldj nekem egy kódot** lehetőséget, add meg az e-mail-címedet, és küldd el az űrlapot. A Loomio ugyanazt a visszaigazolást jeleníti meg attól függetlenül, hogy a cím tartozik-e fiókhoz, így mások nem tudhatják meg az űrlap segítségével, hogy ki használja a Loomiót.
 
-Ha a cím a fiókodhoz tartozik, a Loomio hatjegyű kódot küld. Térj vissza a bejelentkezési űrlaphoz, írd be a kódot, majd válaszd a **Bejelentkezés** lehetőséget. A bejelentkezési kódok általában 24 óra után lejárnak, és csak egyszer használhatók. Ha nem érkezik meg az üzenet, nézd meg a levélszemét mappát, és ellenőrizd, hogy a fiókodhoz tartozó e-mail-címet adtad-e meg.
+Ha a cím a fiókodhoz tartozik, a Loomio egy hatjegyű kódot küld. Térj vissza a bejelentkezési űrlaphoz, add meg a kódot, és válaszd ki a **Bejelentkezés** lehetőséget. A bejelentkezési kódok általában 24 óra után lejárnak, és nem használhatók fel újra. Ha az üzenet nem érkezik meg, ellenőrizd a levélszemét mappát, és győződj meg róla, hogy a fiókodhoz tartozó címet adtad meg.
 
 ![A Loomio űrlapja a hatjegyű bejelentkezési kód megadásához](sign_in_code.png)
 
-Minden kódos bejelentkezés után a Loomio felajánlja, hogy állíts be vagy cserélj le egy jelszót. Ha a böngésződ támogatja a passkeyeket, hozzáadhatsz egyet akkor is, ha egy másik eszközön már hozzáadtál egyet. A passkey segítségével gyorsan bejelentkezhetsz az eszközöd ujjlenyomat-olvasójával, arcfelismerésével vagy képernyőzárával. Kihagyhatod az ajánlatot, és továbbra is használhatsz e-mailben küldött kódokat.
+Minden kóddal történő bejelentkezés után a Loomio felajánlja, hogy beállíthatod vagy lecserélheted a jelszavadat. Ha a böngésződ támogatja a hozzáférési kulcsokat, hozzáadhatsz egyet akkor is, ha egy másik eszközön már hozzáadtál egy hozzáférési kulcsot. A hozzáférési kulccsal gyorsan bejelentkezhetsz az eszközöd ujjlenyomat-olvasójával, arcfelismerésével vagy képernyőzárával. Kihagyhatod ezt a lépést, és továbbra is használhatod az e-mailben kapott kódokat.
 
 <!-- translation-section: create-an-account -->
 
 ## Fiók létrehozása
 
-Válaszd a **Fiók létrehozása** lehetőséget, és kövesd az e-mail-cím megerősítésének lépéseit.
+Válaszd ki a **Fiók létrehozása** lehetőséget, és kövesd az e-mail-cím megerősítésének lépéseit.
 
-A személyes adataid védelme érdekében azt az e-mail-címet használd, amelyre a csoportmeghívót kaptad. Ha több e-mail-címmel is van fiókod, [egyesítheted a fiókjaidat](/en/user_manual/users/merge_accounts).
+Az adataid védelme érdekében azt az e-mail-címet használd, amelyre a csoport meghívóját kaptad. Ha több e-mail-címmel is van fiókod, [egyesítheted a fiókjaidat](/en/user_manual/users/merge_accounts).
 
 <!-- translation-section: sign-in-with-google -->
 
 ## Bejelentkezés Google-fiókkal
 
-Válaszd a **Bejelentkezés Google-fiókkal** lehetőséget, és jelentkezz be a Google-fiókoddal. Ha már létezik Loomio-fiók ugyanazzal az e-mail-címmel, a Loomio összekapcsolja vele a Google-azonosítódat.
+Válaszd ki a **Bejelentkezés Google-fiókkal** lehetőséget, és azonosítsd magad a Google-fiókoddal. Ha egy meglévő Loomio-fiókhoz ugyanaz az e-mail-cím tartozik, a Loomio ahhoz a fiókhoz kapcsolja a Google-azonosítódat.
 
 <!-- translation-section: other-loomio-sites -->
 
 ## Más Loomio-oldalak
 
-A saját Loomio-oldalt üzemeltető szervezetek különböző bejelentkezési módokat állíthatnak be. Egy oldalon egyszerre is elérhető lehet a jelszavas, az e-mailben küldött kódos, a passkeyes, a Google-fiókos, a SAML-alapú vagy más OAuth-szolgáltatón keresztüli bejelentkezés.
+A saját Loomio-oldalt üzemeltető szervezetek különböző bejelentkezési módszereket állíthatnak be. Egy oldalon egymás mellett is elérhető lehet a jelszavas, az e-mailben kapott kódos, a hozzáférési kulcsos, a Google-fiókos, a SAML-alapú vagy más OAuth-szolgáltatón keresztüli bejelentkezés.
 
-Egyes oldalakon csak meghívóval hozhatsz létre fiókot. Ezeken az oldalakon a **Fiók létrehozása** lehetőség csak akkor jelenik meg, ha meghívólinket követsz.
+Egyes oldalakon meghívó szükséges a fiók létrehozásához. Ezeken az oldalakon a **Fiók létrehozása** csak akkor jelenik meg, ha egy meghívóban található hivatkozást nyitsz meg.
 
-A kizárólag egyszeri bejelentkezést (SSO) használó privát oldal csak a szervezet bejelentkezési lehetőségét mutatja. Nem kínál Loomio által kezelt jelszavakat vagy passkeyeket, e-mailben küldött bejelentkezési kódokat, illetve közvetlen fióklétrehozást. Ha a szervezet passkeyeket használ, az azonosító szolgáltató az SSO-bejelentkezés során kéri őket.
+A kizárólag egyszeri bejelentkezést (SSO) használó privát oldal csak a szervezet bejelentkezési lehetőségét jeleníti meg. Nem kínál a Loomio által kezelt jelszavakat, e-mailben küldött bejelentkezési kódokat, közvetlen fióklétrehozást vagy a Loomio által kezelt hozzáférési kulcsokat. Ha a szervezet hozzáférési kulcsokat használ, az identitásszolgáltatója kéri ezeket az SSO során.
 
 <!-- translation-section: sign-out -->
 
 ## Kijelentkezés
 
-Nyisd meg az oldalsávot, válaszd ki a nevedet, majd a **Kijelentkezés** lehetőséget. Ha közös számítógépet használsz, a munka végén jelentkezz ki; ne csak a böngészőlapot zárd be.
+Nyisd meg az oldalsávot, válaszd ki a nevedet, majd a **Kijelentkezés** lehetőséget. Közösen használt számítógépen jelentkezz ki, amikor végeztél; ne csak a böngésző lapját zárd be.

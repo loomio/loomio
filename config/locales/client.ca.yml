@@ -175,11 +175,11 @@ ca:
     only_show_tags_in_this_group: Mostra només les etiquetes d'aquest grup
   poll_types:
     proposal: proposta
-    count: optar a
-    check: control de sentit
+    count: inscripció
+    check: tempteig
     poll: enquesta
-    dot_vote: vot limitat
-    meeting: enquesta de temps
+    dot_vote: vot per punts
+    meeting: enquesta d'horari
     ranked_choice: vot preferencial
     score: vot amb puntuació
     question: ronda de preguntes
@@ -773,7 +773,7 @@ ca:
   notification_models:
     comment: Comenta a
     poll: 'enquesta:'
-    outcome: 'resultat:'
+    outcome: 'conclusió: '
     stance: 'votar:'
     discussion: 'discussió:'
   notifications:
@@ -789,17 +789,17 @@ ca:
       membership_request_approved: "%{actor} ha aprovat la teva sol·licitud per unir-te a %{title}"
       new_comment: "%{actor} ha comentat a: %{title}"
       new_coordinator: "%{actor} et va convertir en administrador de %{title}"
-      outcome_announced: "%{actor} ha compartit un resultat de %{poll_type}: %{title}"
-      outcome_created: "%{actor} ha compartit un resultat de %{poll_type}: %{title}"
-      outcome_updated: "%{actor} ha actualitzat el resultat %{poll_type}: %{title}"
-      outcome_review_due: 'És hora de revisar el resultat de: %{title}'
+      outcome_announced: "%{actor} ha publicat una conclusió de %{poll_type}: %{title}"
+      outcome_created: "%{actor} ha publicat una conclusió de %{poll_type}: %{title}"
+      outcome_updated: "%{actor} ha actualitzat la conclusió de %{poll_type}: %{title}"
+      outcome_review_due: 'És hora de revisar la conclusió de: %{title}'
       poll_closed_by_user: "%{actor} ha tancat el %{poll_type}: %{title}"
       poll_closing_soon: "%{poll_type} tancant en 24 hores: %{title}"
       poll_closing_soon_author: 'El teu %{poll_type} tancarà d''aquí a 24 hores: %{title}'
       poll_created: "%{actor} va iniciar un %{poll_type}: %{title}"
       poll_edited: "%{actor} ha actualitzat el %{poll_type}: %{title}"
       poll_expired: "%{poll_type} ha tancat: %{title}"
-      poll_expired_author: 'Comparteix el resultat del teu %{poll_type}: %{title}'
+      poll_expired_author: 'Comparteix la conclusió de la teva %{poll_type}: %{title}'
       poll_option_added: "%{actor} ha afegit opcions a %{title}"
       poll_reopened: "%{actor} ha reobert el %{poll_type}: %{title}"
       poll_reminder: "%{actor} us recorda que voteu a %{title}"
@@ -856,7 +856,7 @@ ca:
       discussion_closed: "%{actor} ha tancat la discussió"
       new_discussion: "%{actor} ha iniciat una discussió"
       new_comment: "%{actor} ha comentat en una discussió"
-      outcome_updated: "%{actor} ha actualitzat el resultat"
+      outcome_updated: "%{actor} ha actualitzat la conclusió"
       thread_locked: "%{actor} ha bloquejat el fil"
       membership_request_declined: La teva sol·licitud per unir-te a %{title} ha estat rebutjada
     hints:
@@ -965,7 +965,7 @@ ca:
     send_discussion: Envia fil
     send_group: Convida gent a %{name}
     send_poll: Envia %{type}
-    send_outcome: Envia resultat
+    send_outcome: Envia la conclusió
     cannot_reveal_when_anonymous: Ho sentim, no podem revelar qui ha votat o no en una enquesta anònima.
     group_notification_history: Historial d'invitacions del grup
     poll_notification_history: Historial de notificacions de les enquestes
@@ -989,13 +989,13 @@ ca:
     new_discussion: "%{name} ha convidat %{length} persones al fil:"
     discussion_announced: "%{name} ha convidat %{length} persones al fil:"
     poll_created: "%{name} ha convidat %{length} persones a votar:"
-    outcome_created: "%{name} ha compartit un resultat amb %{length} persones:"
-    outcome_announced: "%{name} ha compartit un resultat amb %{length} persones:"
+    outcome_created: "%{name} ha compartit una conclusió amb %{length} persones:"
+    outcome_announced: "%{name} ha compartit una conclusió amb %{length} persones:"
     announcement_created: "%{name} ha convidat %{length} persones al fil:"
     discussion_edited: "%{name} ha editat el fil i ha notificat a %{length} persones:"
     poll_edited: "%{name} ha editat una enquesta i ha notificat a %{length} persones:"
-    outcome_edited: "%{name} ha editat un resultat i ha notificat a %{length} persones:"
-    outcome_updated: "%{name} ha editat un resultat i ha notificat a %{length} persones:"
+    outcome_edited: "%{name} ha editat una conclusió i ha notificat %{length} persones:"
+    outcome_updated: "%{name} ha editat una conclusió i ha notificat %{length} persones:"
     poll_closing_soon: 'El recordatori de tancament de l''enquesta de %{name} va notificar a %{length} persones:'
     poll_reminder: "%{name} va recordar a %{length} persones que votessin:"
     audiences:
@@ -1048,7 +1048,7 @@ ca:
         title: Notifica les edicions
         helptext: A qui voleu notificar aquesta actualització?
       outcome_announced:
-        title: Comparteix el resultat
+        title: Comparteix la conclusió
         helptext: Resumiu els resultats del procés, incloent acords als que s'ha arribat o qüestions que hagin sortit a la llum.
       anyone_can_participate: Tothom que tingui l'enllaç pot participar
       placeholder: Podeu introduir noms o adreces de correu
@@ -1118,10 +1118,10 @@ ca:
     reply_to_comment: Respon
     fork_comment: Bifurca el fil
     translate_comment: Tradueix el comentari
-    edit_outcome: Edita el resultat
-    announce_outcome: Notifica gent d'aquest resultat
-    announce_outcome_active: "(Encara no s'ha notificat a ningú d'aquest resultat)"
-    translate_outcome: Tradueix el resultat
+    edit_outcome: Edita la conclusió
+    announce_outcome: Notifica aquesta conclusió
+    announce_outcome_active: "(Encara no s'ha notificat aquesta conclusió a ningú)"
+    translate_outcome: Tradueix la conclusió
     show_history: Mostra l'historial d'edició
     edited: Editat
     show_edits: Mostra les edicions
@@ -1345,7 +1345,7 @@ ca:
       loud_aria_description: 'Heu configurat les notificacions d''aquest grup en volum alt. Rebreu correus electrònics sempre que que hi hagi activitat. '
       loud_message: Rebreu correus electrònics de tota l'activitat de "%{name}."
       normal: 'Rebre correus només per l''activitat important: Fils nous, propostes, resultats,etc.'
-      normal_aria_description: Heu configurat les notificacions d'aquest grup en volum normal. Només rebreu correus electrònics quan hi hagi activitat important, com ara que es crei un fil nou, es plantegi una proposta, o s'estableixi un resultat.
+      normal_aria_description: Has configurat les notificacions d'aquest grup en volum normal. Només rebràs correus electrònics quan hi hagi activitat important, com ara que es creï un fil nou, es plantegi una proposta o s'estableixi una conclusió.
       normal_message: Només rebre correus electrònics dels esdeveniments importants de "%{name}."
       quiet: No rebreu correus amb relació a aquest grup. Es mostrarà l'activitat a la consola.
       quiet_aria_description: Heu configurat les notificacions d'aquest grup en volum baix. No rebreu correus electrònics amb relació a aquest grup. Es mostrarà l'activitat del grup  al vostre tauler
@@ -1394,7 +1394,7 @@ ca:
     change_cover_image: canviar la imatge de la portada
     change_logo: canviar el logotip
     permissions_explaination: 'Hi ha dos nivells de pertinença que una persona pot tenir a un grup: administrador i membre. Els administradors poden editar la configuració del grup, convertir altres persones en administradors i realitzar totes les accions que s''indiquen a continuació.'
-    parent_group: Grup de pares
+    parent_group: Grup principal
     new_organisation: Nova organització
     new_group: Nou grup
     new_subgroup: Nou subgrup
@@ -1537,7 +1537,7 @@ ca:
       request_ignored_success: Sol·licitud d'afiliació ignorada
       request_declined_success: Sol·licitud d'adhesió rebutjada
     decline: Rebutjar
-    decline_request: Rebutjar la sol·licitud de membre
+    decline_request: Rebutja la sol·licitud d'afiliació
     decline_reason: Motiu del rebuig
     decline_help: Si rebutges, envia el motiu al sol·licitant per correu electrònic. Pot enviar una nova sol·licitud. Si ignores, tanca la sol·licitud sense notificar-li-ho.
   invitation_form:
@@ -1674,6 +1674,7 @@ ca:
     updated_on_sign_in: Proporcionat pel vostre navegador i actualitzat quan inicieu la sessió
     translate_content_automatically: Tradueix el contingut al meu idioma automàticament
     bot_account_warning: Els comptes de bot no seran convidats a votar en enquestes ni a participar en debats.
+    translations_are_made_by_machine: Les traduccions són automàtiques. Si una paraula és incorrecta o poc clara, escriu a %{email} i ho corregirem.
   text_editor:
     x_of_y_characters: "%{x} / %{y} caràcters"
     select_text_to_link: Seleccioneu el text per enllaçar i torneu-ho a provar
@@ -1789,7 +1790,7 @@ ca:
       all: Debats recents
     thread_preview:
       you_voted: Has votat %{position}
-      undecided: Esteu indecís
+      undecided: Encara no has votat
     threads_from:
       group: FIls de
       pinned: Fils fixats
@@ -1869,7 +1870,7 @@ ca:
     n_more: Carrega %{count} respostes
     add_comment: Afegeix comentari
     add_poll: Afegeix enquesta
-    add_outcome: Afegeix resultat
+    add_outcome: Afegeix una conclusió
     comment: Comentari
     facilitate: Organitza
     start_decision: Començar la decisió
@@ -1973,13 +1974,13 @@ ca:
     consent_title: Consentiment
     consensus_title: Consens
     proposal_title: Proposta
-    count_title: Optar a
-    check_title: Comprovació de sentit
+    count_title: Inscripció
+    check_title: Tempteig
     poll_title: Enquesta
     meeting: Reunió
     score_title: Enquesta per puntuació
-    dot_vote_title: Punt votar
-    meeting_title: enquesta de temps
+    dot_vote_title: Vot per punts
+    meeting_title: Enquesta d'horari
     ranked_choice_title: vot preferencial
     gradients_of_agreement_title: Gradients d'acord
     majority_title: Majoria
@@ -2076,8 +2077,8 @@ ca:
     participate: Participeu
     vote: Vota
     votes: Vots
-    update_outcome: Actualitza el resultat
-    outcome: Resultat
+    update_outcome: Actualitza la conclusió
+    outcome: Conclusió
     outcomes: Resultats
     statement: Declaració
     change_your_stance: Edita la resposta
@@ -2094,7 +2095,7 @@ ca:
     share_count: Comparteix la verificació
     start_poll: Comença una decissió
     publish_poll: Comparteix l'enquesta
-    share_outcome: Comparteix el resultat
+    share_outcome: Comparteix la conclusió
     view_all: Visualitza-ho tot
     save_changes: Desa
     change_vote: Canvia el teu vot
@@ -2189,7 +2190,7 @@ ca:
     invitations: Invitacions
     requests: Sol·licituds
     admin: Admin
-    guest: Visita
+    guest: Convidat
     sharable_link: Enllaç per compartir
     last_seen: Vist per darrer cop %{date}
     invited_by_name: Convidat per %{name}
@@ -2254,7 +2255,7 @@ ca:
   poll_common_collapsed:
     by_who: per %{name}
   poll_common_calendar_invite:
-    calendar_invite: 'Inclou una invitació al calendari en aquest resultat '
+    calendar_invite: Inclou una invitació de calendari amb aquesta conclusió
     poll_option_id: Hora de la reunió
     helptext_on: Els usuaris podran afegir aquesta reunió al seu calendari
     helptext_off: No s'enviarà cap invitació per la reunió
@@ -2267,7 +2268,7 @@ ca:
     location_placeholder: On tindrà lloc aquesta reunió?
   poll_common_close_form:
     title: Tancar %{poll_type} ara?
-    helptext: Esteu segur que voleu tancar aquest %{poll_type} abans i compartir un resultat?
+    helptext: Segur que vols tancar aquesta %{poll_type} abans d'hora i compartir una conclusió?
     close_poll_type: Tanca %{poll_type}
     poll_type_closed: "%{poll_type} tancat"
   poll_common_reopen_form:
@@ -2298,10 +2299,10 @@ ca:
     started_by: Iniciat per %{name}
   poll_common_votes_panel:
     vote_removed: S'ha eliminat el vot
-    undecided: Indecís
+    undecided: Sense votar
     newest_first: El més recent primer
     oldest_first: El més antic primer
-    priority_first: Accepta primer
+    priority_first: D'acord primer
     priority_last: Bloqueja primer
     undecided_first: Indecisos primer
     no_votes_yet: Encara no s'ha votat
@@ -2336,22 +2337,22 @@ ca:
   poll_common_set_outcome_panel:
     enter_outcome: Introduir resultat
     poll_type: Aquest %{poll_type} s'ha tancat. Preneu-vos el temps per considerar els resultats i compartir-ne un perquè la gent sàpiga què passarà després.
-    enter_an_outcome: Introdueix un resultat
+    enter_an_outcome: Introdueix una conclusió
   poll_common_outcome_form:
     review_due_in_days: Revisar la decisió al cap de quants dies?
     review_date: Data de revisió
     review_date_hint: Estableix una data per revisar la decisió (opcional)
-    who_to_notify: A qui voleu notificar aquest resultat? (opcional)
+    who_to_notify: A qui vols notificar aquesta conclusió? (opcional)
     outcome_statement_template: Plantilla de declaració de resultats
-    new_title: Introdueix un resultat
-    update_title: Actualitza el resultat
-    outcome_created: Resultat creat
-    outcome_updated: Resultat actualitzat
+    new_title: Comparteix la conclusió
+    update_title: Actualitza la conclusió
+    outcome_created: Conclusió creada
+    outcome_updated: Conclusió actualitzada
     statement_placeholder: Resumiu les respostes i expliqueu què passarà després
     you_will_be_notified: Se't notificarà el dia de la revisió.
-    submit: Comparteix el resultat
+    submit: Comparteix la conclusió
     review_due_in_days_hint: Nombre de dies d'espera abans de revisar la decisió (opcional).
-    statement_template_hint: Proporcioneu una plantilla per escriure el resultat de la decisió (opcional).
+    statement_template_hint: Proporciona una plantilla per escriure la conclusió de la decisió. (opcional)
     statement_template_placeholder: Gràcies per participar! S'ha arribat al quòrum i tenim suport per continuar.
   poll_common_outcome_panel:
     authored_by: De %{name}
@@ -2470,7 +2471,7 @@ ca:
     total: Total
   poll_remove_vote:
     title: Eliminar el teu vot?
-    helptext: Esteu segur que voleu eliminar el vostre vot? Apareixeràs com a indecís i podràs tornar a votar més tard si ho desitja.
+    helptext: Segur que vols eliminar el teu vot? Apareixeràs com a sense votar i podràs tornar a votar més tard si vols.
     confirm: Elimina el vot
     success: S'ha eliminat el vot
   poll_poll_vote_form:
@@ -2510,7 +2511,7 @@ ca:
     discussion_closed: "<a class='actor-link' href='/u/%{username}'>%{author}</a> ha tancat el fil"
     discussion_reopened: "<a class='actor-link' href='/u/%{username}'>%{author}</a>ha reobert el fil "
     new_comment: "<a class='actor-link' href='/u/%{username}'>%{author}</a>"
-    outcome_created: "<a class='actor-link' href='/u/%{username}'>%{author}</a>ha compartit un resultat"
+    outcome_created: "<a class='actor-link' href='/u/%{username}'>%{author}</a> ha compartit una conclusió"
     poll_reopened: "<a class='actor-link' href='/u/%{username}'>%{author}</a>ha reobert %{polltype}"
     poll_closed_by_user: "<a class='actor-link' href='/u/%{username}'>%{author}</a>ha tancat %{polltype}"
     poll_created: "<a class='actor-link' href='/u/%{username}'>%{author}</a> ha obert una %{polltype}"
@@ -2691,8 +2692,8 @@ ca:
       poll_expired: Una enquesta finalitza
       poll_closed_by_user: S'ha tancat manualment una enquesta
       poll_reopened: S'ha reobert la votació d'una enquesta
-      outcome_created: S'ha compartit un resultat
-      outcome_updated: S'actualitza un resultat
+      outcome_created: Es comparteix una conclusió
+      outcome_updated: S'actualitza una conclusió
       outcome_review_due: S'ha de fer una revisió dels resultats
       new_discussion: S'inicia una discussió
       discussion_edited: S'ha editat una discussió
@@ -2798,8 +2799,11 @@ ca:
         helptext: "<p>A Loomio fem servir propostes per revelar suport a una decisió o trobar maneres de millorar-la.</p><p> Comencem una proposta i demanem als membres del vostre grup que la votin.</p><p> Hem creat una plantilla <b>de proposta de pràctica</b> perquè la pugueu fer servir.</p>"
         submit: Veure plantilles de propostes
       share_an_outcome:
-        title: Comparteix el resultat d'una proposta
-        helptext: "<p>Per ajudar a fer avançar les decisions, les propostes tenen una data límit per a la votació. Quan s'arribi a la data límit, la votació es tancarà i se us notificarà que compartiu el resultat d'una proposta.</p><p> El resultat és una oportunitat per dir si la proposta ha tingut èxit i què passarà a continuació.</p><p> Si la data límit per a la proposta encara no ha passat, però voleu continuar igualment, podeu fer clic <b>a Tanca abans d'hora</b> .</p><p> Quan sigui el moment adequat, <b>introdueix un resultat</b> per a la teva proposta.</p>"
+        title: Comparteix la conclusió d'una proposta
+        helptext: |
+          <p>Quan arriba la data límit de la proposta, la votació es tanca i se't demana que comparteixis una conclusió.</p>
+          <p>A la conclusió expliques què has decidit (o què passarà després) un cop revisats els vots i comentaris.</p>
+          <p>Si la data límit encara no ha passat però ja vols avançar, pots <b>Tancar abans d'hora</b>.</p>
         submit: Veure proposta
         cancel: Fes això més tard
       start_a_discussion:
@@ -2890,13 +2894,13 @@ ca:
       choose_hint: Els votants trien la millor opció (o opcions)
       score: Puntuació
       score_hint: Els votants assignen una puntuació a cada opció
-      allocate: Assignar
+      allocate: Reparteix
       allocate_hint: Els votants assignen un pressupost de punts entre les opcions
-      ranked_choice: Elecció classificada
+      ranked_choice: Vot preferencial
       ranked_choice_hint: Els votants ordenen les opcions de més a menys preferides
-      time_poll: Enquesta de temps
+      time_poll: Enquesta d'horari
       time_poll_hint: Els votants indiquen quan estan disponibles per reunir-se
-      rank: Rang
+      rank: Ordena
       time: Temps
       stv: Eleccions STV
       stv_hint: Elegir diversos guanyadors proporcionalment mitjançant el vot únic transferible
@@ -2948,7 +2952,7 @@ ca:
     how_much_time_to_vote: Quant de temps donareu a la gent per votar?
     default_duration_in_days_hint: Quants dies tindrà la gent per votar?
     define_minimum_and_maxmimum_score: Defineix les puntuacions mínimes i màximes que un votant pot donar a una opció
-    how_many_points_does_each_voter_have_to_allocate: Quants punts ha d'assignar cada votant?
+    how_many_points_does_each_voter_have_to_allocate: Quants punts té cada votant per repartir?
     anonymous_voting_description: Mostra els vots i els motius, però no qui els ha emès. Això no es pot canviar després que %{poll_type} hagi començat.
     vote_reason_description: Demaneu a la gent que comparteixi les seves raons quan votin o que proporcionin més informació.
     hide_results_description: Si voleu que la gent voti sense veure com han votat els altres, podeu amagar els resultats.
@@ -2992,7 +2996,7 @@ ca:
     set_all_vote_weights_the_same: Establir tots els pesos de vot iguals
     member_vote_weights_hint: Els votants que no són membres d'un grup actual reben un pes de vot d'1
     weighted_voting: Vot ponderat
-    weighted_voting_is_not_available_with_anonymous_voting: "El vot ponderat no està disponible amb la votació anònima"
+    weighted_voting_is_not_available_with_anonymous_voting: El vot ponderat no està disponible amb la votació anònima
     use_weighted_voting: Utilitza el vot ponderat
     weighted_voting_off_warning: Si desactiveu la votació ponderada, el pes de cada vot serà d'1. Es perdrà qualsevol pes de vot que hàgiu canviat per a aquesta enquesta.
     weighted_voting_on_group: En activar el vot ponderat, es copia el pes de vot predeterminat de cada membre. Els altres votants reben un pes de vot d'1.
@@ -3120,7 +3124,7 @@ ca:
     closed_at: Tancat a les
     closing_at: Tancament a les
   poll_stv_vote_form:
-    helptext: Arrossega els candidats per sobre de la línia per classificar-los. Els elements que hi ha a sota de la línia no estan classificats. El rang 1 és el que prefereixes.
+    helptext: Arrossega els candidats per sobre de la línia per ordenar-los. Els elements de sota la línia queden sense ordenar. La posició 1 és la teva primera preferència.
     divider_text: arrossega els candidats per sobre d'aquesta línia per classificar-los
     stance_created: Vot enregistrat
     stance_updated: Vot actualitzat
@@ -3165,7 +3169,7 @@ ca:
     title: Afegeix a la discussió
     discussion: Discussió
     success: Èxit, %{pollType} afegit a la discussió!
-    explanation: El %{pollType} i qualsevol vot, comentari i resultat s'afegiran al fil de discussió seleccionat.
+    explanation: L'enquesta de tipus %{pollType} i tots els vots, comentaris i la conclusió s'afegiran al fil de la discussió seleccionada.
   bookmarks:
     bookmarks: Adreces d'interès
     saved: Adreça d'interès desada

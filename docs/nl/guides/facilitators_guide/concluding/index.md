@@ -1,6 +1,6 @@
 ---
 title: Afronden
-source_revision: 9c60c42fc739483fa23f15d9f34a1e9245518092
+source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
 source_file: docs/en/guides/facilitators_guide/concluding/index.md
 translated:
   provider: codex/gpt-6.1-sol
@@ -13,10 +13,10 @@ sections:
   it-ain-t-over-til-it-s-over: 9edb6ef0bcb17938
 generated:
   introduction: 47741ce1641f0e97
-  outcomes-next-steps: a2cf7475786c282c
-  reporting-harvesting: a48eb4f62be34ed5
-  turning-discussion-into-action: ac6023e6eaa405ca
-  it-ain-t-over-til-it-s-over: 88aa383c2ecc5e3e
+  outcomes-next-steps: 59a8700e7cfb1401
+  reporting-harvesting: 316200a9d1e707a7
+  turning-discussion-into-action: 1e10f275b8013126
+  it-ain-t-over-til-it-s-over: 36e68279f1188a19
 title_source: 10899efb27fe6a92
 title_generated: 1c64f91db4bf36cb
 ---
@@ -29,73 +29,74 @@ title_generated: 1c64f91db4bf36cb
 
 <!-- translation-section: outcomes-next-steps -->
 
-## Conclusies en vervolgstappen
+## Conclusies & vervolgstappen
 
-Een duidelijke conclusie helpt de groep te zien of de doelen van een gezamenlijke discussie zijn bereikt. Een begeleider kan samenvatten wat er is besloten. Zo krijgt de groep antwoord op enkele belangrijke vragen:
+Het bevestigen van de conclusie kan belangrijk zijn om het gevoel te krijgen dat de doelen van een gezamenlijke discussie zijn bereikt. Een procesbegeleider kan samenvatten wat er is besloten en dit aan de groep voorleggen, zodat de groep na afloop antwoord heeft op enkele belangrijke vragen:
 
 * Wat hebben we gedaan?
 * Wat betekent het?
-* Wat gebeurt er nu?
+* Wat gaat er nu gebeuren?
 * Wat is mijn verantwoordelijkheid?
-* Wat zal er door deze ervaring anders zijn?
+* Wat verandert er doordat we dit hebben meegemaakt?
 
-Soms zijn de antwoorden heel concreet, zoals actiepunten. Soms zijn ze abstracter, zoals een beter gedeeld begrip.
+Soms zijn de antwoorden op deze vragen heel concreet, zoals actiepunten. Andere keren zijn ze abstracter, zoals een dieper gedeeld begrip.
 
 Op Loomio
 
-* [Conclusies](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome) zijn een belangrijk hulpmiddel. Als een voorstel afloopt, is het proces nog niet helemaal afgerond: er is een afsluitende samenvatting nodig. Daarvoor is de conclusiefunctie bedoeld.
-* Veel discussies op Loomio komen vanzelf tot een einde, zonder voorstel of gepubliceerde conclusie. Ook die discussies zijn waardevol. Je kunt het contextvak bijwerken met een samenvatting van de conclusie, zodat je die later kunt terugvinden.
-* Als bepaalde mensen actiepunten hebben, kun je hun namen @vermelden. Zij krijgen dan een melding.
+* [Conclusies](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome) zijn een belangrijk hulpmiddel. Als een voorstel sluit, is het proces nog niet helemaal afgerond: er is nog een duidelijke samenvatting nodig. Daarvoor is de conclusiefunctie bedoeld.
+* Veel discussies op Loomio eindigen vanzelf, zonder voorstellen te gebruiken of conclusies te publiceren. Deze discussies zijn ook waardevol. Het kan helpen om het contextvak bij te werken met een samenvatting van de conclusie, zodat je die later kunt teruglezen.
+* Als bepaalde mensen actiepunten hebben, kun je hen met @ vermelden. Ze krijgen dan een melding.
 
 <!-- translation-section: reporting-harvesting -->
 
-## Verslaglegging en vastleggen van inzichten
+## Verslaglegging & inzichten verzamelen
 
-Om te begrijpen wat een ervaring betekent, moet je kijken hoe die in het grotere geheel past. Welke plaats had dit moment in onze voortgang? Welke vorm geven we aan wat we hebben geleerd — een verhaal, een verslag, een verandering of een oproep tot actie?
+Om de betekenis van een ervaring te begrijpen, moet je onderzoeken hoe die in de bredere context past. Welke plaats had dit moment in onze voortgang? Welke vorm krijgt wat we van deze ervaring hebben geleerd — een verhaal, een verslag, een verandering, een oproep tot actie?
 
-Een ervaring speelt zich af op één moment. De waarde ervan wordt vaak pas duidelijk als je haar een naam geeft en vastlegt, zodat je er later naar kunt verwijzen en op kunt voortbouwen. Anders kun je vergeten wat er is gebeurd, mensen buitensluiten die er niet bij waren of hetzelfde werk later moeten herhalen. Concrete documentatie of verslaglegging helpt vaak bij een goede samenwerking.
+Een ervaring vindt op een bepaald moment plaats, maar krijgt vaak pas betekenis als je die concreet maakt, een naam geeft en erop kunt voortbouwen en ernaar kunt verwijzen. Anders loop je het risico de ervaring te vergeten, mensen die er niet bij waren buiten te sluiten of het proces later te moeten herhalen. Concrete documentatie of verslaglegging helpt vaak om productief samen te werken.
 
 Op Loomio
 
-* Loomio legt het proces vanzelf vast: aantekeningen ontstaan als onderdeel van de samenwerking. Zo bouwen groepen zonder extra werk een waardevol archief op.
-* Loomio heeft functies om inzichten terug te vinden en te bewaren: de zoekfunctie, de lijst met eerdere besluiten en de optie om een discussie af te drukken.
-* Met een Premium-abonnement kun je alle Loomio-gegevens van jouw groep exporteren.
-* Veel groepen gebruiken Loomio om informatie uit verschillende kanalen samen te brengen. Je kunt bijvoorbeeld een vergadering aankondigen en de agenda op Loomio opstellen, de vergadering persoonlijk houden, de aantekeningen op Loomio plaatsen en in dezelfde thread besluiten nemen. Zo legt Loomio ook vast wat buiten het platform gebeurt.
+* Loomio legt het proces automatisch vast — de aantekeningen ontstaan als onderdeel van het proces. Zo bouwen groepen zonder extra moeite een waardevol archief op.
+* Er zijn verschillende functies om inzichten te verzamelen en te archiveren: de zoekfunctie, de lijst met ‘eerdere besluiten’ en de optie om een discussie af te drukken.
+* Premiumabonnementen bieden de mogelijkheid om alle Loomio-gegevens van jouw groep te exporteren.
+* Veel groepen gebruiken Loomio om informatie uit verschillende kanalen samen te brengen. Bijvoorbeeld door een bijeenkomst aan te kondigen en de agenda op Loomio op te stellen, fysiek bijeen te komen, het verslag op Loomio te plaatsen en bijbehorende besluiten in dezelfde thread te nemen. Zo legt Loomio ook informatie vast uit activiteiten buiten de online omgeving.
 
 <!-- translation-section: turning-discussion-into-action -->
 
-## Van discussie naar actie
+## Discussie omzetten in actie
 
-Op een gegeven moment moet je weer aan de slag met de werkelijkheid buiten de gespreksruimte. Soms is het genoeg om ideeën en gevoelens te verkennen, zonder al aan de uitvoering te denken. Maar meestal bereikt een groep haar doelen pas als zij haar conclusies omzet in concrete actie. Ook die overgang hoort bij het begeleide proces.
+Er komt een moment waarop je weer rekening moet houden met de werkelijkheid buiten de bijeenkomst. Soms is het alleen nodig om ideeën en gevoelens te verkennen, zonder je zorgen te maken over de uitvoering. Maar meestal bereikt een groep haar doelen alleen door haar conclusies om te zetten in concrete actie. Deze overgang maakt deel uit van het hele begeleide proces.
 
-Op dat moment komt het gezamenlijke proces samen met andere systemen binnen de organisatie. De begeleider helpt uitzoeken hoe dat in de praktijk werkt. Denk daarbij aan:
+Op dit punt raakt het samenwerkingsproces aan andere systemen binnen de organisatie. De procesbegeleider moet helpen uitzoeken hoe die op elkaar aansluiten. Het kan gaan om:
 
-* **Beslissingsmacht** — Wie neemt de besluiten? Wat is er nodig om ideeën hier werkelijkheid te laten worden?
-* **Management** — Hoe past dit bij andere prioriteiten? Waar is de uitvoering van afhankelijk?
-* **Taakverdeling** — Wie neemt de verantwoordelijkheid voor de vervolgstappen? Hoe wordt daarop toegezien?
-* **Communicatie** — Hoe breng je anderen op de hoogte van dit proces of deze discussie? Wat moeten zij weten?
-* **Administratie** — Hoe breng je informatie over naar een ander systeem, zoals een hulpmiddel voor taakbeheer of communicatie? Waar wordt de informatie bewaard?
+* **Bevoegdheden** — Wie neemt daadwerkelijk besluiten? Wat moet er gebeuren om ideeën hier in de praktijk te brengen?
+* **Management** — Hoe past dit bij andere prioriteiten? Welke afhankelijkheden kunnen er zijn?
+* **Delegatie** — Wie neemt verantwoordelijkheid voor de vervolgstappen? Moeten deze mensen daar verantwoording over afleggen?
+* **Communicatie** — Hoe wordt dit proces of deze discussie aan anderen overgebracht? Wat moeten zij weten?
+* **Administratie** — Hoe wordt informatie uit het ene systeem overgezet naar het andere, zoals een hulpmiddel voor taakbeheer of communicatie? Waar wordt informatie opgeslagen?
 
-Als er op deze punten belemmeringen zijn, kan het schadelijk zijn om die pas bij de afronding te ontdekken. Als deelnemers bijvoorbeeld niet bevoegd zijn om een besloten verandering door te voeren, kan dat ontmoedigend zijn. Denk daarom al bij het opzetten van het proces na over de uitvoering en bepaal op basis daarvan de reikwijdte van de samenwerking.
+Als er op deze punten belemmeringen zijn, kan het schadelijk zijn om die pas bij de afronding te onderkennen. Als deelnemers bijvoorbeeld niet de bevoegdheid hebben om een besloten verandering door te voeren, zullen ze zich machteloos voelen. Houd bij het opzetten van het proces alvast rekening met de praktijk en stem de reikwijdte van de samenwerking daarop af.
+
 
 Op Loomio
 
-* Je kunt de namen @vermelden van mensen die naar aanleiding van een besluit actie ondernemen.
-* Veel gebruikers nemen Loomio-informatie op in andere systemen van hun organisatie. Ze bespreken bijvoorbeeld Loomio-besluiten tijdens vaste vergaderingen of zetten conclusies over naar hun proces voor taakbeheer.
-* Een duidelijk besluit roept vaak de vraag op: ‘Goed, hoe gaan we hiermee verder?’
-* Bij het vormen van een Loomio-groep komen vaak belangrijke vragen naar voren, zoals: ‘Wie moet hierbij betrokken zijn om deze besluiten uit te voeren?’ Als belangrijke belanghebbenden, leidinggevenden of beheerders ontbreken, kan het proces vastlopen.
+* Je kunt mensen die een besluit gaan uitvoeren met @ vermelden.
+* Veel gebruikers verbinden Loomio-informatie via andere kanalen met systemen binnen hun organisatie. Ze bespreken bijvoorbeeld Loomio-besluiten tijdens regelmatige fysieke bijeenkomsten of nemen conclusies over in hun taakbeheer.
+* Een expliciet besluit nemen leidt vanzelf tot de vraag: ‘Oké, maar hoe gaan we dit verder oppakken?’
+* Bij het vormen van een Loomio-groep komen vaak belangrijke vragen naar voren, zoals: ‘Wie moet hier deelnemen om deze besluiten in actie om te zetten?’ Als belangrijke belanghebbenden, leidinggevenden of beheerders ontbreken, loop je vast.
 
 <!-- translation-section: it-ain-t-over-til-it-s-over -->
 
-## Goed afronden
+## Het is pas voorbij als het is afgerond
 
-Een proces goed afsluiten is belangrijk. Een duidelijke afsluiting geeft mensen het gevoel dat het proces is afgerond. Soms eindigt het omdat de tijd om is, soms omdat bepaalde doelen zijn bereikt. Let op uitgesproken en onuitgesproken signalen dat deelnemers en de groep als geheel klaar zijn om een proces of fase af te sluiten.
+Goed afronden is belangrijk. Bij het afsluiten van een proces hoort een ritueel. Als dat ontbreekt, kunnen mensen het gevoel houden dat het proces niet is afgerond. Soms eindigt een proces omdat de tijd op is, soms omdat bepaalde doelen zijn bereikt. Let op impliciete en expliciete signalen die aangeven of de afzonderlijke deelnemers en de groep als geheel een proces of fase als afgerond kunnen ervaren.
 
-Deelnemers kijken vaak naar de leider of begeleider voor bevestiging dat het echt voorbij is. Het helpt meestal om daar duidelijk over te zijn. Je kunt aangeven dat de bijeenkomst bijna klaar is, besluiten en vervolgstappen samenvatten en afscheid nemen. Sommige groepen hebben daarvoor een vaste gewoonte, zoals een afsluitende ronde. Als een bijeenkomst zonder duidelijke afsluiting langzaam uitdooft, kan dat onprettig voelen.
+Deelnemers kijken vaak naar de leider of procesbegeleider voor bevestiging dat het echt voorbij is. Het helpt meestal om daar duidelijk over te zijn. Soms bestaat het signaal uit een duidelijke mededeling dat de sessie wordt afgerond, een samenvatting van besluiten of vervolgstappen en een afscheid van iedereen. Andere groepen hebben vaste gewoonten, zoals een afsluitende ronde. Een sessie langzaam laten uitdoven zonder duidelijke afsluiting laat een onprettig gevoel achter.
 
 Op Loomio
 
-* Op Loomio is het publiceren van een conclusie bij een besluit het duidelijkste teken dat het proces is afgerond.
+* Het duidelijkste teken van afronding op Loomio is het publiceren van een conclusie bij een besluit.
 * Sommige groepen gebruiken de functie [thread vergrendelen](/en/user_manual/discussions/using_discussions/#lock-or-unlock-a-thread) om verdere wijzigingen te voorkomen en de thread overzichtelijk te houden.
-* Een groep deactiveren is de meest definitieve afsluiting. Daarna kan niemand er nog iets plaatsen.
-* Een Loomio-groep kan blijven bestaan terwijl de activiteit toe- en afneemt. Daarom kan het nuttig zijn om mijlpalen te markeren, zoals het einde van een fase, ook als de groep later weer actief wordt.
+* Een groep deactiveren is de meest definitieve manier om af te sluiten. Daarna kan niemand meer iets zeggen.
+* Loomio-groepen kunnen blijven bestaan terwijl de activiteit toe- en afneemt. Daarom kan het nuttig zijn om mijlpalen te markeren, zoals de afronding van een bepaalde fase, ook als de groep later weer actief wordt.

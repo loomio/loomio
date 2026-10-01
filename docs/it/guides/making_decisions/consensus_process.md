@@ -1,10 +1,10 @@
 ---
 title: Processo di consenso
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/guides/making_decisions/consensus_process.md
+source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
+source_file: docs/en/guides/making_decisions/consensus_process.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-30'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 28806ba051102030
   key-points: 4a0e2e253a175fb9
@@ -19,18 +19,18 @@ sections:
   step-4-agreement: 6245b14acb3654c7
   step-5-outcome: c398241dcfeb89ef
 generated:
-  introduction: c226c55eb15ba83e
-  key-points: 8a01663d1e0c713f
-  consensus-process-steps: 4bcff9b310f5594c
-  benefits: 386e3d509aff6261
-  applying-the-consensus-process-on-loomio: 6588e08fd7aaf2cb
-  example-of-a-consensus-process-on-loomio: 6928f0ac82dc36b7
-  step-0-you-notice-a-problem-or-opportunity-and-take-the-initiative: 1a0f5787aadb1129
-  step-1-state-the-problem-or-issue: a67a45031d7f3133
-  step-2-present-a-proposal: 781ce35dd2b493c5
-  step-3-amendment: 2b2feccb73bb35c4
-  step-4-agreement: a733f0b8d3caa718
-  step-5-outcome: a55297e47dce8041
+  introduction: '0912fa7aaf87fdd9'
+  key-points: 8ec40c7613df53b0
+  consensus-process-steps: 98c426e15f7089d2
+  benefits: 1da14c7f907030dc
+  applying-the-consensus-process-on-loomio: 25994ef469162472
+  example-of-a-consensus-process-on-loomio: b9588939b7900e2f
+  step-0-you-notice-a-problem-or-opportunity-and-take-the-initiative: cefe02d685ed8338
+  step-1-state-the-problem-or-issue: 8a73b9fe994618ce
+  step-2-present-a-proposal: fe51ed32c2bf7aa1
+  step-3-amendment: 3170546bab6f4cd7
+  step-4-agreement: 9542b1f7ce449e2b
+  step-5-outcome: 13aac84f475a2de8
 title_source: 688b46cc92fcb129
 title_generated: 754fac54720aaf4d
 ---
@@ -39,80 +39,80 @@ title_generated: 754fac54720aaf4d
 
 # Processo di consenso
 
-Questa guida descrive l'intero processo di consenso. Per sapere come impostare e interpretare una singola proposta di consenso, consulta [Consenso](/en/user_manual/polls/proposals/consensus/).
+Questa guida descrive l'intero processo di consenso unanime. Per sapere come configurare e interpretare una singola proposta di consenso unanime, consulta [Consenso unanime](/en/user_manual/polls/proposals/consensus/).
 
 ![Foto di Aaron Burden su Unsplash *Foto di Aaron Burden su Unsplash*](aaron-burden-NXt5PrOb_7U-unsplash.jpg)
 
 Raggiungi un accordo collettivo con tutte le persone coinvolte.
 
-Costruisci il consenso su una decisione da prendere insieme, fino a trovare un accordo che tenga conto delle esigenze e delle preoccupazioni di tutte le persone partecipanti.
+Costruisci il consenso unanime per una decisione da prendere insieme, per raggiungere un accordo che soddisfi le esigenze e tenga conto delle preoccupazioni di tutti i partecipanti.
 
-> *«Il consenso è il processo: un processo partecipativo in cui un gruppo pensa e sente insieme mentre arriva a una decisione.» - Sam Kaner, Community at Work*
+> *“Il consenso unanime è il processo: un processo partecipativo attraverso il quale un gruppo pensa e sente insieme, lungo il percorso verso la propria decisione.” - Sam Kaner, Community at Work*
 
 <!-- translation-section: key-points -->
 
 ## Punti chiave
-- Discuti e sviluppa una proposta insieme alle altre persone
+- Discuti e sviluppa una proposta insieme agli altri
 - Includi e rispetta tutte le persone coinvolte
 - Cerca l'accordo della maggior parte delle persone
 
-**Il processo di consenso si usa di solito in:**
-- Gruppi di lavoro che costruiscono una comprensione condivisa di un problema o di un'opportunità, collaborano a una proposta e decidono come agire. 
-- Decisioni di un consiglio direttivo che agisce collegialmente, per esempio su visione, politiche, pianificazione strategica e bilancio.
-- Assemblee annuali e assemblee generali in cui membri e altre persone interessate cercano un accordo generale su decisioni importanti, come modifiche allo statuto, operazioni rilevanti ed elezione di amministratori o consiglieri.
+**Il consenso unanime viene generalmente usato in:**
+- Gruppi di lavoro che sviluppano una comprensione condivisa di un problema o di un'opportunità, collaborano a una proposta e decidono come procedere.
+- Decisioni degli organi di governo in cui questi dimostrano di agire congiuntamente, come quelle su visione, politiche, pianificazione strategica e bilancio.
+- Assemblee generali annuali e assemblee generali in cui membri e parti interessate cercano un accordo generale su decisioni importanti, come modifiche allo statuto, operazioni di rilievo ed elezioni di amministratori o consiglieri.
 
 **Ruoli tipici:**
-- Nomina una persona che faciliti il processo.  Nelle riunioni del consiglio, di solito è chi lo presiede.
-- È richiesta la partecipazione di un numero minimo o di una maggioranza qualificata dei membri, secondo quanto previsto dallo statuto dell'organizzazione.
+- Nomina un facilitatore. Nelle riunioni degli organi di governo, questo ruolo è solitamente svolto da chi presiede.
+- La partecipazione di un quorum o di una maggioranza qualificata dei membri, come previsto dallo statuto dell'organizzazione.
 
 <!-- translation-section: consensus-process-steps -->
 
-## Fasi del processo di consenso
-1. Presenta la questione da decidere: avvia una **discussione** su Loomio.
-2. Presenta una proposta per verificare il consenso: avvia una **proposta di verifica degli orientamenti**.
-3. Chiarisci i punti in sospeso, invita a proporre modifiche costruttive e modifica la proposta.
-4. Verifica se c'è accordo: avvia una **proposta di consenso**.
-5. Conclusione: comunica la **conclusione** della decisione.
+## Fasi del processo di consenso unanime
+1. Esponi la questione su cui decidere - avvia una **discussione** su Loomio.
+2. Presenta una proposta per verificare il consenso unanime - avvia una **proposta di verifica delle opinioni**.
+3. Chiarisci i punti da approfondire, invita a proporre modifiche costruttive e modifica la proposta.
+4. Verifica l'accordo - avvia una **proposta di consenso unanime**.
+5. Conclusione - comunica la **conclusione** della decisione.
 
 <!-- translation-section: benefits -->
 
 ## Vantaggi
 - Sviluppa una comprensione condivisa.
-- Permette di prendere decisioni che esprimono la volontà collettiva del gruppo.
-- Incoraggia le persone a tenere conto del gruppo oltre che delle proprie preferenze.
+- Prendi decisioni che esprimono la volontà collettiva del gruppo.
+- Incoraggia le persone a dare priorità al gruppo rispetto alle proprie preferenze personali.
 
 <!-- translation-section: applying-the-consensus-process-on-loomio -->
 
-## Applicare il processo di consenso su Loomio
+## Applicare il processo di consenso unanime su Loomio
 
 | **Processo di consenso** | **Su Loomio** |
 |---|---|
 | Individui un problema o un'opportunità e prendi l'iniziativa. |  |
-| **Presenta la questione da decidere**  <br /><br />Fornisci le informazioni di contesto e apri una discussione ampia per costruire una comprensione condivisa. Presta attenzione alle proposte che emergono. | Avvia una discussione su Loomio <br /><br />Indica nel titolo l'argomento della discussione e ciò che speri di ottenere. <br /><br />Allega le informazioni di contesto o inserisci un link. Invita le persone a fare domande, condividere informazioni e scrivere commenti. |
-| **Presenta una proposta** <br /><br />Verifica se c'è consenso. | Avvia una [proposta di verifica degli orientamenti](/en/user_manual/polls/proposals/sense_check/). <br /><br />*Nel titolo:* Dai un nome alla proposta. <br /><br />*Nei dettagli della proposta:* Descrivi chiaramente la proposta e spiega perché è importante. Includi le informazioni di contesto necessarie e un link alla proposta. <br /><br />Invita tutte le persone a rispondere prima della chiusura della proposta. |
-| **Modifica** <br /><br />Discuti, chiarisci e modifica la proposta. <br /><br />Cerca di comprendere e risolvere le obiezioni. <br /><br />Invita chi solleva obiezioni a proporre modifiche costruttive e praticabili alla decisione o al corso d'azione proposto. | Facilita la discussione nel thread per affrontare le preoccupazioni e modificare la proposta. |
-| **Accordo** <br /><br />C'è un accordo? Verifica le posizioni: <br /><br />D'accordo: sostengo la proposta. <br /><br />Mi astengo: questa decisione non mi riguarda e accetto qualunque scelta del gruppo. <br /><br />Non d'accordo: qualcosa nella proposta deve cambiare prima che io possa sostenerla. <br /><br />Blocco: ho un disaccordo fondamentale con la proposta che non può essere risolto. | Avvia una [proposta di consenso](/en/user_manual/polls/proposals/consensus/) con la versione attuale della proposta. <br /><br />*Nel titolo:* Indica la decisione da prendere. <br /><br />*Nei dettagli della proposta:* Presenta la proposta e invita le persone a votare. <br /><br />Spiega chiaramente che cosa serve per raggiungere un accordo, per esempio «per approvare questa proposta, tutte le persone devono votare D'accordo» oppure «per approvare questa proposta, il 75% dei membri deve votare D'accordo». <br /><br />Chiedi a chi partecipa di indicare la «Motivazione» del voto e, se non è d'accordo, di spiegare perché e che cosa dovrebbe cambiare. <br /><br />Alcune organizzazioni usano anche l'opzione di voto Blocco, o veto. <br /><br />Mentre arrivano i voti, rispondi ai commenti, pubblica aggiornamenti, chiudi la proposta in anticipo oppure lascia che arrivi alla scadenza. <br /><br />Le persone partecipanti possono *«cambiare voto»* fino alla chiusura della proposta, per esempio se durante la votazione emergono nuove informazioni. |
-| **Conclusione** <br /><br />Indica se è stato raggiunto un accordo e quale decisione è stata presa. <br /><br />Attua la decisione e pianifica le azioni necessarie. | Valuta i risultati della votazione e comunica la decisione presa. <br /><br />Riassumi i risultati del processo e spiega che cosa succederà dopo. <br /><br />Se i risultati non sono conclusivi, puoi riaprire la discussione e avviare una nuova proposta. <br /><br />La conclusione è un documento importante da consultare in futuro per conoscere la decisione. |
+| **Esponi la questione su cui decidere**  <br /><br />Fornisci informazioni di contesto e apri una discussione ampia per sviluppare una comprensione condivisa. Individua le proposte che emergono. | Avvia una discussione su Loomio <br /><br />Nel titolo della discussione, indica l'argomento e ciò che speri di ottenere. <br /><br />Allega le informazioni di contesto o inserisci un link. Invita le persone a fare domande, contribuire con informazioni e scrivere commenti. |
+| **Presenta una proposta** <br /><br />Verifica il consenso unanime. | Avvia una [proposta di verifica delle opinioni](/en/user_manual/polls/proposals/sense_check/). <br /><br />*Nel titolo:* Dai un nome alla proposta. <br /><br />*Nei dettagli della proposta:* Descrivi chiaramente la proposta e spiega perché è importante. Includi tutte le informazioni di contesto necessarie e un link alla proposta. <br /><br />Invita tutti a rispondere prima che la proposta si chiuda. |
+| **Modifica** <br /><br />Discuti, chiarisci e modifica la proposta. <br /><br />Cerca di comprendere e risolvere eventuali obiezioni. <br /><br />Invita chi solleva obiezioni a proporre una modifica costruttiva e pratica alla decisione o alla linea d'azione proposta. | Facilita la discussione nella conversazione per affrontare le preoccupazioni e modificare la proposta. |
+| **Accordo** <br /><br />È stato raggiunto un accordo? Verifica le posizioni: <br /><br />Accordo: Sostengo la proposta. <br /><br />Astensione: Questa decisione non mi riguarda e accetto qualsiasi decisione del gruppo. <br /><br />Disaccordo: Qualcosa nella proposta deve cambiare prima che io possa sostenerla. <br /><br />Blocco: Ho un disaccordo di fondo con la proposta che non può essere risolto. | Avvia una [proposta di consenso unanime](/en/user_manual/polls/proposals/consensus/) con la versione attuale della proposta. <br /><br />*Nel titolo:* Indica la decisione da prendere. <br /><br />*Nei dettagli della proposta:* Presenta la proposta e invita le persone a votare. <br /><br />Spiega chiaramente cosa significa raggiungere un accordo, ad esempio 'per approvare questa proposta, tutti devono votare Accordo' oppure 'per approvare questa proposta, il 75% dei membri deve essere d'accordo'. <br /><br />Chiedi ai partecipanti di indicare un 'Motivo' per il proprio voto e, se non sono d'accordo, di spiegare perché e cosa deve cambiare perché possano esserlo. <br /><br />Alcune organizzazioni usano anche l'opzione di voto Blocco (o veto). <br /><br />Durante la votazione, rispondi ai commenti, pubblica aggiornamenti, chiudi la proposta in anticipo oppure lasciala proseguire fino alla chiusura prevista. <br /><br />I partecipanti possono *“cambiare voto”* fino alla chiusura della proposta, ad esempio in risposta a nuove informazioni ricevute durante la votazione. |
+| **Conclusione** <br /><br />Comunica se è stato raggiunto un accordo e quale decisione è stata presa. <br /><br />Attua la decisione e pianifica le azioni da intraprendere. | Considera i risultati della votazione e comunica la decisione presa. <br /><br />Riassumi i risultati del processo e spiega cosa succederà dopo. <br /><br />Se i risultati non sono conclusivi, puoi scegliere di riaprire la discussione e avviare una nuova proposta. <br /><br />La conclusione costituisce una registrazione importante della decisione da consultare in futuro. |
 
 <!-- translation-section: example-of-a-consensus-process-on-loomio -->
 
-## Esempio di processo di consenso su Loomio
+## Esempio di un processo di consenso unanime su Loomio
 
 <!-- translation-section: step-0-you-notice-a-problem-or-opportunity-and-take-the-initiative -->
 
 ### Fase 0. Individui un problema o un'opportunità e prendi l'iniziativa
 
-*Vale la pena affrontare il problema o cogliere l'opportunità?* Vivien si accorge che è il momento di rivedere il marchio di Oatmilk Coop.
+*Vale la pena affrontare il problema o cogliere l'opportunità?* Vivien ha notato che è il momento di rivedere il marchio di Oatmilk Coop.
 
-*C'è una decisione da prendere?* Spetta al consiglio direttivo approvare un nuovo concept del marchio.
+*C'è una decisione da prendere?* L'organo di governo ha la responsabilità di approvare un nuovo concept del marchio.
 
-*La questione riguarda altre persone e la tua organizzazione?* Il marchio influenza il modo in cui la cooperativa viene percepita e riguarda tutte le persone dell'organizzazione.
+*Ha effetti su altre persone e sulla tua organizzazione?* Il marchio influisce sulla percezione della cooperativa e su tutte le persone dell'organizzazione.
 
 <!-- translation-section: step-1-state-the-problem-or-issue -->
 
-### Fase 1. Presenta il problema o la questione
+### Fase 1. Esponi il problema o la questione
 
-Vivien avvia una discussione su Loomio. Spiega perché occorre rivedere il marchio dell'organizzazione, invita le persone a contribuire allo sviluppo di un nuovo concept e chiarisce che l'approvazione spetta al consiglio direttivo tramite il processo di consenso.
+Vivien avvia una discussione su Loomio spiegando la necessità di rivedere il marchio dell'organizzazione e invitando le persone a partecipare allo sviluppo di un nuovo concept del marchio. Specifica inoltre che la decisione di approvazione spetta all'organo di governo, che userà il processo di consenso unanime.
 
 ![](discussion_consensus_process_refresh_brand.png)
 
@@ -120,7 +120,7 @@ Vivien avvia una discussione su Loomio. Spiega perché occorre rivedere il march
 
 ### Fase 2. Presenta una proposta
 
-Vivien avvia una proposta di verifica degli orientamenti per raccogliere opinioni sugli elementi principali del concept del marchio e verificare se c'è consenso. La proposta informa le persone che si sta preparando una decisione e le invita a partecipare. Aiuta anche a far emergere le preoccupazioni.
+Vivien avvia una proposta di verifica delle opinioni per raccogliere i pareri sugli elementi chiave del concept del marchio e verificare il consenso unanime. La proposta di verifica delle opinioni informa le persone che una proposta sta prendendo forma e le incoraggia a partecipare. È un modo utile per far emergere le preoccupazioni.
 
 ![](proposal_sense_check_refresh_brand.png)
 
@@ -128,7 +128,8 @@ Vivien avvia una proposta di verifica degli orientamenti per raccogliere opinion
 
 ### Fase 3. Modifica
 
-Quando la proposta di verifica degli orientamenti si chiude, Vivien pubblica una conclusione e informa tutte le persone dei risultati e dei passi successivi. Vivien facilita una discussione per affrontare le preoccupazioni e modificare il documento sul concept del marchio.
+Quando la proposta di verifica delle opinioni si chiude, Vivien comunica una conclusione e informa tutti dei risultati e di cosa succederà dopo.
+Vivien facilita una discussione per affrontare le preoccupazioni e modificare il documento sul concept del marchio.
 
 ![](proposal_outcome_sense_check_refresh_brand.png)
 
@@ -136,13 +137,13 @@ Quando la proposta di verifica degli orientamenti si chiude, Vivien pubblica una
 
 ### Fase 4. Accordo
 
-Completata l'ultima versione del documento sul concept del marchio, Vivien avvia una proposta di consenso per chiedere l'approvazione del consiglio direttivo.
+Dopo aver completato l'ultima versione del documento sul concept del marchio, Vivien è pronta a chiedere l'approvazione dell'organo di governo avviando una proposta di consenso unanime.
 
 ![](proposal_consensus_process_refresh_brand.png)
 
-I membri del consiglio direttivo sono invitati a votare per approvare il concept del marchio. Il consiglio ha già stabilito che, per approvare proposte di questo tipo, più del 75% dei membri deve votare D'accordo.
+I membri dell'organo di governo sono invitati a votare e approvare il concept del marchio. L'organo ha stabilito in precedenza che, per approvare proposte come questa, è necessario che >75% dei membri voti Accordo.
 
-Questo modello include per impostazione predefinita l'opzione Blocco. Il Blocco non è adatto a tutti i gruppi: può creare controversie o essere usato in modo improprio. Se non usi il Blocco nel tuo processo decisionale, ti consigliamo di modificare il modello per rimuoverlo.
+Questo modello include un'opzione Blocco per impostazione predefinita. Il Blocco non è adatto a ogni gruppo: può essere controverso o usato in modo improprio. Se non usi il blocco nel tuo processo decisionale, ti consigliamo di modificare il modello per rimuoverlo.
 
 ![](proposal_vote_consensus_process_refresh_brand.png)
 
@@ -150,6 +151,6 @@ Questo modello include per impostazione predefinita l'opzione Blocco. Il Blocco 
 
 ### Fase 5. Conclusione
 
-Quando la proposta di consenso si chiude, Vivien pubblica una conclusione e informa tutte le persone che è stato raggiunto un accordo e che inizierà il lavoro per attuare il nuovo marchio.
+Quando la proposta di consenso unanime si chiude, Vivien comunica una conclusione e informa tutti che è stato raggiunto un accordo e che inizierà il lavoro per adottare il nuovo marchio.
 
 ![](proposal_outcome_consensus_process_refresh_brand.png)

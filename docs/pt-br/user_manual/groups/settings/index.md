@@ -1,20 +1,20 @@
 ---
 title: Configurações do grupo
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/groups/settings/index.md
+source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
+source_file: docs/en/user_manual/groups/settings/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: b975fe0dc7787563
   group-profile: 673d2b31980f069a
   group-privacy: c6031b3bd445f30e
   group-permissions: 3ddfc79177b464e5
 generated:
-  introduction: 0da2f73412777fa0
-  group-profile: 3f581ff010c4ad93
-  group-privacy: 06edc4d9dff515ec
-  group-permissions: 537dc7b372a83618
+  introduction: f46559e41d493b67
+  group-profile: 979a2d68586294a7
+  group-privacy: a5dc26976f5f9e2d
+  group-permissions: d5e762dcf913f2f3
 title_source: ba4062f844a984f5
 title_generated: d52c6772fcc9fe8c
 ---
@@ -23,28 +23,28 @@ title_generated: d52c6772fcc9fe8c
 
 # Configurações do grupo
 
-As configurações do grupo definem como ele é apresentado, quem pode encontrá-lo e entrar nele e o que os membros podem fazer. Somente os administradores do grupo podem editar essas configurações.
+As configurações do grupo controlam como seu grupo é apresentado, quem pode encontrá-lo e entrar nele e o que os membros podem fazer. Somente administradores do grupo podem editar essas configurações.
 
 Na página do grupo, abra o menu de ações e selecione **Editar configurações do grupo**.
 
 ![Editar configurações do grupo na página do grupo](group_settings.png)
 
-O formulário de configurações tem três áreas:
+O formulário de configurações é dividido em três áreas:
 
 <!-- translation-section: group-profile -->
 
 ## Perfil do grupo
 
-[Perfil do grupo](/en/user_manual/groups/settings/profile) explica como configurar o nome, o identificador, a descrição, a imagem de capa e o logotipo do grupo.
+[Perfil do grupo](/en/user_manual/groups/settings/profile) abrange o nome, o identificador, a descrição, a imagem de capa e o logotipo do grupo.
 
 <!-- translation-section: group-privacy -->
 
 ## Privacidade do grupo
 
-[Privacidade do grupo](/en/user_manual/groups/settings/privacy) explica quem pode encontrar o grupo e ler seu conteúdo, como as pessoas entram nele, sua exibição no diretório e como seguir um grupo Aberto.
+[Privacidade do grupo](/en/user_manual/groups/settings/privacy) abrange quem pode encontrar o grupo, quem pode ler seu conteúdo, como as pessoas entram nele, sua inclusão no diretório e como seguir um grupo aberto.
 
 <!-- translation-section: group-permissions -->
 
 ## Permissões do grupo
 
-[Permissões do grupo](/en/user_manual/groups/settings/permissions) define quais ações membros, pessoas que não são membros e administradores podem realizar.
+[Permissões do grupo](/en/user_manual/groups/settings/permissions) controla quais ações membros, não membros e administradores podem realizar.

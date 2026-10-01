@@ -1,6 +1,6 @@
 ---
 pl:
-  group_export_started: "Rozpoczęto eksportowanie danych grupy"
+  group_export_started: Rozpoczęto eksportowanie danych grupy
   discussion_templates:
     blank:
       process_name: Pusty szablon
@@ -23,14 +23,14 @@ pl:
       title_placeholder: Opracowywanie naszej Polityki BHP
       process_name: Proces zgody
       process_subtitle: Podejmij decyzję „bezpieczną do wypróbowania”, bez zastrzeżeń.
-      process_introduction: '<p>Poproś o zgodę na decyzję, którą musisz podjąć, gdy nie ma znaczących zastrzeżeń do Twojej propozycji, abyś mógł podjąć szybką decyzję, którą można „bezpiecznie wypróbować” już teraz.</p><p> Typowe role:</p><ul><li><p> Wnioskodawca: Osoba poruszająca temat wymagający decyzji.</p></li><li><p> Facylitator: Osoba, która może pomóc wnioskodawcy w skutecznym wykonywaniu jego pracy.</p></li></ul><p> Typowe etapy procesu:</p><p> Krok 1. Przedstaw propozycję za pomocą wątku Loomio.</p><p> Krok 2. Umożliwij rundę pytań, reakcji i wszelkich komentarzy, aby ulepszyć propozycję, za pomocą testu Sense.</p><p> Krok 3. Popraw propozycję sugestiami i komentarzami.</p><p> Krok 4. Zapytaj, czy ktoś ma znaczący sprzeciw wobec zmienionej propozycji, prosząc o zgodę.</p><p> Krok 5. Zintegruj uzasadnione zastrzeżenia, aby stworzyć poprawioną wersję propozycji, którą wszyscy uznają za „bezpieczną do wypróbowania”, a po ukończeniu podaj wynik decyzji.</p><p> <a target="_blank" rel="noopener noreferrer nofollow" href="/docs/en/guides/making_decisions/consent_process">Czytaj więcej: Proces wyrażania zgody.</a></p>'
+      process_introduction: '<p>Uzyskaj zgodę na decyzję, którą musisz podjąć, gdy nie ma istotnych sprzeciwów wobec Twojej propozycji. Pozwoli to szybko podjąć decyzję, którą można już teraz „bezpiecznie wypróbować”.</p><p>Typowe role:</p><ul><li><p>Autor propozycji: Osoba poruszająca temat wymagający decyzji.</p></li><li><p>Facylitator: Osoba pomagająca autorowi propozycji sprawnie wykonać zadanie.</p></li></ul><p>Typowe etapy procesu:</p><p>Krok 1. Przedstaw propozycję w wątku Loomio.</p><p>Krok 2. Przeprowadź rundę pytań, reakcji i komentarzy, aby ulepszyć propozycję za pomocą sondowania nastrojów.</p><p>Krok 3. Popraw propozycję na podstawie sugestii i komentarzy.</p><p>Krok 4. Zapytaj, czy ktoś ma istotny sprzeciw wobec poprawionej propozycji, korzystając z propozycji opartej na zgodzie.</p><p>Krok 5. Uwzględnij uzasadnione sprzeciwy i stwórz poprawioną wersję propozycji, którą wszyscy zgadzają się „bezpiecznie wypróbować”. Na koniec podaj konkluzję decyzji.</p><p><a target="_blank" rel="noopener noreferrer nofollow" href="/docs/en/guides/making_decisions/consent_process">Czytaj więcej: Proces wyrażania zgody.</a></p>'
       description: <h3 id="what-is-the-decision-you-need-to-make">Jaką decyzję musisz podjąć?</h3><h3 id=""></h3><h3 id="why-is-this-important-and-what-impact-does-it-have"> Dlaczego jest to ważne i jaki ma wpływ?</h3><p></p><h3 id="what-information-do-people-need-for-context"> Jakich informacji ludzie potrzebują dla kontekstu?</h3><p></p><h3 id="who-is-the-facilitator-for-this-process"> Kto jest koordynatorem tego procesu?</h3><p></p>
       consent: Zgoda
     advice_process:
       title_placeholder: Proszę o poradę w sprawie zakupu nowego komputera
       process_name: Proces doradztwa
       process_subtitle: Poproś o poradę dotyczącą decyzji, którą musisz podjąć.
-      process_introduction: '<p>Podejmij decyzję, korzystając z porad osób, których dotyczy problem, lub posiadających wiedzę specjalistyczną, dzięki czemu będziesz mógł podjąć lepszą decyzję dla swojej organizacji.</p><p> Typowe role:</p><ul><li><p> Facylitator: Osoba podejmująca decyzję lub poproś kogoś o ułatwienie.</p></li><li><p> Doradcy: osoby, na które ma to wpływ lub posiadające wiedzę specjalistyczną, które zapraszasz.</p></li></ul><p> Typowe etapy procesu:</p><p> Krok 1. Zanim zaproponujesz działania, poproś o opinię, aby poznać perspektywy.</p><p> Krok 2. Złóż propozycję i poproś o poradę – uruchom Propozycję porady.</p><p> Krok 3. Biorąc pod uwagę otrzymane porady, podejmujesz decyzję i informujesz osoby, które udzieliły porady - podaj wynik.</p><p> <a target="_blank" rel="noopener noreferrer nofollow" href="/docs/en/guides/making_decisions/advice_process">Czytaj więcej: Proces doradczy.</a></p>'
+      process_introduction: '<p>Podejmij decyzję, korzystając z porad osób, których ona dotyczy lub które mają odpowiednią wiedzę, aby wybrać lepiej dla swojej organizacji.</p><p>Typowe role:</p><ul><li><p>Facylitator: Osoba podejmująca decyzję lub ktoś poproszony o prowadzenie procesu.</p></li><li><p>Doradcy: Zaproszone osoby, których decyzja dotyczy lub które mają odpowiednią wiedzę.</p></li></ul><p>Typowe etapy procesu:</p><p>Krok 1. Zanim zaproponujesz działanie, poproś o opinie, aby poznać różne perspektywy.</p><p>Krok 2. Przedstaw propozycję i poproś o porady – rozpocznij propozycję doradczą.</p><p>Krok 3. Uwzględnij otrzymane porady, podejmij decyzję i poinformuj osoby, które ich udzieliły – podaj konkluzję.</p><p><a target="_blank" rel="noopener noreferrer nofollow" href="/docs/en/guides/making_decisions/advice_process">Czytaj więcej: Proces doradczy.</a></p>'
       description: <h3 id="what-is-the-decision-you-need-to-make">Jaką decyzję musisz podjąć?</h3><p></p><h3 id="why-is-this-important-and-what-impact-does-it-have"> Dlaczego jest to ważne i jaki ma wpływ?</h3><p></p><h3 id="what-advice-are-you-asking-to-help-you-make-a-good-decision"> O jaką radę prosisz, aby pomóc Ci podjąć dobrą decyzję?</h3><p></p><h3 id="who-is-the-facilitator-for-this-process"> Kto jest koordynatorem tego procesu?</h3><p></p>
       advice: Rada
     pass_a_resolution:
@@ -46,7 +46,7 @@ pl:
       process_subtitle: Osiągnij porozumienie zbiorowe ze wszystkimi zaangażowanymi stronami.
       process_introduction: '<p>Zbuduj konsensus w sprawie decyzji, którą musisz podjąć wspólnie, aby osiągnąć porozumienie, które zaspokoi potrzeby i obawy wszystkich uczestników.</p><p> Typowe role:</p><ul><li><p> Wyznacz facylitatora. (W przypadku posiedzeń zarządu jest to zazwyczaj przewodniczący.)</p></li><li><p> Kworum lub większość członków uczestniczących zgodnie ze statutem organizacji.</p></li></ul><p> Typowe etapy procesu:</p><p> Krok 1. Stwórz otwartą przestrzeń do dyskusji na temat problemu lub proponowanej decyzji.</p><p> Krok 2. Sprawdź konsensus i ujawnij zastrzeżenia, korzystając z propozycji kontroli Sense.</p><p> Krok 3. Wyjaśnij wszelkie punkty, zaproś do konstruktywnych modyfikacji i zmień propozycję.</p><p> Krok 4. Sprawdź zgodę i wszelkie pozostałe zastrzeżenia, korzystając z propozycji konsensusu.</p><p> Krok 5. Zapisz decyzję z wynikiem oraz w oficjalnych protokołach organizacji.</p><p> <a target="_blank" rel="noopener noreferrer nofollow" href="/docs/en/guides/making_decisions/consensus_process">Czytaj więcej: Proces konsensusu.</a></p>'
       description: <h3 id="what-is-the-decision-you-need-to-make">Jaką decyzję musisz podjąć?</h3><p></p><h3 id="why-is-this-important-and-what-impact-does-it-have"> Dlaczego jest to ważne i jaki ma wpływ?</h3><p></p><h3 id="what-information-do-people-need-for-context"> Jakich informacji ludzie potrzebują dla kontekstu?</h3><p></p><h3 id="who-is-the-facilitator"> Kto jest koordynatorem?</h3><p></p><h3 id="what-conditions-need-to-be-met-for-a-decision"> Jakie warunki trzeba spełnić, aby otrzymać decyzję?</h3><h3 id=""></h3>
-      consensus: Zgoda
+      consensus: Konsensus
     share_links_and_info:
       title_placeholder: Udostępnij linki i informacje
       process_name: Udostępnij linki i informacje
@@ -79,7 +79,7 @@ pl:
       title_placeholder: Wniosek o dofinansowanie wydarzenia Robotics Roadshow
       process_name: Decyzja o finansowaniu
       process_subtitle: Rozpatrz wniosek o dotację, pożyczkę lub inwestycję i podejmij decyzję o finansowaniu.
-      process_introduction: "<p>Złóż wniosek o dofinansowanie, dołącz dokumenty i inne materiały uzupełniające.</p><p> Podsumuj aplikację w kontekście wątku.</p><p> Zaproś upoważnione osoby do zapoznania się z wnioskiem i zadawania pytań. Zapewnij wystarczającą ilość czasu na dyskusję.</p><p> Złóż wniosek konsensusowy w celu zatwierdzenia finansowania.</p><p> Jeśli ktoś się z tym nie zgadza, poproś o powód – na przykład może być potrzebnych więcej informacji. Poproś osobę, która nie zgadza się, aby zmieniła swój głos, jeśli jest usatysfakcjonowana.</p><p> Jeśli masz już jasną decyzję dotyczącą wniosku o finansowanie, podaj wynik, aby zapisać tę decyzję.</p>"
+      process_introduction: "<p>Przedstaw wniosek o dofinansowanie, dołącz dokumenty i inne materiały uzupełniające.</p><p>Podsumuj wniosek w kontekście wątku.</p><p>Zaproś uprawnione osoby do zapoznania się z wnioskiem i zadawania pytań. Zapewnij dość czasu na dyskusję.</p><p>Przedstaw propozycję opartą na konsensusie, aby zatwierdzić dofinansowanie.</p><p>Jeśli ktoś się nie zgadza, poproś o powód – na przykład może brakować informacji. Zaproś tę osobę do zmiany głosu, gdy jej wątpliwości zostaną wyjaśnione.</p><p>Gdy decyzja w sprawie dofinansowania będzie jasna, podaj konkluzję, aby ją zapisać.</p>"
       description: <h3 id="introduce-and-summarize-the-funding-application">Przedstaw i streść wniosek o dofinansowanie</h3><p></p><h3 id="how-does-this-application-fit-with-funding-criteria"> Jak ten wniosek ma się do kryteriów finansowania?</h3><p></p><h3 id="who-is-authorized-to-approve-this-funding-decision"> Kto jest upoważniony do zatwierdzenia tej decyzji o finansowaniu?</h3><p></p><h3 id="invite-questions-from-decision-makers-to-process-the-applica"> Zapraszaj decydentów do zadawania pytań w celu rozpatrzenia wniosku</h3><p></p>
       funding: Finansowanie
     approve_a_document:
@@ -178,9 +178,9 @@ pl:
         count: Licz
         choose: Wybierz
         allocate: Przydziel
-        score: Wynik
-        rank: Ranga
-        time: Ankieta dotycząca daty spotkania
+        score: Ocena
+        rank: Ranking
+        time: Wybór terminu
   user:
     deleted_user: Usunięty użytkownik
     placeholder_name: Zaproszony użytkownik (%{hostname})
@@ -218,7 +218,7 @@ pl:
       group_name: Nazwa Grupy
       discussion_title: Tytuł wątku
       outcome_author: Autor wyniku
-      outcome_created_at: Wynik utworzony o
+      outcome_created_at: Data utworzenia konkluzji
       outcome_statement: Oświadczenie o wyniku
       poll_url: Adres URL ankiety
       reason: Powód
@@ -478,13 +478,13 @@ pl:
     common:
       why_send_this: Otrzymujesz tę wiadomość e-mail, ponieważ %{reason}
       view_on_loomio: Zobacz na %{site_name}
-      create_outcome: Udostępnij wynik
+      create_outcome: Udostępnij konkluzję
       your_response: 'Twój głos:'
       you_voted: Zagłosowałeś!
       not_invited: Nie zaproszona
       please_respond: Odpowiedz
       time_zone: "(Czas wyświetlany w %{zone})"
-      undecided_members: Niezdecydowani członkowie (%{count})
+      undecided_members: Członkowie, którzy nie głosowali (%{count})
       undecided_visitors: Niezdecydowane zaproszone osoby (%{count})
       more_undecided: "%{count} więcej..."
       vote_now: Głosuj teraz
@@ -514,7 +514,7 @@ pl:
       disagree_prompt: Dlaczego się nie zgadzasz?
     proposal:
       process_subtitle: Złóż propozycję podjęcia decyzji
-      process_introduction: <p>Klasyczna propozycja Loomio pomaga podjąć decyzję, przekształcając dyskusję w jasny wynik.</p><p> Zaproponuj sposób działania i zachęć ludzi do głosowania „za”, „wstrzymaj się” lub „nie”.</p><p> Gdy ludzie głosują, mogą podać powód, dla którego głosowali w ten sposób. Możesz zobaczyć, jakie jest stanowisko wszystkich innych w tej sprawie i dlaczego.</p><p> W ten sposób możesz wykorzystać propozycję, aby zachęcić ludzi do odpowiedzi, odkryć nowe informacje i zbudować wspólne zrozumienie, co pomoże Twojej grupie podjąć lepszą, bardziej świadomą decyzję.</p><p> Propozycja i związana z nią dyskusja tworzą własny zapis tego, w jaki sposób zapadła decyzja.</p><p> <a target="_blank" href="/docs/en/guides/making_decisions/simple_decision_process"><u>Więcej informacji na temat wykorzystania klasycznej propozycji Loomio można znaleźć w części Prosty proces decyzyjny</u></a> .</p>
+      process_introduction: '<p>Klasyczna propozycja Loomio pomaga podjąć decyzję, przekształcając dyskusję w jasną konkluzję.</p><p>Zaproponuj sposób działania i zachęć ludzi do oddania głosu: „Zgadzam się”, „Wstrzymuję się” lub „Nie zgadzam się”.</p><p>Głosujący mogą podać powód swojego wyboru. Możesz zobaczyć stanowisko innych osób w tej sprawie i poznać ich powody.</p><p>W ten sposób propozycja zachęca ludzi do odpowiedzi, pozwala odkryć nowe informacje i budować wspólne zrozumienie – aby pomóc Twojej grupie podjąć lepszą, bardziej świadomą decyzję.</p><p>Propozycja i związana z nią dyskusja stanowią zapis tego, jak zapadła decyzja.</p><p><a target="_blank" href="/docs/en/guides/making_decisions/simple_decision_process"><u>Czytaj więcej o klasycznej propozycji Loomio w prostym procesie decyzyjnym</u></a>.</p>'
       title: Zatwierdź nową koncepcję marki
       details: <h3 id="what-is-the-decision-you-need-to-make"><strong>Jaką decyzję musisz podjąć?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Dlaczego to jest ważne?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>O co prosisz ludzi?</strong></h3><p></p><p> Aby ta propozycja została przyjęta, potrzebujemy większości głosów członków popierających ją.</p><p> Jeżeli się nie zgadzasz, podaj powód i wyjaśnij, co powinno się zmienić, abyś mógł się zgodzić.</p>
       agree: Zgadzać się
@@ -582,9 +582,9 @@ pl:
       outcome_statement: "<p>Dziękujemy za przesłanie pytań w tej rundzie</p>"
     sense_check:
       process_subtitle: Poproś o opinie, pytania i wątpliwości
-      process_introduction: <p>Propozycja Sense check to dobry sposób na uzyskanie informacji zwrotnej, zaproszenie do zadawania pytań i odkrycie obaw. Pomaga wyjaśnić i ulepszyć propozycję przed podjęciem decyzji.</p><p> Kontrola zmysłów pozwala ludziom wiedzieć, że propozycja się tworzy i zachęca ich do zaangażowania się. Jest to okazja do słuchania ludzi, wyczuwania, co czują i odpowiedniego reagowania - otwierając potencjał do włączenia ich wkładu w podejmowanie lepszych decyzji.</p><p> Skorzystaj z propozycji sprawdzenia sensu w procesie zgody, aby zaprosić reakcje i komentarze służące ulepszeniu propozycji, a w procesie konsensusu, aby przetestować konsensus.</p><p> <a target="_blank" rel="noopener noreferrer nofollow" href="/docs/en/guides/making_decisions/simple_decision_process"><u>Więcej informacji na temat korzystania z funkcji Sense check można znaleźć w części Prosty proces decyzyjny</u></a> <span>.</span></p>
+      process_introduction: <p>Propozycja sondowania nastrojów to dobry sposób na zebranie opinii, pytań i obaw. Pomaga wyjaśnić i ulepszyć propozycję przed podjęciem decyzji.</p><p>Sondowanie nastrojów pokazuje ludziom, że propozycja powstaje, i zachęca do udziału. To okazja, by ich wysłuchać, poznać ich odczucia i odpowiednio zareagować – uwzględniając ich wkład, aby podjąć lepszą decyzję.</p> <p>Użyj propozycji sondowania nastrojów w procesie wyrażania zgody, aby zebrać reakcje i komentarze służące ulepszeniu propozycji, a w procesie konsensusu, aby sprawdzić, czy jest konsensus.</p><p><a target="_blank" rel="noopener noreferrer nofollow" href="/docs/en/guides/making_decisions/simple_decision_process"><u>Czytaj więcej o sondowaniu nastrojów w prostym procesie decyzyjnym</u></a><span>.</span></p>
       title: Jak podobają Ci się nowe koncepcje marki?
-      details: <h3 id="what-are-you-proposing"><strong>Co proponujesz?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Dlaczego to jest ważne?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>O co prosisz ludzi?</strong></h3><p></p><p> Co sądzisz o tej propozycji? Zostaw komentarz lub zaproponuj ulepszenie.</p><p> Kontrola zmysłów jest okazją do przekazania nam swoich opinii i wkładu, dzięki czemu możemy podejmować lepsze decyzje.</p>
+      details: <h3 id="what-are-you-proposing"><strong>Co proponujesz?</strong></h3><p></p><h3 id="why-is-this-important"><strong>Dlaczego to jest ważne?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"><strong>O co prosisz ludzi?</strong></h3><p></p><p>Co sądzisz o propozycji?  Zostaw komentarz lub zaproponuj ulepszenie.</p><p>To sondowanie nastrojów jest okazją do podzielenia się opinią i wniesienia wkładu, aby pomóc nam podjąć lepszą decyzję.</p>
       outcome_statement: "<p>Dziękujemy za udział w teście sprawdzającym zmysły.</p>"
       not_sure: Nie jestem pewien
       not_sure_meaning: Mam pytanie lub potrzebuję więcej czasu
@@ -650,11 +650,11 @@ pl:
       title: Ocena sposobu podejmowania decyzji w naszej organizacji
       details: <h3 id="what-is-this-poll-about"><strong>Czego dotyczy ta ankieta?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Dlaczego to jest ważne?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>O co prosisz ludzi?</strong></h3><p></p><p> Wybierz opcję(y), które Cię interesują.</p>
       process_subtitle_v2: Zmierz poziom poparcia dla każdej opcji
-      process_introduction_v2: <p><strong>Wynik</strong> pozwala zmierzyć poziom poparcia grupy dla każdej opcji. Uczestnicy oceniają każdą opcję, przypisując jej wynik na skali przesuwnej, dzięki czemu można zobaczyć nie tylko, co ludzie preferują, ale także, jak bardzo.</p><p> <a target="_blank" href="/docs/en/user_manual/polls/proposal_types#score-poll">Przeczytaj więcej o ankiecie Score</a> .</p>
+      process_introduction_v2: <p><strong>Ocena</strong> pozwala zmierzyć poziom poparcia grupy dla każdej opcji. Uczestnicy oceniają każdą opcję, przyznając jej punkty na skali, dzięki czemu można zobaczyć nie tylko, co ludzie preferują, ale także, jak bardzo.</p><p><a target="_blank" href="/docs/en/user_manual/polls/proposal_types#score-poll">Przeczytaj więcej o ocenie</a>.</p>
       process_subtitle_v3: Poproś wyborców o ocenę, w jakim stopniu popierają każdą z opcji
     dot_vote:
       process_subtitle: Przydziel budżet punktów, aby ujawnić priorytety
-      process_introduction: <p>Głosowanie kropkowe jest przydatne dla grup próbujących przydzielić ograniczone zasoby do kilku opcji. Wykracza poza prostą ankietę, pomagając uczestnikom zrozumieć, że istnieje ograniczenie przy wyborze opcji.</p><p> Uczestnicy otrzymują określoną liczbę kropek. Ty decydujesz, ile.</p><p> Umieszczają kropki obok przedstawionych opcji, które im się podobają. Uczestnicy mogą umieścić wszystkie swoje kropki na jednej opcji lub rozłożyć je na wiele opcji.</p><p> W miarę jak uczestnicy będą przydzielać punkty, może się zdarzyć, że przekroczą limit budżetu punktów, dlatego zachęcamy do ostrożnego rozważenia sposobu, w jaki wydają swoje punkty.</p><p> Opcje z największą liczbą kropek „wygrywają”. Tabela wyników zawiera dodatkowe dane, które pomogą Ci analizować wyniki.</p><ul><li><p> % punktów</p></li><li><p> Zwrotnica</p></li><li><p> Mieć na myśli</p></li><li><p> Wyborcy</p></li></ul><p> <a target="_blank"  href="/docs/en/user_manual/polls/proposal_types#dot-vote">Przeczytaj więcej o głosowaniu Dot</a> .</p>
+      process_introduction: <p>Podział punktów pozwala rozdzielić ograniczone zasoby między kilka opcji. Wykracza poza prostą ankietę, pomagając uczestnikom zrozumieć ograniczenia przy wyborze opcji.</p><p>Każdy uczestnik otrzymuje określoną liczbę punktów do przydzielenia.</p><p>Uczestnicy mogą przydzielić wszystkie punkty jednej opcji lub rozdzielić je między kilka opcji.</p><p>Uczestnicy nie mogą przekroczyć swojego limitu, więc muszą starannie rozważyć podział punktów.</p><p><a target="_blank"  href="/docs/en/user_manual/polls/proposal_types#dot-vote">Czytaj więcej o podziale punktów</a>.</p>
       title: Wybór tematów na naszą konferencję
       details: <h3 id="what-is-this-poll-about"><strong>Czego dotyczy ta ankieta?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Dlaczego to jest ważne?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>O co prosisz ludzi?</strong></h3><p></p><p> W tej ankiecie masz budżet 8 kropek do przydzielenia na preferowane opcje. Możesz umieścić wszystkie kropki na jednej opcji lub rozłożyć je.</p>
       process_subtitle_v2: Ujawnij priorytety, gdy występują kompromisy
@@ -662,7 +662,7 @@ pl:
       process_subtitle_v3: Ujawnij priorytety, gdy pojawiają się kompromisy. Znane również jako głosowanie kropkowe.
     ranked_choice:
       process_subtitle: Zrozumieć uporządkowaną preferencję opcji
-      process_introduction: <p>Wybór rankingowy jest przydatny, gdy masz dużą liczbę opcji lub gdy przeprowadzasz wybory.</p><p> Ten szablon ankiety oferuje szereg opcji, dzięki którym ludzie mogą głosować w preferowanej kolejności.</p><p> Możesz ustalić liczbę wyborów, jakie będzie miał wyborca.</p><p> <span>Głosujący przeciągają i upuszczają opcje w kolejności preferencji (gdzie nr 1 oznacza opcję najbardziej preferowaną).</span></p><p> <span>Zaawansowane ustawienia obejmują opcje „Głosy są anonimowe” i „Pokaż opcje w kolejności losowej” - powszechnie używane w przypadku</span> wyborów ocenianych w celu zminimalizowania ryzyka stronniczości podczas głosowania.</p><p> Wyniki są wyświetlane w kolejności rankingowej. Tabela wyników zawiera dodatkowe dane, które pomogą Ci analizować wyniki.</p><ul><li><p> Stopień</p></li><li><p> % punktów</p></li><li><p> Zwrotnica</p></li><li><p> Mieć na myśli</p></li></ul><p> <a target="_blank"  href="/docs/en/user_manual/polls/proposal_types#ranked-choice">Przeczytaj więcej o wyborze rankingowym</a> .</p>
+      process_introduction: <p>Ranking jest przydatny, gdy masz dużo opcji lub przeprowadzasz wybory.</p><p>Głosujący przeciągają i upuszczają opcje, aby ułożyć je w kolejności preferencji.</p><p>Wyniki są wyświetlane w kolejności rankingu.</p><p><a target="_blank"  href="/docs/en/user_manual/polls/proposal_types#ranked-choice">Przeczytaj więcej o rankingu</a>.</p>
       title: Wybierz dyrektorów do rady nadzorczej
       details: <h3 id="what-is-this-poll-about"><strong>Czego dotyczy ta ankieta?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Dlaczego to jest ważne?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>O co prosisz ludzi?</strong></h3><p></p><p> Zagłosuj, klasyfikując opcje według swoich preferencji. Opcja, która zajmie pierwsze miejsce w wynikach, wygrywa.</p>
       process_subtitle_v2: Znajdź kolejność preferencji grupy
@@ -670,12 +670,12 @@ pl:
       process_subtitle_v3: Uporządkuj opcje od najbardziej do najmniej preferowanych
     time_poll:
       process_subtitle: Znajdź osoby, które są dostępne na spotkanie
-      process_introduction: <p><span>Zaoszczędź czas na ustalaniu daty spotkania lub wydarzenia.</span></p><p> Ankieta czasowa ułatwia sprawdzenie dostępności wszystkich osób i znalezienie najlepszego czasu.</p><p> Podaj tytuł i szczegóły swojej ankiety Time. Wprowadź listę opcji daty i godziny w swojej strefie czasowej.</p><p> Przy ustalaniu przedziałów czasowych weź pod uwagę osoby z różnych stref czasowych. Uczestnicy zobaczą godziny zlokalizowane w ich strefie czasowej.</p><p> Ustaw czas trwania spotkania.</p><p> Po zamknięciu ankiety „Czas” podaj wynik zawierający najlepszy czas i wszelkie instrukcje dotyczące spotkania.</p><p> <span>Loomio dołączy do e-maila z powiadomieniem o wynikach zaproszenie do kalendarza, aby uczestnicy mogli dodawać wpisy do swoich kalendarzy.</span></p><p> <a target="_blank" href="/docs/en/user_manual/polls/meeting_polls#time-poll">Przeczytaj więcej o ankiecie Time</a> .</p>
+      process_introduction: <p>Szybko znajdź najlepszy termin spotkania lub wydarzenia. Dodaj tytuł, szczegóły oraz opcje dat i godzin w swojej strefie czasowej. Uczestnicy zobaczą godziny w swoich strefach czasowych.</p><p>Gdy ankieta wyboru terminu się zakończy, podaj konkluzję z najlepszym terminem i wskazówkami dotyczącymi spotkania. Loomio wyśle e-mail z konkluzją i zaproszeniem do kalendarza, aby uczestnicy mogli dodać spotkanie do swoich kalendarzy.</p><p><a target="_blank" href="/docs/en/user_manual/polls/meeting_polls#time-poll">Czytaj więcej o wyborze terminu</a>.</p>
       title: Znajdźmy datę naszego następnego spotkania
       details: "<p><strong>Jakie to spotkanie lub wydarzenie?</strong></p><p></p><p> <strong>Dlaczego to jest ważne?</strong></p><p></p><p> <strong>O co prosisz ludzi?</strong></p><p></p><p> <span>Oznacz dostępne przedziały czasowe zieloną ikoną „kciuka w górę” lub pozostaw czerwoną ikoną „kciuka w dół”, gdy jesteś niedostępny.</span></p><p> <span>Użyj ikony z uniesionym kciukiem w bok, aby dać znać, że jesteś dostępny, „jeśli zajdzie taka potrzeba”.</span></p>"
       reason_prompt: Czy możesz coś powiedzieć, aby pomóc organizatorowi znaleźć odpowiedni termin?
       process_subtitle_v2: Znajdź, kiedy ludzie są dostępni
-      process_introduction_v2: <p><strong>Ankieta czasowa</strong> pomaga Ci sprawdzić, kiedy ludzie są dostępni. Dodaj proponowane godziny, a uczestnicy zobaczą je w swojej strefie czasowej. Po zamknięciu ankiety ustaw wynik, a Loomio wyśle wszystkim zaproszenie do kalendarza.</p><p> <a target="_blank" href="/docs/en/user_manual/polls/meeting_polls#time-poll">Przeczytaj więcej o sondażu Time</a> .</p>
+      process_introduction_v2: <p><strong>Wybór terminu</strong> pomaga sprawdzić, kiedy ludzie są dostępni. Dodaj proponowane terminy, a uczestnicy zobaczą je w swoich strefach czasowych. Po zamknięciu ankiety podaj konkluzję, a Loomio wyśle wszystkim zaproszenie do kalendarza.</p><p><a target="_blank" href="/docs/en/user_manual/polls/meeting_polls#time-poll">Czytaj więcej o wyborze terminu</a>.</p>
     opt_in:
       process_subtitle: Znajdź wolontariuszy lub poproś o uczestników
       process_introduction: '<p>Użyj opcji Opt-in, aby zaprosić ludzi do dołączenia do zespołu, komitetu lub grupy roboczej lub do wzięcia udziału w wydarzeniu.</p><p> W przypadku opcji „Opt-in” dostępne są dwie opcje głosowania: Akceptuj lub Odrzuć.</p><p> Możesz określić docelową liczbę osób, których szukasz, np. 3 osoby, które dołączą do Twojej grupy roboczej.</p><p> <a target="_blank" href="/docs/en/user_manual/polls/meeting_polls#opt-in">Dowiedz się więcej o Opt-in</a> .</p>'
@@ -691,14 +691,14 @@ pl:
       process_introduction: "<p>Aby w pełni wykorzystać możliwości Loomio, potrzebne jest zaangażowanie grupy. Ta propozycja pomaga Twojej grupie zdecydować, czy zainwestować czas i wysiłek w porządne wypróbowanie Loomio — czy to poprzez zobowiązanie się do okresu próbnego, czy też wspólne zapisanie się na plan.</p>"
       title: Zaangażujmy się wspólnie w wypróbowywanie Loomio
       details: "<p>Aby dobrze korzystać z Loomio, potrzebny jest wysiłek grupowy — wszystko działa, gdy ludzie przychodzą i uczestniczą.</p><p> Ta propozycja wzywa wszystkich do aktywnego korzystania z Loomio w okresie próbnym. Oznacza to meldowanie się, głosowanie nad propozycjami i dołączanie do dyskusji.</p><p> Jeśli masz w tej kwestii wątpliwości, zgłoś sprzeciw i powiedz, co należałoby zmienić — do tego właśnie służy opcja sprzeciwu.</p>"
-      outcome_statement: "<p>Przedstaw grupie wynik tej propozycji — co zostało ustalone i co będzie dalej.</p>"
+      outcome_statement: "<p>Udostępnij grupie konkluzję tej propozycji — co zostało ustalone i co będzie dalej.</p>"
       consent_meaning: Chętnie spróbuję
       consent_prompt: Na co czekasz, korzystając z Loomio?
       objection_meaning: Mam problem, którym musimy się najpierw zająć
       objection_prompt: Co musi się zmienić, zanim podejmiesz decyzję?
     majority:
       process_subtitle: Podejmij decyzję największą liczbą głosów
-      process_introduction: "<p><strong>Większość</strong> to najprostszy sposób na podjęcie decyzji grupowej – uczestnicy głosują „tak” lub „nie”, a propozycja zostaje przyjęta, jeśli ponad połowa zagłosuje „tak”. Nie ma wstrzymujących się ani blokujących, więc każdy głos ma taką samą wagę.</p><p> Większość sprawdza się w przypadku prostych decyzji, w których potrzebny jest jasny rezultat. W przypadku decyzji, w których ważne jest, aby ludzie współpracowali, aby się zrozumieć i znaleźć wspólny język, rozważ opcję zgody lub konsensusu.</p>"
+      process_introduction: "<p><strong>Większość</strong> to najprostszy sposób na podjęcie decyzji grupowej — uczestnicy głosują „Tak” lub „Nie”, a propozycja zostaje przyjęta, jeśli ponad połowa zagłosuje „Tak”. Nie ma opcji „Wstrzymuję się” ani „Blokuję”, więc każdy głos ma taką samą wagę.</p><p>Większość sprawdza się przy prostych decyzjach, gdy potrzebna jest jasna konkluzja. Przy decyzjach, w których ważna jest współpraca, wzajemne zrozumienie i znalezienie wspólnego stanowiska, rozważ zgodę lub konsensus.</p>"
       title: Zatwierdzenie budżetu na III kwartał
       details: "<h3><strong>Jaką decyzję musisz podjąć?</strong></h3><p></p><h3> <strong>Dlaczego to jest ważne?</strong></h3><p></p><h3> <strong>O co prosisz ludzi?</strong></h3><p></p>"
       yes_meaning: Popieram tę propozycję
@@ -802,14 +802,14 @@ pl:
     unavailable: Nie płynny
     anonymous: Anonimowy
     no_voters: Brak wyborców
-    score: 'wynik: %{value}'
+    score: 'ocena: %{value}'
     none_of_the_above: Żadne z powyższych
     no_option_selected: Nie wybrano opcji
     review_date: "**Data przeglądu:** %{value}"
     voted: "%{author} zagłosował na %{response}"
     voted_hidden: "%{author} zagłosował"
     vote_removed: "%{author}: głos usunięty"
-    undecided: "%{author}: niezdecydowany"
+    undecided: "%{author}: brak głosu"
     superseded: zastąpiony
     shared_outcome: "%{author} udostępnił wniosek"
     removed: Usunięto

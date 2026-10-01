@@ -176,12 +176,12 @@ nl_NL:
   poll_types:
     proposal: voorstel
     count: opt-in
-    check: zintuiglijke controle
+    check: gevoelscheck
     poll: peiling
-    dot_vote: dotmocracy
+    dot_vote: puntenverdeling
     meeting: tijd peiling
     ranked_choice: gerangschikte keuze
-    score: resultaat peiling
+    score: scorepeiling
     question: vragen ronde
     stv: STV-verkiezing
   timezones:
@@ -268,7 +268,7 @@ nl_NL:
     action:
       print: Afdrukken
       preview: Voorbeeld
-      pin: Vastprikken
+      pin: Vastzetten
       unpin: Ontprikken
       search: Zoek
       filter: Filter
@@ -343,7 +343,7 @@ nl_NL:
     formatting_help:
       label: Aan het formatteren
       title: Leer hoe je Markdown kan gebruiken om tekst op te maken
-    thread: Draad
+    thread: Thread
     commercial: Commercieel
     nonprofit: Non-profit
     opening_in: Openingstijden %{time}
@@ -457,7 +457,7 @@ nl_NL:
       group: deze groep
       default: groepen waar je lid van wordt
     explain_scope:
-      thread: Dit veranderd zodra je een melding krijgt over dit bord
+      thread: Dit verandert wanneer je meldingen over deze thread krijgt
       group: Dit veranderd zodra je een melding krijgt over alle borden in de groep
     simple:
       label: Meldingen
@@ -474,17 +474,17 @@ nl_NL:
     mute_label: Dempen
     saved: Melding instellingen aangepast
     discussion:
-      loud_description: Je ontvangt een e-mail voor alle activiteiten van dit bord.
-      normal_description: Je ontvangt een e-mail voor belangrijke activiteiten van dit bord.
-      quiet_description: Je ontvangt geen e-mails over dit bord.
+      loud_description: Je ontvangt een e-mail over alle activiteit in deze thread.
+      normal_description: Je ontvangt alleen een e-mail over belangrijke activiteit in deze thread.
+      quiet_description: Je ontvangt geen e-mails over activiteit in deze thread.
       apply_to_all: Pas deze instellingen toe op alle borden in deze groep.
       only_this_thread: Alleen op dit bord van toepassing
       group: Verander de meldingen van deze groep
       user: Verander gebruiker melding instellingen
       messages:
-        loud: Activiteit op dit bord zal je per mail gemeld worden.
-        normal: Je zal ge-e-maild worden over voorstellen op dit bord.
-        quiet: 'Je ontvangt geen e-mails over dit bord. '
+        loud: Je ontvangt een e-mail over activiteit in deze thread.
+        normal: Je ontvangt een e-mail over voorstellen in deze thread.
+        quiet: Je ontvangt geen e-mails over deze thread.
       title: Discussiemeldingen
     membership:
       title: Meldingen voor %{title}
@@ -618,7 +618,7 @@ nl_NL:
     all_groups: Alle groepen
     recent_threads: Recente borden
     invite_only_threads: Alleen op uitnodiging borden
-    direct_threads: Directe borden
+    direct_threads: Directe threads
     unread_threads: Ongelezen gesprekken
     muted_threads: Gedempte borden
     start_subgroup: Nieuwe subgroep
@@ -634,7 +634,7 @@ nl_NL:
     talk_to_the_loomio_team: Praat met het Loomio-team
     aria_labels:
       heading: Zijbalk
-      threads_list: Bord acties
+      threads_list: Threadacties
       groups_list: Groepen
       user_list: Gebruikersacties
     user_settings: Gebruikersinstellingen
@@ -665,7 +665,7 @@ nl_NL:
     showing_latest: Laatste tonen
     showing_unread: Ongelezen weergeven
     add_comment: Reactie toevoegen
-    start_decision: Startbeslissing
+    start_decision: Start besluit
     return: Terug
     end: Einde
     notifications: Meldingen
@@ -792,14 +792,14 @@ nl_NL:
       outcome_announced: "%{actor} deelde een %{poll_type} conclusie: %{title}"
       outcome_created: "%{actor} deelde een %{poll_type} conclusie: %{title}"
       outcome_updated: "%{actor} wijzigde het %{poll_type} conclusie: %{title}"
-      outcome_review_due: 'Het is tijd om de uitkomst te bekijken van: %{title}'
+      outcome_review_due: 'Het is tijd om de conclusie te bekijken van: %{title}'
       poll_closed_by_user: "%{actor} heeft de %{poll_type} gesloten: %{title}"
       poll_closing_soon: "%{poll_type} sluit binnen 24 uur: %{title}"
       poll_closing_soon_author: 'Uw %{poll_type} sluit over 24 uur: %{title}'
       poll_created: "%{actor} startte een %{poll_type}: %{title}"
       poll_edited: "%{actor} heeft de %{poll_type} bijgewerkt: %{title}"
       poll_expired: "%{poll_type} is gesloten: %{title}"
-      poll_expired_author: 'Deel de uitkomst van uw %{poll_type}: %{title}'
+      poll_expired_author: 'Deel de conclusie van jouw %{poll_type}: %{title}'
       poll_option_added: "%{actor} heeft opties toegevoegd aan %{title}"
       poll_reopened: "%{actor} heropende de %{poll_type}: %{title}"
       poll_reminder: "%{actor} herinnert je eraan om te stemmen op %{title}"
@@ -828,9 +828,9 @@ nl_NL:
       membership_resent: "%{actor} heeft je uitgenodigd om lid te worden van een groep"
       membership_requested: "%{actor} verzocht om lid te worden van uw groep"
       membership_request_approved: "%{actor} keurde uw verzoek om lid te worden van %{title} goed"
-      outcome_announced: "%{actor} heeft een %{poll_type} uitkomst gedeeld"
-      outcome_created: "%{actor} heeft een %{poll_type} uitkomst gedeeld"
-      outcome_review_due: Het is tijd om de uitkomst van %{poll_type} te bekijken
+      outcome_announced: "%{actor} heeft een conclusie van een %{poll_type} gedeeld"
+      outcome_created: "%{actor} heeft een conclusie van een %{poll_type} gedeeld"
+      outcome_review_due: Het is tijd om de conclusie van %{poll_type} te bekijken
       poll_announced_wip: "%{actor} wil uw feedback over een %{poll_type}"
       poll_closed_by_user: "%{actor} heeft de %{poll_type} gesloten"
       poll_closing_soon: "%{poll_type} sluit over 24 uur"
@@ -838,7 +838,7 @@ nl_NL:
       poll_created: "%{actor} is begonnen met een %{poll_type}"
       poll_edited: "%{actor} heeft de %{poll_type} bijgewerkt"
       poll_expired: "%{poll_type} is gesloten"
-      poll_expired_author: Deel de uitkomst van uw %{poll_type}
+      poll_expired_author: Deel de conclusie van jouw %{poll_type}
       poll_option_added: "%{actor} heeft opties toegevoegd aan de %{poll_type}"
       poll_reopened: "%{actor} heropende de %{poll_type}"
       poll_reminder: "%{actor} herinnert je eraan om te stemmen"
@@ -856,7 +856,7 @@ nl_NL:
       discussion_closed: "%{actor} heeft de discussie gesloten"
       new_discussion: "%{actor} is een discussie gestart"
       new_comment: "%{actor} heeft gereageerd in een discussie"
-      outcome_updated: "%{actor} heeft de uitkomst bijgewerkt"
+      outcome_updated: "%{actor} heeft de conclusie bijgewerkt"
       thread_locked: "%{actor} heeft de thread vergrendeld"
       membership_request_declined: Je verzoek om lid te worden van %{title} is afgewezen
     hints:
@@ -876,17 +876,17 @@ nl_NL:
       new_coordinator: "%{actor} heeft je tot beheerder van %{title} gemaakt"
       new_delegate: "%{actor} heeft je tot afgevaardigde met stemrecht gemaakt in %{title}"
       new_discussion: "%{title}"
-      outcome_announced: "%{poll_type} uitkomst: %{title}"
-      outcome_created: "%{poll_type} uitkomst: %{title}"
-      outcome_updated: "%{poll_type} uitkomst bijgewerkt: %{title}"
-      outcome_review_due: Het is tijd om de uitkomst van %{title} te bekijken
+      outcome_announced: 'Conclusie van %{poll_type}: %{title}'
+      outcome_created: 'Conclusie van %{poll_type}: %{title}'
+      outcome_updated: 'Conclusie van %{poll_type} bijgewerkt: %{title}'
+      outcome_review_due: 'Het is tijd om de conclusie te bekijken van: %{title}'
       poll_closed_by_user: "%{actor} heeft de %{poll_type} gesloten: %{title}"
       poll_closing_soon: "%{poll_type} sluit over 24 uur: %{title}"
       poll_closing_soon_author: 'Uw %{poll_type} sluit over 24 uur: %{title}'
       poll_created: "%{poll_type}: %{title}"
       poll_edited: "%{actor} heeft de %{poll_type} bijgewerkt: %{title}"
       poll_expired: "%{poll_type} is gesloten: %{title}"
-      poll_expired_author: 'Publiceer een uitkomst: %{title}'
+      poll_expired_author: 'Publiceer een conclusie: %{title}'
       poll_option_added: "%{actor} heeft opties toegevoegd aan %{title}"
       poll_reopened: 'Stemming verlengd: %{title}'
       poll_reminder: "%{actor} herinnert je eraan om te stemmen op %{title}"
@@ -944,7 +944,7 @@ nl_NL:
     privacy_label: Privacy
     privacy_public: Iedereen kan deze thread bekijken als ze de link hebben
     privacy_private: Alleen leden van de groep kunnen deze thread bekijken
-    privacy_organisation: Het bord zal zichtbaar zijn voor leden van %{parent} en leden van %{group}
+    privacy_organisation: De thread is zichtbaar voor leden van %{parent} en leden van %{group}.
     fork_notice: Er wordt een nieuwe thread gemaakt met %{count} items uit %{title}
     notify_group: stuur melding naar groep
     none_invite_only_discussion: Geen (discussie alleen op uitnodiging)
@@ -962,14 +962,14 @@ nl_NL:
     edit_discussion_context: Discussiecontext bewerken
     tags_field_moved: De tags zijn verplaatst. Klik op het tag-icoon in de rechterbovenhoek van de discussiepagina, rechts van de titel van de discussie.
   announcement:
-    send_discussion: Bord verzenden
+    send_discussion: Thread verzenden
     send_group: Nodig mensen uit voor %{name}
     send_poll: Verstuur %{type}
-    send_outcome: Stuur de resultaat
+    send_outcome: Conclusie verzenden
     cannot_reveal_when_anonymous: Sorry, we kunnen niet onthullen wie wel of niet heeft gestemd op een anonieme peiling.
     group_notification_history: Groep uitnodigingen
     poll_notification_history: Peiling meldingen geschiedenis
-    outcome_notification_history: Resultaat meldingen geschiedenis
+    outcome_notification_history: Geschiedenis van conclusiemeldingen
     comment_notification_history: Reactie meldingen geschiedenis
     notification_history_explanation: "✓ geeft aan dat de melding is gelezen of dat de e-mail is geopend"
     quick_add: 'Snelle toevoeging:'
@@ -989,19 +989,19 @@ nl_NL:
     new_discussion: "%{name} heeft %{length} mensen uitgenodigd voor de thread:"
     discussion_announced: "%{name} heeft %{length} mensen uitgenodigd voor de thread:"
     poll_created: "%{name} nodigde %{length} mensen uit om te stemmen:"
-    outcome_created: "%{name} heeft een uitkomst gedeeld met %{length} mensen:"
-    outcome_announced: "%{name} heeft een uitkomst gedeeld met %{length} mensen:"
+    outcome_created: "%{name} heeft een conclusie gedeeld met %{length} mensen:"
+    outcome_announced: "%{name} heeft een conclusie gedeeld met %{length} mensen:"
     announcement_created: "%{name} heeft %{length} mensen uitgenodigd voor de thread:"
     discussion_edited: "%{name} heeft de thread bewerkt en %{length} mensen op de hoogte gesteld:"
     poll_edited: "%{name} heeft een poll bewerkt en %{length} mensen geïnformeerd:"
-    outcome_edited: "%{name} heeft een uitkomst bewerkt en %{length} mensen geïnformeerd:"
-    outcome_updated: "%{name} heeft een uitkomst bewerkt en %{length} mensen geïnformeerd:"
+    outcome_edited: "%{name} heeft een conclusie bewerkt en %{length} mensen geïnformeerd:"
+    outcome_updated: "%{name} heeft een conclusie bewerkt en %{length} mensen geïnformeerd:"
     poll_closing_soon: 'De herinnering voor het sluiten van de poll van %{name} informeerde %{length} mensen:'
     poll_reminder: "%{name} heeft %{length} mensen eraan herinnerd om te stemmen:"
     audiences:
       group: Leden van %{name}
       everyone_in_the_group: Iedereen in de groep
-      topic: Iedereen in het bord
+      topic: Iedereen in de thread
       voters: Iedereen die uitgenodigd is om te stemmen
       decided_voters: Iedereen die gestemd heeft
       undecided_voters: Twijfelende stemmers
@@ -1025,9 +1025,9 @@ nl_NL:
         title: Nodig voor uit voor de groep
         helptext: Wie wil je uitnodigen voor de groep?
       discussion_announced:
-        title: Voor bord uitnodigen
-        helptext: Wie wil je uitnodigen tot het bord?
-        notify_helptext: Wie wil je een melding sturen over het bord?
+        title: Uitnodigen voor thread
+        helptext: Wie wil je uitnodigen voor de thread?
+        notify_helptext: Wie wil je een melding sturen over de thread?
       discussion_edited:
         title: Wijzigingen melden
         helptext: Wie wil je een melding sturen over deze wijziging? (optioneel)
@@ -1048,7 +1048,7 @@ nl_NL:
         title: Wijzigingen melden
         helptext: Wie wil je een melding sturen over deze wijziging?
       outcome_announced:
-        title: Deel resultaat
+        title: Deel conclusie
         helptext: Geef een samengevat resultaat, inclusief nieuwe inzichten en gevonden problemen.
       anyone_can_participate: Iedereen met een link kan deelnemen
       placeholder: Je kunt namen of e-mailadressen geven
@@ -1073,7 +1073,7 @@ nl_NL:
       not_notified: Nog niet gemeld
       no_members: Dit werd nog met niemand gedeeld!
       group_admin: Groep administrator
-      thread_admin: Bord administrator
+      thread_admin: Threadadmin
       last_read_at: Laatst gezien %{time}
       has_not_read_thread: Hebben bord niet gezien
       has_not_joined_yet: Is nog niet lid
@@ -1101,7 +1101,7 @@ nl_NL:
     add_comment: Geeft reactie
     copy_url: Link kopieren
     edit_thread: Beschrijving bijwerken
-    announce_thread: Bord verzenden
+    announce_thread: Thread verzenden
     invite_guests: Nodig gasten uit
     translate_thread: Beschrijving vertalen
     edit_poll: "'Peiling' bewerken"
@@ -1116,31 +1116,31 @@ nl_NL:
     edit_comment: Reactie bewerken
     delete_comment: Reactie verwijderen
     reply_to_comment: Antwoord
-    fork_comment: Splits bord
+    fork_comment: Splits thread
     translate_comment: Reactie vertalen
-    edit_outcome: Resultaat bewerken
-    announce_outcome: Meld het resultaat
-    announce_outcome_active: "(Nog niemand werd op de hoogte gebracht van dit resultaat)"
-    translate_outcome: Resultaat vertalen
+    edit_outcome: Conclusie bewerken
+    announce_outcome: Meld de conclusie
+    announce_outcome_active: "(Nog niemand werd op de hoogte gebracht van deze conclusie)"
+    translate_outcome: Conclusie vertalen
     show_history: Toon bewerkingsgeschiedenis
     edited: Bewerkt
     show_edits: Toon wijzigingen
     show_notifications: Toon meldingen
     history: Geschiedenis
-    pin_thread: Bord vastprikken
-    unpin_thread: Bord ontprikken
+    pin_thread: Thread vastzetten
+    unpin_thread: Thread losmaken
     pin_event: Pin vast aan de tijdslijn
     unpin_event: Ontpin van tijdslijn
     comment_copied: Reactie URL gekopieerd naar het klembord
     move_thread: Verplaats naar groep
     poll_copied: Beslissing-URL naar het klembord gekopieerd
-    discussion_copied: Bord-URL naar het klembord gekopieerd
+    discussion_copied: Thread-URL naar het klembord gekopieerd
     url_copied: Link gekopieerd naar klembord
     tag_thread: Labels beheren
-    delete_thread: Bord verwijderen
+    delete_thread: Thread verwijderen
     notification_history: Meldingen geschiedenis
     move_item: Verplaats item
-    add_poll_to_thread: Voeg toe aan bord
+    add_poll_to_thread: Voeg toe aan thread
     count_members: "%{count} leden"
     count_voters: "%{count} kiezers"
     pin_discussion: Pin discussie
@@ -1187,7 +1187,7 @@ nl_NL:
     strikethrough: Doorstrepen
     underline: Onderlijnen
     link: Link invoegen
-    code_block: Code-blok
+    code_block: Codeblok
     insert_image: Afbeelding invoegen
     insert_emoji: Emoji invoegen
     attach: Bijlage toevoegen
@@ -1257,7 +1257,7 @@ nl_NL:
     discussion_header: Discussie wijzigingen
     comment_header: Reactie wijzigingen
     poll_header: Peiling wijzigingen
-    outcome_header: Resultaat wijzigingen
+    outcome_header: Conclusiewijzigingen
     stance_header: Stem bewerkingen
     started_by: Gestart door <strong>%{name}</strong>
     edited_by: Bijgewerkt door <strong>%{name}</strong>
@@ -1316,7 +1316,7 @@ nl_NL:
     new_cover_photo: Nieuwe groepsfoto uploaden
     new_group_logo: Upload een nieuw groepslogo
     open_discussions: Open borden
-    discussions_placeholder: Op een bord kan iedereen over een onderwerp discussiëren en gezamenlijk beslissingen nemen.
+    discussions_placeholder: In een thread kan iedereen over een onderwerp discussiëren en samen besluiten nemen.
     members_placeholder: 'Je bent de enige hier: nodig mensen uit om zich bij je aan te sluiten!'
     member_options: Opties voor leden
     see_all_members: Bekijk alle %{count} leden
@@ -1345,7 +1345,7 @@ nl_NL:
       loud_aria_description: Je notificatievolume voor deze groep staat op Luid. Je ontvangt een e-mailbericht als er activiteit is.
       loud_message: Je zal e-mails krijgen over alle activiteiten in "%{name}"
       normal: 'E-mail alleen belangrijke activiteiten: Nieuwe borden, voorstellen, resultaten enz.'
-      normal_aria_description: Je meldingsgeluid voor deze groep staat ingesteld op Normaal. Je zal enkel belangrijke activiteiten per e-mail toegestuurd krijgen. Zoals wanneer iemand een nieuw bord start, een voorstel doet of een resultaat vaststeld.
+      normal_aria_description: Je meldingsniveau voor deze groep staat op Normaal. Je krijgt alleen e-mails over belangrijke activiteiten, zoals wanneer iemand een nieuwe thread start, een voorstel doet of een conclusie deelt.
       normal_message: Je zal enkel ge-e-maild worden over belangrijke gebeurtenissen in "%{name}".
       quiet: Niet e-mailen over deze groep. Activiteit wordt weergegeven op het dashboard.
       quiet_aria_description: Je notificatievolume voor deze groep staat op Stil. Je krijgt geen e-mail over activiteit in deze groep. Groepsactiviteit wordt getoond op je dashboard.
@@ -1674,6 +1674,7 @@ nl_NL:
     updated_on_sign_in: Verstrekt door uw browser en bijgewerkt wanneer u zich aanmeldt
     translate_content_automatically: Vertaal inhoud automatisch naar mijn taal
     bot_account_warning: Botaccounts worden niet uitgenodigd om te stemmen in peilingen of deel te nemen aan discussies.
+    translations_are_made_by_machine: Vertalingen worden automatisch gemaakt. Is een woord fout of onduidelijk? Mail %{email} en we passen het aan.
   text_editor:
     x_of_y_characters: "%{x} / %{y} tekens"
     select_text_to_link: Selecteer tekst om te linken en probeer het opnieuw
@@ -1769,7 +1770,7 @@ nl_NL:
     thread_recalled: Bord teruggeroepen
     explain_mute:
       title: Je hebt nog geen borden gedempt.
-      instructions: Om een bord te dempen zoek je deze op en klik je op het icoon dempen.
+      instructions: Om een thread te dempen, beweeg je de muis erover en klik je op het dempicoon.
       see_muted_html: Om je gedempte borden te zien, klik je op <strong>"Gedempt"</strong>. Je kunt dempen opheffen door op het bijbehorende pictogram te klikken.
       explanation_html: Negeren is een manier om threads waarin je niet geïnteresseerd bent te verbergen of te dempen. Negeren betekent dat je ze niet ziet in <strong>Recent</strong> of <strong>Ongelezen</strong> en dat je geen meldingen ontvangt over activiteit in die thread, zoals voorstellen. Je krijgt alleen een melding als iemand <strong>{'@'}je naam vermeldt</strong> .
     filtering:
@@ -1787,7 +1788,7 @@ nl_NL:
       all: Recente discussies
     thread_preview:
       you_voted: Je hebt %{position} gestemd
-      undecided: Je bent onbeslist
+      undecided: Je hebt nog niet gestemd
     threads_from:
       group: Borden van
       pinned: Vastgeprikte borden
@@ -1844,7 +1845,7 @@ nl_NL:
       unmute_message: Discussie gedempt
     direct: Direct
     locked:
-      unlocked: Draad ontgrendeld
+      unlocked: Thread ontgrendeld
       locked: Thread vergrendeld
   discussion_last_seen_by:
     title: Gezien door
@@ -1877,7 +1878,7 @@ nl_NL:
     start_a_vote: Start een stemming
   thread_arrangement_form:
     edit: Lay-out bewerken
-    title: Bord layout
+    title: Threadindeling
     for_everyone: Dit veranderd de layout voor iedereen, niet enkel voor jou.
     sorting: Oudste of nieuwste eerst?
     latest: Nieuwste
@@ -1942,8 +1943,8 @@ nl_NL:
     send_message: Stuur bericht
     new_contact_message: Bedankt voor uw bericht; we zullen snel reageren!
     consent_message: |
-      Door met ons contact te zoeken, geef je toestemming aan onze medewerkers om jouw account te bekijken voor zover dat nodig is. <br />
-      Ons ondersteuningsteam spreekt Engels en zal Google Translate gebruiken indien nodig. <br />
+      Door met ons contact te zoeken, geef je consent aan onze medewerkers om jouw account te bekijken voor zover dat nodig is. <br />
+      Ons ondersteuningsteam spreekt Engels en zal jouw bericht indien nodig met Google Translate vertalen. <br />
       We proberen binnen 24 uur te reageren op alle berichten.
     success: Bedankt voor je bericht, %{name}. We zullen snel reageren.
     success_via_email: Bedankt voor je bericht, %{name}. We reageren binnen 24 uur per e-mail.
@@ -1970,7 +1971,7 @@ nl_NL:
     recommended: Aanbevolen
     question_title: Vragen ronde
     advice_title: Advies
-    consent_title: Toestemming
+    consent_title: Consent
     consensus_title: Overeenstemming
     proposal_title: Voorstel
     count_title: Opt-in
@@ -1978,8 +1979,8 @@ nl_NL:
     poll_title: Peiling
     meeting: Ontmoeting
     score_title: Peiling scoren
-    dot_vote_title: Stip stemmen
-    meeting_title: Moment bevragen
+    dot_vote_title: Puntenverdeling
+    meeting_title: Tijdpeiling
     ranked_choice_title: Keuzes rangschikken
     gradients_of_agreement_title: Gradiënten van overeenkomst
     majority_title: Meerderheid
@@ -2023,7 +2024,7 @@ nl_NL:
     categorize_poll_templates: Categoriseer poll-sjablonen
     show_all_templates_in_one_list: Toon alle sjablonen in één lijst
     advice_process: Advies traject
-    consent_process: Toestemmingsproces
+    consent_process: Consentproces
     consensus_process: Consensusproces
     question_round: Vragen ronde
     edit_template: Sjabloon bewerken
@@ -2038,9 +2039,9 @@ nl_NL:
     select_minimum_to_maximum_options: Selecteer %{minimum} tot %{maximum} opties
     custom_poll_types: Aangepaste poll-typen
     hidden_poll_templates: Verborgen poll-sjablonen
-    poll_template: Enquête-sjabloon
+    poll_template: Peilingsjabloon
     poll_template_saved: Enquêtesjabloon opgeslagen
-    poll_templates: Enquête-sjablonen
+    poll_templates: Peilingsjablonen
     poll_types: Opiniepeilingen
     new_proposal_template: Nieuw voorstelsjabloon
     edit_proposal_template: Voorstelsjabloon bewerken
@@ -2104,7 +2105,7 @@ nl_NL:
     too_long: Te lang
     edit_warning: Wijzigen wordt alleen aanbevolen voor kleine veranderingen of spellingcorrecties. Voor grotere verandering, sluit deze %{pollType} en start een nieuwe.
     no_voting: Alleen bestemd voor discussies, stemmen gedeactiveerd
-    post_outcome: Uitkomst publiceren
+    post_outcome: Conclusie publiceren
     view_all_votes: Bekijk alle stemmen
     you_voted: Je hebt gestemd
     these_are_templates: Dit zijn de beslissingssjablonen in uw groep. Klik op een sjabloon om een nieuwe beslissing te starten. Beheerders kunnen alle details van een sjabloon aanpassen, zodat deze aansluit bij de werkwijze van uw organisatie en gemakkelijk te vinden en te gebruiken is voor leden.
@@ -2112,16 +2113,16 @@ nl_NL:
     example_poll_templates: Voorbeelden van enquêtesjablonen
     browse_example_templates: Bekijk voorbeeldtemplates
     browse_example_templates_hint: Maak een nieuw enquêtesjabloon helemaal vanaf nul, of gebruik een voorbeeld om te beginnen.
-    browse_example_use_hint: Klik op de titel van de sjabloon om <b>een enquête te starten</b> .
+    browse_example_use_hint: Klik op de titel van het sjabloon om <b>een peiling te starten</b>.
     browse_example_fork_hint: "<b>Klik op het vorkpictogram</b> om een nieuwe enquêtesjabloon te maken, waarbij u het voorbeeld als uitgangspunt gebruikt."
     browse_unsure_help: Weet u niet zeker hoe u polltemplates moet gebruiken?
     all_templates_hidden: Alle sjablonen zijn verborgen.
-    new_poll_template_title: Nieuw enquête-sjabloon
+    new_poll_template_title: Nieuw peilingsjabloon
     new_template_from_blank: Nieuw sjabloon vanuit een blanco pagina
     new_template_from_blank_subtitle: Maak een nieuwe sjabloon die aansluit op een proces binnen uw organisatie.
     blank: Nieuw
     blank_subtitle: Maak een nieuwe enquêtesjabloon voor een specifiek proces.
-    start_a_poll: Start een enquête
+    start_a_poll: Start een peiling
     export_blt: Export stembiljetten (BLT)
     status: Status
     your_vote_is_requested: Uw stem wordt gevraagd.
@@ -2200,7 +2201,7 @@ nl_NL:
     delegate: Delegeren
     delegate_popover: Een afgevaardigde is een groepslid met stemrecht
     delegates: Afgevaardigden
-    edit_vote_weights: Stemweging bewerken
+    edit_vote_weights: Stemgewichten bewerken
     vote_weights_are_defaults: Deze standaard stemwegingen gelden voor nieuwe stemmen. Wijzigingen hierin hebben geen invloed op reeds toegekende stemwegingen.
   polls_panel:
     new_poll: Nieuwe peiling
@@ -2254,7 +2255,7 @@ nl_NL:
   poll_common_collapsed:
     by_who: door %{name}
   poll_common_calendar_invite:
-    calendar_invite: Voeg een kalenderuitnodiging toe met dit resultaat
+    calendar_invite: Voeg een agenda-uitnodiging toe aan deze conclusie
     poll_option_id: Tijd van de vergadering
     helptext_on: Gebruikers zullen deze vergadering kunnen toevoegen aan hun kalender
     helptext_off: Er zal geen vergaderverzoek verstuurd worden
@@ -2267,7 +2268,7 @@ nl_NL:
     location_placeholder: Waar zal deze vergadering plaats vinden?
   poll_common_close_form:
     title: "%{poll_type} nu sluiten?"
-    helptext: Weet u zeker dat u %{poll_type} eerder wilt afsluiten en een resultaat wilt delen?
+    helptext: Weet je zeker dat je deze %{poll_type} eerder wilt sluiten en een conclusie wilt delen?
     close_poll_type: "%{poll_type} sluiten"
     poll_type_closed: "%{poll_type} gesloten"
   poll_common_reopen_form:
@@ -2298,12 +2299,12 @@ nl_NL:
     started_by: Gestart door %{name}
   poll_common_votes_panel:
     vote_removed: Stem verwijderd
-    undecided: Onbeslist
+    undecided: Nog niet gestemd
     newest_first: Nieuwste eerst
     oldest_first: Oudste eerst
     priority_first: Eens eerst
     priority_last: Geblokkeerd eerst
-    undecided_first: Onbeslist eerst
+    undecided_first: Nog niet gestemd eerst
     no_votes_yet: Er zijn nog geen stemmen uitgebracht.
     change_results_order: Verander volgorde resultaten
     none_of_the_above: "(Geen van bovenstaande)"
@@ -2325,9 +2326,9 @@ nl_NL:
     participation_records_restricted: Je kunt zien wie er heeft deelgenomen nadat de stemming is gesloten
     vote_weight: Stemgewicht %{weight}
   poll_common_undecided_panel:
-    show_undecided: Toon %{count} onbeslist
+    show_undecided: Toon %{count} kiezers die nog niet hebben gestemd
     show_invitations: Toon uitnodigingen in afwachting
-    undecided_users: Onbeslist (%{count})
+    undecided_users: Nog niet gestemd (%{count})
     invitation_count_singular: 1 extra persoon werd uigenodigd om deel te nemen via e-mail
     invitation_count_plural: "%{count} extra mensen zijn via e-mail uitgenodigd om deel te nemen"
   poll_common_undecided_user:
@@ -2336,22 +2337,22 @@ nl_NL:
   poll_common_set_outcome_panel:
     enter_outcome: Voer conclusie in
     poll_type: Deze %{poll_type} is gesloten. Neem de tijd om de resultaten te overwegen en deel vervolgens een uitkomst zodat mensen weten wat er vervolgens gaat gebeuren.
-    enter_an_outcome: Voer een uitkomst in
+    enter_an_outcome: Voer een conclusie in
   poll_common_outcome_form:
     review_due_in_days: Na hoeveel dagen de beslissing herzien?
     review_date: Beoordelingsdatum
     review_date_hint: Stel een datum in om de beslissing te herzien (optioneel)
-    who_to_notify: Wie wilt u op de hoogte stellen van deze uitkomst? (optioneel)
+    who_to_notify: Wie wil je op de hoogte stellen van deze conclusie? (optioneel)
     outcome_statement_template: Sjabloon voor resultaatverklaringen
-    new_title: Voer een resultaat in
-    update_title: Resultaat vernieuwen
-    outcome_created: Resultaat aangemaakt
+    new_title: Deel de conclusie
+    update_title: Conclusie bijwerken
+    outcome_created: Conclusie aangemaakt
     outcome_updated: Conclusie bijgewerkt
     statement_placeholder: Vat de reacties samen en leg uit wat er daarna gebeurt.
     you_will_be_notified: Je krijgt een melding op de beoordelingsdatum.
-    submit: Deel resultaat
+    submit: Deel conclusie
     review_due_in_days_hint: Aantal dagen dat u moet wachten voordat u de beslissing herziet (optioneel).
-    statement_template_hint: Geef een sjabloon voor het schrijven van de uitkomst van de beslissing. (optioneel)
+    statement_template_hint: Geef een sjabloon voor het schrijven van de conclusie van het besluit. (optioneel)
     statement_template_placeholder: Bedankt voor uw deelname! Het quorum is bereikt en we hebben steun om door te gaan.
   poll_common_outcome_panel:
     authored_by: Door %{name}
@@ -2395,7 +2396,7 @@ nl_NL:
     option_already_added: Optie al toegevoegd aan poll
   poll_dot_vote_form:
     dots_per_person: Punten per persoon
-    dots_per_person_helptext: Het aantal punten dat elk persoon mag toekennen.
+    dots_per_person_helptext: Het totale aantal punten dat elke persoon moet verdelen.
   poll_meeting_form:
     timeslots: Tijdvensters
     no_options: Ingevulde tijden zijn in je huidige tijdzone (%{zone}). Deelnemers zien deze tijd vertaald naar hun eigen tijdzone.
@@ -2441,7 +2442,7 @@ nl_NL:
     'yes': Ja
     'no': Nee
     agree: Eens
-    consent: Toestemming
+    consent: Consent
     abstain: Onthouden
     unsure: Onzeker
     disagree: Oneens
@@ -2470,7 +2471,7 @@ nl_NL:
     total: Totaal
   poll_remove_vote:
     title: Je stem verwijderen?
-    helptext: Weet je zeker dat je je stem wilt verwijderen? U wordt vermeld als onbeslist en kunt later opnieuw stemmen als u dat wenst.
+    helptext: Weet je zeker dat je je stem wilt verwijderen? Je wordt vermeld als nog niet gestemd en kunt later opnieuw stemmen als je wilt.
     confirm: Stem verwijderen
     success: Stem verwijderd
   poll_poll_vote_form:
@@ -2507,10 +2508,10 @@ nl_NL:
     discussion_privacy_edited: "<a class='actor-link' href='/u/%{username}'>%{author}</a> heeft de threadprivacy gewijzigd"
     discussion_edited: "<a class='actor-link' href='/u/%{username}'>%{author}</a> heeft de thread bewerkt"
     discussion_moved: "<a class='actor-link' href='/u/%{username}'>%{author}</a> heeft de thread verplaatst van <strong>%{title}</strong>"
-    discussion_closed: "<a class='actor-link' href='/u/%{username}'>%{author}</a> heeft de draad gesloten"
-    discussion_reopened: "<a class='actor-link' href='/u/%{username}'>%{author}</a> heeft de draad opnieuw geopend"
+    discussion_closed: "<a class='actor-link' href='/u/%{username}'>%{author}</a> heeft de thread gesloten"
+    discussion_reopened: "<a class='actor-link' href='/u/%{username}'>%{author}</a> heeft de thread opnieuw geopend"
     new_comment: "<a class='actor-link' href='/u/%{username}'>%{author}</a>"
-    outcome_created: "<a class='actor-link' href='/u/%{username}'>%{author}</a> heeft een uitkomst gedeeld"
+    outcome_created: "<a class='actor-link' href='/u/%{username}'>%{author}</a> heeft een conclusie gedeeld"
     poll_reopened: "<a class='actor-link' href='/u/%{username}'>%{author}</a> heeft de %{polltype} heropend"
     poll_closed_by_user: "<a class='actor-link' href='/u/%{username}'>%{author}</a> heeft de %{polltype} gesloten"
     poll_created: "<a class='actor-link' href='/u/%{username}'>%{author}</a> heeft een %{polltype} gestart"
@@ -2519,7 +2520,7 @@ nl_NL:
     poll_expired: "%{polltype} gesloten"
     stance_created: "<a class='actor-link' href='/u/%{username}'>%{author}</a> heeft gestemd op: <strong>%{title}</strong>"
     stance_updated: "<a class='actor-link' href='/u/%{username}'>%{author}</a> heeft zijn stem geüpdatet op: <strong>%{title}</strong>"
-    event_removed: Van bord verwijderd
+    event_removed: Uit thread verwijderd
     new: nieuw
     thread_locked: "<a class='actor-link' href='/u/%{username}'>%{author}</a> heeft de thread vergrendeld"
     thread_unlocked: "<a class='actor-link' href='/u/%{username}'>%{author}</a> heeft de thread ontgrendeld"
@@ -2691,8 +2692,8 @@ nl_NL:
       poll_expired: Een peiling verloopt
       poll_closed_by_user: Een peiling is handmatig gesloten
       poll_reopened: Een peiling werd heropend om te stemmen
-      outcome_created: Een resultaat is gedeeld
-      outcome_updated: Een resultaat wordt bijgewerkt
+      outcome_created: Een conclusie wordt gedeeld
+      outcome_updated: Een conclusie wordt bijgewerkt
       outcome_review_due: Er komt een resultaatbeoordeling
       new_discussion: Er wordt een discussie gestart
       discussion_edited: Er is een discussie bewerkt
@@ -2799,7 +2800,10 @@ nl_NL:
         submit: Zie voorstelsjablonen
       share_an_outcome:
         title: Deel een voorstelresultaat
-        helptext: "<p>Om de besluitvorming te versnellen, hebben voorstellen een deadline om te stemmen. Zodra de deadline is bereikt, wordt de stemming gesloten en ontvangt u een melding om de uitkomst van het voorstel te delen.</p><p> De uitkomst biedt de mogelijkheid om te bepalen of het voorstel succesvol was en wat er vervolgens gaat gebeuren.</p><p> Als de deadline voor uw voorstel nog niet is verstreken, maar u toch wilt doorgaan, kunt u <b>op Eerder sluiten</b> klikken.</p><p> Wanneer de tijd rijp is, <b>voert u een uitkomst</b> voor uw voorstel in.</p>"
+        helptext: |
+          <p>Wanneer de deadline van het voorstel is bereikt, sluit de stemming en krijg je de vraag om een conclusie te delen.</p>
+          <p>In de conclusie leg je na het bekijken van de stemmen en reacties uit wat je hebt besloten (of wat er hierna gebeurt).</p>
+          <p>Als de deadline nog niet is verstreken maar je klaar bent om verder te gaan, kun je <b>Eerder sluiten</b>.</p>
         submit: Bekijk voorstel
         cancel: Doe dit later
       start_a_discussion:
@@ -2890,13 +2894,13 @@ nl_NL:
       choose_hint: Kiezers kiezen de beste optie (of opties)
       score: Score
       score_hint: Kiezers kennen aan elke optie een score toe
-      allocate: Toewijzen
+      allocate: Verdelen
       allocate_hint: Kiezers verdelen een budget van punten tussen de opties
       ranked_choice: Gerangschikte keuze
       ranked_choice_hint: Kiezers rangschikken de opties in volgorde van meest naar minst geprefereerd
       time_poll: Tijd peiling
       time_poll_hint: Kiezers geven aan wanneer zij beschikbaar zijn om te vergaderen
-      rank: Rang
+      rank: Rangschikken
       time: Tijd
       stv: STV-verkiezing
       stv_hint: Kies meerdere winnaars proportioneel met behulp van de Single Transferable Vote.
@@ -2948,7 +2952,7 @@ nl_NL:
     how_much_time_to_vote: Hoeveel tijd geeft u mensen om te stemmen?
     default_duration_in_days_hint: Hoeveel dagen hebben mensen de tijd om te stemmen?
     define_minimum_and_maxmimum_score: Definieer de minimale en maximale scores die een kiezer aan een optie kan geven
-    how_many_points_does_each_voter_have_to_allocate: Hoeveel punten moet elke kiezer toekennen?
+    how_many_points_does_each_voter_have_to_allocate: Hoeveel punten moet elke kiezer verdelen?
     anonymous_voting_description: Toon stemmen en redenen, maar niet wie ze heeft uitgebracht. Dit kan niet worden gewijzigd nadat de %{poll_type} is gestart.
     vote_reason_description: Vraag mensen om hun beweegredenen voor hun stemgedrag te delen of om aanvullende informatie te verstrekken.
     hide_results_description: Als u wilt dat mensen stemmen zonder te zien wat anderen hebben gestemd, kunt u de resultaten verbergen.
@@ -2974,15 +2978,15 @@ nl_NL:
     voter_page_count: "%{first}–%{last} van %{total}"
     vote_weight_for: Stemgewicht voor %{name}
     save_vote_weights: Stemgewichten opslaan
-    vote_weights_updated: Stemweging bijgewerkt
+    vote_weights_updated: Stemgewichten bijgewerkt
     set_all: Stel alles in
     find_or_invite_voters: Zoek of nodig kiezers uit
     remove_voter_named: Verwijder %{name} uit de poll
-    remove_voter_and_any_vote_confirmation: Wil je %{name} uit deze enquête verwijderen? Dan worden ook alle stemmen die zij hebben uitgebracht verwijderd.
+    remove_voter_and_any_vote_confirmation: Wil je %{name} uit deze peiling verwijderen? Dit verwijdert ook de eventuele stem van deze persoon.
     edit_vote_weight: Stemgewicht bewerken
     edit_vote_weight_for: Bewerk het stemgewicht voor %{name} (momenteel %{weight})
     set_all_vote_weights_title: Stel alle stemgewichten in
-    set_all_vote_weights_search_note: Dit wijzigt de stemweging van alle kiezers in de peiling, inclusief degenen die niet in je zoekresultaten voorkomen
+    set_all_vote_weights_search_note: Dit wijzigt de stemgewichten van alle kiezers in de peiling, inclusief degenen die niet in je zoekresultaten voorkomen
     set_each_member_default_vote_weight: Stel het standaard stemgewicht voor elk lid in
     voters_will_not_be_notified: Kiezers worden niet op de hoogte gesteld. Breng hen op een andere manier op de hoogte van de stemming.
     give_voters_different_vote_weights: Geef kiezers verschillende stemgewichten. De resultaten tonen zowel de gewone als de gewogen totalen.
@@ -2992,7 +2996,7 @@ nl_NL:
     set_all_vote_weights_the_same: Alle stemgewichten gelijk instellen
     member_vote_weights_hint: Kiezers zonder huidig groepslidmaatschap krijgen een stemgewicht van 1
     weighted_voting: Gewogen stemmen
-    weighted_voting_is_not_available_with_anonymous_voting: "Gewogen stemmen is niet beschikbaar bij anoniem stemmen"
+    weighted_voting_is_not_available_with_anonymous_voting: Gewogen stemmen is niet beschikbaar bij anoniem stemmen
     use_weighted_voting: Gewogen stemmen gebruiken
     weighted_voting_off_warning: Als je gewogen stemmen uitschakelt, wordt het gewicht van elke stem op 1 gezet. Alle stemgewichten die je voor deze peiling hebt gewijzigd, gaan verloren.
     weighted_voting_on_group: Door gewogen stemmen in te schakelen, wordt het standaard stemgewicht van elk lid gekopieerd. Andere stemmers krijgen een stemgewicht van 1.
@@ -3120,7 +3124,7 @@ nl_NL:
     closed_at: Gesloten om
     closing_at: Sluit om
   poll_stv_vote_form:
-    helptext: Sleep de kandidaten boven de lijn om ze te rangschikken. Items onder de lijn zijn niet gerangschikt. Rang 1 is je voorkeur.
+    helptext: Sleep de kandidaten boven de lijn om ze te rangschikken. Items onder de lijn zijn niet gerangschikt. Bij Rangschikken staat je eerste voorkeur op 1.
     divider_text: Sleep de kandidaten boven deze lijn om ze te rangschikken.
     stance_created: Stem geregistreerd
     stance_updated: Stem bijgewerkt
@@ -3156,7 +3160,7 @@ nl_NL:
     view_full_results: Bekijk de volledige resultaten
     results_available_when_closed: De uitslagen worden bekendgemaakt zodra de stemming is gesloten.
     elected_in_round: Gekozen in ronde %{round}
-    eliminated_in_round: Uitgeschakeld in ronde %{round}
+    eliminated_in_round: Afgevallen in ronde %{round}
     tied_in_round: Gelijkspel in ronde %{round}
   lock_thread_modal:
     body: Vergrendel discussies om ze uit de lijst met open discussies te verwijderen en te voorkomen dat mensen erop kunnen reageren.

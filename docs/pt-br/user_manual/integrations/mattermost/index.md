@@ -1,14 +1,14 @@
 ---
 title: Mattermost
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/integrations/mattermost/index.md
+source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
+source_file: docs/en/user_manual/integrations/mattermost/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-30'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 5ff78e7362ad4050
 generated:
-  introduction: e307a05a232eb026
+  introduction: 9b502f06362293d5
 title_source: b1ff7bd17092d95e
 title_generated: b1ff7bd17092d95e
 ---
@@ -16,19 +16,19 @@ title_generated: b1ff7bd17092d95e
 <!-- translation-section: introduction -->
 
 # Integração com o Mattermost
-_Conecte as notificações do seu grupo no Loomio ao chat da sua equipe no Mattermost._
+_Conectando as notificações do seu grupo no Loomio ao chat da sua equipe no Mattermost._
 
-O Loomio pode enviar notificações aos seus canais do Mattermost quando houver novas discussões, propostas, comentários, votos e conclusões.
+O Loomio pode enviar notificações para seus canais do Mattermost quando houver novas discussões, propostas, comentários, votos e conclusões.
 
 ---
 
-Abra sua equipe no Mattermost pelo navegador. Em seguida, abra a página de configurações de Integrações.
+Acesse sua equipe no Mattermost pelo navegador. Depois, abra a página de configurações de Integrações.
 ![](mm1.png)
 
-Clique em "Incoming Webhooks"
+Clique em "Webhooks de entrada"
 ![](mm2.png)
 
-Em seguida, clique em "Add Incoming Webhook"
+Depois, clique em "Adicionar webhook de entrada"
 ![](mm3.png)
 
 Dê um nome simples, selecione o canal em que as notificações devem aparecer e clique em Salvar
@@ -37,6 +37,6 @@ Dê um nome simples, selecione o canal em que as notificações devem aparecer e
 Copie a URL do webhook para a área de transferência. Você vai precisar dela na próxima etapa.
 ![](mm5.png)
 
-Com a URL do webhook copiada, acesse o link abaixo.
+Confira se a URL do webhook está na sua área de transferência e siga o link abaixo.
 
 [Configure uma integração de chat no Loomio](../chatbots/#set-up-a-chat-integration)

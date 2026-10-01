@@ -199,6 +199,43 @@ class DocsLocalizationTest < Minitest::Test
     assert_includes prompts.first, "user_manual/other.md"
   end
 
+  def test_requests_carry_the_style_and_glossary_and_flag_wrong_terms
+    @source_file.write(@english.sub("Save the item.", "Save the outcome."))
+    prompts = []
+    translator = translator_with(lambda do |prompt|
+      prompts << prompt
+      {navigation_title: "Exemple", sections: {save: "## Enregistrer\n\nEnregistrez le résultat.\n\n![](save.png)"}}.to_json
+    end)
+    TranslationGlossary.stub(:prompt, "- outcome → conclusion (The closing statement.)") do
+      TranslationGlossary.stub(:wrong_terms, ->(english, translation, locale) {
+        assert_equal "fr", locale
+        english.include?("outcome") && translation.include?("résultat") ? ['use "conclusion" instead of "résultat" for "outcome"'] : []
+      }) do
+        assert_empty update(translator)
+      end
+    end
+    assert_includes prompts.first, "- outcome → conclusion"
+    assert_includes prompts.first, "vous"
+    assert_equal 2, prompts.size, "a wrong term earns one retry"
+    with_paths do
+      assert_includes L.load("fr", PAGE).metadata.fetch("needs_review").fetch("save"), "instead of"
+    end
+  end
+
+  def test_retranslation_translates_every_section_but_keeps_corrections_as_context
+    @translations[0] = @translations.first.with(text: "# Exemple\n\nUne correction du client.")
+    write_translation
+    prompts = []
+    translator = Docs::PageTranslator.new("fr", root: @root, retranslate: true, translator: lambda do |prompt|
+      prompts << prompt
+      {navigation_title: "Exemple", sections: {introduction: "# Exemple\n\nIntroduction.", save: "## Enregistrer\n\nEnregistrez l’élément.\n\n![](save.png)"}}.to_json
+    end)
+    assert_empty update(translator)
+    assert_equal 1, prompts.size
+    assert_includes prompts.first, "Une correction du client.", "corrected sections keep their text as context"
+    refute_includes prompts.first, "Enregistrez l’élément.", "uncorrected sections are translated afresh"
+  end
+
   def test_codex_transport_uses_sol_61_and_reads_the_json_response
     model = ENV.delete("DOCS_TRANSLATOR_MODEL")
     effort = ENV.delete("DOCS_TRANSLATOR_EFFORT")

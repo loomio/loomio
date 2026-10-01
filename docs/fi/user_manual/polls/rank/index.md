@@ -1,6 +1,6 @@
 ---
 title: Sijoitus
-source_revision: 9c60c42fc739483fa23f15d9f34a1e9245518092
+source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
 source_file: docs/en/user_manual/polls/rank/index.md
 translated:
   provider: codex/gpt-6.1-sol
@@ -14,85 +14,85 @@ sections:
   read-the-results: 18fbb0f9a5a866bc
   share-an-outcome: c9dcebf155d64c65
 generated:
-  introduction: f08240205c5b3917
-  when-to-use-rank: 31a5f94a812bbe69
-  example-rank-bottle-designs: 49f1f9334c2d412e
-  set-up-the-poll: a311c1f8407b392e
-  vote: db2fa4750ffe8564
-  read-the-results: a96d06e3762966b9
-  share-an-outcome: 86207c34d6987f5d
+  introduction: bf48facfa97807e3
+  when-to-use-rank: 642cb0886675f2a4
+  example-rank-bottle-designs: d2b31d5ffd42bb61
+  set-up-the-poll: 645c55387a144bad
+  vote: 5381e0ede54d2198
+  read-the-results: 36ba54651eee826d
+  share-an-outcome: 820c264872e43d77
 title_source: a4130d7d2c3a137f
 title_generated: 919aa534daaab706
 ---
 
 <!-- translation-section: introduction -->
 
-# Sijoitus
+# Järjestys
 
-Sijoitus näyttää ryhmän vaihtoehdot yhteisessä suosituimmuusjärjestyksessä. Osallistujat järjestävät vaihtoehdot mieluisimmasta vähiten mieluisaan. Loomio antaa ylemmäksi sijoitetuille vaihtoehdoille enemmän pisteitä.
+Järjestys selvittää ryhmän yhteisen etusijajärjestyksen. Osallistujat järjestävät vaihtoehdot mieluisimmasta vähiten mieluisaan, ja Loomio antaa enemmän pisteitä korkeammalle asetetuille vaihtoehdoille.
 
 <!-- translation-section: when-to-use-rank -->
 
-## Milloin Sijoitus sopii käyttöön
+## Milloin käyttää Järjestystä
 
-Käytä Sijoitusta, kun vaihtoehtojen keskinäinen järjestys on tärkeä ja haluat muodostaa yhden yhteisen järjestyksen. Se sopii esimerkiksi seuraaviin tilanteisiin:
+Käytä Järjestystä, kun vaihtoehtojen etusijajärjestyksellä on merkitystä ja haluat yhden yhteisen järjestyksen. Se sopii hyvin seuraaviin tarkoituksiin:
 
-- yhden henkilön valitseminen tehtävään;
-- hankkeiden järjestäminen työsuunnitelmaa varten;
-- konferenssin aiheiden asettaminen tärkeysjärjestykseen;
+- yhden ehdokkaan valitseminen tehtävään;
+- projektien järjestäminen työsuunnitelmaa varten;
+- konferenssin aiheiden priorisointi;
 - varavaihtoehtojen valitseminen ensisijaisen vaihtoehdon lisäksi; tai
-- pitkän listan karsiminen järjestetyksi ehdokaslistaksi.
+- pitkän listan karsiminen lyhyeksi, järjestetyksi listaksi.
 
-Sijoitus perustuu pisteisiin. Se ei ole suhteellinen vaalitapa. Jos haluat valita useita henkilöitä niin, että eri äänestäjäryhmät tulevat edustetuiksi, käytä [STV-vaalia](/en/user_manual/polls/stv/).
+Järjestys perustuu pisteisiin. Se ei ole suhteellinen vaalimenetelmä. Jos haluat valita useita henkilöitä niin, että eri äänestäjäryhmät ovat edustettuina, käytä [STV-vaaleja](/en/user_manual/polls/stv/).
 
 <!-- translation-section: example-rank-bottle-designs -->
 
-## Esimerkki: pullomallien järjestäminen
+## Esimerkki: aseta pullomallit etusijajärjestykseen
 
-Oatmilk Cooperative pyytää jäseniään järjestämään neljä pullomallia palautuspullojen kokeilua varten. Osallistujat arvioivat käsiteltävyyttä, kestävyyttä, asiakkaiden tarpeita, säilytystä ja yhteensopivuutta pesulaitteiden kanssa.
+Oatmilk Cooperative pyytää jäseniä asettamaan neljä pullomallia etusijajärjestykseen palautuspullojen kokeilua varten. Osallistujat arvioivat käsiteltävyyttä, kestävyyttä, asiakkaiden tarpeita, säilytystä ja yhteensopivuutta pesulaitteiden kanssa.
 
 <!-- translation-section: set-up-the-poll -->
 
 ## Luo kysely
 
-Kerro, mitä järjestyksen perusteella päätetään, ja lisää vaihtoehdot. Määritä kohdassa **Vaihtoehtojen määrä**, kuinka monta vaihtoehtoa kukin voi sijoittaa järjestykseen. Ensimmäinen valinta saa eniten pisteitä, seuraava yhden pisteen vähemmän. Sijoittamatta jääneet vaihtoehdot eivät saa pisteitä.
+Kerro, mitä järjestyksen perusteella päätetään, ja lisää vaihtoehdot. Määritä **Vaihtoehtojen määrä**, jotta voit rajata, kuinka monta vaihtoehtoa kukin voi asettaa järjestykseen. Ensimmäinen vaihtoehto saa eniten pisteitä, seuraava yhden pisteen vähemmän, ja järjestämättä jätetyt vaihtoehdot eivät saa pisteitä.
 
 ![](form.png)
 
-Edellytä kaikkien vaihtoehtojen järjestämistä, jos tarvitset täydellisen järjestyksen. Salli vähemmän valintoja, jos osallistujat eivät välttämättä tunne kaikkia vaihtoehtoja riittävän hyvin. Vaihtoehtojen näyttäminen satunnaisessa järjestyksessä voi vähentää niiden alkuperäisen esitysjärjestyksen vaikutusta.
+Edellytä kaikkien vaihtoehtojen asettamista järjestykseen, kun tarvitset täydellisen järjestyksen. Salli pienempi määrä valintoja, jos osallistujilla ei välttämättä ole riittävästi tietoa kaikkien vaihtoehtojen järjestämiseen. Vaihtoehtojen näyttäminen satunnaisessa järjestyksessä voi vähentää niiden alkuperäisen esitysjärjestyksen vaikutusta.
 
 <!-- translation-section: vote -->
 
 ## Äänestä
 
-Osallistujat vetävät vaihtoehdot haluamaansa järjestykseen. Numero 1 on ensisijainen valinta. He voivat myös perustella järjestyksen.
+Osallistujat vetävät vaihtoehdot haluamaansa etusijajärjestykseen, jossa numero 1 on ensisijainen vaihtoehto. He voivat lisätä perustelun, jossa he kertovat järjestyksen taustalla olevat arviointiperusteet.
 
 ![](voting.png)
 
-Tässä esimerkissä äänestäjä sijoittaa **500 ml:n meripihkanvärisen pullon** ensimmäiseksi ja **500 ml:n kirkkaan pullon** toiseksi, koska molemmat sopivat kahvilan nykyisiin säilytystiloihin ja pesulaitteisiin.
+Tässä esimerkissä äänestäjä asettaa **500 ml:n ruskean pullon** ensimmäiseksi ja **500 ml:n kirkkaan pullon** toiseksi, koska molemmat sopivat kahvilan nykyisiin säilytystiloihin ja pesulaitteisiin.
 
 <!-- translation-section: read-the-results -->
 
-## Tarkastele tuloksia
+## Lue tulokset
 
-Tulokset yhdistävät kaikki äänet pisteisiin perustuvaksi yhteiseksi järjestykseksi. Kustakin vaihtoehdosta näytetään:
+Tulokset yhdistävät kaikki äänet yhteiseksi pisteisiin perustuvaksi järjestykseksi. Ne näyttävät kustakin vaihtoehdosta:
 
-- **Sijoitus**: vaihtoehdon paikka yhteisessä tuloksessa;
-- **% pisteistä**: vaihtoehdon osuus kaikista sijoituspisteistä;
-- **Pisteet**: vaihtoehdon kaikista äänistä saamat pisteet yhteensä;
-- **Tarkoittaa**: vaihtoehdon keskimääräiset pisteet äänestäjää kohti; ja
-- **Äänestäjät**: kuinka moni sijoitti vaihtoehdon järjestykseen.
+- **Järjestys**: sen sijan yhteisissä tuloksissa;
+- **% pisteistä**: sen osuuden kaikista järjestämisestä annetuista pisteistä;
+- **Pisteet**: kaikkien äänten yhteenlasketut pisteet;
+- **Tarkoittaa**: sen keskimääräisen pistemäärän äänestäjää kohden; ja
+- **Äänestäjät**: kuinka moni asetti sen järjestykseen.
 
 ![](results.png)
 
-Tässä esimerkissä **500 ml:n meripihkanvärinen pullo** sijoittuu ensimmäiseksi. Sitä seuraavat **500 ml:n kirkas pullo** ja **750 ml:n meripihkanvärinen pullo**. Ryhmä voi selvittää ensisijaisen mallin soveltuvuutta ensin ja käyttää muuta järjestystä vaihtoehtoisten mallien arviointiin.
+Tässä esimerkissä **500 ml:n ruskea pullo** on ensimmäisenä, ja sitä seuraavat **500 ml:n kirkas pullo** ja **750 ml:n ruskea pullo**. Ryhmä voi tutkia mieluisinta mallia ensin ja säilyttää muiden vaihtoehtojen järjestyksen varalle.
 
-Sama pistemäärä voi syntyä erilaisista mieltymyksistä, joita yhteistulos ei näytä. Tarkastele yksittäisiä ääniä ja niiden perusteluja, jos vaihtoehdot ovat tasaväkisiä tai päätöksellä on suuri merkitys.
+Pisteisiin perustuvat tulokset voivat peittää erilaisia mieltymyksiä, jotka tuottavat saman kokonaispistemäärän. Tarkastele yksittäisiä ääniä ja niiden perusteluja, kun vaihtoehtojen pisteet ovat lähellä toisiaan tai päätöksellä on merkittäviä vaikutuksia.
 
 <!-- translation-section: share-an-outcome -->
 
 ## Jaa johtopäätös
 
-Kun kysely sulkeutuu, jaa johtopäätös. Kerro, minkä vaihtoehdon ryhmä toteuttaa ja mitä tapahtuu, jos se ei onnistu. Lue johtopäätösten käytöstä kohdasta [Jaa johtopäätös](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome).
+Kun kysely sulkeutuu, jaa johtopäätös. Kerro, minkä vaihtoehdon ryhmä valitsee ja mitä tapahtuu, jos se ei toteudu. Lue johtopäätösten käytöstä sivulta [Jaa johtopäätös](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome).
 
 ![Johtopäätös, jossa valitaan ensimmäiseksi sijoittunut pullomalli](outcome.png)

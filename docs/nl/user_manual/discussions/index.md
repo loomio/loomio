@@ -1,10 +1,10 @@
 ---
 title: Discussies
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/discussions/index.md
+source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
+source_file: docs/en/user_manual/discussions/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: c76a7d182c14a283
   common-uses: 2fd96fe8c6ddddc4
@@ -12,11 +12,11 @@ sections:
   member-participation: b087accb54a595dc
   self-organizing-working-teams: 8679ba6f65c230ab
 generated:
-  introduction: 68bbd7486c84a2dd
-  common-uses: c16202dfeefd7d99
-  boards-and-governance: 36ddb58cbe145935
-  member-participation: cf2e9c36681f133c
-  self-organizing-working-teams: 55524169cec746a8
+  introduction: 6d5e2120fab7793a
+  common-uses: 22667a56255bae2d
+  boards-and-governance: c7ece04dd0510217
+  member-participation: 82b4b81bad2adb37
+  self-organizing-working-teams: '038e65e062116037'
 title_source: 60157cfcfe3f31c3
 title_generated: c03fea23711b21af
 ---
@@ -25,63 +25,63 @@ title_generated: c03fea23711b21af
 
 # Inleiding tot discussies
 
-In Loomio-discussies kun je informatie delen, onderwerpen bespreken en samen met je groep besluiten nemen. Mensen doen mee door opmerkingen en reacties te plaatsen.
+In Loomio-discussies kun je informatie delen, onderwerpen bespreken en besluiten nemen met jouw groep. Mensen nemen deel door reacties en antwoorden te plaatsen.
 
-- Alle informatie over een onderwerp staat op één makkelijk toegankelijke plek.
-- Mensen kunnen per e-mail reageren. Hun opmerkingen verschijnen in de discussie.
+- Alle informatie over een onderwerp staat op één gemakkelijk toegankelijke plek.
+- Mensen kunnen via e-mail antwoorden en hun reacties verschijnen in de discussie.
 - Je kunt zien wie de discussie heeft gelezen en wie een herinnering nodig heeft.
-- Je kunt de discussie later makkelijk terugvinden.
+- De discussie blijft vastgelegd, zodat je die gemakkelijk kunt terugvinden.
 
-Je kunt discussies voor veel doeleinden gebruiken: als algemeen discussieforum, maar ook voor specifieke werkprocessen en besluitvorming.
+Je kunt discussies voor allerlei doeleinden gebruiken - van een algemeen discussieforum tot specifieke werkprocessen en besluitvormingsprocessen.
 
-Je kunt bijvoorbeeld een discussie over een bepaald onderwerp starten, mensen uitnodigen om hun gedachten en informatie te delen, en samen toewerken naar een conclusie.
+Je kunt bijvoorbeeld een discussie over een bepaald onderwerp opzetten, mensen uitnodigen om hun gedachten en informatie te delen en toewerken naar een gezamenlijk gedragen conclusie.
 
-Je kunt mensen ook uitnodigen om mee te doen aan een besluit volgens een proces op basis van consent of advies.
+Of je kunt mensen uitnodigen om deel te nemen aan een specifiek besluit via een besluitvormingsproces op basis van consent of advies.
 
-Discussies kunnen ook peilingen en voorstellen bevatten om tot een conclusie te komen. Terwijl mensen opmerkingen plaatsen en stemmen in peilingen, ontstaat een tijdlijn waarin je belangrijke momenten makkelijk terugvindt.
+Discussies kunnen ook peilingen en voorstellen bevatten om de discussie naar een conclusie te leiden. Terwijl mensen reageren in de discussie en stemmen in peilingen, ontstaat er een tijdlijn waarin je belangrijke momenten gemakkelijk kunt terugvinden.
 
-![De discussie over herbruikbare flessen voor cafébezoekers, met een opmerking en een voorstel](discussion-example.png)
+![De discussie over statiegeldflessen voor caféklanten, met een reactie en een voorstel](discussion-example.png)
 
 <!-- translation-section: common-uses -->
 
 ## Veelvoorkomende toepassingen
 
-Dit zijn enkele veelvoorkomende toepassingen van discussies:
+Hier zijn enkele veelvoorkomende toepassingen van discussies:
 
 <!-- translation-section: boards-and-governance -->
 
-### Bestuur en governance
+### Besturen en besluitvorming
 
-**Bereid je voor op een vergadering** - Stel een agenda op, deel vergaderstukken en regel praktische zaken, zodat iedereen op de hoogte is en zich kan voorbereiden.
+**Bereid je voor op een vergadering** - Stel een agenda op, plaats bestuursstukken en regel administratieve zaken, zodat iedereen op de hoogte is, de context kent en voorbereid is.
 
-**Neem een resolutie aan** - Deel de context en achtergrondinformatie, beantwoord vragen en dien een voorstel in om een resolutie aan te nemen.
+**Neem een resolutie aan** - Plaats context en achtergrondinformatie, beantwoord vragen en start een voorstel om een resolutie aan te nemen.
 
-**Bespreek een agendapunt op Loomio** - Begin vóór je vergadering een discussie over een agendapunt. Of zet de discussie voort op Loomio als er tijdens de vergadering te weinig tijd is.
+**Bespreek een agendapunt op Loomio** - Start vóór jouw vergadering een discussie over een agendapunt. Of zet de discussie voort op Loomio als je tijdens de vergadering tijd tekortkomt.
 
-**Keur notulen goed en volg actiepunten op** - Deel de notulen en wijs actiepunten toe. Gebruik een peiling om de notulen goed te keuren.
+**Keur notulen goed en volg acties op** - Plaats notulen en wijs acties toe. Gebruik een peiling om notulen goed te keuren.
 
 <!-- translation-section: member-participation -->
 
 ### Deelname van leden
 
-**Deel nieuws (als alternatief voor een mailinglijst)** - Deel informatie met leden en nodig ze uit om te reageren.
+**Deel nieuws (vervang de mailinglijst)** - Plaats informatie voor leden en nodig hen uit om te reageren.
 
-**Organiseer een evenement** - Werk met je organisatieteam de details uit. Houd alle informatie en gesprekken binnen de discussiedraad. Kondig het evenement daarna aan bij alle leden.
+**Organiseer een evenement** - Werk met jouw organisatieteam de details uit. Houd alle discussie en informatie binnen de thread. Kondig het evenement daarna aan bij de overige leden.
 
-**Ontwikkel beleid** - Deel een conceptbeleid, vraag leden om feedback en ideeën, en stel het beleid vast.
+**Ontwikkel beleid** - Plaats een conceptbeleid, vraag leden om feedback en inbreng, werk het beleid af en bekrachtig het.
 
-**Algemene vergadering** - Organiseer, bereid voor en leid een formele vergadering voor alle leden, waarin je strategische onderwerpen bespreekt en besluiten neemt.
+**Algemene ledenvergadering** - Organiseer, bereid een formele vergadering met alle leden voor en leid deze om strategische onderwerpen te bespreken en er besluiten over te nemen.
 
 <!-- translation-section: self-organizing-working-teams -->
 
-### Zelforganiserende werkgroepen
+### Zelforganiserende werkteams
 
-**Deel informatie** - Deel informatie en verslagen die relevant zijn voor je team en nodig mensen uit om te reageren en mee te praten.
+**Deel informatie** - Plaats informatie en rapporten die relevant zijn voor jouw team en nodig mensen uit om te reageren en te discussiëren.
 
-**Breng werk verder** - Beschrijf een taak en vraag teamleden om advies, ideeën en feedback totdat de taak is afgerond.
+**Breng het werk verder** - Beschrijf een taak en vraag teamleden om advies, inbreng en feedback totdat de taak is afgerond.
 
-**Vergadernotities en actiepunten** - Deel vergadernotities als verslag van de discussie en volg taken op.
+**Vergaderaantekeningen en acties** - Plaats vergaderaantekeningen om de discussie vast te leggen en volg taken op.
 
-**Verken ideeën** - Deel je gedachten en nodig anderen uit om mee te praten over iets dat je zorgen baart of dat beter kan.
+**Verken ideeën** - Deel gedachten en nodig mensen uit om te discussiëren over een probleem dat je opmerkt of een mogelijke verbetering.
 
-**Besluitvorming op basis van advies, consent of nieuwe ideeën** - Bereid een besluit voor, doe een voorstel, verduidelijk het, reageer op reacties en bezwaren, bereik overeenstemming en voer het uit. Dat kan allemaal binnen een Loomio-discussie.
+**Besluitvorming op basis van advies, consent en generatieve processen** - Bereid voor, doe een voorstel, verduidelijk, beantwoord reacties en bezwaren, bereik overeenstemming en voer het besluit uit - allemaal binnen een Loomio-discussie.

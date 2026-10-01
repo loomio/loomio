@@ -1,10 +1,10 @@
 ---
 title: Comentários
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/discussions/comments/index.md
+source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
+source_file: docs/en/user_manual/discussions/comments/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 5de86c47a823daf0
   reading-comments: 4b20b215ad06a596
@@ -20,19 +20,19 @@ sections:
   view-notification-history: '0186c24ddde89f56'
   discard-restore-or-delete-a-comment: f7fcdf12cf61a764
 generated:
-  introduction: 2a5e6958f85a3cc1
-  reading-comments: de081424d674bf69
-  writing-a-comment: e7f5301fc0639670
-  mentioning-people: bf255a156351afc4
-  replying-to-a-comment: deeb1177c4a9d3ae
-  reactions: 71d6677136f0a997
-  translating-comments: 2672b4fa4e40fa59
-  comment-actions: b725f1f9d5e79af9
-  add-a-comment-to-jump-to: 38fa3214a60bdfba
-  edit-a-comment-and-view-changes: 64a93e811bec7f05
-  copy-a-comment-link: b8e74374a209281c
-  view-notification-history: 4ce8b87b0d8316ba
-  discard-restore-or-delete-a-comment: f2144ecc58b63497
+  introduction: 456d08a6bd092611
+  reading-comments: 528b200e06d38bae
+  writing-a-comment: 697bb8045499436f
+  mentioning-people: 733085bc8e2a7e85
+  replying-to-a-comment: 49b0b703b50f2032
+  reactions: c5887b2bce44a32e
+  translating-comments: b38c777266757271
+  comment-actions: 20e63f24143072f1
+  add-a-comment-to-jump-to: ec9431272d7883ca
+  edit-a-comment-and-view-changes: 233287098a98017a
+  copy-a-comment-link: d19c203bbb7ef68b
+  view-notification-history: d031f5670e8e085d
+  discard-restore-or-delete-a-comment: 63b346d79260d696
 title_source: 355f79f29d7d3c2d
 title_generated: 485067ce7d940f97
 ---
@@ -41,15 +41,15 @@ title_generated: 485067ce7d940f97
 
 # Comentários
 
-Os comentários são a principal forma de participar de uma discussão. Qualquer pessoa com permissão para ver a conversa pode lê-los.
+Os comentários são a principal forma de participar de uma discussão. Eles ficam visíveis para qualquer pessoa que tenha permissão para ver a conversa.
 
 <!-- translation-section: reading-comments -->
 
 ## Ler comentários
 
-Quando você abre uma discussão, o Loomio mostra as atividades que você ainda não viu.
+Quando você abre uma discussão, o Loomio leva você às atividades que ainda não viu.
 
-Comentários não lidos têm uma etiqueta azul **novo** ao lado do horário de publicação.
+Os comentários não lidos têm uma etiqueta azul **novo** ao lado do horário de publicação.
 
 ![](../using_discussions/thread_unread_comments.png)
 
@@ -57,9 +57,9 @@ Comentários não lidos têm uma etiqueta azul **novo** ao lado do horário de p
 
 ## Escrever um comentário
 
-Escreva um comentário para participar da discussão. Outras pessoas podem responder, reagir ou publicar seus próprios comentários.
+Escreva um comentário para contribuir com a discussão. Outras pessoas podem responder, reagir ou publicar seus próprios comentários.
 
-Selecione **Postar comentário** para publicá-lo. Qualquer pessoa com permissão para ver a discussão poderá ler seu comentário.
+Selecione **Publicar comentário** para publicá-lo. Seu comentário ficará visível para qualquer pessoa que tenha permissão para ver a discussão.
 
 ![](../using_discussions/comment.png)
 
@@ -69,35 +69,35 @@ As ferramentas descritas em [Formatação](/en/user_manual/discussions/formattin
 
 ## Mencionar pessoas
 
-Digite **@**, comece a digitar o nome da pessoa e selecione-a na lista. A menção envia uma notificação imediata e pode ser usada para pedir a atenção ou uma resposta dessa pessoa.
+Digite **@**, comece a digitar o nome de uma pessoa e selecione essa pessoa na lista. Uma menção notifica a pessoa imediatamente e é uma forma útil de pedir sua atenção ou uma resposta.
 
-![Mencionando Samira Patel em um comentário](../notifying_people/comment_mention.png)
+![Menção a Samira Patel em um comentário](../notifying_people/comment_mention.png)
 
-Para notificar todas as pessoas do grupo, digite **@**, comece a digitar o nome do grupo e selecione-o na lista.
+Para notificar todas as pessoas do grupo, digite **@**, comece a digitar o nome do grupo e selecione o grupo na lista.
 
-![Buscando Oatmilk Cooperative ao escrever uma menção ao grupo](../notifying_people/mentioning_group_1.png)
+![Busca por Oatmilk Cooperative ao escrever uma menção ao grupo](../notifying_people/mentioning_group_1.png)
 
 ![Oatmilk Cooperative selecionado como menção ao grupo](../notifying_people/mentioning_group_2.png)
 
-Mencionar alguém não dá acesso à conversa. Se a pessoa ainda não for membro da conversa, use **Convidar pessoas** na barra lateral.
+Mencionar alguém não dá a essa pessoa acesso à conversa. Use **Convidar pessoas** na barra lateral da conversa se a pessoa ainda não for membro da conversa.
 
 <!-- translation-section: replying-to-a-comment -->
 
 ## Responder a um comentário
 
-Selecione **Responder** abaixo de um comentário. A resposta já inclui uma menção com @ ao autor do comentário, que receberá uma notificação quando você publicar a resposta. Remova a menção se não quiser notificá-lo.
+Selecione **Responder** abaixo de um comentário para responder a ele. A resposta vem preenchida com uma @menção ao autor do comentário, que recebe uma notificação quando você publica a resposta. Remova a menção se não quiser notificar essa pessoa.
 
 ![](../using_discussions/comment_reply.png)
 
-Você também pode responder ao seu próprio comentário para adicionar uma resposta abaixo dele.
+Você também pode responder ao seu próprio comentário para colocar uma resposta abaixo dele.
 
-Se um e-mail do Loomio informar que você pode responder por e-mail, sua resposta aparecerá na conversa.
+Se um email do Loomio informar que você pode responder por email, sua resposta por email aparecerá na conversa.
 
 <!-- translation-section: reactions -->
 
 ## Reações
 
-Use o botão de rosto sorridente para reagir com um emoji. As reações notificam o autor do comentário no Loomio, mas não enviam um e-mail.
+Use o botão com o rosto sorridente para responder com um emoji. As reações notificam o autor do comentário dentro do Loomio, mas não enviam um email.
 
 ![](../using_discussions/reaction.png)
 
@@ -105,7 +105,7 @@ Use o botão de rosto sorridente para reagir com um emoji. As reações notifica
 
 ## Traduzir comentários
 
-Se o autor escrever em outro idioma, a ação **Traduzir** aparecerá abaixo do comentário.
+Se o autor usar um idioma diferente do seu, a ação **Traduzir** aparecerá abaixo do comentário.
 
 ![](../using_discussions/comment_translate.png)
 
@@ -117,7 +117,7 @@ Selecione **Traduzir comentario ** para ver o comentário no seu idioma.
 
 ## Ações dos comentários
 
-As ações mais comuns aparecem logo abaixo do comentário. Outras ações estão disponíveis no menu de três pontos (**⋯**).
+As ações comuns aparecem diretamente abaixo de um comentário. Outras ações estão disponíveis no menu de três pontos (**⋯**).
 
 <!-- translation-section: add-a-comment-to-jump-to -->
 
@@ -125,10 +125,10 @@ As ações mais comuns aparecem logo abaixo do comentário. Outras ações estã
 
 Use **Fixar na timeline** para adicionar um comentário à lista **Pular para** da conversa.
 
-Você pode editar o texto exibido em **Pular para**. Para alterar o texto do link, desafixe o comentário e fixe-o novamente.
+Você pode editar o rótulo exibido em **Pular para**. Desafixe e depois fixe o comentário novamente para alterar o texto do link.
 
 >[!Tip]
->Destaque as palavras que você quer usar como texto do link antes de selecionar **Fixar na timeline**.
+>Selecione as palavras que você quer usar como texto do link antes de selecionar **Fixar na timeline**.
 
 Selecione **Desafixar** para remover o item de **Pular para**.
 
@@ -136,7 +136,7 @@ Selecione **Desafixar** para remover o item de **Pular para**.
 
 ### Editar um comentário e ver as alterações
 
-Selecione **Editar** abaixo de um dos seus comentários para alterá-lo. Administradores do grupo também podem editar comentários de membros quando a permissão correspondente estiver ativada.
+Selecione **Editar** abaixo de um dos seus comentários para alterá-lo. Os admins do grupo também podem editar comentários dos membros quando a permissão correspondente do grupo estiver ativada.
 
 ![](../using_discussions/comment_edit.png)
 
@@ -144,20 +144,20 @@ A ação **Editado** aparece abaixo de um comentário editado.
 
 ![](../using_discussions/comment_show_edits.png)
 
-Selecione **Editado** para ver o que mudou. O destaque vermelho mostra o texto removido, e o verde mostra o texto adicionado. O Loomio registra quem fez cada edição e quando ela foi feita.
+Selecione **Editado** para ver o que mudou. O destaque em vermelho mostra o texto removido e o destaque em verde mostra o texto adicionado. O Loomio registra quem fez cada edição e quando ela foi feita.
 
 ![](../using_discussions/comment_edits.png)
 
 Você pode editar um comentário quando:
 
-- você o escreveu e o grupo permite que membros editem seus comentários
-- você é administrador do grupo e a opção [Administradores podem editar comentários de membros](/en/user_manual/groups/settings/permissions) está ativada
+- você o escreveu e o grupo permite que os membros editem seus comentários
+- você é admin do grupo e a permissão [Admins podem editar comentários dos membros](/en/user_manual/groups/settings/permissions) está ativada
 
 <!-- translation-section: copy-a-comment-link -->
 
 ### Copiar o link de um comentário
 
-Selecione **Copiar link** para copiar o URL exclusivo do comentário. Você pode colar o link em outro lugar para apontar diretamente para esse comentário.
+Selecione **Copiar link** para copiar a URL exclusiva do comentário. Você pode colar o link em outro lugar para fazer referência direta a esse comentário.
 
 ![](../using_discussions/comment_copy_link.png)
 
@@ -169,36 +169,36 @@ Abra o menu de três pontos (**⋯**) ao lado de um comentário e selecione **Hi
 
 ![Histórico de notificações no menu de ações de um comentário](../notifying_people/comment_notification_history.png)
 
-O histórico de notificações mostra quem recebeu uma notificação sobre o comentário, quando ela foi enviada e, quando essa informação está disponível, se foi lida.
+O histórico de notificações mostra quem recebeu uma notificação sobre o comentário, quando ela foi enviada e se foi lida, quando essa informação está disponível.
 
 ![Histórico de notificações de um comentário que menciona Samira Patel](../notifying_people/comment_notification_example.png)
 
 <!-- translation-section: discard-restore-or-delete-a-comment -->
 
-### Descartar, restaurar ou deletar um comentário
+### Descartar, restaurar ou excluir um comentário
 
-Ao descartar um comentário, você o remove da conversa, mas ele permanece na lixeira. Para descartar seus próprios comentários, selecione **Descartar** no menu de três pontos. Administradores do grupo também podem descartar comentários.
+Descartar um comentário remove-o da conversa, mas mantém o comentário na lixeira. Você pode descartar seus próprios comentários com **Descartar** no menu de três pontos. Os admins do grupo também podem descartar comentários.
 
 ![](../using_discussions/comment_discard.png)
 
 **Restaurar um comentário**
 
-O local de um comentário descartado aparece com o rótulo **Item removido**. Abra o menu de três pontos e selecione **Restaurar**.
+O local de um comentário descartado recebe o rótulo **Item removido**. Abra o menu de três pontos desse item e selecione **Restaurar**.
 
 ![](../using_discussions/comment_restore.png)
 
-**Deletar um comentário**
+**Excluir um comentário**
 
-Ao deletar um comentário, você o remove permanentemente. Não é possível restaurá-lo.
+Excluir um comentário remove-o permanentemente. Ele não pode ser restaurado.
 
-Se a opção **Os membros podem excluir seus próprios comentários** estiver ativada em [Permissões do grupo](/en/user_manual/groups/settings/permissions), os membros poderão deletar permanentemente os próprios comentários descartados. Administradores do grupo podem deletar qualquer comentário.
+Se **Os membros podem excluir seus próprios comentários** estiver ativado em [Permissões do grupo](/en/user_manual/groups/settings/permissions), os membros poderão excluir permanentemente seus próprios comentários descartados. Os admins do grupo podem excluir qualquer comentário.
 
 ![](../using_discussions/permissions_delete_comment.png)
 
-Abra o menu de três pontos de uma entrada **Item removido** e selecione **Deletar**.
+Abra o menu de três pontos de um item com o rótulo **Item removido** e selecione **Deletar**.
 
 ![](../using_discussions/comment_delete.png)
 
-Uma mensagem de confirmação informa que o comentário será deletado permanentemente.
+Uma mensagem de confirmação explica que o comentário será excluído permanentemente.
 
 ![](../using_discussions/comment_delete_message.png)

@@ -1,10 +1,10 @@
 ---
 title: Határozathozatal
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/guides/board_processes/decisions.md
+source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
+source_file: docs/en/guides/board_processes/decisions.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-30'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 6c619a2500c9b018
   on-loomio: fd8ae80ddea0ea14
@@ -16,104 +16,103 @@ sections:
   keeping-a-record-of-decisions-made-and-supporting-discussion: fe8d98d6b8d50a2a
   on-loomio-2: 5ef094900505a875
 generated:
-  introduction: e02a63a1f329c626
-  on-loomio: 18b39ec54b03c1ae
-  examples-of-out-of-session-decisions: 66e6da3b1b21c4ba
-  decision-about-property-purchase: bc94e3c1270cab4a
-  decision-to-accept-directors-and-officers-liability-insurance: 8f7baaa4d525a203
-  a-security-breach-has-occurred-at-one-of-our-facilities: 6208c9d4a80c2148
-  a-director-has-challenged-the-board-about-gender-and-diversity-of-board-membership: 3e973b95d45f1a28
-  keeping-a-record-of-decisions-made-and-supporting-discussion: 9f908d6564ca7cfd
-  on-loomio-2: c7d38d8dddd69281
+  introduction: a7397989beb6cf7b
+  on-loomio: e4f59f75167d29c4
+  examples-of-out-of-session-decisions: 457337a24e4e8719
+  decision-about-property-purchase: 8dabd5a0bbcf040a
+  decision-to-accept-directors-and-officers-liability-insurance: ee44f8194bc001b7
+  a-security-breach-has-occurred-at-one-of-our-facilities: bb0f33e61afdfda5
+  a-director-has-challenged-the-board-about-gender-and-diversity-of-board-membership: b946129596692b1d
+  keeping-a-record-of-decisions-made-and-supporting-discussion: 92d0f272e7d21f75
+  on-loomio-2: 7f788567cac0d620
 title_source: 9a7f398684e7c05f
 title_generated: 8fa1c85f00cda2b8
 ---
 
 <!-- translation-section: introduction -->
 
-# Határozathozatal és online döntéshozatal
+# Határozathozatal és online döntések
 
-Az igazgatóságok és bizottságok tagjainak gyakran az üléseken kívül kell dönteniük. Ilyen döntésre és az azt megelőző vitára több okból lehet szükség:
+Az igazgatósági és bizottsági tagoknak gyakran kell ülésen kívül döntéseket hozniuk. Ezek olyan irányítási döntések és beszélgetések, amelyekre az alábbi esetekben van szükség:
 
-- Az igazgatósági ülésen nem jutott elég idő a döntésre,
-- a döntés nem igényel hosszas vitát, például ügyviteli kérdésben,
-- belső vagy külső esemény miatt az igazgatóságnak a következő ülés előtt lépnie kell,
-- egy igazgatósági tag szeretne egy számára fontos kérdést megvitatni az igazgatósággal.
+- Az igazgatósági ülésen nem volt elég idő a döntés meghozatalára,
+- a döntés nem igényel hosszabb beszélgetést (például adminisztratív döntések esetén),
+- olyan esemény történt a szervezeten belül vagy kívül, amely miatt az igazgatóságnak a következő ülés előtt kell cselekednie,
+- egy igazgatósági tag szeretne egy számára fontos kérdést megvizsgálni az igazgatósággal.
 
 <!-- translation-section: on-loomio -->
 
 ## A Loomióban
-Indíts egy **témát**, és kezdd el a beszélgetést:
-- Mutasd be a kérdést vagy a meghozandó döntést,
-- kérd meg az igazgatósági tagokat, hogy osszák meg gondolataikat, véleményüket és a szempontjaik megértéséhez szükséges információkat,
-- bátorítsd a tagokat, hogy szóljanak hozzá, vagy válaszoljanak mások hozzászólásaira.
+Indíts egy **szálat**, és kezdj beszélgetést:
+- Mutasd be a témát vagy a meghozni kívánt döntést,
+- kérd meg az igazgatóság tagjait, hogy hozzászólásokban osszák meg gondolataikat, véleményüket és a rendelkezésükre álló információkat, hogy mindenki megérthesse az ülésen kívül tárgyalt témával vagy döntéssel kapcsolatos álláspontjukat,
+- ösztönözd a tagokat a részvételre hozzászólások írásával vagy a hozzászólásokra adott válaszokkal.
 
-Amikor készen álltok, indíts egy **szavazás**t, és hívd meg a tagokat szavazni. 
-Ha a kérdés egyszerű, használj **Javaslat**ot. Ha összetettebb, indíts **Érzékellenőrzés** szavazást, hogy egyértelműen megtudd, mit gondolnak a tagok a javaslatról.
-- Fogalmazd meg a döntést, és hívd meg a többieket szavazni,
-- kérd meg őket, hogy indokolják a szavazatukat, különösen, ha pontosítani szeretnék az álláspontjukat,
-- válaszd ki a testület döntéshozatali folyamatának megfelelő válaszlehetőségeket.
-- A következő testületi ülésen jóváhagyhatjátok és jegyzőkönyvbe foglalhatjátok az ülésen kívül hozott döntést.
+Amikor eljött az ideje, a következő lépés egy **szavazás** indítása. Kérd meg a tagokat, hogy szavazzanak. Ha a kérdés egyszerű, használd a **Javaslat** szavazástípust. Ha összetettebb, használd a **Hangulatfelmérés** szavazástípust, hogy egyértelműen megkérdezhesd a többi tagot, mit gondolnak a javaslatról.
+- Fogalmazd meg a döntést, és kérd meg az embereket, hogy szavazzanak,
+- kérd meg őket, hogy adjanak indoklást a szavazatukhoz, különösen akkor, ha valamelyik ponttal kapcsolatban fenntartásaik vannak,
+- válaszd ki az igazgatóság döntéshozatali folyamatához illő lehetőségeket.
+- Az ülésen kívül hozott döntést a következő igazgatósági ülésen megerősíthetitek és jegyzőkönyvbe vehetitek.
 
-Ha egy döntésről nincs egyetértés, kérdezd meg a tagokat, milyen változtatásokkal tudnák támogatni. Így jobb döntést dolgozhattok ki. A módosításokat tartalmazó új javaslat nagyobb eséllyel kap támogatást.
+Nem kudarc, ha egy döntésben nem sikerül egyetértésre jutni. Megkérdezheted a tagokat, milyen változtatásokkal tudnák támogatni a döntést. Ez segít jobb döntést kialakítani. Egy módosításokat tartalmazó új javaslattal nagyobb eséllyel juthattok egyetértésre.
 
-Amikor a javaslat lezárul, oszd meg a **következtetést**. Tudasd mindenkivel a döntés eredményét és a következő lépéseket.
+Fogalmazz meg egy **következtetést**, amikor a javaslat lezárul. Tudasd mindenkivel, milyen döntés született, és mi történik ezután.
 
 ![](thread_funding.png#width-90)
 
 <!-- translation-section: examples-of-out-of-session-decisions -->
 
-## Példák az ülésen kívül hozott döntésekre
+## Példák ülésen kívüli döntésekre
 
 <!-- translation-section: decision-about-property-purchase -->
 
 ### Döntés ingatlanvásárlásról
-A legutóbbi igazgatósági ülésen ingatlanvásárlásról volt szó. Az egyik igazgatósági tag független műszaki szakvéleményt kért a döntés előtt. Az igazgatóság megállapodott abban, hogy megfelelő szakvélemény esetén megvásárolja az ingatlant. Mivel a vásárlásról a következő ülés előtt kell dönteni, abban is megállapodtak, hogy a szakvéleményt elkészülte után feltöltik a Loomióba. Ott megvitatják, majd meghozzák a végleges döntést.
+A legutóbbi igazgatósági ülésen egy ingatlan megvásárlásáról beszélgettek. Egy igazgatósági tag a döntés meghozatala előtt független műszaki szakvéleményt kért. Az ülésen az igazgatóság megállapodott abban, hogy megvásárolja az ingatlant, ha a műszaki szakvélemény megfelelőnek ítéli azt. Mivel azonban a vásárlást a következő igazgatósági ülés előtt kell lebonyolítani, az igazgatóság úgy döntött, hogy az elkészült műszaki szakvéleményt feltölti a Loomióba, ott beszélget róla, és ott hozza meg az ingatlanvásárlásról szóló végleges döntést.
 
 <!-- translation-section: decision-to-accept-directors-and-officers-liability-insurance -->
 
-### Döntés a vezető tisztségviselők felelősségbiztosításának elfogadásáról
-Az igazgatósági ülésen felmerült, hogy hamarosan esedékes az éves biztosítás megújítása. Mivel ezt ügyviteli kérdésnek tekintették, az igazgatóság úgy döntött, hogy a Loomióban vitatja meg a megújítási kérelmet, gyűjti be a szükséges adatokat az igazgatósági tagoktól, nyújtja be a kérelmet és fogadja el a biztosítás megújítására kapott ajánlatot.
+### Döntés az igazgatósági tagok és vezető tisztségviselők felelősségbiztosításának elfogadásáról
+Az igazgatósági ülésen jelezték, hogy közeledik a biztosítás éves megújítása. Mivel ezt adminisztratív ügynek tekintették, az igazgatóság úgy döntött, hogy a Loomióban beszéli meg a megújítási kérelmet, bekéri a szükséges információkat minden igazgatósági tagtól, benyújtja a kérelmet, és elfogadja a biztosítás megújítására kapott ajánlatot.
 
 <!-- translation-section: a-security-breach-has-occurred-at-one-of-our-facilities -->
 
-### Biztonsági incidens történt az egyik létesítményünkben
-Betörés és lopás történt, amely veszélybe sodorta a szervezetet és a munkatársakat. Az igazgatósági tagokat tájékoztatni kell az esetről és a kockázatokról, majd mérlegelniük kell a megfelelő választ.
+### Biztonsági incidens történt az egyik telephelyünkön
+Betörés és lopás történt, ami veszélyezteti a szervezetet és a munkatársakat. Az igazgatósági tagokat tájékoztatni kell az eseményről és a kockázatokról, és mérlegelniük kell a megfelelő intézkedéseket.
 
 <!-- translation-section: a-director-has-challenged-the-board-about-gender-and-diversity-of-board-membership -->
 
-### Egy igazgatósági tag felvetette a nemek és a sokszínűség kérdését az igazgatóság összetételében
-Az igazgatósági tag érvekkel és bizonyítékokkal támasztotta alá, hogy az igazgatóság összetételének jobban kellene tükröznie a szervezet sokszínűségét. A tagoknak át kell tekinteniük az információkat, kérdéseket kell feltenniük, meg kell vitatniuk a témát, és dönteniük kell a válaszról.
+### Egy igazgatósági tag megkérdőjelezte az igazgatóság nemi összetételét és sokszínűségét
+Az igazgatósági tag megalapozott érvekkel és bizonyítékokkal támasztotta alá, hogy az igazgatóság összetételének sokszínűbbnek kellene lennie, hogy jobban képviselje a szervezetet. Az igazgatósági tagoknak át kell tekinteniük az információkat, kérdéseket kell feltenniük, beszélgetniük kell a kérdésről, és dönteniük kell a további lépésekről.
 
 ![](thread_insurance.png#width-90)
 
 <!-- translation-section: keeping-a-record-of-decisions-made-and-supporting-discussion -->
 
-## A döntések és az azokat megalapozó vita dokumentálása
+## A meghozott döntések és az azokat megalapozó beszélgetések dokumentálása
 
-Az igazgatóságok számára a dokumentálás jogi követelmény, a bizottságok számára pedig bevált gyakorlat.
+A dokumentálás az irányító testületek számára jogszabályi követelmény, a bizottságok számára pedig bevált gyakorlat.
 
-Ma sok szervezet elektronikus formában készíti és tárolja a hivatalos jegyzőkönyveket, határozatokat, szabályzatokat és fontos döntéseket. A dokumentumokat létrehozzák és jóváhagyják, megosztják és használják, megőrzik és tárolják, végül pedig selejtezik.
+Ma sok szervezet elektronikusan rögzíti és tárolja a hivatalos jegyzőkönyveket, határozatokat, szabályzatokat és fontos döntéseket. A dokumentumokat elkészítik és jóváhagyják, megosztják és használják, megőrzik és tárolják, végül pedig selejtezik.
 
 <!-- translation-section: on-loomio-2 -->
 
 ### A Loomióban
-Jegyzőkönyveket, jelentéseket, határozatokat és más dokumentumokat csatolhatsz egy ülés **témájához**, a téma leírásához, egy szavazáshoz vagy bármely hozzászóláshoz. Így a dokumentumok mindig a kapcsolódó beszélgetés mellett találhatók.
+Jegyzőkönyveket, jelentéseket, határozatokat és más dokumentumokat csatolhatsz egy ülés **szálához**: a szál leírásában, egy szavazásban vagy a szál bármely hozzászólásában. Így a dokumentumok mindig a kapcsolódó beszélgetéshez tartoznak.
 
 A fájlok listáját a **Fájlok** lapon is megtalálod.
 
 ![](files_tab.png#width-90)
 
-Bármely témában vagy szavazásban hivatkozhatsz a választott dokumentumkezelő rendszeredben tárolt dokumentumra. Keresd meg a dokumentum megosztható hivatkozását, majd másold be a témába, a szavazásba vagy egy hozzászólásba.
+Bármely szálhoz vagy szavazáshoz hozzáadhatsz egy hivatkozást az általad használt dokumentumkezelő rendszerben tárolt dokumentumra. Keresd meg a dokumentum online megosztható hivatkozását, másold ki, és illeszd be a szálba, a szavazásba vagy egy hozzászólásba.
 
-A megfelelő jogosultsággal rendelkezők a hivatkozásra kattintva megnyithatják és elolvashatják a dokumentumot.
+Ezután bárki, akinek van hozzáférési jogosultsága, a hivatkozásra kattintva megnyithatja és elolvashatja a dokumentumot.
 
 ![](thread_link.png#width-90)
 
-A Loomióban a beszélgetések és döntések eleve dokumentálva vannak. Így ellenőrizheted az igazgatóság döntéseit, és könnyen megmutathatod, miről és mikor döntöttek. Ha az igazgatósági tagok megvitatták a határozatot, hozzászóltak és szavaztak is róla, azt is láthatod, hogyan és miért született meg a döntés.
+Mivel a Loomióban a beszélgetések és a döntések eleve dokumentálva vannak, megbízhatóan ellenőrizheted az igazgatóság teljes döntéshozatalát. Könnyen bemutathatod, miről és mikor született döntés. Ha az igazgatósági tagok beszélgettek a határozatról, hozzászóltak és szavaztak is róla, azt is tudni fogod, hogyan és miért született meg az egyes döntés.
 
-Idővel kereshető előzmények gyűlnek össze a szervezeted döntéseiről és a hozzájuk kapcsolódó beszélgetésekről.
+Idővel létrejön a szervezeted történetének nyilvántartása, amelyben könnyen kereshetsz, és megtalálhatod a korábbi döntéseket és a hozzájuk kapcsolódó beszélgetéseket.
 
 ![](thread_search.png#width-90)
 
-A Loomio minden adatot több lemezen és több helyen, *a felhőben* tárol, és naponta biztonsági másolatot készít. A feltöltött fájlokat olyan szerverek tárolják, amelyek korszerű megoldásokkal csökkentik a szűk keresztmetszetek és a kiesések kockázatát.
+A Loomio minden adatot több lemezen és több helyszínen, *a felhőben* rögzít és tárol, napi biztonsági mentéssel. A feltöltött fájlokat olyan szervereken tárolja, amelyek korszerű technikákkal küszöbölik ki a szűk keresztmetszeteket és a meghibásodási pontokat.

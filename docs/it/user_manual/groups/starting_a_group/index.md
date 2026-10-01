@@ -1,10 +1,10 @@
 ---
 title: Creare un gruppo
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/groups/starting_a_group/index.md
+source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
+source_file: docs/en/user_manual/groups/starting_a_group/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 221cb19d87a4f2d6
   group-details: 0fcf6c809c12050b
@@ -12,11 +12,11 @@ sections:
   group-handle: 1696339219760afb
   group-description: b585bd5a1b0b1bff
 generated:
-  introduction: 6275acc42117bf13
+  introduction: afd5d3bc0a5278cc
   group-details: 347ad726b7e73e91
-  group-name: fffbfa459150bccc
-  group-handle: ad7d2788f8e0257c
-  group-description: 9e93f3129367d566
+  group-name: 75e237745a485256
+  group-handle: a9491a55aa0f1c4b
+  group-description: 15e1d98c7bfd597d
 title_source: c5a16dbe0863ecd7
 title_generated: 4784aaeb8249d342
 ---
@@ -25,9 +25,9 @@ title_generated: 4784aaeb8249d342
 
 # Creare un nuovo gruppo
 
-Se non hai mai usato Loomio, puoi creare un gruppo con una prova gratuita dal [sito web di Loomio](https://www.loomio.com/). Se usi già Loomio e vuoi creare un gruppo per un'altra organizzazione o un altro scopo, apri il menu laterale e seleziona **Nuovo gruppo**.
+Se sei nuovo su Loomio, puoi creare un gruppo con una prova gratuita in qualsiasi momento dal [sito web di Loomio](https://www.loomio.com/). Se usi già Loomio e vuoi creare un nuovo gruppo per un'altra organizzazione o un altro scopo, puoi farlo dal menu laterale: seleziona **Nuovo gruppo**.
 
-Per molte organizzazioni basta un solo gruppo Loomio. All'interno del gruppo puoi creare tutti i sottogruppi di cui hai bisogno. Per saperne di più, consulta [Sottogruppi](/en/user_manual/groups/subgroups/).
+Per molte organizzazioni è sufficiente un solo gruppo Loomio. All'interno del gruppo puoi creare tutti i sottogruppi di cui hai bisogno. Consulta [Sottogruppi](/en/user_manual/groups/subgroups/) per maggiori informazioni.
 
 ![](new_group.png)
 
@@ -41,22 +41,22 @@ Per molte organizzazioni basta un solo gruppo Loomio. All'interno del gruppo puo
 
 ### Nome del gruppo
 
-Inserisci il nome del gruppo. Scegli un nome breve e chiaro.
+Inserisci il nome del tuo gruppo. È meglio scegliere un nome breve e conciso.
 
 <!-- translation-section: group-handle -->
 
 ### Identificativo del gruppo
 
-Al gruppo viene assegnato automaticamente un identificativo, usato nell'URL e nell'indirizzo email del gruppo, per esempio **loomio.com/your-group-handle** e **your-group-handle@loomio.com**.
+Al tuo gruppo viene assegnato automaticamente un identificativo. L'identificativo viene usato nell'URL e nell'indirizzo email del gruppo, ad esempio **loomio.com/your-group-handle** e **your-group-handle@loomio.com**.
 
-Puoi modificare l'identificativo quando crei il gruppo o in seguito nelle impostazioni del gruppo. Se lo cambi, i link e gli indirizzi email che usano quello precedente continuano a funzionare. Loomio conserva fino a tre identificativi precedenti; quando ne cambi un quarto, il più vecchio scade.
+Puoi modificare l'identificativo quando crei il gruppo e cambiarlo in seguito nelle impostazioni del gruppo. Quando lo cambi, i link e gli indirizzi email che usano il vecchio identificativo continuano a funzionare. Loomio conserva fino a tre identificativi precedenti; oltre questo limite, il più vecchio scade.
 
 <!-- translation-section: group-description -->
 
 ### Descrizione del gruppo
 
-Questa breve descrizione appare nella parte superiore della dashboard e offre ai nuovi membri il contesto necessario.
+Questa breve descrizione apparirà nella parte superiore della dashboard, per fornire ai nuovi membri il contesto necessario.
 
-**Quando selezioni «Crea un gruppo», il nuovo gruppo viene creato automaticamente.**
+**Quando selezioni 'Crea gruppo', il tuo nuovo gruppo viene creato automaticamente.**
 
 ---

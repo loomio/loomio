@@ -1,10 +1,10 @@
 ---
 title: Szerver API
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/integrations/api/server-api.md
+source_revision: c27ee3b193231816878f1c074ff9fc2a086a88c0
+source_file: docs/en/user_manual/integrations/api/server-api.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-30'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-02'
 sections:
   introduction: a357cdc2bfc0223e
   authentication: cbabcc874f053455
@@ -26,25 +26,25 @@ sections:
   examples-6: 71ae30577730b261
   sso-profile-sync-settings: 416144004d040e4f
 generated:
-  introduction: bee3f4a45e12c397
-  authentication: ddb9a0bd8da813f1
-  user-object: 5195b906e413d60e
-  list-users: aa4551d8071be32d
+  introduction: 379e4ba89c9df618
+  authentication: 4d854b1e0542a044
+  user-object: e7eddad7bd991401
+  list-users: 51e0b842a6e86883
   example: 60d916f8463e867d
-  show-user: 4f25885d1db9e7a1
-  examples: ec07faf03b02571a
-  update-user: 352601bd3b8ddc43
-  params: 527e202a75ab4fec
-  examples-2: 608e0931e2fb96ae
-  deactivate-user: 7b4345018d07ab56
-  examples-3: 2f7e8aeb9328013a
-  reactivate-user: 6e8219c173bd6362
-  examples-4: cfdab40febda9047
-  redact-user: f51737d722b281f3
-  examples-5: 9e03ac32ecd2b514
-  delete-user: b8415a5276b48fce
-  examples-6: 411cea8b87a6620b
-  sso-profile-sync-settings: 607dd9711b58bab0
+  show-user: 5142ee896b10008d
+  examples: 74ab4378e2cdd8ca
+  update-user: 54f5981b669af24b
+  params: 131cfe6ff1893b66
+  examples-2: 4e83e784297e6db7
+  deactivate-user: f4a0b2e2fe10e5e6
+  examples-3: 3ee062bfd7fafd31
+  reactivate-user: 390bd04ec7199f8d
+  examples-4: cc465604a39ed723
+  redact-user: 587379079ab8ef84
+  examples-5: 21cb7c29527c70f6
+  delete-user: 4adac6f76eed97b6
+  examples-6: 453e6872ada898f0
+  sso-profile-sync-settings: 4010344e72bad294
 title_source: 370e81eb20eece44
 title_generated: 4c1219c444b5c15c
 ---
@@ -53,29 +53,29 @@ title_generated: 4c1219c444b5c15c
 
 # A Loomio szerver API dokumentációja
 
-<!-- seo-description: A Loomio szerver API-jával kezelheted a felhasználói fiókokat egy saját üzemeltetésű Loomio-példányon. -->
+<!-- seo-description: Kezeld a felhasználói fiókokat a saját szerveren futtatott Loomio rendszerben a Loomio szerver API segítségével. -->
 
-A `/api/b3` szerver szintű műveletekre szolgál. A Loomio-felhasználói fiókkal végzett műveletekhez a `/api/b2` végpontot használd.
+A `/api/b3` a szerverszintű műveletekre szolgál. A Loomio felhasználói fiókkal végzett, felhasználói szintű műveletekhez használd a `/api/b2` API-t.
 
 <!-- translation-section: authentication -->
 
 ## Hitelesítés
 
-A `B3_API_KEY` értékének adj meg egy 16 karakternél hosszabb titkos kulcsot.
+Állítsd a `B3_API_KEY` értékét egy 16 karakternél hosszabb titkos kulcsra.
 
-A kulcsot bearer tokenként küldd el:
+Küldd el a kulcsot bearer tokenként:
 
 ```bash
 curl -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/b3/users
 ```
 
-A hitelesítési adatokat csak az `Authorization` fejlécben küldd el. A lekérdezési karakterláncban vagy a kérés törzsében megadott API-kulcsokat a rendszer elutasítja.
+A hitelesítési adatokat kizárólag az `Authorization` fejlécben küldd el. A rendszer elutasítja a lekérdezési karakterláncban vagy a kérés törzsében küldött API-kulcsokat.
 
 <!-- translation-section: user-object -->
 
 ## Felhasználói objektum
 
-A felhasználói válaszok szerkezete:
+A felhasználói adatokat tartalmazó válaszok szerkezete:
 
 ```json
 {
@@ -101,7 +101,7 @@ A felhasználói válaszok szerkezete:
 
 ## Felhasználók listázása
 
-Listázd a Loomio-példány összes felhasználói fiókját.
+Listázd a Loomio rendszer összes felhasználói fiókját.
 
 `GET /api/b3/users`
 
@@ -123,9 +123,9 @@ Válasz:
 
 <!-- translation-section: show-user -->
 
-## Felhasználó lekérése
+## Felhasználó lekérdezése
 
-Keresd meg a felhasználót a Loomio-felhasználói azonosítója vagy a külső azonosítója alapján.
+Keress meg egy felhasználót a Loomio felhasználói azonosítója vagy külső identitása alapján.
 
 `GET /api/b3/users/:id`
 
@@ -135,13 +135,13 @@ Keresd meg a felhasználót a Loomio-felhasználói azonosítója vagy a külső
 
 ### Példák
 
-Loomio-felhasználói azonosító alapján:
+Loomio felhasználói azonosító alapján:
 
 ```bash
 curl -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/b3/users/123
 ```
 
-Külső azonosító alapján:
+Külső identitás alapján:
 
 ```bash
 curl -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/b3/users/identity/oauth/external-123
@@ -157,9 +157,9 @@ Válasz:
 
 <!-- translation-section: update-user -->
 
-## Felhasználó adatainak frissítése
+## Felhasználó frissítése
 
-Frissítsd a Loomio-felhasználói azonosító vagy külső azonosító alapján megtalált felhasználó profiladatait.
+Frissítsd a Loomio felhasználói azonosító vagy külső identitás alapján megtalált felhasználó profilmezőit.
 
 `PATCH /api/b3/users/:id`
 
@@ -172,14 +172,14 @@ Frissítsd a Loomio-felhasználói azonosító vagy külső azonosító alapján
 | Mező | Leírás |
 | --- | --- |
 | `name` | Megjelenített név |
-| `username` | Loomio-felhasználónév |
+| `username` | Loomio felhasználónév |
 | `email` | E-mail-cím |
 
 <!-- translation-section: examples-2 -->
 
 ### Példák
 
-Loomio-felhasználói azonosító alapján:
+Loomio felhasználói azonosító alapján:
 
 ```bash
 curl -X PATCH \
@@ -189,7 +189,7 @@ curl -X PATCH \
   https://www.loomio.com/api/b3/users/123
 ```
 
-Külső azonosító alapján:
+Külső identitás alapján:
 
 ```bash
 curl -X PATCH \
@@ -199,7 +199,7 @@ curl -X PATCH \
   https://www.loomio.com/api/b3/users/identity/oauth/external-123
 ```
 
-Válaszként a frissített felhasználót kapod:
+A válasz a frissített felhasználót tartalmazza:
 
 ```json
 {
@@ -211,7 +211,7 @@ Válaszként a frissített felhasználót kapod:
 
 ## Felhasználó deaktiválása
 
-Deaktiváld a Loomio-felhasználói azonosító vagy külső azonosító alapján megtalált felhasználói fiókot.
+Deaktiváld a Loomio felhasználói azonosító vagy külső identitás alapján megtalált felhasználói fiókot.
 
 `POST /api/b3/users/:id/deactivate`
 
@@ -221,13 +221,13 @@ Deaktiváld a Loomio-felhasználói azonosító vagy külső azonosító alapjá
 
 ### Példák
 
-Loomio-felhasználói azonosító alapján:
+Loomio felhasználói azonosító alapján:
 
 ```bash
 curl -X POST -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/b3/users/123/deactivate
 ```
 
-Külső azonosító alapján:
+Külső identitás alapján:
 
 ```bash
 curl -X POST -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/b3/users/identity/oauth/external-123/deactivate
@@ -246,7 +246,7 @@ Válasz:
 
 ## Felhasználó újraaktiválása
 
-Aktiváld újra a Loomio-felhasználói azonosító vagy külső azonosító alapján megtalált, deaktivált felhasználói fiókot.
+Aktiválj újra egy deaktivált felhasználói fiókot a Loomio-felhasználóazonosítója vagy külső azonosítója alapján.
 
 `POST /api/b3/users/:id/reactivate`
 
@@ -256,7 +256,7 @@ Aktiváld újra a Loomio-felhasználói azonosító vagy külső azonosító ala
 
 ### Példák
 
-Loomio-felhasználói azonosító alapján:
+Loomio-felhasználóazonosító alapján:
 
 ```bash
 curl -X POST -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/b3/users/123/reactivate
@@ -281,9 +281,9 @@ Válasz:
 
 ## Felhasználó személyes adatainak eltávolítása
 
-A személyes adatok eltávolításakor a felhasználó hozzászólásai és a többi általa létrehozott tartalom megmaradnak a csoportjaiban. Az ismert személyazonosításra alkalmas adatok törlődnek: a név, a bemutatkozás, a profilkép, az e-mail-cím, a bejelentkezési adatok, a külső azonosítók és az aktív munkamenetek.
+A személyes adatok eltávolítása megőrzi a felhasználó hozzászólásait és más, általa létrehozott tartalmakat a csoportjaiban, de eltávolítja az ismert, személyazonosításra alkalmas adatokat, például a nevet, a bemutatkozást, a profilképet, az e-mail-címet, a bejelentkezési adatokat, a külső azonosítókat és az aktív munkameneteket.
 
-Ezt a módszert ajánljuk, ha el szeretnél távolítani egy felhasználót a Loomióból.
+Ez az ajánlott módja egy felhasználó eltávolításának a Loomióból.
 
 `POST /api/b3/users/:id/redact`
 
@@ -293,7 +293,7 @@ Ezt a módszert ajánljuk, ha el szeretnél távolítani egy felhasználót a Lo
 
 ### Példák
 
-Loomio-felhasználói azonosító alapján:
+Loomio-felhasználóazonosító alapján:
 
 ```bash
 curl -X POST -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/b3/users/123/redact
@@ -317,7 +317,7 @@ Válasz:
 
 ## Felhasználó törlése
 
-A törlés eltávolítja a felhasználót és az általa létrehozott rekordokat. A hozzászólásai eltűnnek a témákból, a szavazatai a szavazásokból. Az adatbázis-kapcsolatok révén az általa létrehozott csoportok, beszélgetések, szavazások és más rekordok is törlődhetnek.
+A törlés eltávolítja a felhasználót és az általa létrehozott rekordokat. A hozzászólások törlődnek a szálakból, a szavazatok törlődnek a szavazásokból, és az adatbázisban lévő kapcsolatok révén a felhasználó által létrehozott csoportok, beszélgetések, szavazások és egyéb rekordok is törlődhetnek.
 
 Ez jelentős adatvesztéssel jár. Helyette erősen ajánlott a személyes adatok eltávolítása.
 
@@ -329,7 +329,7 @@ Ez jelentős adatvesztéssel jár. Helyette erősen ajánlott a személyes adato
 
 ### Példák
 
-Loomio-felhasználói azonosító alapján:
+Loomio-felhasználóazonosító alapján:
 
 ```bash
 curl -X DELETE -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/b3/users/123
@@ -351,26 +351,26 @@ Válasz:
 
 <!-- translation-section: sso-profile-sync-settings -->
 
-## Az SSO-profil szinkronizálásának beállításai
+## SSO-profilszinkronizálási beállítások
 
-Ezeket a beállításokat akkor használd, ha a Loomio-profil mezőit egy másik rendszer kezeli.
+Használd ezeket a beállításokat, ha egy másik rendszer kezeli a Loomio profilmezőit.
 
 ```env
 LOOMIO_DISABLE_EDIT_USER_PROFILE=1
 # LOOMIO_SSO_UPDATE_USER_PROFILE_ON_LOGIN=1
 ```
 
-A `LOOMIO_DISABLE_EDIT_USER_PROFILE=1` megakadályozza, hogy a felhasználók maguk szerkesszék ezeket a mezőket:
+A `LOOMIO_DISABLE_EDIT_USER_PROFILE=1` megakadályozza, hogy a felhasználók saját maguk szerkesszék ezeket a mezőket:
 
-| Mező | Megjegyzés |
+| Mező | Tudnivalók |
 | --- | --- |
 | `name` | Külső szinkronizálás kezeli |
 | `username` | Külső szinkronizálás kezeli |
 | `email` | Külső szinkronizálás kezeli |
 | `avatar_kind` / `uploaded_avatar` | Külső szinkronizálás kezeli |
 
-A felhasználók továbbra is szerkeszthetik a csak a Loomióban tárolt mezőket, például a `short_bio` és a `location` mezőt.
+A felhasználók továbbra is szerkeszthetik a Loomio helyi mezőit, például a `short_bio` és a `location` mezőt.
 
-A `LOOMIO_SSO_UPDATE_USER_PROFILE_ON_LOGIN=1` az SSO-bejelentkezés adataiból frissíti a `name` és az `email` mezőt. Hagyd kikommentelve vagy beállítatlanul, ha ezeket az adatokat kizárólag egy külső szinkronizáló szkriptnek kell frissítenie.
+A `LOOMIO_SSO_UPDATE_USER_PROFILE_ON_LOGIN=1` az SSO-bejelentkezés adataiból frissíti a `name` és az `email` mezőt. Hagyd meg kommentként, vagy ne állítsd be, ha ezeket a mezőket kizárólag egy külső szinkronizáló szkriptnek kell frissítenie.
 
-A `LOOMIO_SSO_FORCE_USER_ATTRS` a meglévő telepítéseknél továbbra is működik. Letiltja, hogy a felhasználók szerkesszék a profiljukat, és SSO-bejelentkezéskor frissíti a `name` és az `email` mezőt.
+A `LOOMIO_SSO_FORCE_USER_ATTRS` a meglévő telepítéseken továbbra is működik. Letiltja a felhasználók általi szerkesztést, és SSO-bejelentkezéskor frissíti a `name` és az `email` mezőt.

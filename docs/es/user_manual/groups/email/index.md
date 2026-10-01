@@ -1,16 +1,16 @@
 ---
 title: Dirección de correo electrónico
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/groups/email/index.md
+source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
+source_file: docs/en/user_manual/groups/email/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: bbc0cdb29306b05d
   preventing-unauthorized-emails: 218f730808482c55
 generated:
-  introduction: 06c9bf41f2eac96a
-  preventing-unauthorized-emails: 78edb16a65cb3002
+  introduction: 5fe30031c6714be7
+  preventing-unauthorized-emails: 06bd8d3b63cfda73
 title_source: f2488fd4ef4adbc6
 title_generated: 8bd6a0c76042ef57
 ---
@@ -19,25 +19,25 @@ title_generated: 8bd6a0c76042ef57
 
 # Envía un correo electrónico para iniciar un hilo en tu grupo
 
-Tu grupo de Loomio tiene una dirección de correo electrónico. Puedes enviar o reenviar un correo a esa dirección para iniciar un hilo en el grupo.
+Tu grupo de Loomio tiene una dirección de correo electrónico. Puedes enviar o reenviar un correo a esta dirección para iniciar un hilo en el grupo.
 
 Puedes ver la dirección de correo electrónico de tu grupo en la página del grupo:
 ![Ubicación de la dirección de correo electrónico en la página del grupo](email_email_button.png)
 
-Cuando envías un correo a esa dirección, se inicia un hilo. El asunto del correo pasa a ser el título del hilo, el cuerpo pasa a ser la descripción y los archivos adjuntos se añaden al hilo.
+Cuando envíes un correo a esta dirección, se iniciará un nuevo hilo. El asunto del correo será el título del hilo, el cuerpo del correo será la descripción y los archivos adjuntos se añadirán al hilo.
 
-La dirección del remitente se usa para identificar al miembro del grupo que aparecerá como autor del hilo.
+La dirección del campo "De" del correo se utiliza para identificar al miembro del grupo que será el autor del hilo.
 
 <!-- translation-section: preventing-unauthorized-emails -->
 
-## Impedir correos no autorizados
+## Evitar correos no autorizados
 
-Para impedir que personas ajenas a tu grupo usen esta función, Loomio exige que la dirección del remitente de un correo entrante coincida con la de un miembro del grupo.
+Para garantizar que las personas que no son miembros de tu grupo no puedan utilizar esta función, Loomio exigirá que la dirección del campo "De" de un correo entrante coincida con la dirección de alguien del grupo.
 
-Si usas varias direcciones de correo electrónico, puedes agregar un alias para que Loomio reconozca tus otras direcciones.
+Si utilizas varias direcciones de correo electrónico, puedes añadir un alias para que Loomio reconozca tus otras direcciones.
 
-Si la dirección del remitente no coincide con la de un miembro del grupo, recibirás una notificación para agregar un alias o rechazar todos los correos futuros de esa dirección.
+Cuando la dirección del campo "De" no coincida con la de ningún miembro del grupo, recibirás una notificación que te pedirá que añadas un alias o rechaces todos los correos posteriores de esa dirección.
 
-Por eso, la primera vez que envíes un correo desde una dirección que Loomio no reconoce, tendrás que agregar un alias. Después, los correos se aceptarán de inmediato.
+Esto significa que la primera vez que envíes un correo desde una dirección no reconocida, tendrás que añadir un alias. A partir de entonces, los correos se aceptarán inmediatamente.
 
 ![Ubicación de los botones para aprobar y rechazar un correo de una dirección no reconocida](email_unreleased_emails.png)

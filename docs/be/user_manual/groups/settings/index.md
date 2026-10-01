@@ -1,20 +1,20 @@
 ---
 title: Налады групы
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/groups/settings/index.md
+source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
+source_file: docs/en/user_manual/groups/settings/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-30'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: b975fe0dc7787563
   group-profile: 673d2b31980f069a
   group-privacy: c6031b3bd445f30e
   group-permissions: 3ddfc79177b464e5
 generated:
-  introduction: dbe106d6a10099f0
-  group-profile: 77b09048726dcbb8
-  group-privacy: cdc2965a78b4be69
-  group-permissions: b721b866b80011ec
+  introduction: 3642bdbe60e0d231
+  group-profile: 0d49dfb62e39d6fa
+  group-privacy: 2b4a28c7cc55161d
+  group-permissions: ac2c4b9d7605955e
 title_source: ba4062f844a984f5
 title_generated: 40d89f53c45ead5e
 ---
@@ -23,11 +23,11 @@ title_generated: 40d89f53c45ead5e
 
 # Налады групы
 
-Налады групы вызначаюць, як выглядае ваша група, хто можа яе знайсці і далучыцца да яе, а таксама што дазволена рабіць удзельнікам. Змяняць гэтыя налады могуць толькі адміністратары групы.
+Налады групы вызначаюць, як выглядае ваша група, хто можа знайсці яе і далучыцца да яе, а таксама якія дзеянні дазволеныя ўдзельнікам групы. Змяняць гэтыя налады могуць толькі адміністратары групы.
 
 На старонцы групы адкрыйце меню дзеянняў і выберыце **Рэдагаваць налады групы**.
 
-![Рэдагаваць налады групы на старонцы групы](group_settings.png)
+![Рэдагаванне налад групы са старонкі групы](group_settings.png)
 
 Форма налад падзелена на тры раздзелы:
 
@@ -35,16 +35,16 @@ title_generated: 40d89f53c45ead5e
 
 ## Профіль групы
 
-У раздзеле [Профіль групы](/en/user_manual/groups/settings/profile) можна наладзіць назву групы, яе кароткі адрас, апісанне, выяву вокладкі і лагатып.
+[Профіль групы](/en/user_manual/groups/settings/profile) змяшчае назву групы, кароткае імя, апісанне, выяву вокладкі і лагатып.
 
 <!-- translation-section: group-privacy -->
 
-## Канфідэнцыяльнасць групы
+## Прыватнасць групы
 
-У раздзеле [Канфідэнцыяльнасць групы](/en/user_manual/groups/settings/privacy) можна наладзіць, хто можа знайсці групу і чытаць яе матэрыялы, як людзі далучаюцца да групы, ці паказваецца яна ў каталогу і ці можна сачыць за адкрытай групай.
+[Прыватнасць групы](/en/user_manual/groups/settings/privacy) вызначае, хто можа знайсці групу і чытаць яе змесціва, як людзі далучаюцца да яе, ці паказваецца яна ў каталогу і як сачыць за адкрытай групай.
 
 <!-- translation-section: group-permissions -->
 
 ## Дазволы групы
 
-У раздзеле [Дазволы групы](/en/user_manual/groups/settings/permissions) вызначаецца, якія дзеянні могуць выконваць удзельнікі, людзі па-за групай і адміністратары.
+[Дазволы групы](/en/user_manual/groups/settings/permissions) вызначаюць, якія дзеянні могуць выконваць удзельнікі групы, людзі па-за групай і адміністратары.

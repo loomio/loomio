@@ -1,16 +1,16 @@
 ---
 title: Hallintokäytännöt
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/guides/board_processes/practices.md
+source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
+source_file: docs/en/guides/board_processes/practices.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-30'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: df31098ab2c954df
   on-loomio: cbd48580a2ecbb96
 generated:
-  introduction: e650876e6dadc9a0
-  on-loomio: 7ef5f934c5966b83
+  introduction: 736708ad9648c16d
+  on-loomio: 4ae580871deed2b9
 title_source: 1273225ad1abd403
 title_generated: d2198c401b351991
 ---
@@ -19,29 +19,29 @@ title_generated: d2198c401b351991
 
 # Hallintokäytännöt ja toimintatavat
 
-Hyvään hallintoon kuuluu käytäntöjen, linjausten ja menettelytapojen luominen, arviointi ja kyseenalaistaminen, jotta hallituksen työskentely paranee jatkuvasti.
+Hyvään hallintoon kuuluu hallintokäytäntöjen, linjausten ja menettelyjen luominen, arviointi ja kyseenalaistaminen, jotta hallituksen toiminta kehittyy jatkuvasti.
 
-Monilla hallituksilla on kuitenkin vähän aikaa. Kokousaineistot, vaatimusten noudattaminen ja riskien käsittely vievät aikaa, jolloin tärkeistä strategiaan ja tuloksiin liittyvistä kysymyksistä ei ehditä keskustella riittävästi.
+Monilla hallituksilla on kuitenkin vähän aikaa, ja kokousasiakirjat, vaatimusten noudattaminen ja riskienhallinta kuormittavat niitä usein. Keskeisistä strategiaa ja toiminnan tuloksia koskevista kysymyksistä keskusteluun ei jää riittävästi aikaa.
 
 <!-- translation-section: on-loomio -->
 
 ## Loomiossa
-Loomiossa voit työstää asiakirjaa, linjausta tai menettelytapaa verkossa. Keskustelu ja päätökset pysyvät keskusteluketjussa, johon jäsenet voivat osallistua heille sopivana aikana ja sopivasta paikasta.
+Loomiossa voit työstää asiakirjaa, linjausta tai menettelyä verkossa. Keskustelu ja päätökset kootaan ketjuun, johon jäsenet pääsevät itselleen sopivana aikana ja sopivasta paikasta.
 
-Käytä omaa **keskusteluketjua** kullekin asiakirjalle, linjaukselle tai menettelytavalle. Ketjuun kootaan keskustelu, asiakirjaluonnokset ja asiakirjan myöhemmät versiot.
+Luo jokaiselle asiakirjalle, linjaukselle tai menettelylle oma **ketju**. Ketju kokoaa keskustelun sekä asiakirjan luonnokset ja myöhemmät versiot samaan paikkaan.
 
-Voit järjestää työskentelyn niin, että asiakirjaa kirjoittavat 2–3 henkilöä keskustelevat yksityiskohdista ketjussa. Ketju voi olla vain heidän käytössään tai avoin koko ryhmälle, jolloin kaikki jäsenet voivat seurata työn etenemistä.
+Loomion ketjussa voit järjestää työskentelyn niin, että asiakirjan tekstiä työstävät 2-3 henkilöä keskustelevat yksityiskohdista ketjussa. Ketju voi olla yksityinen vain näiden 2-3 henkilön kesken tai avoin ryhmässä, jolloin kaikki jäsenet voivat seurata työskentelyä.
 
 ![](document_introduce.png#width-90)
 
-Kun asiakirjasta on luonnos, ilmoita jäsenille **Sense check -kyselyllä**, että luonnos on valmis arvioitavaksi. Pyydä heitä lukemaan asiakirja ja esittämään kommentteja tai kysymyksiä. Kysely kertoo kaikille työn etenemisestä, ja sen päättymispäivä kannustaa osallistumaan.
+Kun asiakirjasta on valmis luonnos, ilmoita jäsenille **tunnustelukyselyllä**, että luonnos on valmis arvioitavaksi. Kutsu jäsenet lukemaan asiakirja ja esittämään kommentteja tai kysymyksiä. Kysely kertoo kaikille työn etenemisestä, ja sen sulkemispäivä kannustaa osallistumaan.
 
 ![](document_integrate.png#width-90)
 
-Asiakirja voi käydä läpi useita luonnosversioita.
+Asiakirja voi vaatia useita luonnoskierroksia.
 
-Kun lopullinen luonnos on valmis, tee asiakirjan hyväksymistä varten **Ehdotus**.
+Kun 'lopullinen' luonnos on valmis, luo **Ehdotus** asiakirjan hyväksymiseksi.
 
 ![](document_approval.png#width-90)
 
-Loomiossa hallitus voi edistää hallintokäytäntöjen kehittämistä kokousten välillä, jolloin kokouksissa jää enemmän aikaa muille asioille.
+Loomion avulla hallitus voi kehittää hallintoa kokousten välillä ja säästää kokousaikaa.

@@ -1,10 +1,10 @@
 ---
 title: Prepare uma reunião
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/guides/board_processes/meeting.md
+source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
+source_file: docs/en/guides/board_processes/meeting.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-30'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 20305b2bbbcd9088
   meeting-focus-and-review-actions: e43829ab612a2070
@@ -19,18 +19,18 @@ sections:
   approve-reports: e322912e5f5b1e32
   on-loomio-5: 15e0c45a512cd84f
 generated:
-  introduction: ad960bec0baed583
-  meeting-focus-and-review-actions: bf62d7003e47fda8
-  on-loomio: 2f85dbe330cc804c
-  agenda-and-notify: de35892a8bba00c8
-  on-loomio-2: 0bbac812ea75b737
-  confirm: 5ecb5f159d8e8195
-  find-a-time-for-meeting: ff1c73f3c5868c1d
-  on-loomio-3: c1a47822160c8af1
-  sign-off-minutes: 6733680c2a24171e
-  on-loomio-4: 68b990e4481c0ba9
-  approve-reports: '07196121ea64b7d1'
-  on-loomio-5: 0405eb085b67d127
+  introduction: ba86e992edb9e5d5
+  meeting-focus-and-review-actions: d5e072adbd7d3988
+  on-loomio: e96382f08a099a73
+  agenda-and-notify: 4ecd1abce3768a18
+  on-loomio-2: 1bb8de213c001139
+  confirm: fcfeb9cc3bb99373
+  find-a-time-for-meeting: 97be0b6a2e511676
+  on-loomio-3: 5a47d00efb99ca3e
+  sign-off-minutes: 1a41b5abf3bbd837
+  on-loomio-4: 7275dc5dee0db50b
+  approve-reports: 842bd1f5d3a895b0
+  on-loomio-5: 38dde9fe5b456fea
 title_source: 7fe4f2dbd8ccfc94
 title_generated: 6437fc3356bfa64a
 ---
@@ -39,13 +39,13 @@ title_generated: 6437fc3356bfa64a
 
 # Prepare uma reunião
 
-Reuniões eficazes são produtivas, inclusivas e colaborativas. Elas aumentam o engajamento, fortalecem as relações, ajudam a criar um entendimento comum e a tomar decisões melhores e mais rápidas. Também promovem a inclusão, o pensamento criativo e a inovação, além de abrir espaço para comentários e melhorias contínuas.
+Reuniões eficazes são produtivas, inclusivas e colaborativas - melhoram o engajamento, ajudam a construir relações sólidas, estabelecem alinhamento, permitem tomar decisões melhores e mais rápidas, promovem a inclusão, facilitam o pensamento criativo e a inovação e são um bom canal para feedback e melhoria contínua.
 
-Use o Loomio para planejar uma reunião eficaz. Envolva as pessoas desde o início, concentre a atenção nos assuntos mais importantes e aproveite melhor o tempo que vocês passam juntos.
+Use o Loomio para planejar uma reunião eficaz; envolva as pessoas desde o início, estabeleça alinhamento sobre os assuntos mais importantes e aproveite melhor o tempo que vocês têm juntos.
 
-Se o grupo ainda não conhece o Loomio, comece por [Apresente o Loomio ao seu grupo](/en/user_manual/overview/introducing_loomio). Depois, use este processo de reunião como um primeiro fluxo de trabalho recorrente.
+Se o grupo está começando a usar o Loomio, comece com [Apresente o Loomio ao seu grupo](/en/user_manual/overview/introducing_loomio) e depois use este processo de reunião como um primeiro fluxo de trabalho recorrente na prática.
 
-Veja algumas maneiras de tornar sua próxima reunião de diretoria ou comitê mais eficaz...
+Você pode fazer várias coisas para tornar sua próxima reunião de conselho ou comitê eficaz...
 
 - [Defina o foco da reunião e revise as ações](#meeting-focus-and-review-actions)
 - [Divulgue a pauta e notifique os membros](#agenda-and-notify)
@@ -57,13 +57,13 @@ Veja algumas maneiras de tornar sua próxima reunião de diretoria ou comitê ma
 
 ## Defina o foco da reunião e revise as ações
 
-Defina um foco para a reunião, para que vocês usem o tempo juntos discutindo os assuntos mais importantes.
+Defina um foco para a reunião, para que vocês aproveitem o tempo juntos conversando sobre os assuntos mais importantes.  
 
-Convidar os membros a contribuir para a pauta ajuda todos a chegar a um entendimento comum, pensar nos assuntos e se preparar para a reunião.
+Convidar os membros a contribuir com a pauta ajuda todos a estabelecer alinhamento, pensar nos assuntos e se preparar para participar da reunião.
 
 Ações:
-- concentre a reunião nos assuntos mais importantes,
-- acompanhe as ações das reuniões anteriores e converse sobre elas com os membros.
+- Concentre a reunião nos assuntos mais importantes,
+- Acompanhe as ações de reuniões anteriores e converse com os membros sobre elas.
 
 ![](meeting_prep.png#width-90)
 
@@ -71,109 +71,109 @@ Ações:
 
 ### No Loomio
 Use uma **Discussão** no Loomio para preparar sua reunião:
-* lembre os membros da próxima reunião,
-* convide-os a comentar quais assuntos devem receber mais atenção,
-* resuma as ações da reunião anterior e peça atualizações.
+* Lembre os membros da próxima reunião,
+* Convide os membros a comentar sobre os assuntos mais importantes a abordar,
+* Resuma as ações da reunião anterior e peça uma atualização.
 
 <!-- translation-section: agenda-and-notify -->
 
-## Pauta e notificações
+## Divulgue a pauta e notifique os membros
 
-Anuncie a reunião com uma pauta clara. Anexe os materiais, inclua links para os documentos principais e notifique os membros.
+Anuncie a reunião com uma pauta clara. Anexe os materiais, inclua links para documentos importantes e notifique os membros.
 
-Assim, todos podem ler os materiais e pensar nos assuntos e nas decisões antes da reunião. Os membros chegam com mais contexto e preparados para participar.
+Isso ajuda todos a se preparar para a reunião, lendo os materiais e pensando nos assuntos da discussão e nas decisões a tomar. Assim, os membros têm mais chances de chegar informados e preparados para a reunião.
 
 Ações:
-- prepare a pauta, os documentos e os demais materiais da reunião,
-- notifique os membros sobre a reunião e envie os materiais.
+- Prepare a pauta, os documentos, os materiais e a documentação do conselho,
+- Notifique os membros sobre a reunião e envie os materiais.
 
 ![](meeting_notify.png#width-90)
 
 <!-- translation-section: on-loomio-2 -->
 
 ### No Loomio
-Use uma **Discussão** no Loomio para preparar sua reunião de diretoria:
-* informe os detalhes da reunião,
-* anexe a pauta, os documentos e outros materiais ou inclua links para eles,
-* convide os membros por meio de uma notificação,
-* acompanhe “Visto por” para saber quem leu a discussão.
+Use uma **Discussão** no Loomio para preparar sua reunião de conselho:
+* Informe os detalhes da reunião,
+* Anexe ou inclua links para a pauta, os documentos e outros materiais da reunião,
+* Convide os membros com uma notificação,
+* Acompanhe 'Visto por' para saber quem leu a conversa.
 
-Uma discussão no Loomio tem algumas vantagens em relação a um e-mail:
-- você pode ver quem leu a discussão e lembrar quem ainda não leu,
-- as respostas e os comentários dos membros ficam visíveis para todos que têm permissão para ver a discussão,
-- as perguntas e conversas sobre a pauta e os materiais da reunião ficam reunidas em um só lugar.
+Embora seja semelhante a enviar um e-mail, uma conversa no Loomio oferece vantagens:
+- Você pode ver quem leu a conversa e lembrar quem ainda não leu,
+- As respostas ou os comentários dos membros ficam visíveis para todos que têm permissão para ver a conversa,
+- Toda discussão ou pergunta sobre a pauta ou os materiais da reunião fica em um único lugar.
 
-Os membros encontram todas as informações da reunião em um só lugar. Isso evita sequências confusas de e-mails e a perda de informações importantes na caixa de entrada.
+Os membros podem encontrar todas as informações sobre a reunião em um só lugar, evitando sequências confusas de e-mails e a perda de informações importantes na caixa de entrada.
 
 <!-- translation-section: confirm -->
 
 ### Confirme
-Peça aos membros que deixem um comentário confirmando que leram a pauta e os materiais e estão preparados para a reunião. Use **Visto por** para identificar quem pode precisar de um lembrete.
+Peça aos membros que deixem um comentário confirmando que leram a pauta e os documentos da reunião e estão preparados para participar. Use **Visto por** para identificar quem pode precisar de um lembrete.
 
 <!-- translation-section: find-a-time-for-meeting -->
 
 ## Encontre um horário para a reunião
-Encontrar um horário para a reunião pode ser uma tarefa frequente e trabalhosa para quem a organiza.
+Encontrar um horário para se reunir pode ser uma dificuldade frequente para muitos administradores.
 
 <!-- translation-section: on-loomio-3 -->
 
 ### No Loomio
-Se você ainda não definiu a data e o horário da reunião, ou precisa encontrar um horário para uma reunião futura, use uma **Enquete de tempo**.
+Se você ainda não definiu a data e o horário da reunião ou precisa encontrar um horário para uma reunião futura, use a **Enquete de horário**.
 
-A enquete de tempo facilita a consulta à disponibilidade de todos e a escolha do melhor horário. Isso reduz o tempo e o esforço necessários para organizar a reunião.
+A enquete de horário facilita a visualização da disponibilidade de todos e a escolha do melhor horário, reduzindo o tempo e o esforço necessários para essa tarefa administrativa comum.
 
-Membros em fusos horários diferentes verão as datas e os horários ajustados aos seus respectivos fusos.
+Os membros em diferentes fusos horários verão as datas e os horários no seu próprio fuso horário.
 
 ![](timepoll_vote.png#width-90)
 
-Quando a enquete de tempo terminar, escolha o melhor horário e envie uma notificação com a conclusão e um convite de calendário, para que os membros possam adicionar a reunião às suas agendas.
+Quando a enquete de horário for encerrada, escolha o melhor horário e envie uma notificação da conclusão com um convite de calendário, para que os membros possam adicionar a reunião aos seus calendários.
 
 <!-- translation-section: sign-off-minutes -->
 
 ## Aprove a ata
-Aprovar ou ratificar a ata é uma prática padrão em reuniões formais e útil em qualquer reunião.
+Aprovar ou ratificar atas é uma prática padrão em reuniões formais e uma boa prática para todas as reuniões.  
 
-A ata registra a reunião, os principais pontos discutidos, as decisões e como as pessoas votaram. Ela inclui as ações acordadas e as pessoas responsáveis e costuma servir de ponto de partida para a reunião seguinte.
+As atas registram a reunião, os principais pontos levantados durante a discussão, os resultados das decisões e como as pessoas votaram. Elas incluem as ações acordadas e as pessoas responsáveis e costumam ser o ponto de partida para a próxima reunião.  
 
-A ata ajuda quem participou a lembrar o que foi discutido, informa quem não pôde comparecer e serve de registro para consulta em caso de conflito.
+As atas servem como lembrete para quem participou, ajudam quem esteve ausente e são um registro que pode ser consultado em caso de conflito.
 
 <!-- translation-section: on-loomio-4 -->
 
 ### No Loomio
 
-Publique a ata na discussão da reunião no Loomio alguns dias após o encontro e convide os participantes a aprová-la. Assim, o conteúdo ainda estará recente para os membros, que também serão lembrados de suas ações. Isso economiza tempo na próxima reunião.
+Publique a ata na conversa da reunião no Loomio poucos dias após a reunião e convide os participantes a aprová-la. Isso mantém a ata relevante e recente na memória dos membros e ajuda a lembrá-los das ações pelas quais são responsáveis. Também economiza tempo durante sua reunião.
 
 ![](poll_minutes.png#width-90)
 
-O exemplo acima usa uma enquete **Escolher** com duas opções: “Aceitar” e “Revisar”.
+O exemplo acima usa uma enquete **Escolher** com duas opções: 'Aceitar' ou 'Revisar'.
 
-Quando todos tiverem votado e a enquete terminar, publique uma conclusão para que todos saibam o que foi decidido.
+Quando todos tiverem votado e a enquete for encerrada, registre uma conclusão para que todos saibam o que aconteceu.  
 
-Se o procedimento do seu grupo exigir a aprovação formal na reunião seguinte, inclua um item na pauta para reconhecer e confirmar as enquetes e decisões feitas no Loomio. Registre essa confirmação na ata.
+Se a prática de reuniões do seu grupo exige aprovação formal na reunião seguinte, inclua um item na pauta para reconhecer e confirmar as enquetes e decisões feitas no Loomio e registre isso na ata da reunião.  
 
-Por exemplo: *“Alguém quer mudar seu voto no Loomio? Se não, vamos aprovar formalmente as enquetes realizadas no Loomio desde a última reunião.”*
+Por exemplo: *"Alguém deseja alterar seus votos no Loomio? Se não, vamos deliberar pela aprovação formal das enquetes realizadas no Loomio durante o último período."*
 
 <!-- translation-section: approve-reports -->
 
 ## Aprove os relatórios
-A maioria das pautas reserva tempo para apresentar, discutir e aprovar relatórios, como os da direção executiva, das áreas financeira, operacional e de saúde e segurança, além de relatórios de projetos.
+A maioria das pautas de reunião inclui tempo para apresentar, discutir e aprovar relatórios; por exemplo, relatórios da direção executiva, de finanças, de operações, de saúde e segurança e de projetos.
 
-Os relatórios ajudam todos a ter as mesmas informações, mas podem ocupar um tempo valioso da reunião que poderia ser usado de outra forma.
+Os relatórios são importantes para que todos tenham uma compreensão comum, mas podem ocupar um tempo valioso da reunião que poderia ser usado de forma mais eficaz.
 
 <!-- translation-section: on-loomio-5 -->
 
 ### No Loomio
 
-Anexe os relatórios à **discussão** da reunião ou inclua links para eles. Convide os membros a fazer perguntas antes do encontro.
+Anexe ou inclua links para os relatórios na **conversa** da sua reunião e convide os membros a fazer perguntas sobre eles antes da reunião.
 
-Os membros podem receber e ler os relatórios no momento e no lugar mais convenientes. Durante a leitura, podem comentar, fazer perguntas e ver as respostas no Loomio.
+Os membros recebem e leem os relatórios no horário e no local que lhes forem convenientes. Ao ler e refletir sobre os relatórios, os membros podem comentar, fazer perguntas e ver as respostas no Loomio.
 
-A pergunta de um membro pode interessar a outros. Quando alguém responde, todos no grupo do Loomio podem ver a resposta.
+Uma pergunta feita por um membro provavelmente interessa a outros membros. Quando alguém responde à pergunta, a resposta fica visível para todos no grupo do Loomio.
 
-À medida que os membros se acostumarem a discutir relatórios no Loomio, você poderá economizar mais tempo pedindo a aprovação dos relatórios antes da reunião.
+À medida que os membros se acostumam a discutir relatórios no Loomio, economize um pouco mais de tempo dando um passo adiante - solicite a aprovação dos relatórios antes da reunião.
 
 ![](poll_approve_report.png#width-90)
 
-Se o procedimento do seu grupo exigir a aprovação formal na reunião seguinte, inclua um item na pauta para reconhecer e confirmar as enquetes e decisões feitas no Loomio. Registre essa confirmação na ata.
+Se a prática de reuniões do seu grupo exige aprovação formal na reunião seguinte, inclua um item na pauta para reconhecer e confirmar as enquetes e decisões feitas no Loomio e registre isso na ata da reunião.  
 
-Por exemplo: *“Alguém quer mudar seu voto no Loomio? Se não, vamos aprovar formalmente as enquetes realizadas no Loomio desde a última reunião.”*
+Por exemplo: *"Alguém deseja alterar seus votos no Loomio? Se não, vamos deliberar pela aprovação formal das enquetes realizadas no Loomio durante o último período."*

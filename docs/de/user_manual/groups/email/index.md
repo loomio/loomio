@@ -1,43 +1,43 @@
 ---
 title: E-Mail-Adresse
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/groups/email/index.md
+source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
+source_file: docs/en/user_manual/groups/email/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: bbc0cdb29306b05d
   preventing-unauthorized-emails: 218f730808482c55
 generated:
-  introduction: 6745032ccf1934f4
-  preventing-unauthorized-emails: 782f65b5c41e0fd1
+  introduction: 0da0771e67749625
+  preventing-unauthorized-emails: 4ad3a256acf1a35b
 title_source: f2488fd4ef4adbc6
 title_generated: c2f9765ad5cefe3a
 ---
 
 <!-- translation-section: introduction -->
 
-# Starte eine Diskussion per E-Mail in deiner Gruppe
+# Sende eine E-Mail, um einen Thread in deiner Gruppe zu starten
 
-Deine Loomio-Gruppe hat eine E-Mail-Adresse. Du kannst eine E-Mail an diese Adresse senden oder weiterleiten, um eine Diskussion in der Gruppe zu starten.
+Deine Loomio-Gruppe hat eine E-Mail-Adresse. Du kannst E-Mails an diese Adresse senden oder weiterleiten, um einen Thread in der Gruppe zu starten.
 
-Die E-Mail-Adresse deiner Gruppe findest du auf der Gruppenseite:
+Du findest die E-Mail-Adresse deiner Gruppe auf der Gruppenseite:
 ![Position der E-Mail-Adresse auf der Gruppenseite](email_email_button.png)
 
-Wenn du eine E-Mail an diese Adresse sendest, wird eine neue Diskussion gestartet. Der Betreff wird zum Titel der Diskussion, der E-Mail-Text zur Beschreibung. Angehängte Dateien werden der Diskussion hinzugefügt.
+Wenn du eine E-Mail an diese Adresse sendest, wird ein neuer Thread gestartet. Der Betreff der E-Mail wird zum Titel des Threads, der Text der E-Mail wird zur Beschreibung und alle angehängten Dateien werden dem Thread angehängt.
 
-Anhand der Absenderadresse wird ermittelt, welches Gruppenmitglied als Autor der Diskussion angezeigt wird.
+Anhand der Absenderadresse der E-Mail wird das Gruppenmitglied ermittelt, dem der Thread als verfassendes Mitglied zugeordnet wird.
 
 <!-- translation-section: preventing-unauthorized-emails -->
 
-## Unbefugte E-Mails verhindern
+## Unberechtigte E-Mails verhindern
 
-Damit nur Mitglieder deiner Gruppe diese Funktion nutzen können, muss die Absenderadresse einer eingehenden E-Mail mit der E-Mail-Adresse eines Gruppenmitglieds übereinstimmen.
+Damit diese Funktion nur von Mitgliedern deiner Gruppe genutzt werden kann, muss die Absenderadresse einer eingehenden E-Mail mit der E-Mail-Adresse eines Mitglieds der Gruppe übereinstimmen.
 
-Wenn du mehrere E-Mail-Adressen verwendest, kannst du einen Alias hinzufügen. So erkennt Loomio auch deine anderen Adressen.
+Wenn du mehrere E-Mail-Adressen verwendest, kannst du einen Alias hinzufügen, damit Loomio deine weiteren E-Mail-Adressen kennt.
 
-Wenn die Absenderadresse keinem Gruppenmitglied zugeordnet werden kann, erhältst du eine Benachrichtigung. Darin wirst du aufgefordert, einen Alias hinzuzufügen oder alle weiteren E-Mails von dieser Adresse abzulehnen.
+Wenn die Absenderadresse keinem Mitglied der Gruppe zugeordnet werden kann, erhältst du eine Benachrichtigung mit der Aufforderung, einen Alias hinzuzufügen oder alle weiteren E-Mails von dieser Adresse abzulehnen.
 
-Wenn du zum ersten Mal eine E-Mail von einer unbekannten Adresse sendest, musst du einen Alias hinzufügen. Danach werden E-Mails von dieser Adresse sofort angenommen.
+Wenn du zum ersten Mal eine E-Mail von einer unbekannten Adresse sendest, musst du also einen Alias hinzufügen. Danach werden E-Mails sofort angenommen.
 
 ![Position der Schaltflächen zum Genehmigen und Ablehnen einer E-Mail von einer unbekannten Adresse](email_unreleased_emails.png)

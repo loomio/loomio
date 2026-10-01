@@ -1,28 +1,28 @@
 ---
 title: Slack
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/integrations/slack/index.md
+source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
+source_file: docs/en/user_manual/integrations/slack/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-30'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 4eb9618f0efb62d7
 generated:
-  introduction: ac6c319c860881ac
+  introduction: 46463736b9bcf6b3
 title_source: b27fb38ba323745c
 title_generated: b27fb38ba323745c
 ---
 
 <!-- translation-section: introduction -->
 
-# Slackとの連携
-_Loomioグループの通知をSlackに送信します。_
+# Slack連携
+_Loomioグループの通知をSlackに連携します。_
 
-Loomioでは、新しいディスカッション、提案、コメント、投票、結論があると、Slackのチャンネルに通知を送信できます。重要なディスカッションや意思決定の更新を、適切なタイミングで確認できます。
+Loomioでは、新しいディスカッション、提案、コメント、投票、結論が投稿されると、Slackチャンネルに通知を送信できます。重要なディスカッションや決定について、必要なタイミングで主な更新情報を受け取れます。
 
 ---
 
-まず[https://api.slack.com](https://api.slack.com)にアクセスします。ログインしていない場合はログインし、「Create New App」をクリックします。
+まず[https://api.slack.com](https://api.slack.com)にアクセスし、まだサインインしていない場合はサインインしてから、「Create New App」をクリックします。
 
 ![](s1.png)
 
@@ -54,4 +54,4 @@ Webhook URLを取得したら、チャット連携の設定を続けます。
 
 [Loomioでチャット連携を設定する](../chatbots/#set-up-a-chat-integration)
 
-_LoomioはSlackが開発、提携、サポートしているサービスではありません。_
+_LoomioはSlackが開発したものではなく、Slackとの提携関係やSlackによるサポートもありません。_

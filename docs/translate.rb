@@ -12,6 +12,8 @@ require "json"
 require "open3"
 require "tempfile"
 require_relative "corrections"
+require_relative "../lib/codex_translator"
+require_relative "../lib/translation_glossary"
 
 module Docs
   class PageTranslator
@@ -20,27 +22,13 @@ module Docs
     CHUNK_SECTIONS = 12
 
     # Each translator takes a prompt and returns the model's reply.
-    TRANSLATORS = {
-      "codex" => lambda do |prompt|
-        Tempfile.create(["translation", ".json"]) do |output|
-          command = [
-            "codex", "exec",
-            "-m", ENV.fetch("DOCS_TRANSLATOR_MODEL", "gpt-6.1-sol"),
-            "-c", %(model_reasoning_effort="#{ENV.fetch("DOCS_TRANSLATOR_EFFORT", "low")}"),
-            "-s", "read-only", "--ephemeral", "--skip-git-repo-check",
-            "-C", ROOT.parent.to_s,
-            "-o", output.path, "-"
-          ]
-          log, status = Open3.capture2e(*command, stdin_data: prompt)
-          raise "codex exec failed:\n#{log.lines.last(20).join}" unless status.success?
+    TRANSLATORS = {"codex" => CodexTranslator.method(:call)}.freeze
 
-          File.read(output.path)
-        end
-      end
-    }.freeze
-
-    def initialize(locale, translator: nil, root: ROOT)
+    # With retranslate, every section is translated again, for example after
+    # the glossary changes. Customer corrections still travel as context.
+    def initialize(locale, translator: nil, root: ROOT, retranslate: false)
       @root = root
+      @retranslate = retranslate
       @previous_sources = {}
       @locale = Localization.locale(locale)
       raise "English is the translation source" if locale == "en"
@@ -49,17 +37,23 @@ module Docs
     end
 
     def run(source_paths)
+      failures = translate(source_paths)
+      return if failures.empty?
+
+      warn "\nTranslation updates requiring attention:\n- #{failures.join("\n- ")}"
+      exit 1
+    end
+
+    # Translates the pages and returns their failures. One page failing does
+    # not stop the others.
+    def translate(source_paths)
       source_paths = summary_titles.keys.select { |path| Localization.translated?(path) } if source_paths.empty?
-      failures = source_paths.flat_map do |source_path|
+      source_paths.flat_map do |source_path|
         translate_page(source_path)
       rescue StandardError => error
         warn "#{@locale.code}: #{source_path}: #{error.message}"
         ["#{source_path}: #{error.message.lines.first.strip}"]
       end
-      return if failures.empty?
-
-      warn "\nTranslation updates requiring attention:\n- #{failures.join("\n- ")}"
-      exit 1
     end
 
     private
@@ -72,7 +66,7 @@ module Docs
       source_file = @root.join("en", source_path)
       original_english = source_file.read
       english = Localization.annotate(original_english)
-      source_file.write(english) unless english == original_english
+      write_file(source_file, english) unless english == original_english
       source = Localization.parse(english)
       target = Localization.load(@locale.code, source_path)
       @navigation_previous = target.metadata["title"]
@@ -88,7 +82,7 @@ module Docs
       metadata["sections"] = metadata.fetch("sections", {}).dup
       metadata["generated"] = metadata.fetch("generated", {}).dup
       notes = metadata.fetch("needs_review", {}).dup
-      pending = source.sections.select { |section| !stored.key?(section.id) || metadata["sections"][section.id] != section.text_hash }
+      pending = source.sections.select { |section| @retranslate || !stored.key?(section.id) || metadata["sections"][section.id] != section.text_hash }
       removed = original.keys - source.by_id.keys
       failures = []
       glossary = glossary_for(english)
@@ -96,7 +90,7 @@ module Docs
       title_changed = metadata["title_source"] != Localization.text_hash(title)
       if pending.empty? && removed.empty? && !title_changed
         if stored != original
-          Localization.path(@locale.code, source_path).write(Localization.dump(metadata, source.sections.map { |section| stored.fetch(section.id) }))
+          write_file(Localization.path(@locale.code, source_path), Localization.dump(metadata, source.sections.map { |section| stored.fetch(section.id) }))
           puts "#{@locale.code}: #{source_path}: recorded customer corrections"
         else
           puts "#{@locale.code}: #{source_path}: up to date"
@@ -113,7 +107,7 @@ module Docs
       end
       if pending.empty? && !title_changed
         notes.empty? ? metadata.delete("needs_review") : metadata["needs_review"] = notes
-        Localization.path(@locale.code, source_path).write(Localization.dump(metadata, source.sections.map { |section| stored.fetch(section.id) }))
+        write_file(Localization.path(@locale.code, source_path), Localization.dump(metadata, source.sections.map { |section| stored.fetch(section.id) }))
         puts "#{@locale.code}: #{source_path}: removed deleted sections"
         return []
       end
@@ -126,7 +120,10 @@ module Docs
           [section.id, comments]
         end
         previous = chunk.to_h do |section|
-          [section.id, {"english" => previous_english(target, source_path, section.id), "translation" => original[section.id]&.text,
+          # A retranslation replaces old wording with the glossary's, so it
+          # only shows the old text of sections a customer corrected.
+          translation = original[section.id]&.text unless @retranslate && !target.corrected?(section.id)
+          [section.id, {"english" => previous_english(target, source_path, section.id), "translation" => translation,
             "corrections" => corrections.fetch(section.id).flat_map { |comment| Corrections.notes(comment) }}]
         end
         reply = request(english, title, chunk, glossary, previous, {})
@@ -169,10 +166,19 @@ module Docs
         sections = source.sections.filter_map { |section| stored[section.id] }
         destination = Localization.path(@locale.code, source_path)
         FileUtils.mkdir_p(destination.dirname)
-        destination.write(Localization.dump(metadata, sections))
+        write_file(destination, Localization.dump(metadata, sections))
       end
       failures << "#{source_path}: missing navigation title" if title_changed
       failures
+    end
+
+    # Pages are translated in parallel, and each request reads the other pages
+    # of its language for corrections, so replace files in one step rather
+    # than let a reader see one half written.
+    def write_file(path, text)
+      temporary = path.sub_ext("#{path.extname}.#{Process.pid}.#{Thread.current.object_id}.tmp")
+      temporary.write(text)
+      File.rename(temporary, path)
     end
 
     def source_revision
@@ -216,7 +222,7 @@ module Docs
     end
 
     def provider_name
-      @translator_name == "codex" ? "codex/#{ENV.fetch("DOCS_TRANSLATOR_MODEL", "gpt-6.1-sol")}" : @translator_name
+      @translator_name == "codex" ? "codex/#{CodexTranslator.model}" : @translator_name
     end
 
     def locale_corrections
@@ -238,11 +244,12 @@ module Docs
         Translate Loomio documentation into #{@locale.name} (#{@locale.code}).
         Reply only with JSON: {"navigation_title": "translated title", "sections": {"section-id": "translated Markdown"}}.
         #{@locale.style}
-        Use plain factual language and Loomio's terminology from config/locales/client.#{@locale.app_locale}.yml.
-        Read config/locales/translation_corrections.md for known terminology mistakes.
+        Use plain factual language.
         Preserve heading levels, lists, tables, alerts, HTML tags, link and image targets, and all code exactly.
         Translate link text, image alt text, and seo-description comments. Return Markdown, with one line per prose paragraph.
-        Bold interface labels should follow this glossary; grammatical inflections are allowed when necessary:
+        Use Loomio's terminology wherever the English uses these terms in their Loomio sense, inflected as the grammar requires:
+        #{TranslationGlossary.prompt(@locale.app_locale, english: sections.map(&:text).join("\n"))}
+        Bold interface labels should follow this glossary of the app's own strings; grammatical inflections are allowed when necessary:
         #{JSON.pretty_generate(glossary)}
         Preserve customer corrections and apply the recorded correction notes wherever English still has the same meaning.
         Later correction notes supersede earlier wording when they conflict.
@@ -293,7 +300,7 @@ module Docs
           next
         end
         results[section.id] = text.strip
-        labels = label_errors(section.text, text, glossary)
+        labels = label_errors(section.text, text, glossary) + TranslationGlossary.wrong_terms(section.text, text, @locale.app_locale)
         warnings[section.id] = labels if labels.any?
       end
       [results, problems, warnings]

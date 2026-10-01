@@ -1,20 +1,20 @@
 ---
 title: Profil
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/groups/settings/profile.md
+source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
+source_file: docs/en/user_manual/groups/settings/profile.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 6342383c0b7fd365
   name-and-handle: b932cfc15a8280f6
   description: a1277d2cd6df434a
   cover-image-and-logo: b43ddf4223b12077
 generated:
-  introduction: 32a1d9c6e5d433b7
-  name-and-handle: 8f486b8adebcab06
-  description: c0a1c1c9c0c870f2
-  cover-image-and-logo: 9292b8be0dfc9ea5
+  introduction: 122f1a59a2e2723c
+  name-and-handle: fbff8ab5dbd82139
+  description: 94299b0add34d1e1
+  cover-image-and-logo: 3377183aeca3399c
 title_source: d696a35bdd1883da
 title_generated: e267d343821f264e
 ---
@@ -23,30 +23,30 @@ title_generated: e267d343821f264e
 
 # Csoportprofil
 
-A Profil lapon adhatod meg, hogyan jelenjen meg és mutatkozzon be a csoportod. A csoport oldalán nyisd meg **A csoportbeállítások szerkesztése** menüpontot, majd válaszd a **Profil** lehetőséget.
+A Profil lapon állíthatod be, hogyan jelenik meg és mutatkozik be a csoportod. A csoport oldalán nyisd meg **A csoportbeállítások szerkesztése** menüpontot, majd válaszd ki a **Profil** lapot.
 
-![Csoportprofil beállításai](group_profile.png)
+![A csoportprofil beállításai](group_profile.png)
 
 <!-- translation-section: name-and-handle -->
 
 ## Név és azonosító
 
-Válassz rövid csoportnevet, különösen akkor, ha a csoportnak alcsoportjai is lesznek. A Loomio az azonosítót használja a csoport webcímében és e-mail-címében, például `loomio.com/your-group-handle` és `your-group-handle@loomio.com`.
+Válassz rövid csoportnevet, különösen akkor, ha a csoportnak alcsoportjai is lesznek. A Loomio az azonosítót használja a csoport webcímében és e-mail-címében, például: `loomio.com/your-group-handle` és `your-group-handle@loomio.com`.
 
-Ha megváltoztatod az azonosítót, a régi azonosítót használó linkek az új címre irányítanak át, és a korábbi csoportcímre küldött e-mailek továbbra is megérkeznek a csoporthoz. A Loomio legfeljebb három korábbi azonosítót őriz meg. Ha ezután újra megváltoztatod az azonosítót, a legrégebbi érvényét veszti.
+Ha megváltoztatod az azonosítót, a korábbi azonosítót használó hivatkozások az új címre irányítanak át, és a csoport korábbi e-mail-címére küldött levelek továbbra is eljutnak a csoporthoz. A Loomio legfeljebb három korábbi azonosítót őriz meg; ha ezután ismét megváltoztatod az azonosítót, a legrégebbi érvényét veszti.
 
 <!-- translation-section: description -->
 
 ## Leírás
 
-A leírásban írd le, mire való a csoport, kik vesznek részt benne, és hogyan használják. Formázhatod a leírást, és linkeket, dokumentumokat vagy videókat is hozzáadhatsz.
+A leírásban ismertesd a csoport célját, a résztvevőket és azt, hogyan használják a csoportot. A leírást formázhatod, és hivatkozásokat, dokumentumokat, valamint videókat is elhelyezhetsz benne.
 
-A csoport [adatvédelmi beállításaitól](/en/user_manual/groups/settings/privacy) függően a név és a leírás azok számára is látható lehet, akik nem tagok.
+A név és a leírás a csoport [adatvédelmi beállításaitól](/en/user_manual/groups/settings/privacy) függően azok számára is látható lehet, akik nem tagjai a csoportnak.
 
 <!-- translation-section: cover-image-and-logo -->
 
 ## Borítókép és logó
 
-A borítókép a csoport oldalának tetején jelenik meg. Széles képet érdemes választani; az ajánlott méret 2048 × 512 képpont.
+A borítókép a csoport oldalának tetején jelenik meg, a teljes szélességben. A széles kép a legmegfelelőbb; az ajánlott méret 2048 × 512 képpont.
 
-A csoport logója a navigációban és más, kisebb helyeken azonosítja a csoportot. A borítóképet és a logót külön töltsd fel, hogy mindkettőt a megfelelő alakra lehessen vágni.
+A csoport logója segít azonosítani a csoportot a navigációban és más, kevés helyet biztosító felületeken. A borítóképet és a logót külön töltsd fel, hogy mindkettőt a megfelelő alakra lehessen vágni.

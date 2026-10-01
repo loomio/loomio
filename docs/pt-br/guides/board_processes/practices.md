@@ -1,16 +1,16 @@
 ---
 title: Práticas de governança
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/guides/board_processes/practices.md
+source_revision: 1109b2f8ee1bcd7546ed91307e5e953a56171ef2
+source_file: docs/en/guides/board_processes/practices.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-30'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: df31098ab2c954df
   on-loomio: cbd48580a2ecbb96
 generated:
-  introduction: f5c9b47dc0b71106
-  on-loomio: ed3da807ec5e14a6
+  introduction: b6cf02761b67c96e
+  on-loomio: 755ade84f8f8627d
 title_source: 1273225ad1abd403
 title_generated: f76fd40eb9d81753
 ---
@@ -19,29 +19,29 @@ title_generated: f76fd40eb9d81753
 
 # Práticas e abordagens de governança
 
-Uma boa governança envolve estabelecer, revisar e questionar práticas, políticas e procedimentos para melhorar continuamente a atuação do conselho.
+Uma boa governança inclui estabelecer, revisar e questionar práticas, políticas e procedimentos de governança para melhorar continuamente a eficácia do conselho.
 
-Porém, muitos conselhos têm pouco tempo e precisam lidar com documentos, requisitos de conformidade e riscos. Assim, sobra pouco tempo para discutir questões importantes de estratégia e desempenho.
+No entanto, muitos conselhos têm pouco tempo e frequentemente ficam sobrecarregados com documentos, conformidade e riscos, sem tempo suficiente para discutir e debater questões essenciais de estratégia e desempenho.
 
 <!-- translation-section: on-loomio -->
 
 ## No Loomio
-O Loomio permite trabalhar online em um documento, política ou procedimento. As discussões e decisões ficam em um tópico que os membros podem acessar quando e onde for conveniente.
+O Loomio permite trabalhar online em um documento, uma política ou um procedimento. A discussão e as decisões ficam em uma conversa que os membros podem acessar quando e onde for conveniente para eles.
 
-Use um **tópico** para cada documento, política ou procedimento. O tópico reúne a discussão, os rascunhos e as versões posteriores do documento.
+Use uma **conversa** para cada documento, política ou procedimento. A conversa reúne a discussão, os rascunhos e as versões posteriores do documento.
 
-Em um tópico do Loomio, as duas ou três pessoas que trabalham no texto podem discutir os detalhes. O tópico pode ser privado para essas pessoas ou aberto ao grupo, para que todos os membros acompanhem o trabalho.
+Com uma conversa no Loomio, você pode organizar o trabalho para que as 2-3 pessoas responsáveis pelo texto do documento discutam os detalhes na conversa. A conversa pode ser privada, restrita a essas 2-3 pessoas, ou aberta ao grupo, para que o trabalho seja transparente para todos os membros.
 
 ![](document_introduce.png#width-90)
 
-Quando houver um rascunho, use uma **Verificação de sentido** para avisar aos membros que ele está pronto para revisão. Convide-os a ler o documento e enviar comentários ou perguntas. A data de encerramento da enquete incentiva a participação e ajuda todos a acompanhar o andamento do trabalho.
+Quando houver um rascunho do documento, use uma **enquete de verificação de opinião** para avisar aos membros que ele está pronto para revisão e convidá-los a ler o documento e responder com comentários ou perguntas. Além de informar a todos que o trabalho está avançando, a data de encerramento da enquete incentiva a participação.
 
 ![](document_integrate.png#width-90)
 
-O documento pode passar por várias versões de rascunho.
+O documento pode precisar de várias versões de rascunho.
 
-Quando o rascunho final estiver pronto, inicie uma **Proposta** para aprovar o documento.
+Quando um rascunho 'final' estiver pronto, crie uma **Proposta** para aprovar o documento.
 
 ![](document_approval.png#width-90)
 
-O Loomio permite que o conselho avance no trabalho de melhoria da governança entre as reuniões, sem ocupar o tempo das reuniões.
+O Loomio permite que o conselho avance no trabalho de melhoria da governança entre as reuniões, sem consumir o tempo disponível nas reuniões.

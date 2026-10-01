@@ -1,14 +1,14 @@
 ---
 title: Discord
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/integrations/discord/index.md
+source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
+source_file: docs/en/user_manual/integrations/discord/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-30'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 39ded52449532722
 generated:
-  introduction: ae07eb9d2d222ad6
+  introduction: 28a532e40990fda5
 title_source: 053bc65874ad6098
 title_generated: 053bc65874ad6098
 ---
@@ -19,7 +19,7 @@ title_generated: 053bc65874ad6098
 
 _Conecte as notificações do seu grupo no Loomio ao chat da sua equipe no Discord._
 
-O Loomio pode enviar notificações aos seus canais do Discord quando houver novas discussões, propostas, comentários, votos e conclusões. Você também pode enviar uma notificação manualmente ao chat para lembrar as pessoas de uma decisão.
+O Loomio pode enviar notificações para seus canais do Discord quando houver novas discussões, propostas, comentários, votos e conclusões. Você também pode notificar manualmente o canal de chat quando precisar lembrar as pessoas de uma decisão.
 
 ---
 
@@ -33,6 +33,6 @@ Depois, clique em "Adicionar webhook" e dê um nome a ele, como "Bot do Loomio"
 
 ![](add-webhook.png)
 
-Copie a URL do webhook para a área de transferência e siga o link abaixo.
+Certifique-se de ter copiado a URL do webhook para a área de transferência e acesse o link abaixo.
 
 [Configure uma integração de chat no Loomio](../chatbots/#set-up-a-chat-integration)

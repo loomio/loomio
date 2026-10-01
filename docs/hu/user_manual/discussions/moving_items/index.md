@@ -1,27 +1,27 @@
 ---
 title: Elemek áthelyezése témák között
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/discussions/moving_items/index.md
+source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
+source_file: docs/en/user_manual/discussions/moving_items/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 6ac6ede9e57c77aa
 generated:
-  introduction: 7c20b2b41ea76e6f
+  introduction: a0b786bca862fb63
 title_source: d5f8d27c1ae21eb0
 title_generated: 375785c8ed63fb0a
 ---
 
 <!-- translation-section: introduction -->
 
-# Elemek áthelyezése témák között
+# Elemek áthelyezése szálak között
 
-Áthelyezheted a kiválasztott elemeket, ha a beszélgetés másik témába tartozik, ha egy témából több külön téma alakult ki, vagy ha össze szeretnél vonni kapcsolódó beszélgetéseket. Nincs külön **Beszélgetések összevonása** parancs.
+Helyezd át a kiválasztott elemeket, ha egy beszélgetés egy másik szálba tartozik, ha egy szál több különálló témára vált szét, vagy ha kapcsolódó beszélgetéseket szeretnél összevonni. Nincs külön **Beszélgetések összevonása** parancs.
 
-Ez a lehetőség a csoport adminisztrátorainak érhető el, valamint a tagoknak is, ha az **A tagok kezelhetik a beszélgetéseket és a hozzászólásokat** beállítás engedélyezve van a [csoport jogosultságainál](/en/user_manual/groups/settings/permissions).
+Ez a funkció a csoport adminjai számára érhető el, valamint a tagok számára is, ha a [Csoportjogosultságok](/en/user_manual/groups/settings/permissions) között engedélyezve van az **A tagok kezelhetik a beszélgetéseket és a hozzászólásokat** beállítás.
 
-Nyisd meg az elem hárompontos menüjét (**⋯**), majd válaszd az **Elem mozgatása** lehetőséget.
+Nyisd meg az elem hárompontos menüjét (**⋯**), és válaszd ki az **Elem mozgatása** menüpontot.
 
 ![](../using_discussions/comment_move.png)
 
@@ -29,18 +29,18 @@ Válaszd ki az áthelyezni kívánt elemeket.
 
 ![](../using_discussions/comment_select.png)
 
-A jelölőnégyzetekkel további elemeket is kiválaszthatsz. Ezután kattints a beszélgetés tetején megjelenő sávban a **Mozgat** gombra.
+A jelölőnégyzetekkel válassz ki további elemeket, majd kattints a beszélgetés tetején megjelenő sávban a **Mozgat** gombra.
 
 ![](../using_discussions/move_items.png)
 
-Válaszd ki a csoportot vagy alcsoportot, majd keresd meg a célként szolgáló beszélgetést.
+Válaszd ki a csoportot vagy alcsoportot, majd keresd meg azt a beszélgetést, ahová az elemeket át szeretnéd helyezni.
 
-Ha új beszélgetésbe szeretnéd áthelyezni az elemeket, válaszd az **Új beszélgetés** lehetőséget, majd add meg a címet és a leírást.
+Ha új beszélgetésbe szeretnéd áthelyezni az elemeket, válaszd ki az **Új beszélgetés** lehetőséget, és add meg a címét és a leírását.
 
 ![](../using_discussions/move_items_new_thread.png)
 
-Az elemek az eredeti témából a kiválasztott vagy újonnan létrehozott témába kerülnek.
+Az elemek az eredeti szálból a kiválasztott vagy újonnan létrehozott szálba kerülnek.
 
 ![](../using_discussions/new_thread.png)
 
-Ha az eredeti témára már nincs szükség, [zárolhatod](/en/user_manual/discussions/using_discussions/#lock-or-unlock-a-thread). Csak akkor töröld, ha biztos vagy benne, hogy később sem lesz rá szükség.
+Ha az eredeti szálra már nincs szükség, [zárolhatod](/en/user_manual/discussions/using_discussions/#lock-or-unlock-a-thread). Csak akkor töröld, ha biztos vagy benne, hogy később sem lesz rá szükség.

@@ -1,14 +1,14 @@
 ---
 title: Slack
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/integrations/slack/index.md
+source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
+source_file: docs/en/user_manual/integrations/slack/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-30'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 4eb9618f0efb62d7
 generated:
-  introduction: '021259fe894c749e'
+  introduction: 4bbdd1c1a1fddf54
 title_source: b27fb38ba323745c
 title_generated: b27fb38ba323745c
 ---
@@ -18,15 +18,15 @@ title_generated: b27fb38ba323745c
 # Интеграция со Slack
 _Подключите уведомления вашей группы Loomio к Slack._
 
-Loomio может отправлять уведомления в ваши каналы Slack о новых обсуждениях, предложениях, комментариях, голосах и итоговых решениях. Так вы будете вовремя узнавать о важных обсуждениях и решениях.
+Loomio может отправлять уведомления в ваши каналы Slack при появлении новых обсуждений, предложений, комментариев, голосов и выводов. Получайте своевременные уведомления о важных обсуждениях и решениях.
 
 ---
 
-Перейдите на [https://api.slack.com](https://api.slack.com), войдите в аккаунт, если ещё не вошли, и нажмите Create New App
+Для начала перейдите на [https://api.slack.com](https://api.slack.com), войдите в свою учётную запись, если вы ещё не вошли, затем нажмите «Создать новое приложение» (Create New App)
 
 ![](s1.png)
 
-Назовите ваше приложение Slack
+Задайте название вашему приложению Slack
 
 ![](s2.png)
 
@@ -38,7 +38,7 @@ Loomio может отправлять уведомления в ваши кан
 
 ![](s4.png)
 
-Добавьте новый вебхук
+Затем добавьте новый вебхук
 
 ![](s5.png)
 
@@ -54,4 +54,4 @@ Loomio может отправлять уведомления в ваши кан
 
 [Настройте интеграцию с чатом в Loomio](../chatbots/#set-up-a-chat-integration)
 
-_Loomio не создана Slack, не связана с этой компанией и не поддерживается ею._
+_Slack не разрабатывает и не поддерживает Loomio и не связан с ним._

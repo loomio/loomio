@@ -1,6 +1,6 @@
 ---
 title: Consenso
-source_revision: 9c60c42fc739483fa23f15d9f34a1e9245518092
+source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
 source_file: docs/en/user_manual/polls/proposals/consensus/index.md
 translated:
   provider: codex/gpt-6.1-sol
@@ -14,13 +14,13 @@ sections:
   read-the-results: e60abb3a43a86d6e
   share-an-outcome: a7febe19484c20b3
 generated:
-  introduction: 64dccd014eda3b6c
-  when-to-use-consensus: 40d6afbe974a6b6b
-  example-adopt-a-bottle-return-standard: a03496c179fe2f8b
-  set-up-the-proposal: 384ecafb8ee21f22
-  vote: d88d48856f3d1fac
-  read-the-results: e4a65b752550aa80
-  share-an-outcome: 38dbf5f2e110b9e5
+  introduction: 7a15e7499d00b378
+  when-to-use-consensus: e3291485b172f027
+  example-adopt-a-bottle-return-standard: 1a46eff136a0342a
+  set-up-the-proposal: 1a0a00fc4af0697b
+  vote: bd7a6588e4a1916d
+  read-the-results: 1bbd4707f09af37c
+  share-an-outcome: 2c082472cc5af133
 title_source: 8abe09bf65aefdb8
 title_generated: a633645d078dc2da
 ---
@@ -29,29 +29,29 @@ title_generated: a633645d078dc2da
 
 # Consenso
 
-Uma proposta de consenso busca um acordo coletivo entre todas as pessoas envolvidas. As respostas padrão permitem concordar, abster-se, discordar ou bloquear.
+Uma proposta de Consenso busca o acordo coletivo de todas as pessoas envolvidas. As respostas padrão permitem que os participantes concordem, se abstenham, discordem ou bloqueiem.
 
-Esta página explica como conduzir uma proposta de consenso. Consulte o [processo de consenso](/en/guides/making_decisions/consensus_process) para conhecer o fluxo completo, da discussão e da verificação de sentido até as alterações da proposta e a conclusão.
+Esta página explica como conduzir uma proposta de Consenso. Veja o [Processo de consenso](/en/guides/making_decisions/consensus_process) para conhecer o fluxo completo, desde a discussão e a verificação de opinião até as alterações e a conclusão.
 
 <!-- translation-section: when-to-use-consensus -->
 
-## Quando usar o consenso
+## Quando usar Consenso
 
-Use o consenso em decisões que precisam do compromisso de todo o grupo e quando o grupo está disposto a resolver as preocupações em conjunto. Ele é adequado para normas compartilhadas, acordos de governança, compromissos estratégicos e decisões que afetam todo o grupo.
+Use Consenso para decisões em que o compromisso de todos é importante e o grupo está preparado para trabalhar em conjunto para resolver as preocupações. Ele é adequado para padrões compartilhados, acordos de governança, compromissos estratégicos e decisões que afetam todo o grupo.
 
-O consenso geralmente exige discussão e elaboração da proposta antes da votação. Defina o significado e as consequências de **Bloqueio** para o seu grupo. Se o processo do grupo não prevê bloqueios, edite o modelo para remover essa opção.
+O consenso geralmente exige discussão e elaboração da proposta antes da votação. Defina o significado e as consequências de **Bloqueio** para seu grupo. Se seu processo não usa bloqueios, edite o modelo para remover essa opção.
 
 <!-- translation-section: example-adopt-a-bottle-return-standard -->
 
-## Exemplo: adotar uma norma para devolução de garrafas
+## Exemplo: adotar um padrão de devolução de garrafas
 
-A Cooperativa de Leite de Aveia elaborou uma norma que abrange depósitos, coleta, lavagem, registros de segurança alimentar e prestação de contas. Como todas as equipes usarão a norma, a cooperativa busca consenso antes de adotá-la.
+A Cooperativa Oatmilk desenvolveu um padrão que abrange cauções, coleta, lavagem, registros de segurança dos alimentos e relatórios. Como todas as equipes vão usá-lo, a cooperativa busca consenso antes de adotá-lo.
 
 <!-- translation-section: set-up-the-proposal -->
 
 ## Configure a proposta
 
-Descreva o acordo completo em análise e inclua links para as informações de apoio. Explique cada resposta, especialmente a diferença entre discordar e bloquear. Reserve tempo suficiente para perguntas e alterações da proposta.
+Apresente o acordo completo em consideração e inclua links para informações de apoio. Explique cada resposta, especialmente a distinção entre discordar e bloquear. Reserve tempo suficiente para perguntas e alterações.
 
 ![](form.png)
 
@@ -59,7 +59,7 @@ Descreva o acordo completo em análise e inclua links para as informações de a
 
 ## Vote
 
-Cada participante escolhe a resposta que corresponde à sua posição e explica os interesses ou preocupações que a motivam. O motivo de um bloqueio deve indicar por que a adoção da proposta violaria uma necessidade fundamental ou um princípio acordado.
+Os participantes escolhem a resposta que corresponde à sua posição e explicam os interesses ou as preocupações que a motivam. O motivo de um bloqueio deve indicar por que adotar a proposta violaria uma necessidade fundamental ou um princípio acordado.
 
 ![](../proposal_consensus_voting.png)
 
@@ -67,7 +67,7 @@ Cada participante escolhe a resposta que corresponde à sua posição e explica 
 
 ## Leia os resultados
 
-O gráfico mostra a distribuição das respostas. Analise todos os motivos de discordância e bloqueio. O consenso envolve resolver preocupações, além de contar os votos de concordância.
+O gráfico mostra a distribuição das respostas. Analise todos os motivos de discordância e bloqueio; o consenso é um processo de resolução de preocupações, não apenas de contagem de votos de concordância.
 
 ![](../proposal_consensus_results.png)
 
@@ -75,6 +75,6 @@ O gráfico mostra a distribuição das respostas. Analise todos os motivos de di
 
 ## Compartilhe uma conclusão
 
-Quando a proposta for encerrada, compartilhe uma conclusão. Se o grupo chegou a um acordo, registre o acordo final e quem é responsável. Caso contrário, registre o que será revisado e quando o grupo voltará a discutir a proposta. Veja [Compartilhe uma conclusão](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome) para entender como as conclusões funcionam.
+Quando a proposta for encerrada, compartilhe uma conclusão. Se o grupo chegou a um acordo, registre o acordo final e quem é responsável. Caso contrário, registre o que será revisado e quando o grupo retomará a proposta. Veja [Compartilhe uma conclusão](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome) para entender como as conclusões funcionam.
 
-![Uma conclusão informando que não houve consenso e que a norma será revisada](outcome.png)
+![Uma conclusão informando que não houve consenso e que o padrão será revisado](outcome.png)

@@ -15,6 +15,7 @@ copy: Copiar
 copy_label: Copiar el código al portapapeles
 copied: Copiado
 copy_failed: No se pudo copiar
+machine_translation_notice: "Esta página se tradujo automáticamente. Si alguna palabra es incorrecta o poco clara, escribe a %{email} y la corregiremos."
 alerts:
   note: Nota
   tip: Consejo

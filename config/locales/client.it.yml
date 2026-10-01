@@ -183,13 +183,13 @@ it:
     only_show_tags_in_this_group: Mostra solo i tag di questo gruppo
   poll_types:
     proposal: proposta
-    count: opt-in
-    check: controllo di senso
+    count: iscrizione
+    check: verifica delle opinioni
     poll: Sondaggio
     dot_vote: voto a punti
     meeting: sondaggio appuntamento
     ranked_choice: scelta di preferenze
-    score: sondaggio valutazione
+    score: punteggio
     question: giro di domande
     stv: elezioni STV
   timezones:
@@ -351,7 +351,7 @@ it:
     formatting_help:
       label: Formattazione
       title: Impara come usare il Markdown per formattare il tuo testo
-    thread: Filo
+    thread: Conversazione
     commercial: Commerciale
     nonprofit: Non profit
     opening_in: Apertura %{time}
@@ -550,7 +550,7 @@ it:
     volume_push_label: Push
     all_activity_option: Tutte le attività
     when_notified_option: Quando viene notificato
-    muted_option: Attutito
+    muted_option: Silenziato
     volume_channel_label: Come preferiremmo tenervi aggiornati?
     email_channel: E-mail
     push_channel: Push
@@ -729,7 +729,7 @@ it:
     search_discussions_in_group: Cerca discussioni in %{name}
     thread_nav: Menu del thread
   user_dropdown:
-    pin_sidebar: Attiva la barra laterale
+    pin_sidebar: Fissa la barra laterale
     unpin_sidebar: Rimuovi la barra laterale
     enable_beta_features: Abilita le funzionalità beta
     disable_beta_features: Disattiva le funzionalità beta
@@ -797,17 +797,17 @@ it:
       membership_request_approved: "%{actor} ha approvato la tua richiesta di partecipare a %{title}"
       new_comment: "%{actor} ha commentato in: %{title}"
       new_coordinator: "%{actor} ti ha nominato amministratore di %{title}"
-      outcome_announced: "%{actor} ha condiviso il risultato del %{poll_type}: %{title}"
-      outcome_created: "%{actor} ha condiviso il risultato del %{poll_type}: %{title}"
-      outcome_updated: "%{actor} ha aggiornato il risultato del %{poll_type}: %{title}"
-      outcome_review_due: 'E'' ora di rivedere il risultato di: %{title}'
+      outcome_announced: "%{actor} ha pubblicato una conclusione per %{poll_type}: %{title}"
+      outcome_created: "%{actor} ha pubblicato una conclusione per %{poll_type}: %{title}"
+      outcome_updated: "%{actor} ha aggiornato la conclusione per %{poll_type}: %{title}"
+      outcome_review_due: 'È ora di rivedere la conclusione di: %{title}'
       poll_closed_by_user: "%{actor} ha chiouso il %{poll_type}: %{title}"
       poll_closing_soon: "%{poll_type} terminerà in 24 ore: %{title}"
       poll_closing_soon_author: 'Il tuo %{poll_type} terminerà in 24 ore: %{title}'
       poll_created: "%{actor} ha iniziato un %{poll_type}: %{title}"
       poll_edited: "%{actor} ha aggiornato il %{poll_type}: %{title}"
       poll_expired: "%{poll_type} ha terminato: %{title}"
-      poll_expired_author: 'Condividi il risultato del tuo %{poll_type}: %{title}'
+      poll_expired_author: 'Condividi la conclusione del tuo %{poll_type}: %{title}'
       poll_option_added: "%{actor} ha aggionto una opzione a %{title}"
       poll_reopened: "%{actor} ha riaperto il %{poll_type}: %{title}"
       poll_reminder: "%{actor} ti ricorda di votare su %{title}"
@@ -836,8 +836,8 @@ it:
       membership_resent: "%{actor} ti ha invitato a unirti a un gruppo"
       membership_requested: "%{actor} ha richiesto di partecipare al tuo gruppo"
       membership_request_approved: "%{actor} ha approvato la tua richiesta di partecipare a %{title}"
-      outcome_announced: "%{actor} ha condiviso il risultato del %{poll_type} "
-      outcome_created: "%{actor} ha condiviso il risultato del %{poll_type} "
+      outcome_announced: "%{actor} ha condiviso una conclusione per %{poll_type}"
+      outcome_created: "%{actor} ha condiviso una conclusione per %{poll_type}"
       outcome_review_due: 'E'' ora di rivedere i risultati del %{poll_type} '
       poll_announced_wip: "%{actor} vorrebbe un tuo commento sul %{poll_type}"
       poll_closed_by_user: "%{actor}ha chiuso il %{poll_type}"
@@ -846,7 +846,7 @@ it:
       poll_created: "%{actor} ha avviato una %{poll_type}"
       poll_edited: "%{actor} ha aggiornato il %{poll_type}"
       poll_expired: "%{poll_type} è chiuso"
-      poll_expired_author: Condividi il risultato del tuo %{poll_type}
+      poll_expired_author: Condividi la conclusione del tuo %{poll_type}
       poll_option_added: "%{actor} ha aggiunto delle opzioni al %{poll_type}"
       poll_reopened: "%{actor} ha riaperto il %{poll_type}"
       poll_reminder: "%{actor}ti sta ricordando di votare"
@@ -864,7 +864,7 @@ it:
       discussion_closed: "%{actor} ha chiuso la discussione"
       new_discussion: "%{actor} ha avviato una discussione"
       new_comment: "%{actor} ha commentato in una discussione"
-      outcome_updated: "%{actor} ha aggiornato il risultato"
+      outcome_updated: "%{actor} ha aggiornato la conclusione"
       thread_locked: "%{actor} ha bloccato il thread"
       membership_request_declined: La tua richiesta di iscrizione a %{title} è stata rifiutata
     hints:
@@ -894,7 +894,7 @@ it:
       poll_created: "%{poll_type}: %{title}"
       poll_edited: "%{actor} ha aggiornato %{poll_type}: %{title}"
       poll_expired: "%{poll_type} ha chiuso: %{title}"
-      poll_expired_author: 'Pubblica un risultato: %{title}'
+      poll_expired_author: 'Pubblica una conclusione: %{title}'
       poll_option_added: "%{actor} ha aggiunto opzioni a %{title}"
       poll_reopened: 'Votazione estesa: %{title}'
       poll_reminder: "%{actor} ti ricorda di votare su %{title}"
@@ -1009,10 +1009,10 @@ it:
     audiences:
       group: Membri di %{name}
       everyone_in_the_group: Tutti nel gruppo
-      topic: Tutti nel filo
+      topic: Tutti nella conversazione
       voters: Tutti invitati a votare
       decided_voters: Tutti coloro che hanno votato
-      undecided_voters: Elettore indecisi
+      undecided_voters: Elettori in attesa
       non_voters: Membri di %{name} non ancora invitati
       delegates_of_group: Delegati di %{name}
     form:
@@ -1126,10 +1126,10 @@ it:
     reply_to_comment: Rispondi
     fork_comment: Biforca discussione
     translate_comment: Traduci il commento
-    edit_outcome: Modifica il risultato
-    announce_outcome: Avvisa le persone di questo risultato
+    edit_outcome: Modifica la conclusione
+    announce_outcome: Avvisa le persone di questa conclusione
     announce_outcome_active: "(Nessuno è stato ancora informato di questa conclusione)"
-    translate_outcome: Traduci il risultato
+    translate_outcome: Traduci la conclusione
     show_history: Mostra la storia della modifica
     edited: Modificato
     show_edits: Mostra modifiche
@@ -1364,7 +1364,7 @@ it:
       mute_message: '"%{name}" è stata rimossa dalla tua dashboard.'
       loud_message: Riceverai un'e-mail su tutte le attività in "%{name}."
       normal: 'Invia semplicemente via email le attività importanti: nuovi thread e proposte, risultati, ecc.'
-      normal_aria_description: Il volume delle notifiche per questo gruppo è impostato su Normale. Riceverai solo le email relative alle attività importanti, ad esempio quando qualcuno apre una nuova discussione, solleva una proposta o imposta un risultato.
+      normal_aria_description: Il volume delle notifiche per questo gruppo è impostato su Normale. Riceverai solo le email relative alle attività importanti, ad esempio quando qualcuno apre una nuova conversazione, presenta una proposta o pubblica una conclusione.
       normal_message: Riceverai email solo sugli eventi importanti in "%{name}".
       quiet: Non inviare email su questo gruppo. L'attività verrà visualizzata sulla dashboard.
       quiet_aria_description: Il volume delle notifiche per questo gruppo è impostato su Silenzioso. Non riceverai email sulle attività in questo gruppo. Le attività del gruppo verranno visualizzate sulla tua Dashboard.
@@ -1686,6 +1686,7 @@ it:
     updated_on_sign_in: Fornito dal tuo browser e aggiornato quando accedi
     translate_content_automatically: Traduci automaticamente il contenuto nella mia lingua
     bot_account_warning: Gli account bot non saranno invitati a votare nei sondaggi né a partecipare alle discussioni.
+    translations_are_made_by_machine: Le traduzioni sono automatiche. Se una parola è sbagliata o poco chiara, scrivi a %{email} e la correggeremo.
   text_editor:
     x_of_y_characters: "%{x} / %{y} caratteri"
     select_text_to_link: Seleziona il testo da collegare e riprova
@@ -1810,7 +1811,7 @@ it:
       thisweek: Questa Settimana
       thismonth: Questo mese
       older: Più di un mese fa
-    dashboard: Pannello di controllo
+    dashboard: Dashboard
     recent_discussions: Discussioni recenti
     view_recent: Visualizzare tutte le discussioni recenti?
     discussion_marked_as_read: Discussione contrassegnata come letta
@@ -1877,7 +1878,7 @@ it:
     n_more: Carica %{count} risposte
     add_comment: Aggiungi un commento
     add_poll: Aggiungi sondaggio
-    add_outcome: Aggiungere il risultato
+    add_outcome: Aggiungi una conclusione
     comment: Commenta
     facilitate: Agevolare
     start_decision: Inizia una decisione
@@ -1978,11 +1979,11 @@ it:
     consent_title: Consenso
     consensus_title: Consenso
     proposal_title: Proposta
-    count_title: Attiva
-    check_title: Controllo del senso
+    count_title: Iscrizione
+    check_title: Verifica delle opinioni
     poll_title: Sondaggio
     meeting: Incontro
-    score_title: Sondaggio valutazione
+    score_title: Punteggio
     dot_vote_title: Voto a punti
     meeting_title: Sondaggio appuntamento
     ranked_choice_title: Scelta di preferenze
@@ -2257,7 +2258,7 @@ it:
   poll_common_collapsed:
     by_who: di %{name}
   poll_common_calendar_invite:
-    calendar_invite: Includi un invito del calendario con questo risultato
+    calendar_invite: Includi un invito al calendario con questa conclusione
     poll_option_id: Ora dell'incontro
     helptext_on: Gli utenti potranno aggiungere questa riunione al proprio calendario
     helptext_off: Nessun invito per l'incontro sarà inviato
@@ -2270,7 +2271,7 @@ it:
     location_placeholder: Dove si terrà questo incontro?
   poll_common_close_form:
     title: Chiudi %{poll_type} ora?
-    helptext: Sei sicuro che vuoi chiudere questa vorazione %{poll_type} in anticipo e condividere il risultato?
+    helptext: Sei sicuro di voler chiudere questo %{poll_type} in anticipo e condividere una conclusione?
     close_poll_type: Chiudi %{poll_type}
     poll_type_closed: "%{poll_type} chiusa"
   poll_common_reopen_form:
@@ -2301,12 +2302,12 @@ it:
     started_by: Iniziato da %{name}
   poll_common_votes_panel:
     vote_removed: Voto rimosso
-    undecided: Indecisi
+    undecided: In attesa
     newest_first: I voti più nuovi prima
     oldest_first: I voti più vecchi prima
     priority_first: I voti favorevole prima
     priority_last: 'I voti blocco prima '
-    undecided_first: Indecisi prima
+    undecided_first: Prima chi è in attesa
     no_votes_yet: Nessun voto è stato finora espresso.
     change_results_order: Modifica l'ordine dei risultati
     none_of_the_above: "(Nessuno dei precedenti)"
@@ -2328,9 +2329,9 @@ it:
     participation_records_restricted: Potrai vedere chi ha partecipato dopo la chiusura delle votazioni
     vote_weight: Peso del voto %{weight}
   poll_common_undecided_panel:
-    show_undecided: Mostra %{count} Indecisi
+    show_undecided: Mostra %{count} in attesa
     show_invitations: Mostra inviti pendenti
-    undecided_users: Indecisi (%{count})
+    undecided_users: In attesa (%{count})
     invitation_count_singular: una persona in più è stata invitata a partecipare via email
     invitation_count_plural: "%{count} persone in più sono state invitate a partecipare via email"
   poll_common_undecided_user:
@@ -2344,10 +2345,10 @@ it:
     review_due_in_days: Rivedere la decisione dopo quanti giorni?
     review_date: Data della recensione
     review_date_hint: Fissa una data per rivedere la decisione (facoltativo)
-    who_to_notify: Chi vuoi avvertire riguardo questo risultato? (opzionale)
+    who_to_notify: Chi vuoi avvertire di questa conclusione? (opzionale)
     outcome_statement_template: Modello di dichiarazione dei risultati
-    new_title: Pubblica il risultato
-    update_title: Aggiorna risultato
+    new_title: Condividi la conclusione
+    update_title: Aggiorna la conclusione
     outcome_created: Conclusione creata
     outcome_updated: Conclusione aggiornata
     statement_placeholder: Sommarizza le risposte ed informa cosa succederà dopo.
@@ -2398,7 +2399,7 @@ it:
     option_already_added: Opzione già aggiunta al sondaggio
   poll_dot_vote_form:
     dots_per_person: Punti per persona
-    dots_per_person_helptext: Il numero totale di punti che viene chiesto a ogni persona di assegnare
+    dots_per_person_helptext: Il numero totale di punti che viene chiesto a ogni persona di ripartire
   poll_meeting_form:
     timeslots: Fasce orarie
     no_options: Inserisci gli orari nel tuo attuale fuso orario (%{zone}). I partecipanti vedranno gli orari nel proprio fuso orario.
@@ -2415,7 +2416,7 @@ it:
     minimum_stance_choices_hint: ie Classifica i tuoi primi 3 gusti di gelato
     ranked_choice_created: Scelta di preferenze creata
     ranked_choice_updated: Scelta di preferenze aggiornata
-    rank: Posizione
+    rank: Classifica
     points: Punti
     average: Media
     mean: Significare
@@ -2447,7 +2448,7 @@ it:
     consent: Consenso
     abstain: Astenuto
     unsure: Incerto
-    disagree: Contrario
+    disagree: Disaccordo
     objection: Obiezione
     object: Oggetto
     block: Blocco
@@ -2513,7 +2514,7 @@ it:
     discussion_closed: "<a class='actor-link' href='/u/%{username}'>%{author}</a> ha chiuso la discussione"
     discussion_reopened: "<a class='actor-link' href='/u/%{username}'>%{author}</a> ha riaperto la discussione"
     new_comment: "<a class='actor-link' href='/u/%{username}'>%{author}</a>"
-    outcome_created: "<a class='actor-link' href='/u/%{username}'>%{author}</a> ha condiviso un risultato"
+    outcome_created: "<a class='actor-link' href='/u/%{username}'>%{author}</a> ha condiviso una conclusione"
     poll_reopened: "<a class='actor-link' href='/u/%{username}'>%{author}</a> ha riaperto il %{polltype}"
     poll_closed_by_user: "<a class='actor-link' href='/u/%{username}'>%{author}</a> ha chiuso il %{polltype}"
     poll_created: "<a class='actor-link' href='/u/%{username}'>%{author}</a> ha avviato un %{polltype}"
@@ -2692,8 +2693,8 @@ it:
       poll_expired: Una votazione scade
       poll_closed_by_user: Una votazione è stata chiusa manualmente
       poll_reopened: Una votazione è stata riaperta al voto
-      outcome_created: Un risultato è stato condiviso
-      outcome_updated: Viene aggiornato un risultato
+      outcome_created: Viene condivisa una conclusione
+      outcome_updated: Viene aggiornata una conclusione
       outcome_review_due: È prevista una revisione dei risultati
       new_discussion: Si avvia una discussione
       discussion_edited: Una discussione è stata modificata
@@ -2799,8 +2800,11 @@ it:
         helptext: "<p>In Loomio utilizziamo le proposte per dimostrare il sostegno a una decisione o per trovare modi per migliorarla.</p><p> Iniziamo una proposta e chiediamo ai membri del tuo gruppo di votarla.</p><p> Abbiamo creato un modello <b>di proposta di pratica</b> che puoi utilizzare.</p>"
         submit: Vedi i modelli di proposta
       share_an_outcome:
-        title: Condividi il risultato di una proposta
-        helptext: "<p>Per agevolare l'avanzamento delle decisioni, le proposte hanno una scadenza per la votazione. Una volta scaduto il termine, la votazione verrà chiusa e riceverai una notifica per condividere l'esito della proposta.</p><p> L'esito è l'occasione per dire se la proposta ha avuto successo e cosa accadrà in seguito.</p><p> Se la scadenza per la presentazione della tua proposta non è ancora scaduta, ma desideri procedere comunque, puoi cliccare <b>su Chiudi in anticipo</b> .</p><p> Quando sarà il momento giusto, <b>inserisci un risultato</b> per la tua proposta.</p>"
+        title: Condividi la conclusione di una proposta
+        helptext: |
+          <p>Alla scadenza della proposta, la votazione si chiude e ti verrà chiesto di condividere una conclusione.</p>
+          <p>Nella conclusione spieghi cosa hai deciso (o cosa accadrà dopo) dopo aver esaminato i voti e i commenti.</p>
+          <p>Se la scadenza non è ancora passata ma vuoi procedere, puoi <b>Chiudere in anticipo</b>.</p>
         submit: Visualizza la proposta
         cancel: Fallo più tardi
       start_a_discussion:
@@ -2831,7 +2835,7 @@ it:
       voting_title: 24 ore prima della chiusura delle votazioni, invia un promemoria a
       nobody: Nessuno
       author: Autore (io)
-      undecided_voters: elettori indecisi
+      undecided_voters: elettori in attesa
       voters: Tutti gli elettori
     notify_on_participate:
       title: Avvisami quando le persone partecipano
@@ -2882,22 +2886,22 @@ it:
     voting_method: Metodo di voto
     none_of_the_above: Nessuna delle precedenti
     voting_methods:
-      question: Round di domande
+      question: Giro di domande
       question_hint: Invita domande e commenti sulla tua proposta
       show_thumbs: Alzata di pollici
       show_thumbs_hint: Gli elettori scelgono il pollice in su, in giù, di lato o la mano alzata
       choose: Scegliere
       simple_poll: Sondaggio semplice
       choose_hint: Gli elettori scelgono l'opzione (o le opzioni) migliore
-      score: Punto
+      score: Punteggio
       score_hint: Gli elettori assegnano un punteggio a ciascuna opzione
-      allocate: Assegnare
+      allocate: Ripartizione
       allocate_hint: Gli elettori assegnano un budget di punti tra le opzioni
-      ranked_choice: Scelta classificata
+      ranked_choice: Classifica delle preferenze
       ranked_choice_hint: Gli elettori dispongono le opzioni in ordine dalla più alla meno preferita
-      time_poll: Sondaggio temporale
+      time_poll: Sondaggio appuntamento
       time_poll_hint: Gli elettori indicano quando sono disponibili per l'incontro
-      rank: Rango
+      rank: Classifica
       time: Tempo
       stv: Elezioni STV
       stv_hint: Eleggere più vincitori in modo proporzionale utilizzando il voto singolo trasferibile
@@ -2949,7 +2953,7 @@ it:
     how_much_time_to_vote: Quanto tempo darai alle persone per votare?
     default_duration_in_days_hint: Quanti giorni avranno le persone per votare?
     define_minimum_and_maxmimum_score: Definisci i punteggi minimi e massimi che un elettore può dare a un'opzione
-    how_many_points_does_each_voter_have_to_allocate: Quanti punti deve assegnare ogni elettore?
+    how_many_points_does_each_voter_have_to_allocate: Quanti punti deve ripartire ogni elettore?
     anonymous_voting_description: Mostra i voti e le motivazioni, ma non chi li ha espressi. Questa impostazione non può essere modificata dopo l'avvio di %{poll_type}.
     vote_reason_description: Chiedete alle persone di condividere le loro motivazioni quando votano o di fornire ulteriori informazioni.
     hide_results_description: Se vuoi che le persone votino senza vedere come hanno votato gli altri, puoi nascondere i risultati.
@@ -2993,7 +2997,7 @@ it:
     set_all_vote_weights_the_same: Stesso peso di voto per tutti
     member_vote_weights_hint: Gli elettori senza un'attuale appartenenza a un gruppo ottengono un peso di voto pari a 1
     weighted_voting: Voto ponderato
-    weighted_voting_is_not_available_with_anonymous_voting: "Il voto ponderato non è disponibile con la votazione anonima"
+    weighted_voting_is_not_available_with_anonymous_voting: Il voto ponderato non è disponibile con la votazione anonima
     use_weighted_voting: Usa il voto ponderato
     weighted_voting_off_warning: Disattivando il voto ponderato, ogni peso di voto viene impostato a 1. Tutti i pesi di voto modificati per questo sondaggio andranno persi.
     weighted_voting_on_group: L'attivazione del voto ponderato copia il peso di voto predefinito di ciascun membro. Gli altri votanti ottengono un peso di voto pari a 1.
@@ -3089,7 +3093,7 @@ it:
       success: Discussione spostata su %{name}
     move_thread_title: Sposta discussione
     destination: Destinazione
-    direct_thread: Discussione diretta
+    direct_thread: Conversazione diretta
     direct_thread_hint: Tutti coloro che hanno partecipato manterranno l'accesso. Tu e l'autore della discussione sarete gli amministratori della discussione.
     direct_thread_anonymous_poll: Le discussioni contenenti sondaggi anonimi non possono essere convertite in discussioni dirette perché ciò potrebbe rivelare chi ha votato
   auth:
@@ -3121,7 +3125,7 @@ it:
     closed_at: Chiuso alle
     closing_at: Chiude alle
   poll_stv_vote_form:
-    helptext: Trascina i candidati sopra la linea per classificarli. Gli elementi sotto la linea non sono classificati. Il rango 1 è quello che preferisci in assoluto.
+    helptext: Trascina i candidati sopra la linea per classificarli. Gli elementi sotto la linea non sono classificati. Il primo in classifica è quello che preferisci in assoluto.
     divider_text: Trascina i candidati sopra questa linea per classificarli
     stance_created: Votazione registrata
     stance_updated: Voto aggiornato

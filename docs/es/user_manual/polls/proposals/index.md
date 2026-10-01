@@ -1,6 +1,6 @@
 ---
 title: Propuestas
-source_revision: 3a315412c646d254c8426be5c436a4e593f6011f
+source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
 source_file: docs/en/user_manual/polls/proposals/index.md
 translated:
   provider: codex/gpt-6.1-sol
@@ -11,10 +11,10 @@ sections:
   other-proposal-templates: 21ac5a295b8832ab
   proposal-records: ef0d886d3db7a5d1
 generated:
-  introduction: 4575f54ce545f862
-  choose-a-proposal-template: 0b3a9697526154a4
-  other-proposal-templates: 7fe07d299c39558c
-  proposal-records: fe2e178904247370
+  introduction: a4193a5d0544b692
+  choose-a-proposal-template: beb2a42ab7b6b042
+  other-proposal-templates: 7c54d1b378d66cec
+  proposal-records: 1e45ef1d42aa169c
 title_source: 834cfc1ee23734e1
 title_generated: 7150ec8a684cb138
 ---
@@ -23,9 +23,9 @@ title_generated: 7150ec8a684cb138
 
 # Propuestas
 
-Una propuesta pide a las personas que respondan a una afirmación o un plan de acción. Quienes participan eligen una respuesta definida y pueden explicar su voto. Usa una propuesta para recoger opiniones, pedir consejo, identificar objeciones o comprobar si hay acuerdo.
+Una propuesta pide a las personas que respondan a una afirmación o a un curso de acción. Los participantes eligen una respuesta definida y pueden explicar su voto. Usa una propuesta para recoger comentarios, pedir consejo, identificar objeciones o comprobar si hay acuerdo.
 
-Esta sección te ayuda a elegir y usar las plantillas de propuesta predeterminadas de Loomio. Para seguir un proceso completo que incluya discusión, propuestas, enmiendas y conclusión, consulta las [guías para tomar decisiones](/en/guides/making_decisions/). Para cambiar las plantillas disponibles en tu grupo, consulta [Plantillas de encuesta](../poll_templates/).
+Esta sección te ayuda a elegir y usar las plantillas de propuestas predeterminadas de Loomio. Para seguir una secuencia completa de discusión, propuestas, enmiendas y conclusión, usa las [guías para tomar decisiones](/en/guides/making_decisions/). Para cambiar las plantillas disponibles para tu grupo, consulta [Plantillas de encuestas](../poll_templates/).
 
 <!-- translation-section: choose-a-proposal-template -->
 
@@ -33,23 +33,23 @@ Esta sección te ayuda a elegir y usar las plantillas de propuesta predeterminad
 
 | Plantilla | Qué pregunta | Úsala cuando… |
 |---|---|---|
-| [Comprobación de sentido](sense_check/) | ¿Vamos por buen camino? | La idea aún se está desarrollando |
-| [Consejo](advice/) | ¿Qué consejos debe tener en cuenta quien toma la decisión? | Una persona o un equipo es responsable de la decisión |
-| [Consentimiento](consent/) | ¿Es seguro probarlo o hay alguna objeción importante? | El grupo toma decisiones por consentimiento |
+| [Toma de pulso](sense_check/) | ¿Esto va por buen camino? | Una idea todavía está en desarrollo |
+| [Consejo](advice/) | ¿Qué consejos debería considerar quien toma la decisión? | Una persona o un equipo es responsable de la decisión |
+| [Consentimiento](consent/) | ¿Es seguro probar esto o hay alguna objeción relevante? | El grupo toma decisiones por consentimiento |
 | [Consenso](consensus/) | ¿Cuál es tu postura sobre esta propuesta? | El grupo busca un acuerdo colectivo |
 
 ![](proposal_templates_list.png)
 
-Elige la plantilla cuyas opciones de respuesta se ajusten a la pregunta que necesitas responder. La página de cada plantilla explica cuándo usarla, cómo configurarla, cómo se vota y cómo se presentan los resultados.
+Elige la plantilla cuyas opciones de respuesta se ajusten a la pregunta que necesitas resolver. La página de cada plantilla explica sus casos de uso, configuración, formulario de votación y resultados.
 
 <!-- translation-section: other-proposal-templates -->
 
-## Otras plantillas de propuesta
+## Otras plantillas de propuestas
 
-Loomio también ofrece plantillas como Propuesta, Gradientes de concordancia y Mayoría. Algunas están ocultas al principio. Quienes administran el grupo pueden hacerlas disponibles o crear una plantilla con la terminología y las reglas del grupo desde [Plantillas de encuesta](../poll_templates/).
+Loomio también ofrece plantillas como Propuesta, Grados de acuerdo y Mayoría. Algunas están ocultas inicialmente. Los administradores del grupo pueden habilitarlas o crear una plantilla con la terminología y las reglas propias del grupo desde [Plantillas de encuestas](../poll_templates/).
 
 <!-- translation-section: proposal-records -->
 
-## Registro de la propuesta
+## Registros de las propuestas
 
-Mientras la propuesta está abierta, los votos y sus motivos se actualizan, y quienes participan pueden cambiar su respuesta. Cuando se cierre, publica una [conclusión](../outcomes/) que indique la decisión o el siguiente paso. La discusión, la propuesta, los votos, los motivos y la conclusión dejan constancia de cómo el grupo llegó a su decisión.
+Los votos y los motivos se actualizan mientras la propuesta está abierta, y los participantes pueden cambiar su respuesta. Cuando se cierre, publica una [conclusión](../outcomes/) que indique la decisión o el siguiente paso. La discusión, la propuesta, los votos, los motivos y la conclusión forman un registro de cómo el grupo llegó a su decisión.

@@ -1,10 +1,10 @@
 ---
 title: Gestión de integrantes
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/groups/member_management/index.md
+source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
+source_file: docs/en/user_manual/groups/member_management/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: f216b18771a2c2a9
   administering-your-group: 27aed40959adef57
@@ -14,13 +14,13 @@ sections:
   set-title: 835b25d246477b4a
   member-email-addresses: cae570f30b671275
 generated:
-  introduction: 1be9e7cd813983e0
-  administering-your-group: 89c21f34edaf863c
-  managing-subgroups: 3b8dc4f0a798662b
-  removing-members: a8d7acd1da625864
-  leaving-group: '0962a2700dc81612'
-  set-title: 8abb71f3142b4613
-  member-email-addresses: a573565e33d775ca
+  introduction: 5d56139dfa2357d0
+  administering-your-group: 00c83e69da19596e
+  managing-subgroups: a2f493c83ada4ab2
+  removing-members: 07a18ad254596e32
+  leaving-group: 042caa63eb7fbeeb
+  set-title: 826d17f6e95ff907
+  member-email-addresses: 05ba6ecebf58401a
 title_source: 23ac3a7fe9ee72a2
 title_generated: c8901090fb721909
 ---
@@ -29,72 +29,72 @@ title_generated: c8901090fb721909
 
 # Gestión de integrantes
 
-Si eres admin, puedes gestionar a los integrantes desde la pestaña **Integrantes** de la página de tu grupo.
+Si eres admin, puedes gestionar a los miembros desde la pestaña **Integrantes** de la página de tu grupo.
 
-Haz clic en los tres puntos (**⋮**) a la derecha de un integrante para asignarle un título, convertirlo en admin o delegado, o eliminarlo del grupo.
+Haz clic en los tres puntos (**⋮**) a la derecha del miembro del grupo para añadir un título, convertirlo en admin, nombrarlo delegado o eliminarlo del grupo.
 
-![Menú de acciones de un integrante en la página de integrantes de Oatmilk Cooperative](member_management.png)
+![Menú de acciones de un miembro en la página de integrantes de Oatmilk Cooperative](member_management.png)
 
 <!-- translation-section: administering-your-group -->
 
 ## Administrar tu grupo
-En un grupo de Loomio solo hay dos tipos de usuarios: **integrante** y **admin**.
+Solo hay dos tipos de usuarios en un grupo de Loomio: **miembro** y **admin**.
 
-Los admins se encargan de añadir y eliminar integrantes, gestionar sus permisos, establecer los niveles de privacidad del grupo y administrar los planes de suscripción. También pueden ver las direcciones de correo electrónico de los integrantes y exportar los datos del grupo.
+Los admins realizan tareas administrativas para tu grupo, como añadir y eliminar miembros, gestionar los permisos de los miembros, configurar los niveles de privacidad del grupo y gestionar los planes de suscripción. Además, pueden ver las direcciones de correo electrónico de los miembros y exportar los datos del grupo.
 
-Quien crea un grupo de Loomio se convierte en admin de forma predeterminada. Te recomendamos nombrar admin al menos a otra persona de confianza del grupo para que siempre haya alguien que pueda administrarlo. Puedes tener tantos admins como quieras.
+La persona que crea un grupo de Loomio se convierte en admin de forma predeterminada. Te recomendamos que conviertas en admin al menos a otra persona de confianza de tu grupo, para garantizar que siempre haya alguien que pueda administrarlo. Puedes tener tantos admins en tu grupo como quieras.
 
-Para convertir a un integrante en **admin**, ve a la pestaña Integrantes, búscalo y haz clic en los tres puntos (**⋮**) junto a su nombre. Selecciona **Convertir en admin**. Aparecerá una etiqueta `Admin` junto a su nombre.
+Para convertir a un miembro en **admin**, ve a la pestaña Integrantes, busca al miembro y haz clic en los tres puntos (**⋮**) junto a su nombre. Elige **Convertir en admin**. Aparecerá una etiqueta `Admin` junto a su nombre.
 
-![Opción Convertir en admin en el menú de un integrante](member_make_admin.png)
+![Acción Convertir en admin en el menú de un miembro](member_make_admin.png)
 
 <!-- translation-section: managing-subgroups -->
 
 ## Gestionar subgrupos
-Si eres admin de un grupo principal u organización, tienes permisos adicionales en los subgrupos __cerrados__.
+Si eres admin de un grupo principal o de una organización, tienes permisos adicionales sobre los subgrupos __cerrados__.
 
-Puedes unirte a cualquier subgrupo cerrado haciendo clic en el botón «Unirse al grupo», situado a la izquierda de la página del subgrupo, justo debajo de las pestañas.
+Puedes unirte a cualquier subgrupo cerrado haciendo clic en el botón "Unirse al grupo" a la izquierda de la página del subgrupo correspondiente, justo debajo de las pestañas.
 
 ![Botón Unirse al grupo en un subgrupo cerrado de Oatmilk Cooperative](member_join_subgroup.png)
 
-Una vez que te unas al subgrupo, también podrás convertirte en su admin, igual que puedes nombrar admin a cualquier otra persona.
+Una vez que te hayas unido al subgrupo, también podrás convertirte en admin de ese subgrupo, del mismo modo que convertirías a cualquier otra persona en admin.
 
 >[!Note]
 >Estos permisos no se aplican a los [subgrupos **secretos**](/en/user_manual/groups/subgroups/?highlight=secret#permissions).
 
 <!-- translation-section: removing-members -->
 
-## Eliminar integrantes
-Al hacer clic en **Eliminar del grupo**, se te pedirá que confirmes la eliminación. Esa persona dejará de tener acceso a las páginas, los hilos, los sondeos y las propuestas del grupo. Tampoco recibirá más correos electrónicos ni notificaciones sobre la actividad del grupo. Sus comentarios y votos permanecerán intactos.
+## Eliminar miembros
+Cuando hagas clic en **Eliminar del grupo**, se te pedirá que confirmes la eliminación. Una vez eliminado, este usuario ya no tendrá acceso a las páginas, los hilos, las encuestas ni las propuestas del grupo. Dejará de recibir correos electrónicos y notificaciones sobre la actividad del grupo. Sin embargo, los comentarios y votos que haya publicado se conservarán sin cambios.
 
-![Opción Eliminar del grupo en el menú de un integrante](member_remove.png)
+![Acción Eliminar del grupo en el menú de un miembro](member_remove.png)
 
-Si quieres, puedes volver a añadir al grupo a los integrantes que hayas eliminado.
+Puedes volver a añadir al grupo a los miembros eliminados más adelante si quieres.
 
 <!-- translation-section: leaving-group -->
 
-## Salir de un grupo
-Para salir de un grupo, ve a su página, abre el menú de los tres puntos y haz clic en **Salir del grupo**.
+## Salir del grupo
+Para salir de un grupo, ve a la página del grupo, abre el menú de tres puntos y haz clic en **Salir del grupo**.
 
-![Opción Salir del grupo en el menú de configuración de Oatmilk Cooperative](member_leave_group.png)
+![Acción Salir del grupo en el menú de configuración de Oatmilk Cooperative](member_leave_group.png)
 
 <!-- translation-section: set-title -->
 
-## Añadir un título
-En la pestaña Integrantes, puedes usar **Título** para indicar tu función en el grupo o la organización a la que representas. Tú o un admin del grupo podéis cambiar tu título desde **Añada un título**, en el menú de los tres puntos junto a tu nombre.
+## Añadir título
+En la pestaña Integrantes, también puedes indicar tu función dentro del grupo o identificar a una organización a la que representas mediante el **Título**. Tú o un admin del grupo podéis cambiar tu título con **Añadir título del grupo** desde el menú de tres puntos junto a tu nombre.
 
-![Opción Añada un título en el menú de un integrante](member_set_title.png)
+![Acción Añadir título del grupo en el menú de un miembro](member_set_title.png)
 
-Puedes tener un título distinto en cada subgrupo.
+Puedes tener títulos diferentes en distintos subgrupos.
 
 <!-- translation-section: member-email-addresses -->
 
-## Direcciones de correo electrónico de los integrantes
+## Direcciones de correo electrónico de los miembros
 
-Solo los admins pueden ver las direcciones de correo electrónico de los integrantes del grupo. A veces es necesario para revisar quiénes pertenecen al grupo.
+Solo los admins pueden ver las direcciones de correo electrónico de los miembros del grupo. Esto a veces es necesario para revisar quiénes forman parte de un grupo.
 
-Para ver las direcciones de correo electrónico de los integrantes, usa la [exportación de datos](/en/user_manual/groups/data_export/) para descargar un archivo CSV y ábrelo en Excel o Google Sheets.
+Para ver las direcciones de correo electrónico de los miembros, usa la [exportación de datos](/en/user_manual/groups/data_export/) para descargar un archivo CSV y ábrelo en Excel o Google Sheets.
 
-El archivo de exportación de datos del grupo muestra a todas las personas de cada subgrupo y sus direcciones de correo electrónico.
+El archivo de datos exportados del grupo muestra a cada persona y su dirección de correo electrónico en cada subgrupo.
 
-También puedes buscar integrantes por dirección de correo electrónico en la pestaña Integrantes. Si quieres eliminar a alguien, puedes buscarlo por correo electrónico y eliminarlo.
+También puedes buscar miembros por su dirección de correo electrónico en la pestaña Integrantes. Si ves a alguien a quien quieres eliminar, puedes buscarlo por su correo electrónico para eliminarlo.
