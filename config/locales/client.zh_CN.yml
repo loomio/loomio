@@ -201,7 +201,7 @@ zh_CN:
     only_show_tags_in_this_group: 仅显示此组中的标签
   poll_types:
     proposal: 提议
-    count: 选择加入
+    count: 报名
     check: 意见征询
     poll: 投票
     dot_vote: 投票
@@ -295,14 +295,14 @@ zh_CN:
     action:
       print: 打印
       preview: 预览
-      pin: 别针
+      pin: 置顶
       unpin: 取消固定
       search: 搜索
       filter: 筛选
       back: 后退
       next: 下一个
       close: 关闭
-      reopen: 重新打开
+      reopen: 重新开放
       save: 保存
       move: 移动
       save_changes: 保存更改
@@ -507,7 +507,7 @@ zh_CN:
     loud_label: 所有活动
     normal_label: 公告
     quiet_label: 没有邮件
-    mute_label: 沉默的
+    mute_label: 静音
     saved: 通知设置已更新
     discussion:
       title: 讨论通知
@@ -686,13 +686,13 @@ zh_CN:
     email_and_push_when_notified: 收到通知时发送电子邮件和推送通知
     email_when_notified: 收到通知时发送电子邮件
     push_when_notified: 收到通知时发送推送通知
-    daily_catch_up_email: 每日简报邮件
+    daily_catch_up_email: 每日摘要邮件
     in_app_only: 仅限应用内使用
     email_and_device_when_notified: 收到通知时发送电子邮件和设备通知
     device_notification_when_notified: 收到通知时发送设备通知
     no_notifications: 无通知
-    catch_up_email_every_second_day: 每隔一天发送一次进度邮件
-    weekly_catch_up_email: 每周简报邮件
+    catch_up_email_every_second_day: 每隔一天发送一次摘要邮件
+    weekly_catch_up_email: 每周摘要邮件
   search_modal:
     all_content: 所有内容
     best_match: 最佳匹配
@@ -708,7 +708,7 @@ zh_CN:
     search_files_short: 搜索文件
     search_subgroups_short: 搜索子群组
     search_files: 在 %{name} 中搜索文件
-    recent_title: 前往控制面板
+    recent_title: 前往仪表板
     unread_title: 查看未读活动
     notifications: 通知面板
     search:
@@ -724,7 +724,7 @@ zh_CN:
     group_and_subgroups: "%{group} 和子群组"
     thread_nav: 主题菜单
   user_dropdown:
-    pin_sidebar: 别针侧边栏
+    pin_sidebar: 固定侧边栏
     unpin_sidebar: 取消固定侧边栏
     enable_beta_features: 启用测试版功能
     disable_beta_features: 禁用测试版功能
@@ -849,7 +849,7 @@ zh_CN:
       poll_expired: "%{poll_type} 已结束：%{title}"
       poll_expired_author: 分享您的 %{poll_type} 的结论：%{title}
       poll_option_added: "%{actor} 为 %{title} 添加了选项"
-      poll_reopened: "%{actor} 重新打开了 %{poll_type}: %{title}"
+      poll_reopened: "%{actor} 重新开放了 %{poll_type}: %{title}"
       poll_reminder: "%{actor} 提醒您为 %{title} 投票"
       poll_reminder_wip: "%{actor} 提醒您提供反馈：%{title}"
       reaction_created: "%{actor} 对您的 %{model} 在 %{title} 中做出了 %{reaction} 的反应"
@@ -889,7 +889,7 @@ zh_CN:
       poll_expired: "%{poll_type} 已关闭"
       poll_expired_author: 分享您的 %{poll_type} 的结论
       poll_option_added: "%{actor} 为 %{poll_type} 添加了选项"
-      poll_reopened: "%{actor} 重新打开了 %{poll_type}"
+      poll_reopened: "%{actor} 重新开放了 %{poll_type}"
       poll_reminder: "%{actor}提醒您投票"
       poll_reminder_wip: "%{actor} 提醒您提供反馈"
       reaction_created: "%{actor} 对您的 %{model} 做出了 %{reaction} 反应"
@@ -1052,7 +1052,7 @@ zh_CN:
       topic: 帖子里的所有人
       voters: 所有受邀投票的人
       decided_voters: 所有投票的人
-      undecided_voters: 未决投票者
+      undecided_voters: 未投票的投票者
       non_voters: "%{name} 的成员尚未受邀"
     form:
       group_has_no_members_yet: 您是群组中唯一的成员。在发起讨论或做出决定之前，您可能需要邀请一些人加入您的群组。
@@ -1320,7 +1320,7 @@ zh_CN:
   context_panel:
     thread_status:
       pinned: 此帖子已置顶，将始终显示在群组帖子列表的顶部，供所有用户查看。
-      locked: 此讨论已锁定。它将不再显示在控制面板上，并在群组页面的“已锁定”列表中列出。
+      locked: 此讨论已锁定。它将不再显示在仪表板上，并在群组页面的“已锁定”列表中列出
   delete_group_modal:
     title: 删除组
     subgroup_title: 删除子群组
@@ -1428,12 +1428,12 @@ zh_CN:
       normal: 仅通过电子邮件通知重要动态：新帖子和提案、结论等。
       normal_aria_description: 您对此群组的通知级别设置为“正常”。您只会收到重要动态的电子邮件通知，例如有人发起新帖子、提出提案或设定结论时。
       normal_message: 您只会收到有关“%{name}”中重要事件的电子邮件。
-      quiet: 请勿就此群组事宜发送电子邮件。活动将显示在控制面板上。
-      quiet_aria_description: 您已将此群组的通知音量设置为“静音”。您不会收到有关此群组活动的电子邮件通知。群组活动将显示在您的控制面板上。
+      quiet: 请勿就此群组事宜发送电子邮件。活动将显示在仪表板上。
+      quiet_aria_description: 您已将此群组的通知级别设置为“安静”。您不会收到有关此群组活动的电子邮件通知。群组活动将显示在您的仪表板上。
       quiet_message: 您不会收到有关“%{name}”中活动的电子邮件。
-      mute: 从控制面板中隐藏此群组，除非提及 {'@'}，否则不发出通知。
-      mute_aria_description: 您已将此群组的通知音量设置为静音。除非有人提及您，否则您不会收到电子邮件，群组活动也不会显示在您的控制面板上。
-      mute_message: "“%{name}” 已从您的控制面板中移除。"
+      mute: 从仪表板中隐藏此群组，除非有人用 {'@'} 提及您，否则不发出通知。
+      mute_aria_description: 您已将此群组的通知级别设置为静音。除非有人提及您，否则您不会收到电子邮件，群组活动也不会显示在您的仪表板上。
+      mute_message: "“%{name}” 已从您的仪表板中移除。"
     privacy:
       private: 隐私设置：本群组仅成员可见。
       parent_members: 隐私设置：此群组对 %{parentGroupName} 的成员和 %{groupName} 的成员可见。
@@ -1808,14 +1808,14 @@ zh_CN:
     group_notifications: 群组通知
     group_notifications_description: 更改群组的活动级别和频道
     choose_email_and_push_updates: 为电子邮件和推送分别设置。
-    catch_up_email: 补发邮件
+    catch_up_email: 摘要邮件
     catch_up_email_description: 选择何时接收未读通知和未读活动列表的更新信息
   thread_preview:
     replies_count: "%{count} 条回复"
     unread_count: "%{count} 未读"
     items_count: "%{count} 个项目"
   dashboard_page:
-    dashboard: 控制面板
+    dashboard: 仪表板
     polls_to_vote_on: 待参与的投票
     no_polls_to_vote_on: 您无需参与任何投票。
     recent_polls: 近期投票
@@ -1844,14 +1844,14 @@ zh_CN:
     filtering:
       filter_threads: 过滤帖子
       filter_threads_aria_label: 过滤帖子
-      dropdown_heading: 筛选控制面板
+      dropdown_heading: 筛选仪表板
       all: 近期讨论
       all_aria_label: 当前显示最新帖子
       all_description: 查看最新帖子
       proposals: 提案
       proposals_aria_label: 当前显示有活跃提案的帖子。
       proposals_description: 仅查看有活跃提案的帖子。
-      muted: 静默的线索
+      muted: 已静音的帖子
       muted_aria_label: 当前显示已静音的帖子
       muted_description: 仅显示已被静音的帖子
     thread_preview:
@@ -2057,7 +2057,7 @@ zh_CN:
     consent_title: 同意
     consensus_title: 共识
     proposal_title: 提议
-    count_title: 选择加入
+    count_title: 报名
     check_title: 意见征询
     poll_title: 投票
     meeting: 会议
@@ -2157,7 +2157,7 @@ zh_CN:
     current_results: 当前结果
     responses: 回复
     close_poll_type: 关闭 %{pollType}
-    close_early: 提前关门
+    close_early: 提前结束
     totals: 总计
     participate: 加入
     vote: 投票
@@ -2370,7 +2370,7 @@ zh_CN:
       voting_title: 投票结束前24小时，发送提醒
       nobody: 无人
       author: 作者（我）
-      undecided_voters: 未决投票者
+      undecided_voters: 未投票的投票者
       voters: 所有投票者
     notify_on_participate:
       title: 当有人参与时通知我
@@ -2392,7 +2392,7 @@ zh_CN:
     close_poll_type: 关闭 %{poll_type}
     poll_type_closed: "%{poll_type} 已关闭"
   poll_common_reopen_form:
-    title: 重新打开 %{poll_type}
+    title: 重新开放 %{poll_type}
     helptext: 如果人们需要更多时间参与，请重新开放 %{poll_type} 投票。
     success: "%{poll_type} 重新开放"
   poll_common_move_form:
@@ -2419,12 +2419,12 @@ zh_CN:
     started_by: 由 %{name} 发起
   poll_common_votes_panel:
     vote_removed: 投票已移除
-    undecided: 未决定
+    undecided: 未投票
     newest_first: 最新优先
     oldest_first: 最早优先
     priority_first: 同意优先
     priority_last: 否决优先
-    undecided_first: 暂定
+    undecided_first: 未投票者优先
     no_votes_yet: 目前还没有人投票。
     change_results_order: 更改结果顺序
     name_or_username: 真实姓名或用户名
@@ -2445,9 +2445,9 @@ zh_CN:
     participation_records_restricted: 投票结束后，您可以查看所有参与者名单
     vote_weight: 投票权重 %{weight}
   poll_common_undecided_panel:
-    show_undecided: 显示 %{count} 个未决定
+    show_undecided: 显示 %{count} 位未投票者
     show_invitations: 待处理的邀请
-    undecided_users: 未决定（%{count}）
+    undecided_users: 未投票（%{count}）
     invitation_count_singular: 另有一人已通过电子邮件受邀加入。
     invitation_count_plural: 已有 %{count} 人通过电子邮件受邀参与。
   poll_common_undecided_user:
@@ -2531,7 +2531,7 @@ zh_CN:
       ranked_choice_hint: 投票者按喜好程度从高到低排列选项。
       time_poll: 时间投票
       time_poll_hint: 投票者需表明他们何时可以加入会议。
-      rank: 秩
+      rank: 排名
       time: 时间
       stv: 单记可转移投票制选举
       stv_hint: 使用单记可转移投票制按比例选出多名获胜者
@@ -2683,7 +2683,7 @@ zh_CN:
     minimum_stance_choices_hint: 例如：请列出您最喜欢的3种冰淇淋口味
     ranked_choice_created: 创建排名选择
     ranked_choice_updated: 排名选择已更新
-    rank: 秩
+    rank: 排名
     points: 积分
     average: 平均的
     mean: 意思是
@@ -2736,7 +2736,7 @@ zh_CN:
     total: 全部的
   poll_remove_vote:
     title: 取消投票？
-    helptext: 您确定要撤回投票吗？撤回后，您的状态将显示为“未决定”，如果您愿意，以后可以再次投票。
+    helptext: 您确定要撤回投票吗？撤回后，您的状态将显示为“未投票”，如果您愿意，以后可以再次投票。
     confirm: 移除投票
     success: 投票已移除
   poll_poll_vote_form:
@@ -2774,10 +2774,10 @@ zh_CN:
     discussion_edited: "<a class='actor-link' href='/u/%{username}'>%{author}</a>编辑了帖子背景"
     discussion_moved: "<a class='actor-link' href='/u/%{username}'>%{author}</a>将主题从<strong>%{title}</strong>移动了。"
     discussion_closed: "<a class='actor-link' href='/u/%{username}'>%{author}</a> 关闭了该主题"
-    discussion_reopened: "<a class='actor-link' href='/u/%{username}'>%{author}</a>重新打开了该主题"
+    discussion_reopened: "<a class='actor-link' href='/u/%{username}'>%{author}</a> 重新开放了该帖子"
     new_comment: "<a class='actor-link' href='/u/%{username}'>%{author}</a>"
     outcome_created: "<a class='actor-link' href='/u/%{username}'>%{author}</a> 分享了结论"
-    poll_reopened: "<a class='actor-link' href='/u/%{username}'>%{author}</a> 重新打开了 %{polltype}"
+    poll_reopened: "<a class='actor-link' href='/u/%{username}'>%{author}</a> 重新开放了 %{polltype}"
     poll_closed_by_user: "<a class='actor-link' href='/u/%{username}'>%{author}</a>关闭了 %{polltype}"
     poll_created: "<a class='actor-link' href='/u/%{username}'>%{author}</a>发起了一项 %{polltype}"
     poll_edited: "<a class='actor-link' href='/u/%{username}'>%{author}</a>编辑了 %{polltype}"

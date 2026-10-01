@@ -241,7 +241,7 @@ zh_CN:
       process_introduction_v2: <p><strong>时间投票</strong>可以帮助您了解人们的空闲时间。添加您建议的时间，参与者将在其所在时区看到这些时间。投票结束后，设置结论，Loomio 会向所有人发送日历邀请。</p><p><a target="_blank" href="/docs/en/user_manual/polls/meeting_polls#time-poll">阅读更多关于时间投票的信息</a>。</p>
     opt_in:
       process_subtitle: 寻找志愿者或招募参与者
-      process_introduction: <p>使用选择加入功能邀请人们加入团队、委员会或工作组，或参加活动。</p><p> “选择加入”有两种投票选项：接受或拒绝。</p><p>您可以设定一个目标人数，例如 3 人加入您的工作组。</p><p> <a target="_blank" href="/docs/en/user_manual/polls/meeting_polls#opt-in">了解更多关于选择加入的信息</a>。</p>
+      process_introduction: '<p>使用报名功能邀请人们加入团队、委员会或工作组，或参加活动。&nbsp;&nbsp;</p><p>“报名”有两种投票选项：接受或拒绝。&nbsp;</p><p>您可以设定目标人数，例如邀请 3 人加入您的工作组。</p> <p><a target="_blank" href="/docs/en/user_manual/polls/meeting_polls#opt-in">了解更多关于报名的信息</a>。</p> '
       title: 成立工作组，负责起草新的可持续发展政策
       details: "<p><strong>您邀请大家参加的是什么团队、工作组或活动？</strong></p><p></p><p><strong>为什么这很重要？</strong></p><p></p><p><strong>你要求人们做什么？</strong></p><p></p><p>选择“接受”即可参与！</p>"
       accept_meaning: 我愿意参加
@@ -446,7 +446,7 @@ zh_CN:
         choose: 选择
         allocate: 分配
         score: 分数
-        rank: 秩
+        rank: 排名
         time: 时间投票
   user:
     deleted_user: 已删除用户
@@ -637,11 +637,11 @@ zh_CN:
   announcement_count_emails: "%{count}封邮件"
   email_actions:
     unfollowed_discussion: 您已关闭此邮件主题的电子邮件通知。
-    catch_up_link: 补发邮件设置
-    catch_up_title: 补发邮件设置
+    catch_up_link: 摘要邮件设置
+    catch_up_title: 摘要邮件设置
     catch_up_description: 选择接收群组活动摘要的频率
-    catch_up_schedule: 发送一封补发邮件
-    catch_up_saved: 补发邮件设置已更新
+    catch_up_schedule: 发送一封摘要邮件
+    catch_up_saved: 摘要邮件设置已更新
     catch_up_days:
       never: 绝不
       every_day: 每天
@@ -735,8 +735,8 @@ zh_CN:
       not_invited: 未受邀
       please_respond: 请回复
       time_zone: "（时间以%{zone}显示）"
-      undecided_members: 未决成员（%{count}）
-      undecided_visitors: 未决定宾客人数 (%{count})
+      undecided_members: 未投票成员 (%{count})
+      undecided_visitors: 未投票访客 (%{count})
       more_undecided: 还有 %{count} 个...
       vote_now: 立即投票
       you_have_until: 您可以在 %{when} 之前参与。
