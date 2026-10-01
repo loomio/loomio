@@ -174,7 +174,7 @@ es:
         choose: Elegir
         allocate: Asignar
         score: 'Puntuación '
-        rank: Rango
+        rank: Ordenar
         time: Coordinar horario
   user:
     deleted_user: Usuario Eliminado

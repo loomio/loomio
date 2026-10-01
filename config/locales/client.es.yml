@@ -2307,12 +2307,12 @@ es:
     started_by: Iniciado por %{name}
   poll_common_votes_panel:
     vote_removed: Voto eliminado
-    undecided: No resuelto
+    undecided: Sin votar
     newest_first: El más reciente primero
     oldest_first: Los más viejos primero
     priority_first: De acuerdo primero
     priority_last: Bloqueados primero
-    undecided_first: Primero el no resuelto
+    undecided_first: Sin votar primero
     no_votes_yet: Todavía no se han realizado votos.
     change_results_order: Cambiar orden de resultados
     none_of_the_above: "(Ninguno de los mencionados) "
@@ -2421,7 +2421,7 @@ es:
     minimum_stance_choices_hint: es decir, clasifica tus 3 mejores sabores de helado
     ranked_choice_created: Votación preferencial creada
     ranked_choice_updated: Votación preferencial actualizada
-    rank: Rango
+    rank: Ordenar
     points: Puntos
     average: Media
     mean: Principal
@@ -2900,7 +2900,7 @@ es:
       choose: Elegir
       simple_poll: Encuesta simple
       choose_hint: Los votantes eligen la mejor opción (u opciones)
-      score: Puntaje
+      score: Puntuar
       score_hint: Los votantes asignan una puntuación a cada opción
       allocate: Asignar
       allocate_hint: Los votantes asignan un presupuesto de puntos entre las opciones
@@ -2908,7 +2908,7 @@ es:
       ranked_choice_hint: Los votantes ordenan las opciones desde la más preferida hasta la menos preferida
       time_poll: Encuesta de horario
       time_poll_hint: Los votantes indican cuándo están disponibles para reunirse
-      rank: Rango
+      rank: Ordenar
       time: Tiempo
       stv: Elecciones STV
       stv_hint: Elegir a varios ganadores proporcionalmente mediante el voto único transferible.
