@@ -176,10 +176,10 @@ pl:
   poll_types:
     proposal: propozycja
     count: wyrazić zgodę
-    check: kontrola zmysłów
+    check: sondowanie nastrojów
     poll: głosowanie
-    dot_vote: głosowanie kropkowe
-    meeting: ankieta dotycząca daty spotkania
+    dot_vote: podział punktów
+    meeting: wybór terminu
     ranked_choice: wybór rankingowy
     score: ocena
     question: runda pytań
@@ -343,7 +343,7 @@ pl:
     formatting_help:
       label: Formatowanie
       title: Naucz się używać Markdown, by sformatować swój tekst
-    thread: Nitka
+    thread: Wątek
     commercial: Handlowy
     nonprofit: Niedochodowy
     opening_in: Otwarcie %{time}
@@ -773,7 +773,7 @@ pl:
   notification_models:
     comment: skomentuj w
     poll: 'głosowanie:'
-    outcome: 'rezultat:'
+    outcome: 'konkluzja: '
     stance: 'głosować:'
     discussion: 'dyskusja:'
   notifications:
@@ -789,9 +789,9 @@ pl:
       membership_request_approved: "%{actor} zatwierdził Twoją prośbę o dołączenie do %{title}"
       new_comment: "%{actor} skomentował w: %{title}"
       new_coordinator: "%{actor} mianował Cię administratorem %{title}"
-      outcome_announced: "%{actor} udostępnił/a %{poll_type} wynik: %{title}"
-      outcome_created: "%{actor} udostępnił/a %{poll_type} wynik: %{title}"
-      outcome_updated: "%{actor} zaktualizował/a %{poll_type} wynik: %{title}"
+      outcome_announced: "%{actor} publikuje konkluzję (%{poll_type}): %{title}"
+      outcome_created: "%{actor} publikuje konkluzję (%{poll_type}): %{title}"
+      outcome_updated: "%{actor} aktualizuje konkluzję (%{poll_type}): %{title}"
       outcome_review_due: 'Czas przejrzeć wyniki: %{title}'
       poll_closed_by_user: "%{actor} zamknął %{poll_type}: %{title}"
       poll_closing_soon: "%{poll_type} zostanie zamknięte w ciągu 24 godzin: %{title}"
@@ -828,9 +828,9 @@ pl:
       membership_resent: "%{actor} zaprosił Cię do przyłączenia się do grupy"
       membership_requested: "%{actor} poprosił o dołączenie do Twojej grupy"
       membership_request_approved: "%{actor} zatwierdził Twoją prośbę o dołączenie do %{title}"
-      outcome_announced: "%{actor} udostępnił wynik %{poll_type}"
-      outcome_created: "%{actor} udostępnił wynik %{poll_type}"
-      outcome_review_due: Czas przejrzeć wynik %{poll_type}
+      outcome_announced: "%{actor} udostępnia konkluzję (%{poll_type})"
+      outcome_created: "%{actor} udostępnia konkluzję (%{poll_type})"
+      outcome_review_due: Czas przejrzeć konkluzję (%{poll_type})
       poll_announced_wip: "%{actor} chce Twojej opinii na temat %{poll_type}"
       poll_closed_by_user: "%{actor} zamknął %{poll_type}"
       poll_closing_soon: "%{poll_type} zamyka się za 24 godziny"
@@ -856,7 +856,7 @@ pl:
       discussion_closed: "%{actor} zamknął dyskusję"
       new_discussion: "%{actor} rozpoczął dyskusję"
       new_comment: "%{actor} skomentował dyskusję"
-      outcome_updated: "%{actor} zaktualizował wynik"
+      outcome_updated: "%{actor} aktualizuje konkluzję"
       thread_locked: "%{actor} zablokował wątek"
       membership_request_declined: Twoja prośba o dołączenie do %{title} została odrzucona
     hints:
@@ -876,17 +876,17 @@ pl:
       new_coordinator: "%{actor} mianował Cię administratorem %{title}"
       new_delegate: "%{actor} nadał Ci status delegata z prawem głosu w %{title}"
       new_discussion: "%{title}"
-      outcome_announced: 'Wynik %{poll_type}: %{title}'
-      outcome_created: 'Wynik %{poll_type}: %{title}'
-      outcome_updated: 'Zaktualizowano wynik %{poll_type}: %{title}'
-      outcome_review_due: 'Czas przejrzeć wynik: %{title}'
+      outcome_announced: 'Konkluzja (%{poll_type}): %{title}'
+      outcome_created: 'Konkluzja (%{poll_type}): %{title}'
+      outcome_updated: 'Zaktualizowano konkluzję (%{poll_type}): %{title}'
+      outcome_review_due: 'Czas przejrzeć konkluzję: %{title}'
       poll_closed_by_user: "%{actor} zamknął %{poll_type}: %{title}"
       poll_closing_soon: "%{poll_type} zamyka się za 24 godziny: %{title}"
       poll_closing_soon_author: 'Twoja ankieta %{poll_type} zostanie zamknięta za 24 godziny: %{title}'
       poll_created: "%{poll_type}: %{title}"
       poll_edited: "%{actor} zaktualizował %{poll_type}: %{title}"
       poll_expired: "%{poll_type} zostało zamknięte: %{title}"
-      poll_expired_author: 'Opublikuj wynik: %{title}'
+      poll_expired_author: 'Opublikuj konkluzję: %{title}'
       poll_option_added: "%{actor} dodał opcje do %{title}"
       poll_reopened: 'Głosowanie przedłużone: %{title}'
       poll_reminder: "%{actor} przypomina o głosowaniu na %{title}"
@@ -965,7 +965,7 @@ pl:
     send_discussion: Wyślij wątek
     send_group: Zaproś ludzi do %{name}
     send_poll: Wyślij %{type}
-    send_outcome: Wyślij wynik
+    send_outcome: Wyślij konkluzję
     cannot_reveal_when_anonymous: Niestety, nie możemy ujawnić, kto głosował lub nie głosował w anonimowej ankiecie.
     group_notification_history: Historia zaproszeń do grupy
     poll_notification_history: Historia powiadomień o ankiecie
@@ -989,13 +989,13 @@ pl:
     new_discussion: "%{name} zaprosił %{length} osób do wątku:"
     discussion_announced: "%{name} zaprosił %{length} osób do wątku:"
     poll_created: "%{name} zaprosił %{length} osób do głosowania:"
-    outcome_created: "%{name} udostępnił wynik %{length} osobom:"
-    outcome_announced: "%{name} udostępnił wynik %{length} osobom:"
+    outcome_created: "%{name} udostępnia konkluzję %{length} osobom:"
+    outcome_announced: "%{name} udostępnia konkluzję %{length} osobom:"
     announcement_created: "%{name} zaprosił %{length} osób do wątku:"
     discussion_edited: "%{name} edytował wątek, powiadamiając %{length} osób:"
     poll_edited: "%{name} edytował ankietę, powiadamiając %{length} osób:"
-    outcome_edited: "%{name} edytował wynik, powiadamiając %{length} osób:"
-    outcome_updated: "%{name} edytował wynik, powiadamiając %{length} osób:"
+    outcome_edited: "%{name} edytuje konkluzję, powiadamiając %{length} osób:"
+    outcome_updated: "%{name} edytuje konkluzję, powiadamiając %{length} osób:"
     poll_closing_soon: 'Przypomnienie o zamknięciu ankiety użytkownika %{name} powiadomiło %{length} osób:'
     poll_reminder: "%{name} przypomniał %{length} osobom o głosowaniu:"
     audiences:
@@ -1048,7 +1048,7 @@ pl:
         title: Powiadamiaj o zmianach
         helptext: Kogo chcesz powiadomić o tej aktualizacji?
       outcome_announced:
-        title: Udostępnij wynik
+        title: Udostępnij konkluzję
         helptext: Podsumuj wyniki procesu, w tym wszelkie stwierdzone ustalenia lub ujawnione problemy.
       anyone_can_participate: Każda osoba z linkiem może wziąć udział
       placeholder: Możesz podać nazwiska lub adresy e-mail
@@ -1118,10 +1118,10 @@ pl:
     reply_to_comment: Odpowiedz
     fork_comment: Rozdziel wątek
     translate_comment: Przetłumacz komentarz
-    edit_outcome: Edytuj wynik
+    edit_outcome: Edytuj konkluzję
     announce_outcome: Powiadom ludzi o wyniku
     announce_outcome_active: "(Nikt jeszcze nie został poinformowany o wyniku)"
-    translate_outcome: Przetłumacz wynik
+    translate_outcome: Przetłumacz konkluzję
     show_history: Pokaż historię edycji
     edited: Edytowane
     show_edits: Pokaż zmiany
@@ -1394,7 +1394,7 @@ pl:
     change_cover_image: zmień zdjęcie okładki
     change_logo: zmienić logo
     permissions_explaination: 'Istnieją dwa poziomy członkostwa, jakie osoba może mieć w grupie: administrator i członek. Administratorzy mogą edytować ustawienia grupy, mianować innych administratorami i wykonywać wszystkie czynności wymienione poniżej.'
-    parent_group: Grupa rodziców
+    parent_group: Grupa nadrzędna
     new_organisation: Nowa grupa
     new_group: Nowa grupa
     new_subgroup: Nowa podgrupa
@@ -1867,7 +1867,7 @@ pl:
     n_more: Załaduj %{count} odpowiedzi
     add_comment: Dodaj komentarz
     add_poll: Dodaj ankietę
-    add_outcome: Dodaj wynik
+    add_outcome: Dodaj konkluzję
     comment: Skomentuj
     facilitate: Ułatwiać
     start_decision: Rozpocznij decyzję
@@ -1974,12 +1974,12 @@ pl:
     consensus_title: Zgoda
     proposal_title: Propozycja
     count_title: Zgoda
-    check_title: Kontrola zmysłów
+    check_title: Sondowanie nastrojów
     poll_title: Ankieta
     meeting: Spotkanie
     score_title: Ocena
-    dot_vote_title: Głosowanie w kropki
-    meeting_title: Ankieta dotycząca daty spotkania
+    dot_vote_title: Podział punktów
+    meeting_title: Wybór terminu
     ranked_choice_title: Wybór rankingowy
     gradients_of_agreement_title: Gradienty zgodności
     majority_title: Większość
@@ -2076,8 +2076,8 @@ pl:
     participate: Weź udział
     vote: Głosuj
     votes: Głosy
-    update_outcome: Zaktualizuj wynik
-    outcome: Wynik
+    update_outcome: Zaktualizuj konkluzję
+    outcome: Konkluzja
     outcomes: Wyniki
     statement: Komunikat
     change_your_stance: Edytuj odpowiedź
@@ -2094,7 +2094,7 @@ pl:
     share_count: Udostępnij zaznaczenie
     start_poll: Rozpocznij decyzję
     publish_poll: Udostępnij ankietę
-    share_outcome: Udostępnij wynik
+    share_outcome: Udostępnij konkluzję
     view_all: Pokaż wszystkie
     save_changes: Zapisz
     change_vote: Zmień swój głos
@@ -2104,7 +2104,7 @@ pl:
     too_long: Za długo
     edit_warning: Edycja jest zalecana tylko w przypadku drobnych zmian lub napraw błędów pisowni. W przypadku istotnych zmian zakończ %{pollType} i utwórz nową.
     no_voting: Wyłącznie do dyskusji, głosowanie wyłączone
-    post_outcome: Opublikuj wynik
+    post_outcome: Opublikuj konkluzję
     view_all_votes: Zobacz wszystkie głosy
     you_voted: Głosowałeś
     these_are_templates: Oto szablony decyzji w Twojej grupie. Kliknij szablon, aby rozpocząć nową decyzję. Administratorzy mogą dostosować wszystkie szczegóły szablonu, aby odpowiadał on praktykom Twojej organizacji i był łatwy do znalezienia i użycia przez członków.
@@ -2336,20 +2336,20 @@ pl:
   poll_common_set_outcome_panel:
     enter_outcome: Wprowadź wynik
     poll_type: Ta ankieta %{poll_type} została zamknięta. Poświęć trochę czasu na rozważenie wyników, a następnie podziel się wynikami, aby ludzie wiedzieli, co będzie dalej.
-    enter_an_outcome: Wprowadź wynik
+    enter_an_outcome: Wprowadź konkluzję
   poll_common_outcome_form:
     review_due_in_days: Sprawdź decyzję po ilu dniach?
     review_date: Data recenzji
     review_date_hint: Ustaw datę przeglądu decyzji (opcjonalnie)
     who_to_notify: Kogo chcesz powiadomić o tym wyniku? (opcjonalny)
     outcome_statement_template: Wzór zestawienia wyników
-    new_title: 'Wprowadź wynik '
-    update_title: Zaktualizuj wynik
-    outcome_created: Wynik utworzony
-    outcome_updated: Wynik zaktualizowany
+    new_title: Udostępnij konkluzję
+    update_title: Zaktualizuj konkluzję
+    outcome_created: Konkluzja utworzona
+    outcome_updated: Konkluzja zaktualizowana
     statement_placeholder: Podsumuj odpowiedzi i wyjaśnij co stanie się następnie
     you_will_be_notified: Zostaniesz powiadomiony w dniu analizy danych
-    submit: Udostępnij wynik
+    submit: Udostępnij konkluzję
     review_due_in_days_hint: Liczba dni oczekiwania przed rozpatrzeniem decyzji (opcjonalnie).
     statement_template_hint: Podaj szablon do zapisania wyniku decyzji. (opcjonalnie)
     statement_template_placeholder: Dziękujemy za udział! Kworum zostało osiągnięte i mamy wsparcie, aby kontynuować.
@@ -2510,7 +2510,7 @@ pl:
     discussion_closed: "<a class='actor-link' href='/u/%{username}'>%{author}</a> zamknął wątek"
     discussion_reopened: "<a class='actor-link' href='/u/%{username}'>%{author}</a> ponownie otworzył wątek"
     new_comment: "<a class='actor-link' href='/u/%{username}'>%{author}</a>"
-    outcome_created: "<a class='actor-link' href='/u/%{username}'>%{author}</a> udostępnił wynik"
+    outcome_created: "<a class='actor-link' href='/u/%{username}'>%{author}</a> udostępnia konkluzję"
     poll_reopened: "<a class='actor-link' href='/u/%{username}'>%{author}</a> ponownie otworzył %{polltype}"
     poll_closed_by_user: "<a class='actor-link' href='/u/%{username}'>%{author}</a> zamknął %{polltype}"
     poll_created: "<a class='actor-link' href='/u/%{username}'>%{author}</a> rozpoczął %{polltype}"
@@ -2691,8 +2691,8 @@ pl:
       poll_expired: Głosowanie wygasa
       poll_closed_by_user: Głosowanie zostało ręcznie zakończone.
       poll_reopened: Ankieta zostaje ponownie otwarta do głosowania
-      outcome_created: 'Wynik jest udostępniony '
-      outcome_updated: Wynik jest aktualizowany
+      outcome_created: Udostępniono konkluzję
+      outcome_updated: Zaktualizowano konkluzję
       outcome_review_due: Należny jest przegląd wyników
       new_discussion: Rozpoczęto dyskusję
       discussion_edited: Dyskusja jest edytowana
@@ -2798,8 +2798,11 @@ pl:
         helptext: "<p>W Loomio wykorzystujemy propozycje, aby wyrazić poparcie dla danej decyzji lub znaleźć sposoby na jej udoskonalenie.</p><p> Stwórzmy propozycję i poprośmy członków grupy o głosowanie nad nią.</p><p> Przygotowaliśmy dla Ciebie szablon <b>propozycji praktyki</b> .</p>"
         submit: Zobacz szablony propozycji
       share_an_outcome:
-        title: Udostępnij wynik propozycji
-        helptext: "<p>Aby ułatwić podejmowanie decyzji, propozycje mają termin głosowania. Po upływie terminu głosowanie zostanie zamknięte, a Ty otrzymasz powiadomienie, aby udostępnić wynik propozycji.</p><p> Wynik jest okazją do stwierdzenia, czy propozycja okazała się sukcesem i co będzie dalej.</p><p> Jeśli termin składania propozycji jeszcze nie upłynął, a mimo to chcesz kontynuować, możesz kliknąć <b>opcję Zamknij wcześniej</b> .</p><p> Gdy nadejdzie właściwy czas, <b>wprowadź wynik</b> swojej propozycji.</p>"
+        title: Udostępnij konkluzję propozycji
+        helptext: |
+          <p>Gdy upłynie termin propozycji, głosowanie się zakończy i pojawi się prośba o udostępnienie konkluzji.</p>
+          <p>W konkluzji wyjaśniasz, jaką decyzję podjęto (lub co będzie dalej) po zapoznaniu się z głosami i komentarzami.</p>
+          <p>Jeśli termin jeszcze nie upłynął, ale chcesz już przejść dalej, możesz wybrać <b>Zamknij wcześniej</b>.</p>
         submit: Zobacz propozycję
         cancel: Zrób to później
       start_a_discussion:
@@ -2894,7 +2897,7 @@ pl:
       allocate_hint: Wyborcy rozdzielają budżet punktów pomiędzy opcje
       ranked_choice: Wybór rankingowy
       ranked_choice_hint: Wyborcy porządkują opcje od najbardziej do najmniej preferowanych
-      time_poll: Ankieta czasowa
+      time_poll: Wybór terminu
       time_poll_hint: Wyborcy wskazują, kiedy są dostępni na spotkanie
       rank: Stopień
       time: Czas
@@ -2992,7 +2995,7 @@ pl:
     set_all_vote_weights_the_same: Ustaw wszystkie wagi głosów na takie same
     member_vote_weights_hint: Wyborcy, którzy nie są obecnie członkami żadnej grupy, otrzymują wagę głosu równą 1
     weighted_voting: Głosowanie ważone
-    weighted_voting_is_not_available_with_anonymous_voting: "Głosowanie ważone nie jest dostępne przy głosowaniu anonimowym"
+    weighted_voting_is_not_available_with_anonymous_voting: Głosowanie ważone nie jest dostępne przy głosowaniu anonimowym
     use_weighted_voting: Użyj głosowania ważonego
     weighted_voting_off_warning: Wyłączenie głosowania ważonego spowoduje ustawienie wagi każdego głosu na 1. Wszelkie zmiany wagi głosu dla tej ankiety zostaną utracone.
     weighted_voting_on_group: Włączenie głosowania ważonego powoduje skopiowanie domyślnej wagi głosu każdego członka. Pozostali wyborcy otrzymują wagę głosu równą 1.
