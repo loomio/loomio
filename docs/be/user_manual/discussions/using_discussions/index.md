@@ -1,19 +1,19 @@
 ---
 title: Як карыстацца тэмамі
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/discussions/using_discussions/index.md
+source_revision: 9c60c42fc739483fa23f15d9f34a1e9245518092
+source_file: docs/en/user_manual/discussions/using_discussions/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-30'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: fe8ab54791a49e01
   thread-anatomy: fca9ec9af6718a99
   discussion-context: ebefd7274a307dd0
-  notify-people-about-context-changes: 79d0ed7f94edb858
+  notify-people-about-context-changes: 3fe9320d33fff8f6
   navigation: c0ccc79744ae2c33
   notifications-and-members: ac51f2bbe3642155
   email-notifications-for-this-thread: 69076a17d7457ba0
-  invite-people: 69e5555d18551b0b
+  invite-people: 94ab00a27cec065d
   seen-by: 1d0bfd812ca11782
   notified: 6139bdcaae32a1db
   actions: c015c12999c5be2f
@@ -28,11 +28,11 @@ generated:
   introduction: 775fc7b82a69cff1
   thread-anatomy: a69448037499a99b
   discussion-context: 25793bfd84865752
-  notify-people-about-context-changes: 6f79682b7d6c9554
+  notify-people-about-context-changes: 0116b20fd76485c6
   navigation: e92ec06115278ca7
   notifications-and-members: 584ff510579af353
   email-notifications-for-this-thread: 7fc6843eb8979c38
-  invite-people: f7aa5e4609c3aed2
+  invite-people: 8cba8803a6fcad4d
   seen-by: cecb34ba8adc7538
   notified: 81fae1c6d29af5b2
   actions: d27b7f4070f2860c
@@ -113,9 +113,9 @@ title_generated: 1e95954cdbe49c21
 
 ![Рэдагаванне кантэксту абмеркавання з апісаннем змен і выбарам атрымальнікаў апавяшчэння](../notifying_people/thread_editcontext.png)
 
-Апісанне змен з'яўляецца асобным элементам у тэме, каб удзельнікі маглі ўбачыць, што змянілася.
+У тэме паказваецца, што вы адрэдагавалі кантэкст. Людзі, якіх вы апавяшчаеце, атрымліваюць ваша апісанне змен разам з апавяшчэннем.
 
-![Элемент храналогіі з апісаннем змены кантэксту абмеркавання](../notifying_people/thread_edit_comment.png)
+![Элемент тэмы, які паказвае, што кантэкст абмеркавання быў адрэдагаваны](../notifying_people/thread_edit_comment.png)
 
 <!-- translation-section: navigation -->
 
@@ -157,15 +157,19 @@ title_generated: 1e95954cdbe49c21
 
 ![Запрашэнне людзей у бакавой панэлі тэмы](../notifying_people/thread_invite_icon.png)
 
-Выберыце групу або падгрупу, увядзіце імёны асобных удзельнікаў або адрас электроннай пошты, каб запрасіць госця.
+Выберыце групу або падгрупу, увядзіце імёны асобных удзельнікаў або адрас электроннай пошты, каб запрасіць чалавека ў якасці госця.
+
+Поле **Знайсці або запрасіць людзей** таксама фільтруе спіс людзей, якія ўжо ўдзельнічаюць у тэме. Ачысціце поле, каб зноў паказаць поўны спіс, і карыстайцеся элементамі пераходу паміж старонкамі, калі ў спісе больш за 50 людзей. Пасля выбару атрымальнікаў замест спіса ўдзельнікаў з'яўляецца поле для неабавязковага паведамлення. Новыя людзі атрымліваюць запрашэнне; людзі, якія ўжо маюць доступ, атрымліваюць яшчэ адно апавяшчэнне, калі вы выбіраеце **Запрасіць або паведаміць**.
 
 ![Акно запрашэння людзей з полем для імёнаў і адрасоў электроннай пошты](../notifying_people/thread_invite.png)
 
 Госці могуць праглядаць гэтую тэму і ўдзельнічаць у ёй, але не бачаць іншых абмеркаванняў у групе без асобнага запрашэння.
 
-![Запрашэнне госця па адрасе электроннай пошты](../notifying_people/invite_guest.png)
+Вы можаце схаваць падказкі ў верхняй частцы акна. Loomio запамінае ў вашым уліковым запісе, якія падказкі вы схавалі.
 
-Каб выдаліць чалавека, адкрыйце меню з трыма кропкамі (**⋯**) побач з яго імем і выберыце **Выдаліць з абмеркавання**.
+![Запрашэнне гасцей па адрасе электроннай пошты](../notifying_people/invite_guest.png)
+
+Каб выдаліць чалавека, адкрыйце меню з трыма кропкамі (**⋯**) побач з імем гэтага чалавека і выберыце **Выдаліць з абмеркавання**.
 
 <!-- translation-section: seen-by -->
 

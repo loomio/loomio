@@ -1,10 +1,10 @@
 ---
 title: STV-Wahlen
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/polls/stv/index.md
+source_revision: 71554be8e61a76613b0707b8262302c22299a5d0
+source_file: docs/en/user_manual/polls/stv/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-30'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 6c43a75f60922bb6
   when-to-use-stv: e37de389c27f7d87
@@ -19,6 +19,7 @@ sections:
   elected-candidates: a6c3dbb5548c7d41
   round-by-round-details: e4a8789dae29d49e
   exporting-ballots: 582555dd13633bf0
+  share-an-outcome: 6a02aed173b368b9
 generated:
   introduction: 71f852bf07e2d1a6
   when-to-use-stv: 76bfcdfc1f879cbc
@@ -33,6 +34,7 @@ generated:
   elected-candidates: 8f56c890d529a3e5
   round-by-round-details: c71f016de66c38b4
   exporting-ballots: 5c500dd566fa1299
+  share-an-outcome: eabe596c9fc3d3af
 title_source: cd3e1a4cdc2456a6
 title_generated: d3db61f29b5753db
 ---
@@ -166,6 +168,14 @@ Klappe **Details zu jeder Runde** auf, um die Übertragung von Stimmen und das A
 ![](stv-results.png)
 
 Grün zeigt, wann ein Kandidat gewählt wurde, Rot zeigt sein Ausscheiden und Orange einen Gleichstand.
+
+<!-- translation-section: share-an-outcome -->
+
+## Teile ein Fazit
+
+Teile nach Abschluss der Wahl ein Fazit. Nenne die gewählten Personen und gib an, wann sie ihre Aufgaben übernehmen. Unter [Teile ein Fazit](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome) erfährst du, wie Fazits funktionieren.
+
+![Ein Fazit, das die gewählten Ausschussmitglieder nennt](outcome.png)
 
 <!-- translation-section: exporting-ballots -->
 

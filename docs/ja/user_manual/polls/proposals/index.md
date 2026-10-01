@@ -1,19 +1,19 @@
 ---
 title: 提案
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/polls/proposals/index.md
+source_revision: 9c60c42fc739483fa23f15d9f34a1e9245518092
+source_file: docs/en/user_manual/polls/proposals/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: dd4cb01f80b669fa
   choose-a-proposal-template: af87fd10a478699d
-  other-proposal-templates: d97b167228fd3b85
+  other-proposal-templates: 21ac5a295b8832ab
   proposal-records: ef0d886d3db7a5d1
 generated:
   introduction: e941e69e0b4568c9
   choose-a-proposal-template: b5c713ba73000f87
-  other-proposal-templates: a5313e4119557c91
+  other-proposal-templates: cf2dacf66569f0fd
   proposal-records: f4e84967f4341ae5
 title_source: 834cfc1ee23734e1
 title_generated: 46adc4971354814e
@@ -46,7 +46,7 @@ title_generated: 46adc4971354814e
 
 ## その他の提案テンプレート
 
-Loomioには、提案、一致の勾配、質問ラウンド、過半数などのテンプレートもあります。最初は非表示になっているものもあります。グループ管理者は、[投票テンプレート](../poll_templates/)から利用可能にしたり、グループ独自の用語やルールに合わせたテンプレートを作成したりできます。
+Loomioには、提案、一致の勾配、過半数などのテンプレートもあります。最初は非表示になっているものもあります。グループ管理者は、[投票テンプレート](../poll_templates/)から利用可能にしたり、グループ独自の用語やルールに合わせたテンプレートを作成したりできます。
 
 <!-- translation-section: proposal-records -->
 

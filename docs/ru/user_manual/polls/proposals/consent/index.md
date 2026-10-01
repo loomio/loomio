@@ -1,24 +1,26 @@
 ---
 title: Согласие
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/polls/proposals/consent/index.md
+source_revision: 9c60c42fc739483fa23f15d9f34a1e9245518092
+source_file: docs/en/user_manual/polls/proposals/consent/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 7c6301775b6655f2
   when-to-use-consent: 32ea681182001a9a
   example-start-a-bottle-trial: abc3b93cccfe2471
   set-up-the-proposal: 99fe028ed43b44c2
   vote: 496a824e20def5e2
-  read-the-results: f4db0702619b3992
+  read-the-results: 710fb80144e56ea9
+  share-an-outcome: 8f8b3f701dc4f516
 generated:
   introduction: 4828039070842e19
   when-to-use-consent: f67002238d79a47a
   example-start-a-bottle-trial: 3d5e3f7e9fe3e176
   set-up-the-proposal: d087092a24055335
   vote: bfd19dc278064eaa
-  read-the-results: 737c3017d928dd19
+  read-the-results: 5fc77c9dadf20f16
+  share-an-outcome: 8e773714f637b36b
 title_source: d37e0cd00f18a366
 title_generated: 205f97be66e6a1df
 ---
@@ -65,8 +67,14 @@ title_generated: 205f97be66e6a1df
 
 ## Изучите результаты
 
-Диаграмма показывает возражения, но группе нужно изучить их причины. Чтобы разрешить обоснованное возражение, измените предложение, добавьте меру предосторожности, сузьте его рамки или решите не продолжать.
+Диаграмма показывает возражения, но группе нужно изучить их причины. Чтобы разрешить обоснованное возражение, измените предложение, добавьте меру предосторожности, измените его рамки или решите не продолжать.
 
 ![](../proposal_consent_results.png)
 
-Опубликуйте итоговое решение. Укажите в нём согласованные действия, меры предосторожности, ответственных и срок, когда группа пересмотрит решение.
+<!-- translation-section: share-an-outcome -->
+
+## Поделитесь итоговым решением
+
+Когда голосование по предложению завершится, поделитесь итоговым решением. Укажите согласованные действия, как были разрешены возражения, кто отвечает за выполнение и когда группа пересмотрит решение. О том, как работают итоговые решения, читайте в разделе [Поделитесь итоговым решением](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome).
+
+![Итоговое решение с описанием разрешённого возражения, датой начала и сроком пересмотра](outcome.png)

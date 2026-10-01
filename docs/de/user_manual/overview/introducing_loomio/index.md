@@ -1,10 +1,10 @@
 ---
 title: Loomio in deiner Gruppe einführen
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/overview/introducing_loomio/index.md
+source_revision: 71554be8e61a76613b0707b8262302c22299a5d0
+source_file: docs/en/user_manual/overview/introducing_loomio/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 3937e28d4932fd6d
   choose-one-useful-starting-point: 990ae1af5bf58d27
@@ -16,7 +16,7 @@ sections:
   invite-people: 40058431249a070e
   help-everyone-participate-once: 94babb6a295b7f66
   use-notifications-deliberately: a532d30c36993c6a
-  complete-the-first-process: 48fdb4622d159044
+  complete-the-first-process: fd49ec812c1265e7
 generated:
   introduction: 6090e0d73da3731e
   choose-one-useful-starting-point: 1dca2b1c69d6c6fe
@@ -28,7 +28,7 @@ generated:
   invite-people: 6c23c86697bd8b43
   help-everyone-participate-once: 8fac61f0bf354627
   use-notifications-deliberately: 3b1b4a7732d4c424
-  complete-the-first-process: 2cecde24d8ec7d45
+  complete-the-first-process: 7bb9a739faf5be06
 title_source: 4f1540fbaadc657b
 title_generated: 57bbd8a2cabe6f1e
 ---
@@ -175,7 +175,7 @@ Der erste Prozess sollte den gesamten Ablauf zeigen:
 2. Lade zur Diskussion ein und beantworte Fragen, wenn es nötig ist.
 3. Starte den passenden Vorschlag oder die passende Abstimmung.
 4. Erinnere bei Bedarf alle, die noch nicht teilgenommen haben.
-5. Veröffentliche ein [Fazit](/en/user_manual/polls/outcomes), das festhält, was entschieden wurde und wie es weitergeht.
+5. Veröffentliche ein [Fazit](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome), das festhält, was entschieden wurde und wie es weitergeht.
 
 Das Fazit schließt den Prozess ab und hält die Entscheidung fest, damit Mitglieder später darauf zurückgreifen können. Frage anschließend, was gut funktioniert hat, passe den Ablauf an und wähle die nächste regelmäßige Aufgabe für Loomio aus.
 

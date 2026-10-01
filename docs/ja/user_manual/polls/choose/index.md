@@ -1,24 +1,26 @@
 ---
 title: 選ぶ
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/polls/choose/index.md
+source_revision: 9c60c42fc739483fa23f15d9f34a1e9245518092
+source_file: docs/en/user_manual/polls/choose/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: f9d6a5bfb7445de0
   when-to-use-choose: f8a798497cac5a43
   example-set-a-planning-meeting-agenda: 32a94a916dbf84e5
   set-up-the-poll: a16095b63c57e0c9
   vote: d170451131c544cf
-  read-the-results: 84521c82aed8dd29
+  read-the-results: e675d12da1a4ba8a
+  share-an-outcome: f6afc1713b921265
 generated:
   introduction: dc9a4a201be99043
   when-to-use-choose: 0241b368da1209bf
   example-set-a-planning-meeting-agenda: 4d5e37eaff3d6e7b
   set-up-the-poll: 867fee0ce43932fa
   vote: a00b94586958182b
-  read-the-results: b659207b5afd7e5e
+  read-the-results: 2e6daa0c2f702f55
+  share-an-outcome: d60e0b407a7fc0be
 title_source: c7f937836f5d82d5
 title_generated: 2c01205b05f1ad12
 ---
@@ -86,6 +88,10 @@ title_generated: 2c01205b05f1ad12
 
 この例では、**カフェでの回収スケジュール**が3票です。**洗浄の作業手順**と**返却率の報告**はそれぞれ2票です。結果から、カフェでの回収に最も多くの議題時間を割くことが考えられます。同数の2つの議題については、残りの時間をどう配分するか主催者が決める必要があります。
 
-投票が締め切られたら、結果を受けてグループが何をするかを説明する**結論**を公開します。
+<!-- translation-section: share-an-outcome -->
 
-![](outcome.png)
+## 結論を共有する
+
+投票が締め切られたら、結論を共有します。同数の場合の扱いも含め、結果を受けてグループが何をするかを説明します。結論の仕組みについては、[結論を共有する](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome)を参照してください。
+
+![カフェでの回収に最も多くの会議時間を割り当てる結論](outcome.png)

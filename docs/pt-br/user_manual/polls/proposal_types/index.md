@@ -13,7 +13,6 @@ sections:
   ranked-choice: 31dee409a33369de
   time-poll: 8b3a09b278bd7fde
   stv-election: e8407157d29424e4
-  other-specialized-method: 6b1ca633e613e513
 generated:
   introduction: b6486747640dc213
   simple-poll: bcf5b74bd23650e5
@@ -22,7 +21,6 @@ generated:
   ranked-choice: 3c9febbaff628ae6
   time-poll: 4c03b958bc34b5d6
   stv-election: d0d9f031b5076177
-  other-specialized-method: d16cca9d3cb46091
 title_source: 996729458535904a
 title_generated: 7a15afaf1bd7bdbf
 ---
@@ -68,9 +66,3 @@ A [enquete de horário](/en/user_manual/polls/meeting_polls/) permite que os par
 ## Eleição STV
 
 As [Eleições STV](/en/user_manual/polls/stv/) permitem que os participantes classifiquem candidatos em uma eleição proporcional com várias vagas. Use STV para eleger um comitê, conselho ou grupo de representantes.
-
-<!-- translation-section: other-specialized-method -->
-
-## Outro método especializado
-
-O Loomio também inclui uma rodada de perguntas para coletar perguntas sem votação. Administradores do grupo podem disponibilizá-la em [Modelos de enquete](/en/user_manual/polls/poll_templates/).

@@ -1,24 +1,26 @@
 ---
 title: עֵצָה
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/polls/proposals/advice/index.md
+source_revision: 9c60c42fc739483fa23f15d9f34a1e9245518092
+source_file: docs/en/user_manual/polls/proposals/advice/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 3b517bcf7f8d31d2
   when-to-use-advice: d98ed1affd9abbd3
   example-choose-a-washing-supplier: 94c2d1f8987bd817
   set-up-the-proposal: e93938cfa0895f27
   vote: e076d476b50d1445
-  read-the-results: 7782c49ae9875d70
+  read-the-results: 937eff4c74abcc79
+  share-an-outcome: 1f762148d1f18b1d
 generated:
   introduction: 2e88c499b4731033
   when-to-use-advice: bd1e22d897ccc647
   example-choose-a-washing-supplier: 9ec332cc0e8d6cd9
   set-up-the-proposal: 9cf4e94a1d1f8b88
   vote: a763dec84fd6c540
-  read-the-results: e2defdfb629530e8
+  read-the-results: 7d5dbac1cef06a60
+  share-an-outcome: 776f9765f18e17a2
 title_source: 305f5e5463e18d7f
 title_generated: df94c0d56ed03c7e
 ---
@@ -65,8 +67,14 @@ title_generated: df94c0d56ed03c7e
 
 ## קריאת התוצאות
 
-התרשים מראה מי כבר הגיבו, אך הנימוקים הם עיקר ההצעה. כדאי לבחון מגבלות, הסכמות והמלצות סותרות, ולא לראות בתגובה הנפוצה ביותר את ההחלטה.
+התרשים מראה מי כבר הגיבו, אך הנימוקים הם עיקר הצעת העֵצָה. כדאי לבחון מגבלות, הסכמות והמלצות סותרות, ולא לראות בתגובה הנפוצה ביותר את ההחלטה.
 
 ![](../proposal_advice_results.png)
 
-מי שאחראים להחלטה מפרסמים מסקנה שמסבירה מה הוחלט וכיצד העצות השפיעו על ההחלטה.
+<!-- translation-section: share-an-outcome -->
+
+## שיתוף מסקנה
+
+עם סגירת ההצעה, מי שאחראים להחלטה משתפים מסקנה. המסקנה מציינת מה הוחלט וכיצד העצות השפיעו על ההחלטה. להסבר על מסקנות, ניתן לעיין ב[שיתוף מסקנה](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome).
+
+![מסקנה המציינת את הספק שנבחר ואת העצות שעליהן התבססה הבחירה](outcome.png)

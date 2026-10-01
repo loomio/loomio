@@ -1,24 +1,26 @@
 ---
 title: Згода
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/polls/proposals/consent/index.md
+source_revision: 9c60c42fc739483fa23f15d9f34a1e9245518092
+source_file: docs/en/user_manual/polls/proposals/consent/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-30'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 7c6301775b6655f2
   when-to-use-consent: 32ea681182001a9a
   example-start-a-bottle-trial: abc3b93cccfe2471
   set-up-the-proposal: 99fe028ed43b44c2
   vote: 496a824e20def5e2
-  read-the-results: f4db0702619b3992
+  read-the-results: 710fb80144e56ea9
+  share-an-outcome: 8f8b3f701dc4f516
 generated:
   introduction: 83eea1b0497fc133
   when-to-use-consent: bc41c82ad004dd4b
   example-start-a-bottle-trial: 3f6b4b31760caea5
   set-up-the-proposal: 2d48c08a1054f69c
   vote: 39187b2d3303372a
-  read-the-results: ca5f37ecc8e720dd
+  read-the-results: fcb19bf488936aaf
+  share-an-outcome: cc8041643f05c858
 title_source: d37e0cd00f18a366
 title_generated: 7cf278790f9c9792
 ---
@@ -69,4 +71,10 @@ title_generated: 7cf278790f9c9792
 
 ![](../proposal_consent_results.png)
 
-Апублікуйце выснову і запішыце ў ёй узгодненыя дзеянні, меры засцярогі, адказных за выкананне і час, калі група перагледзіць рашэнне.
+<!-- translation-section: share-an-outcome -->
+
+## Падзяліцеся высновай
+
+Калі галасаванне па прапанове завершыцца, падзяліцеся высновай. Запішыце ўзгодненыя дзеянні, як былі вырашаны пярэчанні, хто адказвае за выкананне і калі група перагледзіць рашэнне. Пра тое, як працуюць высновы, глядзіце ў раздзеле [Падзяліцеся высновай](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome).
+
+![Выснова з запісам пра вырашанае пярэчанне, дату пачатку і час перагляду рашэння](outcome.png)

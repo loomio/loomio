@@ -1,10 +1,10 @@
 ---
 title: Elezioni STV
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/polls/stv/index.md
+source_revision: 9c60c42fc739483fa23f15d9f34a1e9245518092
+source_file: docs/en/user_manual/polls/stv/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 6c43a75f60922bb6
   when-to-use-stv: e37de389c27f7d87
@@ -19,6 +19,7 @@ sections:
   elected-candidates: a6c3dbb5548c7d41
   round-by-round-details: e4a8789dae29d49e
   exporting-ballots: 582555dd13633bf0
+  share-an-outcome: 6a02aed173b368b9
 generated:
   introduction: b2d37950d665f119
   when-to-use-stv: 8cbe86b4e1d4f7bf
@@ -33,6 +34,7 @@ generated:
   elected-candidates: 80c6aab852822c8a
   round-by-round-details: b57045f9caf239b3
   exporting-ballots: 471a006656893f8a
+  share-an-outcome: 25ad51a1ccf4b980
 title_source: cd3e1a4cdc2456a6
 title_generated: b856531da2becf44
 ---
@@ -166,6 +168,14 @@ Espandi **Dettagli round per round** per vedere i trasferimenti di voti e le eli
 ![](stv-results.png)
 
 Il verde indica quando un candidato è stato eletto, il rosso quando è stato eliminato e l'arancione quando si è verificato un pareggio.
+
+<!-- translation-section: share-an-outcome -->
+
+## Condividi una conclusione
+
+Quando l'elezione si chiude, condividi una conclusione. Indica i nomi delle persone elette e quando inizia il loro incarico. Consulta [Condividi una conclusione](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome) per sapere come funzionano le conclusioni.
+
+![Una conclusione che indica i nomi dei membri eletti del comitato](outcome.png)
 
 <!-- translation-section: exporting-ballots -->
 

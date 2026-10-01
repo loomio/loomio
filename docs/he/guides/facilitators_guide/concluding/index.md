@@ -1,19 +1,19 @@
 ---
 title: סיכום התהליך
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/guides/facilitators_guide/concluding/index.md
+source_revision: 9c60c42fc739483fa23f15d9f34a1e9245518092
+source_file: docs/en/guides/facilitators_guide/concluding/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-30'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 0160da4a2a071cae
-  outcomes-next-steps: 9829d1cef05d120b
+  outcomes-next-steps: 146b139e25dcfb4e
   reporting-harvesting: 64a7f7605636c422
   turning-discussion-into-action: 67b87042b96109e0
   it-ain-t-over-til-it-s-over: 9edb6ef0bcb17938
 generated:
   introduction: 58d6789a5d59bef9
-  outcomes-next-steps: 404ef2a9edce26b0
+  outcomes-next-steps: d2e77e8a3dd2215b
   reporting-harvesting: 5d1a1bd3fd044e2d
   turning-discussion-into-action: a7f05502acf3f2fa
   it-ain-t-over-til-it-s-over: d29d5d09db7e143d
@@ -31,7 +31,7 @@ title_generated: c1209135d946a8c9
 
 ## מסקנות והצעדים הבאים
 
-אישור המסקנה יכול לעזור לקבוצה להרגיש שמטרות הדיון המשותף הושגו. מי שמנחים את התהליך יכולים לרכז את ההחלטות ולהציג אותן לקבוצה, כדי שיהיו תשובות לכמה שאלות מרכזיות:
+אישור המסקנה יכול לעזור לקבוצה להרגיש שמטרות הדיון המשותף הושגו. במסגרת הנחיית התהליך ניתן לרכז את ההחלטות ולהציג אותן לקבוצה, כדי שיהיו תשובות לכמה שאלות מרכזיות:
 
 * מה עשינו?
 * מה המשמעות של זה?
@@ -43,9 +43,9 @@ title_generated: c1209135d946a8c9
 
 ב־Loomio
 
-* [מסקנות](/en/user_manual/polls/outcomes/) הן כלי חשוב. סיום ההצעה אינו סוף התהליך: עדיין צריך לסכם את הדברים באופן ברור. לכך נועדה האפשרות לפרסם מסקנה.
+* [מסקנות](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome) הן כלי חשוב. סיום ההצעה אינו סוף התהליך: עדיין צריך לסכם את הדברים באופן ברור. לכך נועדה האפשרות לפרסם מסקנה.
 * דיונים רבים ב־Loomio מסתיימים באופן טבעי גם בלי הצעות או פרסום מסקנות. גם לדיונים האלה יש ערך רב. אפשר לעדכן את תיבת ההקשר בסיכום המסקנות לעיון בעתיד.
-* אם לאנשים מסוימים יש משימות לביצוע, אפשר לתייג את שמותיהם באמצעות @ והם יקבלו הודעה.
+* אם לאנשים מסוימים יש משימות לביצוע, אפשר לתייג את שמותיהם באמצעות @ כדי שיקבלו הודעה.
 
 <!-- translation-section: reporting-harvesting -->
 

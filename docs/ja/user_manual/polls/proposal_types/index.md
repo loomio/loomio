@@ -13,7 +13,6 @@ sections:
   ranked-choice: 31dee409a33369de
   time-poll: 8b3a09b278bd7fde
   stv-election: e8407157d29424e4
-  other-specialized-method: 6b1ca633e613e513
 generated:
   introduction: 6c7c53b735d08e0a
   simple-poll: b1a9e0512cf30c1f
@@ -22,7 +21,6 @@ generated:
   ranked-choice: acd8c994bbf7b418
   time-poll: 95fea33f83cc060c
   stv-election: cd5050fff0ff5e1b
-  other-specialized-method: de2de8f6c8af4a9a
 title_source: 996729458535904a
 title_generated: 3c5a0fdbcf55aaa8
 ---
@@ -68,9 +66,3 @@ title_generated: 3c5a0fdbcf55aaa8
 ## STV選挙
 
 [STV選挙](/en/user_manual/polls/stv/)では、参加者が複数の当選者を比例的に選ぶ選挙で、候補者に順位を付けられます。委員会や理事会のメンバー、代議員を選ぶときに使います。
-
-<!-- translation-section: other-specialized-method -->
-
-## その他の専用形式
-
-Loomioには、投票せずに質問を集める質問ラウンドもあります。グループ管理者は[投票テンプレート](/en/user_manual/polls/poll_templates/)から利用できるように設定できます。

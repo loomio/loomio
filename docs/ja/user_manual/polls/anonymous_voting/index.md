@@ -1,45 +1,45 @@
 ---
 title: 匿名投票
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/polls/anonymous_voting/index.md
+source_revision: 9c60c42fc739483fa23f15d9f34a1e9245518092
+source_file: docs/en/user_manual/polls/anonymous_voting/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
-  introduction: d5c276b2785919c3
+  introduction: 2b9b7da01da020b3
   how-anonymous-voting-protects-voters: f2be8477636489af
   while-voting-is-open: dda23e517269b9cf
   votes-cannot-be-changed: 1e317297688ba902
   why-anonymous-votes-do-not-have-reasons: 39c1a8362550ae40
   results-and-exports: eb2429afd442dad2
-  participation-verification: cdaa1f5c3ca1e179
+  participation-verification: 87bc3647be4bbfb8
   reminders: 0afad473c90f2f03
-  what-coordinators-and-administrators-can-see: 51460c8a6b663aba
+  what-coordinators-and-administrators-can-see: 07faa9f646665b64
   limits-of-anonymous-voting: 912141560342d073
   questions: 60cc6f1a0163ec5d
-  can-a-coordinator-see-how-i-voted: 3dd2c9e6d06debda
+  can-a-coordinator-see-how-i-voted: 574fc18f3a9871c3
   can-i-see-my-vote-after-submitting-it: c558e29729aed45f
   can-i-change-or-withdraw-my-vote: dd1a385fa8d225a5
   will-i-receive-an-email-confirming-my-vote: 8616fc9a0b9809ac
-  does-a-public-poll-reveal-more-information: 2ba76a1748304f96
+  does-a-public-poll-reveal-more-information: 27acfa7744a0790d
   is-anonymous-voting-suitable-for-every-election: d1b723178449c0da
 generated:
-  introduction: 4f5beb50f538ccd4
+  introduction: e154a24a4c159a22
   how-anonymous-voting-protects-voters: df2298f7c54122be
   while-voting-is-open: 170fbed3f44532cb
   votes-cannot-be-changed: f3d705fc2ba9ae0c
   why-anonymous-votes-do-not-have-reasons: 7e807b5b2d861290
   results-and-exports: ec6c3d1d4662322b
-  participation-verification: 3c8ebe1d54faaa53
+  participation-verification: fa5e24f84c6ec867
   reminders: 053b855071d5c5d9
-  what-coordinators-and-administrators-can-see: 6cd035f13a5e7127
+  what-coordinators-and-administrators-can-see: e154d6502f97199f
   limits-of-anonymous-voting: 2cfd75861215da01
   questions: 01e0d5ad82158a42
-  can-a-coordinator-see-how-i-voted: 7bd285e05f456e67
+  can-a-coordinator-see-how-i-voted: bbf44331b506cd37
   can-i-see-my-vote-after-submitting-it: aed1996829bb03bc
   can-i-change-or-withdraw-my-vote: 4b6b548201c028ab
   will-i-receive-an-email-confirming-my-vote: fe5b075a0675561d
-  does-a-public-poll-reveal-more-information: e1fea95cb2f8413e
+  does-a-public-poll-reveal-more-information: dde789dda8399f0e
   is-anonymous-voting-suitable-for-every-election: a63973aa269c6251
 title_source: 1bc4567506ad4d51
 title_generated: 55edffe99178b192
@@ -49,7 +49,7 @@ title_generated: 55edffe99178b192
 
 # 匿名投票
 
-匿名投票は、ブラインド投票とも呼ばれ、誰が投票したかという記録と投票内容を分けて保存します。投票のコーディネーターは、誰に投票資格があったかを確認できます。3人以上が投票すると、誰が投票したかも確認できます。アプリ上では、提出された票を投票者と結び付けることはできません。
+匿名投票は、ブラインド投票とも呼ばれ、誰が投票したかという記録と投票内容を分けて保存します。投票が終了すると、結果を閲覧できる人は誰でも、誰が参加したかを確認できます。Loomioを利用する人は誰も、提出された票を投票者と結び付けることはできません。
 
 このページでは、匿名投票による保護、保存される情報、匿名性の限界を説明します。
 
@@ -116,13 +116,17 @@ title_generated: 55edffe99178b192
 
 <!-- translation-section: participation-verification -->
 
-## 投票状況の確認
+## 誰が投票に参加したか
 
-投票のコーディネーターは、氏名付きの参加記録を閲覧できます。この記録には、投票資格があった人が常に表示されます。3人以上が投票すると、各人が投票したかどうかも表示されますが、投票内容は表示されません。投票数が3票未満のまま終了した場合、各人の投票状況は引き続き非表示になります。
+匿名投票が終了すると、結果を閲覧できる人は誰でも、誰が参加したかを確認できます。投票の受付中は、誰もこの情報を確認できません。
 
-ほかの参加者は、この氏名付きの参加情報を閲覧できません。投票結果を閲覧できても、参加記録を閲覧できるようにはなりません。
+**投票を見る**を選択すると、一覧が表示されます。投票資格があった人は常に表示されます。各人が投票したかどうかは、十分な人数が投票した場合にのみ表示されます。この基準は、定足数が設定されている場合はその定足数、設定されていない場合は投票資格がある人の半数です。ただし、いずれの場合も最低3票が必要です。一覧には、各人の投票内容や投票した時刻は表示されません。
 
-コーディネーターは投票の受付中、ほかの人がすでに投票した後でも、 投票資格がある人を追加できます。すでに投票した人を匿名投票から 削除することはできません。
+グループのメンバーと投票者は、各人がグループに参加した時期と、誰が招待したかも確認できます。グループ管理者には、同じ名前の人を区別できるよう、メールアドレスも表示されます。
+
+結果を閲覧できる人は誰でも誰が投票したかを確認できるため、結果が一方に偏っていると、各人の投票内容が分かる場合があります。たとえば、すべての票が「同意する」であれば、投票した全員が同意したことが分かります。
+
+投票の管理者は投票の受付中、ほかの人がすでに投票した後でも、投票資格がある人を追加できます。すでに投票者として登録されている人を匿名投票から削除することはできません。
 
 <!-- translation-section: reminders -->
 
@@ -136,12 +140,12 @@ title_generated: 55edffe99178b192
 
 <!-- translation-section: what-coordinators-and-administrators-can-see -->
 
-## コーディネーターと管理者が見られる情報
+## 投票の管理者とその他の管理者が見られる情報
 
-投票のコーディネーター、グループ管理者、インスタンス管理者は、アプリ上で次の情報を閲覧できる場合があります。
+投票の管理者、グループ管理者、インスタンス管理者は、アプリ上で次の情報を閲覧できる場合があります。
 
 - 投票と、投票資格がある人。
-- その役割に閲覧権限があり、3人以上が投票した場合は、投票資格がある各人が投票したかどうか。
+- その役割に閲覧権限があり、十分な人数が投票した場合は、投票資格がある各人が投票したかどうか。
 - 投票終了後の集計結果。
 
 アプリの機能を使っても、次の情報は閲覧できません。
@@ -167,9 +171,9 @@ title_generated: 55edffe99178b192
 
 <!-- translation-section: can-a-coordinator-see-how-i-voted -->
 
-### 投票の管理者は、誰がどのように投票したかを見ることができますか？
+### 誰かに投票内容を見られることはありますか？
 
-いいえ。3人以上が投票すると、投票の管理者は各人が投票したかどうかを確認できます。ただし、アプリ上で投票者と投票内容を結びつけることはできません。投票者が3人未満の場合、各人の投票状況も表示されません。
+いいえ。十分な人数が投票すると、結果を閲覧できる人は、各人が投票したかどうかを確認できます。ただし、アプリ上で投票者と提出された票を結び付けることは誰にもできません。その基準に達するまでは、各人が投票したかどうかも表示されません。
 
 <!-- translation-section: can-i-see-my-vote-after-submitting-it -->
 
@@ -193,7 +197,7 @@ title_generated: 55edffe99178b192
 
 ### 公開投票では、より多くの情報が見えますか？
 
-公開投票では、投票と終了後の集計結果を閲覧できる場合があります。名前付きの投票状況の記録や、個々の匿名投票の内容は公開されません。
+公開投票が終了すると、誰でも結果と、誰が参加したかを確認できます。個々の票や、グループへの参加と招待に関する詳細は閲覧できません。
 
 <!-- translation-section: is-anonymous-voting-suitable-for-every-election -->
 

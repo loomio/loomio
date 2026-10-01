@@ -1,24 +1,26 @@
 ---
 title: Счет
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/polls/score/index.md
+source_revision: 9c60c42fc739483fa23f15d9f34a1e9245518092
+source_file: docs/en/user_manual/polls/score/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 7881bcdd5aad5df4
   when-to-use-score: 0ef92ec0bb907a3f
   example-score-possible-trial-locations: 3c9438177a822198
   set-up-the-poll: 29b0296533594cd6
   vote: 1113501e9e6736b7
-  read-the-results: f773aa25f47c325b
+  read-the-results: 3e996e9bcc830d1d
+  share-an-outcome: 243aaac17e645331
 generated:
   introduction: d0e4525256676f07
   when-to-use-score: 12e09de42975ddea
   example-score-possible-trial-locations: c1f213e1dd8e4c20
   set-up-the-poll: 964210102933e99f
   vote: d156874d9431d24b
-  read-the-results: 48ea1fdb6f207fb0
+  read-the-results: 8b6ebd97945f9c5f
+  share-an-outcome: 5b3feaf55900c453
 title_source: 38e5a46cbc5ad328
 title_generated: b62676c88f11af12
 ---
@@ -85,4 +87,12 @@ title_generated: b62676c88f11af12
 
 В этом примере у **кафе у Центрального вокзала** самая высокая средняя оценка — 7,5. У **офисов у гавани** самая низкая — 5,25. Рынок у реки и университетский фуд-корт получили по 7. Проголосовали четверо из пяти приглашённых, поэтому группа также видит, что один человек ещё не ответил.
 
-Сравнивайте средние оценки, только если варианты оценило примерно одинаковое число избирателей. Прежде чем придавать значение небольшой разнице, прочитайте причины голосов. Затем опубликуйте итог и объясните, какие действия последуют на основании оценок.
+Сравнивайте средние оценки, только если варианты оценило примерно одинаковое число избирателей. Прежде чем придавать значение небольшой разнице, прочитайте причины голосов.
+
+<!-- translation-section: share-an-outcome -->
+
+## Опубликуйте итог
+
+Когда опрос завершится, опубликуйте итог. Объясните, какие действия последуют на основании оценок и как будет сделан выбор при равных результатах. О том, как работают итоги, читайте в разделе [Опубликуйте итог](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome).
+
+![Итог с выбором места с самой высокой средней оценкой](outcome.png)

@@ -1,19 +1,19 @@
 ---
 title: Proposte
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/polls/proposals/index.md
+source_revision: 9c60c42fc739483fa23f15d9f34a1e9245518092
+source_file: docs/en/user_manual/polls/proposals/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: dd4cb01f80b669fa
   choose-a-proposal-template: af87fd10a478699d
-  other-proposal-templates: d97b167228fd3b85
+  other-proposal-templates: 21ac5a295b8832ab
   proposal-records: ef0d886d3db7a5d1
 generated:
   introduction: 5974462e5e81023e
   choose-a-proposal-template: fb2dba644c85e45e
-  other-proposal-templates: 75e86bf4fb9f0dfe
+  other-proposal-templates: 853d801d4dc264c5
   proposal-records: c039212646c23b9d
 title_source: 834cfc1ee23734e1
 title_generated: 11d4bf97e88da718
@@ -46,7 +46,7 @@ Scegli il modello con le opzioni di risposta adatte alla domanda che vuoi porre.
 
 ## Altri modelli di proposta
 
-Loomio offre anche modelli come Proposta, Gradienti di accordo, Giro di domande e Maggioranza. Alcuni sono inizialmente nascosti. Gli amministratori del gruppo possono renderli disponibili o creare un modello che rispecchi la terminologia e le regole del gruppo da [Modelli di sondaggio](../poll_templates/).
+Loomio offre anche modelli come Proposta, Gradienti di accordo e Maggioranza. Alcuni sono inizialmente nascosti. Gli amministratori del gruppo possono renderli disponibili o creare un modello che rispecchi la terminologia e le regole del gruppo da [Modelli di sondaggio](../poll_templates/).
 
 <!-- translation-section: proposal-records -->
 

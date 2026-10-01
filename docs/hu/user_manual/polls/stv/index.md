@@ -1,10 +1,10 @@
 ---
 title: STV-választások
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/polls/stv/index.md
+source_revision: 9c60c42fc739483fa23f15d9f34a1e9245518092
+source_file: docs/en/user_manual/polls/stv/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 6c43a75f60922bb6
   when-to-use-stv: e37de389c27f7d87
@@ -19,6 +19,7 @@ sections:
   elected-candidates: a6c3dbb5548c7d41
   round-by-round-details: e4a8789dae29d49e
   exporting-ballots: 582555dd13633bf0
+  share-an-outcome: 6a02aed173b368b9
 generated:
   introduction: 1355ba8d32640fe8
   when-to-use-stv: c23e90a4472ab173
@@ -33,6 +34,7 @@ generated:
   elected-candidates: 3fa58134c3a6fd12
   round-by-round-details: 55e244c003978707
   exporting-ballots: 56e40b2269a91400
+  share-an-outcome: 61926fca089c8389
 title_source: cd3e1a4cdc2456a6
 title_generated: 67607ab7fbcfa361
 ---
@@ -166,6 +168,14 @@ Nyisd meg a **Körről körre részletek** szakaszt a szavazatok átruházásán
 ![](stv-results.png)
 
 A zöld kiemelés a jelölt megválasztását, a piros a kiesését, a narancssárga pedig a döntetlent jelzi.
+
+<!-- translation-section: share-an-outcome -->
+
+## Következtetés megosztása
+
+Amikor a választás lezárul, ossz meg egy következtetést. Nevezd meg a megválasztottakat, és írd le, mikor kezdődik a megbízatásuk. A következtetések működéséről a [Következtetés megosztása](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome) című részben olvashatsz.
+
+![A megválasztott bizottsági tagokat megnevező következtetés](outcome.png)
 
 <!-- translation-section: exporting-ballots -->
 

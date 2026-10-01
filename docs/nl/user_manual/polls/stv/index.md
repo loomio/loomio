@@ -1,10 +1,10 @@
 ---
 title: STV-verkiezingen
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/polls/stv/index.md
+source_revision: 9c60c42fc739483fa23f15d9f34a1e9245518092
+source_file: docs/en/user_manual/polls/stv/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 6c43a75f60922bb6
   when-to-use-stv: e37de389c27f7d87
@@ -19,6 +19,7 @@ sections:
   elected-candidates: a6c3dbb5548c7d41
   round-by-round-details: e4a8789dae29d49e
   exporting-ballots: 582555dd13633bf0
+  share-an-outcome: 6a02aed173b368b9
 generated:
   introduction: 5f085f92dcdf253d
   when-to-use-stv: fe716c0aadaa4c79
@@ -33,6 +34,7 @@ generated:
   elected-candidates: caf4e186f3a6eeeb
   round-by-round-details: 3e5fcbf63af1ff7f
   exporting-ballots: dd9796b3c169ad82
+  share-an-outcome: 3188f531185500eb
 title_source: cd3e1a4cdc2456a6
 title_generated: 9791a584c9d8c54a
 ---
@@ -166,6 +168,14 @@ Klap **Details per ronde** uit om te zien hoe stemmen zijn overgedragen en kandi
 ![](stv-results.png)
 
 Groen geeft aan wanneer een kandidaat werd gekozen, rood wanneer een kandidaat werd uitgeschakeld en oranje wanneer kandidaten gelijk eindigden.
+
+<!-- translation-section: share-an-outcome -->
+
+## Deel een conclusie
+
+Deel een conclusie zodra de verkiezing sluit. Noem de gekozen personen en geef aan wanneer hun rol begint. Lees [Deel een conclusie](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome) voor uitleg over hoe conclusies werken.
+
+![Een conclusie met de namen van de gekozen commissieleden](outcome.png)
 
 <!-- translation-section: exporting-ballots -->
 

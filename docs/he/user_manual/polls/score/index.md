@@ -1,24 +1,26 @@
 ---
 title: סקר ציון
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/polls/score/index.md
+source_revision: 9c60c42fc739483fa23f15d9f34a1e9245518092
+source_file: docs/en/user_manual/polls/score/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 7881bcdd5aad5df4
   when-to-use-score: 0ef92ec0bb907a3f
   example-score-possible-trial-locations: 3c9438177a822198
   set-up-the-poll: 29b0296533594cd6
   vote: 1113501e9e6736b7
-  read-the-results: f773aa25f47c325b
+  read-the-results: 3e996e9bcc830d1d
+  share-an-outcome: 243aaac17e645331
 generated:
   introduction: d4aac3533d3ae2fc
   when-to-use-score: 2ab57f3cd6f3c23e
   example-score-possible-trial-locations: 74fe1a6c260cc306
   set-up-the-poll: c918f01b363c975e
   vote: 9e9c5abb14eda58d
-  read-the-results: 35dbaf07dfb7950f
+  read-the-results: b63624c8dc864a2f
+  share-an-outcome: 264e098df75120c9
 title_source: 38e5a46cbc5ad328
 title_generated: a51273fd441cad71
 ---
@@ -85,4 +87,12 @@ title_generated: a51273fd441cad71
 
 בדוגמה זו, ל**בית הקפה בתחנה המרכזית** הממוצע הגבוה ביותר, 7.5. ל**משרדים בנמל** הממוצע הנמוך ביותר, 5.25, ואילו השוק שעל גדת הנהר ומתחם האוכל באוניברסיטה חולקים ממוצע של 7. ארבעה מתוך חמשת האנשים שהוזמנו כבר הצביעו, ולכן הקבוצה יכולה לראות שעדיין חסרה תשובה אחת.
 
-יש להשוות ממוצעים רק כאשר מספר המצביעים דומה בין האפשרויות. לפני שמייחסים משמעות להבדל קטן, כדאי לקרוא את נימוקי ההצבעות ולפרסם מסקנה שמסבירה איזו פעולה תינקט בעקבות הציונים.
+יש להשוות ממוצעים רק כאשר מספר המצביעים דומה בין האפשרויות. לפני שמייחסים משמעות להבדל קטן, כדאי לקרוא את נימוקי ההצבעות.
+
+<!-- translation-section: share-an-outcome -->
+
+## שיתוף מסקנה
+
+לאחר סגירת הסקר, יש לשתף מסקנה. יש להסביר איזו פעולה תינקט בעקבות הציונים וכיצד יוכרעו מקרים של שוויון. להסבר על מסקנות, ראו [שיתוף מסקנה](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome).
+
+![מסקנה שבה נבחר המיקום עם הציון הממוצע הגבוה ביותר](outcome.png)

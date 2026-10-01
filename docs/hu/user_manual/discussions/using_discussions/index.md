@@ -1,19 +1,19 @@
 ---
 title: Témák használata
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/discussions/using_discussions/index.md
+source_revision: 9c60c42fc739483fa23f15d9f34a1e9245518092
+source_file: docs/en/user_manual/discussions/using_discussions/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: fe8ab54791a49e01
   thread-anatomy: fca9ec9af6718a99
   discussion-context: ebefd7274a307dd0
-  notify-people-about-context-changes: 79d0ed7f94edb858
+  notify-people-about-context-changes: 3fe9320d33fff8f6
   navigation: c0ccc79744ae2c33
   notifications-and-members: ac51f2bbe3642155
   email-notifications-for-this-thread: 69076a17d7457ba0
-  invite-people: 69e5555d18551b0b
+  invite-people: 94ab00a27cec065d
   seen-by: 1d0bfd812ca11782
   notified: 6139bdcaae32a1db
   actions: c015c12999c5be2f
@@ -28,11 +28,11 @@ generated:
   introduction: ea81bfcb871026bf
   thread-anatomy: 3a81605b866c9b43
   discussion-context: 87be741cc344465b
-  notify-people-about-context-changes: 586ac76f3d12f439
+  notify-people-about-context-changes: 34c0d8fc06283e93
   navigation: 3e9635b81af1d118
   notifications-and-members: 44fe7ec77c8b46f4
   email-notifications-for-this-thread: 686c8f9abec4b10e
-  invite-people: f18dfca43d1085e9
+  invite-people: f5192c8d4907f1fb
   seen-by: c0fa3a0ced11a22a
   notified: eafaaf554a061184
   actions: df157228aa187692
@@ -113,9 +113,9 @@ Amikor szerkeszted a beszélgetés leírását, a **Mi változott?** mezőben fo
 
 ![Beszélgetés leírásának szerkesztése a változás összefoglalásával és az értesítendők kiválasztásával](../notifying_people/thread_editcontext.png)
 
-Az összefoglaló külön elemként jelenik meg a témában, így a résztvevők láthatják, mi változott.
+A témában látható, hogy szerkesztetted a leírást. Az értesített emberek az értesítéssel együtt megkapják az összefoglalódat.
 
-![A beszélgetés leírásának változását ismertető elem az idővonalon](../notifying_people/thread_edit_comment.png)
+![A téma egyik eleme, amely jelzi, hogy a beszélgetés leírását szerkesztették](../notifying_people/thread_edit_comment.png)
 
 <!-- translation-section: navigation -->
 
@@ -159,9 +159,13 @@ A téma elindítása után a **Hívj meg embereket** lehetőséggel adhatsz hozz
 
 Válassz egy csoportot vagy alcsoportot, add meg az egyes tagok nevét, vagy írj be egy e-mail-címet egy vendég meghívásához.
 
+A **Személyek keresése vagy meghívása** mező a szálban már részt vevő emberek listáját is szűri. Ürítsd ki a mezőt a teljes lista újbóli megjelenítéséhez, és használd a lapozókat, ha több mint 50 ember szerepel rajta. Miután kiválasztottad a címzetteket, a taglista helyén megjelenik a nem kötelező üzenetmező. A **Meghívás vagy értesítés** lehetőség kiválasztásakor az új emberek meghívást kapnak, a már hozzáféréssel rendelkezők pedig újabb értesítést.
+
 ![Meghívási ablak név- és e-mail-címmezővel](../notifying_people/thread_invite.png)
 
 A vendég láthatja ezt a szálat és részt vehet benne, de a csoport többi beszélgetését csak akkor láthatja, ha külön meghívják.
+
+Bezárhatod az ablak tetején megjelenő útmutatókat. A Loomio megjegyzi a fiókodban, hogy mely útmutatókat zártad be.
 
 ![Vendég meghívása e-mail-címmel](../notifying_people/invite_guest.png)
 

@@ -1,10 +1,10 @@
 ---
 title: Modelos de enquetes
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/polls/poll_templates/index.md
+source_revision: 9c60c42fc739483fa23f15d9f34a1e9245518092
+source_file: docs/en/user_manual/polls/poll_templates/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: f11182d62d99dbcc
   voting-methods-and-templates: 24be471686aa2dfd
@@ -15,7 +15,7 @@ sections:
   voting-method: 761137852812fea8
   example-title-details-and-tags: 9dbbd0510d2d6cc1
   response-options: 727afbf0dcea6069
-  duration-and-settings: dc1fb9123eb808df
+  duration-and-settings: a364411a3bebb3ae
   save-and-test-the-template: 8c48386c69ea309a
   manage-the-template-list: 0c124d7958c3f80a
 generated:
@@ -28,7 +28,7 @@ generated:
   voting-method: 40f35668a3429458
   example-title-details-and-tags: 1322196ef49e0938
   response-options: e76a6d25700e0abd
-  duration-and-settings: 803f5915cd357968
+  duration-and-settings: 60ecb129e4be23a9
   save-and-test-the-template: e76df2456f3b9ecf
   manage-the-template-list: 06ecaaabb452bd34
 title_source: 114cca246e357304
@@ -142,7 +142,7 @@ Defina uma duração padrão adequada para a maioria dos usos do modelo. A pesso
 
 ![](poll_type_duration.png)
 
-Outras configurações padrão podem controlar a visibilidade dos resultados, o voto anônimo, a exigência de justificativa para o voto, os lembretes, o quórum e o comportamento específico de cada método. Consulte [Configurações de propostas e enquetes](../settings/) para entender seus efeitos.
+Outras configurações padrão podem controlar a visibilidade dos resultados, o voto anônimo, a [votação ponderada](../weighted_voting/), a exigência de justificativa para o voto, os lembretes, o quórum e o comportamento específico de cada método. Consulte [Configurações de propostas e enquetes](../settings/) para entender seus efeitos.
 
 <!-- translation-section: save-and-test-the-template -->
 

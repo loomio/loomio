@@ -1,18 +1,18 @@
 ---
 title: Пригласить голосовать
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/polls/inviting_people/index.md
+source_revision: 9c60c42fc739483fa23f15d9f34a1e9245518092
+source_file: docs/en/user_manual/polls/inviting_people/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 0635cf23fcaaa95b
   invite-people-to-vote-in-a-poll: cfbf5caf71d1d5ca
   invite-guests-or-experts: 0717537bbd36fa07
   invite-a-subgroup-to-vote: 3ac684bdca4b3365
   engage-people-while-a-poll-is-running: 69971de8d56c0a74
-  add-voters-to-the-poll: 904f682bab618ce3
-  remove-people-from-the-poll: d204dd916f5418e2
+  add-voters-to-the-poll: 48f3b4a1edb5a037
+  remove-people-from-the-poll: ceec3f0319728807
   remind-people-to-vote: 177c881cb1b0dfb9
   view-notification-history: 52d930341c048008
   close-early: 0c46e8066719fc2f
@@ -23,8 +23,8 @@ generated:
   invite-guests-or-experts: 4e9b651fbd447307
   invite-a-subgroup-to-vote: e1aac761204cf1ee
   engage-people-while-a-poll-is-running: 1f1340aa2d7beefd
-  add-voters-to-the-poll: ea4111d2fcf2c7bb
-  remove-people-from-the-poll: 15bc953d13c3b35e
+  add-voters-to-the-poll: 9ca1da90faf9b6de
+  remove-people-from-the-poll: 8de96673623fd545
   remind-people-to-vote: 784bc53ca4766396
   view-notification-history: bff0eb006f6a5c5d
   close-early: 6ab15e0574abeff5
@@ -86,9 +86,9 @@ title_generated: cb6d5ae5ce932a86
 
 ### Добавить избирателей к голосованию
 
-Вы можете добавить новых людей к голосованию в любое время, в том числе до начала голосования, запланированного на определённое время.
+вы можете добавить новых людей к голосованию в любое время, в том числе до начала голосования, запланированного на определённое время.
 
-Нажмите **Добавить избирателей**, затем введите имена или адреса электронной почты людей, которых хотите добавить.
+Выберите **Управление избирателями**, чтобы открыть окно управления избирателями. В нём можно пригласить всех участников группы, добавить участников по имени или гостей по адресу электронной почты, если приглашение гостей разрешено. Ввод текста в поле **Найти или пригласить избирателей** также фильтрует список людей, уже добавленных к голосованию. Последние добавленные избиратели отображаются первыми; используйте кнопки перехода между страницами, чтобы просмотреть весь список.
 
 Если начало голосования запланировано на определённое время и оно ещё не наступило, избиратели не получат уведомление сразу. Уведомление придёт, когда голосование откроется.
 
@@ -96,13 +96,15 @@ title_generated: cb6d5ae5ce932a86
 
 ### Удалить людей из голосования
 
-Нажмите **Добавить избирателей**, найдите имя человека, откройте меню с тремя точками рядом с ним и выберите **Удалить из предложения**.
+Выберите **Управление избирателями**, найдите имя человека в окне управления избирателями, нажмите кнопку с корзиной рядом с ним и подтвердите действие **Удалить избирателя**.
+
+![Кнопка с корзиной рядом с избирателем в окне управления избирателями](proposal_invite_remove.png)
 
 Из анонимного голосования нельзя удалить людей.
 
 Например, администратор, создавший голосование от имени членов совета, может удалить себя, если у него нет права голоса.
 
-![](proposal_invite_remove.png)
+В голосованиях с весами голосов это же окно позволяет координаторам голосования [просматривать и изменять веса голосов](/en/user_manual/polls/weighted_voting).
 
 <!-- translation-section: remind-people-to-vote -->
 

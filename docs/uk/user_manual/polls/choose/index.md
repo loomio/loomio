@@ -1,24 +1,26 @@
 ---
 title: Виберіть
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/polls/choose/index.md
+source_revision: 9c60c42fc739483fa23f15d9f34a1e9245518092
+source_file: docs/en/user_manual/polls/choose/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: f9d6a5bfb7445de0
   when-to-use-choose: f8a798497cac5a43
   example-set-a-planning-meeting-agenda: 32a94a916dbf84e5
   set-up-the-poll: a16095b63c57e0c9
   vote: d170451131c544cf
-  read-the-results: 84521c82aed8dd29
+  read-the-results: e675d12da1a4ba8a
+  share-an-outcome: f6afc1713b921265
 generated:
   introduction: fef98e76238b3e8a
   when-to-use-choose: 3a4540e903c34094
   example-set-a-planning-meeting-agenda: 8ee2f7ed30a0d23a
   set-up-the-poll: 4120e82d900c3397
   vote: f0ea927cbf696b0f
-  read-the-results: be4f6db977e731dd
+  read-the-results: 6c3fa7942cce2d25
+  share-an-outcome: 935452ff8e76884a
 title_source: c7f937836f5d82d5
 title_generated: 6d14ab6d4dc97e52
 ---
@@ -86,6 +88,10 @@ title_generated: 6d14ab6d4dc97e52
 
 У цьому прикладі **Графік збору пляшок у кафе** вибрали тричі. **Процес миття** і **Звітність щодо повернення пляшок** вибрали по два рази. Результати свідчать, що збору пляшок у кафе варто приділити найбільше часу. Організатору ще потрібно вирішити, як розподілити решту часу між темами з однаковою кількістю голосів.
 
-Після закриття опитування опублікуйте **Висновок** і поясніть, як група використає результати.
+<!-- translation-section: share-an-outcome -->
 
-![](outcome.png)
+## Поділіться висновком
+
+Після закриття опитування поділіться висновком. Поясніть, як група використає результати, зокрема як буде вирішено питання варіантів з однаковою кількістю голосів. Докладніше про висновки читайте в розділі [Поділіться висновком](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome).
+
+![Висновок, за яким збору пляшок у кафе відведено найбільше часу на зустрічі](outcome.png)

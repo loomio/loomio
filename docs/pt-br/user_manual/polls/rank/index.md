@@ -1,10 +1,10 @@
 ---
 title: Classificação
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/polls/rank/index.md
+source_revision: 9c60c42fc739483fa23f15d9f34a1e9245518092
+source_file: docs/en/user_manual/polls/rank/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 9908dff1f0045200
   when-to-use-rank: f47d22e4968f74dd
@@ -12,6 +12,7 @@ sections:
   set-up-the-poll: 8a5902b708d6e7be
   vote: b089c2c5b7504b5d
   read-the-results: 18fbb0f9a5a866bc
+  share-an-outcome: c9dcebf155d64c65
 generated:
   introduction: 2ebbb8472f191637
   when-to-use-rank: f0c64e80b02f6e24
@@ -19,6 +20,7 @@ generated:
   set-up-the-poll: ce129ef7b6f7f3da
   vote: ba90dd5a2cb1659d
   read-the-results: dc1ee9d1d6c2faf7
+  share-an-outcome: cfc6b8a6c61877ce
 title_source: a4130d7d2c3a137f
 title_generated: 434739f82aa03b4b
 ---
@@ -86,3 +88,11 @@ Os resultados combinam todos os votos em uma classificação geral por pontos. P
 Neste exemplo, a **garrafa âmbar de 500 ml** fica em primeiro lugar, seguida pela **garrafa transparente de 500 ml** e pela **garrafa âmbar de 750 ml**. O grupo pode avaliar primeiro o modelo preferido e usar a ordem restante como sequência de alternativas.
 
 Um resultado baseado em pontos pode ocultar padrões de preferência diferentes que levam ao mesmo total. Examine os votos individuais e suas justificativas quando as opções tiverem resultados próximos ou a decisão tiver consequências importantes.
+
+<!-- translation-section: share-an-outcome -->
+
+## Compartilhe uma conclusão
+
+Quando a enquete for encerrada, compartilhe uma conclusão. Explique qual opção o grupo seguirá e o que acontecerá se ela não der certo. Veja [Compartilhe uma conclusão](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome) para saber como as conclusões funcionam.
+
+![Uma conclusão escolhendo o modelo de garrafa mais bem classificado](outcome.png)

@@ -1,24 +1,26 @@
 ---
 title: Ацэнка
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/polls/score/index.md
+source_revision: 9c60c42fc739483fa23f15d9f34a1e9245518092
+source_file: docs/en/user_manual/polls/score/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-30'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 7881bcdd5aad5df4
   when-to-use-score: 0ef92ec0bb907a3f
   example-score-possible-trial-locations: 3c9438177a822198
   set-up-the-poll: 29b0296533594cd6
   vote: 1113501e9e6736b7
-  read-the-results: f773aa25f47c325b
+  read-the-results: 3e996e9bcc830d1d
+  share-an-outcome: 243aaac17e645331
 generated:
   introduction: e9270c9f52153e9c
   when-to-use-score: 81cb6e77e5108017
   example-score-possible-trial-locations: 7891722a8a38516a
   set-up-the-poll: b584d56fff7107b4
   vote: 975908de49ec3fc7
-  read-the-results: 33a7a7ce57b83136
+  read-the-results: 2dabe04f40b73fda
+  share-an-outcome: 4da222cac2a4e742
 title_source: 38e5a46cbc5ad328
 title_generated: 1546ecfbfc911b4c
 ---
@@ -85,4 +87,12 @@ title_generated: 1546ecfbfc911b4c
 
 У гэтым прыкладзе **кавярня каля Цэнтральнага вакзала** мае найвышэйшы сярэдні бал — 7,5. **Офісы ў порце** маюць найніжэйшы сярэдні бал — 5,25, а рынак на набярэжнай і сталовая ва ўніверсітэце набралі па 7. З пяці запрошаных людзей прагаласавалі чацвёра, таму група таксама бачыць, што адзін адказ яшчэ не атрыманы.
 
-Параўноўвайце сярэднія балы, толькі калі колькасць выбаршчыкаў для варыянтаў прыкладна аднолькавая. Перш чым лічыць невялікую розніцу істотнай, прачытайце тлумачэнні галасоў. Затым апублікуйце выснову і растлумачце, якія дзеянні вынікаюць з ацэнак.
+Параўноўвайце сярэднія балы, толькі калі колькасць выбаршчыкаў для варыянтаў прыкладна аднолькавая. Перш чым лічыць невялікую розніцу істотнай, прачытайце тлумачэнні галасоў.
+
+<!-- translation-section: share-an-outcome -->
+
+## Падзяліцеся высновай
+
+Калі апытанне завершыцца, падзяліцеся высновай. Раскажыце, якія дзеянні вынікаюць з ацэнак і як прымаецца рашэнне пры аднолькавых балах. Пра тое, як працуюць высновы, глядзіце ў раздзеле [Падзяліцеся высновай](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome).
+
+![Выснова з выбарам месца з найвышэйшым сярэднім балам](outcome.png)

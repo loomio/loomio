@@ -1,24 +1,26 @@
 ---
 title: Згода
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/polls/proposals/consent/index.md
+source_revision: 9c60c42fc739483fa23f15d9f34a1e9245518092
+source_file: docs/en/user_manual/polls/proposals/consent/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 7c6301775b6655f2
   when-to-use-consent: 32ea681182001a9a
   example-start-a-bottle-trial: abc3b93cccfe2471
   set-up-the-proposal: 99fe028ed43b44c2
   vote: 496a824e20def5e2
-  read-the-results: f4db0702619b3992
+  read-the-results: 710fb80144e56ea9
+  share-an-outcome: 8f8b3f701dc4f516
 generated:
   introduction: a6416400dbaa283a
   when-to-use-consent: 477f0bc1b045972e
   example-start-a-bottle-trial: 7f75fe86e9172346
   set-up-the-proposal: f7343a9803dbbd7f
   vote: 58648e871a55fbe5
-  read-the-results: bdd33a95a2590461
+  read-the-results: f87f9deae740ae38
+  share-an-outcome: 43851c6b0c5ed9e1
 title_source: d37e0cd00f18a366
 title_generated: 7cf278790f9c9792
 ---
@@ -69,4 +71,10 @@ title_generated: 7cf278790f9c9792
 
 ![](../proposal_consent_results.png)
 
-Опублікуйте результат, у якому зазначено погоджені дії, запобіжні заходи, відповідальних осіб і час, коли група перегляне рішення.
+<!-- translation-section: share-an-outcome -->
+
+## Поділіться висновком
+
+Коли голосування щодо пропозиції завершиться, поділіться висновком. Зазначте погоджені дії, як було усунуто заперечення, хто відповідає за виконання та коли група перегляне рішення. Докладніше про висновки дивіться в розділі [Поділіться висновком](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome).
+
+![Висновок із записом про усунуте заперечення, дату початку та час перегляду рішення](outcome.png)

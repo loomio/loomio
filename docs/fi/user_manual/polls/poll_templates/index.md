@@ -1,10 +1,10 @@
 ---
 title: Kyselymallit
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/polls/poll_templates/index.md
+source_revision: 9c60c42fc739483fa23f15d9f34a1e9245518092
+source_file: docs/en/user_manual/polls/poll_templates/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-30'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: f11182d62d99dbcc
   voting-methods-and-templates: 24be471686aa2dfd
@@ -15,7 +15,7 @@ sections:
   voting-method: 761137852812fea8
   example-title-details-and-tags: 9dbbd0510d2d6cc1
   response-options: 727afbf0dcea6069
-  duration-and-settings: dc1fb9123eb808df
+  duration-and-settings: a364411a3bebb3ae
   save-and-test-the-template: 8c48386c69ea309a
   manage-the-template-list: 0c124d7958c3f80a
 generated:
@@ -28,7 +28,7 @@ generated:
   voting-method: 74fab0484daefeae
   example-title-details-and-tags: 32d7576adf42edf5
   response-options: 4832be716ef44271
-  duration-and-settings: 24fa80bdef371afb
+  duration-and-settings: 2da555a7d1746d89
   save-and-test-the-template: 70cdcd482f64e47b
   manage-the-template-list: '07824a3c184c31bd'
 title_source: 114cca246e357304
@@ -142,7 +142,7 @@ Aseta oletuskesto, joka sopii mallin useimpiin käyttökertoihin. Äänestyksen 
 
 ![](poll_type_duration.png)
 
-Muilla oletusasetuksilla voit määrittää tulosten näkyvyyttä, anonyymiä äänestystä, perustelujen vaatimista, muistutuksia, päätösvaltaisuutta ja äänestystapakohtaista toimintaa. Niiden vaikutukset kuvataan sivulla [Ehdotusten ja kyselyjen asetukset](../settings/).
+Muilla oletusasetuksilla voit määrittää tulosten näkyvyyttä, anonyymiä äänestystä, [painotettua äänestystä](../weighted_voting/), perustelujen vaatimista, muistutuksia, päätösvaltaisuutta ja äänestystapakohtaista toimintaa. Niiden vaikutukset kuvataan sivulla [Ehdotusten ja kyselyjen asetukset](../settings/).
 
 <!-- translation-section: save-and-test-the-template -->
 

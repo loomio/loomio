@@ -1,24 +1,26 @@
 ---
 title: Valitse
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/polls/choose/index.md
+source_revision: 9c60c42fc739483fa23f15d9f34a1e9245518092
+source_file: docs/en/user_manual/polls/choose/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: f9d6a5bfb7445de0
   when-to-use-choose: f8a798497cac5a43
   example-set-a-planning-meeting-agenda: 32a94a916dbf84e5
   set-up-the-poll: a16095b63c57e0c9
   vote: d170451131c544cf
-  read-the-results: 84521c82aed8dd29
+  read-the-results: e675d12da1a4ba8a
+  share-an-outcome: f6afc1713b921265
 generated:
   introduction: f9757fd804c50607
   when-to-use-choose: 471c45ff628740b4
   example-set-a-planning-meeting-agenda: 0052a937ce1225af
   set-up-the-poll: b6f2ee29fe96a210
   vote: 645dc7712ea8bc00
-  read-the-results: 246c0d17e0010630
+  read-the-results: 20dc9b431319e36f
+  share-an-outcome: a20c976ea6712567
 title_source: c7f937836f5d82d5
 title_generated: 92978709da089a2a
 ---
@@ -86,6 +88,10 @@ Tuloksista näet kunkin vaihtoehdon osuuden kaikista valinnoista, sen valinneide
 
 Tässä esimerkissä **Kahviloiden pullojen noutoaikataulu** on saanut kolme valintaa. **Pesuprosessi** ja **Palautusasteen raportointi** ovat kumpikin saaneet kaksi. Tuloksen perusteella kahviloiden pullojen noudolle kannattaa varata eniten aikaa esityslistalla. Järjestäjän on silti päätettävä, miten jäljelle jäävä aika jaetaan tasatuloksen saaneiden aiheiden kesken.
 
-Kun kysely sulkeutuu, julkaise **Tulokset**, jossa kerrot, mitä ryhmä tekee kyselyn tuloksen perusteella.
+<!-- translation-section: share-an-outcome -->
 
-![](outcome.png)
+## Jaa johtopäätös
+
+Kun kysely sulkeutuu, jaa johtopäätös. Kerro, mitä ryhmä tekee tuloksen perusteella ja miten mahdolliset tasatulokset ratkaistaan. Lue johtopäätösten käytöstä sivulta [Jaa johtopäätös](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome).
+
+![Johtopäätös, jossa kahviloiden pullojen noudolle varataan eniten kokousaikaa](outcome.png)

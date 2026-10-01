@@ -1,6 +1,6 @@
 ---
 title: Configurações
-source_revision: 6b2c4d5c591a9eb139fc64370d602b8dcf19c0e4
+source_revision: 9c60c42fc739483fa23f15d9f34a1e9245518092
 source_file: docs/en/user_manual/polls/settings/index.md
 translated:
   provider: codex/gpt-6.1-sol
@@ -12,11 +12,11 @@ sections:
   add-content: f622e36a3ad15e4e
   voting-options: d0ea31745ce8b651
   edit-voting-options: ef0d61585b34fbd6
-  opening-time: 13aa5e4392d1ba60
+  opening-time: 2fdf358a34805114
   more-settings: fd837a51b81cbc13
   reminder: e6ac37324b884958
   anonymous-voting: 4fde93187ffd1a86
-  vote-reason: ce00fe99ebac71ff
+  vote-reason: b1ebf2700ce8248b
   hide-results: c0873aeafe8feb59
   start-the-poll: 8e7d8e81db57f4f8
   managing-polls: b26fc41e19371d54
@@ -34,11 +34,11 @@ generated:
   add-content: 9d3da7557e31bb8c
   voting-options: 32ed4bd651250d59
   edit-voting-options: ba2dd71278cc15e5
-  opening-time: c7c8b32a729a88fb
+  opening-time: df5dbcd2462441cf
   more-settings: f868cbc69693539f
   reminder: 952c15c066447196
   anonymous-voting: 533d25678df1ae9b
-  vote-reason: 74e1cc7be4791e50
+  vote-reason: 1d29925ab708b639
   hide-results: ea95206357114a12
   start-the-poll: 7368de8bac5a7f74
   managing-polls: 301e2f77ba8cb7da
@@ -123,11 +123,13 @@ Use o ícone de lápis ao lado da opção de voto para abrir a janela de ediçã
 
 <!-- translation-section: opening-time -->
 
-### Horário de abertura
+### Duração
 
 Por padrão, a votação começa assim que você cria a enquete. Para agendar o início da votação, desmarque **A votação começa imediatamente.** e selecione a data e o horário de abertura.
 
 Isso dá tempo para a discussão antes da votação ou permite conferir a configuração da enquete ou proposta e programar seu início para o momento certo.
+
+Por exemplo, se seu grupo tiver várias decisões para votar em uma próxima assembleia, você pode preparar as enquetes e adicionar pessoas votantes com antecedência, depois agendar todas para abrir quando o período de votação começar. As pessoas podem ver as enquetes antes da abertura, mas não podem votar antecipadamente.
 
 Quando a abertura de uma enquete está agendada, você pode adicionar pessoas votantes antes do início da votação. Elas serão notificadas quando a votação começar, e não quando forem adicionadas.
 
@@ -181,16 +183,14 @@ Entender por que as pessoas votaram de determinada maneira pode ajudar na decis�
 As configurações disponíveis dependem do modelo:
 
 - **Opcional** permite que os votantes escolham se querem justificar o voto
-- **Necessário para discordar ou bloquear** exige uma justificativa quando a opção selecionada
-  usa o ícone de voto Discordar ou Bloquear
-- **Necessário para bloqueio** exige uma justificativa quando a opção selecionada usa o
-  ícone de voto Bloquear
+- **Necessário para discordar ou bloquear** exige uma justificativa quando a opção selecionada usa o ícone de voto Discordar ou Bloquear
+- **Necessário para bloqueio** exige uma justificativa quando a opção selecionada usa o ícone de voto Bloquear
 - **Obrigatório** exige que todos os votantes justifiquem o voto
 - **Desabilitado** remove o campo de justificativa do voto
 
 ![](vote_reason_options.png)
 
-As configurações condicionais seguem o ícone de voto, independentemente do nome da opção. Elas continuam válidas se você renomear Discordar para algo como Objeção. O modelo de Consentimento usa **Necessário para discordar ou bloquear** por padrão, enquanto o modelo de Consenso usa **Necessário para bloqueio**. Os demais modelos usam **Opcional** por padrão, exceto as rodadas de Perguntas, nas quais a resposta é obrigatória. Quem criou a enquete pode alterar essa configuração para cada enquete.
+As configurações condicionais seguem o ícone de voto, independentemente do nome da opção. Elas continuam válidas se você renomear Discordar para algo como Objeção. O modelo de Consentimento usa **Necessário para discordar ou bloquear** por padrão, enquanto o modelo de Consenso usa **Necessário para bloqueio**. Os demais modelos usam **Opcional** por padrão. Quem criou a enquete pode alterar essa configuração para cada enquete.
 
 **Limitar a justificativa a 500 caracteres:** Justificativas curtas são mais fáceis de entender. Um conjunto de justificativas concisas ajuda na tomada de decisão. Essa opção vem marcada por padrão. Desmarque-a para permitir justificativas mais longas.
 

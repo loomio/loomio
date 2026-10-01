@@ -1,24 +1,26 @@
 ---
 title: Tanács
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/polls/proposals/advice/index.md
+source_revision: 9c60c42fc739483fa23f15d9f34a1e9245518092
+source_file: docs/en/user_manual/polls/proposals/advice/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 3b517bcf7f8d31d2
   when-to-use-advice: d98ed1affd9abbd3
   example-choose-a-washing-supplier: 94c2d1f8987bd817
   set-up-the-proposal: e93938cfa0895f27
   vote: e076d476b50d1445
-  read-the-results: 7782c49ae9875d70
+  read-the-results: 937eff4c74abcc79
+  share-an-outcome: 1f762148d1f18b1d
 generated:
   introduction: cc49f8a3b2b89a23
   when-to-use-advice: c41fe039e232ad9a
   example-choose-a-washing-supplier: 90cdb21ad29696c7
   set-up-the-proposal: f3f9947feee36689
   vote: 967fb76c24b6de0b
-  read-the-results: c3993795cb3db28b
+  read-the-results: da04a98b884704c8
+  share-an-outcome: 5f6e157912712deb
 title_source: 305f5e5463e18d7f
 title_generated: df602162bbbf058d
 ---
@@ -69,4 +71,10 @@ A diagram megmutatja, ki válaszolt, de a Tanács javaslat lényegét az indokl�
 
 ![](../proposal_advice_results.png)
 
-A döntéshozó közzétesz egy következtetést, amelyben leírja, mit döntött, és hogyan vette figyelembe a kapott tanácsokat.
+<!-- translation-section: share-an-outcome -->
+
+## Következtetés megosztása
+
+Amikor a javaslat lezárul, a döntéshozó megoszt egy következtetést. Ebben leírja, mit döntött, és hogyan vette figyelembe a kapott tanácsokat. A következtetések működéséről a [Következtetés megosztása](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome) oldalon olvashatsz.
+
+![Következtetés, amely megnevezi a kiválasztott beszállítót és a figyelembe vett tanácsokat](outcome.png)

@@ -1,45 +1,45 @@
 ---
 title: הצבעה אנונימית
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/polls/anonymous_voting/index.md
+source_revision: 9c60c42fc739483fa23f15d9f34a1e9245518092
+source_file: docs/en/user_manual/polls/anonymous_voting/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
-  introduction: d5c276b2785919c3
+  introduction: 2b9b7da01da020b3
   how-anonymous-voting-protects-voters: f2be8477636489af
   while-voting-is-open: dda23e517269b9cf
   votes-cannot-be-changed: 1e317297688ba902
   why-anonymous-votes-do-not-have-reasons: 39c1a8362550ae40
   results-and-exports: eb2429afd442dad2
-  participation-verification: cdaa1f5c3ca1e179
+  participation-verification: 87bc3647be4bbfb8
   reminders: 0afad473c90f2f03
-  what-coordinators-and-administrators-can-see: 51460c8a6b663aba
+  what-coordinators-and-administrators-can-see: 07faa9f646665b64
   limits-of-anonymous-voting: 912141560342d073
   questions: 60cc6f1a0163ec5d
-  can-a-coordinator-see-how-i-voted: 3dd2c9e6d06debda
+  can-a-coordinator-see-how-i-voted: 574fc18f3a9871c3
   can-i-see-my-vote-after-submitting-it: c558e29729aed45f
   can-i-change-or-withdraw-my-vote: dd1a385fa8d225a5
   will-i-receive-an-email-confirming-my-vote: 8616fc9a0b9809ac
-  does-a-public-poll-reveal-more-information: 2ba76a1748304f96
+  does-a-public-poll-reveal-more-information: 27acfa7744a0790d
   is-anonymous-voting-suitable-for-every-election: d1b723178449c0da
 generated:
-  introduction: 8e35419629081978
+  introduction: 8e520d3bc4532f03
   how-anonymous-voting-protects-voters: 313d1ae2a8502d6b
   while-voting-is-open: fa98baa9372cf7f2
   votes-cannot-be-changed: cbbe3c0cb1da1781
   why-anonymous-votes-do-not-have-reasons: 8a3b273ab651a4d3
   results-and-exports: 262ec72fdece933e
-  participation-verification: 3d88f73073b7bfe7
+  participation-verification: eb9dca07c010051c
   reminders: 03c4a1b0adc71729
-  what-coordinators-and-administrators-can-see: '096bf60e79f00a60'
+  what-coordinators-and-administrators-can-see: d4575f022be0b87c
   limits-of-anonymous-voting: ae505603d9c4cc77
   questions: 501618f774d6e235
-  can-a-coordinator-see-how-i-voted: c253f3c47765675a
+  can-a-coordinator-see-how-i-voted: 8f67594475e5ca31
   can-i-see-my-vote-after-submitting-it: 27c80d05b8a49ba2
   can-i-change-or-withdraw-my-vote: e3633f90b407fd11
   will-i-receive-an-email-confirming-my-vote: be90b36c4cb07b47
-  does-a-public-poll-reveal-more-information: ce962f24a8ade71e
+  does-a-public-poll-reveal-more-information: 35fb707e68177f32
   is-anonymous-voting-suitable-for-every-election: 4e077163e37024fe
 title_source: 1bc4567506ad4d51
 title_generated: 1097c4f1c00530f0
@@ -49,7 +49,7 @@ title_generated: 1097c4f1c00530f0
 
 # הצבעה אנונימית
 
-בהצבעה אנונימית, המכונה גם הצבעה חשאית, הרישום של מי שהצביעו מופרד מן ההצבעות עצמן. מתאמי הסקר יכולים לראות מי היו זכאים להצביע, ולאחר שלפחות שלושה אנשים הצביעו, לבדוק מי השתתפו. משתמשי היישום אינם יכולים לקשר בין הצבעה שהוגשה לבין מי שהגישו אותה.
+בהצבעה אנונימית, המכונה גם הצבעה חשאית, הרישום של מי שהצביעו מופרד מן ההצבעות עצמן. לאחר סגירת הסקר, כל מי שיש להם גישה לתוצאות יכולים לראות מי השתתפו. אין אפשרות לקשר דרך Loomio בין הצבעה שהוגשה לבין מי שהגישו אותה.
 
 דף זה מסביר כיצד הצבעה אנונימית מגינה על זהות הבוחרים, איזה מידע נשמר ומהן מגבלות ההגנה.
 
@@ -116,11 +116,15 @@ title_generated: 1097c4f1c00530f0
 
 <!-- translation-section: participation-verification -->
 
-## בדיקת השתתפות
+## מי השתתפו
 
-מתאמי הסקר יכולים לראות את רשומות ההשתתפות הכוללות שמות. הרשומות מציגות תמיד מי היו זכאים להצביע. לאחר שלפחות שלושה אנשים הצביעו, הן מציגות גם האם כל אדם הצביע, אך לעולם לא כיצד הצביע. אם הסקר נסגר עם פחות משלוש הצבעות, מצב ההשתתפות נשאר מוסתר.
+לאחר סגירת סקר אנונימי, כל מי שיש להם גישה לתוצאות יכולים לראות מי השתתפו. כל עוד ההצבעה פתוחה, המידע הזה מוסתר מכולם.
 
-משתתפים אחרים אינם יכולים לראות את פרטי ההשתתפות הכוללים שמות. גישה לתוצאות הסקר אינה מקנה גישה לרשומות ההשתתפות.
+יש לבחור **הצג הצבעות** כדי לראות את הרשימה. הרשימה מציגה תמיד מי היו זכאים להצביע. היא מציגה האם כל אדם הצביע רק אם מספיק אנשים הצביעו. הסף הוא המניין החוקי של הסקר, אם הוגדר כזה, ובמקרה אחר מחצית מהאנשים הזכאים להצביע, ובכל מקרה לא פחות משלוש הצבעות. הרשימה לעולם אינה מציגה כיצד הצביעו או מתי.
+
+חברי הקבוצה והמצביעים בסקר יכולים לראות גם מתי כל אדם הצטרף לקבוצה ומי הזמינו אותו. מנהלי הקבוצה יכולים לראות גם כתובות דוא״ל, כדי להבחין בין אנשים בעלי אותו שם.
+
+מכיוון שכל מי שיש להם גישה לתוצאות יכולים לראות מי הצביעו, תוצאה חד־צדדית עלולה לחשוף כיצד הצביעו. לדוגמה, אם כל ההצבעות הן בעד, כל מי שהצביעו תמכו בהצעה.
 
 מתאמי הסקר יכולים להוסיף אנשים הזכאים להצביע כל עוד ההצבעה פתוחה, גם לאחר שאנשים אחרים כבר הצביעו. לא ניתן להסיר מסקר אנונימי אנשים שכבר הצביעו.
 
@@ -141,7 +145,7 @@ title_generated: 1097c4f1c00530f0
 דרך היישום, מתאמי סקר, מנהלי קבוצה או מנהלי מערכת עשויים לראות:
 
 - את הסקר ואת האנשים הזכאים להצביע בו;
-- האם כל אדם הזכאי להצביע הצביע, אם תפקידם מקנה גישה למידע הזה ולפחות שלושה אנשים הצביעו; וכן
+- האם כל אדם הזכאי להצביע הצביע, אם תפקידם מקנה גישה למידע הזה ומספיק אנשים הצביעו; וכן
 - תוצאות כוללות לאחר סגירת הסקר.
 
 לא ניתן להשתמש בתכונות היישום כדי לראות:
@@ -167,9 +171,9 @@ title_generated: 1097c4f1c00530f0
 
 <!-- translation-section: can-a-coordinator-see-how-i-voted -->
 
-### האם מי שמתאם את המשאל יכול לראות כיצד הצבעתי?
+### האם מישהו יכול לראות כיצד הצבעתי?
 
-לא. לאחר שלפחות שלושה אנשים הצביעו, מי שמתאם את המשאל יכול לבדוק אם הצבעת, אך אין אפשרות לקשר אותך להצבעה שהוגשה דרך היישום. כל עוד הצביעו פחות משלושה אנשים, סטטוס ההשתתפות שלך נשאר מוסתר.
+לא. לאחר שמספיק אנשים הצביעו, מי שיש להם גישה לתוצאות יכולים לראות האם הצבעת. אין אפשרות לקשר דרך היישום בין הזהות שלך לבין הצבעה שהוגשה. עד אז, עצם ההשתתפות שלך בהצבעה נשארת מוסתרת.
 
 <!-- translation-section: can-i-see-my-vote-after-submitting-it -->
 
@@ -191,9 +195,9 @@ title_generated: 1097c4f1c00530f0
 
 <!-- translation-section: does-a-public-poll-reveal-more-information -->
 
-### האם משאל ציבורי חושף מידע נוסף?
+### האם סקר ציבורי חושף מידע נוסף?
 
-גישה ציבורית עשויה לאפשר לאנשים לראות את המשאל ואת התוצאות המצטברות לאחר סגירתו. היא אינה חושפת את רשומות ההשתתפות הכוללות שמות או הצבעות אנונימיות של אנשים יחידים.
+לאחר סגירת סקר ציבורי, התוצאות ומידע על מי שהשתתפו גלויים לכולם. הצבעות בודדות ופרטי החברות בקבוצה וההזמנות אינם גלויים להם.
 
 <!-- translation-section: is-anonymous-voting-suitable-for-every-election -->
 

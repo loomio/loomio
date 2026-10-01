@@ -1,24 +1,26 @@
 ---
 title: Választás
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/polls/choose/index.md
+source_revision: 9c60c42fc739483fa23f15d9f34a1e9245518092
+source_file: docs/en/user_manual/polls/choose/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: f9d6a5bfb7445de0
   when-to-use-choose: f8a798497cac5a43
   example-set-a-planning-meeting-agenda: 32a94a916dbf84e5
   set-up-the-poll: a16095b63c57e0c9
   vote: d170451131c544cf
-  read-the-results: 84521c82aed8dd29
+  read-the-results: e675d12da1a4ba8a
+  share-an-outcome: f6afc1713b921265
 generated:
   introduction: e76df91386115147
   when-to-use-choose: bc7e94c0653813b4
   example-set-a-planning-meeting-agenda: a61226be7dbb0a19
   set-up-the-poll: 6eb55c16a5cbef9f
   vote: a5126306cef4816f
-  read-the-results: 770f16f042a5fcb5
+  read-the-results: 60c0cbd1cf73eda5
+  share-an-outcome: 10bd7913a958a9ad
 title_source: c7f937836f5d82d5
 title_generated: 286ca3786012a2d5
 ---
@@ -86,6 +88,10 @@ Az eredmények megmutatják, hogy az egyes lehetőségek az összes jelölés me
 
 Ebben a példában a **Kávézói begyűjtés ütemezése** három jelölést kapott. A **Mosási munkafolyamat** és a **Visszaváltási arány jelentése** két-két jelölést kapott. Az eredmény alapján érdemes a legtöbb napirendi időt a kávézói begyűjtésre fordítani. A két azonos eredményt elért téma között azonban a szervezőnek kell elosztania a fennmaradó időt.
 
-A szavazás lezárása után tegyél közzé egy **Következtetés** bejegyzést arról, hogyan használja fel a csoport az eredményt.
+<!-- translation-section: share-an-outcome -->
 
-![](outcome.png)
+## Következtetés megosztása
+
+A szavazás lezárása után ossz meg egy következtetést. Írd le, hogyan használja fel a csoport az eredményt, és hogyan dönt az azonos eredményt elért lehetőségek között. A következtetések működéséről a [Következtetés megosztása](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome) oldalon olvashatsz.
+
+![Következtetés, amely a legtöbb megbeszélési időt a kávézói begyűjtésre fordítja](outcome.png)

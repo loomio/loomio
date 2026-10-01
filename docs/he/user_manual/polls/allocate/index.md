@@ -1,24 +1,26 @@
 ---
 title: הקצאת נקודות
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/polls/allocate/index.md
+source_revision: 9c60c42fc739483fa23f15d9f34a1e9245518092
+source_file: docs/en/user_manual/polls/allocate/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: d097e3a7d91324c9
   when-to-use-allocate: 25c91f8c05c1ec80
   example-set-priorities-for-an-annual-strategy-review: 0211b365dde1d17c
   set-up-the-poll: 772846c919c6af97
   vote: b6d1dab4c7743034
-  read-the-results: 85ea9532f2548205
+  read-the-results: 3a66507bd8387273
+  share-an-outcome: abb46bfca8b73b7a
 generated:
   introduction: fe4b89b8b577704d
   when-to-use-allocate: 5ce0b164e2b05fa1
   example-set-priorities-for-an-annual-strategy-review: 229565f8243a3d82
   set-up-the-poll: 2e28c3ca9cc8dd4c
   vote: 323b331548fdd113
-  read-the-results: 37270a2b1b71f9f1
+  read-the-results: b71fd6531089e1ed
+  share-an-outcome: eb106e213bfa5fb0
 title_source: c927a8a7c2ce230c
 title_generated: 99e1001ea8bb6b46
 ---
@@ -84,4 +86,12 @@ title_generated: 99e1001ea8bb6b46
 
 בדוגמה זו, **יציבות פיננסית** מקבלת את מספר הנקודות הגבוה ביותר, ואחריה **פיתוח צוות**. כל המצביעים הקצו נקודות ליציבות פיננסית. הדבר עשוי להעיד על הסכמה רחבה שיש להקדיש לתחום זה זמן סקירה משמעותי. יש לבחון את סך הנקודות לצד מספר המצביעים כדי להבחין בין עדיפות רחבה לבין תחומים שמקבלים תמיכה חזקה ממספר קטן יותר של אנשים.
 
-יש לבחון את סך הנקודות לצד מספר המצביעים והנימוקים שלהם. יש לפרסם מסקנה שמסבירה כיצד תיערך סקירת האסטרטגיה; המשאל אינו מקצה זמן באופן אוטומטי.
+יש לבחון את סך הנקודות לצד מספר המצביעים והנימוקים שלהם.
+
+<!-- translation-section: share-an-outcome -->
+
+## שיתוף מסקנה
+
+לאחר סגירת המשאל, יש לשתף מסקנה. המשאל אינו מקצה זמן או כסף באופן אוטומטי, ולכן יש להסביר כיצד ייעשה שימוש בתוצאה. להסבר על השימוש במסקנות, ניתן לעיין ב[שיתוף מסקנה](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome).
+
+![מסקנה הקובעת כיצד יחולק הזמן בסקירת האסטרטגיה](outcome.png)

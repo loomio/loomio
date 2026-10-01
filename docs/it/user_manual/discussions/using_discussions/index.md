@@ -1,19 +1,19 @@
 ---
 title: Usare le discussioni
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/discussions/using_discussions/index.md
+source_revision: 9c60c42fc739483fa23f15d9f34a1e9245518092
+source_file: docs/en/user_manual/discussions/using_discussions/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: fe8ab54791a49e01
   thread-anatomy: fca9ec9af6718a99
   discussion-context: ebefd7274a307dd0
-  notify-people-about-context-changes: 79d0ed7f94edb858
+  notify-people-about-context-changes: 3fe9320d33fff8f6
   navigation: c0ccc79744ae2c33
   notifications-and-members: ac51f2bbe3642155
   email-notifications-for-this-thread: 69076a17d7457ba0
-  invite-people: 69e5555d18551b0b
+  invite-people: 94ab00a27cec065d
   seen-by: 1d0bfd812ca11782
   notified: 6139bdcaae32a1db
   actions: c015c12999c5be2f
@@ -28,11 +28,11 @@ generated:
   introduction: 49db2f17551058f6
   thread-anatomy: 2574cbb5221d89e2
   discussion-context: d1a56b365f0f06c4
-  notify-people-about-context-changes: 507ed6b1fd3c9d2e
+  notify-people-about-context-changes: d0038a52d6337b90
   navigation: 10094e812caa3d5e
   notifications-and-members: 9dc2cbd356d19720
   email-notifications-for-this-thread: ab0fafc62ed3fa11
-  invite-people: 6932181348006cce
+  invite-people: 4aa723d95e6decfd
   seen-by: cb8e6b343af47ce4
   notified: 985df715acefa98f
   actions: f6b57b75bfc10c0b
@@ -113,9 +113,9 @@ Quando modifichi il contesto della discussione, usa **Che cosa ha cambiato?** pe
 
 ![Modifica del contesto di una discussione con un riepilogo delle modifiche e i destinatari della notifica](../notifying_people/thread_editcontext.png)
 
-Il riepilogo compare come elemento del thread, così i partecipanti possono vedere che cosa è cambiato.
+Il thread mostra che hai modificato il contesto. Le persone che avvisi ricevono il tuo riepilogo insieme alla notifica.
 
-![Elemento della cronologia che descrive una modifica al contesto della discussione](../notifying_people/thread_edit_comment.png)
+![Elemento del thread che indica che il contesto della discussione è stato modificato](../notifying_people/thread_edit_comment.png)
 
 <!-- translation-section: navigation -->
 
@@ -159,9 +159,13 @@ Seleziona **Invita persone** per aggiungere partecipanti dopo l'avvio del thread
 
 Seleziona un gruppo o sottogruppo, inserisci i nomi dei singoli membri oppure un indirizzo email per invitare un ospite.
 
+Il campo **Trova o invita persone** filtra anche l'elenco delle persone già presenti nel thread. Svuota il campo per visualizzare di nuovo l'elenco completo e usa i controlli di paginazione se ci sono più di 50 persone. Dopo aver selezionato i destinatari, l'elenco dei membri lascia il posto al campo per il messaggio facoltativo. Le nuove persone vengono invitate; chi ha già accesso riceve un'altra notifica quando selezioni **Invita o notifica**.
+
 ![Finestra Invita persone con un campo per nomi e indirizzi email](../notifying_people/thread_invite.png)
 
 Un ospite può vedere questa discussione e parteciparvi, ma non può vedere le altre discussioni del gruppo a meno che non venga invitato anche a quelle.
+
+Puoi nascondere gli avvisi di guida nella parte superiore della finestra. Loomio ricorda quali avvisi hai nascosto per il tuo account.
 
 ![Invito di un ospite tramite indirizzo email](../notifying_people/invite_guest.png)
 

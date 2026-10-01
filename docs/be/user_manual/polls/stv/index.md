@@ -1,10 +1,10 @@
 ---
 title: Выбары на СТВ
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/polls/stv/index.md
+source_revision: 9c60c42fc739483fa23f15d9f34a1e9245518092
+source_file: docs/en/user_manual/polls/stv/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-30'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 6c43a75f60922bb6
   when-to-use-stv: e37de389c27f7d87
@@ -19,6 +19,7 @@ sections:
   elected-candidates: a6c3dbb5548c7d41
   round-by-round-details: e4a8789dae29d49e
   exporting-ballots: 582555dd13633bf0
+  share-an-outcome: 6a02aed173b368b9
 generated:
   introduction: f87547b89cefbcf0
   when-to-use-stv: e0882f34b58c6cdb
@@ -33,6 +34,7 @@ generated:
   elected-candidates: f9c898619765cacf
   round-by-round-details: 0c230f16ece0a0cd
   exporting-ballots: 0f9d3e0c2127d206
+  share-an-outcome: d52713429e96ef38
 title_source: cd3e1a4cdc2456a6
 title_generated: 8646575e06e8abf3
 ---
@@ -166,6 +168,14 @@ Hare
 ![](stv-results.png)
 
 Зялёным колерам адзначана абранне кандыдата, чырвоным — выключэнне, а аранжавым — роўнасць галасоў.
+
+<!-- translation-section: share-an-outcome -->
+
+## Падзяліцца высновай
+
+Калі выбары завершацца, падзяліцеся высновай. Назавіце абраных людзей і пазначце, калі пачынаюцца іх паўнамоцтвы. Пра тое, як працуюць высновы, чытайце ў раздзеле [Падзяліцца высновай](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome).
+
+![Выснова з імёнамі абраных людзей у складзе камітэта](outcome.png)
 
 <!-- translation-section: exporting-ballots -->
 

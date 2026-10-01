@@ -1,18 +1,18 @@
 ---
 title: Kutsu äänestämään
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/polls/inviting_people/index.md
+source_revision: 9c60c42fc739483fa23f15d9f34a1e9245518092
+source_file: docs/en/user_manual/polls/inviting_people/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 0635cf23fcaaa95b
   invite-people-to-vote-in-a-poll: cfbf5caf71d1d5ca
   invite-guests-or-experts: 0717537bbd36fa07
   invite-a-subgroup-to-vote: 3ac684bdca4b3365
   engage-people-while-a-poll-is-running: 69971de8d56c0a74
-  add-voters-to-the-poll: 904f682bab618ce3
-  remove-people-from-the-poll: d204dd916f5418e2
+  add-voters-to-the-poll: 48f3b4a1edb5a037
+  remove-people-from-the-poll: ceec3f0319728807
   remind-people-to-vote: 177c881cb1b0dfb9
   view-notification-history: 52d930341c048008
   close-early: 0c46e8066719fc2f
@@ -23,8 +23,8 @@ generated:
   invite-guests-or-experts: 567243725771195a
   invite-a-subgroup-to-vote: 2746ebde67d4868a
   engage-people-while-a-poll-is-running: 4148d0a40a9c02a9
-  add-voters-to-the-poll: e4933786038acf5d
-  remove-people-from-the-poll: 012e2f38fb9c15d7
+  add-voters-to-the-poll: f3039d1458cc6ecb
+  remove-people-from-the-poll: 5a9f2f369590d940
   remind-people-to-vote: 6e8f2abbc99232bd
   view-notification-history: 401f2a339f5f9c74
   close-early: 1d2b37df3f5d7be4
@@ -88,7 +88,7 @@ Kyselyn alareunassa on toimintoja, joiden avulla voit olla yhteydessä ihmisiin 
 
 Voit lisätä kyselyyn uusia henkilöitä milloin tahansa, myös ennen kuin ajastetun kyselyn äänestys alkaa.
 
-Valitse **Lisää äänestäjiä** ja kirjoita lisättävien henkilöiden nimet tai sähköpostiosoitteet.
+Valitse **Hallitse äänestäjiä** avataksesi äänestäjien hallintaikkunan. Voit kutsua kaikki ryhmän jäsenet, lisätä jäseniä nimellä tai lisätä vieraita sähköpostiosoitteella, jos vieraiden kutsuminen on sallittu. Kirjoittaminen **Etsi tai kutsu äänestäjiä** -kenttään suodattaa myös kyselyssä jo olevia henkilöitä. Viimeksi lisätyt äänestäjät näkyvät ensimmäisinä. Selaa koko luetteloa sivutuspainikkeilla.
 
 Jos kyselyn alkamisaika on ajastettu eikä äänestys ole vielä alkanut, äänestäjät eivät saa ilmoitusta heti. Heille lähetetään ilmoitus, kun äänestys alkaa.
 
@@ -96,13 +96,15 @@ Jos kyselyn alkamisaika on ajastettu eikä äänestys ole vielä alkanut, ääne
 
 ### Poista henkilöitä kyselystä
 
-Valitse **Lisää äänestäjiä**, etsi henkilön nimi, avaa sen vieressä oleva kolmen pisteen valikko ja valitse **Poista ehdotuksesta**.
+Valitse **Hallitse äänestäjiä**, etsi henkilön nimi äänestäjien hallintaikkunasta, napsauta sen vieressä olevaa roskakoripainiketta ja vahvista valitsemalla **Poista äänestäjä**.
+
+![Roskoripainike äänestäjän vieressä äänestäjien hallintaikkunassa](proposal_invite_remove.png)
 
 Henkilöitä ei voi poistaa anonyymistä kyselystä.
 
 Jos ylläpitäjä esimerkiksi luo kyselyn hallituksen jäsenten puolesta, hän voi poistaa itsensä, jos hänellä ei ole äänioikeutta.
 
-![](proposal_invite_remove.png)
+Jos kyselyssä käytetään äänipainotuksia, kyselyn ylläpitäjät voivat samassa ikkunassa [tarkastella ja muokata äänipainotuksia](/en/user_manual/polls/weighted_voting).
 
 <!-- translation-section: remind-people-to-vote -->
 

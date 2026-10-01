@@ -1,10 +1,10 @@
 ---
 title: Вибори на СТВ
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/polls/stv/index.md
+source_revision: 9c60c42fc739483fa23f15d9f34a1e9245518092
+source_file: docs/en/user_manual/polls/stv/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 6c43a75f60922bb6
   when-to-use-stv: e37de389c27f7d87
@@ -19,6 +19,7 @@ sections:
   elected-candidates: a6c3dbb5548c7d41
   round-by-round-details: e4a8789dae29d49e
   exporting-ballots: 582555dd13633bf0
+  share-an-outcome: 6a02aed173b368b9
 generated:
   introduction: caae16e78204d328
   when-to-use-stv: f3dd96b1521c1334
@@ -33,6 +34,7 @@ generated:
   elected-candidates: ca227bd62319783a
   round-by-round-details: 3e74b77b2735aa54
   exporting-ballots: 244bd72aecd90880
+  share-an-outcome: 5b37c439c5d7c9cd
 title_source: cd3e1a4cdc2456a6
 title_generated: 6ad14bc5678c2627
 ---
@@ -166,6 +168,14 @@ title_generated: 6ad14bc5678c2627
 ![](stv-results.png)
 
 Зеленим позначено раунд обрання кандидата, червоним — раунд його вибування, а помаранчевим — раунд нічиєї.
+
+<!-- translation-section: share-an-outcome -->
+
+## Поділіться висновком
+
+Коли вибори завершаться, поділіться висновком. Назвіть обраних людей і вкажіть, коли вони почнуть виконувати свої обов’язки. Докладніше про висновки дивіться в розділі [Поділіться висновком](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome).
+
+![Висновок з іменами обраних членів комітету](outcome.png)
 
 <!-- translation-section: exporting-ballots -->
 

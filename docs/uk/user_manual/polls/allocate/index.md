@@ -1,24 +1,26 @@
 ---
 title: Розподіл балів
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/polls/allocate/index.md
+source_revision: 9c60c42fc739483fa23f15d9f34a1e9245518092
+source_file: docs/en/user_manual/polls/allocate/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: d097e3a7d91324c9
   when-to-use-allocate: 25c91f8c05c1ec80
   example-set-priorities-for-an-annual-strategy-review: 0211b365dde1d17c
   set-up-the-poll: 772846c919c6af97
   vote: b6d1dab4c7743034
-  read-the-results: 85ea9532f2548205
+  read-the-results: 3a66507bd8387273
+  share-an-outcome: abb46bfca8b73b7a
 generated:
   introduction: 2b966a95493f8c26
   when-to-use-allocate: fbcfa9d48c9903a4
   example-set-priorities-for-an-annual-strategy-review: a0d0824732244691
   set-up-the-poll: 8ce9f64c5712ef73
   vote: 5d522693e8c93e73
-  read-the-results: 450acaf228e42c76
+  read-the-results: c21e1e9699fdde5d
+  share-an-outcome: 7f1941fd1fe5c524
 title_source: c927a8a7c2ce230c
 title_generated: 7ad0974d1d711655
 ---
@@ -84,4 +86,12 @@ title_generated: 7ad0974d1d711655
 
 У цьому прикладі **Фінансова стійкість** отримує найбільше балів, а наступним іде **Розвиток працівників**. Фінансова стійкість отримує бали від кожного виборця. Це свідчить про широку згоду щодо того, що цьому напряму потрібно приділити багато часу під час перегляду. Порівнюйте загальну кількість балів із кількістю виборців, щоб відрізнити пріоритети, які підтримують багато людей, від напрямів, які особливо підтримує менша кількість людей.
 
-Розглядайте загальну кількість балів разом із кількістю виборців та їхніми поясненнями. Опублікуйте висновок про те, як буде організовано перегляд стратегії. Опитування не розподіляє час автоматично.
+Розглядайте загальну кількість балів разом із кількістю виборців та їхніми поясненнями.
+
+<!-- translation-section: share-an-outcome -->
+
+## Поділіться висновком
+
+Коли опитування завершиться, поділіться висновком. Опитування не розподіляє час або гроші автоматично, тому поясніть, як буде використано результат. Про те, як працюють висновки, читайте в розділі [Поділіться висновком](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome).
+
+![Висновок, що визначає розподіл часу під час перегляду стратегії](outcome.png)

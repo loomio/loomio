@@ -1,10 +1,10 @@
 ---
 title: בחירות STV
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/polls/stv/index.md
+source_revision: 9c60c42fc739483fa23f15d9f34a1e9245518092
+source_file: docs/en/user_manual/polls/stv/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 6c43a75f60922bb6
   when-to-use-stv: e37de389c27f7d87
@@ -19,6 +19,7 @@ sections:
   elected-candidates: a6c3dbb5548c7d41
   round-by-round-details: e4a8789dae29d49e
   exporting-ballots: 582555dd13633bf0
+  share-an-outcome: 6a02aed173b368b9
 generated:
   introduction: edca0d11516857a5
   when-to-use-stv: 6776e298d3ba07cd
@@ -33,6 +34,7 @@ generated:
   elected-candidates: 8397b00a755e2abc
   round-by-round-details: 7f797d20390fbf1d
   exporting-ballots: ad255d77a6528ff9
+  share-an-outcome: 3e3d9f078f4438ad
 title_source: cd3e1a4cdc2456a6
 title_generated: 205a2c4b5a77b85a
 ---
@@ -166,6 +168,14 @@ Hare
 ![](stv-results.png)
 
 הדגשה בירוק מציינת מתי מועמד נבחר, באדום מתי הודח, ובכתום מתי הסתיים בתיקו.
+
+<!-- translation-section: share-an-outcome -->
+
+## שיתוף מסקנה
+
+לאחר סגירת הבחירות, יש לשתף מסקנה. יש לציין את שמות האנשים שנבחרו ואת מועד תחילת תפקידם. להסבר על השימוש במסקנות, ניתן לעיין ב[שיתוף מסקנה](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome).
+
+![מסקנה המציינת את שמות האנשים שנבחרו לוועדה](outcome.png)
 
 <!-- translation-section: exporting-ballots -->
 

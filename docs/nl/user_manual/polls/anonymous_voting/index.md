@@ -1,45 +1,45 @@
 ---
 title: Anoniem stemmen
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/polls/anonymous_voting/index.md
+source_revision: 9c60c42fc739483fa23f15d9f34a1e9245518092
+source_file: docs/en/user_manual/polls/anonymous_voting/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
-  introduction: d5c276b2785919c3
+  introduction: 2b9b7da01da020b3
   how-anonymous-voting-protects-voters: f2be8477636489af
   while-voting-is-open: dda23e517269b9cf
   votes-cannot-be-changed: 1e317297688ba902
   why-anonymous-votes-do-not-have-reasons: 39c1a8362550ae40
   results-and-exports: eb2429afd442dad2
-  participation-verification: cdaa1f5c3ca1e179
+  participation-verification: 87bc3647be4bbfb8
   reminders: 0afad473c90f2f03
-  what-coordinators-and-administrators-can-see: 51460c8a6b663aba
+  what-coordinators-and-administrators-can-see: 07faa9f646665b64
   limits-of-anonymous-voting: 912141560342d073
   questions: 60cc6f1a0163ec5d
-  can-a-coordinator-see-how-i-voted: 3dd2c9e6d06debda
+  can-a-coordinator-see-how-i-voted: 574fc18f3a9871c3
   can-i-see-my-vote-after-submitting-it: c558e29729aed45f
   can-i-change-or-withdraw-my-vote: dd1a385fa8d225a5
   will-i-receive-an-email-confirming-my-vote: 8616fc9a0b9809ac
-  does-a-public-poll-reveal-more-information: 2ba76a1748304f96
+  does-a-public-poll-reveal-more-information: 27acfa7744a0790d
   is-anonymous-voting-suitable-for-every-election: d1b723178449c0da
 generated:
-  introduction: 5a77696d8792a857
+  introduction: 232715d57d2044e5
   how-anonymous-voting-protects-voters: 60cd107f87065dfc
   while-voting-is-open: 912e81e9d4fc38e3
   votes-cannot-be-changed: f87ac38716b4a8e2
   why-anonymous-votes-do-not-have-reasons: 6c9145d94cd97d3a
   results-and-exports: ef850b14ed16f042
-  participation-verification: cd323a40e272b099
+  participation-verification: f16fa21721f604c8
   reminders: 0ebd2d0d76c585ab
-  what-coordinators-and-administrators-can-see: 4f0ebcc834044470
+  what-coordinators-and-administrators-can-see: 4e3c8b3e07ba25bd
   limits-of-anonymous-voting: 047eb3444ea73120
   questions: 81dbe0d658bb53fe
-  can-a-coordinator-see-how-i-voted: '04958d9f5f5e4fee'
+  can-a-coordinator-see-how-i-voted: 1573386757e11a03
   can-i-see-my-vote-after-submitting-it: d672b04cfc41b190
   can-i-change-or-withdraw-my-vote: 62fb31b77f10656e
   will-i-receive-an-email-confirming-my-vote: e996a33aa6b192f3
-  does-a-public-poll-reveal-more-information: a971a5e086208043
+  does-a-public-poll-reveal-more-information: ed0a12fc3ae75184
   is-anonymous-voting-suitable-for-every-election: 41b55efb80255d79
 title_source: 1bc4567506ad4d51
 title_generated: a092c185ab7f2e64
@@ -49,7 +49,7 @@ title_generated: a092c185ab7f2e64
 
 # Anoniem stemmen
 
-Bij anoniem stemmen, ook wel blind stemmen genoemd, worden de gegevens over wie heeft gestemd gescheiden van de stemmen zelf. Coördinatoren van een peiling kunnen zien wie mocht stemmen en, zodra minstens drie mensen hebben gestemd, controleren wie heeft deelgenomen. Gebruikers van de applicatie kunnen een uitgebrachte stem niet koppelen aan de persoon die deze heeft uitgebracht.
+Bij anoniem stemmen, ook wel blind stemmen genoemd, worden de gegevens over wie heeft gestemd gescheiden van de stemmen zelf. Nadat de peiling is gesloten, kan iedereen die de resultaten kan zien ook zien wie heeft deelgenomen. Niemand die Loomio gebruikt, kan een uitgebrachte stem koppelen aan de persoon die deze heeft uitgebracht.
 
 Deze pagina legt uit hoe anoniem stemmen kiezers beschermt, welke gegevens bewaard blijven en waar de grenzen van die bescherming liggen.
 
@@ -116,11 +116,15 @@ Een anonieme peiling kan na sluiting niet opnieuw worden geopend.
 
 <!-- translation-section: participation-verification -->
 
-## Deelname controleren
+## Wie heeft deelgenomen
 
-Coördinatoren van de peiling kunnen de deelnamegegevens met namen bekijken. Daarin staat altijd wie mocht stemmen. Zodra minstens drie mensen hebben gestemd, staat er ook of elke persoon heeft gestemd, maar nooit hoe iemand heeft gestemd. Sluit een peiling met minder dan drie stemmen, dan blijft de deelname per persoon verborgen.
+Nadat een anonieme peiling is gesloten, kan iedereen die de resultaten kan zien ook zien wie heeft deelgenomen. Zolang de stemming open is, kan niemand dit zien.
 
-Andere deelnemers kunnen deze deelnamegegevens met namen niet bekijken. Toegang tot de resultaten van de peiling geeft geen toegang tot de deelnamegegevens.
+Selecteer **Bekijk stemmen** om de lijst te bekijken. Daarin staat altijd wie mocht stemmen. Alleen als genoeg mensen hebben gestemd, staat er ook of elke persoon heeft gestemd. Daarvoor moet het quorum van de peiling zijn bereikt als er een quorum is ingesteld. Anders moet minstens de helft van de stemgerechtigden hebben gestemd. In beide gevallen zijn minstens drie stemmen nodig. De lijst laat nooit zien hoe iemand heeft gestemd of wanneer.
+
+Groepsleden en de kiezers van de peiling zien ook wanneer elke persoon lid van de groep werd en wie die persoon heeft uitgenodigd. Groepsbeheerders zien ook e-mailadressen, om mensen met dezelfde naam van elkaar te onderscheiden.
+
+Omdat iedereen die de resultaten kan zien ook kan zien wie heeft gestemd, kan een eenzijdige uitslag onthullen hoe mensen hebben gestemd. Als bijvoorbeeld elke stem Eens is, was iedereen die heeft gestemd het ermee eens.
 
 Coördinatoren kunnen stemgerechtigden toevoegen zolang de stemming open is, ook nadat anderen hebben gestemd. Mensen die al hebben gestemd, kunnen niet uit een anonieme peiling worden verwijderd.
 
@@ -141,7 +145,7 @@ Bij peilingen met een totale stemperiode van minder dan 24 uur wordt deze automa
 Een coördinator van de peiling, groepsbeheerder of instantiebeheerder kan via de applicatie mogelijk het volgende zien:
 
 - de peiling en de mensen die mogen stemmen;
-- of elke stemgerechtigde heeft gestemd, als diens rol toegang geeft tot die informatie en minstens drie mensen hebben gestemd; en
+- of elke stemgerechtigde heeft gestemd, als diens rol toegang geeft tot die informatie en genoeg mensen hebben gestemd; en
 - de gezamenlijke resultaten nadat de peiling is gesloten.
 
 Via de functies van de applicatie kunnen zij niet zien:
@@ -167,9 +171,9 @@ Houd rekening met het aantal kiesgerechtigden en de gevoeligheid van de beslissi
 
 <!-- translation-section: can-a-coordinator-see-how-i-voted -->
 
-### Kan een coördinator zien wat ik heb gestemd?
+### Kan iemand zien wat ik heb gestemd?
 
-Nee. Zodra minstens drie mensen hebben gestemd, kan een coördinator controleren of je hebt gestemd. Via de applicatie kan die jouw stem niet aan jou koppelen. Bij minder dan drie stemmen blijft verborgen of je hebt gestemd.
+Nee. Zodra genoeg mensen hebben gestemd, kunnen mensen die de resultaten kunnen zien ook zien of je hebt gestemd. Niemand kan je via de applicatie koppelen aan een uitgebrachte stem. Tot die tijd blijft verborgen of je hebt gestemd.
 
 <!-- translation-section: can-i-see-my-vote-after-submitting-it -->
 
@@ -193,7 +197,7 @@ Nee. Je krijgt alleen een bevestiging op het scherm en je deelnamegegevens worde
 
 ### Geeft een openbare peiling meer informatie prijs?
 
-Bij een openbare peiling kunnen mensen de peiling en, na sluiting, de gezamenlijke resultaten zien. Ze kunnen niet zien wie er heeft deelgenomen of hoe afzonderlijke mensen hebben gestemd.
+Nadat een openbare peiling is gesloten, kan iedereen de resultaten zien en zien wie heeft deelgenomen. Ze kunnen geen afzonderlijke stemmen of gegevens over lidmaatschap en uitnodigingen zien.
 
 <!-- translation-section: is-anonymous-voting-suitable-for-every-election -->
 

@@ -1,19 +1,19 @@
 ---
 title: Keskusteluketjujen käyttö
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/discussions/using_discussions/index.md
+source_revision: 9c60c42fc739483fa23f15d9f34a1e9245518092
+source_file: docs/en/user_manual/discussions/using_discussions/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: fe8ab54791a49e01
   thread-anatomy: fca9ec9af6718a99
   discussion-context: ebefd7274a307dd0
-  notify-people-about-context-changes: 79d0ed7f94edb858
+  notify-people-about-context-changes: 3fe9320d33fff8f6
   navigation: c0ccc79744ae2c33
   notifications-and-members: ac51f2bbe3642155
   email-notifications-for-this-thread: 69076a17d7457ba0
-  invite-people: 69e5555d18551b0b
+  invite-people: 94ab00a27cec065d
   seen-by: 1d0bfd812ca11782
   notified: 6139bdcaae32a1db
   actions: c015c12999c5be2f
@@ -28,11 +28,11 @@ generated:
   introduction: 1878f06415720ccc
   thread-anatomy: e7b8ff877395c90a
   discussion-context: 7f28c2a4f2968034
-  notify-people-about-context-changes: 1e894208bc788326
+  notify-people-about-context-changes: 735b21f5d8253fca
   navigation: 8068d99fa497d848
   notifications-and-members: 3e3b2ee2bca036fd
   email-notifications-for-this-thread: 979620b2f10b9e2a
-  invite-people: 87484917d06b9997
+  invite-people: c338ef5f56aa2fd2
   seen-by: f51909b1b3ecddf8
   notified: 9cb5a378c23e162f
   actions: 706670b7efb49b63
@@ -113,9 +113,9 @@ Kun muokkaat keskustelun kontekstia, tiivistä päivitys kohdassa **Mikä on muu
 
 ![Keskustelun kontekstin muokkaus sekä muutoksen yhteenveto ja ilmoituksen vastaanottajat](../notifying_people/thread_editcontext.png)
 
-Yhteenveto näkyy keskusteluketjussa, jotta osallistujat näkevät, mikä muuttui.
+Keskusteluketjussa näkyy, että muokkasit kontekstia. Ihmiset, joille ilmoitat muutoksesta, saavat yhteenvedon ilmoituksen mukana.
 
-![Aikajanan kohta, joka kuvaa keskustelun kontekstin muutosta](../notifying_people/thread_edit_comment.png)
+![Keskusteluketjun kohta, jossa näkyy, että keskustelun kontekstia on muokattu](../notifying_people/thread_edit_comment.png)
 
 <!-- translation-section: navigation -->
 
@@ -159,9 +159,13 @@ Lisää ihmisiä keskusteluketjun aloittamisen jälkeen valitsemalla **Kutsu ihm
 
 Valitse ryhmä tai alaryhmä, kirjoita yksittäisten jäsenten nimet tai kutsu vieras sähköpostiosoitteella.
 
+**Etsi tai kutsu ihmisiä** -kenttä suodattaa myös luetteloa ketjussa jo olevista ihmisistä. Tyhjennä kenttä, niin näet taas koko luettelon. Käytä sivutuspainikkeita, jos ihmisiä on yli 50. Kun olet valinnut vastaanottajat, jäsenluettelon tilalle tulee kenttä vapaaehtoiselle viestille. Uudet ihmiset saavat kutsun, ja ihmiset, joilla on jo pääsy ketjuun, saavat uuden ilmoituksen, kun valitset **Kutsu tai ilmoita**.
+
 ![Kutsu ihmisiä -ikkuna, jossa on kenttä nimille ja sähköpostiosoitteille](../notifying_people/thread_invite.png)
 
 Vieras voi nähdä tämän ketjun ja osallistua siihen. Hän ei näe ryhmän muita keskusteluja, ellei häntä kutsuta niihin erikseen.
+
+Voit sulkea ikkunan yläreunassa näkyvät ohjeet. Loomio muistaa tililläsi, mitkä ohjeet olet sulkenut.
 
 ![Vieraan kutsuminen sähköpostiosoitteella](../notifying_people/invite_guest.png)
 

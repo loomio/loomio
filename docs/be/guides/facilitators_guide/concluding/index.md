@@ -1,19 +1,19 @@
 ---
 title: Падвядзенне высноў
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/guides/facilitators_guide/concluding/index.md
+source_revision: 9c60c42fc739483fa23f15d9f34a1e9245518092
+source_file: docs/en/guides/facilitators_guide/concluding/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-30'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 0160da4a2a071cae
-  outcomes-next-steps: 9829d1cef05d120b
+  outcomes-next-steps: 146b139e25dcfb4e
   reporting-harvesting: 64a7f7605636c422
   turning-discussion-into-action: 67b87042b96109e0
   it-ain-t-over-til-it-s-over: 9edb6ef0bcb17938
 generated:
   introduction: 18503cf4aca152ac
-  outcomes-next-steps: 523905c9c11795f1
+  outcomes-next-steps: bb22829f5470d75b
   reporting-harvesting: ec283b9f9e08593a
   turning-discussion-into-action: a16f1ddea341b6d1
   it-ain-t-over-til-it-s-over: 7aeabdea23cd31da
@@ -43,7 +43,7 @@ title_generated: 3ec42c444f6720d6
 
 У Loomio
 
-* [Высновы](/en/user_manual/polls/outcomes/) — важны інструмент. Завяршэнне прапановы яшчэ не азначае завяршэння працы: трэба падсумаваць рашэнне. Для гэтага і прызначана функцыя высноў.
+* [Высновы](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome) — важны інструмент. Завяршэнне прапановы яшчэ не азначае завяршэння працы: трэба падсумаваць рашэнне. Для гэтага і прызначана функцыя высноў.
 * Многія абмеркаванні ў Loomio завяршаюцца самі сабой, нават без прапаноў і апублікаваных высноў. Яны ўсё адно карысныя. Каб пазней можна было да іх вярнуцца, дадайце кароткую выснову ў поле кантэксту.
 * Калі пэўным людзям трэба нешта зрабіць, згадайце іх праз @ — яны атрымаюць апавяшчэнне.
 

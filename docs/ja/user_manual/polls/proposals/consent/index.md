@@ -1,24 +1,26 @@
 ---
 title: 同意
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/polls/proposals/consent/index.md
+source_revision: 9c60c42fc739483fa23f15d9f34a1e9245518092
+source_file: docs/en/user_manual/polls/proposals/consent/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 7c6301775b6655f2
   when-to-use-consent: 32ea681182001a9a
   example-start-a-bottle-trial: abc3b93cccfe2471
   set-up-the-proposal: 99fe028ed43b44c2
   vote: 496a824e20def5e2
-  read-the-results: f4db0702619b3992
+  read-the-results: 710fb80144e56ea9
+  share-an-outcome: 8f8b3f701dc4f516
 generated:
   introduction: 4ce683b5b859d71b
   when-to-use-consent: 42e882ae561e0cde
   example-start-a-bottle-trial: af35d2b213d0a7f7
   set-up-the-proposal: e1659d842cacb2f6
   vote: c078c39206813a39
-  read-the-results: e9ead6e8373b9b63
+  read-the-results: b5fa59a202ace2ac
+  share-an-outcome: dfd477e06e9dc595
 title_source: d37e0cd00f18a366
 title_generated: 905819e2e3a059a0
 ---
@@ -69,4 +71,10 @@ title_generated: 905819e2e3a059a0
 
 ![](../proposal_consent_results.png)
 
-合意した行動、安全策、担当者、グループが見直す時期を記録した結論を公開します。
+<!-- translation-section: share-an-outcome -->
+
+## 結論を共有する
+
+提案の投票が終了したら、結論を共有します。合意した行動、異議をどのように解決したか、担当者、グループが見直す時期を記録します。結論の仕組みについては、[結論を共有する](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome)を参照してください。
+
+![解決した異議、開始日、見直しの時期を記録した結論](outcome.png)

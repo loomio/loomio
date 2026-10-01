@@ -1,10 +1,10 @@
 ---
 title: Выборы STV
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/polls/stv/index.md
+source_revision: 9c60c42fc739483fa23f15d9f34a1e9245518092
+source_file: docs/en/user_manual/polls/stv/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 6c43a75f60922bb6
   when-to-use-stv: e37de389c27f7d87
@@ -19,6 +19,7 @@ sections:
   elected-candidates: a6c3dbb5548c7d41
   round-by-round-details: e4a8789dae29d49e
   exporting-ballots: 582555dd13633bf0
+  share-an-outcome: 6a02aed173b368b9
 generated:
   introduction: 212acf2fdd06d626
   when-to-use-stv: b14f0f895f834942
@@ -33,6 +34,7 @@ generated:
   elected-candidates: 536c4ccf50a2bb09
   round-by-round-details: 9cac6a26ab9ad3bf
   exporting-ballots: '07593aad3db154c6'
+  share-an-outcome: 9bb99860ade9d101
 title_source: cd3e1a4cdc2456a6
 title_generated: a335dd8569ef7b26
 ---
@@ -166,6 +168,14 @@ Hare
 ![](stv-results.png)
 
 Зелёная подсветка показывает, когда кандидат был избран, красная — когда он выбыл, а оранжевая — когда возникла ничья.
+
+<!-- translation-section: share-an-outcome -->
+
+## Опубликуйте заключение
+
+Когда выборы завершатся, опубликуйте заключение. Назовите избранных людей и укажите, когда они приступят к своим обязанностям. Подробнее о заключениях см. в разделе [Опубликуйте заключение](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome).
+
+![Заключение с именами избранных членов комитета](outcome.png)
 
 <!-- translation-section: exporting-ballots -->
 

@@ -1,24 +1,26 @@
 ---
 title: 意見の確認
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/polls/proposals/sense_check/index.md
+source_revision: 9c60c42fc739483fa23f15d9f34a1e9245518092
+source_file: docs/en/user_manual/polls/proposals/sense_check/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 2336356b9efbde30
   when-to-use-sense-check: c70985229c659d2f
   example-check-a-trial-plan: 8055cad3418b4bb7
   set-up-the-proposal: 8106c7ab17a225e6
   vote: 2440e2649ed1ff05
-  read-the-results: f8f63c908d080f77
+  read-the-results: 9cac8b6f7c7de36f
+  share-an-outcome: b05f9f889a838d47
 generated:
   introduction: ea0aa514c6b45fdd
   when-to-use-sense-check: df85348f6083e3fc
   example-check-a-trial-plan: 6bd15a9b6b97a47c
   set-up-the-proposal: a878f7b0234fc340
   vote: 9ca05735f9a56ea3
-  read-the-results: 19e08112034d01e9
+  read-the-results: 7957e1554a18117e
+  share-an-outcome: bb33a8240334a0cb
 title_source: e9ac5b767e01ae7b
 title_generated: acb654bf1e4c719e
 ---
@@ -74,4 +76,10 @@ title_generated: acb654bf1e4c719e
 
 ![](../proposal_sense_check_results.png)
 
-グループが行う変更をまとめるか、アイデアが次の意思決定段階に進める状態であることを記録した結論を公開します。
+<!-- translation-section: share-an-outcome -->
+
+## 結論を共有する
+
+意見の確認が終了したら、結論を共有します。グループが行う変更をまとめるか、アイデアが次の意思決定段階に進める状態であることを記録します。結論の仕組みについては、[結論を共有する](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome)を参照してください。
+
+![最終確認の前に計画を修正することを伝える結論](outcome.png)

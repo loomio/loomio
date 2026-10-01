@@ -1,24 +1,26 @@
 ---
 title: スコア投票
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/polls/score/index.md
+source_revision: 9c60c42fc739483fa23f15d9f34a1e9245518092
+source_file: docs/en/user_manual/polls/score/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 7881bcdd5aad5df4
   when-to-use-score: 0ef92ec0bb907a3f
   example-score-possible-trial-locations: 3c9438177a822198
   set-up-the-poll: 29b0296533594cd6
   vote: 1113501e9e6736b7
-  read-the-results: f773aa25f47c325b
+  read-the-results: 3e996e9bcc830d1d
+  share-an-outcome: 243aaac17e645331
 generated:
   introduction: abb2f64418ab3887
   when-to-use-score: 002f902ff8d2afaa
   example-score-possible-trial-locations: 0bf4d271e11184b1
   set-up-the-poll: e2ed6723e654a583
   vote: a2fa402494512629
-  read-the-results: 11d77d3db4702e82
+  read-the-results: e2864a261e489868
+  share-an-outcome: 18243d257779877e
 title_source: 38e5a46cbc5ad328
 title_generated: 7e0f91665b9c2fe0
 ---
@@ -85,4 +87,12 @@ title_generated: 7e0f91665b9c2fe0
 
 この例では、**中央駅のカフェ**の平均が7.5で最も高く、**港のオフィス**の平均が5.25で最も低くなっています。川沿いの市場と大学のフードコートは、どちらも7です。招待された5人のうち4人が投票済みなので、グループは1人の回答がまだないことも確認できます。
 
-平均を比較するのは、選択肢ごとの投票者数がほぼ同じ場合に限ります。わずかな差に意味があると判断する前に投票理由を読み、点数を受けてどのような行動を取るかを説明する結論を公開します。
+平均を比較するのは、選択肢ごとの投票者数がほぼ同じ場合に限ります。わずかな差に意味があると判断する前に、投票理由を読みます。
+
+<!-- translation-section: share-an-outcome -->
+
+## 結論を共有する
+
+投票が終了したら、結論を共有します。点数を受けてどのような行動を取るか、同点の場合はどのように決めるかを説明します。結論の使い方については、[結論を共有する](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome)を参照してください。
+
+![平均点が最も高い場所を選ぶ結論](outcome.png)

@@ -1,24 +1,26 @@
 ---
 title: 割り当てる
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/polls/allocate/index.md
+source_revision: 9c60c42fc739483fa23f15d9f34a1e9245518092
+source_file: docs/en/user_manual/polls/allocate/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: d097e3a7d91324c9
   when-to-use-allocate: 25c91f8c05c1ec80
   example-set-priorities-for-an-annual-strategy-review: 0211b365dde1d17c
   set-up-the-poll: 772846c919c6af97
   vote: b6d1dab4c7743034
-  read-the-results: 85ea9532f2548205
+  read-the-results: 3a66507bd8387273
+  share-an-outcome: abb46bfca8b73b7a
 generated:
   introduction: e84f2775f7c99820
   when-to-use-allocate: d3f27a0cd9b51038
   example-set-priorities-for-an-annual-strategy-review: 369706e1ffa997d5
   set-up-the-poll: 5821f944d694a80d
   vote: 3b3190bbfe348fbb
-  read-the-results: 402793e3027f0c78
+  read-the-results: 91c7cf108d62d37b
+  share-an-outcome: eb925b5fee50357d
 title_source: c927a8a7c2ce230c
 title_generated: 284857bbe61172c1
 ---
@@ -84,4 +86,12 @@ title_generated: 284857bbe61172c1
 
 この例では、**財務の持続可能性**が最も多くのポイントを獲得し、次に**スタッフの育成**が続きます。財務の持続可能性には全投票者がポイントを配分しており、レビューに十分な時間を割く必要があるという認識が広く共有されていることがうかがえます。合計ポイントと投票者数を併せて見ると、広く支持された優先事項と、少数の人が強く支持する分野を区別できます。
 
-合計ポイントに加え、投票者数とその理由も確認します。戦略レビューをどのように進めるかを説明する結論を公開します。投票によって時間が自動的に割り当てられることはありません。
+合計ポイントに加え、投票者数とその理由も確認します。
+
+<!-- translation-section: share-an-outcome -->
+
+## 結論を共有する
+
+投票が終了したら、結論を共有します。投票によって時間やお金が自動的に割り当てられることはないため、結果をどのように活用するかを説明します。結論の仕組みについては、[結論を共有する](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome)を参照してください。
+
+![戦略レビューの時間配分を定める結論](outcome.png)

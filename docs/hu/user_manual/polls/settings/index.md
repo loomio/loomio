@@ -1,6 +1,6 @@
 ---
 title: Beállítások
-source_revision: 6b2c4d5c591a9eb139fc64370d602b8dcf19c0e4
+source_revision: 9c60c42fc739483fa23f15d9f34a1e9245518092
 source_file: docs/en/user_manual/polls/settings/index.md
 translated:
   provider: codex/gpt-6.1-sol
@@ -12,11 +12,11 @@ sections:
   add-content: f622e36a3ad15e4e
   voting-options: d0ea31745ce8b651
   edit-voting-options: ef0d61585b34fbd6
-  opening-time: 13aa5e4392d1ba60
+  opening-time: 2fdf358a34805114
   more-settings: fd837a51b81cbc13
   reminder: e6ac37324b884958
   anonymous-voting: 4fde93187ffd1a86
-  vote-reason: ce00fe99ebac71ff
+  vote-reason: b1ebf2700ce8248b
   hide-results: c0873aeafe8feb59
   start-the-poll: 8e7d8e81db57f4f8
   managing-polls: b26fc41e19371d54
@@ -34,11 +34,11 @@ generated:
   add-content: 824e7476c68f76da
   voting-options: 88662b2b696df6e4
   edit-voting-options: 002db91e5b68ec70
-  opening-time: 1b1b54be8926e59c
+  opening-time: 925df5a69677949e
   more-settings: cb3edf4e3a9ca244
   reminder: 15b8de4a2802d38e
   anonymous-voting: ebe5816af679c07e
-  vote-reason: 5249a2fb747bff30
+  vote-reason: d4e4aa66691b2eaa
   hide-results: 2f77b4d24f88f18e
   start-the-poll: cb1db5f9ffb2f4b9
   managing-polls: '0178d1c3ca4ca57f'
@@ -123,11 +123,13 @@ A szavazási lehetőség melletti ceruza ikonra kattintva nyithatod meg a szerke
 
 <!-- translation-section: opening-time -->
 
-### A szavazás kezdete
+### Időtartam
 
 Alapértelmezés szerint a szavazás a létrehozásakor azonnal megnyílik. Ha később szeretnéd megnyitni, kapcsold ki az **A szavazás azonnal megnyílik** beállítást, majd válaszd ki a kezdés dátumát és időpontját.
 
 Így időt adhatsz a megbeszélésre a szavazás előtt, vagy előre beállíthatod, hogy a szavazás a megfelelő időpontban kezdődjön.
+
+Ha például a csoportodnak több döntésről kell szavaznia egy közelgő közgyűlésen, előre elkészítheted a szavazásokat és hozzáadhatod a szavazókat, majd beállíthatod, hogy mindegyik a szavazási időszak kezdetekor nyíljon meg. Az emberek a megnyitás előtt is láthatják a szavazásokat, de előre nem szavazhatnak.
 
 Ha a szavazás kezdete előre be van állítva, a szavazókat már a megnyitás előtt hozzáadhatod. Az értesítést a szavazás kezdetekor kapják meg, nem a hozzáadásukkor.
 
@@ -181,16 +183,14 @@ Hasznos lehet tudni, miért szavaztak úgy az emberek, ahogy szavaztak. Ezzel a 
 Az elérhető beállítások a sablontól függenek:
 
 - A **Választható** beállításnál a szavazók eldönthetik, hogy megindokolják-e a szavazatukat
-- A **Kötelező a nemetmondáshoz vagy a blokkoláshoz** beállításnál indoklás szükséges, ha a választott lehetőség
-  a Nem értek egyet vagy a Blokkolás szavazási ikont használja
-- A **Kötelező a blokkoláshoz** beállításnál indoklás szükséges, ha a választott lehetőség
-  a Blokkolás szavazási ikont használja
+- A **Kötelező a nemetmondáshoz vagy a blokkoláshoz** beállításnál indoklás szükséges, ha a választott lehetőség a Nem értek egyet vagy a Blokkolás szavazási ikont használja
+- A **Kötelező a blokkoláshoz** beállításnál indoklás szükséges, ha a választott lehetőség a Blokkolás szavazási ikont használja
 - A **Kívánt** beállításnál minden szavazónak meg kell indokolnia a szavazatát
 - A **Mozgáskorlátozott** beállítás eltávolítja az indoklás mezőjét
 
 ![](vote_reason_options.png)
 
-A feltételes beállítások a szavazási ikonhoz kötődnek, nem a lehetőség nevéhez. Akkor is érvényesek, ha a Nem értek egyet lehetőséget például Kifogásra nevezed át. A Beleegyezés sablonban alapértelmezés szerint a **Kötelező a nemetmondáshoz vagy a blokkoláshoz**, míg a Konszenzus sablonban a **Kötelező a blokkoláshoz** beállítás van kiválasztva. A többi sablonban alapértelmezés szerint **Választható** az indoklás, kivéve a Kérdés fordulóit, ahol maga a válasz kötelező. A szavazás szerzője minden szavazásnál módosíthatja ezt a beállítást.
+A feltételes beállítások a szavazási ikonhoz kötődnek, nem a lehetőség nevéhez. Akkor is érvényesek, ha a Nem értek egyet lehetőséget például Kifogásra nevezed át. A Beleegyezés sablonban alapértelmezés szerint a **Kötelező a nemetmondáshoz vagy a blokkoláshoz**, míg a Konszenzus sablonban a **Kötelező a blokkoláshoz** beállítás van kiválasztva. A többi sablonban alapértelmezés szerint **Választható** az indoklás. A szavazás szerzője minden szavazásnál módosíthatja ezt a beállítást.
 
 **Az indoklás legfeljebb 500 karakter lehet:** A rövid indoklásokat könnyebb megérteni. A tömör indoklások segítenek a döntésben. Ez a beállítás alapértelmezés szerint be van jelölve. Ha hosszabb indoklásokat szeretnél engedélyezni, töröld a jelölést.
 

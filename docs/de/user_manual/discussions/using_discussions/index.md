@@ -1,19 +1,19 @@
 ---
 title: Threads verwenden
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/discussions/using_discussions/index.md
+source_revision: 71554be8e61a76613b0707b8262302c22299a5d0
+source_file: docs/en/user_manual/discussions/using_discussions/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: fe8ab54791a49e01
   thread-anatomy: fca9ec9af6718a99
   discussion-context: ebefd7274a307dd0
-  notify-people-about-context-changes: 79d0ed7f94edb858
+  notify-people-about-context-changes: 3fe9320d33fff8f6
   navigation: c0ccc79744ae2c33
   notifications-and-members: ac51f2bbe3642155
   email-notifications-for-this-thread: 69076a17d7457ba0
-  invite-people: 69e5555d18551b0b
+  invite-people: 94ab00a27cec065d
   seen-by: 1d0bfd812ca11782
   notified: 6139bdcaae32a1db
   actions: c015c12999c5be2f
@@ -28,11 +28,11 @@ generated:
   introduction: d9c57108bb00267d
   thread-anatomy: 59be6d89feaacbf5
   discussion-context: fc0dd71a00912b83
-  notify-people-about-context-changes: 236e398f36d91f8b
+  notify-people-about-context-changes: 951d4d0507cb39b4
   navigation: 07c6363a06499d48
   notifications-and-members: a189eb00158c1829
   email-notifications-for-this-thread: 9666682e58d36a0c
-  invite-people: 221ad3609f800072
+  invite-people: 7f5a2e51aacef3e4
   seen-by: 30647e711f4d009b
   notified: 46476020f1adaf80
   actions: 86c4d7d8e0b600fe
@@ -113,9 +113,9 @@ Wenn du den Diskussionskontext bearbeitest, fasse die Änderung unter **Was hat 
 
 ![Bearbeitung eines Diskussionskontexts mit einer Zusammenfassung der Änderung und Empfängern der Benachrichtigung](../notifying_people/thread_editcontext.png)
 
-Die Zusammenfassung erscheint als Eintrag im Thread. So können die Teilnehmenden sehen, was sich geändert hat.
+Im Thread wird angezeigt, dass du den Kontext bearbeitet hast. Die Personen, die du benachrichtigst, erhalten deine Zusammenfassung mit der Benachrichtigung.
 
-![Ein Eintrag in der Zeitleiste, der eine Änderung am Diskussionskontext beschreibt](../notifying_people/thread_edit_comment.png)
+![Ein Eintrag im Thread, der zeigt, dass der Diskussionskontext bearbeitet wurde](../notifying_people/thread_edit_comment.png)
 
 <!-- translation-section: navigation -->
 
@@ -159,9 +159,13 @@ Wähle **Leute einladen**, um nach dem Beginn des Threads weitere Personen hinzu
 
 Wähle eine Gruppe oder Untergruppe aus, gib die Namen einzelner Mitglieder ein oder lade einen Gast mit seiner E-Mail-Adresse ein.
 
+Das Feld **Finde oder lade Leute ein** filtert auch die Liste der Personen, die bereits im Thread sind. Leere das Feld, um wieder die vollständige Liste anzuzeigen, und nutze bei mehr als 50 Personen die Seitennavigation. Nachdem du die Empfänger ausgewählt hast, wird die Mitgliederliste durch das Feld für eine optionale Nachricht ersetzt. Neue Personen werden eingeladen; Personen, die bereits Zugriff haben, erhalten eine weitere Benachrichtigung, wenn du **Einladen oder benachrichtigen** wählst.
+
 ![Fenster „Leute einladen“ mit einem Feld für Namen und E-Mail-Adressen](../notifying_people/thread_invite.png)
 
 Ein Gast kann diesen Thread sehen und daran teilnehmen. Andere Diskussionen der Gruppe kann er nur sehen, wenn er dazu gesondert eingeladen wurde.
+
+Du kannst die Hinweise oben im Fenster ausblenden. Loomio merkt sich für dein Konto, welche Hinweise du ausgeblendet hast.
 
 ![Einen Gast per E-Mail-Adresse einladen](../notifying_people/invite_guest.png)
 

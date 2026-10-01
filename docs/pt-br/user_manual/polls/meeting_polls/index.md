@@ -1,20 +1,20 @@
 ---
 title: Enquete de horário
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/polls/meeting_polls/index.md
+source_revision: 9c60c42fc739483fa23f15d9f34a1e9245518092
+source_file: docs/en/user_manual/polls/meeting_polls/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 8ab9108683132085
   time-poll: d5d5d81f7de10419
   voting: c50083234167a0f9
-  outcome: 20d3f84d36a3b860
+  outcome: 74db36d36fa18798
 generated:
   introduction: f7166b2b8fe94f5e
   time-poll: 4d0c983df7c14378
   voting: 28f589a981d617e7
-  outcome: 1da7efc6095a9fbe
+  outcome: 58dcb0d70023fa59
 title_source: 8e2a07d7257fbc04
 title_generated: 04060d737aa295bd
 ---
@@ -63,9 +63,9 @@ Os resultados são atualizados conforme a votação avança. Uma tabela mostra q
 
 <!-- translation-section: outcome -->
 
-### Conclusão
+### Compartilhar uma conclusão
 
-Quando a enquete de horário terminar, escolha o melhor horário e publique uma conclusão.
+Quando a enquete de horário terminar, escolha o melhor horário e compartilhe uma conclusão. Consulte [Compartilhar uma conclusão](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome) para saber como as conclusões funcionam.
 
 ![](timepoll_outcome.png)
 

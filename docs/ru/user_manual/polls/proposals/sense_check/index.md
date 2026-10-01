@@ -1,24 +1,26 @@
 ---
 title: Проверка мнений
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/polls/proposals/sense_check/index.md
+source_revision: 9c60c42fc739483fa23f15d9f34a1e9245518092
+source_file: docs/en/user_manual/polls/proposals/sense_check/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 2336356b9efbde30
   when-to-use-sense-check: c70985229c659d2f
   example-check-a-trial-plan: 8055cad3418b4bb7
   set-up-the-proposal: 8106c7ab17a225e6
   vote: 2440e2649ed1ff05
-  read-the-results: f8f63c908d080f77
+  read-the-results: 9cac8b6f7c7de36f
+  share-an-outcome: b05f9f889a838d47
 generated:
   introduction: 676475b8acbb87b1
   when-to-use-sense-check: 057645bd03091731
   example-check-a-trial-plan: 532f97d950d96e76
   set-up-the-proposal: 978f4fe4ca720ff8
   vote: ee98008fbdd48d33
-  read-the-results: 8ca45b03ae5d655f
+  read-the-results: 9e856ffcaf30d57a
+  share-an-outcome: 4f7438a60f80bac1
 title_source: e9ac5b767e01ae7b
 title_generated: 5610eacf77406a8b
 ---
@@ -74,4 +76,10 @@ title_generated: 5610eacf77406a8b
 
 ![](../proposal_sense_check_results.png)
 
-Опубликуйте итоговое заключение: перечислите изменения, которые внесёт группа, или укажите, что идея готова к следующему этапу принятия решения.
+<!-- translation-section: share-an-outcome -->
+
+## Опубликуйте итоговое заключение
+
+Когда проверка мнений завершится, опубликуйте итоговое заключение. Перечислите изменения, которые внесёт группа, или укажите, что идея готова к следующему этапу принятия решения. О том, как работают итоговые заключения, см. раздел [Опубликуйте итоговое заключение](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome).
+
+![Итоговое заключение о том, что план будет пересмотрен перед окончательным рассмотрением](outcome.png)

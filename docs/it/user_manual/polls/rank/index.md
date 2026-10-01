@@ -1,10 +1,10 @@
 ---
 title: Rango
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/polls/rank/index.md
+source_revision: 9c60c42fc739483fa23f15d9f34a1e9245518092
+source_file: docs/en/user_manual/polls/rank/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 9908dff1f0045200
   when-to-use-rank: f47d22e4968f74dd
@@ -12,6 +12,7 @@ sections:
   set-up-the-poll: 8a5902b708d6e7be
   vote: b089c2c5b7504b5d
   read-the-results: 18fbb0f9a5a866bc
+  share-an-outcome: c9dcebf155d64c65
 generated:
   introduction: 9c1ff266d4542c16
   when-to-use-rank: 5b61218cdbcc6afb
@@ -19,6 +20,7 @@ generated:
   set-up-the-poll: 2241f0bb5a4ef2e0
   vote: bcda8fb3aadbeef1
   read-the-results: b3acbd7a089b4f2f
+  share-an-outcome: 3f33766487fbd355
 title_source: a4130d7d2c3a137f
 title_generated: b3255287db980add
 ---
@@ -86,3 +88,11 @@ I risultati combinano tutte le schede di voto in una classifica complessiva basa
 In questo esempio, la **bottiglia ambrata da 500 ml** è al primo posto, seguita dalla **bottiglia trasparente da 500 ml** e dalla **bottiglia ambrata da 750 ml**. Il gruppo può esaminare per primo il modello preferito e conservare l'ordine delle altre opzioni come elenco di alternative.
 
 Lo stesso totale di punti può derivare da preferenze diverse. Esamina le singole schede di voto e le motivazioni quando le opzioni hanno risultati simili o la decisione ha conseguenze importanti.
+
+<!-- translation-section: share-an-outcome -->
+
+## Condividi una conclusione
+
+Quando il sondaggio si chiude, condividi una conclusione. Indica quale opzione il gruppo intende portare avanti e cosa succederà se non sarà possibile realizzarla. Consulta [Condividi una conclusione](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome) per sapere come funzionano le conclusioni.
+
+![Una conclusione che sceglie il modello di bottiglia al primo posto in classifica](outcome.png)

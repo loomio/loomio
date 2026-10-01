@@ -1,24 +1,26 @@
 ---
 title: Выбор
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/polls/choose/index.md
+source_revision: 9c60c42fc739483fa23f15d9f34a1e9245518092
+source_file: docs/en/user_manual/polls/choose/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: f9d6a5bfb7445de0
   when-to-use-choose: f8a798497cac5a43
   example-set-a-planning-meeting-agenda: 32a94a916dbf84e5
   set-up-the-poll: a16095b63c57e0c9
   vote: d170451131c544cf
-  read-the-results: 84521c82aed8dd29
+  read-the-results: e675d12da1a4ba8a
+  share-an-outcome: f6afc1713b921265
 generated:
   introduction: 7d1272b06613ed6a
   when-to-use-choose: 572a0623b8593129
   example-set-a-planning-meeting-agenda: 95ed111299cca376
   set-up-the-poll: ce72e8030e24b0f1
   vote: 54df2341f4d35fdd
-  read-the-results: 6e995f32f7b02b66
+  read-the-results: 96b551a9966bf0af
+  share-an-outcome: 383e79ab3dbfa348
 title_source: c7f937836f5d82d5
 title_generated: e1ce0166da96ae9b
 ---
@@ -86,6 +88,10 @@ title_generated: e1ce0166da96ae9b
 
 В этом примере **График сбора бутылок из кафе** выбрали три раза. **Порядок мойки** и **Отчёт о доле возвращённых бутылок** выбрали по два раза. Результат позволяет выделить больше всего времени в повестке на сбор бутылок из кафе. Организатору ещё нужно решить, как распределить оставшееся время между двумя темами с одинаковым числом голосов.
 
-Когда голосование завершится, опубликуйте **Исход** и объясните, что группа сделает с результатами.
+<!-- translation-section: share-an-outcome -->
 
-![](outcome.png)
+## Публикация исхода
+
+Когда голосование завершится, опубликуйте исход. Объясните, что группа сделает с результатами, в том числе как будет принято решение при равном числе голосов. О том, как работают исходы, читайте в разделе [Публикация исхода](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome).
+
+![Исход, в котором на сбор бутылок из кафе выделено больше всего времени на встрече](outcome.png)

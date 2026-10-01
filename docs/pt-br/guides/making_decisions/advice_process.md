@@ -1,10 +1,10 @@
 ---
 title: Processo de aconselhamento
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/guides/making_decisions/advice_process.md
+source_revision: 9c60c42fc739483fa23f15d9f34a1e9245518092
+source_file: docs/en/guides/making_decisions/advice_process.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-30'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: '0994471ee964501f'
   key-points: 66f32f2b3cf56e0d
@@ -15,7 +15,7 @@ sections:
   step-0-you-notice-a-problem-or-opportunity-and-take-the-initiative: bf6c40b5883bb4d8
   step-1-seek-input-to-sound-out-perspectives-before-proposing-action: 1ead1a7a23e4efad
   step-2-clarify-and-strengthen-the-advice-through-discussion: a3b5393138bde245
-  step-3-make-a-decision-with-advice-and-inform-people: e6213c8e90b5d392
+  step-3-make-a-decision-with-advice-and-inform-people: c55b6d9c9ad0961c
 generated:
   introduction: 7f9757637ebc3721
   key-points: 57aaecb4e5755e57
@@ -26,7 +26,7 @@ generated:
   step-0-you-notice-a-problem-or-opportunity-and-take-the-initiative: 3c6e2a4786dbab26
   step-1-seek-input-to-sound-out-perspectives-before-proposing-action: 3dd211b5ebc44dd7
   step-2-clarify-and-strengthen-the-advice-through-discussion: bbfbd392aa4e267d
-  step-3-make-a-decision-with-advice-and-inform-people: 43ba6d9ab8a75961
+  step-3-make-a-decision-with-advice-and-inform-people: 3cbe17bbb2731bc5
 title_source: 290fb74b7be97f31
 title_generated: b06b07bfc96e3e74
 ---
@@ -116,7 +116,7 @@ Takashi responde aos conselhos deixados nos comentários da discussão. Ele escl
 
 ### Etapa 3. Tome uma decisão com base nos conselhos e informe as pessoas
 
-Quando todos tiverem dado seus conselhos, ou quando a proposta for encerrada, Takashi toma uma decisão e publica a **[conclusão](/en/user_manual/polls/outcomes/)**.
+Quando todos tiverem dado seus conselhos, ou quando a proposta for encerrada, Takashi toma uma decisão e publica a **[conclusão](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome)**.
 
 A conclusão descreve claramente a decisão tomada e o que acontecerá em seguida. Ela se torna um registro importante para a organização.
 

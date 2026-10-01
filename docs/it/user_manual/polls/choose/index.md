@@ -1,24 +1,26 @@
 ---
 title: Scegliere
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/polls/choose/index.md
+source_revision: 9c60c42fc739483fa23f15d9f34a1e9245518092
+source_file: docs/en/user_manual/polls/choose/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: f9d6a5bfb7445de0
   when-to-use-choose: f8a798497cac5a43
   example-set-a-planning-meeting-agenda: 32a94a916dbf84e5
   set-up-the-poll: a16095b63c57e0c9
   vote: d170451131c544cf
-  read-the-results: 84521c82aed8dd29
+  read-the-results: e675d12da1a4ba8a
+  share-an-outcome: f6afc1713b921265
 generated:
   introduction: e3d8d19d069de09e
   when-to-use-choose: 997f684df5977e1f
   example-set-a-planning-meeting-agenda: dcf65f4ab42717d8
   set-up-the-poll: d40d7e998e50e13e
   vote: ce1a1edd5f30f8b3
-  read-the-results: 456c789dd983107b
+  read-the-results: 141460cccf88dfef
+  share-an-outcome: 8eaaeb4c32b8a804
 title_source: c7f937836f5d82d5
 title_generated: 5a5ef9386d918e39
 ---
@@ -78,7 +80,7 @@ Una motivazione può chiarire perché un'opzione è importante e quali attività
 
 <!-- translation-section: read-the-results -->
 
-## Leggere i risultati
+## Leggi i risultati
 
 I risultati mostrano la quota delle selezioni totali ricevuta da ogni opzione, il numero di persone che l'hanno selezionata e chi non ha votato. Poiché ogni persona poteva scegliere due opzioni, le percentuali si riferiscono alle selezioni, non alle persone.
 
@@ -86,6 +88,10 @@ I risultati mostrano la quota delle selezioni totali ricevuta da ogni opzione, i
 
 In questo esempio, **Calendario di raccolta presso i bar** ha ricevuto tre selezioni. **Procedura di lavaggio** e **Rendicontazione dei tassi di restituzione** ne hanno ricevute due ciascuna. Il risultato suggerisce di dedicare più tempo alla raccolta presso i bar, ma chi organizza la riunione deve ancora decidere come dividere il tempo rimanente tra gli altri due argomenti, che hanno ricevuto lo stesso numero di selezioni.
 
-Alla chiusura del sondaggio, pubblica una **Conclusione** che spieghi come il gruppo userà il risultato.
+<!-- translation-section: share-an-outcome -->
 
-![](outcome.png)
+## Condividi una conclusione
+
+Alla chiusura del sondaggio, condividi una conclusione. Spiega come il gruppo userà il risultato, indicando anche come vengono risolti eventuali pareggi. Consulta [Condividi una conclusione](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome) per sapere come funzionano le conclusioni.
+
+![Una conclusione che dedica più tempo della riunione alla raccolta presso i bar](outcome.png)

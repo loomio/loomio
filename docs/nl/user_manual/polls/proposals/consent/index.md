@@ -1,24 +1,26 @@
 ---
 title: Toestemming
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/polls/proposals/consent/index.md
+source_revision: 9c60c42fc739483fa23f15d9f34a1e9245518092
+source_file: docs/en/user_manual/polls/proposals/consent/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 7c6301775b6655f2
   when-to-use-consent: 32ea681182001a9a
   example-start-a-bottle-trial: abc3b93cccfe2471
   set-up-the-proposal: 99fe028ed43b44c2
   vote: 496a824e20def5e2
-  read-the-results: f4db0702619b3992
+  read-the-results: 710fb80144e56ea9
+  share-an-outcome: 8f8b3f701dc4f516
 generated:
   introduction: 84b99d9ec5645175
   when-to-use-consent: 6c6f7656108c4a7f
   example-start-a-bottle-trial: 213442bf1421248d
   set-up-the-proposal: 66025f9a69d8f2ed
   vote: 570b8f7acb9b6d55
-  read-the-results: 06e4f37b9778a806
+  read-the-results: e3292152771cb8bc
+  share-an-outcome: c9d959151c7cc7ad
 title_source: d37e0cd00f18a366
 title_generated: 56e6d8448fa58951
 ---
@@ -69,4 +71,10 @@ De grafiek laat zien welke bezwaren er zijn, maar de groep moet ook de redenen b
 
 ![](../proposal_consent_results.png)
 
-Publiceer een conclusie waarin de afgesproken aanpak, eventuele voorzorgsmaatregelen, de verantwoordelijke personen en het moment van beoordeling staan.
+<!-- translation-section: share-an-outcome -->
+
+## Deel een conclusie
+
+Deel een conclusie wanneer het voorstel sluit. Leg vast wat de afgesproken aanpak is, hoe eventuele bezwaren zijn opgelost, wie verantwoordelijk is en wanneer de groep de aanpak zal evalueren. Lees [Deel een conclusie](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome) voor uitleg over hoe conclusies werken.
+
+![Een conclusie waarin een opgelost bezwaar, een startdatum en een evaluatiemoment zijn vastgelegd](outcome.png)

@@ -1,18 +1,18 @@
 ---
 title: Zur Abstimmung einladen
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/polls/inviting_people/index.md
+source_revision: 71554be8e61a76613b0707b8262302c22299a5d0
+source_file: docs/en/user_manual/polls/inviting_people/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 0635cf23fcaaa95b
   invite-people-to-vote-in-a-poll: cfbf5caf71d1d5ca
   invite-guests-or-experts: 0717537bbd36fa07
   invite-a-subgroup-to-vote: 3ac684bdca4b3365
   engage-people-while-a-poll-is-running: 69971de8d56c0a74
-  add-voters-to-the-poll: 904f682bab618ce3
-  remove-people-from-the-poll: d204dd916f5418e2
+  add-voters-to-the-poll: 48f3b4a1edb5a037
+  remove-people-from-the-poll: ceec3f0319728807
   remind-people-to-vote: 177c881cb1b0dfb9
   view-notification-history: 52d930341c048008
   close-early: 0c46e8066719fc2f
@@ -23,8 +23,8 @@ generated:
   invite-guests-or-experts: 3725d434c11ffe1d
   invite-a-subgroup-to-vote: d8028a5c0ffd6449
   engage-people-while-a-poll-is-running: 263e4c257ef173b1
-  add-voters-to-the-poll: cd00d4ce47cefe6c
-  remove-people-from-the-poll: e05d92ebb18f3b1b
+  add-voters-to-the-poll: 6f5ce27e84508e20
+  remove-people-from-the-poll: bb08e460ea71b5c2
   remind-people-to-vote: 1a411ce734c9c1ad
   view-notification-history: d4ed22be9ec38d57
   close-early: f584a595a35bb575
@@ -88,7 +88,7 @@ Am unteren Ende einer laufenden Abstimmung findest du mehrere Funktionen, mit de
 
 Du kannst jederzeit weitere Personen zur Abstimmung hinzufügen, auch bevor eine geplante Abstimmung beginnt.
 
-Wähle **Wähler hinzufügen** aus und gib dann die Namen oder E-Mail-Adressen der Personen ein, die du hinzufügen möchtest.
+Wähle **Wähler verwalten** aus, um das Fenster zur Wählerverwaltung zu öffnen. Du kannst alle Personen in der Gruppe einladen, Mitglieder über ihren Namen hinzufügen oder Gäste über ihre E-Mail-Adresse hinzufügen, sofern Einladungen für Gäste erlaubt sind. Wenn du etwas in **Wähler finden oder einladen** eingibst, wird auch die Liste der Personen gefiltert, die bereits an der Abstimmung teilnehmen können. Die zuletzt hinzugefügten Wähler*innen werden zuerst angezeigt. Mit den Steuerelementen zum Blättern kannst du die gesamte Liste durchsehen.
 
 Wenn für die Abstimmung ein Beginn festgelegt wurde und die Stimmabgabe noch nicht möglich ist, erhalten die Wähler*innen nicht sofort eine Benachrichtigung. Sie werden benachrichtigt, sobald die Stimmabgabe beginnt.
 
@@ -96,13 +96,15 @@ Wenn für die Abstimmung ein Beginn festgelegt wurde und die Stimmabgabe noch ni
 
 ### Personen aus der Abstimmung entfernen
 
-Wähle **Wähler hinzufügen** aus, suche den Namen der Person, öffne das Drei-Punkte-Menü daneben und wähle **Aus dem Vorschlag entfernen** aus.
+Wähle **Wähler verwalten** aus, suche den Namen der Person im Fenster zur Wählerverwaltung, klicke auf die Schaltfläche mit dem Papierkorbsymbol daneben und bestätige mit **Wähler entfernen**.
+
+![Die Schaltfläche mit dem Papierkorbsymbol neben einer Person im Fenster zur Wählerverwaltung](proposal_invite_remove.png)
 
 Aus einer anonymen Abstimmung können keine Personen entfernt werden.
 
 Wenn beispielsweise ein Gruppenadministrator eine Abstimmung für Vorstandsmitglieder erstellt, kann er sich selbst entfernen, falls er nicht stimmberechtigt ist.
 
-![](proposal_invite_remove.png)
+Bei Abstimmungen mit Stimmgewichten können Abstimmungskoordinator*innen im selben Fenster [Stimmgewichte prüfen und bearbeiten](/en/user_manual/polls/weighted_voting).
 
 <!-- translation-section: remind-people-to-vote -->
 

@@ -1,10 +1,10 @@
 ---
 title: ランク
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/polls/rank/index.md
+source_revision: 9c60c42fc739483fa23f15d9f34a1e9245518092
+source_file: docs/en/user_manual/polls/rank/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 9908dff1f0045200
   when-to-use-rank: f47d22e4968f74dd
@@ -12,6 +12,7 @@ sections:
   set-up-the-poll: 8a5902b708d6e7be
   vote: b089c2c5b7504b5d
   read-the-results: 18fbb0f9a5a866bc
+  share-an-outcome: c9dcebf155d64c65
 generated:
   introduction: f0706702ffccd833
   when-to-use-rank: 232214a94c81f82b
@@ -19,6 +20,7 @@ generated:
   set-up-the-poll: ff67f07514edbf3a
   vote: b1161bb9e670a61c
   read-the-results: 7ee531659373f601
+  share-an-outcome: f4e70453b186d0e5
 title_source: a4130d7d2c3a137f
 title_generated: 6843c4068dd41a9c
 ---
@@ -86,3 +88,11 @@ title_generated: 6843c4068dd41a9c
 この例では、**500 mlの琥珀色のボトル**が1位で、**500 mlの透明なボトル**、**750 mlの琥珀色のボトル**が続きます。グループは第一候補のデザインから検討し、残りの順位を代替案の順序として活用できます。
 
 異なる希望の傾向でも、ポイントの合計が同じになることがあります。選択肢の結果が僅差の場合や、重要な決定を行う場合は、個々の投票とその理由を確認します。
+
+<!-- translation-section: share-an-outcome -->
+
+## 結論を共有する
+
+投票が終了したら、結論を共有します。グループがどの選択肢を採用するか、また、その選択肢を実行できない場合にどうするかを記載します。結論の仕組みについては、[結論を共有する](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome)を参照してください。
+
+![最上位のボトルデザインを採用する結論](outcome.png)

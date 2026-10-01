@@ -1,18 +1,18 @@
 ---
 title: Nodig uit om te stemmen
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/polls/inviting_people/index.md
+source_revision: 9c60c42fc739483fa23f15d9f34a1e9245518092
+source_file: docs/en/user_manual/polls/inviting_people/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 0635cf23fcaaa95b
   invite-people-to-vote-in-a-poll: cfbf5caf71d1d5ca
   invite-guests-or-experts: 0717537bbd36fa07
   invite-a-subgroup-to-vote: 3ac684bdca4b3365
   engage-people-while-a-poll-is-running: 69971de8d56c0a74
-  add-voters-to-the-poll: 904f682bab618ce3
-  remove-people-from-the-poll: d204dd916f5418e2
+  add-voters-to-the-poll: 48f3b4a1edb5a037
+  remove-people-from-the-poll: ceec3f0319728807
   remind-people-to-vote: 177c881cb1b0dfb9
   view-notification-history: 52d930341c048008
   close-early: 0c46e8066719fc2f
@@ -23,8 +23,8 @@ generated:
   invite-guests-or-experts: a70e3de4132f6b6f
   invite-a-subgroup-to-vote: ff01b8228a02a2f7
   engage-people-while-a-poll-is-running: 8817c97773ccbf97
-  add-voters-to-the-poll: d7d67b0bdf206005
-  remove-people-from-the-poll: 74c04091e6bd1f8c
+  add-voters-to-the-poll: 280946531bdae0f9
+  remove-people-from-the-poll: af78c11131f2c64e
   remind-people-to-vote: 9937d04bc41f9b7f
   view-notification-history: 55942fbb7ecbe486
   close-early: 0a2fc7b167277acc
@@ -88,7 +88,7 @@ Onderaan de peiling vind je verschillende functies om mensen bij de lopende peil
 
 Je kunt op elk moment mensen aan de peiling toevoegen, ook voordat het stemmen voor een geplande peiling begint.
 
-Selecteer **Kiezers toevoegen** en voer de namen of e-mailadressen in van de mensen die je wilt toevoegen.
+Selecteer **Kiezers beheren** om het venster voor kiezersbeheer te openen. Je kunt iedereen in de groep uitnodigen, leden toevoegen op naam of gasten toevoegen via hun e-mailadres als uitnodigingen voor gasten zijn toegestaan. Als je iets invoert in **Zoek of nodig kiezers uit**, filter je ook de mensen die al aan de peiling deelnemen. De laatst toegevoegde kiezers verschijnen bovenaan; gebruik de paginaknoppen om de volledige lijst te bekijken.
 
 Als de peiling een geplande begintijd heeft en het stemmen nog niet is begonnen, krijgen de stemmers niet meteen een melding. Ze krijgen een melding zodra het stemmen begint.
 
@@ -96,13 +96,15 @@ Als de peiling een geplande begintijd heeft en het stemmen nog niet is begonnen,
 
 ### Verwijder mensen uit de peiling
 
-Selecteer **Kiezers toevoegen**, zoek de naam van de persoon, open het menu met drie puntjes ernaast en selecteer **Verwijder van voorstel**.
+Selecteer **Kiezers beheren**, zoek de naam van de persoon in het venster voor kiezersbeheer, selecteer de prullenbakknop ernaast en bevestig met **Verwijder kiezer**.
+
+![De prullenbakknop naast een kiezer in het venster voor kiezersbeheer](proposal_invite_remove.png)
 
 Je kunt geen mensen uit een anonieme peiling verwijderen.
 
 Een beheerder die namens bestuursleden een peiling maakt, kan bijvoorbeeld zichzelf verwijderen als die geen stemrecht heeft.
 
-![](proposal_invite_remove.png)
+Bij peilingen met stemgewichten kunnen peilingcoördinatoren in hetzelfde venster [stemgewichten bekijken en bewerken](/en/user_manual/polls/weighted_voting).
 
 <!-- translation-section: remind-people-to-vote -->
 

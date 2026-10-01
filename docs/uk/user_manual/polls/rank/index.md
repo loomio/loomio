@@ -1,10 +1,10 @@
 ---
 title: Ранг
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/polls/rank/index.md
+source_revision: 9c60c42fc739483fa23f15d9f34a1e9245518092
+source_file: docs/en/user_manual/polls/rank/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 9908dff1f0045200
   when-to-use-rank: f47d22e4968f74dd
@@ -12,6 +12,7 @@ sections:
   set-up-the-poll: 8a5902b708d6e7be
   vote: b089c2c5b7504b5d
   read-the-results: 18fbb0f9a5a866bc
+  share-an-outcome: c9dcebf155d64c65
 generated:
   introduction: 11d3027c6bfb3d6d
   when-to-use-rank: 11ca53cdb2962369
@@ -19,6 +20,7 @@ generated:
   set-up-the-poll: 2c7e55e0b286a584
   vote: ae82592c02c1d857
   read-the-results: 13f911af0cf6e6e5
+  share-an-outcome: 9a15b3ef029219fd
 title_source: a4130d7d2c3a137f
 title_generated: 15589d51e08a4b07
 ---
@@ -86,3 +88,11 @@ title_generated: 15589d51e08a4b07
 У цьому прикладі **бурштинова пляшка 500 мл** посіла перше місце, за нею — **прозора пляшка 500 мл** і **бурштинова пляшка 750 мл**. Група може спочатку розглянути дизайн, який посів перше місце, а решту варіантів залишити як впорядкований список альтернатив.
 
 Однакову загальну кількість балів можуть давати різні поєднання уподобань. Якщо результати варіантів близькі або рішення має значні наслідки, перегляньте окремі бюлетені та пояснення голосів.
+
+<!-- translation-section: share-an-outcome -->
+
+## Поділіться висновком
+
+Коли опитування закриється, поділіться висновком. Укажіть, який варіант група обере для реалізації та що робитиме, якщо його не вдасться реалізувати. Про те, як працюють висновки, читайте в розділі [Поділіться висновком](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome).
+
+![Висновок про вибір дизайну пляшки, що посів перше місце](outcome.png)

@@ -1,24 +1,26 @@
 ---
 title: Consenso
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/polls/proposals/consensus/index.md
+source_revision: 9c60c42fc739483fa23f15d9f34a1e9245518092
+source_file: docs/en/user_manual/polls/proposals/consensus/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: af2e2a50e8c0b440
   when-to-use-consensus: fc7f6180345f73a3
   example-adopt-a-bottle-return-standard: 9b0915ee6f41fa54
   set-up-the-proposal: b35a641ec031a40b
   vote: f7dbea12e2d6261a
-  read-the-results: d7d1bfae079d04ec
+  read-the-results: e60abb3a43a86d6e
+  share-an-outcome: a7febe19484c20b3
 generated:
   introduction: 0e06c5a4a2150eb3
   when-to-use-consensus: d684a0250bc1aa72
   example-adopt-a-bottle-return-standard: 4b5fbce3a1fafa81
   set-up-the-proposal: 819bbfc3b5368e7a
   vote: d2aa1c86ec837890
-  read-the-results: 6244f5183dfd7809
+  read-the-results: 5390c8be08d6d91d
+  share-an-outcome: 0472f5ec45e60abb
 title_source: 8abe09bf65aefdb8
 title_generated: a633645d078dc2da
 ---
@@ -69,4 +71,10 @@ Il grafico mostra la distribuzione delle risposte. Esamina ogni motivo di disacc
 
 ![](../proposal_consensus_results.png)
 
-Se il gruppo raggiunge un accordo, pubblica una conclusione che riporti lo standard definitivo e le responsabilità. Altrimenti, registra che cosa verrà rivisto e quando il gruppo tornerà a esaminare la proposta.
+<!-- translation-section: share-an-outcome -->
+
+## Condividi una conclusione
+
+Quando la proposta si chiude, condividi una conclusione. Se il gruppo ha raggiunto un accordo, registra l'accordo definitivo e chi ne è responsabile. Altrimenti, registra che cosa verrà rivisto e quando il gruppo tornerà a esaminare la proposta. Vedi [Condividi una conclusione](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome) per sapere come funzionano le conclusioni.
+
+![Una conclusione che indica che non è stato raggiunto il consenso e che lo standard verrà rivisto](outcome.png)

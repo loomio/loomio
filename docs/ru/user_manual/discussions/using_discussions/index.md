@@ -1,19 +1,19 @@
 ---
 title: Работа с темами
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/discussions/using_discussions/index.md
+source_revision: 9c60c42fc739483fa23f15d9f34a1e9245518092
+source_file: docs/en/user_manual/discussions/using_discussions/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: fe8ab54791a49e01
   thread-anatomy: fca9ec9af6718a99
   discussion-context: ebefd7274a307dd0
-  notify-people-about-context-changes: 79d0ed7f94edb858
+  notify-people-about-context-changes: 3fe9320d33fff8f6
   navigation: c0ccc79744ae2c33
   notifications-and-members: ac51f2bbe3642155
   email-notifications-for-this-thread: 69076a17d7457ba0
-  invite-people: 69e5555d18551b0b
+  invite-people: 94ab00a27cec065d
   seen-by: 1d0bfd812ca11782
   notified: 6139bdcaae32a1db
   actions: c015c12999c5be2f
@@ -28,11 +28,11 @@ generated:
   introduction: 303f4019414e8d1d
   thread-anatomy: 8137c620216ac94d
   discussion-context: 267adabf8bf3f8f6
-  notify-people-about-context-changes: a3e50145776117cf
+  notify-people-about-context-changes: 3dcc5c00b0465e1e
   navigation: 946b5f8923529c45
   notifications-and-members: 164fc33d825a9f6d
   email-notifications-for-this-thread: 72017526a9596ba6
-  invite-people: '087893c4e5ff3519'
+  invite-people: ee9c8f27725d8da5
   seen-by: fabbb8a619364660
   notified: 05c71faeb952a157
   actions: cbc2ce2e3306df39
@@ -113,9 +113,9 @@ title_generated: a4735aad0164704e
 
 ![Редактирование контекста обсуждения с описанием изменений и выбором получателей уведомления](../notifying_people/thread_editcontext.png)
 
-Описание появится в теме отдельной записью, чтобы участники могли увидеть, что изменилось.
+В теме отображается запись о том, что вы отредактировали контекст. Люди, которых вы уведомляете, получают ваше описание изменений вместе с уведомлением.
 
-![Запись в хронологии об изменении контекста обсуждения](../notifying_people/thread_edit_comment.png)
+![Запись в теме о том, что контекст обсуждения был отредактирован](../notifying_people/thread_edit_comment.png)
 
 <!-- translation-section: navigation -->
 
@@ -159,9 +159,13 @@ title_generated: a4735aad0164704e
 
 Выберите группу или подгруппу, введите имена участников или адрес электронной почты, чтобы пригласить гостя.
 
+Поле **Найдите или пригласите людей.** также фильтрует список людей, уже участвующих в теме. Очистите поле, чтобы снова увидеть полный список, и используйте элементы управления страницами, если людей больше 50. После выбора получателей вместо списка участников появляется необязательное поле для сообщения. Когда вы выбираете **Пригласить или уведомить**, новые люди получают приглашение, а люди, у которых уже есть доступ, — повторное уведомление.
+
 ![Окно приглашения с полем для имён и адресов электронной почты](../notifying_people/thread_invite.png)
 
 Гость может просматривать эту тему и участвовать в ней. Другие обсуждения группы ему доступны, только если его пригласили в них отдельно.
+
+Вы можете скрыть подсказки в верхней части окна. Loomio запоминает для вашей учётной записи, какие подсказки вы скрыли.
 
 ![Приглашение гостя по электронной почте](../notifying_people/invite_guest.png)
 

@@ -1,45 +1,45 @@
 ---
 title: Анонимное голосование
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/polls/anonymous_voting/index.md
+source_revision: 9c60c42fc739483fa23f15d9f34a1e9245518092
+source_file: docs/en/user_manual/polls/anonymous_voting/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
-  introduction: d5c276b2785919c3
+  introduction: 2b9b7da01da020b3
   how-anonymous-voting-protects-voters: f2be8477636489af
   while-voting-is-open: dda23e517269b9cf
   votes-cannot-be-changed: 1e317297688ba902
   why-anonymous-votes-do-not-have-reasons: 39c1a8362550ae40
   results-and-exports: eb2429afd442dad2
-  participation-verification: cdaa1f5c3ca1e179
+  participation-verification: 87bc3647be4bbfb8
   reminders: 0afad473c90f2f03
-  what-coordinators-and-administrators-can-see: 51460c8a6b663aba
+  what-coordinators-and-administrators-can-see: 07faa9f646665b64
   limits-of-anonymous-voting: 912141560342d073
   questions: 60cc6f1a0163ec5d
-  can-a-coordinator-see-how-i-voted: 3dd2c9e6d06debda
+  can-a-coordinator-see-how-i-voted: 574fc18f3a9871c3
   can-i-see-my-vote-after-submitting-it: c558e29729aed45f
   can-i-change-or-withdraw-my-vote: dd1a385fa8d225a5
   will-i-receive-an-email-confirming-my-vote: 8616fc9a0b9809ac
-  does-a-public-poll-reveal-more-information: 2ba76a1748304f96
+  does-a-public-poll-reveal-more-information: 27acfa7744a0790d
   is-anonymous-voting-suitable-for-every-election: d1b723178449c0da
 generated:
-  introduction: '0348dfa048e6711a'
+  introduction: c15ab442169c3da7
   how-anonymous-voting-protects-voters: 757231db6cdf78e1
   while-voting-is-open: 874717ce9341f272
   votes-cannot-be-changed: 8ffbcbc8e97f7758
   why-anonymous-votes-do-not-have-reasons: cd9f31f9c2623169
   results-and-exports: d79367e3590b5a11
-  participation-verification: f554918a1757a4d0
+  participation-verification: 8441f303676eb2c4
   reminders: 3edc0002e0a4a32d
-  what-coordinators-and-administrators-can-see: '02439dc7880acace'
+  what-coordinators-and-administrators-can-see: '049d55b01f09d161'
   limits-of-anonymous-voting: c71dbec18a512fe5
   questions: 2780c52ad15014e4
-  can-a-coordinator-see-how-i-voted: bb97dd8228d5b82c
+  can-a-coordinator-see-how-i-voted: ce0e8374ea67b025
   can-i-see-my-vote-after-submitting-it: a17ccba14b2e6fb5
   can-i-change-or-withdraw-my-vote: bd38f34a9c3c8daf
   will-i-receive-an-email-confirming-my-vote: 90e9b28fafdeacfa
-  does-a-public-poll-reveal-more-information: 1facaa1f0e5f7a6f
+  does-a-public-poll-reveal-more-information: fd719577aca29a3f
   is-anonymous-voting-suitable-for-every-election: 81e36967bf7d103e
 title_source: 1bc4567506ad4d51
 title_generated: 594e50e8ce3a747f
@@ -49,7 +49,7 @@ title_generated: 594e50e8ce3a747f
 
 # Анонимное голосование
 
-При анонимном голосовании сведения о том, кто проголосовал, хранятся отдельно от самих голосов. Координаторы опроса видят, кто имел право голоса, а после того как проголосуют как минимум три человека, могут проверить участие каждого. Пользователи приложения не могут определить, кому принадлежит отправленный голос.
+При анонимном голосовании, также известном как слепое голосование, сведения о том, кто проголосовал, хранятся отдельно от самих голосов. После закрытия опроса все, кому доступны результаты, могут увидеть, кто участвовал. Никто из пользователей Loomio не может определить, кому принадлежит отправленный голос.
 
 На этой странице описано, как защищены участники анонимного голосования, какие сведения сохраняются и где проходят границы этой защиты.
 
@@ -116,11 +116,15 @@ title_generated: 594e50e8ce3a747f
 
 <!-- translation-section: participation-verification -->
 
-## Проверка участия
+## Кто участвовал
 
-Координаторы опроса могут просматривать записи об участии с именами людей. В них всегда видно, кто имел право голоса. После того как проголосуют как минимум три человека, в них также становится видно, кто проголосовал, но не то, как он проголосовал. Если к моменту закрытия опроса подано менее трёх голосов, сведения об участии остаются скрытыми.
+После закрытия анонимного опроса все, кому доступны его результаты, могут увидеть, кто участвовал. Пока голосование открыто, эти сведения никому не доступны.
 
-Другие участники не могут просматривать эти сведения об участии с именами людей. Доступ к результатам опроса не даёт доступа к записям об участии.
+Выберите **Посмотреть голоса**, чтобы открыть список. В нём всегда видно, кто имел право голоса. Сведения о том, проголосовал ли каждый человек, отображаются только после того, как проголосует достаточное количество людей. Для этого необходимо достичь кворума опроса, если он установлен, а иначе — получить голоса половины людей с правом голоса. В любом случае требуется не менее трёх голосов. В списке никогда не видно, как и когда кто-либо проголосовал.
+
+Участники группы и люди с правом голоса в опросе также видят, когда каждый человек присоединился к группе и кто его пригласил. Администраторы группы также видят адреса электронной почты, чтобы различать людей с одинаковыми именами.
+
+Поскольку все, кому доступны результаты, могут увидеть, кто проголосовал, единогласный результат может раскрыть выбор участников. Например, если все голоса поданы за вариант «Соглашаться», значит, все проголосовавшие согласились.
 
 Пока голосование открыто, координаторы могут добавлять людей с правом голоса, в том числе после того, как другие уже проголосовали. Удалить из анонимного опроса тех, кто уже проголосовал, нельзя.
 
@@ -141,7 +145,7 @@ title_generated: 594e50e8ce3a747f
 Через приложение координатор опроса, администратор группы или администратор сервиса может видеть:
 
 - опрос и список людей с правом голоса;
-- проголосовал ли каждый из них, если его роль даёт доступ к этим сведениям и проголосовали как минимум три человека;
+- проголосовал ли каждый из них, если его роль даёт доступ к этим сведениям и проголосовало достаточное количество людей;
 - сводные результаты после закрытия опроса.
 
 Возможности приложения не позволяют им увидеть:
@@ -167,9 +171,9 @@ title_generated: 594e50e8ce3a747f
 
 <!-- translation-section: can-a-coordinator-see-how-i-voted -->
 
-### Может ли координатор увидеть, как я проголосовал?
+### Может ли кто-нибудь увидеть, как я проголосовал?
 
-Нет. Когда проголосуют не менее трёх человек, координатор сможет проверить, голосовали ли вы. Но через приложение он не сможет связать вас с поданным голосом. Пока голосов меньше трёх, информация о вашем участии остаётся скрытой.
+Нет. Когда проголосует достаточное количество людей, все, кому доступны результаты, смогут увидеть, голосовали ли вы. Но через приложение никто не сможет связать вас с отправленным голосом. До этого момента сведения о том, голосовали ли вы, остаются скрытыми.
 
 <!-- translation-section: can-i-see-my-vote-after-submitting-it -->
 
@@ -193,7 +197,7 @@ title_generated: 594e50e8ce3a747f
 
 ### Раскрывает ли публичное голосование больше информации?
 
-Публичный доступ может позволить людям увидеть голосование и его сводные результаты после закрытия. Именные записи об участии и отдельные анонимные голоса остаются скрытыми.
+После закрытия публичного опроса любой человек может увидеть его результаты и узнать, кто участвовал. Отдельные голоса, сведения о членстве в группе и приглашениях остаются скрытыми.
 
 <!-- translation-section: is-anonymous-voting-suitable-for-every-election -->
 

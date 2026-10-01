@@ -1,19 +1,19 @@
 ---
 title: スレッドの使い方
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/discussions/using_discussions/index.md
+source_revision: 9c60c42fc739483fa23f15d9f34a1e9245518092
+source_file: docs/en/user_manual/discussions/using_discussions/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: fe8ab54791a49e01
   thread-anatomy: fca9ec9af6718a99
   discussion-context: ebefd7274a307dd0
-  notify-people-about-context-changes: 79d0ed7f94edb858
+  notify-people-about-context-changes: 3fe9320d33fff8f6
   navigation: c0ccc79744ae2c33
   notifications-and-members: ac51f2bbe3642155
   email-notifications-for-this-thread: 69076a17d7457ba0
-  invite-people: 69e5555d18551b0b
+  invite-people: 94ab00a27cec065d
   seen-by: 1d0bfd812ca11782
   notified: 6139bdcaae32a1db
   actions: c015c12999c5be2f
@@ -28,11 +28,11 @@ generated:
   introduction: 90ca827b6858017f
   thread-anatomy: 31f1bdef3e75c625
   discussion-context: 92584c98316ad899
-  notify-people-about-context-changes: ae215453c521aa77
+  notify-people-about-context-changes: 22a3c69d7a82472d
   navigation: 223110f6e1ddda20
   notifications-and-members: b4f012ac78e0ad46
   email-notifications-for-this-thread: bfebe70ff01e0c7f
-  invite-people: 9b95b1f11b6a3fe7
+  invite-people: 11fd5916b2c2f960
   seen-by: e1b50d01b6efeb97
   notified: 6c3ce5e1fa977c84
   actions: 45ac928141e52f2d
@@ -113,9 +113,9 @@ title_generated: 1a2d46d8965028c7
 
 ![変更内容の要約と通知先を指定してディスカッションの背景情報を編集する画面](../notifying_people/thread_editcontext.png)
 
-要約はスレッド内の項目として表示され、参加者が変更内容を確認できます。
+スレッドには、背景情報を編集したことが表示されます。通知先に選んだ人には、通知とともに変更内容の要約が届きます。
 
-![ディスカッションの背景情報の変更を示すタイムラインの項目](../notifying_people/thread_edit_comment.png)
+![ディスカッションの背景情報が編集されたことを示すスレッドの項目](../notifying_people/thread_edit_comment.png)
 
 <!-- translation-section: navigation -->
 
@@ -159,9 +159,13 @@ H2またはH3の見出しを含むコメント、投票、提案は、重要な�
 
 グループまたはサブグループを選ぶか、メンバーの名前を入力します。ゲストを招待するには、メールアドレスを入力します。
 
+**人を探したり招待したりする**欄では、すでにスレッドに参加している人の一覧も絞り込めます。入力を消すと、一覧全体が再び表示されます。50人を超える場合は、ページ切り替えの操作を使います。通知先を選ぶと、メンバー一覧に代わって任意のメッセージを入力する欄が表示されます。**招待または通知する**を選ぶと、新しい人には招待が送られ、すでにアクセスできる人には再び通知が送られます。
+
 ![名前とメールアドレスの入力欄があるメンバーを招待する画面](../notifying_people/thread_invite.png)
 
 ゲストはこのスレッドを閲覧し、参加できます。別途招待されない限り、グループ内のほかのディスカッションは閲覧できません。
+
+画面の上部にある案内は閉じることができます。Loomioは、閉じた案内をアカウントごとに記憶します。
 
 ![メールアドレスでゲストを招待する画面](../notifying_people/invite_guest.png)
 

@@ -1,19 +1,19 @@
 ---
 title: 結論を出す
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/guides/facilitators_guide/concluding/index.md
+source_revision: 9c60c42fc739483fa23f15d9f34a1e9245518092
+source_file: docs/en/guides/facilitators_guide/concluding/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-30'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 0160da4a2a071cae
-  outcomes-next-steps: 9829d1cef05d120b
+  outcomes-next-steps: 146b139e25dcfb4e
   reporting-harvesting: 64a7f7605636c422
   turning-discussion-into-action: 67b87042b96109e0
   it-ain-t-over-til-it-s-over: 9edb6ef0bcb17938
 generated:
   introduction: eb32bf211f74ecf6
-  outcomes-next-steps: 5f09ba759ca1f491
+  outcomes-next-steps: 9b7bf6f494ef1c6d
   reporting-harvesting: 29deed64e7c6a046
   turning-discussion-into-action: 9cc65ab11b8fe4f1
   it-ain-t-over-til-it-s-over: b90eed507f6a071e
@@ -43,7 +43,7 @@ title_generated: 8671e083bc912c20
 
 Loomio では
 
-* [結論](/en/user_manual/polls/outcomes/)は重要な機能です。提案が終了しても、それで完了とは限りません。最後に内容をまとめるために、結論の機能を使います。
+* [結論](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome)は重要な機能です。提案が終了しても、それで完了とは限りません。最後に内容をまとめるために、結論の機能を使います。
 * Loomio のディスカッションには、提案や結論を使わずに自然に終わるものも多くあります。そうしたディスカッションにも価値があります。後で参照できるように、コンテキスト欄に結論の要約を追記すると役立ちます。
 * 特定の人に担当する作業がある場合は、その名前を @メンションすると通知が届きます。
 

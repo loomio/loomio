@@ -1,19 +1,19 @@
 ---
 title: Користування темами
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/discussions/using_discussions/index.md
+source_revision: 9c60c42fc739483fa23f15d9f34a1e9245518092
+source_file: docs/en/user_manual/discussions/using_discussions/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: fe8ab54791a49e01
   thread-anatomy: fca9ec9af6718a99
   discussion-context: ebefd7274a307dd0
-  notify-people-about-context-changes: 79d0ed7f94edb858
+  notify-people-about-context-changes: 3fe9320d33fff8f6
   navigation: c0ccc79744ae2c33
   notifications-and-members: ac51f2bbe3642155
   email-notifications-for-this-thread: 69076a17d7457ba0
-  invite-people: 69e5555d18551b0b
+  invite-people: 94ab00a27cec065d
   seen-by: 1d0bfd812ca11782
   notified: 6139bdcaae32a1db
   actions: c015c12999c5be2f
@@ -28,11 +28,11 @@ generated:
   introduction: 79c076ddbdac29d2
   thread-anatomy: 0ecdc0cf7a4ce833
   discussion-context: 343eb6044cb2bd37
-  notify-people-about-context-changes: 562c6eef8a8ca5c7
+  notify-people-about-context-changes: 507c1da7b9d3a2ed
   navigation: d23a2f35569e8be1
   notifications-and-members: ff46f6f7d7933c2b
   email-notifications-for-this-thread: 6e0d5e82078f9c17
-  invite-people: 6770a60da25957e9
+  invite-people: 42f488a149a76a9c
   seen-by: 670cd3d40ace8c7c
   notified: 8ad8fa7cbfefa786
   actions: bf04aceac336e555
@@ -113,9 +113,9 @@ title_generated: c13b1d31f2ae614b
 
 ![Редагування контексту обговорення з описом змін і вибором отримувачів сповіщення](../notifying_people/thread_editcontext.png)
 
-Опис змін з’явиться як окремий елемент теми, щоб учасники могли побачити, що змінилося.
+У темі відображається, що ви відредагували контекст. Люди, яких ви сповіщаєте, отримують ваш опис змін разом зі сповіщенням.
 
-![Елемент хронології з описом зміни контексту обговорення](../notifying_people/thread_edit_comment.png)
+![Елемент теми, який показує, що контекст обговорення було відредаговано](../notifying_people/thread_edit_comment.png)
 
 <!-- translation-section: navigation -->
 
@@ -159,9 +159,13 @@ title_generated: c13b1d31f2ae614b
 
 Виберіть групу або підгрупу, введіть імена окремих учасників або електронну адресу, щоб запросити гостя.
 
+Поле **Знайти або запросити людей** також фільтрує список людей, які вже беруть участь у темі. Очистьте поле, щоб знову показати повний список, і скористайтеся елементами керування сторінками, якщо людей більше ніж 50. Після вибору отримувачів замість списку учасників з’являється необов’язкове поле для повідомлення. Коли ви вибираєте **Запросити або повідомити**, нові люди отримують запрошення, а люди, які вже мають доступ, — ще одне сповіщення.
+
 ![Вікно запрошення людей із полем для імен та електронних адрес](../notifying_people/thread_invite.png)
 
 Гість може переглядати цю тему й брати участь в обговоренні, але не бачить інших обговорень у групі, якщо його не запросили до них окремо.
+
+Ви можете закрити підказки у верхній частині вікна. Loomio запам’ятовує, які підказки ви закрили у своєму обліковому записі.
 
 ![Запрошення гостя за електронною адресою](../notifying_people/invite_guest.png)
 

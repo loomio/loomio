@@ -1,20 +1,20 @@
 ---
 title: 投票割合の要件
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/polls/vote_share_requirements/index.md
+source_revision: 9c60c42fc739483fa23f15d9f34a1e9245518092
+source_file: docs/en/user_manual/polls/vote_share_requirements/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
-  introduction: c97281f29d615dea
+  introduction: 57d7127721bebf93
   eligible-voters-and-votes-cast: 930bbc475f734396
-  different-vote-share-requirements: 0d25794ec996d42c
-  detailed-example: dc765c43a22a28a1
+  different-vote-share-requirements: cfdfd13a0a6a8b38
+  detailed-example: 395dbccb0e6427fc
 generated:
-  introduction: b27a4294f57bf55d
+  introduction: 26f297dcbde00ad3
   eligible-voters-and-votes-cast: c5eadfbfcec2de4e
-  different-vote-share-requirements: 1e3efceb44026f12
-  detailed-example: 41f3c762720bdca8
+  different-vote-share-requirements: 73e529049d0abf87
+  detailed-example: fea34e913864a79e
 title_source: a654891ca817844e
 title_generated: 1ded9d960ce79938
 ---
@@ -27,9 +27,9 @@ title_generated: 1ded9d960ce79938
 
 投票割合の要件は[定足数](/en/user_manual/polls/quorum/)と組み合わせられます。これにより、十分な参加と、指定した投票割合の両方を可決の条件にできます。
 
-提案を作成するときに、選択肢の横にある編集アイコンを選びます。
+提案フォームで、選択肢の横にある編集アイコンを選びます。
 
-![同意の選択肢の横にある編集アイコン](edit-highlight-on-option.png)
+![「同意する」の選択肢の横にある編集アイコン](edit-highlight-on-option.png)
 
 <!-- translation-section: eligible-voters-and-votes-cast -->
 
@@ -55,19 +55,19 @@ title_generated: 1ded9d960ce79938
 - 棄権は投票数の30%以下
 - ブロックは投票数の0%以下
 
+選択肢を**0%以下**に設定するのは、よく使われる方法です。その選択肢を一人でも選ぶと、提案は可決されません。**ブロック**にこの設定を使うと、一人のブロックで提案の可決を止められます。
+
 [投票テンプレート](/en/user_manual/polls/poll_templates/)にも要件を追加できます。そのテンプレートから新しい提案を作成すると、要件が初期設定として適用されます。
 
 <!-- translation-section: detailed-example -->
 
 ## 具体例
 
-オーツミルク協同組合では、返却可能なボトルを6週間試験運用するための予算を承認するかどうかを決めています。投票できる人は5人です。
+オーツミルク協同組合では、返却可能なボトルを6週間試験運用するかどうかを決めています。投票できる人は5人です。
 
-ジェイミーは**同意**の提案テンプレートを使い、同意の選択肢を編集して、投票割合の要件を有効にします。
+この協同組合では、有権者の75%以上が同意することが必要です。ジェイミーは提案の**同意する**の選択肢を編集し、投票割合の要件を有効にして、**有権者の75%以上が賛成**に設定します。
 
-この協同組合では、提案への賛成が有権者の75%以上であることが必要です。ジェイミーは要件を**有権者の75%以上が賛成**に設定します。
-
-![有権者の75%以上の賛成を必要とする同意の選択肢](./consent-vote-option.png)
+![有権者の75%以上の賛成を必要とする「同意する」の選択肢](./agree-vote-option.png)
 
 ジェイミーは定足数も60%に設定します。ジェイミーとサミラが同意に投票します。投じられた票はすべて提案を支持していますが、有権者全体の40%にすぎません。そのため、どちらの要件にも達していません。
 

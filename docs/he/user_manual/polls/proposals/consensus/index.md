@@ -1,24 +1,26 @@
 ---
 title: קוֹנסֶנזוּס
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/polls/proposals/consensus/index.md
+source_revision: 9c60c42fc739483fa23f15d9f34a1e9245518092
+source_file: docs/en/user_manual/polls/proposals/consensus/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: af2e2a50e8c0b440
   when-to-use-consensus: fc7f6180345f73a3
   example-adopt-a-bottle-return-standard: 9b0915ee6f41fa54
   set-up-the-proposal: b35a641ec031a40b
   vote: f7dbea12e2d6261a
-  read-the-results: d7d1bfae079d04ec
+  read-the-results: e60abb3a43a86d6e
+  share-an-outcome: a7febe19484c20b3
 generated:
   introduction: a669bb8366dbacdf
   when-to-use-consensus: 1f829f1c8478db90
   example-adopt-a-bottle-return-standard: 74b2e53910594fca
   set-up-the-proposal: 15c02d35d09651c3
   vote: ec3e95bc7494f8fb
-  read-the-results: 4390f6237f85c22f
+  read-the-results: 6a3b637bac49be14
+  share-an-outcome: fdf74e605750167f
 title_source: 8abe09bf65aefdb8
 title_generated: 3e2d28c3aaacf416
 ---
@@ -69,4 +71,10 @@ title_generated: 3e2d28c3aaacf416
 
 ![](../proposal_consensus_results.png)
 
-אם הקבוצה מגיעה להסכמה, יש לפרסם מסקנה שמתעדת את התקן הסופי ואת תחומי האחריות. אחרת, יש לתעד מה יתוקן ומתי הקבוצה תחזור לדון בהצעה.
+<!-- translation-section: share-an-outcome -->
+
+## שיתוף מסקנה
+
+לאחר סגירת ההצעה, יש לשתף מסקנה. אם הקבוצה הגיעה להסכמה, יש לתעד את ההסכמה הסופית ואת תחומי האחריות. אחרת, יש לתעד מה יתוקן ומתי הקבוצה תחזור לדון בהצעה. להסבר על השימוש במסקנות, ניתן לעיין ב[שיתוף מסקנה](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome).
+
+![מסקנה המציינת שלא הושג קונצנזוס ושהתקן יתוקן](outcome.png)

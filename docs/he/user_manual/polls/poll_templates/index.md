@@ -1,10 +1,10 @@
 ---
 title: תבניות סקר
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/polls/poll_templates/index.md
+source_revision: 9c60c42fc739483fa23f15d9f34a1e9245518092
+source_file: docs/en/user_manual/polls/poll_templates/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: f11182d62d99dbcc
   voting-methods-and-templates: 24be471686aa2dfd
@@ -15,7 +15,7 @@ sections:
   voting-method: 761137852812fea8
   example-title-details-and-tags: 9dbbd0510d2d6cc1
   response-options: 727afbf0dcea6069
-  duration-and-settings: dc1fb9123eb808df
+  duration-and-settings: a364411a3bebb3ae
   save-and-test-the-template: 8c48386c69ea309a
   manage-the-template-list: 0c124d7958c3f80a
 generated:
@@ -28,7 +28,7 @@ generated:
   voting-method: c33817a2c3d7637d
   example-title-details-and-tags: 7e4cd3a971fe0449
   response-options: fe02b05313a9d24e
-  duration-and-settings: 30ade8d44cb31e4e
+  duration-and-settings: 2f40ccb089b49bec
   save-and-test-the-template: 639d67286f99f989
   manage-the-template-list: 530ccbc8811787b0
 title_source: 114cca246e357304
@@ -138,11 +138,11 @@ title_generated: 9e12dfd46f55c441
 
 ### משך זמן והגדרות
 
-יש להגדיר משך זמן כברירת מחדל שמתאים לרוב השימושים בתבנית. מי שפותחים הצבעה יכולים לשנות את מועד הסגירה שלה.
+יש להגדיר משך זמן כברירת מחדל שמתאים לרוב השימושים בתבנית. ניתן לשנות את מועד הסגירה של הצבעה מסוימת בעת יצירתה.
 
 ![](poll_type_duration.png)
 
-ברירות מחדל נוספות יכולות לקבוע את נראות התוצאות, הצבעה אנונימית, דרישה לנימוק ההצבעה, תזכורות, מניין משתתפים מזערי והתנהגות ייחודית לשיטת ההצבעה. להסבר על השפעתן, ניתן לעיין ב[הגדרות הצעות וסקרים](../settings/).
+ברירות מחדל נוספות יכולות לקבוע את נראות התוצאות, הצבעה אנונימית, [הצבעה משוקללת](../weighted_voting/), דרישה לנימוק ההצבעה, תזכורות, מניין משתתפים מזערי והתנהגות ייחודית לשיטת ההצבעה. להסבר על השפעתן, ניתן לעיין ב[הגדרות הצעות וסקרים](../settings/).
 
 <!-- translation-section: save-and-test-the-template -->
 

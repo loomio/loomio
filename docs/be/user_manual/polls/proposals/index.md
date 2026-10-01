@@ -1,19 +1,19 @@
 ---
 title: Прапановы
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/polls/proposals/index.md
+source_revision: 9c60c42fc739483fa23f15d9f34a1e9245518092
+source_file: docs/en/user_manual/polls/proposals/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-30'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: dd4cb01f80b669fa
   choose-a-proposal-template: af87fd10a478699d
-  other-proposal-templates: d97b167228fd3b85
+  other-proposal-templates: 21ac5a295b8832ab
   proposal-records: ef0d886d3db7a5d1
 generated:
   introduction: edb84f5f234dc9d9
   choose-a-proposal-template: 00eb10027b07f2aa
-  other-proposal-templates: c4cbaae51ffbd562
+  other-proposal-templates: 9509fd8945c95fce
   proposal-records: 81200dbbb07cea39
 title_source: 834cfc1ee23734e1
 title_generated: b8de8f141131d27d
@@ -46,7 +46,7 @@ title_generated: b8de8f141131d27d
 
 ## Іншыя шаблоны прапаноў
 
-Loomio таксама прапануе шаблоны «Прапанова», «Ступені згоды», «Раўнд пытанняў» і «Большасць». Некаторыя з іх спачатку схаваныя. Адміністратары групы могуць зрабіць іх даступнымі або стварыць шаблон з уласнымі тэрмінамі і правіламі групы ў раздзеле [Шаблоны апытанняў](../poll_templates/).
+Loomio таксама прапануе шаблоны «Прапанова», «Ступені згоды» і «Большасць». Некаторыя з іх спачатку схаваныя. Адміністратары групы могуць зрабіць іх даступнымі або стварыць шаблон з уласнымі тэрмінамі і правіламі групы ў раздзеле [Шаблоны апытанняў](../poll_templates/).
 
 <!-- translation-section: proposal-records -->
 

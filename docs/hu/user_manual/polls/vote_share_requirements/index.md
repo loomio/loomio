@@ -1,20 +1,20 @@
 ---
 title: Szavazati arányra vonatkozó követelmények
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/polls/vote_share_requirements/index.md
+source_revision: 9c60c42fc739483fa23f15d9f34a1e9245518092
+source_file: docs/en/user_manual/polls/vote_share_requirements/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
-  introduction: c97281f29d615dea
+  introduction: 57d7127721bebf93
   eligible-voters-and-votes-cast: 930bbc475f734396
-  different-vote-share-requirements: 0d25794ec996d42c
-  detailed-example: dc765c43a22a28a1
+  different-vote-share-requirements: cfdfd13a0a6a8b38
+  detailed-example: 395dbccb0e6427fc
 generated:
-  introduction: dd9954d58fd681fc
+  introduction: a033bf0acbdea486
   eligible-voters-and-votes-cast: 2d01bc7655195e4f
-  different-vote-share-requirements: 596fcee3511c08e4
-  detailed-example: 862caf3211625b2e
+  different-vote-share-requirements: 282001c229690c9e
+  detailed-example: 1f15a1144c4e971e
 title_source: a654891ca817844e
 title_generated: 899d1458530748ec
 ---
@@ -27,9 +27,9 @@ title_generated: 899d1458530748ec
 
 A szavazati arányra vonatkozó követelményt [részvételi küszöbbel](/en/user_manual/polls/quorum/) is kombinálhatod. Így a javaslat elfogadásához elegendő részvétel és megfelelő szavazati arány is szükséges.
 
-Javaslat létrehozásakor kattints az egyik lehetőség melletti szerkesztés ikonra.
+A javaslat űrlapján kattints az egyik lehetőség melletti szerkesztés ikonra.
 
-![A szerkesztés ikon az Egyetértés lehetőség mellett](edit-highlight-on-option.png)
+![A szerkesztés ikon az Egyetért lehetőség mellett](edit-highlight-on-option.png)
 
 <!-- translation-section: eligible-voters-and-votes-cast -->
 
@@ -51,9 +51,11 @@ Ha a követelmény a leadott szavazatok legalább 60 százalékának egyetérté
 
 Egy javaslat több lehetőségéhez is beállíthatsz követelményt. Például:
 
-- Az Egyetértés aránya érje el a jogosult szavazók legalább 75 százalékát
-- A Tartózkodik aránya legfeljebb a leadott szavazatok 30 százaléka lehet
-- A Tiltakozás aránya legfeljebb a leadott szavazatok 0 százaléka lehet
+- Az egyetértők aránya érje el a jogosult szavazók legalább 75 százalékát
+- A Tartózkodik lehetőségre leadott szavazatok aránya legfeljebb a leadott szavazatok 30 százaléka lehet
+- A Tiltakozás lehetőségre leadott szavazatok aránya legfeljebb a leadott szavazatok 0 százaléka lehet
+
+Gyakori beállítás a **Legfeljebb 0%** követelmény. Ez azt jelenti, hogy a javaslat nem fogadható el, ha bárki ezt a lehetőséget választja. Használd a **Tiltakozás** lehetőségnél, hogy egyetlen tiltakozás is megakadályozza a javaslat elfogadását.
 
 A követelményeket [szavazássablonhoz](/en/user_manual/polls/poll_templates/) is hozzáadhatod. Így a sablonból létrehozott új javaslatok alapértelmezés szerint használják őket.
 
@@ -61,18 +63,16 @@ A követelményeket [szavazássablonhoz](/en/user_manual/polls/poll_templates/) 
 
 ## Részletes példa
 
-A Zabtej Szövetkezet arról dönt, hogy jóváhagyja-e a visszaváltható palackok hathetes próbaidőszakának költségvetését. Öten jogosultak szavazni.
+A Zabtej Szövetkezet arról dönt, hogy indítson-e hathetes próbaidőszakot a visszaváltható palackok használatára. Öten jogosultak szavazni.
 
-Jamie a **Beleegyezés** javaslatsablont használja, szerkeszti az Egyetértés lehetőséget, és bekapcsolja a szavazati arányra vonatkozó követelményt.
+A szövetkezet szabályai szerint a jogosult szavazók legalább 75 százalékának egyet kell értenie. Jamie szerkeszti a javaslat **Egyetért** lehetőségét, bekapcsolja a szavazati arányra vonatkozó követelményt, és **Legalább 75% a Jogosult szavazókból** értékre állítja.
 
-A szövetkezet szabályai szerint a javaslatot a jogosult szavazók legalább 75 százalékának támogatnia kell. Jamie a követelményt **Legalább 75% a Jogosult szavazókból** értékre állítja.
+![Az Egyetért lehetőséghez a jogosult szavazók legalább 75 százalékának támogatása szükséges](./agree-vote-option.png)
 
-![Az Egyetértés lehetőséghez a jogosult szavazók legalább 75 százalékának támogatása szükséges](./consent-vote-option.png)
+Jamie 60 százalékos részvételi küszöböt is beállít. Jamie és Samira az Egyetért lehetőségre szavaz. Minden leadott szavazat támogatja a javaslatot, de ez a jogosult szavazók mindössze 40 százalékát jelenti, így egyik követelmény sem teljesül.
 
-Jamie 60 százalékos részvételi küszöböt is beállít. Jamie és Samira egyetértésre szavaz. Minden leadott szavazat támogatja a javaslatot, de ez a jogosult szavazók mindössze 40 százalékát jelenti, így egyik követelmény sem teljesül.
+![Ötből ketten szavaztak az Egyetért lehetőségre, és egyik követelmény sem teljesül](./first-vote-breakdown.png)
 
-![Ötből ketten szavaztak egyetértésre, és egyik követelmény sem teljesül](./first-vote-breakdown.png)
-
-Ezután Alex és Morgan egyetértésre, Taylor pedig az egyet nem értésre szavaz. Mind az öten szavaztak, így teljesül a részvételi küszöb. Az öt jogosult szavazóból négyen egyetértenek. A 80 százalékos egyetértés meghaladja a 75 százalékos követelményt, ezért mindkét követelménynél zöld pipa jelenik meg.
+Ezután Alex és Morgan az Egyetért, Taylor pedig a Nem ért egyet lehetőségre szavaz. Mind az öten szavaztak, így teljesül a részvételi küszöb. Az öt jogosult szavazóból négyen egyetértenek. A 80 százalékos egyetértés meghaladja a 75 százalékos követelményt, ezért mindkét követelménynél zöld pipa jelenik meg.
 
 ![Mind az öten szavaztak, és mindkét követelmény teljesül](./final-vote-breakdown.png)

@@ -1,10 +1,10 @@
 ---
 title: תהליך ייעוץ
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/guides/making_decisions/advice_process.md
+source_revision: 9c60c42fc739483fa23f15d9f34a1e9245518092
+source_file: docs/en/guides/making_decisions/advice_process.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-30'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: '0994471ee964501f'
   key-points: 66f32f2b3cf56e0d
@@ -15,7 +15,7 @@ sections:
   step-0-you-notice-a-problem-or-opportunity-and-take-the-initiative: bf6c40b5883bb4d8
   step-1-seek-input-to-sound-out-perspectives-before-proposing-action: 1ead1a7a23e4efad
   step-2-clarify-and-strengthen-the-advice-through-discussion: a3b5393138bde245
-  step-3-make-a-decision-with-advice-and-inform-people: e6213c8e90b5d392
+  step-3-make-a-decision-with-advice-and-inform-people: c55b6d9c9ad0961c
 generated:
   introduction: e83dcc3ce98ccc75
   key-points: d2b35b1a50a754f9
@@ -26,7 +26,7 @@ generated:
   step-0-you-notice-a-problem-or-opportunity-and-take-the-initiative: c82c8362b9335f53
   step-1-seek-input-to-sound-out-perspectives-before-proposing-action: e771ac374edd0b18
   step-2-clarify-and-strengthen-the-advice-through-discussion: f25d7e21bb43869f
-  step-3-make-a-decision-with-advice-and-inform-people: 40e45b9f91f363d4
+  step-3-make-a-decision-with-advice-and-inform-people: 7dae579ce8e3aee7
 title_source: 290fb74b7be97f31
 title_generated: d801c00cfbae08be
 ---
@@ -114,9 +114,9 @@ title_generated: d801c00cfbae08be
 
 <!-- translation-section: step-3-make-a-decision-with-advice-and-inform-people -->
 
-### שלב 3. מקבלים החלטה בעזרת העצות ומעדכנים את האנשים
+### שלב 3. לקבל החלטה בעזרת העצות ולעדכן את האנשים
 
-לאחר שכולם נתנו עצה, או כשההצעה נסגרת, טקאשי מקבל החלטה ומפרסם את **[המסקנה](/en/user_manual/polls/outcomes/)**.
+לאחר שכולם נתנו עצה, או כשההצעה נסגרת, טקאשי מקבל החלטה ומפרסם את **[המסקנה](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome)**.
 
 המסקנה מציגה בבירור את ההחלטה שהתקבלה ואת הצעדים הבאים. היא משמשת תיעוד חשוב עבור הארגון.
 

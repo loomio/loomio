@@ -1,24 +1,26 @@
 ---
 title: Распределение баллов
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/polls/allocate/index.md
+source_revision: 9c60c42fc739483fa23f15d9f34a1e9245518092
+source_file: docs/en/user_manual/polls/allocate/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: d097e3a7d91324c9
   when-to-use-allocate: 25c91f8c05c1ec80
   example-set-priorities-for-an-annual-strategy-review: 0211b365dde1d17c
   set-up-the-poll: 772846c919c6af97
   vote: b6d1dab4c7743034
-  read-the-results: 85ea9532f2548205
+  read-the-results: 3a66507bd8387273
+  share-an-outcome: abb46bfca8b73b7a
 generated:
   introduction: c416a2195fcff204
   when-to-use-allocate: 8cf29da4cc3ae663
   example-set-priorities-for-an-annual-strategy-review: 24825aa58c4c5d7c
   set-up-the-poll: 4a23fb5560ab3efc
   vote: 47d2b638193d8ec3
-  read-the-results: 062354ea880ce429
+  read-the-results: ba7b0a2f30d01f6a
+  share-an-outcome: 3c798c6f5a83d3aa
 title_source: c927a8a7c2ce230c
 title_generated: 83c8158e13d12449
 ---
@@ -84,4 +86,12 @@ title_generated: 83c8158e13d12449
 
 В этом примере **Финансовая устойчивость** получает больше всего баллов, за ней следует **Развитие сотрудников**. Финансовой устойчивости отдал баллы каждый голосующий. Это указывает на широкое согласие с тем, что этому направлению нужно уделить значительное время при пересмотре стратегии. Сопоставьте общее число баллов с числом голосующих, чтобы отличить приоритеты многих участников от направлений, которые особенно важны меньшему числу людей.
 
-Оцените общее число баллов вместе с числом голосующих и их доводами. Опубликуйте результат с объяснением того, как будет организован пересмотр стратегии: голосование не распределяет время автоматически.
+Оцените общее число баллов вместе с числом голосующих и их доводами.
+
+<!-- translation-section: share-an-outcome -->
+
+## Поделитесь заключением
+
+Когда опрос закроется, поделитесь заключением. Опрос не распределяет время или деньги автоматически, поэтому объясните, как будет использован результат. О том, как работают заключения, читайте в разделе [Поделитесь заключением](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome).
+
+![Заключение о распределении времени при пересмотре стратегии](outcome.png)

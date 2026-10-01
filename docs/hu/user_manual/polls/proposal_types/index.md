@@ -13,7 +13,6 @@ sections:
   ranked-choice: 31dee409a33369de
   time-poll: 8b3a09b278bd7fde
   stv-election: e8407157d29424e4
-  other-specialized-method: 6b1ca633e613e513
 generated:
   introduction: edf30d76184075a7
   simple-poll: ccc415e007c5bb11
@@ -22,7 +21,6 @@ generated:
   ranked-choice: 43f8a0c6cd799631
   time-poll: bd64727d33f03df7
   stv-election: cd7363098bb41168
-  other-specialized-method: 9ef8ed7f30b77dde
 title_source: 996729458535904a
 title_generated: 21bb4226710ebb6f
 ---
@@ -68,9 +66,3 @@ Az [idő-szavazásban](/en/user_manual/polls/meeting_polls/) a résztvevők jele
 ## STV-választás
 
 Az [STV-választásban](/en/user_manual/polls/stv/) a résztvevők rangsorolhatják a jelölteket egy arányos, több győztest választó szavazáson. Ezzel a módszerrel bizottságot, vezető testületet vagy küldötteket választhattok.
-
-<!-- translation-section: other-specialized-method -->
-
-## Más speciális módszer
-
-A Loomióban kérdéskört is indíthatsz, amelyben szavazás nélkül gyűjthetsz kérdéseket. A csoportadminisztrátorok a [szavazási sablonoknál](/en/user_manual/polls/poll_templates/) tehetik elérhetővé.

@@ -1,24 +1,26 @@
 ---
 title: Размеркаванне балаў
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/polls/allocate/index.md
+source_revision: 9c60c42fc739483fa23f15d9f34a1e9245518092
+source_file: docs/en/user_manual/polls/allocate/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-30'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: d097e3a7d91324c9
   when-to-use-allocate: 25c91f8c05c1ec80
   example-set-priorities-for-an-annual-strategy-review: 0211b365dde1d17c
   set-up-the-poll: 772846c919c6af97
   vote: b6d1dab4c7743034
-  read-the-results: 85ea9532f2548205
+  read-the-results: 3a66507bd8387273
+  share-an-outcome: abb46bfca8b73b7a
 generated:
   introduction: 8957f2ce388d6220
   when-to-use-allocate: 629b797359f24949
   example-set-priorities-for-an-annual-strategy-review: 8637692cb0cc5009
   set-up-the-poll: a7ed131c47b6af2a
   vote: ddd4d74359ed929a
-  read-the-results: 47befafcb4146bb4
+  read-the-results: f5f0adc3084ed2c3
+  share-an-outcome: c9fdbc012fca866f
 title_source: c927a8a7c2ce230c
 title_generated: ad1c50259ad9092f
 ---
@@ -84,4 +86,12 @@ title_generated: ad1c50259ad9092f
 
 У гэтым прыкладзе найбольш балаў атрымала **Фінансавая ўстойлівасць**, за ёй ідзе **Развіццё супрацоўнікаў**. Фінансавай устойлівасці аддалі балы ўсе выбаршчыкі. Гэта можа сведчыць пра шырокую згоду, што ёй трэба прысвяціць значны час пры пераглядзе. Параўноўвайце агульную колькасць балаў з колькасцю выбаршчыкаў, каб адрозніваць шырокія прыярытэты ад напрамкаў, якія моцна падтрымлівае меншая колькасць людзей.
 
-Разглядайце агульную колькасць балаў разам з колькасцю выбаршчыкаў і іх довадамі. Апублікуйце выснову з тлумачэннем таго, як будзе арганізаваны перагляд стратэгіі: апытанне не размяркоўвае час аўтаматычна.
+Разглядайце агульную колькасць балаў разам з колькасцю выбаршчыкаў і іх довадамі.
+
+<!-- translation-section: share-an-outcome -->
+
+## Падзяліцеся высновай
+
+Калі апытанне закрыецца, падзяліцеся высновай. Апытанне не размяркоўвае час або грошы аўтаматычна, таму растлумачце, як будзе выкарыстаны вынік. Пра тое, як працуюць высновы, чытайце ў раздзеле [Падзяліцеся высновай](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome).
+
+![Выснова, якая вызначае размеркаванне часу пры пераглядзе стратэгіі](outcome.png)

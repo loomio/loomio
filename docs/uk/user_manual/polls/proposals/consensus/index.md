@@ -1,24 +1,26 @@
 ---
 title: Консенсус
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/polls/proposals/consensus/index.md
+source_revision: 9c60c42fc739483fa23f15d9f34a1e9245518092
+source_file: docs/en/user_manual/polls/proposals/consensus/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: af2e2a50e8c0b440
   when-to-use-consensus: fc7f6180345f73a3
   example-adopt-a-bottle-return-standard: 9b0915ee6f41fa54
   set-up-the-proposal: b35a641ec031a40b
   vote: f7dbea12e2d6261a
-  read-the-results: d7d1bfae079d04ec
+  read-the-results: e60abb3a43a86d6e
+  share-an-outcome: a7febe19484c20b3
 generated:
   introduction: fd31e9c0b64fa7c5
   when-to-use-consensus: 68d658ec66a93feb
   example-adopt-a-bottle-return-standard: 1c16803f3feaa6f9
   set-up-the-proposal: e670c9f06e89a0b2
   vote: 9ceb2b9e5c29f267
-  read-the-results: 5620ef71fbd9015c
+  read-the-results: f066c7a97b796081
+  share-an-outcome: bd97ecea82b37f7d
 title_source: 8abe09bf65aefdb8
 title_generated: 04ab62fbb8467490
 ---
@@ -69,4 +71,10 @@ title_generated: 04ab62fbb8467490
 
 ![](../proposal_consensus_results.png)
 
-Якщо група досягне згоди, опублікуйте висновок із остаточним стандартом і розподілом обов’язків. Інакше зафіксуйте, що буде переглянуто і коли група повернеться до пропозиції.
+<!-- translation-section: share-an-outcome -->
+
+## Поділіться висновком
+
+Коли пропозицію буде закрито, поділіться висновком. Якщо група досягла згоди, зафіксуйте остаточну домовленість і відповідальних за її виконання. Інакше зафіксуйте, що буде переглянуто і коли група повернеться до пропозиції. Докладніше про висновки дивіться в розділі [Поділіться висновком](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome).
+
+![Висновок про те, що консенсусу не досягнуто і стандарт буде переглянуто](outcome.png)

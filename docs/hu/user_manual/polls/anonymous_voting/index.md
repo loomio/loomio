@@ -1,45 +1,45 @@
 ---
 title: Névtelen szavazás
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/polls/anonymous_voting/index.md
+source_revision: 9c60c42fc739483fa23f15d9f34a1e9245518092
+source_file: docs/en/user_manual/polls/anonymous_voting/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-30'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
-  introduction: d5c276b2785919c3
+  introduction: 2b9b7da01da020b3
   how-anonymous-voting-protects-voters: f2be8477636489af
   while-voting-is-open: dda23e517269b9cf
   votes-cannot-be-changed: 1e317297688ba902
   why-anonymous-votes-do-not-have-reasons: 39c1a8362550ae40
   results-and-exports: eb2429afd442dad2
-  participation-verification: cdaa1f5c3ca1e179
+  participation-verification: 87bc3647be4bbfb8
   reminders: 0afad473c90f2f03
-  what-coordinators-and-administrators-can-see: 51460c8a6b663aba
+  what-coordinators-and-administrators-can-see: 07faa9f646665b64
   limits-of-anonymous-voting: 912141560342d073
   questions: 60cc6f1a0163ec5d
-  can-a-coordinator-see-how-i-voted: 3dd2c9e6d06debda
+  can-a-coordinator-see-how-i-voted: 574fc18f3a9871c3
   can-i-see-my-vote-after-submitting-it: c558e29729aed45f
   can-i-change-or-withdraw-my-vote: dd1a385fa8d225a5
   will-i-receive-an-email-confirming-my-vote: 8616fc9a0b9809ac
-  does-a-public-poll-reveal-more-information: 2ba76a1748304f96
+  does-a-public-poll-reveal-more-information: 27acfa7744a0790d
   is-anonymous-voting-suitable-for-every-election: d1b723178449c0da
 generated:
-  introduction: af09f60a84d3a341
+  introduction: f92951f194bc7c2c
   how-anonymous-voting-protects-voters: efbb1b05a58feab1
   while-voting-is-open: 9c75f2cff798bc71
   votes-cannot-be-changed: da9f55d7ce132e1b
   why-anonymous-votes-do-not-have-reasons: 9d55496278209a06
   results-and-exports: 5bc23d98a91d03d4
-  participation-verification: f98a09fe259a8bf8
+  participation-verification: 1defc88a529d7e5f
   reminders: 6977d9f0579fe2f0
-  what-coordinators-and-administrators-can-see: a75e0e50ad2c68ca
+  what-coordinators-and-administrators-can-see: a3aab7646d5f316d
   limits-of-anonymous-voting: c08f3cdc54be2f73
   questions: da64f98c28ad9eee
-  can-a-coordinator-see-how-i-voted: 2465a727190b594c
+  can-a-coordinator-see-how-i-voted: 219bd2f201dbb1b7
   can-i-see-my-vote-after-submitting-it: a0cef9bc880e956d
   can-i-change-or-withdraw-my-vote: 31c74b9264a93266
   will-i-receive-an-email-confirming-my-vote: e7b30694ab5eb316
-  does-a-public-poll-reveal-more-information: e9dcee9e60a39379
+  does-a-public-poll-reveal-more-information: 7c6f72212c734905
   is-anonymous-voting-suitable-for-every-election: 6b09aab1145e8978
 title_source: 1bc4567506ad4d51
 title_generated: afeda824cbeb1a7d
@@ -49,7 +49,7 @@ title_generated: afeda824cbeb1a7d
 
 # Névtelen szavazás
 
-A névtelen szavazás, más néven titkos szavazás, elkülöníti a részvételi adatokat a leadott szavazatoktól. A szavazás koordinátorai láthatják, kik szavazhattak, és ha már legalább hárman szavaztak, ellenőrizhetik a részvételt. Az alkalmazás felhasználói nem tudják összekapcsolni a leadott szavazatot azzal, aki leadta.
+A névtelen szavazás, más néven titkos szavazás, elkülöníti a részvételi adatokat a leadott szavazatoktól. A szavazás lezárása után mindenki láthatja, ki vett részt, aki láthatja az eredményeket. A Loomio felhasználói nem tudják összekapcsolni a leadott szavazatot azzal, aki leadta.
 
 Ez az oldal bemutatja, hogyan védi a szavazókat a névtelen szavazás, milyen adatok maradnak meg, és hol vannak a védelem korlátai.
 
@@ -116,11 +116,15 @@ A lezárt névtelen szavazást nem lehet újranyitni.
 
 <!-- translation-section: participation-verification -->
 
-## A részvétel ellenőrzése
+## Ki vett részt
 
-A szavazás koordinátorai megtekinthetik a névvel ellátott részvételi adatokat. Ezek mindig megmutatják, kik szavazhattak. Ha már legalább hárman szavaztak, azt is megmutatják, hogy az egyes személyek szavaztak-e, de azt soha, hogy hogyan szavaztak. Ha a szavazás háromnál kevesebb szavazattal zárul, a részvételi állapot rejtve marad.
+A névtelen szavazás lezárása után mindenki láthatja, ki vett részt, aki láthatja az eredményeket. A szavazás ideje alatt ezt senki sem láthatja.
 
-A többi résztvevő nem láthatja ezeket a névvel ellátott részvételi adatokat. A szavazás eredményeihez való hozzáférés nem ad hozzáférést a részvételi adatokhoz.
+A lista megtekintéséhez válaszd ki a **Szavazatok megtekintése** lehetőséget. A lista mindig megmutatja, kik szavazhattak. Azt csak akkor mutatja meg, hogy az egyes személyek szavaztak-e, ha elegen szavaztak. Ehhez el kell érni a szavazásban meghatározott határozatképző létszámot, vagy ha nincs ilyen, a szavazásra jogosultak felének kell szavaznia, de mindenképpen legalább három szavazat szükséges. A lista soha nem mutatja meg, hogy ki hogyan vagy mikor szavazott.
+
+A csoport tagjai és a szavazás résztvevői azt is láthatják, hogy az egyes személyek mikor csatlakoztak a csoporthoz, és ki hívta meg őket. A csoportadminisztrátorok az e-mail-címeket is láthatják, hogy meg tudják különböztetni az azonos nevű személyeket.
+
+Mivel mindenki láthatja, ki szavazott, aki láthatja az eredményeket, az egyoldalú eredmény felfedheti, hogyan szavaztak az emberek. Ha például minden szavazat az Egyetért lehetőségre érkezett, minden szavazó egyetértett.
 
 A koordinátorok a szavazás ideje alatt további szavazásra jogosult személyeket adhatnak hozzá, akkor is, ha mások már szavaztak. A már szavazó személyeket nem lehet eltávolítani a névtelen szavazásból.
 
@@ -141,7 +145,7 @@ A 24 óránál rövidebb szavazási időszakú szavazásokhoz nem küld automati
 Az alkalmazásban a szavazás koordinátora, egy csoportadminisztrátor vagy egy példányadminisztrátor a jogosultságaitól függően láthatja:
 
 - a szavazást és a szavazásra jogosult személyeket;
-- hogy az egyes jogosultak szavaztak-e, ha a szerepkörük ezt lehetővé teszi, és már legalább hárman szavaztak; és
+- hogy az egyes jogosultak szavaztak-e, ha a szerepkörük ezt lehetővé teszi, és már elegen szavaztak; és
 - a szavazás lezárása után az összesített eredményeket.
 
 Az alkalmazás funkcióival nem láthatják:
@@ -167,9 +171,9 @@ Amikor eldöntöd, hogy megfelelő-e az alkalmazáson belüli névtelen szavazá
 
 <!-- translation-section: can-a-coordinator-see-how-i-voted -->
 
-### Láthatja a szavazás koordinátora, hogyan szavaztam?
+### Láthatja bárki, hogyan szavaztam?
 
-Nem. Ha legalább hárman szavaztak, a koordinátor ellenőrizheti, hogy szavaztál-e, de az alkalmazásban nem kapcsolhatja össze a személyedet a leadott szavazatoddal. Három szavazat alatt az sem látható, hogy szavaztál-e.
+Nem. Ha már elegen szavaztak, azok, akik láthatják az eredményeket, azt is láthatják, hogy szavaztál-e. Az alkalmazásban senki sem kapcsolhatja össze a személyedet egy leadott szavazattal. Addig az sem látható, hogy szavaztál-e.
 
 <!-- translation-section: can-i-see-my-vote-after-submitting-it -->
 
@@ -193,7 +197,7 @@ Nem. Szavazáskor csak a képernyőn jelenik meg visszajelzés, és frissül a r
 
 ### Több információt fed fel egy nyilvános szavazás?
 
-A nyilvános hozzáférés lehetővé teheti, hogy mások megtekintsék a szavazást és a lezárás után az összesített eredményeket. A névvel ellátott részvételi nyilvántartást és az egyes névtelen szavazatokat nem teszi hozzáférhetővé.
+A nyilvános szavazás lezárása után bárki láthatja az eredményeket és azt, hogy ki vett részt. Az egyes szavazatokat, valamint a tagság és a meghívások részleteit nem láthatják.
 
 <!-- translation-section: is-anonymous-voting-suitable-for-every-election -->
 

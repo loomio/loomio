@@ -1,24 +1,26 @@
 ---
 title: Beratung
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/polls/proposals/advice/index.md
+source_revision: 71554be8e61a76613b0707b8262302c22299a5d0
+source_file: docs/en/user_manual/polls/proposals/advice/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 3b517bcf7f8d31d2
   when-to-use-advice: d98ed1affd9abbd3
   example-choose-a-washing-supplier: 94c2d1f8987bd817
   set-up-the-proposal: e93938cfa0895f27
   vote: e076d476b50d1445
-  read-the-results: 7782c49ae9875d70
+  read-the-results: 937eff4c74abcc79
+  share-an-outcome: 1f762148d1f18b1d
 generated:
   introduction: fac2a8635ad09fc8
   when-to-use-advice: 43144c3d8694c0d8
   example-choose-a-washing-supplier: 5364de693f936e4f
   set-up-the-proposal: c41b00b9fd75578a
   vote: 6c82e958ccd4cc2a
-  read-the-results: 8bbaf30a2d50ed89
+  read-the-results: dd019c273e54ef9f
+  share-an-outcome: 1f644b6316b1e0dd
 title_source: 305f5e5463e18d7f
 title_generated: f92b7f5d5139aca3
 ---
@@ -69,4 +71,10 @@ Das Diagramm zeigt, wer geantwortet hat. Der Inhalt eines Beratungsvorschlags st
 
 ![](../proposal_advice_results.png)
 
-Die entscheidende Person veröffentlicht ein Fazit. Darin erklärt sie, was sie entschieden hat und wie die Ratschläge in die Entscheidung eingeflossen sind.
+<!-- translation-section: share-an-outcome -->
+
+## Ein Fazit veröffentlichen
+
+Wenn der Vorschlag geschlossen wird, veröffentlicht die entscheidende Person ein Fazit. Darin erklärt sie, was sie entschieden hat und wie die Ratschläge in die Entscheidung eingeflossen sind. Unter [Ein Fazit veröffentlichen](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome) erfährst du, wie Fazits funktionieren.
+
+![Ein Fazit, das den ausgewählten Lieferanten und die berücksichtigten Ratschläge nennt](outcome.png)

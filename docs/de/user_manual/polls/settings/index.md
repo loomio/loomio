@@ -1,6 +1,6 @@
 ---
 title: Einstellungen
-source_revision: 6b2c4d5c591a9eb139fc64370d602b8dcf19c0e4
+source_revision: 71554be8e61a76613b0707b8262302c22299a5d0
 source_file: docs/en/user_manual/polls/settings/index.md
 translated:
   provider: codex/gpt-6.1-sol
@@ -12,11 +12,11 @@ sections:
   add-content: f622e36a3ad15e4e
   voting-options: d0ea31745ce8b651
   edit-voting-options: ef0d61585b34fbd6
-  opening-time: 13aa5e4392d1ba60
+  opening-time: 2fdf358a34805114
   more-settings: fd837a51b81cbc13
   reminder: e6ac37324b884958
   anonymous-voting: 4fde93187ffd1a86
-  vote-reason: ce00fe99ebac71ff
+  vote-reason: b1ebf2700ce8248b
   hide-results: c0873aeafe8feb59
   start-the-poll: 8e7d8e81db57f4f8
   managing-polls: b26fc41e19371d54
@@ -34,11 +34,11 @@ generated:
   add-content: 3cc28cf45befaf46
   voting-options: ae38441f7a0dda42
   edit-voting-options: f965f9a942ea87ff
-  opening-time: 1fd064b2c190c3da
+  opening-time: d7bb542f89bb7c36
   more-settings: 1dad0763dce25b73
   reminder: 3e95fb462453d172
   anonymous-voting: caf91f5d3e6636a1
-  vote-reason: e024a9becddaf7ac
+  vote-reason: b828368ae82a9644
   hide-results: a63f75f73c70b082
   start-the-poll: 4653e38acf30bac6
   managing-polls: 4b22eb8a7f88e8c5
@@ -123,11 +123,13 @@ Klicke neben einer Abstimmungsoption auf das Stiftsymbol, um das Bearbeitungsfen
 
 <!-- translation-section: opening-time -->
 
-### Beginn der Abstimmung
+### Dauer
 
 Standardmäßig beginnt die Abstimmung sofort, wenn du sie erstellst. Soll sie später beginnen, deaktiviere **Die Abstimmung beginnt sofort.** und wähle ein Datum und eine Uhrzeit für den Beginn aus.
 
 So bleibt vor Beginn der Abstimmung Zeit für die Diskussion. Du kannst auch sicherstellen, dass der Vorschlag oder die Abstimmung richtig eingerichtet ist und zum gewünschten Zeitpunkt beginnt.
+
+Wenn deine Gruppe beispielsweise bei einer bevorstehenden Versammlung über mehrere Entscheidungen abstimmen soll, kannst du die Abstimmungen vorbereiten und Abstimmende im Voraus hinzufügen. Plane dann alle Abstimmungen so, dass sie mit Beginn des Abstimmungszeitraums starten. Die Menschen können die Abstimmungen schon vorher sehen, aber noch nicht abstimmen.
 
 Wenn du einen Beginn festgelegt hast, kannst du schon vorher Abstimmende hinzufügen. Sie werden benachrichtigt, wenn die Abstimmung beginnt, nicht wenn du sie hinzufügst.
 
@@ -181,16 +183,14 @@ Es kann hilfreich sein zu verstehen, warum Menschen so abgestimmt haben. Mit die
 Die verfügbaren Einstellungen hängen von der Vorlage ab:
 
 - **Optional** lässt Abstimmende entscheiden, ob sie eine Begründung angeben
-- **Erforderlich, um abzulehnen oder zu blockieren** verlangt eine Begründung, wenn die gewählte Option
-  das Abstimmungssymbol für Ablehnung oder Veto verwendet
-- **Erforderlich bei einem Veto** verlangt eine Begründung, wenn die gewählte Option
-  das Abstimmungssymbol für ein Veto verwendet
+- **Erforderlich, um abzulehnen oder zu blockieren** verlangt eine Begründung, wenn die gewählte Option das Abstimmungssymbol für Ablehnung oder Veto verwendet
+- **Erforderlich bei einem Veto** verlangt eine Begründung, wenn die gewählte Option das Abstimmungssymbol für ein Veto verwendet
 - **Erforderlich** verlangt von allen Abstimmenden eine Begründung
 - **Deaktiviert** entfernt das Feld für die Begründung
 
 ![](vote_reason_options.png)
 
-Die bedingten Einstellungen richten sich nach dem Abstimmungssymbol, nicht nach dem Namen der Option. Sie gelten auch, wenn du „Ablehnen“ beispielsweise in „Einwand“ umbenennst. Bei der Vorlage „Consent“ ist **Erforderlich, um abzulehnen oder zu blockieren** voreingestellt, bei der Vorlage „Consensus“ **Erforderlich bei einem Veto**. Für andere Vorlagen ist standardmäßig **Optional** eingestellt, außer bei Fragerunden, in denen die Antwort selbst erforderlich ist. Wer die Umfrage erstellt hat, kann die Einstellung für jede Umfrage ändern.
+Die bedingten Einstellungen richten sich nach dem Abstimmungssymbol, nicht nach dem Namen der Option. Sie gelten auch, wenn du „Ablehnen“ beispielsweise in „Einwand“ umbenennst. Bei der Vorlage „Zustimmung“ ist **Erforderlich, um abzulehnen oder zu blockieren** voreingestellt, bei der Vorlage „Konsens“ **Erforderlich bei einem Veto**. Für andere Vorlagen ist standardmäßig **Optional** eingestellt. Wer die Umfrage erstellt hat, kann die Einstellung für jede Umfrage ändern.
 
 **Begründung auf maximal 500 Zeichen begrenzen:** Kurze Begründungen sind leichter zu verstehen. Eine Sammlung knapper Begründungen hilft bei der Entscheidung. Diese Einstellung ist standardmäßig aktiviert. Deaktiviere sie, um längere Begründungen zuzulassen.
 

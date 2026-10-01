@@ -1,19 +1,19 @@
 ---
 title: Подведение итогов
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/guides/facilitators_guide/concluding/index.md
+source_revision: 9c60c42fc739483fa23f15d9f34a1e9245518092
+source_file: docs/en/guides/facilitators_guide/concluding/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-30'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 0160da4a2a071cae
-  outcomes-next-steps: 9829d1cef05d120b
+  outcomes-next-steps: 146b139e25dcfb4e
   reporting-harvesting: 64a7f7605636c422
   turning-discussion-into-action: 67b87042b96109e0
   it-ain-t-over-til-it-s-over: 9edb6ef0bcb17938
 generated:
   introduction: c4d0b3c36554c804
-  outcomes-next-steps: ff02fbd34f46e421
+  outcomes-next-steps: 1686ba5e6b529b1a
   reporting-harvesting: 9b9d0aa0c28442a6
   turning-discussion-into-action: 8cdbe9488d2076c4
   it-ain-t-over-til-it-s-over: 43723df5577d690c
@@ -43,7 +43,7 @@ title_generated: 87acb6e403f1699b
 
 В Loomio
 
-* [Итоги](/en/user_manual/polls/outcomes/) — важный инструмент. Завершение предложения ещё не означает завершения работы: нужно сформулировать окончательный вывод. Для этого и предназначена функция подведения итогов.
+* [Итоги](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome) — важный инструмент. Завершение предложения ещё не означает завершения работы: нужно сформулировать окончательный вывод. Для этого и предназначена функция подведения итогов.
 * Многие обсуждения в Loomio естественным образом завершаются без предложений и опубликованных итогов. Они всё равно полезны. Можно добавить краткий итог в поле контекста, чтобы позже к нему вернуться.
 * Если конкретным людям поручены задачи, вы можете упомянуть их через @ — они получат уведомление.
 

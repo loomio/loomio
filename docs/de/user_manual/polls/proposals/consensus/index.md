@@ -1,24 +1,26 @@
 ---
 title: Konsens
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/polls/proposals/consensus/index.md
+source_revision: 71554be8e61a76613b0707b8262302c22299a5d0
+source_file: docs/en/user_manual/polls/proposals/consensus/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: af2e2a50e8c0b440
   when-to-use-consensus: fc7f6180345f73a3
   example-adopt-a-bottle-return-standard: 9b0915ee6f41fa54
   set-up-the-proposal: b35a641ec031a40b
   vote: f7dbea12e2d6261a
-  read-the-results: d7d1bfae079d04ec
+  read-the-results: e60abb3a43a86d6e
+  share-an-outcome: a7febe19484c20b3
 generated:
   introduction: ca95073f23c2ff44
   when-to-use-consensus: e48d81b35aa9af5c
   example-adopt-a-bottle-return-standard: 9b8cd1a41afd9939
   set-up-the-proposal: 4140d0fb5c5faaa1
   vote: 592ea6fb52c538de
-  read-the-results: af31e9f2c617aa8a
+  read-the-results: 1b4baf8013c0a4b5
+  share-an-outcome: a7177c3886ae3fa1
 title_source: 8abe09bf65aefdb8
 title_generated: f120acdf5f752fdb
 ---
@@ -69,4 +71,10 @@ Das Diagramm zeigt die Verteilung der Antworten. Prüfe jede Ablehnung und jede 
 
 ![](../proposal_consensus_results.png)
 
-Wenn die Gruppe eine Einigung erzielt, veröffentliche ein Fazit, das den endgültigen Standard und die Zuständigkeiten festhält. Andernfalls halte fest, was überarbeitet wird und wann die Gruppe den Vorschlag erneut bespricht.
+<!-- translation-section: share-an-outcome -->
+
+## Ein Fazit teilen
+
+Wenn der Vorschlag geschlossen wird, teile ein Fazit. Wenn die Gruppe eine Einigung erzielt hat, halte die endgültige Vereinbarung und die Zuständigkeiten fest. Andernfalls halte fest, was überarbeitet wird und wann die Gruppe den Vorschlag erneut bespricht. Unter [Ein Fazit teilen](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome) erfährst du, wie Fazits funktionieren.
+
+![Ein Fazit, das festhält, dass kein Konsens erzielt wurde und der Standard überarbeitet wird](outcome.png)

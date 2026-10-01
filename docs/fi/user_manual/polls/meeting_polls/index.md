@@ -1,20 +1,20 @@
 ---
 title: Aikakysely
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/polls/meeting_polls/index.md
+source_revision: 9c60c42fc739483fa23f15d9f34a1e9245518092
+source_file: docs/en/user_manual/polls/meeting_polls/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-30'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 8ab9108683132085
   time-poll: d5d5d81f7de10419
   voting: c50083234167a0f9
-  outcome: 20d3f84d36a3b860
+  outcome: 74db36d36fa18798
 generated:
   introduction: a6edd5f3fd28ee46
   time-poll: b60e3520e4101bc2
   voting: f9336a6ad0e7846c
-  outcome: 5a7898bab35b42ac
+  outcome: 72ddfe9c012a5848
 needs_review:
   introduction: use the interface label "**Aikakysely**" for "**Time poll**"
 title_source: 8e2a07d7257fbc04
@@ -65,9 +65,9 @@ Tulokset päivittyvät äänestyksen aikana. Taulukosta kaikki näkevät, kenell
 
 <!-- translation-section: outcome -->
 
-### Johtopäätös
+### Jaa johtopäätös
 
-Kun aikakysely sulkeutuu, valitse sopivin ajankohta ja julkaise johtopäätös.
+Kun aikakysely sulkeutuu, valitse sopivin ajankohta ja jaa johtopäätös. Lue johtopäätösten käytöstä kohdasta [Jaa johtopäätös](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome).
 
 ![](timepoll_outcome.png)
 

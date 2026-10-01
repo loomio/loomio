@@ -1,19 +1,19 @@
 ---
 title: Propostas
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/polls/proposals/index.md
+source_revision: 9c60c42fc739483fa23f15d9f34a1e9245518092
+source_file: docs/en/user_manual/polls/proposals/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: dd4cb01f80b669fa
   choose-a-proposal-template: af87fd10a478699d
-  other-proposal-templates: d97b167228fd3b85
+  other-proposal-templates: 21ac5a295b8832ab
   proposal-records: ef0d886d3db7a5d1
 generated:
   introduction: c851139f523776e3
   choose-a-proposal-template: e51ee82750027777
-  other-proposal-templates: 640c4349d3b9dd2a
+  other-proposal-templates: e99485b71d2134a0
   proposal-records: 2b17b362f267b92c
 title_source: 834cfc1ee23734e1
 title_generated: b3f75868e6acaf81
@@ -46,7 +46,7 @@ Escolha o modelo cujas opções de resposta correspondam à pergunta que você p
 
 ## Outros modelos de proposta
 
-O Loomio também oferece modelos como Proposta, Gradientes de concordância, Rodada de perguntas e Maioria. Alguns ficam ocultos inicialmente. Os administradores do grupo podem disponibilizá-los ou criar um modelo com os termos e as regras do próprio grupo em [Modelos de enquetes](../poll_templates/).
+O Loomio também oferece modelos como Proposta, Gradientes de concordância e Maioria. Alguns ficam ocultos inicialmente. Os administradores do grupo podem disponibilizá-los ou criar um modelo com os termos e as regras do próprio grupo em [Modelos de enquetes](../poll_templates/).
 
 <!-- translation-section: proposal-records -->
 

@@ -1,10 +1,10 @@
 ---
 title: STV-vaalit
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/polls/stv/index.md
+source_revision: 9c60c42fc739483fa23f15d9f34a1e9245518092
+source_file: docs/en/user_manual/polls/stv/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 6c43a75f60922bb6
   when-to-use-stv: e37de389c27f7d87
@@ -19,6 +19,7 @@ sections:
   elected-candidates: a6c3dbb5548c7d41
   round-by-round-details: e4a8789dae29d49e
   exporting-ballots: 582555dd13633bf0
+  share-an-outcome: 6a02aed173b368b9
 generated:
   introduction: 569d21ad446c2872
   when-to-use-stv: 1caf09fbbb8fe453
@@ -33,6 +34,7 @@ generated:
   elected-candidates: 3860ddfb4e0145a3
   round-by-round-details: 377f90356d24577d
   exporting-ballots: 96ebf656aa7c85d4
+  share-an-outcome: dc08d971a6e91fdd
 title_source: cd3e1a4cdc2456a6
 title_generated: 5db74b13bec93710
 ---
@@ -166,6 +168,14 @@ Avaa **Kierros kierrokselta yksityiskohdat**, niin näet äänten siirrot ja ehd
 ![](stv-results.png)
 
 Vihreä korostus näyttää, milloin ehdokas valittiin, punainen näyttää putoamisen ja oranssi tasatilanteen.
+
+<!-- translation-section: share-an-outcome -->
+
+## Jaa johtopäätös
+
+Kun vaalit päättyvät, jaa johtopäätös. Nimeä valitut henkilöt ja kerro, milloin heidän tehtävänsä alkaa. Lue johtopäätösten käytöstä kohdasta [Jaa johtopäätös](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome).
+
+![Johtopäätös, jossa nimetään valitut toimikunnan jäsenet](outcome.png)
 
 <!-- translation-section: exporting-ballots -->
 

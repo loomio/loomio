@@ -1,10 +1,10 @@
 ---
 title: STV選挙
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/polls/stv/index.md
+source_revision: 9c60c42fc739483fa23f15d9f34a1e9245518092
+source_file: docs/en/user_manual/polls/stv/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 6c43a75f60922bb6
   when-to-use-stv: e37de389c27f7d87
@@ -19,6 +19,7 @@ sections:
   elected-candidates: a6c3dbb5548c7d41
   round-by-round-details: e4a8789dae29d49e
   exporting-ballots: 582555dd13633bf0
+  share-an-outcome: 6a02aed173b368b9
 generated:
   introduction: 1639cd540d418e77
   when-to-use-stv: 24baa41a8a15b3ad
@@ -33,6 +34,7 @@ generated:
   elected-candidates: 4c52d84e365ac625
   round-by-round-details: aad52ef104c685fb
   exporting-ballots: 23605315cab6091a
+  share-an-outcome: 23531585c4805ad2
 title_source: cd3e1a4cdc2456a6
 title_generated: 834e0eeeefc92e8e
 ---
@@ -166,6 +168,14 @@ Hare
 ![](stv-results.png)
 
 緑色は当選、赤色は脱落、オレンジ色は同点になったラウンドを示します。
+
+<!-- translation-section: share-an-outcome -->
+
+## 結論を共有する
+
+選挙が終了したら、結論を共有します。当選した人の名前と、役割を開始する時期を記載します。結論の使い方については、[結論を共有する](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome)を参照してください。
+
+![当選した委員の名前を記載した結論](outcome.png)
 
 <!-- translation-section: exporting-ballots -->
 

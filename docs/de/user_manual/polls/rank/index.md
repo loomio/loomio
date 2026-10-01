@@ -1,10 +1,10 @@
 ---
 title: Rang
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/polls/rank/index.md
+source_revision: 71554be8e61a76613b0707b8262302c22299a5d0
+source_file: docs/en/user_manual/polls/rank/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 9908dff1f0045200
   when-to-use-rank: f47d22e4968f74dd
@@ -12,6 +12,7 @@ sections:
   set-up-the-poll: 8a5902b708d6e7be
   vote: b089c2c5b7504b5d
   read-the-results: 18fbb0f9a5a866bc
+  share-an-outcome: c9dcebf155d64c65
 generated:
   introduction: 9155c3276b0a0195
   when-to-use-rank: 3250e0073621183f
@@ -19,6 +20,7 @@ generated:
   set-up-the-poll: 39461d4e5bc62e47
   vote: 71ed92154c537d7c
   read-the-results: d32239ed7e99ca0b
+  share-an-outcome: bda484bec5042529
 title_source: a4130d7d2c3a137f
 title_generated: 7186e02bc731a8e5
 ---
@@ -86,3 +88,11 @@ Die Ergebnisse fassen alle Stimmzettel zu einer Rangfolge nach Punkten zusammen.
 In diesem Beispiel liegt die **500-ml-Braunglasflasche** auf Platz eins, gefolgt von der **500-ml-Klarglasflasche** und der **750-ml-Braunglasflasche**. Die Gruppe kann zuerst das bevorzugte Design genauer prüfen und die übrige Reihenfolge als Liste von Alternativen nutzen.
 
 Dieselbe Gesamtpunktzahl kann aus unterschiedlichen Präferenzen entstehen. Sieh dir die einzelnen Stimmzettel und Begründungen an, wenn Optionen nah beieinanderliegen oder die Entscheidung weitreichende Folgen hat.
+
+<!-- translation-section: share-an-outcome -->
+
+## Teile ein Fazit
+
+Teile ein Fazit, wenn die Umfrage geschlossen ist. Gib an, welche Option die Gruppe verfolgen wird und was passiert, wenn sie sich nicht umsetzen lässt. Unter [Teile ein Fazit](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome) erfährst du, wie Fazits funktionieren.
+
+![Ein Fazit, das das Flaschendesign auf dem ersten Rang auswählt](outcome.png)

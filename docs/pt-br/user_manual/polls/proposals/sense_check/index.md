@@ -1,24 +1,26 @@
 ---
 title: Verificação de opinião
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/polls/proposals/sense_check/index.md
+source_revision: 9c60c42fc739483fa23f15d9f34a1e9245518092
+source_file: docs/en/user_manual/polls/proposals/sense_check/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 2336356b9efbde30
   when-to-use-sense-check: c70985229c659d2f
   example-check-a-trial-plan: 8055cad3418b4bb7
   set-up-the-proposal: 8106c7ab17a225e6
   vote: 2440e2649ed1ff05
-  read-the-results: f8f63c908d080f77
+  read-the-results: 9cac8b6f7c7de36f
+  share-an-outcome: b05f9f889a838d47
 generated:
   introduction: a851b2094681e9c6
   when-to-use-sense-check: ae760d7c3ef71d07
   example-check-a-trial-plan: 4173d6d081c93b06
   set-up-the-proposal: b63aa07db6ae98e8
   vote: 5831826d5bc5b82e
-  read-the-results: 40dd48a6819cd393
+  read-the-results: 7f4e07a241237342
+  share-an-outcome: df5b3c6be17f657e
 title_source: e9ac5b767e01ae7b
 title_generated: 806ca3b793a88a0d
 ---
@@ -74,4 +76,10 @@ O gráfico mostra o número e a proporção de votos para cada resposta. Leia as
 
 ![](../proposal_sense_check_results.png)
 
-Publique uma conclusão que resuma as mudanças que o grupo fará ou registre que a ideia está pronta para a próxima etapa da decisão.
+<!-- translation-section: share-an-outcome -->
+
+## Compartilhe uma conclusão
+
+Quando a verificação de opinião terminar, compartilhe uma conclusão. Resuma as mudanças que o grupo fará ou registre que a ideia está pronta para a próxima etapa da decisão. Veja [Compartilhe uma conclusão](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome) para saber como as conclusões funcionam.
+
+![Uma conclusão informando que o plano será revisado antes da análise final](outcome.png)

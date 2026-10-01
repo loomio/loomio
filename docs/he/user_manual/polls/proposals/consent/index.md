@@ -1,24 +1,26 @@
 ---
 title: הַסכָּמָה
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/polls/proposals/consent/index.md
+source_revision: 9c60c42fc739483fa23f15d9f34a1e9245518092
+source_file: docs/en/user_manual/polls/proposals/consent/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 7c6301775b6655f2
   when-to-use-consent: 32ea681182001a9a
   example-start-a-bottle-trial: abc3b93cccfe2471
   set-up-the-proposal: 99fe028ed43b44c2
   vote: 496a824e20def5e2
-  read-the-results: f4db0702619b3992
+  read-the-results: 710fb80144e56ea9
+  share-an-outcome: 8f8b3f701dc4f516
 generated:
   introduction: 3b0f2b9465e0f620
   when-to-use-consent: 733da0f486757be1
   example-start-a-bottle-trial: dc2732883a8be4e8
   set-up-the-proposal: ae5e6db3578b7fe3
   vote: 0341d29b57f75bb0
-  read-the-results: 397a9e8cb8b54202
+  read-the-results: b445a29dc17b1383
+  share-an-outcome: 3042c39284f1e9be
 title_source: d37e0cd00f18a366
 title_generated: 210959582691b501
 ---
@@ -69,4 +71,10 @@ title_generated: 210959582691b501
 
 ![](../proposal_consent_results.png)
 
-יש לפרסם מסקנה שמתעדת את הפעולה שהוסכמה, את אמצעי ההגנה, את האחראים לביצוע ואת המועד שבו הקבוצה תבחן אותה מחדש.
+<!-- translation-section: share-an-outcome -->
+
+## שיתוף מסקנה
+
+עם סגירת ההצעה, יש לשתף מסקנה. יש לתעד את הפעולה שהוסכמה, כיצד נפתרו ההתנגדויות, על מי מוטלת האחריות לביצוע ומתי הקבוצה תבחן אותה מחדש. להסבר על אופן השימוש במסקנות, ניתן לעיין ב[שיתוף מסקנה](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome).
+
+![מסקנה המתעדת התנגדות שנפתרה, תאריך התחלה ומועד לבחינה מחדש](outcome.png)

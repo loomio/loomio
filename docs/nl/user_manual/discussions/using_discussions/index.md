@@ -1,19 +1,19 @@
 ---
 title: Threads gebruiken
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/discussions/using_discussions/index.md
+source_revision: 9c60c42fc739483fa23f15d9f34a1e9245518092
+source_file: docs/en/user_manual/discussions/using_discussions/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: fe8ab54791a49e01
   thread-anatomy: fca9ec9af6718a99
   discussion-context: ebefd7274a307dd0
-  notify-people-about-context-changes: 79d0ed7f94edb858
+  notify-people-about-context-changes: 3fe9320d33fff8f6
   navigation: c0ccc79744ae2c33
   notifications-and-members: ac51f2bbe3642155
   email-notifications-for-this-thread: 69076a17d7457ba0
-  invite-people: 69e5555d18551b0b
+  invite-people: 94ab00a27cec065d
   seen-by: 1d0bfd812ca11782
   notified: 6139bdcaae32a1db
   actions: c015c12999c5be2f
@@ -28,11 +28,11 @@ generated:
   introduction: '08d229ad564360ff'
   thread-anatomy: 368793dd6d7c51e6
   discussion-context: 47e9d58053643024
-  notify-people-about-context-changes: c235b6f823af429e
+  notify-people-about-context-changes: b3f9dbcd9862076e
   navigation: 71bbdea0bf36ec7e
   notifications-and-members: 95f9f19369a04a89
   email-notifications-for-this-thread: '09bd36010070cd22'
-  invite-people: b94e7e7352415a0d
+  invite-people: ab7c831b369c0440
   seen-by: 75c732766a4b938a
   notified: 01f87bfea4994aaf
   actions: e9e5e918e6326258
@@ -113,9 +113,9 @@ Gebruik **Wat is er veranderd?** wanneer je de discussiecontext bewerkt. Vat de 
 
 ![Een discussiecontext bewerken met een samenvatting van de wijziging en ontvangers van meldingen](../notifying_people/thread_editcontext.png)
 
-De samenvatting verschijnt als een item in de thread, zodat deelnemers kunnen zien wat er is veranderd.
+De thread laat zien dat je de context hebt bewerkt. De mensen die je op de hoogte stelt, ontvangen je samenvatting bij de melding.
 
-![Een item op de tijdlijn dat een wijziging in de discussiecontext beschrijft](../notifying_people/thread_edit_comment.png)
+![Een item in de thread dat laat zien dat de discussiecontext is bewerkt](../notifying_people/thread_edit_comment.png)
 
 <!-- translation-section: navigation -->
 
@@ -159,9 +159,13 @@ Selecteer **Mensen uitnodigen** om mensen toe te voegen nadat de thread is gesta
 
 Selecteer een groep of subgroep, voer de namen van afzonderlijke leden in of voer een e-mailadres in om een gast uit te nodigen.
 
+Het veld **Zoek of nodig mensen uit** filtert ook de lijst van mensen die al in de thread zitten. Maak het veld leeg om de volledige lijst weer te tonen en gebruik de paginaknoppen als er meer dan 50 mensen zijn. Nadat je ontvangers hebt geselecteerd, maakt de ledenlijst plaats voor het optionele berichtveld. Nieuwe mensen worden uitgenodigd; mensen die al toegang hebben, ontvangen opnieuw een melding wanneer je **Uitnodigen of opnieuw informeren** selecteert.
+
 ![Venster Mensen uitnodigen met een veld voor namen en e-mailadressen](../notifying_people/thread_invite.png)
 
 Een gast kan deze thread bekijken en eraan deelnemen, maar kan andere discussies in de groep alleen zien als die daarvoor apart is uitgenodigd.
+
+Je kunt de uitlegmeldingen bovenaan het venster sluiten. Loomio onthoudt voor jouw account welke meldingen je hebt gesloten.
 
 ![Een gast uitnodigen via e-mail](../notifying_people/invite_guest.png)
 

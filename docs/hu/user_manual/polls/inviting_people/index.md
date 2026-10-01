@@ -1,18 +1,18 @@
 ---
 title: Meghívás szavazásra
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/polls/inviting_people/index.md
+source_revision: 9c60c42fc739483fa23f15d9f34a1e9245518092
+source_file: docs/en/user_manual/polls/inviting_people/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-30'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 0635cf23fcaaa95b
   invite-people-to-vote-in-a-poll: cfbf5caf71d1d5ca
   invite-guests-or-experts: 0717537bbd36fa07
   invite-a-subgroup-to-vote: 3ac684bdca4b3365
   engage-people-while-a-poll-is-running: 69971de8d56c0a74
-  add-voters-to-the-poll: 904f682bab618ce3
-  remove-people-from-the-poll: d204dd916f5418e2
+  add-voters-to-the-poll: 48f3b4a1edb5a037
+  remove-people-from-the-poll: ceec3f0319728807
   remind-people-to-vote: 177c881cb1b0dfb9
   view-notification-history: 52d930341c048008
   close-early: 0c46e8066719fc2f
@@ -23,8 +23,8 @@ generated:
   invite-guests-or-experts: 53cbe7fd15571c53
   invite-a-subgroup-to-vote: bd8cbfa028e6d487
   engage-people-while-a-poll-is-running: 5bca502a626157b2
-  add-voters-to-the-poll: 478b5e2041137afd
-  remove-people-from-the-poll: 850fdb673956a14d
+  add-voters-to-the-poll: daff0ea419ccf2c8
+  remove-people-from-the-poll: c351d2e5c1521ed9
   remind-people-to-vote: 7dabc1e904e9a85c
   view-notification-history: 990e77dd100fa2b8
   close-early: 77a9a6b5438b5378
@@ -88,7 +88,7 @@ A szavazás alján több lehetőséget találsz arra, hogy kapcsolatban maradj a
 
 Bármikor hozzáadhatsz új szavazókat, akár egy ütemezett szavazás kezdete előtt is.
 
-Válaszd a **Szavazók hozzáadása** lehetőséget, majd add meg a hozzáadni kívánt emberek nevét vagy e-mail-címét.
+Válaszd ki a **Szavazók kezelése** lehetőséget a szavazókezelő ablak megnyitásához. Meghívhatod a csoport összes tagját, hozzáadhatsz tagokat név alapján, vagy vendégeket e-mail-cím alapján, ha a vendégek meghívása engedélyezett. A **Szavazók keresése vagy meghívása** mezőbe írt szöveg a szavazásban már részt vevő személyek listáját is szűri. A legutóbb hozzáadott szavazók jelennek meg először; a teljes listát a lapozógombokkal böngészheted.
 
 Ha a szavazásnak ütemezett kezdési időpontja van, és még nem kezdődött el, a szavazók nem kapnak azonnal értesítést. A szavazás kezdetekor kapnak értesítést.
 
@@ -96,13 +96,15 @@ Ha a szavazásnak ütemezett kezdési időpontja van, és még nem kezdődött e
 
 ### Résztvevők eltávolítása a szavazásból
 
-Válaszd a **Szavazók hozzáadása** lehetőséget, keresd meg a résztvevő nevét, nyisd meg a mellette lévő hárompontos menüt, majd válaszd az **Eltávolítás a javaslatból** lehetőséget.
+Válaszd ki a **Szavazók kezelése** lehetőséget, keresd meg a résztvevő nevét a szavazókezelő ablakban, kattints a mellette lévő kuka gombra, majd erősítsd meg az eltávolítást a **Szavazó eltávolítása** lehetőséggel.
+
+![A szavazó neve melletti kuka gomb a szavazókezelő ablakban](proposal_invite_remove.png)
 
 Névtelen szavazásból nem lehet résztvevőket eltávolítani.
 
 Például ha egy adminisztrátor az igazgatósági tagok nevében hoz létre szavazást, eltávolíthatja magát, ha nincs szavazati joga.
 
-![](proposal_invite_remove.png)
+Szavazati súlyokat használó szavazásoknál a szavazás adminisztrátorai ugyanebben az ablakban [áttekinthetik és szerkeszthetik a szavazati súlyokat](/en/user_manual/polls/weighted_voting).
 
 <!-- translation-section: remind-people-to-vote -->
 

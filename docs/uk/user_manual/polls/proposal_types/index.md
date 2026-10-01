@@ -13,7 +13,6 @@ sections:
   ranked-choice: 31dee409a33369de
   time-poll: 8b3a09b278bd7fde
   stv-election: e8407157d29424e4
-  other-specialized-method: 6b1ca633e613e513
 generated:
   introduction: efe64a93ba40ee79
   simple-poll: b10c7e42d6555b8f
@@ -22,7 +21,6 @@ generated:
   ranked-choice: 5e28fbd54c5ab992
   time-poll: 9ee36dc8e9854261
   stv-election: d2b15704c6a1bb49
-  other-specialized-method: 50f97465870eb65e
 title_source: 996729458535904a
 title_generated: cc2cec558a514895
 ---
@@ -68,9 +66,3 @@ title_generated: cc2cec558a514895
 ## Вибори на СТВ
 
 [Вибори на СТВ](/en/user_manual/polls/stv/) дають учасникам змогу ранжувати кандидатів на пропорційних виборах із кількома переможцями. Використовуйте СТВ, щоб обрати комітет, правління або групу делегатів.
-
-<!-- translation-section: other-specialized-method -->
-
-## Інший спеціалізований метод
-
-У Loomio також є Раунд питань для збору запитань без голосування. Адміністратори групи можуть увімкнути його в розділі [Шаблони опитувань](/en/user_manual/polls/poll_templates/).

@@ -1,24 +1,26 @@
 ---
 title: Véleményfelmérés
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/polls/proposals/sense_check/index.md
+source_revision: 9c60c42fc739483fa23f15d9f34a1e9245518092
+source_file: docs/en/user_manual/polls/proposals/sense_check/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 2336356b9efbde30
   when-to-use-sense-check: c70985229c659d2f
   example-check-a-trial-plan: 8055cad3418b4bb7
   set-up-the-proposal: 8106c7ab17a225e6
   vote: 2440e2649ed1ff05
-  read-the-results: f8f63c908d080f77
+  read-the-results: 9cac8b6f7c7de36f
+  share-an-outcome: b05f9f889a838d47
 generated:
   introduction: ecede7525409cf12
   when-to-use-sense-check: 2607dc221618eba7
   example-check-a-trial-plan: 6b9e78892979afac
   set-up-the-proposal: 7aaf588c3d80d65f
   vote: 39c9a398ccdd1317
-  read-the-results: 4a29c1fa52994406
+  read-the-results: 296f7f0e36bc034a
+  share-an-outcome: 6d89f5d0333d3bf9
 title_source: e9ac5b767e01ae7b
 title_generated: 49e3acb955529d9e
 ---
@@ -70,8 +72,14 @@ A résztvevők kiválasztják a jelenlegi véleményüket legjobban kifejező v�
 
 ## Nézd meg az eredményeket
 
-A diagram megmutatja az egyes válaszokra leadott szavazatok számát és arányát. Az indoklásokat is olvasd el: egy megalapozott aggállyal akkor is foglalkozni kellhet, ha a legtöbben a **Jól néz ki** választ választják.
+A diagram megmutatja az egyes válaszokra leadott szavazatok számát és arányát. A szavazatok megoszlása mellett az indoklásokat is olvasd el: egy megalapozott aggállyal akkor is foglalkozni kellhet, ha a legtöbben a **Jól néz ki** választ választják.
 
 ![](../proposal_sense_check_results.png)
 
-Tegyél közzé egy következtetést, amely összefoglalja, milyen változtatásokat végez a csoport, vagy rögzíti, hogy az ötlet készen áll a döntési folyamat következő szakaszára.
+<!-- translation-section: share-an-outcome -->
+
+## Oszd meg a következtetést
+
+Amikor a véleményfelmérés lezárul, ossz meg egy következtetést. Foglald össze, milyen változtatásokat végez a csoport, vagy rögzítsd, hogy az ötlet készen áll a döntési folyamat következő szakaszára. A következtetések működéséről az [Oszd meg a következtetést](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome) részben olvashatsz.
+
+![Egy következtetés, amely rögzíti, hogy a tervet a végső áttekintés előtt átdolgozzák](outcome.png)

@@ -1,18 +1,18 @@
 ---
 title: הזמנה להצביע
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/polls/inviting_people/index.md
+source_revision: 9c60c42fc739483fa23f15d9f34a1e9245518092
+source_file: docs/en/user_manual/polls/inviting_people/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 0635cf23fcaaa95b
   invite-people-to-vote-in-a-poll: cfbf5caf71d1d5ca
   invite-guests-or-experts: 0717537bbd36fa07
   invite-a-subgroup-to-vote: 3ac684bdca4b3365
   engage-people-while-a-poll-is-running: 69971de8d56c0a74
-  add-voters-to-the-poll: 904f682bab618ce3
-  remove-people-from-the-poll: d204dd916f5418e2
+  add-voters-to-the-poll: 48f3b4a1edb5a037
+  remove-people-from-the-poll: ceec3f0319728807
   remind-people-to-vote: 177c881cb1b0dfb9
   view-notification-history: 52d930341c048008
   close-early: 0c46e8066719fc2f
@@ -23,8 +23,8 @@ generated:
   invite-guests-or-experts: 598657a292e380f4
   invite-a-subgroup-to-vote: 3e9080bcdde43e85
   engage-people-while-a-poll-is-running: f98f2cd6d40bcade
-  add-voters-to-the-poll: c679f27ee5ebde3b
-  remove-people-from-the-poll: a6a8add5c037370b
+  add-voters-to-the-poll: d9b900130bba8206
+  remove-people-from-the-poll: ac255843264df29d
   remind-people-to-vote: 5802236c2681348e
   view-notification-history: bbf5a52247ad9132
   close-early: 382ae63c4d4ad6ef
@@ -88,7 +88,7 @@ title_generated: 74acfaefbe1bab8a
 
 ניתן להוסיף אנשים לסקר בכל עת, גם לפני תחילת ההצבעה בסקר שנקבע לו מועד פתיחה.
 
-יש לבחור **הוסף מצביעים**, ולאחר מכן להזין את השמות או כתובות האימייל של האנשים שרוצים להוסיף.
+יש לבחור **ניהול מצביעים** כדי לפתוח את חלון ניהול המצביעים. ניתן להזמין את כל חברי הקבוצה, להוסיף חברים לפי שם או להוסיף אורחים לפי כתובת אימייל, אם מותר להזמין אורחים. הקלדה בשדה **מצא או הזמן מצביעים** מסננת גם את האנשים שכבר נמצאים בסקר. המצביעים שנוספו לאחרונה מופיעים ראשונים; ניתן להשתמש בפקדי העימוד כדי לעיין ברשימה המלאה.
 
 אם נקבע לסקר מועד פתיחה וההצבעה טרם החלה, המצביעים לא יקבלו התראה מיד. ההתראה תישלח כשההצבעה תיפתח.
 
@@ -96,13 +96,15 @@ title_generated: 74acfaefbe1bab8a
 
 ### הסרת אנשים מהסקר
 
-יש לבחור **הוסף מצביעים**, למצוא את שם האדם, לפתוח את תפריט שלוש הנקודות שלצדו ולבחור **הסר מההצעה**.
+יש לבחור **ניהול מצביעים**, למצוא את שם האדם בחלון ניהול המצביעים, לבחור בכפתור פח האשפה שלצדו ולאשר באמצעות **הסר את הבוחר**.
+
+![כפתור פח האשפה לצד שם של מצביע בחלון ניהול המצביעים](proposal_invite_remove.png)
 
 לא ניתן להסיר אנשים מסקר אנונימי.
 
-לדוגמה, מנהל מערכת שיצר סקר בשם חברי ועד יכול להסיר את עצמו אם אין לו הרשאה להצביע.
+לדוגמה, בעת יצירת סקר בשם חברי ועד במסגרת תפקיד ניהול, ניתן להסיר את עצמך מהסקר אם אין הרשאה להצביע.
 
-![](proposal_invite_remove.png)
+בסקרים המשתמשים במשקלי קולות, אותו חלון מאפשר להנהלת הסקר [לבדוק ולערוך את משקלי הקולות](/en/user_manual/polls/weighted_voting).
 
 <!-- translation-section: remind-people-to-vote -->
 
