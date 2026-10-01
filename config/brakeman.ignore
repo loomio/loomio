@@ -187,6 +187,10 @@
     {
       "fingerprint": "8f74c254b8c5a6399b0de5c1b1cb9eedac1affce891bc0eeb11b4d621540f1f4",
       "note": "Reviewed 2026-09-06 — every maintenance lock identifier is escaped with the PostgreSQL adapter's quote_table_name before joining. All callers supply code-defined table lists; the lock mode and NOWAIT clause are fixed, with no request-supplied SQL (SQL Injection @ app/services/cleanup_service.rb#with_write_lock) Re-reviewed 2026-09-10 after removing retired table references: SQL and trusted identifier sources are unchanged."
+    },
+    {
+      "fingerprint": "e56c5f62f1e30b3037c85a3f72e8e07a64e0f62a8984c5d2cce346afca2349e0",
+      "note": "Reviewed 2026-10-02 — the codex translator runs from rake tasks and docs scripts only. Open3 receives an argument array, so no shell parses it; the model and reasoning effort come from the operator's DOCS_TRANSLATOR_* environment variables and the prompt goes to stdin. No request data reaches the command (Command Injection @ lib/codex_translator.rb#call)"
     }
   ],
   "updated": "2026-09-06",
