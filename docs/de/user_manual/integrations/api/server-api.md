@@ -1,10 +1,10 @@
 ---
 title: Server-API
-source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
+source_revision: c27ee3b193231816878f1c074ff9fc2a086a88c0
 source_file: docs/en/user_manual/integrations/api/server-api.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-02'
 sections:
   introduction: a357cdc2bfc0223e
   authentication: cbabcc874f053455
@@ -26,25 +26,25 @@ sections:
   examples-6: 71ae30577730b261
   sso-profile-sync-settings: 416144004d040e4f
 generated:
-  introduction: feda11f0de69bf91
-  authentication: 1d0ce4362fc71a29
+  introduction: 171b9bca49cbdf88
+  authentication: cc8bfd594a0cca41
   user-object: 3adb7cc3e9eb665d
   list-users: e4c36202ce0f8e31
-  example: 6c89ecaebcc2a346
+  example: a6bb2cb102a34c58
   show-user: 61043d7736eb713b
-  examples: 874e62de2a395328
-  update-user: d69c0fdb895716ef
+  examples: 9303eb254d92f61d
+  update-user: a0cb72cd1a4b3864
   params: 29afbab19704dc95
   examples-2: de7ff6e2cf8e9892
-  deactivate-user: 20ef93172b87112d
-  examples-3: 74301dfc2d5c51ee
+  deactivate-user: 27525b7ca5fa6960
+  examples-3: 265efd99c1a016fa
   reactivate-user: f21cdfc42a35db1b
   examples-4: 124a283eb08c21ed
-  redact-user: 4dae6b90566243f1
+  redact-user: 5a31537db5283bb7
   examples-5: 8d9b3f6418433548
-  delete-user: 8e23864f810ff128
+  delete-user: 715316159c2a7f8b
   examples-6: d11b984e005416bf
-  sso-profile-sync-settings: 6bcf4fd55174cc40
+  sso-profile-sync-settings: f77b2da54455de67
 title_source: 370e81eb20eece44
 title_generated: 110d7181b51daf50
 ---
@@ -53,15 +53,15 @@ title_generated: 110d7181b51daf50
 
 # Dokumentation der Loomio Server-API
 
-<!-- seo-description: Verwalte mit der Loomio Server-API Benutzerkonten auf einer selbst gehosteten Loomio-Installation. -->
+<!-- seo-description: Nutze die Loomio Server-API, um Benutzerkonten auf einer selbst gehosteten Loomio-Installation zu verwalten. -->
 
-`/api/b3` ist für Vorgänge auf Serverebene vorgesehen. Verwende `/api/b2` für benutzerbezogene Aktionen, die über ein Loomio-Benutzerkonto ausgeführt werden.
+`/api/b3` ist für Vorgänge auf Serverebene vorgesehen. Nutze `/api/b2` für Aktionen, die du mit einem Loomio-Benutzerkonto ausführst.
 
 <!-- translation-section: authentication -->
 
 ## Authentifizierung
 
-Setze `B3_API_KEY` auf einen geheimen Wert mit mehr als 16 Zeichen.
+Setze `B3_API_KEY` auf einen geheimen Schlüssel mit mehr als 16 Zeichen.
 
 Sende den Schlüssel als Bearer-Token:
 
@@ -69,7 +69,7 @@ Sende den Schlüssel als Bearer-Token:
 curl -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/b3/users
 ```
 
-Sende Zugangsdaten ausschließlich im `Authorization`-Header. API-Schlüssel in URL-Abfrageparametern oder im Anfragekörper werden abgelehnt.
+Sende Zugangsdaten ausschließlich im `Authorization`-Header. API-Schlüssel in Abfragezeichenfolgen oder im Anfragetext werden abgelehnt.
 
 <!-- translation-section: user-object -->
 
@@ -113,7 +113,7 @@ Liste alle Benutzerkonten auf der Loomio-Installation auf.
 curl -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/b3/users
 ```
 
-Gibt Folgendes zurück:
+Gibt zurück:
 
 ```json
 {
@@ -147,7 +147,7 @@ Anhand der externen Identität:
 curl -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/b3/users/identity/oauth/external-123
 ```
 
-Gibt Folgendes zurück:
+Gibt zurück:
 
 ```json
 {
@@ -159,7 +159,7 @@ Gibt Folgendes zurück:
 
 ## Benutzerkonto aktualisieren
 
-Aktualisiere die Profilfelder eines Benutzerkontos, das du anhand seiner Loomio-Benutzer-ID oder externen Identität findest.
+Aktualisiere die Profilfelder eines Benutzerkontos, das du anhand seiner Loomio-Benutzer-ID oder externen Identität gefunden hast.
 
 `PATCH /api/b3/users/:id`
 
@@ -211,7 +211,7 @@ Gibt das aktualisierte Benutzerkonto zurück:
 
 ## Benutzerkonto deaktivieren
 
-Deaktiviere ein Benutzerkonto, das du anhand seiner Loomio-Benutzer-ID oder externen Identität findest.
+Deaktiviere ein Benutzerkonto, das du anhand seiner Loomio-Benutzer-ID oder externen Identität gefunden hast.
 
 `POST /api/b3/users/:id/deactivate`
 
@@ -233,7 +233,7 @@ Anhand der externen Identität:
 curl -X POST -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/b3/users/identity/oauth/external-123/deactivate
 ```
 
-Gibt Folgendes zurück:
+Gibt zurück:
 
 ```json
 {
@@ -279,9 +279,9 @@ Rückgabe:
 
 <!-- translation-section: redact-user -->
 
-## Personenbezogene Daten entfernen
+## Personenbezogene Kontodaten entfernen
 
-Beim Entfernen personenbezogener Daten bleiben die Kommentare und andere von der Person erstellte Inhalte in ihren Gruppen erhalten. Bekannte Informationen, die die Person identifizieren können, werden jedoch entfernt, darunter Name, Kurzbiografie, Profilfoto, E-Mail-Adresse, Anmeldedaten, Identitäten und aktive Sitzungen.
+Dabei bleiben die Kommentare und andere von der Person erstellte Inhalte in ihren Gruppen erhalten. Bekannte personenbezogene Daten wie Name, Kurzbiografie, Profilfoto, E-Mail-Adresse, Anmeldedaten, Identitäten und aktive Sitzungen werden jedoch entfernt.
 
 Dies ist die empfohlene Methode, um eine Person aus Loomio zu entfernen.
 
@@ -317,9 +317,9 @@ Rückgabe:
 
 ## Benutzerkonto löschen
 
-Beim Löschen werden das Benutzerkonto und die von der Person erstellten Datensätze entfernt. Kommentare werden aus Threads und Stimmen aus Abstimmungen entfernt. Über Datenbankverknüpfungen können auch Gruppen, Diskussionen, Abstimmungen und andere von der Person erstellte Datensätze gelöscht werden.
+Das Löschen entfernt das Benutzerkonto und die von der Person erstellten Datensätze. Kommentare werden aus Threads und Stimmen aus Abstimmungen entfernt. Gruppen, Diskussionen, Abstimmungen und andere von der Person erstellte Datensätze können durch Datenbankverknüpfungen ebenfalls gelöscht werden.
 
-Dabei werden umfangreiche Daten gelöscht. Es wird dringend empfohlen, stattdessen die personenbezogenen Daten zu entfernen.
+Dabei werden umfangreiche Daten gelöscht. Es wird dringend empfohlen, stattdessen die personenbezogenen Kontodaten zu entfernen.
 
 `DELETE /api/b3/users/:id`
 
@@ -371,6 +371,6 @@ LOOMIO_DISABLE_EDIT_USER_PROFILE=1
 
 Personen können weiterhin lokale Loomio-Felder wie `short_bio` und `location` bearbeiten.
 
-`LOOMIO_SSO_UPDATE_USER_PROFILE_ON_LOGIN=1` aktualisiert `name` und `email` anhand der SSO-Anmeldedaten. Lass die Einstellung auskommentiert oder nicht gesetzt, wenn ausschließlich ein externes Synchronisierungsskript diese Felder aktualisieren soll.
+`LOOMIO_SSO_UPDATE_USER_PROFILE_ON_LOGIN=1` aktualisiert `name` und `email` anhand der SSO-Anmeldedaten. Lass die Zeile auskommentiert oder die Variable ungesetzt, wenn ausschließlich ein externes Synchronisierungsskript diese Aktualisierungen vornehmen soll.
 
-`LOOMIO_SSO_FORCE_USER_ATTRS` funktioniert weiterhin bei bestehenden Installationen. Die Einstellung verhindert die Bearbeitung durch die Personen selbst und aktualisiert `name` und `email` bei der SSO-Anmeldung.
+`LOOMIO_SSO_FORCE_USER_ATTRS` funktioniert weiterhin für bestehende Installationen. Die Einstellung verhindert sowohl die Bearbeitung durch die Personen selbst als auch die Aktualisierung von `name` und `email` bei der SSO-Anmeldung.
