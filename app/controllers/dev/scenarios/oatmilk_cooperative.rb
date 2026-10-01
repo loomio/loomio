@@ -427,17 +427,39 @@ module Dev::Scenarios::OatmilkCooperative
     end
   end
 
+  # The comment, in another language, with its translation into the language
+  # being captured, so translated manual screenshots need no live translation
+  # service.
+  MANUAL_TRANSLATED_COMMENT = {
+    'en' => 'I can ask three cafes to track how many bottles are returned each week.',
+    'es' => 'Puedo pedir a tres cafeterías que registren cuántas botellas se devuelven cada semana.',
+    'pt_BR' => 'Posso pedir a três cafés que registrem quantas garrafas são devolvidas por semana.',
+    'fr' => 'Je peux demander à trois cafés de noter combien de bouteilles sont rapportées chaque semaine.',
+    'de' => 'Ich kann drei Cafés bitten zu erfassen, wie viele Flaschen jede Woche zurückgegeben werden.',
+    'it' => 'Posso chiedere a tre caffè di registrare quante bottiglie vengono restituite ogni settimana.',
+    'nl_NL' => 'Ik kan drie cafés vragen bij te houden hoeveel flessen er elke week worden teruggebracht.',
+    'ru' => 'Я могу попросить три кафе отмечать, сколько бутылок возвращают каждую неделю.',
+    'uk' => 'Я можу попросити три кав’ярні відстежувати, скільки пляшок повертають щотижня.',
+    'be' => 'Я магу папрасіць тры кавярні адзначаць, колькі бутэлек вяртаюць кожны тыдзень.',
+    'fi' => 'Voin pyytää kolmea kahvilaa seuraamaan, montako pulloa palautetaan joka viikko.',
+    'hu' => 'Megkérhetek három kávézót, hogy kövessék, hetente hány üveget hoznak vissza.',
+    'he' => 'אפשר לבקש משלושה בתי קפה לעקוב אחרי מספר הבקבוקים שמוחזרים בכל שבוע.',
+    'ja' => '3つのカフェに、毎週返却されるボトルの数を記録してもらえます。'
+  }.freeze
+
   def setup_manual_oatmilk_translated_comment
     _group, coordinator, discussion = create_manual_oatmilk_cooperative
+    target = Rails.env.test? ? ENV.fetch('DOCS_SCREENSHOT_APP_LOCALE', 'en') : 'en'
+    source = target == 'es' ? 'pt_BR' : 'es'
     comment = discussion.comments.first
     comment.update_columns(
-      body: 'Puedo pedir a tres cafeterias que registren cuantas botellas se devuelven cada semana.',
-      content_locale: 'es'
+      body: MANUAL_TRANSLATED_COMMENT.fetch(source),
+      content_locale: TranslationService.locale_for_google(source)
     )
     Translation.create!(
       translatable: comment,
-      language: 'en',
-      fields: {'body' => 'I can ask three cafes to track how many bottles are returned each week.'}
+      language: TranslationService.locale_for_google(target),
+      fields: {'body' => MANUAL_TRANSLATED_COMMENT.fetch(target, MANUAL_TRANSLATED_COMMENT.fetch('en'))}
     )
 
     sign_in coordinator

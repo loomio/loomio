@@ -32,7 +32,12 @@ module.exports = function(test, {outputDir} = {}) {
     if (process.env.DOCS_SCREENSHOT_APP_LOCALE) {
       // A completed Vue boot does not guarantee its asynchronous locale import
       // has finished. Never save English UI under a translated filename.
-      test.waitForElementPresent(`html[lang="${process.env.DOCS_SCREENSHOT_APP_LOCALE}"]`, 20000);
+      // Server-rendered pages such as email previews have no app to wait for.
+      test.execute(function() { return !!document.querySelector('.app-is-booted'); }, [], function(result) {
+        if (result.value) {
+          test.waitForElementPresent(`html[lang="${process.env.DOCS_SCREENSHOT_APP_LOCALE}"]`, 20000);
+        }
+      });
     }
     test.execute(function(showFlash) {
       let style = document.getElementById('manual-screenshot-styles');

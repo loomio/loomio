@@ -6,7 +6,7 @@ function openTemplates(page) {
   page.loadPath('setup_manual_oatmilk_formatting?key=0');
   page.expectText('.context-panel__heading', 'Returnable bottles for cafe customers');
   page.clickAndWait('.activity-panel__add-poll', '.decision-tools-card__poll-types');
-  page.expectText('.decision-tools-card__poll-types', 'Consent');
+  page.waitFor('.decision-tools-card__template--consent');
 }
 
 function openProposalForm(page) {
