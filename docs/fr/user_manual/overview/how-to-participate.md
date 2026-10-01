@@ -1,10 +1,10 @@
 ---
 title: Comment participer
-source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
+source_revision: c27ee3b193231816878f1c074ff9fc2a086a88c0
 source_file: docs/en/user_manual/overview/how-to-participate.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-02'
 sections:
   introduction: 4337bfc044fc30d1
   comment: 66cebed9d4121cb8
@@ -17,16 +17,16 @@ sections:
   results: 6fe0d5a60acc75eb
   outcome: 8cb16ab9afb55fb8
 generated:
-  introduction: 96564d4c01ca0df5
+  introduction: bfcba613290d29c4
   comment: 06ded6e97a0a0329
-  reply-to-a-comment: de192baa90a46bf2
+  reply-to-a-comment: d3cb23ce2c4743dc
   get-someone-s-attention: 479cec1a1c2e6535
-  reactions: 74e5179c64884cb3
-  vote: 425794db4f1980f4
-  state-a-reason: c5720399b8cfcabf
-  change-your-vote: 117d5cc04b1e0d51
-  results: 7e263f21cafba022
-  outcome: 12a0586130b474fe
+  reactions: bdb104dc9b17a7df
+  vote: de46698aa8dcf2ef
+  state-a-reason: ff327dfaf27af88c
+  change-your-vote: 19eabbb5f89b96a1
+  results: 51d67459cc7d7039
+  outcome: ed3bb56ce65deb43
 title_source: a7854841fbd99ee4
 title_generated: 3f3e1b233ce6e07b
 ---
@@ -35,9 +35,9 @@ title_generated: 3f3e1b233ce6e07b
 
 # Comment participer
 
-Une fois connecté à un groupe Loomio auquel vous avez été invité, vous pouvez participer à une discussion ou à une décision sur Loomio.
+Une fois connecté à un groupe Loomio auquel vous avez été invité, vous pouvez participer à une discussion ou à une décision sur Loomio.  
 
-Découvrez ci-dessous comment écrire un commentaire dans un fil et voter dans un sondage.
+Découvrez ci-dessous comment écrire un commentaire dans un fil et comment voter dans un sondage.
 
 <!-- translation-section: comment -->
 
@@ -53,7 +53,7 @@ Une fois votre texte rédigé, utilisez **Publier le commentaire** pour le publi
 
 ### Répondre à un commentaire
 
-Vous pouvez répondre au commentaire d’une personne en cliquant sur l’icône de réponse située sous le commentaire.
+Vous pouvez répondre au commentaire d’une personne en cliquant sur l’icône de réponse sous le commentaire.
 
 Votre réponse est publiée dans le fil et une notification par e-mail est envoyée à l’auteur du commentaire.
 
@@ -71,7 +71,7 @@ Vous pouvez notifier des personnes lorsque vous écrivez un commentaire.
 
 ### Réactions
 
-Réagir à un commentaire permet d’encourager son auteur et de lui indiquer ce que vous en pensez. C’est une façon rapide de participer, sans écrire de texte ni envoyer d’e-mail. Cliquez sur l’icône d’émoji souriant située sous un commentaire pour ajouter une réaction sous forme d’émoji.
+Réagir à un commentaire permet d’encourager son auteur et de lui faire savoir ce que vous en pensez. C’est une façon rapide de participer qui ne nécessite aucun texte et n’envoie pas d’e-mail. Cliquez sur l’icône d’émoji souriant sous un commentaire pour ajouter une réaction.
 
 ![](comment_reaction.png#width-90)
 
@@ -83,9 +83,9 @@ Vous pouvez recevoir une invitation à voter dans un sondage par e-mail ou par u
 
 Pour voter, cliquez ou appuyez sur l’icône de votre choix.
 
-Il existe plusieurs types de sondages. L’exemple ci-dessous présente une proposition classique avec les options de vote **D’accord**, **Abstention** ou **Désaccord**. D’autres options peuvent être disponibles.
+Il existe plusieurs types de sondages. L’exemple ci-dessous présente une proposition classique avec les options de vote **D’accord**, **S’abstenir** ou **Désaccord**. D’autres options peuvent être disponibles.
 
-Lisez le sondage et les éventuels fichiers joints, puis votez en sélectionnant une des options.
+Lisez le sondage et les éventuelles pièces jointes, puis votez en sélectionnant l’une des options.
 
 ![](proposal_example.png#width-90)
 
@@ -93,7 +93,7 @@ Lisez le sondage et les éventuels fichiers joints, puis votez en sélectionnant
 
 ### Indiquer une raison
 
-Lorsque vous votez, vous pouvez aussi indiquer une **Raison** pour expliquer votre choix. Cette étape est facultative.
+Lorsque vous votez, vous pouvez également indiquer une **Raison** pour expliquer votre vote. Cela reste facultatif.
 
 ![](vote_reason.png#width-90)
 
@@ -105,9 +105,9 @@ Vous pouvez **modifier votre vote** jusqu’à la clôture de la proposition.
 
 ![](vote_change.png#width-90)
 
-Plusieurs raisons peuvent vous amener à modifier votre vote. Par exemple, de nouvelles informations peuvent vous conduire à reconsidérer votre décision et à modifier votre vote.
+Vous pouvez souhaiter modifier votre vote pour plusieurs raisons. Par exemple, de nouvelles informations peuvent vous amener à revoir votre décision et à modifier votre vote.
 
-Vous pouvez également indiquer une raison pour expliquer pourquoi vous avez modifié votre vote.
+Vous pouvez à nouveau indiquer une raison pour expliquer pourquoi vous avez modifié votre vote.
 
 ![](vote_edit.png#width-90)
 
@@ -115,13 +115,13 @@ Vous pouvez également indiquer une raison pour expliquer pourquoi vous avez mod
 
 ### Résultats
 
-Les résultats de la proposition sont actualisés à mesure que les personnes votent, ce qui vous permet de suivre la tendance des votes.
+Les résultats de la proposition sont mis à jour au fur et à mesure des votes, ce qui vous permet de suivre leur évolution.
 
 ![](proposal_results.png#width-90)
 
-Lorsqu’une proposition suscite des désaccords, il est courant de voir des résultats partagés. Cela ne signifie toutefois pas que la proposition a échoué.
+Lorsqu’une proposition suscite des désaccords, il est courant de voir des résultats partagés. Cela ne signifie toutefois pas que la proposition a échoué.  
 
-Les nouvelles informations apportées au cours de la proposition permettent souvent de formuler une meilleure proposition, qui a davantage de chances d’être adoptée.
+Les nouvelles informations apportées pendant le vote permettent souvent de formuler une meilleure proposition, qui a davantage de chances d’être adoptée.
 
 <!-- translation-section: outcome -->
 
@@ -129,6 +129,6 @@ Les nouvelles informations apportées au cours de la proposition permettent souv
 
 Lorsque la proposition est clôturée, son auteur est invité à indiquer la **Conclusion**.
 
-Cette dernière étape permet de consigner la décision prise et d’informer tout le monde des prochaines étapes.
+Cette dernière étape permet de consigner la décision prise et d’informer tout le monde de la suite.
 
 ![](proposal_outcome.png#width-90)

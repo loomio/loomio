@@ -1,10 +1,10 @@
 ---
 title: Sondages
-source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
+source_revision: c27ee3b193231816878f1c074ff9fc2a086a88c0
 source_file: docs/en/user_manual/polls/proposal_types/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-02'
 sections:
   introduction: 286e04a878e4c1d9
   simple-poll: d362d91b19914c39
@@ -14,13 +14,13 @@ sections:
   time-poll: 8b3a09b278bd7fde
   stv-election: e8407157d29424e4
 generated:
-  introduction: ebe21808fead9e79
-  simple-poll: 71f618c9babb5721
+  introduction: a805f0ddc41ec59d
+  simple-poll: e7f1c61ea64e9fd9
   score-poll: d8600f0c6bcb97c2
-  dot-vote: d156c5da26dfb6a4
+  dot-vote: 2435f2a6211d4c3c
   ranked-choice: 3e95298fdbfee9ee
   time-poll: 83e39b8ff7d13b8c
-  stv-election: 7b72364aaab81e49
+  stv-election: 358a384e0beb85f2
 title_source: 996729458535904a
 title_generated: bbe617b2a20fb27b
 ---
@@ -29,13 +29,13 @@ title_generated: bbe617b2a20fb27b
 
 # Sondages
 
-Les sondages recueillent des choix, des notes, des répartitions de points, des classements, des disponibilités ou des bulletins de vote pour une élection. Choisissez la méthode de vote selon ce que les participants doivent exprimer et la manière dont vous comptez utiliser le résultat. Utilisez une [proposition](/en/user_manual/polls/proposals/) lorsque les participants doivent se prononcer sur un énoncé ou une ligne d’action.
+Les sondages recueillent des sélections, des notes, des répartitions de points, des classements, des disponibilités ou des bulletins de vote. Choisissez la méthode de vote en fonction de ce que les participants doivent exprimer et de la manière dont vous comptez utiliser le résultat. Utilisez une [proposition](/en/user_manual/polls/proposals/) lorsque les personnes doivent se prononcer sur un énoncé ou une action envisagée.
 
 <!-- translation-section: simple-poll -->
 
 ## Sondage simple
 
-[Choisir](/en/user_manual/polls/choose/) permet aux participants de sélectionner une ou plusieurs options. Utilisez cette méthode pour trouver l’option la plus populaire ou établir une présélection.
+[Choisir](/en/user_manual/polls/choose/) permet aux participants de sélectionner une ou plusieurs options. Utilisez cette méthode pour trouver l’option la plus populaire ou établir une liste restreinte.
 
 <!-- translation-section: score-poll -->
 
@@ -47,7 +47,7 @@ Les sondages recueillent des choix, des notes, des répartitions de points, des 
 
 ## Vote à points
 
-[Répartir](/en/user_manual/polls/allocate/) donne à chaque participant un nombre fixe de points à distribuer. Utilisez cette méthode pour identifier les priorités lorsque privilégier une option signifie accorder moins d’attention ou de ressources à une autre.
+[Répartir](/en/user_manual/polls/allocate/) donne à chaque participant un nombre fixe de points à distribuer. Utilisez cette méthode pour déterminer les priorités lorsque choisir une chose signifie accorder moins d’attention ou de ressources à une autre.
 
 <!-- translation-section: ranked-choice -->
 
@@ -65,4 +65,4 @@ Le [sondage horaire](/en/user_manual/polls/meeting_polls/) permet aux participan
 
 ## Élection STV
 
-Les [élections STV](/en/user_manual/polls/stv/) permettent aux participants de classer les candidats dans une élection proportionnelle à plusieurs sièges. Utilisez le système STV pour élire un comité, un conseil d’administration ou un groupe de délégués.
+Les [élections STV](/en/user_manual/polls/stv/) permettent aux participants de classer les candidats dans une élection proportionnelle à plusieurs sièges. Utilisez le STV pour élire un comité, un conseil d’administration ou un groupe de délégués.

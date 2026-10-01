@@ -1,10 +1,10 @@
 ---
 title: Visite rapide
-source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
+source_revision: c27ee3b193231816878f1c074ff9fc2a086a88c0
 source_file: docs/en/user_manual/overview/orientation.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-02'
 sections:
   introduction: bc1003860d699a8a
   group-page: 1592d5e9a232df4e
@@ -16,10 +16,10 @@ sections:
 generated:
   introduction: 59ee6bb0ad1eed69
   group-page: 13cfcd25b08f7bd2
-  tabs: 3799d10238769d47
+  tabs: 8e633e7902a31277
   sidebar: a90a7c6aa5a23a05
   user-settings: 441510e7051415a9
-  notifications: 83a1657cb5739a88
+  notifications: 37a38746db97a489
   what-to-do-next: 213b0f6a819f21c8
 title_source: c41a33370cd580dd
 title_generated: 0d9bc00b1374a7b5
@@ -47,11 +47,11 @@ Les onglets sous la description du groupe donnent accès aux éléments suivants
 
 **Discussions** - Les fils de discussion du groupe et l’activité récente.
 
-**Sondages** - La liste des sondages en cours dans votre groupe.
+**Sondages** - La liste des sondages actifs dans votre groupe.
 
 **Membres** - Les personnes qui appartiennent au groupe.
 
-**Fichiers** - Les documents et autres fichiers joints dans le groupe. Cet onglet rassemble les fichiers des contextes de discussion, des commentaires, des propositions et des sondages, pour vous permettre de retrouver un document sans avoir à vous souvenir de l’endroit où il a été joint.
+**Fichiers** - Les documents et autres fichiers joints dans l’ensemble du groupe. Cet onglet rassemble les fichiers joints aux contextes des discussions, aux commentaires, aux propositions et aux sondages, pour vous permettre de retrouver un document sans vous souvenir de l’endroit où il a été joint.
 
 Consultez [Trouver du contenu](/en/user_manual/overview/finding-content) pour obtenir de l’aide sur la recherche, les filtres, les tags, les favoris et les discussions non lues.
 
@@ -79,11 +79,11 @@ Utilisez ce menu pour modifier votre profil, changer les paramètres de notifica
 
 ## Notifications
 
-Le bouton en forme de cloche en haut à droite ouvre vos notifications dans l’application. Un badge apparaît lorsque vous avez des notifications que vous n’avez pas consultées.
+Le bouton en forme de cloche en haut à droite ouvre vos notifications dans l’application. Un badge apparaît lorsque vous avez des notifications que vous n’avez pas encore consultées.
 
 ![](../users/email_settings/in_app_notifications.png)
 
-Consultez [Notifications](/en/user_manual/users/email_settings) pour en savoir plus sur les notifications dans l’application, les préférences d’envoi par e-mail et les paramètres de notification des groupes et des discussions.
+Consultez [Notifications](/en/user_manual/users/email_settings) pour en savoir plus sur les notifications dans l’application, les préférences d’e-mail et les paramètres de notification des groupes et des discussions.
 
 <!-- translation-section: what-to-do-next -->
 
