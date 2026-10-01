@@ -177,7 +177,7 @@ nl_NL:
         proposal: Voorstel
         count: Aantal
         choose: Kies
-        allocate: Toekennen
+        allocate: Verdelen
         score: Score
         rank: Volgorde
         time: Tijdpeiling
@@ -484,7 +484,7 @@ nl_NL:
       not_invited: Niet uitgenodigd
       please_respond: Graag antwoorden
       time_zone: "(Tijden getoond in %{zone})"
-      undecided_members: Leden die nog onbeslist zijn (%{count})
+      undecided_members: Leden die nog niet hebben gestemd (%{count})
       undecided_visitors: Onbesliste gasten (%{count})
       more_undecided: "%{count} meer..."
       vote_now: Stem nu
@@ -654,15 +654,15 @@ nl_NL:
       process_subtitle_v3: Vraag kiezers om aan te geven in hoeverre ze elke optie steunen
     dot_vote:
       process_subtitle: Wijs een budget van punten toe om prioriteiten te onthullen
-      process_introduction: <p>Puntstemmen is handig voor groepen die een beperkte bron aan een aantal opties proberen toe te wijzen. Het gaat verder dan een simpele peiling, omdat het deelnemers helpt beseffen dat er een beperking is bij het selecteren van opties.</p><p> Deelnemers krijgen elk een vast aantal stippen. Jij bepaalt hoeveel.</p><p> Ze plaatsen stippen naast de gepresenteerde opties die ze leuk vinden. Deelnemers kunnen al hun stippen op één optie plaatsen of verspreid over meerdere opties.</p><p> Bij het toewijzen van stippen is het mogelijk dat ze de stippenbudgetlimiet overschrijden. Daarom worden deelnemers aangemoedigd om zorgvuldig na te denken over hoe ze hun stippen uitgeven.</p><p> De opties met de meeste stippen 'winnen'. De resultatentabel biedt aanvullende gegevens om u te helpen bij het analyseren van de resultaten.</p><ul><li><p> % van de punten</p></li><li><p> Punten</p></li><li><p> Gemeen</p></li><li><p> Kiezers</p></li></ul><p> <a target="_blank"  href="/docs/en/user_manual/polls/proposal_types#dot-vote">Lees meer over Dot vote</a> .</p>
+      process_introduction: <p>Puntenverdeling kan worden gebruikt om een beperkte hoeveelheid middelen over meerdere opties te verdelen. Het gaat verder dan een simpele peiling doordat deelnemers beseffen dat er een beperking is bij het kiezen van opties.</p><p>Elke deelnemer krijgt een budget aan punten om te verdelen.</p><p>Deelnemers kunnen al hun punten aan één optie geven of ze over meerdere opties verdelen.</p><p>Deelnemers mogen hun budget niet overschrijden en moeten daarom goed nadenken over hoe ze hun punten verdelen.</p><p><a target="_blank"  href="/docs/en/user_manual/polls/proposal_types#dot-vote">Lees meer over puntenverdeling</a>.</p>
       title: Het kiezen van thema's voor onze conferentie
       details: <h3 id="what-is-this-poll-about"><strong>Waar gaat deze poll over?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Waarom is dit belangrijk?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Wat vraag je mensen te doen?</strong></h3><p></p><p> In deze poll heb je een budget van 8 punten om toe te wijzen aan de opties die je voorkeur hebben. Je kunt alle punten op één optie plaatsen of ze verspreiden.</p>
       process_subtitle_v2: Geef prioriteiten aan wanneer er afwegingen gemaakt moeten worden.
-      process_introduction_v2: <p><strong>Met Allocate</strong> krijg je inzicht in de prioriteiten van een groep wanneer er afwegingen gemaakt moeten worden. Elke deelnemer krijgt een budget aan punten dat hij of zij over de opties kan verdelen. Ze kunnen al hun punten inzetten op één optie of ze over meerdere opties verdelen. Omdat het budget beperkt is, is elk besteed punt een echt signaal van prioriteit.</p><p> <a target="_blank" href="/docs/en/user_manual/polls/proposal_types#dot-vote">Lees meer over Toewijzen</a> .</p>
+      process_introduction_v2: <p><strong>Verdelen</strong> helpt je de prioriteiten van een groep te begrijpen wanneer er afwegingen nodig zijn. Elke deelnemer krijgt een budget aan punten om over de opties te verdelen — alle punten kunnen naar één optie gaan of over meerdere opties worden verdeeld. Omdat het budget beperkt is, laat elk besteed punt zien wat prioriteit heeft.</p><p><a target="_blank" href="/docs/en/user_manual/polls/proposal_types#dot-vote">Lees meer over Verdelen</a>.</p>
       process_subtitle_v3: Geef prioriteiten aan wanneer er afwegingen gemaakt moeten worden. Ook wel bekend als puntstemmen.
     ranked_choice:
       process_subtitle: Begrijp de geordende voorkeur van opties
-      process_introduction: <p>Een rangschikkingskeuze is handig als u een groot aantal opties hebt of een verkiezing houdt.</p><p> Met deze poll-sjabloon kunnen mensen in hun gewenste volgorde stemmen.</p><p> U kunt het aantal keuzes dat de kiezer krijgt, instellen.</p><p> <span>Kiezers slepen en zetten de opties neer in volgorde van voorkeur (waarbij 1 de optie is diegene die het meest de voorkeur geeft).</span></p><p> <span>Geavanceerde instellingen zijn onder meer 'Stemmen zijn anoniem' en 'Opties in willekeurige volgorde weergeven'. Deze worden vaak gebruikt voor gerangschikte</span> keuzes om eventuele vooringenomenheid bij het stemmen te beperken.</p><p> De resultaten worden in volgorde weergegeven. De resultatentabel biedt aanvullende gegevens waarmee u de resultaten kunt analyseren.</p><ul><li><p> Rang</p></li><li><p> % van de punten</p></li><li><p> Punten</p></li><li><p> Gemeen</p></li></ul><p> <a target="_blank"  href="/docs/en/user_manual/polls/proposal_types#ranked-choice">Lees meer over Ranked Choice</a> .</p>
+      process_introduction: <p>Ranking is handig als je veel opties hebt of een verkiezing houdt.</p><p>Kiezers slepen opties om ze in volgorde van voorkeur te zetten.</p><p>Het resultaat wordt in rangorde weergegeven.</p><p><a target="_blank"  href="/docs/en/user_manual/polls/proposal_types#ranked-choice">Lees meer over ranking</a>.</p>
       title: Bestuurders kiezen voor bestuursraad
       details: <h3 id="what-is-this-poll-about"><strong>Waar gaat deze poll over?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Waarom is dit belangrijk?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Wat vraag je mensen te doen?</strong></h3><p></p><p> Stem door de opties te rangschikken in de volgorde van uw voorkeur. De optie die bovenaan de resultaten staat, wint.</p>
       process_subtitle_v2: Bepaal de voorkeursvolgorde van de groep.
@@ -710,7 +710,7 @@ nl_NL:
       process_subtitle: Kies meerdere winnaars naar rato.
       process_introduction: <p>STV (Single Transferable Vote) is een systeem van evenredige vertegenwoordiging voor verkiezingen met meerdere kandidaten. Kiezers rangschikken de kandidaten op volgorde van voorkeur. Kandidaten die een bepaald aantal stemmen behalen, worden gekozen, en overtollige of weggevallen stemmen worden overgedragen naar de volgende voorkeurskandidaten.</p><p> Configureer het aantal zetels, de telmethode (Schots of Meek) en het quotatype (Droop of Hare). De resultaten tonen een ronde-voor-ronde overzicht van hoe stemmen zijn overgedragen.</p><p> <a target="_blank" href="/docs/en/user_manual/polls/stv">Lees meer over de STV-verkiezingen</a> .</p>
       title: Kies commissieleden
-      details: <h3 id="what-is-this-election-about"><strong>Waar gaat deze verkiezing over?</strong></h3><p></p><h3 id="how-many-seats"> <strong>Hoeveel stoelen worden er bezet?</strong></h3><p></p><h3 id="who-are-the-candidates"> <strong>Wie zijn de kandidaten?</strong></h3><p></p><p> Stem door de kandidaten in de gewenste volgorde te slepen. Rang 1 is uw meest geprefereerde kandidaat. U kunt zoveel of zo weinig kandidaten rangschikken als u wilt.</p>
+      details: <h3 id="what-is-this-election-about"><strong>Waar gaat deze verkiezing over?</strong></h3><p></p><h3 id="how-many-seats"><strong>Hoeveel zetels worden er ingevuld?</strong></h3><p></p><h3 id="who-are-the-candidates"><strong>Wie zijn de kandidaten?</strong></h3><p></p><p>Stem door de kandidaten in de gewenste volgorde te slepen. Bij Rangschikken staat je favoriete kandidaat op 1. Je kunt zoveel of zo weinig kandidaten rangschikken als je wilt.</p>
   forward_mailer:
     bounce:
       subject: Uw bericht aan Loomio is niet afgeleverd
@@ -809,7 +809,7 @@ nl_NL:
     voted: "%{author} stemde %{response}"
     voted_hidden: "%{author} heeft gestemd"
     vote_removed: "%{author}: stem verwijderd"
-    undecided: "%{author}: onbeslist"
+    undecided: "%{author}: nog niet gestemd"
     superseded: vervangen
     shared_outcome: "%{author} deelde een conclusie"
     removed: Verwijderd

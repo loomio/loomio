@@ -268,7 +268,7 @@ nl_NL:
     action:
       print: Afdrukken
       preview: Voorbeeld
-      pin: Vastprikken
+      pin: Vastzetten
       unpin: Ontprikken
       search: Zoek
       filter: Filter
@@ -1127,7 +1127,7 @@ nl_NL:
     show_edits: Toon wijzigingen
     show_notifications: Toon meldingen
     history: Geschiedenis
-    pin_thread: Thread vastprikken
+    pin_thread: Thread vastzetten
     unpin_thread: Thread losmaken
     pin_event: Pin vast aan de tijdslijn
     unpin_event: Ontpin van tijdslijn
@@ -1787,7 +1787,7 @@ nl_NL:
       all: Recente discussies
     thread_preview:
       you_voted: Je hebt %{position} gestemd
-      undecided: Je bent onbeslist
+      undecided: Je hebt nog niet gestemd
     threads_from:
       group: Borden van
       pinned: Vastgeprikte borden
@@ -2298,12 +2298,12 @@ nl_NL:
     started_by: Gestart door %{name}
   poll_common_votes_panel:
     vote_removed: Stem verwijderd
-    undecided: Onbeslist
+    undecided: Nog niet gestemd
     newest_first: Nieuwste eerst
     oldest_first: Oudste eerst
     priority_first: Eens eerst
     priority_last: Geblokkeerd eerst
-    undecided_first: Onbeslist eerst
+    undecided_first: Nog niet gestemd eerst
     no_votes_yet: Er zijn nog geen stemmen uitgebracht.
     change_results_order: Verander volgorde resultaten
     none_of_the_above: "(Geen van bovenstaande)"
@@ -2325,9 +2325,9 @@ nl_NL:
     participation_records_restricted: Je kunt zien wie er heeft deelgenomen nadat de stemming is gesloten
     vote_weight: Stemgewicht %{weight}
   poll_common_undecided_panel:
-    show_undecided: Toon %{count} onbeslist
+    show_undecided: Toon %{count} kiezers die nog niet hebben gestemd
     show_invitations: Toon uitnodigingen in afwachting
-    undecided_users: Onbeslist (%{count})
+    undecided_users: Nog niet gestemd (%{count})
     invitation_count_singular: 1 extra persoon werd uigenodigd om deel te nemen via e-mail
     invitation_count_plural: "%{count} extra mensen zijn via e-mail uitgenodigd om deel te nemen"
   poll_common_undecided_user:
@@ -2395,7 +2395,7 @@ nl_NL:
     option_already_added: Optie al toegevoegd aan poll
   poll_dot_vote_form:
     dots_per_person: Punten per persoon
-    dots_per_person_helptext: Het aantal punten dat elk persoon mag toekennen.
+    dots_per_person_helptext: Het totale aantal punten dat elke persoon moet verdelen.
   poll_meeting_form:
     timeslots: Tijdvensters
     no_options: Ingevulde tijden zijn in je huidige tijdzone (%{zone}). Deelnemers zien deze tijd vertaald naar hun eigen tijdzone.
@@ -2470,7 +2470,7 @@ nl_NL:
     total: Totaal
   poll_remove_vote:
     title: Je stem verwijderen?
-    helptext: Weet je zeker dat je je stem wilt verwijderen? U wordt vermeld als onbeslist en kunt later opnieuw stemmen als u dat wenst.
+    helptext: Weet je zeker dat je je stem wilt verwijderen? Je wordt vermeld als nog niet gestemd en kunt later opnieuw stemmen als je wilt.
     confirm: Stem verwijderen
     success: Stem verwijderd
   poll_poll_vote_form:
@@ -2893,13 +2893,13 @@ nl_NL:
       choose_hint: Kiezers kiezen de beste optie (of opties)
       score: Score
       score_hint: Kiezers kennen aan elke optie een score toe
-      allocate: Toewijzen
+      allocate: Verdelen
       allocate_hint: Kiezers verdelen een budget van punten tussen de opties
       ranked_choice: Gerangschikte keuze
       ranked_choice_hint: Kiezers rangschikken de opties in volgorde van meest naar minst geprefereerd
       time_poll: Tijd peiling
       time_poll_hint: Kiezers geven aan wanneer zij beschikbaar zijn om te vergaderen
-      rank: Rang
+      rank: Rangschikken
       time: Tijd
       stv: STV-verkiezing
       stv_hint: Kies meerdere winnaars proportioneel met behulp van de Single Transferable Vote.
@@ -2951,7 +2951,7 @@ nl_NL:
     how_much_time_to_vote: Hoeveel tijd geeft u mensen om te stemmen?
     default_duration_in_days_hint: Hoeveel dagen hebben mensen de tijd om te stemmen?
     define_minimum_and_maxmimum_score: Definieer de minimale en maximale scores die een kiezer aan een optie kan geven
-    how_many_points_does_each_voter_have_to_allocate: Hoeveel punten moet elke kiezer toekennen?
+    how_many_points_does_each_voter_have_to_allocate: Hoeveel punten moet elke kiezer verdelen?
     anonymous_voting_description: Toon stemmen en redenen, maar niet wie ze heeft uitgebracht. Dit kan niet worden gewijzigd nadat de %{poll_type} is gestart.
     vote_reason_description: Vraag mensen om hun beweegredenen voor hun stemgedrag te delen of om aanvullende informatie te verstrekken.
     hide_results_description: Als u wilt dat mensen stemmen zonder te zien wat anderen hebben gestemd, kunt u de resultaten verbergen.
@@ -3123,7 +3123,7 @@ nl_NL:
     closed_at: Gesloten om
     closing_at: Sluit om
   poll_stv_vote_form:
-    helptext: Sleep de kandidaten boven de lijn om ze te rangschikken. Items onder de lijn zijn niet gerangschikt. Rang 1 is je voorkeur.
+    helptext: Sleep de kandidaten boven de lijn om ze te rangschikken. Items onder de lijn zijn niet gerangschikt. Bij Rangschikken staat je eerste voorkeur op 1.
     divider_text: Sleep de kandidaten boven deze lijn om ze te rangschikken.
     stance_created: Stem geregistreerd
     stance_updated: Stem bijgewerkt
