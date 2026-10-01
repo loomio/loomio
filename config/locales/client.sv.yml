@@ -142,7 +142,7 @@ sv:
     all_tags: Alla taggar
     tags: Taggar
     apply_tags: Använd taggar
-    new_tag: Ny tag
+    new_tag: Ny tagg
     name_label: Namn
     color_label: Färg
     card_title: Kategoritaggar
@@ -176,12 +176,12 @@ sv:
   poll_types:
     proposal: förslag
     count: opt-in
-    check: förnuftskontroll
-    poll: opinionsundersökning
-    dot_vote: prick rösta
-    meeting: tidsundersökning
+    check: stämningskoll
+    poll: omröstning
+    dot_vote: prickomröstning
+    meeting: tidsomröstning
     ranked_choice: rankat val
-    score: poängundersökning
+    score: poängomröstning
     question: frågerundan
     stv: STV-valet
   timezones:
@@ -770,7 +770,7 @@ sv:
     revoke_delegate: Återkalla delegat
   notification_models:
     comment: kommentera in
-    poll: 'opinionsundersökning:'
+    poll: 'omröstning: '
     outcome: 'slutsats:'
     stance: 'rösta:'
     discussion: 'diskussion:'
@@ -826,8 +826,8 @@ sv:
       membership_resent: "%{actor} bjöd in dig att gå med i en grupp"
       membership_requested: "%{actor} begärde att få gå med i din grupp"
       membership_request_approved: "%{actor} godkände din begäran om att gå med i %{title}"
-      outcome_announced: "%{actor} delade ett %{poll_type}-resultat"
-      outcome_created: "%{actor} delade ett %{poll_type}-resultat"
+      outcome_announced: "%{actor} delade en slutsats för %{poll_type}"
+      outcome_created: "%{actor} delade en slutsats för %{poll_type}"
       outcome_review_due: Det är dags att granska %{poll_type}-resultatet
       poll_announced_wip: "%{actor} vill ha din feedback på en %{poll_type}"
       poll_closed_by_user: "%{actor} stängde %{poll_type}"
@@ -876,7 +876,7 @@ sv:
       new_discussion: "%{title}"
       outcome_announced: "%{poll_type} slutsats: %{title}"
       outcome_created: "%{poll_type} slutsats: %{title}"
-      outcome_updated: "%{poll_type} resultat uppdaterat: %{title}"
+      outcome_updated: 'Slutsats för %{poll_type} uppdaterad: %{title}'
       outcome_review_due: 'Det är dags att granska resultatet av: %{title}'
       poll_closed_by_user: "%{actor} stängde %{poll_type}: %{title}"
       poll_closing_soon: "%{poll_type} stänger om 24 timmar: %{title}"
@@ -884,7 +884,7 @@ sv:
       poll_created: "%{poll_type}: %{title}"
       poll_edited: "%{actor} uppdaterade %{poll_type}: %{title}"
       poll_expired: "%{poll_type} har avslutats: %{title}"
-      poll_expired_author: 'Publicera ett resultat: %{title}'
+      poll_expired_author: 'Publicera en slutsats: %{title}'
       poll_option_added: "%{actor} lade till alternativ till %{title}"
       poll_reopened: 'Röstningen förlängd: %{title}'
       poll_reminder: "%{actor} påminner dig om att rösta på %{title}"
@@ -1104,7 +1104,7 @@ sv:
     move_items: Flytta objekt
     announce_poll: Bjud in folk att rösta
     announce_poll_active: "(Ingen har blivit inbjuden ännu)"
-    translate_poll: Översätt enkät
+    translate_poll: Översätt omröstning
     edit_stance: Ändra ställning
     translate_stance: Översätt röst
     edit_comment: Redigera kommentar
@@ -1277,7 +1277,15 @@ sv:
   delete_group_modal:
     title: Ta bort grupp
     subgroup_title: Ta bort undergrupp
-    parent_body: "<h2>Det här är din föräldragrupp - inte en undergrupp!</h2><br> Om du tar bort detta kommer även eventuella undergrupper att raderas permanent. Ditt Loomio-abonnemang kommer också att avslutas. Det rekommenderas starkt att exportera din gruppdata och manuellt ladda ner alla viktiga filer innan du gör detta. Är du säker på att du vill fortsätta?"
+    parent_body: |
+      <h2>Det här är din huvudgrupp - inte en undergrupp</h2>
+      <br>
+      Om du tar bort den kommer även alla undergrupper att raderas permanent.
+
+      Ditt Loomio-abonnemang kommer också att avslutas.
+
+      Vi rekommenderar starkt att du exporterar gruppens data och manuellt laddar ner alla viktiga filer innan du gör detta.
+      Är du säker på att du vill fortsätta?
     body: Är du säker på att du vill ta bort den här undergruppen? Alla trådar, omröstningar, filer och annat gruppinnehåll kommer att raderas permanent. Det rekommenderas att du exporterar gruppdata och manuellt laddar ner alla viktiga filer innan du fortsätter.
     confirm: Skriv '%{name}' för att bekräfta att du vill ta bort den här gruppen.
     success: Den här gruppen har arkiverats och är planerad att raderas permanent om 2 veckor.
@@ -1338,8 +1346,8 @@ sv:
       loud: Mejla när det är aktivitet.
       loud_aria_description: Din aviseringsvolym för den här gruppen är inställd på Högt. Du kommer att få e-post när det är aktivitet.
       loud_message: Du kommer att få ett e-postmeddelande om all aktivitet i "%{name}."
-      normal: 'Maila bara viktig aktivitet: Nya trådar och förslag, resultat etc.'
-      normal_aria_description: Din aviseringsvolym för den här gruppen är inställd på Normal. Du kommer bara att få ett e-postmeddelande med viktig aktivitet, till exempel när någon startar en ny tråd, tar upp ett förslag eller sätter ett resultat.
+      normal: 'Maila bara viktig aktivitet: Nya trådar och förslag, slutsatser etc.'
+      normal_aria_description: Din notisnivå för den här gruppen är inställd på Normal. Du får bara e-post om viktig aktivitet, till exempel när någon startar en ny tråd, tar upp ett förslag eller delar en slutsats.
       normal_message: Du kommer endast att få e-post om viktiga händelser i "%{name}".
       quiet: Skicka mig inte epost om den här gruppen. Aktivitet kommer att visas på instrumentbrädan.
       quiet_aria_description: Din notifikationsvolym för den här gruppen är satt till Tyst. Du kommer inta att få epost om aktivitet i den här gruppen. Grupp aktivitet kommer att visas på din instrumentbräda.
@@ -1388,7 +1396,7 @@ sv:
     change_cover_image: byt omslagsbild
     change_logo: ändra logotyp
     permissions_explaination: 'Det finns två nivåer av medlemskap en person kan ha i en grupp: admin och medlem. Administratörer kan redigera gruppinställningar, göra andra till administratörer och utföra alla åtgärder som anges nedan.'
-    parent_group: Föräldragrupp
+    parent_group: Huvudgrupp
     new_organisation: Ny organisation
     new_group: Ny grupp
     new_subgroup: Ny undergrupp
@@ -1848,7 +1856,7 @@ sv:
     n_previous: Ladda %{count} tidigare svar
     n_more: Ladda %{count} svar
     add_comment: Lägg till kommentar
-    add_poll: Lägg till enkät
+    add_poll: Lägg till omröstning
     add_outcome: Lägg till slutsats
     comment: Kommentar
     facilitate: Främja
@@ -1952,12 +1960,12 @@ sv:
     proposal_title: Förslag
     count_title: Välj att delta
     check_title: Sense check
-    poll_title: Undersökning
+    poll_title: Omröstning
     meeting: Möte
-    score_title: Ränka röster
-    dot_vote_title: Rösta prick
+    score_title: Poängomröstning
+    dot_vote_title: Prickomröstning
     meeting_title: Tidsröstning
-    ranked_choice_title: Valfritt val
+    ranked_choice_title: Rangordning
     gradients_of_agreement_title: Gradienter av överensstämmelse
     majority_title: Majoritet
     stv_title: STV-val
@@ -2081,7 +2089,7 @@ sv:
     too_long: För länge
     edit_warning: Redigering rekommenderas endast för mindre ändringar eller korrigering av stavfel. För betydande ändringar, stäng denna %{pollType} och starta en ny.
     no_voting: Endast för diskussion, röstning inaktiverad
-    post_outcome: Publicera resultat
+    post_outcome: Publicera slutsats
     view_all_votes: Visa alla röster
     you_voted: Du röstade
     these_are_templates: Det här är beslutsmallarna i din grupp. Klicka på en mall för att starta ett nytt beslut. Administratörer kan anpassa alla detaljer om en mall så att den matchar din organisations praxis och är lätt för medlemmar att hitta och använda.
@@ -2229,7 +2237,7 @@ sv:
   poll_common_collapsed:
     by_who: vid %{name}
   poll_common_calendar_invite:
-    calendar_invite: Inkludera en kalenderinbjudan med detta resultat
+    calendar_invite: Inkludera en kalenderinbjudan med denna slutsats
     poll_option_id: Mötestid
     helptext_on: Användare kommer att kunna lägga till detta möte i sin kalender
     helptext_off: Ingen mötesinbjudan kommer att skickas
@@ -2316,9 +2324,9 @@ sv:
     review_due_in_days: Se över beslutet efter hur många dagar?
     review_date: Gransknings datum
     review_date_hint: Ställ in ett datum för att granska beslutet (valfritt)
-    who_to_notify: Vem vill du meddela om detta resultat? (frivillig)
+    who_to_notify: Vem vill du meddela om denna slutsats? (valfritt)
     outcome_statement_template: Mall för resultatförklaring
-    new_title: Statens resultat
+    new_title: Dela slutsatsen
     update_title: Uppdatera resultatet
     outcome_created: Slutsats skapad
     outcome_updated: Slutsats uppdaterad
@@ -2326,8 +2334,8 @@ sv:
     you_will_be_notified: Du kommer att meddelas vid granskningsdatumet.
     submit: Dela resultatet
     review_due_in_days_hint: Antal dagar att vänta innan beslutet granskas (valfritt).
-    statement_template_hint: Tillhandahåll en mall för att skriva ett resultat av beslutet. (valfritt)
-    statement_template_placeholder: Tack för deltagandet! Vi har nått beslutsfattande och har stöd för att fortsätta.
+    statement_template_hint: Ange en mall för att skriva en slutsats om beslutet. (valfritt)
+    statement_template_placeholder: Tack för deltagandet. Vi har nått kvorum och har stöd för att fortsätta.
   poll_common_outcome_panel:
     authored_by: Vid %{name}
   poll_common_delete_modal:
@@ -2419,7 +2427,7 @@ sv:
     consent: Samtycke
     abstain: Avstå
     unsure: Osäker
-    disagree: Instämmer inte alls
+    disagree: Håller inte med
     objection: Invändning
     object: Objekt
     block: Blockera
@@ -2437,7 +2445,7 @@ sv:
     sentence: "%{numerator} av %{denominator} personer har deltagit (%{percent}%)"
     target_progress: "%{percent} % av målet nått. (%{num} / %{target})"
     pct_of_eligible_voters_must_participate: "%{pct}% av de röstberättigade måste delta"
-    vote_short_of_quorum: Ytterligare 1 röst behövs för att uppnå ett beslutsmässigt quorum på %{pct}%
+    vote_short_of_quorum: 1 röst till behövs för att nå kvorum på %{pct}%
     votes_short_of_quorum: "%{num} fler röster behövs för att uppnå kvorum på %{pct}%"
     quorum_reached: Kvorum på %{pct}% har uppnåtts
     pct_participation: "%{num} av %{total} avgivna röster (%{pct}% deltagande)"
@@ -2485,7 +2493,7 @@ sv:
     discussion_closed: "<a class='actor-link' href='/u/%{username}'>%{author}</a> stängde tråden"
     discussion_reopened: "<a class='actor-link' href='/u/%{username}'>%{author}</a> öppnade tråden igen"
     new_comment: "<a class='actor-link' href='/u/%{username}'>%{author}</a>"
-    outcome_created: "<a class='actor-link' href='/u/%{username}'>%{author}</a> delade ett resultat"
+    outcome_created: "<a class='actor-link' href='/u/%{username}'>%{author}</a> delade en slutsats"
     poll_reopened: "<a class='actor-link' href='/u/%{username}'>%{author}</a> öppnade %{polltype} igen"
     poll_closed_by_user: "<a class='actor-link' href='/u/%{username}'>%{author}</a> stängde %{polltype}"
     poll_created: "<a class='actor-link' href='/u/%{username}'>%{author}</a> startade en %{polltype}"
@@ -2664,7 +2672,7 @@ sv:
       poll_expired: En omröstning löper ut
       poll_closed_by_user: En omröstning stängs manuellt
       poll_reopened: En omröstning öppnas igen för omröstning
-      outcome_created: Ett resultat delas
+      outcome_created: En slutsats delas
       outcome_updated: Ett utfall uppdateras
       outcome_review_due: En resultatgranskning är på väg
       new_discussion: En diskussion är igång
@@ -2673,7 +2681,7 @@ sv:
     permissions:
       show_discussion: visa diskussion
       create_discussion: skapa diskussion
-      create_poll: skapa undersökning
+      create_poll: skapa omröstning
       show_poll: visa omröstning
       read_memberships: läsa medlemskap
       manage_memberships: hantera medlemskap (lägg till eller ta bort gruppmedlemmar)
@@ -2709,7 +2717,7 @@ sv:
     total_threads: Totala trådar
     total_polls: Totalt omröstningar
     threads_with_polls: Trådar med omröstningar
-    polls_with_outcomes: Omröstningar med resultat
+    polls_with_outcomes: Omröstningar med slutsatser
     actions_per_interval: Åtgärder per %{interval}
     actions_per_user: Åtgärder per användare
     users_per_country: Användare per land
@@ -2772,7 +2780,10 @@ sv:
         submit: Se förslagsmallar
       share_an_outcome:
         title: Dela ett förslagsresultat
-        helptext: "<p>För att underlätta beslutsfattandet har förslagen en sista omröstningsdag. När sista omröstningen har nåtts avslutas omröstningen och du får ett meddelande om att du kan dela ett förslagsresultat.</p><p> Resultatet ger en möjlighet att avgöra om förslaget var framgångsrikt och vad som kommer att hända härnäst.</p><p> Om din förslagsfrist ännu inte har passerat, men du vill fortsätta ändå, kan du klicka på <b>Stäng tidigare</b> .</p><p> När tiden är mogen, <b>ange ett resultat</b> för ditt förslag.</p>"
+        helptext: |
+          <p>När förslagets slutdatum nås stängs omröstningen och du uppmanas att dela en slutsats.</p>
+          <p>I slutsatsen förklarar du vad ni har beslutat (eller vad som händer härnäst) efter att ha gått igenom rösterna och kommentarerna.</p>
+          <p>Om slutdatumet inte har passerat men du är redo att gå vidare kan du välja <b>Stäng tidigare</b>.</p>
         submit: Visa förslag
         cancel: Gör detta senare
       start_a_discussion:
@@ -2854,7 +2865,7 @@ sv:
     voting_method: Röstningsmetod
     none_of_the_above: Inget av ovanstående
     voting_methods:
-      question: Frågorunda
+      question: Frågerunda
       question_hint: Be om frågor och kommentarer om ditt förslag
       show_thumbs: Räcka upp tummar
       show_thumbs_hint: Väljarna väljer tummen upp, ner, åt sidan eller handen upp
@@ -2867,7 +2878,7 @@ sv:
       allocate_hint: Väljarna fördelar en budget på poäng mellan alternativen
       ranked_choice: Rankat val
       ranked_choice_hint: Väljarna ordnar alternativen i ordning från mest till minst föredragna
-      time_poll: Tidsundersökning
+      time_poll: Tidsomröstning
       time_poll_hint: Väljarna anger när de är tillgängliga för att mötas
       rank: Rang
       time: Tid
@@ -2965,7 +2976,7 @@ sv:
     set_all_vote_weights_the_same: Sätt alla röstvikter lika
     member_vote_weights_hint: Väljare utan nuvarande gruppmedlemskap får röstvikten 1
     weighted_voting: Viktad röstning
-    weighted_voting_is_not_available_with_anonymous_voting: "Viktad röstning är inte tillgänglig vid anonym röstning"
+    weighted_voting_is_not_available_with_anonymous_voting: Viktad röstning är inte tillgänglig vid anonym röstning
     use_weighted_voting: Använd viktad röstning
     weighted_voting_off_warning: Om du stänger av viktad röstning sätts varje röstvikt till 1. Alla röstvikter du ändrade för den här omröstningen kommer att gå förlorade.
     weighted_voting_on_group: Om viktad röstning aktiveras kopieras varje medlems standardröstvikt. Andra väljare får röstvikten 1.
@@ -3105,8 +3116,8 @@ sv:
     method_scottish: Scottish STV (recommended)
     method_meek: Meek STV
     quota_label: Kvottyp
-    quota_droop: Droop quota (recommended)
-    quota_hare: Hare quota
+    quota_droop: Droop-kvot (rekommenderas)
+    quota_hare: Hare-kvot
   poll_stv_results:
     title: Valresultat
     elected: Vald
@@ -3138,7 +3149,7 @@ sv:
     title: Lägg till i diskussionen
     discussion: Diskussion
     success: Lyckades, %{pollType} tillagd i diskussionen!
-    explanation: "%{pollType} och eventuella röster, kommentarer och resultat kommer att läggas till i den valda diskussionstråden."
+    explanation: "%{pollType} och eventuella röster, kommentarer och slutsats kommer att läggas till i den valda diskussionstråden."
   bookmarks:
     bookmarks: Bokmärken
     saved: Bokmärke sparat
