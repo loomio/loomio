@@ -72,7 +72,7 @@ fr:
       title_placeholder: Nomination et élection du conseil
       process_name: Élire un poste de gouvernance
       process_subtitle: Nommer et élire une personne à un rôle de gouvernance au sein d’un conseil, d’un comité ou d’un conseil d’administration.
-      process_introduction: "<p>Présenter le rôle de gouvernance et les critères du poste pour aider les membres à évaluer les candidats.</p><p> Appel à candidatures avec un sondage Opt-in. Invitez les candidats à publier une photo du candidat avec sa biographie et ses références. Intégrez un message vidéo du candidat afin que les membres puissent voir et entendre directement le candidat.</p><p> Si vous êtes prêt à élire un candidat, utilisez une proposition de consentement.</p><p> Si vous avez plusieurs candidats pour un poste, utilisez la proposition Ranked Choice où les électeurs peuvent classer les candidats par ordre de préférence.</p>"
+      process_introduction: "<p>Présentez le rôle de gouvernance et les critères du poste pour aider les membres à évaluer les candidats.</p><p>Lancez un appel à candidatures avec un sondage d’inscription. Invitez les personnes proposées à publier une photo du candidat avec sa biographie et ses références. Intégrez un message vidéo du candidat pour que les membres puissent le voir et l’entendre directement.</p><p>Si vous êtes prêt à élire un candidat, utilisez une proposition de consentement.</p><p>Si vous avez plusieurs candidats pour un poste, utilisez une proposition de classement par préférence où les électeurs peuvent classer les candidats par ordre de préférence.</p>"
       description: '<h3 id="what-position-do-you-need-to-fill">Quel poste devez-vous pourvoir ?</h3><p></p><h3 id="why-is-this-important"> Pourquoi est-ce important?</h3><p></p><h3 id="what-qualifications-skills-and-experiences-make-a-good-cand"> Quelles qualifications, compétences et expériences font d’un bon candidat ?</h3><p></p><h3 id="what-is-the-election-process"> Quel est le processus électoral ?</h3><p> Étape 1 : Nominations - nous sollicitons des candidatures pour les candidats appropriés.</p><p> Étape 2 : Présentez les candidats – incluez une photo, une courte biographie et une référence pour chaque candidat.</p><p> Étape 3 : Élection – votez pour nommer un candidat au poste.</p>'
       election: Élection
     funding_decision:
@@ -197,7 +197,7 @@ fr:
       cannot_remove_options: Impossible de supprimer des options de ce sondage
       must_have_options: Il faut au moins une option de sondage
       must_be_in_the_future: Doit être dans le futur
-      templates_cannot_close: Les modèles ne peuvent pas se fermer
+      templates_cannot_close: Les modèles ne peuvent pas être clôturés
       poll_options_dont_match: Un bug de Loomio a empêché l'enregistrement de votre vote. Nous travaillons à la résolution de ce problème. Rechargez la page et réessayez.
       opening_at_before_closing_at: La date d'ouverture doit être antérieure à la date de clôture
     export:
@@ -392,11 +392,11 @@ fr:
   announcement_count_emails: "%{count} courriels"
   email_actions:
     unfollowed_discussion: Vous avez désactivé les notifications pour cette discussion.
-    catch_up_link: Paramètres du courriel de rattrapage
-    catch_up_title: Paramètres du courriel de rattrapage
+    catch_up_link: Paramètres de l’e-mail récapitulatif
+    catch_up_title: Paramètres de l’e-mail récapitulatif
     catch_up_description: Choisissez la fréquence à laquelle vous souhaitez recevoir un résumé de l'activité de vos groupes
-    catch_up_schedule: Envoyer un courriel de rattrapage
-    catch_up_saved: Paramètres du courriel de rattrapage mis à jour
+    catch_up_schedule: Envoyer un e-mail récapitulatif
+    catch_up_saved: Paramètres de l’e-mail récapitulatif mis à jour
     catch_up_days:
       never: Jamais
       every_day: Tous les jours
@@ -408,7 +408,7 @@ fr:
       friday: Vendredi
       saturday: Samedi
       sunday: Dimanche
-    catch_up_all_groups: Courriels de rattrapage (tous les groupes)
+    catch_up_all_groups: E-mails récapitulatifs (tous les groupes)
   discussion_mailer:
     reply_or_view_online_html: Répondez à ce message directement ou <a href='%{url}'>visualisez-le sur %{hostname}</a>.
     turn_off_notifications_html: "<a href='%{url}'>Ne plus recevoir de courriels</a> pour cette discussion."
@@ -487,8 +487,8 @@ fr:
       not_invited: Non invité
       please_respond: Merci de répondre
       time_zone: "(Horaire affiché en %{zone})"
-      undecided_members: Membres indécis (%{count})
-      undecided_visitors: Invités indécis (%{count})
+      undecided_members: Membres en attente (%{count})
+      undecided_visitors: Invités en attente (%{count})
       more_undecided: "%{count} de plus..."
       vote_now: Voter maintenant
       you_have_until: Vous avez jusqu'à %{when} pour participer.
@@ -812,7 +812,7 @@ fr:
     voted: "%{author} a voté %{response}"
     voted_hidden: "%{author} a voté"
     vote_removed: "%{author} : vote supprimé"
-    undecided: "%{author} : indécis"
+    undecided: "%{author} : en attente"
     superseded: remplacé
     shared_outcome: "%{author} a partagé une conclusion"
     removed: Supprimé

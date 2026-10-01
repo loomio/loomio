@@ -183,7 +183,7 @@ fr:
     only_show_tags_in_this_group: Afficher uniquement les tags de ce groupe
   poll_types:
     proposal: Proposition
-    count: opt-in
+    count: inscription
     check: prise de température
     poll: Sondage
     dot_vote: Vote à points
@@ -282,8 +282,8 @@ fr:
       filter: 'Filter :'
       back: Retour
       next: Suivant
-      close: Fermer
-      reopen: Relancer
+      close: Clôturer
+      reopen: Rouvrir
       save: Enregistrer
       move: Déplacer
       save_changes: Sauvegarder les modifications
@@ -449,7 +449,7 @@ fr:
     loud: Élevé
     normal: Normal
     quiet: Bas
-    mute: Ignorer
+    mute: Mettre en sourdine
     unmute: Suivre de nouveau
   pin_event_form:
     title: 'Epingler dans la timeline '
@@ -479,7 +479,7 @@ fr:
     loud_label: Toute l’activité
     normal_label: Nouvelles discussions et décisions
     quiet_label: Aucun courriel
-    mute_label: Ignorer
+    mute_label: Mettre en sourdine
     saved: Les paramètres de notification ont été mis à jour
     discussion:
       loud_description: Vous recevrez un courriel à chaque fois qu’il y aura une activité dans cette discussion.
@@ -689,7 +689,7 @@ fr:
     email_and_device_when_notified: E-mail et notification sur l'appareil en cas de notification
     device_notification_when_notified: Notification sur l'appareil en cas de notification
     no_notifications: Aucune notification
-    catch_up_email_every_second_day: Courriel de rattrapage tous les deux jours
+    catch_up_email_every_second_day: E-mail récapitulatif tous les deux jours
     weekly_catch_up_email: Courriel de récapitulation hebdomadaire
   search_modal:
     all_content: Tout le contenu
@@ -1012,7 +1012,7 @@ fr:
       topic: Participants à la discussion
       voters: Participants invités à voter
       decided_voters: Tous ceux qui ont voté
-      undecided_voters: Votants indécis
+      undecided_voters: Électeurs en attente
       non_voters: Les membres de %{name} n'ont pas encore été invités
       delegates_of_group: Délégués de %{name}
     form:
@@ -1135,8 +1135,8 @@ fr:
     show_edits: Montrer les modifications
     show_notifications: Montrer les notifications
     history: Historique
-    pin_thread: Mettre en avant la discussion
-    unpin_thread: Ne plus mettre en avant la discussion
+    pin_thread: Épingler le fil
+    unpin_thread: Ne plus épingler le fil
     pin_event: 'Epingler dans la timeline '
     unpin_event: Dés-épingler de la timeline
     comment_copied: URL du commentaire copiée
@@ -1484,7 +1484,7 @@ fr:
     members_can_create_subgroups: Les membres peuvent créer des sous-groupes
     members_can_create_subgroups_help: Autoriser les membres à créer et à devenir administrateurs de nouveaux sous-groupes
     members_can_edit_discussions: Les membres peuvent gérer les discussions et les commentaires
-    members_can_edit_discussions_help: Autoriser les membres à modifier, déplacer, épingler, tag ou fermer des threads
+    members_can_edit_discussions_help: Autoriser les membres à modifier, déplacer, épingler, taguer ou clôturer des fils
     members_can_edit_comments: Les membres peuvent modifier leurs propres commentaires
     members_can_edit_comments_help: Autoriser les membres à modifier leurs propres commentaires à n'importe quel moment
     members_can_delete_comments: Les membres peuvent supprimer leurs propres commentaires
@@ -1521,7 +1521,7 @@ fr:
     members_can_start_discussions_v2: Les membres peuvent entamer de nouvelles discussions.
     members_can_start_discussions_help_v2: Autoriser les membres à entamer de nouvelles discussions au sein du groupe
     members_can_edit_discussions_v2: Les membres peuvent gérer les discussions et les commentaires.
-    members_can_edit_discussions_help_v2: Autoriser les membres à modifier, déplacer, épingler, étiqueter ou fermer toute discussion ou tout commentaire dans le groupe
+    members_can_edit_discussions_help_v2: Autoriser les membres à modifier, déplacer, épingler, taguer ou clôturer toute discussion ou tout commentaire dans le groupe
     group_handle_hint_new: L'URL et l'adresse e-mail de votre groupe seront %{host}/%{handle} et %{handle}{'@'}%{host}
     handle_changed_hint: Votre ancienne URL et votre adresse e-mail seront redirigées vers votre nouvelle adresse.
     members_can_create_tags: Les membres peuvent créer des tags
@@ -1764,7 +1764,7 @@ fr:
     group_notifications: Notifications de groupe
     group_notifications_description: Modifiez le niveau d'activité et le canal de vos groupes
     choose_email_and_push_updates: Choisissez des paramètres distincts pour les e-mails et les notifications push.
-    catch_up_email: Courriel de rattrapage
+    catch_up_email: E-mail récapitulatif
     catch_up_email_description: Choisissez quand recevoir un récapitulatif des notifications non vues et des activités non lues
   thread_preview:
     replies_count: "%{count} réponses"
@@ -1790,7 +1790,7 @@ fr:
     thread_recalled: Discussion suivie
     explain_mute:
       title: Vous n’avez pas encore ignoré de discussion.
-      instructions: Pour ignorer la discussion, passez la souris dessus et cliquez sur l’icône Ignorer.
+      instructions: Pour mettre un fil en sourdine, passez la souris dessus et cliquez sur l’icône de mise en sourdine.
       see_muted_html: Pour voir vos discussions ignorées, cliquez sur <strong>« Ignoré »</strong>. Vous pouvez la suivre de nouveau en cliquant sur la même icône.
       explanation_html: Le mode muet permet de masquer ou de désactiver les fils de discussion qui ne vous intéressent pas. Ce mode vous permet de ne pas les voir dans les <strong>sections Récentes</strong> ou <strong>Non lues</strong> , et de ne pas être averti de l'activité de ce fil, comme les propositions. Vous ne serez alerté que si quelqu'un <strong>mentionne votre nom ({'@'})</strong> .
     filtering:
@@ -1992,7 +1992,7 @@ fr:
     consent_title: Consentement
     consensus_title: Consensus
     proposal_title: Proposition
-    count_title: Opt-in
+    count_title: Inscription
     check_title: Prise de température
     poll_title: Sondage
     meeting: Réunion
@@ -2089,7 +2089,7 @@ fr:
     results: Résultats
     current_results: Résultats actuels
     responses: Réponses
-    close_poll_type: Fermer %{pollType}
+    close_poll_type: Clôturer %{pollType}
     close_early: Clôture anticipée
     totals: Totaux
     participate: Participer
@@ -2121,7 +2121,7 @@ fr:
     max_score: Score maximum
     min_score: Score minimum
     too_long: Trop long
-    edit_warning: La révision n'est recommandée que pour des modifications mineures ou pour corriger des fautes d’orthographe. Pour des changements significatifs, fermer ce %{pollType} et démarrez-en un nouveau.
+    edit_warning: La modification n’est recommandée que pour des changements mineurs ou pour corriger des fautes d’orthographe. Pour des changements importants, clôturez ce %{pollType} et créez-en un nouveau.
     no_voting: Pour discussion seulement, vote désactivé
     post_outcome: Publier la conclusion
     view_all_votes: Voir tous les votes
@@ -2283,9 +2283,9 @@ fr:
     location: Lieu
     location_placeholder: Où se déroulera cette réunion ?
   poll_common_close_form:
-    title: Fermer %{poll_type} maintenant?
+    title: Clôturer %{poll_type} maintenant ?
     helptext: Êtes-vous sûr de vouloir clôturer ce %{poll_type} avant la date prévue et partager une conclusion ?
-    close_poll_type: Fermer %{poll_type}
+    close_poll_type: Clôturer %{poll_type}
     poll_type_closed: "%{poll_type} est terminé"
   poll_common_reopen_form:
     title: Rouvrir le %{poll_type}
@@ -2315,12 +2315,12 @@ fr:
     started_by: Démarré par %{name}
   poll_common_votes_panel:
     vote_removed: Vote supprimé
-    undecided: Indécis
+    undecided: En attente
     newest_first: Les plus récents en premier
     oldest_first: Les plus anciens en premier
     priority_first: Accord en premier
     priority_last: Bloquer en premier
-    undecided_first: Indécis d'abord
+    undecided_first: En attente d’abord
     no_votes_yet: Aucun vote n’a été enregistré.
     change_results_order: Changer l’ordre des résultats
     none_of_the_above: "(Aucun des choix ci-dessus)"
@@ -2342,9 +2342,9 @@ fr:
     participation_records_restricted: Vous pourrez voir qui a participé après la clôture du vote
     vote_weight: Poids du vote %{weight}
   poll_common_undecided_panel:
-    show_undecided: Afficher les %{count} indécis
+    show_undecided: Afficher les %{count} en attente
     show_invitations: Montrer les invitations en attente
-    undecided_users: Indécis (%{count})
+    undecided_users: En attente (%{count})
     invitation_count_singular: 1 autre personne a été invitée à participer par courriel
     invitation_count_plural: "%{count} autres personnes ont été invitées à participer par courriel"
   poll_common_undecided_user:
@@ -2487,7 +2487,7 @@ fr:
     total: Total
   poll_remove_vote:
     title: Supprimer votre vote?
-    helptext: Êtes-vous sûr de vouloir supprimer votre vote? Vous serez inscrit comme indécis et pourrez voter à nouveau plus tard si vous le souhaitez.
+    helptext: Êtes-vous sûr de vouloir supprimer votre vote ? Vous serez inscrit comme en attente et pourrez voter à nouveau plus tard si vous le souhaitez.
     confirm: Supprimer vote
     success: Vote supprimé
   poll_poll_vote_form:
@@ -2816,7 +2816,10 @@ fr:
         submit: Voir les modèles de propositions
       share_an_outcome:
         title: Partager la conclusion d'une proposition
-        helptext: "<p>Pour faciliter la prise de décision, les propositions sont soumises à une date limite de vote. Une fois cette date atteinte, le vote sera clos et vous serez informé(e) des résultats de la proposition.</p><p> La conclusion est l’occasion de dire si la proposition a été retenue et ce qui va se passer ensuite.</p><p> Si la date limite de votre proposition n'est pas encore passée, mais que vous souhaitez quand même continuer, vous pouvez cliquer sur <b>Fermer plus tôt</b> .</p><p> Lorsque le moment est venu, <b>indiquez la conclusion</b> de votre proposition.</p>"
+        helptext: |
+          <p>À la date limite de la proposition, le vote est clôturé et vous êtes invité à partager une conclusion.</p>
+          <p>La conclusion vous permet d’expliquer ce que vous avez décidé (ou ce qui va se passer ensuite) après avoir examiné les votes et les commentaires.</p>
+          <p>Si la date limite n’est pas encore passée mais que vous êtes prêt à avancer, vous pouvez <b>Clôturer plus tôt</b>.</p>
         submit: Voir la proposition
         cancel: Faites-le plus tard
       start_a_discussion:
@@ -2847,7 +2850,7 @@ fr:
       voting_title: 24 heures avant la clôture du vote, envoyez un rappel à
       nobody: Personne
       author: Auteur (moi)
-      undecided_voters: Les électeurs indécis
+      undecided_voters: Les électeurs en attente
       voters: Tous les électeurs
     notify_on_participate:
       title: Prévenir-moi lorsque des personnes participent
@@ -2913,7 +2916,7 @@ fr:
       ranked_choice_hint: Les électeurs classent les options par ordre décroissant de préférence.
       time_poll: Sondage horaire
       time_poll_hint: Les électeurs indiquent quand ils sont disponibles pour se réunir
-      rank: Rang
+      rank: Classer
       time: Temps
       stv: Élection STV
       stv_hint: Élire plusieurs vainqueurs proportionnellement au moyen du vote unique transférable
