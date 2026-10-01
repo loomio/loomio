@@ -268,7 +268,7 @@ hr:
     action:
       print: Ispis
       preview: Pregled
-      pin: Pin
+      pin: Prikvačite
       unpin: Otkvači
       search: traži
       filter: filtar
@@ -439,7 +439,7 @@ hr:
     loud: Glasno
     normal: Normalan
     quiet: Miran
-    mute: Isključi zvuk
+    mute: Utišajte
     unmute: Uključi zvuk
   pin_event_form:
     title: Prikvači na vremensku traku
@@ -469,7 +469,7 @@ hr:
     loud_label: Sve aktivnosti
     normal_label: Obavijesti
     quiet_label: Nema e-pošte
-    mute_label: Isključi zvuk
+    mute_label: Utišajte
     saved: Postavke obavijesti ažurirane
     discussion:
       loud_description: Dobit ćete e-poštu o svim aktivnostima u ovoj temi.
@@ -1002,14 +1002,16 @@ hr:
       topic: Svi u temi
       voters: Svi pozvani da glasaju
       decided_voters: Svi koji su glasali
-      undecided_voters: Neodlučni glasači
+      undecided_voters: Birači koji još nisu glasali
       non_voters: Članovi %{name} još nisu pozvani
       delegates_of_group: Delegati %{name}
     form:
       group_has_no_members_yet: Vi ste jedini član svoje grupe. Možda ćete htjeti pozvati neke ljude u svoju grupu prije pokretanja niti ili odluke.
       invite_people_to_evaluate_loomio: Pozovite neke ljude u svoju Loomio grupu da zajedno donesete odluku
       too_many_invitations: Premašeno je ograničenje broja pozivnica. <a href="%{upgradeUrl}" target="_blank">Nadogradnja</a>
-      no_invitations_remaining: <p>Iskoristili ste sve %{maxMembers} pozivnice dostupne ovoj grupi.</p><p> Sljedeći korak, <a href="%{upgradeUrl}" target="_blank">odaberite plan</a> za nastavak suradnje na Loomio.</p>
+      no_invitations_remaining: |
+        <p>Iskoristili ste svih %{maxMembers} pozivnica dostupnih ovoj grupi.</p>
+        <p>Sljedeći je korak <a href="%{upgradeUrl}" target="_blank">odabrati plan</a> za nastavak suradnje na Loomiju.</p>
       invitations_remaining: '%{count} preostalih pozivnica. <a href="%{upgradeUrl}" target="_blank">Nadogradnja</a>'
       who_to_invite: Koga biste htjeli pozvati?
       invitation_message_placeholder: Poruka koju treba uključiti u e-poruku pozivnice. (neobavezno)
@@ -1773,7 +1775,7 @@ hr:
       all: Nedavne rasprave
     thread_preview:
       you_voted: Glasovali ste za %{position}
-      undecided: Vi ste neodlučni
+      undecided: Još niste glasali
     threads_from:
       group: Teme iz
       pinned: Prikvačene niti
@@ -1812,7 +1814,9 @@ hr:
     direct_thread: Izravna nit
     invite_only: Samo uz pozivnicu
     private_thread: Privatna nit
-    max_threads_reached: <p>Iskoristili ste sve %{maxThreads} niti koje su dostupne ovoj grupi.</p><p> Sljedeći korak, <a href="%{upgradeUrl}" target="_blank">odaberite plan</a> za nastavak suradnje na Loomio.</p>
+    max_threads_reached: |
+      <p>Iskoristili ste svih %{maxThreads} niti dostupnih ovoj grupi.</p>
+      <p>Sljedeći je korak <a href="%{upgradeUrl}" target="_blank">odabrati plan</a> za nastavak suradnje na Loomiju.</p>
     subscription_canceled: <p>Vaša pretplata nije aktivna.</p><p> <a href="%{upgradeUrl}" target="_blank">Nadogradite</a> kako biste nastavili koristiti Loomio.</p>
     activity: Aktivnost
     activity_placeholder: Još nema aktivnosti!
@@ -1950,7 +1954,7 @@ hr:
     consent_title: Pristanak
     consensus_title: Konsenzus
     proposal_title: Prijedlog
-    count_title: Uključite se
+    count_title: Odaziv
     check_title: Provjera stava
     poll_title: Anketa
     meeting: Sastanak
@@ -2278,7 +2282,7 @@ hr:
     oldest_first: Prvo najstariji
     priority_first: Prvo se složite
     priority_last: Prvo blokiraj
-    undecided_first: Prvo neodlučni
+    undecided_first: Prvo oni koji još nisu glasali
     no_votes_yet: Još nema glasova.
     change_results_order: Promjena redoslijeda rezultata
     none_of_the_above: "(Ništa od navedenog)"
@@ -2370,7 +2374,7 @@ hr:
     option_already_added: Opcija je već dodana u anketu
   poll_dot_vote_form:
     dots_per_person: Bodovi po osobi
-    dots_per_person_helptext: Ukupan broj bodova koje svaka osoba mora dodijeliti.
+    dots_per_person_helptext: Ukupan broj bodova koje svaka osoba treba raspodijeliti.
   poll_meeting_form:
     timeslots: Vremenski odsječci
     no_options: Unesite vremena u svojoj trenutnoj vremenskoj zoni (%{zone}). Sudionici vide vremena prevedena u njihovu lokalnu vremensku zonu.
@@ -2445,7 +2449,7 @@ hr:
     total: Ukupno
   poll_remove_vote:
     title: Ukloniti svoj glas?
-    helptext: Jeste li sigurni da želite ukloniti svoj glas? Bit ćete navedeni kao neodlučni i možete ponovno glasovati kasnije ako želite.
+    helptext: Jeste li sigurni da želite ukloniti svoj glas? Bit ćete navedeni među onima koji još nisu glasali i možete ponovno glasati kasnije ako želite.
     confirm: Ukloni glas
     success: Glas uklonjen
   poll_poll_vote_form:
@@ -2803,7 +2807,7 @@ hr:
       voting_title: 24 sata prije zatvaranja glasanja, pošaljite podsjetnik na
       nobody: Nitko
       author: Autor (ja)
-      undecided_voters: Neodlučni birači
+      undecided_voters: Birači koji još nisu glasali
       voters: Svi birači
     notify_on_participate:
       title: Obavijesti me kada ljudi sudjeluju
@@ -2858,18 +2862,18 @@ hr:
       question_hint: Pozovite nas da postavljamo pitanja i komentare o vašem prijedlogu
       show_thumbs: Pokazivanje palčeva
       show_thumbs_hint: Birači biraju palac gore, dolje, bočno ili ruku gore
-      choose: Odaberite
+      choose: Odabir
       simple_poll: Jednostavna anketa
       choose_hint: Birači biraju najbolju opciju (ili opcije)
-      score: Postići
+      score: Ocjenjivanje
       score_hint: Birači dodjeljuju bodove svakoj opciji
-      allocate: Dodijeli
+      allocate: Raspodjela
       allocate_hint: Birači raspoređuju određeni broj bodova između opcija
       ranked_choice: Rangirani izbor
       ranked_choice_hint: Birači slažu opcije redom od najpoželjnijih do najmanje poželjnih
       time_poll: Anketa o terminu
       time_poll_hint: Birači navode kada su dostupni za sastanak
-      rank: Rang
+      rank: Rangiranje
       time: Vrijeme
       stv: STV izbori
       stv_hint: Proporcionalno odaberite više pobjednika koristeći jedan prenosivi glas
@@ -2921,7 +2925,7 @@ hr:
     how_much_time_to_vote: Koliko vremena ćete dati ljudima za glasanje?
     default_duration_in_days_hint: Koliko dana će ljudi imati za glasanje?
     define_minimum_and_maxmimum_score: Definirajte minimalni i maksimalni broj bodova koje birač može dati jednoj opciji
-    how_many_points_does_each_voter_have_to_allocate: Koliko bodova svaki birač mora dodijeliti?
+    how_many_points_does_each_voter_have_to_allocate: Koliko bodova svaki birač treba raspodijeliti?
     anonymous_voting_description: Prikaži glasove i razloge, ali ne i tko ih je dao. Ovo se ne može promijeniti nakon što je %{poll_type} započeo.
     vote_reason_description: Zamolite ljude da podijele svoje obrazloženje kada glasaju ili da dostave dodatne informacije.
     hide_results_description: Ako želite da ljudi glasaju bez da vide kako su drugi glasali, možete sakriti rezultate.
@@ -3093,7 +3097,7 @@ hr:
     closed_at: Zatvoreno u
     closing_at: Zatvaranje u
   poll_stv_vote_form:
-    helptext: Povucite kandidate iznad crte da biste ih rangirali. Stavke ispod crte nisu rangirane. Rang 1 je vaš najpoželjniji.
+    helptext: Povucite kandidate iznad crte da biste ih rangirali. Stavke ispod crte nisu rangirane. Na prvo mjesto stavite kandidata kojeg najviše želite.
     divider_text: povucite kandidate iznad ove linije kako biste ih rangirali
     stance_created: Glas zabilježen
     stance_updated: Glasanje ažurirano
