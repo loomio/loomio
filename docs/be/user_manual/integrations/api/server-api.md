@@ -1,10 +1,10 @@
 ---
 title: Серверны API
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
+source_revision: c27ee3b193231816878f1c074ff9fc2a086a88c0
 source_file: docs/en/user_manual/integrations/api/server-api.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-02'
 sections:
   introduction: a357cdc2bfc0223e
   authentication: cbabcc874f053455
@@ -26,25 +26,25 @@ sections:
   examples-6: 71ae30577730b261
   sso-profile-sync-settings: 416144004d040e4f
 generated:
-  introduction: 5ed4d7bf7176fb20
-  authentication: c8b030321312b22a
-  user-object: 3b7210a14adea4ea
-  list-users: 479e925a26aef93e
+  introduction: a7aa33636a63fe25
+  authentication: 454d82e66f6770be
+  user-object: 7103f3790b33497c
+  list-users: 20bf854c15320fc7
   example: badf59034ba2e652
-  show-user: 1fae9bf95ea9bdf3
-  examples: '06381aa6e2ef340b'
-  update-user: 75bb3bfda05f6168
-  params: ce2e93e145a3df55
-  examples-2: 03502004dcab3998
-  deactivate-user: 73ba580c820e7a3c
-  examples-3: 79b6541c4b5b757c
-  reactivate-user: 4b046f6f9451ce56
-  examples-4: 715b4da4f7358de2
-  redact-user: 8ed1c283437b61dd
-  examples-5: 845cabb854080b6e
-  delete-user: 7c9ddaa4702f22f6
-  examples-6: 82ebd7be38b5d92c
-  sso-profile-sync-settings: d59895bb751cd86a
+  show-user: 5bed11cda03a6214
+  examples: 8fd0810bb4ed6ee3
+  update-user: cbc7f08874ccbb8c
+  params: 9457e580506f9fc5
+  examples-2: 8469910fa0ec44b3
+  deactivate-user: 9b4aca761d3c0b51
+  examples-3: 6b25a8307b634ed8
+  reactivate-user: b909bfd5c137ffd9
+  examples-4: 0dc45af35d76eb8c
+  redact-user: 28f99301ca0b5be5
+  examples-5: 1cc144aa68b0b8ca
+  delete-user: 757d960524c32b85
+  examples-6: c937499934bcc504
+  sso-profile-sync-settings: 37712ba0df4529aa
 title_source: 370e81eb20eece44
 title_generated: 90268b173489314d
 ---
@@ -53,9 +53,9 @@ title_generated: 90268b173489314d
 
 # Дакументацыя сервернага API Loomio
 
-<!-- seo-description: Выкарыстоўвайце серверны API Loomio для кіравання ўліковымі запісамі карыстальнікаў у Loomio на вашым серверы. -->
+<!-- seo-description: Выкарыстоўвайце серверны API Loomio для кіравання ўліковымі запісамі ў самастойна размешчанай інсталяцыі Loomio. -->
 
-`/api/b3` прызначаны для аперацый на ўзроўні сервера. Выкарыстоўвайце `/api/b2` для дзеянняў ад імя ўліковага запісу ў Loomio.
+`/api/b3` прызначаны для аперацый на ўзроўні сервера. Выкарыстоўвайце `/api/b2` для дзеянняў ад імя ўліковага запісу Loomio.
 
 <!-- translation-section: authentication -->
 
@@ -69,13 +69,13 @@ title_generated: 90268b173489314d
 curl -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/b3/users
 ```
 
-Перадавайце ўліковыя даныя толькі ў загалоўку `Authorization`. Ключы API ў радках запыту або целах запытаў адхіляюцца.
+Перадавайце даныя для аўтэнтыфікацыі толькі ў загалоўку `Authorization`. Ключы API ў радках запыту або целах запытаў адхіляюцца.
 
 <!-- translation-section: user-object -->
 
-## Аб'ект уліковага запісу
+## Аб’ект уліковага запісу
 
-Адказы з данымі ўліковага запісу маюць такую структуру:
+Адказы з данымі ўліковых запісаў маюць такую структуру:
 
 ```json
 {
@@ -101,7 +101,7 @@ curl -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/b
 
 ## Спіс уліковых запісаў
 
-Атрымайце спіс усіх уліковых запісаў у гэтай устаноўцы Loomio.
+Атрымайце спіс усіх уліковых запісаў у інсталяцыі Loomio.
 
 `GET /api/b3/users`
 
@@ -125,7 +125,7 @@ curl -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/b
 
 ## Прагляд уліковага запісу
 
-Знайдзіце ўліковы запіс па ID карыстальніка ў Loomio або знешняй ідэнтычнасці.
+Знайдзіце ўліковы запіс паводле ID у Loomio або знешняй ідэнтычнасці.
 
 `GET /api/b3/users/:id`
 
@@ -135,13 +135,13 @@ curl -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/b
 
 ### Прыклады
 
-Па ID карыстальніка ў Loomio:
+Паводле ID уліковага запісу ў Loomio:
 
 ```bash
 curl -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/b3/users/123
 ```
 
-Па знешняй ідэнтычнасці:
+Паводле знешняй ідэнтычнасці:
 
 ```bash
 curl -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/b3/users/identity/oauth/external-123
@@ -159,7 +159,7 @@ curl -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/b
 
 ## Абнаўленне ўліковага запісу
 
-Абнавіце палі профілю ўліковага запісу, знойдзенага па ID карыстальніка ў Loomio або знешняй ідэнтычнасці.
+Абнавіце палі профілю ўліковага запісу, знойдзенага паводле ID у Loomio або знешняй ідэнтычнасці.
 
 `PATCH /api/b3/users/:id`
 
@@ -171,7 +171,7 @@ curl -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/b
 
 | Поле | Апісанне |
 | --- | --- |
-| `name` | Імя для паказу |
+| `name` | Імя для адлюстравання |
 | `username` | Імя карыстальніка ў Loomio |
 | `email` | Адрас электроннай пошты |
 
@@ -179,7 +179,7 @@ curl -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/b
 
 ### Прыклады
 
-Па ID карыстальніка ў Loomio:
+Паводле ID уліковага запісу ў Loomio:
 
 ```bash
 curl -X PATCH \
@@ -189,7 +189,7 @@ curl -X PATCH \
   https://www.loomio.com/api/b3/users/123
 ```
 
-Па знешняй ідэнтычнасці:
+Паводле знешняй ідэнтычнасці:
 
 ```bash
 curl -X PATCH \
@@ -211,7 +211,7 @@ curl -X PATCH \
 
 ## Дэактывацыя ўліковага запісу
 
-Дэактывуйце ўліковы запіс, знойдзены па ID карыстальніка ў Loomio або знешняй ідэнтычнасці.
+Дэактывуйце ўліковы запіс, знойдзены паводле ID у Loomio або знешняй ідэнтычнасці.
 
 `POST /api/b3/users/:id/deactivate`
 
@@ -221,13 +221,13 @@ curl -X PATCH \
 
 ### Прыклады
 
-Па ID карыстальніка ў Loomio:
+Паводле ID уліковага запісу ў Loomio:
 
 ```bash
 curl -X POST -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/b3/users/123/deactivate
 ```
 
-Па знешняй ідэнтычнасці:
+Паводле знешняй ідэнтычнасці:
 
 ```bash
 curl -X POST -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/b3/users/identity/oauth/external-123/deactivate
@@ -246,7 +246,7 @@ curl -X POST -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.c
 
 ## Паўторная актывацыя ўліковага запісу
 
-Паўторна актывуйце дэактываваны ўліковы запіс, знойдзены паводле ID уліковага запісу Loomio або знешняй ідэнтычнасці.
+Паўторна актывуйце дэактываваны ўліковы запіс, знойдзены паводле ідэнтыфікатара ў Loomio або знешняй ідэнтычнасці.
 
 `POST /api/b3/users/:id/reactivate`
 
@@ -256,7 +256,7 @@ curl -X POST -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.c
 
 ### Прыклады
 
-Паводле ID уліковага запісу Loomio:
+Паводле ідэнтыфікатара ў Loomio:
 
 ```bash
 curl -X POST -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/b3/users/123/reactivate
@@ -281,7 +281,7 @@ curl -X POST -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.c
 
 ## Выдаленне асабістых даных
 
-Выдаленне асабістых даных захоўвае каментарыі і іншы створаны людзьмі змест у іх групах, але выдаляе вядомыя звесткі, якія дазваляюць ідэнтыфікаваць асобу: імя, біяграфію, фота профілю, адрас электроннай пошты, уліковыя даныя для ўваходу, ідэнтычнасці і актыўныя сеансы.
+Выдаленне асабістых даных захоўвае каментарыі і іншы створаны карыстальнікамі кантэнт у іх групах, але выдаляе вядомыя звесткі, якія дазваляюць ідэнтыфікаваць асобу: імя, біяграфію, фота профілю, адрас электроннай пошты, уліковыя даныя для ўваходу, ідэнтычнасці і актыўныя сеансы.
 
 Гэта рэкамендаваны спосаб выдалення ўліковага запісу з Loomio.
 
@@ -293,7 +293,7 @@ curl -X POST -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.c
 
 ### Прыклады
 
-Паводле ID уліковага запісу Loomio:
+Паводле ідэнтыфікатара ў Loomio:
 
 ```bash
 curl -X POST -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/b3/users/123/redact
@@ -317,9 +317,9 @@ curl -X POST -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.c
 
 ## Выдаленне ўліковага запісу
 
-Выдаленне прыбірае ўліковы запіс і запісы, створаныя праз яго. Каментарыі выдаляюцца з тэм, галасы — з апытанняў, а групы, абмеркаванні, апытанні і іншыя запісы, створаныя праз гэты ўліковы запіс, таксама могуць быць выдаленыя праз сувязі ў базе даных.
+Выдаленне прыбірае ўліковы запіс і створаныя праз яго запісы. Каментарыі выдаляюцца з тэм, галасы — з апытанняў, а групы, абмеркаванні, апытанні і іншыя запісы, створаныя праз гэты ўліковы запіс, таксама могуць быць выдаленыя праз сувязі ў базе даных.
 
-Гэта прыводзіць да значнай страты даных. Настойліва рэкамендуецца замест гэтага выдаляць асабістыя даныя.
+Гэта прыводзіць да значнай страты даных. Настойліва рэкамендуецца замест гэтага выдаліць асабістыя даныя.
 
 `DELETE /api/b3/users/:id`
 
@@ -329,7 +329,7 @@ curl -X POST -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.c
 
 ### Прыклады
 
-Паводле ID уліковага запісу Loomio:
+Паводле ідэнтыфікатара ў Loomio:
 
 ```bash
 curl -X DELETE -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/b3/users/123
@@ -351,7 +351,7 @@ curl -X DELETE -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio
 
 <!-- translation-section: sso-profile-sync-settings -->
 
-## Налады сінхранізацыі профілю SSO
+## Налады сінхранізацыі профілю праз SSO
 
 Выкарыстоўвайце гэтыя налады, калі палямі профілю Loomio кіруе іншая сістэма.
 
@@ -360,7 +360,7 @@ LOOMIO_DISABLE_EDIT_USER_PROFILE=1
 # LOOMIO_SSO_UPDATE_USER_PROFILE_ON_LOGIN=1
 ```
 
-`LOOMIO_DISABLE_EDIT_USER_PROFILE=1` не дазваляе людзям самастойна рэдагаваць наступныя палі:
+`LOOMIO_DISABLE_EDIT_USER_PROFILE=1` забараняе карыстальнікам самастойна рэдагаваць гэтыя палі:
 
 | Поле | Заўвагі |
 | --- | --- |
@@ -369,8 +369,8 @@ LOOMIO_DISABLE_EDIT_USER_PROFILE=1
 | `email` | Кіруецца знешняй сінхранізацыяй |
 | `avatar_kind` / `uploaded_avatar` | Кіруецца знешняй сінхранізацыяй |
 
-Людзі па-ранейшаму могуць рэдагаваць лакальныя палі Loomio, такія як `short_bio` і `location`.
+Карыстальнікі па-ранейшаму могуць рэдагаваць лакальныя палі Loomio, напрыклад `short_bio` і `location`.
 
-`LOOMIO_SSO_UPDATE_USER_PROFILE_ON_LOGIN=1` абнаўляе `name` і `email` з даных уваходу праз SSO. Пакіньце гэты радок закаментаваным або не задавайце гэтую зменную, калі скрыпт знешняй сінхранізацыі павінен быць адзінай крыніцай гэтых абнаўленняў.
+`LOOMIO_SSO_UPDATE_USER_PROFILE_ON_LOGIN=1` абнаўляе `name` і `email` з даных уваходу праз SSO. Пакіньце гэту зменную закаментаванай або не задавайце яе, калі знешні скрыпт сінхранізацыі павінен быць адзінай крыніцай гэтых абнаўленняў.
 
-`LOOMIO_SSO_FORCE_USER_ATTRS` па-ранейшаму працуе ў існуючых усталяваннях. Гэтая налада адначасова забараняе людзям рэдагаваць палі і абнаўляе `name` і `email` пры ўваходзе праз SSO.
+`LOOMIO_SSO_FORCE_USER_ATTRS` па-ранейшаму працуе ў існых усталёўках. Гэта зменная адначасова забараняе карыстальнікам рэдагаваць палі і абнаўляе `name` і `email` пры ўваходзе праз SSO.
