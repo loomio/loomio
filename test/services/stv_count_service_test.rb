@@ -326,6 +326,34 @@ class StvCountServiceTest < ActiveSupport::TestCase
     assert_includes elected_names, 'B'
   end
 
+  test "meek droop: quota is exactly the active votes divided by seats + 1" do
+    # 10 votes, 2 seats: the quota is 10/3, not floor(10/3) + 1 = 4.
+    # A (4 votes) exceeds 10/3 and is elected in the first round.
+    options = build_options(%w[A B C])
+    ballots = []
+    4.times { ballots << [1, 2, 3] }
+    3.times { ballots << [2, 3, 1] }
+    3.times { ballots << [3, 2, 1] }
+
+    result = StvCountService::MeekCounter.new(ballots, 2, 'droop', options).count
+
+    assert_equal 3.333333333, result[:rounds].first[:quota]
+    assert_equal [1], result[:rounds].first[:elected]
+  end
+
+  test "meek droop: candidates must exceed the exact quota" do
+    # 4 votes, 3 seats: every candidate holds exactly the quota of 1, so
+    # electing at the quota would fill 4 seats. Nobody exceeds it.
+    options = build_options(%w[A B C D])
+    ballots = [[1], [2], [3], [4]]
+
+    result = StvCountService::MeekCounter.new(ballots, 3, 'droop', options).count
+
+    assert_equal 1, result[:rounds].first[:quota]
+    assert_empty result[:rounds].first[:elected]
+    assert result[:elected].size <= 3
+  end
+
   # ── Edge Cases ────────────────────────────────────────────────────
 
   test "empty ballots return empty result" do

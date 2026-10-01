@@ -70,8 +70,8 @@ module StvCountService
           break
         end
 
-        # Elect any candidate at or above quota
-        newly_elected = tallies.select { |cid, votes| @continuing.include?(cid) && votes >= quota }
+        # Elect any candidate reaching the quota
+        newly_elected = tallies.select { |cid, votes| @continuing.include?(cid) && reached_quota?(votes, quota) }
                                .sort_by { |_cid, votes| -votes }
 
         if newly_elected.any?
@@ -190,11 +190,21 @@ module StvCountService
       tallies
     end
 
+    # Meek recomputes the quota from the votes still held by candidates on
+    # each iteration, without rounding: the Droop quota is exactly
+    # active / (seats + 1) and the Hare quota active / seats.
     def compute_quota(total_active)
-      # In Meek, quota is recomputed from active votes each iteration
-      # total_active = sum of all votes held by candidates (not exhausted)
-      # We use the same formula but based on active vote total
-      (QuotaCalculator.calculate(Rational(total_active, SCALE), @seats, @quota_type) * SCALE).ceil
+      case @quota_type.to_s
+      when 'hare' then Rational(total_active, @seats)
+      else Rational(total_active, @seats + 1)
+      end
+    end
+
+    # The exact Droop quota can be held by seats + 1 candidates at once, so a
+    # candidate must exceed it. The Hare quota can only be held by `seats`
+    # candidates, so reaching it is enough.
+    def reached_quota?(votes, quota)
+      @quota_type.to_s == 'hare' ? votes >= quota : votes > quota
     end
 
     def ceil_div(numerator, denominator)
@@ -209,7 +219,7 @@ module StvCountService
 
     # Stored results are JSON, so convert fixed-point units to numbers there.
     def format_number(units)
-      (units % SCALE).zero? ? units / SCALE : (units.to_f / SCALE).round(9)
+      (units % SCALE).zero? ? (units / SCALE).to_i : (units.to_f / SCALE).round(9)
     end
   end
 end
