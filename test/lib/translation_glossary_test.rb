@@ -87,6 +87,25 @@ class TranslationGlossaryTest < ActiveSupport::TestCase
     end
   end
 
+  test "a feature name matches only when capitalised" do
+    assert TranslationGlossary.english_pattern("Choose").match?("Start a Choose poll")
+    assert_not TranslationGlossary.english_pattern("Choose").match?("choose a time")
+    assert TranslationGlossary.english_pattern("STV election").match?("STV Election settings")
+  end
+
+  test "an avoided word is ignored where it is the preferred word of another term the English uses" do
+    glossary = GLOSSARY.merge("terms" => GLOSSARY["terms"].merge(
+      "results" => {"means" => "The tally.", "fr" => {"use" => "résultat", "stems" => ["résultat"]}}
+    ))
+    TranslationGlossary.instance_variable_set(:@entries, nil)
+    TranslationGlossary.stub(:data, glossary) do
+      assert_empty TranslationGlossary.wrong_terms("Share the outcome and the results", "Partager la conclusion et les résultats", "fr")
+      assert_not_empty TranslationGlossary.wrong_terms("Share the outcome", "Partager le résultat", "fr")
+    end
+  ensure
+    TranslationGlossary.instance_variable_set(:@entries, nil)
+  end
+
   test "Turkish dotted capital I matches its lowercase stem" do
     with_glossary do
       assert_empty TranslationGlossary.missing_terms("Objection", "İtiraz", "tr")

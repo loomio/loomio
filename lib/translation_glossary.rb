@@ -42,8 +42,16 @@ module TranslationGlossary
       value = {"use" => value} if value.is_a?(String)
       Entry.new(term: term, means: info.fetch("means"), use: value.fetch("use"),
         avoid: Array(value["avoid"]), stems: Array(value.fetch("stems", [value.fetch("use")])).map { |stem| normalize(stem) },
-        note: value["note"], english_pattern: /\b#{Regexp.escape(term)}(?:s|es|d|ed|ing)?\b/i)
+        note: value["note"], english_pattern: english_pattern(term))
     end
+  end
+
+  # Matches the English term with its regular plural and verb endings.
+  # A single capitalised word names a feature (Choose, Rank), so it matches
+  # only when capitalised, not the everyday verb; other terms match in any case.
+  def self.english_pattern(term)
+    source = "\\b#{Regexp.escape(term)}(?:s|es|d|ed|ing)?\\b"
+    term.match?(/\A[A-Z][a-z]+\z/) ? Regexp.new(source) : Regexp.new(source, Regexp::IGNORECASE)
   end
 
   # The glossary as prompt text: each term with its Loomio meaning and the
@@ -61,12 +69,20 @@ module TranslationGlossary
 
   # Renderings the glossary marks as wrong for a term the English uses. A
   # reliable signal, so translators retry when they find one.
+  #
+  # An avoided word is ignored where it is the preferred translation of
+  # another term the English also uses: German Abstimmung is wrong for a
+  # single vote but right for the poll in the same sentence.
   def self.wrong_terms(english, translation, locale)
     text = normalize(translation)
-    entries(locale).filter_map do |entry|
-      next unless english.match?(entry.english_pattern)
-
-      wrong = entry.avoid.find { |avoid| contains_word?(remove_stems(text, entry), normalize(avoid)) }
+    used = entries(locale).select { |entry| english.match?(entry.english_pattern) }
+    used.filter_map do |entry|
+      others = used.reject { |other| other == entry }.flat_map(&:stems)
+      wrong = entry.avoid.find do |avoid|
+        avoid = normalize(avoid)
+        others.none? { |stem| stem.include?(avoid) || avoid.include?(stem) } &&
+          contains_word?(remove_stems(text, entry), avoid)
+      end
       %(use "#{entry.use}" instead of "#{wrong}" for "#{entry.term}") if wrong
     end
   end
