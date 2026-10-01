@@ -727,7 +727,7 @@ de:
     search_discussions_in_group: Suche Diskussionen in %{name}
     thread_nav: Themenmenü
   user_dropdown:
-    pin_sidebar: Seitenleiste verankern
+    pin_sidebar: Seitenleiste anheften
     unpin_sidebar: Seitenleiste lösen
     enable_beta_features: Experimentelle Features aktivieren
     disable_beta_features: Experimentelle Features deaktivieren
@@ -1783,7 +1783,7 @@ de:
     filtering:
       filter_threads: Diskussionen filtern
       filter_threads_aria_label: Diskussionen filtern
-      dropdown_heading: Aktuelles filtern
+      dropdown_heading: Übersicht filtern
       all_aria_label: Momentan werden alle aktuellen Diskussionen angezeigt
       all_description: Aktuelle Diskussionen anzeigen
       proposals: Vorschläge
@@ -1795,7 +1795,7 @@ de:
       all: Aktuelle Diskussionen
     thread_preview:
       you_voted: Du hast für %{position} gestimmt
-      undecided: Du bist unentschlossen
+      undecided: Du hast noch nicht abgestimmt
     threads_from:
       group: Diskussionen von
       pinned: Angeheftete Diskussionen
@@ -2107,8 +2107,8 @@ de:
     save_changes: Speichern
     change_vote: Ändere deine Stimmabgabe
     change_response: Antwort ändern
-    max_score: Maximale Ergebnis
-    min_score: Minimale Ergebnis
+    max_score: Höchste Bewertung
+    min_score: Niedrigste Bewertung
     too_long: Zu lang
     edit_warning: 'Wir empfehlen dir Änderungen nur durchzuführen wenn es kleine Schreib-oder Grammatikfehler sind. Für grössere Inhaltsänderungen, schliesse diese %{pollType} und beginne eine neue. '
     no_voting: Nur für Diskussionen, Wahlen abgeschaltet
@@ -2306,7 +2306,7 @@ de:
     started_by: Erstellt von %{name}
   poll_common_votes_panel:
     vote_removed: Stimme entfernt
-    undecided: Unentschieden
+    undecided: Noch nicht abgestimmt
     newest_first: Neueste zuerst
     oldest_first: Älteste zuerst
     priority_first: Zustimmende zuerst
@@ -2333,9 +2333,9 @@ de:
     participation_records_restricted: Du kannst nach Schließung der Abstimmung sehen, wer teilgenommen hat
     vote_weight: Stimmgewicht %{weight}
   poll_common_undecided_panel:
-    show_undecided: Zeige %{count} unentschlossen
+    show_undecided: "%{count} Personen anzeigen, die noch nicht abgestimmt haben"
     show_invitations: Ausstehende Einladungen anzeigen
-    undecided_users: Unentschlossen (%{count})
+    undecided_users: Noch nicht abgestimmt (%{count})
     invitation_count_singular: Eine weitere Person wurde zur Teilnahme per E-Mail eingeladen
     invitation_count_plural: "%{count} weitere Personen wurden per E-Mail zur Teilnahme eingeladen"
   poll_common_undecided_user:
@@ -2420,7 +2420,7 @@ de:
     minimum_stance_choices_hint: Das heißt, bewerte deine drei besten Eissorten
     ranked_choice_created: Prioritätensetzung erstellt
     ranked_choice_updated: Prioritätensetzung aktualisiert
-    rank: Rang
+    rank: Ordnen
     points: Punkte
     average: Durchschnitt
     mean: Bedeuten
@@ -2478,7 +2478,7 @@ de:
     total: Gesamt
   poll_remove_vote:
     title: Deine Stimme entfernen?
-    helptext: Bist du sicher, dass du deine Stimme entfernen möchtest? Du wirst als unentschlossen aufgeführt und kannst auf Wunsch später noch einmal abstimmen.
+    helptext: Bist du sicher, dass du deine Stimme entfernen möchtest? Du wirst unter „Noch nicht abgestimmt“ aufgeführt und kannst auf Wunsch später noch einmal abstimmen.
     confirm: Stimme entfernen
     success: Stimme entfernt
   poll_poll_vote_form:
@@ -2807,7 +2807,10 @@ de:
         submit: Siehe Angebotsvorlagen
       share_an_outcome:
         title: Teile das Fazit eines Vorschlags
-        helptext: "<p>Um Entscheidungen zu beschleunigen, gibt es für Vorschläge eine Frist zur Abstimmung. Nach Ablauf dieser Frist wird die Abstimmung geschlossen und du wirst benachrichtigt, um das Ergebnis des Vorschlags mitzuteilen.</p><p> Das Ergebnis bietet die Möglichkeit zu sagen, ob der Vorschlag erfolgreich war und was als nächstes passieren wird.</p><p> Wenn die Frist für deinen Vorschlag noch nicht abgelaufen ist, du aber trotzdem fortfahren möchtest, kannst du auf <b>„Vorzeitig schließen“</b> klicken.</p><p> <b>Gib zum richtigen Zeitpunkt ein Ergebnis</b> für deinen Vorschlag ein.</p>"
+        helptext: |
+          <p>Wenn die Frist des Vorschlags abläuft, endet die Stimmabgabe und du wirst aufgefordert, ein Fazit zu teilen.</p>
+          <p>Im Fazit erklärst du nach Durchsicht der Stimmen und Kommentare, was du entschieden hast (oder was als Nächstes passiert).</p>
+          <p>Wenn die Frist noch nicht abgelaufen ist, du aber bereit bist, weiterzumachen, kannst du <b>Vorzeitig beenden</b> wählen.</p>
         submit: Vorschlag ansehen
         cancel: Mach das später
       start_a_discussion:
@@ -2896,15 +2899,15 @@ de:
       choose: Wählen
       simple_poll: Einfache Abstimmung
       choose_hint: Die Abstimmenden wählen die beste Option (oder Optionen)
-      score: Punktzahl
+      score: Bewerten
       score_hint: Die Abstimmenden vergeben für jede Option eine Punktzahl
-      allocate: Zuweisen
+      allocate: Verteilen
       allocate_hint: Die Abstimmenden verteilen ein Punktebudget auf die Optionen
       ranked_choice: Rangfolge
       ranked_choice_hint: Die Abstimmenden ordnen die Optionen von der beliebtesten bis zur unbeliebtesten
       time_poll: Terminfindung
       time_poll_hint: Abstimmende geben an, wann sie für ein Treffen verfügbar sind
-      rank: Rang
+      rank: Ordnen
       time: Zeit
       stv: STV-Wahl
       stv_hint: Mehrere Gewinner proportional mittels übertragbarer Einzelstimme wählen
@@ -2969,8 +2972,8 @@ de:
     notify_voters_when_voting_opens: Abstimmende benachrichtigen, wenn die Abstimmung beginnt
     voters_notified_when_opens: Die Abstimmenden werden benachrichtigt, sobald die Abstimmung beginnt
     who_may_vote: Wer darf bei dieser %{poll_type} abstimmen?
-    anonymous_votes_are_stored_separately_from_voter_identities_description: Anonyme Stimmen werden getrennt von den Wählerdaten gespeichert. Die Ergebnisse werden nach Schließung der Wahllokale veröffentlicht. Wähler können keine Gründe hinzufügen, ihre Stimme nach der Abgabe nicht mehr überprüfen oder ändern.
-    anonymous_voting_explanation: Es soll unmöglich sein, die Stimmabgabe einer Person nachzuvollziehen. Anonyme Stimmen werden getrennt von den Wähleridentitäten erfasst. Die Ergebnisse werden erst nach Schließung der Wahllokale veröffentlicht. Wähler können keine Begründungen hinzufügen, ihre Stimme nach der Abgabe nicht mehr überprüfen oder ändern.
+    anonymous_votes_are_stored_separately_from_voter_identities_description: Anonyme Stimmen werden getrennt von den Identitäten der Abstimmenden gespeichert. Ergebnisse erscheinen nach Ende der Stimmabgabe. Abstimmende können keine Begründungen hinzufügen, ihre Stimme nach der Abgabe nicht mehr überprüfen oder ändern
+    anonymous_voting_explanation: Es soll unmöglich sein, die Stimmabgabe einer Person nachzuvollziehen. Anonyme Stimmen werden getrennt von den Identitäten der Abstimmenden erfasst. Die Ergebnisse erscheinen erst nach Ende der Stimmabgabe. Abstimmende können keine Begründungen hinzufügen, ihre Stimme nach der Abgabe nicht mehr überprüfen oder ändern.
     anonymous_voting_risk_explanation: Anonyme Stimmen werden getrennt von den Identitäten der Abstimmenden gespeichert. Ergebnisse werden erst nach Ende der Abstimmung angezeigt, und Abstimmende können keine Begründungen hinzufügen, ihre Stimme nach der Abgabe einsehen oder ändern. Diese Maßnahmen verringern das Risiko, eine Person mit einer Stimme zu verknüpfen. Ergebnisse können jedoch weiterhin Rückschlüsse zulassen, wenn nur wenige Personen teilnahmeberechtigt sind oder abstimmen, das Ergebnis einstimmig ist, Abstimmungsmuster auffällig sind oder Abstimmende ihre Auswahl offenlegen.
     anonymous_votes_stored_separately: Anonyme Stimmen werden getrennt von den Identitäten der Abstimmenden gespeichert. Ergebnisse werden erst nach Ende der Abstimmung angezeigt, und Abstimmende können keine Begründungen hinzufügen, ihre Stimme nach der Abgabe einsehen oder ändern.
     stance_reason_required_when_disagreeing: Erforderlich bei Meinungsverschiedenheiten
@@ -3128,7 +3131,7 @@ de:
     closed_at: Geschlossen um
     closing_at: Schließt um
   poll_stv_vote_form:
-    helptext: Ziehe die Kandidaten über die Linie, um sie zu sortieren. Elemente unterhalb der Linie sind nicht sortiert. Rang 1 ist dein Favorit.
+    helptext: Ziehe die Kandidierenden über die Linie, um sie zu ordnen. Elemente unterhalb der Linie sind nicht geordnet. Platz 1 ist dein Favorit.
     divider_text: Ziehe die Kandidaten oberhalb dieser Linie, um sie zu sortieren.
     stance_created: Stimme gespeichert
     stance_updated: Stimme aktualisiert
