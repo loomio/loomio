@@ -7,8 +7,13 @@ function useLightTheme(test) {
   });
 }
 
+// The drawer can already be open, for example on a wide viewport or when an
+// earlier test left it open, and clicking the toggle would then close it.
 function openSidebar(page, settings = false) {
-  page.clickAndWait('.navbar__sidenav-toggle', '.sidenav-left');
+  page.waitFor('.navbar__sidenav-toggle');
+  page.pause(500);
+  page.execute("if (!document.querySelector('.sidenav-left.v-navigation-drawer--active')) document.querySelector('.navbar__sidenav-toggle').click()");
+  page.waitFor('.sidenav-left');
   if (settings) page.clickAndWait('.sidebar__user-dropdown', '.sidebar-close-settings');
 }
 

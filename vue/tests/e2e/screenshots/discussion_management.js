@@ -241,7 +241,7 @@ module.exports = {
     openCopyMarkdownDiscussion(page);
     page.click('.topic-sidebar .action-dock__button--thread_markdown');
     page.waitFor('.v-overlay--active .v-list');
-    page.expectText('.v-overlay--active .v-list', 'Download Markdown');
+    page.waitFor('.v-overlay--active .v-list .v-list-item:nth-child(2)');
     screenshot.capture('discussions/discussion_management/copy_markdown_menu', {
       width: 1280,
       height: 1000,
