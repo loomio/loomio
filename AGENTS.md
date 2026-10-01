@@ -105,6 +105,8 @@ success messages).
 
 - **Change an existing English value only together with every translation.** Existing keys are translated into other languages, so an English change alone leaves the translations saying something else. Update every locale for that key in the same change: apply mechanical edits such as links directly, and retranslate changed wording.
 - When you cannot update every translation, create a new key with the new value and update the code to reference the new key.
+- **Use `config/locales/glossary.yml` for Loomio's terms and each locale's style.** It gives every key term (thread, discussion, poll, outcome, proposal options…) one preferred translation per app locale, with its Loomio meaning, and each locale's register. The app string translator (`rake loomio:translate_strings`) and the manual translator both send it to the model. Choose terms by correct Loomio meaning first, then a length close to the English, then the words people know from popular apps (WhatsApp for poll, Slack for thread). Thread and discussion must stay distinct: a thread holds a discussion or a poll. Outcome always uses the word for "conclusion". The amount of existing text a better term changes is not a reason to keep a worse one.
+- **Check and apply the glossary.** `rake loomio:check_glossary` writes `tmp/glossary/<locale>.csv` listing app strings that use a rendering the glossary rules out (or omit a preferred term); `rake loomio:apply_glossary` revises those strings with codex (add `MISSING=1` to include strings missing a preferred term, `LOCALES=fr,de` to limit locales). `bundle exec ruby docs/check_glossary.rb` reports translated manual sections the same way.
 - **Review retranslation PRs against `config/locales/translation_corrections.md`** — that file logs sense-errors Google Translate has made before (polysemous short labels, paired actions drifting, misleading German words, glossary overrides like outcome→conclusion across many locales). If a new translation pass reintroduces one of those patterns, catch it at review.
 - **When you hand-correct a translation, append it to `translation_corrections.md`** with the file, key, before/after, and a one-line "why it was wrong". The point is to accumulate the context Google doesn't have, so reviewers of the next retranslation can watch for the same traps.
 - **translation keys should closely match their values** So that templates are easy to read. Rather than title, call the key what the title says.
@@ -135,6 +137,7 @@ Register-grooming completed so far:
 - `it` — Italian informal `tu` in PR #12542.
 - `pt_BR` — Brazilian Portuguese register cleanup in PR #12543.
 - Broad all-locale pass started in PR #12539; prefer dedicated locale PRs for careful review when a language needs substantial grammar fixes.
+- Every app locale's register is now recorded as its `style` in `config/locales/glossary.yml`, the register peers use with each other in everyday apps. Catalan and Romanian use informal `tu` on that basis.
 
 ## Frontend / Vue
 

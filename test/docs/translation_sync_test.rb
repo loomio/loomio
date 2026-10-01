@@ -22,7 +22,7 @@ class DocsTranslationSyncTest < Minitest::Test
     write("fr/#{PAGE}", L.dump(@metadata, @translated))
     @requests = []
     @runner = Object.new
-    @runner.define_singleton_method(:run) { |paths| }
+    @runner.define_singleton_method(:translate) { |paths| [] }
     @sync = Docs::TranslationSync.new(root: @root, locales: [L.locale("fr")], translator: ->(locale) { @requests << locale; @runner })
   end
 
@@ -43,8 +43,9 @@ class DocsTranslationSyncTest < Minitest::Test
       source = L.parse(@root.join("en", PAGE).read)
       metadata = @metadata.merge("sections" => source.sections.to_h { |s| [s.id, s.text_hash] })
       write("fr/#{PAGE}", L.dump(metadata, @translated))
+      []
     end
-    @runner.stub(:run, run) do
+    @runner.stub(:translate, run) do
       with_paths { assert_equal ["docs/fr/#{PAGE}"], @sync.update }
     end
     assert_equal ["fr"], @requests
@@ -52,10 +53,33 @@ class DocsTranslationSyncTest < Minitest::Test
 
   def test_customer_corrections_reach_the_existing_translator_without_english_changes
     write("fr/#{PAGE}", L.dump(@metadata, [@translated.first.with(text: "# Exemple\n\nConsultez cette page.")]))
-    @runner.stub(:run, ->(paths) { assert_equal [PAGE], paths }) do
+    @runner.stub(:translate, ->(paths) { assert_equal [PAGE], paths; [] }) do
       with_paths { assert_empty @sync.update }
     end
     assert_equal ["fr"], @requests
+  end
+
+  def test_retranslation_runs_every_page_in_parallel_and_collects_failures
+    pages = %w[user_manual/one.md user_manual/two.md user_manual/three.md]
+    @root.join("SUMMARY.md").write(pages.map { |page| "- [#{page}](#{page})\n" }.join)
+    pages.each { |page| write("en/#{page}", @english) }
+    translated = Queue.new
+    running = Queue.new
+    concurrent = 0
+    runner = Object.new
+    runner.define_singleton_method(:translate) do |paths|
+      running << 1
+      concurrent = [concurrent, running.size].max
+      sleep 0.05
+      running.pop
+      translated << paths.first
+      paths.first.include?("two") ? ["#{paths.first}: failed"] : []
+    end
+    sync = Docs::TranslationSync.new(root: @root, locales: [L.locale("fr")], translator: ->(_locale) { runner }, retranslate: true, jobs: 3)
+    error = with_paths { assert_raises(RuntimeError) { sync.update } }
+    assert_includes error.message, "fr: user_manual/two.md: failed"
+    assert_equal pages.sort, Array.new(translated.size) { translated.pop }.sort
+    assert_operator concurrent, :>, 1
   end
 
   def test_check_rejects_stale_pages_without_starting_the_translator

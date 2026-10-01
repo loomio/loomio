@@ -6,14 +6,19 @@ require_relative "translate"
 module Docs
   # Inspect every published page because a correction can arrive from an edit on
   # GitHub. Only pages needing translation or correction context reach the
-  # translator.
+  # translator, or every page when retranslating. Pages are independent, so
+  # up to `jobs` of them are translated at once across all languages.
   class TranslationSync
     ROOT = Pathname(__dir__).freeze
+    JOBS = 8
 
-    def initialize(root: ROOT, locales: Localization.locales.select(&:published), translator: nil)
+    def initialize(root: ROOT, locales: Localization.locales.select(&:published), translator: nil, retranslate: false,
+      jobs: Integer(ENV.fetch("DOCS_TRANSLATION_JOBS", JOBS)))
       @root = root
       @locales = locales
-      @translator = translator || ->(locale) { PageTranslator.new(locale, root: @root) }
+      @retranslate = retranslate
+      @jobs = jobs
+      @translator = translator || ->(locale) { PageTranslator.new(locale, root: @root, retranslate: @retranslate) }
     end
 
     def paths
@@ -28,8 +33,16 @@ module Docs
 
     def update
       before = source_paths.to_h { |path| [path, contents(path)] }
-      @locales.each do |locale|
-        pending = paths.filter_map do |path, title|
+      failures = translate(@locales.flat_map { |locale| pending_paths(locale).map { |path| [locale, path] } })
+      raise "Manual translation failed:\n- #{failures.join("\n- ")}" if failures.any?
+      validate!
+      before.keys.select { |path| before.fetch(path) != contents(path) }.map { |path| "docs/#{path}" }
+    end
+
+    def pending_paths(locale)
+      return paths.keys if @retranslate
+
+      paths.filter_map do |path, title|
           english = Localization.parse(Localization.annotate(@root.join("en", path).read))
           file = @root.join(locale.code, path)
           target = file.file? ? Localization.parse(file.read) : Localization::Document.new(metadata: {}, body: "", sections: [])
@@ -38,11 +51,25 @@ module Docs
           corrected = target.sections.any? { |section| target.corrected?(section.id) }
           title_changed = target.metadata["title_source"] != Localization.text_hash(title)
           path if missing || removed.any? || corrected || title_changed
-        end
-        @translator.call(locale.code).run(pending) unless pending.empty?
       end
-      validate!
-      before.keys.select { |path| before.fetch(path) != contents(path) }.map { |path| "docs/#{path}" }
+    end
+
+    # Each worker takes the next page and translates it with its own
+    # translator, so no translator state is shared between threads.
+    def translate(jobs)
+      queue = Queue.new
+      jobs.each { |job| queue << job }
+      queue.close
+      failures = Queue.new
+      Array.new([@jobs, jobs.size].min) do
+        Thread.new do
+          while (job = queue.pop)
+            locale, path = job
+            @translator.call(locale.code).translate([path]).each { |failure| failures << "#{locale.code}: #{failure}" }
+          end
+        end
+      end.each(&:join)
+      Array.new(failures.size) { failures.pop }
     end
 
     def validate!
@@ -71,8 +98,8 @@ end
 
 if $PROGRAM_NAME == __FILE__
   begin
-    raise "Usage: bundle exec ruby docs/sync_translations.rb [--check]" unless ARGV.empty? || ARGV == %w[--check]
-    sync = Docs::TranslationSync.new
+    raise "Usage: bundle exec ruby docs/sync_translations.rb [--check | --retranslate]" unless ARGV.empty? || ARGV == %w[--check] || ARGV == %w[--retranslate]
+    sync = Docs::TranslationSync.new(retranslate: ARGV == ["--retranslate"])
     ARGV == ["--check"] ? sync.validate! : sync.update
     puts "Published manual translations are current and structurally valid."
   rescue StandardError => error
