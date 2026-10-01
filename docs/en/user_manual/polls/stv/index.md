@@ -54,6 +54,7 @@ The quota is the minimum number of votes a candidate needs to win a seat. It can
 Droop
   : Recommended. The standard quota type for most STV elections, and used by Ireland, Australia, and Scotland. Droop guarantees a majority coalition wins a majority of seats. It is calculated as:
 \\[ floor(\frac{votes}{(seats + 1)}) + 1 \\]
+    Meek STV uses the exact quota, votes ÷ (seats + 1), without rounding. It recalculates the quota each round from the votes still held by candidates. A candidate must exceed it to be elected.
 
 Hare
   : A higher minimum threshold, and more proportional for smaller factions.
@@ -76,7 +77,7 @@ In this example, Oatmilk Cooperative is electing three people to oversee the reu
 - **Rank 2** = second choice
 - Continue ranking as many candidates as desired
 
-Voters are not required to rank every candidate. Unranked candidates will not receive any of that voter's support.
+Voters must rank at least one candidate, but do not need to rank every candidate. Unranked candidates will not receive any of that voter's support.
 
 <!-- translation-section: how-counting-works -->
 
@@ -85,9 +86,13 @@ The count is performed as follows:
 
 1. A **quota** is calculated (minimum votes needed to win a seat).
 2. **First preferences** are counted for each candidate.
-3. If a candidate meets the quota, they are **elected**. Their surplus votes (above the quota) are **transferred** to voters' next preferences at a fractional value.
-4. If no candidate meets the quota, the candidate with the **fewest votes is eliminated**. Their votes transfer to voters' next preferences at full value.
+3. Every candidate who meets the quota is **elected**. Their surplus votes (above the quota) are **transferred** to voters' next preferences at a fractional value, largest surplus first. Votes only transfer to candidates who are still in the count.
+4. If no surplus is left to transfer, the candidate with the **fewest votes is eliminated**. Their votes transfer to voters' next preferences at full value.
 5. This process repeats until all seats are filled.
+
+In Scottish STV, each transferred vote's value is rounded down to five decimal places, as in Scottish council elections.
+
+If two or more candidates have the fewest votes, the one with fewer votes at the most recent earlier round is eliminated.
 
 >[!TIP]
 >If a voter has ranked no remaining candidates, their ballot is "exhausted" and that vote is lost. This is why ranking more candidates is generally better.
@@ -120,7 +125,7 @@ A summary table of the winners with five columns:
 | **Final tally** | The candidate's vote tally at the moment they were elected. Due to vote transfers, this is often higher than their first preferences. |
 | **Surplus** | How much the candidate's final tally exceeded the quota (final tally minus quota). A larger surplus means stronger support beyond what was needed to win. In Scottish STV, this surplus is redistributed to voters' next preferences. |
 
-If the count results in a tie — where eliminating any of the remaining candidates would change the outcome — those candidates are shown in a separate table rather than arbitrarily choosing a winner.
+Sometimes earlier rounds cannot break a tie. If the tie does not change who is elected, the count continues. If it does, the count stops at that round. Candidates who win however the tie is broken are shown as elected. Candidates who win only some ways are shown in a separate table, rather than choosing a winner arbitrarily.
 
 <!-- translation-section: round-by-round-details -->
 
