@@ -1,6 +1,6 @@
 ---
 title: STV-Wahlen
-source_revision: 71554be8e61a76613b0707b8262302c22299a5d0
+source_revision: cf8da02f691349beecf6ac6444971fad130d4ddd
 source_file: docs/en/user_manual/polls/stv/index.md
 translated:
   provider: codex/gpt-6.1-sol
@@ -10,14 +10,14 @@ sections:
   when-to-use-stv: e37de389c27f7d87
   creating-an-stv-election: 2d475191d922803f
   number-of-seats: 9463d911f230eea0
-  counting-method: 31e83bb5bc08829c
-  quota-type: 12d5c4b5fe2abb1d
-  how-voting-works: b9a7df3cedbe4d50
-  how-counting-works: 50ba0a7800bc5667
+  counting-method: b7ff2dce779d15c1
+  quota-type: f9ab31d93916bf24
+  how-voting-works: bace7c735dbb39f1
+  how-counting-works: 794084f981b2cf3f
   understanding-results: 8442813a9c097112
   method-and-quota: 90113296c3d59816
-  elected-candidates: a6c3dbb5548c7d41
-  round-by-round-details: e4a8789dae29d49e
+  elected-candidates: 7ac0bae756fa5608
+  round-by-round-details: c0ccc83e51dcaa1a
   exporting-ballots: 582555dd13633bf0
   share-an-outcome: 6a02aed173b368b9
 generated:
@@ -25,14 +25,14 @@ generated:
   when-to-use-stv: 76bfcdfc1f879cbc
   creating-an-stv-election: c678e56351e8a0f9
   number-of-seats: ac7e68024679ec33
-  counting-method: b4f256f3701f4b7c
-  quota-type: 7207c678a327adae
-  how-voting-works: bc622554966fa560
-  how-counting-works: b64e33415e309e89
+  counting-method: ee49594782d95648
+  quota-type: c1283dfba5ec42e8
+  how-voting-works: 20d5da3f60ee5720
+  how-counting-works: 10f4173cd7f222c9
   understanding-results: 82ce1b65596abaaf
   method-and-quota: 0b1f3303768e8ace
-  elected-candidates: 8f56c890d529a3e5
-  round-by-round-details: c71f016de66c38b4
+  elected-candidates: a8022595e944f4fb
+  round-by-round-details: f28a96eab2be537a
   exporting-ballots: 5c500dd566fa1299
   share-an-outcome: eabe596c9fc3d3af
 title_source: cd3e1a4cdc2456a6
@@ -80,9 +80,11 @@ Die Anzahl der Personen, die gewählt werden sollen. Sie muss kleiner sein als d
 
 Für die Auszählung stehen zwei Methoden zur Verfügung:
 
-Scottish STV : Empfohlen. Diese Methode verwendet das Weighted Inclusive Gregory Method (WIGM), das seit 2007 bei schottischen Kommunalwahlen eingesetzt wird. Die Regeln sind klar definiert und einfach anzuwenden. Sie eignet sich für die meisten Organisationen.
-
-Meek STV : Eine mathematisch genauere Methode mit wiederholter Berechnung. Wenn ein Kandidat ausscheidet, werden die Stimmen neu ausgezählt, als hätte diese Person nie kandidiert.
+Scottish STV
+  : Empfohlen. Diese Methode verwendet die Weighted Inclusive Gregory Method (WIGM), die seit 2007 bei schottischen Kommunalwahlen eingesetzt wird. Die Regeln sind klar definiert und einfach anzuwenden. Sie eignet sich für die meisten Organisationen.
+  
+Meek STV
+  : Eine genauere Methode, deren Auszählung nur ein Computer durchführen kann. Wenn ein Kandidat gewählt wird, überträgt Meek weiterhin den nicht benötigten Anteil jeder Stimme auf die nachfolgenden Präferenzen der Abstimmenden. Das gilt auch für Stimmen, die den Kandidaten erst später in der Auszählung erreichen. Wenn ein Kandidat ausscheidet, werden die Stimmen neu ausgezählt, als hätte diese Person nie kandidiert. Weniger Stimmen bleiben ungenutzt als bei Scottish STV, aber die Auszählung lässt sich nicht von Hand überprüfen.
 
 <!-- translation-section: quota-type -->
 
@@ -90,15 +92,19 @@ Meek STV : Eine mathematisch genauere Methode mit wiederholter Berechnung. Wenn 
 
 Die Quote ist die Mindestzahl an Stimmen, die ein Kandidat für einen Sitz braucht. Es gibt zwei Arten:
 
-Droop : Empfohlen. Die Droop-Quote ist bei den meisten STV-Wahlen üblich und wird in Irland, Australien und Schottland verwendet. Sie stellt sicher, dass eine Koalition mit der Mehrheit der Stimmen auch die Mehrheit der Sitze erhält. Sie wird so berechnet: \\[ floor(\frac{votes}{(seats + 1)}) + 1 \\]
+Droop
+  : Empfohlen. Die Standardquote für STV-Wahlen, die in Irland, Australien und Schottland verwendet wird. Sie ist die kleinste Quote, die höchstens so viele Kandidaten erreichen können, wie Sitze verfügbar sind. Eine Gruppe von Abstimmenden, die ihre eigenen Kandidaten auf die ersten Ränge setzt, gewinnt mindestens so viele Sitze, wie ihr Stimmenanteil ganze Quoten umfasst. Sie wird so berechnet:
+\\[ floor(\frac{votes}{(seats + 1)}) + 1 \\]
 
 Hare
-  : Eine höhere Mindestzahl an Stimmen, die kleinere Gruppen stärker berücksichtigt.
-    DSA-Ortsgruppen bevorzugen Hare, um die Vertretung von Minderheiten zu schützen.
-   Sie wird so berechnet:
+  : Eine größere Quote. Gruppen mit vielen Stimmen benötigen mehr davon für jeden gewonnenen Sitz. Dadurch gewinnen kleinere Gruppen eher die letzten Sitze. Sie wird so berechnet:
     \\[ \frac{votes}{seats}\\]
 
->[!TIP]
+In beiden Formeln ist *votes* die Anzahl der Stimmzettel, auf denen mindestens ein Kandidat eingeordnet ist.
+
+Meek STV berechnet die Quote ohne Rundung, für Droop als votes ÷ (seats + 1). Die Quote wird in jeder Runde anhand der Stimmen neu berechnet, die noch auf Kandidaten entfallen. Ein Kandidat muss sie überschreiten, um gewählt zu werden.
+  
+  >[!TIP]
   > Die Droop-Quote ist immer niedriger als die Hare-Quote. Bei einer Wahl mit 100 Stimmen und vier Sitzen beträgt die Droop-Quote zum Beispiel 21 und die Hare-Quote 25.
 
 <!-- translation-section: how-voting-works -->
@@ -113,7 +119,7 @@ In diesem Beispiel wählt die Oatmilk Cooperative drei Personen, die ihren Versu
 - **Rang 2** = zweite Wahl
 - Ordne so viele weitere Kandidaten, wie du möchtest
 
-Die Abstimmenden müssen nicht alle Kandidaten in eine Rangfolge bringen. Kandidaten ohne Rang erhalten keine Unterstützung von dieser Person.
+Die Abstimmenden müssen mindestens einen Kandidaten in eine Rangfolge bringen, aber nicht alle Kandidaten. Kandidaten ohne Rang erhalten keine Unterstützung von dieser Person.
 
 <!-- translation-section: how-counting-works -->
 
@@ -121,13 +127,20 @@ Die Abstimmenden müssen nicht alle Kandidaten in eine Rangfolge bringen. Kandid
 Die Stimmen werden wie folgt ausgezählt:
 
 1. Die **Quote** wird berechnet (die Mindestzahl an Stimmen für einen Sitz).
-2. Für jeden Kandidaten werden die **Erste Präferenzen** gezählt.
-3. Erreicht ein Kandidat die Quote, ist er **gewählt**. Seine überschüssigen Stimmen (über der Quote) werden anteilig auf die nächsten Präferenzen der Wähler **übertragen**.
-4. Erreicht kein Kandidat die Quote, **scheidet der Kandidat mit den wenigsten Stimmen aus**. Seine Stimmen werden mit vollem Wert auf die nächsten Präferenzen der Wähler übertragen.
-5. Das wiederholt sich, bis alle Sitze besetzt sind.
+2. Für jeden Kandidaten werden **Erste Präferenzen** gezählt.
+3. Jeder Kandidat, der die Quote erreicht, ist **gewählt**. Seine überschüssigen Stimmen (über der Quote) werden anteilig auf die nächsten Präferenzen der Abstimmenden **übertragen**, beginnend mit dem größten Überschuss. Stimmen werden nur auf Kandidaten übertragen, die noch in der Auszählung sind.
+4. Ist kein Überschuss mehr zu übertragen, **scheidet der Kandidat mit den wenigsten Stimmen aus**. Seine Stimmen werden mit vollem Wert auf die nächsten Präferenzen der Abstimmenden übertragen.
+5. Entspricht die Zahl der verbleibenden Kandidaten der Zahl der noch zu besetzenden Sitze, sind sie alle gewählt, auch wenn sie die Quote nicht erreicht haben.
+6. Andernfalls wird die Auszählung ab Schritt 3 wiederholt, bis alle Sitze besetzt sind.
+
+Durch die anteilige Übertragung werden nur die Stimmen weitergegeben, die eine gewählte Person nicht benötigt. Beträgt die Quote zum Beispiel 26 und ein Kandidat hat 40 Stimmen, ist sein Überschuss 14. Jeder seiner 40 Stimmzettel wird auf die nächste Präferenz übertragen und zählt dort mit einem Wert von 14 ÷ 40 = 0,35 einer Stimme.
+
+Bei Scottish STV wird der Wert jeder übertragenen Stimme auf fünf Nachkommastellen abgerundet, wie bei schottischen Kommunalwahlen.
+
+Haben zwei oder mehr Kandidaten die wenigsten Stimmen, scheidet derjenige aus, der in der letzten früheren Runde mit unterschiedlichem Stimmenstand weniger Stimmen hatte.
 
 >[!TIP]
->Wenn eine abstimmende Person keinen der verbleibenden Kandidaten eingeordnet hat, ist ihr Stimmzettel „erschöpft“ und die Stimme kann nicht weiter übertragen werden. Deshalb ist es meist sinnvoll, mehr Kandidaten einzuordnen.
+>Ein Stimmzettel zählt nur, solange darauf ein Kandidat eingeordnet ist, der noch in der Auszählung ist. Bleibt keiner mehr übrig, ist der Stimmzettel „erschöpft“ und zählt nicht mehr.
 
 <!-- translation-section: understanding-results -->
 
@@ -152,18 +165,18 @@ Eine Übersichtstabelle der gewählten Personen mit fünf Spalten:
 | Spalte | Bedeutung |
 |--------|---------|
 | **Kandidat** | Der Name des gewählten Kandidaten |
-| **Runde gewählt** | Die Auszählungsrunde, in der der Kandidat die Quote erreicht und einen Sitz gewonnen hat. Runde 1 bedeutet, dass die Ersten Präferenzen allein ausgereicht haben. In späteren Runden waren übertragene Stimmen von ausgeschiedenen oder bereits gewählten Kandidaten nötig. |
+| **Runde gewählt** | Die Auszählungsrunde, in der der Kandidat die Quote erreicht und einen Sitz gewonnen hat. Runde 1 bedeutet, dass die Ersten Präferenzen allein ausgereicht haben. In späteren Runden waren übertragene Stimmen von ausgeschiedenen Kandidaten oder Überschüsse bereits gewählter Kandidaten nötig. |
 | **Erste Präferenzen** | Wie viele Abstimmende diesen Kandidaten auf Rang 1 gesetzt haben. Das zeigt seine direkte Unterstützung vor der Übertragung von Stimmen. |
 | **Endergebnis** | Der Stimmenstand des Kandidaten zum Zeitpunkt seiner Wahl. Durch übertragene Stimmen liegt er oft über der Zahl seiner Ersten Präferenzen. |
-| **Überschuss** | Der Betrag, um den der Stimmenstand des Kandidaten die Quote überschritten hat (Stimmenstand minus Quote). Ein größerer Überschuss zeigt mehr Unterstützung, als für die Wahl nötig war. Bei Scottish STV wird dieser Überschuss auf die nächsten Präferenzen der Abstimmenden verteilt. |
+| **Überschuss** | Der Betrag, um den das Endergebnis des Kandidaten die Quote überschritten hat (Endergebnis minus Quote). Ein größerer Überschuss zeigt mehr Unterstützung, als für die Wahl nötig war. Bei Scottish STV wird dieser Überschuss auf die nächsten Präferenzen der Abstimmenden verteilt. |
 
-Führt die Auszählung zu einem Gleichstand, bei dem das Ausscheiden eines der verbleibenden Kandidaten das Ergebnis verändern würde, werden diese Kandidaten in einer eigenen Tabelle angezeigt. Es wird kein Gewinner willkürlich bestimmt.
+Manchmal lässt sich ein Gleichstand auch anhand früherer Runden nicht auflösen. Wenn der Gleichstand keinen Einfluss darauf hat, wer gewählt wird, geht die Auszählung weiter. Andernfalls endet sie in dieser Runde. Kandidaten, die unabhängig von der Auflösung des Gleichstands gewinnen, werden als gewählt angezeigt. Kandidaten, die je nach Auflösung gewinnen oder verlieren könnten, werden in einer eigenen Tabelle angezeigt. Loomio zeigt sie mit Gleichstand an, statt einen von ihnen zufällig auszuwählen.
 
 <!-- translation-section: round-by-round-details -->
 
 ### Details zu jeder Runde
 
-Klappe **Details zu jeder Runde** auf, um die Übertragung von Stimmen und das Ausscheiden von Kandidaten zu sehen. Jede Zeile steht für einen Kandidaten und jede Spalte für eine Auszählungsrunde:
+Klappe **Details zu jeder Runde** auf, um die Übertragung von Stimmen und das Ausscheiden von Kandidaten zu sehen. Jede Zeile steht für einen Kandidaten und jede Spalte für eine Auszählungsrunde. Jede Zahl zeigt den Stimmenstand des Kandidaten zu Beginn dieser Runde:
 
 ![](stv-results.png)
 

@@ -1,6 +1,6 @@
 ---
 title: Elezioni STV
-source_revision: 9c60c42fc739483fa23f15d9f34a1e9245518092
+source_revision: cf8da02f691349beecf6ac6444971fad130d4ddd
 source_file: docs/en/user_manual/polls/stv/index.md
 translated:
   provider: codex/gpt-6.1-sol
@@ -10,14 +10,14 @@ sections:
   when-to-use-stv: e37de389c27f7d87
   creating-an-stv-election: 2d475191d922803f
   number-of-seats: 9463d911f230eea0
-  counting-method: 31e83bb5bc08829c
-  quota-type: 12d5c4b5fe2abb1d
-  how-voting-works: b9a7df3cedbe4d50
-  how-counting-works: 50ba0a7800bc5667
+  counting-method: b7ff2dce779d15c1
+  quota-type: f9ab31d93916bf24
+  how-voting-works: bace7c735dbb39f1
+  how-counting-works: 794084f981b2cf3f
   understanding-results: 8442813a9c097112
   method-and-quota: 90113296c3d59816
-  elected-candidates: a6c3dbb5548c7d41
-  round-by-round-details: e4a8789dae29d49e
+  elected-candidates: 7ac0bae756fa5608
+  round-by-round-details: c0ccc83e51dcaa1a
   exporting-ballots: 582555dd13633bf0
   share-an-outcome: 6a02aed173b368b9
 generated:
@@ -25,14 +25,14 @@ generated:
   when-to-use-stv: 8cbe86b4e1d4f7bf
   creating-an-stv-election: a5204aa2a793a5a5
   number-of-seats: c78d9cde9a2fd843
-  counting-method: 95636dc27ddbf0eb
-  quota-type: 7c67e1f7ca485923
-  how-voting-works: b5d90998bd85075b
-  how-counting-works: 7123dfc534ae9c2c
+  counting-method: 78fd90aa855e47c9
+  quota-type: 298a69d0775ed3c5
+  how-voting-works: 159c241a15c454da
+  how-counting-works: b6382682d5a24e50
   understanding-results: f4940f19156d2308
   method-and-quota: 98fdcd0bb8deba93
-  elected-candidates: 80c6aab852822c8a
-  round-by-round-details: b57045f9caf239b3
+  elected-candidates: 203f5121e0825ab5
+  round-by-round-details: 4e92c439c0c2430e
   exporting-ballots: 471a006656893f8a
   share-an-outcome: 25ad51a1ccf4b980
 title_source: cd3e1a4cdc2456a6
@@ -80,9 +80,11 @@ Il numero di persone da eleggere. Deve essere inferiore al numero di candidati.
 
 Sono disponibili due metodi per contare i voti:
 
-Scottish STV : Consigliato. Usa il metodo Weighted Inclusive Gregory (WIGM), adottato nelle elezioni locali scozzesi dal 2007. Ha regole chiare e semplici. È adatto alla maggior parte delle organizzazioni.
-
-Meek STV : Un metodo iterativo matematicamente più preciso. Quando un candidato viene eliminato, i voti vengono ricalcolati come se non avesse mai partecipato all'elezione.
+Scottish STV
+  : Consigliato. Usa il metodo Weighted Inclusive Gregory (WIGM), adottato nelle elezioni locali scozzesi dal 2007. Ha regole chiare e semplici. È adatto alla maggior parte delle organizzazioni.
+  
+Meek STV
+  : Un metodo più preciso, il cui conteggio può essere eseguito solo da un computer. Quando un candidato viene eletto, Meek continua a trasferire la parte di ogni voto che non gli serve alle preferenze successive di chi ha votato, compresi i voti che arrivano al candidato nelle fasi successive del conteggio. Quando un candidato viene eliminato, i voti vengono ricalcolati come se non avesse mai partecipato all'elezione. Rispetto a Scottish STV, si sprecano meno voti, ma il conteggio non può essere verificato a mano.
 
 <!-- translation-section: quota-type -->
 
@@ -90,15 +92,19 @@ Meek STV : Un metodo iterativo matematicamente più preciso. Quando un candidato
 
 La quota è il numero minimo di voti necessario a un candidato per ottenere un seggio. Può essere:
 
-Droop : Consigliata. È la quota standard per la maggior parte delle elezioni STV ed è usata in Irlanda, Australia e Scozia. Garantisce che una coalizione con la maggioranza dei voti ottenga la maggioranza dei seggi. Si calcola così: \\[ floor(\frac{votes}{(seats + 1)}) + 1 \\]
+Droop
+  : Consigliata. È la quota standard per le elezioni STV ed è usata in Irlanda, Australia e Scozia. È la quota più bassa che non può essere raggiunta da un numero di candidati superiore al numero di seggi disponibili. Un gruppo di elettori che mette al primo posto i propri candidati ottiene almeno tanti seggi quante sono le quote di voti di cui dispone. Si calcola così:
+\\[ floor(\frac{votes}{(seats + 1)}) + 1 \\]
 
 Hare
-  : Una soglia minima più alta, che offre una rappresentanza più proporzionale ai gruppi più piccoli.
-    Le sezioni DSA la preferiscono per tutelare la rappresentanza delle minoranze.
-   Si calcola così:
+  : Una quota più alta. I gruppi con molti voti ne usano di più per ogni seggio ottenuto, quindi i gruppi più piccoli hanno maggiori probabilità di ottenere gli ultimi seggi. Si calcola così:
     \\[ \frac{votes}{seats}\\]
 
->[!TIP]
+In entrambe le formule, *votes* è il numero di schede che indicano una preferenza per almeno un candidato.
+
+Meek STV calcola la quota senza arrotondamenti, usando votes ÷ (seats + 1) per Droop. Ricalcola la quota a ogni turno sulla base dei voti ancora attribuiti ai candidati, e un candidato deve superarla per essere eletto.
+  
+  >[!TIP]
   > La quota Droop richiede sempre meno voti della quota Hare. Per esempio, in un'elezione con 100 voti e quattro seggi, la quota Droop è 21 e la quota Hare è 25.
 
 <!-- translation-section: how-voting-works -->
@@ -113,7 +119,7 @@ In questo esempio, la cooperativa Oatmilk elegge tre persone che seguiranno la s
 - **Posizione 2** = seconda scelta
 - Continua a ordinare tutti i candidati che desideri
 
-Non è necessario ordinare tutti i candidati. I candidati non classificati non ricevono alcuna parte del sostegno di chi ha espresso quel voto.
+Devi indicare almeno un candidato, ma non è necessario ordinarli tutti. I candidati non classificati non ricevono alcuna parte del tuo sostegno.
 
 <!-- translation-section: how-counting-works -->
 
@@ -122,12 +128,19 @@ Il conteggio si svolge così:
 
 1. Si calcola una **quota** (il numero minimo di voti necessario per ottenere un seggio).
 2. Si contano le **Prime preferenze** di ogni candidato.
-3. Se un candidato raggiunge la quota, viene **eletto**. I suoi voti in eccedenza rispetto alla quota vengono **trasferiti** alle preferenze successive di chi lo ha votato, con un valore frazionario.
-4. Se nessun candidato raggiunge la quota, viene **eliminato il candidato con meno voti**. I suoi voti vengono trasferiti alle preferenze successive di chi lo ha votato, mantenendo il loro intero valore.
-5. Il processo si ripete finché tutti i seggi sono assegnati.
+3. Ogni candidato che raggiunge la quota viene **eletto**. I suoi voti in eccedenza rispetto alla quota vengono **trasferiti** alle preferenze successive di chi lo ha votato, con un valore frazionario, partendo dal surplus più grande. I voti vengono trasferiti solo ai candidati ancora in gara.
+4. Se non resta alcun surplus da trasferire, viene **eliminato il candidato con meno voti**. I suoi voti vengono trasferiti alle preferenze successive di chi lo ha votato, mantenendo il loro intero valore.
+5. Quando il numero di candidati rimasti è uguale al numero di seggi ancora da assegnare, vengono tutti eletti, anche se non hanno raggiunto la quota.
+6. Altrimenti il conteggio riprende dal punto 3 finché tutti i seggi sono assegnati.
+
+Il valore frazionario permette di distribuire solo i voti che non servono a un candidato eletto. Per esempio, se la quota è 26 e un candidato ha 40 voti, il suo surplus è 14. Ognuna delle sue 40 schede viene trasferita alla preferenza successiva con un valore di 14 ÷ 40 = 0.35 voti.
+
+Nel metodo Scottish STV, il valore di ogni voto trasferito viene arrotondato per difetto a cinque cifre decimali, come nelle elezioni dei consigli locali scozzesi.
+
+Se due o più candidati hanno il minor numero di voti, viene eliminato quello che aveva meno voti nel più recente turno precedente.
 
 >[!TIP]
->Se una scheda non indica preferenze per nessuno dei candidati rimasti, è «esaurita» e quel voto non viene più conteggiato. Per questo, in genere conviene ordinare più candidati.
+>Una scheda viene conteggiata solo finché indica una preferenza per un candidato ancora in gara. Quando non ne resta nessuno, la scheda è «esaurita» e non viene più conteggiata.
 
 <!-- translation-section: understanding-results -->
 
@@ -157,13 +170,13 @@ Una tabella riassume i vincitori in cinque colonne:
 | **Conteggio finale** | I voti del candidato nel momento in cui è stato eletto. Grazie ai trasferimenti, spesso sono più delle sue prime preferenze. |
 | **Surplus** | Di quanto i voti del candidato al momento dell'elezione superavano la quota (conteggio finale meno quota). Un surplus maggiore indica un sostegno superiore a quello necessario per vincere. Nel metodo Scottish STV, questo surplus viene ridistribuito alle preferenze successive di chi ha votato il candidato. |
 
-Se il conteggio produce un pareggio in cui eliminare uno qualsiasi dei candidati rimasti cambierebbe il risultato, quei candidati vengono mostrati in una tabella separata, senza scegliere arbitrariamente un vincitore.
+A volte i turni precedenti non permettono di risolvere un pareggio. Se il pareggio non cambia chi viene eletto, il conteggio prosegue. Se invece lo cambia, il conteggio si ferma a quel turno. I candidati che vincono indipendentemente da come viene risolto il pareggio vengono mostrati come eletti. I candidati che potrebbero vincere o perdere a seconda di come viene risolto il pareggio vengono mostrati in una tabella separata. Loomio li mostra in parità, senza sceglierne uno a caso.
 
 <!-- translation-section: round-by-round-details -->
 
 ### Dettagli round per round
 
-Espandi **Dettagli round per round** per vedere i trasferimenti di voti e le eliminazioni. Ogni riga rappresenta un candidato e ogni colonna un turno di conteggio:
+Espandi **Dettagli round per round** per vedere i trasferimenti di voti e le eliminazioni. Ogni riga rappresenta un candidato e ogni colonna un turno di conteggio. Ogni numero indica i voti attribuiti al candidato all'inizio di quel turno:
 
 ![](stv-results.png)
 

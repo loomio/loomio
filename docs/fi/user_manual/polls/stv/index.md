@@ -1,6 +1,6 @@
 ---
 title: STV-vaalit
-source_revision: 9c60c42fc739483fa23f15d9f34a1e9245518092
+source_revision: cf8da02f691349beecf6ac6444971fad130d4ddd
 source_file: docs/en/user_manual/polls/stv/index.md
 translated:
   provider: codex/gpt-6.1-sol
@@ -10,14 +10,14 @@ sections:
   when-to-use-stv: e37de389c27f7d87
   creating-an-stv-election: 2d475191d922803f
   number-of-seats: 9463d911f230eea0
-  counting-method: 31e83bb5bc08829c
-  quota-type: 12d5c4b5fe2abb1d
-  how-voting-works: b9a7df3cedbe4d50
-  how-counting-works: 50ba0a7800bc5667
+  counting-method: b7ff2dce779d15c1
+  quota-type: f9ab31d93916bf24
+  how-voting-works: bace7c735dbb39f1
+  how-counting-works: 794084f981b2cf3f
   understanding-results: 8442813a9c097112
   method-and-quota: 90113296c3d59816
-  elected-candidates: a6c3dbb5548c7d41
-  round-by-round-details: e4a8789dae29d49e
+  elected-candidates: 7ac0bae756fa5608
+  round-by-round-details: c0ccc83e51dcaa1a
   exporting-ballots: 582555dd13633bf0
   share-an-outcome: 6a02aed173b368b9
 generated:
@@ -25,14 +25,14 @@ generated:
   when-to-use-stv: 1caf09fbbb8fe453
   creating-an-stv-election: f01dc501105b5238
   number-of-seats: 8d89a096d3ab638c
-  counting-method: '2887716527685194'
-  quota-type: 86c40eab86e26313
-  how-voting-works: 252e51703e6006d2
-  how-counting-works: c131c8689681c977
+  counting-method: 5f40bce25f95850c
+  quota-type: 5851d86a48e80121
+  how-voting-works: 0d977600aad6c011
+  how-counting-works: 16585abd0d2e6e23
   understanding-results: c3a407cdefa4c7dd
   method-and-quota: 8d63ccc6a847fcf8
-  elected-candidates: 3860ddfb4e0145a3
-  round-by-round-details: 377f90356d24577d
+  elected-candidates: 48577fca647fb798
+  round-by-round-details: ccecb10c6e7ed304
   exporting-ballots: 96ebf656aa7c85d4
   share-an-outcome: dc08d971a6e91fdd
 title_source: cd3e1a4cdc2456a6
@@ -80,9 +80,11 @@ Valittavien henkilöiden määrä. Sen on oltava pienempi kuin ehdokkaiden mää
 
 Äänten laskentaan on kaksi menetelmää:
 
-Scottish STV : Suositeltu. Weighted Inclusive Gregory Method (WIGM) -menetelmää on käytetty Skotlannin paikallisvaaleissa vuodesta 2007. Sen säännöt ovat selkeät ja tarkasti määritellyt. Se sopii useimmille organisaatioille.
-
-Meek STV : Matemaattisesti tarkempi, toistuvaan laskentaan perustuva menetelmä. Kun ehdokas putoaa, äänet lasketaan uudelleen ikään kuin hän ei olisi ollut mukana vaalissa.
+Scottish STV
+  : Suositeltu. Weighted Inclusive Gregory Method (WIGM) -menetelmää on käytetty Skotlannin paikallisvaaleissa vuodesta 2007. Sen säännöt ovat selkeät ja tarkasti määritellyt. Se sopii useimmille organisaatioille.
+  
+Meek STV
+  : Tarkempi menetelmä, jossa äänten laskeminen vaatii tietokoneen. Kun ehdokas valitaan, Meek siirtää kustakin äänestä sen osan, jota ehdokas ei tarvitse, äänestäjän seuraaville ehdokkaille. Tämä koskee myös ääniä, jotka siirtyvät valitulle ehdokkaalle myöhemmin laskennan aikana. Kun ehdokas putoaa, äänet lasketaan uudelleen ikään kuin hän ei olisi ollut mukana vaalissa. Ääniä menee hukkaan vähemmän kuin Scottish STV -menetelmässä, mutta laskentaa ei voi tarkistaa käsin.
 
 <!-- translation-section: quota-type -->
 
@@ -90,15 +92,19 @@ Meek STV : Matemaattisesti tarkempi, toistuvaan laskentaan perustuva menetelmä.
 
 Kiintiö on äänimäärä, jonka ehdokas vähintään tarvitsee tullakseen valituksi. Vaihtoehtoja on kaksi:
 
-Droop : Suositeltu. Droop on useimpien STV-vaalien vakiokiintiö, ja sitä käytetään Irlannissa, Australiassa ja Skotlannissa. Se takaa, että enemmistön muodostava ryhmittymä saa enemmistön paikoista. Kiintiö lasketaan näin: \\[ floor(\frac{votes}{(seats + 1)}) + 1 \\]
+Droop
+  : Suositeltu. STV-vaalien vakiokiintiö, jota käytetään Irlannissa, Australiassa ja Skotlannissa. Se on pienin kiintiö, jonka voi saavuttaa enintään yhtä moni ehdokas kuin paikkoja on täytettävänä. Äänestäjäryhmä, joka asettaa omat ehdokkaansa ensimmäisiksi, saa vähintään yhtä monta paikkaa kuin sen äänimäärään sisältyy täysiä kiintiöitä. Kiintiö lasketaan näin:
+\\[ floor(\frac{votes}{(seats + 1)}) + 1 \\]
 
 Hare
-  : Korkeampi vähimmäisraja, joka antaa pienemmille ryhmittymille suhteellisemman edustuksen.
-    DSA:n paikallisosastot suosivat Hare-kiintiötä vähemmistöjen edustuksen turvaamiseksi.
-   Kiintiö lasketaan näin:
+  : Suurempi kiintiö. Paljon ääniä saaneet ryhmät käyttävät enemmän ääniä kuhunkin saamaansa paikkaan, joten pienemmät ryhmät saavat todennäköisemmin viimeiset paikat. Kiintiö lasketaan näin:
     \\[ \frac{votes}{seats}\\]
 
->[!TIP]
+Molemmissa kaavoissa *votes* tarkoittaa niiden äänestyslippujen määrää, joissa on asetettu vähintään yksi ehdokas mieluisuusjärjestykseen.
+
+Meek STV laskee kiintiön pyöristämättä. Droop-kiintiön kaava on votes ÷ (seats + 1). Kiintiö lasketaan uudelleen joka kierroksella ehdokkailla yhä olevien äänten perusteella, ja ehdokkaan on ylitettävä kiintiö tullakseen valituksi.
+  
+  >[!TIP]
   > Droop-kiintiö on aina pienempi kuin Hare-kiintiö. Esimerkiksi vaalissa, jossa on 100 ääntä ja neljä paikkaa, Droop-kiintiö on 21 ääntä ja Hare-kiintiö 25 ääntä.
 
 <!-- translation-section: how-voting-works -->
@@ -113,7 +119,7 @@ Tässä esimerkissä Oatmilk Cooperative valitsee kolme henkilöä valvomaan uud
 - **Sija 2** = toiseksi mieluisin ehdokas
 - Jatka ehdokkaiden järjestämistä niin pitkälle kuin haluat
 
-Kaikkia ehdokkaita ei tarvitse järjestää. Äänestäjän ääni ei siirry ehdokkaille, joita hän ei ole järjestänyt.
+Äänestäjän on asetettava vähintään yksi ehdokas mieluisuusjärjestykseen, mutta kaikkia ehdokkaita ei tarvitse järjestää. Äänestäjän ääni ei siirry ehdokkaille, joita hän ei ole järjestänyt.
 
 <!-- translation-section: how-counting-works -->
 
@@ -122,12 +128,19 @@ Kaikkia ehdokkaita ei tarvitse järjestää. Äänestäjän ääni ei siirry ehd
 
 1. Lasketaan **kiintiö** eli vähimmäisäänimäärä, jolla ehdokas saa paikan.
 2. Lasketaan kunkin ehdokkaan **Ensimmäiset mieltymykset**.
-3. Jos ehdokas saavuttaa kiintiön, hänet **valitaan**. Kiintiön ylittävät äänet **siirretään** murto-osaisina äänestäjien seuraaville ehdokkaille.
-4. Jos kukaan ei saavuta kiintiötä, **vähiten ääniä saanut ehdokas putoaa**. Hänen äänensä siirtyvät täysimääräisinä äänestäjien seuraaville ehdokkaille.
-5. Tätä jatketaan, kunnes kaikki paikat on täytetty.
+3. Jokainen kiintiön saavuttanut ehdokas **valitaan**. Kiintiön ylittävät äänet **siirretään** murto-osaisina äänestäjien seuraaville ehdokkaille, suurin ylijäämä ensin. Äänet siirtyvät vain ehdokkaille, jotka ovat yhä mukana laskennassa.
+4. Jos siirrettävää ylijäämää ei enää ole, **vähiten ääniä saanut ehdokas putoaa**. Hänen äänensä siirtyvät täysimääräisinä äänestäjien seuraaville ehdokkaille.
+5. Kun jäljellä olevia ehdokkaita on yhtä monta kuin täyttämättömiä paikkoja, heidät kaikki valitaan, vaikka he eivät olisi saavuttaneet kiintiötä.
+6. Muussa tapauksessa laskentaa jatketaan kohdasta 3, kunnes kaikki paikat on täytetty.
+
+Murto-osainen siirto jakaa eteenpäin vain ne äänet, joita valittu ehdokas ei tarvitse. Jos esimerkiksi kiintiö on 26 ja ehdokkaalla on 40 ääntä, hänen ylijäämänsä on 14. Jokainen hänen 40 äänestyslipustaan siirtyy seuraavalle ehdokkaalle arvolla 14 ÷ 40 = 0.35 ääntä.
+
+Scottish STV -menetelmässä kunkin siirretyn äänen arvo pyöristetään alaspäin viiden desimaalin tarkkuuteen, kuten Skotlannin paikallisvaaleissa.
+
+Jos kahdella tai useammalla ehdokkaalla on yhtä vähän ääniä, pudotetaan se, jolla oli vähemmän ääniä viimeisimmällä aiemmalla kierroksella, jolla heidän äänimääränsä erosivat.
 
 >[!TIP]
->Jos äänestäjän järjestämistä ehdokkaista ei ole enää ketään mukana, hänen äänestyslippunsa ääntä ei voida enää siirtää. Siksi useamman ehdokkaan järjestäminen kannattaa yleensä.
+>Äänestyslippu lasketaan mukaan vain niin kauan kuin siinä on mukana laskennassa oleva ehdokas. Kun yhtään tällaista ehdokasta ei ole jäljellä, äänestyslippu on "loppuun käytetty", eikä sitä enää lasketa mukaan.
 
 <!-- translation-section: understanding-results -->
 
@@ -147,7 +160,7 @@ Ylhäällä näet laskentamenetelmän (Scottish STV tai Meek STV), kiintiötyypi
 
 ### Valitut ehdokkaat
 
-Valitut ehdokkaat esitetään viis saraketta sisältävässä yhteenvetotaulukossa:
+Valitut ehdokkaat esitetään viisi saraketta sisältävässä yhteenvetotaulukossa:
 
 | Sarake | Merkitys |
 |--------|---------|
@@ -157,13 +170,13 @@ Valitut ehdokkaat esitetään viis saraketta sisältävässä yhteenvetotaulukos
 | **Loppusumma** | Ehdokkaan äänimäärä valintahetkellä. Äänten siirtojen vuoksi se on usein suurempi kuin ensimmäisten mieltymysten määrä. |
 | **Ylijäämä** | Kuinka paljon ehdokkaan loppusumma ylitti kiintiön (loppusumma miinus kiintiö). Suurempi ylijäämä kertoo vahvemmasta kannatuksesta kuin valintaan tarvittiin. Scottish STV -menetelmässä ylijäämä jaetaan äänestäjien seuraaville ehdokkaille. |
 
-Jos laskennassa syntyy tasatilanne, jossa kenen tahansa jäljellä olevan ehdokkaan pudottaminen muuttaisi tulosta, ehdokkaat näytetään erillisessä taulukossa. Voittajaa ei valita mielivaltaisesti.
+Joskus tasatilannetta ei voida ratkaista aiempien kierrosten perusteella. Jos tasatilanteen ratkaisu ei vaikuta siihen, ketkä valitaan, laskenta jatkuu. Jos se vaikuttaa, laskenta pysähtyy kyseiselle kierrokselle. Ehdokkaat, jotka tulevat valituiksi riippumatta tasatilanteen ratkaisusta, näytetään valittuina. Ehdokkaat, jotka voivat tulla valituiksi tai pudota tasatilanteen ratkaisusta riippuen, näytetään erillisessä taulukossa. Loomio näyttää heidät tasatilanteessa sen sijaan, että valitsisi jonkun satunnaisesti.
 
 <!-- translation-section: round-by-round-details -->
 
 ### Kierros kierrokselta yksityiskohdat
 
-Avaa **Kierros kierrokselta yksityiskohdat**, niin näet äänten siirrot ja ehdokkaiden putoamiset. Kukin rivi kuvaa ehdokasta ja kukin sarake laskentakierrosta:
+Avaa **Kierros kierrokselta yksityiskohdat**, niin näet äänten siirrot ja ehdokkaiden putoamiset. Kukin rivi kuvaa ehdokasta ja kukin sarake laskentakierrosta. Kukin luku kertoo ehdokkaan äänimäärän kyseisen kierroksen alussa:
 
 ![](stv-results.png)
 

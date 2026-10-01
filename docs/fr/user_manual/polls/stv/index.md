@@ -1,6 +1,6 @@
 ---
 title: Élections STV
-source_revision: 3a315412c646d254c8426be5c436a4e593f6011f
+source_revision: cf8da02f691349beecf6ac6444971fad130d4ddd
 source_file: docs/en/user_manual/polls/stv/index.md
 translated:
   provider: codex/gpt-6.1-sol
@@ -10,14 +10,14 @@ sections:
   when-to-use-stv: e37de389c27f7d87
   creating-an-stv-election: 2d475191d922803f
   number-of-seats: 9463d911f230eea0
-  counting-method: 31e83bb5bc08829c
-  quota-type: 12d5c4b5fe2abb1d
-  how-voting-works: b9a7df3cedbe4d50
-  how-counting-works: 50ba0a7800bc5667
+  counting-method: b7ff2dce779d15c1
+  quota-type: f9ab31d93916bf24
+  how-voting-works: bace7c735dbb39f1
+  how-counting-works: 794084f981b2cf3f
   understanding-results: 8442813a9c097112
   method-and-quota: 90113296c3d59816
-  elected-candidates: a6c3dbb5548c7d41
-  round-by-round-details: e4a8789dae29d49e
+  elected-candidates: 7ac0bae756fa5608
+  round-by-round-details: c0ccc83e51dcaa1a
   exporting-ballots: 582555dd13633bf0
   share-an-outcome: 6a02aed173b368b9
 generated:
@@ -25,14 +25,14 @@ generated:
   when-to-use-stv: abb6b52b99484ecb
   creating-an-stv-election: 288487013b15b206
   number-of-seats: e365ba38ab90b66e
-  counting-method: 128edaa64c73a78b
-  quota-type: 68caf2859061a52b
-  how-voting-works: bc7cf3bbc6725448
-  how-counting-works: '0084047ca8f3bcb9'
+  counting-method: 621f134fdfa6842a
+  quota-type: f9702c72b87a5095
+  how-voting-works: 12f8ce42b03d6725
+  how-counting-works: 9d5707ffd37b2ede
   understanding-results: c98bfbe4a192f568
   method-and-quota: 8eba6401ab70f8a3
-  elected-candidates: 8c1fee0ff4736c0a
-  round-by-round-details: d4acf2401e38b0ba
+  elected-candidates: 183c17fbe9e455fc
+  round-by-round-details: c8ac6900da61e545
   exporting-ballots: d2698851f0c190aa
   share-an-outcome: d131558a237e10c0
 title_source: cd3e1a4cdc2456a6
@@ -80,9 +80,11 @@ Le nombre de personnes à élire. Il doit être inférieur au nombre de candidat
 
 Deux méthodes de décompte sont disponibles :
 
-STV écossais : Recommandé. Cette méthode de Gregory inclusive pondérée (WIGM) est utilisée dans les élections locales écossaises depuis 2007. Ses règles sont claires et simples. Elle convient à la plupart des organisations.
-
-STV de Meek : Une méthode itérative plus précise sur le plan mathématique. Lorsqu'un candidat est éliminé, les voix sont recomptées comme s'il n'avait jamais participé à l'élection.
+Scottish STV
+  : Recommandé. Cette méthode de Gregory inclusive pondérée (WIGM) est utilisée dans les élections locales écossaises depuis 2007. Ses règles sont claires et simples. Elle convient à la plupart des organisations.
+  
+Meek STV
+  : Une méthode plus précise dont le décompte nécessite un ordinateur. Lorsqu'un candidat est élu, Meek continue de transférer la part de chaque voix dont il n'a pas besoin aux préférences suivantes du votant, y compris pour les voix qui lui parviennent plus tard dans le décompte. Lorsqu'un candidat est éliminé, les voix sont recomptées comme s'il n'avait jamais participé à l'élection. Moins de voix sont perdues qu'avec Scottish STV, mais le décompte ne peut pas être vérifié à la main.
 
 <!-- translation-section: quota-type -->
 
@@ -90,15 +92,19 @@ STV de Meek : Une méthode itérative plus précise sur le plan mathématique. L
 
 Le quota est le nombre minimal de voix dont un candidat a besoin pour obtenir un siège. Vous pouvez choisir :
 
-Droop : Recommandé. C'est le quota habituel pour la plupart des élections STV. Il est utilisé en Irlande, en Australie et en Écosse. Il garantit qu'une coalition majoritaire obtient la majorité des sièges. Il se calcule ainsi : \\[ floor(\frac{votes}{(seats + 1)}) + 1 \\]
+Droop
+  : Recommandé. C'est le quota habituel pour les élections STV, utilisé en Irlande, en Australie et en Écosse. C'est le plus petit quota que ne peuvent pas atteindre plus de candidats qu'il n'y a de sièges à pourvoir. Un groupe de votants qui classe ses propres candidats en premier obtient au moins autant de sièges qu'il dispose de quotas de voix. Il se calcule ainsi :
+\\[ floor(\frac{votes}{(seats + 1)}) + 1 \\]
 
 Hare
-  : Un seuil minimal plus élevé, qui offre une représentation plus proportionnelle aux petits groupes.
-    Les sections de DSA privilégient le quota de Hare pour protéger la représentation des minorités.
-   Il se calcule ainsi :
+  : Un quota plus élevé. Les groupes disposant de nombreuses voix en utilisent davantage pour chaque siège obtenu, ce qui augmente les chances des petits groupes d'obtenir les derniers sièges. Il se calcule ainsi :
     \\[ \frac{votes}{seats}\\]
 
->[!TIP]
+Dans les deux formules, *votes* désigne le nombre de bulletins qui classent au moins un candidat.
+
+Meek STV calcule le quota sans arrondi, soit votes ÷ (seats + 1) pour Droop. Le quota est recalculé à chaque tour à partir des voix encore détenues par les candidats, et un candidat doit le dépasser pour être élu.
+  
+  >[!TIP]
   > Le quota de Droop correspond toujours à moins de voix que celui de Hare. Par exemple, pour une élection avec 100 voix et quatre sièges, le quota de Droop est de 21 voix et celui de Hare de 25 voix.
 
 <!-- translation-section: how-voting-works -->
@@ -113,7 +119,7 @@ Dans cet exemple, la coopérative Oatmilk élit trois personnes pour superviser 
 - **Rang 2** = deuxième choix
 - Continuez à classer autant de candidats que vous le souhaitez
 
-Les votants ne sont pas tenus de classer tous les candidats. Ceux qui ne sont pas classés ne recevront aucune de leurs voix.
+Les votants doivent classer au moins un candidat, mais ne sont pas tenus de les classer tous. Les candidats non classés ne recevront aucune part de la voix de ce votant.
 
 <!-- translation-section: how-counting-works -->
 
@@ -122,12 +128,19 @@ Le décompte se déroule ainsi :
 
 1. Un **quota** est calculé (le nombre minimal de voix nécessaires pour obtenir un siège).
 2. Les **Premières préférences** sont comptées pour chaque candidat.
-3. Si un candidat atteint le quota, il est **élu**. Ses voix excédentaires (au-delà du quota) sont **transférées** aux candidats suivants dans l’ordre de préférence des électeurs, à une valeur fractionnaire.
-4. Si aucun candidat n’atteint le quota, celui qui a **le moins de voix est éliminé**. Ses voix sont transférées aux candidats suivants dans l’ordre de préférence des électeurs, à leur pleine valeur.
-5. Le processus se répète jusqu’à ce que tous les sièges soient pourvus.
+3. Chaque candidat qui atteint le quota est **élu**. Ses voix excédentaires (au-delà du quota) sont **transférées** aux préférences suivantes des votants, à une valeur fractionnaire, en commençant par le surplus le plus élevé. Les voix sont transférées uniquement aux candidats encore en lice.
+4. S'il ne reste aucun surplus à transférer, le candidat qui a **le moins de voix est éliminé**. Ses voix sont transférées aux préférences suivantes des votants, à leur pleine valeur.
+5. Lorsque le nombre de candidats encore en lice est égal au nombre de sièges restant à pourvoir, ils sont tous élus, même s'ils n'ont pas atteint le quota.
+6. Sinon, le décompte reprend à l'étape 3 jusqu'à ce que tous les sièges soient pourvus.
+
+La valeur fractionnaire permet de répartir uniquement les voix dont un candidat élu n'a pas besoin. Par exemple, si le quota est de 26 et qu'un candidat a 40 voix, son surplus est de 14. Chacun de ses 40 bulletins est transféré à sa préférence suivante avec une valeur de 14 ÷ 40 = 0,35 voix.
+
+Avec Scottish STV, la valeur de chaque voix transférée est arrondie à cinq décimales par défaut, comme dans les élections municipales écossaises.
+
+Si plusieurs candidats ont le même nombre minimal de voix, celui qui avait le moins de voix au tour précédent le plus récent permettant de les départager est éliminé.
 
 >[!TIP]
->Si un votant n'a classé aucun des candidats encore en lice, son bulletin est « épuisé » et sa voix ne peut plus être comptée. Il est donc généralement préférable de classer davantage de candidats.
+>Un bulletin compte uniquement tant qu'il classe un candidat encore en lice. Lorsqu'il n'en reste aucun, le bulletin est « épuisé » et ne compte plus.
 
 <!-- translation-section: understanding-results -->
 
@@ -155,15 +168,15 @@ Un tableau récapitule les personnes élues en cinq colonnes :
 | **Tour élu** | Le tour de décompte auquel le candidat a atteint le quota et obtenu un siège. Au premier tour, il a gagné grâce aux seules premières préférences. Aux tours suivants, il lui a fallu des voix transférées depuis des candidats éliminés ou élus avec un surplus. |
 | **Premières préférences** | Le nombre de votants qui ont placé ce candidat en premier. Ce chiffre indique son soutien direct avant tout transfert de voix. |
 | **Bilan final** | Le total des voix du candidat au moment de son élection. Les transferts de voix font souvent monter ce total au-dessus de ses premières préférences. |
-| **Surplus** | Le nombre de voix par lequel le bilan final du candidat dépasse le quota (bilan final moins quota). Plus le surplus est élevé, plus le soutien dépasse ce qui était nécessaire pour gagner. Avec la méthode STV écossaise, ce surplus est redistribué aux préférences suivantes des votants. |
+| **Surplus** | Le nombre de voix par lequel le bilan final du candidat dépasse le quota (bilan final moins quota). Plus le surplus est élevé, plus le soutien dépasse ce qui était nécessaire pour gagner. Avec Scottish STV, ce surplus est redistribué aux préférences suivantes des votants. |
 
-Si le décompte aboutit à une égalité dans laquelle l'élimination de l'un ou l'autre des candidats encore en lice changerait le résultat, ces candidats apparaissent dans un tableau distinct. Aucun gagnant n'est alors choisi arbitrairement.
+Parfois, les tours précédents ne permettent pas de départager des candidats à égalité. Si cette égalité ne change pas les personnes élues, le décompte continue. Si elle les change, le décompte s'arrête à ce tour. Les candidats qui gagnent quelle que soit la manière de départager l'égalité sont affichés comme élus. Ceux qui pourraient gagner ou perdre selon la manière de les départager apparaissent dans un tableau distinct. Loomio les affiche à égalité plutôt que d'en choisir un au hasard.
 
 <!-- translation-section: round-by-round-details -->
 
 ### Détails tour par tour
 
-Développez **Détails tour par tour** pour voir les transferts de voix et les éliminations. Chaque ligne représente un candidat et chaque colonne un tour de décompte :
+Développez **Détails tour par tour** pour voir les transferts de voix et les éliminations. Chaque ligne représente un candidat et chaque colonne un tour de décompte. Chaque nombre indique les voix détenues par le candidat au début de ce tour :
 
 ![](stv-results.png)
 
