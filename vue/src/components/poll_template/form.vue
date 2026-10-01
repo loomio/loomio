@@ -246,7 +246,7 @@ export default {
           :hint="$t(votingMethodsI18n[pollTemplate.pollType].hint)"
         )
 
-        v-text-field(
+        v-text-field.poll-template-form-fields__process-name(
           v-model="pollTemplate.processName"
           :label="$t('poll_common_form.process_name')"
           :placeholder="sourceProcessName"
@@ -254,14 +254,14 @@ export default {
           :rules="validate('processName')"
         )
 
-        v-text-field(
+        v-text-field.poll-template-form-fields__process-subtitle(
           v-model="pollTemplate.processSubtitle"
           :label="$t('poll_common_form.process_subtitle')"
           :hint="$t('poll_common_form.process_subtitle_hint')"
           :rules="validate('processSubtitle')"
         )
 
-        lmo-textarea(
+        lmo-textarea.poll-template-form-fields__process-introduction(
           :model='pollTemplate'
           field="processIntroduction"
           :placeholder="$t('poll_common_form.process_introduction_hint')"
@@ -286,7 +286,7 @@ export default {
 
         tags-field(:model="pollTemplate")
 
-        lmo-textarea(
+        lmo-textarea.poll-template-form-fields__details(
           :model='pollTemplate'
           field="details"
           :placeholder="$t('poll_common_form.example_details_placeholder')"
@@ -295,7 +295,7 @@ export default {
 
         template(v-if="hasOptions")
           v-divider.my-4
-          .text-body-large.py-2(v-t="'poll_common_form.options'")
+          .text-body-large.py-2.poll-common-form__options-heading(v-t="'poll_common_form.options'")
           v-alert(v-if="!pollOptions.length" variant="tonal" type="info")
             span(v-t="'poll_common_form.no_options_add_some'")
           sortable-list(
@@ -326,7 +326,7 @@ export default {
 
                 template(v-slot:append)
                   div.ml-0(v-if="pollTemplate.pollType != 'meeting'")
-                    v-btn(icon variant="text" @click="editOption(option)" :title="$t('common.action.edit')")
+                    v-btn.poll-common-form__edit-option(icon variant="text" @click="editOption(option)" :title="$t('common.action.edit')")
                       common-icon(name="mdi-pencil")
                   v-btn(
                     icon
@@ -425,7 +425,7 @@ export default {
 
         .text-body-large.pb-2(v-t="'poll_common_form.deadline'")
         .text-body-medium.pb-4.text-medium-emphasis(v-t="'poll_common_form.default_duration_in_days_hint'")
-        v-text-field(
+        v-text-field.poll-template-form-fields__duration(
           :label="$t('poll_common_form.default_duration_in_days')"
           type="number"
           min="1"

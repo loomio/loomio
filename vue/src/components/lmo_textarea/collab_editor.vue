@@ -550,19 +550,19 @@ div.mb-2
             v-menu(activator="parent")
               emoji-picker(:insert="emojiPicked")
 
-          v-btn(v-bind="btnProps" @click='filesField.click()' :title="$t('formatting.attach')")
+          v-btn.text-editor__attach(v-bind="btnProps" @click='filesField.click()' :title="$t('formatting.attach')")
             common-icon(v-bind="iconProps" name="mdi-paperclip")
 
-          v-btn(v-bind="btnProps" @click='imagesField.click()' :title="$t('formatting.insert_image')")
+          v-btn.text-editor__insert-image(v-bind="btnProps" @click='imagesField.click()' :title="$t('formatting.insert_image')")
             common-icon(v-bind="iconProps" name="mdi-image")
 
           //- link
           template(v-if="editor.isActive('link')")
-            v-btn(v-bind="btnProps" variant="tonal" @click="editor.chain().toggleLink().focus().run()" :title="$t('formatting.link')")
+            v-btn.text-editor__link(v-bind="btnProps" variant="tonal" @click="editor.chain().toggleLink().focus().run()" :title="$t('formatting.link')")
               common-icon(v-bind="iconProps" name="mdi-link-variant")
 
           template(v-else)
-            v-btn(v-bind="btnProps" :title="$t('formatting.link')")
+            v-btn.text-editor__link(v-bind="btnProps" :title="$t('formatting.link')")
               common-icon(v-bind="iconProps" name="mdi-link-variant")
               v-menu(activator="parent" :close-on-content-click="!selectedText()" v-model="linkDialogIsOpen")
                 template(v-if="selectedText()")
@@ -584,10 +584,10 @@ div.mb-2
             //  common-icon(name="mdi-video")
 
             template(v-for="i in [1,2,3]")
-              v-btn(v-bind="btnProps" :variant="editor.isActive('heading', { level: i }) ? 'tonal' :'text' " @click='editor.chain().focus().toggleHeading({ level: i }).run()' :title="$t('formatting.heading'+i)")
+              v-btn(v-bind="btnProps" :class="'text-editor__heading' + i" :variant="editor.isActive('heading', { level: i }) ? 'tonal' :'text' " @click='editor.chain().focus().toggleHeading({ level: i }).run()' :title="$t('formatting.heading'+i)")
                 common-icon(v-bind="iconProps" :name="'mdi-format-header-'+i")
 
-            v-btn(v-bind="btnProps" :variant="editor.isActive('bold') ? 'tonal' : 'text'" @click='editor.chain().toggleBold().focus().run()' :title="$t('formatting.bold')")
+            v-btn.text-editor__bold(v-bind="btnProps" :variant="editor.isActive('bold') ? 'tonal' : 'text'" @click='editor.chain().toggleBold().focus().run()' :title="$t('formatting.bold')")
               common-icon(v-bind="iconProps" name="mdi-format-bold")
 
             v-btn(v-bind="btnProps" :variant="editor.isActive('italic') ? 'tonal' : 'text'" @click='editor.chain().toggleItalic().focus().run()' :title="$t('formatting.italicize')")
@@ -598,20 +598,20 @@ div.mb-2
 
             //- v-btn(icon variant="text" @click='editor.chain().toggleUnderline().focus().run()' :outlined="editor.isActive('underline')",  :title="$t('formatting.underline')")
             //-   common-icon(name="mdi-format-underline")
-            v-btn(v-bind="btnProps" :variant="editor.isActive('bulletList') ? 'tonal' : 'text'" @click='editor.chain().toggleBulletList().focus().run()' :title="$t('formatting.bullet_list')")
+            v-btn.text-editor__bullet-list(v-bind="btnProps" :variant="editor.isActive('bulletList') ? 'tonal' : 'text'" @click='editor.chain().toggleBulletList().focus().run()' :title="$t('formatting.bullet_list')")
               common-icon(v-bind="iconProps" name="mdi-format-list-bulleted")
 
-            v-btn(v-bind="btnProps" :variant="editor.isActive('orderedList') ? 'tonal' : 'text'" @click='editor.chain().toggleOrderedList().focus().run()' :title="$t('formatting.number_list')")
+            v-btn.text-editor__number-list(v-bind="btnProps" :variant="editor.isActive('orderedList') ? 'tonal' : 'text'" @click='editor.chain().toggleOrderedList().focus().run()' :title="$t('formatting.number_list')")
               common-icon(v-bind="iconProps" name="mdi-format-list-numbered")
 
-            v-btn(v-bind="btnProps" :variant="editor.isActive('taskList') ? 'tonal' : 'text'" @click='editor.chain().toggleTaskList().focus().run()' :title="$t('formatting.task_list')")
+            v-btn.text-editor__task-list(v-bind="btnProps" :variant="editor.isActive('taskList') ? 'tonal' : 'text'" @click='editor.chain().toggleTaskList().focus().run()' :title="$t('formatting.task_list')")
               common-icon(v-bind="iconProps" name="mdi-checkbox-marked-outline")
 
             text-highlight-btn(:editor="editor" :btnProps="btnProps" :iconProps="iconProps")
             text-align-btn(:editor="editor" :btnProps="btnProps" :iconProps="iconProps")
 
             //- strikethrough
-            v-btn(v-bind="btnProps" :title="$t('formatting.embed')")
+            v-btn.text-editor__embed(v-bind="btnProps" :title="$t('formatting.embed')")
               common-icon(v-bind="iconProps" name="mdi-youtube")
               v-menu(activator="parent" :close-on-content-click="false" v-model="iframeDialogIsOpen" min-width="320px")
                 template(v-slot:activator="{ props }")
@@ -624,16 +624,16 @@ div.mb-2
                     v-btn(color="primary" @click="setIframeUrl()" v-t="'common.action.apply'")
 
             //- blockquote
-            v-btn(v-bind="btnProps" :variant="editor.isActive('blockquote') ? 'tonal' : 'text'" @click='editor.chain().toggleBlockquote().focus().run()' :title="$t('formatting.blockquote')")
+            v-btn.text-editor__blockquote(v-bind="btnProps" :variant="editor.isActive('blockquote') ? 'tonal' : 'text'" @click='editor.chain().toggleBlockquote().focus().run()' :title="$t('formatting.blockquote')")
               common-icon(v-bind="iconProps" name="mdi-format-quote-close")
             //- //- code block
-            v-btn(v-bind="btnProps" :variant="editor.isActive('codeBlock') ? 'tonal' : 'text'" @click='editor.chain().toggleCodeBlock().focus().run()' :title="$t('formatting.code_block')")
+            v-btn.text-editor__code-block(v-bind="btnProps" :variant="editor.isActive('codeBlock') ? 'tonal' : 'text'" @click='editor.chain().toggleCodeBlock().focus().run()' :title="$t('formatting.code_block')")
               common-icon(v-bind="iconProps" name="mdi-code-braces")
             //- embded
-            v-btn(v-bind="btnProps" @click='editor.chain().setHorizontalRule().focus().run()' :title="$t('formatting.divider')")
+            v-btn.text-editor__divider(v-bind="btnProps" @click='editor.chain().setHorizontalRule().focus().run()' :title="$t('formatting.divider')")
               common-icon(v-bind="iconProps" name="mdi-minus")
             //- table
-            v-btn(v-bind="btnProps" :variant="editor.isActive('table') ? 'tonal' : 'text'" @click='editor.chain().insertTable({rows: 3, cols: 3, withHeaderRow: false }).focus().run()' :title="$t('formatting.add_table')")
+            v-btn.text-editor__add-table(v-bind="btnProps" :variant="editor.isActive('table') ? 'tonal' : 'text'" @click='editor.chain().insertTable({rows: 3, cols: 3, withHeaderRow: false }).focus().run()' :title="$t('formatting.add_table')")
               common-icon(v-bind="iconProps" name="mdi-table")
             //- markdown (save experience)
             v-btn.e2e-markdown-btn(v-bind="btnProps" @click="convertToMdHandler" :title="$t('formatting.edit_markdown')")

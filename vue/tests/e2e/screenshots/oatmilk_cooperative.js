@@ -174,11 +174,7 @@ module.exports = {
     page.expectValue('.group-form__handle input', 'oatmilk-producers-network');
     page.click('.group-form__category-select .v-field');
     page.waitFor('.v-overlay .v-select__content .v-list-item');
-    page.execute(`
-      Array.from(document.querySelectorAll('.v-overlay .v-select__content .v-list-item'))
-        .find((item) => item.textContent.includes('Self-managing organization'))
-        .click()
-    `);
+    page.click('.v-overlay .group-form__category--self_managing');
     page.fillIn(
       '.group-form__group-description .ProseMirror',
       'We coordinate shared purchasing, distribution, and training for regional oat milk producers.'

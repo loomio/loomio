@@ -107,6 +107,10 @@ export default {
     },
 
     classes(option) {
+      return [option.icon && 'poll-common-vote-form__button--' + option.icon, ...this.statusClasses(option)];
+    },
+
+    statusClasses(option) {
       let votingStatus;
       if (this.poll.isVotable() && !this.stance.noneOfTheAbove) {
         votingStatus = 'voting-enabled';

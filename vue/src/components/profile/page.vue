@@ -153,14 +153,14 @@ v-main
               v-model="user.dateTimePref")
             validation-errors(:subject='user', field='dateTimeFormat')
 
-            v-select#user-locale-field(
+            v-select#user-locale-field.profile-page__locale(
               :label="$t('profile_page.locale_label')"
               :items="availableLocales"
               :hint="machineTranslationHint"
               persistent-hint
               v-model="user.selectedLocale")
 
-            v-checkbox(v-model="user.autoTranslate" :label="$t('profile_page.translate_content_automatically')")
+            v-checkbox.profile-page__auto-translate(v-model="user.autoTranslate" :label="$t('profile_page.translate_content_automatically')")
 
             v-checkbox(v-model="user.autodetectTimeZone" :label="$t('profile_page.autodetect_time_zone')")
             v-select(v-model="user.timeZone" :items="timeZones" :label="$t('common.time_zone')"  item-title="title" item-value="value" :disabled="user.autodetectTimeZone")

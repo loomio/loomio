@@ -290,6 +290,7 @@ export default {
       const audiences = this.audiences.map(a => ({
         id: a.id,
         type: 'audience',
+        kind: a.kind,
         icon: 'mdi-account-group',
         name: a.name,
         size: a.size
@@ -325,6 +326,7 @@ export default {
       return this.availableAudiences.map(audience => ({
         id: audience.id,
         type: 'audience',
+        kind: audience.kind,
         icon: 'mdi-account-group',
         name: this.audienceName(audience),
         size: audience.size
@@ -421,7 +423,7 @@ div.recipients-autocomplete
           space
           span ({{ $t('common.you') }})
     template(v-slot:item='{props, internalItem}')
-      v-list-item.recipients-autocomplete-suggestion(v-bind="props" lines="two")
+      v-list-item.recipients-autocomplete-suggestion(v-bind="props" :class="internalItem.raw.kind && 'recipients-autocomplete-suggestion--' + internalItem.raw.kind" lines="two")
         template(v-slot:prepend)
           user-avatar.mr-2(v-if="internalItem.raw.type == 'user'" :user="internalItem.raw.user" no-link)
           common-icon.mr-2(v-else size="small" :name="internalItem.raw.icon")

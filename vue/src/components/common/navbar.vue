@@ -121,7 +121,7 @@ v-app-bar.lmo-no-print(
     span(v-if="showTitle") {{title}}
   template(v-if='isLoggedIn')
     sidebar-tips(v-if="!user.experiences.hideOnboarding")
-    v-btn(v-if="$vuetify.display.mdAndUp" @click="openSearchModal" icon :title="$t('common.action.search')")
+    v-btn.navbar__search(v-if="$vuetify.display.mdAndUp" @click="openSearchModal" icon :title="$t('common.action.search')")
       common-icon(name="mdi-magnify")
     notifications(v-if="$vuetify.display.mdAndUp")
     v-btn(v-if="page === 'topicPage' && !$vuetify.display.mdAndUp" icon @click="toggleTopicNav()" :title="$t('navbar.thread_nav')")

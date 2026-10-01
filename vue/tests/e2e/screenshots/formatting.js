@@ -17,7 +17,7 @@ function openEditor(page, expanded = false) {
   page.pause(200);
   if (expanded) {
     page.click(`${editor} .html-editor__expand`);
-    page.waitFor(`${editor} button[title="Heading 1"]`);
+    page.waitFor(`${editor} .text-editor__heading1`);
   }
 }
 
@@ -35,10 +35,10 @@ function captureEditor(screenshot, name, options = {}) {
   });
 }
 
-function spotlightButton(screenshot, name, title) {
+function spotlightButton(screenshot, name, buttonClass) {
   captureEditor(screenshot, name, {
     spotlight: {
-      selector: `${editor} button[title="${title}"]`,
+      selector: `${editor} .${buttonClass}`,
       padding: 10,
       radius: 12
     }
@@ -64,7 +64,7 @@ module.exports = {
     const page = pageHelper(test);
     const screenshot = manualScreenshot(test);
     openEditor(page);
-    spotlightButton(screenshot, 'format_attach', 'Attach file');
+    spotlightButton(screenshot, 'format_attach', 'text-editor__attach');
   },
 
   'thread_file_remove': (test) => {
@@ -85,7 +85,7 @@ module.exports = {
     const page = pageHelper(test);
     const screenshot = manualScreenshot(test);
     openEditor(page);
-    spotlightButton(screenshot, 'format_insert_image', 'Insert image');
+    spotlightButton(screenshot, 'format_insert_image', 'text-editor__insert-image');
   },
 
   'format_insert_example': (test) => {
@@ -120,7 +120,7 @@ module.exports = {
     const screenshot = manualScreenshot(test);
     openEditor(page);
     fillAndSelect(page, 'Cafe bottle return guide');
-    page.click(`${editor} button[title="Insert link"]`);
+    page.click(`${editor} .text-editor__link`);
     page.waitFor('.v-overlay--active input[type=url]');
     screenshot.captureRegion('discussions/formatting/format_link', [
       editor,
@@ -132,7 +132,7 @@ module.exports = {
     const page = pageHelper(test);
     const screenshot = manualScreenshot(test);
     openEditor(page);
-    page.click(`${editor} button[title="Insert emoji"]`);
+    page.click(`${editor} .emoji-picker__toggle`);
     page.waitFor('.v-overlay--active .emoji-picker');
     screenshot.captureRegion('discussions/formatting/thread_insert_emoji', [
       editor,
@@ -145,8 +145,8 @@ module.exports = {
     const screenshot = manualScreenshot(test);
     openEditor(page, true);
     fillAndSelect(page, 'Returnable bottle trial');
-    page.click(`${editor} button[title="Heading 2"]`);
-    spotlightButton(screenshot, 'format_heading', 'Heading 2');
+    page.click(`${editor} .text-editor__heading2`);
+    spotlightButton(screenshot, 'format_heading', 'text-editor__heading2');
   },
 
   'format_bold': (test) => {
@@ -154,8 +154,8 @@ module.exports = {
     const screenshot = manualScreenshot(test);
     openEditor(page, true);
     fillAndSelect(page, 'Important cleaning requirements');
-    page.click(`${editor} button[title="Bold"]`);
-    spotlightButton(screenshot, 'format_bold', 'Bold');
+    page.click(`${editor} .text-editor__bold`);
+    spotlightButton(screenshot, 'format_bold', 'text-editor__bold');
   },
 
   'thread_bullets': (test) => {
@@ -163,8 +163,8 @@ module.exports = {
     const screenshot = manualScreenshot(test);
     openEditor(page, true);
     fillAndSelect(page, 'Cleaning process\nReturn tracking\nCafe feedback');
-    page.click(`${editor} button[title="List"]`);
-    spotlightButton(screenshot, 'thread_bullets', 'List');
+    page.click(`${editor} .text-editor__bullet-list`);
+    spotlightButton(screenshot, 'thread_bullets', 'text-editor__bullet-list');
   },
 
   'format_numbers': (test) => {
@@ -172,8 +172,8 @@ module.exports = {
     const screenshot = manualScreenshot(test);
     openEditor(page, true);
     fillAndSelect(page, 'Confirm cafe partners\nDeliver bottles\nReview return rates');
-    page.click(`${editor} button[title="Numbered list"]`);
-    spotlightButton(screenshot, 'format_numbers', 'Numbered list');
+    page.click(`${editor} .text-editor__number-list`);
+    spotlightButton(screenshot, 'format_numbers', 'text-editor__number-list');
   },
 
   'format_tasks': (test) => {
@@ -181,8 +181,8 @@ module.exports = {
     const screenshot = manualScreenshot(test);
     openEditor(page, true);
     fillAndSelect(page, 'Confirm collection dates\nDocument cleaning time\nReview transport costs');
-    page.click(`${editor} button[title="Task list"]`);
-    spotlightButton(screenshot, 'format_tasks', 'Task list');
+    page.click(`${editor} .text-editor__task-list`);
+    spotlightButton(screenshot, 'format_tasks', 'text-editor__task-list');
   },
 
   'thread_colors': (test) => {
@@ -190,7 +190,7 @@ module.exports = {
     const screenshot = manualScreenshot(test);
     openEditor(page, true);
     fillAndSelect(page, 'Cleaning time needs review');
-    page.click(`${editor} button[title="Colors"]`);
+    page.click(`${editor} .text-editor__colors`);
     page.waitFor('.v-overlay--active .color-picker');
     screenshot.captureRegion('discussions/formatting/thread_colors', [
       editor,
@@ -203,7 +203,7 @@ module.exports = {
     const screenshot = manualScreenshot(test);
     openEditor(page, true);
     page.fillIn(proseMirror, 'Returnable bottle trial');
-    page.click(`${editor} button[title="Alignment"]`);
+    page.click(`${editor} .text-editor__alignment`);
     page.waitFor('.v-overlay--active .v-list');
     screenshot.captureRegion('discussions/formatting/thread_align', [
       editor,
@@ -215,7 +215,7 @@ module.exports = {
     const page = pageHelper(test);
     const screenshot = manualScreenshot(test);
     openEditor(page, true);
-    page.click(`${editor} button[title="Embed video"]`);
+    page.click(`${editor} .text-editor__embed`);
     page.waitFor('.v-overlay--active input[type=url]');
     page.fillIn('.v-overlay--active input[type=url]', 'https://www.youtube.com/watch?v=AJnjTd9u4zg');
     screenshot.captureRegion('discussions/formatting/format_embed', [
@@ -229,8 +229,8 @@ module.exports = {
     const screenshot = manualScreenshot(test);
     openEditor(page, true);
     fillAndSelect(page, 'Cafe partners need collection dates before the trial starts.');
-    page.click(`${editor} button[title="Quote"]`);
-    spotlightButton(screenshot, 'thread_quote', 'Quote');
+    page.click(`${editor} .text-editor__blockquote`);
+    spotlightButton(screenshot, 'thread_quote', 'text-editor__blockquote');
   },
 
   'thread_codeblock': (test) => {
@@ -238,8 +238,8 @@ module.exports = {
     const screenshot = manualScreenshot(test);
     openEditor(page, true);
     fillAndSelect(page, 'returned_bottles / delivered_bottles');
-    page.click(`${editor} button[title="Code block"]`);
-    spotlightButton(screenshot, 'thread_codeblock', 'Code block');
+    page.click(`${editor} .text-editor__code-block`);
+    spotlightButton(screenshot, 'thread_codeblock', 'text-editor__code-block');
   },
 
   'thread_line': (test) => {
@@ -247,17 +247,17 @@ module.exports = {
     const screenshot = manualScreenshot(test);
     openEditor(page, true);
     page.fillIn(proseMirror, 'Trial goals');
-    page.click(`${editor} button[title="Divider"]`);
+    page.click(`${editor} .text-editor__divider`);
     page.fillIn(proseMirror, 'Collection schedule');
-    spotlightButton(screenshot, 'thread_line', 'Divider');
+    spotlightButton(screenshot, 'thread_line', 'text-editor__divider');
   },
 
   'thread_table': (test) => {
     const page = pageHelper(test);
     const screenshot = manualScreenshot(test);
     openEditor(page, true);
-    page.click(`${editor} button[title="Add table"]`);
+    page.click(`${editor} .text-editor__add-table`);
     page.waitFor(`${proseMirror} table`);
-    spotlightButton(screenshot, 'thread_table', 'Add table');
+    spotlightButton(screenshot, 'thread_table', 'text-editor__add-table');
   }
 };

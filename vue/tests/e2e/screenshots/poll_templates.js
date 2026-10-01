@@ -24,8 +24,7 @@ function openAdviceForm(page) {
 function markPollOptions(page, root = '.poll-common-form') {
   page.execute(`
     const root = document.querySelector('${root}');
-    const heading = Array.from(root.querySelectorAll('.text-body-large'))
-      .find(el => el.textContent.trim() === 'Options');
+    const heading = root.querySelector('.poll-common-form__options-heading');
     heading.classList.add('manual-options-heading');
     heading.nextElementSibling.classList.add('manual-options-list');
   `);
@@ -40,10 +39,9 @@ function openTemplateForm(page, custom = false) {
   page.waitFor('.poll-template-form__submit');
 }
 
-function markTemplateField(page, label, className) {
+function markTemplateField(page, fieldClass, className) {
   page.execute(`
-    const field = Array.from(document.querySelectorAll('#poll-template-form .v-input'))
-      .find(el => el.textContent.includes(${JSON.stringify(label)}));
+    const field = document.querySelector(${JSON.stringify(`#poll-template-form .${fieldClass}`)});
     if (field) field.classList.add(${JSON.stringify(className)});
   `);
   page.waitFor(`.${className}`);
@@ -126,7 +124,7 @@ module.exports = {
     const screenshot = manualScreenshot(test);
     page.loadPath('setup_manual_oatmilk_advice_poll');
     page.waitFor('.poll-common-vote-form');
-    page.execute("Array.from(document.querySelectorAll('.poll-common-vote-form__button')).find(el => el.textContent.includes('Agree')).querySelector('label').click()");
+    page.execute("document.querySelector('.poll-common-vote-form__button--agree label').click()");
     page.fillIn(
       '.poll-common-vote-form__reason [contenteditable=true]',
       'Confirm service response times and batch-record support before signing the supplier agreement.'
@@ -184,9 +182,9 @@ module.exports = {
     const page = pageHelper(test);
     const screenshot = manualScreenshot(test);
     openTemplateForm(page, true);
-    markTemplateField(page, 'Template title', 'manual-template-title');
-    markTemplateField(page, 'Template subtitle', 'manual-template-subtitle');
-    markTemplateField(page, 'Template help', 'manual-template-help');
+    markTemplateField(page, 'poll-template-form-fields__process-name', 'manual-template-title');
+    markTemplateField(page, 'poll-template-form-fields__process-subtitle', 'manual-template-subtitle');
+    markTemplateField(page, 'poll-template-form-fields__process-introduction', 'manual-template-help');
     screenshot.captureRegion(
       'polls/poll_templates/template_WAAP_intro',
       ['.manual-template-title', '.manual-template-subtitle', '.manual-template-help'],
@@ -198,8 +196,8 @@ module.exports = {
     const page = pageHelper(test);
     const screenshot = manualScreenshot(test);
     openTemplateForm(page, true);
-    markTemplateField(page, 'Example title', 'manual-example-title');
-    markTemplateField(page, 'Details', 'manual-example-details');
+    markTemplateField(page, 'poll-template-form-fields__title-placeholder', 'manual-example-title');
+    markTemplateField(page, 'poll-template-form-fields__details', 'manual-example-details');
     screenshot.captureRegion(
       'polls/poll_templates/template_WAAP_details',
       ['.manual-example-title', '.manual-example-details'],
@@ -212,7 +210,7 @@ module.exports = {
     const screenshot = manualScreenshot(test);
     openTemplateForm(page, true);
     markPollOptions(page, '#poll-template-form');
-    page.clickAndWait('.manual-options-list button[title="Edit"]', '.poll-common-option-form');
+    page.clickAndWait('.manual-options-list .poll-common-form__edit-option', '.poll-common-option-form');
     captureTemplateSection(screenshot, 'poll_type_edit_option', '.poll-common-option-form', {height: 1400});
   },
 
@@ -220,7 +218,7 @@ module.exports = {
     const page = pageHelper(test);
     const screenshot = manualScreenshot(test);
     openTemplateForm(page, true);
-    markTemplateField(page, 'Default duration in days', 'manual-template-duration');
+    markTemplateField(page, 'poll-template-form-fields__duration', 'manual-template-duration');
     captureTemplateSection(screenshot, 'poll_type_duration', '.manual-template-duration', {height: 900});
   },
 

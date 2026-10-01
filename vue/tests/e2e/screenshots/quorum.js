@@ -7,7 +7,7 @@ function openProposalForm(page) {
   page.expectText('.context-panel__heading', 'Returnable bottles for cafe customers');
   page.clickAndWait('.activity-panel__add-poll', '.decision-tools-card__poll-types');
   page.expectText('.decision-tools-card__poll-types', 'Consent');
-  page.execute("Array.from(document.querySelectorAll('.decision-tools-card__poll-type')).find(el => el.textContent.includes('Consent')).click()");
+  page.click('.decision-tools-card__template--consent');
   page.waitFor('.poll-common-form-fields__title input');
   page.fillIn('.poll-common-form-fields__title input', 'Approve the returnable bottle trial budget');
   page.fillRichText(
@@ -36,10 +36,9 @@ module.exports = {
     openProposalForm(page);
     page.execute(`
       const form = document.querySelector('.poll-common-form');
-      const headings = Array.from(form.querySelectorAll('.text-body-large'));
-      const optionsHeading = headings.find(el => el.textContent.trim() === 'Options');
-      const durationHeading = headings.find(el => el.textContent.trim() === 'Duration');
-      const votersHeading = headings.find(el => el.textContent.trim() === 'Who can vote?');
+      const optionsHeading = form.querySelector('.poll-common-form__options-heading');
+      const durationHeading = form.querySelector('.poll-common-form__duration-heading');
+      const votersHeading = form.querySelector('.poll-common-form__voters-heading');
       const wrapper = document.createElement('div');
       wrapper.className = 'manual-quorum-options-capture';
       Object.assign(wrapper.style, {

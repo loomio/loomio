@@ -11,7 +11,7 @@ function openTemplates(page) {
 
 function openProposalForm(page) {
   openTemplates(page);
-  page.execute("Array.from(document.querySelectorAll('.decision-tools-card__poll-type')).find(el => el.textContent.includes('Consent')).click()");
+  page.click('.decision-tools-card__template--consent');
   page.waitFor('.poll-common-form-fields__title input');
   page.fillIn('.poll-common-form-fields__title input', 'Approve the returnable bottle trial plan');
   page.fillRichText(
@@ -26,8 +26,7 @@ function openProposalForm(page) {
 
 function markOptions(page) {
   page.execute(`
-    const heading = Array.from(document.querySelectorAll('.poll-common-form .text-body-large'))
-      .find(el => el.textContent.trim() === 'Options');
+    const heading = document.querySelector('.poll-common-form .poll-common-form__options-heading');
     heading.classList.add('manual-options-heading');
     heading.nextElementSibling.classList.add('manual-options-list');
     const options = Array.from(heading.nextElementSibling.querySelectorAll('.v-list-item'));
@@ -125,7 +124,7 @@ module.exports = {
 
     openProposalForm(page);
     markOptions(page);
-    page.clickAndWait('.manual-options-list button[title="Edit"]', '.poll-common-option-form');
+    page.clickAndWait('.manual-options-list .poll-common-form__edit-option', '.poll-common-option-form');
     screenshot.captureElement(
       'polls/settings/proposal_edit_option',
       '.poll-common-option-form',

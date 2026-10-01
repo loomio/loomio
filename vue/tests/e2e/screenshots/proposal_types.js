@@ -194,7 +194,7 @@ module.exports = {
         .find(el => el.textContent.includes('Cafe collection schedule'));
       item.classList.add('manual-cafe-option');
     `);
-    page.clickAndWait('.manual-cafe-option button[title="Edit"]', '.poll-common-option-form');
+    page.clickAndWait('.manual-cafe-option .poll-common-form__edit-option', '.poll-common-option-form');
     screenshot.captureElement(
       'polls/choose/edit_option',
       '.poll-common-option-form',

@@ -328,7 +328,7 @@ v-form.poll-common-form(ref="form" @submit.prevent="submit")
 
   template(v-if="hasOptions")
     v-divider.my-4
-    .text-body-large.py-2( v-t="'poll_common_form.options'")
+    .text-body-large.py-2.poll-common-form__options-heading( v-t="'poll_common_form.options'")
     //p.text-body-small.text-medium-emphasis(v-if="optionFormat == 'iso8601'" v-t="'poll_meeting_form.participants_see_local_times'")
     v-alert(v-if="!pollOptions.length" variant="tonal" type="info")
       span(v-t="'poll_common_form.no_options_add_some'")
@@ -344,7 +344,7 @@ v-form.poll-common-form(ref="form" @submit.prevent="submit")
         :index="priority"
         :key="option.name"
       )
-        v-list-item.mb-2(lines="two" rounded variant="tonal" style="user-select: none")
+        v-list-item.mb-2.poll-common-form__option(:class="option.icon && 'poll-common-form__option--' + option.icon" lines="two" rounded variant="tonal" style="user-select: none")
           template(v-slot:prepend v-if="hasOptionIcon" v-handle)
             v-avatar(size="48")
               img(:src="'/img/' + option.icon + '.svg?v=20260721'" aria-hidden="true")
@@ -360,7 +360,7 @@ v-form.poll-common-form(ref="form" @submit.prevent="submit")
 
           template(v-slot:append)
             div.ml-0(v-if="poll.pollType != 'meeting'")
-              v-btn(icon variant="text" @click="editOption(option)" :title="$t('common.action.edit')")
+              v-btn.poll-common-form__edit-option(icon variant="text" @click="editOption(option)" :title="$t('common.action.edit')")
                 common-icon(name="mdi-pencil")
             v-btn(
               icon
@@ -501,7 +501,7 @@ v-form.poll-common-form(ref="form" @submit.prevent="submit")
     )
 
   v-divider.my-4
-  .text-body-large.pb-2(v-t="'poll_common_form.voting_duration'")
+  .text-body-large.pb-2.poll-common-form__duration-heading(v-t="'poll_common_form.voting_duration'")
   .text-body-medium.pb-4.text-medium-emphasis
     span {{ t('poll_common_form.voting_duration_hint') }}
     help-link.ml-1(path="user_manual/polls/settings#duration")
@@ -520,7 +520,7 @@ v-form.poll-common-form(ref="form" @submit.prevent="submit")
   poll-common-closing-at-field.pb-4(:poll="poll" :min-date="poll.openingAt")
 
   v-divider.my-4
-  .text-body-large.pb-2(v-t="'poll_common_settings.who_can_vote'")
+  .text-body-large.pb-2.poll-common-form__voters-heading(v-t="'poll_common_settings.who_can_vote'")
   v-radio-group(
     v-model="poll.specifiedVotersOnly"
     :disabled="!poll.closingAt"

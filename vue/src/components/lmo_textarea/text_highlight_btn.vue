@@ -28,7 +28,7 @@ export default
 </script>
 
 <template lang="pug">
-v-btn.drop-down-button(
+v-btn.drop-down-button.text-editor__colors(
   v-bind="btnProps"
   :title="$t('formatting.colors')"
   :color="activeColorKey"

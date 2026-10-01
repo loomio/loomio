@@ -6,7 +6,7 @@ function openNewDiscussionForm(page) {
   page.loadPath('setup_manual_oatmilk_new_discussion');
   page.click('.discussions-panel__new-topic-button');
   page.waitFor('.discussion-templates--template');
-  page.execute("Array.from(document.querySelectorAll('.discussion-templates--template')).find(el => el.textContent.includes('Blank')).click()");
+  page.click('.discussion-templates--template-blank');
   page.waitFor('.discussion-form');
   page.waitFor('.recipients-autocomplete');
 }
@@ -44,7 +44,7 @@ function prepareDiscussionEdit(page) {
   );
   page.click('.discussion-form .recipients-autocomplete input[type="text"]');
   page.waitFor('.v-overlay--active .recipients-autocomplete-suggestion');
-  page.execute("Array.from(document.querySelectorAll('.v-overlay--active .recipients-autocomplete-suggestion')).find(el => el.textContent.includes('Everyone in the thread')).click()");
+  page.click('.v-overlay--active .recipients-autocomplete-suggestion--topic');
   page.click('.discussion-form .common-notify-fields .v-text-field input');
 }
 
@@ -446,7 +446,7 @@ module.exports = {
     const screenshot = manualScreenshot(test);
 
     openDiscussion(page);
-    page.execute("Array.from(document.querySelectorAll('.topic-sidebar .v-list-item')).find(el => el.textContent.includes('Email when notified') || el.textContent.includes('Email notifications')).classList.add('manual-volume-control')");
+    page.execute("document.querySelector('.topic-sidebar .topic-sidebar__notification-settings').classList.add('manual-volume-control')");
     page.waitFor('.topic-sidebar .manual-volume-control');
     screenshot.capture('discussions/notifying_people/thread_interact', {
       spotlight: {

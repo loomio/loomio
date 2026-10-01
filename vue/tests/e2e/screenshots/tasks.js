@@ -12,7 +12,7 @@ function openTaskEditor(page) {
   page.waitFor(proseMirror);
   page.execute("const el = document.querySelector('.comment-form .ProseMirror'); el.focus(); el.innerHTML = '<p><br class=\"ProseMirror-trailingBreak\"></p>'; el.dispatchEvent(new InputEvent('input', {bubbles: true, inputType: 'deleteContentBackward'}))");
   page.click(`${editor} .html-editor__expand`);
-  page.waitFor(`${editor} button[title="Task list"]`);
+  page.waitFor(`${editor} .text-editor__task-list`);
 }
 
 function selectEditorText(page) {
@@ -23,7 +23,7 @@ function fillTask(page) {
   openTaskEditor(page);
   page.fillIn(proseMirror, 'Confirm bottle washer capacity with suppliers');
   selectEditorText(page);
-  page.click(`${editor} button[title="Task list"]`);
+  page.click(`${editor} .text-editor__task-list`);
   page.waitFor(`${editor} .task-item-text`);
   page.execute('window.getSelection().removeAllRanges(); document.activeElement.blur()');
 }
@@ -34,7 +34,7 @@ function fillAssignedTask(page) {
   page.waitForPresent('.suggestion-list [data-mention-handle="jamiechen"] .v-list-item-title');
   page.clickElement('.suggestion-list [data-mention-handle="jamiechen"] .v-list-item-title');
   selectEditorText(page);
-  page.click(`${editor} button[title="Task list"]`);
+  page.click(`${editor} .text-editor__task-list`);
   page.waitFor(`${editor} .task-item-text`);
   page.waitFor(`${editor} .task-item-text + .v-chip`);
   page.execute('window.getSelection().removeAllRanges(); document.activeElement.blur()');
@@ -49,7 +49,7 @@ module.exports = {
     fillTask(page);
     screenshot.captureRegion('discussions/tasks/tasklist1', [editor], {
       spotlight: {
-        selector: `${editor} button[title="Task list"]`,
+        selector: `${editor} .text-editor__task-list`,
         padding: 10,
         radius: 12
       },

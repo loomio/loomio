@@ -24,7 +24,7 @@ function openNewDiscussion(page) {
   openGroup(page);
   page.click('.discussions-panel__new-topic-button');
   page.waitFor('.discussion-templates--template');
-  page.execute("Array.from(document.querySelectorAll('.discussion-templates--template')).find(el => el.textContent.includes('Blank')).click()");
+  page.click('.discussion-templates--template-blank');
   page.waitFor('.discussion-form');
   page.fillIn('.discussion-form__title-input input', 'Compare bottle washing suppliers');
   page.fillRichText('.discussion-form .lmo-textarea div[contenteditable=true]', richText.context('tagged-discussion', [

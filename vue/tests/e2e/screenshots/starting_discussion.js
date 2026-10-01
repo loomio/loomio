@@ -30,7 +30,7 @@ module.exports = {
     page.loadPath('setup_manual_oatmilk_new_discussion');
     page.click('.discussions-panel__new-topic-button');
     page.waitFor('.discussion-templates--template');
-    page.execute("Array.from(document.querySelectorAll('.discussion-templates--template')).find(el => el.textContent.includes('Blank')).click()");
+    page.click('.discussion-templates--template-blank');
     page.waitFor('.discussion-form');
     page.fillIn('.discussion-form__title-input input', 'Plan the returnable bottle trial');
     page.fillRichText(

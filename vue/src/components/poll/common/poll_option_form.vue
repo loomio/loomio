@@ -102,7 +102,7 @@ form(v-on:submit.prevent='submit()')
 
       template(v-if="poll.config().allow_vote_share_requirement")
         v-divider.pb-4
-        .text-body-large.pb-2(v-t="'poll_option_form.vote_share_requirement'")
+        .text-body-large.pb-2.poll-option-form__vote-share-heading(v-t="'poll_option_form.vote_share_requirement'")
         v-checkbox(
           v-model="testEnabled"
           :label="poll.pollType == 'proposal' ? $t('poll_option_form.for_the_proposal_to_pass') : $t('poll_option_form.for_the_poll_to_be_valid', { poll_type: poll.translatedPollType() })"
@@ -132,6 +132,7 @@ form(v-on:submit.prevent='submit()')
             :disabled="!testEnabled"
             v-model="pollOption.testAgainst"
             :items="[{title: $t(poll.weightedVoting && poll.pollType === 'proposal' ? 'poll_option_form.points_cast' : 'poll_option_form.votes_cast'), value: 'score_percent'}, {title: $t('poll_option_form.eligible_voters'), value: 'voter_percent'}]"
+            :item-props="item => ({class: 'poll-option-form__test-against--' + item.value})"
           )
 
     v-divider

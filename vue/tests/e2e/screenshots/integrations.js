@@ -9,7 +9,7 @@ function openGroupMenu(page) {
 
 function openChatbots(page) {
   openGroupMenu(page);
-  page.execute("Array.from(document.querySelectorAll('.v-overlay--active .v-list-item')).find(el => el.textContent.includes('Chat integrations')).click()");
+  page.click('.v-overlay--active .action-dock__button--chatbots');
   page.waitFor('.chatbot-list');
 }
 
@@ -50,7 +50,7 @@ module.exports = {
   'loomio-chatbot-form': (test) => {
     const page = pageHelper(test); const screenshot = manualScreenshot(test);
     openAddMenu(page);
-    page.execute("Array.from(document.querySelectorAll('.v-overlay--active .v-list-item')).find(el => el.textContent.trim() === 'Slack').click()");
+    page.click('.v-overlay--active .action-dock__button--slack');
     page.waitFor('.chatbot-matrix-form');
     page.fillIn('.chatbot-matrix-form input', 'Oatmilk Cooperative chat');
     screenshot.captureElement('integrations/chatbots/loomio-chatbot-form', '.chatbot-matrix-form', {width: 1100, height: 2000});
@@ -114,7 +114,7 @@ module.exports = {
   'loomio-matrix-bot-form': (test) => {
     const page = pageHelper(test); const screenshot = manualScreenshot(test);
     openAddMenu(page);
-    page.execute("Array.from(document.querySelectorAll('.v-overlay--active .v-list-item')).find(el => el.textContent.trim() === 'Matrix').click()");
+    page.click('.v-overlay--active .action-dock__button--matrix');
     page.waitFor('.chatbot-matrix-form');
     screenshot.captureElement('integrations/matrix/loomio-matrix-bot-form', '.chatbot-matrix-form', {width: 1100, height: 2100});
   }

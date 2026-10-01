@@ -11,11 +11,10 @@ function openProposalForm(page) {
   page.loadPath('setup_manual_oatmilk_quorum?view=edit');
   page.waitFor('.poll-common-form-fields__title input');
   page.execute(`
-    const heading = Array.from(document.querySelectorAll('.poll-common-form .text-body-large'))
-      .find(el => el.textContent.trim() === 'Options');
+    const heading = document.querySelector('.poll-common-form .poll-common-form__options-heading');
     heading.classList.add('manual-options-heading');
     const options = Array.from(document.querySelectorAll('.poll-common-form .v-list-item'));
-    options.find(el => el.textContent.includes('Agree')).classList.add('manual-agree-option');
+    document.querySelector('.poll-common-form .poll-common-form__option--agree').classList.add('manual-agree-option');
     options[options.length - 1].classList.add('manual-last-option');
   `);
   page.waitFor('.manual-agree-option');
@@ -23,15 +22,14 @@ function openProposalForm(page) {
 
 function openAgreeOption(page) {
   openProposalForm(page);
-  page.clickAndWait('.manual-agree-option button[title="Edit"]', '.poll-common-option-form');
+  page.clickAndWait('.manual-agree-option .poll-common-form__edit-option', '.poll-common-option-form');
   markVoteShareSection(page);
 }
 
 // Vue re-renders these fields when they change, which drops added classes, so mark them again after each change.
 function markVoteShareSection(page) {
   page.execute(`
-    const heading = Array.from(document.querySelectorAll('.poll-common-option-form .text-body-large'))
-      .find(el => el.textContent.trim() === 'Vote share requirement');
+    const heading = document.querySelector('.poll-common-option-form .poll-option-form__vote-share-heading');
     heading.classList.add('manual-vote-share-heading');
     heading.nextElementSibling.classList.add('manual-vote-share-checkbox');
     heading.nextElementSibling.nextElementSibling.classList.add('manual-vote-share-fields');
@@ -47,7 +45,7 @@ function enableVoteShare(page, percent) {
   markVoteShareSection(page);
   page.click('.manual-vote-against-select .v-field');
   page.waitFor('.v-overlay--active .v-list');
-  page.execute("Array.from(document.querySelectorAll('.v-overlay--active .v-list-item')).find(el => el.textContent.includes('Eligible voters')).click()");
+  page.click('.v-overlay--active .poll-option-form__test-against--voter_percent');
   page.pause(300);
   markVoteShareSection(page);
   page.expectText('.manual-vote-against-select', 'Eligible voters');
@@ -79,7 +77,7 @@ module.exports = {
         padding: 32,
         width: 1200,
         height: 1600,
-        spotlight: spotlight(['.manual-agree-option button[title="Edit"]'], 10)
+        spotlight: spotlight(['.manual-agree-option .poll-common-form__edit-option'], 10)
       }
     );
   },

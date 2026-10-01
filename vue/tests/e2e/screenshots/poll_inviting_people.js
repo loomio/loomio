@@ -35,9 +35,10 @@ function openSpecifiedVotersForm(page) {
   page.loadPath('setup_manual_oatmilk_delegate_poll');
   page.expectText('.context-panel__heading', 'Weekly production schedule');
   page.clickAndWait('.activity-panel__add-poll', '.decision-tools-card__poll-type--proposal');
-  page.execute("Array.from(document.querySelectorAll('.decision-tools-card__poll-type')).find(el => el.textContent.includes('Consent')).click()");
+  page.click('.decision-tools-card__template--consent');
   page.waitFor('.poll-common-form');
-  page.click('.poll-common-settings__specified-voters-only .v-selection-control__wrapper');
+  page.execute("document.querySelector('.poll-common-settings__specified-voters-only input').click()");
+  page.waitFor('.poll-common-settings__specified-voters-only.v-selection-control--dirty');
 }
 
 module.exports = {
@@ -131,7 +132,7 @@ module.exports = {
     page.clickAndWait('.action-dock__button--remind_poll', '.poll-remind');
     page.click('.poll-remind .recipients-autocomplete input[type="text"]');
     page.waitFor('.v-overlay--active .recipients-autocomplete-suggestion');
-    page.execute("Array.from(document.querySelectorAll('.v-overlay--active .recipients-autocomplete-suggestion')).find(el => el.textContent.includes('Everyone invited to vote')).click()");
+    page.click('.v-overlay--active .recipients-autocomplete-suggestion--voters');
     page.waitFor('.poll-remind .chip--select-multi');
     screenshot.captureElement('polls/inviting_people/proposal_remind', '.poll-remind', {width: 1100, height: 900});
   },

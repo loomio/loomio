@@ -272,7 +272,7 @@ module.exports = {
     loadEmailSettings(page);
     page.click('.email-settings-page__digest-card .v-select .v-field');
     page.waitFor('.v-overlay--active .v-list');
-    page.execute("Array.from(document.querySelectorAll('.v-overlay--active .v-list-item')).find(el => el.textContent.includes('Never')).click()");
+    page.click('.v-overlay--active .email-settings-page__catch-up-day--never');
     screenshot.captureElement('users/email_settings/turn_off_all_emails_1', '.email-settings-page__digest-card', {
       width: 1100,
       height: 1500,
@@ -334,9 +334,7 @@ module.exports = {
     const screenshot = manualScreenshot(test);
     loadProfile(page);
     page.execute(`
-      const control = Array.from(document.querySelectorAll('.profile-page .v-checkbox'))
-        .find((element) => element.textContent.includes('Translate content to my language automatically'));
-      control?.classList.add('manual-automatic-translation');
+      document.querySelector('.profile-page .profile-page__auto-translate').classList.add('manual-automatic-translation');
     `);
     page.waitFor('.manual-automatic-translation');
     screenshot.captureElement(
@@ -404,12 +402,12 @@ module.exports = {
     const page = pageHelper(test);
     const screenshot = manualScreenshot(test);
     loadProfile(page);
-    page.execute("document.querySelector('#user-locale-field').scrollIntoView({block: 'center'})");
+    page.execute("document.querySelector('.profile-page__locale').scrollIntoView({block: 'center'})");
     page.pause(200);
-    screenshot.captureElement('users/user_profile/profile_language', '#user-locale-field', {
+    screenshot.captureElement('users/user_profile/profile_language', '.profile-page__locale', {
       width: 1100,
       height: 900,
-      spotlight: '#user-locale-field'
+      spotlight: '.profile-page__locale'
     });
   }
 };
