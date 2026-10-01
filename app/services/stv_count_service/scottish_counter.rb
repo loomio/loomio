@@ -55,6 +55,7 @@ module StvCountService
       @continuing = Set.new(@candidate_ids)
       @surplus_pending = []
       @retained = {}
+      @rounding_loss = Rational(0)
       @quota = QuotaCalculator.calculate(@papers.sum(&:count), @seats, @quota_type)
 
       @papers.each { |paper| paper.holder = next_continuing(paper) }
@@ -67,7 +68,8 @@ module StvCountService
           elected: [],
           eliminated: [],
           transfers: {},
-          quota: format_number(@quota)
+          quota: format_number(@quota),
+          non_transferable: format_number(exhausted_votes + @rounding_loss)
         }
         @rounds << round_data
         @history << totals
@@ -137,6 +139,13 @@ module StvCountService
       totals
     end
 
+    # Votes on papers with no continuing preference left. Together with the
+    # value lost by truncating transfer values, these are the non-transferable
+    # votes in a Scottish stage report.
+    def exhausted_votes
+      @papers.sum(Rational(0)) { |paper| paper.holder ? 0 : paper.count * paper.value }
+    end
+
     def elect_reaching_quota(totals, round_data)
       reached = @continuing.select { |cid| totals[cid] >= @quota }.sort_by { |cid| -totals[cid] }
       reached.each do |cid|
@@ -163,7 +172,8 @@ module StvCountService
     def transfer_surplus(cid, total, round_data)
       @surplus_pending.delete(cid)
       surplus = total - @quota
-      transfers = move_papers_from(cid) { |value| truncate_value(value * surplus / total) }
+      transfers, moved = move_papers_from(cid) { |value| truncate_value(value * surplus / total) }
+      @rounding_loss += surplus - moved
       @retained[cid] = @quota
       round_data[:transfers][cid.to_s] = format_tallies(transfers) if transfers.any?
     end
@@ -172,20 +182,25 @@ module StvCountService
     def exclude(cid, round_data)
       @continuing.delete(cid)
       round_data[:eliminated] << cid
-      transfers = move_papers_from(cid) { |value| value }
+      transfers, _moved = move_papers_from(cid) { |value| value }
       round_data[:transfers][cid.to_s] = format_tallies(transfers) if transfers.any?
     end
 
+    # Moves the candidate's papers to their next continuing preferences,
+    # revaluing each with the block. Returns the votes received by each
+    # candidate and the total value moved, including papers that exhaust.
     def move_papers_from(cid)
       transfers = Hash.new(Rational(0))
+      moved = Rational(0)
       @papers.each do |paper|
         next unless paper.holder == cid
 
         paper.value = yield(paper.value)
         paper.holder = next_continuing(paper)
+        moved += paper.count * paper.value
         transfers[paper.holder] += paper.count * paper.value if paper.holder
       end
-      transfers
+      [transfers, moved]
     end
 
     def next_continuing(paper)

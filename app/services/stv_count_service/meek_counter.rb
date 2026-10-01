@@ -64,6 +64,7 @@ module StvCountService
           elected: [],
           eliminated: [],
           quota: format_number(quota),
+          non_transferable: format_number(@exhausted),
           keep_values: @keep.transform_values { |v| format_number(v) }.transform_keys(&:to_s)
         }
 

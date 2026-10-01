@@ -1,0 +1,54 @@
+# Comment: Ballot papers derived from the ERS97 model election - all votes - ERS97
+# Source: RunasSudo <https://yingtongli.me/blog/2021/01/04/ers97.html> based on https://www.electoral-reform.org.uk/latest-news-and-research/publications/how-to-conduct-an-election-by-the-single-transferable-vote-3rd-edition/
+# Contributor: RunasSudo
+11 6
+35 1 2
+3 1 3 9
+11 1 3 6
+5 1 3 7
+6 1 3 8
+20 1 4 0
+7 1 4 9
+4 1 4 11
+8 1 5
+4 1 8
+1 1 10 5 7
+1 1 10 9
+18 1 11
+11 1 0
+81 2
+23 3 1 2 0
+2 3 1 2 7
+1 3 1 2 8
+1 3 1 0
+3 4 1 3 7
+1 4 8
+11 4 5 6
+3 4 2 0
+5 4 2 11
+1 4 3 0
+105 5
+91 6
+64 7
+5 8
+42 8 9
+12 8 7
+55 9
+2 10 5
+5 10 8
+14 10 9
+2 10 1 11
+90 11
+0
+"Smith"
+"Carpenter"
+"Wright"
+"Glazier"
+"Duke"
+"Prince"
+"Baron"
+"Abbot"
+"Vicar"
+"Monk"
+"Freeman"
+"ERS97 Model Election"

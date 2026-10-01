@@ -1,0 +1,66 @@
+{
+ "source": "Dundee City Council, 2022 local government election, Ward 1 - Strathmartine, official CandidateVotesPerStageReport_V0001_Ward-1---Strathmartine_06052022_122459.pdf: https://www.dundeecity.gov.uk/local-elections-2022/local-elections-2022-results",
+ "seats": 4,
+ "valid_votes": 5956,
+ "quota": "1192",
+ "stages": [
+  {
+   "votes": {
+    "John ALEXANDER": "2143.00000",
+    "Callum BAIRD": "199.00000",
+    "Daniel COLEMAN": "1116.00000",
+    "Susan ETTLE": "81.00000",
+    "Stewart HUNTER": "559.00000",
+    "Maddie JAMIESON": "43.00000",
+    "Kevin KEENAN": "1359.00000",
+    "Calum WALKER": "351.00000",
+    "Laura WHYTE": "105.00000"
+   },
+   "non_transferable": "0.00000",
+   "elected": [
+    "John ALEXANDER",
+    "Kevin KEENAN"
+   ],
+   "excluded": [],
+   "surplus": null
+  },
+  {
+   "votes": {
+    "John ALEXANDER": "1192.00000",
+    "Callum BAIRD": "268.22812",
+    "Daniel COLEMAN": "1169.25240",
+    "Susan ETTLE": "86.32524",
+    "Stewart HUNTER": "1309.85884",
+    "Maddie JAMIESON": "46.10639",
+    "Kevin KEENAN": "1359.00000",
+    "Calum WALKER": "353.21885",
+    "Laura WHYTE": "119.64441"
+   },
+   "non_transferable": "52.36575",
+   "elected": [
+    "Stewart HUNTER"
+   ],
+   "excluded": [],
+   "surplus": "John ALEXANDER"
+  },
+  {
+   "votes": {
+    "John ALEXANDER": "1192.00000",
+    "Callum BAIRD": "283.58812",
+    "Daniel COLEMAN": "1226.26872",
+    "Susan ETTLE": "90.87180",
+    "Stewart HUNTER": "1309.85884",
+    "Maddie JAMIESON": "60.36047",
+    "Kevin KEENAN": "1192.00000",
+    "Calum WALKER": "366.12125",
+    "Laura WHYTE": "124.80537"
+   },
+   "non_transferable": "110.12543",
+   "elected": [
+    "Daniel COLEMAN"
+   ],
+   "excluded": [],
+   "surplus": "Kevin KEENAN"
+  }
+ ]
+}

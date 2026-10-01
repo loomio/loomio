@@ -1,0 +1,43 @@
+{
+ "source": "Dundee City Council, 2022 local government election, Ward 7 - East End, official CandidateVotesPerStageReport_V0001_Ward-7---East-End_06052022_153002.pdf: https://www.dundeecity.gov.uk/local-elections-2022/local-elections-2022-results",
+ "seats": 3,
+ "valid_votes": 4117,
+ "quota": "1030",
+ "stages": [
+  {
+   "votes": {
+    "Bill CRABB": "440.00000",
+    "Will DAWSON": "1350.00000",
+    "Outi MAATTANEN-BOURKE": "115.00000",
+    "Dorothy MCHUGH": "1071.00000",
+    "Alison MCINTOSH": "167.00000",
+    "Allan PETRIE": "151.00000",
+    "Christina ROBERTS": "823.00000"
+   },
+   "non_transferable": "0.00000",
+   "elected": [
+    "Will DAWSON",
+    "Dorothy MCHUGH"
+   ],
+   "excluded": [],
+   "surplus": null
+  },
+  {
+   "votes": {
+    "Bill CRABB": "444.02951",
+    "Will DAWSON": "1030.00000",
+    "Outi MAATTANEN-BOURKE": "119.97763",
+    "Dorothy MCHUGH": "1071.00000",
+    "Alison MCINTOSH": "183.59210",
+    "Allan PETRIE": "157.87387",
+    "Christina ROBERTS": "1087.52548"
+   },
+   "non_transferable": "23.00141",
+   "elected": [
+    "Christina ROBERTS"
+   ],
+   "excluded": [],
+   "surplus": "Will DAWSON"
+  }
+ ]
+}
