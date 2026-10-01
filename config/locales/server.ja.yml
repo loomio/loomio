@@ -168,7 +168,7 @@ ja:
         proposal: 提案
         count: カウント
         choose: 選ぶ
-        allocate: 割り当てる
+        allocate: 配分
         score: スコア
         rank: ランク
         time: 日程調整
@@ -198,7 +198,7 @@ ja:
       user_id: ユーザーID
       created_at: 作成日
       closing_at: 終了時間
-      closed_at: 閉店時間
+      closed_at: 締め切り日時
       is_latest: 最新です
       engagement: 婚約
       stances: スタンス
@@ -452,8 +452,8 @@ ja:
       not_invited: 招待されていません
       please_respond: 答えてください
       time_zone: "(時間は%{zone}に表示されます)"
-      undecided_members: 未決定のメンバー (%{count})
-      undecided_visitors: 未決定のゲスト (%{count})
+      undecided_members: 未投票のメンバー (%{count})
+      undecided_visitors: 未投票のゲスト (%{count})
       more_undecided: あと %{count} 件...
       vote_now: 今すぐ投票してください
       you_have_until: "%{when} までに参加してください。"
@@ -626,8 +626,8 @@ ja:
       process_introduction_v2: <p><strong>スコアを</strong>使用すると、各選択肢に対するグループの支持度を測定できます。参加者はスライドスケールに基づいて各選択肢を評価します。これにより、人々が何を好むかだけでなく、どの程度好んでいるかを把握できます。</p><p> <a target="_blank" href="/docs/en/user_manual/polls/proposal_types#score-poll">スコア投票の詳細については、こちらをご覧ください</a>。</p>
       process_subtitle_v3: 有権者に各選択肢をどの程度支持するか評価してもらう
     dot_vote:
-      process_subtitle: 優先順位を明らかにするためにポイントの予算を割り当てる
-      process_introduction: <p>ドット投票は、限られたリソースを複数の選択肢に配分しようとするグループにとって役立ちます。参加者が選択肢を選択する際に制約があることを理解できるようにすることで、単なる投票を超えた効果をもたらします。</p><p>参加者にはそれぞれ決められた数のドットが与えられます。その数を決めてください。</p><p>参加者は提示された選択肢の中から気に入ったものに点を付けます。すべての点を1つの選択肢に付けることも、複数の選択肢に分散させることもできます。</p><p>参加者がドットを割り当てると、ドットの予算制限を超える可能性があるため、ドットの使い方を慎重に検討することが推奨されます。</p><p>最も多くのドットが付いた選択肢が「勝ち」となります。結果表には、結果を分析するのに役立つ追加データが表示されます。</p><ul><li><p>ポイントの割合</p></li><li><p>ポイント</p></li><li><p>平均</p></li><li><p>有権者</p></li></ul><p><a target="_blank"  href="/docs/en/user_manual/polls/proposal_types#dot-vote">ドット投票についての詳細を読む</a>。</p>
+      process_subtitle: 決められた数のポイントを配分し、優先順位を明らかにします
+      process_introduction: <p>ドット投票は、限られた資源を複数の選択肢に配分するために使えます。単純なアンケートよりも、選択肢を選ぶ際に制約があることを参加者が理解しやすくなります。</p><p>参加者にはそれぞれ配分するためのポイントが決められた数だけ与えられます。</p><p>参加者はすべてのポイントを1つの選択肢に配分することも、複数の選択肢に分けることもできます。</p><p>参加者は持っているポイント数を超えて配分できないため、配分の仕方を慎重に考える必要があります。</p><p><a target="_blank"  href="/docs/en/user_manual/polls/proposal_types#dot-vote">ドット投票について詳しく読む</a>。</p>
       title: 会議のテーマの選択
       details: <h3 id="what-is-this-poll-about"><strong>このアンケートは何についてですか？</strong></h3><p></p><h3 id="why-is-this-important"><strong>なぜこれが重要なのでしょうか?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"><strong>人々に何をするよう求めているのですか?</strong></h3><p></p><p>このアンケートでは、決められたポイントを好きな選択肢に配分できます。すべてを1つの選択肢に配分しても、複数に分けても構いません。</p>
       process_subtitle_v2: トレードオフがある場合は優先順位を明らかにする

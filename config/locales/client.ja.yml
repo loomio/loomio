@@ -225,7 +225,7 @@ ja:
     time:
       am: 午前
       pm: 午後
-    closed_ago: 閉店 %{time}
+    closed_ago: "%{time}に締め切り"
     volume: 音量
     notification_volume: 通知量
     group: グループ
@@ -1001,7 +1001,7 @@ ja:
       topic: スレッド内の全員
       voters: 投票に招待された全員
       decided_voters: 投票してくださった皆様
-      undecided_voters: 未決定の有権者
+      undecided_voters: 未投票の投票者
       non_voters: "%{name} のメンバーはまだ招待されていません"
       delegates_of_group: "%{name} の代表者"
     form:
@@ -1728,7 +1728,7 @@ ja:
     group_notifications: グループ通知
     group_notifications_description: グループの活動レベルとチャンネルを変更する
     choose_email_and_push_updates: メールとプッシュ通知で個別の設定を選択してください
-    catch_up_email: 追いつきメール
+    catch_up_email: まとめメール
     catch_up_email_description: 未読の通知や未読のアクティビティをまとめて通知するタイミングを選択してください。
   thread_preview:
     replies_count: "%{count} 件の返信"
@@ -2047,7 +2047,7 @@ ja:
     current_results: 現在の結果
     responses: 反応
     close_poll_type: "%{pollType}を閉じる"
-    close_early: 早めに閉める
+    close_early: 早めに締め切る
     totals: 合計
     participate: 参加する
     vote: 投票する
@@ -2369,7 +2369,7 @@ ja:
     option_already_added: 選択肢はすでにアンケートに追加されています
   poll_dot_vote_form:
     dots_per_person: 1人あたりのポイント
-    dots_per_person_helptext: 各人に割り当てるよう求められるポイントの合計数。
+    dots_per_person_helptext: 各人が配分するポイントの合計数です。
   poll_meeting_form:
     timeslots: タイムスロット
     no_options: 現在のタイムゾーン (%{zone}) の時刻を入力します。参加者には、現地のタイムゾーンに翻訳された時間が表示されます。
@@ -2444,7 +2444,7 @@ ja:
     total: 合計
   poll_remove_vote:
     title: 投票を削除しますか?
-    helptext: 投票を削除してもよろしいですか?あなたは未決定としてリストされますが、必要に応じて後で再度投票することができます。
+    helptext: 投票を削除してもよろしいですか?未投票として表示され、希望すれば後で再び投票できます。
     confirm: 投票を削除する
     success: 投票が削除されました
   poll_poll_vote_form:
@@ -2805,7 +2805,7 @@ ja:
       voting_title: 投票終了の24時間前にリマインダーを送信してください
       nobody: 誰でもない
       author: 著者（私）
-      undecided_voters: 未決定の有権者
+      undecided_voters: 未投票の投票者
       voters: すべての有権者
     notify_on_participate:
       title: 参加者が参加したら通知する
@@ -2865,8 +2865,8 @@ ja:
       choose_hint: 有権者は最良の選択肢（または選択肢群）を選択する
       score: スコア
       score_hint: 有権者はそれぞれの選択肢にスコアを割り当てる
-      allocate: 割り当てる
-      allocate_hint: 有権者は選択肢間でポイントの予算を割り当てる
+      allocate: 配分
+      allocate_hint: 投票者が決められた数のポイントを選択肢に配分します
       ranked_choice: 順位付け選択
       ranked_choice_hint: 有権者は選択肢を最も好むものから最も好まないものの順に並べる
       time_poll: 日程調整
@@ -3088,11 +3088,11 @@ ja:
   poll_common_details_meta:
     opened: オープンしました
     opens: 開く
-    closed: 閉店
-    closes: 閉店
+    closed: 締め切り済み
+    closes: 締め切り
     opened_at: 開始日時
     opening_at: 開始予定
-    closed_at: 閉店時間
+    closed_at: 締め切り日時
     closing_at: 終了予定
   poll_stv_vote_form:
     helptext: 候補を線の上にドラッグして順位を付けてください。線より下の項目は順位付けされていません。順位1が最も希望する項目です。
