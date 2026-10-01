@@ -1,6 +1,6 @@
 # STV Election counting fixes
 
-STV Election counts now follow the Scottish counting rules more closely. Loomio's Scottish STV count now matches the official stage reports of eight Scottish council wards, round by round. Closed elections keep the results they were announced with.
+STV Election counts now follow the Scottish counting rules more closely. Loomio's Scottish STV count now matches the official stage reports of eight Scottish council wards, round by round. Closed elections keep the results they were announced with. STV Elections are no longer marked as beta: the poll form no longer shows a warning about untested counting.
 
 - **Candidates who reach the quota in the same round are elected together.** Their surpluses transfer largest first, and only to candidates still in the count. Previously one winner's surplus could transfer to another winner and be lost, which could elect the wrong candidate.
 - **Transfer values are rounded down to five decimal places** in Scottish STV, as the Scottish rules require. Meek STV uses the exact quota, votes ÷ (seats + 1), without rounding.
