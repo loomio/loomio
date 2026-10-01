@@ -469,16 +469,19 @@ v-form.poll-common-form(ref="form" @submit.prevent="submit")
       type="number"
       :min="1"
       :max="poll.pollOptionNames.length - 1"
+      :rules="validate('stvSeats')"
     )
     v-select.mt-2(
       v-model="poll.stvMethod"
       :items="stvMethodItems"
       :label="$t('poll_stv_form.method_label')"
+      :rules="validate('stvMethod')"
     )
     v-select.mt-2(
       v-model="poll.stvQuota"
       :items="stvQuotaItems"
       :label="$t('poll_stv_form.quota_label')"
+      :rules="validate('stvQuota')"
     )
 
   template(v-if="poll.pollType == 'dot_vote'")

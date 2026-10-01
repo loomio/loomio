@@ -510,6 +510,53 @@ class PollTest < ActiveSupport::TestCase
     assert time_poll.errors.added?(:weighted_voting, :invalid)
   end
 
+  test "STV polls need between one seat and one fewer than the candidates" do
+    stv_params = poll_params(poll_type: 'stv', poll_option_names: %w[Alice Bob Carol])
+
+    assert Poll.new(stv_params.merge(stv_seats: 1)).valid?
+    assert Poll.new(stv_params.merge(stv_seats: 2)).valid?
+
+    [0, -1].each do |seats|
+      poll = Poll.new(stv_params.merge(stv_seats: seats))
+      refute poll.valid?, "#{seats} seats should be invalid"
+      assert poll.errors.added?(:stv_seats, :greater_than_or_equal_to, count: 1)
+    end
+
+    poll = Poll.new(stv_params.merge(stv_seats: 3))
+    refute poll.valid?
+    assert poll.errors.added?(:stv_seats, :less_than, count: 3)
+  end
+
+  test "STV polls only accept supported counting methods and quotas" do
+    stv_params = poll_params(poll_type: 'stv', poll_option_names: %w[Alice Bob Carol])
+
+    %w[scottish meek].each { |method| assert Poll.new(stv_params.merge(stv_method: method)).valid? }
+    %w[droop hare].each { |quota| assert Poll.new(stv_params.merge(stv_quota: quota)).valid? }
+
+    poll = Poll.new(stv_params.merge(stv_method: 'irish', stv_quota: 'imperiali'))
+    refute poll.valid?
+    assert poll.errors.added?(:stv_method, :inclusion)
+    assert poll.errors.added?(:stv_quota, :inclusion)
+  end
+
+  test "STV polls revalidate seats when candidates are removed" do
+    poll = create_poll(poll_type: 'stv', stv_seats: 2, poll_option_names: %w[Alice Bob Carol])
+    assert poll.persisted?
+
+    poll.poll_options.last.mark_for_destruction
+    refute poll.valid?
+    assert poll.errors.added?(:stv_seats, :less_than, count: 2)
+  end
+
+  test "an existing STV poll with invalid settings can still be closed" do
+    poll = create_poll(poll_type: 'stv', stv_seats: 1, poll_option_names: %w[Alice Bob])
+    poll.update_columns(stv_seats: 2)
+
+    PollService.close(poll: poll, actor: @admin)
+
+    assert poll.reload.closed_at
+  end
+
   test "an existing anonymous poll rejects enabling vote weights" do
     poll = create_poll
     poll.update_columns(anonymous: true)

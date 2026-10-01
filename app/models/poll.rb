@@ -239,6 +239,7 @@ class Poll < ApplicationRecord
   validate :anonymous_invariants
   validate :anonymous_configuration_cannot_change_after_ballot
   validate :weighted_voting_available
+  validate :stv_settings_are_valid, if: :stv_settings_validation_required?
   validate :score_bounds_are_valid, if: :score_bounds_validation_required?
   validate :title_if_not_discarded
 
@@ -743,6 +744,33 @@ class Poll < ApplicationRecord
     return if Poll.weighted_voting_available?(poll_type: poll_type, anonymous: anonymous?)
 
     errors.add(:weighted_voting, :invalid)
+  end
+
+  STV_METHODS = %w[scottish meek].freeze
+  STV_QUOTAS = %w[droop hare].freeze
+
+  # An STV count needs at least one seat and more candidates than seats, or
+  # every candidate is simply elected. The counters fall back to defaults for
+  # blank settings, so only reject values that are present and unsupported.
+  def stv_settings_are_valid
+    seats = stv_seats || 1
+    errors.add(:stv_seats, :greater_than_or_equal_to, count: 1) if seats < 1
+    errors.add(:stv_seats, :less_than, count: poll_option_count) if poll_option_count > 0 && seats >= poll_option_count
+    errors.add(:stv_method, :inclusion) if stv_method.present? && !STV_METHODS.include?(stv_method)
+    errors.add(:stv_quota, :inclusion) if stv_quota.present? && !STV_QUOTAS.include?(stv_quota)
+  end
+
+  # Validate when the settings or candidates change, so polls saved before
+  # this validation existed can still be closed and counted.
+  def stv_settings_validation_required?
+    return false unless poll_type == 'stv'
+
+    new_record? ||
+      will_save_change_to_poll_type? ||
+      will_save_change_to_stv_seats? ||
+      will_save_change_to_stv_method? ||
+      will_save_change_to_stv_quota? ||
+      poll_options.any? { |option| option.new_record? || option.marked_for_destruction? }
   end
 
   def closes_in_future
