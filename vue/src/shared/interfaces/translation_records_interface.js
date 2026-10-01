@@ -20,8 +20,10 @@ export default class TranslationRecordsInterface extends BaseRecordsInterface {
     if (record) {
       return Promise.resolve(record);
     } else {
+      // The server stores the translation under its translation-service
+      // language, such as pt for pt_BR, so use the record it returns.
       return this.fetchByModel(model, locale).then((data) => {
-        return this.findByModel(model, locale);
+        return this.find(data.translations[0].id);
       });
     }
   }
