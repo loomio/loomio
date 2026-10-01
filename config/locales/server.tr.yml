@@ -37,16 +37,16 @@ tr:
       title_placeholder: Stratejiyi onaylama kararı
       process_name: Bir karar verin
       process_subtitle: Çözümü bağlamla, arka plan bilgileriyle birlikte tanıtın, soruları yanıtlayın ve çözümü geçirmek için bir öneride bulunun.
-      process_introduction: <p>Robert'ın Kuralları, grupların, çoğunluğun yönetmesine izin verirken azınlığın seslerinin de duyulmasına izin veren düzenli toplantılar yapmasına yardımcı olan bir dizi kural ve etik kuralından oluşan bir çerçevedir. <a target="_blank" rel="noopener noreferrer nofollow" href="https://www.boardeffect.com/blog/roberts-rules-of-order-cheat-sheet/">https://www.boardfect.com/blog/roberts-rules-of-order-cheat-sheet/</a> Bir üye, “şuna geçiyorum…” diyerek bir eylem önermek veya karar vermek için öneride bulunur. Bir başka üyenin de “Önergeyi destekliyorum” diyerek önergeyi desteklemesi gerekiyor. Birisi önergeyi onayladığında grup önergeyi oylar. Tüzükteki kurallara bağlı olarak çoğunluk veya yetersayı ile geçer.</p>
+      process_introduction: <p>Robert'ın Kuralları, çoğunluğun karar vermesini ve azınlığın sesinin duyulmasını sağlayan düzenli toplantılar yapmaları için gruplara yardımcı olan usul ve etik kurallarından oluşan bir çerçevedir. <a target="_blank" rel="noopener noreferrer nofollow" href="https://www.boardeffect.com/blog/roberts-rules-of-order-cheat-sheet/">https://www.boardeffect.com/blog/roberts-rules-of-order-cheat-sheet/</a> Bir üye, bir eylem önermek veya karar almak için “... yapılmasını öneriyorum” diyerek önerge sunar. Başka bir üyenin “Önergeyi destekliyorum.” diyerek önergeyi desteklemesi gerekir. Bir üye önergeyi destekledikten sonra grup önergeyi oylar. Tüzükteki kurallara bağlı olarak oy çoğunluğu veya yeter sayı sağlandığında önerge kabul edilir.</p>
       description: "<p><strong>Alınacak kararı belirtin</strong></p><p></p><p> <strong>Bağlam ve arka plan bilgilerinin ana hatlarını çizin</strong></p><p></p><p> <strong>Ortak anlayış oluşturmak için üyeleri soru sormaya, yorum yapmaya ve her türlü bilgiye katkıda bulunmaya davet edin</strong></p><p></p>"
       resolution: Çözünürlük
     decision_by_consensus:
       title_placeholder: Kuruluşumuzun tüzüğünün revize edilmesi
       process_name: Konsensüs yoluyla karar
       process_subtitle: İlgili herkesle toplu sözleşmeye varın.
-      process_introduction: '<p>Tüm katılımcıların ihtiyaçlarını ve endişelerini karşılayan bir anlaşmaya varmak için birlikte vermeniz gereken bir karar için fikir birliği oluşturun.</p><p> Tipik roller:</p><ul><li><p> Bir kolaylaştırıcı atayın. (Yönetim kurulu toplantılarında bu kişi genellikle Başkandır.)</p></li><li><p> Kuruluşunuzun tüzüğünde belirtildiği gibi, katılım için üye yeter sayısı veya çoğunluğu.</p></li></ul><p> Ortak işlem adımları:</p><p> Adım 1. Bir konu veya önerilen karar hakkında tartışma için açık bir alan oluşturun.</p><p> Adım 2. Bir Sense kontrol teklifiyle fikir birliğini test edin ve itirazları ortaya çıkarın.</p><p> Adım 3. Varsa noktaları açıklığa kavuşturun, yapıcı değişiklikleri davet edin ve teklifte değişiklik yapın.</p><p> Adım 4. Bir Uzlaşma teklifiyle anlaşmayı ve kalan itirazları test edin.</p><p> Adım 5. Kararı, sonucuyla birlikte kuruluşun resmi tutanaklarına kaydedin.</p><p> <a target="_blank" rel="noopener noreferrer nofollow" href="/docs/en/guides/making_decisions/consensus_process">Devamını oku: Uzlaşma süreci.</a></p>'
+      process_introduction: '<p>Tüm katılımcıların ihtiyaçlarını ve kaygılarını karşılayan bir anlaşmaya varmak için birlikte almanız gereken kararda uzlaşı oluşturun.</p><p>Tipik roller:</p><ul><li><p>Bir kolaylaştırıcı atayın.&nbsp; (Yönetim kurulu toplantılarında bu kişi genellikle başkandır.)</p></li><li><p>Kuruluşunuzun tüzüğünde belirtilen yeter sayıda veya nitelikli çoğunlukta üyenin katılımı.</p></li></ul><p>Genel süreç adımları:</p><p>Adım 1. Bir konuyu veya önerilen kararı tartışmak için açık bir alan oluşturun.</p><p>Adım 2. Bir Nabız yoklaması teklifiyle uzlaşıyı sınayın ve itirazları ortaya çıkarın.&nbsp;</p><p>Adım 3. Belirsiz noktaları açıklığa kavuşturun, yapıcı değişiklik önerileri isteyin ve teklifi düzenleyin.</p><p>Adım 4. Bir Uzlaşı teklifiyle katılımı ve kalan itirazları sınayın.</p><p>Adım 5. Kararı bir vargıyla ve kuruluşun resmi tutanaklarında kaydedin.</p><p><a target="_blank" rel="noopener noreferrer nofollow" href="/docs/en/guides/making_decisions/consensus_process">Daha fazla bilgi: Uzlaşı süreci.</a></p>'
       description: <h3 id="what-is-the-decision-you-need-to-make">Vermeniz gereken karar nedir?</h3><p></p><h3 id="why-is-this-important-and-what-impact-does-it-have"> Bu neden önemlidir ve etkisi nedir?</h3><p></p><h3 id="what-information-do-people-need-for-context"> İnsanların bağlam için hangi bilgilere ihtiyacı var?</h3><p></p><h3 id="who-is-the-facilitator"> Kolaylaştırıcı kim?</h3><p></p><h3 id="what-conditions-need-to-be-met-for-a-decision"> Karar için hangi şartların yerine getirilmesi gerekiyor?</h3><h3 id=""></h3>
-      consensus: Uzlaşma
+      consensus: Uzlaşı
     share_links_and_info:
       title_placeholder: Bağlantıları ve bilgileri paylaşın
       process_name: Bağlantıları ve bilgileri paylaşın
@@ -65,7 +65,7 @@ tr:
       title_placeholder: İşe alma politikamızı revize ediyoruz
       process_name: Bir politika oluşturun
       process_subtitle: Bir politika veya prosedür belgesi oluşturmak ve üzerinde anlaşmak için ekibinizle birlikte çalışın.
-      process_introduction: "<p><span>İleti dizisi, politika hakkında tartıştığınız, gereksinimler ve ilkeler üzerinde anlaştığınız ve yorum almak için belge taslaklarını paylaştığınız yerdir.</span></p><p><span>Şablonu küçük bir grupla politika geliştirmek için kullanın veya belgenin her yeni sürümüne yorum isteyerek süreci tüm kuruluşa açın.</span></p><p><span>Grup üyelerine taslak belgenin incelemeye hazır olduğunu bildirmek için bir Nabız yoklaması teklifi kullanın. İnsanları belgeyi okumaya ve yorumlarını veya sorularını paylaşmaya davet edin.</span></p><p><span>'Son' taslak hazır olduğunda belgeyi onaylamak için bir Onay veya Uzlaşma teklifi başlatın.</span></p>"
+      process_introduction: "<p><span>İleti dizisi, politika hakkında tartıştığınız, gereksinimler ve ilkeler üzerinde anlaştığınız ve yorum almak için belge taslaklarını paylaştığınız yerdir.</span></p><p><span>Şablonu küçük bir grupla politika geliştirmek için kullanın veya belgenin her yeni sürümüne yorum isteyerek süreci tüm kuruluşa açın.</span></p><p><span>Grup üyelerine taslak belgenin incelemeye hazır olduğunu bildirmek için bir Nabız yoklaması teklifi kullanın. İnsanları belgeyi okumaya ve yorumlarını veya sorularını paylaşmaya davet edin.</span></p><p><span>'Son' taslak hazır olduğunda belgeyi onaylamak için bir Onay veya Uzlaşı teklifi başlatın.</span></p>"
       description: "<p><strong><span>Oluşturmanız gereken politika veya belge nedir?</span></strong></p><p></p><p> <strong><span>Bu neden önemli?</span></strong></p><p></p><p> <strong><span>İnsanlardan ne yapmalarını istiyorsunuz?</span></strong></p><p></p>"
       policy: Politika
     elect_a_governance_position:
@@ -173,9 +173,9 @@ tr:
         proposal: Öneri
         count: Saymak
         choose: Seçmek
-        allocate: Tahsis Et
-        score: Gol
-        rank: Rütbe
+        allocate: Dağıt
+        score: Puanla
+        rank: Sırala
         time: Zaman anketi
   user:
     deleted_user: Silinmiş kullanıcı
@@ -457,8 +457,8 @@ tr:
       not_invited: Davet edilmemiş
       please_respond: Lütfen cevap ver
       time_zone: "(%{zone}'da görüntülenen zamanlar)"
-      undecided_members: Kararsız Üyeler (%{count})
-      undecided_visitors: Kararsız Misafirler (%{count})
+      undecided_members: Henüz oy vermeyen üyeler (%{count})
+      undecided_visitors: Henüz oy vermeyen misafirler (%{count})
       more_undecided: "%{count} tane daha..."
       vote_now: Şimdi oyla
       you_have_until: Katılmak için %{when} tarihine kadar vaktiniz var.
@@ -671,7 +671,7 @@ tr:
       objection_prompt: Kararınızı verebilmeniz için nelerin değişmesi gerekiyor?
     majority:
       process_subtitle: En çok oyu alan taraf karar versin.
-      process_introduction: "<p><strong>Çoğunluk</strong>, grup kararı almanın en basit yoludur — katılımcılar Evet veya Hayır oyu verir ve yarıdan fazlası Evet oyu verirse teklif kabul edilir. Çekimserim veya Veto ediyorum seçeneği yoktur, bu nedenle her oy eşit ağırlıktadır.</p><p>Çoğunluk, net bir vargı gereken basit kararlar için uygundur. İnsanların birbirini anlamak ve ortak zemin bulmak için birlikte çalışmasının önemli olduğu kararlarda Onay veya Uzlaşma yöntemini değerlendirin.</p>"
+      process_introduction: "<p><strong>Çoğunluk</strong>, grup kararı almanın en basit yoludur — katılımcılar Evet veya Hayır oyu verir ve yarıdan fazlası Evet oyu verirse teklif kabul edilir. Çekimserim veya Veto ediyorum seçeneği yoktur, bu nedenle her oy eşit ağırlıktadır.</p><p>Çoğunluk, net bir vargı gereken basit kararlar için uygundur. İnsanların birbirini anlamak ve ortak zemin bulmak için birlikte çalışmasının önemli olduğu kararlarda Onay veya Uzlaşı yöntemini değerlendirin.</p>"
       title: 3. çeyrek bütçesini onaylayın.
       details: "<h3><strong>Vermeniz gereken karar nedir?</strong></h3><p></p><h3> <strong>Bu neden önemli?</strong></h3><p></p><h3> <strong>İnsanlardan ne yapmalarını istiyorsunuz?</strong></h3><p></p>"
       yes_meaning: Bu öneriyi destekliyorum.
@@ -782,7 +782,7 @@ tr:
     voted: "%{author}, %{response} seçeneğine oy verdi"
     voted_hidden: "%{author} oy kullandı"
     vote_removed: "%{author}: oy kaldırıldı"
-    undecided: "%{author}: kararsız"
+    undecided: "%{author}: henüz oy vermedi"
     superseded: değiştirildi
     shared_outcome: "%{author} bir vargı paylaştı"
     removed: Kaldırıldı

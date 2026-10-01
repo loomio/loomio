@@ -439,7 +439,7 @@ tr:
     loud: Yüksek sesli
     normal: Normal
     quiet: Sessiz
-    mute: Sesi kıs
+    mute: Sessize al
     unmute: Sesi aç
   pin_event_form:
     title: Zaman çizelgesine sabitle
@@ -469,7 +469,7 @@ tr:
     loud_label: Tüm aktiviteler
     normal_label: Duyurular
     quiet_label: E-posta yok
-    mute_label: Sesi kıs
+    mute_label: Sessize al
     saved: Bildirim ayarları güncellendi
     discussion:
       loud_description: Bu başlıktaki tüm etkinlikler size e-postayla gönderilecektir.
@@ -1002,7 +1002,7 @@ tr:
       topic: Konudaki herkes
       voters: Herkes oy kullanmaya davet edildi
       decided_voters: Oy veren herkes
-      undecided_voters: Kararsız seçmen
+      undecided_voters: Henüz oy vermeyen seçmenler
       non_voters: "%{name} üyeleri henüz davet edilmedi"
       delegates_of_group: "%{name} temsilcileri"
     form:
@@ -1137,7 +1137,7 @@ tr:
     add_poll_to_thread: Konuya ekle
     count_members: "%{count} üye"
     count_voters: "%{count} seçmen"
-    pin_discussion: Pin tartışması
+    pin_discussion: Tartışmayı sabitle
     unpin_discussion: Tartışmayı sabitle
     delete_discussion: Tartışmayı sil
     lock_thread: Konuyu kilitle
@@ -1729,7 +1729,7 @@ tr:
     group_notifications: Grup bildirimleri
     group_notifications_description: Gruplarınız için etkinlik seviyesini ve kanalı değiştirin
     choose_email_and_push_updates: E-posta ve anlık bildirimler için ayrı ayarlar seçin.
-    catch_up_email: Güncel bilgi e-postası
+    catch_up_email: Özet e-postası
     catch_up_email_description: Görülmemiş bildirimler ve okunmamış etkinliklerle ilgili özet bilgileri ne zaman almak istediğinizi seçin.
   thread_preview:
     replies_count: "%{count} yanıt"
@@ -1784,7 +1784,7 @@ tr:
       thisweek: Bu hafta
       thismonth: Bu ay
       older: Bir aydan daha eski
-    dashboard: Gösterge Paneli
+    dashboard: Pano
     recent_discussions: Son tartışmalar
     view_recent: Tüm son tartışmaları görüntüle?
     discussion_marked_as_read: Tartışma okundu olarak işaretlendi
@@ -1948,7 +1948,7 @@ tr:
     question_title: Soru turu
     advice_title: Tavsiye
     consent_title: Onay
-    consensus_title: Uzlaşma
+    consensus_title: Uzlaşı
     proposal_title: Öneri
     count_title: Kaydol
     check_title: Nabız yoklaması
@@ -2001,7 +2001,7 @@ tr:
     show_all_templates_in_one_list: Tüm şablonları tek listede göster
     advice_process: Tavsiye süreci
     consent_process: Onay süreci
-    consensus_process: Uzlaşma süreci
+    consensus_process: Uzlaşı süreci
     question_round: Soru turu
     edit_template: Şablonu düzenle
     proposal: Teklif
@@ -2273,7 +2273,7 @@ tr:
     started_by: "%{name} tarafından başlatıldı"
   poll_common_votes_panel:
     vote_removed: Oy kaldırıldı
-    undecided: Kararsız
+    undecided: Henüz oy vermedi
     newest_first: En yeni ilk
     oldest_first: Önce en eski
     priority_first: İlk önce katılıyorum
@@ -2302,7 +2302,7 @@ tr:
   poll_common_undecided_panel:
     show_undecided: "%{count} kararsızı göster"
     show_invitations: Bekleyen Davetiyeleri Göster
-    undecided_users: Kararsız (%{count})
+    undecided_users: Henüz oy vermedi (%{count})
     invitation_count_singular: 1 kişi daha e-posta yoluyla katılmaya davet edildi
     invitation_count_plural: "%{count} kişi daha e-posta yoluyla katılmaya davet edildi"
   poll_common_undecided_user:
@@ -2387,7 +2387,7 @@ tr:
     minimum_stance_choices_hint: yani en iyi 3 dondurma çeşidini sıralayın
     ranked_choice_created: Sıralı tercih oluşturuldu
     ranked_choice_updated: Dereceli seçimi güncellendi
-    rank: Rütbe
+    rank: Sırala
     points: Puanlar
     average: Ortalama
     mean: Anlam
@@ -2445,7 +2445,7 @@ tr:
     total: Toplam
   poll_remove_vote:
     title: Oyunuz kaldırılsın mı?
-    helptext: Oyunuzu kaldırmak istediğinizden emin misiniz? Kararsız olarak listeleneceksiniz ve dilerseniz daha sonra tekrar oy kullanabileceksiniz.
+    helptext: Oyunuzu kaldırmak istediğinizden emin misiniz? Henüz oy vermemiş olarak listeleneceksiniz ve dilerseniz daha sonra tekrar oy verebileceksiniz.
     confirm: Oyu kaldır
     success: Oy kaldırıldı
   poll_poll_vote_form:
@@ -2803,7 +2803,7 @@ tr:
       voting_title: Oylama kapanmadan 24 saat önce, bir hatırlatma gönderin
       nobody: Hiç kimse
       author: Yazar (ben)
-      undecided_voters: Kararsız seçmenler
+      undecided_voters: Henüz oy vermeyen seçmenler
       voters: Tüm seçmenler
     notify_on_participate:
       title: İnsanlar katıldığında bana haber ver
@@ -2856,12 +2856,12 @@ tr:
     voting_methods:
       question: Soru turu
       question_hint: Teklifinizle ilgili soru ve yorumlarınızı davet edin
-      show_thumbs: Baş parmakların gösterilmesi
+      show_thumbs: Başparmak oylaması
       show_thumbs_hint: Seçmenler başparmak yukarı, aşağı, yan veya el yukarıyı seçiyor
       choose: Seçmek
       simple_poll: Basit anket
       choose_hint: Seçmenler en iyi seçeneği (veya seçenekleri) seçer
-      score: Gol
+      score: Puanla
       score_hint: Seçmenler her seçeneğe bir puan atar
       allocate: Tahsis etmek
       allocate_hint: Seçmenler, seçenekler arasında puan bütçesi ayırırlar
@@ -2869,7 +2869,7 @@ tr:
       ranked_choice_hint: Seçmenler seçenekleri en çok tercih edilenden en az tercih edilene doğru sıralarlar
       time_poll: Zaman anketi
       time_poll_hint: Seçmenler toplantıya ne zaman hazır olduklarını belirtirler
-      rank: Rütbe
+      rank: Sırala
       time: Zaman
       stv: STV Seçimi
       stv_hint: Tek Devredilebilir Oy Sistemi kullanarak orantılı olarak birden fazla kazanan seçin.
