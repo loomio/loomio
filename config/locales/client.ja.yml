@@ -175,11 +175,11 @@ ja:
   poll_types:
     proposal: 提案
     count: オプトイン
-    check: センスチェック
-    poll: 世論調査
+    check: 意向確認
+    poll: アンケート
     dot_vote: ドット投票
     meeting: 時間投票
-    ranked_choice: ランク付けされた選択肢
+    ranked_choice: ランク投票
     score: スコア投票
     question: 質問ラウンド
     stv: STV選挙
@@ -204,7 +204,7 @@ ja:
     view: ビュー
     or: または
     history: 歴史
-    option: オプション
+    option: 選択肢
     add: 追加
     you: あなた
     expand: 拡大する
@@ -341,7 +341,7 @@ ja:
     formatting_help:
       label: 書式設定
       title: Markdown を使用してテキストの書式を設定する方法を学びます
-    thread: 糸
+    thread: スレッド
     closing_in: "%{time} に閉店"
     commercial: コマーシャル
     nonprofit: 非営利団体
@@ -622,7 +622,7 @@ ja:
     explore: 公開グループ
     explore_groups: グループを探索する
     start_thread: 新しいスレッド
-    start_decision: 新たな決断
+    start_decision: 新しい決定
     more_groups: さらに多くのグループ
     template_gallery: テンプレートギャラリー
     examples_and_templates: 例とテンプレート
@@ -786,18 +786,18 @@ ja:
       membership_request_approved: "%{actor} が %{title} への参加リクエストを承認しました"
       new_comment: "%{actor} のコメント: %{title}"
       new_coordinator: "%{actor} により、あなたは %{title} の管理者になりました"
-      outcome_announced: "%{actor} が %{poll_type} の結果を共有しました: %{title}"
-      outcome_created: "%{actor} が %{poll_type} の結果を共有しました: %{title}"
-      outcome_updated: "%{actor} が %{poll_type} の結果を更新しました: %{title}"
-      outcome_review_due: '次の結果を確認します: %{title}'
+      outcome_announced: "%{actor} が %{poll_type} の結論を公開しました: %{title}"
+      outcome_created: "%{actor} が %{poll_type} の結論を公開しました: %{title}"
+      outcome_updated: "%{actor} が %{poll_type} の結論を更新しました: %{title}"
+      outcome_review_due: '結論を見直す時期になりました: %{title}'
       poll_closed_by_user: "%{actor} が %{poll_type} を終了しました: %{title}"
       poll_closing_soon: "%{poll_type} は 24 時間以内に終了します: %{title}"
       poll_closing_soon_author: "%{poll_type} は 24 時間以内に終了します: %{title}"
       poll_created: "%{actor} が %{poll_type} を開始しました: %{title}"
       poll_edited: "%{actor} が %{poll_type} を更新しました: %{title}"
       poll_expired: "%{poll_type} は終了しました: %{title}"
-      poll_expired_author: "%{poll_type} の結果を共有します: %{title}"
-      poll_option_added: "%{actor} が %{title} にオプションを追加しました"
+      poll_expired_author: "%{poll_type} の結論を共有してください: %{title}"
+      poll_option_added: "%{actor} が %{title} に選択肢を追加しました"
       poll_reopened: "%{actor} が %{poll_type} を再度オープンしました: %{title}"
       poll_reminder: "%{actor} が %{title} に投票するよう促しています"
       poll_reminder_wip: "%{actor} がフィードバックを送信するよう促しています: %{title}"
@@ -825,9 +825,9 @@ ja:
       membership_resent: "%{actor} があなたをグループに招待しました"
       membership_requested: "%{actor} があなたのグループへの参加をリクエストしました"
       membership_request_approved: "%{actor} が %{title} への参加リクエストを承認しました"
-      outcome_announced: "%{actor} が %{poll_type} の結果を共有しました"
-      outcome_created: "%{actor} が %{poll_type} の結果を共有しました"
-      outcome_review_due: "%{poll_type} の結果を確認する時期が来ました"
+      outcome_announced: "%{actor} が %{poll_type} の結論を共有しました"
+      outcome_created: "%{actor} が %{poll_type} の結論を共有しました"
+      outcome_review_due: "%{poll_type} の結論を見直す時期になりました"
       poll_announced_wip: "%{actor} は %{poll_type} に関するフィードバックを求めています"
       poll_closed_by_user: "%{actor} が %{poll_type} を終了しました"
       poll_closing_soon: "%{poll_type} は 24 時間後に終了します"
@@ -835,8 +835,8 @@ ja:
       poll_created: "%{actor} が %{poll_type} を開始しました"
       poll_edited: "%{actor} が %{poll_type} を更新しました"
       poll_expired: "%{poll_type} は終了しました"
-      poll_expired_author: "%{poll_type} の結果を共有します"
-      poll_option_added: "%{actor} が %{poll_type} にオプションを追加しました"
+      poll_expired_author: "%{poll_type} の結論を共有してください"
+      poll_option_added: "%{actor} が %{poll_type} に選択肢を追加しました"
       poll_reopened: "%{actor} が %{poll_type} を再度オープンしました"
       poll_reminder: "%{actor} が投票を促しています"
       poll_reminder_wip: "%{actor} がフィードバックを送信するよう促しています"
@@ -853,7 +853,7 @@ ja:
       discussion_closed: "%{actor} がディスカッションを終了しました"
       new_discussion: "%{actor}がディスカッションを開始しました"
       new_comment: "%{actor} がディスカッションにコメントしました"
-      outcome_updated: "%{actor} が結果を更新しました"
+      outcome_updated: "%{actor} が結論を更新しました"
       thread_locked: "%{actor} がスレッドをロックしました"
       membership_request_declined: "%{title}への参加申請は却下されました"
     hints:
@@ -873,18 +873,18 @@ ja:
       new_coordinator: "%{actor} があなたを %{title} の管理者にしました"
       new_delegate: "%{actor} があなたを %{title} の投票権を持つ代表者にしました"
       new_discussion: "%{title}"
-      outcome_announced: "%{poll_type} の結果: %{title}"
-      outcome_created: "%{poll_type} の結果: %{title}"
-      outcome_updated: "%{poll_type} の結果が更新されました: %{title}"
-      outcome_review_due: "%{title} の結果を確認しましょう"
+      outcome_announced: "%{poll_type} の結論: %{title}"
+      outcome_created: "%{poll_type} の結論: %{title}"
+      outcome_updated: "%{poll_type} の結論が更新されました: %{title}"
+      outcome_review_due: '結論を見直す時期になりました: %{title}'
       poll_closed_by_user: "%{actor} が %{poll_type}: %{title} を終了しました"
       poll_closing_soon: "%{poll_type} は 24 時間以内に終了します: %{title}"
       poll_closing_soon_author: "%{poll_type} は 24 時間以内に終了します: %{title}"
       poll_created: "%{poll_type}: %{title}"
       poll_edited: "%{actor} が %{poll_type}: %{title} を更新しました"
       poll_expired: "%{poll_type} は終了しました: %{title}"
-      poll_expired_author: '結果を公開: %{title}'
-      poll_option_added: "%{actor} が %{title} にオプションを追加しました"
+      poll_expired_author: '結論を公開してください: %{title}'
+      poll_option_added: "%{actor} が %{title} に選択肢を追加しました"
       poll_reopened: '投票期間延長: %{title}'
       poll_reminder: "%{actor} が %{title} に投票するよう通知しています"
       poll_reminder_wip: "%{actor} がフィードバックをするよう通知しています: %{title}"
@@ -936,7 +936,7 @@ ja:
     group_placeholder: グループを選択してください
     title_label: タイトル
     title_placeholder: 話したいトピックは何ですか?
-    context_label: コンテクスト
+    context_label: 背景説明
     context_placeholder: このディスカッションのコンテキストを提供して、参加者が参加方法を理解できるようにします
     privacy_label: 個人情報
     privacy_public: リンクがあれば誰でもこのスレッドを閲覧できます
@@ -962,11 +962,11 @@ ja:
     send_discussion: スレッドの送信
     send_group: 他の人を %{name} に招待します
     send_poll: "%{type} を送信します"
-    send_outcome: 結果の送信
+    send_outcome: 結論の送信
     cannot_reveal_when_anonymous: 申し訳ありませんが、匿名投票で誰が投票したか、誰が投票しなかったかを明らかにすることはできません。
     group_notification_history: グループ招待履歴
     poll_notification_history: 投票通知履歴
-    outcome_notification_history: 結果通知履歴
+    outcome_notification_history: 結論の通知履歴
     comment_notification_history: コメント通知履歴
     notification_history_explanation: "✓ 通知が読まれたか、電子メールが開封されたことを示します"
     quick_add: 'クイック追加:'
@@ -986,8 +986,8 @@ ja:
     new_discussion: "%{name} が %{length} 人をスレッドに招待しました:"
     discussion_announced: "%{name} が %{length} 人をスレッドに招待しました:"
     poll_created: "%{name} が %{length} 人を投票に招待しました:"
-    outcome_created: "%{name} は結果を %{length} 人と共有しました:"
-    outcome_announced: "%{name} は結果を %{length} 人と共有しました:"
+    outcome_created: "%{name} は結論を %{length} 人と共有しました:"
+    outcome_announced: "%{name} は結論を %{length} 人と共有しました:"
     announcement_created: "%{name} が %{length} 人をスレッドに招待しました:"
     discussion_edited: "%{name} がスレッドを編集し、%{length} 人に通知しました:"
     poll_edited: "%{name} がアンケートを編集し、%{length} 人に通知しました:"
@@ -1041,7 +1041,7 @@ ja:
         title: 編集の通知
         helptext: このアップデートについて誰に通知したいですか?
       outcome_announced:
-        title: 結果を共有する
+        title: 結論を共有する
         helptext: 発見された理解や明らかになった問題など、プロセスの結果を要約します。
       anyone_can_participate: リンクを知っている人なら誰でも参加できます
       placeholder: 名前またはメールアドレスを入力できます
@@ -1111,16 +1111,16 @@ ja:
     reply_to_comment: 返事
     fork_comment: フォークスレッド
     translate_comment: コメントを翻訳
-    edit_outcome: 結果の編集
+    edit_outcome: 結論の編集
     announce_outcome: この結論について人々に通知する
-    announce_outcome_active: "(この結果はまだ誰にも通知されていません)"
-    translate_outcome: 翻訳結果
+    announce_outcome_active: "(この結論はまだ誰にも通知されていません)"
+    translate_outcome: 結論を翻訳
     show_history: 編集履歴を表示する
     edited: 編集済み
     show_edits: 編集内容を表示
     show_notifications: 通知を表示
     history: 歴史
-    pin_thread: ピンネジ
+    pin_thread: スレッドを固定
     unpin_thread: スレッドのピンを外す
     pin_event: タイムラインにピン留めする
     unpin_event: タイムラインからピン留めを解除する
@@ -1245,12 +1245,12 @@ ja:
     introduction_over_limit: 応答が長すぎます
     messages:
       membership_requested: "%{group}への参加をリクエストしました"
-    aria_label: 会員登録フォーム
+    aria_label: 参加申請フォーム
   revision_history_modal:
     discussion_header: ディスカッションの編集
     comment_header: コメント編集
     poll_header: 投票の編集
-    outcome_header: 結果の編集
+    outcome_header: 結論の編集
     stance_header: 編集の投票
     started_by: "<strong>%{name}</strong>によって開始されました"
     edited_by: "<strong>%{name}</strong>によって編集されました"
@@ -1311,7 +1311,7 @@ ja:
     open_discussions: オープンスレッド
     discussions_placeholder: スレッドは、全員がトピックについて話し合い、一緒に決定を下すことができる場所です。
     members_placeholder: ここにいるのはあなただけです。何人かの人を招待してください!
-    member_options: 会員オプション
+    member_options: メンバーの選択肢
     see_all_members: "%{count} 人のメンバーをすべて表示"
     pending_invitations: "+ %{count} 件が保留中です"
     subgroups_placeholder: サブグループはチームに独自のスペースを与え、通知を適切な人に集中させ続けます。
@@ -1337,8 +1337,8 @@ ja:
       loud: アクティビティがあるたびにメールを送信します。
       loud_aria_description: このグループの通知音量は大音量に設定されています。アクティビティがあるたびにメールで通知されます。
       loud_message: "「%{name}」でのすべてのアクティビティについて電子メールが送信されます。"
-      normal: 新しいスレッドや提案、結果などの重要なアクティビティを電子メールで送信するだけです。
-      normal_aria_description: このグループの通知音量は「標準」に設定されています。誰かが新しいスレッドを開始したとき、提案を提起したとき、結果を設定したときなど、重要なアクティビティが電子メールで送信されます。
+      normal: 新しいスレッドや提案、結論などの重要なアクティビティだけをメールで通知します
+      normal_aria_description: このグループの通知音量は「標準」に設定されています。新しいスレッドや提案の開始、結論の共有など、重要なアクティビティだけをメールで通知します。
       normal_message: "「%{name}」の重要なイベントについてのみメールが送信されます。"
       quiet: このグループについてメールを送信しないでください。アクティビティがダッシュボードに表示されます。
       mute_aria_description: このグループの通知音量はミュートに設定されています。誰かがあなたに言及しない限り、電子メールは送信されません。また、グループのアクティビティはダッシュボードに表示されません。
@@ -1520,9 +1520,9 @@ ja:
     messages:
       request_approved_success: メンバーシップリクエストが承認されました
       request_ignored_success: メンバーシップリクエストは無視されました
-      request_declined_success: 会員登録申請は却下されました
+      request_declined_success: 参加申請を却下しました
     decline: 衰退
-    decline_request: 会員登録申請を却下する
+    decline_request: 参加申請を却下します
     decline_reason: 辞退の理由
     decline_help: 却下を選択した場合、却下理由が申請者にメールで送られます。申請者は新しい申請を提出できます。無視を選択した場合、申請者は通知を受け取らずに申請が閉じられます。
   invitation_form:
@@ -1603,7 +1603,7 @@ ja:
     title_label: タイトル
     title_placeholder: '例: 「コーディネーター」または「ファシリテーター」'
     updated: 会員タイトルを更新しました
-    weight_label: 投票権
+    weight_label: 票の重み
   user_name_modal:
     user_name_updated: ユーザー名が更新されました
     set_user_name: ユーザー名を設定する
@@ -1735,9 +1735,9 @@ ja:
     unread_count: "%{count} 件が未読です"
     items_count: "%{count}個のアイテム"
   dashboard_page:
-    polls_to_vote_on: 投票する世論調査
+    polls_to_vote_on: 投票するアンケート
     no_polls_to_vote_on: 投票する必要のあるアンケートはありません
-    recent_polls: 最近の世論調査
+    recent_polls: 最近のアンケート
     current_polls: 現在の投票
     recent_threads: 最近のスレッド
     no_groups:
@@ -1838,7 +1838,7 @@ ja:
     end: 終わり
     unread: 未読 (%{count})
     latest: 最新
-    context: コンテクスト
+    context: 背景説明
     chronological: 年代順
     nested: 入れ子になった
     attachment_display:
@@ -1950,24 +1950,24 @@ ja:
     consensus_title: コンセンサス
     proposal_title: 提案
     count_title: オプトイン
-    check_title: センスチェック
+    check_title: 意向確認
     poll_title: 投票
     meeting: ミーティング
     score_title: スコア投票
     dot_vote_title: ドット投票
-    meeting_title: タイムポーリング
-    ranked_choice_title: ランク付けされた選択肢
+    meeting_title: 日程調整
+    ranked_choice_title: ランク投票
     gradients_of_agreement_title: 一致の勾配
     majority_title: 過半数
     stv_title: STV選挙
   poll_option_form:
-    edit_option: 編集オプション
-    option_name: オプション名
-    option_name_hint: このオプションの短縮名
+    edit_option: 選択肢を編集します
+    option_name: 選択肢名
+    option_name_hint: この選択肢の短い名前
     option_name_validation: 名前は短くし、「意味」フィールドに詳細を入力することをお勧めします。
     icon: アイコン
     meaning: 意味
-    meaning_hint: このオプションを選択する意味を 1 ～ 2 文で説明します。オプション
+    meaning_hint: この選択肢を選ぶ意味を1〜2文で説明します。任意
     prompt: 理由のプロンプト
     prompt_hint: 有権者に自分の理由を共有したり、自分の立場を再考したりするよう促す質問。オプション
     please_select_an_icon: アイコンを選択してください
@@ -1989,8 +1989,8 @@ ja:
     name_lte_score_percent: "%{name} は投票数の %{percent}% を超えてはなりません"
     name_lte_voter_percent: "%{name} は有権者の %{percent}% を超えてはなりません"
     vote_share_requirement: 投票シェア要件
-    for_the_proposal_to_pass: 提案が承認されるには、このオプションの承認を得る必要があります…
-    for_the_poll_to_be_valid: "%{poll_type} を有効にするには、このオプションが受信される必要があります…"
+    for_the_proposal_to_pass: 提案が可決されるには、この選択肢に必要な票数は…
+    for_the_poll_to_be_valid: "%{poll_type}が成立するには、この選択肢に必要な票数は…"
     points_cast: 得点
   poll_common:
     superseded: 置き換えられました
@@ -2010,8 +2010,8 @@ ja:
     custom_process: カスタムプロセス
     custom_poll: カスタム投票
     delete_poll: 投票の削除
-    select_count_options: "%{count} 個のオプションを選択してください"
-    select_minimum_to_maximum_options: "%{minimum} ～ %{maximum} のオプションを選択してください"
+    select_count_options: 選択肢を%{count}個選んでください
+    select_minimum_to_maximum_options: 選択肢を%{minimum}〜%{maximum}個選んでください
     custom_poll_types: カスタム投票タイプ
     hidden_poll_templates: 非表示の投票テンプレート
     poll_template: 投票テンプレート
@@ -2027,9 +2027,9 @@ ja:
     new_custom_poll: 新しいカスタム投票
     edit_custom_poll: カスタム投票を編集する
     create_a_custom_poll_type: カスタム用語と設定を使用して新しい投票タイプを作成する
-    create_a_custom_process: 独自の用語とオプションを使用して新しいプロセスを作成する
+    create_a_custom_process: 独自の用語と選択肢で新しいプロセスを作成します
     create_a_custom_poll: カスタム用語と設定を使用してアンケートを作成する
-    decision: 決断
+    decision: 決定
     decision_templates: 意思決定テンプレート
     remove_your_vote: 投票を削除します
     remove_your_response: 回答を削除します
@@ -2052,7 +2052,7 @@ ja:
     participate: 参加する
     vote: 投票する
     votes: 投票
-    update_outcome: 更新結果
+    update_outcome: 結論を更新します
     outcome: 結論
     outcomes: 結論
     statement: 声明
@@ -2068,7 +2068,7 @@ ja:
     share_poll: アンケートをシェアする
     share_proposal: 株式提案
     share_count: シェアチェック
-    start_poll: 決断を始める
+    start_poll: 意思決定を始めます
     publish_poll: アンケートをシェアする
     share_outcome: 結論を共有する
     view_all: すべて見る
@@ -2112,12 +2112,12 @@ ja:
     label: 添付ファイル
   poll_common_add_option:
     button:
-      add_option: 別のオプションを追加する
+      add_option: 別の選択肢を追加します
     modal:
-      title: オプションを追加する
+      title: 選択肢を追加します
     form:
-      add_options: オプションの追加
-      options_added: 新しいオプションが追加されました
+      add_options: 選択肢の追加
+      options_added: 新しい選択肢を追加しました
   poll_common_card:
     show_results: 結果を示す
     hide_results: 結果を非表示にする
@@ -2228,7 +2228,7 @@ ja:
   poll_common_collapsed:
     by_who: "%{name} による"
   poll_common_calendar_invite:
-    calendar_invite: この結果をカレンダーへの招待状に含めます
+    calendar_invite: この結論にカレンダーの招待を添付します
     poll_option_id: 会議の時間
     helptext_on: ユーザーはこの会議を自分のカレンダーに追加できるようになります
     helptext_off: 会議への招待は送信されません
@@ -2241,7 +2241,7 @@ ja:
     location_placeholder: この会議はどこで行われますか?
   poll_common_close_form:
     title: 今すぐ %{poll_type} を閉じますか?
-    helptext: この %{poll_type} を早期に終了して結果を共有してもよろしいですか?
+    helptext: この%{poll_type}を早めに終了して結論を共有してもよろしいですか?
     close_poll_type: "%{poll_type} を閉じる"
     poll_type_closed: "%{poll_type} は終了しました"
   poll_common_reopen_form:
@@ -2264,7 +2264,7 @@ ja:
   poll_common_closing_at_field:
     closing: 閉鎖
     no_closing_date: 締切日なし
-    closing_date: 決算日
+    closing_date: 締め切り
     closing_hour: 閉店時間
     invalid_date: 無効な日付
   poll_card:
@@ -2275,7 +2275,7 @@ ja:
     undecided: 未定
     newest_first: 新しい順
     oldest_first: 古い順
-    priority_first: まず同意する
+    priority_first: 賛成を先に表示
     priority_last: 最初にブロックする
     undecided_first: まずは未定
     no_votes_yet: まだ投票は行われていません。
@@ -2291,10 +2291,10 @@ ja:
     redact_reason_success: 投票理由（伏字）
     unredact_reason_title: 投票理由を復元しますか？
     unredact_reason_helptext: テキストと添付ファイルが再び表示される理由
-    unredact_reason_confirm: 理性を回復する
+    unredact_reason_confirm: 理由を復元します
     unredact_reason_success: 投票理由が復元されました
     all_voters: すべての有権者
-    vote_weight_column: 投票権
+    vote_weight_column: 票の重み
     stance: 投票する
     participation_records_restricted: 投票終了後、誰が参加したかを確認できます
     vote_weight: 投票の重み %{weight}
@@ -2315,17 +2315,17 @@ ja:
     review_due_in_days: 何日後に決定を見直しますか?
     review_date: レビュー日
     review_date_hint: 決定をレビューする日付を設定します (オプション)
-    who_to_notify: この結果について誰に通知したいですか? (オプション)
+    who_to_notify: この結論を誰に通知しますか? (任意)
     outcome_statement_template: 成果報告書のテンプレート
-    new_title: 状態の結果
-    update_title: 更新結果
+    new_title: 結論を共有します
+    update_title: 結論を更新します
     outcome_created: 生み出された成果
     outcome_updated: 結論が更新されました
     statement_placeholder: 回答を要約し、次に何が起こるかを説明します。
     you_will_be_notified: 審査日は別途お知らせいたします。
-    submit: 結果を共有する
+    submit: 結論を共有します
     review_due_in_days_hint: 決定を検討する前に待機する日数 (オプション)。
-    statement_template_hint: 決定の結果を記述するためのテンプレートを提供します。(オプション)
+    statement_template_hint: 決定の結論を書くためのテンプレートを用意します。 (任意)
     statement_template_placeholder: ご参加ありがとうございました！定足数に達したため、続行することができました。
   poll_common_outcome_panel:
     authored_by: "%{name} による"
@@ -2353,20 +2353,20 @@ ja:
     why_type_when_you_can_talk: 話せるのになぜ入力するのでしょうか？音声録音を送信する
     transcript_included: 録音のトランスクリプトがメッセージに追加されます
   poll_poll_form:
-    multiple_choice_subtitle: オプションの人気を評価する簡単な方法
+    multiple_choice_subtitle: 選択肢の人気を評価する簡単な方法
     start_header: 投票を開始する
     edit_header: 投票の編集
-    tip: オプションからの選択肢を提供する
+    tip: 選択肢から選べるようにします
     title_placeholder: 例：休日はどこに行きたいですか？
     details_placeholder: 質問に答えるために必要な、明確な詳細情報を提供します。
-    add_option_placeholder: オプションを追加
-    new_option: 新しいオプション
-    add_option_hint: オプションの短い名前を入力してください
-    remove_option: オプションを削除
+    add_option_placeholder: 選択肢を追加
+    new_option: 新しい選択肢
+    add_option_hint: 選択肢の短い名前を入力してください
+    remove_option: 選択肢を削除
     poll_created: 投票が作成されました
     poll_updated: 投票が更新されました
-    option_added: オプション追加
-    option_already_added: オプションはすでに投票に追加されています
+    option_added: 選択肢が追加されました
+    option_already_added: 選択肢はすでにアンケートに追加されています
   poll_dot_vote_form:
     dots_per_person: 1人あたりのポイント
     dots_per_person_helptext: 各人に割り当てるよう求められるポイントの合計数。
@@ -2380,12 +2380,12 @@ ja:
     participants_see_local_times: 参加者には自分のタイムゾーンに合わせた時間が表示されます
     use_24_hour_format: 'エラー！ 24 時間形式を使用します (例: %{time})'
   poll_ranked_choice_form:
-    no_options: まだオプションを追加していません。
+    no_options: まだ選択肢を追加していません。
     add_option_placeholder: 新しい選択肢を入力してください
-    minimum_stance_choices: ランク付けのオプション
+    minimum_stance_choices: 順位を付ける選択肢
     minimum_stance_choices_hint: つまり、アイスクリームのフレーバーのトップ 3 をランク付けします
-    ranked_choice_created: ランク付けされた選択肢が作成されました
-    ranked_choice_updated: ランク付けされた選択肢が更新されました
+    ranked_choice_created: ランク投票が作成されました
+    ranked_choice_updated: ランク投票が更新されました
     rank: ランク
     points: ポイント
     average: 平均
@@ -2414,11 +2414,11 @@ ja:
     select_an_option: 選択肢一つを選択してください
     'yes': はい
     'no': いいえ
-    agree: 同意する
+    agree: 賛成
     consent: 同意
     abstain: 棄権する
     unsure: わからない
-    disagree: 同意しない
+    disagree: 反対
     objection: 異議
     object: 物体
     block: ブロック
@@ -2461,14 +2461,14 @@ ja:
     your_response: いつ参加できますか？
     stance_created: 可用性が保存されました
     stance_updated: 在庫状況が更新されました
-    reason_placeholder: 著者がオプションを追加したい場合に備えて、いつ空いているのか (または忙しいのか) を説明してください。
+    reason_placeholder: 作成者が選択肢を追加する場合に備えて、都合のよい時間（または悪い時間）を説明してください。
   poll_dot_vote_vote_form:
     dots_remaining: 残り %{count} ドット
     too_many_dots: ドットを使いすぎました
     stance_created: 投票が作成されました
     stance_updated: 投票が更新されました
   poll_ranked_choice_vote_form:
-    helptext: オプションを優先順にドラッグ アンド ドロップします (1 が最も優先されるオプションです)。上位 %{count} 件の選択肢が記録されます。
+    helptext: 選択肢を希望順にドラッグして並べてください（1が最も希望する選択肢です）。上位%{count}件の選択肢が記録されます。
     stance_created: 選択が記録されました
     stance_updated: 選択肢が更新されました
   thread_item:
@@ -2484,12 +2484,12 @@ ja:
     discussion_closed: "<a class='actor-link' href='/u/%{username}'>%{author} が</a>スレッドを閉じました"
     discussion_reopened: "<a class='actor-link' href='/u/%{username}'>%{author} が</a>スレッドを再開しました"
     new_comment: "<a class='actor-link' href='/u/%{username}'>%{author}</a>"
-    outcome_created: "<a class='actor-link' href='/u/%{username}'>%{author} が</a>結果を共有しました"
+    outcome_created: "<a class='actor-link' href='/u/%{username}'>%{author}</a>が結論を共有しました"
     poll_reopened: "<a class='actor-link' href='/u/%{username}'>%{author} が</a>%{polltype} を再開しました"
     poll_closed_by_user: "<a class='actor-link' href='/u/%{username}'>%{author} は</a>%{polltype} を終了しました"
     poll_created: "<a class='actor-link' href='/u/%{username}'>%{author} が</a>%{polltype} を開始しました"
     poll_edited: "<a class='actor-link' href='/u/%{username}'>%{author} が</a>%{polltype} を編集しました"
-    poll_option_added: "<a class='actor-link' href='/u/%{username}'>%{author} が</a>%{polltype} にオプションを追加しました"
+    poll_option_added: "<a class='actor-link' href='/u/%{username}'>%{author}</a>が%{polltype}に選択肢を追加しました"
     poll_expired: "%{polltype} は終了しました"
     stance_created: "<a class='actor-link' href='/u/%{username}'>%{author} が</a>投票しました: <strong>%{title}</strong>"
     stance_updated: "<a class='actor-link' href='/u/%{username}'>%{author} が</a>次の投票を更新しました: <strong>%{title}</strong>"
@@ -2663,9 +2663,9 @@ ja:
       poll_expired: 投票の有効期限が切れる
       poll_closed_by_user: 投票は手動で終了しました
       poll_reopened: 投票のために投票が再開されました
-      outcome_created: 結果は共有される
+      outcome_created: 結論が共有されます
       outcome_updated: 結論が更新されました
-      outcome_review_due: 結果のレビューが予定されている
+      outcome_review_due: 結論を見直す時期です
       new_discussion: 議論が始まる
       discussion_edited: 議論が編集される
     permissions_explaination: この統合によって実行できるアクションを選択します
@@ -2708,7 +2708,7 @@ ja:
     total_threads: スレッド総数
     total_polls: 投票総数
     threads_with_polls: 投票のあるスレッド
-    polls_with_outcomes: 結果のある世論調査
+    polls_with_outcomes: 結論のあるアンケート
     actions_per_interval: "%{interval} ごとのアクション"
     actions_per_user: ユーザーごとのアクション
     users_per_country: 国別のユーザー数
@@ -2721,7 +2721,7 @@ ja:
     year: 年
     country_disclaimer: 国はユーザーの IP アドレスに基づいており、あまり正確ではありません。これは大まかなガイドとしてのみ考えてください。
     total_discussions: 合計ディスカッション数
-    discussions_with_polls: 世論調査による議論
+    discussions_with_polls: アンケートのあるディスカッション
     download_csv: CSVをダウンロード
     tag_threads_by_user: ユーザーによるタグ付けスレッド
     authored_only: 著者のみ
@@ -2729,7 +2729,7 @@ ja:
     filter_by_country: 国で絞り込む
     show_tags: タグ
     tags_per_interval: "%{interval}別タグ数"
-    all_groups_and_direct_threads: すべてのグループと直接のスレッド
+    all_groups_and_direct_threads: すべてのグループとダイレクトスレッド
     custom_selection: カスタム選択
     all_votes_cast: 投票されたすべての票
     votes_cast: 投票数
@@ -2770,8 +2770,11 @@ ja:
         helptext: "<p>Loomio では、提案を使用して決定への支持を明らかにしたり、決定を改善する方法を見つけたりします。</p><p>提案を開始し、グループのメンバーに投票してもらいましょう。</p><p><b>実践提案</b>テンプレートを作成しましたので、ぜひご利用ください。</p>"
         submit: 提案テンプレートを見る
       share_an_outcome:
-        title: 提案の結果を共有する
-        helptext: "<p>意思決定をスムーズに進めるため、提案には投票期限が設けられています。期限を過ぎると投票は終了し、提案結果を共有するよう通知されます。</p><p>結果は、提案が成功したかどうか、そして次に何が起こるかを伝える機会となります。</p><p>提案の締め切りがまだ過ぎていないが、とにかく続行したい場合は、 <b>「早期に閉じる」を</b>クリックできます。</p><p>適切な時期になったら、提案の<b>結果を入力します</b>。</p>"
+        title: 提案の結論を共有する
+        helptext: |
+          <p>提案の締め切りになると投票が終了し、結論を共有するよう案内されます。</p>
+          <p>結論では、投票とコメントを確認したうえで、決定したことや次に行うことを説明します。</p>
+          <p>締め切り前でも、先に進む準備ができていれば、<b>早めに終了</b>できます。</p>
         submit: 提案を見る
         cancel: 後でやる
       start_a_discussion:
@@ -2787,11 +2790,11 @@ ja:
     specified_voters_only_false_discussion: スレッド内の誰でも
     invite_people_next: "%{poll_type} を開始した後、誰に投票を依頼するか選択できます。"
     show_none_of_the_above: "「上記以外」の選択肢を含める"
-    show_options_in_random_order: オプションをランダムな順序で表示する
-    reduce_bias_by_showing_options_in_random_order: オプションをランダムな順序で表示することで偏りを減らします。
+    show_options_in_random_order: 選択肢をランダムな順序で表示する
+    reduce_bias_by_showing_options_in_random_order: 選択肢をランダムな順序で表示することで偏りを減らします。
     multiple_choice:
       title: 複数選択
-      helptext_on: 選択すると、参加者は複数のオプションを選択できるようになります。
+      helptext_on: 選択すると、参加者は複数の選択肢を選択できるようになります。
     anyone_can_participate:
       title: リンクを持っている人なら誰でも参加できます
       helptext_on: 選択すると、投票へのリンクを知っている人なら誰でも参加できます。
@@ -2818,7 +2821,7 @@ ja:
       title: 閉じられるまで結果を非表示にする
       helptext_on: 投票が終了するまで投票結果を表示しない
     short_reason_can_be_helpful: 投票理由は簡潔な方が理解しやすいです。簡潔な理由をまとめたものは、意思決定の優れたリソースとなります。
-    shuffle_options: シャッフルオプション
+    shuffle_options: 選択肢を並べ替える
     selected_people_only: 選ばれた人のみ
   poll_common_form:
     quorum: 定足数
@@ -2827,7 +2830,7 @@ ja:
     quorum_placeholder: 空白のままにするか、0～100の数字を入力してください
     deadline: 締め切り
     notify_everyone_when_poll_starts: "%{poll_type} が開始したら全員に通知する"
-    option_has_votes_confirm_delete: このオプションに投票した人がいます。削除してもよろしいですか?
+    option_has_votes_confirm_delete: この選択肢に投票した人がいます。削除してもよろしいですか?
     example_title: タイトルの例
     example_title_hint: 良い提案タイトルの例を挙げてください
     example_details_placeholder: 提案やアンケートの出発点となる情報を提供します。質問は、参加者に書き始めるきっかけとして役立ちます。参加者が知っておくべきルールや注意事項があれば、それも含めましょう。
@@ -2838,7 +2841,7 @@ ja:
     choose_at_least: 少なくとも選択してください
     choose_at_most: 最大で選択
     please_review_the_form: フォームを確認してください
-    option_added_please_add_details: オプションが追加されました！意味がわかるように詳細を追加してください。
+    option_added_please_add_details: 選択肢が追加されました。意味がわかるように詳細を追加してください。
     default_duration_in_days: デフォルトの期間（日数）
     how_many_options_can_a_voter_choose: 有権者はいくつの選択肢を選ぶことができますか?
     minimum_choices: 最小限の選択肢
@@ -2866,7 +2869,7 @@ ja:
       allocate_hint: 有権者は選択肢間でポイントの予算を割り当てる
       ranked_choice: 順位付け選択
       ranked_choice_hint: 有権者は選択肢を最も好むものから最も好まないものの順に並べる
-      time_poll: 時間に関する世論調査
+      time_poll: 日程調整
       time_poll_hint: 有権者はいつ会えるかを示す
       rank: ランク
       time: 時間
@@ -2879,17 +2882,17 @@ ja:
     process_subtitle_hint: このテンプレートをいつ、なぜ使用するかについての1行の説明
     process_introduction: テンプレートのヘルプ
     process_introduction_hint: テンプレートの使い方を数段落で説明します。役立つと思われるリソースへのリンクも含めます。
-    you_can_set_a_prompt_per_option: 詳細タブから各オプションのプロンプトを編集します
+    you_can_set_a_prompt_per_option: 詳細タブから各選択肢の問いかけを編集します
     chart_type: チャートの種類
     title: タイトル
-    title_hint: あなたが下すべき決断とは何ですか?
-    no_options_add_some: このアンケートにはオプションがありません。下にオプションを追加してください。
+    title_hint: 何を決定する必要がありますか?
+    no_options_add_some: このアンケートには選択肢がありません。下に選択肢を追加してください。
     details: 詳細
     example_details: 例の詳細
     details_placeholder: これは人々が何に投票しているのかを説明する機会です
-    options: オプション
-    options_placeholder: 利用可能なオプションをリストする
-    no_options: まだオプションを追加していません。
+    options: 選択肢
+    options_placeholder: 選べる選択肢を入力してください
+    no_options: まだ選択肢を追加していません。
     closing: 終わりに
     closed: 閉鎖
     start: 始める
@@ -2912,11 +2915,11 @@ ja:
     poll_type_started: "%{poll_type} が開始されました"
     poll_type_updated: "%{poll_type} が更新されました"
     reason_prompt: 理由プロンプト
-    each_option_has_own_reason_prompt: 各オプションにはそれぞれ独自の理由プロンプトがあります。オプションを編集して、プロンプトを表示または変更してください。
+    each_option_has_own_reason_prompt: 各選択肢には理由を尋ねる問いかけがあります。選択肢を編集して、問いかけを表示または変更してください。
     anonymous_voting: 匿名投票
     votes_are_anonymous: 投票は匿名です
     vote_reason: 投票理由
-    quorum_tip_vote_share_requirement: 'ヒント: 提案が可決されるために必要な賛成率を指定することもできます。投票シェア要件を定義するオプションを編集してください。'
+    quorum_tip_vote_share_requirement: 'ヒント: 提案の可決に必要な賛成率も指定できます。選択肢を編集して必要な得票率を設定してください'
     how_much_time_to_vote: 人々に投票のためにどれくらいの時間を与える予定ですか?
     default_duration_in_days_hint: 投票には何日かかりますか？
     define_minimum_and_maxmimum_score: 投票者が選択肢に与えることができる最小スコアと最大スコアを定義する
@@ -2958,13 +2961,13 @@ ja:
     set_each_member_default_vote_weight: 各メンバーのデフォルトの投票重みを設定する
     voters_will_not_be_notified: 有権者には通知されません。別の方法で投票について知らせてください。
     give_voters_different_vote_weights: 有権者に異なる投票重みを与える。結果は、単純な合計値と重み付けされた合計値の両方を示す。
-    issued_vote_weights_will_change: 既に発行された投票権の重み付けは変更されます。
-    weight_for_all: 全員の投票権
+    issued_vote_weights_will_change: すでに設定された票の重みが変更されます。
+    weight_for_all: 全員の票の重み
     set_all_vote_weights: すべての投票の重みを設定する
     set_all_vote_weights_the_same: すべての投票の重みを同じに設定する
-    member_vote_weights_hint: 現在グループに所属していない有権者は、1票の投票権を持つ
+    member_vote_weights_hint: 現在グループのメンバーではない投票者の票の重みは1です
     weighted_voting: 加重投票
-    weighted_voting_is_not_available_with_anonymous_voting: "匿名投票では加重投票を使用できません"
+    weighted_voting_is_not_available_with_anonymous_voting: 匿名投票では加重投票を使用できません
     use_weighted_voting: 加重投票を使用する
     weighted_voting_off_warning: 加重投票を無効にすると、すべての投票の重みが1に設定されます。この投票で変更した投票の重みはすべて失われます。
     weighted_voting_on_group: 加重投票を有効にすると、各メンバーのデフォルトの投票重みがコピーされます。その他の投票者には投票重み1が割り当てられます。
@@ -3098,12 +3101,12 @@ ja:
     stance_updated: 投票結果が更新されました
   poll_stv_form:
     settings_title: STV選挙設定
-    settings_helptext: 今回の選挙における議席数、集計方法、および割り当て方式を設定してください。
+    settings_helptext: 今回の選挙における議席数、集計方法、およびクォータの種類を設定してください。
     seats_label: 埋めるべき席数
     method_label: 計数方法
     method_scottish: Scottish STV (recommended)
     method_meek: Meek STV
-    quota_label: 割り当てタイプ
+    quota_label: クォータの種類
     quota_droop: Droop quota (recommended)
     quota_hare: Hare quota
   poll_stv_results:
@@ -3137,7 +3140,7 @@ ja:
     title: 議論に追加
     discussion: 議論
     success: 成功しました！%{pollType}がディスカッションに追加されました！
-    explanation: "%{pollType} と、投票、コメント、結果は、選択されたディスカッション スレッドに追加されます。"
+    explanation: "%{pollType} と、その投票、コメント、結論は、選択したディスカッションのスレッドに追加されます。"
   bookmarks:
     bookmarks: ブックマーク
     saved: ブックマークを保存しました

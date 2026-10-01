@@ -1,6 +1,6 @@
 ---
 ja:
-  group_export_started: "グループデータのエクスポートが開始されました"
+  group_export_started: グループデータのエクスポートが開始されました
   discussion_templates:
     blank:
       process_name: 空のテンプレート
@@ -10,7 +10,7 @@ ja:
       title_placeholder: 話したいトピックは何ですか?
       process_name: トピックについて話し合う
       process_subtitle: グループでディスカッションを開始する
-      process_introduction: "<p>あなたのグループで提起したい問題、問題、または機会はありますか?</p><p>トピックを紹介し、背景情報にリンクし、コメント、アイデア、支援を求めます。</p><p>意見や関連情報を投稿して参加するよう人々を招待します。特定の人の注意を引くには @mention を使用します。</p><p>ディスカッションの進行に応じてスレッドのコンテキストを更新し、結果に向けて議論を促進します。</p><p>スレッドを開始するためのすべての情報が揃うまで待たないでください。むしろ、スレッドを使用して、トピックを調査して解決策を見つけるのに協力してくれる人を招待してください。</p>"
+      process_introduction: "<p>グループで取り上げたい課題、問題、機会はありますか?</p><p>話題を紹介し、背景情報へのリンクを載せ、コメント、アイデア、協力を求めます。</p><p>意見や関連情報を投稿して参加するよう呼びかけます。特定の人に気づいてもらうには @メンションを使います。</p><p>ディスカッションの進行に応じてスレッドの背景説明を更新し、結論に向けて話し合いを進めます。</p><p>すべての情報が揃うまで待たずにスレッドを始めてください。スレッドで協力を呼びかけ、話題を掘り下げて解決策を見つけます。</p>"
       description: <h3 id="introduce-and-describe-the-topic">トピックの紹介と説明</h3><p></p><h3 id="why-is-this-important">何でこれが大切ですか？</h3><p></p><h3 id="how-would-you-like-people-to-respond">人々にどのように反応してもらいたいですか？</h3><p></p>
     onboarding_to_loomio:
       title: グループで Loomio を使用する
@@ -23,15 +23,15 @@ ja:
       title_placeholder: 健康と安全に関する方針の策定
       process_name: 同意プロセス
       process_subtitle: 異議を唱えずに「試しても安全」な決定を下してください。
-      process_introduction: '<p>自分の提案に重大な反対がない場合、下す必要のある決定について同意を求めてください。そうすれば、今すぐ「試しても安全」な迅速な決定を下すことができます。</p><p>典型的な役割:</p><ul><li><p>提案者: 決定を必要とする話題を提起する人。</p></li><li><p>ファシリテーター: 提案者が効率的に仕事を遂行できるよう支援できる人。</p></li></ul><p>一般的なプロセス手順:</p><p>ステップ 1. Loomio スレッドで提案を提示します。</p><p>ステップ 2. センス チェックを使用して、提案を改善するための一連の質問、反応、コメントを促進します。</p><p>ステップ 3. 提案やコメントを追加して提案を修正します。</p><p>ステップ 4. 同意提案を伴う修正提案に対して意味のある反対意見があるかどうかを尋ねます。</p><p>ステップ 5. 有効な反対意見を統合して、全員が「試しても安全」であると同意する提案の修正版を作成し、完了したら決定結果を述べます。</p><p> <a target="_blank" rel="noopener noreferrer nofollow" href="/docs/en/guides/making_decisions/consent_process">続きを読む: 同意プロセス。</a></p>'
-      description: <h3 id="what-is-the-decision-you-need-to-make">あなたがしなければならない決断は何ですか?</h3><h3 id=""></h3><h3 id="why-is-this-important-and-what-impact-does-it-have">これはなぜ重要ですか?また、それがどのような影響を及ぼしますか?</h3><p></p><h3 id="what-information-do-people-need-for-context">人々はコンテキストに関してどのような情報を必要としているでしょうか?</h3><p></p><h3 id="who-is-the-facilitator-for-this-process">このプロセスの進行役は誰ですか?</h3><p></p>
+      process_introduction: '<p>必要な決定について同意を求めます。提案に重大な異議がなければ、今すぐ「安全に試せる」決定を迅速に下せます。</p><p>典型的な役割:</p><ul><li><p>提案者: 決定を必要とする話題を提起する人。</p></li><li><p>ファシリテーター: 提案者が効率的に仕事を遂行できるよう支援できる人。</p></li></ul><p>一般的なプロセス手順:</p><p>ステップ 1. Loomio スレッドで提案を提示します。</p><p>ステップ 2. 意向確認で質問、リアクション、コメントを集め、提案の改善につなげます。</p><p>ステップ 3. 改善案やコメントをもとに提案を修正します。</p><p>ステップ 4. 同意提案で、修正した提案に重大な異議があるか尋ねます。</p><p>ステップ 5. 正当な異議を取り入れて提案を修正し、全員が「安全に試せる」と同意できる形にします。完了したら決定の結論を記載します。</p><p><a target="_blank" rel="noopener noreferrer nofollow" href="/docs/en/guides/making_decisions/consent_process">詳しく読む: 同意プロセス。</a></p>'
+      description: <h3 id="what-is-the-decision-you-need-to-make">決定する必要があることは何ですか?</h3><h3 id=""></h3><h3 id="why-is-this-important-and-what-impact-does-it-have">これはなぜ重要ですか?また、それがどのような影響を及ぼしますか?</h3><p></p><h3 id="what-information-do-people-need-for-context">背景を理解するために必要な情報は何ですか?</h3><p></p><h3 id="who-is-the-facilitator-for-this-process">このプロセスの進行役は誰ですか?</h3><p></p>
       consent: 同意
     advice_process:
       title_placeholder: 新しいコンピュータを購入するためのアドバイスを求めています
       process_name: アドバイスプロセス
-      process_subtitle: 決断が必要な場合はアドバイスを求めてください。
-      process_introduction: '<p>組織にとってより良い意思決定ができるよう、影響を受ける人々や専門知識を持つ人々のアドバイスをもとに意思決定を行ってください。</p><p>典型的な役割:</p><ul><li><p>ファシリテーター: 意思決定を行う人、または誰かに進行を依頼する人。</p></li><li><p>アドバイザー: 影響を受ける人、またはあなたが招待する専門知識を持つ人。</p></li></ul><p>一般的なプロセス手順:</p><p>ステップ 1. アクションを提案する前に、意見を求めて視点を検討します。</p><p>ステップ 2. 提案を作成してアドバイスを求める - アドバイス提案を実行します。</p><p>ステップ 3. 受け取ったアドバイスを考慮して、決定を下し、アドバイスをくれた人々に通知し、結果を述べます。</p><p> <a target="_blank" rel="noopener noreferrer nofollow" href="/docs/en/guides/making_decisions/advice_process">続きを読む: アドバイスのプロセス。</a></p>'
-      description: <h3 id="what-is-the-decision-you-need-to-make">あなたがしなければならない決断は何ですか?</h3><p></p><h3 id="why-is-this-important-and-what-impact-does-it-have">これはなぜ重要ですか?また、それがどのような影響を及ぼしますか?</h3><p></p><h3 id="what-advice-are-you-asking-to-help-you-make-a-good-decision">正しい決断を下すためにどのようなアドバイスを求めていますか?</h3><p></p><h3 id="who-is-the-facilitator-for-this-process">このプロセスの進行役は誰ですか?</h3><p></p>
+      process_subtitle: 必要な決定についてアドバイスを求めます。
+      process_introduction: '<p>組織にとってより良い意思決定ができるよう、影響を受ける人々や専門知識を持つ人々のアドバイスをもとに意思決定を行ってください。</p><p>典型的な役割:</p><ul><li><p>ファシリテーター: 決定を下す人が進行するか、別の人に進行を依頼します。</p></li><li><p>アドバイザー: 招待した、影響を受ける人や専門知識を持つ人。</p></li></ul><p>一般的なプロセス手順:</p><p>ステップ 1. アクションを提案する前に、意見を求めて視点を検討します。</p><p>ステップ 2. 提案を作成してアドバイスを求める - アドバイス提案を実行します。</p><p>ステップ 3. 受け取ったアドバイスを考慮して決定を下し、結論を記載してアドバイスをくれた人々に知らせます。</p><p><a target="_blank" rel="noopener noreferrer nofollow" href="/docs/en/guides/making_decisions/advice_process">続きを読む: アドバイスのプロセス。</a></p>'
+      description: <h3 id="what-is-the-decision-you-need-to-make">決定する必要があることは何ですか?</h3><p></p><h3 id="why-is-this-important-and-what-impact-does-it-have">これはなぜ重要ですか?また、それがどのような影響を及ぼしますか?</h3><p></p><h3 id="what-advice-are-you-asking-to-help-you-make-a-good-decision">良い決定を下すためにどのようなアドバイスを求めていますか?</h3><p></p><h3 id="who-is-the-facilitator-for-this-process">このプロセスの進行役は誰ですか?</h3><p></p>
       advice: アドバイス
     pass_a_resolution:
       title_placeholder: 戦略承認の決議
@@ -44,14 +44,14 @@ ja:
       title_placeholder: 組織規約の改定
       process_name: 総意による決定
       process_subtitle: 関係者全員と労働協約を締結します。
-      process_introduction: '<p>すべての参加者のニーズと懸念を満たす合意に達するために、一緒に行う必要がある決定についての合意を形成します。</p><p>典型的な役割:</p><ul><li><p>ファシリテーターを任命します。 （取締役会会議では通常、議長が議長となります。）</p></li><li><p>組織の規約で指定されている、定足数または超過半数のメンバーが参加すること。</p></li></ul><p>一般的なプロセス手順:</p><p>ステップ 1. 問題または提案された決定について話し合うためのオープンスペースを作成します。</p><p>ステップ 2. コンセンサスをテストし、センスチェック提案で反対意見を明らかにします。</p><p>ステップ 3. ポイントを明確にし、建設的な修正を求め、提案を修正します。</p><p>ステップ 4. コンセンサス提案で同意と残りの異議をテストします。</p><p>ステップ 5. 決定を結果とともに組織の公式議事録に記録します。</p><p> <a target="_blank" rel="noopener noreferrer nofollow" href="/docs/en/guides/making_decisions/consensus_process">詳細: 合意プロセス。</a></p>'
-      description: <h3 id="what-is-the-decision-you-need-to-make">あなたがしなければならない決断は何ですか?</h3><p></p><h3 id="why-is-this-important-and-what-impact-does-it-have">これはなぜ重要ですか?また、それがどのような影響を及ぼしますか?</h3><p></p><h3 id="what-information-do-people-need-for-context">人々はコンテキストに関してどのような情報を必要としているでしょうか?</h3><p></p><h3 id="who-is-the-facilitator">ファシリテーターは誰ですか?</h3><p></p><h3 id="what-conditions-need-to-be-met-for-a-decision">決定するにはどのような条件を満たす必要がありますか?</h3><h3 id=""></h3>
+      process_introduction: '<p>すべての参加者のニーズと懸念に応える合意に達するために、共に下す必要がある決定について合意を形成します。</p><p>典型的な役割:</p><ul><li><p>ファシリテーターを任命します。&nbsp; （理事会では通常、議長が務めます。）</p></li><li><p>組織の規約に定められた定足数または特別多数を満たすメンバーが参加します。</p></li></ul><p>一般的なプロセス手順:</p><p>ステップ 1. 問題または提案された決定について話し合うためのオープンスペースを作成します。</p><p>ステップ 2. 意向確認の提案で合意の状況を確認し、異議を明らかにします。&nbsp;</p><p>ステップ 3. ポイントを明確にし、建設的な修正を求め、提案を修正します。</p><p>ステップ 4. コンセンサス提案で賛成と残っている異議を確認します。</p><p>ステップ 5. 決定を結論として記載し、組織の公式議事録にも記録します。</p><p><a target="_blank" rel="noopener noreferrer nofollow" href="/docs/en/guides/making_decisions/consensus_process">詳細: 合意プロセス。</a></p>'
+      description: <h3 id="what-is-the-decision-you-need-to-make">決定する必要があることは何ですか?</h3><p></p><h3 id="why-is-this-important-and-what-impact-does-it-have">これはなぜ重要ですか?また、それがどのような影響を及ぼしますか?</h3><p></p><h3 id="what-information-do-people-need-for-context">背景を理解するために必要な情報は何ですか?</h3><p></p><h3 id="who-is-the-facilitator">ファシリテーターは誰ですか?</h3><p></p><h3 id="what-conditions-need-to-be-met-for-a-decision">決定するにはどのような条件を満たす必要がありますか?</h3><h3 id=""></h3>
       consensus: コンセンサス
     share_links_and_info:
       title_placeholder: リンクと情報を共有する
       process_name: リンクと情報を共有する
       process_subtitle: 情報、リンク、レポートを投稿して、コメントやディスカッションのために共有します。
-      process_introduction: "<p>グループの「壁」または「掲示板」としてスレッドを使用し、互いに共有したい情報、ニュース項目、アイデアを投稿します。</p><p>グループが Loomio 内から情報にアクセスできるように、<strong>リンクの挿入</strong>と<strong>ビデオの埋め込み</strong>フォーマット ツールを使用するように人々を招待します。コメントの<strong>見出しを</strong>使用してコメントをスレッド タイムラインに固定すると、簡単に見つけられるようになります。</p><p>糸がくっつくように<strong>ピンで固定し</strong>、<strong>反応を</strong>促して糸を活性化させ、アイテムを見たことを人々に知らせます。</p><p>このスレッドのデフォルト表示は<strong>「最新」</strong>なので、最新のコメントがスレッドの先頭に表示されます。</p>"
+      process_introduction: "<p>グループの「壁」または「掲示板」としてスレッドを使用し、互いに共有したい情報、ニュース項目、アイデアを投稿します。</p><p>グループが Loomio 内から情報にアクセスできるように、<strong>リンクの挿入</strong>と<strong>ビデオの埋め込み</strong>ツールを使うよう呼びかけます。コメントに<strong>見出し</strong>を使うと、スレッドのタイムラインにコメントを固定でき、見つけやすくなります。</p><p>スレッドを<strong>固定</strong>して見つけやすくし、<strong>リアクション</strong>で投稿を見たことを伝えて、交流を促します。</p><p>このスレッドのデフォルト表示は<strong>「最新」</strong>なので、最新のコメントがスレッドの先頭に表示されます。</p>"
       description: <p>このスレッドを使用して、情報、通知、共有したいことを投稿してください。何が起こっているかを確認し、参加できる場所です。</p><p data-text-align="start">イベント、レポート、ポッドキャスト、その他の興味深いオンライン情報を共有します。</p><p data-text-align="start"><strong>リンクの挿入</strong>と<strong>ビデオの</strong>埋め込みフォーマットツールを使用して、ユーザーが Loomio 内の情報にアクセスできるようにします。</p>
       information: 情報
     prepare_for_a_meeting:
@@ -79,14 +79,14 @@ ja:
       title_placeholder: ロボティクスロードショーへの資金申請
       process_name: 資金調達の決定
       process_subtitle: 助成金、融資、または投資の申請を処理し、資金調達の決定を行います。
-      process_introduction: "<p>資金調達の申請書を紹介し、書類やその他の裏付け資料を添付します。</p><p>スレッド コンテキストでアプリケーションを要約します。</p><p>権限のある人にアプリケーションを確認して質問してもらいます。議論のために十分な時間を取りましょう。</p><p>資金提供を承認するためのコンセンサス提案を提起します。</p><p>誰かが同意しない場合は、理由を尋ねてください。たとえば、より多くの情報が必要な場合があります。同意しない人に、満足したら投票を変更するよう勧めます。</p><p>資金提供の申請について明確な決定を下した場合は、結果を述べて決定を記録します。</p>"
+      process_introduction: "<p>資金調達の申請書を紹介し、書類やその他の裏付け資料を添付します。</p><p>スレッドの背景説明に申請内容を要約します。</p><p>権限のある人に申請を確認して質問してもらいます。議論のために十分な時間を取りましょう。</p><p>資金提供を承認するためのコンセンサス提案を提起します。</p><p>反対する人がいる場合は、理由を尋ねてください。たとえば、追加の情報が必要な場合があります。納得できたら投票を変更するよう勧めます。</p><p>資金提供の申請について明確な決定を下したら、結論を記載して決定を記録します。</p>"
       description: <h3 id="introduce-and-summarize-the-funding-application">資金調達申請の紹介と概要</h3><p></p><h3 id="how-does-this-application-fit-with-funding-criteria">この申請は資金調達基準にどのように適合しますか?</h3><p></p><h3 id="who-is-authorized-to-approve-this-funding-decision">この資金調達決定を承認する権限を持つのは誰ですか?</h3><p></p><h3 id="invite-questions-from-decision-makers-to-process-the-applica">申請を処理するために意思決定者からの質問を募る</h3><p></p>
       funding: 資金調達
     approve_a_document:
       title_placeholder: ブランド戦略の策定
       process_name: 文書を承認する
       process_subtitle: 重要な文書、ポリシー、または合意を導入し、議論し、作成します。
-      process_introduction: "<p>背景情報とともにドキュメントを紹介します。集中力を維持できるように文書の目的を述べます。</p><p>人々に情報や専門知識を提供してもらい、それを使って文書を構成します。人々からのフィードバックや貢献を認識し、考慮します。</p><p>承認の準備が整うまで、文書の最初の草案とその後の草案に貢献を統合します。</p><p>センスチェック投票を使用して意見を調査し、草案の問題点を明らかにします。</p><p>フィードバックが検討されて文書に組み込まれたら、同意またはコンセンサス提案の承認または同意に進みます。</p><p>スレッドは、文書作成の進行状況と行われた決定の明確な記録になります。</p>"
+      process_introduction: "<p>背景情報とともに文書を紹介します。話し合いが目的からそれないよう、文書の目的を述べます。</p><p>人々に情報や専門知識を提供してもらい、それを使って文書を構成します。人々からのフィードバックや貢献を認識し、考慮します。</p><p>寄せられた内容を初稿に取り入れ、承認できる状態になるまで草案を修正します。</p><p>意向確認のアンケートで意見を集め、草案の問題点を明らかにします。</p><p>フィードバックを検討して文書に取り入れたら、同意提案またはコンセンサス提案で承認や合意を求めます。</p><p>スレッドは、文書作成の進行状況と行われた決定の明確な記録になります。</p>"
       description: <h3 id="what-is-the-purpose-of-the-document">文書の目的は何ですか?</h3><p></p><h3 id="why-is-this-important">何でこれが大切ですか？</h3><p></p><h3 id="what-are-you-asking-people-to-do">あなたは人々に何をするように求めていますか？</h3><p></p>
       document: 書類
     practice_thread:
@@ -145,7 +145,7 @@ ja:
     '404':
       body: 要求されたアイテムは見つかりませんでした。ディスカッションまたはアンケートが削除されている場合に発生する可能性があります。
     new_account_trial_group_limit: 新規アカウントはグループ登録が1つに制限されています。それ以上のグループ登録が必要な場合は、サポートまでお問い合わせください。
-    direct_thread_anonymous_poll: 匿名投票を含むスレッドは、直接スレッドに変換できません。
+    direct_thread_anonymous_poll: 匿名アンケートを含むスレッドは、ダイレクトスレッドに変換できません
     invitation_rate_limit_reached_contact_support: 1日の招待上限に達しました。すぐにサポートにお問い合わせください。
     subscription_thread_limit_reached: この組織はスレッド数の上限に達しました。Loomioを引き続きご利用いただくには、アップグレードしてください。
   group:
@@ -171,7 +171,7 @@ ja:
         allocate: 割り当てる
         score: スコア
         rank: ランク
-        time: タイムポーリング
+        time: 日程調整
   user:
     deleted_user: 削除されたユーザー
     placeholder_name: 招待されたユーザー (%{hostname})
@@ -183,9 +183,9 @@ ja:
       username_must_use_valid_characters: ユーザー名には、小文字、数字、アンダースコア、および内部のハイフンのみ使用できます
   poll:
     error:
-      cannot_add_options: この投票にオプションを追加できません
-      cannot_remove_options: この投票からオプションを削除できません
-      must_have_options: 少なくとも 1 つの投票オプションが必要です
+      cannot_add_options: このアンケートに選択肢を追加できません
+      cannot_remove_options: このアンケートから選択肢を削除できません
+      must_have_options: アンケートには少なくとも1つの選択肢が必要です
       must_be_in_the_future: きっと未来にあるはず
       templates_cannot_close: テンプレートを閉じることができません
       poll_options_dont_match: Loomioのバグにより、投票を保存できませんでした。現在修正に取り組んでいます。再読み込みしてもう一度お試しください。
@@ -206,8 +206,8 @@ ja:
       details: 詳細
       group_name: グループ名
       discussion_title: スレッドタイトル
-      outcome_author: 結果の著者
-      outcome_created_at: 結果の作成場所
+      outcome_author: 結論の作成者
+      outcome_created_at: 結論の作成日時
       outcome_statement: 成果報告書
       poll_url: 投票URL
       reason: 理由
@@ -437,7 +437,7 @@ ja:
       subgroups: サブグループ
       members: 現在のメンバー
       discussions: 議論
-      polls: 世論調査
+      polls: アンケート
       comments: コメント
       export: グループを維持するため、またはデータのコピーをエクスポートするためには、%{days}日以内にこのメールに返信してください。削除前にアクセスを復元することが可能です。
       export_link: グループデータのエクスポートについて学ぶ
@@ -446,7 +446,7 @@ ja:
     common:
       why_send_this: このメールを受け取った理由は %{reason}
       view_on_loomio: "%{site_name} で見る"
-      create_outcome: 結果を共有する
+      create_outcome: 結論を共有する
       your_response: あなたは投票しました：
       you_voted: あなたは投票しました！
       not_invited: 招待されていません
@@ -480,31 +480,31 @@ ja:
       details_v2: "<p>これは実践的な提案であり、実際の決定事項ではありません。</p><p>投票して理由を残して、Loomio で提案がどのように機能するかを確認してみてください。</p>"
       outcome_statement_v2: "<p>提案をお試しいただきありがとうございます！これでLoomioでの投票の仕組みが分かりました。</p>"
       agree_meaning: 私はこれに賛成です
-      agree_prompt: なぜ同意するのですか?
+      agree_prompt: なぜ賛成ですか?
       abstain_meaning: これについては意見はない
       abstain_prompt: 何かご意見はございますか?
       disagree_meaning: 私はこれに反対だ
       disagree_prompt: なぜ反対なのですか?
     proposal:
       process_subtitle: 決定を下すための提案を提出する
-      process_introduction: <p>従来の Loomio 提案は、議論を明確な結果に変換して意思決定を行うのに役立ちます。</p><p>行動方針を提案し、賛成、棄権、反対の投票によって回答するよう人々に呼びかけます。</p><p>投票する際に、なぜそのように投票したのか理由を述べることができます。他の人がその問題についてどのような立場をとっているのか、そしてその理由も知ることができます。</p><p>このように、提案を使用して人々に応答を促し、新しい情報を発見し、共通の理解を構築することで、グループがより多くの情報に基づいた、より良い決定を下せるように支援することができます。</p><p>提案とそれに関連する議論によって、決定がどのようになされたかという独自の記録が作成されます。</p><p><a target="_blank" href="/docs/en/guides/making_decisions/simple_decision_process"><u>シンプルな意思決定プロセスで従来の Loomio 提案を使用する方法について詳しくお読みください</u></a>。</p>
+      process_introduction: <p>従来の Loomio 提案は、ディスカッションを明確な結論につなげ、決定を下すのに役立ちます。</p><p>行動方針を提案し、賛成、棄権、反対の投票によって回答するよう人々に呼びかけます。</p><p>投票する際に、なぜそのように投票したのか理由を述べることができます。他の人がその問題についてどのような立場をとっているのか、そしてその理由も知ることができます。</p><p>このように、提案を使用して人々に応答を促し、新しい情報を発見し、共通の理解を構築することで、グループがより多くの情報に基づいた、より良い決定を下せるように支援することができます。</p><p>提案とそれに関連するディスカッションによって、決定がどのようになされたかという独自の記録が作成されます。</p><p><a target="_blank" href="/docs/en/guides/making_decisions/simple_decision_process"><u>シンプルな意思決定プロセスで従来の Loomio 提案を使用する方法について詳しくお読みください</u></a>。</p>
       title: 新しいブランドコンセプトを承認する
-      details: <h3 id="what-is-the-decision-you-need-to-make"><strong>あなたが下すべき決断とは何ですか?</strong></h3><p></p><h3 id="why-is-this-important"><strong>なぜこれが重要なのでしょうか?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"><strong>人々に何をするよう求めているのですか?</strong></h3><p></p><p>この提案を可決するには、メンバーの過半数が賛成票を投じる必要があります。</p><p>同意しない場合は、その理由と、同意するために何を変える必要があるかを述べてください。</p>
-      agree: 同意する
+      details: <h3 id="what-is-the-decision-you-need-to-make"><strong>決定する必要があることは何ですか?</strong></h3><p></p><h3 id="why-is-this-important"><strong>なぜこれが重要なのでしょうか?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"><strong>人々に何をするよう求めているのですか?</strong></h3><p></p> <p>この提案を可決するには、メンバーの過半数が賛成票を投じる必要があります。</p><p>反対の場合は、その理由と、賛成するために何を変える必要があるかを述べてください。</p>
+      agree: 賛成
       agree_meaning: 私はこの提案を支持する
       agree_prompt: この提案の何が気に入っていますか? また、グループにとってどのようなメリットがありますか?
       abstain: 棄権
-      disagree: 同意しない
+      disagree: 反対
       disagree_meaning: この提案を支持するには、何かを変更する必要があります。
       disagree_prompt: この提案をどのように改善すれば、支持していただけるでしょうか?
       abstain_meaning: この決定について投票しないことを選択する、または投票することができない。
       abstain_prompt: なぜ棄権するのか、あるいはこの決定について投票できないと感じるのか、その理由は何ですか？
     advice:
-      process_subtitle: 必要な決断についてアドバイスを求める
+      process_subtitle: 必要な決定についてアドバイスを求めます
       process_introduction: <p>組織にとってより良い決定を下せるよう、影響を受ける人や専門知識を持つ人からアドバイスを得て、必要な決定についてアドバイスを求めてください。</p><ul><li><p>アドバイスは、組織にとってより良い意思決定を行うのに役立ちます。</p></li><li><p>人間関係、学習機会、多様な意見を育みます。</p></li><li><p>自発性と創造性を刺激し、仕事をより楽しくします。</p></li></ul><p><a target="_blank" href="/docs/en/guides/making_decisions/advice_process"><u>アドバイスプロセスの詳細については、こちらをご覧ください</u></a>。</p>
       title: タカシが新しいパソコンを買うのを手伝ってください
-      details: <h3 id="what-is-the-decision-you-need-to-make"><strong>あなたが下すべき決断とは何ですか?</strong></h3><p></p><h3 id="why-is-this-important"><strong>なぜこれが重要なのでしょうか?</strong></h3><p></p><h3 id="what-advice-are-you-asking-from-people-to-help-you-make-a-go"><strong>良い決断をするために、人々にどんなアドバイスを求めていますか?</strong></h3><p></p><p>私たちの組織にとって良い決断を下すために、皆さんの意見を伺いたいと考えています。</p>
-      agree: 同意する
+      details: <h3 id="what-is-the-decision-you-need-to-make"><strong>決定する必要があることは何ですか?</strong></h3><p></p><h3 id="why-is-this-important"><strong>なぜこれが重要なのでしょうか?</strong></h3><p></p><h3 id="what-advice-are-you-asking-from-people-to-help-you-make-a-go"><strong>良い決定を下すために、人々にどんなアドバイスを求めていますか?</strong></h3><p></p><p>私たちの組織にとって良い決定を下すために、皆さんの意見を伺いたいと考えています。</p>
+      agree: 賛成
       agree_meaning: 私はこの決定についてアドバイスをしてきました
       agree_prompt: アドバイスを要約するか、役立つコメントを記入してください
       abstain: 棄権
@@ -513,9 +513,9 @@ ja:
       outcome_statement: "<p>私のアドバイスラウンドに参加していただきありがとうございます!</p>"
     consent:
       process_subtitle: 異議なく「安全に試せる」決定を下す
-      process_introduction: <p>提案に対して意味のある異論がない場合に、必要な決定について同意を求めます。そうすることで、組織にとって「安全に試せる」迅速な決定を下すことができます。</p><ul><li><p> 「十分に良い」決断を目指す</p></li><li><p>実行可能な提案を作成するために多くの意見を取り入れる</p></li><li><p>正当な異議があるかどうか尋ねる</p></li><li><p>異議を解決するために提案を修正する</p></li></ul><p><a target="_blank" href="/docs/en/guides/making_decisions/consent_process">同意プロセスの詳細については、こちらをご覧ください</a>。</p>
+      process_introduction: <p>提案に重大な異議がないか確認し、必要な決定について同意を求めます。これにより、組織にとって「安全に試せる」決定を迅速に下せます。</p><ul><li><p>「十分に良い」決定を目指します</p></li><li><p>実行可能な提案を作るために多くの意見を取り入れます</p></li><li><p>正当な異議があるか尋ねます</p></li><li><p>異議を解決するために提案を修正します</p></li></ul> <p><a target="_blank" href="/docs/en/guides/making_decisions/consent_process">同意プロセスの詳細については、こちらをご覧ください</a>。</p>
       title: クロエをデザイナーとして採用
-      details: <h3 id="what-is-the-decision-you-need-to-make"><strong>あなたが下すべき決断とは何ですか?</strong></h3><p></p><h3 id="why-is-this-important"><strong>なぜこれが重要なのでしょうか?</strong></h3><p></p><h3 id="what-are-you-asking-of-people-in-this-proposal"><strong>この提案では人々に何を求めているのでしょうか?</strong></h3><p></p><p>異議がある場合は、その理由を述べ、提案が安全になるように変更を提案してください。</p><p>私たちは、組織にとって良い決定を下せるよう、「試しても安全」な「十分に良い」決定に対する同意を求めていることを忘れないでください。</p>
+      details: <h3 id="what-is-the-decision-you-need-to-make"><strong>決定する必要があることは何ですか?</strong></h3><p></p><h3 id="why-is-this-important"><strong>なぜこれが重要なのでしょうか?</strong></h3><p></p><h3 id="what-are-you-asking-of-people-in-this-proposal"><strong>この提案では人々に何を求めているのでしょうか?</strong></h3><p></p><p>異議がある場合は、その理由を述べ、提案が安全になるように変更を提案してください。</p><p>私たちは、組織にとって良い決定を下せるよう、「試しても安全」な「十分に良い」決定に対する同意を求めていることを忘れないでください。</p>
       consent: 同意
       consent_meaning: この提案は試してみるのに安全だ
       consent_prompt: この提案のどのような点が気に入っていますか? また、組織にとってどのようなメリットがありますか?
@@ -525,40 +525,40 @@ ja:
       outcome_statement: "<p>同意プロセスにご参加いただきありがとうございます。</p>"
       process_subtitle_v2: 誰かが異議を唱えない限り続行する
       process_introduction_v2: "<p><strong>同意とは</strong>、提案が完璧かどうかではなく、試しても安全かどうかを問うことです。誰も意味のある異議を唱えない限り、提案は承認されます。もし誰かが異議を唱えた場合、グループはそれを解決するために取り組みます。参加者は提案の進展に合わせて投票内容を変更できるため、異議は障害ではなく、改善のためのツールとなります。</p>"
-      details_v2: "<h3><strong>あなたが下すべき決断とは何ですか?</strong></h3><p></p><h3><strong>なぜこれが重要なのでしょうか?</strong></h3><p></p><h3><strong>この提案では人々に何を求めているのでしょうか?</strong></h3><p></p><p>完璧を目指しているわけではありません。提案が十分に優れていて、試しても安全であれば、ご同意ください。異議がある場合は、実現可能にするために何を変更する必要があるかをお知らせください。</p>"
+      details_v2: "<h3><strong>決定する必要があることは何ですか?</strong></h3><p></p><h3><strong>なぜこれが重要なのでしょうか?</strong></h3><p></p><h3><strong>この提案では人々に何を求めているのでしょうか?</strong></h3><p></p><p>完璧を目指しているわけではありません。提案が十分に良く、安全に試せるものであれば、同意してください。異議がある場合は、実行可能にするために何を変える必要があるかをお知らせください。</p>"
     consensus:
       process_subtitle: 関係者全員と団体交渉協定を結ぶ
       process_introduction: <p>必要な決定について合意を形成し、すべての参加者のニーズと懸念を満たす合意に達します。</p><ul><li><p>一緒に議論し、提案を練り上げましょう</p></li><li><p>関係者全員を包括し尊重する</p></li><li><p>大多数の人々の同意を求める</p></li></ul><p><a target="_blank" href="/docs/en/guides/making_decisions/consensus_process">コンセンサスプロセスの詳細については、こちらをご覧ください</a>。</p>
       title: 新しいブランドコンセプトを承認する
-      details: <h3 id="what-is-the-decision-you-need-to-make"><strong>あなたが下すべき決断とは何ですか?</strong></h3><p></p><h3 id="why-is-this-important"><strong>なぜこれが重要なのでしょうか?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"><strong>人々に何をするよう求めているのですか?</strong></h3><p></p><p>この提案を可決するには、メンバーの過半数が賛成票を投じる必要があります。</p><p>同意しない場合は、その理由と、同意するために何を変える必要があるかを述べてください。</p>
+      details: <h3 id="what-is-the-decision-you-need-to-make"><strong>決定する必要があることは何ですか?</strong></h3><p></p><h3 id="why-is-this-important"><strong>なぜこれが重要なのでしょうか?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"><strong>人々に何をするよう求めているのですか?</strong></h3><p></p><p>この提案を可決するには、メンバーの過半数が賛成票を投じる必要があります。 </p><p>反対の場合は、その理由と、賛成するために何を変える必要があるかを述べてください。</p>
       outcome_statement: "<p>コンセンサスプロセスにご参加いただきありがとうございます。</p>"
-      agree: 同意する
+      agree: 賛成
       agree_meaning: 私はこの提案を支持する
       agree_prompt: この提案のどのような点が気に入っていますか? また、組織にとってどのようなメリットがありますか?
       abstain: 棄権
       abstain_meaning: この決定は私に影響を与えず、グループが何を決定しても私は満足です
-      disagree: 同意しない
+      disagree: 反対
       disagree_meaning: この提案を支持するには、何かを変える必要がある
       disagree_prompt: この提案をどのように改善すれば、支持していただけるでしょうか?
       block: ブロック
       block_meaning: 私はこの提案に反対し、進めるべきではないと思う
       block_prompt: この提案に対する反対理由と、なぜこの提案を進めるべきではないのかを説明してください。
-      details_v2: "<h3><strong>あなたが下すべき決断とは何ですか?</strong></h3><p></p><h3><strong>なぜこれが重要なのでしょうか?</strong></h3><p></p><h3><strong>人々に何をするよう求めているのですか?</strong></h3><p></p><p>あなたの立場とその理由を共有してください。もし反対であれば、それを支持するためにはどのような変化が必要かを説明してください。</p>"
-      process_introduction_v2: "<p><strong>コンセンサス</strong>は、全員が積極的に同意することが重要な決定において用いられます。参加者は互いのニーズを理解し、グループ全体が支持できるまで提案を具体化するために協力します。議論が進むにつれて投票内容を変更できるため、このプロセスは一発勝負の決定ではなく、真の対話を促します。他の方法よりも忍耐が必要ですが、最も強いコミットメントを築くことができます。</p><p>このテンプレートにはデフォルトで<strong>ブロック</strong>オプションが含まれています。ブロックはすべてのグループに適しているわけではありません。物議を醸したり、誤用されたりする可能性があるためです。意思決定プロセスでブロックを使用しない場合は、テンプレートを編集して削除することをお勧めします。</p>"
+      details_v2: "<h3><strong>必要な決定は何ですか?</strong></h3><p></p><h3><strong>なぜこれが重要なのでしょうか?</strong></h3><p></p><h3><strong>人々に何をするよう求めているのですか?</strong></h3><p></p><p>立場とその理由を共有してください。反対の場合は、この提案を支持するために何を変える必要があるかを説明してください。</p>"
+      process_introduction_v2: "<p><strong>コンセンサス</strong>は、全員が積極的に賛成することが重要な決定において用いられます。参加者は互いのニーズを理解し、グループ全体が支持できるまで提案を具体化するために協力します。議論が進むにつれて投票内容を変更できるため、このプロセスは一発勝負の決定ではなく、真の対話を促します。他の方法よりも忍耐が必要ですが、最も強いコミットメントを築くことができます。</p><p>このテンプレートにはデフォルトで<strong>ブロック</strong>の選択肢が含まれています。ブロックはすべてのグループに適しているわけではありません。物議を醸したり、誤用されたりする可能性があるためです。意思決定プロセスでブロックを使用しない場合は、テンプレートを編集して削除することをお勧めします。</p>"
       abstain_prompt: なぜ棄権するのか、あるいはこの決定について投票できないと感じるのか、その理由は何ですか？
     question_round:
       process_subtitle: 提案を理解するために、明確な質問を促します
-      process_introduction: <p>質問ラウンドは、提案について明確にする質問をする機会であり、全員が提案を理解した上で、それについてどう思うかを述べる機会となります。</p><p> Loomio Questionラウンドは、投票オプションのない特別な提案です。参加者は、ラウンドで設定された時間内に質問をすることができます。</p><p>質問ラウンドは、同意プロセスのステップとしてよく使用されます。</p><p><a target="_blank" href="/docs/en/guides/making_decisions/consent_process">同意プロセスの詳細については、こちらをご覧ください</a>。</p>
+      process_introduction: <p>質問ラウンドは、提案を理解するための質問をする機会です。全員が提案を理解してから、意見を述べられるようにします。</p><p>Loomioの質問ラウンドは、投票の選択肢がない特別な提案です。参加者は、ラウンドに設定された期間内に質問できます。</p><p>質問ラウンドは、同意プロセスのステップとしてよく使用されます。</p><p><a target="_blank" href="/docs/en/guides/making_decisions/consent_process">同意プロセスの詳細については、こちらをご覧ください</a>。</p>
       title: 健康と安全に関するポリシーについて何か質問はありますか?
       details: <h3 id="what-are-you-proposing"><strong>何を提案しているのですか?</strong></h3><p></p><h3 id="why-is-this-important"><strong>なぜこれが重要なのでしょうか?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"><strong>人々に何をするよう求めているのですか?</strong></h3><p></p><p>これは質問ラウンドであり、説明を明確にするための質問をしていただきます。</p><p>提案を理解するために何を知る必要がありますか?</p><p>質問ラウンドが終了する前にご回答ください。</p>
       reason_prompt: 提案を理解するために何を知る必要がありますか?
       outcome_statement: "<p>このラウンド中に質問を送信していただきありがとうございます</p>"
     sense_check:
       process_subtitle: フィードバック、質問、懸念事項を尋ねる
-      process_introduction: <p>センスチェック提案は、フィードバックを得て質問を促し、懸念事項を明らかにするための優れた方法です。決定に進む前に、提案を明確にし、改善するのに役立ちます。</p><p>センスチェックは、提案が形成されつつあることを人々に知らせ、参加を促します。これは、人々の意見に耳を傾け、彼らの気持ちを察知し、適切に対応する機会であり、彼らの意見を取り入れることでより良い意思決定につながる可能性を広げます。</p><p>同意プロセスでセンスチェック提案を使用して、提案を改善するための反応やコメントを募り、コンセンサスプロセスでコンセンサスをテストします。</p><p> <a target="_blank" rel="noopener noreferrer nofollow" href="/docs/en/guides/making_decisions/simple_decision_process"><u>シンプルな意思決定プロセスにおけるセンスチェックの使用について詳しくは、こちらをご覧ください</u></a><span>。</span></p>
+      process_introduction: <p>意向確認の提案は、フィードバックを得て質問を促し、懸念事項を明らかにするための優れた方法です。決定に進む前に、提案を明確にし、改善するのに役立ちます。</p><p>意向確認は、提案が形成されつつあることを人々に知らせ、参加を促します。これは、人々の意見に耳を傾け、彼らの気持ちを察知し、適切に対応する機会であり、彼らの意見を取り入れることでより良い意思決定につながる可能性を広げます。</p> <p>同意プロセスでは意向確認の提案を使用して、提案を改善するためのリアクションやコメントを募ります。コンセンサスプロセスでは、合意が得られるかを確認します。</p><p><a target="_blank" rel="noopener noreferrer nofollow" href="/docs/en/guides/making_decisions/simple_decision_process"><u>シンプルな意思決定プロセスにおける意向確認の使用について詳しくは、こちらをご覧ください</u></a><span>。</span></p>
       title: 新しいブランドコンセプトについてどう思いますか?
-      details: <h3 id="what-are-you-proposing"><strong>何を提案しているのですか?</strong></h3><p></p><h3 id="why-is-this-important"><strong>なぜこれが重要なのでしょうか?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"><strong>人々に何をするよう求めているのですか?</strong></h3><p></p><p>この提案についてどう思われますか？コメントを残すか、改善のための提案を行ってください。</p><p>このセンスチェックは、私たちがより良い決定を下せるよう、皆さんの意見や貢献を伺う機会となります。</p>
-      outcome_statement: "<p>センスチェックにご参加いただきありがとうございます。</p>"
+      details: <h3 id="what-are-you-proposing"><strong>何を提案しているのですか?</strong></h3><p></p><h3 id="why-is-this-important"><strong>なぜこれが重要なのでしょうか?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"><strong>人々に何をするよう求めているのですか?</strong></h3><p></p><p>この提案についてどう思われますか？  コメントを残すか、改善のための提案を行ってください。</p><p>この意向確認は、私たちがより良い決定を下せるよう、皆さんの意見や貢献を伺う機会となります。</p>
+      outcome_statement: "<p>意向確認にご参加いただきありがとうございます。</p>"
       not_sure: わからない
       not_sure_meaning: 質問がある、またはもう少し時間が必要な場合
       not_sure_prompt: どの部分が不明瞭ですか？どうすれば解決できるでしょうか？
@@ -569,10 +569,10 @@ ja:
       abstain_meaning: この作品に対して、付け加えたいことや異論はありません。
       abstain_prompt: 棄権は、本提案の方向性に同意することを意味します。棄権する理由はありますか？
       concerned: 心配している
-      concerned_meaning: 私が同意するためには、このことについて何かを変える必要があるかもしれない
+      concerned_meaning: 同意または賛成するには、何かを変える必要があるかもしれません
       concerned_prompt: あなたの懸念は何ですか、そしてそれはどのように対処される可能性がありますか?
       process_subtitle_v2: 正しい道を進んでいるか確認しましょう
-      process_introduction_v2: "<p><strong>センスチェックは、</strong>決定を下す前に早期にフィードバックを得るのに役立ちます。参加者は、状況が良さそうかどうか、あるいは懸念点を指摘してくれるので、正式な提案に進む前に方向性を調整することができます。これは決定ではなく、温度チェックです。</p>"
+      process_introduction_v2: "<p><strong>意向確認</strong>は、決定を下す前に早い段階でフィードバックを得るのに役立ちます。参加者が良さそうかどうかや懸念点を伝えるため、正式な提案に進む前に方向性を調整できます。決定を下すものではなく、反応を確かめるものです。</p>"
       details_v2: "<h3><strong>何を提案しているのですか?</strong></h3><p></p><h3><strong>なぜこれが重要なのでしょうか?</strong></h3><p></p><h3><strong>人々に何をするよう求めているのですか?</strong></h3><p></p><p>これは良さそうか、もっと改善できる点があるか、再考が必要かを述べ、その理由を共有してください。</p>"
       looks_good_meaning_v2: 方向性に満足しています
       looks_good_prompt_v2: 何が気に入っていますか？
@@ -606,52 +606,52 @@ ja:
       don_t_like_but_will_support_prompt: 何を改善してほしいですか?
       serious_disagreement: 重大な意見の相違
       serious_disagreement_meaning: 私はこれに賛成しません。私を頼りにしないでください。
-      serious_disagreement_prompt: 何に同意しないのですか?
+      serious_disagreement_prompt: どの点に反対ですか?
       veto: 拒否
       veto_meaning: この提案をブロックします
       veto_prompt: なぜこの提案に反対するのですか？支持するためには、何を変える必要があるのでしょうか？
     simple_poll:
-      process_subtitle: 最も人気のあるオプションを見つける
-      process_introduction: <p>決定を下す前に、人々が最も重視するオプションを見つけます。</p><p>シンプルなアンケートは、単一または複数の選択肢から最も人気のあるオプションを見つけるのに役立ちます。</p><p>詳細フィールドにオプションに関する詳細を記入し、オプションの名前を入力して「+」をクリックして追加します。</p><p>投票者が選択できる<strong>最小選択肢数</strong>と<strong>最大選択肢数</strong>を設定します。単一選択の投票の場合は、最大選択肢数を1のままにしてください。</p><p>各オプションの横にある鉛筆アイコンを使用してオプションの<strong>意味</strong>を追加し、投票時にユーザーを支援するためにオプションの詳細をさらに説明することができます。</p><p> <a target="_blank"  href="/docs/en/user_manual/polls/proposal_types#simple-poll">シンプルなアンケートの詳細をご覧ください</a>。</p>
+      process_subtitle: 最も人気のある選択肢を見つける
+      process_introduction: <p>単一選択または複数選択のアンケートで、最も人気のある選択肢を見つけます。</p><p><a target="_blank"  href="/docs/en/user_manual/polls/proposal_types#simple-poll">シンプルなアンケートの詳細をご覧ください</a>。</p>
       title: 私たちの戦略的方向性の焦点はどこに置くべきでしょうか?
-      details: <h3 id="what-is-this-poll-about"><strong>この世論調査は何についてですか？</strong></h3><p></p><h3 id="why-is-this-important"><strong>なぜこれが重要なのでしょうか?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"><strong>人々に何をするよう求めているのですか?</strong></h3><p></p><p>ご希望のオプションを選択してください。</p>
-      process_introduction_v2: <p><strong>「選択」機能は、</strong>最も人気のあるオプションを見つけるのに役立ちます。参加者はリストから選択します。1つのオプションを選択するか、複数のオプションを選択するかを設定できます。</p><p> <a target="_blank" href="/docs/en/user_manual/polls/proposal_types#simple-poll">Choose についての詳細をご覧ください</a>。</p>
+      details: <h3 id="what-is-this-poll-about"><strong>このアンケートは何についてですか？</strong></h3><p></p><h3 id="why-is-this-important"><strong>なぜこれが重要なのでしょうか?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"><strong>人々に何をするよう求めているのですか?</strong></h3><p></p><p>ご希望の選択肢を選択してください。</p>
+      process_introduction_v2: <p><strong>選択</strong>は、最も人気のある選択肢を見つけるのに役立ちます。参加者はリストから選びます。1つ選ぶか、複数選ぶかを設定できます。</p><p><a target="_blank" href="/docs/en/user_manual/polls/proposal_types#simple-poll">選択の詳細をご覧ください</a>。</p>
       process_subtitle_v2: 人気度を測るには、単一選択式または複数選択式のアンケートをご利用ください。
     score_poll:
-      process_subtitle: 各オプションの支持度を測定する
-      process_introduction: <p>各オプションに対する人々の希望、好み、または関心を調査する場合は、スコア アンケートを使用します。</p><p><span>参加者は、各オプションを評価し、スケールに沿ってスライダーを動かしてスコアを割り当てるように求められます。</span></p><p><span>結果はグラフで表示され、各オプションの合計ポイント、平均ポイント、投票者数を示す表も表示されます。</span></p><p>詳細設定には、「投票は匿名です」や「オプションをランダムな順序で表示します」などがあり、スコア投票で投票の偏りを減らすためによく使用されます。</p><p> <a target="_blank"  href="/docs/en/user_manual/polls/proposal_types#score-poll">スコア投票の詳細をご覧ください</a>。</p>
+      process_subtitle: 各選択肢の支持度を測定する
+      process_introduction: <p>各選択肢に対する人々の希望、好み、関心を調べるには、スコア投票を使用します。</p><p><span>参加者は各選択肢を評価し、目盛りに沿ってスライダーを動かして点数を付けます。</span></p><p><a target="_blank"  href="/docs/en/user_manual/polls/proposal_types#score-poll">スコア投票の詳細をご覧ください</a>。</p>
       title: 組織内で意思決定がどのように行われるかを評価する
-      details: <h3 id="what-is-this-poll-about"><strong>この世論調査は何についてですか？</strong></h3><p></p><h3 id="why-is-this-important"><strong>なぜこれが重要なのでしょうか?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"><strong>人々に何をするよう求めているのですか?</strong></h3><p></p><p>ご希望のオプションを選択してください。</p>
-      process_subtitle_v2: 各オプションのサポートレベルを測定する
+      details: <h3 id="what-is-this-poll-about"><strong>このアンケートは何についてですか？</strong></h3><p></p><h3 id="why-is-this-important"><strong>なぜこれが重要なのでしょうか?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"><strong>人々に何をするよう求めているのですか?</strong></h3><p></p><p>ご希望の選択肢を選択してください。</p>
+      process_subtitle_v2: 各選択肢の支持度を測定する
       process_introduction_v2: <p><strong>スコアを</strong>使用すると、各選択肢に対するグループの支持度を測定できます。参加者はスライドスケールに基づいて各選択肢を評価します。これにより、人々が何を好むかだけでなく、どの程度好んでいるかを把握できます。</p><p> <a target="_blank" href="/docs/en/user_manual/polls/proposal_types#score-poll">スコア投票の詳細については、こちらをご覧ください</a>。</p>
       process_subtitle_v3: 有権者に各選択肢をどの程度支持するか評価してもらう
     dot_vote:
       process_subtitle: 優先順位を明らかにするためにポイントの予算を割り当てる
       process_introduction: <p>ドット投票は、限られたリソースを複数の選択肢に配分しようとするグループにとって役立ちます。参加者が選択肢を選択する際に制約があることを理解できるようにすることで、単なる投票を超えた効果をもたらします。</p><p>参加者にはそれぞれ決められた数のドットが与えられます。その数を決めてください。</p><p>参加者は提示された選択肢の中から気に入ったものに点を付けます。すべての点を1つの選択肢に付けることも、複数の選択肢に分散させることもできます。</p><p>参加者がドットを割り当てると、ドットの予算制限を超える可能性があるため、ドットの使い方を慎重に検討することが推奨されます。</p><p>最も多くのドットが付いた選択肢が「勝ち」となります。結果表には、結果を分析するのに役立つ追加データが表示されます。</p><ul><li><p>ポイントの割合</p></li><li><p>ポイント</p></li><li><p>平均</p></li><li><p>有権者</p></li></ul><p><a target="_blank"  href="/docs/en/user_manual/polls/proposal_types#dot-vote">ドット投票についての詳細を読む</a>。</p>
       title: 会議のテーマの選択
-      details: <h3 id="what-is-this-poll-about"><strong>この世論調査は何についてですか？</strong></h3><p></p><h3 id="why-is-this-important"><strong>なぜこれが重要なのでしょうか?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"><strong>人々に何をするよう求めているのですか?</strong></h3><p></p><p>このアンケートでは、8つのドットを好きな選択肢に割り当てることができます。すべてのドットを1つの選択肢に割り当てても、分散させて割り当てても構いません。</p>
+      details: <h3 id="what-is-this-poll-about"><strong>このアンケートは何についてですか？</strong></h3><p></p><h3 id="why-is-this-important"><strong>なぜこれが重要なのでしょうか?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"><strong>人々に何をするよう求めているのですか?</strong></h3><p></p><p>このアンケートでは、決められたポイントを好きな選択肢に配分できます。すべてを1つの選択肢に配分しても、複数に分けても構いません。</p>
       process_subtitle_v2: トレードオフがある場合は優先順位を明らかにする
       process_introduction_v2: <p><strong>Allocateは</strong>、トレードオフがある場合のグループの優先順位を理解するのに役立ちます。各参加者は、複数の選択肢に配分するためのポイントの予算を受け取ります。1つの選択肢にすべてを集中させることも、複数の選択肢にポイントを配分することもできます。予算は限られているため、費やされるポイントはすべて、優先順位の真のシグナルとなります。</p><p> <a target="_blank" href="/docs/en/user_manual/polls/proposal_types#dot-vote">Allocate の詳細については、こちらをご覧ください</a>。</p>
       process_subtitle_v3: トレードオフが存在する場合に、優先順位を明らかにする。ドット投票とも呼ばれる。
     ranked_choice:
       process_subtitle: 選択肢の優先順位を理解する
-      process_introduction: <p>順位付け選択は、選択肢が多数ある場合や選挙を実施する場合に役立ちます。</p><p>この投票テンプレートは、ユーザーが好みの順序で投票できる一連のオプションを提供します。</p><p>投票者が選択できる選択肢の数を設定できます。</p><p><span>投票者は、好みの順にオプションをドラッグ アンド ドロップします (#1 が最も好ましいオプションです)。</span></p><p><span>詳細設定には、「投票は匿名です」や「オプションをランダムな順序で表示します」などがあり、これらは通常、投票の偏りを減らすためにランク付けされた選択肢で使用されます</span>。</p><p>結果はランキング順に表示されます。結果表には、結果の分析に役立つ追加データが表示されます。</p><ul><li><p>ランク</p></li><li><p>ポイントの割合</p></li><li><p>ポイント</p></li><li><p>平均</p></li></ul><p><a target="_blank"  href="/docs/en/user_manual/polls/proposal_types#ranked-choice">ランク付け選択についての詳細をご覧ください</a>。</p>
+      process_introduction: <p>ランク投票は、選択肢が多数ある場合や選挙を実施する場合に役立ちます。</p><p>投票者は選択肢をドラッグ＆ドロップして、好みの順に並べます。</p><p>結果は順位順に表示されます。</p><p><a target="_blank"  href="/docs/en/user_manual/polls/proposal_types#ranked-choice">ランク投票の詳細をご覧ください</a>。</p>
       title: ガバナンス委員会に取締役を選出する
-      details: <h3 id="what-is-this-poll-about"><strong>この世論調査は何についてですか？</strong></h3><p></p><h3 id="why-is-this-important"><strong>なぜこれが重要なのでしょうか?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"><strong>人々に何をするよう求めているのですか?</strong></h3><p></p><p>選択肢をあなたの好みの順にランク付けして投票してください。結果で1位になった選択肢が勝ちとなります。</p>
+      details: <h3 id="what-is-this-poll-about"><strong>このアンケートは何についてですか？</strong></h3><p></p><h3 id="why-is-this-important"><strong>なぜこれが重要なのでしょうか?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"><strong>人々に何をするよう求めているのですか?</strong></h3><p></p><p>選択肢を好みの順に並べて投票してください。  結果で1位になった選択肢が勝ちとなります。</p>
       process_subtitle_v2: グループの優先順位を見つける
       process_introduction_v2: <p><strong>ランクは</strong>グループの優先順位を示します。参加者は選択肢をドラッグ＆ドロップして、優先順位の高い順に並べ替えることができ、結果には全体の順位が表示されます。</p><p> <a target="_blank" href="/docs/en/user_manual/polls/proposal_types#ranked-choice">ランクについて詳しくはこちらをご覧ください</a>。</p>
       process_subtitle_v3: 優先順位の高い順から低い順に並べ替える
     time_poll:
       process_subtitle: いつ会えるか調べる
-      process_introduction: <p><span>会議やイベントの日程を調整する時間を節約します。</span></p><p>時間アンケートを使用すると、全員の空き時間を簡単に確認し、最適な時間を見つけることができます。</p><p>時間に関するアンケートにタイトルと詳細を入力してください。タイムゾーンの日付と時刻の選択肢のリストを入力してください。</p><p>時間枠を設定する際は、異なるタイムゾーンにいる参加者を考慮してください。参加者には、それぞれのタイムゾーンに合わせた時刻が表示されます。</p><p>会議の継続時間を設定します。</p><p>時間に関するアンケートが終了したら、最適な時間と会議の指示を結果として設定します。</p><p> <span>Loomio は結果通知メールにカレンダーの招待状を含めるので、参加者は自分のカレンダーに追加できます。</span></p><p> <a target="_blank" href="/docs/en/user_manual/polls/meeting_polls#time-poll">Time poll についてさらに詳しく読む</a>。</p>
+      process_introduction: <p>会議やイベントに最適な日時をすばやく見つけます。タイトル、詳細、日時の選択肢を使用中のタイムゾーンで追加してください。参加者には、それぞれのタイムゾーンに合わせた日時が表示されます。</p><p>日程調整が終了したら、最適な日時と会議の案内を結論として設定してください。Loomioは結論のメールにカレンダーへの招待を添えて送信し、参加者は予定をカレンダーに追加できます。</p><p><a target="_blank" href="/docs/en/user_manual/polls/meeting_polls#time-poll">日程調整の詳細をご覧ください</a>。</p>
       title: 次回の会議の日程を決めましょう
       details: "<p><strong>会議またはイベントとは何ですか?</strong></p><p></p><p><strong>なぜこれが重要なのでしょうか?</strong></p><p></p><p><strong>人々に何をするよう求めているのですか?</strong></p><p></p><p><span>空いている時間帯には緑の「親指を立てる」アイコンを付け、空いていない場合は赤い「親指を下げて」アイコンをそのままにしておきます。</span></p><p> <span>「必要に応じて」対応可能であることを示すには、「親指を横向きにする」アイコンを使用します。</span></p>"
       reason_prompt: 主催者が適切な時間を見つけるために何か言えることはありますか?
       process_subtitle_v2: 空き時間を見つける
-      process_introduction_v2: <p><strong>時間アンケートを</strong>使えば、参加者の都合の良い時間を確認できます。希望する時間を追加すると、参加者はそれぞれのタイムゾーンで時間を確認できます。アンケートが終了したら結果を設定すると、Loomioから全員にカレンダーの招待状が送信されます。</p><p> <a target="_blank" href="/docs/en/user_manual/polls/meeting_polls#time-poll">Time poll の詳細をご覧ください</a>。</p>
+      process_introduction_v2: <p><strong>日程調整</strong>は、参加者の都合の良い日時を確認するのに役立ちます。候補の日時を追加すると、参加者にはそれぞれのタイムゾーンで表示されます。アンケートが終了したら結論を設定してください。Loomioから全員にカレンダーへの招待が送信されます。</p><p><a target="_blank" href="/docs/en/user_manual/polls/meeting_polls#time-poll">日程調整の詳細をご覧ください</a>。</p>
     opt_in:
       process_subtitle: ボランティアを探すか参加者を募集する
-      process_introduction: <p>オプトインを使用して、チーム、委員会、またはワーキング グループに参加したり、イベントに参加するようユーザーを招待します。</p><p> 「オプトイン」には、「承認」または「拒否」の 2 つの投票オプションがあります。</p><p>ワーキンググループに参加してほしい人数の目標を定義できます。たとえば、3 人が参加するなどです。</p><p> <a target="_blank" href="/docs/en/user_manual/polls/meeting_polls#opt-in">オプトインの詳細については、こちらをご覧ください</a>。</p>
+      process_introduction: '<p>オプトインを使って、チーム、委員会、ワーキンググループやイベントへの参加を呼びかけます。&nbsp;&nbsp;</p><p>「オプトイン」には、「参加する」と「参加しない」の2つの投票の選択肢があります。&nbsp;</p><p>ワーキンググループへの参加者を3人募るなど、目標人数を設定できます。</p> <p><a target="_blank" href="/docs/en/user_manual/polls/meeting_polls#opt-in">オプトインの詳細については、こちらをご覧ください</a>。</p> '
       title: 新しい持続可能性ポリシーを起草するためのワーキンググループ
       details: "<p><strong>招待するチーム、ワーキンググループ、またはイベントは何ですか?</strong></p><p></p><p><strong>なぜこれが重要なのでしょうか?</strong></p><p></p><p><strong>人々に何をするように求めているのですか?</strong></p><p></p><p>参加するには「承諾」を選択してください!</p>"
       accept_meaning: 参加したいです
@@ -663,17 +663,17 @@ ja:
       process_subtitle: グループでLoomioを一緒に試してみましょう
       process_introduction: "<p>Loomioを最大限に活用するには、グループでの取り組みが必要です。この提案は、グループがLoomioを本格的に使い始めるために時間と労力を費やすべきかどうかを判断するのに役立ちます。トライアル期間に参加するか、一緒にプランに申し込むかは関係ありません。</p>"
       title: 一緒にLoomioを試してみましょう
-      details: "<p>Loomio をうまく使うにはグループの努力が必要です。人々が現れて参加して初めて機能します。</p><p>この提案では、トライアル期間中にLoomioを積極的にご利用いただくことを皆様にお願いしています。つまり、チェックイン、提案への投票、そしてディスカッションへの参加をしていただくことになります。</p><p>これについて懸念がある場合は、異議を唱えて、何を変更する必要があるかを述べてください。異議申し立てオプションはそのためにあるのです。</p>"
-      outcome_statement: "<p>この提案の結果（何が決定され、次に何が起こるか）をグループと共有します。</p>"
+      details: "<p>Loomioをうまく使うには、グループで協力する必要があります。皆が参加してこそ役立ちます。</p><p>この提案では、試用期間中にLoomioを積極的に使うことを全員にお願いしています。内容を確認し、提案に投票し、ディスカッションに参加するということです。</p><p>懸念がある場合は、異議を示して、何を変える必要があるかを述べてください。異議の選択肢はそのためにあります。</p>"
+      outcome_statement: "<p>この提案の結論（何が決定され、次に何をするか）をグループと共有してください。</p>"
       consent_meaning: やってみたいと思います
       consent_prompt: Loomio を使う上で楽しみにしていることは何ですか?
       objection_meaning: まず対処すべき懸念がある
       objection_prompt: コミットする前に何を変更する必要がありますか?
     majority:
       process_subtitle: 最多得票数で決定する
-      process_introduction: "<p><strong>多数決は</strong>、グループで意思決定を行う最もシンプルな方法です。参加者は賛成か反対かを投票し、過半数が賛成すれば提案は可決されます。棄権や反対は認められないため、すべての投票は同等の重みを持ちます。</p><p>明確な結果が必要な、単純な決定には多数決が効果的です。人々が協力して互いを理解し、共通点を見出すことが重要となる決定には、同意またはコンセンサスを検討してください。</p>"
+      process_introduction: "<p><strong>多数決</strong>は、グループで意思決定を行う最もシンプルな方法です。参加者は賛成か反対かを投票し、過半数が賛成すれば提案は可決されます。棄権やブロックはないため、すべての票は同じ重みを持ちます。</p><p>明確な結論が必要な、単純な決定には多数決が効果的です。人々が協力して互いを理解し、共通点を見出すことが重要となる決定には、同意またはコンセンサスを検討してください。</p>"
       title: 第3四半期の予算を承認する
-      details: "<h3><strong>あなたが下すべき決断とは何ですか?</strong></h3><p></p><h3><strong>なぜこれが重要なのでしょうか?</strong></h3><p></p><h3><strong>人々に何をするよう求めているのですか?</strong></h3><p></p>"
+      details: "<h3><strong>必要な決定は何ですか?</strong></h3><p></p><h3><strong>なぜこれが重要なのでしょうか?</strong></h3><p></p><h3><strong>人々に何をするよう求めているのですか?</strong></h3><p></p>"
       yes_meaning: 私はこの提案を支持する
       yes_prompt: なぜこの提案を支持するのですか?
       no_meaning: 私はこの提案を支持しない
@@ -756,10 +756,10 @@ ja:
     not_target_user: 統合を確定するには、対象アカウントとしてログインしている必要があります。
   thread_markdown:
     poll: アンケート
-    no_activity: コメント、アンケート、投票、結果はまだありません
+    no_activity: コメント、アンケート、投票、結論はまだありません
     status: "**ステータス:** %{value}"
     anonymous_voting: "**匿名投票:** %{value}"
-    options: "**オプション:** %{value}"
+    options: "**選択肢:** %{value}"
     'yes': はい
     closed: クローズ済み %{value}
     scheduled_to_open: "%{value}にオープン予定"
@@ -777,7 +777,7 @@ ja:
     no_voters: 投票者なし
     score: 'スコア: %{value}'
     none_of_the_above: 上記のどれでもない
-    no_option_selected: オプションは選択されていません
+    no_option_selected: 選択肢は選択されていません
     review_date: "**レビュー日:** %{value}"
     voted: "%{author} が %{response} に投票しました"
     voted_hidden: "%{author} が投票しました"
