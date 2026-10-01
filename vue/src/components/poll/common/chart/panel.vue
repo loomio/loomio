@@ -34,7 +34,7 @@ export default {
 .poll-common-chart-panel.mt-8
   template(v-if="!poll.showResults()")
     v-alert.poll-common-action-panel__results-hidden-until-closed.my-2(
-      v-if='!!poll.closingAt && poll.hideResults == "until_closed" && !poll.detachedAnonymousVoting()'
+      v-if='!!poll.closingAt && poll.hideResults == "until_closed" && !poll.anonymous'
       density="compact"
       variant="tonal"
       type="info"

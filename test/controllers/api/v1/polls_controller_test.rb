@@ -85,7 +85,7 @@ class Api::V1::PollsControllerTest < ActionController::TestCase
       closing_at: 3.days.from_now,
       anonymous: true
     }, actor: @admin)
-    poll.update_columns(closed_at: Time.current, voting_system: Poll.voting_systems.fetch("anonymous_ballot"))
+    poll.update_columns(closed_at: Time.current)
     sign_in @user
     get :legacy_vote_reasons, params: {id: poll.key}
     assert_response :not_found

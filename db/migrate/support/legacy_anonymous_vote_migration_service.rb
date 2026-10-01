@@ -11,10 +11,12 @@ class LegacyAnonymousVoteMigrationService
     average voter_count test_result stv_status round_elected
   ].freeze
 
+  # The voting_system column is removed by a later migration, along with the
+  # Poll enum, so these queries use its stored values: 0 stance, 1 ballot.
   def self.eligible_poll_scope
     Poll.where(
       anonymous: true,
-      voting_system: :stance
+      voting_system: 0
     ).where.not(closed_at: nil)
   end
 
@@ -322,7 +324,7 @@ class LegacyAnonymousVoteMigrationService
 
   def self.mark_poll_migrated!(poll, baseline)
     poll.update_columns(
-      voting_system: Poll.voting_systems.fetch("anonymous_ballot"),
+      voting_system: 1,
       hide_results: Poll.hide_results.fetch("until_closed"),
       stance_reason_required: Poll.stance_reason_requireds.fetch("disabled"),
       notify_on_closing_soon: Poll.notify_on_closing_soons.fetch("undecided_voters")

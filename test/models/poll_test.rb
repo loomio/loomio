@@ -86,20 +86,16 @@ class PollTest < ActiveSupport::TestCase
     end
   end
 
-  test "database rejects anonymous stance voting" do
-    poll = create_poll
+  test "anonymity cannot change after a poll is created" do
+    named_poll = create_poll
+    named_poll.anonymous = true
+    assert_not named_poll.valid?
+    assert named_poll.errors.added?(:anonymous, :invalid)
 
-    assert_raises(ActiveRecord::StatementInvalid) do
-      poll.update_columns(anonymous: true, voting_system: Poll.voting_systems.fetch("stance"))
-    end
-  end
-
-  test "database rejects identified anonymous-ballot voting" do
-    poll = create_poll
-
-    assert_raises(ActiveRecord::StatementInvalid) do
-      poll.update_columns(anonymous: false, voting_system: Poll.voting_systems.fetch("anonymous_ballot"))
-    end
+    anonymous_poll = create_poll(anonymous: true)
+    anonymous_poll.anonymous = false
+    assert_not anonymous_poll.valid?
+    assert anonymous_poll.errors.added?(:anonymous, :cannot_deanonymize)
   end
 
   test "vote is needed from an eligible identified voter until their current stance is cast" do
@@ -501,7 +497,7 @@ class PollTest < ActiveSupport::TestCase
   end
 
   test "anonymous, STV, and time polls cannot enable vote weights" do
-    anonymous_poll = Poll.new(poll_params(anonymous: true, voting_system: :anonymous_ballot, weighted_voting: true))
+    anonymous_poll = Poll.new(poll_params(anonymous: true, weighted_voting: true))
     refute anonymous_poll.valid?
     assert anonymous_poll.errors.added?(:weighted_voting, :invalid)
 
@@ -516,7 +512,7 @@ class PollTest < ActiveSupport::TestCase
 
   test "an existing anonymous poll rejects enabling vote weights" do
     poll = create_poll
-    poll.update_columns(anonymous: true, voting_system: Poll.voting_systems.fetch('anonymous_ballot'))
+    poll.update_columns(anonymous: true)
 
     refute poll.reload.update(weighted_voting: true)
     assert poll.errors.added?(:weighted_voting, :invalid)

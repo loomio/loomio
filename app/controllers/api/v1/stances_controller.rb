@@ -108,7 +108,7 @@ class Api::V1::StancesController < Api::V1::RestfulController
 
     self.collection_count = voters.count
     # Sort by the original voter record so later vote revisions do not move a voter to the top.
-    added_order = if poll.detached_anonymous?
+    added_order = if poll.anonymous?
       "(SELECT anonymous_poll_voters.id FROM anonymous_poll_voters WHERE anonymous_poll_voters.poll_id = #{poll.id} AND anonymous_poll_voters.voter_id = users.id) DESC"
     else
       "(SELECT MIN(stances.id) FROM stances WHERE stances.poll_id = #{poll.id} AND stances.participant_id = users.id) DESC"

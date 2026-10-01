@@ -222,12 +222,12 @@ class RecordCache
   end
 
   def add_undecided_voter_ids(polls)
-    poll_ids = polls.reject(&:detached_anonymous?).select(&:results_include_undecided).map(&:id)
+    poll_ids = polls.reject(&:anonymous?).select(&:results_include_undecided).map(&:id)
     add_result_voter_ids(:undecided_voter_ids_by_poll_id, polls, poll_ids) { |ids| Stance.latest.undecided.where(poll_id: ids) }
   end
 
   def add_none_of_the_above_voter_ids(polls)
-    poll_ids = polls.reject(&:detached_anonymous?).select(&:show_none_of_the_above).map(&:id)
+    poll_ids = polls.reject(&:anonymous?).select(&:show_none_of_the_above).map(&:id)
     add_result_voter_ids(:none_of_the_above_voter_ids_by_poll_id, polls, poll_ids) { |ids| Stance.latest.none_of_the_above.where(poll_id: ids) }
   end
 

@@ -16,7 +16,7 @@ class PollExporter
   end
 
   def to_blt
-    raise CanCan::AccessDenied if @poll.detached_anonymous? && !@poll.closed?
+    raise CanCan::AccessDenied if @poll.anonymous? && !@poll.closed?
 
     options = @poll.poll_options.order(:priority)
     option_id_to_index = options.each_with_index.map { |o, i| [o.id, i + 1] }.to_h

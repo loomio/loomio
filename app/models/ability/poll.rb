@@ -6,7 +6,7 @@ module Ability::Poll
       user.is_logged_in? &&
       poll.active? &&
       (
-        if poll.detached_anonymous?
+        if poll.anonymous?
           poll.anonymous_poll_voters.where(ballot_submitted: false).exists?(voter_id: user.id)
         else
           # Voting always updates an existing stance. Members of open polls get
@@ -24,7 +24,7 @@ module Ability::Poll
     end
 
     # The anonymous electorate is visible to everyone who can see the results.
-    # Detached anonymous polls hide results until they close, so this is after
+    # Anonymous polls hide results until they close, so this is after
     # closing. Rows never include ballot choices or voting times.
     can :view_anonymous_voters, ::Poll do |poll|
       poll.anonymous? && user.can?(:show, poll) && poll.results_available?

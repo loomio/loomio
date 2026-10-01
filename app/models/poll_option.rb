@@ -17,7 +17,7 @@ class PollOption < ApplicationRecord
   delegate :content_locale, to: :poll
 
   def update_counts!
-    if poll.detached_anonymous?
+    if poll.anonymous?
       choices = anonymous_ballot_choices
       score_total = choices.sum(:score)
       voter_count = choices.distinct.count(:anonymous_ballot_id)
@@ -104,7 +104,7 @@ class PollOption < ApplicationRecord
   private
 
   def cannot_change_after_anonymous_ballot
-    return unless poll.detached_anonymous? && poll.anonymous_ballots.exists?
+    return unless poll.anonymous? && poll.anonymous_ballots.exists?
     return unless changes_to_save.except("updated_at").any?
 
     errors.add(:base, :anonymous_ballot_configuration_frozen)

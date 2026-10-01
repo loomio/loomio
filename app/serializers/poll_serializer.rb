@@ -6,7 +6,6 @@ class PollSerializer < ApplicationSerializer
              :author_id,
              :anonymous,
              :legacy_anonymous_vote_reasons_count,
-             :voting_system,
              :anonymous_voter_eligible,
              :anonymous_ballot_submitted,
              :can_respond_maybe,
@@ -113,7 +112,7 @@ class PollSerializer < ApplicationSerializer
   end
 
   def participation_visible?
-    !object.detached_anonymous? || object.closed?
+    !object.anonymous? || object.closed?
   end
 
   def include_cast_stances_pct?
@@ -164,7 +163,7 @@ class PollSerializer < ApplicationSerializer
   end
 
   def anonymous_voter
-    return unless object.detached_anonymous? && scope[:current_user_id]
+    return unless object.anonymous? && scope[:current_user_id]
 
     @anonymous_voter ||= object.anonymous_poll_voters.find_by(voter_id: scope[:current_user_id])
   end
@@ -178,7 +177,7 @@ class PollSerializer < ApplicationSerializer
   end
 
   def legacy_anonymous_vote_reasons_count
-    return 0 unless object.closed? && object.detached_anonymous?
+    return 0 unless object.closed? && object.anonymous?
 
     object.legacy_anonymous_vote_reasons.count
   end
@@ -186,11 +185,11 @@ class PollSerializer < ApplicationSerializer
   # Voter state belongs to the current user. Shared payloads omit it rather
   # than send false, which would overwrite each recipient's own state.
   def include_anonymous_voter_eligible?
-    object.detached_anonymous? && scope[:current_user_id].present?
+    object.anonymous? && scope[:current_user_id].present?
   end
 
   def include_anonymous_ballot_submitted?
-    object.detached_anonymous? && scope[:current_user_id].present?
+    object.anonymous? && scope[:current_user_id].present?
   end
 
   def current_outcome
@@ -222,6 +221,6 @@ class PollSerializer < ApplicationSerializer
   end
 
   def include_my_stance?
-    !object.detached_anonymous? && my_stance.present?
+    !object.anonymous? && my_stance.present?
   end
 end

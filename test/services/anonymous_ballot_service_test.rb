@@ -58,7 +58,7 @@ class AnonymousBallotServiceTest < ActiveSupport::TestCase
   end
 
   test "new anonymous polls use detached ballots and a named electorate" do
-    assert @poll.detached_anonymous?
+    assert @poll.anonymous?
     assert_equal "until_closed", @poll.hide_results
     assert_equal "disabled", @poll.stance_reason_required
     assert_empty @poll.stances
@@ -214,7 +214,7 @@ class AnonymousBallotServiceTest < ActiveSupport::TestCase
     assert_empty poll.stances
   end
 
-  test "the model rejects anonymous stance polls" do
+  test "the model requires anonymous poll settings" do
     legacy_poll = Poll.new(
       title: "Legacy anonymous poll",
       poll_type: "proposal",
@@ -226,7 +226,7 @@ class AnonymousBallotServiceTest < ActiveSupport::TestCase
     )
 
     assert_not legacy_poll.valid?
-    assert legacy_poll.errors.added?(:voting_system, :invalid)
+    assert legacy_poll.errors.added?(:hide_results, :invalid)
   end
 
   test "the poll update API cannot convert identified voting to anonymous voting" do
@@ -350,7 +350,7 @@ class AnonymousBallotServiceTest < ActiveSupport::TestCase
       actor: @admin
     )
 
-    assert short_poll.detached_anonymous?
+    assert short_poll.anonymous?
     assert_no_difference(-> { Notification.where(kind: "poll_closing_soon", subject: short_poll).count }) do
       PollService.publish_closing_soon
     end

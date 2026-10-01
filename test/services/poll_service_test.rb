@@ -193,7 +193,7 @@ class PollServiceTest < ActiveSupport::TestCase
       ),
       actor: @user
     )
-    assert poll.detached_anonymous?
+    assert poll.anonymous?
     assert poll.anonymous_poll_voters.exists?(voter: voter)
     assert_not Stance.exists?(poll: poll, participant: voter)
     assert_not Notification.about(poll).exists?(kind: "poll_created")

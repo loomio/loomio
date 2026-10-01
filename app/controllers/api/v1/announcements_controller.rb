@@ -73,7 +73,7 @@ class Api::V1::AnnouncementsController < Api::V1::RestfulController
       model.members.invitable_search(params[:q]).limit(50)
     else
       excluded_user_ids = if model.is_a?(Poll) && params[:exclude_members].present?
-        model.detached_anonymous? ? model.anonymous_poll_voters.select(:voter_id) : model.stances.latest.select(:participant_id)
+        model.anonymous? ? model.anonymous_poll_voters.select(:voter_id) : model.stances.latest.select(:participant_id)
       else
         []
       end
@@ -97,7 +97,7 @@ class Api::V1::AnnouncementsController < Api::V1::RestfulController
       respond_with_collection serializer: TopicReaderSerializer, root: :topic_readers
     elsif target_model.is_a?(Poll)
       self.collection = PollService.invite(poll: target_model, actor: current_user, params: params)
-      if target_model.detached_anonymous?
+      if target_model.anonymous?
         self.collection = User.where(id: collection.select(:voter_id))
         respond_with_collection serializer: AuthorSerializer, root: :users
       else

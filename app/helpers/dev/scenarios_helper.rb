@@ -93,7 +93,6 @@ module Dev::ScenariosHelper
     Stance.where(poll_id: poll.id).delete_all
     poll.update_columns(
       anonymous: true,
-      voting_system: Poll.voting_systems.fetch("anonymous_ballot"),
       voters_count: 1,
       undecided_voters_count: 0
     )

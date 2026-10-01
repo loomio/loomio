@@ -52,7 +52,7 @@ export default
     this.watchRecords({
       collections: ["stances", "polls"],
       query: () => {
-        if (this.poll.detachedAnonymousVoting()) {
+        if (this.poll.anonymous) {
           if (this.poll.anonymousVoterEligible && !this.poll.anonymousBallotSubmitted && !this.stance) {
             this.stance = Records.stances.build({pollId: this.poll.id});
           }
@@ -146,7 +146,7 @@ export default
   )
     span(v-t="{path: 'poll_common_action_panel.voting_opens_at', args: {poll_type: poll.translatedPollType(), time: exact(poll.openingAt)}}")
   v-alert.poll-common-action-panel__anonymous-closed-message.my-4(
-    v-if="poll.detachedAnonymousVoting() && poll.isClosed()"
+    v-if="poll.anonymous && poll.isClosed()"
     density="compact"
     variant="tonal"
     type="info"
@@ -154,14 +154,14 @@ export default
     span(v-t="'poll_common_action_panel.anonymous'")
   template(v-if="poll.isVotable() || isScheduled")
     v-alert.poll-common-action-panel__anonymous-message.my-4(
-      v-if='poll.detachedAnonymousVoting() && (stance || poll.anonymousBallotSubmitted) && !isScheduled'
+      v-if='poll.anonymous && (stance || poll.anonymousBallotSubmitted) && !isScheduled'
       density="compact"
       variant="tonal"
       type="warning"
     )
       span(v-t="'poll_common_action_panel.anonymous_voting_participant_notice'")
     v-alert.poll-common-action-panel__anonymous-message.my-4(
-      v-else-if='poll.detachedAnonymousVoting() && !isScheduled'
+      v-else-if='poll.anonymous && !isScheduled'
       density="compact"
       variant="tonal"
       type="info"
@@ -184,7 +184,7 @@ export default
         span(v-t="{path: 'poll_common_action_panel.unable_to_vote', args: {poll_type: poll.translatedPollType()}}")
 
   v-alert.poll-common-action-panel__recorded.my-4(
-    v-if="poll.detachedAnonymousVoting() && poll.anonymousBallotSubmitted"
+    v-if="poll.anonymous && poll.anonymousBallotSubmitted"
     density="compact"
     variant="tonal"
     type="success"

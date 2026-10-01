@@ -190,7 +190,6 @@ class Poll < ApplicationRecord
     required_for_disagree_or_block: 3,
     required_for_block: 4
   }
-  enum :voting_system, {stance: 0, anonymous_ballot: 1}
 
   has_many :stances, dependent: :destroy
   has_many :stance_choices, through: :stances
@@ -235,12 +234,10 @@ class Poll < ApplicationRecord
   normalizes :closing_at, :opening_at, with: ->(v) { v&.beginning_of_hour }
   validate :closes_in_future
   validate :opening_at_before_closing_at
-  validate :cannot_deanonymize
+  validate :anonymity_cannot_change
   validate :cannot_reveal_results_early
-  validate :anonymous_matches_voting_system
-  validate :detached_anonymous_invariants
-  validate :voting_system_cannot_change_after_opening
-  validate :detached_configuration_cannot_change_after_ballot
+  validate :anonymous_invariants
+  validate :anonymous_configuration_cannot_change_after_ballot
   validate :weighted_voting_available
   validate :score_bounds_are_valid, if: :score_bounds_validation_required?
   validate :title_if_not_discarded
@@ -479,10 +476,10 @@ class Poll < ApplicationRecord
   end
 
   # General-purpose voter relations must not reveal participation identities for
-  # detached anonymous ballots. Callers that intentionally need the named
+  # anonymous ballots. Callers that intentionally need the named
   # electorate, such as authorization and reminder delivery, use unmasked_*.
   def voters
-    detached_anonymous? ? User.none : stance_voters
+    anonymous? ? User.none : stance_voters
   end
 
   def voter_ids
@@ -490,33 +487,29 @@ class Poll < ApplicationRecord
   end
 
   def undecided_voters
-    detached_anonymous? ? User.none : stance_undecided_voters
+    anonymous? ? User.none : stance_undecided_voters
   end
 
   def decided_voters
-    detached_anonymous? ? User.none : stance_decided_voters
+    anonymous? ? User.none : stance_decided_voters
   end
 
   def unmasked_voters
-    return User.where(id: anonymous_poll_voters.select(:voter_id)) if detached_anonymous?
+    return User.where(id: anonymous_poll_voters.select(:voter_id)) if anonymous?
 
     voters
   end
 
   def unmasked_undecided_voters
-    return User.where(id: anonymous_poll_voters.where(ballot_submitted: false).select(:voter_id)) if detached_anonymous?
+    return User.where(id: anonymous_poll_voters.where(ballot_submitted: false).select(:voter_id)) if anonymous?
 
     undecided_voters
   end
 
   def unmasked_decided_voters
-    return User.where(id: anonymous_poll_voters.where(ballot_submitted: true).select(:voter_id)) if detached_anonymous?
+    return User.where(id: anonymous_poll_voters.where(ballot_submitted: true).select(:voter_id)) if anonymous?
 
     decided_voters
-  end
-
-  def detached_anonymous?
-    anonymous? && anonymous_ballot?
   end
 
   # Who voted in an anonymous poll stays hidden until enough people have voted
@@ -597,7 +590,7 @@ class Poll < ApplicationRecord
 
   def update_counts!
     poll_options.reload.each(&:update_counts!)
-    if detached_anonymous?
+    if anonymous?
       return update_columns(
         stance_counts: poll_options.map { |option| option.total_score.to_f },
         voters_count: anonymous_poll_voters.count,
@@ -632,7 +625,7 @@ class Poll < ApplicationRecord
     return false unless user.can?(:show, self)
     return false unless user.can?(:vote_in, self)
 
-    if detached_anonymous?
+    if anonymous?
       anonymous_poll_voters.exists?(voter_id: user.id, ballot_submitted: false)
     else
       !stances.latest.decided.exists?(participant_id: user.id)
@@ -710,10 +703,12 @@ class Poll < ApplicationRecord
     end
   end
 
-  def cannot_deanonymize
-    if anonymous_changed? && anonymous_was == true
-      errors.add :anonymous, :cannot_deanonymize
-    end
+  # Anonymity is fixed when a poll is created: an anonymous poll records voters
+  # and ballots separately from the start, and a named poll records stances.
+  def anonymity_cannot_change
+    return unless persisted? && will_save_change_to_anonymous?
+
+    errors.add :anonymous, (anonymous_in_database ? :cannot_deanonymize : :invalid)
   end
 
   def cannot_reveal_results_early
@@ -722,33 +717,19 @@ class Poll < ApplicationRecord
     end
   end
 
-  def detached_anonymous_invariants
-    return unless anonymous_ballot?
+  def anonymous_invariants
+    return unless anonymous?
 
-    errors.add(:anonymous, :invalid) unless anonymous?
     errors.add(:hide_results, :invalid) unless hide_results == "until_closed"
     errors.add(:stance_reason_required, :invalid) unless stance_reason_required == "disabled"
     errors.add(:notify_on_closing_soon, :invalid) unless notify_on_closing_soon == "undecided_voters"
   end
 
-  def anonymous_matches_voting_system
-    return if anonymous? == anonymous_ballot?
-
-    errors.add(:voting_system, :invalid)
-  end
-
-  def voting_system_cannot_change_after_opening
-    return unless will_save_change_to_voting_system?
-    return unless voting_system_in_database && opened_at_in_database
-
-    errors.add(:voting_system, :invalid)
-  end
-
-  def detached_configuration_cannot_change_after_ballot
-    return unless detached_anonymous? && persisted? && anonymous_ballots.exists?
+  def anonymous_configuration_cannot_change_after_ballot
+    return unless anonymous? && persisted? && anonymous_ballots.exists?
 
     protected_attributes = %w[
-      anonymous voting_system hide_results stance_reason_required poll_type
+      anonymous hide_results stance_reason_required poll_type
       min_score max_score minimum_stance_choices maximum_stance_choices
       dots_per_person show_none_of_the_above stv_seats stv_method stv_quota
     ]

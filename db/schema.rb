@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_09_27_000000) do
+ActiveRecord::Schema[8.1].define(version: 2026_10_01_000000) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "hstore"
@@ -759,9 +759,8 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_27_000000) do
     t.integer "undecided_voters_count", default: 0, null: false
     t.datetime "updated_at", precision: nil
     t.integer "versions_count", default: 0
-    t.boolean "weighted_voting", default: false, null: false
     t.integer "voters_count", default: 0, null: false
-    t.integer "voting_system", default: 0, null: false
+    t.boolean "weighted_voting", default: false, null: false
     t.index ["author_id"], name: "index_polls_on_author_id"
     t.index ["closed_at", "closing_at"], name: "index_polls_on_closed_at_and_closing_at"
     t.index ["closed_at", "topic_id"], name: "index_polls_on_closed_at_and_topic_id"
@@ -769,7 +768,6 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_27_000000) do
     t.index ["key"], name: "index_polls_on_key", unique: true
     t.index ["tags"], name: "index_polls_on_tags", using: :gin
     t.index ["topic_id"], name: "index_polls_on_topic_id"
-    t.check_constraint "anonymous = true AND voting_system = 1 OR anonymous = false AND voting_system = 0", name: "polls_anonymous_voting_system"
   end
 
   create_table "push_subscriptions", force: :cascade do |t|

@@ -2,7 +2,7 @@ class AnonymousBallotService
   def self.create(anonymous_ballot:, actor:)
     poll = anonymous_ballot.poll
     actor.ability.authorize!(:vote_in, poll)
-    raise CanCan::AccessDenied unless poll.detached_anonymous?
+    raise CanCan::AccessDenied unless poll.anonymous?
 
     AnonymousBallot.transaction do
       poll.lock!
