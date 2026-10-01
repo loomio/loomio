@@ -171,7 +171,8 @@ class StvCountServiceTest < ActiveSupport::TestCase
   test "scottish: candidates reaching quota together are elected before any surplus moves" do
     # 3 seats, 17 voters, Droop quota = 5.
     # Stage 1: A=7 and B=5 both reach quota and are elected together.
-    # A's surplus of 2 skips B (already elected) and goes to C, giving C 4.
+    # A's surplus of 2 skips B (already elected) and goes to C, giving C 3.99997
+    # (seven papers at 2/7, truncated to 0.28571).
     # D (3) is excluded and C takes the last seat.
     options = build_options(%w[A B C D])
     ballots = []
@@ -184,7 +185,7 @@ class StvCountServiceTest < ActiveSupport::TestCase
 
     assert_equal %w[A B C], result[:elected].map { |e| e[:name] }
     assert_equal [1, 2], result[:rounds].first[:elected]
-    assert_equal({ "3" => 2.0 }, result[:rounds].first[:transfers]["1"])
+    assert_equal({ "3" => 1.99997 }, result[:rounds].first[:transfers]["1"])
   end
 
   test "scottish: surpluses are transferred largest first" do
@@ -205,6 +206,38 @@ class StvCountServiceTest < ActiveSupport::TestCase
     assert_equal [3], result[:rounds][1][:elected]
     assert_equal 2, result[:rounds].size
     assert_equal %w[A B C], result[:elected].map { |e| e[:name] }
+  end
+
+  test "scottish: transfer values are truncated to five decimal places" do
+    # 2 seats, 9 voters, Droop quota = 4. A's 7 papers carry a surplus of 3,
+    # so each moves at 3/7 = 0.428571…, truncated to 0.42857 (rule 49(3)).
+    # B then holds exactly 2 + 7 × 0.42857 = 4.99999 votes.
+    options = build_options(%w[A B C])
+    ballots = []
+    7.times { ballots << [1, 2] }
+    2.times { ballots << [2] }
+
+    result = StvCountService::ScottishCounter.new(ballots, 2, 'droop', options).count
+
+    assert_equal 4, result[:quota]
+    assert_equal({ "2" => 2.99999 }, result[:rounds].first[:transfers]["1"])
+    assert_equal 4.99999, result[:rounds].second[:tallies]["2"]
+  end
+
+  test "meek: votes and keep values are exact to nine decimal places" do
+    options = build_options(%w[A B C])
+    ballots = []
+    6.times { ballots << [1, 2, 3] }
+    3.times { ballots << [2, 3, 1] }
+    1.times { ballots << [3, 2, 1] }
+
+    result = StvCountService::MeekCounter.new(ballots, 2, 'droop', options).count
+
+    result[:rounds].each do |round|
+      (round[:tallies].values + round[:keep_values].values).each do |value|
+        assert_equal value, value.round(9)
+      end
+    end
   end
 
   # ── Meek STV ──────────────────────────────────────────────────────

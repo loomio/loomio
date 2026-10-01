@@ -17,6 +17,13 @@ module StvCountService
     # Papers only ever move to continuing candidates, so a surplus never lands
     # on a candidate who has already been elected. Papers with no further
     # continuing preference become non-transferable.
+    #
+    # Values are exact Rationals. Rule 49(3) calculates each transferred
+    # paper's new value to five decimal places, ignoring any remainder, so
+    # every value and total is a whole number of 0.00001 votes and comparisons
+    # with the quota are exact.
+
+    VALUE_SCALE = 100_000
 
     Paper = Struct.new(:prefs, :count, :value, :holder)
 
@@ -27,7 +34,7 @@ module StvCountService
       @candidate_names = poll_options.each_with_object({}) { |po, h| h[po.id] = po.name }
 
       # Identical ballots follow identical paths, so count them as one parcel.
-      @papers = ballots.tally.map { |prefs, count| Paper.new(prefs.dup, count, 1.0, nil) }
+      @papers = ballots.tally.map { |prefs, count| Paper.new(prefs.dup, count, Rational(1), nil) }
     end
 
     def count
@@ -51,7 +58,7 @@ module StvCountService
           elected: [],
           eliminated: [],
           transfers: {},
-          quota: round_to(6, @quota)
+          quota: format_number(@quota)
         }
         @rounds << round_data
 
@@ -84,7 +91,7 @@ module StvCountService
       end
 
       {
-        quota: round_to(6, @quota),
+        quota: format_number(@quota),
         seats: @seats,
         method: 'scottish',
         quota_type: @quota_type,
@@ -103,8 +110,8 @@ module StvCountService
     # Votes held by each continuing or elected candidate. An elected candidate
     # whose surplus has been transferred keeps exactly the quota.
     def current_totals
-      totals = @continuing.each_with_object({}) { |cid, h| h[cid] = 0.0 }
-      @elected.each { |e| totals[e[:poll_option_id]] = @retained.fetch(e[:poll_option_id], 0.0) }
+      totals = @continuing.each_with_object({}) { |cid, h| h[cid] = Rational(0) }
+      @elected.each { |e| totals[e[:poll_option_id]] = @retained.fetch(e[:poll_option_id], Rational(0)) }
       @papers.each do |paper|
         totals[paper.holder] += paper.count * paper.value if paper.holder && totals.key?(paper.holder)
       end
@@ -132,11 +139,12 @@ module StvCountService
     end
 
     # Rule 49: every paper the candidate holds moves on at
-    # value × surplus / total, leaving the candidate with the quota.
+    # value × surplus / total, truncated to five decimal places, leaving the
+    # candidate with the quota.
     def transfer_surplus(cid, total, round_data)
       @surplus_pending.delete(cid)
       surplus = total - @quota
-      transfers = move_papers_from(cid) { |value| value * surplus / total }
+      transfers = move_papers_from(cid) { |value| truncate_value(value * surplus / total) }
       @retained[cid] = @quota
       round_data[:transfers][cid.to_s] = format_tallies(transfers) if transfers.any?
     end
@@ -150,7 +158,7 @@ module StvCountService
     end
 
     def move_papers_from(cid)
-      transfers = Hash.new(0.0)
+      transfers = Hash.new(Rational(0))
       @papers.each do |paper|
         next unless paper.holder == cid
 
@@ -165,12 +173,18 @@ module StvCountService
       paper.prefs.find { |cid| @continuing.include?(cid) }
     end
 
-    def format_tallies(hash)
-      hash.transform_keys(&:to_s).transform_values { |v| round_to(6, v) }
+    def truncate_value(value)
+      Rational((value * VALUE_SCALE).floor, VALUE_SCALE)
     end
 
-    def round_to(precision, value)
-      value.round(precision)
+    def format_tallies(hash)
+      hash.transform_keys(&:to_s).transform_values { |v| format_number(v) }
+    end
+
+    # Stored results are JSON, so whole numbers stay integers and fractions
+    # become floats rounded for display.
+    def format_number(value)
+      value.to_r.denominator == 1 ? value.to_i : value.to_f.round(6)
     end
   end
 end

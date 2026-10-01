@@ -9,9 +9,15 @@ module StvCountService
     # as if they were never in the race.
     #
     # The method iterates until keep values converge (change < OMEGA per iteration).
+    #
+    # Arithmetic is fixed point with nine decimal places, as in the Hill,
+    # Wichmann and Woodall reference algorithm: votes and keep values are
+    # Integers counting 0.000000001 units. Each share a candidate takes from a
+    # ballot and each new keep value is rounded up, so the ballot's remaining
+    # weight never goes negative and comparisons with the quota are exact.
 
-    PRECISION = 9
-    OMEGA = 1e-7       # convergence threshold
+    SCALE = 1_000_000_000
+    OMEGA = 100        # convergence threshold, 0.0000001 votes
     MAX_ITERATIONS = 1000
 
     def initialize(ballots, seats, quota_type, poll_options)
@@ -21,7 +27,8 @@ module StvCountService
       @candidate_names = poll_options.each_with_object({}) { |po, h| h[po.id] = po.name }
 
       # Each ballot is an ordered array of poll_option_ids
-      @ballots = ballots.map { |prefs| prefs.dup }
+      # Identical ballots follow identical paths, so count them together.
+      @ballots = ballots.tally.map { |prefs, count| [prefs.dup, count] }
     end
 
     def count
@@ -34,7 +41,7 @@ module StvCountService
       @continuing = Set.new(@candidate_ids)
 
       # Keep values: elected candidates < 1.0, eliminated = 0.0, continuing = 1.0
-      @keep = @candidate_ids.each_with_object({}) { |cid, h| h[cid] = 1.0 }
+      @keep = @candidate_ids.each_with_object({}) { |cid, h| h[cid] = SCALE }
 
       loop do
         break if @elected.size >= @seats
@@ -48,8 +55,8 @@ module StvCountService
           tallies: format_tallies(tallies),
           elected: [],
           eliminated: [],
-          quota: round_to(PRECISION, quota),
-          keep_values: @keep.transform_values { |v| round_to(PRECISION, v) }.transform_keys(&:to_s)
+          quota: format_number(quota),
+          keep_values: @keep.transform_values { |v| format_number(v) }.transform_keys(&:to_s)
         }
 
         # If remaining candidates <= remaining seats, elect them all
@@ -73,7 +80,7 @@ module StvCountService
             elect_candidate(cid, round_data)
             @continuing.delete(cid)
             # Update keep value: candidate keeps only quota-worth
-            @keep[cid] = @keep[cid] * quota / votes if votes > 0
+            @keep[cid] = ceil_div(@keep[cid] * quota, votes) if votes > 0
           end
         else
           # Eliminate candidate with fewest votes
@@ -92,7 +99,7 @@ module StvCountService
           eliminated_cid = tied_cids.min
           @eliminated_set.add(eliminated_cid)
           @continuing.delete(eliminated_cid)
-          @keep[eliminated_cid] = 0.0
+          @keep[eliminated_cid] = 0
           round_data[:eliminated] << eliminated_cid
         end
 
@@ -147,7 +154,7 @@ module StvCountService
           next unless @elected.any? { |e| e[:poll_option_id] == cid }
           next if votes == 0
 
-          new_keep = @keep[cid] * quota / votes
+          new_keep = ceil_div(@keep[cid] * quota, votes)
           if (new_keep - @keep[cid]).abs > OMEGA
             changed = true
           end
@@ -161,22 +168,23 @@ module StvCountService
     end
 
     def distribute_votes
-      tallies = @candidate_ids.each_with_object({}) { |cid, h| h[cid] = 0.0 }
-      @exhausted = 0.0
+      tallies = @candidate_ids.each_with_object({}) { |cid, h| h[cid] = 0 }
+      @exhausted = 0
 
-      @ballots.each do |prefs|
-        weight = 1.0
+      @ballots.each do |prefs, count|
+        weight = SCALE
 
         prefs.each do |cid|
           keep = @keep[cid]
-          next if keep == 0.0  # eliminated, skip
+          next if keep == 0  # eliminated, skip
 
-          tallies[cid] += weight * keep
-          weight *= (1.0 - keep)
-          break if weight < OMEGA
+          share = [ceil_div(weight * keep, SCALE), weight].min
+          tallies[cid] += share * count
+          weight -= share
+          break if weight == 0
         end
 
-        @exhausted += weight  # whatever didn't go to any candidate
+        @exhausted += weight * count  # whatever didn't go to any candidate
       end
 
       tallies
@@ -186,17 +194,22 @@ module StvCountService
       # In Meek, quota is recomputed from active votes each iteration
       # total_active = sum of all votes held by candidates (not exhausted)
       # We use the same formula but based on active vote total
-      QuotaCalculator.calculate(total_active, @seats, @quota_type)
+      (QuotaCalculator.calculate(Rational(total_active, SCALE), @seats, @quota_type) * SCALE).ceil
+    end
+
+    def ceil_div(numerator, denominator)
+      -(-numerator).div(denominator)
     end
 
     def format_tallies(hash)
       hash.select { |cid, _| @continuing.include?(cid) || @elected.any? { |e| e[:poll_option_id] == cid } }
           .transform_keys(&:to_s)
-          .transform_values { |v| round_to(PRECISION, v) }
+          .transform_values { |v| format_number(v) }
     end
 
-    def round_to(precision, value)
-      value.round(precision)
+    # Stored results are JSON, so convert fixed-point units to numbers there.
+    def format_number(units)
+      (units % SCALE).zero? ? units / SCALE : (units.to_f / SCALE).round(9)
     end
   end
 end
