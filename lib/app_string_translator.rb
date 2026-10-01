@@ -62,7 +62,7 @@ class AppStringTranslator
       Keep every %{variable}, HTML tag, Markdown mark and line break exactly as in the English. Do not translate variable names.
       The key names say where a string appears; use them to choose the right sense of a word.
       Use Loomio's terminology wherever the English uses these terms in their Loomio sense, inflected as the grammar requires:
-      #{TranslationGlossary.prompt(@locale)}
+      #{TranslationGlossary.prompt(@locale, english: batch.values.join("\n"))}
       Existing translations of nearby strings, for consistent wording:
       #{JSON.pretty_generate(context_for(batch.keys))}
       Strings to translate:

@@ -248,7 +248,7 @@ module Docs
         Preserve heading levels, lists, tables, alerts, HTML tags, link and image targets, and all code exactly.
         Translate link text, image alt text, and seo-description comments. Return Markdown, with one line per prose paragraph.
         Use Loomio's terminology wherever the English uses these terms in their Loomio sense, inflected as the grammar requires:
-        #{TranslationGlossary.prompt(@locale.app_locale)}
+        #{TranslationGlossary.prompt(@locale.app_locale, english: sections.map(&:text).join("\n"))}
         Bold interface labels should follow this glossary of the app's own strings; grammatical inflections are allowed when necessary:
         #{JSON.pretty_generate(glossary)}
         Preserve customer corrections and apply the recorded correction notes wherever English still has the same meaning.

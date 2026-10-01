@@ -55,6 +55,14 @@ class TranslationGlossaryTest < ActiveSupport::TestCase
     end
   end
 
+  test "the prompt can list only the terms the English uses" do
+    with_glossary do
+      prompt = TranslationGlossary.prompt("fr", english: "Share the outcome")
+      assert_includes prompt, "outcome → conclusion"
+      assert_not_includes prompt, "thread"
+    end
+  end
+
   test "wrong terms are found only where the English uses the term" do
     with_glossary do
       assert_equal [%(use "conclusion" instead of "résultat" for "outcome")],

@@ -47,9 +47,11 @@ module TranslationGlossary
   end
 
   # The glossary as prompt text: each term with its Loomio meaning and the
-  # locale's preferred translation.
-  def self.prompt(locale)
-    entries(locale).map do |entry|
+  # locale's preferred translation. Given the English being translated, only
+  # the terms it uses are listed, which keeps requests short and focused.
+  def self.prompt(locale, english: nil)
+    relevant = english ? entries(locale).select { |entry| english.match?(entry.english_pattern) } : entries(locale)
+    relevant.map do |entry|
       line = "- #{entry.term} → #{entry.use} (#{entry.means})"
       line += " Avoid: #{entry.avoid.join(", ")}." if entry.avoid.any?
       line += " #{entry.note}" if entry.note
