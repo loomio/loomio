@@ -152,7 +152,7 @@ uk:
     destroy_tag: Видалити мітку
     destroy_helptext: Цю мітку буде видалено з усіх ланцюжків у групі. Ви впевнені?
     helptext: Мітки дозволяють класифікувати розмови та легко знаходити їх пізніше
-    discussions_count_singular: "(%{count} потік)"
+    discussions_count_singular: "(%{count} тема)"
     discussions_count_plural: "(%{count} тем)"
     tag_created: Мітку збережено
     tag_destroyed: Мітку видалено
@@ -176,14 +176,14 @@ uk:
   poll_types:
     proposal: пропозиція
     count: вибрати в
-    check: перевірка сенсу
+    check: перевірка думок
     poll: опитування
-    dot_vote: відбіркове голосування
+    dot_vote: розподіл балів
     meeting: опитування щодо часу
     ranked_choice: ранговий вибір
     score: оціночне опитування
     question: раунд питань
-    stv: Вибори на СТВ
+    stv: вибори за STV
   timezones:
     local: За місцевим часом (%{value})
   common:
@@ -343,7 +343,7 @@ uk:
     formatting_help:
       label: Форматувати
       title: Дізнайтесь як використовувати Markdown для форматування текту
-    thread: Нитка
+    thread: Тема
     commercial: Комерційний
     nonprofit: Некомерційна організація
     opening_in: Відкриття %{time}
@@ -792,7 +792,7 @@ uk:
       new_coordinator: "%{actor} зробив вас адміністратором %{title}"
       outcome_announced: "%{actor} поділився результатом %{poll_type}: %{title}"
       outcome_created: "%{actor} поділився результатом %{poll_type}: %{title}"
-      outcome_updated: "%{actor} оновив результат %{poll_type}: %{title}"
+      outcome_updated: "%{actor} оновив висновок %{poll_type}: %{title}"
       outcome_review_due: 'Настав час переглянути результати: %{title}'
       poll_closed_by_user: "%{actor} закрив %{poll_type}: %{title}"
       poll_closing_soon: "%{poll_type} закривається через 24 години: %{title}"
@@ -857,7 +857,7 @@ uk:
       discussion_closed: "%{actor} закрив обговорення"
       new_discussion: "%{actor} розпочав обговорення"
       new_comment: "%{actor} прокоментував в обговоренні"
-      outcome_updated: "%{actor} оновив результат"
+      outcome_updated: "%{actor} оновив висновок"
       thread_locked: "%{actor} заблокував тему"
       membership_request_declined: Ваш запит на приєднання до %{title} було відхилено
     hints:
@@ -877,17 +877,17 @@ uk:
       new_coordinator: "%{actor} зробив вас адміністратором %{title}"
       new_delegate: "%{actor} зробив вас делегатом з правом голосу в %{title}"
       new_discussion: "%{title}"
-      outcome_announced: 'Результат %{poll_type}: %{title}'
-      outcome_created: 'Результат %{poll_type}: %{title}'
-      outcome_updated: 'Результат %{poll_type} оновлено: %{title}'
-      outcome_review_due: 'Час переглянути результат: %{title}'
+      outcome_announced: 'Висновок %{poll_type}: %{title}'
+      outcome_created: 'Висновок %{poll_type}: %{title}'
+      outcome_updated: 'Висновок %{poll_type} оновлено: %{title}'
+      outcome_review_due: 'Час переглянути висновок: %{title}'
       poll_closed_by_user: "%{actor} закрив %{poll_type}: %{title}"
       poll_closing_soon: "%{poll_type} закривається через 24 години: %{title}"
       poll_closing_soon_author: 'Ваш %{poll_type} закривається через 24 години: %{title}'
       poll_created: "%{poll_type}: %{title}"
       poll_edited: "%{actor} оновив %{poll_type}: %{title}"
       poll_expired: "%{poll_type} закрито: %{title}"
-      poll_expired_author: 'Опублікувати результат: %{title}'
+      poll_expired_author: 'Опублікуйте висновок: %{title}'
       poll_option_added: "%{actor} додав опції до %{title}"
       poll_reopened: 'Голосування продовжено: %{title}'
       poll_reminder: "%{actor} нагадує вам проголосувати за %{title}"
@@ -990,13 +990,13 @@ uk:
     new_discussion: "%{name} запросив(ла) %{length} людей до теми:"
     discussion_announced: "%{name} запросив(ла) %{length} людей до теми:"
     poll_created: "%{name} запросив(ла) %{length} людей до голосування:"
-    outcome_created: "%{name} поширив результат з %{length} людьми:"
-    outcome_announced: "%{name} поширив результат з %{length} людьми:"
+    outcome_created: "%{name} поділився висновком із %{length} людьми:"
+    outcome_announced: "%{name} поділився висновком із %{length} людьми:"
     announcement_created: "%{name} запросив(ла) %{length} людей до теми:"
     discussion_edited: "%{name} відредагував(ла) тему, повідомивши %{length} людей:"
     poll_edited: "%{name} відредагував(ла) опитування, повідомивши %{length} людей:"
-    outcome_edited: "%{name} відредагував(ла) результат, повідомивши %{length} людей:"
-    outcome_updated: "%{name} відредагував(ла) результат, повідомивши %{length} людей:"
+    outcome_edited: "%{name} відредагував(ла) висновок, повідомивши %{length} людей:"
+    outcome_updated: "%{name} відредагував(ла) висновок, повідомивши %{length} людей:"
     poll_closing_soon: 'Нагадування про завершення опитування від %{name} сповістило %{length} людей:'
     poll_reminder: "%{name} нагадав %{length} людям проголосувати:"
     audiences:
@@ -1049,7 +1049,7 @@ uk:
         title: Повідомити про зміни
         helptext: Кого б ви хотіли повідомити про це оновлення?
       outcome_announced:
-        title: Поширити результат
+        title: Поширити висновок
         helptext: Підсумуйте результати процесу, включаючи будь-яке знайдене розуміння або виявлені проблеми.
       anyone_can_participate: Будь-хто може долучитись за посиланням
       placeholder: Ви можете ввести імена або електронні адреси
@@ -1121,7 +1121,7 @@ uk:
     translate_comment: Перекласти коментар
     edit_outcome: Редагувати висновок
     announce_outcome: Повідомити людей про цей висновок
-    announce_outcome_active: "(Ще нікого не було сповіщено про цей результат)"
+    announce_outcome_active: "(Ще нікого не було сповіщено про цей висновок)"
     translate_outcome: Перекласти висновок
     show_history: Показати історію змін
     edited: Відредаговано
@@ -1587,14 +1587,14 @@ uk:
   memberships_page:
     members: Учасники
     name_label: Ім’я
-    coordinator_label: Координатор
+    coordinator_label: Адміністратор
     remove_member_label: Видалити
     fragment_placeholder: Фільтрувати користувачів за власним іменем або за іменем користувача...
-    only_one_admin: У цій групі лише один координатор. Рекомендується призначити принаймні ще одного учасника в якості координатора.
+    only_one_admin: У цій групі лише один адміністратор. Рекомендується призначити принаймні ще одного учасника адміністратором.
     messages:
       remove_member_success: "%{name} вилучено"
-      make_admin_success: "%{name} тепер координатор"
-      remove_admin_success: "%{name} більше не координатор"
+      make_admin_success: "%{name} тепер адміністратор"
+      remove_admin_success: "%{name} більше не адміністратор"
     remove_admin_from_self:
       question: Ви впевнені що більше не бажаєте бути координатором?
   membership_remove_modal:
@@ -1621,7 +1621,7 @@ uk:
     title_label: назва
     title_placeholder: Напр. "Координатор" або "Фасілітатор"
     updated: Назву учасника оновлено
-    weight_label: Вага голосів
+    weight_label: Вага голосу
   user_name_modal:
     user_name_updated: Ім'я користувача оновлено
     set_user_name: Встановити ім'я користувача
@@ -1977,18 +1977,18 @@ uk:
     consensus_title: Консенсус
     proposal_title: Пропозиція
     count_title: Вибрати в
-    check_title: Перевірка сенсу
+    check_title: Перевірка думок
     poll_title: Опитування
     meeting: Зустріч
     score_title: Оціночне опитування
-    dot_vote_title: Голосування крапкою
+    dot_vote_title: Розподіл балів
     meeting_title: Опитування щодо часу
     ranked_choice_title: Ранговий вибір
     gradients_of_agreement_title: Градієнти згоди
     majority_title: Більшість
-    stv_title: Вибори на СТВ
+    stv_title: Вибори за STV
   poll_option_form:
-    edit_option: Опція редагування
+    edit_option: Редагувати варіант
     option_name: Назва опції
     option_name_hint: Коротка назва цієї опції
     option_name_validation: Найкраще, щоб назва була короткою, а деталі вказували в полі «Значення».
@@ -2097,7 +2097,7 @@ uk:
     share_count: Поширити контрольний список
     start_poll: Розпочати процес прийняття рішення
     publish_poll: Поширити опитування
-    share_outcome: Поширити результат
+    share_outcome: Поширити висновок
     view_all: Переглянути всі
     save_changes: Зберегти
     change_vote: Змінити ваш голос
@@ -2107,7 +2107,7 @@ uk:
     too_long: Занадто довгий
     edit_warning: Редагування рекомендується лише для незначних змін або виправлення орфографічних помилок. Для суттєвих змін закрийте це %{pollType} і почніть нове.
     no_voting: Лише для обговореннь, голосування вимкнено
-    post_outcome: Опублікувати результат
+    post_outcome: Опублікувати висновок
     view_all_votes: Переглянути всі голоси
     you_voted: Ви проголосували
     these_are_templates: Це шаблони рішень у вашій групі. Натисніть шаблон, щоб розпочати нове рішення. Адміністратори можуть налаштувати всі деталі шаблону, щоб він відповідав практикам вашої організації та був легким для пошуку та використання учасниками.
@@ -2192,7 +2192,7 @@ uk:
     directory: Каталог
     invitations: Запрошення
     requests: Запити
-    admin: Координатор
+    admin: Адміністратор
     guest: Гість
     sharable_link: Посилання для запрошення
     last_seen: Востанне переглянуто %{date}
@@ -2323,10 +2323,10 @@ uk:
     unredact_reason_confirm: Причина відновлення
     unredact_reason_success: Причину голосування відновлено
     all_voters: Усі виборці
-    vote_weight_column: Вага голосів
+    vote_weight_column: Вага голосу
     stance: Голосувати
     participation_records_restricted: Ви можете побачити, хто взяв участь, після завершення голосування
-    vote_weight: Вага голосів %{weight}
+    vote_weight: Вага голосу %{weight}
   poll_common_undecided_panel:
     show_undecided: Показати %{count} не визначилися
     show_invitations: Показати запрошення в очікувані
@@ -2344,15 +2344,15 @@ uk:
     review_due_in_days: Через скільки днів переглянути рішення?
     review_date: Дата перегляду
     review_date_hint: Встановити дату нагадування для перегляду результату (необов’язково)
-    who_to_notify: Кого ви хочете повідомити про цей результат? (необов'язково)
+    who_to_notify: Кого ви хочете повідомити про цей висновок? (необов'язково)
     outcome_statement_template: Шаблон звіту про результати
-    new_title: Введіть результат
-    update_title: Оновити результат
+    new_title: Поширити висновок
+    update_title: Оновити висновок
     outcome_created: Висновок створено
     outcome_updated: Висновок оновлено
     statement_placeholder: Узагальнити відповіді і пояснити що буде відбуватися далі.
     you_will_be_notified: Ви отримаєте повідомлені про дату підсумків.
-    submit: Поширити результат
+    submit: Поширити висновок
     review_due_in_days_hint: Кількість днів очікування до перегляду рішення (необов'язково).
     statement_template_hint: Надайте шаблон для написання результату рішення (необов'язково).
     statement_template_placeholder: Дякуємо за участь! Кворум досягнуто, і ми маємо підтримку для продовження.
@@ -2394,7 +2394,7 @@ uk:
     remove_option: Видалити варіант відповіді
     poll_created: Опитування створено
     poll_updated: Опитування оновлено
-    option_added: Опція додана
+    option_added: Варіант додано
     option_already_added: Варіант уже додано до опитування
   poll_dot_vote_form:
     dots_per_person: Балів на людину
@@ -2447,8 +2447,8 @@ uk:
     consent: Згода
     abstain: Утриматись
     unsure: Не впевнений
-    disagree: Проти
-    objection: Несхвалення
+    disagree: Не погоджуюся
+    objection: Заперечення
     object: Об'єкт
     block: Блокувати
     no_voting: Не проголосували
@@ -2513,7 +2513,7 @@ uk:
     discussion_closed: "<a class='actor-link' href='/u/%{username}'>%{author}</a> закрив(ла) тему"
     discussion_reopened: "<a class='actor-link' href='/u/%{username}'>%{author}</a> знову відкрив(ла) тему"
     new_comment: "<a class='actor-link' href='/u/%{username}'>%{author}</a>"
-    outcome_created: "<a class='actor-link' href='/u/%{username}'>%{author}</a> поширив(ла) результат"
+    outcome_created: "<a class='actor-link' href='/u/%{username}'>%{author}</a> поширив(ла) висновок"
     poll_reopened: "<a class='actor-link' href='/u/%{username}'>%{author}</a> відкрив(ла) знов %{polltype}"
     poll_closed_by_user: "<a class='actor-link' href='/u/%{username}'>%{author}</a> закрив(ла) %{polltype}"
     poll_created: "<a class='actor-link' href='/u/%{username}'>%{author}</a> почав(ла) %{polltype}"
@@ -2694,8 +2694,8 @@ uk:
       poll_expired: Опитування закінчується
       poll_closed_by_user: Опитування закриваєте вручну
       poll_reopened: Опитування знову відкрито для голосування
-      outcome_created: Результат поширено
-      outcome_updated: Результат оновлюється
+      outcome_created: Висновок поширено
+      outcome_updated: Висновок оновлюється
       outcome_review_due: Має бути перевірка результатів
       new_discussion: Розпочато обговорення
       discussion_edited: Обговорення відредаговано
@@ -2802,7 +2802,10 @@ uk:
         submit: Див. шаблони пропозицій
       share_an_outcome:
         title: Поділитися результатом пропозиції
-        helptext: "<p>Щоб допомогти просунути рішення, пропозиції мають термін голосування. Після досягнення терміну голосування буде закрито, і вам буде повідомлено про можливість поділитися результатами пропозиції.</p><p> Результат — це можливість сказати, чи була пропозиція успішною та що буде далі.</p><p> Якщо термін подання вашої пропозиції ще не минув, але ви все одно хочете продовжити, ви можете натиснути кнопку <b>«Закрити раніше»</b> .</p><p> Коли настане слушний час, <b>введіть результат</b> своєї пропозиції.</p>"
+        helptext: |
+          <p>Коли настає дата закриття пропозиції, голосування завершується й вам пропонують поділитися висновком.</p>
+          <p>У висновку ви пояснюєте, що вирішили (або що буде далі), переглянувши голоси та коментарі.</p>
+          <p>Якщо термін ще не минув, але ви готові рухатися далі, можете <b>Закрити раніше</b>.</p>
         submit: Переглянути пропозицію
         cancel: Зробіть це пізніше
       start_a_discussion:
@@ -2897,11 +2900,11 @@ uk:
       allocate_hint: Виборці розподіляють певний бюджет балів між варіантами
       ranked_choice: Рейтинговий вибір
       ranked_choice_hint: Виборці розташовують варіанти в порядку від найбільш бажаного до найменш бажаного
-      time_poll: Опитування часу
+      time_poll: Опитування щодо часу
       time_poll_hint: Виборці вказують, коли вони вільні для зустрічі
       rank: Ранг
       time: Час
-      stv: Вибори на СТВ
+      stv: Вибори за STV
       stv_hint: Оберіть кількох переможців пропорційно, використовуючи один передаваний голос
     process: Процес
     process_name: Назва шаблону
@@ -2975,9 +2978,9 @@ uk:
     manage_voters: Керування виборцями
     remove_voter: Видалити виборця
     voter_page_count: "%{first}–%{last} від %{total}"
-    vote_weight_for: Вага голосів за %{name}
+    vote_weight_for: Вага голосу для %{name}
     save_vote_weights: Зберегти вагу голосів
-    vote_weights_updated: Вага голосів оновлена
+    vote_weights_updated: Ваги голосів оновлено
     set_all: Встановити все
     find_or_invite_voters: Знайти або запросити виборців
     remove_voter_named: Видалити %{name} з опитування
@@ -2995,7 +2998,7 @@ uk:
     set_all_vote_weights_the_same: Встановити однакову вагу голосів для всіх
     member_vote_weights_hint: Виборці, які не мають поточного членства в групі, отримують вагу голосу 1
     weighted_voting: Зважене голосування
-    weighted_voting_is_not_available_with_anonymous_voting: "Зважене голосування недоступне при анонімному голосуванні"
+    weighted_voting_is_not_available_with_anonymous_voting: Зважене голосування недоступне при анонімному голосуванні
     use_weighted_voting: Використовуйте зважене голосування
     weighted_voting_off_warning: Вимкнення зваженого голосування встановлює вагу кожного голосу на 1. Будь-які ваги голосів, які ви змінили для цього опитування, будуть втрачені.
     weighted_voting_on_group: Увімкнення зваженого голосування копіює вагу голосу кожного члена за замовчуванням. Інші виборці отримують вагу голосу, що дорівнює 1.
@@ -3091,7 +3094,7 @@ uk:
       success: Обговорення перенесено до %{name}
     move_thread_title: Перемістити тему
     destination: Пункт призначення
-    direct_thread: Пряма нитка
+    direct_thread: Пряма тема
     direct_thread_hint: Усі, хто брав участь, збережуть доступ. Ви та автор теми будете адміністраторами теми.
     direct_thread_anonymous_poll: Теми, що містять анонімні опитування, не можна перетворити на прямі теми, оскільки це може розкрити, хто голосував
   auth:
