@@ -173,8 +173,8 @@ hu:
         proposal: Javaslat
         count: Számol
         choose: Választ
-        allocate: Kioszt
-        score: Pontszám
+        allocate: Pontelosztás
+        score: Pontozás
         rank: Rangsorolás
         time: Időpont választás
   user:
@@ -378,8 +378,8 @@ hu:
   announcement_count_emails: "%{count} e-mail"
   email_actions:
     unfollowed_discussion: Kikapcsoltad a téma e-maileit.
-    catch_up_link: Felzárkóztató e-mail beállítások
-    catch_up_title: Felzárkóztató e-mail beállítások
+    catch_up_link: Összefoglaló e-mail beállításai
+    catch_up_title: Összefoglaló e-mail beállításai
     catch_up_description: Válassza ki, hogy milyen gyakran szeretne összefoglalót kapni a csoportjaiban végzett tevékenységekről
     catch_up_schedule: Küldjön egy emlékeztető e-mailt
     catch_up_saved: Frissítettük a pótlólagos e-mail beállításait
@@ -394,7 +394,7 @@ hu:
       friday: péntek
       saturday: szombat
       sunday: vasárnap
-    catch_up_all_groups: Felzárkóztató e-mailek (minden csoport)
+    catch_up_all_groups: Összefoglaló e-mailek (minden csoport)
   discussion_mailer:
     reply_or_view_online_html: Válaszolj erre az e-mailre közvetlenül, vagy <a href='%{url}'>tekintsd meg itt%{hostname}</a>.
     turn_off_notifications_html: "<a href='%{url}'>Kapcsold ki az emaileket</a> ehhez a beszélgetéshez."
@@ -470,7 +470,7 @@ hu:
       please_respond: Kérlek válaszolj
       time_zone: "(Ennyiszer megjelenítve itt %{zone})"
       undecided_members: Még nem döntöttek (%{count})
-      undecided_visitors: Bizonytalan vendégek (%{count})
+      undecided_visitors: Még nem szavazó vendégek (%{count})
       more_undecided: "%{count} további ..."
       vote_now: Szavazz most
       you_have_until: "%{when} -ig van lehetőséged részt venni."
@@ -631,11 +631,11 @@ hu:
       process_subtitle_v2: Népszerűség mérése egy- vagy feleletválasztós szavazással
     score_poll:
       process_subtitle: Mérje fel az egyes lehetőségek támogatottságának mértékét
-      process_introduction: <p>Használd a Score poll-t, ha fel szeretnéd mérni az emberek vágyait, preferenciáit vagy érdeklődését az egyes lehetőségek iránt.</p><p> <span>A résztvevőket arra kérik, hogy értékeljék az egyes opciókat, és egy csúszka skálán történő mozgatásával rendeljenek hozzájuk pontszámot.</span></p><p> <span>Az eredményeket grafikusan jelenítjük meg, valamint minden opcióhoz táblázatot, amely mutatja az összesített pontszámot, az átlagpontszámokat és a szavazók számát.</span></p><p> A speciális beállítások között megtalálható a „Névtelen szavazatok” és az „Opciók véletlenszerű sorrendben megjelenítése” – ezeket gyakran használják a pontszám-felmérésnél a szavazási torzítás csökkentése érdekében.</p><p> <a target="_blank"  href="/docs/en/user_manual/polls/proposal_types#score-poll">Tudjon meg többet a Score szavazásról</a> .</p>
+      process_introduction: <p>Használd a pontozást, ha szeretnéd felmérni, mennyire szeretnék, kedvelik vagy tartják érdekesnek az emberek az egyes lehetőségeket.</p><p><span>A résztvevők minden lehetőséget értékelnek, és egy csúszkát mozgatva pontszámot adnak nekik.</span></p><p><a target="_blank"  href="/docs/en/user_manual/polls/proposal_types#score-poll">Olvass többet a pontozásról</a>.</p>
       title: A döntéshozatal folyamatának értékelése a szervezetünkben
       details: <h3 id="what-is-this-poll-about"><strong>Miről szól ez a szavazás?</strong></h3><p></p><h3 id="why-is-this-important"><strong>Miért fontos ez?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"><strong>Mit kérsz az emberektől?</strong></h3><p></p><p>Válaszd ki a neked tetsző lehetősége(ke)t.</p>
       process_subtitle_v2: Mérje fel az egyes lehetőségek támogatottságának szintjét
-      process_introduction_v2: <p><strong>A pontszám</strong> segítségével mérheted a csoport támogatottságának szintjét az egyes lehetőségek esetében. A résztvevők minden lehetőséget egy csúszó skálán pontszám hozzárendelésével értékelnek, így nem csak azt láthatod, hogy az emberek mit preferálnak, hanem azt is, hogy mennyire.</p><p> <a target="_blank" href="/docs/en/user_manual/polls/proposal_types#score-poll">Tudjon meg többet a Score szavazásról</a> .</p>
+      process_introduction_v2: <p>A <strong>pontozás</strong> segítségével mérheted, mennyire támogatja a csoport az egyes lehetőségeket. A résztvevők minden lehetőséget egy csúszkával adott pontszámmal értékelnek, így azt is láthatod, hogy mit kedvelnek jobban, és mennyivel.</p><p><a target="_blank" href="/docs/en/user_manual/polls/proposal_types#score-poll">Olvass többet a pontozásról</a>.</p>
       process_subtitle_v3: Kérd meg a szavazókat, hogy értékeljék, mennyire támogatják az egyes lehetőségeket
     dot_vote:
       process_subtitle: Pontok költségvetésének kiosztása a prioritások feltárása érdekében
@@ -647,7 +647,7 @@ hu:
       process_subtitle_v3: Prioritások feltárása kompromisszumok esetén. Más néven pontszavazás.
     ranked_choice:
       process_subtitle: Értsd meg a lehetőségek rendezett preferenciáját
-      process_introduction: <p>A rangsorolt választás akkor hasznos, ha sok lehetőség közül választhatsz, vagy választást tartasz.</p><p> Ez a szavazássablon számos lehetőséget kínál arra, hogy a felhasználók a kívánt sorrendben szavazhassanak.</p><p> Beállíthatod, hogy a szavazó hány választási lehetőséget kapjon.</p><p> <span>A szavazók a kívánt beállításokat húzással helyezhetik el preferencia sorrendben (az első a legkedveltebb opció).</span></p><p> <span>A speciális beállítások között megtalálható a „Névtelen szavazatok” és az „Opciók véletlenszerű sorrendben megjelenítése” – ezeket gyakran használják a rangsorolt</span> választási lehetőségeknél a szavazási elfogultság csökkentése érdekében.</p><p> Az eredmények rangsorolva jelennek meg. Az eredménytáblázat további adatokat tartalmaz, amelyek segítenek az eredmények elemzésében.</p><ul><li><p> Rang</p></li><li><p> Pontok %-a</p></li><li><p> Pontok</p></li><li><p> Átlagos</p></li></ul><p> <a target="_blank"  href="/docs/en/user_manual/polls/proposal_types#ranked-choice">További információ a rangsorolt választásról</a> .</p>
+      process_introduction: <p>A rangsorolás akkor hasznos, ha sok lehetőség van, vagy választást tartasz.</p><p>A szavazók húzással rendezik a lehetőségeket a kedveltségük sorrendjébe.</p><p>Az eredmények rangsorolva jelennek meg.</p><p><a target="_blank"  href="/docs/en/user_manual/polls/proposal_types#ranked-choice">Olvass többet a rangsorolásról</a>.</p>
       title: Igazgatótanács megválasztása
       details: <h3 id="what-is-this-poll-about"><strong>Miről szól ez a szavazás?</strong></h3><p></p><h3 id="why-is-this-important"><strong>Miért fontos ez?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"><strong>Mit kérsz az emberektől?</strong></h3><p></p><p>Szavazz a lehetőségek rangsorolásával aszerint, hogy melyiket kedveled jobban.  Az a lehetőség nyer, amelyik az első helyen áll az eredményekben.</p>
       process_subtitle_v2: Keresd meg a csoport preferencia sorrendjét
@@ -663,7 +663,7 @@ hu:
       process_introduction_v2: <p><strong>Az időalapú szavazás</strong> segít megtudni, hogy mikor érhetők el az emberek. Add meg a javasolt időpontokat, és a résztvevők a saját időzónájukban fogják látni azokat. Amikor a szavazás lezárul, állítsd be az eredményt, és a Loomio mindenkinek küld egy naptármeghívót.</p><p> <a target="_blank" href="/docs/en/user_manual/polls/meeting_polls#time-poll">Tudj meg többet a Time közvélemény-kutatásáról</a> .</p>
     opt_in:
       process_subtitle: Önkéntesek keresése vagy résztvevők kérése
-      process_introduction: '<p>A Feliratkozás funkcióval meghívhatsz másokat egy csapatba, bizottságba vagy munkacsoportba, vagy részt vehetsz egy eseményen.</p><p> A „Feliratkozás” két szavazási lehetőséget kínál: Elfogadás vagy Elutasítás.</p><p> Meghatározhatsz egy célzott létszámot, mondjuk 3 embert a munkacsoportodba.</p><p> <a target="_blank" href="/docs/en/user_manual/polls/meeting_polls#opt-in">További információ a feliratkozásról</a> .</p>'
+      process_introduction: '<p>A jelentkezéssel meghívhatsz embereket egy csapatba, bizottságba vagy munkacsoportba, illetve egy eseményre.&nbsp;&nbsp;</p><p>A „jelentkezés” két szavazási lehetőséget kínál: Elfogadás vagy Elutasítás.&nbsp;</p><p>Megadhatod, hány embert keresel, például 3 főt a munkacsoportodba.</p> <p><a target="_blank" href="/docs/en/user_manual/polls/meeting_polls#opt-in">Olvass többet a jelentkezésről</a>.</p> '
       title: Munkacsoport az új fenntarthatósági politikánk kidolgozásán
       details: "<p><strong>Melyik csapatba, munkacsoportba vagy eseményre hívsz meg embereket?</strong></p><p></p><p> <strong>Miért fontos ez?</strong></p><p></p><p> <strong>Mit kérsz az emberektől?</strong></p><p></p><p> A részvételhez válaszd az „Elfogadom” lehetőséget!</p>"
       accept_meaning: Hajlandó vagyok részt venni
@@ -794,7 +794,7 @@ hu:
     voted: "%{author} szavazata: %{response}"
     voted_hidden: "%{author} szavazott"
     vote_removed: "%{author}: szavazat eltávolítva"
-    undecided: "%{author}: eldöntetlen"
+    undecided: "%{author}: nem szavazott"
     superseded: felülírva
     shared_outcome: "%{author} megosztott egy következtetést"
     removed: Eltávolítva

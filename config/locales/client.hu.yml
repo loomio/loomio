@@ -177,7 +177,7 @@ hu:
     only_show_tags_in_this_group: Csak ebben a csoportban lévő címkék megjelenítése
   poll_types:
     proposal: javaslat
-    count: feliratkozás
+    count: jelentkezés
     check: hangulatfelmérés
     poll: szavazás
     dot_vote: pont-szavazás
@@ -441,7 +441,7 @@ hu:
     loud: Hangos
     normal: Normál
     quiet: Csendes
-    mute: Néma
+    mute: Némítás
     unmute: Néma üzemmód kikapcsolása
   pin_event_form:
     title: Rögzítsd az idővonalhoz
@@ -471,7 +471,7 @@ hu:
     loud_label: Összes tevékenység
     normal_label: Bejelentések
     quiet_label: Nincs új e-mail
-    mute_label: Néma
+    mute_label: Némítás
     saved: Értesítési beállítások frissítve
     discussion:
       loud_description: A témán belüli összes tevékenységről értesítést kapsz e-mailben.
@@ -681,7 +681,7 @@ hu:
     email_and_device_when_notified: E-mail és eszközértesítés értesítéskor
     device_notification_when_notified: Eszközértesítés értesítéskor
     no_notifications: Nincsenek értesítések
-    catch_up_email_every_second_day: Feltöltő e-mail minden második nap
+    catch_up_email_every_second_day: Összefoglaló e-mail minden második nap
     weekly_catch_up_email: Heti összefoglaló e-mail
   search_modal:
     all_content: Minden tartalom
@@ -1013,7 +1013,9 @@ hu:
       too_many_invitations: 'A meghívási korlátot meghaladtad. <a href="%{upgradeUrl}" target="_blank"> Frissítés </a>
 
         '
-      no_invitations_remaining: <p>Felhasználta a csoporthoz elérhető összes %{maxMembers} meghívót.</p><p> Következő lépésként <a href="%{upgradeUrl}" target="_blank">válasszon tervet</a> a Loomio-val való együttműködés folytatásához.</p>
+      no_invitations_remaining: |
+        <p>Felhasználtad a csoporthoz elérhető összes %{maxMembers} meghívót.</p>
+        <p>Következő lépésként <a href="%{upgradeUrl}" target="_blank">válassz csomagot</a>, hogy folytathasd a közös munkát a Loomión.</p>
       invitations_remaining: '%{count} meghívó maradt. <a href="%{upgradeUrl}" target="_blank">Frissítés</a>'
       who_to_invite: Kit szeretnél meghívni?
       invitation_message_placeholder: A meghívó e-mailben szereplő üzenet. (választható)
@@ -1732,8 +1734,8 @@ hu:
     send_email: E-mail küldése
     group_notifications: Csoportértesítések
     group_notifications_description: Módosítsd a csoportok aktivitási szintjét és csatornáját
-    choose_email_and_push_updates: Válasszon külön beállításokat az e-mailhez és a push üzenethez
-    catch_up_email: Felzárkóztató e-mail
+    choose_email_and_push_updates: Válassz külön beállításokat az e-mailhez és a push értesítésekhez
+    catch_up_email: Összefoglaló e-mail
     catch_up_email_description: Válassza ki, mikor szeretne értesítést kapni a látatlan értesítésekről és az olvasatlan tevékenységekről
   thread_preview:
     replies_count: "%{count} válasz"
@@ -1771,9 +1773,9 @@ hu:
       proposals: Javaslatok
       proposals_aria_label: Jelenleg a témákat mutatják aktív javaslatokkal
       proposals_description: Csak az aktív javaslatokkal ellátott témák megtekintése
-      muted: Néma témák
-      muted_aria_label: A jelenlegi néma témák
-      muted_description: Csak a néma témák megtekintése
+      muted: Némított szálak
+      muted_aria_label: Jelenleg a némított szálak láthatók
+      muted_description: Csak a némított szálak megtekintése
       all: Legutóbbi beszélgetések
     thread_preview:
       you_voted: Erre szavaztál %{position}
@@ -1816,7 +1818,9 @@ hu:
     direct_thread: Közvetlen szál
     invite_only: Csak meghívottaknak
     private_thread: Privát szál
-    max_threads_reached: <p>Felhasználta a csoport számára elérhető összes %{maxThreads} szálat.</p><p> Következő lépésként <a href="%{upgradeUrl}" target="_blank">válasszon tervet</a> a Loomio-val való együttműködés folytatásához.</p>
+    max_threads_reached: |
+      <p>Felhasználtad a csoport számára elérhető összes %{maxThreads} szálat.</p>
+      <p>Következő lépésként <a href="%{upgradeUrl}" target="_blank">válassz csomagot</a>, hogy folytathasd a közös munkát a Loomión.</p>
     subscription_canceled: <p>Az előfizetésed nem aktív.</p><p> Kérjük <a href="%{upgradeUrl}" target="_blank">, frissítsen</a> a Loomio használatának folytatásához.</p>
     activity: Tevékenység
     activity_placeholder: Még nincs tevékenység!
@@ -1957,7 +1961,7 @@ hu:
     consent_title: Beleegyezés
     consensus_title: Konszenzus
     proposal_title: Javaslat
-    count_title: Feliratkozás
+    count_title: Jelentkezés
     check_title: Hangulatfelmérés
     poll_title: Szavazás
     meeting: Találkozó
@@ -2055,7 +2059,7 @@ hu:
     current_results: Aktuális eredmények
     responses: Válaszok
     close_poll_type: Lezárás %{pollType}
-    close_early: Korán bezárni
+    close_early: Lezárás most
     totals: Összesítések
     participate: Részt vesz
     vote: Szavazás
@@ -2280,12 +2284,12 @@ hu:
     started_by: 'Kezdte: %{name}'
   poll_common_votes_panel:
     vote_removed: Szavazat eltávolítva
-    undecided: Eldöntetlen
+    undecided: Még nem szavaztak
     newest_first: Először a legújabb
     oldest_first: A legrégebbi előbb
     priority_first: Egyetértők először
     priority_last: Vétók először
-    undecided_first: Először bizonytalan
+    undecided_first: Először a még nem szavazók
     no_votes_yet: Még nem szavaztak.
     change_results_order: Az eredmények sorrendjének módosítása
     none_of_the_above: "(A fentiek egyike sem)"
@@ -2307,9 +2311,9 @@ hu:
     participation_records_restricted: A szavazás lezárása után láthatja, kik vettek részt
     vote_weight: Szavazati súly %{weight}
   poll_common_undecided_panel:
-    show_undecided: "%{count} bizonytalan megjelenítése"
+    show_undecided: "%{count} még nem szavazó megjelenítése"
     show_invitations: A függőben lévő meghívók megjelenítése
-    undecided_users: Határozatlan (%{count})
+    undecided_users: Még nem szavaztak (%{count})
     invitation_count_singular: 1 további személyt hívtak meg e-mailben a részvételre
     invitation_count_plural: "%{count} további személyt meghívtak a részvételre e-mailben"
   poll_common_undecided_user:
@@ -2813,7 +2817,7 @@ hu:
       voting_title: '24 órával a szavazás lezárása előtt küldjön emlékeztetőt a következő címre:'
       nobody: Senki
       author: Szerző (én)
-      undecided_voters: bizonytalan szavazók
+      undecided_voters: Még nem szavazó szavazók
       voters: Minden szavazó
     notify_on_participate:
       title: Értesítsen, ha valaki részt vesz
@@ -2847,7 +2851,7 @@ hu:
     show_advanced_settings: Speciális beállítások megjelenítése
     hide_advanced_settings: Speciális beállítások elrejtése
     choose_at_least: Válassz legalább
-    choose_at_most: Válasszon legfeljebb
+    choose_at_most: Válassz legfeljebb
     please_review_the_form: Kérjük, tekintse át az űrlapot
     option_added_please_add_details: Lehetőség hozzáadva! Kérlek, adj meg néhány részletet, hogy az emberek tudják, mit jelent.
     default_duration_in_days: Alapértelmezett időtartam napokban
@@ -2868,10 +2872,10 @@ hu:
       question_hint: Kérjen kérdéseket és észrevételeket a javaslatával kapcsolatban
       show_thumbs: Hüvelykujj felmutatása
       show_thumbs_hint: A szavazók a hüvelykujjukat felfelé, lefelé, oldalra vagy a kéz felfelé állítását választhatják.
-      choose: Válasszon
+      choose: Kiválasztás
       simple_poll: Egyszerű szavazás
       choose_hint: A szavazók a legjobb opciót (vagy opciókat) választják
-      score: Pontszám
+      score: Pontozás
       score_hint: A szavazók pontszámot rendelnek minden opcióhoz
       allocate: Kiosztás
       allocate_hint: A szavazók pontokat osztanak szét a lehetőségek között.
@@ -2879,7 +2883,7 @@ hu:
       ranked_choice_hint: A választók a leginkább preferálttól a legkevésbé preferáltig rendezik a lehetőségeket
       time_poll: Időpontszavazás
       time_poll_hint: A választók jelzik, mikor tudnak találkozni
-      rank: Rang
+      rank: Rangsorolás
       time: Idő
       stv: STV választás
       stv_hint: Több nyertest arányosan válasszon ki egyetlen átruházható szavazat alapján
@@ -3021,10 +3025,10 @@ hu:
     default_title_placeholder: pl. Stand-up - január 15.
     more_templates: További sablonok
     fewer_templates: Kevesebb sablon
-    choose_a_group: Válasszon egy csoportot
+    choose_a_group: Válassz egy csoportot
     default_templates: Alapértelmezett sablonok
     or_start_a_direct_discussion: Vagy indítson közvetlen beszélgetést
-    choose_group_for_templates: Válasszon ki egy csoportot a hozzá tartozó beszélgetési sablonok megtekintéséhez
+    choose_group_for_templates: Válassz ki egy csoportot a beszélgetési sablonjai megtekintéséhez
     start_direct_discussion: Közvetlen beszélgetés indítása
     poll_templates: Szavazási sablonok
     poll_templates_help: Az itt kiválasztott sablonok jelennek meg először, amikor valaki a Szavazás indítása gombra kattint.
