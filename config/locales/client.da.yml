@@ -268,7 +268,7 @@ da:
     action:
       print: Print
       preview: Forhåndsvisning
-      pin: Pin
+      pin: Fastgør
       unpin: Frigør
       search: Søg
       filter: Filter
@@ -439,7 +439,7 @@ da:
     loud: Høj
     normal: Normal
     quiet: Lav
-    mute: Slået fra
+    mute: Slå lyden fra
     unmute: Slået til
   pin_event_form:
     title: Fastgør til tidslinjen
@@ -679,7 +679,7 @@ da:
     email_and_device_when_notified: E-mail- og enhedsnotifikationer ved meddelelse
     device_notification_when_notified: Enhedsnotifikation ved meddelelse
     no_notifications: Ingen notifikationer
-    catch_up_email_every_second_day: Opfølgningsmail hver anden dag
+    catch_up_email_every_second_day: Opsummeringsmail hver anden dag
     weekly_catch_up_email: Ugentlig e-mail med opfølgning
   search_modal:
     all_content: Alt indhold
@@ -1009,7 +1009,9 @@ da:
       group_has_no_members_yet: Du er det eneste medlem af din gruppe. Du vil måske invitere nogle personer til din gruppe, før du starter en tråd eller beslutning.
       invite_people_to_evaluate_loomio: Inviter nogle personer til din Loomio-gruppe for at træffe en beslutning sammen
       too_many_invitations: Invitationsgrænsen er overskredet. <a href="%{upgradeUrl}" target="_blank">Opgrader</a>
-      no_invitations_remaining: <p>Du har brugt alle %{maxMembers} invitationer, der er tilgængelige for denne gruppe.</p><p> Næste trin <a href="%{upgradeUrl}" target="_blank">skal du vælge en plan</a> for at fortsætte samarbejdet om Loomio.</p>
+      no_invitations_remaining: |
+        <p>Du har brugt alle %{maxMembers} invitationer, der er tilgængelige for denne gruppe.</p>
+        <p>Næste trin: <a href="%{upgradeUrl}" target="_blank">vælg en plan</a> for at fortsætte samarbejdet på Loomio.</p>
       invitations_remaining: '%{count} invitationer tilbage. <a href="%{upgradeUrl}" target="_blank">Opgrader</a>'
       who_to_invite: Hvem vil du invitere?
       invitation_message_placeholder: En besked, der skal inkluderes i invitationsmailen. (valgfri)
@@ -1121,7 +1123,7 @@ da:
     show_edits: Vis redigeringer
     show_notifications: Vis meddelelser
     history: Historie
-    pin_thread: Pintråd
+    pin_thread: Fastgør tråd
     unpin_thread: Løsn gevindet
     pin_event: Fastgør til tidslinjen
     unpin_event: Frigør fra tidslinjen
@@ -1737,7 +1739,7 @@ da:
     group_notifications: Gruppemeddelelser
     group_notifications_description: Skift aktivitetsniveau og kanal for dine grupper
     choose_email_and_push_updates: Vælg separate indstillinger for e-mail og push
-    catch_up_email: Indhentningsmail
+    catch_up_email: Opsummeringsmail
     catch_up_email_description: Vælg, hvornår du vil modtage en opdatering med usete notifikationer og ulæst aktivitet
   thread_preview:
     replies_count: "%{count} svar"
@@ -1820,7 +1822,9 @@ da:
     direct_thread: Direkte tråd
     invite_only: Kun invitation
     private_thread: Privat tråd
-    max_threads_reached: <p>Du har brugt alle %{maxThreads} tråde, der er tilgængelige for denne gruppe.</p><p> Næste trin <a href="%{upgradeUrl}" target="_blank">skal du vælge en plan</a> for at fortsætte samarbejdet om Loomio.</p>
+    max_threads_reached: |
+      <p>Du har brugt alle %{maxThreads} tråde, der er tilgængelige for denne gruppe.</p>
+      <p>Næste trin: <a href="%{upgradeUrl}" target="_blank">vælg en plan</a> for at fortsætte samarbejdet på Loomio.</p>
     subscription_canceled: <p>Dit abonnement er ikke aktivt.</p><p> <a href="%{upgradeUrl}" target="_blank">Opgrader</a> venligst for at fortsætte med at bruge Loomio.</p>
     activity: Aktivitet
     activity_placeholder: Ingen aktivitet endnu!
@@ -2281,12 +2285,12 @@ da:
     started_by: Oprettet af %{name}
   poll_common_votes_panel:
     vote_removed: Stemme fjernet
-    undecided: Uafklaret
+    undecided: Ikke stemt
     newest_first: Nyeste først
     oldest_first: Ældste først
     priority_first: Enig først
     priority_last: Blokerer først
-    undecided_first: Uafklaret først
+    undecided_first: Ikke stemt først
     no_votes_yet: Ingen stemmer er afgivet endnu
     change_results_order: Skift sorteringsrækkefølge for resultat
     none_of_the_above: "(Ingen af de tidligere)"
@@ -2395,7 +2399,7 @@ da:
     minimum_stance_choices_hint: dvs. Ranger dine top 3 varianter af is
     ranked_choice_created: Rangeringsvalg oprettet
     ranked_choice_updated: Rangeringsvalg opdateret
-    rank: Rang
+    rank: Rangering
     points: Points
     average: Gennemsnit
     mean: Betyde
@@ -2453,7 +2457,7 @@ da:
     total: Total
   poll_remove_vote:
     title: Vil du fjerne din stemme?
-    helptext: Er du sikker på, at du vil fjerne din stemme? Du vil blive opført som uafklaret og kan stemme igen senere, hvis du ønsker det.
+    helptext: Er du sikker på, at du vil fjerne din stemme? Du vil blive opført som ikke stemt og kan stemme igen senere, hvis du ønsker det.
     confirm: Fjern stemme
     success: Stemme fjernet
   poll_poll_vote_form:
@@ -2869,18 +2873,18 @@ da:
       question_hint: Indbyd til spørgsmål og kommentarer til dit forslag
       show_thumbs: Tommelfingervisning
       show_thumbs_hint: Vælgerne vælger tommelfingeren op, ned, til siden eller hånden op
-      choose: Vælge
+      choose: Valg
       simple_poll: Simpel afstemning
       choose_hint: Vælgerne vælger den bedste mulighed (eller muligheder)
       score: Score
       score_hint: Vælgerne tildeler en score til hver mulighed
-      allocate: Alloker
+      allocate: Fordeling
       allocate_hint: Vælgerne fordeler et budget på point mellem mulighederne
       ranked_choice: Rangeret valg
       ranked_choice_hint: Vælgerne arrangerer mulighederne i rækkefølge fra mest til mindst foretrukken
       time_poll: Tidsafstemning
       time_poll_hint: Vælgerne angiver, hvornår de er til rådighed til at mødes
-      rank: Rang
+      rank: Rangering
       time: Tid
       stv: STV-valg
       stv_hint: Vælg flere vindere proportionalt ved hjælp af Single Transferable Vote
