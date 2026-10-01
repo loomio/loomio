@@ -613,6 +613,8 @@ change, check it against the patterns below.
 
 ## Loomio glossary overrides
 
+`config/locales/glossary.yml` is now the source of truth for Loomio's terms in every locale, and both translators read it. It supersedes the term choices in older entries of this file, for example Dutch `thread` is `thread` again (not `discussie`), because thread and discussion must stay distinct: a thread holds either a discussion or a poll. Record term changes in the glossary; keep using this file for one-off sense errors.
+
 Terms with a Loomio-specific meaning Google can't infer from the string alone.
 Force these mappings when retranslating (established in commits 38a9808ce1
 and 7cc8e45029).

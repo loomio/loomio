@@ -1,0 +1,4898 @@
+# Loomio terminology, shared by the app strings (config/locales/*.yml) and the
+# user manual (docs/<locale>/).
+#
+# Each term is an English word or phrase as it appears in Loomio's interface.
+# `means` explains the Loomio sense, which is what translators need when the
+# English is ambiguous. Each locale gives the preferred translation as a
+# string, or as a hash with:
+#
+#   use:   the preferred translation
+#   avoid: renderings that are wrong in Loomio's sense, such as a literal
+#          translation or a word that collides with another term
+#   note:  guidance on inflection or usage
+#
+# Use the preferred translation, inflected as the grammar requires, wherever
+# the term carries its Loomio meaning. Locales are app locale codes.
+#
+# Choosing a preferred translation, in order of priority:
+# 1. It must carry the Loomio meaning in `means` and stay distinct from the
+#    other terms. Correctness always beats brevity.
+# 2. Keep it about as short as the English: interface space is tight, so
+#    avoid needlessly long words, but a translation may take as much space as
+#    the English does.
+# 3. Prefer the everyday words people expect when discussing and deciding
+#    things with their peers, especially the words well-known apps already use
+#    for the same feature (a poll in a chat app, a tag, an admin).
+# `locales` gives each app locale's language name and style: the register and
+# conventions both translators follow. The user manual's languages in
+# docs/locales.yml take their style from here.
+locales:
+  be:
+    name: Belarusian
+    style: Write Belarusian, not Russian, in the official Cyrillic orthography used by the app. Address the reader with lowercase вы (ваш, ваша) and вы imperatives (Выберыце, Націсніце). Never ты. Keep references to people gender-inclusive - use plural forms, present tense, impersonal constructions or group nouns instead of masculine singular past-tense verbs and masculine person nouns (prefer удзельнікі прагаласавалі, or каб прагаласаваць, over ён прагаласаваў or удзельнік прагаласаваў).
+  ca:
+    name: Catalan
+    style: Address the reader informally with tu (el teu, la teva) and informal imperatives (Tria, Desa, Vota), as people do with peers in everyday apps. Never vostè.
+  da:
+    name: Danish
+    style: Address the reader informally with du and imperatives (Rediger, Gem, Stem).
+  de:
+    name: German
+    style: Address the reader informally with du (dein, deine) and informal imperatives (Wähle, Klicke). Never Sie or Ihr for the reader. Prefer gender-neutral person nouns (Teilnehmende, Abstimmende).
+  el:
+    name: Greek
+    style: Address the reader with the polite plural (εσείς) and plural imperatives (Ψηφίστε, Επιλέξτε). Use correct accents, including on capitalised words in sentences.
+  es:
+    name: Spanish
+    style: Address the reader informally with tú (tu, tus) and informal imperatives (Selecciona, Elige). Never usted or su for the reader.
+  fi:
+    name: Finnish
+    style: Address the reader informally with sinä forms and informal imperatives (Valitse, Napsauta), as Finnish software does.
+  fr:
+    name: French
+    style: "Address the reader with neutral formal vous (vous, votre, vos) and vous imperatives (Cliquez, Choisissez). Use infinitives for short button and menu labels (Enregistrer). Use French typography, with a narrow no-break space before ? ! : and ; as the app already does."
+  he:
+    name: Hebrew
+    style: Write gender-neutral Hebrew. Address the reader with infinitives and impersonal forms (יש לבחור, ניתן לשנות) rather than masculine or feminine singular.
+  hr:
+    name: Croatian
+    style: Address the reader with the polite plural vi (vaš, vaša) and plural imperatives (Uredite, Glasajte, Spremite), as most of the app does.
+  hu:
+    name: Hungarian
+    style: Address the reader informally with te forms and informal imperatives (Válaszd ki, Kattints). Never Ön or formal verb forms.
+  it:
+    name: Italian
+    style: Address the reader informally with tu (tuo, tua) and informal imperatives (Seleziona, Scegli). Never Lei for the reader.
+  ja:
+    name: Japanese
+    style: Use polite です/ます style. Avoid addressing the reader with あなた; describe actions directly.
+  nl_NL:
+    name: Dutch
+    style: Address the reader informally with je and jouw and informal imperatives (Selecteer, Kies). Never u or uw.
+  pl:
+    name: Polish
+    style: Address the reader informally with ty forms and imperatives (Edytuj, Zapisz, Głosuj). Prefer gender-neutral constructions over masculine past-tense forms.
+  pt_BR:
+    name: Brazilian Portuguese
+    style: Write Brazilian Portuguese. Address the reader with você (seu, sua) and imperatives in the você form (Selecione, Escolha). Never tu.
+  ro:
+    name: Romanian
+    style: Address the reader informally with tu (tău, ta) and informal imperatives (Alege, Salvează, Votează), as people do with peers in everyday apps. Never dumneavoastră. Always write full diacritics, with comma-below ș and ț, never cedilla ş or ţ.
+  ru:
+    name: Russian
+    style: Address the reader with lowercase вы (ваш, ваша) and вы imperatives (Выберите, Нажмите). Never ты.
+  sl:
+    name: Slovenian
+    style: Address the reader with the polite plural vi and plural imperatives (Glasujte, Izberite), as the app does.
+  sv:
+    name: Swedish
+    style: Address the reader informally with du and imperatives (Redigera, Spara, Rösta).
+  tr:
+    name: Turkish
+    style: Address the reader with polite imperatives in button and menu labels kept short (Kaydet, Oy ver) and siz forms in sentences.
+  uk:
+    name: Ukrainian
+    style: Address the reader with lowercase ви (ваш, ваша) and ви imperatives (Виберіть, Натисніть). Never ти.
+  zh_CN:
+    name: Simplified Chinese
+    style: Write Simplified Chinese as used in mainland China. Address the reader as 您 where needed, as most of the app does, but prefer direct action phrasing without a pronoun.
+  zh_TW:
+    name: Traditional Chinese
+    style: Write Traditional Chinese as used in Taiwan, with Taiwan software terms (儲存, 範本, 設定). Address the reader as 您 where needed, as most of the app does, but prefer direct action phrasing without a pronoun.
+
+terms:
+  group:
+    means: "An organisation or team using Loomio. Members belong to it and its admins manage it."
+    be:
+      use: "група"
+      stems: ["груп"]
+    ca:
+      use: "grup"
+      stems: ["grup"]
+    da:
+      use: "gruppe"
+      stems: ["gruppe"]
+    de:
+      use: "Gruppe"
+      stems: ["gruppe"]
+    el:
+      use: "ομάδα"
+      stems: ["ομάδ", "ομαδ"]
+    es:
+      use: "grupo"
+      stems: ["grupo"]
+    fi:
+      use: "ryhmä"
+      stems: ["ryhm"]
+    fr:
+      use: "groupe"
+      stems: ["groupe"]
+    he:
+      use: "קבוצה"
+      stems: ["קבוצ"]
+    hr:
+      use: "grupa"
+      stems: ["grup"]
+      note: "skupina is a synonym but the app uses grupa almost everywhere."
+    hu:
+      use: "csoport"
+      stems: ["csoport"]
+    it:
+      use: "gruppo"
+      stems: ["grupp"]
+    ja:
+      use: "グループ"
+      stems: ["グループ"]
+    nl_NL:
+      use: "groep"
+      stems: ["groep"]
+    pl:
+      use: "grupa"
+      stems: ["grup"]
+    pt_BR:
+      use: "grupo"
+      stems: ["grupo"]
+    ro:
+      use: "grup"
+      stems: ["grup"]
+    ru:
+      use: "группа"
+      stems: ["групп"]
+    sl:
+      use: "skupina"
+      stems: ["skupin"]
+    sv:
+      use: "grupp"
+      stems: ["grupp"]
+    tr:
+      use: "grup"
+      stems: ["grup", "grub"]
+    uk:
+      use: "група"
+      stems: ["груп"]
+    zh_CN:
+      use: "群组"
+      stems: ["群组"]
+      note: "Avoid bare 组 or 群 in labels such as 新组, 查看组."
+    zh_TW:
+      use: "群組"
+      stems: ["群組"]
+      note: "Avoid bare 組 in labels such as 新組."
+  subgroup:
+    means: "A group inside a parent group, such as a committee or working group."
+    be:
+      use: "падгрупа"
+      stems: ["падгруп"]
+    ca:
+      use: "subgrup"
+      stems: ["subgrup"]
+    da:
+      use: "undergruppe"
+      stems: ["undergruppe"]
+    de:
+      use: "Untergruppe"
+      stems: ["untergruppe"]
+    el:
+      use: "υποομάδα"
+      stems: ["υποομάδ", "υποομαδ"]
+    es:
+      use: "subgrupo"
+      stems: ["subgrupo"]
+    fi:
+      use: "alaryhmä"
+      stems: ["alaryhm"]
+    fr:
+      use: "sous-groupe"
+      stems: ["sous-groupe"]
+    he:
+      use: "תת־קבוצה"
+      stems: ["תת־קבוצ", "תת-קבוצ", "תת קבוצ", "תת־הקבוצ", "תת-הקבוצ", "תתי־קבוצ", "תתי-קבוצ"]
+      note: "Plural תת־קבוצות; write with maqaf (־) as the manual does."
+    hr:
+      use: "podgrupa"
+      stems: ["podgrup"]
+      note: "Matches grupa; replace the mixed podskupina."
+    hu:
+      use: "alcsoport"
+      stems: ["alcsoport"]
+    it:
+      use: "sottogruppo"
+      stems: ["sottogrupp"]
+    ja:
+      use: "サブグループ"
+      stems: ["サブグループ"]
+    nl_NL:
+      use: "subgroep"
+      stems: ["subgroep"]
+    pl:
+      use: "podgrupa"
+      stems: ["podgrup"]
+    pt_BR:
+      use: "subgrupo"
+      stems: ["subgrupo"]
+    ro:
+      use: "subgrup"
+      avoid: ["grup subordonat"]
+      stems: ["subgrup"]
+    ru:
+      use: "подгруппа"
+      stems: ["подгрупп"]
+    sl:
+      use: "podskupina"
+      stems: ["podskupin"]
+    sv:
+      use: "undergrupp"
+      stems: ["undergrupp"]
+    tr:
+      use: "alt grup"
+      stems: ["alt grup", "alt grub"]
+    uk:
+      use: "підгрупа"
+      stems: ["підгруп"]
+    zh_CN:
+      use: "子群组"
+      avoid: ["亚组", "子组"]
+      stems: ["子群组"]
+    zh_TW:
+      use: "子群組"
+      avoid: ["亞組"]
+      stems: ["子群組"]
+  "parent group":
+    means: "The group that contains a subgroup."
+    be:
+      use: "бацькоўская група"
+      stems: ["бацькоўск"]
+    ca:
+      use: "grup principal"
+      avoid: ["grup de pares"]
+      stems: ["grup principal", "grups principals"]
+      note: "\"Grup de pares\" means a group of parents (mothers and fathers)."
+    da:
+      use: "hovedgruppe"
+      avoid: ["forældregruppe"]
+      stems: ["hovedgruppe"]
+      note: "Forældregruppe reads as a group of parents."
+    de:
+      use: "Hauptgruppe"
+      stems: ["hauptgruppe"]
+      note: "Shorter than übergeordnete Gruppe and already used in the manual."
+    el:
+      use: "γονική ομάδα"
+      avoid: ["ομάδα γονέων"]
+      stems: ["γονική ομάδ", "γονικής ομάδ", "γονικές ομάδ", "γονικών ομάδ"]
+      note: "ομάδα γονέων means a group of parents (mothers and fathers)"
+    es:
+      use: "grupo principal"
+      avoid: ["grupo de padres", "grupo parental", "grupo primario"]
+      stems: ["grupo principal", "grupos principales"]
+    fi:
+      use: "pääryhmä"
+      avoid: ["vanhempi ryhmä"]
+      stems: ["pääryhm"]
+      note: "\"Vanhempi ryhmä\" means an older group."
+    fr:
+      use: "groupe parent"
+      stems: ["groupe parent", "groupes parents"]
+    he:
+      use: "קבוצת אם"
+      avoid: ["קבוצת הורים"]
+      stems: ["קבוצת האם", "קבוצת אם", "קבוצות האם", "קבוצות אם"]
+      note: "קבוצת הורים means a group of parents."
+    hr:
+      use: "matična grupa"
+      avoid: ["roditeljska grupa"]
+      stems: ["matičn"]
+      note: "matična is the everyday word for a parent organisation; roditeljska grupa means a parents group."
+    hu:
+      use: "szülőcsoport"
+      avoid: ["szülői csoport"]
+      stems: ["szülőcsoport"]
+      note: "Szülői csoport means a group of parents."
+    it:
+      use: "gruppo principale"
+      avoid: ["gruppo genitore"]
+      stems: ["gruppo principale", "gruppi principali"]
+      note: "The manual uses gruppo principale throughout; the app's gruppo padre is a literal rendering."
+    ja:
+      use: "親グループ"
+      stems: ["親グループ"]
+    nl_NL:
+      use: "hoofdgroep"
+      stems: ["hoofdgroep"]
+      note: "Shorter than bovenliggende groep and already used in the manual."
+    pl:
+      use: "grupa nadrzędna"
+      avoid: ["grupa rodziców"]
+      stems: ["nadrzędn"]
+    pt_BR:
+      use: "grupo principal"
+      avoid: ["grupo pai"]
+      stems: ["grupo principal", "grupos principais"]
+    ro:
+      use: "grup părinte"
+      avoid: ["grupul de părinți"]
+      stems: ["părinte"]
+      note: "\"Grupul de părinți\" means a group of parents (mothers and fathers)."
+    ru:
+      use: "родительская группа"
+      stems: ["родительск"]
+      note: "Основная группа is acceptable in running text; use родительская группа in labels."
+    sl:
+      use: "nadrejena skupina"
+      avoid: ["starševska skupina"]
+      stems: ["nadrejen"]
+      note: "Starševska is a literal 'parental' calque; nadrejena is the standard word for a containing group."
+    sv:
+      use: "huvudgrupp"
+      avoid: ["föräldragrupp"]
+      stems: ["huvudgrupp"]
+      note: "Föräldragrupp reads as a group of parents."
+    tr:
+      use: "ana grup"
+      avoid: ["ebeveyn grubu"]
+      stems: ["ana grup", "ana grub"]
+      note: "ebeveyn means a child's parent"
+    uk:
+      use: "батьківська група"
+      stems: ["батьківськ"]
+    zh_CN:
+      use: "上级群组"
+      stems: ["上级群组"]
+      note: "Replaces the technical 父群组 with the everyday 上级."
+    zh_TW:
+      use: "上層群組"
+      stems: ["上層群組"]
+  member:
+    means: "A person who belongs to a group."
+    be:
+      use: "удзельнік"
+      avoid: ["член"]
+      stems: ["удзельн"]
+      note: "Belarusian UI convention uses удзельнік for both group members and participants; write удзельнік групы where the distinction matters, and prefer plural forms for gender inclusion."
+    ca:
+      use: "membre"
+      stems: ["membre"]
+    da:
+      use: "medlem"
+      stems: ["medlem"]
+    de:
+      use: "Mitglied"
+      stems: ["mitglied"]
+    el:
+      use: "μέλος"
+      stems: ["μέλος", "μέλη", "μελών", "μέλους"]
+    es:
+      use: "miembro"
+      stems: ["miembro"]
+      note: "App and manual majority; integrante also appears and reads as a gender-neutral synonym."
+    fi:
+      use: "jäsen"
+      stems: ["jäsen"]
+    fr:
+      use: "membre"
+      stems: ["membre"]
+    he:
+      use: "חבר"
+      avoid: ["משתתף"]
+      stems: ["חבר"]
+      note: "Plural חברים, construct חברי; משתתף is the participant term."
+    hr:
+      use: "član"
+      stems: ["član"]
+    hu:
+      use: "tag"
+      stems: ["tag"]
+    it:
+      use: "membro"
+      stems: ["membr"]
+    ja:
+      use: "メンバー"
+      stems: ["メンバー"]
+    nl_NL:
+      use: "lid"
+      stems: ["lid", "leden"]
+      note: "Plural leden."
+    pl:
+      use: "członek"
+      stems: ["członek", "członk"]
+      note: "Osoby is fine for generic people lists, but a group's members are członkowie."
+    pt_BR:
+      use: "membro"
+      stems: ["membro"]
+    ro:
+      use: "membru"
+      stems: ["membr"]
+    ru:
+      use: "участник"
+      stems: ["участник"]
+      note: "Russian software uses участник for group members; say участник группы where it must be distinguished from a poll or thread participant."
+    sl:
+      use: "član"
+      stems: ["člani", "član"]
+    sv:
+      use: "medlem"
+      stems: ["medlem"]
+    tr:
+      use: "üye"
+      stems: ["üye"]
+    uk:
+      use: "учасник"
+      stems: ["учасни"]
+      note: "Ukrainian UI convention uses учасник for both group members and participants; write учасник групи where the distinction matters. член is correct but less used in the app."
+    zh_CN:
+      use: "成员"
+      avoid: ["会员"]
+      stems: ["成员"]
+      note: "会员 suggests a paying or club membership."
+    zh_TW:
+      use: "成員"
+      avoid: ["會員"]
+      stems: ["成員"]
+      note: "會員 suggests a paying or club membership."
+  admin:
+    means: "A group member with permission to manage the group, its members and settings."
+    be:
+      use: "адміністратар"
+      stems: ["адміністратар"]
+    ca:
+      use: "admin"
+      stems: ["admin"]
+      note: "\"admin\" is the app's majority and is gender-neutral; \"administrador/a\" is acceptable in running text."
+    da:
+      use: "admin"
+      stems: ["admin"]
+      note: "Administrator is acceptable in longer prose."
+    de:
+      use: "Admin"
+      avoid: ["Gruppenmoderator", "Moderator"]
+      stems: ["admin"]
+      note: "Moderation/Moderator means facilitation in the manual, so it must not stand for admin; Administrator is acceptable but Admin is the majority."
+    el:
+      use: "διαχειριστής"
+      stems: ["διαχειριστ"]
+    es:
+      use: "admin"
+      avoid: ["grupo de administración", "hilo de administración"]
+      stems: ["admin"]
+      note: "Short familiar loanword already used in the app; administrador is fine in running prose. \"Group admin\" is admin del grupo, not grupo de administración."
+    fi:
+      use: "ylläpitäjä"
+      avoid: ["järjestelmänvalvoja"]
+      stems: ["ylläpitäj"]
+      note: "Järjestelmänvalvoja means a system administrator; a Loomio admin manages a group."
+    fr:
+      use: "administrateur"
+      stems: ["administrat", "admin"]
+      note: "Admin is acceptable where space is tight."
+    he:
+      use: "מנהל"
+      avoid: ["מנהל מערכת", "אחראי"]
+      stems: ["מנהל"]
+      note: "A group admin, not a system administrator (מנהל מערכת)."
+    hr:
+      use: "admin"
+      stems: ["admin"]
+      note: "Short and familiar; administrator is acceptable in prose."
+    hu:
+      use: "admin"
+      avoid: ["rendszergazda"]
+      stems: ["admin"]
+      note: "Rendszergazda means a system administrator. Adminisztrátor is an acceptable longer form."
+    it:
+      use: "amministratore"
+      stems: ["amministrat", "admin"]
+      note: "Admin is acceptable where space is tight."
+    ja:
+      use: "管理者"
+      stems: ["管理者"]
+    nl_NL:
+      use: "admin"
+      stems: ["admin"]
+      note: "Beheerder also appears, mostly in the manual; use admin consistently."
+    pl:
+      use: "administrator"
+      avoid: ["koordynator"]
+      stems: ["administrator"]
+    pt_BR:
+      use: "admin"
+      stems: ["admin"]
+      note: "App and manual majority; administrador is acceptable in running prose."
+    ro:
+      use: "admin"
+      stems: ["admin"]
+      note: "Short, familiar label; \"administrator\" is fine in running text."
+    ru:
+      use: "администратор"
+      avoid: ["координатор"]
+      stems: ["админ"]
+      note: "Админ is acceptable only in short labels."
+    sl:
+      use: "skrbnik"
+      stems: ["skrbni", "administrator"]
+      note: "Administrator is an acceptable synonym; prefer skrbnik for consistency."
+    sv:
+      use: "admin"
+      avoid: ["administration"]
+      stems: ["admin"]
+      note: "Administratör is acceptable in longer prose; Administration names the activity, not the role."
+    tr:
+      use: "yönetici"
+      stems: ["yönetici"]
+      note: "Use yönetici rather than the loanword admin in labels such as Make admin"
+    uk:
+      use: "адміністратор"
+      avoid: ["координатор"]
+      stems: ["адміністратор"]
+      note: "координатор is Loomio's former name for the role."
+    zh_CN:
+      use: "管理员"
+      avoid: ["行政"]
+      stems: ["管理员"]
+    zh_TW:
+      use: "管理員"
+      stems: ["管理員"]
+  guest:
+    means: "A person invited to a single thread or poll without joining the group."
+    be:
+      use: "госць"
+      stems: ["госц", "гасц"]
+    ca:
+      use: "convidat"
+      avoid: ["visita"]
+      stems: ["convidat"]
+      note: "Inflect for gender and number (convidada, convidats); \"Visita\" means a visit."
+    da:
+      use: "gæst"
+      stems: ["gæst"]
+    de:
+      use: "Gast"
+      stems: ["gast", "gäste"]
+    el:
+      use: "επισκέπτης"
+      stems: ["επισκέπτ", "επισκεπτ"]
+    es:
+      use: "invitado"
+      stems: ["invitad"]
+      note: "Persona invitada is fine where a gender-neutral form reads better."
+    fi:
+      use: "vieras"
+      stems: ["viera"]
+    fr:
+      use: "invité"
+      stems: ["invité"]
+    he:
+      use: "אורח"
+      stems: ["אורח"]
+    hr:
+      use: "gost"
+      stems: ["gost"]
+    hu:
+      use: "vendég"
+      stems: ["vendég"]
+    it:
+      use: "ospite"
+      stems: ["ospit"]
+    ja:
+      use: "ゲスト"
+      stems: ["ゲスト"]
+    nl_NL:
+      use: "gast"
+      stems: ["gast"]
+    pl:
+      use: "gość"
+      stems: ["gość", "gośc"]
+    pt_BR:
+      use: "convidado"
+      avoid: ["ouvinte"]
+      stems: ["convidad"]
+    ro:
+      use: "invitat"
+      avoid: ["oaspete"]
+      stems: ["invitat", "invitați"]
+      note: "Plural \"invitați\" differs from \"invitații\" (invitations) by one letter; check which is meant."
+    ru:
+      use: "гость"
+      stems: ["гост"]
+    sl:
+      use: "gost"
+      stems: ["gost"]
+    sv:
+      use: "gäst"
+      stems: ["gäst"]
+    tr:
+      use: "misafir"
+      stems: ["misafir"]
+    uk:
+      use: "гість"
+      stems: ["гість", "гост"]
+    zh_CN:
+      use: "访客"
+      stems: ["访客"]
+    zh_TW:
+      use: "訪客"
+      stems: ["訪客"]
+  invitation:
+    means: "A message inviting someone to join a group, thread or poll."
+    be:
+      use: "запрашэнне"
+      stems: ["запрашэн"]
+    ca:
+      use: "invitació"
+      stems: ["invitaci"]
+    da:
+      use: "invitation"
+      stems: ["invitation"]
+    de:
+      use: "Einladung"
+      stems: ["einladung"]
+    el:
+      use: "πρόσκληση"
+      stems: ["πρόσκλησ", "προσκλήσ"]
+    es:
+      use: "invitación"
+      stems: ["invitaci"]
+    fi:
+      use: "kutsu"
+      stems: ["kutsu"]
+    fr:
+      use: "invitation"
+      stems: ["invitation"]
+    he:
+      use: "הזמנה"
+      stems: ["הזמנ"]
+    hr:
+      use: "pozivnica"
+      stems: ["poziv"]
+      note: "poziv alone can mean a phone call; it is fine in sentences such as prihvatiti poziv."
+    hu:
+      use: "meghívó"
+      stems: ["meghív"]
+      note: "Meghívás (the act of inviting) is fine in verbal phrases."
+    it:
+      use: "invito"
+      stems: ["invit"]
+    ja:
+      use: "招待"
+      stems: ["招待"]
+    nl_NL:
+      use: "uitnodiging"
+      stems: ["uitnodig"]
+    pl:
+      use: "zaproszenie"
+      stems: ["zaprosze"]
+    pt_BR:
+      use: "convite"
+      stems: ["convite"]
+    ro:
+      use: "invitație"
+      stems: ["invitați"]
+    ru:
+      use: "приглашение"
+      stems: ["приглашени"]
+    sl:
+      use: "povabilo"
+      stems: ["povabil", "vabil"]
+    sv:
+      use: "inbjudan"
+      stems: ["inbjud"]
+      note: "Plural inbjudningar."
+    tr:
+      use: "davet"
+      stems: ["davet"]
+      note: "davetiye (an invitation card) also contains the stem, but prefer davet for app invitations"
+    uk:
+      use: "запрошення"
+      stems: ["запрошен"]
+    zh_CN:
+      use: "邀请"
+      avoid: ["怨恨"]
+      stems: ["邀请"]
+      note: "邀请函 is acceptable for a sent invitation."
+    zh_TW:
+      use: "邀請"
+      stems: ["邀請"]
+      note: "邀請函 is acceptable for a sent invitation."
+  "membership request":
+    means: "A request from a person asking to join a group, for the group's admins to approve."
+    be:
+      use: "запыт на ўступленне"
+      avoid: ["запыт на сяброўства", "заяўка на членства"]
+      stems: ["на ўступленне"]
+      note: "запыт на сяброўства reads as a social-network friend request."
+    ca:
+      use: "sol·licitud d'afiliació"
+      avoid: ["sol·licitud de membre"]
+      stems: ["sol·licitud d'afiliació", "sol·licituds d'afiliació"]
+    da:
+      use: "medlemsanmodning"
+      stems: ["anmodning"]
+    de:
+      use: "Beitrittsanfrage"
+      stems: ["beitrittsanfrage"]
+      note: "Shorter and plainer than Mitgliedschaftsanfrage or Mitgliedschaftsantrag."
+    el:
+      use: "αίτημα ένταξης"
+      avoid: ["αίτημα εγγραφής", "αίτηση εγγραφής"]
+      stems: ["ένταξης"]
+      note: "εγγραφή also means signing up for an account; ένταξη is unambiguously joining the group"
+    es:
+      use: "solicitud de ingreso"
+      avoid: ["pedido de membresía"]
+      stems: ["solicitud de ingreso", "solicitudes de ingreso"]
+    fi:
+      use: "jäsenyyspyyntö"
+      stems: ["jäsenyyspyy", "jäsenyyspyyn"]
+    fr:
+      use: "demande d’adhésion"
+      stems: ["adhésion"]
+      note: "The app splits between demande d’adhésion and demande d’ajout; adhésion matches the earlier correction of membership from abonnement."
+    he:
+      use: "בקשת הצטרפות"
+      avoid: ["בקשת מנוי", "בקשת חברות"]
+      stems: ["בקשת הצטרפות", "בקשות הצטרפות", "בקשת ההצטרפות", "בקשות ההצטרפות"]
+      note: "בקשת חברות reads as a friend request and בקשת מנוי as a subscription request."
+    hr:
+      use: "zahtjev za članstvo"
+      stems: ["za članstvo"]
+    hu:
+      use: "tagsági kérelem"
+      stems: ["tagsági kérel"]
+    it:
+      use: "richiesta di adesione"
+      stems: ["di adesione"]
+      note: "The app mixes partecipazione, iscrizione and adesione; adesione means joining a group and avoids confusion with participant."
+    ja:
+      use: "参加申請"
+      avoid: ["会員登録", "会員登録申請"]
+      stems: ["参加申請"]
+      note: "会員登録 means account sign-up; the manual already uses 参加申請."
+    nl_NL:
+      use: "lidmaatschapsverzoek"
+      stems: ["lidmaatschapsverzoek", "verzoek om lidmaatschap"]
+    pl:
+      use: "prośba o dołączenie"
+      stems: ["o dołączenie"]
+      note: "Replaces prośba o członkostwo and wniosek o członkostwo."
+    pt_BR:
+      use: "pedido de adesão"
+      avoid: ["inclusão de membro"]
+      stems: ["adesão"]
+      note: "The app mixes pedido de adesão and inclusão de membro; solicitação de adesão is acceptable."
+    ro:
+      use: "cerere de aderare"
+      avoid: ["cerere de abonament"]
+      stems: ["aderare"]
+      note: "\"Abonament\" is a subscription; the app also mixes \"solicitare de membru\" and \"cerere de membru\"."
+    ru:
+      use: "заявка на вступление"
+      stems: ["заявк"]
+      note: "Заявки alone is enough in short labels."
+    sl:
+      use: "zahteva za članstvo"
+      stems: ["za članstvo"]
+      note: "Prošnja za članstvo is also natural, but keep one form; avoid 'prošnja za včlanitev' variants for the same label."
+    sv:
+      use: "medlemsförfrågan"
+      stems: ["förfrågan", "förfrågning"]
+      note: "Use one form instead of mixing medlemskapsbegäran and medlemsansökan."
+    tr:
+      use: "üyelik talebi"
+      stems: ["üyelik talep", "üyelik talebi"]
+    uk:
+      use: "запит на приєднання"
+      stems: ["на приєднання"]
+    zh_CN:
+      use: "加入申请"
+      avoid: ["会员应用", "应用会员资格", "入会应用"]
+      stems: ["加入申请"]
+      note: "应用 means a software app; use 申请 (application/request) and avoid 会员."
+    zh_TW:
+      use: "加入申請"
+      avoid: ["會員申請"]
+      stems: ["加入申請"]
+      note: "Avoid 會員; the request is to join the group."
+  thread:
+    means: "The page that holds one conversation in Loomio: its context, comments, polls and votes. A thread can be a discussion thread or a poll thread, so thread must stay distinct from discussion. Use the word popular apps use for a thread (Slack, Teams, Gmail and messaging apps). Not a strand of fibre."
+    be:
+      use: "тэма"
+      avoid: ["нітка", "разьба"]
+      stems: ["тэм"]
+      note: "Forum and Telegram-topic word for the page holding one conversation; reads naturally as тэма абмеркавання and тэма з апытаннем. Keep distinct from абмеркаванне."
+    ca:
+      use: "fil"
+      avoid: ["fil de discussió"]
+      stems: ["fil"]
+      note: "Plural \"fils\"; use \"fil\" alone so it stays distinct from discussió (fil de la discussió, fil de l'enquesta)."
+    da:
+      use: "tråd"
+      avoid: ["debat"]
+      stems: ["tråd"]
+      note: "As in Slack and email apps; debat drifts towards discussion. Compounds: diskussionstråd, afstemningstråd."
+    de:
+      use: "Thread"
+      avoid: ["Faden", "Gewinde", "Strang", "Thema"]
+      stems: ["thread"]
+      note: "Slack de: Threads benutzen, um Diskussionen zu organisieren. Must stay distinct from Diskussion; Abstimmungs-Thread and Diskussions-Thread both read naturally."
+    el:
+      use: "νήμα"
+      avoid: ["κλωστή"]
+      stems: ["νήμα", "νήματ", "νημάτ"]
+      note: "Greek forums and mail clients use νήμα (νήμα συζήτησης, νήμα δημοσκόπησης); κλωστή is sewing thread, and labels using θέμα (topic) or συζήτηση for thread should become νήμα"
+    es:
+      use: "hilo"
+      avoid: ["subproceso", "hebra"]
+      stems: ["hilo"]
+      note: "Slack's Spanish term (Cómo usar hilos para organizar conversaciones); hilo de discusión and hilo de encuesta both read naturally."
+    fi:
+      use: "ketju"
+      avoid: ["lanka", "kierre", "säie"]
+      stems: ["ketju"]
+      note: "Ketju is the thread word in Teams and Outlook (viestiketju). Keskusteluketju means a discussion thread and kyselyketju a poll thread; do not use keskustelu for thread."
+    fr:
+      use: "fil"
+      avoid: ["filetage"]
+      stems: ["fil"]
+      note: "Slack and messaging apps say fil (de discussion). Say fil de discussion for a discussion thread and fil de sondage for a poll thread; use plain fil when the type doesn't matter."
+    he:
+      use: "שרשור"
+      avoid: ["פתיל", "חוט"]
+      stems: ["שרשור"]
+      note: "The word Hebrew apps (Gmail, Slack, WhatsApp) use for a thread; reads naturally as שרשור דיון and שרשור סקר. Do not use דיון or שיחה for thread."
+    hr:
+      use: "nit"
+      avoid: ["konac", "navoj"]
+      stems: ["nit"]
+      note: "The word Croatian apps (Microsoft Teams/Outlook, email clients) use for a thread; reads naturally as nit rasprave and nit ankete. Do not use rasprava or tema for thread. Forms: nit, niti, nitima."
+    hu:
+      use: "szál"
+      stems: ["szál"]
+      note: "Szál is the thread word in Teams and Outlook (beszélgetési szál). Beszélgetési szál and szavazási szál read naturally; do not use beszélgetés or téma for thread."
+    it:
+      use: "conversazione"
+      avoid: ["filo", "filettatura"]
+      stems: ["conversazion"]
+      note: "Slack Italian uses conversazione for thread and discussione for discussion. Say conversazione del sondaggio for a poll thread and conversazione della discussione for a discussion thread."
+    ja:
+      use: "スレッド"
+      avoid: ["糸", "ネジ", "ピンネジ"]
+      stems: ["スレッド"]
+      note: "Slack's Japanese help uses スレッド for thread and 会話 for conversation. Reads naturally as ディスカッションのスレッド and アンケートのスレッド. Never translate thread as ディスカッション or 議論."
+    nl_NL:
+      use: "thread"
+      avoid: ["draad", "bord"]
+      stems: ["thread"]
+      note: "Familiar loanword used by Dutch apps and forums and already 250 times in the manual; keeps thread distinct from discussie (peilingthread, discussiethread)."
+    pl:
+      use: "wątek"
+      avoid: ["nitka"]
+      stems: ["wątek", "wątk"]
+    pt_BR:
+      use: "conversa"
+      avoid: ["fio"]
+      stems: ["conversa"]
+      note: "Slack's (Usar conversas para organizar as discussões), Teams' and Gmail's Brazilian term; conversa de discussão and conversa de enquete both read naturally. Replace tópico and English thread."
+    ro:
+      use: "fir"
+      avoid: ["fir de execuție", "filet", "fir de discuție"]
+      stems: ["fir"]
+      note: "Plural \"fire\", articulated \"firul\"; drop \"de discuție\" so thread stays distinct from discuție (firul discuției, firul sondajului)."
+    ru:
+      use: "ветка"
+      avoid: ["нить", "поток", "вилочная нить"]
+      stems: ["ветк", "веток"]
+      note: "Slack's Russian word for a thread; reads naturally as ветка обсуждения and ветка опроса."
+    sl:
+      use: "nit"
+      avoid: ["navoj", "viličasti navoj", "tema"]
+      stems: ["nit"]
+      note: "Nit is the usual Slovenian app word for a thread and already the app majority. Tema (topic) is used for some Threads labels and must not be. Reads naturally as nit razprave (discussion thread) and nit ankete (poll thread)."
+    sv:
+      use: "tråd"
+      stems: ["tråd"]
+      note: "As in Slack and email apps; keep distinct from diskussion. Compounds: diskussionstråd, omröstningstråd."
+    tr:
+      use: "ileti dizisi"
+      avoid: ["iplik", "müzakere"]
+      stems: ["ileti dizi"]
+      note: "Gmail, Outlook and Teams call a thread ileti dizisi. konu (topic) is the current majority, but tartışma konusu would read as a subject of debate; inflect the second word: ileti dizisini, ileti dizileri"
+    uk:
+      use: "тема"
+      avoid: ["нитка", "потік"]
+      stems: ["тем"]
+      note: "Forum and Telegram-topic word for the page holding one conversation; reads naturally as тема обговорення and тема з опитуванням. Keep distinct from обговорення."
+    zh_CN:
+      use: "帖子"
+      avoid: ["线程", "螺纹", "叉帖子", "讨论串"]
+      stems: ["帖子"]
+      note: "Widely known forum word and the app majority; distinct from 讨论, so 讨论帖 and 投票帖 both read naturally. 讨论串 is avoided because it contains 讨论; Slack's 消息列 is little known."
+    zh_TW:
+      use: "對話串"
+      avoid: ["線程", "螺紋", "帖子"]
+      stems: ["對話串"]
+      note: "Slack zh-TW term (使用對話串整理討論). 討論串 contains 討論 and would blur thread with discussion; 主題 and 貼文 should also converge on 對話串."
+  discussion:
+    means: "Content started to talk something through, as opposed to a poll. A discussion lives in a thread (a discussion thread), so discussion must stay distinct from thread."
+    be:
+      use: "абмеркаванне"
+      stems: ["абмеркаван"]
+    ca:
+      use: "discussió"
+      stems: ["discussi"]
+      note: "Distinct from fil; \"debat\" is an acceptable synonym but use \"discussió\" for consistency."
+    da:
+      use: "diskussion"
+      stems: ["diskussion"]
+    de:
+      use: "Diskussion"
+      stems: ["diskussion"]
+      note: "A discussion thread, as opposed to a poll; never use Diskussion for thread itself."
+    el:
+      use: "συζήτηση"
+      stems: ["συζήτησ", "συζητήσ"]
+    es:
+      use: "discusión"
+      stems: ["discusi"]
+      note: "Must stay distinct from hilo; never use discusión for a thread that may hold a poll."
+    fi:
+      use: "keskustelu"
+      stems: ["keskustel"]
+    fr:
+      use: "discussion"
+      stems: ["discussion"]
+      note: "Distinct from thread (fil): a discussion is one kind of content inside a thread."
+    he:
+      use: "דיון"
+      stems: ["דיון", "דיונ"]
+      note: "Distinct from thread (שרשור); a discussion lives in a שרשור דיון."
+    hr:
+      use: "rasprava"
+      stems: ["rasprav"]
+      note: "Distinct from thread (nit); a discussion lives in a nit rasprave."
+    hu:
+      use: "beszélgetés"
+      avoid: ["vita"]
+      stems: ["beszélgetés"]
+      note: "Vita means a debate or dispute."
+    it:
+      use: "discussione"
+      stems: ["discussion"]
+      note: "Distinct from thread (conversazione): a discussion is one kind of content inside a thread."
+    ja:
+      use: "ディスカッション"
+      stems: ["ディスカッション", "議論"]
+      note: "Must stay distinct from スレッド; the app sometimes uses ディスカッション for Threads (server.group.stats.threads). 議論 (which can suggest an argument or debate) is acceptable in prose."
+    nl_NL:
+      use: "discussie"
+      stems: ["discussie"]
+      note: "A discussion thread, as opposed to a poll; never use discussie for thread itself."
+    pl:
+      use: "dyskusja"
+      stems: ["dyskusj"]
+      note: "Distinct from thread (wątek): a discussion lives in a wątek dyskusji, a poll in a wątek ankiety."
+    pt_BR:
+      use: "discussão"
+      stems: ["discuss"]
+      note: "Must stay distinct from conversa; never use discussão for a thread that may hold a poll."
+    ro:
+      use: "discuție"
+      stems: ["discuți"]
+      note: "Distinct from fir; use comma-below ț, not cedilla ţ."
+    ru:
+      use: "обсуждение"
+      stems: ["обсуждени"]
+      note: "Distinct from thread (ветка): a discussion lives in a ветка обсуждения."
+    sl:
+      use: "razprava"
+      stems: ["razprav"]
+      note: "Must stay distinct from nit; some app strings translate thread as razprava (e.g. Pripni razpravo for Pin thread)."
+    sv:
+      use: "diskussion"
+      stems: ["diskussion"]
+    tr:
+      use: "tartışma"
+      avoid: ["müzakere"]
+      stems: ["tartışma"]
+    uk:
+      use: "обговорення"
+      stems: ["обговорен"]
+    zh_CN:
+      use: "讨论"
+      stems: ["讨论"]
+    zh_TW:
+      use: "討論"
+      stems: ["討論"]
+      note: "A discussion lives in a thread: 討論對話串 vs 投票對話串."
+  "direct thread":
+    means: "A thread between specific people that does not belong to any group. Builds on the word for thread."
+    be:
+      use: "прамая тэма"
+      avoid: ["прамая нітка"]
+      stems: ["прамая тэма", "прамыя тэмы", "прамой тэмы", "прамую тэму", "прамых тэм", "прамой тэме"]
+    ca:
+      use: "fil directe"
+      stems: ["fil directe", "fils directes"]
+    da:
+      use: "direkte tråd"
+      stems: ["direkte tråd"]
+    de:
+      use: "direkter Thread"
+      avoid: ["direkter Faden"]
+      stems: ["direkte thread", "direkter thread", "direkten thread"]
+      note: "Builds on Thread; replaces direkte Diskussion."
+    el:
+      use: "άμεσο νήμα"
+      avoid: ["άμεσες κλωστές"]
+      stems: ["άμεσο νήμα", "άμεσα νήματα", "άμεσου νήματος", "άμεσων νημάτων"]
+    es:
+      use: "hilo directo"
+      avoid: ["discusión directa"]
+      stems: ["hilo directo", "hilos directos"]
+      note: "Builds on hilo; the manual's discusión directa conflates thread and discussion."
+    fi:
+      use: "suora ketju"
+      avoid: ["suora säie"]
+      stems: ["suor"]
+      note: "Inflect both words: suoran ketjun, suorat ketjut, suoraksi ketjuksi."
+    fr:
+      use: "fil direct"
+      avoid: ["discussion directe"]
+      stems: ["fil direct", "fils directs"]
+      note: "Built on fil; the app's discussion directe wrongly implies a direct thread can only hold a discussion."
+    he:
+      use: "שרשור ישיר"
+      avoid: ["חוט ישיר"]
+      stems: ["שרשור ישיר", "שרשורים ישירים", "השרשור הישיר", "השרשורים הישירים"]
+      note: "The manual sometimes says דיון ישיר; use שרשור ישיר to match thread."
+    hr:
+      use: "izravna nit"
+      stems: ["izravn"]
+      note: "Plural izravne niti; not izravne teme."
+    hu:
+      use: "közvetlen szál"
+      stems: ["közvetlen szál"]
+    it:
+      use: "conversazione diretta"
+      avoid: ["discussione diretta"]
+      stems: ["conversazione diretta", "conversazioni dirette"]
+      note: "Built on conversazione; the app's discussione diretta wrongly implies a direct thread can only hold a discussion."
+    ja:
+      use: "ダイレクトスレッド"
+      avoid: ["直接スレッド", "直接のスレッド"]
+      stems: ["ダイレクトスレッド"]
+    nl_NL:
+      use: "directe thread"
+      avoid: ["directe borden", "directe draad"]
+      stems: ["directe thread"]
+      note: "Builds on thread; replaces directe discussie."
+    pl:
+      use: "bezpośredni wątek"
+      avoid: ["prywatny wątek"]
+      stems: ["bezpośredni"]
+      note: "Builds on wątek; prywatny refers to group privacy settings."
+    pt_BR:
+      use: "conversa direta"
+      avoid: ["discussão direta"]
+      stems: ["conversa direta", "conversas diretas"]
+      note: "Builds on conversa; discussão direta conflates thread and discussion."
+    ro:
+      use: "fir direct"
+      stems: ["fir direct", "fire direct", "firul direct", "firele direct", "firului direct", "firelor direct"]
+    ru:
+      use: "личная ветка"
+      avoid: ["прямая тема", "прямая ветка"]
+      stems: ["личн"]
+      note: "Builds on ветка; личная matches личные сообщения, прямая reads oddly."
+    sl:
+      use: "neposredna nit"
+      stems: ["neposredn"]
+    sv:
+      use: "direkt tråd"
+      stems: ["direkt tråd", "direkta tråd"]
+    tr:
+      use: "doğrudan ileti dizisi"
+      stems: ["doğrudan ileti dizi"]
+    uk:
+      use: "пряма тема"
+      avoid: ["пряма нитка"]
+      stems: ["пряма тема", "прямі теми", "прямої теми", "пряму тему", "прямих тем", "прямій темі"]
+    zh_CN:
+      use: "私人帖子"
+      avoid: ["直接帖子", "直接螺纹", "直接对话帖", "私密帖子"]
+      stems: ["私人帖子"]
+      note: "直接 is a literal rendering; 私密 is reserved for group privacy settings."
+    zh_TW:
+      use: "私人對話串"
+      avoid: ["直接螺紋", "直接貼文", "直接討論串", "私密對話串"]
+      stems: ["私人對話串"]
+      note: "直接 is a literal rendering; 私密 is reserved for group privacy settings."
+  context:
+    means: "The introduction at the top of a thread that explains what it is about."
+    be:
+      use: "кантэкст"
+      stems: ["кантэкст"]
+    ca:
+      use: "context"
+      stems: ["context"]
+    da:
+      use: "kontekst"
+      stems: ["kontekst"]
+      note: "Beskrivelse is used on some labels; prefer kontekst for consistency."
+    de:
+      use: "Kontext"
+      stems: ["kontext"]
+      note: "Some labels use Beschreibung; Kontext matches the form label and keeps it distinct from a group description."
+    el:
+      use: "πλαίσιο"
+      avoid: ["περιβάλλον", "περιεχόμενο"]
+      stems: ["πλαίσιο", "πλαισίου"]
+      note: "περιβάλλον means environment and περιεχόμενο means content; the app is split between three words"
+    es:
+      use: "contexto"
+      stems: ["contexto"]
+    fi:
+      use: "konteksti"
+      stems: ["kontekst"]
+    fr:
+      use: "contexte"
+      stems: ["contexte"]
+    he:
+      use: "הקשר"
+      avoid: ["תוכן"]
+      stems: ["הקשר"]
+      note: "תוכן means content."
+    hr:
+      use: "kontekst"
+      stems: ["kontekst"]
+    hu:
+      use: "leírás"
+      stems: ["leírás"]
+      note: "Replace kontextus and háttér for consistency; leírás is the plain word for the introduction."
+    it:
+      use: "contesto"
+      stems: ["contest"]
+    ja:
+      use: "背景説明"
+      avoid: ["コンテクスト"]
+      stems: ["背景説明"]
+      note: "The manual uses 背景説明; コンテキスト is jargon to most readers. Changes the app's majority (コンテキスト)."
+    nl_NL:
+      use: "context"
+      stems: ["context"]
+      note: "The form label currently says Beschrijving; context is the manual's majority and keeps it distinct from a group description."
+    pl:
+      use: "kontekst"
+      stems: ["kontekst"]
+    pt_BR:
+      use: "contexto"
+      stems: ["contexto"]
+    ro:
+      use: "context"
+      stems: ["context"]
+    ru:
+      use: "описание"
+      stems: ["описани"]
+      note: "The form label already uses Описание; контекст in edit actions should follow it."
+    sl:
+      use: "uvod"
+      stems: ["uvod"]
+      note: "Short, familiar word for the introduction at the top of a thread; kontekst (the app majority) is acceptable but longer and more abstract. Opis collides with poll/thread details."
+    sv:
+      use: "kontext"
+      stems: ["kontext"]
+      note: "Sammanhang is also used; prefer kontext for this label."
+    tr:
+      use: "bağlam"
+      avoid: ["içerik"]
+      stems: ["bağlam"]
+      note: "içerik means content"
+    uk:
+      use: "контекст"
+      stems: ["контекст"]
+    zh_CN:
+      use: "背景"
+      avoid: ["语境", "上下文", "线程上下文"]
+      stems: ["背景"]
+      note: "语境 and 上下文 are linguistic/technical senses; the thread context is its background introduction."
+    zh_TW:
+      use: "背景"
+      avoid: ["論述", "上下文", "線程上下文"]
+      stems: ["背景"]
+      note: "論述 means discourse and 上下文 is a technical sense; the thread context is its background introduction."
+  comment:
+    means: "A message posted in a thread."
+    be:
+      use: "каментарый"
+      stems: ["камент"]
+    ca:
+      use: "comentari"
+      stems: ["comentari"]
+    da:
+      use: "kommentar"
+      stems: ["kommentar", "kommenter"]
+    de:
+      use: "Kommentar"
+      stems: ["kommentar", "kommentier"]
+    el:
+      use: "σχόλιο"
+      stems: ["σχόλι", "σχολί"]
+    es:
+      use: "comentario"
+      stems: ["comenta"]
+    fi:
+      use: "kommentti"
+      stems: ["komment"]
+    fr:
+      use: "commentaire"
+      stems: ["comment"]
+    he:
+      use: "תגובה"
+      stems: ["תגוב"]
+      note: "The manual uses תגובה throughout; app labels that say הערה should move to תגובה."
+    hr:
+      use: "komentar"
+      stems: ["komentar"]
+    hu:
+      use: "hozzászólás"
+      stems: ["hozzászól"]
+      note: "Majority usage; replace megjegyzés (remark, note)."
+    it:
+      use: "commento"
+      stems: ["comment"]
+    ja:
+      use: "コメント"
+      stems: ["コメント"]
+    nl_NL:
+      use: "reactie"
+      stems: ["reactie", "reager", "reageer"]
+      note: "Verb: reageren. Opmerking and commentaar also appear; use reactie consistently."
+    pl:
+      use: "komentarz"
+      stems: ["koment"]
+      note: "Verb: skomentować."
+    pt_BR:
+      use: "comentário"
+      stems: ["comentário", "comentar"]
+    ro:
+      use: "comentariu"
+      stems: ["comentari", "comenta"]
+    ru:
+      use: "комментарий"
+      stems: ["коммент"]
+    sl:
+      use: "komentar"
+      stems: ["komentar"]
+    sv:
+      use: "kommentar"
+      stems: ["kommentar", "kommenter"]
+    tr:
+      use: "yorum"
+      stems: ["yorum"]
+    uk:
+      use: "коментар"
+      stems: ["комент"]
+    zh_CN:
+      use: "评论"
+      stems: ["评论"]
+    zh_TW:
+      use: "評論"
+      stems: ["評論"]
+      note: "意見 (opinion) also appears; converge on 評論."
+  reply:
+    means: "A comment responding to another comment, or the action of writing one."
+    be:
+      use: "адказ"
+      stems: ["адказ"]
+      note: "Verb (button) form: Адказаць."
+    ca:
+      use: "resposta"
+      stems: ["respo"]
+      note: "Noun \"resposta\"; the action label is the tu imperative \"Respon\"."
+    da:
+      use: "svar"
+      stems: ["svar"]
+      note: "Verb: svare/svar (imperative)."
+    de:
+      use: "Antwort"
+      stems: ["antwort"]
+      note: "Verb: antworten."
+    el:
+      use: "απάντηση"
+      stems: ["απάντ", "απαντ"]
+    es:
+      use: "respuesta"
+      stems: ["respuest", "respond"]
+      note: "Verb: responder."
+    fi:
+      use: "vastaus"
+      stems: ["vasta"]
+      note: "Verb and button label: Vastaa."
+    fr:
+      use: "réponse"
+      stems: ["répon"]
+      note: "Verb répondre, with vous imperative Répondez in sentences and infinitive Répondre on buttons."
+    he:
+      use: "תשובה"
+      stems: ["תשוב", "להשיב", "השב"]
+      note: "Verb להשיב; keep תגובה for the comment itself."
+    hr:
+      use: "odgovor"
+      stems: ["odgovor"]
+      note: "Verb odgovoriti."
+    hu:
+      use: "válasz"
+      stems: ["válasz"]
+    it:
+      use: "risposta"
+      stems: ["rispost", "rispond"]
+      note: "Verb rispondere, informal imperative Rispondi."
+    ja:
+      use: "返信"
+      stems: ["返信"]
+    nl_NL:
+      use: "antwoord"
+      stems: ["antwoord"]
+      note: "Verb: antwoorden."
+    pl:
+      use: "odpowiedź"
+      stems: ["odpowied"]
+      note: "Button label: Odpowiedz."
+    pt_BR:
+      use: "resposta"
+      stems: ["respost", "respond"]
+      note: "Verb: responder."
+    ro:
+      use: "răspuns"
+      avoid: ["replică"]
+      stems: ["răspun"]
+      note: "Noun \"răspuns\"; the action label is the tu imperative \"Răspunde\"."
+    ru:
+      use: "ответ"
+      stems: ["ответ"]
+      note: "Verb: ответить."
+    sl:
+      use: "odgovor"
+      avoid: ["odvrni"]
+      stems: ["odgovor", "odgovori"]
+      note: "Noun odgovor; verb odgovoriti (imperative Odgovori/Odgovorite). Odvrni means 'avert'."
+    sv:
+      use: "svar"
+      stems: ["svar"]
+      note: "Verb: svara."
+    tr:
+      use: "yanıt"
+      stems: ["yanıt"]
+      note: "Verb yanıtla; cevap is a synonym, prefer yanıt for consistency"
+    uk:
+      use: "відповідь"
+      stems: ["відпов"]
+      note: "Verb (button) form: Відповісти."
+    zh_CN:
+      use: "回复"
+      stems: ["回复"]
+    zh_TW:
+      use: "回覆"
+      stems: ["回覆"]
+  reaction:
+    means: "An emoji response to a comment, poll or vote."
+    be:
+      use: "рэакцыя"
+      stems: ["рэакц"]
+    ca:
+      use: "reacció"
+      stems: ["reacci"]
+    da:
+      use: "reaktion"
+      stems: ["reaktion", "reager"]
+    de:
+      use: "Reaktion"
+      stems: ["reaktion", "reagier"]
+    el:
+      use: "αντίδραση"
+      stems: ["αντίδρασ", "αντιδράσ", "αντέδρασ", "αντιδρ"]
+    es:
+      use: "reacción"
+      stems: ["reacci"]
+    fi:
+      use: "reaktio"
+      stems: ["reaktio", "reagoi"]
+    fr:
+      use: "réaction"
+      stems: ["réaction", "réagi"]
+    he:
+      use: "תגובת אימוג׳י"
+      stems: ["אימוג", "אמוג"]
+      note: "Plain תגובה is the comment term; verb להגיב באימוג׳י."
+    hr:
+      use: "reakcija"
+      stems: ["reakcij", "reagir"]
+    hu:
+      use: "reakció"
+      stems: ["reakci", "reag"]
+    it:
+      use: "reazione"
+      stems: ["reazion", "reagit"]
+    ja:
+      use: "リアクション"
+      stems: ["リアクション"]
+      note: "Standard term for emoji reactions and used in the manual; app mostly has the generic 反応."
+    nl_NL:
+      use: "emoji-reactie"
+      stems: ["emoji-reactie", "reageerde", "gereageerd"]
+      note: "Use the compound so it stays distinct from comment (reactie)."
+    pl:
+      use: "reakcja"
+      stems: ["reakcj"]
+    pt_BR:
+      use: "reação"
+      stems: ["reaç", "reag"]
+    ro:
+      use: "reacție"
+      stems: ["reacți"]
+    ru:
+      use: "реакция"
+      stems: ["реакци"]
+    sl:
+      use: "odziv"
+      stems: ["odziv", "reakcij"]
+      note: "Odziv is the usual Slovenian word for emoji reactions; reakcija is acceptable."
+    sv:
+      use: "reaktion"
+      stems: ["reaktion", "reager"]
+    tr:
+      use: "tepki"
+      stems: ["tepki"]
+    uk:
+      use: "реакція"
+      avoid: ["оцінка"]
+      stems: ["реакц", "реагув"]
+      note: "оцінка belongs to score poll."
+    zh_CN:
+      use: "反应"
+      avoid: ["评论", "点赞"]
+      stems: ["反应"]
+      note: "表情反应 where the emoji sense needs stating."
+    zh_TW:
+      use: "反應"
+      stems: ["反應"]
+      note: "表情反應 where the emoji sense needs stating."
+  mention:
+    means: "Naming a person with @ so they are notified."
+    be:
+      use: "згадка"
+      stems: ["згад"]
+      note: "Verb form: згадаць; in sentences prefer згадалі or impersonal forms over masculine згадаў."
+    ca:
+      use: "menció"
+      stems: ["menci"]
+      note: "Verb \"mencionar\" (t'ha mencionat)."
+    da:
+      use: "omtale"
+      stems: ["omtal", "nævn"]
+      note: "Noun omtale; verb nævne (nævnte dig)."
+    de:
+      use: "Erwähnung"
+      stems: ["erwähn"]
+      note: "Verb: erwähnen."
+    el:
+      use: "αναφορά"
+      stems: ["αναφορ", "αναφέρ", "ανέφερ", "αναφερ"]
+      note: "Verb forms: αναφέρω, ανέφερε"
+    es:
+      use: "mención"
+      stems: ["menci"]
+      note: "Verb: mencionar."
+    fi:
+      use: "maininta"
+      stems: ["maini"]
+      note: "Verb: mainita (mainitsi sinut)."
+    fr:
+      use: "mention"
+      stems: ["mention"]
+    he:
+      use: "אזכור"
+      avoid: ["איזכור"]
+      stems: ["אזכור", "הזכיר", "הזכירו", "אוזכר", "לאזכר"]
+      note: "Verb הזכיר; איזכור is a non-standard spelling."
+    hr:
+      use: "spominjanje"
+      stems: ["spom"]
+      note: "Verb spomenuti."
+    hu:
+      use: "említés"
+      stems: ["említ"]
+    it:
+      use: "menzione"
+      stems: ["menzion"]
+    ja:
+      use: "メンション"
+      stems: ["メンション"]
+      note: "言及 means 'refer to' in prose; for @mentions use メンション（メンションしました）."
+    nl_NL:
+      use: "vermelding"
+      stems: ["vermeld"]
+      note: "Verb: vermelden (heeft je vermeld); genoemd also appears."
+    pl:
+      use: "wzmianka"
+      stems: ["wzmian", "wspomni", "wspomina"]
+      note: "Verb: wspomnieć o kimś."
+    pt_BR:
+      use: "menção"
+      stems: ["menç", "mencion"]
+      note: "Verb: mencionar."
+    ro:
+      use: "mențiune"
+      stems: ["menți"]
+      note: "Verb \"a menționa\" (te-a menționat)."
+    ru:
+      use: "упоминание"
+      stems: ["упомина", "упомян"]
+      note: "Verb: упомянуть."
+    sl:
+      use: "omemba"
+      stems: ["omemb", "omeni", "omenil"]
+    sv:
+      use: "omnämnande"
+      stems: ["nämn"]
+      note: "Verb nämna (nämnde dig)."
+    tr:
+      use: "bahsetme"
+      avoid: ["belirtmek"]
+      stems: ["bahset", "bahsed", "bahsetm"]
+      note: "Verb forms: bahsetti, bahsedin; belirtmek means to state or specify"
+    uk:
+      use: "згадка"
+      stems: ["згад"]
+    zh_CN:
+      use: "提及"
+      stems: ["提及", "提到"]
+    zh_TW:
+      use: "提及"
+      stems: ["提及", "提到"]
+  tag:
+    means: "A label used to organise threads and polls."
+    be:
+      use: "тэг"
+      stems: ["тэг"]
+    ca:
+      use: "etiqueta"
+      stems: ["etiquet"]
+    da:
+      use: "tag"
+      stems: ["tag"]
+      note: "Plural tags; do not mix with mærke in sibling labels."
+    de:
+      use: "Schlagwort"
+      avoid: ["Merge-Tag"]
+      stems: ["schlagw"]
+      note: "Clearer than Tag, which reads as day in the singular; the app and manual mostly use Schlagwort/Schlagwörter."
+    el:
+      use: "ετικέτα"
+      stems: ["ετικέτ", "ετικετ"]
+    es:
+      use: "etiqueta"
+      stems: ["etiquet"]
+    fi:
+      use: "tunniste"
+      stems: ["tunniste"]
+      note: "Replace the occasional tagi and tägi with tunniste for consistency."
+    fr:
+      use: "tag"
+      avoid: ["balise"]
+      stems: ["tag"]
+      note: "Short familiar loanword already used in app and manual; replace the mix of mot-clé and étiquette. Balise means an HTML/markup tag."
+    he:
+      use: "תגית"
+      stems: ["תגי"]
+      note: "Plural תגיות; prefer תגית over the shorter תג."
+    hr:
+      use: "oznaka"
+      stems: ["oznak", "označ"]
+    hu:
+      use: "címke"
+      stems: ["címk"]
+    it:
+      use: "tag"
+      stems: ["tag"]
+      note: "Short familiar loanword already used in the app; replace etichetta where it means a Loomio tag."
+    ja:
+      use: "タグ"
+      stems: ["タグ"]
+    nl_NL:
+      use: "label"
+      stems: ["label"]
+    pl:
+      use: "tag"
+      stems: ["tag"]
+      note: "Use tag consistently rather than alternating with etykieta."
+    pt_BR:
+      use: "tag"
+      stems: ["tag"]
+      note: "Manual majority; etiqueta also appears in the app, so prefer tag consistently."
+    ro:
+      use: "etichetă"
+      stems: ["etichet"]
+    ru:
+      use: "тег"
+      stems: ["тег"]
+      note: "Use тег consistently rather than alternating with метка."
+    sl:
+      use: "oznaka"
+      stems: ["oznak"]
+    sv:
+      use: "tagg"
+      avoid: ["tag"]
+      stems: ["tagg"]
+      note: "Swedish spelling is tagg/taggar; tag means a grip."
+    tr:
+      use: "etiket"
+      stems: ["etiket"]
+    uk:
+      use: "тег"
+      stems: ["тег"]
+      note: "The app mixes тег and мітка; тег is the majority."
+    zh_CN:
+      use: "标签"
+      stems: ["标签"]
+    zh_TW:
+      use: "標籤"
+      stems: ["標籤"]
+  task:
+    means: "A to-do item with an optional due date, created in rich text."
+    be:
+      use: "задача"
+      stems: ["задач"]
+    ca:
+      use: "tasca"
+      stems: ["tasca", "tasques"]
+    da:
+      use: "opgave"
+      stems: ["opgave"]
+    de:
+      use: "Aufgabe"
+      stems: ["aufgabe"]
+    el:
+      use: "εργασία"
+      stems: ["εργασί", "εργασιών"]
+      note: "A few task headings use καθήκοντα (duties); use εργασία throughout"
+    es:
+      use: "tarea"
+      stems: ["tarea"]
+    fi:
+      use: "tehtävä"
+      stems: ["tehtäv"]
+    fr:
+      use: "tâche"
+      stems: ["tâche"]
+    he:
+      use: "משימה"
+      stems: ["משימ"]
+    hr:
+      use: "zadatak"
+      stems: ["zadat", "zadac"]
+    hu:
+      use: "feladat"
+      stems: ["feladat"]
+    it:
+      use: "compito"
+      stems: ["compit"]
+      note: "Attività is reserved for activity; keep compito for to-do items."
+    ja:
+      use: "タスク"
+      stems: ["タスク"]
+    nl_NL:
+      use: "taak"
+      stems: ["taak", "taken"]
+    pl:
+      use: "zadanie"
+      stems: ["zadani", "zadań"]
+    pt_BR:
+      use: "tarefa"
+      stems: ["tarefa"]
+    ro:
+      use: "sarcină"
+      stems: ["sarcin"]
+    ru:
+      use: "задача"
+      stems: ["задач"]
+      note: "Use задача consistently rather than alternating with задание."
+    sl:
+      use: "opravilo"
+      stems: ["opravil"]
+      note: "App currently mixes naloga and opravilo; opravilo is the standard to-do term (Seznam opravil)."
+    sv:
+      use: "uppgift"
+      stems: ["uppgift"]
+    tr:
+      use: "görev"
+      stems: ["görev"]
+    uk:
+      use: "завдання"
+      stems: ["завдан"]
+    zh_CN:
+      use: "任务"
+      stems: ["任务"]
+    zh_TW:
+      use: "工作"
+      stems: ["工作"]
+      note: "Taiwan software convention for to-do items, as in Microsoft TW."
+  template:
+    means: "A reusable starting point for a new thread or poll."
+    be:
+      use: "шаблон"
+      stems: ["шаблон"]
+    ca:
+      use: "plantilla"
+      stems: ["plantill"]
+    da:
+      use: "skabelon"
+      stems: ["skabelon"]
+    de:
+      use: "Vorlage"
+      avoid: ["Gabelvorlage"]
+      stems: ["vorlage"]
+    el:
+      use: "πρότυπο"
+      stems: ["πρότυπ", "προτύπ"]
+    es:
+      use: "plantilla"
+      stems: ["plantilla"]
+    fi:
+      use: "malli"
+      avoid: ["sapluuna"]
+      stems: ["malli"]
+      note: "Mallipohja is an acceptable longer form."
+    fr:
+      use: "modèle"
+      stems: ["modèle"]
+    he:
+      use: "תבנית"
+      stems: ["תבני"]
+    hr:
+      use: "predložak"
+      stems: ["predlož", "predlošk"]
+    hu:
+      use: "sablon"
+      stems: ["sablon"]
+    it:
+      use: "modello"
+      stems: ["modell"]
+    ja:
+      use: "テンプレート"
+      stems: ["テンプレート"]
+    nl_NL:
+      use: "sjabloon"
+      avoid: ["vorksjabloon", "enquête-sjabloon"]
+      stems: ["sjablo"]
+    pl:
+      use: "szablon"
+      stems: ["szablon"]
+    pt_BR:
+      use: "modelo"
+      stems: ["modelo"]
+    ro:
+      use: "șablon"
+      stems: ["șablon", "șabloan"]
+      note: "Prefer \"șablon\" over \"model\" for consistency."
+    ru:
+      use: "шаблон"
+      stems: ["шаблон"]
+    sl:
+      use: "predloga"
+      stems: ["predlog"]
+      note: "Inflected forms overlap with predlog (proposal), e.g. genitive plural predlog; context distinguishes them."
+    sv:
+      use: "mall"
+      stems: ["mall"]
+    tr:
+      use: "şablon"
+      stems: ["şablon"]
+    uk:
+      use: "шаблон"
+      stems: ["шаблон"]
+    zh_CN:
+      use: "模板"
+      stems: ["模板"]
+    zh_TW:
+      use: "範本"
+      stems: ["範本"]
+      note: "Taiwan software convention; 模板 is mainland usage."
+  notification:
+    means: "A message telling a person about activity, in the app or by email."
+    be:
+      use: "апавяшчэнне"
+      stems: ["апавяшчэн"]
+    ca:
+      use: "notificació"
+      stems: ["notificaci"]
+    da:
+      use: "notifikation"
+      stems: ["notifikation"]
+    de:
+      use: "Benachrichtigung"
+      stems: ["benachrichtig"]
+    el:
+      use: "ειδοποίηση"
+      stems: ["ειδοποίησ", "ειδοποιήσ", "ειδοποι"]
+    es:
+      use: "notificación"
+      stems: ["notific"]
+    fi:
+      use: "ilmoitus"
+      stems: ["ilmoitu"]
+    fr:
+      use: "notification"
+      stems: ["notifi"]
+    he:
+      use: "התראה"
+      stems: ["התרא"]
+      note: "Use התראה consistently rather than the variant התרעה."
+    hr:
+      use: "obavijest"
+      stems: ["obavijest", "obavješt"]
+      note: "Prefer obavijest over the anglicism notifikacija."
+    hu:
+      use: "értesítés"
+      stems: ["értesít"]
+    it:
+      use: "notifica"
+      stems: ["notific"]
+    ja:
+      use: "通知"
+      stems: ["通知"]
+    nl_NL:
+      use: "melding"
+      stems: ["melding"]
+    pl:
+      use: "powiadomienie"
+      stems: ["powiadomie"]
+    pt_BR:
+      use: "notificação"
+      stems: ["notifica"]
+    ro:
+      use: "notificare"
+      stems: ["notific"]
+    ru:
+      use: "уведомление"
+      stems: ["уведомлени"]
+    sl:
+      use: "obvestilo"
+      stems: ["obvesti"]
+    sv:
+      use: "notis"
+      stems: ["notis"]
+      note: "Notis/notiser is the familiar app word; replaces the mix of avisering, notifiering and notifikation."
+    tr:
+      use: "bildirim"
+      stems: ["bildirim"]
+    uk:
+      use: "сповіщення"
+      stems: ["сповіщен"]
+    zh_CN:
+      use: "通知"
+      stems: ["通知"]
+    zh_TW:
+      use: "通知"
+      stems: ["通知"]
+  decision:
+    means: "A choice made by a group, usually by a poll. General term covering all poll types."
+    be:
+      use: "рашэнне"
+      stems: ["рашэн"]
+    ca:
+      use: "decisió"
+      stems: ["decisi"]
+    da:
+      use: "beslutning"
+      avoid: ["afgørelse", "stillingtagen"]
+      stems: ["beslutning"]
+    de:
+      use: "Entscheidung"
+      avoid: ["Abstimmung"]
+      stems: ["entscheid"]
+    el:
+      use: "απόφαση"
+      stems: ["απόφασ", "αποφάσ"]
+    es:
+      use: "decisión"
+      stems: ["decisi"]
+    fi:
+      use: "päätös"
+      stems: ["päätö"]
+    fr:
+      use: "décision"
+      stems: ["décision"]
+    he:
+      use: "החלטה"
+      avoid: ["דיון"]
+      stems: ["החלט"]
+      note: "common.decisions was mistranslated as דיונים (discussions)."
+    hr:
+      use: "odluka"
+      stems: ["odluk", "odluc"]
+    hu:
+      use: "döntés"
+      stems: ["döntés"]
+    it:
+      use: "decisione"
+      stems: ["decision"]
+    ja:
+      use: "決定"
+      avoid: ["決断"]
+      stems: ["決定"]
+      note: "意思決定 for the process of deciding; 決断 means a personal resolve."
+    nl_NL:
+      use: "besluit"
+      avoid: ["startbeslissing"]
+      stems: ["besluit", "beslo"]
+      note: "Shorter and the everyday word (een besluit nemen); the manual already prefers it."
+    pl:
+      use: "decyzja"
+      stems: ["decyzj"]
+    pt_BR:
+      use: "decisão"
+      stems: ["decis"]
+    ro:
+      use: "decizie"
+      stems: ["decizi"]
+    ru:
+      use: "решение"
+      stems: ["решени"]
+    sl:
+      use: "odločitev"
+      stems: ["odločit"]
+    sv:
+      use: "beslut"
+      stems: ["beslut"]
+    tr:
+      use: "karar"
+      stems: ["karar"]
+    uk:
+      use: "рішення"
+      stems: ["рішен"]
+    zh_CN:
+      use: "决定"
+      stems: ["决定", "决策"]
+      note: "决策 is acceptable in list headings such as 决策模板."
+    zh_TW:
+      use: "決定"
+      stems: ["決定", "決策"]
+      note: "決策 is acceptable in list headings such as 決策範本."
+  poll:
+    means: "The general Loomio decision tool, and also the poll type for choosing among options. Not a public opinion survey."
+    be:
+      use: "апытанне"
+      stems: ["апытан"]
+    ca:
+      use: "enquesta"
+      stems: ["enquest"]
+      note: "\"Enquesta\" is the standard Catalan label for in-app polls; use \"votació\" only for the act of voting (votació anònima)."
+    da:
+      use: "afstemning"
+      avoid: ["meningsmåling"]
+      stems: ["afstemning"]
+      note: "Meningsmåling is an opinion survey."
+    de:
+      use: "Abstimmung"
+      avoid: ["Umfrage"]
+      stems: ["abstimmung"]
+      note: "The word WhatsApp uses for its poll feature in German (\"Abstimmungen verwenden\"); Umfrage reads as a non-binding survey."
+    el:
+      use: "δημοσκόπηση"
+      stems: ["δημοσκόπησ", "δημοσκοπήσ"]
+      note: "The word WhatsApp and Telegram use for polls; ψηφοφορία stays for voting as an activity, as in ανώνυμη ψηφοφορία"
+    es:
+      use: "encuesta"
+      stems: ["encuesta"]
+      note: "WhatsApp's Spanish name for its poll feature, and the app majority."
+    fi:
+      use: "kysely"
+      avoid: ["mielipidekysely"]
+      stems: ["kysely"]
+      note: "Kysely is the WhatsApp poll feature name. Keep äänestys for voting, so poll and vote stay distinct."
+    fr:
+      use: "sondage"
+      avoid: ["interrogation"]
+      stems: ["sondage"]
+    he:
+      use: "סקר"
+      avoid: ["משאל"]
+      stems: ["סקר"]
+      note: "The manual often uses משאל, which suggests a referendum; use סקר as the app does."
+    hr:
+      use: "anketa"
+      stems: ["anket"]
+      note: "The established word for an app poll; Loomio polls are decisions, not opinion surveys."
+    hu:
+      use: "szavazás"
+      avoid: ["közvélemény-kutatás", "közvélemény kutatás", "felmérés"]
+      stems: ["szavazás"]
+      note: "Szavazás is the WhatsApp poll feature name."
+    it:
+      use: "sondaggio"
+      stems: ["sondagg"]
+      note: "Votazione means the act of voting; use sondaggio for the poll itself, e.g. Nuovo sondaggio rather than Nuova votazione."
+    ja:
+      use: "アンケート"
+      avoid: ["世論調査", "タイムポーリング"]
+      stems: ["アンケート"]
+      note: "WhatsApp's Japanese poll feature is アンケート. Now distinct from vote (投票); changes the app majority, which used 投票 for poll. Poll type names keep 投票 (スコア投票, ドット投票, ランク投票) because they name voting methods. 世論調査 is a public opinion survey."
+    nl_NL:
+      use: "peiling"
+      avoid: ["enquête"]
+      stems: ["peiling"]
+      note: "Enquête means a questionnaire or survey; stemming is the voting itself, not the poll."
+    pl:
+      use: "ankieta"
+      stems: ["ankiet"]
+      note: "WhatsApp's Polish name for its poll feature; głosowanie is the act of voting."
+    pt_BR:
+      use: "enquete"
+      avoid: ["pesquisa"]
+      stems: ["enquete"]
+      note: "Pesquisa reads as a survey or a search."
+    ro:
+      use: "sondaj"
+      stems: ["sondaj"]
+      note: "Established app term; use \"votare\" only for the act of voting."
+    ru:
+      use: "опрос"
+      stems: ["опрос"]
+      note: "WhatsApp's Russian name for its poll feature; голосование is the act of voting."
+    sl:
+      use: "anketa"
+      avoid: ["javnomnenjska raziskava"]
+      stems: ["anket"]
+      note: "WhatsApp's Slovenian poll feature is Anketa; never render it as an opinion survey."
+    sv:
+      use: "omröstning"
+      avoid: ["opinionsundersökning", "undersökning", "enkät"]
+      stems: ["omröstning"]
+      note: "Undersökning and enkät mean a survey or questionnaire."
+    tr:
+      use: "anket"
+      stems: ["anket"]
+      note: "The word WhatsApp and Telegram use for polls; oylama is voting as an activity"
+    uk:
+      use: "опитування"
+      stems: ["опитуван"]
+      note: "Do not call the poll itself голосування, which belongs to vote."
+    zh_CN:
+      use: "投票"
+      avoid: ["轮询", "民意调查", "民调", "调查"]
+      stems: ["投票"]
+      note: "Chinese uses 投票 for both poll and vote; 轮询 is computer polling and 民意调查 is an opinion survey."
+    zh_TW:
+      use: "投票"
+      avoid: ["輪詢", "民意調查", "民調", "調查"]
+      stems: ["投票"]
+      note: "Chinese uses 投票 for both poll and vote; 輪詢 is computer polling and 民意調查 is an opinion survey."
+  proposal:
+    means: "A poll type asking people to agree, abstain, disagree or block on a proposed course of action."
+    be:
+      use: "прапанова"
+      stems: ["прапанов"]
+    ca:
+      use: "proposta"
+      stems: ["propost"]
+    da:
+      use: "forslag"
+      stems: ["forslag"]
+    de:
+      use: "Vorschlag"
+      avoid: ["Angebot"]
+      stems: ["vorschl"]
+      note: "Angebot means a commercial offer."
+    el:
+      use: "πρόταση"
+      stems: ["πρότασ", "προτάσ"]
+    es:
+      use: "propuesta"
+      stems: ["propuesta"]
+    fi:
+      use: "ehdotus"
+      stems: ["ehdotu"]
+    fr:
+      use: "proposition"
+      stems: ["proposition"]
+    he:
+      use: "הצעה"
+      stems: ["הצע"]
+    hr:
+      use: "prijedlog"
+      stems: ["prijedlog", "prijedloz"]
+    hu:
+      use: "javaslat"
+      avoid: ["ajánlat"]
+      stems: ["javaslat"]
+      note: "Ajánlat means a commercial offer."
+    it:
+      use: "proposta"
+      stems: ["propost"]
+    ja:
+      use: "提案"
+      avoid: ["株式提案"]
+      stems: ["提案"]
+    nl_NL:
+      use: "voorstel"
+      stems: ["voorstel"]
+    pl:
+      use: "propozycja"
+      stems: ["propozycj"]
+    pt_BR:
+      use: "proposta"
+      stems: ["proposta"]
+    ro:
+      use: "propunere"
+      stems: ["propuner"]
+    ru:
+      use: "предложение"
+      stems: ["предложени"]
+    sl:
+      use: "predlog"
+      avoid: ["snubitev"]
+      stems: ["predlog"]
+      note: "Snubitev means a marriage proposal."
+    sv:
+      use: "förslag"
+      stems: ["förslag"]
+    tr:
+      use: "teklif"
+      stems: ["teklif"]
+      note: "The app mixes teklif and öneri; teklif is the majority"
+    uk:
+      use: "пропозиція"
+      stems: ["пропозиц"]
+    zh_CN:
+      use: "提案"
+      stems: ["提案"]
+      note: "Majority usage; converge 提议 on 提案."
+    zh_TW:
+      use: "提案"
+      stems: ["提案"]
+      note: "Majority usage; converge 提議 on 提案."
+  vote:
+    means: "A person's response to a poll (noun), or giving that response (verb)."
+    be:
+      use: "голас"
+      stems: ["голас", "галас"]
+      note: "Noun голас (галасы); verb галасаваць. Use the noun for labels such as Vote in tables and bookmark types, not Галасаваць."
+    ca:
+      use: "vot"
+      stems: ["vot"]
+      note: "Noun \"vot\"; the action label is the tu imperative \"Vota\"."
+    da:
+      use: "stemme"
+      stems: ["stem"]
+      note: "Noun stemme/stemmer; verb stemme/stemte/stem."
+    de:
+      use: "Stimme"
+      avoid: ["Abstimmung", "Abstimmungsbeitrag"]
+      stems: ["stimme", "stimmen", "stimmt", "stimmst"]
+      note: "Noun Stimme, verb abstimmen (du stimmst ab); Abstimmung is the poll, not one person's vote."
+    el:
+      use: "ψήφος"
+      stems: ["ψήφ", "ψηφ"]
+      note: "Verb ψηφίζω (ψηφίστε, ψήφισε)"
+    es:
+      use: "voto"
+      stems: ["vot"]
+      note: "Noun voto, verb votar; use votación for the act or process of voting, not for one person's vote."
+    fi:
+      use: "ääni"
+      stems: ["ään"]
+      note: "Noun ääni (a person's vote; ääntä, äänet); verb äänestää (Äänestä nyt). Do not use äänestys for a single person's vote."
+    fr:
+      use: "vote"
+      stems: ["vote", "voté", "votant"]
+      note: "Verb voter; use the vous imperative Votez in sentences and the infinitive Voter on buttons."
+    he:
+      use: "הצבעה"
+      stems: ["הצבע", "הצביע"]
+      note: "Verb להצביע; קול/קולות is fine for counted votes in tallies and STV."
+    hr:
+      use: "glas"
+      stems: ["glas"]
+      note: "Noun glas (a vote, plural glasovi); verb glasati, process glasanje. Use glas, not glasanje, for a single person's vote."
+    hu:
+      use: "szavazat"
+      stems: ["szavaz"]
+      note: "Noun szavazat (a person's vote); verb szavaz (Szavazz most). Do not use szavazás, the poll, for a person's vote."
+    it:
+      use: "voto"
+      stems: ["vot"]
+      note: "Verb votare, informal imperative Vota."
+    ja:
+      use: "投票"
+      stems: ["票"]
+      note: "Verb 投票する; use 票 where votes are counted (1票, 票数). Do not use 投票 for a poll, which is アンケート."
+    nl_NL:
+      use: "stem"
+      avoid: ["stemming"]
+      stems: ["stem"]
+      note: "Noun stem, verb stemmen; stemming is the voting process, not one person's vote."
+    pl:
+      use: "głos"
+      avoid: ["głosowanie"]
+      stems: ["głos"]
+      note: "Noun głos (a person's vote), verb głosować; głosowanie is voting in general, not one person's vote."
+    pt_BR:
+      use: "voto"
+      stems: ["vot"]
+      note: "Noun voto, verb votar."
+    ro:
+      use: "vot"
+      stems: ["vot"]
+      note: "Noun \"vot\"; the action label is the tu imperative \"Votează\"."
+    ru:
+      use: "голос"
+      avoid: ["голосование"]
+      stems: ["голос"]
+      note: "Noun голос (a person's vote), verb голосовать; голосование is voting in general, not one person's vote."
+    sl:
+      use: "glas"
+      stems: ["glas"]
+      note: "Noun glas (glasovi); verb glasovati, imperative Glasujte. Glasovanje means 'voting' or a ballot, not one person's vote."
+    sv:
+      use: "röst"
+      stems: ["röst"]
+      note: "Noun röst/röster; verb rösta/röstade."
+    tr:
+      use: "oy"
+      stems: ["oy"]
+      note: "Verb oy vermek; oylama for voting as an activity"
+    uk:
+      use: "голос"
+      stems: ["голос"]
+      note: "Noun голос (голоси); verb голосувати. Use the noun for labels such as Vote in tables and bookmark types."
+    zh_CN:
+      use: "投票"
+      stems: ["投票", "票"]
+      note: "Same word as poll; use 票 when counting votes (%{count} 票)."
+    zh_TW:
+      use: "投票"
+      stems: ["投票", "票"]
+      note: "Same word as poll; use 票 when counting votes (%{count} 票)."
+  voter:
+    means: "A person who can vote, or has voted, in a poll."
+    be:
+      use: "выбаршчык"
+      stems: ["выбаршчык"]
+      note: "Prefer plural выбаршчыкі for gender inclusion."
+    ca:
+      use: "votant"
+      stems: ["votant"]
+    da:
+      use: "vælger"
+      stems: ["vælger"]
+    de:
+      use: "Abstimmende"
+      avoid: ["Wähler"]
+      stems: ["abstimmend"]
+      note: "Gender-neutral, like Teilnehmende; Wähler suggests a political electorate and is masculine."
+    el:
+      use: "ψηφοφόρος"
+      stems: ["ψηφοφόρ"]
+    es:
+      use: "votante"
+      stems: ["votante"]
+    fi:
+      use: "äänestäjä"
+      stems: ["äänestäj"]
+    fr:
+      use: "électeur"
+      stems: ["électeur", "électrice"]
+      note: "App majority; votant appears in counts and is acceptable for people who have already voted."
+    he:
+      use: "מצביע"
+      stems: ["מצביע"]
+      note: "Plural מצביעים."
+    hr:
+      use: "birač"
+      stems: ["birač"]
+    hu:
+      use: "szavazó"
+      avoid: ["választó"]
+      stems: ["szavazó"]
+      note: "Választó means an elector in a public election."
+    it:
+      use: "elettore"
+      stems: ["elettor", "elettric"]
+      note: "App majority; votante is acceptable in counts of people who have voted."
+    ja:
+      use: "投票者"
+      stems: ["投票者"]
+      note: "Plain everyday word; 有権者 (the app majority) sounds like a legal electorate in public elections."
+    nl_NL:
+      use: "kiezer"
+      stems: ["kiezer"]
+      note: "Stemmer also appears; use kiezer consistently."
+    pl:
+      use: "głosujący"
+      stems: ["głosując"]
+      note: "Wyborca suggests a political electorate; plural głosujący, genitive głosujących."
+    pt_BR:
+      use: "eleitor"
+      stems: ["eleitor"]
+    ro:
+      use: "alegător"
+      stems: ["alegăt"]
+    ru:
+      use: "голосующий"
+      stems: ["голосующ"]
+      note: "Избиратель suggests a political electorate; plural голосующие."
+    sl:
+      use: "volivec"
+      stems: ["volivc", "volivec"]
+    sv:
+      use: "väljare"
+      stems: ["väljare"]
+    tr:
+      use: "seçmen"
+      stems: ["seçmen"]
+    uk:
+      use: "виборець"
+      stems: ["виборц", "виборець"]
+    zh_CN:
+      use: "投票者"
+      stems: ["投票者"]
+      note: "选民 suggests a political electorate."
+    zh_TW:
+      use: "投票者"
+      stems: ["投票者"]
+      note: "Replaces the majority 選民, which suggests a political electorate."
+  participant:
+    means: "A person taking part in a thread or poll."
+    be:
+      use: "удзельнік"
+      stems: ["удзельн"]
+      note: "Same word as member (see member)."
+    ca:
+      use: "participant"
+      stems: ["participant"]
+    da:
+      use: "deltager"
+      stems: ["deltager"]
+    de:
+      use: "Teilnehmende"
+      stems: ["teilnehm"]
+      note: "Gender-neutral form used throughout the manual; the app mostly has Teilnehmer."
+    el:
+      use: "συμμετέχων"
+      avoid: ["συμμέτοχος"]
+      stems: ["συμμετέχ", "συμμετεχ"]
+      note: "συμμέτοχος means accomplice; plural οι συμμετέχοντες"
+    es:
+      use: "participante"
+      stems: ["participante"]
+    fi:
+      use: "osallistuja"
+      stems: ["osallistuj"]
+    fr:
+      use: "participant"
+      stems: ["participant"]
+    he:
+      use: "משתתף"
+      stems: ["משתתף", "משתתפ"]
+    hr:
+      use: "sudionik"
+      stems: ["sudionik", "sudionic"]
+    hu:
+      use: "résztvevő"
+      stems: ["résztvev"]
+    it:
+      use: "partecipante"
+      stems: ["partecipant"]
+    ja:
+      use: "参加者"
+      stems: ["参加者"]
+    nl_NL:
+      use: "deelnemer"
+      stems: ["deelnem"]
+    pl:
+      use: "uczestnik"
+      stems: ["uczestni"]
+    pt_BR:
+      use: "participante"
+      stems: ["participante"]
+    ro:
+      use: "participant"
+      stems: ["participan"]
+    ru:
+      use: "участник"
+      stems: ["участник"]
+      note: "Same word as member; add голосования or обсуждения when the distinction matters."
+    sl:
+      use: "udeleženec"
+      stems: ["udeležen"]
+    sv:
+      use: "deltagare"
+      stems: ["deltagare"]
+    tr:
+      use: "katılımcı"
+      stems: ["katılımcı"]
+    uk:
+      use: "учасник"
+      stems: ["учасни"]
+      note: "Same word as member (see member)."
+    zh_CN:
+      use: "参与者"
+      stems: ["参与者"]
+    zh_TW:
+      use: "參與者"
+      stems: ["參與者"]
+  option:
+    means: "One of the choices people vote on in a poll."
+    be:
+      use: "варыянт"
+      avoid: ["опцыя", "параметр"]
+      stems: ["варыянт"]
+    ca:
+      use: "opció"
+      stems: ["opci"]
+    da:
+      use: "mulighed"
+      stems: ["mulighed"]
+      note: "Group settings are indstillinger, not options."
+    de:
+      use: "Option"
+      stems: ["option"]
+    el:
+      use: "επιλογή"
+      stems: ["επιλογ"]
+    es:
+      use: "opción"
+      stems: ["opci"]
+    fi:
+      use: "vaihtoehto"
+      avoid: ["asetus", "asetukset"]
+      stems: ["vaihtoeh"]
+      note: "Asetukset means settings."
+    fr:
+      use: "option"
+      stems: ["option"]
+    he:
+      use: "אפשרות"
+      stems: ["אפשרו"]
+    hr:
+      use: "opcija"
+      stems: ["opcij"]
+      note: "mogućnost is fine for general settings menus but use opcija for poll options."
+    hu:
+      use: "lehetőség"
+      stems: ["lehetőség"]
+      note: "Replace opció and választási lehetőség for consistency."
+    it:
+      use: "opzione"
+      stems: ["opzion"]
+    ja:
+      use: "選択肢"
+      avoid: ["オプション"]
+      stems: ["選択肢"]
+      note: "オプション collides with settings options; the manual uses 選択肢. Changes the app's majority."
+    nl_NL:
+      use: "optie"
+      stems: ["optie"]
+    pl:
+      use: "opcja"
+      stems: ["opcj"]
+    pt_BR:
+      use: "opção"
+      stems: ["opç"]
+    ro:
+      use: "opțiune"
+      stems: ["opțiun"]
+    ru:
+      use: "вариант"
+      avoid: ["параметр", "опция"]
+      stems: ["вариант"]
+      note: "Параметр means a setting."
+    sl:
+      use: "možnost"
+      stems: ["možnost"]
+    sv:
+      use: "alternativ"
+      stems: ["alternativ"]
+    tr:
+      use: "seçenek"
+      stems: ["seçenek", "seçeneğ"]
+    uk:
+      use: "варіант"
+      avoid: ["опція"]
+      stems: ["варіант"]
+      note: "опція reads as a setting."
+    zh_CN:
+      use: "选项"
+      stems: ["选项"]
+    zh_TW:
+      use: "選項"
+      stems: ["選項"]
+  reason:
+    means: "The explanation a person gives with their vote."
+    be:
+      use: "прычына"
+      stems: ["прычын"]
+    ca:
+      use: "motiu"
+      stems: ["motiu"]
+      note: "Prefer \"motiu\" over \"raó\" for consistency."
+    da:
+      use: "begrundelse"
+      avoid: ["årsag"]
+      stems: ["begrundelse"]
+      note: "Årsag means cause, not the explanation a voter gives."
+    de:
+      use: "Begründung"
+      stems: ["begründ"]
+      note: "Avoid bare Grund compounds such as Grundaufforderung or Wiederherstellungsgrund."
+    el:
+      use: "λόγος"
+      avoid: ["αιτία"]
+      stems: ["λόγο", "λόγου", "λόγω"]
+      note: "αιτία means cause; λόγος ψήφου for vote reason"
+    es:
+      use: "motivo"
+      stems: ["motivo"]
+      note: "App majority; razón is also used but motivo is clearer for the explanation given with a vote."
+    fi:
+      use: "perustelu"
+      stems: ["perustel"]
+      note: "Changed from the majority syy (cause); the vote explanation is a perustelu, as in Äänen perustelu."
+    fr:
+      use: "raison"
+      stems: ["raison"]
+      note: "Motif is an acceptable variant but keep raison in labels such as Raison du vote."
+    he:
+      use: "נימוק"
+      stems: ["נימוק", "נימוקי"]
+      note: "The manual uses נימוק; סיבה means cause and reads poorly as a vote explanation."
+    hr:
+      use: "razlog"
+      stems: ["razlog", "razloz"]
+    hu:
+      use: "indoklás"
+      avoid: ["ok"]
+      stems: ["indok"]
+      note: "Changed from the majority Ok (cause); the explanation given with a vote is an indoklás."
+    it:
+      use: "motivo"
+      stems: ["motiv"]
+      note: "Shorter than motivazione, which still matches the stem."
+    ja:
+      use: "理由"
+      avoid: ["理性"]
+      stems: ["理由"]
+    nl_NL:
+      use: "reden"
+      stems: ["reden"]
+    pl:
+      use: "powód"
+      stems: ["powód", "powod"]
+      note: "Short and familiar; already the app's majority word."
+    pt_BR:
+      use: "motivo"
+      stems: ["motivo", "justificativa"]
+      note: "App majority; justificativa (common in the manual) is an acceptable synonym, razão is not preferred."
+    ro:
+      use: "motiv"
+      stems: ["motiv"]
+    ru:
+      use: "причина"
+      stems: ["причин"]
+      note: "Short and familiar; with vote say причина выбора rather than причина голосования."
+    sl:
+      use: "razlog"
+      stems: ["razlog"]
+    sv:
+      use: "anledning"
+      avoid: ["orsak"]
+      stems: ["anledning"]
+      note: "Orsak means cause; motivering is also acceptable in prose."
+    tr:
+      use: "gerekçe"
+      avoid: ["mantık"]
+      stems: ["gerekçe"]
+      note: "neden also means why and sebep is a cause; gerekçe is the justification for a vote"
+    uk:
+      use: "причина"
+      stems: ["причин"]
+    zh_CN:
+      use: "理由"
+      stems: ["理由"]
+      note: "理由 is the justification a voter gives; 原因 means a cause."
+    zh_TW:
+      use: "理由"
+      stems: ["理由"]
+      note: "理由 is the justification a voter gives; 原因 means a cause."
+  outcome:
+    means: "The statement a poll's author writes after it closes, saying what was decided and what happens next. Translate it with the word for \"conclusion\", which translates reliably and stays distinct from the vote tally (results). Never use the word for \"result\"."
+    be:
+      use: "выснова"
+      avoid: ["вынік"]
+      stems: ["выснов"]
+    ca:
+      use: "conclusió"
+      avoid: ["resultat"]
+      stems: ["conclusi"]
+      note: "The app mostly uses \"resultat\", which collides with results."
+    da:
+      use: "konklusion"
+      avoid: ["resultat"]
+      stems: ["konklusion"]
+    de:
+      use: "Fazit"
+      avoid: ["Ergebnis", "Abstimmungsergebnis"]
+      stems: ["fazit"]
+      note: "Ergebnis is the vote tally (results); plural Fazits."
+    el:
+      use: "συμπέρασμα"
+      avoid: ["αποτέλεσμα"]
+      stems: ["συμπέρασμ", "συμπεράσματ"]
+      note: "Most outcome strings use αποτέλεσμα, which belongs to results"
+    es:
+      use: "conclusión"
+      avoid: ["resultado"]
+      stems: ["conclusi"]
+      note: "Per translation_corrections.md, resultado is reserved for the vote tally."
+    fi:
+      use: "johtopäätös"
+      avoid: ["tulos", "tulokset", "lopputulos"]
+      stems: ["johtopäät"]
+      note: "Per translation_corrections.md, outcome is the conclusion; tulos is reserved for results."
+    fr:
+      use: "conclusion"
+      avoid: ["résultat"]
+      stems: ["conclusion"]
+      note: "Per translation_corrections.md, résultat is reserved for results."
+    he:
+      use: "מסקנה"
+      avoid: ["תוצאה"]
+      stems: ["מסקנ"]
+      note: "תוצאה/תוצאות is reserved for results."
+    hr:
+      use: "zaključak"
+      avoid: ["rezultat"]
+      stems: ["zaključ"]
+      note: "Follows the conclusion override; rezultati is the tally. Forms zaključak, zaključka, zaključci."
+    hu:
+      use: "következtetés"
+      avoid: ["eredmény", "összegzés"]
+      stems: ["következtet"]
+      note: "The word for \"conclusion\", as for every locale; összegzés (summary) and eredmény (results) are other terms."
+    it:
+      use: "conclusione"
+      avoid: ["risultato"]
+      stems: ["conclusion"]
+      note: "Per translation_corrections.md, risultato is reserved for results; several outcome strings still use risultato."
+    ja:
+      use: "結論"
+      avoid: ["結果"]
+      stems: ["結論"]
+      note: "Glossary override: 結果 is reserved for results."
+    nl_NL:
+      use: "conclusie"
+      avoid: ["uitkomst", "resultaat"]
+      stems: ["conclusie"]
+      note: "Resultaat is the vote tally; Post outcome is Conclusie publiceren."
+    pl:
+      use: "konkluzja"
+      avoid: ["wynik", "rezultat", "ustalenia"]
+      stems: ["konkluzj"]
+      note: "The word for \"conclusion\", as for every locale; wynik means results."
+    pt_BR:
+      use: "conclusão"
+      avoid: ["resultado"]
+      stems: ["conclus"]
+      note: "Per translation_corrections.md, resultado is reserved for the vote tally."
+    ro:
+      use: "concluzie"
+      avoid: ["rezultat"]
+      stems: ["concluzi"]
+      note: "Many outcome strings still use \"rezultat\", which collides with results."
+    ru:
+      use: "вывод"
+      avoid: ["результат", "исход", "итог"]
+      stems: ["вывод"]
+      note: "The word for \"conclusion\" (usually plural выводы in labels); результаты and итоги are the vote tally."
+    sl:
+      use: "sklep"
+      avoid: ["rezultat", "izid"]
+      stems: ["sklep"]
+      note: "Per the outcome override, use the word for a conclusion/resolution, not result; zaključek collides with closing (zaključek ankete)."
+    sv:
+      use: "slutsats"
+      avoid: ["resultat"]
+      stems: ["slutsats"]
+    tr:
+      use: "vargı"
+      avoid: ["sonuç", "karar"]
+      stems: ["vargı", "varg"]
+      note: "The formal word for conclusion; sonuç is results and karar is decision."
+    uk:
+      use: "висновок"
+      avoid: ["результат", "рішення"]
+      stems: ["висновк", "висновок"]
+    zh_CN:
+      use: "结论"
+      avoid: ["结果", "总结"]
+      stems: ["结论"]
+      note: "The word for \"conclusion\", as in zh_TW 結論; 结果 is results."
+    zh_TW:
+      use: "結論"
+      avoid: ["結果", "成果"]
+      stems: ["結論"]
+      note: "Per translation_corrections.md; 結果 is reserved for results."
+  results:
+    means: "The vote tally of a poll, such as counts and percentages for each option."
+    be:
+      use: "вынікі"
+      avoid: ["выснова"]
+      stems: ["вынік"]
+    ca:
+      use: "resultat"
+      stems: ["resultat"]
+    da:
+      use: "resultat"
+      avoid: ["konklusion"]
+      stems: ["resultat"]
+    de:
+      use: "Ergebnis"
+      avoid: ["Fazit"]
+      stems: ["ergebnis"]
+    el:
+      use: "αποτελέσματα"
+      stems: ["αποτέλεσμ", "αποτελέσμ"]
+    es:
+      use: "resultados"
+      stems: ["resultado"]
+    fi:
+      use: "tulokset"
+      stems: ["tulos", "tuloks"]
+    fr:
+      use: "résultat"
+      stems: ["résultat"]
+    he:
+      use: "תוצאות"
+      stems: ["תוצא"]
+    hr:
+      use: "rezultati"
+      stems: ["rezultat"]
+    hu:
+      use: "eredmények"
+      stems: ["eredmény"]
+    it:
+      use: "risultato"
+      stems: ["risultat"]
+    ja:
+      use: "結果"
+      stems: ["結果"]
+    nl_NL:
+      use: "resultaat"
+      avoid: ["conclusie"]
+      stems: ["resultaat", "resultaten"]
+    pl:
+      use: "wyniki"
+      stems: ["wynik"]
+    pt_BR:
+      use: "resultados"
+      stems: ["resultado"]
+    ro:
+      use: "rezultat"
+      stems: ["rezultat"]
+    ru:
+      use: "результаты"
+      stems: ["результат"]
+    sl:
+      use: "rezultat"
+      stems: ["rezultat"]
+      note: "Usually plural rezultati."
+    sv:
+      use: "resultat"
+      avoid: ["slutsats"]
+      stems: ["resultat"]
+    tr:
+      use: "sonuçlar"
+      stems: ["sonuç", "sonuc"]
+    uk:
+      use: "результати"
+      avoid: ["висновок"]
+      stems: ["результат"]
+    zh_CN:
+      use: "结果"
+      stems: ["结果"]
+    zh_TW:
+      use: "結果"
+      stems: ["結果"]
+  "closing date":
+    means: "The date and time a poll stops accepting votes. Not a financial or accounting close."
+    be:
+      use: "дата закрыцця"
+      stems: ["дата закрыцця", "даты закрыцця", "дату закрыцця", "даце закрыцця", "датай закрыцця"]
+    ca:
+      use: "data de tancament"
+      stems: ["data de tancament"]
+    da:
+      use: "slutdato"
+      stems: ["slutdato"]
+    de:
+      use: "Enddatum"
+      avoid: ["Abschlussdatum", "Schließungstermin"]
+      stems: ["enddatum", "endzeit", "endet"]
+      note: "Abschluss suggests an accounting close; pair Enddatum with Endzeit and the verb enden."
+    el:
+      use: "ημερομηνία λήξης"
+      avoid: ["λήξη προθεσμίας"]
+      stems: ["ημερομηνία λήξης", "ημερομηνίας λήξης"]
+    es:
+      use: "fecha de cierre"
+      stems: ["fecha de cierre", "fechas de cierre"]
+    fi:
+      use: "sulkemispäivä"
+      stems: ["sulkemispäiv"]
+    fr:
+      use: "date de clôture"
+      stems: ["date de clôture", "dates de clôture"]
+      note: "Spell clôture with the circumflex; the app has date de cloture in two labels."
+    he:
+      use: "תאריך סגירה"
+      stems: ["תאריך סגירה", "תאריך הסגירה", "מועד סגירה", "מועד הסגירה"]
+      note: "מועד הסגירה (date and time) is an acceptable variant in prose."
+    hr:
+      use: "datum zatvaranja"
+      avoid: ["završni datum"]
+      stems: ["zatvaranja"]
+      note: "Pairs with datum otvaranja; rok is fine in prose."
+    hu:
+      use: "záró dátum"
+      stems: ["záró dátum"]
+    it:
+      use: "data di chiusura"
+      stems: ["data di chiusura", "date di chiusura"]
+    ja:
+      use: "締め切り"
+      avoid: ["決算日"]
+      stems: ["締め切", "締切"]
+      note: "締め切り日時 when the label needs date and time."
+    nl_NL:
+      use: "sluitingsdatum"
+      stems: ["sluit"]
+      note: "Pair with sluitingstijd, as the manual does."
+    pl:
+      use: "data zamknięcia"
+      stems: ["zamknięci"]
+    pt_BR:
+      use: "data de encerramento"
+      stems: ["data de encerramento", "datas de encerramento"]
+    ro:
+      use: "dată limită"
+      stems: ["limită"]
+      note: "Familiar \"deadline\" wording, already the app label; not a financial close."
+    ru:
+      use: "дата закрытия"
+      stems: ["закрыти"]
+    sl:
+      use: "datum zaključka"
+      stems: ["datum zaključka", "datum zaprtja"]
+    sv:
+      use: "slutdatum"
+      stems: ["slutdatum"]
+    tr:
+      use: "kapanış tarihi"
+      stems: ["kapanış tarih"]
+    uk:
+      use: "дата закриття"
+      stems: ["дата закриття", "дати закриття", "дату закриття", "даті закриття", "датою закриття"]
+    zh_CN:
+      use: "截止日期"
+      avoid: ["结算日期", "决算日"]
+      stems: ["截止"]
+    zh_TW:
+      use: "截止日期"
+      avoid: ["結算日期", "決算日"]
+      stems: ["截止"]
+  quorum:
+    means: "The share of voters who must vote for a poll's result to count."
+    be:
+      use: "кворум"
+      stems: ["кворум"]
+    ca:
+      use: "quòrum"
+      stems: ["quòrum"]
+    da:
+      use: "kvorum"
+      avoid: ["quorum"]
+      stems: ["kvorum"]
+      note: "Danish spelling is kvorum; the app mostly uses the English spelling."
+    de:
+      use: "Quorum"
+      stems: ["quorum"]
+    el:
+      use: "απαρτία"
+      stems: ["απαρτί"]
+    es:
+      use: "quórum"
+      stems: ["quórum"]
+      note: "The manual mostly uses cuórum; both spellings are valid, but use quórum consistently as the app does."
+    fi:
+      use: "päätösvaltaisuus"
+      stems: ["päätösvalt"]
+    fr:
+      use: "quorum"
+      stems: ["quorum"]
+    he:
+      use: "מניין"
+      stems: ["מניין", "מנין"]
+      note: "מניין חוקי is fine in sentences."
+    hr:
+      use: "kvorum"
+      stems: ["kvorum"]
+    hu:
+      use: "határozatképesség"
+      stems: ["határozatképes"]
+      note: "Replace kvórum for consistency; a phrase such as határozatképességi küszöb works for the percentage."
+    it:
+      use: "quorum"
+      stems: ["quorum"]
+    ja:
+      use: "定足数"
+      stems: ["定足数"]
+    nl_NL:
+      use: "quorum"
+      stems: ["quorum"]
+    pl:
+      use: "kworum"
+      stems: ["kworum"]
+    pt_BR:
+      use: "quórum"
+      stems: ["quórum"]
+      note: "Write with the accent; several app strings have unaccented Quorum."
+    ro:
+      use: "cvorum"
+      stems: ["cvorum"]
+    ru:
+      use: "кворум"
+      stems: ["кворум"]
+    sl:
+      use: "kvorum"
+      stems: ["kvorum", "sklepčn"]
+      note: "Sklepčnost is an acceptable synonym in meeting language."
+    sv:
+      use: "kvorum"
+      avoid: ["quorum", "beslutsfattande"]
+      stems: ["kvorum"]
+      note: "Beslutsfattande means decision-making; beslutsmässighet is acceptable in prose."
+    tr:
+      use: "yeter sayı"
+      avoid: ["çoğunluk"]
+      stems: ["yeter sayı"]
+      note: "çoğunluk means majority; yeter sayı is the quorum"
+    uk:
+      use: "кворум"
+      stems: ["кворум"]
+    zh_CN:
+      use: "法定人数"
+      avoid: ["参与人数"]
+      stems: ["法定人数"]
+    zh_TW:
+      use: "法定人數"
+      stems: ["法定人數"]
+  anonymous:
+    means: "A poll setting where votes are not linked to the people who cast them."
+    be:
+      use: "ананімны"
+      stems: ["ананімн"]
+    ca:
+      use: "anònim"
+      stems: ["anòni"]
+    da:
+      use: "anonym"
+      stems: ["anonym"]
+    de:
+      use: "anonym"
+      stems: ["anonym"]
+    el:
+      use: "ανώνυμος"
+      stems: ["ανώνυμ", "ανωνυμ"]
+    es:
+      use: "anónimo"
+      stems: ["anónim"]
+    fi:
+      use: "anonyymi"
+      stems: ["anonyym"]
+    fr:
+      use: "anonyme"
+      stems: ["anonyme"]
+    he:
+      use: "אנונימי"
+      stems: ["אנונימ"]
+    hr:
+      use: "anoniman"
+      stems: ["anonim"]
+    hu:
+      use: "névtelen"
+      stems: ["névtelen"]
+    it:
+      use: "anonimo"
+      stems: ["anonim"]
+    ja:
+      use: "匿名"
+      stems: ["匿名"]
+    nl_NL:
+      use: "anoniem"
+      stems: ["anoniem"]
+    pl:
+      use: "anonimowy"
+      stems: ["anonim"]
+    pt_BR:
+      use: "anônimo"
+      stems: ["anônim"]
+    ro:
+      use: "anonim"
+      stems: ["anonim"]
+    ru:
+      use: "анонимный"
+      stems: ["аноним"]
+    sl:
+      use: "anonimen"
+      stems: ["anonim"]
+    sv:
+      use: "anonym"
+      stems: ["anonym"]
+    tr:
+      use: "anonim"
+      stems: ["anonim"]
+    uk:
+      use: "анонімний"
+      stems: ["анонім"]
+    zh_CN:
+      use: "匿名"
+      stems: ["匿名"]
+    zh_TW:
+      use: "匿名"
+      stems: ["匿名"]
+  agree:
+    means: "A proposal option meaning the person supports the proposal."
+    be:
+      use: "Пагаджаюся"
+      avoid: ["Згодзен", "Згода", "За"]
+      stems: ["пагадж", "пагадз"]
+      note: "First-person positions (Пагаджаюся, Устрымліваюся, Не пагаджаюся, Блакую), as in consensus guides; gender-neutral, unlike Згодзен. За/Супраць means for/against, a different sense."
+    ca:
+      use: "D'acord"
+      avoid: ["Accepta"]
+      stems: ["d'acord"]
+    da:
+      use: "Enig"
+      stems: ["enig"]
+    de:
+      use: "Zustimmung"
+      avoid: ["Dafür"]
+      stems: ["zustimm"]
+      note: "Position on a proposal as in German consensus handbooks; Dafür means for, not agree. Verb: zustimmen."
+    el:
+      use: "Συμφωνώ"
+      stems: ["συμφων"]
+    es:
+      use: "De acuerdo"
+      avoid: ["Aceptar", "A favor"]
+      stems: ["de acuerdo"]
+      note: "Consensus position label; A favor is a for/against vote, and Aceptar reads as an OK button."
+    fi:
+      use: "Samaa mieltä"
+      avoid: ["olla samaa mieltä"]
+      stems: ["samaa mieltä"]
+    fr:
+      use: "Accord"
+      stems: ["accord"]
+      note: "Noun set Accord, Abstention, Désaccord, Blocage, as in French consensus guides; replaces D’accord and Accepter."
+    he:
+      use: "מסכים/ה"
+      avoid: ["בעד", "להסכים"]
+      stems: ["מסכים", "מסכימ"]
+      note: "Gender-inclusive slash form as in Hebrew consensus guides; בעד means for, not agree. Do not use the noun הסכמה, which is consent."
+    hr:
+      use: "Slažem se"
+      avoid: ["Za"]
+      stems: ["slaž"]
+      note: "First-person position labels as in consensus guides: Slažem se, Suzdržavam se, Ne slažem se, Blokiram. Za means for, not agree."
+    hu:
+      use: "Egyetértek"
+      stems: ["egyetért"]
+      note: "First-person labels, as in consensus guides, avoid the formal-looking third person (Egyetért) and the imperative."
+    it:
+      use: "Accordo"
+      stems: ["accordo"]
+      note: "Noun set Accordo, Astensione, Disaccordo, Blocco, as in Italian consensus-method guides; replaces Favorevole/Contrario, which mean for/against."
+    ja:
+      use: "賛成"
+      avoid: ["同意する"]
+      stems: ["賛成"]
+      note: "賛成です is the everyday way to say I agree with a proposal, and Japanese consensus/facilitation material uses 賛成・反対・棄権・ブロック; 同意 is reserved for consent (sociocracy's 同意/異議). Changes the app's majority."
+    nl_NL:
+      use: "Eens"
+      avoid: ["Mee eens zijn"]
+      stems: ["eens"]
+      note: "Label form; in sentences Ik ben het eens."
+    pl:
+      use: "Zgadzam się"
+      avoid: ["Zgadzać się", "Za"]
+      stems: ["zgadza", "zgodzi"]
+      note: "First-person position labels as in Polish consensus guides, gender-neutral; Za/Przeciw is majority voting, not agree/disagree; Zgoda belongs to consent."
+    pt_BR:
+      use: "Concordo"
+      avoid: ["A favor"]
+      stems: ["concord"]
+      note: "First-person consensus position; A favor is a for/against vote."
+    ro:
+      use: "De acord"
+      stems: ["de acord"]
+    ru:
+      use: "Согласен"
+      avoid: ["Соглашаться", "За"]
+      stems: ["согласен", "согласн"]
+      note: "First-person position labels as in Russian consensus guides; За/Против is majority voting, not agree/disagree."
+    sl:
+      use: "Strinjam se"
+      avoid: ["Se strinjam"]
+      stems: ["strinja"]
+      note: "First-person label; a clitic cannot start the sentence, so not 'Se strinjam'."
+    sv:
+      use: "Håller med"
+      avoid: ["Komma överens"]
+      stems: ["håller med", "hålla med", "höll med"]
+      note: "Komma överens means reaching an agreement with someone; questions invert to håller du med."
+    tr:
+      use: "Katılıyorum"
+      avoid: ["kabul etmek"]
+      stems: ["katılıyor"]
+      note: "Button labels are first-person statements; the current infinitives read as dictionary entries"
+    uk:
+      use: "Погоджуюся"
+      avoid: ["Згода", "За"]
+      stems: ["погоджу"]
+      note: "First-person positions (Погоджуюся, Утримуюся, Не погоджуюся, Блокую), as in consensus guides; За/Проти means for/against, a different sense."
+    zh_CN:
+      use: "赞同"
+      stems: ["赞同"]
+      note: "Agree-with sense, as in Chinese consensus-process guides; 赞成 is \"in favour\" (for/against). 同意 is kept for consent."
+    zh_TW:
+      use: "贊同"
+      stems: ["贊同"]
+      note: "Agree-with sense, as in Chinese consensus-process guides; 贊成 is \"in favour\" (for/against). 同意 is kept for consent."
+  abstain:
+    means: "A proposal option meaning the person deliberately takes no side."
+    be:
+      use: "Устрымліваюся"
+      stems: ["устрым"]
+    ca:
+      use: "Abstenció"
+      stems: ["absten"]
+      note: "Use the noun label, like the sibling options; server templates currently use \"Abstenir-se\"."
+    da:
+      use: "Undlader at stemme"
+      stems: ["undla"]
+    de:
+      use: "Enthaltung"
+      avoid: ["Verzichten"]
+      stems: ["enthalt", "enthält"]
+      note: "Verb: sich enthalten."
+    el:
+      use: "Απέχω"
+      stems: ["απέχ", "αποχ"]
+    es:
+      use: "Abstención"
+      stems: ["absten"]
+      note: "Noun label alongside De acuerdo, En desacuerdo, Bloqueo; prose uses abstenerse."
+    fi:
+      use: "Pidättäydyn"
+      avoid: ["pidättäytyä äänestämästä"]
+      stems: ["pidättäy"]
+      note: "An abstaining person still votes, so avoid äänestämästä (refrain from voting) in the label."
+    fr:
+      use: "Abstention"
+      stems: ["abst"]
+    he:
+      use: "נמנע/ת"
+      avoid: ["להתנזר"]
+      stems: ["נמנע", "הימנע"]
+      note: "Matches מסכים/ה; noun הימנעות in prose. להתנזר means abstaining from indulgence."
+    hr:
+      use: "Suzdržavam se"
+      stems: ["suzdrž"]
+      note: "First person, consistent with Slažem se and gender-neutral."
+    hu:
+      use: "Tartózkodom"
+      stems: ["tartózkod"]
+    it:
+      use: "Astensione"
+      stems: ["asten", "astien"]
+    ja:
+      use: "棄権"
+      stems: ["棄権"]
+    nl_NL:
+      use: "Onthouding"
+      avoid: ["Onthouden"]
+      stems: ["onthoud"]
+      note: "As a bare label Onthouden reads as remember; verb in sentences: zich onthouden."
+    pl:
+      use: "Wstrzymuję się"
+      avoid: ["Wstrzymać się"]
+      stems: ["wstrzym"]
+    pt_BR:
+      use: "Me abstenho"
+      stems: ["absten", "abstê"]
+      note: "First-person label alongside Concordo, Discordo, Bloqueio; Brazilian pronoun placement."
+    ro:
+      use: "Abținere"
+      stems: ["abțin"]
+      note: "Use the noun label, like \"De acord\" and \"Dezacord\"; the app currently uses the imperative \"Abține-te\"."
+    ru:
+      use: "Воздерживаюсь"
+      stems: ["воздерж"]
+    sl:
+      use: "Vzdržim se"
+      avoid: ["Vzdržati se"]
+      stems: ["vzdrž"]
+      note: "First-person label to match Strinjam se / Ne strinjam se, and gender-neutral unlike the shorter Vzdržan; the app currently uses Vzdržan and Vzdržati se."
+    sv:
+      use: "Avstår"
+      stems: ["avstå", "avstod", "avstått"]
+      note: "Present tense matches Håller med and Håller inte med."
+    tr:
+      use: "Çekimserim"
+      avoid: ["uzak durmak"]
+      stems: ["çekimser"]
+      note: "First person like Katılıyorum and Katılmıyorum; uzak durmak means to keep away from something"
+    uk:
+      use: "Утримуюся"
+      stems: ["утрим"]
+    zh_CN:
+      use: "弃权"
+      stems: ["弃权"]
+    zh_TW:
+      use: "棄權"
+      stems: ["棄權"]
+  disagree:
+    means: "A proposal option meaning the person is against the proposal but will not stop it."
+    be:
+      use: "Не пагаджаюся"
+      avoid: ["Не згодны", "Супраць"]
+      stems: ["не пагадж", "нязгод"]
+    ca:
+      use: "En desacord"
+      stems: ["desacord", "no hi estic d'acord", "no hi estàs d'acord"]
+    da:
+      use: "Uenig"
+      stems: ["uenig"]
+    de:
+      use: "Widerspruch"
+      avoid: ["Dagegen", "Verschiedener Meinung sein"]
+      stems: ["widersp"]
+      note: "Disagreement without stopping the proposal; Dagegen means against. Verb: widersprechen."
+    el:
+      use: "Διαφωνώ"
+      stems: ["διαφων"]
+    es:
+      use: "En desacuerdo"
+      avoid: ["En contra", "Discrepar"]
+      stems: ["desacuerdo"]
+      note: "Against the proposal but not stopping it; En contra is a for/against vote."
+    fi:
+      use: "Eri mieltä"
+      stems: ["eri mieltä"]
+    fr:
+      use: "Désaccord"
+      stems: ["désaccord", "pas d’accord", "pas d'accord"]
+      note: "Not Contre: against is a for/against vote, not a position in a consensus process."
+    he:
+      use: "לא מסכים/ה"
+      avoid: ["נגד"]
+      stems: ["לא מסכים", "לא מסכימ", "אי הסכמה", "אי־הסכמה"]
+      note: "Against the proposal but not stopping it; נגד means against. Do not use התנגדות, which is objection."
+    hr:
+      use: "Ne slažem se"
+      avoid: ["Protiv"]
+      stems: ["ne slaž", "neslaganj"]
+      note: "Against the proposal but not stopping it; Protiv means against."
+    hu:
+      use: "Nem értek egyet"
+      stems: ["nem ért"]
+      note: "Agree/disagree sense; Ellenzem means I am against (For/Against)."
+    it:
+      use: "Disaccordo"
+      avoid: ["Contrario"]
+      stems: ["disaccordo", "non sono d’accordo", "non sono d'accordo"]
+      note: "Contrario means voting against, not disagreeing while letting the proposal go ahead."
+    ja:
+      use: "反対"
+      avoid: ["同意しない"]
+      stems: ["反対"]
+      note: "Pairs with 賛成; 同意しない collides with consent."
+    nl_NL:
+      use: "Oneens"
+      avoid: ["Niet mee eens zijn", "meningsverschil"]
+      stems: ["oneens", "niet mee eens", "niet eens"]
+    pl:
+      use: "Nie zgadzam się"
+      avoid: ["sprzeciw", "Przeciw"]
+      stems: ["nie zgadza", "nie zgodzi", "braku zgody"]
+      note: "Sprzeciw belongs to objection."
+    pt_BR:
+      use: "Discordo"
+      avoid: ["Contra"]
+      stems: ["discord"]
+      note: "Against the proposal but not stopping it; Contra is a for/against vote."
+    ro:
+      use: "Dezacord"
+      stems: ["dezacord", "nu sunt de acord", "nu ești de acord", "nu este de acord"]
+    ru:
+      use: "Не согласен"
+      avoid: ["Против"]
+      stems: ["не согласен", "не согласн"]
+    sl:
+      use: "Ne strinjam se"
+      stems: ["ne strinja", "nestrinja"]
+    sv:
+      use: "Håller inte med"
+      avoid: ["Instämmer inte alls"]
+      stems: ["håller inte med", "hålla inte med"]
+      note: "Instämmer inte alls means strongly disagree, a different option."
+    tr:
+      use: "Katılmıyorum"
+      avoid: ["aynı fikirde olmamak"]
+      stems: ["katılmıyor", "katılma"]
+    uk:
+      use: "Не погоджуюся"
+      avoid: ["Проти"]
+      stems: ["не погоджу", "незгод"]
+    zh_CN:
+      use: "不赞同"
+      avoid: ["不同意"]
+      stems: ["不赞同"]
+      note: "Pairs with 赞同; 反对 is \"against\" and 不同意 reads as withholding consent (同意)."
+    zh_TW:
+      use: "不贊同"
+      avoid: ["不同意"]
+      stems: ["不贊同"]
+      note: "Pairs with 贊同; 反對 is \"against\" and 不同意 reads as withholding consent (同意)."
+  block:
+    means: "A proposal option meaning the person has a serious objection and believes the proposal should not go ahead. Like a veto, not a lump of material."
+    be:
+      use: "Блакую"
+      avoid: ["Блок"]
+      stems: ["блак"]
+      note: "A veto-like vote, never the noun блок; verb блакаваць, noun блакаванне."
+    ca:
+      use: "Bloqueig"
+      avoid: ["Bloc"]
+      stems: ["bloque"]
+      note: "\"Bloc\" is a lump or code block; use the noun label \"Bloqueig\" rather than the imperative \"Bloqueja\" to match the sibling options."
+    da:
+      use: "Blokerer"
+      avoid: ["Blokkerer", "Blok"]
+      stems: ["bloker"]
+      note: "Spelled with one k; Blok is the noun for a lump or block of material."
+    de:
+      use: "Veto"
+      avoid: ["Block", "sperren", "Sperre"]
+      stems: ["veto"]
+      note: "The usual word in German consensus materials; in sentences: ein Veto einlegen."
+    el:
+      use: "Μπλοκάρω"
+      avoid: ["οικοδομικό τετράγωνο", "φραγμός", "αποκλείω", "αποκλεισμός"]
+      stems: ["μπλοκ"]
+      note: "First person like Συμφωνώ, Απέχω, Διαφωνώ; Greek consensus guides call this position μπλοκάρισμα (or βέτο). The current label means a city block, and αποκλείω is kept for eliminated"
+    es:
+      use: "Bloqueo"
+      avoid: ["bloque"]
+      stems: ["bloque"]
+      note: "Spanish consensus guides use bloqueo (veto is also understood); verb bloquear, never the noun bloque."
+    fi:
+      use: "Veto"
+      avoid: ["lohko"]
+      stems: ["veto", "vedo"]
+      note: "Veto is the word Finnish consensus guides use; lohko is a block of material. Verb: estää."
+    fr:
+      use: "Blocage"
+      avoid: ["Contre", "Bloc"]
+      stems: ["blocage", "bloqu", "veto"]
+      note: "Blocage is the consensus-guide term; Veto is common too and fine in explanatory text. Contre collides with disagree."
+    he:
+      use: "וטו"
+      avoid: ["חסום", "לחסום"]
+      stems: ["וטו"]
+      note: "The common word in Hebrew consensus material and the manual (להטיל וטו); חסום reads as blocking a user."
+    hr:
+      use: "Blokiram"
+      stems: ["blokir", "blokad"]
+      note: "Croatian consensus material speaks of blokada; veto (stavljam veto) is an acceptable alternative. Blok alone reads as a notepad or code block."
+    hu:
+      use: "Vétózom"
+      avoid: ["tömb", "tiltakozás"]
+      stems: ["vétó"]
+      note: "First person to match Egyetértek, Tartózkodom, Nem értek egyet. Noun vétó. Tömb is a lump; tiltakozás collides with objection."
+    it:
+      use: "Blocco"
+      stems: ["blocc", "veto"]
+      note: "Blocco is the consensus-guide term; Veto is also common and fine in explanatory text. Bloccare also means locking a thread."
+    ja:
+      use: "ブロック"
+      stems: ["ブロック"]
+      note: "Means a veto-like stop; do not use 反対, which is disagree."
+    nl_NL:
+      use: "Veto"
+      avoid: ["Blok"]
+      stems: ["veto"]
+      note: "Common word in Dutch consensus materials; in sentences: een veto uitspreken. Blok is a lump."
+    pl:
+      use: "Blokuję"
+      stems: ["blok", "weto"]
+      note: "Consensus guides speak of blokada or weto; weto is fine in explanatory text; use the verb as the label."
+    pt_BR:
+      use: "Bloqueio"
+      avoid: ["bloco"]
+      stems: ["bloque", "bloqueio"]
+      note: "First person of bloquear and the noun used in consensus guides; never bloco."
+    ro:
+      use: "Veto"
+      avoid: ["Bloc"]
+      stems: ["veto", "bloch", "blocar"]
+      note: "Shortest familiar label for a serious objection that stops the proposal; \"bloc\" is a lump of material. In sentences, \"a bloca\" (blochez) is fine."
+    ru:
+      use: "Блокирую"
+      stems: ["блокир", "вето"]
+      note: "Consensus guides say блокировать решение; вето is fine in explanatory text; never the noun блок."
+    sl:
+      use: "Blokiram"
+      avoid: ["Blokiraj"]
+      stems: ["blokir"]
+      note: "First-person label meaning a veto; server currently has 'Blok' (a lump/block of material), which is wrong."
+    sv:
+      use: "Veto"
+      stems: ["veto"]
+      note: "Common word in Swedish consensus material; verb: lägga in veto."
+    tr:
+      use: "Veto ediyorum"
+      avoid: ["engellemek"]
+      stems: ["veto"]
+      note: "Veto is the common Turkish word for this position in consensus guides; first person like the other options"
+    uk:
+      use: "Блокую"
+      avoid: ["Блок"]
+      stems: ["блоку", "блокув"]
+      note: "A veto-like vote, never the noun блок; verb блокувати, noun блокування."
+    zh_CN:
+      use: "否决"
+      avoid: ["堵塞", "阻止", "块", "区块"]
+      stems: ["否决"]
+      note: "A veto; 阻止 means physically stop and 堵塞 means clog."
+    zh_TW:
+      use: "否決"
+      avoid: ["堵塞", "阻擋", "區塊", "封鎖"]
+      stems: ["否決"]
+      note: "A veto; 阻擋 means physically obstruct and 堵塞 means clog."
+  consent:
+    means: "A proposal option in the consent process, meaning the person can live with the proposal."
+    be:
+      use: "Згода"
+      stems: ["згод"]
+    ca:
+      use: "Consentiment"
+      stems: ["consenti"]
+    da:
+      use: "Samtykke"
+      stems: ["samtykke"]
+    de:
+      use: "Konsent"
+      avoid: ["Einwilligung", "Einwilligungsprozess", "Zustimmung"]
+      stems: ["konsent"]
+      note: "Sociocracy term used in German materials; Zustimmung is now agree, and Einwilligung is legal consent. Consent process: Konsentverfahren."
+    el:
+      use: "Συναινώ"
+      avoid: ["συγκατάθεση"]
+      stems: ["συναιν", "συναίν"]
+      note: "Sociocracy material calls consent decision-making συναίνεση; συγκατάθεση is the legal or data-protection sense"
+    es:
+      use: "Consentimiento"
+      stems: ["consenti", "consient"]
+      note: "Sociocracy term, paired with Objeción."
+    fi:
+      use: "Suostumus"
+      stems: ["suostu"]
+    fr:
+      use: "Consentement"
+      avoid: ["Autorisation"]
+      stems: ["consent"]
+      note: "Sociocracy materials pair consentement and objection; Autorisation means permission."
+    he:
+      use: "הסכמה"
+      stems: ["הסכמ"]
+    hr:
+      use: "Pristanak"
+      avoid: ["privola"]
+      stems: ["prista"]
+      note: "privola is formal legal consent (e.g. data protection), not the consent process."
+    hu:
+      use: "Beleegyezés"
+      avoid: ["egyetértés"]
+      stems: ["beleegyez"]
+      note: "Hungarian sociocracy material uses beleegyezés; hozzájárulás also means contribution. Egyetértés collides with agree."
+    it:
+      use: "Consenso"
+      stems: ["consenso", "acconsent"]
+      note: "Sociocrazia materials pair consenso and obiezione; consenso also means consensus, so name the consensus process explicitly where both appear."
+    ja:
+      use: "同意"
+      stems: ["同意"]
+    nl_NL:
+      use: "consent"
+      avoid: ["toestemming", "toestemmingsproces"]
+      stems: ["consent"]
+      note: "Toestemming means permission; Dutch sociocracy uses consent (consentbesluit), and the manual already uses it."
+    pl:
+      use: "Zgoda"
+      stems: ["zgod"]
+      note: "Sociocracy materials use zgoda/sprzeciw (or obiekcja) for the consent process."
+    pt_BR:
+      use: "Consentimento"
+      stems: ["consent", "consint"]
+      note: "Sociocracy term, paired with Objeção."
+    ro:
+      use: "Consimțământ"
+      stems: ["consimț"]
+      note: "Sociocracy term, paired with \"Obiecție\"; use comma-below ț, not cedilla ţ."
+    ru:
+      use: "Согласие"
+      stems: ["согласи"]
+      note: "Sociocracy materials use согласие/возражение for the consent process."
+    sl:
+      use: "Privolitev"
+      avoid: ["Soglasje"]
+      stems: ["privol"]
+      note: "Sociocracy material distinguishes privolitev (consent) from soglasje (consensus); the app uses soglasje for both processes."
+    sv:
+      use: "Samtycke"
+      stems: ["samtyck"]
+    tr:
+      use: "Onaylıyorum"
+      stems: ["onay"]
+      note: "First person to pair with İtirazım var; the consent process is onay süreci"
+    uk:
+      use: "Згода"
+      stems: ["згод"]
+    zh_CN:
+      use: "同意"
+      avoid: ["知情同意"]
+      stems: ["同意"]
+      note: "知情同意 is informed consent in the medical sense."
+    zh_TW:
+      use: "同意"
+      stems: ["同意"]
+  objection:
+    means: "A proposal option in the consent process, meaning the person has a reasoned concern that must be resolved."
+    be:
+      use: "Пярэчанне"
+      stems: ["пярэч"]
+    ca:
+      use: "Objecció"
+      stems: ["objecci"]
+    da:
+      use: "Indvending"
+      stems: ["indvend"]
+      note: "Indsigelse is also used; prefer indvending for the option and in prose."
+    de:
+      use: "Einwand"
+      stems: ["einwand", "einwänd", "einwend"]
+      note: "Einspruch also appears; use Einwand consistently."
+    el:
+      use: "Έχω αντίρρηση"
+      stems: ["αντίρρησ", "αντιρρήσ"]
+      note: "First person to pair with Συναινώ; αντίρρηση is the everyday word already used in the consent prose, while the current label Ενσταση is legalistic and unaccented"
+    es:
+      use: "Objeción"
+      stems: ["objeci"]
+    fi:
+      use: "Vastaväite"
+      stems: ["vastaväit"]
+      note: "Finnish sociocracy material uses vastaväite for a reasoned objection; vastalause is a formal protest."
+    fr:
+      use: "Objection"
+      stems: ["objection"]
+    he:
+      use: "התנגדות"
+      stems: ["התנגד"]
+    hr:
+      use: "Prigovor"
+      stems: ["prigovor"]
+      note: "Consent and objection stay as a noun pair."
+    hu:
+      use: "Kifogás"
+      avoid: ["tiltakozás"]
+      stems: ["kifogás"]
+    it:
+      use: "Obiezione"
+      stems: ["obiezion"]
+    ja:
+      use: "異議"
+      stems: ["異議"]
+    nl_NL:
+      use: "bezwaar"
+      stems: ["bezwa"]
+    pl:
+      use: "Sprzeciw"
+      stems: ["sprzeciw"]
+      note: "Zastrzeżenia (reservations) is weaker and fits the sense check concern option better."
+    pt_BR:
+      use: "Objeção"
+      stems: ["objeç"]
+    ro:
+      use: "Obiecție"
+      stems: ["obiecți"]
+      note: "Use comma-below ț, not cedilla ţ."
+    ru:
+      use: "Возражение"
+      stems: ["возражени"]
+    sl:
+      use: "Ugovor"
+      stems: ["ugovor", "ugovarja"]
+    sv:
+      use: "Invändning"
+      stems: ["invänd"]
+    tr:
+      use: "İtirazım var"
+      stems: ["itiraz"]
+      note: "Sociocracy phrasing: a decision passes if itiraz yoksa (no objection)"
+    uk:
+      use: "Заперечення"
+      avoid: ["Несхвалення"]
+      stems: ["запереч"]
+    zh_CN:
+      use: "异议"
+      stems: ["异议"]
+    zh_TW:
+      use: "異議"
+      stems: ["異議"]
+  "sense check":
+    means: "A poll type for quickly testing how people feel about an idea."
+    be:
+      use: "праверка меркаванняў"
+      avoid: ["праверка сэнсу"]
+      stems: ["праверка меркаванняў", "праверкі меркаванняў", "праверку меркаванняў", "праверцы меркаванняў"]
+      note: "The manual already uses праверка меркаванняў; праверка сэнсу is a literal translation."
+    ca:
+      use: "tempteig"
+      avoid: ["control de sentit", "comprovació de sentit", "comprovació sensorial", "comprovació de Sense"]
+      stems: ["tempteig", "temptejos"]
+      note: "Everyday word for sounding people out; existing renderings read as a check of meaning or of the senses."
+    da:
+      use: "stemningstjek"
+      avoid: ["sansetjek"]
+      stems: ["stemningstjek"]
+      note: "Sansetjek means a check of the senses; the app also leaves Sense check untranslated."
+    de:
+      use: "Stimmungsbild"
+      avoid: ["Sinneskontrolle", "Sinnesprüfung", "Sinncheck"]
+      stems: ["stimmungsbild"]
+      note: "The Sinnes- forms mean a check of the senses; the manual already uses Stimmungsbild."
+    el:
+      use: "σφυγμομέτρηση"
+      avoid: ["έλεγχος αίσθησης", "έλεγχος νοημοσύνης"]
+      stems: ["σφυγμομέτρησ", "σφυγμομετρήσ"]
+      note: "Literal έλεγχος αίσθησης means a check of physical sensation; σφυγμομέτρηση is the usual word for gauging opinion"
+    es:
+      use: "toma de pulso"
+      avoid: ["comprobación de sentido", "prueba de sentido"]
+      stems: ["pulso"]
+      note: "Tomar el pulso is the idiom for gauging how people feel; the old label was a meaningless literal translation."
+    fi:
+      use: "tunnustelu"
+      avoid: ["aistien tarkistus", "aistitarkistus", "tajunnantarkastus"]
+      stems: ["tunnustel"]
+      note: "The existing renderings refer to the physical senses."
+    fr:
+      use: "prise de température"
+      avoid: ["vérification des sens", "test de sens"]
+      stems: ["prise de température", "prises de température"]
+      note: "The usual French facilitation term for quickly sounding out a group; the app's vérification des sens means checking the physical senses."
+    he:
+      use: "בדיקת כיוון"
+      avoid: ["בדיקת חושים"]
+      stems: ["בדיקת כיוון", "בדיקות כיוון", "בדיקת הכיוון"]
+      note: "Manual title; בדיקת חושים means testing the five senses."
+    hr:
+      use: "provjera stava"
+      avoid: ["provjera smisla"]
+      stems: ["provjera stava", "provjeru stava", "provjeri stava", "provjere stava"]
+      note: "provjera smisla means checking whether something makes sense."
+    hu:
+      use: "hangulatfelmérés"
+      avoid: ["érzékellenőrzés", "érzékszervi vizsgálat"]
+      stems: ["hangulatfelmérés"]
+      note: "The existing renderings refer to the physical senses."
+    it:
+      use: "verifica delle opinioni"
+      avoid: ["controllo di senso", "controllo del senso", "controllo dei sensi"]
+      stems: ["verifica delle opinioni", "verifiche delle opinioni"]
+      note: "Already the manual's term; the app's controllo dei sensi means checking the physical senses."
+    ja:
+      use: "意向確認"
+      avoid: ["センスチェック"]
+      stems: ["意向確認"]
+      note: "センス means taste or style in Japanese; the manual's template list already uses 意向確認. Changes the app's majority."
+    nl_NL:
+      use: "gevoelscheck"
+      avoid: ["zintuiglijke controle"]
+      stems: ["gevoelscheck"]
+      note: "Shorter and more natural than gevoelscontrole; zintuiglijke controle means a check of the senses."
+    pl:
+      use: "sondowanie nastrojów"
+      avoid: ["kontrola zmysłów", "test sprawdzający zmysły"]
+      stems: ["nastroj"]
+      note: "From the everyday idiom sondować nastroje; sonda alone now overlaps with ankieta."
+    pt_BR:
+      use: "verificação de opinião"
+      avoid: ["verificação de sentido"]
+      stems: ["verificação de opinião", "verificações de opinião"]
+      note: "The manual's page title; verificação de sentido is a meaningless literal translation."
+    ro:
+      use: "tatonare"
+      avoid: ["verificarea simțului", "verificarea simțurilor", "verificarea sensului"]
+      stems: ["tatona"]
+      note: "Everyday word for sounding people out; existing renderings mean a check of the senses or of meaning."
+    ru:
+      use: "проверка мнений"
+      avoid: ["проверка чувств", "проверка смысла", "проверка состояния"]
+      stems: ["мнений"]
+      note: "Already used throughout the manual."
+    sl:
+      use: "preverjanje mnenja"
+      avoid: ["preverjanje čuta", "preverjanje čutov", "preverjanje smisla", "preverjanje smiselnosti", "preverjanje občutljivosti", "preverjanje občutka"]
+      stems: ["preverjanj"]
+      note: "Existing renderings are literal and inconsistent; preverjanje mnenja is shorter than preverjanje razpoloženja and familiar."
+    sv:
+      use: "stämningskoll"
+      avoid: ["förnuftskontroll", "sinnestest", "känselkontroll"]
+      stems: ["stämningskoll"]
+      note: "Existing renderings mean sanity check or sensory test; the app also leaves Sense check untranslated."
+    tr:
+      use: "nabız yoklaması"
+      avoid: ["duyu kontrolü", "anlam kontrolü"]
+      stems: ["nabız yoklama"]
+      note: "duyu kontrolü means a test of the senses and anlam kontrolü a check of meaning; nabız yoklamak means to sound out opinion"
+    uk:
+      use: "перевірка думок"
+      avoid: ["перевірка сенсу"]
+      stems: ["перевірка думок", "перевірки думок", "перевірку думок", "перевірці думок", "перевіркою думок"]
+      note: "The manual already uses перевірка думок; перевірка сенсу is a literal translation."
+    zh_CN:
+      use: "意见征询"
+      avoid: ["感觉检查", "逻辑检查", "常识检验", "感知检查", "方案审核"]
+      stems: ["意见征询"]
+    zh_TW:
+      use: "意見徵詢"
+      avoid: ["感覺檢查", "感官檢查"]
+      stems: ["意見徵詢"]
+  "time poll":
+    means: "A poll type for finding a meeting time that suits people."
+    be:
+      use: "апытанне пра час"
+      avoid: ["апытанне часу"]
+      stems: ["пра час"]
+      note: "Builds on апытанне; апытанне часу reads as 'a poll of time'."
+    ca:
+      use: "enquesta d'horari"
+      avoid: ["enquesta de temps"]
+      stems: ["horari"]
+      note: "\"Temps\" also means weather; the poll finds a time that suits people."
+    da:
+      use: "tidsafstemning"
+      avoid: ["tidsmåling"]
+      stems: ["tidsafstemning"]
+      note: "Tidsmåling means timing/measuring time."
+    de:
+      use: "Terminfindung"
+      avoid: ["Zeitumfrage"]
+      stems: ["terminfindung", "terminabstimmung"]
+      note: "The usual German name for finding a meeting time."
+    el:
+      use: "δημοσκόπηση ώρας"
+      avoid: ["χρόνος ψηφοφορίας", "δημοσκόπηση χρόνου"]
+      stems: ["ώρας"]
+      note: "χρόνος ψηφοφορίας means voting time; ώρα is clock time, χρόνος is time in general or a year"
+    es:
+      use: "encuesta de horario"
+      avoid: ["encuesta de tiempo"]
+      stems: ["horario"]
+      note: "Encuesta de tiempo reads as weather or duration."
+    fi:
+      use: "aikakysely"
+      stems: ["aikakysel"]
+    fr:
+      use: "sondage horaire"
+      avoid: ["sondage temporel"]
+      stems: ["sondage horaire", "sondages horaires"]
+      note: "Sondage horaire de réunion also matches the stem."
+    he:
+      use: "סקר זמן"
+      avoid: ["הצבעת זמן"]
+      stems: ["סקר זמן", "סקר הזמן", "סקרי זמן"]
+    hr:
+      use: "anketa o terminu"
+      avoid: ["vremenska anketa"]
+      stems: ["o terminu", "o terminima"]
+      note: "vremenska also means weather-related; termin is the usual word for a meeting slot."
+    hu:
+      use: "időpontszavazás"
+      avoid: ["időközi szavazás", "idő-szavazás"]
+      stems: ["időpontszavazás"]
+      note: "Időközi szavazás means an interim vote."
+    it:
+      use: "sondaggio appuntamento"
+      avoid: ["sondaggio temporale"]
+      stems: ["sondaggio appuntamento", "sondaggi appuntamento"]
+      note: "Used by the app and manual title; replace sondaggio temporale and sondaggio per incontro."
+    ja:
+      use: "日程調整"
+      avoid: ["タイムポーリング", "時間に関する世論調査"]
+      stems: ["日程調整"]
+      note: "The everyday term for finding a meeting time (as with Doodle); the app and manual heading use 時間投票."
+    nl_NL:
+      use: "tijdpeiling"
+      avoid: ["moment bevragen"]
+      stems: ["tijdpeiling"]
+      note: "Write as one word; Moment bevragen does not say what the poll does."
+    pl:
+      use: "wybór terminu"
+      avoid: ["ankieta czasowa", "ankieta dotycząca daty spotkania"]
+      stems: ["terminu"]
+      note: "Clearer than any ankieta compound; the feature finds a meeting time."
+    pt_BR:
+      use: "enquete de horário"
+      avoid: ["enquete de tempo", "tempo de votação"]
+      stems: ["horário"]
+    ro:
+      use: "sondaj de timp"
+      stems: ["sondaj de timp", "sondajul de timp", "sondaje de timp"]
+      note: "App majority; short and understood as finding a time."
+    ru:
+      use: "опрос времени"
+      avoid: ["голосование за время встречи"]
+      stems: ["опрос времени", "опроса времени", "опросе времени", "опросом времени", "опросу времени"]
+      note: "Already used in the app and manual; consistent with опрос."
+    sl:
+      use: "izbira termina"
+      avoid: ["anketa o času", "anketa time"]
+      stems: ["termin"]
+      note: "Izbira termina is the everyday phrase for picking a meeting time; časovna anketa is a coinage."
+    sv:
+      use: "tidsomröstning"
+      avoid: ["tidsundersökning"]
+      stems: ["tidsomröstning"]
+    tr:
+      use: "zaman anketi"
+      stems: ["zaman anket"]
+    uk:
+      use: "опитування щодо часу"
+      avoid: ["опитування часу"]
+      stems: ["щодо часу"]
+      note: "Matches the manual and builds on опитування."
+    zh_CN:
+      use: "时间投票"
+      avoid: ["时代"]
+      stems: ["时间投票"]
+    zh_TW:
+      use: "時間投票"
+      avoid: ["時間調查"]
+      stems: ["時間投票"]
+  "dot vote":
+    means: "A poll type where each person distributes a fixed number of points among options."
+    be:
+      use: "размеркаванне балаў"
+      avoid: ["галасаваць", "галасаванне кропкамі"]
+      stems: ["размеркаван"]
+      note: "The app currently renders dot vote as the bare verb галасаваць; the manual uses размеркаванне балаў."
+    ca:
+      use: "vot per punts"
+      avoid: ["vot limitat", "punt votar"]
+      stems: ["per punts"]
+    da:
+      use: "prikafstemning"
+      avoid: ["prik stemme"]
+      stems: ["prikafstemning"]
+    de:
+      use: "Punktabstimmung"
+      stems: ["punktabstimmung"]
+    el:
+      use: "ψηφοφορία με πόντους"
+      avoid: ["ψηφοφορία τελεία", "τελεία ψήφου"]
+      stems: ["με πόντους"]
+      note: "τελεία is a punctuation full stop; points are πόντοι elsewhere in the app"
+    es:
+      use: "votación por puntos"
+      avoid: ["punto electoral"]
+      stems: ["por puntos"]
+    fi:
+      use: "pisteäänestys"
+      stems: ["pisteäänesty"]
+    fr:
+      use: "vote à points"
+      stems: ["vote à points", "votes à points"]
+    he:
+      use: "הצבעת נקודות"
+      avoid: ["הצבעה נקודה"]
+      stems: ["הצבעת נקודות", "הצבעות נקודות", "הצבעת הנקודות"]
+    hr:
+      use: "raspodjela bodova"
+      avoid: ["glasanje s točkom", "glasovanje s točkom"]
+      stems: ["raspodjel"]
+      note: "Each person distributes points; bodovi matches the points labels."
+    hu:
+      use: "pontszavazás"
+      stems: ["pontszavazás"]
+    it:
+      use: "voto a punti"
+      stems: ["voto a punti", "voti a punti"]
+    ja:
+      use: "ドット投票"
+      stems: ["ドット投票"]
+    nl_NL:
+      use: "puntenverdeling"
+      avoid: ["dotmocracy", "stip stemmen"]
+      stems: ["puntenverdeling", "punten verdelen", "punten verdeelt"]
+      note: "Describes distributing a fixed number of points; the current labels are an English brand name and a literal rendering."
+    pl:
+      use: "podział punktów"
+      avoid: ["głosowanie kropkowe", "głosowanie w kropki"]
+      stems: ["podział punktów", "podziału punktów", "podziale punktów", "podziałem punktów"]
+      note: "Matches the English name Allocate."
+    pt_BR:
+      use: "enquete de distribuição"
+      avoid: ["voto de ponto"]
+      stems: ["distribuição"]
+    ro:
+      use: "vot cu puncte"
+      avoid: ["Dot votează"]
+      stems: ["cu puncte"]
+    ru:
+      use: "распределение баллов"
+      avoid: ["точечное голосование"]
+      stems: ["распределени"]
+      note: "Matches the English name Allocate and the manual."
+    sl:
+      use: "glasovanje s pikami"
+      avoid: ["glasovanje s piko"]
+      stems: ["s pikami"]
+    sv:
+      use: "prickomröstning"
+      avoid: ["prick rösta", "rösta prick"]
+      stems: ["prickomröstning"]
+    tr:
+      use: "nokta oylaması"
+      avoid: ["nokta oyu"]
+      stems: ["nokta oyla"]
+    uk:
+      use: "розподіл балів"
+      avoid: ["відбіркове голосування", "голосування крапкою"]
+      stems: ["розподіл"]
+      note: "Matches the manual; the app's current names mean selection vote and voting with a dot."
+    zh_CN:
+      use: "点投票"
+      stems: ["点投票"]
+      note: "Bare 投票 or 请投票 loses the poll type."
+    zh_TW:
+      use: "點投票"
+      stems: ["點投票"]
+  "score poll":
+    means: "A poll type where each person gives each option a score."
+    be:
+      use: "ацэначнае апытанне"
+      avoid: ["ацэнка апытання", "апытанне аб ацэнцы"]
+      stems: ["ацэначн"]
+      note: "Ацэнка апытання means rating the poll itself."
+    ca:
+      use: "enquesta de puntuació"
+      stems: ["de puntuació"]
+    da:
+      use: "scoreafstemning"
+      avoid: ["score afstemning"]
+      stems: ["scoreafstemning"]
+      note: "Write as one compound word."
+    de:
+      use: "Bewertung"
+      avoid: ["Ergebnis"]
+      stems: ["bewert"]
+      note: "poll_types.score currently says Ergebnis, which collides with results."
+    el:
+      use: "δημοσκόπηση βαθμολογίας"
+      stems: ["βαθμολογ"]
+    es:
+      use: "encuesta de puntuación"
+      stems: ["puntuaci"]
+    fi:
+      use: "pisteytys"
+      avoid: ["tulos kysely", "pisteet kyselyssä"]
+      stems: ["pisteyty"]
+      note: "Score means giving each option a score, not a result."
+    fr:
+      use: "notation"
+      avoid: ["sondage pondéré", "vote pondéré"]
+      stems: ["notation"]
+      note: "The app and manual call it sondage pondéré, which collides with vote pondéré (weighted voting); notation says each option gets a score."
+    he:
+      use: "סקר ציון"
+      avoid: ["ניקוד סקר"]
+      stems: ["סקר ציון", "סקר הציון", "סקרי ציון"]
+    hr:
+      use: "ocjenjivanje"
+      avoid: ["rezultat ankete"]
+      stems: ["ocjenjivanj", "ocjen"]
+      note: "rezultat ankete means poll result."
+    hu:
+      use: "pontozás"
+      avoid: ["pontszám felmérés", "pontszám-felmérés"]
+      stems: ["pontoz"]
+    it:
+      use: "punteggio"
+      avoid: ["sondaggio valutazione"]
+      stems: ["punteggio"]
+      note: "The manual title is Punteggio; the app's sondaggio valutazione is not idiomatic."
+    ja:
+      use: "スコア投票"
+      stems: ["スコア投票"]
+    nl_NL:
+      use: "scorepeiling"
+      avoid: ["resultaat peiling", "peiling scoren"]
+      stems: ["score"]
+      note: "Resultaat collides with results."
+    pl:
+      use: "ocena"
+      stems: ["ocen"]
+    pt_BR:
+      use: "enquete de pontuação"
+      stems: ["pontuação"]
+    ro:
+      use: "sondaj cu scor"
+      avoid: ["scor sondaj"]
+      stems: ["cu scor"]
+    ru:
+      use: "оценка"
+      avoid: ["опрос по очкам", "оценка опроса"]
+      stems: ["оценк"]
+    sl:
+      use: "ocenjevalna anketa"
+      avoid: ["rezultat ankete", "anketa score"]
+      stems: ["ocenjevaln"]
+      note: "Rezultat ankete means 'poll result', which collides with results."
+    sv:
+      use: "poängomröstning"
+      avoid: ["ränka röster", "poängundersökning"]
+      stems: ["poängomröstning"]
+    tr:
+      use: "puanlama anketi"
+      avoid: ["skor anketi"]
+      stems: ["puanlama"]
+    uk:
+      use: "оціночне опитування"
+      stems: ["оціночн"]
+    zh_CN:
+      use: "评分投票"
+      avoid: ["投票得分", "投票结果"]
+      stems: ["评分投票"]
+    zh_TW:
+      use: "分數投票"
+      stems: ["分數投票"]
+  "ranked choice":
+    means: "A poll type where people rank options in order of preference."
+    be:
+      use: "рэйтынгавы выбар"
+      stems: ["рэйтынгав"]
+    ca:
+      use: "vot preferencial"
+      avoid: ["elecció classificada"]
+      stems: ["preferencial"]
+    da:
+      use: "rangering"
+      stems: ["range"]
+    de:
+      use: "Rangfolge"
+      avoid: ["Ranglistenauswahl"]
+      stems: ["rangfolge"]
+      note: "The manual uses Rangfolge; replace the mixed Prioritäten setzen and Prioritätensetzung labels."
+    el:
+      use: "ψηφοφορία κατάταξης"
+      avoid: ["κατάταξη επιλογή", "κατάταξης επιλογής"]
+      stems: ["κατάταξ", "κατατάξ"]
+    es:
+      use: "votación preferencial"
+      avoid: ["elección clasificada", "opción priorizada", "rango"]
+      stems: ["preferencia"]
+      note: "Standard term for ranked voting; existing labels are literal and inconsistent, and elección is kept for STV election."
+    fi:
+      use: "etusijajärjestys"
+      avoid: ["rankattu valinta", "sijoitettu valinta"]
+      stems: ["etusijajärjesty"]
+      note: "Etusijajärjestys (order of preference) is a familiar word; järjestys alone was too vague."
+    fr:
+      use: "classement par préférence"
+      avoid: ["choix classé"]
+      stems: ["classement par préférence"]
+    he:
+      use: "בחירה מדורגת"
+      avoid: ["דירוג בחירה"]
+      stems: ["בחירה מדורגת", "הבחירה המדורגת", "בחירות מדורגות"]
+    hr:
+      use: "rangiranje"
+      stems: ["rangir"]
+      note: "Shorter than rangirani izbor and the usual word."
+    hu:
+      use: "rangsorolás"
+      avoid: ["sorrend szavazás", "ranked választás"]
+      stems: ["rangsorol"]
+    it:
+      use: "classifica delle preferenze"
+      avoid: ["scelta classificata", "rango"]
+      stems: ["classifica delle preferenze"]
+      note: "The app's scelta di preferenze does not say the options are ranked, and the manual title Rango means social rank."
+    ja:
+      use: "ランク投票"
+      avoid: ["ランク付けされた選択肢"]
+      stems: ["ランク投票"]
+      note: "The app's literal 'ranked option' reads as a kind of option; the manual calls this poll ランク投票."
+    nl_NL:
+      use: "ranking"
+      stems: ["ranking"]
+      note: "Short familiar loanword; gerangschikte keuze is long and literal."
+    pl:
+      use: "ranking"
+      stems: ["ranking"]
+    pt_BR:
+      use: "enquete de classificação"
+      avoid: ["escolha classificada"]
+      stems: ["classificação"]
+    ro:
+      use: "vot preferențial"
+      avoid: ["alegere clasată"]
+      stems: ["preferențial"]
+      note: "Standard Romanian term for ranked voting; \"alegere clasată\" is a literal calque."
+    ru:
+      use: "ранжирование"
+      avoid: ["рейтинговый выбор", "порядок ранжирования"]
+      stems: ["ранжир"]
+      note: "Рейтинг means rating, not ranking."
+    sl:
+      use: "prednostno razvrščanje"
+      avoid: ["uvrščena izbira", "uvrstitvena izbira"]
+      stems: ["razvršč"]
+      note: "Uvrščena izbira is a meaningless calque."
+    sv:
+      use: "rangordning"
+      avoid: ["valfritt val"]
+      stems: ["rangordn"]
+      note: "Valfritt val means optional choice."
+    tr:
+      use: "sıralı tercih"
+      avoid: ["dereceli seçim", "sıralamalı seçim", "tercihli oy"]
+      stems: ["sıralı tercih"]
+      note: "seçim collides with STV election"
+    uk:
+      use: "ранговий вибір"
+      stems: ["рангов"]
+    zh_CN:
+      use: "排名选择"
+      stems: ["排名选择"]
+    zh_TW:
+      use: "排序選擇"
+      stems: ["排序選擇"]
+  "STV election":
+    means: "A poll type electing several candidates by single transferable vote."
+    be:
+      use: "выбары па STV"
+      avoid: ["выбары на СТВ"]
+      stems: ["stv"]
+      note: "Keep the Latin abbreviation STV."
+    ca:
+      use: "eleccions STV"
+      stems: ["stv"]
+      note: "Catalan normally uses the plural \"eleccions\" for a single election."
+    da:
+      use: "STV-valg"
+      stems: ["stv-valg"]
+    de:
+      use: "STV-Wahl"
+      stems: ["stv-wahl"]
+    el:
+      use: "εκλογές STV"
+      stems: ["εκλογ"]
+      note: "Plural, as Greek normally names an election"
+    es:
+      use: "elección STV"
+      stems: ["elección stv", "elecciones stv"]
+      note: "The plural elecciones STV is also natural for a single election."
+    fi:
+      use: "STV-vaalit"
+      avoid: ["STV:n vaali"]
+      stems: ["stv-vaal"]
+      note: "Finnish uses the plural vaalit for an election."
+    fr:
+      use: "élection STV"
+      avoid: ["paramètres électoraux STV"]
+      stems: ["élection"]
+    he:
+      use: "בחירות STV"
+      stems: ["בחירות stv"]
+    hr:
+      use: "STV izbori"
+      avoid: ["izbori za STV"]
+      stems: ["stv izbor"]
+      note: "izbori za STV means elections to an STV body."
+    hu:
+      use: "STV-választás"
+      stems: ["stv-választás"]
+    it:
+      use: "elezione STV"
+      avoid: ["selezione STV"]
+      stems: ["elezion"]
+    ja:
+      use: "STV選挙"
+      stems: ["stv選挙"]
+    nl_NL:
+      use: "STV-verkiezing"
+      stems: ["stv-verkiezing"]
+    pl:
+      use: "wybory STV"
+      stems: ["wybor"]
+    pt_BR:
+      use: "eleição STV"
+      stems: ["eleição stv", "eleições stv"]
+    ro:
+      use: "alegeri STV"
+      stems: ["stv"]
+      note: "Romanian normally uses the plural \"alegeri\" for a single election."
+    ru:
+      use: "выборы STV"
+      stems: ["выбор"]
+    sl:
+      use: "volitve STV"
+      stems: ["volit"]
+    sv:
+      use: "STV-val"
+      stems: ["stv-val"]
+    tr:
+      use: "STV seçimi"
+      stems: ["seçim"]
+    uk:
+      use: "вибори за STV"
+      avoid: ["вибори на СТВ"]
+      stems: ["stv"]
+      note: "Keep the Latin abbreviation STV."
+    zh_CN:
+      use: "STV 选举"
+      stems: ["stv"]
+      note: "Spell out 单记可转移投票 only in explanatory prose."
+    zh_TW:
+      use: "STV 選舉"
+      stems: ["stv"]
+      note: "Spell out 單記可轉移投票 only in explanatory prose."
+  "question round":
+    means: "A poll type where each person answers a question in turn."
+    be:
+      use: "раўнд пытанняў"
+      avoid: ["пытанне ў раўндзе"]
+      stems: ["раўнд пытанняў", "раўнда пытанняў", "раўндзе пытанняў", "раўнду пытанняў"]
+    ca:
+      use: "ronda de preguntes"
+      stems: ["ronda de preguntes", "rondes de preguntes"]
+    da:
+      use: "spørgerunde"
+      stems: ["spørgerunde"]
+    de:
+      use: "Fragerunde"
+      stems: ["fragerunde"]
+    el:
+      use: "γύρος ερωτήσεων"
+      avoid: ["γύρος ερώτησης"]
+      stems: ["ερωτήσεων"]
+    es:
+      use: "ronda de preguntas"
+      stems: ["ronda de preguntas", "rondas de preguntas"]
+    fi:
+      use: "kysymyskierros"
+      stems: ["kysymyskier"]
+    fr:
+      use: "tour de questions"
+      avoid: ["ronde de questions"]
+      stems: ["tour de questions", "tours de questions"]
+    he:
+      use: "סבב שאלות"
+      stems: ["סבב שאלות", "סבב השאלות", "סבבי שאלות"]
+    hr:
+      use: "krug pitanja"
+      stems: ["krug pitanja", "kruga pitanja", "krugu pitanja", "krugom pitanja"]
+      note: "Not runda pitanja."
+    hu:
+      use: "kérdezési kör"
+      avoid: ["kérdéskör", "kérdés kör"]
+      stems: ["kérdezési kör"]
+      note: "Kérdéskör means a subject area or issue."
+    it:
+      use: "giro di domande"
+      avoid: ["round di domande"]
+      stems: ["giro di domande", "giri di domande"]
+    ja:
+      use: "質問ラウンド"
+      stems: ["質問ラウンド"]
+    nl_NL:
+      use: "vragenronde"
+      stems: ["vragenronde"]
+      note: "One word, not vragen ronde."
+    pl:
+      use: "runda pytań"
+      stems: ["rund"]
+    pt_BR:
+      use: "rodada de perguntas"
+      stems: ["rodada de perguntas", "rodadas de perguntas"]
+    ro:
+      use: "rundă de întrebări"
+      stems: ["de întrebări"]
+    ru:
+      use: "раунд вопросов"
+      stems: ["раунд вопросов", "раунда вопросов", "раунде вопросов", "раундом вопросов", "раунду вопросов"]
+    sl:
+      use: "krog vprašanj"
+      stems: ["krog vprašanj", "krogu vprašanj", "krogom vprašanj"]
+    sv:
+      use: "frågerunda"
+      avoid: ["frågorunda"]
+      stems: ["frågerund"]
+    tr:
+      use: "soru turu"
+      stems: ["soru tur"]
+    uk:
+      use: "раунд питань"
+      stems: ["раунд питань", "раунду питань", "раунді питань"]
+    zh_CN:
+      use: "问答环节"
+      stems: ["问答环节"]
+    zh_TW:
+      use: "問答環節"
+      avoid: ["問題輪", "提問輪"]
+      stems: ["問答環節"]
+  seat:
+    means: "One of the positions to be filled in an STV election."
+    be:
+      use: "месца"
+      stems: ["месц"]
+    ca:
+      use: "plaça"
+      stems: ["plaça", "places"]
+      note: "Everyday word for a position to fill; the app also uses the parliamentary \"escó\"."
+    da:
+      use: "plads"
+      stems: ["plads"]
+    de:
+      use: "Sitz"
+      avoid: ["Platz"]
+      stems: ["sitz"]
+    el:
+      use: "έδρα"
+      stems: ["έδρ", "εδρ"]
+    es:
+      use: "puesto"
+      stems: ["puesto"]
+      note: "Everyday word for a position on a board or committee; escaño is parliamentary."
+    fi:
+      use: "paikka"
+      stems: ["paik"]
+    fr:
+      use: "siège"
+      stems: ["siège"]
+      note: "Seats are pourvus (filled), not remplis."
+    he:
+      use: "מושב"
+      stems: ["מושב"]
+    hr:
+      use: "mjesto"
+      stems: ["mjest"]
+    hu:
+      use: "hely"
+      stems: ["hely"]
+    it:
+      use: "seggio"
+      avoid: ["posto"]
+      stems: ["segg"]
+      note: "Seats are assegnati (filled), not riempiti."
+    ja:
+      use: "議席"
+      stems: ["議席", "席"]
+    nl_NL:
+      use: "zetel"
+      avoid: ["plaats"]
+      stems: ["zetel"]
+    pl:
+      use: "miejsce"
+      stems: ["miejsc"]
+    pt_BR:
+      use: "vaga"
+      avoid: ["assento"]
+      stems: ["vaga"]
+      note: "The STV manual page uses vaga."
+    ro:
+      use: "loc"
+      stems: ["loc"]
+    ru:
+      use: "место"
+      stems: ["мест"]
+    sl:
+      use: "sedež"
+      stems: ["sedež"]
+      note: "Seats are filled (zapolniti), not occupied (zasedeni)."
+    sv:
+      use: "plats"
+      stems: ["plats"]
+    tr:
+      use: "koltuk"
+      stems: ["koltuk", "koltuğ"]
+    uk:
+      use: "місце"
+      stems: ["місц"]
+    zh_CN:
+      use: "席位"
+      avoid: ["座位"]
+      stems: ["席位"]
+    zh_TW:
+      use: "席次"
+      avoid: ["座位"]
+      stems: ["席次"]
+  quota:
+    means: "The number of votes a candidate needs to be elected in an STV election."
+    be:
+      use: "квота"
+      stems: ["квот"]
+    ca:
+      use: "quota"
+      stems: ["quota"]
+      note: "Several STV quota strings are still untranslated English."
+    da:
+      use: "kvote"
+      avoid: ["quota"]
+      stems: ["kvote"]
+    de:
+      use: "Quote"
+      stems: ["quote", "quoten"]
+      note: "Hare-Quote, Droop-Quote; distinct from Quorum."
+    el:
+      use: "ποσόστωση"
+      stems: ["ποσόστωσ", "ποσοστώσ"]
+    es:
+      use: "cuota"
+      stems: ["cuota"]
+    fi:
+      use: "kiintiö"
+      stems: ["kiintiö"]
+      note: "Translate Hare quota and Droop quota as Haren kiintiö and Droopin kiintiö."
+    fr:
+      use: "quota"
+      stems: ["quota"]
+    he:
+      use: "מכסה"
+      stems: ["מכס"]
+    hr:
+      use: "kvota"
+      stems: ["kvot"]
+    hu:
+      use: "kvóta"
+      stems: ["kvót"]
+      note: "Translate Hare quota and Droop quota as Hare-kvóta and Droop-kvóta."
+    it:
+      use: "quota"
+      stems: ["quota"]
+    ja:
+      use: "クォータ"
+      avoid: ["割り当て"]
+      stems: ["クォータ"]
+      note: "割り当て means allocation and collides with the Allocate poll; the manual uses クォータ."
+    nl_NL:
+      use: "quotum"
+      stems: ["quot"]
+      note: "Plural quota; Droop-quotum, Hare-quotum."
+    pl:
+      use: "kwota"
+      stems: ["kwot"]
+    pt_BR:
+      use: "cota"
+      stems: ["cota"]
+    ro:
+      use: "cotă"
+      stems: ["cotă", "cota", "cotei", "cote"]
+      note: "Several STV quota strings are still untranslated English."
+    ru:
+      use: "квота"
+      stems: ["квот"]
+    sl:
+      use: "kvota"
+      stems: ["kvot"]
+    sv:
+      use: "kvot"
+      avoid: ["quota"]
+      stems: ["kvot"]
+    tr:
+      use: "kota"
+      stems: ["kota"]
+    uk:
+      use: "квота"
+      stems: ["квот"]
+      note: "Translate quota in Hare/Droop labels too; keep Hare and Droop as names."
+    zh_CN:
+      use: "配额"
+      stems: ["配额"]
+      note: "Droop and Hare stay untranslated; 当选所需票数 can explain it in prose."
+    zh_TW:
+      use: "配額"
+      stems: ["配額"]
+      note: "Droop and Hare stay untranslated; 當選所需票數 can explain it in prose."
+  round:
+    means: "One step of counting in an STV election or a round of a question round."
+    be:
+      use: "раўнд"
+      stems: ["раўнд"]
+    ca:
+      use: "ronda"
+      stems: ["ronda", "rondes"]
+    da:
+      use: "runde"
+      stems: ["runde"]
+    de:
+      use: "Runde"
+      stems: ["runde"]
+    el:
+      use: "γύρος"
+      stems: ["γύρ", "γυρ"]
+    es:
+      use: "ronda"
+      stems: ["ronda"]
+    fi:
+      use: "kierros"
+      stems: ["kierro"]
+    fr:
+      use: "tour"
+      avoid: ["ronde", "arrondi"]
+      stems: ["tour"]
+    he:
+      use: "סיבוב"
+      stems: ["סיבוב", "סבב"]
+      note: "סיבוב for STV counting rounds; question round keeps סבב."
+    hr:
+      use: "krug"
+      stems: ["krug"]
+      note: "Use krug for STV counting rounds too, not runda."
+    hu:
+      use: "kör"
+      stems: ["kör"]
+      note: "Use kör for both STV counting rounds and question rounds, replacing forduló."
+    it:
+      use: "turno"
+      stems: ["turn", "giro", "giri"]
+      note: "Use turno for STV counting rounds instead of the English round; giro remains in giro di domande."
+    ja:
+      use: "ラウンド"
+      stems: ["ラウンド"]
+    nl_NL:
+      use: "ronde"
+      stems: ["ronde"]
+    pl:
+      use: "runda"
+      stems: ["rund"]
+    pt_BR:
+      use: "rodada"
+      stems: ["rodada"]
+    ro:
+      use: "rundă"
+      stems: ["rund"]
+    ru:
+      use: "раунд"
+      stems: ["раунд"]
+    sl:
+      use: "krog"
+      stems: ["krog"]
+    sv:
+      use: "runda"
+      stems: ["rund"]
+      note: "Omgång is also used for STV rounds; prefer runda for consistency with frågerunda."
+    tr:
+      use: "tur"
+      stems: ["tur"]
+    uk:
+      use: "раунд"
+      stems: ["раунд"]
+    zh_CN:
+      use: "轮"
+      avoid: ["回合"]
+      stems: ["轮"]
+      note: "Counting rounds use 第 %{round} 轮; question round uses 环节 instead."
+    zh_TW:
+      use: "輪"
+      avoid: ["回合"]
+      stems: ["輪"]
+      note: "Counting rounds use 第 %{round} 輪; question round uses 環節 instead."
+  elected:
+    means: "Having won a seat in an STV election."
+    be:
+      use: "абраны"
+      stems: ["абран", "абіра"]
+      note: "Agree with the candidate's gender or prefer impersonal forms (абралі)."
+    ca:
+      use: "elegit"
+      stems: ["elegi"]
+      note: "Inflect for gender and number (elegida, elegits)."
+    da:
+      use: "valgt"
+      stems: ["valgt"]
+    de:
+      use: "gewählt"
+      stems: ["gewählt"]
+    el:
+      use: "εκλεγμένος"
+      stems: ["εκλεγ", "εξελέγ", "εκλέχθ"]
+    es:
+      use: "elegido"
+      stems: ["elegid"]
+    fi:
+      use: "valittu"
+      stems: ["valit"]
+    fr:
+      use: "élu"
+      stems: ["élu"]
+    he:
+      use: "נבחר"
+      stems: ["נבחר"]
+    hr:
+      use: "izabran"
+      stems: ["izabran"]
+    hu:
+      use: "megválasztott"
+      stems: ["megválaszt", "választották"]
+    it:
+      use: "eletto"
+      stems: ["eletto", "eletta", "eletti", "elette"]
+    ja:
+      use: "当選"
+      stems: ["当選", "選出"]
+      note: "選出 is acceptable; prefer 当選 (当選した) as in the manual."
+    nl_NL:
+      use: "gekozen"
+      stems: ["gekozen"]
+    pl:
+      use: "wybrany"
+      stems: ["wybran", "wybrano"]
+      note: "Agree with the candidate (wybrana) or use the impersonal wybrano."
+    pt_BR:
+      use: "eleito"
+      stems: ["eleit"]
+    ro:
+      use: "ales"
+      stems: ["ales", "aleas", "aleș"]
+      note: "Inflect for gender and number (aleasă, aleși)."
+    ru:
+      use: "избран"
+      stems: ["избран"]
+      note: "Agree with the candidate (избрана, избраны) or use избрание."
+    sl:
+      use: "izvoljen"
+      stems: ["izvoljen"]
+    sv:
+      use: "vald"
+      stems: ["vald", "valt"]
+    tr:
+      use: "seçildi"
+      stems: ["seçil"]
+    uk:
+      use: "обраний"
+      stems: ["обран"]
+    zh_CN:
+      use: "当选"
+      stems: ["当选"]
+    zh_TW:
+      use: "當選"
+      stems: ["當選"]
+  eliminated:
+    means: "Removed from the count in an STV election because of having the fewest votes."
+    be:
+      use: "выбывае"
+      stems: ["выбы"]
+      note: "Prefer present tense (выбывае ў раўндзе %{round}) over masculine past выбыў."
+    ca:
+      use: "eliminat"
+      stems: ["eliminat"]
+      note: "Inflect for gender and number (eliminada, eliminats)."
+    da:
+      use: "elimineret"
+      stems: ["eliminer"]
+    de:
+      use: "ausgeschieden"
+      stems: ["ausgeschieden", "scheidet aus", "scheiden aus"]
+    el:
+      use: "αποκλείστηκε"
+      stems: ["αποκλεί", "αποκλεισ"]
+      note: "Adjective αποκλεισμένος; reserved for STV elimination, not for block"
+    es:
+      use: "eliminado"
+      stems: ["eliminad"]
+    fi:
+      use: "pudonnut"
+      stems: ["puto", "pudo"]
+      note: "Putosi kierroksella is natural for eliminated in round."
+    fr:
+      use: "éliminé"
+      stems: ["éliminé"]
+    he:
+      use: "הודח"
+      stems: ["הודח", "הדח", "מודח"]
+    hr:
+      use: "eliminiran"
+      stems: ["eliminir"]
+    hu:
+      use: "kiesett"
+      stems: ["kies"]
+    it:
+      use: "eliminato"
+      stems: ["eliminat"]
+    ja:
+      use: "脱落"
+      stems: ["脱落"]
+    nl_NL:
+      use: "afgevallen"
+      avoid: ["uitgeschakeld"]
+      stems: ["afgevallen", "valt af", "vallen af"]
+      note: "Uitgeschakeld also means switched off, and the manual uses it for disabled voting."
+    pl:
+      use: "wyeliminowany"
+      stems: ["wyelimin"]
+      note: "Agree with the candidate (wyeliminowana)."
+    pt_BR:
+      use: "eliminado"
+      stems: ["eliminad"]
+    ro:
+      use: "eliminat"
+      stems: ["eliminat"]
+    ru:
+      use: "выбыл"
+      avoid: ["устранён", "устранен"]
+      stems: ["выбы"]
+      note: "Agree with the candidate (выбыла, выбыли) or use выбывает."
+    sl:
+      use: "izločen"
+      avoid: ["izpad"]
+      stems: ["izločen"]
+      note: "Izpad is a noun ('dropout/outage'); use the participle izločen."
+    sv:
+      use: "eliminerad"
+      stems: ["eliminer"]
+    tr:
+      use: "elendi"
+      stems: ["elen"]
+    uk:
+      use: "вибув"
+      stems: ["вибу"]
+    zh_CN:
+      use: "淘汰"
+      stems: ["淘汰"]
+    zh_TW:
+      use: "淘汰"
+      stems: ["淘汰"]
+  "vote weight":
+    means: "How much one person's vote counts in a weighted poll. A number, not a physical weight."
+    be:
+      use: "вага голасу"
+      avoid: ["вага галасоў"]
+      stems: ["вага голасу", "вагу голасу", "вагі голасу", "вагой голасу", "вагі галасоў"]
+      note: "Singular голасу: the weight of one person's vote; plural вагі галасоў only for several weights."
+    ca:
+      use: "pes del vot"
+      stems: ["pes del vot", "pes dels vots", "pesos dels vots"]
+      note: "Prefer \"pes del vot\" over \"ponderació\" for consistency."
+    da:
+      use: "stemmevægt"
+      stems: ["stemmevægt"]
+    de:
+      use: "Stimmgewicht"
+      avoid: ["Stimmgewichtung", "Stimmengewichtung", "Gewichtung der Abstimmung"]
+      stems: ["stimmgewicht"]
+    el:
+      use: "βάρος ψήφου"
+      avoid: ["βαρύτητα ψήφων"]
+      stems: ["βάρος ψήφ", "βάρους ψήφ", "βάρη ψήφ", "βαρών ψήφ"]
+      note: "βαρύτητα means importance; use βάρος throughout"
+    es:
+      use: "peso del voto"
+      avoid: ["ponderación de voto"]
+      stems: ["peso del voto", "pesos del voto", "peso de voto", "pesos de voto"]
+      note: "Ponderación collides with the weighted voting feature name (votación ponderada)."
+    fi:
+      use: "äänipaino"
+      avoid: ["äänimäärä"]
+      stems: ["äänipaino"]
+      note: "Äänimäärä means a number of votes. Äänipainotus is fine for the weighting feature."
+    fr:
+      use: "poids du vote"
+      avoid: ["coefficient de vote"]
+      stems: ["poids"]
+      note: "Pondération is acceptable for the weighting setting as a whole, but use poids du vote for a person's number."
+    he:
+      use: "משקל הצבעה"
+      stems: ["משקל"]
+      note: "Plural משקלי הצבעה; avoid mixing in משקלי קולות."
+    hr:
+      use: "težina glasa"
+      stems: ["težin"]
+      note: "A single vote's weight: težina glasa, plural težine glasova."
+    hu:
+      use: "szavazati súly"
+      stems: ["szavazati súly"]
+    it:
+      use: "peso del voto"
+      stems: ["peso del voto", "pesi del voto", "peso di voto", "pesi di voto"]
+      note: "Plural pesi di voto is acceptable; ponderazione is the weighting setting as a whole."
+    ja:
+      use: "票の重み"
+      avoid: ["投票権"]
+      stems: ["重み"]
+      note: "Shorter, and echoes the familiar phrase 一票の重み. 投票権 means the right to vote, not its weight."
+    nl_NL:
+      use: "stemgewicht"
+      avoid: ["stemweging"]
+      stems: ["stemgewicht"]
+    pl:
+      use: "waga głosu"
+      stems: ["wag"]
+    pt_BR:
+      use: "peso do voto"
+      stems: ["peso do voto", "pesos do voto", "peso de voto", "pesos de voto"]
+    ro:
+      use: "ponderea votului"
+      stems: ["ponder"]
+      note: "Singular \"votului\" for one person's weight; the app often uses plural \"voturilor\"."
+    ru:
+      use: "вес голоса"
+      avoid: ["весовой коэффициент"]
+      stems: ["вес голос", "веса голос", "весом голос"]
+    sl:
+      use: "teža glasu"
+      avoid: ["ponderiranje", "ponderiran"]
+      stems: ["tež"]
+      note: "Everyday word and the app majority; utež sounds technical (also a dumbbell). Weighted stays utežen. Ponderiran is Croatian."
+    sv:
+      use: "röstvikt"
+      stems: ["röstvikt"]
+    tr:
+      use: "oy ağırlığı"
+      stems: ["oy ağırlı"]
+    uk:
+      use: "вага голосу"
+      avoid: ["вага голосів"]
+      stems: ["вага голосу", "вагу голосу", "ваги голосу", "вагою голосу", "ваги голосів"]
+      note: "Singular голосу: the weight of one person's vote; plural ваги голосів only for several weights."
+    zh_CN:
+      use: "投票权重"
+      stems: ["投票权重", "权重"]
+    zh_TW:
+      use: "投票權重"
+      stems: ["投票權重", "權重"]
