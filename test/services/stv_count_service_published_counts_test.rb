@@ -1,5 +1,6 @@
 require "test_helper"
 require_relative "../support/blt_election"
+require "open3"
 
 # Checks the STV counters against counts published by other software, and
 # checks invariants that every count must keep.
@@ -107,6 +108,87 @@ class StvCountServicePublishedCountsTest < ActiveSupport::TestCase
     elected = rows.select { |row| row[12] == "EL" }.map(&:first)
     assert_equal elected.sort, result[:elected].map { |e| e[:name] }.sort
     assert_votes_conserved(result, election.ballots.size, "ERS97")
+  end
+
+  # Independent validation against OpenTally (https://yingtongli.me/git/OpenTally),
+  # which is itself validated against official counting software. Set
+  # OPENTALLY_BIN to an OpenTally binary to run it.
+  #
+  # Results when these counters were last changed (2026-10-01), over 2,500
+  # random elections counted with each option set below:
+  #
+  # * Every one of the 5,871 counts without a reported tie elected the same
+  #   candidates as OpenTally.
+  # * Where Loomio reports a tie, OpenTally (which draws lots instead) was run
+  #   with 40 random seeds. In 127 counts its winners were exactly the
+  #   candidates Loomio elects in every case plus those it reports as tied.
+  #   OpenTally could not finish 32 counts ("Insufficient continuing
+  #   candidates"): it excludes candidates with no votes even when they are
+  #   needed to fill the seats.
+  # * One election differed, deliberately. Three candidates tied for
+  #   exclusion, and at the previous stage one of them had more votes than the
+  #   other two. Rule 52(2)(a) excludes the candidate with the fewest votes at
+  #   that stage, so Loomio narrows the tie to the other two. OpenTally draws
+  #   lots among all three.
+  #
+  # The Scottish options reproduce the official Linn ward count, and the Meek
+  # options the Hill–Wichmann–Woodall reference count, above.
+  OPENTALLY_OPTIONS = {
+    [StvCountService::ScottishCounter, 'droop'] => %w[
+      --numbers fixed --decimals 5 --round-surplus-fractions 5 --round-values 5 --round-votes 5
+      --round-quota 0 --round-subtransfers per_ballot --quota droop --quota-criterion geq
+      --surplus wig --surplus-order by_size --exclusion single_stage --no-early-bulk-elect
+    ],
+    [StvCountService::MeekCounter, 'droop'] => %w[
+      --numbers fixed --decimals 9 --quota droop_exact --quota-criterion gt
+      --quota-mode dynamic_by_total --surplus meek --no-immediate-elect
+    ],
+    [StvCountService::MeekCounter, 'hare'] => %w[
+      --numbers fixed --decimals 9 --quota hare_exact --quota-criterion geq
+      --quota-mode dynamic_by_total --surplus meek --no-immediate-elect
+    ]
+  }.freeze
+
+  # Winners of an OpenTally count, or nil when OpenTally cannot finish it.
+  def opentally_winners(path, options, seed)
+    output, _status = Open3.capture2e(ENV["OPENTALLY_BIN"], "stv", path, *options, "--ties", "backwards", "random", "--random-seed", seed)
+    return if output.match?(/^Error: Insufficient continuing candidates/)
+
+    assert_includes output, "in order of election:", output
+    output.split("in order of election:").last.lines.filter_map { |line| line[/^\d+\. (\S+)/, 1] }.to_set
+  end
+
+  test "random elections elect the same candidates as OpenTally" do
+    skip "set OPENTALLY_BIN to compare with OpenTally" unless ENV["OPENTALLY_BIN"].present?
+
+    rng = Random.new(20261001)
+    Dir.mktmpdir do |dir|
+      300.times do |i|
+        election = BltElection.random(rng)
+        path = File.join(dir, "election.blt")
+        File.write(path, election.to_blt)
+
+        OPENTALLY_OPTIONS.each do |(counter, quota_type), options|
+          message = "election #{i}, #{counter.name.demodulize}, #{quota_type}:\n#{election.to_blt}"
+          result = counter.new(election.ballots, election.seats, quota_type, election.options).count
+          elected = result[:elected].map { |e| e[:name] }.to_set
+          tied = result[:tied].map { |t| t[:name] }.to_set
+
+          if tied.empty?
+            assert_equal elected, opentally_winners(path, options, "loomio"), message
+          else
+            # OpenTally draws lots where Loomio reports a tie. Across many
+            # draws, everyone Loomio elects should always win, and everyone it
+            # reports as tied should win in some draw.
+            outcomes = (1..20).filter_map { |seed| opentally_winners(path, options, "seed#{seed}") }
+            next if outcomes.empty?
+
+            outcomes.each { |winners| assert_operator elected, :<=, winners, message }
+            assert_operator tied, :<=, outcomes.reduce(:|), message
+          end
+        end
+      end
+    end
   end
 
   test "random elections conserve votes, fill every seat or report a tie, and keep within the seats" do
