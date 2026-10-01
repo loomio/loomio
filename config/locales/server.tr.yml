@@ -1,6 +1,6 @@
 ---
 tr:
-  group_export_started: "Grup verilerini dışa aktarma işlemi başladı"
+  group_export_started: Grup verilerini dışa aktarma işlemi başladı
   discussion_templates:
     blank:
       process_name: Boş şablon
@@ -65,14 +65,14 @@ tr:
       title_placeholder: İşe alma politikamızı revize ediyoruz
       process_name: Bir politika oluşturun
       process_subtitle: Bir politika veya prosedür belgesi oluşturmak ve üzerinde anlaşmak için ekibinizle birlikte çalışın.
-      process_introduction: "<p><span>Konu başlığı, gereksinimler ve ilkeler üzerinde anlaşabileceğiniz ve yorum yapmak üzere belge taslaklarını gönderebileceğiniz, politikayla ilgili tartışmaların yapıldığı kapsayıcıdır.</span></p><p> <span>Küçük bir grup insanla politika geliştirmek için şablonu kullanın veya belgenin ilerleyen sürümlerine ilişkin yorumları davet ederek bunu tüm kuruluşa şeffaf hale getirin.</span></p><p> <span>Grup üyelerine taslak belgenin incelenmeye hazır olduğunu bildirmek için bir Duyu kontrolü önerisi kullanın ve insanları belgeyi okumaya ve yorum veya sorularını yanıtlamaya davet edin.</span></p><p> <span>'Nihai' taslak hazır olduğunda, belgeyi onaylamak için bir Onay veya Uzlaşı teklifi yapın.</span></p>"
+      process_introduction: "<p><span>İleti dizisi, politika hakkında tartıştığınız, gereksinimler ve ilkeler üzerinde anlaştığınız ve yorum almak için belge taslaklarını paylaştığınız yerdir.</span></p><p><span>Şablonu küçük bir grupla politika geliştirmek için kullanın veya belgenin her yeni sürümüne yorum isteyerek süreci tüm kuruluşa açın.</span></p><p><span>Grup üyelerine taslak belgenin incelemeye hazır olduğunu bildirmek için bir Nabız yoklaması teklifi kullanın. İnsanları belgeyi okumaya ve yorumlarını veya sorularını paylaşmaya davet edin.</span></p><p><span>'Son' taslak hazır olduğunda belgeyi onaylamak için bir Onay veya Uzlaşma teklifi başlatın.</span></p>"
       description: "<p><strong><span>Oluşturmanız gereken politika veya belge nedir?</span></strong></p><p></p><p> <strong><span>Bu neden önemli?</span></strong></p><p></p><p> <strong><span>İnsanlardan ne yapmalarını istiyorsunuz?</span></strong></p><p></p>"
       policy: Politika
     elect_a_governance_position:
       title_placeholder: Konsey adaylığı ve seçimi
       process_name: Bir yönetim pozisyonu seçin
       process_subtitle: Konsey, komite veya kurulda yönetim rolüne birini aday gösterin ve seçin.
-      process_introduction: "<p>Üyelerin adayları değerlendirmesine yardımcı olmak için yönetişim rolünü ve pozisyona ilişkin kriterleri tanıtın.</p><p> Bir Opt-in anketi ile adaylık çağrısı yapın. Adayları, biyografileri ve referanslarıyla birlikte adayın bir fotoğrafını paylaşmaya davet edin. Üyelerin adayı doğrudan görebilmesi ve duyabilmesi için adaydan gelen bir video mesajı ekleyin.</p><p> Bir adayı seçmeye hazırsanız bir Onay teklifi kullanın.</p><p> Bir pozisyon için birden fazla adayınız varsa seçmenlerin adayları tercih sırasına göre sıralayabileceği Sıralamalı Seçim teklifini kullanın.</p>"
+      process_introduction: "<p>Üyelerin adayları değerlendirmesine yardımcı olmak için yönetişim rolünü ve pozisyona ilişkin kriterleri tanıtın.</p><p>Bir Katılım anketiyle adaylık çağrısı yapın. Adayları fotoğraflarını, biyografilerini ve referanslarını paylaşmaya davet edin. Üyelerin adayı doğrudan görüp duyabilmesi için adayın video mesajını ekleyin.</p><p>Bir adayı seçmeye hazırsanız bir Onay teklifi kullanın.</p><p>Bir pozisyon için birden fazla adayınız varsa seçmenlerin adayları tercih sırasına koyabileceği bir Sıralı tercih teklifi kullanın.</p>"
       description: '<h3 id="what-position-do-you-need-to-fill">Hangi pozisyonu doldurmanız gerekiyor?</h3><p></p><h3 id="why-is-this-important"> Bu neden önemli?</h3><p></p><h3 id="what-qualifications-skills-and-experiences-make-a-good-cand"> Hangi nitelikler, beceriler ve deneyimler iyi bir aday olur?</h3><p></p><h3 id="what-is-the-election-process"> Seçim süreci nedir?</h3><p> Aşama 1: Aday Gösterme – uygun adayları aday göstermeye davet ediyoruz.</p><p> Aşama 2: Adayları tanıtın - her aday için bir fotoğraf, kısa özgeçmiş ve referans ekleyin.</p><p> Aşama 3: Seçim - bir adayı role atamak için oy verin.</p>'
       election: Seçim
     funding_decision:
@@ -211,9 +211,9 @@ tr:
       details: Detaylar
       group_name: Grup adı
       discussion_title: Konu Başlığı
-      outcome_author: Sonuç Yazarı
-      outcome_created_at: Sonuç Oluşturulma Tarihi
-      outcome_statement: Sonuç Beyanı
+      outcome_author: Vargı Yazarı
+      outcome_created_at: Vargı Oluşturulma Tarihi
+      outcome_statement: Vargı Metni
       poll_url: Anket URL'si
       reason: Sebep
       participant: Katılımcı
@@ -387,7 +387,7 @@ tr:
     catch_up_all_groups: Özet e-postalar (tüm gruplar)
   discussion_mailer:
     reply_or_view_online_html: Bu e-postayı doğrudan yanıtlayın veya <a href='%{url}'>%{hostname} üzerinde görüntüleyin</a>.
-    turn_off_notifications_html: Bu müzakere için <a href='%{url}'>e-postaları devre dışı bırakın</a>.
+    turn_off_notifications_html: Bu tartışma için <a href='%{url}'>e-postaları kapatın</a>.
     change_email_preferences_html: "<a href='%{email_preferences_url}'>E-posta tercihlerinizi</a> değiştirin."
     unsubscribe_from_discussion_announced_html: Bu başlıktaki diğer duyurulara olan <a href='%{url}'>aboneliğinizi iptal edin</a> .
     unsubscribe_from_new_comment_html: Bu konudaki yorumların <a href='%{url}'>aboneliğini iptal edin</a> .
@@ -490,11 +490,11 @@ tr:
       process_introduction: <p>Klasik Loomio önerisi, bir tartışmayı net bir sonuca dönüştürerek karar vermenize yardımcı olur.</p><p> Bir eylem planı önerin ve insanları "katılıyorum", "çekimserim" veya "katılmıyorum" şeklinde oylamaya davet edin.</p><p> İnsanlar oy verirken, neden bu şekilde oy verdiklerine dair bir sebep verebilirler. Herkesin bu konuda nerede durduğunu ve nedenini görebilirsiniz.</p><p> Bu şekilde, bir öneriyi insanları yanıt vermeye teşvik etmek, yeni bilgiler ortaya çıkarmak ve ortak anlayış oluşturmak için kullanabilir, böylece grubunuzun daha iyi, daha bilinçli bir karar almasına yardımcı olabilirsiniz.</p><p> Bir teklif ve onunla ilgili tartışmalar, kararın nasıl ortaya çıktığına dair kendi kaydını yaratır.</p><p> <a target="_blank" href="/docs/en/guides/making_decisions/simple_decision_process"><u>Basit karar sürecinde klasik Loomio teklifinin kullanımı hakkında daha fazla bilgi edinin</u></a> .</p>
       title: Yeni Marka konseptini onaylayın
       details: <h3 id="what-is-the-decision-you-need-to-make"><strong>Vermeniz gereken karar nedir?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Bu neden önemli?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>İnsanlardan ne yapmalarını istiyorsunuz?</strong></h3><p></p><p> Bu teklifin kabul edilebilmesi için üyelerin çoğunluğunun "Kabul" oyu vermesi gerekiyor.</p><p> Katılmıyorsanız nedenini ve Katılmanız için nelerin değişmesi gerektiğini belirtin.</p>
-      agree: Kabul etmek
+      agree: Katılıyorum
       agree_meaning: Öneriyi destekliyorum
       agree_prompt: Teklifte hoşunuza giden şey nedir ve gruba nasıl fayda sağlayacak?
-      abstain: Uzak durmak
-      disagree: Aynı fikirde olmamak
+      abstain: Çekimserim
+      disagree: Katılmıyorum
       disagree_meaning: Bu öneriyi destekleyebilmem için öncelikle içindeki bir şeyin değiştirilmesi gerekiyor.
       disagree_prompt: Bu öneriyi destekleyebilmeniz için nasıl geliştirilebilir?
       abstain_meaning: Bu karara oy vermemeyi tercih etmek veya oy verememek.
@@ -504,10 +504,10 @@ tr:
       process_introduction: <p>Almanız gereken bir karar hakkında, karardan etkilenen veya uzman kişilerin tavsiyelerine başvurun; böylece kuruluşunuz için daha iyi bir karar verebilirsiniz.</p><ul><li><p> Tavsiye, kuruluşunuz için daha iyi kararlar almanıza yardımcı olur.</p></li><li><p> İlişkileri, öğrenme fırsatlarını ve çeşitli girdileri teşvik edin.</p></li><li><p> Girişimciliği ve yaratıcılığı teşvik edin ve daha keyifli çalışmalar yapın.</p></li></ul><p> <a target="_blank" href="/docs/en/guides/making_decisions/advice_process"><u>Danışmanlık süreci hakkında daha fazla bilgi edinin</u></a> .</p>
       title: Takashi'nin yeni bir bilgisayar almasına yardım edin
       details: <h3 id="what-is-the-decision-you-need-to-make"><strong>Vermeniz gereken karar nedir?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Bu neden önemli?</strong></h3><p></p><h3 id="what-advice-are-you-asking-from-people-to-help-you-make-a-go"> <strong>İyi bir karar vermenize yardımcı olması için insanlardan ne gibi tavsiyeler istiyorsunuz?</strong></h3><p></p><p> Kuruluşumuz için iyi bir karar alabilmem için bana yardımcı olmanızı rica ediyorum.</p>
-      agree: Kabul etmek
+      agree: Katılıyorum
       agree_meaning: Bu karar hakkında tavsiyemi sundum
       agree_prompt: Tavsiyenizi özetleyin veya yararlı bir yorum yapın
-      abstain: Uzak durmak
+      abstain: Çekimserim
       abstain_meaning: Verebileceğim hiçbir tavsiyem yok
       abstain_prompt: Yardımcı olabilecek yorumlarınız var mı?
       outcome_statement: "<p>Tavsiye turuma katıldığınız için teşekkürler!</p>"
@@ -532,15 +532,15 @@ tr:
       title: Yeni Marka konseptini onaylayın
       details: <h3 id="what-is-the-decision-you-need-to-make"><strong>Vermeniz gereken karar nedir?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Bu neden önemli?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>İnsanlardan ne yapmalarını istiyorsunuz?</strong></h3><p></p><p> Bu teklifin kabul edilebilmesi için üyelerin çoğunluğunun "Kabul" oyu vermesi gerekiyor.</p><p> Katılmıyorsanız nedenini ve Katılmanız için nelerin değişmesi gerektiğini belirtin.</p>
       outcome_statement: "<p>Mutabakat sürecine katıldığınız için teşekkür ederiz.</p>"
-      agree: Kabul etmek
+      agree: Katılıyorum
       agree_meaning: Öneriyi destekliyorum
       agree_prompt: Teklifte hoşunuza giden şey nedir ve kuruluşa nasıl fayda sağlayacak?
-      abstain: Uzak durmak
+      abstain: Çekimserim
       abstain_meaning: Bu karar beni etkilemiyor ve grubun vereceği karardan memnunum.
-      disagree: Aynı fikirde olmamak
+      disagree: Katılmıyorum
       disagree_meaning: Bu öneriyi destekleyebilmem için önce bir şeyin değişmesi gerekiyor
       disagree_prompt: Bu öneriyi destekleyebilmeniz için nasıl geliştirilebilir?
-      block: Engellemek
+      block: Veto ediyorum
       block_meaning: Bu teklifi engelliyorum ve devam etmemesi gerektiğini düşünüyorum
       block_prompt: Bu teklife itirazınızı ve neden devam etmemesi gerektiğini açıklayın
       details_v2: "<h3><strong>Vermeniz gereken karar nedir?</strong></h3><p></p><h3> <strong>Bu neden önemli?</strong></h3><p></p><h3> <strong>İnsanlardan ne yapmalarını istiyorsunuz?</strong></h3><p></p><p> Görüşünüzü ve nedenini paylaşın. Eğer katılmıyorsanız, bunu desteklemeniz için nelerin değişmesi gerektiğini açıklayın.</p>"
@@ -565,7 +565,7 @@ tr:
       looks_good: Güzel görünüyor
       looks_good_meaning: Bunun nereye gittiğinden memnunum
       looks_good_prompt: Öneriyi daha iyi hale getirmek için herhangi bir yorumunuz veya öneriniz var mı?
-      abstain: Uzak durmak
+      abstain: Çekimserim
       abstain_meaning: Bu çalışmaya ekleyeceğim hiçbir şey, itirazım yok.
       abstain_prompt: Çekimser kalmak, bu teklifin yönüne onay vermek anlamına gelir. Çekimser kalmaya oy vermenizin bir nedeni var mı?
       concerned: Endişeli
@@ -635,7 +635,7 @@ tr:
       process_subtitle_v3: Ödünleşmeler olduğunda öncelikleri ortaya koyun. Nokta oylama olarak da bilinir.
     ranked_choice:
       process_subtitle: Seçeneklerin sıralı tercihlerini anlayın
-      process_introduction: <p>Sıralamalı tercih, çok sayıda seçeneğiniz olduğunda veya bir seçim yaptığınızda kullanışlıdır.</p><p> Bu anket şablonu, insanların tercih ettikleri sırayla oy kullanmaları için bir dizi seçenek sunar.</p><p> Seçmenin kaç seçenek alacağını ayarlayabilirsiniz.</p><p> <span>Seçmenler tercih sırasına göre seçenekleri sürükleyip bırakabilirler (#1 en çok tercih ettiğiniz seçenektir).</span></p><p> <span>Gelişmiş Ayarlar arasında 'Oylar anonimdir' ve 'Seçenekleri rastgele sırada göster' bulunur - genellikle oylama yanlılığını azaltmak için Sıralı seçim için kullanılır</span> .</p><p> Sonuçlar sıralı olarak gösterilir. Sonuç tablosu, sonuçları analiz etmenize yardımcı olacak ek veriler sağlar.</p><ul><li><p> Rütbe</p></li><li><p> Puanların %'si</p></li><li><p> Puanlar</p></li><li><p> Anlam</p></li></ul><p> <a target="_blank"  href="/docs/en/user_manual/polls/proposal_types#ranked-choice">Sıralamalı seçim hakkında daha fazla bilgi edinin</a> .</p>
+      process_introduction: <p>Sıralı tercih, çok sayıda seçeneğiniz olduğunda veya seçim yaparken kullanışlıdır.</p><p>Seçmenler seçenekleri sürükleyip bırakarak tercih sırasına koyar.</p><p>Sonuçlar sıralı olarak gösterilir.</p><p><a target="_blank"  href="/docs/en/user_manual/polls/proposal_types#ranked-choice">Sıralı tercih hakkında daha fazla bilgi edinin</a>.</p>
       title: Yönetim kuruluna direktörleri seçin
       details: <h3 id="what-is-this-poll-about"><strong>Bu anket neyle ilgili?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Bu neden önemli?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>İnsanlardan ne yapmalarını istiyorsunuz?</strong></h3><p></p><p> Tercihinize göre seçenekleri sıralayarak oy verin. Sonuçlarda ilk sırada yer alan seçenek kazanır.</p>
       process_subtitle_v2: Grubun tercih sırasını bulun.
@@ -643,7 +643,7 @@ tr:
       process_subtitle_v3: Tercih edilen seçenekleri en çok tercih edilenden en az tercih edilene doğru sıralayın
     time_poll:
       process_subtitle: İnsanların buluşmaya ne zaman müsait olduğunu bulun
-      process_introduction: <p><span>Toplantınız veya etkinliğiniz için tarih ayarlamaya zaman ayırın.</span></p><p> Zaman anketi herkesin müsaitlik durumunu görmenizi ve en uygun zamanı bulmanızı kolaylaştırır.</p><p> Zaman anketinize bir başlık ve ayrıntılar verin. Zaman diliminizde tarih ve saat seçeneklerinin bir listesini girin.</p><p> Zaman aralıklarını ayarlarken farklı zaman dilimlerindeki insanları göz önünde bulundurun. Katılımcılar zamanları kendi zaman dilimlerinde yerelleştirilmiş olarak görecekler.</p><p> Toplantı süresini ayarlayın.</p><p> Zaman anketi kapandığında, en iyi zamanı ve toplantı için talimatları içeren bir sonuç belirleyin.</p><p> <span>Loomio, katılımcıların takvimlerine ekleme yapabilmeleri için sonuç bildirim e-postasına bir takvim daveti ekleyecektir.</span></p><p> <a target="_blank" href="/docs/en/user_manual/polls/meeting_polls#time-poll">Time anketi hakkında daha fazla bilgi edinin</a> .</p>
+      process_introduction: <p>Toplantınız veya etkinliğiniz için en uygun zamanı hızla bulun. Bir başlık, ayrıntılar ve kendi saat diliminizde tarih/saat seçenekleri ekleyin. Katılımcılar saatleri kendi saat dilimlerinde görür.</p><p>Zaman anketiniz kapandığında en uygun zamanı ve toplantı talimatlarını içeren bir vargı belirleyin. Loomio, katılımcıların takvimlerine ekleyebilmesi için vargı e-postasını bir takvim davetiyle gönderir.</p><p><a target="_blank" href="/docs/en/user_manual/polls/meeting_polls#time-poll">Zaman anketi hakkında daha fazla bilgi edinin</a>.</p>
       title: Bir sonraki toplantımız için bir tarih belirleyelim
       details: "<p><strong>Toplantı veya etkinlik nedir?</strong></p><p></p><p> <strong>Bu neden önemli?</strong></p><p></p><p> <strong>İnsanlardan ne yapmalarını istiyorsunuz?</strong></p><p></p><p> <span>Uygun olduğunuz zaman aralıklarını yeşil 'başparmak yukarı' simgesiyle işaretleyin veya uygun olmadığınızda kırmızı 'başparmak aşağı' simgesini yerinde bırakın.</span></p><p> <span>İhtiyaç halinde müsait olduğunuzu belirtmek için 'baş parmakları yana' simgesini kullanın.</span></p>"
       reason_prompt: Organizatörün uygun bir zaman bulmasına yardımcı olmak için söyleyebileceğiniz bir şey var mı?
@@ -671,7 +671,7 @@ tr:
       objection_prompt: Kararınızı verebilmeniz için nelerin değişmesi gerekiyor?
     majority:
       process_subtitle: En çok oyu alan taraf karar versin.
-      process_introduction: "<p><strong>Çoğunluk,</strong> grup kararı almanın en basit yoludur; katılımcılar Evet veya Hayır oyu verir ve teklif, yarıdan fazlası Evet oyu verirse kabul edilir. Çekimser kalma veya engelleme yoktur, bu nedenle her oy eşit ağırlığa sahiptir.</p><p> Çoğunluk oyu, net bir sonuca ihtiyaç duyulan basit kararlar için iyi sonuç verir. İnsanların birbirlerini anlamaları ve ortak zemin bulmaları için birlikte çalışmaları gereken kararlar için ise Onay veya Konsensus oyu kullanılabilir.</p>"
+      process_introduction: "<p><strong>Çoğunluk</strong>, grup kararı almanın en basit yoludur — katılımcılar Evet veya Hayır oyu verir ve yarıdan fazlası Evet oyu verirse teklif kabul edilir. Çekimserim veya Veto ediyorum seçeneği yoktur, bu nedenle her oy eşit ağırlıktadır.</p><p>Çoğunluk, net bir vargı gereken basit kararlar için uygundur. İnsanların birbirini anlamak ve ortak zemin bulmak için birlikte çalışmasının önemli olduğu kararlarda Onay veya Uzlaşma yöntemini değerlendirin.</p>"
       title: 3. çeyrek bütçesini onaylayın.
       details: "<h3><strong>Vermeniz gereken karar nedir?</strong></h3><p></p><h3> <strong>Bu neden önemli?</strong></h3><p></p><h3> <strong>İnsanlardan ne yapmalarını istiyorsunuz?</strong></h3><p></p>"
       yes_meaning: Bu öneriyi destekliyorum.
@@ -756,7 +756,7 @@ tr:
     not_target_user: Birleştirme işlemini onaylamak için hedef hesapla oturum açmış olmanız gerekir.
   thread_markdown:
     poll: Anket
-    no_activity: Henüz hiçbir yorum, anket, oy veya sonuç yok.
+    no_activity: Henüz yorum, anket, oy veya vargı yok
     status: "**Durum:** %{value}"
     anonymous_voting: "**Anonim oylama:** %{value}"
     options: "**Seçenekler:** %{value}"
@@ -784,7 +784,7 @@ tr:
     vote_removed: "%{author}: oy kaldırıldı"
     undecided: "%{author}: kararsız"
     superseded: değiştirildi
-    shared_outcome: "%{author} bir karar paylaştı"
+    shared_outcome: "%{author} bir vargı paylaştı"
     removed: Kaldırıldı
   error:
     access_denied: Bunu yapma izniniz yok.

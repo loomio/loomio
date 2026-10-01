@@ -176,12 +176,12 @@ tr:
   poll_types:
     proposal: öneri
     count: katılım
-    check: duyu kontrolü
+    check: nabız yoklaması
     poll: anket
-    dot_vote: nokta oyu
+    dot_vote: nokta oylaması
     meeting: zaman anketi
-    ranked_choice: tercihli oy
-    score: skor anketi
+    ranked_choice: sıralı tercih
+    score: puanlama anketi
     question: soru turu
     stv: STV seçimi
   timezones:
@@ -343,7 +343,7 @@ tr:
     formatting_help:
       label: Biçimlendirme
       title: Metninizi biçimlendirmek için Markdown'u nasıl kullanacağınızı öğrenin
-    thread: İplik
+    thread: İleti dizisi
     commercial: Reklam
     nonprofit: Kar amacı gütmeyen kuruluşlar
     opening_in: Açılış %{time}
@@ -771,7 +771,7 @@ tr:
   notification_models:
     comment: yorum yapın
     poll: 'anket:'
-    outcome: 'karar:'
+    outcome: 'vargı: '
     stance: 'oy:'
     discussion: 'tartışma:'
   notifications:
@@ -884,7 +884,7 @@ tr:
       poll_created: "%{poll_type}: %{title}"
       poll_edited: "%{actor} %{poll_type}'ı güncelledi: %{title}"
       poll_expired: "%{poll_type} kapandı: %{title}"
-      poll_expired_author: 'Bir sonuç yayınla: %{title}'
+      poll_expired_author: 'Bir vargı yayınlayın: %{title}'
       poll_option_added: "%{actor}, %{title} öğesine seçenekler ekledi"
       poll_reopened: 'Oylama uzatıldı: %{title}'
       poll_reminder: "%{actor}, %{title} için oy vermenizi hatırlatıyor"
@@ -926,10 +926,10 @@ tr:
     invite: Davet et
     start_thread: Konu başlat
     messages:
-      created: Müzakere başlatıldı
-      updated: Müzakere güncellendi
+      created: Tartışma başlatıldı
+      updated: Tartışma güncellendi
       forked: Konu çatalı oluşturuldu
-    new_discussion_title: Yeni müzakere başlat
+    new_discussion_title: Tartışma başlat
     new_thread_from_template: 'Yeni konu: %{process_name}'
     moving_items_title: Öğeleri yeni konuya taşı
     edit_discussion_title: Müzakereyi düzenle
@@ -937,12 +937,12 @@ tr:
     group_placeholder: Bir grup seç
     title_label: Başlık
     title_placeholder: Müzakere etmek istediğiniz konu nedir?
-    context_label: İçerik
+    context_label: Bağlam
     context_placeholder: Bu tartışmaya bir bağlam sağlayın, böylece insanlar nasıl katılacaklarını bilirler
     privacy_label: Gizlilik
     privacy_public: Bağlantıya sahip olan herkes bu konuyu görüntüleyebilir
     privacy_private: Bu konuyu yalnızca grubun üyeleri görebilir
-    privacy_organisation: Müzakere %{parent} ve %{group} gruplarının üyelerine görünür olacaktır.
+    privacy_organisation: İleti dizisi %{parent} ve %{group} gruplarının üyelerine görünür olacaktır.
     fork_notice: "%{title} adlı kaynaktan %{count} öğeyle yeni bir ileti dizisi oluşturulacak"
     notify_group: Grubu bilgilendir
     none_invite_only_discussion: Hiçbiri (yalnızca davetlilerin katılabileceği tartışma)
@@ -967,7 +967,7 @@ tr:
     cannot_reveal_when_anonymous: Üzgünüz, isimsiz bir ankete kimin oy verip vermediğini açıklayamayız.
     group_notification_history: Grup daveti geçmişi
     poll_notification_history: Anket bildirim geçmişi
-    outcome_notification_history: Sonuç bildirim geçmişi
+    outcome_notification_history: Vargı bildirim geçmişi
     comment_notification_history: Yorum bildirim geçmişi
     notification_history_explanation: "✓ bildirimin okunduğunu veya e-postanın açıldığını belirtir"
     quick_add: 'Hızlı ekleme:'
@@ -987,8 +987,8 @@ tr:
     new_discussion: "%{name}, konuya %{length} kişiyi davet etti:"
     discussion_announced: "%{name}, konuya %{length} kişiyi davet etti:"
     poll_created: "%{name}, %{length} kişiyi oy vermeye davet etti:"
-    outcome_created: "%{name}, %{length} kişiyle bir sonuç paylaştı:"
-    outcome_announced: "%{name}, %{length} kişiyle bir sonuç paylaştı:"
+    outcome_created: "%{name}, %{length} kişiyle bir vargı paylaştı:"
+    outcome_announced: "%{name}, %{length} kişiyle bir vargı paylaştı:"
     announcement_created: "%{name}, konuya %{length} kişiyi davet etti:"
     discussion_edited: "%{name} konuyu düzenleyerek %{length} kişiye bilgi verdi:"
     poll_edited: "%{name} bir anket düzenleyerek %{length} kişiye bilgi verdi:"
@@ -1113,7 +1113,7 @@ tr:
     fork_comment: Çatal ipliği
     translate_comment: Yorumu çevir
     edit_outcome: Kararı düzenle
-    announce_outcome: İnsanları bu sonuç hakkında bilgilendirin
+    announce_outcome: İnsanları bu vargı hakkında bilgilendirin
     announce_outcome_active: "(Bu sonuçtan henüz hiç kimse haberdar edilmedi)"
     translate_outcome: Kararı çevir
     show_history: Düzenleme geçmişini göster
@@ -1251,7 +1251,7 @@ tr:
     discussion_header: Tartışma düzenlemeleri
     comment_header: Yorum düzenlemeleri
     poll_header: Anket düzenlemeleri
-    outcome_header: Sonuç düzenlemeleri
+    outcome_header: Vargı düzenlemeleri
     stance_header: Düzenlemelere oy verin
     started_by: "<strong>%{name}</strong> tarafından başlatıldı"
     edited_by: "<strong>%{name}</strong> tarafından düzenlendi"
@@ -1310,7 +1310,7 @@ tr:
     new_cover_photo: Yeni kapak fotoğrafı yükle
     new_group_logo: Yeni grup logosu yükle
     open_discussions: Konuları aç
-    discussions_placeholder: Müzakere, herkesin bir başlık hakkında tartışarak birlikte kararlar aldığı yerdir.
+    discussions_placeholder: İleti dizisi, herkesin bir konuyu tartışıp birlikte karar alabildiği yerdir.
     members_placeholder: 'Burada tek kişi sensin: sana katılması için başkalarını davet et!'
     member_options: Üye seçenekleri
     see_all_members: "%{count} üyenin tümünü görün"
@@ -1338,8 +1338,8 @@ tr:
       loud: Herhangi bir etkinlik olduğunda e-posta gönder.
       loud_aria_description: Bu grup için bildirim ses düzeyiniz Yüksek Ses'e ayarlandı. Her ne zaman bir faaliyet olursa size e-posta gönderilecektir.
       loud_message: '"%{name}" hakkındaki tüm faaliyetler size e-postayla gönderilecektir.'
-      normal: 'Sadece önemli aktiviteleri e-postala: Yeni müzakere ve öneriler, sonuçlar vb'
-      normal_aria_description: Bu grup için bildirim ses düzeyiniz Normal'e ayarlandı. Sadece önemli faaliyetler e-postayla iletilecektir; mesela birisi yeni bir müzakere başlattığında, bir öneri gündeme getirdiğinde ya da bir sonuç belirlediğinde gibi.
+      normal: 'Sadece önemli etkinlikleri e-postayla gönderin: Yeni ileti dizileri ve teklifler, vargılar vb.'
+      normal_aria_description: Bu grup için bildirim düzeyiniz Normal'e ayarlandı. Yalnızca birisi yeni bir ileti dizisi başlattığında, bir teklif sunduğunda veya bir vargı belirlediğinde olduğu gibi önemli etkinlikler size e-postayla iletilecektir.
       normal_message: '"%{name}" içerisinde sadece önemli faaliyetler hakkında e-postayla haberdar edileceksiniz.'
       quiet: Bu grup hakkında e-posta gönderme. Etkinlikler kontrol panelinde görüntülenecektir.
       quiet_aria_description: Bu grup için bildirim ses düzeyiniz Sakin'e ayarlandı. Bu gruba ait faaliyetler hakkında e-posta almayacaksınız. Grup faaliyetleri Kontrol Panelinde görüntülenecektir
@@ -1388,7 +1388,7 @@ tr:
     change_cover_image: kapak resmini değiştir
     change_logo: logoyu değiştir
     permissions_explaination: 'Bir kişinin bir gruba sahip olabileceği iki üyelik düzeyi vardır: yönetici ve üye. Yöneticiler grup ayarlarını düzenleyebilir, diğer kişileri yönetici yapabilir ve aşağıda listelenen tüm eylemleri gerçekleştirebilir.'
-    parent_group: Ebeveyn grubu
+    parent_group: Ana grup
     new_organisation: Yeni organizasyon
     new_group: Yeni grup
     new_subgroup: Yeni alt grup
@@ -1440,7 +1440,7 @@ tr:
     membership_granted_upon_invitation: Yalnızca davetiye.
     membership_granted_upon_approval_secret_parent: "<strong>Talep üzerine</strong> %{parent} ülkesinden herkes gruba katılma isteğinde bulunabilir."
     permissions: İzinler
-    thread_privacy: Müzakere gizliliği
+    thread_privacy: İleti dizisi gizliliği
     public_threads: Sadece kamuya açık olan müzakereler
     public_discussions_subgroup: "%{parentGroupName} grubunda bulunan herkes müzakereleri görebilir"
     public_or_private_threads: Kamuya açık ve gizli müzakerelere izin ver
@@ -1839,7 +1839,7 @@ tr:
     end: Son
     unread: Okunmamış (%{count})
     latest: En yeniler
-    context: İçerik
+    context: Bağlam
     chronological: Kronolojik
     nested: Yuvalanmış
     attachment_display:
@@ -1849,7 +1849,7 @@ tr:
     n_more: "%{count} yanıtı yükle"
     add_comment: Yorum ekle
     add_poll: Anket ekle
-    add_outcome: Karar ekle
+    add_outcome: Vargı ekle
     comment: Yorum
     facilitate: Kolaylaştırmak
     start_decision: Kararı başlat
@@ -1951,13 +1951,13 @@ tr:
     consensus_title: Uzlaşma
     proposal_title: Öneri
     count_title: Kaydol
-    check_title: Anlam kontrolü
+    check_title: Nabız yoklaması
     poll_title: Anket
     meeting: Toplantı
     score_title: Puan anketi
-    dot_vote_title: Nokta oyu
+    dot_vote_title: Nokta oylaması
     meeting_title: Zaman anketi
-    ranked_choice_title: Dereceli seçim
+    ranked_choice_title: Sıralı tercih
     gradients_of_agreement_title: Anlaşmanın gradyanları
     majority_title: Çoğunluk
     stv_title: STV Seçimi
@@ -2054,7 +2054,7 @@ tr:
     vote: Oy
     votes: Oylar
     update_outcome: Kararı güncelle
-    outcome: Karar
+    outcome: Vargı
     outcomes: Kararlar
     statement: İfade
     change_your_stance: Yanıtı düzenle
@@ -2311,23 +2311,23 @@ tr:
   poll_common_set_outcome_panel:
     enter_outcome: Kararı girin
     poll_type: Bu %{poll_type} kapandı. Sonuçları düşünmeye zaman ayırın ve ardından sonucu paylaşın, böylece insanlar bundan sonra ne olacağını bilsin.
-    enter_an_outcome: Bir karar girin
+    enter_an_outcome: Bir vargı girin
   poll_common_outcome_form:
     review_due_in_days: Karar kaç gün sonra gözden geçirilir?
     review_date: Gözden geçirme tarihi
     review_date_hint: Kararın gözden geçirileceği tarihi belirleyin (isteğe bağlı)
-    who_to_notify: Bu sonuç hakkında kimi bilgilendirmek istiyorsunuz? (isteğe bağlı)
-    outcome_statement_template: Sonuç beyanı şablonu
+    who_to_notify: Bu vargı hakkında kimi bilgilendirmek istiyorsunuz? (isteğe bağlı)
+    outcome_statement_template: Vargı beyanı şablonu
     new_title: Devlet sonucu
     update_title: Sonucu güncelle
-    outcome_created: Karar oluşturuldu
-    outcome_updated: Karar güncellendi
+    outcome_created: Vargı oluşturuldu
+    outcome_updated: Vargı güncellendi
     statement_placeholder: Yanıtları özetleyin ve bundan sonra ne olacağını açıklayın.
     you_will_be_notified: İnceleme tarihinde bilgilendirileceksiniz.
     submit: Sonucu paylaş
     review_due_in_days_hint: Kararın gözden geçirilmesi için beklenmesi gereken gün sayısı (isteğe bağlı).
     statement_template_hint: Kararın sonucunu yazmak için bir şablon sağlayın. (isteğe bağlı)
-    statement_template_placeholder: Katılımınız için teşekkürler! Çoğunluk sağlandı ve devam edebilmemiz için destek aldık.
+    statement_template_placeholder: Katılımınız için teşekkürler. Yeter sayı sağlandı ve devam edebilmemiz için destek aldık.
   poll_common_outcome_panel:
     authored_by: "%{name}"
   poll_common_delete_modal:
@@ -2385,7 +2385,7 @@ tr:
     add_option_placeholder: Yeni bir seçim girin
     minimum_stance_choices: Sıralama seçenekleri
     minimum_stance_choices_hint: yani en iyi 3 dondurma çeşidini sıralayın
-    ranked_choice_created: Dereceli seçim oluşturuldu
+    ranked_choice_created: Sıralı tercih oluşturuldu
     ranked_choice_updated: Dereceli seçimi güncellendi
     rank: Rütbe
     points: Puanlar
@@ -2415,14 +2415,14 @@ tr:
     select_an_option: Bir seçenek seçin
     'yes': Evet
     'no': Hayır
-    agree: Kabul etmek
+    agree: Katılıyorum
     consent: Onay
     abstain: Çekimser
     unsure: Emin değilim
-    disagree: Aynı fikirde olmamak
+    disagree: Katılmıyorum
     objection: İtiraz
     object: Nesne
-    block: Engellemek
+    block: Veto ediyorum
     no_voting: Oylama yok
   poll_count_form:
     pct_of_target: Hedefin %'si
@@ -2485,7 +2485,7 @@ tr:
     discussion_closed: "<a class='actor-link' href='/u/%{username}'>%{author}</a> konuyu kapattı"
     discussion_reopened: "<a class='actor-link' href='/u/%{username}'>%{author}</a> konuyu yeniden açtı"
     new_comment: "<a class='actor-link' href='/u/%{username}'>%{author}</a>"
-    outcome_created: "<a class='actor-link' href='/u/%{username}'>%{author}</a> bir sonuç paylaştı"
+    outcome_created: "<a class='actor-link' href='/u/%{username}'>%{author}</a> bir vargı paylaştı"
     poll_reopened: "<a class='actor-link' href='/u/%{username}'>%{author},</a> %{polltype} anketini yeniden açtı"
     poll_closed_by_user: "<a class='actor-link' href='/u/%{username}'>%{author},</a> %{polltype}'yi kapattı"
     poll_created: "<a class='actor-link' href='/u/%{username}'>%{author}</a> bir %{polltype} başlattı"
@@ -2664,9 +2664,9 @@ tr:
       poll_expired: Bir anketin süresi doluyor
       poll_closed_by_user: Bir anket manuel olarak kapatılır
       poll_reopened: Oylama için anket yeniden açıldı
-      outcome_created: Sonuç paylaşıldı
-      outcome_updated: Bir sonuç güncellendi
-      outcome_review_due: Sonuç incelemesi zamanı geldi
+      outcome_created: Vargı paylaşıldı
+      outcome_updated: Bir vargı güncellendi
+      outcome_review_due: Vargıyı gözden geçirme zamanı geldi
       new_discussion: Bir tartışma başladı
       discussion_edited: Bir tartışma düzenlendi
     permissions_explaination: Bu entegrasyon tarafından hangi eylemlerin gerçekleştirilebileceğini seçin
@@ -2822,7 +2822,7 @@ tr:
     shuffle_options: Karıştırma seçenekleri
     selected_people_only: Sadece seçilmiş kişiler
   poll_common_form:
-    quorum: Çoğunluk
+    quorum: Yeter sayı
     participation_quorum: Katılım yeter sayısı
     quorum_hint: Sonucun geçerli olması için seçmenlerin yüzde kaçı katılmalıdır? İsteğe bağlı, yeter sayı yoksa boş bırakın.
     quorum_placeholder: Boş bırakın veya 0 ile 100 arasında bir sayı girin
@@ -2865,7 +2865,7 @@ tr:
       score_hint: Seçmenler her seçeneğe bir puan atar
       allocate: Tahsis etmek
       allocate_hint: Seçmenler, seçenekler arasında puan bütçesi ayırırlar
-      ranked_choice: Sıralamalı seçim
+      ranked_choice: Sıralı tercih
       ranked_choice_hint: Seçmenler seçenekleri en çok tercih edilenden en az tercih edilene doğru sıralarlar
       time_poll: Zaman anketi
       time_poll_hint: Seçmenler toplantıya ne zaman hazır olduklarını belirtirler
@@ -2965,7 +2965,7 @@ tr:
     set_all_vote_weights_the_same: Tüm oy ağırlıklarını aynı olarak ayarlayın
     member_vote_weights_hint: Mevcut bir gruba üye olmayan seçmenlerin oy ağırlığı 1'dir
     weighted_voting: Ağırlıklı oylama
-    weighted_voting_is_not_available_with_anonymous_voting: "Ağırlıklı oylama anonim oylamada kullanılamaz"
+    weighted_voting_is_not_available_with_anonymous_voting: Ağırlıklı oylama anonim oylamada kullanılamaz
     use_weighted_voting: Ağırlıklı oylama kullanın
     weighted_voting_off_warning: Ağırlıklı oylamayı kapatmak, her oy ağırlığını 1'e ayarlar. Bu anket için değiştirdiğiniz tüm oy ağırlıkları kaybolacaktır.
     weighted_voting_on_group: Ağırlıklı oylamayı etkinleştirmek, her üyenin varsayılan oy ağırlığını kopyalar. Diğer seçmenler 1 oy ağırlığı alır.
@@ -3151,7 +3151,7 @@ tr:
       Poll: Anket
       Comment: Yorum
       Stance: Oy
-      Outcome: Karar
+      Outcome: Vargı
   set_password_prompt:
     title: Şifre belirleyeyim mi?
     helptext: Bir dahaki sefere giriş yaparken e-posta bağlantısını beklemek yerine şifre kullanabilirsiniz.
