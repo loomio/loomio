@@ -172,7 +172,7 @@ he:
       poll_types:
         proposal: הצעה
         count: לספור
-        choose: בחר
+        choose: בחירה
         allocate: לְהַקְצוֹת
         score: ציון
         rank: דַרגָה
@@ -380,7 +380,7 @@ he:
     unfollowed_discussion: השבתת הודעות אימייל עבור השיחה הזו.
     catch_up_link: הגדרות אימייל לעדכון
     catch_up_title: הגדרות אימייל לעדכון
-    catch_up_description: בחר באיזו תדירות לקבל סיכום של הפעילות בקבוצות שלך
+    catch_up_description: בחירת תדירות לקבלת סיכום הפעילות בקבוצות
     catch_up_schedule: שלח אימייל לשחזור פערים
     catch_up_saved: הגדרות אימייל לעדכון עודכנו
     catch_up_days:
@@ -540,7 +540,7 @@ he:
       details_v2: <h3 style=";text-align:right;direction:rtl"><strong>מהי ההחלטה שאתה צריך לקבל?</strong></h3><p style=";text-align:right;direction:rtl"></p><h3 style=";text-align:right;direction:rtl"> <strong>למה זה חשוב?</strong></h3><p style=";text-align:right;direction:rtl"></p><h3 style=";text-align:right;direction:rtl"> <strong>מה אתה מבקש מהאנשים בהצעה הזו?</strong></h3><p style=";text-align:right;direction:rtl"></p><p style=";text-align:right;direction:rtl"> אנחנו לא שואפים לשלמות - תנו את הסכמתכם אם ההצעה טובה מספיק ובטוחה לניסיון. אם יש לכם התנגדות, ציינו מה צריך להשתנות כדי להפוך אותה לניתנת לביצוע.</p>
     consensus:
       process_subtitle: להגיע להסכם קיבוצי עם כל המעורבים
-      process_introduction: <p style=";text-align:right;direction:rtl">בנו קונצנזוס לקראת החלטה שעליכם לקבל, כדי להגיע להסכם שיספק את הצרכים והדאגות של כל המשתתפים.</p><ul style=";text-align:right;direction:rtl"><li style=";text-align:right;direction:rtl"><p style=";text-align:right;direction:rtl"> לדון ולפתח הצעה יחד</p></li><li style=";text-align:right;direction:rtl"><p style=";text-align:right;direction:rtl"> לכלול ולכבד את כל המעורבים</p></li><li style=";text-align:right;direction:rtl"><p style=";text-align:right;direction:rtl"> לבקש הסכמה מרוב האנשים</p></li></ul><p style=";text-align:right;direction:rtl"> <a target="_blank" href="/docs/en/guides/making_decisions/consensus_process">קראו עוד על תהליך הקונצנזוס</a> .</p>
+      process_introduction: <p>כדאי לבנות קונצנזוס לקראת החלטה שיש לקבל, כדי להגיע להסכמה שנותנת מענה לצרכים ולחששות של כל המשתתפים.</p><ul><li><p>לדון ולפתח הצעה יחד</p></li><li><p>לשתף ולכבד את כל המעורבים</p></li><li><p>לחתור להסכמה של רוב האנשים&nbsp;</p></li></ul><p><a target="_blank" href="/docs/en/guides/making_decisions/consensus_process">למידע נוסף על תהליך הקונצנזוס</a>.</p>
       title: לאשר את קונספט המותג החדש
       details: <h3 id="what-is-the-decision-you-need-to-make"><strong>מה ההחלטה שצריך לקבל?</strong></h3><p></p><h3 id="why-is-this-important"><strong>למה זה חשוב?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"><strong>מה מבקשים מאנשים לעשות?</strong></h3><p></p><p>כדי שההצעה תעבור, רוב החברים צריכים להצביע מסכים/ה. </p><p>בבחירה בלא מסכים/ה, יש להסביר מדוע ומה צריך להשתנות כדי לבחור במסכים/ה.</p>
       outcome_statement: <p style=";text-align:right;direction:rtl">תודה על השתתפותך בתהליך הקונצנזוס.</p>
@@ -651,7 +651,7 @@ he:
       title: בחירת דירקטורים למועצת המנהלים
       details: <h3 id="what-is-this-poll-about" style=";text-align:right;direction:rtl"><strong>על מה הסקר הזה?</strong></h3><p style=";text-align:right;direction:rtl"></p><h3 id="why-is-this-important" style=";text-align:right;direction:rtl"> <strong>למה זה חשוב?</strong></h3><p style=";text-align:right;direction:rtl"></p><h3 id="what-are-you-asking-people-to-do" style=";text-align:right;direction:rtl"> <strong>מה אתה מבקש מאנשים לעשות?</strong></h3><p style=";text-align:right;direction:rtl"></p><p style=";text-align:right;direction:rtl"> הצביעו על ידי דירוג האפשרויות לפי סדר העדפתכם. האפשרות שמדורגת ראשונה בתוצאות תנצח.</p>
       process_subtitle_v2: מציאת סדר העדיפויות של הקבוצה
-      process_introduction_v2: <p style=";text-align:right;direction:rtl"><strong>הדירוג</strong> חושף את סדר ההעדפות של הקבוצה. המשתתפים גוררים ומשחררים את האפשרויות כדי לסדר אותן מהמועדפות ביותר לפחות, והתוצאות מציגות את הדירוג הכללי.</p><p style=";text-align:right;direction:rtl"> <a target="_blank" href="/docs/en/user_manual/polls/proposal_types#ranked-choice">קרא עוד על דרגה</a> .</p>
+      process_introduction_v2: <p><strong>דירוג</strong> חושף את סדר ההעדפות של הקבוצה. המשתתפים גוררים ומשחררים את האפשרויות כדי לסדר אותן מהמועדפת ביותר למועדפת פחות, והתוצאות מציגות את הדירוג הכללי.</p><p><a target="_blank" href="/docs/en/user_manual/polls/proposal_types#ranked-choice">למידע נוסף על דירוג</a>.</p>
       process_subtitle_v3: דרגו את האפשרויות מהמועדפת ביותר לפחות מועדפת
     time_poll:
       process_subtitle: גלה מתי אנשים זמינים להיפגש

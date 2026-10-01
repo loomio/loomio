@@ -175,7 +175,7 @@ he:
     only_show_tags_in_this_group: הצג רק תגיות בקבוצה זו
   poll_types:
     proposal: הצעה
-    count: לבחור ב
+    count: הרשמה
     check: בדיקת כיוון
     poll: מִשׁאָל
     dot_vote: הצבעת נקודות
@@ -268,7 +268,7 @@ he:
     action:
       print: הדפס
       preview: תצוגה מקדימה
-      pin: סיכה
+      pin: הצמדה
       unpin: הסר סיכה
       search: חיפוש
       filter: לְסַנֵן
@@ -418,7 +418,7 @@ he:
     all_email_will_belong_to_name: כל ההודעות מ-%{email} ייוחסו ל-%{name}
     email_aliases: כינויים וכתובות שהתעלמו מהן
     belongs_to_name: שייך ל-%{name}
-    block_email: כתובת חסום
+    block_email: חסימת כתובת
     no_emails_to_release: אין מיילים שמחכים לשחרור
     release_rules: חוקי שחרור
     confirm_block: לחסום את כתובת האימייל הזו?
@@ -1012,8 +1012,8 @@ he:
 
         '
       no_invitations_remaining: |
-        <p>השתמשת בכל %{maxMembers} ההזמנות האפשרויות לקבוצה זו.</p>
-        <p>שלב הבא, <a href="%{upgradeUrl}" target="_blank">בחר חבילה</a> כדי להמשיך לשתף פעולה ב-Loomio.</p>
+        <p>כל %{maxMembers} ההזמנות הזמינות לקבוצה זו נוצלו.</p>
+        <p>השלב הבא הוא <a href="%{upgradeUrl}" target="_blank">בחירת תוכנית</a> כדי להמשיך לשתף פעולה ב-Loomio.</p>
       invitations_remaining: נותרו %{count} הזמנות. <a href="%{upgradeUrl}" target="_blank">שדרוג</a>
       who_to_invite: את מי היית רוצה להזמין?
       invitation_message_placeholder: הודעה לכלול במייל ההזמנה. (אופציונאלי)
@@ -1125,7 +1125,7 @@ he:
     show_edits: הצג עריכות
     show_notifications: תראה התראות
     history: הִיסטוֹרִיָה
-    pin_thread: דקור שיחה
+    pin_thread: הצמדת שרשור
     unpin_thread: הסר דקירה של שיחה
     pin_event: הצמד לציר הזמן
     unpin_event: בטל את ההצמדה מציר הזמן
@@ -1734,13 +1734,13 @@ he:
       updated: הגדרות מייל עודכנו
     learn_more: למד עוד על הגדרות מייל...
     mentioned_description: כאשר מישהו {'@'}מזכיר אותך בתגובה, תקבל התראה בדוא"ל
-    daily_summary_description: בחר מתי לקבל את דוא"ל סיכום העדכון. דוא"ל זה מכיל כל פעילות חדשה שלא ראית. דרך טובה להישאר מעודכנים אם אינך משתמש קבוע.
-    digest_email_description: בחר מתי לקבל את דוא"ל סיכום העדכון. דוא"ל זה מכיל כל פעילות חדשה שלא ראית. דרך טובה להישאר מעודכנים אם אינך משתמש קבוע.
+    daily_summary_description: בחירת מועד לקבלת אימייל עם סיכום הפעילות שלא נצפתה. האימייל כולל כל פעילות חדשה שטרם נצפתה. דרך טובה להתעדכן גם כשהשימוש אינו קבוע.
+    digest_email_description: בחירת מועד לקבלת סיכום של התראות שלא נצפו ופעילות שלא נקראה
     never: לְעוֹלָם לֹא
     send_email: שלח אימייל
     group_notifications: התראות קבוצתיות
     group_notifications_description: שנה את רמת הפעילות והערוץ עבור הקבוצות שלך
-    choose_email_and_push_updates: בחר הגדרות נפרדות עבור דוא"ל ודחיפה
+    choose_email_and_push_updates: בחירת הגדרות נפרדות לאימייל ולהתראות פוש
     catch_up_email: אימייל השלמה
     catch_up_email_description: בחרו מתי לקבל עדכונים על התראות שלא נראו ופעילות שלא נקראה
   thread_preview:
@@ -1825,8 +1825,8 @@ he:
     invite_only: מוזמנים בלבד
     private_thread: שרשור פרטי
     max_threads_reached: |
-      <p>השתמשת בכל %{maxThreads} השירשורים הפנויים בקבוצה זו.</p>
-      <p>שלב הבא, <a href="%{upgradeUrl}" target="_blank">בחר חבילה</a> בכדי להמשיך לשתף פעולה בLoomio.</p>
+      <p>כל %{maxThreads} השרשורים הזמינים לקבוצה זו נוצלו.</p>
+      <p>השלב הבא הוא <a href="%{upgradeUrl}" target="_blank">בחירת תוכנית</a> כדי להמשיך לשתף פעולה ב-Loomio.</p>
     subscription_canceled: <p style=";text-align:right;direction:rtl">המנוי שלך אינו פעיל.</p><p style=";text-align:right;direction:rtl"> אנא <a href="%{upgradeUrl}" target="_blank">שדרג</a> כדי להמשיך להשתמש ב-Loomio.</p>
     activity: פעילות
     activity_placeholder: אין פעילות עוד!
@@ -1961,7 +1961,7 @@ he:
       reload: טען מחדש
       app_update: גרסה חדשה של Loomio יצאה. אנא טען מחדש.
   decision_tools_card:
-    choose_type: בחר סוג סקר
+    choose_type: בחירת סוג סקר
     title: לסייע
     recommended: מוּמלָץ
     question_title: סבב שאלות
@@ -1969,7 +1969,7 @@ he:
     consent_title: הַסכָּמָה
     consensus_title: קוֹנסֶנזוּס
     proposal_title: הצעה
-    count_title: לבחור ב
+    count_title: הרשמה
     check_title: בדיקת כיוון
     poll_title: סקר
     meeting: פְּגִישָׁה
@@ -2808,7 +2808,7 @@ he:
     specified_voters_only_true: רק אנשים מוזמנים
     specified_voters_only_false_group: כל מי שנמצא בקבוצה
     specified_voters_only_false_discussion: כל מי שנמצא בשרשור
-    invite_people_next: ניתן לבחור מי מוזמן להצביע לאחר שתתחיל את %{poll_type}
+    invite_people_next: בחירת המוזמנים להצביע אפשרית לאחר פתיחת %{poll_type}
     show_none_of_the_above: כלול אפשרות של "אף אחת מהאפשרויות הנ"ל"
     show_options_in_random_order: הצג אפשרויות בסדר אקראי
     reduce_bias_by_showing_options_in_random_order: צמצם הטיה על ידי הצגת אפשרויות בסדר אקראי.
@@ -2858,8 +2858,8 @@ he:
     advanced_settings: הגדרות מתקדמות
     show_advanced_settings: הצג הגדרות מתקדמות
     hide_advanced_settings: הסתר הגדרות מתקדמות
-    choose_at_least: בחר לפחות
-    choose_at_most: בחר לכל היותר
+    choose_at_least: בחירה של לפחות
+    choose_at_most: בחירה של לכל היותר
     please_review_the_form: אנא עיין בטופס
     option_added_please_add_details: אפשרות נוספת! אנא הוסיפו פרטים כדי שאנשים יבינו מה המשמעות.
     default_duration_in_days: משך ברירת מחדל בימים
@@ -2943,7 +2943,7 @@ he:
     how_much_time_to_vote: כמה זמן אתם נותנים לאנשים להצביע?
     default_duration_in_days_hint: כמה ימים יהיו לאנשים להצביע?
     define_minimum_and_maxmimum_score: הגדירו את הציונים המינימליים והמקסימליים שבוחר יכול לתת לאפשרות
-    how_many_points_does_each_voter_have_to_allocate: כמה נקודות כל בוחר צריך להקצות?
+    how_many_points_does_each_voter_have_to_allocate: כמה נקודות זמינות להקצאה לכל מצביע?
     anonymous_voting_description: הצג את ההצבעות והסיבות אך לא את מי שהצביע. לא ניתן לשנות זאת לאחר שה-%{poll_type} התחיל.
     vote_reason_description: בקשו מאנשים לשתף את הנימוקים שלהם כשהם מצביעים, או לספק מידע נוסף.
     hide_results_description: אם אתם רוצים שאנשים יצביעו בלי לראות איך אחרים הצביעו, אתם יכולים להסתיר את התוצאות.
@@ -3033,10 +3033,10 @@ he:
     default_title_placeholder: לדוגמה סטנדאפ - 15 בינואר
     more_templates: תבניות נוספות
     fewer_templates: פחות תבניות
-    choose_a_group: בחר קבוצה
+    choose_a_group: בחירת קבוצה
     default_templates: תבניות ברירת מחדל
     or_start_a_direct_discussion: או להתחיל דיון ישיר
-    choose_group_for_templates: בחר קבוצה כדי לצפות בתבניות הדיון שלה
+    choose_group_for_templates: בחירת קבוצה לצפייה בתבניות הדיון שלה
     start_direct_discussion: התחל דיון ישיר
     poll_templates: תבניות סקר
     poll_templates_help: תבניות שתבחרו כאן יופיעו ראשונות כאשר מישהו ילחץ על התחל הצבעה
