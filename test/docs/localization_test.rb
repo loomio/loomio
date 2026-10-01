@@ -250,6 +250,7 @@ class DocsLocalizationTest < Minitest::Test
     Open3.stub(:capture2e, fake) do
       assert_equal '{"sections":{}}', Docs::PageTranslator::TRANSLATORS.fetch("codex").call("Translation prompt")
     end
+    assert_equal ["codex", "exec"], command.first(2)
     assert_equal "gpt-6.1-sol", command[command.index("-m") + 1]
     assert_equal "read-only", command[command.index("-s") + 1]
     assert_includes command, "--ephemeral"
@@ -258,6 +259,38 @@ class DocsLocalizationTest < Minitest::Test
   ensure
     ENV["DOCS_TRANSLATOR_MODEL"] = model if model
     ENV["DOCS_TRANSLATOR_EFFORT"] = effort if effort
+  end
+
+  def test_codex_transport_keeps_overrides_as_arguments_and_prompt_on_stdin
+    model = ENV["DOCS_TRANSLATOR_MODEL"]
+    effort = ENV["DOCS_TRANSLATOR_EFFORT"]
+    marker = @root.join("shell-command-ran")
+    ENV["DOCS_TRANSLATOR_MODEL"] = "custom-model; touch #{marker}"
+    ENV["DOCS_TRANSLATOR_EFFORT"] = "$(touch #{marker})`touch #{marker}`"
+    prompt = "Translation prompt; touch #{marker}"
+    capture = Open3.method(:capture2e)
+
+    # Exercise Ruby's real process API with a local argv/stdin recorder in
+    # place of the model, so the test cannot launch a translation request.
+    recorder = <<~RUBY
+      require "json"
+      File.write(ARGV[ARGV.index("-o") + 1], JSON.generate(arguments: ARGV, stdin: STDIN.read))
+    RUBY
+    fake = lambda do |executable, *arguments, stdin_data:|
+      assert_equal "codex", executable
+      capture.call(RbConfig.ruby, "-e", recorder, *arguments, stdin_data: stdin_data)
+    end
+
+    response = Open3.stub(:capture2e, fake) { JSON.parse(CodexTranslator.call(prompt)) }
+    arguments = response.fetch("arguments")
+    assert_equal "exec", arguments.first
+    assert_equal ENV.fetch("DOCS_TRANSLATOR_MODEL"), arguments[arguments.index("-m") + 1]
+    assert_equal %(model_reasoning_effort="#{ENV.fetch("DOCS_TRANSLATOR_EFFORT")}"), arguments[arguments.index("-c") + 1]
+    assert_equal prompt, response.fetch("stdin")
+    refute marker.exist?, "argument and stdin content must not execute shell commands"
+  ensure
+    ENV["DOCS_TRANSLATOR_MODEL"] = model
+    ENV["DOCS_TRANSLATOR_EFFORT"] = effort
   end
 
   private

@@ -19,15 +19,15 @@ module CodexTranslator
 
   def self.call(prompt)
     Tempfile.create(["translation", ".json"]) do |output|
-      command = [
-        "codex", "exec",
+      arguments = [
+        "exec",
         "-m", model,
         "-c", %(model_reasoning_effort="#{ENV.fetch("DOCS_TRANSLATOR_EFFORT", EFFORT)}"),
         "-s", "read-only", "--ephemeral", "--skip-git-repo-check",
         "-C", ROOT,
         "-o", output.path, "-"
       ]
-      log, status = Open3.capture2e(*command, stdin_data: prompt)
+      log, status = Open3.capture2e("codex", *arguments, stdin_data: prompt)
       raise "codex exec failed:\n#{log.lines.last(20).join}" unless status.success?
 
       File.read(output.path)
