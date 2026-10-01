@@ -1,10 +1,10 @@
 ---
 title: Sottogruppi
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/groups/subgroups/index.md
+source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
+source_file: docs/en/user_manual/groups/subgroups/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 63e6e23d24e80919
   add-a-subgroup: 0bc0e5f99eb074c3
@@ -17,16 +17,16 @@ sections:
   administer-a-subgroup: 58fa95833f79dd01
   delete-a-subgroup: 2c6e76ec78386443
 generated:
-  introduction: 600eec1e2e11334e
-  add-a-subgroup: e3418748673454f7
+  introduction: 051652a00db9998f
+  add-a-subgroup: 95936e1a60dbdd9f
   subgroup-settings: 2102921a561843bd
-  privacy: 660e47b898f21960
-  permissions: 9f1c93d7e6f5752a
-  find-subgroups: e5603248e455df60
-  invite-to-a-subgroup: 4653701451dc0151
-  simultaneously-invite-people-to-subgroups-and-parent-group: 3888a95564da1128
-  administer-a-subgroup: 8bd50d0ca406854b
-  delete-a-subgroup: d75dc8304efe8b37
+  privacy: a0de926677512e41
+  permissions: 5c53ba3351e9e31b
+  find-subgroups: 77105b0d7b3a1773
+  invite-to-a-subgroup: d13d4627eb013177
+  simultaneously-invite-people-to-subgroups-and-parent-group: 0fa563a5977885f6
+  administer-a-subgroup: e6948da1a2307da2
+  delete-a-subgroup: 2a801f5ff85e1241
 title_source: 9f81e728f70cae3e
 title_generated: 430c19f8b3427f82
 ---
@@ -37,33 +37,33 @@ title_generated: 430c19f8b3427f82
 
 I sottogruppi ti aiutano a organizzare le comunicazioni e i membri, coinvolgendo le persone giuste nel lavoro comune.
 
-Per esempio, un'organizzazione potrebbe avere questi sottogruppi:
+Ad esempio, un'organizzazione può avere i seguenti sottogruppi:
 - consiglio direttivo
-- gruppo di lavoro o gruppo di progetto
-- gruppo dedicato a un tema, come «strategia» o «formazione»
+- team di lavoro o gruppo di lavoro per un progetto
+- un tema (come 'strategia' o 'apprendimento')
 
-I sottogruppi funzionano come i gruppi, ma si trovano all'interno di un gruppo principale. Hanno quasi tutte le stesse funzionalità e impostazioni. Una persona può essere membro di un tuo sottogruppo, per esempio del consiglio direttivo, senza essere membro del gruppo principale.
+I sottogruppi funzionano come i gruppi, ma si trovano all'interno del tuo gruppo principale. La maggior parte delle funzionalità e delle impostazioni disponibili è la stessa del gruppo principale. Questo significa anche che una persona può essere membro di un tuo sottogruppo, ad esempio il consiglio direttivo, senza essere membro del tuo gruppo principale.
 
 <!-- translation-section: add-a-subgroup -->
 
-## Aggiungere un sottogruppo
+## Aggiungi un sottogruppo
 
 >[!Note]
->La possibilità di aggiungere sottogruppi dipende dalle [impostazioni dei permessi](/en/user_manual/groups/settings/permissions) del gruppo. Per impostazione predefinita, solo gli amministratori possono creare sottogruppi.
+>La possibilità di aggiungere nuovi sottogruppi fa parte delle [impostazioni dei permessi](/en/user_manual/groups/settings/permissions) del gruppo. Per impostazione predefinita, solo gli amministratori possono avviare nuovi sottogruppi.
 
-Per aggiungere un sottogruppo, apri la pagina del gruppo principale e seleziona **Nuovo sottogruppo** nella barra laterale.
+Per aggiungere un sottogruppo, visita la pagina del tuo gruppo principale, poi fai clic su **Nuovo sottogruppo** nella barra laterale.  
 
 ![Pulsante Nuovo sottogruppo nella barra laterale di Oatmilk Cooperative](subgroups-sidebar.png)
 
-Seleziona **Nuovo sottogruppo**, inserisci un nome e scegli l'impostazione della privacy. Poi seleziona **Avvia sottogruppo**.
+Fai clic sul pulsante **Nuovo sottogruppo**, assegna un nome e seleziona l'impostazione della privacy, poi fai clic su **Avvia sottogruppo**.
 
-![Modulo per creare il sottogruppo Packaging Working Group](subgroups_new.png)
+![Modulo Nuovo sottogruppo per il gruppo di lavoro sugli imballaggi](subgroups_new.png)
 
-Quando vuoi, [invita persone](/en/user_manual/groups/inviting_people/) nel sottogruppo.
+Quando sei pronto, [invita persone](/en/user_manual/groups/inviting_people/) nel sottogruppo.
 
-Puoi modificare le [impostazioni del gruppo](/en/user_manual/groups/settings/) del sottogruppo selezionando l'icona a forma di ingranaggio nella sua pagina.
+Puoi modificare le [impostazioni del gruppo](/en/user_manual/groups/settings/) del sottogruppo facendo clic sull'icona dell'ingranaggio nella pagina del sottogruppo.
 
-![Azione per modificare le impostazioni del gruppo Packaging Working Group](subgroups_edit_group_settings.png)
+![Azione per modificare le impostazioni del gruppo di lavoro sugli imballaggi](subgroups_edit_group_settings.png)
 
 <!-- translation-section: subgroup-settings -->
 
@@ -73,68 +73,68 @@ Puoi modificare le [impostazioni del gruppo](/en/user_manual/groups/settings/) d
 
 ### Privacy
 
-Le impostazioni della privacy dei sottogruppi sono simili a quelle del gruppo principale.
+Le impostazioni di privacy dei sottogruppi sono simili a quelle del gruppo principale.
 
-I sottogruppi **Segreto** non sono visibili alle persone che non sono state invitate.
+I sottogruppi con privacy impostata su **Segreto** non sono visibili alle persone che non sono state invitate al sottogruppo.
 
-I sottogruppi **Chiuso** compaiono nella scheda Sottogruppi del gruppo principale e nel menu laterale degli utenti. I membri del gruppo principale possono chiedere di entrare nel sottogruppo. Un amministratore del sottogruppo approva la richiesta.
+I sottogruppi con privacy impostata su **Chiuso** sono elencati nella scheda Sottogruppi del gruppo principale e nel tuo menu laterale. I membri del gruppo principale possono chiedere di iscriversi al sottogruppo. L'iscrizione viene approvata da un amministratore del sottogruppo.
 
-I sottogruppi chiusi hanno un'impostazione aggiuntiva che permette ai membri del gruppo principale di vedere le discussioni private.
+I sottogruppi chiusi hanno un'impostazione aggiuntiva che consente ai membri del gruppo principale di vedere le conversazioni private.
 
-[Scopri di più sulla privacy dei gruppi](/en/user_manual/groups/settings/privacy).
+[Leggi qui come funziona la privacy dei gruppi](/en/user_manual/groups/settings/privacy).
 
 <!-- translation-section: permissions -->
 
 ### Permessi
 
-I sottogruppi funzionano indipendentemente dal gruppo principale. Per esempio, se la privacy di un sottogruppo è impostata su **Segreto**, solo i membri invitati possono trovarlo, vedere chi ne fa parte e leggere le discussioni.
+I sottogruppi funzionano indipendentemente dal gruppo principale. Ad esempio, se la privacy del sottogruppo è impostata su **Segreto**, solo i membri invitati possono trovare il sottogruppo, vedere chi ne fa parte e vedere le conversazioni.
 
-I sottogruppi **Chiuso** hanno un'impostazione aggiuntiva che permette ai membri del gruppo principale di vedere le discussioni private del sottogruppo.
+I sottogruppi con privacy impostata su **Chiuso** hanno un'impostazione aggiuntiva che consente ai membri del gruppo principale di vedere le conversazioni private, rendendo il sottogruppo trasparente ai membri del gruppo principale.
 
-![Impostazione che permette ai membri del gruppo principale di vedere le discussioni private del sottogruppo](subgroups_private_threads_settings.png)
+![Impostazione che consente ai membri del gruppo principale di vedere le conversazioni private del sottogruppo](subgroups_private_threads_settings.png)
 
 <!-- translation-section: find-subgroups -->
 
-## Trovare i sottogruppi
+## Trova i sottogruppi
 
-Apri il menu laterale e seleziona il nome del tuo gruppo per vedere i suoi sottogruppi.
+Apri il menu laterale e fai clic sul nome del tuo gruppo per vedere i suoi sottogruppi.
 
 ![Sottogruppi di Oatmilk Cooperative elencati nella barra laterale](subgroups_find_subgroups.png)
 
 <!-- translation-section: invite-to-a-subgroup -->
 
-## Invitare persone in un sottogruppo
+## Invita persone in un sottogruppo
 
-Invita le persone in un sottogruppo come faresti per un gruppo. Se appartengono già al gruppo principale o a un altro sottogruppo della stessa organizzazione di cui fai parte, puoi digitare il loro nome o selezionare quel gruppo come destinatario. Seleziona il riquadro dei destinatari per vedere le singole persone, poi rimuovi quelle che non vuoi invitare.
+Invita persone in un sottogruppo come le inviteresti in un gruppo. Se fanno già parte di un gruppo principale o di un altro sottogruppo della stessa organizzazione di cui fai parte anche tu, puoi digitare il loro nome o selezionare quel gruppo come destinatario. Seleziona l'etichetta del gruppo destinatario per visualizzare le singole persone, poi rimuovi chi non vuoi invitare.
 
 <!-- translation-section: simultaneously-invite-people-to-subgroups-and-parent-group -->
 
-### Invitare persone nel gruppo principale e nei sottogruppi contemporaneamente
+### Invita persone contemporaneamente nei sottogruppi e nel gruppo principale
 
-Se usi il pulsante **Invita persone** nella scheda **Membri** del gruppo principale, puoi invitare le persone in più sottogruppi contemporaneamente. Seleziona le caselle dei sottogruppi a cui vuoi che si uniscano subito.
+Se usi il pulsante **Invita persone** nella scheda **Membri** del tuo gruppo principale, puoi invitare persone in più sottogruppi contemporaneamente selezionando le caselle dei sottogruppi a cui vuoi che si iscrivano subito.
 
 ![Selezione del gruppo principale e del sottogruppo nel modulo di invito](group_invite_email_subgroups.png)
 
 <!-- translation-section: administer-a-subgroup -->
 
-## Amministrare un sottogruppo
+## Amministra un sottogruppo
 
-I sottogruppi possono avere amministratori propri, diversi da quelli del gruppo principale.
+I sottogruppi possono avere i propri amministratori, che possono essere diversi dagli amministratori del gruppo principale.
 
-Un amministratore del gruppo principale può comunque diventare amministratore di qualsiasi sottogruppo. In questo modo può gestire i sottogruppi quando serve.
+Tuttavia, un amministratore del gruppo principale può assegnarsi il ruolo di amministratore di qualsiasi sottogruppo. Questo consente agli amministratori del gruppo principale di amministrare i sottogruppi quando necessario.
 
-Apri la scheda Sottogruppi, trova il sottogruppo e seleziona **Iscriviti al gruppo**.
+Vai alla scheda Sottogruppi, trova il sottogruppo e fai clic su **Iscriviti al gruppo**.
 
 ![Pulsante Iscriviti al gruppo in un sottogruppo chiuso](member_join_subgroup.png)
 
-Una volta entrato nel sottogruppo, l'amministratore del gruppo principale può nominarsi amministratore del sottogruppo.
+Una volta diventato membro del sottogruppo, un amministratore del gruppo principale può assegnarsi il ruolo di amministratore del sottogruppo.
 
-![Azione per nominare amministratore un amministratore del gruppo principale](member_make_admin.png)
+![Azione per assegnare il ruolo di amministratore a un amministratore del gruppo principale](member_make_admin.png)
 
 <!-- translation-section: delete-a-subgroup -->
 
-## Eliminare un sottogruppo
+## Elimina un sottogruppo
 
-Gli amministratori possono eliminare un sottogruppo nello stesso modo in cui eliminano un gruppo. Quando elimini un sottogruppo, fai attenzione a non eliminare il gruppo principale.
+Gli amministratori possono eliminare un sottogruppo nello stesso modo in cui si elimina un gruppo. Quando elimini un sottogruppo, fai attenzione a non eliminare il gruppo principale.
 
 Scopri [come eliminare i gruppi](/en/user_manual/groups/deleting_your_group/).

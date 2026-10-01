@@ -1,20 +1,20 @@
 ---
 title: Facilitare le discussioni
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/guides/board_processes/facilitating_discussions.md
+source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
+source_file: docs/en/guides/board_processes/facilitating_discussions.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-30'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 4fa9b0fbf10bb2eb
   on-loomio: 9ff64037e6b7a7f3
   issues-that-arise-between-board-meetings: ba163d9d1703ff12
   when-there-isn-t-space-during-meetings: 80352b1f1995ff8f
 generated:
-  introduction: e96c17f0171a1f6d
-  on-loomio: dc56727ca847bb7c
-  issues-that-arise-between-board-meetings: 90d75b3ed97aafb7
-  when-there-isn-t-space-during-meetings: f44a5daa81f5b125
+  introduction: 77a741edda28dbb1
+  on-loomio: afdf0fec17115af0
+  issues-that-arise-between-board-meetings: 725254b570a55723
+  when-there-isn-t-space-during-meetings: d58eb5687d1c7253
 title_source: 6d57aa8c543c9a02
 title_generated: 338fcc9e54760859
 ---
@@ -23,56 +23,56 @@ title_generated: 338fcc9e54760859
 
 # Facilitare le discussioni
 
-A volte, tra una riunione e l'altra, emergono temi che richiedono l'attenzione dei membri del consiglio o di un comitato.
+A volte, tra una riunione e l'altra, emergono questioni che richiedono l'attenzione dei membri del consiglio o del comitato.
 
-Altre volte, durante una riunione non c'è abbastanza tempo per discutere o valutare una decisione con la dovuta attenzione.
+E a volte durante una riunione non c'è abbastanza tempo per discutere o per valutare una decisione in modo adeguato.
 
 <!-- translation-section: on-loomio -->
 
 ## Su Loomio
 
-Usa una **discussione** su Loomio per facilitare il confronto. Dai alla discussione un titolo descrittivo che i membri possano riconoscere e aggiungi i dettagli nel contesto. Aggiungi un'etichetta di categoria pertinente per aiutare i membri a ritrovare la discussione in futuro.
+Usa una **conversazione** di Loomio per facilitare una discussione. Dai alla conversazione un titolo descrittivo che i membri possano riconoscere e fornisci i dettagli nel contesto della conversazione. Aggiungi un tag di categoria pertinente per aiutare i membri a ritrovare la conversazione in futuro.
 
-Invita i membri alla discussione per informarli: riceveranno una copia via email. Possono partecipare seguendo il link a Loomio oppure rispondendo all'email di notifica. La loro risposta comparirà come commento nella discussione.
+Invita i membri alla conversazione per inviare loro una notifica: riceveranno una copia della conversazione via email. I membri possono partecipare alla discussione facendo clic sul link per accedere a Loomio oppure rispondendo all'email di notifica: la loro risposta apparirà come commento nella conversazione.
 
 ![](thread_discussion.png#width-90)
 
-In una discussione su Loomio puoi allegare file o inserire link a risorse online utili al confronto.
+Una conversazione di Loomio ti permette di allegare file o inserire link a risorse online a supporto della discussione.
 
-Ecco alcuni usi comuni:
-- esaminare e sviluppare una politica
-- chiedere consiglio al consiglio su un tema o un problema
-- discutere una strategia
+Alcuni esempi comuni sono:
+- rivedere e sviluppare una politica
+- chiedere consiglio al consiglio su un argomento o una questione
+- discutere la strategia
 - esplorare un'idea o un'opportunità
-- valutare un rischio
+- valutare i rischi
 
 <!-- translation-section: issues-that-arise-between-board-meetings -->
 
 ## Questioni che emergono tra le riunioni del consiglio
 
-Tra una riunione e l'altra possono succedere molte cose in un'organizzazione. Spesso si usa l'email per avvisare i membri del consiglio, ma seguire una discussione via email è difficile: le risposte possono perdersi nelle caselle di posta e alcune persone possono restare escluse.
+Tra una riunione e l'altra possono succedere molte cose in un'organizzazione e la maggior parte delle persone usa l'email per avvisare i membri del consiglio. Seguire una discussione via email è difficile: le risposte spesso si perdono nelle caselle di posta e alcune persone restano escluse.
 
-*«Non si può gestire un'organizzazione via email», Richard Westlake (Westlake Governance).*
+*“Non si può governare un'organizzazione via email!”, Richard Westlake (Westlake Governance).*
 
-Quando emerge una questione che richiede l'attenzione del consiglio, usa una discussione su Loomio. I membri possono rispondere via email e i loro commenti compariranno nella discussione, così tutto resta in un unico posto.
+Quando emerge una questione che richiede l'attenzione del consiglio, usa una conversazione di Loomio anziché l'email. I membri possono rispondere via email e il loro commento apparirà nella conversazione di Loomio, mantenendo la discussione in un unico posto.
 
 Ecco come fare:
-- Usa l'oggetto dell'email come titolo della discussione,
-- inserisci il contenuto dell'email nel contesto della discussione,
-- invita le persone alla discussione usando il loro indirizzo email o nome utente Loomio.
+- Usa l'oggetto dell'email come titolo della tua conversazione,
+- scrivi il contenuto dell'email nel contesto della conversazione,
+- invita il tuo gruppo di lavoro alla conversazione usando il loro indirizzo email o nome utente Loomio.
 
-Con una discussione su Loomio:
-- tutte le informazioni su un tema sono raccolte in un unico posto, facile da consultare,
-- le persone possono rispondere senza creare catene di email che rischiano di escludere qualcuno,
-- puoi vedere chi ha letto il messaggio e chi potrebbe aver bisogno di un promemoria,
-- puoi portare avanti il lavoro fino a una conclusione e ridurre il numero di email.
+Con una conversazione di Loomio:
+- Tutte le informazioni su un argomento sono organizzate in un unico posto facilmente accessibile,
+- le persone possono rispondere senza generare catene di email con «Rispondi» o «Rispondi a tutti» che rischiano di escludere qualcuno,
+- puoi vedere chi ha letto il messaggio e chi ha bisogno di un promemoria,
+- puoi far avanzare il lavoro concreto fino a una conclusione e ridurre la quantità di email.
 
 <!-- translation-section: when-there-isn-t-space-during-meetings -->
 
-## Quando il tempo in riunione non basta
+## Quando non c'è abbastanza tempo durante le riunioni
 
-Se il tempo della riunione del consiglio non basta per risolvere un punto all'ordine del giorno, puoi continuare la discussione su Loomio. Indica alle persone la discussione pertinente oppure avviane una nuova e informa i membri del consiglio.
+Quando non riesci a risolvere un punto all'ordine del giorno nel tempo disponibile durante la riunione del consiglio, puoi proseguire la discussione su Loomio. Indica alle persone la conversazione pertinente oppure avviane una nuova e avvisa i membri del tuo consiglio.
 
-Questo riduce la pressione sul consiglio e lascia più tempo per raccogliere informazioni, discuterle e riflettere. Spesso aiuta a prendere una decisione migliore.
+Questo riduce la pressione sul consiglio e lascia più tempo per raccogliere informazioni, discutere e riflettere in modo approfondito, spesso portando a una decisione migliore.
 
 ![](thread_topic.png#width-90)

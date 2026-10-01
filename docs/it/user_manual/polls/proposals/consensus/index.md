@@ -1,6 +1,6 @@
 ---
 title: Consenso
-source_revision: 9c60c42fc739483fa23f15d9f34a1e9245518092
+source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
 source_file: docs/en/user_manual/polls/proposals/consensus/index.md
 translated:
   provider: codex/gpt-6.1-sol
@@ -14,44 +14,44 @@ sections:
   read-the-results: e60abb3a43a86d6e
   share-an-outcome: a7febe19484c20b3
 generated:
-  introduction: 0e06c5a4a2150eb3
-  when-to-use-consensus: d684a0250bc1aa72
-  example-adopt-a-bottle-return-standard: 4b5fbce3a1fafa81
-  set-up-the-proposal: 819bbfc3b5368e7a
-  vote: d2aa1c86ec837890
-  read-the-results: 5390c8be08d6d91d
-  share-an-outcome: 0472f5ec45e60abb
+  introduction: c452e71c79d888ee
+  when-to-use-consensus: 63c95fecaf4cccca
+  example-adopt-a-bottle-return-standard: 8deadb9f5e532499
+  set-up-the-proposal: 8458384ff02f2ee8
+  vote: d0a0681ffaa50852
+  read-the-results: bcb5f08bff92b1bb
+  share-an-outcome: db7a16c2c2b9ca27
 title_source: 8abe09bf65aefdb8
 title_generated: a633645d078dc2da
 ---
 
 <!-- translation-section: introduction -->
 
-# Consenso
+# Consenso unanime
 
-Una proposta di Consenso cerca un accordo condiviso tra tutte le persone coinvolte. Le risposte predefinite permettono ai partecipanti di essere d'accordo, astenersi, essere in disaccordo o bloccare la proposta.
+Una proposta di consenso unanime cerca l'accordo collettivo di tutte le persone coinvolte. Le risposte predefinite consentono ai partecipanti di esprimere accordo, astensione, disaccordo o blocco.
 
-Questa pagina spiega come gestire una proposta di Consenso. Consulta il [processo di Consenso](/en/guides/making_decisions/consensus_process) per il percorso completo, dalla discussione e dalla verifica dell'orientamento del gruppo fino alle modifiche e alla conclusione.
+Questa pagina spiega come gestire una singola proposta di consenso unanime. Consulta il [Processo di consenso unanime](/en/guides/making_decisions/consensus_process) per il percorso completo, dalla discussione e dalla verifica delle opinioni fino alle modifiche e alla conclusione.
 
 <!-- translation-section: when-to-use-consensus -->
 
-## Quando usare il Consenso
+## Quando usare il consenso unanime
 
-Usa il Consenso per le decisioni che richiedono un ampio impegno condiviso, quando il gruppo è pronto ad affrontare insieme le preoccupazioni. È adatto a standard comuni, accordi di governance, impegni strategici e decisioni che riguardano l'intero gruppo.
+Usa il consenso unanime per le decisioni in cui conta che tutti le sentano proprie e il gruppo è disposto ad affrontare insieme le preoccupazioni. È adatto a standard condivisi, accordi di governance, impegni strategici e decisioni che riguardano l'intero gruppo.
 
-Il Consenso richiede di solito una discussione e la preparazione della proposta prima del voto. Definisci che cosa significa **Blocco** per il tuo gruppo e quali conseguenze comporta. Se il tuo processo non prevede blocchi, modifica il modello per rimuovere questa opzione.
+Il consenso unanime richiede solitamente una discussione e lo sviluppo della proposta prima di votare. Definisci il significato e le conseguenze del **Blocco** per il tuo gruppo. Se il tuo processo non prevede blocchi, modifica il modello per rimuovere questa opzione.
 
 <!-- translation-section: example-adopt-a-bottle-return-standard -->
 
 ## Esempio: adottare uno standard per la restituzione delle bottiglie
 
-La Cooperativa del Latte d'Avena ha elaborato uno standard che riguarda i depositi cauzionali, la raccolta, il lavaggio, la documentazione sulla sicurezza alimentare e la rendicontazione. Poiché tutti i team lo useranno, la cooperativa cerca il consenso prima di adottarlo.
+La cooperativa Oatmilk ha sviluppato uno standard che comprende cauzioni, raccolta, lavaggio, registrazioni sulla sicurezza alimentare e rendicontazione. Poiché ogni team lo utilizzerà, la cooperativa cerca il consenso unanime prima di adottarlo.
 
 <!-- translation-section: set-up-the-proposal -->
 
 ## Prepara la proposta
 
-Descrivi l'accordo completo su cui il gruppo deve decidere e aggiungi i link alle informazioni di supporto. Spiega ogni risposta, in particolare la differenza tra essere in disaccordo e bloccare la proposta. Lascia tempo sufficiente per domande e modifiche.
+Descrivi integralmente l'accordo in esame e aggiungi link alle informazioni di supporto. Spiega ogni risposta, in particolare la distinzione tra esprimere disaccordo e porre un blocco. Lascia abbastanza tempo per domande e modifiche.
 
 ![](form.png)
 
@@ -59,7 +59,7 @@ Descrivi l'accordo completo su cui il gruppo deve decidere e aggiungi i link all
 
 ## Vota
 
-I partecipanti scelgono la risposta che rappresenta la loro posizione e spiegano gli interessi o le preoccupazioni che la motivano. Chi blocca la proposta dovrebbe spiegare perché adottarla violerebbe un'esigenza fondamentale o un principio condiviso.
+I partecipanti scelgono la risposta che corrisponde alla loro posizione e spiegano gli interessi o le preoccupazioni alla base. Il motivo di un blocco dovrebbe indicare perché adottare la proposta violerebbe un bisogno fondamentale o un principio concordato.
 
 ![](../proposal_consensus_voting.png)
 
@@ -67,7 +67,7 @@ I partecipanti scelgono la risposta che rappresenta la loro posizione e spiegano
 
 ## Leggi i risultati
 
-Il grafico mostra la distribuzione delle risposte. Esamina ogni motivo di disaccordo o blocco: il Consenso richiede di affrontare le preoccupazioni, non solo di contare i voti favorevoli.
+Il grafico mostra la distribuzione delle risposte. Esamina ogni disaccordo e ogni motivo di blocco; il consenso unanime è un processo per risolvere le preoccupazioni, non solo per contare i voti di accordo.
 
 ![](../proposal_consensus_results.png)
 
@@ -75,6 +75,6 @@ Il grafico mostra la distribuzione delle risposte. Esamina ogni motivo di disacc
 
 ## Condividi una conclusione
 
-Quando la proposta si chiude, condividi una conclusione. Se il gruppo ha raggiunto un accordo, registra l'accordo definitivo e chi ne è responsabile. Altrimenti, registra che cosa verrà rivisto e quando il gruppo tornerà a esaminare la proposta. Vedi [Condividi una conclusione](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome) per sapere come funzionano le conclusioni.
+Quando la proposta si chiude, condividi una conclusione. Se il gruppo ha raggiunto un accordo, registra l'accordo finale e chi ne è responsabile. Altrimenti, registra cosa verrà modificato e quando il gruppo tornerà sulla proposta. Consulta [Condividi una conclusione](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome) per sapere come funzionano le conclusioni.
 
-![Una conclusione che indica che non è stato raggiunto il consenso e che lo standard verrà rivisto](outcome.png)
+![Una conclusione che indica che il consenso unanime non è stato raggiunto e che lo standard verrà modificato](outcome.png)

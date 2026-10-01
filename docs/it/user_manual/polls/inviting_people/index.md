@@ -1,6 +1,6 @@
 ---
 title: Invita a votare
-source_revision: 9c60c42fc739483fa23f15d9f34a1e9245518092
+source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
 source_file: docs/en/user_manual/polls/inviting_people/index.md
 translated:
   provider: codex/gpt-6.1-sol
@@ -19,16 +19,16 @@ sections:
   reopen: 9575383179a411cc
 generated:
   introduction: c81f880091a97dd0
-  invite-people-to-vote-in-a-poll: 782da5d5318366cb
-  invite-guests-or-experts: 3327b0cd32fb3a12
-  invite-a-subgroup-to-vote: 82b5366ae05708be
-  engage-people-while-a-poll-is-running: fa3f013042286b43
-  add-voters-to-the-poll: 3f45ec6b1768229e
-  remove-people-from-the-poll: a13792b8b8cb8963
-  remind-people-to-vote: 773a47479b63af17
-  view-notification-history: c0d24b1a2c3c6d30
-  close-early: bb01856d7190a03c
-  reopen: 8e7dfe0b2eef8e29
+  invite-people-to-vote-in-a-poll: 80e81bb9713a8b91
+  invite-guests-or-experts: a4dbb80eab5e8ce2
+  invite-a-subgroup-to-vote: 8abf1d89bbf55f34
+  engage-people-while-a-poll-is-running: 46132f9e0ff83f3d
+  add-voters-to-the-poll: 12548b74086869c5
+  remove-people-from-the-poll: 6ecec74e92fb778e
+  remind-people-to-vote: 33ded99f6b0f28c4
+  view-notification-history: 0ee34033b477855c
+  close-early: c0bbdb442e71d865
+  reopen: 433db5589577fb1e
 title_source: 4801d1a3dba7ce3d
 title_generated: 8ba8b5a973a78d79
 ---
@@ -43,15 +43,15 @@ title_generated: 8ba8b5a973a78d79
 
 Invita le persone al tuo sondaggio inviando loro una notifica.
 
-Dopo aver avviato un sondaggio, compare il riquadro **Invita a votare**. Seleziona un gruppo di destinatari, per esempio **Tutti nel filo** o il tuo gruppo, oppure inserisci nomi e indirizzi email individuali.
+Dopo aver avviato un sondaggio, appare il riquadro **Invita a votare**. Seleziona i destinatari, ad esempio **Tutti nella conversazione** o il tuo gruppo, oppure inserisci singoli nomi e indirizzi email.
 
 ![](proposal_invite.png)
 
-Puoi aggiungere un messaggio all'invito.
+Puoi includere un messaggio facoltativo nell'invito.
 
 ![](proposal_invite_members.png)
 
-Seleziona l'etichetta di un gruppo per vedere le persone che stai invitando. Seleziona la x accanto a un nome per rimuovere quella persona dall'invito.
+Seleziona l'etichetta di un gruppo per visualizzare le persone che stai invitando. Seleziona la x accanto a un nome per rimuovere quella persona dall'invito.
 
 ![](proposal_invite_expand.png)
 
@@ -59,9 +59,9 @@ Seleziona l'etichetta di un gruppo per vedere le persone che stai invitando. Sel
 
 ### Invita ospiti o esperti
 
-Puoi invitare anche un ospite al sondaggio inserendo il suo indirizzo email. Potrà partecipare solo a questo sondaggio.
+Puoi anche invitare un ospite al sondaggio inserendo il suo indirizzo email. Riceverà il permesso di partecipare solo a questo sondaggio.
 
-Se il sondaggio si trova in un filo, potrà vedere anche il filo e i suoi commenti. Non potrà commentare, partecipare ad altri sondaggi nel filo o vedere altri fili del gruppo.
+Se il sondaggio si trova all'interno di una conversazione, l'ospite potrà anche vedere quella conversazione e i suoi commenti. Non potrà commentare, partecipare ad altri sondaggi nella conversazione o vedere altre conversazioni nel gruppo.
 
 ![](proposal_invite_guest.png)
 
@@ -69,16 +69,16 @@ Se il sondaggio si trova in un filo, potrà vedere anche il filo e i suoi commen
 
 ### Invita un sottogruppo a votare
 
-Per limitare il voto alle persone invitate, seleziona **Solo persone selezionate** quando crei il sondaggio. Potrai quindi invitare un sottogruppo del gruppo principale. Vedi anche [Elettori delegati](/en/user_manual/groups/delegated_voters/).
+Per limitare la votazione alle persone invitate, seleziona **Solo persone selezionate** quando crei il sondaggio. Puoi quindi invitare un sottogruppo del gruppo principale. Vedi anche [Elettori delegati](/en/user_manual/groups/delegated_voters/).
 
-![Selezione di Solo persone selezionate](invited-people-only.png)
-![Invito a votare per un sottogruppo](invite-voters-subgroup.png)
+![Selezione delle sole persone invitate](invited-people-only.png)
+![Invito a un sottogruppo a votare](invite-voters-subgroup.png)
 
 <!-- translation-section: engage-people-while-a-poll-is-running -->
 
-## Coinvolgi le persone mentre il sondaggio è aperto
+## Coinvolgi le persone mentre un sondaggio è in corso
 
-In fondo al sondaggio trovi diverse funzioni per coinvolgere le persone mentre la votazione è aperta.
+In fondo al sondaggio trovi diverse funzioni che ti aiutano a coinvolgere le persone mentre il sondaggio è in corso.
 
 ![](proposal_after_start.png)
 
@@ -86,11 +86,11 @@ In fondo al sondaggio trovi diverse funzioni per coinvolgere le persone mentre l
 
 ### Aggiungi elettori al sondaggio
 
-Puoi aggiungere persone al sondaggio in qualsiasi momento, anche prima dell'apertura delle votazioni per un sondaggio programmato.
+Puoi aggiungere nuove persone al sondaggio in qualsiasi momento, anche prima dell'apertura della votazione in un sondaggio programmato.
 
-Seleziona **Gestisci gli elettori** per aprire la finestra di gestione degli elettori. Puoi invitare tutti nel gruppo, aggiungere membri per nome o aggiungere ospiti tramite email se gli inviti agli ospiti sono consentiti. Scrivendo in **Trovare o invitare gli elettori**, puoi anche filtrare le persone già presenti nel sondaggio. Gli elettori aggiunti più di recente compaiono per primi; usa i controlli di paginazione per consultare l'elenco completo.
+Seleziona **Gestisci gli elettori** per aprire la finestra di gestione degli elettori. Puoi invitare tutti nel gruppo, aggiungere membri per nome o aggiungere ospiti tramite email se gli inviti agli ospiti sono consentiti. Scrivendo nel campo **Trovare o invitare gli elettori**, filtri anche le persone già presenti nel sondaggio. Gli elettori aggiunti più di recente appaiono per primi; usa i controlli di paginazione per scorrere l'elenco completo.
 
-Se il sondaggio ha un orario di apertura programmato e le votazioni non sono ancora iniziate, gli elettori non riceveranno subito una notifica. La riceveranno all'apertura delle votazioni.
+Se il sondaggio ha un orario di apertura programmato e la votazione non è ancora aperta, gli elettori non riceveranno una notifica immediata. Riceveranno invece una notifica all'apertura della votazione.
 
 <!-- translation-section: remove-people-from-the-poll -->
 
@@ -100,17 +100,17 @@ Seleziona **Gestisci gli elettori**, trova il nome della persona nella finestra 
 
 ![Il pulsante con il cestino accanto a un elettore nella finestra di gestione degli elettori](proposal_invite_remove.png)
 
-Non puoi rimuovere persone da un sondaggio anonimo.
+Non è possibile rimuovere persone da un sondaggio anonimo.
 
-Per esempio, chi amministra un gruppo e crea un sondaggio per i membri del consiglio può rimuovere il proprio nome se non ha diritto di voto.
+Ad esempio, un amministratore che crea un sondaggio per conto dei membri del consiglio può rimuovere sé stesso se non è autorizzato a votare.
 
-Per i sondaggi che usano pesi di voto, la stessa finestra consente agli amministratori del sondaggio di [controllare e modificare i pesi di voto](/en/user_manual/polls/weighted_voting).
+Per i sondaggi che usano pesi di voto, la stessa finestra consente ai coordinatori del sondaggio di [verificare e modificare i pesi di voto](/en/user_manual/polls/weighted_voting).
 
 <!-- translation-section: remind-people-to-vote -->
 
 ### Ricorda alle persone di votare
 
-Seleziona **Ricorda** per inviare una notifica alle persone che non hanno votato. L'opzione **Tutti invitati a votare** è selezionata per impostazione predefinita. Seleziona l'etichetta per vedere o modificare i destinatari.
+Seleziona **Ricorda** per inviare una notifica alle persone che non hanno votato. **Tutti invitati a votare** è selezionato per impostazione predefinita. Seleziona l'etichetta per vedere o modificare i destinatari.
 
 ![](proposal_remind.png)
 
@@ -122,7 +122,7 @@ Apri il menu con i tre puntini (**⋯**) in fondo al sondaggio e seleziona **Cro
 
 ![Cronologia delle notifiche nel menu delle azioni di un sondaggio](../../discussions/notifying_people/poll_notification_history.png)
 
-La cronologia mostra chi è stato invitato a votare, quando è stato inviato ogni invito e, se l'informazione è disponibile, se è stato letto.
+La cronologia mostra chi è stato invitato a votare, quando è stato inviato ciascun invito e se è stato letto, quando questa informazione è disponibile.
 
 ![Cronologia delle notifiche di un sondaggio](../../discussions/notifying_people/poll_notification_example.png)
 
@@ -130,9 +130,9 @@ La cronologia mostra chi è stato invitato a votare, quando è stato inviato ogn
 
 ### Chiudi in anticipo
 
-Seleziona **Chiudi in anticipo** per chiudere un sondaggio prima della scadenza prevista.
+Seleziona **Chiudi in anticipo** per chiudere un sondaggio prima dell'orario di chiusura programmato.
 
-Puoi farlo quando tutti hanno votato o non è più necessario lasciare aperto il sondaggio.
+Puoi farlo quando tutti hanno votato o quando il sondaggio non ha più bisogno di rimanere aperto.
 
 ![](proposal_close_early.png)
 
@@ -140,7 +140,7 @@ Puoi farlo quando tutti hanno votato o non è più necessario lasciare aperto il
 
 ### Riapri
 
-Seleziona **Riapri** in un sondaggio chiuso, poi imposta una nuova data e ora di chiusura.
+Seleziona **Riapri** su un sondaggio chiuso, poi imposta una nuova data di chiusura con il relativo orario.
 
 I sondaggi anonimi non possono essere riaperti.
 

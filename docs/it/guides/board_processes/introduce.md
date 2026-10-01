@@ -1,10 +1,10 @@
 ---
 title: Presentare Loomio al tuo consiglio direttivo
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/guides/board_processes/introduce.md
+source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
+source_file: docs/en/guides/board_processes/introduce.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-30'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: c0d64682f409c229
   check-technical-proficiency: 17e1c92a0214a12c
@@ -16,15 +16,15 @@ sections:
   manage-group-membership: cf3684fe138b05fe
   start-with-a-board-process: 916878a28e4bbe01
 generated:
-  introduction: c2c827e9f31550d8
-  check-technical-proficiency: fcf8f632b3487f8f
+  introduction: fa9da898ba86ed1e
+  check-technical-proficiency: 6b869f57be3d9398
   configure-your-group: 46bd9e9a7f442358
-  group-description: c73906af01b6d032
-  check-privacy-and-permission-settings: cc61daad53935029
-  category-tags: 7cea469fa59fe315
-  set-up-your-personal-profile: be01e5e6375f8b80
-  manage-group-membership: 12041179194c6617
-  start-with-a-board-process: a59a53c36be1f8b2
+  group-description: 784635b771eabed0
+  check-privacy-and-permission-settings: eb64fd8d57935330
+  category-tags: cb55bb4566fff523
+  set-up-your-personal-profile: dfd0ead074dbbf4e
+  manage-group-membership: 150d47b3f3114173
+  start-with-a-board-process: 7498131590d3630b
 title_source: 0d24828b57de672c
 title_generated: b1ca6f2b7081100c
 ---
@@ -33,38 +33,38 @@ title_generated: b1ca6f2b7081100c
 
 # Presentare Loomio al tuo consiglio direttivo
 
-Loomio può diventare lo spazio online in cui il tuo consiglio direttivo o comitato si riunisce, discute, prende decisioni e conserva una documentazione verificabile delle attività dell'organizzazione.
+Loomio può diventare lo spazio online in cui il tuo consiglio direttivo o comitato si riunisce, discute, prende decisioni e crea una documentazione verificabile per la tua organizzazione.
 
-Inizia dal percorso generale descritto in [Presentare Loomio al tuo gruppo](/en/user_manual/overview/introducing_loomio). Questa pagina aggiunge indicazioni specifiche per consigli direttivi e comitati.
+Inizia con i passaggi generali descritti in [Presentare Loomio al tuo gruppo](/en/user_manual/overview/introducing_loomio). Questa pagina aggiunge considerazioni specifiche per consigli direttivi e comitati.
 
-Loomio sarà poco utile se partecipa solo una parte del consiglio direttivo. Informazioni e comunicazioni resteranno probabilmente sparse tra vari strumenti e caselle email, causando confusione e facendo perdere tempo a tutti.
+Loomio sarà però poco utile se partecipa solo una parte del consiglio direttivo. Le informazioni e le comunicazioni probabilmente resteranno sparse tra più strumenti e perse nella posta in arrivo delle email, e la confusione farà perdere tempo a tutti.
 
-Pensa al problema che vuoi risolvere con Loomio, per esempio migliorare e seguire le comunicazioni o conservare la memoria dell'organizzazione. Poi concordate come consiglio direttivo di trasferire il vostro lavoro su Loomio e incoraggia tutti a partecipare con impegno.
+Considera il problema che cerchi di risolvere usando Loomio, ad esempio migliorare e tenere traccia delle comunicazioni o costruire una memoria dell'organizzazione. Poi concorda con il consiglio direttivo l'impegno a trasferire il lavoro su Loomio e incoraggia tutti a impegnarsi concretamente.
 
-Come amministratore, il tuo obiettivo principale è configurare Loomio in modo che il consiglio direttivo possa usarlo efficacemente.
+Come amministratore, il tuo obiettivo principale è configurare Loomio in modo efficace per il tuo consiglio direttivo.
 
-Incoraggia i membri del consiglio direttivo a iscriversi e partecipare. Dovrebbero essere in grado di:
+Incoraggia i componenti del consiglio direttivo a unirsi e partecipare. Dovrebbero essere in grado di:
 
 - Accedere a Loomio
-- Leggere e commentare le discussioni
+- Leggere e commentare le conversazioni
 - Votare nei sondaggi
-- Capire come svolgere le attività di governo dell'organizzazione su Loomio
+- Capire come funzionano le vostre pratiche di governance in Loomio
 
 <!-- translation-section: check-technical-proficiency -->
 
-## Verifica le competenze digitali
+## Verifica le competenze tecniche
 
-I membri del consiglio direttivo avranno bisogno di un computer o di uno smartphone connesso a Internet. Devono saper inviare e ricevere email, navigare sul web, leggere documenti digitali e guardare video con audio.
+I membri del consiglio direttivo avranno bisogno di un computer o smartphone connesso a internet. Devono saper inviare e ricevere email, navigare sul web, leggere documenti digitali e guardare e ascoltare video.
 
-Verifica che tutti i membri abbiano:
+Verifica che i membri abbiano tutto quanto segue:
 
-- un dispositivo aggiornato: computer, tablet o smartphone con email e un browser moderno
-- una connessione a Internet tramite Wi-Fi, cavo Ethernet o rete mobile (3G o superiore)
-- la capacità di inviare e ricevere email, navigare su Internet, scaricare documenti e riprodurre video.
+- un dispositivo aggiornato: un computer, tablet o smartphone con email e un browser internet moderno
+- una connessione internet tramite Wi-Fi, cavo Ethernet o un piano dati mobili (3G o superiore)
+- la capacità di inviare e ricevere email, navigare su internet, scaricare documenti e riprodurre video.
 
-Loomio funziona con i browser più comuni, come Google Chrome, Microsoft Edge, Firefox e Apple Safari. I browser obsoleti, come Microsoft Internet Explorer, potrebbero non funzionare.
+Loomio funziona con tutti i browser internet comuni, come Google Chrome, Microsoft Edge, Firefox e Apple Safari. I browser vecchi e non aggiornati, come Microsoft Internet Explorer, potrebbero non funzionare.
 
-Se hai problemi a usare Loomio sul tuo dispositivo, [contatta l'assistenza di Loomio](/contact).
+Se hai un problema nell'utilizzare Loomio sul tuo dispositivo, [Contatta l'assistenza Loomio](/contact).
 
 <!-- translation-section: configure-your-group -->
 
@@ -73,41 +73,41 @@ Se hai problemi a usare Loomio sul tuo dispositivo, [contatta l'assistenza di Lo
 <!-- translation-section: group-description -->
 
 ### Descrizione del gruppo
-La descrizione del gruppo è la prima cosa che le persone vedono quando arrivano nel tuo gruppo Loomio. Scrivila in modo che i nuovi membri capiscano lo scopo del gruppo e il lavoro che farete insieme. Aggiungi altre informazioni utili per orientarsi e partecipare.
+La descrizione del gruppo è la prima cosa che le persone vedono quando arrivano nel tuo gruppo Loomio. Scrivila per aiutare i nuovi membri a capire lo scopo del gruppo e il lavoro che farete insieme. Fornisci qualsiasi altra informazione che aiuti le persone a orientarsi e le incoraggi a partecipare.
 
-Per esempio, dai il benvenuto alle persone e spiega che questo è il loro spazio online per comunicare e governare l'organizzazione:
+Ad esempio, dai il benvenuto alle persone e spiega che questo è il loro spazio online per la comunicazione e la governance della tua organizzazione:
 
 - Ricorda ai membri lo scopo del consiglio direttivo o del comitato.
-- Spiega come intendete usare Loomio: preparare le riunioni, portare avanti le discussioni, prendere decisioni e mantenere il filo del lavoro tra una riunione e l'altra.
-- Indica chiaramente chi può accedere al gruppo, leggere i contenuti e partecipare.
-- Allega o inserisci i link ai documenti di riferimento e di governo dell'organizzazione.
+- Descrivi come intendi usare Loomio: preparare le riunioni, far progredire le discussioni, prendere decisioni e mantenere il contesto tra una riunione e l'altra.
+- Chiarisci chi ha accesso al gruppo e può leggere e partecipare.
+- Allega o inserisci link a documenti di riferimento o di governance.
 
 <!-- translation-section: check-privacy-and-permission-settings -->
 
-### Controlla le impostazioni di privacy e autorizzazione
-Per impostazione predefinita, i gruppi Loomio sono **Segreto**: solo le persone che inviti al gruppo sanno che esiste.
+### Verifica le impostazioni di privacy e dei permessi
+Per impostazione predefinita, i gruppi Loomio hanno la privacy impostata su **Segreto**, il che significa che solo le persone che inviti espressamente nel gruppo ne conoscono l'esistenza.
 
-Consulta le [autorizzazioni dei membri](/en/user_manual/groups/settings#permissions) e impostale in base alle competenze dei membri del gruppo. All'inizio può essere utile limitare alcune autorizzazioni per evitare confusione. Potrai ripristinarle quando tutti avranno più familiarità con Loomio.
+Consulta i [permessi dei membri](/en/user_manual/groups/settings#permissions) e configurali in base alle competenze dei membri del tuo gruppo. All'inizio può essere utile rimuovere alcuni permessi per evitare confusione. Puoi sempre ripristinarli man mano che tutti acquisiscono familiarità con Loomio.
 
 <!-- translation-section: category-tags -->
 
-### Etichette di categoria
-Aggiungi [etichette di categoria](/en/user_manual/discussions/tags/) adatte alla tua organizzazione. Impostarle in anticipo aiuterà tutti a usarle e a trovare le discussioni e le informazioni che cercano.
+### Tag di categoria
+Aggiungi [tag di categoria](/en/user_manual/discussions/tags/) adatti alla tua organizzazione. Impostarli in anticipo aiuterà tutti a usare i tag e a trovare le conversazioni e le informazioni che cercano.
 
 <!-- translation-section: set-up-your-personal-profile -->
 
 ### Configura il tuo profilo personale
-Il tuo [profilo personale](/en/user_manual/users/user_profile) aiuterà i membri del gruppo a riconoscerti e a sapere che i messaggi ricevuti provengono da te.
+Il tuo [profilo personale](/en/user_manual/users/user_profile) aiuterà i membri del tuo gruppo a identificarti facilmente e ad avere fiducia che i messaggi che ricevono da te provengano effettivamente da te.
 
 <!-- translation-section: manage-group-membership -->
 
 ### Gestisci i membri del gruppo
-Assicurati che tutti i membri del consiglio direttivo o del comitato siano stati [invitati](/en/user_manual/groups/inviting_people/) nel gruppo e abbiano accettato l'invito.
+Assicurati che tutti i membri del tuo consiglio direttivo o comitato siano stati [invitati](/en/user_manual/groups/inviting_people/) nel gruppo e abbiano accettato il loro invito.
 
 <!-- translation-section: start-with-a-board-process -->
 
-### Inizia con un'attività del consiglio direttivo
+### Inizia con una procedura del consiglio direttivo
 
-La guida introduttiva generale spiega come aiutare tutti a commentare e votare almeno una volta. Per un consiglio direttivo, prosegui con un'attività ricorrente, come preparare l'ordine del giorno, approvare un verbale, esaminare una relazione o prendere una piccola decisione tra una riunione e l'altra.
+La guida introduttiva generale spiega come aiutare tutti a commentare e votare almeno una volta. Per un consiglio direttivo, prosegui questa pratica con una procedura di governance ricorrente, come preparare un ordine del giorno, approvare un verbale, esaminare una relazione o prendere una piccola decisione al di fuori delle riunioni.
 
-Concordate se le decisioni prese su Loomio entrano in vigore quando viene pubblicata la loro conclusione oppure se devono essere ratificate nella riunione successiva. Riporta il quorum concordato, la soglia di voti necessaria, chi ha diritto di voto e la procedura di ratifica nella descrizione del gruppo o nei documenti di governo dell'organizzazione.
+Concorda con il consiglio direttivo se le decisioni prese su Loomio diventano effettive quando viene pubblicata la loro conclusione o se devono essere ratificate alla riunione successiva. Registra il quorum concordato, la soglia di voti richiesta, gli elettori aventi diritto e la procedura di ratifica nella descrizione del gruppo o nei documenti di governance.

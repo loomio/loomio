@@ -1,10 +1,10 @@
 ---
 title: Trovare contenuti
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/overview/finding-content.md
+source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
+source_file: docs/en/user_manual/overview/finding-content.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 91ceec48c5d29a37
   search: 514f599496d28353
@@ -16,13 +16,13 @@ sections:
   bookmarks: 06b79827757caeeb
 generated:
   introduction: 4d0cc5b8cef98e89
-  search: 1b6a73324a9171da
-  search-tips: bde50748d311624a
-  filter-discussions: 45131cca3ef39023
-  category-tags: 18d50abd302db97d
-  unread-discussions: 71a8fe2322551c29
+  search: 0f7b616246a69fd2
+  search-tips: 8b85943c727de7b4
+  filter-discussions: ef9ffab0f991bf4c
+  category-tags: fe1eff63b2f9e467
+  unread-discussions: c9419eca4a137713
   polls-awaiting-your-vote: bd3eb44518fda6dc
-  bookmarks: b3e05ba008db34f0
+  bookmarks: 04f602155922f998
 title_source: 11acd4c6010fc176
 title_generated: 23362d9ab29cf1f2
 ---
@@ -37,47 +37,47 @@ Loomio offre diversi modi per trovare discussioni e decisioni nei tuoi gruppi.
 
 ## Ricerca
 
-Il pulsante Ricerca nella barra di navigazione in alto apre la ricerca globale da qualsiasi pagina di Loomio.
+Il pulsante Cerca nella barra di navigazione superiore apre la ricerca globale da qualsiasi pagina di Loomio.
 
 ![](search_button.png)
 
-La ricerca comprende i contenuti a cui puoi accedere in tutti i tuoi gruppi e nelle discussioni dirette. Può trovare titoli e descrizioni delle discussioni, commenti, sondaggi, voti e conclusioni.
+La ricerca include i contenuti a cui puoi accedere in tutti i tuoi gruppi e nelle discussioni dirette. Può trovare titoli e contesto delle discussioni, commenti, sondaggi, voti e conclusioni.
 
-Inserisci una parola o una frase, poi premi Invio o seleziona l'icona di ricerca. Per esempio, cercando **bottle** trovi i contenuti di Oatmilk Cooperative che contengono questa parola.
+Inserisci una parola o una frase, poi premi Invio o seleziona l'icona di ricerca. Ad esempio, cercando **bottle** trovi i contenuti di Oatmilk Cooperative che contengono quella parola.
 
 ![](search_strategy.png)
 
 <!-- translation-section: search-tips -->
 
-### Suggerimenti per la ricerca
+### Consigli per la ricerca
 
 - Inizia con una o due parole distintive del titolo o del contenuto che ricordi.
-- La ricerca trova anche l'inizio di una parola: per esempio, **bott** può trovare **bottle**. 
-- Se la ricerca produce pochissimi risultati, compensa gli errori di ortografia.
-- Usa i filtri per limitare i risultati a un'organizzazione, un sottogruppo, un'etichetta o un tipo di contenuto, come commenti o sondaggi.
-- Ordina per **Migliore abbinamento** se cerchi i risultati più pertinenti, oppure dal più recente o dal meno recente se sai più o meno quando è stato pubblicato il contenuto.
+- La ricerca trova corrispondenze con l'inizio di una parola, quindi una parola parziale come **bott** può trovare **bottle**.
+- La ricerca compensa gli errori di ortografia quando i risultati per i termini inseriti sono molto pochi.
+- Usa i filtri per limitare i risultati a un'organizzazione, un sottogruppo, un tag o un tipo di contenuto, come commenti o sondaggi.
+- Ordina per **Migliore abbinamento** quando conta la pertinenza, oppure dai più recenti o dai meno recenti quando sai all'incirca quando è stato pubblicato il contenuto.
 
 <!-- translation-section: filter-discussions -->
 
 ## Filtrare le discussioni
 
-Usa i controlli accanto a Ricerca per filtrare le discussioni in base allo stato, aperte o chiuse, o all'etichetta di categoria. Puoi combinare un termine di ricerca e un filtro per restringere rapidamente un lungo elenco di discussioni.
+Usa i controlli accanto a Cerca per filtrare le discussioni in base allo stato aperto o chiuso oppure a un tag di categoria. Combinando un termine di ricerca con un filtro puoi restringere rapidamente un lungo elenco di discussioni.
 
 <!-- translation-section: category-tags -->
 
-## Etichette di categoria
+## Tag di categoria
 
-Le etichette raggruppano discussioni e sondaggi correlati sotto nomi scelti dal tuo gruppo, come un progetto, un team o un'area di lavoro.
+I tag raggruppano discussioni e sondaggi correlati sotto nomi scelti dal tuo gruppo, come un progetto, un team o un ambito di lavoro.
 
 ![](tags.png)
 
-Seleziona un'etichetta nella scheda **Discussioni** per mostrare le discussioni corrispondenti. Chi ha il permesso di avviare o modificare discussioni può applicare le etichette. Per informazioni sulla configurazione e sui permessi, consulta [Etichette di categoria](/en/user_manual/discussions/tags).
+Seleziona un tag nella scheda **Discussioni** per mostrare le discussioni corrispondenti. Le persone con il permesso di avviare o modificare discussioni possono applicare tag. Consulta [Tag di categoria](/en/user_manual/discussions/tags) per i dettagli sulla configurazione e sui permessi.
 
 <!-- translation-section: unread-discussions -->
 
 ## Discussioni non lette
 
-Seleziona **Discussioni non lette** nella barra laterale per vedere le discussioni con attività che non hai ancora letto. All'interno di una discussione, la cronologia ti aiuta a raggiungere gli elementi non letti e gli eventi importanti.
+Seleziona **Discussioni non lette** nella barra laterale per vedere le discussioni con attività che non hai letto. All'interno di una discussione, la cronologia ti aiuta a raggiungere gli elementi non letti e gli eventi importanti.
 
 <!-- translation-section: polls-awaiting-your-vote -->
 
@@ -89,4 +89,4 @@ Seleziona **Sondaggi da votare** nella barra laterale per vedere i sondaggi atti
 
 ## Segnalibri
 
-Aggiungi ai segnalibri una discussione, un commento, un sondaggio, un voto o una conclusione a cui vuoi tornare. Apri **Segnalibri** dal menu utente per vedere tutto ciò che hai salvato. Per maggiori informazioni, consulta [Segnalibri](/en/user_manual/users/bookmarks).
+Aggiungi ai segnalibri una discussione, un commento, un sondaggio, un voto o una conclusione quando vuoi ritrovarli in seguito. Apri **Segnalibri** dal tuo menu utente per vedere tutto ciò che hai salvato. Consulta [Segnalibri](/en/user_manual/users/bookmarks) per i dettagli.

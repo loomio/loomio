@@ -1,6 +1,6 @@
 ---
 title: Requisiti di quota di voto
-source_revision: 9c60c42fc739483fa23f15d9f34a1e9245518092
+source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
 source_file: docs/en/user_manual/polls/vote_share_requirements/index.md
 translated:
   provider: codex/gpt-6.1-sol
@@ -11,10 +11,10 @@ sections:
   different-vote-share-requirements: cfdfd13a0a6a8b38
   detailed-example: 395dbccb0e6427fc
 generated:
-  introduction: af319a773f26a490
-  eligible-voters-and-votes-cast: 2614cf490c66e354
-  different-vote-share-requirements: eec4a5ba8242b195
-  detailed-example: 1379438e7a2c866e
+  introduction: 57968292811710c0
+  eligible-voters-and-votes-cast: 2f1c6cf1b0195cbe
+  different-vote-share-requirements: d31565d13080a9c9
+  detailed-example: 298a7a8db2bc7b0a
 title_source: a654891ca817844e
 title_generated: d852e35efaa49f9a
 ---
@@ -23,56 +23,56 @@ title_generated: d852e35efaa49f9a
 
 # Requisiti di quota di voto
 
-Imposta un requisito di quota di voto per un'opzione quando, per essere approvata, una proposta deve ottenere una determinata percentuale di sostegno o non superare una determinata percentuale di opposizione.
+Imposta un requisito di quota di voto su un'opzione quando, per essere approvata, una proposta deve ricevere una determinata percentuale di sostegno o rimanere al di sotto di una determinata percentuale di opposizione.
 
-Puoi combinare i requisiti di quota di voto con un [quorum](/en/user_manual/polls/quorum/) per richiedere sia una partecipazione sufficiente sia una determinata distribuzione dei voti.
+I requisiti di quota di voto possono essere combinati con un [quorum](/en/user_manual/polls/quorum/) per richiedere sia una partecipazione sufficiente sia una determinata distribuzione dei voti.
 
 Nel modulo della proposta, seleziona l'icona di modifica accanto a un'opzione.
 
-![L'icona di modifica accanto all'opzione Favorevole](edit-highlight-on-option.png)
+![L'icona di modifica accanto all'opzione Accordo](edit-highlight-on-option.png)
 
 <!-- translation-section: eligible-voters-and-votes-cast -->
 
 ## Elettori aventi diritto e voti espressi
 
-La percentuale può essere calcolata in base ai **Voti espressi** o agli **Elettori aventi diritto**.
+La percentuale può essere calcolata sui **Voti espressi** o sugli **Elettori aventi diritto**.
 
-![Scelta tra voti espressi ed elettori aventi diritto per il requisito di quota di voto](./eligible-vs-cast.png)
+![Scelta tra voti espressi ed elettori aventi diritto come base per un requisito di quota di voto](./eligible-vs-cast.png)
 
-**Elettori aventi diritto** indica tutte le persone che possono votare sulla proposta. **Voti espressi** indica solo i voti già inviati.
+**Elettori aventi diritto** indica tutte le persone che possono votare sulla proposta. **Voti espressi** indica solo i voti che sono stati inviati.
 
-Un requisito del 75% di voti favorevoli tra gli elettori aventi diritto può essere soddisfatto solo se almeno il 75% di tutti gli aventi diritto vota per quell'opzione.
+Un requisito di accordo del 75 percento degli elettori aventi diritto può essere soddisfatto solo quando almeno il 75 percento di tutti gli elettori aventi diritto vota per quell'opzione.
 
-Un requisito del 60% di voti favorevoli tra i voti espressi può essere soddisfatto se il 60% dei voti inviati sostiene l'opzione, indipendentemente dalla partecipazione complessiva. Aggiungi un quorum se il tuo processo richiede anche una partecipazione minima.
+Un requisito di accordo del 60 percento dei voti espressi può essere soddisfatto quando il 60 percento dei voti inviati sostiene l'opzione, indipendentemente dalla partecipazione complessiva. Aggiungi un quorum quando il tuo processo richiede anche un livello minimo di partecipazione.
 
 <!-- translation-section: different-vote-share-requirements -->
 
-## Requisiti di quota di voto diversi
+## Diversi requisiti di quota di voto
 
-Puoi impostare requisiti per più opzioni della stessa proposta. Per esempio:
+Una proposta può avere requisiti su più di un'opzione. Per esempio:
 
-- I voti favorevoli devono rappresentare almeno il 75% degli elettori aventi diritto
-- Le astensioni non devono superare il 30% dei voti espressi
-- I voti di blocco non devono superare lo 0% dei voti espressi
+- Accordo deve raggiungere almeno il 75 percento degli elettori aventi diritto
+- Astensione non deve superare il 30 percento dei voti espressi
+- Blocco non deve superare lo 0 percento dei voti espressi
 
-Impostare un'opzione su **Non più di 0%** è una pratica comune. Significa che la proposta non può essere approvata se qualcuno sceglie quell'opzione. Usa questa impostazione per **Blocco**, così un singolo voto di blocco impedisce l'approvazione della proposta.
+Impostare un'opzione su **Non più dello 0%** è una pratica comune. Significa che la proposta non può essere approvata se qualcuno sceglie quell'opzione. Usa questa impostazione su **Blocco** affinché un singolo blocco fermi la proposta.
 
-Puoi anche aggiungere requisiti a un [modello di sondaggio](/en/user_manual/polls/poll_templates/), così le nuove proposte create dal modello li useranno per impostazione predefinita.
+Puoi anche aggiungere requisiti a un [modello di sondaggio](/en/user_manual/polls/poll_templates/) affinché le nuove proposte create dal modello li usino per impostazione predefinita.
 
 <!-- translation-section: detailed-example -->
 
 ## Esempio dettagliato
 
-La cooperativa Oatmilk sta decidendo se avviare una prova di sei settimane con bottiglie a rendere. Cinque persone hanno diritto di voto.
+La cooperativa Oatmilk sta decidendo se avviare una sperimentazione di sei settimane con bottiglie a rendere. Cinque persone hanno diritto di voto.
 
-Il processo della cooperativa richiede che almeno il 75% degli elettori aventi diritto sia favorevole. Jamie modifica l'opzione **Favorevole** della proposta, attiva il relativo requisito di quota di voto e lo imposta su **Almeno il 75% degli Elettori aventi diritto**.
+Il processo della cooperativa richiede che almeno il 75 percento degli elettori aventi diritto esprima accordo. Jamie modifica l'opzione **Favorevole** della proposta, attiva il relativo requisito di quota di voto e lo imposta su **Almeno il 75% degli Elettori aventi diritto**.
 
-![L'opzione Favorevole richiede il sostegno di almeno il 75% degli elettori aventi diritto](./agree-vote-option.png)
+![L'opzione Accordo con un requisito di almeno il 75 percento degli elettori aventi diritto](./agree-vote-option.png)
 
-Jamie imposta anche un quorum del 60%. Jamie e Samira votano a favore. Tutti i voti espressi sostengono la proposta, ma rappresentano solo il 40% degli elettori aventi diritto. Nessuno dei due requisiti è quindi soddisfatto.
+Jamie imposta anche un quorum del 60 percento. Jamie e Samira votano Accordo. Tutti i voti inviati sostengono la proposta, ma rappresentano solo il 40 percento degli elettori aventi diritto, quindi nessuno dei due requisiti è stato soddisfatto.
 
-![Due persone su cinque hanno votato a favore e nessuno dei due requisiti è soddisfatto](./first-vote-breakdown.png)
+![Due persone su cinque hanno votato Accordo e nessuno dei due requisiti è soddisfatto](./first-vote-breakdown.png)
 
-Poi Alex e Morgan votano a favore, mentre Taylor vota contro. Tutte e cinque le persone hanno votato, raggiungendo il quorum, e quattro elettori aventi diritto su cinque sono favorevoli. Il sostegno dell'80% supera il requisito di quota di voto del 75%, quindi entrambi i requisiti mostrano un segno di spunta verde.
+Alex e Morgan votano poi Accordo, mentre Taylor vota Disaccordo. Tutte e cinque le persone hanno votato, raggiungendo il quorum, e quattro elettori aventi diritto su cinque hanno espresso accordo. L'accordo dell'80 percento supera il requisito di quota di voto del 75 percento, quindi entrambi i requisiti mostrano un segno di spunta verde.
 
 ![Tutte e cinque le persone hanno votato ed entrambi i requisiti sono soddisfatti](./final-vote-breakdown.png)

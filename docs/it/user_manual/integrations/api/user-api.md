@@ -1,10 +1,10 @@
 ---
 title: API utente
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/integrations/api/user-api.md
+source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
+source_file: docs/en/user_manual/integrations/api/user-api.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-30'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: a43c8b800d13fd33
   authentication-change: 06b5c2cd9d9e72a0
@@ -73,119 +73,121 @@ sections:
   params-13: 249b307203206387
   example-18: ffd950cd7ab5aaec
 generated:
-  introduction: 24e237d80342efe4
-  authentication-change: 7e136a5dd8cd9695
-  response-size-and-related-records: 65e1eccafaaf3f26
-  endpoint-summary: c3856d95ff6f65ff
+  introduction: 910a213ca5511a5e
+  authentication-change: fd222696d560e097
+  response-size-and-related-records: 116e9c5d078b873f
+  endpoint-summary: 94b2d8231e1cf1b6
   groups: 42011ba3c7a9e4fd
-  list-groups: 809f400313251b01
-  get-a-group: 0fc388a2d3575b73
-  webhooks: 33dc1907e312f7e1
-  list-webhooks: 85ac3dc5de84850c
-  create-a-webhook: 11a9f3b49de06b5e
-  update-a-webhook: 9f8786eb34de80eb
-  test-a-webhook-destination: 6b0ff34306591abb
-  delete-a-webhook: feffd5132f1d89b3
-  event-types: d4114cc4ff6ec086
-  http-delivery: 19ed8d415cd8bc62
-  payload-formats: efc40ffaf701c455
-  search: c01e2c8d63f3c7f9
-  params: f816b1a6024bb91b
-  participation-report: aca8daac6b125888
-  params-2: 2bacccf0fbb9dfbc
-  example: 3492f806d7e32618
-  create-discussion: 9a4844fd3363f401
-  params-3: 176a15b0d4eed9d4
+  list-groups: 0f4711a682e3ed3b
+  get-a-group: f34236f0d93aada8
+  webhooks: 9b5c69c455024b20
+  list-webhooks: '0086d08613120310'
+  create-a-webhook: 2d67c4722121e614
+  update-a-webhook: f87e19f685839e5e
+  test-a-webhook-destination: 2de7ee7826f077ea
+  delete-a-webhook: 6f290b607cf10b9f
+  event-types: 69b71433d4918e71
+  http-delivery: e0d2dccceee2c622
+  payload-formats: 86c12c264bec7887
+  search: 93232c8d459658b1
+  params: 726425268175509a
+  participation-report: edaceb6b60683d5a
+  params-2: a1587baaa2e2e11d
+  example: d5f8f9f24dbf2008
+  create-discussion: 854f60fcacec213b
+  params-3: 91719721ce047a2f
   example-2: 31210b378082b54f
-  show-discussion: 98603e07684a93a0
+  show-discussion: 9cecf1243cd25892
   example-3: 24844d6efe2025bf
-  list-discussions: e5b787f6f3954666
-  params-4: 259edf432b55d110
+  list-discussions: 81c7f47895c306bd
+  params-4: 28f4a190196b328f
   example-4: 68cc95e0d84d0449
-  list-threads: e1e8e52a22cd9026
-  params-5: 6b91d7a39545c50c
+  list-threads: 9b07dff78d209474
+  params-5: 8938e21e8a6632f1
   example-5: aaada67349ae9821
-  read-thread: d4ad64929cdddbbc
-  example-6: 196777a1f36b94b5
-  edit-discussion: 0bcdfabae278ab41
-  params-6: 79162055257a85a8
+  read-thread: f87dcbc0a8389fe9
+  example-6: 80c619ff206a04d7
+  edit-discussion: ba248b6c47ef8a9d
+  params-6: cab25318dd49f53b
   example-7: f5e59e4dfc6d485d
-  soft-delete-discussion: 319c0c9a8be65fd7
+  soft-delete-discussion: c8f7b7b7afe3f22d
   example-8: 2b73fc94de6b63d1
-  create-comment: 9ebd2ff69b19f20a
-  params-7: eb923375eaa541cd
+  create-comment: cc4ca7bef5c33e81
+  params-7: bafa7b5c731202fc
   example-9: d4759f76bbd035f1
-  edit-comment: 43a823c39b026091
-  params-8: 1f09d9b7aab0eba9
+  edit-comment: a491ebaafe6b6cdb
+  params-8: f4b6c0d113c91617
   example-10: 209381bd47b3e380
-  soft-delete-comment: 97736d5caf6347db
+  soft-delete-comment: 82b8b1c5c3a50c9f
   example-11: f6df5bd89872e531
-  create-poll: d4750e3629e66744
-  params-9: f158fcfb9bab04b9
+  create-poll: eaf853188594b57a
+  params-9: ae52e0a3db43e733
   example-12: 9cb3b7724fdd8eb0
-  show-poll: 7a1d1df562da7eca
+  show-poll: e68298ccc4fb5771
   example-13: f08d34bfaa3ea688
-  list-polls: 4fafca040e47794c
-  params-10: d517f726ce039625
+  list-polls: 7c35ef8db7069a2c
+  params-10: b7a932bd23bc0020
   example-14: e7924e10d172b242
-  edit-poll: a9cebdae4d9ae211
-  params-11: 60dc01edcbbc4485
+  edit-poll: 5afd13edbd4ae4f2
+  params-11: e1f025ddb15c9279
   example-15: 156d9c3b92f7a1fb
-  soft-delete-poll: 43ee4ed83655c024
+  soft-delete-poll: 7e62e2ca11be296c
   example-16: 68b7f1079a5b149a
-  list-memberships: 8b0a72ae3d4825c5
-  params-12: f4b2bda5c44e1d5c
+  list-memberships: '08d8742cc1d17188'
+  params-12: 85f78d61940ad9c8
   example-17: c076310bc023c187
-  manage-memberships: 959cc0d6478e18c3
-  params-13: 640bb82434317855
-  example-18: 697b34854c9361a4
+  manage-memberships: 0605511ae35d69c4
+  params-13: 373d652a91300d14
+  example-18: aa4f4330bd454e6b
 title_source: c23fb6526b722360
 title_generated: 431e416c4c7bba9a
+needs_review:
+  params: use "conclusione" instead of "risultato" for "outcome"
 ---
 
 <!-- translation-section: introduction -->
 
 # Documentazione dell'API utente di Loomio
 
-<!-- seo-description: Usa l'API utente di Loomio per creare e gestire discussioni, commenti, sondaggi, thread e partecipazioni ai gruppi da altri software. -->
+<!-- seo-description: Usa l'API utente di Loomio per creare e gestire discussioni, commenti, sondaggi, conversazioni e appartenenze ai gruppi da altri software. -->
 
-`/api/b2` è l'API utente per le integrazioni con Loomio. Usa la chiave API di un account utente ed esegue ogni azione a nome di quell'utente.
+`/api/b2` è l'API orientata agli utenti per le integrazioni con Loomio. Usa la chiave API di un account utente e ogni azione viene eseguita a nome di quell'utente.
 
-Le operazioni sui gruppi rispettano le partecipazioni e i permessi dell'utente a cui appartiene la chiave API. Il ruolo di amministratore dell'istanza non amplia l'accesso della chiave API ai gruppi o ai contenuti; per amministrare l'istanza, usa la Server API.
+Le operazioni sui gruppi usano le appartenenze e i permessi nei gruppi dell'utente titolare della chiave API. Il ruolo di amministratore dell'istanza non amplia l'accesso di una chiave API ai gruppi o ai contenuti; usa l'API server per l'amministrazione a livello di istanza.
 
-Usa la chiave API dell'account Loomio che eseguirà le azioni. Un account bot dedicato è utile se l'integrazione non deve ricevere inviti ai sondaggi o notifiche.
+Usa la chiave API dell'account utente Loomio che eseguirà le azioni. Un account bot dedicato è utile quando un'integrazione non deve essere invitata ai sondaggi o ricevere notifiche.
 
-Se hai effettuato l'accesso, trovi la tua chiave API e gli ID dei gruppi nella [pagina di accesso API](/profile/api_access).
+Gli utenti che hanno effettuato l'accesso possono trovare la propria chiave API e gli ID dei gruppi nella [pagina di accesso API](/profile/api_access).
 
-Invia la chiave API nell'intestazione `Authorization: Bearer`. Le chiavi API nelle stringhe di query vengono rifiutate perché gli URL possono essere registrati dai proxy e nei log di accesso.
+Invia la chiave API in un'intestazione `Authorization: Bearer`. Le chiavi API nelle stringhe di query vengono rifiutate perché gli URL possono essere registrati dai proxy e nei log di accesso.
 
 <!-- translation-section: authentication-change -->
 
 ### Modifica dell'autenticazione
 
-In precedenza, la chiave API poteva essere passata come parametro URL `api_key`. Le richieste che usano `?api_key=YOUR_API_KEY` non funzionano più. Usa invece l'intestazione HTTP `Authorization`:
+In precedenza, la chiave API veniva accettata come parametro URL `api_key`. Le richieste che usano `?api_key=YOUR_API_KEY` non funzionano più. Usa invece l'intestazione HTTP `Authorization`:
 
 ```text
 Authorization: Bearer YOUR_API_KEY
 ```
 
-Gli esempi usano `YOUR_API_KEY`, l'ID di gruppo `123` e `https://www.loomio.com/`. Sostituiscili con la tua chiave API, l'ID del gruppo e l'URL della tua installazione di Loomio.
+Gli esempi usano `YOUR_API_KEY`, l'ID gruppo `123` e `https://www.loomio.com/`. Sostituiscili con la tua chiave API, l'ID del tuo gruppo e l'URL della tua installazione di Loomio.
 
 <!-- translation-section: response-size-and-related-records -->
 
-## Dimensioni delle risposte e record correlati
+## Dimensione delle risposte e record correlati
 
-Le risposte dell'API utente hanno un formato composito: i record principali sono accompagnati da record correlati, come topic, gruppi, utenti, sondaggi e reazioni. Questo consente a un client di popolare un archivio locale con una sola richiesta, ma può includere più dati di quanti ne servano a una semplice integrazione.
+Le risposte dell'API utente usano un formato composto: i record principali sono accompagnati da record correlati, come argomenti, gruppi, utenti, sondaggi e reazioni. Questo permette a un client di popolare un archivio locale di record con una sola richiesta, ma può includere più dati di quelli necessari a un'integrazione semplice.
 
-Passa `compact=1` per omettere i record correlati più voluminosi: topic, gruppi, gruppi principali, partecipazioni, reazioni, tag e traduzioni. I record principali e quelli correlati necessari per interpretarne il contenuto restano presenti.
+Passa `compact=1` per omettere i record correlati voluminosi relativi ad argomenti, gruppi, gruppi principali, appartenenze, reazioni, tag e traduzioni. I record principali e quelli correlati necessari per interpretarne il contenuto rimangono presenti.
 
 ```bash
 curl -H 'Authorization: Bearer YOUR_API_KEY' 'https://www.loomio.com/api/b2/threads/123/items?compact=1'
 ```
 
-Per controllare direttamente le esclusioni, passa `exclude_types` con i tipi di record al singolare separati da spazi. Per esempio, `exclude_types=group reaction` omette i gruppi e le reazioni correlati. I valori comuni sono `topic`, `group`, `parent`, `membership`, `reaction`, `tag`, `translation`, `user`, `discussion`, `poll`, `poll_option`, `stance`, `stance_choice`, `outcome` e `topic_item`. Le esclusioni si applicano ai record correlati, non alla risorsa principale richiesta dall'endpoint.
+Per un controllo diretto, passa `exclude_types` con i tipi di record al singolare separati da spazi. Per esempio, `exclude_types=group reaction` omette i gruppi e le reazioni correlati. I valori comuni sono `topic`, `group`, `parent`, `membership`, `reaction`, `tag`, `translation`, `user`, `discussion`, `poll`, `poll_option`, `stance`, `stance_choice`, `outcome` e `topic_item`. Le esclusioni si applicano ai record correlati, non alla risorsa principale richiesta dall'endpoint.
 
-Le risposte che contengono raccolte includono `meta.total` quando è definita la dimensione esatta della raccolta. Il totale viene calcolato prima di applicare `limit` e `offset`. Gli endpoint come la ricerca, che restituiscono intenzionalmente un insieme limitato di risultati, omettono `meta.total` invece di restituire `null`.
+Le risposte delle raccolte includono `meta.total` quando è definita una dimensione esatta della raccolta. Il totale viene calcolato prima di applicare `limit` e `offset`. Gli endpoint come la ricerca, che restituiscono intenzionalmente un insieme limitato di risultati, omettono `meta.total` anziché restituire `null`.
 
 <!-- translation-section: endpoint-summary -->
 
@@ -193,7 +195,7 @@ Le risposte che contengono raccolte includono `meta.total` quando è definita la
 
 | Metodo | Endpoint | Scopo |
 | --- | --- | --- |
-| `GET` | `/api/b2/groups` | Elenca i gruppi dell'utente a cui appartiene la chiave API |
+| `GET` | `/api/b2/groups` | Elenca i gruppi dell'utente titolare della chiave API |
 | `GET` | `/api/b2/groups/:id_or_key_or_handle` | Recupera un gruppo visibile |
 | `GET` | `/api/b2/reports` | Genera un rapporto sulla partecipazione |
 | `GET` | `/api/b2/search` | Cerca discussioni, commenti, sondaggi, voti e conclusioni visibili |
@@ -201,26 +203,26 @@ Le risposte che contengono raccolte includono `meta.total` quando è definita la
 | `GET` | `/api/b2/discussions/:id` | Recupera una discussione |
 | `GET` | `/api/b2/discussions` | Elenca le discussioni di un gruppo |
 | `PATCH` | `/api/b2/discussions/:id` | Modifica una discussione |
-| `DELETE` | `/api/b2/discussions/:id` | Elimina una discussione senza rimuoverne il record |
-| `GET` | `/api/b2/threads` | Elenca i thread visibili delle discussioni e dei sondaggi autonomi |
-| `GET` | `/api/b2/threads/:topic_id` | Recupera un thread |
-| `GET` | `/api/b2/threads/:topic_id/items` | Recupera gli elementi ordinati di un thread |
-| `GET` | `/api/b2/threads/:topic_id/markdown` | Recupera un thread completo in formato Markdown |
+| `DELETE` | `/api/b2/discussions/:id` | Elimina una discussione conservandone il record |
+| `GET` | `/api/b2/threads` | Elenca le conversazioni visibili delle discussioni e dei sondaggi autonomi |
+| `GET` | `/api/b2/threads/:topic_id` | Recupera una conversazione |
+| `GET` | `/api/b2/threads/:topic_id/items` | Recupera gli elementi ordinati di una conversazione |
+| `GET` | `/api/b2/threads/:topic_id/markdown` | Recupera una conversazione completa in formato Markdown |
 | `POST` | `/api/b2/comments` | Crea un commento o una risposta |
 | `PATCH` | `/api/b2/comments/:id` | Modifica un commento |
-| `DELETE` | `/api/b2/comments/:id` | Elimina un commento senza rimuoverne il record |
+| `DELETE` | `/api/b2/comments/:id` | Elimina un commento conservandone il record |
 | `POST` | `/api/b2/polls` | Crea un sondaggio |
 | `GET` | `/api/b2/polls/:id` | Recupera un sondaggio |
 | `GET` | `/api/b2/polls` | Elenca i sondaggi di un gruppo |
 | `PATCH` | `/api/b2/polls/:id` | Modifica un sondaggio |
-| `DELETE` | `/api/b2/polls/:id` | Elimina un sondaggio senza rimuoverne il record |
-| `GET` | `/api/b2/memberships` | Elenca le partecipazioni a un gruppo |
-| `POST` | `/api/b2/memberships` | Aggiunge membri e, facoltativamente, rimuove quelli assenti dall'elenco |
+| `DELETE` | `/api/b2/polls/:id` | Elimina un sondaggio conservandone il record |
+| `GET` | `/api/b2/memberships` | Elenca le appartenenze a un gruppo |
+| `POST` | `/api/b2/memberships` | Aggiunge membri e, facoltativamente, rimuove quelli assenti |
 | `GET` | `/api/b2/chatbots` | Elenca le integrazioni di chat e i webhook di un gruppo |
 | `POST` | `/api/b2/chatbots` | Crea un'integrazione di chat o un webhook |
 | `PATCH` | `/api/b2/chatbots/:id` | Aggiorna un'integrazione di chat o un webhook |
 | `DELETE` | `/api/b2/chatbots/:id` | Elimina un'integrazione di chat o un webhook |
-| `POST` | `/api/b2/chatbots/check` | Invia un test di connessione a un webhook |
+| `POST` | `/api/b2/chatbots/check` | Invia un test di connessione del webhook |
 
 <!-- translation-section: groups -->
 
@@ -228,9 +230,9 @@ Le risposte che contengono raccolte includono `meta.total` quando è definita la
 
 <!-- translation-section: list-groups -->
 
-### Elencare i gruppi
+### Elenca i gruppi
 
-Restituisce i gruppi di cui l'utente a cui appartiene la chiave API è membro attivo.
+Restituisce i gruppi in cui l'utente titolare della chiave API ha un'appartenenza attiva.
 
 `GET /api/b2/groups`
 
@@ -238,71 +240,71 @@ Restituisce i gruppi di cui l'utente a cui appartiene la chiave API è membro at
 curl -H 'Authorization: Bearer YOUR_API_KEY' https://www.loomio.com/api/b2/groups
 ```
 
-La risposta contiene tutti i record corrispondenti in un array `groups` senza paginazione. Include gruppi principali e sottogruppi, anche se il loro abbonamento non è attualmente attivo. Controlla il campo `enabled` se l'integrazione deve operare solo sui gruppi abilitati.
+La risposta contiene tutti i record corrispondenti in un array `groups` senza paginazione. Include gruppi principali e sottogruppi, anche quelli il cui abbonamento non è attualmente attivo. Controlla il campo `enabled` quando un'integrazione deve operare solo sui gruppi abilitati.
 
-I principali campi dei gruppi sono:
+Tra i campi principali dei gruppi ci sono:
 
 | Campo | Descrizione |
 | --- | --- |
 | `id` | ID numerico del gruppo usato dagli altri endpoint dell'API utente |
 | `key` | Chiave breve e stabile usata negli URL di Loomio |
-| `handle` | Identificativo leggibile del gruppo |
+| `handle` | Identificativo del gruppo leggibile dalle persone |
 | `name` | Nome del gruppo |
-| `full_name` | Nome del gruppo con il contesto del gruppo principale |
+| `full_name` | Nome del gruppo che include il contesto del gruppo principale |
 | `parent_id` | ID numerico del gruppo principale per un sottogruppo, altrimenti `null` |
 | `enabled` | Indica se il gruppo e il suo abbonamento sono attivi |
-| `memberships_count` | Numero di partecipazioni attive e in attesa |
-| `accepted_memberships_count` | Numero di partecipazioni accettate |
+| `memberships_count` | Numero di appartenenze attive e in attesa |
+| `accepted_memberships_count` | Numero di appartenenze accettate |
 | `pending_memberships_count` | Numero di inviti in attesa |
 | `admin_memberships_count` | Numero di amministratori del gruppo |
 | `delegates_count` | Numero di delegati |
-| `discussions_count` | Numero di discussioni presenti direttamente nel gruppo |
-| `polls_count` | Numero di sondaggi presenti direttamente nel gruppo |
+| `discussions_count` | Numero di discussioni direttamente nel gruppo |
+| `polls_count` | Numero di sondaggi direttamente nel gruppo |
 | `subgroups_count` | Numero di sottogruppi |
 
-La risposta può includere altre impostazioni del gruppo, i record correlati del gruppo principale e le partecipazioni dell'utente API. I client dovrebbero ignorare i campi che non usano.
+La risposta può includere ulteriori impostazioni del gruppo, record correlati del gruppo principale e le appartenenze dell'utente dell'API. I client dovrebbero ignorare i campi che non usano.
 
 <!-- translation-section: get-a-group -->
 
-### Recuperare un gruppo
+### Recupera un gruppo
 
-Restituisce un gruppo visibile all'utente a cui appartiene la chiave API.
+Restituisce un gruppo visibile all'utente titolare della chiave API.
 
 `GET /api/b2/groups/:id_or_key_or_handle`
 
-Puoi identificare il gruppo tramite il suo ID numerico, la chiave o l'identificativo.
+L'identificativo può essere l'ID numerico, la chiave o l'identificativo leggibile del gruppo.
 
 ```bash
 curl -H 'Authorization: Bearer YOUR_API_KEY' https://www.loomio.com/api/b2/groups/123
 curl -H 'Authorization: Bearer YOUR_API_KEY' https://www.loomio.com/api/b2/groups/example-group
 ```
 
-La risposta contiene il gruppo nell'array `groups` e usa gli stessi campi dell'endpoint che elenca i gruppi. Una richiesta per un gruppo a cui l'utente a cui appartiene la chiave API non può accedere restituisce un errore di autorizzazione.
+La risposta contiene il gruppo nell'array `groups` e usa gli stessi campi dell'endpoint che elenca i gruppi. Una richiesta per un gruppo a cui l'utente titolare della chiave API non può accedere restituisce un errore di autorizzazione.
 
 <!-- translation-section: webhooks -->
 
 ## Webhook
 
-L'API utente funziona tramite richieste: un'integrazione chiama Loomio quando vuole leggere o modificare dati. Un webhook di gruppo consente il flusso nella direzione opposta. Loomio invia al tuo endpoint gli eventi del gruppo selezionati quando si verificano, quindi l'integrazione non deve interrogare periodicamente l'API REST per rilevare le modifiche.
+L'API utente si basa sulle richieste: un'integrazione chiama Loomio quando vuole leggere o modificare dati. Un webhook del gruppo permette l'invio nella direzione opposta. Loomio invia gli eventi selezionati del gruppo al tuo endpoint quando si verificano, quindi un'integrazione non deve interrogare periodicamente l'API REST per rilevare le modifiche.
 
-I webhook si configurano per singolo gruppo e richiedono i permessi di amministratore del gruppo. Puoi gestirli dall'interfaccia di Loomio:
+I webhook vengono configurati per ciascun gruppo e richiedono i permessi di amministratore del gruppo. Puoi gestirli tramite l'interfaccia di Loomio:
 
 1. Apri il gruppo.
 2. Apri il menu del gruppo e seleziona **Integrazioni di chat**.
-3. Aggiungi l'integrazione con il formato del payload accettato dal tuo endpoint. Per un endpoint generico, usa il formato Mattermost/Markdown.
+3. Aggiungi l'integrazione che corrisponde al formato del payload accettato dal tuo endpoint. Per un endpoint generico, usa il formato Mattermost/Markdown.
 4. Inserisci un nome e l'URL di destinazione.
 5. Seleziona gli eventi che Loomio deve inviare automaticamente.
 6. Salva l'integrazione e usa **Test connection** per inviare un messaggio di prova.
 
-Usa una destinazione HTTPS con un URL difficile da indovinare. Loomio richiede che la destinazione corrisponda a un indirizzo pubblico e blocca le richieste verso indirizzi di reti locali o private.
+Usa una destinazione HTTPS con un URL impossibile da indovinare. Loomio richiede che la destinazione si risolva in un indirizzo pubblico e blocca le richieste verso indirizzi locali o di reti private.
 
-Gli agenti e le altre integrazioni possono gestire i webhook tramite gli endpoint chatbot descritti sotto, autenticati con Bearer. La risorsa si chiama `chatbots` per compatibilità con le integrazioni di chat di Loomio, ma rappresenta anche webhook in uscita generici.
+Gli agenti e le altre integrazioni possono invece gestire i webhook tramite gli endpoint dei chatbot con autenticazione Bearer descritti di seguito. La risorsa si chiama `chatbots` per compatibilità con le integrazioni di chat di Loomio, ma rappresenta anche webhook generici in uscita.
 
 <!-- translation-section: list-webhooks -->
 
-### Elencare i webhook
+### Elenca i webhook
 
-Restituisce le integrazioni di chat configurate per un gruppo. L'utente a cui appartiene la chiave API deve essere amministratore di quel gruppo. La risposta include gli URL di destinazione, quindi non deve essere resa accessibile ai normali membri del gruppo.
+Restituisce le integrazioni di chat configurate per un gruppo. L'utente titolare della chiave API deve essere un amministratore di quel gruppo. La risposta include gli URL di destinazione, quindi non deve essere resa accessibile ai membri ordinari del gruppo.
 
 `GET /api/b2/chatbots?group_id=123`
 
@@ -314,9 +316,9 @@ La risposta contiene un array `chatbots` con questi campi:
 
 | Campo | Descrizione |
 | --- | --- |
-| `id` | ID dell'integrazione usato per aggiornarla ed eliminarla |
+| `id` | ID dell'integrazione usato per gli aggiornamenti e l'eliminazione |
 | `group_id` | Gruppo che riceve gli eventi |
-| `name` | Nome amministrativo dell'integrazione |
+| `name` | Nome dell'integrazione usato per l'amministrazione |
 | `kind` | `webhook` per un webhook in uscita o `matrix` per un'integrazione Matrix |
 | `webhook_kind` | Formato del payload: `markdown`, `slack`, `discord`, `microsoft` o `webex` |
 | `server` | URL di destinazione |
@@ -325,7 +327,7 @@ La risposta contiene un array `chatbots` con questi campi:
 
 <!-- translation-section: create-a-webhook -->
 
-### Creare un webhook
+### Crea un webhook
 
 `POST /api/b2/chatbots`
 
@@ -345,15 +347,15 @@ curl -X POST \
   https://www.loomio.com/api/b2/chatbots
 ```
 
-L'utente a cui appartiene la chiave API deve essere amministratore di `group_id`. Prima del salvataggio, Loomio verifica che la destinazione sia un URL pubblico.
+L'utente titolare della chiave API deve essere un amministratore del gruppo indicato da `group_id`. Prima del salvataggio, viene verificato che la destinazione sia un URL pubblico.
 
 <!-- translation-section: update-a-webhook -->
 
-### Aggiornare un webhook
+### Aggiorna un webhook
 
 `PATCH /api/b2/chatbots/:id`
 
-Invia i campi da modificare. Non puoi trasferire il webhook a un altro gruppo modificando `group_id`.
+Invia tutti i campi da modificare. Il webhook non può essere trasferito a un altro gruppo modificando `group_id`.
 
 ```bash
 curl -X PATCH \
@@ -365,9 +367,9 @@ curl -X PATCH \
 
 <!-- translation-section: test-a-webhook-destination -->
 
-### Verificare la destinazione di un webhook
+### Verifica una destinazione webhook
 
-Invia un messaggio di prova compatibile con Markdown alla destinazione, prima o dopo averne salvato la configurazione.
+Invia un messaggio di prova compatibile con Markdown a una destinazione prima o dopo averne salvato la configurazione.
 
 `POST /api/b2/chatbots/check`
 
@@ -381,7 +383,7 @@ curl -X POST \
 
 <!-- translation-section: delete-a-webhook -->
 
-### Eliminare un webhook
+### Elimina un webhook
 
 `DELETE /api/b2/chatbots/:id`
 
@@ -389,7 +391,7 @@ curl -X POST \
 curl -X DELETE -H 'Authorization: Bearer YOUR_API_KEY' https://www.loomio.com/api/b2/chatbots/456
 ```
 
-Eliminando la configurazione interrompi gli invii futuri. I contenuti del gruppo Loomio restano disponibili.
+L'eliminazione della configurazione interrompe gli invii futuri. Non elimina alcun contenuto del gruppo Loomio.
 
 <!-- translation-section: event-types -->
 
@@ -404,17 +406,17 @@ Un webhook può ricevere questi tipi di evento:
 | `new_comment` | Viene creato un commento |
 | `poll_created` | Viene avviato un sondaggio |
 | `poll_edited` | Viene modificato un sondaggio |
-| `poll_closing_soon` | Si avvicina la scadenza di un sondaggio |
-| `poll_expired` | Un sondaggio raggiunge la scadenza |
+| `poll_closing_soon` | Un sondaggio si avvicina all'orario di chiusura |
+| `poll_expired` | Un sondaggio raggiunge l'orario di chiusura |
 | `poll_closed_by_user` | Una persona chiude manualmente un sondaggio |
 | `poll_reopened` | Viene riaperto un sondaggio |
 | `outcome_created` | Viene pubblicata una conclusione |
 | `outcome_updated` | Viene aggiornata una conclusione |
-| `outcome_review_due` | Arriva la scadenza per la revisione di una conclusione |
+| `outcome_review_due` | Arriva il momento di rivedere una conclusione |
 | `stance_created` | Viene espresso un voto |
 | `stance_updated` | Viene modificato un voto |
 
-Il webhook appartiene a un solo gruppo e riceve da quel gruppo gli eventi a cui è iscritto. Le persone possono anche selezionare esplicitamente l'integrazione quando condividono contenuti o inviano alcune notifiche, anche se l'evento automatico corrispondente non è selezionato.
+Il webhook appartiene a un solo gruppo e riceve da quel gruppo gli eventi selezionati. Le persone possono anche selezionare esplicitamente l'integrazione quando condividono contenuti o inviano alcune notifiche, anche se l'evento automatico corrispondente non è selezionato.
 
 <!-- translation-section: http-delivery -->
 
@@ -426,15 +428,15 @@ Loomio invia una richiesta HTTP `POST` asincrona all'URL configurato con questa 
 Content-Type: application/json; charset=utf-8
 ```
 
-Il timeout della richiesta è di cinque secondi. Una risposta `2xx`, incluso `204 No Content`, è considerata riuscita. Il servizio che riceve il webhook dovrebbe rispondere rapidamente, elaborare in modo asincrono le operazioni più lunghe e gestire invii duplicati o fuori ordine.
+Il timeout della richiesta è di cinque secondi. Una risposta `2xx`, compresa `204 No Content`, viene considerata riuscita. I servizi che ricevono i webhook dovrebbero rispondere rapidamente, elaborare in modo asincrono le operazioni più lunghe e gestire gli invii duplicati o fuori ordine.
 
-Attualmente Loomio non aggiunge una firma del webhook, un'intestazione con un segreto condiviso, un ID evento o un ID invio. Tratta l'URL completo di destinazione come una credenziale: non renderlo pubblico e includi nell'URL un token difficile da indovinare se il servizio ricevente lo supporta. Se ti serve uno schema degli eventi stabile e leggibile da software o un invio firmato, usa il webhook come notifica delle modifiche e recupera i dati aggiornati tramite l'API utente autenticata.
+Attualmente Loomio non aggiunge una firma del webhook, un'intestazione con un segreto condiviso, un ID evento o un ID invio. Tratta l'URL di destinazione completo come una credenziale, non renderlo pubblico e includi nell'URL un token non indovinabile quando il servizio ricevente lo supporta. Se hai bisogno di uno schema degli eventi stabile e leggibile dalle macchine o di invii firmati, usa il webhook come notifica di modifica e recupera i record aggiornati tramite l'API utente autenticata.
 
 <!-- translation-section: payload-formats -->
 
-### Formati dei payload
+### Formati del payload
 
-I payload dei webhook sono messaggi pensati per essere mostrati nei servizi di chat. Non contengono tutti i dati dei record Loomio. I link nel messaggio identificano i contenuti Loomio interessati; un'integrazione può usare l'API utente per ottenere i dati strutturati aggiornati.
+I payload dei webhook sono messaggi destinati ai servizi di chat e pensati per la visualizzazione. Non sono record Loomio serializzati completi. I link nel messaggio identificano i contenuti Loomio interessati; un'integrazione può poi usare l'API utente quando ha bisogno dello stato attuale in forma strutturata.
 
 | Formato dell'integrazione | Campi JSON principali |
 | --- | --- |
@@ -444,7 +446,7 @@ I payload dei webhook sono messaggi pensati per essere mostrati nei servizi di c
 | Microsoft Teams | `@type`, `@context`, `themeColor`, `text`, `sections` |
 | Webex | `markdown` |
 
-Per esempio, il formato Markdown generico invia un corpo di questo tipo:
+Per esempio, il formato Markdown generico invia un corpo con questa struttura:
 
 ```json
 {
@@ -454,13 +456,13 @@ Per esempio, il formato Markdown generico invia un corpo di questo tipo:
 }
 ```
 
-Il testo esatto del messaggio dipende dall'evento, dalla lingua del gruppo, dall'impostazione che limita il messaggio alla notifica e dalla versione di Loomio. I servizi riceventi dovrebbero usare i campi principali documentati per il formato selezionato, senza interpretare il testo delle frasi.
+Il testo esatto del messaggio dipende dall'evento, dalla lingua del gruppo, dall'impostazione che limita il messaggio alla sola notifica e dalla versione di Loomio. I servizi riceventi dovrebbero basarsi sui campi di primo livello documentati per il formato selezionato, anziché analizzare la formulazione delle frasi.
 
 <!-- translation-section: search -->
 
 ## Ricerca
 
-Cerca discussioni, commenti, sondaggi, voti e conclusioni visibili all'utente a cui appartiene la chiave API. I risultati includono contenuti pubblici anche se l'utente non è membro del gruppo; i contenuti privati seguono le normali regole di visibilità dell'argomento.
+Cerca discussioni, commenti, sondaggi, voti e conclusioni visibili all'utente della chiave API. I risultati includono contenuti pubblici anche quando l'utente non è membro del gruppo a cui appartengono; i contenuti privati restano soggetti alle normali regole di visibilità delle conversazioni.
 
 `GET /api/b2/search`
 
@@ -475,21 +477,21 @@ Cerca discussioni, commenti, sondaggi, voti e conclusioni visibili all'utente a 
 | `org_id` | Limita i risultati a un gruppo principale visibile e ai suoi sottogruppi visibili. Usa `0` per le discussioni dirette |
 | `type` | Limita i risultati a un tipo: `Discussion`, `Comment`, `Poll`, `Stance` o `Outcome` |
 | `types` | Elenco dei tipi di risultato separati da virgole |
-| `tag` | Limita i risultati agli argomenti con questa etichetta |
-| `author_id` | Limita i risultati ai contenuti di un autore. Senza `query`, restituisce le attività recenti e visibili di quell'autore |
+| `tag` | Limita i risultati alle conversazioni con questo tag |
+| `author_id` | Limita i risultati ai contenuti di un autore. Senza `query`, restituisce l'attività recente e visibile di quell'autore |
 | `order` | Imposta `authored_at_desc` per ordinare i contenuti corrispondenti in base alla data di creazione |
 
 ```bash
 curl -H 'Authorization: Bearer YOUR_API_KEY' 'https://www.loomio.com/api/b2/search?query=quarterly+planning&type=Discussion'
 ```
 
-La risposta contiene un array `search_results`. Ogni risultato identifica il record trovato e il suo contesto visibile tramite campi tra cui `searchable_type`, `searchable_id`, `highlight`, `group_id`, `group_name`, `discussion_key`, `poll_key`, `author_id`, `author_name`, `authored_at` e `tags`. I campi non pertinenti a un risultato hanno valore `null`.
+La risposta contiene un array `search_results`. Ogni risultato identifica il record corrispondente e il suo contesto visibile tramite campi che includono `searchable_type`, `searchable_id`, `highlight`, `group_id`, `group_name`, `discussion_key`, `poll_key`, `author_id`, `author_name`, `authored_at` e `tags`. I campi che non si applicano a un risultato sono `null`.
 
 <!-- translation-section: participation-report -->
 
-## Report sulla partecipazione
+## Rapporto sulla partecipazione
 
-Restituisce gli stessi dati aggregati usati nel report sulla partecipazione di Loomio.
+Restituisce gli stessi dati aggregati sulla partecipazione usati dal rapporto sulla partecipazione di Loomio.
 
 `GET /api/b2/reports`
 
@@ -499,17 +501,17 @@ Restituisce gli stessi dati aggregati usati nel report sulla partecipazione di L
 
 | Nome | Descrizione |
 | --- | --- |
-| `section` | Sezione del report: `base`, `users` o `countries`. Usa `users` per le attività delle singole persone |
-| `group_scope` | `custom` o `my`. Il valore precedente `all` è trattato come `my` perché le chiavi dell'API utente non danno accesso all'intera istanza |
+| `section` | Sezione del rapporto: `base`, `users` o `countries`. Usa `users` per l'attività di ogni persona |
+| `group_scope` | `custom` o `my`. Il valore precedente `all` viene trattato come `my` perché le chiavi dell'API utente non concedono mai accesso all'intera istanza |
 | `group_ids` | ID dei gruppi separati da virgole quando `group_scope=custom`. Gli ID dei gruppi di cui l'utente API non è membro vengono ignorati |
-| `start_month` | Primo mese da includere nel formato `YYYY-MM`; per impostazione predefinita è il mese di 12 mesi fa |
-| `end_month` | Ultimo mese da includere nel formato `YYYY-MM`; per impostazione predefinita è il mese corrente |
+| `start_month` | Primo mese da includere nel formato `YYYY-MM`; il valore predefinito è 12 mesi fa |
+| `end_month` | Ultimo mese da includere nel formato `YYYY-MM`; il valore predefinito è il mese corrente |
 | `interval` | Intervallo per la sezione `base`: `day`, `week`, `month` o `year` |
-| `member_type` | Imposta `delegate` con `section=users` per restituire solo i delegati attuali |
+| `member_type` | Imposta su `delegate` con `section=users` per restituire solo i delegati attuali |
 
-Una persona è delegata se ha un'adesione attiva come delegata in almeno uno dei gruppi selezionati. I suoi conteggi sono aggregati per tutti i gruppi selezionati. Le righe dei delegati vengono restituite anche quando tutti i conteggi delle attività sono pari a zero. I conteggi riguardano discussioni, commenti, sondaggi, voti, conclusioni e reazioni; non sono tassi di partecipazione al voto. Le righe degli utenti includono anche il numero di schede di voto nominative assegnate, compilate e non compilate. I sondaggi anonimi sono esclusi da tutti i conteggi dei voti per persona. `all_votes_cast` è true solo se è stata assegnata almeno una scheda di voto e tutte le schede assegnate sono state compilate.
+Una persona è un delegato quando è membro attivo con il ruolo di delegato in almeno uno dei gruppi selezionati. I suoi conteggi sono aggregati su tutti i gruppi selezionati. Le righe dei delegati vengono restituite anche quando tutti i conteggi delle attività sono pari a zero. I conteggi riguardano conversazioni, commenti, sondaggi, voti, conclusioni e reazioni; non sono tassi di partecipazione al voto. Le righe degli utenti includono anche le schede di voto non anonime assegnate, compilate e non compilate. I sondaggi anonimi sono esclusi da tutti i conteggi di voto per persona. `all_votes_cast` è vero solo quando è stata assegnata almeno una scheda e tutte le schede assegnate sono state compilate.
 
-L'API applica le stesse regole di visibilità dei gruppi del report in Loomio. La chiave API di un utente non può esporre i dati dei report relativi a gruppi a cui quell'utente non ha accesso.
+L'API applica le stesse regole di visibilità dei gruppi del rapporto disponibile nell'applicazione. Una chiave API utente non può esporre dati del rapporto relativi a gruppi a cui quell'utente non può accedere.
 
 <!-- translation-section: example -->
 
@@ -519,7 +521,7 @@ L'API applica le stesse regole di visibilità dei gruppi del report in Loomio. L
 curl -H 'Authorization: Bearer YOUR_API_KEY' 'https://www.loomio.com/api/b2/reports?section=users&group_scope=custom&group_ids=123&member_type=delegate&start_month=2026-01&end_month=2026-09'
 ```
 
-L'array `users` contiene righe con tutti i dati delle attività:
+L'array `users` contiene righe complete sull'attività:
 
 ```json
 {
@@ -546,9 +548,9 @@ L'array `users` contiene righe con tutti i dati delle attività:
 
 <!-- translation-section: create-discussion -->
 
-## Creare una discussione
+## Crea una discussione
 
-Crea una discussione usando l'account associato alla chiave API.
+Crea una discussione come utente della chiave API.
 
 `POST /api/b2/discussions`
 
@@ -558,13 +560,13 @@ Crea una discussione usando l'account associato alla chiave API.
 
 | Nome | Descrizione |
 | --- | --- |
-| `group_id` | Gruppo in cui verrà creata la discussione |
-| `title` | Titolo della discussione, obbligatorio |
-| `description` | Contesto della discussione, facoltativo |
-| `description_format` | `md` o `html`, facoltativo; valore predefinito: `md` |
-| `recipient_audience` | `group` o null. Se è `group`, l'intero gruppo riceverà una notifica della nuova discussione |
-| `recipient_user_ids` | Elenco di ID utente delle persone a cui inviare una notifica o un invito alla discussione |
-| `recipient_emails` | Elenco di indirizzi email delle persone da invitare alla discussione |
+| `group_id` | Gruppo in cui verrà creata la conversazione |
+| `title` | Titolo della conversazione, obbligatorio |
+| `description` | Contesto della conversazione, facoltativo |
+| `description_format` | `md` o `html`, facoltativo, valore predefinito `md` |
+| `recipient_audience` | `group` o null. Se è `group`, tutto il gruppo riceverà una notifica sulla nuova conversazione |
+| `recipient_user_ids` | Array di ID degli utenti a cui inviare una notifica o un invito alla conversazione |
+| `recipient_emails` | Array di indirizzi email delle persone da invitare alla conversazione |
 | `recipient_message` | Messaggio da includere nell'invito via email |
 
 <!-- translation-section: example-2 -->
@@ -577,9 +579,9 @@ curl -H 'Authorization: Bearer YOUR_API_KEY' -X POST -H 'Content-Type: applicati
 
 <!-- translation-section: show-discussion -->
 
-## Visualizzare una discussione
+## Mostra una discussione
 
-Recupera una discussione tramite il suo ID numerico o la sua chiave testuale.
+Recupera una discussione usando il suo ID, un numero intero, o la sua chiave, una stringa.
 
 `GET /api/b2/discussions/:id`
 
@@ -593,9 +595,9 @@ curl -H 'Authorization: Bearer YOUR_API_KEY' https://www.loomio.com/api/b2/discu
 
 <!-- translation-section: list-discussions -->
 
-## Elencare le discussioni
+## Elenca le discussioni
 
-Elenca le discussioni di un gruppo visibili all'utente associato alla chiave API. Se il gruppo è visibile pubblicamente, anche chi non ne fa parte può elencare le sue discussioni pubbliche. Le discussioni private restano accessibili solo agli utenti che possono leggerle in Loomio.
+Elenca le discussioni di un gruppo visibili all'utente della chiave API. Per un gruppo visibile pubblicamente, anche chi non ne è membro può elencare le discussioni pubbliche; le discussioni private restano accessibili solo agli utenti che possono leggerle in Loomio.
 
 `GET /api/b2/discussions`
 
@@ -606,11 +608,11 @@ Elenca le discussioni di un gruppo visibili all'utente associato alla chiave API
 | Nome | Descrizione |
 | --- | --- |
 | `group_id` | Numero intero, obbligatorio. ID del gruppo di cui elencare le discussioni |
-| `status` | Stringa, facoltativa; valore predefinito: `open`. Valori: `open`, `closed`, `all` |
-| `limit` | Numero intero, facoltativo; valore predefinito: 50. Dimensione della pagina |
-| `offset` | Numero intero, facoltativo; valore predefinito: 0. Posizione iniziale per la paginazione |
+| `status` | Stringa, facoltativa, valore predefinito `open`. Valori: `open`, `closed`, `all` |
+| `limit` | Numero intero, facoltativo, valore predefinito 50. Numero di elementi per pagina |
+| `offset` | Numero intero, facoltativo, valore predefinito 0. Offset per la paginazione |
 
-Per compatibilità, `per` e `from` sono accettati come alias di `limit` e `offset` e continueranno a funzionare.
+Compatibilità con le versioni precedenti: `per` e `from` sono accettati come alias di `limit` e `offset` e continueranno a funzionare.
 
 <!-- translation-section: example-4 -->
 
@@ -622,9 +624,9 @@ curl -H 'Authorization: Bearer YOUR_API_KEY' 'https://www.loomio.com/api/b2/disc
 
 <!-- translation-section: list-threads -->
 
-## Elencare i thread
+## Elenca le conversazioni
 
-Elenca i thread delle discussioni e dei sondaggi visibili all'utente associato alla chiave API, ordinati per attività più recente. L'ID di un thread è il suo `topic_id`.
+Elenca le conversazioni delle discussioni e dei sondaggi visibili all'utente della chiave API, ordinate per attività più recente. L'ID di una conversazione è il suo `topic_id`.
 
 `GET /api/b2/threads`
 
@@ -634,8 +636,8 @@ Elenca i thread delle discussioni e dei sondaggi visibili all'utente associato a
 
 | Nome | Descrizione |
 | --- | --- |
-| `limit` | Numero intero, facoltativo; valore predefinito: 50. Dimensione della pagina |
-| `offset` | Numero intero, facoltativo; valore predefinito: 0. Posizione iniziale per la paginazione |
+| `limit` | Numero intero, facoltativo, valore predefinito 50. Numero di elementi per pagina |
+| `offset` | Numero intero, facoltativo, valore predefinito 0. Offset per la paginazione |
 
 <!-- translation-section: example-5 -->
 
@@ -647,9 +649,9 @@ curl -H 'Authorization: Bearer YOUR_API_KEY' 'https://www.loomio.com/api/b2/thre
 
 <!-- translation-section: read-thread -->
 
-## Leggere un thread
+## Leggi una conversazione
 
-Leggi un thread, la sua sequenza ordinata di eventi o il documento Markdown completo dei contenuti visibili.
+Leggi una conversazione, il suo flusso ordinato di eventi o il documento Markdown completo dei suoi contenuti visibili.
 
 `GET /api/b2/threads/:topic_id`
 
@@ -667,15 +669,15 @@ GET https://www.loomio.com/api/b2/threads/<topic_id>/items
 GET https://www.loomio.com/api/b2/threads/<topic_id>/markdown
 ```
 
-L'endpoint `items` restituisce la sequenza ordinata degli eventi, inclusi commenti, sondaggi, voti e conclusioni visibili. L'endpoint `markdown` restituisce l'intero thread visibile come un unico documento Markdown. Le motivazioni dei voti sono incluse solo se sono visibili all'utente associato alla chiave API.
+L'endpoint `items` restituisce il flusso ordinato di eventi, inclusi commenti, sondaggi, voti e conclusioni visibili. L'endpoint `markdown` restituisce l'intera conversazione visibile in un unico documento Markdown. I motivi dei voti sono inclusi solo quando sono visibili all'utente della chiave API.
 
-Tutti gli endpoint dei thread applicano gli stessi permessi dell'interfaccia di Loomio. La chiave API non consente di accedere a un thread che l'utente normalmente non può aprire.
+Tutti gli endpoint delle conversazioni applicano gli stessi permessi dell'interfaccia di Loomio. La chiave API non concede accesso a una conversazione che l'utente non può normalmente aprire.
 
 <!-- translation-section: edit-discussion -->
 
-## Modificare una discussione
+## Modifica una discussione
 
-Modifica una discussione usando l'account associato alla chiave API. Si applicano gli stessi permessi di Loomio: l'utente deve essere autorizzato a modificare la discussione.
+Modifica una discussione come utente della chiave API. Si applicano gli stessi permessi di Loomio: l'utente deve essere autorizzato a modificare quella discussione.
 
 `PATCH /api/b2/discussions/:id`
 
@@ -687,10 +689,10 @@ Modifica una discussione usando l'account associato alla chiave API. Si applican
 | --- | --- |
 | `title` | Titolo aggiornato |
 | `description` | Contesto aggiornato |
-| `description_format` | `md` o `html`, facoltativo; valore predefinito: `md` |
+| `description_format` | `md` o `html`, facoltativo, valore predefinito `md` |
 | `recipient_audience` | `group` o null. Se è `group`, l'intero gruppo riceverà una notifica della modifica |
-| `recipient_user_ids` | Elenco di ID utente delle persone a cui inviare una notifica o un invito alla discussione |
-| `recipient_emails` | Elenco di indirizzi email delle persone da invitare alla discussione |
+| `recipient_user_ids` | Array di ID degli utenti da notificare o invitare alla conversazione |
+| `recipient_emails` | Array di indirizzi email delle persone da invitare alla conversazione |
 | `recipient_message` | Messaggio da includere nell'invito via email |
 
 <!-- translation-section: example-7 -->
@@ -703,9 +705,9 @@ curl -H 'Authorization: Bearer YOUR_API_KEY' -X PATCH -H 'Content-Type: applicat
 
 <!-- translation-section: soft-delete-discussion -->
 
-## Eliminare una discussione senza rimuoverne il record
+## Elimina una discussione senza cancellarne il record
 
-Elimina una discussione usando l'account associato alla chiave API. La discussione viene scartata, ma il suo record viene conservato.
+Elimina una discussione come utente associato alla chiave API. La discussione viene rimossa, ma il suo record viene conservato.
 
 `DELETE /api/b2/discussions/:id`
 
@@ -719,9 +721,9 @@ curl -H 'Authorization: Bearer YOUR_API_KEY' -X DELETE https://www.loomio.com/ap
 
 <!-- translation-section: create-comment -->
 
-## Creare un commento
+## Crea un commento
 
-Crea un commento in una discussione usando l'account associato alla chiave API.
+Crea un commento in una discussione come utente associato alla chiave API.
 
 `POST /api/b2/comments`
 
@@ -731,9 +733,9 @@ Crea un commento in una discussione usando l'account associato alla chiave API.
 
 | Nome | Descrizione |
 | --- | --- |
-| `discussion_id` | Numero intero, obbligatorio. ID della discussione da commentare |
+| `discussion_id` | Numero intero, obbligatorio. ID della discussione in cui inserire il commento |
 | `body` | Testo del commento, obbligatorio se non viene fornito un allegato |
-| `body_format` | `md` o `html`, facoltativo; valore predefinito: `md` |
+| `body_format` | `md` o `html`, facoltativo, valore predefinito `md` |
 
 <!-- translation-section: example-9 -->
 
@@ -745,9 +747,9 @@ curl -H 'Authorization: Bearer YOUR_API_KEY' -X POST -H 'Content-Type: applicati
 
 <!-- translation-section: edit-comment -->
 
-## Modificare un commento
+## Modifica un commento
 
-Modifica un commento usando l'account associato alla chiave API. Si applicano gli stessi permessi di Loomio: l'utente deve essere autorizzato a modificare il commento.
+Modifica un commento come utente associato alla chiave API. Si applicano gli stessi permessi di Loomio: l'utente deve avere il permesso di modificare quel commento.
 
 `PATCH /api/b2/comments/:id`
 
@@ -758,7 +760,7 @@ Modifica un commento usando l'account associato alla chiave API. Si applicano gl
 | Nome | Descrizione |
 | --- | --- |
 | `body` | Testo aggiornato del commento |
-| `body_format` | `md` o `html`, facoltativo; valore predefinito: `md` |
+| `body_format` | `md` o `html`, facoltativo, valore predefinito `md` |
 
 <!-- translation-section: example-10 -->
 
@@ -770,9 +772,9 @@ curl -H 'Authorization: Bearer YOUR_API_KEY' -X PATCH -H 'Content-Type: applicat
 
 <!-- translation-section: soft-delete-comment -->
 
-## Eliminare un commento senza rimuoverne il record
+## Elimina un commento senza cancellarne il record
 
-Elimina un commento usando l'account associato alla chiave API. Il commento viene scartato e il suo testo nascosto, ma il record viene conservato.
+Elimina un commento come utente associato alla chiave API. Il commento viene rimosso e il suo testo viene nascosto, ma il suo record viene conservato.
 
 `DELETE /api/b2/comments/:id`
 
@@ -788,7 +790,7 @@ curl -H 'Authorization: Bearer YOUR_API_KEY' -X DELETE https://www.loomio.com/ap
 
 ## Crea un sondaggio
 
-Crea un sondaggio usando l'account associato alla chiave API.
+Crea un sondaggio come utente associato alla chiave API.
 
 `POST /api/b2/polls`
 
@@ -798,24 +800,24 @@ Crea un sondaggio usando l'account associato alla chiave API.
 
 | Nome | Descrizione |
 | --- | --- |
-| `group_id` | Numero intero, facoltativo, valore predefinito null. ID del gruppo del sondaggio. Se viene passato `discussion_id`, `group_id` viene ignorato |
-| `discussion_id` | Numero intero, facoltativo, valore predefinito null. ID della discussione a cui aggiungere il sondaggio |
-| `title` | Stringa obbligatoria. Titolo del sondaggio |
-| `poll_type` | Stringa obbligatoria. Valori: `proposal`, `poll`, `count`, `score`, `ranked_choice`, `meeting`, `dot_vote` |
-| `details` | Stringa facoltativa. Testo del sondaggio |
-| `details_format` | Stringa facoltativa, valore predefinito `md`. Valori: `md` o `html` |
-| `options` | Array di stringhe. Se `poll_type` è `proposal`, i valori validi sono `agree`, `disagree`, `abstain`, `block`. Se `poll_type` è `meeting`, fornisci date o date e ore nel formato ISO 8601. Per gli altri tipi di sondaggio, è valida qualsiasi stringa |
-| `closing_at` | Stringa ISO 8601 o null, valore predefinito null. Esempio: `2026-09-01T12:00:00Z`. Se il valore è null, non si può votare e il sondaggio è considerato in preparazione |
-| `specified_voters_only` | Valore booleano facoltativo, predefinito false. Se true, possono votare solo le persone indicate. Se false, tutte le persone del gruppo saranno invitate a votare |
-| `hide_results` | Stringa facoltativa, valore predefinito `off`. Valori: `off`, `until_vote`, `until_closed` |
-| `shuffle_options` | Valore booleano, predefinito false. Mostra le opzioni ai votanti in ordine casuale |
-| `anonymous` | Valore booleano facoltativo, predefinito false. Nasconde l'identità dei votanti |
-| `recipient_audience` | `group` o null, facoltativo, valore predefinito null. Se `group`, tutto il gruppo riceverà una notifica |
-| `notify_on_closing_soon` | Stringa facoltativa, valore predefinito `nobody`. Valori: `nobody`, `author`, `undecided_voters`, `voters` |
-| `recipient_user_ids` | Array di ID utente delle persone da avvisare o invitare |
+| `group_id` | Intero, facoltativo, valore predefinito null. ID del gruppo del sondaggio. Se viene passato `discussion_id`, `group_id` viene ignorato |
+| `discussion_id` | Intero, facoltativo, valore predefinito null. ID della conversazione della discussione a cui aggiungere questo sondaggio |
+| `title` | Stringa, obbligatoria. Titolo del sondaggio |
+| `poll_type` | Stringa, obbligatoria. Valori: `proposal`, `poll`, `count`, `score`, `ranked_choice`, `meeting`, `dot_vote` |
+| `details` | Stringa, facoltativa. Il testo del sondaggio |
+| `details_format` | Stringa, facoltativa, valore predefinito `md`. Valori: `md` o `html` |
+| `options` | Array di stringhe. Se `poll_type` è `proposal`, i valori validi sono `agree`, `disagree`, `abstain`, `block`. Se `poll_type` è `meeting`, fornisci stringhe di data o data e ora in formato ISO 8601. Per tutti gli altri tipi di sondaggio, qualsiasi stringa è valida |
+| `closing_at` | Stringa ISO 8601 o null, valore predefinito null. Esempio: `2026-09-01T12:00:00Z`. Se null, la votazione è disabilitata e il sondaggio è considerato in preparazione |
+| `specified_voters_only` | Booleano, facoltativo, valore predefinito false. Se true, solo le persone specificate possono votare. Se false, tutte le persone del gruppo saranno invitate a votare |
+| `hide_results` | Stringa, facoltativa, valore predefinito `off`. Valori: `off`, `until_vote`, `until_closed` |
+| `shuffle_options` | Booleano, valore predefinito false. Mostra le opzioni agli elettori in ordine casuale |
+| `anonymous` | Booleano, facoltativo, valore predefinito false. Nasconde le identità degli elettori |
+| `recipient_audience` | `group` o null, facoltativo, valore predefinito null. Se `group`, l'intero gruppo riceverà una notifica |
+| `notify_on_closing_soon` | Stringa, facoltativa, valore predefinito `nobody`. Valori: `nobody`, `author`, `undecided_voters`, `voters` |
+| `recipient_user_ids` | Array di ID degli utenti a cui inviare una notifica o un invito |
 | `recipient_emails` | Array di indirizzi email delle persone da invitare a votare |
-| `recipient_message` | Messaggio da includere nell'email di invito |
-| `notify_recipients` | Valore booleano, predefinito false. Se false, aggiunge le persone senza inviare notifiche. Se true, tutte le persone invitate con questa richiesta riceveranno un'email di notifica |
+| `recipient_message` | Messaggio da includere nell'invito via email |
+| `notify_recipients` | Booleano, valore predefinito false. Se false, aggiunge le persone senza inviare notifiche. Se true, tutte le persone invitate con questa richiesta riceveranno una notifica via email |
 
 <!-- translation-section: example-12 -->
 
@@ -827,9 +829,9 @@ curl -H 'Authorization: Bearer YOUR_API_KEY' -X POST -H 'Content-Type: applicati
 
 <!-- translation-section: show-poll -->
 
-## Visualizza un sondaggio
+## Recuperare un sondaggio
 
-Recupera un sondaggio tramite il suo ID numerico o la sua chiave, che è una stringa.
+Recupera un sondaggio usando il suo ID, un intero, oppure la sua chiave, una stringa.
 
 `GET /api/b2/polls/:id`
 
@@ -843,9 +845,9 @@ curl -H 'Authorization: Bearer YOUR_API_KEY' https://www.loomio.com/api/b2/polls
 
 <!-- translation-section: list-polls -->
 
-## Elenca i sondaggi
+## Elencare i sondaggi
 
-Elenca i sondaggi di un gruppo visibili all'utente associato alla chiave API. Se il gruppo è visibile pubblicamente, anche chi non ne è membro può elencare i sondaggi pubblici. I sondaggi privati restano accessibili solo a chi può leggerli in Loomio. La risposta include la conclusione corrente di ogni sondaggio visibile: puoi quindi usare `status=closed` per elencare le proposte su cui è stata presa una decisione.
+Elenca i sondaggi di un gruppo visibili all'utente della chiave API. Per un gruppo visibile pubblicamente, anche chi non ne è membro può elencare i sondaggi pubblici; i sondaggi privati restano accessibili solo agli utenti che possono leggerli in Loomio. La risposta include la conclusione attuale di ogni sondaggio visibile, quindi puoi usare `status=closed` per elencare le proposte su cui è stata presa una decisione.
 
 `GET /api/b2/polls`
 
@@ -855,12 +857,12 @@ Elenca i sondaggi di un gruppo visibili all'utente associato alla chiave API. Se
 
 | Nome | Descrizione |
 | --- | --- |
-| `group_id` | Numero intero, obbligatorio. ID del gruppo di cui elencare i sondaggi |
+| `group_id` | Intero, obbligatorio. ID del gruppo di cui elencare i sondaggi |
 | `status` | Stringa, facoltativa, valore predefinito `active`. Valori: `active`, `closed`, `all` |
-| `limit` | Numero intero, facoltativo, valore predefinito 50. Dimensione della pagina |
-| `offset` | Numero intero, facoltativo, valore predefinito 0. Posizione iniziale per la paginazione |
+| `limit` | Intero, facoltativo, valore predefinito 50. Dimensione della pagina |
+| `offset` | Intero, facoltativo, valore predefinito 0. Scostamento per la paginazione |
 
-Per compatibilità, `per` e `from` sono accettati come alias di `limit` e `offset` e continueranno a funzionare.
+Compatibilità con le versioni precedenti: `per` e `from` sono accettati come alias di `limit` e `offset` e continueranno a funzionare.
 
 <!-- translation-section: example-14 -->
 
@@ -872,9 +874,9 @@ curl -H 'Authorization: Bearer YOUR_API_KEY' 'https://www.loomio.com/api/b2/poll
 
 <!-- translation-section: edit-poll -->
 
-## Modifica un sondaggio
+## Modificare un sondaggio
 
-Modifica un sondaggio usando l'account associato alla chiave API. Si applicano gli stessi permessi di Loomio: devi poter modificare quel sondaggio.
+Modifica un sondaggio come utente della chiave API. Si applicano gli stessi permessi di Loomio: l'utente deve avere il permesso di modificare quel sondaggio.
 
 `PATCH /api/b2/polls/:id`
 
@@ -887,12 +889,12 @@ Modifica un sondaggio usando l'account associato alla chiave API. Si applicano g
 | `title` | Titolo aggiornato |
 | `details` | Dettagli aggiornati del sondaggio |
 | `details_format` | `md` o `html`, facoltativo, valore predefinito `md` |
-| `options` | Nomi aggiornati delle opzioni. La modifica delle opzioni può influire sui voti esistenti, a seconda dello stato del sondaggio |
+| `options` | Nomi aggiornati delle opzioni. La modifica delle opzioni può influire sui voti esistenti a seconda dello stato del sondaggio |
 | `closing_at` | Stringa ISO 8601 o null |
-| `recipient_audience` | `group` o null. Se `group`, tutto il gruppo riceverà una notifica |
-| `recipient_user_ids` | Array di ID utente delle persone da avvisare o invitare |
+| `recipient_audience` | `group` o null. Se `group`, l'intero gruppo riceverà una notifica |
+| `recipient_user_ids` | Array di ID degli utenti a cui inviare una notifica o un invito |
 | `recipient_emails` | Array di indirizzi email delle persone da invitare a votare |
-| `recipient_message` | Messaggio da includere nell'email di invito |
+| `recipient_message` | Messaggio da includere nell'invito via email |
 
 <!-- translation-section: example-15 -->
 
@@ -904,9 +906,9 @@ curl -H 'Authorization: Bearer YOUR_API_KEY' -X PATCH -H 'Content-Type: applicat
 
 <!-- translation-section: soft-delete-poll -->
 
-## Elimina un sondaggio senza cancellarne il record
+## Eliminare logicamente un sondaggio
 
-Elimina un sondaggio usando l'account associato alla chiave API. Il sondaggio viene scartato, ma il suo record resta nel sistema.
+Elimina logicamente un sondaggio come utente della chiave API. Questa operazione rimuove il sondaggio dall'uso, mantenendone il record.
 
 `DELETE /api/b2/polls/:id`
 
@@ -920,9 +922,9 @@ curl -H 'Authorization: Bearer YOUR_API_KEY' -X DELETE https://www.loomio.com/ap
 
 <!-- translation-section: list-memberships -->
 
-## Elenca le iscrizioni
+## Elencare le appartenenze
 
-Elenca le iscrizioni visibili all'utente associato alla chiave API. I membri del gruppo possono leggere nomi, ID, titoli e ruoli degli altri membri. Gli indirizzi email sono inclusi solo per l'account associato alla chiave API o se quell'utente è amministratore del gruppo.
+Elenca le appartenenze visibili all'utente della chiave API. I membri del gruppo possono leggere nomi, ID, titoli e ruoli dei membri. Gli indirizzi email sono inclusi solo per l'account dell'utente della chiave API o quando questo utente è un amministratore del gruppo.
 
 `GET /api/b2/memberships`
 
@@ -932,7 +934,7 @@ Elenca le iscrizioni visibili all'utente associato alla chiave API. I membri del
 
 | Nome | Descrizione |
 | --- | --- |
-| `group_id` | Numero intero, obbligatorio. ID del gruppo di cui elencare le iscrizioni |
+| `group_id` | Numero intero, obbligatorio. ID del gruppo di cui elencare le appartenenze |
 
 <!-- translation-section: example-17 -->
 
@@ -944,9 +946,9 @@ curl -H 'Authorization: Bearer YOUR_API_KEY' 'https://www.loomio.com/api/b2/memb
 
 <!-- translation-section: manage-memberships -->
 
-## Gestisci le iscrizioni
+## Gestire le appartenenze
 
-Invia un elenco di indirizzi email. I nuovi indirizzi riceveranno un invito a unirsi al gruppo. A differenza dell'elenco delle iscrizioni, questa operazione richiede i permessi di amministratore del gruppo.
+Invia un elenco di indirizzi email. Tutti i nuovi indirizzi email riceveranno un invito al gruppo. A differenza dell'operazione che elenca le appartenenze, questa operazione richiede i permessi di amministratore del gruppo.
 
 `POST /api/b2/memberships`
 
@@ -956,9 +958,9 @@ Invia un elenco di indirizzi email. I nuovi indirizzi riceveranno un invito a un
 
 | Nome | Descrizione |
 | --- | --- |
-| `group_id` | Numero intero obbligatorio. ID del gruppo di cui gestire le iscrizioni |
-| `emails` | Array di stringhe obbligatorio. Indirizzi email delle persone da invitare nel gruppo |
-| `remove_absent` | Valore booleano. Se true, rimuove dal gruppo tutte le persone il cui indirizzo email non è presente nell'elenco |
+| `group_id` | Numero intero, obbligatorio. ID del gruppo di cui gestire le appartenenze |
+| `emails` | Array di stringhe, obbligatorio. Indirizzi email delle persone da invitare nel gruppo |
+| `remove_absent` | Booleano. Se true, rimuove dal gruppo chiunque abbia un indirizzo email non presente nell'elenco |
 
 <!-- translation-section: example-18 -->
 
@@ -968,10 +970,10 @@ Invia un elenco di indirizzi email. I nuovi indirizzi riceveranno un invito a un
 curl -H 'Authorization: Bearer YOUR_API_KEY' -X POST -H 'Content-Type: application/json' -d '{"group_id": 123, "emails":["person@example.com"]}' https://www.loomio.com/api/b2/memberships
 ```
 
-Se passi `remove_absent=1`, tutti i membri del gruppo non inclusi nell'elenco saranno rimossi. Fai attenzione: potresti rimuovere tutti i membri del tuo gruppo.
+Se passi `remove_absent=1`, tutti i membri del gruppo non inclusi nell'elenco verranno rimossi dal gruppo. Fai attenzione: potresti rimuovere tutti dal tuo gruppo.
 
 ```bash
 curl -H 'Authorization: Bearer YOUR_API_KEY' -X POST -H 'Content-Type: application/json' -d '{"group_id": 123, "emails":["person@example.com"], "remove_absent": 1}' https://www.loomio.com/api/b2/memberships
 ```
 
-La risposta è un oggetto con `{added_emails: ["person@added.com"], removed_emails: ["person@removed.com"]}`.
+L'operazione restituisce un oggetto con `{added_emails: ["person@added.com"], removed_emails: ["person@removed.com"]}`.

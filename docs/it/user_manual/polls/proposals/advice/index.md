@@ -1,6 +1,6 @@
 ---
 title: Consiglio
-source_revision: 9c60c42fc739483fa23f15d9f34a1e9245518092
+source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
 source_file: docs/en/user_manual/polls/proposals/advice/index.md
 translated:
   provider: codex/gpt-6.1-sol
@@ -14,13 +14,13 @@ sections:
   read-the-results: 937eff4c74abcc79
   share-an-outcome: 1f762148d1f18b1d
 generated:
-  introduction: 92d66fb47cf2fbcd
-  when-to-use-advice: 6e3d41f436b3be44
-  example-choose-a-washing-supplier: 5d2d182c5df33218
-  set-up-the-proposal: 840c2042459a8956
-  vote: 7027f230429b25f4
-  read-the-results: fa803faf41019bed
-  share-an-outcome: d55ffbc45aa78098
+  introduction: 386aa723642f1027
+  when-to-use-advice: 0bf88be279a0fd56
+  example-choose-a-washing-supplier: d8700b82772fc8d8
+  set-up-the-proposal: ee314bff90652a00
+  vote: e412fd92d7bae283
+  read-the-results: c5fe55b9cb6b9748
+  share-an-outcome: 415328cfdd6003d5
 title_source: 305f5e5463e18d7f
 title_generated: d2547f0269d84532
 ---
@@ -29,37 +29,37 @@ title_generated: d2547f0269d84532
 
 # Consiglio
 
-Una proposta di Consiglio raccoglie contributi per una decisione che spetta a una persona o a un gruppo di lavoro. I partecipanti possono dare un consiglio o indicare che non hanno nulla da aggiungere.
+Una proposta di tipo Consiglio raccoglie contributi per una decisione che spetta a una persona o a un team. I partecipanti possono offrire consigli o indicare che non hanno consigli da aggiungere.
 
-Questa pagina spiega come compilare la proposta di Consiglio, votare e leggere i risultati. Consulta il [processo di Consiglio](/en/guides/making_decisions/advice_process) per seguire tutte le fasi, dalla definizione della decisione alla pubblicazione della conclusione.
+Questa pagina spiega il modulo della proposta di tipo Consiglio, come votare e i risultati. Consulta il [Processo di consultazione](/en/guides/making_decisions/advice_process) per il percorso completo, dalla definizione della decisione alla pubblicazione di una conclusione.
 
 <!-- translation-section: when-to-use-advice -->
 
 ## Quando usare Consiglio
 
-Usa Consiglio quando chi prende la decisione vuole sentire persone con competenze pertinenti o persone che ne subiranno gli effetti. È utile per scegliere fornitori, prendere decisioni operative, preparare bozze di politiche e decidere nell'ambito di un ruolo delegato.
+Usa Consiglio quando chi deve prendere la decisione vuole raccogliere contributi da persone con competenze pertinenti o interessate dalla decisione. È adatto alla scelta dei fornitori, alle decisioni operative, alle bozze di politiche e alle decisioni nell'ambito di un ruolo delegato.
 
-Consiglio non è un voto di approvazione. Indica chi prenderà la decisione, quali vincoli si applicano e come terrà conto delle risposte.
+Consiglio non è un voto di approvazione. Specifica chi prenderà la decisione, quali vincoli si applicano e come verranno considerate le risposte.
 
 <!-- translation-section: example-choose-a-washing-supplier -->
 
-## Esempio: scegliere un fornitore per il lavaggio
+## Esempio: scegli un fornitore di servizi di lavaggio
 
-La persona che coordina le attività operative della Cooperativa Oatmilk deve scegliere un fornitore per il lavaggio. Chiede consigli sulla capacità produttiva, la documentazione relativa alla sicurezza alimentare, il consumo d'acqua, i tempi di risposta del servizio e l'assistenza.
+Il coordinatore operativo di Oatmilk Cooperative deve selezionare un fornitore di servizi di lavaggio. Chiede consigli sulla capacità, sulla documentazione relativa alla sicurezza alimentare, sul consumo d'acqua, sui tempi di risposta del servizio e sull'assistenza.
 
 <!-- translation-section: set-up-the-proposal -->
 
-## Preparare la proposta
+## Configura la proposta
 
-Descrivi la decisione, indica chi la prenderà e includi le informazioni necessarie ai partecipanti. Invita le persone coinvolte o con conoscenze pertinenti. Le opzioni predefinite permettono di dare un consiglio o di astenersi.
+Descrivi la decisione, indica chi la prenderà e includi le informazioni necessarie ai partecipanti. Invita le persone interessate o con conoscenze pertinenti. Le opzioni predefinite permettono di offrire consigli o astenersi.
 
 ![](form.png)
 
 <!-- translation-section: vote -->
 
-## Votare
+## Vota
 
-I partecipanti selezionano **Consiglio** e condividono una raccomandazione concreta, un rischio, una domanda o un'esperienza pertinente. Possono astenersi se non hanno contributi utili.
+I partecipanti selezionano **Consiglio** e indicano una raccomandazione concreta, un rischio, una domanda o un'esperienza pertinente. Possono astenersi quando non hanno contributi utili da offrire.
 
 ![](../proposal_advice_voting.png)
 
@@ -67,7 +67,7 @@ I partecipanti selezionano **Consiglio** e condividono una raccomandazione concr
 
 ## Leggi i risultati
 
-Il grafico mostra chi ha risposto, ma le motivazioni sono la parte sostanziale di una proposta di Consiglio. Cerca vincoli, punti di accordo e raccomandazioni contrastanti. La risposta più frequente non determina la decisione.
+Il grafico conferma chi ha risposto, ma sono i motivi a contenere la sostanza di una proposta di tipo Consiglio. Individua vincoli, punti di accordo e raccomandazioni contrastanti, anziché considerare la risposta più frequente come la decisione.
 
 ![](../proposal_advice_results.png)
 
@@ -75,6 +75,6 @@ Il grafico mostra chi ha risposto, ma le motivazioni sono la parte sostanziale d
 
 ## Condividi una conclusione
 
-Quando la proposta si chiude, chi prende la decisione condivide una conclusione. Questa spiega che cosa ha deciso e come ha tenuto conto dei consigli ricevuti. Consulta [Condividi una conclusione](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome) per sapere come funzionano le conclusioni.
+Quando la proposta si chiude, chi deve prendere la decisione condivide una conclusione. Questa indica cosa ha deciso e come i consigli hanno contribuito alla decisione. Consulta [Condividi una conclusione](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome) per sapere come funzionano le conclusioni.
 
 ![Una conclusione che indica il fornitore scelto e i consigli seguiti](outcome.png)

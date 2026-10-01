@@ -1,6 +1,6 @@
 ---
 title: Processo di consulenza
-source_revision: 9c60c42fc739483fa23f15d9f34a1e9245518092
+source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
 source_file: docs/en/guides/making_decisions/advice_process.md
 translated:
   provider: codex/gpt-6.1-sol
@@ -17,16 +17,16 @@ sections:
   step-2-clarify-and-strengthen-the-advice-through-discussion: a3b5393138bde245
   step-3-make-a-decision-with-advice-and-inform-people: c55b6d9c9ad0961c
 generated:
-  introduction: 36ef684b96b2ab87
-  key-points: 60f054d0b8298524
-  steps-in-the-advice-process: be4c1be551e1849f
-  benefits: b2a26edc1b1f3914
-  applying-the-advice-process-on-loomio: 45ab4260bda6ebcd
+  introduction: e52eb6c328c95b5f
+  key-points: fbecf0c87ed99b79
+  steps-in-the-advice-process: 1df65138a1a520e7
+  benefits: 5417e62a6e43fe79
+  applying-the-advice-process-on-loomio: 0b7cfce3eee39d1c
   example-of-an-advice-process-on-loomio: 46f007dc2b911a1a
-  step-0-you-notice-a-problem-or-opportunity-and-take-the-initiative: ac4f37ba0d7158be
-  step-1-seek-input-to-sound-out-perspectives-before-proposing-action: 50cc4b050a7e7aa4
-  step-2-clarify-and-strengthen-the-advice-through-discussion: d8149064df328094
-  step-3-make-a-decision-with-advice-and-inform-people: 7cbd8a8fb6192ae6
+  step-0-you-notice-a-problem-or-opportunity-and-take-the-initiative: '079f716b2cd4d0c7'
+  step-1-seek-input-to-sound-out-perspectives-before-proposing-action: 2ba9c725337abed5
+  step-2-clarify-and-strengthen-the-advice-through-discussion: 94135ae82620a39f
+  step-3-make-a-decision-with-advice-and-inform-people: 555624059776e96b
 title_source: 290fb74b7be97f31
 title_generated: 97c3072251f88ae4
 ---
@@ -35,38 +35,38 @@ title_generated: 97c3072251f88ae4
 
 # Processo di consulenza
 
-Questa guida descrive l'intero processo di consulenza. Per sapere come avviare e interpretare una proposta di consulenza, consulta [Consulenza](/en/user_manual/polls/proposals/advice/).
+Questa guida descrive il processo di consulenza completo. Per sapere come configurare e interpretare una proposta di consulenza, consulta [Consulenza](/en/user_manual/polls/proposals/advice/).
 
-![Foto di Yoda che suggerisce un saggio consiglio - *Foto di Nadir sYzYgY su Unsplash*](nadir-syzygy-den6gTowZKs-unsplash.jpg)
+![Foto di Yoda che evoca un consiglio saggio - *Foto di Nadir sYzYgY su Unsplash*](nadir-syzygy-den6gTowZKs-unsplash.jpg)
 
-Chiedi consiglio su una decisione che devi prendere.
+Chiedi consigli su una decisione che devi prendere.
 
-Prendi una decisione con il contributo delle persone coinvolte o esperte dell'argomento, per scegliere meglio per la tua organizzazione.
+Prendi una decisione con i consigli delle persone coinvolte o con competenze pertinenti, così da prendere una decisione migliore per la tua organizzazione.
 
-> *«Con il processo di consulenza, chiunque può prendere qualsiasi decisione, ma deve chiedere consiglio alle persone coinvolte e a quelle esperte dell'argomento.» - Frederick Laloux, Reinventing Organizations.*
+> *“Con il processo di consulenza, qualsiasi persona può prendere qualsiasi decisione, ma deve chiedere consiglio alle parti interessate e alle persone con competenze pertinenti.” - Frederick Laloux, Reinventing Organizations.*
 
 <!-- translation-section: key-points -->
 
 ## Punti chiave
 - Libertà di prendere una decisione.
-- Invita le persone a dare il loro consiglio.
+- Invita le persone a offrire i loro consigli.
 - Tieni conto delle opinioni degli altri.
 
 <!-- translation-section: steps-in-the-advice-process -->
 
 ## Fasi del processo di consulenza
 Noti un problema o un'opportunità e prendi l'iniziativa.
-1. Definisci la decisione da prendere, individua chi ne è responsabile e invita le persone coinvolte e quelle esperte dell'argomento.
-2. Avvia una **discussione** su Loomio e, se servono risposte strutturate o una scadenza, avvia una **proposta di consulenza**.
-3. Chiarisci e approfondisci i consigli attraverso le motivazioni dei voti e i commenti nella discussione.
-4. Prendi la decisione, poi pubblica una **conclusione** che spieghi che cosa hai deciso e come hai tenuto conto dei consigli ricevuti.
+1. Definisci la decisione, identifica chi ne è responsabile e invita le persone coinvolte e gli esperti pertinenti.
+2. Avvia una **discussione** su Loomio e, quando è utile una risposta strutturata o una scadenza, avvia una **proposta di consulenza**.
+3. Chiarisci e approfondisci i consigli attraverso i motivi dei voti e i commenti nella discussione.
+4. Prendi la decisione, poi pubblica una **conclusione** che spieghi cosa è stato deciso e come i consigli hanno contribuito alla decisione.
 
 <!-- translation-section: benefits -->
 
 ## Vantaggi
-- I consigli ti aiutano a prendere una decisione migliore per la tua organizzazione. 
-- Favoriscono le relazioni, l'apprendimento e il contributo di persone con prospettive diverse.
-- Stimolano l'iniziativa e la creatività e rendono il lavoro più piacevole.
+- I consigli ti aiutano a prendere una decisione migliore per la tua organizzazione.
+- Favorisci le relazioni, le opportunità di apprendimento e contributi diversi.
+- Stimola l'iniziativa e la creatività e rendi il lavoro più piacevole.
 
 <!-- translation-section: applying-the-advice-process-on-loomio -->
 
@@ -75,8 +75,8 @@ Noti un problema o un'opportunità e prendi l'iniziativa.
 | **Processo di consulenza** | **Su Loomio** |
 |---|---|
 | Noti un problema o un'opportunità e prendi l'iniziativa. |  |
-| Chiedi contributi per conoscere diversi punti di vista prima di proporre un'azione. | Avvia una **discussione** su Loomio per fornire il contesto e aprire il confronto. Avvia una **[proposta di consulenza](/en/user_manual/polls/proposals/advice/)** se vuoi stabilire un periodo per le risposte, raccogliere le motivazioni dei voti e documentare chiaramente chi ha partecipato. |
-| Tieni conto dei consigli ricevuti, prendi una decisione e informa le persone che ti hanno consigliato. | Aggiungi una **conclusione** alla discussione.   <br /><br />Comunica la decisione e ringrazia le persone per i consigli e i commenti.  <br /><br />   Spiega che cosa succederà e informa le persone della conclusione.  <br /><br />La conclusione documenta la decisione e permette di consultarla in futuro. <br /> <br /> Puoi anche aggiornare il contesto per includere la conclusione oppure scriverla in un commento che fissi nella cronologia, così sarà facile ritrovarla.<br /><br/> |
+| Chiedi contributi per conoscere i diversi punti di vista prima di proporre un'azione. | Avvia una **discussione** su Loomio per fornire il contesto e aprire il confronto. Avvia una **[proposta di consulenza](/en/user_manual/polls/proposals/advice/)** quando vuoi un periodo definito per rispondere, i motivi dei voti e una registrazione chiara di chi ha partecipato. |
+| Tenendo conto dei consigli ricevuti, prendi una decisione e informa le persone che hanno offerto consigli. | Aggiungi una **conclusione** alla conversazione della discussione.   <br /><br />Indica la decisione presa e ringrazia le persone per i loro consigli e riscontri.  <br /><br />   Spiega cosa succederà dopo e informa le persone della conclusione.  <br /><br />La conclusione è una registrazione importante della decisione da consultare in futuro. <br /> <br /> Aggiorna il contesto per includere questa conclusione oppure scrivila in un commento che fissi in alto nella cronologia, per ritrovarla rapidamente in futuro.<br /><br/> |
 
 <!-- translation-section: example-of-an-advice-process-on-loomio -->
 
@@ -86,42 +86,42 @@ Noti un problema o un'opportunità e prendi l'iniziativa.
 
 ### Fase 0 - Noti un problema o un'opportunità e prendi l'iniziativa.
 
-Vale la pena affrontare il problema o cogliere l'opportunità?  Takashi ha problemi con il suo vecchio computer, che si è bloccato durante una recente presentazione.
+Vale la pena affrontare il problema o cogliere l'opportunità? Takashi ha problemi con il suo vecchio computer, che si è bloccato durante una recente presentazione.
 
-C'è una decisione da prendere?  È ora di sostituire il computer.
+C'è una decisione da prendere? È il momento di sostituire il computer.
 
-La decisione riguarda altre persone e la tua organizzazione?  I colleghi di Takashi vogliono che possa svolgere bene il suo lavoro senza perdere tempo durante le riunioni. Capiscono quindi che gli serve un computer funzionante.  L'acquisto incide anche sul bilancio e sulle regole di acquisto dell'organizzazione e potrebbe richiedere un confronto con gli altri membri del team.
+La decisione ha un impatto su altre persone e sulla tua organizzazione? I colleghi di Takashi vogliono che svolga il suo ruolo in modo efficace e non perda tempo durante le riunioni, quindi comprendono che ha bisogno di un computer funzionante. L'acquisto di un'attrezzatura incide anche sul bilancio dell'organizzazione e sulle politiche di acquisto e potrebbe richiedere un coordinamento con gli altri membri del team.
 
 <!-- translation-section: step-1-seek-input-to-sound-out-perspectives-before-proposing-action -->
 
-### Fase 1. Chiedi contributi per conoscere diversi punti di vista prima di proporre un'azione
+### Fase 1. Chiedi contributi per conoscere i diversi punti di vista prima di proporre un'azione
 
-Takashi avvia una discussione su Loomio e spiega chiaramente quale decisione deve prendere.  Fornisce il contesto e comunica che sta avviando un processo di consulenza.
+Takashi avvia una discussione su Loomio indicando chiaramente la decisione che deve prendere. Fornisce il contesto per aprire la discussione e spiega che sta avviando un processo di consulenza.
 
 ![](discussion_takashi_computer.png)
 
-Può anche avviare una [proposta di consulenza](/en/user_manual/polls/proposals/advice/) nella discussione per chiedere risposte strutturate entro una data di chiusura.
+Può anche avviare una [proposta di consulenza](/en/user_manual/polls/proposals/advice/) nella discussione per richiedere risposte strutturate entro una data di chiusura.
 
 <!-- translation-section: step-2-clarify-and-strengthen-the-advice-through-discussion -->
 
-### Fase 2.  Chiarisci e approfondisci i consigli attraverso la discussione
+### Fase 2. Chiarisci e approfondisci i consigli attraverso la discussione
 
-Takashi risponde ai consigli nei commenti della discussione, chiarisce la sua situazione e fa domande per approfondire i suggerimenti ricevuti.
+Takashi risponde ai consigli ricevuti nei commenti della conversazione della discussione, chiarendo la sua situazione e facendo domande per approfondire i consigli ricevuti.
 
 ![](discussion_comments_advice_process_new_computer.png)
 
-Man mano che riceve consigli e commenti, Takashi si fa un'idea più chiara della decisione da prendere.
+Man mano che le persone offrono consigli e commenti, Takashi diventa più sicuro della sua decisione.
 
 <!-- translation-section: step-3-make-a-decision-with-advice-and-inform-people -->
 
-### Fase 3. Prendi una decisione tenendo conto dei consigli e informa le persone
+### Fase 3. Prendi una decisione con i consigli ricevuti e informa le persone
 
-Quando tutti hanno dato il loro consiglio, o la proposta si chiude, Takashi prende una decisione e pubblica la **[conclusione](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome)**.
+Quando tutti hanno offerto i loro consigli, o quando la proposta si chiude, Takashi prende una decisione e scrive la **[conclusione](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome)**.
 
-La conclusione comunica chiaramente la decisione presa e che cosa succederà. Diventa un documento importante per l'organizzazione.
+La conclusione indica chiaramente la decisione presa e cosa succederà dopo. Diventa una registrazione importante per l'organizzazione.
 
 Takashi modifica il contesto della discussione per includere questa conclusione.
 
 ![](decision_outcome_advice_process_new_computer.png)
 
-In alternativa, può scriverla in un commento e fissarlo nella discussione, così la conclusione sarà ben visibile nella cronologia.
+In alternativa, potrebbe scriverla in un commento da fissare in alto nella conversazione, così che la conclusione sia ben visibile nella cronologia della discussione.

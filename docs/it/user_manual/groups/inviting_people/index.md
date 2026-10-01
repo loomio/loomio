@@ -1,10 +1,10 @@
 ---
 title: Invitare persone
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/groups/inviting_people/index.md
+source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
+source_file: docs/en/user_manual/groups/inviting_people/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 55a6bcc670aa6224
   send-invitations-via-email: bbc814cba35c9541
@@ -17,16 +17,16 @@ sections:
   re-send-invitations: 76c7fc660f7e3d42
   cancelling-invitations: f3df8386eeda62f5
 generated:
-  introduction: 89828ccfdfb479d1
-  send-invitations-via-email: 2bdfff5224b036bc
-  invite-many-at-once: a3f0fc6dc780bbd5
-  invite-people-to-subgroups: 290adcc7cdb03d11
-  share-a-link-to-your-group: 4f9be0fa09aed6c8
-  request-to-join-group: 82d05fc5c40e2e19
-  review-membership-requests: 114dcfb4565b8d18
-  managing-invitations: b42584617e8528cd
-  re-send-invitations: 26aff5b823d578ef
-  cancelling-invitations: '0182c98dbfceac1a'
+  introduction: b7e5d4c88511ea42
+  send-invitations-via-email: a16bf0ed8f846e10
+  invite-many-at-once: c3059e25979f41cd
+  invite-people-to-subgroups: 8a6aec882e478c2e
+  share-a-link-to-your-group: 52074fe040ce425f
+  request-to-join-group: 7d58bb8b6887b816
+  review-membership-requests: 3f70ae979677e60b
+  managing-invitations: 4f90b479001a119e
+  re-send-invitations: 56f7a31c293789ed
+  cancelling-invitations: '08c19412c1f18d01'
 title_source: b926eb8921d85971
 title_generated: 4b6c1590d7342b55
 ---
@@ -35,9 +35,9 @@ title_generated: 4b6c1590d7342b55
 
 # Invitare persone
 
-Vai alla pagina del tuo gruppo e seleziona la scheda **Membri** per gestire i membri.
+Vai alla pagina del tuo gruppo e fai clic sulla scheda **Membri** per accedere alla gestione dei membri.
 
-Puoi **Invita** persone specifiche al tuo gruppo usando il loro indirizzo email oppure **Condividi** un link al gruppo via email, newsletter, chat o sul tuo sito web.
+Puoi usare **Invita** per invitare persone specifiche nel tuo gruppo tramite il loro indirizzo email oppure **Condividi** per condividere un link al tuo gruppo via email, newsletter, chat o dal tuo sito web.
 
 ![](group_join_group_invite.png)
 
@@ -45,9 +45,9 @@ Puoi **Invita** persone specifiche al tuo gruppo usando il loro indirizzo email 
 
 ## Inviare inviti via email
 
-Seleziona **Invita** nella scheda **Membri** per inviare un'email con un link di invito utilizzabile una sola volta. Chi lo riceve può creare un account Loomio e unirsi al tuo gruppo.
+Fai clic su **Invita** nella scheda **Membri** per inviare un'email contenente un link di invito utilizzabile una sola volta. Il destinatario può creare un account utente Loomio e aderire al tuo gruppo.
 
-Se ha già un account Loomio, può accettare l'invito e unirsi al gruppo con quell'account.
+Se il destinatario ha già un account utente Loomio, può accettare l'invito e aderire al tuo gruppo con il suo account esistente.
 
 ![](group_invite_email.png)
 
@@ -55,62 +55,62 @@ Se ha già un account Loomio, può accettare l'invito e unirsi al gruppo con que
 
 ### Invitare più persone contemporaneamente
 
-Puoi invitare via email fino a 100 persone alla volta. Inserisci o incolla più indirizzi email nel campo "Chi vuoi invitare?", separandoli con una virgola o uno spazio.
+Puoi inviare inviti via email a un massimo di 100 persone alla volta inserendo (o copiando e incollando) più indirizzi email nel campo "Chi vuoi invitare". Separa gli indirizzi email con una virgola o uno spazio.
 
-Quando inviti persone a un gruppo di un'organizzazione, il gruppo principale e i sottogruppi di cui fai parte compaiono tra i suggerimenti. Seleziona un gruppo, poi seleziona la sua etichetta per vedere le singole persone. Prima di inviare gli inviti, puoi rimuovere chi non vuoi invitare. Le persone già iscritte al gruppo di destinazione vengono escluse.
+Quando inviti persone in un gruppo all'interno di un'organizzazione, il gruppo principale e i relativi sottogruppi di cui sei membro compaiono tra i destinatari suggeriti. Seleziona un gruppo, poi seleziona la sua etichetta per mostrare le singole persone che ne fanno parte. Puoi rimuovere chi non vuoi invitare prima di inviare gli inviti. Le persone che fanno già parte del gruppo di destinazione sono escluse.
 
 >[!Tip]
->Copia gli indirizzi email da una colonna di un foglio Google o Excel e incollali nel campo degli inviti.
+>Copia gli indirizzi email da una colonna di un foglio di calcolo Google o Excel e incollali nel campo degli inviti.
 
-Quando selezioni **Invita**, ogni indirizzo email che hai indicato riceve un messaggio con un link di invito unico, utilizzabile una sola volta. Il messaggio viene inviato nella lingua che stai usando.
+Quando fai clic su **Invita**, viene inviata un'email a ciascuno degli indirizzi email che hai inserito, contenente un link di invito univoco utilizzabile una sola volta. Questa email viene inviata nella lingua che stai usando.
 
 <!-- translation-section: invite-people-to-subgroups -->
 
 ### Invitare persone nei sottogruppi
 
-Con la stessa procedura puoi invitare le persone a un gruppo principale e, contemporaneamente, a uno o più sottogruppi tramite il pulsante **Invita persone**. Seleziona le caselle accanto ai sottogruppi a cui vuoi che si uniscano quando entrano nel gruppo.
+Seguendo la stessa procedura descritta sopra, puoi invitare persone contemporaneamente in un gruppo principale e in uno o più sottogruppi con il pulsante **Invita persone**. Seleziona le caselle accanto ai sottogruppi di cui vuoi che facciano subito parte quando aderiscono al gruppo.
 
 ![](group_invite_email_subgroups.png)
 
 <!-- translation-section: share-a-link-to-your-group -->
 
-## Condividere un link al gruppo
+## Condividere un link al tuo gruppo
 
-Puoi condividere un link al tuo gruppo con il pulsante **Condividi**. Puoi inviarlo via email, newsletter o chat, oppure pubblicarlo sul tuo sito web.
+Puoi condividere un link al tuo gruppo con il pulsante **Condividi**. È utile se vuoi inviare un link via email, newsletter o chat, oppure pubblicarlo sul tuo sito web.
 
 ![](group_invite_sharable_link.png)
 
-Seleziona l'icona "copia" per copiare il link negli appunti, poi incollalo in un'email, una newsletter o una chat.
+Fai clic sull'icona "copia" per copiare il link negli appunti, poi incollalo nella tua email, newsletter o nel tuo canale di chat.
 
-Per impedire ad altre persone di unirsi tramite quel link, seleziona "Reimposta questo link". Il link esistente smetterà di funzionare e ne verrà creato uno nuovo.
+Se vuoi impedire alle persone di aderire tramite questo link, fai clic su "Reimposta questo link". Il link esistente non funzionerà più e verrà creato un nuovo link.
 
 <!-- translation-section: request-to-join-group -->
 
-## Richiedere di unirsi a un gruppo
+## Richiedere di aderire a un gruppo
 
-Le persone possono chiedere di unirsi a un gruppo aperto o chiuso. Condividi l'URL del gruppo, per esempio `https://www.loomio.com/group-name`. Nella pagina del gruppo possono vedere le informazioni pubbliche e selezionare **Iscriviti al gruppo** per rispondere alla domanda di iscrizione e inviare la richiesta.
+Le persone possono richiedere di aderire a un gruppo aperto o chiuso. Condividi l'URL del gruppo, ad esempio `https://www.loomio.com/group-name`. Quando accedono alla pagina del gruppo, possono vedere le informazioni pubbliche del gruppo e selezionare **Iscriviti al gruppo** per rispondere alla domanda di adesione e inviare la loro richiesta.
 
 ![](group_join_group.png)
 
-La domanda di iscrizione permette alle persone di presentarsi e spiegare perché vogliono unirsi al gruppo.
+La domanda di adesione permette alle persone di presentarsi e spiegare perché vogliono aderire.
 
 ![](group_request_to_join.png)
 
-In [Privacy del gruppo](/en/user_manual/groups/settings/privacy#how-people-join), scegli **Richiedi approvazione** per sottoporre le richieste a revisione. Puoi anche personalizzare la domanda di iscrizione nelle impostazioni del gruppo.
+In [Privacy del gruppo](/en/user_manual/groups/settings/privacy#how-people-join), scegli **Richiedi approvazione** per richiedere che le richieste vengano esaminate. Puoi anche personalizzare la domanda di adesione nelle impostazioni del gruppo.
 
 <!-- translation-section: review-membership-requests -->
 
-### Esaminare le richieste di iscrizione
+### Esaminare le richieste di adesione
 
-Gli amministratori del gruppo e i membri autorizzati ad aggiungere persone esaminano le richieste nella sezione **Richieste di iscrizione** della scheda **Membri**. Chi esamina una richiesta può:
+Gli amministratori del gruppo e i membri con il permesso di aggiungere membri esaminano le richieste nella sezione **Richieste di adesione** della scheda **Membri**. Chi esamina una richiesta può:
 
 ![](group_review_request_to_join.png)
 
-- **Approva** la richiesta per aggiungere la persona al gruppo e inviarle una notifica.
-- **Ignora** la richiesta per chiuderla senza avvisare la persona né consentirle di inviarne un'altra.
-- **Declino** la richiesta con un messaggio che spiega la decisione. Loomio invia il messaggio alla persona via email e con una notifica. La persona potrà inviare una nuova richiesta.
+- Selezionare **Approva** per aggiungere la persona come membro e inviarle una notifica.
+- Selezionare **Ignora** per chiudere la richiesta senza avvisare la persona né consentirle di inviare un'altra richiesta.
+- Selezionare **Rifiuta** per rifiutare la richiesta con un messaggio che spiega la decisione. Loomio invia il messaggio alla persona via email e tramite notifica, e la persona può inviare una nuova richiesta.
 
-Seleziona il pulsante per rifiutare la richiesta e scrivere un messaggio, oppure ignora la richiesta.
+Seleziona il pulsante di rifiuto per scrivere un messaggio o ignorare la richiesta.
 
 ![](group_decline_request_to_join.png)
 
@@ -118,25 +118,25 @@ Seleziona il pulsante per rifiutare la richiesta e scrivere un messaggio, oppure
 
 ## Gestire gli inviti
 
-Per gestire gli inviti, apri il menu dei filtri nella scheda Membri della pagina del tuo gruppo e seleziona **Inviti**. Per gestire un singolo invito, seleziona il menu con i tre puntini (**⋮**) a destra del nome della persona.
+Per gestire gli inviti, apri il filtro o menu a discesa nella scheda Membri della pagina del tuo gruppo e seleziona **Inviti**. Puoi gestire i singoli inviti facendo clic sul menu con i tre puntini (**⋮**) a destra del membro.
 
 ![](group_invite_members_filter.png)
 
-Prima che accettino l'invito, puoi anche nominare le persone amministratrici o impostare il loro ruolo nel gruppo, per esempio "Supporto IT".
+Puoi anche nominare le persone amministratori o impostare il loro titolo nel gruppo (ad esempio "Supporto informatico") prima che accettino l'invito.
 
 <!-- translation-section: re-send-invitations -->
 
 ### Inviare di nuovo gli inviti
 
-Puoi ricontattare le persone che non si sono ancora unite al gruppo. Se qualcuno ha perso o dimenticato l'email di invito, puoi inviarla di nuovo dal menu accanto al suo nome nella pagina Membri.
+Contatta le persone che non hanno ancora aderito al gruppo per ricordare loro l'invito. Se qualcuno ha perso o dimenticato l'email di invito, puoi inviarla di nuovo dal menu a discesa accanto al suo nome nella pagina Membri.
 
-Seleziona i tre puntini (**⋮**) accanto alla persona a cui vuoi inviare di nuovo l'invito, poi scegli **Invia di nuovo invito**.
+Fai clic sui tre puntini (**⋮**) accanto alla persona a cui vuoi inviare di nuovo l'invito, poi scegli **Invia di nuovo invito**.
 
 ![](group_invite_resend_invitation.png)
 
 <!-- translation-section: cancelling-invitations -->
 
-### Revocare gli inviti
-Se hai inserito un indirizzo email errato o hai cambiato idea, puoi revocare un invito dalla scheda Membri della pagina del tuo gruppo. Seleziona **Revoca invito** dal menu a destra dell'invito (**⋮**).
+### Annullare gli inviti
+Se hai inserito un indirizzo email errato o hai cambiato idea sull'invitare qualcuno, puoi annullare un invito dalla scheda Membri della pagina del tuo gruppo. Seleziona **Annulla invito** dal menu a discesa a destra dell'invito del membro (**⋮**).
 
 ![](group_invite_cancel_invitation.png)

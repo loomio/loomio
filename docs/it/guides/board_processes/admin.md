@@ -1,10 +1,10 @@
 ---
 title: Conservazione dei documenti
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/guides/board_processes/admin.md
+source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
+source_file: docs/en/guides/board_processes/admin.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-30'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 7e0918fea08824e3
   administering-discussions: 699ce8bcbf899559
@@ -14,13 +14,13 @@ sections:
   archiving-records: cd0b9c1553b7a49a
   data-storage: 55bc08c1977d3468
 generated:
-  introduction: 1bfb3fab01610f83
-  administering-discussions: d0d52b203fbdc97f
-  category-tags: 470245e52f518df3
-  maintaining-the-discussion-topic: 1b11a7a16bf2f549
-  subgroups: 6fa3b9db36f019eb
-  archiving-records: cce7bafab45fb948
-  data-storage: 6062936c9781c6b8
+  introduction: b5a354ec24469187
+  administering-discussions: 054b834aa078dd01
+  category-tags: 8d6158da94670549
+  maintaining-the-discussion-topic: 7349c0d31dfdea54
+  subgroups: 689977b89aae1ce0
+  archiving-records: 8751cadb8acb8b4c
+  data-storage: 8b19f3300de1a635
 title_source: ce2fe2e6d832376c
 title_generated: d32abf9cea2b5624
 ---
@@ -29,15 +29,15 @@ title_generated: d32abf9cea2b5624
 
 # Amministrazione e conservazione dei documenti
 
-Amministrare il consiglio o il comitato e conservare documenti accurati per le verifiche è importante e spesso è un obbligo di legge.
+L'amministrazione e la corretta conservazione dei documenti per le verifiche sono requisiti importanti, e spesso previsti dalla legge, per il tuo consiglio o comitato.
 
-I documenti digitali sostituiscono sempre più spesso quelli cartacei.
+Sempre più spesso, i documenti elettronici sostituiscono quelli cartacei.
 
-Gli strumenti digitali permettono però al tuo consiglio di fare molto più che archiviare i verbali delle riunioni.
+Gli strumenti digitali consentono però al tuo consiglio di fare molto più che archiviare i verbali delle riunioni.
 
-Trasforma il lavoro del tuo consiglio:
+Trasforma il tuo consiglio:
 
-*“Il gruppo del nostro consiglio ha cambiato il nostro modo di lavorare: ci permette di governare con continuità, rispondere più rapidamente e migliorare la nostra capacità di adattamento, resilienza e sostenibilità… Loomio ci fa risparmiare migliaia di sterline ogni anno”*
+*“Il gruppo del nostro consiglio ha trasformato il nostro modo di lavorare, consentendo una gestione continua, migliorando i tempi di risposta e aumentando la nostra agilità, resilienza e sostenibilità… Loomio ci fa risparmiare migliaia di sterline ogni anno”*
 - Austen Cordasco, Co-operative Assistance Network Limited (CAN), servizi di supporto alle imprese, Regno Unito
 
 Vediamo come organizzare il lavoro, gestire le discussioni, proteggere i dati e conservare i documenti in Loomio.
@@ -46,37 +46,37 @@ Vediamo come organizzare il lavoro, gestire le discussioni, proteggere i dati e 
 
 ## Gestire le discussioni
 
-Loomio offre diverse funzioni per gestire le discussioni. Le trovi nel menu a discesa a destra della discussione.
+Loomio offre diverse funzionalità per aiutarti a gestire le discussioni, accessibili dal menu a discesa a destra della discussione.
 
-Per tenere aggiornato l'elenco delle discussioni, usa queste opzioni:
+Mantieni aggiornato l'elenco delle discussioni usando:
 
-- **Aggiungi discussione ai preferiti** per mantenere le discussioni importanti in cima all'elenco
-- **Modifica il nome della discussione** per cambiare il titolo o aggiornare il contesto della discussione
-- **Passare al gruppo** per spostare una discussione in un altro gruppo, in un sottogruppo o in un gruppo usato come archivio.
-- **Blocca discussione** per impedire nuovi commenti o modifiche e rimuovere la discussione dall'elenco di quelle aperte. Puoi trovare le discussioni bloccate tramite il filtro delle discussioni o la barra di ricerca e sbloccarle in qualsiasi momento.
-- **Elimina discussione** se non vuoi conservarne una copia. Le discussioni eliminate non possono essere ripristinate.
+- **Aggiungi discussione ai preferiti** per fissare in alto le discussioni importanti nell'elenco
+- **Modifica il nome della discussione** per cambiare il titolo della discussione o aggiornarne il contesto
+- **Passare al gruppo** quando vuoi spostare una discussione in un altro gruppo o sottogruppo, oppure in un gruppo di archivio.
+- **Blocca discussione** per impedire ulteriori commenti o modifiche e rimuovere la conversazione dall'elenco delle conversazioni aperte. Le conversazioni bloccate sono accessibili tramite il filtro delle discussioni e la barra di ricerca e possono essere sbloccate in qualsiasi momento.
+- **Elimina discussione** quando non vuoi conservare una copia della discussione. Ricorda che le discussioni eliminate non possono essere ripristinate.
 
 ![](thread_admin.png#width-90)
 
 <!-- translation-section: category-tags -->
 
-## Etichette di categoria
+## Tag di categoria
 
-Le etichette di categoria aiutano a trovare le discussioni. Definisci le etichette e applicale alle discussioni in modo coerente.
+I tag di categoria ti aiutano a organizzare le discussioni e a ritrovarle facilmente. Definisci i tag e applicali a ogni discussione, cercando di usarli in modo coerente.
 
-Tra le etichette più comuni per un consiglio ci sono: Amministrazione, Assemblea generale annuale, Riunione del consiglio, Relazione, Finanze, Questioni legali, Membri, Verbali, Pianificazione, Regolamenti, Delibere, Statuto, Assemblea generale, Strategia.
+Tra i tag comunemente usati dai consigli ci sono: Amministrazione, Assemblea generale annuale, Riunione del consiglio, Relazione, Finanze, Questioni legali, Membri, Verbali, Pianificazione, Linee guida, Delibera, Statuto, Assemblea generale, Strategia.
 
-I membri del gruppo possono cercare le discussioni per etichetta dal menu a discesa **Etichette**.
+I membri del gruppo possono cercare le discussioni per tag nel menu a discesa **tag**.
 
 ![](thread_tags.png#width-90)
 
 <!-- translation-section: maintaining-the-discussion-topic -->
 
-## Mantenere la discussione sul tema
+## Mantenere la discussione sullo stesso argomento
 
-Le discussioni sono più utili a tutti quando restano su un solo tema.
+Le discussioni funzionano meglio per tutti quando restano concentrate su un solo argomento.
 
-Se durante una discussione emerge un nuovo tema, puoi selezionare e spostare alcuni commenti in un'altra discussione oppure avviarne una nuova.
+Se nel corso di una discussione viene introdotto un nuovo argomento, puoi selezionare e spostare commenti specifici in un'altra discussione oppure avviare una nuova discussione.
 
 ![](thread_comments_move.png#width-90)
 
@@ -84,7 +84,7 @@ Se durante una discussione emerge un nuovo tema, puoi selezionare e spostare alc
 
 ## Sottogruppi
 
-I sottogruppi ti aiutano a organizzare le comunicazioni e i membri, coinvolgendo le persone giuste nel lavoro comune. Per esempio, puoi creare un sottogruppo per un sottocomitato o un gruppo di lavoro.
+I sottogruppi ti aiutano a organizzare le comunicazioni e i membri, coinvolgendo le persone interessate nel lavoro comune. Per esempio, puoi usare un sottogruppo per un sottocomitato o un gruppo di lavoro.
 
 [Configurare i sottogruppi.](/en/user_manual/groups/subgroups)
 
@@ -92,7 +92,7 @@ I sottogruppi ti aiutano a organizzare le comunicazioni e i membri, coinvolgendo
 
 ## Archiviare i documenti
 
-Per conservare una copia di una discussione e delle decisioni prese nei sondaggi, usa **[Stampa discussione](/en/user_manual/groups/data_export#print-thread-to-pdf)** e salva il file in PDF. Puoi quindi archiviare una copia pubblicata della discussione nel sistema di conservazione documentale che preferisci.
+Per conservare una copia della discussione in una conversazione e delle decisioni prese nei sondaggi, usa **[Stampa conversazione](/en/user_manual/groups/data_export#print-thread-to-pdf)** e stampa il file in PDF. Puoi quindi conservare una copia pubblicata della conversazione nell'archivio documentale che hai scelto.
 
 Per conservare una copia completa dei dati del tuo gruppo Loomio, usa **[Esporta i dati del gruppo](/en/user_manual/groups/data_export#group-data-backup-or-export)**.
 
@@ -100,12 +100,13 @@ Per conservare una copia completa dei dati del tuo gruppo Loomio, usa **[Esporta
 
 ## Conservazione dei dati
 
-I servizi cloud di Loomio proteggono i tuoi dati scrivendoli subito su più dischi, eseguendo copie di sicurezza ogni giorno e conservandoli in più sedi.
+I servizi cloud di Loomio proteggono i tuoi dati scrivendoli immediatamente su più dischi, eseguendo copie di backup giornaliere e conservandoli in più sedi.
 
-Questo vale per tutti i dati delle discussioni, dei commenti e dei sondaggi, oltre che per i file allegati.
+Tutti i dati delle conversazioni, dei commenti, dei sondaggi e dei file allegati vengono conservati in questo modo.
 
-Puoi vedere i file allegati alle discussioni anche nella scheda File.
+I file allegati alle conversazioni sono visibili anche nella scheda File.
 
 ![](files_tab.png#width-90)
 
-[Altre informazioni sulla sicurezza in Loomio. ](/en/policy/security)
+[Ulteriori informazioni sulla sicurezza in Loomio.
+](/en/policy/security)

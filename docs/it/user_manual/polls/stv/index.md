@@ -1,6 +1,6 @@
 ---
 title: Elezioni STV
-source_revision: cf8da02f691349beecf6ac6444971fad130d4ddd
+source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
 source_file: docs/en/user_manual/polls/stv/index.md
 translated:
   provider: codex/gpt-6.1-sol
@@ -21,20 +21,20 @@ sections:
   exporting-ballots: 582555dd13633bf0
   share-an-outcome: 6a02aed173b368b9
 generated:
-  introduction: b2d37950d665f119
-  when-to-use-stv: 8cbe86b4e1d4f7bf
-  creating-an-stv-election: a5204aa2a793a5a5
+  introduction: c9e2c919c10aedf8
+  when-to-use-stv: d9c75f94d7d9e482
+  creating-an-stv-election: 92fece1085b5f8dc
   number-of-seats: c78d9cde9a2fd843
-  counting-method: 78fd90aa855e47c9
-  quota-type: 298a69d0775ed3c5
-  how-voting-works: 159c241a15c454da
-  how-counting-works: b6382682d5a24e50
-  understanding-results: f4940f19156d2308
-  method-and-quota: 98fdcd0bb8deba93
-  elected-candidates: 203f5121e0825ab5
-  round-by-round-details: 4e92c439c0c2430e
-  exporting-ballots: 471a006656893f8a
-  share-an-outcome: 25ad51a1ccf4b980
+  counting-method: 1e567367c1d5be0b
+  quota-type: 123a547822a36889
+  how-voting-works: d9a410a7718673d3
+  how-counting-works: 1b18cc74d52c618c
+  understanding-results: 63a6fd6d8033b52b
+  method-and-quota: 51433d3e7cc0a9c4
+  elected-candidates: e9c91eea9fdae683
+  round-by-round-details: 501f97ebed57b7eb
+  exporting-ballots: 73ae31297d03a5eb
+  share-an-outcome: c0801e969ee1b116
 title_source: cd3e1a4cdc2456a6
 title_generated: b856531da2becf44
 ---
@@ -43,28 +43,28 @@ title_generated: b856531da2becf44
 
 # Elezioni STV
 
-Il **voto singolo trasferibile (STV)** è un metodo di voto proporzionale per eleggere più persone tra un gruppo di candidati. Permette di rappresentare tra gli eletti la diversità delle opinioni di chi vota.
+Il **voto singolo trasferibile (STV)** è un metodo di voto a rappresentanza proporzionale per eleggere più persone tra un insieme di candidati. Garantisce che i candidati eletti rappresentino proporzionalmente la diversità di opinioni degli elettori.
 
 <!-- translation-section: when-to-use-stv -->
 
 ## Quando usare STV
 
-Usa un'elezione STV quando vuoi:
+Usa un'elezione STV quando devi:
 
-- Eleggere un **comitato, un consiglio o un gruppo di delegati** tra più candidati
-- Garantire una **rappresentanza proporzionale**, in cui anche i gruppi minoritari possono ottenere seggi in proporzione al sostegno ricevuto
-- Organizzare elezioni in cui chi vota ordina i candidati secondo le proprie preferenze
+- Eleggere un **comitato, un consiglio o una delegazione** tra le persone candidate
+- Garantire una **rappresentanza proporzionale**, in cui le minoranze possano ottenere seggi in proporzione al sostegno ricevuto
+- Organizzare elezioni in cui gli elettori classificano i candidati in ordine di preferenza
 
 >[!NOTE]
->STV è diverso dal [sondaggio con classifica](/en/user_manual/polls/rank/) di Loomio, che usa un sistema di punteggi più semplice per scegliere un'unica opzione. STV permette di eleggere più persone attraverso trasferimenti di voti e turni di eliminazione.
+>STV **non** è lo stesso del [sondaggio Classifica](/en/user_manual/polls/rank/) di Loomio, che usa una classifica più semplice basata sui punteggi per scegliere una sola opzione migliore. STV gestisce elezioni con più eletti, trasferimenti di voti e turni di eliminazione.
 
 <!-- translation-section: creating-an-stv-election -->
 
 ## Creare un'elezione STV
 
-Quando avvii un sondaggio, seleziona **Elezioni STV** come tipo di sondaggio, poi aggiungi i candidati come opzioni. Puoi configurare il **numero di seggi**, il **metodo di conteggio** e il **tipo di quota**.
+Quando avvii un sondaggio, seleziona **Elezioni STV** come tipo di sondaggio, poi aggiungi i candidati come opzioni del sondaggio. Puoi personalizzare il sondaggio impostando il **numero di seggi**, il **metodo di conteggio** e il **tipo di quota**.
 
-In questo esempio, la cooperativa Oatmilk elegge tre persone che seguiranno la sperimentazione degli imballaggi a rendere. Il modulo descrive il ruolo, elenca cinque candidati e usa il metodo Scottish STV con la quota Droop.
+In questo esempio, Oatmilk Cooperative sta eleggendo tre persone per supervisionare la sperimentazione degli imballaggi a rendere. Il modulo spiega il ruolo, elenca cinque candidati e usa Scottish STV con la quota Droop.
 
 ![](form.png)
 
@@ -81,10 +81,10 @@ Il numero di persone da eleggere. Deve essere inferiore al numero di candidati.
 Sono disponibili due metodi per contare i voti:
 
 Scottish STV
-  : Consigliato. Usa il metodo Weighted Inclusive Gregory (WIGM), adottato nelle elezioni locali scozzesi dal 2007. Ha regole chiare e semplici. È adatto alla maggior parte delle organizzazioni.
+  : Consigliato. Il metodo Gregory inclusivo ponderato (WIGM), usato nelle elezioni locali scozzesi dal 2007. Ha regole ben definite e semplici. È il più adatto alla maggior parte delle organizzazioni.
   
 Meek STV
-  : Un metodo più preciso, il cui conteggio può essere eseguito solo da un computer. Quando un candidato viene eletto, Meek continua a trasferire la parte di ogni voto che non gli serve alle preferenze successive di chi ha votato, compresi i voti che arrivano al candidato nelle fasi successive del conteggio. Quando un candidato viene eliminato, i voti vengono ricalcolati come se non avesse mai partecipato all'elezione. Rispetto a Scottish STV, si sprecano meno voti, ma il conteggio non può essere verificato a mano.
+  : Un metodo più preciso, il cui conteggio può essere eseguito solo da un computer. Quando un candidato viene eletto, Meek continua a trasferire la parte di ciascun voto che non gli serve alle preferenze successive dell'elettore, compresi i voti che gli arrivano più avanti nel conteggio. Quando un candidato viene eliminato, i voti vengono ricontati come se quel candidato non si fosse mai presentato. Rispetto a Scottish STV, si disperdono meno voti, ma il conteggio non può essere verificato a mano.
 
 <!-- translation-section: quota-type -->
 
@@ -93,60 +93,60 @@ Meek STV
 La quota è il numero minimo di voti necessario a un candidato per ottenere un seggio. Può essere:
 
 Droop
-  : Consigliata. È la quota standard per le elezioni STV ed è usata in Irlanda, Australia e Scozia. È la quota più bassa che non può essere raggiunta da un numero di candidati superiore al numero di seggi disponibili. Un gruppo di elettori che mette al primo posto i propri candidati ottiene almeno tanti seggi quante sono le quote di voti di cui dispone. Si calcola così:
+  : Consigliata. La quota standard per le elezioni STV, usata in Irlanda, Australia e Scozia. È la quota più piccola che può essere raggiunta da un numero di candidati non superiore al numero di seggi. Un gruppo di elettori che mette i propri candidati ai primi posti ottiene almeno tanti seggi quante sono le quote di voti di cui dispone. Si calcola così:
 \\[ floor(\frac{votes}{(seats + 1)}) + 1 \\]
 
 Hare
-  : Una quota più alta. I gruppi con molti voti ne usano di più per ogni seggio ottenuto, quindi i gruppi più piccoli hanno maggiori probabilità di ottenere gli ultimi seggi. Si calcola così:
+  : Una quota più alta. I gruppi con molti voti ne usano di più per ogni seggio che ottengono, quindi i gruppi più piccoli hanno maggiori probabilità di ottenere gli ultimi seggi. Si calcola così:
     \\[ \frac{votes}{seats}\\]
 
-In entrambe le formule, *votes* è il numero di schede che indicano una preferenza per almeno un candidato.
+In entrambe le formule, *votes* è il numero di schede che indicano almeno un candidato in ordine di preferenza.
 
-Meek STV calcola la quota senza arrotondamenti, usando votes ÷ (seats + 1) per Droop. Ricalcola la quota a ogni turno sulla base dei voti ancora attribuiti ai candidati, e un candidato deve superarla per essere eletto.
+Meek STV calcola la quota senza arrotondamenti, usando votes ÷ (seats + 1) per Droop. Ricalcola la quota a ogni turno in base ai voti ancora attribuiti ai candidati, e un candidato deve superarla per essere eletto.
   
   >[!TIP]
-  > La quota Droop richiede sempre meno voti della quota Hare. Per esempio, in un'elezione con 100 voti e quattro seggi, la quota Droop è 21 e la quota Hare è 25.
+  > La quota Droop corrisponde sempre a un numero di voti inferiore alla quota Hare. Per esempio, in un'elezione con 100 voti e quattro seggi, la quota Droop sarebbe 21 e la quota Hare 25.
 
 <!-- translation-section: how-voting-works -->
 
 ## Come si vota
 
-In questo esempio, la cooperativa Oatmilk elegge tre persone che seguiranno la sperimentazione degli imballaggi riutilizzabili. Chi vota trascina i candidati sopra la linea e li ordina secondo le proprie preferenze:
+In questo esempio, Oatmilk Cooperative sta eleggendo tre persone per supervisionare la sperimentazione degli imballaggi riutilizzabili. Gli elettori trascinano i candidati sopra la linea e li classificano in ordine di preferenza:
 
 ![](stv-vote-in-progress.png)
 
-- **Posizione 1** = candidato preferito
-- **Posizione 2** = seconda scelta
-- Continua a ordinare tutti i candidati che desideri
+- **Preferenza 1** = candidato preferito
+- **Preferenza 2** = seconda scelta
+- Continua a classificare tutti i candidati che desideri
 
-Devi indicare almeno un candidato, ma non è necessario ordinarli tutti. I candidati non classificati non ricevono alcuna parte del tuo sostegno.
+Gli elettori devono classificare almeno un candidato, ma non devono necessariamente classificarli tutti. I candidati non classificati non ricevono alcun sostegno da quell'elettore.
 
 <!-- translation-section: how-counting-works -->
 
 ## Come funziona il conteggio
 Il conteggio si svolge così:
 
-1. Si calcola una **quota** (il numero minimo di voti necessario per ottenere un seggio).
-2. Si contano le **Prime preferenze** di ogni candidato.
-3. Ogni candidato che raggiunge la quota viene **eletto**. I suoi voti in eccedenza rispetto alla quota vengono **trasferiti** alle preferenze successive di chi lo ha votato, con un valore frazionario, partendo dal surplus più grande. I voti vengono trasferiti solo ai candidati ancora in gara.
-4. Se non resta alcun surplus da trasferire, viene **eliminato il candidato con meno voti**. I suoi voti vengono trasferiti alle preferenze successive di chi lo ha votato, mantenendo il loro intero valore.
+1. Viene calcolata una **quota** (il numero minimo di voti necessario per ottenere un seggio).
+2. Vengono contate le **Prime preferenze** per ciascun candidato.
+3. Ogni candidato che raggiunge la quota viene **eletto**. I suoi voti in eccesso (oltre la quota) vengono **trasferiti** alle preferenze successive degli elettori con un valore frazionario, partendo dal surplus più grande. I voti vengono trasferiti solo ai candidati ancora in conteggio.
+4. Se non rimane alcun surplus da trasferire, il candidato con il **minor numero di voti viene eliminato**. I suoi voti vengono trasferiti alle preferenze successive degli elettori con il loro valore intero.
 5. Quando il numero di candidati rimasti è uguale al numero di seggi ancora da assegnare, vengono tutti eletti, anche se non hanno raggiunto la quota.
-6. Altrimenti il conteggio riprende dal punto 3 finché tutti i seggi sono assegnati.
+6. Altrimenti, il conteggio riprende dal punto 3 finché tutti i seggi sono assegnati.
 
-Il valore frazionario permette di distribuire solo i voti che non servono a un candidato eletto. Per esempio, se la quota è 26 e un candidato ha 40 voti, il suo surplus è 14. Ognuna delle sue 40 schede viene trasferita alla preferenza successiva con un valore di 14 ÷ 40 = 0.35 voti.
+Il valore frazionario distribuisce solo i voti che non servono a un candidato eletto. Per esempio, se la quota è 26 e un candidato ha 40 voti, il suo surplus è 14. Ciascuna delle sue 40 schede passa alla preferenza successiva con un valore di 14 ÷ 40 = 0,35 voti.
 
-Nel metodo Scottish STV, il valore di ogni voto trasferito viene arrotondato per difetto a cinque cifre decimali, come nelle elezioni dei consigli locali scozzesi.
+In Scottish STV, il valore di ogni voto trasferito viene arrotondato per difetto a cinque cifre decimali, come nelle elezioni dei consigli locali scozzesi.
 
-Se due o più candidati hanno il minor numero di voti, viene eliminato quello che aveva meno voti nel più recente turno precedente.
+Se due o più candidati hanno il minor numero di voti, viene eliminato quello che aveva meno voti nel turno precedente più recente in cui i loro conteggi erano diversi.
 
 >[!TIP]
->Una scheda viene conteggiata solo finché indica una preferenza per un candidato ancora in gara. Quando non ne resta nessuno, la scheda è «esaurita» e non viene più conteggiata.
+>Una scheda conta solo finché indica una preferenza per un candidato ancora in conteggio. Quando non ne rimane nessuno, la scheda è "esaurita" e non conta più.
 
 <!-- translation-section: understanding-results -->
 
-## Capire i risultati
+## Comprendere i risultati
 
-Dopo la chiusura del sondaggio, i risultati sono mostrati in diverse sezioni. In questa elezione, Samira Patel, Alex Morgan e Morgan Price occupano i tre seggi del comitato:
+Dopo la chiusura del sondaggio, i risultati vengono visualizzati in diverse sezioni. In questa elezione, Samira Patel, Alex Morgan e Morgan Price ottengono i tre seggi del comitato:
 
 ![](stv-results-summary.png)
 
@@ -154,39 +154,39 @@ Dopo la chiusura del sondaggio, i risultati sono mostrati in diverse sezioni. In
 
 ### Metodo e quota
 
-In alto trovi il metodo di conteggio (Scottish STV o Meek STV), il tipo di quota (Droop o Hare) e la quota stessa: il numero di voti necessario a un candidato per ottenere un seggio.
+In alto vedrai il metodo di conteggio (Scottish STV o Meek STV) e il tipo di quota (Droop o Hare), insieme alla quota: il numero di voti necessario a un candidato per ottenere un seggio.
 
 <!-- translation-section: elected-candidates -->
 
 ### Candidati eletti
 
-Una tabella riassume i vincitori in cinque colonne:
+Una tabella riepilogativa degli eletti con cinque colonne:
 
 | Colonna | Significato |
 |--------|---------|
 | **Candidato** | Il nome del candidato eletto |
-| **Round eletto** | Il turno di conteggio in cui ha raggiunto la quota e ottenuto un seggio. Il turno 1 indica che sono bastate le prime preferenze; nei turni successivi sono serviti voti trasferiti da candidati eliminati o con voti in eccedenza. |
-| **Prime preferenze** | Quante persone hanno indicato questo candidato come prima scelta. Mostra il sostegno diretto ricevuto prima di qualsiasi trasferimento di voti. |
-| **Conteggio finale** | I voti del candidato nel momento in cui è stato eletto. Grazie ai trasferimenti, spesso sono più delle sue prime preferenze. |
-| **Surplus** | Di quanto i voti del candidato al momento dell'elezione superavano la quota (conteggio finale meno quota). Un surplus maggiore indica un sostegno superiore a quello necessario per vincere. Nel metodo Scottish STV, questo surplus viene ridistribuito alle preferenze successive di chi ha votato il candidato. |
+| **Round eletto** | Il turno di conteggio in cui il candidato ha raggiunto la quota e ottenuto un seggio. Il turno 1 indica che è stato eletto con le sole prime preferenze; i turni successivi indicano che ha avuto bisogno di voti trasferiti da candidati eliminati o con un surplus. |
+| **Prime preferenze** | Il numero di elettori che hanno indicato questo candidato come prima scelta. Mostra il sostegno diretto al candidato prima di qualsiasi trasferimento di voti. |
+| **Conteggio finale** | Il conteggio dei voti del candidato al momento della sua elezione. A causa dei trasferimenti di voti, è spesso superiore al numero delle sue prime preferenze. |
+| **Surplus** | Di quanto il conteggio finale del candidato ha superato la quota (conteggio finale meno quota). Un surplus maggiore indica un sostegno più forte rispetto a quello necessario per essere eletto. In Scottish STV, questo surplus viene ridistribuito alle preferenze successive degli elettori. |
 
-A volte i turni precedenti non permettono di risolvere un pareggio. Se il pareggio non cambia chi viene eletto, il conteggio prosegue. Se invece lo cambia, il conteggio si ferma a quel turno. I candidati che vincono indipendentemente da come viene risolto il pareggio vengono mostrati come eletti. I candidati che potrebbero vincere o perdere a seconda di come viene risolto il pareggio vengono mostrati in una tabella separata. Loomio li mostra in parità, senza sceglierne uno a caso.
+A volte i turni precedenti non permettono di risolvere una parità. Se la parità non cambia chi viene eletto, il conteggio prosegue. Se invece lo cambia, il conteggio si ferma a quel turno. I candidati che vengono eletti comunque si risolva la parità sono indicati come eletti. I candidati che potrebbero essere eletti o meno a seconda di come si risolve la parità sono mostrati in una tabella separata. Loomio li indica come a pari merito anziché sceglierne uno a caso.
 
 <!-- translation-section: round-by-round-details -->
 
-### Dettagli round per round
+### Dettagli turno per turno
 
 Espandi **Dettagli round per round** per vedere i trasferimenti di voti e le eliminazioni. Ogni riga rappresenta un candidato e ogni colonna un turno di conteggio. Ogni numero indica i voti attribuiti al candidato all'inizio di quel turno:
 
 ![](stv-results.png)
 
-Il verde indica quando un candidato è stato eletto, il rosso quando è stato eliminato e l'arancione quando si è verificato un pareggio.
+L'evidenziazione verde indica quando un candidato è stato eletto, quella rossa quando è stato eliminato e quella arancione quando si è trovato a pari merito.
 
 <!-- translation-section: share-an-outcome -->
 
 ## Condividi una conclusione
 
-Quando l'elezione si chiude, condividi una conclusione. Indica i nomi delle persone elette e quando inizia il loro incarico. Consulta [Condividi una conclusione](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome) per sapere come funzionano le conclusioni.
+Quando le elezioni si chiudono, condividi una conclusione. Indica i nomi delle persone elette e quando inizia il loro incarico. Consulta [Condividi una conclusione](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome) per sapere come funzionano le conclusioni.
 
 ![Una conclusione che indica i nomi dei membri eletti del comitato](outcome.png)
 
@@ -194,4 +194,4 @@ Quando l'elezione si chiude, condividi una conclusione. Indica i nomi delle pers
 
 ## Esportare le schede
 
-Dopo la chiusura dell'elezione, chi può vedere i risultati può esportare le schede in formato BLT per un riconteggio o una verifica indipendente. L'esportazione contiene le classifiche dei candidati e riunisce quelle identiche in un'unica riga, indicando il numero di schede. Per le elezioni anonime, non contiene le identità di chi ha votato, gli identificativi delle schede, gli orari di invio né l'ordine di invio.
+Dopo la chiusura delle elezioni, le persone che possono visualizzare i risultati possono esportare le schede in formato BLT per un riconteggio o una verifica indipendente. L'esportazione contiene le preferenze ordinate per i candidati e raggruppa gli ordinamenti identici in un'unica riga con il numero di schede corrispondenti. Per le elezioni anonime, non contiene le identità degli elettori, gli identificativi delle schede, gli orari di invio o l'ordine di invio.

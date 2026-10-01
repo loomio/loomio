@@ -1,10 +1,10 @@
 ---
 title: Processo decisionale semplice
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/guides/making_decisions/simple_decision_process.md
+source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
+source_file: docs/en/guides/making_decisions/simple_decision_process.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-30'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 4181c35d7bb80d36
   simple-decision-making-in-3-steps: 2e27700e7ce074d8
@@ -14,13 +14,13 @@ sections:
   outcome: 22c7e31a66929ef6
   proposals-can-help-in-many-situations: 3e3757bc31211752
 generated:
-  introduction: e7c1c261dc1b3f8a
-  simple-decision-making-in-3-steps: df9c18a14fd21028
-  step-1-introduce-and-discuss: c96a7c2d598a8a9e
-  step-2-sense-check: 5878c11df3ef1b19
-  step-3-proposal: 396a2f5996ba2985
-  outcome: 45346823aa97df9e
-  proposals-can-help-in-many-situations: 2335e7194c052aee
+  introduction: 2780d2c8e2cc80ac
+  simple-decision-making-in-3-steps: 64219719d341a351
+  step-1-introduce-and-discuss: eaafde4914ea3be3
+  step-2-sense-check: 60d20806559964d5
+  step-3-proposal: c992d9911bb71e3a
+  outcome: cdd9d05d841a603d
+  proposals-can-help-in-many-situations: 41cece83fd61f3cb
 title_source: c3bdf7193b944a7d
 title_generated: 06c79bf81be0cc76
 ---
@@ -29,60 +29,60 @@ title_generated: 06c79bf81be0cc76
 
 # Processo decisionale semplice
 
-Questa guida descrive un processo completo: dalla discussione al Controllo del senso, fino alla proposta finale e alla conclusione. Per informazioni sui campi e sulle opzioni di risposta di una proposta, consulta [Proposte](/en/user_manual/polls/proposals/).
+Questa guida descrive un processo completo che utilizza una discussione, una verifica delle opinioni, una proposta finale e una conclusione. Per informazioni sui campi e sulle opzioni di risposta di una proposta, consulta [Proposte](/en/user_manual/polls/proposals/).
 
-Alcune organizzazioni arrivano su Loomio con una pratica consolidata di decisioni collaborative. Spesso hanno già documentato i propri metodi. Molte altre, invece, cercano un punto di partenza per prendere decisioni migliori insieme. Se nella tua organizzazione vi chiedete **come prendiamo decisioni insieme?**, questa guida può aiutarti.
+Alcune organizzazioni arrivano su Loomio dopo aver già sviluppato una cultura e una pratica consolidate di decisione collaborativa. Queste organizzazioni hanno spesso scritto manuali e formalizzato le proprie pratiche, ma la maggior parte sta ancora cercando i primi passi utili per prendere decisioni migliori insieme. Se la domanda centrale nella tua organizzazione è **come prendiamo decisioni insieme?**, questa guida fa per te.
 
-***Ecco tre passi per costruire insieme una decisione migliore e più condivisa, con meno stress e incertezza.***
+***Ecco tre passi per aiutarti a costruire insieme una decisione migliore e più condivisa, con meno stress e ansia.***
 
 <!-- translation-section: simple-decision-making-in-3-steps -->
 
-## Prendere decisioni insieme in 3 passi
+## Prendere decisioni in modo semplice - in 3 passi
 
-Le buone decisioni collaborative raramente arrivano da sole. Di solito serve qualcuno che accompagni la discussione fino alla decisione. Quando avvii una discussione, assumi questo ruolo, a meno che non lo faccia un'altra persona.
+Le buone decisioni collaborative raramente nascono da sole. Quasi sempre traggono beneficio da qualcuno che facilita la discussione fino alla decisione. Quando avvii una conversazione della discussione, assumi quindi un ruolo di facilitazione, a meno che non se ne occupi già qualcun altro.
 
-Segui questi 3 passi per aiutare il tuo gruppo a prendere una buona decisione.
+Segui questi 3 passi mentre aiuti il tuo gruppo a prendere una buona decisione.
 
 <!-- translation-section: step-1-introduce-and-discuss -->
 
-### Passo 1 - Presenta l'argomento e avvia la discussione
-Avvia una **Discussione** su Loomio per presentare l'argomento, aprire il confronto e invitare le persone a partecipare. Fornisci al gruppo le informazioni necessarie per contribuire e il contesto utile a capire lo scopo della discussione.
+### Passo 1 - Introduci e discuti
+Avvia una **discussione** su Loomio per introdurre l'argomento, aprire il confronto e invitare le persone. Includi tutte le informazioni di contesto necessarie al tuo gruppo per partecipare in modo consapevole, insieme agli antecedenti pertinenti, così che tutti comprendano lo scopo.
 
-Chiarisci il tuo obiettivo: quale decisione va presa o quale conclusione vuoi raggiungere con la discussione?
+Chiarisci il tuo obiettivo: qual è la decisione da prendere o la conclusione a cui vuoi arrivare con la discussione?
 
-Man mano che la discussione procede, lascia spazio a punti di vista diversi. A volte le idee migliori arrivano da prospettive inattese. Esplorate e mettete alla prova le idee insieme, favorendo un confronto aperto.
+Man mano che la discussione procede, lascia spazio a contributi diversi: a volte le idee e i contributi migliori nascono da prospettive inaspettate. Lavorate insieme per esplorare e mettere alla prova le idee, incoraggiando una discussione costruttiva e aperta.
 
-Se alcune persone intervengono più delle altre, invita anche chi parla meno a contribuire. Usa una @menzione e chiedi che cosa ne pensa.
+Osserva quando sono sempre le stesse persone a dominare la discussione e invita alcune delle persone più silenziose a contribuire, usando una @menzione e chiedendo cosa ne pensano.
 
-Per facilitare la partecipazione a una discussione complessa, aggiorna la sezione del contesto con un riepilogo dei punti principali.
+Puoi rendere più facile partecipare a una discussione complessa aggiornando la sezione del contesto con un riepilogo dei punti principali.
 
 ![](discussion_simple_decision_refresh_brand.png)
 
 <!-- translation-section: step-2-sense-check -->
 
-### Passo 2 - Controllo del senso
-Quando il gruppo inizia a orientarsi verso una soluzione, usa un sondaggio **Controllo del senso** per raccogliere le opinioni e capire come la pensa il gruppo.
+### Passo 2 - Verifica delle opinioni
+Quando il tuo gruppo comincia a convergere su una direzione da seguire, usa un sondaggio di **Verifica delle opinioni** per raccogliere le opinioni e capire come si sente il gruppo.
 
-Un «Controllo del senso» segnala che sta prendendo forma una proposta e invita le persone a partecipare. Può anche aiutare a chiarire una questione, anche quando la soluzione non è ancora evidente.
+Una «verifica delle opinioni» comunica alle persone che una proposta sta prendendo forma e le incoraggia a partecipare. Può anche essere usata per chiarire una questione, anche se la soluzione non è ancora evidente.
 
-Il Controllo del senso aiuta a far emergere le preoccupazioni prima di cercare un accordo formale. Puoi capire se il gruppo è soddisfatto della direzione scelta, se ha domande, se serve più tempo o se ci sono riserve.
+La verifica delle opinioni aiuta a far emergere le preoccupazioni prima di passare a un accordo formale. Puoi capire se le persone sono soddisfatte della direzione presa, se hanno domande o bisogno di più tempo, oppure se hanno delle preoccupazioni.
 
-Usa i commenti ricevuti per migliorare e precisare la proposta. Se resta del lavoro da fare, torna al Passo 1 e poi avvia un altro Controllo del senso.
+Usa i riscontri per migliorare e affinare la proposta. Se c'è ancora del lavoro da fare, potresti dover tornare al Passo 1 e poi svolgere un altro turno di verifica delle opinioni.
 
-La partecipazione del gruppo ti aiuterà a capire quando è il momento di passare a una proposta.
+Una buona partecipazione ti aiuterà a valutare quando sei pronto a passare a una proposta.
 
 ![](proposal_sense_check_simple_process_refresh_brand.png)
 
 <!-- translation-section: step-3-proposal -->
 
 ### Passo 3 - Proposta
-A questo punto puoi presentare una **Proposta** formale con una buona probabilità che venga approvata.
+A questo punto, quando presenti una **Proposta** formale, lo fai con la fiducia che verrà approvata.
 
-La discussione potrebbe aver prodotto molte varianti. Indica con precisione quale decisione si sta prendendo, così tutte le persone sapranno che cosa significano le opzioni di voto.
+Potrebbero esserci state molte discussioni e diverse varianti suggerite: descrivi con precisione la decisione da prendere, così che tutti sappiano cosa significano le opzioni di voto.
 
-Scegli con cura la scadenza della proposta, in modo che i membri del gruppo abbiano tempo per valutarla e partecipare. Se serve, puoi sempre prorogarla.
+Scegli con attenzione le scadenze della proposta, in modo che i membri del gruppo abbiano il tempo di riflettere e partecipare. Puoi sempre prorogare la data di chiusura, se necessario.
 
-Questo passo serve a formalizzare l'accordo attraverso il voto e a comunicare una conclusione: che cosa è stato deciso e che cosa succederà dopo.
+Questo passo serve a formalizzare l'accordo attraverso il voto delle persone e a dichiarare una conclusione: cosa è appena successo e cosa succederà dopo.
 
 I risultati della proposta vengono registrati insieme alla discussione che ha portato alla decisione.
 
@@ -91,14 +91,14 @@ I risultati della proposta vengono registrati insieme alla discussione che ha po
 <!-- translation-section: outcome -->
 
 ### Conclusione
-Quando un sondaggio su Loomio si chiude, ti verrà chiesto di pubblicare una **conclusione** per comunicare a tutti che cosa è successo e quali saranno i prossimi passi.
+Quando un sondaggio su Loomio si chiude, ti verrà chiesto di definire una **conclusione** per far sapere a tutti cosa è successo e cosa succederà dopo.
 
 ![](proposal_outcome_simple_process_refresh_brand.png)
 
 <!-- translation-section: proposals-can-help-in-many-situations -->
 
-## Le proposte sono utili in molte situazioni
+## Le proposte possono aiutare in molte situazioni
 
-Puoi avviare una proposta anche se non sai se tutti saranno d'accordo. Le proposte aiutano a far emergere le questioni da risolvere e a chiarire i disaccordi, anche quando non c'è ancora consenso.
+Non esitare ad avviare una proposta solo perché non sei sicuro che tutti saranno d'accordo: le proposte non servono soltanto quando c'è consenso unanime. Sono pensate per far emergere questioni da risolvere e sono utili per chiarire i disaccordi.
 
-Le pagine seguenti illustrano processi decisionali più articolati basati su [consigli](/en/guides/making_decisions/advice_process), [consenso per assenza di obiezioni](/en/guides/making_decisions/consent_process ) o [consenso](/en/guides/making_decisions/consensus_process ).
+Le prossime pagine illustrano alcuni processi più complessi per arrivare a una decisione, attraverso la [consultazione](/en/guides/making_decisions/advice_process), il [consenso](/en/guides/making_decisions/consent_process ) o il [consenso unanime](/en/guides/making_decisions/consensus_process ).
