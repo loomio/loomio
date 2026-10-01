@@ -1,26 +1,26 @@
 ---
 title: Выберыце
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/polls/choose/index.md
+source_revision: 9c60c42fc739483fa23f15d9f34a1e9245518092
+source_file: docs/en/user_manual/polls/choose/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-30'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: f9d6a5bfb7445de0
   when-to-use-choose: f8a798497cac5a43
   example-set-a-planning-meeting-agenda: 32a94a916dbf84e5
   set-up-the-poll: a16095b63c57e0c9
   vote: d170451131c544cf
-  read-the-results: 84521c82aed8dd29
+  read-the-results: e675d12da1a4ba8a
+  share-an-outcome: f6afc1713b921265
 generated:
   introduction: e8b04b0c2d0b4840
   when-to-use-choose: 36410b7bf22bba8d
   example-set-a-planning-meeting-agenda: dd9fd6b096ceef6d
   set-up-the-poll: b5131fb740532c0d
   vote: 1aacd641859ca68e
-  read-the-results: 6f50d1244da968b3
-needs_review:
-  read-the-results: use the interface label "**Выснова**" for "**Outcome**"
+  read-the-results: a7f8c405481787f5
+  share-an-outcome: 044a49b031596a9d
 title_source: c7f937836f5d82d5
 title_generated: d2a6b690e2efed9c
 ---
@@ -82,12 +82,16 @@ title_generated: d2a6b690e2efed9c
 
 ## Праглядзіце вынікі
 
-Вынікі паказваюць долю кожнага варыянта сярод усіх выбараў, колькасць людзей, якія яго выбралі, і тых, хто яшчэ не прагаласаваў. Паколькі кожны чалавек мог выбраць два варыянты, працэнты адлюстроўваюць долю выбараў, а не долю людзей.
+Вынікі паказваюць долю кожнага варыянта сярод усіх выбараў, колькасць людзей, якія яго выбралі, і тых, хто яшчэ не галасаваў. Паколькі кожны чалавек мог выбраць два варыянты, працэнты адлюстроўваюць долю выбараў, а не долю людзей.
 
 ![](results.png)
 
 У гэтым прыкладзе **Графік збору бутэлек у кавярнях** выбралі тры разы. **Працэс мыцця** і **Справаздача аб долі вяртанняў** атрымалі па два выбары. Паводле вынікаў, збору бутэлек у кавярнях варта прысвяціць найбольш часу. Тэмы з аднолькавай колькасцю выбараў усё яшчэ патрабуюць рашэння арганізатараў аб тым, як размеркаваць астатні час.
 
-Калі апытанне завершыцца, апублікуйце **Выснову** і растлумачце, як група выкарыстае яго вынікі.
+<!-- translation-section: share-an-outcome -->
 
-![](outcome.png)
+## Падзяліцеся высновай
+
+Калі апытанне завершыцца, падзяліцеся высновай. Растлумачце, як група выкарыстае вынікі, у тым ліку як вырашаюцца выпадкі з аднолькавай колькасцю выбараў. Пра тое, як працуюць высновы, глядзіце ў раздзеле [Падзяліцеся высновай](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome).
+
+![Выснова, паводле якой збору бутэлек у кавярнях прысвячаецца найбольш часу на сустрэчы](outcome.png)

@@ -1,24 +1,26 @@
 ---
 title: Stimmungsbild
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/polls/proposals/sense_check/index.md
+source_revision: 71554be8e61a76613b0707b8262302c22299a5d0
+source_file: docs/en/user_manual/polls/proposals/sense_check/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 2336356b9efbde30
   when-to-use-sense-check: c70985229c659d2f
   example-check-a-trial-plan: 8055cad3418b4bb7
   set-up-the-proposal: 8106c7ab17a225e6
   vote: 2440e2649ed1ff05
-  read-the-results: f8f63c908d080f77
+  read-the-results: 9cac8b6f7c7de36f
+  share-an-outcome: b05f9f889a838d47
 generated:
   introduction: fcf5558b6642f585
   when-to-use-sense-check: 642a0ca3165f160b
   example-check-a-trial-plan: bc664623737eefd3
   set-up-the-proposal: 62366237387b812e
   vote: 571213e00f6dd458
-  read-the-results: bb0d08f9b2b1b968
+  read-the-results: f6b482f39d2da5bc
+  share-an-outcome: 5e7107b4ca32777e
 title_source: e9ac5b767e01ae7b
 title_generated: c3abb077538e72a7
 ---
@@ -70,8 +72,14 @@ Die Teilnehmenden wählen die Antwort, die ihre aktuelle Sicht am besten wiederg
 
 ## Ergebnisse lesen
 
-Das Diagramm zeigt die Anzahl und den Anteil der Stimmen für jede Antwort. Lies auch die Begründungen: Ein gut begründetes Bedenken kann Aufmerksamkeit erfordern, selbst wenn die meisten Teilnehmenden **Sieht gut aus** wählen.
+Das Diagramm zeigt die Anzahl und den Anteil der Stimmen für jede Antwort. Lies neben der Verteilung auch die Begründungen: Ein gut begründetes Bedenken kann Aufmerksamkeit erfordern, selbst wenn die meisten Teilnehmenden **Sieht gut aus** wählen.
 
 ![](../proposal_sense_check_results.png)
 
-Veröffentliche ein Fazit, das die geplanten Änderungen der Gruppe zusammenfasst oder festhält, dass die Idee für die nächste Entscheidungsphase bereit ist.
+<!-- translation-section: share-an-outcome -->
+
+## Ein Fazit teilen
+
+Teile ein Fazit, wenn das Stimmungsbild abgeschlossen ist. Fasse die Änderungen zusammen, die die Gruppe vornehmen wird, oder halte fest, dass die Idee für die nächste Entscheidungsphase bereit ist. Unter [Ein Fazit teilen](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome) erfährst du, wie Fazits funktionieren.
+
+![Ein Fazit, das festhält, dass der Plan vor der abschließenden Prüfung überarbeitet wird](outcome.png)

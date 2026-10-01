@@ -205,26 +205,36 @@ class RecordCacheTest < ActiveSupport::TestCase
     assert_equal outcome, cache.scope[:outcomes_by_poll_id][poll.id]
   end
 
-  test 'add undecided voter ids batches voters by poll and caches missing results' do
-    included_poll = Poll.new(id: 351)
-    excluded_poll = Poll.new(id: 352)
-    included_poll.define_singleton_method(:detached_anonymous?) { false }
-    included_poll.define_singleton_method(:results_include_undecided) { true }
-    excluded_poll.define_singleton_method(:detached_anonymous?) { true }
-    excluded_poll.define_singleton_method(:results_include_undecided) { true }
-    relation = Object.new
-    relation.define_singleton_method(:undecided) { self }
-    relation.define_singleton_method(:where) { |**| self }
-    relation.define_singleton_method(:pluck) { |*| [[351, 10], [351, 11]] }
+  test 'result voter ids are capped per poll and polls without them are known missing' do
+    admin = users(:admin)
+    group = groups(:group)
+    poll = PollService.create(params: {
+      title: 'Many undecided', poll_type: 'proposal', group_id: group.id,
+      poll_option_names: %w[agree disagree], closing_at: 3.days.from_now, specified_voters_only: true
+    }, actor: admin)
+    voters = Array.new(Poll::RESULT_VOTER_IDS_MAX + 5) do |i|
+      User.create!(name: "Undecided #{i}", email: "undecided-cache-#{i}@example.com", email_verified: true).tap { |user| group.add_member!(user) }
+    end
+    PollService.invite(poll: poll, actor: admin, params: {recipient_user_ids: voters.map(&:id), notify_recipients: false})
+    none_voter = voters.first
+    poll.update_columns(show_none_of_the_above: true)
+    poll.stances.latest.find_by!(participant: none_voter).update_columns(cast_at: Time.current, none_of_the_above: true)
+    anonymous_poll = PollService.create(params: {
+      title: 'Anonymous', poll_type: 'proposal', anonymous: true, group_id: group.id,
+      poll_option_names: %w[agree disagree], closing_at: 3.days.from_now
+    }, actor: admin)
     cache = RecordCache.new
 
-    Stance.stub(:latest, relation) do
-      cache.add_undecided_voter_ids([included_poll, excluded_poll])
-    end
+    cache.add_undecided_voter_ids([poll.reload, anonymous_poll])
+    cache.add_none_of_the_above_voter_ids([poll, anonymous_poll])
 
-    assert_equal [10, 11], cache.scope[:undecided_voter_ids_by_poll_id][included_poll.id]
-    assert cache.scope[:undecided_voter_ids_by_poll_id].key?(excluded_poll.id)
-    assert_nil cache.scope[:undecided_voter_ids_by_poll_id][excluded_poll.id]
+    undecided_ids = cache.scope[:undecided_voter_ids_by_poll_id][poll.id]
+    assert_equal Poll::RESULT_VOTER_IDS_MAX, undecided_ids.length
+    assert (undecided_ids - poll.undecided_voters.ids).empty?
+    assert cache.scope[:undecided_voter_ids_by_poll_id].key?(anonymous_poll.id)
+    assert_nil cache.scope[:undecided_voter_ids_by_poll_id][anonymous_poll.id]
+    assert_equal [none_voter.id], cache.scope[:none_of_the_above_voter_ids_by_poll_id][poll.id]
+    assert_nil cache.scope[:none_of_the_above_voter_ids_by_poll_id][anonymous_poll.id]
   end
 
   test 'excluded types do not create their cache indexes' do

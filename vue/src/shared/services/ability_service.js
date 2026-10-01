@@ -345,12 +345,6 @@ export default new class AbilityService {
     )
   }
 
-  canParticipateInPoll(poll) {
-    if (!poll) { return false; }
-    if (poll.closedAt) { return false; }
-    return poll.group().isEnabled() && (poll.myStance() || (!poll.specifiedVotersOnly && poll.membersInclude(Session.user())));
-  }
-
   canEditPoll(poll) {
     return poll.group().isEnabled() && !poll.topic().closedAt &&
     poll.adminsInclude(Session.user()) && !poll.closedAt;
@@ -363,6 +357,11 @@ export default new class AbilityService {
 
   canExportPoll(poll) {
     return !poll.discardedAt && poll.membersInclude(Session.user()) && (poll.closedAt || (poll.hideResults !== "until_closed"));
+  }
+
+  // Matches the server's view_anonymous_voters: everyone who can see the results.
+  canViewAnonymousVoters(poll) {
+    return poll.anonymous && poll.showResults();
   }
 
   canSetPollOutcome(poll) {

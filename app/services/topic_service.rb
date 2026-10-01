@@ -30,7 +30,9 @@ class TopicService
                         audience: params[:recipient_audience])
 
       recipient_user_ids = users.pluck(:id)
-      stances_by_poll_id = topic.polls.active.where(specified_voters_only: false).each_with_object({}) do |poll, memo|
+      # Guests vote only through a stance, so they get one in every unclosed
+      # poll, including scheduled and draft polls that open later.
+      stances_by_poll_id = topic.polls.kept.where(closed_at: nil, specified_voters_only: false).each_with_object({}) do |poll, memo|
         memo[poll.id] = PollService.create_anyone_can_vote_stances(poll)
       end
 

@@ -155,6 +155,22 @@ function captureResults(screenshot, pollType) {
   );
 }
 
+function captureOutcome(page, screenshot, pollType) {
+  openTypePoll(page, pollType, 'outcome');
+  page.waitFor('.poll-common-outcome-panel');
+  screenshot.captureRegion(
+    `polls/${pollTypeDirectories[pollType]}/outcome`,
+    ['.poll-created .poll-common-card__title', '.poll-created .poll-common-chart-panel', '.poll-created .action-dock'],
+    {
+      padding: 32,
+      width: 1200,
+      height: 2400,
+      clearSelection: true,
+      spotlight: {selector: '.poll-common-outcome-panel', padding: 16, radius: 16, opacity: 0.4, outlineWidth: 0}
+    }
+  );
+}
+
 module.exports = {
   '@tags': ['manual-screenshot'],
 
@@ -255,15 +271,19 @@ module.exports = {
   },
 
   'poll_outcome': (test) => {
-    const page = pageHelper(test);
-    const screenshot = manualScreenshot(test);
-    openTypePoll(page, 'poll', 'outcome');
-    page.waitFor('.poll-common-outcome-panel');
-    screenshot.captureElement(
-      'polls/choose/outcome',
-      '.poll-common-outcome-panel',
-      {width: 1100, height: 1000}
-    );
+    captureOutcome(pageHelper(test), manualScreenshot(test), 'poll');
+  },
+
+  'score_outcome': (test) => {
+    captureOutcome(pageHelper(test), manualScreenshot(test), 'score');
+  },
+
+  'dot_vote_outcome': (test) => {
+    captureOutcome(pageHelper(test), manualScreenshot(test), 'dot_vote');
+  },
+
+  'ranked_choice_outcome': (test) => {
+    captureOutcome(pageHelper(test), manualScreenshot(test), 'ranked_choice');
   },
 
   'score_options': (test) => {

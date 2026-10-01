@@ -168,6 +168,104 @@ class StvCountServiceTest < ActiveSupport::TestCase
     assert first_round[:transfers].any?, "Should have transfer data"
   end
 
+  test "scottish: candidates reaching quota together are elected before any surplus moves" do
+    # 3 seats, 17 voters, Droop quota = 5.
+    # Stage 1: A=7 and B=5 both reach quota and are elected together.
+    # A's surplus of 2 skips B (already elected) and goes to C, giving C 3.99997
+    # (seven papers at 2/7, truncated to 0.28571).
+    # D (3) is excluded and C takes the last seat.
+    options = build_options(%w[A B C D])
+    ballots = []
+    7.times { ballots << [1, 2, 3] }
+    5.times { ballots << [2, 4] }
+    2.times { ballots << [3] }
+    3.times { ballots << [4] }
+
+    result = StvCountService::ScottishCounter.new(ballots, 3, 'droop', options).count
+
+    assert_equal %w[A B C], result[:elected].map { |e| e[:name] }
+    assert_equal [1, 2], result[:rounds].first[:elected]
+    assert_equal({ "3" => 1.99997 }, result[:rounds].first[:transfers]["1"])
+  end
+
+  test "scottish: surpluses are transferred largest first" do
+    # 3 seats, Droop quota = 26. A (40) and B (35) are elected at stage 1.
+    # A's surplus of 14 is transferred before B's surplus of 9, which elects
+    # C at stage 2 and ends the count with B's surplus untransferred.
+    options = build_options(%w[A B C D])
+    ballots = []
+    40.times { ballots << [1, 2, 3, 4] }
+    35.times { ballots << [2, 3, 1, 4] }
+    15.times { ballots << [3, 4, 1, 2] }
+    10.times { ballots << [4, 3, 2, 1] }
+
+    result = StvCountService::ScottishCounter.new(ballots, 3, 'droop', options).count
+
+    assert_equal [1, 2], result[:rounds][0][:elected]
+    assert_equal ["1"], result[:rounds][0][:transfers].keys
+    assert_equal [3], result[:rounds][1][:elected]
+    assert_equal 2, result[:rounds].size
+    assert_equal %w[A B C], result[:elected].map { |e| e[:name] }
+  end
+
+  test "scottish: transfer values are truncated to five decimal places" do
+    # 2 seats, 9 voters, Droop quota = 4. A's 7 papers carry a surplus of 3,
+    # so each moves at 3/7 = 0.428571…, truncated to 0.42857 (rule 49(3)).
+    # B then holds exactly 2 + 7 × 0.42857 = 4.99999 votes.
+    options = build_options(%w[A B C])
+    ballots = []
+    7.times { ballots << [1, 2] }
+    2.times { ballots << [2] }
+
+    result = StvCountService::ScottishCounter.new(ballots, 2, 'droop', options).count
+
+    assert_equal 4, result[:quota]
+    assert_equal({ "2" => 2.99999 }, result[:rounds].first[:transfers]["1"])
+    assert_equal 4.99999, result[:rounds].second[:tallies]["2"]
+  end
+
+  test "meek: votes and keep values are exact to nine decimal places" do
+    options = build_options(%w[A B C])
+    ballots = []
+    6.times { ballots << [1, 2, 3] }
+    3.times { ballots << [2, 3, 1] }
+    1.times { ballots << [3, 2, 1] }
+
+    result = StvCountService::MeekCounter.new(ballots, 2, 'droop', options).count
+
+    result[:rounds].each do |round|
+      (round[:tallies].values + round[:keep_values].values).each do |value|
+        assert_equal value, value.round(9)
+      end
+    end
+  end
+
+  test "scottish: blank ballots do not count towards the quota" do
+    # 9 ranked ballots and 3 blank ones, 2 seats. The Droop quota counts only
+    # the 9 valid ballots: floor(9 / 3) + 1 = 4, not floor(12 / 3) + 1 = 5.
+    options = build_options(%w[A B C])
+    ballots = []
+    4.times { ballots << [1, 3] }
+    3.times { ballots << [2] }
+    2.times { ballots << [3] }
+    3.times { ballots << [] }
+
+    result = StvCountService::ScottishCounter.new(ballots, 2, 'droop', options).count
+
+    assert_equal 4, result[:quota]
+    assert_equal [1], result[:rounds].first[:elected]
+  end
+
+  test "scottish and meek: only blank ballots give an empty result" do
+    options = build_options(%w[A B])
+
+    [StvCountService::ScottishCounter, StvCountService::MeekCounter].each do |counter|
+      result = counter.new([[], []], 1, 'droop', options).count
+      assert_empty result[:elected]
+      assert_empty result[:rounds]
+    end
+  end
+
   # ── Meek STV ──────────────────────────────────────────────────────
 
   test "meek droop: simple election" do
@@ -252,6 +350,34 @@ class StvCountServiceTest < ActiveSupport::TestCase
     elected_names = result[:elected].map { |e| e[:name] }
     assert_includes elected_names, 'A'
     assert_includes elected_names, 'B'
+  end
+
+  test "meek droop: quota is exactly the active votes divided by seats + 1" do
+    # 10 votes, 2 seats: the quota is 10/3, not floor(10/3) + 1 = 4.
+    # A (4 votes) exceeds 10/3 and is elected in the first round.
+    options = build_options(%w[A B C])
+    ballots = []
+    4.times { ballots << [1, 2, 3] }
+    3.times { ballots << [2, 3, 1] }
+    3.times { ballots << [3, 2, 1] }
+
+    result = StvCountService::MeekCounter.new(ballots, 2, 'droop', options).count
+
+    assert_equal 3.333333333, result[:rounds].first[:quota]
+    assert_equal [1], result[:rounds].first[:elected]
+  end
+
+  test "meek droop: candidates must exceed the exact quota" do
+    # 4 votes, 3 seats: every candidate holds exactly the quota of 1, so
+    # electing at the quota would fill 4 seats. Nobody exceeds it.
+    options = build_options(%w[A B C D])
+    ballots = [[1], [2], [3], [4]]
+
+    result = StvCountService::MeekCounter.new(ballots, 3, 'droop', options).count
+
+    assert_equal 1, result[:rounds].first[:quota]
+    assert_empty result[:rounds].first[:elected]
+    assert result[:elected].size <= 3
   end
 
   # ── Edge Cases ────────────────────────────────────────────────────
@@ -341,6 +467,90 @@ class StvCountServiceTest < ActiveSupport::TestCase
 
     assert_equal 1, result[:elected].size
     assert_equal 0, result[:tied].size
+  end
+
+  test "scottish and meek: an elimination tie is broken by the most recent earlier stage" do
+    # 1 seat, 11 voters. Stage 1: A=5, B=3, C=2, D=1. D is excluded and their
+    # paper goes to C, tying B and C on 3. At stage 1 C had fewer votes than B,
+    # so C is excluded rather than B (who has the lower id).
+    options = build_options(%w[A B C D])
+    ballots = []
+    5.times { ballots << [1] }
+    3.times { ballots << [2] }
+    2.times { ballots << [3] }
+    ballots << [4, 3]
+
+    [StvCountService::ScottishCounter, StvCountService::MeekCounter].each do |counter|
+      result = counter.new(ballots, 1, 'droop', options).count
+
+      assert_equal [[4], [3]], result[:rounds].first(2).map { |r| r[:eliminated] }, counter.name
+      assert_empty result[:tied], counter.name
+    end
+  end
+
+  test "scottish and meek: a tie that cannot change the outcome is not reported" do
+    # 1 seat, 8 voters. B and C tie on 2 at the first stage. Whichever is
+    # excluded first, both sets of papers go to A, who wins.
+    options = build_options(%w[A B C])
+    ballots = []
+    4.times { ballots << [1] }
+    2.times { ballots << [2, 1] }
+    2.times { ballots << [3, 1] }
+
+    [StvCountService::ScottishCounter, StvCountService::MeekCounter].each do |counter|
+      result = counter.new(ballots, 1, 'droop', options).count
+
+      assert_equal %w[A], result[:elected].map { |e| e[:name] }, counter.name
+      assert_empty result[:tied], counter.name
+    end
+  end
+
+  test "scottish and meek: a tie that changes the outcome is reported" do
+    # 1 seat, 12 voters. Stage 1: A=4, B=2, C=2, D=4, with B and C tied.
+    # Excluding B first sends B's papers to D, and D wins; excluding C first
+    # sends C's papers to A, and A wins. The count stops at the tie and
+    # reports A and D as tied for the seat.
+    options = build_options(%w[A B C D])
+    ballots = []
+    4.times { ballots << [1] }
+    2.times { ballots << [2, 4] }
+    2.times { ballots << [3, 1] }
+    4.times { ballots << [4] }
+
+    [StvCountService::ScottishCounter, StvCountService::MeekCounter].each do |counter|
+      result = counter.new(ballots, 1, 'droop', options).count
+
+      assert_empty result[:elected], counter.name
+      assert_equal %w[A D], result[:tied].map { |t| t[:name] }, counter.name
+      assert_equal [2, 3], result[:rounds].last[:tied], counter.name
+      assert_equal 1, result[:rounds].size, counter.name
+      assert_not result.key?(:unresolved_tie), counter.name
+    end
+  end
+
+  test "scottish and meek: candidates without votes are excluded without a tie" do
+    # 1 seat, 7 candidates, 6 of them with no first preferences.
+    options = build_options(%w[A B C D E F G])
+    ballots = [[1], [1], [2, 1]]
+
+    [StvCountService::ScottishCounter, StvCountService::MeekCounter].each do |counter|
+      result = counter.new(ballots, 1, 'droop', options).count
+
+      assert_equal %w[A], result[:elected].map { |e| e[:name] }, counter.name
+      assert_empty result[:tied], counter.name
+    end
+  end
+
+  test "scottish and meek: a tie between many candidates is reported without exhausting every branch" do
+    options = build_options(%w[A B C D E F G H])
+    ballots = (1..8).map { |cid| [cid] }
+
+    [StvCountService::ScottishCounter, StvCountService::MeekCounter].each do |counter|
+      result = counter.new(ballots, 1, 'droop', options).count
+
+      assert_empty result[:elected], counter.name
+      assert_equal 8, result[:tied].size, counter.name
+    end
   end
 
   # ── Integration with StvCountService.count ────────────────────────

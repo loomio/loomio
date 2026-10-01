@@ -164,7 +164,7 @@ class AppConfig
       privacy_url: ENV['PRIVACY_URL'],
       canonical_host: ENV['CANONICAL_HOST'],
       reply_hostname: ENV['REPLY_HOSTNAME'],
-      help_url: ENV.fetch('HELP_URL', 'https://help.loomio.com/'),
+      help_url: ENV.fetch('HELP_URL', '/docs/en'),
       icon_src: ENV.fetch('THEME_ICON_SRC', "/brand/favicon-yellow-on-transparent.svg"),
       favicon16_src: ENV.fetch('THEME_FAVICON_16_SRC', ENV.fetch('THEME_ICON_SRC', "/brand/favicon-yellow-on-transparent-16.png")),
       favicon32_src: ENV.fetch('THEME_FAVICON_32_SRC', ENV.fetch('THEME_ICON_SRC', "/brand/favicon-yellow-on-transparent-32.png")),
@@ -235,8 +235,7 @@ class AppConfig
       sentry_sample_rate: ENV.fetch('SENTRY_SAMPLE_RATE', 0.1).to_f,
       hidden_poll_templates: [],
       transcription: TranscriptionService.available?,
-      max_message_length: ENV.fetch('LMO_MAX_MESSAGE_LENGTH', 100000),
-      verify_participants_admin_only: !!ENV['LOOMIO_VERIFY_PARTICIPANTS_ADMIN_ONLY']
+      max_message_length: ENV.fetch('LMO_MAX_MESSAGE_LENGTH', 100000)
     }
   end
 

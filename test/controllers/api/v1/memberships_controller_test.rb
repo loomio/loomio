@@ -60,6 +60,42 @@ class Api::V1::MembershipsControllerTest < ActionController::TestCase
     assert_equal 'dr', m.reload.title
   end
 
+  test 'member updates their own title without changing vote weight' do
+    membership = @test_group.membership_for(@user)
+
+    patch :update, params: {id: membership.id, membership: {title: 'Member'}}
+
+    assert_response :success
+    assert_equal 'Member', membership.reload.title
+    assert_equal 1, membership.weight
+  end
+
+  # Vote weights are only edited together on the weights page, so the
+  # per-member update rejects a weight even from a group admin.
+  test 'membership update rejects a vote weight' do
+    sign_in @admin
+    membership = @test_group.membership_for(@user)
+
+    patch :update, params: {id: membership.id, membership: {title: 'Chair', weight: '0.5'}}
+
+    assert_response :bad_request
+    assert_nil membership.reload.title
+    assert_equal 1, membership.weight
+  end
+
+  test 'invalid weights are rejected by the bulk weight endpoints' do
+    sign_in @admin
+    membership = @test_group.membership_for(@user)
+
+    patch :set_weights, params: {group_id: @test_group.id, weights: {membership.id => 'abc'}}
+    assert_response :unprocessable_entity
+
+    patch :reset_weights, params: {group_id: @test_group.id, weight: '1000000000'}
+    assert_response :unprocessable_entity
+
+    assert_equal 1, membership.reload.weight
+  end
+
   test 'user_name updates name but not username' do
     sign_in @admin
     member_user = User.create!(
@@ -78,6 +114,126 @@ class Api::V1::MembershipsControllerTest < ActionController::TestCase
   end
 
   # ===== Set Volume Tests =====
+
+  test 'weight editor pages active memberships by name with a total' do
+    sign_in @admin
+    ordered_ids = @test_group.memberships.active.joins(:user).order('users.name, memberships.id').pluck(:id)
+
+    get :weights, params: {group_id: @test_group.id, offset: 1, limit: 2}
+
+    assert_response :success
+    json = JSON.parse(response.body)
+    assert_equal ordered_ids.length, json.fetch('total')
+    assert_equal ordered_ids[1, 2], json.fetch('memberships').map { |row| row.fetch('id') }
+    assert_equal %w[avatar_initials avatar_url delegate email id name title user_id weight], json.fetch('memberships').first.keys.sort
+  end
+
+  test 'weight editor filters by name or email' do
+    sign_in @admin
+    member = User.create!(name: 'Zebedee Quorum', email: 'zq-weights@example.com', email_verified: true)
+    @test_group.add_member!(member)
+
+    get :weights, params: {group_id: @test_group.id, q: 'Quorum'}
+    json = JSON.parse(response.body)
+    assert_equal 1, json.fetch('total')
+    assert_equal [member.name], json.fetch('memberships').map { |row| row.fetch('name') }
+
+    get :weights, params: {group_id: @test_group.id, q: 'zq-weights'}
+    assert_equal [member.email], JSON.parse(response.body).fetch('memberships').map { |row| row.fetch('email') }
+  end
+
+  test 'group admin weight updates leave revoked memberships unchanged' do
+    sign_in @admin
+    revoked = @test_group.add_member!(User.create!(name: 'Former member', email: 'former-weights@example.com', email_verified: true))
+    revoked.update!(revoked_at: Time.current, weight: 4)
+
+    patch :set_weights, params: {group_id: @test_group.id, weights: {revoked.id => 2}}
+    assert_equal 4, revoked.reload.weight
+
+    patch :reset_weights, params: {group_id: @test_group.id, weight: '0.5'}
+    assert_equal 4, revoked.reload.weight
+  end
+
+  test 'member cannot load the weight editor' do
+    get :weights, params: {group_id: @test_group.id}
+
+    assert_response :forbidden
+  end
+
+  test 'group admin updates membership vote weight' do
+    sign_in @admin
+    membership = @test_group.membership_for(@user)
+
+    patch :set_weights, params: {group_id: @test_group.id, weights: {membership.id => 2}}
+
+    assert_response :success
+    assert_equal 2, membership.reload.weight
+  end
+
+  test 'group admin sets a fractional membership vote weight' do
+    sign_in @admin
+    membership = @test_group.membership_for(@user)
+
+    patch :set_weights, params: {group_id: @test_group.id, weights: {membership.id => '0.5'}}
+
+    assert_response :success
+    assert_equal BigDecimal('0.5'), membership.reload.weight
+  end
+
+  test 'member cannot update their own membership vote weight' do
+    membership = @test_group.membership_for(@user)
+
+    patch :set_weights, params: {group_id: @test_group.id, weights: {membership.id => 0}}
+
+    assert_response :forbidden
+    assert_equal 1, membership.reload.weight
+  end
+
+  test 'group admin updates member weights together' do
+    sign_in @admin
+    first = @test_group.membership_for(@user)
+    second = @test_group.membership_for(@admin)
+
+    patch :set_weights, params: {group_id: @test_group.id, weights: {first.id => 0, second.id => 3}}
+
+    assert_response :success
+    assert_equal [0, 3], [first.reload.weight, second.reload.weight]
+  end
+
+  test 'member cannot update member weights together' do
+    membership = @test_group.membership_for(@user)
+
+    patch :set_weights, params: {group_id: @test_group.id, weights: {membership.id => 2}}
+
+    assert_response :forbidden
+    assert_equal 1, membership.reload.weight
+  end
+
+  test 'group admin resets every active member weight' do
+    sign_in @admin
+    @test_group.membership_for(@user).update!(weight: 2)
+
+    patch :reset_weights, params: {group_id: @test_group.id, weight: '0.375'}
+
+    assert_response :success
+    assert @test_group.memberships.active.all? { |membership| membership.reload.weight == BigDecimal('0.375') }
+  end
+
+  test 'member cannot reset group member weights' do
+    patch :reset_weights, params: {group_id: @test_group.id, weight: '0.5'}
+
+    assert_response :forbidden
+    assert_equal 1, @test_group.membership_for(@user).reload.weight
+  end
+
+  test 'reset stores weights at the column precision' do
+    sign_in @admin
+
+    patch :reset_weights, params: {group_id: @test_group.id, weight: '0.0001'}
+
+    assert_response :success
+    assert_equal 0, @test_group.membership_for(@user).reload.weight
+  end
 
   test 'updates volume for single membership' do
     membership = @test_group.membership_for(@user)

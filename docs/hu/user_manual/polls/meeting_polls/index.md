@@ -1,20 +1,20 @@
 ---
 title: Időpont választás
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/polls/meeting_polls/index.md
+source_revision: 9c60c42fc739483fa23f15d9f34a1e9245518092
+source_file: docs/en/user_manual/polls/meeting_polls/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 8ab9108683132085
   time-poll: d5d5d81f7de10419
   voting: c50083234167a0f9
-  outcome: 20d3f84d36a3b860
+  outcome: 74db36d36fa18798
 generated:
   introduction: 1d9530cecc2870b2
   time-poll: c2b27d691b647b6c
   voting: d5a88e3fb8f69f66
-  outcome: 7c99e2154665d549
+  outcome: d9be3a3ede9a5b39
 title_source: 8e2a07d7257fbc04
 title_generated: 1f347de25527b6bc
 ---
@@ -63,9 +63,9 @@ Az eredmények a szavazás során folyamatosan frissülnek. A táblázat megmuta
 
 <!-- translation-section: outcome -->
 
-### Következtetés
+### Következtetés megosztása
 
-Amikor lezárul az időpontválasztás, válaszd ki a legjobb időpontot, és tedd közzé a következtetést.
+Amikor lezárul az időpontválasztás, válaszd ki a legjobb időpontot, és oszd meg a következtetést. A következtetések használatáról a [Következtetés megosztása](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome) részben olvashatsz.
 
 ![](timepoll_outcome.png)
 
@@ -77,6 +77,6 @@ Amikor lezárul az időpontválasztás, válaszd ki a legjobb időpontot, és te
 
 **Helyszín**: Adj meg egy helyszínt vagy egy linket az online találkozóhoz
 
-**Nyilatkozat**: Foglald össze a döntést, és adj meg minden szükséges tudnivalót a találkozóhoz
+**Nyilatkozat**: Foglald össze az eredményt, és adj meg minden szükséges tudnivalót a találkozóhoz
 
 A Loomio a kiválasztott időpontot, a találkozó nevét, időtartamát, helyszínét és a nyilatkozatot is feltünteti a következtetésről szóló értesítésben és a naptármeghívóban.

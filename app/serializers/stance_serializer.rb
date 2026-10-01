@@ -20,7 +20,8 @@ class StanceSerializer < ApplicationSerializer
              :redacted_at,
              :redactor_id,
              :order_at,
-             :option_scores
+             :option_scores,
+             :weight
 
   has_one :poll, serializer: PollSerializer, root: :polls
   has_one :participant, serializer: AuthorSerializer, root: :users
@@ -28,6 +29,10 @@ class StanceSerializer < ApplicationSerializer
 
   def order_at
     object.cast_at || object.created_at
+  end
+
+  def weight
+    VoteWeight.format(object.weight)
   end
 
   def option_scores

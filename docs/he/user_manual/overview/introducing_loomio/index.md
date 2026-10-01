@@ -1,10 +1,10 @@
 ---
 title: היכרות הקבוצה עם Loomio
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/overview/introducing_loomio/index.md
+source_revision: 9c60c42fc739483fa23f15d9f34a1e9245518092
+source_file: docs/en/user_manual/overview/introducing_loomio/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 3937e28d4932fd6d
   choose-one-useful-starting-point: 990ae1af5bf58d27
@@ -16,7 +16,7 @@ sections:
   invite-people: 40058431249a070e
   help-everyone-participate-once: 94babb6a295b7f66
   use-notifications-deliberately: a532d30c36993c6a
-  complete-the-first-process: 48fdb4622d159044
+  complete-the-first-process: fd49ec812c1265e7
 generated:
   introduction: 81c99c5a33deb9c2
   choose-one-useful-starting-point: 214b9893f666e305
@@ -28,7 +28,7 @@ generated:
   invite-people: 59fd96d211ea7205
   help-everyone-participate-once: 873a3b6c678ddf57
   use-notifications-deliberately: ae6d6c2871129c30
-  complete-the-first-process: 31f758a823e13a4f
+  complete-the-first-process: 27e280c5e0da6f7c
 title_source: 4f1540fbaadc657b
 title_generated: 2b344b77854b30b3
 ---
@@ -175,8 +175,8 @@ Loomio אינה מחייבת את כל הקבוצות, או את כל ההחלט
 2. להזמין דיון או שאלות כשיש בהם צורך.
 3. לפתוח את ההצעה או המִשׁאָל המתאימים.
 4. להזכיר למי שעדיין לא השתתפו, לפי הצורך.
-5. לפרסם [מסקנה](/en/user_manual/polls/outcomes) שמציינת מה הוחלט ומה יקרה בהמשך.
+5. לפרסם [מסקנה](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome) שמציינת מה הוחלט ומה יקרה בהמשך.
 
-המסקנה מסיימת את התהליך ויוצרת תיעוד שחברי הקבוצה יוכלו לחזור אליו בהמשך. לאחר מכן, כדאי לברר מה עבד היטב, לשפר את התהליך ולבחור את המשימה החוזרת הבאה שתתנהל ב-Loomio.
+המסקנה מסיימת את התהליך ויוצרת תיעוד שניתן לחזור אליו בהמשך. לאחר מכן, כדאי לברר מה עבד היטב, לשפר את התהליך ולבחור את המשימה החוזרת הבאה שתתנהל ב-Loomio.
 
-לתהליך מונחה מדיון ועד להחלטה, ראו [קבלת החלטות](/en/guides/making_decisions). להנחיות המיועדות לוועד המנהל, ראו [הצגת Loomio לוועד המנהל](/en/guides/board_processes/introduce).
+לתהליך מונחה מדיון ועד להחלטה, ניתן לעיין ב[קבלת החלטות](/en/guides/making_decisions). להנחיות המיועדות לוועד המנהל, ניתן לעיין ב[הצגת Loomio לוועד המנהל](/en/guides/board_processes/introduce).

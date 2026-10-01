@@ -78,7 +78,7 @@ module.exports = {
     page.waitFor('.email-button');
     screenshot.captureRegion(
       'users/merge_accounts/merge_accounts_email',
-      ['.mailer__header', 'body > div:last-of-type'],
+      ['.email-header', '.email-button'],
       {width: 1100, height: 1200, padding: 24, spotlight: '.email-button'}
     );
   },

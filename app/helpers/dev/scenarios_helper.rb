@@ -68,10 +68,8 @@ module Dev::ScenariosHelper
         group_id: group.id,
         wip: params[:wip]),
       actor: observer)
-    Stance.where(poll_id: poll.id, participant_id: observer.id).delete_all
-
-    stance = fake_stance(poll: poll)
-    StanceService.create(stance: stance, actor: observer)
+    stance = poll.stances.latest.find_by!(participant: observer)
+    StanceService.update(stance: stance, actor: observer, params: cast_stance_params(poll))
 
     PollService.close(poll: poll, actor: observer)
 
@@ -93,7 +91,6 @@ module Dev::ScenariosHelper
     Stance.where(poll_id: poll.id).delete_all
     poll.update_columns(
       anonymous: true,
-      voting_system: Poll.voting_systems.fetch("anonymous_ballot"),
       voters_count: 1,
       undecided_voters_count: 0
     )
@@ -401,6 +398,7 @@ module Dev::ScenariosHelper
         poll_type: params[:poll_type] || 'proposal',
         anonymous: !!params[:anonymous],
         hide_results: (params[:hide_results] || :off),
+        weighted_voting: !!params[:weighted],
         opening_at: 3.days.from_now.beginning_of_hour,
         closing_at: 10.days.from_now.beginning_of_hour,
         specified_voters_only: true,

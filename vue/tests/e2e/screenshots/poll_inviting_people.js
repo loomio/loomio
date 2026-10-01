@@ -114,9 +114,9 @@ module.exports = {
     const page = pageHelper(test);
     const screenshot = manualScreenshot(test);
     openAddVoters(page, false);
-    page.execute("Array.from(document.querySelectorAll('.poll-members-form__list .v-list-item')).find(el => el.textContent.includes('Samira Patel')).querySelector('.membership-dropdown__button').click()");
-    page.waitFor('.v-overlay--active .v-list');
-    page.execute("Array.from(document.querySelectorAll('.v-overlay--active .v-list-item')).find(el => el.textContent.includes('Remove')).classList.add('manual-remove-voter')");
+    page.waitFor('.poll-members-form__list .poll-members-form__remove');
+    page.execute("Array.from(document.querySelectorAll('.poll-members-form__list .v-list-item')).find(el => el.textContent.includes('Samira Patel')).querySelector('.poll-members-form__remove').classList.add('manual-remove-voter')");
+    page.waitFor('.manual-remove-voter');
     screenshot.capture('polls/inviting_people/proposal_invite_remove', {
       width: 1280,
       height: 900,

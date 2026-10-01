@@ -34,6 +34,34 @@ class StanceTest < ActiveSupport::TestCase
     assert stance.valid?
   end
 
+  test "vote weight is nonnegative and rounds to the column precision" do
+    poll = PollService.create(params: poll_params(weighted_voting: true), actor: @admin)
+    stance = poll.stances.latest.find_by!(participant: @admin)
+    stance.weight = 0
+
+    assert stance.valid?
+    stance.weight = 0.5
+    assert stance.valid?
+    stance.weight = '0.0001'
+    stance.save!
+    assert_equal 0, stance.reload.weight
+    stance.update!(weight: 1_000_001)
+    assert_raises ActiveRecord::StatementInvalid do
+      stance.update_columns(weight: -1)
+    end
+  end
+
+  test "unweighted stances clamp any supplied weight to one" do
+    poll = PollService.create(params: poll_params, actor: @admin)
+    stance = Stance.new(poll: poll, participant: @admin, weight: '2.33')
+
+    assert stance.valid?
+    assert_equal 1, stance.weight
+    stance.weight = -1
+    assert stance.valid?
+    assert_equal 1, stance.weight
+  end
+
   test "does not allow a stance for an anonymous poll" do
     poll = PollService.create(params: poll_params(anonymous: true), actor: @admin)
     stance = Stance.new(poll: poll, participant: @admin)
@@ -117,7 +145,7 @@ class StanceTest < ActiveSupport::TestCase
     assert_not cast_stance(poll, options.first(2).zip([2, 1])).valid?
   end
 
-  test "STV ballots allow partial rankings with contiguous unique scores" do
+  test "STV ballots allow partial rankings with contiguous unique scores but not blank ballots" do
     poll = PollService.create(params: poll_params(
       poll_type: "stv",
       poll_option_names: %w[apple orange banana]
@@ -125,7 +153,7 @@ class StanceTest < ActiveSupport::TestCase
     options = poll.poll_options
 
     assert cast_stance(poll, options.first(2).zip([1, 2])).valid?
-    assert cast_stance(poll, []).valid?
+    assert_not cast_stance(poll, []).valid?
     assert_not cast_stance(poll, options.first(2).zip([1, 9999])).valid?
     assert_not cast_stance(poll, options.first(2).zip([1, 1])).valid?
   end
@@ -210,7 +238,7 @@ class StanceTest < ActiveSupport::TestCase
       title: 'which pet?',
       poll_option_names: %w[dog cat]
     ), actor: @admin)
-    Stance.create!(poll: poll, participant: @admin, choice: 'dog')
+    poll.stances.latest.find_by!(participant: @admin).update!(choice: 'dog')
     poll.update_counts!
     assert_equal [1, 0], poll.stance_counts
   end
@@ -221,7 +249,7 @@ class StanceTest < ActiveSupport::TestCase
       title: 'which pet?',
       poll_option_names: %w[dog cat]
     ), actor: @admin)
-    Stance.create!(poll: poll, participant: @admin, choice: ['dog', 'cat'])
+    poll.stances.latest.find_by!(participant: @admin).update!(choice: ['dog', 'cat'])
     poll.update_counts!
     assert_equal [1, 1], poll.stance_counts
   end

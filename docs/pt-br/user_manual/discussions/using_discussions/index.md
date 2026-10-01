@@ -1,19 +1,19 @@
 ---
 title: Como usar as discussões
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/discussions/using_discussions/index.md
+source_revision: 9c60c42fc739483fa23f15d9f34a1e9245518092
+source_file: docs/en/user_manual/discussions/using_discussions/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: fe8ab54791a49e01
   thread-anatomy: fca9ec9af6718a99
   discussion-context: ebefd7274a307dd0
-  notify-people-about-context-changes: 79d0ed7f94edb858
+  notify-people-about-context-changes: 3fe9320d33fff8f6
   navigation: c0ccc79744ae2c33
   notifications-and-members: ac51f2bbe3642155
   email-notifications-for-this-thread: 69076a17d7457ba0
-  invite-people: 69e5555d18551b0b
+  invite-people: 94ab00a27cec065d
   seen-by: 1d0bfd812ca11782
   notified: 6139bdcaae32a1db
   actions: c015c12999c5be2f
@@ -28,11 +28,11 @@ generated:
   introduction: '0286fb8378262708'
   thread-anatomy: 4b3bcd4a3f961b67
   discussion-context: ac2da9342740725b
-  notify-people-about-context-changes: f9a1936f26cb8770
+  notify-people-about-context-changes: 9215c02b349f79b4
   navigation: d4f7478d34c70794
   notifications-and-members: adf433cf4ab02941
   email-notifications-for-this-thread: 0e78daa81e24a5e1
-  invite-people: 90e11847f2d5b9c3
+  invite-people: 3985d5fc133989d5
   seen-by: 56bde8b73f6b2e52
   notified: 10f0b65f617b21c5
   actions: 5cf2545d77a74a0e
@@ -113,9 +113,9 @@ Ao editar o contexto da discussão, use **O que mudou?** para resumir a atualiza
 
 ![Edição do contexto de uma discussão com um resumo das mudanças e destinatários da notificação](../notifying_people/thread_editcontext.png)
 
-O resumo aparece como um item na discussão para que os participantes vejam o que mudou.
+A discussão mostra que você editou o contexto. As pessoas que você notifica recebem seu resumo junto com a notificação.
 
-![Item da linha do tempo que descreve uma mudança no contexto da discussão](../notifying_people/thread_edit_comment.png)
+![Item da discussão que mostra que o contexto foi editado](../notifying_people/thread_edit_comment.png)
 
 <!-- translation-section: navigation -->
 
@@ -159,9 +159,13 @@ Selecione **Convidar pessoas** para adicionar participantes depois que a discuss
 
 Selecione um grupo ou subgrupo, digite os nomes dos membros ou informe um endereço de e-mail para convidar uma pessoa de fora do grupo.
 
+O campo **Encontre ou convide pessoas** também filtra a lista de pessoas que já estão na conversa. Limpe o campo para mostrar a lista completa novamente e use os controles de paginação se houver mais de 50 pessoas. Depois que você selecionar os destinatários, a lista de membros dá lugar ao campo de mensagem opcional. Novas pessoas são convidadas; quem já tem acesso recebe outra notificação quando você seleciona **Convidar ou notificar**.
+
 ![Janela Convidar pessoas com um campo para nomes e endereços de e-mail](../notifying_people/thread_invite.png)
 
 Uma pessoa convidada pode ver e participar desta conversa, mas só pode ver outras discussões do grupo se receber um convite específico para elas.
+
+Você pode dispensar os avisos de orientação no topo da janela. O Loomio lembra quais avisos você dispensou na sua conta.
 
 ![Convite enviado por endereço de e-mail a uma pessoa de fora do grupo](../notifying_people/invite_guest.png)
 

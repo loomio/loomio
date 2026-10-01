@@ -1,0 +1,15 @@
+Stage:,1,,2,,4,,6,,9,,11,
+Comment:,First preferences,,Surpluses distributed,,Surpluses distributed,,Surpluses distributed,,Surpluses distributed,,Surpluses distributed,
+Smith,134,EL,107.26,EL,106.96,EL,104.42,EL,101.58,EL,73,EL
+Carpenter,81,H,87.98,H,88.47,H,97.71,H,101.58,EL,73,EL
+Wright,27,H,31.99,H,32.34,H,34.97,H,0,EX,0,EX
+Glazier,24,H,30.19,H,30.62,H,0,EX,0,EX,0,EX
+Duke,105,H,106.6,H,106.96,EL,104.42,EL,101.58,EL,73,EL
+Prince,91,H,91,H,91,H,92.45,H,97.07,H,73,EL
+Baron,64,H,64,H,64,H,64.03,H,67.24,H,0,EX
+Abbot,59,H,59.8,H,64.85,H,66,H,68.92,H,70.83,H
+Vicar,55,H,55,H,69.21,H,70.99,H,73.27,H,75.16,EL
+Monk,23,H,23.4,H,0,EX,0,EX,0,EX,0,EX
+Freeman,90,H,93.59,H,94.27,H,95.97,H,99.81,H,73,EL
+Exhausted,0,,2.2,,4.31,,22.05,,41.95,,242.01,
+Quota,107.57,,107.26,,106.96,,104.42,,101.58,,73,

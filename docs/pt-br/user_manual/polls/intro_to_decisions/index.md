@@ -1,10 +1,10 @@
 ---
 title: Propostas e enquetes
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/polls/intro_to_decisions/index.md
+source_revision: 9c60c42fc739483fa23f15d9f34a1e9245518092
+source_file: docs/en/user_manual/polls/intro_to_decisions/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: d7cf8a871d9af6ea
   find-the-right-help: 4bb04c002cbbde42
@@ -14,7 +14,12 @@ sections:
   choose-whether-to-use-a-discussion: fbe0fe9415feadae
   in-a-discussion: d57d23917bab162a
   without-a-discussion: 87efa5071bb33a34
-  what-happens-next: de5cc2b17603d0ce
+  what-happens-next: 7fe113c92c0a58bd
+  1-create-it: 865fde10233c86d2
+  2-voting-opens: 571a77b9c70569d3
+  3-people-vote: 71061d516df57dab
+  4-it-closes: c0376a9026d18bc3
+  5-share-an-outcome: 8339cb332cd8a946
 generated:
   introduction: a083f80219834bbb
   find-the-right-help: 437c393ebd903f58
@@ -24,7 +29,12 @@ generated:
   choose-whether-to-use-a-discussion: 95507b996f64e72a
   in-a-discussion: cdf8999aa5c57a20
   without-a-discussion: 233557978fb11134
-  what-happens-next: bdf3f6726e1b4e70
+  what-happens-next: 5d6dcfbe18796f63
+  1-create-it: d155a5333ec3abd9
+  2-voting-opens: cbbcb7996243b891
+  3-people-vote: 8a54b0429634e7d5
+  4-it-closes: 5e95af985923e87a
+  5-share-an-outcome: d44981a0acdfc5bb
 title_source: d45b4ba3cb7a27cb
 title_generated: 841343fc302f1038
 ---
@@ -110,8 +120,48 @@ Se você criar uma discussão e uma enquete ao mesmo tempo apenas para realizar 
 
 <!-- translation-section: what-happens-next -->
 
-## O que acontece depois
+## Do início à conclusão
 
-Ao iniciar uma proposta ou enquete, você informa um título e os detalhes, revisa as opções de resposta e as configurações, define um horário de encerramento e convida os participantes. Enquanto estiver aberta, os participantes podem votar, explicar sua resposta e alterar seu voto. Os resultados são atualizados à medida que os votos são enviados, conforme a configuração de visibilidade dos resultados da enquete.
+Uma proposta ou enquete passa por estas etapas.
 
-Quando ela terminar, publique uma [conclusão](../outcomes/) que registre o significado do resultado e o que acontecerá em seguida.
+<!-- translation-section: 1-create-it -->
+
+### 1. Crie a proposta ou enquete
+
+Informe um título e os detalhes, confira as opções e configurações e defina um horário de encerramento. Depois, escolha quando a votação começa:
+
+- **A votação começa imediatamente.** abre a votação assim que você a inicia.
+- Uma **Data de abertura** agenda a votação. As pessoas podem vê-la antes dessa data, mas só podem votar quando ela começar.
+- Se você não escolher nenhuma dessas opções, a proposta ou enquete será salva como rascunho.
+
+<!-- translation-section: 2-voting-opens -->
+
+### 2. A votação começa
+
+Quando a votação começa, o Loomio notifica as pessoas que você convidou. Veja [Convidar para votar](../inviting_people/).
+
+<!-- translation-section: 3-people-vote -->
+
+### 3. As pessoas votam
+
+Enquanto a votação estiver aberta, as pessoas podem votar, explicar seu voto e alterá-lo. Os resultados são atualizados à medida que as pessoas votam, a menos que fiquem ocultos até o encerramento. Por padrão, as pessoas que ainda não votaram recebem um lembrete um dia antes do encerramento.
+
+<!-- translation-section: 4-it-closes -->
+
+### 4. A votação é encerrada
+
+A votação é encerrada automaticamente no horário definido. Um coordenador da enquete também pode encerrá-la antes desse horário. Após o encerramento, um coordenador da enquete pode reabri-la com um novo horário de encerramento para permitir que as pessoas continuem votando. Enquetes anônimas não podem ser reabertas.
+
+<!-- translation-section: 5-share-an-outcome -->
+
+### 5. Compartilhe uma conclusão
+
+Quando a votação é encerrada, o Loomio pede aos coordenadores da enquete que compartilhem uma conclusão.
+
+![A solicitação para inserir uma conclusão após o encerramento de uma proposta](outcome_prompt.png)
+
+A conclusão informa o que foi decidido e o que acontecerá em seguida. Ela aparece acima dos resultados, sendo a primeira informação que as pessoas leem. Ao publicá-la, você pode notificar as pessoas. Elas recebem um e-mail com os resultados e a conclusão.
+
+Você também pode definir uma **Data de revisão**. Nessa data, o Loomio lembra você de revisar a decisão.
+
+![Uma conclusão publicada com uma data de revisão](outcome_published.png)

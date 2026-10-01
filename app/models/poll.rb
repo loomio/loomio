@@ -1,5 +1,6 @@
 class Poll < ApplicationRecord
   PARTICIPATION_STATUS_VOTES_MIN = 3
+  RESULT_VOTER_IDS_MAX = 50
 
   extend  HasCustomFields
   include CustomCounterCache::Model
@@ -109,6 +110,7 @@ class Poll < ApplicationRecord
                        ballot_rule
                        order_results_by
                        prevent_anonymous
+                       prevent_weighted_voting
                        vote_method
                        material_icon
                        require_all_choices
@@ -116,6 +118,13 @@ class Poll < ApplicationRecord
 
   TEMPLATE_VALUES.each do |field|
     define_method field, -> { AppConfig.poll_types.dig(self.poll_type, field) }
+  end
+
+  # Polls and poll templates share this rule. Anonymous ballots do not record
+  # who voted, so they cannot carry weights, and poll_types.yml marks the
+  # voting methods that do not support weighted totals.
+  def self.weighted_voting_available?(poll_type:, anonymous:)
+    !anonymous && !AppConfig.poll_types.dig(poll_type, 'prevent_weighted_voting')
   end
 
   def author
@@ -181,7 +190,6 @@ class Poll < ApplicationRecord
     required_for_disagree_or_block: 3,
     required_for_block: 4
   }
-  enum :voting_system, {stance: 0, anonymous_ballot: 1}
 
   has_many :stances, dependent: :destroy
   has_many :stance_choices, through: :stances
@@ -198,7 +206,6 @@ class Poll < ApplicationRecord
   has_many :poll_options, -> { order('priority') }, dependent: :destroy, autosave: true
   accepts_nested_attributes_for :poll_options, allow_destroy: true
 
-  has_many :stance_receipts, dependent: :destroy
 
   scope :active, -> { kept.where('polls.closed_at': nil).where('polls.opened_at IS NOT NULL') }
   scope :template, -> { kept.where('polls.template': true) }
@@ -227,12 +234,12 @@ class Poll < ApplicationRecord
   normalizes :closing_at, :opening_at, with: ->(v) { v&.beginning_of_hour }
   validate :closes_in_future
   validate :opening_at_before_closing_at
-  validate :cannot_deanonymize
+  validate :anonymity_cannot_change
   validate :cannot_reveal_results_early
-  validate :anonymous_matches_voting_system
-  validate :detached_anonymous_invariants
-  validate :voting_system_cannot_change_after_opening
-  validate :detached_configuration_cannot_change_after_ballot
+  validate :anonymous_invariants
+  validate :anonymous_configuration_cannot_change_after_ballot
+  validate :weighted_voting_available
+  validate :stv_settings_are_valid, if: :stv_settings_validation_required?
   validate :score_bounds_are_valid, if: :score_bounds_validation_required?
   validate :title_if_not_discarded
 
@@ -253,11 +260,39 @@ class Poll < ApplicationRecord
     :tags,
     :notify_on_closing_soon,
     :notify_on_open,
+    :weighted_voting,
     :poll_option_names,
     :hide_results,
     :attachments]
 
   after_commit :update_group_counter_caches
+  after_update :synchronize_stance_weights_after_vote_weights_change
+
+  # Switching vote weights resets issued stances, including cast votes, so
+  # stored weights and poll results reflect the current voting mode.
+  def synchronize_stance_weights_after_vote_weights_change
+    return unless saved_change_to_weighted_voting?
+
+    unless weighted_voting?
+      stances.where.not(weight: 1).update_all(weight: 1)
+      return
+    end
+
+    reset_stance_weights_from_memberships!
+  end
+
+  # Copy current group defaults into issued votes in one statement. Voters
+  # without an active membership, including direct-poll voters, receive 1.
+  def reset_stance_weights_from_memberships!
+    return stances.latest.update_all(weight: 1) unless group_id
+
+    member_weight = Membership.active.where(group_id: group_id)
+      .where('memberships.user_id = stances.participant_id')
+      .select(:weight)
+      .limit(1)
+    stances.latest.update_all(weight: Arel.sql("COALESCE((#{member_weight.to_sql}), 1)"))
+  end
+
   def update_group_counter_caches
     group = topic.group
     return unless group.id
@@ -303,7 +338,42 @@ class Poll < ApplicationRecord
     self[:custom_fields].fetch('can_respond_maybe', false)
   end
 
+  # Result headings keep master's labels. A column whose value includes vote
+  # weights gets a "Weighted" label instead, in the unit voters give: votes for
+  # one-point methods, points otherwise.
+  RESULT_HEADING_KEYS = {
+    'name' => 'common.option',
+    'target_percent' => 'poll_count_form.pct_of_target',
+    'score_percent' => 'poll_ranked_choice_form.pct_of_points',
+    'votes_cast_percent' => 'poll_ranked_choice_form.pct_of_votes_cast',
+    'voter_percent' => 'poll_ranked_choice_form.pct_of_voters',
+    'rank' => 'poll_ranked_choice_form.rank',
+    'score' => 'poll_ranked_choice_form.points',
+    'unweighted_score' => 'poll_ranked_choice_form.points',
+    'average' => 'poll_ranked_choice_form.mean',
+    'stv_status' => 'poll_common.status',
+    'voter_count' => 'membership_card.voters',
+    'votes' => 'poll_common.votes'
+  }.freeze
+
+  WEIGHTED_VOTES_HEADING_KEYS = {
+    'score' => 'poll_common.weighted_votes',
+    'score_percent' => 'poll_common.pct_of_weighted_votes',
+    'votes_cast_percent' => 'poll_common.pct_of_weighted_votes'
+  }.freeze
+
+  WEIGHTED_POINTS_HEADING_KEYS = {
+    'score' => 'poll_common.weighted_points',
+    'score_percent' => 'poll_common.pct_of_weighted_points',
+    'votes_cast_percent' => 'poll_common.pct_of_weighted_points',
+    'average' => 'poll_common.weighted_mean'
+  }.freeze
+
   def result_columns
+    weighted_voting? ? weighted_result_columns : unweighted_result_columns
+  end
+
+  def unweighted_result_columns
     case poll_type
     when 'proposal'
       %w[chart name votes votes_cast_percent voter_percent voters]
@@ -332,6 +402,55 @@ class Poll < ApplicationRecord
     end
   end
 
+  # Weighted results list the counts first, plain before weighted, then the
+  # percentages. Poll types without weighting keep their usual columns.
+  def weighted_result_columns
+    case poll_type
+    when 'proposal'
+      %w[chart name votes score voter_percent votes_cast_percent voters]
+    when 'check'
+      %w[chart name voter_count score voter_percent voters]
+    when 'count'
+      if agree_target
+        %w[chart name voter_count score target_percent voters]
+      else
+        %w[chart name voter_count score voters]
+      end
+    when 'poll'
+      %w[chart name voter_count score score_percent voters]
+    when 'ranked_choice'
+      %w[chart name rank unweighted_score score score_percent average voter_count]
+    when 'dot_vote'
+      %w[chart name unweighted_score score score_percent average voter_count]
+    when 'score'
+      %w[chart name unweighted_score score average voter_count]
+    else
+      unweighted_result_columns
+    end
+  end
+
+  def result_heading_key(column)
+    weighted_keys = if !weighted_voting? then {}
+    elsif one_point_choices? then WEIGHTED_VOTES_HEADING_KEYS
+    else WEIGHTED_POINTS_HEADING_KEYS
+    end
+    weighted_keys.fetch(column) { RESULT_HEADING_KEYS.fetch(column) }
+  end
+
+  def result_heading_keys
+    result_columns.excluding('chart', 'voters').index_with { |column| result_heading_key(column) }
+  end
+
+  def member_vote_weights_by_user_id(user_ids)
+    return {} unless group_id
+
+    Membership.active.where(group_id: group_id, user_id: user_ids).pluck(:user_id, :weight).to_h
+  end
+
+  def one_point_choices?
+    min_score == 1 && max_score == 1
+  end
+
   def results
     PollService.calculate_results(self, self.poll_options)
   end
@@ -358,10 +477,10 @@ class Poll < ApplicationRecord
   end
 
   # General-purpose voter relations must not reveal participation identities for
-  # detached anonymous ballots. Callers that intentionally need the named
+  # anonymous ballots. Callers that intentionally need the named
   # electorate, such as authorization and reminder delivery, use unmasked_*.
   def voters
-    detached_anonymous? ? User.none : stance_voters
+    anonymous? ? User.none : stance_voters
   end
 
   def voter_ids
@@ -369,39 +488,43 @@ class Poll < ApplicationRecord
   end
 
   def undecided_voters
-    detached_anonymous? ? User.none : stance_undecided_voters
+    anonymous? ? User.none : stance_undecided_voters
   end
 
   def decided_voters
-    detached_anonymous? ? User.none : stance_decided_voters
+    anonymous? ? User.none : stance_decided_voters
   end
 
   def unmasked_voters
-    return User.where(id: anonymous_poll_voters.select(:voter_id)) if detached_anonymous?
+    return User.where(id: anonymous_poll_voters.select(:voter_id)) if anonymous?
 
     voters
   end
 
   def unmasked_undecided_voters
-    return User.where(id: anonymous_poll_voters.where(ballot_submitted: false).select(:voter_id)) if detached_anonymous?
+    return User.where(id: anonymous_poll_voters.where(ballot_submitted: false).select(:voter_id)) if anonymous?
 
     undecided_voters
   end
 
   def unmasked_decided_voters
-    return User.where(id: anonymous_poll_voters.where(ballot_submitted: true).select(:voter_id)) if detached_anonymous?
+    return User.where(id: anonymous_poll_voters.where(ballot_submitted: true).select(:voter_id)) if anonymous?
 
     decided_voters
   end
 
-  def detached_anonymous?
-    anonymous? && anonymous_ballot?
+  # Who voted in an anonymous poll stays hidden until enough people have voted
+  # that the list says little about any one person: the quorum when the poll
+  # has one, otherwise half the electorate, and never fewer than three votes.
+  def participation_status_votes_required
+    votes_required = quorum_pct ? quorum_count : (voters_count / 2.0).ceil
+    [votes_required, PARTICIPATION_STATUS_VOTES_MIN].max
   end
 
   def participation_status_visible?
     return true unless anonymous?
 
-    anonymous_ballots.offset(PARTICIPATION_STATUS_VOTES_MIN - 1).exists?
+    anonymous_ballots.offset(participation_status_votes_required - 1).exists?
   end
 
   def body
@@ -468,9 +591,9 @@ class Poll < ApplicationRecord
 
   def update_counts!
     poll_options.reload.each(&:update_counts!)
-    if detached_anonymous?
+    if anonymous?
       return update_columns(
-        stance_counts: poll_options.map(&:total_score),
+        stance_counts: poll_options.map { |option| option.total_score.to_f },
         voters_count: anonymous_poll_voters.count,
         undecided_voters_count: anonymous_poll_voters.where(ballot_submitted: false).count,
         none_of_the_above_count: anonymous_ballots.where(none_of_the_above: true).count,
@@ -479,7 +602,7 @@ class Poll < ApplicationRecord
     end
 
     update_columns(
-      stance_counts: poll_options.map(&:total_score), # should rename to option scores
+      stance_counts: poll_options.map { |option| option.total_score.to_f }, # should rename to option scores
       voters_count: stances.latest.count, # should rename to stances_count
       undecided_voters_count: stances.latest.undecided.count,
       none_of_the_above_count: stances.latest.decided.where(none_of_the_above: true).count,
@@ -503,7 +626,7 @@ class Poll < ApplicationRecord
     return false unless user.can?(:show, self)
     return false unless user.can?(:vote_in, self)
 
-    if detached_anonymous?
+    if anonymous?
       anonymous_poll_voters.exists?(voter_id: user.id, ballot_submitted: false)
     else
       !stances.latest.decided.exists?(participant_id: user.id)
@@ -581,10 +704,12 @@ class Poll < ApplicationRecord
     end
   end
 
-  def cannot_deanonymize
-    if anonymous_changed? && anonymous_was == true
-      errors.add :anonymous, :cannot_deanonymize
-    end
+  # Anonymity is fixed when a poll is created: an anonymous poll records voters
+  # and ballots separately from the start, and a named poll records stances.
+  def anonymity_cannot_change
+    return unless persisted? && will_save_change_to_anonymous?
+
+    errors.add :anonymous, (anonymous_in_database ? :cannot_deanonymize : :invalid)
   end
 
   def cannot_reveal_results_early
@@ -593,39 +718,59 @@ class Poll < ApplicationRecord
     end
   end
 
-  def detached_anonymous_invariants
-    return unless anonymous_ballot?
+  def anonymous_invariants
+    return unless anonymous?
 
-    errors.add(:anonymous, :invalid) unless anonymous?
     errors.add(:hide_results, :invalid) unless hide_results == "until_closed"
     errors.add(:stance_reason_required, :invalid) unless stance_reason_required == "disabled"
     errors.add(:notify_on_closing_soon, :invalid) unless notify_on_closing_soon == "undecided_voters"
   end
 
-  def anonymous_matches_voting_system
-    return if anonymous? == anonymous_ballot?
-
-    errors.add(:voting_system, :invalid)
-  end
-
-  def voting_system_cannot_change_after_opening
-    return unless will_save_change_to_voting_system?
-    return unless voting_system_in_database && opened_at_in_database
-
-    errors.add(:voting_system, :invalid)
-  end
-
-  def detached_configuration_cannot_change_after_ballot
-    return unless detached_anonymous? && persisted? && anonymous_ballots.exists?
+  def anonymous_configuration_cannot_change_after_ballot
+    return unless anonymous? && persisted? && anonymous_ballots.exists?
 
     protected_attributes = %w[
-      anonymous voting_system hide_results stance_reason_required poll_type
+      anonymous hide_results stance_reason_required poll_type
       min_score max_score minimum_stance_choices maximum_stance_choices
       dots_per_person show_none_of_the_above stv_seats stv_method stv_quota
     ]
     if (changes_to_save.keys & protected_attributes).any?
       errors.add(:base, :anonymous_ballot_configuration_frozen)
     end
+  end
+
+  def weighted_voting_available
+    return unless weighted_voting?
+    return if Poll.weighted_voting_available?(poll_type: poll_type, anonymous: anonymous?)
+
+    errors.add(:weighted_voting, :invalid)
+  end
+
+  STV_METHODS = %w[scottish meek].freeze
+  STV_QUOTAS = %w[droop hare].freeze
+
+  # An STV count needs at least one seat and more candidates than seats, or
+  # every candidate is simply elected. The counters fall back to defaults for
+  # blank settings, so only reject values that are present and unsupported.
+  def stv_settings_are_valid
+    seats = stv_seats || 1
+    errors.add(:stv_seats, :greater_than_or_equal_to, count: 1) if seats < 1
+    errors.add(:stv_seats, :less_than, count: poll_option_count) if poll_option_count > 0 && seats >= poll_option_count
+    errors.add(:stv_method, :inclusion) if stv_method.present? && !STV_METHODS.include?(stv_method)
+    errors.add(:stv_quota, :inclusion) if stv_quota.present? && !STV_QUOTAS.include?(stv_quota)
+  end
+
+  # Validate when the settings or candidates change, so polls saved before
+  # this validation existed can still be closed and counted.
+  def stv_settings_validation_required?
+    return false unless poll_type == 'stv'
+
+    new_record? ||
+      will_save_change_to_poll_type? ||
+      will_save_change_to_stv_seats? ||
+      will_save_change_to_stv_method? ||
+      will_save_change_to_stv_quota? ||
+      poll_options.any? { |option| option.new_record? || option.marked_for_destruction? }
   end
 
   def closes_in_future

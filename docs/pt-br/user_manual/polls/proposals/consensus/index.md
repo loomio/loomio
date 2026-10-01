@@ -1,24 +1,26 @@
 ---
 title: Consenso
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/polls/proposals/consensus/index.md
+source_revision: 9c60c42fc739483fa23f15d9f34a1e9245518092
+source_file: docs/en/user_manual/polls/proposals/consensus/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: af2e2a50e8c0b440
   when-to-use-consensus: fc7f6180345f73a3
   example-adopt-a-bottle-return-standard: 9b0915ee6f41fa54
   set-up-the-proposal: b35a641ec031a40b
   vote: f7dbea12e2d6261a
-  read-the-results: d7d1bfae079d04ec
+  read-the-results: e60abb3a43a86d6e
+  share-an-outcome: a7febe19484c20b3
 generated:
   introduction: 64dccd014eda3b6c
   when-to-use-consensus: 40d6afbe974a6b6b
   example-adopt-a-bottle-return-standard: a03496c179fe2f8b
   set-up-the-proposal: 384ecafb8ee21f22
   vote: d88d48856f3d1fac
-  read-the-results: c9f8faf51fcc46a0
+  read-the-results: e4a65b752550aa80
+  share-an-outcome: 38dbf5f2e110b9e5
 title_source: 8abe09bf65aefdb8
 title_generated: a633645d078dc2da
 ---
@@ -69,4 +71,10 @@ O gráfico mostra a distribuição das respostas. Analise todos os motivos de di
 
 ![](../proposal_consensus_results.png)
 
-Se o grupo chegar a um acordo, publique uma conclusão que registre a norma final e as responsabilidades. Caso contrário, registre o que será revisado e quando o grupo voltará a discutir a proposta.
+<!-- translation-section: share-an-outcome -->
+
+## Compartilhe uma conclusão
+
+Quando a proposta for encerrada, compartilhe uma conclusão. Se o grupo chegou a um acordo, registre o acordo final e quem é responsável. Caso contrário, registre o que será revisado e quando o grupo voltará a discutir a proposta. Veja [Compartilhe uma conclusão](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome) para entender como as conclusões funcionam.
+
+![Uma conclusão informando que não houve consenso e que a norma será revisada](outcome.png)

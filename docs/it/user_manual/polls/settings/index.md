@@ -1,6 +1,6 @@
 ---
 title: Impostazioni
-source_revision: 6b2c4d5c591a9eb139fc64370d602b8dcf19c0e4
+source_revision: 9c60c42fc739483fa23f15d9f34a1e9245518092
 source_file: docs/en/user_manual/polls/settings/index.md
 translated:
   provider: codex/gpt-6.1-sol
@@ -12,11 +12,11 @@ sections:
   add-content: f622e36a3ad15e4e
   voting-options: d0ea31745ce8b651
   edit-voting-options: ef0d61585b34fbd6
-  opening-time: 13aa5e4392d1ba60
+  opening-time: 2fdf358a34805114
   more-settings: fd837a51b81cbc13
   reminder: e6ac37324b884958
   anonymous-voting: 4fde93187ffd1a86
-  vote-reason: ce00fe99ebac71ff
+  vote-reason: b1ebf2700ce8248b
   hide-results: c0873aeafe8feb59
   start-the-poll: 8e7d8e81db57f4f8
   managing-polls: b26fc41e19371d54
@@ -34,11 +34,11 @@ generated:
   add-content: 20db5955c46993a0
   voting-options: 1dbf58ff08fd83ea
   edit-voting-options: 41408dad887efbb2
-  opening-time: 6e3781fae2e43fc3
+  opening-time: 55d059566131802e
   more-settings: d67937a9b83269cd
   reminder: 46bc87db24219523
   anonymous-voting: 661bff1e9b1db233
-  vote-reason: a0c024c881e8c289
+  vote-reason: a187953c96760dba
   hide-results: 49c40087e6faf171
   start-the-poll: 933a8548f2a935c6
   managing-polls: 672f3bc3037e2759
@@ -123,11 +123,13 @@ Usa l'icona della matita accanto a un'opzione di voto per aprire la finestra di 
 
 <!-- translation-section: opening-time -->
 
-### Orario di apertura
+### Durata
 
 Per impostazione predefinita, le votazioni si aprono appena crei il sondaggio. Per programmarne l'apertura in un secondo momento, deseleziona **Le votazioni si aprono immediatamente** e scegli la data e l'ora di apertura.
 
 Questo ti permette di lasciare tempo per discutere prima dell'apertura delle votazioni o di verificare che la proposta o il sondaggio siano configurati e programmati correttamente.
+
+Per esempio, se il tuo gruppo deve votare su diverse decisioni durante un'assemblea in programma, puoi preparare i sondaggi e aggiungere i votanti in anticipo, poi programmare l'apertura di tutti i sondaggi per l'inizio del periodo di votazione. Le persone possono vedere i sondaggi prima che si aprano, ma non possono votare in anticipo.
 
 Se hai programmato l'apertura del sondaggio, puoi aggiungere le persone che voteranno prima che le votazioni inizino. Riceveranno una notifica all'apertura delle votazioni, anziché quando vengono aggiunte.
 
@@ -181,16 +183,14 @@ Può essere utile capire perché le persone hanno votato in un certo modo. Quest
 Le impostazioni disponibili dipendono dal modello:
 
 - **Opzionale** permette agli elettori di scegliere se indicare un motivo
-- **Richiesto per contestare o bloccare** richiede un motivo quando l'opzione selezionata
-  usa l'icona di voto Contesta o Blocca
-- **Richiesto per il blocco** richiede un motivo quando l'opzione selezionata usa
-  l'icona di voto Blocca
+- **Richiesto per contestare o bloccare** richiede un motivo quando l'opzione selezionata usa l'icona di voto Contesta o Blocca
+- **Richiesto per il blocco** richiede un motivo quando l'opzione selezionata usa l'icona di voto Blocca
 - **Richiesto** richiede a ogni elettore di indicare un motivo
 - **Disabili** rimuove il campo del motivo del voto
 
 ![](vote_reason_options.png)
 
-Le impostazioni condizionali dipendono dall'icona di voto, non dal nome dell'opzione. Restano valide anche se rinomini Contesta, per esempio, in Obiezione. Il modello Consenso usa per impostazione predefinita **Richiesto per contestare o bloccare**, mentre il modello Consensus usa **Richiesto per il blocco**. Gli altri modelli usano **Opzionale**, tranne i turni di domande, in cui è richiesta la risposta stessa. Chi ha creato il sondaggio può cambiare questa impostazione per un singolo sondaggio.
+Le impostazioni condizionali dipendono dall'icona di voto, non dal nome dell'opzione. Restano valide anche se rinomini Contesta, per esempio, in Obiezione. Il modello Consenso usa per impostazione predefinita **Richiesto per contestare o bloccare**, mentre il modello Consensus usa **Richiesto per il blocco**. Gli altri modelli usano **Opzionale**. Chi ha creato il sondaggio può cambiare questa impostazione per un singolo sondaggio.
 
 **Limita il motivo a un massimo di 500 caratteri:** I motivi brevi sono più facili da capire. Una raccolta di motivi concisi aiuta a prendere una decisione. Questa impostazione è selezionata per impostazione predefinita. Deselezionala per consentire motivi più lunghi.
 

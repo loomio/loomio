@@ -60,4 +60,12 @@ For each option, the results show:
 
 In this example, **Central Station cafe** has the highest mean at 7.5. **Harbour offices** has the lowest mean at 5.25, while Riverside market and the University food court are tied at 7. Four of five invited people have voted, so the group can also see that one response is outstanding.
 
-Compare means only when the options have a similar number of voters. Read the vote reasons before treating a small difference as meaningful, and publish an outcome explaining what action follows from the scores.
+Compare means only when the options have a similar number of voters. Read the vote reasons before treating a small difference as meaningful.
+
+<!-- translation-section: share-an-outcome -->
+
+## Share an outcome
+
+When the poll closes, share an outcome. Say what action follows from the scores, and how any ties are settled. See [Share an outcome](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome) for how outcomes work.
+
+![An outcome choosing the location with the highest average score](outcome.png)

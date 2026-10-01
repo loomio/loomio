@@ -1,19 +1,19 @@
 ---
 title: Concluindo
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/guides/facilitators_guide/concluding/index.md
+source_revision: 9c60c42fc739483fa23f15d9f34a1e9245518092
+source_file: docs/en/guides/facilitators_guide/concluding/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-30'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 0160da4a2a071cae
-  outcomes-next-steps: 9829d1cef05d120b
+  outcomes-next-steps: 146b139e25dcfb4e
   reporting-harvesting: 64a7f7605636c422
   turning-discussion-into-action: 67b87042b96109e0
   it-ain-t-over-til-it-s-over: 9edb6ef0bcb17938
 generated:
   introduction: 9013d4bd347ca3e2
-  outcomes-next-steps: 12077e6dc46471a0
+  outcomes-next-steps: ad75ebfabeb3482f
   reporting-harvesting: 7c3174e9f3ecad83
   turning-discussion-into-action: 154bacfa89bf6d00
   it-ain-t-over-til-it-s-over: 95597d1fd43966a3
@@ -43,7 +43,7 @@ Confirmar a conclusão ajuda o grupo a reconhecer que a discussão colaborativa 
 
 No Loomio
 
-* As [conclusões](/en/user_manual/polls/outcomes/) são uma ferramenta importante. O encerramento de uma proposta ainda pede um resumo final. É para isso que serve o recurso de conclusão.
+* As [conclusões](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome) são uma ferramenta importante. O encerramento de uma proposta ainda pede um resumo final. É para isso que serve o recurso de conclusão.
 * Muitas discussões no Loomio chegam ao fim sem propostas nem conclusões publicadas. Elas ainda têm valor. Atualizar a caixa de contexto com um resumo da conclusão pode ajudar quem consultar a discussão depois.
 * Se algumas pessoas tiverem tarefas a realizar, você pode mencionar seus nomes com @ para que recebam uma notificação.
 

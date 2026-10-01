@@ -1,19 +1,19 @@
 ---
 title: הצעות
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/polls/proposals/index.md
+source_revision: 9c60c42fc739483fa23f15d9f34a1e9245518092
+source_file: docs/en/user_manual/polls/proposals/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: dd4cb01f80b669fa
   choose-a-proposal-template: af87fd10a478699d
-  other-proposal-templates: d97b167228fd3b85
+  other-proposal-templates: 21ac5a295b8832ab
   proposal-records: ef0d886d3db7a5d1
 generated:
   introduction: 1a656060f5504ad5
   choose-a-proposal-template: 5262e10a138948db
-  other-proposal-templates: f3eaa14e5663aeb7
+  other-proposal-templates: faa220e7080cbd23
   proposal-records: 9dc91c3ce0fdf8ac
 title_source: 834cfc1ee23734e1
 title_generated: 627113bd3adb7ae9
@@ -46,7 +46,7 @@ title_generated: 627113bd3adb7ae9
 
 ## תבניות נוספות להצעות
 
-Loomio מציעה גם תבניות כגון הצעה, שיפועים של הסכמה, סבב שאלות ורוב. חלקן מוסתרות בתחילה. מנהלי הקבוצה יכולים להפוך אותן לזמינות או ליצור תבנית המתאימה למונחים ולכללים של הקבוצה דרך [תבניות סקר](../poll_templates/).
+Loomio מציעה גם תבניות כגון הצעה, שיפועים של הסכמה ורוב. חלקן מוסתרות בתחילה. בהרשאות ניהול הקבוצה ניתן להפוך אותן לזמינות או ליצור תבנית המתאימה למונחים ולכללים של הקבוצה דרך [תבניות סקר](../poll_templates/).
 
 <!-- translation-section: proposal-records -->
 

@@ -1608,6 +1608,7 @@ hu:
     title_label: cím
     title_placeholder: Például. „Koordinátor” vagy „Levezető”
     updated: A tagság címe frissítve
+    weight_label: Szavazati súly
   user_name_modal:
     user_name_updated: Felhasználónév frissítve
     set_user_name: Felhasználónév beállítása
@@ -1998,6 +1999,7 @@ hu:
     vote_share_requirement: Szavazati arány követelmény
     for_the_proposal_to_pass: Ahhoz, hogy a javaslat elfogadásra kerüljön, ennek a lehetőségnek meg kell kapnia…
     for_the_poll_to_be_valid: Ahhoz, hogy a %{poll_type} érvényes legyen, ennek az opciónak a következőt kell kapnia…
+    points_cast: Leadott pontok
   poll_common:
     superseded: Felváltva
     outdated: Elavult
@@ -2108,6 +2110,12 @@ hu:
     status: Állapot
     your_vote_is_requested: Szavazatot kérünk
     browse_example_make_a_copy_hint: "<b>Kattintson a másolás ikonra</b> egy új szavazássablon létrehozásához, a példa kiindulópontként való használatával."
+    view_votes: Szavazatok megtekintése
+    weighted_votes: Súlyozott szavazatok
+    weighted_points: Súlyozott pontok
+    pct_of_weighted_votes: Súlyozott szavazatok %-a
+    pct_of_weighted_points: Súlyozott pontok %-a
+    weighted_mean: Súlyozott átlag
   poll_common_attachment_form:
     label: Mellékletek
   poll_common_add_option:
@@ -2176,6 +2184,8 @@ hu:
     delegate: Delegált
     delegate_popover: A delegált szavazati joggal rendelkező csoporttag
     delegates: Küldöttek
+    edit_vote_weights: Szavazati súlyok szerkesztése
+    vote_weights_are_defaults: Ezek az alapértelmezett szavazati súlyok az új szavazatokra vonatkoznak. Az itt végrehajtott változtatások nem befolyásolják a már kiadott szavazati súlyokat.
   polls_panel:
     new_poll: Új szavazás
     any_type: Minden típus
@@ -2222,6 +2232,7 @@ hu:
     legacy_vote_reasons: Korábbi szavazatok indokai
     legacy_vote_reasons_description: A hagyományos anonim szavazási formátummal leadott szavazatok indokai egyszerű szövegként jelennek meg
     anonymous_voting_participant_notice: A szavazás névtelen. A szavazat beküldése után nem ellenőrizheti vagy módosíthatja azt. Az eredmények csak a szavazás lezárultával érhetők el.
+    votes_have_different_weights: Ebben a szavazásban a szavazatok eltérő súllyal bírnak, így egyesek jobban számítanak, mint mások.
   poll_common_collapsed:
     by_who: tőle %{name}
   poll_common_calendar_invite:
@@ -2290,6 +2301,11 @@ hu:
     unredact_reason_helptext: Az ok, amiért a szöveg és a mellékletek ismét láthatóvá válnak
     unredact_reason_confirm: Visszaállítás oka
     unredact_reason_success: Szavazási indok visszaállítva
+    all_voters: Minden szavazó
+    vote_weight_column: Szavazati súly
+    stance: Szavazás
+    participation_records_restricted: A szavazás lezárása után láthatja, kik vettek részt
+    vote_weight: Szavazati súly %{weight}
   poll_common_undecided_panel:
     show_undecided: "%{count} bizonytalan megjelenítése"
     show_invitations: A függőben lévő meghívók megjelenítése
@@ -2932,9 +2948,37 @@ hu:
     stance_reason_required_when_disagreeing: Kötelező, ha nem ért egyet
     stance_reason_required_for_disagree_or_block: Kötelező a nemetmondáshoz vagy a blokkoláshoz
     stance_reason_required_for_block: Kötelező a blokkoláshoz
+    voters: Választók
+    manage_voters: Szavazók kezelése
+    remove_voter: Szavazó eltávolítása
+    voter_page_count: "%{first}–%{last} a %{total}-ból"
+    vote_weight_for: Szavazati súly %{name} felhasználóra
+    save_vote_weights: Szavazati súlyok mentése
+    vote_weights_updated: Szavazati súlyok frissítve
+    set_all: Összes beállítása
+    find_or_invite_voters: Szavazók keresése vagy meghívása
+    remove_voter_named: "%{name} eltávolítása a szavazásból"
+    remove_voter_and_any_vote_confirmation: Eltávolítod %{name} felhasználót ebből a szavazásból? Ezzel eltávolítod az általa leadott szavazatokat is.
+    edit_vote_weight: Szavazati súly szerkesztése
+    edit_vote_weight_for: Szavazati súly szerkesztése %{name} felhasználó számára (jelenleg %{weight})
+    set_all_vote_weights_title: Az összes szavazati súly beállítása
+    set_all_vote_weights_search_note: Ez megváltoztatja a szavazáson részt vevő összes szavazó szavazatának súlyát, beleértve a keresési eredményeiden kívül esőket is.
+    set_each_member_default_vote_weight: Az egyes tagok alapértelmezett szavazati súlyának beállítása
+    voters_will_not_be_notified: A szavazókat nem értesítjük. Más módon értesítse őket a szavazásról.
+    give_voters_different_vote_weights: Adjon a szavazóknak különböző súlyokat a szavazataikhoz. Az eredmények mind a sima, mind a súlyozott összesítést mutatják.
+    issued_vote_weights_will_change: A már kiadott szavazati súlyok változni fognak.
+    weight_for_all: Szavazati súly mindenkinek
+    set_all_vote_weights: Az összes szavazati súly beállítása
+    set_all_vote_weights_the_same: Minden szavazati súlyozásának azonosra állítása
+    member_vote_weights_hint: Az aktuális csoporttagsággal nem rendelkező szavazók 1-es szavazati súlyt kapnak
+    weighted_voting: Súlyozott szavazás
+    weighted_voting_is_not_available_with_anonymous_voting: "A súlyozott szavazás névtelen szavazásnál nem érhető el"
+    use_weighted_voting: Súlyozott szavazás használata
+    weighted_voting_off_warning: A súlyozott szavazás kikapcsolása minden szavazat súlyát 1-re állítja. Az ebben a szavazásban módosított szavazati súlyok elvesznek.
+    weighted_voting_on_group: A súlyozott szavazás bekapcsolása minden tag alapértelmezett szavazati súlyát lemásolja. A többi szavazó 1-es szavazati súlyt kap.
+    weighted_voting_on_direct: A súlyozott szavazás bekapcsolása minden szavazat súlyát 1-re állítja
   poll_receipts_page:
     participation_status_requires_min_votes: Ez megmutatja, hogy ki volt jogosult szavazni. Az, hogy egyes személyek szavaztak-e, csak akkor jelenik meg, ha legalább %{count} ember szavazott.
-    verify_participants: Résztvevők ellenőrzése
     see_votes_if_quorum_reached: Ha a szavazás lezárult és létrejött a határozatképző létszám, akkor láthatja, hogy kik szavaztak.
     voter_name: Szavazó neve
     voter_email: Szavazói e-mail cím
@@ -2946,6 +2990,7 @@ hu:
     participation_records_explanation: Ez azt mutatja, hogy kik voltak jogosultak és hogy szavaztak-e. Nem mutatja, hogy ki hogyan szavazott.
     voted: Szavazott
     not_voted: Nem szavazott
+    email_addresses_only_for_group_admins: Az e-mail címek csak a csoport adminisztrátorai számára láthatók.
   comment_reply_form:
     aria_label: Válasz hozzáadása
   discussion_template:
@@ -3039,6 +3084,12 @@ hu:
     notify_members_or_invite_guests_info: Értesítsd a csoport tagjait név szerint, vagy hívd meg a nem tagokat e-mail címükkel. A meghívott vendégek részt vehetnek ebben a beszélgetésben, de nem férhetnek hozzá a többi csoportbeszélgetéshez.
     notify_members_info: Add meg a csoport tagjainak nevét, hogy értesítsd őket erről a beszélgetésről.
     specified_voters_only_warning: Ebben a témában vannak szavazások, ahol csak kiválasztott személyek szavazhatnak. Ha valakit ezzel az űrlappal adsz hozzá, az nem ad neki szavazatot, csak lehetőséget arra, hogy kövesse a beszélgetést és hozzászóljon. Ha szavazatokat szeretnél kiosztani, használd a szavazáson a "szavazók hozzáadása" lehetőséget.
+    manage_thread_members: A téma tagjainak kezelése
+    find_or_invite_people: Személyek keresése vagy meghívása
+    invite_or_notify_explanation: Új embereket fogunk meghívni a beszélgetésbe. A beszélgetésben már részt vevő személyeket ismét értesítjük.
+    invite_or_notify: Meghívás vagy értesítés
+    member_page_count: "%{first}–%{last} a %{total}-ból"
+    guest_access_info: E-mailben meghívott vendégek részt vehetnek ebben a beszélgetésben anélkül, hogy hozzáférnének más csoportbeszélgetésekhez.
   poll_common_details_meta:
     opened: Megnyitva
     opens: Megnyílik

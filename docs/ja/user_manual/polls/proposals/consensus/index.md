@@ -1,24 +1,26 @@
 ---
 title: コンセンサス
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/polls/proposals/consensus/index.md
+source_revision: 9c60c42fc739483fa23f15d9f34a1e9245518092
+source_file: docs/en/user_manual/polls/proposals/consensus/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: af2e2a50e8c0b440
   when-to-use-consensus: fc7f6180345f73a3
   example-adopt-a-bottle-return-standard: 9b0915ee6f41fa54
   set-up-the-proposal: b35a641ec031a40b
   vote: f7dbea12e2d6261a
-  read-the-results: d7d1bfae079d04ec
+  read-the-results: e60abb3a43a86d6e
+  share-an-outcome: a7febe19484c20b3
 generated:
   introduction: 0d5a8d10c094e1f2
   when-to-use-consensus: 12147cb9eaa817ee
   example-adopt-a-bottle-return-standard: 90b8942ced275a43
   set-up-the-proposal: ce9b8177df5dd9e8
   vote: 19f4a560c02dc433
-  read-the-results: 17e465c3de27b738
+  read-the-results: ffe87863d2ee2c3f
+  share-an-outcome: 41f9e84ccbda9b3b
 title_source: 8abe09bf65aefdb8
 title_generated: 68459d5f02d9cc17
 ---
@@ -69,4 +71,10 @@ title_generated: 68459d5f02d9cc17
 
 ![](../proposal_consensus_results.png)
 
-グループが合意に達したら、最終的な基準と担当する責任を記録した結論を公開します。合意に至らなかった場合は、修正する内容と、グループがいつ提案の検討を再開するかを記録します。
+<!-- translation-section: share-an-outcome -->
+
+## 結論を共有する
+
+提案の投票が終了したら、結論を共有します。グループが合意に達した場合は、最終的な合意内容と担当者を記録します。合意に至らなかった場合は、修正する内容と、グループがいつ提案の検討を再開するかを記録します。結論の仕組みについては、[結論を共有する](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome)を参照してください。
+
+![合意に至らず、基準を修正することを伝える結論](outcome.png)

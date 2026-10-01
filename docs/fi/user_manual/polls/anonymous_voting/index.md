@@ -1,45 +1,45 @@
 ---
 title: Anonyymi äänestys
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/polls/anonymous_voting/index.md
+source_revision: 9c60c42fc739483fa23f15d9f34a1e9245518092
+source_file: docs/en/user_manual/polls/anonymous_voting/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-30'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
-  introduction: d5c276b2785919c3
+  introduction: 2b9b7da01da020b3
   how-anonymous-voting-protects-voters: f2be8477636489af
   while-voting-is-open: dda23e517269b9cf
   votes-cannot-be-changed: 1e317297688ba902
   why-anonymous-votes-do-not-have-reasons: 39c1a8362550ae40
   results-and-exports: eb2429afd442dad2
-  participation-verification: cdaa1f5c3ca1e179
+  participation-verification: 87bc3647be4bbfb8
   reminders: 0afad473c90f2f03
-  what-coordinators-and-administrators-can-see: 51460c8a6b663aba
+  what-coordinators-and-administrators-can-see: 07faa9f646665b64
   limits-of-anonymous-voting: 912141560342d073
   questions: 60cc6f1a0163ec5d
-  can-a-coordinator-see-how-i-voted: 3dd2c9e6d06debda
+  can-a-coordinator-see-how-i-voted: 574fc18f3a9871c3
   can-i-see-my-vote-after-submitting-it: c558e29729aed45f
   can-i-change-or-withdraw-my-vote: dd1a385fa8d225a5
   will-i-receive-an-email-confirming-my-vote: 8616fc9a0b9809ac
-  does-a-public-poll-reveal-more-information: 2ba76a1748304f96
+  does-a-public-poll-reveal-more-information: 27acfa7744a0790d
   is-anonymous-voting-suitable-for-every-election: d1b723178449c0da
 generated:
-  introduction: dd4008767d30016c
+  introduction: 4a942a24f895fb0b
   how-anonymous-voting-protects-voters: 14d278fdae1fdf54
   while-voting-is-open: e3f5d679ec303197
   votes-cannot-be-changed: 212b04057186489a
   why-anonymous-votes-do-not-have-reasons: df019880d417fca5
   results-and-exports: 334146e763886ffa
-  participation-verification: f8375a6e9273ed12
+  participation-verification: f5792a00deb1ed90
   reminders: d4b65900a4588662
-  what-coordinators-and-administrators-can-see: 5707eae840b612b9
+  what-coordinators-and-administrators-can-see: d4c4dabedc06a0e5
   limits-of-anonymous-voting: c848ddc98f282f8b
   questions: b868ae945415823c
-  can-a-coordinator-see-how-i-voted: ca9f2872664d21fd
+  can-a-coordinator-see-how-i-voted: 4e6ecad56026c019
   can-i-see-my-vote-after-submitting-it: 28bae68efbab0a09
   can-i-change-or-withdraw-my-vote: 1015d6f64d08786a
   will-i-receive-an-email-confirming-my-vote: f11e5da90800ca28
-  does-a-public-poll-reveal-more-information: 071a1bcb66e5fb23
+  does-a-public-poll-reveal-more-information: 36778afa9c44c351
   is-anonymous-voting-suitable-for-every-election: 8474d5bc9841430f
 title_source: 1bc4567506ad4d51
 title_generated: 5c4eec1fb34c2a8c
@@ -49,7 +49,7 @@ title_generated: 5c4eec1fb34c2a8c
 
 # Anonyymi äänestys
 
-Anonyymissä äänestyksessä tieto siitä, kuka on äänestänyt, säilytetään erillään annetuista äänistä. Kyselyn koordinaattorit näkevät, ketkä olivat äänioikeutettuja. Kun vähintään kolme henkilöä on äänestänyt, he voivat myös tarkistaa, ketkä osallistuivat. Sovelluksen käyttäjät eivät voi yhdistää annettua ääntä sen antajaan.
+Anonyymissä äänestyksessä, jota kutsutaan myös sokkoäänestykseksi, tieto siitä, kuka on äänestänyt, säilytetään erillään annetuista äänistä. Kyselyn sulkeuduttua kaikki, jotka näkevät tulokset, näkevät myös, ketkä osallistuivat. Kukaan Loomion käyttäjä ei voi yhdistää annettua ääntä sen antajaan.
 
 Tällä sivulla kerrotaan, miten anonyymi äänestys suojaa äänestäjiä, mitä tietoja säilytetään ja missä suojan rajat kulkevat.
 
@@ -116,11 +116,15 @@ Anonyymiä kyselyä ei voi avata uudelleen sen sulkeuduttua.
 
 <!-- translation-section: participation-verification -->
 
-## Osallistumisen tarkistaminen
+## Ketkä osallistuivat
 
-Kyselyn koordinaattorit voivat tarkastella nimettyjä osallistumistietoja. Niistä näkyy aina, ketkä olivat äänioikeutettuja. Kun vähintään kolme henkilöä on äänestänyt, tiedoista näkyy myös, onko kukin henkilö äänestänyt. Niistä ei koskaan näy, miten kukaan äänesti. Jos kysely sulkeutuu alle kolmen annetun äänen jälkeen, tieto osallistumisesta pysyy piilossa.
+Anonyymin kyselyn sulkeuduttua kaikki, jotka näkevät sen tulokset, näkevät myös, ketkä osallistuivat. Kukaan ei näe tätä tietoa äänestyksen ollessa käynnissä.
 
-Muut osallistujat eivät voi tarkastella nimettyjä osallistumistietoja. Oikeus nähdä kyselyn tulokset ei anna oikeutta nähdä osallistumistietoja.
+Valitse **Näytä äänet**, niin näet luettelon. Siitä näkyy aina, ketkä olivat äänioikeutettuja. Tieto siitä, onko kukin henkilö äänestänyt, näkyy vain, jos riittävän moni on äänestänyt. Tähän vaaditaan kyselylle asetettu päätösvaltainen määrä tai, jos sitä ei ole asetettu, puolet äänioikeutetuista. Ääniä vaaditaan kuitenkin aina vähintään kolme. Luettelosta ei koskaan näy, miten tai milloin kukaan äänesti.
+
+Ryhmän jäsenet ja kyselyn äänestäjät näkevät myös, milloin kukin henkilö liittyi ryhmään ja kuka hänet kutsui. Ryhmän ylläpitäjät näkevät lisäksi sähköpostiosoitteet, jotta he voivat erottaa samannimiset henkilöt toisistaan.
+
+Koska kaikki tulokset näkevät henkilöt näkevät myös, ketkä äänestivät, yksipuolinen tulos voi paljastaa, miten ihmiset äänestivät. Jos esimerkiksi kaikki äänet ovat vaihtoehdon Olla samaa mieltä puolesta, kaikki äänestäneet olivat samaa mieltä.
 
 Koordinaattorit voivat lisätä äänioikeutettuja äänestyksen ollessa käynnissä, myös sen jälkeen kun muut ovat äänestäneet. Jo äänestäneitä henkilöitä ei voi poistaa anonyymistä kyselystä.
 
@@ -141,7 +145,7 @@ Automaattista muistutusta ei lähetetä, jos kyselyn koko äänestysaika on alle
 Kyselyn koordinaattori, ryhmän ylläpitäjä tai palvelun ylläpitäjä voi roolinsa mukaan nähdä sovelluksessa:
 
 - kyselyn ja sen äänioikeutetut;
-- onko kukin äänioikeutettu äänestänyt, jos hänen roolinsa antaa siihen oikeuden ja vähintään kolme henkilöä on äänestänyt; ja
+- onko kukin äänioikeutettu äänestänyt, jos katselijan rooli antaa siihen oikeuden ja riittävän moni on äänestänyt; ja
 - yhteistulokset kyselyn sulkeuduttua.
 
 Sovelluksen toiminnoilla he eivät voi nähdä:
@@ -167,9 +171,9 @@ Harkitse äänestäjien määrää ja päätöksen arkaluonteisuutta, kun arvioi
 
 <!-- translation-section: can-a-coordinator-see-how-i-voted -->
 
-### Voiko koordinaattori nähdä, miten äänestin?
+### Voiko kukaan nähdä, miten äänestin?
 
-Ei. Kun vähintään kolme henkilöä on äänestänyt, koordinaattori voi tarkistaa, oletko äänestänyt. Hän ei kuitenkaan voi yhdistää sinua antamaasi ääneen sovelluksen kautta. Jos ääniä on vähemmän kuin kolme, tieto osallistumisestasi pysyy piilossa.
+Ei. Kun riittävän moni on äänestänyt, tulokset näkevät henkilöt näkevät myös, oletko äänestänyt. Kukaan ei voi yhdistää sinua annettuun ääneen sovelluksen kautta. Siihen asti tieto siitä, oletko äänestänyt, pysyy piilossa.
 
 <!-- translation-section: can-i-see-my-vote-after-submitting-it -->
 
@@ -191,9 +195,9 @@ Et. Äänestäminen näyttää vain vahvistuksen näytöllä ja päivittää osa
 
 <!-- translation-section: does-a-public-poll-reveal-more-information -->
 
-### Paljastaako julkinen äänestys enemmän tietoa?
+### Paljastaako julkinen kysely enemmän tietoa?
 
-Julkisen äänestyksen ja sen koottujen tulosten katselu voi olla mahdollista äänestyksen päätyttyä. Nimetyt osallistumistiedot ja yksittäiset anonyymit äänet eivät tule näkyviin.
+Julkisen kyselyn sulkeuduttua kuka tahansa näkee sen tulokset ja sen, ketkä osallistuivat. Yksittäiset äänet sekä jäsenyys- ja kutsutiedot eivät näy.
 
 <!-- translation-section: is-anonymous-voting-suitable-for-every-election -->
 

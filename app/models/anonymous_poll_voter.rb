@@ -4,14 +4,14 @@ class AnonymousPollVoter < ApplicationRecord
   belongs_to :inviter, class_name: "User", optional: true
 
   validates :voter_id, uniqueness: { scope: :poll_id }
-  validate :poll_uses_detached_anonymous_voting
+  validate :poll_is_anonymous
   validate :identity_cannot_change, on: :update
   validate :ballot_submission_cannot_be_reversed, on: :update
 
   private
 
-  def poll_uses_detached_anonymous_voting
-    errors.add(:poll, :invalid) unless poll&.detached_anonymous?
+  def poll_is_anonymous
+    errors.add(:poll, :invalid) unless poll&.anonymous?
   end
 
   def identity_cannot_change

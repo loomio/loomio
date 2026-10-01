@@ -1618,6 +1618,7 @@ nl_NL:
     title_label: titel
     title_placeholder: bv 'Coordinator', of 'Facilitator'
     updated: Lidmaatschapstitel geupdate
+    weight_label: Stemgewicht
   user_name_modal:
     user_name_updated: Gebruikersnaam bijgewerkt
     set_user_name: Gebruikersnaam instellen
@@ -2014,6 +2015,7 @@ nl_NL:
     vote_share_requirement: Stemmenaandeelvereiste
     for_the_proposal_to_pass: Om het voorstel te laten slagen, moet deze optie…
     for_the_poll_to_be_valid: Om %{poll_type} geldig te laten zijn, moet deze optie het volgende ontvangen...
+    points_cast: Toegekende punten
   poll_common:
     superseded: Vervangen
     outdated: Verouderd
@@ -2124,6 +2126,12 @@ nl_NL:
     status: Status
     your_vote_is_requested: Uw stem wordt gevraagd.
     browse_example_make_a_copy_hint: "<b>Klik op het kopieerpictogram</b> om een nieuwe enquêtesjabloon te maken, waarbij je het voorbeeld als uitgangspunt gebruikt"
+    view_votes: Bekijk stemmen
+    weighted_votes: Gewogen stemmen
+    weighted_points: Gewogen punten
+    pct_of_weighted_votes: "% van de gewogen stemmen"
+    pct_of_weighted_points: "% van de gewogen punten"
+    weighted_mean: Gewogen gemiddelde
   poll_common_attachment_form:
     label: Bijlagen
   poll_common_add_option:
@@ -2192,6 +2200,8 @@ nl_NL:
     delegate: Delegeren
     delegate_popover: Een afgevaardigde is een groepslid met stemrecht
     delegates: Afgevaardigden
+    edit_vote_weights: Stemweging bewerken
+    vote_weights_are_defaults: Deze standaard stemwegingen gelden voor nieuwe stemmen. Wijzigingen hierin hebben geen invloed op reeds toegekende stemwegingen.
   polls_panel:
     new_poll: Nieuwe peiling
     any_type: Alle types
@@ -2240,6 +2250,7 @@ nl_NL:
     legacy_vote_reasons: Redenen bij eerdere stemmen
     legacy_vote_reasons_description: De redenen bij stemmen die met het oude anonieme stemsysteem zijn uitgebracht, worden als platte tekst weergegeven
     anonymous_voting_participant_notice: Stemmen is anoniem. Je kunt je stem niet meer bekijken of wijzigen nadat je die hebt uitgebracht. De resultaten zijn pas beschikbaar nadat de stemming is gesloten.
+    votes_have_different_weights: In deze peiling hebben de stemmen een verschillende weging, waardoor sommige stemmen zwaarder wegen dan andere.
   poll_common_collapsed:
     by_who: door %{name}
   poll_common_calendar_invite:
@@ -2308,6 +2319,11 @@ nl_NL:
     unredact_reason_helptext: De reden waarom tekst en bijlagen weer zichtbaar worden gemaakt.
     unredact_reason_confirm: Reden herstellen
     unredact_reason_success: Reden voor de stemming hersteld
+    all_voters: Alle kiezers
+    vote_weight_column: Stemgewicht
+    stance: Stemmen
+    participation_records_restricted: Je kunt zien wie er heeft deelgenomen nadat de stemming is gesloten
+    vote_weight: Stemgewicht %{weight}
   poll_common_undecided_panel:
     show_undecided: Toon %{count} onbeslist
     show_invitations: Toon uitnodigingen in afwachting
@@ -2952,9 +2968,37 @@ nl_NL:
     stance_reason_required_when_disagreeing: Vereist bij meningsverschillen
     stance_reason_required_for_disagree_or_block: Vereist om niet akkoord te gaan of te blokkeren
     stance_reason_required_for_block: Vereist bij blokkeren
+    voters: Kiezers
+    manage_voters: Kiezers beheren
+    remove_voter: Verwijder kiezer
+    voter_page_count: "%{first}–%{last} van %{total}"
+    vote_weight_for: Stemgewicht voor %{name}
+    save_vote_weights: Stemgewichten opslaan
+    vote_weights_updated: Stemweging bijgewerkt
+    set_all: Stel alles in
+    find_or_invite_voters: Zoek of nodig kiezers uit
+    remove_voter_named: Verwijder %{name} uit de poll
+    remove_voter_and_any_vote_confirmation: Wil je %{name} uit deze enquête verwijderen? Dan worden ook alle stemmen die zij hebben uitgebracht verwijderd.
+    edit_vote_weight: Stemgewicht bewerken
+    edit_vote_weight_for: Bewerk het stemgewicht voor %{name} (momenteel %{weight})
+    set_all_vote_weights_title: Stel alle stemgewichten in
+    set_all_vote_weights_search_note: Dit wijzigt de stemweging van alle kiezers in de peiling, inclusief degenen die niet in je zoekresultaten voorkomen
+    set_each_member_default_vote_weight: Stel het standaard stemgewicht voor elk lid in
+    voters_will_not_be_notified: Kiezers worden niet op de hoogte gesteld. Breng hen op een andere manier op de hoogte van de stemming.
+    give_voters_different_vote_weights: Geef kiezers verschillende stemgewichten. De resultaten tonen zowel de gewone als de gewogen totalen.
+    issued_vote_weights_will_change: De reeds toegekende stemwegingen zullen veranderen.
+    weight_for_all: Stemgewicht voor iedereen
+    set_all_vote_weights: Alle stemgewichten instellen
+    set_all_vote_weights_the_same: Alle stemgewichten gelijk instellen
+    member_vote_weights_hint: Kiezers zonder huidig groepslidmaatschap krijgen een stemgewicht van 1
+    weighted_voting: Gewogen stemmen
+    weighted_voting_is_not_available_with_anonymous_voting: "Gewogen stemmen is niet beschikbaar bij anoniem stemmen"
+    use_weighted_voting: Gewogen stemmen gebruiken
+    weighted_voting_off_warning: Als je gewogen stemmen uitschakelt, wordt het gewicht van elke stem op 1 gezet. Alle stemgewichten die je voor deze peiling hebt gewijzigd, gaan verloren.
+    weighted_voting_on_group: Door gewogen stemmen in te schakelen, wordt het standaard stemgewicht van elk lid gekopieerd. Andere stemmers krijgen een stemgewicht van 1.
+    weighted_voting_on_direct: Door gewogen stemmen in te schakelen, wordt het gewicht van elke stem op 1 gezet
   poll_receipts_page:
     participation_status_requires_min_votes: Dit laat zien wie stemgerechtigd was. Of elke persoon heeft gestemd, wordt alleen getoond wanneer minstens %{count} mensen hebben gestemd.
-    verify_participants: Deelnemers verifiëren
     see_votes_if_quorum_reached: Als de stemming is gesloten en het quorum is bereikt, ziet u wie er gestemd heeft.
     voter_name: Naam van de kiezer
     voter_email: kiezers-e-mail
@@ -2966,6 +3010,7 @@ nl_NL:
     participation_records_explanation: Dit laat zien wie stemgerechtigd was en of ze hebben gestemd. Het laat niet zien hoe iemand heeft gestemd.
     voted: Gestemd
     not_voted: Niet gestemd
+    email_addresses_only_for_group_admins: E-mailadressen worden alleen getoond aan groepsbeheerders.
   comment_reply_form:
     aria_label: Voeg een antwoord toe
   discussion_template:
@@ -3059,6 +3104,12 @@ nl_NL:
     notify_members_or_invite_guests_info: Stel groepsleden persoonlijk op de hoogte of nodig niet-leden uit via hun e-mailadres. Uitgenodigde gasten kunnen deelnemen aan deze discussie, maar hebben geen toegang tot andere groepsdiscussies.
     notify_members_info: Voer de namen van de groepsleden in om hen over dit onderwerp te informeren.
     specified_voters_only_warning: In dit forumonderwerp vind je peilingen waar alleen geselecteerde personen kunnen stemmen. Iemand toevoegen met dit formulier geeft die persoon geen stem, maar alleen de mogelijkheid om mee te volgen en te reageren. Als je stemmen wilt toekennen, gebruik dan "stemmers toevoegen" in de peiling.
+    manage_thread_members: Beheer de leden van de discussie
+    find_or_invite_people: Zoek of nodig mensen uit
+    invite_or_notify_explanation: Nieuwe mensen worden uitgenodigd voor de discussie. Mensen die al in de discussie zitten, worden opnieuw op de hoogte gesteld.
+    invite_or_notify: Uitnodigen of opnieuw informeren
+    member_page_count: "%{first}–%{last} van %{total}"
+    guest_access_info: Gasten die per e-mail zijn uitgenodigd, kunnen aan deze discussie deelnemen zonder toegang te hebben tot andere groepsdiscussies.
   poll_common_details_meta:
     opened: Geopend
     opens: Opent

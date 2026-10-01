@@ -1,24 +1,26 @@
 ---
 title: Choix
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/polls/choose/index.md
+source_revision: 3a315412c646d254c8426be5c436a4e593f6011f
+source_file: docs/en/user_manual/polls/choose/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: f9d6a5bfb7445de0
   when-to-use-choose: f8a798497cac5a43
   example-set-a-planning-meeting-agenda: 32a94a916dbf84e5
   set-up-the-poll: a16095b63c57e0c9
   vote: d170451131c544cf
-  read-the-results: 84521c82aed8dd29
+  read-the-results: e675d12da1a4ba8a
+  share-an-outcome: f6afc1713b921265
 generated:
   introduction: f02ffa7146879d12
   when-to-use-choose: 184b5cb500c067e2
   example-set-a-planning-meeting-agenda: 43f29cfa83643470
   set-up-the-poll: d3a9919ce612b374
   vote: a9534c9b7481b8af
-  read-the-results: c22295dadee83d43
+  read-the-results: a66da8caff643bd6
+  share-an-outcome: 38fc9e98a3b4ed09
 title_source: c7f937836f5d82d5
 title_generated: 48fa1f2a871106e1
 ---
@@ -86,6 +88,10 @@ Les résultats indiquent la part de l’ensemble des sélections reçue par chaq
 
 Dans cet exemple, **Calendrier de collecte dans les cafés** a été sélectionné trois fois. **Processus de lavage** et **Suivi du taux de retour** ont chacun été sélectionnés deux fois. Le résultat suggère d’accorder le plus de temps aux collectes dans les cafés, mais la personne qui organise la réunion doit encore décider comment répartir le temps restant entre les sujets à égalité.
 
-À la clôture du sondage, publiez une **Conclusion** expliquant ce que le groupe fera du résultat.
+<!-- translation-section: share-an-outcome -->
 
-![](outcome.png)
+## Partager une conclusion
+
+À la clôture du sondage, partagez une conclusion. Indiquez ce que le groupe fera du résultat, notamment comment les égalités seront départagées. Consultez [Partager une conclusion](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome) pour comprendre le fonctionnement des conclusions.
+
+![Une conclusion accordant le plus de temps de réunion aux collectes dans les cafés](outcome.png)

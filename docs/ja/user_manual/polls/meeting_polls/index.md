@@ -1,20 +1,20 @@
 ---
 title: タイムポーリング
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/polls/meeting_polls/index.md
+source_revision: 9c60c42fc739483fa23f15d9f34a1e9245518092
+source_file: docs/en/user_manual/polls/meeting_polls/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 8ab9108683132085
   time-poll: d5d5d81f7de10419
   voting: c50083234167a0f9
-  outcome: 20d3f84d36a3b860
+  outcome: 74db36d36fa18798
 generated:
   introduction: 14199b96424291d0
   time-poll: 76b0812340dd12f0
   voting: cceb86e37725aef3
-  outcome: e75d003e1291cb62
+  outcome: 3298d96ca5bd7047
 title_source: 8e2a07d7257fbc04
 title_generated: ff7640acbf589312
 ---
@@ -63,9 +63,9 @@ _参加できる日時を確認する_
 
 <!-- translation-section: outcome -->
 
-### 結論
+### 結論を共有する
 
-タイムポーリングが終了したら、最適な日時を選んで結論を投稿します。
+タイムポーリングが終了したら、最適な日時を選んで結論を共有します。結論の使い方については、[結論を共有する](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome)を参照してください。
 
 ![](timepoll_outcome.png)
 

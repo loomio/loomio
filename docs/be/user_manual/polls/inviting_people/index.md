@@ -1,18 +1,18 @@
 ---
 title: Запрашаем галасаваць
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/polls/inviting_people/index.md
+source_revision: 9c60c42fc739483fa23f15d9f34a1e9245518092
+source_file: docs/en/user_manual/polls/inviting_people/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-30'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 0635cf23fcaaa95b
   invite-people-to-vote-in-a-poll: cfbf5caf71d1d5ca
   invite-guests-or-experts: 0717537bbd36fa07
   invite-a-subgroup-to-vote: 3ac684bdca4b3365
   engage-people-while-a-poll-is-running: 69971de8d56c0a74
-  add-voters-to-the-poll: 904f682bab618ce3
-  remove-people-from-the-poll: d204dd916f5418e2
+  add-voters-to-the-poll: 48f3b4a1edb5a037
+  remove-people-from-the-poll: ceec3f0319728807
   remind-people-to-vote: 177c881cb1b0dfb9
   view-notification-history: 52d930341c048008
   close-early: 0c46e8066719fc2f
@@ -23,8 +23,8 @@ generated:
   invite-guests-or-experts: a0cb80ff7a48d1fb
   invite-a-subgroup-to-vote: e065a9d1c54da0e3
   engage-people-while-a-poll-is-running: a13f2a80c9a84bea
-  add-voters-to-the-poll: 02de595e52cc64da
-  remove-people-from-the-poll: 6d969ff770344c1d
+  add-voters-to-the-poll: 9c5a8cd779d9bac9
+  remove-people-from-the-poll: 2e703faf390a01e9
   remind-people-to-vote: ab622824c77da40a
   view-notification-history: 137deeedc9a23bcb
   close-early: ab4eb3a543adba50
@@ -88,7 +88,7 @@ title_generated: a068b848ce2b9f20
 
 Вы можаце дадаваць людзей у апытанне ў любы час, у тым ліку да пачатку галасавання ў запланаваным апытанні.
 
-Выберыце **Дадаць выбаршчыкаў**, затым увядзіце імёны або адрасы электроннай пошты людзей, якіх хочаце дадаць.
+Выберыце **Кіраванне выбаршчыкамі**, каб адкрыць акно кіравання выбаршчыкамі. Вы можаце запрасіць усіх у групе, дадаць удзельнікаў па імені або гасцей па адрасе электроннай пошты, калі запрашэнне гасцей дазволена. Увод у полі **Знайсці або запрасіць выбаршчыкаў** таксама фільтруе людзей, якія ўжо ёсць у апытанні. Апошнія дададзеныя выбаршчыкі паказваюцца першымі; выкарыстоўвайце элементы пераходу паміж старонкамі, каб праглядзець увесь спіс.
 
 Калі для апытання запланаваны час пачатку і галасаванне яшчэ не адкрыта, выбаршчыкі не атрымаюць апавяшчэнне адразу. Яны атрымаюць яго, калі галасаванне адкрыецца.
 
@@ -96,13 +96,15 @@ title_generated: a068b848ce2b9f20
 
 ### Прыбярыце людзей з апытання
 
-Выберыце **Дадаць выбаршчыкаў**, знайдзіце патрэбнае імя, адкрыйце меню з трыма кропкамі побач з ім і выберыце **Прыбраць з прапановы**.
+Выберыце **Кіраванне выбаршчыкамі**, знайдзіце патрэбнае імя ў акне кіравання выбаршчыкамі, націсніце кнопку з выявай сметніцы побач з ім і пацвердзіце **Выдаліць выбаршчыка**.
+
+![Кнопка з выявай сметніцы побач з імем у акне кіравання выбаршчыкамі](proposal_invite_remove.png)
 
 Людзей нельга прыбраць з ананімнага апытання.
 
 Напрыклад, адміністрацыя можа стварыць апытанне ад імя ўдзельнікаў рады, а потым прыбраць сябе з апытання, калі не мае права галасаваць.
 
-![](proposal_invite_remove.png)
+У апытаннях, дзе выкарыстоўваецца вага галасоў, гэтае ж акно дазваляе адміністратарам апытання [праглядаць і рэдагаваць вагу галасоў](/en/user_manual/polls/weighted_voting).
 
 <!-- translation-section: remind-people-to-vote -->
 

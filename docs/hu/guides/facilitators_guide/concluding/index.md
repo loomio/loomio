@@ -1,19 +1,19 @@
 ---
 title: Lezárás
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/guides/facilitators_guide/concluding/index.md
+source_revision: 9c60c42fc739483fa23f15d9f34a1e9245518092
+source_file: docs/en/guides/facilitators_guide/concluding/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-30'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 0160da4a2a071cae
-  outcomes-next-steps: 9829d1cef05d120b
+  outcomes-next-steps: 146b139e25dcfb4e
   reporting-harvesting: 64a7f7605636c422
   turning-discussion-into-action: 67b87042b96109e0
   it-ain-t-over-til-it-s-over: 9edb6ef0bcb17938
 generated:
   introduction: e9afcde2492f5f16
-  outcomes-next-steps: 69c429b97a3e7ee7
+  outcomes-next-steps: 1f2102feb9b26a72
   reporting-harvesting: e68d8cc80ec6b305
   turning-discussion-into-action: f9b975b28958504a
   it-ain-t-over-til-it-s-over: 8fa684392cbb6230
@@ -43,7 +43,7 @@ Ezekre a kérdésekre néha konkrét válaszok születnek, például elvégzend�
 
 A Loomióban
 
-* A [következtetések](/en/user_manual/polls/outcomes/) fontos eszközök. Egy javaslat lezárása még nem zárja le a folyamatot: a döntést is össze kell foglalni. Erre szolgál a következtetés funkció.
+* A [következtetések](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome) fontos eszközök. Egy javaslat lezárása még nem zárja le a folyamatot: a döntést is össze kell foglalni. Erre szolgál a következtetés funkció.
 * Sok Loomio-beszélgetés javaslat vagy közzétett következtetés nélkül ér természetes véget. Ezek a beszélgetések is értékesek. A későbbi tájékozódáshoz hasznos lehet a leírásban összefoglalni, mire jutott a csoport.
 * Ha egyes embereknek feladatuk van, @megemlítheted őket név szerint. Erről értesítést kapnak.
 

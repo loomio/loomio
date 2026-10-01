@@ -13,7 +13,6 @@ sections:
   ranked-choice: 31dee409a33369de
   time-poll: 8b3a09b278bd7fde
   stv-election: e8407157d29424e4
-  other-specialized-method: 6b1ca633e613e513
 generated:
   introduction: 53283ba186393f96
   simple-poll: d08349f0b7e4965c
@@ -22,7 +21,6 @@ generated:
   ranked-choice: cc443760a7f7964d
   time-poll: 93ea197ef452216e
   stv-election: c212bd36dd1df465
-  other-specialized-method: 7a5b1f2b44239d03
 title_source: 996729458535904a
 title_generated: 3ea4c61ff06a1a9f
 ---
@@ -68,9 +66,3 @@ Bei einer [Zeitumfrage](/en/user_manual/polls/meeting_polls/) geben Teilnehmende
 ## STV-Wahl
 
 Bei [STV-Wahlen](/en/user_manual/polls/stv/) ordnen Teilnehmende Kandidierende nach ihren Präferenzen. Das Verfahren ermöglicht eine Verhältniswahl mit mehreren Gewählten. Verwende STV, um ein Komitee, einen Vorstand oder eine Gruppe von Delegierten zu wählen.
-
-<!-- translation-section: other-specialized-method -->
-
-## Weitere spezielle Methode
-
-Loomio bietet auch eine Fragerunde, in der Fragen ohne Abstimmung gesammelt werden. Gruppenadmins können sie unter [Umfragevorlagen](/en/user_manual/polls/poll_templates/) verfügbar machen.

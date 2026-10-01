@@ -1,24 +1,26 @@
 ---
 title: Alocar
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/polls/allocate/index.md
+source_revision: 9c60c42fc739483fa23f15d9f34a1e9245518092
+source_file: docs/en/user_manual/polls/allocate/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: d097e3a7d91324c9
   when-to-use-allocate: 25c91f8c05c1ec80
   example-set-priorities-for-an-annual-strategy-review: 0211b365dde1d17c
   set-up-the-poll: 772846c919c6af97
   vote: b6d1dab4c7743034
-  read-the-results: 85ea9532f2548205
+  read-the-results: 3a66507bd8387273
+  share-an-outcome: abb46bfca8b73b7a
 generated:
   introduction: 49adc758d7da7c20
   when-to-use-allocate: c8f9ecc23458a028
   example-set-priorities-for-an-annual-strategy-review: 9dab0df5b4fac8d2
   set-up-the-poll: c75b3781cec8e506
   vote: ef59470e15bdb2f8
-  read-the-results: c58f4f5f962273fa
+  read-the-results: 7ee338393b670367
+  share-an-outcome: d5ceb24873663d30
 title_source: c927a8a7c2ce230c
 title_generated: 39acb526c8f78116
 ---
@@ -84,4 +86,12 @@ Os resultados apresentam as opções em ordem decrescente do total de pontos rec
 
 Neste exemplo, **Sustentabilidade financeira** recebe mais pontos, seguida por **Desenvolvimento da equipe**. Todos os eleitores dão pontos a Sustentabilidade financeira, o que sugere amplo acordo de que ela precisa de bastante tempo na revisão. Compare os totais com o número de eleitores para distinguir prioridades amplamente compartilhadas de áreas que receberam forte apoio de menos pessoas.
 
-Analise os totais junto com o número de eleitores e suas justificativas. Publique uma conclusão explicando como a revisão da estratégia será organizada; a enquete não atribui tempo automaticamente.
+Analise os totais junto com o número de eleitores e suas justificativas.
+
+<!-- translation-section: share-an-outcome -->
+
+## Compartilhar uma conclusão
+
+Quando a enquete encerrar, compartilhe uma conclusão. A enquete não atribui tempo ou dinheiro automaticamente, então explique como o resultado será usado. Veja [Compartilhar uma conclusão](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome) para entender como as conclusões funcionam.
+
+![Uma conclusão que define como o tempo será dividido na revisão da estratégia](outcome.png)

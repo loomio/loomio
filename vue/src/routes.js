@@ -7,7 +7,6 @@ const PollsToVoteOnPage = wrapAsyncLoader(() => import('./components/dashboard/p
 const NotificationsPage = wrapAsyncLoader(() => import('./components/notifications/page'));
 const ExplorePage = wrapAsyncLoader(() => import('./components/explore/page'));
 const ProfilePage = wrapAsyncLoader(() => import('./components/profile/page'));
-const PollReceiptsPage = wrapAsyncLoader(() => import('./components/poll/receipts_page'));
 const PollVotesPage = wrapAsyncLoader(() => import('./components/poll/votes_page'));
 const PollFormPage = wrapAsyncLoader(() => import('./components/poll/form_page'));
 const PollTemplateFormPage = wrapAsyncLoader(() => import('./components/poll_template/form_page'));
@@ -18,6 +17,7 @@ const GroupDiscussionsPanel = wrapAsyncLoader(() => import('./components/group/d
 const GroupPollsPanel = wrapAsyncLoader(() => import('./components/group/polls_panel'));
 const GroupEmailsPanel = wrapAsyncLoader(() => import('./components/group/emails_panel'));
 const MembersPanel = wrapAsyncLoader(() => import('./components/group/members_panel'));
+const MemberWeightsPage = wrapAsyncLoader(() => import('./components/group/member_weights_page.vue'));
 const GroupTagsPanel = wrapAsyncLoader(() => import('./components/group/tags_panel'));
 const GroupFilesPanel = wrapAsyncLoader(() => import('./components/group/files_panel'));
 const MembershipRequestsPanel = wrapAsyncLoader(() => import('./components/group/requests_panel'));
@@ -42,6 +42,7 @@ const groupPageChildren = [
   {path: 'tags/:tag?', component: GroupTagsPanel, meta: {noScroll: true} },
   {path: 'emails', component: GroupEmailsPanel, meta: {noScroll: true}},
   {path: 'polls', component: GroupPollsPanel, meta: {noScroll: true}},
+  {path: 'members/weights', component: MemberWeightsPage},
   {path: 'members', component: MembersPanel, meta: {noScroll: true}},
   {path: 'membership_requests', component: MembershipRequestsPanel, meta: {noScroll: true}},
   {path: 'files', component: GroupFilesPanel, meta: {noScroll: true}},
@@ -80,7 +81,6 @@ const router = createRouter({
     {path: '/contact', component: ContactPage},
     {path: '/email_preferences', component: EmailSettingsPage },
     {path: '/p/:key/edit', component: PollFormPage },
-    {path: '/p/:id/receipts', component: PollReceiptsPage, props: true },
     {path: '/p/:key/votes', component: PollVotesPage },
     {path: '/p/new', component: PollFormPage },
     {path: '/p/:key', component: TopicPage},

@@ -1,0 +1,161 @@
+{
+ "source": "Dundee City Council, 2022 local government election, Ward 3 - West End, official CandidateVotesPerStageReport_V0001_Ward-3---West-End_06052022_133150.pdf: https://www.dundeecity.gov.uk/local-elections-2022/local-elections-2022-results",
+ "seats": 4,
+ "valid_votes": 5732,
+ "quota": "1147",
+ "stages": [
+  {
+   "votes": {
+    "Ted BOOTH": "536.00000",
+    "Bill CAMPBELL": "872.00000",
+    "Michael CRICHTON": "165.00000",
+    "Nadia EL-NAKLA": "924.00000",
+    "Donald HAY": "386.00000",
+    "Annie JENKINS": "64.00000",
+    "Brooke LABAGH": "15.00000",
+    "Fraser MACPHERSON": "2146.00000",
+    "Richard MCCREADY": "624.00000"
+   },
+   "non_transferable": "0.00000",
+   "elected": [
+    "Fraser MACPHERSON"
+   ],
+   "excluded": [],
+   "surplus": null
+  },
+  {
+   "votes": {
+    "Ted BOOTH": "565.79264",
+    "Bill CAMPBELL": "922.74059",
+    "Michael CRICHTON": "821.36910",
+    "Nadia EL-NAKLA": "961.24080",
+    "Donald HAY": "453.03344",
+    "Annie JENKINS": "68.65510",
+    "Brooke LABAGH": "17.32755",
+    "Fraser MACPHERSON": "1147.00000",
+    "Richard MCCREADY": "731.06730"
+   },
+   "non_transferable": "43.77348",
+   "elected": [],
+   "excluded": [],
+   "surplus": "Fraser MACPHERSON"
+  },
+  {
+   "votes": {
+    "Ted BOOTH": "566.79264",
+    "Bill CAMPBELL": "923.20610",
+    "Michael CRICHTON": "823.76563",
+    "Nadia EL-NAKLA": "964.24080",
+    "Donald HAY": "453.03344",
+    "Annie JENKINS": "71.65510",
+    "Brooke LABAGH": "0.00000",
+    "Fraser MACPHERSON": "1147.00000",
+    "Richard MCCREADY": "734.06730"
+   },
+   "non_transferable": "48.23899",
+   "elected": [],
+   "excluded": [
+    "Brooke LABAGH"
+   ],
+   "surplus": null
+  },
+  {
+   "votes": {
+    "Ted BOOTH": "577.25815",
+    "Bill CAMPBELL": "939.67161",
+    "Michael CRICHTON": "836.16216",
+    "Nadia EL-NAKLA": "974.70631",
+    "Donald HAY": "457.96446",
+    "Annie JENKINS": "0.00000",
+    "Brooke LABAGH": "0.00000",
+    "Fraser MACPHERSON": "1147.00000",
+    "Richard MCCREADY": "740.99832"
+   },
+   "non_transferable": "58.23899",
+   "elected": [],
+   "excluded": [
+    "Annie JENKINS"
+   ],
+   "surplus": null
+  },
+  {
+   "votes": {
+    "Ted BOOTH": "593.12019",
+    "Bill CAMPBELL": "946.60263",
+    "Michael CRICHTON": "1021.31663",
+    "Nadia EL-NAKLA": "978.63733",
+    "Donald HAY": "0.00000",
+    "Annie JENKINS": "0.00000",
+    "Brooke LABAGH": "0.00000",
+    "Fraser MACPHERSON": "1147.00000",
+    "Richard MCCREADY": "831.11893"
+   },
+   "non_transferable": "214.20429",
+   "elected": [],
+   "excluded": [
+    "Donald HAY"
+   ],
+   "surplus": null
+  },
+  {
+   "votes": {
+    "Ted BOOTH": "0.00000",
+    "Bill CAMPBELL": "1058.11977",
+    "Michael CRICHTON": "1102.69581",
+    "Nadia EL-NAKLA": "1217.82692",
+    "Donald HAY": "0.00000",
+    "Annie JENKINS": "0.00000",
+    "Brooke LABAGH": "0.00000",
+    "Fraser MACPHERSON": "1147.00000",
+    "Richard MCCREADY": "928.17056"
+   },
+   "non_transferable": "278.18694",
+   "elected": [
+    "Nadia EL-NAKLA"
+   ],
+   "excluded": [
+    "Ted BOOTH"
+   ],
+   "surplus": null
+  },
+  {
+   "votes": {
+    "Ted BOOTH": "0.00000",
+    "Bill CAMPBELL": "1119.27052",
+    "Michael CRICHTON": "1105.34264",
+    "Nadia EL-NAKLA": "1147.00000",
+    "Donald HAY": "0.00000",
+    "Annie JENKINS": "0.00000",
+    "Brooke LABAGH": "0.00000",
+    "Fraser MACPHERSON": "1147.00000",
+    "Richard MCCREADY": "931.72874"
+   },
+   "non_transferable": "281.65810",
+   "elected": [],
+   "excluded": [],
+   "surplus": "Nadia EL-NAKLA"
+  },
+  {
+   "votes": {
+    "Ted BOOTH": "0.00000",
+    "Bill CAMPBELL": "1272.97230",
+    "Michael CRICHTON": "1460.06476",
+    "Nadia EL-NAKLA": "1147.00000",
+    "Donald HAY": "0.00000",
+    "Annie JENKINS": "0.00000",
+    "Brooke LABAGH": "0.00000",
+    "Fraser MACPHERSON": "1147.00000",
+    "Richard MCCREADY": "0.00000"
+   },
+   "non_transferable": "704.96294",
+   "elected": [
+    "Bill CAMPBELL",
+    "Michael CRICHTON"
+   ],
+   "excluded": [
+    "Richard MCCREADY"
+   ],
+   "surplus": null
+  }
+ ]
+}

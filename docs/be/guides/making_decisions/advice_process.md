@@ -1,10 +1,10 @@
 ---
 title: Працэс кансультавання
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/guides/making_decisions/advice_process.md
+source_revision: 9c60c42fc739483fa23f15d9f34a1e9245518092
+source_file: docs/en/guides/making_decisions/advice_process.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-30'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: '0994471ee964501f'
   key-points: 66f32f2b3cf56e0d
@@ -15,7 +15,7 @@ sections:
   step-0-you-notice-a-problem-or-opportunity-and-take-the-initiative: bf6c40b5883bb4d8
   step-1-seek-input-to-sound-out-perspectives-before-proposing-action: 1ead1a7a23e4efad
   step-2-clarify-and-strengthen-the-advice-through-discussion: a3b5393138bde245
-  step-3-make-a-decision-with-advice-and-inform-people: e6213c8e90b5d392
+  step-3-make-a-decision-with-advice-and-inform-people: c55b6d9c9ad0961c
 generated:
   introduction: a2e6e2263cf434ca
   key-points: ab59e6531b2b8347
@@ -26,7 +26,7 @@ generated:
   step-0-you-notice-a-problem-or-opportunity-and-take-the-initiative: 2792164f82e11cdb
   step-1-seek-input-to-sound-out-perspectives-before-proposing-action: 8cdd852b06191c04
   step-2-clarify-and-strengthen-the-advice-through-discussion: 65b622c194bfe735
-  step-3-make-a-decision-with-advice-and-inform-people: d80ec1e5ee3b771e
+  step-3-make-a-decision-with-advice-and-inform-people: e587598ed952c897
 title_source: 290fb74b7be97f31
 title_generated: 5952b18fdbb0bb05
 ---
@@ -116,7 +116,7 @@ title_generated: 5952b18fdbb0bb05
 
 ### Крок 3. Прыміце рашэнне з улікам парад і паведаміце пра яго людзям
 
-Калі ўсе ахвотныя падзеляцца парадамі або прапанова закрыецца, Такасі прымае рашэнне і публікуе **[выснову](/en/user_manual/polls/outcomes/)**.
+Калі ўсе ахвотныя падзеляцца парадамі або прапанова закрыецца, Такасі прымае рашэнне і публікуе **[выснову](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome)**.
 
 У выснове ясна сфармулявана рашэнне і апісана, што будзе далей. Яна захоўвае важны запіс для арганізацыі.
 
@@ -124,4 +124,4 @@ title_generated: 5952b18fdbb0bb05
 
 ![](decision_outcome_advice_process_new_computer.png)
 
-Таксама ён можа выкласці выснову ў каментарыі і замацаваць яго ў нітцы, каб яе было добра відаць у храналогіі абмеркавання.
+Таксама Такасі можа выкласці выснову ў каментарыі і замацаваць яго ў нітцы, каб яе было добра відаць у храналогіі абмеркавання.

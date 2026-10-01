@@ -24,6 +24,14 @@ export default {
       newOption: null,
       lastPollType: this.pollTemplate.pollType,
       pollOptions: this.pollTemplate.pollOptionsAttributes(),
+      stvMethodItems: [
+        { title: this.$t('poll_stv_form.method_scottish'), value: 'scottish' },
+        { title: this.$t('poll_stv_form.method_meek'), value: 'meek' }
+      ],
+      stvQuotaItems: [
+        { title: this.$t('poll_stv_form.quota_droop'), value: 'droop' },
+        { title: this.$t('poll_stv_form.quota_hare'), value: 'hare' }
+      ],
 
       votingMethodsI18n: {
         proposal: {
@@ -73,6 +81,7 @@ export default {
     titleVisible(visible) { EventBus.$emit('content-title-visible', visible); },
     setAnonymousVoting(value) {
       if (!value) { return; }
+      this.pollTemplate.weightedVoting = false;
       this.pollTemplate.hideResults = 'until_closed';
       this.pollTemplate.stanceReasonRequired = 'disabled';
       this.pollTemplate.notifyOnClosingSoon = 'undecided_voters';
@@ -174,6 +183,7 @@ export default {
     },
 
     allowAnonymous() { return !this.pollTemplate.config().prevent_anonymous; },
+    allowWeightedVoting() { return !this.pollTemplate.config().prevent_weighted_voting; },
     stanceReasonRequiredItems() {
       return compact([
         {title: this.$t('poll_common_form.stance_reason_required'), value: 'required'},
@@ -315,6 +325,9 @@ export default {
                   p {{option.meaning}}
 
                 template(v-slot:append)
+                  div.ml-0(v-if="pollTemplate.pollType != 'meeting'")
+                    v-btn(icon variant="text" @click="editOption(option)" :title="$t('common.action.edit')")
+                      common-icon(name="mdi-pencil")
                   v-btn(
                     icon
                     variant="text"
@@ -322,9 +335,6 @@ export default {
                     :title="$t('common.action.delete')"
                   )
                     common-icon(name="mdi-delete")
-                  div.ml-0(v-if="pollTemplate.pollType != 'meeting'")
-                    v-btn(icon variant="text" @click="editOption(option)" :title="$t('common.action.edit')")
-                      common-icon(name="mdi-pencil")
                   common-icon(name="mdi-drag-vertical" style="cursor: grab" v-handle :title="$t('common.action.move')" v-if="pollTemplate.pollType != 'meeting'")
 
           .d-flex.justify-center
@@ -381,6 +391,27 @@ export default {
               min="1"
               v-model="pollTemplate.dotsPerPerson"
               :rules="validate('dotsPerPerson')"
+            )
+
+          template(v-if="pollTemplate.pollType == 'stv'")
+            v-divider.my-4
+            p.mt-4.text-body-large.mb-2 {{ $t('poll_stv_form.settings_title') }}
+            .text-body-medium.pb-4.text-medium-emphasis {{ $t('poll_stv_form.settings_helptext') }}
+            v-text-field.lmo-number-input(
+              v-model="pollTemplate.stvSeats"
+              :label="$t('poll_stv_form.seats_label')"
+              type="number"
+              :min="1"
+            )
+            v-select.mt-2(
+              v-model="pollTemplate.stvMethod"
+              :items="stvMethodItems"
+              :label="$t('poll_stv_form.method_label')"
+            )
+            v-select.mt-2(
+              v-model="pollTemplate.stvQuota"
+              :items="stvQuotaItems"
+              :label="$t('poll_stv_form.quota_label')"
             )
 
         template(v-if="pollTemplate.config().allow_none_of_the_above")
@@ -442,6 +473,19 @@ export default {
             v-model="pollTemplate.hideResults"
             :disabled="pollTemplate.anonymous"
           )
+
+        template(v-if="allowWeightedVoting")
+          v-divider.mb-4
+          .text-body-large.pb-2(v-t="'poll_common_form.weighted_voting'")
+          .text-body-medium.text-medium-emphasis
+            span(v-t="'poll_common_form.give_voters_different_vote_weights'")
+            help-link.ml-1(path="user_manual/polls/weighted_voting")
+          v-checkbox.poll-settings-weighted-voting(
+            hide-details
+            :disabled="pollTemplate.anonymous"
+            v-model="pollTemplate.weightedVoting"
+            :label="$t('poll_common_form.use_weighted_voting')")
+          p.text-body-small.text-medium-emphasis.mt-1(v-if="pollTemplate.anonymous") {{ $t('poll_common_form.weighted_voting_is_not_available_with_anonymous_voting') }}
 
         template(v-if="pollTemplate.config().can_shuffle_options")
           v-divider.pb-4

@@ -29,6 +29,7 @@ export default class StanceModel extends BaseModel {
       participantId: null,
       pollId: null,
       optionScores: {},
+      weight: 1,
       castAt: null
     };
   }
@@ -148,7 +149,7 @@ export default class StanceModel extends BaseModel {
   }
 
   save() {
-    if (!this.poll().detachedAnonymousVoting()) {
+    if (!this.poll().anonymous) {
       return super.save().then(data => {
         EventBus.$emit('stanceSaved', this.pollId);
         return data;

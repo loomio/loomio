@@ -1,24 +1,26 @@
 ---
 title: Gevoelscontrole
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/polls/proposals/sense_check/index.md
+source_revision: 9c60c42fc739483fa23f15d9f34a1e9245518092
+source_file: docs/en/user_manual/polls/proposals/sense_check/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 2336356b9efbde30
   when-to-use-sense-check: c70985229c659d2f
   example-check-a-trial-plan: 8055cad3418b4bb7
   set-up-the-proposal: 8106c7ab17a225e6
   vote: 2440e2649ed1ff05
-  read-the-results: f8f63c908d080f77
+  read-the-results: 9cac8b6f7c7de36f
+  share-an-outcome: b05f9f889a838d47
 generated:
   introduction: 3d2e2f6c844a6ce9
   when-to-use-sense-check: 60e58575939f68d4
   example-check-a-trial-plan: 64555e4aa4648d64
   set-up-the-proposal: a4ddc4f8b8385ac6
   vote: 1424ad1344126646
-  read-the-results: 336e12f5b14b93e7
+  read-the-results: 4dc968a12502b13a
+  share-an-outcome: 22b42af0d430a548
 title_source: e9ac5b767e01ae7b
 title_generated: 8e953c8075ac8fb2
 ---
@@ -70,8 +72,14 @@ Deelnemers kiezen de reactie die het best bij hun huidige mening past. Ze leggen
 
 ## Bekijk de resultaten
 
-De grafiek toont het aantal stemmen en het aandeel per reactie. Lees ook de redenen achter de stemmen: één goed onderbouwde zorg kan aandacht vragen, zelfs als de meeste deelnemers **Ziet er goed uit** kiezen.
+De grafiek toont het aantal stemmen en het aandeel per reactie. Lees zowel de redenen achter de stemmen als de verdeling: één goed onderbouwde zorg kan aandacht vragen, zelfs als de meeste deelnemers **Ziet er goed uit** kiezen.
 
 ![](../proposal_sense_check_results.png)
 
-Deel een conclusie waarin je samenvat welke veranderingen de groep gaat aanbrengen, of vastlegt dat het idee klaar is voor de volgende stap in de besluitvorming.
+<!-- translation-section: share-an-outcome -->
+
+## Deel een conclusie
+
+Deel een conclusie wanneer de gevoelscontrole sluit. Vat samen welke veranderingen de groep gaat aanbrengen, of leg vast dat het idee klaar is voor de volgende stap in de besluitvorming. Bekijk [Deel een conclusie](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome) voor uitleg over hoe conclusies werken.
+
+![Een conclusie waarin staat dat het plan vóór de definitieve beoordeling wordt herzien](outcome.png)

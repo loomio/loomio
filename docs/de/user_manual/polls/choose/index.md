@@ -1,24 +1,26 @@
 ---
 title: Wählen
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/polls/choose/index.md
+source_revision: 71554be8e61a76613b0707b8262302c22299a5d0
+source_file: docs/en/user_manual/polls/choose/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: f9d6a5bfb7445de0
   when-to-use-choose: f8a798497cac5a43
   example-set-a-planning-meeting-agenda: 32a94a916dbf84e5
   set-up-the-poll: a16095b63c57e0c9
   vote: d170451131c544cf
-  read-the-results: 84521c82aed8dd29
+  read-the-results: e675d12da1a4ba8a
+  share-an-outcome: f6afc1713b921265
 generated:
   introduction: de861bd3673a9b07
   when-to-use-choose: ccf09f467f77f14c
   example-set-a-planning-meeting-agenda: d21c8425948fba1d
   set-up-the-poll: 68f797d192fe7db3
   vote: 2a9722628d1bd6a7
-  read-the-results: 8b4c0f18d7ae77a5
+  read-the-results: 4c86653eb0097782
+  share-an-outcome: 30b62ebcecd882fd
 title_source: c7f937836f5d82d5
 title_generated: eda09c087d4db24d
 ---
@@ -86,6 +88,10 @@ Die Ergebnisse zeigen, welchen Anteil aller Stimmen jede Option erhalten hat, wi
 
 In diesem Beispiel hat **Zeitplan für die Abholung bei Cafés** drei Stimmen erhalten. **Ablauf der Reinigung** und **Erfassung der Rückgabequote** haben jeweils zwei Stimmen. Das Ergebnis spricht dafür, der Abholung bei Cafés die meiste Zeit auf der Tagesordnung zu geben. Wie die übrige Zeit auf die beiden gleichauf liegenden Themen verteilt wird, muss die organisierende Person noch entscheiden.
 
-Wenn die Abstimmung endet, veröffentliche ein **Fazit**, das erklärt, was die Gruppe mit dem Ergebnis macht.
+<!-- translation-section: share-an-outcome -->
 
-![](outcome.png)
+## Ein Fazit teilen
+
+Wenn die Abstimmung endet, teile ein Fazit. Erkläre, was die Gruppe mit dem Ergebnis macht und wie bei Gleichständen entschieden wird. Unter [Ein Fazit teilen](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome) erfährst du, wie Fazits funktionieren.
+
+![Ein Fazit, das der Abholung bei Cafés die meiste Besprechungszeit einräumt](outcome.png)

@@ -1,24 +1,26 @@
 ---
 title: Порада
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/polls/proposals/advice/index.md
+source_revision: 9c60c42fc739483fa23f15d9f34a1e9245518092
+source_file: docs/en/user_manual/polls/proposals/advice/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 3b517bcf7f8d31d2
   when-to-use-advice: d98ed1affd9abbd3
   example-choose-a-washing-supplier: 94c2d1f8987bd817
   set-up-the-proposal: e93938cfa0895f27
   vote: e076d476b50d1445
-  read-the-results: 7782c49ae9875d70
+  read-the-results: 937eff4c74abcc79
+  share-an-outcome: 1f762148d1f18b1d
 generated:
   introduction: e210424a89db1b6a
   when-to-use-advice: 2e6a25ad8271aa15
   example-choose-a-washing-supplier: 7506c761f4bdd1ab
   set-up-the-proposal: c01426c77e601b00
   vote: c744470a21c95a62
-  read-the-results: 4efd7dd18e0e7ee1
+  read-the-results: a4b3e9adecedbb2a
+  share-an-outcome: c688f25e101dc040
 title_source: 305f5e5463e18d7f
 title_generated: 89982578a3bb5e98
 ---
@@ -69,4 +71,10 @@ title_generated: 89982578a3bb5e98
 
 ![](../proposal_advice_results.png)
 
-Людина, яка ухвалює рішення, публікує висновок і пояснює, що вирішила та як врахувала поради.
+<!-- translation-section: share-an-outcome -->
+
+## Поділіться висновком
+
+Коли пропозиція закривається, людина, яка ухвалює рішення, ділиться висновком. У ньому зазначено, яке рішення ухвалено та як враховано поради. Про те, як працюють висновки, читайте на сторінці [Поділіться висновком](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome).
+
+![Висновок із назвою обраного постачальника та порадами, які було враховано](outcome.png)

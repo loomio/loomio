@@ -1,10 +1,10 @@
 ---
 title: Plantillas de sondeo
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/polls/poll_templates/index.md
+source_revision: 3a315412c646d254c8426be5c436a4e593f6011f
+source_file: docs/en/user_manual/polls/poll_templates/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: f11182d62d99dbcc
   voting-methods-and-templates: 24be471686aa2dfd
@@ -15,7 +15,7 @@ sections:
   voting-method: 761137852812fea8
   example-title-details-and-tags: 9dbbd0510d2d6cc1
   response-options: 727afbf0dcea6069
-  duration-and-settings: dc1fb9123eb808df
+  duration-and-settings: a364411a3bebb3ae
   save-and-test-the-template: 8c48386c69ea309a
   manage-the-template-list: 0c124d7958c3f80a
 generated:
@@ -28,7 +28,7 @@ generated:
   voting-method: aabf9ee3e037aad3
   example-title-details-and-tags: e6e5c0f85d0a5502
   response-options: 7c4e9318c5dea508
-  duration-and-settings: c48aae1d7103d104
+  duration-and-settings: b7dd9765d34f360f
   save-and-test-the-template: 5408eaeda10025e6
   manage-the-template-list: 60edd845a45cf6d9
 title_source: 114cca246e357304
@@ -142,7 +142,7 @@ Establece una duración predeterminada adecuada para la mayoría de los usos de 
 
 ![](poll_type_duration.png)
 
-Otros valores predeterminados pueden controlar la visibilidad de los resultados, el voto anónimo, la obligación de explicar el voto, los recordatorios, el cuórum y las funciones propias de cada método. Consulta [Ajustes de propuestas y encuestas](../settings/) para conocer sus efectos.
+Otros valores predeterminados pueden controlar la visibilidad de los resultados, el voto anónimo, la [votación ponderada](../weighted_voting/), la obligación de explicar el voto, los recordatorios, el cuórum y las funciones propias de cada método. Consulta [Ajustes de propuestas y encuestas](../settings/) para conocer sus efectos.
 
 <!-- translation-section: save-and-test-the-template -->
 

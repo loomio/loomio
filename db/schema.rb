@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_09_24_000000) do
+ActiveRecord::Schema[8.1].define(version: 2026_10_01_000001) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "hstore"
@@ -89,6 +89,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_24_000000) do
   create_table "anonymous_poll_voters", force: :cascade do |t|
     t.boolean "ballot_submitted", default: false, null: false
     t.boolean "group_member", default: false
+    t.datetime "invited_at"
     t.bigint "inviter_id"
     t.bigint "poll_id", null: false
     t.bigint "voter_id", null: false
@@ -375,6 +376,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_24_000000) do
     t.integer "user_id", null: false
     t.integer "volume_email", default: 2, null: false
     t.integer "volume_push", default: 2, null: false
+    t.decimal "weight", precision: 12, scale: 3, default: "1.0", null: false
     t.index ["created_at"], name: "index_memberships_on_created_at"
     t.index ["group_id", "user_id"], name: "index_memberships_on_group_id_and_user_id", unique: true
     t.index ["inviter_id"], name: "index_memberships_on_inviter_id"
@@ -387,6 +389,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_24_000000) do
     t.index ["volume_push"], name: "index_memberships_on_volume_push"
     t.check_constraint "volume_email = ANY (ARRAY[1, 2, 3])", name: "memberships_volume_email"
     t.check_constraint "volume_push = ANY (ARRAY[1, 2, 3])", name: "memberships_volume_push"
+    t.check_constraint "weight >= 0::numeric", name: "memberships_weight_nonnegative"
   end
 
   create_table "mobile_access_tokens", force: :cascade do |t|
@@ -633,10 +636,12 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_24_000000) do
     t.string "test_against"
     t.string "test_operator"
     t.integer "test_percent"
-    t.integer "total_score", default: 0, null: false
+    t.decimal "total_score", precision: 30, scale: 3, default: "0.0", null: false
+    t.bigint "unweighted_score", default: 0, null: false
     t.datetime "updated_at", precision: nil
     t.integer "voter_count", default: 0, null: false
     t.jsonb "voter_scores", default: {}, null: false
+    t.decimal "voter_weight_total", precision: 30, scale: 3, default: "0.0", null: false
     t.index ["poll_id"], name: "index_poll_options_on_poll_id"
   end
 
@@ -689,10 +694,14 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_24_000000) do
     t.boolean "shuffle_options", default: false, null: false
     t.boolean "specified_voters_only", default: false, null: false
     t.integer "stance_reason_required", default: 1, null: false
+    t.string "stv_method", default: "scottish", null: false
+    t.string "stv_quota", default: "droop", null: false
+    t.integer "stv_seats", default: 1, null: false
     t.string "tags", default: [], array: true
     t.string "title"
     t.string "title_placeholder"
     t.datetime "updated_at", null: false
+    t.boolean "weighted_voting", default: false, null: false
     t.index ["discarded_at"], name: "index_poll_templates_on_discarded_at"
     t.index ["discarded_by"], name: "index_poll_templates_on_discarded_by"
     t.index ["hidden_at"], name: "index_poll_templates_on_hidden_at"
@@ -754,7 +763,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_24_000000) do
     t.datetime "updated_at", precision: nil
     t.integer "versions_count", default: 0
     t.integer "voters_count", default: 0, null: false
-    t.integer "voting_system", default: 0, null: false
+    t.boolean "weighted_voting", default: false, null: false
     t.index ["author_id"], name: "index_polls_on_author_id"
     t.index ["closed_at", "closing_at"], name: "index_polls_on_closed_at_and_closing_at"
     t.index ["closed_at", "topic_id"], name: "index_polls_on_closed_at_and_topic_id"
@@ -762,7 +771,6 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_24_000000) do
     t.index ["key"], name: "index_polls_on_key", unique: true
     t.index ["tags"], name: "index_polls_on_tags", using: :gin
     t.index ["topic_id"], name: "index_polls_on_topic_id"
-    t.check_constraint "anonymous = true AND voting_system = 1 OR anonymous = false AND voting_system = 0", name: "polls_anonymous_voting_system"
   end
 
   create_table "push_subscriptions", force: :cascade do |t|
@@ -1007,18 +1015,6 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_24_000000) do
 
   add_check_constraint "stance_choices", "score >= 0", name: "stance_choices_score_nonnegative", validate: false
 
-  create_table "stance_receipts", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "invited_at"
-    t.bigint "inviter_id"
-    t.bigint "poll_id"
-    t.datetime "updated_at", null: false
-    t.boolean "vote_cast"
-    t.bigint "voter_id"
-    t.index ["inviter_id"], name: "index_stance_receipts_on_inviter_id"
-    t.index ["voter_id"], name: "index_stance_receipts_on_voter_id"
-  end
-
   create_table "stances", id: :serial, force: :cascade do |t|
     t.datetime "accepted_at", precision: nil
     t.jsonb "attachments", default: [], null: false
@@ -1041,6 +1037,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_24_000000) do
     t.string "token"
     t.datetime "updated_at", precision: nil
     t.integer "versions_count", default: 0
+    t.decimal "weight", precision: 12, scale: 3, default: "1.0", null: false
     t.index ["cast_at", "id"], name: "index_stances_on_cast_at_and_id_for_relay", where: "((cast_at IS NOT NULL) AND (redacted_at IS NULL))"
     t.index ["created_at"], name: "index_stances_on_created_at"
     t.index ["inviter_id"], name: "index_stances_on_inviter_id"
@@ -1051,6 +1048,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_24_000000) do
     t.index ["redactor_id"], name: "index_stances_on_redactor_id"
     t.index ["revoker_id"], name: "index_stances_on_revoker_id"
     t.index ["token"], name: "index_stances_on_token", unique: true
+    t.check_constraint "weight >= 0::numeric", name: "stances_weight_nonnegative"
   end
 
   create_table "subscription_update_receipts", force: :cascade do |t|

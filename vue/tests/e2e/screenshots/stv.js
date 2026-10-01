@@ -82,6 +82,25 @@ module.exports = {
     );
   },
 
+  'outcome': (test) => {
+    const page = pageHelper(test);
+    const screenshot = manualScreenshot(test);
+    page.loadPath('setup_manual_oatmilk_stv?results=1&outcome=1');
+    page.expectText('.poll-created', 'Elect the reusable packaging committee');
+    page.waitFor('.poll-common-outcome-panel');
+    screenshot.captureRegion(
+      'polls/stv/outcome',
+      ['.poll-created .poll-common-card__title', '.poll-created .poll-stv-chart-panel', '.poll-created .action-dock'],
+      {
+        padding: 32,
+        width: 1200,
+        height: 2400,
+        clearSelection: true,
+        spotlight: {selector: '.poll-common-outcome-panel', padding: 16, radius: 16, opacity: 0.4, outlineWidth: 0}
+      }
+    );
+  },
+
   'round_details': (test) => {
     const page = pageHelper(test);
     const screenshot = manualScreenshot(test);

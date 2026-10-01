@@ -1,19 +1,19 @@
 ---
 title: שימוש בשרשורים
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/discussions/using_discussions/index.md
+source_revision: 9c60c42fc739483fa23f15d9f34a1e9245518092
+source_file: docs/en/user_manual/discussions/using_discussions/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: fe8ab54791a49e01
   thread-anatomy: fca9ec9af6718a99
   discussion-context: ebefd7274a307dd0
-  notify-people-about-context-changes: 79d0ed7f94edb858
+  notify-people-about-context-changes: 3fe9320d33fff8f6
   navigation: c0ccc79744ae2c33
   notifications-and-members: ac51f2bbe3642155
   email-notifications-for-this-thread: 69076a17d7457ba0
-  invite-people: 69e5555d18551b0b
+  invite-people: 94ab00a27cec065d
   seen-by: 1d0bfd812ca11782
   notified: 6139bdcaae32a1db
   actions: c015c12999c5be2f
@@ -28,11 +28,11 @@ generated:
   introduction: 6c0298bbd50b8816
   thread-anatomy: b5bb754cc16f0216
   discussion-context: 6606fefff6d5ad83
-  notify-people-about-context-changes: 43df3a7c3f3e5fab
+  notify-people-about-context-changes: bfb8b05f429bbbdc
   navigation: a1767f9cbe4291ab
   notifications-and-members: 5d432a9331286874
   email-notifications-for-this-thread: f73d7f644aba4ec5
-  invite-people: 85fa275d02b2c27b
+  invite-people: d265dc38d7c50b6e
   seen-by: e33aeb4dfc413363
   notified: 3267358e453832eb
   actions: 1c1a6e6999ebb8b4
@@ -113,9 +113,9 @@ title_generated: 17fa81d3e6d46882
 
 ![עריכת רקע דיון עם סיכום השינוי ובחירת מקבלי ההודעה](../notifying_people/thread_editcontext.png)
 
-הסיכום מופיע כפריט בשרשור, כך שהמשתתפים יכולים לראות מה השתנה.
+בשרשור מצוין שרקע הדיון נערך. האנשים שנבחרו לקבל הודעה מקבלים את הסיכום יחד עם ההודעה.
 
-![פריט בציר הזמן המתאר שינוי ברקע הדיון](../notifying_people/thread_edit_comment.png)
+![פריט בשרשור המציין שרקע הדיון נערך](../notifying_people/thread_edit_comment.png)
 
 <!-- translation-section: navigation -->
 
@@ -159,9 +159,13 @@ title_generated: 17fa81d3e6d46882
 
 יש לבחור קבוצה או תת־קבוצה, להזין שמות של חברים או להזין כתובת דוא״ל כדי להזמין אורח.
 
+השדה **מצא או הזמן אנשים** מסנן גם את רשימת האנשים שכבר נמצאים בשרשור. יש לנקות את השדה כדי להציג שוב את הרשימה המלאה, ולהשתמש בפקדי העימוד אם יש יותר מ־50 אנשים. לאחר בחירת נמענים, רשימת החברים מתחלפת בשדה להודעה שאפשר להוסיף. אנשים חדשים מקבלים הזמנה; אנשים שכבר יש להם גישה מקבלים הודעה נוספת בעת בחירה ב־**הזמנה או הודעה**.
+
 ![חלון הזמנת אנשים עם שדה לשמות ולכתובות דוא״ל](../notifying_people/thread_invite.png)
 
 אורחים יכולים לצפות בשרשור ולהשתתף בו, אך אינם יכולים לראות דיונים אחרים בקבוצה ללא הזמנה נפרדת.
+
+ניתן לסגור את הודעות ההדרכה בראש החלון. Loomio זוכר אילו הודעות נסגרו בחשבון.
 
 ![הזמנת אורח באמצעות כתובת דוא״ל](../notifying_people/invite_guest.png)
 

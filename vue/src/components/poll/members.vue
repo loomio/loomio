@@ -1,240 +1,355 @@
-<script lang="js">
-import EventBus from '@/shared/services/event_bus';
+<script setup lang="js">
+import { computed, onMounted, ref } from 'vue';
+import { useI18n } from 'vue-i18n';
+import { map, debounce } from 'lodash-es';
 import Records from '@/shared/services/records';
 import Session from '@/shared/services/session';
 import Flash from '@/shared/services/flash';
 import RecipientsAutocomplete from '@/components/common/recipients_autocomplete';
 import StanceService from '@/shared/services/stance_service';
-import { map, debounce, uniq, compact } from 'lodash-es';
-import WatchRecords from '@/mixins/watch_records';
+import { useWatchRecords } from '@/composables/useWatchRecords';
+import { voteWeightValid } from '@/shared/helpers/vote_weight';
 
-export default {
-  mixins: [WatchRecords],
-  components: {
-    RecipientsAutocomplete
-  },
+const { poll } = defineProps({ poll: Object });
+const { t } = useI18n();
+const { watchRecords } = useWatchRecords();
 
-  props: {
-    poll: Object
-  },
+const limit = 50;
+const initialRecipients = [];
+const users = ref([]);
+const userIds = ref([]);
+const isGuest = ref({});
+const isGroupAdmin = ref({});
+const isTopicAdmin = ref({});
+const reset = ref(false);
+const saving = ref(false);
+const loading = ref(false);
+const query = ref('');
+const message = ref('');
+const stanceIdsByUserId = ref({});
+const weightsByUserId = ref({});
+const weightsSaving = ref(false);
+const weightUser = ref(null);
+const weightValue = ref('');
+const weightDialog = ref(false);
+const removeUser = ref(null);
+const removeDialog = ref(false);
+const removing = ref(false);
+const resetWeight = ref('1');
+const weightMode = ref('membership');
+const setAllDialog = ref(false);
+const voterTotal = ref(0);
+const page = ref(1);
+let fetchSequence = 0;
 
-  data() {
-    return {
-      users: [],
-      userIds: [],
-      isGuest: {},
-      isGroupAdmin: {},
-      isTopicAdmin: {},
-      reset: false,
-      saving: false,
-      loading: false,
-      initialRecipients: [],
-      actionNames: [],
-      service: StanceService,
-      query: '',
-      message: ''
-    };
-  },
+const isScheduled = computed(() => poll.openingAt && !poll.openedAt);
+const someRecipients = computed(() => poll.recipientAudience ||
+  poll.recipientUserIds.length ||
+  poll.recipientEmails.length ||
+  poll.recipientChatbotIds.length);
+const canManageWeights = computed(() => poll.weightedVoting && !poll.closedAt && poll.adminsInclude(Session.user()));
+const canRemoveVoters = computed(() => !poll.anonymous && poll.adminsInclude(Session.user()));
+const canUseMemberWeights = computed(() => Boolean(poll.groupId));
+const totalPages = computed(() => Math.max(1, Math.ceil(voterTotal.value / limit)));
+const pageFirst = computed(() => voterTotal.value ? (page.value - 1) * limit + 1 : 0);
+const pageLast = computed(() => Math.min(page.value * limit, voterTotal.value));
 
-  mounted() {
-    this.poll.notifyRecipients = !(this.poll.openingAt && !this.poll.openedAt);
-    this.actionNames = this.poll.detachedAnonymousVoting() ? [] : ['revoke'];
+function isDelegate(user) {
+  const group = poll.group();
+  return Boolean(group && user.delegates && user.delegates[group.id]);
+}
 
-    this.fetchStances();
-    this.updateStances();
+function toHash(ids) {
+  return Object.fromEntries(ids.map(id => [id, true]));
+}
 
-    this.watchRecords({
-      collections: ['stances', 'memberships', 'users'],
-      query: records => this.updateStances()
-    });
-  },
+function updateStances() {
+  users.value = userIds.value.map(id => Records.users.findById(id));
+}
 
-  computed: {
-    isScheduled() { return this.poll.openingAt && !this.poll.openedAt; },
-    wipOrEmpty() { if (this.poll.closingAt) { return ''; } else { return 'wip_'; } },
-    someRecipients() {
-      return this.poll.recipientAudience ||
-      this.poll.recipientUserIds.length ||
-      this.poll.recipientEmails.length ||
-      this.poll.recipientChatbotIds.length;
+// Keep the server's page, total, and voter metadata together; ignore responses
+// from an older search or page.
+const fetchStances = debounce(() => {
+  loading.value = true;
+  const currentQuery = query.value;
+  const currentPage = page.value;
+  const sequence = ++fetchSequence;
+  Records.fetch({
+    path: 'stances/users',
+    params: {
+      exclude_types: 'poll group',
+      poll_id: poll.id,
+      query: currentQuery,
+      offset: (currentPage - 1) * limit,
+      limit
     }
-  },
-
-  methods: {
-    isDelegate(user) {
-      const group = this.poll.group();
-      return Boolean(group && user.delegates && user.delegates[group.id]);
-    },
-    performableActions(poll, user) {
-      return this.actionNames.filter(name => this.canPerform(name, poll, user))
-    },
-    canPerform(action, poll, user) {
-      switch (action) {
-        case 'revoke':
-          return poll.adminsInclude(Session.user());
-      }
-    },
-
-    perform(action, poll, user) {
-      this.userIds = [];
-      this.isMember = {};
-      this.isGroupAdmin= {};
-      this.isTopicAdmin= {};
-      this.service[action].perform(poll, user).then(() => {
-        this.fetchStances();
-      });
-    },
-
-    inviteRecipients() {
-      this.saving = true;
-      Records.remote.post('announcements', {
-        poll_id: this.poll.id,
-        recipient_audience: this.poll.recipientAudience,
-        recipient_user_ids: this.poll.recipientUserIds,
-        recipient_chatbot_ids: this.poll.recipientChatbotIds,
-        recipient_emails: this.poll.recipientEmails,
-        include_actor: true,
-        recipient_message: this.message,
-        exclude_members: true,
-        notify_recipients: this.poll.notifyRecipients
-      }).then(data => {
-        const count = (data.stances || data.users).length;
-        if (this.poll.notifyRecipients) {
-          Flash.success('announcement.flash.success', { count });
-        } else {
-          Flash.success('poll_common_form.count_voters_added', { count });
-        }
-        this.fetchStances()
-
-        this.reset = !this.reset;
-      }).catch(error => {
-        Flash.fromServer(error.flash || error);
-      }).finally(() => {
-        this.saving = false;
-      });
-    },
-
-    toHash(a) {
-      const h = {};
-      a.forEach(i => h[i] = true);
-      return h;
-    },
-
-    newQuery(query) {
-      this.query = query;
-      this.updateStances();
-      this.fetchStances();
-    },
-
-    fetchStances: debounce(function() {
-      this.loading = true;
-      Records.fetch({
-        path: 'stances/users',
-        params: {
-          exclude_types: 'poll group',
-          poll_id: this.poll.id,
-          query: this.query
-      }}).then(data => {
-        this.isGuest = this.toHash(data['meta']['guest_ids']);
-        this.isGroupAdmin = this.toHash(data['meta']['group_admin_ids']);
-        this.isTopicAdmin = this.toHash(data['meta']['topic_admin_ids']);
-        this.userIds = uniq(compact(this.userIds.concat(map(data['users'], 'id'))));
-        this.updateStances();
-      }).finally(() => {
-        this.loading = false;
-      });
-    } , 300),
-
-    updateStances() {
-      let chain = Records.users.collection.chain();
-      chain = chain.find({id: {$in: this.userIds}});
-
-      if (this.query) {
-        chain = chain.find({
-          $or: [
-            {name: {'$regex': [`^${this.query}`, "i"]}},
-            {email: {'$regex': [`${this.query}`, "i"]}},
-            {username: {'$regex': [`^${this.query}`, "i"]}},
-            {name: {'$regex': [` ${this.query}`, "i"]}}
-          ]});
-      }
-
-      this.users = chain.data();
+  }).then(data => {
+    if (sequence !== fetchSequence || currentQuery !== query.value || currentPage !== page.value) return;
+    voterTotal.value = data.meta.total;
+    if (page.value > totalPages.value) {
+      changePage(totalPages.value);
+      return;
     }
-  }
-};
+    isGuest.value = toHash(data.meta.guest_ids);
+    isGroupAdmin.value = toHash(data.meta.group_admin_ids);
+    isTopicAdmin.value = toHash(data.meta.topic_admin_ids);
+    if (canManageWeights.value) {
+      Object.assign(stanceIdsByUserId.value, data.meta.stance_ids_by_user_id);
+      Object.assign(weightsByUserId.value, data.meta.weights_by_user_id);
+    }
+    userIds.value = map(data.users, 'id');
+    updateStances();
+  }).catch(error => {
+    Flash.fromServer(error);
+  }).finally(() => {
+    if (sequence === fetchSequence && currentQuery === query.value && currentPage === page.value) loading.value = false;
+  });
+}, 300);
+
+function newQuery(value) {
+  if (query.value === value) return;
+  query.value = value;
+  page.value = 1;
+  userIds.value = [];
+  users.value = [];
+  voterTotal.value = 0;
+  loading.value = true;
+  fetchStances();
+}
+
+function changePage(value) {
+  page.value = value;
+  userIds.value = [];
+  users.value = [];
+  loading.value = true;
+  fetchStances();
+}
+
+function openWeightDialog(user) {
+  weightUser.value = user;
+  weightValue.value = weightsByUserId.value[user.id];
+  weightDialog.value = true;
+}
+
+function saveWeight() {
+  if (weightsSaving.value || !voteWeightValid(weightValue.value)) return;
+  const user = weightUser.value;
+  weightsSaving.value = true;
+  Records.remote.patch(`stances/${stanceIdsByUserId.value[user.id]}/set_weight`, {weight: weightValue.value}).then(data => {
+    weightsByUserId.value[user.id] = data.stances[0].weight;
+    return Records.polls.remote.fetchById(poll.id);
+  }).then(() => {
+    weightDialog.value = false;
+    Flash.success('poll_common_form.vote_weights_updated');
+  }).catch(error => {
+    Flash.fromServer(error);
+  }).finally(() => {
+    weightsSaving.value = false;
+  });
+}
+
+function openSetAllDialog() {
+  weightMode.value = canUseMemberWeights.value ? 'membership' : 'value';
+  setAllDialog.value = true;
+}
+
+function resetWeights() {
+  weightsSaving.value = true;
+  const params = {poll_id: poll.id, mode: weightMode.value};
+  if (weightMode.value === 'value') params.weight = resetWeight.value;
+  Records.remote.patch('stances/reset_weights', params).then(() => Records.polls.remote.fetchById(poll.id)).then(() => {
+    weightsByUserId.value = {};
+    fetchStances();
+    setAllDialog.value = false;
+    Flash.success('poll_common_form.vote_weights_updated');
+  }).catch(error => Flash.fromServer(error)).finally(() => { weightsSaving.value = false; });
+}
+
+function openRemoveDialog(user) {
+  removeUser.value = user;
+  removeDialog.value = true;
+}
+
+function removeVoter() {
+  const user = removeUser.value;
+  removing.value = true;
+  StanceService.revoke.perform(poll, user).then(() => {
+    delete stanceIdsByUserId.value[user.id];
+    delete weightsByUserId.value[user.id];
+    fetchStances();
+    removeDialog.value = false;
+  }).catch(error => {
+    Flash.fromServer(error);
+  }).finally(() => {
+    removing.value = false;
+  });
+}
+
+function inviteRecipients() {
+  saving.value = true;
+  Records.remote.post('announcements', {
+    poll_id: poll.id,
+    recipient_audience: poll.recipientAudience,
+    recipient_user_ids: poll.recipientUserIds,
+    recipient_chatbot_ids: poll.recipientChatbotIds,
+    recipient_emails: poll.recipientEmails,
+    include_actor: true,
+    recipient_message: message.value,
+    exclude_members: true,
+    notify_recipients: poll.notifyRecipients
+  }).then(data => {
+    const count = (data.stances || data.users).length;
+    if (poll.notifyRecipients) {
+      Flash.success('announcement.flash.success', { count });
+    } else {
+      Flash.success('poll_common_form.count_voters_added', { count });
+    }
+    fetchStances();
+    reset.value = !reset.value;
+  }).catch(error => {
+    Flash.fromServer(error.flash || error);
+  }).finally(() => {
+    saving.value = false;
+  });
+}
+
+onMounted(() => {
+  poll.notifyRecipients = !(poll.openingAt && !poll.openedAt);
+  fetchStances();
+  updateStances();
+  watchRecords({
+    collections: ['stances', 'memberships', 'users'],
+    query: () => updateStances()
+  });
+});
 </script>
 
 <template lang="pug">
-v-card.poll-members-form
+v-card.poll-members-form(:title="t('poll_common_form.manage_voters')" style="height: 760px; max-height: 90vh; flex: none; display: flex; flex-direction: column; overflow-y: auto")
+  template(v-slot:append)
+    help-btn.text-medium-emphasis.mr-2(path="en/user_manual/polls/inviting_people#add-voters-to-the-poll" label="common.user_manual" variant="text")
+    dismiss-modal-button
   .px-4.pt-4
-    .d-flex.justify-space-between
-      //- template(v-if="poll.notifyRecipients")
-      h1.text-headline-small(v-t="'announcement.form.'+wipOrEmpty+'poll_announced.title'")
-      //- h1.text-headline-small(v-if="!poll.closingAt" v-t="'announcement.form.wip_poll_announced.title'")
-      //- h1.text-headline-small(v-else v-t="'poll_common_form.add_voters'")
-      dismiss-modal-button
     recipients-autocomplete(
-      :label="poll.notifyRecipients ? $t('announcement.form.'+wipOrEmpty+'poll_announced.helptext') : $t('poll_common_form.who_may_vote', {poll_type: poll.translatedPollType()})"
-      :placeholder="$t('announcement.form.placeholder')"
+      v-if="!poll.closedAt"
+      :label="t('poll_common_form.find_or_invite_voters')"
+      :placeholder="t('announcement.form.placeholder')"
       :model="poll"
       :reset="reset"
       :excludedAudiences="['voters', 'undecided_voters', 'non_voters', 'decided_voters']"
       :excludedUserIds="userIds"
       :initialRecipients="initialRecipients"
+      hideEmptyMenu
+      preserveSearchOnBlur
+      @update:search="newQuery"
       includeActor
-      :excludeMembers="true"
-      @new-query="newQuery")
-
-    .d-flex.align-center(v-if="!isScheduled")
-      v-checkbox(:disabled="!someRecipients" :label="$t('poll_common_form.notify_invitees')" v-model="poll.notifyRecipients")
+      :excludeMembers="true")
+    v-alert(density="compact" type="info" text v-if="!poll.closedAt && isScheduled && someRecipients")
+      span {{ t('poll_common_form.voters_notified_when_opens') }}
+    .mt-3(v-if="!poll.closedAt && !isScheduled && someRecipients")
+      v-textarea(v-if="poll.notifyRecipients" filled rows="3" hide-details v-model="message" :label="t('announcement.form.invitation_message_label')" :placeholder="t('announcement.form.invitation_message_placeholder')")
+      v-alert(v-else density="compact" type="info" variant="outlined" color="grey" text)
+        span {{ t('poll_common_form.voters_will_not_be_notified') }}
+    .d-flex.align-center.mt-4(v-if="!poll.closedAt && someRecipients")
+      v-checkbox(v-if="!isScheduled" :label="t('poll_common_form.notify_invitees')" v-model="poll.notifyRecipients" hide-details)
       v-spacer
-      v-btn.poll-members-form__submit(color="primary" :disabled="!someRecipients" :loading="saving" @click="inviteRecipients" )
-        span(v-t="'common.action.invite'" v-if="poll.notifyRecipients")
-        span(v-t="'poll_common_form.add_voters'" v-else)
-    .d-flex.align-center(v-if="isScheduled")
-      v-spacer
-      v-btn.poll-members-form__submit(color="primary" :disabled="!someRecipients" :loading="saving" @click="inviteRecipients" )
-        span(v-t="'poll_common_form.add_voters'")
-    v-alert(density="compact" type="info" text v-if="isScheduled && someRecipients")
-      span(v-t="'poll_common_form.voters_notified_when_opens'")
-    v-alert(density="compact" type="warning" text v-if="!isScheduled && someRecipients && !poll.notifyRecipients")
-      span(v-t="'poll_common_form.no_notifications_warning'")
-    v-textarea(v-if="!isScheduled && poll.notifyRecipients && someRecipients" filled rows="3" v-model="message" :label="$t('announcement.form.invitation_message_label')" :placeholder="$t('announcement.form.invitation_message_placeholder')")
-  v-list.poll-members-form__list
-    v-list-subheader
-      span(v-t="'membership_card.voters'")
-      space
-      span ({{users.length}} / {{poll.votersCount}})
+      v-btn.poll-members-form__submit(color="primary" :loading="saving" @click="inviteRecipients")
+        span(v-if="isScheduled || !poll.notifyRecipients") {{ t('poll_common_form.add_voters') }}
+        span(v-else) {{ t('common.action.invite') }}
+  .d-flex.flex-wrap.align-center.ga-3.px-4.pt-4(v-if="!someRecipients && canManageWeights")
+    v-spacer
+    v-btn.poll-members-form__set-all(v-if="canManageWeights" variant="tonal" :disabled="weightsSaving" @click="openSetAllDialog") {{ t('poll_common_form.set_all_vote_weights') }}
+  v-list.poll-members-form__list(v-if="!someRecipients" style="flex: 1; min-height: 0; overflow-y: auto")
     v-list-item(v-for="user in users" :key="user.id")
       template(v-slot:prepend)
         user-avatar.mr-2(:user="user" :size="32")
       v-list-item-title
         span.mr-2 {{user.nameWithTitle(poll.group())}}
-        v-chip.mr-1(v-if="isDelegate(user)" variant="tonal" size="x-small" label :title="$t('members_panel.delegate_popover')")
-          | {{ $t('members_panel.delegate') }}
-        v-chip.mr-1(v-if="isGuest[user.id]" variant="outlined" size="x-small" label :title="$t('announcement.inviting_guests_to_discussion')")
-          span(v-t="'members_panel.guest'")
+        v-chip.mr-1(v-if="isDelegate(user)" variant="tonal" size="x-small" label :title="t('members_panel.delegate_popover')")
+          | {{ t('members_panel.delegate') }}
+        v-chip.mr-1(v-if="isGuest[user.id]" variant="outlined" size="x-small" label :title="t('announcement.inviting_guests_to_discussion')")
+          span {{ t('members_panel.guest') }}
         v-chip.mr-1(v-if="isGroupAdmin[user.id] || isTopicAdmin[user.id]" variant="outlined" size="x-small" label)
-          span(v-t="'members_panel.admin'")
-        v-chip.mr-1(v-if="!user.emailVerified" variant="outlined" size="x-small" label :title="$t('announcement.members_list.has_not_joined_yet_hint')")
-          span(v-t="'announcement.members_list.has_not_joined_yet'")
+          span {{ t('members_panel.admin') }}
+        v-chip.mr-1(v-if="!user.emailVerified" variant="outlined" size="x-small" label :title="t('announcement.members_list.has_not_joined_yet_hint')")
+          span {{ t('announcement.members_list.has_not_joined_yet') }}
       template(v-slot:append)
-        v-menu(offset-y)
-          template(v-slot:activator="{ props }")
-            v-btn.membership-dropdown__button(variant="flat" icon size="small" v-bind="props")
-              common-icon(name="mdi-dots-vertical")
-          v-list
-            v-list-item(
-              v-for="action in performableActions(poll, user)"
-              @click="perform(action, poll, user)"
-              :key="action")
-              v-list-item-title(v-t="{ path: service[action].name, args: { pollType: poll.translatedPollType() } }")
+        v-btn.poll-members-form__weight.mr-1(
+          v-if="canManageWeights"
+          variant="text"
+          size="small"
+          :aria-label="t('poll_common_form.edit_vote_weight_for', {name: user.nameOrEmail(), weight: weightsByUserId[user.id]})"
+          @click="openWeightDialog(user)")
+          span {{ weightsByUserId[user.id] }}
+        v-btn.poll-members-form__remove(
+          v-if="canRemoveVoters"
+          variant="text"
+          icon
+          size="small"
+          :aria-label="t('poll_common_form.remove_voter_named', {name: user.nameOrEmail()})"
+          @click="openRemoveDialog(user)")
+          common-icon(name="mdi-delete-outline")
 
-    v-list-item(v-if="query && users.length == 0")
-      v-list-item-title(v-t="{ path: 'discussions_panel.no_results_found', args: { search: query }}")
-  .d-flex.justify-end.mx-4.pb-4
-    help-btn(
-      path="en/user_manual/polls/inviting_people#add-voters-to-the-poll")
-    v-spacer
+    v-list-item(v-if="query && users.length == 0 && !loading")
+      v-list-item-title {{ t('discussions_panel.no_results_found', { search: query }) }}
+    .d-flex.justify-center(v-if="loading")
+      loading
+  .d-flex.flex-wrap.align-center.justify-space-between.ga-2.px-4.py-2(v-if="!someRecipients")
+    span.poll-members-form__page-count.text-body-small.text-medium-emphasis {{ t('poll_common_form.voter_page_count', {first: pageFirst, last: pageLast, total: voterTotal}) }}
+    v-pagination.poll-members-form__pagination(
+      v-if="totalPages > 1"
+      :model-value="page"
+      :length="totalPages"
+      :total-visible="7"
+      :disabled="loading"
+      @update:model-value="changePage")
+  v-dialog.poll-members-form__set-all-dialog(v-model="setAllDialog" max-width="480")
+    v-card(:title="t('poll_common_form.set_all_vote_weights_title')")
+      v-card-text
+        p.poll-members-form__set-all-search-note.text-body-small.text-medium-emphasis(v-if="query.trim()") {{ t('poll_common_form.set_all_vote_weights_search_note') }}
+        v-radio-group(v-model="weightMode" hide-details)
+          v-radio(v-if="canUseMemberWeights" value="membership" :label="t('poll_common_form.set_each_member_default_vote_weight')")
+          v-radio(value="value" :label="t('poll_common_form.set_all_vote_weights_the_same')")
+        p.text-body-small.text-medium-emphasis(v-if="weightMode === 'membership'") {{ t('poll_common_form.member_vote_weights_hint') }}
+        v-text-field.mt-3(
+          v-if="weightMode === 'value'"
+          v-model="resetWeight"
+          type="text"
+          inputmode="decimal"
+          :label="t('poll_common_form.weight_for_all')"
+          :error="!voteWeightValid(resetWeight)")
+      v-card-actions
+        v-spacer
+        v-btn.poll-members-form__set-all-cancel(variant="text" :disabled="weightsSaving" @click="setAllDialog = false") {{ t('common.action.cancel') }}
+        v-btn(color="primary" :disabled="weightsSaving || (weightMode === 'value' && !voteWeightValid(resetWeight))" :loading="weightsSaving" @click="resetWeights") {{ t('poll_common_form.set_all') }}
+  v-dialog(v-model="weightDialog" max-width="480")
+    v-card(:title="t('poll_common_form.edit_vote_weight')")
+      v-card-text
+        v-text-field.poll-members-form__weight-input(
+          v-if="weightUser"
+          v-model="weightValue"
+          type="text"
+          inputmode="decimal"
+          :label="t('poll_common_form.vote_weight_for', {name: weightUser.nameOrEmail()})"
+          :error="!voteWeightValid(weightValue)"
+          @keydown.enter.prevent="saveWeight")
+      v-card-actions
+        v-spacer
+        v-btn(variant="text" :disabled="weightsSaving" @click="weightDialog = false") {{ t('common.action.cancel') }}
+        v-btn.poll-members-form__save-weight(color="primary" :disabled="weightsSaving || !voteWeightValid(weightValue)" :loading="weightsSaving" @click="saveWeight") {{ t('common.action.save') }}
+  v-dialog.poll-members-form__remove-dialog(v-model="removeDialog" max-width="480")
+    v-card(:title="t('poll_common_form.remove_voter')")
+      v-card-text(v-if="removeUser") {{ t('poll_common_form.remove_voter_and_any_vote_confirmation', {name: removeUser.nameOrEmail()}) }}
+      v-card-actions
+        v-spacer
+        v-btn.poll-members-form__cancel-remove(variant="text" :disabled="removing" @click="removeDialog = false") {{ t('common.action.cancel') }}
+        v-btn.poll-members-form__confirm-remove(color="error" :disabled="removing" :loading="removing" @click="removeVoter") {{ t('poll_common_form.remove_voter') }}
 </template>
+
+<style>
+.poll-members-form__weight {
+  min-width: 56px;
+  max-width: 112px;
+  border-radius: 999px;
+}
+</style>

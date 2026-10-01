@@ -43,6 +43,20 @@ class Ability::PollTest < ActiveSupport::TestCase
     assert_not user.can?(:add_guests, poll.topic)
   end
 
+  test "group members vote only through their stance" do
+    member = users(:user)
+    poll = PollService.create(params: poll_params(group_id: groups(:group).id), actor: users(:admin))
+    stance = poll.stances.latest.find_by!(participant_id: member.id)
+    assert member.can?(:vote_in, poll)
+
+    stance.update!(revoked_at: Time.current)
+    assert_not member.can?(:vote_in, poll.reload), "a member whose stance was revoked cannot vote"
+
+    stance.destroy!
+    assert_not member.can?(:vote_in, poll.reload), "a member without a stance cannot vote"
+    assert poll.members.exists?(member.id)
+  end
+
   # Poll in group - as group admin
   test "group admin can manage poll" do
     user = users(:user)

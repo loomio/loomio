@@ -1,18 +1,18 @@
 ---
 title: Convidar a votar
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/polls/inviting_people/index.md
+source_revision: 9c60c42fc739483fa23f15d9f34a1e9245518092
+source_file: docs/en/user_manual/polls/inviting_people/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 0635cf23fcaaa95b
   invite-people-to-vote-in-a-poll: cfbf5caf71d1d5ca
   invite-guests-or-experts: 0717537bbd36fa07
   invite-a-subgroup-to-vote: 3ac684bdca4b3365
   engage-people-while-a-poll-is-running: 69971de8d56c0a74
-  add-voters-to-the-poll: 904f682bab618ce3
-  remove-people-from-the-poll: d204dd916f5418e2
+  add-voters-to-the-poll: 48f3b4a1edb5a037
+  remove-people-from-the-poll: ceec3f0319728807
   remind-people-to-vote: 177c881cb1b0dfb9
   view-notification-history: 52d930341c048008
   close-early: 0c46e8066719fc2f
@@ -23,8 +23,8 @@ generated:
   invite-guests-or-experts: 96b02625943cf1ef
   invite-a-subgroup-to-vote: 2eb6de42a64b07e1
   engage-people-while-a-poll-is-running: cca7815f299bc96d
-  add-voters-to-the-poll: 56e58d4a20aef47e
-  remove-people-from-the-poll: 46037e184acc0412
+  add-voters-to-the-poll: 2f7c4f62000bd138
+  remove-people-from-the-poll: a724fe6ab7d3c6f9
   remind-people-to-vote: e4e8b1dabd6f9a81
   view-notification-history: 6cd15f35cb27e1f6
   close-early: e395f2b55b1ca054
@@ -88,7 +88,7 @@ Na parte inferior da enquete, há recursos para ajudar você a envolver as pesso
 
 Você pode adicionar pessoas à enquete a qualquer momento, inclusive antes do início da votação em uma enquete agendada.
 
-Selecione **Adicionar eleitores** e informe os nomes ou endereços de e-mail das pessoas que deseja adicionar.
+Selecione **Gerenciar eleitores** para abrir a janela de gerenciamento de eleitores. Você pode convidar todas as pessoas do grupo, adicionar membros pelo nome ou adicionar convidados por e-mail se convites para convidados forem permitidos. Digitar em **Encontre ou convide eleitores** também filtra as pessoas que já estão na enquete. Os eleitores adicionados mais recentemente aparecem primeiro; use os controles de paginação para percorrer a lista completa.
 
 Se a enquete tiver um horário de abertura agendado e a votação ainda não tiver começado, os eleitores não receberão uma notificação imediata. Eles serão notificados quando a votação começar.
 
@@ -96,13 +96,15 @@ Se a enquete tiver um horário de abertura agendado e a votação ainda não tiv
 
 ### Remova pessoas da enquete
 
-Selecione **Adicionar eleitores**, encontre o nome da pessoa, abra o menu de três pontos ao lado dele e selecione **Remover da proposta**.
+Selecione **Gerenciar eleitores**, encontre o nome da pessoa na janela de gerenciamento de eleitores, selecione o botão de lixeira ao lado dele e confirme **Remover eleitor**.
+
+![O botão de lixeira ao lado de um eleitor na janela de gerenciamento de eleitores](proposal_invite_remove.png)
 
 Não é possível remover pessoas de uma enquete anônima.
 
 Por exemplo, uma pessoa administradora que cria uma enquete em nome dos membros de um conselho pode remover a si mesma se não tiver autorização para votar.
 
-![](proposal_invite_remove.png)
+Para enquetes que usam pesos de voto, a mesma janela permite que os coordenadores da enquete [revisem e editem os pesos de voto](/en/user_manual/polls/weighted_voting).
 
 <!-- translation-section: remind-people-to-vote -->
 

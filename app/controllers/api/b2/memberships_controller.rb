@@ -12,7 +12,6 @@ class Api::B2::MembershipsController < Api::B2::BaseController
       actor: current_user,
       params: { recipient_emails: add_emails }
     )
-    PollService.group_members_added(group.id)
 
     removed_user_ids = []
     if params[:remove_absent].to_i == 1

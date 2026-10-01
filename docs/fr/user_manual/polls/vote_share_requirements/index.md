@@ -1,20 +1,20 @@
 ---
 title: Exigences de répartition des votes
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/polls/vote_share_requirements/index.md
+source_revision: 3a315412c646d254c8426be5c436a4e593f6011f
+source_file: docs/en/user_manual/polls/vote_share_requirements/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
-  introduction: c97281f29d615dea
+  introduction: 57d7127721bebf93
   eligible-voters-and-votes-cast: 930bbc475f734396
-  different-vote-share-requirements: 0d25794ec996d42c
-  detailed-example: dc765c43a22a28a1
+  different-vote-share-requirements: cfdfd13a0a6a8b38
+  detailed-example: 395dbccb0e6427fc
 generated:
-  introduction: 00271406f386e827
+  introduction: 4ee9c41cca2afb8b
   eligible-voters-and-votes-cast: 1d21e9803c64d6ff
-  different-vote-share-requirements: c2b805b90e5d0132
-  detailed-example: bf652153df38c692
+  different-vote-share-requirements: 2da9c73753295eb3
+  detailed-example: a8ed6f80a050d41c
 title_source: a654891ca817844e
 title_generated: '4123971380273484'
 ---
@@ -27,9 +27,9 @@ Définissez une exigence de répartition des votes pour une option lorsqu’une 
 
 Vous pouvez associer une exigence de répartition des votes à un [quorum](/en/user_manual/polls/quorum/) pour imposer à la fois une participation suffisante et une répartition précise des votes.
 
-Lorsque vous créez une proposition, sélectionnez l’icône de modification à côté d’une option.
+Dans le formulaire de proposition, sélectionnez l’icône de modification à côté d’une option.
 
-![L’icône de modification à côté de l’option Consentement](edit-highlight-on-option.png)
+![L’icône de modification à côté de l’option D’accord](edit-highlight-on-option.png)
 
 <!-- translation-section: eligible-voters-and-votes-cast -->
 
@@ -55,19 +55,19 @@ Une proposition peut comporter des exigences pour plusieurs options. Par exemple
 - L’abstention ne doit pas dépasser 30 % des votes exprimés
 - L’opposition ne doit pas dépasser 0 % des votes exprimés
 
+Définir une option sur **Pas plus de 0 %** est une pratique courante. Cela signifie que la proposition ne peut pas être adoptée si une personne choisit cette option. Appliquez cette exigence à l’option **Contre** pour qu’un seul vote pour cette option bloque la proposition.
+
 Vous pouvez aussi ajouter des exigences à un [modèle de sondage](/en/user_manual/polls/poll_templates/). Elles s’appliqueront par défaut aux nouvelles propositions créées à partir de ce modèle.
 
 <!-- translation-section: detailed-example -->
 
 ## Exemple détaillé
 
-La coopérative Oatmilk doit décider si elle approuve le budget d’un essai de bouteilles consignées de six semaines. Cinq personnes peuvent voter.
+La coopérative Oatmilk doit décider si elle lance un essai de bouteilles consignées de six semaines. Cinq personnes peuvent voter.
 
-Jamie utilise le modèle de proposition **Consentement**, modifie l’option Consentement et active son exigence de répartition des votes.
+Le processus de la coopérative exige l’accord d’au moins 75 % des électeurs éligibles. Jamie modifie l’option **D’accord** de la proposition, active son exigence de répartition des votes et la définit sur **Au moins 75 % des Électeurs éligibles**.
 
-Le processus de la coopérative exige le soutien d’au moins 75 % des électeurs éligibles. Jamie définit l’exigence sur **Au moins 75 % des Électeurs éligibles**.
-
-![L’option Consentement exigeant le soutien d’au moins 75 % des électeurs éligibles](./consent-vote-option.png)
+![L’option D’accord exigeant le soutien d’au moins 75 % des électeurs éligibles](./agree-vote-option.png)
 
 Jamie fixe aussi un quorum de 60 %. Jamie et Samira votent pour la proposition. Tous les votes soumis la soutiennent, mais ils ne représentent que 40 % des électeurs éligibles. Aucune des deux exigences n’est donc satisfaite.
 

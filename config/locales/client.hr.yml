@@ -1604,6 +1604,7 @@ hr:
     title_label: titula
     title_placeholder: Npr. 'Koordinator' ili 'Facilitator'
     updated: Naziv članstva ažuriran
+    weight_label: Težina glasova
   user_name_modal:
     user_name_updated: Korisničko ime ažurirano
     set_user_name: Postavite korisničko ime
@@ -1991,6 +1992,7 @@ hr:
     vote_share_requirement: Zahtjev za udio glasova
     for_the_proposal_to_pass: Da bi prijedlog prošao, ova opcija mora dobiti…
     for_the_poll_to_be_valid: Da bi %{poll_type} bio valjan, ova opcija mora primiti…
+    points_cast: Dodijeljeni bodovi
   poll_common:
     superseded: Zamijenjeno
     outdated: Zastario
@@ -2101,6 +2103,12 @@ hr:
     status: Status
     your_vote_is_requested: Traži se vaš glas
     browse_example_make_a_copy_hint: "<b>Kliknite ikonu za kopiranje</b> da biste stvorili novi predložak ankete, koristeći primjer kao početnu točku."
+    view_votes: Prikaži glasove
+    weighted_votes: Ponderirani glasovi
+    weighted_points: Ponderirani bodovi
+    pct_of_weighted_votes: "% ponderiranih glasova"
+    pct_of_weighted_points: "% ponderiranih bodova"
+    weighted_mean: Ponderirana srednja vrijednost
   poll_common_attachment_form:
     label: Prilozi
   poll_common_add_option:
@@ -2169,6 +2177,8 @@ hr:
     delegate: Delegat
     delegate_popover: Delegat je član grupe s pravom glasa
     delegates: Delegati
+    edit_vote_weights: Uredi težine glasova
+    vote_weights_are_defaults: Ove zadane težine glasova primjenjuju se na nove glasove. Promjene ovdje ne utječu na već dodijeljene težine glasova.
   polls_panel:
     new_poll: Nova anketa
     any_type: Svi tipovi
@@ -2215,6 +2225,7 @@ hr:
     legacy_vote_reasons: Razlozi ranijih glasova
     legacy_vote_reasons_description: Razlozi glasova danih korištenjem starog anonimnog formata glasanja prikazani su kao običan tekst
     anonymous_voting_participant_notice: Glasanje je anonimno. Ne možete pregledati ili promijeniti svoj glas nakon što ga pošaljete. Rezultati nisu dostupni dok se glasanje ne završi.
+    votes_have_different_weights: Glasovi u ovoj anketi imaju različitu težinu, pa neki vrijede više od drugih.
   poll_common_collapsed:
     by_who: "%{name}"
   poll_common_calendar_invite:
@@ -2283,6 +2294,11 @@ hr:
     unredact_reason_helptext: Razlog zašto će tekst i privitci ponovno biti vidljivi
     unredact_reason_confirm: Razlog vraćanja
     unredact_reason_success: Razlog glasanja vraćen
+    all_voters: Svi birači
+    vote_weight_column: Težina glasova
+    stance: Glasanje
+    participation_records_restricted: Nakon završetka glasanja možete vidjeti tko je sudjelovao
+    vote_weight: Težina glasova %{weight}
   poll_common_undecided_panel:
     show_undecided: Prikaži %{count} neodlučenih
     show_invitations: Prikaži pozivnice na čekanju
@@ -2925,9 +2941,37 @@ hr:
     stance_reason_required_when_disagreeing: Obavezno u slučaju neslaganja
     stance_reason_required_for_disagree_or_block: Obavezno za neslaganje ili blokiranje
     stance_reason_required_for_block: Potrebno za blokiranje
+    voters: Birači
+    manage_voters: Upravljanje biračima
+    remove_voter: Ukloni birača
+    voter_page_count: "%{first}–%{last} od %{total}"
+    vote_weight_for: Težina glasa za %{name}
+    save_vote_weights: Spremi težine glasova
+    vote_weights_updated: Ažurirane su težine glasova
+    set_all: Postavi sve
+    find_or_invite_voters: Pronađite ili pozovite birače
+    remove_voter_named: Ukloni %{name} iz ankete
+    remove_voter_and_any_vote_confirmation: Ukloniti %{name} iz ove ankete? Time se također uklanjaju svi glasovi koje je dao/dala.
+    edit_vote_weight: Uredi težinu glasova
+    edit_vote_weight_for: Uredi težinu glasa za %{name} (trenutno %{weight})
+    set_all_vote_weights_title: Postavi sve težine glasova
+    set_all_vote_weights_search_note: Ovo mijenja težinu glasova svih birača u anketi, uključujući i one izvan rezultata pretraživanja.
+    set_each_member_default_vote_weight: Postavite zadanu težinu glasa za svakog člana
+    voters_will_not_be_notified: Birači neće biti obaviješteni. Obavijestite ih o anketi na drugi način.
+    give_voters_different_vote_weights: Dajte biračima različite težine glasova. Rezultati prikazuju i obične i ponderirane ukupne brojeve.
+    issued_vote_weights_will_change: Već dodijeljene težine glasova će se promijeniti.
+    weight_for_all: Težina glasa za sve
+    set_all_vote_weights: Postavi sve težine glasova
+    set_all_vote_weights_the_same: Postavi sve težine glasova na istu razinu
+    member_vote_weights_hint: Birači bez trenutnog članstva u grupi dobivaju težinu glasa 1
+    weighted_voting: Ponderirano glasanje
+    weighted_voting_is_not_available_with_anonymous_voting: "Ponderirano glasanje nije dostupno uz anonimno glasanje"
+    use_weighted_voting: Koristite ponderirano glasanje
+    weighted_voting_off_warning: Isključivanjem ponderiranog glasanja svaka težina glasa postavlja se na 1. Sve težine glasova koje ste promijenili za ovu anketu bit će izgubljene.
+    weighted_voting_on_group: Uključivanjem ponderiranog glasanja kopira se zadana težina glasa svakog člana. Ostali glasači dobivaju težinu glasa od 1.
+    weighted_voting_on_direct: Uključivanjem ponderiranog glasanja težina svakog glasa postaje 1
   poll_receipts_page:
     participation_status_requires_min_votes: Ovo pokazuje tko je imao pravo glasa. Je li svaka osoba glasala prikazuje se tek kada su glasale najmanje %{count} osobe.
-    verify_participants: Potvrdite sudionike
     see_votes_if_quorum_reached: Ako je glasanje zatvoreno i postignut je kvorum, vidjet ćete tko je glasao.
     voter_name: Ime birača
     voter_email: E-pošta birača
@@ -2939,6 +2983,7 @@ hr:
     participation_records_explanation: Ovo pokazuje tko je bio podoban i jesu li glasali. Ne pokazuje kako je tko glasao.
     voted: Glasao/la
     not_voted: Nije glasao/la
+    email_addresses_only_for_group_admins: E-mail adrese prikazuju se samo administratorima grupe
   comment_reply_form:
     aria_label: Dodaj odgovor
   discussion_template:
@@ -3032,6 +3077,12 @@ hr:
     notify_members_or_invite_guests_info: Obavijestite članove grupe po imenu ili pozovite nečlanove putem adrese e-pošte. Pozvani gosti mogu sudjelovati u ovoj temi, ali neće imati pristup drugim temama grupe.
     notify_members_info: Unesite imena članova grupe kako biste ih obavijestili o ovoj temi.
     specified_voters_only_warning: Ova tema ima ankete u kojima samo odabrane osobe mogu glasati. Dodavanje nekoga ovim obrascem neće mu dati glas, nego samo mogućnost praćenja i komentiranja. Ako želite dodijeliti glasove, u anketi koristite "dodaj glasače".
+    manage_thread_members: Upravljanje članovima niti
+    find_or_invite_people: Pronađite ili pozovite ljude
+    invite_or_notify_explanation: Nove osobe bit će pozvane u temu. Osobe koje su već u temi bit će ponovno obaviještene.
+    invite_or_notify: Pozovi ili obavijesti
+    member_page_count: "%{first}–%{last} od %{total}"
+    guest_access_info: Gosti pozvani putem e-pošte mogu sudjelovati u ovoj temi bez pristupa drugim temama grupe
   poll_common_details_meta:
     opened: Otvoreno
     opens: Otvara se

@@ -1,20 +1,20 @@
 ---
 title: Апытанне часу
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/polls/meeting_polls/index.md
+source_revision: 9c60c42fc739483fa23f15d9f34a1e9245518092
+source_file: docs/en/user_manual/polls/meeting_polls/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-30'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 8ab9108683132085
   time-poll: d5d5d81f7de10419
   voting: c50083234167a0f9
-  outcome: 20d3f84d36a3b860
+  outcome: 74db36d36fa18798
 generated:
   introduction: 71834c82850b02fc
   time-poll: a35e31cfeac3e73b
   voting: 958e0e034fcb7cc4
-  outcome: 780c862600bb71a3
+  outcome: a921066e0a34db92
 title_source: 8e2a07d7257fbc04
 title_generated: d9104328ca98655e
 ---
@@ -63,9 +63,9 @@ _Даведайцеся, калі людзі могуць сустрэцца_
 
 <!-- translation-section: outcome -->
 
-### Выснова
+### Падзяліцеся высновай
 
-Калі апытанне часу закрыецца, выберыце найлепшы час і апублікуйце выснову.
+Калі апытанне часу закрыецца, выберыце найлепшы час і падзяліцеся высновай. Пра тое, як працуюць высновы, чытайце ў раздзеле [Падзяліцеся высновай](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome).
 
 ![](timepoll_outcome.png)
 
@@ -77,6 +77,6 @@ _Даведайцеся, калі людзі могуць сустрэцца_
 
 **Месцазнаходжанне**: Дадайце фізічны адрас або спасылку на сустрэчу
 
-**Заява**: Падсумуйце рашэнне і дадайце неабходныя ўказанні для сустрэчы
+**Заява**: Падсумуйце вынік і дадайце неабходныя ўказанні для сустрэчы
 
 Loomio дадае выбраны час, назву сустрэчы, працягласць, месцазнаходжанне і заяву ў апавяшчэнне аб выснове і запрашэнне ў каляндар.

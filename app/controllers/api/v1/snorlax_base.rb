@@ -6,6 +6,7 @@ class Api::V1::SnorlaxBase < ActionController::Base
   rescue_from(ActionController::ParameterMissing)      { |e| respond_with_standard_error e, 400 }
   rescue_from(ActiveRecord::RecordNotFound)            { |e| respond_with_standard_error e, 404 }
   rescue_from(ActiveRecord::RecordInvalid)             { |e| respond_with_errors(e.record) }
+  rescue_from(VoteWeight::Invalid)                     { render json: {errors: {weight: [I18n.t('errors.messages.invalid')]}}, root: false, status: 422 }
   rescue_from(ThrottleService::LimitReached)            { respond_with_invitation_limit_reached }
   attr_accessor :collection_count
 
@@ -207,6 +208,13 @@ class Api::V1::SnorlaxBase < ActionController::Base
   def page_collection(collection)
     offset = (params[:offset] || params[:from]).to_i
     limit  = (params[:limit] || params[:per] || default_page_size).to_i
+    collection.offset(offset).limit(limit)
+  end
+
+  # New endpoints page with offset and limit only, and cap the page size.
+  def page_collection_bounded(collection, limit_max: 50)
+    offset = [params[:offset].to_i, 0].max
+    limit  = (params[:limit] || limit_max).to_i.clamp(1, limit_max)
     collection.offset(offset).limit(limit)
   end
 

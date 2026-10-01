@@ -1,10 +1,10 @@
 ---
 title: Classer
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/polls/rank/index.md
+source_revision: 3a315412c646d254c8426be5c436a4e593f6011f
+source_file: docs/en/user_manual/polls/rank/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 9908dff1f0045200
   when-to-use-rank: f47d22e4968f74dd
@@ -12,6 +12,7 @@ sections:
   set-up-the-poll: 8a5902b708d6e7be
   vote: b089c2c5b7504b5d
   read-the-results: 18fbb0f9a5a866bc
+  share-an-outcome: c9dcebf155d64c65
 generated:
   introduction: 23a76bf228c261bb
   when-to-use-rank: e0a37a28b609383a
@@ -19,6 +20,7 @@ generated:
   set-up-the-poll: dd33ff3bfe534d32
   vote: ae195dc5bb705e54
   read-the-results: 25a2ebd2b774546d
+  share-an-outcome: beb43365a3376545
 title_source: a4130d7d2c3a137f
 title_generated: '08878e1e10d07b7b'
 ---
@@ -86,3 +88,11 @@ Les résultats combinent tous les bulletins en un classement global fondé sur l
 Dans cet exemple, la **bouteille ambrée de 500 ml** arrive en tête, suivie de la **bouteille transparente de 500 ml** et de la **bouteille ambrée de 750 ml**. Le groupe peut examiner d’abord le modèle préféré et conserver le reste du classement comme liste de solutions de rechange.
 
 Un résultat fondé sur les points peut masquer des préférences différentes qui aboutissent au même total. Consultez les bulletins individuels et les raisons données pour les votes lorsque les options sont proches ou que la décision a des conséquences importantes.
+
+<!-- translation-section: share-an-outcome -->
+
+## Partager une conclusion
+
+À la clôture du sondage, partagez une conclusion. Indiquez quelle option le groupe retiendra et ce qui se passera si elle ne peut pas être mise en œuvre. Consultez [Partager une conclusion](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome) pour comprendre le fonctionnement des conclusions.
+
+![Une conclusion retenant le modèle de bouteille classé en première position](outcome.png)

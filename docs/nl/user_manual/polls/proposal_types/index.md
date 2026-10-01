@@ -13,7 +13,6 @@ sections:
   ranked-choice: 31dee409a33369de
   time-poll: 8b3a09b278bd7fde
   stv-election: e8407157d29424e4
-  other-specialized-method: 6b1ca633e613e513
 generated:
   introduction: 90658e8a508e57e3
   simple-poll: 7f81e3a18f8d6c57
@@ -22,7 +21,6 @@ generated:
   ranked-choice: ac0d8743b29d0c00
   time-poll: 47c69a8ca4431aa6
   stv-election: d74911f3b8575f3d
-  other-specialized-method: e852e42cfbc8a577
 title_source: 996729458535904a
 title_generated: 70a5a9cd525d0591
 ---
@@ -68,9 +66,3 @@ Met een [Tijd peiling](/en/user_manual/polls/meeting_polls/) geven deelnemers aa
 ## STV-verkiezing
 
 Bij [STV-verkiezingen](/en/user_manual/polls/stv/) rangschikken deelnemers kandidaten voor een evenredige verkiezing met meerdere winnaars. Gebruik STV om een commissie, bestuur of groep afgevaardigden te kiezen.
-
-<!-- translation-section: other-specialized-method -->
-
-## Andere gespecialiseerde methode
-
-Loomio heeft ook een Vragenronde om vragen te verzamelen zonder te stemmen. Groepsbeheerders kunnen deze beschikbaar maken via [Poll-sjablonen](/en/user_manual/polls/poll_templates/).

@@ -7,7 +7,7 @@ import EventBus       from '@/shared/services/event_bus';
 import { intersection, debounce, map } from 'lodash-es';
 import LmoUrlService from '@/shared/services/lmo_url_service';
 import { exact, approximate } from '@/shared/helpers/format_time';
-import { mdiMagnify } from '@mdi/js';
+import { mdiClose, mdiMagnify } from '@mdi/js';
 import UrlFor from '@/mixins/url_for';
 import WatchRecords from '@/mixins/watch_records';
 
@@ -17,6 +17,7 @@ export default
   data() {
     return {
       mdiMagnify,
+      mdiClose,
       loader: null,
       group: null,
       per: 25,
@@ -27,12 +28,16 @@ export default
         {title: this.$t('members_panel.order_by_created_desc'), value:'memberships.created_at desc' },
         {title: this.$t('members_panel.order_by_admin_desc'), value:'admin desc' }
       ],
-      memberships: []
+      memberships: [],
+      searchOpen: Boolean(this.$route.query.q),
+      searchQuery: this.$route.query.q || '',
+      searchQueryPushed: this.$route.query.q || ''
     };
   },
 
   created() {
     this.onQueryInput = debounce(val => {
+      this.searchQueryPushed = val || '';
       return this.$router.replace(this.mergeQuery({q: val}));
     }
     , 500);
@@ -74,6 +79,18 @@ export default
   methods: {
     exact,
     approximate,
+
+    openSearch() {
+      this.searchOpen = true;
+      this.$nextTick(() => this.$refs.memberSearch.focus());
+    },
+    closeSearch() {
+      this.onQueryInput.cancel();
+      this.searchQuery = '';
+      this.searchQueryPushed = '';
+      this.searchOpen = false;
+      this.$router.replace(this.mergeQuery({q: null}));
+    },
 
     query() {
       let chain = Records.memberships.collection.chain();
@@ -156,14 +173,6 @@ export default
       });
       this.query();
     },
-    openShareableLinkForm() {
-      EventBus.$emit('openModal', {
-        component: 'GroupShareableLinkForm',
-        props: {
-          group: this.group
-        }
-      });
-    },
     invite() {
       EventBus.$emit('openModal', {
         component: 'GroupInvitationForm',
@@ -188,6 +197,9 @@ export default
     canAddMembers() {
       return AbilityService.canAddMembersToGroup(this.group);
     },
+    canManageWeights() {
+      return AbilityService.canAdminister(this.group);
+    },
 
     showAdminWarning() {
       return this.group.adminsInclude(Session.user()) &&
@@ -197,7 +209,17 @@ export default
   },
 
   watch: {
-    '$route.query': 'refresh'
+    // Only take the search from the URL when navigation changed it. The URL
+    // update this box pushed can arrive after more typing, and must not undo it.
+    '$route.query'() {
+      const q = this.$route.query.q || '';
+      if (q !== this.searchQueryPushed) {
+        this.searchQueryPushed = q;
+        this.searchQuery = q;
+        if (q) this.searchOpen = true;
+      }
+      this.refresh();
+    }
   }
 };
 
@@ -232,14 +254,26 @@ export default
             v-list-item-title(v-t="'members_panel.delegates'")
           v-list-item.members-panel__filters-invitations(:to="mergeQuery({filter: 'pending'})")
             v-list-item-title(v-t="'members_panel.invitations'")
+      v-btn.members-panel__search-button.mr-2(
+        v-if="!searchOpen"
+        variant="text"
+        @click="openSearch")
+        v-icon.mr-1(:icon="mdiMagnify")
+        span {{ $t('navbar.search_members_short') }}
       v-text-field.mr-2(
-        clearable
+        v-if="searchOpen"
+        ref="memberSearch"
+        v-model="searchQuery"
         hide-details
         variant="solo"
         density="compact"
         @update:model-value="onQueryInput"
         :placeholder="$t('navbar.search_members_short')"
-        :prepend-inner-icon="mdiMagnify")
+        :prepend-inner-icon="mdiMagnify"
+        :append-inner-icon="mdiClose"
+        @click:append-inner="closeSearch"
+        @keyup.esc="closeSearch")
+      v-spacer
       v-btn.membership-card__invite.mr-2(
         color="primary"
         variant="elevated"
@@ -247,8 +281,7 @@ export default
         @click="invite()"
       )
         span(v-t="'common.action.invite'")
-      v-btn.members-panel__shareable-link-btn(v-if='canAddMembers' color="primary" variant="tonal" @click="openShareableLinkForm()")
-        span(v-t="'members_panel.sharable_link'")
+      v-btn.members-panel__edit-weights(v-if="canManageWeights" variant="tonal" :to="urlFor(group, 'members/weights')") {{ $t('members_panel.edit_vote_weights') }}
       v-btn.group-page__requests-tab.text-medium-emphasis.ml-2(
         v-if='group.isVisibleToPublic && canAddMembers'
         :to="urlFor(group, 'membership_requests')"

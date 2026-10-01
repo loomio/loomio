@@ -106,27 +106,18 @@ class PollMarkdownResultsService
   end
 
   def simple_heading(column)
-    {
-      "name" => t("common.option"),
-      "score_percent" => t("poll_ranked_choice_form.pct_of_points"),
-      "votes_cast_percent" => t("poll_ranked_choice_form.pct_of_votes_cast"),
-      "voter_percent" => t("poll_ranked_choice_form.pct_of_voters"),
-      "target_percent" => t("thread_markdown.target"),
-      "rank" => t("poll_ranked_choice_form.rank"),
-      "score" => t("poll_ranked_choice_form.points"),
-      "average" => t("poll_ranked_choice_form.mean"),
-      "stv_status" => t("poll_common.status"),
-      "voter_count" => t("membership_card.voters"),
-      "votes" => t("poll_common.votes"),
-      "voters" => t("thread_markdown.voters")
-    }.fetch(column)
+    case column
+    when "target_percent" then t("thread_markdown.target")
+    when "voters" then t("thread_markdown.voters")
+    else t(poll.result_heading_key(column))
+    end
   end
 
   def simple_cell(column, result)
     case column
     when "name" then option_name(result[:name], result[:name_format])
     when "stv_status" then result[:stv_status] ? t("poll_stv_results.#{result[:stv_status]}") : ""
-    when "rank", "score" then result[column.to_sym]
+    when "rank", "score", "unweighted_score" then result[column.to_sym]
     when "voter_count", "votes" then result[:voter_count]
     when "average" then result[:average].round(1)
     when "voter_percent" then percent(result[:voter_percent])

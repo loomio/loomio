@@ -1,10 +1,10 @@
 ---
 title: A Loomio bevezetése a csoportodban
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/overview/introducing_loomio/index.md
+source_revision: 9c60c42fc739483fa23f15d9f34a1e9245518092
+source_file: docs/en/user_manual/overview/introducing_loomio/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 3937e28d4932fd6d
   choose-one-useful-starting-point: 990ae1af5bf58d27
@@ -16,7 +16,7 @@ sections:
   invite-people: 40058431249a070e
   help-everyone-participate-once: 94babb6a295b7f66
   use-notifications-deliberately: a532d30c36993c6a
-  complete-the-first-process: 48fdb4622d159044
+  complete-the-first-process: fd49ec812c1265e7
 generated:
   introduction: 2388571aa2359848
   choose-one-useful-starting-point: 506c116323ba38b3
@@ -28,7 +28,7 @@ generated:
   invite-people: 9c1d6510c09ac2b4
   help-everyone-participate-once: 830f842c85c185fb
   use-notifications-deliberately: a074b1e9acaa03fb
-  complete-the-first-process: 918bbe7670cf80c6
+  complete-the-first-process: 0ac1ac44119a239d
 title_source: 4f1540fbaadc657b
 title_generated: 8e16c5f5effeed28
 ---
@@ -175,8 +175,8 @@ Az első folyamatban érdemes végigmenni minden lépésen:
 2. Kérj hozzászólásokat vagy kérdéseket, amikor szükség van rájuk.
 3. Indítsd el a megfelelő javaslatot vagy szavazást.
 4. Szükség esetén emlékeztesd azokat, akik még nem vettek részt.
-5. Tedd közzé a [következtetést](/en/user_manual/polls/outcomes), amelyből kiderül, mi lett a döntés, és mi történik ezután.
+5. Tedd közzé a [következtetést](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome), amelyből kiderül, mi lett a döntés, és mi történik ezután.
 
 A következtetés lezárja a folyamatot, és olyan feljegyzést hoz létre, amelyhez a tagok később visszatérhetnek. Ezután kérdezd meg, mi működött jól, módosítsd a folyamatot, és válaszd ki a következő rendszeres feladatot, amelyet a Loomióban végeztek el.
 
-A beszélgetéstől a döntésig vezető folyamatról a [Döntéshozatal](/en/guides/making_decisions) című útmutatóban olvashatsz. A vezető testületekre vonatkozó gyakorlatokat a [A Loomio bemutatása a vezető testületnek](/en/guides/board_processes/introduce) című útmutatóban találod.
+A beszélgetéstől a döntésig vezető folyamatról a [Döntéshozatal](/en/guides/making_decisions) című útmutatóban olvashatsz. A vezető testületekre vonatkozó gyakorlatokat az [A Loomio bemutatása a vezető testületnek](/en/guides/board_processes/introduce) című útmutatóban találod.

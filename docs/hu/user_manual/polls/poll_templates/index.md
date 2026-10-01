@@ -1,10 +1,10 @@
 ---
 title: Szavazási sablonok
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/polls/poll_templates/index.md
+source_revision: 9c60c42fc739483fa23f15d9f34a1e9245518092
+source_file: docs/en/user_manual/polls/poll_templates/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-30'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: f11182d62d99dbcc
   voting-methods-and-templates: 24be471686aa2dfd
@@ -15,7 +15,7 @@ sections:
   voting-method: 761137852812fea8
   example-title-details-and-tags: 9dbbd0510d2d6cc1
   response-options: 727afbf0dcea6069
-  duration-and-settings: dc1fb9123eb808df
+  duration-and-settings: a364411a3bebb3ae
   save-and-test-the-template: 8c48386c69ea309a
   manage-the-template-list: 0c124d7958c3f80a
 generated:
@@ -28,7 +28,7 @@ generated:
   voting-method: 13cc370e5e4ac5d0
   example-title-details-and-tags: '094db61a99e25980'
   response-options: e39237b0f500595d
-  duration-and-settings: 4b887e1ddf481dca
+  duration-and-settings: 98d0d9467f76e7e0
   save-and-test-the-template: 2eca983dac40ae1e
   manage-the-template-list: 2cc44fe48d43d5d8
 title_source: 114cca246e357304
@@ -142,7 +142,7 @@ Egyes módszereknél, például a Javaslat és a Választ esetében beállíthat
 
 ![](poll_type_duration.png)
 
-Más alapbeállítások szabályozhatják az eredmény láthatóságát, a névtelen szavazást, az indoklás kötelező megadását, az emlékeztetőket, a részvételi küszöböt és a választott módszer sajátos működését. A hatásukat a [Javaslatok és szavazások beállításai](../settings/) oldalon találod.
+Más alapbeállítások szabályozhatják az eredmény láthatóságát, a névtelen szavazást, a [súlyozott szavazást](../weighted_voting/), az indoklás kötelező megadását, az emlékeztetőket, a részvételi küszöböt és a választott módszer sajátos működését. A hatásukat a [Javaslatok és szavazások beállításai](../settings/) oldalon találod.
 
 <!-- translation-section: save-and-test-the-template -->
 

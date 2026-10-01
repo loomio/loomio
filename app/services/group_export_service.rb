@@ -35,7 +35,6 @@ class GroupExportService
     exportable_outcomes
     exportable_stances
     exportable_stance_choices
-    poll_stance_receipts
     topic_readers
     comments
   ]
@@ -121,7 +120,6 @@ class GroupExportService
       anonymous_poll_voters: %w[poll_id],
       comments: %w[parent],
       topics: %w[topicable],
-      stance_receipts: %w[poll_id],
       stances: %w[poll_id],
       poll_options: %w[poll_id],
       outcomes: %w[poll_id],
@@ -131,7 +129,6 @@ class GroupExportService
     },
     users: {
       anonymous_poll_voters: %w[voter_id inviter_id],
-      stance_receipts: %w[voter_id inviter_id],
       topic_items: %w[itemable user_id],
       discussions: %w[author_id discarded_by],
       discussion_templates: %w[author_id discarded_by hider_id],
@@ -208,7 +205,6 @@ class GroupExportService
       outcomes,
       stances,
       StanceChoice.where(stance_id: stances.select(:id)),
-      StanceReceipt.where(poll_id: polls.select(:id)),
       topic.items,
       topic.topic_readers,
       comments
@@ -354,6 +350,9 @@ class GroupExportService
       datas = URI.parse(filename_or_url).read.split("\n").map { |line| JSON.parse(line) }
     end
 
+    # Older group archives can contain receipts. Identified stances and migrated
+    # anonymous electorates are the supported participation records now.
+    datas.reject! { |data| data['table'] == 'stance_receipts' }
     datas_by_table = datas.group_by { |data| data['table'] }
     tables = datas_by_table.keys - ['attachments']
     # Archive row order is not a dependency contract. Restore known parent tables

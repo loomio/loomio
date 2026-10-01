@@ -4,6 +4,7 @@ class Api::V1::TopicReadersController < Api::V1::RestfulController
     query = params[:query]
     instantiate_collection do |collection|
       collection = collection.where(topic_id: @topic.id)
+      collection = collection.where(revoked_at: nil) if params[:active_only].present?
       if query
         collection = collection.
           joins('LEFT OUTER JOIN users on topic_readers.user_id = users.id').
@@ -13,7 +14,7 @@ class Api::V1::TopicReadersController < Api::V1::RestfulController
                  users.username ilike :first",
                  first: "#{query}%", last: "% #{query}%")
       end
-      collection
+      collection.order('topic_readers.id DESC')
     end
     respond_with_collection
   end

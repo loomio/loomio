@@ -1,20 +1,20 @@
 ---
 title: סקר זמן
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/polls/meeting_polls/index.md
+source_revision: 9c60c42fc739483fa23f15d9f34a1e9245518092
+source_file: docs/en/user_manual/polls/meeting_polls/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 8ab9108683132085
   time-poll: d5d5d81f7de10419
   voting: c50083234167a0f9
-  outcome: 20d3f84d36a3b860
+  outcome: 74db36d36fa18798
 generated:
   introduction: aa8fe72236c14818
   time-poll: 959f81bf68248b0e
   voting: a7b502334714f518
-  outcome: a963edcf022404b8
+  outcome: a6a0f08df4e9172a
 title_source: 8e2a07d7257fbc04
 title_generated: fe52860ad7a50271
 ---
@@ -63,9 +63,9 @@ _מציאת מועד שבו אנשים פנויים להיפגש_
 
 <!-- translation-section: outcome -->
 
-### מסקנה
+### שיתוף מסקנה
 
-כשסקר הזמן נסגר, יש לבחור את המועד המתאים ביותר ולפרסם מסקנה.
+כשסקר הזמן נסגר, יש לבחור את המועד המתאים ביותר ולשתף מסקנה. להסבר על אופן השימוש במסקנות, ניתן לעיין ב[שיתוף מסקנה](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome).
 
 ![](timepoll_outcome.png)
 
@@ -77,6 +77,6 @@ _מציאת מועד שבו אנשים פנויים להיפגש_
 
 **מיקום**: יש להוסיף מיקום פיזי או קישור לפגישה
 
-**הצהרה**: יש לסכם את ההחלטה ולהוסיף הנחיות לפגישה, אם ישנן
+**הצהרה**: יש לסכם את התוצאה ולהוסיף הנחיות לפגישה, אם ישנן
 
 Loomio כוללת את המועד שנבחר, שם הפגישה, משך הפגישה, המיקום וההצהרה בהודעה על המסקנה ובהזמנה ביומן.

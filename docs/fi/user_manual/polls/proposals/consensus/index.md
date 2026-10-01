@@ -1,24 +1,26 @@
 ---
 title: Konsensus
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/polls/proposals/consensus/index.md
+source_revision: 9c60c42fc739483fa23f15d9f34a1e9245518092
+source_file: docs/en/user_manual/polls/proposals/consensus/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: af2e2a50e8c0b440
   when-to-use-consensus: fc7f6180345f73a3
   example-adopt-a-bottle-return-standard: 9b0915ee6f41fa54
   set-up-the-proposal: b35a641ec031a40b
   vote: f7dbea12e2d6261a
-  read-the-results: d7d1bfae079d04ec
+  read-the-results: e60abb3a43a86d6e
+  share-an-outcome: a7febe19484c20b3
 generated:
   introduction: 40b6c058471e5432
   when-to-use-consensus: e34361a06f10ca83
   example-adopt-a-bottle-return-standard: 871c7e66599ad0fa
   set-up-the-proposal: 932a536880fc9cfa
   vote: 00ca2aed8f29c79d
-  read-the-results: 5f053833ae2ef01c
+  read-the-results: 712eb3fc84d213f3
+  share-an-outcome: 70a0485860abdd81
 title_source: 8abe09bf65aefdb8
 title_generated: '09e6a5abb4573a2d'
 ---
@@ -69,4 +71,10 @@ Kaavio näyttää vastausten jakauman. Käy läpi jokainen eriävä mielipide ja
 
 ![](../proposal_consensus_results.png)
 
-Jos ryhmä pääsee sopimukseen, julkaise lopullinen päätelmä, johon kirjataan hyväksytty käytäntö ja vastuut. Muussa tapauksessa kirjaa, mitä tarkistetaan ja milloin ryhmä palaa ehdotukseen.
+<!-- translation-section: share-an-outcome -->
+
+## Jaa päätelmä
+
+Kun ehdotus sulkeutuu, jaa päätelmä. Jos ryhmä pääsi sopimukseen, kirjaa lopullinen sopimus ja vastuuhenkilöt. Muussa tapauksessa kirjaa, mitä tarkistetaan ja milloin ryhmä palaa ehdotukseen. Katso kohdasta [Jaa päätelmä](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome), miten päätelmät toimivat.
+
+![Päätelmä, jossa todetaan, ettei konsensusta saavutettu ja että käytäntöä tarkistetaan](outcome.png)

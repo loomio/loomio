@@ -1,10 +1,10 @@
 ---
 title: Rang
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/polls/rank/index.md
+source_revision: 9c60c42fc739483fa23f15d9f34a1e9245518092
+source_file: docs/en/user_manual/polls/rank/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 9908dff1f0045200
   when-to-use-rank: f47d22e4968f74dd
@@ -12,6 +12,7 @@ sections:
   set-up-the-poll: 8a5902b708d6e7be
   vote: b089c2c5b7504b5d
   read-the-results: 18fbb0f9a5a866bc
+  share-an-outcome: c9dcebf155d64c65
 generated:
   introduction: 375fe6df018067ec
   when-to-use-rank: 22b5321210fc195e
@@ -19,6 +20,7 @@ generated:
   set-up-the-poll: 94fd9d4af6c77fd8
   vote: 4b8da0caa857f085
   read-the-results: 61a3d19de7a18dc5
+  share-an-outcome: f16d3af49dab5348
 title_source: a4130d7d2c3a137f
 title_generated: 7186e02bc731a8e5
 ---
@@ -86,3 +88,11 @@ De resultaten combineren alle stemmen tot een gezamenlijke rangschikking op basi
 In dit voorbeeld staat de **amberkleurige fles van 500 ml** bovenaan, gevolgd door de **doorzichtige fles van 500 ml** en de **amberkleurige fles van 750 ml**. De groep kan eerst het ontwerp met de hoogste voorkeur onderzoeken en de rest van de volgorde bewaren als reeks alternatieven.
 
 Achter dezelfde puntentotaalscore kunnen verschillende voorkeurspatronen schuilgaan. Bekijk de afzonderlijke stemmen en de redenen erbij als opties dicht bij elkaar liggen of de beslissing grote gevolgen heeft.
+
+<!-- translation-section: share-an-outcome -->
+
+## Deel een conclusie
+
+Deel een conclusie wanneer de peiling sluit. Geef aan met welke optie de groep verdergaat en wat er gebeurt als die niet doorgaat. Lees [Deel een conclusie](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome) voor uitleg over hoe conclusies werken.
+
+![Een conclusie waarin het flesontwerp met de hoogste rang wordt gekozen](outcome.png)

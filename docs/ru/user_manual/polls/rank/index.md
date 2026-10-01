@@ -1,10 +1,10 @@
 ---
 title: Классифицировать
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/polls/rank/index.md
+source_revision: 9c60c42fc739483fa23f15d9f34a1e9245518092
+source_file: docs/en/user_manual/polls/rank/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 9908dff1f0045200
   when-to-use-rank: f47d22e4968f74dd
@@ -12,6 +12,7 @@ sections:
   set-up-the-poll: 8a5902b708d6e7be
   vote: b089c2c5b7504b5d
   read-the-results: 18fbb0f9a5a866bc
+  share-an-outcome: c9dcebf155d64c65
 generated:
   introduction: d33c95062e692e1d
   when-to-use-rank: 5d3651d684f80754
@@ -19,6 +20,7 @@ generated:
   set-up-the-poll: 2a8c22bb59147b5b
   vote: 9e382d8c29ae46ea
   read-the-results: dee0e25937cc2c95
+  share-an-outcome: 43075a252d4b1b78
 title_source: a4130d7d2c3a137f
 title_generated: a77e1e2c0c089aa3
 ---
@@ -86,3 +88,11 @@ title_generated: a77e1e2c0c089aa3
 В этом примере **янтарная бутылка объёмом 500 мл** занимает первое место, за ней следуют **прозрачная бутылка объёмом 500 мл** и **янтарная бутылка объёмом 750 мл**. Группа может сначала изучить предпочтительный дизайн, сохранив остальные варианты как последовательность альтернатив.
 
 Одинаковая сумма баллов может скрывать разные предпочтения участников. Если результаты вариантов близки или решение имеет серьёзные последствия, изучите отдельные бюллетени и пояснения к голосам.
+
+<!-- translation-section: share-an-outcome -->
+
+## Поделитесь решением
+
+Когда опрос закроется, поделитесь решением. Укажите, какой вариант группа будет реализовывать и что произойдёт, если его не удастся осуществить. О том, как публиковать решения, читайте в разделе [Поделитесь решением](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome).
+
+![Решение о выборе дизайна бутылки, занявшего первое место](outcome.png)

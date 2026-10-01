@@ -1,24 +1,26 @@
 ---
 title: Consenso
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/polls/proposals/consensus/index.md
+source_revision: 3a315412c646d254c8426be5c436a4e593f6011f
+source_file: docs/en/user_manual/polls/proposals/consensus/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: af2e2a50e8c0b440
   when-to-use-consensus: fc7f6180345f73a3
   example-adopt-a-bottle-return-standard: 9b0915ee6f41fa54
   set-up-the-proposal: b35a641ec031a40b
   vote: f7dbea12e2d6261a
-  read-the-results: d7d1bfae079d04ec
+  read-the-results: e60abb3a43a86d6e
+  share-an-outcome: a7febe19484c20b3
 generated:
   introduction: 9f4230367b1e7430
   when-to-use-consensus: 8d63a8810f646f4f
   example-adopt-a-bottle-return-standard: d2d8effb24aec801
   set-up-the-proposal: 137bf0ca9ec64cd6
   vote: e01a70fea1bace8b
-  read-the-results: 8d74638cf7881ca4
+  read-the-results: f08af625ba73d903
+  share-an-outcome: b1e162a6f9d4d9ef
 title_source: 8abe09bf65aefdb8
 title_generated: a633645d078dc2da
 ---
@@ -69,4 +71,10 @@ El gráfico muestra la distribución de las respuestas. Revisa cada desacuerdo y
 
 ![](../proposal_consensus_results.png)
 
-Si el grupo llega a un acuerdo, publica una conclusión que recoja la norma definitiva y las responsabilidades. Si no llega a un acuerdo, deja constancia de qué se revisará y cuándo volverá el grupo a tratar la propuesta.
+<!-- translation-section: share-an-outcome -->
+
+## Comparte una conclusión
+
+Cuando se cierre la propuesta, comparte una conclusión. Si el grupo llegó a un acuerdo, deja constancia del acuerdo definitivo y de quién es responsable. Si no llegó a un acuerdo, deja constancia de qué se revisará y cuándo volverá el grupo a tratar la propuesta. Consulta [Comparte una conclusión](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome) para saber cómo funcionan las conclusiones.
+
+![Una conclusión que indica que no se alcanzó el consenso y que se revisará la norma](outcome.png)

@@ -1,20 +1,20 @@
 ---
 title: Requisitos de percentual de votos
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/polls/vote_share_requirements/index.md
+source_revision: 9c60c42fc739483fa23f15d9f34a1e9245518092
+source_file: docs/en/user_manual/polls/vote_share_requirements/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
-  introduction: c97281f29d615dea
+  introduction: 57d7127721bebf93
   eligible-voters-and-votes-cast: 930bbc475f734396
-  different-vote-share-requirements: 0d25794ec996d42c
-  detailed-example: dc765c43a22a28a1
+  different-vote-share-requirements: cfdfd13a0a6a8b38
+  detailed-example: 395dbccb0e6427fc
 generated:
-  introduction: 978b88fc6391b499
+  introduction: f0edebdce212466c
   eligible-voters-and-votes-cast: aa986b010f360479
-  different-vote-share-requirements: 221a726a06f22841
-  detailed-example: fbdf42d001a44d5d
+  different-vote-share-requirements: b9ec9f20e1c671d6
+  detailed-example: 93e6b9aff3d35935
 title_source: a654891ca817844e
 title_generated: 4b196ba8657cc416
 ---
@@ -27,9 +27,9 @@ Defina um requisito de percentual de votos para uma opção quando uma proposta 
 
 Você pode combinar requisitos de percentual de votos com um [quórum](/en/user_manual/polls/quorum/) para exigir tanto uma participação suficiente quanto uma distribuição específica dos votos.
 
-Ao criar uma proposta, selecione o ícone de edição ao lado de uma opção.
+No formulário da proposta, selecione o ícone de edição ao lado de uma opção.
 
-![O ícone de edição ao lado da opção Consentimento](edit-highlight-on-option.png)
+![O ícone de edição ao lado da opção Concordar](edit-highlight-on-option.png)
 
 <!-- translation-section: eligible-voters-and-votes-cast -->
 
@@ -55,19 +55,19 @@ Uma proposta pode ter requisitos para mais de uma opção. Por exemplo:
 - A abstenção não deve ultrapassar 30% dos votos lançados
 - O bloqueio não deve ultrapassar 0% dos votos lançados
 
+Definir uma opção como **Não mais que 0%** é uma prática comum. Isso significa que a proposta não pode ser aprovada se alguém escolher essa opção. Use esse requisito na opção **Bloqueio** para que um único bloqueio impeça a aprovação da proposta.
+
 Você também pode adicionar requisitos a um [modelo de enquete](/en/user_manual/polls/poll_templates/) para que novas propostas criadas a partir dele usem esses requisitos por padrão.
 
 <!-- translation-section: detailed-example -->
 
 ## Exemplo detalhado
 
-A Cooperativa Oatmilk está decidindo se aprova o orçamento de um teste de seis semanas com garrafas retornáveis. Cinco pessoas podem votar.
+A Cooperativa Oatmilk está decidindo se realiza um teste de seis semanas com garrafas retornáveis. Cinco pessoas podem votar.
 
-Jamie usa o modelo de proposta **Consentimento**, edita a opção Consentimento e ativa o requisito de percentual de votos dessa opção.
+O processo da cooperativa exige a concordância de pelo menos 75% dos eleitores elegíveis. Jamie edita a opção **Concordar** da proposta, ativa o requisito de percentual de votos dessa opção e o define como **Pelo menos 75% dos Eleitores elegíveis**.
 
-O processo da cooperativa exige o apoio de pelo menos 75% dos eleitores elegíveis para aprovar a proposta. Jamie define o requisito como **Pelo menos 75% dos Eleitores elegíveis**.
-
-![A opção Consentimento exige o apoio de pelo menos 75% dos eleitores elegíveis](./consent-vote-option.png)
+![A opção Concordar exige a concordância de pelo menos 75% dos eleitores elegíveis](./agree-vote-option.png)
 
 Jamie também define um quórum de 60%. Jamie e Samira votam a favor. Todos os votos enviados apoiam a proposta, mas representam apenas 40% dos eleitores elegíveis. Portanto, nenhum dos dois requisitos foi atendido.
 

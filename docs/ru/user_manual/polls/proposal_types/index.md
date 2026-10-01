@@ -13,7 +13,6 @@ sections:
   ranked-choice: 31dee409a33369de
   time-poll: 8b3a09b278bd7fde
   stv-election: e8407157d29424e4
-  other-specialized-method: 6b1ca633e613e513
 generated:
   introduction: 0fa5e1716921ed05
   simple-poll: bbd15b94a7feaa88
@@ -22,7 +21,6 @@ generated:
   ranked-choice: 6aef5178f8dfc756
   time-poll: 52adf5d21e328f9e
   stv-election: a1888522c4e3cf44
-  other-specialized-method: 8011779a2781f2f2
 title_source: 996729458535904a
 title_generated: 976c84f1c0e680c0
 ---
@@ -68,9 +66,3 @@ title_generated: 976c84f1c0e680c0
 ## Выборы STV
 
 [Выборы STV](/en/user_manual/polls/stv/) позволяют участникам ранжировать кандидатов на пропорциональных выборах нескольких представителей. Используйте STV, чтобы избрать комитет, правление или группу делегатов.
-
-<!-- translation-section: other-specialized-method -->
-
-## Другой специальный формат
-
-В Loomio также есть раунд вопросов: участники могут задавать вопросы без голосования. Администраторы группы могут включить его в разделе [Шаблоны опросов](/en/user_manual/polls/poll_templates/).

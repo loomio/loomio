@@ -1,24 +1,26 @@
 ---
 title: Conselho
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/polls/proposals/advice/index.md
+source_revision: 9c60c42fc739483fa23f15d9f34a1e9245518092
+source_file: docs/en/user_manual/polls/proposals/advice/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 3b517bcf7f8d31d2
   when-to-use-advice: d98ed1affd9abbd3
   example-choose-a-washing-supplier: 94c2d1f8987bd817
   set-up-the-proposal: e93938cfa0895f27
   vote: e076d476b50d1445
-  read-the-results: 7782c49ae9875d70
+  read-the-results: 937eff4c74abcc79
+  share-an-outcome: 1f762148d1f18b1d
 generated:
   introduction: 38a43b4a33c4cd4e
   when-to-use-advice: f4c95974d1b42e11
   example-choose-a-washing-supplier: af724c5f7c70f743
   set-up-the-proposal: f64d5d80ab77f24f
   vote: c8a19c169f5026ff
-  read-the-results: c5a4e5c379d19b75
+  read-the-results: b25d7844c58d1b3f
+  share-an-outcome: d11eb7b847f5c00e
 title_source: 305f5e5463e18d7f
 title_generated: 3a4695d1683e37b4
 ---
@@ -69,4 +71,10 @@ O gráfico mostra quem respondeu, mas as justificativas trazem o conteúdo princ
 
 ![](../proposal_advice_results.png)
 
-A pessoa responsável pela decisão publica uma conclusão que explica o que decidiu e como os conselhos contribuíram para a decisão.
+<!-- translation-section: share-an-outcome -->
+
+## Compartilhe uma conclusão
+
+Quando a proposta é encerrada, a pessoa responsável pela decisão compartilha uma conclusão. Ela explica o que foi decidido e como os conselhos contribuíram para a decisão. Veja [Compartilhe uma conclusão](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome) para entender como as conclusões funcionam.
+
+![Uma conclusão que identifica o fornecedor escolhido e os conselhos seguidos](outcome.png)

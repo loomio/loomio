@@ -1,20 +1,20 @@
 ---
 title: Stimmenanteilsanforderungen
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/polls/vote_share_requirements/index.md
+source_revision: 71554be8e61a76613b0707b8262302c22299a5d0
+source_file: docs/en/user_manual/polls/vote_share_requirements/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
-  introduction: c97281f29d615dea
+  introduction: 57d7127721bebf93
   eligible-voters-and-votes-cast: 930bbc475f734396
-  different-vote-share-requirements: 0d25794ec996d42c
-  detailed-example: dc765c43a22a28a1
+  different-vote-share-requirements: cfdfd13a0a6a8b38
+  detailed-example: 395dbccb0e6427fc
 generated:
-  introduction: 17688b427315fbda
+  introduction: c68238ff779bf8e0
   eligible-voters-and-votes-cast: a67bc2831a58dc5a
-  different-vote-share-requirements: b46a33ad7354cd7a
-  detailed-example: ae7b435739e034a5
+  different-vote-share-requirements: fcb5e43da889857c
+  detailed-example: 980db2c7a338c626
 title_source: a654891ca817844e
 title_generated: 35ba3ce6df488414
 ---
@@ -27,9 +27,9 @@ Lege für eine Option eine Stimmenanteilsanforderung fest, wenn ein Vorschlag nu
 
 Du kannst Stimmenanteilsanforderungen mit einem [Quorum](/en/user_manual/polls/quorum/) kombinieren. So muss sowohl die Beteiligung als auch die Verteilung der Stimmen die jeweiligen Anforderungen erfüllen.
 
-Wähle beim Erstellen eines Vorschlags das Bearbeitungssymbol neben einer Option.
+Wähle im Vorschlagsformular das Bearbeitungssymbol neben einer Option.
 
-![Das Bearbeitungssymbol neben der Option Zustimmung](edit-highlight-on-option.png)
+![Das Bearbeitungssymbol neben der Option Dafür](edit-highlight-on-option.png)
 
 <!-- translation-section: eligible-voters-and-votes-cast -->
 
@@ -55,19 +55,19 @@ Ein Vorschlag kann Anforderungen für mehrere Optionen haben. Zum Beispiel:
 - Enthaltung: höchstens 30 Prozent der abgegebenen Stimmen
 - Veto: höchstens 0 Prozent der abgegebenen Stimmen
 
+Eine Option auf **Nicht mehr als 0 %** zu setzen, ist eine übliche Vorgehensweise. Das bedeutet, dass der Vorschlag nicht angenommen werden kann, wenn jemand diese Option wählt. Verwende diese Einstellung für **Veto**, damit ein einzelnes Veto den Vorschlag stoppt.
+
 Du kannst Anforderungen auch zu einer [Abstimmungsvorlage](/en/user_manual/polls/poll_templates/) hinzufügen. Neue Vorschläge, die aus der Vorlage erstellt werden, übernehmen sie dann standardmäßig.
 
 <!-- translation-section: detailed-example -->
 
 ## Ausführliches Beispiel
 
-Die Oatmilk Cooperative entscheidet, ob sie das Budget für einen sechswöchigen Test mit Mehrwegflaschen genehmigt. Fünf Personen sind wahlberechtigt.
+Die Oatmilk Cooperative entscheidet, ob sie einen sechswöchigen Test mit Mehrwegflaschen durchführt. Fünf Personen sind wahlberechtigt.
 
-Jamie verwendet die Vorschlagsvorlage **Zustimmung**, bearbeitet die Option Zustimmung und aktiviert ihre Stimmenanteilsanforderung.
+Das Verfahren der Kooperative verlangt, dass mindestens 75 Prozent der Wahlberechtigten zustimmen. Jamie bearbeitet die Option **Dafür** des Vorschlags, aktiviert ihre Stimmenanteilsanforderung und legt sie auf **Mindestens 75 % der Wahlberechtigten** fest.
 
-Das Verfahren der Kooperative verlangt, dass mindestens 75 Prozent der Wahlberechtigten den Vorschlag unterstützen. Jamie legt die Anforderung auf **Mindestens 75 % der Wahlberechtigten** fest.
-
-![Die Option Zustimmung erfordert mindestens 75 Prozent der Wahlberechtigten](./consent-vote-option.png)
+![Die Option Dafür erfordert die Zustimmung von mindestens 75 Prozent der Wahlberechtigten](./agree-vote-option.png)
 
 Jamie legt außerdem ein Quorum von 60 Prozent fest. Jamie und Samira stimmen zu. Alle abgegebenen Stimmen unterstützen den Vorschlag. Die beiden Stimmen entsprechen aber nur 40 Prozent der Wahlberechtigten. Daher ist keine der beiden Anforderungen erfüllt.
 

@@ -27,6 +27,13 @@ module Dev::Scenarios::Group
     redirect_to group_path(create_group)
   end
 
+  def setup_group_with_vote_weights
+    group = create_group
+    group.membership_for(emilio).update!(weight: 2, title: 'Treasurer', delegate: true)
+    sign_in patrick
+    redirect_to group_path(group)
+  end
+
   def setup_nonmember_nomination
     create_nomination_template
     sign_in max

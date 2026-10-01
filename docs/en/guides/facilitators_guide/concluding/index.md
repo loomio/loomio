@@ -20,7 +20,7 @@ Sometimes the answers to these questions are very concrete, such as action point
 
 On Loomio
 
-* [Outcomes](/en/user_manual/polls/outcomes/) are a very important tool. A proposal ending is not quite the end: there’s a need to sum up conclusively. That's what the outcome feature is for.
+* [Outcomes](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome) are a very important tool. A proposal ending is not quite the end: there’s a need to sum up conclusively. That's what the outcome feature is for.
 * Many Loomio discussions come to a natural end without even using proposals or publishing outcomes. These discussions still provide a lot of value, and it can be helpful to update the context box with an outcome summary for later reference.
 * If specific people have action points, you can @mention their names and they will be notified.
 

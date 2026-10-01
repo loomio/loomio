@@ -1,19 +1,19 @@
 ---
 title: Voorstellen
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/polls/proposals/index.md
+source_revision: 9c60c42fc739483fa23f15d9f34a1e9245518092
+source_file: docs/en/user_manual/polls/proposals/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: dd4cb01f80b669fa
   choose-a-proposal-template: af87fd10a478699d
-  other-proposal-templates: d97b167228fd3b85
+  other-proposal-templates: 21ac5a295b8832ab
   proposal-records: ef0d886d3db7a5d1
 generated:
   introduction: c04412cf6332130d
   choose-a-proposal-template: 0d84f719d299a83d
-  other-proposal-templates: 15ff77ca628aa4f6
+  other-proposal-templates: f19c64c138bcffac
   proposal-records: 19614b2944f10bb8
 title_source: 834cfc1ee23734e1
 title_generated: '09bd5ffc593138d4'
@@ -46,7 +46,7 @@ Kies het sjabloon met antwoordopties die passen bij de vraag die je wilt stellen
 
 ## Andere sjablonen voor voorstellen
 
-Loomio biedt ook sjablonen zoals Voorstel, Gradiënten van overeenkomst, Vragen ronde en Meerderheid. Sommige zijn aanvankelijk verborgen. Groepsbeheerders kunnen ze beschikbaar maken of via [Enquête-sjablonen](../poll_templates/) een sjabloon maken met de eigen termen en regels van de groep.
+Loomio biedt ook sjablonen zoals Voorstel, Gradiënten van overeenkomst en Meerderheid. Sommige zijn aanvankelijk verborgen. Groepsbeheerders kunnen ze beschikbaar maken of via [Enquête-sjablonen](../poll_templates/) een sjabloon maken met de eigen termen en regels van de groep.
 
 <!-- translation-section: proposal-records -->
 

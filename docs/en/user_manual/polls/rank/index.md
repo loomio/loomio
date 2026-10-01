@@ -61,3 +61,11 @@ The results combine all ballots into an overall points-based ranking. For each o
 In this example, the **500 ml amber bottle** ranks first, followed by the **500 ml clear bottle** and the **750 ml amber bottle**. The group can investigate the preferred design first while retaining the remaining order as a sequence of alternatives.
 
 A points-based result can conceal different preference patterns that produce the same total. Review individual ballots and vote reasons when options are close or the decision is consequential.
+
+<!-- translation-section: share-an-outcome -->
+
+## Share an outcome
+
+When the poll closes, share an outcome. Say which option the group will pursue, and what happens if it falls through. See [Share an outcome](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome) for how outcomes work.
+
+![An outcome choosing the top-ranked bottle design](outcome.png)

@@ -748,6 +748,12 @@ be:
     notify_members_or_invite_guests_info: Паведамляць удзельнікам групы па імені або запрашаць тых, хто не з'яўляецца ўдзельнікамі, па адрасе электроннай пошты. Запрошаныя госці могуць удзельнічаць у гэтай тэме, але не будуць мець доступу да іншых тэм групы.
     notify_members_info: Увядзіце імёны ўдзельнікаў групы, каб паведаміць ім пра гэтую тэму.
     specified_voters_only_warning: У гэтай тэме ёсць апытанні, дзе могуць галасаваць толькі выбраныя людзі. Даданне кагосьці сюды не дасць яму права голасу — замест гэтага выкарыстоўвайце ў апытанні опцыю «дадаць выбаршчыкаў».
+    manage_thread_members: Кіраванне ўдзельнікамі ланцужка паведамленняў
+    find_or_invite_people: Знайсці або запрасіць людзей
+    invite_or_notify_explanation: Новыя ўдзельнікі будуць запрошаны ў тэму. Удзельнікі, якія ўжо ўдзельнічаюць у тэме, атрымаюць апавяшчэнне.
+    invite_or_notify: Запрасіць або паведаміць
+    member_page_count: "%{first}–%{last} з %{total}"
+    guest_access_info: Госці, запрошаныя па электроннай пошце, могуць удзельнічаць у гэтай тэме без доступу да іншых груповых тэм.
   membership_card:
     thread_members: Удзельнікі ланцужка
     group_members: Удзельнікі групы
@@ -1699,6 +1705,7 @@ be:
     title_label: тытул
     title_placeholder: Напрыклад, «Каардынатар» або «Фасілітатар»
     updated: Назва членства абноўлена
+    weight_label: Вага галасоў
   user_name_modal:
     user_name_updated: Імя карыстальніка абноўлена
     set_user_name: Устанавіць імя карыстальніка
@@ -2049,7 +2056,6 @@ be:
       reload: Перазагрузіць
   poll_receipts_page:
     no_receipts: Гэта ананімнае апытанне было закрыта да таго, як з'явілася функцыя праверкі, таму праверка немагчымая.
-    verify_participants: Праверка ўдзельнікаў
     participation_records_explanation: Гэта паказвае, хто меў права голасу і ці галасаваў ён. Гэта не паказвае, як хто галасаваў.
     participation_status_requires_min_votes: Тут паказана, хто меў права голасу. Ці прагаласаваў кожны чалавек, паказваецца толькі тады, калі прагаласавала не менш за %{count} чалавек.
     see_votes_if_quorum_reached: Калі апытанне завершана і кворум дасягнуты, вы ўбачыце, хто прагаласаваў
@@ -2061,6 +2067,7 @@ be:
     member_since: Удзельнік з
     invited_by: Запрошаны
     invited_on: Запрошаны
+    email_addresses_only_for_group_admins: Адрасы электроннай пошты паказваюцца толькі адміністратарам групы
   decision_tools_card:
     choose_type: Выберыце тып апытання
     title: Садзейнічаць
@@ -2112,6 +2119,7 @@ be:
     name_gte_voter_percent: "%{name} патрабуе як мінімум %{percent}% выбаршчыкаў, якія маюць права голасу"
     name_lte_score_percent: "%{name} не павінен перавышаць %{percent}% аддадзеных галасоў"
     name_lte_voter_percent: "%{name} не павінна перавышаць %{percent}% ад колькасці выбаршчыкаў, якія маюць права голасу"
+    points_cast: Ачкі
   poll_common:
     your_vote_is_requested: Запытваецца ваш голас
     superseded: Заменена
@@ -2222,6 +2230,12 @@ be:
     too_long: Занадта доўга
     edit_warning: Рэдагаванне рэкамендуецца толькі для нязначных змяненняў або выпраўлення арфаграфічных памылак. Для значных змяненняў зачыніце гэты %{pollType} і пачніце новы.
     no_voting: Толькі для абмеркавання, галасаванне адключана
+    view_votes: Праглядзець галасы
+    weighted_votes: Узважаныя галасы
+    weighted_points: Узважаныя балы
+    pct_of_weighted_votes: "% узважаных галасоў"
+    pct_of_weighted_points: "% узважаных балаў"
+    weighted_mean: Сярэднеўзважанае значэнне
   poll_common_attachment_form:
     label: Укладанні
   poll_common_add_option:
@@ -2289,6 +2303,8 @@ be:
     last_seen: Апошні раз бачылі %{date}
     invited_by_name: Запрошаны карыстальнікам %{name}
     accepted: Удзельнікі
+    edit_vote_weights: Рэдагаваць вагу галасоў
+    vote_weights_are_defaults: Гэтыя вагі галасоў па змаўчанні прымяняюцца да новых галасоў. Змены тут не ўплываюць на ўжо прысвоеныя вагі галасоў.
   polls_panel:
     new_poll: Новае апытанне
     any_type: Усе тыпы
@@ -2333,6 +2349,7 @@ be:
     voting_opens_at: Гэты %{poll_type} адкрываецца для галасавання %{time}
     for_this_proposal_to_pass: 'Каб гэтая прапанова была прынята:'
     for_this_poll_type_to_be_valid: 'Каб гэты %{poll_type} быў дзейсным:'
+    votes_have_different_weights: Галасы ў гэтым апытанні маюць розную вагу, таму некаторыя з іх маюць большую вагу, чым іншыя.
   poll_common_collapsed:
     by_who: ад %{name}
   poll_common_calendar_invite:
@@ -2446,6 +2463,11 @@ be:
     no_votes_yet: Пакуль што не было аддадзена ніякіх галасоў.
     change_results_order: Змяніць парадак вынікаў
     name_or_username: Імя або імя карыстальніка
+    all_voters: Усе выбаршчыкі
+    vote_weight_column: Вага галасоў
+    stance: Галасаваць
+    participation_records_restricted: Пасля заканчэння галасавання вы зможаце ўбачыць, хто прыняў удзел
+    vote_weight: Вага галасоў %{weight}
   poll_common_details_meta:
     opened: Адкрыта
     opens: Адкрываецца
@@ -2609,6 +2631,35 @@ be:
     hide_results_description: Калі вы хочаце, каб людзі галасавалі, не бачачы, як галасавалі іншыя, вы можаце схаваць вынікі.
     process_helptext: Назавіце і апішыце працэс, які выкарыстоўваецца для правядзення гэтага апытання.
     reminder_helptext: Дашліце апавяшчэнне «Хуткае закрыццё» за 24 гадзіны да дэдлайну. Гэта можа павялічыць удзел і даць людзям магчымасць перагледзець сваю пазіцыю.
+    voters: Выбаршчыкі
+    manage_voters: Кіраванне выбаршчыкамі
+    remove_voter: Выдаліць выбаршчыка
+    voter_page_count: "%{first}–%{last} з %{total}"
+    vote_weight_for: Вага галасоў за %{name}
+    save_vote_weights: Захаваць вагу галасоў
+    vote_weights_updated: Вага галасоў абноўлена
+    set_all: Устанавіць усё
+    find_or_invite_voters: Знайсці або запрасіць выбаршчыкаў
+    remove_voter_named: Выдаліць %{name} з апытання
+    remove_voter_and_any_vote_confirmation: Выдаліць %{name} з гэтага апытання? Гэта таксама выдаліць любы голас, аддадзены гэтым карыстальнікам.
+    edit_vote_weight: Рэдагаваць вагу галасоў
+    edit_vote_weight_for: Рэдагаваць вагу галасоў для %{name} (цяпер %{weight})
+    set_all_vote_weights_title: Устанавіць вагі ўсіх галасоў
+    set_all_vote_weights_search_note: Гэта змяняе вагу галасоў усіх выбаршчыкаў у апытанні, у тым ліку тых, хто не знаходзіцца ў выніках пошуку.
+    set_each_member_default_vote_weight: Устанавіць вагу голасу кожнага ўдзельніка па змаўчанні
+    voters_will_not_be_notified: Выбаршчыкі не будуць апавешчаныя. Паведаміце ім пра галасаванне іншым спосабам.
+    give_voters_different_vote_weights: Дайце выбаршчыкам розную вагу галасоў. Вынікі паказваюць як звычайныя, так і ўзважаныя вынікі.
+    issued_vote_weights_will_change: Ужо апублікаваныя вагі галасоў зменяцца.
+    weight_for_all: Вага галасоў для ўсіх
+    set_all_vote_weights: Устанавіць вагі ўсіх галасоў
+    set_all_vote_weights_the_same: Устанавіць аднолькавую вагу галасоў для ўсіх
+    member_vote_weights_hint: Выбаршчыкі, якія не маюць бягучага членства ў групе, атрымліваюць вагу голасу, роўную 1
+    weighted_voting: Узважанае галасаванне
+    weighted_voting_is_not_available_with_anonymous_voting: "Узважанае галасаванне недаступнае пры ананімным галасаванні"
+    use_weighted_voting: Выкарыстоўвайце ўзважанае галасаванне
+    weighted_voting_off_warning: Адключэнне ўзважанага галасавання ўстанаўлівае вагу кожнага галасу на 1. Любая вага галасоў, якую вы змянілі для гэтага апытання, будзе страчана.
+    weighted_voting_on_group: Уключэнне ўзважанага галасавання капіюе вагу галасоў кожнага ўдзельніка па змаўчанні. Іншыя выбаршчыкі атрымліваюць вагу галасоў, роўную 1.
+    weighted_voting_on_direct: Уключэнне ўзважанага галасавання ўстанаўлівае вагу кожнага голасу на 1
   poll_proposal_form:
     start_header: Пачаць прапанову
     edit_header: Рэдагаваць прапанову

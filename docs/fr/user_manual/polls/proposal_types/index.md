@@ -13,7 +13,6 @@ sections:
   ranked-choice: 31dee409a33369de
   time-poll: 8b3a09b278bd7fde
   stv-election: e8407157d29424e4
-  other-specialized-method: 6b1ca633e613e513
 generated:
   introduction: d6d1c0117a906b1c
   simple-poll: 71f618c9babb5721
@@ -22,7 +21,6 @@ generated:
   ranked-choice: 815de935c8a8c36f
   time-poll: cd3552b6e7e727d2
   stv-election: 36affa6a06b2ccf6
-  other-specialized-method: 50a41da4264e0c0b
 title_source: 996729458535904a
 title_generated: bbe617b2a20fb27b
 ---
@@ -68,9 +66,3 @@ Les sondages permettent de recueillir des choix, des scores, des répartitions d
 ## Élection STV
 
 Les [élections STV](/en/user_manual/polls/stv/) permettent aux participants de classer les candidats lors d’une élection proportionnelle à plusieurs sièges. Utilisez cette méthode pour élire un comité, un conseil d’administration ou un groupe de délégués.
-
-<!-- translation-section: other-specialized-method -->
-
-## Autre méthode spécialisée
-
-Loomio propose aussi un tour de questions pour recueillir des questions sans vote. Les administrateurs de groupe peuvent l’activer dans les [modèles de sondage](/en/user_manual/polls/poll_templates/).

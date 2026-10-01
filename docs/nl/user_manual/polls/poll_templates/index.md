@@ -1,10 +1,10 @@
 ---
 title: Peilingsjablonen
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/polls/poll_templates/index.md
+source_revision: 9c60c42fc739483fa23f15d9f34a1e9245518092
+source_file: docs/en/user_manual/polls/poll_templates/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: f11182d62d99dbcc
   voting-methods-and-templates: 24be471686aa2dfd
@@ -15,7 +15,7 @@ sections:
   voting-method: 761137852812fea8
   example-title-details-and-tags: 9dbbd0510d2d6cc1
   response-options: 727afbf0dcea6069
-  duration-and-settings: dc1fb9123eb808df
+  duration-and-settings: a364411a3bebb3ae
   save-and-test-the-template: 8c48386c69ea309a
   manage-the-template-list: 0c124d7958c3f80a
 generated:
@@ -28,7 +28,7 @@ generated:
   voting-method: e76ea99f0d755e5c
   example-title-details-and-tags: 3439df1b51878512
   response-options: d5e4584aae5fa1e0
-  duration-and-settings: 60b2e9d2f79b1239
+  duration-and-settings: 9d6db8694aefd908
   save-and-test-the-template: 5856c94ec0215bc2
   manage-the-template-list: de44ac1bf63efd40
 title_source: 114cca246e357304
@@ -142,7 +142,7 @@ Stel een standaardduur in die voor de meeste stemmingen met dit sjabloon geschik
 
 ![](poll_type_duration.png)
 
-Andere standaardinstellingen bepalen onder meer de zichtbaarheid van resultaten, anoniem stemmen, de verplichting om een stem toe te lichten, herinneringen, het quorum en gedrag dat bij de stemmethode hoort. Lees [Instellingen voor voorstellen en peilingen](../settings/) voor meer informatie over hun werking.
+Andere standaardinstellingen bepalen onder meer de zichtbaarheid van resultaten, anoniem stemmen, [gewogen stemmen](../weighted_voting/), de verplichting om een stem toe te lichten, herinneringen, het quorum en gedrag dat bij de stemmethode hoort. Lees [Instellingen voor voorstellen en peilingen](../settings/) voor meer informatie over hun werking.
 
 <!-- translation-section: save-and-test-the-template -->
 

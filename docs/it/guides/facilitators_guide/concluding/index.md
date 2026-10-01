@@ -1,19 +1,19 @@
 ---
 title: Concludere
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/guides/facilitators_guide/concluding/index.md
+source_revision: 9c60c42fc739483fa23f15d9f34a1e9245518092
+source_file: docs/en/guides/facilitators_guide/concluding/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-30'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 0160da4a2a071cae
-  outcomes-next-steps: 9829d1cef05d120b
+  outcomes-next-steps: 146b139e25dcfb4e
   reporting-harvesting: 64a7f7605636c422
   turning-discussion-into-action: 67b87042b96109e0
   it-ain-t-over-til-it-s-over: 9edb6ef0bcb17938
 generated:
   introduction: a1b65f2b571746cb
-  outcomes-next-steps: 737e5c98ce82ffe3
+  outcomes-next-steps: 7a8bb9aaa5448554
   reporting-harvesting: dec10b601cad0e57
   turning-discussion-into-action: d800de8375bc83f9
   it-ain-t-over-til-it-s-over: fabb2fa8aa618d49
@@ -43,7 +43,7 @@ A volte le risposte sono concrete, come le azioni da intraprendere. Altre volte 
 
 Su Loomio
 
-* Le [conclusioni](/en/user_manual/polls/outcomes/) sono uno strumento importante. La chiusura di una proposta non conclude il lavoro: occorre riassumere ciò che è stato deciso. A questo serve la funzione delle conclusioni.
+* Le [conclusioni](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome) sono uno strumento importante. La chiusura di una proposta non conclude il lavoro: occorre riassumere ciò che è stato deciso. A questo serve la funzione delle conclusioni.
 * Molte discussioni su Loomio si concludono naturalmente senza usare proposte o pubblicare conclusioni. Anche queste discussioni sono utili. Può essere opportuno aggiornare il riquadro del contesto con un riepilogo della conclusione, da consultare in seguito.
 * Se alcune persone devono svolgere delle azioni, puoi citarle con @mention. Riceveranno una notifica.
 

@@ -6,9 +6,9 @@ Set a vote share requirement on an option when a proposal must receive a particu
 
 Vote share requirements can be combined with a [quorum](/en/user_manual/polls/quorum/) to require both sufficient participation and a particular distribution of votes.
 
-When creating a proposal, select the edit icon beside an option.
+In the proposal form, select the edit icon beside an option.
 
-![The edit icon beside the Consent option](edit-highlight-on-option.png)
+![The edit icon beside the Agree option](edit-highlight-on-option.png)
 
 <!-- translation-section: eligible-voters-and-votes-cast -->
 
@@ -34,19 +34,19 @@ A proposal can have requirements on more than one option. For example:
 - Abstention must be no more than 30 percent of votes cast
 - Block must be no more than 0 percent of votes cast
 
+Setting an option to **No more than 0%** is a common pattern. It means the proposal cannot pass if anyone chooses that option. Use it on **Block** so that a single block stops the proposal.
+
 You can also add requirements to a [poll template](/en/user_manual/polls/poll_templates/) so that new proposals created from the template use them by default.
 
 <!-- translation-section: detailed-example -->
 
 ## Detailed example
 
-Oatmilk Cooperative is deciding whether to approve the budget for its six-week returnable bottle trial. Five people are eligible to vote.
+Oatmilk Cooperative is deciding whether to run a six-week returnable bottle trial. Five people are eligible to vote.
 
-Jamie uses the **Consent** proposal template, edits the Consent option, and enables its vote share requirement.
+The cooperative's process requires at least 75 percent of eligible voters to agree. Jamie edits the proposal's **Agree** option, enables its vote share requirement, and sets it to **At least 75% of Eligible voters**.
 
-The cooperative's process requires at least 75 percent of eligible voters to support the proposal. Jamie sets the requirement to **At least 75% of Eligible voters**.
-
-![The Consent option requiring at least 75 percent of eligible voters](./consent-vote-option.png)
+![The Agree option requiring at least 75 percent of eligible voters](./agree-vote-option.png)
 
 Jamie also sets a 60 percent quorum. Jamie and Samira vote in agreement. All submitted votes support the proposal, but they represent only 40 percent of eligible voters, so neither requirement has been reached.
 

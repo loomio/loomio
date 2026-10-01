@@ -1,24 +1,26 @@
 ---
 title: Jaa pisteet
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/polls/allocate/index.md
+source_revision: 9c60c42fc739483fa23f15d9f34a1e9245518092
+source_file: docs/en/user_manual/polls/allocate/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: d097e3a7d91324c9
   when-to-use-allocate: 25c91f8c05c1ec80
   example-set-priorities-for-an-annual-strategy-review: 0211b365dde1d17c
   set-up-the-poll: 772846c919c6af97
   vote: b6d1dab4c7743034
-  read-the-results: 85ea9532f2548205
+  read-the-results: 3a66507bd8387273
+  share-an-outcome: abb46bfca8b73b7a
 generated:
   introduction: 57aea43ccd1b7424
   when-to-use-allocate: 4bb59fd128873875
   example-set-priorities-for-an-annual-strategy-review: 67a18a17dafbedff
   set-up-the-poll: '009b1d8b38ca40cf'
   vote: 68a6ee74a04f2156
-  read-the-results: 6e1b87e3ff0d2baa
+  read-the-results: 1687c1a6c0a33bd2
+  share-an-outcome: 8c3519bbbf57f4a3
 title_source: c927a8a7c2ce230c
 title_generated: cb3ec35a9f381177
 ---
@@ -84,4 +86,12 @@ Tuloksissa vaihtoehdot järjestetään saatujen pisteiden kokonaismäärän muka
 
 Tässä esimerkissä **Taloudellinen kestävyys** saa eniten pisteitä ja **Henkilöstön kehittäminen** toiseksi eniten. Jokainen äänestäjä antaa pisteitä taloudelliselle kestävyydelle, mikä viittaa laajaan yksimielisyyteen siitä, että se tarvitsee paljon tarkasteluaikaa. Vertaa kokonaispisteitä äänestäjien määrään, jotta erotat laajasti tärkeinä pidetyt osa-alueet niistä, joita harvemmat kannattavat voimakkaasti.
 
-Tarkastele kokonaispisteitä yhdessä äänestäjien määrän ja heidän perustelujensa kanssa. Julkaise päätelmä, jossa kerrot, miten strategiatarkastelu järjestetään. Kysely ei jaa aikaa automaattisesti.
+Tarkastele kokonaispisteitä yhdessä äänestäjien määrän ja heidän perustelujensa kanssa.
+
+<!-- translation-section: share-an-outcome -->
+
+## Jaa päätelmä
+
+Kun kysely päättyy, jaa päätelmä. Kysely ei jaa aikaa tai rahaa automaattisesti, joten kerro, miten tulosta käytetään. Katso [Jaa päätelmä](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome), jos haluat tietää, miten päätelmät toimivat.
+
+![Päätelmä, jossa määritellään strategiatarkastelun ajankäyttö](outcome.png)

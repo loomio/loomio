@@ -1,24 +1,26 @@
 ---
 title: Consenso
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/polls/proposals/consent/index.md
+source_revision: 9c60c42fc739483fa23f15d9f34a1e9245518092
+source_file: docs/en/user_manual/polls/proposals/consent/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 7c6301775b6655f2
   when-to-use-consent: 32ea681182001a9a
   example-start-a-bottle-trial: abc3b93cccfe2471
   set-up-the-proposal: 99fe028ed43b44c2
   vote: 496a824e20def5e2
-  read-the-results: f4db0702619b3992
+  read-the-results: 710fb80144e56ea9
+  share-an-outcome: 8f8b3f701dc4f516
 generated:
   introduction: 89b252aefcadad4b
   when-to-use-consent: c53f013f72761a99
   example-start-a-bottle-trial: b3c67693949eb2fa
   set-up-the-proposal: bababb1e957eb516
   vote: 27e16754a0afb4da
-  read-the-results: 6622de9af8511829
+  read-the-results: 98bb530955f73da9
+  share-an-outcome: 753e00939448ac47
 title_source: d37e0cd00f18a366
 title_generated: a633645d078dc2da
 ---
@@ -69,4 +71,10 @@ Il grafico mostra le obiezioni, ma il gruppo deve esaminarne le motivazioni. Per
 
 ![](../proposal_consent_results.png)
 
-Pubblica una conclusione che riporti l'azione concordata, le eventuali misure di tutela, chi ne è responsabile e quando il gruppo la riesaminerà.
+<!-- translation-section: share-an-outcome -->
+
+## Condividi una conclusione
+
+Quando la proposta si chiude, condividi una conclusione. Riporta l'azione concordata, come sono state risolte le eventuali obiezioni, chi ne è responsabile e quando il gruppo la riesaminerà. Consulta [Condividi una conclusione](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome) per sapere come funzionano le conclusioni.
+
+![Una conclusione che riporta un'obiezione risolta, una data di inizio e un momento di revisione](outcome.png)

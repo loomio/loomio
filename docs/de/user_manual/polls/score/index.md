@@ -1,24 +1,26 @@
 ---
 title: Ergebnis
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/polls/score/index.md
+source_revision: 71554be8e61a76613b0707b8262302c22299a5d0
+source_file: docs/en/user_manual/polls/score/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 7881bcdd5aad5df4
   when-to-use-score: 0ef92ec0bb907a3f
   example-score-possible-trial-locations: 3c9438177a822198
   set-up-the-poll: 29b0296533594cd6
   vote: 1113501e9e6736b7
-  read-the-results: f773aa25f47c325b
+  read-the-results: 3e996e9bcc830d1d
+  share-an-outcome: 243aaac17e645331
 generated:
   introduction: bbbe49ec9049151f
   when-to-use-score: 91039eb2687a9f1d
   example-score-possible-trial-locations: a25fe534d1da1507
   set-up-the-poll: 1b5e3fc0f13bf918
   vote: 7fa377cc1d17652d
-  read-the-results: 2035929425fe001a
+  read-the-results: b7170fb5dfea1fde
+  share-an-outcome: 7e6ab505b448d008
 title_source: 38e5a46cbc5ad328
 title_generated: cd8e22cf7439433d
 ---
@@ -85,4 +87,12 @@ Für jede Option zeigen die Ergebnisse:
 
 In diesem Beispiel hat das **Café am Hauptbahnhof** mit 7,5 den höchsten Durchschnitt. Die **Büros am Hafen** haben mit 5,25 den niedrigsten. Der Markt am Fluss und die Mensa der Universität liegen mit jeweils 7 gleichauf. Vier von fünf eingeladenen Personen haben abgestimmt. Die Gruppe sieht also auch, dass noch eine Antwort aussteht.
 
-Vergleiche Durchschnittswerte nur, wenn die Optionen von ähnlich vielen Personen bewertet wurden. Lies die Begründungen, bevor du kleine Unterschiede als bedeutsam einstufst. Veröffentliche anschließend ein Fazit, das erklärt, welche Schritte aus den Bewertungen folgen.
+Vergleiche Durchschnittswerte nur, wenn die Optionen von ähnlich vielen Personen bewertet wurden. Lies die Begründungen, bevor du kleine Unterschiede als bedeutsam einstufst.
+
+<!-- translation-section: share-an-outcome -->
+
+## Ein Fazit teilen
+
+Teile ein Fazit, wenn die Abstimmung geschlossen ist. Erkläre, welche Schritte aus den Bewertungen folgen und wie bei Gleichstand entschieden wird. Unter [Ein Fazit teilen](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome) erfährst du, wie Fazits funktionieren.
+
+![Ein Fazit, das den Standort mit der höchsten durchschnittlichen Bewertung auswählt](outcome.png)

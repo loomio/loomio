@@ -1,24 +1,26 @@
 ---
 title: Совет
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/polls/proposals/advice/index.md
+source_revision: 9c60c42fc739483fa23f15d9f34a1e9245518092
+source_file: docs/en/user_manual/polls/proposals/advice/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 3b517bcf7f8d31d2
   when-to-use-advice: d98ed1affd9abbd3
   example-choose-a-washing-supplier: 94c2d1f8987bd817
   set-up-the-proposal: e93938cfa0895f27
   vote: e076d476b50d1445
-  read-the-results: 7782c49ae9875d70
+  read-the-results: 937eff4c74abcc79
+  share-an-outcome: 1f762148d1f18b1d
 generated:
   introduction: 5b358fc8fd3bcde8
   when-to-use-advice: cc03cbe05e89a64a
   example-choose-a-washing-supplier: 4ea28bfee9acd1d5
   set-up-the-proposal: 3446f3600095ff4b
   vote: c1598b2cdaa693e5
-  read-the-results: f9f1ef77afb14c11
+  read-the-results: 5c981532d8532e48
+  share-an-outcome: 0407274a9874bd3f
 title_source: 305f5e5463e18d7f
 title_generated: 92da565684465956
 ---
@@ -69,4 +71,10 @@ title_generated: 92da565684465956
 
 ![](../proposal_advice_results.png)
 
-Человек, ответственный за решение, публикует результат и объясняет, что было решено и как советы повлияли на выбор.
+<!-- translation-section: share-an-outcome -->
+
+## Поделитесь итоговым решением
+
+Когда предложение закрывается, человек, ответственный за решение, публикует итоговое решение. В нём объясняется, что было решено и как советы повлияли на выбор. О том, как публиковать итоговые решения, читайте в разделе [Поделитесь итоговым решением](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome).
+
+![Итоговое решение с указанием выбранного поставщика и учтённых советов](outcome.png)

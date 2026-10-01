@@ -35,6 +35,7 @@ class PollMarkdownResultsServiceTest < ActiveSupport::TestCase
           voter_count: 0
         }]
       )
+      poll.define_singleton_method(:result_heading_key) { |column| Poll::RESULT_HEADING_KEYS.fetch(column) }
 
       markdown = PollMarkdownResultsService.render(poll: poll, user: @user)
 

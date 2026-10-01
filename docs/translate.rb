@@ -230,9 +230,10 @@ module Docs
     end
 
     def request(english, title, sections, glossary, previous, problems)
-      # The model receives parsed HTML for each named section. Code, URLs and
-      # markup are immutable contracts checked again after Markdown conversion.
-      renderer = Redcarpet::Markdown.new(Redcarpet::Render::HTML, MARKDOWN_OPTIONS)
+      # The model translates Markdown into Markdown. Sending rendered HTML led it
+      # to return HTML tags, such as <img>, that the English does not contain.
+      # Code, URLs and markup are checked against the English after the reply.
+      page = english.lines.grep_v(Localization::MARKER).join
       prompt = <<~PROMPT
         Translate Loomio documentation into #{@locale.name} (#{@locale.code}).
         Reply only with JSON: {"navigation_title": "translated title", "sections": {"section-id": "translated Markdown"}}.
@@ -249,10 +250,10 @@ module Docs
         Do not modify files.
         Navigation title: #{title}
         Previous translated navigation title: #{@navigation_previous}
-        Whole English page as HTML, for context:
-        #{renderer.render(english)}
-        Sections to translate (HTML, with the original seo-description comment):
-        #{JSON.pretty_generate(sections.to_h { |section| [section.id, renderer.render(section.text)] })}
+        Whole English page as Markdown, for context:
+        #{page}
+        Sections to translate (Markdown, with the original seo-description comment):
+        #{JSON.pretty_generate(sections.to_h { |section| [section.id, section.text] })}
         Previous English and translated sections, where available:
         #{JSON.pretty_generate(previous)}
         Corrections from other pages in this language, as examples of preferred wording where relevant.

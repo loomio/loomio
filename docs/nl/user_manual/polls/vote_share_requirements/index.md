@@ -1,20 +1,20 @@
 ---
 title: Vereisten voor het stemmenaandeel
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/polls/vote_share_requirements/index.md
+source_revision: 9c60c42fc739483fa23f15d9f34a1e9245518092
+source_file: docs/en/user_manual/polls/vote_share_requirements/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
-  introduction: c97281f29d615dea
+  introduction: 57d7127721bebf93
   eligible-voters-and-votes-cast: 930bbc475f734396
-  different-vote-share-requirements: 0d25794ec996d42c
-  detailed-example: dc765c43a22a28a1
+  different-vote-share-requirements: cfdfd13a0a6a8b38
+  detailed-example: 395dbccb0e6427fc
 generated:
-  introduction: eaa706cb1343ba28
+  introduction: ec00bae078180031
   eligible-voters-and-votes-cast: 70ba096ec89f74dc
-  different-vote-share-requirements: f494a967d874a6c7
-  detailed-example: a0e6a59761e2e667
+  different-vote-share-requirements: e82801deca3b0912
+  detailed-example: f72e996e8f273792
 title_source: a654891ca817844e
 title_generated: 5730833b95912bf9
 ---
@@ -27,9 +27,9 @@ Stel voor een optie een vereiste voor het stemmenaandeel in als een voorstel all
 
 Je kunt vereisten voor het stemmenaandeel combineren met een [quorum](/en/user_manual/polls/quorum/). Zo vereis je zowel voldoende deelname als een bepaalde verdeling van de stemmen.
 
-Selecteer bij het maken van een voorstel het bewerkingspictogram naast een optie.
+Selecteer in het voorstelformulier het bewerkingspictogram naast een optie.
 
-![Het bewerkingspictogram naast de optie Toestemming](edit-highlight-on-option.png)
+![Het bewerkingspictogram naast de optie Eens](edit-highlight-on-option.png)
 
 <!-- translation-section: eligible-voters-and-votes-cast -->
 
@@ -55,19 +55,19 @@ Een voorstel kan voor meerdere opties een vereiste hebben. Bijvoorbeeld:
 - Onthouden mag niet meer dan 30 procent van de uitgebrachte stemmen krijgen
 - Blokkeer mag niet meer dan 0 procent van de uitgebrachte stemmen krijgen
 
+Een optie instellen op **Niet meer dan 0%** is gebruikelijk. Dit betekent dat het voorstel niet kan worden aangenomen als iemand die optie kiest. Gebruik deze instelling bij **Blokkeer**, zodat één blokkerende stem het voorstel tegenhoudt.
+
 Je kunt ook vereisten toevoegen aan een [peilingssjabloon](/en/user_manual/polls/poll_templates/). Nieuwe voorstellen die je met het sjabloon maakt, gebruiken die vereisten dan standaard.
 
 <!-- translation-section: detailed-example -->
 
 ## Uitgebreid voorbeeld
 
-Oatmilk Cooperative beslist of het budget voor een proef van zes weken met herbruikbare flessen wordt goedgekeurd. Vijf mensen zijn kiesgerechtigd.
+Oatmilk Cooperative beslist of er een proef van zes weken met herbruikbare flessen komt. Vijf mensen zijn kiesgerechtigd.
 
-Jamie gebruikt het voorstelsjabloon **Toestemming**, bewerkt de optie Toestemming en schakelt de vereiste voor het stemmenaandeel in.
+Het proces van de coöperatie vereist dat minstens 75 procent van de kiesgerechtigde kiezers voor stemt. Jamie bewerkt de optie **Eens** van het voorstel, schakelt de vereiste voor het stemmenaandeel in en stelt deze in op **Ten minste 75% van Kiesgerechtigde kiezers**.
 
-Het proces van de coöperatie vereist steun van minstens 75 procent van de kiesgerechtigde kiezers. Jamie stelt de vereiste in op **Ten minste 75% van Kiesgerechtigde kiezers**.
-
-![De optie Toestemming vereist steun van minstens 75 procent van de kiesgerechtigde kiezers](./consent-vote-option.png)
+![De optie Eens vereist steun van minstens 75 procent van de kiesgerechtigde kiezers](./agree-vote-option.png)
 
 Jamie stelt ook een quorum van 60 procent in. Jamie en Samira stemmen voor. Alle uitgebrachte stemmen steunen het voorstel, maar ze vertegenwoordigen slechts 40 procent van de kiesgerechtigde kiezers. Geen van beide vereisten is dus bereikt.
 

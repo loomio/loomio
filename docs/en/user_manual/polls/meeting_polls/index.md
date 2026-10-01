@@ -42,9 +42,9 @@ The results update as voting proceeds in a table showing who is available when, 
 
 <!-- translation-section: outcome -->
 
-### Outcome
+### Share an outcome
 
-When the Time poll closes, pick the best time and post an outcome.
+When the Time poll closes, pick the best time and share an outcome. See [Share an outcome](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome) for how outcomes work.
 
 ![](timepoll_outcome.png)
 

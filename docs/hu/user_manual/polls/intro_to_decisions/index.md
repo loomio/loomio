@@ -1,10 +1,10 @@
 ---
 title: Javaslatok és szavazások
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/polls/intro_to_decisions/index.md
+source_revision: 9c60c42fc739483fa23f15d9f34a1e9245518092
+source_file: docs/en/user_manual/polls/intro_to_decisions/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: d7cf8a871d9af6ea
   find-the-right-help: 4bb04c002cbbde42
@@ -14,7 +14,12 @@ sections:
   choose-whether-to-use-a-discussion: fbe0fe9415feadae
   in-a-discussion: d57d23917bab162a
   without-a-discussion: 87efa5071bb33a34
-  what-happens-next: de5cc2b17603d0ce
+  what-happens-next: 7fe113c92c0a58bd
+  1-create-it: 865fde10233c86d2
+  2-voting-opens: 571a77b9c70569d3
+  3-people-vote: 71061d516df57dab
+  4-it-closes: c0376a9026d18bc3
+  5-share-an-outcome: 8339cb332cd8a946
 generated:
   introduction: 69fd8e237c4aaad0
   find-the-right-help: d1b6f3354216bce2
@@ -24,7 +29,12 @@ generated:
   choose-whether-to-use-a-discussion: 8cac5fc4554d7158
   in-a-discussion: a8ff8bd4da190bc6
   without-a-discussion: bf0362d77273af2a
-  what-happens-next: d12414b5bc83ebe9
+  what-happens-next: c8f7aa5877ba2a13
+  1-create-it: 72d901c1b3bc3c52
+  2-voting-opens: 0e8f460d20ca1568
+  3-people-vote: 91732b8ffca4b720
+  4-it-closes: 4ee5d0f9cc1f0d30
+  5-share-an-outcome: 02db8049ab2ce9eb
 title_source: d45b4ba3cb7a27cb
 title_generated: b90b8b4620a81657
 ---
@@ -110,8 +120,48 @@ Ha csak egy szavazás miatt hozol létre egyszerre beszélgetést és szavazást
 
 <!-- translation-section: what-happens-next -->
 
-## Mi történik ezután
+## Az indítástól a következtetésig
 
-Javaslat vagy szavazás indításakor megadod a címet és a részleteket, áttekinted a válaszlehetőségeket és a beállításokat, beállítod a zárás időpontját, és meghívod a résztvevőket. Amíg nyitva van, a résztvevők szavazhatnak, megindokolhatják a válaszukat, és módosíthatják a szavazatukat. Az eredmények a szavazatok beérkezésekor frissülnek, a szavazás eredményláthatósági beállításának megfelelően.
+A javaslat vagy szavazás a következő szakaszokon megy keresztül.
 
-A lezárás után tegyél közzé egy [következtetést](../outcomes/), amely rögzíti, mit jelent az eredmény, és mi történik ezután.
+<!-- translation-section: 1-create-it -->
+
+### 1. Hozd létre
+
+Adj meg egy címet és részleteket, ellenőrizd a válaszlehetőségeket és a beállításokat, és állítsd be a zárás időpontját. Ezután válaszd ki, mikor nyíljon meg a szavazás:
+
+- **A szavazás azonnal megnyílik** beállítással a szavazás az indításkor rögtön megnyílik.
+- A **Nyitás dátuma** beállítással időzítheted a megnyitást. A résztvevők már előtte is láthatják a szavazást, de csak a megnyitás után szavazhatnak.
+- Ha egyiket sem állítod be, a szavazás vázlatként lesz mentve.
+
+<!-- translation-section: 2-voting-opens -->
+
+### 2. Megnyílik a szavazás
+
+Amikor megnyílik a szavazás, a Loomio értesíti azokat, akiket meghívtál. Lásd a [Meghívás szavazásra](../inviting_people/) oldalt.
+
+<!-- translation-section: 3-people-vote -->
+
+### 3. A résztvevők szavaznak
+
+Amíg a szavazás nyitva van, a résztvevők szavazhatnak, megindokolhatják a szavazatukat, és módosíthatják azt. Az eredmények a szavazatok beérkezésekor frissülnek, kivéve, ha a lezárásig rejtve maradnak. Alapértelmezés szerint azok, akik még nem szavaztak, a lezárás előtt egy nappal emlékeztetőt kapnak.
+
+<!-- translation-section: 4-it-closes -->
+
+### 4. Lezárul a szavazás
+
+A szavazás a megadott zárási időpontban automatikusan lezárul. A szavazás adminisztrátora korábban is lezárhatja. A lezárás után a szavazás adminisztrátora új zárási időpont megadásával újra megnyithatja, hogy a résztvevők tovább szavazhassanak. A névtelen szavazásokat nem lehet újra megnyitni.
+
+<!-- translation-section: 5-share-an-outcome -->
+
+### 5. Oszd meg a következtetést
+
+Amikor a szavazás lezárul, a Loomio megkéri a szavazás koordinátorait, hogy osszanak meg egy következtetést.
+
+![Felhívás a következtetés megadására a javaslat lezárása után](outcome_prompt.png)
+
+A következtetés rögzíti, milyen döntés született, és mi történik ezután. Az eredmények felett jelenik meg, így az emberek ezt olvassák először. Amikor közzéteszed, értesítheted az embereket. E-mailt kapnak az eredményekkel és a következtetéssel.
+
+Az **Ellenőrzési dátum** mezőt is beállíthatod. Ezen a napon a Loomio emlékeztet, hogy vizsgáld felül a döntést.
+
+![Közzétett következtetés ellenőrzési dátummal](outcome_published.png)

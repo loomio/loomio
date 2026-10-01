@@ -1,19 +1,19 @@
 ---
 title: Ehdotukset
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/polls/proposals/index.md
+source_revision: 9c60c42fc739483fa23f15d9f34a1e9245518092
+source_file: docs/en/user_manual/polls/proposals/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: dd4cb01f80b669fa
   choose-a-proposal-template: af87fd10a478699d
-  other-proposal-templates: d97b167228fd3b85
+  other-proposal-templates: 21ac5a295b8832ab
   proposal-records: ef0d886d3db7a5d1
 generated:
   introduction: bb73a5b680db5fda
   choose-a-proposal-template: bb41fe865ffb864e
-  other-proposal-templates: b1ef152596f8711a
+  other-proposal-templates: 060774f77d1947bd
   proposal-records: a9fb726e77e49f47
 title_source: 834cfc1ee23734e1
 title_generated: b4570fda2785d575
@@ -46,7 +46,7 @@ Valitse malli, jonka vastausvaihtoehdot sopivat kysymykseesi. Kunkin mallin sivu
 
 ## Muut ehdotusmallit
 
-Loomiossa on myös malleja, kuten Ehdotus, Yhteisymmärryksen asteet, Kysymyskierros ja Enemmistö. Osa niistä on aluksi piilotettu. Ryhmän ylläpitäjät voivat ottaa ne käyttöön tai luoda ryhmän omiin termeihin ja sääntöihin sopivan mallin kohdassa [Kyselymallit](../poll_templates/).
+Loomiossa on myös malleja, kuten Ehdotus, Yhteisymmärryksen asteet ja Enemmistö. Osa niistä on aluksi piilotettu. Ryhmän ylläpitäjät voivat ottaa ne käyttöön tai luoda ryhmän omiin termeihin ja sääntöihin sopivan mallin kohdassa [Kyselymallit](../poll_templates/).
 
 <!-- translation-section: proposal-records -->
 

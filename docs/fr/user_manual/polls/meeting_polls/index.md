@@ -1,20 +1,20 @@
 ---
 title: Sondage horaire de réunion
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/polls/meeting_polls/index.md
+source_revision: 3a315412c646d254c8426be5c436a4e593f6011f
+source_file: docs/en/user_manual/polls/meeting_polls/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 8ab9108683132085
   time-poll: d5d5d81f7de10419
   voting: c50083234167a0f9
-  outcome: 20d3f84d36a3b860
+  outcome: 74db36d36fa18798
 generated:
   introduction: 3f0c5960133a68eb
   time-poll: 591e8587a4197e60
   voting: fb4701785529193b
-  outcome: 0a723e03fc157d02
+  outcome: 9ba5c40ef372eda7
 title_source: 8e2a07d7257fbc04
 title_generated: ceca793eb22c2d93
 ---
@@ -63,9 +63,9 @@ Les résultats se mettent à jour au fil des votes. Un tableau indique les dispo
 
 <!-- translation-section: outcome -->
 
-### Conclusion
+### Partager une conclusion
 
-À la clôture du sondage horaire de réunion, choisissez le meilleur créneau et publiez une conclusion.
+À la clôture du sondage horaire de réunion, choisissez le meilleur créneau et partagez une conclusion. Consultez [Partager une conclusion](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome) pour savoir comment fonctionnent les conclusions.
 
 ![](timepoll_outcome.png)
 
@@ -77,6 +77,6 @@ Les résultats se mettent à jour au fil des votes. Un tableau indique les dispo
 
 **Lieu** : Ajoutez une adresse ou un lien vers la réunion
 
-**Déclaration** : Résumez la décision et ajoutez toute consigne pour la réunion
+**Déclaration** : Résumez le résultat et ajoutez toute consigne pour la réunion
 
 Loomio inclut le créneau choisi, le titre de la réunion, sa durée, le lieu et la déclaration dans la notification de conclusion et l'invitation de calendrier.

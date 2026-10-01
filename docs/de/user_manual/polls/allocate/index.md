@@ -1,24 +1,26 @@
 ---
 title: Punkte verteilen
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/polls/allocate/index.md
+source_revision: 71554be8e61a76613b0707b8262302c22299a5d0
+source_file: docs/en/user_manual/polls/allocate/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: d097e3a7d91324c9
   when-to-use-allocate: 25c91f8c05c1ec80
   example-set-priorities-for-an-annual-strategy-review: 0211b365dde1d17c
   set-up-the-poll: 772846c919c6af97
   vote: b6d1dab4c7743034
-  read-the-results: 85ea9532f2548205
+  read-the-results: 3a66507bd8387273
+  share-an-outcome: abb46bfca8b73b7a
 generated:
   introduction: 3395035845bb0d78
   when-to-use-allocate: 22a7a09d5c278c2f
   example-set-priorities-for-an-annual-strategy-review: 49e644b734417bc1
   set-up-the-poll: 6a1d56fe5c5748c8
   vote: cf3403f5d0f4bc66
-  read-the-results: 2c7cb61bb4c2ddb1
+  read-the-results: f2a401fe0a350bc6
+  share-an-outcome: a5614459bb002829
 title_source: c927a8a7c2ce230c
 title_generated: 42b7ab2170081617
 ---
@@ -84,4 +86,12 @@ Die Ergebnisse ordnen die Optionen nach der Gesamtzahl der erhaltenen Punkte. Si
 
 In diesem Beispiel erhält **Finanzielle Nachhaltigkeit** die meisten Punkte, gefolgt von **Personalentwicklung**. Alle Abstimmenden geben der finanziellen Nachhaltigkeit Punkte. Das deutet auf breite Zustimmung hin, diesem Bereich bei der Überprüfung viel Zeit zu widmen. Vergleiche die Gesamtpunktzahl mit der Zahl der Abstimmenden. So erkennst du, ob ein Bereich vielen wichtig ist oder von wenigen besonders stark unterstützt wird.
 
-Betrachte die Gesamtpunktzahlen zusammen mit der Zahl der Abstimmenden und ihren Begründungen. Veröffentliche ein Fazit, das erklärt, wie die Strategieüberprüfung aufgebaut sein wird. Die Abstimmung weist keine Zeit automatisch zu.
+Betrachte die Gesamtpunktzahlen zusammen mit der Zahl der Abstimmenden und ihren Begründungen.
+
+<!-- translation-section: share-an-outcome -->
+
+## Ein Fazit teilen
+
+Wenn die Abstimmung endet, teile ein Fazit. Die Abstimmung weist Zeit oder Geld nicht automatisch zu. Erkläre deshalb, wie das Ergebnis genutzt wird. Unter [Ein Fazit teilen](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome) erfährst du, wie Fazits funktionieren.
+
+![Ein Fazit, das festlegt, wie die Zeit bei der Strategieüberprüfung aufgeteilt wird](outcome.png)

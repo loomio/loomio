@@ -16,7 +16,7 @@ class PollExporter
   end
 
   def to_blt
-    raise CanCan::AccessDenied if @poll.detached_anonymous? && !@poll.closed?
+    raise CanCan::AccessDenied if @poll.anonymous? && !@poll.closed?
 
     options = @poll.poll_options.order(:priority)
     option_id_to_index = options.each_with_index.map { |o, i| [o.id, i + 1] }.to_h
@@ -72,12 +72,12 @@ class PollExporter
       csv << meta_table.values
       csv << ['poll_options']
       results = PollService.calculate_results(@poll, @poll.poll_options)
-      keys = %w[id poll_id name name_format rank score score_percent max_score_percent voter_percent average voter_count color]
+      keys = %w[id poll_id name name_format rank unweighted_score score score_percent max_score_percent voter_percent average voter_count color]
       csv << keys
       results.each { |r| csv << r.slice(*keys).values }
       csv << ['votes']
       memberships_by_user_id = Membership.active.where(group_id: @poll.group_id, user_id: @poll.stances.latest.select(:participant_id)).index_by(&:user_id)
-      csv << ['id', 'poll_id', 'voter_id', 'voter_name', 'member_title', 'delegate', 'created_at', 'updated_at', 'reason', 'reason_format'] + @poll.poll_option_names
+      csv << ['id', 'poll_id', 'voter_id', 'voter_name', 'member_title', 'delegate', 'vote_weight', 'created_at', 'updated_at', 'reason', 'reason_format'] + @poll.poll_option_names
       @poll.stances.latest.each do |stance|
         membership = memberships_by_user_id[stance.participant_id]
         line = [
@@ -87,8 +87,9 @@ class PollExporter
           stance.author_name,
           membership&.title,
           membership&.delegate,
-          stance.created_at&.iso8601,
-          stance.updated_at&.iso8601,
+          @poll.anonymous? ? nil : VoteWeight.format(stance.weight),
+          @poll.anonymous? ? nil : stance.created_at&.iso8601,
+          @poll.anonymous? ? nil : stance.updated_at&.iso8601,
           stance.reason,
           stance.reason_format]
 

@@ -1,10 +1,10 @@
 ---
 title: Шаблоны голосований
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/polls/poll_templates/index.md
+source_revision: 9c60c42fc739483fa23f15d9f34a1e9245518092
+source_file: docs/en/user_manual/polls/poll_templates/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: f11182d62d99dbcc
   voting-methods-and-templates: 24be471686aa2dfd
@@ -15,7 +15,7 @@ sections:
   voting-method: 761137852812fea8
   example-title-details-and-tags: 9dbbd0510d2d6cc1
   response-options: 727afbf0dcea6069
-  duration-and-settings: dc1fb9123eb808df
+  duration-and-settings: a364411a3bebb3ae
   save-and-test-the-template: 8c48386c69ea309a
   manage-the-template-list: 0c124d7958c3f80a
 generated:
@@ -28,7 +28,7 @@ generated:
   voting-method: a7efd1177cde9774
   example-title-details-and-tags: 8105e31be0ac2832
   response-options: '00690808f9c0ec7d'
-  duration-and-settings: 8278176259267ce3
+  duration-and-settings: c42099099580fa8b
   save-and-test-the-template: 7a81a41ba7ff50ed
   manage-the-template-list: 16d38ab081e2e3df
 title_source: 114cca246e357304
@@ -142,7 +142,7 @@ title_generated: 791f225f6cb4ad29
 
 ![](poll_type_duration.png)
 
-Другие настройки по умолчанию управляют видимостью результатов, анонимным голосованием, обязательным объяснением ответа, напоминаниями, кворумом и особенностями выбранного способа голосования. Подробнее читайте в разделе [Настройки предложений и голосований](../settings/).
+Другие настройки по умолчанию управляют видимостью результатов, анонимным голосованием, [взвешенным голосованием](../weighted_voting/), обязательным объяснением ответа, напоминаниями, кворумом и особенностями выбранного способа голосования. Подробнее читайте в разделе [Настройки предложений и голосований](../settings/).
 
 <!-- translation-section: save-and-test-the-template -->
 

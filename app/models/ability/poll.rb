@@ -6,11 +6,12 @@ module Ability::Poll
       user.is_logged_in? &&
       poll.active? &&
       (
-        if poll.detached_anonymous?
+        if poll.anonymous?
           poll.anonymous_poll_voters.where(ballot_submitted: false).exists?(voter_id: user.id)
         else
-          poll.unmasked_voters.exists?(user.id) ||
-            (!poll.specified_voters_only && poll.members.exists?(user.id))
+          # Voting always updates an existing stance. Members of open polls get
+          # theirs when they join, which fixes their vote weight up front.
+          poll.unmasked_voters.exists?(user.id)
         end
       )
     end
@@ -22,18 +23,11 @@ module Ability::Poll
       poll.results_visible?(voted: voted)
     end
 
-    can :receipts, ::Poll do |poll|
-      next false unless poll.group_id
-      next poll.admins.exists?(user.id) if poll.detached_anonymous?
-
-      if AppConfig.app_features[:verify_participants_admin_only]
-        poll.anonymous? && poll.admins.exists?(user.id)
-      else
-        poll.anonymous? && (
-          poll.members.exists?(user.id) ||
-          poll.stances.latest.exists?(participant_id: user.id)
-        )
-      end
+    # The anonymous electorate is visible to everyone who can see the results.
+    # Anonymous polls hide results until they close, so this is after
+    # closing. Rows never include ballot choices or voting times.
+    can :view_anonymous_voters, ::Poll do |poll|
+      poll.anonymous? && user.can?(:show, poll) && poll.results_available?
     end
 
     can [:show], ::Poll do |poll|

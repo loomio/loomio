@@ -86,20 +86,16 @@ class PollTest < ActiveSupport::TestCase
     end
   end
 
-  test "database rejects anonymous stance voting" do
-    poll = create_poll
+  test "anonymity cannot change after a poll is created" do
+    named_poll = create_poll
+    named_poll.anonymous = true
+    assert_not named_poll.valid?
+    assert named_poll.errors.added?(:anonymous, :invalid)
 
-    assert_raises(ActiveRecord::StatementInvalid) do
-      poll.update_columns(anonymous: true, voting_system: Poll.voting_systems.fetch("stance"))
-    end
-  end
-
-  test "database rejects identified anonymous-ballot voting" do
-    poll = create_poll
-
-    assert_raises(ActiveRecord::StatementInvalid) do
-      poll.update_columns(anonymous: false, voting_system: Poll.voting_systems.fetch("anonymous_ballot"))
-    end
+    anonymous_poll = create_poll(anonymous: true)
+    anonymous_poll.anonymous = false
+    assert_not anonymous_poll.valid?
+    assert anonymous_poll.errors.added?(:anonymous, :cannot_deanonymize)
   end
 
   test "vote is needed from an eligible identified voter until their current stance is cast" do
@@ -338,6 +334,251 @@ class PollTest < ActiveSupport::TestCase
       closing_at: 1.day.from_now
     )
     assert poll.valid?
+  end
+
+  test "vote weights are disabled by default" do
+    poll = create_poll
+
+    refute poll.weighted_voting?
+  end
+
+  test "anonymous participation needs the quorum or half the electorate, and at least three votes" do
+    assert_equal 5, Poll.new(voters_count: 10).participation_status_votes_required
+    assert_equal 3, Poll.new(voters_count: 4).participation_status_votes_required
+    assert_equal 6, Poll.new(voters_count: 10, quorum_pct: 60).participation_status_votes_required
+    assert_equal 3, Poll.new(voters_count: 20, quorum_pct: 10).participation_status_votes_required
+  end
+
+  test "unweighted results keep master's columns and headings" do
+    poll = create_poll(group_id: @group.id, poll_type: 'proposal')
+
+    assert_equal %w[chart name votes votes_cast_percent voter_percent voters], poll.result_columns
+    assert_equal({
+      'name' => 'common.option',
+      'votes' => 'poll_common.votes',
+      'votes_cast_percent' => 'poll_ranked_choice_form.pct_of_votes_cast',
+      'voter_percent' => 'poll_ranked_choice_form.pct_of_voters'
+    }, poll.result_heading_keys)
+  end
+
+  test "weighted one-point results list counts before percentages" do
+    poll = create_poll(group_id: @group.id, poll_type: 'proposal', weighted_voting: true)
+
+    assert_equal %w[chart name votes score voter_percent votes_cast_percent voters], poll.result_columns
+    assert_equal({
+      'name' => 'common.option',
+      'votes' => 'poll_common.votes',
+      'score' => 'poll_common.weighted_votes',
+      'votes_cast_percent' => 'poll_common.pct_of_weighted_votes',
+      'voter_percent' => 'poll_ranked_choice_form.pct_of_voters'
+    }, poll.result_heading_keys)
+  end
+
+  test "weighted multi-point results list points before percentages" do
+    poll = create_poll(
+      group_id: @group.id, poll_type: 'dot_vote', weighted_voting: true,
+      poll_option_names: %w[Alpha Beta], dots_per_person: 8
+    )
+
+    assert_equal %w[chart name unweighted_score score score_percent average voter_count], poll.result_columns
+    assert_equal({
+      'name' => 'common.option',
+      'score_percent' => 'poll_common.pct_of_weighted_points',
+      'unweighted_score' => 'poll_ranked_choice_form.points',
+      'score' => 'poll_common.weighted_points',
+      'average' => 'poll_common.weighted_mean',
+      'voter_count' => 'membership_card.voters'
+    }, poll.result_heading_keys)
+  end
+
+  test "a zero-weight vote counts toward participation and quorum but not score" do
+    voters = [users(:admin), users(:user)]
+    poll = create_poll(
+      group_id: @group.id,
+      poll_option_names: %w[Agree Disagree],
+      weighted_voting: true,
+      specified_voters_only: true,
+      quorum_pct: 100
+    )
+    agree = poll.poll_options.find_by!(name: 'Agree')
+    disagree = poll.poll_options.find_by!(name: 'Disagree')
+
+    Stance.create!(
+      poll: poll, participant: voters.first, weight: 0, cast_at: Time.current,
+      stance_choices_attributes: [{poll_option_id: agree.id, score: 1}]
+    )
+    Stance.create!(
+      poll: poll, participant: voters.last, weight: 3, cast_at: Time.current,
+      stance_choices_attributes: [{poll_option_id: disagree.id, score: 1}]
+    )
+    poll.update_counts!
+
+    assert_equal 2, poll.voters_count
+    assert_equal 2, poll.decided_voters_count
+    assert_equal 100, poll.cast_stances_pct
+    assert_equal 2, poll.quorum_count
+    assert_equal 1, agree.reload.voter_count
+    assert_equal 0, agree.total_score
+    assert_equal 3, disagree.reload.total_score
+    assert_equal 50, poll.results.find { |result| result[:id] == agree.id }[:voter_percent]
+    assert_equal 0, poll.results.find { |result| result[:id] == agree.id }[:score_percent]
+  end
+
+  test "identified supported polls can enable vote weights" do
+    poll = create_poll(weighted_voting: true)
+
+    assert poll.weighted_voting?
+  end
+
+  test "switching vote weights after opening resets issued votes" do
+    member = users(:user)
+    membership = @group.membership_for(member)
+    membership.update!(weight: '2.5')
+    poll = create_poll(group_id: @group.id)
+    stance = poll.stances.latest.find_by!(participant: member)
+    option = poll.poll_options.first
+    stance.update!(cast_at: Time.current, stance_choices_attributes: [{poll_option_id: option.id, score: 1}])
+
+    PollService.update(poll: poll, params: {weighted_voting: true}, actor: @admin)
+    assert_equal BigDecimal('2.5'), stance.reload.weight
+    assert stance.cast_at
+    assert_equal BigDecimal('2.5'), option.reload.total_score
+
+    stance.update_columns(weight: '3')
+    PollService.update(poll: poll, params: {weighted_voting: false}, actor: @admin)
+    assert_equal 1, stance.reload.weight
+    assert stance.cast_at
+    assert_equal 1, option.reload.total_score
+  end
+
+  test "vote weights can be enabled before voting opens" do
+    poll = create_poll(closing_at: nil, group_id: @group.id)
+
+    assert poll.update(weighted_voting: true)
+  end
+
+  test "disabling vote weights before opening clamps existing stances" do
+    poll = create_poll(closing_at: nil, group_id: @group.id, weighted_voting: true)
+    stance = poll.stances.latest.first
+    stance.update!(weight: '2.33')
+
+    assert poll.update!(weighted_voting: false)
+    assert_equal 1, stance.reload.weight
+  end
+
+  test "enabling vote weights copies current membership defaults and replaces old overrides" do
+    member = users(:user)
+    membership = @group.membership_for(member)
+    membership.update!(weight: '2.33')
+    poll = create_poll(closing_at: nil, group_id: @group.id)
+    member_stance = poll.stances.latest.find_by!(participant: member)
+    guest = create_voter('guest')
+    guest_stance = Stance.create!(poll: poll, participant: guest, inviter: @admin)
+
+    poll.update!(weighted_voting: true)
+    assert_equal BigDecimal('2.33'), member_stance.reload.weight
+    assert_equal 1, guest_stance.reload.weight
+
+    member_stance.update!(weight: '5')
+    poll.update!(weighted_voting: false)
+    assert_equal 1, member_stance.reload.weight
+
+    membership.update!(weight: '0.5')
+    poll.update!(weighted_voting: true)
+    assert_equal BigDecimal('0.5'), member_stance.reload.weight
+    assert_equal 1, guest_stance.reload.weight
+  end
+
+  test "a group poll can enable vote weights" do
+    poll = create_poll(closing_at: nil, group_id: @group.id)
+
+    assert poll.update(weighted_voting: true)
+    assert poll.reload.weighted_voting?
+  end
+
+  test "anonymous, STV, and time polls cannot enable vote weights" do
+    anonymous_poll = Poll.new(poll_params(anonymous: true, weighted_voting: true))
+    refute anonymous_poll.valid?
+    assert anonymous_poll.errors.added?(:weighted_voting, :invalid)
+
+    stv_poll = Poll.new(poll_params(poll_type: 'stv', stv_seats: 1, weighted_voting: true))
+    refute stv_poll.valid?
+    assert stv_poll.errors.added?(:weighted_voting, :invalid)
+
+    time_poll = Poll.new(poll_params(poll_type: 'meeting', weighted_voting: true))
+    refute time_poll.valid?
+    assert time_poll.errors.added?(:weighted_voting, :invalid)
+  end
+
+  test "STV polls need between one seat and one fewer than the candidates" do
+    stv_params = poll_params(poll_type: 'stv', poll_option_names: %w[Alice Bob Carol])
+
+    assert Poll.new(stv_params.merge(stv_seats: 1)).valid?
+    assert Poll.new(stv_params.merge(stv_seats: 2)).valid?
+
+    [0, -1].each do |seats|
+      poll = Poll.new(stv_params.merge(stv_seats: seats))
+      refute poll.valid?, "#{seats} seats should be invalid"
+      assert poll.errors.added?(:stv_seats, :greater_than_or_equal_to, count: 1)
+    end
+
+    poll = Poll.new(stv_params.merge(stv_seats: 3))
+    refute poll.valid?
+    assert poll.errors.added?(:stv_seats, :less_than, count: 3)
+  end
+
+  test "STV polls only accept supported counting methods and quotas" do
+    stv_params = poll_params(poll_type: 'stv', poll_option_names: %w[Alice Bob Carol])
+
+    %w[scottish meek].each { |method| assert Poll.new(stv_params.merge(stv_method: method)).valid? }
+    %w[droop hare].each { |quota| assert Poll.new(stv_params.merge(stv_quota: quota)).valid? }
+
+    poll = Poll.new(stv_params.merge(stv_method: 'irish', stv_quota: 'imperiali'))
+    refute poll.valid?
+    assert poll.errors.added?(:stv_method, :inclusion)
+    assert poll.errors.added?(:stv_quota, :inclusion)
+  end
+
+  test "STV polls revalidate seats when candidates are removed" do
+    poll = create_poll(poll_type: 'stv', stv_seats: 2, poll_option_names: %w[Alice Bob Carol])
+    assert poll.persisted?
+
+    poll.poll_options.last.mark_for_destruction
+    refute poll.valid?
+    assert poll.errors.added?(:stv_seats, :less_than, count: 2)
+  end
+
+  test "an existing STV poll with invalid settings can still be closed" do
+    poll = create_poll(poll_type: 'stv', stv_seats: 1, poll_option_names: %w[Alice Bob])
+    poll.update_columns(stv_seats: 2)
+
+    PollService.close(poll: poll, actor: @admin)
+
+    assert poll.reload.closed_at
+  end
+
+  test "an existing anonymous poll rejects enabling vote weights" do
+    poll = create_poll
+    poll.update_columns(anonymous: true)
+
+    refute poll.reload.update(weighted_voting: true)
+    assert poll.errors.added?(:weighted_voting, :invalid)
+    refute poll.reload.weighted_voting?
+  end
+
+  test "direct polls can enable vote weights" do
+    poll = Poll.new(poll_params(topic: topics(:direct_topic), author: @admin, weighted_voting: true))
+
+    assert poll.valid?
+  end
+
+  test "enabling weights in a draft direct poll sets every voter to one" do
+    poll = Poll.create!(poll_params(topic: topics(:direct_topic), author: @admin, closing_at: nil))
+    stance = Stance.create!(poll: poll, participant: @admin, inviter: @admin)
+
+    poll.update!(weighted_voting: true)
+
+    assert_equal 1, stance.reload.weight
   end
 
   test "disallows closing dates in the past" do

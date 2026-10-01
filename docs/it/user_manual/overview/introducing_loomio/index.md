@@ -1,10 +1,10 @@
 ---
 title: Presentare Loomio al tuo gruppo
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/overview/introducing_loomio/index.md
+source_revision: 9c60c42fc739483fa23f15d9f34a1e9245518092
+source_file: docs/en/user_manual/overview/introducing_loomio/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 3937e28d4932fd6d
   choose-one-useful-starting-point: 990ae1af5bf58d27
@@ -16,7 +16,7 @@ sections:
   invite-people: 40058431249a070e
   help-everyone-participate-once: 94babb6a295b7f66
   use-notifications-deliberately: a532d30c36993c6a
-  complete-the-first-process: 48fdb4622d159044
+  complete-the-first-process: fd49ec812c1265e7
 generated:
   introduction: c3778693e8d61ed3
   choose-one-useful-starting-point: 71d4ab7d8361c3f2
@@ -28,7 +28,7 @@ generated:
   invite-people: d066bdb7bc531de9
   help-everyone-participate-once: 29d3c1f1624d966c
   use-notifications-deliberately: 29e457b31abca2b9
-  complete-the-first-process: a689533efeb50896
+  complete-the-first-process: 59a102d8a71600aa
 title_source: 4f1540fbaadc657b
 title_generated: 388c8e01b11eb9f3
 ---
@@ -175,7 +175,7 @@ Il primo processo dovrebbe comprendere tutte queste fasi:
 2. Invita i membri a discutere o a fare domande quando serve.
 3. Avvia la proposta o il sondaggio appropriato.
 4. Se necessario, ricorda di partecipare a chi non l'ha ancora fatto.
-5. Pubblica una [conclusione](/en/user_manual/polls/outcomes) che indichi cosa è stato deciso e quali sono i prossimi passi.
+5. Pubblica una [conclusione](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome) che indichi cosa è stato deciso e quali sono i prossimi passi.
 
 La conclusione completa il processo e crea un resoconto che i membri potranno consultare in seguito. Poi chiedi cosa ha funzionato, modifica il processo e scegli la prossima attività ricorrente da svolgere in Loomio.
 

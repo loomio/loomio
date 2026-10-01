@@ -1,10 +1,10 @@
 ---
 title: Voorstellen en peilingen
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/polls/intro_to_decisions/index.md
+source_revision: 9c60c42fc739483fa23f15d9f34a1e9245518092
+source_file: docs/en/user_manual/polls/intro_to_decisions/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: d7cf8a871d9af6ea
   find-the-right-help: 4bb04c002cbbde42
@@ -14,7 +14,12 @@ sections:
   choose-whether-to-use-a-discussion: fbe0fe9415feadae
   in-a-discussion: d57d23917bab162a
   without-a-discussion: 87efa5071bb33a34
-  what-happens-next: de5cc2b17603d0ce
+  what-happens-next: 7fe113c92c0a58bd
+  1-create-it: 865fde10233c86d2
+  2-voting-opens: 571a77b9c70569d3
+  3-people-vote: 71061d516df57dab
+  4-it-closes: c0376a9026d18bc3
+  5-share-an-outcome: 8339cb332cd8a946
 generated:
   introduction: dd7ad22eaf5d75b8
   find-the-right-help: 3ebf3b452b41cdff
@@ -24,7 +29,12 @@ generated:
   choose-whether-to-use-a-discussion: f9459cb86e3788da
   in-a-discussion: 85acf299c136322c
   without-a-discussion: 959873e28c2d8887
-  what-happens-next: a0b65d7fad6236ef
+  what-happens-next: 73b669d773048305
+  1-create-it: b34308350166e6ea
+  2-voting-opens: c973f3d558ca0e2b
+  3-people-vote: 5e651ecdf4f8569c
+  4-it-closes: 8d8856eddf3a3d99
+  5-share-an-outcome: b30f1ffdbc3df763
 title_source: d45b4ba3cb7a27cb
 title_generated: 95457704989e4140
 ---
@@ -110,8 +120,48 @@ Als je tegelijk een discussie en een peiling maakt om te stemmen, voorkom dan da
 
 <!-- translation-section: what-happens-next -->
 
-## Wat gebeurt er daarna?
+## Van start tot conclusie
 
-Wanneer je een voorstel of peiling start, geef je een titel en toelichting op, controleer je de antwoordopties en instellingen, stel je een sluitingstijd in en nodig je deelnemers uit. Zolang de stemming open is, kunnen deelnemers stemmen, hun reactie toelichten en hun stem wijzigen. De resultaten worden bijgewerkt zodra stemmen binnenkomen, afhankelijk van de instelling voor de zichtbaarheid van de resultaten.
+Een voorstel of peiling doorloopt deze stappen.
 
-Publiceer na sluiting een [conclusie](../outcomes/) waarin je vastlegt wat het resultaat betekent en wat er daarna gebeurt.
+<!-- translation-section: 1-create-it -->
+
+### 1. Maak een voorstel of peiling
+
+Geef een titel en toelichting op, controleer de opties en instellingen en stel een sluitingstijd in. Kies vervolgens wanneer de stemming opent:
+
+- **De stemming is direct geopend.** opent de stemming zodra je het voorstel of de peiling start.
+- Met een **Openingsdatum** plan je de stemming in. Mensen kunnen het voorstel of de peiling al eerder bekijken, maar pas stemmen zodra de stemming opent.
+- Als je geen van beide kiest, wordt het voorstel of de peiling als concept opgeslagen.
+
+<!-- translation-section: 2-voting-opens -->
+
+### 2. De stemming opent
+
+Wanneer de stemming opent, informeert Loomio de mensen die je hebt uitgenodigd. Zie [Uitnodigen om te stemmen](../inviting_people/).
+
+<!-- translation-section: 3-people-vote -->
+
+### 3. Mensen stemmen
+
+Zolang de stemming open is, kunnen mensen stemmen, hun stem toelichten en hun stem wijzigen. De resultaten worden bijgewerkt zodra stemmen binnenkomen, tenzij de resultaten tot de sluiting verborgen blijven. Mensen die nog niet hebben gestemd, krijgen standaard een dag voor de sluiting een herinnering.
+
+<!-- translation-section: 4-it-closes -->
+
+### 4. De stemming sluit
+
+De stemming sluit automatisch op de ingestelde sluitingstijd. Een peilingbeheerder kan de stemming ook eerder sluiten. Na de sluiting kan een peilingbeheerder de stemming heropenen met een nieuwe sluitingstijd, zodat mensen verder kunnen stemmen. Anonieme peilingen kunnen niet worden heropend.
+
+<!-- translation-section: 5-share-an-outcome -->
+
+### 5. Deel een conclusie
+
+Wanneer de stemming sluit, vraagt Loomio de peilingbeheerders om een conclusie te delen.
+
+![De melding om een conclusie in te voeren nadat een voorstel is gesloten](outcome_prompt.png)
+
+De conclusie beschrijft wat er is besloten en wat er daarna gebeurt. De conclusie verschijnt boven de resultaten en is dus het eerste wat mensen lezen. Wanneer je de conclusie publiceert, kun je mensen informeren. Zij ontvangen een e-mail met de resultaten en de conclusie.
+
+Je kunt ook een **Beoordelingsdatum** instellen. Op die datum herinnert Loomio je eraan om de beslissing te herzien.
+
+![Een gepubliceerde conclusie met een beoordelingsdatum](outcome_published.png)

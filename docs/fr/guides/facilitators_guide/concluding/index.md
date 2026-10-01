@@ -1,19 +1,19 @@
 ---
 title: Conclure
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/guides/facilitators_guide/concluding/index.md
+source_revision: 3a315412c646d254c8426be5c436a4e593f6011f
+source_file: docs/en/guides/facilitators_guide/concluding/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-30'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 0160da4a2a071cae
-  outcomes-next-steps: 9829d1cef05d120b
+  outcomes-next-steps: 146b139e25dcfb4e
   reporting-harvesting: 64a7f7605636c422
   turning-discussion-into-action: 67b87042b96109e0
   it-ain-t-over-til-it-s-over: 9edb6ef0bcb17938
 generated:
   introduction: 9e400d068d41d639
-  outcomes-next-steps: d19ae79a30c966fe
+  outcomes-next-steps: cab6fb3827942538
   reporting-harvesting: '0904f8693fdcfdda'
   turning-discussion-into-action: 5dcd4a1b4f711929
   it-ain-t-over-til-it-s-over: fb9b075ada8b1715
@@ -43,7 +43,7 @@ Les réponses sont parfois concrètes, comme une liste d’actions à mener. Ell
 
 Sur Loomio
 
-* Les [conclusions](/en/user_manual/polls/outcomes/) sont un outil important. La fin d’une proposition ne marque pas tout à fait la fin du processus : il faut encore en faire la synthèse. C’est le rôle de la fonction de conclusion.
+* Les [conclusions](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome) sont un outil important. La fin d’une proposition ne marque pas tout à fait la fin du processus : il faut encore en faire la synthèse. C’est le rôle de la fonction de conclusion.
 * De nombreuses discussions sur Loomio se terminent naturellement, sans proposition ni publication de conclusion. Elles restent utiles. Vous pouvez ajouter une synthèse dans la zone de contexte pour pouvoir la consulter plus tard.
 * Si certaines personnes doivent agir, vous pouvez les @mentionner par leur nom. Elles recevront une notification.
 

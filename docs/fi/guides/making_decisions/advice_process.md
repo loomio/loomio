@@ -1,10 +1,10 @@
 ---
 title: Neuvontaprosessi
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/guides/making_decisions/advice_process.md
+source_revision: 9c60c42fc739483fa23f15d9f34a1e9245518092
+source_file: docs/en/guides/making_decisions/advice_process.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-30'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: '0994471ee964501f'
   key-points: 66f32f2b3cf56e0d
@@ -15,7 +15,7 @@ sections:
   step-0-you-notice-a-problem-or-opportunity-and-take-the-initiative: bf6c40b5883bb4d8
   step-1-seek-input-to-sound-out-perspectives-before-proposing-action: 1ead1a7a23e4efad
   step-2-clarify-and-strengthen-the-advice-through-discussion: a3b5393138bde245
-  step-3-make-a-decision-with-advice-and-inform-people: e6213c8e90b5d392
+  step-3-make-a-decision-with-advice-and-inform-people: c55b6d9c9ad0961c
 generated:
   introduction: bdf84366e83b8a07
   key-points: c5ac0a2e7b5c8898
@@ -26,7 +26,7 @@ generated:
   step-0-you-notice-a-problem-or-opportunity-and-take-the-initiative: 53b8ffad10ec6af8
   step-1-seek-input-to-sound-out-perspectives-before-proposing-action: bfea847a3c7d8ab4
   step-2-clarify-and-strengthen-the-advice-through-discussion: c0151d6004af2b13
-  step-3-make-a-decision-with-advice-and-inform-people: 802ebc5fd3dcfddb
+  step-3-make-a-decision-with-advice-and-inform-people: 41ac76cf2d451ae3
 title_source: 290fb74b7be97f31
 title_generated: f8e5760afbba62f8
 ---
@@ -116,7 +116,7 @@ Kun muut antavat neuvoja ja kommentoivat, Takashin päätös alkaa hahmottua.
 
 ### Vaihe 3. Tee päätös neuvojen pohjalta ja kerro siitä muille
 
-Kun kaikki ovat antaneet neuvonsa tai ehdotus sulkeutuu, Takashi tekee päätöksen ja julkaisee **[tuloksen](/en/user_manual/polls/outcomes/)**.
+Kun kaikki ovat antaneet neuvonsa tai ehdotus sulkeutuu, Takashi tekee päätöksen ja julkaisee **[tuloksen](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome)**.
 
 Tulos kertoo selkeästi, mitä päätettiin ja mitä tapahtuu seuraavaksi. Se tallentaa päätöksen organisaation myöhempää käyttöä varten.
 

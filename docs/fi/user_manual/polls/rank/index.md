@@ -1,10 +1,10 @@
 ---
 title: Sijoitus
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/polls/rank/index.md
+source_revision: 9c60c42fc739483fa23f15d9f34a1e9245518092
+source_file: docs/en/user_manual/polls/rank/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 9908dff1f0045200
   when-to-use-rank: f47d22e4968f74dd
@@ -12,6 +12,7 @@ sections:
   set-up-the-poll: 8a5902b708d6e7be
   vote: b089c2c5b7504b5d
   read-the-results: 18fbb0f9a5a866bc
+  share-an-outcome: c9dcebf155d64c65
 generated:
   introduction: f08240205c5b3917
   when-to-use-rank: 31a5f94a812bbe69
@@ -19,6 +20,7 @@ generated:
   set-up-the-poll: a311c1f8407b392e
   vote: db2fa4750ffe8564
   read-the-results: a96d06e3762966b9
+  share-an-outcome: 86207c34d6987f5d
 title_source: a4130d7d2c3a137f
 title_generated: 919aa534daaab706
 ---
@@ -86,3 +88,11 @@ Tulokset yhdistävät kaikki äänet pisteisiin perustuvaksi yhteiseksi järjest
 Tässä esimerkissä **500 ml:n meripihkanvärinen pullo** sijoittuu ensimmäiseksi. Sitä seuraavat **500 ml:n kirkas pullo** ja **750 ml:n meripihkanvärinen pullo**. Ryhmä voi selvittää ensisijaisen mallin soveltuvuutta ensin ja käyttää muuta järjestystä vaihtoehtoisten mallien arviointiin.
 
 Sama pistemäärä voi syntyä erilaisista mieltymyksistä, joita yhteistulos ei näytä. Tarkastele yksittäisiä ääniä ja niiden perusteluja, jos vaihtoehdot ovat tasaväkisiä tai päätöksellä on suuri merkitys.
+
+<!-- translation-section: share-an-outcome -->
+
+## Jaa johtopäätös
+
+Kun kysely sulkeutuu, jaa johtopäätös. Kerro, minkä vaihtoehdon ryhmä toteuttaa ja mitä tapahtuu, jos se ei onnistu. Lue johtopäätösten käytöstä kohdasta [Jaa johtopäätös](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome).
+
+![Johtopäätös, jossa valitaan ensimmäiseksi sijoittunut pullomalli](outcome.png)

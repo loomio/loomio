@@ -1,10 +1,10 @@
 ---
 title: 提案と投票
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/polls/intro_to_decisions/index.md
+source_revision: 9c60c42fc739483fa23f15d9f34a1e9245518092
+source_file: docs/en/user_manual/polls/intro_to_decisions/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: d7cf8a871d9af6ea
   find-the-right-help: 4bb04c002cbbde42
@@ -14,7 +14,12 @@ sections:
   choose-whether-to-use-a-discussion: fbe0fe9415feadae
   in-a-discussion: d57d23917bab162a
   without-a-discussion: 87efa5071bb33a34
-  what-happens-next: de5cc2b17603d0ce
+  what-happens-next: 7fe113c92c0a58bd
+  1-create-it: 865fde10233c86d2
+  2-voting-opens: 571a77b9c70569d3
+  3-people-vote: 71061d516df57dab
+  4-it-closes: c0376a9026d18bc3
+  5-share-an-outcome: 8339cb332cd8a946
 generated:
   introduction: 5eaa3d3c899ae187
   find-the-right-help: f6efe63290f7b9e3
@@ -24,7 +29,12 @@ generated:
   choose-whether-to-use-a-discussion: 999d6b3d97cac102
   in-a-discussion: 4f1fb726b14673c2
   without-a-discussion: 6b8a4df62002c777
-  what-happens-next: 6342d61990bd5f9e
+  what-happens-next: 72a07cb0a8063c75
+  1-create-it: c7fae67eca8e505e
+  2-voting-opens: 95feb91172ce0f0d
+  3-people-vote: 86b82052e8d2d19c
+  4-it-closes: ffa4ab9a33cd75b4
+  5-share-an-outcome: e73ee1591a8cb5cf
 title_source: d45b4ba3cb7a27cb
 title_generated: be4107aa6d3ae949
 ---
@@ -110,8 +120,48 @@ title_generated: be4107aa6d3ae949
 
 <!-- translation-section: what-happens-next -->
 
-## 開始後の流れ
+## 開始から結論の共有まで
 
-提案または投票を開始するときは、タイトルと詳細を入力し、回答の選択肢と設定を確認して、締め切りを設定し、参加者を招待します。受付中は、参加者が投票し、回答の理由を説明し、投票を変更できます。結果は投票が送信されるたびに更新されますが、表示される内容は結果の公開設定によって異なります。
+提案または投票は、次の段階を経て進みます。
 
-締め切り後は、結果が何を意味し、次に何をするかを記録した[結論](../outcomes/)を公開します。
+<!-- translation-section: 1-create-it -->
+
+### 1. 作成する
+
+タイトルと詳細を入力し、選択肢と設定を確認して、締め切りを設定します。その後、投票を開始する時期を選びます。
+
+- **投票はすぐに開始されます**を選ぶと、開始操作をした時点で投票が始まります。
+- **開業日**を設定すると、投票の開始を予約できます。開始前でも内容は閲覧できますが、投票は開始時刻までできません。
+- どちらも指定しない場合は、下書きとして保存されます。
+
+<!-- translation-section: 2-voting-opens -->
+
+### 2. 投票が始まる
+
+投票が始まると、Loomio は招待した人に通知します。[投票への招待](../inviting_people/)を参照してください。
+
+<!-- translation-section: 3-people-vote -->
+
+### 3. 参加者が投票する
+
+受付中は、参加者が投票し、投票の理由を説明し、投票を変更できます。締め切りまで結果を非表示にする設定でなければ、結果は投票されるたびに更新されます。既定では、まだ投票していない人に締め切りの1日前にリマインダーが届きます。
+
+<!-- translation-section: 4-it-closes -->
+
+### 4. 投票が終了する
+
+締め切りになると、自動的に終了します。投票の管理者は、締め切り前に終了することもできます。終了後は、投票の管理者が新しい締め切りを設定して再開し、引き続き投票できるようにすることもできます。匿名投票は再開できません。
+
+<!-- translation-section: 5-share-an-outcome -->
+
+### 5. 結論を共有する
+
+投票が終了すると、Loomio は投票の管理者に結論の共有を促します。
+
+![提案の終了後に結論の入力を促す画面](outcome_prompt.png)
+
+結論には、何が決まり、次に何をするかを記載します。結論は結果の上に表示されるため、最初に読まれる内容になります。公開時には、参加者に通知できます。参加者には、結果と結論を含むメールが届きます。
+
+**レビュー日**も設定できます。その日に、Loomio が決定を見直すためのリマインダーを送ります。
+
+![レビュー日が設定された公開済みの結論](outcome_published.png)

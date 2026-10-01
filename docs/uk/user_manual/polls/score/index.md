@@ -1,24 +1,26 @@
 ---
 title: Оціночне опитування
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/polls/score/index.md
+source_revision: 9c60c42fc739483fa23f15d9f34a1e9245518092
+source_file: docs/en/user_manual/polls/score/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 7881bcdd5aad5df4
   when-to-use-score: 0ef92ec0bb907a3f
   example-score-possible-trial-locations: 3c9438177a822198
   set-up-the-poll: 29b0296533594cd6
   vote: 1113501e9e6736b7
-  read-the-results: f773aa25f47c325b
+  read-the-results: 3e996e9bcc830d1d
+  share-an-outcome: 243aaac17e645331
 generated:
   introduction: bf630219ee2a4b9c
   when-to-use-score: 497f1e477a41de74
   example-score-possible-trial-locations: 4d6ceab67dcb65be
   set-up-the-poll: 33379a16bf25c132
   vote: c6f6c813d1ebb8ec
-  read-the-results: 72fde77e959e6023
+  read-the-results: 7690eb7b67e3d77d
+  share-an-outcome: f7f0984a1ea70697
 title_source: 38e5a46cbc5ad328
 title_generated: 0e51cfb06b32beb3
 ---
@@ -85,4 +87,12 @@ title_generated: 0e51cfb06b32beb3
 
 У цьому прикладі **кафе біля Центрального вокзалу** має найвищу середню оцінку — 7.5. **Офіси в порту** мають найнижчу — 5.25, а ринок біля річки й університетський фудкорт отримали по 7. Проголосували четверо з п’яти запрошених людей, тож група також бачить, що одна людина ще не відповіла.
 
-Порівнюйте середні оцінки лише тоді, коли варіанти оцінила приблизно однакова кількість виборців. Перш ніж вважати невелику різницю значущою, прочитайте пояснення до голосів. Потім опублікуйте результат і поясніть, які дії випливають з оцінок.
+Порівнюйте середні оцінки лише тоді, коли варіанти оцінила приблизно однакова кількість виборців. Перш ніж вважати невелику різницю значущою, прочитайте пояснення до голосів.
+
+<!-- translation-section: share-an-outcome -->
+
+## Поділіться висновком
+
+Коли опитування закриється, поділіться висновком. Поясніть, які дії випливають з оцінок і як вирішуються випадки однакових оцінок. Про те, як працюють висновки, дивіться в розділі [Поділіться висновком](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome).
+
+![Висновок із вибором місця з найвищою середньою оцінкою](outcome.png)

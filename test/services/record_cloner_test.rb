@@ -219,4 +219,57 @@ class RecordClonerTest < ActiveSupport::TestCase
     assert_equal @poll.outcomes.count, clone.outcomes.count
     assert_equal @poll.outcomes.first.statement, clone.outcomes.first.statement
   end
+
+  test "clones a weighted poll with its vote weights" do
+    poll = PollService.create(params: {
+      title: "Weighted poll",
+      poll_type: "proposal",
+      closing_at: 3.days.from_now,
+      poll_option_names: [ "agree", "disagree" ],
+      group_id: @group.id,
+      weighted_voting: true
+    }, actor: @user)
+    poll.stances.latest.find_by!(participant_id: @user.id).update!(weight: 2.5)
+
+    clone = RecordCloner.new(recorded_at: 2.days.ago).new_clone_poll(poll)
+    clone.save!
+
+    assert clone.reload.weighted_voting?
+    assert_equal 2.5, clone.stances.find_by!(participant_id: @user.id).weight
+  end
+
+  test "every blocked column exists" do
+    RecordCloner::BLOCKED_COLUMNS.each do |model, columns|
+      assert_empty columns - model.column_names, "#{model} blocks columns it does not have"
+    end
+  end
+
+  test "clones poll and topic settings that are not individually listed" do
+    @poll.update_columns(quorum_pct: 40)
+    @poll.topic.update_columns(allow_comments: false, allow_reactions: false)
+
+    clone = RecordCloner.new(recorded_at: 2.days.ago).new_clone_poll(@poll)
+    clone.save!
+    clone.reload
+
+    assert_equal 40, clone.quorum_pct
+    assert_equal false, clone.topic.allow_comments
+    assert_equal false, clone.topic.allow_reactions
+  end
+
+  test "clones an anonymous poll" do
+    poll = PollService.create(params: {
+      title: "Anonymous poll",
+      poll_type: "proposal",
+      closing_at: 3.days.from_now,
+      poll_option_names: [ "agree", "disagree" ],
+      group_id: @group.id,
+      anonymous: true
+    }, actor: @user)
+
+    clone = RecordCloner.new(recorded_at: 2.days.ago).new_clone_poll(poll)
+    clone.save!
+
+    assert clone.reload.anonymous?
+  end
 end

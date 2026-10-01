@@ -1,10 +1,10 @@
 ---
 title: Processus de conseil
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/guides/making_decisions/advice_process.md
+source_revision: 3a315412c646d254c8426be5c436a4e593f6011f
+source_file: docs/en/guides/making_decisions/advice_process.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-30'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: '0994471ee964501f'
   key-points: 66f32f2b3cf56e0d
@@ -15,7 +15,7 @@ sections:
   step-0-you-notice-a-problem-or-opportunity-and-take-the-initiative: bf6c40b5883bb4d8
   step-1-seek-input-to-sound-out-perspectives-before-proposing-action: 1ead1a7a23e4efad
   step-2-clarify-and-strengthen-the-advice-through-discussion: a3b5393138bde245
-  step-3-make-a-decision-with-advice-and-inform-people: e6213c8e90b5d392
+  step-3-make-a-decision-with-advice-and-inform-people: c55b6d9c9ad0961c
 generated:
   introduction: a9353f5ead67a38b
   key-points: e24a63e99ff41c43
@@ -26,7 +26,7 @@ generated:
   step-0-you-notice-a-problem-or-opportunity-and-take-the-initiative: a759d32beccc42a2
   step-1-seek-input-to-sound-out-perspectives-before-proposing-action: ca9ea5d3b7644a5f
   step-2-clarify-and-strengthen-the-advice-through-discussion: 7d9a8052137b21af
-  step-3-make-a-decision-with-advice-and-inform-people: 9dad9a5f748071d0
+  step-3-make-a-decision-with-advice-and-inform-people: 2f0f77191da38a2d
 title_source: 290fb74b7be97f31
 title_generated: 7cdfa3ca57333da7
 ---
@@ -116,7 +116,7 @@ Au fil des conseils et des commentaires, Takashi se fait une idée plus précise
 
 ### Étape 3. Prenez une décision en tenant compte des conseils et informez les personnes concernées
 
-Lorsque tout le monde a donné son avis, ou que la proposition est close, Takashi prend une décision et publie la **[conclusion](/en/user_manual/polls/outcomes/)**.
+Lorsque tout le monde a donné son avis, ou que la proposition est close, Takashi prend une décision et publie la **[conclusion](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome)**.
 
 La conclusion énonce clairement la décision prise et ce qui se passera ensuite. Elle constitue une trace importante pour l’organisation.
 

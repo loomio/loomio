@@ -1,24 +1,26 @@
 ---
 title: Escolher
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/polls/choose/index.md
+source_revision: 9c60c42fc739483fa23f15d9f34a1e9245518092
+source_file: docs/en/user_manual/polls/choose/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: f9d6a5bfb7445de0
   when-to-use-choose: f8a798497cac5a43
   example-set-a-planning-meeting-agenda: 32a94a916dbf84e5
   set-up-the-poll: a16095b63c57e0c9
   vote: d170451131c544cf
-  read-the-results: 84521c82aed8dd29
+  read-the-results: e675d12da1a4ba8a
+  share-an-outcome: f6afc1713b921265
 generated:
   introduction: 0a6ff82d79cdaf20
   when-to-use-choose: ce038880ed890b42
   example-set-a-planning-meeting-agenda: 50eebed310a4e767
   set-up-the-poll: 335a6022992e5931
   vote: 908c52671eeacf7a
-  read-the-results: 8d617c99d7b425f8
+  read-the-results: 19e5a9b068b0a393
+  share-an-outcome: 74fe37afbc659792
 title_source: c7f937836f5d82d5
 title_generated: f1fbc08af75d979e
 ---
@@ -86,6 +88,10 @@ Os resultados mostram a parcela do total de seleções recebida por cada opção
 
 Neste exemplo, **Cronograma de coleta nos cafés** recebeu três seleções. **Processo de lavagem** e **Relatório da taxa de devolução** receberam duas cada. O resultado indica que a coleta nos cafés deve receber mais tempo na pauta, mas quem organiza a reunião ainda precisa decidir como dividir o tempo restante entre os assuntos empatados.
 
-Quando a enquete for encerrada, publique uma **Conclusão** explicando o que o grupo fará com o resultado.
+<!-- translation-section: share-an-outcome -->
 
-![](outcome.png)
+## Compartilhe uma conclusão
+
+Quando a enquete for encerrada, compartilhe uma conclusão. Explique o que o grupo fará com o resultado, incluindo como os empates serão resolvidos. Consulte [Compartilhe uma conclusão](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome) para entender como as conclusões funcionam.
+
+![Uma conclusão que dedica mais tempo da reunião à coleta nos cafés](outcome.png)

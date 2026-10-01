@@ -77,7 +77,8 @@ The application-level guarantee does not protect against:
 - malicious changes to the running application;
 - a voter identifying themselves outside Loomio;
 - statistical inference from a small electorate;
-- aggregate subtraction when a coordinator or other participants know every ballot except one, including when a voter is added after voting starts;
+- aggregate subtraction when result viewers know every ballot except one, including when a voter is added after voting starts;
+- a one-sided result combined with the published list of who voted;
 - inference from a distinctive ballot pattern; or
 - information voluntarily shared by voters.
 
@@ -151,7 +152,7 @@ New identified polls do not need persisted participation receipts. Their named s
 
 Identified participation reports should be derived from stances.
 
-Existing `StanceReceipt` records remain available for historical polls. Complete receipt sets may be copied into `AnonymousPollVoter` during legacy migration, but the source receipts are not deleted or linked to individual ballots.
+Complete historical receipt sets were copied into `AnonymousPollVoter` during legacy migration. The later receipt cleanup copied their invitation dates into the named electorate and removed the redundant receipt table. Identified participation reports use stances.
 
 ## Poll invariants
 
@@ -267,9 +268,9 @@ Participation verification operates only on `AnonymousPollVoter` records. It may
 
 It must never expose or internally derive which ballot belongs to a participant.
 
-Authorization for participation verification must be defined independently from authorization to view poll results. Poll access or result access alone must not imply access to the named electorate ledger.
+The named electorate is visible to everyone who can view the poll's results. Detached anonymous polls hide results until they close, so the electorate is visible only after closing. Because participation status and aggregate results are visible to the same people, a unanimous or otherwise one-sided result can reveal individual choices to every result viewer.
 
-Participation verification is available only for group-owned polls. Poll coordinators may view names, membership duration, and invitation provenance. The API must omit each person's participation status until at least three people have voted, including after a poll closes below the threshold. Only group administrators may view participant email addresses; other coordinators receive no email value, and email domains are not used as a masked substitute. A missing historical inviter is displayed as unknown rather than preventing verification. Adding a specified voter must update the electorate and cached participation counts in the same poll transaction.
+Group members and the poll's voters may view membership duration and invitation provenance. Other result viewers, including signed-out visitors to a public poll, see names only. The API must omit each person's participation status until enough people have voted, including after a poll closes below the threshold. The threshold is the poll's quorum count if it has a quorum, otherwise half the electorate rounded up, and never fewer than three votes. Only group administrators may view participant email addresses; other coordinators receive no email value, and email domains are not used as a masked substitute. A missing historical inviter is displayed as unknown rather than preventing verification. Adding a specified voter must update the electorate and cached participation counts in the same poll transaction.
 
 The UI must describe participation verification as named participation metadata, not ballot identity.
 
@@ -442,7 +443,7 @@ The migration may copy:
 
 It must not infer historical group-membership state from current membership. If the historical value is unavailable, migrated electorate records must represent it as unknown rather than false.
 
-Some older polls may not have complete receipts. For those polls, the migration preserves the stored electorate and participation counts but does not invent named electorate rows. Named participation verification is unavailable when its source records do not exist.
+Some older polls may not have complete receipts. For those polls, the migration preserves the stored electorate and participation counts but does not invent named electorate rows. Named participation verification is unavailable when the named electorate could not be reconstructed. The later receipt cleanup removed the incomplete source rows after preserving all reliable participation information.
 
 ### Verification and deletion
 
@@ -552,12 +553,12 @@ Exact upgrade instructions belong in the release notes and
 ## Product decisions
 
 1. Native detached results and ordinary user-facing application exports expose aggregates only. Closed STV polls are the ballot-pattern exception: authorized result viewers may export BLT files containing candidate rankings grouped by identical pattern, without ballot identifiers, timestamps, submission order, or electorate records. This disclosure is required for an independent recount and may permit inference when someone already knows a distinctive ranking. The closed-poll JSON group portability archive is the documented operational exception required for restoration. Migrated legacy polls may additionally display a plain-text legacy reason with the choices from that reason's historical vote, without exposing a ballot identifier or metadata.
-2. Poll coordinators may view invitation provenance. They may view named participation status only once at least three people have voted. Result access alone does not grant this permission.
+2. Everyone who can view the results may view the named electorate after the poll closes, and named participation status once the participation threshold is met. Group members and the poll's voters may also view invitation provenance.
 3. Group polls establish their initial electorate when the poll is created. Polls restricted to specified voters use an explicitly invited electorate.
 4. Coordinators may add specified voters while voting is open, including after ballots have been submitted. New group members become eligible in unrestricted group polls while voting remains open. Existing electorate records cannot be removed.
 5. `closing_at` may be extended while voting is open. The hourly check uses the current deadline without maintaining queued-job state. A poll receives at most one automatic closing reminder, including after an extension.
 6. The automatic reminder is sent when a poll lasting at least 24 hours enters its final 24 hours. Polls lasting less than 24 hours receive no automatic closing reminder.
 7. There is no minimum electorate size.
-8. Quorum and participation counts are unavailable through the general poll API before closing. Coordinators may verify named participation separately after at least three people have voted, without receiving ballot contents. Status remains hidden if a poll closes below the threshold.
+8. Quorum and participation counts are unavailable through the general poll API before closing. After closing, result viewers may see named participation once the participation threshold is met, without receiving ballot contents. Status remains hidden if a poll closes below the threshold.
 9. New anonymous polls use detached ballots. Supported application APIs cannot enable the legacy anonymous format on an identified poll. Closed legacy anonymous polls are migrated to detached ballots with plain-text legacy reasons and no stance-based voting behavior.
 10. General poll comments remain available according to the topic's ordinary comment permissions.

@@ -53,7 +53,7 @@ class NotificationAudienceService
       poll.unmasked_undecided_voters
     when "non_voters"
       raise CanCan::AccessDenied unless poll
-      raise CanCan::AccessDenied if poll.detached_anonymous?
+      raise CanCan::AccessDenied if poll.anonymous?
       poll.non_voters
     when nil then User.none
     else
@@ -88,7 +88,7 @@ class NotificationAudienceService
 
     if poll&.persisted? && poll.voters_count.to_i.positive?
       candidates << { id: "voters", kind: "voters" }
-      if !poll.detached_anonymous? && poll.decided_voters_count.to_i.positive? && poll.undecided_voters_count.to_i.positive?
+      if !poll.anonymous? && poll.decided_voters_count.to_i.positive? && poll.undecided_voters_count.to_i.positive?
         candidates << { id: "decided_voters", kind: "decided_voters" }
         candidates << { id: "undecided_voters", kind: "undecided_voters" }
       end
@@ -114,7 +114,7 @@ class NotificationAudienceService
 
   def self.authorize_voter_status_audience!(poll)
     raise CanCan::AccessDenied unless poll
-    raise CanCan::AccessDenied if poll.detached_anonymous?
+    raise CanCan::AccessDenied if poll.anonymous?
     unless poll.decided_voters_count.to_i.positive? && poll.undecided_voters_count.to_i.positive?
       raise CanCan::AccessDenied
     end

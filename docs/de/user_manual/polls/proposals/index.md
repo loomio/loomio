@@ -1,19 +1,19 @@
 ---
 title: Vorschläge
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/polls/proposals/index.md
+source_revision: 71554be8e61a76613b0707b8262302c22299a5d0
+source_file: docs/en/user_manual/polls/proposals/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: dd4cb01f80b669fa
   choose-a-proposal-template: af87fd10a478699d
-  other-proposal-templates: d97b167228fd3b85
+  other-proposal-templates: 21ac5a295b8832ab
   proposal-records: ef0d886d3db7a5d1
 generated:
   introduction: 28ebfc01475f9e63
   choose-a-proposal-template: 7c2fb98eebecdd6a
-  other-proposal-templates: 19070d4a28dda3af
+  other-proposal-templates: c849874cc7ac2723
   proposal-records: 747a98fc27852558
 title_source: 834cfc1ee23734e1
 title_generated: 4238ec18355e579f
@@ -46,7 +46,7 @@ Wähle die Vorlage, deren Antwortmöglichkeiten zu deiner Frage passen. Auf der 
 
 ## Weitere Vorlagen für Vorschläge
 
-Loomio bietet auch Vorlagen wie Vorschlag, Übereinstimmungsgradienten, Fragerunde und Mehrheitlich. Einige sind zunächst ausgeblendet. Gruppenadmins können sie unter [Umfragevorlagen](../poll_templates/) verfügbar machen oder eine Vorlage mit den eigenen Begriffen und Regeln der Gruppe erstellen.
+Loomio bietet auch Vorlagen wie Vorschlag, Übereinstimmungsgradienten und Mehrheitlich. Einige sind zunächst ausgeblendet. Gruppenadmins können sie unter [Umfragevorlagen](../poll_templates/) verfügbar machen oder eine Vorlage mit den eigenen Begriffen und Regeln der Gruppe erstellen.
 
 <!-- translation-section: proposal-records -->
 

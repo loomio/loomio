@@ -59,4 +59,12 @@ The results order options by the total points received. They also show:
 
 In this example, **Financial sustainability** receives the most points, followed by **Staff development**. Financial sustainability receives points from every voter, suggesting broad agreement that it needs substantial review time. Read the totals alongside the number of voters to distinguish broad priorities from areas strongly supported by fewer people.
 
-Read the totals together with the number of voters and their reasons. Publish an outcome explaining how the strategy review will be structured; the poll does not assign time automatically.
+Read the totals together with the number of voters and their reasons.
+
+<!-- translation-section: share-an-outcome -->
+
+## Share an outcome
+
+When the poll closes, share an outcome. The poll does not assign time or money automatically, so say how the result will be used. See [Share an outcome](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome) for how outcomes work.
+
+![An outcome setting how the strategy review will divide its time](outcome.png)

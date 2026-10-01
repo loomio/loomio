@@ -7,7 +7,7 @@ class BootSiteTest < ActiveSupport::TestCase
     end
   end
 
-  HELP_ENV_KEYS = %w[LOOMIO_HELP_TITLE LOOMIO_HELP_SUBTITLE LOOMIO_HELP_URL].freeze
+  HELP_ENV_KEYS = %w[HELP_URL LOOMIO_HELP_TITLE LOOMIO_HELP_SUBTITLE LOOMIO_HELP_URL].freeze
 
   setup do
     @help_env = ENV.slice(*HELP_ENV_KEYS)
@@ -28,6 +28,14 @@ class BootSiteTest < ActiveSupport::TestCase
       subtitle: 'How to use this service',
       url: 'https://docs.example.com/'
     }, Boot::Site.new.payload[:userManual])
+  end
+
+  test "site config exposes the sidebar help URL" do
+    ENV.delete('HELP_URL')
+    assert_equal '/docs/en', Boot::Site.new.payload.dig(:theme, :help_url)
+
+    ENV['HELP_URL'] = 'https://docs.example.com/'
+    assert_equal 'https://docs.example.com/', Boot::Site.new.payload.dig(:theme, :help_url)
   end
 
   test "blank user manual overrides are omitted" do

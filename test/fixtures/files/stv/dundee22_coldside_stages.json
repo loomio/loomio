@@ -1,0 +1,179 @@
+{
+ "source": "Dundee City Council, 2022 local government election, Ward 4 - Coldside, official CandidateVotesPerStageReport_V0001_Ward-4---Coldside_06052022_141356.pdf: https://www.dundeecity.gov.uk/local-elections-2022/local-elections-2022-results",
+ "seats": 4,
+ "valid_votes": 5589,
+ "quota": "1118",
+ "stages": [
+  {
+   "votes": {
+    "Scott AGNEW": "141.00000",
+    "Naveed ALI": "444.00000",
+    "Heather ANDERSON": "1737.00000",
+    "Jenny BLAIN": "176.00000",
+    "Mark FLYNN": "751.00000",
+    "Tanya JONES": "551.00000",
+    "George MCIRVINE": "960.00000",
+    "Wayne SCOTT": "52.00000",
+    "Helen WRIGHT": "777.00000"
+   },
+   "non_transferable": "0.00000",
+   "elected": [
+    "Heather ANDERSON"
+   ],
+   "excluded": [],
+   "surplus": null
+  },
+  {
+   "votes": {
+    "Scott AGNEW": "150.26536",
+    "Naveed ALI": "446.13816",
+    "Heather ANDERSON": "1118.00000",
+    "Jenny BLAIN": "179.20724",
+    "Mark FLYNN": "1275.20556",
+    "Tanya JONES": "584.14148",
+    "George MCIRVINE": "970.33444",
+    "Wayne SCOTT": "52.35636",
+    "Helen WRIGHT": "785.90900"
+   },
+   "non_transferable": "27.44240",
+   "elected": [
+    "Mark FLYNN"
+   ],
+   "excluded": [],
+   "surplus": "Heather ANDERSON"
+  },
+  {
+   "votes": {
+    "Scott AGNEW": "164.32454",
+    "Naveed ALI": "448.54845",
+    "Heather ANDERSON": "1118.00000",
+    "Jenny BLAIN": "183.57015",
+    "Mark FLYNN": "1118.00000",
+    "Tanya JONES": "636.89443",
+    "George MCIRVINE": "982.81800",
+    "Wayne SCOTT": "56.15803",
+    "Helen WRIGHT": "797.66412"
+   },
+   "non_transferable": "83.02228",
+   "elected": [],
+   "excluded": [],
+   "surplus": "Mark FLYNN"
+  },
+  {
+   "votes": {
+    "Scott AGNEW": "165.65894",
+    "Naveed ALI": "450.67172",
+    "Heather ANDERSON": "1118.00000",
+    "Jenny BLAIN": "185.57015",
+    "Mark FLYNN": "1118.00000",
+    "Tanya JONES": "656.60716",
+    "George MCIRVINE": "987.98520",
+    "Wayne SCOTT": "0.00000",
+    "Helen WRIGHT": "812.20113"
+   },
+   "non_transferable": "94.30570",
+   "elected": [],
+   "excluded": [
+    "Wayne SCOTT"
+   ],
+   "surplus": null
+  },
+  {
+   "votes": {
+    "Scott AGNEW": "0.00000",
+    "Naveed ALI": "463.17332",
+    "Heather ANDERSON": "1118.00000",
+    "Jenny BLAIN": "195.99241",
+    "Mark FLYNN": "1118.00000",
+    "Tanya JONES": "702.71671",
+    "George MCIRVINE": "1011.10993",
+    "Wayne SCOTT": "0.00000",
+    "Helen WRIGHT": "822.72469"
+   },
+   "non_transferable": "157.28294",
+   "elected": [],
+   "excluded": [
+    "Scott AGNEW"
+   ],
+   "surplus": null
+  },
+  {
+   "votes": {
+    "Scott AGNEW": "0.00000",
+    "Naveed ALI": "485.19848",
+    "Heather ANDERSON": "1118.00000",
+    "Jenny BLAIN": "0.00000",
+    "Mark FLYNN": "1118.00000",
+    "Tanya JONES": "764.28566",
+    "George MCIRVINE": "1044.49678",
+    "Wayne SCOTT": "0.00000",
+    "Helen WRIGHT": "854.30070"
+   },
+   "non_transferable": "204.71838",
+   "elected": [],
+   "excluded": [
+    "Jenny BLAIN"
+   ],
+   "surplus": null
+  },
+  {
+   "votes": {
+    "Scott AGNEW": "0.00000",
+    "Naveed ALI": "0.00000",
+    "Heather ANDERSON": "1118.00000",
+    "Jenny BLAIN": "0.00000",
+    "Mark FLYNN": "1118.00000",
+    "Tanya JONES": "808.52195",
+    "George MCIRVINE": "1155.05083",
+    "Wayne SCOTT": "0.00000",
+    "Helen WRIGHT": "937.90360"
+   },
+   "non_transferable": "451.52362",
+   "elected": [
+    "George MCIRVINE"
+   ],
+   "excluded": [
+    "Naveed ALI"
+   ],
+   "surplus": null
+  },
+  {
+   "votes": {
+    "Scott AGNEW": "0.00000",
+    "Naveed ALI": "0.00000",
+    "Heather ANDERSON": "1118.00000",
+    "Jenny BLAIN": "0.00000",
+    "Mark FLYNN": "1118.00000",
+    "Tanya JONES": "810.27243",
+    "George MCIRVINE": "1118.00000",
+    "Wayne SCOTT": "0.00000",
+    "Helen WRIGHT": "965.31343"
+   },
+   "non_transferable": "459.41414",
+   "elected": [],
+   "excluded": [],
+   "surplus": "George MCIRVINE"
+  },
+  {
+   "votes": {
+    "Scott AGNEW": "0.00000",
+    "Naveed ALI": "0.00000",
+    "Heather ANDERSON": "1118.00000",
+    "Jenny BLAIN": "0.00000",
+    "Mark FLYNN": "1118.00000",
+    "Tanya JONES": "0.00000",
+    "George MCIRVINE": "1118.00000",
+    "Wayne SCOTT": "0.00000",
+    "Helen WRIGHT": "1293.21457"
+   },
+   "non_transferable": "941.78543",
+   "elected": [
+    "Helen WRIGHT"
+   ],
+   "excluded": [
+    "Tanya JONES"
+   ],
+   "surplus": null
+  }
+ ]
+}

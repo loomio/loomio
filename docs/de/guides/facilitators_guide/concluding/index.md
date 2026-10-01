@@ -1,19 +1,19 @@
 ---
 title: Abschluss
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/guides/facilitators_guide/concluding/index.md
+source_revision: 9c60c42fc739483fa23f15d9f34a1e9245518092
+source_file: docs/en/guides/facilitators_guide/concluding/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-30'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 0160da4a2a071cae
-  outcomes-next-steps: 9829d1cef05d120b
+  outcomes-next-steps: 146b139e25dcfb4e
   reporting-harvesting: 64a7f7605636c422
   turning-discussion-into-action: 67b87042b96109e0
   it-ain-t-over-til-it-s-over: 9edb6ef0bcb17938
 generated:
   introduction: 8e4919bb246f7a72
-  outcomes-next-steps: 5a78dc79c4b571dd
+  outcomes-next-steps: de2843488c9f0159
   reporting-harvesting: 8c105a677a6330a0
   turning-discussion-into-action: ba7ea132c7006706
   it-ain-t-over-til-it-s-over: 0da4a13df3cd9d25
@@ -43,7 +43,7 @@ Manchmal sind die Antworten ganz konkret, etwa Aufgaben für die nächsten Schri
 
 Auf Loomio
 
-* [Fazits](/en/user_manual/polls/outcomes/) sind ein wichtiges Werkzeug. Wenn ein Vorschlag endet, fehlt noch ein abschließender Überblick. Dafür gibt es die Fazit-Funktion.
+* [Fazits](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome) sind ein wichtiges Werkzeug. Wenn ein Vorschlag endet, fehlt noch ein abschließender Überblick. Dafür gibt es die Fazit-Funktion.
 * Viele Diskussionen auf Loomio enden ganz natürlich, ohne Vorschläge oder veröffentlichte Fazits. Auch sie sind wertvoll. Du kannst das Kontextfeld um eine Zusammenfassung ergänzen, damit die Gruppe später darauf zurückgreifen kann.
 * Wenn bestimmte Personen Aufgaben übernehmen, kannst du ihre Namen mit @ erwähnen. Sie werden dann benachrichtigt.
 

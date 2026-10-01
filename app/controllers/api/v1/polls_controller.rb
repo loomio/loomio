@@ -1,48 +1,57 @@
 class Api::V1::PollsController < Api::V1::RestfulController
-  def receipts
-    @poll = load_and_authorize(:poll, :receipts)
+  # The votes page has one row shape for both voting modes. Anonymous rows
+  # come only from the electorate; ballot choices are never joined to voters.
+  def votes
+    @poll = load_and_authorize(:poll)
+    @show_voter_details = voter_details_visible?
+    @show_voter_email = @show_voter_details && @poll.group.admins.exists?(current_user.id)
+    return render_identified_votes unless @poll.anonymous?
 
-    if @poll.closed_at && StanceReceipt.where(poll_id: @poll.id).exists?
-      receipts = StanceReceipt.where(poll_id: @poll.id)
-    else
-      receipts = PollService.build_receipts(@poll).map { |h| StanceReceipt.new(h) }
+    current_user.ability.authorize!(:view_anonymous_voters, @poll)
+
+    voters_eligible = @poll.anonymous_poll_voters
+    if params[:name].present?
+      voters_eligible = voters_eligible.joins(:voter).merge(voters_matching_name)
     end
+    total = voters_eligible.count
+    voters_eligible = page_collection_bounded(voters_eligible.order(id: :desc)).to_a
 
-    can_view_email = @poll.group.admins.include?(current_user)
-    memberships = @poll.group.present? ? @poll.group.memberships.where(user_id: receipts.map(&:voter_id)).index_by(&:user_id) : {}
-    voters = User.where(id: receipts.map(&:voter_id)).index_by(&:id)
-    inviters = User.where(id: receipts.map(&:inviter_id)).index_by(&:id)
+    voter_ids = voters_eligible.map(&:voter_id)
+    voters = User.with_attached_uploaded_avatar.where(id: voter_ids).index_by(&:id)
+    memberships = @show_voter_details ? @poll.group.memberships.where(user_id: voter_ids).index_by(&:user_id) : {}
+    inviters = @show_voter_details ? User.where(id: voters_eligible.map(&:inviter_id).compact).index_by(&:id) : {}
     participation_status_visible = @poll.participation_status_visible?
-
     render json: {
-      voters_count: @poll.voters_count,
-      poll_title: @poll.title,
-      show_voter_email: can_view_email,
-      participation_status_visible:,
-      participation_status_votes_min: Poll::PARTICIPATION_STATUS_VOTES_MIN,
-      receipts: receipts.map do |receipt|
-        voter = voters[receipt.voter_id]
-        inviter = inviters[receipt.inviter_id]
-        membership = memberships[receipt.voter_id]
-        receipt_data = {
-          poll_id: @poll.id,
-          voter_id: receipt.voter_id,
+      meta: {
+        total:,
+        show_voter_details: @show_voter_details,
+        show_voter_email: @show_voter_email,
+        participation_status_visible:,
+        participation_status_votes_required: @poll.participation_status_votes_required
+      },
+      voters: voters_eligible.map do |eligible_voter|
+        voter = voters[eligible_voter.voter_id]
+        row = {
+          voter_id: eligible_voter.voter_id,
           voter_name: voter.name,
-          voter_email: (voter.email if can_view_email),
-          member_since: membership&.accepted_at&.to_date&.iso8601,
-          inviter_id: receipt.inviter_id,
-          inviter_name: inviter&.name,
-          invited_on: receipt.invited_at&.to_date&.iso8601
+          voter_thumb_url: voter.thumb_url,
+          voter_avatar_initials: voter.avatar_initials
         }
-        receipt_data[:vote_cast] = receipt.vote_cast if participation_status_visible
-        receipt_data
-      end.shuffle
+        if @show_voter_details
+          row[:member_since] = memberships[eligible_voter.voter_id]&.accepted_at&.to_date&.iso8601
+          row[:inviter_name] = inviters[eligible_voter.inviter_id]&.name
+          row[:invited_on] = eligible_voter.invited_at&.to_date&.iso8601
+          row[:voter_email] = voter.email if @show_voter_email
+        end
+        row[:vote_cast] = eligible_voter.ballot_submitted if participation_status_visible
+        row
+      end
     }, root: false
   end
 
   def legacy_vote_reasons
     poll = load_and_authorize(:poll)
-    raise ActiveRecord::RecordNotFound unless poll.closed? && poll.detached_anonymous? && poll.legacy_anonymous_vote_reasons.exists?
+    raise ActiveRecord::RecordNotFound unless poll.closed? && poll.anonymous? && poll.legacy_anonymous_vote_reasons.exists?
 
     reasons = poll.legacy_anonymous_vote_reasons
                   .joins(:anonymous_ballot)
@@ -115,6 +124,67 @@ class Api::V1::PollsController < Api::V1::RestfulController
   end
 
   private
+
+  # Callers join from the poll's voters to users, so name searches start from
+  # the poll's electorate rather than scanning every user.
+  def voters_matching_name
+    @show_voter_email ? User.invitable_search(params[:name]) : User.mention_search(params[:name])
+  end
+
+  # Membership and invitation details are for the group's members and the
+  # poll's own voters. Visitors to a public poll see names only.
+  def voter_details_visible?
+    @poll.group_id.present? &&
+      (@poll.members.exists?(current_user.id) || @poll.unmasked_voters.exists?(current_user.id))
+  end
+
+  # Filter and page stances before loading voter details. Choice-based filters
+  # and choice scores become available only when this viewer can see results.
+  def render_identified_votes
+    show_results = @poll.results_visible?(voted: @poll.stances.latest.decided.exists?(participant_id: current_user.id))
+    stances = @poll.stances.latest.where(revoked_at: nil)
+    if params[:name].present?
+      stances = stances.joins(:participant).merge(voters_matching_name)
+    end
+    stances = stances.decided if params[:stance_filter] == 'cast'
+    stances = stances.undecided if params[:stance_filter] == 'uncast'
+    if show_results
+      stances = stances.joins(:poll_options).where(poll_options: {id: params[:poll_option_id]}) if params[:poll_option_id].present?
+    elsif !@poll.results_available?
+      stances = stances.where(participant_id: current_user.id)
+    end
+
+    total = stances.count
+    stances = page_collection_bounded(stances.order('stances.cast_at DESC NULLS LAST, stances.created_at DESC, stances.id DESC')).to_a
+    voter_ids = stances.map(&:participant_id)
+    voters = User.with_attached_uploaded_avatar.where(id: voter_ids).index_by(&:id)
+    memberships = @show_voter_details ? @poll.group.memberships.where(user_id: voter_ids).index_by(&:user_id) : {}
+    inviters = @show_voter_details ? User.where(id: stances.map(&:inviter_id).compact).index_by(&:id) : {}
+    render json: {
+      meta: {total:, show_voter_details: @show_voter_details, show_voter_email: @show_voter_email},
+      voters: stances.map do |stance|
+        voter = voters.fetch(stance.participant_id)
+        row = {
+          voter_id: voter.id,
+          voter_name: voter.name,
+          voter_thumb_url: voter.thumb_url,
+          voter_avatar_initials: voter.avatar_initials,
+          vote_cast: stance.cast_at.present?
+        }
+        if @show_voter_details
+          row[:member_since] = memberships[voter.id]&.accepted_at&.to_date&.iso8601
+          row[:inviter_name] = inviters[stance.inviter_id]&.name
+          row[:invited_on] = stance.created_at&.to_date&.iso8601
+          row[:voter_email] = voter.email if @show_voter_email
+        end
+        if show_results && stance.cast_at.present?
+          row[:option_scores] = stance.option_scores
+        end
+        row[:weight] = VoteWeight.format(stance.weight) if @poll.weighted_voting?
+        row
+      end
+    }, root: false
+  end
 
   def accessible_records
     PollQuery.relevant_to(user: current_user, group_ids: poll_group_ids)

@@ -1,24 +1,26 @@
 ---
 title: בחירה
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/polls/choose/index.md
+source_revision: 9c60c42fc739483fa23f15d9f34a1e9245518092
+source_file: docs/en/user_manual/polls/choose/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: f9d6a5bfb7445de0
   when-to-use-choose: f8a798497cac5a43
   example-set-a-planning-meeting-agenda: 32a94a916dbf84e5
   set-up-the-poll: a16095b63c57e0c9
   vote: d170451131c544cf
-  read-the-results: 84521c82aed8dd29
+  read-the-results: e675d12da1a4ba8a
+  share-an-outcome: f6afc1713b921265
 generated:
   introduction: 8754adbd492282b7
   when-to-use-choose: d445b5852d1816fe
   example-set-a-planning-meeting-agenda: 1af4db41457ee24e
   set-up-the-poll: b46c8f8cf78540b6
   vote: 6bd6bebb387c0907
-  read-the-results: fc5d14f58960dae5
+  read-the-results: cbed77b28a38aa62
+  share-an-outcome: e48645334c25a52d
 title_source: c7f937836f5d82d5
 title_generated: a46bb2a3ba94baa0
 ---
@@ -86,6 +88,10 @@ title_generated: a46bb2a3ba94baa0
 
 בדוגמה זו, **לוח זמנים לאיסוף מבתי קפה** נבחר שלוש פעמים. **תהליך שטיפת הבקבוקים** ו**דיווח על שיעור החזרת הבקבוקים** נבחרו פעמיים כל אחד. התוצאה תומכת בהקצאת הזמן הרב ביותר בסדר היום לאיסוף מבתי קפה, אך עדיין יש להחליט כיצד לחלק את הזמן שנותר בין שני הנושאים שקיבלו מספר בחירות שווה.
 
-עם סגירת המִשׁאָל, יש לפרסם **מסקנה** שמסבירה מה תעשה הקבוצה בעקבות התוצאה.
+<!-- translation-section: share-an-outcome -->
 
-![](outcome.png)
+## שיתוף מסקנה
+
+עם סגירת המִשׁאָל, יש לשתף מסקנה. יש להסביר מה תעשה הקבוצה בעקבות התוצאה, כולל כיצד יוכרעו מצבים של שוויון. להסבר על השימוש במסקנות, ניתן לעיין ב[שיתוף מסקנה](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome).
+
+![מסקנה שמקצה לאיסוף מבתי קפה את הזמן הרב ביותר בפגישה](outcome.png)

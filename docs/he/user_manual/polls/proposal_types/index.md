@@ -13,7 +13,6 @@ sections:
   ranked-choice: 31dee409a33369de
   time-poll: 8b3a09b278bd7fde
   stv-election: e8407157d29424e4
-  other-specialized-method: 6b1ca633e613e513
 generated:
   introduction: fef3ace5e152e938
   simple-poll: 5e86524ed1708cfd
@@ -22,7 +21,6 @@ generated:
   ranked-choice: e419b7105640685f
   time-poll: 5ff290a4f681d1a5
   stv-election: ed90c65e17b2145d
-  other-specialized-method: 8f29f87cc34dea54
 title_source: 996729458535904a
 title_generated: ec8c1df195c6c0d4
 ---
@@ -68,9 +66,3 @@ title_generated: ec8c1df195c6c0d4
 ## בחירות STV
 
 [בחירות STV](/en/user_manual/polls/stv/) מאפשרות למשתתפים לדרג מועמדים בבחירות יחסיות שבהן נבחרים כמה מועמדים. ניתן להשתמש ב-STV לבחירת ועדה, דירקטוריון או קבוצת נציגים.
-
-<!-- translation-section: other-specialized-method -->
-
-## שיטה ייעודית נוספת
-
-Loomio כוללת גם סבב שאלות לאיסוף שאלות ללא הצבעה. מנהלי קבוצות יכולים להפעיל אותו דרך [תבניות סקר](/en/user_manual/polls/poll_templates/).

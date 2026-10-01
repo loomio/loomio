@@ -1,45 +1,45 @@
 ---
 title: Voto anonimo
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/polls/anonymous_voting/index.md
+source_revision: 9c60c42fc739483fa23f15d9f34a1e9245518092
+source_file: docs/en/user_manual/polls/anonymous_voting/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
-  introduction: d5c276b2785919c3
+  introduction: 2b9b7da01da020b3
   how-anonymous-voting-protects-voters: f2be8477636489af
   while-voting-is-open: dda23e517269b9cf
   votes-cannot-be-changed: 1e317297688ba902
   why-anonymous-votes-do-not-have-reasons: 39c1a8362550ae40
   results-and-exports: eb2429afd442dad2
-  participation-verification: cdaa1f5c3ca1e179
+  participation-verification: 87bc3647be4bbfb8
   reminders: 0afad473c90f2f03
-  what-coordinators-and-administrators-can-see: 51460c8a6b663aba
+  what-coordinators-and-administrators-can-see: 07faa9f646665b64
   limits-of-anonymous-voting: 912141560342d073
   questions: 60cc6f1a0163ec5d
-  can-a-coordinator-see-how-i-voted: 3dd2c9e6d06debda
+  can-a-coordinator-see-how-i-voted: 574fc18f3a9871c3
   can-i-see-my-vote-after-submitting-it: c558e29729aed45f
   can-i-change-or-withdraw-my-vote: dd1a385fa8d225a5
   will-i-receive-an-email-confirming-my-vote: 8616fc9a0b9809ac
-  does-a-public-poll-reveal-more-information: 2ba76a1748304f96
+  does-a-public-poll-reveal-more-information: 27acfa7744a0790d
   is-anonymous-voting-suitable-for-every-election: d1b723178449c0da
 generated:
-  introduction: a6405143d35cf8b8
+  introduction: 33ed8b8a2a8a0d39
   how-anonymous-voting-protects-voters: 0b85f15662332879
   while-voting-is-open: 8906c72314114e3f
   votes-cannot-be-changed: 1c4dc42769d2ba73
   why-anonymous-votes-do-not-have-reasons: 3415850b0c9584be
   results-and-exports: b16f09dc277f56cf
-  participation-verification: f8bce69cc57ba4c2
+  participation-verification: 2cc8bd6f62b20292
   reminders: b07a9c28cf043fba
-  what-coordinators-and-administrators-can-see: e2e18eaa1af61b0f
+  what-coordinators-and-administrators-can-see: 25881cba3eede4f1
   limits-of-anonymous-voting: 6aca991150283d9b
   questions: 5e4bf1632f15b07f
-  can-a-coordinator-see-how-i-voted: 6929d6a0a277fc5a
+  can-a-coordinator-see-how-i-voted: eba44a146ef9e1b7
   can-i-see-my-vote-after-submitting-it: 405e7859ece045d8
   can-i-change-or-withdraw-my-vote: b2b878e660578d45
   will-i-receive-an-email-confirming-my-vote: 16cb7d6b4224a600
-  does-a-public-poll-reveal-more-information: 0b40dd0cc56f5575
+  does-a-public-poll-reveal-more-information: db8d01c3127680d6
   is-anonymous-voting-suitable-for-every-election: fe7e7974b858eaff
 title_source: 1bc4567506ad4d51
 title_generated: 5749c9ba228fdb8a
@@ -49,7 +49,7 @@ title_generated: 5749c9ba228fdb8a
 
 # Voto anonimo
 
-Il voto anonimo, detto anche voto segreto, separa la registrazione di chi ha votato dai voti espressi. Chi coordina il sondaggio può vedere chi aveva diritto di voto e, dopo che almeno tre persone hanno votato, verificare la partecipazione. Chi usa l'applicazione non può collegare un voto alla persona che lo ha espresso.
+Il voto anonimo, detto anche voto segreto, separa la registrazione di chi ha votato dai voti espressi. Dopo la chiusura del sondaggio, chiunque possa vedere i risultati può vedere chi ha partecipato. Nessuno che usa Loomio può collegare un voto alla persona che lo ha espresso.
 
 Questa pagina spiega come viene protetto il voto anonimo, quali informazioni vengono conservate e quali sono i limiti di questa tutela.
 
@@ -116,13 +116,17 @@ Un sondaggio anonimo non può essere riaperto dopo la chiusura.
 
 <!-- translation-section: participation-verification -->
 
-## Verifica della partecipazione
+## Chi ha partecipato
 
-Chi coordina il sondaggio può vedere i dati sulla partecipazione associati ai nomi. Questi mostrano sempre chi aveva diritto di voto. Dopo che almeno tre persone hanno votato, mostrano anche se ciascuna persona ha votato, ma mai come ha votato. Se un sondaggio si chiude con meno di tre voti, lo stato di partecipazione resta nascosto.
+Dopo la chiusura di un sondaggio anonimo, chiunque possa vedere i risultati può vedere chi ha partecipato. Nessuno può vedere queste informazioni mentre la votazione è aperta.
 
-Le altre persone che partecipano al sondaggio non possono vedere queste informazioni nominative. L'accesso ai risultati del sondaggio non dà accesso ai dati sulla partecipazione.
+Seleziona **Visualizza i voti** per vedere l'elenco. Mostra sempre chi aveva diritto di voto. Mostra se ciascuna persona ha votato solo se ha votato un numero sufficiente di persone. La soglia è il quorum del sondaggio, se previsto, altrimenti la metà delle persone aventi diritto di voto, e in ogni caso non meno di tre voti. L'elenco non mostra mai come ha votato ciascuna persona, né quando.
 
-Chi coordina il sondaggio può aggiungere persone aventi diritto mentre la votazione è aperta, anche dopo che altre persone hanno votato. Chi ha già votato non può essere rimosso da un sondaggio anonimo.
+I membri del gruppo e le persone aventi diritto di voto nel sondaggio vedono anche quando ciascuna persona è entrata nel gruppo e chi l'ha invitata. Gli amministratori del gruppo vedono anche gli indirizzi email, per distinguere persone con lo stesso nome.
+
+Poiché chiunque possa vedere i risultati può vedere chi ha votato, un risultato in cui tutti i voti sono per la stessa opzione può rivelare come hanno votato le persone. Per esempio, se ogni voto è Favorevole, tutte le persone che hanno votato erano favorevoli.
+
+Chi coordina il sondaggio può aggiungere persone aventi diritto mentre la votazione è aperta, anche dopo che altre persone hanno votato. Le persone già aventi diritto di voto non possono essere rimosse da un sondaggio anonimo.
 
 <!-- translation-section: reminders -->
 
@@ -141,7 +145,7 @@ I sondaggi con un periodo di votazione complessivo inferiore a 24 ore non invian
 Tramite l'applicazione, chi coordina il sondaggio o amministra il gruppo o l'istanza può avere accesso a:
 
 - il sondaggio e le persone aventi diritto di voto;
-- l'indicazione che ciascuna persona avente diritto abbia votato, se il suo ruolo consente l'accesso e almeno tre persone hanno votato; e
+- l'indicazione di chi ha votato tra le persone aventi diritto, se il ruolo di chi consulta queste informazioni consente l'accesso e ha votato un numero sufficiente di persone; e
 - i risultati complessivi dopo la chiusura del sondaggio.
 
 Le funzionalità dell'applicazione non consentono loro di vedere:
@@ -167,9 +171,9 @@ Per decidere se il voto anonimo nell'applicazione è adatto, considera il numero
 
 <!-- translation-section: can-a-coordinator-see-how-i-voted -->
 
-### Un coordinatore può vedere come ho votato?
+### Qualcuno può vedere come ho votato?
 
-No. Dopo che almeno tre persone hanno votato, un coordinatore può verificare se hai votato, ma non può associare il tuo nome a un voto inviato tramite l'applicazione. Finché i voti sono meno di tre, la tua partecipazione resta nascosta.
+No. Dopo che ha votato un numero sufficiente di persone, chi può vedere i risultati può vedere se hai votato. Nessuno può associarti a un voto inviato tramite l'applicazione. Fino ad allora, il fatto che tu abbia votato o meno resta nascosto.
 
 <!-- translation-section: can-i-see-my-vote-after-submitting-it -->
 
@@ -193,7 +197,7 @@ No. Il voto produce solo una conferma sullo schermo e aggiorna il tuo registro d
 
 ### Un sondaggio pubblico rivela più informazioni?
 
-L'accesso pubblico può permettere di vedere il sondaggio e i risultati aggregati dopo la sua chiusura. Non rende visibili i registri di partecipazione con i nomi né i singoli voti anonimi.
+Dopo la chiusura di un sondaggio pubblico, chiunque può vedere i risultati e chi ha partecipato. Non può vedere i singoli voti né i dettagli sull'appartenenza al gruppo e sugli inviti.
 
 <!-- translation-section: is-anonymous-voting-suitable-for-every-election -->
 

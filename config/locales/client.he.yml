@@ -1616,6 +1616,7 @@ he:
     title_label: כותרת
     title_placeholder: 'לדוגמא: מתאם או מאפשר'
     updated: כותרת החברות עודכנה
+    weight_label: משקל הצבעה
   user_name_modal:
     user_name_updated: שם המשתמש עודכן
     set_user_name: הגדר שם משתמש
@@ -2010,6 +2011,7 @@ he:
     vote_share_requirement: דרישת שיעור ההצבעה
     for_the_proposal_to_pass: כדי שההצעה תעבור, אופציה זו חייבת לקבל...
     for_the_poll_to_be_valid: כדי ש-%{poll_type} יהיה תקף, אפשרות זו חייבת לקבל...
+    points_cast: נקודות שהוטל
   poll_common:
     superseded: הוחלף
     outdated: מְיוּשָׁן
@@ -2120,6 +2122,12 @@ he:
     status: סטָטוּס
     your_vote_is_requested: הצבעתך מתבקשת
     browse_example_make_a_copy_hint: "<b>לחץ על סמל ההעתקה</b> כדי ליצור תבנית סקר חדשה, תוך שימוש בדוגמה כנקודת התחלה."
+    view_votes: הצג הצבעות
+    weighted_votes: קולות משוקללים
+    weighted_points: נקודות משוקללות
+    pct_of_weighted_votes: אחוז מהקולות המשוקללים
+    pct_of_weighted_points: אחוז הנקודות המשוקללות
+    weighted_mean: ממוצע משוקלל
   poll_common_attachment_form:
     label: קבצים מצורפים
   poll_common_add_option:
@@ -2188,6 +2196,8 @@ he:
     delegate: נָצִיג
     delegate_popover: נציג הוא חבר קבוצה בעל זכות הצבעה
     delegates: נציגים
+    edit_vote_weights: עריכת משקלי קולות
+    vote_weights_are_defaults: משקלי ברירת המחדל הללו חלים על קולות חדשים. שינויים כאן אינם משפיעים על משקלי קולות שכבר פורסמו.
   polls_panel:
     new_poll: סקר חדש
     any_type: כל הסוגים
@@ -2234,6 +2244,7 @@ he:
     legacy_vote_reasons: נימוקים מהצבעות קודמות
     legacy_vote_reasons_description: נימוקים מהצבעות שניתנו באמצעות פורמט ההצבעה האנונימי הישן מוצגים כטקסט רגיל
     anonymous_voting_participant_notice: ההצבעה אנונימית. לא ניתן לעיין או לשנות את הצבעתך לאחר הגשתה. התוצאות אינן זמינות עד לסיום ההצבעה.
+    votes_have_different_weights: לקולות בסקר זה יש משקלים שונים, כך שחלקם נחשבים יותר מאחרים.
   poll_common_collapsed:
     by_who: על פי %{name}
   poll_common_calendar_invite:
@@ -2302,6 +2313,11 @@ he:
     unredact_reason_helptext: הסיבה לכך שטקסט וקבצים מצורפים יהיו גלויים שוב
     unredact_reason_confirm: סיבה לשחזור
     unredact_reason_success: סיבת ההצבעה שוחזרה
+    all_voters: כל הבוחרים
+    vote_weight_column: משקל הצבעה
+    stance: הַצבָּעָה
+    participation_records_restricted: ניתן לראות מי השתתף לאחר סגירת ההצבעה
+    vote_weight: משקל הצבעה %{weight}
   poll_common_undecided_panel:
     show_undecided: הצג %{count} מתלבטים
     show_invitations: הראה הצעות ממתינות
@@ -2944,9 +2960,37 @@ he:
     stance_reason_required_when_disagreeing: נדרש כאשר אין הסכמה
     stance_reason_required_for_disagree_or_block: נדרש עבור אי הסכמה או חסימה
     stance_reason_required_for_block: נדרש עבור חסימה
+    voters: מצביעים
+    manage_voters: ניהול מצביעים
+    remove_voter: הסר את הבוחר
+    voter_page_count: "%{first}–%{last} מתוך %{total}"
+    vote_weight_for: משקל הצבעה עבור %{name}
+    save_vote_weights: שמירת משקלי הצבעה
+    vote_weights_updated: משקלי הקולות עודכנו
+    set_all: הגדר הכל
+    find_or_invite_voters: מצא או הזמן מצביעים
+    remove_voter_named: הסר את %{name} מהסקר
+    remove_voter_and_any_vote_confirmation: להסיר את %{name} מהסקר הזה? פעולה זו מסירה גם כל הצבעה שהטילו.
+    edit_vote_weight: עריכת משקל ההצבעה
+    edit_vote_weight_for: עריכת משקל ההצבעה עבור %{name} (כרגע %{weight})
+    set_all_vote_weights_title: קבע את כל משקלי הקולות
+    set_all_vote_weights_search_note: זה משנה את משקלי הקולות של כל המצביעים בסקר, כולל אלו מחוץ לתוצאות החיפוש שלך.
+    set_each_member_default_vote_weight: קבע את משקל ההצבעה המוגדר כברירת מחדל עבור כל חבר
+    voters_will_not_be_notified: הבוחרים לא יקבלו הודעה. יש להודיע להם על הסקר בדרך אחרת.
+    give_voters_different_vote_weights: תנו לבוחרים משקלי קולות שונים. התוצאות מציגות גם את הסך הכולל הרגיל וגם את הסך הכולל המשוקלל.
+    issued_vote_weights_will_change: משקלי הקולות שכבר פורסמו ישתנו.
+    weight_for_all: משקל הצבעה לכולם
+    set_all_vote_weights: קבע את כל משקלי הקולות
+    set_all_vote_weights_the_same: קבע את משקלי הקולות של כל הקולות זהים
+    member_vote_weights_hint: מצביעים ללא חברות קבוצתית נוכחית מקבלים משקל קולות של 1
+    weighted_voting: הצבעה משוקללת
+    weighted_voting_is_not_available_with_anonymous_voting: "הצבעה משוקללת אינה זמינה בהצבעה אנונימית"
+    use_weighted_voting: השתמש בהצבעה משוקללת
+    weighted_voting_off_warning: כיבוי הצבעה משוקללת מגדיר את משקל כל הקולות ל-1. כל משקלי הקולות ששיניתם עבור סקר זה יאבדו.
+    weighted_voting_on_group: הפעלת הצבעה משוקללת מעתיקה את משקל ההצבעה המוגדר כברירת מחדל של כל חבר. שאר המצביעים מקבלים משקל הצבעה של 1.
+    weighted_voting_on_direct: הפעלת הצבעה משוקללת מגדירה את משקל כל הצבעה ל-1
   poll_receipts_page:
     participation_status_requires_min_votes: זה מראה מי היה זכאי להצביע. האם כל אדם הצביע מוצג רק לאחר שלפחות %{count} אנשים הצביעו.
-    verify_participants: אימות משתתפים
     see_votes_if_quorum_reached: אם ההצבעה נסגרה והושג המניין החוקי, תראו מי הצביע.
     voter_name: שם הבוחר
     voter_email: דוא"ל הבוחר
@@ -2958,6 +3002,7 @@ he:
     participation_records_explanation: זה מראה מי היה זכאי והאם הוא הצביע. זה לא מראה איך מישהו הצביע.
     voted: הצביעו
     not_voted: לא הצביעו
+    email_addresses_only_for_group_admins: כתובות דוא"ל מוצגות רק למנהלי הקבוצה
   comment_reply_form:
     aria_label: הוסף תגובה
   discussion_template:
@@ -3051,6 +3096,12 @@ he:
     notify_members_or_invite_guests_info: הודע לחברי הקבוצה לפי שמם, או הזמן אנשים שאינם חברים לפי כתובת דוא"ל. אורחים מוזמנים יכולים להשתתף בשרשור זה אך לא תהיה להם גישה לשרשורי קבוצה אחרים.
     notify_members_info: הזן שמות של חברי הקבוצה כדי להודיע להם על שרשור זה.
     specified_voters_only_warning: בשרשור הזה יש סקרים שבהם רק אנשים נבחרים יכולים להצביע. הוספת מישהו באמצעות הטופס הזה לא תעניק לו הצבעה, אלא רק את האפשרות לעקוב ולהגיב. אם ברצונכם להקצות הצבעות, השתמשו ב"הוספת מצביעים" בסקר.
+    manage_thread_members: ניהול חברי שרשור
+    find_or_invite_people: מצא או הזמן אנשים
+    invite_or_notify_explanation: אנשים חדשים יוזמנו לשרשור. אנשים שכבר נמצאים בשרשור יקבלו הודעה שוב.
+    invite_or_notify: הזמנה או הודעה
+    member_page_count: "%{first}–%{last} מתוך %{total}"
+    guest_access_info: אורחים שהוזמנו בדוא"ל יכולים להשתתף בשרשור זה ללא גישה לשרשורי קבוצה אחרים
   poll_common_details_meta:
     opened: נפתח
     opens: נפתח

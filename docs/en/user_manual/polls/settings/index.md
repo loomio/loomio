@@ -69,11 +69,13 @@ Use the pencil icon alongside the voting option to open the edit modal:
 
 <!-- translation-section: opening-time -->
 
-### Opening time
+### Duration
 
 By default, voting opens immediately when you create the poll. If you want to schedule voting to open at a later time, uncheck **Voting opens immediately** and select an opening date and time.
 
 This is useful to give time for discussion before voting opens, or to ensure a poll or proposal is correctly set up and scheduled to happen at the right time.
+
+For example, if your group has several decisions to vote on at an upcoming assembly, you can prepare the polls and add voters in advance, then schedule them all to open when the voting period begins. People can see the polls before they open, but cannot vote early.
 
 When a poll has a scheduled opening time, you can add voters before voting opens. Voters will be notified when voting opens, rather than when they are added.
 
@@ -140,12 +142,7 @@ Available settings depend on the template:
 
 ![](vote_reason_options.png)
 
-The conditional settings follow the voting icon rather than the option name.
-They still apply if you rename Disagree to a term such as Objection. The
-Consent template defaults to **Required for disagree or block**, while the
-Consensus template defaults to **Required for block**. Other templates default
-to **Optional**, except Question rounds where the response itself is required.
-The poll author can change the setting for an individual poll.
+The conditional settings follow the voting icon rather than the option name. They still apply if you rename Disagree to a term such as Objection. The Consent template defaults to **Required for disagree or block**, while the Consensus template defaults to **Required for block**. Other templates default to **Optional**. The poll author can change the setting for an individual poll.
 
 **Limit reason to maximum 500 characters:** Keeping vote reasons short makes them easier to understand. A collection of concise reasons is a great resource for making a decision.  This setting is ticked by default. Untick to allow for longer reasons.
 

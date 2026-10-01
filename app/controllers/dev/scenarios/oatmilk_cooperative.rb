@@ -723,6 +723,18 @@ module Dev::Scenarios::OatmilkCooperative
   def setup_manual_oatmilk_outcome
     _group, coordinator, discussion = create_manual_oatmilk_cooperative
     poll = discussion.polls.find_by!(title: 'Run a six-week returnable bottle trial')
+    # The outcome reports an approval, so the closed results need votes that support it.
+    {
+      coordinator => ['agree', 'The trial budget is practical and includes the expected washing costs.'],
+      User.find_by!(email: 'samira@oatmilk.example') => ['agree', 'The production plan includes enough time for washing checks.'],
+      User.find_by!(email: 'alex@oatmilk.example') => ['abstain', 'I will support whatever the production team decides.']
+    }.each do |voter, (option, reason)|
+      StanceService.update(
+        stance: Stance.find_by!(poll: poll, participant: voter, latest: true),
+        actor: voter,
+        params: {choice: {poll.poll_options.find_by!(icon: option).name => 1}, reason: reason}
+      )
+    end
     PollService.close(poll: poll, actor: coordinator)
 
     if params[:published] == '1'
@@ -831,7 +843,59 @@ module Dev::Scenarios::OatmilkCooperative
     end
 
     sign_in coordinator
-    redirect_to poll_path(poll)
+    redirect_to params[:view] == 'edit' ? "/p/#{poll.key}/edit" : poll_path(poll)
+  end
+
+  # The board decides with vote weight 1. Operations staff take part in the
+  # conversation and vote with vote weight 0, so their votes are on record
+  # without changing the result.
+  def setup_manual_oatmilk_vote_weights
+    group, coordinator, discussion = create_manual_oatmilk_cooperative
+    production_lead = User.find_by!(email: 'samira@oatmilk.example')
+    sales_lead = User.find_by!(email: 'alex@oatmilk.example')
+    board_member = create_manual_oatmilk_member(name: 'Priya Nair', email: 'priya@oatmilk.example')
+    treasurer = create_manual_oatmilk_member(name: 'Tom Walker', email: 'tom@oatmilk.example')
+    operations_coordinator = create_manual_oatmilk_member(name: 'Lena Fischer', email: 'lena@oatmilk.example')
+    [board_member, treasurer, operations_coordinator].each { |member| group.add_member!(member) }
+    {
+      coordinator => ['Board chair', 1],
+      board_member => ['Board member', 1],
+      treasurer => ['Treasurer', 1],
+      production_lead => ['Production lead', 0],
+      sales_lead => ['Sales lead', 0],
+      operations_coordinator => ['Operations coordinator', 0]
+    }.each do |member, (title, weight)|
+      membership = group.memberships.active.find_by!(user: member)
+      membership.update!(title: title, weight: weight)
+      MembershipService.update_user_titles(membership.id)
+    end
+
+    poll = discussion.polls.find_by!(title: 'Run a six-week returnable bottle trial')
+    PollService.invite(
+      poll: poll, actor: coordinator,
+      params: {recipient_user_ids: [board_member.id, treasurer.id, operations_coordinator.id], notify_recipients: false}
+    )
+    poll.update!(weighted_voting: true)
+    if params[:votes] == '1'
+      [
+        [coordinator, 'agree'], [treasurer, 'agree'], [board_member, 'disagree'],
+        [production_lead, 'disagree'], [sales_lead, 'disagree'], [operations_coordinator, 'disagree']
+      ].each do |voter, icon|
+        option = poll.poll_options.find_by!(icon: icon)
+        StanceService.update(
+          stance: poll.stances.latest.find_by!(participant: voter),
+          actor: voter,
+          params: {choice: {option.name => 1}}
+        )
+      end
+    end
+
+    sign_in coordinator
+    redirect_to case params[:view]
+    when 'group' then group_path(group)
+    when 'edit' then "/p/#{poll.key}/edit"
+    else poll_path(poll)
+    end
   end
 
   def setup_manual_oatmilk_stv
@@ -901,6 +965,16 @@ module Dev::Scenarios::OatmilkCooperative
         )
       end
       PollService.close(poll: poll, actor: coordinator)
+    end
+
+    if params[:outcome] == '1'
+      OutcomeService.create(
+        outcome: Outcome.new(
+          poll: poll,
+          statement: 'Samira Patel, Alex Morgan, and Morgan Price are elected to the reusable packaging committee. Their term starts on 1 November, and the committee meets for the first time that week.'
+        ),
+        actor: coordinator
+      )
     end
 
     sign_in coordinator
@@ -1104,7 +1178,7 @@ module Dev::Scenarios::OatmilkCooperative
       OutcomeService.create(
         outcome: Outcome.new(
           poll: poll,
-          statement: 'We will give cafe collections and the washing workflow equal time at the planning meeting, then publish the agreed trial schedule.'
+          statement: manual_oatmilk_poll_type_outcome(poll_type)
         ),
         actor: coordinator
       )
@@ -1251,7 +1325,7 @@ module Dev::Scenarios::OatmilkCooperative
       OutcomeService.create(
         outcome: Outcome.new(
           poll: poll,
-          statement: "The cooperative will proceed with the returnable bottle trial and review collection and washing data after six weeks."
+          statement: manual_oatmilk_proposal_outcome(template_key)
         ),
         actor: coordinator
       )
@@ -1414,6 +1488,27 @@ module Dev::Scenarios::OatmilkCooperative
       'gradients_of_agreement' => 'Support the proposed cafe collection schedule',
       'question' => 'Questions about the returnable bottle trial'
     }.fetch(template_key)
+  end
+
+  # Each outcome follows from the votes cast above: Jamie, Samira, and Alex
+  # choose the first, second, and third options in turn.
+  # Each outcome follows from the votes in manual_oatmilk_poll_type_config.
+  def manual_oatmilk_poll_type_outcome(poll_type)
+    {
+      'poll' => 'Cafe collections will get the most time at the planning meeting. The washing workflow and return-rate reporting will share the remaining time, with the washing workflow first.',
+      'score' => 'We will run the trial at Central Station cafe, which had the highest average score. If Central Station cannot take part, we will choose between Riverside market and University food court, which tied for second.',
+      'dot_vote' => 'The strategy review will spend the most time on financial sustainability, followed by staff development. The other three areas will share one session.',
+      'ranked_choice' => 'We will order the 500 ml amber bottle for the trial. If the supplier cannot deliver it in time, we will use the 500 ml clear bottle.'
+    }.fetch(poll_type)
+  end
+
+  def manual_oatmilk_proposal_outcome(template_key)
+    {
+      'check' => 'The plan needs changes before final review. Jamie will confirm supplier response times and add a weekly return-rate review, then run a Sense check on the revised plan next week.',
+      'advice' => 'I have chosen Riverside Wash as our bottle washing supplier. Following the advice, their contract includes a one-day response time for faults. Deliveries start on 3 November.',
+      'consent' => "Samira's objection is resolved: the supplier has confirmed a one-day response time for faults. The trial starts on 3 November. Jamie is responsible for the collection schedule, and we will review return rates when the six weeks end.",
+      'consensus' => "We have not reached consensus yet. Alex's concern will be addressed by adding a weekly return-rate review to the standard. Jamie will share the revised standard for another Consensus proposal on 20 October."
+    }.fetch(template_key, 'The cooperative will proceed with the returnable bottle trial and review collection and washing data after six weeks.')
   end
 
   def manual_oatmilk_proposal_details(_template_key)

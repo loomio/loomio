@@ -1,10 +1,10 @@
 ---
 title: Umfragevorlagen
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/polls/poll_templates/index.md
+source_revision: 71554be8e61a76613b0707b8262302c22299a5d0
+source_file: docs/en/user_manual/polls/poll_templates/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: f11182d62d99dbcc
   voting-methods-and-templates: 24be471686aa2dfd
@@ -15,7 +15,7 @@ sections:
   voting-method: 761137852812fea8
   example-title-details-and-tags: 9dbbd0510d2d6cc1
   response-options: 727afbf0dcea6069
-  duration-and-settings: dc1fb9123eb808df
+  duration-and-settings: a364411a3bebb3ae
   save-and-test-the-template: 8c48386c69ea309a
   manage-the-template-list: 0c124d7958c3f80a
 generated:
@@ -28,7 +28,7 @@ generated:
   voting-method: 7d6f49b469bacc87
   example-title-details-and-tags: 02d141e47cae957a
   response-options: f1f1312a9e64c1c2
-  duration-and-settings: a4dec9b41383ae83
+  duration-and-settings: 40f0712596c33bcc
   save-and-test-the-template: d0fef729ad0f499e
   manage-the-template-list: dd3168390a569c89
 title_source: 114cca246e357304
@@ -142,7 +142,7 @@ Lege eine Standarddauer fest, die für die meisten Anwendungen der Vorlage passt
 
 ![](poll_type_duration.png)
 
-Weitere Voreinstellungen regeln, wer Ergebnisse sehen kann, anonymes Abstimmen, die Pflicht zur Begründung einer Stimme, Erinnerungen, das Quorum und methodenspezifisches Verhalten. Die Auswirkungen werden unter [Einstellungen für Vorschläge und Umfragen](../settings/) erklärt.
+Weitere Voreinstellungen regeln, wer Ergebnisse sehen kann, anonymes Abstimmen, [gewichtete Abstimmung](../weighted_voting/), die Pflicht zur Begründung einer Stimme, Erinnerungen, das Quorum und methodenspezifisches Verhalten. Die Auswirkungen werden unter [Einstellungen für Vorschläge und Umfragen](../settings/) erklärt.
 
 <!-- translation-section: save-and-test-the-template -->
 

@@ -21,6 +21,8 @@ export default {
     includeActor: Boolean,
     excludeMembers: Boolean,
     hideCount: Boolean,
+    hideEmptyMenu: Boolean,
+    preserveSearchOnBlur: Boolean,
     excludedAudiences: {
       type: Array,
       default() { return []; }
@@ -42,6 +44,7 @@ export default {
       suggestions: [],
       availableAudiences: [],
       recipients: [],
+      menu: false,
       loading: false,
       currentUserId: Session.user().id
     };
@@ -70,7 +73,10 @@ export default {
       this.fetchAndUpdateSuggestions();
     },
 
+    suggestions() { this.syncMenu(); },
+
     recipients(val) {
+      this.syncMenu();
       this.newRecipients(val);
       this.$emit('new-recipients', val);
       this.updateSuggestions();
@@ -84,7 +90,32 @@ export default {
       return Boolean(user && group && user.delegates && user.delegates[group.id]);
     },
     updateQuery(q) {
-      this.query = q
+      const query = q || '';
+      // In multiple mode Vuetify clears search on blur; keep the voter filter until an explicit clear or selection.
+      if (this.preserveSearchOnBlur && !query && this.query && !this.recipients.length && document.activeElement !== this.$el.querySelector('input')) return;
+      this.query = query;
+      this.$emit('update:search', this.query);
+      this.fetchAndUpdateSuggestions();
+    },
+    // With hideEmptyMenu, the menu never opens empty. Search results arrive
+    // after a debounced request, and Vuetify's own hide-no-data would leave the
+    // menu closed, so open it when results arrive for a query being typed.
+    // Otherwise Vuetify opens the menu on focus and click as usual.
+    updateMenu(open) {
+      if (!this.hideEmptyMenu) { return; }
+      this.menu = open && this.hasShownSuggestions;
+    },
+    syncMenu() {
+      if (!this.hideEmptyMenu) { return; }
+      if (!this.hasShownSuggestions) {
+        this.menu = false;
+      } else if (this.query && this.$el.contains(document.activeElement)) {
+        this.menu = true;
+      }
+    },
+    clearSearch() {
+      this.query = '';
+      this.$emit('update:search', '');
       this.fetchAndUpdateSuggestions();
     },
     fetchChatbots() {
@@ -109,6 +140,7 @@ export default {
           q: this.query,
           per: 20,
           include_actor: (this.includeActor && 1) || null,
+          exclude_members: (this.excludeMembers && 1) || null,
           ...existingOnly,
           ...this.model.bestNamedId()
         }})
@@ -279,6 +311,13 @@ export default {
     canAddGuests() { return AbilityService.canAddGuests(this.model); },
     canNotifyGroup() { return AbilityService.canAnnounce(this.model); },
     modelName() { return this.model.constructor.singular; },
+    // Bind menu only in hideEmptyMenu mode: Vuetify treats any bound menu prop,
+    // even undefined, as controlled, which would keep other forms' menus closed.
+    menuProps() { return this.hideEmptyMenu ? {menu: this.menu} : {}; },
+    // Selected recipients stay in suggestions but hide-selected keeps them out of the menu.
+    hasShownSuggestions() {
+      return this.suggestions.some(s => !this.recipients.some(r => r.type === s.type && r.id === s.id));
+    },
 
     audiences() {
       if (this.recipients.length > 0) { return []; }
@@ -306,25 +345,37 @@ div.recipients-autocomplete
     multiple
     return-object
     hide-selected
+    clearable
     auto-select-first
     clear-on-select
     v-model='recipients'
+    :search="query"
+    v-bind="menuProps"
     @update:search="updateQuery"
+    @update:menu="updateMenu"
+    @click:clear="clearSearch"
     item-title='name'
     item-value='id'
     :loading="loading"
     :label="label"
     :placeholder="placeholder"
     :items='suggestions'
+    :hide-no-data="hideEmptyMenu || (recipients.length > 0 && !query)"
     autocomplete='off'
   )
+    template(v-slot:details)
+      notifications-count(
+        v-if="!hideCount && recipients.length"
+        :model="model"
+        :exclude-members="excludeMembers"
+        :include-actor="includeActor")
     template(v-slot:no-data)
-      v-list-item
+      v-list-item.recipients-autocomplete__no-data
         template(v-slot:prepend)
           common-icon(v-if="!query" name="mdi-account-search")
           common-icon(v-if="query" name="mdi-information-outline")
         v-list-item-title
-          span(v-if="query" v-t="'common.no_results_found'")
+          span(v-if="query") {{ $t('common.no_results_found') }}
           span(v-else)
             span(v-if="canAddGuests" v-t="'announcement.search_by_name_or_email'")
             span(v-if="!canAddGuests" v-t="'announcement.search_by_name'")
@@ -390,9 +441,4 @@ div.recipients-autocomplete
         //-     span ({{ $t('common.you') }})
         v-list-item-subtitle(v-if="internalItem.raw.user && internalItem.raw.user.email && (internalItem.raw.user.email != internalItem.raw.user.name)")
           span {{internalItem.raw.user.email}}
-  notifications-count(
-    v-show="!hideCount && recipients.length"
-    :model='model'
-    :exclude-members="excludeMembers"
-    :include-actor="includeActor")
 </template>

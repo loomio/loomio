@@ -1,6 +1,6 @@
 ---
 title: Asetukset
-source_revision: 6b2c4d5c591a9eb139fc64370d602b8dcf19c0e4
+source_revision: 9c60c42fc739483fa23f15d9f34a1e9245518092
 source_file: docs/en/user_manual/polls/settings/index.md
 translated:
   provider: codex/gpt-6.1-sol
@@ -12,11 +12,11 @@ sections:
   add-content: f622e36a3ad15e4e
   voting-options: d0ea31745ce8b651
   edit-voting-options: ef0d61585b34fbd6
-  opening-time: 13aa5e4392d1ba60
+  opening-time: 2fdf358a34805114
   more-settings: fd837a51b81cbc13
   reminder: e6ac37324b884958
   anonymous-voting: 4fde93187ffd1a86
-  vote-reason: ce00fe99ebac71ff
+  vote-reason: b1ebf2700ce8248b
   hide-results: c0873aeafe8feb59
   start-the-poll: 8e7d8e81db57f4f8
   managing-polls: b26fc41e19371d54
@@ -34,11 +34,11 @@ generated:
   add-content: 4807e367233c8b8c
   voting-options: d084dd59e938ca7c
   edit-voting-options: 176f32369a40c7a5
-  opening-time: b8101c68534893fc
+  opening-time: '0507287c094056b6'
   more-settings: 52929ce7488bbd4c
   reminder: 33a56f7e0e2de3de
   anonymous-voting: a2b02f8b3181c726
-  vote-reason: 0a1063c49c8c6fee
+  vote-reason: 246f0f7f05958bee
   hide-results: 1e909d873e140166
   start-the-poll: a18ab01326475ff0
   managing-polls: 736846c8c0a7c63a
@@ -123,11 +123,13 @@ Avaa muokkausikkuna äänestysvaihtoehdon vieressä olevalla kynäkuvakkeella:
 
 <!-- translation-section: opening-time -->
 
-### Avaamisaika
+### Kesto
 
 Äänestys alkaa oletusarvoisesti heti, kun luot kyselyn. Jos haluat aloittaa äänestyksen myöhemmin, poista valinta kohdasta **Äänestys alkaa heti** ja valitse avaamispäivä ja -aika.
 
 Näin voit jättää aikaa keskustelulle ennen äänestyksen alkua tai valmistella kyselyn tai ehdotuksen etukäteen ja ajoittaa sen oikein.
+
+Jos ryhmäsi esimerkiksi äänestää useista päätöksistä tulevassa kokouksessa, voit valmistella kyselyt ja lisätä äänestäjät etukäteen sekä ajastaa kaikki kyselyt avautumaan äänestysajan alkaessa. Ihmiset näkevät kyselyt ennen niiden avautumista, mutta eivät voi äänestää etukäteen.
 
 Jos olet ajastanut kyselyn avaamisen, voit lisätä äänestäjiä ennen äänestyksen alkua. He saavat ilmoituksen äänestyksen alkaessa eivätkä silloin, kun lisäät heidät.
 
@@ -181,16 +183,14 @@ Lue [Anonyymi äänestys](/en/user_manual/polls/anonymous_voting) -sivulta, mite
 Käytettävissä olevat asetukset riippuvat mallista:
 
 - **Valinnainen** antaa äänestäjän päättää, antaako hän perustelun
-- **Pakollinen eri mieltä olemisen tai estämisen yhteydessä** edellyttää perustelua, kun valittu vaihtoehto
-  käyttää Eri mieltä- tai Estä-äänestyskuvaketta
-- **Pakollinen estettäessä** edellyttää perustelua, kun valittu vaihtoehto käyttää
-  Estä-äänestyskuvaketta
+- **Pakollinen eri mieltä olemisen tai estämisen yhteydessä** edellyttää perustelua, kun valittu vaihtoehto käyttää Eri mieltä- tai Estä-äänestyskuvaketta
+- **Pakollinen estettäessä** edellyttää perustelua, kun valittu vaihtoehto käyttää Estä-äänestyskuvaketta
 - **Pakollinen** edellyttää perustelua kaikilta äänestäjiltä
 - **Liikuntarajoitteinen** poistaa äänestyksen perustelukentän
 
 ![](vote_reason_options.png)
 
-Ehdolliset asetukset perustuvat äänestyskuvakkeeseen eivätkä vaihtoehdon nimeen. Ne ovat voimassa, vaikka nimeäisit Eri mieltä -vaihtoehdon esimerkiksi Vastustukseksi. Suostumusmallissa oletusasetus on **Pakollinen eri mieltä olemisen tai estämisen yhteydessä** ja konsensusmallissa **Pakollinen estettäessä**. Muissa malleissa oletusasetus on **Valinnainen**, paitsi kysymyskierroksessa, jossa vastaus on pakollinen. Kyselyn laatija voi muuttaa yksittäisen kyselyn asetusta.
+Ehdolliset asetukset perustuvat äänestyskuvakkeeseen eivätkä vaihtoehdon nimeen. Ne ovat voimassa, vaikka nimeäisit Eri mieltä -vaihtoehdon esimerkiksi Vastustukseksi. Suostumusmallissa oletusasetus on **Pakollinen eri mieltä olemisen tai estämisen yhteydessä** ja konsensusmallissa **Pakollinen estettäessä**. Muissa malleissa oletusasetus on **Valinnainen**. Kyselyn laatija voi muuttaa yksittäisen kyselyn asetusta.
 
 **Rajoita perustelu enintään 500 merkkiin:** Lyhyitä äänestysperusteluja on helpompi ymmärtää. Ytimekkäät perustelut tukevat päätöksentekoa. Tämä asetus on oletuksena valittuna. Poista valinta, jos haluat sallia pidemmät perustelut.
 

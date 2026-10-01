@@ -40,6 +40,19 @@ class Api::V1::StancesController < Api::V1::RestfulController
     respond_with_recent_stances
   end
 
+  def set_weight
+    self.resource = Stance.latest.find(params[:id])
+    StanceService.set_weight stance: resource, weight: params.require(:weight), actor: current_user
+    respond_with_resource
+  end
+
+  def reset_weights
+    mode = params[:mode] || 'value'
+    weight = params.require(:weight) if mode == 'value'
+    StanceService.reset_weights(poll: Poll.find(params.require(:poll_id)), mode: mode, weight: weight, actor: current_user)
+    render json: {updated: true}
+  end
+
   def redact
     load_resource
     StanceService.redact(stance: resource, actor: current_user)
@@ -86,39 +99,23 @@ class Api::V1::StancesController < Api::V1::RestfulController
   end
 
   def users
-    if load_and_authorize(:poll).detached_anonymous?
-      current_user.ability.authorize!(:add_voters, @poll)
-      collection = User.where(id: @poll.anonymous_poll_voters.select(:voter_id))
-      if query = params[:query].presence
-        collection = collection.where(
-          "users.name ILIKE :first OR users.name ILIKE :last OR users.email ILIKE :first OR users.username ILIKE :first",
-          first: "#{query}%",
-          last: "% #{query}%"
-        )
-      end
-      self.collection = collection
-      add_voter_role_meta(collection.pluck(:id))
-      return respond_with_collection serializer: AuthorSerializer, root: :users
+    poll = load_and_authorize(:poll)
+    current_user.ability.authorize!(:add_voters, poll)
+    voters = poll.unmasked_voters
+    if query = params[:query].presence
+      voters = voters.invitable_search(query)
     end
 
-    instantiate_collection do |collection|
-      current_user.ability.authorize!(:add_voters, @poll)
-
-      if query = params[:query]
-        collection = collection.
-          joins('LEFT OUTER JOIN users on stances.participant_id = users.id').
-          where("users.name ilike :first OR
-                 users.name ilike :last OR
-                 users.email ilike :first OR
-                 users.username ilike :first",
-                 first: "#{query}%", last: "% #{query}%")
-      end
-
-      user_ids = collection.pluck(:participant_id)
-      add_voter_role_meta(user_ids)
-      User.where(id: collection.pluck(:participant_id))
+    self.collection_count = voters.count
+    # Sort by the original voter record so later vote revisions do not move a voter to the top.
+    added_order = if poll.anonymous?
+      "(SELECT anonymous_poll_voters.id FROM anonymous_poll_voters WHERE anonymous_poll_voters.poll_id = #{poll.id} AND anonymous_poll_voters.voter_id = users.id) DESC"
+    else
+      "(SELECT MIN(stances.id) FROM stances WHERE stances.poll_id = #{poll.id} AND stances.participant_id = users.id) DESC"
     end
-    respond_with_collection serializer: AuthorSerializer
+    self.collection = page_collection(voters.order(Arel.sql(added_order)))
+    add_voter_role_meta(collection.ids)
+    respond_with_collection serializer: AuthorSerializer, root: :users
   end
 
   def my_stances
@@ -156,6 +153,11 @@ class Api::V1::StancesController < Api::V1::RestfulController
     self.add_meta :guest_ids, @poll.topic.topic_readers.guests.pluck(:user_id) & user_ids
     self.add_meta :group_admin_ids, @poll.group.admins.pluck(:user_id) & user_ids
     self.add_meta :topic_admin_ids, @poll.topic.topic_readers.admins.pluck(:user_id) & user_ids
+    if @poll.weighted_voting? && @poll.closed_at.nil?
+      stance_rows = @poll.stances.latest.where(participant_id: user_ids).pluck(:participant_id, :id, :weight)
+      self.add_meta :stance_ids_by_user_id, stance_rows.to_h { |user_id, stance_id, _| [user_id, stance_id] }
+      self.add_meta :weights_by_user_id, stance_rows.to_h { |user_id, _, weight| [user_id, VoteWeight.format(weight)] }
+    end
   end
 
   def live_update_outdated_stances(poll)

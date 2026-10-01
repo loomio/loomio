@@ -1,10 +1,10 @@
 ---
 title: 投票テンプレート
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/polls/poll_templates/index.md
+source_revision: 9c60c42fc739483fa23f15d9f34a1e9245518092
+source_file: docs/en/user_manual/polls/poll_templates/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: f11182d62d99dbcc
   voting-methods-and-templates: 24be471686aa2dfd
@@ -15,7 +15,7 @@ sections:
   voting-method: 761137852812fea8
   example-title-details-and-tags: 9dbbd0510d2d6cc1
   response-options: 727afbf0dcea6069
-  duration-and-settings: dc1fb9123eb808df
+  duration-and-settings: a364411a3bebb3ae
   save-and-test-the-template: 8c48386c69ea309a
   manage-the-template-list: 0c124d7958c3f80a
 generated:
@@ -28,7 +28,7 @@ generated:
   voting-method: 62a8d8b7c9230d0a
   example-title-details-and-tags: 82dad9351ebaf9a1
   response-options: 319b224e97bedd95
-  duration-and-settings: 25d80a1a7bf71893
+  duration-and-settings: 5510c0924ba67d27
   save-and-test-the-template: ba098e444a6aeb1e
   manage-the-template-list: 6999662f488a13d9
 title_source: 114cca246e357304
@@ -142,7 +142,7 @@ title_generated: 9112f2db22c72b79
 
 ![](poll_type_duration.png)
 
-ほかの初期設定では、結果の公開範囲、匿名投票、投票理由の必須設定、リマインダー、定足数、投票方法ごとの動作を指定できます。各設定の効果は、[提案と投票の設定](../settings/)を参照してください。
+ほかの初期設定では、結果の公開範囲、匿名投票、[加重投票](../weighted_voting/)、投票理由の必須設定、リマインダー、定足数、投票方法ごとの動作を指定できます。各設定の効果は、[提案と投票の設定](../settings/)を参照してください。
 
 <!-- translation-section: save-and-test-the-template -->
 

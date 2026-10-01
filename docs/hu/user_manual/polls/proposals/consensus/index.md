@@ -1,24 +1,26 @@
 ---
 title: Konszenzus
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/polls/proposals/consensus/index.md
+source_revision: 9c60c42fc739483fa23f15d9f34a1e9245518092
+source_file: docs/en/user_manual/polls/proposals/consensus/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: af2e2a50e8c0b440
   when-to-use-consensus: fc7f6180345f73a3
   example-adopt-a-bottle-return-standard: 9b0915ee6f41fa54
   set-up-the-proposal: b35a641ec031a40b
   vote: f7dbea12e2d6261a
-  read-the-results: d7d1bfae079d04ec
+  read-the-results: e60abb3a43a86d6e
+  share-an-outcome: a7febe19484c20b3
 generated:
   introduction: c83eafe1b80f1de6
   when-to-use-consensus: 866213412217e3be
   example-adopt-a-bottle-return-standard: 7458130564304ed2
   set-up-the-proposal: 1d0261d142e5e5fb
   vote: 2c8da18306170c54
-  read-the-results: 34beb254af66d14c
+  read-the-results: c6b71a29717320a2
+  share-an-outcome: 291993f5ef9cb0a4
 title_source: 8abe09bf65aefdb8
 title_generated: 7f64315ae26feb4c
 ---
@@ -69,4 +71,10 @@ A diagram a válaszok megoszlását mutatja. Nézd át az összes ellenző vála
 
 ![](../proposal_consensus_results.png)
 
-Ha a csoport egyetértésre jut, tedd közzé a végleges szabályt és a felelősségeket rögzítő következtetést. Ellenkező esetben rögzítsd, min változtattok, és mikor tér vissza a csoport a javaslathoz.
+<!-- translation-section: share-an-outcome -->
+
+## Következtetés megosztása
+
+Amikor a javaslat lezárul, oszd meg a következtetést. Ha a csoport egyetértésre jutott, rögzítsd a végleges megállapodást és a felelősöket. Ellenkező esetben rögzítsd, min változtattok, és mikor tér vissza a csoport a javaslathoz. A következtetések használatáról a [Következtetés megosztása](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome) részben olvashatsz.
+
+![Következtetés arról, hogy nem született konszenzus, és a szabályt módosítani fogják](outcome.png)

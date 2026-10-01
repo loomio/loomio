@@ -1,24 +1,26 @@
 ---
 title: Score
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/polls/score/index.md
+source_revision: 9c60c42fc739483fa23f15d9f34a1e9245518092
+source_file: docs/en/user_manual/polls/score/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 7881bcdd5aad5df4
   when-to-use-score: 0ef92ec0bb907a3f
   example-score-possible-trial-locations: 3c9438177a822198
   set-up-the-poll: 29b0296533594cd6
   vote: 1113501e9e6736b7
-  read-the-results: f773aa25f47c325b
+  read-the-results: 3e996e9bcc830d1d
+  share-an-outcome: 243aaac17e645331
 generated:
   introduction: 334a886b96b388bd
   when-to-use-score: 500a0f0b9532566c
   example-score-possible-trial-locations: e8e08431bdcf6293
   set-up-the-poll: 8f20d88c114a8a23
   vote: a97372206fb5a6b1
-  read-the-results: e44036cac31672d7
+  read-the-results: c63799c217beaa11
+  share-an-outcome: b79946aee4a22e8f
 title_source: 38e5a46cbc5ad328
 title_generated: 38e5a46cbc5ad328
 ---
@@ -85,4 +87,12 @@ Voor elke optie tonen de resultaten:
 
 In dit voorbeeld heeft **het café bij het Centraal Station** met 7,5 de hoogste gemiddelde score. **De kantoren aan de haven** hebben met 5,25 de laagste gemiddelde score. De markt aan de rivier en de foodcourt van de universiteit staan allebei op 7. Vier van de vijf uitgenodigde mensen hebben gestemd. De groep kan dus ook zien dat er nog één stem ontbreekt.
 
-Vergelijk gemiddelde scores alleen als ongeveer evenveel mensen de opties hebben beoordeeld. Lees de toelichtingen bij de stemmen voordat je een klein verschil betekenis geeft. Publiceer daarna een uitkomst waarin je uitlegt welke actie op basis van de scores volgt.
+Vergelijk gemiddelde scores alleen als ongeveer evenveel mensen de opties hebben beoordeeld. Lees de toelichtingen bij de stemmen voordat je een klein verschil betekenis geeft.
+
+<!-- translation-section: share-an-outcome -->
+
+## Deel een conclusie
+
+Deel een conclusie wanneer de peiling sluit. Geef aan welke actie op basis van de scores volgt en hoe je eventuele gelijke scores afhandelt. Lees [Deel een conclusie](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome) voor uitleg over hoe conclusies werken.
+
+![Een conclusie waarin de locatie met de hoogste gemiddelde score wordt gekozen](outcome.png)

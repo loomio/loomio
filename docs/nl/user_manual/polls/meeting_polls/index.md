@@ -1,20 +1,20 @@
 ---
 title: Moment bevragen
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/polls/meeting_polls/index.md
+source_revision: 9c60c42fc739483fa23f15d9f34a1e9245518092
+source_file: docs/en/user_manual/polls/meeting_polls/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 8ab9108683132085
   time-poll: d5d5d81f7de10419
   voting: c50083234167a0f9
-  outcome: 20d3f84d36a3b860
+  outcome: 74db36d36fa18798
 generated:
   introduction: d35a340dabce79e0
   time-poll: cf0b7c27e21f5ef5
   voting: 1ce3bc81a96783eb
-  outcome: c85d109bcb83fb86
+  outcome: bfc2d41d39af23e7
 title_source: 8e2a07d7257fbc04
 title_generated: d6a157812dac4d19
 ---
@@ -63,9 +63,9 @@ Tijdens het stemmen worden de resultaten bijgewerkt in een tabel die laat zien w
 
 <!-- translation-section: outcome -->
 
-### Conclusie
+### Deel een conclusie
 
-Kies na het sluiten van de peiling het beste tijdstip en publiceer een conclusie.
+Kies na het sluiten van de peiling het beste tijdstip en deel een conclusie. Lees [Deel een conclusie](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome) voor uitleg over hoe conclusies werken.
 
 ![](timepoll_outcome.png)
 
@@ -77,6 +77,6 @@ Kies na het sluiten van de peiling het beste tijdstip en publiceer een conclusie
 
 **Locatie**: Voeg een fysieke locatie of een link naar de vergadering toe
 
-**Verklaring**: Vat de conclusie samen en voeg eventuele instructies voor de vergadering toe
+**Verklaring**: Vat het resultaat samen en voeg eventuele instructies voor de vergadering toe
 
 Loomio vermeldt het gekozen tijdstip, de naam, de duur, de locatie en de verklaring in de melding over de conclusie en de agenda-uitnodiging.

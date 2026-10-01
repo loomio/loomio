@@ -1,18 +1,18 @@
 ---
 title: Запросити до голосування
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/polls/inviting_people/index.md
+source_revision: 9c60c42fc739483fa23f15d9f34a1e9245518092
+source_file: docs/en/user_manual/polls/inviting_people/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 0635cf23fcaaa95b
   invite-people-to-vote-in-a-poll: cfbf5caf71d1d5ca
   invite-guests-or-experts: 0717537bbd36fa07
   invite-a-subgroup-to-vote: 3ac684bdca4b3365
   engage-people-while-a-poll-is-running: 69971de8d56c0a74
-  add-voters-to-the-poll: 904f682bab618ce3
-  remove-people-from-the-poll: d204dd916f5418e2
+  add-voters-to-the-poll: 48f3b4a1edb5a037
+  remove-people-from-the-poll: ceec3f0319728807
   remind-people-to-vote: 177c881cb1b0dfb9
   view-notification-history: 52d930341c048008
   close-early: 0c46e8066719fc2f
@@ -23,8 +23,8 @@ generated:
   invite-guests-or-experts: 5430e3b083ee8a0a
   invite-a-subgroup-to-vote: a4f8041158d26a41
   engage-people-while-a-poll-is-running: 0b0f127b241bc7d1
-  add-voters-to-the-poll: 66fc811d0794507b
-  remove-people-from-the-poll: ac677d31ae279bec
+  add-voters-to-the-poll: 99b5eadf6836a7f0
+  remove-people-from-the-poll: b035f87e24190324
   remind-people-to-vote: 9772bbaa8d9cf7fd
   view-notification-history: 30832745902b006f
   close-early: 1c6ec53a5870fbd2
@@ -86,9 +86,9 @@ title_generated: ba22e8121d90784a
 
 ### Додайте виборців до опитування
 
-Ви можете додати нових людей до опитування будь-коли, зокрема до початку голосування в запланованому опитуванні.
+ви можете додати нових людей до опитування будь-коли, зокрема до початку голосування в запланованому опитуванні.
 
-Виберіть **Додати виборців**, а потім введіть імена або адреси електронної пошти людей, яких хочете додати.
+Виберіть **Керування виборцями**, щоб відкрити вікно керування виборцями. ви можете запросити всіх у групі, додати учасників за іменами або гостей за адресами електронної пошти, якщо запрошення гостей дозволено. Введення тексту в полі **Знайти або запросити виборців** також фільтрує людей, уже доданих до опитування. Першими відображаються виборці, додані останніми; скористайтеся елементами керування сторінками, щоб переглянути повний список.
 
 Якщо початок голосування заплановано на певний час і голосування ще не почалося, виборці не отримають сповіщення одразу. Їх сповістять, коли голосування почнеться.
 
@@ -96,13 +96,15 @@ title_generated: ba22e8121d90784a
 
 ### Вилучіть людей з опитування
 
-Виберіть **Додати виборців**, знайдіть ім’я людини, відкрийте меню з трьома крапками поруч із ним і виберіть **Вилучити з пропозиції**.
+Виберіть **Керування виборцями**, знайдіть ім’я людини у вікні керування виборцями, натисніть кнопку з кошиком поруч із ним і підтвердьте дію **Видалити виборця**.
+
+![Кнопка з кошиком поруч із виборцем у вікні керування виборцями](proposal_invite_remove.png)
 
 З анонімного опитування не можна вилучати людей.
 
 Наприклад, координатор, який створив опитування для членів правління, може вилучити себе, якщо не має права голосувати.
 
-![](proposal_invite_remove.png)
+В опитуваннях із вагою голосів це саме вікно дає координаторам опитування змогу [переглядати й редагувати вагу голосів](/en/user_manual/polls/weighted_voting).
 
 <!-- translation-section: remind-people-to-vote -->
 

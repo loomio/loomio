@@ -1,10 +1,10 @@
 ---
 title: Ранг
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/polls/rank/index.md
+source_revision: 9c60c42fc739483fa23f15d9f34a1e9245518092
+source_file: docs/en/user_manual/polls/rank/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-30'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 9908dff1f0045200
   when-to-use-rank: f47d22e4968f74dd
@@ -12,6 +12,7 @@ sections:
   set-up-the-poll: 8a5902b708d6e7be
   vote: b089c2c5b7504b5d
   read-the-results: 18fbb0f9a5a866bc
+  share-an-outcome: c9dcebf155d64c65
 generated:
   introduction: bf19fde4456e5d4f
   when-to-use-rank: c26ea1ee6e3d8fee
@@ -19,6 +20,7 @@ generated:
   set-up-the-poll: 3cb7bb770c7449e8
   vote: 0fba566febe52e35
   read-the-results: f532bef6b531cc75
+  share-an-outcome: e1b73db62ed40f63
 title_source: a4130d7d2c3a137f
 title_generated: 15589d51e08a4b07
 ---
@@ -86,3 +88,11 @@ title_generated: 15589d51e08a4b07
 У гэтым прыкладзе **бурштынавая бутэлька 500 мл** займае першае месца. За ёй ідуць **празрыстая бутэлька 500 мл** і **бурштынавая бутэлька 750 мл**. Група можа спачатку вывучыць найбольш пажаданы дызайн, а астатнія разглядаць як альтэрнатывы ў атрыманым парадку.
 
 Адна і тая ж сума балаў можа складацца з розных пераваг выбаршчыкаў. Калі варыянты маюць блізкія вынікі або рашэнне мае істотныя наступствы, праглядзіце асобныя бюлетэні і абгрунтаванні галасоў.
+
+<!-- translation-section: share-an-outcome -->
+
+## Падзяліцеся высновай
+
+Калі апытанне закрыецца, падзяліцеся высновай. Укажыце, які варыянт група будзе рэалізоўваць і што будзе далей, калі рэалізаваць яго не ўдасца. Пра тое, як працуюць высновы, чытайце ў раздзеле [Падзяліцеся высновай](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome).
+
+![Выснова з выбарам дызайну бутэлькі, які заняў першае месца](outcome.png)

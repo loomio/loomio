@@ -42,29 +42,11 @@ class Views::NotificationMailer::Poll::Results::Simple < Views::ApplicationMaile
         plain(@poll.closed_at ? t(:"poll_common.results") : t(:"poll_common.current_results"))
       end
     when 'name'
-      th(class: "email-table-left") { plain t('common.option') }
-    when 'votes_cast_percent'
-      th(class: "email-table-right") { plain t('poll_ranked_choice_form.pct_of_votes_cast') }
-    when 'score_percent'
-      th(class: "email-table-right") { plain t('poll_ranked_choice_form.pct_of_points') }
-    when 'voter_percent'
-      th(class: "email-table-right") { plain t('poll_ranked_choice_form.pct_of_voters') }
-    when 'target_percent'
-      th(class: "email-table-right") { plain t('poll_count_form.pct_of_target') }
-    when 'rank'
-      th(class: "email-table-right") { plain t('poll_ranked_choice_form.rank') }
-    when 'score'
-      th(class: "email-table-right") { plain t('poll_ranked_choice_form.points') }
-    when 'average'
-      th(class: "email-table-right") { plain t('poll_ranked_choice_form.mean') }
-    when 'votes'
-      th(class: "email-table-right") { plain t('poll_common.votes') }
-    when 'stv_status'
-      th(class: "email-table-right") { plain t('poll_common.status') }
-    when 'voter_count'
-      th(class: "email-table-right") { plain t('membership_card.voters') }
+      th(class: "email-table-left") { plain t(@poll.result_heading_key(col)) }
     when 'voters'
       th(class: "email-table-left")
+    else
+      th(class: "email-table-right") { plain t(@poll.result_heading_key(col)) }
     end
   end
 
@@ -96,6 +78,8 @@ class Views::NotificationMailer::Poll::Results::Simple < Views::ApplicationMaile
       td(class: "email-table-right") { plain option[:rank].to_s }
     when 'score'
       td(class: "email-table-right") { plain option[:score].to_s }
+    when 'unweighted_score'
+      td(class: "email-table-right") { plain option[:unweighted_score].to_s }
     when 'voter_count', 'votes'
       td(class: "email-table-right") { plain option[:voter_count].to_s }
     when 'average'

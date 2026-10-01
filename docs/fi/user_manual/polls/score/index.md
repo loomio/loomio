@@ -1,24 +1,26 @@
 ---
 title: Pisteytys
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/polls/score/index.md
+source_revision: 9c60c42fc739483fa23f15d9f34a1e9245518092
+source_file: docs/en/user_manual/polls/score/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 7881bcdd5aad5df4
   when-to-use-score: 0ef92ec0bb907a3f
   example-score-possible-trial-locations: 3c9438177a822198
   set-up-the-poll: 29b0296533594cd6
   vote: 1113501e9e6736b7
-  read-the-results: f773aa25f47c325b
+  read-the-results: 3e996e9bcc830d1d
+  share-an-outcome: 243aaac17e645331
 generated:
   introduction: 75e5412423e51b50
   when-to-use-score: 2e699bfbf9f8f55a
   example-score-possible-trial-locations: 9c495407e5041276
   set-up-the-poll: 40622886f3bf045f
   vote: aff239a480d9d9ca
-  read-the-results: eaa29e93edddf5a9
+  read-the-results: a1cc62a7fa45fc2b
+  share-an-outcome: c724d51be44838c4
 title_source: 38e5a46cbc5ad328
 title_generated: 204f0c0fae94e97b
 ---
@@ -85,4 +87,12 @@ Tuloksissa näkyy jokaiselle vaihtoehdolle:
 
 Tässä esimerkissä **Central Station cafen** keskiarvo on korkein, 7,5. **Harbour officesin** keskiarvo on matalin, 5,25. Riverside marketin ja University food courtin keskiarvo on kummankin 7. Kutsutuista viidestä henkilöstä neljä on äänestänyt, joten ryhmä näkee myös, että yksi vastaus puuttuu.
 
-Vertaa keskiarvoja vain silloin, kun vaihtoehdoilla on suunnilleen yhtä monta äänestäjää. Lue äänestysten perustelut ennen kuin pidät pientä eroa merkityksellisenä. Julkaise lopuksi päätelmä, jossa kerrot, mihin toimiin pisteiden perusteella ryhdytään.
+Vertaa keskiarvoja vain silloin, kun vaihtoehdoilla on suunnilleen yhtä monta äänestäjää. Lue äänestysten perustelut ennen kuin pidät pientä eroa merkityksellisenä.
+
+<!-- translation-section: share-an-outcome -->
+
+## Jaa päätelmä
+
+Kun äänestys päättyy, jaa päätelmä. Kerro, mihin toimiin pisteiden perusteella ryhdytään ja miten mahdolliset tasatilanteet ratkaistaan. Lue päätelmien käytöstä kohdasta [Jaa päätelmä](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome).
+
+![Päätelmä, jossa valitaan sijainti, jolla on korkein pisteiden keskiarvo](outcome.png)

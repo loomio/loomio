@@ -1,0 +1,133 @@
+{
+ "source": "Dundee City Council, 2022 local government election, Ward 5 - Maryfield, official CandidateVotesPerStageReport_V0001_Ward-5---Maryfield_06052022_144732.pdf: https://www.dundeecity.gov.uk/local-elections-2022/local-elections-2022-results",
+ "seats": 3,
+ "valid_votes": 4213,
+ "quota": "1054",
+ "stages": [
+  {
+   "votes": {
+    "Georgia CRUICKSHANK": "953.00000",
+    "Rebecca DEWAR": "198.00000",
+    "Ewan GURR": "34.00000",
+    "Sundas KAMRAN": "214.00000",
+    "Ken LYNN": "1037.00000",
+    "Danielle MARR": "371.00000",
+    "Lynne SHORT": "960.00000",
+    "Martha Elizabeth SMART": "446.00000"
+   },
+   "non_transferable": "0.00000",
+   "elected": [],
+   "excluded": [],
+   "surplus": null
+  },
+  {
+   "votes": {
+    "Georgia CRUICKSHANK": "957.00000",
+    "Rebecca DEWAR": "202.00000",
+    "Ewan GURR": "0.00000",
+    "Sundas KAMRAN": "218.00000",
+    "Ken LYNN": "1037.00000",
+    "Danielle MARR": "376.00000",
+    "Lynne SHORT": "962.00000",
+    "Martha Elizabeth SMART": "453.00000"
+   },
+   "non_transferable": "8.00000",
+   "elected": [],
+   "excluded": [
+    "Ewan GURR"
+   ],
+   "surplus": null
+  },
+  {
+   "votes": {
+    "Georgia CRUICKSHANK": "1017.00000",
+    "Rebecca DEWAR": "0.00000",
+    "Ewan GURR": "0.00000",
+    "Sundas KAMRAN": "226.00000",
+    "Ken LYNN": "1042.00000",
+    "Danielle MARR": "414.00000",
+    "Lynne SHORT": "974.00000",
+    "Martha Elizabeth SMART": "493.00000"
+   },
+   "non_transferable": "47.00000",
+   "elected": [],
+   "excluded": [
+    "Rebecca DEWAR"
+   ],
+   "surplus": null
+  },
+  {
+   "votes": {
+    "Georgia CRUICKSHANK": "1062.00000",
+    "Rebecca DEWAR": "0.00000",
+    "Ewan GURR": "0.00000",
+    "Sundas KAMRAN": "0.00000",
+    "Ken LYNN": "1093.00000",
+    "Danielle MARR": "430.00000",
+    "Lynne SHORT": "1005.00000",
+    "Martha Elizabeth SMART": "517.00000"
+   },
+   "non_transferable": "106.00000",
+   "elected": [
+    "Georgia CRUICKSHANK",
+    "Ken LYNN"
+   ],
+   "excluded": [
+    "Sundas KAMRAN"
+   ],
+   "surplus": null
+  },
+  {
+   "votes": {
+    "Georgia CRUICKSHANK": "1062.00000",
+    "Rebecca DEWAR": "0.00000",
+    "Ewan GURR": "0.00000",
+    "Sundas KAMRAN": "0.00000",
+    "Ken LYNN": "1054.00000",
+    "Danielle MARR": "430.53520",
+    "Lynne SHORT": "1038.43216",
+    "Martha Elizabeth SMART": "519.28352"
+   },
+   "non_transferable": "108.74912",
+   "elected": [],
+   "excluded": [],
+   "surplus": "Ken LYNN"
+  },
+  {
+   "votes": {
+    "Georgia CRUICKSHANK": "1054.00000",
+    "Rebecca DEWAR": "0.00000",
+    "Ewan GURR": "0.00000",
+    "Sundas KAMRAN": "0.00000",
+    "Ken LYNN": "1054.00000",
+    "Danielle MARR": "432.18427",
+    "Lynne SHORT": "1039.55413",
+    "Martha Elizabeth SMART": "521.15096"
+   },
+   "non_transferable": "112.11064",
+   "elected": [],
+   "excluded": [],
+   "surplus": "Georgia CRUICKSHANK"
+  },
+  {
+   "votes": {
+    "Georgia CRUICKSHANK": "1054.00000",
+    "Rebecca DEWAR": "0.00000",
+    "Ewan GURR": "0.00000",
+    "Sundas KAMRAN": "0.00000",
+    "Ken LYNN": "1054.00000",
+    "Danielle MARR": "0.00000",
+    "Lynne SHORT": "1058.95252",
+    "Martha Elizabeth SMART": "597.57623"
+   },
+   "non_transferable": "448.47125",
+   "elected": [
+    "Lynne SHORT"
+   ],
+   "excluded": [
+    "Danielle MARR"
+   ],
+   "surplus": null
+  }
+ ]
+}

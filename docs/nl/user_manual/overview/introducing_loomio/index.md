@@ -1,10 +1,10 @@
 ---
 title: Loomio introduceren in je groep
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/overview/introducing_loomio/index.md
+source_revision: 9c60c42fc739483fa23f15d9f34a1e9245518092
+source_file: docs/en/user_manual/overview/introducing_loomio/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 3937e28d4932fd6d
   choose-one-useful-starting-point: 990ae1af5bf58d27
@@ -16,7 +16,7 @@ sections:
   invite-people: 40058431249a070e
   help-everyone-participate-once: 94babb6a295b7f66
   use-notifications-deliberately: a532d30c36993c6a
-  complete-the-first-process: 48fdb4622d159044
+  complete-the-first-process: fd49ec812c1265e7
 generated:
   introduction: 3e797d66f17d53b1
   choose-one-useful-starting-point: 9b36b50de7fe788b
@@ -28,7 +28,7 @@ generated:
   invite-people: d029204e9b394125
   help-everyone-participate-once: 610e8cb1894aaefa
   use-notifications-deliberately: c6e5bbaa7c0c642e
-  complete-the-first-process: e45ad4064420a309
+  complete-the-first-process: 98ca76c4c2873217
 title_source: 4f1540fbaadc657b
 title_generated: 300099ed6c52365d
 ---
@@ -175,7 +175,7 @@ Laat met het eerste proces alle stappen zien:
 2. Nodig mensen uit om mee te praten of vragen te stellen wanneer dat nodig is.
 3. Start het passende voorstel of de passende peiling.
 4. Herinner mensen die nog niet hebben deelgenomen er zo nodig aan.
-5. Publiceer een [conclusie](/en/user_manual/polls/outcomes) waarin staat wat is besloten en wat er daarna gebeurt.
+5. Publiceer een [conclusie](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome) waarin staat wat is besloten en wat er daarna gebeurt.
 
 De conclusie rondt het proces af en legt de beslissing vast, zodat leden die later kunnen terugvinden. Vraag daarna wat goed werkte, pas het proces aan en kies het volgende terugkerende onderwerp om in Loomio te behandelen.
 

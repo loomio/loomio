@@ -1603,6 +1603,7 @@ ja:
     title_label: タイトル
     title_placeholder: '例: 「コーディネーター」または「ファシリテーター」'
     updated: 会員タイトルを更新しました
+    weight_label: 投票権
   user_name_modal:
     user_name_updated: ユーザー名が更新されました
     set_user_name: ユーザー名を設定する
@@ -1990,6 +1991,7 @@ ja:
     vote_share_requirement: 投票シェア要件
     for_the_proposal_to_pass: 提案が承認されるには、このオプションの承認を得る必要があります…
     for_the_poll_to_be_valid: "%{poll_type} を有効にするには、このオプションが受信される必要があります…"
+    points_cast: 得点
   poll_common:
     superseded: 置き換えられました
     outdated: 時代遅れ
@@ -2100,6 +2102,12 @@ ja:
     status: 状態
     your_vote_is_requested: あなたの投票をお願いします
     browse_example_make_a_copy_hint: "<b>コピーアイコンをクリックすると</b>、サンプルを参考に新しいアンケートテンプレートを作成できます。"
+    view_votes: 投票を見る
+    weighted_votes: 加重投票
+    weighted_points: 加重ポイント
+    pct_of_weighted_votes: 加重投票の割合
+    pct_of_weighted_points: 加重ポイントの割合
+    weighted_mean: 加重平均
   poll_common_attachment_form:
     label: 添付ファイル
   poll_common_add_option:
@@ -2168,6 +2176,8 @@ ja:
     delegate: 委任する
     delegate_popover: 代表者は投票権を持つグループメンバーである
     delegates: 代表者
+    edit_vote_weights: 投票の重みを編集する
+    vote_weights_are_defaults: これらのデフォルトの投票重みは、新規投票に適用されます。ここでの変更は、既に発行された投票重みには影響しません。
   polls_panel:
     new_poll: 新しい投票
     any_type: いろんなタイプ
@@ -2214,6 +2224,7 @@ ja:
     legacy_vote_reasons: 過去の投票理由
     legacy_vote_reasons_description: 従来の匿名投票形式で行われた投票の理由は、プレーンテキストで表示されます
     anonymous_voting_participant_notice: 投票は匿名で行われます。投票送信後は、投票内容を確認したり変更したりすることはできません。投票結果は、投票締め切り後に公開されます。
+    votes_have_different_weights: この投票では、投票ごとに重みが異なるため、一部の投票は他の投票よりも重要度が高くなります。
   poll_common_collapsed:
     by_who: "%{name} による"
   poll_common_calendar_invite:
@@ -2282,6 +2293,11 @@ ja:
     unredact_reason_helptext: テキストと添付ファイルが再び表示される理由
     unredact_reason_confirm: 理性を回復する
     unredact_reason_success: 投票理由が復元されました
+    all_voters: すべての有権者
+    vote_weight_column: 投票権
+    stance: 投票する
+    participation_records_restricted: 投票終了後、誰が参加したかを確認できます
+    vote_weight: 投票の重み %{weight}
   poll_common_undecided_panel:
     show_undecided: "%{count} を表示するかどうかは未定"
     show_invitations: 保留中の招待状を表示
@@ -2924,9 +2940,37 @@ ja:
     stance_reason_required_when_disagreeing: 意見が合わない場合に必要
     stance_reason_required_for_disagree_or_block: 反対またはブロックするには必須
     stance_reason_required_for_block: ブロックに必要
+    voters: 有権者
+    manage_voters: 有権者の管理
+    remove_voter: 有権者を削除する
+    voter_page_count: "%{first}～%{last} / %{total}"
+    vote_weight_for: "%{name}への投票重み"
+    save_vote_weights: 投票の重みを保存する
+    vote_weights_updated: 投票の重みが更新されました
+    set_all: すべて設定
+    find_or_invite_voters: 有権者を探す、または招待する
+    remove_voter_named: 投票から%{name}を削除
+    remove_voter_and_any_vote_confirmation: この投票から%{name}を削除しますか？そうすると、%{name}が行った投票もすべて削除されます。
+    edit_vote_weight: 投票の重みを編集する
+    edit_vote_weight_for: "%{name}の投票重みを編集します（現在の重みは%{weight}です）"
+    set_all_vote_weights_title: すべての投票の重みを設定する
+    set_all_vote_weights_search_note: これにより、検索結果に含まれないユーザーも含め、投票に参加するすべてのユーザーの投票重みが変更されます。
+    set_each_member_default_vote_weight: 各メンバーのデフォルトの投票重みを設定する
+    voters_will_not_be_notified: 有権者には通知されません。別の方法で投票について知らせてください。
+    give_voters_different_vote_weights: 有権者に異なる投票重みを与える。結果は、単純な合計値と重み付けされた合計値の両方を示す。
+    issued_vote_weights_will_change: 既に発行された投票権の重み付けは変更されます。
+    weight_for_all: 全員の投票権
+    set_all_vote_weights: すべての投票の重みを設定する
+    set_all_vote_weights_the_same: すべての投票の重みを同じに設定する
+    member_vote_weights_hint: 現在グループに所属していない有権者は、1票の投票権を持つ
+    weighted_voting: 加重投票
+    weighted_voting_is_not_available_with_anonymous_voting: "匿名投票では加重投票を使用できません"
+    use_weighted_voting: 加重投票を使用する
+    weighted_voting_off_warning: 加重投票を無効にすると、すべての投票の重みが1に設定されます。この投票で変更した投票の重みはすべて失われます。
+    weighted_voting_on_group: 加重投票を有効にすると、各メンバーのデフォルトの投票重みがコピーされます。その他の投票者には投票重み1が割り当てられます。
+    weighted_voting_on_direct: 加重投票を有効にすると、すべての投票の重みが1に設定されます
   poll_receipts_page:
     participation_status_requires_min_votes: 投票資格があった人を表示します。各人が投票したかどうかは、少なくとも%{count}人が投票した場合にのみ表示されます。
-    verify_participants: 参加者を確認する
     see_votes_if_quorum_reached: 投票が終了し、定足数に達した場合は、誰が投票したかが表示されます。
     voter_name: 投票者名
     voter_email: 有権者メール
@@ -2938,6 +2982,7 @@ ja:
     participation_records_explanation: これは、誰が投票資格を有していたか、そして投票したかどうかを示しています。誰がどのように投票したかは示していません。
     voted: 投票済み
     not_voted: 未投票
+    email_addresses_only_for_group_admins: メールアドレスはグループ管理者のみに表示されます
   comment_reply_form:
     aria_label: 返信を追加
   discussion_template:
@@ -3031,6 +3076,12 @@ ja:
     notify_members_or_invite_guests_info: グループメンバーには名前で通知するか、非メンバーにはメールアドレスで招待してください。招待されたゲストはこのスレッドに参加できますが、他のグループスレッドにはアクセスできません。
     notify_members_info: このスレッドについて通知するグループメンバーの名前を入力してください。
     specified_voters_only_warning: このスレッドには、投票できる人が限定されているアンケートがあります。このフォームで誰かを追加しても投票権は付与されず、経過を見守ってコメントできるようになるだけです。投票権を付与したい場合は、アンケートの"投票者を追加"を使用してください。
+    manage_thread_members: スレッドメンバーを管理する
+    find_or_invite_people: 人を探したり招待したりする
+    invite_or_notify_explanation: 新規参加者はスレッドに招待されます。既にスレッドに参加している方には、改めて通知されます。
+    invite_or_notify: 招待または通知する
+    member_page_count: "%{first}～%{last} / %{total}"
+    guest_access_info: メールで招待されたゲストは、他のグループスレッドにアクセスすることなく、このスレッドに参加できます。
   poll_common_details_meta:
     opened: オープンしました
     opens: 開く

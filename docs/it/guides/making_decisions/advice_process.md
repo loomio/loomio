@@ -1,10 +1,10 @@
 ---
 title: Processo di consulenza
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/guides/making_decisions/advice_process.md
+source_revision: 9c60c42fc739483fa23f15d9f34a1e9245518092
+source_file: docs/en/guides/making_decisions/advice_process.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-30'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: '0994471ee964501f'
   key-points: 66f32f2b3cf56e0d
@@ -15,7 +15,7 @@ sections:
   step-0-you-notice-a-problem-or-opportunity-and-take-the-initiative: bf6c40b5883bb4d8
   step-1-seek-input-to-sound-out-perspectives-before-proposing-action: 1ead1a7a23e4efad
   step-2-clarify-and-strengthen-the-advice-through-discussion: a3b5393138bde245
-  step-3-make-a-decision-with-advice-and-inform-people: e6213c8e90b5d392
+  step-3-make-a-decision-with-advice-and-inform-people: c55b6d9c9ad0961c
 generated:
   introduction: 36ef684b96b2ab87
   key-points: 60f054d0b8298524
@@ -26,7 +26,7 @@ generated:
   step-0-you-notice-a-problem-or-opportunity-and-take-the-initiative: ac4f37ba0d7158be
   step-1-seek-input-to-sound-out-perspectives-before-proposing-action: 50cc4b050a7e7aa4
   step-2-clarify-and-strengthen-the-advice-through-discussion: d8149064df328094
-  step-3-make-a-decision-with-advice-and-inform-people: fa167c1e82810e99
+  step-3-make-a-decision-with-advice-and-inform-people: 7cbd8a8fb6192ae6
 title_source: 290fb74b7be97f31
 title_generated: 97c3072251f88ae4
 ---
@@ -116,7 +116,7 @@ Man mano che riceve consigli e commenti, Takashi si fa un'idea più chiara della
 
 ### Fase 3. Prendi una decisione tenendo conto dei consigli e informa le persone
 
-Quando tutti hanno dato il loro consiglio, o la proposta si chiude, Takashi prende una decisione e pubblica la **[conclusione](/en/user_manual/polls/outcomes/)**.
+Quando tutti hanno dato il loro consiglio, o la proposta si chiude, Takashi prende una decisione e pubblica la **[conclusione](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome)**.
 
 La conclusione comunica chiaramente la decisione presa e che cosa succederà. Diventa un documento importante per l'organizzazione.
 

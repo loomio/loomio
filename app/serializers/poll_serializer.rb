@@ -6,7 +6,6 @@ class PollSerializer < ApplicationSerializer
              :author_id,
              :anonymous,
              :legacy_anonymous_vote_reasons_count,
-             :voting_system,
              :anonymous_voter_eligible,
              :anonymous_ballot_submitted,
              :can_respond_maybe,
@@ -35,6 +34,7 @@ class PollSerializer < ApplicationSerializer
              :poll_option_name_format,
              :results,
              :result_columns,
+             :result_heading_keys,
              :reason_prompt,
              :shuffle_options,
              :show_none_of_the_above,
@@ -62,7 +62,8 @@ class PollSerializer < ApplicationSerializer
              :quorum_count,
              :quorum_votes_required,
              :topic_id,
-             :group_id
+             :group_id,
+             :weighted_voting
 
   has_one :author, serializer: AuthorSerializer, root: :users
   has_one :current_outcome, serializer: OutcomeSerializer, root: :outcomes
@@ -111,7 +112,7 @@ class PollSerializer < ApplicationSerializer
   end
 
   def participation_visible?
-    !object.detached_anonymous? || object.closed?
+    !object.anonymous? || object.closed?
   end
 
   def include_cast_stances_pct?
@@ -131,8 +132,14 @@ class PollSerializer < ApplicationSerializer
   end
 
   def results
-    undecided_voter_ids = cache_fetch(:undecided_voter_ids_by_poll_id, object.id) { object.undecided_voters.ids }
-    PollService.calculate_results(object, poll_options, undecided_voter_ids: undecided_voter_ids)
+    # A known-missing cache entry means the poll has no such voters.
+    undecided_voter_ids = cache_fetch(:undecided_voter_ids_by_poll_id, object.id) { object.undecided_voters.ids } || []
+    none_of_the_above_voter_ids = cache_fetch(:none_of_the_above_voter_ids_by_poll_id, object.id) { object.none_of_the_above_voters.ids } || []
+    PollService.calculate_results(
+      object, poll_options,
+      undecided_voter_ids: undecided_voter_ids,
+      none_of_the_above_voter_ids: none_of_the_above_voter_ids
+    )
   end
 
   def include_results?
@@ -156,7 +163,7 @@ class PollSerializer < ApplicationSerializer
   end
 
   def anonymous_voter
-    return unless object.detached_anonymous? && scope[:current_user_id]
+    return unless object.anonymous? && scope[:current_user_id]
 
     @anonymous_voter ||= object.anonymous_poll_voters.find_by(voter_id: scope[:current_user_id])
   end
@@ -170,7 +177,7 @@ class PollSerializer < ApplicationSerializer
   end
 
   def legacy_anonymous_vote_reasons_count
-    return 0 unless object.closed? && object.detached_anonymous?
+    return 0 unless object.closed? && object.anonymous?
 
     object.legacy_anonymous_vote_reasons.count
   end
@@ -178,11 +185,11 @@ class PollSerializer < ApplicationSerializer
   # Voter state belongs to the current user. Shared payloads omit it rather
   # than send false, which would overwrite each recipient's own state.
   def include_anonymous_voter_eligible?
-    object.detached_anonymous? && scope[:current_user_id].present?
+    object.anonymous? && scope[:current_user_id].present?
   end
 
   def include_anonymous_ballot_submitted?
-    object.detached_anonymous? && scope[:current_user_id].present?
+    object.anonymous? && scope[:current_user_id].present?
   end
 
   def current_outcome
@@ -214,6 +221,6 @@ class PollSerializer < ApplicationSerializer
   end
 
   def include_my_stance?
-    !object.detached_anonymous? && my_stance.present?
+    !object.anonymous? && my_stance.present?
   end
 end

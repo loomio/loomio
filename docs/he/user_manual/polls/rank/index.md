@@ -1,10 +1,10 @@
 ---
 title: דַרגָה
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/polls/rank/index.md
+source_revision: 9c60c42fc739483fa23f15d9f34a1e9245518092
+source_file: docs/en/user_manual/polls/rank/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 9908dff1f0045200
   when-to-use-rank: f47d22e4968f74dd
@@ -12,6 +12,7 @@ sections:
   set-up-the-poll: 8a5902b708d6e7be
   vote: b089c2c5b7504b5d
   read-the-results: 18fbb0f9a5a866bc
+  share-an-outcome: c9dcebf155d64c65
 generated:
   introduction: 2718e807a4397698
   when-to-use-rank: cf066cda4ff2c44e
@@ -19,6 +20,7 @@ generated:
   set-up-the-poll: d3598cc3ca4d024f
   vote: 7ee9b6ba903c6abe
   read-the-results: e4a6825fe0efd18b
+  share-an-outcome: 7746315ac32ddcf3
 title_source: a4130d7d2c3a137f
 title_generated: '0034899935f2ca64'
 ---
@@ -86,3 +88,11 @@ title_generated: '0034899935f2ca64'
 בדוגמה זו, **בקבוק ענברי בנפח 500 מ״ל** מדורג ראשון, ואחריו **בקבוק שקוף בנפח 500 מ״ל** ו**בקבוק ענברי בנפח 750 מ״ל**. הקבוצה יכולה לבדוק תחילה את העיצוב המועדף ולשמור את סדר האפשרויות הנותרות כחלופות.
 
 תוצאה המבוססת על נקודות עשויה להסתיר דפוסי העדפה שונים שמובילים לאותו סכום. כשהתוצאות קרובות או כשההחלטה משמעותית, כדאי לעיין בהצבעות האישיות ובנימוקי ההצבעה.
+
+<!-- translation-section: share-an-outcome -->
+
+## שיתוף מסקנה
+
+לאחר סגירת הסקר, יש לשתף מסקנה. יש לציין איזו אפשרות הקבוצה תקדם ומה יקרה אם לא יהיה ניתן לממש אותה. להסבר על מסקנות, ניתן לעיין ב[שיתוף מסקנה](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome).
+
+![מסקנה שבה נבחר עיצוב הבקבוק שדורג במקום הראשון](outcome.png)

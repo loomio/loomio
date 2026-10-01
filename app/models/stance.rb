@@ -114,6 +114,7 @@ class Stance < ApplicationRecord
   validate :valid_reason_required
   validate :poll_id_cannot_change, on: :update
   validate :poll_is_not_anonymous
+  before_validation :clamp_weight_without_vote_weights
 
   %w[group mailer group_id discussion_id discussion members voters tags topic topic_id].each do |message|
     delegate(message, to: :poll)
@@ -131,6 +132,7 @@ class Stance < ApplicationRecord
       poll_id: poll_id,
       participant_id: participant_id,
       inviter_id: inviter_id,
+      weight: weight,
       reason_format: reason_format,
       latest: true
     )
@@ -150,6 +152,10 @@ class Stance < ApplicationRecord
 
   def author_name
     participant&.name
+  end
+
+  def clamp_weight_without_vote_weights
+    self.weight = 1 if poll && !poll.weighted_voting?
   end
 
   def assign_option_scores

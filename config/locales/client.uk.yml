@@ -1621,6 +1621,7 @@ uk:
     title_label: назва
     title_placeholder: Напр. "Координатор" або "Фасілітатор"
     updated: Назву учасника оновлено
+    weight_label: Вага голосів
   user_name_modal:
     user_name_updated: Ім'я користувача оновлено
     set_user_name: Встановити ім'я користувача
@@ -2017,6 +2018,7 @@ uk:
     vote_share_requirement: Вимога щодо частки голосів
     for_the_proposal_to_pass: Щоб пропозиція була прийнята, цей варіант має отримати…
     for_the_poll_to_be_valid: Щоб %{poll_type} був дійсним, цей параметр має отримати…
+    points_cast: Очки нараховані
   poll_common:
     superseded: Замінено
     outdated: Застаріла
@@ -2127,6 +2129,12 @@ uk:
     status: Статус
     your_vote_is_requested: Запитується ваш голос
     browse_example_make_a_copy_hint: "<b>Натисніть значок копіювання</b> , щоб створити новий шаблон опитування, використовуючи приклад як відправну точку."
+    view_votes: Переглянути голоси
+    weighted_votes: Зважені голоси
+    weighted_points: Зважені бали
+    pct_of_weighted_votes: "% зважених голосів"
+    pct_of_weighted_points: "% зважених балів"
+    weighted_mean: Середньозважене значення
   poll_common_attachment_form:
     label: Вкладення
   poll_common_add_option:
@@ -2195,6 +2203,8 @@ uk:
     delegate: Делегувати
     delegate_popover: Делегат — це член групи з правом голосу
     delegates: Делегати
+    edit_vote_weights: Редагувати вагу голосів
+    vote_weights_are_defaults: Ці значення ваги голосів за замовчуванням застосовуються до нових голосів. Зміни, зазначені тут, не впливають на вже надані значення ваги голосів.
   polls_panel:
     new_poll: Нове опитування
     any_type: Усі типи
@@ -2243,6 +2253,7 @@ uk:
     legacy_vote_reasons: Причини попередніх голосів
     legacy_vote_reasons_description: Причини голосів, поданих із використанням застарілого формату анонімного голосування, відображаються як звичайний текст
     anonymous_voting_participant_notice: Голосування анонімне. Ви не можете переглянути або змінити свій голос після його подання. Результати будуть доступні лише після завершення голосування.
+    votes_have_different_weights: Голоси в цьому опитуванні мають різну вагу, тому деякі важать більше, ніж інші.
   poll_common_collapsed:
     by_who: від %{name}
   poll_common_calendar_invite:
@@ -2311,6 +2322,11 @@ uk:
     unredact_reason_helptext: Причина, чому текст і вкладення знову стануть видимими
     unredact_reason_confirm: Причина відновлення
     unredact_reason_success: Причину голосування відновлено
+    all_voters: Усі виборці
+    vote_weight_column: Вага голосів
+    stance: Голосувати
+    participation_records_restricted: Ви можете побачити, хто взяв участь, після завершення голосування
+    vote_weight: Вага голосів %{weight}
   poll_common_undecided_panel:
     show_undecided: Показати %{count} не визначилися
     show_invitations: Показати запрошення в очікувані
@@ -2955,9 +2971,37 @@ uk:
     stance_reason_required_when_disagreeing: Обов'язково у разі незгоди
     stance_reason_required_for_disagree_or_block: Обов'язково для незгоди або блокування
     stance_reason_required_for_block: Обов'язково для блокування
+    voters: Виборці
+    manage_voters: Керування виборцями
+    remove_voter: Видалити виборця
+    voter_page_count: "%{first}–%{last} від %{total}"
+    vote_weight_for: Вага голосів за %{name}
+    save_vote_weights: Зберегти вагу голосів
+    vote_weights_updated: Вага голосів оновлена
+    set_all: Встановити все
+    find_or_invite_voters: Знайти або запросити виборців
+    remove_voter_named: Видалити %{name} з опитування
+    remove_voter_and_any_vote_confirmation: Видалити %{name} з цього опитування? Це також видаляє будь-які голоси, віддані цим користувачем.
+    edit_vote_weight: Змінити вагу голосів
+    edit_vote_weight_for: Редагувати вагу голосу для %{name} (наразі %{weight})
+    set_all_vote_weights_title: Встановити всі ваги голосів
+    set_all_vote_weights_search_note: Це змінює вагу голосів усіх виборців в опитуванні, включаючи тих, хто не входить до результатів пошуку.
+    set_each_member_default_vote_weight: Встановити вагу голосу кожного учасника за замовчуванням
+    voters_will_not_be_notified: Виборців не буде повідомлено. Повідомте їх про опитування іншим способом.
+    give_voters_different_vote_weights: Надайте виборцям різну вагу голосів. Результати показують як звичайні, так і зважені підсумки.
+    issued_vote_weights_will_change: Вже оприлюднені вагові коефіцієнти голосування зміняться.
+    weight_for_all: Вага голосу для всіх
+    set_all_vote_weights: Встановити всі ваги голосів
+    set_all_vote_weights_the_same: Встановити однакову вагу голосів для всіх
+    member_vote_weights_hint: Виборці, які не мають поточного членства в групі, отримують вагу голосу 1
+    weighted_voting: Зважене голосування
+    weighted_voting_is_not_available_with_anonymous_voting: "Зважене голосування недоступне при анонімному голосуванні"
+    use_weighted_voting: Використовуйте зважене голосування
+    weighted_voting_off_warning: Вимкнення зваженого голосування встановлює вагу кожного голосу на 1. Будь-які ваги голосів, які ви змінили для цього опитування, будуть втрачені.
+    weighted_voting_on_group: Увімкнення зваженого голосування копіює вагу голосу кожного члена за замовчуванням. Інші виборці отримують вагу голосу, що дорівнює 1.
+    weighted_voting_on_direct: Увімкнення зваженого голосування встановлює вагу кожного голосу на 1
   poll_receipts_page:
     participation_status_requires_min_votes: Тут показано, хто мав право голосувати. Інформація про те, чи проголосувала кожна людина, відображається лише після того, як проголосують щонайменше %{count} людини.
-    verify_participants: Перевірити учасників
     see_votes_if_quorum_reached: Якщо голосування завершено і досягнуто кворуму, ви побачите, хто проголосував.
     voter_name: Ім'я виборця
     voter_email: Електронна адреса виборця
@@ -2969,6 +3013,7 @@ uk:
     participation_records_explanation: Це показує, хто мав право голосувати і чи голосував він. Це не показує, як хто голосував.
     voted: Проголосував(-ла)
     not_voted: Не проголосував(-ла)
+    email_addresses_only_for_group_admins: Адреси електронної пошти відображаються лише адміністраторам групи
   comment_reply_form:
     aria_label: Додати відповідь
   discussion_template:
@@ -3062,6 +3107,12 @@ uk:
     notify_members_or_invite_guests_info: Повідомляти учасників групи за іменем або запрошувати тих, хто не є учасниками, за адресою електронної пошти. Запрошені гості можуть брати участь у цьому обговоренні, але не матимуть доступу до інших обговорень групи.
     notify_members_info: Введіть імена учасників групи, щоб повідомити їх про цей обговорення.
     specified_voters_only_warning: У цій темі є опитування, де можуть голосувати лише вибрані люди. Додавання когось за допомогою цієї форми не дасть йому голосу, а лише можливість стежити за обговоренням і коментувати. Якщо ви хочете надати голоси, використовуйте в опитуванні "додати голосувальників".
+    manage_thread_members: Керування учасниками ланцюжка повідомлень
+    find_or_invite_people: Знайти або запросити людей
+    invite_or_notify_explanation: Нові учасники будуть запрошені до теми. Учасники, які вже беруть участь у темі, отримають сповіщення.
+    invite_or_notify: Запросити або повідомити
+    member_page_count: "%{first}–%{last} від %{total}"
+    guest_access_info: Гості, запрошені електронною поштою, можуть брати участь у цьому обговоренні без доступу до інших обговорень групи
   poll_common_details_meta:
     opened: Відкрито
     opens: Відкривається

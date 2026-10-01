@@ -14,26 +14,9 @@ class Views::Chatbot::Matrix::Simple < Views::Chatbot::Base
             case col
             when 'pie', 'bar', 'grid'
               th { @poll.closed_at ? t(:"poll_common.results") : t(:"poll_common.current_results") }
-            when 'name'
-              th { t('common.option') }
-            when 'score_percent'
-              th { t('poll_ranked_choice_form.pct_of_points') }
-            when 'votes_cast_percent'
-              th { t('poll_ranked_choice_form.pct_of_votes_cast') }
-            when 'voter_percent'
-              th { t('poll_ranked_choice_form.pct_of_voters') }
-            when 'rank'
-              th { t('poll_ranked_choice_form.rank') }
-            when 'score'
-              th { t('poll_ranked_choice_form.points') }
-            when 'average'
-              th { t('poll_ranked_choice_form.mean') }
-            when 'stv_status'
-              th { t('poll_common.status') }
-            when 'voter_count'
-              th { t('membership_card.voters') }
-            when 'votes'
-              th { t('poll_common.votes') }
+            when 'name', 'score_percent', 'votes_cast_percent', 'voter_percent', 'rank', 'score',
+                 'unweighted_score', 'average', 'stv_status', 'voter_count', 'votes'
+              th { t(@poll.result_heading_key(col)) }
             when 'voters'
               th
             end
@@ -60,6 +43,8 @@ class Views::Chatbot::Matrix::Simple < Views::Chatbot::Base
                 td { option[:rank].to_s }
               when 'score'
                 td { option[:score].to_s }
+              when 'unweighted_score'
+                td { option[:unweighted_score].to_s }
               when 'voter_count', 'votes'
                 td { option[:voter_count].to_s }
               when 'average'

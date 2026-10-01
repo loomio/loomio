@@ -1,10 +1,10 @@
 ---
 title: Vorschläge und Umfragen
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/polls/intro_to_decisions/index.md
+source_revision: 71554be8e61a76613b0707b8262302c22299a5d0
+source_file: docs/en/user_manual/polls/intro_to_decisions/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: d7cf8a871d9af6ea
   find-the-right-help: 4bb04c002cbbde42
@@ -14,7 +14,12 @@ sections:
   choose-whether-to-use-a-discussion: fbe0fe9415feadae
   in-a-discussion: d57d23917bab162a
   without-a-discussion: 87efa5071bb33a34
-  what-happens-next: de5cc2b17603d0ce
+  what-happens-next: 7fe113c92c0a58bd
+  1-create-it: 865fde10233c86d2
+  2-voting-opens: 571a77b9c70569d3
+  3-people-vote: 71061d516df57dab
+  4-it-closes: c0376a9026d18bc3
+  5-share-an-outcome: 8339cb332cd8a946
 generated:
   introduction: '09ebeafa2ac9a6ef'
   find-the-right-help: acc7b98e900ddacc
@@ -24,7 +29,12 @@ generated:
   choose-whether-to-use-a-discussion: '3736847817680258'
   in-a-discussion: bba61d9bef7b4397
   without-a-discussion: a9ea7c47e1723634
-  what-happens-next: a42c3a1f702432c7
+  what-happens-next: 926110046d628df3
+  1-create-it: 11afa465106fdab6
+  2-voting-opens: 2fb5f9a0f04e84f8
+  3-people-vote: 6ad026c6f6be99fd
+  4-it-closes: 3718edf7f6edcba5
+  5-share-an-outcome: 5bf560b67703e0ca
 title_source: d45b4ba3cb7a27cb
 title_generated: 06a783699efefdc4
 ---
@@ -110,8 +120,48 @@ Wenn du nur für eine Abstimmung gleichzeitig eine Diskussion und eine Umfrage e
 
 <!-- translation-section: what-happens-next -->
 
-## Wie es weitergeht
+## Vom Start bis zum Fazit
 
-Wenn du einen Vorschlag oder eine Umfrage startest, gibst du einen Titel und Einzelheiten an. Du prüfst die Antwortmöglichkeiten und Einstellungen, legst einen Schließzeitpunkt fest und lädst Teilnehmende ein. Solange die Abstimmung offen ist, können sie abstimmen, ihre Antwort erläutern und ihre Stimme ändern. Die Ergebnisse werden mit jeder abgegebenen Stimme aktualisiert, soweit die Einstellung zur Sichtbarkeit der Ergebnisse dies zulässt.
+Ein Vorschlag oder eine Umfrage durchläuft diese Phasen.
 
-Wenn die Abstimmung endet, veröffentliche ein [Fazit](../outcomes/). Halte darin fest, was das Ergebnis bedeutet und wie es weitergeht.
+<!-- translation-section: 1-create-it -->
+
+### 1. Erstellen
+
+Gib einen Titel und Einzelheiten an, prüfe die Optionen und Einstellungen und lege einen Schließzeitpunkt fest. Wähle dann, wann die Abstimmung beginnt:
+
+- **Die Abstimmung beginnt sofort.** startet die Abstimmung, sobald du den Vorschlag oder die Umfrage startest.
+- Mit einem **Eröffnungsdatum** planst du den Beginn. Die Teilnehmenden können den Vorschlag oder die Umfrage vorher sehen, aber erst abstimmen, wenn die Abstimmung beginnt.
+- Wenn du keines von beidem wählst, wird der Vorschlag oder die Umfrage als Entwurf gespeichert.
+
+<!-- translation-section: 2-voting-opens -->
+
+### 2. Die Abstimmung beginnt
+
+Wenn die Abstimmung beginnt, benachrichtigt Loomio die Personen, die du eingeladen hast. Siehe [Zur Abstimmung einladen](../inviting_people/).
+
+<!-- translation-section: 3-people-vote -->
+
+### 3. Die Teilnehmenden stimmen ab
+
+Solange die Abstimmung offen ist, können die Teilnehmenden abstimmen, ihre Stimme erläutern und ihre Stimme ändern. Die Ergebnisse werden mit jeder abgegebenen Stimme aktualisiert, sofern sie nicht bis zum Ende der Abstimmung verborgen bleiben. Standardmäßig erhalten Personen, die noch nicht abgestimmt haben, einen Tag vor dem Ende eine Erinnerung.
+
+<!-- translation-section: 4-it-closes -->
+
+### 4. Die Abstimmung endet
+
+Die Abstimmung endet automatisch zum Schließzeitpunkt. Ein Umfrage-Admin kann sie auch vorzeitig schließen. Nach dem Ende kann ein Umfrage-Admin die Abstimmung mit einem neuen Schließzeitpunkt wieder öffnen, damit die Teilnehmenden weiter abstimmen können. Anonyme Umfragen können nicht wieder geöffnet werden.
+
+<!-- translation-section: 5-share-an-outcome -->
+
+### 5. Ein Fazit teilen
+
+Wenn die Abstimmung endet, bittet Loomio die Umfrage-Admins, ein Fazit zu teilen.
+
+![Die Aufforderung, nach dem Ende eines Vorschlags ein Fazit einzugeben](outcome_prompt.png)
+
+Das Fazit hält fest, was entschieden wurde und wie es weitergeht. Es erscheint über den Ergebnissen und wird daher zuerst gelesen. Wenn du es veröffentlichst, kannst du die Teilnehmenden benachrichtigen. Sie erhalten eine E-Mail mit den Ergebnissen und dem Fazit.
+
+Du kannst auch ein **Prüfungsdatum** festlegen. An diesem Tag erinnert dich Loomio daran, die Entscheidung zu überprüfen.
+
+![Ein veröffentlichtes Fazit mit einem Prüfungsdatum](outcome_published.png)

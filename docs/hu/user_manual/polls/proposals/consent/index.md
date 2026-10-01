@@ -1,24 +1,26 @@
 ---
 title: Beleegyezés
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/polls/proposals/consent/index.md
+source_revision: 9c60c42fc739483fa23f15d9f34a1e9245518092
+source_file: docs/en/user_manual/polls/proposals/consent/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 7c6301775b6655f2
   when-to-use-consent: 32ea681182001a9a
   example-start-a-bottle-trial: abc3b93cccfe2471
   set-up-the-proposal: 99fe028ed43b44c2
   vote: 496a824e20def5e2
-  read-the-results: f4db0702619b3992
+  read-the-results: 710fb80144e56ea9
+  share-an-outcome: 8f8b3f701dc4f516
 generated:
   introduction: 0a9fd61c567a6547
   when-to-use-consent: 2e44e588e2187b13
   example-start-a-bottle-trial: 5a573fbe7b26c2ac
   set-up-the-proposal: ff93749958f96c3d
   vote: a9792a377647a9a9
-  read-the-results: a8d2aef8dd207b5f
+  read-the-results: 74353ee7ffaa268a
+  share-an-outcome: 1e20d71a28fd7455
 title_source: d37e0cd00f18a366
 title_generated: be644c8e955e17da
 ---
@@ -65,8 +67,14 @@ A résztvevők az **Egyetértés** lehetőséget választják, ha a javaslatot e
 
 ## Az eredmények áttekintése
 
-A diagram láthatóvá teszi a tiltakozásokat, de a csoportnak az indokokat is meg kell vizsgálnia. Egy érvényes tiltakozást a javaslat módosításával, biztosíték bevezetésével vagy a javaslat hatókörének megváltoztatásával kezeljetek. Arról is dönthettek, hogy nem folytatjátok a tervet.
+A diagram láthatóvá teszi a tiltakozásokat, de a csoportnak az indokokat is meg kell vizsgálnia. Egy érvényes tiltakozást a javaslat módosításával, biztosíték bevezetésével vagy a javaslat hatókörének megváltoztatásával kezelj. Arról is dönthettek, hogy nem folytatjátok a tervet.
 
 ![](../proposal_consent_results.png)
 
-Tegyél közzé egy következtetést, amely rögzíti az elfogadott lépést, az esetleges biztosítékokat, a felelősöket és a felülvizsgálat időpontját.
+<!-- translation-section: share-an-outcome -->
+
+## Következtetés megosztása
+
+Amikor a javaslat lezárul, ossz meg egy következtetést. Rögzítsd az elfogadott lépést, az esetleges tiltakozások rendezésének módját, a felelősöket és azt, hogy a csoport mikor vizsgálja felül a döntést. A következtetések működéséről a [Következtetés megosztása](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome) oldalon olvashatsz.
+
+![Egy következtetés, amely rögzíti egy tiltakozás rendezését, a kezdés dátumát és a felülvizsgálat időpontját](outcome.png)

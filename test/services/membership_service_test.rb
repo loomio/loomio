@@ -47,6 +47,46 @@ class MembershipServiceTest < ActiveSupport::TestCase
     assert_not_includes subgroup.reload.members, @user
   end
 
+  test "group admin sets a membership vote weight" do
+    membership = @group.add_member!(@user)
+
+    MembershipService.set_weights(group: @group, weights_by_membership_id: {membership.id.to_s => 2}, actor: @admin)
+
+    assert_equal 2, membership.reload.weight
+  end
+
+  test "member cannot set their own membership vote weight" do
+    membership = @group.add_member!(@user)
+
+    assert_raises CanCan::AccessDenied do
+      MembershipService.set_weights(group: @group, weights_by_membership_id: {membership.id.to_s => 0}, actor: @user)
+    end
+
+    assert_equal 1, membership.reload.weight
+  end
+
+  test "bulk member weight changes reject an invalid weight" do
+    first = @group.membership_for(@admin)
+    second = @group.add_member!(@user)
+
+    assert_raises VoteWeight::Invalid do
+      MembershipService.set_weights(group: @group, weights_by_membership_id: {first.id.to_s => 2, second.id.to_s => -1}, actor: @admin)
+    end
+
+    assert_equal [1, 1], [first.reload.weight, second.reload.weight]
+  end
+
+  test "bulk member weight changes ignore memberships from another group" do
+    membership = @group.add_member!(@user)
+    other_group = Group.create!(name: 'Other group', handle: "other-#{SecureRandom.hex(4)}")
+    other = other_group.add_member!(@admin)
+
+    MembershipService.set_weights(group: @group, weights_by_membership_id: {membership.id.to_s => 2, other.id.to_s => 3}, actor: @admin)
+
+    assert_equal 2, membership.reload.weight
+    assert_equal 1, other.reload.weight
+  end
+
   test "revoke cascade deletes discussion reader access" do
     membership = @group.add_member!(@user)
     discussion = DiscussionService.create(params: { title: "Test", group_id: @group.id }, actor: @admin)

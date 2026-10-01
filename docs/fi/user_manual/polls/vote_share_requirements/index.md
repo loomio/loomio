@@ -1,20 +1,20 @@
 ---
 title: Ääniosuusvaatimukset
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/polls/vote_share_requirements/index.md
+source_revision: 9c60c42fc739483fa23f15d9f34a1e9245518092
+source_file: docs/en/user_manual/polls/vote_share_requirements/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
-  introduction: c97281f29d615dea
+  introduction: 57d7127721bebf93
   eligible-voters-and-votes-cast: 930bbc475f734396
-  different-vote-share-requirements: 0d25794ec996d42c
-  detailed-example: dc765c43a22a28a1
+  different-vote-share-requirements: cfdfd13a0a6a8b38
+  detailed-example: 395dbccb0e6427fc
 generated:
-  introduction: c351b35c63754224
+  introduction: c6375836afa2867f
   eligible-voters-and-votes-cast: 00f56fe9161667e6
-  different-vote-share-requirements: 02ec31cece988956
-  detailed-example: c8a6041306a71bbf
+  different-vote-share-requirements: da851b255793bf5e
+  detailed-example: '0428d2fc493422a4'
 title_source: a654891ca817844e
 title_generated: 49e9c181193d6bed
 ---
@@ -27,9 +27,9 @@ Aseta vaihtoehdolle ääniosuusvaatimus, kun ehdotuksen hyväksyminen edellyttä
 
 Voit yhdistää ääniosuusvaatimuksen [päätösvaltaisuusvaatimukseen](/en/user_manual/polls/quorum/), jolloin ehdotuksen hyväksyminen edellyttää sekä riittävää osallistumista että tiettyä äänten jakautumista.
 
-Kun luot ehdotusta, valitse vaihtoehdon vieressä oleva muokkauskuvake.
+Valitse ehdotuslomakkeessa vaihtoehdon vieressä oleva muokkauskuvake.
 
-![Suostumus-vaihtoehdon vieressä oleva muokkauskuvake](edit-highlight-on-option.png)
+![Samaa mieltä -vaihtoehdon vieressä oleva muokkauskuvake](edit-highlight-on-option.png)
 
 <!-- translation-section: eligible-voters-and-votes-cast -->
 
@@ -55,19 +55,19 @@ Voit asettaa vaatimuksia ehdotuksen useammalle vaihtoehdolle. Esimerkiksi:
 - Äänestämisestä pidättäytyvien osuus saa olla enintään 30 prosenttia annetuista äänistä
 - Ehdotuksen estävien äänten osuus saa olla enintään 0 prosenttia annetuista äänistä
 
+Vaihtoehdon vaatimukseksi asetetaan usein **Enintään 0%**. Se tarkoittaa, ettei ehdotusta voida hyväksyä, jos joku valitsee kyseisen vaihtoehdon. Käytä tätä vaatimusta **Lohko**-vaihtoehdossa, jotta yksikin estävä ääni estää ehdotuksen hyväksymisen.
+
 Voit lisätä vaatimukset myös [kyselymalliin](/en/user_manual/polls/poll_templates/), jolloin mallista luodut uudet ehdotukset käyttävät niitä oletusarvoisesti.
 
 <!-- translation-section: detailed-example -->
 
 ## Yksityiskohtainen esimerkki
 
-Oatmilk-osuuskunta päättää, hyväksyykö se kuuden viikon palautuspullokokeilun budjetin. Viidellä henkilöllä on äänioikeus.
+Oatmilk-osuuskunta päättää, toteuttaako se kuuden viikon palautuspullokokeilun. Viidellä henkilöllä on äänioikeus.
 
-Jamie käyttää **Suostumus**-ehdotusmallia, muokkaa Suostumus-vaihtoehtoa ja ottaa sen ääniosuusvaatimuksen käyttöön.
+Osuuskunnan prosessi edellyttää, että vähintään 75 prosenttia äänestäjäoikeutetuista kannattaa ehdotusta. Jamie muokkaa ehdotuksen **Samaa mieltä** -vaihtoehtoa, ottaa sen ääniosuusvaatimuksen käyttöön ja asettaa vaatimukseksi **Vähintään 75% äänestäjäoikeutetuista**.
 
-Osuuskunnan prosessi edellyttää, että vähintään 75 prosenttia äänestäjäoikeutetuista kannattaa ehdotusta. Jamie asettaa vaatimukseksi **Vähintään 75% Äänestäjäoikeutetut**.
-
-![Suostumus-vaihtoehto, jota on kannatettava vähintään 75 prosentin äänestäjäoikeutetuista](./consent-vote-option.png)
+![Samaa mieltä -vaihtoehto, jota vähintään 75 prosentin äänestäjäoikeutetuista on kannatettava](./agree-vote-option.png)
 
 Jamie asettaa myös 60 prosentin päätösvaltaisuusvaatimuksen. Jamie ja Samira äänestävät ehdotuksen puolesta. Kaikki annetut äänet kannattavat ehdotusta, mutta ne edustavat vain 40 prosenttia äänestäjäoikeutetuista. Kumpikaan vaatimus ei siis täyty.
 

@@ -1,194 +1,164 @@
 <script setup lang="js">
-import PageLoader         from '@/shared/services/page_loader';
 import Records from '@/shared/services/records';
 import EventBus from '@/shared/services/event_bus';
+import AbilityService from '@/shared/services/ability_service';
 import { debounce } from 'lodash-es';
-import { I18n } from '@/i18n';
-import ScrollService from '@/shared/services/scroll_service';
-import { computed, ref, watch } from 'vue';
+import { computed, onMounted, ref, watch } from 'vue';
+import { useI18n } from 'vue-i18n';
 import { useRoute, useRouter } from 'vue-router';
 
-const { poll } = defineProps({
-  poll: Object
-});
-
+const { poll } = defineProps({ poll: Object });
+const { t } = useI18n();
 const route = useRoute();
 const router = useRouter();
-
-const stances = ref([]);
-const legacyReasons = ref([]);
-const legacyReasonsLoading = ref(false);
-const per = 50;
-const loader = ref(null);
-const page = ref(parseInt(route.query.page) || 1);
-const name = ref(route.query.name);
-const castFilter = 'cast';
-const uncastFilter = 'uncast';
-
-function initialVoteFilter() {
-  const pollOptionId = parseInt(route.query.poll_option_id);
-  if (!Number.isNaN(pollOptionId)) { return pollOptionId; }
-
-  return route.query.stance_filter === uncastFilter ? uncastFilter : castFilter;
-}
-
-const voteFilter = ref(initialVoteFilter());
-const selectedPollOptionId = computed(() => {
-  return typeof voteFilter.value === 'number' ? voteFilter.value : null;
-});
-const selectedStanceFilter = computed(() => {
-  return voteFilter.value === uncastFilter ? uncastFilter : castFilter;
-});
+const limit = 25;
+const page = ref(Math.max(1, parseInt(route.query.page, 10) || 1));
+const name = ref(route.query.name || '');
+const voteFilter = ref(route.query.poll_option_id ? Number(route.query.poll_option_id) : (route.query.stance_filter || 'all'));
+const voters = ref([]);
+const meta = ref(null);
+const loading = ref(false);
+let fetchSequence = 0;
+const canView = !poll.anonymous || AbilityService.canViewAnonymousVoters(poll);
+const totalPages = computed(() => Math.max(1, Math.ceil((meta.value?.total || 0) / limit)));
+const rangeFirst = computed(() => meta.value?.total ? (page.value - 1) * limit + 1 : 0);
+const rangeLast = computed(() => Math.min(page.value * limit, meta.value?.total || 0));
 
 const pollOptionItems = computed(() => {
   const items = [
-    {title: I18n.global.t('poll_common_votes_panel.cast'), value: castFilter},
-    {title: I18n.global.t('poll_common_votes_panel.uncast'), value: uncastFilter}
+    { title: t('poll_common_votes_panel.all_voters'), value: 'all' },
+    { title: t('poll_common_votes_panel.cast'), value: 'cast' },
+    { title: t('poll_common_votes_panel.uncast'), value: 'uncast' }
   ];
-
-  if (!poll.showResults()) { return items; }
-
-  return items.concat(poll.pollOptions().map(o => {
-    return {title: o.optionName(), value: o.id};
-  }));
+  return poll.showResults() ? items.concat(poll.pollOptions().map(option => ({ title: option.optionName(), value: option.id }))) : items;
 });
 
-const totalPages = computed(() => {
-  return Math.max(1, Math.ceil(((loader.value && loader.value.total) || 0) / per));
-});
+function shownChoices(voter) {
+  const choices = Object.entries(voter.option_scores || {}).map(([id, score]) => ({
+    option: poll.pollOptions().find(option => option.id === Number(id)),
+    score,
+    rank: poll.pollType === 'ranked_choice' ? poll.minimumStanceChoices - score + 1 : null
+  })).filter(choice => choice.option && (choice.score > 0 || poll.pollType === 'score'));
+  return poll.pollType === 'ranked_choice'
+    ? choices.sort((a, b) => a.rank - b.rank)
+    : choices.sort((a, b) => b.score - a.score);
+}
 
-function findRecords() {
-  if (loader.value.pageWindow[page.value]) {
-    let chain = Records.stances.collection.chain().find({id: {$in: loader.value.pageIds[page.value]}});
-    chain = chain.simplesort('orderAt', true);
-    stances.value = chain.data();
-  } else {
-    stances.value = [];
+function voteLabel(voter) {
+  if (!voter.vote_cast) { return t('poll_receipts_page.not_voted'); }
+  if (!poll.showResults() || !poll.config().has_options) { return t('poll_receipts_page.voted'); }
+  const choices = shownChoices(voter);
+  if (!choices.length) { return t('poll_common_form.none_of_the_above'); }
+  return choices.map(choice => {
+    const name = choice.rank ? `${choice.rank}. ${choice.option.optionName()}` : choice.option.optionName();
+    // Meeting scores are 2 for yes and 1 for "if need be", not point values.
+    if (poll.pollType === 'meeting') { return choice.score === 1 ? `${name} (${t('poll_meeting_vote_form.if_need_be')})` : name; }
+    return poll.hasVariableScore() && poll.pollType !== 'ranked_choice' ? `${name} (${choice.score})` : name;
+  }).join(', ');
+}
+
+async function fetchVotes() {
+  const sequence = ++fetchSequence;
+  const params = { limit, offset: (page.value - 1) * limit };
+  if (name.value) { params.name = name.value; }
+  if (!poll.anonymous) {
+    if (typeof voteFilter.value === 'number') { params.poll_option_id = voteFilter.value; }
+    if (voteFilter.value === 'cast' || voteFilter.value === 'uncast') { params.stance_filter = voteFilter.value; }
+  }
+  loading.value = true;
+  try {
+    const data = await Records.fetch({ path: `polls/${poll.id}/votes`, params });
+    if (sequence !== fetchSequence) { return; }
+    if (page.value > Math.max(1, Math.ceil(data.meta.total / limit))) {
+      page.value = Math.max(1, Math.ceil(data.meta.total / limit));
+      return;
+    }
+    voters.value = data.voters;
+    meta.value = data.meta;
+  } catch (error) {
+    if (sequence === fetchSequence) { EventBus.$emit('pageError', error); }
+  } finally {
+    if (sequence === fetchSequence) { loading.value = false; }
   }
 }
 
-function fetchNow() {
-  if (poll.legacyAnonymousVoteReasonsCount > 0) {
-    legacyReasonsLoading.value = true;
-    Records.fetch({path: `polls/${poll.id}/legacy_vote_reasons`})
-      .then(data => { legacyReasons.value = data; })
-      .catch(error => { EventBus.$emit('pageError', error); })
-      .finally(() => { legacyReasonsLoading.value = false; });
+const fetchDebounced = debounce(fetchVotes, 100);
+onMounted(() => { if (canView) { fetchVotes(); } });
+
+// Build the whole query from current state. Both watchers can run in one flush
+// before the router updates route.query, so neither may copy our keys from it.
+function replaceQuery() {
+  router.replace({ query: {
+    ...route.query,
+    page: page.value === 1 ? undefined : page.value,
+    name: name.value || undefined,
+    stance_filter: !poll.anonymous && typeof voteFilter.value === 'string' && voteFilter.value !== 'all' ? voteFilter.value : undefined,
+    poll_option_id: !poll.anonymous && typeof voteFilter.value === 'number' ? voteFilter.value : undefined
+  } });
+}
+
+watch(page, () => {
+  replaceQuery();
+  if (canView) { fetchVotes(); }
+});
+
+watch([name, voteFilter], () => {
+  if (page.value !== 1) {
+    page.value = 1;
     return;
   }
-
-  loader.value = new PageLoader({
-    path: 'stances',
-    order: 'orderAt',
-    params: {
-      per,
-      poll_id: poll.id,
-      poll_option_id: selectedPollOptionId.value,
-      stance_filter: selectedStanceFilter.value,
-      name: name.value
-    }
-  });
-  loader.value.fetch(page.value).then(findRecords).then(() => ScrollService.scrollTo('#votes'));
-}
-
-function optionFor(choice) {
-  return poll.pollOptions().find(option => option.id === choice.poll_option_id);
-}
-
-const fetch = debounce(function() {
-  fetchNow();
-} , 50);
-
-watch(page, (val, lastVal) => {
-  if (val === lastVal) { return; }
-  router.replace({query: Object.assign({}, route.query, {page: val})});
-  fetch();
+  replaceQuery();
+  if (canView) { fetchDebounced(); }
 });
-
-watch(voteFilter, (val, lastVal) => {
-  if (val === lastVal) { return; }
-  page.value = 1;
-  name.value = null;
-  router.replace({query: Object.assign({}, route.query, {
-    page: null,
-    poll_option_id: selectedPollOptionId.value,
-    stance_filter: selectedStanceFilter.value,
-    name: null
-  })});
-  fetch();
-});
-
-watch(name, (val, lastVal) => {
-  if (val === lastVal) { return; }
-  page.value = 1;
-  router.replace({query: Object.assign({}, route.query, {page: null, name: val || null})});
-  fetch();
-});
-
-fetchNow();
-
 </script>
 
 <template lang="pug">
-.poll-common-votes-panel
-  template(v-if="poll.legacyAnonymousVoteReasonsCount > 0")
-    h2.text-headline-small.my-2#votes(v-t="'poll_common_action_panel.legacy_vote_reasons'")
-    p.text-medium-emphasis(v-t="'poll_common_action_panel.legacy_vote_reasons_description'")
-    loading(:until="!legacyReasonsLoading")
-      .poll-common-votes-panel__legacy-reason.py-3(v-for="(reason, index) in legacyReasons" :key="index")
-        .d-flex.flex-wrap.ga-2.mb-2
-          v-chip(v-if="reason.none_of_the_above" size="small" v-t="'poll_common_form.none_of_the_above'")
-          template(v-for="choice in reason.choices" :key="choice.poll_option_id")
-            v-chip(v-if="optionFor(choice)" size="small")
-              span {{ optionFor(choice).optionName() }}
-              template(v-if="poll.hasVariableScore()")
-                mid-dot
-                span {{ choice.score }}
-        p.mb-0(style="white-space: pre-wrap") {{ reason.body }}
-  template(v-else)
-    h2.text-headline-small.my-2#votes(v-t="'poll_common.votes'")
-    .d-flex
-      v-select.mr-2(:items="pollOptionItems" :label="$t('common.option')" v-model="voteFilter")
-      v-text-field(v-if="!poll.anonymous" v-model="name" :label="$t('poll_common_votes_panel.name_or_username')")
-    .poll-common-votes-panel__no-votes.text-medium-emphasis(v-if='!poll.votersCount' v-t="'poll_common_votes_panel.no_votes_yet'")
-    .poll-common-votes-panel__has-votes(v-if='poll.votersCount')
-      .poll-common-votes-panel__stance(v-for='stance in stances', :key='stance.id')
-        .poll-common-votes-panel__avatar.pr-3
-          user-avatar(:user='stance.participant()', :size='24')
-        .poll-common-votes-panel__stance-content
-          .poll-common-votes-panel__stance-name-and-option
-            v-layout.text-body-medium(align-center)
-              span.text-medium-emphasis {{ stance.participantName() }}
-              span(v-if="poll.showResults() && stance.castAt && poll.hasOptionIcon()")
-                poll-common-stance-choice.pl-2.pr-1(
-                  :poll="poll"
-                  :stance-choice="stance.stanceChoice()")
-                space
-              span(v-if='!stance.castAt' )
-                space
-                span(v-t="'poll_common_votes_panel.undecided'" )
-              span(v-if="stance.castAt")
-                space
-                mid-dot(v-if="!poll.hasOptionIcon()")
-                time-ago.text-medium-emphasis(:date="stance.castAt")
-          .poll-common-stance(v-if="poll.showResults() && stance.castAt")
-            poll-common-stance-choices(:stance='stance')
-            .text-medium-emphasis(v-if="stance.redactedAt" v-t="'poll_common_votes_panel.reason_redacted'")
-            template(v-else)
-              formatted-text.poll-common-stance-created__reason(:model="stance" field="reason")
-              attachment-list(:attachments="stance.attachments")
-      loading(v-if="loader.loading")
-      v-pagination(v-if="totalPages > 1" v-model="page", :length="totalPages")
+.poll-common-votes-panel#votes
+  p.text-medium-emphasis.my-4(v-if="!canView") {{ t('poll_common_votes_panel.participation_records_restricted') }}
+  .votes-content(v-else="")
+    p.text-medium-emphasis.my-3(v-if="poll.anonymous && meta?.participation_status_visible") {{ t('poll_receipts_page.participation_records_explanation') }}
+    p.text-medium-emphasis.my-3(v-else-if="poll.anonymous && meta") {{ t('poll_receipts_page.participation_status_requires_min_votes', { count: meta.participation_status_votes_required }) }}
+    p.text-medium-emphasis.my-3(v-if="meta?.show_voter_email") {{ t('poll_receipts_page.email_addresses_only_for_group_admins') }}
+    .d-flex.flex-wrap.ga-2.my-3
+      v-select.poll-common-votes-panel__filter(v-if="!poll.anonymous" :items="pollOptionItems" :label="t('common.option')" v-model="voteFilter" density="compact" hide-details)
+      v-text-field.poll-common-votes-panel__search(v-model="name" :label="t('poll_common_votes_panel.name_or_username')" density="compact" hide-details clearable)
+    .poll-common-votes-panel__table-wrap(v-if="meta")
+      v-table(density="compact")
+        thead
+          tr
+            th
+            th {{ t('poll_receipts_page.voter_name') }}
+            th(v-if="meta?.show_voter_email") {{ t('poll_receipts_page.voter_email') }}
+            th(v-if="!poll.anonymous || meta?.participation_status_visible") {{ t(poll.anonymous ? 'poll_receipts_page.vote_cast' : 'poll_common_votes_panel.stance') }}
+            th(v-if="poll.weightedVoting") {{ t('poll_common_votes_panel.vote_weight_column') }}
+            th(v-if="meta?.show_voter_details") {{ t('poll_receipts_page.member_since') }}
+            th(v-if="meta?.show_voter_details") {{ t('poll_receipts_page.invited_by') }}
+            th(v-if="meta?.show_voter_details") {{ t('poll_receipts_page.invited_on') }}
+        tbody
+          tr(v-for="voter in voters" :key="voter.voter_id")
+            td
+              v-avatar(:image="voter.voter_thumb_url" :size="24")
+                span(v-if="!voter.voter_thumb_url") {{ voter.voter_avatar_initials }}
+            td {{ voter.voter_name }}
+            td(v-if="meta?.show_voter_email") {{ voter.voter_email }}
+            td(v-if="poll.anonymous && meta?.participation_status_visible")
+              v-icon(:icon="voter.vote_cast ? 'mdi-check' : 'mdi-close'" :color="voter.vote_cast ? 'success' : 'error'" size="small" :aria-label="t(voter.vote_cast ? 'poll_receipts_page.voted' : 'poll_receipts_page.not_voted')")
+            td(v-if="!poll.anonymous") {{ voteLabel(voter) }}
+            td(v-if="poll.weightedVoting") {{ voter.weight }}
+            td(v-if="meta?.show_voter_details") {{ voter.member_since }}
+            td(v-if="meta?.show_voter_details") {{ voter.inviter_name }}
+            td(v-if="meta?.show_voter_details") {{ voter.invited_on }}
+    progress.poll-common-votes-panel__loading(v-if="loading" :aria-label="t('common.action.loading')")
+    p.text-medium-emphasis.my-4(v-if="!loading && meta && meta.total === 0") {{ t('common.no_results_found') }}
+    .d-flex.align-center.justify-space-between.flex-wrap.ga-2.mt-4(v-if="meta && meta.total > 0")
+      span.text-medium-emphasis {{ t('poll_common_form.voter_page_count', { first: rangeFirst, last: rangeLast, total: meta.total }) }}
+      v-pagination.poll-common-votes-panel__pagination(v-if="totalPages > 1" v-model="page" :length="totalPages")
 </template>
 
-<style>
-.poll-common-votes-panel__stance {
-  display: flex;
-  align-items: flex-start;
-  margin: 7px 0;
-}
-
-.poll-common-votes-panel__legacy-reason + .poll-common-votes-panel__legacy-reason {
-  border-top: 1px solid rgba(var(--v-border-color), var(--v-border-opacity));
-}
+<style scoped>
+.poll-common-votes-panel__filter { max-width: 240px; }
+.poll-common-votes-panel__search { max-width: 280px; }
+.poll-common-votes-panel__table-wrap { overflow-x: auto; }
+.poll-common-votes-panel__loading { width: 100%; }
+.poll-common-votes-panel__pagination { width: auto; margin-left: auto; }
 </style>

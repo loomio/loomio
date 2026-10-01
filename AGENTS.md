@@ -39,6 +39,7 @@
 - **Trust contracts we own.** When Loomio controls both the producer and consumer of a value, express the established contract directly rather than adding speculative optional chaining, fallbacks, coercions, or race handling for unsupported shapes and states. If a contract violation needs diagnostics, check and report each known invariant separately so the code identifies what failed instead of collapsing unrelated possibilities into one defensive expression.
 - **Keep model service operations atomic.** When a service operation changes domain records and creates a corresponding event, wrap the model changes, dependent records, derived database state, and event creation in one database transaction. Publish realtime messages and perform other non-database side effects only after the transaction commits, so failed event creation cannot leave partial records or broadcast rolled-back state.
 - **Document complex methods that are more than framework boilerplate.** Add a concise high-level comment explaining the problem, important invariants, and non-obvious decisions or phases. Comment decision points where the reason is not evident from the code. Do not narrate straightforward Ruby or Rails operations line by line.
+- **Page with `limit` and `offset`.** The `from` and `per` parameters are deprecated: keep supporting them where they are already established, but use `limit` and `offset` in all new API endpoints and client code. In API controllers, page new endpoints with `page_collection_bounded`, which reads only `limit` and `offset` and caps the page size. Order paged queries by a unique tiebreak (such as `id`) so rows do not repeat or disappear between pages.
 
 ## Writing voice for user-facing content
 
@@ -102,8 +103,8 @@ success messages).
 
 ## i18n / Localization
 
-- **Never change the value of an existing i18n key.** Existing keys may be translated into other languages; changing the English value breaks those translations.
-- Instead, create a new key with the new value and update the code to reference the new key.
+- **Change an existing English value only together with every translation.** Existing keys are translated into other languages, so an English change alone leaves the translations saying something else. Update every locale for that key in the same change: apply mechanical edits such as links directly, and retranslate changed wording.
+- When you cannot update every translation, create a new key with the new value and update the code to reference the new key.
 - **Review retranslation PRs against `config/locales/translation_corrections.md`** — that file logs sense-errors Google Translate has made before (polysemous short labels, paired actions drifting, misleading German words, glossary overrides like outcome→conclusion across many locales). If a new translation pass reintroduces one of those patterns, catch it at review.
 - **When you hand-correct a translation, append it to `translation_corrections.md`** with the file, key, before/after, and a one-line "why it was wrong". The point is to accumulate the context Google doesn't have, so reviewers of the next retranslation can watch for the same traps.
 - **translation keys should closely match their values** So that templates are easy to read. Rather than title, call the key what the title says.

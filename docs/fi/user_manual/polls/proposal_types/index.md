@@ -13,7 +13,6 @@ sections:
   ranked-choice: 31dee409a33369de
   time-poll: 8b3a09b278bd7fde
   stv-election: e8407157d29424e4
-  other-specialized-method: 6b1ca633e613e513
 generated:
   introduction: 35e882123e85195b
   simple-poll: '0695df8ac015ad73'
@@ -22,7 +21,6 @@ generated:
   ranked-choice: e1f5d5d6eebd1bb5
   time-poll: e35396a10d73fae6
   stv-election: d194fe139a619ba8
-  other-specialized-method: 60326d0ee621e672
 title_source: 996729458535904a
 title_generated: dbda99a26349e313
 ---
@@ -68,9 +66,3 @@ Kyselyissä osallistujat voivat valita vaihtoehtoja, antaa pisteitä, jakaa pist
 ## STV-vaalit
 
 [STV-vaaleissa](/en/user_manual/polls/stv/) osallistujat asettavat ehdokkaat järjestykseen suhteellisessa vaalissa, jossa valitaan useita voittajia. Käytä STV-vaalia toimikunnan, hallituksen tai edustajaryhmän valitsemiseen.
-
-<!-- translation-section: other-specialized-method -->
-
-## Muu erityinen menetelmä
-
-Loomiossa on myös kysymyskierros, jolla voi kerätä kysymyksiä ilman äänestystä. Ryhmän ylläpitäjät voivat ottaa sen käyttöön [kyselypohjista](/en/user_manual/polls/poll_templates/).

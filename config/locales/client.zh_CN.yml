@@ -1681,6 +1681,7 @@ zh_CN:
     title_label: 标题
     title_placeholder: 例如“协调员”或“促进者”
     updated: 会员头衔已更新
+    weight_label: 投票权重
   user_name_modal:
     user_name_updated: 用户名已更新
     set_user_name: 设置用户名
@@ -2030,7 +2031,6 @@ zh_CN:
   poll_receipts_page:
     participation_status_requires_min_votes: 这里显示哪些人有资格投票。只有在至少%{count}人投票后，才会显示每个人是否投票。
     no_receipts: 这项匿名投票在验证功能推出之前就已经结束了，因此无法进行验证。
-    verify_participants: 核实参与者
     voter_name: 名字
     voter_email: 电子邮件
     vote_cast: 投票结果
@@ -2041,6 +2041,7 @@ zh_CN:
     participation_records_explanation: 这显示了哪些人有资格投票以及他们是否投票。但它并不显示任何人的投票情况。
     voted: 投票
     not_voted: 未投票
+    email_addresses_only_for_group_admins: 电子邮件地址仅对群组管理员可见。
   decision_tools_card:
     choose_type: 选择投票类型
     title: 促进
@@ -2092,6 +2093,7 @@ zh_CN:
     name_gte_voter_percent: "%{name} 需要至少 %{percent}% 的合格投票者"
     name_lte_score_percent: "%{name} 不得超过 %{percent}% 的投票数"
     name_lte_voter_percent: "%{name} 不得超过合格投票者的 %{percent}%"
+    points_cast: 投出的点
   poll_common:
     superseded: 被取代
     outdated: 过时的
@@ -2202,6 +2204,12 @@ zh_CN:
     status: 地位
     your_vote_is_requested: 请您投票
     browse_example_make_a_copy_hint: "<b>点击复制图标</b>，以示例为起点，创建一个新的投票模板。"
+    view_votes: 查看投票
+    weighted_votes: 加权投票
+    weighted_points: 加权积分
+    pct_of_weighted_votes: 加权投票百分比
+    pct_of_weighted_points: 加权积分百分比
+    weighted_mean: 加权平均值
   poll_common_attachment_form:
     label: 附件
   poll_common_add_option:
@@ -2269,6 +2277,8 @@ zh_CN:
     last_seen: 最后上线日期：%{date}
     invited_by_name: 受邀人：%{name}
     accepted: 成员
+    edit_vote_weights: 修改投票权重
+    vote_weights_are_defaults: 这些默认投票权重适用于新投票。此处所做的更改不会影响已发布的投票权重。
   polls_panel:
     new_poll: 最新民调
     any_type: 所有类型
@@ -2313,6 +2323,7 @@ zh_CN:
     legacy_vote_reasons: 历史投票原因
     legacy_vote_reasons_description: 使用传统匿名投票方式投出的选票的理由以纯文本形式显示
     anonymous_voting_participant_notice: 投票是匿名的。提交投票后，您将无法查看或更改您的投票。投票结束后才会公布结果。
+    votes_have_different_weights: 本次投票中，每张选票的权重不同，因此有些选票比其他选票更重要。
   poll_common_collapsed:
     by_who: 由 %{name}
   poll_common_calendar_invite:
@@ -2420,6 +2431,11 @@ zh_CN:
     unredact_reason_helptext: 文本和附件将再次可见的原因
     unredact_reason_confirm: 恢复原因
     unredact_reason_success: 投票理由已恢复
+    all_voters: 所有选民
+    vote_weight_column: 投票权重
+    stance: 投票
+    participation_records_restricted: 投票结束后，您可以查看所有参与者名单
+    vote_weight: 投票权重 %{weight}
   poll_common_undecided_panel:
     show_undecided: 显示 %{count} 个未决定
     show_invitations: 待处理的邀请
@@ -2574,6 +2590,35 @@ zh_CN:
     stance_reason_required_when_disagreeing: 意见不一致时需要填写
     stance_reason_required_for_disagree_or_block: 不同意或阻止时必填
     stance_reason_required_for_block: 阻止时必填
+    voters: 选民
+    manage_voters: 管理选民
+    remove_voter: 移除选民
+    voter_page_count: "%{first}–%{last} 共 %{total}"
+    vote_weight_for: "%{name} 的投票权重"
+    save_vote_weights: 保存投票权重
+    vote_weights_updated: 投票权重已更新
+    set_all: 设置全部
+    find_or_invite_voters: 寻找或邀请选民
+    remove_voter_named: 从投票中移除 %{name}
+    remove_voter_and_any_vote_confirmation: 从本次投票中移除 %{name}？此操作也会移除该用户投出的所有选票。
+    edit_vote_weight: 编辑投票权重
+    edit_vote_weight_for: 修改 %{name} 的投票权重（当前为 %{weight}）
+    set_all_vote_weights_title: 设置所有投票权重
+    set_all_vote_weights_search_note: 这将改变民意调查中所有投票者的投票权重，包括搜索结果之外的投票者。
+    set_each_member_default_vote_weight: 设置每位成员的默认投票权重
+    voters_will_not_be_notified: 选民不会收到通知。请通过其他方式告知他们投票情况。
+    give_voters_different_vote_weights: 赋予选民不同的投票权重。结果将显示原始总数和加权总数。
+    issued_vote_weights_will_change: 已公布的投票权重将会改变。
+    weight_for_all: 所有投票权重
+    set_all_vote_weights: 设置所有投票权重
+    set_all_vote_weights_the_same: 将所有投票权重设为相同
+    member_vote_weights_hint: 没有当前团体成员身份的选民投票权重为1
+    weighted_voting: 加权投票
+    weighted_voting_is_not_available_with_anonymous_voting: "匿名投票不支持加权投票"
+    use_weighted_voting: 使用加权投票
+    weighted_voting_off_warning: 关闭加权投票后，所有投票权重均设为 1。您在此投票中更改的任何投票权重都将丢失。
+    weighted_voting_on_group: 启用加权投票后，每个成员的默认投票权重将被复制。其他投票者的投票权重为 1。
+    weighted_voting_on_direct: 启用加权投票后，所有选票的权重均设为 1
   poll_proposal_form:
     start_header: 开始提案
     edit_header: 编辑提案
@@ -2951,6 +2996,12 @@ zh_CN:
     notify_members_or_invite_guests_info: 可以通过群组成员姓名通知他们，或者通过电子邮件地址邀请非成员。受邀者可以参与此讨论串，但无法访问群组的其他讨论串。
     notify_members_info: 输入群组成员姓名，即可通知他们此主题。
     specified_voters_only_warning: 本帖中的投票仅限特定人员参与。使用此表单添加某人并不会授予其投票权，只会让其能够关注进展并发表评论。如果你想分配投票权，请使用投票页面上的"添加投票者"。
+    manage_thread_members: 管理主题成员
+    find_or_invite_people: 寻找或邀请人们
+    invite_or_notify_explanation: 新用户将被邀请加入讨论串。已在讨论串中的用户将再次收到通知。
+    invite_or_notify: 邀请或通知
+    member_page_count: "%{first}–%{last} 共 %{total}"
+    guest_access_info: 通过电子邮件邀请的访客可以参与此讨论串，但无法访问其他群组讨论串。
   poll_common_details_meta:
     opened: 已打开
     opens: 打开

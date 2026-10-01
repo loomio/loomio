@@ -361,16 +361,9 @@ module Views::Chatbot::Markdown::Concerns
   def simple_heading_for(col)
     case col
     when 'chart' then t(:"poll_common.results")
-    when 'name' then t('common.option')
-    when 'score_percent' then t('poll_ranked_choice_form.pct_of_points')
-    when 'votes_cast_percent' then t('poll_ranked_choice_form.pct_of_votes_cast')
-    when 'voter_percent' then t('poll_ranked_choice_form.pct_of_voters')
-    when 'rank' then t('poll_ranked_choice_form.rank')
-    when 'score' then t('poll_ranked_choice_form.points')
-    when 'average' then t('poll_ranked_choice_form.mean')
-    when 'stv_status' then t('poll_common.status')
-    when 'voter_count' then t('membership_card.voters')
-    when 'votes' then t('poll_common.votes')
+    when 'name', 'score_percent', 'votes_cast_percent', 'voter_percent', 'rank', 'score',
+         'unweighted_score', 'average', 'stv_status', 'voter_count', 'votes'
+      t(@poll.result_heading_key(col))
     when 'voters' then nil
     end
   end
@@ -388,6 +381,7 @@ module Views::Chatbot::Markdown::Concerns
       { value: status ? t("poll_stv_results.#{status}") : '', alignment: :right }
     when 'rank' then { value: option[:rank], alignment: :right }
     when 'score' then { value: option[:score], alignment: :right }
+    when 'unweighted_score' then { value: option[:unweighted_score], alignment: :right }
     when 'voter_count', 'votes' then { value: option[:voter_count], alignment: :right }
     when 'average' then { value: option[:average].round(1), alignment: :right }
     when 'voter_percent' then { value: option[:voter_percent].round, alignement: :right }

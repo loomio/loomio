@@ -280,7 +280,7 @@ module.exports = {
     ]));
     page.click('.discussion-form__submit');
     page.waitFor('.topic-item__discussion-edited');
-    page.expectText('.topic-item__discussion-edited', 'Added cafe collection details and clarified the proposed trial.');
+    page.expectText('.topic-item__discussion-edited', 'edited the thread context');
     page.execute(`
       const target = document.querySelector('.topic-item__discussion-edited');
       document.querySelector('.v-app-bar')?.remove();

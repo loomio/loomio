@@ -25,7 +25,7 @@ Choose the template whose response options match the question you need answered.
 
 ## Other proposal templates
 
-Loomio also provides templates such as Proposal, Gradients of agreement, Question round, and Majority. Some are hidden initially. Group administrators can make them available or create a template for the group's own terminology and rules from [Poll templates](../poll_templates/).
+Loomio also provides templates such as Proposal, Gradients of agreement, and Majority. Some are hidden initially. Group administrators can make them available or create a template for the group's own terminology and rules from [Poll templates](../poll_templates/).
 
 <!-- translation-section: proposal-records -->
 

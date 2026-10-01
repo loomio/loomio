@@ -7,6 +7,7 @@ class RecordCache
     outcomes_by_poll_id
     topic_readers_by_topic_id
     undecided_voter_ids_by_poll_id
+    none_of_the_above_voter_ids_by_poll_id
   ].freeze
 
   LOADERS = {
@@ -217,17 +218,36 @@ class RecordCache
     add_stances Stance.latest.where(poll_id: collection_ids, participant_id: current_user_id)
     add_outcomes(Outcome.latest.where(poll_id: collection_ids), poll_ids: collection_ids)
     add_undecided_voter_ids(collection)
+    add_none_of_the_above_voter_ids(collection)
   end
 
   def add_undecided_voter_ids(polls)
-    poll_ids = polls.reject(&:detached_anonymous?).select(&:results_include_undecided).map(&:id)
-    scope[:undecided_voter_ids_by_poll_id] ||= {}
-    add_known_missing(:undecided_voter_ids_by_poll_id, polls.map(&:id))
+    poll_ids = polls.reject(&:anonymous?).select(&:results_include_undecided).map(&:id)
+    add_result_voter_ids(:undecided_voter_ids_by_poll_id, polls, poll_ids) { |ids| Stance.latest.undecided.where(poll_id: ids) }
+  end
 
-    Stance.latest.undecided.where(poll_id: poll_ids).pluck(:poll_id, :participant_id).each do |poll_id, participant_id|
-      scope[:undecided_voter_ids_by_poll_id][poll_id] ||= []
-      scope[:undecided_voter_ids_by_poll_id][poll_id] << participant_id
-    end
+  def add_none_of_the_above_voter_ids(polls)
+    poll_ids = polls.reject(&:anonymous?).select(&:show_none_of_the_above).map(&:id)
+    add_result_voter_ids(:none_of_the_above_voter_ids_by_poll_id, polls, poll_ids) { |ids| Stance.latest.none_of_the_above.where(poll_id: ids) }
+  end
+
+  # Results show at most RESULT_VOTER_IDS_MAX voters per row, so load only that
+  # many participant ids per poll in one query instead of every matching voter.
+  # Skip the query entirely when no listed poll shows these voters.
+  def add_result_voter_ids(key, polls, poll_ids)
+    add_known_missing(key, polls.map(&:id))
+    return if poll_ids.empty?
+
+    ranked = yield(poll_ids).select(
+      'stances.poll_id, stances.participant_id',
+      'ROW_NUMBER() OVER (PARTITION BY stances.poll_id ORDER BY stances.id) AS voter_rank'
+    )
+    Stance.unscoped.from(ranked, :stances)
+      .where('stances.voter_rank <= ?', Poll::RESULT_VOTER_IDS_MAX)
+      .pluck('stances.poll_id', 'stances.participant_id').each do |poll_id, participant_id|
+        scope[key][poll_id] ||= []
+        scope[key][poll_id] << participant_id
+      end
   end
 
   def add_polls(collection)

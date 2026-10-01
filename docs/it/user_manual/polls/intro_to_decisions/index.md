@@ -1,10 +1,10 @@
 ---
 title: Proposte e votazioni
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/polls/intro_to_decisions/index.md
+source_revision: 9c60c42fc739483fa23f15d9f34a1e9245518092
+source_file: docs/en/user_manual/polls/intro_to_decisions/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: d7cf8a871d9af6ea
   find-the-right-help: 4bb04c002cbbde42
@@ -14,7 +14,12 @@ sections:
   choose-whether-to-use-a-discussion: fbe0fe9415feadae
   in-a-discussion: d57d23917bab162a
   without-a-discussion: 87efa5071bb33a34
-  what-happens-next: de5cc2b17603d0ce
+  what-happens-next: 7fe113c92c0a58bd
+  1-create-it: 865fde10233c86d2
+  2-voting-opens: 571a77b9c70569d3
+  3-people-vote: 71061d516df57dab
+  4-it-closes: c0376a9026d18bc3
+  5-share-an-outcome: 8339cb332cd8a946
 generated:
   introduction: 5dc21538f451ba4d
   find-the-right-help: 2070aac9a4a9731d
@@ -24,7 +29,12 @@ generated:
   choose-whether-to-use-a-discussion: 915de6008604e7ff
   in-a-discussion: ecb47f70246283ff
   without-a-discussion: 145a22f87d351126
-  what-happens-next: 5eb3a69ad6d83f9c
+  what-happens-next: dbd6ce93e4495015
+  1-create-it: 44319f742e2aff31
+  2-voting-opens: 3a76344c0ae3232e
+  3-people-vote: 15e5f70fa216f6b7
+  4-it-closes: beed5b770bbe4ae7
+  5-share-an-outcome: b07f5e9a6f0e978e
 title_source: d45b4ba3cb7a27cb
 title_generated: e427868b8757c27c
 ---
@@ -110,8 +120,48 @@ Se crei una discussione e una votazione nello stesso momento solo per raccoglier
 
 <!-- translation-section: what-happens-next -->
 
-## Cosa succede dopo
+## Dall'avvio alla conclusione
 
-Quando avvii una proposta o una votazione, inserisci un titolo e i dettagli, controlli le opzioni di risposta e le impostazioni, fissi una scadenza e inviti i partecipanti. Finché è aperta, i partecipanti possono votare, spiegare la propria risposta e modificare il proprio voto. I risultati si aggiornano man mano che arrivano i voti, secondo l'impostazione di visibilità dei risultati.
+Una proposta o una votazione attraversa queste fasi.
 
-Alla chiusura, pubblica una [conclusione](../outcomes/) che spieghi che cosa significa il risultato e che cosa succederà dopo.
+<!-- translation-section: 1-create-it -->
+
+### 1. Creala
+
+Inserisci un titolo e i dettagli, controlla le opzioni e le impostazioni e fissa un orario di chiusura. Poi scegli quando aprire le votazioni:
+
+- **Le votazioni si aprono immediatamente** apre la votazione non appena la avvii.
+- Una **Data di apertura** ne programma l'apertura. Le persone possono vederla prima di quella data, ma non possono votare finché non si apre.
+- Se non scegli nessuna delle due opzioni, viene salvata come bozza.
+
+<!-- translation-section: 2-voting-opens -->
+
+### 2. Si aprono le votazioni
+
+Quando si aprono le votazioni, Loomio avvisa le persone che hai invitato. Vedi [Invita a votare](../inviting_people/).
+
+<!-- translation-section: 3-people-vote -->
+
+### 3. Le persone votano
+
+Finché la votazione è aperta, le persone possono votare, spiegare il proprio voto e modificarlo. I risultati si aggiornano man mano che le persone votano, a meno che non siano nascosti fino alla chiusura. Per impostazione predefinita, le persone che non hanno votato ricevono un promemoria un giorno prima della chiusura.
+
+<!-- translation-section: 4-it-closes -->
+
+### 4. La votazione si chiude
+
+La votazione si chiude automaticamente all'orario di chiusura. Un amministratore della votazione può anche chiuderla in anticipo. Dopo la chiusura, un amministratore della votazione può riaprirla con un nuovo orario di chiusura per consentire alle persone di continuare a votare. Le votazioni anonime non possono essere riaperte.
+
+<!-- translation-section: 5-share-an-outcome -->
+
+### 5. Condividi una conclusione
+
+Quando la votazione si chiude, Loomio chiede ai suoi amministratori di condividere una conclusione.
+
+![La richiesta di inserire una conclusione dopo la chiusura di una proposta](outcome_prompt.png)
+
+La conclusione indica che cosa è stato deciso e che cosa succederà dopo. Appare sopra i risultati, quindi è la prima cosa che le persone leggono. Quando la pubblichi, puoi avvisare le persone. Ricevono un'email con i risultati e la conclusione.
+
+Puoi anche impostare una **Data della recensione**. In quella data, Loomio ti ricorda di rivedere la decisione.
+
+![Una conclusione pubblicata con una data per rivedere la decisione](outcome_published.png)

@@ -1,18 +1,18 @@
 ---
 title: 投票に招待する
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/polls/inviting_people/index.md
+source_revision: 9c60c42fc739483fa23f15d9f34a1e9245518092
+source_file: docs/en/user_manual/polls/inviting_people/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 0635cf23fcaaa95b
   invite-people-to-vote-in-a-poll: cfbf5caf71d1d5ca
   invite-guests-or-experts: 0717537bbd36fa07
   invite-a-subgroup-to-vote: 3ac684bdca4b3365
   engage-people-while-a-poll-is-running: 69971de8d56c0a74
-  add-voters-to-the-poll: 904f682bab618ce3
-  remove-people-from-the-poll: d204dd916f5418e2
+  add-voters-to-the-poll: 48f3b4a1edb5a037
+  remove-people-from-the-poll: ceec3f0319728807
   remind-people-to-vote: 177c881cb1b0dfb9
   view-notification-history: 52d930341c048008
   close-early: 0c46e8066719fc2f
@@ -23,8 +23,8 @@ generated:
   invite-guests-or-experts: 3a4d29c72de63aac
   invite-a-subgroup-to-vote: 0b3c443cdeeee2c1
   engage-people-while-a-poll-is-running: acfd2f7fc38b5c0b
-  add-voters-to-the-poll: c403428c38b305e6
-  remove-people-from-the-poll: 1dd0228b3c1f55ca
+  add-voters-to-the-poll: c4a79e34617328aa
+  remove-people-from-the-poll: 2f622b69bdff20a7
   remind-people-to-vote: b876d786afe0a889
   view-notification-history: 5f6e611b2f40b54d
   close-early: 7479d08f28c8e65d
@@ -88,7 +88,7 @@ title_generated: '010598b1d68b0563'
 
 新しい投票者はいつでも追加できます。開始日時を設定した投票では、投票開始前にも追加できます。
 
-**投票者を追加**を選び、追加する人の名前かメールアドレスを入力します。
+**有権者の管理**を選ぶと、有権者の管理画面が開きます。グループ内の全員を招待したり、名前でメンバーを追加したりできます。ゲストの招待が許可されている場合は、メールアドレスでゲストを追加することもできます。**有権者を探す、または招待する**に入力すると、すでに投票に参加している人も絞り込まれます。最近追加された投票者から順に表示されます。ページ切り替えの操作で一覧全体を確認できます。
 
 開始日時が設定されていて、まだ投票が始まっていない場合、投票者にはすぐに通知は届きません。投票が始まると通知されます。
 
@@ -96,13 +96,15 @@ title_generated: '010598b1d68b0563'
 
 ### 投票から人を削除する
 
-**投票者を追加**を選び、対象者の名前を探します。名前の横にある三点メニューを開き、**提案から削除**を選びます。
+**有権者の管理**を選び、有権者の管理画面で対象者の名前を探します。名前の横にあるごみ箱ボタンを選び、**有権者を削除する**で確定します。
+
+![有権者の管理画面で投票者の横にあるごみ箱ボタン](proposal_invite_remove.png)
 
 匿名投票からは人を削除できません。
 
 たとえば、理事会のメンバーに代わって投票を作成した管理者に投票権がない場合は、自分自身を削除できます。
 
-![](proposal_invite_remove.png)
+投票の重みを使用する投票では、投票の管理者が同じ画面で[投票の重みを確認・編集](/en/user_manual/polls/weighted_voting)できます。
 
 <!-- translation-section: remind-people-to-vote -->
 

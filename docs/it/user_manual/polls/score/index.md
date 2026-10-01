@@ -1,24 +1,26 @@
 ---
 title: Punteggio
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/polls/score/index.md
+source_revision: 9c60c42fc739483fa23f15d9f34a1e9245518092
+source_file: docs/en/user_manual/polls/score/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 7881bcdd5aad5df4
   when-to-use-score: 0ef92ec0bb907a3f
   example-score-possible-trial-locations: 3c9438177a822198
   set-up-the-poll: 29b0296533594cd6
   vote: 1113501e9e6736b7
-  read-the-results: f773aa25f47c325b
+  read-the-results: 3e996e9bcc830d1d
+  share-an-outcome: 243aaac17e645331
 generated:
   introduction: 7851e102b6f72f1a
   when-to-use-score: 4232f6a92ca0b790
   example-score-possible-trial-locations: 2adcb3d97242a21a
   set-up-the-poll: 552088ee20c3868c
   vote: c4327308787d33d3
-  read-the-results: dc6abbf3098e008b
+  read-the-results: f771db89f49addf9
+  share-an-outcome: 0dfedc640a785243
 title_source: 38e5a46cbc5ad328
 title_generated: 0b984d58dec985e1
 ---
@@ -85,4 +87,12 @@ Per ogni opzione, i risultati mostrano:
 
 In questo esempio, **il bar della Stazione Centrale** ha la media più alta, pari a 7,5. **Gli uffici del porto** hanno la media più bassa, pari a 5,25, mentre il mercato sul fiume e la mensa universitaria sono a pari merito con 7. Hanno votato quattro delle cinque persone invitate, quindi il gruppo può vedere che manca ancora una risposta.
 
-Confronta le medie solo quando le opzioni hanno un numero simile di elettori. Leggi le motivazioni dei voti prima di considerare significativa una piccola differenza e pubblica una conclusione che spieghi quali azioni seguiranno in base ai punteggi.
+Confronta le medie solo quando le opzioni hanno un numero simile di elettori. Leggi le motivazioni dei voti prima di considerare significativa una piccola differenza.
+
+<!-- translation-section: share-an-outcome -->
+
+## Condividi una conclusione
+
+Quando il sondaggio si chiude, condividi una conclusione. Spiega quale azione seguirà in base ai punteggi e come verranno risolti eventuali pareggi. Consulta [Condividi una conclusione](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome) per sapere come funzionano le conclusioni.
+
+![Una conclusione che sceglie la sede con il punteggio medio più alto](outcome.png)

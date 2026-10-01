@@ -1,24 +1,26 @@
 ---
 title: Consentimento
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/polls/proposals/consent/index.md
+source_revision: 9c60c42fc739483fa23f15d9f34a1e9245518092
+source_file: docs/en/user_manual/polls/proposals/consent/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 7c6301775b6655f2
   when-to-use-consent: 32ea681182001a9a
   example-start-a-bottle-trial: abc3b93cccfe2471
   set-up-the-proposal: 99fe028ed43b44c2
   vote: 496a824e20def5e2
-  read-the-results: f4db0702619b3992
+  read-the-results: 710fb80144e56ea9
+  share-an-outcome: 8f8b3f701dc4f516
 generated:
   introduction: cdc2a07a8635a348
   when-to-use-consent: 5dbc5ee1c498417a
   example-start-a-bottle-trial: 82e511676c505028
   set-up-the-proposal: aa3c597fd21b5f07
   vote: 82e7f8e5e288b87b
-  read-the-results: b8cb284c505de46c
+  read-the-results: fe9e09580bed252b
+  share-an-outcome: 28cf0a9ef51df37d
 title_source: d37e0cd00f18a366
 title_generated: 801371f12b73f7bd
 ---
@@ -69,4 +71,10 @@ O gráfico mostra as objeções, mas o grupo precisa examinar as justificativas.
 
 ![](../proposal_consent_results.png)
 
-Publique uma conclusão que registre a ação acordada, as medidas de proteção, quem é responsável e quando o grupo fará a revisão.
+<!-- translation-section: share-an-outcome -->
+
+## Compartilhe uma conclusão
+
+Quando a proposta for encerrada, compartilhe uma conclusão. Registre a ação acordada, como as objeções foram resolvidas, quem é responsável e quando o grupo fará a revisão. Veja [Compartilhe uma conclusão](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome) para entender como as conclusões funcionam.
+
+![Uma conclusão que registra uma objeção resolvida, uma data de início e um momento para revisão](outcome.png)

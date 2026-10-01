@@ -1639,6 +1639,7 @@ fr:
     title_label: rôle
     title_placeholder: Par exemple, « Coordinateur » ou « Facilitateur »
     updated: Rôle mis à jour
+    weight_label: Poids du vote
   user_name_modal:
     user_name_updated: Nom d'utilisateur mis à jour
     set_user_name: Définir le nom d'utilisateur
@@ -2033,6 +2034,7 @@ fr:
     vote_share_requirement: Exigence en matière de parts de vote
     for_the_proposal_to_pass: Pour que la proposition soit adoptée, cette option doit recevoir…
     for_the_poll_to_be_valid: Pour que le %{poll_type} soit valide, cette option doit recevoir…
+    points_cast: Points attribués
   poll_common:
     superseded: Remplacé
     outdated: Dépassé
@@ -2143,6 +2145,12 @@ fr:
     status: Statut
     your_vote_is_requested: Votre vote est demandé
     browse_example_make_a_copy_hint: "<b>Cliquez sur l'icône de copie</b> pour créer un nouveau modèle de sondage en utilisant l'exemple comme point de départ"
+    view_votes: Voir les votes
+    weighted_votes: Votes pondérés
+    weighted_points: Points pondérés
+    pct_of_weighted_votes: "% des votes pondérés"
+    pct_of_weighted_points: "% de points pondérés"
+    weighted_mean: Moyenne pondérée
   poll_common_attachment_form:
     label: Pièces jointes
   poll_common_add_option:
@@ -2211,6 +2219,8 @@ fr:
     delegate: Déléguer
     delegate_popover: Un délégué est un membre du groupe avec droit de vote
     delegates: Délégués
+    edit_vote_weights: Modifier les pondérations des votes
+    vote_weights_are_defaults: Ces pondérations de vote par défaut s'appliquent aux nouveaux votes. Les modifications apportées ici n'affectent pas les pondérations de vote déjà attribuées.
   polls_panel:
     new_poll: Nouveau sondage
     any_type: Tous types
@@ -2257,6 +2267,7 @@ fr:
     legacy_vote_reasons: Motifs des votes antérieurs
     legacy_vote_reasons_description: Les motifs des votes exprimés selon l'ancien format de vote anonyme sont affichés en texte brut
     anonymous_voting_participant_notice: Le vote est anonyme. Vous ne pouvez ni consulter ni modifier votre vote après l'avoir soumis. Les résultats ne sont disponibles qu'après la clôture du vote.
+    votes_have_different_weights: Dans ce sondage, les votes ont des pondérations différentes, certains comptent donc plus que d'autres.
   poll_common_collapsed:
     by_who: par %{name}
   poll_common_calendar_invite:
@@ -2325,6 +2336,11 @@ fr:
     unredact_reason_helptext: La raison pour laquelle le texte et les pièces jointes seront à nouveau visibles
     unredact_reason_confirm: Rétablir la raison
     unredact_reason_success: Motif du vote rétabli
+    all_voters: Tous les électeurs
+    vote_weight_column: Poids du vote
+    stance: Vote
+    participation_records_restricted: Vous pourrez voir qui a participé après la clôture du vote
+    vote_weight: Poids du vote %{weight}
   poll_common_undecided_panel:
     show_undecided: Afficher les %{count} indécis
     show_invitations: Montrer les invitations en attente
@@ -2969,6 +2985,35 @@ fr:
     stance_reason_required_when_disagreeing: Requis en cas de désaccord
     stance_reason_required_for_disagree_or_block: Nécessaire pour être en désaccord ou bloquer
     stance_reason_required_for_block: Requis en cas de veto
+    voters: Les électeurs
+    manage_voters: Gérer les électeurs
+    remove_voter: Supprimer l'électeur
+    voter_page_count: "%{first}–%{last} de %{total}"
+    vote_weight_for: Poids du vote pour %{name}
+    save_vote_weights: Sauvegarder les poids des votes
+    vote_weights_updated: Pondération des votes mise à jour
+    set_all: Tout définir
+    find_or_invite_voters: Trouver ou inviter des électeurs
+    remove_voter_named: Supprimer %{name} du sondage
+    remove_voter_and_any_vote_confirmation: Supprimer %{name} de ce sondage ? Cela supprimera également tout vote qu'il ou elle a exprimé.
+    edit_vote_weight: Modifier le poids du vote
+    edit_vote_weight_for: Modifier le poids du vote pour %{name} (actuellement %{weight})
+    set_all_vote_weights_title: Définir tous les poids de vote
+    set_all_vote_weights_search_note: Cela modifie la pondération des votes de tous les votants dans le sondage, y compris ceux qui ne figurent pas dans vos résultats de recherche.
+    set_each_member_default_vote_weight: Définir le poids de vote par défaut de chaque membre
+    voters_will_not_be_notified: Les électeurs ne seront pas avertis. Informez-les du sondage par un autre moyen.
+    give_voters_different_vote_weights: Attribuez aux votants des poids de vote différents. Les résultats affichent les totaux bruts et pondérés.
+    issued_vote_weights_will_change: Les pondérations des votes déjà attribués seront modifiées.
+    weight_for_all: Poids du vote pour tous
+    set_all_vote_weights: Définir tous les poids de vote
+    set_all_vote_weights_the_same: Même poids de vote pour tous
+    member_vote_weights_hint: Les électeurs sans appartenance actuelle à un groupe ont un poids de vote de 1
+    weighted_voting: Vote pondéré
+    weighted_voting_is_not_available_with_anonymous_voting: "Le vote pondéré n'est pas disponible avec le vote anonyme"
+    use_weighted_voting: Utiliser le vote pondéré
+    weighted_voting_off_warning: La désactivation du vote pondéré met chaque poids de vote à 1. Tous les poids de vote que vous avez modifiés pour ce sondage seront perdus.
+    weighted_voting_on_group: L'activation du vote pondéré reprend le poids de vote par défaut de chaque membre. Les autres votants reçoivent un poids de vote de 1.
+    weighted_voting_on_direct: L'activation du vote pondéré attribue à chaque vote un poids de 1
   poll_receipts_page:
     participation_status_requires_min_votes: Cette liste indique qui avait le droit de voter. Le statut de participation de chaque personne n'est affiché que lorsqu'au moins %{count} personnes ont voté.
     verify_participants: Vérifier les participants
@@ -2983,6 +3028,7 @@ fr:
     participation_records_explanation: Cette liste indique qui pouvait voter et si cette personne a voté. Elle n’indique pas comment chaque personne a voté.
     voted: A voté
     not_voted: N’a pas voté
+    email_addresses_only_for_group_admins: Les adresses électroniques ne sont visibles que par les administrateurs du groupe.
   comment_reply_form:
     aria_label: Ajouter une réponse
   discussion_template:
@@ -3076,6 +3122,12 @@ fr:
     notify_members_or_invite_guests_info: Prévenez les membres du groupe par leur nom ou invitez les personnes extérieures par leur adresse courriel. Les invités pourront participer à cette discussion, mais n'auront pas accès aux autres discussions du groupe.
     notify_members_info: Saisissez les noms des membres du groupe pour les informer de cette discussion.
     specified_voters_only_warning: Ce fil de discussion contient des sondages où seules certaines personnes peuvent voter. Ajouter quelqu'un avec ce formulaire ne lui donnera pas de vote, seulement la possibilité de suivre la discussion et de commenter. Si vous souhaitez attribuer des votes, utilisez "Ajouter des votants" dans le sondage.
+    manage_thread_members: Gérer les membres du fil de discussion
+    find_or_invite_people: Trouver ou inviter des personnes
+    invite_or_notify_explanation: Les nouveaux participants seront invités à rejoindre la discussion. Les personnes déjà inscrites recevront une nouvelle notification.
+    invite_or_notify: Inviter ou notifier
+    member_page_count: "%{first}–%{last} de %{total}"
+    guest_access_info: Les invités par courriel peuvent participer à cette discussion sans avoir accès aux autres discussions du groupe
   poll_common_details_meta:
     opened: Ouvert
     opens: S'ouvre

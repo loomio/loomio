@@ -1,10 +1,10 @@
 ---
 title: הצעות וסקרים
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/polls/intro_to_decisions/index.md
+source_revision: 9c60c42fc739483fa23f15d9f34a1e9245518092
+source_file: docs/en/user_manual/polls/intro_to_decisions/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: d7cf8a871d9af6ea
   find-the-right-help: 4bb04c002cbbde42
@@ -14,7 +14,12 @@ sections:
   choose-whether-to-use-a-discussion: fbe0fe9415feadae
   in-a-discussion: d57d23917bab162a
   without-a-discussion: 87efa5071bb33a34
-  what-happens-next: de5cc2b17603d0ce
+  what-happens-next: 7fe113c92c0a58bd
+  1-create-it: 865fde10233c86d2
+  2-voting-opens: 571a77b9c70569d3
+  3-people-vote: 71061d516df57dab
+  4-it-closes: c0376a9026d18bc3
+  5-share-an-outcome: 8339cb332cd8a946
 generated:
   introduction: 54fc91a6d272309a
   find-the-right-help: 74cf1f877ec8058b
@@ -24,7 +29,12 @@ generated:
   choose-whether-to-use-a-discussion: ea1c3808ec43cbab
   in-a-discussion: db2214496febd826
   without-a-discussion: dfc952dce2dfe58b
-  what-happens-next: 16c71b779603a805
+  what-happens-next: f7fbf44c0b07952b
+  1-create-it: 272105026618529a
+  2-voting-opens: a1784b3ef87fe36a
+  3-people-vote: 157a95d8e1c133ef
+  4-it-closes: 12456f425ad7bc35
+  5-share-an-outcome: 3d47f49b7302a25a
 title_source: d45b4ba3cb7a27cb
 title_generated: ae9ae909d9ac36c6
 ---
@@ -110,8 +120,48 @@ title_generated: ae9ae909d9ac36c6
 
 <!-- translation-section: what-happens-next -->
 
-## מה קורה בהמשך
+## מהפתיחה ועד למסקנה
 
-כשפותחים הצעה או סקר, יש להזין כותרת ופרטים, לבדוק את אפשרויות התגובה וההגדרות, לקבוע מועד סגירה ולהזמין משתתפים. כל עוד ההצעה או הסקר פתוחים, המשתתפים יכולים להצביע, להסביר את תגובתם ולשנות את הצבעתם. התוצאות מתעדכנות עם קבלת ההצבעות, בהתאם להגדרת הנראות של תוצאות הסקר.
+הצעה או סקר עוברים את השלבים הבאים.
 
-לאחר הסגירה, יש לפרסם [מסקנה](../outcomes/) שמתעדת את משמעות התוצאה ואת הצעדים הבאים.
+<!-- translation-section: 1-create-it -->
+
+### 1. יצירה
+
+יש להזין כותרת ופרטים, לבדוק את האפשרויות וההגדרות ולקבוע מועד סגירה. לאחר מכן יש לבחור מתי תיפתח ההצבעה:
+
+- **ההצבעה נפתחת מיד** פותחת את ההצבעה ברגע שמתחילים את ההצעה או הסקר.
+- **תאריך פתיחה** מאפשר לתזמן את פתיחת ההצבעה. ניתן לצפות בהצעה או בסקר לפני מועד זה, אך לא ניתן להצביע עד לפתיחת ההצבעה.
+- אם לא נבחרת אף אחת מהאפשרויות, ההצעה או הסקר נשמרים כטיוטה.
+
+<!-- translation-section: 2-voting-opens -->
+
+### 2. ההצבעה נפתחת
+
+כשההצבעה נפתחת, Loomio שולח הודעה לאנשים שהוזמנו. ניתן לעיין בעמוד [הזמנה להצבעה](../inviting_people/).
+
+<!-- translation-section: 3-people-vote -->
+
+### 3. מצביעים
+
+כל עוד ההצבעה פתוחה, ניתן להצביע, להסביר את ההצבעה ולשנות אותה. התוצאות מתעדכנות עם קבלת ההצבעות, אלא אם הן מוסתרות עד לסגירה. כברירת מחדל, נשלחת תזכורת לאנשים שטרם הצביעו יום לפני הסגירה.
+
+<!-- translation-section: 4-it-closes -->
+
+### 4. ההצבעה נסגרת
+
+ההצבעה נסגרת אוטומטית במועד הסגירה. למנהלי הסקר יש גם אפשרות לסגור אותה מוקדם יותר. לאחר הסגירה, למנהלי הסקר יש אפשרות לפתוח אותה מחדש עם מועד סגירה חדש כדי לאפשר המשך הצבעה. לא ניתן לפתוח מחדש סקרים אנונימיים.
+
+<!-- translation-section: 5-share-an-outcome -->
+
+### 5. שיתוף מסקנה
+
+לאחר סגירת ההצבעה, Loomio מבקש ממנהלי הסקר לשתף מסקנה.
+
+![הבקשה להזין מסקנה לאחר סגירת הצעה](outcome_prompt.png)
+
+המסקנה מציינת מה הוחלט ומה יקרה בהמשך. היא מופיעה מעל התוצאות, כך שהיא הדבר הראשון שקוראים. בעת פרסום המסקנה ניתן לשלוח הודעה לאנשים. הם מקבלים הודעת דוא״ל עם התוצאות והמסקנה.
+
+ניתן גם לקבוע **תאריך ביקורת**. בתאריך זה, Loomio שולח תזכורת לבחון את ההחלטה.
+
+![מסקנה שפורסמה עם תאריך ביקורת](outcome_published.png)

@@ -1,24 +1,26 @@
 ---
 title: Праверка сэнсу
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/polls/proposals/sense_check/index.md
+source_revision: 9c60c42fc739483fa23f15d9f34a1e9245518092
+source_file: docs/en/user_manual/polls/proposals/sense_check/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-30'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 2336356b9efbde30
   when-to-use-sense-check: c70985229c659d2f
   example-check-a-trial-plan: 8055cad3418b4bb7
   set-up-the-proposal: 8106c7ab17a225e6
   vote: 2440e2649ed1ff05
-  read-the-results: f8f63c908d080f77
+  read-the-results: 9cac8b6f7c7de36f
+  share-an-outcome: b05f9f889a838d47
 generated:
   introduction: e18dfec7275ce7da
   when-to-use-sense-check: 389d87e8cc490374
   example-check-a-trial-plan: e206865a5f5c26ff
   set-up-the-proposal: 4189842080f6b722
   vote: 3ef26971b6e62f51
-  read-the-results: 65e4bb03b0a98ec7
+  read-the-results: 9dccc00a9f1a1816
+  share-an-outcome: 6f7b27b72ce051c7
 title_source: e9ac5b767e01ae7b
 title_generated: a8e62df994c554c6
 ---
@@ -74,4 +76,10 @@ title_generated: a8e62df994c554c6
 
 ![](../proposal_sense_check_results.png)
 
-Апублікуйце выснову, у якой падсумаваны змены, што група ўнясе, або пазначана, што ідэя гатовая да наступнага этапу прыняцця рашэння.
+<!-- translation-section: share-an-outcome -->
+
+## Падзяліцеся высновай
+
+Калі праверка сэнсу завершыцца, падзяліцеся высновай. Падсумуйце змены, якія група ўнясе, або пазначце, што ідэя гатовая да наступнага этапу прыняцця рашэння. Пра тое, як працуюць высновы, чытайце ў раздзеле [Падзяліцеся высновай](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome).
+
+![Выснова, у якой пазначана, што план будзе дапрацаваны перад канчатковым разглядам](outcome.png)

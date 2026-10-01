@@ -4,9 +4,9 @@
 require_relative "translate"
 
 module Docs
-  # Inspect every published page because a GitHub correction can arrive without
-  # running a local hook. Only pages needing translation or correction context
-  # reach the translator. A push must contain the resulting files in a commit.
+  # Inspect every published page because a correction can arrive from an edit on
+  # GitHub. Only pages needing translation or correction context reach the
+  # translator.
   class TranslationSync
     ROOT = Pathname(__dir__).freeze
 
@@ -24,15 +24,6 @@ module Docs
     def source_paths
       ["SUMMARY.md", "locales.yml", *paths.keys.map { |path| "en/#{path}" },
         *@locales.flat_map { |locale| paths.keys.map { |path| "#{locale.code}/#{path}" } }]
-    end
-
-    def uncommitted_paths
-      tracked, status = Open3.capture2("git", "diff", "--name-only", "-z", "HEAD", "--", "docs", chdir: @root.parent.to_s)
-      raise "Cannot inspect committed manual sources" unless status.success?
-      untracked, status = Open3.capture2("git", "ls-files", "--others", "--exclude-standard", "-z", "--", "docs", chdir: @root.parent.to_s)
-      raise "Cannot inspect new manual sources" unless status.success?
-      relevant = source_paths.map { |path| "docs/#{path}" }
-      (tracked.split("\0") + untracked.split("\0")).uniq & relevant
     end
 
     def update
@@ -80,19 +71,9 @@ end
 
 if $PROGRAM_NAME == __FILE__
   begin
-    raise "Usage: bundle exec ruby docs/sync_translations.rb [--check | --before-push]" unless ARGV.empty? || [%w[--check], %w[--before-push]].include?(ARGV)
+    raise "Usage: bundle exec ruby docs/sync_translations.rb [--check]" unless ARGV.empty? || ARGV == %w[--check]
     sync = Docs::TranslationSync.new
-    if ARGV == ["--check"]
-      sync.validate!
-    else
-      if ARGV == ["--before-push"] && (dirty = sync.uncommitted_paths).any?
-        abort "Commit manual source edits before pushing:\n- #{dirty.join("\n- ")}"
-      end
-      changed = sync.update
-      if ARGV == ["--before-push"] && changed.any?
-        abort "Manual translations were updated. Review and commit these files, then push again:\n- #{changed.join("\n- ")}"
-      end
-    end
+    ARGV == ["--check"] ? sync.validate! : sync.update
     puts "Published manual translations are current and structurally valid."
   rescue StandardError => error
     abort error.message

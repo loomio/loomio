@@ -1604,6 +1604,7 @@ tr:
     title_label: başlık
     title_placeholder: Örneğin 'Koordinatör' veya 'Kolaylaştırıcı'
     updated: Üyelik başlığı güncellendi
+    weight_label: Oy ağırlığı
   user_name_modal:
     user_name_updated: Kullanıcı adı güncellendi
     set_user_name: Kullanıcı adını ayarla
@@ -1991,6 +1992,7 @@ tr:
     vote_share_requirement: Oy payı gereksinimi
     for_the_proposal_to_pass: Önerinin kabul edilebilmesi için bu seçeneğin…
     for_the_poll_to_be_valid: "%{poll_type} seçeneğinin geçerli olması için bu seçeneğin… alması gerekir."
+    points_cast: Verilen puanlar
   poll_common:
     superseded: Değiştirildi
     outdated: Modası geçmiş
@@ -2101,6 +2103,12 @@ tr:
     status: Durum
     your_vote_is_requested: Oylarınız rica olunur.
     browse_example_make_a_copy_hint: Örneği başlangıç noktası olarak kullanarak yeni bir anket şablonu oluşturmak için <b>kopyala simgesine tıklayın</b> .
+    view_votes: Oyları görüntüle
+    weighted_votes: Ağırlıklı oylar
+    weighted_points: Ağırlıklı puanlar
+    pct_of_weighted_votes: Ağırlıklı oyların yüzdesi
+    pct_of_weighted_points: Ağırlıklı puanların yüzdesi
+    weighted_mean: Ağırlıklı ortalama
   poll_common_attachment_form:
     label: Ekler
   poll_common_add_option:
@@ -2169,6 +2177,8 @@ tr:
     delegate: Temsilci
     delegate_popover: Bir delege, oy kullanma hakkına sahip bir grup üyesidir
     delegates: Delegeler
+    edit_vote_weights: Oy ağırlıklarını düzenle
+    vote_weights_are_defaults: Bu varsayılan oy ağırlıkları yeni oylara uygulanır. Burada yapılan değişiklikler, daha önce verilmiş olan oy ağırlıklarını etkilemez.
   polls_panel:
     new_poll: Yeni anket
     any_type: Her türlü
@@ -2215,6 +2225,7 @@ tr:
     legacy_vote_reasons: Önceki oyların gerekçeleri
     legacy_vote_reasons_description: Eski anonim oylama formatı kullanılarak verilen oyların gerekçeleri düz metin olarak gösterilir
     anonymous_voting_participant_notice: Oylama anonimdir. Oy verdikten sonra oyunuzu gözden geçiremez veya değiştiremezsiniz. Sonuçlar, oylama sona erene kadar açıklanmaz.
+    votes_have_different_weights: Bu ankette oyların ağırlıkları farklıdır, bu nedenle bazı oylar diğerlerinden daha fazla önem taşır.
   poll_common_collapsed:
     by_who: "%{name}"
   poll_common_calendar_invite:
@@ -2283,6 +2294,11 @@ tr:
     unredact_reason_helptext: Metin ve eklerin tekrar görünür hale getirilmesinin nedeni
     unredact_reason_confirm: Mantığı geri getir
     unredact_reason_success: Oy verme gerekçesi geri yüklendi.
+    all_voters: Tüm seçmenler
+    vote_weight_column: Oy ağırlığı
+    stance: Oy
+    participation_records_restricted: Oy verme işlemi sona erdikten sonra kimlerin katıldığını görebilirsiniz
+    vote_weight: Oy ağırlığı %{weight}
   poll_common_undecided_panel:
     show_undecided: "%{count} kararsızı göster"
     show_invitations: Bekleyen Davetiyeleri Göster
@@ -2925,9 +2941,37 @@ tr:
     stance_reason_required_when_disagreeing: Anlaşmazlık durumunda gereklidir
     stance_reason_required_for_disagree_or_block: Katılmıyorsanız veya engelliyorsanız gereklidir
     stance_reason_required_for_block: Engelleme için gerekli
+    voters: Seçmenler
+    manage_voters: Seçmenleri yönetin
+    remove_voter: Seçmeni kaldır
+    voter_page_count: "%{first}–%{last} / %{total}"
+    vote_weight_for: "%{name} için oy ağırlığı"
+    save_vote_weights: Oy ağırlıklarını kaydedin
+    vote_weights_updated: Oy ağırlıkları güncellendi
+    set_all: Tümünü ayarla
+    find_or_invite_voters: Seçmenleri bulun veya davet edin
+    remove_voter_named: Anketten %{name}'i kaldır
+    remove_voter_and_any_vote_confirmation: Bu anketten %{name} kullanıcısını kaldırmak mı istiyorsunuz? Bu işlem, kullanıcının verdiği tüm oyları da siler.
+    edit_vote_weight: Oy ağırlığını düzenle
+    edit_vote_weight_for: "%{name} için oy ağırlığını düzenle (şu anda %{weight})"
+    set_all_vote_weights_title: Tüm oy ağırlıklarını ayarlayın.
+    set_all_vote_weights_search_note: Bu, arama sonuçlarınızın dışında kalanlar da dahil olmak üzere anketteki tüm seçmenlerin oy ağırlıklarını değiştirir.
+    set_each_member_default_vote_weight: Her üyenin varsayılan oy ağırlığını ayarlayın.
+    voters_will_not_be_notified: Seçmenlere bildirim yapılmayacak. Onlara anket hakkında başka bir yolla bilgi verin.
+    give_voters_different_vote_weights: Seçmenlere farklı oy ağırlıkları verin. Sonuçlar hem düz hem de ağırlıklı toplamları gösterir.
+    issued_vote_weights_will_change: Daha önce verilmiş olan oy ağırlıkları değişecektir.
+    weight_for_all: Tüm oyların ağırlığı
+    set_all_vote_weights: Tüm oy ağırlıklarını ayarlayın
+    set_all_vote_weights_the_same: Tüm oy ağırlıklarını aynı olarak ayarlayın
+    member_vote_weights_hint: Mevcut bir gruba üye olmayan seçmenlerin oy ağırlığı 1'dir
+    weighted_voting: Ağırlıklı oylama
+    weighted_voting_is_not_available_with_anonymous_voting: "Ağırlıklı oylama anonim oylamada kullanılamaz"
+    use_weighted_voting: Ağırlıklı oylama kullanın
+    weighted_voting_off_warning: Ağırlıklı oylamayı kapatmak, her oy ağırlığını 1'e ayarlar. Bu anket için değiştirdiğiniz tüm oy ağırlıkları kaybolacaktır.
+    weighted_voting_on_group: Ağırlıklı oylamayı etkinleştirmek, her üyenin varsayılan oy ağırlığını kopyalar. Diğer seçmenler 1 oy ağırlığı alır.
+    weighted_voting_on_direct: Ağırlıklı oylamayı etkinleştirmek, her oy ağırlığını 1'e ayarlar
   poll_receipts_page:
     participation_status_requires_min_votes: Bu, kimlerin oy kullanma hakkına sahip olduğunu gösterir. Her kişinin oy kullanıp kullanmadığı yalnızca en az %{count} kişi oy verdiğinde gösterilir.
-    verify_participants: Katılımcıları doğrulayın
     see_votes_if_quorum_reached: Oylama sona ermiş ve yeter sayı sağlanmışsa, kimin oy kullandığını göreceksiniz.
     voter_name: Seçmen adı
     voter_email: Seçmen e-postası
@@ -2939,6 +2983,7 @@ tr:
     participation_records_explanation: Bu, kimlerin oy kullanma hakkına sahip olduğunu ve oy kullanıp kullanmadıklarını gösterir. Ancak kimin nasıl oy kullandığını göstermez.
     voted: Oy kullandı
     not_voted: Oy kullanmadı
+    email_addresses_only_for_group_admins: E-posta adresleri yalnızca grup yöneticilerine gösterilir.
   comment_reply_form:
     aria_label: Bir cevap ekle
   discussion_template:
@@ -3032,6 +3077,12 @@ tr:
     notify_members_or_invite_guests_info: Grup üyelerine isimleriyle bildirim gönderin veya üye olmayanları e-posta adresleriyle davet edin. Davet edilen misafirler bu tartışmaya katılabilir ancak diğer grup tartışmalarına erişemezler.
     notify_members_info: Bu konu hakkında bilgilendirmek istediğiniz grup üyelerinin adlarını girin.
     specified_voters_only_warning: Bu başlıkta yalnızca seçili kişilerin oy kullanabileceği anketler bulunmaktadır. Bu formla birini eklemek ona oy hakkı vermez, yalnızca takip etme ve yorum yapma olanağı sağlar. Oy hakkı vermek istiyorsanız ankette "oy veren ekle" seçeneğini kullanın.
+    manage_thread_members: Konu üyelerini yönetin
+    find_or_invite_people: İnsanları bulun veya davet edin
+    invite_or_notify_explanation: Yeni katılımcılar konuya davet edilecek. Konuda zaten bulunan katılımcılara ise tekrar bildirim gönderilecek.
+    invite_or_notify: Davet et veya bildir
+    member_page_count: "%{first}–%{last} / %{total}"
+    guest_access_info: E-posta ile davet edilen misafirler, diğer grup konularına erişimleri olmaksızın bu konuya katılabilirler.
   poll_common_details_meta:
     opened: Açıldı
     opens: Açılıyor

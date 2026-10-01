@@ -1,6 +1,6 @@
 ---
 title: Instellingen
-source_revision: 6b2c4d5c591a9eb139fc64370d602b8dcf19c0e4
+source_revision: 9c60c42fc739483fa23f15d9f34a1e9245518092
 source_file: docs/en/user_manual/polls/settings/index.md
 translated:
   provider: codex/gpt-6.1-sol
@@ -12,11 +12,11 @@ sections:
   add-content: f622e36a3ad15e4e
   voting-options: d0ea31745ce8b651
   edit-voting-options: ef0d61585b34fbd6
-  opening-time: 13aa5e4392d1ba60
+  opening-time: 2fdf358a34805114
   more-settings: fd837a51b81cbc13
   reminder: e6ac37324b884958
   anonymous-voting: 4fde93187ffd1a86
-  vote-reason: ce00fe99ebac71ff
+  vote-reason: b1ebf2700ce8248b
   hide-results: c0873aeafe8feb59
   start-the-poll: 8e7d8e81db57f4f8
   managing-polls: b26fc41e19371d54
@@ -34,11 +34,11 @@ generated:
   add-content: e135991441d8f023
   voting-options: aaa150c91a1583ca
   edit-voting-options: 21ad3e2ce10372de
-  opening-time: 424ad6af6245c562
+  opening-time: 9efa541a68565c77
   more-settings: ac9de733ac425f3a
   reminder: 89dff034b6b3d96b
   anonymous-voting: 3bf013d342042d8b
-  vote-reason: 0c7a62c1146e36c0
+  vote-reason: ee2f8de915708d41
   hide-results: f2ecf69c7ea4a831
   start-the-poll: ae11d51f6115cbb3
   managing-polls: 998a7f2f76a9372a
@@ -123,15 +123,17 @@ Gebruik het potloodpictogram naast de stemoptie om het bewerkingsvenster te open
 
 <!-- translation-section: opening-time -->
 
-### Openingstijd
+### Duur
 
 Standaard opent de stemming zodra je de peiling maakt. Wil je de stemming later openen, schakel dan **De stemming is direct geopend.** uit en selecteer een openingsdatum en -tijd.
 
 Zo geef je mensen tijd om te discussiëren voordat de stemming opent. Je kunt ook zorgen dat een peiling of voorstel goed is ingesteld en op het juiste moment begint.
 
+Als je groep bijvoorbeeld tijdens een komende vergadering over meerdere besluiten moet stemmen, kun je de peilingen voorbereiden en vooraf stemmers toevoegen. Plan vervolgens alle peilingen zo dat ze openen wanneer de stemperiode begint. Mensen kunnen de peilingen bekijken voordat ze openen, maar kunnen nog niet stemmen.
+
 Als een peiling een geplande openingstijd heeft, kun je stemmers toevoegen voordat de stemming opent. Ze krijgen een melding wanneer de stemming opent, in plaats van wanneer je ze toevoegt.
 
-**Stemmers melden wanneer de peiling opent:** Als dit is ingeschakeld (standaard), krijgen alle stemmers een melding wanneer de stemming opent. Schakel dit uit als je de stemming zonder meldingen wilt openen.
+**Stemmers informeren wanneer de peiling opent:** Als dit is ingeschakeld (standaard), krijgen alle stemmers een melding wanneer de stemming opent. Schakel dit uit als je de stemming zonder meldingen wilt openen.
 
 **Sluitingsdatum en -tijd:** Selecteer de sluitingsdatum en -tijd voor je peiling.
 
@@ -181,18 +183,16 @@ Het kan nuttig zijn om te begrijpen waarom mensen op een bepaalde manier stemmen
 De beschikbare instellingen hangen af van het sjabloon:
 
 - **Optioneel** laat stemmers kiezen of ze een reden geven
-- **Vereist om niet akkoord te gaan of te blokkeren** vereist een reden als de gekozen optie
-  het stempictogram Niet akkoord of Blokkeren gebruikt
-- **Vereist bij blokkeren** vereist een reden als de gekozen optie het
-  stempictogram Blokkeren gebruikt
+- **Vereist om niet akkoord te gaan of te blokkeren** vereist een reden als de gekozen optie het stempictogram Oneens of Blokkeer gebruikt
+- **Vereist bij blokkeren** vereist een reden als de gekozen optie het stempictogram Blokkeer gebruikt
 - **Verplicht** vereist dat iedere stemmer een reden geeft
 - **Uitgeschakeld** verwijdert het veld voor de stemreden
 
 ![](vote_reason_options.png)
 
-De voorwaardelijke instellingen volgen het stempictogram en niet de naam van de optie. Ze blijven gelden als je Niet akkoord hernoemt naar bijvoorbeeld Bezwaar. Het sjabloon Consent gebruikt standaard **Vereist om niet akkoord te gaan of te blokkeren** en het sjabloon Consensus gebruikt standaard **Vereist bij blokkeren**. Andere sjablonen gebruiken standaard **Optioneel**, behalve vragenrondes, waarbij het antwoord zelf verplicht is. De auteur van de peiling kan de instelling voor een afzonderlijke peiling wijzigen.
+De voorwaardelijke instellingen volgen het stempictogram en niet de naam van de optie. Ze blijven gelden als je Oneens hernoemt naar bijvoorbeeld Bezwaar. Het sjabloon Toestemming gebruikt standaard **Vereist om niet akkoord te gaan of te blokkeren** en het sjabloon Overeenstemming gebruikt standaard **Vereist bij blokkeren**. Andere sjablonen gebruiken standaard **Optioneel**. De auteur van de peiling kan de instelling voor een afzonderlijke peiling wijzigen.
 
-**Beperk de reden tot maximaal 500 tekens:** Korte stemredenen zijn makkelijker te begrijpen. Een verzameling beknopte redenen helpt bij het nemen van een besluit.  Deze instelling is standaard aangevinkt. Haal het vinkje weg om langere redenen toe te staan.
+**Beperk de reden tot maximaal 500 tekens:** Korte stemredenen zijn makkelijker te begrijpen. Een verzameling beknopte redenen helpt bij het nemen van een besluit. Deze instelling is standaard aangevinkt. Haal het vinkje weg om langere redenen toe te staan.
 
 <!-- translation-section: hide-results -->
 

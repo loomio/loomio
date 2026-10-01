@@ -1,24 +1,26 @@
 ---
 title: Zustimmung
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/polls/proposals/consent/index.md
+source_revision: 71554be8e61a76613b0707b8262302c22299a5d0
+source_file: docs/en/user_manual/polls/proposals/consent/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 7c6301775b6655f2
   when-to-use-consent: 32ea681182001a9a
   example-start-a-bottle-trial: abc3b93cccfe2471
   set-up-the-proposal: 99fe028ed43b44c2
   vote: 496a824e20def5e2
-  read-the-results: f4db0702619b3992
+  read-the-results: 710fb80144e56ea9
+  share-an-outcome: 8f8b3f701dc4f516
 generated:
   introduction: 7aa6ac064bab0785
   when-to-use-consent: c8d76dab391f9183
   example-start-a-bottle-trial: 8e0b05099d8dd05d
   set-up-the-proposal: 12b0a85719661f4b
   vote: 7f7dcd814a19bc36
-  read-the-results: 45b150fc8aad2292
+  read-the-results: 217a847aea89fbc2
+  share-an-outcome: 46b110a8a8dd64c0
 title_source: d37e0cd00f18a366
 title_generated: c6aedb5180fd8789
 ---
@@ -69,4 +71,10 @@ Das Diagramm zeigt die Einwände. Die Gruppe muss aber auch deren Begründungen 
 
 ![](../proposal_consent_results.png)
 
-Veröffentliche ein Fazit, das die vereinbarte Maßnahme, mögliche Schutzmaßnahmen, die verantwortlichen Personen und den Zeitpunkt der Überprüfung festhält.
+<!-- translation-section: share-an-outcome -->
+
+## Ein Fazit teilen
+
+Teile ein Fazit, wenn die Abstimmung über den Vorschlag endet. Halte die vereinbarte Maßnahme fest, wie etwaige Einwände geklärt wurden, wer verantwortlich ist und wann die Gruppe die Maßnahme überprüfen wird. Unter [Ein Fazit teilen](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome) erfährst du, wie Fazits funktionieren.
+
+![Ein Fazit, das einen geklärten Einwand, ein Startdatum und einen Zeitpunkt zur Überprüfung festhält](outcome.png)

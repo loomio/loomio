@@ -6,7 +6,6 @@ class PollService
     poll = Poll.new
     poll.assign_attributes_and_files(params)
     if poll.anonymous?
-      poll.voting_system = :anonymous_ballot
       poll.hide_results = :until_closed
       poll.stance_reason_required = :disabled
       poll.notify_on_closing_soon = :undecided_voters
@@ -42,15 +41,17 @@ class PollService
 
     topic_item = Poll.transaction do
       poll.save!
-      if poll.detached_anonymous?
+      # The author joins the topic first, so a direct poll's author is among
+      # the members who receive a stance and can vote.
+      TopicReader.for(user: actor, topic: poll.topic)
+                  .update(admin: true, guest: !poll.topic.group_id.present?, inviter_id: actor.id)
+
+      if poll.anonymous?
         create_anonymous_poll_voters(poll: poll, actor: actor, params: params)
       else
         create_anyone_can_vote_stances(poll) if !poll.specified_voters_only
       end
       poll.update_counts!
-
-      TopicReader.for(user: actor, topic: poll.topic)
-                  .update(admin: true, guest: !poll.topic.group_id.present?, inviter_id: actor.id)
 
       Sentry.metrics.count("poll.create", attributes: { poll_type: poll.poll_type })
       topic_item = TopicItems::PollCreated.create!(
@@ -167,7 +168,7 @@ class PollService
 
     Poll.transaction do
       poll.lock!
-      raise CanCan::AccessDenied if poll.detached_anonymous? && !poll.active?
+      raise CanCan::AccessDenied if poll.anonymous? && !poll.active?
 
       TopicService.add_users(
         topic:  poll.topic,
@@ -177,7 +178,7 @@ class PollService
         audience: params[:recipient_audience],
       )
 
-      if poll.detached_anonymous?
+      if poll.anonymous?
         voters = create_anonymous_poll_voters(poll: poll, actor: actor, params: params)
         poll.update_counts!
       else
@@ -190,7 +191,7 @@ class PollService
         )
       end
 
-      if params[:notify_recipients] && !poll.detached_anonymous?
+      if params[:notify_recipients] && !poll.anonymous?
         create_poll_announced_notification!(
           poll: poll,
           actor: actor,
@@ -200,7 +201,7 @@ class PollService
           recipient_audience: params[:recipient_audience],
           recipient_message:  params[:recipient_message],
         )
-      elsif params[:notify_recipients] && poll.detached_anonymous? && voters.any?
+      elsif params[:notify_recipients] && poll.anonymous? && voters.any?
         create_poll_announced_notification!(
           poll: poll,
           actor: actor,
@@ -213,7 +214,7 @@ class PollService
       end
     end
 
-    poll.detached_anonymous? ? voters : stances
+    poll.anonymous? ? voters : stances
   end
 
   def self.create_anonymous_poll_voters(poll:, actor:, params:)
@@ -239,11 +240,13 @@ class PollService
     existing_voter_ids = poll.anonymous_poll_voters.where(voter_id: users.select(:id)).pluck(:voter_id)
     users = users.where.not(id: existing_voter_ids)
     group_member_ids = poll.group.members.where(id: users.select(:id)).pluck(:id).to_set
+    invited_at = Time.current
     rows = users.map do |user|
       {
         poll_id: poll.id,
         voter_id: user.id,
         inviter_id: actor.id,
+        invited_at: invited_at,
         group_member: group_member_ids.include?(user.id),
         ballot_submitted: false
       }
@@ -293,11 +296,15 @@ class PollService
       stance.update(revoked_at: nil, revoker_id: nil, inviter_id: actor.id)
     end
 
-    new_stances = users.where.not(id: reinvited_user_ids).map do |user|
+    users_new = users.where.not(id: reinvited_user_ids).to_a
+    weights_by_user_id = poll.weighted_voting? ? poll.member_vote_weights_by_user_id(users_new.map(&:id)) : {}
+
+    new_stances = users_new.map do |user|
       Stance.new(
         participant: user,
         poll: poll,
         inviter: actor,
+        weight: weights_by_user_id.fetch(user.id, 1),
         latest: true,
         reason_format: user.default_format,
         created_at: Time.zone.now
@@ -377,7 +384,7 @@ class PollService
     hour_start = (now + 1.day).at_beginning_of_hour
     hour_finish = hour_start + 1.hour
     this_hour_tomorrow = hour_start..hour_finish
-    Poll.closing_soon_not_published(this_hour_tomorrow).where.not(voting_system: Poll.voting_systems[:anonymous_ballot]).each do |poll|
+    Poll.closing_soon_not_published(this_hour_tomorrow).where(anonymous: false).each do |poll|
       NotificationService.create!(
         kind: "poll_closing_soon",
         subject: poll,
@@ -386,7 +393,7 @@ class PollService
     end
 
     Poll.closing_soon_not_published(now..(now + 24.hours))
-        .where(voting_system: Poll.voting_systems[:anonymous_ballot])
+        .where(anonymous: true)
         .find_each do |poll|
       opening_at = poll.opening_at || poll.opened_at
       next unless opening_at && poll.closing_at - opening_at >= 24.hours
@@ -409,25 +416,34 @@ class PollService
         end
   end
 
+  # Members vote only through a stance (or anonymous voter record), so new
+  # members get one in every unclosed poll, including scheduled and draft polls
+  # that open later. Each new voter then receives the poll with their own voting
+  # state, so they can vote without reloading. Runs in PollGroupMembersAddedWorker.
   def self.group_members_added(group_id)
     return if group_id.nil?
 
-    Poll.active.joins(:topic).where(topics: { group_id: group_id }, specified_voters_only: false).each do |poll|
-      if poll.detached_anonymous?
+    Poll.kept.where(closed_at: nil).joins(:topic).where(topics: { group_id: group_id }, specified_voters_only: false).each do |poll|
+      new_voter_ids = if poll.anonymous?
         Poll.transaction do
           poll.lock!
-          create_anonymous_poll_voters(poll: poll, actor: poll.author, params: {})
+          voter_ids = create_anonymous_poll_voters(poll: poll, actor: poll.author, params: {}).pluck(:voter_id)
           poll.update_counts!
+          voter_ids
         end
       else
-        create_anyone_can_vote_stances(poll)
+        create_anyone_can_vote_stances(poll).pluck(:participant_id)
+      end
+
+      new_voter_ids.each do |user_id|
+        MessageChannelService.publish_models([ poll ], user_id: user_id)
       end
     end
   end
 
   def self.create_anyone_can_vote_stances(poll)
     raise "only use on specified_voters_only=false" if poll.specified_voters_only
-    return if poll.detached_anonymous?
+    return if poll.anonymous?
 
     member_ids = poll.members.humans.pluck(:id).uniq
     revoked_user_ids = poll.stances.revoked.pluck(:participant_id).uniq
@@ -461,7 +477,7 @@ class PollService
       poll.lock!
       next if poll.closed_at
 
-      if poll.detached_anonymous?
+      if poll.anonymous?
         poll.stv_results = StvCountService.count(poll) if poll.poll_type == "stv"
         poll.update!(closed_at: Time.current)
         poll.update_counts!
@@ -469,9 +485,6 @@ class PollService
         ReindexPollWorker.perform_later(poll.id)
         next
       end
-
-      StanceReceipt.where(poll_id: poll.id).delete_all
-      StanceReceipt.insert_all build_receipts(poll)
 
       if poll.topic && poll.hide_results == 'until_closed'
         stance_ids = poll.stances.latest.reject(&:body_is_blank?).map(&:id)
@@ -505,29 +518,6 @@ class PollService
     end
   end
 
-  def self.build_receipts(poll)
-    if poll.detached_anonymous?
-      return poll.anonymous_poll_voters.map do |voter|
-        {
-          poll_id: poll.id,
-          voter_id: voter.voter_id,
-          inviter_id: voter.inviter_id,
-          vote_cast: voter.ballot_submitted
-        }
-      end
-    end
-
-    poll.stances.latest.map do |stance|
-      {
-        poll_id: poll.id,
-        voter_id: stance.participant_id,
-        inviter_id: stance.inviter_id,
-        invited_at: stance.created_at,
-        vote_cast: !!stance.cast_at
-      }
-    end
-  end
-
   # def self.destroy(poll:, actor:)
   #   actor.ability.authorize! :destroy, poll
   #   poll.destroy
@@ -535,7 +525,19 @@ class PollService
   #   EventBus.broadcast('poll_destroy', poll, actor)
   # end
 
-  def self.calculate_results(poll, poll_options, undecided_voter_ids: nil)
+  # Result scores are numbers in every output: whole numbers stay integers, and
+  # weighted totals keep the three decimal places weights are stored with.
+  def self.result_number(value)
+    number = value.to_d.round(3)
+    number.frac.zero? ? number.to_i : number.to_f
+  end
+
+  # Callers with a record cache pass the voter ids they already loaded; other
+  # callers leave them nil and the ids are queried here.
+  def self.calculate_results(poll, poll_options, undecided_voter_ids: nil, none_of_the_above_voter_ids: nil)
+    # Options may come from the record cache without their poll loaded; attach it
+    # so each option's color and voter ids do not reload the poll.
+    poll_options.each { |option| option.association(:poll).target = poll }
     return calculate_stv_results(poll, poll_options) if poll.poll_type == 'stv'
 
     sorted_poll_options = case poll.order_results_by
@@ -546,9 +548,13 @@ class PollService
       poll_options.sort_by {|o| -(o.total_score)}
     end
 
+    total_score = poll_options.sum(&:total_score)
+    maximum_score = poll_options.map(&:total_score).max
+    weighted_results = poll.weighted_voting?
+
     l = sorted_poll_options.each_with_index.map do |option, index|
       option_name = poll.poll_option_name_format == 'i18n' ? "poll_#{poll.poll_type}_options."+option.name : option.name
-      score_percent = poll.total_score > 0 ? ((option.total_score.to_f / poll.total_score.to_f) * 100) : 0
+      score_percent = total_score > 0 ? ((option.total_score / total_score) * 100) : 0
       voter_percent = poll.voters_count > 0 ? ((option.voter_count.to_f / poll.voters_count.to_f) * 100) : 0
 
       test_result = if option.test_operator == 'gte'
@@ -574,14 +580,15 @@ class PollService
         name_format: poll.poll_option_name_format,
         icon: option.icon,
         rank: index+1,
-        score: option.total_score,
+        score: result_number(option.total_score),
+        unweighted_score: weighted_results ? option.unweighted_score : option.total_score.to_i,
         target_percent: ((option.icon == 'agree') && (poll.agree_target.to_i > 0)) ? ((option.total_score.to_f / poll.agree_target.to_f) * 100) : 0,
-        score_percent: score_percent,
-        max_score_percent: poll.total_score > 0 ? ((option.total_score.to_f / poll.stance_counts.max.to_f) * 100) : 0,
+        score_percent: score_percent.to_f,
+        max_score_percent: total_score > 0 ? ((option.total_score / maximum_score) * 100).to_f : 0,
         voter_percent: voter_percent,
-        average: option.average_score,
-        voter_scores: option.voter_scores,
-        voter_ids: option.voter_ids.take(50),
+        average: weighted_results ? option.weighted_average_score : option.average_score,
+        voter_scores: option.voter_scores_for_results,
+        voter_ids: option.voter_ids.take(Poll::RESULT_VOTER_IDS_MAX),
         voter_count: option.voter_count,
         color: option.color,
         test_operator: option.test_operator,
@@ -600,13 +607,14 @@ class PollService
           name_format: 'i18n',
           rank: nil,
           score: 0,
+          unweighted_score: 0,
           score_percent: 0,
           max_score_percent: 0,
           target_percent: poll.voters_count > 0 ? (poll.none_of_the_above_count.to_f / poll.voters_count.to_f * 100) : 0,
           voter_percent: poll.voters_count > 0 ? (poll.none_of_the_above_count.to_f / poll.voters_count.to_f * 100) : 0,
           average: 0,
           voter_scores: {},
-          voter_ids: poll.none_of_the_above_voters.map(&:id).take(50),
+          voter_ids: (none_of_the_above_voter_ids || poll.none_of_the_above_voters.ids).take(Poll::RESULT_VOTER_IDS_MAX),
           voter_count: poll.none_of_the_above_count,
           color: '#BBBBBB',
           test_result: nil
@@ -623,13 +631,14 @@ class PollService
           name_format: 'i18n',
           rank: nil,
           score: 0,
+          unweighted_score: 0,
           score_percent: nil,
           max_score_percent: 0,
           target_percent: poll.voters_count > 0 ? (poll.undecided_voters_count.to_f / poll.voters_count.to_f * 100) : 0,
           voter_percent: poll.voters_count > 0 ? (poll.undecided_voters_count.to_f / poll.voters_count.to_f * 100) : 0,
           average: 0,
           voter_scores: {},
-          voter_ids: (undecided_voter_ids || poll.undecided_voters.ids).take(50),
+          voter_ids: (undecided_voter_ids || poll.undecided_voters.ids).take(Poll::RESULT_VOTER_IDS_MAX),
           voter_count: poll.undecided_voters_count,
           color: '#BBBBBB',
           test_result: nil
@@ -669,13 +678,14 @@ class PollService
         rank: elected_ids.index(option.id)&.+(1),
         stv_status: status,
         round_elected: elected_rounds[option.id],
-        score: option.total_score,
+        score: result_number(option.total_score),
+        unweighted_score: option.total_score.to_i,
         score_percent: 0,
         max_score_percent: 0,
         voter_percent: poll.voters_count > 0 ? ((option.voter_count.to_f / poll.voters_count.to_f) * 100) : 0,
         average: option.average_score,
-        voter_scores: option.voter_scores,
-        voter_ids: option.voter_ids.take(50),
+        voter_scores: option.voter_scores_for_results,
+        voter_ids: option.voter_ids.take(Poll::RESULT_VOTER_IDS_MAX),
         voter_count: option.voter_count,
         color: option.color,
         test_result: nil
@@ -706,7 +716,7 @@ class PollService
   end
 
   def self.announce_poll_opened(poll)
-    if poll.detached_anonymous?
+    if poll.anonymous?
       recipient_user_ids = poll.anonymous_poll_voters.where.not(voter_id: poll.author_id).pluck(:voter_id)
       return if recipient_user_ids.empty?
 

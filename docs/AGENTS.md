@@ -55,9 +55,9 @@ English source pages live under `docs/en/`. Translated pages mirror their paths 
 - `<!-- translation-section: stable-id -->` marks a translation unit. IDs are unique within a page and remain unchanged when the text changes. Seed a new English page's IDs with `docs/translate.rb`; when adding a section to an existing page, give it a new marker and copy the marker to its translation only when supplying the translated text.
 - Frontmatter holds the translated navigation `title`, English section hashes in `sections`, generated text hashes in `generated`, Git source provenance where available, the last translation provider/date, and exceptional `needs_review` notes. The generated hashes detect customer edits automatically. They are fingerprints, not section identities.
 - Update a language with `bundle exec ruby docs/translate.rb <locale> [<page.md>...]`. Omit pages to process every manual and guide page in the shared summary. The script learns customer corrections even when English has not changed, without making a translation request. It translates only missing or stale sections and removes sections deleted from English.
-- Run `bundle exec ruby docs/sync_translations.rb` to update every published language. The local pre-push hook runs this user_manual translation sync automatically when the branch changes user_manual sources relative to master, after checking that manual source edits are committed. Branch deletions and branches without user_manual changes skip it. Generated changes stop the push and must be committed before retrying; the hook never commits or stages them. The documentation GitHub Action checks freshness with `--check` and builds the site without invoking the translator.
+- Run `bundle exec ruby docs/sync_translations.rb` to update every published language after committing English user_manual changes, and commit the translations it writes before pushing. The local pre-push hook and the documentation GitHub Action only check freshness with `--check`; neither invokes the translator. When the hook stops a push, run the sync, commit its output, and push again.
 - When English changes a corrected section, update it automatically using the customer's version and previous correction notes as context. Record the customer's before/after wording in a `translation-correction` comment when Git contains the matching generated baseline. For an uncommitted generated baseline, record the preferred text instead. Keep notes with their section and give them to later translation requests. These notes do not create a review queue.
-- Translation requests receive named sections as rendered HTML with full-page context. Validate returned Markdown against the English using the site's Markdown parser: heading levels, lists, tables, link/image targets, code, literal HTML, and alert markers. Run the same structural checks at build time, including on customer edits. Terminology warnings are recorded for information and do not block otherwise valid translations.
+- Translation requests receive named sections as Markdown with full-page context. Validate returned Markdown against the English using the site's Markdown parser: heading levels, lists, tables, link/image targets, code, literal HTML, and alert markers. Run the same structural checks at build time, including on customer edits. Terminology warnings are recorded for information and do not block otherwise valid translations.
 - A language builds when it is published in `docs/locales.yml` or requested through `DOCS_LOCALES`, for example `DOCS_LOCALES=fr,de bundle exec ruby docs/build.rb`. Machine translations may be published after automated validation; human review is optional. Published languages require every translated page to be complete, current and structurally valid. Preview builds omit incomplete or stale pages, using English navigation links for those pages.
 - Translated headings retain English anchor IDs, and links between translated pages use the current language. Reuse English screenshots and downloads by default; an asset at the equivalent `docs/<locale>/...` path overrides the English asset without copying all images into every locale.
 - Commit only English screenshots. Generate translated application images separately with `bin/docs-screenshots <locale,...|all> [image-or-directory...]`; `--status` reports cache state and `--refresh` also replaces outdated files. Generated PNGs and `.generation.json` live under the ignored `public/docs-screenshots/` cache or an explicit `--output` directory. Keep filenames stable and update the manifest only after successful captures. The manual-screenshot GitHub Action restores each language's R2 cache and publishes changed images and its manifest from trusted master runs. Runtime lookup uses local images, then `user-manual-screenshots.loomio.com`, then bundled English. Generation and publishing happen outside deployment; preserve local screenshot caches during client asset pruning.
@@ -132,14 +132,16 @@ Work through screenshot replacements one image at a time:
 
 Use these framing defaults unless the page needs a deliberate exception:
 
-- Capture the smallest complete interface context that explains the action. A
-  discussion or proposal example usually needs the full central `.strand-card`,
-  but not the application drawer, top bar, or thread drawer.
+- Be generous with context. Prefer a larger area with the subject spotlighted
+  over a tight crop around the subject, so the reader can see where it sits on
+  the page. A discussion or proposal example usually needs the full central
+  `.strand-card`, but not the application drawer, top bar, or thread drawer.
 - Do not include the application toolbar or title bar unless the screenshot also
   includes an application drawer that needs it for orientation.
 - When the subject is a control inside a form or modal, show the whole form or
-  modal and spotlight the control. Do not crop so tightly that the reader cannot
-  identify where the control belongs.
+  modal and spotlight the control. If the form is too long for that, show about
+  one screen of the form around the control, with the control spotlighted. Do
+  not crop so tightly that the reader cannot identify where the control belongs.
 - Give compact editor, comment, task, and menu captures about 32 pixels of
   external padding. Adjust individual images when an overlay or unusually shaped
   target needs more or less space.

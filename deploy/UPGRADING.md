@@ -15,6 +15,10 @@ Or run [`update.sh`](update.sh) from the deployment directory, which performs th
 ./update.sh
 ```
 
+## Anonymous participation visibility
+
+`LOOMIO_VERIFY_PARTICIPANTS_ADMIN_ONLY` has been removed. After an anonymous poll closes, everyone who can see its results can see who took part. Only group admins see email addresses. Remove the variable from `.env`; it no longer has any effect.
+
 ## Group deletion worker configuration
 
 Restart `bin/jobs` processes when deploying the dedicated `group_destruction` queue. The bundled `config/queue.yml` gives that queue one process with one thread; `JOB_CONCURRENCY` scales only the general worker pool. Custom queue configurations must serve `group_destruction` separately and exclude it from general workers. Run only one destruction worker across the deployment if you run multiple job containers. Jobs queued before this change retain their original queue assignment.
@@ -80,3 +84,5 @@ The following stepping-stone versions are required when upgrading an older Loomi
 - v2.11.13
 - v2.15.4
 - v2.17.1
+- v3.2.0 (complete the anonymous-poll conversion described above)
+- v3.3.0 (run its transition migration before upgrading to a later version)

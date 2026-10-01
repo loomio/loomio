@@ -1,18 +1,18 @@
 ---
 title: Inviter au vote
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/polls/inviting_people/index.md
+source_revision: 3a315412c646d254c8426be5c436a4e593f6011f
+source_file: docs/en/user_manual/polls/inviting_people/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 0635cf23fcaaa95b
   invite-people-to-vote-in-a-poll: cfbf5caf71d1d5ca
   invite-guests-or-experts: 0717537bbd36fa07
   invite-a-subgroup-to-vote: 3ac684bdca4b3365
   engage-people-while-a-poll-is-running: 69971de8d56c0a74
-  add-voters-to-the-poll: 904f682bab618ce3
-  remove-people-from-the-poll: d204dd916f5418e2
+  add-voters-to-the-poll: 48f3b4a1edb5a037
+  remove-people-from-the-poll: ceec3f0319728807
   remind-people-to-vote: 177c881cb1b0dfb9
   view-notification-history: 52d930341c048008
   close-early: 0c46e8066719fc2f
@@ -23,8 +23,8 @@ generated:
   invite-guests-or-experts: 34c54db6744820a9
   invite-a-subgroup-to-vote: e718d4277990425a
   engage-people-while-a-poll-is-running: 9d49d9d4f1024917
-  add-voters-to-the-poll: 60bcf6f986830283
-  remove-people-from-the-poll: 1b9e226bbcbfa096
+  add-voters-to-the-poll: c83a0335587f002f
+  remove-people-from-the-poll: 278b4b7a4a21b52e
   remind-people-to-vote: 0d78079f1c95a508
   view-notification-history: '07269394db7c60dc'
   close-early: 98a994f0a5b48e70
@@ -88,7 +88,7 @@ Plusieurs fonctions au bas du sondage vous aident à encourager la participation
 
 Vous pouvez ajouter des personnes au sondage à tout moment, y compris avant l’ouverture du vote pour un sondage programmé.
 
-Sélectionnez **Ajouter des électeurs**, puis saisissez les noms ou les adresses e-mail des personnes à ajouter.
+Sélectionnez **Gérer les électeurs** pour ouvrir la fenêtre de gestion des électeurs. Vous pouvez inviter tous les membres du groupe, ajouter des membres par leur nom ou ajouter des invités par leur adresse e-mail si les invitations d’invités sont autorisées. La saisie dans **Trouver ou inviter des électeurs** filtre également les personnes déjà présentes dans le sondage. Les électeurs ajoutés le plus récemment apparaissent en premier ; utilisez les commandes de pagination pour parcourir la liste complète.
 
 Si l’ouverture du vote est programmée et n’a pas encore eu lieu, les électeurs ne recevront pas de notification immédiate. Ils seront avertis à l’ouverture du vote.
 
@@ -96,13 +96,15 @@ Si l’ouverture du vote est programmée et n’a pas encore eu lieu, les élect
 
 ### Retirer des personnes du sondage
 
-Sélectionnez **Ajouter des électeurs**, trouvez le nom de la personne, ouvrez le menu à trois points à côté de son nom, puis sélectionnez **Retirer de la proposition**.
+Sélectionnez **Gérer les électeurs**, trouvez le nom de la personne dans la fenêtre de gestion des électeurs, sélectionnez le bouton de corbeille à côté de son nom, puis confirmez en sélectionnant **Supprimer l'électeur**.
+
+![Le bouton de corbeille à côté d’un électeur dans la fenêtre de gestion des électeurs](proposal_invite_remove.png)
 
 Il n’est pas possible de retirer des personnes d’un sondage anonyme.
 
 Par exemple, une personne administrant le groupe qui crée un sondage pour les membres d’un conseil peut se retirer si elle n’est pas autorisée à voter.
 
-![](proposal_invite_remove.png)
+Pour les sondages utilisant des poids de vote, cette même fenêtre permet aux administrateurs du sondage de [consulter et modifier les poids de vote](/en/user_manual/polls/weighted_voting).
 
 <!-- translation-section: remind-people-to-vote -->
 

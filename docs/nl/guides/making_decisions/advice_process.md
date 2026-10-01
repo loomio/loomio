@@ -1,10 +1,10 @@
 ---
 title: Adviesproces
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/guides/making_decisions/advice_process.md
+source_revision: 9c60c42fc739483fa23f15d9f34a1e9245518092
+source_file: docs/en/guides/making_decisions/advice_process.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-30'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: '0994471ee964501f'
   key-points: 66f32f2b3cf56e0d
@@ -15,7 +15,7 @@ sections:
   step-0-you-notice-a-problem-or-opportunity-and-take-the-initiative: bf6c40b5883bb4d8
   step-1-seek-input-to-sound-out-perspectives-before-proposing-action: 1ead1a7a23e4efad
   step-2-clarify-and-strengthen-the-advice-through-discussion: a3b5393138bde245
-  step-3-make-a-decision-with-advice-and-inform-people: e6213c8e90b5d392
+  step-3-make-a-decision-with-advice-and-inform-people: c55b6d9c9ad0961c
 generated:
   introduction: 3b787dd44116a70a
   key-points: 2b3c96e7ba106793
@@ -26,7 +26,7 @@ generated:
   step-0-you-notice-a-problem-or-opportunity-and-take-the-initiative: b945442314d94554
   step-1-seek-input-to-sound-out-perspectives-before-proposing-action: 7d2ae698dea7f740
   step-2-clarify-and-strengthen-the-advice-through-discussion: f1847fc3aedce8de
-  step-3-make-a-decision-with-advice-and-inform-people: 904f6a1df37d9cde
+  step-3-make-a-decision-with-advice-and-inform-people: 9fa8ad9e8c2dd698
 title_source: 290fb74b7be97f31
 title_generated: 2e6c94f67f18f1fc
 ---
@@ -116,7 +116,7 @@ Terwijl mensen advies en reacties geven, krijgt Takashi meer duidelijkheid over 
 
 ### Stap 3. Neem een beslissing met het advies en informeer de betrokkenen
 
-Wanneer iedereen advies heeft gegeven of het voorstel sluit, neemt Takashi een beslissing en deelt hij de **[conclusie](/en/user_manual/polls/outcomes/)**.
+Wanneer iedereen advies heeft gegeven of het voorstel sluit, neemt Takashi een beslissing en deelt hij de **[conclusie](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome)**.
 
 De conclusie beschrijft duidelijk welke beslissing is genomen en wat er hierna gebeurt. Ze legt de beslissing vast voor de organisatie.
 

@@ -1,24 +1,26 @@
 ---
 title: Kiezen
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/polls/choose/index.md
+source_revision: 9c60c42fc739483fa23f15d9f34a1e9245518092
+source_file: docs/en/user_manual/polls/choose/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: f9d6a5bfb7445de0
   when-to-use-choose: f8a798497cac5a43
   example-set-a-planning-meeting-agenda: 32a94a916dbf84e5
   set-up-the-poll: a16095b63c57e0c9
   vote: d170451131c544cf
-  read-the-results: 84521c82aed8dd29
+  read-the-results: e675d12da1a4ba8a
+  share-an-outcome: f6afc1713b921265
 generated:
   introduction: 42de51023b927277
   when-to-use-choose: f2a4d384e14eed39
   example-set-a-planning-meeting-agenda: 0ac38b416256afe4
   set-up-the-poll: 84b6dee99024daed
   vote: a3914eefa2600593
-  read-the-results: cd70e1d6ef19c3f4
+  read-the-results: 7f49416863c21e7b
+  share-an-outcome: 325008b7c997b84f
 title_source: c7f937836f5d82d5
 title_generated: be0a7c0ad874985e
 ---
@@ -86,6 +88,10 @@ De resultaten tonen welk aandeel van alle gemaakte keuzes elke optie kreeg, hoev
 
 In dit voorbeeld kreeg **Schema voor het ophalen van flessen bij cafés** drie keuzes. **Werkwijze voor het wassen** en **Rapportage over het retourpercentage** kregen er elk twee. Het resultaat ondersteunt het plan om het ophalen bij cafés de meeste agendatijd te geven. De organisator moet nog bepalen hoe de resterende tijd tussen de twee gelijk geëindigde onderwerpen wordt verdeeld.
 
-Publiceer na het sluiten van de peiling een **Conclusie** waarin je uitlegt wat de groep met het resultaat gaat doen.
+<!-- translation-section: share-an-outcome -->
 
-![](outcome.png)
+## Deel een conclusie
+
+Deel een conclusie wanneer de peiling sluit. Geef aan wat de groep met het resultaat gaat doen, inclusief hoe je beslist bij een gelijk aantal stemmen. Zie [Deel een conclusie](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome) voor uitleg over hoe conclusies werken.
+
+![Een conclusie die het ophalen van flessen bij cafés de meeste vergadertijd geeft](outcome.png)

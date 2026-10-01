@@ -1,10 +1,10 @@
 ---
 title: Процесс консультирования
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/guides/making_decisions/advice_process.md
+source_revision: 9c60c42fc739483fa23f15d9f34a1e9245518092
+source_file: docs/en/guides/making_decisions/advice_process.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-30'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: '0994471ee964501f'
   key-points: 66f32f2b3cf56e0d
@@ -15,7 +15,7 @@ sections:
   step-0-you-notice-a-problem-or-opportunity-and-take-the-initiative: bf6c40b5883bb4d8
   step-1-seek-input-to-sound-out-perspectives-before-proposing-action: 1ead1a7a23e4efad
   step-2-clarify-and-strengthen-the-advice-through-discussion: a3b5393138bde245
-  step-3-make-a-decision-with-advice-and-inform-people: e6213c8e90b5d392
+  step-3-make-a-decision-with-advice-and-inform-people: c55b6d9c9ad0961c
 generated:
   introduction: 50389a289beec27c
   key-points: 43b12716780a88a1
@@ -26,7 +26,7 @@ generated:
   step-0-you-notice-a-problem-or-opportunity-and-take-the-initiative: 806c2648d2c64836
   step-1-seek-input-to-sound-out-perspectives-before-proposing-action: ad15809ddca8b4c0
   step-2-clarify-and-strengthen-the-advice-through-discussion: 8e208df51587f924
-  step-3-make-a-decision-with-advice-and-inform-people: 3ea1f928ade9c4c5
+  step-3-make-a-decision-with-advice-and-inform-people: 016a74d0caa5ad69
 title_source: 290fb74b7be97f31
 title_generated: a395bb2aad8a1f90
 ---
@@ -116,7 +116,7 @@ title_generated: a395bb2aad8a1f90
 
 ### Шаг 3. Примите решение с учётом советов и сообщите о нём людям
 
-Когда все желающие поделились советами или срок предложения истёк, Такаси принимает решение и публикует **[результат](/en/user_manual/polls/outcomes/)**.
+Когда все желающие поделились советами или срок предложения истёк, Такаси принимает решение и публикует **[результат](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome)**.
 
 В результате ясно сказано, какое решение принято и что будет дальше. Он сохраняет эту информацию для организации.
 

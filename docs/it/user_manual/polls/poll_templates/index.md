@@ -1,10 +1,10 @@
 ---
 title: Modelli di sondaggio
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/polls/poll_templates/index.md
+source_revision: 9c60c42fc739483fa23f15d9f34a1e9245518092
+source_file: docs/en/user_manual/polls/poll_templates/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: f11182d62d99dbcc
   voting-methods-and-templates: 24be471686aa2dfd
@@ -15,7 +15,7 @@ sections:
   voting-method: 761137852812fea8
   example-title-details-and-tags: 9dbbd0510d2d6cc1
   response-options: 727afbf0dcea6069
-  duration-and-settings: dc1fb9123eb808df
+  duration-and-settings: a364411a3bebb3ae
   save-and-test-the-template: 8c48386c69ea309a
   manage-the-template-list: 0c124d7958c3f80a
 generated:
@@ -28,7 +28,7 @@ generated:
   voting-method: d265f918cee4c61b
   example-title-details-and-tags: c7d42bb8e9c22535
   response-options: ae0e496590a7c655
-  duration-and-settings: b454bedbe2621ef2
+  duration-and-settings: 46251f5b7f999b46
   save-and-test-the-template: e0a5bdf11f816a85
   manage-the-template-list: 32bbde6795771f85
 title_source: 114cca246e357304
@@ -142,7 +142,7 @@ Imposta una durata predefinita adatta alla maggior parte degli usi del modello. 
 
 ![](poll_type_duration.png)
 
-Altre impostazioni predefinite possono controllare la visibilità dei risultati, il voto anonimo, l'obbligo di motivare il voto, i promemoria, il quorum e il comportamento specifico del metodo. Consulta [Impostazioni di proposte e sondaggi](../settings/) per conoscerne gli effetti.
+Altre impostazioni predefinite possono controllare la visibilità dei risultati, il voto anonimo, il [voto ponderato](../weighted_voting/), l'obbligo di motivare il voto, i promemoria, il quorum e il comportamento specifico del metodo. Consulta [Impostazioni di proposte e sondaggi](../settings/) per conoscerne gli effetti.
 
 <!-- translation-section: save-and-test-the-template -->
 

@@ -4,8 +4,17 @@ import BarIcon from '@/components/poll/common/icon/bar.vue';
 import PieIcon from '@/components/poll/common/icon/pie.vue';
 import GridIcon from '@/components/poll/common/icon/grid.vue';
 import WatchRecords from '@/mixins/watch_records';
+import { useI18n } from 'vue-i18n';
+
+const METRIC_COLUMNS = ['target_percent', 'score_percent', 'votes_cast_percent', 'voter_percent', 'score', 'unweighted_score', 'average', 'votes', 'voter_count'];
+// Show a few avatars per option and count the rest, so rows keep one height.
+const VOTER_AVATARS_MAX = 3;
 
 export default {
+  setup() {
+    const { t } = useI18n();
+    return { t, METRIC_COLUMNS, VOTER_AVATARS_MAX };
+  },
   mixins: [WatchRecords],
   components: {BarIcon, PieIcon, GridIcon},
   props: {
@@ -16,22 +25,86 @@ export default {
   data() {
     return {
       users: {},
-      slices: this.poll.pieSlices(),
+      selectedMetric: this.defaultChartMetric(),
+      slices: [],
     };
   },
 
   methods: {
+    defaultChartMetric() {
+      const columns = this.poll.resultColumns;
+      if (this.poll.chartColumn === 'target_percent' && columns.includes('target_percent')) return 'target_percent';
+      if (this.poll.chartColumn === 'voter_percent' && columns.includes('voter_percent')) return 'voter_percent';
+      if (this.poll.chartColumn === 'score_percent') {
+        if (columns.includes('votes_cast_percent')) return 'votes_cast_percent';
+        if (columns.includes('score_percent')) return 'score_percent';
+        if (columns.includes('score') && this.poll.chartType === 'pie') return 'score';
+      }
+      if (this.poll.chartColumn === 'max_score_percent' && columns.includes('score')) return 'score';
+      return null;
+    },
+    chartableMetric(column) {
+      if (!METRIC_COLUMNS.includes(column)) return false;
+      if (this.poll.chartType === 'pie' && !this.poll.singleChoice() && ['voter_percent', 'votes', 'voter_count'].includes(column)) return false;
+      return true;
+    },
+    selectMetric(column) {
+      this.selectedMetric = column;
+      this.updateSlices();
+    },
+    updateSlices() {
+      if (this.poll.chartType !== 'pie') return;
+      if (!this.selectedMetric) {
+        this.slices = this.poll.pieSlices();
+        return;
+      }
+      const voterMetric = ['voter_percent', 'votes', 'voter_count'].includes(this.selectedMetric);
+      const unweighted = this.selectedMetric === 'unweighted_score';
+      const totalUnweighted = this.poll.results.reduce((sum, option) => sum + Number(option.unweighted_score || 0), 0);
+      this.slices = this.poll.results.map(option => ({
+        color: option.color,
+        value: unweighted
+          ? (totalUnweighted ? Number(option.unweighted_score || 0) / totalUnweighted * 100 : 0)
+          : Number(option[voterMetric ? 'voter_percent' : 'score_percent'] || 0)
+      })).filter(slice => slice.value > 0);
+    },
+    barPercent(option) {
+      const metric = this.selectedMetric;
+      if (!metric) return this.clampPercent(option[this.poll.chartColumn]);
+      if (metric === 'votes' || metric === 'voter_count') return this.clampPercent(option.voter_percent);
+      if (metric === 'votes_cast_percent') return this.clampPercent(option.score_percent);
+      if (metric === 'score' || metric === 'unweighted_score') {
+        const maximum = Math.max(...this.poll.results.map(result => Number(result[metric] || 0)), 0);
+        return maximum ? this.clampPercent(Number(option[metric] || 0) / maximum * 100) : 0;
+      }
+      if (metric === 'average') {
+        const maximum = Number(this.poll.defaulted('maxScore'));
+        return maximum ? this.clampPercent(Number(option.average || 0) / maximum * 100) : 0;
+      }
+      return this.clampPercent(option[metric]);
+    },
     realOption(opt) {
       return Records.pollOptions.find(opt.id) || {meaning: '', name: opt.name}
     },
     clampPercent(num) { return Math.max(0, Math.min(num, 100)); }
   },
 
+  watch: {
+    // A poll reload or weights toggle can remove the selected measure's column.
+    'poll.resultColumns'(columns) {
+      if (this.selectedMetric && !columns.includes(this.selectedMetric)) {
+        this.selectedMetric = this.defaultChartMetric();
+        this.updateSlices();
+      }
+    }
+  },
+
   created() {
+    this.updateSlices();
     this.watchRecords({
       collections: ['users', 'stances', 'polls'],
       query: () => {
-        this.slices = this.poll.pieSlices();
+        this.updateSlices();
         this.poll.results.forEach(option => {
           option.voter_ids.forEach(id => {
             let user;
@@ -53,17 +126,11 @@ export default {
     thead
       tr
         template(v-for="col in poll.resultColumns")
-          th.text-left.d-none.d-sm-table-cell(v-if="col == 'chart'" v-t="poll.closedAt ? 'poll_common.results' : 'poll_common.current_results'")
-          th.text-left(v-if="col == 'name'" v-t='"common.option"')
-          th.text-right(v-if="col == 'target_percent'" v-t='"poll_count_form.pct_of_target"')
-          th.text-right(v-if="col == 'score_percent'" v-t='"poll_ranked_choice_form.pct_of_points"')
-          th.text-right(v-if="col == 'votes_cast_percent'" v-t='"poll_ranked_choice_form.pct_of_votes_cast"')
-          th.text-right(v-if="col == 'voter_percent'" v-t='"poll_ranked_choice_form.pct_of_voters"')
-          th.text-right(v-if="col == 'score'" v-t='"poll_ranked_choice_form.points"')
-          th.text-right(v-if="col == 'rank'" v-t='"poll_ranked_choice_form.rank"')
-          th.text-right(v-if="col == 'average'" v-t='"poll_ranked_choice_form.mean"')
-          th.text-right(v-if="col == 'votes'" v-t='"poll_common.votes"')
-          th.text-right(v-if="col == 'voter_count'" v-t='"membership_card.voters"')
+          th.text-left.d-none.d-sm-table-cell(v-if="col == 'chart'") {{ t(poll.closedAt ? 'poll_common.results' : 'poll_common.current_results') }}
+          th.text-left(v-if="col == 'name'") {{ t(poll.resultHeadingKeys.name) }}
+          th.text-right(v-if="col == 'rank'") {{ t(poll.resultHeadingKeys.rank) }}
+          th.text-right(v-if="METRIC_COLUMNS.includes(col)")
+            button.poll-common-chart-table__metric(type="button" :aria-pressed="selectedMetric === col" :disabled="!chartableMetric(col)" @click="selectMetric(col)") {{ t(poll.resultHeadingKeys[col]) }}
           th.d-none.d-sm-table-cell(v-if="col == 'voters' && !hideVoters")
     tbody
       tr(v-for="option, index in poll.results", :key="option.id")
@@ -78,7 +145,7 @@ export default {
             v-if="col == 'chart' && poll.chartType == 'bar'"
             style="width: 128px; min-width: 128px; padding: 0 8px 0 0"
           )
-            div.rounded.bg-info(:style="{width: clampPercent(option[poll.chartColumn])+'%', height: '24px'}")
+            div.rounded.bg-info(:style="{width: barPercent(option)+'%', height: '24px'}")
           td(v-if="col == 'name' " :style="poll.chartType == 'pie' ? {'border-left': '4px solid ' + option.color} : {}")
             template(v-if="realOption(option).meaning")
               v-tooltip(right)
@@ -95,13 +162,19 @@ export default {
           td.text-right(v-if="col == 'target_percent' && option.icon != 'agree'")
           td.text-right(v-if="col == 'rank'") {{option.rank}}
           td.text-right(v-if="col == 'score'") {{option.score}}
+          td.text-right(v-if="col == 'unweighted_score'") {{option.unweighted_score}}
           td.text-right(v-if="col == 'votes' || col == 'voter_count'") {{option.voter_count}}
-          td.text-right(v-if="col == 'average'") {{Math.round((option.average + Number.EPSILON) * 100) / 100}}
+          td.text-right(v-if="col == 'average'") {{option.average}}
           td.text-right(v-if="col == 'voter_percent'") {{option.voter_percent.toFixed(0)}}%
           td.text-right(v-if="col == 'score_percent' || col == 'votes_cast_percent'") {{option.score_percent === null ? '' : option.score_percent.toFixed(0) + "%"}}
           td.text-right.d-none.d-sm-table-cell(v-if="col == 'voters' && !hideVoters")
             div.poll-common-chart-table__voter-avatars
-              user-avatar.float-left(v-for="id in option.voter_ids", :key="id", :user="users[id]", :size="24" no-link)
+              span.poll-common-chart-table__voter-avatar(
+                v-for="id in option.voter_ids.slice(0, VOTER_AVATARS_MAX)"
+                :key="id")
+                user-avatar(:user="users[id]" :size="24" no-link)
+              span.poll-common-chart-table__more-voters.text-body-small.text-medium-emphasis(
+                v-if="option.voter_count > VOTER_AVATARS_MAX") +{{ option.voter_count - VOTER_AVATARS_MAX }}
 </template>
 <style>
 .v-data-table tbody tr:hover {
@@ -112,9 +185,33 @@ export default {
   width: 100%;
 }
 
+.poll-common-chart-table__metric {
+  background: none;
+  border: 0;
+  border-bottom: 2px solid transparent;
+  color: inherit;
+  cursor: pointer;
+  font: inherit;
+  padding: 0 0 2px;
+  text-align: right;
+}
+
+.poll-common-chart-table__metric:hover,
+.poll-common-chart-table__metric:focus-visible,
+.poll-common-chart-table__metric[aria-pressed="true"] {
+  border-bottom-color: currentColor;
+}
+
+.poll-common-chart-table__metric:disabled {
+  border-bottom-color: transparent;
+  cursor: default;
+}
+
 .poll-common-chart-table__voter-avatars {
-  position: relative;
-  max-height: 72px;
-  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 2px;
+  white-space: nowrap;
 }
 </style>

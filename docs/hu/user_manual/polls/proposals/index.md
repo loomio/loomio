@@ -1,19 +1,19 @@
 ---
 title: Javaslatok
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/polls/proposals/index.md
+source_revision: 9c60c42fc739483fa23f15d9f34a1e9245518092
+source_file: docs/en/user_manual/polls/proposals/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: dd4cb01f80b669fa
   choose-a-proposal-template: af87fd10a478699d
-  other-proposal-templates: d97b167228fd3b85
+  other-proposal-templates: 21ac5a295b8832ab
   proposal-records: ef0d886d3db7a5d1
 generated:
   introduction: '03519cca59e403c2'
   choose-a-proposal-template: 4ca394c769dd3c0a
-  other-proposal-templates: e1cb6e403e4a2444
+  other-proposal-templates: 848051877f376621
   proposal-records: '09a93f7dbed160c3'
 title_source: 834cfc1ee23734e1
 title_generated: 3d36a893fa8c5f0b
@@ -46,7 +46,7 @@ Válaszd azt a sablont, amelynek válaszlehetőségei illenek a kérdésedhez. M
 
 ## További javaslatsablonok
 
-A Loomióban más sablonok is vannak, például Javaslat, Az egyetértés gradiensei, Kérdés kör és Többség. Egyes sablonok kezdetben rejtve vannak. A csoport adminisztrátorai elérhetővé tehetik őket, vagy a csoport saját kifejezéseihez és szabályaihoz illő sablont hozhatnak létre a [Szavazási sablonok](../poll_templates/) oldalon.
+A Loomióban más sablonok is vannak, például Javaslat, Az egyetértés gradiensei és Többség. Egyes sablonok kezdetben rejtve vannak. A csoport adminisztrátorai elérhetővé tehetik őket, vagy a csoport saját kifejezéseihez és szabályaihoz illő sablont hozhatnak létre a [Szavazási sablonok](../poll_templates/) oldalon.
 
 <!-- translation-section: proposal-records -->
 

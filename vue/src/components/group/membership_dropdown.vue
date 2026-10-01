@@ -6,9 +6,14 @@ import FlashService   from '@/shared/services/flash';
 import EventBus from '@/shared/services/event_bus';
 import { snakeCase } from 'lodash-es';
 import UrlFor from '@/mixins/url_for';
+import { useI18n } from 'vue-i18n';
 
 export default
 {
+  setup() {
+    const { t } = useI18n();
+    return { t };
+  },
   mixins: [UrlFor],
   props: {
     membership: Object
@@ -139,7 +144,7 @@ export default
       v-list-item.membership-dropdown__set-title(v-if='canSetName()' @click='setName()')
         v-list-item-title(v-t="'membership_dropdown.set_name_and_username'")
       v-list-item.membership-dropdown__set-title(v-if='canSetTitle()' @click='setTitle()')
-        v-list-item-title(v-t="'membership_dropdown.set_title'")
+        v-list-item-title {{ t('membership_dropdown.set_title') }}
       v-list-item.membership-dropdown__resend(v-if='canResendMembership()' @click='resendMembership()', :disabled='membership.resent')
         v-list-item-title(v-t="'membership_dropdown.resend'", v-if='!membership.resent')
         v-list-item-title(v-t="'membership_dropdown.invitation_resent'", v-if='membership.resent')

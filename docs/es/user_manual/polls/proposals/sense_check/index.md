@@ -1,24 +1,26 @@
 ---
 title: Comprobar la opinión del grupo
-source_revision: 7a01b0fd7d7df0c4bca327a916b01b12e62b967f
-source_file: docs/user_manual/polls/proposals/sense_check/index.md
+source_revision: 3a315412c646d254c8426be5c436a4e593f6011f
+source_file: docs/en/user_manual/polls/proposals/sense_check/index.md
 translated:
-  provider: codex/gpt-6-sol
-  'on': '2026-09-29'
+  provider: codex/gpt-6.1-sol
+  'on': '2026-10-01'
 sections:
   introduction: 2336356b9efbde30
   when-to-use-sense-check: c70985229c659d2f
   example-check-a-trial-plan: 8055cad3418b4bb7
   set-up-the-proposal: 8106c7ab17a225e6
   vote: 2440e2649ed1ff05
-  read-the-results: f8f63c908d080f77
+  read-the-results: 9cac8b6f7c7de36f
+  share-an-outcome: b05f9f889a838d47
 generated:
   introduction: ace33649bc174a02
   when-to-use-sense-check: 49afe68dce66fcec
   example-check-a-trial-plan: 94d6454cbdb579a9
   set-up-the-proposal: 8af24226b4232791
   vote: d80178c235da3b08
-  read-the-results: 8367e66997495369
+  read-the-results: e5da18b655536039
+  share-an-outcome: 913b03a2ecfa85e8
 title_source: e9ac5b767e01ae7b
 title_generated: 88c68622228b5ce6
 ---
@@ -70,8 +72,14 @@ Cada participante elige la respuesta que mejor refleja su opinión actual y expl
 
 ## Lee los resultados
 
-El gráfico muestra el número y la proporción de votos de cada respuesta. Lee también las explicaciones: una inquietud bien fundamentada puede requerir atención aunque la mayoría elija **Se ve bien**.
+El gráfico muestra el número y la proporción de votos de cada respuesta. Lee las explicaciones además de la distribución de los votos: una inquietud bien fundamentada puede requerir atención aunque la mayoría de los participantes elija **Se ve bien**.
 
 ![](../proposal_sense_check_results.png)
 
-Publica una conclusión que resuma los cambios que hará el grupo o deje constancia de que la idea está lista para la siguiente etapa de decisión.
+<!-- translation-section: share-an-outcome -->
+
+## Comparte una conclusión
+
+Cuando termine la comprobación de la opinión del grupo, comparte una conclusión. Resume los cambios que hará el grupo o deja constancia de que la idea está lista para la siguiente etapa de decisión. Consulta [Comparte una conclusión](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome) para saber cómo funcionan las conclusiones.
+
+![Una conclusión que indica que el plan se revisará antes de la revisión final](outcome.png)

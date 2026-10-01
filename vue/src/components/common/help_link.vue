@@ -13,6 +13,8 @@ a.help-link.text-decoration-underline(
   style="color: inherit"
   :href="manualUrl(path, locale)"
   target="_blank"
+  rel="noopener noreferrer"
 )
   span {{ t('common.read_more') }}
+  common-icon.ml-1(size="small" name="mdi-open-in-new")
 </template>

@@ -2,7 +2,7 @@
 
 # Anonymous voting
 
-Anonymous voting, also known as blind voting, separates the record of who has voted from the votes themselves. Poll coordinators can see who was eligible and, once at least three people have voted, verify participation. Application users cannot connect a submitted vote with the person who submitted it.
+Anonymous voting, also known as blind voting, separates the record of who has voted from the votes themselves. After the poll closes, anyone who can see the results can see who took part. No one using Loomio can connect a submitted vote with the person who submitted it.
 
 This page explains the protections provided by anonymous voting, the information that is retained, and the limits of the guarantee.
 
@@ -69,11 +69,15 @@ An anonymous poll cannot be reopened after it closes.
 
 <!-- translation-section: participation-verification -->
 
-## Participation verification
+## Who took part
 
-Poll coordinators can view the named participation records. These always show who was eligible. Once at least three people have voted, they also show whether each person voted, but never show how anyone voted. If a poll closes with fewer than three votes, the participation status remains hidden.
+After an anonymous poll closes, anyone who can see its results can see who took part. No one can see this while voting is open.
 
-Other participants cannot view this named participation information. Access to poll results does not grant access to the participation records.
+Select **View votes** to see the list. It always shows who was eligible. It shows whether each person voted only if enough people voted. That means the poll's quorum if it has one, otherwise half the eligible voters, and never fewer than three votes. The list never shows how anyone voted, or when.
+
+Group members and the poll's voters also see when each person joined the group and who invited them. Group admins also see email addresses, to tell apart people with the same name.
+
+Because everyone who can see the results can see who voted, a one-sided result can reveal how people voted. For example, if every vote is Agree, everyone who voted agreed.
 
 Coordinators can add eligible people while voting remains open, including after
 other people have voted. Existing voters cannot be removed from an anonymous
@@ -96,7 +100,7 @@ Polls with a total voting period of less than 24 hours do not send this automati
 Through the application, a poll coordinator, group administrator, or instance administrator may be able to see:
 
 - the poll and its eligible voters;
-- whether each eligible person has voted, where their role permits access and at least three people have voted; and
+- whether each eligible person has voted, where their role permits access and enough people have voted; and
 - aggregate results after the poll closes.
 
 They cannot use application features to see:
@@ -122,9 +126,9 @@ Consider the size of the electorate and the sensitivity of the decision when dec
 
 <!-- translation-section: can-a-coordinator-see-how-i-voted -->
 
-### Can a coordinator see how I voted?
+### Can anyone see how I voted?
 
-No. Once at least three people have voted, a coordinator can verify whether you voted but cannot connect you with a submitted vote through the application. Below that threshold, your participation status remains hidden.
+No. Once enough people have voted, people who can see the results can see whether you voted. No one can connect you with a submitted vote through the application. Until then, whether you voted stays hidden.
 
 <!-- translation-section: can-i-see-my-vote-after-submitting-it -->
 
@@ -148,7 +152,7 @@ No. Voting creates only the on-screen acknowledgement and updates your participa
 
 ### Does a public poll reveal more information?
 
-Public access may allow people to see the poll and its aggregate results after it closes. It does not expose the named participation records or individual anonymous votes.
+After a public poll closes, anyone can see its results and who took part. They cannot see individual votes, or membership and invitation details.
 
 <!-- translation-section: is-anonymous-voting-suitable-for-every-election -->
 
