@@ -37,10 +37,10 @@ class AppStringTranslator
     strings.each_slice(BATCH_SIZE) do |batch|
       batch = batch.to_h
       reply = request(batch, current.slice(*batch.keys), {})
-      passed, problems = check(batch, reply)
+      passed, problems = check(batch, reply, current)
       if problems.any?
         retry_batch = batch.slice(*problems.keys)
-        retried, problems = check(retry_batch, request(retry_batch, current.slice(*retry_batch.keys), problems))
+        retried, problems = check(retry_batch, request(retry_batch, current.slice(*retry_batch.keys), problems), current)
         passed.merge!(retried)
       end
       translations.merge!(passed)
@@ -79,13 +79,17 @@ class AppStringTranslator
     {}
   end
 
-  def check(batch, reply)
+  # A revision returned unchanged means the model judged that the English word
+  # is not the Loomio term there (a "code block" is not a block), so only its
+  # structure is checked.
+  def check(batch, reply, current)
     passed = {}
     problems = {}
     batch.each do |key, english|
       translation = reply[key]
       messages = if translation.is_a?(String) && !translation.strip.empty?
-        structure_problems(english, translation) + TranslationGlossary.wrong_terms(english, translation, @locale)
+        unchanged = translation == current[key]
+        structure_problems(english, translation) + (unchanged ? [] : TranslationGlossary.wrong_terms(english, translation, @locale))
       else
         ["missing translation"]
       end

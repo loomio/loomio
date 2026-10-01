@@ -54,6 +54,17 @@ class AppStringTranslatorTest < ActiveSupport::TestCase
     assert_equal "HTML tags differ from the English", result.failures["client.b"]
   end
 
+  test "a revision returned unchanged is kept even when it contains an avoided word" do
+    result, prompts = translate(
+      {"client.formatting.result_block" => "Outcome block"},
+      current: {"client.formatting.result_block" => "Bloc de résultat"},
+      replies: [{"client.formatting.result_block" => "Bloc de résultat"}]
+    )
+
+    assert_equal({"client.formatting.result_block" => "Bloc de résultat"}, result.translations)
+    assert_equal 1, prompts.size
+  end
+
   test "revising sends the current translations and asks to keep correct wording" do
     _result, prompts = translate(
       {"client.outcome.share" => "Share outcome"},
