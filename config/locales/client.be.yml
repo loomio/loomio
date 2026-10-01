@@ -187,7 +187,7 @@ be:
     merge_helptext: Аб'яднаць "%{name}" з іншым тэгам. Тэмы, якія выкарыстоўваюць "%{name}", будуць выкарыстоўваць замест гэтага выбраны тэг.
     tag_merged: Тэг аб'яднаны
     helptext: Тэгі дазваляюць класіфікаваць размовы і лёгка знаходзіць іх пазней
-    discussions_count_singular: "(%{count} нітка)"
+    discussions_count_singular: "(%{count} тэма)"
     discussions_count_plural: "(%{count} нітак)"
     tag_created: Тэг захаваны
     tag_destroyed: Тэг выдалены
@@ -198,13 +198,13 @@ be:
   poll_types:
     proposal: прапанова
     count: падпісацца
-    check: праверка сэнсу
+    check: праверка меркаванняў
     poll: апытанне
-    dot_vote: галасаваць
-    meeting: апытанне часу
+    dot_vote: размеркаванне балаў
+    meeting: апытанне пра час
     ranked_choice: рэйтынгавы выбар
-    stv: Выбары на СТВ
-    score: апытанне аб ацэнцы
+    stv: выбары па STV
+    score: ацэначнае апытанне
     question: раўнд пытанняў
   timezones:
     local: Мясцовы час (%{value})
@@ -264,7 +264,7 @@ be:
     volume: Аб'ём
     notification_volume: Гучнасць апавяшчэнняў
     group: Група
-    thread: Нітка
+    thread: Тэма
     discussion: Абмеркаванне
     groups: Групы
     organization: Арганізацыя
@@ -1011,7 +1011,7 @@ be:
     privacy_label: Канфідэнцыяльнасць
     privacy_public: Гэтую тэму можа праглядзець кожны, хто мае спасылку
     privacy_private: Толькі ўдзельнікі групы могуць праглядаць гэтую тэму
-    privacy_organisation: Нітка будзе бачная ўдзельнікам %{parent} і ўдзельнікам %{group}.
+    privacy_organisation: Тэма будзе бачная ўдзельнікам %{parent} і ўдзельнікам %{group}.
     fork_notice: Будзе створана новая тэма з %{count} элементамі ад %{title}
     notify_group: Паведаміць групу
   announcement:
@@ -1184,7 +1184,7 @@ be:
     edit_comment: Рэдагаваць каментар
     delete_comment: Выдаліць каментар
     reply_to_comment: Адказаць
-    fork_comment: Разьба відэльца
+    fork_comment: Адгалінаваць тэму
     translate_comment: Перакласці каментар
     edit_outcome: Рэдагаваць выснову
     announce_outcome: Паведаміць людзям пра гэту выснову
@@ -1298,7 +1298,7 @@ be:
   join_group_button:
     not_a_member: Вы зараз не з'яўляецеся ўдзельнікам гэтай групы.
     join_group: Далучыцца да групы
-    membership_requested: Запыт на сяброўства
+    membership_requested: Запыт на ўступленне
     messages:
       joined_group: Цяпер вы ўдзельнік %{group}
     membership_request_declined: 'Ваш запыт на далучэнне быў адхілены: %{reason}'
@@ -1622,10 +1622,10 @@ be:
     previous_request_response: "%{response} ад %{responder}"
     messages:
       request_approved_success: Запыт на членства ўхвалены
-      request_ignored_success: Запыт на сяброўства праігнараваны
-      request_declined_success: Запыт на сяброўства адхілены
+      request_ignored_success: Запыт на ўступленне праігнараваны
+      request_declined_success: Запыт на ўступленне адхілены
     decline: Адмова
-    decline_request: Адхіліць запыт на сяброўства
+    decline_request: Адхіліць запыт на ўступленне
     decline_reason: Прычына адмовы
     decline_help: Пры адхіленні заяўніку будзе даслана прычына адмовы па электроннай пошце. Ён можа адправіць новы запыт. Пры адхіленні запыт будзе закрыты без папярэджання.
   invitation_form:
@@ -1705,7 +1705,7 @@ be:
     title_label: тытул
     title_placeholder: Напрыклад, «Каардынатар» або «Фасілітатар»
     updated: Назва членства абноўлена
-    weight_label: Вага галасоў
+    weight_label: Вага голасу
   user_name_modal:
     user_name_updated: Імя карыстальніка абноўлена
     set_user_name: Устанавіць імя карыстальніка
@@ -2072,20 +2072,20 @@ be:
     choose_type: Выберыце тып апытання
     title: Садзейнічаць
     recommended: Рэкамендавана
-    question_title: Пытанне ў раўндзе
+    question_title: Раўнд пытанняў
     advice_title: Парада
     consent_title: Згода
     consensus_title: Кансенсус
     proposal_title: Прапанова
     count_title: Падпісацца
-    check_title: Праверка сэнсу
+    check_title: Праверка меркаванняў
     poll_title: Апытанне
     meeting: Сустрэча
-    score_title: Ацэнка апытання
+    score_title: Ацэначнае апытанне
     dot_vote_title: Галасуйце
-    meeting_title: Апытанне часу
+    meeting_title: Апытанне пра час
     ranked_choice_title: Рэйтынгавы выбар
-    stv_title: Выбары на СТВ
+    stv_title: Выбары па STV
     majority_title: Большасць
     gradients_of_agreement_title: Градыенты згоды
   poll_option_form:
@@ -2108,7 +2108,7 @@ be:
     no_more_than: Не больш за
     vote_share_requirement: Патрабаванне па долі галасоў
     for_the_proposal_to_pass: Каб прапанова была прынята, гэты варыянт павінен атрымаць…
-    for_the_poll_to_be_valid: Каб %{poll_type} быў сапраўдным, гэтая опцыя павінна атрымаць…
+    for_the_poll_to_be_valid: Каб прызнаць %{poll_type} сапраўдным, гэты варыянт павінен атрымаць…
     votes_cast: Аддадзеныя галасы
     eligible_voters: Выбаршчыкі, якія маюць права голасу
     gte_score_percent: Патрабуецца як мінімум %{percent}% аддадзеных галасоў
@@ -2130,7 +2130,7 @@ be:
     advice_process: Працэс кансультавання
     consent_process: Працэс атрымання згоды
     consensus_process: Працэс дасягнення кансенсусу
-    question_round: Пытанне ў раўндзе
+    question_round: Раўнд пытанняў
     edit_template: Рэдагаваць шаблон
     proposal: Прапанова
     run_process: Запусціць працэс
@@ -2297,7 +2297,7 @@ be:
     requests: Запыты
     admin: Адміністратар
     delegate: Дэлегат
-    delegate_popover: Дэлегат — гэта член групы з правам голасу
+    delegate_popover: Дэлегаты — гэта ўдзельнікі групы з правам голасу
     guest: Госць
     sharable_link: Спасылка для сумеснага выкарыстання
     last_seen: Апошні раз бачылі %{date}
@@ -2458,16 +2458,16 @@ be:
     newest_first: Спачатку найноўшыя
     oldest_first: Спачатку найстарэйшыя
     priority_first: Спачатку пагадзіся
-    priority_last: Спачатку блок
+    priority_last: Спачатку блакаванне
     undecided_first: Спачатку не вызначыліся
     no_votes_yet: Пакуль што не было аддадзена ніякіх галасоў.
     change_results_order: Змяніць парадак вынікаў
     name_or_username: Імя або імя карыстальніка
     all_voters: Усе выбаршчыкі
-    vote_weight_column: Вага галасоў
+    vote_weight_column: Вага голасу
     stance: Галасаваць
     participation_records_restricted: Пасля заканчэння галасавання вы зможаце ўбачыць, хто прыняў удзел
-    vote_weight: Вага галасоў %{weight}
+    vote_weight: Вага голасу %{weight}
   poll_common_details_meta:
     opened: Адкрыта
     opens: Адкрываецца
@@ -2535,7 +2535,7 @@ be:
     choose_at_least: Выберыце хаця б
     choose_at_most: Выберыце максімум
     please_review_the_form: Калі ласка, праглядзіце форму
-    option_added_please_add_details: Дададзена опцыя! Калі ласка, дадайце некалькі падрабязнасцей, каб людзі ведалі, што гэта значыць.
+    option_added_please_add_details: Варыянт дададзены. Калі ласка, дадайце некалькі падрабязнасцей, каб людзі ведалі, што ён азначае.
     default_duration_in_days: Працягласць па змаўчанні ў днях
     default_duration_in_days_hint: Колькі дзён у людзей будзе галасаваць?
     how_many_options_can_a_voter_choose: Колькі варыянтаў можа выбраць выбаршчык?
@@ -2553,7 +2553,7 @@ be:
     voting_method: Спосаб галасавання
     none_of_the_above: Нічога з вышэйпералічанага
     voting_methods:
-      question: Пытанне ў раўндзе
+      question: Раўнд пытанняў
       question_hint: Запрашаем вас задаваць пытанні і каментаваць вашу прапанову
       show_thumbs: Паказ вялікіх пальцаў
       show_thumbs_hint: Выбаршчыкі выбіраюць вялікі палец уверх, уніз, убок або руку ўверх
@@ -2567,10 +2567,10 @@ be:
       rank: Ранг
       ranked_choice: Рэйтынгавы выбар
       ranked_choice_hint: Выбаршчыкі расстаўляюць варыянты ў парадку ад найбольш пераважнага да найменш пераважнага
-      stv: Выбары на СТВ
+      stv: Выбары па STV
       stv_hint: Абярыце некалькіх пераможцаў прапарцыйна, выкарыстоўваючы адзіны перадаваемы голас
       time: Час
-      time_poll: Апытанне часу
+      time_poll: Апытанне пра час
       time_poll_hint: Выбаршчыкі паказваюць, калі яны гатовыя сустрэцца
     process: Працэс
     process_name: Назва шаблону
@@ -2635,9 +2635,9 @@ be:
     manage_voters: Кіраванне выбаршчыкамі
     remove_voter: Выдаліць выбаршчыка
     voter_page_count: "%{first}–%{last} з %{total}"
-    vote_weight_for: Вага галасоў за %{name}
+    vote_weight_for: Вага голасу для %{name}
     save_vote_weights: Захаваць вагу галасоў
-    vote_weights_updated: Вага галасоў абноўлена
+    vote_weights_updated: Вагі галасоў абноўлены
     set_all: Устанавіць усё
     find_or_invite_voters: Знайсці або запрасіць выбаршчыкаў
     remove_voter_named: Выдаліць %{name} з апытання
@@ -2650,14 +2650,14 @@ be:
     voters_will_not_be_notified: Выбаршчыкі не будуць апавешчаныя. Паведаміце ім пра галасаванне іншым спосабам.
     give_voters_different_vote_weights: Дайце выбаршчыкам розную вагу галасоў. Вынікі паказваюць як звычайныя, так і ўзважаныя вынікі.
     issued_vote_weights_will_change: Ужо апублікаваныя вагі галасоў зменяцца.
-    weight_for_all: Вага галасоў для ўсіх
+    weight_for_all: Вага голасу для ўсіх
     set_all_vote_weights: Устанавіць вагі ўсіх галасоў
     set_all_vote_weights_the_same: Устанавіць аднолькавую вагу галасоў для ўсіх
     member_vote_weights_hint: Выбаршчыкі, якія не маюць бягучага членства ў групе, атрымліваюць вагу голасу, роўную 1
     weighted_voting: Узважанае галасаванне
-    weighted_voting_is_not_available_with_anonymous_voting: "Узважанае галасаванне недаступнае пры ананімным галасаванні"
+    weighted_voting_is_not_available_with_anonymous_voting: Узважанае галасаванне недаступнае пры ананімным галасаванні
     use_weighted_voting: Выкарыстоўвайце ўзважанае галасаванне
-    weighted_voting_off_warning: Адключэнне ўзважанага галасавання ўстанаўлівае вагу кожнага галасу на 1. Любая вага галасоў, якую вы змянілі для гэтага апытання, будзе страчана.
+    weighted_voting_off_warning: Адключэнне ўзважанага галасавання ўстанаўлівае вагу кожнага голасу роўнай 1. Усе вагі галасоў, якія вы змянілі для гэтага апытання, будуць страчаны.
     weighted_voting_on_group: Уключэнне ўзважанага галасавання капіюе вагу галасоў кожнага ўдзельніка па змаўчанні. Іншыя выбаршчыкі атрымліваюць вагу галасоў, роўную 1.
     weighted_voting_on_direct: Уключэнне ўзважанага галасавання ўстанаўлівае вагу кожнага голасу на 1
   poll_proposal_form:
@@ -2692,7 +2692,7 @@ be:
     remove_option: Выдаліць опцыю
     poll_created: Апытанне створана
     poll_updated: Апытанне абноўлена
-    option_added: Дададзена опцыя
+    option_added: Варыянт дададзены
     option_already_added: Варыянт ужо дададзены ў апытанне
   poll_dot_vote_form:
     dots_per_person: Балы на чалавека
@@ -2739,14 +2739,14 @@ be:
     vote: Галасаваць
   poll_proposal_options:
     select_an_option: Выберыце варыянт
-    agree: Згодзен
+    agree: Пагаджаюся
     consent: Згода
     abstain: Устрымацца
     unsure: Не ўпэўнены
-    disagree: Не згодны
+    disagree: Не пагаджаюся
     objection: Пярэчанне
     object: Аб'ект
-    block: Блок
+    block: Блакую
     'yes': Так
     'no': Не
     no_voting: Галасаваць забаронена
