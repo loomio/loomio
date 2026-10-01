@@ -188,6 +188,16 @@ class Api::V1::PollTemplatesControllerTest < ActionController::TestCase
     refute data["template"].key?("author_id")
   end
 
+  test "export keeps weighted voting" do
+    template = create_poll_template(process_name: "Weighted", weighted_voting: true)
+
+    sign_in @user
+    get :export, params: { id: template.id, group_id: @group.id }
+
+    assert_response :success
+    assert_equal true, JSON.parse(response.body).dig("loomio_template", "template", "weighted_voting")
+  end
+
   test "export supports built-in poll templates" do
     sign_in @admin
     template = PollTemplateService.default_templates.first

@@ -212,6 +212,7 @@ class RecordCloner
       process_name
       process_subtitle
       anonymous
+      weighted_voting
       details_format
       hide_results
       discarded_by

@@ -19,7 +19,7 @@ const attributes = {
   poll_template: [
     'poll_type', 'process_name', 'process_subtitle', 'process_introduction',
     'process_introduction_format', 'title', 'title_placeholder', 'details',
-    'details_format', 'anonymous', 'specified_voters_only',
+    'details_format', 'anonymous', 'weighted_voting', 'specified_voters_only',
     'notify_on_closing_soon', 'notify_on_open', 'content_locale',
     'shuffle_options', 'show_none_of_the_above', 'hide_results', 'chart_type',
     'min_score', 'max_score', 'minimum_stance_choices',

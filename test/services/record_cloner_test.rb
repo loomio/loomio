@@ -219,4 +219,22 @@ class RecordClonerTest < ActiveSupport::TestCase
     assert_equal @poll.outcomes.count, clone.outcomes.count
     assert_equal @poll.outcomes.first.statement, clone.outcomes.first.statement
   end
+
+  test "clones a weighted poll with its vote weights" do
+    poll = PollService.create(params: {
+      title: "Weighted poll",
+      poll_type: "proposal",
+      closing_at: 3.days.from_now,
+      poll_option_names: [ "agree", "disagree" ],
+      group_id: @group.id,
+      weighted_voting: true
+    }, actor: @user)
+    poll.stances.latest.find_by!(participant_id: @user.id).update!(weight: 2.5)
+
+    clone = RecordCloner.new(recorded_at: 2.days.ago).new_clone_poll(poll)
+    clone.save!
+
+    assert clone.reload.weighted_voting?
+    assert_equal 2.5, clone.stances.find_by!(participant_id: @user.id).weight
+  end
 end
