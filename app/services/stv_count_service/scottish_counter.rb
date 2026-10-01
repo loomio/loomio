@@ -33,8 +33,10 @@ module StvCountService
       @candidate_ids = poll_options.map(&:id)
       @candidate_names = poll_options.each_with_object({}) { |po, h| h[po.id] = po.name }
 
-      # Identical ballots follow identical paths, so count them as one parcel.
-      @papers = ballots.tally.map { |prefs, count| Paper.new(prefs.dup, count, Rational(1), nil) }
+      # Blank ballots are not valid votes (rule 47 counts valid papers for the
+      # quota). Identical ballots follow identical paths, so count them as one
+      # parcel.
+      @papers = ballots.reject(&:empty?).tally.map { |prefs, count| Paper.new(prefs.dup, count, Rational(1), nil) }
     end
 
     def count

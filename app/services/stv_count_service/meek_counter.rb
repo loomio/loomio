@@ -27,8 +27,9 @@ module StvCountService
       @candidate_names = poll_options.each_with_object({}) { |po, h| h[po.id] = po.name }
 
       # Each ballot is an ordered array of poll_option_ids
-      # Identical ballots follow identical paths, so count them together.
-      @ballots = ballots.tally.map { |prefs, count| [prefs.dup, count] }
+      # Blank ballots hold no votes. Identical ballots follow identical paths,
+      # so count them together.
+      @ballots = ballots.reject(&:empty?).tally.map { |prefs, count| [prefs.dup, count] }
     end
 
     def count

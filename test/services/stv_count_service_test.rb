@@ -240,6 +240,32 @@ class StvCountServiceTest < ActiveSupport::TestCase
     end
   end
 
+  test "scottish: blank ballots do not count towards the quota" do
+    # 9 ranked ballots and 3 blank ones, 2 seats. The Droop quota counts only
+    # the 9 valid ballots: floor(9 / 3) + 1 = 4, not floor(12 / 3) + 1 = 5.
+    options = build_options(%w[A B C])
+    ballots = []
+    4.times { ballots << [1, 3] }
+    3.times { ballots << [2] }
+    2.times { ballots << [3] }
+    3.times { ballots << [] }
+
+    result = StvCountService::ScottishCounter.new(ballots, 2, 'droop', options).count
+
+    assert_equal 4, result[:quota]
+    assert_equal [1], result[:rounds].first[:elected]
+  end
+
+  test "scottish and meek: only blank ballots give an empty result" do
+    options = build_options(%w[A B])
+
+    [StvCountService::ScottishCounter, StvCountService::MeekCounter].each do |counter|
+      result = counter.new([[], []], 1, 'droop', options).count
+      assert_empty result[:elected]
+      assert_empty result[:rounds]
+    end
+  end
+
   # ── Meek STV ──────────────────────────────────────────────────────
 
   test "meek droop: simple election" do

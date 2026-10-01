@@ -71,7 +71,9 @@ module ValidatesBallot
     when "ranked_points"
       choices.length != choice_count_min || !ballot_rank_sequence_valid?(scores)
     when "ranked_preferences"
-      !ballot_rank_sequence_valid?(scores)
+      # A ballot ranking nobody expresses no preference, and would still count
+      # towards the STV quota.
+      choices.empty? || !ballot_rank_sequence_valid?(scores)
     when "reason_only"
       choices.any?
     else

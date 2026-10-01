@@ -145,7 +145,7 @@ class StanceTest < ActiveSupport::TestCase
     assert_not cast_stance(poll, options.first(2).zip([2, 1])).valid?
   end
 
-  test "STV ballots allow partial rankings with contiguous unique scores" do
+  test "STV ballots allow partial rankings with contiguous unique scores but not blank ballots" do
     poll = PollService.create(params: poll_params(
       poll_type: "stv",
       poll_option_names: %w[apple orange banana]
@@ -153,7 +153,7 @@ class StanceTest < ActiveSupport::TestCase
     options = poll.poll_options
 
     assert cast_stance(poll, options.first(2).zip([1, 2])).valid?
-    assert cast_stance(poll, []).valid?
+    assert_not cast_stance(poll, []).valid?
     assert_not cast_stance(poll, options.first(2).zip([1, 9999])).valid?
     assert_not cast_stance(poll, options.first(2).zip([1, 1])).valid?
   end

@@ -69,6 +69,7 @@ export default {
 
   computed: {
     poll() { return this.stance.poll(); },
+    hasRanking() { return this.pollOptions.findIndex(o => o.isDivider) > 0; },
     numOptions() { return this.pollOptions.length; }
   }
 };
@@ -108,7 +109,7 @@ export default {
     v-btn.poll-common-vote-form__submit(
       block
       variant="elevated"
-      :disabled="!poll.isVotable()"
+      :disabled="!poll.isVotable() || !hasRanking"
       @click='submit()'
       :loading="stance.processing"
       color="primary"
