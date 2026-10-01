@@ -1,10 +1,10 @@
 ---
 title: Formato
-source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
+source_revision: c27ee3b193231816878f1c074ff9fc2a086a88c0
 source_file: docs/en/user_manual/discussions/formatting/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-02'
 sections:
   introduction: e5ed11fef349b38c
   attach-file: 772ed69602535db7
@@ -27,26 +27,26 @@ sections:
   markdown: 6ee2783ba81363fd
   rich-text: 9136c76bfd5409a9
 generated:
-  introduction: 488ff9d0181c432f
+  introduction: fff803694f5335d6
   attach-file: ec69bb05d178183c
   remove-attachments: 9f7ae648a6b052b2
-  insert-image: bd58a19a1b66afe0
-  insert-link: 2b3ff9c0a3ea4b91
+  insert-image: 17247b48661ee931
+  insert-link: 83d0eaca1d16177a
   insert-emoji: bf71cc026c397814
-  headings: 886497c9aaee0b7c
+  headings: 0a760ff70863b94c
   bold-italicize-strikethrough: cec78f9215511e32
-  list: a92be26df82bc461
+  list: c8fdce6a64da25a3
   numbered-list: '049ed50183aab008'
-  task-list: e80a8578ecd8c568
-  colors: 0b3769e3a3bcb614
+  task-list: 26348a341cc88e50
+  colors: 4988fc5c35764507
   align: e0eb044b7e4fd454
-  embed-videos-and-webpages: 6af33526b9732805
-  quote: d75b444061b12aaf
-  code-block: 3d8447383aceb36b
+  embed-videos-and-webpages: abe28ccae1579b66
+  quote: f1f481e9941043ef
+  code-block: e4abe4178f47122e
   divider: c877a935e0258330
-  add-table: 5ba8df61a2230c59
-  markdown: 2e30351fd78cc5d4
-  rich-text: 1de2937098739000
+  add-table: d1c9f354970fd073
+  markdown: 8ee36983b6bd16ae
+  rich-text: b924cb88715f6f0a
 title_source: 29d4198e41d8221a
 title_generated: 73e1804eb968f73e
 ---
@@ -55,13 +55,13 @@ title_generated: 73e1804eb968f73e
 
 # Formato
 
-Al iniciar o editar una discusión o encuesta, o al escribir un comentario, verás una barra de formato debajo del campo de texto. Selecciona la flecha al final de la barra para mostrar u ocultar el conjunto completo de herramientas.
+Al iniciar o editar una discusión o encuesta, o al escribir un comentario, verás una barra de formato debajo del campo de texto. Selecciona la flecha al final de la barra para mostrar u ocultar todas las herramientas.
 
 Pasa el ratón o el cursor sobre cada elemento para ver el nombre de la herramienta.
 
 ![](thread_format_bar.png)
 
-Usa el formato para estructurar y destacar la información, de modo que sea más fácil de leer.
+Usa el formato para estructurar y destacar la información y facilitar su lectura.
 
 <!-- translation-section: attach-file -->
 
@@ -91,7 +91,7 @@ Selecciona un archivo de imagen de tu ordenador. La imagen se inserta en el edit
 
 ![](format_insert_example.png)
 
-La imagen se muestra dentro de la discusión, encuesta o comentario publicado.
+La imagen se muestra dentro de la discusión, encuesta o comentario que hayas publicado.
 
 >[!Tip]
 >También puedes copiar y pegar una imagen directamente en Loomio.
@@ -110,11 +110,11 @@ Para añadir un enlace:
 2. Haz clic en el icono del enlace.
 3. Pega la dirección en el campo **Inserte un enlace** y selecciona **Enviar una solicitud**.
 
-Si el documento está alojado en otro sitio, revisa los permisos para compartirlo, de modo que los participantes de la discusión puedan abrirlo.
+Si el documento está alojado en otro sitio, revisa los permisos para compartirlo para que los participantes de la discusión puedan abrirlo.
 
 Aparecerá una vista previa del documento debajo del espacio de texto. Puedes eliminarla si quieres.
 
-Ahora, cualquier persona con acceso a tu discusión de Loomio y permiso para ver el documento puede abrirlo y leerlo.
+Ahora, cualquier persona con acceso a tu discusión en Loomio y permiso para ver el documento puede abrirlo y leerlo.
 
 ![](format_link.png)
 
@@ -130,7 +130,7 @@ Selecciona el botón de la cara sonriente y elige un emoji del selector.
 
 ## Encabezados
 
-Los encabezados de nivel 1, 2 y 3 pueden ayudar a estructurar una discusión o un comentario.
+Los encabezados 1, 2 y 3 pueden ayudarte a estructurar una discusión o un comentario.
 
 Selecciona el texto que quieres marcar como encabezado y haz clic en la herramienta de formato de encabezados.
 
@@ -150,7 +150,7 @@ Selecciona el texto al que quieres dar formato y haz clic en la herramienta de f
 
 ## Lista
 
-Usa **Lista** para dar formato a los elementos como una lista con viñetas.
+Usa **Lista** para dar formato a los elementos con viñetas.
 
 ![](thread_bullets.png)
 
@@ -166,7 +166,7 @@ Usa **Lista numerada** cuando el orden de los elementos sea importante.
 
 ## Lista de tareas
 
-Usa **Lista de tareas** para añadir casillas de verificación. Después de publicar la lista, puedes asignar las tareas a alguien y establecer una fecha de vencimiento.
+Usa **Lista de tareas** para añadir casillas de verificación. Después de publicar la lista, puedes asignar las tareas a una persona y establecer una fecha de vencimiento.
 
 ![](format_tasks.png)
 
@@ -176,7 +176,7 @@ Consulta la página sobre [Tareas](/en/user_manual/discussions/tasks/) para obte
 
 ## Colores
 
-Usa **Colores** para resaltar con un color el texto seleccionado.
+Usa **Colores** para resaltar el texto seleccionado con un color.
 
 ![](thread_colors.png)
 
@@ -203,13 +203,13 @@ Para usar la función de insertar vídeos:
 <iframe width="100%" height="380px" src="https://www.youtube-nocookie.com/embed/AJnjTd9u4zg" frameborder="0" allowfullscreen></iframe>
 
 >[!Tip]
->Asegúrate de que todas las personas que puedan participar en la discusión tengan acceso al vídeo. Por ejemplo, un vídeo no listado puede ser adecuado cuando no debe aparecer en los resultados de búsqueda públicos.
+>Asegúrate de que todas las personas que puedan participar en la discusión tengan acceso al vídeo. Por ejemplo, un vídeo no listado puede ser adecuado cuando no deba aparecer en los resultados de búsquedas públicas.
 
 <!-- translation-section: quote -->
 
 ## Cita
 
-El formato de cita añade énfasis a tu texto y puede servir para destacar una instrucción.
+El formato de cita destaca tu texto y puede ser útil para llamar la atención sobre una instrucción.
 
 ![](thread_quote.png)
 
@@ -217,7 +217,7 @@ El formato de cita añade énfasis a tu texto y puede servir para destacar una i
 
 ## Bloque de código
 
-El formato de bloque de código suele usarse para mostrar código en el texto, pero también puedes usarlo para diferenciar partes del texto de tu discusión.
+El formato de bloque de código suele usarse para mostrar código en el texto, pero también puedes usarlo para diferenciar partes del texto en tu discusión.
 
 ![](thread_codeblock.png)
 
@@ -231,7 +231,7 @@ Usa el separador para trazar una línea horizontal que separe las secciones.
 
 <!-- translation-section: add-table -->
 
-## Añadir tabla
+## Añadir una tabla
 
 Añade una tabla a tu discusión.
 
@@ -245,12 +245,12 @@ Hay herramientas adicionales para añadir o eliminar columnas y filas.
 
 Para cambiar a la edición en Markdown, selecciona **Editar el descuento**.
 
-Si seleccionas esta opción cuando ya hay texto en el formulario, puede perderse parte del formato durante la conversión.
+Si seleccionas esta opción cuando hay texto en el formulario, puede perderse parte del formato durante la conversión.
 
 <!-- translation-section: rich-text -->
 
 ### Texto enriquecido
 
-Selecciona **Editar texto enriquecido** para volver a las herramientas de formato. Esta opción convierte el Markdown compatible en su formato visual.
+Selecciona **Editar texto enriquecido** para volver a las herramientas de formato. Esto convierte el Markdown compatible a su forma visual.
 
 **Vista anticipada** muestra cómo aparecerá el Markdown al publicarlo, sin convertirlo.

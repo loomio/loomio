@@ -1,10 +1,10 @@
 ---
 title: Tu perfil
-source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
+source_revision: c27ee3b193231816878f1c074ff9fc2a086a88c0
 source_file: docs/en/user_manual/users/user_profile/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-02'
 sections:
   introduction: c9002e77f5270003
   edit-profile: 7bfe2795d9b01549
@@ -16,15 +16,15 @@ sections:
   merge-accounts: e1190f5e224e1047
   deleting-your-account: 2799d5bcc8d5b528
 generated:
-  introduction: 6c6186829e392c55
-  edit-profile: 278bb4952c8ac971
-  update-your-personal-info: 04b7cf9574f78f02
-  viewing-another-person-s-profile: 9d61106b99ef202b
-  uploading-a-profile-photo: '080a737a832566bf'
-  language-settings: 80146a876a0b996d
+  introduction: 508cc4553b0fe51a
+  edit-profile: ee23f572be4f1fc2
+  update-your-personal-info: 7a0d637722711958
+  viewing-another-person-s-profile: 6208ef50f963d24e
+  uploading-a-profile-photo: 8bf819e6a11b62b4
+  language-settings: 8d5873ca8e2877fa
   resetting-your-password: a85e7b1b734767c0
-  merge-accounts: aa71c22c7ceafc8d
-  deleting-your-account: 8620fafbbe04bbfb
+  merge-accounts: c693348e39c2d3bc
+  deleting-your-account: 563bc72b118724dd
 title_source: 528d89ad72cba22e
 title_generated: 3d45976ea1815628
 ---
@@ -32,17 +32,17 @@ title_generated: 3d45976ea1815628
 <!-- translation-section: introduction -->
 
 # Tu perfil
-Tu perfil de usuario de Loomio permite que las personas te reconozcan.  
+Tu perfil de usuario de Loomio permite que otras personas te reconozcan.  
 
-Poder reconocer a las personas en Loomio ayuda a generar confianza y autenticidad, y favorece una participación más genuina. Por eso, siempre que sea posible, te animamos a mostrarte tal como eres y a añadir una foto o un avatar.
+Poder reconocer a las personas en Loomio ayuda a generar confianza y autenticidad, y favorece una participación más sincera. Por eso, siempre que sea posible, te animamos a mostrarte tal como eres y a añadir una foto o un avatar.
 
 <!-- translation-section: edit-profile -->
 
 ## Editar perfil
 
-Tu página de perfil te permite personalizar tu identidad en Loomio. Para visitar tu página de perfil, selecciona la opción **Editar perfil ** en el menú de usuario, que se abre al hacer clic en tu nombre en la parte superior de la barra lateral.
+Tu página de perfil te permite personalizar tu identidad en Loomio. Para visitar tu página de perfil, selecciona la opción **Editar perfil ** en el menú de usuario, que encontrarás al hacer clic en tu nombre en la parte superior de la barra lateral.
 
-Si la barra lateral está cerrada, haz clic en el icono del menú (**☰**) para abrirla.
+Si la barra lateral está cerrada, haz clic en el icono de menú (**☰**) para abrirla.
 
 ![](sidebar_menu.png)
 
@@ -58,13 +58,13 @@ Haz clic en **Editar perfil **
 
 ## Actualizar tus datos personales
 
-Puedes actualizar tus datos personales cambiando cualquiera de los siguientes campos:
+Puedes actualizar tus datos personales modificando cualquiera de los siguientes campos:
 
 * **Nombre**
 * **Dirección de correo electrónico** - es la dirección de correo electrónico asociada a tu cuenta de Loomio, donde recibirás las notificaciones de Loomio.
-* **Nombre de usuario** - tu nombre de usuario permite que las personas te reconozcan y te avisen mediante una @mención. Puede contener letras minúsculas, números, guiones bajos y guiones en posiciones intermedias.
+* **Nombre de usuario** - es un nombre que permite a otras personas reconocerte y avisarte mediante una @mención. Puede contener letras minúsculas, números, guiones bajos y guiones en posiciones intermedias.
 * **Introducción** - unas líneas para contar algo sobre ti a las demás personas de tu grupo.
-* **Ubicación** - es útil para grupos distribuidos o remotos, para que las personas puedan saber dónde estás.
+* **Ubicación** - útil para grupos distribuidos o remotos, para que las personas puedan hacerse una idea de dónde estás.
 
 ![](user_profile.png)
 
@@ -72,12 +72,12 @@ Puedes actualizar tus datos personales cambiando cualquiera de los siguientes ca
 
 ## Ver el perfil de otra persona
 
-Selecciona el nombre o el avatar de una persona para abrir el perfil. Sus discusiones, comentarios y encuestas recientes aparecen junto a los datos del perfil y los grupos a los que pertenece. La lista solo incluye la actividad a la que tienes permiso para acceder; quienes visitan Loomio sin iniciar sesión solo ven la actividad pública.
+Selecciona el nombre o el avatar de una persona para abrir su perfil. Sus discusiones, comentarios y encuestas recientes aparecen junto a los datos de su perfil y sus grupos. La lista solo incluye actividad a la que tienes permiso para acceder; quienes visitan Loomio sin iniciar sesión solo ven actividad pública.
 
 <!-- translation-section: uploading-a-profile-photo -->
 
 ## Subir una foto de perfil
-Cuando creas una cuenta de Loomio, tus iniciales serán la imagen predeterminada asociada a tu perfil. Puedes subir una foto de perfil haciendo clic en tu imagen en la página de perfil.
+Cuando creas una cuenta de Loomio, tus iniciales son la imagen predeterminada de tu perfil. Puedes subir una foto de perfil haciendo clic en tu imagen en la página de perfil.
 
 Si tienes un [Gravatar](https://en.gravatar.com/), puedes usarlo como imagen de perfil seleccionando **Usar Gravatar**. También puedes elegir que Loomio use la foto que utilizas en otras plataformas o herramientas habituales.
 
@@ -85,10 +85,10 @@ Si tienes un [Gravatar](https://en.gravatar.com/), puedes usarlo como imagen de 
 
 <!-- translation-section: language-settings -->
 
-## Configuración del idioma
+## Configuración de idioma
 Loomio se desarrolla en inglés, pero [personas voluntarias lo traducen a muchos idiomas](https://www.loomio.com/g/cpaM3Hsv/loomio-community-translation).
 
-Loomio detectará la configuración de idioma de tu navegador, pero puedes elegir manualmente tu idioma preferido entre las opciones disponibles en la página de perfil.
+Loomio detectará la configuración de idioma de tu navegador, pero puedes seleccionar manualmente tu idioma preferido entre las opciones disponibles en la página de perfil.
 
 ![](profile_language.png)
 
@@ -103,7 +103,7 @@ Puedes cambiar tu contraseña accediendo a tu página de perfil y haciendo clic 
 
 ## Fusionar cuentas
 
-Si tienes dos cuentas de usuario de Loomio, puedes fusionarlas en una sola.
+Si tienes dos cuentas de usuario de Loomio, puedes fusionarlas en una sola cuenta.
 
 Consulta [Fusionar cuentas](../merge_accounts).
 
@@ -111,4 +111,4 @@ Consulta [Fusionar cuentas](../merge_accounts).
 
 ## Eliminar tu cuenta
 
-Si quieres eliminar tu cuenta de usuario de Loomio y abandonar los grupos de Loomio de los que eres miembro, consulta [Eliminar tu cuenta de Loomio](../deleting_your_account).
+Si quieres eliminar tu cuenta de usuario de Loomio y salir de los grupos de Loomio de los que eres miembro, consulta [Eliminar tu cuenta de Loomio](../deleting_your_account).
