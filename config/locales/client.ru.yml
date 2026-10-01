@@ -175,7 +175,7 @@ ru:
     only_show_tags_in_this_group: Отображать только теги из этой группы.
   poll_types:
     proposal: предложение
-    count: выбрать в
+    count: запись
     check: проверка мнений
     poll: голосование
     dot_vote: распределение баллов
@@ -439,7 +439,7 @@ ru:
     loud: Заметный
     normal: Нормальный
     quiet: Ограниченный
-    mute: Заглушен
+    mute: Без звука
     unmute: Включить
   pin_event_form:
     title: Закрепить на временной шкале
@@ -469,7 +469,7 @@ ru:
     loud_label: Вся активность
     normal_label: Объявления
     quiet_label: 'Нет '
-    mute_label: Заглушен
+    mute_label: Без звука
     saved: Настройки уведомлений обновлены.
     discussion:
       loud_description: Обо всех действиях в этой теме вы будете получать по электронной почте.
@@ -540,7 +540,7 @@ ru:
     volume_push_label: Push
     all_activity_option: Вся деятельность
     when_notified_option: При получении уведомления
-    muted_option: Приглушенный
+    muted_option: Без звука
     volume_channel_label: Как нам следует вас информировать?
     email_channel: Электронная почта
     push_channel: Push
@@ -1002,7 +1002,7 @@ ru:
       topic: Все в теме
       voters: Приглашаем всех голосовать
       decided_voters: Все, кто голосовал
-      undecided_voters: Неопределившиеся избиратели
+      undecided_voters: Не проголосовали
       non_voters: Участники %{name} еще не приглашены
       delegates_of_group: Делегаты %{name}
     form:
@@ -1729,7 +1729,7 @@ ru:
     group_notifications: Групповые уведомления
     group_notifications_description: Измените уровень активности и канал для ваших групп
     choose_email_and_push_updates: Выберите отдельные настройки для электронной почты и push-уведомлений.
-    catch_up_email: Электронное письмо с наверстыванием упущенного
+    catch_up_email: Письмо со сводкой
     catch_up_email_description: Выберите, когда получать уведомления о непрочитанных сообщениях и информацию о непрочитанной активности.
   thread_preview:
     replies_count: "%{count} ответов"
@@ -1784,7 +1784,7 @@ ru:
       thisweek: На этой неделе
       thismonth: Этот месяц
       older: Старше месяца
-    dashboard: Панель инструментов
+    dashboard: Лента
     recent_discussions: Недавние обсуждения
     view_recent: Просмотреть все недавние обсуждения?
     discussion_marked_as_read: Обсуждение отмечено как прочитанное
@@ -1950,7 +1950,7 @@ ru:
     consent_title: Согласие
     consensus_title: Консенсус
     proposal_title: Предложение
-    count_title: Выбрать в
+    count_title: Запись
     check_title: Проверка мнений
     poll_title: Опрос
     meeting: Встреча
@@ -2273,12 +2273,12 @@ ru:
     started_by: Автор %{name}
   poll_common_votes_panel:
     vote_removed: Голосование удалено
-    undecided: Не определился
+    undecided: Не проголосовали
     newest_first: Новички вперед
     oldest_first: Сначала старые
     priority_first: Согласитесь сначала
     priority_last: Сначала заблокировать
-    undecided_first: Сначала не определился
+    undecided_first: Сначала не проголосовавшие
     no_votes_yet: Голоса еще не поданы.
     change_results_order: Изменить порядок результатов
     none_of_the_above: "(Ни один из вышеперечисленных)"
@@ -2300,7 +2300,7 @@ ru:
     participation_records_restricted: Список участников можно посмотреть после завершения голосования
     vote_weight: Вес голоса %{weight}
   poll_common_undecided_panel:
-    show_undecided: Показать %{count} не определился
+    show_undecided: Показать не проголосовавших (%{count})
     show_invitations: Показать ожидающие приглашения
     undecided_users: Не определено (%{count})
     invitation_count_singular: Еще 1 человек был приглашен к участию по электронной почте
@@ -2387,7 +2387,7 @@ ru:
     minimum_stance_choices_hint: т.е. Оцените 3 лучших вкуса мороженого
     ranked_choice_created: Ранжирование создано
     ranked_choice_updated: Ранжирование обновлено
-    rank: Классифицировать
+    rank: Ранжирование
     points: Точки
     average: Средний
     mean: Иметь в виду
@@ -2806,7 +2806,7 @@ ru:
       voting_title: За 24 часа до окончания голосования отправьте напоминание
       nobody: Никто
       author: Автор (я)
-      undecided_voters: Неопределившиеся избиратели
+      undecided_voters: Не проголосовали
       voters: Все избиратели
     notify_on_participate:
       title: Сообщите мне, когда люди примут участие
@@ -2861,18 +2861,18 @@ ru:
       question_hint: Приглашаем задавать вопросы и оставлять комментарии по вашему предложению
       show_thumbs: Поднятие большого пальца
       show_thumbs_hint: Избиратели выбирают большой палец вверх, вниз, в сторону или поднятую руку.
-      choose: Выбирать
+      choose: Выбор
       simple_poll: Простой опрос
       choose_hint: Избиратели выбирают лучший вариант (или варианты)
-      score: Счет
+      score: Оценка
       score_hint: Избиратели присваивают оценку каждому варианту
-      allocate: Выделить
+      allocate: Распределение
       allocate_hint: Избиратели распределяют бюджет баллов между вариантами
       ranked_choice: Ранжирование
       ranked_choice_hint: Избиратели располагают варианты в порядке от наиболее к наименее предпочтительному
       time_poll: Опрос времени
       time_poll_hint: Избиратели указывают, когда они готовы встретиться
-      rank: Классифицировать
+      rank: Ранжирование
       time: Время
       stv: Выборы STV
       stv_hint: Пропорциональное избрание нескольких победителей с использованием единого передаваемого голоса.
