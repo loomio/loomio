@@ -158,6 +158,9 @@ class StvCountServicePublishedCountsTest < ActiveSupport::TestCase
     output.split("in order of election:").last.lines.filter_map { |line| line[/^\d+\. (\S+)/, 1] }.to_set
   end
 
+  # This optional cross-check already validated the counting algorithms; the
+  # results are recorded above. Rerun it only when a counting algorithm changes,
+  # rather than configuring OPENTALLY_BIN for ordinary release checks.
   test "random elections elect the same candidates as OpenTally" do
     skip "set OPENTALLY_BIN to compare with OpenTally" unless ENV["OPENTALLY_BIN"].present?
 
