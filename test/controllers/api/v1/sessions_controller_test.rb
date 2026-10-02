@@ -27,11 +27,85 @@ class Api::V1::SessionsControllerTest < ActionController::TestCase
   test "SSO-only mode rejects password and email-code sessions" do
     ENV['FEATURES_DISABLE_LOCAL_LOGIN'] = '1'
     user = User.create!(email: "sso-only@example.com", email_verified: true, password: "s3curepassword123")
+    token = LoginToken.create!(user: user)
 
     assert_no_difference "Session.count" do
       post :create, params: { user: { email: user.email, password: "s3curepassword123" } }
+      assert_response :forbidden
+
+      post :create, params: { user: { email: user.email, code: token.code } }
+      assert_response :forbidden
     end
-    assert_response :forbidden
+    refute token.reload.used
+  end
+
+  test "SSO-only mode accepts an existing sign-in link" do
+    ENV['FEATURES_DISABLE_LOCAL_LOGIN'] = '1'
+    ENV['TURNSTILE_SECRET_KEY'] = 'test-secret'
+    user = users(:user)
+    token = LoginToken.create!(user: user)
+    session[:pending_login_token] = token.token
+
+    assert_difference 'Session.count', 1 do
+      post :create
+    end
+
+    assert_response :success
+    assert_equal user.id, response.parsed_body['current_user_id']
+    assert token.reload.used
+    assert_nil session[:pending_login_token]
+  end
+
+  test "SSO-only mode rejects invalid, expired, and used sign-in links" do
+    ENV['FEATURES_DISABLE_LOCAL_LOGIN'] = '1'
+    user = users(:user)
+    tokens = [
+      'missing-token',
+      LoginToken.create!(user: user, created_at: (LoginToken::EXPIRATION + 1).minutes.ago).token,
+      LoginToken.create!(user: user, used: true).token
+    ]
+
+    tokens.each do |token|
+      session[:pending_login_token] = token
+      assert_no_difference ['Session.count', 'AccountCompletionProof.count'] do
+        post :create
+      end
+      assert_response :forbidden
+    end
+  end
+
+  test "SSO-only mode rejects a sign-in link for a deactivated user" do
+    ENV['FEATURES_DISABLE_LOCAL_LOGIN'] = '1'
+    user = users(:orphan_deactivated_user)
+    token = LoginToken.create!(user: user)
+    session[:pending_login_token] = token.token
+
+    assert_no_difference ['Session.count', 'AccountCompletionProof.count'] do
+      post :create
+    end
+
+    assert_response :unauthorized
+  end
+
+  test "SSO-only mode does not fall back to local credentials if a link becomes unusable" do
+    ENV['FEATURES_DISABLE_LOCAL_LOGIN'] = '1'
+    token = LoginToken.create!(user: users(:user))
+    session[:pending_login_token] = token.token
+    code_token = LoginToken.create!(user: users(:member))
+    checks = 0
+
+    # The link passes the SSO guard, then another request consumes it before
+    # credential selection. A supplied valid code must not bypass SSO.
+    @controller.stub(:pending_login_token, token) do
+      token.stub(:useable?, -> { checks += 1; checks == 1 }) do
+        assert_no_difference ['Session.count', 'AccountCompletionProof.count'] do
+          post :create, params: { user: { email: users(:member).email, code: code_token.code } }
+        end
+      end
+    end
+
+    assert_response :unauthorized
+    refute code_token.reload.used
   end
 
   test "SSO-only mode still allows an existing session to sign out" do
