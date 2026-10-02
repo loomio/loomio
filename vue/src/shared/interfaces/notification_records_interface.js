@@ -34,4 +34,14 @@ export default class NotificationRecordsInterface extends BaseRecordsInterface {
 
     if (any) { return this.remote.post('viewed'); }
   }
+
+  unreadForTopicItem(topicId, sequenceId) {
+    return this.find({topicId, sequenceId, viewed: {$ne: true}});
+  }
+
+  viewedForTopicItem(topicId, sequenceId) {
+    this.unreadForTopicItem(topicId, sequenceId).forEach(n => {
+      n.update({viewed: true});
+    });
+  }
 };

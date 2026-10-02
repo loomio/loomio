@@ -31,6 +31,50 @@ class Api::V1::NotificationsControllerTest < ActionController::TestCase
     notifications.each { |notification| assert_includes ids, notification.id }
   end
 
+  test "index includes read locations for comment reactions" do
+    comment = comments(:public_discussion_comment)
+    reaction = Reaction.create!(reactable: comment, user: @admin, reaction: "🙂")
+    notification = create_notification(user: @user, actor: @admin, subject: reaction)
+    sign_in @user
+
+    assert_no_record_cache_fallbacks { get :index }
+
+    assert_response :success
+    serialized = JSON.parse(response.body)["notifications"].find { |record| record["id"] == notification.id }
+    assert_equal comment.created_topic_item.topic_id, serialized["topic_id"]
+    assert_equal comment.created_topic_item.sequence_id, serialized["sequence_id"]
+    assert_equal false, serialized["viewed"]
+  end
+
+  test "reaction read locations respect the group and direct topic access matrix" do
+    [:discussion_topic, :direct_topic].each do |fixture|
+      topic = topics(fixture)
+      topic.topicable.create_missing_created_topic_item! unless topic.topicable.created_topic_item
+      comment = CommentService.create(
+        comment: Comment.new(parent: topic.topicable, body: "Read location access matrix"),
+        actor: users(:guest_normal)
+      )
+      reaction = Reaction.create!(reactable: comment, user: @admin, reaction: "🙂")
+
+      {guest_normal: true, former_guest_loud: false, non_guest_loud: false}.each do |role, accessible|
+        recipient = users(role)
+        notification = create_notification(user: recipient, actor: @admin, subject: reaction)
+        sign_in recipient
+
+        get :index
+
+        assert_response :success
+        serialized = JSON.parse(response.body)["notifications"].find { |record| record["id"] == notification.id }
+        if accessible
+          assert_equal topic.id, serialized.fetch("topic_id")
+          assert_equal comment.created_topic_item.sequence_id, serialized.fetch("sequence_id")
+        else
+          assert_nil serialized, "#{role} must not receive #{fixture} reaction read locations"
+        end
+      end
+    end
+  end
+
   test "index preloads direct notification topic paths" do
     discussion = discussions(:discussion)
     poll = PollService.create(params: {

@@ -4,6 +4,8 @@ class NotificationSerializer < ApplicationSerializer
              :created_at,
              :url,
              :kind,
+             :topic_id,
+             :sequence_id,
              :actor_id,
              :name,
              :title,
@@ -17,6 +19,18 @@ class NotificationSerializer < ApplicationSerializer
 
   def viewed
     object.viewed_for?(scope[:current_user_id])
+  end
+
+  def topic_id
+    read_topic_item&.topic_id
+  end
+
+  def sequence_id
+    read_topic_item&.sequence_id
+  end
+
+  def read_topic_item
+    cache_fetch(:notification_topic_items_by_id, object.id) { object.read_topic_item }
   end
 
   has_one :actor, serializer: AuthorSerializer, root: :users

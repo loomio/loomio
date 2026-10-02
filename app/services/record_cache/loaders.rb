@@ -47,6 +47,30 @@ module RecordCache::Loaders
   class Notification < RecordCache::Loader
     def load
       cache.user_ids.concat(records.filter_map(&:actor_id))
+      ActiveRecord::Associations::Preloader.new(
+        records: records, associations: [:subject, :notification_deliveries]
+      ).call
+      topic_items = records.map(&:subject).grep(::TopicItem)
+      ActiveRecord::Associations::Preloader.new(records: topic_items, associations: :itemable).call
+      reactions = records.map(&:subject_model).grep(::Reaction)
+      ActiveRecord::Associations::Preloader.new(records: reactions, associations: :reactable).call
+
+      # Resolve creation items in one batch rather than querying each direct
+      # notification or reaction while serializing the dropdown and live updates.
+      itemables = records.map(&:read_subject).select { |model| model.respond_to?(:created_topic_item) }.uniq
+      items_by_model = ::TopicItem.where(itemable: itemables).order(:id)
+                                 .group_by { |item| [item.itemable_type, item.itemable_id, item.kind] }
+      cache.scope[:notification_topic_items_by_id] = records.to_h do |notification|
+        item = if notification.subject.is_a?(::TopicItem)
+          notification.subject
+        else
+          model = notification.read_subject
+          if model.respond_to?(:created_topic_item)
+            items_by_model[[model.class.base_class.name, model.id, model.created_topic_item_kind.to_s]]&.first
+          end
+        end
+        [notification.id, item]
+      end
     end
   end
 
