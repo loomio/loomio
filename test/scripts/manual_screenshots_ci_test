@@ -26,6 +26,7 @@ cat > "$test_path/workspace/bin/docs-screenshots" <<'SH'
 #!/usr/bin/env bash
 set -euo pipefail
 # The generator must receive the downloaded manifest at its normal cache root.
+printf '%s\n' "$@" > "$RUNNER_TEMP/generator-args"
 grep -Fxq 'old manifest' "$4/.generation.json"
 printf '%s\n' 'new image' > "$4/fr/example.png"
 printf '%s\n' 'new manifest' > "$4/.generation.json"
@@ -45,6 +46,12 @@ reset_published
 bash "$repository_path/script/ci_manual_screenshots" fr
 grep -Fxq 'new image' "$MOCK_BUCKET/fr/example.png"
 grep -Fxq 'new manifest' "$MOCK_BUCKET/fr/.generation.json"
+
+reset_published
+bash "$repository_path/script/ci_manual_screenshots" fr users/bookmarks
+grep -Fxq 'users/bookmarks' "$RUNNER_TEMP/generator-args"
+grep -Fxq -- '--refresh' "$RUNNER_TEMP/generator-args"
+grep -Fxq 'new image' "$MOCK_BUCKET/fr/example.png"
 
 reset_published
 if FAIL_GENERATION=1 bash "$repository_path/script/ci_manual_screenshots" fr; then

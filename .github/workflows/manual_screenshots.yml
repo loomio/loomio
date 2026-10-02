@@ -1,25 +1,17 @@
 name: manual screenshots
 
 on:
-  push:
-    branches:
-      - master
-    paths:
-      - docs/en/**/*.png
-      - docs/locales.yml
-      - docs/screenshots.rb
-      - docs/screenshot_catalog.js
-      - config/locales/**
-      - app/controllers/dev/**
-      - vue/tests/e2e/**
-      - vue/nightwatch.conf.js
-      - bin/docs-screenshots
-      - bin/e2e
-      - bin/e2e-screenshots
-      - bin/*screenshot
-      - script/ci_manual_screenshots
-      - .github/workflows/manual_screenshots.yml
   workflow_dispatch:
+    inputs:
+      locales:
+        description: Published languages, comma-separated, or all
+        default: all
+        required: true
+        type: string
+      path:
+        description: Image or manual directory to regenerate (blank for all)
+        required: false
+        type: string
 
 permissions:
   contents: read
@@ -36,8 +28,16 @@ jobs:
         with:
           ruby-version: '4.0.5'
       - id: locales
+        env:
+          SCREENSHOT_LOCALES: ${{ inputs.locales }}
         run: |
-          ruby -rjson -ryaml -e 'puts "locales=#{YAML.safe_load_file("docs/locales.yml").select { |_, locale| locale.fetch("published") }.keys.to_json}"' >> "$GITHUB_OUTPUT"
+          ruby -rjson -ryaml -e '
+            published = YAML.safe_load_file("docs/locales.yml").select { |_, locale| locale.fetch("published") }.keys
+            selected = ENV.fetch("SCREENSHOT_LOCALES")
+            locales = selected == "all" ? published : selected.split(",").map(&:strip).uniq
+            abort "Select published languages: #{published.join(",")}" if locales.empty? || (locales - published).any?
+            puts "locales=#{locales.to_json}"
+          ' >> "$GITHUB_OUTPUT"
 
   screenshots:
     needs: languages
@@ -95,11 +95,13 @@ jobs:
         run: npm ci --no-audit --no-fund
       - name: Configure the isolated test database
         run: cp config/database.yml.postgresql config/database.yml
-      - name: Generate changed screenshots and publish to R2
+      - name: Generate selected screenshots and publish to R2
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.MANUAL_R2_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.MANUAL_R2_SECRET_ACCESS_KEY }}
-        run: bash script/ci_manual_screenshots '${{ matrix.locale }}'
+          SCREENSHOT_LOCALE: ${{ matrix.locale }}
+          SCREENSHOT_PATH: ${{ inputs.path }}
+        run: bash script/ci_manual_screenshots "$SCREENSHOT_LOCALE" "$SCREENSHOT_PATH"
       - name: Save failure details
         if: failure()
         uses: actions/upload-artifact@v4

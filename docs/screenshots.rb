@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-require "digest"
 require "fileutils"
 require "json"
 require "open3"
@@ -12,20 +11,11 @@ require "yaml"
 
 module Docs
   # The cache has one PNG per language/path and one manifest, never historical
-  # copies. Fingerprints describe capture inputs; they do not change filenames.
+  # copies. Regeneration is selected explicitly; filenames stay stable.
   module Screenshots
     ROOT = Pathname(__dir__).parent.freeze
     URL_ROOT = "/docs-screenshots"
     HOSTED_ROOT = "https://user-manual-screenshots.loomio.com"
-    SHARED_INPUTS = %w[
-      vue/tests/e2e/helpers/manualScreenshot.js
-      vue/tests/e2e/helpers/pageHelper.js
-      vue/tests/e2e/helpers/oatmilkRichText.js
-      vue/nightwatch.conf.js bin/e2e-screenshots
-      app/controllers/dev/base_controller.rb
-      app/controllers/dev/scenarios/oatmilk_cooperative.rb
-      bin/compress-screenshot bin/crop-screenshot bin/spotlight-screenshot
-    ].freeze
 
     def self.catalog
       @catalog ||= begin
@@ -37,21 +27,6 @@ module Docs
 
     def self.images
       @images ||= catalog.to_h { |recipe| [recipe.fetch("image"), recipe] }
-    end
-
-    def self.fingerprint(recipe, app_locale)
-      # English strings reach a translated image only through its own locale
-      # files, so a new English string does not recapture every language.
-      paths = ["docs/en/#{recipe.fetch('image')}", "vue/tests/e2e/screenshots/#{recipe.fetch('spec')}",
-        "config/locales/client.#{app_locale}.yml", "config/locales/server.#{app_locale}.yml", *SHARED_INPUTS].uniq
-      digest = Digest::SHA256.new
-      digest.update("#{app_locale}\0#{recipe.fetch('testcase')}\0scale=2\0")
-      @file_hashes ||= {}
-      paths.each do |path|
-        @file_hashes[path] ||= Digest::SHA256.file(ROOT.join(path)).hexdigest
-        digest.update("#{path}\0#{@file_hashes.fetch(path)}\0")
-      end
-      digest.hexdigest[0, 16]
     end
 
     def self.labels(app_locale)
@@ -84,18 +59,17 @@ module Docs
         @manifest = @manifest_path.file? ? JSON.parse(@manifest_path.read) : {}
       end
 
-      def status(locale, recipe, inputs)
+      def status(locale, recipe)
         key = "#{locale}/#{recipe.fetch('image')}"
-        return "missing" unless @directory.join(key).file?
-        @manifest.dig(key, "inputs") == inputs ? "current" : "outdated"
+        @directory.join(key).file? ? "present" : "missing"
       end
 
-      def store(locale, recipe, inputs, source)
+      def store(locale, recipe, source)
         key = "#{locale}/#{recipe.fetch('image')}"
         destination = @directory.join(key)
         raise "Capture missing: #{source}" unless Pathname(source).file?
         atomic_write(destination, File.binread(source))
-        @manifest[key] = {"inputs" => inputs, "generated_at" => Time.now.utc.iso8601}
+        @manifest[key] = {"generated_at" => Time.now.utc.iso8601}
         atomic_write(@manifest_path, JSON.pretty_generate(@manifest.sort.to_h) + "\n")
       end
 

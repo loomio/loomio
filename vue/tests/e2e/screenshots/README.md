@@ -83,11 +83,7 @@ participation-report graph) remain manual captures.
 To spotlight adjacent controls as one region, pass a `selectors` array instead
 of `selector`; the helper uses their combined bounding rectangle.
 
-Generated English images are expected to be reviewed and committed. Translated screenshots are optional cache files generated with `bin/docs-screenshots`; see [the docs workflow](../../../../docs/README.md#optional-translated-screenshots). Do not edit images
-by hand; update the scenario or screenshot spec and regenerate them instead.
-Run `bundle exec ruby docs/build.rb` after generating a candidate and before
-sharing its localhost documentation URL, because the rendered manual serves
-the built copy under `public/docs`.
+Generated English images are expected to be reviewed and committed. Translated screenshots are optional cache files generated manually with `bin/docs-screenshots`; select the images or manual section affected by the work. The command fills missing files, while `--refresh` regenerates every selected image. The publishing GitHub Action runs only on manual dispatch. Each language keeps its own scenario setup and navigation, with translated interface labels and fixed fictional content. See [the docs workflow](../../../../docs/README.md#optional-translated-screenshots). Do not edit images by hand; update the scenario or screenshot spec and regenerate them instead. Run `bundle exec ruby docs/build.rb` after generating a candidate and before sharing its localhost documentation URL, because the rendered manual serves the built copy under `public/docs`.
 
 Use the Oatmilk Cooperative scenarios for the shared user-manual setting. Add
 new content to `Dev::Scenarios::OatmilkCooperative` so screenshots keep the

@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-screenshot_locale="${1:?Usage: script/ci_manual_screenshots LOCALE}"
+screenshot_locale="${1:?Usage: script/ci_manual_screenshots LOCALE [IMAGE-OR-DIRECTORY]}"
+screenshots_path="${2:-}"
 screenshots_cache="${RUNNER_TEMP:-/tmp}/loomio-manual-screenshots/$screenshot_locale"
 r2_endpoint="https://32a6f2e065e7302d52feef812b23608d.r2.cloudflarestorage.com"
 r2_prefix="s3://user-manual-screenshots/$screenshot_locale"
@@ -16,9 +17,11 @@ if [ -f "$screenshots_cache/$screenshot_locale/.generation.json" ]; then
 fi
 
 # A failed run still stores the images it captured, so publish them before
-# reporting the failure; the next run retries only the remaining images.
+# reporting the failure; unsuccessful captures retain their published copies.
 status=0
-bin/docs-screenshots "$screenshot_locale" --refresh --output "$screenshots_cache" || status=$?
+screenshots_arguments=("$screenshot_locale" --refresh --output "$screenshots_cache")
+if [ -n "$screenshots_path" ]; then screenshots_arguments+=("$screenshots_path"); fi
+bin/docs-screenshots "${screenshots_arguments[@]}" || status=$?
 
 # Upload the manifest after the images it describes.
 aws --endpoint-url "$r2_endpoint" s3 sync "$screenshots_cache/$screenshot_locale/" "$r2_prefix/" \

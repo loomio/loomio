@@ -10,13 +10,13 @@ options = {output: Docs::Screenshots::ROOT.join("public/docs-screenshots"), refr
 parser = OptionParser.new do |args|
   args.banner = "Usage: bin/docs-screenshots <locale,...|all> [image-or-directory...] [options]"
   args.on("--output DIRECTORY", "Cache directory (default: public/docs-screenshots)") { |value| options[:output] = value }
-  args.on("--status", "Report missing/current/outdated images without generating") { options[:status] = true }
-  args.on("--refresh", "Also replace outdated images at their existing paths") { options[:refresh] = true }
+  args.on("--status", "Report missing/present images without generating") { options[:status] = true }
+  args.on("--refresh", "Regenerate every selected image at its existing path") { options[:refresh] = true }
   args.on("-h", "--help") { puts args; exit }
 end
 parser.parse!
 selection = ARGV.shift or abort parser.to_s
-locales = selection == "all" ? Docs::Localization.locales : selection.split(",").map { |code| Docs::Localization.locale(code) }
+locales = selection == "all" ? Docs::Localization.locales.select(&:published) : selection.split(",").map { |code| Docs::Localization.locale(code) }
 abort "English screenshots use bin/e2e-screenshots" if locales.any? { |locale| locale.code == "en" }
 recipes = Docs::Screenshots.catalog
 unless ARGV.empty?
@@ -32,20 +32,19 @@ generate = lambda do
   cache = Docs::Screenshots::Cache.new(options[:output])
   locales.each do |locale|
     rows = recipes.map do |recipe|
-      inputs = Docs::Screenshots.fingerprint(recipe, locale.app_locale)
-      [recipe, inputs, cache.status(locale.code, recipe, inputs)]
+      [recipe, cache.status(locale.code, recipe)]
     end
-    puts "#{locale.code}: #{%w[missing current outdated].map { |status| "#{rows.count { |row| row.last == status }} #{status}" }.join(', ')}"
+    puts "#{locale.code}: #{%w[missing present].map { |status| "#{rows.count { |row| row.last == status }} #{status}" }.join(', ')}"
     next if options[:status]
-    pending = rows.select { |_, _, status| status == "missing" || (options[:refresh] && status == "outdated") }
+    pending = rows.select { |_, status| options[:refresh] || status == "missing" }
     next if pending.empty?
 
     Dir.mktmpdir("docs-screenshots-") do |directory|
       staging = Pathname(directory)
       suite = staging.join("suite")
       suite.mkpath
-      pending.group_by { |recipe, _, _| recipe.fetch("spec") }.each do |spec, captures|
-        cases = captures.map { |recipe, _, _| recipe.fetch("testcase") }.uniq
+      pending.group_by { |recipe, _| recipe.fetch("spec") }.each do |spec, captures|
+        cases = captures.map { |recipe, _| recipe.fetch("testcase") }.uniq
         original = Docs::Screenshots::ROOT.join("vue/tests/e2e/screenshots", spec).to_s
         suite.join(spec).write("const original = require(#{JSON.generate(original)});\nmodule.exports = Object.fromEntries(#{JSON.generate(cases)}.map(name => [name, original[name]]));\n")
       end
@@ -59,10 +58,10 @@ generate = lambda do
       }
       success = system(environment, Docs::Screenshots::ROOT.join("bin/e2e-screenshots").to_s, chdir: Docs::Screenshots::ROOT.to_s)
       # A capture is written only after its test reached the documented state,
-      # so keep every image a failed run produced and retry only the rest.
-      captured = pending.select { |recipe, _, _| staging.join("images", recipe.fetch("image")).file? }
-      captured.each do |recipe, inputs, _|
-        cache.store(locale.code, recipe, inputs, staging.join("images", recipe.fetch("image")))
+      # so keep every completed image even if the rest of the run failed.
+      captured = pending.select { |recipe, _| staging.join("images", recipe.fetch("image")).file? }
+      captured.each do |recipe, _|
+        cache.store(locale.code, recipe, staging.join("images", recipe.fetch("image")))
       end
       puts "#{locale.code}: stored #{captured.length} of #{pending.length} compressed screenshots"
       failures << locale.code unless success && captured.length == pending.length
@@ -80,4 +79,4 @@ else
     generate.call
   end
 end
-abort "Capture failed for #{failures.join(', ')}; their remaining images will be retried" if failures.any?
+abort "Capture failed for #{failures.join(', ')}; completed images were kept" if failures.any?

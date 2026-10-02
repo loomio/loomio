@@ -15,26 +15,26 @@ class DocsScreenshotsTest < Minitest::Test
     assert Docs::Screenshots.catalog.all? { |entry| Docs::Screenshots::ROOT.join("docs/en", entry.fetch("image")).file? }
   end
 
-  def test_cache_tracks_missing_current_and_outdated_without_retaining_history
+  def test_cache_tracks_missing_and_present_without_retaining_history
     Dir.mktmpdir do |directory|
       cache = Docs::Screenshots::Cache.new(directory)
       source = File.join(directory, "capture.png")
       File.binwrite(source, "first PNG")
-      assert_equal "missing", cache.status("fr", recipe, "old")
-      cache.store("fr", recipe, "old", source)
-      assert_equal "current", cache.status("fr", recipe, "old")
-      assert_equal "outdated", cache.status("fr", recipe, "new")
+      assert_equal "missing", cache.status("fr", recipe)
+      cache.store("fr", recipe, source)
+      assert_equal "present", cache.status("fr", recipe)
       File.binwrite(source, "replacement PNG")
-      cache.store("fr", recipe, "new", source)
+      cache.store("fr", recipe, source)
       target = File.join(directory, "fr", recipe.fetch("image"))
       assert_equal "replacement PNG", File.binread(target)
       assert_equal 1, Dir[File.join(directory, "fr/**/*.png")].length
       manifest = JSON.parse(File.read(File.join(directory, ".generation.json")))
       assert_equal 1, manifest.length
-      assert_equal "new", manifest.fetch("fr/#{recipe.fetch('image')}").fetch("inputs")
-      assert_equal "current", Docs::Screenshots::Cache.new(directory).status("fr", recipe, "new")
+      assert manifest.fetch("fr/#{recipe.fetch('image')}").key?("generated_at")
+      refute manifest.fetch("fr/#{recipe.fetch('image')}").key?("inputs")
+      assert_equal "present", Docs::Screenshots::Cache.new(directory).status("fr", recipe)
       File.unlink(target)
-      assert_equal "missing", Docs::Screenshots::Cache.new(directory).status("fr", recipe, "new")
+      assert_equal "missing", Docs::Screenshots::Cache.new(directory).status("fr", recipe)
     end
   end
 
@@ -43,29 +43,32 @@ class DocsScreenshotsTest < Minitest::Test
       cache = Docs::Screenshots::Cache.new(directory)
       source = File.join(directory, "capture.png")
       File.binwrite(source, "existing PNG")
-      cache.store("fr", recipe, "old", source)
+      cache.store("fr", recipe, source)
       manifest = File.binread(File.join(directory, ".generation.json"))
-      assert_raises(RuntimeError) { cache.store("fr", recipe, "new", File.join(directory, "missing.png")) }
+      assert_raises(RuntimeError) { cache.store("fr", recipe, File.join(directory, "missing.png")) }
       assert_equal "existing PNG", File.binread(File.join(directory, "fr", recipe.fetch("image")))
       assert_equal manifest, File.binread(File.join(directory, ".generation.json"))
     end
   end
 
-  def test_current_cache_skips_the_browser_runner
+  def test_present_cache_skips_the_browser_runner_even_with_legacy_fingerprints
     Dir.mktmpdir do |directory|
       source = Docs::Screenshots::ROOT.join("docs/en", recipe.fetch("image"))
       cache = Docs::Screenshots::Cache.new(directory)
-      cache.store("fr", recipe, Docs::Screenshots.fingerprint(recipe, "fr"), source)
+      cache.store("fr", recipe, source)
+      manifest_path = File.join(directory, ".generation.json")
+      manifest = JSON.parse(File.read(manifest_path))
+      manifest.fetch("fr/#{recipe.fetch('image')}")["inputs"] = "obsolete fingerprint"
+      File.write(manifest_path, JSON.generate(manifest))
       output, status = Open3.capture2(RbConfig.ruby, Docs::Screenshots::ROOT.join("bin/docs-screenshots").to_s,
         "fr", recipe.fetch("image"), "--output", directory)
       assert status.success?, output
-      assert_includes output, "0 missing, 1 current, 0 outdated"
+      assert_includes output, "0 missing, 1 present"
       refute_includes output, "Building Vue"
     end
   end
 
-  def test_locale_changes_inputs_and_literal_interface_expectations
-    refute_equal Docs::Screenshots.fingerprint(recipe, "fr"), Docs::Screenshots.fingerprint(recipe, "de")
+  def test_literal_interface_expectations_use_the_selected_language
     assert_includes Docs::Screenshots.labels("fr").fetch("Bookmarks"), "Signets"
   end
 end
