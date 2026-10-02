@@ -1,6 +1,6 @@
 ---
 title: Instellingen
-source_revision: c27ee3b193231816878f1c074ff9fc2a086a88c0
+source_revision: e3d2454052d7531a995c9218ee5c386670a8c5d7
 source_file: docs/en/user_manual/polls/settings/index.md
 translated:
   provider: codex/gpt-6.1-sol
@@ -17,7 +17,7 @@ sections:
   reminder: e6ac37324b884958
   anonymous-voting: 4fde93187ffd1a86
   vote-reason: b1ebf2700ce8248b
-  hide-results: c0873aeafe8feb59
+  hide-results: c866719279c04ad8
   start-the-poll: 8e7d8e81db57f4f8
   managing-polls: b26fc41e19371d54
   edit-poll: ddf392426410ec5a
@@ -39,7 +39,7 @@ generated:
   reminder: bfc66dad40e64779
   anonymous-voting: 002f8bcf4a9bf4ce
   vote-reason: aee03d9416dd8e86
-  hide-results: 95bf2f2ad8382d1a
+  hide-results: be9314f89f9889d8
   start-the-poll: 78d8c527bf9f760c
   managing-polls: 998a7f2f76a9372a
   edit-poll: e5283692e690b034
@@ -204,9 +204,11 @@ Instellingsopties:
 - Resultaat verbergen totdat een stem is uitgebracht
 - Resultaat verbergen totdat de stemming sluit
 
-Zolang het resultaat verborgen is, kan niemand op stemmen antwoorden. Antwoorden op stemmen is mogelijk zodra de stemming sluit.
+Wanneer het resultaat verborgen is totdat een stem is uitgebracht, kunnen mensen op stemmen antwoorden zodra ze zelf hebben gestemd. Alle reacties onder de peiling, inclusief directe reacties en antwoorden op antwoorden, blijven in de thread verborgen voor mensen die nog niet hebben gestemd.
 
-Als het resultaat verborgen is totdat je een stem hebt uitgebracht, stem dan voordat je de thread afdrukt of als Markdown exporteert.
+Wanneer het resultaat verborgen is totdat de stemming sluit, blijven reacties onder de peiling verborgen en zijn antwoorden en vermeldingen in stemredenen uitgeschakeld totdat de peiling sluit.
+
+Bij afdrukken en exporteren, ook als Markdown, wordt de instelling "Resultaat verbergen totdat een stem is uitgebracht" genegeerd en worden stemmen en antwoorden opgenomen. Resultaten die tot het sluiten verborgen zijn, blijven verborgen totdat de peiling sluit.
 
 Anonieme peilingen verbergen het resultaat altijd totdat de stemming sluit. Het sjabloon STV-verkiezing schakelt anoniem stemmen standaard in.
 

@@ -1,10 +1,10 @@
 ---
 title: Asetukset
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
+source_revision: e3d2454052d7531a995c9218ee5c386670a8c5d7
 source_file: docs/en/user_manual/polls/settings/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-02'
 sections:
   introduction: 145c23b2412eff98
   setting-up-a-proposal-or-poll: 9e0347d976f79179
@@ -17,7 +17,7 @@ sections:
   reminder: e6ac37324b884958
   anonymous-voting: 4fde93187ffd1a86
   vote-reason: b1ebf2700ce8248b
-  hide-results: c0873aeafe8feb59
+  hide-results: c866719279c04ad8
   start-the-poll: 8e7d8e81db57f4f8
   managing-polls: b26fc41e19371d54
   edit-poll: ddf392426410ec5a
@@ -39,7 +39,7 @@ generated:
   reminder: 63527fd989980fd2
   anonymous-voting: 076522c7bd57ad42
   vote-reason: b3539bc5be115312
-  hide-results: 3badbcc3856f115f
+  hide-results: 2ffd733e74216345
   start-the-poll: a18ab01326475ff0
   managing-polls: 736846c8c0a7c63a
   edit-poll: c07f20e3666a71bf
@@ -206,9 +206,11 @@ Asetuksen vaihtoehdot:
 - Piilota tulokset, kunnes ääni on annettu
 - Piilota tulokset, kunnes äänestys sulkeutuu
 
-Kun tulokset ovat piilossa, kukaan ei voi vastata ääniin. Ääniin voi vastata äänestyksen sulkeuduttua.
+Kun tulokset ovat piilossa äänen antamiseen asti, ihmiset voivat vastata ääniin heti annettuaan oman äänensä. Kaikki kyselyn alla olevat kommentit, myös suorat kommentit ja vastauksiin annetut vastaukset, pysyvät ketjussa piilossa ihmisiltä, jotka eivät ole äänestäneet.
 
-Jos tulokset ovat piilossa, kunnes olet antanut äänesi, äänestä ennen kuin tulostat ketjun tai viet sen Markdown-muodossa.
+Kun tulokset ovat piilossa äänestyksen sulkeutumiseen asti, kyselyn alla olevat kommentit pysyvät piilossa ja vastaukset sekä maininnat äänten perusteluissa ovat poissa käytöstä kyselyn sulkeutumiseen asti.
+
+Tulostus ja viennit, myös Markdown-muodossa, ohittavat asetuksen ”Piilota tulokset, kunnes ääni on annettu” ja sisältävät äänet ja vastaukset. Sulkeutumiseen asti piilotetut tulokset pysyvät piilossa kyselyn sulkeutumiseen asti.
 
 Anonyymit kyselyt piilottavat tulokset aina äänestyksen sulkeutumiseen asti. STV-vaalit-mallissa anonyymi äänestys on oletusarvoisesti käytössä.
 

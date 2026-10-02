@@ -1,10 +1,10 @@
 ---
 title: 設定
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
+source_revision: e3d2454052d7531a995c9218ee5c386670a8c5d7
 source_file: docs/en/user_manual/polls/settings/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-02'
 sections:
   introduction: 145c23b2412eff98
   setting-up-a-proposal-or-poll: 9e0347d976f79179
@@ -17,7 +17,7 @@ sections:
   reminder: e6ac37324b884958
   anonymous-voting: 4fde93187ffd1a86
   vote-reason: b1ebf2700ce8248b
-  hide-results: c0873aeafe8feb59
+  hide-results: c866719279c04ad8
   start-the-poll: 8e7d8e81db57f4f8
   managing-polls: b26fc41e19371d54
   edit-poll: ddf392426410ec5a
@@ -39,7 +39,7 @@ generated:
   reminder: 37ef7799665f0689
   anonymous-voting: a2ecf3255db05030
   vote-reason: 62318725e7487f0d
-  hide-results: 7689c4d5f7c2977b
+  hide-results: b689c22cffa1b17b
   start-the-poll: cd4c593025090505
   managing-polls: 98a208666a4101b9
   edit-poll: f00e83972b06e9ec
@@ -206,9 +206,11 @@ needs_review:
 - 投票するまで結果を非表示にする
 - 投票が締め切られるまで結果を非表示にする
 
-結果が非表示の間は、誰も投票に返信できません。投票が締め切られると、投票への返信ができるようになります。
+投票するまで結果が非表示になる設定の場合は、投票するとすぐに投票への返信ができるようになります。アンケートの下にあるすべてのコメントは、直接投稿されたコメントや返信への返信も含め、まだ投票していない人にはスレッド内で表示されません。
 
-投票するまで結果が非表示になる設定の場合は、スレッドを印刷したりMarkdown形式でエクスポートしたりする前に投票してください。
+投票が締め切られるまで結果が非表示になる設定の場合は、アンケートが締め切られるまで、アンケートの下にあるコメントは非表示のままとなり、返信と投票理由内のメンションが無効になります。
+
+印刷やMarkdownを含むエクスポートでは、「投票するまで結果を非表示にする」設定にかかわらず、投票と返信が含まれます。締め切りまで結果を非表示にする設定の場合は、アンケートが締め切られるまで結果は非表示のままです。
 
 匿名アンケートでは、投票が締め切られるまで結果が常に非表示になります。STV選挙テンプレートでは、初期設定で匿名投票が有効になっています。
 

@@ -1,10 +1,10 @@
 ---
 title: הגדרות
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
+source_revision: e3d2454052d7531a995c9218ee5c386670a8c5d7
 source_file: docs/en/user_manual/polls/settings/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-02'
 sections:
   introduction: 145c23b2412eff98
   setting-up-a-proposal-or-poll: 9e0347d976f79179
@@ -17,7 +17,7 @@ sections:
   reminder: e6ac37324b884958
   anonymous-voting: 4fde93187ffd1a86
   vote-reason: b1ebf2700ce8248b
-  hide-results: c0873aeafe8feb59
+  hide-results: c866719279c04ad8
   start-the-poll: 8e7d8e81db57f4f8
   managing-polls: b26fc41e19371d54
   edit-poll: ddf392426410ec5a
@@ -39,7 +39,7 @@ generated:
   reminder: a67c25a87d4776c4
   anonymous-voting: 56a6bc77e42331ff
   vote-reason: 19e4130ac201561b
-  hide-results: eef8a5ec96c4c662
+  hide-results: d4aedc306e5d91f1
   start-the-poll: d971bc701e164d4e
   managing-polls: 07cbcf088b35c603
   edit-poll: 9203d0a9d41bf074
@@ -206,9 +206,11 @@ needs_review:
 - הסתרת תוצאות עד להצבעה
 - הסתרת תוצאות עד לסגירת ההצבעה
 
-כל עוד התוצאות מוסתרות, לא ניתן להשיב להצבעות. האפשרות להשיב להצבעות נפתחת עם סגירת ההצבעה.
+כאשר התוצאות מוסתרות עד להצבעה, ניתן להשיב להצבעות מיד לאחר ההצבעה. כל התגובות שמתחת לסקר, כולל תגובות ישירות ותשובות לתשובות, נשארות מוסתרות בשרשור ממי שטרם הצביעו.
 
-אם התוצאות מוסתרות עד להצבעה, יש להצביע לפני הדפסת השרשור או ייצוא שלו כ־Markdown.
+כאשר התוצאות מוסתרות עד לסגירת ההצבעה, התגובות שמתחת לסקר נשארות מוסתרות, והאפשרות להשיב ולהוסיף אזכורים בנימוקי ההצבעה מושבתת עד לסגירת הסקר.
+
+הדפסה וייצוא, כולל ייצוא כ־Markdown, מתעלמים מההגדרה "הסתרת תוצאות עד להצבעה" וכוללים הצבעות ותשובות. תוצאות שמוסתרות עד לסגירה נשארות מוסתרות עד לסגירת הסקר.
 
 בסקרים אנונימיים, התוצאות תמיד מוסתרות עד לסגירת ההצבעה. בתבנית בחירות STV, הצבעה אנונימית מופעלת כברירת מחדל.
 

@@ -1,10 +1,10 @@
 ---
 title: Beállítások
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
+source_revision: e3d2454052d7531a995c9218ee5c386670a8c5d7
 source_file: docs/en/user_manual/polls/settings/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-02'
 sections:
   introduction: 145c23b2412eff98
   setting-up-a-proposal-or-poll: 9e0347d976f79179
@@ -17,7 +17,7 @@ sections:
   reminder: e6ac37324b884958
   anonymous-voting: 4fde93187ffd1a86
   vote-reason: b1ebf2700ce8248b
-  hide-results: c0873aeafe8feb59
+  hide-results: c866719279c04ad8
   start-the-poll: 8e7d8e81db57f4f8
   managing-polls: b26fc41e19371d54
   edit-poll: ddf392426410ec5a
@@ -39,7 +39,7 @@ generated:
   reminder: 8494c0e55397b4f7
   anonymous-voting: 25122b6c2fa90792
   vote-reason: 33520d3f5b8d0505
-  hide-results: f2b5745717612b67
+  hide-results: f3be9c09bcb1650a
   start-the-poll: 3be52bb7323c5a8b
   managing-polls: 8810d3ffe4b09bf2
   edit-poll: 2158fe8e324cdec9
@@ -207,9 +207,11 @@ Beállítási lehetőségek:
 - Eredmények elrejtése a szavazat leadásáig
 - Eredmények elrejtése a szavazás lezárásáig
 
-Amíg az eredmények rejtve vannak, senki sem írhat választ a szavazatokra. A szavazatokra a szavazás lezárása után lehet válaszolni.
+Ha az eredmények a szavazat leadásáig rejtve vannak, az emberek a saját szavazatuk leadása után azonnal válaszolhatnak a szavazatokra. A szavazás alatti összes hozzászólás, beleértve a közvetlen hozzászólásokat és a válaszokra adott válaszokat is, rejtve marad a szálban azok elől, akik még nem szavaztak.
 
-Ha az eredmények a szavazat leadásáig rejtve vannak, szavazz, mielőtt kinyomtatod vagy Markdown formátumban exportálod a szálat.
+Ha az eredmények a szavazás lezárásáig rejtve vannak, a szavazás alatti hozzászólások is rejtve maradnak, és a szavazás lezárásáig nem lehet válaszokat írni vagy említéseket használni a szavazatok indoklásában.
+
+A nyomtatás és az exportálás, beleértve a Markdown formátumot is, figyelmen kívül hagyja az „Eredmények elrejtése a szavazat leadásáig” beállítást, és tartalmazza a szavazatokat és a válaszokat. A lezárásig rejtett eredmények a szavazás lezárásáig rejtve maradnak.
 
 A névtelen szavazások eredményei mindig rejtve maradnak a szavazás lezárásáig. Az STV-választás sablon alapértelmezés szerint engedélyezi a névtelen szavazást.
 

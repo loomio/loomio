@@ -1,6 +1,6 @@
 ---
 title: Configurações
-source_revision: c27ee3b193231816878f1c074ff9fc2a086a88c0
+source_revision: e3d2454052d7531a995c9218ee5c386670a8c5d7
 source_file: docs/en/user_manual/polls/settings/index.md
 translated:
   provider: codex/gpt-6.1-sol
@@ -17,7 +17,7 @@ sections:
   reminder: e6ac37324b884958
   anonymous-voting: 4fde93187ffd1a86
   vote-reason: b1ebf2700ce8248b
-  hide-results: c0873aeafe8feb59
+  hide-results: c866719279c04ad8
   start-the-poll: 8e7d8e81db57f4f8
   managing-polls: b26fc41e19371d54
   edit-poll: ddf392426410ec5a
@@ -39,7 +39,7 @@ generated:
   reminder: 5e6b4efd519e49d2
   anonymous-voting: c2727333ef2dbabc
   vote-reason: 70f2e2565d94b6d8
-  hide-results: 87dee3a35bc93ce2
+  hide-results: ac87e3af0cba9c93
   start-the-poll: 2230fbd6a77fa9f6
   managing-polls: 301e2f77ba8cb7da
   edit-poll: e8a3a23ee27ba8e5
@@ -204,9 +204,11 @@ Opções de configuração:
 - Ocultar resultados até votar
 - Ocultar resultados até o encerramento da votação
 
-Enquanto os resultados estiverem ocultos, ninguém poderá responder aos votos. As respostas aos votos ficam disponíveis quando a votação é encerrada.
+Quando os resultados ficam ocultos até votar, as pessoas podem responder aos votos assim que votarem. Todos os comentários na enquete, incluindo comentários diretos e respostas a outras respostas, permanecem ocultos na conversa para quem ainda não votou.
 
-Se os resultados estiverem ocultos até você votar, vote antes de imprimir ou exportar a conversa como Markdown.
+Quando os resultados ficam ocultos até o encerramento da votação, os comentários na enquete permanecem ocultos, e as respostas e as menções nos motivos dos votos ficam desabilitadas até a enquete ser encerrada.
+
+A impressão e as exportações, incluindo Markdown, ignoram a configuração "ocultar resultados até votar" e incluem votos e respostas. Os resultados ocultos até o encerramento permanecem ocultos até a enquete ser encerrada.
 
 Enquetes anônimas sempre ocultam os resultados até o encerramento da votação. O modelo de eleição STV habilita a votação anônima por padrão.
 

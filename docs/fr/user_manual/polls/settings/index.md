@@ -1,10 +1,10 @@
 ---
 title: Paramètres
-source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
+source_revision: e3d2454052d7531a995c9218ee5c386670a8c5d7
 source_file: docs/en/user_manual/polls/settings/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-02'
 sections:
   introduction: 145c23b2412eff98
   setting-up-a-proposal-or-poll: 9e0347d976f79179
@@ -17,7 +17,7 @@ sections:
   reminder: e6ac37324b884958
   anonymous-voting: 4fde93187ffd1a86
   vote-reason: b1ebf2700ce8248b
-  hide-results: c0873aeafe8feb59
+  hide-results: c866719279c04ad8
   start-the-poll: 8e7d8e81db57f4f8
   managing-polls: b26fc41e19371d54
   edit-poll: ddf392426410ec5a
@@ -39,7 +39,7 @@ generated:
   reminder: eb948ef4fce9ad1a
   anonymous-voting: 2c174276661756b4
   vote-reason: 4e8a95a3905977c2
-  hide-results: 2255d31eb28aad1d
+  hide-results: 248411199214ea6a
   start-the-poll: ca61b5a2672e2066
   managing-polls: d4841c826f9ca251
   edit-poll: ed3ebb4902f5ff63
@@ -206,9 +206,11 @@ Options du paramètre :
 - Masquer les résultats jusqu’à ce qu’un vote soit exprimé
 - Masquer les résultats jusqu’à la clôture du vote
 
-Tant que les résultats sont masqués, personne ne peut répondre aux votes. Les réponses aux votes deviennent possibles à la clôture du vote.
+Lorsque les résultats sont masqués jusqu’à ce qu’un vote soit exprimé, les personnes peuvent répondre aux votes dès qu’elles ont voté. Tous les commentaires sous le sondage, y compris les commentaires directs et les réponses aux réponses, restent masqués dans le fil pour les personnes qui n’ont pas voté.
 
-Si les résultats sont masqués jusqu’à ce qu’un vote soit exprimé, votez avant d’imprimer ou d’exporter le fil au format Markdown.
+Lorsque les résultats sont masqués jusqu’à la clôture du vote, les commentaires sous le sondage restent masqués et les réponses et les mentions dans les raisons des votes sont désactivées jusqu’à la clôture du sondage.
+
+L’impression et les exports, y compris au format Markdown, ignorent le paramètre « Masquer les résultats jusqu’à ce qu’un vote soit exprimé » et incluent les votes et les réponses. Les résultats masqués jusqu’à la clôture restent masqués jusqu’à la clôture du sondage.
 
 Les sondages anonymes masquent toujours les résultats jusqu’à la clôture du vote. Le modèle Élection STV active le vote anonyme par défaut.
 

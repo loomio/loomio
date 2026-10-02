@@ -1,6 +1,6 @@
 ---
 title: Einstellungen
-source_revision: c27ee3b193231816878f1c074ff9fc2a086a88c0
+source_revision: e3d2454052d7531a995c9218ee5c386670a8c5d7
 source_file: docs/en/user_manual/polls/settings/index.md
 translated:
   provider: codex/gpt-6.1-sol
@@ -17,7 +17,7 @@ sections:
   reminder: e6ac37324b884958
   anonymous-voting: 4fde93187ffd1a86
   vote-reason: b1ebf2700ce8248b
-  hide-results: c0873aeafe8feb59
+  hide-results: c866719279c04ad8
   start-the-poll: 8e7d8e81db57f4f8
   managing-polls: b26fc41e19371d54
   edit-poll: ddf392426410ec5a
@@ -39,7 +39,7 @@ generated:
   reminder: 1e1697411da53f12
   anonymous-voting: 4c6845651d2367a8
   vote-reason: 8818e6d77a621800
-  hide-results: 8fb1d97ed4f14c35
+  hide-results: ce1db86b13ba05b9
   start-the-poll: 37b766b2839b4c83
   managing-polls: 84f389087c488b72
   edit-poll: e1e0163b373527b3
@@ -204,9 +204,11 @@ Einstellungsoptionen:
 - Ergebnis bis zur Abgabe einer Stimme ausblenden
 - Ergebnis bis zum Ende der Abstimmung ausblenden
 
-Solange das Ergebnis ausgeblendet ist, kann niemand auf Stimmen antworten. Antworten auf Stimmen sind nach dem Ende der Abstimmung möglich.
+Wenn das Ergebnis bis zur Abgabe einer Stimme ausgeblendet ist, können Teilnehmende auf Stimmen antworten, sobald sie selbst abgestimmt haben. Alle Kommentare unter der Abstimmung, einschließlich direkter Kommentare und Antworten auf Antworten, bleiben im Thread für Personen ausgeblendet, die noch nicht abgestimmt haben.
 
-Wenn das Ergebnis bis zur Abgabe einer Stimme ausgeblendet ist, stimme ab, bevor du den Thread druckst oder als Markdown exportierst.
+Wenn das Ergebnis bis zum Ende der Abstimmung ausgeblendet ist, bleiben Kommentare unter der Abstimmung ausgeblendet. Antworten und Erwähnungen in Begründungen zu Stimmen sind deaktiviert, bis die Abstimmung beendet ist.
+
+Beim Drucken und Exportieren, auch als Markdown, wird die Einstellung „Ergebnis bis zur Abgabe einer Stimme ausblenden“ ignoriert. Stimmen und Antworten werden dabei einbezogen. Ergebnisse, die bis zum Ende der Abstimmung ausgeblendet sind, bleiben ausgeblendet, bis die Abstimmung beendet ist.
 
 Anonyme Abstimmungen blenden das Ergebnis immer bis zum Ende der Abstimmung aus. Die Vorlage für eine STV-Wahl aktiviert standardmäßig die anonyme Stimmabgabe.
 
