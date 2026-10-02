@@ -36,6 +36,27 @@ class PollsControllerTest < ActionController::TestCase
     assert_includes response.body, @poll.title
   end
 
+  test 'until-vote HTML and CSV exports include votes before the reader votes' do
+    @poll.update!(hide_results: 'until_vote')
+    voter = @poll.stances.latest.find_by!(participant_id: @user.id)
+    voter.choice = @poll.poll_option_names.first
+    voter.reason = 'Export before voting marker'
+    StanceService.create(stance: voter, actor: @user)
+    @group.add_member!(@alien)
+    sign_in @alien
+
+    [:html, :csv].each do |format|
+      get :export, params: {key: @poll.key}, format: format
+      assert_response :success
+      assert_includes response.body, 'Export before voting marker'
+    end
+
+    @poll.update!(hide_results: 'until_closed')
+    get :export, params: {key: @poll.key}, format: :csv
+    assert_response :redirect
+    refute_includes response.body, 'Export before voting marker'
+  end
+
   test "unsubscribe token does not authorize a private poll export" do
     @discussion.topic.update!(private: true)
     @user.update_columns(unsubscribe_token: 'poll-export-unsubscribe-token')

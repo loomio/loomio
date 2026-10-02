@@ -16,6 +16,19 @@ const props = defineProps({
 
 const parentChecked = ref(true);
 
+// Timeline parents are already loaded, including when replies share their
+// vote's parent at maximum depth. Apply the poll's rule to its whole conversation.
+const isVisible = (topicItem) => {
+  if (topicItem.itemableType !== 'Comment') { return true; }
+  let parent = topicItem.parent();
+  while (parent) {
+    if (parent.itemableType === 'Poll') { return parent.model().showResults(); }
+    if (parent.itemableType === 'Stance') { return parent.model().poll().showResults(); }
+    parent = parent.parent();
+  }
+  return true;
+};
+
 const isFocused = (topic_item) => {
   return props.focusSelector == `.sequenceId-${topic_item.sequenceId || 0}` ||
     (topic_item.itemableType === 'Comment' && props.focusSelector == `.comment-${topic_item.itemableId || 0}`);
@@ -25,36 +38,36 @@ const isFocused = (topic_item) => {
 
 <template lang="pug">
 .topic-list
-  .topic-item(v-for="obj, index in collection" :key="obj.topic_item.id" :class="{'topic-item--deep': obj.topic_item.depth > 1}")
-    .topic-item__row(v-if="obj.missingEarlier")
-      topic-load-more(direction="before" :collection="collection" :index="index" :loader="loader")
-    v-expand-transition
-      .topic-item__row(v-if="loader.collapsed[obj.topic_item.id]")
-        collapsed(:obj="obj" :loader="loader")
-    v-expand-transition
-      .topic-item__row(v-if="!loader.collapsed[obj.topic_item.id]")
-        .topic-item__gutter(v-if="obj.topic_item.depth > 0")
-          .d-flex.justify-center
-            template(v-if="loader.topic.selectedTopicItemIds && loader.topic.selectedTopicItemIds.length")
-              v-checkbox-btn.topic-item__is-forking( v-if="obj.topic_item.moveSelectionDisabled()" disabled v-model="parentChecked" )
-              v-checkbox-btn.topic-item__is-forking( v-else v-model="loader.topic.selectedTopicItemIds" :value="obj.topic_item.id" )
-            template(v-else)
-              .topic-item__gutter-toggle(@click="loader.collapse(obj.topic_item)")
-                user-avatar.topic-item__gutter-avatar( :user="obj.topic_item.actor()" :size="(obj.topic_item.depth > 1) ? 28 : 32" no-link )
-                .topic-item__gutter-collapse
-                  common-icon(name="mdi-unfold-less-horizontal")
-          stem-wrapper(:loader="loader" :obj="obj" :focused="isFocused(obj.topic_item)")
-        .topic-item__main
-          .topic-item__main--content
-            intersection-wrapper(:loader="loader" :obj="obj" :focused="isFocused(obj.topic_item)")
-          .topic-list__children(v-if="obj.topic_item.childCount && (!obj.itemable.isA('stance') || obj.itemable.poll().showResults())")
-            topic-load-more(v-if="obj.children.length == 0" direction="children" :collection="collection" :index="index" :loader="loader")
-            topic-list.flex-grow-1( :loader="loader" :collection="obj.children" :focusSelector="focusSelector" )
-          reply-form(:topicItemId="obj.topic_item.id")
+  template(v-for="obj, index in collection" :key="obj.topic_item.id")
+    .topic-item(v-if="isVisible(obj.topic_item)" :class="{'topic-item--deep': obj.topic_item.depth > 1}")
+      .topic-item__row(v-if="obj.missingEarlier")
+        topic-load-more(direction="before" :collection="collection" :index="index" :loader="loader")
+      v-expand-transition
+        .topic-item__row(v-if="loader.collapsed[obj.topic_item.id]")
+          collapsed(:obj="obj" :loader="loader")
+      v-expand-transition
+        .topic-item__row(v-if="!loader.collapsed[obj.topic_item.id]")
+          .topic-item__gutter(v-if="obj.topic_item.depth > 0")
+            .d-flex.justify-center
+              template(v-if="loader.topic.selectedTopicItemIds && loader.topic.selectedTopicItemIds.length")
+                v-checkbox-btn.topic-item__is-forking( v-if="obj.topic_item.moveSelectionDisabled()" disabled v-model="parentChecked" )
+                v-checkbox-btn.topic-item__is-forking( v-else v-model="loader.topic.selectedTopicItemIds" :value="obj.topic_item.id" )
+              template(v-else)
+                .topic-item__gutter-toggle(@click="loader.collapse(obj.topic_item)")
+                  user-avatar.topic-item__gutter-avatar( :user="obj.topic_item.actor()" :size="(obj.topic_item.depth > 1) ? 28 : 32" no-link )
+                  .topic-item__gutter-collapse
+                    common-icon(name="mdi-unfold-less-horizontal")
+            stem-wrapper(:loader="loader" :obj="obj" :focused="isFocused(obj.topic_item)")
+          .topic-item__main
+            .topic-item__main--content
+              intersection-wrapper(:loader="loader" :obj="obj" :focused="isFocused(obj.topic_item)")
+            .topic-list__children(v-if="obj.topic_item.childCount && (!obj.itemable.isA('stance') || obj.itemable.poll().showResults())")
+              topic-load-more(v-if="obj.children.length == 0" direction="children" :collection="collection" :index="index" :loader="loader")
+              topic-list.flex-grow-1( :loader="loader" :collection="obj.children" :focusSelector="focusSelector" )
+            reply-form(:topicItemId="obj.topic_item.id")
 
-    .topic-item__row(v-if="obj.missingAfter" )
-      topic-load-more(direction="after" :obj="obj" :collection="collection" :index="index" :loader="loader")
-
+      .topic-item__row(v-if="obj.missingAfter" )
+        topic-load-more(direction="after" :obj="obj" :collection="collection" :index="index" :loader="loader")
     //.topic-item__row(v-if="obj.missingAfterCount && obj.topic_item.depth == 1" )
     //  v-btn(:to="endUrl + '?end'") Jump to end
 

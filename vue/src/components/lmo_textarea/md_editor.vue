@@ -205,7 +205,7 @@ div(style="position: relative")
       @paste="onPaste"
       @drop="onDrop"
       @dragover.prevent="onDragOver")
-    mention-notifications-count(:model="model" :handles="mentionHandles" :empty="editorEmpty")
+    mention-notifications-count(v-if="allowMentions" :model="model" :handles="mentionHandles" :empty="editorEmpty")
   formatted-text(v-if="preview" :model="model" :field="field")
   v-sheet.pa-4.my-4.poll-common-outcome-panel(v-if="preview && model[field].trim().length == 0" color="primary lighten-5" elevation="2")
     p(v-t="'common.empty'")
@@ -217,7 +217,7 @@ div(style="position: relative")
     v-spacer
     v-btn.mr-4(variant="text" size="small" @click="preview = !preview" v-t="previewAction")
     slot(name="actions")
-  suggestion-list(:query="query" :loading="fetchingMentions" :mentions="mentions" :positionStyles="suggestionListStyles" :navigatedUserIndex="navigatedUserIndex" showUsername @select-row="selectRow")
+  suggestion-list(v-if="allowMentions" :query="query" :loading="fetchingMentions" :mentions="mentions" :positionStyles="suggestionListStyles" :navigatedUserIndex="navigatedUserIndex" showUsername @select-row="selectRow")
 
   files-list(:files="files" v-on:removeFile="removeFile")
 

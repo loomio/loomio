@@ -179,8 +179,6 @@ export default new class TopicService {
         canPerform() {
           return !topic.discardedAt && topic.membersInclude(Session.user());
         },
-        disabled: () => this.exportHidesResults(topic),
-        disabledReason: 'action_dock.vote_before_export',
         perform() {
           const topicable = topic.topicable();
           if (topicable.isA('poll')) {
@@ -199,8 +197,6 @@ export default new class TopicService {
         canPerform() {
           return !topic.discardedAt && topic.membersInclude(Session.user());
         },
-        disabled: () => this.exportHidesResults(topic),
-        disabledReason: 'action_dock.vote_before_export',
         menu: [
           {
             name: 'action_dock.copy_markdown',
@@ -455,14 +451,6 @@ export default new class TopicService {
     return topic.saveUnpin().then(() => {
       return Flash.success("discussion.pin.unpinned", 'undo', () => this.pin(topic));
     });
-  }
-
-  // Exports show every vote, so they wait until the reader has voted in each
-  // open poll that hides results until then. The server applies the same rule.
-  exportHidesResults(topic) {
-    return Records.polls.find({topicId: topic.id, discardedAt: null}).some(poll =>
-      poll.hideResults === 'until_vote' && poll.openedAt && !poll.closedAt && !poll.iHaveVoted()
-    );
   }
 
   fetchMarkdown(topic) {

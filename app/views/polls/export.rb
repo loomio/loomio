@@ -19,8 +19,8 @@ class Views::Polls::Export < Views::Application::Component
       render Views::NotificationMailer::Poll::VotingPeriod.new(poll: @poll, recipient: @recipient)
       render Views::NotificationMailer::Poll::Vote.new(poll: @poll, recipient: @recipient)
       render Views::NotificationMailer::Poll::Rules.new(poll: @poll)
-      render Views::NotificationMailer::Poll::ResultsPanel.new(poll: @poll, current_user: @recipient)
-      render Views::NotificationMailer::Poll::Responses.new(topic_item: @poll.created_topic_item, recipient: @recipient)
+      render Views::NotificationMailer::Poll::ResultsPanel.new(poll: @poll, current_user: @recipient, for_export: true)
+      render Views::NotificationMailer::Poll::Responses.new(topic_item: @poll.created_topic_item, recipient: @recipient, for_export: true)
     end
   end
 end

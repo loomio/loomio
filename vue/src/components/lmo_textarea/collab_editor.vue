@@ -523,7 +523,7 @@ div.mb-2
             ref="editorContentRef"
             :editor="editor"
           )
-          mention-notifications-count(:model="model" :handles="mentionHandles" :empty="editorEmpty")
+          mention-notifications-count(v-if="allowMentions" :model="model" :handles="mentionHandles" :empty="editorEmpty")
     v-sheet.menubar.position-sticky.bottom-0
       .d-flex.align-center.pt-2(v-if="editor.isActive('table')")
         v-btn(v-bind="btnProps" @click="editor.chain().deleteTable().focus().run()" :title="$t('formatting.remove_table')")

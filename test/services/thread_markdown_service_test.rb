@@ -194,7 +194,7 @@ class ThreadMarkdownServiceTest < ActiveSupport::TestCase
     end
   end
 
-  test "until vote rendering is hidden from non-voters and visible to voters" do
+  test "until vote exports include votes and replies for non-voters and voters" do
     discussion = create_discussion
     poll = PollService.create(
       params: {
@@ -212,13 +212,15 @@ class ThreadMarkdownServiceTest < ActiveSupport::TestCase
     stance.reason = 'Visible after voting.'
     StanceService.create(stance: stance, actor: @member)
 
+    CommentService.create(comment: Comment.new(parent: stance, body: 'Early conversation'), actor: @member)
+
     hidden_markdown = render(discussion.topic, user: @admin)
     visible_markdown = render(discussion.topic, user: @member)
 
-    assert_includes hidden_markdown, '_Hidden until the viewer votes._'
-    refute_includes hidden_markdown, 'Visible after voting.'
-    # Like the thread, the vote item names the voter but not their choice.
-    assert_match(/^> \*\*#{@member.name}\*\* voted · [^\n]+ · #\d+$/, hidden_markdown)
+    refute_includes hidden_markdown, '_Hidden until the viewer votes._'
+    assert_includes hidden_markdown, 'Visible after voting.'
+    assert_includes hidden_markdown, 'Early conversation'
+    assert_match(/^> \*\*#{@member.name}\*\* voted \*\*Agree\*\* · [^\n]+ · #\d+$/, hidden_markdown)
     assert_includes visible_markdown, 'Visible after voting.'
   end
 

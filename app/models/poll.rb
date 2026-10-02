@@ -266,6 +266,7 @@ class Poll < ApplicationRecord
     :attachments]
 
   after_commit :update_group_counter_caches
+  after_save_commit -> { ReindexPollWorker.perform_later(id) }
   after_update :synchronize_stance_weights_after_vote_weights_change
 
   # Switching vote weights resets issued stances, including cast votes, so
@@ -560,12 +561,6 @@ class Poll < ApplicationRecord
   # presentation rule. Until-closed polls remain protected at the backend.
   def results_available?
     hide_results != 'until_closed' || closed_at.present?
-  end
-
-  # True when everyone who can see the poll can see its results, regardless of
-  # whether they have voted.
-  def results_visible_to_all?
-    hide_results == 'off' || closed_at.present?
   end
 
   # Server-rendered output must apply the recipient-specific until-vote rule.

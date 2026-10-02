@@ -102,8 +102,6 @@ class PollService
 
       was_opened = open_poll_if_ready(poll)
 
-      ReindexPollWorker.perform_later(poll.id)
-
       PollGroupMembersAddedWorker.perform_later(poll.group_id) if poll.group_id
 
       users = UserInviter.where_or_create!(
@@ -334,7 +332,6 @@ class PollService
       poll.topic.update_sequence_info!
     end
 
-    ReindexPollWorker.perform_later(poll.id)
     MessageChannelService.publish_models([poll.created_topic_item], scope: {current_user: actor, current_user_id: actor.id}, group_id: poll.group_id)
     on_topic_item&.call(poll.created_topic_item)
     poll
@@ -482,7 +479,6 @@ class PollService
         poll.update!(closed_at: Time.current)
         poll.update_counts!
         poll.topic.update_active_polls_count
-        ReindexPollWorker.perform_later(poll.id)
         next
       end
 
@@ -513,8 +509,6 @@ class PollService
       if poll.poll_type == 'stv'
         poll.save!  # persist stv_results in custom_fields
       end
-
-      ReindexPollWorker.perform_later(poll.id)
     end
   end
 

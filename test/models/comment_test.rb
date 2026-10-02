@@ -9,19 +9,36 @@ class CommentTest < ActiveSupport::TestCase
     @discussion = discussions(:discussion)
   end
 
-  test "replies to votes wait until the poll's results are visible to everyone" do
-    %w[until_vote until_closed].each do |hide_results|
-      stance = cast_vote_in_new_poll(hide_results: hide_results)
+  test "creating vote replies does not require the author to have voted" do
+    stance = cast_vote_in_new_poll(hide_results: 'until_vote')
+    reply = CommentService.create(comment: Comment.new(parent: stance, body: 'Conversation after voting'), actor: @user)
+    assert_predicate reply, :persisted?
 
-      own_reply = Comment.new(parent: stance, body: "Replying to my own vote", author: @user)
-      other_reply = Comment.new(parent: stance, body: "Replying to their vote", author: @admin)
-      refute own_reply.valid?, "#{hide_results}: voter could reply to their own hidden vote"
-      refute other_reply.valid?, "#{hide_results}: member could reply to a hidden vote"
-      assert_includes own_reply.errors.details[:parent], {error: :invalid}
+    refute stance.poll.stances.latest.decided.exists?(participant_id: @admin.id)
+    direct = CommentService.create(comment: Comment.new(parent: stance, body: 'Before voting'), actor: @admin)
+    assert_predicate direct, :persisted?
+    nested = CommentService.create(comment: Comment.new(parent: reply, body: 'Nested before voting'), actor: @admin)
+    assert_predicate nested, :persisted?
+    refute_includes Comment.hidden_until_closed, nested
+  end
 
-      PollService.close(poll: stance.poll, actor: @admin)
-      assert Comment.new(parent: stance.reload, body: "After closing", author: @admin).valid?, "#{hide_results}: reply blocked after closing"
+  test "until closed search and export scope includes all poll comments at maximum depth" do
+    stance = cast_vote_in_new_poll(hide_results: 'off')
+    reply = CommentService.create(comment: Comment.new(parent: stance, body: 'First reply'), actor: @user)
+    nested = CommentService.create(comment: Comment.new(parent: reply, body: 'Second reply'), actor: @admin)
+    deep = CommentService.create(comment: Comment.new(parent: nested, body: 'Third reply'), actor: @user)
+    direct = CommentService.create(comment: Comment.new(parent: stance.poll, body: 'Direct poll comment'), actor: @user)
+    ordinary = CommentService.create(comment: Comment.new(parent: @discussion, body: 'Ordinary discussion'), actor: @user)
+    stance.poll.update!(hide_results: 'until_closed')
+
+    [reply, nested, deep, direct].each do |comment|
+      assert_includes Comment.hidden_until_closed, comment
+      assert @user.can?(:show, comment)
     end
+    refute_includes Comment.hidden_until_closed, ordinary
+    assert Comment.new(parent: deep, body: 'Hidden nested reply', author: @user).valid?
+    PollService.close(poll: stance.poll, actor: @admin)
+    assert_empty Comment.hidden_until_closed
   end
 
   test "replies to votes are allowed when results are always visible" do

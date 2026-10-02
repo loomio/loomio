@@ -19,8 +19,7 @@ module Ability::Poll
     can [:export], ::Poll do |poll|
       next false unless user.can?(:show, poll)
 
-      voted = poll.stances.latest.decided.exists?(participant_id: user.id)
-      poll.results_visible?(voted: voted)
+      poll.results_available?
     end
 
     # The anonymous electorate is visible to everyone who can see the results.

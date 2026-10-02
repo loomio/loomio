@@ -60,7 +60,7 @@ class Api::V1::TopicsControllerTest < ActionController::TestCase
     refute_includes response.body, "Private markdown security marker"
   end
 
-  test "markdown waits until the reader votes in an open poll that hides results until voting" do
+  test "markdown is available before the reader votes" do
     poll = PollService.create(
       params: {topic_id: @topic.id, title: "Hidden until vote", poll_type: "proposal",
                poll_option_names: ["Agree", "Disagree"], closing_at: 3.days.from_now, hide_results: "until_vote"},
@@ -69,7 +69,7 @@ class Api::V1::TopicsControllerTest < ActionController::TestCase
     sign_in @user
 
     get :markdown, params: {id: @topic.id}
-    assert_response :forbidden
+    assert_response :success
 
     stance = poll.stances.latest.find_by!(participant_id: @user.id)
     stance.choice = "Agree"

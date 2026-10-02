@@ -13,7 +13,6 @@ class ThreadMarkdownService
   def initialize(topic, user)
     @topic = topic
     @user = user
-    @poll_results_visible = {}
   end
 
   def render
@@ -79,6 +78,7 @@ class ThreadMarkdownService
     items = topic.items
       .where(kind: %w[new_comment poll_created stance_created stance_updated outcome_created])
       .where.not(position_key: nil)
+      .where.not(itemable_type: 'Comment', itemable_id: Comment.hidden_until_closed.select(:id))
       .includes(:itemable)
       .order(:position_key)
       .to_a
@@ -129,8 +129,8 @@ class ThreadMarkdownService
     end
   end
 
-  # Mirrors the thread's vote item: the voter and time are always shown, the
-  # choice and reason only when the reader can see the poll's results.
+  # Exports ignore the until-vote presentation rule, but never reveal results
+  # or the conversation beneath votes in an open until-closed poll.
   def stance_markdown(item, stance)
     author = author_label(stance)
     return item_header(item, t(:vote_removed, author: author)) if stance.revoked_at.present?
@@ -205,10 +205,7 @@ class ThreadMarkdownService
   end
 
   def poll_results_visible?(poll)
-    return @poll_results_visible[poll.id] if @poll_results_visible.key?(poll.id)
-
-    voted = poll.stances.latest.decided.exists?(participant_id: user.id)
-    @poll_results_visible[poll.id] = poll.results_visible?(voted: voted)
+    poll.results_available?
   end
 
   # Reactions grouped by emoji, each with the sorted names of who reacted.

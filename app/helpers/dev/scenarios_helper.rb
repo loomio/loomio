@@ -43,6 +43,23 @@ module Dev::ScenariosHelper
     }
   end
 
+  def poll_vote_conversation_scenario(params)
+    scenario = poll_created_scenario(params.merge(hide_results: 'off'))
+    poll = scenario[:poll]
+    actor = scenario[:actor]
+    poll.topic.update!(max_depth: 2)
+    stance = poll.stances.latest.find_by!(participant: actor)
+    StanceService.update(stance: stance, actor: actor,
+      params: {choice: poll.poll_options.first.name, reason: 'A vote ready for conversation'})
+    reply = CommentService.create(comment: Comment.new(parent: stance, body: 'Existing reply under the vote'), actor: actor)
+    CommentService.create(comment: Comment.new(parent: reply, body: 'Nested reply under the vote'), actor: actor)
+    CommentService.create(comment: Comment.new(parent: poll, body: 'Direct comment under the poll'), actor: actor)
+    CommentService.create(comment: Comment.new(parent: scenario[:discussion], body: 'Discussion comment outside the poll'), actor: actor)
+    # Until-closed polls can contain conversations created before settings changed.
+    poll.update!(hide_results: params[:hide_results])
+    scenario
+  end
+
   def poll_none_of_the_above_scenario(params)
     scenario = poll_created_scenario(params.merge(poll_type: "poll"))
     poll = scenario[:poll]

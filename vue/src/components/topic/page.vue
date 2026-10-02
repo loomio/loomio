@@ -184,7 +184,7 @@ function fetchInitialContent() {
     let scrolledToUnread = false;
     watchRecords({
       key: 'topic' + topic.value.id,
-      collections: ['topic_items'],
+      collections: ['topic_items', 'polls', 'stances'],
       query: () => {
         if (!loader.value) { return; }
         loader.value.updateCollection();

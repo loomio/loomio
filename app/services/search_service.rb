@@ -115,12 +115,15 @@ class SearchService
   end
 
   def self.reindex_by_poll_id(poll_id)
+    comment_ids = Comment.under_polls(Poll.where(id: poll_id)).select(:id)
+    PgSearch::Document.where(searchable_type: 'Comment', searchable_id: comment_ids).delete_all
     PgSearch::Document.where(poll_id: poll_id).delete_all
 
     [
       Poll.pg_search_insert_statement(id: poll_id),
       Stance.pg_search_insert_statement(poll_id: poll_id),
-      Outcome.pg_search_insert_statement(poll_id: poll_id)
+      Outcome.pg_search_insert_statement(poll_id: poll_id),
+      Comment.pg_search_insert_statement(poll_id: poll_id)
     ].each do |statement|
       ActiveRecord::Base.connection.execute(statement)
     end

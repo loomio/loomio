@@ -10,7 +10,7 @@ class Comment < ApplicationRecord
   include HasRichText
   include Searchable
 
-  def self.pg_search_insert_statement(id: nil, author_id: nil, topic_id: nil)
+  def self.pg_search_insert_statement(id: nil, author_id: nil, topic_id: nil, poll_id: nil)
     content_str = "regexp_replace(CONCAT_WS(' ', comments.body, users.name), E'<[^>]+>', '', 'gi')"
     <<~SQL.squish
       INSERT INTO pg_search_documents (
@@ -45,6 +45,7 @@ class Comment < ApplicationRecord
         LEFT JOIN polls ON polls.id = topics.topicable_id AND topics.topicable_type = 'Poll'
         LEFT JOIN users ON users.id = comments.user_id
       WHERE comments.discarded_at IS NULL
+        AND comments.id NOT IN (#{hidden_until_closed.select(:id).to_sql})
         AND topics.discarded_at IS NULL
         AND (
           (topics.topicable_type = 'Discussion' AND discussions.discarded_at IS NULL) OR
@@ -53,6 +54,7 @@ class Comment < ApplicationRecord
         #{id ? " AND comments.id = #{id.to_i} LIMIT 1" : ""}
         #{author_id ? " AND comments.user_id = #{author_id.to_i}" : ""}
         #{topic_id ? " AND topic_items.topic_id = #{topic_id.to_i}" : ""}
+        #{poll_id ? " AND comments.id IN (#{under_polls(Poll.where(id: poll_id)).select(:id).to_sql})" : ""}
     SQL
   end
 
@@ -68,7 +70,6 @@ class Comment < ApplicationRecord
   validates_presence_of :user, unless: :discarded_at
 
   validate :parent_cannot_change, on: :update
-  validate :parent_vote_results_visible_to_all, on: :create
   validate :has_body_or_attachment
   validate :body_within_topic_limit
 
@@ -118,6 +119,23 @@ class Comment < ApplicationRecord
     edited_at.present?
   end
 
+  # Exports and search omit the same poll conversations that the timeline hides.
+  def self.hidden_until_closed
+    under_polls(Poll.where(hide_results: :until_closed, closed_at: nil))
+  end
+
+  # Position-key prefixes include the whole conversation even at capped depth.
+  def self.under_polls(polls)
+    where("comments.id IN (#{<<~SQL.squish})")
+      SELECT topic_items.itemable_id FROM topic_items
+      INNER JOIN topic_items poll_items ON poll_items.topic_id = topic_items.topic_id
+        AND topic_items.position_key LIKE poll_items.position_key || '-%'
+      WHERE topic_items.itemable_type = 'Comment'
+        AND poll_items.kind = 'poll_created' AND poll_items.itemable_type = 'Poll'
+        AND poll_items.itemable_id IN (#{polls.select(:id).to_sql})
+    SQL
+  end
+
   private
 
   def has_body_or_attachment
@@ -136,15 +154,6 @@ class Comment < ApplicationRecord
 
   def body_blank?
     body.to_s.empty? || body.to_s == "<p></p>"
-  end
-
-  # A reply is visible to everyone in the thread, so replying to a vote whose
-  # results are still hidden from some readers would reveal it through the
-  # reply. Such votes take replies once the poll closes.
-  def parent_vote_results_visible_to_all
-    return unless parent.is_a?(Stance)
-
-    errors.add(:parent, :invalid) unless parent.poll.results_visible_to_all?
   end
 
   def parent_cannot_change
