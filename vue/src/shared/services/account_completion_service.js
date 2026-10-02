@@ -3,7 +3,7 @@ import Session from '@/shared/services/session';
 
 export default new class AccountCompletionService {
   required(user = Session.user()) {
-    return !user.name || user.legalAcceptanceRequired;
+    return !(user.name || '').trim() || user.legalAcceptanceRequired;
   }
 
   maybeOpen() {

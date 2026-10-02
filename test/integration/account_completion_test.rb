@@ -102,6 +102,55 @@ class AccountCompletionTest < ActionDispatch::IntegrationTest
     assert_nil user.reload[:name]
   end
 
+  test 'a legacy session can complete its own missing name after page boot' do
+    user = User.create!(email: 'legacy-name@example.com', name: 'Legacy Person', email_verified: true, legal_accepted: true)
+    token = LoginToken.create!(user: user)
+    get '/dashboard'
+    post '/api/v1/sessions', params: { user: { email: user.email, code: token.code } }, headers: csrf_headers, as: :json
+    assert_response :success
+    session_record = user.sessions.sole
+    user.update_columns(name: nil, legal_accepted_at: nil)
+
+    get '/api/v1/boot/site', as: :json
+    assert_response :success
+    assert_equal user.id, response.parsed_body['current_user_id']
+    profile = response.parsed_body.fetch('users').find { |record| record['id'] == user.id }
+    assert_nil profile['name']
+    assert_equal false, profile['legal_acceptance_required']
+
+    [nil, '', " \t "].each do |name|
+      post '/api/v1/profile/update_profile', params: { user: { name: name } }, headers: csrf_headers, as: :json
+      assert_response :unprocessable_entity
+      assert_nil user.reload.name
+    end
+
+    post '/api/v1/profile/update_profile', params: { user: { name: 'Unauthorized Person' } }, as: :json
+    assert_response :unprocessable_entity
+    assert_nil user.reload.name
+
+    other = users(:alien)
+    name_previous = other.name
+    post '/api/v1/profile/update_profile', params: { user: { id: other.id, name: 'Injected Person' } }, headers: csrf_headers, as: :json
+    assert_response :bad_request
+    assert_nil user.reload.name
+    assert_equal name_previous, other.reload.name
+
+    assert_no_difference ['Session.count', 'AccountCompletionProof.count'] do
+      post '/api/v1/profile/update_profile', params: { id: other.id, user: { name: 'Returning Person' } }, headers: csrf_headers, as: :json
+    end
+    assert_response :success
+    assert_equal 'Returning Person', user.reload.name
+    assert_nil user.legal_accepted_at
+    assert_equal name_previous, other.reload.name
+    assert Session.exists?(session_record.id)
+
+    get '/api/v1/boot/site', as: :json
+    assert_response :success
+    profile = response.parsed_body.fetch('users').find { |record| record['id'] == user.id }
+    assert_equal 'Returning Person', profile['name']
+    assert_equal false, profile['legal_acceptance_required']
+  end
+
   private
 
   def csrf_headers

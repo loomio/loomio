@@ -128,6 +128,14 @@ module Dev::Scenarios::Auth
     redirect_to dashboard_path
   end
 
+  def setup_legacy_session_without_name
+    user = User.create!(email: 'legacy-name@example.com', name: 'Legacy Person', email_verified: true)
+    sign_in user
+    # Simulate a session created before sign-in required a complete profile.
+    user.update_columns(name: params[:name], legal_accepted_at: nil)
+    redirect_to dashboard_path
+  end
+
   def setup_login_token_user_with_passkey
     user = User.create!(
       email: 'passkey-user@example.com',

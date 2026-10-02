@@ -195,6 +195,28 @@ module.exports = {
     page.expectNoElement('.account-completion')
   },
 
+  'asks_legacy_sessions_for_a_name_on_page_boot': (test) => {
+    const page = pageHelper(test)
+
+    for (const name of [null, '', '   ']) {
+      const query = name === null ? '' : `?name=${encodeURIComponent(name)}`
+      page.loadPath(`setup_legacy_session_without_name${query}`)
+      page.expectElement('.account-completion')
+      page.expectNoElement('.auth-modal')
+      page.expectNoElement('.account-completion__legal-accepted')
+      test.expect.element('.account-completion__submit').to.not.be.enabled
+      page.refreshAndWait()
+      page.expectElement('.account-completion')
+      page.fillIn('.account-completion__name input', 'Returning Person')
+      page.click('.account-completion__submit')
+      page.expectNoElement('.account-completion')
+      page.refreshAndWait()
+      page.expectNoElement('.account-completion')
+      page.goTo('profile')
+      page.expectValue('.profile-page__name-input input', 'Returning Person')
+    }
+  },
+
   'offers_password_and_passkey_after_code_sign_in_when_account_has_a_passkey': (test) => {
     page = pageHelper(test)
     addVirtualPasskeyAuthenticator(test)
