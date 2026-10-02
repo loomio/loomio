@@ -16,6 +16,7 @@ module Docs
     ROOT = Pathname(__dir__).parent.freeze
     URL_ROOT = "/docs-screenshots"
     HOSTED_ROOT = "https://user-manual-screenshots.loomio.com"
+    BUCKET = "user-manual-screenshots"
 
     def self.catalog
       @catalog ||= begin
@@ -50,6 +51,30 @@ module Docs
         end
       end
       result
+    end
+
+    # Publish existing local captures, then their generation metadata. A failed
+    # image upload must leave the previous hosted manifest in place. The cf
+    # development mode loads credentials from the project's ignored local env.
+    def self.publish(locale, recipes, directory)
+      directory = Pathname(directory)
+      recipes.each do |recipe|
+        key = "#{locale}/#{recipe.fetch('image')}"
+        return false unless system("cf", "r2", "objects", "put", key,
+          "--bucket-name", BUCKET, "--file", directory.join(key).to_s,
+          "--content-type", "image/png", "--quiet", "--mode", "development", chdir: ROOT.to_s)
+      end
+
+      manifest = JSON.parse(directory.join(".generation.json").read)
+      entries = manifest.select { |key, _| key.start_with?("#{locale}/") }
+      entries.transform_values! { |entry| entry.slice("generated_at") }
+      Tempfile.create(["screenshot-manifest-", ".json"]) do |file|
+        file.write(JSON.pretty_generate(entries) + "\n")
+        file.flush
+        system("cf", "r2", "objects", "put", "#{locale}/.generation.json",
+          "--bucket-name", BUCKET, "--file", file.path,
+          "--content-type", "application/json", "--quiet", "--mode", "development", chdir: ROOT.to_s)
+      end
     end
 
     class Cache

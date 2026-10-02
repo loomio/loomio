@@ -6,15 +6,17 @@ require "optparse"
 require_relative "../docs/localization"
 require_relative "../docs/screenshots"
 
-options = {output: Docs::Screenshots::ROOT.join("public/docs-screenshots"), refresh: false, status: false}
+options = {output: Docs::Screenshots::ROOT.join("public/docs-screenshots"), refresh: false, status: false, publish: false}
 parser = OptionParser.new do |args|
   args.banner = "Usage: bin/docs-screenshots <locale,...|all> [image-or-directory...] [options]"
   args.on("--output DIRECTORY", "Cache directory (default: public/docs-screenshots)") { |value| options[:output] = value }
   args.on("--status", "Report missing/present images without generating") { options[:status] = true }
   args.on("--refresh", "Regenerate every selected image at its existing path") { options[:refresh] = true }
+  args.on("--publish", "Upload selected captures to R2 using local development credentials") { options[:publish] = true }
   args.on("-h", "--help") { puts args; exit }
 end
 parser.parse!
+abort "--status cannot be combined with --publish" if options[:status] && options[:publish]
 selection = ARGV.shift or abort parser.to_s
 locales = selection == "all" ? Docs::Localization.locales.select(&:published) : selection.split(",").map { |code| Docs::Localization.locale(code) }
 abort "English screenshots use bin/e2e-screenshots" if locales.any? { |locale| locale.code == "en" }
@@ -80,3 +82,8 @@ else
   end
 end
 abort "Capture failed for #{failures.join(', ')}; completed images were kept" if failures.any?
+if options[:publish]
+  locales.each do |locale|
+    abort "Publishing failed for #{locale.code}" unless Docs::Screenshots.publish(locale.code, recipes, options[:output])
+  end
+end

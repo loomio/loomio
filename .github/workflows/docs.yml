@@ -39,7 +39,6 @@ jobs:
         run: |
           bundle exec ruby -Itest -e 'Dir["test/docs/*_test.rb"].sort.each { |file| require_relative file }'
           node --test test/docs/screenshot_fallback_test.cjs
-          bash test/scripts/manual_screenshots_ci_test
       - name: Check published translations without calling a model
         run: bundle exec ruby docs/sync_translations.rb --check
       - name: Build and validate the documentation site
