@@ -9,6 +9,31 @@ vi.mock('@/shared/services/session', () => ({
 }));
 
 import AbilityService from '@/shared/services/ability_service';
+import NullGroupModel from '@/shared/models/null_group_model';
+
+describe('AbilityService.canCreateTags', () => {
+  it.each([
+    ['ordinary member with creation disabled', false, false, false, true, false],
+    ['ordinary member with creation enabled', false, false, true, true, true],
+    ['nonmember with creation enabled', false, false, true, false, false],
+    ['parent group administrator', true, false, false, false, true],
+    ['subgroup administrator', false, true, false, true, true]
+  ])('checks tag creation for %s', (_role, parentAdmin, groupAdmin, enabled, member, allowed) => {
+    const parent = {adminsInclude: () => parentAdmin};
+    const group = {
+      parentOrSelf: () => parent,
+      adminsInclude: () => groupAdmin,
+      membersInclude: () => member,
+      membersCanCreateTags: enabled
+    };
+
+    expect(AbilityService.canCreateTags(group)).toBe(allowed);
+  });
+
+  it('returns false for the null group', () => {
+    expect(AbilityService.canCreateTags(new NullGroupModel())).toBe(false);
+  });
+});
 
 describe('AbilityService.canMoveTopicItems', () => {
   let group;

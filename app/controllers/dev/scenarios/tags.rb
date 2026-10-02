@@ -1,4 +1,14 @@
 module Dev::Scenarios::Tags
+  def setup_member_discussion_with_restricted_tags
+    group = create_group
+    group.update!(members_can_create_tags: false)
+    group.tags.create!(name: 'Existing', color: '#1565c0')
+    group.tags.create!(name: 'Other', color: '#2e7d32')
+    template = DiscussionTemplate.create!(group: group, author: patrick, process_name: 'Tagged thread', process_subtitle: 'Start a thread with an existing tag', tags: ['Existing'])
+    sign_in emilio
+    redirect_to "/d/new?template_id=#{template.id}&group_id=#{group.id}"
+  end
+
   def setup_discussion_with_tag
     tag = Tag.create(name: "Tag Name", color: "#cccccc", group: create_discussion.group)
     sign_in patrick

@@ -89,6 +89,12 @@ export default new class AbilityService {
     return group.isEnabled() && group.parentOrSelf().adminsInclude(Session.user());
   }
 
+  canCreateTags(group) {
+    return group.parentOrSelf().adminsInclude(user()) ||
+      group.adminsInclude(user()) ||
+      !!(group.membersCanCreateTags && group.membersInclude(user()));
+  }
+
   canPinEvent(topic_item) {
     const topic = topic_item.topic();
     return (topic_item.depth === 1) &&

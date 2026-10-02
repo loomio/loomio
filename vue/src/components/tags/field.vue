@@ -1,60 +1,50 @@
-<script lang="js">
-import Session from '@/shared/services/session';
-import EventBus from '@/shared/services/event_bus';
+<script setup lang="js">
+import { ref, watch, onMounted } from 'vue';
+import { useI18n } from 'vue-i18n';
+import { VAutocomplete, VCombobox } from 'vuetify/components';
 import { uniq } from 'lodash-es';
+import AbilityService from '@/shared/services/ability_service';
+import { useWatchRecords } from '@/composables/useWatchRecords';
 
-export default {
-  props: {
-    model: Object
-  },
+const { model } = defineProps({ model: Object });
+const { t } = useI18n();
+const { watchRecords } = useWatchRecords();
+const items = ref([]);
+const canCreateTags = ref(false);
 
-  data() {
-    return {items: []};
-  },
+// Memberships and group permissions can arrive after the form mounts. Refresh
+// from the record store so the field uses the same permissions as the server.
+function refresh() {
+  const group = model.group();
+  items.value = uniq(group.tags().map(tag => tag.name));
+  canCreateTags.value = !model.groupId || AbilityService.canCreateTags(group);
+}
 
-  mounted() {
-    return this.query();
-  },
+function colorFor(name) {
+  return model.group().tags().find(tag => tag.name === name)?.color;
+}
 
-  methods: {
-    query() {
-      this.items = uniq(this.model.group().tags().map(t => t.name));
-    },
-
-    colorFor(name) {
-      return (this.model.group().tags().find(t => t.name === name) || {}).color;
-    },
-
-    remove(name) {
-      this.model.tags.splice(this.model.tags.indexOf(name), 1);
-    }
-  },
-
-  watch: {
-    'model.groupId': 'query'
-  },
-
-  computed: {
-    actor() {
-      return Session.user();
-    }
-  }
-};
-
+watch(() => model.groupId, refresh, { immediate: true });
+onMounted(() => {
+  watchRecords({
+    key: 'tagsField',
+    collections: ['tags', 'groups', 'memberships'],
+    query: refresh
+  });
+});
 </script>
 
 <template lang="pug">
-v-combobox.tags-field__input(
+component.tags-field__input(
+  :is="canCreateTags ? VCombobox : VAutocomplete"
   multiple
-  v-model='model.tags'
-  :label="$t('loomio_tags.tags')"
-  :items='items'
+  chips
+  closable-chips
+  :return-object="false"
+  v-model="model.tags"
+  :label="t('loomio_tags.tags')"
+  :items="items"
   )
-  template(v-slot:selection='{ item }')
-    v-chip.chip--select-multi(
-      :key="item"
-      closable
-      :color='colorFor(item)'
-      @click:close='remove(item)') {{ item }}
-
+  template(v-slot:chip="{ internalItem, props: chipProps }")
+    v-chip.chip--select-multi(v-bind="chipProps" :color="colorFor(internalItem.value)") {{ internalItem.title }}
 </template>

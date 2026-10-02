@@ -1,7 +1,7 @@
 <script setup lang="js">
 import Records from '@/shared/services/records';
 import Flash from '@/shared/services/flash';
-import Session from '@/shared/services/session';
+import AbilityService from '@/shared/services/ability_service';
 import { useWatchRecords } from '@/composables/useWatchRecords';
 import { ref, computed, onMounted } from 'vue';
 
@@ -135,9 +135,7 @@ onMounted(() => {
 const canCreateTags = computed(() => {
   if (!usableGroup(tagGroup.value)) { return false; }
 
-  return tagGroup.value.parentOrSelf().adminsInclude(Session.user()) ||
-    tagGroup.value.adminsInclude(Session.user()) ||
-    (tagGroup.value.membersCanCreateTags && tagGroup.value.membersInclude(Session.user()));
+  return AbilityService.canCreateTags(tagGroup.value);
 });
 
 function tagVisibleInCurrentGroup(tag) {

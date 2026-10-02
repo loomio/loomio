@@ -11,6 +11,44 @@ class Api::V1::DiscussionsControllerTest < ActionController::TestCase
   end
 
   # Test create action
+  test "members can start discussions with existing tags when tag creation is disabled" do
+    group = topics(:discussion_topic).group
+    group.update!(members_can_create_tags: false)
+    Tag.create!(group: group, name: 'Existing')
+    sign_in users(:member_normal)
+
+    assert_difference ['Discussion.count', 'Topic.count'], 1 do
+      post :create, params: { discussion: { title: 'Tagged discussion', group_id: group.id, tags: ['Existing'] } }
+    end
+
+    assert_response :success
+    discussion = Discussion.find(response.parsed_body['discussions'][0]['id'])
+    assert_equal ['Existing'], discussion.topic.tags
+  end
+
+  test "members cannot inject new tags while starting discussions when tag creation is disabled" do
+    group = topics(:discussion_topic).group
+    group.update!(members_can_create_tags: false)
+    sign_in users(:member_normal)
+
+    assert_no_difference ['Discussion.count', 'Topic.count', 'Tag.count', 'TopicItem.count'] do
+      post :create, params: { discussion: { title: 'Injected tag', group_id: group.id, tags: ['New tag'] } }
+    end
+
+    assert_response :forbidden
+  end
+
+  test "group admins can create tags while starting discussions when member tag creation is disabled" do
+    @group.update!(members_can_create_tags: false)
+    sign_in @admin
+
+    post :create, params: { discussion: { title: 'Admin tags', group_id: @group.id, tags: ['New tag'] } }
+
+    assert_response :success
+    discussion = Discussion.find(response.parsed_body['discussions'][0]['id'])
+    assert_equal ['New tag'], discussion.topic.tags
+  end
+
   test "create discussion in group with no recipient notification" do
     sign_in @user
 
