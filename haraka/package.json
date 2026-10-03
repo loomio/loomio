@@ -29,7 +29,7 @@
       "mailauth": "4.13.3"
     },
     "joi": "18.2.9",
-    "nodemailer": "9.1.1",
-    "undici": "7.29.0"
+    "nodemailer": "10.0.13",
+    "undici": "7.30.0"
   }
 }
