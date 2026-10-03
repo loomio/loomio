@@ -8,6 +8,7 @@ class RecordCache
     topic_readers_by_topic_id
     undecided_voter_ids_by_poll_id
     none_of_the_above_voter_ids_by_poll_id
+    change_notes_by_topic_item_id
   ].freeze
 
   LOADERS = {
@@ -128,12 +129,34 @@ class RecordCache
     scope[:topic_items_by_id] ||= {}
     scope[:topic_items_by_kind_and_itemable_id] ||= {}
 
+    edited_items = {}
+    cached_notes = scope[:change_notes_by_topic_item_id]
     collection.each do |topic_item|
       @user_ids.push topic_item.user_id if topic_item.user_id
       scope[:topic_items_by_id][topic_item.id] = topic_item
       scope[:topic_items_by_kind_and_itemable_id][topic_item.kind] ||= {}
       scope[:topic_items_by_kind_and_itemable_id][topic_item.kind][topic_item.itemable_id] = topic_item
+
+      if TopicItem::CHANGE_NOTE_KINDS.include?(topic_item.kind) && !cached_notes&.key?(topic_item.id)
+        edited_items[topic_item.id] = topic_item
+      end
     end
+
+    if edited_items.any?
+      # Batch only uncached edit notes, including known missing notes. Ordinary
+      # timeline items need neither this query nor a note cache allocation.
+      # Store only the note, never the notification or its private recipients.
+      add_known_missing(:change_notes_by_topic_item_id, edited_items.keys)
+      Notification.where(subject_type: 'TopicItem', subject_id: edited_items.keys,
+                         kind: TopicItem::CHANGE_NOTE_KINDS)
+                  .order(:id).pluck(:subject_id, :kind, :actor_id, :recipient_message).each do |id, kind, actor_id, note|
+        item = edited_items.fetch(id)
+        next unless item.kind == kind && item.user_id == actor_id
+
+        scope[:change_notes_by_topic_item_id][id] ||= note
+      end
+    end
+    collection
   end
 
   def add_itemables(collection)

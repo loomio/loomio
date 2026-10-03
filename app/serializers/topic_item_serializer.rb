@@ -1,7 +1,7 @@
 class TopicItemSerializer < ApplicationSerializer
   attributes :id, :sequence_id, :position, :depth, :child_count, :kind,
     :topic_id, :created_at, :itemable_id, :itemable_type,
-    :pinned, :pinned_title, :parent_id, :actor_id, :position_key
+    :pinned, :pinned_title, :parent_id, :actor_id, :position_key, :change_note
 
   has_one :actor, serializer: AuthorSerializer, root: :users
   has_one :topic, serializer: TopicSerializer, root: :topics
@@ -10,6 +10,14 @@ class TopicItemSerializer < ApplicationSerializer
 
   def parent
     cache_fetch(:topic_items_by_id, object.parent_id) { object.parent }
+  end
+
+  def change_note
+    cache_fetch(:change_notes_by_topic_item_id, object.id) { object.change_note }
+  end
+
+  def include_change_note?
+    TopicItem::CHANGE_NOTE_KINDS.include?(object.kind)
   end
 
   def include_itemable?

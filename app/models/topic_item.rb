@@ -1,4 +1,6 @@
 class TopicItem < ApplicationRecord
+  CHANGE_NOTE_KINDS = %w[discussion_edited poll_edited].freeze
+
   include ActionView::Helpers::SanitizeHelper
   include CustomCounterCache::Model
   include PrettyUrlHelper
@@ -53,6 +55,14 @@ class TopicItem < ApplicationRecord
 
   def actor_id
     user_id
+  end
+
+  # Edit notes belong to this timeline occurrence. Other notification messages
+  # and recipient metadata are private to their delivery workflow.
+  def change_note
+    return unless CHANGE_NOTE_KINDS.include?(kind)
+
+    notifications.where(kind: kind, actor_id: user_id).order(:id).pick(:recipient_message)
   end
 
   # A direct notification owns external delivery for its selected users, so

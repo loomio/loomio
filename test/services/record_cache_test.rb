@@ -276,6 +276,77 @@ class RecordCacheTest < ActiveSupport::TestCase
     assert_equal RecordCache::Loaders::TopicItem, RecordCache.loader_for(item)
   end
 
+  test 'ordinary timeline items do not query notifications or allocate a note cache' do
+    item = topic_items(:discussion_created_topic_item)
+    cache = nil
+    queries = capture_sql do
+      cache = RecordCache.for_collection([item], users(:admin).id)
+      MessageChannelService.serialize_models([item], scope: {cache: cache}).to_json
+    end
+
+    assert_empty queries.select { |sql| sql.include?('FROM "notifications"') }
+    assert_not cache.scope.key?(:change_notes_by_topic_item_id)
+  end
+
+  test 'edit history batches notes once and serialization never queries each notification' do
+    items = create_change_note_items(30)
+    [items.take(1), items].each do |page|
+      cache = nil
+      queries = capture_sql do
+        cache = RecordCache.for_collection(page, users(:admin).id)
+      end
+      assert_equal 1, queries.count { |sql| sql.include?('FROM "notifications"') }
+
+      serialization_queries = capture_sql do
+        @serialized_items = JSON.parse(MessageChannelService.serialize_models(page, scope: {cache: cache}).to_json).fetch('topic_items')
+      end
+      assert_empty serialization_queries.select { |sql| sql.include?('FROM "notifications"') }
+      page.each_with_index do |item, index|
+        record = @serialized_items.find { |candidate| candidate['id'] == item.id }
+        assert_equal "Edit note #{index}", record.fetch('change_note')
+      end
+    end
+  end
+
+  test 'reloading overlapping edit batches does not refetch cached or missing notes' do
+    items = create_change_note_items(3)
+    items[1].notifications.destroy_all
+    cache = RecordCache.new
+    cache.add_topic_items(items.take(2))
+
+    queries = capture_sql { cache.add_topic_items(items.take(2)) }
+    assert_empty queries
+    assert_equal 'Edit note 0', cache.scope[:change_notes_by_topic_item_id][items.first.id]
+    assert cache.scope[:change_notes_by_topic_item_id].key?(items[1].id)
+    assert_nil cache.scope[:change_notes_by_topic_item_id][items[1].id]
+
+    queries = capture_sql { cache.add_topic_items(items) }
+    assert_equal 1, queries.length
+    assert_equal 'Edit note 0', cache.scope[:change_notes_by_topic_item_id][items.first.id]
+    assert_equal 'Edit note 2', cache.scope[:change_notes_by_topic_item_id][items.last.id]
+    assert_nil cache.scope[:change_notes_by_topic_item_id][items[1].id]
+    assert_empty capture_sql { cache.add_topic_items(items) }
+  end
+
+  test 'excluding timeline items also excludes the edit note lookup' do
+    items = create_change_note_items(1)
+    cache = RecordCache.new
+    cache.exclude_types = ['topic_item']
+    assert_empty capture_sql { cache.add_topic_items(items) }
+    assert_not cache.scope.key?(:change_notes_by_topic_item_id)
+  end
+
+  def create_change_note_items(count)
+    discussion = topics(:discussion_topic).topicable
+    actor = users(:admin)
+    Array.new(count) do |index|
+      item = TopicItems::DiscussionEdited.create!(itemable: discussion, user: actor)
+      NotificationService.create!(kind: 'discussion_edited', subject: item, actor: actor,
+                                  recipient_message: "Edit note #{index}")
+      item
+    end
+  end
+
   test 'for topic collection caches polymorphic topicables without loading associations' do
     records = [topics(:discussion_topic), topics(:trial_cleanup_poll)]
 
