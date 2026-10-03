@@ -470,6 +470,17 @@ class TopicService
                                          model: topic,
                                          audience: audience)
 
+    add_readers(topic: topic, actor: actor, users: users)
+  end
+
+  # Grant resolved invitees topic access with the same guest status and volume
+  # defaults across discussion and poll invitations. Audience notification
+  # permission does not itself authorize granting new guest access.
+  def self.add_readers(topic:, actor:, users:)
+    if users.where.not(id: topic.members.select(:id)).exists?
+      actor.ability.authorize!(:add_guests, topic)
+    end
+
     volume_by_user_id = {}
 
     if topic.group_id

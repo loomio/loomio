@@ -147,6 +147,25 @@ class Api::V1::PollEditChangeNoteTest < ActionController::TestCase
     assert_empty notification.notification_deliveries
   end
 
+  test "poll edit notify selection delivers to a newly invited email guest" do
+    email = "poll-edit-new-guest@example.test"
+    assert @actor.can?(:add_guests, @poll.topic)
+    assert_not User.exists?(email: email)
+
+    assert_difference "User.count", 1 do
+      edit_poll(recipient_message: @note, recipient_emails: [email])
+    end
+    guest = User.find_by!(email: email)
+    notification = edit_notification
+    assert_equal [guest.id], notification.recipient_user_ids
+
+    RouteNotificationDeliveriesWorker.perform_now(notification.id)
+
+    assert notification.notification_deliveries.exists?(channel: "email", recipient: guest),
+           "The accepted email recipient was saved but received no notification; topic member: #{@poll.topic.members.exists?(guest.id)}"
+    assert guest.can?(:show, @poll.reload), "The notified guest must be able to open the poll"
+    assert_empty ActionMailer::Base.deliveries
+  end
 
   private
 

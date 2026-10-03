@@ -112,6 +112,8 @@ class PollService
         model: poll
       )
 
+      TopicService.add_readers(topic: poll.topic, actor: actor, users: users)
+
       recipient_context = {
         newly_mentioned_user_ids: poll.newly_mentioned_users.pluck(:id),
         mentioned_user_ids: poll.mentioned_users.pluck(:id),
