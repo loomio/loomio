@@ -65,6 +65,10 @@ class NotificationDeliveryRouter
       notification.lock!
       return [] if notification.deliveries_generated_at?
 
+      # The subject may have changed while routing waited for the notification
+      # lock (for example, a reaction's emoji). Snapshot the committed version.
+      @subject_model = notification.subject_model
+
       rows = recipients.flat_map do |channel, channel_recipients|
         channel_recipients.map do |recipient|
           NotificationDeliveryService.attributes_for(
