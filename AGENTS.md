@@ -83,6 +83,7 @@ success messages).
   changes, consider the user manual's audience and update the relevant pages
   so the documentation stays in sync with the application. Follow
   `docs/AGENTS.md` when editing documentation.
+- During feature development, update the English manual only. Defer user-manual translations and documentation screenshot generation until the feature is ready for merge, unless the user explicitly requests them earlier. Validate English changes with `DOCS_LOCALES=en bundle exec ruby docs/build.rb`; complete translations, affected documentation screenshots, and the full documentation build when preparing the feature for merge.
 
 ## Changelog
 
@@ -103,7 +104,7 @@ success messages).
 
 ## i18n / Localization
 
-- **Change an English value only together with every translation.** Retranslate the key in every locale in the same change, or create a new key and reference it instead.
+- **Change an English application string only together with every translation.** Retranslate the key in every locale in the same change, or create a new key and reference it instead. User-manual translations follow the deferred workflow above.
 - **`config/locales/glossary.yml` defines Loomio's terms and each locale's style.** Every key term has its Loomio meaning and one preferred translation per locale, and every locale has its register. Both translators send it to the model. Choose terms by correct Loomio meaning first, then a length close to the English, then the words people know from popular apps (WhatsApp for poll, Slack for thread). Thread and discussion stay distinct: a thread holds a discussion or a poll. Outcome uses the word for "conclusion". How much existing text a better term changes is no reason to keep a worse one. Fix a wrong term in the glossary, then apply it.
 - **Translate and check with the glossary.** `rake loomio:translate_strings` translates missing app strings with codex. `rake loomio:check_glossary` lists strings that break the glossary in `tmp/glossary/<locale>.csv`, and `rake loomio:apply_glossary` revises them (`MISSING=1` also revises strings missing a preferred term; `LOCALES=fr,de` limits locales). `bundle exec ruby docs/check_glossary.rb` checks the manual.
 - **Name keys after their values,** so templates are easy to read.
