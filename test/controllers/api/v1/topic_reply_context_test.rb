@@ -52,16 +52,51 @@ class Api::V1::TopicReplyContextTest < ActionController::TestCase
     assert_context data, @parent
   end
 
-  test 'reply context follows a chain longer than the display depth' do
-    latest = @reply
-    4.times { |index| latest = create_comment(latest, "Nested reply #{index}") }
+  test 'reply context includes only the immediate actual parent beyond the display depth' do
+    chain = [@reply]
+    4.times { |index| chain << create_comment(chain.last, "Nested reply #{index}") }
+    latest = chain.pop
+    parent = chain.pop
     sign_in users(:guest_normal)
     assert_no_record_cache_fallbacks do
       get :comment, params: {topic_id: @discussion.topic_id, comment_id: latest.id}
     end
     assert_response :success
-    assert_context response.parsed_body, @parent
-    assert_context response.parsed_body, @reply
+    json = response.parsed_body
+    assert_context json, parent
+    assert_not_includes json.fetch('comments').pluck('id'), @parent.id
+    chain.each { |comment| assert_not_includes json.fetch('comments').pluck('id'), comment.id }
+    context = json.fetch('parent_topic_items').find { |item| item['id'] == parent.created_topic_item.id }
+    assert_not context.key?('reply_parent_id'), 'Context must not clear reply metadata from an earlier client page'
+  end
+
+  test 'each requested comment includes its own immediate reply parent' do
+    child = create_comment(@reply, 'Child reply')
+    latest = create_comment(child, 'Latest reply')
+    sign_in users(:guest_normal)
+    assert_no_record_cache_fallbacks do
+      get :index, params: {topic_id: @discussion.topic_id, from: child.created_topic_item.sequence_id, per: 2}
+    end
+    assert_response :success
+    json = response.parsed_body
+    assert_equal [child.created_topic_item.id, latest.created_topic_item.id], json.fetch('topic_items').pluck('id')
+    assert_context json, @reply
+    assert_context json, child
+    assert_not_includes json.fetch('comments').pluck('id'), @parent.id
+  end
+
+  test 'reply context query count and record count do not grow with actual reply depth' do
+    queries_before, data_before = serialize_with_queries(@reply_item)
+    latest = @reply
+    20.times { |index| latest = create_comment(latest, "Deep reply #{index}") }
+    queries_after, data_after = serialize_with_queries(latest.created_topic_item)
+
+    assert_equal queries_before.length, queries_after.length
+    assert_equal data_before.fetch('comments').length, data_after.fetch('comments').length
+    [queries_before, queries_after].each do |queries|
+      assert_equal 1, queries.count { |sql| sql.include?('WITH RECURSIVE "topic_item_context"') }
+    end
+    assert_context data_after, latest.parent
   end
 
   [:alien_loud, :non_guest_loud, :former_guest_loud, :inactive_guest_loud].each do |role|
@@ -129,6 +164,23 @@ class Api::V1::TopicReplyContextTest < ActionController::TestCase
   end
 
   private
+
+  def serialize_with_queries(item)
+    queries = []
+    data = nil
+    subscriber = lambda do |_name, _started, _finished, _id, payload|
+      queries << payload[:sql] unless payload[:cached] || %w[SCHEMA TRANSACTION].include?(payload[:name])
+    end
+    ActiveRecord::Base.uncached do
+      assert_no_record_cache_fallbacks do
+        ActiveSupport::Notifications.subscribed(subscriber, 'sql.active_record') do
+          records = TopicItem.where(id: item.id).to_a
+          data = JSON.parse(MessageChannelService.serialize_shared_models(records).to_json)
+        end
+      end
+    end
+    [queries, data]
+  end
 
   def create_comment(parent, body)
     comment = Comment.new(parent: parent, body: body)

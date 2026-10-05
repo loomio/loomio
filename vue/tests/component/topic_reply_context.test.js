@@ -59,15 +59,25 @@ describe('reply context at the nesting limit', () => {
     expect(siblings.map(obj => obj.isUnread)).toEqual([false, true]);
   });
 
-  it('includes the complete actual parent chain even when it exceeds the display depth', () => {
+  it('includes only the immediate actual parent even when deeper context is already cached', () => {
     cappedReply(3, 1);
     cappedReply(4, 2, 3);
     cappedReply(5, 3, 4);
     cappedReply(6, 4, 5);
     cappedReply(10, 5, 6);
 
-    expect(load(10).map(obj => obj.topic_item.id)).toEqual([3, 4, 5, 6, 10]);
-    expect(loader.records.map(item => item.id)).toEqual([1, 2, 3, 4, 5, 6, 10]);
+    expect(load(10).map(obj => obj.topic_item.id)).toEqual([6, 10]);
+    expect(loader.records.map(item => item.id)).toEqual([1, 2, 6, 10]);
+  });
+
+  it('includes one reply parent for each requested item across loading rules', () => {
+    cappedReply(4, 1);
+    cappedReply(5, 2, 4);
+    cappedReply(6, 3, 5);
+    cappedReply(10, 4, 6);
+    loader.addRule({local: {find: {id: 6, topicId: 42}}});
+
+    expect(load(10).map(obj => obj.topic_item.id)).toEqual([5, 6, 10]);
   });
 
   it('keeps ordinary replies nested under their display parent', () => {

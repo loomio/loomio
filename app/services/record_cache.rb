@@ -124,39 +124,44 @@ class RecordCache
     add_groups_subscriptions_memberships Group.with_attached_logo.with_attached_cover_photo.includes(:subscription).where(id: group_ids)
   end
 
-  # Serialization follows both display parents and actual reply parents. Batch
-  # their complete ancestry so context outside the requested page is cached too.
-  # Match reply parents within the same topic, including after a branch is moved.
+  # Include one actual reply parent per requested item, plus the capped display
+  # ancestry needed to render those records. Resolve their IDs in the existing
+  # bulk query so database round trips do not grow with actual reply depth.
   def topic_items_with_parents(collection)
-    items_by_id = {}
+    requested_ids = collection.map(&:id).to_set
+    requested = TopicItem.where(id: requested_ids.to_a)
+    # Restrict actual parents to the same topic, including after a branch moves.
+    reply_parent_ids = requested.where(kind: 'new_comment', itemable_type: 'Comment')
+      .joins('INNER JOIN comments replies ON replies.id = topic_items.itemable_id')
+      .joins(<<~SQL.squish)
+        INNER JOIN topic_items reply_parents ON replies.parent_type = 'Comment'
+          AND reply_parents.topic_id = topic_items.topic_id
+          AND reply_parents.kind = 'new_comment'
+          AND reply_parents.itemable_type = 'Comment'
+          AND reply_parents.itemable_id = replies.parent_id
+      SQL
+      .group('topic_items.id').select('MIN(reply_parents.id)')
+    # Union IDs before fetching rows so the seed lookup can use the primary key.
+    context_ids = requested.select(:id).arel.union(reply_parent_ids.arel)
+    context = TopicItem.where(TopicItem.arel_table[:id].in(context_ids)).select(:id, :parent_id)
+    display_parents = TopicItem.joins('INNER JOIN topic_item_context ON topic_items.id = topic_item_context.parent_id')
+                              .select(:id, :parent_id)
+    items = TopicItem.with_recursive(topic_item_context: [context, display_parents])
+                    .where('topic_items.id IN (SELECT id FROM topic_item_context)')
+                    .includes(:itemable, :topic).order(:id).to_a
+    parents_by_comment = items.select { |item| item.kind == 'new_comment' }
+                              .group_by { |item| [item.topic_id, item.itemable_id] }
+
     scope[:reply_parents_by_topic_item_id] ||= {}
-    pending_ids = collection.map(&:id)
-
-    until pending_ids.empty?
-      items = TopicItem.includes(:itemable, :topic).where(id: pending_ids).to_a
-      replies = items.select { |item| item.kind == 'new_comment' && item.itemable.parent_type == 'Comment' }
-      parents_by_comment = if replies.any?
-        TopicItem.where(topic_id: replies.map(&:topic_id), kind: 'new_comment', itemable_type: 'Comment',
-                        itemable_id: replies.map { |item| item.itemable.parent_id })
-                 .order(:id).group_by { |item| [item.topic_id, item.itemable_id] }
-      else
-        {}
+    items.select { |item| requested_ids.include?(item.id) }.each do |item|
+      reply_parent = if item.kind == 'new_comment' && item.itemable.parent_type == 'Comment'
+        parents_by_comment[[item.topic_id, item.itemable.parent_id]]&.first
       end
-
-      parent_ids = items.filter_map(&:parent_id)
-      items.each do |item|
-        items_by_id[item.id] = item
-        reply_parent = if item.kind == 'new_comment' && item.itemable.parent_type == 'Comment'
-          parents_by_comment[[item.topic_id, item.itemable.parent_id]]&.first
-        end
-        reply_parent = nil if reply_parent&.id == item.parent_id
-        scope[:reply_parents_by_topic_item_id][item.id] = reply_parent
-        parent_ids << reply_parent.id if reply_parent
-      end
-      pending_ids = parent_ids.uniq - items_by_id.keys
+      reply_parent = nil if reply_parent&.id == item.parent_id
+      scope[:reply_parents_by_topic_item_id][item.id] = reply_parent
     end
 
-    items_by_id.values
+    items
   end
   private :topic_items_with_parents
 

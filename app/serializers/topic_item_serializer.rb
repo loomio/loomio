@@ -17,6 +17,13 @@ class TopicItemSerializer < ApplicationSerializer
     cache_fetch(:reply_parents_by_topic_item_id, object.id) { object.reply_parent }
   end
 
+  # Context records do not expand their own reply parents. Omit the relationship
+  # rather than clearing a reply_parent_id already loaded by another client page.
+  def include_reply_parent?
+    cache = scope[:cache]
+    cache && cache.scope.fetch(:reply_parents_by_topic_item_id, {}).key?(object.id)
+  end
+
   def change_note
     cache_fetch(:change_notes_by_topic_item_id, object.id) { object.change_note }
   end
