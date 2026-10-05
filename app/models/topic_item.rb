@@ -196,6 +196,16 @@ class TopicItem < ApplicationRecord
     [self, parent&.self_and_parents].flatten.compact
   end
 
+  # At the nesting limit, a reply and its actual parent become timeline siblings.
+  # Include that comment as context without changing the display hierarchy.
+  def reply_parent
+    return unless kind == 'new_comment' && itemable.parent_type == 'Comment'
+
+    candidate = TopicItem.where(topic_id: topic_id, kind: 'new_comment',
+                               itemable_type: 'Comment', itemable_id: itemable.parent_id).order(:id).first
+    candidate unless candidate&.id == parent_id
+  end
+
   def max_depth_adjusted_parent
     original_parent = find_parent_topic_item
     return nil unless original_parent

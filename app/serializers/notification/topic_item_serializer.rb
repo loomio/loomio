@@ -6,4 +6,8 @@ class Notification::TopicItemSerializer < TopicItemSerializer
   def include_parent?
     false
   end
+
+  def include_reply_parent?
+    false
+  end
 end

@@ -16,9 +16,9 @@ bundle exec ruby docs/translate.rb fr user_manual/users/bookmarks/index.md
 bundle exec ruby docs/sync_translations.rb
 ```
 
-`docs/sync_translations.rb` checks every published language for missing or stale sections, navigation titles and customer corrections. It starts the translator only for affected pages, using the same local login as an explicit translation run. Run it after committing English user_manual changes, then commit the translations it writes.
+`docs/sync_translations.rb` checks every published language for missing or stale sections, navigation titles and customer corrections. It starts the translator only for affected pages, using the same local login as an explicit translation run. During feature development, update the English manual only. Run the sync when the feature is ready for merge, then include the translations in the final change.
 
-The installed local pre-push hook runs `docs/sync_translations.rb --check`, which makes no translation requests. When translations are missing, stale or structurally invalid, it stops the push; run the sync, commit its output, and push again. `SKIP_TRANSLATIONS` skips the local checks when present.
+The installed local pre-push hook runs `docs/sync_translations.rb --check`, which makes no translation requests. When translations are missing, stale or structurally invalid, it stops the push. `SKIP_TRANSLATIONS` skips the local checks when present and allows unfinished feature branches to be pushed while translation work is deferred. Complete translation checks before merging.
 
 The documentation GitHub Action runs `docs/sync_translations.rb --check` and builds the complete site on pull requests and pushes to master. CI makes no model requests. Missing, stale or structurally invalid published translations fail the check; the site build also validates links, images, redirects and search. Successful builds are saved as workflow artifacts. Docker builds the site from its checkout into `public/docs/` during deployment. A documentation build failure prints a warning and removes the incomplete site without stopping the application build; documentation will be unavailable in that image. R2 stores translated screenshots and their generation manifests.
 
@@ -32,11 +32,12 @@ Frontmatter records source and generated fingerprints, navigation titles and tra
 
 ```bash
 bundle exec ruby docs/build.rb
+DOCS_LOCALES=en bundle exec ruby docs/build.rb
 DOCS_LOCALES=fr,de bundle exec ruby docs/build.rb
 bundle exec ruby -Itest -e 'Dir["test/docs/*_test.rb"].sort.each { |file| require_relative file }'
 ```
 
-The default build includes English and languages marked `published` in `locales.yml`. `DOCS_LOCALES` selects additional languages for preview. A published language must have complete, current translations that pass structural validation. Preview builds omit pages that fail those checks. Public paths remain `/docs/en/...`, `/docs/fr/...`, and so on.
+The default build includes English and languages marked `published` in `locales.yml`. `DOCS_LOCALES` selects which translated languages to build alongside English. Use `DOCS_LOCALES=en` for English-only validation during feature development. A published language must have complete, current translations that pass structural validation. Preview builds omit pages that fail those checks. Public paths remain `/docs/en/...`, `/docs/fr/...`, and so on.
 
 Application help buttons, Read more links and the sidebar manual link use the active app language and the published locale mapping in `locales.yml`. Its `app_locale` field maps `pt_BR` to `pt-br` and `nl_NL` to `nl`; other published locale names match their documentation directories. Unsupported app languages use English. Policies and the changelog stay in English, and a host-specific `LOOMIO_HELP_URL` remains the sidebar destination when supplied.
 
@@ -56,7 +57,7 @@ bin/docs-screenshots fr,de --output /path/to/docs-screenshots
 
 The command generates missing files. Use local knowledge of the work to select the images or manual directories that need updating, then use `--refresh` to regenerate every selected image, including existing files. There are no automatic stale-image rules. A single `.generation.json` records each language/path's generation time. PNG filenames stay stable, and every update replaces the previous file atomically. Failed captures leave the existing cache intact. `--status` reports missing and present images without starting a browser or creating files. `all` selects every published language.
 
-Generate the affected screenshots locally before committing, alongside the translation workflow. Screenshot generation does not run on GitHub. Review the local captures, then rerun the same selection with `--publish` to upload it to R2. Existing files are reused unless you also pass `--refresh`; missing files are generated before publishing. Uploads use the Cloudflare `cf` CLI in development mode, which loads `CLOUDFLARE_ACCOUNT_ID` and `CLOUDFLARE_API_TOKEN` from the project's ignored `.env.development.local`. Keep the token in that local file, outside Git. Each language's manifest is uploaded after its selected images succeed. A failed generation leaves completed captures locally without publishing; a failed image upload leaves the previous hosted manifest in place. Nothing is deleted, and no historical copies are created.
+Generate the affected English and translated documentation screenshots when the feature is ready for merge, alongside the translation workflow, unless explicitly requested earlier. Keep existing manual images during feature iteration. Screenshot generation does not run on GitHub. Review the local captures, then rerun the same selection with `--publish` to upload it to R2. Existing files are reused unless you also pass `--refresh`; missing files are generated before publishing. Uploads use the Cloudflare `cf` CLI in development mode, which loads `CLOUDFLARE_ACCOUNT_ID` and `CLOUDFLARE_API_TOKEN` from the project's ignored `.env.development.local`. Keep the token in that local file, outside Git. Each language's manifest is uploaded after its selected images succeed. A failed generation leaves completed captures locally without publishing; a failed image upload leaves the previous hosted manifest in place. Nothing is deleted, and no historical copies are created.
 
 Each language runs the existing scenario and navigation steps from the beginning. Interface labels are translated, while fictional discussion and poll content remains fixed. Live language switching and translation of example content are not part of this workflow.
 
