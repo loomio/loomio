@@ -4,8 +4,6 @@ import Session       from '@/shared/services/session';
 import LmoUrlService from '@/shared/services/lmo_url_service';
 import {intersection} from 'lodash-es';
 
-let user = () => Session.user();
-
 export default new class AbilityService {
   isNotEmailVerified() {
     return Session.isSignedIn() && !Session.user().emailVerified;
@@ -90,9 +88,10 @@ export default new class AbilityService {
   }
 
   canCreateTags(group) {
-    return group.parentOrSelf().adminsInclude(user()) ||
-      group.adminsInclude(user()) ||
-      !!(group.membersCanCreateTags && group.membersInclude(user()));
+    const user = Session.user();
+    return group.parentOrSelf().adminsInclude(user) ||
+      group.adminsInclude(user) ||
+      !!(group.membersCanCreateTags && group.membersInclude(user));
   }
 
   canPinEvent(topic_item) {
@@ -179,7 +178,7 @@ export default new class AbilityService {
   }
 
   canAnnouncePoll(poll) {
-    user = Session.user();
+    const user = Session.user();
     if (poll.discardedAt) { return false; }
     if (poll.groupId) {
       return poll.group().isEnabled() && (poll.group().adminsInclude(user) ||
