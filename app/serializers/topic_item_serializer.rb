@@ -7,9 +7,14 @@ class TopicItemSerializer < ApplicationSerializer
   has_one :topic, serializer: TopicSerializer, root: :topics
   has_one :itemable, polymorphic: true
   has_one :parent, serializer: TopicItemSerializer, root: :parent_topic_items
+  has_one :reply_parent, serializer: TopicItemSerializer, root: :parent_topic_items
 
   def parent
     cache_fetch(:topic_items_by_id, object.parent_id) { object.parent }
+  end
+
+  def reply_parent
+    cache_fetch(:reply_parents_by_topic_item_id, object.id) { object.reply_parent }
   end
 
   def change_note

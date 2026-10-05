@@ -349,10 +349,18 @@ export default class TopicLoader {
       this.records = this.records.concat(chain.data());
     });
 
-    const parentsd1 = compact(this.records.map(o => o.parent()))
-    const parentsd2 = compact(parentsd1.map(o => o.parent()))
-    const parentsd3 = compact(parentsd2.map(o => o.parent()))
-    this.records = uniq(this.records.concat(parentsd1).concat(parentsd2).concat(parentsd3));
+    // A capped reply's actual parent is a timeline sibling. Include both kinds
+    // of ancestor as context, then nest by the unchanged display parent IDs.
+    const recordsById = new Map(this.records.map(item => [item.id, item]));
+    const pending = [...recordsById.values()];
+    for (let i = 0; i < pending.length; i++) {
+      compact([pending[i].parent(), pending[i].replyParent()]).forEach(parent => {
+        if (recordsById.has(parent.id)) { return; }
+        recordsById.set(parent.id, parent);
+        pending.push(parent);
+      });
+    }
+    this.records = [...recordsById.values()];
     this.records = orderBy(this.records, 'positionKey');
 
     const topicItemIds = this.records.map(topic_item => topic_item.id);

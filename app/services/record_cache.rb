@@ -98,7 +98,7 @@ class RecordCache
   end
 
   def add_topic_items_complete(collection)
-    topic_items = TopicItem.includes(:itemable, :topic).where(id: collection.map(&:id))
+    topic_items = topic_items_with_parents(collection)
     topics = topic_items.map(&:topic).compact.uniq
     itemables = topic_items.map(&:itemable).compact.uniq
 
@@ -123,6 +123,42 @@ class RecordCache
     add_reactions_for_itemables(itemables)
     add_groups_subscriptions_memberships Group.with_attached_logo.with_attached_cover_photo.includes(:subscription).where(id: group_ids)
   end
+
+  # Serialization follows both display parents and actual reply parents. Batch
+  # their complete ancestry so context outside the requested page is cached too.
+  # Match reply parents within the same topic, including after a branch is moved.
+  def topic_items_with_parents(collection)
+    items_by_id = {}
+    scope[:reply_parents_by_topic_item_id] ||= {}
+    pending_ids = collection.map(&:id)
+
+    until pending_ids.empty?
+      items = TopicItem.includes(:itemable, :topic).where(id: pending_ids).to_a
+      replies = items.select { |item| item.kind == 'new_comment' && item.itemable.parent_type == 'Comment' }
+      parents_by_comment = if replies.any?
+        TopicItem.where(topic_id: replies.map(&:topic_id), kind: 'new_comment', itemable_type: 'Comment',
+                        itemable_id: replies.map { |item| item.itemable.parent_id })
+                 .order(:id).group_by { |item| [item.topic_id, item.itemable_id] }
+      else
+        {}
+      end
+
+      parent_ids = items.filter_map(&:parent_id)
+      items.each do |item|
+        items_by_id[item.id] = item
+        reply_parent = if item.kind == 'new_comment' && item.itemable.parent_type == 'Comment'
+          parents_by_comment[[item.topic_id, item.itemable.parent_id]]&.first
+        end
+        reply_parent = nil if reply_parent&.id == item.parent_id
+        scope[:reply_parents_by_topic_item_id][item.id] = reply_parent
+        parent_ids << reply_parent.id if reply_parent
+      end
+      pending_ids = parent_ids.uniq - items_by_id.keys
+    end
+
+    items_by_id.values
+  end
+  private :topic_items_with_parents
 
   def add_topic_items(collection)
     return [] if exclude_types.include?('topic_item')
