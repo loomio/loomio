@@ -5,7 +5,7 @@
 Weighted voting lets some votes count more than others. Each voter has a vote weight. For example:
 
 - A housing community gives each property one vote. A member who represents three properties has a vote weight of `3`.
-- A cooperative's board makes the decision, but operations staff take part in the conversation. Board members have a vote weight of `1`. Operations staff have a vote weight of `0`, so their votes are recorded but do not change the result.
+- A worker cooperative grants voting rights after a set period of membership. Newer members receive a vote weight of `0`, so they can contribute to the discussion and experience the voting process without their votes affecting the result.
 - A company gives shareholders votes according to their ownership stake. Someone who owns 12.5% of the shares has a vote weight of `12.5`.
 
 <!-- translation-section: set-members-vote-weights -->

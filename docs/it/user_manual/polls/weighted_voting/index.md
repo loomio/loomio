@@ -1,22 +1,22 @@
 ---
 sections:
-  introduction: 301b7440aa148d0b
+  introduction: d1b37bf68148b2a5
   set-members-vote-weights: 47b8d7c9222794d8
   use-weighted-voting-in-a-poll: d8af319ed1e38e4d
   results: 3cd10f104ced0ed5
 generated:
-  introduction: 2ad4847eb880970e
+  introduction: 556a8d360952cf7b
   set-members-vote-weights: 3e6c4c6f54bb3dfb
   use-weighted-voting-in-a-poll: 8a7c5c7cac8a7b6a
   results: 8dd07bd976eda818
 title: Voto ponderato
 title_source: 0b971991dfcacbab
 title_generated: bf17af91b8f4e433
-source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
+source_revision: 3f73d4a156d9ffd3137ff085cc6ab58fbc4de46b
 source_file: docs/en/user_manual/polls/weighted_voting/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-06'
 needs_review:
   use-weighted-voting-in-a-poll: use "Ripartizione" instead of "Assegnare" for "Allocate"
 ---
@@ -28,7 +28,7 @@ needs_review:
 Il voto ponderato permette ad alcuni voti di contare più di altri. Ogni elettore ha un peso del voto. Per esempio:
 
 - Una comunità abitativa assegna un voto a ogni proprietà. Un membro che rappresenta tre proprietà ha un peso del voto di `3`.
-- Il consiglio di amministrazione di una cooperativa prende la decisione, ma il personale operativo partecipa alla conversazione. I membri del consiglio hanno un peso del voto di `1`. Il personale operativo ha un peso del voto di `0`, quindi i suoi voti vengono registrati ma non modificano il risultato.
+- Una cooperativa di lavoratori concede il diritto di voto dopo un periodo prestabilito di appartenenza alla cooperativa. I membri più recenti ricevono un peso del voto di `0`, così possono contribuire alla discussione e sperimentare il processo di voto senza che i loro voti influiscano sul risultato.
 - Un'azienda assegna agli azionisti voti in proporzione alla loro quota di partecipazione. Chi possiede il 12,5% delle azioni ha un peso del voto di `12.5`.
 
 <!-- translation-section: set-members-vote-weights -->

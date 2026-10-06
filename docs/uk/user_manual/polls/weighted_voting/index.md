@@ -1,22 +1,22 @@
 ---
 sections:
-  introduction: 301b7440aa148d0b
+  introduction: d1b37bf68148b2a5
   set-members-vote-weights: 47b8d7c9222794d8
   use-weighted-voting-in-a-poll: d8af319ed1e38e4d
   results: 3cd10f104ced0ed5
 generated:
-  introduction: 57af3061975adfa1
+  introduction: d1929b20161c03d1
   set-members-vote-weights: 394590a2044d0135
   use-weighted-voting-in-a-poll: 1854b393c6363557
   results: 20cda81bc11e6437
 title: Зважене голосування
 title_source: 0b971991dfcacbab
 title_generated: fdc9d82ffe145b56
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
+source_revision: 3f73d4a156d9ffd3137ff085cc6ab58fbc4de46b
 source_file: docs/en/user_manual/polls/weighted_voting/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-06'
 needs_review:
   use-weighted-voting-in-a-poll: use "Вибір" instead of "Виберіть" for "Choose"
   results: use "Вибір" instead of "Виберіть" for "Choose"
@@ -29,7 +29,7 @@ needs_review:
 Зважене голосування дає змогу враховувати одні голоси більше за інші. Кожен виборець має вагу голосу. Наприклад:
 
 - Житлова спільнота надає кожному об’єкту нерухомості один голос. Учасник, який представляє три об’єкти, має вагу голосу `3`.
-- Правління кооперативу ухвалює рішення, а працівники беруть участь в обговоренні. Учасники правління мають вагу голосу `1`. Працівники мають вагу голосу `0`, тому їхні голоси записуються, але не змінюють результат.
+- Робітничий кооператив надає право голосу після певного періоду участі в кооперативі. Новіші учасники отримують вагу голосу `0`, щоб вони могли долучатися до обговорення та знайомитися з процесом голосування без впливу їхніх голосів на результат.
 - Компанія надає акціонерам голоси відповідно до їхньої частки власності. Людина, яка володіє 12,5% акцій, має вагу голосу `12.5`.
 
 <!-- translation-section: set-members-vote-weights -->

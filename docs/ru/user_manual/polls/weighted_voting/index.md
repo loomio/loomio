@@ -1,22 +1,22 @@
 ---
 sections:
-  introduction: 301b7440aa148d0b
+  introduction: d1b37bf68148b2a5
   set-members-vote-weights: 47b8d7c9222794d8
   use-weighted-voting-in-a-poll: d8af319ed1e38e4d
   results: 3cd10f104ced0ed5
 generated:
-  introduction: 1ba8151cbf3de442
+  introduction: f83b31c22de91cac
   set-members-vote-weights: 428e69922f28789d
   use-weighted-voting-in-a-poll: 1f93d7b32b0930c8
   results: 5c30d532947d0c4f
 title: Взвешенное голосование
 title_source: 0b971991dfcacbab
 title_generated: 31d4244de3485bc4
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
+source_revision: 3f73d4a156d9ffd3137ff085cc6ab58fbc4de46b
 source_file: docs/en/user_manual/polls/weighted_voting/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-06'
 ---
 
 <!-- translation-section: introduction -->
@@ -26,7 +26,7 @@ translated:
 Взвешенное голосование позволяет одним голосам учитываться с большим весом, чем другим. У каждого голосующего есть вес голоса. Например:
 
 - Жилищное сообщество предоставляет каждому объекту недвижимости один голос. Участник, представляющий три объекта, имеет вес голоса `3`.
-- Правление кооператива принимает решение, а сотрудники участвуют в обсуждении. Члены правления имеют вес голоса `1`. Сотрудники имеют вес голоса `0`, поэтому их голоса сохраняются, но не влияют на результат.
+- Рабочий кооператив предоставляет право голоса после установленного срока участия в кооперативе. Новые участники получают вес голоса `0`, поэтому они могут участвовать в обсуждении и знакомиться с процессом голосования, не влияя своими голосами на результат.
 - Компания предоставляет акционерам голоса в соответствии с их долей владения. Акционер, владеющий 12,5% акций, имеет вес голоса `12.5`.
 
 <!-- translation-section: set-members-vote-weights -->

@@ -1,27 +1,27 @@
 ---
 sections:
-  introduction: 301b7440aa148d0b
+  introduction: d1b37bf68148b2a5
   set-members-vote-weights: 47b8d7c9222794d8
   use-weighted-voting-in-a-poll: d8af319ed1e38e4d
   results: 3cd10f104ced0ed5
 generated:
-  introduction: e9ba82f839e727c5
+  introduction: 8f8bb18a1084d4d6
   set-members-vote-weights: 2ea15e71f22a830b
   use-weighted-voting-in-a-poll: 5754dcb5550474ea
   results: 57c653dc053885ca
 title: Gewichtete Abstimmung
 title_source: 0b971991dfcacbab
 title_generated: b8d6b85d250e6095
-source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
+source_revision: 3f73d4a156d9ffd3137ff085cc6ab58fbc4de46b
 source_file: docs/en/user_manual/polls/weighted_voting/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-06'
 needs_review:
-  introduction: use "Entscheidung" instead of "Abstimmung" for "decision"; use "Stimme" instead of "Abstimmung" for "vote"
   set-members-vote-weights: use "Stimme" instead of "Abstimmung" for "vote"
   use-weighted-voting-in-a-poll: use "Stimme" instead of "Abstimmung" for "vote"
   results: use "Bewerten" instead of "Ergebnis" for "Score"
+  introduction: use "Stimme" instead of "Abstimmung" for "vote"
 ---
 
 <!-- translation-section: introduction -->
@@ -31,7 +31,7 @@ needs_review:
 Bei einer gewichteten Abstimmung zählen manche Stimmen mehr als andere. Jede abstimmende Person hat ein Stimmgewicht. Zum Beispiel:
 
 - Eine Wohngemeinschaft gibt jeder Wohneinheit eine Stimme. Ein Mitglied, das drei Wohneinheiten vertritt, hat ein Stimmgewicht von `3`.
-- Der Vorstand einer Genossenschaft trifft die Entscheidung, aber Mitarbeitende aus dem operativen Bereich nehmen am Gespräch teil. Vorstandsmitglieder haben ein Stimmgewicht von `1`. Mitarbeitende aus dem operativen Bereich haben ein Stimmgewicht von `0`, sodass ihre Stimmen erfasst werden, aber das Ergebnis nicht verändern.
+- Eine Arbeitergenossenschaft gewährt Stimmrechte nach einer festgelegten Dauer der Mitgliedschaft. Neuere Mitglieder erhalten ein Stimmgewicht von `0`, sodass sie zur Diskussion beitragen und den Ablauf der Abstimmung kennenlernen können, ohne dass ihre Stimmen das Ergebnis beeinflussen.
 - Ein Unternehmen gibt Anteilseignenden Stimmen entsprechend ihrem Eigentumsanteil. Wer 12,5 % der Anteile besitzt, hat ein Stimmgewicht von `12.5`.
 
 <!-- translation-section: set-members-vote-weights -->

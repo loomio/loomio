@@ -1,22 +1,22 @@
 ---
 sections:
-  introduction: 301b7440aa148d0b
+  introduction: d1b37bf68148b2a5
   set-members-vote-weights: 47b8d7c9222794d8
   use-weighted-voting-in-a-poll: d8af319ed1e38e4d
   results: 3cd10f104ced0ed5
 generated:
-  introduction: 96145d7bff253030
+  introduction: 8da463db03c81410
   set-members-vote-weights: d514e814b623a6d1
   use-weighted-voting-in-a-poll: 73899f9058a36db7
   results: 736b60bbaa774ba6
 title: Súlyozott szavazás
 title_source: 0b971991dfcacbab
 title_generated: 0d7fde4370c0d725
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
+source_revision: 3f73d4a156d9ffd3137ff085cc6ab58fbc4de46b
 source_file: docs/en/user_manual/polls/weighted_voting/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-06'
 ---
 
 <!-- translation-section: introduction -->
@@ -26,7 +26,7 @@ translated:
 A súlyozott szavazás lehetővé teszi, hogy egyes szavazatok többet számítsanak másoknál. Minden szavazónak van szavazati súlya. Például:
 
 - Egy lakóközösség minden ingatlannak egy szavazatot ad. A három ingatlant képviselő tag szavazati súlya `3`.
-- Egy szövetkezet igazgatósága hozza meg a döntést, de a működtetésért felelős munkatársak is részt vesznek a beszélgetésben. Az igazgatóság tagjainak szavazati súlya `1`. A működtetésért felelős munkatársak szavazati súlya `0`, így a szavazataikat rögzítik, de azok nem változtatják meg az eredményt.
+- Egy dolgozói szövetkezet meghatározott idejű tagság után ad szavazati jogot. Az újabb tagok szavazati súlya `0`, így részt vehetnek a beszélgetésben és megismerhetik a szavazás folyamatát anélkül, hogy szavazataik befolyásolnák az eredményt.
 - Egy vállalat a tulajdoni részesedésük alapján ad szavazatokat a részvényeseknek. A részvények 12,5%-át birtokló személy szavazati súlya `12.5`.
 
 <!-- translation-section: set-members-vote-weights -->

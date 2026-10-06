@@ -1,22 +1,22 @@
 ---
 sections:
-  introduction: 301b7440aa148d0b
+  introduction: d1b37bf68148b2a5
   set-members-vote-weights: 47b8d7c9222794d8
   use-weighted-voting-in-a-poll: d8af319ed1e38e4d
   results: 3cd10f104ced0ed5
 generated:
-  introduction: e3d67479309d4b6d
+  introduction: 8cd61bf7870de99f
   set-members-vote-weights: 20cf383c6b1ac9e2
   use-weighted-voting-in-a-poll: bac2c3ba9e58d57f
   results: 03531f7bdb8dd047
 title: 加重投票
 title_source: 0b971991dfcacbab
 title_generated: c3ab3c21bb14998e
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
+source_revision: 3f73d4a156d9ffd3137ff085cc6ab58fbc4de46b
 source_file: docs/en/user_manual/polls/weighted_voting/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-06'
 ---
 
 <!-- translation-section: introduction -->
@@ -26,7 +26,7 @@ translated:
 加重投票では、一部の票を他の票よりも大きく数えることができます。各投票者には票の重みが設定されます。例えば、次のように使えます。
 
 - 住宅コミュニティで、各物件に1票を与えます。3つの物件を代表するメンバーの票の重みは `3` になります。
-- 協同組合の理事会が決定を行い、運営スタッフも話し合いに参加します。理事の票の重みは `1` にします。運営スタッフの票の重みは `0` にするため、投票は記録されますが、結果には影響しません。
+- 労働者協同組合で、加入から一定期間が経過したメンバーに投票権を与えます。加入して間もないメンバーの票の重みは `0` にするため、結果に影響を与えることなく、ディスカッションに参加し、投票の流れを体験できます。
 - 会社が株主に持株比率に応じた票を与えます。株式の12.5%を保有する人の票の重みは `12.5` になります。
 
 <!-- translation-section: set-members-vote-weights -->

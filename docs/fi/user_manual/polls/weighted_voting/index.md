@@ -1,22 +1,22 @@
 ---
 sections:
-  introduction: 301b7440aa148d0b
+  introduction: d1b37bf68148b2a5
   set-members-vote-weights: 47b8d7c9222794d8
   use-weighted-voting-in-a-poll: d8af319ed1e38e4d
   results: 3cd10f104ced0ed5
 generated:
-  introduction: 14dd705693fbf47a
+  introduction: 5761643177197fe2
   set-members-vote-weights: d73e7c452d65b411
   use-weighted-voting-in-a-poll: 637ff70246df8700
   results: 601a64a242a42b2a
 title: Painotettu äänestys
 title_source: 0b971991dfcacbab
 title_generated: 6c6d53a110e6e406
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
+source_revision: 3f73d4a156d9ffd3137ff085cc6ab58fbc4de46b
 source_file: docs/en/user_manual/polls/weighted_voting/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-06'
 needs_review:
   results: use "Pisteytys" instead of "pisteet" for "Score"
 ---
@@ -28,7 +28,7 @@ needs_review:
 Painotetussa äänestyksessä jotkin äänet vaikuttavat tulokseen enemmän kuin toiset. Jokaisella äänestäjällä on äänipaino. Esimerkiksi:
 
 - Asuinyhteisö antaa jokaiselle kiinteistölle yhden äänen. Kolmea kiinteistöä edustavan jäsenen äänipaino on `3`.
-- Osuuskunnan hallitus tekee päätöksen, mutta työntekijät osallistuvat keskusteluun. Hallituksen jäsenten äänipaino on `1`. Työntekijöiden äänipaino on `0`, joten heidän äänensä tallennetaan, mutta ne eivät muuta tulosta.
+- Työosuuskunta myöntää äänioikeuden, kun jäsenyys on kestänyt määrätyn ajan. Uudempien jäsenten äänipaino on `0`, joten he voivat osallistua keskusteluun ja tutustua äänestämiseen ilman, että heidän äänensä vaikuttavat tulokseen.
 - Yritys antaa osakkeenomistajille ääniä heidän omistusosuutensa mukaan. Henkilön, joka omistaa 12,5 % osakkeista, äänipaino on `12.5`.
 
 <!-- translation-section: set-members-vote-weights -->

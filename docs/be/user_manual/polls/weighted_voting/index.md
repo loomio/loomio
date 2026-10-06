@@ -1,22 +1,22 @@
 ---
 sections:
-  introduction: 301b7440aa148d0b
+  introduction: d1b37bf68148b2a5
   set-members-vote-weights: 47b8d7c9222794d8
   use-weighted-voting-in-a-poll: d8af319ed1e38e4d
   results: 3cd10f104ced0ed5
 generated:
-  introduction: 9c233e07026369dd
+  introduction: 9d55f92fdc8e5e1a
   set-members-vote-weights: af24ee72c0666e46
   use-weighted-voting-in-a-poll: 53c7c280fc20f6ad
   results: bce7494bdb3ffd90
 title: Узважанае галасаванне
 title_source: 0b971991dfcacbab
 title_generated: 7070cf50c34a4df5
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
+source_revision: 3f73d4a156d9ffd3137ff085cc6ab58fbc4de46b
 source_file: docs/en/user_manual/polls/weighted_voting/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-06'
 needs_review:
   use-weighted-voting-in-a-poll: use "Выбар" instead of "Выберыце" for "Choose"
   results: use "Выбар" instead of "Выберыце" for "Choose"
@@ -26,10 +26,10 @@ needs_review:
 
 # Узважанае галасаванне
 
-Узважанае галасаванне дазваляе надаць некаторым галасам большую вагу за іншыя. Кожны голас мае сваю вагу. Напрыклад:
+Узважанае галасаванне дазваляе надаць некаторым галасам большую вагу за іншыя. Для ўсіх выбаршчыкаў вызначаецца вага голасу. Напрыклад:
 
 - Жыллёвая супольнасць дае адзін голас на кожны аб’ект нерухомасці. Удзельнікі групы, якія прадстаўляюць тры аб’екты, маюць вагу голасу `3`.
-- Праўленне кааператыва прымае рашэнне, а супрацоўнікі, якія займаюцца бягучай працай, удзельнічаюць у абмеркаванні. Удзельнікі праўлення маюць вагу голасу `1`. Астатнія супрацоўнікі маюць вагу голасу `0`, таму іх галасы запісваюцца, але не змяняюць вынік.
+- Працоўны кааператыў надае права голасу пасля пэўнага тэрміну ўдзелу ў ім. Новыя ўдзельнікі атрымліваюць вагу голасу `0`, таму могуць удзельнічаць у абмеркаванні і знаёміцца з працэсам галасавання, а іх галасы не ўплываюць на вынік.
 - Кампанія дае акцыянерам галасы ў адпаведнасці з іх доляй уласнасці. Пры долі ў 12,5% акцый вага голасу складае `12.5`.
 
 <!-- translation-section: set-members-vote-weights -->

@@ -1,22 +1,22 @@
 ---
 sections:
-  introduction: 301b7440aa148d0b
+  introduction: d1b37bf68148b2a5
   set-members-vote-weights: 47b8d7c9222794d8
   use-weighted-voting-in-a-poll: d8af319ed1e38e4d
   results: 3cd10f104ced0ed5
 generated:
-  introduction: fd27ba4fac4bc54e
+  introduction: 0f50b6cbab5ae01d
   set-members-vote-weights: f94ec00f2d3266dd
   use-weighted-voting-in-a-poll: 54fedb127a3c2676
   results: ad8a3e01df327144
 title: Votação ponderada
 title_source: 0b971991dfcacbab
 title_generated: 217338839311fe74
-source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
+source_revision: 3f73d4a156d9ffd3137ff085cc6ab58fbc4de46b
 source_file: docs/en/user_manual/polls/weighted_voting/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-06'
 ---
 
 <!-- translation-section: introduction -->
@@ -26,7 +26,7 @@ translated:
 A votação ponderada permite que alguns votos contem mais do que outros. Cada eleitor tem um peso do voto. Por exemplo:
 
 - Uma comunidade residencial atribui um voto a cada imóvel. Um membro que representa três imóveis tem um peso do voto de `3`.
-- O conselho de uma cooperativa toma a decisão, mas a equipe de operações participa da conversa. Os membros do conselho têm um peso do voto de `1`. As pessoas da equipe de operações têm um peso do voto de `0`, portanto seus votos são registrados, mas não alteram o resultado.
+- Uma cooperativa de trabalhadores concede o direito de votar após um período definido de participação como membro. Os membros mais recentes recebem um peso do voto de `0`, para que possam contribuir para a discussão e conhecer o processo de votação sem que seus votos afetem o resultado.
 - Uma empresa atribui votos aos acionistas de acordo com sua participação no capital. Uma pessoa que possui 12,5% das ações tem um peso do voto de `12.5`.
 
 <!-- translation-section: set-members-vote-weights -->

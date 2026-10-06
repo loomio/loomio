@@ -1,22 +1,22 @@
 ---
 sections:
-  introduction: 301b7440aa148d0b
+  introduction: d1b37bf68148b2a5
   set-members-vote-weights: 47b8d7c9222794d8
   use-weighted-voting-in-a-poll: d8af319ed1e38e4d
   results: 3cd10f104ced0ed5
 generated:
-  introduction: dc49324692f87831
+  introduction: 587c38fe91f7144a
   set-members-vote-weights: d9c73feec2ef38bc
   use-weighted-voting-in-a-poll: a0ddcdb3920b5154
   results: 379d4043c20d1060
 title: Vote pondéré
 title_source: 0b971991dfcacbab
 title_generated: 2f371212e65b0c61
-source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
+source_revision: 3f73d4a156d9ffd3137ff085cc6ab58fbc4de46b
 source_file: docs/en/user_manual/polls/weighted_voting/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-06'
 ---
 
 <!-- translation-section: introduction -->
@@ -26,7 +26,7 @@ translated:
 Le vote pondéré permet à certains votes de compter davantage que d’autres. Chaque électeur a un poids du vote. Par exemple :
 
 - Une communauté résidentielle attribue un vote à chaque propriété. Un membre qui représente trois propriétés a un poids du vote de `3`.
-- Le conseil d’administration d’une coopérative prend la décision, mais le personnel opérationnel participe à la conversation. Les membres du conseil ont un poids du vote de `1`. Le personnel opérationnel a un poids du vote de `0` : ses votes sont enregistrés, mais ne modifient pas le résultat.
+- Une coopérative de travailleurs accorde le droit de vote après une période définie d’adhésion. Les membres plus récents reçoivent un poids du vote de `0`, ce qui leur permet de contribuer à la discussion et de découvrir le processus de vote sans que leurs votes influencent le résultat.
 - Une entreprise attribue des votes aux actionnaires selon leur participation au capital. Une personne qui détient 12,5 % des actions a un poids du vote de `12.5`.
 
 <!-- translation-section: set-members-vote-weights -->

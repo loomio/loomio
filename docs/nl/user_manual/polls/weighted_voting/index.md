@@ -1,22 +1,22 @@
 ---
 sections:
-  introduction: 301b7440aa148d0b
+  introduction: d1b37bf68148b2a5
   set-members-vote-weights: 47b8d7c9222794d8
   use-weighted-voting-in-a-poll: d8af319ed1e38e4d
   results: 3cd10f104ced0ed5
 generated:
-  introduction: 19aa0750d192b94b
+  introduction: e68797adab665ded
   set-members-vote-weights: 36139b6a5f25024c
   use-weighted-voting-in-a-poll: f5d73b198ba1c246
   results: 66e85ec0de2cf047
 title: Gewogen stemmen
 title_source: 0b971991dfcacbab
 title_generated: ae4290c895e6ff10
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
+source_revision: 3f73d4a156d9ffd3137ff085cc6ab58fbc4de46b
 source_file: docs/en/user_manual/polls/weighted_voting/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-06'
 ---
 
 <!-- translation-section: introduction -->
@@ -26,7 +26,7 @@ translated:
 Met gewogen stemmen tellen sommige stemmen zwaarder mee dan andere. Elke kiezer heeft een stemgewicht. Bijvoorbeeld:
 
 - Een woongemeenschap geeft elke woning één stem. Een lid dat drie woningen vertegenwoordigt, heeft een stemgewicht van `3`.
-- Het bestuur van een coöperatie neemt het besluit, maar medewerkers nemen deel aan het gesprek. Bestuursleden hebben een stemgewicht van `1`. Medewerkers hebben een stemgewicht van `0`, zodat hun stemmen worden vastgelegd maar het resultaat niet veranderen.
+- Een werknemerscoöperatie kent stemrecht toe na een vaste periode van lidmaatschap. Nieuwere leden krijgen een stemgewicht van `0`, zodat ze kunnen bijdragen aan de discussie en het stemproces kunnen ervaren zonder dat hun stemmen het resultaat beïnvloeden.
 - Een bedrijf geeft aandeelhouders stemmen op basis van hun aandelenbelang. Iemand die 12,5% van de aandelen bezit, heeft een stemgewicht van `12.5`.
 
 <!-- translation-section: set-members-vote-weights -->

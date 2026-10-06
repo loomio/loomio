@@ -1,22 +1,22 @@
 ---
 sections:
-  introduction: 301b7440aa148d0b
+  introduction: d1b37bf68148b2a5
   set-members-vote-weights: 47b8d7c9222794d8
   use-weighted-voting-in-a-poll: d8af319ed1e38e4d
   results: 3cd10f104ced0ed5
 generated:
-  introduction: e1967f474a300911
+  introduction: 6a883aad7ea24b5a
   set-members-vote-weights: 8715f492bb7c894e
   use-weighted-voting-in-a-poll: 8ad1c887fa1e22db
   results: 772f588b3302cf04
 title: הצבעה משוקללת
 title_source: 0b971991dfcacbab
 title_generated: 5bb0f41db7dbb90f
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
+source_revision: 3f73d4a156d9ffd3137ff085cc6ab58fbc4de46b
 source_file: docs/en/user_manual/polls/weighted_voting/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-06'
 needs_review:
   use-weighted-voting-in-a-poll: use "בחירה" instead of "לבחור" for "Choose"
   results: use "בחירה" instead of "לבחור" for "Choose"
@@ -29,7 +29,7 @@ needs_review:
 הצבעה משוקללת מאפשרת לתת להצבעות מסוימות משקל גדול יותר מאחרות. לכל מצביע יש משקל הצבעה. לדוגמה:
 
 - קהילת מגורים נותנת לכל נכס קול אחד. לחבר שמייצג שלושה נכסים יש משקל הצבעה של `3`.
-- הוועד של קואופרטיב מקבל את ההחלטה, וצוות התפעול לוקח חלק בשיחה. לחברי הוועד יש משקל הצבעה של `1`. לצוות התפעול יש משקל הצבעה של `0`, כך שההצבעות שלהם נרשמות אך אינן משנות את התוצאה.
+- קואופרטיב עובדים מעניק זכויות הצבעה לאחר תקופה מוגדרת של חברות. חברים חדשים יותר מקבלים משקל הצבעה של `0`, כך שניתן לתרום לדיון ולהתנסות בתהליך ההצבעה בלי שההצבעות שלהם ישפיעו על התוצאה.
 - חברה נותנת לבעלי מניות קולות בהתאם לשיעור הבעלות שלהם. בעלות על 12.5% מהמניות מעניקה משקל הצבעה של `12.5`.
 
 <!-- translation-section: set-members-vote-weights -->
