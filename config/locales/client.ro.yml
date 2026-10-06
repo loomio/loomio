@@ -2515,6 +2515,7 @@ ro:
     continue_with_email: Continuați cu e-mailul
     or_enter_your_email: Sau, introduceți adresa dvs. de e-mail
     enter_your_name: Introdu numele tau
+    invitation_required_title: Este necesară o invitație
     invitation_required: Aveți nevoie de o invitație pentru a vă crea un cont. Urmați linkul din e-mailul de invitație pentru a continua.
     more_providers: Mai mult
     email_not_present: Este necesară o adresă de e-mail

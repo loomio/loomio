@@ -3000,6 +3000,7 @@ en:
     or_enter_your_email: Or, enter your email address
     or_sign_in_with_password: Or sign in with a password
     enter_your_name: Enter your name
+    invitation_required_title: Invitation required
     invitation_required: You need an invitation to create an account. Follow the link from your invitation email to continue.
     more_providers: More
     email_not_present: An email address is required

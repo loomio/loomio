@@ -2561,6 +2561,7 @@ pt_BR:
     continue_with_email: Continuar com e-mail
     or_enter_your_email: Ou, digite o seu endereço de email
     enter_your_name: Entre seu nome
+    invitation_required_title: Convite necessário
     invitation_required: Você precisa de um convite para criar uma conta. Siga o link do seu e-mail de convite para continuar.
     more_providers: Mais
     email_not_present: É necessário um endereço de email

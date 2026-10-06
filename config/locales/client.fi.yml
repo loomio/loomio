@@ -2515,6 +2515,7 @@ fi:
     continue_with_email: Jatka sähköpostilla
     or_enter_your_email: Tai kirjoita sähköpostiosoitteesi
     enter_your_name: Kirjoita nimesi
+    invitation_required_title: Kutsu vaaditaan
     invitation_required: Tarvitset kutsun tilin luomiseen. Jatka seuraamalla kutsusähköpostissa olevaa linkkiä.
     more_providers: Lisää
     email_not_present: Sähköpostiosoite vaaditaan

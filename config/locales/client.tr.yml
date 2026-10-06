@@ -2515,6 +2515,7 @@ tr:
     continue_with_email: E-postayla devam et
     or_enter_your_email: Veya e-posta adresinizi girin
     enter_your_name: Adınızı giriniz
+    invitation_required_title: Davet gerekli
     invitation_required: Hesap oluşturmak için davetiyeye ihtiyacınız var. Devam etmek için davet e-postanızdaki bağlantıyı takip edin.
     more_providers: Daha
     email_not_present: Bir e-posta adresi gerekli

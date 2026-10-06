@@ -2514,6 +2514,7 @@ ja:
     continue_with_email: メールで続行
     or_enter_your_email: または、メールアドレスを入力してください
     enter_your_name: あなたの名前を入力してください
+    invitation_required_title: 招待が必要です
     invitation_required: アカウントを作成するには招待状が必要です。招待メールのリンクをクリックして続行します。
     more_providers: もっと
     email_not_present: メールアドレスが必要です

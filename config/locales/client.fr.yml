@@ -2557,6 +2557,7 @@ fr:
     continue_with_email: Se connecter avec votre adresse mail
     or_enter_your_email: Ou saisir votre adresse e-mail
     enter_your_name: Entrez votre nom
+    invitation_required_title: Invitation requise
     invitation_required: Vous avez besoin d’une invitation pour créer un compte.  Suivez le lien de votre e-mail d’invitation pour continuer.
     more_providers: Plus
     email_not_present: Une adresse e-mail est nécessaire

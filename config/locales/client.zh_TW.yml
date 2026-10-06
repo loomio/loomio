@@ -2541,6 +2541,7 @@ zh_TW:
     continue_with_email: 以電子郵件繼續
     or_enter_your_email: 或是輸入您的電子郵件地址
     enter_your_name: 輸入您的名字
+    invitation_required_title: 需要邀請
     invitation_required: 您需要獲得邀請才能建立帳戶。點擊邀請電子郵件中的連結繼續。
     more_providers: 詳細
     email_not_present: 需要電子郵件地址

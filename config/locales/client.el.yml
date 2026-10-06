@@ -2515,6 +2515,7 @@ el:
     continue_with_email: Συνεχίστε με email
     or_enter_your_email: Ή, πληκτρολογήστε τη διεύθυνση email σας
     enter_your_name: Εισάγετε το όνομά σας
+    invitation_required_title: Απαιτείται πρόσκληση
     invitation_required: Χρειάζεστε μια πρόσκληση για να δημιουργήσετε έναν λογαριασμό. Ακολουθήστε τον σύνδεσμο από το email πρόσκλησής σας για να συνεχίσετε.
     more_providers: Περισσότερο
     email_not_present: Απαιτείται διεύθυνση email
