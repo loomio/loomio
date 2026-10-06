@@ -40,6 +40,7 @@ export default class Flash {
   }
 
   static serverError(error, inlineFields = []) {
+    if (error.flash) { return Flash.fromServer(error.flash); }
     if (error.error) {
       const actionUrl = error.action === 'upgrade' ? SubscriptionService.upgradeUrl() : null;
       const action = actionUrl ? 'current_plan_button.upgrade' : null;

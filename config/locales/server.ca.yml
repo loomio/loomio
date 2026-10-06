@@ -112,6 +112,7 @@ ca:
     add_guests:
       all: Heu d'actualitzar la vostra subscripció a Loomio per afegir convidats. Alternativament, podeu convidar-los a ser membres del vostre grup.
   errors:
+    item_you_are_replying_to_deleted: "L'element al qual respons s'ha eliminat"
     clear_cache: S'ha detectat un problema de càrrega. Manteniu premuda la majúscula i premeu Recarrega o esborra la memòria cau del navegador.
     404:
       title: No s'ha trobat

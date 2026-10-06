@@ -112,6 +112,7 @@ de:
     add_guests:
       all: Du musst dein Loomio-Abonnement aktualisieren, um Gäste hinzuzufügen. Alternativ kannst du sie einladen, Mitglieder deiner Gruppe zu werden.
   errors:
+    item_you_are_replying_to_deleted: "Der Eintrag, auf den du antwortest, wurde gelöscht"
     clear_cache: Ladeproblem erkannt. Halte die Umschalttaste gedrückt und drücke "Neu laden", oder leere den Browser-Cache.
     400:
       title: Ungültige Anforderung

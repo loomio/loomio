@@ -1,7 +1,13 @@
 class CommentService
+  class ParentDeleted < ActiveRecord::RecordNotFound; end
+
   def self.create(comment:, actor:, &on_topic_item)
-    comment.author = actor
+    # Reject deleted targets before authorization follows their topic.
+    parent = comment.parent
+    raise ParentDeleted, "Comment parent has been deleted" if parent.nil? || parent.discarded?
+
     actor.ability.authorize! :create, comment
+    comment.author = actor
     return comment unless comment.valid?
 
     topic_item = Comment.transaction do

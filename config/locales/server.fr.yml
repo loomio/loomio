@@ -112,6 +112,7 @@ fr:
     add_guests:
       all: Vous devez mettre à niveau votre abonnement Loomio pour ajouter des invités. Vous pouvez aussi les inviter à devenir membres de votre groupe.
   errors:
+    item_you_are_replying_to_deleted: "L’élément auquel vous répondez a été supprimé"
     clear_cache: Problème de chargement détecté. Maintenez la touche majuscule enfoncée en pressant le bouton de rechargement de la page ou videz la mémoire cache de votre navigateur.
     400:
       title: Mauvaise requête

@@ -385,6 +385,7 @@ zh_CN:
     add_guests:
       all: 您必须升级 Loomio 订阅才能添加访客。或者，您可以邀请他们成为您群组的成员。
   errors:
+    item_you_are_replying_to_deleted: "您正在回复的内容已被删除"
     clear_cache: 检测到加载问题。请按住Shift键并重新加载页面，或清除浏览器缓存。
     '400':
       title: 错误的请求

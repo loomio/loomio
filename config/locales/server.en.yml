@@ -420,6 +420,7 @@ en:
     add_guests:
       all: You must upgrade your Loomio subscription to add guests. Alternatively, you can invite them to be members of your group.
   errors:
+    item_you_are_replying_to_deleted: "The item you are replying to has been deleted"
     invitation_rate_limit_reached_contact_support: Daily invitation limit reached. Contact support immediately.
     subscription_thread_limit_reached: This organization has reached its thread limit. Please upgrade to continue using Loomio.
     new_account_trial_group_limit: New accounts are limited to one group. Please contact support if you need more.

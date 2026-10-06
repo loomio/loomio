@@ -97,6 +97,65 @@ class Api::V1::CommentsControllerTest < ActionController::TestCase
     assert_response :success
   end
 
+  test "create warns the reply author when the original comment is deleted" do
+    parent_id = @user_comment.id
+    CommentService.destroy(comment: @user_comment, actor: @user)
+    sign_in @user
+
+    assert_no_difference ["Comment.count", "TopicItem.count", "Notification.count"] do
+      post :create, params: { comment: { parent_type: "Comment", parent_id: parent_id, body: "Stale reply" } }
+    end
+
+    assert_response :unprocessable_entity
+    assert_equal I18n.t("errors.item_you_are_replying_to_deleted"), JSON.parse(response.body).fetch("flash").fetch("error")
+  end
+
+  test "create warns the reply author when the original comment is discarded" do
+    CommentService.discard(comment: @user_comment, actor: @admin)
+    sign_in @user
+
+    assert_no_difference ["Comment.count", "TopicItem.count", "Notification.count"] do
+      post :create, params: {
+        locale: "es",
+        comment: { parent_type: "Comment", parent_id: @user_comment.id, body: "Stale reply" }
+      }
+    end
+
+    assert_response :unprocessable_entity
+    assert_equal I18n.t("errors.item_you_are_replying_to_deleted", locale: :es), JSON.parse(response.body).fetch("flash").fetch("error")
+  end
+
+  test "create warns the comment author when a legacy topicless discussion is discarded" do
+    @discussion.update_columns(topic_id: nil, discarded_at: Time.current)
+    sign_in @user
+
+    assert_no_difference ["Comment.count", "TopicItem.count", "Notification.count"] do
+      post :create, params: { comment: { parent_type: "Discussion", parent_id: @discussion.id, body: "Stale comment" } }
+    end
+
+    assert_response :unprocessable_entity
+    assert_equal I18n.t("errors.item_you_are_replying_to_deleted"), JSON.parse(response.body).fetch("flash").fetch("error")
+  end
+
+  test "create warns the comment author when the poll is discarded" do
+    poll = PollService.create(params: {
+      title: "Comment target",
+      poll_type: "poll",
+      topic_id: @discussion.topic_id,
+      poll_option_names: %w[Agree Disagree],
+      closing_at: 3.days.from_now
+    }, actor: @admin)
+    PollService.discard(poll: poll, actor: @admin)
+    sign_in @user
+
+    assert_no_difference ["Comment.count", "TopicItem.count", "Notification.count"] do
+      post :create, params: { comment: { parent_type: "Poll", parent_id: poll.id, body: "Stale comment" } }
+    end
+
+    assert_response :unprocessable_entity
+    assert_equal I18n.t("errors.item_you_are_replying_to_deleted"), JSON.parse(response.body).fetch("flash").fetch("error")
+  end
+
   test "create prevents xss src" do
     sign_in @user
     post :create, params: { comment: { parent_type: 'Discussion', parent_id: @discussion.id, body: "<img src=\"javascript:alert('hi')\" >hello", body_format: "html" } }

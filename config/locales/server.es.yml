@@ -112,6 +112,7 @@ es:
     add_guests:
       all: Debes actualizar tu suscripción de Loomio para agregar invitados. Alternativamente, puedes invitarlos a ser miembros de tu grupo.
   errors:
+    item_you_are_replying_to_deleted: "El elemento al que estás respondiendo se ha eliminado"
     clear_cache: Se ha detectado un problema al cargar. Mantener "shift" y presionar "recargar" o elimina tu navegador caché.
     400:
       title: Mala petición

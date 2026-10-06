@@ -112,6 +112,7 @@ tr:
     add_guests:
       all: Misafir eklemek için Loomio aboneliğinizi yükseltmelisiniz. Alternatif olarak onları grubunuzun üyesi olmaya davet edebilirsiniz.
   errors:
+    item_you_are_replying_to_deleted: "Yanıt verdiğiniz öğe silindi"
     clear_cache: Yükleme sorunu algılandı. Shift tuşunu basılı tutun ve yeniden yükle tuşuna basın veya tarayıcınızın önbelleğini temizleyin.
     404:
       title: Bulunamadı

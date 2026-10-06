@@ -112,6 +112,7 @@ pl:
     add_guests:
       all: Musisz uaktualnić swoją subskrypcję Loomio, aby dodać gości. Alternatywnie możesz zaprosić ich do członkostwa w swojej grupie.
   errors:
+    item_you_are_replying_to_deleted: "Element, na który odpowiadasz, został usunięty"
     clear_cache: Wykryto problem z wczytywaniem. Przytrzymaj Shift i naciśnij Odśwież lub wyczyść pamięć podręczną przeglądarki.
     400:
       title: Zła prośba

@@ -112,6 +112,7 @@ hu:
     add_guests:
       all: Frissítenie kell Loomio-előfizetését, hogy vendégeket adhasson hozzá. Alternatív megoldásként meghívhatja őket, hogy legyenek a csoport tagjai.
   errors:
+    item_you_are_replying_to_deleted: "Az elemet, amelyre válaszolsz, törölték"
     clear_cache: Betöltési probléma észlelve. Tartsa lenyomva a Shift gombot, és nyomja meg a Reload gombot, vagy törölje a böngésző gyorsítótárát.
     404:
       title: Nem található

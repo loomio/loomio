@@ -29,6 +29,97 @@ class CommentServiceTest < ActiveSupport::TestCase
     assert_not Notification.about(comment).exists?(kind: "new_comment")
   end
 
+  test "creation preserves the group and direct topic access matrix" do
+    [:discussion_topic, :direct_topic].each do |fixture|
+      topic = topics(fixture)
+      topic.topicable.create_missing_created_topic_item! unless topic.topicable.created_topic_item
+      roles = {
+        member_normal: fixture == :discussion_topic,
+        guest_normal: true,
+        guest_admin_normal: true,
+        alien_loud: false,
+        non_guest_loud: false,
+        former_member_loud: false,
+        former_guest_loud: false,
+        inactive_member_loud: false,
+        inactive_guest_loud: false,
+        server_admin: false
+      }
+
+      actors = roles.map { |role, allowed| [users(role), allowed] } + [[LoggedOutUser.new, false]]
+      actors.each do |actor, allowed|
+        comment = Comment.new(parent: topic.topicable, body: "Access matrix comment")
+        if allowed
+          created_comment = CommentService.create(comment: comment, actor: actor)
+          assert_predicate created_comment, :persisted?, "#{fixture}: #{actor.name}"
+          assert_equal topic.id, created_comment.created_topic_item.topic_id
+        else
+          assert_no_difference ["Comment.count", "TopicItem.count", "Notification.count"] do
+            assert_raises CanCan::AccessDenied do
+              CommentService.create(comment: comment, actor: actor)
+            end
+          end
+        end
+      end
+    end
+  end
+
+  test "comments on votes and outcomes use their shared discarded predicate" do
+    poll = PollService.create(params: {
+      title: "Reply target",
+      poll_type: "proposal",
+      topic_id: @discussion.topic_id,
+      closing_at: 3.days.from_now,
+      poll_option_names: %w[Agree Disagree]
+    }, actor: @admin)
+    stance = poll.stances.undecided.find_by!(participant: @user)
+    stance.choice = "Agree"
+    stance.reason = "My vote"
+    StanceService.create(stance: stance, actor: @user)
+    PollService.close(poll: poll, actor: @admin)
+    outcome = Outcome.new(poll: poll, statement: "The conclusion")
+    OutcomeService.create(outcome: outcome, actor: @admin)
+
+    [stance, outcome].each do |parent|
+      comment = Comment.new(parent: parent, body: "Reply to #{parent.class.name}")
+      assert_difference "Comment.count", 1 do
+        CommentService.create(comment: comment, actor: @user)
+      end
+      assert_equal poll.topic_id, comment.created_topic_item.topic_id
+    end
+
+    PollService.discard(poll: poll, actor: @admin)
+    assert_no_difference ["Comment.count", "TopicItem.count", "Notification.count"] do
+      assert_raises CommentService::ParentDeleted do
+        CommentService.create(comment: Comment.new(parent: outcome, body: "Stale outcome reply"), actor: @user)
+      end
+    end
+  end
+
+  test "discarded and missing reply parents give the same warning across the access matrix" do
+    roles = [:member_normal, :guest_normal, :guest_admin_normal, :alien_loud,
+             :non_guest_loud, :former_member_loud, :former_guest_loud,
+             :inactive_member_loud, :inactive_guest_loud, :server_admin]
+    actors = roles.map { |role| users(role) } + [LoggedOutUser.new]
+
+    [:discussion_topic, :direct_topic].each do |fixture|
+      discussion = topics(fixture).topicable
+      discussion.create_missing_created_topic_item! unless discussion.created_topic_item
+      DiscussionService.discard(discussion: discussion, actor: discussion.author)
+
+      assert_no_difference ["Comment.count", "TopicItem.count", "Notification.count"] do
+        actors.each do |actor|
+          [discussion, nil].each do |parent|
+            reply = Comment.new(parent: parent, body: "Do not post this reply")
+            assert_raises CommentService::ParentDeleted, "#{fixture}: #{actor.name}" do
+              CommentService.create(comment: reply, actor: actor)
+            end
+          end
+        end
+      end
+    end
+  end
+
   test "unmentioned comment does not create a notification record" do
     subscriber = @admin
     TopicReader.for(user: subscriber, topic: @discussion.topic).set_volume!(email: :loud, push: :quiet)

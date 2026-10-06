@@ -107,6 +107,7 @@ ja:
         blank: 空白にすることはできません
         invalid: は有効な値ではありません
   errors:
+    item_you_are_replying_to_deleted: "返信先の項目は削除されています"
     clear_cache: 読み込みの問題が検出されました。 Shift キーを押しながらリロードを押すか、ブラウザのキャッシュをクリアします。
     404:
       title: 見つかりません

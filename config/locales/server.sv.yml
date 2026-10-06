@@ -112,6 +112,7 @@ sv:
     add_guests:
       all: Du måste uppgradera din Loomio-prenumeration för att lägga till gäster. Alternativt kan du bjuda in dem att bli medlemmar i din grupp.
   errors:
+    item_you_are_replying_to_deleted: "Objektet du svarar på har tagits bort"
     clear_cache: Lastningsproblem upptäcktes. Håll ned shift och tryck på ladda om, eller rensa webbläsarens cacheminne.
     404:
       title: Inte hittad

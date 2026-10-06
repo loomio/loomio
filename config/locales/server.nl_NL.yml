@@ -112,6 +112,7 @@ nl_NL:
     add_guests:
       all: U moet uw Loomio-abonnement upgraden om gasten toe te voegen. U kunt ze ook uitnodigen om lid te worden van uw groep.
   errors:
+    item_you_are_replying_to_deleted: "Het item waarop je antwoordt, is verwijderd"
     clear_cache: Laad probleem gedetecteerd. Houdt Shift ingedrukt en druk op Vernieuwen, of wis de browser cache.
     400:
       title: Bad request

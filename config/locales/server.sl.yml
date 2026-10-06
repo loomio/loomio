@@ -112,6 +112,7 @@ sl:
     add_guests:
       all: Morate nadgraditi svojo naročnino na Loomio, da dodate goste. Lahko pa jih povabite, da postanejo člani vaše skupine.
   errors:
+    item_you_are_replying_to_deleted: "Element, na katerega odgovarjate, je bil izbrisan"
     clear_cache: Zaznana težava pri nalaganju. Držite shift in pritisnite Reload ali počistite predpomnilnik brskalnika.
     404:
       title: Ni najdeno

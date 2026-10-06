@@ -112,6 +112,7 @@ ro:
     add_guests:
       all: Trebuie să vă actualizați abonamentul Loomio pentru a adăuga invitați. Alternativ, îi puteți invita să fie membri ai grupului dvs.
   errors:
+    item_you_are_replying_to_deleted: "Elementul la care răspunzi a fost șters"
     clear_cache: Problemă la încărcare detectată. Țineți apăsat Shift și apăsați pe Reîncărcare sau ștergeți memoria cache a browserului.
     404:
       title: Nu am găsit

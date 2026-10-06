@@ -112,6 +112,7 @@ fi:
     add_guests:
       all: Sinun on päivitettävä Loomio-tilauksesi, jotta voit lisätä vieraita. Vaihtoehtoisesti voit kutsua heidät ryhmäsi jäseniksi.
   errors:
+    item_you_are_replying_to_deleted: "Kohde, johon vastaat, on poistettu"
     clear_cache: Latausongelma havaittu. Pidä vaihtonäppäintä painettuna ja paina reload-näppäintä tai tyhjennä selaimen välimuisti.
     404:
       title: Ei löydetty

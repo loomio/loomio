@@ -112,6 +112,7 @@ pt_BR:
     add_guests:
       all: Você deve atualizar sua assinatura do Loomio para adicionar convidados. Como alternativa, você pode convidá-los para serem membros do seu grupo.
   errors:
+    item_you_are_replying_to_deleted: "O item ao qual você está respondendo foi excluído"
     clear_cache: Problema de carregamento detectado. Segure shift e pressione recarregar, ou limpe o cache do navegador.
     400:
       title: Pedido ruim

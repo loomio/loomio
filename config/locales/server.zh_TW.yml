@@ -112,6 +112,7 @@ zh_TW:
     add_guests:
       all: 您必須升級您的 Loomio 訂閱才能新增訪客。或者，您可以邀請他們成為您群組的成員。
   errors:
+    item_you_are_replying_to_deleted: "您正在回覆的內容已被刪除"
     clear_cache: 偵測到載入問題。按住 shift 並按下重新整理，或是清除您的瀏覽器快取。
     400:
       title: 錯誤的請求

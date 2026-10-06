@@ -112,6 +112,7 @@ hr:
     add_guests:
       all: Morate nadograditi svoju pretplatu na Loomio da biste dodali goste. Alternativno, možete ih pozvati da budu članovi vaše grupe.
   errors:
+    item_you_are_replying_to_deleted: "Stavka na koju odgovarate je izbrisana"
     clear_cache: Otkriven problem učitavanja. Držite shift i pritisnite reload ili izbrišite predmemoriju preglednika.
     404:
       title: Nije pronađeno

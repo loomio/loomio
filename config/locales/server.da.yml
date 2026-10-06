@@ -112,6 +112,7 @@ da:
     add_guests:
       all: Du skal opgradere dit Loomio-abonnement for at tilføje gæster. Alternativt kan du invitere dem til at være medlemmer af din gruppe.
   errors:
+    item_you_are_replying_to_deleted: "Det element, du svarer på, er blevet slettet"
     clear_cache: Indlæsningsproblem fundet. Hold shift nede, og tryk på genindlæs, eller tøm din browsers cache.
     404:
       title: Ingen resultater fundet
