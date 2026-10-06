@@ -1,12 +1,13 @@
 <script setup>
-import { onMounted, ref } from 'vue';
+import { onMounted, onUnmounted, ref } from 'vue';
 import { useI18n } from 'vue-i18n';
 import AuthService from '@/shared/services/auth_service';
 import Flash from '@/shared/services/flash';
+import EventBus from '@/shared/services/event_bus';
 import { approximate } from '@/shared/helpers/format_time';
 
 const { t } = useI18n();
-const credentials = ref([]);
+const credentials = ref(null);
 const name = ref(AuthService.suggestedPasskeyName());
 const loading = ref(false);
 const supported = AuthService.passkeysSupported();
@@ -14,6 +15,25 @@ const supported = AuthService.passkeysSupported();
 const load = async () => {
   const data = await AuthService.passkeyCredentials();
   credentials.value = data.passkey_credentials || [];
+};
+
+// The browser can retain its profile after the server session expires. Clear
+// credential metadata and request sign-in; only a fresh load restores controls.
+const handleUnauthorized = (error) => {
+  if (error.status !== 401) return false;
+  credentials.value = null;
+  EventBus.$emit('openAuthModal');
+  return true;
+};
+
+const refresh = async () => {
+  if (!supported) return;
+  credentials.value = null;
+  try {
+    await load();
+  } catch (error) {
+    if (!handleUnauthorized(error)) throw error;
+  }
 };
 
 const add = async () => {
@@ -24,6 +44,7 @@ const add = async () => {
     await load();
     Flash.success('passkey_settings.added');
   } catch (error) {
+    if (handleUnauthorized(error)) return;
     if (error?.name !== 'NotAllowedError') {
       const message = error?.errors?.passkey?.[0];
       message ? Flash.error(message) : Flash.error('auth_form.passkey_registration_failed');
@@ -42,6 +63,7 @@ const remove = async (credential) => {
     await load();
     Flash.success('passkey_settings.removed');
   } catch (error) {
+    if (handleUnauthorized(error)) return;
     const message = error?.errors?.passkey?.[0];
     message ? Flash.error(message) : Flash.error('passkey_settings.remove_failed');
   } finally {
@@ -49,11 +71,13 @@ const remove = async (credential) => {
   }
 };
 
-onMounted(load);
+onMounted(refresh);
+EventBus.$on('signedIn', refresh);
+onUnmounted(() => EventBus.$off('signedIn', refresh));
 </script>
 
 <template lang="pug">
-v-card.passkey-settings.mt-4(v-if="supported" :title="t('passkey_settings.title')")
+v-card.passkey-settings.mt-4(v-if="supported && credentials !== null" :title="t('passkey_settings.title')")
   v-card-text
     p.text-medium-emphasis {{ t('passkey_settings.helptext') }}
     v-list(v-if="credentials.length" lines="two")
