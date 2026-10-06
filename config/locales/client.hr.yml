@@ -2519,6 +2519,7 @@ hr:
     continue_with_email: Nastavite s e-poštom
     or_enter_your_email: Ili unesite svoju adresu e-pošte
     enter_your_name: Unesite svoje ime
+    invitation_required_title: Potrebna je pozivnica
     invitation_required: Za kreiranje računa potrebna vam je pozivnica. Za nastavak slijedite vezu iz svoje pozivnice e-pošte.
     more_providers: Više
     email_not_present: Adresa e-pošte je obavezna

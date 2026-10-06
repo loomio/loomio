@@ -48,10 +48,11 @@ export default {
 </script>
 <template lang="pug">
 v-card.auth-signup-form(
-  :title="allow ? $t('auth_form.welcome', { siteName: siteName }) : $t('auth_form.invitation_required')")
+  :title="allow ? $t('auth_form.welcome', { siteName: siteName }) : $t('auth_form.invitation_required_title')")
   template(v-slot:append)
     auth-back-button(@click='user.authForm = null')
-  form(v-if="allow" @submit.prevent="submit" novalidate)
+  v-card-text.auth-signup-form__invitation-required(v-if="!allow") {{ $t('auth_form.invitation_required') }}
+  form(v-else @submit.prevent="submit" novalidate)
     v-sheet.mx-4
       .max-width-400.mx-auto
         v-text-field.auth-signup-form__email(

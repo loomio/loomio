@@ -2540,6 +2540,7 @@ nl_NL:
     continue_with_email: Ga door met e-mail
     or_enter_your_email: Of, voeg je emailadres in
     enter_your_name: Typ je naam
+    invitation_required_title: Uitnodiging vereist
     invitation_required: Om een account aan te maken heb je een uitnodiging nodig. Volg de link in uw uitnodigingsmail om door te gaan.
     more_providers: Meer
     email_not_present: Een e-mailadres is vereist

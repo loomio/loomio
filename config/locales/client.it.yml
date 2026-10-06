@@ -2543,6 +2543,7 @@ it:
     continue_with_email: Accedi con la tua email
     or_enter_your_email: Oppure, inserisci il tuo indirizzo di email
     enter_your_name: Inserisci il tuo nome
+    invitation_required_title: Invito necessario
     invitation_required: Hai bisogno di un invito per creare un account. Segui il link dall'e-mail di invito per continuare.
     more_providers: Di più
     email_not_present: E' richiesto un indirizzo email

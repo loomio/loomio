@@ -2549,6 +2549,7 @@ es:
     continue_with_email: Continuar con email
     or_enter_your_email: O, introduce tu dirección de correo electrónico
     enter_your_name: Ingresa tu nombre
+    invitation_required_title: Se necesita una invitación
     invitation_required: Necesitas una invitación para crear una cuenta. Sigue el enlace de tu correo electrónico de invitación para continuar.
     more_providers: Más
     email_not_present: Se necesita una dirección de correo

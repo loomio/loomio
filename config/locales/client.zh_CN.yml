@@ -2805,6 +2805,7 @@ zh_CN:
     continue_with_email: 继续通过电子邮件
     or_enter_your_email: 或者，输入您的电子邮件地址
     enter_your_name: 请输入您的名字
+    invitation_required_title: 需要邀请
     invitation_required: 您需要收到邀请才能创建帐户。请点击邀请邮件中的链接继续。
     more_providers: 更多的
     email_not_present: 必须提供电子邮件地址。

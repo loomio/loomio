@@ -2540,6 +2540,7 @@ ca:
     continue_with_email: Continua amb el correu electrònic
     or_enter_your_email: 'O introduïu la vostra adreça de correu electrònic '
     enter_your_name: Introduïu el vostre nom
+    invitation_required_title: Cal una invitació
     invitation_required: Necessites una invitació per crear un compte. Seguiu l'enllaç del correu electrònic d'invitació per continuar.
     more_providers: Més
     email_not_present: És necessari introduir una adreça de correu electrònic

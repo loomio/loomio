@@ -2526,6 +2526,7 @@ hu:
     continue_with_email: Folytatás email fiókkal
     or_enter_your_email: Vagy írja be az e-mail címét
     enter_your_name: Add meg a neved
+    invitation_required_title: Meghívó szükséges
     invitation_required: Fiók létrehozásához meghívóra van szüksége. A folytatáshoz kövesse a meghívó e-mailben található linket.
     more_providers: Több
     email_not_present: E-mail címre van szükség

@@ -2527,6 +2527,7 @@ da:
     continue_with_email: Fortsæt med e-mail
     or_enter_your_email: Eller indtast din e-mailadresse
     enter_your_name: Indtast dit navn
+    invitation_required_title: Invitation påkrævet
     invitation_required: Du skal have en invitation for at oprette en konto. Følg linket fra din invitationsmail for at fortsætte.
     more_providers: Mere
     email_not_present: En e-mailadresse er påkrævet

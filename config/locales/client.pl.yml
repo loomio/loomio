@@ -2540,6 +2540,7 @@ pl:
     continue_with_email: Kontynuuj za pomocą adresu e-mail
     or_enter_your_email: Lub wprowadź swój adres e-mail
     enter_your_name: 'Wprowadź imię '
+    invitation_required_title: Wymagane zaproszenie
     invitation_required: Aby utworzyć konto, potrzebujesz zaproszenia. Kliknij link z e-maila z zaproszeniem, aby kontynuować.
     more_providers: Więcej
     email_not_present: Adres e-mail jest wymagany
