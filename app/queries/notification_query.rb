@@ -15,6 +15,13 @@ class NotificationQuery
     notifications = notifications.to_a
     preload_subject_dependencies(notifications)
 
+    # Discarded legacy subjects may no longer have a topic. Exclude them before
+    # following topic relationships or evaluating current authorization.
+    notifications = notifications.reject do |notification|
+      subject = notification.subject_model
+      subject.respond_to?(:discarded?) && subject.discarded?
+    end
+
     topic_ids = notifications.filter_map do |notification|
       notification_topic_id(notification)
     end.uniq

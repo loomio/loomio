@@ -75,6 +75,26 @@ class Api::V1::Mobile::ActivityControllerTest < ActionDispatch::IntegrationTest
     assert_response :not_found
   end
 
+  test "excludes discarded legacy discussions from activity and viewed updates" do
+    discussion = discussions(:discussion)
+    discarded = create_notification(subject: discussion, title: "Discarded activity")
+    visible = create_notification(subject: discussions(:public_discussion), title: "Visible activity")
+    delivery = NotificationDelivery.find_by!(notification: discarded, recipient: @user, channel: "in_app")
+    discussion.update_columns(topic_id: nil, discarded_at: Time.current)
+
+    get "/api/v1/mobile/activity", headers: bearer_headers
+
+    assert_response :success
+    ids = JSON.parse(response.body).fetch("activity").pluck("id")
+    assert_includes ids, visible.id
+    assert_not_includes ids, discarded.id
+
+    patch "/api/v1/mobile/activity/#{discarded.id}", headers: bearer_headers
+
+    assert_response :not_found
+    assert_nil delivery.reload.viewed_at
+  end
+
   test "requires the corresponding activity scopes" do
     notification = create_notification(subject: discussions(:discussion), title: "Scoped")
     @pair[:device].mobile_access_tokens.update_all(scopes: "activity:write")

@@ -126,6 +126,64 @@ class Api::V1::NotificationsControllerTest < ActionController::TestCase
     assert_not_includes ids, notification.id
   end
 
+  test "index excludes discarded legacy discussions without topics" do
+    recipient = users(:guest_normal)
+    notifications = [:discussion_topic, :direct_topic].flat_map do |fixture|
+      discussion = topics(fixture).topicable
+      discussion.create_missing_created_topic_item! unless discussion.created_topic_item
+      records = [discussion, discussion.created_topic_item].map do |subject|
+        create_notification(user: recipient, actor: @admin, subject: subject)
+      end
+      # Reproduce the historical cleanup that retained discarded discussion rows.
+      discussion.update_columns(topic_id: nil, discarded_at: Time.current)
+      records
+    end
+    visible = create_notification(user: recipient, actor: @admin, subject: discussions(:public_discussion))
+    sign_in recipient
+
+    get :index
+
+    assert_response :success
+    ids = JSON.parse(response.body)["notifications"].pluck("id")
+    assert_includes ids, visible.id
+    notifications.each { |notification| assert_not_includes ids, notification.id }
+  end
+
+  test "discarding group and direct discussions hides their retained notifications" do
+    recipient = users(:guest_normal)
+    sign_in recipient
+
+    [:discussion_topic, :direct_topic].each do |fixture|
+      topic = topics(fixture)
+      discussion = topic.topicable
+      discussion.create_missing_created_topic_item! unless discussion.created_topic_item
+      comment = CommentService.create(
+        comment: Comment.new(parent: discussion, body: "Discard notification coverage"),
+        actor: recipient
+      )
+      notifications = [discussion, discussion.created_topic_item, comment.created_topic_item].map do |subject|
+        create_notification(user: recipient, actor: @admin, subject: subject)
+      end
+      delivery_ids = NotificationDelivery.where(notification: notifications).pluck(:id)
+
+      get :index
+      assert_response :success
+      ids = JSON.parse(response.body)["notifications"].pluck("id")
+      notifications.each { |notification| assert_includes ids, notification.id }
+
+      DiscussionService.discard(discussion: discussion, actor: discussion.author)
+
+      get :index
+      assert_response :success
+      ids = JSON.parse(response.body)["notifications"].pluck("id")
+      notifications.each { |notification| assert_not_includes ids, notification.id }
+      assert_equal topic.id, discussion.reload.topic_id
+      assert_not_nil topic.reload.discarded_at
+      assert_equal notifications.map(&:id).sort, Notification.where(id: notifications.map(&:id)).order(:id).pluck(:id)
+      assert_equal delivery_ids.sort, NotificationDelivery.where(id: delivery_ids).order(:id).pluck(:id)
+    end
+  end
+
   test "index batches poll visibility checks without weakening topic access" do
     accessible_polls = 2.times.map do |index|
       PollService.create(params: {
