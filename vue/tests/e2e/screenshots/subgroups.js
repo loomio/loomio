@@ -43,8 +43,10 @@ module.exports = {
     page.execute("Array.from(document.querySelectorAll('.sidebar-start-subgroup')).find(el => el.offsetParent).click()");
     page.waitFor('.group-form');
     page.fillIn('.group-form__name input', 'Packaging Working Group');
+    page.expectValue('.group-form__handle input', 'oatmilk-cooperative-packaging-working-group');
     page.fillIn('.group-form__group-description [contenteditable=true]', 'Coordinate packaging suppliers, bottle returns, and labelling.');
-    page.execute("document.querySelector('.group-form__privacy-closed input').click()");
+    page.click('.group-form__privacy-parent_members');
+    page.click('.group-form__membership-granted-upon-request');
     page.expectText('.group-form', 'Start subgroup');
     screenshot.captureElement('groups/subgroups/subgroups_new', '.group-form', {height: 1200});
   },
@@ -66,11 +68,36 @@ module.exports = {
     openGroupSettings(page, 'setup_manual_oatmilk_closed_subgroup_admin');
     page.click('.v-overlay .action-dock__button--edit_group');
     page.waitFor('.group-form');
+    page.click('.group-form__privacy-tab');
+    page.click('.group-form__privacy-parent_members');
     page.click('.group-form__permissions-tab');
     page.waitFor('.group-form__parent-members-can-see-discussions');
     screenshot.captureElement('groups/subgroups/subgroups_private_threads_settings', '.group-form', {
       height: 1200,
       spotlight: spotlight('.group-form__parent-members-can-see-discussions')
+    });
+  },
+
+  'subgroup_privacy_settings': (test) => {
+    const page = pageHelper(test);
+    const screenshot = manualScreenshot(test);
+
+    openGroupSettings(page, 'setup_manual_oatmilk_closed_subgroup_admin');
+    page.click('.v-overlay .action-dock__button--edit_group');
+    page.waitFor('.group-form');
+    page.click('.group-form__privacy-tab');
+    page.click('.group-form__privacy-parent_members');
+    page.click('.group-form__membership-granted-upon-request');
+    page.expectText('.group-form__membership-granted-upon-request', 'Members of Oatmilk Cooperative can join without approval');
+    screenshot.captureElement('groups/subgroups/subgroups_privacy_settings', '.group-form', {
+      height: 1200,
+      spotlight: {
+        selectors: ['.group-form__privacy-parent_members', '.group-form__membership-granted-upon-request'],
+        padding: 14,
+        radius: 14,
+        opacity: 0.4,
+        outlineWidth: 0
+      }
     });
   },
 

@@ -248,6 +248,7 @@ el:
       open: Άνοιγμα
       closed: Έκλεισε
       private: Ιδιωτικό
+      parent_members: "Ορατή στη γονική ομάδα"
       secret: Κρυφό
     selected: Επιλεγμένα
     today: σήμερα
@@ -1422,6 +1423,9 @@ el:
     confirm_change_to_public: Εάν συνεχίσετε, όλα τα νήματα σε αυτήν την ομάδα θα δημοσιοποιηθούν στον ιστό.
     confirm_change_to_private_discussions_only: Εάν συνεχίσετε, τυχόν δημόσια νήματα σε αυτήν την ομάδα θα γίνουν ιδιωτικά.
     profile: Προφίλ
+    subgroup_name_and_content_are_public: "Όλοι μπορούν να βρουν αυτή την υποομάδα και να διαβάσουν τα νήματά της"
+    subgroup_name_is_public_and_threads_are_private: "Όλοι μπορούν να βρουν αυτή την υποομάδα· τα νήματά της είναι ιδιωτικά"
+    subgroup_is_visible_to_parent_members: "Τα μέλη της %{parent} μπορούν να βρουν αυτή την υποομάδα· τα νήματά της είναι ιδιωτικά"
     subgroup_privacy_is_open_description: Οποιοσδήποτε μπορεί να βρει αυτήν την υποομάδα και να ζητήσει να συμμετάσχει. Μόνο τα μέλη μπορούν να δουν ποιος είναι στην ομάδα. Όλα τα νήματα είναι δημόσια.
     subgroup_privacy_is_closed_description: Οποιοσδήποτε μπορεί να βρει αυτήν την υποομάδα και να ζητήσει να συμμετάσχει. Μόνο τα μέλη μπορούν να δουν ποιος είναι στην ομάδα. Όλα τα νήματα είναι ιδιωτικά.
     subgroup_privacy_is_closed_public_threads_description: Οποιοσδήποτε μπορεί να βρει αυτήν την υποομάδα και να ζητήσει να συμμετάσχει. Μόνο τα μέλη μπορούν να δουν ποιος είναι στην ομάδα. Τα νήματα μπορεί να είναι δημόσια ή ιδιωτικά.
@@ -1432,6 +1436,8 @@ el:
     membership_granted_upon_request: Οποιοσδήποτε μπορεί να συμμετάσχει στην ομάδα.
     membership_granted_upon_approval: Οποιοσδήποτε μπορεί να ζητήσει να συμμετάσχει, αλλά πρέπει να εγκριθεί.
     membership_granted_upon_invitation: Μόνο πρόσκληση.
+    membership_granted_upon_approval_parent_members: "Τα μέλη της %{parent} μπορούν να ζητήσουν έγκριση για να συμμετάσχουν"
+    membership_granted_upon_request_parent_members: "Τα μέλη της %{parent} μπορούν να συμμετέχουν χωρίς έγκριση"
     membership_granted_upon_approval_secret_parent: "<strong>Κατόπιν αιτήματος,</strong> οποιοσδήποτε από το %{parent} μπορεί να ζητήσει να συμμετάσχει στην ομάδα."
     permissions: Δικαιώματα
     thread_privacy: Ιδιωτικότητα του θέματος

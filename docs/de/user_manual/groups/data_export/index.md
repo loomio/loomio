@@ -1,16 +1,16 @@
 ---
 title: Datenexport
-source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
+source_revision: cd2e1e63e611688362e80009f50b8ed25025ba8b
 source_file: docs/en/user_manual/groups/data_export/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-07'
 sections:
   introduction: 5e29f67f9a2084ec
   export-data: 58b5e1d4e6f0b917
   export-group-data-as-csv: 53286ec33e7300d6
   export-group-data-as-html: 101671937dcd6f36
-  export-group-data-as-json: 4ec883363fb166ee
+  export-group-data-as-json: aa310889d0854550
   print-thread-to-pdf: 39c48383953f9fd5
   import-your-group-data-on-another-loomio-server: 910ee8af48049e82
 generated:
@@ -18,13 +18,11 @@ generated:
   export-data: 68a7606c04134e40
   export-group-data-as-csv: c063220f6c01635d
   export-group-data-as-html: 2019ed78af84f3d2
-  export-group-data-as-json: 0f573b5127e8cb51
+  export-group-data-as-json: 1e3c491408327ea4
   print-thread-to-pdf: 377dc595af2ca88b
   import-your-group-data-on-another-loomio-server: 5f0f3a5148b8494e
 title_source: 29049648f87b87f5
 title_generated: 9b85380b6981cdc8
-needs_review:
-  export-group-data-as-json: use "Stimme" instead of "Abstimmung" for "vote"
 ---
 
 <!-- translation-section: introduction -->
@@ -81,7 +79,7 @@ Du musst Admin der Gruppe sein, um sie zu exportieren. Der JSON-Export enthält:
 - Threads, Kommentare, Reaktionen, Schlagwörter, Vorlagen, Benachrichtigungen und zugehörige Datensätze aus den enthaltenen Gruppen
 - Abstimmungen, Optionen, Stimmen und Fazits; eine anonyme Abstimmung wird erst nach ihrer Beendigung aufgenommen
 - Untergruppen, denen du angehörst
-- Offene und geschlossene Untergruppen, wenn du als Admin ihrer Hauptgruppe die Hauptgruppe exportierst, auch wenn du diesen Untergruppen nicht angehörst
+- Offene, geschlossene und für die Hauptgruppe sichtbare Untergruppen, wenn du als Admin ihrer Hauptgruppe die Hauptgruppe exportierst, auch wenn du diesen Untergruppen nicht angehörst
 - Verweise auf Dateien und Bilder, die an die enthaltenen Inhalte angehängt sind
 
 Der JSON-Export enthält nicht:

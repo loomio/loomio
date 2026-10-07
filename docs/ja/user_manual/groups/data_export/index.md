@@ -1,16 +1,16 @@
 ---
 title: データのエクスポート
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
+source_revision: cd2e1e63e611688362e80009f50b8ed25025ba8b
 source_file: docs/en/user_manual/groups/data_export/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-07'
 sections:
   introduction: 5e29f67f9a2084ec
   export-data: 58b5e1d4e6f0b917
   export-group-data-as-csv: 53286ec33e7300d6
   export-group-data-as-html: 101671937dcd6f36
-  export-group-data-as-json: 4ec883363fb166ee
+  export-group-data-as-json: aa310889d0854550
   print-thread-to-pdf: 39c48383953f9fd5
   import-your-group-data-on-another-loomio-server: 910ee8af48049e82
 generated:
@@ -18,7 +18,7 @@ generated:
   export-data: ca71d878f579c764
   export-group-data-as-csv: 0ad311ba86a4e492
   export-group-data-as-html: 846f521da886f3dd
-  export-group-data-as-json: 74c591b5ce94706d
+  export-group-data-as-json: cb7d5f9d59155c2e
   print-thread-to-pdf: c338f22ca5e6d9a2
   import-your-group-data-on-another-loomio-server: e38bb967c4b4743e
 title_source: 29049648f87b87f5
@@ -79,7 +79,7 @@ LoomioはバックグラウンドでHTMLファイルを準備し、準備がで�
 - 対象のグループのスレッド、コメント、リアクション、タグ、テンプレート、通知、および関連レコード
 - アンケート、選択肢、投票、結論（匿名アンケートは締め切り後にのみ含まれます）
 - 所属しているサブグループ
-- 親グループの管理者として親グループをエクスポートする場合、所属していないものも含め、公開および非公開のサブグループ
+- 親グループの管理者として親グループをエクスポートする場合、所属していないものも含め、公開、非公開、および親グループに表示されるサブグループ
 - 対象のコンテンツに添付されたファイルや画像への参照
 
 JSONエクスポートには次のものは含まれません。

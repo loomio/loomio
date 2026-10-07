@@ -1,26 +1,28 @@
 ---
 title: Yksityisyys
-source_revision: c27ee3b193231816878f1c074ff9fc2a086a88c0
+source_revision: cd2e1e63e611688362e80009f50b8ed25025ba8b
 source_file: docs/en/user_manual/groups/settings/privacy.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-02'
+  'on': '2026-10-07'
 sections:
   introduction: 72b58ba22851f914
   open: 1727e8f20fe92fb2
   follow-an-open-group: e4a1b3ce35a974d0
-  closed: 8856fa003c6915d9
-  secret: df6da0e3cba330b5
-  how-people-join: 8b20f2ab6789b0b7
+  closed: 53c3d50151a2115b
+  secret: fcb55fcb64d44881
+  how-people-join: f61d4f7e0f88106a
   group-directory: 4ef3023e3cf4efdf
+  visible-to-parent-group: a9a3ece6458f080e
 generated:
   introduction: b782a6f2f0fa3427
   open: 6e3a189da05c0d7e
   follow-an-open-group: ecc5e7a47e027634
-  closed: a03ba7bde310814e
-  secret: 78daa5e8ad3d53db
-  how-people-join: ef636fc4d887e572
+  closed: 4d2abc5d22ec8118
+  secret: 81e3eb7d26765580
+  how-people-join: 97c7b296cfadf861
   group-directory: d88dbc052526b84c
+  visible-to-parent-group: 780eb2a0fbc6c90c
 title_source: 54a57c3147c49f33
 title_generated: e0520037462417e1
 ---
@@ -59,15 +61,31 @@ Ota **Seuraa päivityksiä** käyttöön ryhmän sivulla, niin ryhmän lukematto
 
 Kuka tahansa voi löytää suljetun ryhmän ja lukea sen nimen ja kuvauksen. Keskustelut, kyselyt, tiedostot ja jäsenluettelo näkyvät vain jäsenille ja kutsutuille vieraille.
 
-Suljetut ryhmät voivat sallia jäsenyyden pyytämisen tai sallia liittymisen vain kutsusta. Ne eivät voi sallia liittymistä heti ilman hyväksyntää.
+Suljetut pääryhmät voivat sallia jäsenyyden pyytämisen tai sallia liittymisen vain kutsusta. Ne eivät voi sallia liittymistä heti ilman hyväksyntää.
+
+Suljetut alaryhmät voivat myös sallia kenen tahansa liittyä ilman hyväksyntää. Jos haluat rajata ryhmän löytämisen ja välittömän liittymisen pääryhmän jäseniin, valitse sen sijaan **Näkyy pääryhmälle**.
 
 Pääryhmän suljettu alaryhmä voi halutessaan sallia pääryhmän jäsenten lukea keskustelujaan liittymättä alaryhmään.
+
+<!-- translation-section: visible-to-parent-group -->
+
+## Näkyy pääryhmälle
+
+Tämä alaryhmän asetus sallii pääryhmän jäsenten löytää alaryhmän, mutta sen ketjut näkyvät vain alaryhmän jäsenille ja kutsutuille vieraille. Ihmiset, jotka eivät kuulu kumpaankaan ryhmään, eivät voi löytää sitä, vaikka pääryhmä olisi julkinen.
+
+Valitse **Näkyy pääryhmälle** ja sitten **Ryhmän [pääryhmä] jäsenet voivat liittyä ilman hyväksyntää**, jotta pääryhmän jäsenet voivat liittyä itse. Liittyminen antaa tavallisen alaryhmän jäsenyyden ja pääsyn sen yksityisiin ketjuihin. Liittyminen voi myös edellyttää hyväksyntää tai olla mahdollista vain kutsusta.
+
+Alaryhmän näkyvyys säilyy samana, kun pääryhmä muuttuu julkiseksi. Jos pääryhmä muuttuu yksityiseksi, sen julkisten alaryhmien asetukseksi tulee **Näkyy pääryhmälle** ja niiden ketjut muuttuvat yksityisiksi. Salaiset alaryhmät pysyvät salaisina. Yksityisen pääryhmän alaryhmillä, joiden asetuksena oli aiemmin Suljettu, näkyy nyt **Näkyy pääryhmälle**, mutta niiden nykyiset käyttöoikeudet säilyvät ennallaan.
+
+Jos haluat sallia pääryhmän jäsenten lukea yksityisiä ketjuja ennen liittymistä, ota **Ryhmän [pääryhmä] jäsenet voivat nähdä yksityiset ketjut** käyttöön kohdassa **Käyttöoikeudet**. Tämä antaa lukuoikeuden, mutta ei alaryhmän jäsenyyttä tai äänioikeutta.
 
 <!-- translation-section: secret -->
 
 ## Salainen
 
 Salaiset ryhmät ja niiden sisältö näkyvät vain ihmisille, jotka on kutsuttu tai lisätty ryhmään. Jäseneksi voi liittyä vain kutsusta. Salaiset ryhmät eivät näy julkisessa ryhmähakemistossa.
+
+Salaisen pääryhmän alaryhmien asetuksena voi olla vain **Näkyy pääryhmälle** tai **Salainen**. Sen alaryhmät eivät voi olla avoimia tai suljettuja.
 
 <!-- translation-section: how-people-join -->
 
@@ -78,8 +96,12 @@ Yksityisyys määrittää, mitkä liittymistavat ovat käytettävissä:
 | Ryhmän yksityisyys | Käytettävissä olevat liittymistavat |
 | --- | --- |
 | **Avoin** | Kuka tahansa voi liittyä, liittyminen edellyttää hyväksyntää tai liittyminen vain kutsusta |
-| **Suljettu** | Liittyminen edellyttää hyväksyntää tai liittyminen vain kutsusta |
+| **Suljettu pääryhmä** | Liittyminen edellyttää hyväksyntää tai liittyminen vain kutsusta |
+| **Suljettu alaryhmä** | Kuka tahansa voi liittyä, liittyminen edellyttää hyväksyntää tai liittyminen vain kutsusta |
+| **Näkyy pääryhmälle** | Pääryhmän jäsenet voivat liittyä, liittyminen edellyttää hyväksyntää tai liittyminen vain kutsusta |
 | **Salainen** | Liittyminen vain kutsusta |
+
+Se, kuka voi liittyä heti, määräytyy ryhmän näkyvyyden mukaan. Julkiseen alaryhmään voi liittyä kuka tahansa. Alaryhmään, jonka asetuksena on **Näkyy pääryhmälle**, voivat liittyä pääryhmän jäsenet. Jäsenet voivat poistua ja liittyä uudelleen niin kauan kuin he täyttävät liittymisehdot. Liittymistavan muuttaminen ei muuta sitä, kuka voi lukea yksityisiä ketjuja ennen liittymistä.
 
 Kun liittyminen edellyttää hyväksyntää, valitse **Liittyä ryhmään**, vastaa ryhmän liittymiskysymykseen ja lähetä liittymispyyntö. Katso [Ihmisten kutsuminen](/en/user_manual/groups/inviting_people#request-to-join-group), jossa on ohjeet kysymyksen määrittämiseen, pyyntöjen käsittelyyn ja ihmisten kutsumiseen suoraan.
 

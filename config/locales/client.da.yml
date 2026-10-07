@@ -248,6 +248,7 @@ da:
       open: Offentlig
       closed: Lukket
       private: Privat
+      parent_members: "Synlig for hovedgruppen"
       secret: Hemmelig
     selected: Valgt(e)
     today: i dag
@@ -1432,6 +1433,9 @@ da:
     confirm_change_to_public: Hvis du fortsætter så vil alle debatter i denne gruppe være offentlige (alle på internettet kan læse dem).
     confirm_change_to_private_discussions_only: Hvis du fortsætter så vil alle offentlige debatter i denne gruppe blive lavet om til private debatter.
     profile: Profil
+    subgroup_name_and_content_are_public: "Alle kan finde denne undergruppe og læse dens tråde"
+    subgroup_name_is_public_and_threads_are_private: "Alle kan finde denne undergruppe; dens tråde er private"
+    subgroup_is_visible_to_parent_members: "Medlemmer af %{parent} kan finde denne undergruppe; dens tråde er private"
     subgroup_privacy_is_open_description: Alle kan finde undergruppen og anmode om at blive medlem. Det er kun medlemmer der kan se hvem der er medlem i undergruppen. Alle debatter er offentlige (alle på internettet kan læse dem).
     subgroup_privacy_is_closed_description: Alle kan finde undergruppen og anmode om at blive medlem. Det er kun medlemmer der kan se hvem der er medlem i undergruppen. Alle debatter er private.
     subgroup_privacy_is_closed_public_threads_description: Alle kan finde undergruppen og anmode om at blive medlem. Det er kun medlemmer der kan se hvem der er medlem i undergruppen.  Debatter kan være offentlige eller private.
@@ -1442,6 +1446,8 @@ da:
     membership_granted_upon_request: Alle kan blive medlem
     membership_granted_upon_approval: Alle kan anmode om at blive medlem, men skal godkendes.
     membership_granted_upon_invitation: Kun invitation.
+    membership_granted_upon_approval_parent_members: "Medlemmer af %{parent} kan anmode om godkendelse til at deltage"
+    membership_granted_upon_request_parent_members: "Medlemmer af %{parent} kan deltage uden godkendelse"
     membership_granted_upon_approval_secret_parent: "<strong>På anmodning</strong> så kan alle fra %{parent} anmode om at blive medlem af gruppen."
     permissions: Rettigheder
     thread_privacy: Trådens privatindstillinger

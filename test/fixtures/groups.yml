@@ -33,6 +33,17 @@ public_group:
   created_at: <%= 30.days.ago %>
   updated_at: <%= 1.day.ago %>
 
+# Parent-membership boundary, using the same roles as discussion_topic.
+parent_join_subgroup:
+  key: parentjk
+  token: parentjoinsubgrouptoken12345678
+  name: Parent members can join
+  parent: group
+  is_visible_to_public: false
+  is_visible_to_parent_members: true
+  discussion_privacy_options: private_only
+  membership_granted_upon: request
+
 alien_group:
   key: angrpkey
   token: anothergrouptoken0123456789012

@@ -256,6 +256,7 @@ fr:
       open: Ouvert
       closed: Fermé
       private: Privé
+      parent_members: "Visible pour le groupe parent"
       secret: Secret
     selected: Sélectionné
     today: aujourd’hui
@@ -1449,6 +1450,9 @@ fr:
     confirm_change_to_public: Si vous confirmez, toutes les discussions de ce groupe seront rendues publiques.
     confirm_change_to_private_discussions_only: Si vous confirmez, toutes les discussions publiques dans ce groupe seront rendues privées.
     profile: Profil
+    subgroup_name_and_content_are_public: "Tout le monde peut trouver ce sous-groupe et lire ses fils"
+    subgroup_name_is_public_and_threads_are_private: "Tout le monde peut trouver ce sous-groupe ; ses fils sont privés"
+    subgroup_is_visible_to_parent_members: "Les membres de %{parent} peuvent trouver ce sous-groupe ; ses fils sont privés"
     subgroup_privacy_is_open_description: Tout le monde peut trouver ce sous-groupe et demander à le rejoindre. Seuls les membres peuvent voir qui est dans le groupe. Toutes les discussions sont publiques.
     subgroup_privacy_is_closed_description: Tout le monde peut trouver ce sous-groupe et demander à le rejoindre. Seuls les membres peuvent voir qui est dans ce groupe. Toutes les discussions sont privées.
     subgroup_privacy_is_closed_public_threads_description: Tout le monde peut trouver ce sous-groupe et demander à le rejoindre. Seuls les membres peuvent voir qui est dans le groupe. Les discussions peuvent être publiques ou privées.
@@ -1459,6 +1463,8 @@ fr:
     membership_granted_upon_request: N’importe qui peut rejoindre le groupe
     membership_granted_upon_approval: N’importe qui peut demander à rejoindre le groupe, mais la demande doit être approuvée.
     membership_granted_upon_invitation: Invitation seulement.
+    membership_granted_upon_approval_parent_members: "Les membres de %{parent} peuvent demander une approbation pour rejoindre le groupe"
+    membership_granted_upon_request_parent_members: "Les membres de %{parent} peuvent rejoindre sans approbation"
     membership_granted_upon_approval_secret_parent: "<strong>Sur proposition,</strong> n’importe qui de %{parent} peut demander à rejoindre le groupe."
     permissions: Permissions
     thread_privacy: Confidentialité de la discussion

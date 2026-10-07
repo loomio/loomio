@@ -1,14 +1,14 @@
 ---
 title: Управление участниками
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
+source_revision: cd2e1e63e611688362e80009f50b8ed25025ba8b
 source_file: docs/en/user_manual/groups/member_management/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-07'
 sections:
   introduction: f216b18771a2c2a9
   administering-your-group: 27aed40959adef57
-  managing-subgroups: ee977899fa34caab
+  managing-subgroups: 76b2fd61123a8a8a
   removing-members: f00aea52bfcd3547
   leaving-group: 02f69c9806d6beda
   set-title: 835b25d246477b4a
@@ -16,7 +16,7 @@ sections:
 generated:
   introduction: fd07b29364d5b1d5
   administering-your-group: 61318b26de6c5d84
-  managing-subgroups: 6ffa8623e1fbab05
+  managing-subgroups: a2ed59d77b8b91ce
   removing-members: fc311dfcfb8f5f86
   leaving-group: 3d456c7ce1bd4db0
   set-title: acf8143224cf4c71
@@ -51,9 +51,9 @@ title_generated: 3792557669daccda
 <!-- translation-section: managing-subgroups -->
 
 ## Управление подгруппами
-Если вы администратор родительской группы или организации, у вас есть дополнительные права в отношении всех __закрытых__ подгрупп.
+Администраторы родительской группы могут вступать в её открытые и закрытые подгруппы, а также в подгруппы с настройкой **Видна родительской группе**, а затем делать себя администраторами этих подгрупп.
 
-Вы можете вступить в любую закрытую подгруппу, нажав кнопку «Вступить в группу» слева на странице этой подгруппы, сразу под вкладками.
+Выберите **Вступить в группу** на странице подгруппы.
 
 ![Кнопка вступления в группу на странице закрытой подгруппы Oatmilk Cooperative](member_join_subgroup.png)
 

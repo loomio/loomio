@@ -1,14 +1,14 @@
 ---
 title: Tagok kezelése
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
+source_revision: cd2e1e63e611688362e80009f50b8ed25025ba8b
 source_file: docs/en/user_manual/groups/member_management/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-07'
 sections:
   introduction: f216b18771a2c2a9
   administering-your-group: 27aed40959adef57
-  managing-subgroups: ee977899fa34caab
+  managing-subgroups: 76b2fd61123a8a8a
   removing-members: f00aea52bfcd3547
   leaving-group: 02f69c9806d6beda
   set-title: 835b25d246477b4a
@@ -16,7 +16,7 @@ sections:
 generated:
   introduction: 94d82cee3ecb6496
   administering-your-group: f88971e605ec8115
-  managing-subgroups: c32e1d345983473b
+  managing-subgroups: 17d15a1c854d21da
   removing-members: 87a2d7584a591beb
   leaving-group: febb3e91c9bc92b4
   set-title: ff532d79fa2da32f
@@ -51,9 +51,9 @@ Ha egy tagot **adminná** szeretnél tenni, nyisd meg a Tagok fület, keresd meg
 <!-- translation-section: managing-subgroups -->
 
 ## Alcsoportok kezelése
-Ha egy szülőcsoport vagy szervezet adminja vagy, további jogosultságaid vannak a __zárt__ alcsoportokban.
+A szülőcsoport adminjai csatlakozhatnak annak nyílt, zárt és **Látható a szülőcsoport számára** beállítású alcsoportjaihoz, majd adminjogokat adhatnak maguknak ezekben az alcsoportokban.
 
-Bármely zárt alcsoporthoz csatlakozhatsz, ha az adott alcsoport oldalának bal oldalán, közvetlenül a fülek alatt a „Csatlakozás a csoporthoz” gombra kattintasz.
+Válaszd ki a **Kapcsolódj a csoporthoz** lehetőséget az alcsoport oldalán.
 
 ![Csatlakozás a csoporthoz gomb az Oatmilk Cooperative egyik zárt alcsoportjában](member_join_subgroup.png)
 

@@ -308,7 +308,9 @@ export default new class AbilityService {
   }
 
   canViewGroup(group) {
-    return !group.isDiscarded() && (!group.privacyIsSecret() || group.membersInclude(Session.user()));
+    return !group.isDiscarded() && (group.isVisibleToPublic ||
+      group.membersInclude(Session.user()) ||
+      (group.isVisibleToParentMembers && group.parent().membersInclude(Session.user())));
   }
 
   canViewPrivateContent(group) {

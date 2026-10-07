@@ -256,6 +256,7 @@ it:
       open: Aperto
       closed: Chiuso
       private: Privato
+      parent_members: "Visibile al gruppo principale"
       secret: Segreto
     selected: Selezionato
     today: oggi
@@ -1448,6 +1449,9 @@ it:
     confirm_change_to_public: 'Se procedi, tutte le discussioni in questo gruppo saranno rese pubbliche e visibili in rete. '
     confirm_change_to_private_discussions_only: 'Se procedi, tutte le discussioni pubbliche in questo gruppo saranno rese private. '
     profile: Profilo
+    subgroup_name_and_content_are_public: "Chiunque può trovare questo sottogruppo e leggere le sue conversazioni"
+    subgroup_name_is_public_and_threads_are_private: "Chiunque può trovare questo sottogruppo; le sue conversazioni sono private"
+    subgroup_is_visible_to_parent_members: "I membri di %{parent} possono trovare questo sottogruppo; le sue conversazioni sono private"
     subgroup_privacy_is_open_description: Tutti/e possono trovare questo sotto-gruppo e chiedere di iscriversi. Solo i membri possono vedere chi è nel gruppo. Tutte le discussioni sono pubbliche.
     subgroup_privacy_is_closed_description: Tutti/e possono trovare questo sotto-gruppo e chiedere di iscriversi. Solo i membri possono vedere chi è nel gruppo. Tutte le discussioni sono private.
     subgroup_privacy_is_closed_public_threads_description: Tutti/e possono trovare questo sotto-gruppo e chiedere di iscriversi. Solo i membri possono vedere chi è nel gruppo. Le discussioni possono essere pubbliche o private.
@@ -1458,6 +1462,8 @@ it:
     membership_granted_upon_request: Chiunque si può unire al gruppo.
     membership_granted_upon_approval: Chiunque può richiedere di essere aggiunto ma dev'essere approvato.
     membership_granted_upon_invitation: Solo su invito.
+    membership_granted_upon_approval_parent_members: "I membri di %{parent} possono richiedere l’approvazione per unirsi"
+    membership_granted_upon_request_parent_members: "I membri di %{parent} possono unirsi senza approvazione"
     membership_granted_upon_approval_secret_parent: "<strong>Su richiesta</strong> chiunque da %{parent} può chiedere di unirsi al gruppo."
     permissions: Permessi
     thread_privacy: Pricacy della discussione

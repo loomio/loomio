@@ -1,16 +1,16 @@
 ---
 title: Exportation des données
-source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
+source_revision: cd2e1e63e611688362e80009f50b8ed25025ba8b
 source_file: docs/en/user_manual/groups/data_export/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-07'
 sections:
   introduction: 5e29f67f9a2084ec
   export-data: 58b5e1d4e6f0b917
   export-group-data-as-csv: 53286ec33e7300d6
   export-group-data-as-html: 101671937dcd6f36
-  export-group-data-as-json: 4ec883363fb166ee
+  export-group-data-as-json: aa310889d0854550
   print-thread-to-pdf: 39c48383953f9fd5
   import-your-group-data-on-another-loomio-server: 910ee8af48049e82
 generated:
@@ -18,7 +18,7 @@ generated:
   export-data: 3d70ea95e8be960c
   export-group-data-as-csv: b58368aa8a3c8d7f
   export-group-data-as-html: cef1c9713a716ad6
-  export-group-data-as-json: 4d4bd3de8f2b2ba9
+  export-group-data-as-json: d5468a0a0f2632ba
   print-thread-to-pdf: b33a8f4cad276066
   import-your-group-data-on-another-loomio-server: fd60f1bf9307db2a
 title_source: 29049648f87b87f5
@@ -79,7 +79,7 @@ Vous devez être administrateur du groupe pour l’exporter. L’exportation JSO
 - Les fils, commentaires, réactions, tags, modèles, notifications et enregistrements associés des groupes inclus
 - Les sondages, options, votes et conclusions ; un sondage anonyme n’est inclus qu’après sa clôture
 - Les sous-groupes auxquels vous appartenez
-- Les sous-groupes ouverts et fermés lorsque vous exportez leur groupe parent en tant qu’administrateur de celui-ci, même si vous n’appartenez pas à ces sous-groupes
+- Les sous-groupes ouverts, fermés et visibles par le groupe parent lorsque vous exportez leur groupe parent en tant qu’administrateur de celui-ci, même si vous n’appartenez pas à ces sous-groupes
 - Les références aux fichiers et images joints au contenu inclus
 
 L’exportation JSON ne comprend pas :

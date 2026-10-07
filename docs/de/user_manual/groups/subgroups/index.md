@@ -1,16 +1,16 @@
 ---
 title: Untergruppen
-source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
+source_revision: cd2e1e63e611688362e80009f50b8ed25025ba8b
 source_file: docs/en/user_manual/groups/subgroups/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-07'
 sections:
   introduction: 63e6e23d24e80919
   add-a-subgroup: 0bc0e5f99eb074c3
   subgroup-settings: 737225cc4bebe7e8
-  privacy: f5d6a140045a00af
-  permissions: 948f8a0f3209953c
+  privacy: 5bdd92ce200f197a
+  permissions: ee02991523f1ebe4
   find-subgroups: 5e6fc5a5122c1417
   invite-to-a-subgroup: 0af670e1e9b32a5e
   simultaneously-invite-people-to-subgroups-and-parent-group: 1991604900321cd7
@@ -20,8 +20,8 @@ generated:
   introduction: ea06820dfdbb7bd3
   add-a-subgroup: '0583e95e8fd8424d'
   subgroup-settings: e79b4c0cb34a6e3c
-  privacy: b65f4b21fe9932ba
-  permissions: 1ac2a12d65dca042
+  privacy: 26282a8289be0239
+  permissions: 4b785e952cf5bd1b
   find-subgroups: c4956da3eeabc8d5
   invite-to-a-subgroup: 79ef72a3ea7f6750
   simultaneously-invite-people-to-subgroups-and-parent-group: b4dbc6f6abf00a2d
@@ -73,13 +73,24 @@ Du kannst die [Gruppeneinstellungen](/en/user_manual/groups/settings/) der Unter
 
 ### Privatsphäre
 
-Die Privatsphäre-Einstellungen für Untergruppen ähneln denen der Hauptgruppe.
+Wähle unabhängig davon, wie Personen der Untergruppe beitreten können, wer sie finden kann:
 
-Untergruppen mit der Einstellung **Geheim** sind für Personen, die nicht in die Untergruppe eingeladen wurden, nicht sichtbar.
+| Privatsphäre | Wer kann sie finden? | Wer kann ihre Threads lesen? |
+| --- | --- | --- |
+| **Offen** | Alle | Alle |
+| **Geschlossen** | Alle | Mitglieder der Untergruppe und eingeladene Gäste |
+| **Für die übergeordnete Gruppe sichtbar** | Mitglieder der Hauptgruppe und der Untergruppe | Mitglieder der Untergruppe und eingeladene Gäste |
+| **Geheim** | Eingeladene Mitglieder der Untergruppe | Mitglieder der Untergruppe und eingeladene Gäste |
 
-Untergruppen mit der Einstellung **Geschlossen** werden im Tab „Untergruppen“ der Hauptgruppe und im Seitenleistenmenü angezeigt. Mitglieder der Hauptgruppe können den Beitritt zur Untergruppe beantragen. Ein Admin der Untergruppe genehmigt die Mitgliedschaft.
+Damit Mitglieder der Hauptgruppe selbst beitreten können, wähle beim Erstellen der Untergruppe oder unter **Gruppeneinstellungen bearbeiten → Privatsphäre** zunächst **Für die übergeordnete Gruppe sichtbar** und dann unter **Wie kann man teilnehmen?** die Einstellung **Mitglieder von [Hauptgruppe] können ohne Genehmigung beitreten**. Personen außerhalb der Hauptgruppe benötigen eine Einladung. Mitglieder können die Untergruppe verlassen und ihr erneut beitreten, solange sie noch der Hauptgruppe angehören.
 
-Geschlossene Untergruppen haben eine zusätzliche Einstellung, die Mitgliedern der Hauptgruppe erlaubt, private Threads zu sehen.
+![Privatsphäre-Einstellungen einer Untergruppe mit Sichtbarkeit für die Hauptgruppe und Beitritt ohne Genehmigung](subgroups_privacy_settings.png)
+
+Durch den Beitritt wird eine Person ein gewöhnliches Mitglied der Untergruppe. Sie erhält dadurch keine Adminrechte, und die Privatsphäre bestehender Threads ändert sich nicht.
+
+Öffentliche Untergruppen können ebenfalls den sofortigen Beitritt erlauben. Wenn diese Option ausgewählt ist, können alle beitreten. Ist die Hauptgruppe privat, stehen für Untergruppen die Einstellungen **Für die übergeordnete Gruppe sichtbar** und **Geheim** zur Verfügung.
+
+Eine Untergruppe mit der Einstellung **Für die übergeordnete Gruppe sichtbar** bleibt privat, wenn ihre Hauptgruppe öffentlich wird. Wird eine Hauptgruppe privat, sind ihre öffentlichen Untergruppen nur noch für Mitglieder der Hauptgruppe zugänglich, und deren Threads werden privat. Geheime Untergruppen bleiben unverändert.
 
 [Lies hier mehr über die Privatsphäre von Gruppen](/en/user_manual/groups/settings/privacy).
 
@@ -89,7 +100,7 @@ Geschlossene Untergruppen haben eine zusätzliche Einstellung, die Mitgliedern d
 
 Untergruppen arbeiten unabhängig von der Hauptgruppe. Wenn die Privatsphäre-Einstellung der Untergruppe beispielsweise auf **Geheim** gesetzt ist, können nur eingeladene Mitglieder diese Untergruppe finden, sehen, wer dazugehört, und ihre Threads sehen.
 
-Untergruppen mit der Einstellung **Geschlossen** haben eine zusätzliche Einstellung, die Mitgliedern der Hauptgruppe erlaubt, private Threads zu sehen. Dadurch kann die Untergruppe ihre Arbeit für Mitglieder der Hauptgruppe transparent machen.
+Untergruppen mit der Einstellung **Geschlossen** oder **Für die übergeordnete Gruppe sichtbar** können Mitgliedern der Hauptgruppe erlauben, private Threads vor dem Beitritt zu lesen. Aktiviere unter **Berechtigungen** die Einstellung **Mitglieder von [Hauptgruppe] können private Threads sehen**. Diese Personen erhalten dadurch weder Stimmrechte noch eine Mitgliedschaft in der Untergruppe.
 
 ![Einstellung, die Mitgliedern der Hauptgruppe erlaubt, private Threads der Untergruppe zu sehen](subgroups_private_threads_settings.png)
 

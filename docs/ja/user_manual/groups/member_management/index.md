@@ -1,14 +1,14 @@
 ---
 title: メンバー管理
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
+source_revision: cd2e1e63e611688362e80009f50b8ed25025ba8b
 source_file: docs/en/user_manual/groups/member_management/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-07'
 sections:
   introduction: f216b18771a2c2a9
   administering-your-group: 27aed40959adef57
-  managing-subgroups: ee977899fa34caab
+  managing-subgroups: 76b2fd61123a8a8a
   removing-members: f00aea52bfcd3547
   leaving-group: 02f69c9806d6beda
   set-title: 835b25d246477b4a
@@ -16,7 +16,7 @@ sections:
 generated:
   introduction: f6c3ad3153d80f8e
   administering-your-group: 81c2b74ba0dc6405
-  managing-subgroups: 2fcf3bc486880cae
+  managing-subgroups: 2bce903b4ec24afb
   removing-members: 658eebd467d51717
   leaving-group: e50a59b3c04fe146
   set-title: 67afc41dfc072781
@@ -51,9 +51,9 @@ Loomioのグループには、**メンバー**と**管理者**の2種類のユ�
 <!-- translation-section: managing-subgroups -->
 
 ## サブグループの管理
-親グループまたは組織の管理者には、__非公開__のサブグループに対する追加の権限があります。
+親グループの管理者は、公開、非公開、および**親グループに表示**されるサブグループに参加し、自分自身をサブグループの管理者にすることができます。
 
-対象のサブグループページの左側（タブのすぐ下）にある「グループに参加」ボタンをクリックすると、どの非公開サブグループにも参加できます。
+サブグループのページで**グループに参加**を選択します。
 
 ![非公開のOatmilk Cooperativeサブグループにあるグループ参加ボタン](member_join_subgroup.png)
 

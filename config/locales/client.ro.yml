@@ -248,6 +248,7 @@ ro:
       open: Deschis
       closed: Inchis
       private: Confidential
+      parent_members: "Vizibil pentru grupul părinte"
       secret: Secret
     selected: Selectat
     today: astăzi
@@ -1422,6 +1423,9 @@ ro:
     confirm_change_to_public: Daca vei continua, toate discutiile vor deveni publice pe web.
     confirm_change_to_private_discussions_only: Daca vei continua, toate discutiile publice ale acestui grup  vor deveni private.
     profile: Profil
+    subgroup_name_and_content_are_public: "Oricine poate găsi acest subgrup și îi poate citi firele"
+    subgroup_name_is_public_and_threads_are_private: "Oricine poate găsi acest subgrup; firele sale sunt private"
+    subgroup_is_visible_to_parent_members: "Membrii %{parent} pot găsi acest subgrup; firele sale sunt private"
     subgroup_privacy_is_open_description: Oricine poate găsi acest subgrup și poate cere să se alăture. Numai membrii pot vedea cine face parte din grup. Toate subiectele sunt publice.
     subgroup_privacy_is_closed_description: Oricine poate găsi acest subgrup și poate cere să se alăture. Numai membrii pot vedea cine face parte din grup. Toate subiectele sunt private.
     subgroup_privacy_is_closed_public_threads_description: Oricine poate găsi acest subgrup și poate cere să se alăture. Numai membrii pot vedea cine face parte din grup. Firele pot fi publice sau private.
@@ -1432,6 +1436,8 @@ ro:
     membership_granted_upon_request: Oricine se poate alătura grupului.
     membership_granted_upon_approval: Oricine poate solicita înscrierea, dar trebuie să fie aprobat.
     membership_granted_upon_invitation: Doar cu invitație.
+    membership_granted_upon_approval_parent_members: "Membrii %{parent} pot solicita aprobarea pentru a se alătura"
+    membership_granted_upon_request_parent_members: "Membrii grupului %{parent} se pot alătura fără aprobare"
     membership_granted_upon_approval_secret_parent: "<strong>La cerere,</strong> oricine din %{parent} poate cere să se alăture grupului."
     permissions: Permisiuni
     thread_privacy: Confidentialitatea discutiei

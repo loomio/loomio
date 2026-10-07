@@ -254,6 +254,7 @@ de:
       open: Offen
       closed: Geschlossen
       private: Privat
+      parent_members: "Für die übergeordnete Gruppe sichtbar"
       secret: Geheim
     selected: Ausgewählt
     today: heute
@@ -1436,6 +1437,9 @@ de:
     confirm_change_to_public: Wenn du fortfährst alle Diskussionen in der Gruppe öffentlich sichtbar im Web.
     confirm_change_to_private_discussions_only: Wenn du fortfährst werden alle öffentlichen Diskussionen dieser Gruppe privat.
     profile: Profil
+    subgroup_name_and_content_are_public: "Alle können diese Untergruppe finden und ihre Threads lesen"
+    subgroup_name_is_public_and_threads_are_private: "Alle können diese Untergruppe finden; ihre Threads sind privat"
+    subgroup_is_visible_to_parent_members: "Mitglieder von %{parent} können diese Untergruppe finden; ihre Threads sind privat"
     subgroup_privacy_is_open_description: Jeder kann diese Gruppe finden und dich nach Beitritt fragen. Nur Mitglieder können sehen wer in der Gruppe ist. Alle Diskussionen sind öffentlich.
     subgroup_privacy_is_closed_description: Jeder kann diese Untergruppe finden und nach Beitritt fragen. Nur Mitglieder können sehen wer in der Gruppe ist. Alle Diskussionen sind privat.
     subgroup_privacy_is_closed_public_threads_description: Jeder kann diese Untergruppe finden und nach Beitritt fragen. Nur Mitglieder können sehen wer in der Gruppe ist. Diskussionen können öffentlich oder privat sein.
@@ -1446,6 +1450,8 @@ de:
     membership_granted_upon_request: Die Gruppe ist zugänglich für alle.
     membership_granted_upon_approval: Jeder kann um Beitritt bitten. Dieser wird dann geprüft.
     membership_granted_upon_invitation: Nur Einladungen.
+    membership_granted_upon_approval_parent_members: "Mitglieder von %{parent} können den Beitritt zur Genehmigung anfragen"
+    membership_granted_upon_request_parent_members: "Mitglieder von %{parent} können ohne Genehmigung beitreten"
     membership_granted_upon_approval_secret_parent: Jede.r von %{parent} kann<strong>auf Anfrage</strong> um Aufnahme in die Gruppe bitten.
     permissions: Berechtigungen
     thread_privacy: Diskussions-Sichtbarkeit

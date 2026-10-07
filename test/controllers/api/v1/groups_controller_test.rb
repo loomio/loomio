@@ -201,6 +201,77 @@ class Api::V1::GroupsControllerTest < ActionController::TestCase
   end
 
   # Update tests
+  test "API cannot create a public subgroup under a secret parent" do
+    sign_in users(:admin)
+
+    %w[open closed].each do |privacy|
+      assert_no_difference 'Group.count' do
+        post :create, params: {group: {
+          name: 'Public child of a secret parent', parent_id: @group.id,
+          group_privacy: privacy
+        }}
+      end
+      assert_response :unprocessable_entity
+    end
+  end
+
+  test "API cannot make a subgroup public under a secret parent through presets or flags" do
+    subgroup = groups(:parent_join_subgroup)
+    sign_in users(:subgroup_user)
+
+    [{group_privacy: 'open'}, {group_privacy: 'closed'}, {is_visible_to_public: true, discussion_privacy_options: 'private_only'}].each do |settings|
+      put :update, params: {id: subgroup.id, group: settings}
+      assert_response :unprocessable_entity
+      assert_equal 'parent_members', subgroup.reload.group_privacy
+      assert_not subgroup.is_visible_to_public?
+    end
+  end
+
+  test "subgroup admin can select parent visible privacy under a public parent" do
+    subgroup = groups(:parent_join_subgroup)
+    subgroup.parent.update!(group_privacy: 'closed')
+    subgroup.update!(group_privacy: 'closed', membership_granted_upon: 'approval')
+    sign_in users(:subgroup_user)
+
+    put :update, params: {id: subgroup.id, group: {group_privacy: 'parent_members', membership_granted_upon: 'request'}}
+
+    assert_response :success
+    data = JSON.parse(response.body)['groups'].find { |record| record['id'] == subgroup.id }
+    assert_equal 'parent_members', data['group_privacy']
+    assert_equal false, data['is_visible_to_public']
+    assert_equal true, data['is_visible_to_parent_members']
+    assert_equal 'request', subgroup.reload.membership_granted_upon
+    assert_not users(:alien).can?(:show, subgroup)
+  end
+
+  test "ordinary parent member cannot change subgroup visibility or joining policy" do
+    subgroup = groups(:parent_join_subgroup)
+    sign_in users(:member_normal)
+
+    put :update, params: {id: subgroup.id, group: {group_privacy: 'closed', membership_granted_upon: 'approval'}}
+
+    assert_response :forbidden
+    assert_equal 'parent_members', subgroup.reload.group_privacy
+    assert_equal 'request', subgroup.membership_granted_upon
+  end
+
+  test "parent visible subgroup metadata is denied to signed out users and outsiders" do
+    subgroup = groups(:parent_join_subgroup)
+    subgroup.parent.update!(group_privacy: 'closed')
+    get :show, params: {id: subgroup.id}, format: :json
+    assert_response :forbidden
+
+    sign_in users(:alien)
+    get :show, params: {id: subgroup.id}, format: :json
+    assert_response :forbidden
+
+    sign_in users(:member_normal)
+    get :show, params: {id: subgroup.id}, format: :json
+    assert_response :success
+    data = JSON.parse(response.body)['groups'].find { |record| record['id'] == subgroup.id }
+    assert_equal 'parent_members', data['group_privacy']
+  end
+
   test "update changes group attributes" do
     sign_in @user
     @group.add_admin!(@user)

@@ -1,16 +1,16 @@
 ---
 title: Data exporteren
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
+source_revision: cd2e1e63e611688362e80009f50b8ed25025ba8b
 source_file: docs/en/user_manual/groups/data_export/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-07'
 sections:
   introduction: 5e29f67f9a2084ec
   export-data: 58b5e1d4e6f0b917
   export-group-data-as-csv: 53286ec33e7300d6
   export-group-data-as-html: 101671937dcd6f36
-  export-group-data-as-json: 4ec883363fb166ee
+  export-group-data-as-json: aa310889d0854550
   print-thread-to-pdf: 39c48383953f9fd5
   import-your-group-data-on-another-loomio-server: 910ee8af48049e82
 generated:
@@ -18,7 +18,7 @@ generated:
   export-data: 64c65578f2a86825
   export-group-data-as-csv: 5afb79256cbf73df
   export-group-data-as-html: e46608e827cc909a
-  export-group-data-as-json: fdd65b390af1016a
+  export-group-data-as-json: 1d85607fa76ecb5e
   print-thread-to-pdf: efbf543b049e2262
   import-your-group-data-on-another-loomio-server: b0aba0cea3de9078
 title_source: 29049648f87b87f5
@@ -79,7 +79,7 @@ Je moet admin van de groep zijn om deze te exporteren. De JSON-export bevat:
 - Threads, reacties, emoji-reacties, labels, sjablonen, meldingen en bijbehorende records uit de opgenomen groepen
 - Peilingen, opties, stemmen en conclusies; een anonieme peiling wordt pas opgenomen nadat deze is gesloten
 - Subgroepen waar je lid van bent
-- Open en gesloten subgroepen wanneer je als admin van de hoofdgroep die hoofdgroep exporteert, ook als je geen lid bent van die subgroepen
+- Open subgroepen, gesloten subgroepen en subgroepen die zichtbaar zijn voor de hoofdgroep wanneer je als admin van de hoofdgroep die hoofdgroep exporteert, ook als je geen lid bent van die subgroepen
 - Verwijzingen naar bestanden en afbeeldingen die aan de opgenomen inhoud zijn toegevoegd
 
 De JSON-export bevat geen:

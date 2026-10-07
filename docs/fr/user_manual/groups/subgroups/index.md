@@ -1,16 +1,16 @@
 ---
 title: Sous-groupes
-source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
+source_revision: cd2e1e63e611688362e80009f50b8ed25025ba8b
 source_file: docs/en/user_manual/groups/subgroups/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-07'
 sections:
   introduction: 63e6e23d24e80919
   add-a-subgroup: 0bc0e5f99eb074c3
   subgroup-settings: 737225cc4bebe7e8
-  privacy: f5d6a140045a00af
-  permissions: 948f8a0f3209953c
+  privacy: 5bdd92ce200f197a
+  permissions: ee02991523f1ebe4
   find-subgroups: 5e6fc5a5122c1417
   invite-to-a-subgroup: 0af670e1e9b32a5e
   simultaneously-invite-people-to-subgroups-and-parent-group: 1991604900321cd7
@@ -20,8 +20,8 @@ generated:
   introduction: 5dedb9fedacabb90
   add-a-subgroup: e83e38dd9cd34258
   subgroup-settings: bdd0548ab28d965d
-  privacy: 2af923e04512e6b7
-  permissions: 0551a45bb4aaede4
+  privacy: 44664bbb51700cfc
+  permissions: 5d63fc7094ac3592
   find-subgroups: 8bdb0244966a9a56
   invite-to-a-subgroup: f43723d038795ee2
   simultaneously-invite-people-to-subgroups-and-parent-group: f8892fdd5672d75b
@@ -29,6 +29,8 @@ generated:
   delete-a-subgroup: 2115bc77d425a1e9
 title_source: 9f81e728f70cae3e
 title_generated: 93b587493dbb8010
+needs_review:
+  privacy: check the interface label "**Comment les personnes peuvent-elles rejoindre le groupe ?**" for "**How do people join?**"
 ---
 
 <!-- translation-section: introduction -->
@@ -73,13 +75,24 @@ Vous pouvez modifier les [paramètres du groupe](/en/user_manual/groups/settings
 
 ### Confidentialité
 
-Les paramètres de confidentialité des sous-groupes sont similaires à ceux du groupe parent.
+Choisissez qui peut trouver le sous-groupe indépendamment de la manière dont les personnes le rejoignent :
 
-Les sous-groupes **Secret** ne sont pas visibles pour les personnes qui n’y sont pas invitées.
+| Confidentialité | Qui peut le trouver | Qui peut lire ses fils |
+| --- | --- | --- |
+| **Ouvert** | Tout le monde | Tout le monde |
+| **Fermé** | Tout le monde | Les membres du sous-groupe et les invités |
+| **Visible pour le groupe parent** | Les membres du groupe parent et du sous-groupe | Les membres du sous-groupe et les invités |
+| **Secret** | Les membres invités du sous-groupe | Les membres du sous-groupe et les invités |
 
-Les sous-groupes **Fermé** sont répertoriés dans l’onglet Sous-groupes du groupe parent et dans votre menu latéral. Les membres du groupe parent peuvent demander à rejoindre le sous-groupe. Leur adhésion est approuvée par un administrateur du sous-groupe.
+Pour permettre aux membres du groupe parent de rejoindre le sous-groupe sans approbation, sélectionnez **Visible pour le groupe parent**, puis **Les membres de [groupe parent] peuvent rejoindre le sous-groupe sans approbation** sous **Comment les personnes peuvent-elles rejoindre le groupe ?** lors de la création du sous-groupe, ou dans **Modifier les paramètres du groupe → Confidentialité**. Les personnes extérieures au groupe parent ont besoin d’une invitation. Les membres peuvent quitter le sous-groupe et le rejoindre à nouveau tant qu’ils appartiennent à son groupe parent.
 
-Les sous-groupes fermés disposent d’un paramètre supplémentaire qui permet aux membres du groupe parent de voir les fils privés.
+![Paramètres de confidentialité du sous-groupe avec visibilité pour le groupe parent et adhésion sans approbation](subgroups_privacy_settings.png)
+
+En rejoignant le sous-groupe, une personne devient un membre ordinaire. Cela ne lui donne pas le rôle d’administrateur et ne modifie pas la confidentialité des fils existants.
+
+Les sous-groupes publics peuvent également autoriser l’adhésion immédiate ; tout le monde peut les rejoindre lorsque cette option est sélectionnée. Lorsque le groupe parent est privé, les paramètres disponibles pour les sous-groupes sont **Visible pour le groupe parent** et **Secret**.
+
+Un sous-groupe **Visible pour le groupe parent** reste privé lorsque son groupe parent devient public. Rendre un groupe parent privé limite l’accès à ses sous-groupes publics aux membres du groupe parent et rend leurs fils privés, tout en préservant les sous-groupes secrets.
 
 [Consultez les informations sur la confidentialité des groupes](/en/user_manual/groups/settings/privacy).
 
@@ -89,7 +102,7 @@ Les sous-groupes fermés disposent d’un paramètre supplémentaire qui permet 
 
 Les sous-groupes fonctionnent indépendamment du groupe principal. Par exemple, si le paramètre de confidentialité du sous-groupe est défini sur **Secret**, seuls les membres invités peuvent trouver ce sous-groupe, voir qui en fait partie et consulter ses fils.
 
-Les sous-groupes **Fermés** disposent d’un paramètre supplémentaire qui permet aux membres de leur groupe parent de voir les fils privés, rendant ainsi les activités du sous-groupe visibles aux membres du groupe parent.
+Les sous-groupes **Fermés** et les sous-groupes **Visible pour le groupe parent** peuvent permettre aux membres du groupe parent de lire les fils privés avant de les rejoindre. Activez **Les membres de [groupe parent] peuvent voir les fils privés** dans **Permissions**. Ces lecteurs n’obtiennent ni le droit de vote ni le statut de membre du sous-groupe.
 
 ![Paramètre permettant aux membres du groupe parent de voir les fils privés du sous-groupe](subgroups_private_threads_settings.png)
 

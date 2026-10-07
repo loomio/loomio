@@ -1,6 +1,20 @@
 require 'test_helper'
 
 class GroupQueryTest < ActiveSupport::TestCase
+  test "thread guests see group context without inheriting subgroup access or changing membership ids" do
+    guest = users(:guest_normal)
+    parent = groups(:group)
+    subgroup = groups(:parent_join_subgroup)
+    membership_ids = guest.group_ids.dup
+
+    2.times do
+      visible = GroupQuery.visible_to(user: guest)
+      assert visible.exists?(parent.id)
+      assert_not visible.exists?(subgroup.id)
+      assert_equal membership_ids, guest.group_ids
+    end
+  end
+
   setup do
     hex = SecureRandom.hex(4)
     @user = User.create!(name: "gquser#{hex}", email: "gquser#{hex}@example.com", username: "gquser#{hex}")

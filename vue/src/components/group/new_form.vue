@@ -4,7 +4,7 @@ import AbilityService from '@/shared/services/ability_service';
 import Records  from '@/shared/services/records';
 import EventBus  from '@/shared/services/event_bus';
 import Session  from '@/shared/services/session';
-import { groupPrivacy, groupPrivacyStatement } from '@/shared/helpers/helptext';
+import { groupPrivacy, groupPrivacyOptions, groupPrivacyStatement, groupMembershipGrantedUpon } from '@/shared/helpers/helptext';
 import { groupPrivacyConfirm } from '@/shared/helpers/helptext';
 import Flash   from '@/shared/services/flash';
 import { isEmpty, debounce } from 'lodash-es';
@@ -12,12 +12,18 @@ import openModal from '@/shared/helpers/open_modal';
 import { I18n } from '@/i18n';
 import WatchRecords from '@/mixins/watch_records';
 import UrlFor from '@/mixins/url_for';
+import { useI18n } from 'vue-i18n';
 
 export default
 {
   mixins: [WatchRecords, UrlFor],
   props: {
     group: Object
+  },
+
+  setup() {
+    const { t } = useI18n();
+    return { t };
   },
 
   data() {
@@ -65,23 +71,40 @@ export default
   },
 
   watch: {
-    'group.parentId'() {
+    'group.parentId'(parentId) {
       this.group.handle = '';
       this.group.name = '';
+      if (parentId && !groupPrivacyOptions(this.group).includes(this.group.groupPrivacy)) {
+        this.group.groupPrivacy = 'parent_members';
+      }
+      if (!parentId && this.group.privacyIsParentMembers()) {
+        this.group.groupPrivacy = 'secret';
+      }
+      if (!parentId && this.group.groupPrivacy != 'open' && this.group.membershipGrantedUpon == 'request') {
+        this.group.membershipGrantedUpon = 'approval';
+      }
+    },
+    'group.groupPrivacy'() {
+      if (this.group.groupPrivacy == 'secret' && this.group.membershipGrantedUpon == 'request') {
+        this.group.membershipGrantedUpon = 'approval';
+      }
     }
   },
 
   methods: {
+    groupMembershipGrantedUpon,
     submit() {
       this.group.discussionPrivacyOptions = (() => { switch (this.group.groupPrivacy) {
         case 'open':   return 'public_only';
         case 'closed': return 'private_only';
+        case 'parent_members': return 'private_only';
         case 'secret': return 'private_only';
       } })();
 
       this.group.parentMembersCanSeeDiscussions = (() => { switch (this.group.groupPrivacy) {
         case 'open':   return true;
         case 'closed': return this.group.parentMembersCanSeeDiscussions;
+        case 'parent_members': return this.group.parentMembersCanSeeDiscussions;
         case 'secret': return false;
       } })();
 
@@ -123,11 +146,7 @@ export default
     },
 
     privacyOptions() {
-      if (this.group.parentId && (this.group.parent().groupPrivacy === 'secret')) {
-        return ['closed', 'secret'];
-      } else {
-        return ['open', 'closed', 'secret'];
-      }
+      return groupPrivacyOptions(this.group);
     },
 
     privacyStatement() {
@@ -205,17 +224,17 @@ v-card.group-form(:title="group.parentId ? $t('group_form.start_subgroup_heading
           v-radio(v-for='privacy in privacyOptions' :key="privacy" :class="'md-checkbox--with-summary group-form__privacy-' + privacy" :value='privacy' :aria-label='privacy')
             template(v-slot:label)
               .group-form__privacy-title
-                strong.text-high-emphasis(v-t="'common.privacy.' + privacy")
+                strong.text-high-emphasis {{ t('common.privacy.' + privacy) }}
                 mid-dot.text-medium-emphasis
                 span.text-medium-emphasis {{ privacyStringFor(privacy) }}
 
       p.group-form__privacy-statement.text-body-small.text-medium-emphasis {{privacyStatement}}
-      .group-form__section.group-form__joining.lmo-form-group(v-if='group.privacyIsOpen()')
-        v-list-subheader(v-t="'group_form.how_do_people_join'")
+      .group-form__section.group-form__joining.lmo-form-group(v-if='group.groupPrivacy != "secret"')
+        v-list-subheader {{ t('group_form.how_do_people_join') }}
         v-radio-group(v-model='group.membershipGrantedUpon')
           v-radio(v-for="granted in ['request', 'approval']" :key="granted" :class="'group-form__membership-granted-upon-' + granted" :value='granted')
             template(v-slot:label)
-              span(v-t="'group_form.membership_granted_upon_' + granted")
+              span {{ t(groupMembershipGrantedUpon(group, granted), { parent: group.parentName() }) }}
 
     div.pt-2(v-if="!group.parentId")
       span.text-medium-emphasis

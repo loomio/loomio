@@ -248,6 +248,7 @@ ca:
       open: Obert
       closed: Tancat
       private: Privat
+      parent_members: "Visible al grup principal"
       secret: Secret
     selected: Seleccionat
     today: avui
@@ -1428,6 +1429,9 @@ ca:
     confirm_change_to_public: Si continueu, tots els fils d'aquest grup es faran públics a internet.
     confirm_change_to_private_discussions_only: Si continueu, tots els fils públics d'aquest grup passaran a ser privats.
     profile: Perfil
+    subgroup_name_and_content_are_public: "Qualsevol pot trobar aquest subgrup i llegir-ne els fils"
+    subgroup_name_is_public_and_threads_are_private: "Qualsevol pot trobar aquest subgrup; els fils són privats"
+    subgroup_is_visible_to_parent_members: "Els membres de %{parent} poden trobar aquest subgrup; els fils són privats"
     subgroup_privacy_is_open_description: Tothom pot trobar aquest subgrup i demanar unir-s'hi. Només els membres poden veure qui pertany al grup. Tots els fils són públics.
     subgroup_privacy_is_closed_description: Tothom pot trobar aquest subgrup i demanar unir-s'hi. Només els membres poden veure qui pertany al grup. Tots els fils són privats.
     subgroup_privacy_is_closed_public_threads_description: Tothom pot trobar aquest subgrup i demanar unir-s'hi. Només els membres poden veure qui pertany al grup. Els fils poden ser públics o privats.
@@ -1438,6 +1442,8 @@ ca:
     membership_granted_upon_request: Tothom es pot unir al grup.
     membership_granted_upon_approval: Tothom pot sol·licitar unir-se però és necessària l'aprovació.
     membership_granted_upon_invitation: Només amb invitació.
+    membership_granted_upon_approval_parent_members: "Els membres de %{parent} poden sol·licitar aprovació per unir-s’hi"
+    membership_granted_upon_request_parent_members: "Els membres de %{parent} poden unir-se sense aprovació"
     membership_granted_upon_approval_secret_parent: 'Tothom de  %{parent}  pot demanar d''unir-se al grup<strong>enviant una sol·licitud</strong>  '
     permissions: Permisos
     thread_privacy: Privacitat dels fils

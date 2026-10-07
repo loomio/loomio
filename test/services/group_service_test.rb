@@ -49,7 +49,7 @@ class GroupServiceTest < ActiveSupport::TestCase
     subgroup = Group.new(
       name: "Parent-visible subgroup #{SecureRandom.hex(4)}",
       parent: parent,
-      group_privacy: 'closed'
+      group_privacy: 'parent_members'
     )
 
     assert subgroup.is_visible_to_parent_members?
@@ -70,10 +70,11 @@ class GroupServiceTest < ActiveSupport::TestCase
     refute publications.any? { |models, options| models == [subgroup] && options[:group_id] == parent.id }
   end
 
-  test "exports open and closed subgroups for a parent group admin" do
-    parent = create_parent_group(group_privacy: 'secret')
+  test "exports public and parent visible subgroups for a parent group admin" do
+    parent = create_parent_group(group_privacy: 'closed')
     closed_subgroup = create_subgroup(parent: parent, group_privacy: 'closed')
     open_subgroup = create_subgroup(parent: parent, group_privacy: 'open')
+    internal_subgroup = create_subgroup(parent: parent, group_privacy: 'parent_members')
     secret_subgroup = create_subgroup(parent: parent, group_privacy: 'secret')
     joined_secret_subgroup = create_subgroup(parent: parent, group_privacy: 'secret')
     joined_secret_subgroup.add_member!(@user, inviter: joined_secret_subgroup.creator)
@@ -83,6 +84,7 @@ class GroupServiceTest < ActiveSupport::TestCase
     assert_includes group_ids, parent.id
     assert_includes group_ids, closed_subgroup.id
     assert_includes group_ids, open_subgroup.id
+    assert_includes group_ids, internal_subgroup.id
     assert_includes group_ids, joined_secret_subgroup.id
     refute_includes group_ids, secret_subgroup.id
   end

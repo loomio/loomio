@@ -311,6 +311,7 @@ en:
       open: Open
       closed: Closed
       private: Private
+      parent_members: "Visible to parent group"
       secret: Secret
     selected: Selected
     today: today
@@ -1609,6 +1610,9 @@ en:
     confirm_change_to_public: If you proceed, all threads in this group will be made public on the web.
     confirm_change_to_private_discussions_only: If you proceed, any public threads in this group will be made private.
     profile: Profile
+    subgroup_name_and_content_are_public: "Anyone can find this subgroup and read its threads"
+    subgroup_name_is_public_and_threads_are_private: "Anyone can find this subgroup; its threads are private"
+    subgroup_is_visible_to_parent_members: "Members of %{parent} can find this subgroup; its threads are private"
     subgroup_privacy_is_open_description: Anyone can find this subgroup and ask to join. All threads are public.
     subgroup_privacy_is_closed_description: Anyone can find this subgroup and ask to join. All threads are private.
     subgroup_privacy_is_closed_public_threads_description: Anyone can find this subgroup and ask to join. Threads can be public or private.
@@ -1619,6 +1623,8 @@ en:
     membership_granted_upon_request: Anyone can join the group.
     membership_granted_upon_approval: Anyone can request to join but must be approved.
     membership_granted_upon_invitation: Invitation only.
+    membership_granted_upon_approval_parent_members: "Members of %{parent} can request approval to join"
+    membership_granted_upon_request_parent_members: "Members of %{parent} can join without approval"
     membership_granted_upon_approval_secret_parent: "<strong>By request</strong>  anyone from %{parent} can ask to join the group."
     permissions: Permissions
     thread_privacy: Thread privacy

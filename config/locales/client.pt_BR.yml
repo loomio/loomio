@@ -256,6 +256,7 @@ pt_BR:
       open: Aberto
       closed: Encerrado
       private: Privado
+      parent_members: "Visível para o grupo principal"
       secret: Secreto
     selected: Selecionado
     today: hoje
@@ -1449,6 +1450,9 @@ pt_BR:
     confirm_change_to_public: Se você continuar, as conversas neste grupo serão públicas na web.
     confirm_change_to_private_discussions_only: Se você continuar, qualquer conversa pública deste grupo ficará privada.
     profile: Perfil
+    subgroup_name_and_content_are_public: "Qualquer pessoa pode encontrar este subgrupo e ler suas conversas"
+    subgroup_name_is_public_and_threads_are_private: "Qualquer pessoa pode encontrar este subgrupo; suas conversas são privadas"
+    subgroup_is_visible_to_parent_members: "Membros de %{parent} podem encontrar este subgrupo; suas conversas são privadas"
     subgroup_privacy_is_open_description: Qualquer pessoa pode encontrar este subgrupo e pedir para participar. Somente membros podem ver quem está no grupo. Todas as conversas são públicas.
     subgroup_privacy_is_closed_description: Qualquer pessoa pode encontrar este subgrupo e pedir para participar. Somente membros podem ver quem está no grupo. Todas as conversas são privadas.
     subgroup_privacy_is_closed_public_threads_description: Qualquer pessoa pode encontrar este subgrupo e pedir para participar. Somente membros podem ver quem está no grupo. Conversas podem ser públicas ou privadas.
@@ -1459,6 +1463,8 @@ pt_BR:
     membership_granted_upon_request: Qualquer um pode entrar no grupo
     membership_granted_upon_approval: Qualquer pessoa pode pedir para participar, mas deve ser aprovada.
     membership_granted_upon_invitation: Somente para convidados.
+    membership_granted_upon_approval_parent_members: "Membros de %{parent} podem solicitar aprovação para entrar"
+    membership_granted_upon_request_parent_members: "Membros de %{parent} podem entrar sem aprovação"
     membership_granted_upon_approval_secret_parent: "<strong>Por solicitação</strong> qualquer um de %{parent} pode pedir para se juntar ao grupo."
     permissions: Permissões
     thread_privacy: Privacidade da conversa

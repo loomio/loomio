@@ -284,7 +284,8 @@ be:
       open: Адкрыта
       closed: Закрыта
       private: Прыватнае
-      secret: Сакрэт
+      parent_members: "Бачная бацькоўскай групе"
+      secret: Сакрэтная група
     selected: Выбранае
     today: сёння
     in_x_days: праз %{x} дзён
@@ -1539,6 +1540,9 @@ be:
     confirm_change_to_public: Калі вы працягнеце, усе тэмы ў гэтай групе будуць апублікаваныя ў інтэрнэце.
     confirm_change_to_private_discussions_only: Калі вы працягнеце, усе публічныя тэмы ў гэтай групе стануць прыватнымі.
     profile: Профіль
+    subgroup_name_and_content_are_public: "Кожны можа знайсці гэтую падгрупу і чытаць яе тэмы"
+    subgroup_name_is_public_and_threads_are_private: "Кожны можа знайсці гэтую падгрупу; яе тэмы прыватныя"
+    subgroup_is_visible_to_parent_members: "Удзельнікі %{parent} могуць знайсці гэтую падгрупу; яе тэмы прыватныя"
     subgroup_privacy_is_open_description: Кожны можа знайсці гэтую падгрупу і папрасіць далучыцца. Усе тэмы публічныя.
     subgroup_privacy_is_closed_description: Кожны можа знайсці гэтую падгрупу і папрасіць далучыцца. Усе тэмы прыватныя.
     subgroup_privacy_is_closed_public_threads_description: Кожны можа знайсці гэтую падгрупу і папрасіць далучыцца. Тэмы могуць быць публічнымі або прыватнымі.
@@ -1549,6 +1553,8 @@ be:
     membership_granted_upon_request: Да групы можа далучыцца кожны.
     membership_granted_upon_approval: Кожны можа падаць заяўку на далучэнне, але павінен атрымаць адабрэнне.
     membership_granted_upon_invitation: Толькі па запрашэнні.
+    membership_granted_upon_approval_parent_members: "Удзельнікі %{parent} могуць запытаць дазвол на далучэнне"
+    membership_granted_upon_request_parent_members: "Удзельнікі %{parent} могуць далучыцца без ухвалення"
     membership_granted_upon_approval_secret_parent: "<strong>Па запыце</strong> любы з %{parent} можа папрасіць далучыцца да групы."
     permissions: Дазволы
     thread_privacy: Прыватнасць ланцужка паведамленняў

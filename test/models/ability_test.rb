@@ -13,6 +13,102 @@ class AbilityTest < ActiveSupport::TestCase
   end
 
   # is_visible_to_public
+  test "immediate joining follows subgroup visibility across the reusable access matrix" do
+    subgroup = groups(:parent_join_subgroup)
+    subgroup.parent.update!(group_privacy: 'closed')
+    allowed = %i[admin user member member_quiet member_normal member_loud reader_quiet reader_normal reader_loud member_guest_loud]
+    denied = %i[alien alien_quiet alien_loud guest_quiet guest_normal guest_admin_normal guest_loud non_guest_loud former_member_loud former_guest_loud inactive_member_loud inactive_guest_loud former_member_guest]
+
+    [false, true].each do |public_visibility|
+      subgroup.update!(is_visible_to_public: public_visibility)
+      (allowed + denied).each do |role|
+        user = users(role)
+        expected = user.active? && (public_visibility || allowed.include?(role))
+        assert_equal expected, user.can?(:join, subgroup), "#{role}, public=#{public_visibility}"
+      end
+      assert_not LoggedOutUser.new.can?(:join, subgroup)
+    end
+  end
+
+  test "parent joining does not grant instance admins membership or subgroup administration" do
+    subgroup = groups(:parent_join_subgroup)
+    instance_admin = users(:alien)
+    instance_admin.update!(is_admin: true)
+    assert_not instance_admin.can?(:join, subgroup)
+    assert_not users(:member_normal).can?(:update, subgroup)
+    assert users(:subgroup_user).can?(:update, subgroup)
+  end
+
+  test "secret and discarded subgroups cannot be joined by ordinary parent members" do
+    subgroup = groups(:parent_join_subgroup)
+    member = users(:member_normal)
+    subgroup.update!(group_privacy: 'secret')
+    assert_not member.can?(:join, subgroup)
+
+    subgroup.update!(group_privacy: 'parent_members', membership_granted_upon: 'request')
+    subgroup.discard!
+    assert_not member.can?(:join, subgroup)
+  end
+
+  test "unverified parent members cannot join immediately" do
+    user = users(:member_normal)
+    user.update!(email_verified: false)
+    assert_not user.can?(:join, groups(:parent_join_subgroup))
+  end
+
+  test "parent members cannot join a subgroup with an expired organization subscription" do
+    subgroup = groups(:parent_join_subgroup)
+    parent = subgroup.parent
+    subscription = subscriptions(:cleanup_active_trial)
+    subscription.update!(expires_at: 1.day.ago)
+    parent.update!(subscription: subscription)
+
+    assert_not users(:member_normal).can?(:join, subgroup)
+  end
+
+  test "parent joining does not expose private subgroup threads before membership" do
+    subgroup = groups(:parent_join_subgroup)
+    discussion = DiscussionService.create(params: {group_id: subgroup.id, title: 'Volunteer work', private: true}, actor: users(:subgroup_user))
+    member = users(:member_normal)
+
+    assert member.can?(:show, subgroup)
+    assert_not member.can?(:show, discussion)
+
+    MembershipService.join_group(group: subgroup, actor: member)
+    member.reload
+
+    assert member.can?(:show, discussion)
+    assert_not member.can?(:update, subgroup)
+    assert_not users(:member_loud).can?(:show, discussion)
+    assert_not users(:alien).can?(:show, discussion)
+  end
+
+  test "parent visible metadata and optional thread access remain separate in queries and voting" do
+    subgroup = groups(:parent_join_subgroup)
+    subgroup.parent.update!(group_privacy: 'closed')
+    poll = PollService.create(params: {
+      group_id: subgroup.id, title: 'Volunteer priorities', poll_type: 'proposal',
+      poll_option_names: %w[agree disagree], closing_at: 1.day.from_now
+    }, actor: users(:subgroup_user))
+    parent_roles = %i[admin member_normal member_loud reader_normal]
+    outsider_roles = %i[alien guest_normal former_member_loud inactive_member_loud]
+
+    [false, true].each do |can_read|
+      subgroup.update!(parent_members_can_see_discussions: can_read)
+      (parent_roles + outsider_roles).each do |role|
+        user = users(role)
+        parent_member = parent_roles.include?(role)
+        assert_equal parent_member, GroupQuery.visible_to(user: user, show_public: true).exists?(subgroup.id), role
+        assert_equal can_read && parent_member, TopicQuery.visible_to(user: user).exists?(poll.topic_id), role
+        assert_equal can_read && parent_member, PollQuery.visible_to(user: user).exists?(poll.id), role
+        assert_not user.can?(:vote_in, poll), role
+      end
+      assert_not GroupQuery.visible_to(show_public: true).exists?(subgroup.id)
+      assert_not TopicQuery.visible_to.exists?(poll.topic_id)
+      assert_not PollQuery.visible_to.exists?(poll.id)
+    end
+  end
+
   test "public group visible to non member" do
     @group.update_columns(is_visible_to_public: true)
     assert @alien.can?(:show, @group)

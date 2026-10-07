@@ -1,16 +1,16 @@
 ---
 title: Экспорт данных
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
+source_revision: cd2e1e63e611688362e80009f50b8ed25025ba8b
 source_file: docs/en/user_manual/groups/data_export/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-07'
 sections:
   introduction: 5e29f67f9a2084ec
   export-data: 58b5e1d4e6f0b917
   export-group-data-as-csv: 53286ec33e7300d6
   export-group-data-as-html: 101671937dcd6f36
-  export-group-data-as-json: 4ec883363fb166ee
+  export-group-data-as-json: aa310889d0854550
   print-thread-to-pdf: 39c48383953f9fd5
   import-your-group-data-on-another-loomio-server: 910ee8af48049e82
 generated:
@@ -18,7 +18,7 @@ generated:
   export-data: 2cdc3f036d2d3884
   export-group-data-as-csv: 0f660e77770287ad
   export-group-data-as-html: dcf9f29ae5594c27
-  export-group-data-as-json: 64592d09fc1d739d
+  export-group-data-as-json: 8a7cfbac2d992297
   print-thread-to-pdf: 43aeb97ba2b4bab1
   import-your-group-data-on-another-loomio-server: a3705cd7b14b75d4
 title_source: 29049648f87b87f5
@@ -79,7 +79,7 @@ Loomio подготавливает файл HTML в фоновом режиме
 - Ветки, комментарии, реакции, теги, шаблоны, уведомления и связанные записи из включённых в экспорт групп
 - Опросы, варианты, голоса и выводы; анонимный опрос включается только после его закрытия
 - Подгруппы, в которых вы состоите
-- Открытые и закрытые подгруппы при экспорте их родительской группы, если вы являетесь её администратором, даже если вы не состоите в этих подгруппах
+- Открытые, закрытые и видимые родительской группе подгруппы при экспорте их родительской группы, если вы являетесь её администратором, даже если вы не состоите в этих подгруппах
 - Ссылки на файлы и изображения, прикреплённые к включённому в экспорт содержимому
 
 Экспорт в JSON не включает:

@@ -248,6 +248,7 @@ uk:
       open: Відкрита
       closed: Закрита
       private: Приватна
+      parent_members: "Видима батьківській групі"
       secret: Таємна
     selected: Вибрані
     today: сьогодні
@@ -1431,6 +1432,9 @@ uk:
     confirm_change_to_public: Якщо ви продовжите, всі теми в цій групі стануть загальнодоступними в мережі.
     confirm_change_to_private_discussions_only: Якщо ви продовжите, всі загальнодоступні теми в цій групі буде змінено на приватні.
     profile: Профіль
+    subgroup_name_and_content_are_public: "Будь-хто може знайти цю підгрупу й читати її теми"
+    subgroup_name_is_public_and_threads_are_private: "Будь-хто може знайти цю підгрупу; її теми приватні"
+    subgroup_is_visible_to_parent_members: "Учасники %{parent} можуть знайти цю підгрупу; її теми приватні"
     subgroup_privacy_is_open_description: 'Будь-хто може знайти цю підгрупу та зробити запит на участь. Тільки учасники можуть бачити хто входить до групи. Всі теми є загальнодоступними. '
     subgroup_privacy_is_closed_description: 'Будь-хто може знайти групу та зробити запит на участь. Тільки учасники можуть бачити хто входить до групи. Всі теми є приватними. '
     subgroup_privacy_is_closed_public_threads_description: 'Будь-хто може знайти цю підгрупу та зробити запит на участь. Тільки учасники можуть бачити хто входить до групи. Теми можуть бути загальнодоступними та приватними. '
@@ -1441,6 +1445,8 @@ uk:
     membership_granted_upon_request: Будь-хто може приєднатися до групи.
     membership_granted_upon_approval: Будь-хто може зробити запит на участь, але воно має бути схвалено.
     membership_granted_upon_invitation: Тільки запрошення.
+    membership_granted_upon_approval_parent_members: "Учасники %{parent} можуть попросити схвалення для приєднання"
+    membership_granted_upon_request_parent_members: "Учасники %{parent} можуть приєднатися без схвалення"
     membership_granted_upon_approval_secret_parent: "<strong>За запитом</strong> будь-хто з %{parent} може попросити приєднатися до групи."
     permissions: Дозволи
     thread_privacy: Конфіденційність тем

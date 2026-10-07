@@ -248,7 +248,8 @@ es:
       open: Abierto
       closed: 'Cerrado '
       private: Privado
-      secret: 'Secreto '
+      parent_members: "Visible para el grupo principal"
+      secret: Secreto
     selected: Seleccionado
     today: Hoy
     in_x_days: en %{x} días
@@ -1437,6 +1438,9 @@ es:
     confirm_change_to_public: 'Si continúas, todos los hilos de este grupo se harán públicos en internet.  '
     confirm_change_to_private_discussions_only: 'Si continuas cualquier hilo público en este grupo se hará privado. '
     profile: Perfil
+    subgroup_name_and_content_are_public: "Cualquiera puede encontrar este subgrupo y leer sus hilos"
+    subgroup_name_is_public_and_threads_are_private: "Cualquiera puede encontrar este subgrupo; sus hilos son privados"
+    subgroup_is_visible_to_parent_members: "Los miembros de %{parent} pueden encontrar este subgrupo; sus hilos son privados"
     subgroup_privacy_is_open_description: Cualquier persona puede encontrar este subgrupo y pedir membresía. Solo los integrantes pueden ver quien pertenece al mismo. Todos los hilos son públicos.
     subgroup_privacy_is_closed_description: Cualquier persona puede encontrar este subgrupo y pedir membresía. Sólo los integrantes pueden ver quien pertenece al mismo. Todos los hilos son privados.
     subgroup_privacy_is_closed_public_threads_description: Cualquier persona puede encontrar este subgrupo y pedir membresía. Sólo los integrantes pueden ver quien pertenece al mismo. Los hilos pueden ser públicos o privados.
@@ -1447,6 +1451,8 @@ es:
     membership_granted_upon_request: Cualquiera puede unirse al grupo.
     membership_granted_upon_approval: Cualquiera puede pedir la membresía, pero debe ser aprobada.
     membership_granted_upon_invitation: Sólo invitación.
+    membership_granted_upon_approval_parent_members: "Los miembros de %{parent} pueden solicitar aprobación para unirse"
+    membership_granted_upon_request_parent_members: "Los miembros de %{parent} pueden unirse sin aprobación"
     membership_granted_upon_approval_secret_parent: Cualquiera en %{parent} puede pedir apuntarse al grupo <strong>por petición</strong>.
     permissions: Permisos
     thread_privacy: Privacidad del hilo
