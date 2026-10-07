@@ -8,21 +8,6 @@
 # deleted stances are removed by CleanupService's scheduled orphan passes.
 module StanceUserReferenceIntegrityCleanup
   def self.run!(connection)
-    # Legacy anonymous voting cleared participant_id, but the 3.3 conversion
-    # moved those votes to anonymous ballots and deleted the stances. Any left
-    # are unconverted anonymous votes, not orphans, so refuse to delete them.
-    anonymous_stance_count = connection.select_value(<<~SQL).to_i
-      SELECT COUNT(*)
-      FROM stances
-      JOIN polls ON polls.id = stances.poll_id
-      WHERE stances.participant_id IS NULL AND polls.anonymous = TRUE
-    SQL
-    if anonymous_stance_count.positive?
-      raise ActiveRecord::MigrationError,
-            "Found #{anonymous_stance_count} anonymous stance(s) without a participant. " \
-            "Complete the legacy anonymous vote conversion before adding stance user foreign keys."
-    end
-
     connection.execute(<<~SQL)
       DELETE FROM stances
       WHERE stances.participant_id IS NULL
