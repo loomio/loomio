@@ -22,6 +22,21 @@ class PollsControllerTest < ActionController::TestCase
     ActionMailer::Base.deliveries.clear
   end
 
+  test "shows a poll page titled with the poll title" do
+    sign_in @user
+    get :show, params: { key: @poll.key }
+    assert_response 200
+    assert_includes response.body, "<title>#{@poll.title}</title>"
+  end
+
+  test "does not show a poll page to users who cannot see the poll" do
+    @discussion.topic.update!(private: true)
+    sign_in @alien
+    get :show, params: { key: @poll.key }
+    assert_response 403
+    assert_not_includes response.body, @poll.title
+  end
+
   test "displays html export" do
     sign_in @user
     get :export, params: { key: @poll.key }

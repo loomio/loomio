@@ -67,10 +67,8 @@ class ApplicationController < ActionController::Base
     @recipient = current_user
     if current_user.can? :show, resource
       assign_resource
-      @pagination = pagination_params
       respond_to do |format|
-        format.html
-        format.xml
+        format.html { boot_app }
       end
     else
       respond_with_error 403
