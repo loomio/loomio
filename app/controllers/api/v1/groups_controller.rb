@@ -1,6 +1,6 @@
 class Api::V1::GroupsController < Api::V1::RestfulController
   before_action :require_signed_in_user_for_explore, only: [:index, :count_explore_results]
-  before_action :enforce_trial_group_limit, only: [:create]
+  before_action :require_current_user, :enforce_trial_group_limit, only: [:create]
 
   def token
     self.resource = load_and_authorize(:group, :invite_people)

@@ -163,6 +163,14 @@ class Api::V1::GroupsControllerTest < ActionController::TestCase
     assert_equal "newgroup", group_data['handle']
   end
 
+  test "create requires a signed-in user" do
+    assert_no_difference "Group.count" do
+      post :create, params: { group: { name: "New Group", handle: "newgroup-#{SecureRandom.hex(4)}" } }
+    end
+
+    assert_response 401
+  end
+
   test "create does not accept a client-supplied subscription" do
     sign_in @user
     paid_subscription = subscriptions(:cleanup_active_paid)
