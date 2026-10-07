@@ -250,6 +250,7 @@ zh_TW:
       open: 公開
       closed: 封閉
       private: 非公開
+      parent_members: "對父群組可見"
       secret: 私密
     selected: 已選取
     today: 今天
@@ -1430,6 +1431,9 @@ zh_TW:
     confirm_change_to_public: 若您繼續，所有在此群組的討論串都將會變為公開在網路上。
     confirm_change_to_private_discussions_only: 若您繼續，任何在此群組中的公開討論串都將會變為非公開。
     profile: 簡歷
+    subgroup_name_and_content_are_public: "任何人都能找到此子群組並閱讀其對話串"
+    subgroup_name_is_public_and_threads_are_private: "任何人都能找到此子群組；其對話串不公開"
+    subgroup_is_visible_to_parent_members: "%{parent}的成員能找到此子群組；其對話串不公開"
     subgroup_privacy_is_open_description: 任何人都可以找到這個子群組並要求加入。只有成員才能看見誰在群組裡。所有的討論串都是公開的。
     subgroup_privacy_is_closed_description: 任何人都可以找到這個子群組並要求加入。只有成員才能看見誰在群組裡。所有的討論串都是私密的。
     subgroup_privacy_is_closed_public_threads_description: 任何人都可以找到這個子群組並要求加入。只有成員才能看見誰在群組裡。討論串可以是公開或私密的。
@@ -1440,6 +1444,8 @@ zh_TW:
     membership_granted_upon_request: 任何人都能加入此群組。
     membership_granted_upon_approval: 任何人都可以要求加入，但必須經過審核。
     membership_granted_upon_invitation: 僅限邀請。
+    membership_granted_upon_approval_parent_members: "%{parent}的成員可以申請核准加入"
+    membership_granted_upon_request_parent_members: "%{parent}的成員無需核准即可加入"
     membership_granted_upon_approval_secret_parent: "<strong>根據要求</strong>：任何在 %{parent} 群組的人都可以要求加入群組。"
     permissions: 權限
     thread_privacy: 討論串隱私權

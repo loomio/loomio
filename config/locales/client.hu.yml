@@ -250,6 +250,7 @@ hu:
       open: Nyitva
       closed: Zárva
       private: Zártkörű
+      parent_members: "Látható a szülőcsoport számára"
       secret: Titkos
     selected: Kiválasztva
     today: Ma
@@ -1428,6 +1429,9 @@ hu:
     confirm_change_to_public: Ha folytatja, akkor a csoport összes témát közzéteszi az interneten.
     confirm_change_to_private_discussions_only: Ha folytatja, a csoport összes nyilvános témája zártkörű lesz.
     profile: Profil
+    subgroup_name_and_content_are_public: "Bárki megtalálhatja ezt az alcsoportot és olvashatja a szálait"
+    subgroup_name_is_public_and_threads_are_private: "Bárki megtalálhatja ezt az alcsoportot; a szálai privátak"
+    subgroup_is_visible_to_parent_members: "A(z) %{parent} tagjai megtalálhatják ezt az alcsoportot; a szálai privátak"
     subgroup_privacy_is_open_description: Bárki megtalálhatja ezt az alcsoportot, és kérheti a csatlakozást. Csak a tagok láthatják, ki van a csoportban. Az összes téma nyilvános.
     subgroup_privacy_is_closed_description: Bárki megtalálhatja ezt az alcsoportot, és kérheti a csatlakozást. Csak a tagok láthatják, ki van a csoportban. Az összes téma zártkörű.
     subgroup_privacy_is_closed_public_threads_description: Bárki megtalálhatja ezt az alcsoportot, és kérheti a csatlakozást. Csak a tagok láthatják, ki van a csoportban. A témák lehetnek nyilvános vagy magántémák
@@ -1438,6 +1442,8 @@ hu:
     membership_granted_upon_request: Bárki csatlakozhat a csoporthoz.
     membership_granted_upon_approval: Bárki kérheti a csatlakozást, de jóvá kell hagynia.
     membership_granted_upon_invitation: Csak meghívás.
+    membership_granted_upon_approval_parent_members: "A(z) %{parent} tagjai jóváhagyást kérhetnek a csatlakozáshoz"
+    membership_granted_upon_request_parent_members: "A(z) %{parent} tagjai jóváhagyás nélkül csatlakozhatnak"
     membership_granted_upon_approval_secret_parent: "<strong> Kérésre </strong>bárki a(z) %{parent} -től, kérheti, hogy csatlakozzon a csoporthoz."
     permissions: Engedélyek
     thread_privacy: Téma adatvédelme

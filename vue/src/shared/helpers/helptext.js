@@ -44,31 +44,33 @@ export var groupPrivacy = function(group, privacy) {
     }
   } else {
     switch (privacy) {
-      case 'open':   return 'group_form.subgroup_privacy_is_open_description';
+      case 'open':   return 'group_form.subgroup_name_and_content_are_public';
       case 'secret': return 'group_form.subgroup_privacy_is_secret_description';
-      case 'closed':
-        if (group.isSubgroupOfSecretParent()) {
-          return 'group_form.subgroup_privacy_is_closed_secret_parent_description';
-        } else {
-          return 'group_form.subgroup_privacy_is_closed_description';
-        }
+      case 'closed': return 'group_form.subgroup_name_is_public_and_threads_are_private';
+      case 'parent_members': return 'group_form.subgroup_is_visible_to_parent_members';
     }
   }
 };
 
+export function groupPrivacyOptions(group) {
+  if (!group.parentId) { return ['open', 'closed', 'secret']; }
+  if (['secret', 'parent_members'].includes(group.parent().groupPrivacy)) { return ['parent_members', 'secret']; }
+  return ['open', 'closed', 'parent_members', 'secret'];
+}
+
+export function groupMembershipGrantedUpon(group, granted) {
+  if (['request', 'approval'].includes(granted) && group.privacyIsParentMembers()) {
+    return 'group_form.membership_granted_upon_' + granted + '_parent_members';
+  }
+  return 'group_form.membership_granted_upon_' + granted;
+}
+
 export var groupPrivacyStatement = function(group) {
-  if (group.parentId && group.parent().privacyIsSecret()) {
-    if (group.privacyIsClosed()) {
-      return 'group_form.privacy_statement.private_to_parent_members';
-    } else {
-      return 'group_form.privacy_statement.private_to_group';
-    }
-  } else {
-    switch (group.groupPrivacy) {
-      case 'open':   return 'group_form.privacy_statement.public_on_web';
-      case 'closed': return 'group_form.privacy_statement.public_on_web';
-      case 'secret': return 'group_form.privacy_statement.private_to_group';
-    }
+  switch (group.groupPrivacy) {
+    case 'open':
+    case 'closed': return 'group_form.privacy_statement.public_on_web';
+    case 'parent_members': return 'group_form.privacy_statement.private_to_parent_members';
+    case 'secret': return 'group_form.privacy_statement.private_to_group';
   }
 };
 

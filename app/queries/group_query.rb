@@ -7,10 +7,13 @@ class GroupQuery
     return chain.none if user.deactivated_at.present?
 
     guest_group_ids = Topic.where(id: user.guest_topic_ids).pluck(:group_id).compact
-    group_ids = user.group_ids.concat(guest_group_ids)
+    # Guests may see a thread's group context, but only actual parent members
+    # inherit subgroup visibility. Do not mutate the user's cached memberships.
+    group_ids = user.group_ids
+    context_group_ids = group_ids | guest_group_ids
     chain.kept.
       where("#{'groups.is_visible_to_public = true OR ' if show_public}
-            groups.id in (:group_ids) OR
-            (groups.parent_id in (:group_ids) AND groups.is_visible_to_parent_members = TRUE)", group_ids: group_ids)
+            groups.id in (:context_group_ids) OR
+            (groups.parent_id in (:group_ids) AND groups.is_visible_to_parent_members = TRUE)", group_ids: group_ids, context_group_ids: context_group_ids)
   end
 end

@@ -1,14 +1,14 @@
 ---
 title: Gestão de membros
-source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
+source_revision: cd2e1e63e611688362e80009f50b8ed25025ba8b
 source_file: docs/en/user_manual/groups/member_management/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-07'
 sections:
   introduction: f216b18771a2c2a9
   administering-your-group: 27aed40959adef57
-  managing-subgroups: ee977899fa34caab
+  managing-subgroups: 76b2fd61123a8a8a
   removing-members: f00aea52bfcd3547
   leaving-group: 02f69c9806d6beda
   set-title: 835b25d246477b4a
@@ -16,7 +16,7 @@ sections:
 generated:
   introduction: b1a1f110501cc560
   administering-your-group: c70db0361af97c6c
-  managing-subgroups: 8ed0c9c740963a99
+  managing-subgroups: df4616f5799233e3
   removing-members: 1525e682bca8fea6
   leaving-group: a86578792bbc338c
   set-title: 1fa149ca530e47d7
@@ -51,9 +51,9 @@ Para tornar um membro **admin**, acesse a aba Membros, encontre o membro e cliqu
 <!-- translation-section: managing-subgroups -->
 
 ## Gestão de subgrupos
-Se você é admin de um grupo principal ou de uma organização, tem permissões adicionais em todos os subgrupos __fechados__.
+Admins de um grupo principal podem entrar em seus subgrupos abertos, fechados e **Visível para o grupo principal** e depois se tornar admins desses subgrupos.
 
-Você pode entrar em qualquer subgrupo fechado clicando no botão "Entrar no grupo" à esquerda da página do subgrupo em questão, logo abaixo das abas.
+Selecione **Entrar no grupo** na página do subgrupo.
 
 ![Botão Entrar no grupo em um subgrupo fechado da Oatmilk Cooperative](member_join_subgroup.png)
 

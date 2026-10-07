@@ -275,6 +275,7 @@ zh_CN:
       open: 打开
       closed: 关闭
       private: 私密
+      parent_members: "对父群组可见"
       secret: 秘密
     selected: 已选
     today: 今天
@@ -1508,6 +1509,9 @@ zh_CN:
     confirm_change_to_public: 如果您继续操作，本群组中的所有帖子都将在网络上公开。
     confirm_change_to_private_discussions_only: 如果您继续操作，本群组中的所有公开帖子都将被设为私密帖子。
     profile: 轮廓
+    subgroup_name_and_content_are_public: "任何人都能找到此子群组并阅读其帖子"
+    subgroup_name_is_public_and_threads_are_private: "任何人都能找到此子群组；其帖子不公开"
+    subgroup_is_visible_to_parent_members: "%{parent}的成员能找到此子群组；其帖子不公开"
     subgroup_privacy_is_open_description: 任何人都可以找到这个子群组并应用加入。所有帖子都是公开的。
     subgroup_privacy_is_closed_description: 任何人都可以找到这个子群组并应用加入。所有帖子均为私密帖。
     subgroup_privacy_is_closed_public_threads_description: 任何人都可以找到这个子群组并应用加入。帖子可以设置为公开或私密。
@@ -1518,6 +1522,8 @@ zh_CN:
     membership_granted_upon_request: 任何人都可以加入该群组。
     membership_granted_upon_approval: 任何人都可以应用加入，但必须获得批准。
     membership_granted_upon_invitation: 仅限受邀者加入。
+    membership_granted_upon_approval_parent_members: "%{parent}的成员可以申请批准加入"
+    membership_granted_upon_request_parent_members: "%{parent}的成员无需批准即可加入"
     membership_granted_upon_approval_secret_parent: 任何来自 %{parent} 的<strong>成员</strong>都可以应用加入该群组。
     permissions: 权限
     thread_privacy: 帖子隐私

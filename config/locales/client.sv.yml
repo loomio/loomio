@@ -248,6 +248,7 @@ sv:
       open: Öppen
       closed: Stängd
       private: Privat
+      parent_members: "Synlig för huvudgruppen"
       secret: Hemlig
     selected: Vald
     today: i dag
@@ -1430,6 +1431,9 @@ sv:
     confirm_change_to_public: Om du fortsätter kommer alla trådar i den här gruppen att göras offentliga på webben.
     confirm_change_to_private_discussions_only: Om du fortsätter kommer alla offentliga trådar i den här gruppen att göras privata.
     profile: Profil
+    subgroup_name_and_content_are_public: "Alla kan hitta denna undergrupp och läsa dess trådar"
+    subgroup_name_is_public_and_threads_are_private: "Alla kan hitta denna undergrupp; dess trådar är privata"
+    subgroup_is_visible_to_parent_members: "Medlemmar i %{parent} kan hitta denna undergrupp; dess trådar är privata"
     subgroup_privacy_is_open_description: Vem som helst kan hitta denna undergrupp och be att få gå med. Endast medlemmar kan se vem som är med i gruppen. Alla trådar är offentliga.
     subgroup_privacy_is_closed_description: Vem som helst kan hitta denna undergrupp och be att få gå med. Endast medlemmar kan se vem som är med i gruppen. Alla trådar är privata.
     subgroup_privacy_is_closed_public_threads_description: Vem som helst kan hitta denna undergrupp och be att få gå med. Endast medlemmar kan se vem som är med i gruppen. Trådar kan vara offentliga eller privata.
@@ -1440,6 +1444,8 @@ sv:
     membership_granted_upon_request: Vem som helst kan gå med i gruppen.
     membership_granted_upon_approval: Vem som helst kan begära att få vara med men måste godkännas.
     membership_granted_upon_invitation: Endast inbjudan.
+    membership_granted_upon_approval_parent_members: "Medlemmar i %{parent} kan begära godkännande för att gå med"
+    membership_granted_upon_request_parent_members: "Medlemmar i %{parent} kan gå med utan godkännande"
     membership_granted_upon_approval_secret_parent: "<strong>På begäran</strong> kan vem som helst från %{parent} be om att få gå med i gruppen."
     permissions: Behörigheter
     thread_privacy: Trådens integritet

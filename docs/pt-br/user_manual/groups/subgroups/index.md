@@ -1,16 +1,16 @@
 ---
 title: Subgrupos
-source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
+source_revision: cd2e1e63e611688362e80009f50b8ed25025ba8b
 source_file: docs/en/user_manual/groups/subgroups/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-07'
 sections:
   introduction: 63e6e23d24e80919
   add-a-subgroup: 0bc0e5f99eb074c3
   subgroup-settings: 737225cc4bebe7e8
-  privacy: f5d6a140045a00af
-  permissions: 948f8a0f3209953c
+  privacy: 5bdd92ce200f197a
+  permissions: ee02991523f1ebe4
   find-subgroups: 5e6fc5a5122c1417
   invite-to-a-subgroup: 0af670e1e9b32a5e
   simultaneously-invite-people-to-subgroups-and-parent-group: 1991604900321cd7
@@ -20,8 +20,8 @@ generated:
   introduction: a88e3fa4a86a5335
   add-a-subgroup: 649cc0b103deb2fe
   subgroup-settings: 8cd85ca7ab755581
-  privacy: e5c96d0692652356
-  permissions: 7d0f05d4e39f7498
+  privacy: ecccf5440288f0bc
+  permissions: cf1a9b0e6e22aa7a
   find-subgroups: 6ea0c3e8f7fba638
   invite-to-a-subgroup: 3a778b646e5c0ebc
   simultaneously-invite-people-to-subgroups-and-parent-group: 5346ce02660bfea7
@@ -73,13 +73,24 @@ Você pode editar as [configurações do grupo](/en/user_manual/groups/settings/
 
 ### Privacidade
 
-As configurações de privacidade dos subgrupos são semelhantes às do grupo principal.
+Escolha quem pode encontrar o subgrupo separadamente de como as pessoas entram nele:
 
-Subgrupos com a configuração **Secreto** não são visíveis para pessoas que não foram convidadas para o subgrupo.
+| Privacidade | Quem pode encontrá-lo | Quem pode ler suas conversas |
+| --- | --- | --- |
+| **Aberto** | Qualquer pessoa | Qualquer pessoa |
+| **Fechado** | Qualquer pessoa | Membros do subgrupo e convidados |
+| **Visível para o grupo principal** | Membros do grupo principal e membros do subgrupo | Membros do subgrupo e convidados |
+| **Secreto** | Membros convidados para o subgrupo | Membros do subgrupo e convidados |
 
-Subgrupos com a configuração **Fechado** aparecem na aba Subgrupos do grupo principal e no menu lateral do usuário. Membros do grupo principal podem solicitar entrada no subgrupo. A entrada é aprovada por um admin do subgrupo.
+Para permitir que membros do grupo principal entrem por conta própria, selecione **Visível para o grupo principal** e depois **Membros de [grupo principal] podem entrar sem aprovação** em **Como as pessoas participam?** ao criar o subgrupo, ou em **Editar configurações do grupo → Privacidade**. Pessoas de fora do grupo principal precisam de um convite. Os membros podem sair do subgrupo e entrar novamente enquanto ainda fizerem parte do grupo principal.
 
-Subgrupos fechados têm uma configuração adicional que permite aos membros do grupo principal ver conversas privadas.
+![Configurações de privacidade do subgrupo com visibilidade para o grupo principal e entrada sem aprovação](subgroups_privacy_settings.png)
+
+Ao entrar, a pessoa se torna um membro comum do subgrupo. Isso não a torna admin nem altera a privacidade das conversas existentes.
+
+Subgrupos públicos também podem permitir entrada imediata; qualquer pessoa pode entrar quando essa opção está selecionada. Quando o grupo principal é privado, as configurações disponíveis para o subgrupo são **Visível para o grupo principal** e **Secreto**.
+
+Um subgrupo **Visível para o grupo principal** permanece privado quando seu grupo principal se torna público. Tornar um grupo principal privado restringe o acesso aos seus subgrupos públicos aos membros do grupo principal e torna as conversas desses subgrupos privadas, mantendo os subgrupos secretos como estão.
 
 [Leia sobre a privacidade dos grupos aqui](/en/user_manual/groups/settings/privacy).
 
@@ -89,7 +100,7 @@ Subgrupos fechados têm uma configuração adicional que permite aos membros do 
 
 Os subgrupos funcionam de forma independente do grupo principal. Por exemplo, se a configuração de privacidade do subgrupo for **Secreto**, apenas os membros convidados poderão encontrar esse subgrupo, ver quem faz parte dele e ver as conversas.
 
-Subgrupos **Fechados** têm uma configuração adicional que permite aos membros do grupo principal ver conversas privadas, tornando o subgrupo transparente para esses membros.
+Subgrupos **Fechados** e subgrupos com a configuração **Visível para o grupo principal** podem permitir que membros do grupo principal leiam conversas privadas antes de entrar no subgrupo. Ative **Membros de [grupo principal] podem ver conversas privadas** em **Permissões**. Esses leitores não ganham direito a voto nem se tornam membros do subgrupo.
 
 ![Configuração que permite aos membros do grupo principal ver conversas privadas do subgrupo](subgroups_private_threads_settings.png)
 

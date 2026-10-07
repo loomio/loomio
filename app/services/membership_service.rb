@@ -260,7 +260,11 @@ class MembershipService
 
   def self.join_group(group:, actor:)
     actor.ability.authorize! :join, group
-    membership = Membership.transaction { group.add_member!(actor) }
+    membership = Membership.transaction do
+      # A change in joining policy can make an earlier approval request redundant.
+      group.membership_requests.pending.requested_by(actor).destroy_all
+      group.add_member!(actor)
+    end
 
     Sentry.metrics.count("membership.join")
     EventBus.broadcast('membership_join_group', group, actor)

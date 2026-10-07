@@ -1,14 +1,14 @@
 ---
 title: Ledenbeheer
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
+source_revision: cd2e1e63e611688362e80009f50b8ed25025ba8b
 source_file: docs/en/user_manual/groups/member_management/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-07'
 sections:
   introduction: f216b18771a2c2a9
   administering-your-group: 27aed40959adef57
-  managing-subgroups: ee977899fa34caab
+  managing-subgroups: 76b2fd61123a8a8a
   removing-members: f00aea52bfcd3547
   leaving-group: 02f69c9806d6beda
   set-title: 835b25d246477b4a
@@ -16,7 +16,7 @@ sections:
 generated:
   introduction: 1e2b960fecdc7b20
   administering-your-group: 3c0cb1c03de746e4
-  managing-subgroups: 065e1aeee7022db1
+  managing-subgroups: c25792e7f25365e3
   removing-members: 7dfff6971ffec7fe
   leaving-group: 28b512fd85a5fe1a
   set-title: 5e9c488e9422af3b
@@ -51,9 +51,9 @@ Om een lid **admin** te maken, ga je naar het tabblad Leden, zoek je het lid en 
 <!-- translation-section: managing-subgroups -->
 
 ## Subgroepen beheren
-Als je admin van een hoofdgroep of organisatie bent, heb je extra rechten voor alle __besloten__ subgroepen.
+Admins van een hoofdgroep kunnen lid worden van de openbare en besloten subgroepen en van subgroepen die **Zichtbaar voor de bovenliggende groep** zijn, en zichzelf daarna admin van die subgroepen maken.
 
-Je kunt lid worden van elke besloten subgroep door op de knop "Lid worden van groep" links op de betreffende subgroeppagina te klikken, net onder de tabbladen.
+Selecteer **Word lid van de groep** op de subgroeppagina.
 
 ![Knop om lid te worden van een besloten subgroep van Oatmilk Cooperative](member_join_subgroup.png)
 

@@ -1,16 +1,16 @@
 ---
 title: Tietojen vienti
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
+source_revision: cd2e1e63e611688362e80009f50b8ed25025ba8b
 source_file: docs/en/user_manual/groups/data_export/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-07'
 sections:
   introduction: 5e29f67f9a2084ec
   export-data: 58b5e1d4e6f0b917
   export-group-data-as-csv: 53286ec33e7300d6
   export-group-data-as-html: 101671937dcd6f36
-  export-group-data-as-json: 4ec883363fb166ee
+  export-group-data-as-json: aa310889d0854550
   print-thread-to-pdf: 39c48383953f9fd5
   import-your-group-data-on-another-loomio-server: 910ee8af48049e82
 generated:
@@ -18,7 +18,7 @@ generated:
   export-data: 4ed06cbe68ee3705
   export-group-data-as-csv: 3dcaa53b2b2618ec
   export-group-data-as-html: 7442c3d8a642f16d
-  export-group-data-as-json: 8bc769c68d7f5ad3
+  export-group-data-as-json: e2b8ca42ff81c394
   print-thread-to-pdf: bfd3f5bdbb886c9f
   import-your-group-data-on-another-loomio-server: d9abdb53881277da
 title_source: 29049648f87b87f5
@@ -79,7 +79,7 @@ Sinun on oltava ryhmän ylläpitäjä, jotta voit viedä sen tiedot. JSON-vienti
 - Mukana olevien ryhmien ketjut, kommentit, reaktiot, tunnisteet, mallit, ilmoitukset ja niihin liittyvät tietueet
 - Kyselyt, vaihtoehdot, äänet ja johtopäätökset; anonyymi kysely sisällytetään vasta sen sulkeuduttua
 - Alaryhmät, joihin kuulut
-- Avoimet ja suljetut alaryhmät, kun viet niiden pääryhmän tiedot pääryhmän ylläpitäjänä, vaikka et kuuluisi kyseisiin alaryhmiin
+- Avoimet, suljetut ja pääryhmälle näkyvät alaryhmät, kun viet niiden pääryhmän tiedot pääryhmän ylläpitäjänä, vaikka et kuuluisi kyseisiin alaryhmiin
 - Viittaukset mukana olevaan sisältöön liitettyihin tiedostoihin ja kuviin
 
 JSON-vienti ei sisällä:

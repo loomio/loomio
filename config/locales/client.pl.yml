@@ -248,6 +248,7 @@ pl:
       open: Otwarta
       closed: Zamknięta
       private: Prywatna
+      parent_members: "Widoczna dla grupy nadrzędnej"
       secret: Tajna
     selected: Wybrane
     today: Dzisiaj
@@ -1428,6 +1429,9 @@ pl:
     confirm_change_to_public: Jeśli przejdziesz dalej, wszystkie wątki w tej grupie zostaną upublicznione w sieci.
     confirm_change_to_private_discussions_only: Jeśli przejdziesz dalej, wszystkie wątki publiczne w tej grupie staną się prywatne.
     profile: Profil
+    subgroup_name_and_content_are_public: "Każdy może znaleźć tę podgrupę i czytać jej wątki"
+    subgroup_name_is_public_and_threads_are_private: "Każdy może znaleźć tę podgrupę; jej wątki są prywatne"
+    subgroup_is_visible_to_parent_members: "Członkowie %{parent} mogą znaleźć tę podgrupę; jej wątki są prywatne"
     subgroup_privacy_is_open_description: Każdy może znaleźć tę podgrupę i poprosić o dołączenie. Tylko osoby do niej należące mogą zobaczyć, kto jest w grupie. Wszystkie wątki są publiczne.
     subgroup_privacy_is_closed_description: Każdy może znaleźć tę podgrupę i poprosić o dołączenie. Tylko osoby z grupy mogą zobaczyć kto w niej jest. Wszystkie wątki są prywatne.
     subgroup_privacy_is_closed_public_threads_description: Każdy może znaleźć tę podgrupę i poprosić o dołączenie. Tylko osoby z grupy mogą zobaczyć kto w niej jest. Wątki mogą być publiczne lub prywatne.
@@ -1438,6 +1442,8 @@ pl:
     membership_granted_upon_request: Każdy może dołączyć do grupy.
     membership_granted_upon_approval: Każdy może poprosić o dołączenie, ale musi zostać zatwierdzony.
     membership_granted_upon_invitation: Tylko z zaproszeniem.
+    membership_granted_upon_approval_parent_members: "Członkowie %{parent} mogą poprosić o zgodę na dołączenie"
+    membership_granted_upon_request_parent_members: "Członkowie grupy %{parent} mogą dołączyć bez zatwierdzenia"
     membership_granted_upon_approval_secret_parent: "<strong>Na życzenie</strong> każdy z %{parent} może poprosić o dołączenie do grupy."
     permissions: Uprawnienia
     thread_privacy: Prywatność wątków

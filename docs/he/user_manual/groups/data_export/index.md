@@ -1,16 +1,16 @@
 ---
 title: ייצוא נתונים
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
+source_revision: cd2e1e63e611688362e80009f50b8ed25025ba8b
 source_file: docs/en/user_manual/groups/data_export/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-07'
 sections:
   introduction: 5e29f67f9a2084ec
   export-data: 58b5e1d4e6f0b917
   export-group-data-as-csv: 53286ec33e7300d6
   export-group-data-as-html: 101671937dcd6f36
-  export-group-data-as-json: 4ec883363fb166ee
+  export-group-data-as-json: aa310889d0854550
   print-thread-to-pdf: 39c48383953f9fd5
   import-your-group-data-on-another-loomio-server: 910ee8af48049e82
 generated:
@@ -18,7 +18,7 @@ generated:
   export-data: 79fd9bd0f390c944
   export-group-data-as-csv: d5520f8c2057535d
   export-group-data-as-html: 87a1439b14f4c49c
-  export-group-data-as-json: d7055c585deffc72
+  export-group-data-as-json: 4981e21f47eb48be
   print-thread-to-pdf: 1bfb75e4b95aaf02
   import-your-group-data-on-another-loomio-server: 3c7a3871ff8be859
 title_source: 29049648f87b87f5
@@ -79,7 +79,7 @@ Loomio מכינה את קובץ ה־HTML ברקע ושולחת בדוא״ל קי
 - שרשורים, תגובות, תגובות אימוג׳י, תגיות, תבניות, התראות ורשומות קשורות מהקבוצות הכלולות בייצוא
 - סקרים, אפשרויות, הצבעות ומסקנות; סקר אנונימי נכלל רק לאחר שנסגר
 - תת־קבוצות שבהן קיימת חברות של החשבון המבצע את הייצוא
-- תת־קבוצות פתוחות וסגורות בעת ייצוא קבוצת האם עם הרשאות מנהל בקבוצת האם, גם ללא חברות באותן תת־קבוצות
+- תת־קבוצות פתוחות, סגורות וגלויות לקבוצת האם בעת ייצוא קבוצת האם עם הרשאות מנהל בקבוצת האם, גם ללא חברות באותן תת־קבוצות
 - הפניות לקבצים ולתמונות המצורפים לתוכן הכלול בייצוא
 
 ייצוא ה־JSON אינו כולל:

@@ -24,9 +24,9 @@ To make a member **admin**, go to the Members tab, find the member and click on 
 <!-- translation-section: managing-subgroups -->
 
 ## Managing subgroups
-If you are the admin of a parent group, or organization, you have additional permissions with regards to any __closed__ subgroups.
+Admins of a parent group can join its Open, Closed, and **Visible to parent group** subgroups, then make themselves subgroup admins.
 
-You will be able to join any closed subgroup by clicking the "Join Group" button on the left of the Subgroup page in question (just under the tabs).
+Select **Join group** on the subgroup page.
 
 ![Join group button on a closed Oatmilk Cooperative subgroup](member_join_subgroup.png)
 

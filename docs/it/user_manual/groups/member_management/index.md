@@ -1,14 +1,14 @@
 ---
 title: Gestione dei membri
-source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
+source_revision: cd2e1e63e611688362e80009f50b8ed25025ba8b
 source_file: docs/en/user_manual/groups/member_management/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-07'
 sections:
   introduction: f216b18771a2c2a9
   administering-your-group: 27aed40959adef57
-  managing-subgroups: ee977899fa34caab
+  managing-subgroups: 76b2fd61123a8a8a
   removing-members: f00aea52bfcd3547
   leaving-group: 02f69c9806d6beda
   set-title: 835b25d246477b4a
@@ -16,7 +16,7 @@ sections:
 generated:
   introduction: e1ca5b64f290b284
   administering-your-group: '082631af5373f135'
-  managing-subgroups: 8ef604ddfc5ed9ec
+  managing-subgroups: 92790bb1b94862f9
   removing-members: dbf17213668936bb
   leaving-group: 433160d33d2e8ccb
   set-title: 011f0941e532b944
@@ -51,11 +51,11 @@ Per rendere un membro **amministratore**, vai alla scheda Membri, trova il membr
 <!-- translation-section: managing-subgroups -->
 
 ## Gestire i sottogruppi
-Se sei l'amministratore di un gruppo principale o di un'organizzazione, hai permessi aggiuntivi per tutti i sottogruppi __chiusi__.
+Gli amministratori di un gruppo principale possono iscriversi ai suoi sottogruppi aperti, chiusi e **Visibile al gruppo principale**, quindi rendersi amministratori dei sottogruppi.
 
-Puoi entrare in qualsiasi sottogruppo chiuso facendo clic sul pulsante "Unisciti al gruppo" a sinistra nella pagina del sottogruppo interessato, appena sotto le schede.
+Seleziona **Iscriviti al gruppo** nella pagina del sottogruppo.
 
-![Pulsante Unisciti al gruppo in un sottogruppo chiuso di Oatmilk Cooperative](member_join_subgroup.png)
+![Pulsante Iscriviti al gruppo in un sottogruppo chiuso di Oatmilk Cooperative](member_join_subgroup.png)
 
 Una volta entrato nel sottogruppo, puoi anche renderti amministratore di quel sottogruppo, con la stessa procedura che useresti per rendere amministratore un'altra persona.
 

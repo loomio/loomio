@@ -248,6 +248,7 @@ tr:
       open: Açık
       closed: Kapalı
       private: Özel
+      parent_members: "Üst gruba görünür"
       secret: Gizli
     selected: Seçilmiş
     today: Bugün
@@ -1422,6 +1423,9 @@ tr:
     confirm_change_to_public: Eğer devam ederseniz, bu gruptaki tüm müzakereler web üzerinde herkese açık olacaktır.
     confirm_change_to_private_discussions_only: Eğer devam ederseniz, bu gruptaki kamuya açık tüm müzakereler gizlenecektir.
     profile: Profil
+    subgroup_name_and_content_are_public: "Herkes bu alt grubu bulabilir ve ileti dizilerini okuyabilir"
+    subgroup_name_is_public_and_threads_are_private: "Herkes bu alt grubu bulabilir; ileti dizileri gizlidir"
+    subgroup_is_visible_to_parent_members: "%{parent} üyeleri bu alt grubu bulabilir; ileti dizileri gizlidir"
     subgroup_privacy_is_open_description: Herkes alt grubu bulabilir ve katılmayı isteyebilir. Sadece üyeler grupta kim olduğunu görebilir. Tüm müzakereler kamuya açıktır.
     subgroup_privacy_is_closed_description: Herkes alt grubu bulabilir ve katılmayı isteyebilir. Sadece üyeler grupta kim olduğunu görebilir. Tüm müzakereler gizlidir.
     subgroup_privacy_is_closed_public_threads_description: Herkes alt grubu bulabilir ve katılmayı isteyebilir. Sadece üyeler grupta kim olduğunu görebilir. Tüm müzakereler kamuya açık veya gizli olabilir.
@@ -1432,6 +1436,8 @@ tr:
     membership_granted_upon_request: Herkes gruba katılabilir.
     membership_granted_upon_approval: Herkes katılım talebinde bulunabilir, ancak onaylanması gerekir.
     membership_granted_upon_invitation: Yalnızca davetiye.
+    membership_granted_upon_approval_parent_members: "%{parent} üyeleri katılmak için onay isteyebilir"
+    membership_granted_upon_request_parent_members: "%{parent} üyeleri onay almadan katılabilir"
     membership_granted_upon_approval_secret_parent: "<strong>Talep üzerine</strong> %{parent} ülkesinden herkes gruba katılma isteğinde bulunabilir."
     permissions: İzinler
     thread_privacy: İleti dizisi gizliliği

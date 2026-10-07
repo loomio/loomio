@@ -1,16 +1,16 @@
 ---
 title: Exportação de dados
-source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
+source_revision: cd2e1e63e611688362e80009f50b8ed25025ba8b
 source_file: docs/en/user_manual/groups/data_export/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-07'
 sections:
   introduction: 5e29f67f9a2084ec
   export-data: 58b5e1d4e6f0b917
   export-group-data-as-csv: 53286ec33e7300d6
   export-group-data-as-html: 101671937dcd6f36
-  export-group-data-as-json: 4ec883363fb166ee
+  export-group-data-as-json: aa310889d0854550
   print-thread-to-pdf: 39c48383953f9fd5
   import-your-group-data-on-another-loomio-server: 910ee8af48049e82
 generated:
@@ -18,7 +18,7 @@ generated:
   export-data: 5b9738813e11e368
   export-group-data-as-csv: ffdf2041e8863ce2
   export-group-data-as-html: b7e9c982cb1b8400
-  export-group-data-as-json: d5e248e55cc607de
+  export-group-data-as-json: 6aa2f813094505c0
   print-thread-to-pdf: 87ca555dec234e42
   import-your-group-data-on-another-loomio-server: fa20a91916815515
 title_source: 29049648f87b87f5
@@ -79,7 +79,7 @@ Você precisa ser admin do grupo para exportá-lo. A exportação em JSON inclui
 - Conversas, comentários, reações, tags, modelos, notificações e registros relacionados dos grupos incluídos
 - Enquetes, opções, votos e conclusões; uma enquete anônima só é incluída depois de encerrada
 - Subgrupos dos quais você faz parte
-- Subgrupos abertos e fechados quando você exporta o grupo principal como admin desse grupo, mesmo que você não faça parte desses subgrupos
+- Subgrupos abertos, fechados e visíveis para o grupo principal quando você exporta o grupo principal como admin desse grupo, mesmo que você não faça parte desses subgrupos
 - Referências a arquivos e imagens anexados ao conteúdo incluído
 
 A exportação em JSON não inclui:

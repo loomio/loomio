@@ -152,9 +152,9 @@ module GroupService
         GroupHandleRedirect.find_or_create_by!(group: group, handle: old_handle)
         trim_handle_redirects(group)
       end
-    end
 
-    privacy_change.commit!
+      privacy_change.commit!
+    end
 
     Sentry.metrics.count("group.update")
     EventBus.broadcast('group_update', group, params, actor)

@@ -1,16 +1,16 @@
 ---
 title: Subgroepen
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
+source_revision: cd2e1e63e611688362e80009f50b8ed25025ba8b
 source_file: docs/en/user_manual/groups/subgroups/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-07'
 sections:
   introduction: 63e6e23d24e80919
   add-a-subgroup: 0bc0e5f99eb074c3
   subgroup-settings: 737225cc4bebe7e8
-  privacy: f5d6a140045a00af
-  permissions: 948f8a0f3209953c
+  privacy: 5bdd92ce200f197a
+  permissions: ee02991523f1ebe4
   find-subgroups: 5e6fc5a5122c1417
   invite-to-a-subgroup: 0af670e1e9b32a5e
   simultaneously-invite-people-to-subgroups-and-parent-group: 1991604900321cd7
@@ -20,8 +20,8 @@ generated:
   introduction: 75c64ddaa880134c
   add-a-subgroup: 0ceef6cb6b4e97f4
   subgroup-settings: ad0c7b923b9ddc01
-  privacy: 8844aa1ef192b577
-  permissions: 83f1ee5a66282dd3
+  privacy: f6a965a6c7dba673
+  permissions: 52323382575748c1
   find-subgroups: f3c8f74d99c5b1e1
   invite-to-a-subgroup: f9298311957d4afd
   simultaneously-invite-people-to-subgroups-and-parent-group: 54e5ac5efa9afc0c
@@ -73,23 +73,34 @@ Je kunt de [groepsinstellingen](/en/user_manual/groups/settings/) van de subgroe
 
 ### Privacy
 
-De privacyinstellingen voor subgroepen zijn vergelijkbaar met die van de hoofdgroep.
+Kies wie de subgroep kan vinden, los van hoe mensen er lid van worden:
 
-**Geheim** ingestelde subgroepen zijn niet zichtbaar voor mensen die niet voor de subgroep zijn uitgenodigd.
+| Privacy | Wie kan de subgroep vinden | Wie kan de threads lezen |
+| --- | --- | --- |
+| **Open** | Iedereen | Iedereen |
+| **Gesloten** | Iedereen | Leden van de subgroep en uitgenodigde gasten |
+| **Zichtbaar voor de bovenliggende groep** | Leden van de hoofdgroep en leden van de subgroep | Leden van de subgroep en uitgenodigde gasten |
+| **Geheim** | Uitgenodigde leden van de subgroep | Leden van de subgroep en uitgenodigde gasten |
 
-**Gesloten** subgroepen staan op het tabblad Subgroepen van de hoofdgroep en in het zijbalkmenu van de gebruiker. Leden van de hoofdgroep kunnen een verzoek indienen om lid te worden van de subgroep. Een admin van de subgroep keurt het lidmaatschap goed.
+Om leden van de hoofdgroep zelf lid te laten worden, selecteer je **Zichtbaar voor de bovenliggende groep** en vervolgens **Leden van [hoofdgroep] kunnen lid worden zonder goedkeuring** onder **Hoe sluiten mensen aan?** bij het aanmaken van de subgroep, of onder **Groepsinstellingen bewerken → Privacy**. Mensen buiten de hoofdgroep hebben een uitnodiging nodig. Leden kunnen de subgroep verlaten en opnieuw lid worden zolang ze nog lid zijn van de hoofdgroep.
 
-Gesloten subgroepen hebben een extra instelling waarmee leden van de hoofdgroep privéthreads kunnen bekijken.
+![Privacyinstellingen van de subgroep met zichtbaarheid voor de hoofdgroep en lid worden zonder goedkeuring](subgroups_privacy_settings.png)
+
+Wie lid wordt, wordt een gewoon lid van de subgroep. Dit maakt die persoon geen admin en verandert de privacy van bestaande threads niet.
+
+Openbare subgroepen kunnen ook toestaan dat mensen direct lid worden; iedereen kan lid worden als die optie is geselecteerd. Als de hoofdgroep privé is, zijn de beschikbare instellingen voor subgroepen **Zichtbaar voor de bovenliggende groep** en **Geheim**.
+
+Een subgroep die is ingesteld op **Zichtbaar voor de bovenliggende groep** blijft privé wanneer de hoofdgroep openbaar wordt. Als je een hoofdgroep privé maakt, worden de openbare subgroepen alleen toegankelijk voor leden van de hoofdgroep en worden hun threads privé. Geheime subgroepen blijven ongewijzigd.
 
 [Lees hier over de privacy van groepen](/en/user_manual/groups/settings/privacy).
 
 <!-- translation-section: permissions -->
 
-### Rechten
+### Toestemmingen
 
 Subgroepen werken onafhankelijk van de hoofdgroep. Als de privacyinstelling van de subgroep bijvoorbeeld op **Geheim** staat, kunnen alleen uitgenodigde leden deze subgroep vinden, zien wie er lid van is en threads bekijken.
 
-**Gesloten** subgroepen hebben een extra instelling waarmee leden van de hoofdgroep privéthreads kunnen bekijken. Zo kan de subgroep transparant zijn voor leden van de hoofdgroep.
+**Gesloten** subgroepen en subgroepen die zijn ingesteld op **Zichtbaar voor de bovenliggende groep** kunnen leden van de hoofdgroep toestaan privéthreads te lezen voordat ze lid worden. Schakel **Leden van [hoofdgroep] kunnen privéthreads bekijken** in onder **Toestemmingen**. Deze lezers krijgen geen stemrecht en worden geen lid van de subgroep.
 
 ![Instelling waarmee leden van de hoofdgroep privéthreads van de subgroep kunnen bekijken](subgroups_private_threads_settings.png)
 

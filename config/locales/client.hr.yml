@@ -248,6 +248,7 @@ hr:
       open: Otvoren
       closed: Zatvoreno
       private: Privatna
+      parent_members: "Vidljiva matičnoj grupi"
       secret: Tajna
     selected: Odabran
     today: danas
@@ -1424,6 +1425,9 @@ hr:
     confirm_change_to_public: Ako nastavite, sve niti u ovoj grupi bit će javne na webu.
     confirm_change_to_private_discussions_only: Ako nastavite, sve javne niti u ovoj grupi postat će privatne.
     profile: Profil
+    subgroup_name_and_content_are_public: "Svatko može pronaći ovu podgrupu i čitati njezine niti"
+    subgroup_name_is_public_and_threads_are_private: "Svatko može pronaći ovu podgrupu; njezine su niti privatne"
+    subgroup_is_visible_to_parent_members: "Članovi %{parent} mogu pronaći ovu podgrupu; njezine su niti privatne"
     subgroup_privacy_is_open_description: Svatko može pronaći ovu podgrupu i zatražiti pridruživanje. Samo članovi mogu vidjeti tko je u grupi. Sve su teme javne.
     subgroup_privacy_is_closed_description: Svatko može pronaći ovu podgrupu i zatražiti pridruživanje. Samo članovi mogu vidjeti tko je u grupi. Sve su teme privatne.
     subgroup_privacy_is_closed_public_threads_description: Svatko može pronaći ovu podgrupu i zatražiti pridruživanje. Samo članovi mogu vidjeti tko je u grupi. Niti mogu biti javne ili privatne.
@@ -1434,6 +1438,8 @@ hr:
     membership_granted_upon_request: Svatko se može pridružiti grupi.
     membership_granted_upon_approval: Svatko može zatražiti pridruživanje, ali mora biti odobren.
     membership_granted_upon_invitation: Samo uz pozivnicu.
+    membership_granted_upon_approval_parent_members: "Članovi %{parent} mogu zatražiti odobrenje za pridruživanje"
+    membership_granted_upon_request_parent_members: "Članovi grupe %{parent} mogu se pridružiti bez odobrenja"
     membership_granted_upon_approval_secret_parent: "<strong>Na zahtjev</strong> bilo tko iz %{parent} može tražiti da se pridruži grupi."
     permissions: Dozvole
     thread_privacy: Privatnost niti

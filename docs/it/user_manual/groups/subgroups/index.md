@@ -1,16 +1,16 @@
 ---
 title: Sottogruppi
-source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
+source_revision: cd2e1e63e611688362e80009f50b8ed25025ba8b
 source_file: docs/en/user_manual/groups/subgroups/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-07'
 sections:
   introduction: 63e6e23d24e80919
   add-a-subgroup: 0bc0e5f99eb074c3
   subgroup-settings: 737225cc4bebe7e8
-  privacy: f5d6a140045a00af
-  permissions: 948f8a0f3209953c
+  privacy: 5bdd92ce200f197a
+  permissions: ee02991523f1ebe4
   find-subgroups: 5e6fc5a5122c1417
   invite-to-a-subgroup: 0af670e1e9b32a5e
   simultaneously-invite-people-to-subgroups-and-parent-group: 1991604900321cd7
@@ -20,8 +20,8 @@ generated:
   introduction: 051652a00db9998f
   add-a-subgroup: 95936e1a60dbdd9f
   subgroup-settings: 2102921a561843bd
-  privacy: a0de926677512e41
-  permissions: 5c53ba3351e9e31b
+  privacy: c8492c2c7e2cd3f0
+  permissions: 3e25febe98daa26e
   find-subgroups: 77105b0d7b3a1773
   invite-to-a-subgroup: d13d4627eb013177
   simultaneously-invite-people-to-subgroups-and-parent-group: 0fa563a5977885f6
@@ -73,13 +73,24 @@ Puoi modificare le [impostazioni del gruppo](/en/user_manual/groups/settings/) d
 
 ### Privacy
 
-Le impostazioni di privacy dei sottogruppi sono simili a quelle del gruppo principale.
+Scegli chi può trovare il sottogruppo separatamente da come le persone possono iscriversi:
 
-I sottogruppi con privacy impostata su **Segreto** non sono visibili alle persone che non sono state invitate al sottogruppo.
+| Privacy | Chi può trovarlo | Chi può leggere le sue conversazioni |
+| --- | --- | --- |
+| **Aperto** | Chiunque | Chiunque |
+| **Chiuso** | Chiunque | Membri del sottogruppo e ospiti invitati |
+| **Visibile al gruppo principale** | Membri del gruppo principale e membri del sottogruppo | Membri del sottogruppo e ospiti invitati |
+| **Segreto** | Membri invitati al sottogruppo | Membri del sottogruppo e ospiti invitati |
 
-I sottogruppi con privacy impostata su **Chiuso** sono elencati nella scheda Sottogruppi del gruppo principale e nel tuo menu laterale. I membri del gruppo principale possono chiedere di iscriversi al sottogruppo. L'iscrizione viene approvata da un amministratore del sottogruppo.
+Per consentire ai membri del gruppo principale di iscriversi autonomamente, seleziona **Visibile al gruppo principale**, poi **I membri di [gruppo principale] possono iscriversi senza approvazione** sotto **Come si uniscono al gruppo le persone?** quando crei il sottogruppo, oppure in **Modifica impostazioni del gruppo → Privacy**. Le persone esterne al gruppo principale hanno bisogno di un invito. I membri possono lasciare il sottogruppo e iscriversi di nuovo finché fanno parte del suo gruppo principale.
 
-I sottogruppi chiusi hanno un'impostazione aggiuntiva che consente ai membri del gruppo principale di vedere le conversazioni private.
+![Impostazioni di privacy del sottogruppo con visibilità al gruppo principale e iscrizione senza approvazione](subgroups_privacy_settings.png)
+
+Chi si iscrive diventa un membro ordinario del sottogruppo. L'iscrizione non conferisce il ruolo di amministratore e non modifica la privacy delle conversazioni esistenti.
+
+Anche i sottogruppi pubblici possono consentire l'iscrizione immediata; chiunque può iscriversi quando questa opzione è selezionata. Quando il gruppo principale è privato, le impostazioni disponibili per il sottogruppo sono **Visibile al gruppo principale** e **Segreto**.
+
+Un sottogruppo **Visibile al gruppo principale** rimane privato quando il gruppo principale diventa pubblico. Rendere privato un gruppo principale limita l'accesso ai suoi sottogruppi pubblici ai membri del gruppo principale e rende private le loro conversazioni, mantenendo invariati i sottogruppi segreti.
 
 [Leggi qui come funziona la privacy dei gruppi](/en/user_manual/groups/settings/privacy).
 
@@ -89,7 +100,7 @@ I sottogruppi chiusi hanno un'impostazione aggiuntiva che consente ai membri del
 
 I sottogruppi funzionano indipendentemente dal gruppo principale. Ad esempio, se la privacy del sottogruppo è impostata su **Segreto**, solo i membri invitati possono trovare il sottogruppo, vedere chi ne fa parte e vedere le conversazioni.
 
-I sottogruppi con privacy impostata su **Chiuso** hanno un'impostazione aggiuntiva che consente ai membri del gruppo principale di vedere le conversazioni private, rendendo il sottogruppo trasparente ai membri del gruppo principale.
+I sottogruppi con privacy impostata su **Chiuso** e quelli con privacy impostata su **Visibile al gruppo principale** possono consentire ai membri del gruppo principale di leggere le conversazioni private prima di iscriversi. Attiva **I membri di [gruppo principale] possono vedere le conversazioni private** in **Permessi**. Questi lettori non acquisiscono il diritto di voto né diventano membri del sottogruppo.
 
 ![Impostazione che consente ai membri del gruppo principale di vedere le conversazioni private del sottogruppo](subgroups_private_threads_settings.png)
 

@@ -1,14 +1,14 @@
 ---
 title: Mitglieder verwalten
-source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
+source_revision: cd2e1e63e611688362e80009f50b8ed25025ba8b
 source_file: docs/en/user_manual/groups/member_management/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-07'
 sections:
   introduction: f216b18771a2c2a9
   administering-your-group: 27aed40959adef57
-  managing-subgroups: ee977899fa34caab
+  managing-subgroups: 76b2fd61123a8a8a
   removing-members: f00aea52bfcd3547
   leaving-group: 02f69c9806d6beda
   set-title: 835b25d246477b4a
@@ -16,7 +16,7 @@ sections:
 generated:
   introduction: 89b96cc8fdabf34e
   administering-your-group: 3c2f58a1981e45e4
-  managing-subgroups: 3ceb8b26baf93756
+  managing-subgroups: e9a161e4d11dd0e7
   removing-members: afd9b4e84cb7a930
   leaving-group: 6f02e61aa9de898c
   set-title: 2cd65fb070aa6647
@@ -51,9 +51,9 @@ Um ein Mitglied zum **Admin** zu machen, gehe zum Tab Mitglieder, suche das Mitg
 <!-- translation-section: managing-subgroups -->
 
 ## Untergruppen verwalten
-Wenn du Admin einer Hauptgruppe oder Organisation bist, hast du zusätzliche Berechtigungen für alle __geschlossenen__ Untergruppen.
+Admins einer Hauptgruppe können deren offenen, geschlossenen und **Für die übergeordnete Gruppe sichtbar** eingestellten Untergruppen beitreten und sich anschließend selbst zu Admins dieser Untergruppen machen.
 
-Du kannst jeder geschlossenen Untergruppe beitreten, indem du links auf der jeweiligen Untergruppenseite auf die Schaltfläche „Gruppe beitreten“ klickst (direkt unter den Tabs).
+Wähle **Gruppe beitreten** auf der Untergruppenseite.
 
 ![Schaltfläche „Gruppe beitreten“ in einer geschlossenen Untergruppe der Oatmilk Cooperative](member_join_subgroup.png)
 

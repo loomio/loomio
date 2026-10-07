@@ -248,7 +248,8 @@ ru:
       open: Открыто
       closed: Закрыто
       private: Приватная
-      secret: Выделить
+      parent_members: "Видна родительской группе"
+      secret: Секретная группа
     selected: Выбранные
     today: сегодня
     in_x_days: через %{x} дней
@@ -1422,6 +1423,9 @@ ru:
     confirm_change_to_public: Если вы продолжите, все обсуждения в этой группе станут общедоступными в Интернете.
     confirm_change_to_private_discussions_only: Если вы продолжите, все общедоступные обсуждения в этой группе станут частными.
     profile: Профиль
+    subgroup_name_and_content_are_public: "Любой может найти эту подгруппу и читать её ветки"
+    subgroup_name_is_public_and_threads_are_private: "Любой может найти эту подгруппу; её ветки приватны"
+    subgroup_is_visible_to_parent_members: "Участники %{parent} могут найти эту подгруппу; её ветки приватны"
     subgroup_privacy_is_open_description: Любой может найти эту подгруппу и попросить присоединиться. Только участники могут видеть, кто находится в группе. Все темы общедоступны.
     subgroup_privacy_is_closed_description: Любой может найти эту подгруппу и попросить присоединиться. Только участники могут видеть, кто находится в группе. Все темы являются частными.
     subgroup_privacy_is_closed_public_threads_description: Любой может найти эту подгруппу и попросить присоединиться. Только участники могут видеть, кто находится в группе. Темы могут быть публичными или частными.
@@ -1432,6 +1436,8 @@ ru:
     membership_granted_upon_request: К группе может присоединиться любой желающий.
     membership_granted_upon_approval: Любой может подать заявку на присоединение, но должен быть одобрен.
     membership_granted_upon_invitation: Только приглашение.
+    membership_granted_upon_approval_parent_members: "Участники %{parent} могут запросить одобрение для вступления"
+    membership_granted_upon_request_parent_members: "Участники %{parent} могут присоединиться без одобрения"
     membership_granted_upon_approval_secret_parent: "<strong>По запросу</strong> любой из %{parent} может попросить присоединиться к группе."
     permissions: Разрешения
     thread_privacy: Конфиденциальность темы

@@ -56,6 +56,13 @@ alien_group_membership:
   created_at: <%= 30.days.ago %>
 
 # Membership side of the reusable access-control and notification matrix.
+parent_join_subgroup_admin:
+  user: subgroup_user
+  group: parent_join_subgroup
+  token: parentjoinsubgroupadmintoken123
+  accepted_at: <%= 30.days.ago %>
+  admin: true
+
 <%
 matrix_memberships = {
   member_quiet_membership:         { user: :member_quiet,         group: :group,       volume: 1 },

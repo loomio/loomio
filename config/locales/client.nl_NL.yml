@@ -248,6 +248,7 @@ nl_NL:
       open: Openen
       closed: Gesloten
       private: Besloten
+      parent_members: "Zichtbaar voor de bovenliggende groep"
       secret: Geheim
     selected: Geselecteerd
     today: Vandaag
@@ -1428,6 +1429,9 @@ nl_NL:
     confirm_change_to_public: Als je verder gaat worden alle borden in deze groep openbaar gemaakt op het internet.
     confirm_change_to_private_discussions_only: Als je verder gaat worden alle openbare borden in deze groep privé gemaakt.
     profile: Profiel
+    subgroup_name_and_content_are_public: "Iedereen kan deze subgroep vinden en de threads lezen"
+    subgroup_name_is_public_and_threads_are_private: "Iedereen kan deze subgroep vinden; de threads zijn privé"
+    subgroup_is_visible_to_parent_members: "Leden van %{parent} kunnen deze subgroep vinden; de threads zijn privé"
     subgroup_privacy_is_open_description: Iedereen kan deze subgroep vinden en vragen om mee te mogen doen. Alleen leden kunnen zien wie er in de groep zit. Alle borden zijn openbaar.
     subgroup_privacy_is_closed_description: Iedereen kan deze subgroep vinden en vragen om mee te doen. Alleen leden kunnen zie wie er in de groep zit. Alle discussies zijn privé.
     subgroup_privacy_is_closed_public_threads_description: Iedereen kan deze subgroep vinden en vragen om mee te doen. Alleen leden kunnen zie wie er in de groep zit. Borden kunnen openbaar of privé zijn.
@@ -1438,6 +1442,8 @@ nl_NL:
     membership_granted_upon_request: Iedereen kan zich bij de groep aansluiten.
     membership_granted_upon_approval: Iedereen kan verzoeken om mee te mogen doen, maar moet goedgekeurd worden.
     membership_granted_upon_invitation: Alleen op uitnodiging.
+    membership_granted_upon_approval_parent_members: "Leden van %{parent} kunnen goedkeuring vragen om lid te worden"
+    membership_granted_upon_request_parent_members: "Leden van %{parent} kunnen zonder goedkeuring lid worden"
     membership_granted_upon_approval_secret_parent: "<strong>Op verzoek</strong> kan iedereen van %{parent} vragen om deel te nemen aan de groep."
     permissions: Toestemmingen
     thread_privacy: Bordprivacy

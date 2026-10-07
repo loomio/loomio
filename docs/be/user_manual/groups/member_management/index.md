@@ -1,14 +1,14 @@
 ---
 title: Кіраванне ўдзельнікамі
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
+source_revision: cd2e1e63e611688362e80009f50b8ed25025ba8b
 source_file: docs/en/user_manual/groups/member_management/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-07'
 sections:
   introduction: f216b18771a2c2a9
   administering-your-group: 27aed40959adef57
-  managing-subgroups: ee977899fa34caab
+  managing-subgroups: 76b2fd61123a8a8a
   removing-members: f00aea52bfcd3547
   leaving-group: 02f69c9806d6beda
   set-title: 835b25d246477b4a
@@ -16,7 +16,7 @@ sections:
 generated:
   introduction: 668a83807d8df390
   administering-your-group: 1bd39f5ccab39bf2
-  managing-subgroups: 6c55000f7e3a2d15
+  managing-subgroups: 6f1efaa2f82d5625
   removing-members: 170460be567f6e97
   leaving-group: 2dfd1b3ba6519f8a
   set-title: 9aa43908d91503c4
@@ -51,9 +51,9 @@ title_generated: aa6d15cc1d295159
 <!-- translation-section: managing-subgroups -->
 
 ## Кіраванне падгрупамі
-Калі вы маеце правы адміністратара бацькоўскай групы або арганізацыі, вы маеце дадатковыя дазволы ў дачыненні да любых __закрытых__ падгруп.
+Адміністратары бацькоўскай групы могуць далучацца да яе адкрытых, закрытых падгруп і падгруп з наладай **Бачная бацькоўскай групе**, а затым надаваць сабе правы адміністратара гэтых падгруп.
 
-Вы можаце далучыцца да любой закрытай падгрупы, націснуўшы кнопку «Далучыцца да групы» злева на старонцы адпаведнай падгрупы (адразу пад укладкамі).
+Выберыце **Далучыцца да групы** на старонцы падгрупы.
 
 ![Кнопка далучэння да групы ў закрытай падгрупе Oatmilk Cooperative](member_join_subgroup.png)
 

@@ -1,14 +1,14 @@
 ---
 title: ניהול חברים
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
+source_revision: cd2e1e63e611688362e80009f50b8ed25025ba8b
 source_file: docs/en/user_manual/groups/member_management/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-07'
 sections:
   introduction: f216b18771a2c2a9
   administering-your-group: 27aed40959adef57
-  managing-subgroups: ee977899fa34caab
+  managing-subgroups: 76b2fd61123a8a8a
   removing-members: f00aea52bfcd3547
   leaving-group: 02f69c9806d6beda
   set-title: 835b25d246477b4a
@@ -16,7 +16,7 @@ sections:
 generated:
   introduction: b12bc3fb9a4d20ce
   administering-your-group: 83711aeebdb42c37
-  managing-subgroups: bee9b09a7318fe91
+  managing-subgroups: 91b9e332af78a26b
   removing-members: c1e510e015ebda55
   leaving-group: 58137076aa2e619c
   set-title: 97eaa9af3ef532d0
@@ -51,9 +51,9 @@ title_generated: 4b3b48d6a2988ead
 <!-- translation-section: managing-subgroups -->
 
 ## ניהול תת־קבוצות
-למנהלים של קבוצת אם או ארגון יש הרשאות נוספות בכל תת־הקבוצות ה__סגורות__.
+מנהלים של קבוצת אם יכולים להצטרף לתת־הקבוצות שלה שהן פתוחות, סגורות או מוגדרות כ־**גלויה לקבוצת האם**, ולאחר מכן להעניק לעצמם הרשאות מנהל בתת־הקבוצה.
 
-ניתן להצטרף לכל תת־קבוצה סגורה בלחיצה על הכפתור "הצטרפות לקבוצה" בצד שמאל של דף תת־הקבוצה (ממש מתחת ללשוניות).
+יש לבחור **הצטרפו לקבוצה** בדף תת־הקבוצה.
 
 ![כפתור ההצטרפות לקבוצה בתת־קבוצה סגורה של קואופרטיב Oatmilk](member_join_subgroup.png)
 

@@ -1,14 +1,14 @@
 ---
 title: Jäsenten hallinta
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
+source_revision: cd2e1e63e611688362e80009f50b8ed25025ba8b
 source_file: docs/en/user_manual/groups/member_management/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-07'
 sections:
   introduction: f216b18771a2c2a9
   administering-your-group: 27aed40959adef57
-  managing-subgroups: ee977899fa34caab
+  managing-subgroups: 76b2fd61123a8a8a
   removing-members: f00aea52bfcd3547
   leaving-group: 02f69c9806d6beda
   set-title: 835b25d246477b4a
@@ -16,7 +16,7 @@ sections:
 generated:
   introduction: 1714c46f36d1ffae
   administering-your-group: 2898d425c2e6d61f
-  managing-subgroups: 1155e0c43437f26d
+  managing-subgroups: ee727f5ab3064a13
   removing-members: d06a6537a9918925
   leaving-group: 788c378592fc7540
   set-title: 45528c476e0cb3a5
@@ -51,11 +51,11 @@ Voit nimetä jäsenen **ylläpitäjäksi** siirtymällä Jäsenet-välilehdelle,
 <!-- translation-section: managing-subgroups -->
 
 ## Alaryhmien hallinta
-Jos olet pääryhmän tai organisaation ylläpitäjä, sinulla on lisäoikeuksia kaikkiin __suljettuihin__ alaryhmiin.
+Pääryhmän ylläpitäjät voivat liittyä sen avoimiin, suljettuihin ja **Näkyy pääryhmälle** -alaryhmiin ja nimetä sitten itsensä alaryhmien ylläpitäjiksi.
 
-Voit liittyä mihin tahansa suljettuun alaryhmään napsauttamalla kyseisen alaryhmän sivun vasemmalla puolella olevaa "Liity ryhmään" -painiketta (heti välilehtien alapuolella).
+Valitse alaryhmän sivulta **Liittyä ryhmään**.
 
-![Liity ryhmään -painike Oatmilk Cooperativen suljetussa alaryhmässä](member_join_subgroup.png)
+![Liittyä ryhmään -painike Oatmilk Cooperativen suljetussa alaryhmässä](member_join_subgroup.png)
 
 Kun olet liittynyt alaryhmään, voit myös nimetä itsesi sen ylläpitäjäksi samalla tavalla kuin nimeäisit kenet tahansa ylläpitäjäksi.
 

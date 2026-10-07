@@ -14,8 +14,23 @@ class MembershipServiceTest < ActiveSupport::TestCase
     @group.add_admin!(@admin)
   end
 
+  test "joining restores a pending request when membership creation fails" do
+    group = groups(:parent_join_subgroup)
+    user = users(:member_normal)
+    request = MembershipRequest.create!(group: group, requestor: user, introduction: 'I can help')
+
+    assert_raises RuntimeError do
+      group.stub(:add_member!, ->(*) { raise 'membership failed' }) do
+        MembershipService.join_group(group: group, actor: user)
+      end
+    end
+
+    assert MembershipRequest.exists?(request.id)
+    assert_not group.membership_for(user)
+  end
+
   test "inactive invitations cannot be redeemed or included in organization acceptance" do
-    subgroup = Group.create!(name: "Inactive subgroup", parent: @group)
+    subgroup = create_subgroup
     parent_invite = Membership.create!(group: @group, user: @user, inviter: @admin)
     child_invite = Membership.create!(group: subgroup, user: @user, inviter: @admin)
     subgroup.discard!
@@ -30,11 +45,7 @@ class MembershipServiceTest < ActiveSupport::TestCase
   end
 
   test "revoke cascade deletes subgroup memberships" do
-    subgroup = Group.create!(
-      name: 'Subgroup',
-      parent: @group,
-      handle: "#{@group.handle}-subgroup"
-    )
+    subgroup = create_subgroup
 
     membership = @group.add_member!(@user)
     subgroup.add_member!(@user)
@@ -456,6 +467,7 @@ class MembershipServiceTest < ActiveSupport::TestCase
     Group.create!(
       name: "Subgroup #{SecureRandom.hex(4)}",
       parent: @group,
+      group_privacy: 'parent_members',
       handle: "#{@group.handle}-#{SecureRandom.hex(4)}"
     )
   end

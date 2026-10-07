@@ -246,6 +246,7 @@ ja:
       open: 議論中
       closed: 議論終了
       private: 非公開
+      parent_members: "親グループに表示"
       secret: 秘密
     selected: 選択中
     today: 今日
@@ -1421,6 +1422,9 @@ ja:
     confirm_change_to_public: 続行すると、このグループのすべてのスレッドが Web 上に公開されます。
     confirm_change_to_private_discussions_only: 続行すると、このグループ内の公開スレッドはすべて非公開になります。
     profile: プロフィール
+    subgroup_name_and_content_are_public: "誰でもこのサブグループを見つけてスレッドを読めます"
+    subgroup_name_is_public_and_threads_are_private: "誰でもこのサブグループを見つけられますが、スレッドは非公開です"
+    subgroup_is_visible_to_parent_members: "%{parent}のメンバーはこのサブグループを見つけられますが、スレッドは非公開です"
     subgroup_privacy_is_open_description: 誰でもこのサブグループを見つけて参加をリクエストできます。グループに誰がいるかを確認できるのはメンバーだけです。すべてのスレッドは公開されています。
     subgroup_privacy_is_closed_description: 誰でもこのサブグループを見つけて参加をリクエストできます。グループに誰がいるかを確認できるのはメンバーのみです。すべてのスレッドは非公開です。
     subgroup_privacy_is_closed_public_threads_description: 誰でもこのサブグループを見つけて参加をリクエストできます。グループに誰がいるかを確認できるのはメンバーだけです。スレッドはパブリックまたはプライベートにすることができます。
@@ -1431,6 +1435,8 @@ ja:
     membership_granted_upon_request: 誰でもグループに参加できます。
     membership_granted_upon_approval: 誰でも参加をリクエストできますが、承認が必要です。
     membership_granted_upon_invitation: 招待制のみ。
+    membership_granted_upon_approval_parent_members: "%{parent}のメンバーは参加の承認を申請できます"
+    membership_granted_upon_request_parent_members: "%{parent}のメンバーは承認なしで参加できます"
     membership_granted_upon_approval_secret_parent: "<strong>リクエストに応じて、</strong> %{parent} の誰でもグループへの参加をリクエストできます。"
     permissions: 権限
     thread_privacy: スレッドのプライバシー

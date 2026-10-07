@@ -220,6 +220,10 @@ export default class GroupModel extends BaseModel {
     return this.groupPrivacy === 'closed';
   }
 
+  privacyIsParentMembers() {
+    return this.groupPrivacy === 'parent_members';
+  }
+
   privacyIsSecret() {
     return this.groupPrivacy === 'secret';
   }

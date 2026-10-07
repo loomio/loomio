@@ -1,16 +1,16 @@
 ---
 title: Alcsoportok
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
+source_revision: cd2e1e63e611688362e80009f50b8ed25025ba8b
 source_file: docs/en/user_manual/groups/subgroups/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-07'
 sections:
   introduction: 63e6e23d24e80919
   add-a-subgroup: 0bc0e5f99eb074c3
   subgroup-settings: 737225cc4bebe7e8
-  privacy: f5d6a140045a00af
-  permissions: 948f8a0f3209953c
+  privacy: 5bdd92ce200f197a
+  permissions: ee02991523f1ebe4
   find-subgroups: 5e6fc5a5122c1417
   invite-to-a-subgroup: 0af670e1e9b32a5e
   simultaneously-invite-people-to-subgroups-and-parent-group: 1991604900321cd7
@@ -20,8 +20,8 @@ generated:
   introduction: ee3713d0233cae02
   add-a-subgroup: 403fc6fe9c56ff91
   subgroup-settings: 16d3adb394b9f23e
-  privacy: 0b0159642d2836cb
-  permissions: e3f2765eb903b875
+  privacy: 7fd50bdbcee5c0d1
+  permissions: 1f56658a5167bfab
   find-subgroups: 4a9b8588abd2a44d
   invite-to-a-subgroup: 6b62a1bbab58947c
   simultaneously-invite-people-to-subgroups-and-parent-group: 9a32f87b98d4beff
@@ -73,23 +73,34 @@ Az alcsoport [csoportbeállításait](/en/user_manual/groups/settings/) az alcso
 
 ### Adatvédelem
 
-Az alcsoportok adatvédelmi beállításai hasonlóak a szülőcsoport beállításaihoz.
+Válaszd ki, hogy kik találhatják meg az alcsoportot, attól függetlenül, hogy hogyan csatlakozhatnak hozzá:
 
-A **Titkos** alcsoportokat csak azok láthatják, akiket meghívtak az alcsoportba.
+| Adatvédelem | Ki találhatja meg | Ki olvashatja a szálait |
+| --- | --- | --- |
+| **Nyitott** | Bárki | Bárki |
+| **Zárt** | Bárki | Az alcsoport tagjai és a meghívott vendégek |
+| **Látható a szülőcsoport számára** | A szülőcsoport és az alcsoport tagjai | Az alcsoport tagjai és a meghívott vendégek |
+| **Titkos** | Az alcsoport meghívott tagjai | Az alcsoport tagjai és a meghívott vendégek |
 
-A **Zárt** alcsoportok megjelennek a szülőcsoport Alcsoportok lapján és a felhasználó oldalsávjában. A szülőcsoport tagjai kérhetik a csatlakozást az alcsoporthoz. A tagságot az alcsoport egyik adminja hagyja jóvá.
+Ha szeretnéd, hogy a szülőcsoport tagjai önállóan csatlakozhassanak, válaszd ki a **Látható a szülőcsoport számára** beállítást, majd az **A(z) [szülőcsoport] tagjai jóváhagyás nélkül csatlakozhatnak** lehetőséget a **Hogyan csatlakoznak az emberek?** résznél az alcsoport létrehozásakor, vagy a **Csoportbeállítások szerkesztése → Adatvédelem** résznél. A szülőcsoporton kívüli embereknek meghívóra van szükségük. A tagok kiléphetnek az alcsoportból, majd újra csatlakozhatnak, amíg a szülőcsoport tagjai maradnak.
 
-A zárt alcsoportoknak van egy további beállításuk, amely lehetővé teszi, hogy a szülőcsoport tagjai lássák a privát szálakat.
+![Az alcsoport adatvédelmi beállításai a szülőcsoport számára való láthatósággal és jóváhagyás nélküli csatlakozással](subgroups_privacy_settings.png)
+
+A csatlakozással az illető az alcsoport egyszerű tagjává válik. Ettől nem lesz admin, és a meglévő szálak adatvédelmi beállításai sem változnak.
+
+A nyilvános alcsoportok is engedélyezhetik az azonnali csatlakozást; ha ezt a lehetőséget választod, bárki csatlakozhat. Ha a szülőcsoport privát, az alcsoportnál a **Látható a szülőcsoport számára** és a **Titkos** beállítás érhető el.
+
+A **Látható a szülőcsoport számára** beállítású alcsoport privát marad, ha a szülőcsoportja nyilvánossá válik. Ha a szülőcsoportot priváttá teszed, a nyilvános alcsoportjai csak a szülőcsoport tagjai számára lesznek láthatók, és a szálaik priváttá válnak. A titkos alcsoportok változatlanok maradnak.
 
 [A csoportok adatvédelméről itt olvashatsz](/en/user_manual/groups/settings/privacy).
 
 <!-- translation-section: permissions -->
 
-### Jogosultságok
+### Engedélyek
 
 Az alcsoportok a szülőcsoporttól függetlenül működnek. Ha például az alcsoport adatvédelmi beállítása **Titkos**, akkor csak a meghívott tagok találhatják meg az alcsoportot, láthatják a tagjait és a szálait.
 
-A **Zárt** alcsoportoknak van egy további beállításuk, amely lehetővé teszi, hogy a szülőcsoport tagjai lássák a privát szálakat. Így az alcsoport működése átláthatóvá válik a szülőcsoport tagjai számára.
+A **Zárt** és a **Látható a szülőcsoport számára** beállítású alcsoportok engedélyezhetik, hogy a szülőcsoport tagjai már a csatlakozás előtt olvashassák a privát szálakat. Kapcsold be az **A(z) [szülőcsoport] tagjai láthatják a privát szálakat** beállítást az **Engedélyek** résznél. Ezek az olvasók nem kapnak szavazati jogot, és nem válnak az alcsoport tagjaivá.
 
 ![Beállítás, amely lehetővé teszi, hogy a szülőcsoport tagjai lássák az alcsoport privát szálait](subgroups_private_threads_settings.png)
 

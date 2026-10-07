@@ -248,6 +248,7 @@ he:
       open: פתוח
       closed: סגור
       private: פרטי
+      parent_members: "גלויה לקבוצת האם"
       secret: סודי
     selected: נבחר
     today: היום
@@ -1426,6 +1427,9 @@ he:
     confirm_change_to_public: אם אתה ממשיך, כל השיחות בקבוצה יהיו פומביים וזמינים ברשת.
     confirm_change_to_private_discussions_only: אם אתה ממשיך, כל שיחה פומבית בקבוצה תהפך לפרטית.
     profile: פרופיל
+    subgroup_name_and_content_are_public: "כל אחד יכול למצוא את תת־הקבוצה ולקרוא את השרשורים שלה"
+    subgroup_name_is_public_and_threads_are_private: "כל אחד יכול למצוא את תת־הקבוצה; השרשורים שלה פרטיים"
+    subgroup_is_visible_to_parent_members: "חברי %{parent} יכולים למצוא את תת־הקבוצה; השרשורים שלה פרטיים"
     subgroup_privacy_is_open_description: כל אחד יכול למצוא את תת הקבוצה הזו ולבקש להצטרף. רק חברים יכולים לראות מי בקבוצה. כל השיחות הן פומביות.
     subgroup_privacy_is_closed_description: כל אחד יכול למצוא את תת הקבוצה הזו ולבקש להצטרף. רק חברים יכולים לראות מי בקבוצה. כל השיחות הן פרטיות.
     subgroup_privacy_is_closed_public_threads_description: כל אחד יכול למצוא את תת הקבוצה הזו ולבקש להצטרף. רק חברים יכולים לראות מי בקבוצה. השיחות בתת הקבוצה הן פומביות או פרטיות.
@@ -1436,6 +1440,8 @@ he:
     membership_granted_upon_request: כל אחד יכול להצטרף לקבוצה.
     membership_granted_upon_approval: כל אחד יכול לבקש להצטרף אבל חייב לקבל אישור.
     membership_granted_upon_invitation: הזמנה בלבד.
+    membership_granted_upon_approval_parent_members: "חברי %{parent} יכולים לבקש אישור להצטרף"
+    membership_granted_upon_request_parent_members: "חברי %{parent} יכולים להצטרף ללא אישור"
     membership_granted_upon_approval_secret_parent: "<strong>כל אחד מה%{parent} יכול לבקש להצטרף לקבוצה</strong>."
     permissions: הרשאות
     thread_privacy: פרטיות השיחה
