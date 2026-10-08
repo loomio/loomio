@@ -110,7 +110,6 @@ Important group fields include:
 | `accepted_memberships_count` | Number of accepted memberships |
 | `pending_memberships_count` | Number of pending invitations |
 | `admin_memberships_count` | Number of group administrators |
-| `delegates_count` | Number of delegates |
 | `discussions_count` | Number of discussions directly in the group |
 | `polls_count` | Number of polls directly in the group |
 | `subgroups_count` | Number of subgroups |

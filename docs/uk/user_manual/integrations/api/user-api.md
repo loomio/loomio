@@ -1,17 +1,17 @@
 ---
 title: Користувацький API
-source_revision: c27ee3b193231816878f1c074ff9fc2a086a88c0
+source_revision: 79280ee7a1246dbb8bb16686856608069718bc14
 source_file: docs/en/user_manual/integrations/api/user-api.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-02'
+  'on': '2026-10-09'
 sections:
   introduction: a43c8b800d13fd33
   authentication-change: 06b5c2cd9d9e72a0
   response-size-and-related-records: 1ffc59ad606a87e7
   endpoint-summary: 52c480c59d3669e3
   groups: 0473f1f7fb78f074
-  list-groups: 2b783ec54f27b2ce
+  list-groups: dcbe9217091f8cb2
   get-a-group: dffef659cb92745e
   webhooks: f65fa289f8c1b808
   list-webhooks: a8b52c1a9bfdb16c
@@ -78,7 +78,7 @@ generated:
   response-size-and-related-records: 26dcd8783f19ead0
   endpoint-summary: 5ac0d8f6f601e81d
   groups: 29fb3c5431af0d9d
-  list-groups: 16e48c02ba9d9191
+  list-groups: 1721161f96862461
   get-a-group: ecb953185eaa0dde
   webhooks: 1a401a8adc8e85e7
   list-webhooks: 964add3ff83062bc
@@ -231,6 +231,8 @@ curl -H 'Authorization: Bearer YOUR_API_KEY' 'https://www.loomio.com/api/b2/thre
 
 <!-- translation-section: list-groups -->
 
+<!-- translation-correction: {"before":"ь адміністраторів групи |\n| `delegates_count` | Кількість делегатів |\n| `discussions_count` | Кількість ","after":"ь адміністраторів групи |\n| `discussions_count` | Кількість "} -->
+
 ### Список груп
 
 Повертає групи, у яких користувач, якому належить API-ключ, має активну участь.
@@ -258,7 +260,6 @@ curl -H 'Authorization: Bearer YOUR_API_KEY' https://www.loomio.com/api/b2/group
 | `accepted_memberships_count` | Кількість підтверджених записів участі |
 | `pending_memberships_count` | Кількість запрошень, що очікують прийняття |
 | `admin_memberships_count` | Кількість адміністраторів групи |
-| `delegates_count` | Кількість делегатів |
 | `discussions_count` | Кількість обговорень безпосередньо в групі |
 | `polls_count` | Кількість опитувань безпосередньо в групі |
 | `subgroups_count` | Кількість підгруп |

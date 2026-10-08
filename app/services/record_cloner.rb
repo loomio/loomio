@@ -6,14 +6,14 @@ class RecordCloner
   BLOCKED_COLUMNS = {
     Group => %w[
       id key token parent_id creator_id subscription_id full_name info attachments
-      admin_memberships_count closed_polls_count delegates_count discussion_templates_count
+      admin_memberships_count
       discussions_count memberships_count org_members_count pending_memberships_count
-      poll_templates_count polls_count subgroups_count
+      poll_templates_count polls_count
     ],
     Discussion => %w[id key topic_id attachments versions_count],
     Topic => %w[
       id group_id topicable_id topicable_type ranges_string
-      active_polls_count anonymous_polls_count closed_polls_count items_count members_count seen_by_count
+      active_polls_count items_count seen_by_count
     ],
     Poll => %w[
       id key topic_id attachments versions_count
@@ -26,7 +26,7 @@ class RecordCloner
     TopicItem => %w[id topic_id itemable_id itemable_type itemable_version_id parent_id child_count],
     Membership => %w[id group_id token],
     Comment => %w[id parent_id parent_type attachments versions_count],
-    Tag => %w[id group_id taggings_count used_group_ids]
+    Tag => %w[id group_id used_group_ids]
   }.freeze
 
   def initialize(recorded_at:)

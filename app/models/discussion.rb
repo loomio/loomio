@@ -1,4 +1,5 @@
 class Discussion < ApplicationRecord
+  include LocksTopicsForCounts
   include HasVersionsCount
   include ReadableUnguessableUrls
   include Translatable
@@ -100,7 +101,7 @@ class Discussion < ApplicationRecord
   delegate :name_and_email, to: :author, prefix: :author
   delegate :locale, to: :author
   delegate :members, :admins, :guests, :guest_ids, :add_guest!, :add_admin!, :group_id, :group,
-           :seen_by_count, :anonymous_polls_count,
+           :seen_by_count, :has_anonymous_polls?,
            :items, :newest_first, :private, :pinned_at,
            :last_activity_at, :items_count, :ranges, to: :topic
 
@@ -110,11 +111,6 @@ class Discussion < ApplicationRecord
   before_create :lock_topics_for_counts
   before_update :lock_topics_for_counts, if: -> { changes.keys.intersect?(%w[topic_id discarded_at]) }
   before_destroy :lock_topics_for_counts
-
-  def lock_topics_for_counts
-    ids = [topic_id, topic_id_in_database].compact.uniq
-    @count_group_ids = Topic.where(id: ids).order(:id).lock('FOR NO KEY UPDATE').pluck(:id, :group_id).to_h
-  end
 
   def add_group_discussion_count
     current_group_id = topic_id ? @count_group_ids.fetch(topic_id) : group_id

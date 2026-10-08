@@ -17,7 +17,7 @@ class TopicSerializer < ApplicationSerializer
              :pinned_at,
              :topicable_id,
              :topicable_type,
-             :anonymous_polls_count,
+             :has_anonymous_polls,
              :seen_by_count,
              :tags
 
@@ -64,8 +64,8 @@ class TopicSerializer < ApplicationSerializer
     object.items_count - 1
   end
 
-  def anonymous_polls_count
-    cache_fetch(:anonymous_polls_counts_by_topic_id, object.id) { object.anonymous_polls_count }
+  def has_anonymous_polls
+    cache_fetch(:anonymous_polls_by_topic_id, object.id) { object.has_anonymous_polls? }
   end
 
   def ranges

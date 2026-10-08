@@ -1,17 +1,17 @@
 ---
 title: Benutzer-API
-source_revision: c27ee3b193231816878f1c074ff9fc2a086a88c0
+source_revision: 79280ee7a1246dbb8bb16686856608069718bc14
 source_file: docs/en/user_manual/integrations/api/user-api.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-02'
+  'on': '2026-10-09'
 sections:
   introduction: a43c8b800d13fd33
   authentication-change: 06b5c2cd9d9e72a0
   response-size-and-related-records: 1ffc59ad606a87e7
   endpoint-summary: 52c480c59d3669e3
   groups: 0473f1f7fb78f074
-  list-groups: 2b783ec54f27b2ce
+  list-groups: dcbe9217091f8cb2
   get-a-group: dffef659cb92745e
   webhooks: f65fa289f8c1b808
   list-webhooks: a8b52c1a9bfdb16c
@@ -78,7 +78,7 @@ generated:
   response-size-and-related-records: 7ffa0d8a8c0cf309
   endpoint-summary: 7b89d9b9c352fa6e
   groups: db87cc751307f655
-  list-groups: 45c669703823d14a
+  list-groups: ba51f7a7cd21ab59
   get-a-group: 1ee0b0e16e7d2e33
   webhooks: ee96993caa26dc11
   list-webhooks: 5f1083df35d2f2f0
@@ -230,6 +230,8 @@ Antworten mit Datensatzsammlungen enthalten `meta.total`, wenn eine genaue Gesam
 
 <!-- translation-section: list-groups -->
 
+<!-- translation-correction: {"before":"srechten für die Gruppe |\n| `delegates_count` | Anzahl der Delegierten |\n| `discussions_count` | Anzahl der","after":"srechten für die Gruppe |\n| `discussions_count` | Anzahl der"} -->
+
 ### Gruppen auflisten
 
 Gibt die Gruppen zurück, in denen das Konto, dessen API-Schlüssel verwendet wird, eine aktive Mitgliedschaft hat.
@@ -257,7 +259,6 @@ Wichtige Gruppenfelder sind:
 | `accepted_memberships_count` | Anzahl angenommener Mitgliedschaften |
 | `pending_memberships_count` | Anzahl ausstehender Einladungen |
 | `admin_memberships_count` | Anzahl der Personen mit Administrationsrechten für die Gruppe |
-| `delegates_count` | Anzahl der Delegierten |
 | `discussions_count` | Anzahl der Diskussionen direkt in der Gruppe |
 | `polls_count` | Anzahl der Abstimmungen direkt in der Gruppe |
 | `subgroups_count` | Anzahl der Untergruppen |

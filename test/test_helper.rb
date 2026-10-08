@@ -49,9 +49,11 @@ module ActiveSupport
     def load_fixtures(config)
       super.tap do
         connection = ActiveRecord::Base.connection
-        # Real-commit tests also write partition sequences, which have no
-        # fixture file. Drop those derived rows when loading a fresh dataset.
+        # Real-commit tests write these tables without fixture files. Clear
+        # them with each fresh dataset: reset IDs could otherwise attach old
+        # revisions to unrelated records and seed incorrect version counts.
         connection.execute('DELETE FROM partition_sequences')
+        connection.execute('DELETE FROM versions')
         RetainedRecordCountRebuild.run(connection)
       end
     end

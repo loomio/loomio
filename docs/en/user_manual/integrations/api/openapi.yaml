@@ -1014,7 +1014,6 @@ components:
         accepted_memberships_count: {type: integer}
         pending_memberships_count: {type: integer}
         admin_memberships_count: {type: integer}
-        delegates_count: {type: integer}
         discussions_count: {type: integer}
         polls_count: {type: integer}
         subgroups_count: {type: integer}

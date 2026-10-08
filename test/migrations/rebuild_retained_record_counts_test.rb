@@ -16,7 +16,7 @@ class RebuildRetainedRecordCountsTest < ActiveSupport::TestCase
     end
     item.update_column(:child_count, 999)
     group.update_columns(memberships_count: 999, pending_memberships_count: 999, admin_memberships_count: 999,
-                         polls_count: 999, discussions_count: 999, poll_templates_count: 999, subgroups_count: 999,
+                         polls_count: 999, discussions_count: 999, poll_templates_count: 999,
                          org_members_count: 999)
     topic.update_columns(active_polls_count: 999, seen_by_count: 999)
     user.update_column(:memberships_count, 999)
@@ -24,7 +24,19 @@ class RebuildRetainedRecordCountsTest < ActiveSupport::TestCase
     empty.update_columns(memberships_count: 999, polls_count: 999)
     timestamp = group.updated_at
 
-    RebuildRetainedRecordCounts.new.up
+    RetainedRecordCountRebuild.run(ActiveRecord::Base.connection)
+
+    # A second rebuild must avoid writing owners that already agree, including
+    # zero-count owners. ctid changes on every PostgreSQL row update.
+    tables = %w[groups users topics topic_items discussions comments outcomes]
+    rows_before = tables.to_h do |table|
+      [table, ActiveRecord::Base.connection.select_rows("SELECT id, ctid::text FROM #{table} ORDER BY id")]
+    end
+    RetainedRecordCountRebuild.run(ActiveRecord::Base.connection)
+    tables.each do |table|
+      assert_equal rows_before.fetch(table),
+        ActiveRecord::Base.connection.select_rows("SELECT id, ctid::text FROM #{table} ORDER BY id"), table
+    end
 
     group.reload
     assert_equal group.memberships.count, group.memberships_count
@@ -33,7 +45,6 @@ class RebuildRetainedRecordCountsTest < ActiveSupport::TestCase
     assert_equal group.polls.count, group.polls_count
     assert_equal group.discussions.kept.count, group.discussions_count
     assert_equal group.poll_templates.kept.count, group.poll_templates_count
-    assert_equal group.subgroups.count, group.subgroups_count
     assert_equal Membership.active.where(group_id: group.id_and_subgroup_ids).distinct.count(:user_id), group.org_members_count
     assert_equal timestamp, group.updated_at
     assert_equal topic.polls.active.count, topic.reload.active_polls_count

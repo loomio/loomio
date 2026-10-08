@@ -149,7 +149,7 @@ class TopicService
   end
 
   def self.direct_participants_retain!(topic:, actor:)
-    if topic.polls.where(anonymous: true).exists?
+    if topic.has_anonymous_polls?
       topic.errors.add(:base, I18n.t("errors.direct_thread_anonymous_poll"))
       raise ActiveRecord::RecordInvalid, topic
     end

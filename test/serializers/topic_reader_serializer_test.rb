@@ -9,18 +9,17 @@ class TopicReaderSerializerTest < ActiveSupport::TestCase
       title: 'Anonymous reading history', poll_type: 'proposal', topic_id: @topic.id,
       anonymous: true, poll_option_names: %w[agree disagree], closing_at: 1.day.from_now
     }, actor: users(:admin))
-    @topic.update_column(:anonymous_polls_count, 0)
   end
 
-  test 'anonymous reading history stays hidden despite a stale stored count for every viewer role' do
-    viewers = [LoggedOutUser.new] + users(:user, :admin, :alien, :guest_normal, :guest_admin_normal,
+  test 'anonymous reading history stays hidden for every viewer role' do
+    viewers = [LoggedOutUser.new] + users(:user, :admin, :server_admin, :alien, :guest_normal, :guest_admin_normal,
                                           :former_member_loud, :inactive_member_loud)
     viewers.each do |viewer|
       serializer = TopicReaderSerializer.new(@reader, scope: { current_user_id: viewer.id })
       assert_nil serializer.last_read_at, viewer.class.name
       assert_empty serializer.read_ranges, viewer.class.name
     end
-    assert_equal 1, TopicSerializer.new(@topic).anonymous_polls_count
+    assert TopicSerializer.new(@topic).has_anonymous_polls
   end
 
   test 'closing or discarding an anonymous poll does not expose reading history' do
@@ -39,15 +38,24 @@ class TopicReaderSerializerTest < ActiveSupport::TestCase
     serializer = TopicReaderSerializer.new(@reader.reload)
     assert_equal @reader.last_read_at, serializer.last_read_at
     assert_equal @reader.read_ranges, serializer.read_ranges
-    assert_equal 0, TopicSerializer.new(@topic).anonymous_polls_count
-    assert_equal 1, TopicSerializer.new(destination).anonymous_polls_count
+    assert_not TopicSerializer.new(@topic).has_anonymous_polls
+    assert TopicSerializer.new(destination).has_anonymous_polls
+  end
+
+  test 'the same topic object sees anonymous poll creation and removal immediately' do
+    destination = topics(:public_discussion_topic)
+    assert_not destination.has_anonymous_polls?
+    @poll.update!(topic: destination)
+    assert destination.has_anonymous_polls?
+    @poll.destroy!
+    assert_not destination.has_anonymous_polls?
   end
 
   test 'reader lists batch anonymous poll queries and share the masking result' do
     readers = @topic.topic_readers.to_a
     counts = []
     subscriber = ActiveSupport::Notifications.subscribe('sql.active_record') do |*, payload|
-      counts << payload[:sql] if payload[:sql].match?(/SELECT.*COUNT.*FROM "polls"/i)
+      counts << payload[:sql] if payload[:sql].match?(/SELECT.*EXISTS.*FROM "polls"/i)
     end
     cache = RecordCache.for_collection(readers, users(:admin).id)
 

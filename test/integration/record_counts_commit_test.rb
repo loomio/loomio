@@ -122,17 +122,17 @@ class RecordCountsCommitTest < ActiveSupport::TestCase
     writers&.each(&:join)
   end
 
-  test "moving and deleting subgroups recounts the surviving parents" do
+  test "group serialization follows moved and deleted subgroups" do
     destination = Group.create!(name: "Subgroup destination", group_privacy: "secret")
     subgroup = Group.create!(name: "Counted subgroup", parent: @group, group_privacy: "secret")
-    assert_equal 1, @group.reload.subgroups_count
+    assert_equal 1, GroupSerializer.new(@group).subgroups_count
 
     Group.transaction { subgroup.update!(parent: destination) }
-    assert_equal 0, @group.reload.subgroups_count
-    assert_equal 1, destination.reload.subgroups_count
+    assert_equal 0, GroupSerializer.new(@group).subgroups_count
+    assert_equal 1, GroupSerializer.new(destination).subgroups_count
 
     subgroup.destroy!
-    assert_equal 0, destination.reload.subgroups_count
+    assert_equal 0, GroupSerializer.new(destination).subgroups_count
   end
 
   test "template discard and restore update kept templates without saving the group" do

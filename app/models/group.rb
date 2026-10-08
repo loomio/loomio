@@ -19,7 +19,6 @@ class Group < ApplicationRecord
   alias_method :author, :creator
 
   belongs_to :parent, class_name: 'Group'
-  scope :empty_no_subscription, -> { joins('left join subscriptions on subscription_id = groups.subscription_id').where('subscriptions.id is null and groups.parent_id is null').where('memberships_count < 2 AND discussions_count < 3 and polls_count < 2 and subgroups_count = 0').where('groups.created_at < ?', 1.year.ago) }
   scope :any_trial, -> { joins(:subscription).where('subscriptions.plan = ?', 'trial') }
   scope :expired_demo, -> { joins(:subscription).where('subscriptions.plan = ?', 'demo').where('groups.created_at < ?', 7.days.ago).where.not("groups.info @> ?", { demo_group_source: true }.to_json) }
   scope :not_demo, -> { joins(:subscription).where('subscriptions.plan != ?', 'demo') }
@@ -106,31 +105,12 @@ class Group < ApplicationRecord
   delegate :time_zone, to: :creator, allow_nil: true
   delegate :date_time_pref, to: :creator, allow_nil: true
 
-  after_create :add_subgroup_count
-  after_update :change_subgroup_count, if: -> { saved_change_to_parent_id? || saved_change_to_discarded_at? }
-  after_destroy :remove_subgroup_count
   after_update :update_organization_counts_after_move, if: :saved_change_to_parent_id?
-
-  def add_subgroup_count
-    RecordCountService.transfer!(Group, :subgroups_count, from: nil, to: kept? ? parent_id : nil, records: [parent].compact)
-  end
-
-  def change_subgroup_count
-    parent_previous = parent_id_before_last_save
-    parent_current = parent_id
-    RecordCountService.transfer!(Group, :subgroups_count,
-      from: discarded_at_before_last_save.nil? ? parent_previous : nil,
-      to: kept? ? parent_current : nil, records: [parent].compact)
-  end
-
-  def remove_subgroup_count
-    RecordCountService.transfer!(Group, :subgroups_count, from: kept? ? parent_id : nil, to: nil, records: [parent].compact)
-  end
 
   def update_organization_counts_after_move
     Group.update_org_members_count_for_group_ids([parent_id_before_last_save, parent_id || id])
   end
-  private :add_subgroup_count, :change_subgroup_count, :remove_subgroup_count, :update_organization_counts_after_move
+  private :update_organization_counts_after_move
 
   # Imports, account merges and revocations bypass membership callbacks. Rebuild
   # all three related counts together using one scan of the active memberships.
@@ -147,7 +127,7 @@ class Group < ApplicationRecord
   def update_content_counts
     RecordCountService.recount!(self) do
       { polls_count: polls.count, discussions_count: discussions.kept.count,
-        poll_templates_count: poll_templates.kept.count, subgroups_count: subgroups.count }
+        poll_templates_count: poll_templates.kept.count }
     end
   end
 
@@ -399,10 +379,6 @@ class Group < ApplicationRecord
 
   def org_accepted_members_count
     Membership.active.accepted.where(group_id: id_and_subgroup_ids).count('distinct user_id')
-  end
-
-  def org_discussions_count
-    Group.where(id: id_and_subgroup_ids).sum(:discussions_count)
   end
 
   def org_polls_count

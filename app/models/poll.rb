@@ -1,4 +1,5 @@
 class Poll < ApplicationRecord
+  include LocksTopicsForCounts
   PARTICIPATION_STATUS_VOTES_MIN = 3
   RESULT_VOTER_IDS_MAX = 50
 
@@ -270,12 +271,6 @@ class Poll < ApplicationRecord
   before_create :lock_topics_for_counts
   before_update :lock_topics_for_counts, if: -> { changes.keys.intersect?(%w[topic_id opened_at closed_at discarded_at]) }
   before_destroy :lock_topics_for_counts
-
-  def lock_topics_for_counts
-    ids = [topic_id, topic_id_in_database].compact.uniq
-    @count_group_ids = Topic.where(id: ids).order(:id).lock('FOR NO KEY UPDATE').pluck(:id, :group_id).to_h
-  end
-  private :lock_topics_for_counts
   after_save_commit -> { ReindexPollWorker.perform_later(id) }
   after_update :synchronize_stance_weights_after_vote_weights_change
 

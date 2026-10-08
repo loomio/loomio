@@ -122,18 +122,14 @@ module Null::Group
     %w[
       memberships_count
       polls_count
-      closed_polls_count
       discussions_count
       pending_memberships_count
-      discussion_templates_count
       poll_templates_count
-      delegates_count
       accepted_memberships_count
       memberships_count
       pending_memberships_count
       admin_memberships_count
       org_members_count
-      subgroups_count
     ]
   end
 

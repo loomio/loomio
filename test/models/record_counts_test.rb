@@ -43,14 +43,29 @@ class RecordCountsTest < ActiveSupport::TestCase
     assert_equal 1, other.reload.org_members_count
   end
 
-  test 'subgroup discard restoration and transfer maintain kept subgroup counts' do
+  test 'group serialization queries kept subgroups after discard and restoration' do
     child = Group.create!(name: 'Kept child', parent: @group, group_privacy: 'secret')
     child.discard!
-    assert_equal 0, @group.reload.subgroups_count
+    assert_equal 0, GroupSerializer.new(@group).subgroups_count
     child.undiscard!
-    assert_equal 1, @group.reload.subgroups_count
+    assert_equal 1, GroupSerializer.new(@group).subgroups_count
     child.update!(name: 'Renamed child')
-    assert_equal 1, @group.reload.subgroups_count
+    assert_equal 1, GroupSerializer.new(@group).subgroups_count
+  end
+
+  test 'subgroup serialization batches queries including zero counts' do
+    other = groups(:alien_group)
+    Group.create!(name: 'Queried subgroup', parent: @group, group_privacy: 'secret')
+    collection = [@group, other]
+    serialized_counts = nil
+    queries = capture_sql do
+      cache = RecordCache.for_collection(collection, @admin.id)
+      assert_no_record_cache_fallbacks do
+        serialized_counts = collection.map { |group| GroupSerializer.new(group, scope: { cache: cache }).subgroups_count }
+      end
+    end
+    assert_equal [1, 0], serialized_counts
+    assert_equal 1, queries.grep(/GROUP BY "groups"\."parent_id"/).length
   end
 
   test 'reading a topic repeatedly changes its seen count only on the first read' do
@@ -183,7 +198,8 @@ class RecordCountsTest < ActiveSupport::TestCase
     assert_equal target.memberships.count, target.memberships_count
     assert_equal target.memberships.pending.count, target.pending_memberships_count
     assert_equal target.admin_memberships.count, target.admin_memberships_count
-    assert_equal [1, 1, 1], target.attributes.values_at('discussions_count', 'polls_count', 'subgroups_count')
+    assert_equal [1, 1], target.attributes.values_at('discussions_count', 'polls_count')
+    assert_equal 1, GroupSerializer.new(target).subgroups_count
     assert_equal @admin.memberships.count, @admin.reload.memberships_count
     assert_equal target.id, discussion.topic.reload.group_id
   end

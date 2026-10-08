@@ -1,17 +1,17 @@
 ---
 title: API utente
-source_revision: c27ee3b193231816878f1c074ff9fc2a086a88c0
+source_revision: 79280ee7a1246dbb8bb16686856608069718bc14
 source_file: docs/en/user_manual/integrations/api/user-api.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-02'
+  'on': '2026-10-09'
 sections:
   introduction: a43c8b800d13fd33
   authentication-change: 06b5c2cd9d9e72a0
   response-size-and-related-records: 1ffc59ad606a87e7
   endpoint-summary: 52c480c59d3669e3
   groups: 0473f1f7fb78f074
-  list-groups: 2b783ec54f27b2ce
+  list-groups: dcbe9217091f8cb2
   get-a-group: dffef659cb92745e
   webhooks: f65fa289f8c1b808
   list-webhooks: a8b52c1a9bfdb16c
@@ -78,7 +78,7 @@ generated:
   response-size-and-related-records: 18252aa0939027fa
   endpoint-summary: 27f73ad1bcdf2a38
   groups: 42011ba3c7a9e4fd
-  list-groups: fa1437ff6f8d57ff
+  list-groups: 2c73ee91ba583c00
   get-a-group: d4f06d08dfd1ae19
   webhooks: a1f033b6fb23cbe7
   list-webhooks: 0a0baee15cbcdb66
@@ -228,6 +228,8 @@ Le risposte relative a raccolte includono `meta.total` quando è definita una di
 
 <!-- translation-section: list-groups -->
 
+<!-- translation-correction: {"before":"ministratori del gruppo |\n| `delegates_count` | Numero di delegati |\n| `discussions_count` | Numero di ","after":"ministratori del gruppo |\n| `discussions_count` | Numero di "} -->
+
 ### Elenca i gruppi
 
 Restituisce i gruppi in cui l'utente titolare della chiave API ha un'iscrizione attiva.
@@ -255,7 +257,6 @@ Tra i campi importanti dei gruppi ci sono:
 | `accepted_memberships_count` | Numero di iscrizioni accettate |
 | `pending_memberships_count` | Numero di inviti in attesa |
 | `admin_memberships_count` | Numero di amministratori del gruppo |
-| `delegates_count` | Numero di delegati |
 | `discussions_count` | Numero di discussioni direttamente nel gruppo |
 | `polls_count` | Numero di sondaggi direttamente nel gruppo |
 | `subgroups_count` | Numero di sottogruppi |

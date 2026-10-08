@@ -45,7 +45,6 @@ class GroupSerializer < ApplicationSerializer
              :is_visible_to_public,
              :is_visible_to_parent_members,
              :parent_members_can_see_discussions,
-             :org_discussions_count,
              :org_members_count,
              :subscription,
              :subgroups_count,
@@ -59,6 +58,10 @@ class GroupSerializer < ApplicationSerializer
   has_one :current_user_membership, serializer: MembershipSerializer, root: :memberships
   has_one :translation
   has_many :tags, serializer: TagSerializer, root: :tags
+
+  def subgroups_count
+    cache_fetch(:subgroups_counts_by_group_id, object.id) { object.subgroups.count }
+  end
 
   def current_user_membership
     cache_fetch(:memberships_by_group_id, object.id) { nil }
@@ -163,10 +166,6 @@ class GroupSerializer < ApplicationSerializer
   end
 
   def include_org_members_count?
-    object.is_parent?
-  end
-
-  def include_org_discussions_count?
     object.is_parent?
   end
 

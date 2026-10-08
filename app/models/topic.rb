@@ -83,11 +83,14 @@ class Topic < ApplicationRecord
   end
   private :transfer_group_content_counts
 
-  # This value controls privacy and whether a topic can become direct. Read
-  # the actual polls instead of trusting a historically unmaintained column.
-  # Serializers batch this query through RecordCache when rendering lists.
-  def anonymous_polls_count
-    polls.where(anonymous: true).count
+  # Discarded and closed anonymous polls still require read-receipt privacy.
+  # EXISTS stops at the first match; RecordCache batches this same predicate.
+  scope :with_anonymous_polls, -> {
+    where(Poll.where(anonymous: true).where('polls.topic_id = topics.id').arel.exists)
+  }
+
+  def has_anonymous_polls?
+    self.class.with_anonymous_polls.exists?(id: id)
   end
 
   def recount_active_polls!

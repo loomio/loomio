@@ -33,10 +33,11 @@ class TopicReaderSerializer < ApplicationSerializer
   private
 
   def anonymous_polls?
-    @anonymous_polls ||= cache_fetch(:anonymous_polls_counts_by_topic_id, object.topic_id) do
-      object.topic.anonymous_polls_count
+    return @anonymous_polls if defined?(@anonymous_polls)
+
+    @anonymous_polls = cache_fetch(:anonymous_polls_by_topic_id, object.topic_id) do
+      object.topic.has_anonymous_polls?
     end
-    @anonymous_polls.positive?
   end
 
 end

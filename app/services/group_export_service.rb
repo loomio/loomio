@@ -13,6 +13,14 @@ class GroupExportService
     stance_choices
   ].freeze
 
+  # Old archives include these derived fields. Ignore them after their columns
+  # are retired; retained counts are rebuilt from the records actually imported.
+  COUNTER_COLUMNS_RETIRED = {
+    'groups' => %w[closed_polls_count delegates_count discussion_templates_count subgroups_count],
+    'topics' => %w[anonymous_polls_count closed_polls_count members_count],
+    'tags' => %w[taggings_count]
+  }.freeze
+
   RELATIONS = %w[
     all_users
     all_topic_items
@@ -385,6 +393,7 @@ class GroupExportService
           next if table == 'tags' && !inserted_tag_ids.add?(new_id)
 
           attrs = data['record'].deep_dup
+          attrs.except!(*COUNTER_COLUMNS_RETIRED.fetch(table, []))
           translate_foreign_keys!(attrs, table, migrate_ids)
           attrs[pk] = new_id if pk
           translate_notification_payload!(attrs, migrate_ids) if table == 'notifications'

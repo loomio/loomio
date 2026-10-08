@@ -350,6 +350,16 @@ class GroupExportServiceTest < ActiveSupport::TestCase
     filename = GroupExportService.export(group.all_groups, group.name)
     # Exercise archives that list dependent records before their parents.
     archive = File.readlines(filename).map { |line| JSON.parse(line) }
+    # Exports from before counter retirement must still import. These stale
+    # derived values must not override the actual imported records.
+    archive.each do |data|
+      columns = {
+        'groups' => %w[closed_polls_count delegates_count discussion_templates_count subgroups_count],
+        'topics' => %w[anonymous_polls_count closed_polls_count members_count],
+        'tags' => %w[taggings_count]
+      }.fetch(data['table'], [])
+      columns.each { |column| data['record'][column] = 999 }
+    end
     archive.sort_by! do |record|
       if record['table'] == 'stance_choices'
         0
@@ -484,7 +494,7 @@ class GroupExportServiceTest < ActiveSupport::TestCase
     assert_equal 2, imported_group.polls_count
     assert_equal 1, imported_group.discussions_count
     assert_equal 1, imported_group.poll_templates_count
-    assert_equal 1, imported_group.subgroups_count
+    assert_equal 1, GroupSerializer.new(imported_group).subgroups_count
     assert_equal 2, imported_admin.memberships_count
     assert_equal 2, imported_member.memberships_count
     assert_equal 0, imported_discussion.versions_count
