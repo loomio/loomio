@@ -1,17 +1,17 @@
 ---
 title: Käyttäjän API
-source_revision: c27ee3b193231816878f1c074ff9fc2a086a88c0
+source_revision: f214d1d252cc5b1f895c3319fa8f65132f1a287a
 source_file: docs/en/user_manual/integrations/api/user-api.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-02'
+  'on': '2026-10-09'
 sections:
   introduction: a43c8b800d13fd33
   authentication-change: 06b5c2cd9d9e72a0
   response-size-and-related-records: 1ffc59ad606a87e7
   endpoint-summary: 52c480c59d3669e3
   groups: 0473f1f7fb78f074
-  list-groups: 2b783ec54f27b2ce
+  list-groups: dcbe9217091f8cb2
   get-a-group: dffef659cb92745e
   webhooks: f65fa289f8c1b808
   list-webhooks: a8b52c1a9bfdb16c
@@ -78,7 +78,7 @@ generated:
   response-size-and-related-records: ba02666ea46d2e10
   endpoint-summary: fcb70b7c0cea3f0c
   groups: 90cb5d1f24e992a5
-  list-groups: a0216170b5516e8f
+  list-groups: 3b41f05bfb62a359
   get-a-group: 8ce5f7e4ca42def1
   webhooks: e73d4cb7f83c25b4
   list-webhooks: '0387f1d6cc96806d'
@@ -227,6 +227,8 @@ Kokoelmavastaukset sisältävät kentän `meta.total`, kun kokoelman tarkka koko
 ## Ryhmät
 
 <!-- translation-section: list-groups -->
+
+<!-- translation-correction: {"before":"hmän ylläpitäjien määrä |\n| `delegates_count` | Edustajien määrä |\n| `discussions_count` | Suoraan ry","after":"hmän ylläpitäjien määrä |\n| `discussions_count` | Suoraan ry"} -->
 
 ### Listaa ryhmät
 

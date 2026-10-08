@@ -1,17 +1,17 @@
 ---
 title: Пользовательский API
-source_revision: c27ee3b193231816878f1c074ff9fc2a086a88c0
+source_revision: f214d1d252cc5b1f895c3319fa8f65132f1a287a
 source_file: docs/en/user_manual/integrations/api/user-api.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-02'
+  'on': '2026-10-09'
 sections:
   introduction: a43c8b800d13fd33
   authentication-change: 06b5c2cd9d9e72a0
   response-size-and-related-records: 1ffc59ad606a87e7
   endpoint-summary: 52c480c59d3669e3
   groups: 0473f1f7fb78f074
-  list-groups: 2b783ec54f27b2ce
+  list-groups: dcbe9217091f8cb2
   get-a-group: dffef659cb92745e
   webhooks: f65fa289f8c1b808
   list-webhooks: a8b52c1a9bfdb16c
@@ -78,7 +78,7 @@ generated:
   response-size-and-related-records: d46f276f260c7a9f
   endpoint-summary: ca1964ceb4794a50
   groups: 6437a4d2d344fc84
-  list-groups: b95b458461d1c440
+  list-groups: acf0f30bcd13128c
   get-a-group: 01132bb83e4197e9
   webhooks: 1097a8dab740d326
   list-webhooks: 3705b6c619d32584
@@ -227,6 +227,8 @@ curl -H 'Authorization: Bearer YOUR_API_KEY' 'https://www.loomio.com/api/b2/thre
 ## Группы
 
 <!-- translation-section: list-groups -->
+
+<!-- translation-correction: {"before":" администраторов группы |\n| `delegates_count` | Количество делегатов |\n| `discussions_count` | Количество","after":" администраторов группы |\n| `discussions_count` | Количество"} -->
 
 ### Список групп
 

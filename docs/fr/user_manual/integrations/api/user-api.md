@@ -1,17 +1,17 @@
 ---
 title: API utilisateur
-source_revision: c27ee3b193231816878f1c074ff9fc2a086a88c0
+source_revision: f214d1d252cc5b1f895c3319fa8f65132f1a287a
 source_file: docs/en/user_manual/integrations/api/user-api.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-02'
+  'on': '2026-10-09'
 sections:
   introduction: a43c8b800d13fd33
   authentication-change: 06b5c2cd9d9e72a0
   response-size-and-related-records: 1ffc59ad606a87e7
   endpoint-summary: 52c480c59d3669e3
   groups: 0473f1f7fb78f074
-  list-groups: 2b783ec54f27b2ce
+  list-groups: dcbe9217091f8cb2
   get-a-group: dffef659cb92745e
   webhooks: f65fa289f8c1b808
   list-webhooks: a8b52c1a9bfdb16c
@@ -78,7 +78,7 @@ generated:
   response-size-and-related-records: 3363173ccc43c630
   endpoint-summary: c8d63bce4a9a93ee
   groups: 4165b194b092ad2b
-  list-groups: 8677592f6d6824f8
+  list-groups: bd8e1202c9f901b1
   get-a-group: 4c3920bd569c10de
   webhooks: d8459e73f1df3bbc
   list-webhooks: fe069bfb9ffd9cc6
@@ -227,6 +227,8 @@ Les réponses contenant une collection incluent `meta.total` lorsqu’une taille
 ## Groupes
 
 <!-- translation-section: list-groups -->
+
+<!-- translation-correction: {"before":"ministrateurs du groupe |\n| `delegates_count` | Nombre de délégués |\n| `discussions_count` | Nombre de ","after":"ministrateurs du groupe |\n| `discussions_count` | Nombre de "} -->
 
 ### Lister les groupes
 

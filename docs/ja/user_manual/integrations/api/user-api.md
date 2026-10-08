@@ -1,17 +1,17 @@
 ---
 title: ユーザーAPI
-source_revision: c27ee3b193231816878f1c074ff9fc2a086a88c0
+source_revision: f214d1d252cc5b1f895c3319fa8f65132f1a287a
 source_file: docs/en/user_manual/integrations/api/user-api.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-02'
+  'on': '2026-10-09'
 sections:
   introduction: a43c8b800d13fd33
   authentication-change: 06b5c2cd9d9e72a0
   response-size-and-related-records: 1ffc59ad606a87e7
   endpoint-summary: 52c480c59d3669e3
   groups: 0473f1f7fb78f074
-  list-groups: 2b783ec54f27b2ce
+  list-groups: dcbe9217091f8cb2
   get-a-group: dffef659cb92745e
   webhooks: f65fa289f8c1b808
   list-webhooks: a8b52c1a9bfdb16c
@@ -78,7 +78,7 @@ generated:
   response-size-and-related-records: 0dce4fa080ace983
   endpoint-summary: 05443bbe78d93fa1
   groups: 95e133438e155e03
-  list-groups: 0a055b237198c8ef
+  list-groups: 556df3b3e246d862
   get-a-group: 7830c66e98310029
   webhooks: a97fdb82fc1bf29e
   list-webhooks: 0fa9102d1342f51f
@@ -229,6 +229,8 @@ curl -H 'Authorization: Bearer YOUR_API_KEY' 'https://www.loomio.com/api/b2/thre
 ## グループ
 
 <!-- translation-section: list-groups -->
+
+<!-- translation-correction: {"before":"s_count` | グループ管理者の人数です |\n| `delegates_count` | 代表者の人数です |\n| `discussions_count` | グループ直下のディス","after":"s_count` | グループ管理者の人数です |\n| `discussions_count` | グループ直下のディス"} -->
 
 ### グループの一覧取得
 
