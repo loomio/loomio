@@ -17,9 +17,7 @@ class TopicSerializer < ApplicationSerializer
              :pinned_at,
              :topicable_id,
              :topicable_type,
-             :members_count,
              :anonymous_polls_count,
-             :closed_polls_count,
              :seen_by_count,
              :tags
 

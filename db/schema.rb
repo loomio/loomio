@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_10_09_000000) do
+ActiveRecord::Schema[8.1].define(version: 2026_10_09_000001) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "hstore"
@@ -252,18 +252,15 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_09_000000) do
     t.jsonb "attachments", default: [], null: false
     t.string "category"
     t.string "city"
-    t.integer "closed_polls_count", default: 0, null: false
     t.string "content_locale"
     t.string "country"
     t.datetime "created_at", precision: nil
     t.integer "creator_id"
-    t.integer "delegates_count", default: 0, null: false
     t.text "description"
     t.string "description_format", limit: 10, default: "md", null: false
     t.datetime "discarded_at", precision: nil
     t.integer "discarded_by"
     t.string "discussion_privacy_options", default: "private_only", null: false
-    t.integer "discussion_templates_count", default: 0, null: false
     t.integer "discussions_count", default: 0, null: false
     t.string "full_name", limit: 255
     t.citext "handle"
@@ -1109,7 +1106,6 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_09_000000) do
     t.integer "group_id", null: false
     t.citext "name", null: false
     t.integer "priority", default: 0, null: false
-    t.integer "taggings_count", default: 0, null: false
     t.datetime "updated_at", precision: nil
     t.integer "used_group_ids", default: [], null: false, array: true
     t.index ["group_id", "name"], name: "index_tags_on_group_id_and_name", unique: true
@@ -1220,7 +1216,6 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_09_000000) do
     t.boolean "allow_concurrent_polls", default: false, null: false
     t.boolean "allow_reactions", default: true, null: false
     t.integer "anonymous_polls_count", default: 0, null: false
-    t.integer "closed_polls_count", default: 0, null: false
     t.integer "comment_length_max"
     t.datetime "created_at", null: false
     t.datetime "discarded_at"
@@ -1231,7 +1226,6 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_09_000000) do
     t.datetime "locked_at", precision: nil
     t.integer "locker_id"
     t.integer "max_depth", default: 3, null: false
-    t.integer "members_count"
     t.boolean "newest_first", default: false, null: false
     t.datetime "pinned_at", precision: nil
     t.boolean "private", default: true, null: false

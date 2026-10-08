@@ -255,7 +255,6 @@ Les principaux champs des groupes sont les suivants :
 | `accepted_memberships_count` | Nombre d’adhésions acceptées |
 | `pending_memberships_count` | Nombre d’invitations en attente |
 | `admin_memberships_count` | Nombre d’administrateurs du groupe |
-| `delegates_count` | Nombre de délégués |
 | `discussions_count` | Nombre de discussions directement dans le groupe |
 | `polls_count` | Nombre de sondages directement dans le groupe |
 | `subgroups_count` | Nombre de sous-groupes |

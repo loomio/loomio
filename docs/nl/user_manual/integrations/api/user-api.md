@@ -255,7 +255,6 @@ Belangrijke groepsvelden zijn:
 | `accepted_memberships_count` | Aantal geaccepteerde lidmaatschappen |
 | `pending_memberships_count` | Aantal nog niet geaccepteerde uitnodigingen |
 | `admin_memberships_count` | Aantal groepsbeheerders |
-| `delegates_count` | Aantal afgevaardigden |
 | `discussions_count` | Aantal discussies rechtstreeks in de groep |
 | `polls_count` | Aantal peilingen rechtstreeks in de groep |
 | `subgroups_count` | Aantal subgroepen |

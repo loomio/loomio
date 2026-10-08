@@ -72,9 +72,7 @@ class Topic < ApplicationRecord
   include HasTags
   include CustomCounterCache::Model
   define_counter_cache(:active_polls_count)          { |t| t.polls.active.count }
-  define_counter_cache(:closed_polls_count)         { |t| t.polls.closed.count }
   define_counter_cache(:seen_by_count)              { |t| t.topic_readers.where('last_read_at is not null').count }
-  define_counter_cache(:members_count)              { |t| t.topic_readers.where('revoked_at is null').count }
   define_counter_cache(:anonymous_polls_count)      { |t| t.polls.where(anonymous: true).count }
 
   validate :privacy_is_permitted_by_group

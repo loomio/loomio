@@ -100,7 +100,7 @@ class Discussion < ApplicationRecord
   delegate :name_and_email, to: :author, prefix: :author
   delegate :locale, to: :author
   delegate :members, :admins, :guests, :guest_ids, :add_guest!, :add_admin!, :group_id, :group,
-           :seen_by_count, :members_count, :closed_polls_count, :anonymous_polls_count,
+           :seen_by_count, :anonymous_polls_count,
            :items, :newest_first, :private, :pinned_at,
            :last_activity_at, :items_count, :ranges, to: :topic
 
@@ -114,7 +114,6 @@ class Discussion < ApplicationRecord
     return unless group.id
     return if group.destroyed? # group teardown cascaded to this discussion — nothing to recount
     group.update_discussions_count
-    group.update_closed_polls_count
   end
 
   def author

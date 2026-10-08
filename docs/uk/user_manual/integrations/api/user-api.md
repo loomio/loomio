@@ -258,7 +258,6 @@ curl -H 'Authorization: Bearer YOUR_API_KEY' https://www.loomio.com/api/b2/group
 | `accepted_memberships_count` | Кількість підтверджених записів участі |
 | `pending_memberships_count` | Кількість запрошень, що очікують прийняття |
 | `admin_memberships_count` | Кількість адміністраторів групи |
-| `delegates_count` | Кількість делегатів |
 | `discussions_count` | Кількість обговорень безпосередньо в групі |
 | `polls_count` | Кількість опитувань безпосередньо в групі |
 | `subgroups_count` | Кількість підгруп |

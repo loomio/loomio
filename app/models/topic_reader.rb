@@ -155,6 +155,5 @@ class TopicReader < ApplicationRecord
 
   def update_topic_counters
     topic.update_seen_by_count
-    topic.update_members_count
   end
 end

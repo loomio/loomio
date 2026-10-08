@@ -45,7 +45,6 @@ class Membership < ApplicationRecord
   delegate :mailer, to: :user
 
   update_counter_cache :group, :memberships_count
-  update_counter_cache :group, :delegates_count
   update_counter_cache :group, :pending_memberships_count
   update_counter_cache :group, :admin_memberships_count
   update_counter_cache :user,  :memberships_count

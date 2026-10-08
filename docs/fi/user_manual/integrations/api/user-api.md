@@ -255,7 +255,6 @@ Keskeisiä ryhmän kenttiä ovat:
 | `accepted_memberships_count` | Hyväksyttyjen jäsenyyksien määrä |
 | `pending_memberships_count` | Odottavien kutsujen määrä |
 | `admin_memberships_count` | Ryhmän ylläpitäjien määrä |
-| `delegates_count` | Edustajien määrä |
 | `discussions_count` | Suoraan ryhmään kuuluvien keskustelujen määrä |
 | `polls_count` | Suoraan ryhmään kuuluvien kyselyjen määrä |
 | `subgroups_count` | Alaryhmien määrä |

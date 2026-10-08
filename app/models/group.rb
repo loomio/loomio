@@ -108,15 +108,12 @@ class Group < ApplicationRecord
   delegate :date_time_pref, to: :creator, allow_nil: true
 
   define_counter_cache(:polls_count)                { |g| g.polls.count }
-  define_counter_cache(:closed_polls_count)         { |g| g.polls.closed.count }
   define_counter_cache(:poll_templates_count)       { |g| g.poll_templates.kept.count }
   define_counter_cache(:memberships_count)          { |g| g.memberships.count }
   define_counter_cache(:pending_memberships_count)  { |g| g.memberships.pending.count }
   define_counter_cache(:admin_memberships_count)    { |g| g.admin_memberships.count }
-  define_counter_cache(:delegates_count)            { |g| g.memberships.delegates.count }
   define_counter_cache(:org_members_count)          { |g| Membership.active.where(group_id: g.id_and_subgroup_ids).count('distinct user_id') }
   define_counter_cache(:discussions_count)          { |g| g.discussions.kept.count }
-  define_counter_cache(:discussion_templates_count) { |g| g.discussion_templates.kept.count }
   define_counter_cache(:subgroups_count)            { |g| g.subgroups.count }
   update_counter_cache(:parent, :subgroups_count)
 

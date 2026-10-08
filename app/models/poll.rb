@@ -301,7 +301,6 @@ class Poll < ApplicationRecord
     return unless group.id
     return if group.destroyed? # group teardown cascaded to this poll — nothing to recount
     group.update_polls_count
-    group.update_closed_polls_count
   end
 
   def update_topic_anonymous_polls_count

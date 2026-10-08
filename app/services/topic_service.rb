@@ -177,8 +177,6 @@ class TopicService
       )
       reader.save!
     end
-
-    topic.update_members_count
   end
 
   def self.pin(topic:, actor:)
@@ -513,7 +511,6 @@ class TopicService
 
     TopicReader.import(new_topic_readers, on_duplicate_key_ignore: true)
 
-    topic.update_members_count
     users
   end
 end

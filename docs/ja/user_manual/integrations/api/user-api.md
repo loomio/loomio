@@ -257,7 +257,6 @@ curl -H 'Authorization: Bearer YOUR_API_KEY' https://www.loomio.com/api/b2/group
 | `accepted_memberships_count` | 承認済みのメンバー登録の件数です |
 | `pending_memberships_count` | 承認待ちの招待の件数です |
 | `admin_memberships_count` | グループ管理者の人数です |
-| `delegates_count` | 代表者の人数です |
 | `discussions_count` | グループ直下のディスカッションの件数です |
 | `polls_count` | グループ直下のアンケートの件数です |
 | `subgroups_count` | サブグループの件数です |

@@ -257,7 +257,6 @@ Wichtige Gruppenfelder sind:
 | `accepted_memberships_count` | Anzahl angenommener Mitgliedschaften |
 | `pending_memberships_count` | Anzahl ausstehender Einladungen |
 | `admin_memberships_count` | Anzahl der Personen mit Administrationsrechten für die Gruppe |
-| `delegates_count` | Anzahl der Delegierten |
 | `discussions_count` | Anzahl der Diskussionen direkt in der Gruppe |
 | `polls_count` | Anzahl der Abstimmungen direkt in der Gruppe |
 | `subgroups_count` | Anzahl der Untergruppen |

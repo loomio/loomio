@@ -255,7 +255,6 @@ Tra i campi importanti dei gruppi ci sono:
 | `accepted_memberships_count` | Numero di iscrizioni accettate |
 | `pending_memberships_count` | Numero di inviti in attesa |
 | `admin_memberships_count` | Numero di amministratori del gruppo |
-| `delegates_count` | Numero di delegati |
 | `discussions_count` | Numero di discussioni direttamente nel gruppo |
 | `polls_count` | Numero di sondaggi direttamente nel gruppo |
 | `subgroups_count` | Numero di sottogruppi |

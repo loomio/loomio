@@ -255,7 +255,6 @@ A fontosabb csoportmezők:
 | `accepted_memberships_count` | Az elfogadott tagságok száma |
 | `pending_memberships_count` | A függőben lévő meghívók száma |
 | `admin_memberships_count` | A csoportadminisztrátorok száma |
-| `delegates_count` | A küldöttek száma |
 | `discussions_count` | A közvetlenül a csoportban lévő beszélgetések száma |
 | `polls_count` | A közvetlenül a csoportban lévő szavazások száma |
 | `subgroups_count` | Az alcsoportok száma |
