@@ -2,7 +2,6 @@ class TopicItem < ApplicationRecord
   CHANGE_NOTE_KINDS = %w[discussion_edited poll_edited].freeze
 
   include ActionView::Helpers::SanitizeHelper
-  include CustomCounterCache::Model
   include PrettyUrlHelper
 
   belongs_to :itemable, polymorphic: true
@@ -12,9 +11,12 @@ class TopicItem < ApplicationRecord
   has_many :children, class_name: "TopicItem", foreign_key: :parent_id
   has_many :notifications, as: :subject, dependent: :destroy
   before_validation :set_kind, :set_itemable_version_id, :set_topic, :set_user_from_itemable, on: :create
+  before_create :lock_topic_for_tree_change
   before_create :set_parent_and_depth
+  before_create :increment_parent_child_count
   before_create :set_sequences
   after_rollback :reset_sequences
+  before_destroy :lock_topic_for_tree_change
   before_destroy :reparent_children, unless: :destroyed_with_topic?
   before_destroy :reset_sequences
 
@@ -22,10 +24,29 @@ class TopicItem < ApplicationRecord
   after_create  :mark_actor_as_read!
   after_destroy :update_sequence_info!
 
-  define_counter_cache(:child_count) { |topic_item| topic_item.children.count }
-  update_counter_cache :parent, :child_count
+  after_update :transfer_parent_child_count, if: :saved_change_to_parent_id?
 
   before_save :sync_itemable_foreign_key
+
+  # Sequence/range updates already serialize writes to a topic. Acquire that
+  # lock before its item locks too, matching moves, deletion and repair.
+  def lock_topic_for_tree_change
+    Topic.where(id: topic_id).lock('FOR NO KEY UPDATE').pick(:id)
+  end
+  private :lock_topic_for_tree_change
+
+  # Increment before insertion to lock the parent against concurrent deletion.
+  # Both the child and its count roll back together, and after-commit publication
+  # sees the complete tree without a lock/read/recount transaction of its own.
+  def increment_parent_child_count
+    RecordCountService.transfer!(TopicItem, :child_count, from: nil, to: parent_id, records: [parent].compact)
+  end
+
+  def transfer_parent_child_count
+    RecordCountService.transfer!(TopicItem, :child_count,
+      from: parent_id_before_last_save, to: parent_id, records: [parent].compact)
+  end
+  private :increment_parent_child_count, :transfer_parent_child_count
 
   scope :unreadable, -> { where.not(kind: 'discussion_closed') }
 
@@ -127,7 +148,13 @@ class TopicItem < ApplicationRecord
   end
 
   def reparent_children
-    TopicItem.where(parent_id: id).update_all(parent_id: parent_id, depth: depth) if parent_id
+    return unless parent_id
+
+    # Creating children locks this row. Hold it while promoting existing
+    # children so an insert cannot slip between promotion and deletion.
+    TopicItem.where(id: [id, parent_id]).order(:id).lock.pluck(:id)
+    promoted_count = TopicItem.where(parent_id: id).update_all(parent_id: parent_id, depth: depth)
+    RecordCountService.adjust!(TopicItem, { parent_id => { child_count: promoted_count - 1 } }, records: [parent])
   end
 
   # A topic destroys every item in an unspecified order. Reparenting from the

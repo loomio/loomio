@@ -1,5 +1,4 @@
 class TopicReader < ApplicationRecord
-  include CustomCounterCache::Model
   include HasVolume
 
   extend HasTokens
@@ -35,8 +34,9 @@ class TopicReader < ApplicationRecord
     redeemable.joins(:user).where('user_id = ? OR users.email_verified = false', user_id)
   }
 
-  after_save    :update_topic_counters
-  after_destroy :update_topic_counters
+  after_create :add_seen_by_count
+  after_update :change_seen_by_count, if: -> { saved_change_to_topic_id? || (saved_change_to_last_read_at? && last_read_at_before_last_save.nil? != last_read_at.nil?) }
+  after_destroy :remove_seen_by_count
 
   def self.for(user:, topic:)
     if user&.is_logged_in?
@@ -153,8 +153,18 @@ class TopicReader < ApplicationRecord
     @membership ||= topic.group.membership_for(user)
   end
 
-  def update_topic_counters
-    topic.update_seen_by_count
-    topic.update_members_count
+  def add_seen_by_count
+    RecordCountService.transfer!(Topic, :seen_by_count, from: nil, to: last_read_at ? topic_id : nil, records: [topic])
   end
+
+  def change_seen_by_count
+    RecordCountService.transfer!(Topic, :seen_by_count,
+      from: last_read_at_before_last_save ? topic_id_before_last_save : nil,
+      to: last_read_at ? topic_id : nil, records: [topic])
+  end
+
+  def remove_seen_by_count
+    RecordCountService.transfer!(Topic, :seen_by_count, from: last_read_at ? topic_id : nil, to: nil, records: [topic])
+  end
+  private :add_seen_by_count, :change_seen_by_count, :remove_seen_by_count
 end

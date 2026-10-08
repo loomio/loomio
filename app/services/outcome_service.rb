@@ -97,7 +97,6 @@ class OutcomeService
 
     Outcome.transaction do
       outcome.save!
-      outcome.update_versions_count
 
       users = UserInviter.where_or_create!(actor: actor,
                                            emails: params[:recipient_emails],

@@ -118,8 +118,6 @@ class DiscussionService
       discussion.topic.update!(topic_params) if topic_params.any?
       discussion.save!
 
-      discussion.update_versions_count
-
       users = TopicService.add_users(topic: discussion.topic,
                                      actor: actor,
                                      user_ids: params[:recipient_user_ids],

@@ -178,7 +178,6 @@ class TopicService
       reader.save!
     end
 
-    topic.update_members_count
   end
 
   def self.pin(topic:, actor:)
@@ -249,6 +248,7 @@ class TopicService
       topic.update!(discarded_at: discarded_at, discarded_by: actor.id)
       topicable.update!(discarded_at: discarded_at, discarded_by: actor.id)
       topic.polls.update_all(discarded_at: discarded_at, discarded_by: actor.id)
+      topic.update_column(:active_polls_count, 0)
       ReindexDiscussionWorker.perform_later(topicable.id) if topicable.is_a?(Discussion)
     end
     EventBus.broadcast('discussion_discard', topicable, actor) if topicable.is_a?(Discussion)
@@ -334,7 +334,10 @@ class TopicService
     topicable = topic.topicable
     return unless topicable
 
-    Topic.transaction { repair_topic(topic, topicable) }
+    Topic.transaction do
+      Topic.where(id: topic.id).lock('FOR NO KEY UPDATE').pick(:id)
+      repair_topic(topic, topicable)
+    end
   end
 
   def self.repair_topic(topic, topicable)
@@ -513,7 +516,6 @@ class TopicService
 
     TopicReader.import(new_topic_readers, on_duplicate_key_ignore: true)
 
-    topic.update_members_count
     users
   end
 end

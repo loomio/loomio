@@ -368,6 +368,10 @@ class GroupExportService
       migrate_ids = build_migrate_ids(datas_by_table, tables)
       existing_user_ids = User.where(id: migrate_ids['users']&.values || []).pluck(:id)
       existing_tag_ids = Tag.where(id: migrate_ids['tags']&.values || []).pluck(:id)
+      membership_user_ids = datas_by_table.fetch('memberships', []).map do |data|
+        resolve_id('users', data['record']['user_id'], migrate_ids)
+      end
+      User.where(id: membership_user_ids).order(:id).lock('FOR NO KEY UPDATE').pluck(:id)
 
       tables.each do |table|
         klass = table.classify.constantize
@@ -405,6 +409,31 @@ class GroupExportService
           Poll.find(new_id).update_counts!
           Poll.find(new_id).stances.each(&:update_option_scores!)
         end
+      end
+
+      # Imports bypass callbacks and omit records that cannot be exported
+      # (including open anonymous polls). Rebuild from the imported records
+      # instead of retaining the source's counts for those omitted records.
+      imported_memberships = Membership.where(id: migrate_ids['memberships']&.values || [])
+      group_ids = (migrate_ids['groups']&.values || []) + imported_memberships.distinct.pluck(:group_id)
+      Group.where(id: group_ids).order(:id).each do |group|
+        group.update_membership_counts
+        group.update_content_counts
+      end
+      Group.update_org_members_count_for_group_ids(group_ids)
+      User.update_membership_counts_for_ids((migrate_ids['users']&.values || []) + membership_user_ids)
+      topic_ids = migrate_ids['topics']&.values || []
+      Topic.where(id: topic_ids).order(:id).each do |topic|
+        topic.recount_active_polls!
+        RecordCountService.recount!(topic) { { seen_by_count: topic.topic_readers.where.not(last_read_at: nil).count } }
+      end
+      TopicItem.where(topic_id: topic_ids).update_all(child_count: Arel.sql(
+        '(SELECT COUNT(*) FROM topic_items children WHERE children.parent_id = topic_items.id)'))
+      # Revision history is not part of ordinary group archives. Count any
+      # versions actually restored instead of advertising missing revisions.
+      [Discussion, Comment, Outcome].each do |model|
+        model.where(id: migrate_ids[model.table_name]&.values || []).update_all(versions_count: Arel.sql(
+          "(SELECT COUNT(*) FROM versions WHERE item_type = #{model.connection.quote(model.name)} AND item_id = #{model.quoted_table_name}.id)"))
       end
     end
 

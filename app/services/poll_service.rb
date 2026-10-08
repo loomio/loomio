@@ -480,7 +480,6 @@ class PollService
         poll.stv_results = StvCountService.count(poll) if poll.poll_type == "stv"
         poll.update!(closed_at: Time.current)
         poll.update_counts!
-        poll.topic.update_active_polls_count
         next
       end
 
@@ -505,8 +504,6 @@ class PollService
       end
 
       poll.update(closed_at: Time.now)
-      # why isn't active polls count being updated?
-      poll.topic.update_active_polls_count
 
       if poll.poll_type == 'stv'
         poll.save!  # persist stv_results in custom_fields
@@ -703,7 +700,6 @@ class PollService
 
   def self.publish_topic_if_active(poll)
     topic = poll.topic
-    topic.update_active_polls_count
     scope = {exclude_types: ['group']}
     MessageChannelService.publish_models([topic], group_id: topic.group_id, scope: scope) if topic.group_id
     topic.guests.find_each do |user|

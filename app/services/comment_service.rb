@@ -75,7 +75,6 @@ class CommentService
     end
     Comment.transaction do
       comment.save!
-      comment.update_versions_count
       Sentry.metrics.count("comment.update")
       MentionNotificationService.create!(
         subject: comment,

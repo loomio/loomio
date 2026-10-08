@@ -1,5 +1,5 @@
 class Discussion < ApplicationRecord
-  include CustomCounterCache::Model
+  include HasVersionsCount
   include ReadableUnguessableUrls
   include Translatable
   include Reactable
@@ -100,22 +100,40 @@ class Discussion < ApplicationRecord
   delegate :name_and_email, to: :author, prefix: :author
   delegate :locale, to: :author
   delegate :members, :admins, :guests, :guest_ids, :add_guest!, :add_admin!, :group_id, :group,
-           :seen_by_count, :members_count, :closed_polls_count, :anonymous_polls_count,
+           :seen_by_count, :anonymous_polls_count,
            :items, :newest_first, :private, :pinned_at,
            :last_activity_at, :items_count, :ranges, to: :topic
 
-  define_counter_cache(:versions_count)             { |d| d.versions.count }
+  after_create :add_group_discussion_count
+  after_update :change_group_discussion_count, if: -> { saved_change_to_topic_id? || saved_change_to_discarded_at? }
+  after_destroy :remove_group_discussion_count
+  before_create :lock_topics_for_counts
+  before_update :lock_topics_for_counts, if: -> { changes.keys.intersect?(%w[topic_id discarded_at]) }
+  before_destroy :lock_topics_for_counts
 
-  after_commit :update_group_counter_caches
-
-  def update_group_counter_caches
-    # TODO: can this be a background job or materialized view?
-    group = topic.group
-    return unless group.id
-    return if group.destroyed? # group teardown cascaded to this discussion — nothing to recount
-    group.update_discussions_count
-    group.update_closed_polls_count
+  def lock_topics_for_counts
+    ids = [topic_id, topic_id_in_database].compact.uniq
+    @count_group_ids = Topic.where(id: ids).order(:id).lock('FOR NO KEY UPDATE').pluck(:id, :group_id).to_h
   end
+
+  def add_group_discussion_count
+    current_group_id = topic_id ? @count_group_ids.fetch(topic_id) : group_id
+    RecordCountService.transfer!(Group, :discussions_count, from: nil, to: kept? ? current_group_id : nil, records: [group])
+  end
+
+  def change_group_discussion_count
+    # Autosaving the mutually referencing discussion/topic pair links the
+    # topic ID in a second save. Creation already counted its loaded group.
+    previous_group_id = topic_id_before_last_save ? @count_group_ids.fetch(topic_id_before_last_save) : group_id
+    RecordCountService.transfer!(Group, :discussions_count,
+      from: discarded_at_before_last_save.nil? ? previous_group_id : nil,
+      to: kept? ? @count_group_ids.fetch(topic_id) : nil, records: [group])
+  end
+
+  def remove_group_discussion_count
+    RecordCountService.transfer!(Group, :discussions_count, from: kept? ? @count_group_ids.fetch(topic_id) : nil, to: nil, records: [group])
+  end
+  private :lock_topics_for_counts, :add_group_discussion_count, :change_group_discussion_count, :remove_group_discussion_count
 
   def author
     super || LoggedOutUser.new(name: I18n.t('profile_page.deleted_account'))

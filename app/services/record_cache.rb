@@ -458,6 +458,16 @@ class RecordCache
   def add_topics(collection)
     return if exclude_types.include?('topic')
     merge_index(:topics_by_id, collection)
+    add_anonymous_poll_counts(collection.map(&:id))
+  end
+
+  def add_anonymous_poll_counts(topic_ids)
+    scope[:anonymous_polls_counts_by_topic_id] ||= {}
+    ids = topic_ids.compact.uniq - scope[:anonymous_polls_counts_by_topic_id].keys
+    return if ids.empty?
+
+    counts = Poll.where(topic_id: ids, anonymous: true).group(:topic_id).count
+    scope[:anonymous_polls_counts_by_topic_id].merge!(ids.index_with { |id| counts.fetch(id, 0) })
   end
 
   def add_discussions(collection)

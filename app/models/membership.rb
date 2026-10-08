@@ -6,7 +6,6 @@ class Membership < ApplicationRecord
     end
   end
 
-  include CustomCounterCache::Model
   include HasVolume
   include HasTimeframe
   include HasExperiences
@@ -44,15 +43,12 @@ class Membership < ApplicationRecord
   delegate :name, to: :inviter, prefix: :inviter, allow_nil: true
   delegate :mailer, to: :user
 
-  update_counter_cache :group, :memberships_count
-  update_counter_cache :group, :delegates_count
-  update_counter_cache :group, :pending_memberships_count
-  update_counter_cache :group, :admin_memberships_count
-  update_counter_cache :user,  :memberships_count
+  after_create :add_membership_counts
+  after_update :change_membership_counts, if: -> { saved_changes.keys.intersect?(%w[group_id user_id revoked_at accepted_at admin]) }
+  after_destroy :remove_membership_counts
 
   before_create :set_volume
   after_save :remove_group_follow, if: :active_membership_saved?
-  after_commit :update_org_members_count
 
   def title_model
     group
@@ -103,12 +99,42 @@ class Membership < ApplicationRecord
     self.volume_push = user.volume_push_default
   end
 
-  def update_org_members_count
-    return unless previous_changes.keys.intersect?(%w[group_id user_id revoked_at]) || destroyed?
-
-    Group.update_org_members_count_for_group_ids([
-      previous_changes.dig('group_id', 0),
-      group_id
-    ])
+  # Compute old/new contributions rather than recounting on every save. A
+  # membership title, delivery preference or vote weight changes no counts.
+  # The distinct organization total is rebuilt only when its membership set
+  # changes; two subgroup memberships can represent the same person.
+  def add_membership_counts
+    apply_membership_counts(nil, attributes)
   end
+
+  def change_membership_counts
+    before = attributes.merge(saved_changes.transform_values(&:first))
+    apply_membership_counts(before, attributes)
+  end
+
+  def remove_membership_counts
+    apply_membership_counts(attributes, nil)
+  end
+
+  def apply_membership_counts(before, after)
+    groups = Hash.new { |hash, id| hash[id] = Hash.new(0) }
+    users = Hash.new { |hash, id| hash[id] = Hash.new(0) }
+    [[before, -1], [after, 1]].each do |state, delta|
+      next unless state && state['revoked_at'].nil?
+
+      counts = groups[state['group_id']]
+      counts[:memberships_count] += delta
+      counts[:pending_memberships_count] += delta if state['accepted_at'].nil?
+      counts[:admin_memberships_count] += delta if state['admin']
+      users[state['user_id']][:memberships_count] += delta
+    end
+    RecordCountService.adjust!(User, users, records: [user])
+    RecordCountService.adjust!(Group, groups, records: [group])
+
+    membership_set = ->(state) { state && state['revoked_at'].nil? ? state.values_at('group_id', 'user_id') : nil }
+    if membership_set.call(before) != membership_set.call(after)
+      Group.update_org_members_count_for_group_ids([before&.fetch('group_id'), after&.fetch('group_id')])
+    end
+  end
+  private :add_membership_counts, :change_membership_counts, :remove_membership_counts, :apply_membership_counts
 end

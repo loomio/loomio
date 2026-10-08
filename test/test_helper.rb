@@ -4,6 +4,7 @@ require "rails/test_help"
 require "webmock/minitest"
 require "minitest/mock"
 require_relative "./reset_database_helper"
+require_relative "../db/migrate/support/retained_record_count_rebuild"
 
 # Minitest 6 parallelises by default (10 threads) which causes PG deadlocks
 # against the shared test DB. Force single-threaded execution.
@@ -42,6 +43,19 @@ module ActiveSupport
 
     # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
     fixtures :all
+
+    # Fixtures bypass model callbacks. Seed the same baseline used on upgrade,
+    # once per fixture load rather than recounting every record on every test.
+    def load_fixtures(config)
+      super.tap do
+        connection = ActiveRecord::Base.connection
+        # Real-commit tests also write partition sequences, which have no
+        # fixture file. Drop those derived rows when loading a fresh dataset.
+        connection.execute('DELETE FROM partition_sequences')
+        RetainedRecordCountRebuild.run(connection)
+      end
+    end
+    private :load_fixtures
 
 
     def create_push_subscription(user:, session: nil, **attributes)

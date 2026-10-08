@@ -1,7 +1,6 @@
 class Group < ApplicationRecord
   include Discard::Model
   include HasRichText
-  include CustomCounterCache::Model
   include ReadableUnguessableUrls
   include SelfReferencing
   include GroupPrivacy
@@ -107,18 +106,56 @@ class Group < ApplicationRecord
   delegate :time_zone, to: :creator, allow_nil: true
   delegate :date_time_pref, to: :creator, allow_nil: true
 
-  define_counter_cache(:polls_count)                { |g| g.polls.count }
-  define_counter_cache(:closed_polls_count)         { |g| g.polls.closed.count }
-  define_counter_cache(:poll_templates_count)       { |g| g.poll_templates.kept.count }
-  define_counter_cache(:memberships_count)          { |g| g.memberships.count }
-  define_counter_cache(:pending_memberships_count)  { |g| g.memberships.pending.count }
-  define_counter_cache(:admin_memberships_count)    { |g| g.admin_memberships.count }
-  define_counter_cache(:delegates_count)            { |g| g.memberships.delegates.count }
-  define_counter_cache(:org_members_count)          { |g| Membership.active.where(group_id: g.id_and_subgroup_ids).count('distinct user_id') }
-  define_counter_cache(:discussions_count)          { |g| g.discussions.kept.count }
-  define_counter_cache(:discussion_templates_count) { |g| g.discussion_templates.kept.count }
-  define_counter_cache(:subgroups_count)            { |g| g.subgroups.count }
-  update_counter_cache(:parent, :subgroups_count)
+  after_create :add_subgroup_count
+  after_update :change_subgroup_count, if: -> { saved_change_to_parent_id? || saved_change_to_discarded_at? }
+  after_destroy :remove_subgroup_count
+  after_update :update_organization_counts_after_move, if: :saved_change_to_parent_id?
+
+  def add_subgroup_count
+    RecordCountService.transfer!(Group, :subgroups_count, from: nil, to: kept? ? parent_id : nil, records: [parent].compact)
+  end
+
+  def change_subgroup_count
+    parent_previous = parent_id_before_last_save
+    parent_current = parent_id
+    RecordCountService.transfer!(Group, :subgroups_count,
+      from: discarded_at_before_last_save.nil? ? parent_previous : nil,
+      to: kept? ? parent_current : nil, records: [parent].compact)
+  end
+
+  def remove_subgroup_count
+    RecordCountService.transfer!(Group, :subgroups_count, from: kept? ? parent_id : nil, to: nil, records: [parent].compact)
+  end
+
+  def update_organization_counts_after_move
+    Group.update_org_members_count_for_group_ids([parent_id_before_last_save, parent_id || id])
+  end
+  private :add_subgroup_count, :change_subgroup_count, :remove_subgroup_count, :update_organization_counts_after_move
+
+  # Imports, account merges and revocations bypass membership callbacks. Rebuild
+  # all three related counts together using one scan of the active memberships.
+  def update_membership_counts
+    RecordCountService.recount!(self) do
+      total, pending, admins = memberships.pick(
+        Arel.sql('COUNT(*)'),
+        Arel.sql('COUNT(*) FILTER (WHERE accepted_at IS NULL)'),
+        Arel.sql('COUNT(*) FILTER (WHERE admin = TRUE)'))
+      { memberships_count: total, pending_memberships_count: pending, admin_memberships_count: admins }
+    end
+  end
+
+  def update_content_counts
+    RecordCountService.recount!(self) do
+      { polls_count: polls.count, discussions_count: discussions.kept.count,
+        poll_templates_count: poll_templates.kept.count, subgroups_count: subgroups.count }
+    end
+  end
+
+  def update_org_members_count
+    RecordCountService.recount!(self) do
+      { org_members_count: Membership.active.where(group_id: id_and_subgroup_ids).distinct.count(:user_id) }
+    end
+  end
 
   delegate :include?, to: :users, prefix: true
   delegate :members, to: :parent, prefix: true
@@ -413,7 +450,7 @@ class Group < ApplicationRecord
       .compact
       .uniq
 
-    Group.where(id: parent_ids).find_each(&:update_org_members_count)
+    Group.where(id: parent_ids).order(:id).each(&:update_org_members_count)
   end
 
 

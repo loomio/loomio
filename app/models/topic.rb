@@ -70,12 +70,29 @@ class Topic < ApplicationRecord
   }
 
   include HasTags
-  include CustomCounterCache::Model
-  define_counter_cache(:active_polls_count)          { |t| t.polls.active.count }
-  define_counter_cache(:closed_polls_count)         { |t| t.polls.closed.count }
-  define_counter_cache(:seen_by_count)              { |t| t.topic_readers.where('last_read_at is not null').count }
-  define_counter_cache(:members_count)              { |t| t.topic_readers.where('revoked_at is null').count }
-  define_counter_cache(:anonymous_polls_count)      { |t| t.polls.where(anonymous: true).count }
+
+  after_update :transfer_group_content_counts, if: :saved_change_to_group_id?
+
+  def transfer_group_content_counts
+    changes = { polls_count: polls.count, discussions_count: discussions.kept.count }
+    old_group_id = group_id_before_last_save
+    deltas = {}
+    deltas[old_group_id] = changes.transform_values { |count| -count } if old_group_id
+    deltas[group_id] = changes if group_id
+    RecordCountService.adjust!(Group, deltas, records: [group])
+  end
+  private :transfer_group_content_counts
+
+  # This value controls privacy and whether a topic can become direct. Read
+  # the actual polls instead of trusting a historically unmaintained column.
+  # Serializers batch this query through RecordCache when rendering lists.
+  def anonymous_polls_count
+    polls.where(anonymous: true).count
+  end
+
+  def recount_active_polls!
+    RecordCountService.recount!(self) { { active_polls_count: polls.active.count } }
+  end
 
   validate :privacy_is_permitted_by_group
 

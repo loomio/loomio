@@ -221,18 +221,21 @@ used_recent_subgroup:
 
 # Daily empty-trial cleanup eligibility matrix.
 trial_cleanup_recent:
+  token: trial_cleanup_recent_fixture_token
   name: Trial cleanup recent
   creator: user
   created_at: <%= 2.years.ago %>
   subscription: trial_cleanup_recent
 
 trial_cleanup_no_expiry:
+  token: trial_cleanup_no_expiry_fixture_token
   name: Trial cleanup no_expiry
   creator: user
   created_at: <%= 2.years.ago %>
   subscription: trial_cleanup_no_expiry
 
 trial_cleanup_discarded:
+  token: trial_cleanup_discarded_fixture_token
   name: Trial cleanup discarded
   creator: user
   created_at: <%= 2.years.ago %>
@@ -240,42 +243,49 @@ trial_cleanup_discarded:
   discarded_at: <%= 1.day.ago %>
 
 trial_cleanup_poll:
+  token: trial_cleanup_poll_fixture_token
   name: Trial cleanup poll
   creator: user
   created_at: <%= 2.years.ago %>
   subscription: trial_cleanup_poll
 
 trial_cleanup_billing:
+  token: trial_cleanup_billing_fixture_token
   name: Trial cleanup billing
   creator: user
   created_at: <%= 2.years.ago %>
   subscription: trial_cleanup_billing
 
 trial_cleanup_chargify:
+  token: trial_cleanup_chargify_fixture_token
   name: Trial cleanup chargify
   creator: user
   created_at: <%= 2.years.ago %>
   subscription: trial_cleanup_chargify
 
 trial_cleanup_shared:
+  token: trial_cleanup_shared_fixture_token
   name: Trial cleanup shared
   creator: user
   created_at: <%= 2.years.ago %>
   subscription: trial_cleanup_shared
 
 trial_cleanup_shared_other:
+  token: trial_cleanup_shared_other_fixture_token
   name: Trial cleanup shared_other
   creator: user
   created_at: <%= 2.years.ago %>
   subscription: trial_cleanup_shared
 
 trial_cleanup_child_subscription:
+  token: trial_cleanup_child_subscription_fixture_token
   name: Trial cleanup child_subscription
   creator: user
   created_at: <%= 2.years.ago %>
   subscription: trial_cleanup_child_subscription
 
 trial_cleanup_subscribed_child:
+  token: trial_cleanup_subscribed_child_fixture_token
   name: Trial cleanup subscribed_child
   parent: trial_cleanup_child_subscription
   creator: user

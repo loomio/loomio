@@ -1,6 +1,6 @@
 class Comment < ApplicationRecord
   include Discard::Model
-  include CustomCounterCache::Model
+  include HasVersionsCount
   include Translatable
   include Reactable
   include Bookmarkable
@@ -80,7 +80,6 @@ class Comment < ApplicationRecord
   delegate :author, to: :parent, prefix: :parent, allow_nil: true
   delegate :topic, :topic_id, :group, :group_id, :members, :guests, to: :parent
 
-  define_counter_cache(:versions_count) { |comment| comment.versions.count }
 
   def title
     topic.topicable.title

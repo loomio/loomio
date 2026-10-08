@@ -23,7 +23,7 @@ class RecordCloner
     Stance => %w[id poll_id token attachments versions_count option_scores],
     StanceChoice => %w[id stance_id poll_option_id],
     Outcome => %w[id poll_id poll_option_id attachments versions_count],
-    TopicItem => %w[id topic_id itemable_id itemable_type itemable_version_id parent_id],
+    TopicItem => %w[id topic_id itemable_id itemable_type itemable_version_id parent_id child_count],
     Membership => %w[id group_id token],
     Comment => %w[id parent_id parent_type attachments versions_count],
     Tag => %w[id group_id taggings_count used_group_ids]

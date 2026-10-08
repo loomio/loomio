@@ -57,6 +57,10 @@ module GroupService
         user_ids: recipient_user_ids
       )
 
+      # Match the user-before-group lock order used by individual membership
+      # changes and account merges before applying callback-free imports.
+      User.where(id: users.pluck(:id)).order(:id).lock('FOR NO KEY UPDATE').pluck(:id)
+
       Group.where(id: group_ids).each do |g|
         revoked_memberships = Membership.revoked.where(group_id: g.id, user_id: users.map(&:id))
         revoked_memberships.update_all(
@@ -84,11 +88,11 @@ module GroupService
         existing_member_ids = Membership.accepted.where(group_id: other_group_ids, user_id: users.verified.pluck(:id)).pluck(:user_id)
         Membership.pending.where(group_id: g.id, user_id: existing_member_ids).update_all(accepted_at: Time.now)
 
-        g.update_pending_memberships_count
-        g.update_memberships_count
+        g.update_membership_counts
         PollGroupMembersAddedWorker.perform_later(g.id)
       end
       Group.update_org_members_count_for_group_ids(group_ids)
+      User.update_membership_counts_for_ids(users.pluck(:id))
 
       NotificationService.create!(
         kind: "membership_created",
@@ -239,11 +243,15 @@ module GroupService
     Group.transaction do
       old_group_ids = source.parent_or_self.id_and_subgroup_ids
       new_group_ids = target.parent_or_self.id_and_subgroup_ids
+      user_ids = Membership.where(group_id: old_group_ids + new_group_ids).distinct.pluck(:user_id)
+      User.where(id: user_ids).order(:id).lock('FOR NO KEY UPDATE').pluck(:id)
       source.subgroups.update_all(parent_id: target.id)
       Topic.where(group_id: source.id).update_all(group_id: target.id)
       source.membership_requests.update_all(group_id: target.id)
       source.memberships.where.not(user_id: target.member_ids).update_all(group_id: target.id)
       source.destroy
+      target.update_membership_counts
+      target.update_content_counts
       Group.update_org_members_count_for_group_ids(old_group_ids + new_group_ids)
     end
   end

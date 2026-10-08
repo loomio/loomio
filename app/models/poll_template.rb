@@ -2,7 +2,6 @@ class PollTemplate < ApplicationRecord
   include Hideable
   include DiscardableBy
   include HasRichText
-  include CustomCounterCache::Model
 
   is_rich_text on: :details
 
@@ -81,7 +80,24 @@ class PollTemplate < ApplicationRecord
     required_for_block: 4
   }
 
-  update_counter_cache :group, :poll_templates_count
+  after_create :add_group_template_count
+  after_update :change_group_template_count, if: -> { saved_change_to_group_id? || saved_change_to_discarded_at? }
+  after_destroy :remove_group_template_count
+
+  def add_group_template_count
+    RecordCountService.transfer!(Group, :poll_templates_count, from: nil, to: kept? ? group_id : nil, records: [group])
+  end
+
+  def change_group_template_count
+    RecordCountService.transfer!(Group, :poll_templates_count,
+      from: discarded_at_before_last_save.nil? ? group_id_before_last_save : nil,
+      to: kept? ? group_id : nil, records: [group])
+  end
+
+  def remove_group_template_count
+    RecordCountService.transfer!(Group, :poll_templates_count, from: kept? ? group_id : nil, to: nil, records: [group])
+  end
+  private :add_group_template_count, :change_group_template_count, :remove_group_template_count
 
   validates :poll_type, inclusion: { in: AppConfig.poll_types.keys }
   validates :details, length: { maximum: AppConfig.app_features[:max_message_length] }

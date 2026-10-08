@@ -15,6 +15,7 @@ class MembershipService
     accepted_notification = nil
 
     Membership.transaction do
+      User.where(id: [actor.id, membership.user_id]).order(:id).lock('FOR NO KEY UPDATE').pluck(:id)
       accepted_at = DateTime.now
 
       invited_group_id = membership.group_id
@@ -72,7 +73,6 @@ class MembershipService
     invited_group_ids.each do |group_id|
       PollGroupMembersAddedWorker.perform_later(group_id)
     end
-    Group.update_org_members_count_for_group_ids(invited_group_ids)
 
     Sentry.metrics.count("membership.accept") if accepted_membership&.accepted_at
     accepted_notification
@@ -94,24 +94,28 @@ class MembershipService
   end
 
   def self.revoke_by_id(group_ids, user_id, actor_id, revoked_at = DateTime.now)
-    TopicReader
-      .joins(:topic).where(user_id: user_id)
-      .where("topics.group_id IN (?)", group_ids)
-      .update_all(guest: false, revoked_at: revoked_at, revoker_id: actor_id)
+    Membership.transaction do
+      User.where(id: user_id).lock('FOR NO KEY UPDATE').pick(:id)
+      TopicReader
+        .joins(:topic).where(user_id: user_id)
+        .where("topics.group_id IN (?)", group_ids)
+        .update_all(guest: false, revoked_at: revoked_at, revoker_id: actor_id)
 
-    # remove them from active polls
-    group_ids.each do |group_id|
-      PollService.group_members_removed(group_id, user_id, actor_id, revoked_at)
+      # remove them from active polls
+      group_ids.each do |group_id|
+        PollService.group_members_removed(group_id, user_id, actor_id, revoked_at)
+      end
+
+      # revoke the membership
+      Membership
+        .active
+        .where(user_id: user_id, group_id: group_ids)
+        .update_all(revoked_at: revoked_at, revoker_id: actor_id)
+
+      Group.where(id: group_ids).order(:id).each(&:update_membership_counts)
+      Group.update_org_members_count_for_group_ids(group_ids)
+      User.update_membership_counts_for_ids([user_id])
     end
-
-    # revoke the membership
-    Membership
-      .active
-      .where(user_id: user_id, group_id: group_ids)
-      .update_all(revoked_at: revoked_at, revoker_id: actor_id)
-
-    Group.where(id: group_ids).map(&:update_memberships_count)
-    Group.update_org_members_count_for_group_ids(group_ids)
   end
 
 

@@ -19,6 +19,14 @@ module Null::Group
     nil
   end
 
+  def update_membership_counts
+    raise ArgumentError, 'Membership counts require a real group'
+  end
+
+  def update_content_counts
+    raise ArgumentError, 'Content counts require a real group'
+  end
+
   def full_name
     I18n.t('discussion.direct')
   end
@@ -37,11 +45,6 @@ module Null::Group
       id
       key
       locale
-      update_polls_count
-      update_closed_polls_count
-      update_discussions_count
-      update_discussion_templates_count
-      update_org_members_count
       content_locale
       handle
       description
