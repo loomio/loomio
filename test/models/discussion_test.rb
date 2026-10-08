@@ -8,6 +8,24 @@ class DiscussionTest < ActiveSupport::TestCase
     @group = groups(:group)
   end
 
+  test "group counts are recounted on create and discard, not on edits" do
+    discussion = DiscussionService.create(params: { group_id: @group.id, title: "Counted" }, actor: @admin)
+    poll = PollService.create(params: {
+      title: "Counted poll", poll_type: "proposal", topic_id: discussion.topic_id,
+      poll_option_names: %w[agree disagree], closing_at: 1.day.from_now
+    }, actor: @admin)
+    assert_equal @group.discussions.kept.count, @group.reload.discussions_count
+    assert_equal @group.polls.count, @group.polls_count
+
+    assert_no_queries_match(/COUNT\(\*\) FROM "(discussions|polls)" INNER JOIN "topics"/) do
+      discussion.update!(title: "Edited")
+      poll.update!(title: "Edited poll")
+    end
+
+    discussion.discard!
+    assert_equal @group.discussions.kept.count, @group.reload.discussions_count
+  end
+
   # Topic foreign key / cascade
   test "destroying a discussion's topic destroys the discussion (no orphaned topic_id)" do
     discussion = DiscussionService.create(params: { group_id: @group.id, title: "Test #{SecureRandom.hex(4)}" }, actor: @admin)

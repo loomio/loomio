@@ -106,10 +106,12 @@ class Discussion < ApplicationRecord
 
   define_counter_cache(:versions_count)             { |d| d.versions.count }
 
-  after_commit :update_group_counter_caches
+  # discussions_count counts kept discussions; TopicService.move recounts
+  # both groups when a topic changes group.
+  after_commit :update_group_counter_caches, on: [:create, :destroy]
+  after_update_commit -> { update_group_counter_caches }, if: :saved_change_to_discarded_at?
 
   def update_group_counter_caches
-    # TODO: can this be a background job or materialized view?
     group = topic.group
     return unless group.id
     return if group.destroyed? # group teardown cascaded to this discussion — nothing to recount

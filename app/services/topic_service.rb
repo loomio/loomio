@@ -96,6 +96,7 @@ class TopicService
     destination = direct ? NullGroup.new : ModelLocator.new(:group, params).locate!
     destination.present? && actor.ability.authorize!(:move_discussions_to, destination)
     actor.ability.authorize! :move, topic
+    source_group_id = topic.group_id
 
     topic_item = Topic.transaction do
       direct_participants_retain!(topic:, actor:) if direct
@@ -113,6 +114,10 @@ class TopicService
         user: actor,
         created_at: Time.current
       )
+    end
+    Group.where(id: [source_group_id, topic.group_id].compact).find_each do |group|
+      group.update_discussions_count
+      group.update_polls_count
     end
     on_topic_item&.call(topic_item)
     topic

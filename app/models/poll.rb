@@ -265,7 +265,9 @@ class Poll < ApplicationRecord
     :hide_results,
     :attachments]
 
-  after_commit :update_group_counter_caches
+  # polls_count counts discarded polls too; TopicService.move recounts both
+  # groups when a topic changes group.
+  after_commit :update_group_counter_caches, on: [:create, :destroy]
   # Anonymity is fixed at creation and polls do not change topic.
   after_commit :update_topic_anonymous_polls_count, on: [:create, :destroy], if: :anonymous?
   after_save_commit -> { ReindexPollWorker.perform_later(id) }

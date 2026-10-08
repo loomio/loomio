@@ -172,6 +172,20 @@ class TopicServiceTest < ActiveSupport::TestCase
     assert_equal false, topic.reload.private
   end
 
+  test "move recounts discussions and polls in both groups" do
+    destination = groups(:public_group)
+    destination.add_admin!(@user)
+    [@group, destination].each { |group| group.update_discussions_count; group.update_polls_count }
+
+    TopicService.move(topic: @topic, params: { group_id: destination.id }, actor: @user)
+
+    [@group.reload, destination.reload].each do |group|
+      assert_equal group.discussions.kept.count, group.discussions_count
+      assert_equal group.polls.count, group.polls_count
+    end
+    assert_equal 1, destination.polls_count # the setup poll moved with the topic
+  end
+
   test "move updates privacy for private_only groups" do
     admin = users(:admin)
     public_group = groups(:public_group)
