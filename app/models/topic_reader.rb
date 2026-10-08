@@ -35,8 +35,10 @@ class TopicReader < ApplicationRecord
     redeemable.joins(:user).where('user_id = ? OR users.email_verified = false', user_id)
   }
 
-  after_save    :update_topic_counters
-  after_destroy :update_topic_counters
+  # Readers are saved on every read, but seen_by_count only changes when a
+  # reader is first marked read, marked unread, or removed after reading.
+  after_save    :update_topic_seen_by_count, if: :saved_change_to_seen?
+  after_destroy :update_topic_seen_by_count, if: :last_read_at?
 
   def self.for(user:, topic:)
     if user&.is_logged_in?
@@ -153,7 +155,11 @@ class TopicReader < ApplicationRecord
     @membership ||= topic.group.membership_for(user)
   end
 
-  def update_topic_counters
+  def saved_change_to_seen?
+    saved_change_to_last_read_at? && last_read_at_before_last_save.nil? != last_read_at.nil?
+  end
+
+  def update_topic_seen_by_count
     topic.update_seen_by_count
   end
 end

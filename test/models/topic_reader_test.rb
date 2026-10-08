@@ -132,6 +132,31 @@ class TopicReaderTest < ActiveSupport::TestCase
     assert_equal 1, @reader.read_items_count
   end
 
+  test "seen_by_count changes when a reader first reads and when a reader is removed" do
+    topic = @discussion.topic
+    topic.update_seen_by_count
+    seen_by_count = topic.seen_by_count
+
+    @reader.viewed!
+    assert_equal seen_by_count + 1, topic.reload.seen_by_count
+
+    @reader.update!(last_read_at: nil)
+    assert_equal seen_by_count, topic.reload.seen_by_count
+
+    @reader.viewed!
+    @reader.destroy!
+    assert_equal seen_by_count, topic.reload.seen_by_count
+  end
+
+  test "repeat reads do not recount seen_by_count" do
+    @reader.viewed!
+
+    assert_no_queries_match(/COUNT\(\*\) FROM "topic_readers"/) do
+      @reader.viewed!
+      @reader.dismiss!
+    end
+  end
+
   # has_read?
   test "nothing read yet returns false" do
     @reader.read_ranges_string = ''
