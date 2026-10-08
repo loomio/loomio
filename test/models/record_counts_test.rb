@@ -29,6 +29,25 @@ class RecordCountsTest < ActiveSupport::TestCase
     assert_equal membership.user.memberships.count, membership.user.reload.memberships_count
   end
 
+  test 'deletion removes the stored membership contribution despite unsaved edits' do
+    destination = Group.create!(name: 'Unsaved membership destination', group_privacy: 'secret')
+    original_user = users(:alien)
+    destination_user = users(:member)
+    original_user_count = original_user.reload.memberships_count
+    destination_user_count = destination_user.reload.memberships_count
+    membership = Membership.create!(group: @group, user: original_user, admin: true)
+    membership.assign_attributes(group: destination, user: destination_user, revoked_at: Time.current, admin: false)
+
+    membership.destroy!
+
+    assert_equal [1, 0, 1], group_membership_counts
+    assert_equal [0, 0, 0], destination.reload.attributes.values_at('memberships_count', 'pending_memberships_count', 'admin_memberships_count')
+    assert_equal original_user_count, original_user.reload.memberships_count
+    assert_equal destination_user_count, destination_user.reload.memberships_count
+    assert_equal 1, @group.reload.org_members_count
+    assert_equal 0, destination.org_members_count
+  end
+
   test 'organization totals count a person once across subgroup memberships' do
     child = Group.create!(name: 'Counted child', parent: @group, group_privacy: 'secret')
     other = Group.create!(name: 'Other organization', group_privacy: 'secret')

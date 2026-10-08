@@ -115,7 +115,7 @@ class Group < ApplicationRecord
   # Imports, account merges and revocations bypass membership callbacks. Rebuild
   # all three related counts together using one scan of the active memberships.
   def update_membership_counts
-    RecordCountService.recount!(self) do
+    RecordCounts.recount!(self) do
       total, pending, admins = memberships.pick(
         Arel.sql('COUNT(*)'),
         Arel.sql('COUNT(*) FILTER (WHERE accepted_at IS NULL)'),
@@ -125,14 +125,14 @@ class Group < ApplicationRecord
   end
 
   def update_content_counts
-    RecordCountService.recount!(self) do
+    RecordCounts.recount!(self) do
       { polls_count: polls.count, discussions_count: discussions.kept.count,
         poll_templates_count: poll_templates.kept.count }
     end
   end
 
   def update_org_members_count
-    RecordCountService.recount!(self) do
+    RecordCounts.recount!(self) do
       { org_members_count: Membership.active.where(group_id: id_and_subgroup_ids).distinct.count(:user_id) }
     end
   end

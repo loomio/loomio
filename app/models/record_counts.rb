@@ -1,9 +1,16 @@
-module RecordCountService
+module RecordCounts
+  # Callback-free writes (update_all/insert_all/delete_all/import) must refresh
+  # their derived counts in the same transaction. Counted sources: memberships,
+  # polls, discussions, poll_templates, groups.parent_id,
+  # topic_items.parent_id, topic_readers.topic_id/last_read_at, and versions.
+  # Use the corresponding owner recount helpers for bulk writes.
+
   # Apply deltas in the caller's transaction. RETURNING synchronizes loaded
   # owners without saving their unrelated dirty attributes or touching them.
   # Sort owners so transfers acquire their row locks in a consistent order.
   def self.adjust!(model, deltas, records: [])
     connection = model.connection
+    records_by_id = records.compact.group_by(&:id)
     deltas.keys.compact.sort.each do |id|
       changes = deltas.fetch(id).reject { |_, delta| delta.zero? }
       next if changes.empty?
@@ -22,17 +29,22 @@ module RecordCountService
       SQL
       next unless counts
 
-      records.select { |record| record.id == id }.each do |record|
+      records_by_id.fetch(id, []).each do |record|
         record.assign_attributes(counts)
         record.clear_attribute_changes(counts.keys)
       end
     end
   end
 
-  def self.transfer!(model, column, from:, to:, amount: 1, records: [])
-    deltas = Hash.new { |hash, id| hash[id] = { column => 0 } }
-    deltas[from][column] -= amount if from
-    deltas[to][column] += amount if to
+  # Update a count using its before/after owner IDs. Subtract the old
+  # contribution and add the new one; nil means the record does not count.
+  # An unchanged contribution issues no SQL.
+  def self.update!(model, column, before:, after:, records: [])
+    return if before == after
+
+    deltas = {}
+    deltas[before] = { column => -1 } if before
+    deltas[after] = { column => 1 } if after
     adjust!(model, deltas, records: records)
   end
 

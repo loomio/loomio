@@ -1,4 +1,5 @@
 class TopicReader < ApplicationRecord
+  include HasCountChanges
   include HasVolume
 
   extend HasTokens
@@ -34,9 +35,8 @@ class TopicReader < ApplicationRecord
     redeemable.joins(:user).where('user_id = ? OR users.email_verified = false', user_id)
   }
 
-  after_create :add_seen_by_count
-  after_update :change_seen_by_count, if: -> { saved_change_to_topic_id? || (saved_change_to_last_read_at? && last_read_at_before_last_save.nil? != last_read_at.nil?) }
-  after_destroy :remove_seen_by_count
+  after_save :update_seen_by_count, if: -> { saved_changes.keys.intersect?(%w[id topic_id last_read_at]) }
+  after_destroy :update_seen_by_count
 
   def self.for(user:, topic:)
     if user&.is_logged_in?
@@ -153,18 +153,13 @@ class TopicReader < ApplicationRecord
     @membership ||= topic.group.membership_for(user)
   end
 
-  def add_seen_by_count
-    RecordCountService.transfer!(Topic, :seen_by_count, from: nil, to: last_read_at ? topic_id : nil, records: [topic])
+  def update_seen_by_count
+    before, after = count_states
+    RecordCounts.update!(Topic, :seen_by_count,
+      before: counted_topic_id(before), after: counted_topic_id(after), records: [topic])
   end
 
-  def change_seen_by_count
-    RecordCountService.transfer!(Topic, :seen_by_count,
-      from: last_read_at_before_last_save ? topic_id_before_last_save : nil,
-      to: last_read_at ? topic_id : nil, records: [topic])
+  def counted_topic_id(state)
+    state['topic_id'] if state && state['last_read_at']
   end
-
-  def remove_seen_by_count
-    RecordCountService.transfer!(Topic, :seen_by_count, from: last_read_at ? topic_id : nil, to: nil, records: [topic])
-  end
-  private :add_seen_by_count, :change_seen_by_count, :remove_seen_by_count
 end

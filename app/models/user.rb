@@ -252,7 +252,7 @@ class User < ApplicationRecord
   end
 
   def update_memberships_count
-    RecordCountService.recount!(self) { { memberships_count: memberships.count } }
+    RecordCounts.recount!(self) { { memberships_count: memberships.count } }
   end
 
   def self.update_membership_counts_for_ids(ids)

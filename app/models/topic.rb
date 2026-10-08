@@ -79,7 +79,7 @@ class Topic < ApplicationRecord
     deltas = {}
     deltas[old_group_id] = changes.transform_values { |count| -count } if old_group_id
     deltas[group_id] = changes if group_id
-    RecordCountService.adjust!(Group, deltas, records: [group])
+    RecordCounts.adjust!(Group, deltas, records: [group])
   end
   private :transfer_group_content_counts
 
@@ -94,7 +94,7 @@ class Topic < ApplicationRecord
   end
 
   def recount_active_polls!
-    RecordCountService.recount!(self) { { active_polls_count: polls.active.count } }
+    RecordCounts.recount!(self) { { active_polls_count: polls.active.count } }
   end
 
   validate :privacy_is_permitted_by_group

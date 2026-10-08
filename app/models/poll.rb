@@ -1,4 +1,5 @@
 class Poll < ApplicationRecord
+  include HasCountChanges
   include LocksTopicsForCounts
   PARTICIPATION_STATUS_VOTES_MIN = 3
   RESULT_VOTER_IDS_MAX = 50
@@ -265,9 +266,8 @@ class Poll < ApplicationRecord
     :hide_results,
     :attachments]
 
-  after_create :add_poll_counts
-  after_update :change_poll_counts, if: -> { saved_changes.keys.intersect?(%w[topic_id opened_at closed_at discarded_at]) }
-  after_destroy :remove_poll_counts
+  after_save :update_poll_counts, if: -> { saved_changes.keys.intersect?(%w[id topic_id opened_at closed_at discarded_at]) }
+  after_destroy :update_poll_counts
   before_create :lock_topics_for_counts
   before_update :lock_topics_for_counts, if: -> { changes.keys.intersect?(%w[topic_id opened_at closed_at discarded_at]) }
   before_destroy :lock_topics_for_counts
@@ -299,36 +299,28 @@ class Poll < ApplicationRecord
     stances.latest.update_all(weight: Arel.sql("COALESCE((#{member_weight.to_sql}), 1)"))
   end
 
-  def add_poll_counts
-    current_group_id = topic_id ? @count_group_ids.fetch(topic_id) : group_id
-    RecordCountService.transfer!(Group, :polls_count, from: nil, to: current_group_id, records: [group])
-    RecordCountService.transfer!(Topic, :active_polls_count, from: nil, to: active_for_count? ? topic_id : nil, records: [topic])
+  def update_poll_counts
+    before, after = count_states
+    RecordCounts.update!(Group, :polls_count,
+      before: counted_group_id(before), after: counted_group_id(after), records: [group])
+    RecordCounts.update!(Topic, :active_polls_count,
+      before: counted_active_topic_id(before), after: counted_active_topic_id(after), records: [topic])
   end
 
-  def change_poll_counts
-    if saved_change_to_topic_id?
-      # The initial autosave links a mutually referencing poll/topic pair;
-      # creation already counted the loaded group before its topic had an ID.
-      previous_group_id = topic_id_before_last_save ? @count_group_ids.fetch(topic_id_before_last_save) : group_id
-      RecordCountService.transfer!(Group, :polls_count,
-        from: previous_group_id,
-        to: @count_group_ids.fetch(topic_id), records: [group])
-    end
-    was_active = discarded_at_before_last_save.nil? && closed_at_before_last_save.nil? && opened_at_before_last_save.present?
-    RecordCountService.transfer!(Topic, :active_polls_count,
-      from: was_active ? topic_id_before_last_save : nil,
-      to: active_for_count? ? topic_id : nil, records: [topic])
+  def counted_group_id(state)
+    return unless state
+
+    # Closed/discarded polls still count toward the group's total. During
+    # mutual topic/poll autosave, use the loaded group until the topic has an ID.
+    state['topic_id'] ? @count_group_ids.fetch(state['topic_id']) : group_id
   end
 
-  def remove_poll_counts
-    RecordCountService.transfer!(Group, :polls_count, from: @count_group_ids.fetch(topic_id), to: nil, records: [group])
-    RecordCountService.transfer!(Topic, :active_polls_count, from: active_for_count? ? topic_id : nil, to: nil, records: [topic])
-  end
+  def counted_active_topic_id(state)
+    return unless state && state['discarded_at'].nil? && state['closed_at'].nil? && state['opened_at'].present?
 
-  def active_for_count?
-    kept? && closed_at.nil? && opened_at.present?
+    state['topic_id']
   end
-  private :add_poll_counts, :change_poll_counts, :remove_poll_counts, :active_for_count?
+  private :update_poll_counts, :counted_group_id, :counted_active_topic_id
 
   delegate :locale, to: :author
   delegate :name, to: :author, prefix: true

@@ -434,7 +434,7 @@ class GroupExportService
       topic_ids = migrate_ids['topics']&.values || []
       Topic.where(id: topic_ids).order(:id).each do |topic|
         topic.recount_active_polls!
-        RecordCountService.recount!(topic) { { seen_by_count: topic.topic_readers.where.not(last_read_at: nil).count } }
+        RecordCounts.recount!(topic) { { seen_by_count: topic.topic_readers.where.not(last_read_at: nil).count } }
       end
       TopicItem.where(topic_id: topic_ids).update_all(child_count: Arel.sql(
         '(SELECT COUNT(*) FROM topic_items children WHERE children.parent_id = topic_items.id)'))

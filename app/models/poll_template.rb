@@ -1,4 +1,5 @@
 class PollTemplate < ApplicationRecord
+  include HasCountChanges
   include Hideable
   include DiscardableBy
   include HasRichText
@@ -80,24 +81,19 @@ class PollTemplate < ApplicationRecord
     required_for_block: 4
   }
 
-  after_create :add_group_template_count
-  after_update :change_group_template_count, if: -> { saved_change_to_group_id? || saved_change_to_discarded_at? }
-  after_destroy :remove_group_template_count
+  after_save :update_group_template_count, if: -> { saved_changes.keys.intersect?(%w[id group_id discarded_at]) }
+  after_destroy :update_group_template_count
 
-  def add_group_template_count
-    RecordCountService.transfer!(Group, :poll_templates_count, from: nil, to: kept? ? group_id : nil, records: [group])
+  def update_group_template_count
+    before, after = count_states
+    RecordCounts.update!(Group, :poll_templates_count,
+      before: counted_group_id(before), after: counted_group_id(after), records: [group])
   end
 
-  def change_group_template_count
-    RecordCountService.transfer!(Group, :poll_templates_count,
-      from: discarded_at_before_last_save.nil? ? group_id_before_last_save : nil,
-      to: kept? ? group_id : nil, records: [group])
+  def counted_group_id(state)
+    state['group_id'] if state && state['discarded_at'].nil?
   end
-
-  def remove_group_template_count
-    RecordCountService.transfer!(Group, :poll_templates_count, from: kept? ? group_id : nil, to: nil, records: [group])
-  end
-  private :add_group_template_count, :change_group_template_count, :remove_group_template_count
+  private :update_group_template_count, :counted_group_id
 
   validates :poll_type, inclusion: { in: AppConfig.poll_types.keys }
   validates :details, length: { maximum: AppConfig.app_features[:max_message_length] }

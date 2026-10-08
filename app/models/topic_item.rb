@@ -24,7 +24,7 @@ class TopicItem < ApplicationRecord
   after_create  :mark_actor_as_read!
   after_destroy :update_sequence_info!
 
-  after_update :transfer_parent_child_count, if: :saved_change_to_parent_id?
+  after_update :update_parent_child_counts, if: :saved_change_to_parent_id?
 
   before_save :sync_itemable_foreign_key
 
@@ -39,14 +39,14 @@ class TopicItem < ApplicationRecord
   # Both the child and its count roll back together, and after-commit publication
   # sees the complete tree without a lock/read/recount transaction of its own.
   def increment_parent_child_count
-    RecordCountService.transfer!(TopicItem, :child_count, from: nil, to: parent_id, records: [parent].compact)
+    RecordCounts.update!(TopicItem, :child_count, before: nil, after: parent_id, records: [parent].compact)
   end
 
-  def transfer_parent_child_count
-    RecordCountService.transfer!(TopicItem, :child_count,
-      from: parent_id_before_last_save, to: parent_id, records: [parent].compact)
+  def update_parent_child_counts
+    RecordCounts.update!(TopicItem, :child_count,
+      before: parent_id_before_last_save, after: parent_id, records: [parent].compact)
   end
-  private :increment_parent_child_count, :transfer_parent_child_count
+  private :increment_parent_child_count, :update_parent_child_counts
 
   scope :unreadable, -> { where.not(kind: 'discussion_closed') }
 
@@ -154,7 +154,7 @@ class TopicItem < ApplicationRecord
     # children so an insert cannot slip between promotion and deletion.
     TopicItem.where(id: [id, parent_id]).order(:id).lock.pluck(:id)
     promoted_count = TopicItem.where(parent_id: id).update_all(parent_id: parent_id, depth: depth)
-    RecordCountService.adjust!(TopicItem, { parent_id => { child_count: promoted_count - 1 } }, records: [parent])
+    RecordCounts.adjust!(TopicItem, { parent_id => { child_count: promoted_count - 1 } }, records: [parent])
   end
 
   # A topic destroys every item in an unspecified order. Reparenting from the

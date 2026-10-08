@@ -1,4 +1,5 @@
 class Discussion < ApplicationRecord
+  include HasCountChanges
   include LocksTopicsForCounts
   include HasVersionsCount
   include ReadableUnguessableUrls
@@ -105,31 +106,26 @@ class Discussion < ApplicationRecord
            :items, :newest_first, :private, :pinned_at,
            :last_activity_at, :items_count, :ranges, to: :topic
 
-  after_create :add_group_discussion_count
-  after_update :change_group_discussion_count, if: -> { saved_change_to_topic_id? || saved_change_to_discarded_at? }
-  after_destroy :remove_group_discussion_count
+  after_save :update_group_discussion_count, if: -> { saved_changes.keys.intersect?(%w[id topic_id discarded_at]) }
+  after_destroy :update_group_discussion_count
   before_create :lock_topics_for_counts
   before_update :lock_topics_for_counts, if: -> { changes.keys.intersect?(%w[topic_id discarded_at]) }
   before_destroy :lock_topics_for_counts
 
-  def add_group_discussion_count
-    current_group_id = topic_id ? @count_group_ids.fetch(topic_id) : group_id
-    RecordCountService.transfer!(Group, :discussions_count, from: nil, to: kept? ? current_group_id : nil, records: [group])
+  def update_group_discussion_count
+    before, after = count_states
+    RecordCounts.update!(Group, :discussions_count,
+      before: counted_group_id(before), after: counted_group_id(after), records: [group])
   end
 
-  def change_group_discussion_count
-    # Autosaving the mutually referencing discussion/topic pair links the
-    # topic ID in a second save. Creation already counted its loaded group.
-    previous_group_id = topic_id_before_last_save ? @count_group_ids.fetch(topic_id_before_last_save) : group_id
-    RecordCountService.transfer!(Group, :discussions_count,
-      from: discarded_at_before_last_save.nil? ? previous_group_id : nil,
-      to: kept? ? @count_group_ids.fetch(topic_id) : nil, records: [group])
-  end
+  def counted_group_id(state)
+    return unless state && state['discarded_at'].nil?
 
-  def remove_group_discussion_count
-    RecordCountService.transfer!(Group, :discussions_count, from: kept? ? @count_group_ids.fetch(topic_id) : nil, to: nil, records: [group])
+    # Mutual topic/discussion autosave counts the loaded group before the
+    # topic has an ID. Linking it in the second save adds no new contribution.
+    state['topic_id'] ? @count_group_ids.fetch(state['topic_id']) : group_id
   end
-  private :lock_topics_for_counts, :add_group_discussion_count, :change_group_discussion_count, :remove_group_discussion_count
+  private :update_group_discussion_count, :counted_group_id
 
   def author
     super || LoggedOutUser.new(name: I18n.t('profile_page.deleted_account'))
