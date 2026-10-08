@@ -31,6 +31,8 @@ class TopicItem < ApplicationRecord
   # Sequence/range updates already serialize writes to a topic. Acquire that
   # lock before its item locks too, matching moves, deletion and repair.
   def lock_topic_for_tree_change
+    return if @tree_change_batched
+
     Topic.where(id: topic_id).lock('FOR NO KEY UPDATE').pick(:id)
   end
   private :lock_topic_for_tree_change
@@ -39,6 +41,8 @@ class TopicItem < ApplicationRecord
   # Both the child and its count roll back together, and after-commit publication
   # sees the complete tree without a lock/read/recount transaction of its own.
   def increment_parent_child_count
+    return if @tree_change_batched
+
     RecordCounts.update!(TopicItem, :child_count, before: nil, after: parent_id, records: [parent].compact)
   end
 
@@ -47,6 +51,36 @@ class TopicItem < ApplicationRecord
       before: parent_id_before_last_save, after: parent_id, records: [parent].compact)
   end
   private :increment_parent_child_count, :update_parent_child_counts
+
+  # Create a bounded collection of new timeline items in one transaction. The
+  # topic lock excludes tree moves/deletions, so per-item parent increments can
+  # be combined. Flush before leaving the transaction; after-commit workers
+  # must never see the children with stale parent counts.
+  def self.create_batch!(topic:, items:)
+    transaction(requires_new: true) do
+      Topic.where(id: topic.id).lock('FOR NO KEY UPDATE').pick(:id)
+      deltas = Hash.new { |hash, id| hash[id] = { child_count: 0 } }
+      parents = []
+      items.each do |item|
+        item.topic = topic
+        item.send(:save_in_tree_batch!)
+        next unless item.parent_id
+
+        deltas[item.parent_id][:child_count] += 1
+        parents << item.parent
+      end
+      RecordCounts.adjust!(TopicItem, deltas, records: parents)
+    end
+    items
+  end
+
+  def save_in_tree_batch!
+    @tree_change_batched = true
+    save!
+  ensure
+    @tree_change_batched = false
+  end
+  private :save_in_tree_batch!
 
   scope :unreadable, -> { where.not(kind: 'discussion_closed') }
 

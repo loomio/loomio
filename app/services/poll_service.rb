@@ -490,11 +490,12 @@ class PollService
           itemable_type: "Stance",
           itemable_id: stance_ids
         ).pluck(:itemable_id)
-        Stance.where(id: stance_ids - stance_ids_with_items).find_each do |stance|
-          TopicItems::StanceCreated.new(
-            itemable: stance,
-            created_at: stance.cast_at || stance.created_at
-          ).save!
+        Stance.where(id: stance_ids - stance_ids_with_items).find_in_batches do |stances|
+          items = stances.map do |stance|
+            stance.poll = poll
+            TopicItems::StanceCreated.new(itemable: stance, created_at: stance.cast_at || stance.created_at)
+          end
+          TopicItem.create_batch!(topic: poll.topic, items: items)
         end
         TopicService.repair(poll.topic_id)
       end

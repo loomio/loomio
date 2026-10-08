@@ -226,6 +226,59 @@ class RecordCountsCommitTest < ActiveSupport::TestCase
     assert_equal [2, 2], counts_at_publication
   end
 
+  test "bulk timeline creation updates each parent once before immediate realtime publication" do
+    discussion = topics(:discussion_topic).topicable
+    discussion.create_missing_created_topic_item! unless discussion.created_topic_item
+    parent = discussion.created_topic_item
+    items = 10.times.map do |i|
+      comment = Comment.create!(parent: discussion, author: discussion.author, body: "Batch reply #{i}")
+      TopicItems::NewComment.new(itemable: comment, user: discussion.author)
+    end
+    updates = []
+    counts_at_publication = []
+    subscriber = ActiveSupport::Notifications.subscribe('sql.active_record') do |*, payload|
+      updates << payload[:sql] if payload[:sql].match?(/UPDATE "topic_items" SET "child_count" =/)
+    end
+    clear_enqueued_jobs
+    MessageChannelService.stub(:publish_topic_models, ->(*, **) { counts_at_publication << parent.reload.child_count }) do
+      perform_enqueued_jobs(only: PublishLiveUpdateTopicItemWorker) do
+        TopicItem.create_batch!(topic: discussion.topic, items: items)
+      end
+    end
+
+    assert_equal 1, updates.length
+    assert_equal [10] * 10, counts_at_publication
+    assert_equal 10, parent.reload.child_count
+    assert_equal (1..10).to_a, items.map(&:position)
+    TopicService.verify_integrity!(discussion.topic_id)
+  ensure
+    ActiveSupport::Notifications.unsubscribe(subscriber) if subscriber
+  end
+
+  test "a failed timeline batch rolls back every item without publishing or changing counts" do
+    discussion = topics(:direct_topic).topicable
+    discussion.create_missing_created_topic_item! unless discussion.created_topic_item
+    parent = discussion.created_topic_item
+    comment = Comment.create!(parent: discussion, author: discussion.author, body: 'Batch reply')
+    good = TopicItems::NewComment.new(itemable: comment, user: discussion.author)
+    invalid = TopicItems::NewComment.new(itemable: comment, user: discussion.author)
+    clear_enqueued_jobs
+
+    assert_no_enqueued_jobs do
+      invalid.stub(:set_sequences, -> { raise 'timeline creation failed' }) do
+        assert_raises RuntimeError do
+          TopicItem.create_batch!(topic: discussion.topic, items: [good, invalid])
+        end
+      end
+    end
+    assert_equal 0, parent.reload.child_count
+    assert_empty parent.children
+
+    # Reusing a rolled-back instance must use ordinary count maintenance again.
+    good.save!
+    assert_equal 1, parent.reload.child_count
+  end
+
   test "simultaneous replies keep parent counts and timeline positions consistent" do
     discussion = topics(:direct_topic).topicable
     discussion.create_missing_created_topic_item! unless discussion.created_topic_item
