@@ -569,6 +569,23 @@ class Api::V1::TopicsControllerTest < ActionController::TestCase
     assert_response :forbidden
   end
 
+  test "history stays hidden after the anonymous poll is discarded" do
+    sign_in @user
+    poll = PollService.create(params: {
+      title: "Secret vote",
+      poll_type: "proposal",
+      topic_id: @topic.id,
+      anonymous: true,
+      poll_option_names: %w[agree disagree],
+      closing_at: 1.day.from_now
+    }, actor: @admin)
+    PollService.discard(poll: poll, actor: @admin)
+
+    get :history, params: { id: @topic.id }
+
+    assert_response :forbidden
+  end
+
   test "history denied to non-members" do
     sign_in @alien
 

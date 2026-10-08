@@ -136,7 +136,7 @@ class Api::V1::TopicsController < Api::V1::RestfulController
   def history
     topic = load_and_authorize(:topic)
 
-    if Poll.where(topic_id: topic.id).kept.where(anonymous: true).any?
+    if topic.has_anonymous_polls?
       render root: false, json: {message: I18n.t("discussion_last_seen_by.disabled_anonymous_polls")}, status: 403
     else
       readers = TopicReader.joins(:user)

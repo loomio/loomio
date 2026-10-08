@@ -115,6 +115,20 @@ class Topic < ApplicationRecord
     super || NullGroup.new
   end
 
+  # Read receipts can be joined with vote timing to identify anonymous voters,
+  # so they are hidden once a topic has held any anonymous poll, discarded or
+  # not. Query the polls rather than trust a counter at this privacy boundary;
+  # memoize so a page of readers sharing one preloaded topic queries once.
+  def has_anonymous_polls?
+    return @has_anonymous_polls if defined?(@has_anonymous_polls)
+    @has_anonymous_polls = polls.where(anonymous: true).exists?
+  end
+
+  def reload(*)
+    remove_instance_variable(:@has_anonymous_polls) if defined?(@has_anonymous_polls)
+    super
+  end
+
   def admins_include?(user)
     if persisted?
       admins.exists?(user.id)

@@ -15,7 +15,7 @@ class TopicReaderSerializer < ApplicationSerializer
   has_one :user, serializer: AuthorSerializer, root: :users
 
   def last_read_at
-    if object.topic.anonymous_polls_count.positive?
+    if object.topic.has_anonymous_polls?
       nil
     else
       object.last_read_at
@@ -23,7 +23,7 @@ class TopicReaderSerializer < ApplicationSerializer
   end
 
   def read_ranges
-    if object.topic.anonymous_polls_count.positive?
+    if object.topic.has_anonymous_polls?
       []
     else
       object.read_ranges

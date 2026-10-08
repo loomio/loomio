@@ -157,4 +157,45 @@ class Api::V1::TopicReadersControllerTest < ActionController::TestCase
     assert_response :success
     assert_not_nil guest_reader.reload.revoked_at
   end
+  # -- read receipts with anonymous polls --
+
+  test "index hides read receipts once a group topic has an anonymous poll" do
+    assert_reads_hidden_after_poll(topics(:discussion_topic), viewer: @admin, reader_user: users(:reader_normal), anonymous: true)
+  end
+
+  test "index hides read receipts once a direct topic has an anonymous poll" do
+    assert_reads_hidden_after_poll(topics(:direct_topic), viewer: users(:guest_admin_normal), reader_user: users(:guest_normal), anonymous: true)
+  end
+
+  test "index shows read receipts when a topic has only identified polls" do
+    assert_reads_hidden_after_poll(topics(:discussion_topic), viewer: @admin, reader_user: users(:reader_normal), anonymous: false)
+  end
+
+  private
+
+  def assert_reads_hidden_after_poll(topic, viewer:, reader_user:, anonymous:)
+    reader = TopicReader.find_by!(topic: topic, user: reader_user)
+    reader.update!(last_read_at: 1.hour.ago, read_ranges_string: "1-1")
+    PollService.create(params: {
+      title: "Vote",
+      poll_type: "proposal",
+      topic_id: topic.id,
+      anonymous: anonymous,
+      poll_option_names: %w[agree disagree],
+      closing_at: 1.day.from_now
+    }, actor: viewer)
+
+    sign_in viewer
+    get :index, params: { topic_id: topic.id }
+
+    assert_response :success
+    json = JSON.parse(response.body).fetch('topic_readers').find { |r| r['id'] == reader.id }
+    if anonymous
+      assert_nil json['last_read_at']
+      assert_equal [], json['read_ranges']
+    else
+      assert_not_nil json['last_read_at']
+      assert_equal [[1, 1]], json['read_ranges']
+    end
+  end
 end

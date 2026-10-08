@@ -266,6 +266,8 @@ class Poll < ApplicationRecord
     :attachments]
 
   after_commit :update_group_counter_caches
+  # Anonymity is fixed at creation and polls do not change topic.
+  after_commit :update_topic_anonymous_polls_count, on: [:create, :destroy], if: :anonymous?
   after_save_commit -> { ReindexPollWorker.perform_later(id) }
   after_update :synchronize_stance_weights_after_vote_weights_change
 
@@ -300,6 +302,11 @@ class Poll < ApplicationRecord
     return if group.destroyed? # group teardown cascaded to this poll — nothing to recount
     group.update_polls_count
     group.update_closed_polls_count
+  end
+
+  def update_topic_anonymous_polls_count
+    return if topic.destroyed? # topic teardown cascaded to this poll — nothing to recount
+    topic.update_anonymous_polls_count
   end
 
   delegate :locale, to: :author

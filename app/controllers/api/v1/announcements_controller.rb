@@ -93,7 +93,7 @@ class Api::V1::AnnouncementsController < Api::V1::RestfulController
       respond_with_collection serializer: MembershipSerializer, root: :memberships
     elsif target_model.is_a?(Topic)
       notification = TopicService.invite(topic: target_model, actor: current_user, params: params)
-      self.collection = TopicReader.where(topic_id: target_model.id, user_id: notification.recipient_user_ids)
+      self.collection = TopicReader.includes(:topic).where(topic_id: target_model.id, user_id: notification.recipient_user_ids)
       respond_with_collection serializer: TopicReaderSerializer, root: :topic_readers
     elsif target_model.is_a?(Poll)
       self.collection = PollService.invite(poll: target_model, actor: current_user, params: params)

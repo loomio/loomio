@@ -98,6 +98,17 @@ class PollTest < ActiveSupport::TestCase
     assert anonymous_poll.errors.added?(:anonymous, :cannot_deanonymize)
   end
 
+  test "creating and destroying anonymous polls recounts the topic" do
+    topic = topics(:discussion_topic)
+    topic.update!(allow_concurrent_polls: true)
+    create_poll(topic_id: topic.id)
+    anonymous_poll = create_poll(topic_id: topic.id, anonymous: true)
+    assert_equal 1, topic.reload.anonymous_polls_count
+
+    anonymous_poll.destroy!
+    assert_equal 0, topic.reload.anonymous_polls_count
+  end
+
   test "vote is needed from an eligible identified voter until their current stance is cast" do
     voter = create_voter("identifiedpendingvote")
     @group.add_member!(voter)
