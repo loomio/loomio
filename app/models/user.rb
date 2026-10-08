@@ -1,10 +1,9 @@
 class User < ApplicationRecord
-  include CustomCounterCache::Model
+  include CounterColumns
   include ReadableUnguessableUrls
   include HasExperiences
   include HasAvatar
   include SelfReferencing
-  include CustomCounterCache::Model
   include HasRichText
   include LocalesHelper
 
@@ -253,7 +252,7 @@ class User < ApplicationRecord
     user if user.valid_password?(attributes[:password])
   end
 
-  define_counter_cache(:memberships_count) {|user| user.memberships.count }
+  counter_column(:memberships_count) { |user| user.memberships.count }
 
   def first_name
     name.split(' ').first

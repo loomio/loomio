@@ -110,7 +110,8 @@ class MembershipService
       .where(user_id: user_id, group_id: group_ids)
       .update_all(revoked_at: revoked_at, revoker_id: actor_id)
 
-    Group.where(id: group_ids).map(&:update_memberships_count)
+    Group.where(id: group_ids).find_each(&:update_membership_counts)
+    User.find(user_id).update_memberships_count
     Group.update_org_members_count_for_group_ids(group_ids)
   end
 

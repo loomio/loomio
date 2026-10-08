@@ -2,7 +2,6 @@ class PollTemplate < ApplicationRecord
   include Hideable
   include DiscardableBy
   include HasRichText
-  include CustomCounterCache::Model
 
   is_rich_text on: :details
 
@@ -81,7 +80,9 @@ class PollTemplate < ApplicationRecord
     required_for_block: 4
   }
 
-  update_counter_cache :group, :poll_templates_count
+  # poll_templates_count counts kept templates.
+  after_save    :recount_group_poll_templates, if: -> { saved_change_to_id? || saved_change_to_group_id? || saved_change_to_discarded_at? }
+  after_destroy :recount_group_poll_templates
 
   validates :poll_type, inclusion: { in: AppConfig.poll_types.keys }
   validates :details, length: { maximum: AppConfig.app_features[:max_message_length] }
@@ -166,6 +167,13 @@ class PollTemplate < ApplicationRecord
   end
 
   private
+
+  def recount_group_poll_templates
+    CounterColumns.recount(group, :update_poll_templates_count)
+    if saved_change_to_group_id? && group_id_before_last_save
+      CounterColumns.recount(Group.find_by(id: group_id_before_last_save), :update_poll_templates_count)
+    end
+  end
 
   # Use the poll rule, so a template cannot save a combination that polls
   # started from it would reject.

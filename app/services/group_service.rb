@@ -84,8 +84,7 @@ module GroupService
         existing_member_ids = Membership.accepted.where(group_id: other_group_ids, user_id: users.verified.pluck(:id)).pluck(:user_id)
         Membership.pending.where(group_id: g.id, user_id: existing_member_ids).update_all(accepted_at: Time.now)
 
-        g.update_pending_memberships_count
-        g.update_memberships_count
+        g.update_membership_counts
         PollGroupMembersAddedWorker.perform_later(g.id)
       end
       Group.update_org_members_count_for_group_ids(group_ids)

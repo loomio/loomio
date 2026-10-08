@@ -1,5 +1,5 @@
 class Outcome < ApplicationRecord
-  include CustomCounterCache::Model
+  include CounterColumns
   extend  HasCustomFields
   include HasTopicItems
   include HasNotifications
@@ -66,7 +66,7 @@ class Outcome < ApplicationRecord
   is_translatable on: :statement
 
   has_paper_trail only: [:statement, :statement_format, :author_id, :review_on, :attachments]
-  define_counter_cache(:versions_count) { |d| d.versions.count }
+  counter_column(:versions_count) { |record| record.versions.count }
   validates :statement, presence: true, length: { maximum: AppConfig.app_features[:max_message_length] }
   validate :has_valid_poll_option
 

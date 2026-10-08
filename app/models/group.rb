@@ -1,7 +1,7 @@
 class Group < ApplicationRecord
   include Discard::Model
   include HasRichText
-  include CustomCounterCache::Model
+  include CounterColumns
   include ReadableUnguessableUrls
   include SelfReferencing
   include GroupPrivacy
@@ -107,15 +107,14 @@ class Group < ApplicationRecord
   delegate :time_zone, to: :creator, allow_nil: true
   delegate :date_time_pref, to: :creator, allow_nil: true
 
-  define_counter_cache(:polls_count)                { |g| g.polls.count }
-  define_counter_cache(:poll_templates_count)       { |g| g.poll_templates.kept.count }
-  define_counter_cache(:memberships_count)          { |g| g.memberships.count }
-  define_counter_cache(:pending_memberships_count)  { |g| g.memberships.pending.count }
-  define_counter_cache(:admin_memberships_count)    { |g| g.admin_memberships.count }
-  define_counter_cache(:org_members_count)          { |g| Membership.active.where(group_id: g.id_and_subgroup_ids).count('distinct user_id') }
-  define_counter_cache(:discussions_count)          { |g| g.discussions.kept.count }
-  define_counter_cache(:subgroups_count)            { |g| g.subgroups.count }
-  update_counter_cache(:parent, :subgroups_count)
+  counter_column(:polls_count)          { |g| g.polls.count }
+  counter_column(:poll_templates_count) { |g| g.poll_templates.kept.count }
+  counter_column(:org_members_count)    { |g| Membership.active.where(group_id: g.id_and_subgroup_ids).count('distinct user_id') }
+  counter_column(:discussions_count)    { |g| g.discussions.kept.count }
+  counter_column(:subgroups_count)      { |g| g.subgroups.count }
+
+  after_save    :recount_parent_subgroups, if: -> { saved_change_to_parent_id? || saved_change_to_discarded_at? }
+  after_destroy :recount_parent_subgroups, if: :parent_id?
 
   delegate :include?, to: :users, prefix: true
   delegate :members, to: :parent, prefix: true
@@ -413,6 +412,16 @@ class Group < ApplicationRecord
     Group.where(id: parent_ids).find_each(&:update_org_members_count)
   end
 
+  # One pass over the group's active memberships for all three counts.
+  def update_membership_counts
+    memberships_count, pending_memberships_count, admin_memberships_count =
+      Membership.active.where(group_id: id).pick(
+        Arel.sql("COUNT(*)"),
+        Arel.sql("COUNT(*) FILTER (WHERE accepted_at IS NULL)"),
+        Arel.sql("COUNT(*) FILTER (WHERE admin)")
+      )
+    update_columns(memberships_count:, pending_memberships_count:, admin_memberships_count:)
+  end
 
   def poll_template_positions
     self[:info]['poll_template_positions'] ||= {
@@ -454,6 +463,14 @@ class Group < ApplicationRecord
 
 
   private
+
+  def recount_parent_subgroups
+    CounterColumns.recount(parent, :update_subgroups_count)
+    if saved_change_to_parent_id? && parent_id_before_last_save
+      CounterColumns.recount(Group.find_by(id: parent_id_before_last_save), :update_subgroups_count)
+    end
+  end
+
   def variant_path(variant)
     Rails.application.routes.url_helpers.rails_representation_path(variant, only_path: true)
   end

@@ -153,8 +153,6 @@ GEM
       addressable
       ssrf_filter (~> 1.5)
     csv (3.3.6)
-    custom_counter_cache (0.3.1)
-      rails (>= 7.2, < 9.0)
     date (3.5.1)
     declarative (0.0.20)
     diff-lcs (1.6.2)
@@ -780,7 +778,6 @@ DEPENDENCIES
   cancancan
   cld
   csv
-  custom_counter_cache
   discard (~> 2.0)
   discriminator (~> 0.1.1)
   dotenv-rails

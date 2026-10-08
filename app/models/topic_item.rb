@@ -2,7 +2,7 @@ class TopicItem < ApplicationRecord
   CHANGE_NOTE_KINDS = %w[discussion_edited poll_edited].freeze
 
   include ActionView::Helpers::SanitizeHelper
-  include CustomCounterCache::Model
+  include CounterColumns
   include PrettyUrlHelper
 
   belongs_to :itemable, polymorphic: true
@@ -22,8 +22,11 @@ class TopicItem < ApplicationRecord
   after_create  :mark_actor_as_read!
   after_destroy :update_sequence_info!
 
-  define_counter_cache(:child_count) { |topic_item| topic_item.children.count }
-  update_counter_cache :parent, :child_count
+  # Destroying an item first moves its children to its parent with update_all,
+  # so the parent is recounted after the destroy. A topic's cascade skips this.
+  counter_column(:child_count) { |topic_item| topic_item.children.count }
+  after_save    :recount_parent_children, if: :saved_change_to_parent_id?
+  after_destroy :recount_parent_children, if: :parent_id?, unless: :destroyed_with_topic?
 
   before_save :sync_itemable_foreign_key
 
@@ -124,6 +127,13 @@ class TopicItem < ApplicationRecord
   def reset_sequences
     SequenceService.drop_seq!('topic_sequence_id', topic_id)
     TopicService.reset_child_positions(parent.id, parent.position_key) if parent_id && parent
+  end
+
+  def recount_parent_children
+    CounterColumns.recount(parent, :update_child_count)
+    if saved_change_to_parent_id? && parent_id_before_last_save
+      CounterColumns.recount(TopicItem.find_by(id: parent_id_before_last_save), :update_child_count)
+    end
   end
 
   def reparent_children

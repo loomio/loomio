@@ -3,7 +3,6 @@ class Poll < ApplicationRecord
   RESULT_VOTER_IDS_MAX = 50
 
   extend  HasCustomFields
-  include CustomCounterCache::Model
   include ReadableUnguessableUrls
   include HasTopicItems
   include HasNotifications
@@ -306,8 +305,7 @@ class Poll < ApplicationRecord
   end
 
   def update_topic_anonymous_polls_count
-    return if topic.destroyed? # topic teardown cascaded to this poll — nothing to recount
-    topic.update_anonymous_polls_count
+    CounterColumns.recount(topic, :update_anonymous_polls_count)
   end
 
   delegate :locale, to: :author

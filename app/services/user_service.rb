@@ -59,7 +59,8 @@ class UserService
     Poll.where(id: poll_ids).find_each(&:update_counts!)
 
     group_ids = Membership.where(user_id: user.id).pluck(:group_id)
-    Group.where(id: group_ids).map(&:update_memberships_count)
+    Group.where(id: group_ids).find_each(&:update_membership_counts)
+    user.update_memberships_count
     Group.update_org_members_count_for_group_ids(group_ids)
     user.update(deactivated_at: nil)
     # Polls started while the user was deactivated give them stances here.

@@ -221,18 +221,21 @@ used_recent_subgroup:
 
 # Daily empty-trial cleanup eligibility matrix.
 trial_cleanup_recent:
+  token: trialcleanuprecenttoken000000000
   name: Trial cleanup recent
   creator: user
   created_at: <%= 2.years.ago %>
   subscription: trial_cleanup_recent
 
 trial_cleanup_no_expiry:
+  token: trialcleanupnoexpirytoken0000000
   name: Trial cleanup no_expiry
   creator: user
   created_at: <%= 2.years.ago %>
   subscription: trial_cleanup_no_expiry
 
 trial_cleanup_discarded:
+  token: trialcleanupdiscardedtoken000000
   name: Trial cleanup discarded
   creator: user
   created_at: <%= 2.years.ago %>
@@ -240,42 +243,49 @@ trial_cleanup_discarded:
   discarded_at: <%= 1.day.ago %>
 
 trial_cleanup_poll:
+  token: trialcleanuppolltoken00000000000
   name: Trial cleanup poll
   creator: user
   created_at: <%= 2.years.ago %>
   subscription: trial_cleanup_poll
 
 trial_cleanup_billing:
+  token: trialcleanupbillingtoken00000000
   name: Trial cleanup billing
   creator: user
   created_at: <%= 2.years.ago %>
   subscription: trial_cleanup_billing
 
 trial_cleanup_chargify:
+  token: trialcleanupchargifytoken0000000
   name: Trial cleanup chargify
   creator: user
   created_at: <%= 2.years.ago %>
   subscription: trial_cleanup_chargify
 
 trial_cleanup_shared:
+  token: trialcleanupsharedtoken000000000
   name: Trial cleanup shared
   creator: user
   created_at: <%= 2.years.ago %>
   subscription: trial_cleanup_shared
 
 trial_cleanup_shared_other:
+  token: trialcleanupsharedothertoken0000
   name: Trial cleanup shared_other
   creator: user
   created_at: <%= 2.years.ago %>
   subscription: trial_cleanup_shared
 
 trial_cleanup_child_subscription:
+  token: trialcleanupchildsubscriptiontok
   name: Trial cleanup child_subscription
   creator: user
   created_at: <%= 2.years.ago %>
   subscription: trial_cleanup_child_subscription
 
 trial_cleanup_subscribed_child:
+  token: trialcleanupsubscribedchildtoken
   name: Trial cleanup subscribed_child
   parent: trial_cleanup_child_subscription
   creator: user

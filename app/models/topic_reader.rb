@@ -1,5 +1,4 @@
 class TopicReader < ApplicationRecord
-  include CustomCounterCache::Model
   include HasVolume
 
   extend HasTokens
@@ -160,6 +159,6 @@ class TopicReader < ApplicationRecord
   end
 
   def update_topic_seen_by_count
-    topic.update_seen_by_count
+    CounterColumns.recount(topic, :update_seen_by_count)
   end
 end

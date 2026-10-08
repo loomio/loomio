@@ -1,5 +1,5 @@
 class Discussion < ApplicationRecord
-  include CustomCounterCache::Model
+  include CounterColumns
   include ReadableUnguessableUrls
   include Translatable
   include Reactable
@@ -104,7 +104,7 @@ class Discussion < ApplicationRecord
            :items, :newest_first, :private, :pinned_at,
            :last_activity_at, :items_count, :ranges, to: :topic
 
-  define_counter_cache(:versions_count)             { |d| d.versions.count }
+  counter_column(:versions_count) { |record| record.versions.count }
 
   # discussions_count counts kept discussions; TopicService.move recounts
   # both groups when a topic changes group.

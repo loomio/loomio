@@ -6,7 +6,6 @@ class Membership < ApplicationRecord
     end
   end
 
-  include CustomCounterCache::Model
   include HasVolume
   include HasTimeframe
   include HasExperiences
@@ -44,10 +43,12 @@ class Membership < ApplicationRecord
   delegate :name, to: :inviter, prefix: :inviter, allow_nil: true
   delegate :mailer, to: :user
 
-  update_counter_cache :group, :memberships_count
-  update_counter_cache :group, :pending_memberships_count
-  update_counter_cache :group, :admin_memberships_count
-  update_counter_cache :user,  :memberships_count
+  COUNTED_ATTRIBUTES = %w[group_id user_id revoked_at accepted_at admin].freeze
+
+  # Memberships are saved for volume, title, weight and experiences too; only
+  # these attributes change the group's and user's membership counts.
+  after_save    :recount_group_and_user, if: -> { saved_changes.keys.intersect?(COUNTED_ATTRIBUTES) }
+  after_destroy :recount_group_and_user
 
   before_create :set_volume
   after_save :remove_group_follow, if: :active_membership_saved?
@@ -100,6 +101,17 @@ class Membership < ApplicationRecord
 
     self.volume_email = user.volume_email_default
     self.volume_push = user.volume_push_default
+  end
+
+  def recount_group_and_user
+    CounterColumns.recount(group, :update_membership_counts)
+    CounterColumns.recount(user, :update_memberships_count)
+    if saved_change_to_group_id? && group_id_before_last_save
+      CounterColumns.recount(Group.find_by(id: group_id_before_last_save), :update_membership_counts)
+    end
+    if saved_change_to_user_id? && user_id_before_last_save
+      CounterColumns.recount(User.find_by(id: user_id_before_last_save), :update_memberships_count)
+    end
   end
 
   def update_org_members_count
