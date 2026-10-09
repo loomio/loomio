@@ -17,6 +17,18 @@ class RecordCountsTest < ActiveSupport::TestCase
     assert_equal [2, 0, 1], group_membership_counts
   end
 
+  test 'a write lock does not restrict nested recounts to its owner' do
+    destination = Group.create!(name: 'Nested recount', group_privacy: 'secret')
+    membership = Membership.create!(group: destination, user: users(:alien))
+    Membership.where(id: membership.id).update_all(accepted_at: Time.current, admin: true)
+
+    Group.where(id: @group.id).with_write_lock(:id) do
+      destination.update_membership_counts
+    end
+
+    assert_equal [1, 0, 1], destination.reload.attributes.values_at('memberships_count', 'pending_memberships_count', 'admin_memberships_count')
+  end
+
   test 'acceptance promotion revocation and restoration change only their contributions' do
     membership = Membership.create!(group: @group, user: users(:alien))
     assert_equal [2, 1, 1], group_membership_counts

@@ -11,12 +11,12 @@ class TopicItem < ApplicationRecord
   has_many :children, class_name: "TopicItem", foreign_key: :parent_id
   has_many :notifications, as: :subject, dependent: :destroy
   before_validation :set_kind, :set_itemable_version_id, :set_topic, :set_user_from_itemable, on: :create
-  before_create :lock_topic_for_tree_change
+  around_create :with_topic_write_lock_for_tree_change, prepend: true
   before_create :set_parent_and_depth
   before_create :increment_parent_child_count
   before_create :set_sequences
   after_rollback :reset_sequences
-  before_destroy :lock_topic_for_tree_change
+  around_destroy :with_topic_write_lock_for_tree_change, prepend: true
   before_destroy :reparent_children, unless: :destroyed_with_topic?
   before_destroy :reset_sequences
 
@@ -25,17 +25,18 @@ class TopicItem < ApplicationRecord
   after_destroy :update_sequence_info!
 
   after_update :update_parent_child_counts, if: :saved_change_to_parent_id?
+  around_update :with_topic_write_lock_for_tree_change, if: :will_save_change_to_parent_id?, prepend: true
 
   before_save :sync_itemable_foreign_key
 
   # Sequence/range updates already serialize writes to a topic. Acquire that
   # lock before its item locks too, matching moves, deletion and repair.
-  def lock_topic_for_tree_change
-    return if @tree_change_batched
+  def with_topic_write_lock_for_tree_change
+    return yield if @tree_change_batched || destroyed_with_topic?
 
-    Topic.where(id: topic_id).lock('FOR NO KEY UPDATE').pick(:id)
+    Topic.where(id: topic_id).with_write_lock(:id) { yield }
   end
-  private :lock_topic_for_tree_change
+  private :with_topic_write_lock_for_tree_change
 
   # Increment before insertion to lock the parent against concurrent deletion.
   # Both the child and its count roll back together, and after-commit publication
@@ -57,8 +58,7 @@ class TopicItem < ApplicationRecord
   # be combined. Flush before leaving the transaction; after-commit workers
   # must never see the children with stale parent counts.
   def self.create_batch!(topic:, items:)
-    transaction(requires_new: true) do
-      Topic.where(id: topic.id).lock('FOR NO KEY UPDATE').pick(:id)
+    Topic.where(id: topic.id).with_write_lock(:id, requires_new: true) do
       deltas = Hash.new { |hash, id| hash[id] = { child_count: 0 } }
       parents = []
       items.each do |item|
@@ -184,9 +184,8 @@ class TopicItem < ApplicationRecord
   def reparent_children
     return unless parent_id
 
-    # Creating children locks this row. Hold it while promoting existing
-    # children so an insert cannot slip between promotion and deletion.
-    TopicItem.where(id: [id, parent_id]).order(:id).lock.pluck(:id)
+    # The topic lock excludes inserts, parent changes and repair while children
+    # are promoted. No separate parent-row lock is needed before these writes.
     promoted_count = TopicItem.where(parent_id: id).update_all(parent_id: parent_id, depth: depth)
     RecordCounts.adjust!(TopicItem, { parent_id => { child_count: promoted_count - 1 } }, records: [parent])
   end

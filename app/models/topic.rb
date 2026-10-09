@@ -1,6 +1,14 @@
 class Topic < ApplicationRecord
   include SelfReferencing
 
+  # Hold the tree lock before dependent items/polls start taking their locks.
+  around_destroy :with_tree_write_lock_for_destruction, prepend: true
+
+  def with_tree_write_lock_for_destruction
+    self.class.where(id: id).with_write_lock(:id) { yield }
+  end
+  private :with_tree_write_lock_for_destruction
+
   has_paper_trail only: [:group_id]
 
   belongs_to :topicable, polymorphic: true

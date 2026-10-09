@@ -128,7 +128,7 @@ class Stance < ApplicationRecord
 
   def build_replacement
     Stance.new(
-      poll_id: poll_id,
+      poll: poll,
       participant_id: participant_id,
       inviter_id: inviter_id,
       weight: weight,

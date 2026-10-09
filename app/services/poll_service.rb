@@ -95,7 +95,9 @@ class PollService
     end
 
     was_opened = false
-    topic_item = Poll.transaction do
+    topic_item = poll.with_topic_lock do |current_poll|
+      actor.ability.authorize! :update, current_poll
+      actor.ability.authorize! :update, poll
       poll.topic.update!(topic_params) if topic_params.any? && poll.topic.persisted?
       poll.save!
       poll.update_counts!
@@ -166,7 +168,7 @@ class PollService
     stances = nil
     voters = nil
 
-    Poll.transaction do
+    poll.with_topic_lock do
       poll.lock!
       raise CanCan::AccessDenied if poll.anonymous? && !poll.active?
 
@@ -279,44 +281,46 @@ class PollService
   end
 
   def self.create_stances(poll:, actor:, user_ids: [], emails: [], audience: nil, include_actor: false)
-    existing_voter_ids = Stance.latest.where(poll_id: poll.id).pluck(:participant_id)
+    poll.with_topic_lock do
+      existing_voter_ids = Stance.latest.where(poll_id: poll.id).pluck(:participant_id)
 
-    users = UserInviter.where_or_create!(
-      actor: actor,
-      model: poll,
-      user_ids: user_ids,
-      audience: audience,
-      include_actor: include_actor,
-      emails: emails
-    ).where.not(id: existing_voter_ids)
+      users = UserInviter.where_or_create!(
+        actor: actor,
+        model: poll,
+        user_ids: user_ids,
+        audience: audience,
+        include_actor: include_actor,
+        emails: emails
+      ).where.not(id: existing_voter_ids)
 
-    reinvited_user_ids = Stance.revoked.where(poll_id: poll.id).pluck(:participant_id) & users.pluck(:id)
+      reinvited_user_ids = Stance.revoked.where(poll_id: poll.id).pluck(:participant_id) & users.pluck(:id)
 
-    Stance.where(poll_id: poll.id, participant_id: reinvited_user_ids).each do |stance|
-      stance.update(revoked_at: nil, revoker_id: nil, inviter_id: actor.id)
+      Stance.where(poll_id: poll.id, participant_id: reinvited_user_ids).each do |stance|
+        stance.update(revoked_at: nil, revoker_id: nil, inviter_id: actor.id)
+      end
+
+      users_new = users.where.not(id: reinvited_user_ids).to_a
+      weights_by_user_id = poll.weighted_voting? ? poll.member_vote_weights_by_user_id(users_new.map(&:id)) : {}
+
+      new_stances = users_new.map do |user|
+        Stance.new(
+          participant: user,
+          poll: poll,
+          inviter: actor,
+          weight: weights_by_user_id.fetch(user.id, 1),
+          latest: true,
+          reason_format: user.default_format,
+          created_at: Time.zone.now
+        )
+      end
+
+      Stance.import(new_stances, on_duplicate_key_ignore: true)
+
+      poll.reset_latest_stances!
+      poll.update_counts!
+
+      Stance.where(participant_id: users.pluck(:id), poll_id: poll.id, latest: true)
     end
-
-    users_new = users.where.not(id: reinvited_user_ids).to_a
-    weights_by_user_id = poll.weighted_voting? ? poll.member_vote_weights_by_user_id(users_new.map(&:id)) : {}
-
-    new_stances = users_new.map do |user|
-      Stance.new(
-        participant: user,
-        poll: poll,
-        inviter: actor,
-        weight: weights_by_user_id.fetch(user.id, 1),
-        latest: true,
-        reason_format: user.default_format,
-        created_at: Time.zone.now
-      )
-    end
-
-    Stance.import(new_stances, on_duplicate_key_ignore: true)
-
-    poll.reset_latest_stances!
-    poll.update_counts!
-
-    Stance.where(participant_id: users.pluck(:id), poll_id: poll.id, latest: true)
   end
 
   def self.discard(poll:, actor:, &on_topic_item)
@@ -472,7 +476,7 @@ class PollService
   end
 
   def self.do_closing_work(poll:)
-    Poll.transaction do
+    poll.with_topic_lock do
       poll.lock!
       next if poll.closed_at
 

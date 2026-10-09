@@ -256,9 +256,8 @@ class User < ApplicationRecord
   end
 
   def self.update_membership_counts_for_ids(ids)
-    transaction do
-      users = where(id: ids)
-      users.order(:id).lock('FOR NO KEY UPDATE').pluck(:id)
+    users = where(id: ids)
+    users.order(:id).with_write_lock(:id) do
       users.update_all(memberships_count: Arel.sql(<<~SQL.squish))
         (SELECT COUNT(*) FROM memberships
          WHERE memberships.user_id = users.id AND memberships.revoked_at IS NULL)

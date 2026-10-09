@@ -108,9 +108,9 @@ class Discussion < ApplicationRecord
 
   after_save :update_group_discussion_count, if: -> { saved_changes.keys.intersect?(%w[id topic_id discarded_at]) }
   after_destroy :update_group_discussion_count
-  before_create :lock_topics_for_counts
-  before_update :lock_topics_for_counts, if: -> { changes.keys.intersect?(%w[topic_id discarded_at]) }
-  before_destroy :lock_topics_for_counts
+  around_create :with_topics_write_lock_for_counts, prepend: true
+  around_update :with_topics_write_lock_for_counts, if: -> { changes.keys.intersect?(%w[topic_id discarded_at]) }, prepend: true
+  around_destroy :with_topics_write_lock_for_counts, prepend: true
 
   def update_group_discussion_count
     before, after = count_states

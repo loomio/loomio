@@ -59,49 +59,50 @@ module GroupService
 
       # Match the user-before-group lock order used by individual membership
       # changes and account merges before applying callback-free imports.
-      User.where(id: users.pluck(:id)).order(:id).lock('FOR NO KEY UPDATE').pluck(:id)
+      User.where(id: users.pluck(:id)).order(:id).with_write_lock(:id) do
 
-      Group.where(id: group_ids).each do |g|
-        revoked_memberships = Membership.revoked.where(group_id: g.id, user_id: users.map(&:id))
-        revoked_memberships.update_all(
-          inviter_id: actor.id,
-          accepted_at: nil,
-          revoked_at: nil,
-          revoker_id: nil,
-          admin: false,
-        )
-
-        new_memberships = users.map do |user|
-          Membership.new(
-            inviter: actor,
-            user: user,
-            group: g,
-            volume_email: user.volume_email_default,
-            volume_push: user.volume_push_default
+        Group.where(id: group_ids).each do |g|
+          revoked_memberships = Membership.revoked.where(group_id: g.id, user_id: users.map(&:id))
+          revoked_memberships.update_all(
+            inviter_id: actor.id,
+            accepted_at: nil,
+            revoked_at: nil,
+            revoker_id: nil,
+            admin: false,
           )
+
+          new_memberships = users.map do |user|
+            Membership.new(
+              inviter: actor,
+              user: user,
+              group: g,
+              volume_email: user.volume_email_default,
+              volume_push: user.volume_push_default
+            )
+          end
+
+          Membership.import(new_memberships, on_duplicate_key_ignore: true)
+
+          # mark as accepted all invitiations to people who are already part of the org.
+          other_group_ids = Group.enabled.where(id: g.parent_or_self.id_and_subgroup_ids).pluck(:id) - Array(g.id)
+          existing_member_ids = Membership.accepted.where(group_id: other_group_ids, user_id: users.verified.pluck(:id)).pluck(:user_id)
+          Membership.pending.where(group_id: g.id, user_id: existing_member_ids).update_all(accepted_at: Time.now)
+
+          g.update_membership_counts
+          PollGroupMembersAddedWorker.perform_later(g.id)
         end
+        Group.update_org_members_count_for_group_ids(group_ids)
+        User.update_membership_counts_for_ids(users.pluck(:id))
 
-        Membership.import(new_memberships, on_duplicate_key_ignore: true)
-
-        # mark as accepted all invitiations to people who are already part of the org.
-        other_group_ids = Group.enabled.where(id: g.parent_or_self.id_and_subgroup_ids).pluck(:id) - Array(g.id)
-        existing_member_ids = Membership.accepted.where(group_id: other_group_ids, user_id: users.verified.pluck(:id)).pluck(:user_id)
-        Membership.pending.where(group_id: g.id, user_id: existing_member_ids).update_all(accepted_at: Time.now)
-
-        g.update_membership_counts
-        PollGroupMembersAddedWorker.perform_later(g.id)
+        NotificationService.create!(
+          kind: "membership_created",
+          subject: group,
+          actor: actor,
+          recipient_user_ids: users.pluck(:id),
+          recipient_audience: params[:recipient_audience],
+          recipient_message: params[:recipient_message]
+        )
       end
-      Group.update_org_members_count_for_group_ids(group_ids)
-      User.update_membership_counts_for_ids(users.pluck(:id))
-
-      NotificationService.create!(
-        kind: "membership_created",
-        subject: group,
-        actor: actor,
-        recipient_user_ids: users.pluck(:id),
-        recipient_audience: params[:recipient_audience],
-        recipient_message: params[:recipient_message]
-      )
     end
 
     Sentry.metrics.count("membership.invite", attributes: { recipient_count: users.size })
@@ -244,15 +245,16 @@ module GroupService
       old_group_ids = source.parent_or_self.id_and_subgroup_ids
       new_group_ids = target.parent_or_self.id_and_subgroup_ids
       user_ids = Membership.where(group_id: old_group_ids + new_group_ids).distinct.pluck(:user_id)
-      User.where(id: user_ids).order(:id).lock('FOR NO KEY UPDATE').pluck(:id)
-      source.subgroups.update_all(parent_id: target.id)
-      Topic.where(group_id: source.id).update_all(group_id: target.id)
-      source.membership_requests.update_all(group_id: target.id)
-      source.memberships.where.not(user_id: target.member_ids).update_all(group_id: target.id)
-      source.destroy
-      target.update_membership_counts
-      target.update_content_counts
-      Group.update_org_members_count_for_group_ids(old_group_ids + new_group_ids)
+      User.where(id: user_ids).order(:id).with_write_lock(:id) do
+        source.subgroups.update_all(parent_id: target.id)
+        Topic.where(group_id: source.id).update_all(group_id: target.id)
+        source.membership_requests.update_all(group_id: target.id)
+        source.memberships.where.not(user_id: target.member_ids).update_all(group_id: target.id)
+        source.destroy
+        target.update_membership_counts
+        target.update_content_counts
+        Group.update_org_members_count_for_group_ids(old_group_ids + new_group_ids)
+      end
     end
   end
 

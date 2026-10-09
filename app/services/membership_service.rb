@@ -14,8 +14,7 @@ class MembershipService
     accepted_membership = nil
     accepted_notification = nil
 
-    Membership.transaction do
-      User.where(id: [actor.id, membership.user_id]).order(:id).lock('FOR NO KEY UPDATE').pluck(:id)
+    User.where(id: [actor.id, membership.user_id]).order(:id).with_write_lock(:id) do
       accepted_at = DateTime.now
 
       invited_group_id = membership.group_id
@@ -94,8 +93,7 @@ class MembershipService
   end
 
   def self.revoke_by_id(group_ids, user_id, actor_id, revoked_at = DateTime.now)
-    Membership.transaction do
-      User.where(id: user_id).lock('FOR NO KEY UPDATE').pick(:id)
+    User.where(id: user_id).with_write_lock(:id) do
       TopicReader
         .joins(:topic).where(user_id: user_id)
         .where("topics.group_id IN (?)", group_ids)

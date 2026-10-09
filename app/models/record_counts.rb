@@ -51,8 +51,8 @@ module RecordCounts
   # Bulk writers cannot use per-record deltas. Lock before reading so a recount
   # cannot overwrite a concurrent delta with an older snapshot of the children.
   def self.recount!(record)
-    record.class.transaction do
-      return unless record.class.where(id: record.id).lock('FOR NO KEY UPDATE').pick(:id)
+    record.class.where(id: record.id).with_write_lock(:id) do |ids|
+      next if ids.empty?
 
       record.update_columns(yield)
     end

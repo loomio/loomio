@@ -22,7 +22,7 @@ class TopicService
                            model: topic,
                            actor: actor)
 
-    Topic.transaction do
+    topic.with_write_lock do
       users = add_users(topic: topic,
                         actor: actor,
                         user_ids: params[:recipient_user_ids],
@@ -97,7 +97,8 @@ class TopicService
     destination.present? && actor.ability.authorize!(:move_discussions_to, destination)
     actor.ability.authorize! :move, topic
 
-    topic_item = Topic.transaction do
+    topic_item = topic.with_write_lock do
+      actor.ability.authorize! :move, topic
       direct_participants_retain!(topic:, actor:) if direct
 
       topic.update!(group_id: destination.present? ? destination.id : nil,
@@ -334,8 +335,8 @@ class TopicService
     topicable = topic.topicable
     return unless topicable
 
-    Topic.transaction do
-      Topic.where(id: topic.id).lock('FOR NO KEY UPDATE').pick(:id)
+    Topic.where(id: topic.id).with_write_lock(:id) do |ids|
+      next if ids.empty?
       repair_topic(topic, topicable)
     end
   end

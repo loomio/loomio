@@ -48,8 +48,7 @@ class UserService
   def self.reactivate(user_id)
     user = User.find(user_id)
     restored_group_ids = []
-    User.transaction do
-      user.lock!('FOR NO KEY UPDATE')
+    user.with_write_lock do
       deactivated_at = user.deactivated_at
       restored_group_ids = Membership.where(user_id: user.id, revoked_at: deactivated_at).pluck(:group_id)
       Membership.where(user_id: user.id, revoked_at: deactivated_at).update_all(revoked_at: nil, revoker_id: nil)
