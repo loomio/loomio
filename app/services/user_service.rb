@@ -47,21 +47,25 @@ class UserService
 
   def self.reactivate(user_id)
     user = User.find(user_id)
-    deactivated_at = user.deactivated_at
-    restored_group_ids = Membership.where(user_id: user.id, revoked_at: deactivated_at).pluck(:group_id)
-    Membership.where(user_id: user.id, revoked_at: deactivated_at).update_all(revoked_at: nil, revoker_id: nil)
+    restored_group_ids = []
+    user.with_write_lock do
+      deactivated_at = user.deactivated_at
+      restored_group_ids = Membership.where(user_id: user.id, revoked_at: deactivated_at).pluck(:group_id)
+      Membership.where(user_id: user.id, revoked_at: deactivated_at).update_all(revoked_at: nil, revoker_id: nil)
 
-    # Deactivation revoked the user's stances in open polls with the same
-    # timestamp. Restore those, leaving stances an admin removed revoked.
-    stances = Stance.joins(:poll).where(participant_id: user.id, revoked_at: deactivated_at, polls: { closed_at: nil })
-    poll_ids = stances.pluck(:poll_id)
-    stances.update_all(revoked_at: nil, revoker_id: nil)
-    Poll.where(id: poll_ids).find_each(&:update_counts!)
+      # Deactivation revoked the user's stances in open polls with the same
+      # timestamp. Restore those, leaving stances an admin removed revoked.
+      stances = Stance.joins(:poll).where(participant_id: user.id, revoked_at: deactivated_at, polls: { closed_at: nil })
+      poll_ids = stances.pluck(:poll_id)
+      stances.update_all(revoked_at: nil, revoker_id: nil)
+      Poll.where(id: poll_ids).find_each(&:update_counts!)
 
-    group_ids = Membership.where(user_id: user.id).pluck(:group_id)
-    Group.where(id: group_ids).map(&:update_memberships_count)
-    Group.update_org_members_count_for_group_ids(group_ids)
-    user.update(deactivated_at: nil)
+      group_ids = Membership.where(user_id: user.id).pluck(:group_id)
+      Group.where(id: group_ids).order(:id).each(&:update_membership_counts)
+      Group.update_org_members_count_for_group_ids(group_ids)
+      user.update_memberships_count
+      user.update!(deactivated_at: nil)
+    end
     # Polls started while the user was deactivated give them stances here.
     restored_group_ids.each { |group_id| PollGroupMembersAddedWorker.perform_later(group_id) }
     ReindexAuthorWorker.perform_later(user.id)

@@ -1,7 +1,6 @@
 class Group < ApplicationRecord
   include Discard::Model
   include HasRichText
-  include CustomCounterCache::Model
   include ReadableUnguessableUrls
   include SelfReferencing
   include GroupPrivacy
@@ -20,7 +19,6 @@ class Group < ApplicationRecord
   alias_method :author, :creator
 
   belongs_to :parent, class_name: 'Group'
-  scope :empty_no_subscription, -> { joins('left join subscriptions on subscription_id = groups.subscription_id').where('subscriptions.id is null and groups.parent_id is null').where('memberships_count < 2 AND discussions_count < 3 and polls_count < 2 and subgroups_count = 0').where('groups.created_at < ?', 1.year.ago) }
   scope :any_trial, -> { joins(:subscription).where('subscriptions.plan = ?', 'trial') }
   scope :expired_demo, -> { joins(:subscription).where('subscriptions.plan = ?', 'demo').where('groups.created_at < ?', 7.days.ago).where.not("groups.info @> ?", { demo_group_source: true }.to_json) }
   scope :not_demo, -> { joins(:subscription).where('subscriptions.plan != ?', 'demo') }
@@ -107,18 +105,37 @@ class Group < ApplicationRecord
   delegate :time_zone, to: :creator, allow_nil: true
   delegate :date_time_pref, to: :creator, allow_nil: true
 
-  define_counter_cache(:polls_count)                { |g| g.polls.count }
-  define_counter_cache(:closed_polls_count)         { |g| g.polls.closed.count }
-  define_counter_cache(:poll_templates_count)       { |g| g.poll_templates.kept.count }
-  define_counter_cache(:memberships_count)          { |g| g.memberships.count }
-  define_counter_cache(:pending_memberships_count)  { |g| g.memberships.pending.count }
-  define_counter_cache(:admin_memberships_count)    { |g| g.admin_memberships.count }
-  define_counter_cache(:delegates_count)            { |g| g.memberships.delegates.count }
-  define_counter_cache(:org_members_count)          { |g| Membership.active.where(group_id: g.id_and_subgroup_ids).count('distinct user_id') }
-  define_counter_cache(:discussions_count)          { |g| g.discussions.kept.count }
-  define_counter_cache(:discussion_templates_count) { |g| g.discussion_templates.kept.count }
-  define_counter_cache(:subgroups_count)            { |g| g.subgroups.count }
-  update_counter_cache(:parent, :subgroups_count)
+  after_update :update_organization_counts_after_move, if: :saved_change_to_parent_id?
+
+  def update_organization_counts_after_move
+    Group.update_org_members_count_for_group_ids([parent_id_before_last_save, parent_id || id])
+  end
+  private :update_organization_counts_after_move
+
+  # Imports, account merges and revocations bypass membership callbacks. Rebuild
+  # all three related counts together using one scan of the active memberships.
+  def update_membership_counts
+    RecordCounts.recount!(self) do
+      total, pending, admins = memberships.pick(
+        Arel.sql('COUNT(*)'),
+        Arel.sql('COUNT(*) FILTER (WHERE accepted_at IS NULL)'),
+        Arel.sql('COUNT(*) FILTER (WHERE admin = TRUE)'))
+      { memberships_count: total, pending_memberships_count: pending, admin_memberships_count: admins }
+    end
+  end
+
+  def update_content_counts
+    RecordCounts.recount!(self) do
+      { polls_count: polls.count, discussions_count: discussions.kept.count,
+        poll_templates_count: poll_templates.kept.count }
+    end
+  end
+
+  def update_org_members_count
+    RecordCounts.recount!(self) do
+      { org_members_count: Membership.active.where(group_id: id_and_subgroup_ids).distinct.count(:user_id) }
+    end
+  end
 
   delegate :include?, to: :users, prefix: true
   delegate :members, to: :parent, prefix: true
@@ -364,10 +381,6 @@ class Group < ApplicationRecord
     Membership.active.accepted.where(group_id: id_and_subgroup_ids).count('distinct user_id')
   end
 
-  def org_discussions_count
-    Group.where(id: id_and_subgroup_ids).sum(:discussions_count)
-  end
-
   def org_polls_count
     Group.where(id: id_and_subgroup_ids).sum(:polls_count)
   end
@@ -413,7 +426,7 @@ class Group < ApplicationRecord
       .compact
       .uniq
 
-    Group.where(id: parent_ids).find_each(&:update_org_members_count)
+    Group.where(id: parent_ids).order(:id).each(&:update_org_members_count)
   end
 
 

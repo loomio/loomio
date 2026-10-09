@@ -1,6 +1,14 @@
 class Topic < ApplicationRecord
   include SelfReferencing
 
+  # Hold the tree lock before dependent items/polls start taking their locks.
+  around_destroy :with_tree_write_lock_for_destruction, prepend: true
+
+  def with_tree_write_lock_for_destruction
+    self.class.where(id: id).with_write_lock(:id) { yield }
+  end
+  private :with_tree_write_lock_for_destruction
+
   has_paper_trail only: [:group_id]
 
   belongs_to :topicable, polymorphic: true
@@ -70,12 +78,32 @@ class Topic < ApplicationRecord
   }
 
   include HasTags
-  include CustomCounterCache::Model
-  define_counter_cache(:active_polls_count)          { |t| t.polls.active.count }
-  define_counter_cache(:closed_polls_count)         { |t| t.polls.closed.count }
-  define_counter_cache(:seen_by_count)              { |t| t.topic_readers.where('last_read_at is not null').count }
-  define_counter_cache(:members_count)              { |t| t.topic_readers.where('revoked_at is null').count }
-  define_counter_cache(:anonymous_polls_count)      { |t| t.polls.where(anonymous: true).count }
+
+  after_update :transfer_group_content_counts, if: :saved_change_to_group_id?
+
+  def transfer_group_content_counts
+    changes = { polls_count: polls.count, discussions_count: discussions.kept.count }
+    old_group_id = group_id_before_last_save
+    deltas = {}
+    deltas[old_group_id] = changes.transform_values { |count| -count } if old_group_id
+    deltas[group_id] = changes if group_id
+    RecordCounts.adjust!(Group, deltas, records: [group])
+  end
+  private :transfer_group_content_counts
+
+  # Discarded and closed anonymous polls still require read-receipt privacy.
+  # EXISTS stops at the first match; RecordCache batches this same predicate.
+  scope :with_anonymous_polls, -> {
+    where(Poll.where(anonymous: true).where('polls.topic_id = topics.id').arel.exists)
+  }
+
+  def has_anonymous_polls?
+    self.class.with_anonymous_polls.exists?(id: id)
+  end
+
+  def recount_active_polls!
+    RecordCounts.recount!(self) { { active_polls_count: polls.active.count } }
+  end
 
   validate :privacy_is_permitted_by_group
 

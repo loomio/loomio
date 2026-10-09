@@ -26,12 +26,10 @@ class GroupSerializer < ApplicationSerializer
              :token,
              :polls_count,
              :poll_templates_count,
-             :closed_polls_count,
              :discussions_count,
              :group_privacy,
              :listed_in_explore,
              :memberships_count,
-             :delegates_count,
              :pending_memberships_count,
              :accepted_memberships_count,
              :membership_granted_upon,
@@ -44,11 +42,9 @@ class GroupSerializer < ApplicationSerializer
              :link_previews,
              :has_custom_cover_photo,
              :cover_url,
-             :discussion_templates_count,
              :is_visible_to_public,
              :is_visible_to_parent_members,
              :parent_members_can_see_discussions,
-             :org_discussions_count,
              :org_members_count,
              :subscription,
              :subgroups_count,
@@ -62,6 +58,10 @@ class GroupSerializer < ApplicationSerializer
   has_one :current_user_membership, serializer: MembershipSerializer, root: :memberships
   has_one :translation
   has_many :tags, serializer: TagSerializer, root: :tags
+
+  def subgroups_count
+    cache_fetch(:subgroups_counts_by_group_id, object.id) { object.subgroups.count }
+  end
 
   def current_user_membership
     cache_fetch(:memberships_by_group_id, object.id) { nil }
@@ -166,10 +166,6 @@ class GroupSerializer < ApplicationSerializer
   end
 
   def include_org_members_count?
-    object.is_parent?
-  end
-
-  def include_org_discussions_count?
     object.is_parent?
   end
 

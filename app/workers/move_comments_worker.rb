@@ -8,7 +8,7 @@ class MoveCommentsWorker < ApplicationJob
     # Moving a branch changes both its domain records and its projected topic
     # tree. Keep those changes atomic; the deferred same-topic parent constraint
     # verifies the rebuilt tree when this transaction commits.
-    ActiveRecord::Base.transaction do
+    Topic.where(id: [source_topic_id, target_topic_id]).order(:id).with_write_lock(:id) do
       ActiveRecord::Base.connection.execute("SET CONSTRAINTS topic_items_parent_same_topic DEFERRED")
 
       # sanitize topic_item_ids (so they cannot be from another topic), and ensure we have any children
@@ -21,6 +21,11 @@ class MoveCommentsWorker < ApplicationJob
 
       # update polls to point to target topic
       all_polls.update_all(topic_id: target_topic_id)
+      source_topic.recount_active_polls!
+      target_topic.recount_active_polls!
+      if source_topic.group_id != target_topic.group_id
+        Group.where(id: [source_topic.group_id, target_topic.group_id]).order(:id).each(&:update_content_counts)
+      end
 
       # reparent comments whose parent is not also being moved
       moved_itemable_ids = all_topic_items.pluck(:itemable_type, :itemable_id).map { |t, id| [ t, id ] }

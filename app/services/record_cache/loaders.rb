@@ -125,6 +125,7 @@ module RecordCache::Loaders
   class Reader < RecordCache::Loader
     def load
       cache.user_ids.concat(records.map(&:user_id))
+      cache.add_anonymous_poll_flags(records.map(&:topic_id))
     end
   end
 

@@ -1,17 +1,17 @@
 ---
 title: API do usuário
-source_revision: c27ee3b193231816878f1c074ff9fc2a086a88c0
+source_revision: 79280ee7a1246dbb8bb16686856608069718bc14
 source_file: docs/en/user_manual/integrations/api/user-api.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-02'
+  'on': '2026-10-09'
 sections:
   introduction: a43c8b800d13fd33
   authentication-change: 06b5c2cd9d9e72a0
   response-size-and-related-records: 1ffc59ad606a87e7
   endpoint-summary: 52c480c59d3669e3
   groups: 0473f1f7fb78f074
-  list-groups: 2b783ec54f27b2ce
+  list-groups: dcbe9217091f8cb2
   get-a-group: dffef659cb92745e
   webhooks: f65fa289f8c1b808
   list-webhooks: a8b52c1a9bfdb16c
@@ -78,7 +78,7 @@ generated:
   response-size-and-related-records: d94bde03ff7e5c29
   endpoint-summary: 748eddf28cc29c84
   groups: '0778b0182dde2603'
-  list-groups: a77c5049eda842dc
+  list-groups: 233bee77251d304a
   get-a-group: 62d75d6aa17b639f
   webhooks: a358b740f723b364
   list-webhooks: 68e874c4ac7ebfdf
@@ -228,6 +228,8 @@ As respostas de coleções incluem `meta.total` quando há um tamanho exato defi
 
 <!-- translation-section: list-groups -->
 
+<!-- translation-correction: {"before":"dministradores do grupo |\n| `delegates_count` | Número de delegados |\n| `discussions_count` | Número de ","after":"dministradores do grupo |\n| `discussions_count` | Número de "} -->
+
 ### Listar grupos
 
 Retorna os grupos nos quais o usuário da chave de API tem um vínculo de membro ativo.
@@ -255,7 +257,6 @@ Os principais campos de grupo incluem:
 | `accepted_memberships_count` | Número de vínculos de membros aceitos |
 | `pending_memberships_count` | Número de convites pendentes |
 | `admin_memberships_count` | Número de administradores do grupo |
-| `delegates_count` | Número de delegados |
 | `discussions_count` | Número de discussões diretamente no grupo |
 | `polls_count` | Número de enquetes diretamente no grupo |
 | `subgroups_count` | Número de subgrupos |

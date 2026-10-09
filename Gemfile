@@ -38,7 +38,6 @@ gem 'propshaft', '~> 1.3'
 gem 'uuidtools'
 gem 'maxminddb'
 gem "cld"
-gem 'custom_counter_cache'
 gem 'premailer-rails'
 gem 'activerecord-import', '2.3.0'
 gem 'discriminator', '~> 0.1.1'

@@ -1,9 +1,10 @@
 class Poll < ApplicationRecord
+  include HasCountChanges
+  include LocksTopicsForCounts
   PARTICIPATION_STATUS_VOTES_MIN = 3
   RESULT_VOTER_IDS_MAX = 50
 
   extend  HasCustomFields
-  include CustomCounterCache::Model
   include ReadableUnguessableUrls
   include HasTopicItems
   include HasNotifications
@@ -265,7 +266,11 @@ class Poll < ApplicationRecord
     :hide_results,
     :attachments]
 
-  after_commit :update_group_counter_caches
+  after_save :update_poll_counts, if: -> { saved_changes.keys.intersect?(%w[id topic_id opened_at closed_at discarded_at]) }
+  after_destroy :update_poll_counts
+  around_create :with_topics_write_lock_for_counts, prepend: true
+  around_update :with_topics_write_lock_for_counts, if: -> { changes.keys.intersect?(%w[topic_id opened_at closed_at discarded_at]) }, prepend: true
+  around_destroy :with_topics_write_lock_for_counts, prepend: true
   after_save_commit -> { ReindexPollWorker.perform_later(id) }
   after_update :synchronize_stance_weights_after_vote_weights_change
 
@@ -294,12 +299,59 @@ class Poll < ApplicationRecord
     stances.latest.update_all(weight: Arel.sql("COALESCE((#{member_weight.to_sql}), 1)"))
   end
 
-  def update_group_counter_caches
-    group = topic.group
-    return unless group.id
-    return if group.destroyed? # group teardown cascaded to this poll — nothing to recount
-    group.update_polls_count
-    group.update_closed_polls_count
+  def update_poll_counts
+    before, after = count_states
+    RecordCounts.update!(Group, :polls_count,
+      before: counted_group_id(before), after: counted_group_id(after), records: [group])
+    RecordCounts.update!(Topic, :active_polls_count,
+      before: counted_active_topic_id(before), after: counted_active_topic_id(after), records: [topic])
+  end
+
+  def counted_group_id(state)
+    return unless state
+
+    # Closed/discarded polls still count toward the group's total. During
+    # mutual topic/poll autosave, use the loaded group until the topic has an ID.
+    state['topic_id'] ? @count_group_ids.fetch(state['topic_id']) : group_id
+  end
+
+  def counted_active_topic_id(state)
+    return unless state && state['discarded_at'].nil? && state['closed_at'].nil? && state['opened_at'].present?
+
+    state['topic_id']
+  end
+  private :update_poll_counts, :counted_group_id, :counted_active_topic_id
+
+  # Operations that change a poll and its timeline must lock the topic first.
+  # A branch move can change the owner while we wait; retry from a savepoint
+  # so the old topic lock is released before acquiring the new owner's lock.
+  def with_topic_lock
+    owner_id = topic_id_in_database
+    destination_id = topic_id
+    destination_changed = will_save_change_to_topic_id?
+    loop do
+      completed = false
+      result = Topic.where(id: [owner_id, destination_changed ? destination_id : owner_id])
+                    .order(:id).with_write_lock(requires_new: true) do |topics|
+        owners = topics.index_by(&:id)
+        current_poll = self.class.find(id)
+        if current_poll.topic_id != owner_id
+          owner_id = current_poll.topic_id
+          raise ActiveRecord::Rollback
+        end
+
+        # Refresh the stored source without losing an intentional destination.
+        self.topic_id = owner_id
+        clear_attribute_change(:topic_id)
+        self.topic_id = destination_id if destination_changed
+        association(:topic).target = owners.fetch(topic_id)
+        current_poll.association(:topic).target = owners.fetch(owner_id)
+        value = yield current_poll
+        completed = true
+        value
+      end
+      return result if completed
+    end
   end
 
   delegate :locale, to: :author

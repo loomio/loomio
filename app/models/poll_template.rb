@@ -1,8 +1,8 @@
 class PollTemplate < ApplicationRecord
+  include HasCountChanges
   include Hideable
   include DiscardableBy
   include HasRichText
-  include CustomCounterCache::Model
 
   is_rich_text on: :details
 
@@ -81,7 +81,19 @@ class PollTemplate < ApplicationRecord
     required_for_block: 4
   }
 
-  update_counter_cache :group, :poll_templates_count
+  after_save :update_group_template_count, if: -> { saved_changes.keys.intersect?(%w[id group_id discarded_at]) }
+  after_destroy :update_group_template_count
+
+  def update_group_template_count
+    before, after = count_states
+    RecordCounts.update!(Group, :poll_templates_count,
+      before: counted_group_id(before), after: counted_group_id(after), records: [group])
+  end
+
+  def counted_group_id(state)
+    state['group_id'] if state && state['discarded_at'].nil?
+  end
+  private :update_group_template_count, :counted_group_id
 
   validates :poll_type, inclusion: { in: AppConfig.poll_types.keys }
   validates :details, length: { maximum: AppConfig.app_features[:max_message_length] }

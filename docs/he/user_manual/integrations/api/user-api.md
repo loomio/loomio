@@ -1,17 +1,17 @@
 ---
 title: API למשתמש
-source_revision: c27ee3b193231816878f1c074ff9fc2a086a88c0
+source_revision: 79280ee7a1246dbb8bb16686856608069718bc14
 source_file: docs/en/user_manual/integrations/api/user-api.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-02'
+  'on': '2026-10-09'
 sections:
   introduction: a43c8b800d13fd33
   authentication-change: 06b5c2cd9d9e72a0
   response-size-and-related-records: 1ffc59ad606a87e7
   endpoint-summary: 52c480c59d3669e3
   groups: 0473f1f7fb78f074
-  list-groups: 2b783ec54f27b2ce
+  list-groups: dcbe9217091f8cb2
   get-a-group: dffef659cb92745e
   webhooks: f65fa289f8c1b808
   list-webhooks: a8b52c1a9bfdb16c
@@ -78,7 +78,7 @@ generated:
   response-size-and-related-records: e061a3e9b2df8303
   endpoint-summary: 7c1b34478c62b9fd
   groups: 05c42ae402e79755
-  list-groups: c29e0cd259bf0330
+  list-groups: e1c5dddb03a20542
   get-a-group: 8bd2ae664cbaaa38
   webhooks: 14d9495f3dd01876
   list-webhooks: 860c6cde71d273e9
@@ -228,6 +228,8 @@ curl -H 'Authorization: Bearer YOUR_API_KEY' 'https://www.loomio.com/api/b2/thre
 
 <!-- translation-section: list-groups -->
 
+<!-- translation-correction: {"before":"nt` | מספר מנהלי הקבוצה |\n| `delegates_count` | מספר הנציגים |\n| `discussions_count` | מספר הדיונ","after":"nt` | מספר מנהלי הקבוצה |\n| `discussions_count` | מספר הדיונ"} -->
+
 ### הצגת רשימת קבוצות
 
 החזרת הקבוצות שבהן לחשבון שמפתח ה־API שייך לו יש חברות פעילה.
@@ -255,7 +257,6 @@ curl -H 'Authorization: Bearer YOUR_API_KEY' https://www.loomio.com/api/b2/group
 | `accepted_memberships_count` | מספר החברויות שאושרו |
 | `pending_memberships_count` | מספר ההזמנות הממתינות |
 | `admin_memberships_count` | מספר מנהלי הקבוצה |
-| `delegates_count` | מספר הנציגים |
 | `discussions_count` | מספר הדיונים הנמצאים ישירות בקבוצה |
 | `polls_count` | מספר הסקרים הנמצאים ישירות בקבוצה |
 | `subgroups_count` | מספר תת־הקבוצות |
