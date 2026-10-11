@@ -96,7 +96,7 @@ class Views::NotificationMailer::Poll::Results::Simple < Views::ApplicationMaile
       td(class: "email-table-right") { plain(option[:score_percent].nil? ? '' : option[:score_percent].round.to_s) }
     when 'voters'
       td(class: "email-table-left") do
-        User.where(id: option[:voter_ids]).limit(20).each do |user|
+        User.where(id: option[:voter_ids]).limit(20).preload(uploaded_avatar_attachment: :blob).each do |user|
           render Views::NotificationMailer::Common::Avatar.new(user: user, size: 24)
         end
         if option[:voter_ids].length == 0
