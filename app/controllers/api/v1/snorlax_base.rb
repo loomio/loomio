@@ -112,7 +112,10 @@ class Api::V1::SnorlaxBase < ActionController::Base
   end
 
   def serializer_class
-    record = records_to_serialize.first
+    # Serialize the entire filtered collection. A separate first-row probe adds
+    # an unnecessary ORDER BY id LIMIT 1 that can make PostgreSQL scan the primary
+    # key instead of using the participant/filter indexes on large collections.
+    record = records_to_serialize.to_a.first
     if record.nil?
       TopicItemSerializer
     elsif record.is_a? TopicItem
@@ -123,7 +126,7 @@ class Api::V1::SnorlaxBase < ActionController::Base
   end
 
   def serializer_root
-    record = records_to_serialize.first
+    record = records_to_serialize.to_a.first
     if record.nil?
       controller_name.to_sym
     elsif record.is_a? TopicItem

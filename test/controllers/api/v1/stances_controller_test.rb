@@ -316,6 +316,93 @@ class Api::V1::StancesControllerTest < ActionController::TestCase
     assert_includes stance_ids, @poll.stances.find_by!(participant_id: @admin.id).id
   end
 
+  test "my_stances loads pending votes once without a primary-key first-row probe" do
+    sign_in @admin
+    queries = []
+    subscriber = ActiveSupport::Notifications.subscribe("sql.active_record") do |_name, _started, _finished, _id, payload|
+      sql = payload[:sql]
+      queries << sql if sql.start_with?('SELECT "stances".*') && sql.include?('INNER JOIN "polls"') && !payload[:cached]
+    end
+
+    ActiveRecord::Base.uncached { get :my_stances }
+
+    assert_response :success
+    assert_equal 1, queries.size, queries.join("\n")
+    refute_match(/ORDER BY|LIMIT/, queries.first)
+    assert_includes JSON.parse(response.body).fetch('stances').pluck('id'), @poll.stances.latest.find_by!(participant: @admin).id
+  ensure
+    ActiveSupport::Notifications.unsubscribe(subscriber) if subscriber
+  end
+
+  test "my_stances keeps group and direct pending votes private to their participant" do
+    participant = users(:guest_normal)
+    other = users(:guest_loud)
+    existing = @poll.stances.latest.find_by!(participant: participant).id
+    pending = [topics(:discussion_topic), topics(:direct_topic)].map do |topic|
+      poll = Poll.create!(title: "Pending vote", poll_type: "proposal", topic: topic, author: @admin,
+                          specified_voters_only: true, opened_at: Time.current, closing_at: 1.day.from_now,
+                          poll_option_names: %w[Agree Disagree])
+      Stance.create!(poll: poll, participant: other, reason: "Another participant's private draft")
+      Stance.create!(poll: poll, participant: participant)
+    end
+    sign_in participant
+
+    %w[off until_vote until_closed].each do |hide_results|
+      pending.each { |stance| stance.poll.update!(hide_results: hide_results) }
+      get :my_stances
+      assert_response :success
+      assert_equal (pending.map(&:id) + [existing]).sort, JSON.parse(response.body).fetch('stances').pluck('id').sort
+      assert_equal [participant.id], JSON.parse(response.body).fetch('stances').pluck('participant_id').uniq
+      refute_includes response.body, "Another participant's private draft"
+    end
+
+    get :my_stances, params: {discussion_id: @discussion.id}
+    assert_response :success
+    assert_equal [existing, pending.first.id].sort, JSON.parse(response.body).fetch('stances').pluck('id').sort
+
+    get :my_stances, params: {group_id: @group.id}
+    assert_response :forbidden
+
+    member = users(:member_normal)
+    sign_in member
+    get :my_stances, params: {group_id: @group.id}
+    assert_response :success
+    assert_equal [@poll.stances.latest.find_by!(participant: member).id], JSON.parse(response.body).fetch('stances').pluck('id')
+
+    sign_in users(:alien_loud)
+    get :my_stances, params: {discussion_id: @discussion.id}
+    assert_response :forbidden
+  end
+
+  test "my_stances is empty for a signed-out visitor" do
+    get :my_stances
+
+    assert_response :success
+    assert_empty JSON.parse(response.body).fetch('stances')
+  end
+
+  test "my_stances omits historical revoked and cast votes and polls that are not active" do
+    sign_in @user
+    pending = @poll.stances.latest.find_by!(participant: @user)
+    scenarios = [
+      [pending, {latest: false}],
+      [pending, {revoked_at: Time.current}],
+      [pending, {cast_at: Time.current}],
+      [@poll, {closed_at: Time.current}],
+      [@poll, {discarded_at: Time.current}],
+      [@poll, {opened_at: nil}],
+      [@poll, {closing_at: nil}]
+    ]
+    scenarios.each do |record, attributes|
+      previous = record.attributes.slice(*attributes.keys.map(&:to_s))
+      record.update_columns(attributes)
+      get :my_stances
+      assert_response :success
+      refute_includes JSON.parse(response.body).fetch('stances').pluck('id'), pending.id, attributes.inspect
+      record.update_columns(previous)
+    end
+  end
+
   test "until vote has the same backend response as results off" do
     @poll.update!(hide_results: 'until_vote')
     admin_stance = @poll.stances.find_by!(participant_id: @admin.id)
