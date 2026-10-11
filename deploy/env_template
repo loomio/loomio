@@ -148,6 +148,11 @@ ACTIVE_STORAGE_SERVICE=local
 
 # Sentry DSN
 # SENTRY_PUBLIC_DSN=https://1234567890@sentry.io/123
+# Performance traces default to 5%; profiles sample all sampled server traces.
+# SENTRY_SAMPLE_RATE=0.05
+# SENTRY_PROFILES_SAMPLE_RATE=1.0
+# Sentry logs are off by default. Omit this variable to keep them disabled.
+# SENTRY_ENABLE_LOGS=1
 
 # Plausible metrics
 # PLAUSIBLE_SRC=https://plausible.io
