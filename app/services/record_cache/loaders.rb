@@ -57,9 +57,20 @@ module RecordCache::Loaders
 
       # Resolve creation items in one batch rather than querying each direct
       # notification or reaction while serializing the dropdown and live updates.
-      itemables = records.map(&:read_subject).select { |model| model.respond_to?(:created_topic_item) }.uniq
-      items_by_model = ::TopicItem.where(itemable: itemables).order(:id)
+      subjects = records.map(&:read_subject)
+      poll_dependents = subjects.grep(::Outcome) + subjects.grep(::Stance)
+      ActiveRecord::Associations::Preloader.new(records: poll_dependents, associations: :poll).call
+      itemables = (subjects + poll_dependents.map(&:poll)).select { |model| model.respond_to?(:created_topic_item) }
+      items_by_model = ::TopicItem.where(itemable: itemables.uniq)
+                                 .where(kind: itemables.map(&:created_topic_item_kind).uniq).order(:id)
                                  .group_by { |item| [item.itemable_type, item.itemable_id, item.kind] }
+      # URL helpers also resolve a poll's creation item for polls, outcomes and
+      # stances inside discussions. Populate every instance, including separate
+      # instances of the same poll loaded through different subjects.
+      itemables.each do |model|
+        item = items_by_model[[model.class.base_class.name, model.id, model.created_topic_item_kind.to_s]]&.first
+        model.association(:created_topic_item).target = item
+      end
       cache.scope[:notification_topic_items_by_id] = records.to_h do |notification|
         item = if notification.subject.is_a?(::TopicItem)
           notification.subject
