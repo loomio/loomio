@@ -56,7 +56,7 @@ class NotificationDeliveryRouter
     return [] unless NotificationService.group_enabled?(notification.subject)
 
     recipients = recipients_by_channel.transform_values(&:to_a)
-    recipients["email"] = email_recipients_without_complaints(recipients.fetch("email", []))
+    recipients["email"] = email_recipients_deliverable(recipients.fetch("email", []))
     recipients["push"] = active_push_recipients(recipients.fetch("push"))
     now = Time.current
     deliveries = []
@@ -207,13 +207,13 @@ class NotificationDeliveryRouter
     end
   end
 
-  # Filter the completed email recipients once before creating delivery rows.
-  # ApplicationMailer repeats this check in case a complaint arrives later.
-  def email_recipients_without_complaints(email_recipients)
+  # Filter complaints and reserved demo addresses before creating delivery rows.
+  # ApplicationMailer repeats these checks for queued and directly sent mail.
+  def email_recipients_deliverable(email_recipients)
     user_ids = Array(email_recipients).map(&:id)
     return [] if user_ids.empty?
 
-    User.no_spam_complaints.where(id: user_ids).to_a
+    User.no_spam_complaints.where(id: user_ids).reject { |user| ApplicationMailer.example_address?(user.email) }
   end
 
   # Expand each eligible user into one delivery recipient per active browser

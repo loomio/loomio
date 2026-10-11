@@ -13,6 +13,11 @@ class ApplicationMailer < ActionMailer::Base
   default :from => "\"#{AppConfig.theme[:site_name]}\" <#{NOTIFICATIONS_EMAIL_ADDRESS}>"
   before_action :utm_hash
 
+  # Demo accounts use the reserved .example domain and cannot receive mail.
+  def self.example_address?(email)
+    /@(?:[^@]+\.)?example\z/i.match?(email)
+  end
+
   protected
   def utm_hash
     @utm_hash = { utm_medium: 'email', utm_campaign: action_name }
@@ -42,6 +47,8 @@ class ApplicationMailer < ActionMailer::Base
 
   def rejected_address?(to)
     email = to.match(/<(.+)>/)&.[](1) || to
+    return true if self.class.example_address?(email)
+
     User.where(email: email).where("complaints_count > 0 OR bounces_count > 0").exists?
   end
 end

@@ -542,6 +542,27 @@ class NotificationDeliveryRouterTest < ActiveSupport::TestCase
     assert_equal %w[email in_app], channels_for(expired, @author)
   end
 
+  test "scheduled notifications skip demo email while preserving in app and push delivery" do
+    @author.update!(email: "alex@oatmilk.example")
+    TopicReader.for(user: @author, topic: @poll.topic).set_volume!(email: :normal, push: :normal)
+    subscription = create_push_subscription(
+      user: @author,
+      endpoint: "https://fcm.googleapis.com/fcm/send/demo-author-token",
+      p256dh_key: "p256dh-key",
+      auth_key: "auth-key"
+    )
+
+    assert_no_enqueued_jobs only: DeliverNotificationEmailWorker do
+      notification = route_notification(kind: "poll_expired", subject: @poll)
+      assert_equal [ "in_app" ], channels_for(notification, @author)
+      assert_equal [ "push" ], channels_for(notification, subscription)
+    end
+
+    @author.update!(email: "alex@example.com")
+    notification = route_notification(kind: "poll_expired", subject: @poll)
+    assert_equal %w[email in_app], channels_for(notification, @author)
+  end
+
   test "topic recipient boundaries filter volume, account state, complaints and mentions" do
     discussion = discussions(:discussion)
     recipient_attributes = {
