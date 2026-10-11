@@ -22,6 +22,17 @@ subgroup:
   created_at: <%= 20.days.ago %>
   updated_at: <%= 1.day.ago %>
 
+subgroup_other:
+  key: subgrpother
+  token: subgroupothertoken012345678901
+  name: Other Subgroup
+  handle: testgroup-subgroup-other
+  parent: group
+  is_visible_to_public: false
+  discussion_privacy_options: private_only
+  created_at: <%= 20.days.ago %>
+  updated_at: <%= 1.day.ago %>
+
 public_group:
   key: pubgrpky
   token: publicgrouptoken01234567890123
