@@ -13,9 +13,9 @@ class ApplicationMailer < ActionMailer::Base
   default :from => "\"#{AppConfig.theme[:site_name]}\" <#{NOTIFICATIONS_EMAIL_ADDRESS}>"
   before_action :utm_hash
 
-  # Demo accounts use the reserved .example domain and cannot receive mail.
-  def self.example_address?(email)
-    /@(?:[^@]+\.)?example\z/i.match?(email)
+  # Suppress demo mail in production while allowing development/test previews.
+  def self.demo_email_blocked?(email)
+    Rails.env.production? && /@(?:[^@]+\.)?example\z/i.match?(email)
   end
 
   protected
@@ -47,7 +47,7 @@ class ApplicationMailer < ActionMailer::Base
 
   def rejected_address?(to)
     email = to.match(/<(.+)>/)&.[](1) || to
-    return true if self.class.example_address?(email)
+    return true if self.class.demo_email_blocked?(email)
 
     User.where(email: email).where("complaints_count > 0 OR bounces_count > 0").exists?
   end

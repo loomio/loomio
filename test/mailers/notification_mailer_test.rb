@@ -11,9 +11,11 @@ class NotificationMailerTest < ActionMailer::TestCase
     delivery = NotificationDelivery.create!(notification: notification, recipient: recipient, channel: "email")
     recipient.update!(email: "alex@oatmilk.example")
 
-    assert_no_emails do
-      DeliverNotificationEmailWorker.perform_now(delivery.id)
-      NotificationMailer.topic_item(recipient.id, notification.subject_id).deliver_now
+    Rails.env.stub(:production?, true) do
+      assert_no_emails do
+        DeliverNotificationEmailWorker.perform_now(delivery.id)
+        NotificationMailer.topic_item(recipient.id, notification.subject_id).deliver_now
+      end
     end
     assert delivery.reload.delivered_at?
   end

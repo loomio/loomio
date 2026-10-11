@@ -11,15 +11,26 @@ class DemoEmailDeliveryTest < ActiveSupport::TestCase
       auth_key: "auth-key"
     )
 
-    assert_no_enqueued_jobs only: DeliverNotificationEmailWorker do
+    Rails.env.stub(:production?, true) do
+      assert_no_enqueued_jobs only: DeliverNotificationEmailWorker do
+        notification = route_mention(recipient)
+        assert_equal [ "in_app" ], notification.notification_deliveries.where(recipient: recipient).pluck(:channel)
+        assert_equal [ "push" ], notification.notification_deliveries.where(recipient: subscription).pluck(:channel)
+      end
+      recipient.update!(email: "alex@example.com")
       notification = route_mention(recipient)
-      assert_equal [ "in_app" ], notification.notification_deliveries.where(recipient: recipient).pluck(:channel)
-      assert_equal [ "push" ], notification.notification_deliveries.where(recipient: subscription).pluck(:channel)
+      assert_equal %w[email in_app], notification.notification_deliveries.where(recipient: recipient).order(:channel).pluck(:channel)
     end
+  end
 
-    recipient.update!(email: "alex@example.com")
-    notification = route_mention(recipient)
-    assert_equal %w[email in_app], notification.notification_deliveries.where(recipient: recipient).order(:channel).pluck(:channel)
+  test "non-production previews create email deliveries for demo recipients" do
+    recipient = users(:guest_normal)
+    recipient.update!(email: "alex@oatmilk.example")
+
+    assert_enqueued_jobs 1, only: DeliverNotificationEmailWorker do
+      notification = route_mention(recipient)
+      assert_equal %w[email in_app], notification.notification_deliveries.where(recipient: recipient).order(:channel).pluck(:channel)
+    end
   end
 
   private

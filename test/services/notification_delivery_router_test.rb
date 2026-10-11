@@ -552,15 +552,17 @@ class NotificationDeliveryRouterTest < ActiveSupport::TestCase
       auth_key: "auth-key"
     )
 
-    assert_no_enqueued_jobs only: DeliverNotificationEmailWorker do
-      notification = route_notification(kind: "poll_expired", subject: @poll)
-      assert_equal [ "in_app" ], channels_for(notification, @author)
-      assert_equal [ "push" ], channels_for(notification, subscription)
-    end
+    Rails.env.stub(:production?, true) do
+      assert_no_enqueued_jobs only: DeliverNotificationEmailWorker do
+        notification = route_notification(kind: "poll_expired", subject: @poll)
+        assert_equal [ "in_app" ], channels_for(notification, @author)
+        assert_equal [ "push" ], channels_for(notification, subscription)
+      end
 
-    @author.update!(email: "alex@example.com")
-    notification = route_notification(kind: "poll_expired", subject: @poll)
-    assert_equal %w[email in_app], channels_for(notification, @author)
+      @author.update!(email: "alex@example.com")
+      notification = route_notification(kind: "poll_expired", subject: @poll)
+      assert_equal %w[email in_app], channels_for(notification, @author)
+    end
   end
 
   test "topic recipient boundaries filter volume, account state, complaints and mentions" do
