@@ -129,6 +129,18 @@ describe('discussion form page loading', () => {
     expect(form().exists()).toBe(false);
   });
 
+  it('shows a deleted template lookup as a 404 without building a discussion', async () => {
+    mocks.route.query = {template_id: '12'};
+    const error = Object.assign(new Error('Deleted template'), {status: 404});
+    mocks.fetchTemplateId.mockRejectedValue(error);
+
+    await mountPage();
+
+    expect(mocks.emit).toHaveBeenCalledWith('pageError', error);
+    expect(form().exists()).toBe(false);
+    expect(template.buildDiscussion).not.toHaveBeenCalled();
+  });
+
   it('loads an editable clone and refreshes when the route key changes', async () => {
     mocks.route.params = {key: 'existing-thread'};
     await mountPage();

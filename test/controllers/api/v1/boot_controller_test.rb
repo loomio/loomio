@@ -1,6 +1,19 @@
 require 'test_helper'
 
 class Api::V1::BootControllerTest < ActionController::TestCase
+  test 'site includes the server template settings for signed-out and signed-in users' do
+    [nil, users(:user)].each do |user|
+      sign_in(user) if user
+      get :site, format: :json
+
+      assert_response :success
+      settings = JSON.parse(response.body).fetch('templateSettings')
+      assert_equal DiscussionTemplate::SETTINGS, settings.fetch('discussion_template')
+      assert_equal PollTemplate::SETTINGS, settings.fetch('poll_template')
+      assert_equal PollTemplate::POLL_OPTION_SETTINGS, settings.fetch('poll_option')
+    end
+  end
+
   test 'version prompts older clients to reload across a two-digit minor version' do
     Version.stub(:current, '3.10.0') do
       ['3.9.0', '3.9.1'].each do |version|
