@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_10_02_000000) do
+ActiveRecord::Schema[8.1].define(version: 2026_10_07_000001) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "hstore"
@@ -1026,7 +1026,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_02_000000) do
     t.jsonb "link_previews", default: [], null: false
     t.boolean "none_of_the_above", default: false, null: false
     t.jsonb "option_scores", default: {}, null: false
-    t.integer "participant_id"
+    t.integer "participant_id", null: false
     t.integer "poll_id", null: false
     t.string "reason"
     t.string "reason_format", limit: 10, default: "md", null: false
@@ -1386,6 +1386,10 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_02_000000) do
   add_foreign_key "stance_choices", "poll_options", on_delete: :cascade
   add_foreign_key "stance_choices", "stances", on_delete: :cascade
   add_foreign_key "stances", "polls"
+  add_foreign_key "stances", "users", column: "inviter_id", on_delete: :nullify
+  add_foreign_key "stances", "users", column: "participant_id", on_delete: :cascade
+  add_foreign_key "stances", "users", column: "redactor_id", on_delete: :nullify
+  add_foreign_key "stances", "users", column: "revoker_id", on_delete: :nullify
   add_foreign_key "subscription_update_receipts", "subscriptions"
   add_foreign_key "taggings", "tags", on_delete: :cascade
   add_foreign_key "tags", "groups", on_delete: :cascade

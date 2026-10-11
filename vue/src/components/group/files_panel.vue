@@ -80,6 +80,8 @@ export default
 
     fetch() {
       this.attachmentLoader.fetchRecords({q: this.searchQuery}).then(data => {
+        // RecordLoader resolves a failed request after recording its error.
+        if (this.attachmentLoader.err) { return; }
         this.attachmentIds = uniq(this.attachmentIds.concat((data.attachments || []).map(a => a.id)));
       }).then(() => this.query());
     },

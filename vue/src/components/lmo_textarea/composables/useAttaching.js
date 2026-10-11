@@ -79,7 +79,10 @@ export function useAttaching(model, emit) {
     }, onFailure);
   };
 
+  // The native file dialog can outlive the editor. A selection made after the
+  // editor unmounts has no field to read and no editor to attach to.
   const fileSelected = (filesFieldRef) => {
+    if (!filesFieldRef.value) { return; }
     forEach(filesFieldRef.value.files, file => attachFile({ file }));
   };
 
@@ -89,6 +92,7 @@ export function useAttaching(model, emit) {
   };
 
   const imageSelected = (imagesFieldRef, editor) => {
+    if (!imagesFieldRef.value) { return; }
     Array.from(imagesFieldRef.value.files || []).forEach(file => {
       if ((/image|video/i).test(file.type)) {
         insertImage(file, editor.value.view, null, attachImageFile);

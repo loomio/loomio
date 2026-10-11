@@ -22,17 +22,23 @@ class NotificationQuery
       subject.respond_to?(:discarded?) && subject.discarded?
     end
 
+    authorization_subjects = notifications.to_h do |notification|
+      [notification.id, authorization_subject(notification.subject_model)]
+    end
+
     topic_ids = notifications.filter_map do |notification|
       notification_topic_id(notification)
-    end.uniq
+    end
+    topic_ids.concat(authorization_subjects.values.grep(Discussion).map(&:topic_id))
+    topic_ids.uniq!
     accessible_topic_ids = TopicQuery.visible_to(user: user)
                                      .unscope(:includes)
                                      .where(id: topic_ids)
                                      .pluck(:id)
                                      .to_set
 
-    poll_ids = notifications.filter_map do |notification|
-      notification_poll_id(notification.subject_model)
+    poll_ids = authorization_subjects.values.filter_map do |subject|
+      notification_poll_id(subject)
     end.uniq
     accessible_poll_ids = PollQuery.visible_to(user: user)
                                    .unscope(:includes)
@@ -41,9 +47,12 @@ class NotificationQuery
                                    .to_set
 
     notifications.select do |notification|
-      subject = notification.subject_model
+      subject = authorization_subjects.fetch(notification.id)
+      next false unless subject
       topic_id = notification_topic_id(notification)
       next false if topic_id && !accessible_topic_ids.include?(topic_id)
+
+      next accessible_topic_ids.include?(subject.topic_id) if subject.is_a?(Discussion)
 
       poll_id = notification_poll_id(subject)
       next accessible_poll_ids.include?(poll_id) if poll_id
@@ -102,6 +111,19 @@ class NotificationQuery
     subject.topic_id if subject.respond_to?(:topic_id)
   end
   private_class_method :notification_topic_id
+
+  # Mirror the :show delegation in Ability::Reaction, Comment and Topic before
+  # using the batched Discussion/Poll checks. A discarded reaction target must
+  # still fail authorization; operational subjects retain their own abilities.
+  def self.authorization_subject(subject)
+    case subject
+    when Reaction then authorization_subject(subject.reactable)
+    when Comment then authorization_subject(subject.topic) if subject.kept?
+    when Topic then authorization_subject(subject.topicable)
+    else subject
+    end
+  end
+  private_class_method :authorization_subject
 
   def self.notification_poll_id(subject)
     case subject

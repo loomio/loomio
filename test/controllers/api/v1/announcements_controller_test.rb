@@ -1234,19 +1234,14 @@ class Api::V1::AnnouncementsControllerTest < ActionController::TestCase
   end
 
   test "group create invite with multiple groups" do
-    hex = SecureRandom.hex(4)
-    member = User.create!(name: "member#{hex}", email: "member#{hex}@example.com", username: "member#{hex}")
-    subgroup = Group.create!(name: "Test Sub #{hex}", parent: @group, handle: "testgroup-sub#{hex}")
-    subgroup2 = Group.create!(name: "Test Sub2 #{hex}", parent: @group, handle: "testgroup-sub2#{hex}")
-
-    @group.add_member!(member, inviter: @admin)
-    subgroup.add_admin!(@admin)
-    subgroup2.add_admin!(@admin)
+    member = users(:member)
+    subgroup = groups(:subgroup)
+    subgroup_other = groups(:subgroup_other)
 
     post :create, params: {
       group_id: @group.id,
       recipient_user_ids: [member.id],
-      invited_group_ids: [subgroup.id, subgroup2.id]
+      invited_group_ids: [subgroup.id, subgroup_other.id]
     }
 
     assert_response :success
@@ -1269,12 +1264,9 @@ class Api::V1::AnnouncementsControllerTest < ActionController::TestCase
   end
 
   test "group create invites to subgroup" do
-    hex = SecureRandom.hex(4)
-    member = User.create!(name: "member#{hex}", email: "member#{hex}@example.com", username: "member#{hex}")
-    subgroup = Group.create!(name: "Test Sub #{hex}", parent: @group, handle: "testgroup-sub#{hex}")
+    member = users(:member)
+    subgroup = groups(:subgroup)
 
-    @group.add_member!(member)
-    subgroup.add_admin!(@admin)
     subgroup.add_member!(member)
 
     post :create, params: { group_id: subgroup.id, recipient_user_ids: [member.id] }

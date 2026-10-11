@@ -13,6 +13,11 @@ class ApplicationMailer < ActionMailer::Base
   default :from => "\"#{AppConfig.theme[:site_name]}\" <#{NOTIFICATIONS_EMAIL_ADDRESS}>"
   before_action :utm_hash
 
+  # Suppress demo mail in production while allowing development/test previews.
+  def self.demo_email_blocked?(email)
+    Rails.env.production? && /@(?:[^@]+\.)?example\z/i.match?(email)
+  end
+
   protected
   def utm_hash
     @utm_hash = { utm_medium: 'email', utm_campaign: action_name }
@@ -42,6 +47,8 @@ class ApplicationMailer < ActionMailer::Base
 
   def rejected_address?(to)
     email = to.match(/<(.+)>/)&.[](1) || to
+    return true if self.class.demo_email_blocked?(email)
+
     User.where(email: email).where("complaints_count > 0 OR bounces_count > 0").exists?
   end
 end

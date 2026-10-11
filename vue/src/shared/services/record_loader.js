@@ -23,6 +23,8 @@ export default class RecordLoader {
   fetchRecords(opts) {
     if (opts == null) { opts = {}; }
     this.loading = true;
+    this.err = null;
+    this.status = null;
     this.params = defaults({}, opts, this.params);
     return Records[camelCase(this.collection)].fetch({
       path: this.path,
