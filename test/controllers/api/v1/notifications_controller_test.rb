@@ -90,8 +90,10 @@ class Api::V1::NotificationsControllerTest < ActionController::TestCase
     end
 
     record_query_counts = Hash.new(0)
+    visibility_queries = []
     subscriber = ActiveSupport::Notifications.subscribe("sql.active_record") do |_name, _started, _finished, _id, payload|
       sql = payload[:sql].to_s
+      visibility_queries << sql if sql.include?('AS topics') || sql.include?('LEFT OUTER JOIN topics t ON t.id = polls.topic_id')
       if match = sql.match(/SELECT "(topics|groups|discussions|polls|comments)"\.\*/)
         record_query_counts[match[1]] += 1
       end
@@ -102,6 +104,7 @@ class Api::V1::NotificationsControllerTest < ActionController::TestCase
 
     assert_response :success
     assert record_query_counts.values.all? { |count| count <= 4 }, record_query_counts.inspect
+    assert_equal 2, visibility_queries.length, visibility_queries.join("\n")
   ensure
     ActiveSupport::Notifications.unsubscribe(subscriber) if subscriber
   end
