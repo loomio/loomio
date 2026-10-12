@@ -1,10 +1,10 @@
 ---
 title: שימוש בשרשורים
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
+source_revision: 3c911ddf85c4df37787b3aee088e6a04dafe0930
 source_file: docs/en/user_manual/discussions/using_discussions/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-12'
 sections:
   introduction: fe8ab54791a49e01
   thread-anatomy: fca9ec9af6718a99
@@ -18,7 +18,7 @@ sections:
   notified: 6139bdcaae32a1db
   actions: c015c12999c5be2f
   print: 8fac34ad532e8cb5
-  markdown: 374ef87d825b66b1
+  markdown: e6708fb7422f2c4e
   thread-settings-and-display: b05e5c1364ceee12
   pin-or-unpin-a-thread: 1e17228e5de01a1e
   move-a-thread: 8490a5a22970925c
@@ -37,7 +37,7 @@ generated:
   notified: 7ca96a31d5e4916f
   actions: 4abaa67a88c8ef75
   print: a78e02e851589a56
-  markdown: 6741cf5be5870432
+  markdown: ecc0215f05f0a961
   thread-settings-and-display: 44ffcf237239059b
   pin-or-unpin-a-thread: d1557b5934abb66e
   move-a-thread: 80077f6c5a1fc0a7
@@ -49,7 +49,7 @@ needs_review:
   introduction: use "החלטה" instead of "דיון" for "decision"
   discussion-context: use "החלטה" instead of "דיון" for "decision"
   email-notifications-for-this-thread: use "בחירה" instead of "לבחור" for "Choose"
-  markdown: use "הקשר" instead of "תוכן" for "context"; use "החלטה" instead of "דיון" for "decision"
+  markdown: use "הקשר" instead of "תוכן" for "context"
 ---
 
 <!-- translation-section: introduction -->
@@ -220,7 +220,7 @@ needs_review:
 
 ![](../discussion_management/copy_markdown_menu.png)
 
-המסמך מתחיל בבלוק מטא־נתונים בפורמט YAML המכיל את מפתח השרשור, הקבוצה, תאריך היצירה, תאריך הפעילות האחרונה והתגיות. לאחר מכן מופיעים הקשר הדיון וכל תגובה, סקר, הצבעה ומסקנה, באותו סדר ובאותו מבנה קינון כמו בתצוגת השרשור.
+המסמך מתחיל בבלוק מטא־נתונים בפורמט YAML המכיל את מפתח השרשור, כתובת ה־URL המקורית, הקבוצה, תאריך היצירה, תאריך הפעילות האחרונה והתגיות. ניתן להשתמש בכתובת ה־URL כדי לחזור לשרשור ב־Loomio. לאחר מכן מופיעים הקשר הדיון וכל תגובה, סקר, הצבעה ומסקנה, באותו סדר ובאותו מבנה קינון כמו בתצוגת השרשור.
 
 כל סקר מופיע כסעיף. תגובות, הצבעות ומסקנות מוצגות כציטוטים, ותשובות מוצגות כציטוטים מתחת לפריט שאליו הן משיבות. כך ניתן לראות היכן הטקסט של כל אדם מתחיל ומסתיים. כל ציטוט מתחיל בשורה המציגה את שם האדם, מועד הפרסום, מספר הפריט בשרשור ותגובות אימוג׳י, אם ישנן. הצבעות ומסקנות מסומנות גם לפי סוגן. מפתח השרשור ומספר הפריט מזהים כל פריט ב־Loomio.
 
@@ -231,6 +231,7 @@ Loomio מחיל את אותם כללי נראות שחלים בשרשור. תו�
 ```markdown
 ---
 key: "fi2TAgeC"
+url: "https://www.loomio.com/d/fi2TAgeC/returnable-bottles-for-cafe-customers"
 group: "Oatmilk Cooperative"
 created: "2026-09-10T23:28:30Z"
 last_activity: "2026-09-10T23:28:30Z"

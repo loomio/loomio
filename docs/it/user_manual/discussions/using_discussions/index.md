@@ -1,10 +1,10 @@
 ---
 title: Usare le discussioni
-source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
+source_revision: 3c911ddf85c4df37787b3aee088e6a04dafe0930
 source_file: docs/en/user_manual/discussions/using_discussions/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-12'
 sections:
   introduction: fe8ab54791a49e01
   thread-anatomy: fca9ec9af6718a99
@@ -18,7 +18,7 @@ sections:
   notified: 6139bdcaae32a1db
   actions: c015c12999c5be2f
   print: 8fac34ad532e8cb5
-  markdown: 374ef87d825b66b1
+  markdown: e6708fb7422f2c4e
   thread-settings-and-display: b05e5c1364ceee12
   pin-or-unpin-a-thread: 1e17228e5de01a1e
   move-a-thread: 8490a5a22970925c
@@ -37,7 +37,7 @@ generated:
   notified: afc4d72f20379934
   actions: 3734d406e6d88519
   print: 9906ecce47bb8d69
-  markdown: 9b4d98e6830c49a1
+  markdown: 433626b25e862f78
   thread-settings-and-display: 8f4144f396e2a271
   pin-or-unpin-a-thread: 17556b3b4c703f8f
   move-a-thread: 4f09c504b12c910b
@@ -215,7 +215,7 @@ Seleziona **Markdown** per salvare l'intera conversazione come Markdown struttur
 
 ![](../discussion_management/copy_markdown_menu.png)
 
-Il documento inizia con un'intestazione YAML che contiene la chiave della conversazione, il gruppo, la data di creazione, la data dell'ultima attività e i tag. Seguono il contesto della discussione e tutti i commenti, i sondaggi, i voti e le conclusioni, nello stesso ordine e con gli stessi livelli di annidamento della visualizzazione in thread.
+Il documento inizia con un'intestazione YAML che contiene la chiave della conversazione, l'URL originale, il gruppo, la data di creazione, la data dell'ultima attività e i tag. Usa l'URL per tornare alla conversazione in Loomio. Seguono il contesto della discussione e tutti i commenti, i sondaggi, i voti e le conclusioni, nello stesso ordine e con gli stessi livelli di annidamento della visualizzazione in thread.
 
 Ogni sondaggio è una sezione. Commenti, voti e conclusioni sono riportati come citazioni, e le risposte sono citate sotto l'elemento a cui rispondono. Questo mostra dove inizia e finisce il testo di ciascuna persona. Ogni citazione inizia con una riga che indica la persona, quando ha pubblicato, il numero dell'elemento nella conversazione e le eventuali reazioni. I voti e le conclusioni sono anche indicati come tali. La chiave della conversazione e il numero dell'elemento identificano ogni elemento in Loomio.
 
@@ -226,6 +226,7 @@ Per esempio, una discussione che contiene un commento, reazioni, una proposta, d
 ```markdown
 ---
 key: "fi2TAgeC"
+url: "https://www.loomio.com/d/fi2TAgeC/returnable-bottles-for-cafe-customers"
 group: "Oatmilk Cooperative"
 created: "2026-09-10T23:28:30Z"
 last_activity: "2026-09-10T23:28:30Z"

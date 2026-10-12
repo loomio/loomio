@@ -1,4 +1,6 @@
 class ThreadMarkdownService
+  include PrettyUrlHelper
+
   def self.render(topic:, user:)
     new(topic, user).render
   end
@@ -31,6 +33,7 @@ class ThreadMarkdownService
     record = topic.topicable
     fields = {
       key: record.key,
+      url: polymorphic_url(record),
       group: topic.group_id.present? ? topic.group.name : nil,
       created: timestamp(record.created_at),
       last_activity: timestamp(topic.last_activity_at),

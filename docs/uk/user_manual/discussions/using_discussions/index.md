@@ -1,10 +1,10 @@
 ---
 title: Користування темами
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
+source_revision: 3c911ddf85c4df37787b3aee088e6a04dafe0930
 source_file: docs/en/user_manual/discussions/using_discussions/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-12'
 sections:
   introduction: fe8ab54791a49e01
   thread-anatomy: fca9ec9af6718a99
@@ -18,7 +18,7 @@ sections:
   notified: 6139bdcaae32a1db
   actions: c015c12999c5be2f
   print: 8fac34ad532e8cb5
-  markdown: 374ef87d825b66b1
+  markdown: e6708fb7422f2c4e
   thread-settings-and-display: b05e5c1364ceee12
   pin-or-unpin-a-thread: 1e17228e5de01a1e
   move-a-thread: 8490a5a22970925c
@@ -37,7 +37,7 @@ generated:
   notified: 117bd984df1a1695
   actions: 2aee56bf5b9ce943
   print: 8fe89975fc6f1603
-  markdown: 9d52f52285748aaa
+  markdown: 350e6664d43f1b13
   thread-settings-and-display: b8126bdb685def53
   pin-or-unpin-a-thread: 534e7035423407a5
   move-a-thread: 6f5d4d00322a74e4
@@ -50,8 +50,8 @@ needs_review:
   discussion-context: use "висновок" instead of "рішення" for "outcome"
   navigation: check the interface label "**Новий для тебе**" for "**New to you**"
   email-notifications-for-this-thread: use "Вибір" instead of "Виберіть" for "Choose"
-  markdown: check the interface label "**Згоден**" for "**Agree**"; use "результати" instead of "висновок" for "results"; use "Вибір" instead of "Виберіть" for "Choose"
   thread-settings-and-display: use "Вибір" instead of "Виберіть" for "Choose"
+  markdown: check the interface label "**Згоден**" for "**Agree**"; use "Вибір" instead of "Виберіть" for "Choose"
 ---
 
 <!-- translation-section: introduction -->
@@ -218,11 +218,11 @@ needs_review:
 
 ### Markdown
 
-Виберіть **Markdown**, щоб зберегти всю тему як структурований Markdown. Виберіть **Копіювати Markdown**, щоб скопіювати її до буфера обміну, або **Завантажити Markdown**, щоб зберегти її як файл `.md`. Ви можете використати його для протоколу зустрічі, документа, архіву рішень, помічника на основі ШІ або іншого інструмента, що підтримує Markdown.
+Виберіть **Markdown**, щоб зберегти всю тему як структурований Markdown. Виберіть **Копіювати Markdown**, щоб скопіювати її до буфера обміну, або **Завантажити Markdown**, щоб зберегти її як файл `.md`. Можна використати його для протоколу зустрічі, документа, архіву рішень, помічника на основі ШІ або іншого інструмента, що підтримує Markdown.
 
 ![](../discussion_management/copy_markdown_menu.png)
 
-Документ починається з блоку метаданих YAML, що містить ключ теми, групу, дату створення, дату останньої активності й теги. Далі йдуть контекст обговорення та всі коментарі, опитування, голоси й висновки в тому самому порядку та з тією самою вкладеністю, що й у вигляді з відповідями під відповідними дописами.
+Документ починається з блоку метаданих YAML, що містить ключ теми, початкову URL-адресу, групу, дату створення, дату останньої активності й теги. Використовуйте URL-адресу, щоб повернутися до теми в Loomio. Далі йдуть контекст обговорення та всі коментарі, опитування, голоси й висновки в тому самому порядку та з тією самою вкладеністю, що й у вигляді з відповідями під відповідними дописами.
 
 Кожне опитування є окремим розділом. Коментарі, голоси й висновки оформлено як цитати, а відповіді — як вкладені цитати під дописами, на які вони відповідають. Це показує, де починається й закінчується текст кожної людини. Кожна цитата починається з рядка, у якому вказано автора, час публікації, номер допису в темі та реакції, якщо вони є. Голоси й висновки також мають позначення свого типу. Ключ теми та номер допису ідентифікують кожен допис у Loomio.
 
@@ -233,6 +233,7 @@ Loomio застосовує ті самі правила видимості, щ�
 ```markdown
 ---
 key: "fi2TAgeC"
+url: "https://www.loomio.com/d/fi2TAgeC/returnable-bottles-for-cafe-customers"
 group: "Oatmilk Cooperative"
 created: "2026-09-10T23:28:30Z"
 last_activity: "2026-09-10T23:28:30Z"

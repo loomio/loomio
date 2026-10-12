@@ -168,7 +168,7 @@ Select **Markdown** to save the complete thread as structured Markdown. Choose *
 
 ![](../discussion_management/copy_markdown_menu.png)
 
-The document begins with YAML front matter containing the thread key, group, creation date, last activity date, and tags. It then includes the discussion context and every comment, poll, vote, and outcome in the same order and nesting as the threaded view.
+The document begins with YAML front matter containing the thread key, original URL, group, creation date, last activity date, and tags. Use the URL to return to the thread in Loomio. It then includes the discussion context and every comment, poll, vote, and outcome in the same order and nesting as the threaded view.
 
 Each poll is a section. Comments, votes, and outcomes are quoted, and replies are quoted beneath the item they answer. This shows where each person's text begins and ends. Each quote starts with one line showing the person, when they posted, the item's number in the thread, and any reactions. Votes and outcomes also say what they are. The thread key and item number identify each item in Loomio.
 
@@ -179,6 +179,7 @@ For example, a discussion containing a comment, reactions, a proposal, two votes
 ```markdown
 ---
 key: "fi2TAgeC"
+url: "https://www.loomio.com/d/fi2TAgeC/returnable-bottles-for-cafe-customers"
 group: "Oatmilk Cooperative"
 created: "2026-09-10T23:28:30Z"
 last_activity: "2026-09-10T23:28:30Z"

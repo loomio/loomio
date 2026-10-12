@@ -1,10 +1,10 @@
 ---
 title: Utiliser les fils de discussion
-source_revision: c27ee3b193231816878f1c074ff9fc2a086a88c0
+source_revision: 3c911ddf85c4df37787b3aee088e6a04dafe0930
 source_file: docs/en/user_manual/discussions/using_discussions/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-02'
+  'on': '2026-10-12'
 sections:
   introduction: fe8ab54791a49e01
   thread-anatomy: fca9ec9af6718a99
@@ -18,7 +18,7 @@ sections:
   notified: 6139bdcaae32a1db
   actions: c015c12999c5be2f
   print: 8fac34ad532e8cb5
-  markdown: 374ef87d825b66b1
+  markdown: e6708fb7422f2c4e
   thread-settings-and-display: b05e5c1364ceee12
   pin-or-unpin-a-thread: 1e17228e5de01a1e
   move-a-thread: 8490a5a22970925c
@@ -37,7 +37,7 @@ generated:
   notified: 6a9b539b8cbe56b5
   actions: c27c64d76d724643
   print: 0f31c6373354dabb
-  markdown: 1ed7a795c2451405
+  markdown: 90ab2b5dd2da6ed9
   thread-settings-and-display: dbad2a7ee3fbb369
   pin-or-unpin-a-thread: 3cb7608b7a17df07
   move-a-thread: 3015baa5dae6c908
@@ -217,7 +217,7 @@ Sélectionnez **Markdown** pour enregistrer le fil complet au format Markdown st
 
 ![](../discussion_management/copy_markdown_menu.png)
 
-Le document commence par un en-tête YAML contenant la clé du fil, le groupe, la date de création, la date de dernière activité et les tags. Il comprend ensuite le contexte de la discussion et chaque commentaire, sondage, vote et conclusion, dans le même ordre et avec la même imbrication que dans la vue en fils.
+Le document commence par un en-tête YAML contenant la clé du fil, l’URL d’origine, le groupe, la date de création, la date de dernière activité et les tags. Utilisez l’URL pour revenir au fil dans Loomio. Il comprend ensuite le contexte de la discussion et chaque commentaire, sondage, vote et conclusion, dans le même ordre et avec la même imbrication que dans la vue en fils.
 
 Chaque sondage constitue une section. Les commentaires, votes et conclusions sont présentés sous forme de citations, et les réponses sont citées sous l’élément auquel elles répondent. Cela permet de voir où commence et où se termine le texte de chaque personne. Chaque citation commence par une ligne indiquant la personne, la date et l’heure de publication, le numéro de l’élément dans le fil et les éventuelles réactions. Les votes et les conclusions sont également identifiés comme tels. La clé du fil et le numéro de l’élément identifient chaque élément dans Loomio.
 
@@ -228,6 +228,7 @@ Par exemple, une discussion contenant un commentaire, des réactions, une propos
 ```markdown
 ---
 key: "fi2TAgeC"
+url: "https://www.loomio.com/d/fi2TAgeC/returnable-bottles-for-cafe-customers"
 group: "Oatmilk Cooperative"
 created: "2026-09-10T23:28:30Z"
 last_activity: "2026-09-10T23:28:30Z"

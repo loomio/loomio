@@ -1,10 +1,10 @@
 ---
 title: Témák használata
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
+source_revision: 3c911ddf85c4df37787b3aee088e6a04dafe0930
 source_file: docs/en/user_manual/discussions/using_discussions/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-12'
 sections:
   introduction: fe8ab54791a49e01
   thread-anatomy: fca9ec9af6718a99
@@ -18,7 +18,7 @@ sections:
   notified: 6139bdcaae32a1db
   actions: c015c12999c5be2f
   print: 8fac34ad532e8cb5
-  markdown: 374ef87d825b66b1
+  markdown: e6708fb7422f2c4e
   thread-settings-and-display: b05e5c1364ceee12
   pin-or-unpin-a-thread: 1e17228e5de01a1e
   move-a-thread: 8490a5a22970925c
@@ -37,7 +37,7 @@ generated:
   notified: 7046f5aa76c8ea31
   actions: 01e122860b46a4af
   print: 771c0dbde4b51a61
-  markdown: d938722c2d8f8df1
+  markdown: bc131d4b8870548f
   thread-settings-and-display: 5358a272e7860c1a
   pin-or-unpin-a-thread: 85f49bd712d7c920
   move-a-thread: c28c9825e4fd4e31
@@ -217,7 +217,7 @@ Válaszd ki a **Markdown** lehetőséget a teljes szál strukturált Markdown fo
 
 ![](../discussion_management/copy_markdown_menu.png)
 
-A dokumentum egy YAML-metaadatblokkal kezdődik, amely tartalmazza a szál kulcsát, a csoportot, a létrehozás dátumát, az utolsó aktivitás dátumát és a címkéket. Ezt követi a beszélgetés leírása és minden hozzászólás, szavazás, szavazat és következtetés, a szálas nézettel megegyező sorrendben és egymásba ágyazással.
+A dokumentum egy YAML-metaadatblokkal kezdődik, amely tartalmazza a szál kulcsát, az eredeti URL-t, a csoportot, a létrehozás dátumát, az utolsó aktivitás dátumát és a címkéket. Az URL segítségével visszatérhetsz a szálhoz a Loomióban. Ezt követi a beszélgetés leírása és minden hozzászólás, szavazás, szavazat és következtetés, a szálas nézettel megegyező sorrendben és egymásba ágyazással.
 
 Minden szavazás külön szakaszt alkot. A hozzászólások, szavazatok és következtetések idézetként jelennek meg, a válaszok pedig az alatt az elem alatt szerepelnek idézetként, amelyre válaszolnak. Így látható, hol kezdődik és végződik az egyes résztvevők szövege. Minden idézet egy sorral kezdődik, amely megadja a személyt, a közzététel időpontját, az elem szálon belüli sorszámát és az esetleges reakciókat. A szavazatok és következtetések típusát is jelzi. A szál kulcsa és az elem sorszáma azonosítja az egyes elemeket a Loomióban.
 
@@ -228,6 +228,7 @@ Például egy hozzászólást, reakciókat, javaslatot, két szavazatot, egy vá
 ```markdown
 ---
 key: "fi2TAgeC"
+url: "https://www.loomio.com/d/fi2TAgeC/returnable-bottles-for-cafe-customers"
 group: "Oatmilk Cooperative"
 created: "2026-09-10T23:28:30Z"
 last_activity: "2026-09-10T23:28:30Z"
