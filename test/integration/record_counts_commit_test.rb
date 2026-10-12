@@ -13,7 +13,8 @@ class RecordCountsCommitTest < ActiveSupport::TestCase
   test "membership commit updates counts without saving unrelated group or user changes" do
     group_name = @group.name
     user_name = @user.name
-    group_updated_at = @group.updated_at
+    # Compare persisted timestamps at database precision.
+    group_updated_at = @group.reload.updated_at
     user_updated_at = @user.updated_at
     user_memberships_count = @user.memberships_count
     @group.name = "Unsaved group name"
