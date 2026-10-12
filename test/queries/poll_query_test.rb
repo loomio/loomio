@@ -86,6 +86,88 @@ class PollQueryTest < ActiveSupport::TestCase
     assert_empty PollQuery.visible_to(user: @user)
   end
 
+  test "leaving a group removes authored STV polls from visibility and relevance" do
+    author = users(:member_normal)
+    poll = PollService.create(params: {
+      title: 'Working group election', poll_type: 'stv', group_id: @group.id,
+      poll_option_names: %w[Alex Blair Casey], stv_seats: 1,
+      closing_at: 3.days.from_now
+    }, actor: author)
+    assert PollQuery.relevant_to(user: author).exists?(poll.id)
+    assert_not poll.stances.latest.decided.exists?(participant_id: author.id)
+
+    MembershipService.revoke(membership: @group.membership_for(author), actor: author)
+    author.reload
+
+    [nil, Time.current].each do |closed_at|
+      poll.update_column(:closed_at, closed_at)
+      assert_not PollQuery.visible_to(user: author).exists?(poll.id)
+      assert_not PollQuery.visible_to(user: author, chain: Poll.all).exists?(poll.id)
+      assert_not PollQuery.relevant_to(user: author).exists?(poll.id)
+      assert_not PollQuery.relevant_to(user: author, group_ids: [@group.id]).exists?(poll.id)
+      assert_not author.can?(:show, poll)
+      assert_not author.can?(:export, poll)
+      assert users(:admin).can?(:show, poll)
+    end
+  end
+
+  test "authorship does not bypass the group topic access matrix" do
+    topics(:discussion_topic).update!(allow_concurrent_polls: true)
+    users(:alien).update!(is_admin: true)
+    roles = %i[admin member_normal guest_normal guest_admin_normal alien
+               non_guest_loud former_member_loud former_guest_loud
+               inactive_member_loud inactive_guest_loud]
+
+    [false, true].each do |anonymous|
+      poll = PollService.create(params: {
+        title: 'Private group poll', poll_type: 'proposal',
+        topic_id: topics(:discussion_topic).id, anonymous: anonymous,
+        poll_option_names: %w[agree disagree], closing_at: 3.days.from_now
+      }, actor: users(:admin))
+      hide_results_modes = anonymous ? %w[until_closed] : %w[off until_vote until_closed]
+
+      hide_results_modes.each do |hide_results|
+        [nil, Time.current].each do |closed_at|
+          poll.update_columns(hide_results: hide_results, closed_at: closed_at)
+          roles.each do |role|
+            author = users(role)
+            poll.update_column(:author_id, author.id)
+            expected = TopicQuery.visible_to(user: author).exists?(poll.topic_id)
+            label = "#{role}, anonymous=#{anonymous}, results=#{hide_results}, closed=#{closed_at.present?}"
+            assert_equal expected, PollQuery.visible_to(user: author).exists?(poll.id), label
+            assert_equal expected, PollQuery.relevant_to(user: author).exists?(poll.id), label
+            assert_equal expected, author.can?(:show, poll), label
+          end
+          assert_not LoggedOutUser.new.can?(:show, poll)
+        end
+      end
+    end
+  end
+
+  test "direct poll authors retain visibility and relevance without a group membership" do
+    assert_nil @authored.group_id
+    assert PollQuery.visible_to(user: @user).exists?(@authored.id)
+    assert PollQuery.relevant_to(user: @user).exists?(@authored.id)
+    assert @user.can?(:show, @authored)
+    assert_not users(:alien).can?(:show, @authored)
+  end
+
+  test "guest tokens grant poll access only for active guest readers" do
+    %i[guest_normal_reader direct_guest_normal_reader
+       former_guest_loud_reader direct_former_guest_reader
+       non_guest_loud_reader direct_non_guest_reader].each do |role|
+      reader = topic_readers(role)
+      poll = make_poll(topic: reader.topic)
+      viewer = LoggedOutUser.new(params: {topic_reader_token: reader.token})
+      expected = reader.revoked_at.nil? && reader.guest?
+
+      assert_equal expected, PollQuery.visible_to(user: viewer).exists?(poll.id), role
+      assert_equal expected, PollQuery.relevant_to(user: viewer).exists?(poll.id), role
+      assert_equal expected, viewer.can?(:show, poll), role
+      assert_not viewer.can?(:vote_in, poll), role
+    end
+  end
+
   test "dashboard visibility includes polls for topic reader guests" do
     hex = SecureRandom.hex(4)
     private_group = Group.create!(name: "Guest poll group #{hex}", handle: "guestpollgroup#{hex}")
@@ -137,6 +219,12 @@ class PollQueryTest < ActiveSupport::TestCase
     assert_includes PollQuery.visible_to(user: @user), public_poll
     refute_includes PollQuery.relevant_to(user: @user), public_poll
     assert_includes PollQuery.relevant_to(user: @user, group_ids: [public_group.id]), public_poll
+
+    MembershipService.revoke(membership: public_group.membership_for(public_author), actor: public_author)
+    public_author.reload
+    assert PollQuery.visible_to(user: public_author).exists?(public_poll.id)
+    assert_not PollQuery.relevant_to(user: public_author).exists?(public_poll.id)
+    assert PollQuery.relevant_to(user: public_author, group_ids: [public_group.id]).exists?(public_poll.id)
   end
 
   test "subgroup poll visibility matches the fixture access matrix for parent members" do

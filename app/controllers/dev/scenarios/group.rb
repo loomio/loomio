@@ -307,6 +307,19 @@ module Dev::Scenarios::Group
     redirect_to group_path(create_group)
   end
 
+  def setup_group_with_authored_stv_poll
+    group = create_group
+    group.add_admin! emilio
+    create_another_group
+    PollService.create(params: {
+      title: 'Working group election', poll_type: 'stv', group_id: group.id,
+      poll_option_names: %w[Alex Blair Casey], stv_seats: 1,
+      closing_at: 3.days.from_now
+    }, actor: patrick)
+    sign_in patrick
+    redirect_to group_path(group)
+  end
+
   def setup_group_with_no_coordinators
     create_group
     @group.admin_memberships.each{|m| m.update(admin: false)}

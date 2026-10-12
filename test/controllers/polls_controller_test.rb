@@ -37,6 +37,22 @@ class PollsControllerTest < ActionController::TestCase
     assert_not_includes response.body, @poll.title
   end
 
+  test "former group members cannot open or export their own private polls" do
+    @discussion.topic.update!(private: true)
+    MembershipService.revoke(membership: @group.membership_for(@user), actor: @user)
+    sign_in @user.reload
+
+    get :show, params: {key: @poll.key}
+    assert_response :forbidden
+    assert_not_includes response.body, @poll.title
+
+    %i[html csv blt].each do |format|
+      get :export, params: {key: @poll.key}, format: format
+      assert_response :redirect
+      assert_not_includes response.body, @poll.title
+    end
+  end
+
   test "displays html export" do
     sign_in @user
     get :export, params: { key: @poll.key }

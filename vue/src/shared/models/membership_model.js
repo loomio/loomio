@@ -81,6 +81,24 @@ export default class MembershipModel extends BaseModel {
     return this.volumeEmail === 'quiet' && this.volumePush === 'quiet';
   }
 
+  destroy() {
+    const groupIds = this.group().selfAndSubgroupIds();
+    return super.destroy().then(response => {
+      if (this.userId !== AppConfig.currentUserId) { return response; }
+
+      // Leaving revokes topic access and active votes throughout the group tree.
+      // Clear cached eligibility after success so vote reminders disappear now.
+      invokeMap(Records.memberships.find({userId: this.userId, groupId: {$in: groupIds}}), 'remove');
+      Records.topics.find({groupId: {$in: groupIds}}).forEach(topic => {
+        topic.update({readerGuest: false, readerAdmin: false});
+      });
+      const polls = Records.polls.find({groupId: {$in: groupIds}}).filter(poll => poll.isVotable());
+      polls.forEach(poll => poll.update({myStanceId: null, anonymousVoterEligible: false}));
+      invokeMap(Records.stances.find({participantId: this.userId, pollId: {$in: polls.map(poll => poll.id)}}), 'remove');
+      return response;
+    });
+  }
+
   beforeRemove() {
     return invokeMap(Records.topicItems.find({'itemableType': 'membership', 'itemableId': this.id}), 'remove');
   }

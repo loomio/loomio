@@ -11,6 +11,26 @@ class Api::V1::PollsControllerTest < ActionController::TestCase
   end
 
   # Show tests
+  test "former group members cannot list or open their authored polls" do
+    author = users(:member_normal)
+    poll = PollService.create(params: {
+      title: 'Working group election', poll_type: 'stv', group_id: @group.id,
+      poll_option_names: %w[Alex Blair Casey], stv_seats: 1,
+      closing_at: 3.days.from_now
+    }, actor: author)
+    MembershipService.revoke(membership: @group.membership_for(author), actor: author)
+    sign_in author.reload
+
+    get :index, params: {status: 'recent'}
+    assert_response :success
+    assert_not_includes JSON.parse(response.body).fetch('polls').pluck('id'), poll.id
+
+    get :show, params: {id: poll.key}
+    assert_response :forbidden
+    get :votes, params: {id: poll.key}
+    assert_response :forbidden
+  end
+
   test "show displays a poll" do
     poll = PollService.create(params: {
       title: "POLL!",
