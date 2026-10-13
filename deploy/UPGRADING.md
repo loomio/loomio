@@ -15,6 +15,35 @@ Or run [`update.sh`](update.sh) from the deployment directory, which performs th
 ./update.sh
 ```
 
+## Retained record count repair
+
+After deploying the replacement for `custom_counter_cache`, enqueue a background repair of historical membership, content, read, reply and version counts:
+
+```sh
+docker compose exec app rake loomio:repair_record_counts
+```
+
+The command prints the job ID and returns after enqueueing. Progress and final results appear in the worker logs with that ID. The bundled `config/queue.yml` serves the `record_count_repair` queue with an additional worker process and one thread, so a long repair does not occupy the general job pool. Restart workers with the new code and queue configuration before enqueueing. Custom queue configurations must serve `record_count_repair` separately from ordinary jobs.
+
+Run this only after all application and worker processes use the new transactional count updates. The schema migration preserves existing counts; the background job repairs historical errors separately while the application and workers remain running. It scans owners in ID order, processes up to 100 owners per transaction, and pauses for 0.1 seconds between batches. It changes count fields only, preserves content and timestamps, and does not rewrite rows whose counts already agree. It takes no table-wide write locks. Writes to the selected owner rows can wait briefly; each repair query has a one-second timeout. A particularly large owner's child records can exceed that timeout even with a batch size of one.
+
+For a background audit that reports drift without changing counts or taking row locks, run:
+
+```sh
+docker compose exec -e DRY_RUN=1 app rake loomio:repair_record_counts
+```
+
+Worker logs report checked, drifted, updated and deferred rows, plus the last owner ID, elapsed time and longest batch for each table. Busy owners are skipped, and a timed-out batch rolls back before continuing. If records were deferred, the job finishes checking its tables and then fails visibly in Solid Queue. Enqueue another repair of the affected tables from the beginning so skipped records are revisited. Repeating a completed repair is safe. Audits reflect counts at the time each batch is checked; concurrent changes can make their results differ from a later repair.
+
+Use `TABLES` to select any of `groups,users,topics,topic_items,discussions,comments,outcomes`. Set `BATCH_SIZE` (1–1000), `PAUSE_SECONDS`, or `STATEMENT_TIMEOUT_MS` to tune load. These options are saved in the job when it is enqueued. Smaller batches and longer pauses reduce contention. Raising the query timeout also increases how long a batch can hold row locks. For a limited first pass, or to resume an interrupted pass, select one table and supply `LIMIT` or `AFTER_ID`:
+
+```sh
+docker compose exec -e TABLES=comments -e LIMIT=1000 app rake loomio:repair_record_counts
+docker compose exec -e TABLES=comments -e AFTER_ID=1234 app rake loomio:repair_record_counts
+```
+
+Replace `1234` with the last reported ID. Resume this way only when the previous portion had no deferred records; otherwise rerun that table from the beginning. Owners created beyond each table's starting maximum ID are left to the new application's count callbacks.
+
 ## Anonymous participation visibility
 
 `LOOMIO_VERIFY_PARTICIPANTS_ADMIN_ONLY` has been removed. After an anonymous poll closes, everyone who can see its results can see who took part. Only group admins see email addresses. Remove the variable from `.env`; it no longer has any effect.

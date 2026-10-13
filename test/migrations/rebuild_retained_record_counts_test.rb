@@ -1,5 +1,5 @@
 require 'test_helper'
-require_relative '../../db/migrate/20261009000000_rebuild_retained_record_counts'
+require_relative '../../db/migrate/support/retained_record_count_rebuild'
 
 class RebuildRetainedRecordCountsTest < ActiveSupport::TestCase
   test 'rebuild corrects retained counts and zeroes without changing content or timestamps' do

@@ -1,5 +1,6 @@
 module RetainedRecordCountRebuild
-  # Frozen migration SQL also seeds counts after callback-free fixture loading.
+  # Seed counts after callback-free fixture loading. Deployment preserves the
+  # existing counters rather than blocking application writes for a full repair.
   # Use grouped child counts and include owners with no children. Only
   # drifted rows are written, limiting WAL and bloat when counts already agree.
   def self.run(connection)

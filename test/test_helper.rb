@@ -44,7 +44,7 @@ module ActiveSupport
     # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
     fixtures :all
 
-    # Fixtures bypass model callbacks. Seed the same baseline used on upgrade,
+    # Fixtures bypass model callbacks. Seed their derived counts directly,
     # once per fixture load rather than recounting every record on every test.
     def load_fixtures(config)
       super.tap do
