@@ -454,13 +454,15 @@ class PollService
     )
   end
 
-  def self.group_members_removed(group_id, removed_user_ids, actor_id, revoked_at)
+  def self.group_members_removed(group_id, removed_user_ids, actor_id, revoked_at, preserve_cast_votes: false)
     Poll.active.joins(:topic).where(topics: { group_id: group_id }).each do |poll|
-      Stance.where(
+      stances = Stance.where(
         poll_id: poll.id,
         revoked_at: nil,
         participant_id: Array(removed_user_ids),
-      ).update_all(revoked_at: revoked_at, revoker_id: actor_id)
+      )
+      stances = stances.undecided if preserve_cast_votes
+      stances.update_all(revoked_at: revoked_at, revoker_id: actor_id)
       poll.update_counts!
     end
   end

@@ -37,6 +37,38 @@ class Api::V1::StancesControllerTest < ActionController::TestCase
     assert_not JSON.parse(response.body).fetch('stances').any? { |item| item.fetch('id') == stance.id }
   end
 
+  %w[deactivate redact].each do |operation|
+    test "#{operation} preserves a submitted vote without allowing an existing session to change it" do
+      member = users(:member_normal)
+      stance = @poll.stances.latest.find_by!(participant: member)
+      stance.choice = @poll.poll_options.first.name
+      stance.reason = 'Preserved reason'
+      StanceService.create(stance: stance, actor: member)
+      sign_in member
+      session_id = Current.session.id
+      if operation == 'redact'
+        NewsletterService.stub(:unsubscribe, nil) { RedactUserWorker.perform_now(member.id, member.id, false) }
+      else
+        DeactivateUserWorker.perform_now(member.id, member.id)
+      end
+      Current.reset
+
+      patch :update, params: {id: stance.id, stance: {reason: 'Blocked change'}}
+
+      assert_response :forbidden
+      assert_not Session.exists?(session_id)
+      assert_nil stance.reload.revoked_at
+      assert_equal 'Preserved reason', stance.reason
+
+      sign_in @admin
+      get :index, params: {poll_id: @poll.id}
+      assert_response :success
+      serialized_stance = JSON.parse(response.body).fetch('stances').find { |item| item.fetch('id') == stance.id }
+      assert_equal 'Preserved reason', serialized_stance.fetch('reason')
+      assert_equal stance.option_scores, serialized_stance.fetch('option_scores')
+    end
+  end
+
   # -- Index tests --
 
   test "generic stance index does not include votes page voter details" do

@@ -8,7 +8,7 @@
 
 When you delete your account:
 - Your user account including your name, email address and other personally identifying data will be deleted from our systems. You will not be able to sign in to Loomio with this account.
-- Comments, proposal and discussions you have made will remain but your name will be removed from them. We do this because we have an obligation to groups to keep threads and proposals coherent.
+- Your comments, discussions, proposals and submitted votes with reasons will remain, but your name will be removed from them. Votes you have already submitted continue to count in open and closed polls.
 - You will no longer be listed as a member of any groups.
 - You will no longer receive notification emails.
 

@@ -81,16 +81,17 @@ class MembershipService
     EventBus.broadcast('membership_destroy', membership, actor)
   end
 
-  def self.revoke_by_id(group_ids, user_id, actor_id, revoked_at = DateTime.now)
+  def self.revoke_by_id(group_ids, user_id, actor_id, revoked_at = DateTime.now, preserve_cast_votes: false)
     Membership.transaction do
       TopicReader
         .joins(:topic).where(user_id: user_id)
         .where("topics.group_id IN (?)", group_ids)
         .update_all(guest: false, revoked_at: revoked_at, revoker_id: actor_id)
 
-      # Remove them from active polls; closed-poll votes remain historical.
+      # Account deactivation retains authored votes while removing uncast
+      # invitations. Ordinary group departures still remove open-poll votes.
       group_ids.each do |group_id|
-        PollService.group_members_removed(group_id, user_id, actor_id, revoked_at)
+        PollService.group_members_removed(group_id, user_id, actor_id, revoked_at, preserve_cast_votes: preserve_cast_votes)
       end
 
       # Revoke the membership in the same transaction as topic and poll access.
