@@ -1,24 +1,24 @@
 ---
 title: Кіраванне ўдзельнікамі
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
+source_revision: 43a63dfebc3d75ea40ab1b104dc875422c1185f0
 source_file: docs/en/user_manual/groups/member_management/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-13'
 sections:
   introduction: f216b18771a2c2a9
   administering-your-group: 27aed40959adef57
   managing-subgroups: ee977899fa34caab
-  removing-members: f00aea52bfcd3547
-  leaving-group: 02f69c9806d6beda
+  removing-members: f40c25fd90ab1ce2
+  leaving-group: 11b09b4af23b4e7e
   set-title: 835b25d246477b4a
   member-email-addresses: cae570f30b671275
 generated:
   introduction: 668a83807d8df390
   administering-your-group: 1bd39f5ccab39bf2
   managing-subgroups: 6c55000f7e3a2d15
-  removing-members: 170460be567f6e97
-  leaving-group: 2dfd1b3ba6519f8a
+  removing-members: 6c477339578ef255
+  leaving-group: 697ac6dfe824d11b
   set-title: 9aa43908d91503c4
   member-email-addresses: 612264eec73b990c
 title_source: 23ac3a7fe9ee72a2
@@ -69,12 +69,16 @@ title_generated: aa6d15cc1d295159
 
 ![Дзеянне «Выдаліць з групы» ў меню ўдзельнікаў](member_remove.png)
 
-Пры жаданні вы можаце пазней зноў дадаць выдаленых удзельнікаў у групу.
+Выдаленне таксама распаўсюджваецца на падгрупы гэтай групы. Прыватныя апытанні знікаюць са стужкі і спіса галасаванняў выдаленых удзельнікаў. Публічныя апытанні застаюцца даступнымі для чытання, але былыя ўдзельнікі не могуць галасаваць, пакуль іх не запросяць зноў. Калі пакінуць групу, пакуль апытанне закрытае, права галасаваць у ім не захаваецца, калі яго адкрыюць зноў.
+
+Вы можаце пазней зноў дадаць выдаленых удзельнікаў у групу. Паўторнае далучэнне аднаўляе іх доступ і ранейшыя галасы ў актыўных апытаннях без неабходнасці абнаўляць старонку.
 
 <!-- translation-section: leaving-group -->
 
 ## Выхад з групы
 Каб пакінуць групу, перайдзіце на старонку групы, адкрыйце меню з трыма кропкамі і націсніце **Пакінуць групу**.
+
+Выхад з групы мае тыя ж наступствы для доступу да групы і падгруп, што і выдаленне адміністратарам, у тым ліку выдаленне прыватных апытанняў з вашай стужкі і спіса галасаванняў.
 
 ![Дзеянне «Пакінуць групу» ў меню налад Oatmilk Cooperative](member_leave_group.png)
 

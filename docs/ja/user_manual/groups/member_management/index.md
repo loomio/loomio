@@ -1,24 +1,24 @@
 ---
 title: メンバー管理
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
+source_revision: 43a63dfebc3d75ea40ab1b104dc875422c1185f0
 source_file: docs/en/user_manual/groups/member_management/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-13'
 sections:
   introduction: f216b18771a2c2a9
   administering-your-group: 27aed40959adef57
   managing-subgroups: ee977899fa34caab
-  removing-members: f00aea52bfcd3547
-  leaving-group: 02f69c9806d6beda
+  removing-members: f40c25fd90ab1ce2
+  leaving-group: 11b09b4af23b4e7e
   set-title: 835b25d246477b4a
   member-email-addresses: cae570f30b671275
 generated:
   introduction: f6c3ad3153d80f8e
   administering-your-group: 81c2b74ba0dc6405
   managing-subgroups: 2fcf3bc486880cae
-  removing-members: 658eebd467d51717
-  leaving-group: e50a59b3c04fe146
+  removing-members: d0649d134bcdcfc4
+  leaving-group: 41c21445727f3dcc
   set-title: 67afc41dfc072781
   member-email-addresses: 44b7327c05070731
 title_source: 23ac3a7fe9ee72a2
@@ -69,12 +69,16 @@ Loomioのグループには、**メンバー**と**管理者**の2種類のユ�
 
 ![メンバーのメニューにあるグループからの削除操作](member_remove.png)
 
-削除したメンバーは、後で再びグループに追加できます。
+削除は、そのグループのサブグループにも適用されます。非公開のアンケートは、その人のダッシュボードと投票リストから表示されなくなります。公開のアンケートは引き続き閲覧できますが、元メンバーは再び招待されない限り投票できません。アンケートが締め切り済みの間に脱退した場合も、再開時に投票する権限は引き継がれません。
+
+削除したメンバーは、後で再びグループに追加できます。再参加すると、ページを再読み込みしなくてもアクセスが復元され、投票受付中のアンケートでの既存の投票も復元されます。
 
 <!-- translation-section: leaving-group -->
 
 ## グループからの脱退
 グループを離れるには、グループページで3点メニューを開き、**グループを離れる**をクリックします。
+
+脱退すると、管理者による削除と同じように、グループとサブグループへのアクセスが失われ、非公開のアンケートもダッシュボードと投票リストから表示されなくなります。
 
 ![Oatmilk Cooperativeの設定メニューにあるグループからの脱退操作](member_leave_group.png)
 
