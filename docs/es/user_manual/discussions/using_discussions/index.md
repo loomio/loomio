@@ -1,10 +1,10 @@
 ---
 title: Usar los hilos
-source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
+source_revision: 3c911ddf85c4df37787b3aee088e6a04dafe0930
 source_file: docs/en/user_manual/discussions/using_discussions/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-12'
 sections:
   introduction: fe8ab54791a49e01
   thread-anatomy: fca9ec9af6718a99
@@ -18,7 +18,7 @@ sections:
   notified: 6139bdcaae32a1db
   actions: c015c12999c5be2f
   print: 8fac34ad532e8cb5
-  markdown: 374ef87d825b66b1
+  markdown: e6708fb7422f2c4e
   thread-settings-and-display: b05e5c1364ceee12
   pin-or-unpin-a-thread: 1e17228e5de01a1e
   move-a-thread: 8490a5a22970925c
@@ -37,7 +37,7 @@ generated:
   notified: 120c01df31b886db
   actions: 593b28e22bf5e368
   print: 5bc1ebb2520dfc04
-  markdown: 9f73a87e91e2b3af
+  markdown: 140c14cd71cb571f
   thread-settings-and-display: 5d8b6ed9d60c5134
   pin-or-unpin-a-thread: 91b6cf9d16287aaf
   move-a-thread: bef5744e818508c2
@@ -46,7 +46,7 @@ generated:
 title_source: 99e2d1eb313f35c4
 title_generated: 7e28641f650e11ec
 needs_review:
-  markdown: check the interface label "**De acuerdo**" for "**Agree**"; check the interface label "**Abstenerse**" for "**Abstain**"
+  markdown: check the interface label "**Imprimir **" for "**Print**"; check the interface label "**De acuerdo**" for "**Agree**"; check the interface label "**Abstenerse**" for "**Abstain**"
 ---
 
 <!-- translation-section: introduction -->
@@ -217,17 +217,18 @@ Selecciona **Markdown** para guardar el hilo completo como Markdown estructurado
 
 ![](../discussion_management/copy_markdown_menu.png)
 
-El documento comienza con una cabecera YAML que contiene la clave del hilo, el grupo, la fecha de creación, la fecha de la última actividad y las etiquetas. A continuación incluye el contexto de la discusión y todos los comentarios, encuestas, votos y conclusiones, con el mismo orden y anidamiento que la vista en hilos.
+El documento comienza con una cabecera YAML que contiene la clave del hilo, la URL original, el grupo, la fecha de creación, la fecha de la última actividad y las etiquetas. Usa la URL para volver al hilo en Loomio. A continuación incluye el contexto de la discusión y todos los comentarios, encuestas, votos y conclusiones, con el mismo orden y anidamiento que la vista en hilos.
 
 Cada encuesta es una sección. Los comentarios, votos y conclusiones aparecen como citas, y las respuestas aparecen como citas debajo del elemento al que responden. Esto muestra dónde empieza y termina el texto de cada persona. Cada cita comienza con una línea que indica la persona, cuándo publicó, el número del elemento en el hilo y las reacciones que haya recibido. Los votos y las conclusiones también indican qué son. La clave del hilo y el número del elemento identifican cada elemento en Loomio.
 
-Loomio aplica las mismas reglas de visibilidad que en el hilo. Los resultados y los motivos de voto que no puedes ver no se incluyen, y los votantes no se identifican en las encuestas anónimas. Si una encuesta abierta oculta los resultados hasta que votes, vota antes de exportar el hilo. **Markdown** e **Imprimir ** no están disponibles hasta que lo hagas.
+Loomio aplica las mismas reglas de visibilidad que en el hilo. Los resultados y los motivos de voto que no puedes ver no se incluyen, y los votantes no se identifican en las encuestas anónimas. Si una encuesta abierta oculta los resultados hasta que votes, vota antes de exportar el hilo. **Markdown** e **Imprimir** no están disponibles hasta que lo hagas.
 
 Por ejemplo, una discusión que contiene un comentario, reacciones, una propuesta, dos votos, una respuesta y una conclusión genera este Markdown:
 
 ```markdown
 ---
 key: "fi2TAgeC"
+url: "https://www.loomio.com/d/fi2TAgeC/returnable-bottles-for-cafe-customers"
 group: "Oatmilk Cooperative"
 created: "2026-09-10T23:28:30Z"
 last_activity: "2026-09-10T23:28:30Z"

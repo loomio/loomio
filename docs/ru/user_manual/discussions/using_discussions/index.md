@@ -1,10 +1,10 @@
 ---
 title: Работа с темами
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
+source_revision: 3c911ddf85c4df37787b3aee088e6a04dafe0930
 source_file: docs/en/user_manual/discussions/using_discussions/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-12'
 sections:
   introduction: fe8ab54791a49e01
   thread-anatomy: fca9ec9af6718a99
@@ -18,7 +18,7 @@ sections:
   notified: 6139bdcaae32a1db
   actions: c015c12999c5be2f
   print: 8fac34ad532e8cb5
-  markdown: 374ef87d825b66b1
+  markdown: e6708fb7422f2c4e
   thread-settings-and-display: b05e5c1364ceee12
   pin-or-unpin-a-thread: 1e17228e5de01a1e
   move-a-thread: 8490a5a22970925c
@@ -37,7 +37,7 @@ generated:
   notified: b47ac5ffe9325e5b
   actions: cab5a2a722700968
   print: 913624723cbafbe4
-  markdown: 4c2ea35b74ca1a00
+  markdown: bc66ebadc2f27994
   thread-settings-and-display: cb691aeeb444015a
   pin-or-unpin-a-thread: 3b67f4d169fa2338
   move-a-thread: b564da470c0e37f0
@@ -217,7 +217,7 @@ needs_review:
 
 ![](../discussion_management/copy_markdown_menu.png)
 
-Документ начинается с блока метаданных YAML, содержащего ключ ветки, группу, дату создания, дату последней активности и теги. Далее идут описание обсуждения и все комментарии, опросы, голоса и выводы в том же порядке и с той же вложенностью, что и при отображении ответов под соответствующими записями.
+Документ начинается с блока метаданных YAML, содержащего ключ ветки, исходный URL, группу, дату создания, дату последней активности и теги. Используйте URL, чтобы вернуться к ветке в Loomio. Далее идут описание обсуждения и все комментарии, опросы, голоса и выводы в том же порядке и с той же вложенностью, что и при отображении ответов под соответствующими записями.
 
 Каждый опрос представлен отдельным разделом. Комментарии, голоса и выводы оформлены как цитаты, а ответы — как вложенные цитаты под записями, на которые они отвечают. Так видно, где начинается и заканчивается текст каждого человека. Каждая цитата начинается со строки, в которой указаны автор, время публикации, номер записи в ветке и реакции, если они есть. Для голосов и выводов также указан тип записи. Ключ ветки и номер записи позволяют найти каждую запись в Loomio.
 
@@ -228,6 +228,7 @@ Loomio применяет те же правила видимости, что и
 ```markdown
 ---
 key: "fi2TAgeC"
+url: "https://www.loomio.com/d/fi2TAgeC/returnable-bottles-for-cafe-customers"
 group: "Oatmilk Cooperative"
 created: "2026-09-10T23:28:30Z"
 last_activity: "2026-09-10T23:28:30Z"

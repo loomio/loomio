@@ -19,7 +19,11 @@ class ThreadMarkdownServiceTest < ActiveSupport::TestCase
 
       markdown = render(discussion.topic)
 
-      assert markdown.start_with?("---\nkey: \"#{discussion.key}\"\ngroup: \"#{@group.name}\"\ncreated: \"")
+      front_matter = YAML.safe_load(markdown.split("---\n", 3)[1])
+      assert_equal discussion.key, front_matter['key']
+      assert_equal ActionMailer::Base.default_url_options[:host], URI.parse(front_matter['url']).host
+      assert_equal "/d/#{discussion.key}/a-clearer-thread", URI.parse(front_matter['url']).path
+      assert_equal @group.name, front_matter['group']
       assert_includes markdown, "tags: [\"governance\",\"planning\"]"
       assert_match(/^# Discussion: A clearer thread · #{@admin.name} · 2026-07-15 10:00$/, markdown)
       refute_includes markdown, "**Thread type:**"
@@ -260,6 +264,7 @@ class ThreadMarkdownServiceTest < ActiveSupport::TestCase
 
     expected = "# Discussion: #{topic.topicable.title} · #{topic.topicable.author.name}"
     assert_includes markdown, expected
+    assert_equal "/d/#{topic.topicable.key}/#{topic.topicable.title.parameterize}", URI.parse(YAML.safe_load(markdown.split("---\n", 3)[1])['url']).path
     refute_match(/^group:/, markdown)
   end
 
@@ -280,6 +285,7 @@ class ThreadMarkdownServiceTest < ActiveSupport::TestCase
       markdown = render(poll.topic)
 
       assert_includes markdown, "group: \"#{@group.name}\""
+      assert_equal "/p/#{poll.key}/standalone-decision", URI.parse(YAML.safe_load(markdown.split("---\n", 3)[1])['url']).path
       assert_includes markdown, "# Poll: Standalone decision · #{@admin.name}"
       assert_includes markdown, "## Poll"
       assert_includes markdown, "Choose one option."

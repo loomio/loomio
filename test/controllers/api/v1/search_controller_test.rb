@@ -58,6 +58,16 @@ class Api::V1::SearchControllerTest < ActionController::TestCase
     assert results.any? { |r| r['searchable_type'] == 'Outcome' }
   end
 
+  test 'searching a group while signed out returns no results' do
+    discussion = discussions(:public_discussion)
+    discussion.update!(title: 'findme public discussion')
+
+    get :index, params: { query: 'findme', group_id: discussion.group_id }
+
+    assert_response :success
+    assert_empty JSON.parse(response.body).fetch('search_results')
+  end
+
   test 'until-closed conversations leave the index and are indexed after closing' do
     @poll.update!(closed_at: nil, hide_results: 'off')
     stance = @poll.stances.create!(participant: @user, inviter: @user, latest: true)

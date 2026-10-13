@@ -1,10 +1,10 @@
 ---
 title: Threads gebruiken
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
+source_revision: 3c911ddf85c4df37787b3aee088e6a04dafe0930
 source_file: docs/en/user_manual/discussions/using_discussions/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-12'
 sections:
   introduction: fe8ab54791a49e01
   thread-anatomy: fca9ec9af6718a99
@@ -18,7 +18,7 @@ sections:
   notified: 6139bdcaae32a1db
   actions: c015c12999c5be2f
   print: 8fac34ad532e8cb5
-  markdown: 374ef87d825b66b1
+  markdown: e6708fb7422f2c4e
   thread-settings-and-display: b05e5c1364ceee12
   pin-or-unpin-a-thread: 1e17228e5de01a1e
   move-a-thread: 8490a5a22970925c
@@ -37,7 +37,7 @@ generated:
   notified: 4ce9c68d90ac8756
   actions: 2ae4103e57fac588
   print: c4dc9ddef3a715d1
-  markdown: 8aadd8453fa75ce8
+  markdown: 02a2d7dba58c68f9
   thread-settings-and-display: c41128b0c18947a4
   pin-or-unpin-a-thread: 4c45bbbe8fe8f0e1
   move-a-thread: 6636c5b668239a0a
@@ -46,7 +46,7 @@ generated:
 title_source: 99e2d1eb313f35c4
 title_generated: 58e0940112bb0af1
 needs_review:
-  markdown: check the interface label "**Onthouden**" for "**Abstain**"; use "conclusie" instead of "resultaat" for "outcome"; use "resultaat" instead of "conclusie" for "results"
+  markdown: check the interface label "**Onthouden**" for "**Abstain**"
 ---
 
 <!-- translation-section: introduction -->
@@ -217,7 +217,7 @@ Selecteer **Markdown** om de volledige thread als gestructureerde Markdown op te
 
 ![](../discussion_management/copy_markdown_menu.png)
 
-Het document begint met YAML-frontmatter met de threadsleutel, groep, aanmaakdatum, datum van de laatste activiteit en labels. Daarna volgen de discussiecontext en elke reactie, peiling, stem en conclusie in dezelfde volgorde en met dezelfde nesting als in de weergave met threads.
+Het document begint met YAML-frontmatter met de threadsleutel, oorspronkelijke URL, groep, aanmaakdatum, datum van de laatste activiteit en labels. Gebruik de URL om terug te gaan naar de thread in Loomio. Daarna volgen de discussiecontext en elke reactie, peiling, stem en conclusie in dezelfde volgorde en met dezelfde nesting als in de weergave met threads.
 
 Elke peiling vormt een sectie. Reacties, stemmen en conclusies worden als citaten weergegeven, en antwoorden staan als citaten onder het item waarop ze antwoorden. Zo zie je waar de tekst van elke persoon begint en eindigt. Elk citaat begint met één regel met de persoon, het tijdstip van plaatsing, het nummer van het item in de thread en eventuele emoji-reacties. Bij stemmen en conclusies staat ook aangegeven wat ze zijn. De threadsleutel en het itemnummer identificeren elk item in Loomio.
 
@@ -228,6 +228,7 @@ Een discussie met een reactie, emoji-reacties, een voorstel, twee stemmen, een a
 ```markdown
 ---
 key: "fi2TAgeC"
+url: "https://www.loomio.com/d/fi2TAgeC/returnable-bottles-for-cafe-customers"
 group: "Oatmilk Cooperative"
 created: "2026-09-10T23:28:30Z"
 last_activity: "2026-09-10T23:28:30Z"

@@ -8,6 +8,13 @@ class UserTest < ActiveSupport::TestCase
     @group = groups(:group)
   end
 
+  test 'browseable group IDs are collections for members and signed-out users' do
+    ids = users(:member_normal).browseable_group_ids
+    assert_includes ids, groups(:group).id
+    assert_not_includes ids, groups(:alien_group).id
+    assert_empty LoggedOutUser.new.browseable_group_ids
+  end
+
   test "active? matches the active scope and logged-out users are inactive" do
     assert @user.active?
     assert_not @user.deactivated?

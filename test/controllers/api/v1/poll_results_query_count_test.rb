@@ -12,6 +12,8 @@ require 'test_helper'
 # Subgroups add one batched query; removing the unused organization discussion
 # total avoids its per-group queries. Collection costs remain bounded by the
 # number of loaded topic/group batches, rather than options or voters.
+# Loading the collection before choosing its serializer removed three more
+# poll-index queries, lowering that baseline from 35 to 32.
 #
 # Weighted polls may add a constant number of queries, but their cost must not
 # grow with the number of options, voters, or polls faster than unweighted
@@ -40,8 +42,8 @@ class Api::V1::PollResultsQueryCountTest < ActionController::TestCase
   end
 
   test "unweighted poll index does not grow with the number of polls" do
-    assert_equal 35, index_queries(polls_count: 1)
-    assert_equal 35, index_queries(polls_count: 4)
+    assert_equal 32, index_queries(polls_count: 1)
+    assert_equal 32, index_queries(polls_count: 4)
   end
 
   test "weighted poll results cost a bounded constant more than unweighted results" do

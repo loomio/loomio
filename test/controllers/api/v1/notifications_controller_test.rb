@@ -90,8 +90,10 @@ class Api::V1::NotificationsControllerTest < ActionController::TestCase
     end
 
     record_query_counts = Hash.new(0)
+    visibility_queries = []
     subscriber = ActiveSupport::Notifications.subscribe("sql.active_record") do |_name, _started, _finished, _id, payload|
       sql = payload[:sql].to_s
+      visibility_queries << sql if sql.include?('AS topics') || sql.include?('LEFT OUTER JOIN topics t ON t.id = polls.topic_id')
       if match = sql.match(/SELECT "(topics|groups|discussions|polls|comments)"\.\*/)
         record_query_counts[match[1]] += 1
       end
@@ -102,6 +104,44 @@ class Api::V1::NotificationsControllerTest < ActionController::TestCase
 
     assert_response :success
     assert record_query_counts.values.all? { |count| count <= 4 }, record_query_counts.inspect
+    assert_equal 2, visibility_queries.length, visibility_queries.join("\n")
+  ensure
+    ActiveSupport::Notifications.unsubscribe(subscriber) if subscriber
+  end
+
+  test "index batches creation items for poll outcome and stance URLs" do
+    topics(:discussion_topic).update!(allow_concurrent_polls: true)
+    notifications = 3.times.flat_map do |index|
+      poll = PollService.create(params: {
+        title: "Notification URL poll #{index}",
+        poll_type: "poll",
+        topic: topics(:discussion_topic),
+        closing_at: 5.days.from_now,
+        poll_option_names: ["Agree", "Disagree"]
+      }, actor: @admin)
+      outcome = Outcome.create!(poll: poll, author: @admin, statement: "Conclusion")
+      outcome.create_missing_created_topic_item!
+      stance = poll.stances.find_by!(participant: @admin)
+      [poll, outcome, stance].map do |subject|
+        notification = create_notification(user: @user, actor: @admin, subject: subject)
+        [notification, notification.notification_url]
+      end
+    end
+    creation_queries = []
+    subscriber = ActiveSupport::Notifications.subscribe("sql.active_record") do |_name, _started, _finished, _id, payload|
+      sql = payload[:sql].to_s
+      creation_queries << sql if sql.include?('FROM "topic_items"')
+    end
+    sign_in @user
+
+    get :index
+
+    assert_response :success
+    serialized = JSON.parse(response.body)["notifications"].index_by { |record| record["id"] }
+    notifications.each do |notification, expected_url|
+      assert_equal expected_url, serialized.fetch(notification.id).fetch("url")
+    end
+    assert_equal 1, creation_queries.length, creation_queries.join("\n")
   ensure
     ActiveSupport::Notifications.unsubscribe(subscriber) if subscriber
   end

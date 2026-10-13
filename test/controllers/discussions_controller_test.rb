@@ -25,6 +25,44 @@ class DiscussionsControllerTest < ActionController::TestCase
     assert_select "a.navbar__sign-in[href='/dashboard']"
   end
 
+  test "SSR batches uploaded avatars for comments and poll results" do
+    discussion = discussions(:discussion)
+    authors = [users(:admin), users(:user), users(:member)]
+    authors.each do |author|
+      blob = ActiveStorage::Blob.create_before_direct_upload!(filename: "avatar.png", byte_size: 10, checksum: "avatar", content_type: "image/png", metadata: {identified: true, analyzed: true, width: 128, height: 128})
+      author.uploaded_avatar.attach(blob)
+      author.update_column(:avatar_kind, "uploaded")
+    end
+    12.times do |index|
+      author = authors[index % authors.size]
+      comment = Comment.create!(parent: discussion, user: author, body: "Avatar comment #{index}", body_format: "html")
+      TopicItem.create!(topic: discussion.topic, itemable: comment, user: author, kind: "new_comment", sequence_id: index + 2, position_key: "00000-#{format('%05d', index + 2)}", depth: 1)
+    end
+    poll = PollService.create(params: {title: "Avatar poll", poll_type: "proposal", topic_id: discussion.topic.id, poll_option_names: ["Agree", "Disagree"], closing_at: 1.day.from_now}, actor: users(:admin))
+    authors.each do |author|
+      stance = poll.stances.latest.find_or_initialize_by(participant: author)
+      stance.update!(cast_at: Time.current, stance_choices_attributes: [{poll_option_id: poll.poll_options.first.id}])
+    end
+    poll.update_counts!
+
+    queries = []
+    sign_in @user
+    subscriber = ActiveSupport::Notifications.subscribe("sql.active_record") do |_name, _start, _finish, _id, payload|
+      if payload[:sql].start_with?('SELECT "active_storage_attachments".*') && payload[:binds].any? { |bind| bind.value_for_database == "uploaded_avatar" } && !payload[:cached]
+        queries << payload[:sql]
+      end
+    end
+    ActiveRecord::Base.uncached { get :show, params: {key: discussion.key, export: 1} }
+
+    assert_response :success
+    assert_select ".new-comment", count: 12
+    assert_select ".email-results-table img.email-avatar[src*='/rails/active_storage/']", count: 3
+    assert_operator queries.size, :<=, 5, queries.join("\n")
+    assert_empty queries.grep(/\bLIMIT\b/), queries.join("\n")
+  ensure
+    ActiveSupport::Notifications.unsubscribe(subscriber) if subscriber
+  end
+
   test "public discussion SSR does not render unsafe Markdown URLs" do
     discussion = discussions(:public_discussion)
     discussion.update!(

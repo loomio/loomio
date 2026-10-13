@@ -9,6 +9,17 @@ class Api::V1::DiscussionTemplatesControllerTest < ActionController::TestCase
 
   # === INDEX ===
 
+  test "show returns 404 for a deleted discussion template" do
+    template = DiscussionTemplate.create!(group: @group, author: @admin, process_name: "Deleted", process_subtitle: "Unavailable")
+    template.discard!(actor: @admin)
+    sign_in @admin
+
+    get :show, params: {id: template.id}
+
+    assert_response :not_found
+    refute JSON.parse(response.body).key?('discussion_templates')
+  end
+
   test "index materializes default templates for group with no custom templates" do
     sign_in @admin
     get :index, params: { group_id: @group.id }

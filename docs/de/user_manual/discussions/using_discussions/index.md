@@ -1,10 +1,10 @@
 ---
 title: Threads verwenden
-source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
+source_revision: 3c911ddf85c4df37787b3aee088e6a04dafe0930
 source_file: docs/en/user_manual/discussions/using_discussions/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-12'
 sections:
   introduction: fe8ab54791a49e01
   thread-anatomy: fca9ec9af6718a99
@@ -18,7 +18,7 @@ sections:
   notified: 6139bdcaae32a1db
   actions: c015c12999c5be2f
   print: 8fac34ad532e8cb5
-  markdown: 374ef87d825b66b1
+  markdown: e6708fb7422f2c4e
   thread-settings-and-display: b05e5c1364ceee12
   pin-or-unpin-a-thread: 1e17228e5de01a1e
   move-a-thread: 8490a5a22970925c
@@ -37,7 +37,7 @@ generated:
   notified: ea98543142d6e416
   actions: 8c8be25fa54c0adc
   print: a338e05fc2833d18
-  markdown: a1acbe154c0a24f4
+  markdown: d1f5058263b76107
   thread-settings-and-display: b5e22ab11c5259aa
   pin-or-unpin-a-thread: 5de696dc7828f152
   move-a-thread: 83ffef8883555192
@@ -47,7 +47,7 @@ title_source: 99e2d1eb313f35c4
 title_generated: 59731df42f979665
 needs_review:
   navigation: use "Stimme" instead of "Abstimmung" for "vote"
-  markdown: check the interface label "**Enthaltung**" for "**Abstain**"; use "Entscheidung" instead of "Abstimmung" for "decision"; use "Stimme" instead of "Abstimmung" for "vote"; use "Ergebnis" instead of "Fazit" for "results"
+  markdown: check the interface label "**Enthaltung**" for "**Abstain**"
 ---
 
 <!-- translation-section: introduction -->
@@ -218,7 +218,7 @@ Wähle **Markdown**, um den gesamten Thread als strukturiertes Markdown zu speic
 
 ![](../discussion_management/copy_markdown_menu.png)
 
-Das Dokument beginnt mit einem YAML-Metadatenblock, der den Thread-Schlüssel, die Gruppe, das Erstellungsdatum, das Datum der letzten Aktivität und die Schlagwörter enthält. Danach folgen der Diskussionskontext und alle Kommentare, Abstimmungen, Stimmen und Fazits in derselben Reihenfolge und Verschachtelung wie in der Ansicht **Als Thread**.
+Das Dokument beginnt mit einem YAML-Metadatenblock, der den Thread-Schlüssel, die ursprüngliche URL, die Gruppe, das Erstellungsdatum, das Datum der letzten Aktivität und die Schlagwörter enthält. Verwende die URL, um zum Thread in Loomio zurückzukehren. Danach folgen der Diskussionskontext und alle Kommentare, Abstimmungen, Stimmen und Fazits in derselben Reihenfolge und Verschachtelung wie in der Ansicht **Als Thread**.
 
 Jede Abstimmung bildet einen Abschnitt. Kommentare, Stimmen und Fazits werden als Zitate dargestellt. Antworten stehen als Zitate unter dem Eintrag, auf den sie antworten. So ist erkennbar, wo der Text jeder Person beginnt und endet. Jedes Zitat beginnt mit einer Zeile, die die Person, den Zeitpunkt ihres Beitrags, die Nummer des Eintrags im Thread und etwaige Reaktionen zeigt. Stimmen und Fazits werden zusätzlich als solche gekennzeichnet. Der Thread-Schlüssel und die Eintragsnummer identifizieren jeden Eintrag in Loomio.
 
@@ -229,6 +229,7 @@ Eine Diskussion mit einem Kommentar, Reaktionen, einem Vorschlag, zwei Stimmen, 
 ```markdown
 ---
 key: "fi2TAgeC"
+url: "https://www.loomio.com/d/fi2TAgeC/returnable-bottles-for-cafe-customers"
 group: "Oatmilk Cooperative"
 created: "2026-09-10T23:28:30Z"
 last_activity: "2026-09-10T23:28:30Z"

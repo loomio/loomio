@@ -1,10 +1,10 @@
 ---
 title: Keskusteluketjujen käyttö
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
+source_revision: 3c911ddf85c4df37787b3aee088e6a04dafe0930
 source_file: docs/en/user_manual/discussions/using_discussions/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-12'
 sections:
   introduction: fe8ab54791a49e01
   thread-anatomy: fca9ec9af6718a99
@@ -18,7 +18,7 @@ sections:
   notified: 6139bdcaae32a1db
   actions: c015c12999c5be2f
   print: 8fac34ad532e8cb5
-  markdown: 374ef87d825b66b1
+  markdown: e6708fb7422f2c4e
   thread-settings-and-display: b05e5c1364ceee12
   pin-or-unpin-a-thread: 1e17228e5de01a1e
   move-a-thread: 8490a5a22970925c
@@ -37,7 +37,7 @@ generated:
   notified: 077cdb228ecb0c3a
   actions: 7640a063f929b3ab
   print: '019a05246c3ea0bc'
-  markdown: ab17326766133535
+  markdown: 6ce645cd063d09fa
   thread-settings-and-display: 0d71c7e52a8077d6
   pin-or-unpin-a-thread: d81d501c2b75c9e9
   move-a-thread: f0b7a83519058ef4
@@ -46,7 +46,6 @@ generated:
 title_source: 99e2d1eb313f35c4
 title_generated: cf8604cd3cd81e88
 needs_review:
-  markdown: use "johtopäätös" instead of "tulokset" for "outcome"
   thread-settings-and-display: use "vaihtoehto" instead of "asetukset" for "option"
   pin-or-unpin-a-thread: use "kiinnittää" instead of "pin" for "pin"
 ---
@@ -219,7 +218,7 @@ Valitse **Markdown**, kun haluat tallentaa koko ketjun jäsenneltynä Markdownin
 
 ![](../discussion_management/copy_markdown_menu.png)
 
-Asiakirjan alussa on YAML-metatieto-osio, joka sisältää ketjun avaimen, ryhmän, luontipäivän, viimeisimmän toiminnan päivämäärän ja tunnisteet. Sen jälkeen tulevat keskustelun konteksti sekä jokainen kommentti, kysely, ääni ja johtopäätös samassa järjestyksessä ja samalla tavalla sisennettyinä kuin ketjutetussa näkymässä.
+Asiakirjan alussa on YAML-metatieto-osio, joka sisältää ketjun avaimen, alkuperäisen URL-osoitteen, ryhmän, luontipäivän, viimeisimmän toiminnan päivämäärän ja tunnisteet. URL-osoitteen avulla voit palata ketjuun Loomiossa. Sen jälkeen tulevat keskustelun konteksti sekä jokainen kommentti, kysely, ääni ja johtopäätös samassa järjestyksessä ja samalla tavalla sisennettyinä kuin ketjutetussa näkymässä.
 
 Jokainen kysely muodostaa oman osionsa. Kommentit, äänet ja johtopäätökset esitetään lainauksina, ja vastaukset esitetään lainauksina sen kohdan alla, johon ne vastaavat. Näin näet, mistä kunkin henkilön teksti alkaa ja mihin se päättyy. Jokaisen lainauksen ensimmäisellä rivillä näkyvät henkilö, julkaisuajankohta, kohdan numero ketjussa ja mahdolliset reaktiot. Äänien ja johtopäätösten yhteydessä kerrotaan myös, mistä on kyse. Ketjun avain ja kohdan numero yksilöivät jokaisen kohdan Loomiossa.
 
@@ -230,6 +229,7 @@ Esimerkiksi keskustelu, joka sisältää kommentin, reaktioita, ehdotuksen, kaks
 ```markdown
 ---
 key: "fi2TAgeC"
+url: "https://www.loomio.com/d/fi2TAgeC/returnable-bottles-for-cafe-customers"
 group: "Oatmilk Cooperative"
 created: "2026-09-10T23:28:30Z"
 last_activity: "2026-09-10T23:28:30Z"

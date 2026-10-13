@@ -11,11 +11,12 @@ vi.mock('@/shared/services/subscription_service', () => ({default: {upgradeUrl: 
 vi.mock('@sentry/vue', () => ({metrics: {count: vi.fn()}}));
 vi.mock('@/components/user/avatar.vue', () => ({default: {template: '<div />'}}));
 vi.mock('@/components/lmo_textarea/lmo_textarea.vue', () => ({default: {
-  props: ['model'],
+  props: ['model', 'maxLength'],
   template: '<div><textarea v-model="model.body" /><slot name="actions" /></div>'
 }}));
 
 import CommentForm from '@/components/topic/comment_form.vue';
+import LmoTextarea from '@/components/lmo_textarea/lmo_textarea.vue';
 import FlashMessage from '@/components/common/flash.vue';
 import EventBus from '@/shared/services/event_bus';
 import RestfulClient from '@/shared/record_store/restful_client';
@@ -45,6 +46,7 @@ describe('posting a comment to an unavailable parent', () => {
       parentId: 41,
       body: draft,
       parent: () => parent,
+      topic: () => ({commentLengthMax: 200}),
       author: () => ({id: 1}),
       isNew: () => true,
       isReply: () => true,
@@ -94,6 +96,14 @@ describe('posting a comment to an unavailable parent', () => {
     expect(wrapper.findComponent(CommentForm).emitted('comment-submitted')).toBeUndefined();
     expect(emit.mock.calls.some(([event]) => event === 'deleteDraft')).toBe(false);
     expect(wrapper.findComponent(CommentForm).vm.processing).toBe(false);
+  });
+
+  it('uses the topic character limit when the parent is not loaded', () => {
+    comment.parent = () => undefined;
+    mountForm();
+
+    expect(wrapper.find('textarea').element.value).toBe(draft);
+    expect(wrapper.findComponent(LmoTextarea).props('maxLength')).toBe(200);
   });
 
 });
