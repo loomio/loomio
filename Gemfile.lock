@@ -658,7 +658,7 @@ GEM
     unicode-display_width (3.2.0)
       unicode-emoji (~> 4.1)
     unicode-emoji (4.2.0)
-    uri (1.1.1)
+    uri (1.1.2)
     useragent (0.16.11)
     uuidtools (3.0.0)
     victor (0.5.0)
@@ -772,7 +772,7 @@ DEPENDENCIES
   terminal-table
   thruster
   tzinfo-data
-  uri (= 1.1.1)
+  uri (= 1.1.2)
   uuidtools
   victor
   video_info
