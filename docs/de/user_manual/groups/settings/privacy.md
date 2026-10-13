@@ -1,28 +1,28 @@
 ---
 title: Datenschutz
-source_revision: cd2e1e63e611688362e80009f50b8ed25025ba8b
+source_revision: 3dad7e54d7f08f6d83af4b8adb6a408f1652ef7e
 source_file: docs/en/user_manual/groups/settings/privacy.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-07'
+  'on': '2026-10-14'
 sections:
-  introduction: 72b58ba22851f914
-  open: 1727e8f20fe92fb2
+  introduction: 4b491c663bfb5ea9
+  open: 2802cda1461d3b19
   follow-an-open-group: e4a1b3ce35a974d0
-  closed: 53c3d50151a2115b
-  secret: fcb55fcb64d44881
-  how-people-join: 577d4b655fe72bb1
-  group-directory: 4ef3023e3cf4efdf
-  visible-to-parent-group: a9a3ece6458f080e
+  closed: fe4da2f032768bca
+  secret: d0a9ea85448f9798
+  how-people-join: 3840bb3403bb1788
+  group-directory: a9a41ea389fb10ba
+  visible-to-parent-group: 96b8595d3bc6ce4b
 generated:
-  introduction: 1b5cc5ea1684a39a
-  open: e60fb423f16d51e9
+  introduction: 4cda261f890c699b
+  open: c186c0c735c5f4b6
   follow-an-open-group: eeea1bb98a0b6064
-  closed: 2af77475af9444c6
-  secret: ec8f0d6f771c37dc
-  how-people-join: d711a1045f4f8dae
-  group-directory: fd07c1014b3af293
-  visible-to-parent-group: e855046c8373fa3e
+  closed: 476dba05a5a4baa5
+  secret: 2d1ba174cc608ac8
+  how-people-join: f84ac302493a498a
+  group-directory: a2a04a18ff62ac2e
+  visible-to-parent-group: faccdafacf3ca7b2
 title_source: 54a57c3147c49f33
 title_generated: f624fcf0dcbb39c0
 ---
@@ -35,15 +35,13 @@ Die Datenschutzeinstellungen bestimmen, wer eine Gruppe finden und ihre Inhalte 
 
 ![Datenschutzeinstellungen der Gruppe](group_privacy_settings.png#width-90)
 
-Änderungen an den Datenschutzeinstellungen können auch bestehende Gruppeninhalte sichtbar machen oder verbergen, nicht nur später erstellte Inhalte. Wähle die restriktivste Einstellung, die den Zweck der Gruppe noch unterstützt.
+Änderungen an den Datenschutzeinstellungen wirken sich auf bestehende Inhalte aus. Wenn eine Hauptgruppe privat wird, erhalten auch ihre öffentlichen Untergruppen die Einstellung **Für die übergeordnete Gruppe sichtbar**, und deren Threads werden privat.
 
 <!-- translation-section: open -->
 
 ## Offen
 
 Offene Gruppen sind öffentliche Räume. Alle können die Gruppe finden und ihre Diskussionen, Abstimmungen und Dateien lesen. Die Mitgliederliste bleibt nur für Mitglieder sichtbar.
-
-Offene Gruppen können einen sofortigen Beitritt ermöglichen, eine Genehmigung verlangen oder den Beitritt auf eingeladene Personen beschränken.
 
 <!-- translation-section: follow-an-open-group -->
 
@@ -61,45 +59,29 @@ Aktiviere **Folge den Aktualisierungen** auf der Gruppenseite, um ungelesene Dis
 
 Alle können eine geschlossene Gruppe finden und ihren Namen und ihre Beschreibung lesen. Diskussionen, Abstimmungen, Dateien und die Mitgliederliste sind nur für Mitglieder und eingeladene Gäste zugänglich.
 
-Geschlossene Hauptgruppen können Anfragen zur Mitgliedschaft zulassen oder den Beitritt auf eingeladene Personen beschränken. Ein sofortiger Beitritt ohne Genehmigung ist nicht möglich.
-
-Geschlossene Untergruppen können auch allen Personen den Beitritt ohne Genehmigung erlauben. Um die Auffindbarkeit und den sofortigen Beitritt auf Mitglieder der Hauptgruppe zu beschränken, wähle stattdessen **Für die übergeordnete Gruppe sichtbar**.
-
-Eine geschlossene Untergruppe kann Mitgliedern ihrer Hauptgruppe erlauben, ihre Diskussionen zu lesen, ohne der Untergruppe beizutreten.
-
 <!-- translation-section: visible-to-parent-group -->
 
 ## Für die Hauptgruppe sichtbar
 
-Mit dieser Einstellung können Mitglieder der Hauptgruppe die Untergruppe finden, während deren Threads nur für Mitglieder der Untergruppe und eingeladene Gäste zugänglich bleiben. Personen, die keiner der beiden Gruppen angehören, können die Untergruppe nicht finden, auch wenn die Hauptgruppe öffentlich ist.
-
-Wähle **Für die übergeordnete Gruppe sichtbar** und dann **Mitglieder von [Hauptgruppe] können ohne Genehmigung beitreten**, damit Mitglieder der Hauptgruppe selbst beitreten können. Durch den Beitritt erhalten sie eine reguläre Mitgliedschaft in der Untergruppe, einschließlich des Zugriffs auf deren private Threads. Auch ein Beitritt mit Genehmigung oder nur auf Einladung ist möglich.
-
-Die Untergruppe behält diese Sichtbarkeit, wenn die Hauptgruppe öffentlich wird. Wenn die Hauptgruppe privat wird, erhalten ihre öffentlichen Untergruppen die Einstellung **Für die übergeordnete Gruppe sichtbar**, und deren Threads werden privat. Geheime Untergruppen bleiben geheim. Bestehende Untergruppen, die unter einer privaten Hauptgruppe bisher als geschlossen bezeichnet wurden, zeigen jetzt **Für die übergeordnete Gruppe sichtbar** an. Die bisherigen Zugriffsrechte bleiben unverändert.
-
-Damit Mitglieder der Hauptgruppe private Threads vor dem Beitritt lesen können, aktiviere unter **Berechtigungen** die Einstellung **Mitglieder von [Hauptgruppe] können private Threads sehen**. Dadurch erhalten sie Lesezugriff, aber keine Mitgliedschaft in der Untergruppe und keine Stimmrechte.
+Mitglieder der Hauptgruppe und der Untergruppe können die Untergruppe finden. Ihre Threads sind nur für Mitglieder der Untergruppe und eingeladene Gäste zugänglich.
 
 <!-- translation-section: secret -->
 
 ## Geheim
 
-Geheime Gruppen und ihre Inhalte sind nur für Personen sichtbar, die eingeladen oder hinzugefügt wurden. Eine Mitgliedschaft ist nur auf Einladung möglich. Geheime Gruppen erscheinen nicht im öffentlichen Gruppenverzeichnis.
-
-Eine geheime Hauptgruppe erlaubt nur Untergruppen mit den Einstellungen **Für die übergeordnete Gruppe sichtbar** oder **Geheim**. Ihre Untergruppen können weder offen noch geschlossen sein.
+Geheime Gruppen und ihre Inhalte sind nur für Personen sichtbar, die eingeladen oder hinzugefügt wurden. Geheime Gruppen erscheinen nicht im öffentlichen Gruppenverzeichnis.
 
 <!-- translation-section: how-people-join -->
 
 ## So treten Personen bei
 
-Die Datenschutzeinstellungen bestimmen, welche Beitrittsmöglichkeiten verfügbar sind:
+Wähle unter **Wie kann man teilnehmen?** eine der verfügbaren Optionen:
 
-| Datenschutz der Gruppe | Verfügbare Beitrittsmöglichkeiten |
+| Beitrittsmöglichkeit | So funktioniert es |
 | --- | --- |
-| **Offen** | Alle können beitreten, eine Genehmigung anfragen oder nur auf Einladung beitreten |
-| **Geschlossene Hauptgruppe** | Genehmigung anfragen oder nur auf Einladung beitreten |
-| **Geschlossene Untergruppe** | Alle können beitreten, eine Genehmigung anfragen oder nur auf Einladung beitreten |
-| **Für die übergeordnete Gruppe sichtbar** | Mitglieder der Hauptgruppe können beitreten, eine Genehmigung anfragen oder nur auf Einladung beitreten |
-| **Geheim** | Nur auf Einladung |
+| Ohne Genehmigung | Personen können selbst beitreten |
+| Genehmigung erforderlich | Personen stellen eine Beitrittsanfrage und warten auf die Genehmigung |
+| Nur auf Einladung | Personen benötigen eine Einladung, um beizutreten |
 
 Wenn eine Genehmigung erforderlich ist, wählen Personen **Der Gruppe beitreten**, beantworten die Beitrittsfrage der Gruppe und senden eine Beitrittsanfrage. Unter [Personen einladen](/en/user_manual/groups/inviting_people#request-to-join-group) findest du Anleitungen zum Einrichten der Frage, zum Prüfen von Anfragen und zum direkten Einladen von Personen.
 
@@ -107,4 +89,4 @@ Wenn eine Genehmigung erforderlich ist, wählen Personen **Der Gruppe beitreten*
 
 ## Gruppenverzeichnis
 
-Offene und geschlossene Hauptgruppen können im öffentlichen Gruppenverzeichnis aufgeführt werden, damit Personen sie entdecken können. Ein Eintrag im Verzeichnis ändert nicht, wer Gruppeninhalte lesen oder Mitglied werden kann. Untergruppen und geheime Gruppen können nicht aufgeführt werden.
+Offene und geschlossene Hauptgruppen können im öffentlichen Gruppenverzeichnis aufgeführt werden, damit Personen sie entdecken können. Untergruppen und geheime Gruppen können nicht aufgeführt werden.

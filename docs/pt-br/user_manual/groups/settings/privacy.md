@@ -1,28 +1,28 @@
 ---
 title: Privacidade
-source_revision: cd2e1e63e611688362e80009f50b8ed25025ba8b
+source_revision: 3dad7e54d7f08f6d83af4b8adb6a408f1652ef7e
 source_file: docs/en/user_manual/groups/settings/privacy.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-07'
+  'on': '2026-10-14'
 sections:
-  introduction: 72b58ba22851f914
-  open: 1727e8f20fe92fb2
+  introduction: 4b491c663bfb5ea9
+  open: 2802cda1461d3b19
   follow-an-open-group: e4a1b3ce35a974d0
-  closed: 53c3d50151a2115b
-  secret: fcb55fcb64d44881
-  how-people-join: 577d4b655fe72bb1
-  group-directory: 4ef3023e3cf4efdf
-  visible-to-parent-group: a9a3ece6458f080e
+  closed: fe4da2f032768bca
+  secret: d0a9ea85448f9798
+  how-people-join: 3840bb3403bb1788
+  group-directory: a9a41ea389fb10ba
+  visible-to-parent-group: 96b8595d3bc6ce4b
 generated:
-  introduction: 14c9627d9e88758c
-  open: 2e65a7ac5f47fef4
+  introduction: 3644a3e9dd39652e
+  open: 2cf8c6f2a2ab596a
   follow-an-open-group: 50424edf05d5252e
-  closed: b39a8fa3c9e1cb77
-  secret: f8324ba4c9c824be
-  how-people-join: 2aa996574b5e40a6
-  group-directory: '096d5cc0df912a1f'
-  visible-to-parent-group: b50bd32b412657c2
+  closed: 61913f3a5c76f7c4
+  secret: ef8cf551bc7825c1
+  how-people-join: e3dc94d84ecf1ef2
+  group-directory: 46ef6b3dcdf4a448
+  visible-to-parent-group: 5e8923e5b4b17515
 title_source: 54a57c3147c49f33
 title_generated: 2bb2d8436a5c0668
 ---
@@ -35,15 +35,13 @@ A privacidade controla quem pode encontrar um grupo e quem pode ler seu conteúd
 
 ![Configurações de privacidade do grupo](group_privacy_settings.png#width-90)
 
-Alterar a privacidade pode expor ou ocultar o conteúdo existente do grupo, não apenas o conteúdo criado depois. Escolha a configuração mais restritiva que ainda atenda ao propósito do grupo.
+Alterar a privacidade afeta o conteúdo existente. Tornar um grupo principal privado também altera a configuração de seus subgrupos públicos para **Visível para o grupo principal** e torna suas conversas privadas.
 
 <!-- translation-section: open -->
 
 ## Aberto
 
 Grupos abertos são espaços públicos. Qualquer pessoa pode encontrar o grupo e ler suas discussões, enquetes e arquivos. A lista de membros permanece visível apenas para os membros.
-
-Grupos abertos podem permitir a entrada imediata de pessoas, exigir aprovação ou aceitar apenas pessoas convidadas.
 
 <!-- translation-section: follow-an-open-group -->
 
@@ -59,47 +57,31 @@ Ative **Acompanhe as atualizações** na página do grupo para incluir discussõ
 
 ## Fechado
 
-Qualquer pessoa pode encontrar um grupo fechado e ler seu nome e sua descrição. Discussões, enquetes, arquivos e a lista de membros são acessíveis apenas aos membros e convidados.
-
-Grupos principais fechados podem permitir que as pessoas solicitem a entrada ou aceitar apenas pessoas convidadas. Não podem permitir a entrada imediata sem aprovação.
-
-Subgrupos fechados também podem permitir que qualquer pessoa entre sem aprovação. Para limitar a descoberta do subgrupo e a entrada imediata aos membros do grupo principal, selecione **Visível para o grupo principal**.
-
-Um subgrupo fechado pode permitir que membros do grupo principal leiam suas discussões sem entrar no subgrupo.
+Qualquer pessoa pode encontrar um grupo fechado e ler seu nome e sua descrição. Discussões, enquetes, arquivos e a lista de membros são acessíveis apenas aos membros e às pessoas convidadas.
 
 <!-- translation-section: visible-to-parent-group -->
 
 ## Visível para o grupo principal
 
-Esta configuração permite que membros do grupo principal encontrem o subgrupo, mantendo suas conversas acessíveis apenas aos membros do subgrupo e convidados. Pessoas que não pertencem a nenhum dos dois grupos não podem encontrá-lo, mesmo quando o grupo principal é público.
-
-Selecione **Visível para o grupo principal** e depois **Membros de [grupo principal] podem entrar sem aprovação** para permitir que membros do grupo principal entrem por conta própria. Ao entrar, a pessoa se torna um membro comum do subgrupo, com acesso às suas conversas privadas. Também estão disponíveis as opções de entrada mediante aprovação ou apenas por convite.
-
-O subgrupo mantém essa visibilidade quando o grupo principal se torna público. Se o grupo principal se tornar privado, seus subgrupos públicos passam a ser **Visíveis para o grupo principal** e suas conversas se tornam privadas. Subgrupos secretos continuam secretos. Subgrupos existentes que antes eram identificados como fechados em um grupo principal privado agora aparecem como **Visíveis para o grupo principal**, sem alteração no acesso existente.
-
-Para permitir que membros do grupo principal leiam conversas privadas antes de entrar, ative **Membros de [grupo principal] podem ver conversas privadas** em **Permissões**. Isso concede acesso de leitura, sem tornar essas pessoas membros do subgrupo nem conceder direitos de voto.
+Membros do grupo principal e membros do subgrupo podem encontrar o subgrupo. Suas conversas são acessíveis apenas aos membros do subgrupo e às pessoas convidadas.
 
 <!-- translation-section: secret -->
 
 ## Secreto
 
-Grupos secretos e seu conteúdo são visíveis apenas para pessoas que foram convidadas ou adicionadas. A entrada no grupo é feita apenas por convite. Grupos secretos não aparecem no diretório público de grupos.
-
-Um grupo principal secreto permite apenas subgrupos com a configuração **Visível para o grupo principal** ou **Secreto**. Seus subgrupos não podem ser abertos ou fechados.
+Grupos secretos e seu conteúdo são visíveis apenas para pessoas que foram convidadas ou adicionadas. Grupos secretos não aparecem no diretório público de grupos.
 
 <!-- translation-section: how-people-join -->
 
 ## Como as pessoas entram
 
-A privacidade determina quais opções de entrada estão disponíveis:
+Em **Como as pessoas participam?**, escolha uma das opções disponíveis:
 
-| Privacidade do grupo | Opções de entrada disponíveis |
+| Opção de entrada | Como funciona |
 | --- | --- |
-| **Aberto** | Entrada livre, mediante aprovação ou apenas por convite |
-| **Grupo principal fechado** | Mediante aprovação ou apenas por convite |
-| **Subgrupo fechado** | Entrada livre, mediante aprovação ou apenas por convite |
-| **Visível para o grupo principal** | Entrada de membros do grupo principal, mediante aprovação ou apenas por convite |
-| **Secreto** | Apenas por convite |
+| Sem aprovação | As pessoas podem entrar por conta própria |
+| Aprovação necessária | As pessoas solicitam a entrada e aguardam aprovação |
+| Apenas por convite | As pessoas precisam de um convite para entrar |
 
 Quando a aprovação é necessária, as pessoas selecionam **Entrar no grupo**, respondem à pergunta de entrada do grupo e enviam uma solicitação para entrar. Consulte [Convidar pessoas](/en/user_manual/groups/inviting_people#request-to-join-group) para obter instruções sobre como configurar a pergunta, analisar solicitações e convidar pessoas diretamente.
 
@@ -107,4 +89,4 @@ Quando a aprovação é necessária, as pessoas selecionam **Entrar no grupo**, 
 
 ## Diretório de grupos
 
-Grupos principais abertos e fechados podem ser listados no diretório público de grupos para que as pessoas possam encontrá-los. A inclusão no diretório não altera quem pode ler o conteúdo do grupo ou se tornar membro. Subgrupos e grupos secretos não podem ser listados.
+Grupos principais abertos e fechados podem ser listados no diretório público de grupos para que as pessoas possam encontrá-los. Subgrupos e grupos secretos não podem ser listados.

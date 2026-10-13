@@ -1,32 +1,34 @@
 ---
 title: サブグループ
-source_revision: cd2e1e63e611688362e80009f50b8ed25025ba8b
+source_revision: 3dad7e54d7f08f6d83af4b8adb6a408f1652ef7e
 source_file: docs/en/user_manual/groups/subgroups/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-07'
+  'on': '2026-10-14'
 sections:
   introduction: 63e6e23d24e80919
   add-a-subgroup: 0bc0e5f99eb074c3
   subgroup-settings: 737225cc4bebe7e8
-  privacy: 5bdd92ce200f197a
-  permissions: ee02991523f1ebe4
+  privacy: 58872ebdc8b93967
+  permissions: dcfc042cdb083deb
   find-subgroups: 5e6fc5a5122c1417
   invite-to-a-subgroup: 0af670e1e9b32a5e
   simultaneously-invite-people-to-subgroups-and-parent-group: 1991604900321cd7
   administer-a-subgroup: 58fa95833f79dd01
   delete-a-subgroup: 2c6e76ec78386443
+  how-people-join: 3e3d7bf205af6b7c
 generated:
   introduction: d99c9be1c97d1648
   add-a-subgroup: 794946c2c597f16c
   subgroup-settings: 4d1baea010b1b7e1
-  privacy: fab73faeeb6e817c
-  permissions: 31d25a36be3c835d
+  privacy: 201c06097802c912
+  permissions: d793cd2413ef5e16
   find-subgroups: 5711dcd4a3c90e26
   invite-to-a-subgroup: bd1058971796e58b
   simultaneously-invite-people-to-subgroups-and-parent-group: 3518924ddb8272cc
   administer-a-subgroup: 4e20b12396362d33
   delete-a-subgroup: 7bcfbcd6afa22a92
+  how-people-join: 3a3af47b9b118b15
 title_source: 9f81e728f70cae3e
 title_generated: 70b41aa1386d23c6
 ---
@@ -73,7 +75,7 @@ title_generated: 70b41aa1386d23c6
 
 ### プライバシー
 
-サブグループを見つけられる人と、参加方法をそれぞれ設定します。
+サブグループを見つけられる人と、そのスレッドを閲覧できる人を選択します。
 
 | プライバシー | 見つけられる人 | スレッドを閲覧できる人 |
 | --- | --- | --- |
@@ -82,25 +84,23 @@ title_generated: 70b41aa1386d23c6
 | **親グループに表示** | 親グループのメンバーとサブグループのメンバー | サブグループのメンバーと招待されたゲスト |
 | **秘密** | 招待されたサブグループのメンバー | サブグループのメンバーと招待されたゲスト |
 
-親グループのメンバーが自分で参加できるようにするには、サブグループの作成時、または**グループ設定を編集 → プライバシー**で、**親グループに表示**を選択し、**人々はどうやって参加するのでしょうか？**の項目で**[親グループ]のメンバーは承認なしで参加できます**を選択します。親グループに所属していない人には招待が必要です。メンバーは、親グループに所属している間は、サブグループを退会して再び参加できます。
-
-![親グループへの表示と承認なしでの参加を設定したサブグループのプライバシー設定](subgroups_privacy_settings.png)
-
-参加すると、通常のサブグループのメンバーになります。管理者になることはなく、既存のスレッドのプライバシーも変わりません。
-
-公開サブグループでも、すぐに参加できるように設定できます。この設定を選択すると、誰でも参加できます。親グループが非公開の場合、サブグループで選択できる設定は**親グループに表示**と**秘密**です。
-
-**親グループに表示**のサブグループは、親グループが公開されても非公開のままです。親グループを非公開にすると、その公開サブグループを見つけられる人は親グループのメンバーに限定され、スレッドも非公開になります。秘密のサブグループの設定は維持されます。
+親グループが非公開の場合、サブグループで選択できる設定は**親グループに表示**と**秘密**です。
 
 [グループのプライバシーについてはこちらをご覧ください](/en/user_manual/groups/settings/privacy)。
+
+<!-- translation-section: how-people-join -->
+
+### 参加方法
+
+サブグループの作成時、または**グループ設定を編集 → プライバシー**で、[参加方法](/en/user_manual/groups/settings/privacy#how-people-join)を選択します。
+
+![サブグループのプライバシーと参加方法の設定](subgroups_privacy_settings.png)
 
 <!-- translation-section: permissions -->
 
 ### 権限
 
-サブグループは親グループから独立して運営されます。例えば、サブグループのプライバシー設定が**秘密**の場合、招待されたメンバーのみがそのサブグループを見つけ、所属するメンバーやスレッドを閲覧できます。
-
-**閉鎖**のサブグループと**親グループに表示**のサブグループでは、親グループのメンバーが参加前に非公開のスレッドを閲覧できるように設定できます。**権限**で**[親グループ]のメンバーは非公開のスレッドを閲覧できます**を有効にします。閲覧できるようになっても、投票権は付与されず、サブグループのメンバーにもなりません。
+親グループのメンバーがサブグループに参加せずにそのスレッドを閲覧できるようにするには、**権限**で**[親グループ]のメンバーは非公開のスレッドを閲覧できます**を有効にします。閲覧できるようになっても、投票権は付与されず、サブグループのメンバーにもなりません。
 
 ![親グループのメンバーがサブグループの非公開スレッドを閲覧できるようにする設定](subgroups_private_threads_settings.png)
 

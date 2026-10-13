@@ -1,36 +1,36 @@
 ---
 title: Sous-groupes
-source_revision: cd2e1e63e611688362e80009f50b8ed25025ba8b
+source_revision: 3dad7e54d7f08f6d83af4b8adb6a408f1652ef7e
 source_file: docs/en/user_manual/groups/subgroups/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-07'
+  'on': '2026-10-14'
 sections:
   introduction: 63e6e23d24e80919
   add-a-subgroup: 0bc0e5f99eb074c3
   subgroup-settings: 737225cc4bebe7e8
-  privacy: 5bdd92ce200f197a
-  permissions: ee02991523f1ebe4
+  privacy: 58872ebdc8b93967
+  permissions: dcfc042cdb083deb
   find-subgroups: 5e6fc5a5122c1417
   invite-to-a-subgroup: 0af670e1e9b32a5e
   simultaneously-invite-people-to-subgroups-and-parent-group: 1991604900321cd7
   administer-a-subgroup: 58fa95833f79dd01
   delete-a-subgroup: 2c6e76ec78386443
+  how-people-join: 3e3d7bf205af6b7c
 generated:
   introduction: 5dedb9fedacabb90
   add-a-subgroup: e83e38dd9cd34258
   subgroup-settings: bdd0548ab28d965d
-  privacy: 44664bbb51700cfc
-  permissions: 5d63fc7094ac3592
+  privacy: c99161b3e56307e0
+  permissions: 370fccde84943fb0
   find-subgroups: 8bdb0244966a9a56
   invite-to-a-subgroup: f43723d038795ee2
   simultaneously-invite-people-to-subgroups-and-parent-group: f8892fdd5672d75b
   administer-a-subgroup: 00da0bfa7eaa1f4e
   delete-a-subgroup: 2115bc77d425a1e9
+  how-people-join: 621dd74dabf4c9eb
 title_source: 9f81e728f70cae3e
 title_generated: 93b587493dbb8010
-needs_review:
-  privacy: check the interface label "**Comment les personnes peuvent-elles rejoindre le groupe ?**" for "**How do people join?**"
 ---
 
 <!-- translation-section: introduction -->
@@ -75,7 +75,7 @@ Vous pouvez modifier les [paramètres du groupe](/en/user_manual/groups/settings
 
 ### Confidentialité
 
-Choisissez qui peut trouver le sous-groupe indépendamment de la manière dont les personnes le rejoignent :
+Choisissez qui peut trouver le sous-groupe et lire ses fils :
 
 | Confidentialité | Qui peut le trouver | Qui peut lire ses fils |
 | --- | --- | --- |
@@ -84,25 +84,23 @@ Choisissez qui peut trouver le sous-groupe indépendamment de la manière dont l
 | **Visible pour le groupe parent** | Les membres du groupe parent et du sous-groupe | Les membres du sous-groupe et les invités |
 | **Secret** | Les membres invités du sous-groupe | Les membres du sous-groupe et les invités |
 
-Pour permettre aux membres du groupe parent de rejoindre le sous-groupe sans approbation, sélectionnez **Visible pour le groupe parent**, puis **Les membres de [groupe parent] peuvent rejoindre le sous-groupe sans approbation** sous **Comment les personnes peuvent-elles rejoindre le groupe ?** lors de la création du sous-groupe, ou dans **Modifier les paramètres du groupe → Confidentialité**. Les personnes extérieures au groupe parent ont besoin d’une invitation. Les membres peuvent quitter le sous-groupe et le rejoindre à nouveau tant qu’ils appartiennent à son groupe parent.
-
-![Paramètres de confidentialité du sous-groupe avec visibilité pour le groupe parent et adhésion sans approbation](subgroups_privacy_settings.png)
-
-En rejoignant le sous-groupe, une personne devient un membre ordinaire. Cela ne lui donne pas le rôle d’administrateur et ne modifie pas la confidentialité des fils existants.
-
-Les sous-groupes publics peuvent également autoriser l’adhésion immédiate ; tout le monde peut les rejoindre lorsque cette option est sélectionnée. Lorsque le groupe parent est privé, les paramètres disponibles pour les sous-groupes sont **Visible pour le groupe parent** et **Secret**.
-
-Un sous-groupe **Visible pour le groupe parent** reste privé lorsque son groupe parent devient public. Rendre un groupe parent privé limite l’accès à ses sous-groupes publics aux membres du groupe parent et rend leurs fils privés, tout en préservant les sous-groupes secrets.
+Lorsque le groupe parent est privé, les sous-groupes peuvent être **Visible pour le groupe parent** ou **Secret**.
 
 [Consultez les informations sur la confidentialité des groupes](/en/user_manual/groups/settings/privacy).
 
+<!-- translation-section: how-people-join -->
+
+### Comment les personnes rejoignent le groupe
+
+Choisissez [comment les personnes rejoignent le groupe](/en/user_manual/groups/settings/privacy#how-people-join) lors de la création du sous-groupe, ou dans **Modifier les paramètres du groupe → Confidentialité**.
+
+![Paramètres de confidentialité et d’adhésion du sous-groupe](subgroups_privacy_settings.png)
+
 <!-- translation-section: permissions -->
 
-### Autorisations
+### Permissions
 
-Les sous-groupes fonctionnent indépendamment du groupe principal. Par exemple, si le paramètre de confidentialité du sous-groupe est défini sur **Secret**, seuls les membres invités peuvent trouver ce sous-groupe, voir qui en fait partie et consulter ses fils.
-
-Les sous-groupes **Fermés** et les sous-groupes **Visible pour le groupe parent** peuvent permettre aux membres du groupe parent de lire les fils privés avant de les rejoindre. Activez **Les membres de [groupe parent] peuvent voir les fils privés** dans **Permissions**. Ces lecteurs n’obtiennent ni le droit de vote ni le statut de membre du sous-groupe.
+Activez **Les membres de [groupe parent] peuvent voir les fils privés** dans **Permissions** pour permettre aux membres du groupe parent de lire les fils du sous-groupe sans le rejoindre. Ces lecteurs n’obtiennent ni le droit de vote ni le statut de membre du sous-groupe.
 
 ![Paramètre permettant aux membres du groupe parent de voir les fils privés du sous-groupe](subgroups_private_threads_settings.png)
 

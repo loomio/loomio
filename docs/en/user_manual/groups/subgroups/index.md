@@ -40,7 +40,7 @@ You can edit the subgroups [group settings](/en/user_manual/groups/settings/) by
 
 ### Privacy
 
-Choose who can find the subgroup separately from how people join it:
+Choose who can find the subgroup and read its threads:
 
 | Privacy | Who can find it | Who can read its threads |
 | --- | --- | --- |
@@ -49,25 +49,23 @@ Choose who can find the subgroup separately from how people join it:
 | **Visible to parent group** | Parent group members and subgroup members | Subgroup members and invited guests |
 | **Secret** | Invited subgroup members | Subgroup members and invited guests |
 
-To let parent group members join themselves, select **Visible to parent group**, then **Members of [parent group] can join without approval** under **How do people join?** when creating the subgroup, or in **Edit group settings → Privacy**. People outside the parent group need an invitation. Members can leave the subgroup and join again while they still belong to its parent group.
-
-![Subgroup privacy settings with parent group visibility and joining without approval](subgroups_privacy_settings.png)
-
-Joining makes someone an ordinary subgroup member. It does not make them an admin or change the privacy of existing threads.
-
-Public subgroups can also allow immediate joining; anyone can join when that option is selected. When the parent group is private, the available subgroup settings are **Visible to parent group** and **Secret**.
-
-A subgroup **Visible to parent group** stays private when its parent becomes public. Making a parent private restricts its public subgroups to parent members and makes their threads private, while preserving Secret subgroups.
+When the parent group is private, subgroups can be **Visible to parent group** or **Secret**.
 
 [Read about group privacy here](/en/user_manual/groups/settings/privacy).
+
+<!-- translation-section: how-people-join -->
+
+### How people join
+
+Choose [how people join](/en/user_manual/groups/settings/privacy#how-people-join) when creating the subgroup, or in **Edit group settings → Privacy**.
+
+![Subgroup privacy and joining settings](subgroups_privacy_settings.png)
 
 <!-- translation-section: permissions -->
 
 ### Permissions
 
-Subgroups operate independently of the main group. For example, if the subgroup privacy setting is set to **Secret**, then only invited members can find this subgroup, see who is in it, and see threads.
-
-**Closed** subgroups and subgroups **Visible to parent group** can allow parent group members to read private threads before joining. Enable **Members of [parent group] can see private threads** in **Permissions**. These readers do not gain voting rights or subgroup membership.
+Enable **Members of [parent group] can see private threads** in **Permissions** to let parent members read subgroup threads without joining. These readers do not gain voting rights or subgroup membership.
 
 ![Setting that lets parent group members see private subgroup threads](subgroups_private_threads_settings.png)
 

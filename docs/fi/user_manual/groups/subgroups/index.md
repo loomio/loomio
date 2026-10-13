@@ -1,32 +1,34 @@
 ---
 title: Alaryhmät
-source_revision: cd2e1e63e611688362e80009f50b8ed25025ba8b
+source_revision: 3dad7e54d7f08f6d83af4b8adb6a408f1652ef7e
 source_file: docs/en/user_manual/groups/subgroups/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-07'
+  'on': '2026-10-14'
 sections:
   introduction: 63e6e23d24e80919
   add-a-subgroup: 0bc0e5f99eb074c3
   subgroup-settings: 737225cc4bebe7e8
-  privacy: 5bdd92ce200f197a
-  permissions: ee02991523f1ebe4
+  privacy: 58872ebdc8b93967
+  permissions: dcfc042cdb083deb
   find-subgroups: 5e6fc5a5122c1417
   invite-to-a-subgroup: 0af670e1e9b32a5e
   simultaneously-invite-people-to-subgroups-and-parent-group: 1991604900321cd7
   administer-a-subgroup: 58fa95833f79dd01
   delete-a-subgroup: 2c6e76ec78386443
+  how-people-join: 3e3d7bf205af6b7c
 generated:
   introduction: 751f6b5395cbd1f7
   add-a-subgroup: 62a6338ca49e4894
   subgroup-settings: eb275d9b7dad3776
-  privacy: 89d17a25396b71fd
-  permissions: 4af16f6e379b37d5
+  privacy: 0e7d81d92e65635f
+  permissions: 4eab79c6dea223c1
   find-subgroups: fb8a0662cdff75b5
   invite-to-a-subgroup: aa0041c6a3913691
   simultaneously-invite-people-to-subgroups-and-parent-group: cad30b323bd6e7d9
   administer-a-subgroup: f8d9fc86d743f211
   delete-a-subgroup: 93cdc7731d9d4c71
+  how-people-join: 9a6c0593f9e0e953
 title_source: 9f81e728f70cae3e
 title_generated: 1df663e60675db34
 ---
@@ -73,7 +75,7 @@ Voit muokata alaryhmän [ryhmäasetuksia](/en/user_manual/groups/settings/) naps
 
 ### Yksityisyys
 
-Valitse erikseen, kuka voi löytää alaryhmän ja miten siihen liitytään:
+Valitse, kuka voi löytää alaryhmän ja lukea sen ketjuja:
 
 | Yksityisyys | Kuka voi löytää alaryhmän | Kuka voi lukea sen ketjuja |
 | --- | --- | --- |
@@ -82,25 +84,23 @@ Valitse erikseen, kuka voi löytää alaryhmän ja miten siihen liitytään:
 | **Näkyy pääryhmälle** | Pääryhmän jäsenet ja alaryhmän jäsenet | Alaryhmän jäsenet ja kutsutut vieraat |
 | **Salainen** | Kutsutut alaryhmän jäsenet | Alaryhmän jäsenet ja kutsutut vieraat |
 
-Jos haluat pääryhmän jäsenten voivan liittyä itse, valitse **Näkyy pääryhmälle** ja sitten **Ryhmän [pääryhmä] jäsenet voivat liittyä ilman hyväksyntää** kohdasta **Miten ihmiset liittyvät?** alaryhmää luodessasi tai kohdasta **Muokkaa ryhmän asetuksia → Yksityisyys**. Pääryhmän ulkopuoliset ihmiset tarvitsevat kutsun. Jäsenet voivat poistua alaryhmästä ja liittyä siihen uudelleen niin kauan kuin he kuuluvat sen pääryhmään.
-
-![Alaryhmän yksityisyysasetukset, joissa alaryhmä näkyy pääryhmälle ja liittyminen onnistuu ilman hyväksyntää](subgroups_privacy_settings.png)
-
-Liittyminen tekee ihmisestä tavallisen alaryhmän jäsenen. Se ei tee hänestä ylläpitäjää eikä muuta olemassa olevien ketjujen yksityisyyttä.
-
-Myös julkiset alaryhmät voivat sallia välittömän liittymisen. Kuka tahansa voi liittyä, kun tämä vaihtoehto on valittu. Kun pääryhmä on yksityinen, alaryhmän käytettävissä olevat yksityisyysasetukset ovat **Näkyy pääryhmälle** ja **Salainen**.
-
-Alaryhmä, jonka yksityisyysasetus on **Näkyy pääryhmälle**, pysyy yksityisenä, kun sen pääryhmä muuttuu julkiseksi. Pääryhmän muuttaminen yksityiseksi rajoittaa sen julkisten alaryhmien näkyvyyden pääryhmän jäsenille ja tekee niiden ketjuista yksityisiä. Salaiset alaryhmät säilyvät ennallaan.
+Kun pääryhmä on yksityinen, alaryhmän yksityisyysasetus voi olla **Näkyy pääryhmälle** tai **Salainen**.
 
 [Lue lisää ryhmän yksityisyydestä](/en/user_manual/groups/settings/privacy).
+
+<!-- translation-section: how-people-join -->
+
+### Miten ihmiset liittyvät
+
+Valitse [miten ihmiset liittyvät](/en/user_manual/groups/settings/privacy#how-people-join) alaryhmää luodessasi tai kohdassa **Muokkaa ryhmän asetuksia → Yksityisyys**.
+
+![Alaryhmän yksityisyys- ja liittymisasetukset](subgroups_privacy_settings.png)
 
 <!-- translation-section: permissions -->
 
 ### Käyttöoikeudet
 
-Alaryhmät toimivat itsenäisesti pääryhmästä. Jos esimerkiksi alaryhmän yksityisyysasetus on **Salainen**, vain kutsutut jäsenet voivat löytää alaryhmän, nähdä sen jäsenet ja lukea ketjuja.
-
-Alaryhmät, joiden yksityisyysasetus on **Suljettu** tai **Näkyy pääryhmälle**, voivat sallia pääryhmän jäsenten lukea yksityisiä ketjuja ennen liittymistä. Ota käyttöön **Ryhmän [pääryhmä] jäsenet voivat nähdä yksityiset ketjut** kohdassa **Käyttöoikeudet**. Nämä lukijat eivät saa äänioikeutta eivätkä alaryhmän jäsenyyttä.
+Ota käyttöön **Ryhmän [pääryhmä] jäsenet voivat nähdä yksityiset ketjut** kohdassa **Käyttöoikeudet**, jotta pääryhmän jäsenet voivat lukea alaryhmän ketjuja liittymättä alaryhmään. Nämä lukijat eivät saa äänioikeutta eivätkä alaryhmän jäsenyyttä.
 
 ![Asetus, joka antaa pääryhmän jäsenille oikeuden nähdä alaryhmän yksityiset ketjut](subgroups_private_threads_settings.png)
 
