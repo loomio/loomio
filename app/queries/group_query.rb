@@ -14,6 +14,7 @@ class GroupQuery
     chain.kept.
       where("#{'groups.is_visible_to_public = true OR ' if show_public}
             groups.id in (:context_group_ids) OR
-            (groups.parent_id in (:group_ids) AND groups.is_visible_to_parent_members = TRUE)", group_ids: group_ids, context_group_ids: context_group_ids)
+            (groups.parent_id in (:group_ids) AND
+             (groups.is_visible_to_public = TRUE OR groups.is_visible_to_parent_members = TRUE))", group_ids: group_ids, context_group_ids: context_group_ids)
   end
 end

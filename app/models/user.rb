@@ -196,7 +196,8 @@ class User < ApplicationRecord
   def browseable_group_ids
     Group.where(
       "id in (:group_ids) OR
-      (parent_id in (:group_ids) AND is_visible_to_parent_members = TRUE)",
+      (parent_id in (:group_ids) AND
+       (is_visible_to_public = TRUE OR is_visible_to_parent_members = TRUE))",
       group_ids: self.group_ids).pluck(:id)
   end
 
