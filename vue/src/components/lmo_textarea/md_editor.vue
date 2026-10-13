@@ -32,6 +32,7 @@ const { t } = useI18n();
 
 // Refs
 const preview = ref(false);
+const converting = ref(false);
 const fieldRef = ref(null);
 const filesField = ref(null);
 
@@ -97,9 +98,15 @@ const reset = () => {
   resetFiles();
 };
 
-const convertToHtmlHandler = () => {
-  convertToHtml(props.model, props.field);
-  Records.users.saveExperience('html-editor.uses-markdown', false);
+const convertToHtmlHandler = async () => {
+  if (converting.value) return;
+  converting.value = true;
+  try {
+    await convertToHtml(props.model, props.field);
+    Records.users.saveExperience('html-editor.uses-markdown', false);
+  } finally {
+    converting.value = false;
+  }
 };
 
 const onPaste = (event) => {
@@ -213,7 +220,7 @@ div(style="position: relative")
   .d-flex.align-center.menubar(align-center :aria-label="$t('formatting.formatting_tools')")
     v-btn(icon size="x-small" variant="text" @click='filesField.click()' :title="$t('formatting.attach')")
       common-icon(name="mdi-paperclip")
-    v-btn.e2e-wysiwyg-btn(variant="text" size="small" @click="convertToHtmlHandler" v-t="'formatting.wysiwyg'")
+    v-btn.e2e-wysiwyg-btn(variant="text" size="small" :loading="converting" @click="convertToHtmlHandler") {{ t('formatting.wysiwyg') }}
     v-spacer
     v-btn.mr-4(variant="text" size="small" @click="preview = !preview" v-t="previewAction")
     slot(name="actions")

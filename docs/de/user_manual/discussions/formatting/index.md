@@ -1,10 +1,10 @@
 ---
 title: Formatierung
-source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
+source_revision: f0c873209653029367083ca854d7fb90269a9998
 source_file: docs/en/user_manual/discussions/formatting/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-14'
 sections:
   introduction: e5ed11fef349b38c
   attach-file: 772ed69602535db7
@@ -24,7 +24,7 @@ sections:
   code-block: e05cf0873c4c22e2
   divider: da7aa0e1a1a4436e
   add-table: f1a579057780872c
-  markdown: 6ee2783ba81363fd
+  markdown: 7c37a4c00bd431ee
   rich-text: 9136c76bfd5409a9
 generated:
   introduction: 04ad4bba2072ba2c
@@ -45,7 +45,7 @@ generated:
   code-block: d1fbe0640f200c8a
   divider: b0df8fe8989bf75d
   add-table: c0dece7f696b5190
-  markdown: f8e13e0f811919e3
+  markdown: 1786bc24e059cde7
   rich-text: 37a3f9015b8bb4c4
 title_source: 29d4198e41d8221a
 title_generated: f4a6018874ae1f36
@@ -245,7 +245,9 @@ Mit weiteren Werkzeugen kannst du Spalten und Zeilen hinzufügen oder entfernen.
 
 Wähle **Markdown bearbeiten**, um zur Markdown-Bearbeitung zu wechseln.
 
-Wenn du darauf klickst, während das Formular bereits Text enthält, können bei der Umwandlung einige Formatierungen verloren gehen.
+Bei der Umwandlung in Markdown bleiben Überschriften, fett und kursiv formatierter Text, Listen, einfache Tabellen, abgehakte Aufgaben, Bilder, Links und @Erwähnungen erhalten. Videos, Audio und eingebettete Inhalte werden zu Links.
+
+Textfarben, Hervorhebungen, Unterstreichungen, Ausrichtung und Tabellenlayout können verloren gehen. Fälligkeitstermine und Erinnerungen für Aufgaben werden entfernt; bei der Rückumwandlung in Rich Text werden neue Aufgaben mit demselben Text erstellt, die wie zuvor abgehakt oder nicht abgehakt sind.
 
 <!-- translation-section: rich-text -->
 

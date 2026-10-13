@@ -1,0 +1,32 @@
+[
+  {
+    "name": "styled text and mentions",
+    "html": "<p><strong>Keep</strong> <span style=\"color: red\">this text</span> <span data-mention-id=\"sam-one\" data-label=\"Sam One\">@Sam One</span></p>",
+    "markdown": "**Keep** this text @sam-one",
+    "server": [{"selector": "p", "text": "Keep this text @sam-one"}, {"selector": "strong", "text": "Keep"}]
+  },
+  {
+    "name": "literal heading",
+    "html": "<p># Literal heading</p>",
+    "markdown": "\\# Literal heading",
+    "server": [{"selector": "p", "text": "# Literal heading"}]
+  },
+  {
+    "name": "table",
+    "html": "<table><tr><th>Name</th><th>Vote</th></tr><tr><td>Alice</td><td>Yes</td></tr></table>",
+    "markdown": "| Name  | Vote |\n| ----- | ---- |\n| Alice | Yes  |",
+    "server": [{"selector": "th", "texts": ["Name", "Vote"]}, {"selector": "td", "texts": ["Alice", "Yes"]}]
+  },
+  {
+    "name": "checked task",
+    "html": "<ul data-type=\"taskList\"><li data-type=\"taskItem\" data-checked=\"true\"><p>Done</p></li></ul>",
+    "markdown": "- [x] Done",
+    "server": [{"selector": "li", "text": "[x] Done"}]
+  },
+  {
+    "name": "link with spaces and parentheses",
+    "html": "<p><a href=\"https://example.com/a (b)\">A link</a></p>",
+    "markdown": "[A link](https://example.com/a%20%28b%29)",
+    "server": [{"selector": "a", "text": "A link", "href": "https://example.com/a%20%28b%29"}]
+  }
+]

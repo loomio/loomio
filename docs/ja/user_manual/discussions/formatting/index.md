@@ -1,10 +1,10 @@
 ---
 title: 書式設定
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
+source_revision: f0c873209653029367083ca854d7fb90269a9998
 source_file: docs/en/user_manual/discussions/formatting/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-14'
 sections:
   introduction: e5ed11fef349b38c
   attach-file: 772ed69602535db7
@@ -24,7 +24,7 @@ sections:
   code-block: e05cf0873c4c22e2
   divider: da7aa0e1a1a4436e
   add-table: f1a579057780872c
-  markdown: 6ee2783ba81363fd
+  markdown: 7c37a4c00bd431ee
   rich-text: 9136c76bfd5409a9
 generated:
   introduction: ebfd47723f0c2f9f
@@ -45,7 +45,7 @@ generated:
   code-block: 4442a24460c5e8c1
   divider: c621c55ff193d28a
   add-table: d814387d91174ce4
-  markdown: 353d06fae5ce3c86
+  markdown: 52ee95c914d558db
   rich-text: 4c2c842f33f272bf
 title_source: 29d4198e41d8221a
 title_generated: 7a32dd7be63ea4ca
@@ -245,7 +245,9 @@ title_generated: 7a32dd7be63ea4ca
 
 Markdownでの編集に切り替えるには、**マークダウンの編集**を選択します。
 
-フォームにテキストがある状態でクリックすると、変換時に一部の書式が失われる場合があります。
+Markdownに変換しても、見出し、太字と斜体のテキスト、リスト、基本的な表、チェック済みのタスク、画像、リンク、@メンションは保持されます。動画、音声、埋め込みコンテンツはリンクになります。
+
+文字色、ハイライト、下線、配置、表のレイアウトは失われる場合があります。タスクの期限とリマインダーは削除されます。リッチテキストに戻すと、同じテキストとチェック状態を持つ新しいタスクが作成されます。
 
 <!-- translation-section: rich-text -->
 

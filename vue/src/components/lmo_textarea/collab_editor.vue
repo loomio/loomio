@@ -7,31 +7,9 @@ import AppConfig from '@/shared/services/app_config';
 import FilesList from './files_list.vue';
 import EventBus from '@/shared/services/event_bus';
 import { I18n } from '@/i18n';
-import { convertToMd } from '@/shared/services/format_converter';
-import Blockquote from '@tiptap/extension-blockquote';
-import Bold from '@tiptap/extension-bold';
-import CodeBlock from '@tiptap/extension-code-block';
-import Document from '@tiptap/extension-document';
-import HardBreak from '@tiptap/extension-hard-break';
-import Heading from '@tiptap/extension-heading';
-import HorizontalRule from '@tiptap/extension-horizontal-rule';
-import Italic from '@tiptap/extension-italic';
-import Paragraph from '@tiptap/extension-paragraph';
-import Strike from '@tiptap/extension-strike';
-import { Table, TableRow, TableCell, TableHeader } from '@tiptap/extension-table'
-import { BulletList, OrderedList, ListItem, ListKeymap } from '@tiptap/extension-list'
-import { Focus, Placeholder, UndoRedo, Dropcursor, Gapcursor, CharacterCount } from '@tiptap/extensions'
-import {CustomTaskItem} from './extension_custom_task_item';
-import {CustomTaskList} from './extension_custom_task_list';
-import { TextStyle } from '@tiptap/extension-text-style';
-import Text from '@tiptap/extension-text';
-import Underline from '@tiptap/extension-underline';
-import {CustomMention} from './extension_mention';
-import {CustomLink} from './extension_link';
-import {CustomImage} from './extension_image';
-import {Video} from './extension_image';
-import {Audio} from './extension_image';
-import {Iframe} from './extension_iframe';
+import { convertToMd, takeConvertedContent } from '@/shared/services/format_converter';
+import { contentExtensions } from './content_extensions';
+import { Placeholder, Dropcursor, Gapcursor, CharacterCount } from '@tiptap/extensions';
 
 import { Editor, EditorContent } from '@tiptap/vue-3';
 
@@ -43,8 +21,6 @@ import MentionNotificationsCount from '@/components/common/mention_notifications
 import { uniq, reject, uniqBy } from 'lodash-es';
 import TextHighlightBtn from './text_highlight_btn';
 import TextAlignBtn from './text_align_btn';
-import { TextAlign } from './extension_text_align';
-import { Highlight } from './extension_highlight';
 
 import Collaboration from '@tiptap/extension-collaboration';
 import CollaborationCaret from '@tiptap/extension-collaboration-caret'
@@ -89,6 +65,7 @@ const editor = ref(null);
 const editorContentRef = ref(null);
 const focused = ref(false);
 const expanded = ref(false);
+const converting = ref(false);
 const linkUrl = ref("");
 const iframeUrl = ref("");
 const linkDialogIsOpen = ref(false);
@@ -242,11 +219,15 @@ const selectedText = () => {
   return state.doc.textBetween(from, to, ' ');
 };
 
-const convertToMdHandler = () => {
-  if (confirm(I18n.global.t('formatting.markdown_confirm'))) {
-    updateModel();
-    convertToMd(props.model, props.field);
+const convertToMdHandler = async () => {
+  if (converting.value || !confirm(I18n.global.t('formatting.markdown_confirm'))) return;
+  converting.value = true;
+  try {
+    updateFiles();
+    await convertToMd(props.model, props.field, editor.value);
     Records.users.saveExperience('html-editor.uses-markdown');
+  } finally {
+    converting.value = false;
   }
 };
 
@@ -331,12 +312,17 @@ const imageSelected = () => {
 onMounted(() => {
   const docname = props.model.collabKey(props.field, (Session.user().id || AppConfig.channel_token));
   ydoc = new Y.Doc();
+  let contentConverted = takeConvertedContent(props.model, props.field);
 
   const onSync = function() {
     // The provider and fallback timer outlive the editor; a late sync after
     // the editor is destroyed would hit a null commandManager.
     if (!editor.value || editor.value.isDestroyed) { return; }
-    if (!ydoc.getMap('config').get('initialContentLoaded')) {
+    if (contentConverted !== undefined) {
+      editor.value.commands.setContent(contentConverted);
+      ydoc.getMap('config').set('initialContentLoaded', true);
+      contentConverted = undefined;
+    } else if (!ydoc.getMap('config').get('initialContentLoaded')) {
       ydoc.getMap('config').set('initialContentLoaded', true);
       editor.value.commands.setContent(props.model[props.field]);
     } else {
@@ -360,7 +346,7 @@ onMounted(() => {
 
   // Fallback: If server doesn't connect within timeout, load content from local model
   syncFallbackTimeout = setTimeout(() => {
-    if (!ydoc.getMap('config').get('initialContentLoaded')) {
+    if (contentConverted !== undefined || !ydoc.getMap('config').get('initialContentLoaded')) {
       console.log('Hocuspocus has not synced within 2 seconds, loading from local model');
       onSync();
     }
@@ -378,12 +364,8 @@ onMounted(() => {
     },
     autofocus: props.autofocus,
     extensions: [
-      Blockquote,
-      Bold,
-      BulletList, OrderedList, ListItem, ListKeymap,
-      CodeBlock,
+      ...contentExtensions({ attachFile, attachImageFile, mentionOptions }),
       CharacterCount.configure({limit: props.maxLength}),
-      CustomImage.configure({attachFile: attachFile, attachImageFile: attachImageFile}),
       Collaboration.configure({
         document: ydoc,
       }),
@@ -419,32 +401,9 @@ onMounted(() => {
           return cursor;
         }
       }),
-      Video,
-      Audio,
-      Document,
       Dropcursor,
       Gapcursor,
-      HardBreak,
-      Heading,
-      Highlight.configure({ multicolor: true }),
-      HorizontalRule,
-      Italic,
-      Iframe,
-      CustomLink,
-      Paragraph,
       Placeholder.configure({placeholder: () => props.placeholder}),
-      Strike,
-      Text,
-      Table,
-      TableHeader,
-      TableRow,
-      TableCell,
-      CustomTaskList,
-      CustomTaskItem,
-      CustomMention.configure(mentionOptions),
-      TextStyle,
-      TextAlign.configure({ types: ['heading', 'paragraph'] }),
-      Underline
     ],
     onUpdate: () => {
       if (props.maxLength) { checkLength(); }
@@ -636,7 +595,7 @@ div.mb-2
             v-btn.text-editor__add-table(v-bind="btnProps" :variant="editor.isActive('table') ? 'tonal' : 'text'" @click='editor.chain().insertTable({rows: 3, cols: 3, withHeaderRow: false }).focus().run()' :title="$t('formatting.add_table')")
               common-icon(v-bind="iconProps" name="mdi-table")
             //- markdown (save experience)
-            v-btn.e2e-markdown-btn(v-bind="btnProps" @click="convertToMdHandler" :title="$t('formatting.edit_markdown')")
+            v-btn.e2e-markdown-btn(v-bind="btnProps" :loading="converting" @click="convertToMdHandler" :title="$t('formatting.edit_markdown')")
               common-icon(v-bind="iconProps" name="mdi-language-markdown-outline")
 
             v-btn.html-editor__expand(v-bind="btnProps" @click="toggleExpanded" :title="$t('formatting.collapse')")

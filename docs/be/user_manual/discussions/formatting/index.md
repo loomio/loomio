@@ -1,10 +1,10 @@
 ---
 title: Фарматаванне
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
+source_revision: f0c873209653029367083ca854d7fb90269a9998
 source_file: docs/en/user_manual/discussions/formatting/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-14'
 sections:
   introduction: e5ed11fef349b38c
   attach-file: 772ed69602535db7
@@ -24,7 +24,7 @@ sections:
   code-block: e05cf0873c4c22e2
   divider: da7aa0e1a1a4436e
   add-table: f1a579057780872c
-  markdown: 6ee2783ba81363fd
+  markdown: 7c37a4c00bd431ee
   rich-text: 9136c76bfd5409a9
 generated:
   introduction: a610a5bfd9632071
@@ -45,7 +45,7 @@ generated:
   code-block: 02e999761fed9c11
   divider: 344336d4337d957a
   add-table: 48505674f12b094f
-  markdown: 5bd57af001b80cb6
+  markdown: c89a6becf9257496
   rich-text: 4e10cd81137f1a24
 title_source: 29d4198e41d8221a
 title_generated: d3d09eaf6040ff72
@@ -245,7 +245,9 @@ title_generated: d3d09eaf6040ff72
 
 Каб перайсці да рэдагавання ў Markdown, выберыце **Рэдагаваць Markdown**.
 
-Калі вы націснеце гэтую кнопку, калі ў форме ўжо ёсць тэкст, частка фарматавання можа згубіцца пры пераўтварэнні.
+Пры пераўтварэнні ў Markdown захоўваюцца загалоўкі, тлусты і курсіўны тэкст, спісы, простыя табліцы, задачы з пазнакамі выканання, выявы, спасылкі і @згадкі. Відэа, аўдыя і ўбудаваны змест ператвараюцца ў спасылкі.
+
+Колеры тэксту, вылучэнне колерам, падкрэсліванне, выраўноўванне і макет табліц могуць згубіцца. Тэрміны выканання задач і напаміны выдаляюцца; пры зваротным пераўтварэнні ў фарматаваны тэкст ствараюцца новыя задачы з тым самым тэкстам і станам пазнакі выканання.
 
 <!-- translation-section: rich-text -->
 

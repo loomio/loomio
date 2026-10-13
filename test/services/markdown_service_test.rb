@@ -1,6 +1,18 @@
 require 'test_helper'
 
 class MarkdownServiceTest < ActiveSupport::TestCase
+  test "client mode conversion produces Markdown compatible with server rendering" do
+    JSON.parse(file_fixture("markdown_conversion.json").read).each do |fixture|
+      fragment = Nokogiri::HTML5::DocumentFragment.parse(MarkdownService.render_html(fixture.fetch("markdown")))
+
+      fixture.fetch("server").each do |expected|
+        nodes = fragment.css(expected.fetch("selector"))
+        assert_equal Array(expected["texts"] || expected.fetch("text")), nodes.map { |node| node.text.strip }, fixture.fetch("name")
+        assert_equal expected["href"], nodes.first["href"], fixture.fetch("name") if expected.key?("href")
+      end
+    end
+  end
+
   test "markdown replaces unsafe link and image URLs" do
     markdown = <<~MARKDOWN
       [javascript](javascript:alert(1))

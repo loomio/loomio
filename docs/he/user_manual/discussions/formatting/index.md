@@ -1,10 +1,10 @@
 ---
 title: עיצוב
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
+source_revision: f0c873209653029367083ca854d7fb90269a9998
 source_file: docs/en/user_manual/discussions/formatting/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-14'
 sections:
   introduction: e5ed11fef349b38c
   attach-file: 772ed69602535db7
@@ -24,7 +24,7 @@ sections:
   code-block: e05cf0873c4c22e2
   divider: da7aa0e1a1a4436e
   add-table: f1a579057780872c
-  markdown: 6ee2783ba81363fd
+  markdown: 7c37a4c00bd431ee
   rich-text: 9136c76bfd5409a9
 generated:
   introduction: 28e62586d6c1d027
@@ -45,7 +45,7 @@ generated:
   code-block: 372830070014a63d
   divider: f1b7b65d11f2efb0
   add-table: d34483dcf326dc1e
-  markdown: 45c40a11e116c914
+  markdown: 6124f235852c4149
   rich-text: cd6a697aa984ad9f
 title_source: 29d4198e41d8221a
 title_generated: fb76597681c2bb39
@@ -245,7 +245,9 @@ title_generated: fb76597681c2bb39
 
 כדי לעבור לעריכת Markdown, יש לבחור **ערוך Markdown**.
 
-בחירה באפשרות זו כאשר כבר יש טקסט בטופס עלולה לגרום לאובדן חלק מהעיצוב במהלך ההמרה.
+המרה ל-Markdown שומרת על כותרות, טקסט מודגש ונטוי, רשימות, טבלאות בסיסיות, משימות שסומנו כבוצעו, תמונות, קישורים ואזכורים באמצעות @. סרטונים, קטעי שמע ותוכן מוטמע הופכים לקישורים.
+
+צבעי טקסט, הדגשות בצבע, קווים תחתונים, יישור ופריסת טבלאות עלולים להיאבד. תאריכי יעד ותזכורות של משימות מוסרים; המרה חזרה לטקסט עשיר יוצרת משימות חדשות עם אותו טקסט ואותו מצב סימון.
 
 <!-- translation-section: rich-text -->
 
