@@ -95,6 +95,26 @@ class MembershipRequestNotificationTest < ActiveSupport::TestCase
     assert_equal @group.full_name, notification.translation_values["title"]
   end
 
+  test "approving a former member restores topic access and active poll voting" do
+    member = users(:member_normal)
+    poll = PollService.create(params: {
+      title: 'Return through an approved request', poll_type: 'poll', group_id: @group.id,
+      poll_option_names: %w[Yes No], closing_at: 3.days.from_now
+    }, actor: @actor)
+    stance = poll.stances.latest.find_by!(participant: member)
+    reader = TopicReader.for(user: member, topic: topics(:discussion_topic))
+    reader.update!(guest: true)
+    MembershipService.revoke(membership: @group.membership_for(member), actor: member)
+    request = MembershipRequest.create!(group: @group, requestor: member)
+
+    MembershipRequestService.approve(membership_request: request, actor: @actor)
+
+    assert_not_nil request.reload.approved_at
+    assert_nil reader.reload.revoked_at
+    assert_nil stance.reload.revoked_at
+    assert member.can?(:vote_in, poll)
+  end
+
   test "notification failure rolls back request creation" do
     request = MembershipRequest.new(group: @group)
 

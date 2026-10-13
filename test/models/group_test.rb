@@ -40,6 +40,28 @@ class GroupTest < ActiveSupport::TestCase
     assert_includes @group.members, @user
   end
 
+  test "adding a member as a setup helper only changes membership" do
+    member = users(:member_normal)
+    poll = PollService.create(params: {
+      title: 'Setup helper', poll_type: 'poll', group_id: @group.id,
+      poll_option_names: %w[Yes No], closing_at: 3.days.from_now
+    }, actor: users(:admin))
+    stance = poll.stances.latest.find_by!(participant: member)
+    reader = TopicReader.for(user: member, topic: topics(:discussion_topic))
+    reader.update!(guest: true)
+    MembershipService.revoke(membership: @group.membership_for(member), actor: member)
+
+    ActionCable.server.stub(:broadcast, ->(*) { flunk 'Setup helper must not broadcast access changes' }) do
+      assert_no_enqueued_jobs(only: PollGroupMembersAddedWorker) do
+        @group.add_member!(member)
+      end
+    end
+
+    assert_includes @group.members, member
+    assert_not_nil reader.reload.revoked_at
+    assert_not_nil stance.reload.revoked_at
+  end
+
   test "members excludes deactivated users but all_members retains them" do
     @group.add_member!(@user)
     @user.update!(deactivated_at: Time.current)

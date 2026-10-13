@@ -59,6 +59,7 @@ module GroupService
 
       Group.where(id: group_ids).each do |g|
         revoked_memberships = Membership.revoked.where(group_id: g.id, user_id: users.map(&:id))
+        returning_user_ids = revoked_memberships.pluck(:user_id)
         revoked_memberships.update_all(
           inviter_id: actor.id,
           accepted_at: nil,
@@ -84,9 +85,16 @@ module GroupService
         existing_member_ids = Membership.accepted.where(group_id: other_group_ids, user_id: users.verified.pluck(:id)).pluck(:user_id)
         Membership.pending.where(group_id: g.id, user_id: existing_member_ids).update_all(accepted_at: Time.now)
 
+        returning_user_ids.each do |user_id|
+          MembershipService.restore_topic_access(user_id: user_id, group_ids: [g.id])
+        end
+
         g.update_pending_memberships_count
         g.update_memberships_count
-        PollGroupMembersAddedWorker.perform_later(g.id)
+        ActiveRecord.after_all_transactions_commit { PollGroupMembersAddedWorker.perform_later(g.id) }
+        users.each do |user|
+          MembershipService.publish_access_change(user_id: user.id, group_ids: [g.id], revoked: false)
+        end
       end
       Group.update_org_members_count_for_group_ids(group_ids)
 
@@ -119,8 +127,11 @@ module GroupService
       group.subscription ||= Subscription.new
     end
 
-    group.save!
-    group.add_admin!(actor)
+    Group.transaction do
+      group.save!
+      MembershipService.add_member(group: group, user: actor).make_admin!
+      group.update!(creator: actor) if group.creator.blank?
+    end
 
     if group.parent_id && (group.is_visible_to_public? || group.is_visible_to_parent_members?)
       MessageChannelService.publish_models([group], group_id: group.parent_id)

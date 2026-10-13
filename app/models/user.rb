@@ -208,7 +208,7 @@ class User < ApplicationRecord
   def join_default_onboarding_group
     return unless AppConfig.default_onboarding_group_id
 
-    Group.enabled.find(AppConfig.default_onboarding_group_id).add_member!(self)
+    MembershipService.add_member(group: Group.enabled.find(AppConfig.default_onboarding_group_id), user: self)
   end
 
   def became_registered_user?

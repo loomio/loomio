@@ -59,7 +59,7 @@ class RecordCloner
       poll.stances.each { |s| s.update_option_scores!}
     end
     clone_group.discussions.each {|d| TopicService.repair(d.topic_id) }
-    clone_group.add_member! actor
+    MembershipService.add_member(group: clone_group, user: actor)
     clone_group.reload
   end
 

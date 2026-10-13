@@ -94,8 +94,8 @@ module Ability::Group
     end
 
     can :join, ::Group do |group|
-      return false unless can?(:show, group) && user.email_verified?
-      group.membership_granted_upon_request? || user_is_admin_of?(group.parent_id)
+      can?(:show, group) && user.email_verified? &&
+        (group.membership_granted_upon_request? || user_is_admin_of?(group.parent_id))
     end
 
     can :merge, ::Group do |group|

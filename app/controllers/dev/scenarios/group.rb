@@ -325,6 +325,26 @@ module Dev::Scenarios::Group
     redirect_to group_path(group)
   end
 
+  def revoke_authored_poll_membership
+    poll = Poll.find_by!(title: 'Working group election')
+    actor = params[:by_admin].present? ? emilio : current_user
+    MembershipService.revoke(membership: poll.group.membership_for(poll.author), actor: actor)
+    head :ok
+  end
+
+  def restore_authored_poll_membership
+    poll = Poll.find_by!(title: 'Working group election')
+    MembershipService.add_users_to_group(users: [poll.author], group: poll.group, inviter: emilio)
+    head :ok
+  end
+
+  def publish_private_poll_update_after_removal
+    poll = Poll.find_by!(title: 'Working group election')
+    PollService.update(poll: poll, actor: emilio, params: {title: 'Private update after removal'})
+    MessageChannelService.publish_models([poll], group_id: poll.group_id)
+    head :ok
+  end
+
   def setup_group_with_no_coordinators
     create_group
     @group.admin_memberships.each{|m| m.update(admin: false)}
