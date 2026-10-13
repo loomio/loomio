@@ -39,7 +39,7 @@ class PollQuery
     visible.or(chain.where(author_id: user.id || 0, topic_id: direct_topics))
   end
 
-  def self.filter(chain:, params:)
+  def self.filter(chain:, params:, user: LoggedOutUser.new)
     if params[:group_key].present? && (group = Group.find_by(key: params[:group_key]))
       group_ids = (params[:subgroups] == "none") ? [group.id] : group.id_and_subgroup_ids
       chain = chain.joins(:topic).where("topics.group_id": group_ids)
@@ -54,8 +54,17 @@ class PollQuery
     end
 
     if params[:status] == 'vote'
-      voted_poll_ids = Stance.where(latest: true).where.not(cast_at: nil).pluck(:poll_id)
-      chain = chain.where.not(id: voted_poll_ids)
+      return chain.none unless user.is_logged_in? && user.deactivated_at.nil?
+
+      # Pending votes belong to this viewer's current electorate record. Other
+      # people's votes and historical/revoked stances do not change that state.
+      # Group-scoped browsing also includes public polls. Require current
+      # membership or guest access before treating a retained voter as pending.
+      chain = relevant_to(user: user, chain: chain.active.where('polls.closing_at > ?', Time.current))
+      stances = Stance.latest.undecided.where(participant_id: user.id).select(:poll_id)
+      voters = AnonymousPollVoter.where(voter_id: user.id, ballot_submitted: false).select(:poll_id)
+      chain = chain.where(anonymous: false, id: stances)
+                   .or(chain.where(anonymous: true, id: voters))
     end
 
     chain = chain.where(author_id: params[:author_id]) if params[:author_id]

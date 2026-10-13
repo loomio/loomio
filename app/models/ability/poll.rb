@@ -5,6 +5,9 @@ module Ability::Poll
     can :vote_in, ::Poll do |poll|
       user.is_logged_in? &&
       poll.active? &&
+      user.can?(:show, poll) &&
+      # Public visibility does not preserve a departed group member's vote.
+      (poll.group_id.nil? || poll.topic.members_include?(user)) &&
       (
         if poll.anonymous?
           poll.anonymous_poll_voters.where(ballot_submitted: false).exists?(voter_id: user.id)

@@ -86,7 +86,7 @@ class Api::V1::PollsController < Api::V1::RestfulController
 
   def index
     instantiate_collection do |collection|
-      PollQuery.filter(chain: collection, params: params).order(created_at: :desc)
+      PollQuery.filter(chain: collection, params: params, user: current_user).order(created_at: :desc, id: :desc)
     end
     respond_with_collection
   end

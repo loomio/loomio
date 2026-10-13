@@ -8,6 +8,7 @@ class PollSerializer < ApplicationSerializer
              :legacy_anonymous_vote_reasons_count,
              :anonymous_voter_eligible,
              :anonymous_ballot_submitted,
+             :voter_has_access,
              :can_respond_maybe,
              :chart_type,
              :chart_column,
@@ -174,6 +175,29 @@ class PollSerializer < ApplicationSerializer
 
   def anonymous_ballot_submitted
     anonymous_voter&.ballot_submitted? || false
+  end
+
+  def voter_has_access
+    user_id = scope[:current_user_id]
+    if object.group_id
+      group_ids = if scope[:cache]
+        scope[:cache].member_group_ids
+      else
+        Membership.active.where(user_id: user_id).pluck(:group_id)
+      end
+      return true if group_ids.include?(object.group_id)
+    else
+      return true if object.author_id == user_id
+    end
+
+    reader = cache_fetch(:topic_readers_by_topic_id, object.topic_id) do
+      TopicReader.find_by(topic_id: object.topic_id, user_id: user_id)
+    end
+    reader.present? && reader.guest? && reader.revoked_at.nil?
+  end
+
+  def include_voter_has_access?
+    scope[:current_user_id].present?
   end
 
   def legacy_anonymous_vote_reasons_count

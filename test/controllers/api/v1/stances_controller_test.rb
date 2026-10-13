@@ -16,6 +16,27 @@ class Api::V1::StancesControllerTest < ActionController::TestCase
     }, actor: @admin)
   end
 
+  test "a former group member cannot cast a retained stance after a closed poll reopens" do
+    member = users(:member_normal)
+    stance = @poll.stances.latest.find_by!(participant: member)
+    PollService.close(poll: @poll, actor: @admin)
+    MembershipService.revoke(membership: @group.membership_for(member), actor: member)
+    PollService.reopen(poll: @poll, params: {closing_at: 3.days.from_now}, actor: @admin)
+    sign_in member
+
+    patch :update, params: {id: stance.id, stance: {
+      stance_choices_attributes: [{poll_option_id: @poll.poll_options.first.id, score: 1}]
+    }}
+
+    assert_response :forbidden
+    assert_nil stance.reload.cast_at
+
+    get :my_stances
+    assert_response :success
+    assert_not JSON.parse(response.body).fetch('polls', []).any? { |poll| poll.fetch('id') == @poll.id }
+    assert_not JSON.parse(response.body).fetch('stances').any? { |item| item.fetch('id') == stance.id }
+  end
+
   # -- Index tests --
 
   test "generic stance index does not include votes page voter details" do

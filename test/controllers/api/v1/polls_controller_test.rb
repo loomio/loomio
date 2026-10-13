@@ -150,6 +150,26 @@ class Api::V1::PollsControllerTest < ActionController::TestCase
     assert_response :forbidden
   end
 
+  test "need vote index retains a poll after another member votes" do
+    viewer = users(:member_normal)
+    poll = PollService.create(params: {
+      title: 'Still needs my vote', poll_type: 'poll', group_id: @group.id,
+      poll_option_names: %w[Yes No], closing_at: 3.days.from_now
+    }, actor: @admin)
+    other_stance = poll.stances.latest.find_by!(participant: users(:member_loud))
+    StanceService.update(stance: other_stance, actor: users(:member_loud), params: {choice: {'Yes' => 1}})
+    sign_in viewer
+
+    get :index, params: {group_key: @group.key, status: 'vote', limit: 10, offset: 0}
+
+    assert_response :success
+    assert_includes JSON.parse(response.body).fetch('polls').map { |row| row.fetch('id') }, poll.id
+    own_stance = poll.stances.latest.find_by!(participant: viewer)
+    StanceService.update(stance: own_stance, actor: viewer, params: {choice: {'Yes' => 1}})
+    get :index, params: {group_key: @group.key, status: 'vote', limit: 10, offset: 0}
+    assert_not_includes JSON.parse(response.body).fetch('polls').map { |row| row.fetch('id') }, poll.id
+  end
+
   # Index tests
   test "index responds successfully" do
     PollService.create(params: {

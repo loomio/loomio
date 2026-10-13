@@ -86,6 +86,54 @@ class PollQueryTest < ActiveSupport::TestCase
     assert_empty PollQuery.visible_to(user: @user)
   end
 
+  test "need vote filters the viewer's pending stance rather than other people's votes" do
+    viewer = users(:member_normal)
+    other = users(:member_loud)
+    poll = @in_a_group
+    viewer_stance = poll.stances.latest.find_by!(participant: viewer)
+    other_stance = poll.stances.latest.find_by!(participant: other)
+    chain = PollQuery.relevant_to(user: viewer)
+    pending = -> { PollQuery.filter(chain: chain, params: {status: 'vote'}, user: viewer) }
+
+    assert pending.call.exists?(poll.id)
+    other_stance.update_column(:cast_at, Time.current)
+    assert pending.call.exists?(poll.id)
+    viewer_stance.update_column(:cast_at, Time.current)
+    assert_not pending.call.exists?(poll.id)
+    viewer_stance.update_column(:cast_at, nil)
+    assert pending.call.exists?(poll.id)
+    viewer_stance.update_column(:revoked_at, Time.current)
+    assert_not pending.call.exists?(poll.id)
+    viewer_stance.update_column(:revoked_at, nil)
+    poll.update_column(:closed_at, Time.current)
+    assert_not pending.call.exists?(poll.id)
+    poll.update_columns(closed_at: nil, closing_at: 1.minute.ago)
+    assert_not pending.call.exists?(poll.id)
+    poll.update_columns(closing_at: 3.days.from_now, opened_at: nil)
+    assert_not pending.call.exists?(poll.id)
+    assert_empty PollQuery.filter(chain: chain, params: {status: 'vote'})
+  end
+
+  test "need vote uses anonymous submission state and excludes viewers outside the electorate" do
+    viewer = users(:member_normal)
+    poll = PollService.create(params: {
+      title: 'Anonymous pending votes', poll_type: 'poll', anonymous: true,
+      group_id: @group.id, specified_voters_only: true,
+      recipient_user_ids: [viewer.id, users(:member_loud).id],
+      poll_option_names: %w[Yes No], closing_at: 3.days.from_now
+    }, actor: users(:admin))
+    pending = ->(user) {
+      PollQuery.filter(chain: PollQuery.relevant_to(user: user), params: {status: 'vote'}, user: user)
+    }
+
+    assert pending.call(viewer).exists?(poll.id)
+    assert_not pending.call(users(:member_quiet)).exists?(poll.id)
+    poll.anonymous_poll_voters.find_by!(voter: users(:member_loud)).update!(ballot_submitted: true)
+    assert pending.call(viewer).exists?(poll.id)
+    poll.anonymous_poll_voters.find_by!(voter: viewer).update!(ballot_submitted: true)
+    assert_not pending.call(viewer).exists?(poll.id)
+  end
+
   test "leaving a group removes authored STV polls from visibility and relevance" do
     author = users(:member_normal)
     poll = PollService.create(params: {

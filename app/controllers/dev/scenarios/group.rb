@@ -66,7 +66,7 @@ module Dev::Scenarios::Group
     group.tags.create!(name: 'Important', color: '#1565c0')
     group.tags.create!(name: 'Other', color: '#2e7d32')
 
-    PollService.create(
+    pending_poll = PollService.create(
       params: {
         group_id: group.id,
         poll_type: 'proposal',
@@ -76,6 +76,11 @@ module Dev::Scenarios::Group
         closing_at: 3.days.from_now
       },
       actor: patrick
+    )
+    StanceService.update(
+      stance: pending_poll.stances.latest.find_by!(participant: emilio),
+      actor: emilio,
+      params: {choice: {'agree' => 1}}
     )
 
     voted_poll = PollService.create(
