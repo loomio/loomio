@@ -72,8 +72,6 @@ Privacy determines which joining options are available:
 | **Visible to parent group** | Parent members can join, request approval, or invitation only |
 | **Secret** | Invitation only |
 
-Immediate joining follows the group's visibility. In a public subgroup, anyone can join. In a subgroup **Visible to parent group**, parent members can join. Members can leave and join again while they remain eligible. Changing how people join does not change who can read private threads before joining.
-
 When approval is required, people select **Join group**, answer the group's joining prompt, and send a request to join. See [Inviting people](/en/user_manual/groups/inviting_people#request-to-join-group) for instructions on configuring the prompt, reviewing requests, and inviting people directly.
 
 <!-- translation-section: group-directory -->

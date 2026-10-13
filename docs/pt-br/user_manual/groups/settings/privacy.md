@@ -11,7 +11,7 @@ sections:
   follow-an-open-group: e4a1b3ce35a974d0
   closed: 53c3d50151a2115b
   secret: fcb55fcb64d44881
-  how-people-join: f61d4f7e0f88106a
+  how-people-join: 577d4b655fe72bb1
   group-directory: 4ef3023e3cf4efdf
   visible-to-parent-group: a9a3ece6458f080e
 generated:
@@ -20,7 +20,7 @@ generated:
   follow-an-open-group: 50424edf05d5252e
   closed: b39a8fa3c9e1cb77
   secret: f8324ba4c9c824be
-  how-people-join: 36aaf0c7c21c7224
+  how-people-join: 2aa996574b5e40a6
   group-directory: '096d5cc0df912a1f'
   visible-to-parent-group: b50bd32b412657c2
 title_source: 54a57c3147c49f33
@@ -100,8 +100,6 @@ A privacidade determina quais opções de entrada estão disponíveis:
 | **Subgrupo fechado** | Entrada livre, mediante aprovação ou apenas por convite |
 | **Visível para o grupo principal** | Entrada de membros do grupo principal, mediante aprovação ou apenas por convite |
 | **Secreto** | Apenas por convite |
-
-A entrada imediata segue a visibilidade do grupo. Em um subgrupo público, qualquer pessoa pode entrar. Em um subgrupo **Visível para o grupo principal**, membros do grupo principal podem entrar. Os membros podem sair e entrar novamente enquanto continuarem atendendo aos critérios de entrada. Alterar como as pessoas entram não muda quem pode ler conversas privadas antes de entrar.
 
 Quando a aprovação é necessária, as pessoas selecionam **Entrar no grupo**, respondem à pergunta de entrada do grupo e enviam uma solicitação para entrar. Consulte [Convidar pessoas](/en/user_manual/groups/inviting_people#request-to-join-group) para obter instruções sobre como configurar a pergunta, analisar solicitações e convidar pessoas diretamente.
 

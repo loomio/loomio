@@ -11,7 +11,7 @@ sections:
   follow-an-open-group: e4a1b3ce35a974d0
   closed: 53c3d50151a2115b
   secret: fcb55fcb64d44881
-  how-people-join: f61d4f7e0f88106a
+  how-people-join: 577d4b655fe72bb1
   group-directory: 4ef3023e3cf4efdf
   visible-to-parent-group: a9a3ece6458f080e
 generated:
@@ -20,7 +20,7 @@ generated:
   follow-an-open-group: 99f35f1d55a7e211
   closed: 458b29451b0ce14b
   secret: 75dc3082d4aeef4b
-  how-people-join: 83980fe1c0d1c85f
+  how-people-join: abbd3673095cfa6f
   group-directory: 48d925ceb92be2d2
   visible-to-parent-group: 211c3686d590908c
 title_source: 54a57c3147c49f33
@@ -103,8 +103,6 @@ La privacidad determina qué opciones están disponibles para unirse:
 | **Subgrupo cerrado** | Cualquier persona puede unirse, solicitar aprobación o unirse solo por invitación |
 | **Visible para el grupo principal** | Los miembros del grupo principal pueden unirse, solicitar aprobación o unirse solo por invitación |
 | **Secreto ** | Solo por invitación |
-
-La posibilidad de unirse de inmediato depende de la visibilidad del grupo. En un subgrupo público, cualquier persona puede unirse. En un subgrupo **Visible para el grupo principal**, los miembros del grupo principal pueden unirse. Los miembros pueden salir y volver a unirse mientras sigan cumpliendo los requisitos. Cambiar la forma de unirse no cambia quién puede leer los hilos privados antes de unirse.
 
 Cuando se requiere aprobación, las personas seleccionan **Unirse al grupo**, responden a la pregunta del grupo para unirse y envían una solicitud. Consulta [Invitar a personas](/en/user_manual/groups/inviting_people#request-to-join-group) para saber cómo configurar la pregunta, revisar las solicitudes e invitar a personas directamente.
 

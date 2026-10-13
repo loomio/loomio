@@ -11,7 +11,7 @@ sections:
   follow-an-open-group: e4a1b3ce35a974d0
   closed: 53c3d50151a2115b
   secret: fcb55fcb64d44881
-  how-people-join: f61d4f7e0f88106a
+  how-people-join: 577d4b655fe72bb1
   group-directory: 4ef3023e3cf4efdf
   visible-to-parent-group: a9a3ece6458f080e
 generated:
@@ -20,7 +20,7 @@ generated:
   follow-an-open-group: eeea1bb98a0b6064
   closed: 2af77475af9444c6
   secret: ec8f0d6f771c37dc
-  how-people-join: 5605b156590edb20
+  how-people-join: d711a1045f4f8dae
   group-directory: fd07c1014b3af293
   visible-to-parent-group: e855046c8373fa3e
 title_source: 54a57c3147c49f33
@@ -100,8 +100,6 @@ Die Datenschutzeinstellungen bestimmen, welche Beitrittsmöglichkeiten verfügba
 | **Geschlossene Untergruppe** | Alle können beitreten, eine Genehmigung anfragen oder nur auf Einladung beitreten |
 | **Für die übergeordnete Gruppe sichtbar** | Mitglieder der Hauptgruppe können beitreten, eine Genehmigung anfragen oder nur auf Einladung beitreten |
 | **Geheim** | Nur auf Einladung |
-
-Wer sofort beitreten kann, richtet sich nach der Sichtbarkeit der Gruppe. In einer öffentlichen Untergruppe können alle beitreten. In einer Untergruppe mit der Einstellung **Für die übergeordnete Gruppe sichtbar** können Mitglieder der Hauptgruppe beitreten. Mitglieder können austreten und erneut beitreten, solange sie die Voraussetzungen weiterhin erfüllen. Eine Änderung der Beitrittsmöglichkeiten ändert nicht, wer private Threads vor dem Beitritt lesen kann.
 
 Wenn eine Genehmigung erforderlich ist, wählen Personen **Der Gruppe beitreten**, beantworten die Beitrittsfrage der Gruppe und senden eine Beitrittsanfrage. Unter [Personen einladen](/en/user_manual/groups/inviting_people#request-to-join-group) findest du Anleitungen zum Einrichten der Frage, zum Prüfen von Anfragen und zum direkten Einladen von Personen.
 

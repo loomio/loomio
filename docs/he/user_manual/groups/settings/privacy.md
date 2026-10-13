@@ -11,7 +11,7 @@ sections:
   follow-an-open-group: e4a1b3ce35a974d0
   closed: 53c3d50151a2115b
   secret: fcb55fcb64d44881
-  how-people-join: f61d4f7e0f88106a
+  how-people-join: 577d4b655fe72bb1
   group-directory: 4ef3023e3cf4efdf
   visible-to-parent-group: a9a3ece6458f080e
 generated:
@@ -20,7 +20,7 @@ generated:
   follow-an-open-group: 9ac48fba319c6f43
   closed: 191766fc2b58e18f
   secret: 0d2c9c5842c54690
-  how-people-join: 996310cb8d02a5c2
+  how-people-join: 901ccb1c6b620a30
   group-directory: 95a1d2ce023ed222
   visible-to-parent-group: 021b6afb775456e3
 title_source: 54a57c3147c49f33
@@ -102,8 +102,6 @@ needs_review:
 | **תת־קבוצה סגורה** | הצטרפות לכל אדם, בקשת אישור או הזמנה בלבד |
 | **גלויה לקבוצת האם** | הצטרפות לחברי קבוצת האם, בקשת אישור או הזמנה בלבד |
 | **סודי** | הזמנה בלבד |
-
-הצטרפות מיידית תלויה בנראות הקבוצה. בתת־קבוצה ציבורית, כל אדם יכול להצטרף. בתת־קבוצה **גלויה לקבוצת האם**, חברי קבוצת האם יכולים להצטרף. ניתן לעזוב ולהצטרף שוב כל עוד תנאי ההצטרפות מתקיימים. שינוי דרך ההצטרפות אינו משנה למי יש גישה לקריאת שרשורים פרטיים לפני ההצטרפות.
 
 כאשר נדרש אישור, יש לבחור **הצטרפו לקבוצה**, לענות על שאלת ההצטרפות של הקבוצה ולשלוח בקשת הצטרפות. הוראות להגדרת השאלה, לבדיקת בקשות ולהזמנת אנשים ישירות מופיעות בעמוד [הזמנת אנשים](/en/user_manual/groups/inviting_people#request-to-join-group).
 

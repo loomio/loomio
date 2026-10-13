@@ -11,7 +11,7 @@ sections:
   follow-an-open-group: e4a1b3ce35a974d0
   closed: 53c3d50151a2115b
   secret: fcb55fcb64d44881
-  how-people-join: f61d4f7e0f88106a
+  how-people-join: 577d4b655fe72bb1
   group-directory: 4ef3023e3cf4efdf
   visible-to-parent-group: a9a3ece6458f080e
 generated:
@@ -20,7 +20,7 @@ generated:
   follow-an-open-group: 1ba28db3a5fc5a87
   closed: c6a6f13172d1e35e
   secret: a22f918892a0026f
-  how-people-join: be95e58a7bdb4d8a
+  how-people-join: 5341f5e18891454b
   group-directory: cecc19c6947a8ef3
   visible-to-parent-group: 3170357a84534a37
 title_source: 54a57c3147c49f33
@@ -100,8 +100,6 @@ Az adatvédelmi beállítás határozza meg, milyen csatlakozási módok érhet�
 | **Zárt alcsoport** | Bárki csatlakozhat, jóváhagyást kérhet, vagy csak meghívóval lehet csatlakozni |
 | **Látható a szülőcsoport számára** | A szülőcsoport tagjai csatlakozhatnak, jóváhagyást kérhetnek, vagy csak meghívóval lehet csatlakozni |
 | **Titkos** | Csatlakozás csak meghívóval |
-
-Az azonnali csatlakozás a csoport láthatóságához igazodik. Nyilvános alcsoporthoz bárki csatlakozhat. A **Látható a szülőcsoport számára** beállítású alcsoporthoz a szülőcsoport tagjai csatlakozhatnak. A tagok kiléphetnek és újra csatlakozhatnak, amíg jogosultak erre. A csatlakozás módjának megváltoztatása nem változtatja meg, hogy ki olvashatja a privát szálakat csatlakozás előtt.
 
 Ha jóváhagyás szükséges, a csatlakozni kívánók kiválasztják a **Csoporthoz csatlakozás** lehetőséget, válaszolnak a csoport csatlakozási kérdésére, és elküldik a csatlakozási kérelmet. A kérdés beállításáról, a kérelmek áttekintéséről és az emberek közvetlen meghívásáról az [Emberek meghívása](/en/user_manual/groups/inviting_people#request-to-join-group) oldalon olvashatsz.
 

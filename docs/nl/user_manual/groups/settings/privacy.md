@@ -11,7 +11,7 @@ sections:
   follow-an-open-group: e4a1b3ce35a974d0
   closed: 53c3d50151a2115b
   secret: fcb55fcb64d44881
-  how-people-join: f61d4f7e0f88106a
+  how-people-join: 577d4b655fe72bb1
   group-directory: 4ef3023e3cf4efdf
   visible-to-parent-group: a9a3ece6458f080e
 generated:
@@ -20,7 +20,7 @@ generated:
   follow-an-open-group: ebf398a7b39fec72
   closed: 817b6a647fc5c5f9
   secret: c55a9e33c3e65ab2
-  how-people-join: 9dedffa084f5baef
+  how-people-join: 24a6a5880adb08b3
   group-directory: 91434e79cbda5637
   visible-to-parent-group: b1c1fd8174ec8303
 title_source: 54a57c3147c49f33
@@ -100,8 +100,6 @@ Privacy bepaalt welke opties beschikbaar zijn om lid te worden:
 | **Besloten subgroep** | Iedereen kan lid worden, goedkeuring aanvragen of alleen met een uitnodiging lid worden |
 | **Zichtbaar voor de bovenliggende groep** | Leden van de hoofdgroep kunnen lid worden, goedkeuring aanvragen of alleen met een uitnodiging lid worden |
 | **Geheim** | Alleen met een uitnodiging |
-
-Wie direct lid kan worden, hangt af van de zichtbaarheid van de groep. In een openbare subgroep kan iedereen lid worden. In een subgroep met de instelling **Zichtbaar voor de bovenliggende groep** kunnen leden van de hoofdgroep lid worden. Leden kunnen de groep verlaten en opnieuw lid worden zolang ze aan de voorwaarden blijven voldoen. Een wijziging in hoe mensen lid worden, verandert niet wie privéthreads kan lezen voordat die lid wordt.
 
 Wanneer goedkeuring vereist is, selecteren mensen **Word lid van de groep**, beantwoorden ze de vraag van de groep voor nieuwe leden en versturen ze een lidmaatschapsaanvraag. Zie [Mensen uitnodigen](/en/user_manual/groups/inviting_people#request-to-join-group) voor instructies om de vraag in te stellen, aanvragen te beoordelen en mensen direct uit te nodigen.
 

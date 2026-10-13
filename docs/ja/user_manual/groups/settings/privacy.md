@@ -11,7 +11,7 @@ sections:
   follow-an-open-group: e4a1b3ce35a974d0
   closed: 53c3d50151a2115b
   secret: fcb55fcb64d44881
-  how-people-join: f61d4f7e0f88106a
+  how-people-join: 577d4b655fe72bb1
   group-directory: 4ef3023e3cf4efdf
   visible-to-parent-group: a9a3ece6458f080e
 generated:
@@ -20,7 +20,7 @@ generated:
   follow-an-open-group: 6010c2791b8a374f
   closed: f1db8645d467335d
   secret: 0c6fa868ce8dfc6a
-  how-people-join: caa7566de6326975
+  how-people-join: 55e879daa74c7822
   group-directory: 473feca0c76f7501
   visible-to-parent-group: 2f1fa007fbcfcbf8
 title_source: 54a57c3147c49f33
@@ -100,8 +100,6 @@ title_generated: fd55785d80315153
 | **非公開のサブグループ** | 誰でも参加可能、承認が必要、または招待のみ |
 | **親グループに表示** | 親グループのメンバーが参加可能、承認が必要、または招待のみ |
 | **秘密** | 招待のみ |
-
-すぐに参加できる人の範囲は、グループの公開範囲に従います。公開サブグループには、誰でも参加できます。**親グループに表示**されるサブグループには、親グループのメンバーが参加できます。メンバーは、参加条件を満たしている限り、退出して再び参加できます。参加方法を変更しても、参加前に非公開スレッドを閲覧できる人の範囲は変わりません。
 
 承認が必要な場合は、**グループに参加する**を選択し、グループが設定した参加時の質問に回答して、参加申請を送信します。質問の設定、申請の確認、人を直接招待する方法については、[人を招待する](/en/user_manual/groups/inviting_people#request-to-join-group)を参照してください。
 

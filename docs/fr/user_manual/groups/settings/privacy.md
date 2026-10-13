@@ -11,7 +11,7 @@ sections:
   follow-an-open-group: e4a1b3ce35a974d0
   closed: 53c3d50151a2115b
   secret: fcb55fcb64d44881
-  how-people-join: f61d4f7e0f88106a
+  how-people-join: 577d4b655fe72bb1
   group-directory: 4ef3023e3cf4efdf
   visible-to-parent-group: a9a3ece6458f080e
 generated:
@@ -20,7 +20,7 @@ generated:
   follow-an-open-group: 929a6682b62400f1
   closed: f166864aa07ff380
   secret: 470dbecee618f7a0
-  how-people-join: 13eb546920e16b1a
+  how-people-join: 1bb7646f4b736e58
   group-directory: 2410a83502c18fbd
   visible-to-parent-group: 8427be659ee8f344
 title_source: 54a57c3147c49f33
@@ -100,8 +100,6 @@ La confidentialité détermine les options disponibles pour rejoindre un groupe�
 | **Sous-groupe fermé** | Toute personne peut rejoindre le groupe, demander une approbation ou rejoindre le groupe uniquement sur invitation |
 | **Visible pour le groupe parent** | Les membres du groupe parent peuvent rejoindre le sous-groupe, demander une approbation ou rejoindre le sous-groupe uniquement sur invitation |
 | **Secret** | Sur invitation uniquement |
-
-L’adhésion immédiate dépend de la visibilité du groupe. Dans un sous-groupe public, toute personne peut rejoindre le sous-groupe. Dans un sous-groupe **Visible pour le groupe parent**, les membres du groupe parent peuvent le rejoindre. Les membres peuvent quitter le sous-groupe et le rejoindre à nouveau tant qu’ils remplissent les conditions d’adhésion. Modifier les modalités d’adhésion ne change pas qui peut lire les fils privés avant de rejoindre le groupe.
 
 Lorsqu’une approbation est requise, les personnes sélectionnent **Rejoindre le groupe**, répondent à la question posée par le groupe et envoient une demande pour le rejoindre. Consultez [Inviter des personnes](/en/user_manual/groups/inviting_people#request-to-join-group) pour savoir comment configurer cette question, examiner les demandes et inviter directement des personnes.
 

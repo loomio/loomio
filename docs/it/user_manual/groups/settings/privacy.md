@@ -11,7 +11,7 @@ sections:
   follow-an-open-group: e4a1b3ce35a974d0
   closed: 53c3d50151a2115b
   secret: fcb55fcb64d44881
-  how-people-join: f61d4f7e0f88106a
+  how-people-join: 577d4b655fe72bb1
   group-directory: 4ef3023e3cf4efdf
   visible-to-parent-group: a9a3ece6458f080e
 generated:
@@ -20,7 +20,7 @@ generated:
   follow-an-open-group: e9ff36a97818b1a2
   closed: c58a6f89886b48bb
   secret: 93afef8852dace8b
-  how-people-join: a2fe2ab58887dc88
+  how-people-join: b5f80be74c0eeab7
   group-directory: be3521113008f2eb
   visible-to-parent-group: 4dc57c051be7c667
 title_source: 54a57c3147c49f33
@@ -100,8 +100,6 @@ La privacy determina quali opzioni di iscrizione sono disponibili:
 | **Sottogruppo chiuso** | Iscrizione aperta a chiunque, richiesta di approvazione o solo su invito |
 | **Visibile al gruppo principale** | Iscrizione aperta ai membri del gruppo principale, richiesta di approvazione o solo su invito |
 | **Segreto** | Solo su invito |
-
-L'iscrizione immediata dipende dalla visibilità del gruppo. In un sottogruppo pubblico, chiunque può iscriversi. In un sottogruppo **Visibile al gruppo principale**, possono iscriversi i membri del gruppo principale. I membri possono lasciare il gruppo e iscriversi di nuovo finché continuano a soddisfare i requisiti di iscrizione. Modificare le modalità di iscrizione non cambia chi può leggere le conversazioni private prima di iscriversi.
 
 Quando è richiesta l'approvazione, le persone selezionano **Iscriviti al gruppo**, rispondono alla domanda di iscrizione del gruppo e inviano una richiesta di iscrizione. Consulta [Invitare persone](/en/user_manual/groups/inviting_people#request-to-join-group) per le istruzioni su come configurare la domanda, esaminare le richieste e invitare direttamente le persone.
 
