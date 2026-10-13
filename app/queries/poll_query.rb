@@ -5,8 +5,9 @@ class PollQuery
 
   def self.visible_to(user: LoggedOutUser.new,
                       chain: start,
-                      group_ids: [])
-    visible_scope(user: user, chain: chain, group_ids: group_ids, relevant: false)
+                      group_ids: [],
+                      topic_id: nil)
+    visible_scope(user: user, chain: chain, group_ids: group_ids, relevant: false, topic_id: topic_id)
   end
 
   def self.relevant_to(user: LoggedOutUser.new,
@@ -15,52 +16,27 @@ class PollQuery
     visible_scope(user: user, chain: chain, group_ids: group_ids, relevant: true)
   end
 
-  # Visibility grants access through direct authorship, membership, guests, or
-  # public content. Relevance limits public and parent-member access to the
-  # groups being browsed. Archived groups are excluded from every access path.
-  def self.visible_scope(user:, chain:, group_ids:, relevant:)
+  # Topics own poll access. Preserve the narrower dashboard relevance rules
+  # and direct authorship access for polls created without an author reader.
+  def self.visible_scope(user:, chain:, group_ids:, relevant:, topic_id: nil)
     return chain.none if user.deactivated_at.present?
 
     group_ids = Array(group_ids).compact.map(&:to_i)
-    bindings = {
-      user_id: user.id || 0,
-      user_group_ids: user.group_ids,
-      group_ids: group_ids,
-      topic_reader_token: user.topic_reader_token
-    }
-    reader_identity = "tr.user_id = :user_id"
-    reader_identity += " OR tr.token = :topic_reader_token" if user.topic_reader_token
-
-    joins = Poll.sanitize_sql_array([<<~SQL.squish, bindings])
-      LEFT OUTER JOIN topics t ON t.id = polls.topic_id
-      LEFT OUTER JOIN groups g ON g.id = t.group_id
-      LEFT OUTER JOIN memberships m ON m.group_id = t.group_id AND m.user_id = :user_id
-      LEFT OUTER JOIN topic_readers tr ON tr.topic_id = t.id AND (#{reader_identity})
-    SQL
-
-    chain = chain.joins(joins)
-    chain = chain.where('t.group_id IN (:group_ids)', bindings) if group_ids.any?
-
-    # Authorship alone grants access only to direct polls.
-    visibility = [
-      "(polls.author_id = :user_id AND t.group_id IS NULL)",
-      "(m.id IS NOT NULL AND m.revoked_at IS NULL)",
-      "(tr.id IS NOT NULL AND tr.revoked_at IS NULL AND tr.guest = TRUE)"
-    ]
-    if relevant
-      visibility << "(t.private = FALSE AND t.group_id IN (:group_ids))" if group_ids.any?
+    # Restrict both UNION arms for a single-poll permission check; otherwise
+    # PostgreSQL can collect every accessible topic before checking one poll.
+    chain = chain.where(topic_id: topic_id) if topic_id
+    topics = if relevant
+      # Parent-only readers appear in feeds only when browsing that subgroup.
+      TopicQuery.relevant_to(user: user, group_ids: group_ids, or_subgroups: group_ids.any?)
     else
-      visibility << "t.private = FALSE"
+      TopicQuery.visible_to(user: user, group_ids: group_ids, topic_id: topic_id)
     end
+    visible = chain.where(topic_id: topics.except(:includes).select(:id))
+    return visible if group_ids.any?
 
-    # Parent-only readers appear in feeds only when browsing that subgroup.
-    if !relevant || group_ids.any?
-      visibility << "(g.parent_members_can_see_discussions = TRUE AND g.parent_id IN (:user_group_ids))"
-    end
-
-    # Apply group visibility to every caller, including custom chains and public polls.
-    chain.where(visibility.join(" OR "), bindings)
-         .where(topic_id: Topic.left_joins(:group).group_kept.select(:id))
+    direct_topics = Topic.not_discarded.where(group_id: nil).select(:id)
+    direct_topics = direct_topics.where(id: topic_id) if topic_id
+    visible.or(chain.where(author_id: user.id || 0, topic_id: direct_topics))
   end
 
   def self.filter(chain:, params:)

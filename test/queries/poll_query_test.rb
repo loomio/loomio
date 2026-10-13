@@ -132,9 +132,11 @@ class PollQueryTest < ActiveSupport::TestCase
           roles.each do |role|
             author = users(role)
             poll.update_column(:author_id, author.id)
-            expected = TopicQuery.visible_to(user: author).exists?(poll.topic_id)
+            expected = %i[admin member_normal guest_normal guest_admin_normal].include?(role)
             label = "#{role}, anonymous=#{anonymous}, results=#{hide_results}, closed=#{closed_at.present?}"
+            assert_equal expected, TopicQuery.visible_to(user: author).exists?(poll.topic_id), label
             assert_equal expected, PollQuery.visible_to(user: author).exists?(poll.id), label
+            assert_equal expected, PollQuery.visible_to(user: author, topic_id: poll.topic_id).exists?(poll.id), label
             assert_equal expected, PollQuery.relevant_to(user: author).exists?(poll.id), label
             assert_equal expected, author.can?(:show, poll), label
           end
@@ -147,6 +149,7 @@ class PollQueryTest < ActiveSupport::TestCase
   test "direct poll authors retain visibility and relevance without a group membership" do
     assert_nil @authored.group_id
     assert PollQuery.visible_to(user: @user).exists?(@authored.id)
+    assert PollQuery.visible_to(user: @user, topic_id: @authored.topic_id).exists?(@authored.id)
     assert PollQuery.relevant_to(user: @user).exists?(@authored.id)
     assert @user.can?(:show, @authored)
     assert_not users(:alien).can?(:show, @authored)
@@ -162,9 +165,57 @@ class PollQueryTest < ActiveSupport::TestCase
       expected = reader.revoked_at.nil? && reader.guest?
 
       assert_equal expected, PollQuery.visible_to(user: viewer).exists?(poll.id), role
+      assert_equal expected, PollQuery.visible_to(user: viewer, topic_id: poll.topic_id).exists?(poll.id), role
       assert_equal expected, PollQuery.relevant_to(user: viewer).exists?(poll.id), role
       assert_equal expected, viewer.can?(:show, poll), role
       assert_not viewer.can?(:vote_in, poll), role
+    end
+  end
+
+  test "browsing guest groups does not grant access to their other private polls" do
+    guest = users(:guest_normal)
+    invited_poll = make_poll(topic: topics(:discussion_topic))
+    private_poll = @in_a_group
+    membership_ids = guest.group_ids.dup
+
+    assert GroupQuery.visible_to(user: guest).exists?(@group.id)
+    assert_equal membership_ids, guest.group_ids
+    assert TopicQuery.visible_to(user: guest).exists?(invited_poll.topic_id)
+    assert_not TopicQuery.visible_to(user: guest).exists?(private_poll.topic_id)
+    assert PollQuery.visible_to(user: guest).exists?(invited_poll.id)
+    assert PollQuery.relevant_to(user: guest).exists?(invited_poll.id)
+    assert_not PollQuery.visible_to(user: guest).exists?(private_poll.id)
+    assert_not PollQuery.relevant_to(user: guest).exists?(private_poll.id)
+    assert_not guest.can?(:show, private_poll)
+  end
+
+  test "checking payment does not grant subgroup members access to private parent polls" do
+    member = users(:subgroup_user)
+    membership_ids = member.group_ids.dup
+    assert_not member.group_ids.include?(@group.id)
+
+    member.is_paying?
+
+    assert_equal membership_ids, member.group_ids
+    assert_not TopicQuery.visible_to(user: member).exists?(@in_a_group.topic_id)
+    assert_not PollQuery.visible_to(user: member).exists?(@in_a_group.id)
+    assert_not PollQuery.relevant_to(user: member).exists?(@in_a_group.id)
+    assert_not member.can?(:show, @in_a_group)
+  end
+
+  test "topic access preserves custom poll scopes and excludes discarded topics" do
+    chain = Poll.where(id: [@authored.id, @in_a_group.id])
+    assert_equal [@in_a_group.id],
+                 PollQuery.visible_to(user: @user, chain: chain, topic_id: @in_a_group.topic_id).pluck(:id)
+    assert_not PollQuery.visible_to(user: @user, topic_id: @authored.topic_id).exists?(@in_a_group.id)
+    %i[visible_to relevant_to].each do |query|
+      assert_equal [@authored.id, @in_a_group.id].sort,
+                   PollQuery.public_send(query, user: @user, chain: chain).pluck(:id).sort
+    end
+
+    [@authored, @in_a_group].each { |poll| poll.topic.update_column(:discarded_at, Time.current) }
+    %i[visible_to relevant_to].each do |query|
+      assert_empty PollQuery.public_send(query, user: @user, chain: chain)
     end
   end
 

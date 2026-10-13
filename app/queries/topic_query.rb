@@ -74,7 +74,9 @@ class TopicQuery
     member_visibility << "topics.private = false AND topics.group_id IN (:public_group_ids)" if public_group_ids&.any?
     member_visibility << "topics.group_id IN (:user_group_ids)"
     member_visibility << "groups.parent_members_can_see_discussions = TRUE AND groups.parent_id IN (:user_group_ids)" if or_subgroups
-    member_params = { user_group_ids: user.group_ids }
+    # Authorization must see current memberships even when the user's cached
+    # group IDs were loaded before revocation or expanded by another query.
+    member_params = { user_group_ids: user.groups.select(:id) }
     member_params[:public_group_ids] = public_group_ids if public_group_ids&.any?
 
     arm1 = Topic.select("topics.*")

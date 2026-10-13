@@ -30,7 +30,7 @@ module Ability::Poll
     end
 
     can [:show], ::Poll do |poll|
-      PollQuery.visible_to(user: user).exists?(poll.id)
+      PollQuery.visible_to(user: user, topic_id: poll.topic_id).exists?(poll.id)
     end
 
     can [ :create ], ::Poll do |poll|
