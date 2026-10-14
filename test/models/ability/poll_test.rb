@@ -26,7 +26,9 @@ class Ability::PollTest < ActiveSupport::TestCase
     user = users(:user)
     other = users(:alien)
     poll = PollService.create(params: poll_params(specified_voters_only: true), actor: other)
-    poll.stances.create!(participant_id: user.id, inviter: other, latest: true)
+    PollService.invite(poll: poll, actor: other, params: {recipient_emails: [user.email], notify_recipients: false})
+    assert poll.topic.guests.exists?(user.id), 'inviting a direct poll voter grants topic access'
+    assert poll.unmasked_voters.exists?(user.id), 'the invited voter has an active stance'
     assert user.can?(:vote_in, poll)
     assert_not user.can?(:add_voters, poll)
     assert_not user.can?(:announce, poll)
@@ -41,6 +43,18 @@ class Ability::PollTest < ActiveSupport::TestCase
     assert_not user.can?(:add_voters, poll)
     assert_not user.can?(:announce, poll)
     assert_not user.can?(:add_guests, poll.topic)
+  end
+
+  test "direct poll voter records require current topic guest access" do
+    poll = PollService.create(params: poll_params(topic: topics(:direct_topic), specified_voters_only: true), actor: users(:guest_admin_normal))
+
+    %i[guest_quiet guest_normal guest_admin_normal guest_loud alien non_guest_loud former_guest_loud inactive_guest_loud].each do |role|
+      voter = users(role)
+      poll.stances.create!(participant: voter, latest: true)
+      expected = %i[guest_quiet guest_normal guest_admin_normal guest_loud].include?(role)
+
+      assert_equal expected, voter.can?(:vote_in, poll), role.to_s
+    end
   end
 
   test "group members vote only through their stance" do
