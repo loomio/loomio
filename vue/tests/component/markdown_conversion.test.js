@@ -21,8 +21,27 @@ const editors = [];
 afterEach(() => editors.splice(0).forEach(editor => editor.destroy()));
 
 describe('Markdown mode conversion', () => {
+  it('switches an empty rich-text editor to Markdown and back', async () => {
+    const model = { body: '<p></p>', bodyFormat: 'html' };
+    const editor = new Editor({ extensions: contentExtensions(), content: model.body });
+    editors.push(editor);
+    await convertToMd(model, 'body', editor);
+    expect(model).toEqual({ body: '', bodyFormat: 'md' });
+    await convertToHtml(model, 'body');
+    expect(model.bodyFormat).toBe('html');
+    expect(fragment(model.body).textContent).toBe('');
+  });
+
   it.each(compatibility)('emits Markdown covered by server compatibility tests: $name', fixture => {
     expect(fromHtml(fixture.html).trim()).toBe(fixture.markdown);
+  });
+
+  it('converts blank paragraphs among text and empty table cells without losing content', () => {
+    const markdown = fromHtml('<p>Before</p><p></p><p>After</p><table><tr><th>Name</th><th>Vote</th></tr><tr><td>Alice</td><td><p></p></td></tr></table>');
+    const doc = display(markdown);
+    expect(doc.textContent).toContain('Before');
+    expect(doc.textContent).toContain('After');
+    expect([...doc.querySelectorAll('tbody td')].map(cell => cell.textContent)).toEqual(['Alice', '']);
   });
 
   it('preserves tables, formatting, and cell boundaries through both editors', () => {

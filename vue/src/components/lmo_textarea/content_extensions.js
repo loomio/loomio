@@ -27,11 +27,13 @@ import { safeUrl } from '@/shared/helpers/safe_url.mjs';
 // The editor and mode-switch converters share a schema. Unsupported Markdown
 // styling is deliberately dropped while its text is retained; in particular,
 // Tiptap's ++underline++ syntax is not understood by our display renderers.
-const renderText = (node, helpers) => helpers.renderChildren(node);
+// Empty ProseMirror nodes omit content. Passing the node itself to Tiptap's
+// renderer would render that same node again instead of an empty child list.
+const renderText = (node, helpers) => helpers.renderChildren(node.content || []);
 const renderParagraph = (node, helpers) => {
   // Tiptap escapes inline delimiters but leaves block delimiters untouched.
   // A literal heading, list, or rule inside a paragraph must remain text.
-  return helpers.renderChildren(node)
+  return renderText(node, helpers)
     .replace(/^([ \t]{0,3})(#{1,6}|[+-])(?=\s)/gm, '$1\\$2')
     .replace(/^([ \t]{0,3}\d{1,9})([.)])(?=\s)/gm, '$1\\$2')
     .replace(/^([ \t]{0,3})([-=])(?=[-= \t]*$)/gm, '$1\\$2');
@@ -43,7 +45,7 @@ const markdownUrl = url => String(safeUrl(url) || '').replace(/[\s<>()\\"]/g, ch
   return encodeURIComponent(character).replace(/[()]/g, bracket => `%${bracket.charCodeAt(0).toString(16)}`);
 });
 const markdownTitle = title => title ? ` "${title.replace(/[\\"]/g, '\\$&')}"` : '';
-const renderLink = (node, helpers) => `[${helpers.renderChildren(node)}](${markdownUrl(node.attrs.href)}${markdownTitle(node.attrs.title)})`;
+const renderLink = (node, helpers) => `[${renderText(node, helpers)}](${markdownUrl(node.attrs.href)}${markdownTitle(node.attrs.title)})`;
 const renderImage = node => `![${(node.attrs.alt || '').replace(/[\\\[\]]/g, '\\$&')}](${markdownUrl(node.attrs.src)}${markdownTitle(node.attrs.title)})`;
 const renderMedia = (node, helpers) => renderLink({
   attrs: { href: node.attrs.src },
