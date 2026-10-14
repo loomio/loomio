@@ -1,10 +1,10 @@
 ---
 title: Opmaak
-source_revision: c27ee3b193231816878f1c074ff9fc2a086a88c0
+source_revision: f0c873209653029367083ca854d7fb90269a9998
 source_file: docs/en/user_manual/discussions/formatting/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-02'
+  'on': '2026-10-14'
 sections:
   introduction: e5ed11fef349b38c
   attach-file: 772ed69602535db7
@@ -24,7 +24,7 @@ sections:
   code-block: e05cf0873c4c22e2
   divider: da7aa0e1a1a4436e
   add-table: f1a579057780872c
-  markdown: 6ee2783ba81363fd
+  markdown: 7c37a4c00bd431ee
   rich-text: 9136c76bfd5409a9
 generated:
   introduction: 61008fbffdc74f54
@@ -45,7 +45,7 @@ generated:
   code-block: 33440f4656ccb3c9
   divider: 893426388097ba6b
   add-table: ba09728b39f251a5
-  markdown: 2903146aba57e756
+  markdown: 5fc034fe2a5a58c2
   rich-text: 5734488dc6171b2d
 title_source: 29d4198e41d8221a
 title_generated: 7d7a9ce4e4aad2d0
@@ -245,7 +245,9 @@ Er zijn extra hulpmiddelen beschikbaar om kolommen en rijen toe te voegen of te 
 
 Selecteer **Markdown bewerken** om over te schakelen naar bewerken in Markdown.
 
-Als je hierop klikt terwijl er tekst in het formulier staat, kan bij de omzetting een deel van de opmaak verloren gaan.
+Bij het omzetten naar Markdown blijven koppen, vetgedrukte en cursieve tekst, lijsten, eenvoudige tabellen, afgevinkte taken, afbeeldingen, links en @vermeldingen behouden. Video's, audio en ingesloten inhoud worden links.
+
+Tekstkleuren, markeringen, onderstreping, uitlijning en tabelopmaak kunnen verloren gaan. Vervaldatums en herinneringen van taken worden verwijderd; bij het terugzetten naar tekst met opmaak worden nieuwe taken aangemaakt met dezelfde tekst en afvinkstatus.
 
 <!-- translation-section: rich-text -->
 

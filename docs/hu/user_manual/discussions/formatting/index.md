@@ -1,10 +1,10 @@
 ---
 title: Formázás
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
+source_revision: f0c873209653029367083ca854d7fb90269a9998
 source_file: docs/en/user_manual/discussions/formatting/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-14'
 sections:
   introduction: e5ed11fef349b38c
   attach-file: 772ed69602535db7
@@ -24,7 +24,7 @@ sections:
   code-block: e05cf0873c4c22e2
   divider: da7aa0e1a1a4436e
   add-table: f1a579057780872c
-  markdown: 6ee2783ba81363fd
+  markdown: 7c37a4c00bd431ee
   rich-text: 9136c76bfd5409a9
 generated:
   introduction: 5b7a10ffacf59c1c
@@ -45,7 +45,7 @@ generated:
   code-block: 26be87d02a225914
   divider: 1eb3207a6e7894e6
   add-table: 86ac95ed11222527
-  markdown: 427fcb58f8bbc50f
+  markdown: a68aef31ddf04f66
   rich-text: 122b6d4244105e0e
 title_source: 29d4198e41d8221a
 title_generated: f69549cfa8a49f53
@@ -245,7 +245,9 @@ További eszközökkel oszlopokat és sorokat adhatsz hozzá vagy távolíthatsz
 
 A Markdown-szerkesztésre váltáshoz válaszd a **Markdown szerkesztése** lehetőséget.
 
-Ha erre kattintasz, amikor már van szöveg a mezőben, az átalakítás során a formázás egy része elveszhet.
+A Markdownra alakítás megőrzi a címsorokat, a félkövér és dőlt szöveget, a listákat, az egyszerű táblázatokat, a kipipált feladatokat, a képeket, a hivatkozásokat és az @említéseket. A videók, a hanganyagok és a beágyazott tartalmak hivatkozásokká alakulnak.
+
+A szövegszínek, a kiemelések, az aláhúzás, az igazítás és a táblázatok elrendezése elveszhet. A feladatok határideje és az emlékeztetők törlődnek; a formázott szövegre való visszaalakítás új feladatokat hoz létre ugyanazzal a szöveggel és kipipálási állapottal.
 
 <!-- translation-section: rich-text -->
 

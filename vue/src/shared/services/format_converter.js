@@ -1,30 +1,31 @@
-import {marked} from 'marked';
-import {customRenderer, options} from '@/shared/helpers/marked';
+// Load conversion support only when switching modes. Update the format last,
+// so failed conversion leaves the source and active editor intact.
+const convertedContent = new WeakMap();
 
-export var convertToHtml = function(model, field) {
-  marked.setOptions(Object.assign({renderer: customRenderer()}, options));
-  model[`${field}Format`] = "html";
-  return model[field] = marked(model[field] || '');
-};
+export async function convertToHtml(model, field) {
+  const { markdownToHtml } = await import('./markdown_conversion');
+  const html = markdownToHtml(model[field] || '');
+  if (!convertedContent.has(model)) convertedContent.set(model, new Map());
+  convertedContent.get(model).set(field, html);
+  model[field] = html;
+  model[`${field}Format`] = 'html';
+}
 
-export var convertToMd = (model, field) => import('turndown').then(function(Turndown) {
-  // import('turndown-plugin-gfm').then (TurndownPluginGfm) ->
-  //   gfm = TurndownPluginGfm.gfm
+// Explicit conversion replaces the cached collaborative draft on its first
+// sync. Otherwise switching back would restore the rich text from before any
+// Markdown edits. Keep this transient state out of model attributes and saves.
+export function takeConvertedContent(model, field) {
+  if (!convertedContent.has(model)) return;
+  const fields = convertedContent.get(model);
+  const html = fields.get(field);
+  fields.delete(field);
+  if (fields.size === 0) convertedContent.delete(model);
+  return html;
+}
 
-  const converter = Turndown.default({
-    headingStyle: 'atx',
-    hr: '---',
-    codeBlockStyle: 'fenced'
-  });
-
-  converter.addRule('mentions', {
-    filter: 'span',
-    replacement(content, node, options) {
-      return '@' + node.getAttribute('data-mention-id');
-    }
-  }
-  );
-
-  model[`${field}Format`] = "md";
-  return model[field] = converter.turndown(model[field] || '');
-});
+export async function convertToMd(model, field, editor) {
+  const { documentToMarkdown } = await import('./markdown_conversion');
+  const markdown = documentToMarkdown(editor.getJSON());
+  model[field] = markdown;
+  model[`${field}Format`] = 'md';
+}

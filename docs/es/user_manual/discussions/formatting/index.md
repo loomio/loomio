@@ -1,10 +1,10 @@
 ---
 title: Formato
-source_revision: c27ee3b193231816878f1c074ff9fc2a086a88c0
+source_revision: f0c873209653029367083ca854d7fb90269a9998
 source_file: docs/en/user_manual/discussions/formatting/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-02'
+  'on': '2026-10-14'
 sections:
   introduction: e5ed11fef349b38c
   attach-file: 772ed69602535db7
@@ -24,7 +24,7 @@ sections:
   code-block: e05cf0873c4c22e2
   divider: da7aa0e1a1a4436e
   add-table: f1a579057780872c
-  markdown: 6ee2783ba81363fd
+  markdown: 7c37a4c00bd431ee
   rich-text: 9136c76bfd5409a9
 generated:
   introduction: fff803694f5335d6
@@ -45,7 +45,7 @@ generated:
   code-block: e4abe4178f47122e
   divider: c877a935e0258330
   add-table: d1c9f354970fd073
-  markdown: 8ee36983b6bd16ae
+  markdown: f6935e89b9379ca7
   rich-text: b924cb88715f6f0a
 title_source: 29d4198e41d8221a
 title_generated: 73e1804eb968f73e
@@ -245,7 +245,9 @@ Hay herramientas adicionales para añadir o eliminar columnas y filas.
 
 Para cambiar a la edición en Markdown, selecciona **Editar el descuento**.
 
-Si seleccionas esta opción cuando hay texto en el formulario, puede perderse parte del formato durante la conversión.
+La conversión a Markdown conserva los encabezados, el texto en negrita y cursiva, las listas, las tablas básicas, las tareas marcadas como completadas, las imágenes, los enlaces y las @menciones. Los vídeos, el audio y el contenido integrado se convierten en enlaces.
+
+Pueden perderse los colores del texto, el resaltado, el subrayado, la alineación y la disposición de las tablas. Se eliminan las fechas de vencimiento y los recordatorios de las tareas; al volver al texto enriquecido, se crean nuevas tareas con el mismo texto y el mismo estado de completado.
 
 <!-- translation-section: rich-text -->
 

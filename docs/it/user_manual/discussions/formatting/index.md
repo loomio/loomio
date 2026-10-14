@@ -1,10 +1,10 @@
 ---
 title: Formattazione
-source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
+source_revision: f0c873209653029367083ca854d7fb90269a9998
 source_file: docs/en/user_manual/discussions/formatting/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-14'
 sections:
   introduction: e5ed11fef349b38c
   attach-file: 772ed69602535db7
@@ -24,7 +24,7 @@ sections:
   code-block: e05cf0873c4c22e2
   divider: da7aa0e1a1a4436e
   add-table: f1a579057780872c
-  markdown: 6ee2783ba81363fd
+  markdown: 7c37a4c00bd431ee
   rich-text: 9136c76bfd5409a9
 generated:
   introduction: ce5a69c0f373a9d5
@@ -45,7 +45,7 @@ generated:
   code-block: 3b4add0e79b52171
   divider: d9c11f0ad00e9ace
   add-table: f48a0f8f49b6b186
-  markdown: b2491226e1a5bef3
+  markdown: 28baff63bd116dab
   rich-text: 9e15a0eb8e811719
 title_source: 29d4198e41d8221a
 title_generated: ddab7a78a28c6259
@@ -245,7 +245,9 @@ Sono disponibili strumenti aggiuntivi per aggiungere o rimuovere colonne e righe
 
 Per passare alla modifica in Markdown, seleziona **Modifica riduzione**.
 
-Se selezioni questa opzione quando il campo contiene del testo, parte della formattazione potrebbe andare persa durante la conversione.
+La conversione in Markdown conserva titoli, testo in grassetto e corsivo, elenchi, tabelle semplici, compiti spuntati, immagini, collegamenti e @menzioni. Video, audio e contenuti incorporati diventano collegamenti.
+
+I colori del testo, le evidenziazioni, le sottolineature, l'allineamento e la disposizione delle tabelle potrebbero andare persi. Le date di scadenza e i promemoria dei compiti vengono rimossi; la riconversione in testo formattato crea nuovi compiti con lo stesso testo e lo stesso stato di spunta.
 
 <!-- translation-section: rich-text -->
 

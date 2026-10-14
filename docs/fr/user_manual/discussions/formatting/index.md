@@ -1,10 +1,10 @@
 ---
 title: Mise en forme
-source_revision: c27ee3b193231816878f1c074ff9fc2a086a88c0
+source_revision: f0c873209653029367083ca854d7fb90269a9998
 source_file: docs/en/user_manual/discussions/formatting/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-02'
+  'on': '2026-10-14'
 sections:
   introduction: e5ed11fef349b38c
   attach-file: 772ed69602535db7
@@ -24,7 +24,7 @@ sections:
   code-block: e05cf0873c4c22e2
   divider: da7aa0e1a1a4436e
   add-table: f1a579057780872c
-  markdown: 6ee2783ba81363fd
+  markdown: 7c37a4c00bd431ee
   rich-text: 9136c76bfd5409a9
 generated:
   introduction: f4f0e14ebe990a1d
@@ -45,7 +45,7 @@ generated:
   code-block: c3ba7540439521c7
   divider: 8ea6c97110cba443
   add-table: dfde25a38574182e
-  markdown: 68a0d4dedb7841ca
+  markdown: 74934ac7dfde8850
   rich-text: f6cb7053cadf82c9
 title_source: 29d4198e41d8221a
 title_generated: 40d0b370bbf7ea55
@@ -247,7 +247,9 @@ Des outils supplémentaires permettent d’ajouter ou de supprimer des colonnes 
 
 Pour passer à l’édition en Markdown, sélectionnez **Editer Markdown**.
 
-Si le formulaire contient déjà du texte, une partie de la mise en forme peut être perdue lors de la conversion.
+La conversion en Markdown conserve les titres, le texte en gras et en italique, les listes, les tableaux simples, les tâches cochées, les images, les liens et les @mentions. Les vidéos, les contenus audio et les contenus intégrés deviennent des liens.
+
+Les couleurs du texte, le surlignage, le soulignement, l’alignement et la disposition des tableaux peuvent être perdus. Les dates d’échéance et les rappels des tâches sont supprimés ; le retour au texte enrichi crée de nouvelles tâches avec le même texte et le même état coché ou non coché.
 
 <!-- translation-section: rich-text -->
 

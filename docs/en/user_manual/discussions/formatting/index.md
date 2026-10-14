@@ -192,7 +192,9 @@ Additional tools are available to add/remove columns and rows.
 
 To switch to Markdown editing, select **Edit Markdown**.
 
-If you click this while there is text in the form, some formatting may be lost upon conversion.
+Converting to Markdown preserves headings, bold and italic text, lists, basic tables, checked tasks, images, links, and @mentions. Videos, audio, and embedded content become links.
+
+Text colours, highlights, underlining, alignment, and table layout may be lost. Task due dates and reminders are removed; converting back to rich text creates new tasks with the same text and checked state.
 
 <!-- translation-section: rich-text -->
 
