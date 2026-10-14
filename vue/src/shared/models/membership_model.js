@@ -81,6 +81,16 @@ export default class MembershipModel extends BaseModel {
     return this.volumeEmail === 'quiet' && this.volumePush === 'quiet';
   }
 
+  destroy() {
+    const groupIds = this.group().selfAndSubgroupIds();
+    return super.destroy().then(response => {
+      if (this.userId !== AppConfig.currentUserId) { return response; }
+
+      Records.memberships.revokeGroupAccess(groupIds);
+      return response;
+    });
+  }
+
   beforeRemove() {
     return invokeMap(Records.topicItems.find({'itemableType': 'membership', 'itemableId': this.id}), 'remove');
   }

@@ -20,6 +20,13 @@ class NullGroupTest < ActiveSupport::TestCase
     assert_nil group.self_or_parent_cover_url
   end
 
+  test "count rebuilds require a real group" do
+    group = topics(:direct_topic).group
+
+    assert_raises(ArgumentError) { group.update_membership_counts }
+    assert_raises(ArgumentError) { group.update_content_counts }
+  end
+
   test "self or parent image urls can be called with explicit size" do
     group = NullGroup.new
 

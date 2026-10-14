@@ -1,10 +1,8 @@
 class User < ApplicationRecord
-  include CustomCounterCache::Model
   include ReadableUnguessableUrls
   include HasExperiences
   include HasAvatar
   include SelfReferencing
-  include CustomCounterCache::Model
   include HasRichText
   include LocalesHelper
 
@@ -175,7 +173,7 @@ class User < ApplicationRecord
   end
 
   def is_paying?
-    group_ids = self.group_ids.concat(self.groups.pluck(:parent_id).compact).uniq
+    group_ids = (self.group_ids + self.groups.pluck(:parent_id).compact).uniq
     Group.enabled.where(id: group_ids).where(parent_id: nil).joins(:subscription).where.not('subscriptions.plan': 'trial').exists?
   end
 
@@ -208,7 +206,7 @@ class User < ApplicationRecord
   def join_default_onboarding_group
     return unless AppConfig.default_onboarding_group_id
 
-    Group.enabled.find(AppConfig.default_onboarding_group_id).add_member!(self)
+    MembershipService.add_member(group: Group.enabled.find(AppConfig.default_onboarding_group_id), user: self)
   end
 
   def became_registered_user?
@@ -253,7 +251,19 @@ class User < ApplicationRecord
     user if user.valid_password?(attributes[:password])
   end
 
-  define_counter_cache(:memberships_count) {|user| user.memberships.count }
+  def update_memberships_count
+    RecordCounts.recount!(self) { { memberships_count: memberships.count } }
+  end
+
+  def self.update_membership_counts_for_ids(ids)
+    users = where(id: ids)
+    users.order(:id).with_write_lock(:id) do
+      users.update_all(memberships_count: Arel.sql(<<~SQL.squish))
+        (SELECT COUNT(*) FROM memberships
+         WHERE memberships.user_id = users.id AND memberships.revoked_at IS NULL)
+      SQL
+    end
+  end
 
   def first_name
     name.split(' ').first

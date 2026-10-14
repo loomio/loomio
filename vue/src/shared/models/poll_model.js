@@ -90,6 +90,7 @@ export default class PollModel extends BaseModel {
       legacyAnonymousVoteReasonsCount: 0,
       anonymousVoterEligible: false,
       anonymousBallotSubmitted: false,
+      voterHasAccess: false,
       weightedVoting: false,
       stanceCounts: [],
       topicId: null,
@@ -295,6 +296,7 @@ export default class PollModel extends BaseModel {
   }
 
   iCanVote() {
+    if (!this.voterHasAccess) { return false; }
     if (this.anonymous) {
       return this.isVotable() && this.anonymousVoterEligible && !this.anonymousBallotSubmitted;
     }

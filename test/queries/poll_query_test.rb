@@ -86,6 +86,187 @@ class PollQueryTest < ActiveSupport::TestCase
     assert_empty PollQuery.visible_to(user: @user)
   end
 
+  test "need vote filters the viewer's pending stance rather than other people's votes" do
+    viewer = users(:member_normal)
+    other = users(:member_loud)
+    poll = @in_a_group
+    viewer_stance = poll.stances.latest.find_by!(participant: viewer)
+    other_stance = poll.stances.latest.find_by!(participant: other)
+    chain = PollQuery.relevant_to(user: viewer)
+    pending = -> { PollQuery.filter(chain: chain, params: {status: 'vote'}, user: viewer) }
+
+    assert pending.call.exists?(poll.id)
+    other_stance.update_column(:cast_at, Time.current)
+    assert pending.call.exists?(poll.id)
+    viewer_stance.update_column(:cast_at, Time.current)
+    assert_not pending.call.exists?(poll.id)
+    viewer_stance.update_column(:cast_at, nil)
+    assert pending.call.exists?(poll.id)
+    viewer_stance.update_column(:revoked_at, Time.current)
+    assert_not pending.call.exists?(poll.id)
+    viewer_stance.update_column(:revoked_at, nil)
+    poll.update_column(:closed_at, Time.current)
+    assert_not pending.call.exists?(poll.id)
+    poll.update_columns(closed_at: nil, closing_at: 1.minute.ago)
+    assert_not pending.call.exists?(poll.id)
+    poll.update_columns(closing_at: 3.days.from_now, opened_at: nil)
+    assert_not pending.call.exists?(poll.id)
+    assert_empty PollQuery.filter(chain: chain, params: {status: 'vote'})
+  end
+
+  test "need vote uses anonymous submission state and excludes viewers outside the electorate" do
+    viewer = users(:member_normal)
+    poll = PollService.create(params: {
+      title: 'Anonymous pending votes', poll_type: 'poll', anonymous: true,
+      group_id: @group.id, specified_voters_only: true,
+      recipient_user_ids: [viewer.id, users(:member_loud).id],
+      poll_option_names: %w[Yes No], closing_at: 3.days.from_now
+    }, actor: users(:admin))
+    pending = ->(user) {
+      PollQuery.filter(chain: PollQuery.relevant_to(user: user), params: {status: 'vote'}, user: user)
+    }
+
+    assert pending.call(viewer).exists?(poll.id)
+    assert_not pending.call(users(:member_quiet)).exists?(poll.id)
+    poll.anonymous_poll_voters.find_by!(voter: users(:member_loud)).update!(ballot_submitted: true)
+    assert pending.call(viewer).exists?(poll.id)
+    poll.anonymous_poll_voters.find_by!(voter: viewer).update!(ballot_submitted: true)
+    assert_not pending.call(viewer).exists?(poll.id)
+  end
+
+  test "leaving a group removes authored STV polls from visibility and relevance" do
+    author = users(:member_normal)
+    poll = PollService.create(params: {
+      title: 'Working group election', poll_type: 'stv', group_id: @group.id,
+      poll_option_names: %w[Alex Blair Casey], stv_seats: 1,
+      closing_at: 3.days.from_now
+    }, actor: author)
+    assert PollQuery.relevant_to(user: author).exists?(poll.id)
+    assert_not poll.stances.latest.decided.exists?(participant_id: author.id)
+
+    MembershipService.revoke(membership: @group.membership_for(author), actor: author)
+    author.reload
+
+    [nil, Time.current].each do |closed_at|
+      poll.update_column(:closed_at, closed_at)
+      assert_not PollQuery.visible_to(user: author).exists?(poll.id)
+      assert_not PollQuery.visible_to(user: author, chain: Poll.all).exists?(poll.id)
+      assert_not PollQuery.relevant_to(user: author).exists?(poll.id)
+      assert_not PollQuery.relevant_to(user: author, group_ids: [@group.id]).exists?(poll.id)
+      assert_not author.can?(:show, poll)
+      assert_not author.can?(:export, poll)
+      assert users(:admin).can?(:show, poll)
+    end
+  end
+
+  test "authorship does not bypass the group topic access matrix" do
+    topics(:discussion_topic).update!(allow_concurrent_polls: true)
+    users(:alien).update!(is_admin: true)
+    roles = %i[admin member_normal guest_normal guest_admin_normal alien
+               non_guest_loud former_member_loud former_guest_loud
+               inactive_member_loud inactive_guest_loud]
+
+    [false, true].each do |anonymous|
+      poll = PollService.create(params: {
+        title: 'Private group poll', poll_type: 'proposal',
+        topic_id: topics(:discussion_topic).id, anonymous: anonymous,
+        poll_option_names: %w[agree disagree], closing_at: 3.days.from_now
+      }, actor: users(:admin))
+      hide_results_modes = anonymous ? %w[until_closed] : %w[off until_vote until_closed]
+
+      hide_results_modes.each do |hide_results|
+        [nil, Time.current].each do |closed_at|
+          poll.update_columns(hide_results: hide_results, closed_at: closed_at)
+          roles.each do |role|
+            author = users(role)
+            poll.update_column(:author_id, author.id)
+            expected = %i[admin member_normal guest_normal guest_admin_normal].include?(role)
+            label = "#{role}, anonymous=#{anonymous}, results=#{hide_results}, closed=#{closed_at.present?}"
+            assert_equal expected, TopicQuery.visible_to(user: author).exists?(poll.topic_id), label
+            assert_equal expected, PollQuery.visible_to(user: author).exists?(poll.id), label
+            assert_equal expected, PollQuery.visible_to(user: author, topic_id: poll.topic_id).exists?(poll.id), label
+            assert_equal expected, PollQuery.relevant_to(user: author).exists?(poll.id), label
+            assert_equal expected, author.can?(:show, poll), label
+          end
+          assert_not LoggedOutUser.new.can?(:show, poll)
+        end
+      end
+    end
+  end
+
+  test "direct poll authors retain visibility and relevance without a group membership" do
+    assert_nil @authored.group_id
+    assert PollQuery.visible_to(user: @user).exists?(@authored.id)
+    assert PollQuery.visible_to(user: @user, topic_id: @authored.topic_id).exists?(@authored.id)
+    assert PollQuery.relevant_to(user: @user).exists?(@authored.id)
+    assert @user.can?(:show, @authored)
+    assert_not users(:alien).can?(:show, @authored)
+  end
+
+  test "guest tokens grant poll access only for active guest readers" do
+    %i[guest_normal_reader direct_guest_normal_reader
+       former_guest_loud_reader direct_former_guest_reader
+       non_guest_loud_reader direct_non_guest_reader].each do |role|
+      reader = topic_readers(role)
+      poll = make_poll(topic: reader.topic)
+      viewer = LoggedOutUser.new(params: {topic_reader_token: reader.token})
+      expected = reader.revoked_at.nil? && reader.guest?
+
+      assert_equal expected, PollQuery.visible_to(user: viewer).exists?(poll.id), role
+      assert_equal expected, PollQuery.visible_to(user: viewer, topic_id: poll.topic_id).exists?(poll.id), role
+      assert_equal expected, PollQuery.relevant_to(user: viewer).exists?(poll.id), role
+      assert_equal expected, viewer.can?(:show, poll), role
+      assert_not viewer.can?(:vote_in, poll), role
+    end
+  end
+
+  test "browsing guest groups does not grant access to their other private polls" do
+    guest = users(:guest_normal)
+    invited_poll = make_poll(topic: topics(:discussion_topic))
+    private_poll = @in_a_group
+    membership_ids = guest.group_ids.dup
+
+    assert GroupQuery.visible_to(user: guest).exists?(@group.id)
+    assert_equal membership_ids, guest.group_ids
+    assert TopicQuery.visible_to(user: guest).exists?(invited_poll.topic_id)
+    assert_not TopicQuery.visible_to(user: guest).exists?(private_poll.topic_id)
+    assert PollQuery.visible_to(user: guest).exists?(invited_poll.id)
+    assert PollQuery.relevant_to(user: guest).exists?(invited_poll.id)
+    assert_not PollQuery.visible_to(user: guest).exists?(private_poll.id)
+    assert_not PollQuery.relevant_to(user: guest).exists?(private_poll.id)
+    assert_not guest.can?(:show, private_poll)
+  end
+
+  test "checking payment does not grant subgroup members access to private parent polls" do
+    member = users(:subgroup_user)
+    membership_ids = member.group_ids.dup
+    assert_not member.group_ids.include?(@group.id)
+
+    member.is_paying?
+
+    assert_equal membership_ids, member.group_ids
+    assert_not TopicQuery.visible_to(user: member).exists?(@in_a_group.topic_id)
+    assert_not PollQuery.visible_to(user: member).exists?(@in_a_group.id)
+    assert_not PollQuery.relevant_to(user: member).exists?(@in_a_group.id)
+    assert_not member.can?(:show, @in_a_group)
+  end
+
+  test "topic access preserves custom poll scopes and excludes discarded topics" do
+    chain = Poll.where(id: [@authored.id, @in_a_group.id])
+    assert_equal [@in_a_group.id],
+                 PollQuery.visible_to(user: @user, chain: chain, topic_id: @in_a_group.topic_id).pluck(:id)
+    assert_not PollQuery.visible_to(user: @user, topic_id: @authored.topic_id).exists?(@in_a_group.id)
+    %i[visible_to relevant_to].each do |query|
+      assert_equal [@authored.id, @in_a_group.id].sort,
+                   PollQuery.public_send(query, user: @user, chain: chain).pluck(:id).sort
+    end
+
+    [@authored, @in_a_group].each { |poll| poll.topic.update_column(:discarded_at, Time.current) }
+    %i[visible_to relevant_to].each do |query|
+      assert_empty PollQuery.public_send(query, user: @user, chain: chain)
+    end
+  end
+
   test "dashboard visibility includes polls for topic reader guests" do
     hex = SecureRandom.hex(4)
     private_group = Group.create!(name: "Guest poll group #{hex}", handle: "guestpollgroup#{hex}")
@@ -137,6 +318,12 @@ class PollQueryTest < ActiveSupport::TestCase
     assert_includes PollQuery.visible_to(user: @user), public_poll
     refute_includes PollQuery.relevant_to(user: @user), public_poll
     assert_includes PollQuery.relevant_to(user: @user, group_ids: [public_group.id]), public_poll
+
+    MembershipService.revoke(membership: public_group.membership_for(public_author), actor: public_author)
+    public_author.reload
+    assert PollQuery.visible_to(user: public_author).exists?(public_poll.id)
+    assert_not PollQuery.relevant_to(user: public_author).exists?(public_poll.id)
+    assert PollQuery.relevant_to(user: public_author, group_ids: [public_group.id]).exists?(public_poll.id)
   end
 
   test "subgroup poll visibility matches the fixture access matrix for parent members" do

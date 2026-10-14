@@ -114,11 +114,10 @@ class DiscussionService
       return discussion
     end
     topic_item = nil
-    Discussion.transaction do
+    discussion.topic.with_write_lock do
+      actor.ability.authorize! :update, discussion
       discussion.topic.update!(topic_params) if topic_params.any?
       discussion.save!
-
-      discussion.update_versions_count
 
       users = TopicService.add_users(topic: discussion.topic,
                                      actor: actor,

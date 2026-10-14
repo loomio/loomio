@@ -244,6 +244,30 @@ class GroupExportServiceTest < ActiveSupport::TestCase
     assert_empty archive.select { |item| %w[anonymous_ballots anonymous_ballot_choices anonymous_poll_voters legacy_anonymous_vote_reasons].include?(item["table"]) }
   end
 
+  test "import rebuilds counts when an open anonymous poll is omitted from its thread" do
+    group, admin, voter = create_detached_export_group
+    discussion = DiscussionService.create(params: {title: 'Imported thread', group_id: group.id}, actor: admin)
+    create_detached_export_poll(
+      group: group, admin: admin, voter: voter, topic_id: discussion.topic_id,
+      title: 'Omitted open anonymous poll', close: false
+    )
+    assert_equal 1, group.reload.polls_count
+    assert_equal 1, discussion.topic.reload.active_polls_count
+
+    filename = GroupExportService.export(group.all_groups, group.name)
+    GroupExportService.import(filename, reset_keys: true)
+    imported_group = Group.where(name: group.name).where.not(id: group.id).sole
+    assert_equal 0, imported_group.polls_count
+    assert_equal 2, imported_group.memberships_count
+    assert_equal 1, imported_group.admin_memberships_count
+    assert_equal 0, imported_group.pending_memberships_count
+    assert_equal 2, imported_group.org_members_count
+    imported_group.topics.each do |topic|
+      assert_equal 0, topic.active_polls_count
+      assert_equal topic.topic_readers.where.not(last_read_at: nil).count, topic.seen_by_count
+    end
+  end
+
   test "direct-topic export and import preserve detached anonymous records" do
     group, admin, voter = create_detached_export_group
     discussion = DiscussionService.create(
@@ -311,6 +335,10 @@ class GroupExportServiceTest < ActiveSupport::TestCase
 
     assert_equal user.id, User.find_by!(key: user.key).id
     assert Membership.find_by!(user: user, group: group)
+    assert_equal 1, group.reload.memberships_count
+    assert_equal 0, group.pending_memberships_count
+    assert_equal 1, group.org_members_count
+    assert_equal 1, user.reload.memberships_count
   end
 
   test "export, truncate specific records, and import recreates the scenario" do
@@ -322,6 +350,16 @@ class GroupExportServiceTest < ActiveSupport::TestCase
     filename = GroupExportService.export(group.all_groups, group.name)
     # Exercise archives that list dependent records before their parents.
     archive = File.readlines(filename).map { |line| JSON.parse(line) }
+    # Exports from before counter retirement must still import. These stale
+    # derived values must not override the actual imported records.
+    archive.each do |data|
+      columns = {
+        'groups' => %w[closed_polls_count delegates_count discussion_templates_count subgroups_count],
+        'topics' => %w[anonymous_polls_count closed_polls_count members_count],
+        'tags' => %w[taggings_count]
+      }.fetch(data['table'], [])
+      columns.each { |column| data['record'][column] = 999 }
+    end
     archive.sort_by! do |record|
       if record['table'] == 'stance_choices'
         0
@@ -448,6 +486,22 @@ class GroupExportServiceTest < ActiveSupport::TestCase
     # Templates
     DiscussionTemplate.find_by!(title: 'discussion_template', group: imported_group, author: imported_admin)
     PollTemplate.find_by!(title: 'poll_template', group: imported_group, author: imported_admin)
+
+    assert_equal 2, imported_group.memberships_count
+    assert_equal 2, imported_group.org_members_count
+    assert_equal 1, imported_group.admin_memberships_count
+    assert_equal 0, imported_group.pending_memberships_count
+    assert_equal 2, imported_group.polls_count
+    assert_equal 1, imported_group.discussions_count
+    assert_equal 1, imported_group.poll_templates_count
+    assert_equal 1, GroupSerializer.new(imported_group).subgroups_count
+    assert_equal 2, imported_admin.memberships_count
+    assert_equal 2, imported_member.memberships_count
+    assert_equal 0, imported_discussion.versions_count
+    assert_equal 0, imported_comment.versions_count
+    imported_group.all_topic_items.each do |item|
+      assert_equal item.children.count, item.child_count
+    end
 
     # Reactions
     Reaction.find_by!(reactable: imported_discussion, user: imported_member)

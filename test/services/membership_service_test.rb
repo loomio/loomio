@@ -432,6 +432,129 @@ class MembershipServiceTest < ActiveSupport::TestCase
     end
   end
 
+  test "adding a former member restores active poll votes without changing their recorded vote" do
+    member = users(:member_normal)
+    poll = PollService.create(params: {
+      title: 'Return to an active poll', poll_type: 'poll', private: true,
+      group_id: groups(:group).id, poll_option_names: %w[Yes No], closing_at: 3.days.from_now
+    }, actor: users(:admin))
+    stance = poll.stances.latest.find_by!(participant: member)
+    MembershipService.revoke(membership: groups(:group).membership_for(member), actor: member)
+    assert_not member.can?(:vote_in, poll)
+
+    MembershipService.add_users_to_group(users: [member], group: groups(:group), inviter: users(:admin))
+
+    assert_nil stance.reload.revoked_at
+    assert_nil stance.cast_at
+    assert member.can?(:show, poll)
+    assert member.can?(:vote_in, poll)
+    assert poll.vote_needed_from?(member)
+    assert_equal 1, poll.stances.latest.where(participant: member).count
+  end
+
+  test "revoking membership rolls back access and votes together if count updates fail" do
+    member = users(:member_normal)
+    group = groups(:group)
+    poll = PollService.create(params: {
+      title: 'Atomic removal', poll_type: 'poll', group_id: group.id,
+      poll_option_names: %w[Yes No], closing_at: 3.days.from_now
+    }, actor: users(:admin))
+    reader = TopicReader.for(user: member, topic: topics(:discussion_topic))
+    reader.update!(guest: true)
+
+    Group.stub(:update_org_members_count_for_group_ids, ->(*) { raise 'Count update failed' }) do
+      assert_raises(RuntimeError) do
+        MembershipService.revoke(membership: group.membership_for(member), actor: member)
+      end
+    end
+
+    assert_nil Membership.find_by!(group: group, user: member).revoked_at
+    assert_nil reader.reload.revoked_at
+    assert reader.guest?
+    assert_nil poll.stances.latest.find_by!(participant: member).revoked_at
+  end
+
+  test "joining a public group restores former member access and active poll stances" do
+    group = groups(:group)
+    member = users(:member_normal)
+    group.update!(group_privacy: 'open', membership_granted_upon: 'request')
+    poll = create_poll(group: group)
+    stance = poll.stances.create!(participant: member, inviter: users(:admin))
+    MembershipService.revoke(membership: group.membership_for(member), actor: member)
+
+    membership = MembershipService.join_group(group: group, actor: member)
+
+    assert_nil membership.revoked_at
+    assert_nil stance.reload.revoked_at
+    assert member.can?(:vote_in, poll)
+  end
+
+  test "unauthorized joins and direct additions leave former member access revoked" do
+    group = groups(:group)
+    member = users(:member_normal)
+    MembershipService.revoke(membership: group.membership_for(member), actor: member)
+
+    assert_raises CanCan::AccessDenied do
+      MembershipService.join_group(group: group, actor: member)
+    end
+    assert_raises CanCan::AccessDenied do
+      MembershipService.add_users_to_group(users: [member], group: group, inviter: users(:alien))
+    end
+
+    assert_not_nil Membership.find_by!(group: group, user: member).revoked_at
+    assert_not member.can?(:show, topics(:discussion_topic))
+  end
+
+  test "failed direct addition rolls back restored access and poll counts" do
+    group = groups(:group)
+    member = users(:member_normal)
+    poll = create_poll(group: group)
+    stance = poll.stances.create!(participant: member, inviter: users(:admin))
+    reader = TopicReader.for(user: member, topic: topics(:discussion_topic))
+    reader.update!(guest: true)
+    MembershipService.revoke(membership: group.membership_for(member), actor: member)
+    count = poll.reload.undecided_voters_count
+
+    assert_no_enqueued_jobs(only: PollGroupMembersAddedWorker) do
+      NotificationService.stub(:create!, ->(**) { raise 'Notification failed' }) do
+        assert_raises RuntimeError do
+          MembershipService.add_users_to_group(users: [member], group: group, inviter: users(:admin))
+        end
+      end
+    end
+
+    assert_not_nil Membership.find_by!(group: group, user: member).revoked_at
+    assert_not_nil reader.reload.revoked_at
+    assert_not_nil stance.reload.revoked_at
+    assert_equal count, poll.reload.undecided_voters_count
+  end
+
+  test "inviting a former member restores their cast vote and active poll counts" do
+    member = users(:member_normal)
+    group = groups(:group)
+    poll = PollService.create(params: {
+      title: 'Return by invitation', poll_type: 'poll', private: true,
+      group_id: group.id, poll_option_names: %w[Yes No], closing_at: 3.days.from_now
+    }, actor: users(:admin))
+    stance = poll.stances.latest.find_by!(participant: member)
+    StanceService.update(stance: stance, actor: member, params: {
+      stance_choices_attributes: [{poll_option_id: poll.poll_options.first.id, score: 1}]
+    })
+    cast_at = stance.reload.cast_at
+    voters_count = poll.reload.voters_count
+    MembershipService.revoke(membership: group.membership_for(member), actor: member)
+    assert_equal voters_count - 1, poll.reload.voters_count
+
+    GroupService.invite(group: group, actor: users(:admin), params: {recipient_emails: [member.email]})
+
+    assert_nil stance.reload.revoked_at
+    assert_equal cast_at, stance.cast_at
+    assert_equal voters_count, poll.reload.voters_count
+    assert member.can?(:vote_in, poll)
+    assert_not poll.vote_needed_from?(member)
+    assert_equal 1, poll.stances.latest.where(participant: member).count
+  end
+
   private
 
   def pending_membership_for(user, group)

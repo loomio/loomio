@@ -270,7 +270,7 @@ class Api::V1::NotificationsControllerTest < ActionController::TestCase
     poll_visibility_queries = []
     subscriber = ActiveSupport::Notifications.subscribe("sql.active_record") do |_name, _started, _finished, _id, payload|
       sql = payload[:sql].to_s
-      poll_visibility_queries << sql if sql.include?('LEFT OUTER JOIN topics t ON t.id = polls.topic_id')
+      poll_visibility_queries << sql if sql.match?(/\ASELECT (?:DISTINCT )?"polls"\."id" FROM "polls"/) && !payload[:cached]
     end
 
     sign_in @user

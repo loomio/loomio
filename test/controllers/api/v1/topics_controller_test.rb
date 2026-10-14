@@ -569,6 +569,31 @@ class Api::V1::TopicsControllerTest < ActionController::TestCase
     assert_response :forbidden
   end
 
+  test "discarded anonymous polls keep history private across the access matrix" do
+    [:discussion_topic, :public_discussion_topic].each do |fixture|
+      topic = topics(fixture)
+      actor = topic.topicable.author
+      topic.group.add_admin!(actor) if fixture == :public_discussion_topic
+      poll = PollService.create(params: {
+        title: "Discarded secret vote", poll_type: "proposal", topic_id: topic.id,
+        anonymous: true, poll_option_names: %w[agree disagree], closing_at: 1.day.from_now
+      }, actor: actor)
+      PollService.discard(poll: poll, actor: actor)
+      assert poll.reload.discarded?
+
+      users(:user, :admin, :server_admin, :alien, :guest_normal, :guest_admin_normal, :non_guest_loud,
+            :former_guest_loud, :former_member_loud, :inactive_member_loud).each do |viewer|
+        sign_in viewer
+        get :history, params: { id: topic.id }
+        assert_response(viewer.active? ? :forbidden : :unauthorized)
+        assert_not JSON.parse(response.body).key?('data'), "#{fixture}: #{viewer.id}"
+        sign_out viewer
+      end
+      get :history, params: { id: topic.id }
+      assert_response :unauthorized
+    end
+  end
+
   test "history denied to non-members" do
     sign_in @alien
 

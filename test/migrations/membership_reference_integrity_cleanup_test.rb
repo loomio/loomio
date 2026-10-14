@@ -30,7 +30,6 @@ class MembershipReferenceIntegrityCleanupTest < ActiveSupport::TestCase
       memberships_count: 99,
       pending_memberships_count: 99,
       admin_memberships_count: 99,
-      delegates_count: 99,
       org_members_count: 99
     )
     user.update_columns(memberships_count: 99)
@@ -42,7 +41,6 @@ class MembershipReferenceIntegrityCleanupTest < ActiveSupport::TestCase
     assert_equal group.memberships.count, group.memberships_count
     assert_equal group.memberships.pending.count, group.pending_memberships_count
     assert_equal group.admin_memberships.count, group.admin_memberships_count
-    assert_equal group.memberships.delegates.count, group.delegates_count
     assert_equal Membership.active.where(group_id: group.id_and_subgroup_ids).distinct.count(:user_id), group.org_members_count
     assert_equal user.memberships.count, user.reload.memberships_count
   end

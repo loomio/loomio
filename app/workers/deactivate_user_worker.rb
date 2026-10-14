@@ -6,7 +6,7 @@ class DeactivateUserWorker < ApplicationJob
 
     User.transaction do
 
-      MembershipService.revoke_by_id(group_ids, user_id, actor_id, deactivated_at)
+      MembershipService.revoke_by_id(group_ids, user_id, actor_id, deactivated_at, preserve_cast_votes: true)
       
       user.update(deactivated_at: deactivated_at, deactivator_id: actor_id)
       user.mobile_devices.active.find_each(&:revoke!)

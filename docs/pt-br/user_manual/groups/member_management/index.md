@@ -1,24 +1,24 @@
 ---
 title: Gestão de membros
-source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
+source_revision: 43a63dfebc3d75ea40ab1b104dc875422c1185f0
 source_file: docs/en/user_manual/groups/member_management/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-13'
 sections:
   introduction: f216b18771a2c2a9
   administering-your-group: 27aed40959adef57
   managing-subgroups: ee977899fa34caab
-  removing-members: f00aea52bfcd3547
-  leaving-group: 02f69c9806d6beda
+  removing-members: f40c25fd90ab1ce2
+  leaving-group: 11b09b4af23b4e7e
   set-title: 835b25d246477b4a
   member-email-addresses: cae570f30b671275
 generated:
   introduction: b1a1f110501cc560
   administering-your-group: c70db0361af97c6c
   managing-subgroups: 8ed0c9c740963a99
-  removing-members: 1525e682bca8fea6
-  leaving-group: a86578792bbc338c
+  removing-members: 9b50c451edf60663
+  leaving-group: 5baef135ab17c5b5
   set-title: 1fa149ca530e47d7
   member-email-addresses: d6245422ebff7e08
 title_source: 23ac3a7fe9ee72a2
@@ -69,12 +69,16 @@ Ao clicar em **Eliminar do grupo**, você precisará confirmar a remoção. Apó
 
 ![Ação Eliminar do grupo no menu de um membro](member_remove.png)
 
-Você pode adicionar os membros removidos ao grupo novamente mais tarde, se quiser.
+A remoção também se aplica aos subgrupos do grupo. As enquetes privadas desaparecem do painel e da lista de votação da pessoa. As enquetes públicas continuam disponíveis para leitura, mas um ex-membro só pode votar se for convidado a voltar. Sair enquanto uma enquete está encerrada não preserva o direito de votar caso ela seja reaberta.
+
+Você pode adicionar os membros removidos ao grupo novamente mais tarde. Ao retornar ao grupo, eles recuperam o acesso e seus votos existentes nas enquetes ativas, sem precisar atualizar a página.
 
 <!-- translation-section: leaving-group -->
 
 ## Sair do grupo
 Para sair de um grupo, acesse a página do grupo, abra o menu de três pontos e clique em **Sair do grupo**.
+
+Sair do grupo tem os mesmos efeitos sobre o acesso ao grupo e aos subgrupos que a remoção por um admin, incluindo a remoção das enquetes privadas do seu painel e da sua lista de votação.
 
 ![Ação Sair do grupo no menu de configurações da Oatmilk Cooperative](member_leave_group.png)
 

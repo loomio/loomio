@@ -20,7 +20,7 @@ const destinationId = ref(null);
 const availableGroups = ref([]);
 const loading = ref(false);
 
-const directAllowed = computed(() => topic.anonymousPollsCount === 0);
+const directAllowed = computed(() => topic.hasAnonymousPolls === false);
 const isDirect = computed(() => destinationId.value === 'direct');
 const destinationItems = computed(() => [{
   title: I18n.global.t('move_discussion_form.direct_thread'),

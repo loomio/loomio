@@ -43,12 +43,6 @@ module MembershipReferenceIntegrityCleanup
             WHERE memberships.group_id = groups.id
               AND memberships.revoked_at IS NULL
               AND memberships.admin = TRUE
-          ),
-          delegates_count = (
-            SELECT COUNT(*) FROM memberships
-            WHERE memberships.group_id = groups.id
-              AND memberships.revoked_at IS NULL
-              AND memberships.delegate = TRUE
           )
       WHERE groups.id IN (
         SELECT DISTINCT group_id

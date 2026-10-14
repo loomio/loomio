@@ -53,7 +53,9 @@ class EventTest < ActiveSupport::TestCase
     @group.add_member!(@user_membership_mute).set_volume!(email: :quiet, push: :quiet)
 
     # Webhook
-    @webhook_url = "https://webhook-#{SecureRandom.hex(4)}.example.com/hook"
+    # WebMock handles delivery; use a public literal IP so inline publication
+    # jobs exercise the HTTP guard without waiting on real DNS lookups.
+    @webhook_url = "https://93.184.216.34/hook/#{SecureRandom.hex(4)}"
     WebMock.stub_request(:post, @webhook_url).to_return(status: 200)
     SafeHttpService.stub(:safe_to_fetch?, true) do
       @webhook = Chatbot.create!(

@@ -473,6 +473,33 @@ class PollServiceTest < ActiveSupport::TestCase
     assert_equal topic_item.id, TopicItem.find_by!(kind: "poll_closed_by_user", itemable: poll).id
   end
 
+  test "closing reveals hidden reasons with one parent count update per batch" do
+    poll = create_poll(hide_results: :until_closed)
+    voters = users(:user, :admin, :member)
+    voters.each do |voter|
+      stance = poll.stances.latest.find_by!(participant_id: voter.id)
+      stance.choice = poll.poll_option_names.first
+      stance.reason = "Hidden response from #{voter.id}"
+      StanceService.create(stance: stance, actor: voter)
+      assert_not TopicItem.exists?(itemable: stance, kind: 'stance_created')
+    end
+    updates = []
+    subscriber = ActiveSupport::Notifications.subscribe('sql.active_record') do |*, payload|
+      updates << payload[:sql] if payload[:sql].match?(/UPDATE "topic_items" SET "child_count" = COALESCE/)
+    end
+
+    PollService.close(poll: poll, actor: @user)
+
+    # One combined increment for all reasons, then one for the closing item.
+    assert_equal 2, updates.length
+    parent = poll.created_topic_item.reload
+    assert_equal 4, parent.child_count
+    assert_equal 3, parent.children.where(kind: 'stance_created').count
+    TopicService.verify_integrity!(poll.topic_id)
+  ensure
+    ActiveSupport::Notifications.unsubscribe(subscriber) if subscriber
+  end
+
   test "does not allow change from anonymous to normal" do
     poll = create_poll(anonymous: true)
     poll.anonymous = false
