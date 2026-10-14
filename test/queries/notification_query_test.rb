@@ -71,6 +71,23 @@ class NotificationQueryTest < ActiveSupport::TestCase
     assert_empty accessible_ids(users(:member_normal), [notification])
   end
 
+  test "reopening a poll does not revive reminders for members who left while it was closed" do
+    member = users(:member_normal)
+    poll = PollService.create(params: {
+      title: 'Historical poll reminder', poll_type: 'poll', private: true,
+      group_id: groups(:group).id, closing_at: 3.days.from_now,
+      poll_option_names: ['Agree']
+    }, actor: users(:admin))
+    notification = Notification.create!(kind: 'poll_closing_soon', actor: users(:admin), subject: poll)
+    assert_equal [notification.id], accessible_ids(member, [notification])
+    PollService.close(poll: poll, actor: users(:admin))
+    MembershipService.revoke(membership: groups(:group).membership_for(member), actor: member)
+    PollService.reopen(poll: poll, params: {closing_at: 3.days.from_now}, actor: users(:admin))
+
+    assert_empty accessible_ids(member, [notification])
+    assert_not poll.vote_needed_from?(member)
+  end
+
   private
 
   def accessible_ids(user, notifications)

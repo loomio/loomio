@@ -1,24 +1,24 @@
 ---
 title: ניהול חברים
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
+source_revision: 43a63dfebc3d75ea40ab1b104dc875422c1185f0
 source_file: docs/en/user_manual/groups/member_management/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-13'
 sections:
   introduction: f216b18771a2c2a9
   administering-your-group: 27aed40959adef57
   managing-subgroups: ee977899fa34caab
-  removing-members: f00aea52bfcd3547
-  leaving-group: 02f69c9806d6beda
+  removing-members: f40c25fd90ab1ce2
+  leaving-group: 11b09b4af23b4e7e
   set-title: 835b25d246477b4a
   member-email-addresses: cae570f30b671275
 generated:
   introduction: b12bc3fb9a4d20ce
   administering-your-group: 83711aeebdb42c37
   managing-subgroups: bee9b09a7318fe91
-  removing-members: c1e510e015ebda55
-  leaving-group: 58137076aa2e619c
+  removing-members: 32a7cbd62f7d52f0
+  leaving-group: 704668ab134e1b54
   set-title: 97eaa9af3ef532d0
   member-email-addresses: 9b5e0e0be518e621
 title_source: 23ac3a7fe9ee72a2
@@ -69,12 +69,16 @@ title_generated: 4b3b48d6a2988ead
 
 ![הפעולה להסרה מהקבוצה בתפריט החבר](member_remove.png)
 
-ניתן להוסיף בחזרה לקבוצה חברים שהוסרו ממנה במועד מאוחר יותר.
+ההסרה חלה גם על תת־הקבוצות של הקבוצה. סקרים פרטיים נעלמים מלוח הבקרה ומרשימת ההצבעות של המשתמש. סקרים ציבוריים נשארים פתוחים לקריאה, אך חברים לשעבר אינם יכולים להצביע אלא אם הוזמנו בחזרה. עזיבת הקבוצה בזמן שסקר סגור אינה משמרת את זכות ההצבעה אם הסקר נפתח מחדש.
+
+ניתן להוסיף בחזרה לקבוצה חברים שהוסרו ממנה במועד מאוחר יותר. הצטרפות מחדש משיבה את הגישה ואת ההצבעות הקיימות בסקרים פעילים, ללא צורך ברענון הדף.
 
 <!-- translation-section: leaving-group -->
 
 ## עזיבת קבוצה
 כדי לעזוב קבוצה, יש לעבור לדף הקבוצה, לפתוח את תפריט שלוש הנקודות וללחוץ על **עזוב את הקבוצה**.
+
+לעזיבה יש אותן השפעות על הגישה לקבוצה ולתת־הקבוצות כמו להסרה בידי מנהל, כולל הסרת סקרים פרטיים מלוח הבקרה ומרשימת ההצבעות.
 
 ![הפעולה לעזיבת הקבוצה בתפריט ההגדרות של קואופרטיב Oatmilk](member_leave_group.png)
 

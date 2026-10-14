@@ -1,24 +1,24 @@
 ---
 title: Управление участниками
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
+source_revision: 43a63dfebc3d75ea40ab1b104dc875422c1185f0
 source_file: docs/en/user_manual/groups/member_management/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-13'
 sections:
   introduction: f216b18771a2c2a9
   administering-your-group: 27aed40959adef57
   managing-subgroups: ee977899fa34caab
-  removing-members: f00aea52bfcd3547
-  leaving-group: 02f69c9806d6beda
+  removing-members: f40c25fd90ab1ce2
+  leaving-group: 11b09b4af23b4e7e
   set-title: 835b25d246477b4a
   member-email-addresses: cae570f30b671275
 generated:
   introduction: fd07b29364d5b1d5
   administering-your-group: 61318b26de6c5d84
   managing-subgroups: 6ffa8623e1fbab05
-  removing-members: fc311dfcfb8f5f86
-  leaving-group: 3d456c7ce1bd4db0
+  removing-members: 00ab57f23bf6f8a2
+  leaving-group: 76a2c1e53dfce5aa
   set-title: acf8143224cf4c71
   member-email-addresses: e35b50a5af9a15ef
 title_source: 23ac3a7fe9ee72a2
@@ -69,12 +69,16 @@ title_generated: 3792557669daccda
 
 ![Действие «Удалить из группы» в меню участника](member_remove.png)
 
-При желании вы можете позже снова добавить удалённых участников в группу.
+Удаление также лишает участника доступа к подгруппам этой группы. Закрытые для посторонних опросы исчезают из его ленты и списка опросов для голосования. Общедоступные опросы остаются доступны для чтения, но бывший участник не может голосовать, пока его снова не пригласят. Если участник покинул группу, пока опрос был закрыт, он не сохраняет право голосовать при возобновлении голосования.
+
+Вы можете позже снова добавить удалённых участников в группу. Повторное вступление восстанавливает их доступ и ранее поданные голоса в активных опросах без необходимости обновлять страницу.
 
 <!-- translation-section: leaving-group -->
 
 ## Выход из группы
 Чтобы покинуть группу, перейдите на страницу группы, откройте меню с тремя точками и нажмите **Покинуть группу**.
+
+Выход из группы имеет те же последствия для доступа к группе и подгруппам, что и удаление администратором: в том числе закрытые для посторонних опросы исчезают из вашей ленты и списка опросов для голосования.
 
 ![Действие «Покинуть группу» в меню настроек Oatmilk Cooperative](member_leave_group.png)
 

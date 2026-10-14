@@ -1,24 +1,24 @@
 ---
 title: Ledenbeheer
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
+source_revision: 43a63dfebc3d75ea40ab1b104dc875422c1185f0
 source_file: docs/en/user_manual/groups/member_management/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-13'
 sections:
   introduction: f216b18771a2c2a9
   administering-your-group: 27aed40959adef57
   managing-subgroups: ee977899fa34caab
-  removing-members: f00aea52bfcd3547
-  leaving-group: 02f69c9806d6beda
+  removing-members: f40c25fd90ab1ce2
+  leaving-group: 11b09b4af23b4e7e
   set-title: 835b25d246477b4a
   member-email-addresses: cae570f30b671275
 generated:
   introduction: 1e2b960fecdc7b20
   administering-your-group: 3c0cb1c03de746e4
   managing-subgroups: 065e1aeee7022db1
-  removing-members: 7dfff6971ffec7fe
-  leaving-group: 28b512fd85a5fe1a
+  removing-members: 8512fbec84729481
+  leaving-group: a6ba656d5b8466b6
   set-title: 5e9c488e9422af3b
   member-email-addresses: 043d066e40c8480d
 title_source: 23ac3a7fe9ee72a2
@@ -69,12 +69,16 @@ Wanneer je op **Van groep verwijderen** klikt, wordt je gevraagd de verwijdering
 
 ![Actie Van groep verwijderen in het menu van een lid](member_remove.png)
 
-Je kunt verwijderde leden later weer aan de groep toevoegen als je dat wilt.
+De verwijdering geldt ook voor de subgroepen van de groep. Privépeilingen verdwijnen van het dashboard en uit de stemlijst van de persoon. Openbare peilingen blijven leesbaar, maar een voormalig lid kan niet stemmen tenzij die opnieuw wordt uitgenodigd. Als iemand de groep verlaat terwijl een peiling gesloten is, behoudt die geen stemrecht wanneer de peiling wordt heropend.
+
+Je kunt verwijderde leden later weer aan de groep toevoegen. Wanneer ze opnieuw lid worden, krijgen ze weer toegang en worden hun bestaande stemmen in actieve peilingen hersteld, zonder dat ze de pagina hoeven te vernieuwen.
 
 <!-- translation-section: leaving-group -->
 
 ## Groep verlaten
 Om een groep te verlaten, ga je naar de groepspagina, open je het menu met de drie puntjes en klik je op **Groep verlaten**.
+
+Een groep verlaten heeft dezelfde gevolgen voor de toegang tot de groep en subgroepen als verwijdering door een admin. Privépeilingen verdwijnen daarbij ook van je dashboard en uit je stemlijst.
 
 ![Actie Groep verlaten in het instellingenmenu van Oatmilk Cooperative](member_leave_group.png)
 

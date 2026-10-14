@@ -88,6 +88,21 @@ class RecordCache
     scope[key].merge!(collection.index_by(&:id))
   end
 
+  # Personal voting state needs membership even when a compact response omits
+  # groups. Load the user's group IDs once per response, rather than per poll.
+  def member_group_ids
+    @member_group_ids ||= Membership.active.where(user_id: current_user_id).pluck(:group_id).to_set
+  end
+
+  def member_of_group?(group_id)
+    # Full responses already cache membership presence or absence. Compact
+    # responses fall back to one membership query shared by every poll.
+    memberships = scope.fetch(:memberships_by_group_id, {})
+    return memberships[group_id].present? if memberships.key?(group_id)
+
+    member_group_ids.include?(group_id)
+  end
+
   def add_known_missing(key, ids)
     unless KNOWN_MISSING_KEYS.include?(key.to_sym)
       raise ArgumentError, "#{key} is not a known-missing cache key"

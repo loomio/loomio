@@ -40,20 +40,7 @@ class MembershipService
         Membership.where(user_id: membership.user_id, group_id: invited_group_ids).destroy_all
       end
 
-      # remove any existing guest access in these groups
-      TopicReader
-      .joins(:topic)
-      .where(user_id: actor.id)
-      .where("topics.group_id IN (?)", invited_group_ids)
-      .update_all(guest: false, revoked_at: nil, revoker_id: nil)
-
-      # unrevoke any votes on active polls
-      Stance.joins(poll: :topic)
-      .where(participant_id: actor.id)
-      .where('topics.group_id': invited_group_ids)
-      .where('stances.revoked_at is not null')
-      .where('polls.closed_at is null')
-      .update_all(revoked_at: nil, revoker_id: nil)
+      restore_topic_access(user_id: actor.id, group_ids: invited_group_ids)
 
       accepted_membership = Membership.find_by!(group_id: invited_group_id, user_id: actor.id) unless existing_accepted_group_ids.include?(invited_group_id)
       if notify && accepted_membership&.accepted_at
@@ -72,6 +59,7 @@ class MembershipService
     invited_group_ids.each do |group_id|
       PollGroupMembersAddedWorker.perform_later(group_id)
     end
+    publish_access_change(user_id: actor.id, group_ids: invited_group_ids, revoked: false)
 
     Sentry.metrics.count("membership.accept") if accepted_membership&.accepted_at
     accepted_notification
@@ -92,19 +80,20 @@ class MembershipService
     EventBus.broadcast('membership_destroy', membership, actor)
   end
 
-  def self.revoke_by_id(group_ids, user_id, actor_id, revoked_at = DateTime.now)
+  def self.revoke_by_id(group_ids, user_id, actor_id, revoked_at = DateTime.now, preserve_cast_votes: false)
     User.where(id: user_id).with_write_lock(:id) do
       TopicReader
         .joins(:topic).where(user_id: user_id)
         .where("topics.group_id IN (?)", group_ids)
         .update_all(guest: false, revoked_at: revoked_at, revoker_id: actor_id)
 
-      # remove them from active polls
+      # Account deactivation retains authored votes while removing uncast
+      # invitations. Ordinary group departures still remove open-poll votes.
       group_ids.each do |group_id|
-        PollService.group_members_removed(group_id, user_id, actor_id, revoked_at)
+        PollService.group_members_removed(group_id, user_id, actor_id, revoked_at, preserve_cast_votes: preserve_cast_votes)
       end
 
-      # revoke the membership
+      # Revoke the membership in the same transaction as topic and poll access.
       Membership
         .active
         .where(user_id: user_id, group_id: group_ids)
@@ -113,6 +102,28 @@ class MembershipService
       Group.where(id: group_ids).order(:id).each(&:update_membership_counts)
       Group.update_org_members_count_for_group_ids(group_ids)
       User.update_membership_counts_for_ids([user_id])
+      publish_access_change(user_id: user_id, group_ids: group_ids, revoked: true)
+    end
+  end
+
+  # Rejoining restores topic access and historical active-poll stances together.
+  # Closed-poll votes remain historical records rather than new voting rights.
+  def self.restore_topic_access(user_id:, group_ids:)
+    TopicReader.joins(:topic).where(user_id: user_id, topics: { group_id: group_ids })
+      .update_all(guest: false, revoked_at: nil, revoker_id: nil)
+    stances = Stance.joins(poll: :topic)
+      .where(participant_id: user_id, polls: { closed_at: nil }, topics: { group_id: group_ids })
+      .where.not(revoked_at: nil)
+    poll_ids = stances.distinct.pluck(:poll_id)
+    stances.update_all(revoked_at: nil, revoker_id: nil)
+    Poll.where(id: poll_ids).find_each(&:update_counts!)
+  end
+
+  def self.publish_access_change(user_id:, group_ids:, revoked:)
+    ActiveRecord.after_all_transactions_commit do
+      ActionCable.server.broadcast("user_#{user_id}", {
+        membership_access: { group_ids: group_ids, revoked: revoked }
+      })
     end
   end
 
@@ -260,9 +271,26 @@ class MembershipService
     update_user_titles_and_broadcast(membership.id)
   end
 
+  # Callers authorize the join, direct addition, or system provisioning first.
+  # Persist membership and restored access together; jobs and realtime updates
+  # must wait for the caller's outer transaction (including notifications).
+  def self.add_member(group:, user:, inviter: nil)
+    Membership.transaction do
+      membership = group.add_member!(user, inviter: inviter)
+      if membership.saved_change_to_revoked_at?
+        restore_topic_access(user_id: user.id, group_ids: [group.id])
+      end
+      if membership.previously_new_record? || membership.saved_change_to_revoked_at?
+        publish_access_change(user_id: user.id, group_ids: [group.id], revoked: false)
+      end
+      ActiveRecord.after_all_transactions_commit { PollGroupMembersAddedWorker.perform_later(group.id) }
+      membership
+    end
+  end
+
   def self.join_group(group:, actor:)
     actor.ability.authorize! :join, group
-    membership = Membership.transaction { group.add_member!(actor) }
+    membership = add_member(group: group, user: actor)
 
     Sentry.metrics.count("membership.join")
     EventBus.broadcast('membership_join_group', group, actor)
@@ -272,7 +300,7 @@ class MembershipService
   def self.add_users_to_group(users:, group:, inviter:)
     inviter.ability.authorize!(:add_members, group)
     memberships = Membership.transaction do
-      group.add_members!(users, inviter: inviter).tap do |created_memberships|
+      users.map { |user| add_member(group: group, user: user, inviter: inviter) }.tap do |created_memberships|
         created_memberships.each do |membership|
           NotificationService.create!(
             kind: "user_added_to_group",

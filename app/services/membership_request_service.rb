@@ -19,7 +19,7 @@ class MembershipRequestService
     actor.ability.authorize! :approve, membership_request
     MembershipRequest.transaction do
       membership_request.approve!(actor)
-      membership = membership_request.convert_to_membership!
+      membership = MembershipService.add_member(group: membership_request.group, user: membership_request.requestor)
       NotificationService.create!(
         kind: "membership_request_approved",
         subject: membership,

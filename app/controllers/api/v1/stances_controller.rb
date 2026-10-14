@@ -119,13 +119,9 @@ class Api::V1::StancesController < Api::V1::RestfulController
   end
 
   def my_stances
-    self.collection = current_user.stances.latest.includes({poll: :topic})
-                        .where(cast_at: nil)
-                        .joins(:poll)
-                        .where('polls.closed_at IS NULL')
-                        .where('polls.discarded_at IS NULL')
-                        .where.not('polls.closing_at': nil)
-                        .where.not('polls.opened_at': nil)
+    pending_polls = PollQuery.filter(chain: PollQuery.start, params: {status: 'vote'}, user: current_user)
+    self.collection = current_user.stances.latest.undecided.includes({poll: :topic}).joins(:poll)
+                        .where(poll_id: pending_polls.except(:includes).select(:id))
     self.collection = collection.where('polls.topic_id': @discussion.topic_id) if load_and_authorize(:discussion, optional: true)
     self.collection = collection.joins(poll: :topic).where('topics.group_id': @group.id) if load_and_authorize(:group, optional: true)
     respond_with_collection

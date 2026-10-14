@@ -1,24 +1,24 @@
 ---
 title: Gestión de integrantes
-source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
+source_revision: 43a63dfebc3d75ea40ab1b104dc875422c1185f0
 source_file: docs/en/user_manual/groups/member_management/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-13'
 sections:
   introduction: f216b18771a2c2a9
   administering-your-group: 27aed40959adef57
   managing-subgroups: ee977899fa34caab
-  removing-members: f00aea52bfcd3547
-  leaving-group: 02f69c9806d6beda
+  removing-members: f40c25fd90ab1ce2
+  leaving-group: 11b09b4af23b4e7e
   set-title: 835b25d246477b4a
   member-email-addresses: cae570f30b671275
 generated:
   introduction: 5d56139dfa2357d0
   administering-your-group: 00c83e69da19596e
   managing-subgroups: a2f493c83ada4ab2
-  removing-members: 07a18ad254596e32
-  leaving-group: 042caa63eb7fbeeb
+  removing-members: f718a57e60b9a7f2
+  leaving-group: f09dcbee08034dae
   set-title: 826d17f6e95ff907
   member-email-addresses: 05ba6ecebf58401a
 title_source: 23ac3a7fe9ee72a2
@@ -69,12 +69,16 @@ Cuando hagas clic en **Eliminar del grupo**, se te pedirá que confirmes la elim
 
 ![Acción Eliminar del grupo en el menú de un miembro](member_remove.png)
 
-Puedes volver a añadir al grupo a los miembros eliminados más adelante si quieres.
+La eliminación también se aplica a los subgrupos del grupo. Las encuestas privadas desaparecen del panel y de la lista de votaciones de la persona. Las encuestas públicas siguen siendo accesibles para su lectura, pero un antiguo miembro no puede votar a menos que vuelva a recibir una invitación. Salir del grupo mientras una encuesta está cerrada no conserva el derecho a votar si se reabre.
+
+Puedes volver a añadir al grupo a los miembros eliminados más adelante. Al volver a unirse, recuperan el acceso y sus votos existentes en las encuestas activas sin necesidad de recargar la página.
 
 <!-- translation-section: leaving-group -->
 
 ## Salir del grupo
 Para salir de un grupo, ve a la página del grupo, abre el menú de tres puntos y haz clic en **Salir del grupo**.
+
+Salir del grupo tiene los mismos efectos sobre el acceso al grupo y a sus subgrupos que la eliminación por parte de un admin, incluida la eliminación de las encuestas privadas de tu panel y de tu lista de votaciones.
 
 ![Acción Salir del grupo en el menú de configuración de Oatmilk Cooperative](member_leave_group.png)
 

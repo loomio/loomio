@@ -119,7 +119,7 @@ class DemoGroupTemplateService
         )
       )
       group.subscription.update!(owner: user)
-      group.add_member!(user)
+      MembershipService.add_member(group: group, user: user)
       notifications = create_notifications!(load_template.fetch("notifications"), people, discussions, polls)
 
       Result.new(group: group, discussions: discussions, polls: polls, notifications: notifications)

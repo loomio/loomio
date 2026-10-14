@@ -4,7 +4,11 @@ module Ability::Poll
 
     can :vote_in, ::Poll do |poll|
       user.is_logged_in? &&
+      user.deactivated_at.nil? &&
       poll.active? &&
+      user.can?(:show, poll) &&
+      # Public visibility does not preserve a departed group member's vote.
+      (poll.group_id.nil? || poll.topic.members_include?(user)) &&
       (
         if poll.anonymous?
           poll.anonymous_poll_voters.where(ballot_submitted: false).exists?(voter_id: user.id)
@@ -30,7 +34,7 @@ module Ability::Poll
     end
 
     can [:show], ::Poll do |poll|
-      PollQuery.visible_to(user: user).exists?(poll.id)
+      PollQuery.visible_to(user: user, topic_id: poll.topic_id).exists?(poll.id)
     end
 
     can [ :create ], ::Poll do |poll|

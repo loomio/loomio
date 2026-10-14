@@ -3,7 +3,7 @@ class RevokeMembershipsOfDeactivatedUsersWorker < ApplicationJob
     User.where.not(deactivated_at: nil).find_each do |user|
       group_ids = Membership.active.where(user_id: user.id).pluck(:group_id)
       if group_ids.count > 0
-        MembershipService.revoke_by_id(group_ids, user.id, user.id, user.deactivated_at)
+        MembershipService.revoke_by_id(group_ids, user.id, user.id, user.deactivated_at, preserve_cast_votes: true)
       end
     end
   end

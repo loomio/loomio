@@ -66,6 +66,25 @@ class Api::V1::AnonymousBallotsControllerTest < ActionController::TestCase
     assert_empty @poll.anonymous_ballots
   end
 
+  test "create denies a former member even when a public poll retains their electorate record" do
+    group = groups(:group)
+    group.update!(is_visible_to_public: true, discussion_privacy_options: 'public_or_private')
+    @poll.topic.group.reload
+    @poll.topic.update!(private: false)
+    MembershipService.revoke(membership: group.membership_for(@voter), actor: @voter)
+    assert @poll.anonymous_poll_voters.exists?(voter: @voter)
+    sign_in @voter
+
+    post :create, params: {anonymous_ballot: {
+      poll_id: @poll.id,
+      anonymous_ballot_choices_attributes: [{poll_option_id: @poll.poll_options.first.id, score: 1}]
+    }}
+
+    assert_response :forbidden
+    assert_empty @poll.anonymous_ballots
+    assert_not @poll.anonymous_poll_voters.find_by!(voter: @voter).ballot_submitted?
+  end
+
   test "create rejects malformed nested choice parameters" do
     sign_in @voter
     post :create, params: {

@@ -5,80 +5,41 @@ class PollQuery
 
   def self.visible_to(user: LoggedOutUser.new,
                       chain: start,
-                      group_ids: [])
-    visible_scope(user: user, chain: chain, group_ids: group_ids, public_group_ids: nil)
+                      group_ids: [],
+                      topic_id: nil)
+    visible_scope(user: user, chain: chain, group_ids: group_ids, relevant: false, topic_id: topic_id)
   end
 
   def self.relevant_to(user: LoggedOutUser.new,
                        chain: start,
                        group_ids: [])
-    visible_scope(user: user, chain: chain, group_ids: group_ids, public_group_ids: group_ids)
+    visible_scope(user: user, chain: chain, group_ids: group_ids, relevant: true)
   end
 
-  def self.visible_scope(user:,
-                         chain:,
-                         group_ids:,
-                         public_group_ids:)
+  # Topics own poll access. Preserve the narrower dashboard relevance rules
+  # and direct authorship access for polls created without an author reader.
+  def self.visible_scope(user:, chain:, group_ids:, relevant:, topic_id: nil)
     return chain.none if user.deactivated_at.present?
 
     group_ids = Array(group_ids).compact.map(&:to_i)
-    public_group_ids = Array(public_group_ids).compact.map(&:to_i) if public_group_ids
-
-    uid = (user.id || 0).to_i
-    membership_join = Poll.sanitize_sql_array([
-      "LEFT OUTER JOIN memberships m ON m.group_id = t.group_id AND m.user_id = ?",
-      uid
-    ])
-    topic_reader_join = if user.topic_reader_token
-      Poll.sanitize_sql_array([
-        "LEFT OUTER JOIN topic_readers tr ON tr.topic_id = t.id AND (tr.user_id = ? OR tr.token = ?)",
-        uid,
-        user.topic_reader_token
-      ])
+    # Restrict both UNION arms for a single-poll permission check; otherwise
+    # PostgreSQL can collect every accessible topic before checking one poll.
+    chain = chain.where(topic_id: topic_id) if topic_id
+    topics = if relevant
+      # Parent-only readers appear in feeds only when browsing that subgroup.
+      TopicQuery.relevant_to(user: user, group_ids: group_ids, or_subgroups: group_ids.any?)
     else
-      Poll.sanitize_sql_array([
-        "LEFT OUTER JOIN topic_readers tr ON tr.topic_id = t.id AND tr.user_id = ?",
-        uid
-      ])
+      TopicQuery.visible_to(user: user, group_ids: group_ids, topic_id: topic_id)
     end
+    visible = chain.where(topic_id: topics.except(:includes).select(:id))
+    return visible if group_ids.any?
 
-    chain = chain.joins("LEFT OUTER JOIN topics t ON t.id = polls.topic_id")
-                 .joins("LEFT OUTER JOIN groups g ON g.id = t.group_id")
-    chain = chain.where('t.group_id IN (:group_ids)', group_ids: group_ids) if group_ids.any?
-    chain = chain.joins(membership_join).joins(topic_reader_join)
-
-    # Parent members may open these polls directly, but they only belong in a
-    # relevance feed when the caller is explicitly browsing the subgroup.
-    polls = Poll.arel_table
-    topics = Topic.arel_table.alias("t")
-    groups = Group.arel_table.alias("g")
-    memberships = Membership.arel_table.alias("m")
-    topic_readers = TopicReader.arel_table.alias("tr")
-    visibility = polls[:author_id].eq(uid)
-    visibility = visibility.or(topics[:private].eq(false)) if public_group_ids.nil?
-    if public_group_ids&.any?
-      visibility = visibility.or(topics[:private].eq(false).and(topics[:group_id].in(public_group_ids)))
-    end
-    visibility = visibility.or(memberships[:id].not_eq(nil).and(memberships[:revoked_at].eq(nil)))
-    visibility = visibility.or(
-      topic_readers[:id].not_eq(nil)
-        .and(topic_readers[:revoked_at].eq(nil))
-        .and(topic_readers[:guest].eq(true))
-    )
-    if public_group_ids.nil? || group_ids.any?
-      visibility = visibility.or(
-        groups[:parent_members_can_see_discussions].eq(true)
-          .and(groups[:parent_id].in(user.group_ids))
-      )
-    end
-
-    chain = chain.where(visibility)
-    # Apply group visibility to every caller, including custom chains and public polls.
-    chain.where(topic_id: Topic.left_joins(:group).group_kept.select(:id))
+    direct_topics = Topic.not_discarded.where(group_id: nil).select(:id)
+    direct_topics = direct_topics.where(id: topic_id) if topic_id
+    visible.or(chain.where(author_id: user.id || 0, topic_id: direct_topics))
   end
 
-  def self.filter(chain: , params: )
-    # how to do this....
+  def self.filter(chain:, params:, user: LoggedOutUser.new)
     if params[:group_key].present? && (group = Group.find_by(key: params[:group_key]))
       group_ids = (params[:subgroups] == "none") ? [group.id] : group.id_and_subgroup_ids
       chain = chain.joins(:topic).where("topics.group_id": group_ids)
@@ -93,8 +54,17 @@ class PollQuery
     end
 
     if params[:status] == 'vote'
-      voted_poll_ids = Stance.where(latest: true).where.not(cast_at: nil).pluck(:poll_id)
-      chain = chain.where.not(id: voted_poll_ids)
+      return chain.none unless user.is_logged_in? && user.deactivated_at.nil?
+
+      # Pending votes belong to this viewer's current electorate record. Other
+      # people's votes and historical/revoked stances do not change that state.
+      # Group-scoped browsing also includes public polls. Require current
+      # membership or guest access before treating a retained voter as pending.
+      chain = relevant_to(user: user, chain: chain.active.where('polls.closing_at > ?', Time.current))
+      stances = Stance.latest.undecided.where(participant_id: user.id).select(:poll_id)
+      voters = AnonymousPollVoter.where(voter_id: user.id, ballot_submitted: false).select(:poll_id)
+      chain = chain.where(anonymous: false, id: stances)
+                   .or(chain.where(anonymous: true, id: voters))
     end
 
     chain = chain.where(author_id: params[:author_id]) if params[:author_id]

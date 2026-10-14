@@ -22,26 +22,21 @@ class Dev::NightwatchController < Dev::BaseController
   around_action :deliver_preview_emails_inline, if: -> { action_name.include?('_mailer_') }
   after_action :age_manual_scenario, if: -> { action_name.start_with?('setup_manual_') }
 
-  before_action :reset_transient_state, except: [
+  CONTINUATION_ACTIONS = [
     :last_email,
     :last_login_code,
     :use_last_login_token,
     :index,
     :accept_last_invitation,
     :revoke_secret_group_access,
+    :revoke_authored_poll_membership,
+    :restore_authored_poll_membership,
+    :publish_private_poll_update_after_removal,
     :view_email_catch_up_settings,
     :view_thread_email_settings,
-  ]
-  before_action :reset_database, except: [
-    :last_email,
-    :last_login_code,
-    :use_last_login_token,
-    :index,
-    :accept_last_invitation,
-    :revoke_secret_group_access,
-    :view_email_catch_up_settings,
-    :view_thread_email_settings,
-  ]
+  ].freeze
+  before_action :reset_transient_state, except: CONTINUATION_ACTIONS
+  before_action :reset_database, except: CONTINUATION_ACTIONS
 
 
   def reset_transient_state
