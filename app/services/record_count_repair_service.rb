@@ -45,18 +45,20 @@ class RecordCountRepairService
 
     @tables.to_h do |table|
       started_at = Process.clock_gettime(Process::CLOCK_MONOTONIC)
-      maximum_id = connection.select_value("SELECT MAX(id) FROM #{table}") || 0
+      quoted_table = connection.quote_table_name(table)
+      maximum_id = connection.select_value("SELECT MAX(id) FROM #{quoted_table}") || 0
       stats = { checked: 0, drifted: 0, updated: 0, deferred: 0, after_id: @after_id,
                 finished: false, elapsed_seconds: 0.0, batch_seconds_max: 0.0 }
       loop do
         batch_size = @limit ? [@batch_size, @limit - stats[:checked]].min : @batch_size
         break if batch_size.zero?
 
-        ids = connection.select_values(<<~SQL)
-          SELECT id FROM #{table}
-          WHERE id > #{stats[:after_id]} AND id <= #{maximum_id}
-          ORDER BY id LIMIT #{batch_size}
+        ids_sql = ActiveRecord::Base.sanitize_sql_array([<<~SQL, stats[:after_id], maximum_id, batch_size])
+          SELECT id FROM #{quoted_table}
+          WHERE id > ? AND id <= ?
+          ORDER BY id LIMIT ?
         SQL
+        ids = connection.select_values(ids_sql)
         if ids.empty?
           stats[:finished] = true
           stats[:elapsed_seconds] = (Process.clock_gettime(Process::CLOCK_MONOTONIC) - started_at).round(3)
