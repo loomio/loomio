@@ -1,10 +1,10 @@
 ---
 title: スレッドの使い方
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
+source_revision: 3c911ddf85c4df37787b3aee088e6a04dafe0930
 source_file: docs/en/user_manual/discussions/using_discussions/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-12'
 sections:
   introduction: fe8ab54791a49e01
   thread-anatomy: fca9ec9af6718a99
@@ -18,7 +18,7 @@ sections:
   notified: 6139bdcaae32a1db
   actions: c015c12999c5be2f
   print: 8fac34ad532e8cb5
-  markdown: 374ef87d825b66b1
+  markdown: e6708fb7422f2c4e
   thread-settings-and-display: b05e5c1364ceee12
   pin-or-unpin-a-thread: 1e17228e5de01a1e
   move-a-thread: 8490a5a22970925c
@@ -37,7 +37,7 @@ generated:
   notified: e060e674a288eb40
   actions: 7ce501c7a92745cc
   print: dfbdf2a700bf264d
-  markdown: 5877206b6c981a16
+  markdown: d2e3c53735148ff3
   thread-settings-and-display: 2ea803f9d986247f
   pin-or-unpin-a-thread: dd96e104a57fbd03
   move-a-thread: d1e130cbb12d7b27
@@ -46,7 +46,7 @@ generated:
 title_source: 99e2d1eb313f35c4
 title_generated: 1a2d46d8965028c7
 needs_review:
-  markdown: check the interface label "**賛成**" for "**Agree**"; use "結論" instead of "結果" for "outcome"
+  markdown: check the interface label "**賛成**" for "**Agree**"
 ---
 
 <!-- translation-section: introduction -->
@@ -217,7 +217,7 @@ H2またはH3の見出しを含むコメント、アンケート、提案は、�
 
 ![](../discussion_management/copy_markdown_menu.png)
 
-文書の冒頭には、スレッドのキー、グループ、作成日時、最終活動日時、タグを含むYAMLフロントマターがあります。その後に、ディスカッションの背景説明とすべてのコメント、アンケート、投票、結論が、スレッド表示と同じ順序と入れ子構造で含まれます。
+文書の冒頭には、スレッドのキー、元のURL、グループ、作成日時、最終活動日時、タグを含むYAMLフロントマターがあります。このURLからLoomioのスレッドに戻れます。その後に、ディスカッションの背景説明とすべてのコメント、アンケート、投票、結論が、スレッド表示と同じ順序と入れ子構造で含まれます。
 
 各アンケートは一つのセクションになります。コメント、投票、結論は引用形式で表示され、返信は返信先の項目の下に引用形式で表示されます。これにより、各参加者の文章の始まりと終わりが分かります。各引用の先頭には、投稿者、投稿日時、スレッド内の項目番号、リアクションを示す行があります。投票と結論には、項目の種類も表示されます。スレッドのキーと項目番号で、Loomio内の各項目を識別できます。
 
@@ -228,6 +228,7 @@ Loomioは、スレッドと同じ公開範囲のルールを適用します。�
 ```markdown
 ---
 key: "fi2TAgeC"
+url: "https://www.loomio.com/d/fi2TAgeC/returnable-bottles-for-cafe-customers"
 group: "Oatmilk Cooperative"
 created: "2026-09-10T23:28:30Z"
 last_activity: "2026-09-10T23:28:30Z"

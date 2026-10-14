@@ -22,7 +22,7 @@ class TopicService
                            model: topic,
                            actor: actor)
 
-    Topic.transaction do
+    topic.with_write_lock do
       users = add_users(topic: topic,
                         actor: actor,
                         user_ids: params[:recipient_user_ids],
@@ -97,7 +97,8 @@ class TopicService
     destination.present? && actor.ability.authorize!(:move_discussions_to, destination)
     actor.ability.authorize! :move, topic
 
-    topic_item = Topic.transaction do
+    topic_item = topic.with_write_lock do
+      actor.ability.authorize! :move, topic
       direct_participants_retain!(topic:, actor:) if direct
 
       topic.update!(group_id: destination.present? ? destination.id : nil,
@@ -149,7 +150,7 @@ class TopicService
   end
 
   def self.direct_participants_retain!(topic:, actor:)
-    if topic.polls.where(anonymous: true).exists?
+    if topic.has_anonymous_polls?
       topic.errors.add(:base, I18n.t("errors.direct_thread_anonymous_poll"))
       raise ActiveRecord::RecordInvalid, topic
     end
@@ -178,7 +179,6 @@ class TopicService
       reader.save!
     end
 
-    topic.update_members_count
   end
 
   def self.pin(topic:, actor:)
@@ -249,6 +249,7 @@ class TopicService
       topic.update!(discarded_at: discarded_at, discarded_by: actor.id)
       topicable.update!(discarded_at: discarded_at, discarded_by: actor.id)
       topic.polls.update_all(discarded_at: discarded_at, discarded_by: actor.id)
+      topic.update_column(:active_polls_count, 0)
       ReindexDiscussionWorker.perform_later(topicable.id) if topicable.is_a?(Discussion)
     end
     EventBus.broadcast('discussion_discard', topicable, actor) if topicable.is_a?(Discussion)
@@ -334,7 +335,10 @@ class TopicService
     topicable = topic.topicable
     return unless topicable
 
-    Topic.transaction { repair_topic(topic, topicable) }
+    Topic.where(id: topic.id).with_write_lock(:id) do |ids|
+      next if ids.empty?
+      repair_topic(topic, topicable)
+    end
   end
 
   def self.repair_topic(topic, topicable)
@@ -513,7 +517,6 @@ class TopicService
 
     TopicReader.import(new_topic_readers, on_duplicate_key_ignore: true)
 
-    topic.update_members_count
     users
   end
 end

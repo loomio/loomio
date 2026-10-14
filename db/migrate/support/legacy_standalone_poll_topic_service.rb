@@ -115,12 +115,10 @@ class LegacyStandalonePollTopicService
     topic_ids.each_slice(1_000) do |ids|
       connection.execute(<<~SQL.squish)
         UPDATE topics
-        SET seen_by_count = counts.seen_by_count,
-            members_count = counts.members_count
+        SET seen_by_count = counts.seen_by_count
         FROM (
           SELECT topic_id,
-                 COUNT(*) FILTER (WHERE last_read_at IS NOT NULL) AS seen_by_count,
-                 COUNT(*) FILTER (WHERE revoked_at IS NULL) AS members_count
+                 COUNT(*) FILTER (WHERE last_read_at IS NOT NULL) AS seen_by_count
           FROM topic_readers
           WHERE topic_id IN (#{ids.map(&:to_i).join(',')})
           GROUP BY topic_id

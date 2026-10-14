@@ -3,8 +3,8 @@ module HasTags
 
   included do
     before_validation :clean_tags
-    # Counter updates also save tagged records. A rolled-back merge or cleanup
-    # must not publish refresh jobs for those uncommitted changes.
+    # A rolled-back merge or cleanup must not publish refresh jobs for those
+    # uncommitted changes.
     after_save_commit :update_group_tags
   end
 

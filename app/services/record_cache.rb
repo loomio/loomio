@@ -247,6 +247,12 @@ class RecordCache
     return [] if exclude_types.include?('group')
     @user_ids.concat collection.map(&:creator_id)
     merge_index(:groups_by_id, collection)
+    scope[:subgroups_counts_by_group_id] ||= {}
+    ids = collection.map(&:id).compact.uniq - scope[:subgroups_counts_by_group_id].keys
+    unless ids.empty?
+      counts = Group.kept.where(parent_id: ids).group(:parent_id).count
+      scope[:subgroups_counts_by_group_id].merge!(ids.index_with { |id| counts.fetch(id, 0) })
+    end
   end
 
   # this is a colleciton of groups joined to subscription.. crazy I know
@@ -458,6 +464,16 @@ class RecordCache
   def add_topics(collection)
     return if exclude_types.include?('topic')
     merge_index(:topics_by_id, collection)
+    add_anonymous_poll_flags(collection.map(&:id))
+  end
+
+  def add_anonymous_poll_flags(topic_ids)
+    scope[:anonymous_polls_by_topic_id] ||= {}
+    ids = topic_ids.compact.uniq - scope[:anonymous_polls_by_topic_id].keys
+    return if ids.empty?
+
+    anonymous_ids = Topic.where(id: ids).with_anonymous_polls.pluck(:id).to_set
+    scope[:anonymous_polls_by_topic_id].merge!(ids.index_with { |id| anonymous_ids.include?(id) })
   end
 
   def add_discussions(collection)

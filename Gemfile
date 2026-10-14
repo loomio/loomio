@@ -4,7 +4,7 @@ ruby '4.0.5'
 gem 'rails', '~> 8.1.0'
 # Active Support 8.1 passes JSON.parse options as a positional hash, which json 3 rejects.
 gem 'json', '< 3'
-gem 'uri', '1.1.1'
+gem 'uri', '1.1.2'
 gem 'rake'
 gem 'pg'
 gem 'phlex-rails'
@@ -38,7 +38,6 @@ gem 'propshaft', '~> 1.3'
 gem 'uuidtools'
 gem 'maxminddb'
 gem "cld"
-gem 'custom_counter_cache'
 gem 'premailer-rails'
 gem 'activerecord-import', '2.3.0'
 gem 'discriminator', '~> 0.1.1'
@@ -75,7 +74,6 @@ group :development, :test do
 end
 
 group :development do
-  gem 'solargraph', require: false
   gem 'web-console'
 end
 

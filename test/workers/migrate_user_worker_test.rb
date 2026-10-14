@@ -110,6 +110,20 @@ class MigrateUserWorkerTest < ActiveSupport::TestCase
     assert_equal 2, @jennifer.reload.sign_in_count
   end
 
+  test "merging people in different subgroups rebuilds the distinct organization total" do
+    subgroup = Group.create!(name: 'Account merge subgroup', parent: @another_group)
+    subgroup.add_member!(@jennifer)
+    assert_equal 2, @another_group.reload.org_members_count
+
+    MigrateUserWorker.perform_now(@patrick.id, @jennifer.id)
+
+    assert_equal 1, @another_group.reload.org_members_count
+    assert_equal 1, @another_group.memberships_count
+    assert_equal 1, subgroup.reload.memberships_count
+    assert_equal 3, @jennifer.reload.memberships_count
+    assert_equal 0, @patrick.reload.memberships_count
+  end
+
   test "does not migrate source login tokens to destination; destroys them" do
     source_token = LoginToken.create!(user: @patrick)
     token_id = source_token.id

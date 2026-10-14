@@ -6,10 +6,13 @@ class Api::V1::BootController < Api::V1::RestfulController
   end
 
   def version
+    client_version = params.fetch(:version, '0.0.0')
+    return head :bad_request unless client_version.is_a?(String) && client_version.present? && Gem::Version.correct?(client_version)
+
     render json: {
       version: Version.current,
       release: AppConfig.release,
-      reload: (Gem::Version.new(params.fetch(:version, '0.0.0')) < Gem::Version.new(Version.current)) ||
+      reload: (Gem::Version.new(client_version) < Gem::Version.new(Version.current)) ||
               (ENV['LOOMIO_SYSTEM_RELOAD'] && AppConfig.release != params[:release]),
       notice: ENV['LOOMIO_SYSTEM_NOTICE']
     }

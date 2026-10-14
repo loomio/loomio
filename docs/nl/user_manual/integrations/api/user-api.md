@@ -1,17 +1,17 @@
 ---
 title: Gebruikers-API
-source_revision: c27ee3b193231816878f1c074ff9fc2a086a88c0
+source_revision: 79280ee7a1246dbb8bb16686856608069718bc14
 source_file: docs/en/user_manual/integrations/api/user-api.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-02'
+  'on': '2026-10-09'
 sections:
   introduction: a43c8b800d13fd33
   authentication-change: 06b5c2cd9d9e72a0
   response-size-and-related-records: 1ffc59ad606a87e7
   endpoint-summary: 52c480c59d3669e3
   groups: 0473f1f7fb78f074
-  list-groups: 2b783ec54f27b2ce
+  list-groups: dcbe9217091f8cb2
   get-a-group: dffef659cb92745e
   webhooks: f65fa289f8c1b808
   list-webhooks: a8b52c1a9bfdb16c
@@ -78,7 +78,7 @@ generated:
   response-size-and-related-records: b7637be233e78ec6
   endpoint-summary: b16be979102ac036
   groups: 0c6e911511f85881
-  list-groups: 1bd3e523f2ede444
+  list-groups: 226f0a44519049b2
   get-a-group: 91925311e67f5b6f
   webhooks: 0fd0f939a97c637b
   list-webhooks: 86e6735a4672b09f
@@ -228,6 +228,8 @@ Responsen met collecties bevatten `meta.total` wanneer een exacte collectiegroot
 
 <!-- translation-section: list-groups -->
 
+<!-- translation-correction: {"before":"Aantal groepsbeheerders |\n| `delegates_count` | Aantal afgevaardigden |\n| `discussions_count` | Aantal dis","after":"Aantal groepsbeheerders |\n| `discussions_count` | Aantal dis"} -->
+
 ### Groepen opvragen
 
 Geeft de groepen terug waarin de gebruiker van de API-sleutel een actief lidmaatschap heeft.
@@ -255,7 +257,6 @@ Belangrijke groepsvelden zijn:
 | `accepted_memberships_count` | Aantal geaccepteerde lidmaatschappen |
 | `pending_memberships_count` | Aantal nog niet geaccepteerde uitnodigingen |
 | `admin_memberships_count` | Aantal groepsbeheerders |
-| `delegates_count` | Aantal afgevaardigden |
 | `discussions_count` | Aantal discussies rechtstreeks in de groep |
 | `polls_count` | Aantal peilingen rechtstreeks in de groep |
 | `subgroups_count` | Aantal subgroepen |

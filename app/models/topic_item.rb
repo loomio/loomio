@@ -2,7 +2,6 @@ class TopicItem < ApplicationRecord
   CHANGE_NOTE_KINDS = %w[discussion_edited poll_edited].freeze
 
   include ActionView::Helpers::SanitizeHelper
-  include CustomCounterCache::Model
   include PrettyUrlHelper
 
   belongs_to :itemable, polymorphic: true
@@ -12,9 +11,12 @@ class TopicItem < ApplicationRecord
   has_many :children, class_name: "TopicItem", foreign_key: :parent_id
   has_many :notifications, as: :subject, dependent: :destroy
   before_validation :set_kind, :set_itemable_version_id, :set_topic, :set_user_from_itemable, on: :create
+  around_create :with_topic_write_lock_for_tree_change, prepend: true
   before_create :set_parent_and_depth
+  before_create :increment_parent_child_count
   before_create :set_sequences
   after_rollback :reset_sequences
+  around_destroy :with_topic_write_lock_for_tree_change, prepend: true
   before_destroy :reparent_children, unless: :destroyed_with_topic?
   before_destroy :reset_sequences
 
@@ -22,10 +24,63 @@ class TopicItem < ApplicationRecord
   after_create  :mark_actor_as_read!
   after_destroy :update_sequence_info!
 
-  define_counter_cache(:child_count) { |topic_item| topic_item.children.count }
-  update_counter_cache :parent, :child_count
+  after_update :update_parent_child_counts, if: :saved_change_to_parent_id?
+  around_update :with_topic_write_lock_for_tree_change, if: :will_save_change_to_parent_id?, prepend: true
 
   before_save :sync_itemable_foreign_key
+
+  # Sequence/range updates already serialize writes to a topic. Acquire that
+  # lock before its item locks too, matching moves, deletion and repair.
+  def with_topic_write_lock_for_tree_change
+    return yield if @tree_change_batched || destroyed_with_topic?
+
+    Topic.where(id: topic_id).with_write_lock(:id) { yield }
+  end
+  private :with_topic_write_lock_for_tree_change
+
+  # Increment before insertion to lock the parent against concurrent deletion.
+  # Both the child and its count roll back together, and after-commit publication
+  # sees the complete tree without a lock/read/recount transaction of its own.
+  def increment_parent_child_count
+    return if @tree_change_batched
+
+    RecordCounts.update!(TopicItem, :child_count, before: nil, after: parent_id, records: [parent].compact)
+  end
+
+  def update_parent_child_counts
+    RecordCounts.update!(TopicItem, :child_count,
+      before: parent_id_before_last_save, after: parent_id, records: [parent].compact)
+  end
+  private :increment_parent_child_count, :update_parent_child_counts
+
+  # Create a bounded collection of new timeline items in one transaction. The
+  # topic lock excludes tree moves/deletions, so per-item parent increments can
+  # be combined. Flush before leaving the transaction; after-commit workers
+  # must never see the children with stale parent counts.
+  def self.create_batch!(topic:, items:)
+    Topic.where(id: topic.id).with_write_lock(:id, requires_new: true) do
+      deltas = Hash.new { |hash, id| hash[id] = { child_count: 0 } }
+      parents = []
+      items.each do |item|
+        item.topic = topic
+        item.send(:save_in_tree_batch!)
+        next unless item.parent_id
+
+        deltas[item.parent_id][:child_count] += 1
+        parents << item.parent
+      end
+      RecordCounts.adjust!(TopicItem, deltas, records: parents)
+    end
+    items
+  end
+
+  def save_in_tree_batch!
+    @tree_change_batched = true
+    save!
+  ensure
+    @tree_change_batched = false
+  end
+  private :save_in_tree_batch!
 
   scope :unreadable, -> { where.not(kind: 'discussion_closed') }
 
@@ -127,7 +182,12 @@ class TopicItem < ApplicationRecord
   end
 
   def reparent_children
-    TopicItem.where(parent_id: id).update_all(parent_id: parent_id, depth: depth) if parent_id
+    return unless parent_id
+
+    # The topic lock excludes inserts, parent changes and repair while children
+    # are promoted. No separate parent-row lock is needed before these writes.
+    promoted_count = TopicItem.where(parent_id: id).update_all(parent_id: parent_id, depth: depth)
+    RecordCounts.adjust!(TopicItem, { parent_id => { child_count: promoted_count - 1 } }, records: [parent])
   end
 
   # A topic destroys every item in an unspecified order. Reparenting from the
