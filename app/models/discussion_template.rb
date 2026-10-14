@@ -2,7 +2,6 @@ class DiscussionTemplate < ApplicationRecord
   include Hideable
   include DiscardableBy
   include HasRichText
-  include CustomCounterCache::Model
 
   # Task items in a template describe future work. They become Task records only when
   # the template body is saved as a discussion with a real author and participants.
@@ -36,7 +35,6 @@ class DiscussionTemplate < ApplicationRecord
   belongs_to :author, class_name: "User", optional: true
   belongs_to :group, class_name: "Group"
 
-  update_counter_cache :group, :discussion_templates_count
 
   validates :description, length: { maximum: AppConfig.app_features[:max_message_length] }
 

@@ -3,6 +3,9 @@ require 'test_helper'
 class CleanupEmptyGroupsTest < ActiveSupport::TestCase
   setup do
     @cutoff = subscriptions(:trial_cleanup_discarded).expires_at
+    # Deliberately corrupt these caches: eligibility must use actual topics.
+    groups(:used_topic_group).update_column(:discussions_count, 0)
+    groups(:trial_cleanup_poll).update_column(:polls_count, 0)
     # Reuse the lifecycle matrix, assigning expired trials only within this test.
     @root = groups(:orphan_group_tree)
     @child = groups(:orphan_subgroup)

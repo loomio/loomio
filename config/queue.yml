@@ -12,6 +12,11 @@ default: &default
       threads: 1
       processes: 1
       polling_interval: 1
+    # Count repair can run for hours; keep it out of ordinary job workers.
+    - queues: record_count_repair
+      threads: 1
+      processes: 1
+      polling_interval: 1
 
 development:
   <<: *default
