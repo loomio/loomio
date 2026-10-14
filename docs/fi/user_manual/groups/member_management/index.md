@@ -8,7 +8,7 @@ translated:
 sections:
   introduction: f216b18771a2c2a9
   administering-your-group: 27aed40959adef57
-  managing-subgroups: 76b2fd61123a8a8a
+  managing-subgroups: 915e13a928a8f4aa
   removing-members: f00aea52bfcd3547
   leaving-group: 02f69c9806d6beda
   set-title: 835b25d246477b4a
@@ -16,7 +16,7 @@ sections:
 generated:
   introduction: 1714c46f36d1ffae
   administering-your-group: 2898d425c2e6d61f
-  managing-subgroups: ee727f5ab3064a13
+  managing-subgroups: f90f2b9ec1540121
   removing-members: d06a6537a9918925
   leaving-group: 788c378592fc7540
   set-title: 45528c476e0cb3a5
@@ -51,7 +51,7 @@ Voit nimetä jäsenen **ylläpitäjäksi** siirtymällä Jäsenet-välilehdelle,
 <!-- translation-section: managing-subgroups -->
 
 ## Alaryhmien hallinta
-Pääryhmän ylläpitäjät voivat liittyä sen avoimiin, suljettuihin ja **Näkyy pääryhmälle** -alaryhmiin ja nimetä sitten itsensä alaryhmien ylläpitäjiksi.
+Pääryhmän ylläpitäjät voivat liittyä mihin tahansa sen alaryhmään, joka ei ole salainen, ja nimetä sitten itsensä alaryhmien ylläpitäjiksi.
 
 Valitse alaryhmän sivulta **Liittyä ryhmään**.
 

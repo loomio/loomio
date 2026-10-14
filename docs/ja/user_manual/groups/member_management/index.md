@@ -8,7 +8,7 @@ translated:
 sections:
   introduction: f216b18771a2c2a9
   administering-your-group: 27aed40959adef57
-  managing-subgroups: 76b2fd61123a8a8a
+  managing-subgroups: 915e13a928a8f4aa
   removing-members: f00aea52bfcd3547
   leaving-group: 02f69c9806d6beda
   set-title: 835b25d246477b4a
@@ -16,7 +16,7 @@ sections:
 generated:
   introduction: f6c3ad3153d80f8e
   administering-your-group: 81c2b74ba0dc6405
-  managing-subgroups: 2bce903b4ec24afb
+  managing-subgroups: de52489dbb151769
   removing-members: 658eebd467d51717
   leaving-group: e50a59b3c04fe146
   set-title: 67afc41dfc072781
@@ -51,7 +51,7 @@ Loomioのグループには、**メンバー**と**管理者**の2種類のユ�
 <!-- translation-section: managing-subgroups -->
 
 ## サブグループの管理
-親グループの管理者は、公開、非公開、および**親グループに表示**されるサブグループに参加し、自分自身をサブグループの管理者にすることができます。
+親グループの管理者は、そのグループの秘密ではないどのサブグループにも参加し、自分自身をサブグループの管理者にすることができます。
 
 サブグループのページで**グループに参加**を選択します。
 

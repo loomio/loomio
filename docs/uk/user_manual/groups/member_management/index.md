@@ -8,7 +8,7 @@ translated:
 sections:
   introduction: f216b18771a2c2a9
   administering-your-group: 27aed40959adef57
-  managing-subgroups: 76b2fd61123a8a8a
+  managing-subgroups: 915e13a928a8f4aa
   removing-members: f00aea52bfcd3547
   leaving-group: 02f69c9806d6beda
   set-title: 835b25d246477b4a
@@ -16,7 +16,7 @@ sections:
 generated:
   introduction: 9759aca89a7d7250
   administering-your-group: 68b3aa606e1868f6
-  managing-subgroups: e457e15732b0ad84
+  managing-subgroups: d870aed306d7568a
   removing-members: 72b8d887af52a223
   leaving-group: 900a297fc5d819e0
   set-title: 59be169559f0076a
@@ -51,7 +51,7 @@ title_generated: fb5d8358c4066cf6
 <!-- translation-section: managing-subgroups -->
 
 ## Керування підгрупами
-Адміністратори батьківської групи можуть приєднуватися до її відкритих, закритих підгруп і підгруп із налаштуванням **Видима батьківській групі**, а потім призначати себе адміністраторами цих підгруп.
+Адміністратори батьківської групи можуть приєднуватися до будь-якої її підгрупи, крім таємних, а потім призначати себе адміністраторами цих підгруп.
 
 Виберіть **Приєднатися до групи** на сторінці підгрупи.
 

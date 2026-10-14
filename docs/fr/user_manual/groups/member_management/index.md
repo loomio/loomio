@@ -8,7 +8,7 @@ translated:
 sections:
   introduction: f216b18771a2c2a9
   administering-your-group: 27aed40959adef57
-  managing-subgroups: 76b2fd61123a8a8a
+  managing-subgroups: 915e13a928a8f4aa
   removing-members: f00aea52bfcd3547
   leaving-group: 02f69c9806d6beda
   set-title: 835b25d246477b4a
@@ -16,7 +16,7 @@ sections:
 generated:
   introduction: 33fec9bcb8d1d349
   administering-your-group: bdbd97a9d818accd
-  managing-subgroups: a564775e729ec046
+  managing-subgroups: cd534ba2f839e053
   removing-members: 3a740e1c7867320b
   leaving-group: f9f5ba0bd4dd7e24
   set-title: 747e469248b9a197
@@ -51,7 +51,7 @@ Pour nommer un membre **administrateur**, accédez à l’onglet Membres, trouve
 <!-- translation-section: managing-subgroups -->
 
 ## Gérer les sous-groupes
-Les administrateurs d’un groupe parent peuvent rejoindre ses sous-groupes ouverts, fermés et **Visible pour le groupe parent**, puis se nommer administrateurs de ces sous-groupes.
+Les administrateurs d’un groupe parent peuvent rejoindre ses sous-groupes non secrets, puis se nommer administrateurs de ces sous-groupes.
 
 Sélectionnez **Rejoindre le groupe** sur la page du sous-groupe.
 

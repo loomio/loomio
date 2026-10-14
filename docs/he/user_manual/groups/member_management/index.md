@@ -8,7 +8,7 @@ translated:
 sections:
   introduction: f216b18771a2c2a9
   administering-your-group: 27aed40959adef57
-  managing-subgroups: 76b2fd61123a8a8a
+  managing-subgroups: 915e13a928a8f4aa
   removing-members: f00aea52bfcd3547
   leaving-group: 02f69c9806d6beda
   set-title: 835b25d246477b4a
@@ -16,7 +16,7 @@ sections:
 generated:
   introduction: b12bc3fb9a4d20ce
   administering-your-group: 83711aeebdb42c37
-  managing-subgroups: 91b9e332af78a26b
+  managing-subgroups: aa5ef42928e1149b
   removing-members: c1e510e015ebda55
   leaving-group: 58137076aa2e619c
   set-title: 97eaa9af3ef532d0
@@ -51,7 +51,7 @@ title_generated: 4b3b48d6a2988ead
 <!-- translation-section: managing-subgroups -->
 
 ## ניהול תת־קבוצות
-מנהלים של קבוצת אם יכולים להצטרף לתת־הקבוצות שלה שהן פתוחות, סגורות או מוגדרות כ־**גלויה לקבוצת האם**, ולאחר מכן להעניק לעצמם הרשאות מנהל בתת־הקבוצה.
+מנהלים של קבוצת אם יכולים להצטרף לכל אחת מתת־הקבוצות שלה שאינן סודיות, ולאחר מכן להעניק לעצמם הרשאות מנהל בתת־הקבוצה.
 
 יש לבחור **הצטרפו לקבוצה** בדף תת־הקבוצה.
 

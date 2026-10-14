@@ -8,7 +8,7 @@ translated:
 sections:
   introduction: f216b18771a2c2a9
   administering-your-group: 27aed40959adef57
-  managing-subgroups: 76b2fd61123a8a8a
+  managing-subgroups: 915e13a928a8f4aa
   removing-members: f00aea52bfcd3547
   leaving-group: 02f69c9806d6beda
   set-title: 835b25d246477b4a
@@ -16,7 +16,7 @@ sections:
 generated:
   introduction: 1e2b960fecdc7b20
   administering-your-group: 3c0cb1c03de746e4
-  managing-subgroups: c25792e7f25365e3
+  managing-subgroups: 191c40769dbb2779
   removing-members: 7dfff6971ffec7fe
   leaving-group: 28b512fd85a5fe1a
   set-title: 5e9c488e9422af3b
@@ -51,7 +51,7 @@ Om een lid **admin** te maken, ga je naar het tabblad Leden, zoek je het lid en 
 <!-- translation-section: managing-subgroups -->
 
 ## Subgroepen beheren
-Admins van een hoofdgroep kunnen lid worden van de openbare en besloten subgroepen en van subgroepen die **Zichtbaar voor de bovenliggende groep** zijn, en zichzelf daarna admin van die subgroepen maken.
+Admins van een hoofdgroep kunnen lid worden van elke niet-geheime subgroep ervan en zichzelf daarna admin van die subgroepen maken.
 
 Selecteer **Word lid van de groep** op de subgroeppagina.
 

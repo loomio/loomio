@@ -8,7 +8,7 @@ translated:
 sections:
   introduction: f216b18771a2c2a9
   administering-your-group: 27aed40959adef57
-  managing-subgroups: 76b2fd61123a8a8a
+  managing-subgroups: 915e13a928a8f4aa
   removing-members: f00aea52bfcd3547
   leaving-group: 02f69c9806d6beda
   set-title: 835b25d246477b4a
@@ -16,7 +16,7 @@ sections:
 generated:
   introduction: 89b96cc8fdabf34e
   administering-your-group: 3c2f58a1981e45e4
-  managing-subgroups: e9a161e4d11dd0e7
+  managing-subgroups: 5840da1bb754a212
   removing-members: afd9b4e84cb7a930
   leaving-group: 6f02e61aa9de898c
   set-title: 2cd65fb070aa6647
@@ -51,7 +51,7 @@ Um ein Mitglied zum **Admin** zu machen, gehe zum Tab Mitglieder, suche das Mitg
 <!-- translation-section: managing-subgroups -->
 
 ## Untergruppen verwalten
-Admins einer Hauptgruppe können deren offenen, geschlossenen und **Für die übergeordnete Gruppe sichtbar** eingestellten Untergruppen beitreten und sich anschließend selbst zu Admins dieser Untergruppen machen.
+Admins einer Hauptgruppe können jeder ihrer nicht geheimen Untergruppen beitreten und sich anschließend selbst zu Admins dieser Untergruppen machen.
 
 Wähle **Gruppe beitreten** auf der Untergruppenseite.
 

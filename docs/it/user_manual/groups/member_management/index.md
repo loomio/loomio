@@ -8,7 +8,7 @@ translated:
 sections:
   introduction: f216b18771a2c2a9
   administering-your-group: 27aed40959adef57
-  managing-subgroups: 76b2fd61123a8a8a
+  managing-subgroups: 915e13a928a8f4aa
   removing-members: f00aea52bfcd3547
   leaving-group: 02f69c9806d6beda
   set-title: 835b25d246477b4a
@@ -16,7 +16,7 @@ sections:
 generated:
   introduction: e1ca5b64f290b284
   administering-your-group: '082631af5373f135'
-  managing-subgroups: 92790bb1b94862f9
+  managing-subgroups: 5b46b62ddcd76123
   removing-members: dbf17213668936bb
   leaving-group: 433160d33d2e8ccb
   set-title: 011f0941e532b944
@@ -51,7 +51,7 @@ Per rendere un membro **amministratore**, vai alla scheda Membri, trova il membr
 <!-- translation-section: managing-subgroups -->
 
 ## Gestire i sottogruppi
-Gli amministratori di un gruppo principale possono iscriversi ai suoi sottogruppi aperti, chiusi e **Visibile al gruppo principale**, quindi rendersi amministratori dei sottogruppi.
+Gli amministratori di un gruppo principale possono iscriversi a qualsiasi suo sottogruppo non segreto, quindi rendersi amministratori dei sottogruppi.
 
 Seleziona **Iscriviti al gruppo** nella pagina del sottogruppo.
 

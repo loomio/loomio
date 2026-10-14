@@ -8,7 +8,7 @@ translated:
 sections:
   introduction: f216b18771a2c2a9
   administering-your-group: 27aed40959adef57
-  managing-subgroups: 76b2fd61123a8a8a
+  managing-subgroups: 915e13a928a8f4aa
   removing-members: f00aea52bfcd3547
   leaving-group: 02f69c9806d6beda
   set-title: 835b25d246477b4a
@@ -16,7 +16,7 @@ sections:
 generated:
   introduction: fd07b29364d5b1d5
   administering-your-group: 61318b26de6c5d84
-  managing-subgroups: a2ed59d77b8b91ce
+  managing-subgroups: c7fa4c75192a3574
   removing-members: fc311dfcfb8f5f86
   leaving-group: 3d456c7ce1bd4db0
   set-title: acf8143224cf4c71
@@ -51,7 +51,7 @@ title_generated: 3792557669daccda
 <!-- translation-section: managing-subgroups -->
 
 ## Управление подгруппами
-Администраторы родительской группы могут вступать в её открытые и закрытые подгруппы, а также в подгруппы с настройкой **Видна родительской группе**, а затем делать себя администраторами этих подгрупп.
+Администраторы родительской группы могут вступать в любую её подгруппу, кроме секретных, а затем делать себя администраторами этих подгрупп.
 
 Выберите **Вступить в группу** на странице подгруппы.
 

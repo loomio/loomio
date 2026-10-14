@@ -8,7 +8,7 @@ translated:
 sections:
   introduction: f216b18771a2c2a9
   administering-your-group: 27aed40959adef57
-  managing-subgroups: 76b2fd61123a8a8a
+  managing-subgroups: 915e13a928a8f4aa
   removing-members: f00aea52bfcd3547
   leaving-group: 02f69c9806d6beda
   set-title: 835b25d246477b4a
@@ -16,7 +16,7 @@ sections:
 generated:
   introduction: 94d82cee3ecb6496
   administering-your-group: f88971e605ec8115
-  managing-subgroups: 17d15a1c854d21da
+  managing-subgroups: a0b44d960d04d058
   removing-members: 87a2d7584a591beb
   leaving-group: febb3e91c9bc92b4
   set-title: ff532d79fa2da32f
@@ -51,7 +51,7 @@ Ha egy tagot **adminná** szeretnél tenni, nyisd meg a Tagok fület, keresd meg
 <!-- translation-section: managing-subgroups -->
 
 ## Alcsoportok kezelése
-A szülőcsoport adminjai csatlakozhatnak annak nyílt, zárt és **Látható a szülőcsoport számára** beállítású alcsoportjaihoz, majd adminjogokat adhatnak maguknak ezekben az alcsoportokban.
+A szülőcsoport adminjai csatlakozhatnak annak bármely nem titkos alcsoportjához, majd adminjogokat adhatnak maguknak ezekben az alcsoportokban.
 
 Válaszd ki a **Kapcsolódj a csoporthoz** lehetőséget az alcsoport oldalán.
 

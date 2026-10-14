@@ -8,7 +8,7 @@ translated:
 sections:
   introduction: f216b18771a2c2a9
   administering-your-group: 27aed40959adef57
-  managing-subgroups: 76b2fd61123a8a8a
+  managing-subgroups: 915e13a928a8f4aa
   removing-members: f00aea52bfcd3547
   leaving-group: 02f69c9806d6beda
   set-title: 835b25d246477b4a
@@ -16,7 +16,7 @@ sections:
 generated:
   introduction: 5d56139dfa2357d0
   administering-your-group: 00c83e69da19596e
-  managing-subgroups: 2389590bc08a2e1b
+  managing-subgroups: c3fc290f6cbd33be
   removing-members: 07a18ad254596e32
   leaving-group: 042caa63eb7fbeeb
   set-title: 826d17f6e95ff907
@@ -51,7 +51,7 @@ Para convertir a un miembro en **admin**, ve a la pestaña Integrantes, busca al
 <!-- translation-section: managing-subgroups -->
 
 ## Gestionar subgrupos
-Los admins de un grupo principal pueden unirse a sus subgrupos abiertos, cerrados y **Visible para el grupo principal**, y después convertirse en admins de esos subgrupos.
+Los admins de un grupo principal pueden unirse a cualquiera de sus subgrupos no secretos, y después convertirse en admins de esos subgrupos.
 
 Selecciona **Unirse al grupo** en la página del subgrupo.
 

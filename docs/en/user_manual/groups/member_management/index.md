@@ -24,7 +24,7 @@ To make a member **admin**, go to the Members tab, find the member and click on 
 <!-- translation-section: managing-subgroups -->
 
 ## Managing subgroups
-Admins of a parent group can join its Open, Closed, and **Visible to parent group** subgroups, then make themselves subgroup admins.
+Admins of a parent group can join any of its non-secret subgroups, then make themselves subgroup admins.
 
 Select **Join group** on the subgroup page.
 
