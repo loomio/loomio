@@ -179,13 +179,13 @@ class PollSerializer < ApplicationSerializer
 
   def voter_has_access
     user_id = scope[:current_user_id]
-    if object.group_id
-      group_ids = if scope[:cache]
-        scope[:cache].member_group_ids
+    if group_id
+      is_member = if scope[:cache]
+        scope[:cache].member_of_group?(group_id)
       else
-        Membership.active.where(user_id: user_id).pluck(:group_id)
+        Membership.active.exists?(user_id: user_id, group_id: group_id)
       end
-      return true if group_ids.include?(object.group_id)
+      return true if is_member
     else
       return true if object.author_id == user_id
     end
@@ -194,6 +194,10 @@ class PollSerializer < ApplicationSerializer
       TopicReader.find_by(topic_id: object.topic_id, user_id: user_id)
     end
     reader.present? && reader.guest? && reader.revoked_at.nil?
+  end
+
+  def group_id
+    topic.group_id
   end
 
   def include_voter_has_access?

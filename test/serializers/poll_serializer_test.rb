@@ -79,6 +79,31 @@ class PollSerializerTest < ActiveSupport::TestCase
     ActiveSupport::Notifications.unsubscribe(subscriber) if subscriber
   end
 
+  test "full poll responses reuse cached membership presence and absence for voting access" do
+    poll = PollService.create(params: {
+      title: 'Cached voting access', poll_type: 'poll', topic: topics(:discussion_topic),
+      poll_option_names: %w[Yes No], closing_at: 3.days.from_now
+    }, actor: users(:admin))
+    queries = []
+    subscriber = ActiveSupport::Notifications.subscribe('sql.active_record') do |_name, _start, _end, _id, payload|
+      queries << payload[:sql] if payload[:sql].start_with?('SELECT "memberships"."group_id" FROM "memberships"') && !payload[:cached]
+    end
+
+    %i[member_normal guest_normal alien non_guest_loud former_member_loud former_guest_loud].each do |role|
+      viewer = users(role)
+      cache = RecordCache.for_collection([poll], viewer.id)
+      ActiveRecord::Base.uncached do
+        data = PollSerializer.new(poll, scope: {cache: cache, current_user_id: viewer.id, exclude_types: []}).as_json.fetch(:poll)
+        expected = %i[member_normal guest_normal].include?(role)
+        assert_equal expected, data[:voter_has_access], role.to_s
+      end
+    end
+
+    assert_empty queries
+  ensure
+    ActiveSupport::Notifications.unsubscribe(subscriber) if subscriber
+  end
+
   private
 
   def serialize_personal(poll, member)
