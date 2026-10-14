@@ -45,6 +45,20 @@ class Api::V1::BootControllerTest < ActionController::TestCase
     assert_equal true, JSON.parse(response.body)['reload']
   end
 
+  test 'version rejects encoded query separators inside the client version' do
+    get :version, params: {version: '3.10.0&release=1785989760&now=1791570947117'}, format: :json
+
+    assert_response :bad_request
+  end
+
+  test 'version rejects invalid client versions and structured parameters' do
+    ['invalid', '', ' ', ['3.10.0'], {number: '3.10.0'}].each do |version|
+      get :version, params: {version: version}, format: :json
+
+      assert_response :bad_request
+    end
+  end
+
   test 'an unsubscribe token does not boot the account into the app' do
     user = users(:user)
 

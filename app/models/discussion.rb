@@ -1,5 +1,7 @@
 class Discussion < ApplicationRecord
-  include CustomCounterCache::Model
+  include HasCountChanges
+  include LocksTopicsForCounts
+  include HasVersionsCount
   include ReadableUnguessableUrls
   include Translatable
   include Reactable
@@ -100,22 +102,30 @@ class Discussion < ApplicationRecord
   delegate :name_and_email, to: :author, prefix: :author
   delegate :locale, to: :author
   delegate :members, :admins, :guests, :guest_ids, :add_guest!, :add_admin!, :group_id, :group,
-           :seen_by_count, :members_count, :closed_polls_count, :anonymous_polls_count,
+           :seen_by_count, :has_anonymous_polls?,
            :items, :newest_first, :private, :pinned_at,
            :last_activity_at, :items_count, :ranges, to: :topic
 
-  define_counter_cache(:versions_count)             { |d| d.versions.count }
+  after_save :update_group_discussion_count, if: -> { saved_changes.keys.intersect?(%w[id topic_id discarded_at]) }
+  after_destroy :update_group_discussion_count
+  around_create :with_topics_write_lock_for_counts, prepend: true
+  around_update :with_topics_write_lock_for_counts, if: -> { changes.keys.intersect?(%w[topic_id discarded_at]) }, prepend: true
+  around_destroy :with_topics_write_lock_for_counts, prepend: true
 
-  after_commit :update_group_counter_caches
-
-  def update_group_counter_caches
-    # TODO: can this be a background job or materialized view?
-    group = topic.group
-    return unless group.id
-    return if group.destroyed? # group teardown cascaded to this discussion — nothing to recount
-    group.update_discussions_count
-    group.update_closed_polls_count
+  def update_group_discussion_count
+    before, after = count_states
+    RecordCounts.update!(Group, :discussions_count,
+      before: counted_group_id(before), after: counted_group_id(after), records: [group])
   end
+
+  def counted_group_id(state)
+    return unless state && state['discarded_at'].nil?
+
+    # Mutual topic/discussion autosave counts the loaded group before the
+    # topic has an ID. Linking it in the second save adds no new contribution.
+    state['topic_id'] ? @count_group_ids.fetch(state['topic_id']) : group_id
+  end
+  private :update_group_discussion_count, :counted_group_id
 
   def author
     super || LoggedOutUser.new(name: I18n.t('profile_page.deleted_account'))

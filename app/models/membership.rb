@@ -1,4 +1,5 @@
 class Membership < ApplicationRecord
+  include HasCountChanges
   class InvitationAlreadyUsed < StandardError
     attr_accessor :membership
     def initialize(obj)
@@ -6,7 +7,6 @@ class Membership < ApplicationRecord
     end
   end
 
-  include CustomCounterCache::Model
   include HasVolume
   include HasTimeframe
   include HasExperiences
@@ -44,15 +44,11 @@ class Membership < ApplicationRecord
   delegate :name, to: :inviter, prefix: :inviter, allow_nil: true
   delegate :mailer, to: :user
 
-  update_counter_cache :group, :memberships_count
-  update_counter_cache :group, :delegates_count
-  update_counter_cache :group, :pending_memberships_count
-  update_counter_cache :group, :admin_memberships_count
-  update_counter_cache :user,  :memberships_count
+  after_save :update_membership_counts, if: -> { saved_changes.keys.intersect?(%w[id group_id user_id revoked_at accepted_at admin]) }
+  after_destroy :update_membership_counts
 
   before_create :set_volume
   after_save :remove_group_follow, if: :active_membership_saved?
-  after_commit :update_org_members_count
 
   def title_model
     group
@@ -103,12 +99,28 @@ class Membership < ApplicationRecord
     self.volume_push = user.volume_push_default
   end
 
-  def update_org_members_count
-    return unless previous_changes.keys.intersect?(%w[group_id user_id revoked_at]) || destroyed?
+  # Compute old/new contributions rather than recounting on every save. A
+  # membership title, delivery preference or vote weight changes no counts.
+  # The distinct organization total is rebuilt only when its membership set
+  # changes; two subgroup memberships can represent the same person.
+  def update_membership_counts
+    before, after = count_states.map { |state| state if state && state['revoked_at'].nil? }
+    groups = Hash.new { |hash, id| hash[id] = Hash.new(0) }
+    users = Hash.new { |hash, id| hash[id] = Hash.new(0) }
+    [[before, -1], [after, 1]].each do |state, delta|
+      next unless state
 
-    Group.update_org_members_count_for_group_ids([
-      previous_changes.dig('group_id', 0),
-      group_id
-    ])
+      counts = groups[state['group_id']]
+      counts[:memberships_count] += delta
+      counts[:pending_memberships_count] += delta if state['accepted_at'].nil?
+      counts[:admin_memberships_count] += delta if state['admin']
+      users[state['user_id']][:memberships_count] += delta
+    end
+    RecordCounts.adjust!(User, users, records: [user])
+    RecordCounts.adjust!(Group, groups, records: [group])
+
+    if before&.values_at('group_id', 'user_id') != after&.values_at('group_id', 'user_id')
+      Group.update_org_members_count_for_group_ids([before&.fetch('group_id'), after&.fetch('group_id')])
+    end
   end
 end

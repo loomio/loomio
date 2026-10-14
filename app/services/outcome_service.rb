@@ -9,7 +9,7 @@ class OutcomeService
                            actor: actor)
 
     users = nil
-    Outcome.transaction do
+    outcome.poll.with_topic_lock do
       users = UserInviter.where_or_create!(actor: actor,
                                            model: outcome,
                                            emails: params[:recipient_emails],
@@ -42,7 +42,7 @@ class OutcomeService
       Sentry.metrics.count("outcome.create_failed", attributes: { columns: outcome.errors.attribute_names.join(',') })
       return outcome
     end
-    topic_item = Outcome.transaction do
+    topic_item = outcome.poll.with_topic_lock do
       outcome.poll.outcomes.update_all(latest: false)
       outcome.save!
 
@@ -95,9 +95,8 @@ class OutcomeService
       return outcome
     end
 
-    Outcome.transaction do
+    outcome.poll.with_topic_lock do
       outcome.save!
-      outcome.update_versions_count
 
       users = UserInviter.where_or_create!(actor: actor,
                                            emails: params[:recipient_emails],

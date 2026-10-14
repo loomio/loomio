@@ -1,17 +1,17 @@
 ---
 title: Felhasználói API
-source_revision: c27ee3b193231816878f1c074ff9fc2a086a88c0
+source_revision: 79280ee7a1246dbb8bb16686856608069718bc14
 source_file: docs/en/user_manual/integrations/api/user-api.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-02'
+  'on': '2026-10-09'
 sections:
   introduction: a43c8b800d13fd33
   authentication-change: 06b5c2cd9d9e72a0
   response-size-and-related-records: 1ffc59ad606a87e7
   endpoint-summary: 52c480c59d3669e3
   groups: 0473f1f7fb78f074
-  list-groups: 2b783ec54f27b2ce
+  list-groups: dcbe9217091f8cb2
   get-a-group: dffef659cb92745e
   webhooks: f65fa289f8c1b808
   list-webhooks: a8b52c1a9bfdb16c
@@ -78,7 +78,7 @@ generated:
   response-size-and-related-records: cc4a3e2f9c96f82e
   endpoint-summary: 9552b6ef60366261
   groups: 416e445b12c9f929
-  list-groups: d3bcc898343c1553
+  list-groups: dd4ea06af99beffb
   get-a-group: 2964e7eaa1534ec3
   webhooks: d8e2bffc0f7d2805
   list-webhooks: 9e7b437384e0f4f2
@@ -228,6 +228,8 @@ A gyűjteményeket visszaadó válaszok tartalmazzák a `meta.total` mezőt, ha 
 
 <!-- translation-section: list-groups -->
 
+<!-- translation-correction: {"before":"tadminisztrátorok száma |\n| `delegates_count` | A küldöttek száma |\n| `discussions_count` | A közvetle","after":"tadminisztrátorok száma |\n| `discussions_count` | A közvetle"} -->
+
 ### Csoportok listázása
 
 Visszaadja azokat a csoportokat, amelyekben az API-kulcshoz tartozó felhasználónak aktív tagsága van.
@@ -255,7 +257,6 @@ A fontosabb csoportmezők:
 | `accepted_memberships_count` | Az elfogadott tagságok száma |
 | `pending_memberships_count` | A függőben lévő meghívók száma |
 | `admin_memberships_count` | A csoportadminisztrátorok száma |
-| `delegates_count` | A küldöttek száma |
 | `discussions_count` | A közvetlenül a csoportban lévő beszélgetések száma |
 | `polls_count` | A közvetlenül a csoportban lévő szavazások száma |
 | `subgroups_count` | Az alcsoportok száma |

@@ -14,7 +14,7 @@ class MembershipService
     accepted_membership = nil
     accepted_notification = nil
 
-    Membership.transaction do
+    User.where(id: [actor.id, membership.user_id]).order(:id).with_write_lock(:id) do
       accepted_at = DateTime.now
 
       invited_group_id = membership.group_id
@@ -60,7 +60,6 @@ class MembershipService
       PollGroupMembersAddedWorker.perform_later(group_id)
     end
     publish_access_change(user_id: actor.id, group_ids: invited_group_ids, revoked: false)
-    Group.update_org_members_count_for_group_ids(invited_group_ids)
 
     Sentry.metrics.count("membership.accept") if accepted_membership&.accepted_at
     accepted_notification
@@ -82,7 +81,7 @@ class MembershipService
   end
 
   def self.revoke_by_id(group_ids, user_id, actor_id, revoked_at = DateTime.now, preserve_cast_votes: false)
-    Membership.transaction do
+    User.where(id: user_id).with_write_lock(:id) do
       TopicReader
         .joins(:topic).where(user_id: user_id)
         .where("topics.group_id IN (?)", group_ids)
@@ -100,8 +99,9 @@ class MembershipService
         .where(user_id: user_id, group_id: group_ids)
         .update_all(revoked_at: revoked_at, revoker_id: actor_id)
 
-      Group.where(id: group_ids).map(&:update_memberships_count)
+      Group.where(id: group_ids).order(:id).each(&:update_membership_counts)
       Group.update_org_members_count_for_group_ids(group_ids)
+      User.update_membership_counts_for_ids([user_id])
       publish_access_change(user_id: user_id, group_ids: group_ids, revoked: true)
     end
   end
