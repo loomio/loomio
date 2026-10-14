@@ -1,10 +1,10 @@
 ---
 title: Muotoilu
-source_revision: c27ee3b193231816878f1c074ff9fc2a086a88c0
+source_revision: f0c873209653029367083ca854d7fb90269a9998
 source_file: docs/en/user_manual/discussions/formatting/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-02'
+  'on': '2026-10-14'
 sections:
   introduction: e5ed11fef349b38c
   attach-file: 772ed69602535db7
@@ -24,7 +24,7 @@ sections:
   code-block: e05cf0873c4c22e2
   divider: da7aa0e1a1a4436e
   add-table: f1a579057780872c
-  markdown: 6ee2783ba81363fd
+  markdown: 7c37a4c00bd431ee
   rich-text: 9136c76bfd5409a9
 generated:
   introduction: e0db4c995caa6486
@@ -45,7 +45,7 @@ generated:
   code-block: 7cfb1ce6d2c7af0b
   divider: 0fd7fc610cfc80f4
   add-table: e03c545c4a79859b
-  markdown: b0009bf09ff42e7f
+  markdown: bfaed939ba727481
   rich-text: 1de15bb9b0e21fac
 title_source: 29d4198e41d8221a
 title_generated: 3b2e66c991904e49
@@ -245,7 +245,9 @@ Voit lisätä ja poistaa sarakkeita ja rivejä lisätyökaluilla.
 
 Siirry Markdown-muokkaukseen valitsemalla **Muokkaa merkintää**.
 
-Jos napsautat tätä, kun lomakkeessa on tekstiä, osa muotoiluista voi kadota muunnoksessa.
+Markdowniksi muuntaminen säilyttää otsikot, lihavoidun ja kursivoidun tekstin, listat, yksinkertaiset taulukot, valmiiksi merkityt tehtävät, kuvat, linkit ja @maininnat. Videot, ääni ja upotettu sisältö muuttuvat linkeiksi.
+
+Tekstin värit, korostukset, alleviivaukset, tasaus ja taulukon asettelu voivat kadota. Tehtävien määräpäivät ja muistutukset poistetaan. Muuntaminen takaisin muotoilluksi tekstiksi luo uusia tehtäviä, joiden teksti ja valmiiksi merkintä vastaavat alkuperäisiä.
 
 <!-- translation-section: rich-text -->
 

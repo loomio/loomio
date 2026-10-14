@@ -38,22 +38,18 @@ module ActiveSupport
     end
 
 
-    # Clean stale data from previous test runs (e.g. e2e tests, interrupted runs)
-    ResetDatabaseHelper.reset_database
-
     # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
     fixtures :all
 
-    # Fixtures bypass model callbacks. Seed their derived counts directly,
-    # once per fixture load rather than recounting every record on every test.
+    # Real-commit tests leave rows in tables without fixture files. Reset the
+    # whole dataset before reloading fixtures so recycled IDs cannot attach old
+    # votes, notifications, or revisions to another test's records. Fixtures
+    # bypass model callbacks, so rebuild their derived counts after loading.
     def load_fixtures(config)
+      ActiveRecord::FixtureSet.reset_cache
+      ResetDatabaseHelper.reset_database
       super.tap do
         connection = ActiveRecord::Base.connection
-        # Real-commit tests write these tables without fixture files. Clear
-        # them with each fresh dataset: reset IDs could otherwise attach old
-        # revisions to unrelated records and seed incorrect version counts.
-        connection.execute('DELETE FROM partition_sequences')
-        connection.execute('DELETE FROM versions')
         RetainedRecordCountRebuild.run(connection)
       end
     end

@@ -1,10 +1,10 @@
 ---
 title: Форматирование
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
+source_revision: f0c873209653029367083ca854d7fb90269a9998
 source_file: docs/en/user_manual/discussions/formatting/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-14'
 sections:
   introduction: e5ed11fef349b38c
   attach-file: 772ed69602535db7
@@ -24,7 +24,7 @@ sections:
   code-block: e05cf0873c4c22e2
   divider: da7aa0e1a1a4436e
   add-table: f1a579057780872c
-  markdown: 6ee2783ba81363fd
+  markdown: 7c37a4c00bd431ee
   rich-text: 9136c76bfd5409a9
 generated:
   introduction: 2fc74de141f13487
@@ -45,7 +45,7 @@ generated:
   code-block: 97811e652bbf088e
   divider: 67e0868903cad695
   add-table: 708b46b8b7d4c04d
-  markdown: 84c9dfa3c4780f84
+  markdown: 4261a072e7cbd760
   rich-text: 2ef70d166128f820
 title_source: 29d4198e41d8221a
 title_generated: 65f12809f629d490
@@ -245,7 +245,9 @@ title_generated: 65f12809f629d490
 
 Чтобы перейти к редактированию Markdown, выберите **Редактировать уценку**.
 
-Если в форме уже есть текст, при преобразовании часть форматирования может быть потеряна.
+При преобразовании в Markdown сохраняются заголовки, полужирный и курсивный текст, списки, простые таблицы, отмеченные задачи, изображения, ссылки и @упоминания. Видео, аудио и встроенный контент преобразуются в ссылки.
+
+Цвета текста, выделение цветом, подчёркивание, выравнивание и оформление таблиц могут быть потеряны. Сроки выполнения задач и напоминания удаляются; при обратном преобразовании в форматированный текст создаются новые задачи с тем же текстом и состоянием отметки.
 
 <!-- translation-section: rich-text -->
 

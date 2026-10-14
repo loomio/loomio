@@ -72,7 +72,7 @@ class AuthenticationThrottlesTest < ActiveSupport::TestCase
     else
       params.to_query
     end
-    @last_env = Rack::MockRequest.env_for(path, method: 'POST', input: body, 'CONTENT_TYPE' => content_type, 'REMOTE_ADDR' => ip)
+    @last_env = Rack::MockRequest.env_for(path, method: 'POST', input: body, 'CONTENT_TYPE' => content_type, 'REMOTE_ADDR' => ip, 'action_dispatch.logger' => Rails.logger)
     @app.call(@last_env)
   end
 end
