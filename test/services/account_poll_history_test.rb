@@ -95,7 +95,7 @@ class AccountPollHistoryTest < ActiveSupport::TestCase
     stance = cast_vote(poll)
     stance.update!(revoked_at: 1.day.ago, revoker_id: @admin.id)
     poll.update_counts!
-    revoked_at = stance.revoked_at
+    revoked_at = stance.reload.revoked_at
 
     retire_account('redact')
 
