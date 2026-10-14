@@ -42,12 +42,16 @@ When you click **Remove from group** you'll be asked to confirm the removal. Upo
 
 ![Remove from group action in a member's menu](member_remove.png)
 
-You can add removed members back to the group later if you wish.
+Removal also applies to the group's subgroups. Private polls disappear from the person's dashboard and voting list. Public polls remain readable, but a former member cannot vote unless they are invited back. Leaving while a poll is closed does not preserve voting rights if it is reopened.
+
+You can add removed members back to the group later. Rejoining restores their access and existing votes in active polls without requiring a page refresh.
 
 <!-- translation-section: leaving-group -->
 
 ## Leaving group
 To leave a group: go to the group page, open the 3 dot menu, and click **Leave group**.
+
+Leaving has the same effects on group and subgroup access as removal by an admin, including removing private polls from your dashboard and voting list.
 
 ![Leave group action in the Oatmilk Cooperative settings menu](member_leave_group.png)
 

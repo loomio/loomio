@@ -123,6 +123,62 @@ class PollTest < ActiveSupport::TestCase
     assert_not poll.vote_needed_from?(voter)
   end
 
+  test "leaving while a private poll is closed does not preserve voting rights when it reopens" do
+    voter = users(:member_normal)
+    poll = create_poll(group_id: @group.id, private: true)
+    stance = poll.stances.latest.find_by!(participant: voter)
+    PollService.close(poll: poll, actor: @admin)
+
+    MembershipService.revoke(membership: @group.membership_for(voter), actor: voter)
+    PollService.reopen(poll: poll, params: {closing_at: 3.days.from_now}, actor: @admin)
+
+    assert poll.active?
+    assert_nil stance.reload.revoked_at, 'the closed poll retains its historical voter record'
+    assert_not voter.can?(:show, poll)
+    assert_not voter.can?(:vote_in, poll)
+    assert_not poll.vote_needed_from?(voter)
+    assert_raises(CanCan::AccessDenied) do
+      StanceService.update(stance: stance, actor: voter, params: {choice: {'engage' => 1}})
+    end
+    assert_nil stance.reload.cast_at
+  end
+
+  test "retained anonymous electorate records do not authorize voters after private access is revoked" do
+    voter = users(:member_normal)
+    poll = create_poll(group_id: @group.id, private: true, anonymous: true)
+    assert voter.can?(:vote_in, poll)
+    MembershipService.revoke(membership: @group.membership_for(voter), actor: voter)
+
+    assert poll.anonymous_poll_voters.exists?(voter: voter)
+    assert_not voter.can?(:vote_in, poll)
+    assert_not poll.vote_needed_from?(voter)
+  end
+
+  test "public polls remain readable after leaving but retained voters cannot vote" do
+    voter = users(:member_normal)
+    @group.update!(is_visible_to_public: true, discussion_privacy_options: 'public_or_private')
+    named = create_poll(group_id: @group.id, private: false)
+    anonymous = create_poll(group_id: @group.id, private: false, anonymous: true)
+    PollService.close(poll: named, actor: @admin)
+
+    MembershipService.revoke(membership: @group.membership_for(voter), actor: voter)
+    PollService.reopen(poll: named, params: {closing_at: 3.days.from_now}, actor: @admin)
+
+    [named, anonymous].each do |poll|
+      assert voter.can?(:show, poll)
+      assert_not voter.can?(:vote_in, poll)
+      assert_not poll.vote_needed_from?(voter)
+      assert_not PollQuery.filter(chain: PollQuery.visible_to(user: voter),
+                                 params: {status: 'vote', group_key: @group.key}, user: voter).exists?(poll.id)
+    end
+
+    @group.add_member!(voter)
+    [named, anonymous].each do |poll|
+      assert voter.can?(:vote_in, poll)
+      assert poll.vote_needed_from?(voter)
+    end
+  end
+
   test "vote is needed from an anonymous voter until their ballot is submitted" do
     voter = create_voter("anonymouspendingvote")
     @group.add_member!(voter)

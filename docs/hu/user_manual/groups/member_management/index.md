@@ -1,24 +1,24 @@
 ---
 title: Tagok kezelése
-source_revision: cd2e1e63e611688362e80009f50b8ed25025ba8b
+source_revision: 43a63dfebc3d75ea40ab1b104dc875422c1185f0
 source_file: docs/en/user_manual/groups/member_management/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-07'
+  'on': '2026-10-13'
 sections:
   introduction: f216b18771a2c2a9
   administering-your-group: 27aed40959adef57
   managing-subgroups: 915e13a928a8f4aa
-  removing-members: f00aea52bfcd3547
-  leaving-group: 02f69c9806d6beda
+  removing-members: f40c25fd90ab1ce2
+  leaving-group: 11b09b4af23b4e7e
   set-title: 835b25d246477b4a
   member-email-addresses: cae570f30b671275
 generated:
   introduction: 94d82cee3ecb6496
   administering-your-group: f88971e605ec8115
   managing-subgroups: a0b44d960d04d058
-  removing-members: 87a2d7584a591beb
-  leaving-group: febb3e91c9bc92b4
+  removing-members: b2df81d3e93638ab
+  leaving-group: 418c5486e565681e
   set-title: ff532d79fa2da32f
   member-email-addresses: 8e86cd0869710340
 title_source: 23ac3a7fe9ee72a2
@@ -69,12 +69,16 @@ Ha az **Eltávolítás a csoportból** lehetőségre kattintasz, meg kell erős�
 
 ![Eltávolítás a csoportból művelet egy tag menüjében](member_remove.png)
 
-Ha szeretnéd, később újra hozzáadhatod az eltávolított tagokat a csoporthoz.
+Az eltávolítás a csoport alcsoportjaira is érvényes. A privát szavazások eltűnnek az érintett személy áttekintéséből és szavazási listájából. A nyilvános szavazások továbbra is olvashatók, de a korábbi tag nem szavazhat, amíg vissza nem hívják. Ha egy lezárt szavazás idején lép ki, nem őrzi meg a szavazati jogát a szavazás újranyitásakor.
+
+Később újra hozzáadhatod az eltávolított tagokat a csoporthoz. Az újbóli csatlakozás visszaállítja a hozzáférésüket és az aktív szavazásokban leadott szavazataikat, az oldal frissítése nélkül.
 
 <!-- translation-section: leaving-group -->
 
 ## Kilépés a csoportból
 Ha ki szeretnél lépni egy csoportból, nyisd meg a csoport oldalát, nyisd meg a hárompontos menüt, és kattints a **Kilépés a csoportból** lehetőségre.
+
+A kilépés ugyanúgy érinti a csoporthoz és az alcsoportokhoz való hozzáférést, mint az admin általi eltávolítás: a privát szavazások is eltűnnek az áttekintésedből és a szavazási listádból.
 
 ![Kilépés a csoportból művelet az Oatmilk Cooperative beállítási menüjében](member_leave_group.png)
 

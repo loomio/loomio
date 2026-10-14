@@ -99,7 +99,7 @@ module Dev::Scenarios::Group
     group.tags.create!(name: 'Important', color: '#1565c0')
     group.tags.create!(name: 'Other', color: '#2e7d32')
 
-    PollService.create(
+    pending_poll = PollService.create(
       params: {
         group_id: group.id,
         poll_type: 'proposal',
@@ -109,6 +109,11 @@ module Dev::Scenarios::Group
         closing_at: 3.days.from_now
       },
       actor: patrick
+    )
+    StanceService.update(
+      stance: pending_poll.stances.latest.find_by!(participant: emilio),
+      actor: emilio,
+      params: {choice: {'agree' => 1}}
     )
 
     voted_poll = PollService.create(
@@ -338,6 +343,39 @@ module Dev::Scenarios::Group
     create_group.add_admin! emilio
     sign_in patrick
     redirect_to group_path(create_group)
+  end
+
+  def setup_group_with_authored_stv_poll
+    group = create_group
+    group.add_admin! emilio
+    create_another_group
+    PollService.create(params: {
+      title: 'Working group election', poll_type: 'stv', group_id: group.id,
+      poll_option_names: %w[Alex Blair Casey], stv_seats: 1,
+      closing_at: 3.days.from_now
+    }, actor: patrick)
+    sign_in patrick
+    redirect_to group_path(group)
+  end
+
+  def revoke_authored_poll_membership
+    poll = Poll.find_by!(title: 'Working group election')
+    actor = params[:by_admin].present? ? emilio : current_user
+    MembershipService.revoke(membership: poll.group.membership_for(poll.author), actor: actor)
+    head :ok
+  end
+
+  def restore_authored_poll_membership
+    poll = Poll.find_by!(title: 'Working group election')
+    MembershipService.add_users_to_group(users: [poll.author], group: poll.group, inviter: emilio)
+    head :ok
+  end
+
+  def publish_private_poll_update_after_removal
+    poll = Poll.find_by!(title: 'Working group election')
+    PollService.update(poll: poll, actor: emilio, params: {title: 'Private update after removal'})
+    MessageChannelService.publish_models([poll], group_id: poll.group_id)
+    head :ok
   end
 
   def setup_group_with_no_coordinators

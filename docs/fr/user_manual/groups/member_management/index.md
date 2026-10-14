@@ -1,24 +1,24 @@
 ---
 title: Gestion des membres
-source_revision: cd2e1e63e611688362e80009f50b8ed25025ba8b
+source_revision: 43a63dfebc3d75ea40ab1b104dc875422c1185f0
 source_file: docs/en/user_manual/groups/member_management/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-07'
+  'on': '2026-10-13'
 sections:
   introduction: f216b18771a2c2a9
   administering-your-group: 27aed40959adef57
   managing-subgroups: 915e13a928a8f4aa
-  removing-members: f00aea52bfcd3547
-  leaving-group: 02f69c9806d6beda
+  removing-members: f40c25fd90ab1ce2
+  leaving-group: 11b09b4af23b4e7e
   set-title: 835b25d246477b4a
   member-email-addresses: cae570f30b671275
 generated:
   introduction: 33fec9bcb8d1d349
   administering-your-group: bdbd97a9d818accd
   managing-subgroups: cd534ba2f839e053
-  removing-members: 3a740e1c7867320b
-  leaving-group: f9f5ba0bd4dd7e24
+  removing-members: 25d5fbc007da78d6
+  leaving-group: c9b500c3b224505f
   set-title: 747e469248b9a197
   member-email-addresses: '9092216101041597'
 title_source: 23ac3a7fe9ee72a2
@@ -69,12 +69,16 @@ Lorsque vous cliquez sur **Retirer du groupe**, vous devez confirmer le retrait.
 
 ![Action Retirer du groupe dans le menu d’un membre](member_remove.png)
 
-Vous pouvez ajouter à nouveau les membres retirés au groupe ultérieurement si vous le souhaitez.
+Le retrait s’applique également aux sous-groupes du groupe. Les sondages privés disparaissent du tableau de bord et de la liste des votes de la personne. Les sondages publics restent consultables, mais un ancien membre ne peut pas voter à moins d’être à nouveau invité. Quitter le groupe pendant qu’un sondage est clôturé ne permet pas de conserver le droit de vote si ce sondage est rouvert.
+
+Vous pouvez ajouter à nouveau les membres retirés au groupe ultérieurement. Lorsqu’ils rejoignent à nouveau le groupe, leur accès et leurs votes existants dans les sondages en cours sont rétablis sans qu’il soit nécessaire d’actualiser la page.
 
 <!-- translation-section: leaving-group -->
 
 ## Quitter le groupe
 Pour quitter un groupe : accédez à la page du groupe, ouvrez le menu à trois points et cliquez sur **Quitter le groupe**.
+
+Quitter le groupe a les mêmes effets sur l’accès au groupe et à ses sous-groupes qu’un retrait par un administrateur, notamment la disparition des sondages privés de votre tableau de bord et de votre liste des votes.
 
 ![Action Quitter le groupe dans le menu des paramètres de la coopérative Oatmilk](member_leave_group.png)
 

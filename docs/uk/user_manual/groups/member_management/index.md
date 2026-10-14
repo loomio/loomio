@@ -1,24 +1,24 @@
 ---
 title: Керування учасниками
-source_revision: cd2e1e63e611688362e80009f50b8ed25025ba8b
+source_revision: 43a63dfebc3d75ea40ab1b104dc875422c1185f0
 source_file: docs/en/user_manual/groups/member_management/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-07'
+  'on': '2026-10-13'
 sections:
   introduction: f216b18771a2c2a9
   administering-your-group: 27aed40959adef57
   managing-subgroups: 915e13a928a8f4aa
-  removing-members: f00aea52bfcd3547
-  leaving-group: 02f69c9806d6beda
+  removing-members: f40c25fd90ab1ce2
+  leaving-group: 11b09b4af23b4e7e
   set-title: 835b25d246477b4a
   member-email-addresses: cae570f30b671275
 generated:
   introduction: 9759aca89a7d7250
   administering-your-group: 68b3aa606e1868f6
   managing-subgroups: d870aed306d7568a
-  removing-members: 72b8d887af52a223
-  leaving-group: 900a297fc5d819e0
+  removing-members: b04c8490cd7b13ce
+  leaving-group: 03c72cb044abed76
   set-title: 59be169559f0076a
   member-email-addresses: 8f4da5af8ead1909
 title_source: 23ac3a7fe9ee72a2
@@ -69,12 +69,16 @@ title_generated: fb5d8358c4066cf6
 
 ![Дія «Видалити з групи» у меню учасника](member_remove.png)
 
-За бажанням ви можете пізніше знову додати видалених учасників до групи.
+Видалення також поширюється на підгрупи цієї групи. Приватні опитування зникають зі стрічки користувача та його списку голосувань. Публічні опитування залишаються доступними для читання, але колишній учасник не може голосувати, доки його не запросять знову. Якщо учасник виходить із групи, коли опитування закрите, він не зберігає права голосувати в ньому після повторного відкриття.
+
+Ви можете пізніше знову додати видалених учасників до групи. Повторне приєднання відновлює їхній доступ і наявні голоси в активних опитуваннях без потреби оновлювати сторінку.
 
 <!-- translation-section: leaving-group -->
 
 ## Вихід із групи
 Щоб вийти з групи, перейдіть на сторінку групи, відкрийте меню з трьома крапками та натисніть **Вийти з групи**.
+
+Вихід із групи має ті самі наслідки для доступу до групи та її підгруп, що й видалення адміністратором, зокрема приватні опитування зникають із вашої стрічки та списку голосувань.
 
 ![Дія «Вийти з групи» у меню налаштувань Oatmilk Cooperative](member_leave_group.png)
 

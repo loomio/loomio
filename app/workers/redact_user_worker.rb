@@ -8,7 +8,7 @@ class RedactUserWorker < ApplicationJob
     deactivated_at = user.deactivated_at || DateTime.now
     group_ids = Membership.active.where(user_id: user_id).pluck(:group_id)
     User.transaction(requires_new: true) do |transaction|
-      MembershipService.revoke_by_id(group_ids, user_id, actor_id, deactivated_at)
+      MembershipService.revoke_by_id(group_ids, user_id, actor_id, deactivated_at, preserve_cast_votes: true)
 
       User.where(id: user_id).update_all(
         is_admin: false,

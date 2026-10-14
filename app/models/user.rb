@@ -173,7 +173,7 @@ class User < ApplicationRecord
   end
 
   def is_paying?
-    group_ids = self.group_ids.concat(self.groups.pluck(:parent_id).compact).uniq
+    group_ids = (self.group_ids + self.groups.pluck(:parent_id).compact).uniq
     Group.enabled.where(id: group_ids).where(parent_id: nil).joins(:subscription).where.not('subscriptions.plan': 'trial').exists?
   end
 
@@ -207,7 +207,7 @@ class User < ApplicationRecord
   def join_default_onboarding_group
     return unless AppConfig.default_onboarding_group_id
 
-    Group.enabled.find(AppConfig.default_onboarding_group_id).add_member!(self)
+    MembershipService.add_member(group: Group.enabled.find(AppConfig.default_onboarding_group_id), user: self)
   end
 
   def became_registered_user?

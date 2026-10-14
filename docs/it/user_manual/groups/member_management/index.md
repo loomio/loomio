@@ -1,24 +1,24 @@
 ---
 title: Gestione dei membri
-source_revision: cd2e1e63e611688362e80009f50b8ed25025ba8b
+source_revision: 43a63dfebc3d75ea40ab1b104dc875422c1185f0
 source_file: docs/en/user_manual/groups/member_management/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-07'
+  'on': '2026-10-13'
 sections:
   introduction: f216b18771a2c2a9
   administering-your-group: 27aed40959adef57
   managing-subgroups: 915e13a928a8f4aa
-  removing-members: f00aea52bfcd3547
-  leaving-group: 02f69c9806d6beda
+  removing-members: f40c25fd90ab1ce2
+  leaving-group: 11b09b4af23b4e7e
   set-title: 835b25d246477b4a
   member-email-addresses: cae570f30b671275
 generated:
   introduction: e1ca5b64f290b284
   administering-your-group: '082631af5373f135'
   managing-subgroups: 5b46b62ddcd76123
-  removing-members: dbf17213668936bb
-  leaving-group: 433160d33d2e8ccb
+  removing-members: 0fbda2d0e235ae86
+  leaving-group: 1bd5143238265dcb
   set-title: 011f0941e532b944
   member-email-addresses: 26d44d66b21ac2fe
 title_source: 23ac3a7fe9ee72a2
@@ -69,12 +69,16 @@ Quando fai clic su **Rimuovi dal gruppo**, ti viene chiesto di confermare la rim
 
 ![Azione Rimuovi dal gruppo nel menu di un membro](member_remove.png)
 
-Se lo desideri, puoi aggiungere nuovamente al gruppo i membri rimossi in un secondo momento.
+La rimozione si applica anche ai sottogruppi del gruppo. I sondaggi privati scompaiono dalla dashboard e dall'elenco dei sondaggi da votare della persona rimossa. I sondaggi pubblici rimangono leggibili, ma un ex membro non può votare a meno che non venga invitato di nuovo. Lasciare il gruppo mentre un sondaggio è chiuso non conserva il diritto di voto se il sondaggio viene riaperto.
+
+Puoi aggiungere nuovamente al gruppo i membri rimossi in un secondo momento. Rientrare nel gruppo ripristina il loro accesso e i voti già espressi nei sondaggi attivi, senza dover aggiornare la pagina.
 
 <!-- translation-section: leaving-group -->
 
 ## Lasciare un gruppo
 Per lasciare un gruppo, vai alla pagina del gruppo, apri il menu con i tre puntini e fai clic su **Lascia il gruppo**.
+
+Lasciare il gruppo ha gli stessi effetti sull'accesso al gruppo e ai sottogruppi della rimozione da parte di un amministratore, compresa la rimozione dei sondaggi privati dalla tua dashboard e dal tuo elenco dei sondaggi da votare.
 
 ![Azione Lascia il gruppo nel menu delle impostazioni di Oatmilk Cooperative](member_leave_group.png)
 

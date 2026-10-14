@@ -1,24 +1,24 @@
 ---
 title: Mitglieder verwalten
-source_revision: cd2e1e63e611688362e80009f50b8ed25025ba8b
+source_revision: 43a63dfebc3d75ea40ab1b104dc875422c1185f0
 source_file: docs/en/user_manual/groups/member_management/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-07'
+  'on': '2026-10-13'
 sections:
   introduction: f216b18771a2c2a9
   administering-your-group: 27aed40959adef57
   managing-subgroups: 915e13a928a8f4aa
-  removing-members: f00aea52bfcd3547
-  leaving-group: 02f69c9806d6beda
+  removing-members: f40c25fd90ab1ce2
+  leaving-group: 11b09b4af23b4e7e
   set-title: 835b25d246477b4a
   member-email-addresses: cae570f30b671275
 generated:
   introduction: 89b96cc8fdabf34e
   administering-your-group: 3c2f58a1981e45e4
   managing-subgroups: 5840da1bb754a212
-  removing-members: afd9b4e84cb7a930
-  leaving-group: 6f02e61aa9de898c
+  removing-members: cb3b6278e54346bc
+  leaving-group: 6b1137da6f778a55
   set-title: 2cd65fb070aa6647
   member-email-addresses: 48c5e2cefddf18cb
 title_source: 23ac3a7fe9ee72a2
@@ -69,12 +69,16 @@ Wenn du auf **Aus der Gruppe entfernen** klickst, wirst du gebeten, das Entferne
 
 ![Aktion „Aus der Gruppe entfernen“ im Menü eines Mitglieds](member_remove.png)
 
-Du kannst entfernte Mitglieder später wieder zur Gruppe hinzufügen, wenn du möchtest.
+Das Entfernen gilt auch für die Untergruppen der Gruppe. Private Abstimmungen verschwinden aus der Übersicht und der Abstimmungsliste der Person. Öffentliche Abstimmungen bleiben lesbar, aber ein ehemaliges Mitglied kann erst wieder abstimmen, wenn es erneut eingeladen wird. Wer die Gruppe verlässt, während eine Abstimmung beendet ist, behält dadurch kein Stimmrecht, wenn die Abstimmung wieder geöffnet wird.
+
+Du kannst entfernte Mitglieder später wieder zur Gruppe hinzufügen. Wenn sie der Gruppe wieder beitreten, werden ihr Zugriff und ihre vorhandenen Stimmen in laufenden Abstimmungen wiederhergestellt, ohne dass sie die Seite neu laden müssen.
 
 <!-- translation-section: leaving-group -->
 
 ## Gruppe verlassen
 Um eine Gruppe zu verlassen, gehe zur Gruppenseite, öffne das Menü mit den drei Punkten und klicke auf **Gruppe verlassen**.
+
+Wenn du die Gruppe verlässt, hat das dieselben Auswirkungen auf deinen Zugriff auf die Gruppe und ihre Untergruppen wie das Entfernen durch einen Admin. Private Abstimmungen verschwinden dabei auch aus deiner Übersicht und deiner Abstimmungsliste.
 
 ![Aktion „Gruppe verlassen“ im Einstellungsmenü der Oatmilk Cooperative](member_leave_group.png)
 

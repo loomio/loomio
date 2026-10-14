@@ -303,13 +303,12 @@ class Group < ApplicationRecord
 
     if membership = Membership.find_by(user_id: user.id, group_id: id)
       if membership.revoked_at
-        membership.update(admin: false, revoked_at: nil, revoker_id: nil, accepted_at: DateTime.now, inviter: inviter)
+        membership.update!(admin: false, revoked_at: nil, revoker_id: nil, accepted_at: DateTime.now, inviter: inviter)
       end
     else
       membership = Membership.create!(user_id: user.id, group_id: id, inviter: inviter, accepted_at: DateTime.now)
     end
 
-    PollGroupMembersAddedWorker.perform_later(self.id)
     membership
   rescue ActiveRecord::RecordNotUnique
     retry
