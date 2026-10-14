@@ -1,16 +1,16 @@
 ---
 title: Esportazione dei dati
-source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
+source_revision: cd2e1e63e611688362e80009f50b8ed25025ba8b
 source_file: docs/en/user_manual/groups/data_export/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-07'
 sections:
   introduction: 5e29f67f9a2084ec
   export-data: 58b5e1d4e6f0b917
   export-group-data-as-csv: 53286ec33e7300d6
   export-group-data-as-html: 101671937dcd6f36
-  export-group-data-as-json: 4ec883363fb166ee
+  export-group-data-as-json: aa310889d0854550
   print-thread-to-pdf: 39c48383953f9fd5
   import-your-group-data-on-another-loomio-server: 910ee8af48049e82
 generated:
@@ -18,7 +18,7 @@ generated:
   export-data: 18c848f5ada44af5
   export-group-data-as-csv: 53a693d5950de0be
   export-group-data-as-html: 20e1f21d5c4dd6af
-  export-group-data-as-json: 7bc279deb947d775
+  export-group-data-as-json: 48bc3d9b70eb8dd9
   print-thread-to-pdf: 02d3680574342030
   import-your-group-data-on-another-loomio-server: 160c567e2e49c3b4
 title_source: 29049648f87b87f5
@@ -79,7 +79,7 @@ Devi essere un amministratore del gruppo per esportarlo. L'esportazione JSON inc
 - Conversazioni, commenti, reazioni, tag, modelli, notifiche e record correlati dei gruppi inclusi
 - Sondaggi, opzioni, voti e conclusioni; un sondaggio anonimo viene incluso solo dopo la sua chiusura
 - I sottogruppi di cui fai parte
-- I sottogruppi aperti e chiusi quando esporti il loro gruppo principale come amministratore del gruppo principale, anche se non fai parte di quei sottogruppi
+- I sottogruppi aperti, chiusi e visibili al gruppo principale quando esporti il loro gruppo principale come amministratore del gruppo principale, anche se non fai parte di quei sottogruppi
 - Riferimenti ai file e alle immagini allegati ai contenuti inclusi
 
 L'esportazione JSON non include:

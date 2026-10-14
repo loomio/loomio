@@ -40,23 +40,32 @@ You can edit the subgroups [group settings](/en/user_manual/groups/settings/) by
 
 ### Privacy
 
-The privacy settings for subgroups are similar to the parent group.
+Choose who can find the subgroup and read its threads:
 
-**Secret** subgroups are not visible to people not invited to the subgroup.
+| Privacy | Who can find it | Who can read its threads |
+| --- | --- | --- |
+| **Open** | Anyone | Anyone |
+| **Closed** | Anyone | Subgroup members and invited guests |
+| **Visible to parent group** | Parent group members and subgroup members | Subgroup members and invited guests |
+| **Secret** | Invited subgroup members | Subgroup members and invited guests |
 
-**Closed** subgroups are listed in the Subgroups tab of the parent group and user's sidebar menu. Members of the parent group can request to join the subgroup. Membership is approved by a subgroup admin.
-
-Closed subgroups have an additional setting that allow members of its parent group to see private threads.
+When the parent group is private, subgroups can be **Visible to parent group** or **Secret**.
 
 [Read about group privacy here](/en/user_manual/groups/settings/privacy).
+
+<!-- translation-section: how-people-join -->
+
+### How people join
+
+Choose [how people join](/en/user_manual/groups/settings/privacy#how-people-join) when creating the subgroup, or in **Edit group settings → Privacy**.
+
+![Subgroup privacy and joining settings](subgroups_privacy_settings.png)
 
 <!-- translation-section: permissions -->
 
 ### Permissions
 
-Subgroups operate independently of the main group. For example, if the subgroup privacy setting is set to **Secret**, then only invited members can find this subgroup, see who is in it, and see threads.
-
-**Closed** subgroups have an additional setting that allow members of its parent group to see private threads, enabling the subgroup to be transparent to members of the parent group.
+Enable **Parent group members can see private threads** in **Permissions** to let parent members read subgroup threads without joining. These readers do not gain voting rights or subgroup membership.
 
 ![Setting that lets parent group members see private subgroup threads](subgroups_private_threads_settings.png)
 

@@ -1,26 +1,28 @@
 ---
 title: プライバシー
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
+source_revision: e34ed3124daf97b42eef81bc6f6a90075ec93227
 source_file: docs/en/user_manual/groups/settings/privacy.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-14'
 sections:
-  introduction: 72b58ba22851f914
-  open: 1727e8f20fe92fb2
+  introduction: 4b491c663bfb5ea9
+  open: 2802cda1461d3b19
   follow-an-open-group: e4a1b3ce35a974d0
-  closed: 8856fa003c6915d9
-  secret: df6da0e3cba330b5
-  how-people-join: 8b20f2ab6789b0b7
-  group-directory: 4ef3023e3cf4efdf
+  closed: fe4da2f032768bca
+  secret: d0a9ea85448f9798
+  how-people-join: 926f4b183250aa9d
+  group-directory: a9a41ea389fb10ba
+  visible-to-parent-group: 96b8595d3bc6ce4b
 generated:
-  introduction: ad5029878a05fa5d
-  open: 4990ae1509ab25ae
+  introduction: b0d4569717239399
+  open: 4c1f3b7e0ff7428f
   follow-an-open-group: 6010c2791b8a374f
-  closed: 8d9dbbde7290effe
-  secret: 48715522623bbe6c
-  how-people-join: 8db1da76fbf66a9d
-  group-directory: 473feca0c76f7501
+  closed: 3f452c3ffa61487e
+  secret: 3ec56d716cf14c86
+  how-people-join: 75655fd8ed7da112
+  group-directory: b2c22fd01043e42f
+  visible-to-parent-group: c180db8e7ca4693f
 title_source: 54a57c3147c49f33
 title_generated: fd55785d80315153
 ---
@@ -33,15 +35,13 @@ title_generated: fd55785d80315153
 
 ![グループのプライバシー設定](group_privacy_settings.png#width-90)
 
-プライバシー設定を変更すると、変更後に作成される内容だけでなく、既存のグループの内容も公開または非公開になる場合があります。グループの目的を満たせる範囲で、最も制限の厳しい設定を選択します。
+プライバシー設定の変更は、既存の内容にも影響します。親グループを非公開にすると、その公開サブグループも**親グループに表示**に変わり、スレッドは非公開になります。
 
 <!-- translation-section: open -->
 
 ## 公開グループ
 
 公開グループは、誰でも閲覧できる場です。誰でもグループを見つけて、ディスカッション、アンケート、ファイルを閲覧できます。メンバー一覧は、メンバーだけが閲覧できます。
-
-公開グループでは、誰でもすぐに参加できるようにする、参加に承認を必要とする、招待された人だけが参加できるようにする、という設定ができます。
 
 <!-- translation-section: follow-an-open-group -->
 
@@ -59,27 +59,29 @@ title_generated: fd55785d80315153
 
 非公開グループは、誰でも見つけて、その名前と説明を閲覧できます。ディスカッション、アンケート、ファイル、メンバー一覧は、メンバーと招待されたゲストだけが閲覧できます。
 
-非公開グループでは、参加申請を受け付けるか、招待された人だけが参加できるように設定できます。承認なしですぐに参加できる設定にはできません。
+<!-- translation-section: visible-to-parent-group -->
 
-親グループ内の非公開サブグループでは、親グループのメンバーがサブグループに参加せずに、そのディスカッションを閲覧できるように設定することもできます。
+## 親グループに表示
+
+親グループのメンバーとサブグループのメンバーが、サブグループを見つけられます。スレッドは、サブグループのメンバーと招待されたゲストだけが閲覧できます。
 
 <!-- translation-section: secret -->
 
 ## 秘密のグループ
 
-秘密のグループとその内容は、招待された人または追加された人だけが閲覧できます。参加には招待が必要です。秘密のグループは、公開グループ一覧には表示されません。
+秘密のグループとその内容は、招待された人または追加された人だけが閲覧できます。秘密のグループは、公開グループ一覧には表示されません。
 
 <!-- translation-section: how-people-join -->
 
 ## グループへの参加方法
 
-選択できる参加方法は、プライバシー設定によって決まります。
+**人々はどうやって参加するのでしょうか？**で、利用できる参加方法から選びます。
 
-| グループのプライバシー | 選択できる参加方法 |
+| 参加方法 | 仕組み |
 | --- | --- |
-| **議論中** | 誰でも参加可能、承認が必要、または招待のみ |
-| **議論終了** | 承認が必要、または招待のみ |
-| **秘密** | 招待のみ |
+| **承認なしで参加できます** | 自分で参加できます |
+| **参加を申請します** | 参加を申請し、承認を待ちます |
+| **招待のみです** | 参加には招待が必要です |
 
 承認が必要な場合は、**グループに参加する**を選択し、グループが設定した参加時の質問に回答して、参加申請を送信します。質問の設定、申請の確認、人を直接招待する方法については、[人を招待する](/en/user_manual/groups/inviting_people#request-to-join-group)を参照してください。
 
@@ -87,4 +89,4 @@ title_generated: fd55785d80315153
 
 ## グループ一覧
 
-公開または非公開の親グループは、誰でも見つけられるように公開グループ一覧に掲載できます。一覧への掲載によって、グループの内容を閲覧できる人や、メンバーになれる人が変わることはありません。サブグループと秘密のグループは掲載できません。
+公開または非公開の親グループは、誰でも見つけられるように公開グループ一覧に掲載できます。サブグループと秘密のグループは掲載できません。

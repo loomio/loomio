@@ -26,6 +26,81 @@ class Api::V1::MembershipsControllerTest < ActionController::TestCase
   end
 
   # ===== Membership Creation Tests =====
+  test "parent members can join leave and rejoin without approval or admin rights" do
+    group = groups(:parent_join_subgroup)
+    user = users(:member_normal)
+    sign_in user
+
+    assert_no_difference "MembershipRequest.count" do
+      post :join_group, params: { group_id: group.id }
+    end
+    assert_response :success
+    membership = group.membership_for(user)
+    assert membership.accepted_at.present?
+    assert_not membership.admin?
+    assert_equal membership.id, JSON.parse(response.body).fetch('memberships').first.fetch('id')
+
+    delete :destroy, params: {id: membership.id}
+    assert_response :success
+    assert membership.reload.revoked_at.present?
+
+    post :join_group, params: {group_id: group.id}
+    assert_response :success
+    assert_nil membership.reload.revoked_at
+    assert_not membership.admin?
+  end
+
+  test "outsiders and revoked parent members cannot join a subgroup visible only to parent members" do
+    group = groups(:parent_join_subgroup)
+
+    %i[alien guest_normal former_member_loud non_guest_loud].each do |role|
+      sign_in users(role)
+      assert_no_difference "Membership.count" do
+        post :join_group, params: {group_id: group.id}
+      end
+      assert_response :forbidden
+    end
+  end
+
+  test "any verified active user can join a publicly visible subgroup with immediate joining" do
+    group = groups(:parent_join_subgroup)
+    group.parent.update!(group_privacy: 'closed')
+    group.update!(is_visible_to_public: true)
+    sign_in @alien
+
+    post :join_group, params: {group_id: group.id}
+
+    assert_response :success
+    membership = group.membership_for(@alien)
+    assert membership.accepted_at.present?
+    assert_not membership.admin?
+  end
+
+  test "joining clears an earlier pending approval request" do
+    group = groups(:parent_join_subgroup)
+    user = users(:member_normal)
+    request = MembershipRequest.create!(group: group, requestor: user, introduction: 'I can help')
+    sign_in user
+
+    post :join_group, params: {group_id: group.id}
+
+    assert_response :success
+    assert group.membership_for(user).present?
+    assert_not MembershipRequest.exists?(request.id)
+  end
+
+  test "parent membership joining does not allow signed out users or bypass secret subgroup privacy" do
+    group = groups(:parent_join_subgroup)
+    sign_out @user
+    post :join_group, params: {group_id: group.id}
+    assert_response :forbidden
+
+    sign_in users(:member_normal)
+    group.update!(group_privacy: 'secret')
+    post :join_group, params: {group_id: group.id}
+    assert_response :forbidden
+  end
+
 
   test 'sets the membership volume to user default' do
     new_group = Group.create!(

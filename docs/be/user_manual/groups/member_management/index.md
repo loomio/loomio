@@ -8,7 +8,7 @@ translated:
 sections:
   introduction: f216b18771a2c2a9
   administering-your-group: 27aed40959adef57
-  managing-subgroups: ee977899fa34caab
+  managing-subgroups: 915e13a928a8f4aa
   removing-members: f40c25fd90ab1ce2
   leaving-group: 11b09b4af23b4e7e
   set-title: 835b25d246477b4a
@@ -16,7 +16,7 @@ sections:
 generated:
   introduction: 668a83807d8df390
   administering-your-group: 1bd39f5ccab39bf2
-  managing-subgroups: 6c55000f7e3a2d15
+  managing-subgroups: d6a76897adb37e8b
   removing-members: 6c477339578ef255
   leaving-group: 697ac6dfe824d11b
   set-title: 9aa43908d91503c4
@@ -51,9 +51,9 @@ title_generated: aa6d15cc1d295159
 <!-- translation-section: managing-subgroups -->
 
 ## Кіраванне падгрупамі
-Калі вы маеце правы адміністратара бацькоўскай групы або арганізацыі, вы маеце дадатковыя дазволы ў дачыненні да любых __закрытых__ падгруп.
+Адміністратары бацькоўскай групы могуць далучацца да любой яе падгрупы, акрамя сакрэтных, а затым надаваць сабе правы адміністратара гэтых падгруп.
 
-Вы можаце далучыцца да любой закрытай падгрупы, націснуўшы кнопку «Далучыцца да групы» злева на старонцы адпаведнай падгрупы (адразу пад укладкамі).
+Выберыце **Далучыцца да групы** на старонцы падгрупы.
 
 ![Кнопка далучэння да групы ў закрытай падгрупе Oatmilk Cooperative](member_join_subgroup.png)
 

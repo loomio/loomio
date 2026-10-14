@@ -1,32 +1,34 @@
 ---
 title: Subgroepen
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
+source_revision: e34ed3124daf97b42eef81bc6f6a90075ec93227
 source_file: docs/en/user_manual/groups/subgroups/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-14'
 sections:
   introduction: 63e6e23d24e80919
   add-a-subgroup: 0bc0e5f99eb074c3
   subgroup-settings: 737225cc4bebe7e8
-  privacy: f5d6a140045a00af
-  permissions: 948f8a0f3209953c
+  privacy: 58872ebdc8b93967
+  permissions: 485ea3cc98d48900
   find-subgroups: 5e6fc5a5122c1417
   invite-to-a-subgroup: 0af670e1e9b32a5e
   simultaneously-invite-people-to-subgroups-and-parent-group: 1991604900321cd7
   administer-a-subgroup: 58fa95833f79dd01
   delete-a-subgroup: 2c6e76ec78386443
+  how-people-join: 3e3d7bf205af6b7c
 generated:
   introduction: 75c64ddaa880134c
   add-a-subgroup: 0ceef6cb6b4e97f4
   subgroup-settings: ad0c7b923b9ddc01
-  privacy: 8844aa1ef192b577
-  permissions: 83f1ee5a66282dd3
+  privacy: 8978f404e476009b
+  permissions: 0ea18cffc3f75b8c
   find-subgroups: f3c8f74d99c5b1e1
   invite-to-a-subgroup: f9298311957d4afd
   simultaneously-invite-people-to-subgroups-and-parent-group: 54e5ac5efa9afc0c
   administer-a-subgroup: a34d9628137e3175
   delete-a-subgroup: c0cf3d3472210145
+  how-people-join: 97fd4006caa9b4cb
 title_source: 9f81e728f70cae3e
 title_generated: 6fe3105765e4acd6
 ---
@@ -73,25 +75,34 @@ Je kunt de [groepsinstellingen](/en/user_manual/groups/settings/) van de subgroe
 
 ### Privacy
 
-De privacyinstellingen voor subgroepen zijn vergelijkbaar met die van de hoofdgroep.
+Kies wie de subgroep kan vinden en de threads kan lezen:
 
-**Geheim** ingestelde subgroepen zijn niet zichtbaar voor mensen die niet voor de subgroep zijn uitgenodigd.
+| Privacy | Wie kan de subgroep vinden | Wie kan de threads lezen |
+| --- | --- | --- |
+| **Open** | Iedereen | Iedereen |
+| **Gesloten** | Iedereen | Leden van de subgroep en uitgenodigde gasten |
+| **Zichtbaar voor de bovenliggende groep** | Leden van de hoofdgroep en leden van de subgroep | Leden van de subgroep en uitgenodigde gasten |
+| **Geheim** | Uitgenodigde leden van de subgroep | Leden van de subgroep en uitgenodigde gasten |
 
-**Gesloten** subgroepen staan op het tabblad Subgroepen van de hoofdgroep en in het zijbalkmenu van de gebruiker. Leden van de hoofdgroep kunnen een verzoek indienen om lid te worden van de subgroep. Een admin van de subgroep keurt het lidmaatschap goed.
-
-Gesloten subgroepen hebben een extra instelling waarmee leden van de hoofdgroep privéthreads kunnen bekijken.
+Als de hoofdgroep privé is, kunnen subgroepen **Zichtbaar voor de bovenliggende groep** of **Geheim** zijn.
 
 [Lees hier over de privacy van groepen](/en/user_manual/groups/settings/privacy).
 
+<!-- translation-section: how-people-join -->
+
+### Hoe mensen lid worden
+
+Kies [hoe mensen lid worden](/en/user_manual/groups/settings/privacy#how-people-join) bij het aanmaken van de subgroep, of onder **Groepsinstellingen bewerken → Privacy**.
+
+![Privacyinstellingen en instellingen voor lid worden van de subgroep](subgroups_privacy_settings.png)
+
 <!-- translation-section: permissions -->
 
-### Rechten
+### Toestemmingen
 
-Subgroepen werken onafhankelijk van de hoofdgroep. Als de privacyinstelling van de subgroep bijvoorbeeld op **Geheim** staat, kunnen alleen uitgenodigde leden deze subgroep vinden, zien wie er lid van is en threads bekijken.
+Schakel **Leden van de hoofdgroep kunnen privéthreads zien** in onder **Toestemmingen** om leden van de hoofdgroep threads van de subgroep te laten lezen zonder lid te worden. Deze lezers krijgen geen stemrecht en worden geen lid van de subgroep.
 
-**Gesloten** subgroepen hebben een extra instelling waarmee leden van de hoofdgroep privéthreads kunnen bekijken. Zo kan de subgroep transparant zijn voor leden van de hoofdgroep.
-
-![Instelling waarmee leden van de hoofdgroep privéthreads van de subgroep kunnen bekijken](subgroups_private_threads_settings.png)
+![Instelling waarmee leden van de hoofdgroep privéthreads van de subgroep kunnen zien](subgroups_private_threads_settings.png)
 
 <!-- translation-section: find-subgroups -->
 

@@ -248,6 +248,7 @@ el:
       open: Άνοιγμα
       closed: Έκλεισε
       private: Ιδιωτικό
+      parent_members: "Ορατή στη γονική ομάδα"
       secret: Κρυφό
     selected: Επιλεγμένα
     today: σήμερα
@@ -1422,6 +1423,9 @@ el:
     confirm_change_to_public: Εάν συνεχίσετε, όλα τα νήματα σε αυτήν την ομάδα θα δημοσιοποιηθούν στον ιστό.
     confirm_change_to_private_discussions_only: Εάν συνεχίσετε, τυχόν δημόσια νήματα σε αυτήν την ομάδα θα γίνουν ιδιωτικά.
     profile: Προφίλ
+    subgroup_name_and_content_are_public: "Όλοι μπορούν να βρουν αυτή την υποομάδα και να διαβάσουν τα νήματά της"
+    subgroup_name_is_public_and_threads_are_private: "Όλοι μπορούν να βρουν αυτή την υποομάδα· τα νήματά της είναι ιδιωτικά"
+    subgroup_is_visible_to_parent_members: "Τα μέλη της %{parent} μπορούν να βρουν αυτή την υποομάδα· τα νήματά της είναι ιδιωτικά"
     subgroup_privacy_is_open_description: Οποιοσδήποτε μπορεί να βρει αυτήν την υποομάδα και να ζητήσει να συμμετάσχει. Μόνο τα μέλη μπορούν να δουν ποιος είναι στην ομάδα. Όλα τα νήματα είναι δημόσια.
     subgroup_privacy_is_closed_description: Οποιοσδήποτε μπορεί να βρει αυτήν την υποομάδα και να ζητήσει να συμμετάσχει. Μόνο τα μέλη μπορούν να δουν ποιος είναι στην ομάδα. Όλα τα νήματα είναι ιδιωτικά.
     subgroup_privacy_is_closed_public_threads_description: Οποιοσδήποτε μπορεί να βρει αυτήν την υποομάδα και να ζητήσει να συμμετάσχει. Μόνο τα μέλη μπορούν να δουν ποιος είναι στην ομάδα. Τα νήματα μπορεί να είναι δημόσια ή ιδιωτικά.
@@ -1429,10 +1433,9 @@ el:
     subgroup_privacy_is_secret_description: Μόνο τα προσκεκλημένα μέλη μπορούν να βρουν αυτήν την υποομάδα, να δουν ποιος είναι σε αυτήν και να δουν νήματα.
     advanced_settings: Προηγμένες ρυθμίσεις
     how_do_people_join: Πώς εντάσσονται οι άνθρωποι;
-    membership_granted_upon_request: Οποιοσδήποτε μπορεί να συμμετάσχει στην ομάδα.
-    membership_granted_upon_approval: Οποιοσδήποτε μπορεί να ζητήσει να συμμετάσχει, αλλά πρέπει να εγκριθεί.
-    membership_granted_upon_invitation: Μόνο πρόσκληση.
-    membership_granted_upon_approval_secret_parent: "<strong>Κατόπιν αιτήματος,</strong> οποιοσδήποτε από το %{parent} μπορεί να ζητήσει να συμμετάσχει στην ομάδα."
+    join_without_approval: "Εγγραφή χωρίς έγκριση"
+    request_to_join: "Αίτημα εγγραφής"
+    invitation_only: "Μόνο με πρόσκληση"
     permissions: Δικαιώματα
     thread_privacy: Ιδιωτικότητα του θέματος
     public_threads: Μόνο δημόσια θέματα
@@ -1440,8 +1443,8 @@ el:
     public_or_private_threads: Επιτρέπονται δημόσια και ιδιωτικά θέματα
     private_threads: Μόνο τα μέλη μπορούν να δεις τις συζητήσεις
     allow_public_threads: Επιτρέπονται δημόσια θέματα σε αυτή την ομάδα.
-    parent_members_can_see_discussions: Τα μέλη του %{parent} μπορούν να δουν ιδιωτικά νήματα
-    parent_members_can_see_discussions_help: Να επιτρέπεται στα μέλη της γονικής ομάδας να βλέπουν, αλλά όχι να συμμετέχουν, νήματα και δημοσκοπήσεις σε αυτήν την ομάδα
+    parent_group_members_can_see_private_threads: "Τα μέλη της γονικής ομάδας μπορούν να βλέπουν ιδιωτικά νήματα"
+    parent_group_members_can_see_private_threads_help: "Επιτρέψτε στα μέλη της %{parent} να βλέπουν νήματα και δημοσκοπήσεις σε αυτή την ομάδα, χωρίς να συμμετέχουν"
     members_can_announce: Τα μέλη μπορούν να ειδοποιήσουν όλους στην ομάδα
     members_can_announce_help: Επιτρέψτε στα μέλη να ειδοποιούν όλους στην ομάδα για ένα νήμα ή μια δημοσκόπηση
     members_can_add_members: Τα μέλη μπορούν να προσκαλέσουν μέλη

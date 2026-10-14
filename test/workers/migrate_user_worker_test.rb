@@ -111,7 +111,7 @@ class MigrateUserWorkerTest < ActiveSupport::TestCase
   end
 
   test "merging people in different subgroups rebuilds the distinct organization total" do
-    subgroup = Group.create!(name: 'Account merge subgroup', parent: @another_group)
+    subgroup = Group.create!(name: 'Account merge subgroup', parent: @another_group, group_privacy: 'parent_members')
     subgroup.add_member!(@jennifer)
     assert_equal 2, @another_group.reload.org_members_count
 

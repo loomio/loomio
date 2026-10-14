@@ -311,6 +311,7 @@ en:
       open: Open
       closed: Closed
       private: Private
+      parent_members: "Visible to parent group"
       secret: Secret
     selected: Selected
     today: today
@@ -1609,6 +1610,9 @@ en:
     confirm_change_to_public: If you proceed, all threads in this group will be made public on the web.
     confirm_change_to_private_discussions_only: If you proceed, any public threads in this group will be made private.
     profile: Profile
+    subgroup_name_and_content_are_public: "Anyone can find this subgroup and read its threads"
+    subgroup_name_is_public_and_threads_are_private: "Anyone can find this subgroup; its threads are private"
+    subgroup_is_visible_to_parent_members: "Members of %{parent} can find this subgroup; its threads are private"
     subgroup_privacy_is_open_description: Anyone can find this subgroup and ask to join. All threads are public.
     subgroup_privacy_is_closed_description: Anyone can find this subgroup and ask to join. All threads are private.
     subgroup_privacy_is_closed_public_threads_description: Anyone can find this subgroup and ask to join. Threads can be public or private.
@@ -1616,10 +1620,9 @@ en:
     subgroup_privacy_is_secret_description: Only invited members can see this subgroup.
     advanced_settings: Advanced settings
     how_do_people_join: How do people join?
-    membership_granted_upon_request: Anyone can join the group.
-    membership_granted_upon_approval: Anyone can request to join but must be approved.
-    membership_granted_upon_invitation: Invitation only.
-    membership_granted_upon_approval_secret_parent: "<strong>By request</strong>  anyone from %{parent} can ask to join the group."
+    join_without_approval: Join without approval
+    request_to_join: Request to join
+    invitation_only: Invitation only
     permissions: Permissions
     thread_privacy: Thread privacy
     public_threads: Public threads only
@@ -1627,8 +1630,8 @@ en:
     public_or_private_threads: Allow public and private threads
     private_threads: Only members can see discussions
     allow_public_threads: Allow public threads in this group.
-    parent_members_can_see_discussions: Members of %{parent} can see private threads
-    parent_members_can_see_discussions_help: Allow members of the parent group to see, but not participate in, threads and polls within this group
+    parent_group_members_can_see_private_threads: Parent group members can see private threads
+    parent_group_members_can_see_private_threads_help: Allow members of %{parent} to see, but not participate in, threads and polls within this group
     members_can_announce: Members can notify everyone in the group
     members_can_announce_help: Allow members to notify everyone in the group about a thread or poll
     members_can_add_members: Members can invite members

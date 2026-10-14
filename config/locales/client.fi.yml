@@ -248,6 +248,7 @@ fi:
       open: Avoin
       closed: Suljettu
       private: Yksityinen
+      parent_members: "Näkyy pääryhmälle"
       secret: Salainen
     selected: Valittu
     today: tänään
@@ -1422,6 +1423,9 @@ fi:
     confirm_change_to_public: Jos jatkat, kaikki tämän ryhmän viestiketjut julkistetaan verkossa.
     confirm_change_to_private_discussions_only: Jos jatkat, kaikki tämän ryhmän julkiset viestiketjut muutetaan yksityisiksi.
     profile: Profiili
+    subgroup_name_and_content_are_public: "Kuka tahansa voi löytää tämän alaryhmän ja lukea sen ketjuja"
+    subgroup_name_is_public_and_threads_are_private: "Kuka tahansa voi löytää tämän alaryhmän; sen ketjut ovat yksityisiä"
+    subgroup_is_visible_to_parent_members: "Ryhmän %{parent} jäsenet voivat löytää tämän alaryhmän; sen ketjut ovat yksityisiä"
     subgroup_privacy_is_open_description: Kuka tahansa voi löytää tämän alaryhmän ja pyytää liittymistä. Vain jäsenet näkevät ryhmän jäsenet. Kaikki viestiketjut ovat julkisia.
     subgroup_privacy_is_closed_description: Kuka tahansa voi löytää tämän alaryhmän ja pyytää liittymistä. Vain jäsenet näkevät ryhmän jäsenet. Kaikki viestiketjut ovat yksityisiä.
     subgroup_privacy_is_closed_public_threads_description: Kuka tahansa voi löytää tämän alaryhmän ja pyytää liittymistä. Vain jäsenet näkevät ryhmän jäsenet. Säikeet voivat olla julkisia tai yksityisiä.
@@ -1429,10 +1433,9 @@ fi:
     subgroup_privacy_is_secret_description: Vain kutsutut jäsenet voivat löytää tämän alaryhmän, nähdä keitä siinä on ja viestiketjuja.
     advanced_settings: Lisäasetukset
     how_do_people_join: Miten ihmiset liittyvät?
-    membership_granted_upon_request: Kuka tahansa voi liittyä ryhmään.
-    membership_granted_upon_approval: Kuka tahansa voi pyytää liittymistä, mutta se on hyväksyttävä.
-    membership_granted_upon_invitation: Vain kutsu.
-    membership_granted_upon_approval_secret_parent: "<strong>Pyynnöstä</strong> kuka tahansa %{parent} voi pyytää lupaa liittyä ryhmään."
+    join_without_approval: "Liity ilman hyväksyntää"
+    request_to_join: "Pyydä jäsenyyttä"
+    invitation_only: "Vain kutsulla"
     permissions: Käyttöoikeudet
     thread_privacy: Viestiketjun yksityisyys
     public_threads: Vain julkiset viestiketjut
@@ -1440,8 +1443,8 @@ fi:
     public_or_private_threads: Salli julkiset ja yksityiset viestiketjut
     private_threads: Vain jäsenet näkevät keskustelut
     allow_public_threads: Salli julkiset viestiketjut tässä ryhmässä.
-    parent_members_can_see_discussions: Ryhmän %{parent} jäsenet voivat nähdä yksityiset viestiketjut
-    parent_members_can_see_discussions_help: Salli pääryhmän jäsenten nähdä tämän ryhmän viestiketjut ja kyselyt, mutta he eivät osallistu niihin
+    parent_group_members_can_see_private_threads: "Pääryhmän jäsenet näkevät yksityiset ketjut"
+    parent_group_members_can_see_private_threads_help: "Salli ryhmän %{parent} jäsenten nähdä tämän ryhmän ketjut ja kyselyt, mutta ei osallistua niihin"
     members_can_announce: Jäsenet voivat ilmoittaa kaikille ryhmän jäsenille
     members_can_announce_help: Salli jäsenten ilmoittaa kaikille ryhmän jäsenille viestiketjusta tai kyselystä
     members_can_add_members: Jäsenet voivat kutsua jäseniä

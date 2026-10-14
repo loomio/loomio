@@ -1,16 +1,16 @@
 ---
 title: Adatok exportálása
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
+source_revision: cd2e1e63e611688362e80009f50b8ed25025ba8b
 source_file: docs/en/user_manual/groups/data_export/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-07'
 sections:
   introduction: 5e29f67f9a2084ec
   export-data: 58b5e1d4e6f0b917
   export-group-data-as-csv: 53286ec33e7300d6
   export-group-data-as-html: 101671937dcd6f36
-  export-group-data-as-json: 4ec883363fb166ee
+  export-group-data-as-json: aa310889d0854550
   print-thread-to-pdf: 39c48383953f9fd5
   import-your-group-data-on-another-loomio-server: 910ee8af48049e82
 generated:
@@ -18,7 +18,7 @@ generated:
   export-data: c43983a7f192e20a
   export-group-data-as-csv: e6d247a9de86d244
   export-group-data-as-html: 8633b6e8ae580869
-  export-group-data-as-json: 87d929e967db8070
+  export-group-data-as-json: aa5ae383d632c616
   print-thread-to-pdf: 969dcf98961a7212
   import-your-group-data-on-another-loomio-server: 3d3e7708eddab6a6
 title_source: 29049648f87b87f5
@@ -79,7 +79,7 @@ Az exportáláshoz a csoport adminjának kell lenned. A JSON-export a következ�
 - Az exportban szereplő csoportok szálait, hozzászólásait, reakcióit, címkéit, sablonjait, értesítéseit és kapcsolódó rekordjait
 - A szavazásokat, lehetőségeket, szavazatokat és következtetéseket; a névtelen szavazások csak a lezárásuk után kerülnek bele
 - Azokat az alcsoportokat, amelyeknek tagja vagy
-- A nyílt és zárt alcsoportokat, ha a szülőcsoportjukat annak adminjaként exportálod, akkor is, ha nem vagy tagja ezeknek az alcsoportoknak
+- A nyílt, zárt és a szülőcsoport számára látható alcsoportokat, ha a szülőcsoportjukat annak adminjaként exportálod, akkor is, ha nem vagy tagja ezeknek az alcsoportoknak
 - Az exportban szereplő tartalomhoz csatolt fájlokra és képekre mutató hivatkozásokat
 
 A JSON-export nem tartalmazza a következőket:

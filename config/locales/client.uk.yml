@@ -248,6 +248,7 @@ uk:
       open: Відкрита
       closed: Закрита
       private: Приватна
+      parent_members: "Видима батьківській групі"
       secret: Таємна
     selected: Вибрані
     today: сьогодні
@@ -1431,6 +1432,9 @@ uk:
     confirm_change_to_public: Якщо ви продовжите, всі теми в цій групі стануть загальнодоступними в мережі.
     confirm_change_to_private_discussions_only: Якщо ви продовжите, всі загальнодоступні теми в цій групі буде змінено на приватні.
     profile: Профіль
+    subgroup_name_and_content_are_public: "Будь-хто може знайти цю підгрупу й читати її теми"
+    subgroup_name_is_public_and_threads_are_private: "Будь-хто може знайти цю підгрупу; її теми приватні"
+    subgroup_is_visible_to_parent_members: "Учасники %{parent} можуть знайти цю підгрупу; її теми приватні"
     subgroup_privacy_is_open_description: 'Будь-хто може знайти цю підгрупу та зробити запит на участь. Тільки учасники можуть бачити хто входить до групи. Всі теми є загальнодоступними. '
     subgroup_privacy_is_closed_description: 'Будь-хто може знайти групу та зробити запит на участь. Тільки учасники можуть бачити хто входить до групи. Всі теми є приватними. '
     subgroup_privacy_is_closed_public_threads_description: 'Будь-хто може знайти цю підгрупу та зробити запит на участь. Тільки учасники можуть бачити хто входить до групи. Теми можуть бути загальнодоступними та приватними. '
@@ -1438,10 +1442,9 @@ uk:
     subgroup_privacy_is_secret_description: Тільки запрошені учасники можуть знайти цю підгрупу, бачити перелік ії учасників та теми.
     advanced_settings: Додаткові налаштування
     how_do_people_join: Як люди можуть приєднатися?
-    membership_granted_upon_request: Будь-хто може приєднатися до групи.
-    membership_granted_upon_approval: Будь-хто може зробити запит на участь, але воно має бути схвалено.
-    membership_granted_upon_invitation: Тільки запрошення.
-    membership_granted_upon_approval_secret_parent: "<strong>За запитом</strong> будь-хто з %{parent} може попросити приєднатися до групи."
+    join_without_approval: "Вступ без схвалення"
+    request_to_join: "Запит на вступ"
+    invitation_only: "Лише за запрошенням"
     permissions: Дозволи
     thread_privacy: Конфіденційність тем
     public_threads: Тільки загальнодоступні теми
@@ -1449,8 +1452,8 @@ uk:
     public_or_private_threads: Дозволити загальнодоступні та приватні теми
     private_threads: Тільки учасники можуть бачити обговорення
     allow_public_threads: Дозволити загальнодоступні теми в цій групі.
-    parent_members_can_see_discussions: Учасники %{parent} можуть бачити приватні теми.
-    parent_members_can_see_discussions_help: Дозволити учасникам батьківської групи бачити теми та опитування в цій групі, але не брати в них участі.
+    parent_group_members_can_see_private_threads: "Учасники батьківської групи можуть бачити приватні теми"
+    parent_group_members_can_see_private_threads_help: "Дозволити учасникам групи %{parent} переглядати теми й опитування в цій групі, але не брати в них участі"
     members_can_announce: Учасники можуть повідомити усіх в групі.
     members_can_announce_help: Дозволити учасникам повідомляти усіх в групі щодо тем та опитувань
     members_can_add_members: Учасники можуть запрошувати нових учасників

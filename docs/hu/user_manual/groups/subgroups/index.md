@@ -1,32 +1,34 @@
 ---
 title: Alcsoportok
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
+source_revision: e34ed3124daf97b42eef81bc6f6a90075ec93227
 source_file: docs/en/user_manual/groups/subgroups/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-14'
 sections:
   introduction: 63e6e23d24e80919
   add-a-subgroup: 0bc0e5f99eb074c3
   subgroup-settings: 737225cc4bebe7e8
-  privacy: f5d6a140045a00af
-  permissions: 948f8a0f3209953c
+  privacy: 58872ebdc8b93967
+  permissions: 485ea3cc98d48900
   find-subgroups: 5e6fc5a5122c1417
   invite-to-a-subgroup: 0af670e1e9b32a5e
   simultaneously-invite-people-to-subgroups-and-parent-group: 1991604900321cd7
   administer-a-subgroup: 58fa95833f79dd01
   delete-a-subgroup: 2c6e76ec78386443
+  how-people-join: 3e3d7bf205af6b7c
 generated:
   introduction: ee3713d0233cae02
   add-a-subgroup: 403fc6fe9c56ff91
   subgroup-settings: 16d3adb394b9f23e
-  privacy: 0b0159642d2836cb
-  permissions: e3f2765eb903b875
+  privacy: 0a0cd483f00f3789
+  permissions: 76698e8be0416225
   find-subgroups: 4a9b8588abd2a44d
   invite-to-a-subgroup: 6b62a1bbab58947c
   simultaneously-invite-people-to-subgroups-and-parent-group: 9a32f87b98d4beff
   administer-a-subgroup: b12db1ce0ba3b431
   delete-a-subgroup: b425952ca6a4401b
+  how-people-join: c5387a490ee24b5f
 title_source: 9f81e728f70cae3e
 title_generated: a74a4851d37bc4f2
 ---
@@ -73,23 +75,32 @@ Az alcsoport [csoportbeállításait](/en/user_manual/groups/settings/) az alcso
 
 ### Adatvédelem
 
-Az alcsoportok adatvédelmi beállításai hasonlóak a szülőcsoport beállításaihoz.
+Válaszd ki, hogy kik találhatják meg az alcsoportot és olvashatják a szálait:
 
-A **Titkos** alcsoportokat csak azok láthatják, akiket meghívtak az alcsoportba.
+| Adatvédelem | Ki találhatja meg | Ki olvashatja a szálait |
+| --- | --- | --- |
+| **Nyitott** | Bárki | Bárki |
+| **Zárt** | Bárki | Az alcsoport tagjai és a meghívott vendégek |
+| **Látható a szülőcsoport számára** | A szülőcsoport és az alcsoport tagjai | Az alcsoport tagjai és a meghívott vendégek |
+| **Titkos** | Az alcsoport meghívott tagjai | Az alcsoport tagjai és a meghívott vendégek |
 
-A **Zárt** alcsoportok megjelennek a szülőcsoport Alcsoportok lapján és a felhasználó oldalsávjában. A szülőcsoport tagjai kérhetik a csatlakozást az alcsoporthoz. A tagságot az alcsoport egyik adminja hagyja jóvá.
-
-A zárt alcsoportoknak van egy további beállításuk, amely lehetővé teszi, hogy a szülőcsoport tagjai lássák a privát szálakat.
+Ha a szülőcsoport privát, az alcsoportnál a **Látható a szülőcsoport számára** és a **Titkos** beállítás érhető el.
 
 [A csoportok adatvédelméről itt olvashatsz](/en/user_manual/groups/settings/privacy).
 
+<!-- translation-section: how-people-join -->
+
+### Hogyan csatlakoznak az emberek?
+
+Válaszd ki, [hogyan csatlakoznak az emberek](/en/user_manual/groups/settings/privacy#how-people-join) az alcsoport létrehozásakor vagy a **Csoportbeállítások szerkesztése → Adatvédelem** résznél.
+
+![Az alcsoport adatvédelmi és csatlakozási beállításai](subgroups_privacy_settings.png)
+
 <!-- translation-section: permissions -->
 
-### Jogosultságok
+### Engedélyek
 
-Az alcsoportok a szülőcsoporttól függetlenül működnek. Ha például az alcsoport adatvédelmi beállítása **Titkos**, akkor csak a meghívott tagok találhatják meg az alcsoportot, láthatják a tagjait és a szálait.
-
-A **Zárt** alcsoportoknak van egy további beállításuk, amely lehetővé teszi, hogy a szülőcsoport tagjai lássák a privát szálakat. Így az alcsoport működése átláthatóvá válik a szülőcsoport tagjai számára.
+Kapcsold be **A szülőcsoport tagjai láthatják a privát szálakat** beállítást az **Engedélyek** résznél, hogy a szülőcsoport tagjai csatlakozás nélkül olvashassák az alcsoport szálait. Ezek az olvasók nem kapnak szavazati jogot, és nem válnak az alcsoport tagjaivá.
 
 ![Beállítás, amely lehetővé teszi, hogy a szülőcsoport tagjai lássák az alcsoport privát szálait](subgroups_private_threads_settings.png)
 

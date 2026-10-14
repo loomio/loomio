@@ -8,7 +8,7 @@ translated:
 sections:
   introduction: f216b18771a2c2a9
   administering-your-group: 27aed40959adef57
-  managing-subgroups: ee977899fa34caab
+  managing-subgroups: 915e13a928a8f4aa
   removing-members: f40c25fd90ab1ce2
   leaving-group: 11b09b4af23b4e7e
   set-title: 835b25d246477b4a
@@ -16,7 +16,7 @@ sections:
 generated:
   introduction: 1e2b960fecdc7b20
   administering-your-group: 3c0cb1c03de746e4
-  managing-subgroups: 065e1aeee7022db1
+  managing-subgroups: 191c40769dbb2779
   removing-members: 8512fbec84729481
   leaving-group: a6ba656d5b8466b6
   set-title: 5e9c488e9422af3b
@@ -51,9 +51,9 @@ Om een lid **admin** te maken, ga je naar het tabblad Leden, zoek je het lid en 
 <!-- translation-section: managing-subgroups -->
 
 ## Subgroepen beheren
-Als je admin van een hoofdgroep of organisatie bent, heb je extra rechten voor alle __besloten__ subgroepen.
+Admins van een hoofdgroep kunnen lid worden van elke niet-geheime subgroep ervan en zichzelf daarna admin van die subgroepen maken.
 
-Je kunt lid worden van elke besloten subgroep door op de knop "Lid worden van groep" links op de betreffende subgroeppagina te klikken, net onder de tabbladen.
+Selecteer **Word lid van de groep** op de subgroeppagina.
 
 ![Knop om lid te worden van een besloten subgroep van Oatmilk Cooperative](member_join_subgroup.png)
 

@@ -1,16 +1,16 @@
 ---
 title: Экспарт дадзеных
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
+source_revision: cd2e1e63e611688362e80009f50b8ed25025ba8b
 source_file: docs/en/user_manual/groups/data_export/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-07'
 sections:
   introduction: 5e29f67f9a2084ec
   export-data: 58b5e1d4e6f0b917
   export-group-data-as-csv: 53286ec33e7300d6
   export-group-data-as-html: 101671937dcd6f36
-  export-group-data-as-json: 4ec883363fb166ee
+  export-group-data-as-json: aa310889d0854550
   print-thread-to-pdf: 39c48383953f9fd5
   import-your-group-data-on-another-loomio-server: 910ee8af48049e82
 generated:
@@ -18,7 +18,7 @@ generated:
   export-data: d4db4e0b8cd4b6b1
   export-group-data-as-csv: 2a2bf91d803eda0a
   export-group-data-as-html: b51b83d2b5122e7a
-  export-group-data-as-json: 952ed10b9531c4d2
+  export-group-data-as-json: 3f80474c723eb545
   print-thread-to-pdf: ba72edab6d03f510
   import-your-group-data-on-another-loomio-server: 50726afc3859e834
 title_source: 29049648f87b87f5
@@ -79,7 +79,7 @@ Loomio рыхтуе файл HTML у фонавым рэжыме і дасыла
 - Тэмы, каментарыі, рэакцыі, тэгі, шаблоны, апавяшчэнні і звязаныя запісы з уключаных груп
 - Апытанні, варыянты, галасы і высновы; ананімнае апытанне ўключаецца толькі пасля яго закрыцця
 - Падгрупы, у якіх вы ўдзельнічаеце
-- Адкрытыя і закрытыя падгрупы, калі вы экспартуеце іх бацькоўскую групу з правамі адміністратара бацькоўскай групы, нават калі вы не ўдзельнічаеце ў гэтых падгрупах
+- Адкрытыя, закрытыя і бачныя для бацькоўскай групы падгрупы, калі вы экспартуеце іх бацькоўскую групу з правамі адміністратара бацькоўскай групы, нават калі вы не ўдзельнічаеце ў гэтых падгрупах
 - Спасылкі на файлы і выявы, далучаныя да ўключанага змесціва
 
 Экспарт у JSON не ўключае:

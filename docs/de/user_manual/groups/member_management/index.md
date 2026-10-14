@@ -8,7 +8,7 @@ translated:
 sections:
   introduction: f216b18771a2c2a9
   administering-your-group: 27aed40959adef57
-  managing-subgroups: ee977899fa34caab
+  managing-subgroups: 915e13a928a8f4aa
   removing-members: f40c25fd90ab1ce2
   leaving-group: 11b09b4af23b4e7e
   set-title: 835b25d246477b4a
@@ -16,7 +16,7 @@ sections:
 generated:
   introduction: 89b96cc8fdabf34e
   administering-your-group: 3c2f58a1981e45e4
-  managing-subgroups: 3ceb8b26baf93756
+  managing-subgroups: 5840da1bb754a212
   removing-members: cb3b6278e54346bc
   leaving-group: 6b1137da6f778a55
   set-title: 2cd65fb070aa6647
@@ -51,9 +51,9 @@ Um ein Mitglied zum **Admin** zu machen, gehe zum Tab Mitglieder, suche das Mitg
 <!-- translation-section: managing-subgroups -->
 
 ## Untergruppen verwalten
-Wenn du Admin einer Hauptgruppe oder Organisation bist, hast du zusätzliche Berechtigungen für alle __geschlossenen__ Untergruppen.
+Admins einer Hauptgruppe können jeder ihrer nicht geheimen Untergruppen beitreten und sich anschließend selbst zu Admins dieser Untergruppen machen.
 
-Du kannst jeder geschlossenen Untergruppe beitreten, indem du links auf der jeweiligen Untergruppenseite auf die Schaltfläche „Gruppe beitreten“ klickst (direkt unter den Tabs).
+Wähle **Gruppe beitreten** auf der Untergruppenseite.
 
 ![Schaltfläche „Gruppe beitreten“ in einer geschlossenen Untergruppe der Oatmilk Cooperative](member_join_subgroup.png)
 

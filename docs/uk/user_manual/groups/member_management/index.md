@@ -8,7 +8,7 @@ translated:
 sections:
   introduction: f216b18771a2c2a9
   administering-your-group: 27aed40959adef57
-  managing-subgroups: ee977899fa34caab
+  managing-subgroups: 915e13a928a8f4aa
   removing-members: f40c25fd90ab1ce2
   leaving-group: 11b09b4af23b4e7e
   set-title: 835b25d246477b4a
@@ -16,7 +16,7 @@ sections:
 generated:
   introduction: 9759aca89a7d7250
   administering-your-group: 68b3aa606e1868f6
-  managing-subgroups: 3d8a7698c4ebb096
+  managing-subgroups: d870aed306d7568a
   removing-members: b04c8490cd7b13ce
   leaving-group: 03c72cb044abed76
   set-title: 59be169559f0076a
@@ -51,9 +51,9 @@ title_generated: fb5d8358c4066cf6
 <!-- translation-section: managing-subgroups -->
 
 ## Керування підгрупами
-Якщо ви адміністратор батьківської групи або організації, ви маєте додаткові дозволи щодо всіх __закритих__ підгруп.
+Адміністратори батьківської групи можуть приєднуватися до будь-якої її підгрупи, крім таємних, а потім призначати себе адміністраторами цих підгруп.
 
-Ви можете приєднатися до будь-якої закритої підгрупи, натиснувши кнопку «Приєднатися до групи» ліворуч на сторінці цієї підгрупи (одразу під вкладками).
+Виберіть **Приєднатися до групи** на сторінці підгрупи.
 
 ![Кнопка приєднання до групи в закритій підгрупі Oatmilk Cooperative](member_join_subgroup.png)
 

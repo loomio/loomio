@@ -278,7 +278,8 @@ module.exports = {
 
     page.fillIn('#group-name', 'Closed please')
     page.click('.group-form__privacy-closed')
-    page.expectNoElement('.group-form__joining')
+    page.expectElement('.group-form__joining')
+    page.expectElement('.group-form__membership-granted-upon-request')
     page.click('.group-form__submit-button')
     page.expectFlash('Group started')
 

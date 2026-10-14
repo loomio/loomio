@@ -8,7 +8,7 @@ translated:
 sections:
   introduction: f216b18771a2c2a9
   administering-your-group: 27aed40959adef57
-  managing-subgroups: ee977899fa34caab
+  managing-subgroups: 915e13a928a8f4aa
   removing-members: f40c25fd90ab1ce2
   leaving-group: 11b09b4af23b4e7e
   set-title: 835b25d246477b4a
@@ -16,7 +16,7 @@ sections:
 generated:
   introduction: b12bc3fb9a4d20ce
   administering-your-group: 83711aeebdb42c37
-  managing-subgroups: bee9b09a7318fe91
+  managing-subgroups: aa5ef42928e1149b
   removing-members: 32a7cbd62f7d52f0
   leaving-group: 704668ab134e1b54
   set-title: 97eaa9af3ef532d0
@@ -51,9 +51,9 @@ title_generated: 4b3b48d6a2988ead
 <!-- translation-section: managing-subgroups -->
 
 ## ניהול תת־קבוצות
-למנהלים של קבוצת אם או ארגון יש הרשאות נוספות בכל תת־הקבוצות ה__סגורות__.
+מנהלים של קבוצת אם יכולים להצטרף לכל אחת מתת־הקבוצות שלה שאינן סודיות, ולאחר מכן להעניק לעצמם הרשאות מנהל בתת־הקבוצה.
 
-ניתן להצטרף לכל תת־קבוצה סגורה בלחיצה על הכפתור "הצטרפות לקבוצה" בצד שמאל של דף תת־הקבוצה (ממש מתחת ללשוניות).
+יש לבחור **הצטרפו לקבוצה** בדף תת־הקבוצה.
 
 ![כפתור ההצטרפות לקבוצה בתת־קבוצה סגורה של קואופרטיב Oatmilk](member_join_subgroup.png)
 

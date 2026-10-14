@@ -1,26 +1,28 @@
 ---
 title: Adatvédelem
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
+source_revision: e34ed3124daf97b42eef81bc6f6a90075ec93227
 source_file: docs/en/user_manual/groups/settings/privacy.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-14'
 sections:
-  introduction: 72b58ba22851f914
-  open: 1727e8f20fe92fb2
+  introduction: 4b491c663bfb5ea9
+  open: 2802cda1461d3b19
   follow-an-open-group: e4a1b3ce35a974d0
-  closed: 8856fa003c6915d9
-  secret: df6da0e3cba330b5
-  how-people-join: 8b20f2ab6789b0b7
-  group-directory: 4ef3023e3cf4efdf
+  closed: fe4da2f032768bca
+  secret: d0a9ea85448f9798
+  how-people-join: 926f4b183250aa9d
+  group-directory: a9a41ea389fb10ba
+  visible-to-parent-group: 96b8595d3bc6ce4b
 generated:
-  introduction: 0b49629a35143f9f
-  open: 619bdf717a80562e
+  introduction: 7ab6024626184f5e
+  open: 7a520dc8e7fb665c
   follow-an-open-group: 1ba28db3a5fc5a87
-  closed: 6b9a13fad4223108
-  secret: 606c173ff3ffdce9
-  how-people-join: ab3727fb4f58290e
-  group-directory: cecc19c6947a8ef3
+  closed: f152334a5ced467a
+  secret: f5b03dc9759ad3bf
+  how-people-join: 6e678dd97908c1fa
+  group-directory: f49d5685cf2bb3eb
+  visible-to-parent-group: c306b4bac9127b0f
 title_source: 54a57c3147c49f33
 title_generated: ea2f113c76e353a2
 ---
@@ -33,15 +35,13 @@ Az adatvédelmi beállítások határozzák meg, ki találhatja meg a csoportot,
 
 ![A csoport adatvédelmi beállításai](group_privacy_settings.png#width-90)
 
-Az adatvédelmi beállítások módosítása a csoport meglévő tartalmát is láthatóvá teheti vagy elrejtheti, nem csak a később létrehozott tartalmat. Válaszd ki a legszigorúbb beállítást, amely még megfelel a csoport céljának.
+Az adatvédelmi beállítások módosítása a meglévő tartalmat is érinti. Ha egy szülőcsoport priváttá válik, nyilvános alcsoportjai is a **Látható a szülőcsoport számára** beállításra váltanak, és szálaik priváttá válnak.
 
 <!-- translation-section: open -->
 
 ## Nyilvános
 
 A nyilvános csoportok nyilvános terek. Bárki megtalálhatja a csoportot, és elolvashatja a beszélgetéseit, szavazásait és fájljait. A taglistát továbbra is csak a tagok láthatják.
-
-A nyilvános csoportok engedélyezhetik az azonnali csatlakozást, jóváhagyást kérhetnek, vagy csak meghívóval fogadhatnak új tagokat.
 
 <!-- translation-section: follow-an-open-group -->
 
@@ -59,27 +59,29 @@ Kapcsold be a **Frissítések követése** beállítást a csoport oldalán, hog
 
 Bárki megtalálhatja a zárt csoportot, és elolvashatja a nevét és leírását. A beszélgetéseket, szavazásokat, fájlokat és a taglistát csak a tagok és a meghívott vendégek láthatják.
 
-A zárt csoportok engedélyezhetik a tagság kérelmezését, vagy csak meghívóval fogadhatnak új tagokat. Azonnali, jóváhagyás nélküli csatlakozást nem engedélyezhetnek.
+<!-- translation-section: visible-to-parent-group -->
 
-Egy szülőcsoport zárt alcsoportja engedélyezheti, hogy a szülőcsoport tagjai az alcsoporthoz való csatlakozás nélkül olvashassák az alcsoport beszélgetéseit.
+## Látható a szülőcsoport számára
+
+A szülőcsoport tagjai és az alcsoport tagjai megtalálhatják az alcsoportot. Szálait csak az alcsoport tagjai és a meghívott vendégek láthatják.
 
 <!-- translation-section: secret -->
 
 ## Titkos
 
-A titkos csoportokat és tartalmukat csak azok láthatják, akiket meghívtak vagy hozzáadtak. Taggá válni csak meghívóval lehet. A titkos csoportok nem jelennek meg a nyilvános csoportjegyzékben.
+A titkos csoportokat és tartalmukat csak azok láthatják, akiket meghívtak vagy hozzáadtak. A titkos csoportok nem jelennek meg a nyilvános csoportjegyzékben.
 
 <!-- translation-section: how-people-join -->
 
 ## Hogyan lehet csatlakozni
 
-Az adatvédelmi beállítás határozza meg, milyen csatlakozási módok érhetők el:
+A **Hogyan csatlakoznak az emberek?** alatt válaszd ki az elérhető csatlakozási módok egyikét:
 
-| A csoport adatvédelme | Elérhető csatlakozási módok |
+| Csatlakozási mód | Hogyan működik |
 | --- | --- |
-| **Nyitott** | Bárki csatlakozhat, jóváhagyást kérhet, vagy csak meghívóval lehet csatlakozni |
-| **Zárt** | Jóváhagyás kérése vagy csatlakozás csak meghívóval |
-| **Titkos** | Csatlakozás csak meghívóval |
+| **Csatlakozás jóváhagyás nélkül** | Az emberek maguk is csatlakozhatnak |
+| **Csatlakozás kérése** | Az emberek csatlakozási kérelmet küldenek, és megvárják a jóváhagyást |
+| **Csak meghívóval** | A csatlakozáshoz meghívó szükséges |
 
 Ha jóváhagyás szükséges, a csatlakozni kívánók kiválasztják a **Csoporthoz csatlakozás** lehetőséget, válaszolnak a csoport csatlakozási kérdésére, és elküldik a csatlakozási kérelmet. A kérdés beállításáról, a kérelmek áttekintéséről és az emberek közvetlen meghívásáról az [Emberek meghívása](/en/user_manual/groups/inviting_people#request-to-join-group) oldalon olvashatsz.
 
@@ -87,4 +89,4 @@ Ha jóváhagyás szükséges, a csatlakozni kívánók kiválasztják a **Csopor
 
 ## Csoportjegyzék
 
-A nyilvános és zárt szülőcsoportok megjelenhetnek a nyilvános csoportjegyzékben, hogy az emberek megtalálhassák őket. A jegyzékben való megjelenés nem változtat azon, ki olvashatja a csoport tartalmát, vagy ki válhat taggá. Az alcsoportok és a titkos csoportok nem jelenhetnek meg a jegyzékben.
+A nyilvános és zárt szülőcsoportok megjelenhetnek a nyilvános csoportjegyzékben, hogy az emberek megtalálhassák őket. Az alcsoportok és a titkos csoportok nem jelenhetnek meg a jegyzékben.

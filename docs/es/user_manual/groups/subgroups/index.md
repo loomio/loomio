@@ -1,32 +1,34 @@
 ---
 title: Subgrupos
-source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
+source_revision: e34ed3124daf97b42eef81bc6f6a90075ec93227
 source_file: docs/en/user_manual/groups/subgroups/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-14'
 sections:
   introduction: 63e6e23d24e80919
   add-a-subgroup: 0bc0e5f99eb074c3
   subgroup-settings: 737225cc4bebe7e8
-  privacy: f5d6a140045a00af
-  permissions: 948f8a0f3209953c
+  privacy: 58872ebdc8b93967
+  permissions: 485ea3cc98d48900
   find-subgroups: 5e6fc5a5122c1417
   invite-to-a-subgroup: 0af670e1e9b32a5e
   simultaneously-invite-people-to-subgroups-and-parent-group: 1991604900321cd7
   administer-a-subgroup: 58fa95833f79dd01
   delete-a-subgroup: 2c6e76ec78386443
+  how-people-join: 3e3d7bf205af6b7c
 generated:
   introduction: 6ad96a601d7c0b89
   add-a-subgroup: f0b0365a80acc5fe
   subgroup-settings: cfb7850bde221463
-  privacy: 317527daa267d6b9
-  permissions: d91be9b64a4dbdf1
+  privacy: f43226f5d555885c
+  permissions: ef00486a0545d0f0
   find-subgroups: 28b3c3488fbdc36d
   invite-to-a-subgroup: cc5655654a8abc56
   simultaneously-invite-people-to-subgroups-and-parent-group: ef5bec1085470e79
   administer-a-subgroup: 90a971a288f1e415
   delete-a-subgroup: 3a8a13578b5d7d1e
+  how-people-join: c7e7f4f951e01126
 title_source: 9f81e728f70cae3e
 title_generated: d54ff4541651eb81
 ---
@@ -73,23 +75,32 @@ Puedes editar los [ajustes del grupo](/en/user_manual/groups/settings/) del subg
 
 ### Privacidad
 
-La configuración de privacidad de los subgrupos es similar a la del grupo principal.
+Elige quién puede encontrar el subgrupo y leer sus hilos:
 
-Los subgrupos con la opción **Secreto ** no son visibles para las personas que no han sido invitadas al subgrupo.
+| Privacidad | Quién puede encontrarlo | Quién puede leer sus hilos |
+| --- | --- | --- |
+| **Abierto** | Cualquier persona | Cualquier persona |
+| **Cerrado** | Cualquier persona | Miembros del subgrupo e invitados |
+| **Visible para el grupo principal** | Miembros del grupo principal y del subgrupo | Miembros del subgrupo e invitados |
+| **Secreto** | Miembros invitados al subgrupo | Miembros del subgrupo e invitados |
 
-Los subgrupos con la opción **Cerrado** aparecen en la pestaña Subgrupos del grupo principal y en tu menú lateral. Los miembros del grupo principal pueden solicitar unirse al subgrupo. Un admin del subgrupo aprueba las solicitudes.
-
-Los subgrupos cerrados tienen una opción adicional que permite a los miembros del grupo principal ver los hilos privados.
+Cuando el grupo principal es privado, los subgrupos pueden ser **Visible para el grupo principal** o **Secreto**.
 
 [Lee sobre la privacidad de los grupos aquí](/en/user_manual/groups/settings/privacy).
+
+<!-- translation-section: how-people-join -->
+
+### Cómo se unen las personas
+
+Elige [cómo se unen las personas](/en/user_manual/groups/settings/privacy#how-people-join) al crear el subgrupo, o en **Editar configuración del grupo → Privacidad**.
+
+![Configuración de privacidad del subgrupo y de cómo se unen las personas](subgroups_privacy_settings.png)
 
 <!-- translation-section: permissions -->
 
 ### Permisos
 
-Los subgrupos funcionan de forma independiente del grupo principal. Por ejemplo, si la configuración de privacidad del subgrupo es **Secreto **, solo los miembros invitados pueden encontrarlo, ver quién pertenece a él y ver los hilos.
-
-Los subgrupos con la opción **Cerrado** tienen una opción adicional que permite a los miembros del grupo principal ver los hilos privados, lo que permite que el subgrupo sea transparente para los miembros del grupo principal.
+Activa **Los miembros del grupo principal pueden ver los hilos privados** en **Permisos** para permitir que los miembros del grupo principal lean los hilos del subgrupo sin unirse. Estas personas no obtienen el derecho a votar ni pasan a ser miembros del subgrupo.
 
 ![Opción que permite a los miembros del grupo principal ver los hilos privados del subgrupo](subgroups_private_threads_settings.png)
 

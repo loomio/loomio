@@ -1,28 +1,32 @@
 ---
 title: Confidentialité
-source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
+source_revision: e34ed3124daf97b42eef81bc6f6a90075ec93227
 source_file: docs/en/user_manual/groups/settings/privacy.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-14'
 sections:
-  introduction: 72b58ba22851f914
-  open: 1727e8f20fe92fb2
+  introduction: 4b491c663bfb5ea9
+  open: 2802cda1461d3b19
   follow-an-open-group: e4a1b3ce35a974d0
-  closed: 8856fa003c6915d9
-  secret: df6da0e3cba330b5
-  how-people-join: 8b20f2ab6789b0b7
-  group-directory: 4ef3023e3cf4efdf
+  closed: fe4da2f032768bca
+  secret: d0a9ea85448f9798
+  how-people-join: 926f4b183250aa9d
+  group-directory: a9a41ea389fb10ba
+  visible-to-parent-group: 96b8595d3bc6ce4b
 generated:
-  introduction: 5f81dd9da549011a
-  open: bcd6e71779cb2a69
+  introduction: 4863186cd3e805e2
+  open: 0d9113a3fda4d343
   follow-an-open-group: 929a6682b62400f1
-  closed: 16a88937b62baaf8
-  secret: 4ec0b658cb91edc1
-  how-people-join: 87147e7113e0b309
-  group-directory: 2410a83502c18fbd
+  closed: 1dd308772f2889c7
+  secret: a8b75acd9144e9ba
+  how-people-join: 0ab2b5991cb31084
+  group-directory: 7bf450758a066de4
+  visible-to-parent-group: 721cc5ee30ba5582
 title_source: 54a57c3147c49f33
 title_generated: f19bb4113dafe7cf
+needs_review:
+  how-people-join: check the interface label "**Comment les personnes peuvent-elles rejoindre le groupe ?**" for "**How do people join?**"
 ---
 
 <!-- translation-section: introduction -->
@@ -33,15 +37,13 @@ La confidentialité détermine qui peut trouver un groupe et qui peut lire son c
 
 ![Paramètres de confidentialité du groupe](group_privacy_settings.png#width-90)
 
-Modifier la confidentialité peut rendre visible ou masquer le contenu existant du groupe, pas seulement le contenu créé par la suite. Choisissez le paramètre le plus restrictif qui reste compatible avec l’objectif du groupe.
+Modifier la confidentialité affecte le contenu existant. Rendre un groupe parent privé fait également passer ses sous-groupes publics au paramètre **Visible pour le groupe parent** et rend leurs fils privés.
 
 <!-- translation-section: open -->
 
 ## Public
 
 Les groupes publics sont des espaces publics. Toute personne peut trouver le groupe et lire ses discussions, ses sondages et ses fichiers. La liste des membres reste visible uniquement par les membres.
-
-Les groupes publics peuvent permettre aux personnes de rejoindre le groupe immédiatement, exiger une approbation ou rester accessibles uniquement sur invitation.
 
 <!-- translation-section: follow-an-open-group -->
 
@@ -59,27 +61,29 @@ Activez **Suivre les mises à jour** sur la page du groupe pour inclure ses disc
 
 Toute personne peut trouver un groupe fermé et lire son nom et sa description. Les discussions, les sondages, les fichiers et la liste des membres sont réservés aux membres et aux invités.
 
-Les groupes fermés peuvent permettre aux personnes de demander à devenir membres ou rester accessibles uniquement sur invitation. Ils ne peuvent pas permettre de rejoindre le groupe immédiatement sans approbation.
+<!-- translation-section: visible-to-parent-group -->
 
-Un sous-groupe fermé peut, si cette option est activée, permettre aux membres du groupe parent de lire ses discussions sans rejoindre le sous-groupe.
+## Visible pour le groupe parent
+
+Les membres du groupe parent et les membres du sous-groupe peuvent trouver le sous-groupe. Ses fils sont réservés aux membres du sous-groupe et aux invités.
 
 <!-- translation-section: secret -->
 
 ## Secret
 
-Les groupes secrets et leur contenu sont visibles uniquement par les personnes qui ont été invitées ou ajoutées. Il est possible de devenir membre uniquement sur invitation. Les groupes secrets n’apparaissent pas dans l’annuaire public des groupes.
+Les groupes secrets et leur contenu sont visibles uniquement par les personnes qui ont été invitées ou ajoutées. Les groupes secrets n’apparaissent pas dans l’annuaire public des groupes.
 
 <!-- translation-section: how-people-join -->
 
 ## Comment rejoindre un groupe
 
-La confidentialité détermine les options disponibles pour rejoindre un groupe :
+Sous **Comment les personnes peuvent-elles rejoindre le groupe ?**, choisissez parmi les options disponibles :
 
-| Confidentialité du groupe | Options disponibles pour rejoindre le groupe |
+| Option d’adhésion | Fonctionnement |
 | --- | --- |
-| **Ouvert** | Toute personne peut rejoindre le groupe, demander une approbation ou rejoindre le groupe uniquement sur invitation |
-| **Fermé** | Demander une approbation ou rejoindre le groupe uniquement sur invitation |
-| **Secret** | Sur invitation uniquement |
+| **Rejoindre sans approbation** | Les personnes peuvent rejoindre le groupe elles-mêmes |
+| **Demander à rejoindre** | Les personnes demandent à rejoindre le groupe et attendent une approbation |
+| **Sur invitation uniquement** | Les personnes ont besoin d’une invitation pour rejoindre le groupe |
 
 Lorsqu’une approbation est requise, les personnes sélectionnent **Rejoindre le groupe**, répondent à la question posée par le groupe et envoient une demande pour le rejoindre. Consultez [Inviter des personnes](/en/user_manual/groups/inviting_people#request-to-join-group) pour savoir comment configurer cette question, examiner les demandes et inviter directement des personnes.
 
@@ -87,4 +91,4 @@ Lorsqu’une approbation est requise, les personnes sélectionnent **Rejoindre l
 
 ## Annuaire des groupes
 
-Les groupes parents publics et fermés peuvent figurer dans l’annuaire public des groupes pour permettre aux personnes de les découvrir. L’inscription dans l’annuaire ne change pas qui peut lire le contenu du groupe ou en devenir membre. Les sous-groupes et les groupes secrets ne peuvent pas y figurer.
+Les groupes parents publics et fermés peuvent figurer dans l’annuaire public des groupes pour permettre aux personnes de les découvrir. Les sous-groupes et les groupes secrets ne peuvent pas y figurer.

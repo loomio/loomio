@@ -1,32 +1,34 @@
 ---
 title: Sottogruppi
-source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
+source_revision: e34ed3124daf97b42eef81bc6f6a90075ec93227
 source_file: docs/en/user_manual/groups/subgroups/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-14'
 sections:
   introduction: 63e6e23d24e80919
   add-a-subgroup: 0bc0e5f99eb074c3
   subgroup-settings: 737225cc4bebe7e8
-  privacy: f5d6a140045a00af
-  permissions: 948f8a0f3209953c
+  privacy: 58872ebdc8b93967
+  permissions: 485ea3cc98d48900
   find-subgroups: 5e6fc5a5122c1417
   invite-to-a-subgroup: 0af670e1e9b32a5e
   simultaneously-invite-people-to-subgroups-and-parent-group: 1991604900321cd7
   administer-a-subgroup: 58fa95833f79dd01
   delete-a-subgroup: 2c6e76ec78386443
+  how-people-join: 3e3d7bf205af6b7c
 generated:
   introduction: 051652a00db9998f
   add-a-subgroup: 95936e1a60dbdd9f
   subgroup-settings: 2102921a561843bd
-  privacy: a0de926677512e41
-  permissions: 5c53ba3351e9e31b
+  privacy: 4cd1c2801602cdf2
+  permissions: 60fbbcca015e8f58
   find-subgroups: 77105b0d7b3a1773
   invite-to-a-subgroup: d13d4627eb013177
   simultaneously-invite-people-to-subgroups-and-parent-group: 0fa563a5977885f6
   administer-a-subgroup: e6948da1a2307da2
   delete-a-subgroup: 2a801f5ff85e1241
+  how-people-join: 679cfedb61456d41
 title_source: 9f81e728f70cae3e
 title_generated: 430c19f8b3427f82
 ---
@@ -73,23 +75,32 @@ Puoi modificare le [impostazioni del gruppo](/en/user_manual/groups/settings/) d
 
 ### Privacy
 
-Le impostazioni di privacy dei sottogruppi sono simili a quelle del gruppo principale.
+Scegli chi può trovare il sottogruppo e leggere le sue conversazioni:
 
-I sottogruppi con privacy impostata su **Segreto** non sono visibili alle persone che non sono state invitate al sottogruppo.
+| Privacy | Chi può trovarlo | Chi può leggere le sue conversazioni |
+| --- | --- | --- |
+| **Aperto** | Chiunque | Chiunque |
+| **Chiuso** | Chiunque | Membri del sottogruppo e ospiti invitati |
+| **Visibile al gruppo principale** | Membri del gruppo principale e membri del sottogruppo | Membri del sottogruppo e ospiti invitati |
+| **Segreto** | Membri invitati al sottogruppo | Membri del sottogruppo e ospiti invitati |
 
-I sottogruppi con privacy impostata su **Chiuso** sono elencati nella scheda Sottogruppi del gruppo principale e nel tuo menu laterale. I membri del gruppo principale possono chiedere di iscriversi al sottogruppo. L'iscrizione viene approvata da un amministratore del sottogruppo.
-
-I sottogruppi chiusi hanno un'impostazione aggiuntiva che consente ai membri del gruppo principale di vedere le conversazioni private.
+Quando il gruppo principale è privato, i sottogruppi possono essere **Visibili al gruppo principale** o **Segreti**.
 
 [Leggi qui come funziona la privacy dei gruppi](/en/user_manual/groups/settings/privacy).
+
+<!-- translation-section: how-people-join -->
+
+### Come ci si iscrive
+
+Scegli [come ci si iscrive](/en/user_manual/groups/settings/privacy#how-people-join) quando crei il sottogruppo, oppure in **Modifica impostazioni del gruppo → Privacy**.
+
+![Impostazioni di privacy e iscrizione del sottogruppo](subgroups_privacy_settings.png)
 
 <!-- translation-section: permissions -->
 
 ### Permessi
 
-I sottogruppi funzionano indipendentemente dal gruppo principale. Ad esempio, se la privacy del sottogruppo è impostata su **Segreto**, solo i membri invitati possono trovare il sottogruppo, vedere chi ne fa parte e vedere le conversazioni.
-
-I sottogruppi con privacy impostata su **Chiuso** hanno un'impostazione aggiuntiva che consente ai membri del gruppo principale di vedere le conversazioni private, rendendo il sottogruppo trasparente ai membri del gruppo principale.
+Attiva **I membri del gruppo principale possono vedere le conversazioni private** in **Permessi** per consentire ai membri del gruppo principale di leggere le conversazioni del sottogruppo senza iscriversi. Questi lettori non acquisiscono il diritto di voto né diventano membri del sottogruppo.
 
 ![Impostazione che consente ai membri del gruppo principale di vedere le conversazioni private del sottogruppo](subgroups_private_threads_settings.png)
 

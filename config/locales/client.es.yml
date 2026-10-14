@@ -248,7 +248,8 @@ es:
       open: Abierto
       closed: 'Cerrado '
       private: Privado
-      secret: 'Secreto '
+      parent_members: "Visible para el grupo principal"
+      secret: Secreto
     selected: Seleccionado
     today: Hoy
     in_x_days: en %{x} días
@@ -1437,6 +1438,9 @@ es:
     confirm_change_to_public: 'Si continúas, todos los hilos de este grupo se harán públicos en internet.  '
     confirm_change_to_private_discussions_only: 'Si continuas cualquier hilo público en este grupo se hará privado. '
     profile: Perfil
+    subgroup_name_and_content_are_public: "Cualquiera puede encontrar este subgrupo y leer sus hilos"
+    subgroup_name_is_public_and_threads_are_private: "Cualquiera puede encontrar este subgrupo; sus hilos son privados"
+    subgroup_is_visible_to_parent_members: "Los miembros de %{parent} pueden encontrar este subgrupo; sus hilos son privados"
     subgroup_privacy_is_open_description: Cualquier persona puede encontrar este subgrupo y pedir membresía. Solo los integrantes pueden ver quien pertenece al mismo. Todos los hilos son públicos.
     subgroup_privacy_is_closed_description: Cualquier persona puede encontrar este subgrupo y pedir membresía. Sólo los integrantes pueden ver quien pertenece al mismo. Todos los hilos son privados.
     subgroup_privacy_is_closed_public_threads_description: Cualquier persona puede encontrar este subgrupo y pedir membresía. Sólo los integrantes pueden ver quien pertenece al mismo. Los hilos pueden ser públicos o privados.
@@ -1444,10 +1448,9 @@ es:
     subgroup_privacy_is_secret_description: Sólo integrantes invitados pueden encontrar este sub-grupo, ver sus integrantes y sus hilos.
     advanced_settings: 'Configuración avanzada '
     how_do_people_join: "¿Cómo se unen las personas a este grupo?"
-    membership_granted_upon_request: Cualquiera puede unirse al grupo.
-    membership_granted_upon_approval: Cualquiera puede pedir la membresía, pero debe ser aprobada.
-    membership_granted_upon_invitation: Sólo invitación.
-    membership_granted_upon_approval_secret_parent: Cualquiera en %{parent} puede pedir apuntarse al grupo <strong>por petición</strong>.
+    join_without_approval: "Unirse sin aprobación"
+    request_to_join: "Solicitar unirse"
+    invitation_only: "Solo por invitación"
     permissions: Permisos
     thread_privacy: Privacidad del hilo
     public_threads: Sólo hilos públicos
@@ -1455,8 +1458,8 @@ es:
     public_or_private_threads: Permitir hilos públicos y privados
     private_threads: Solamente los integrantes pueden ver las discusiones
     allow_public_threads: Permitir hilos públicos en este grupo.
-    parent_members_can_see_discussions: Miembros de %{parent} pueden ver los hilos privados
-    parent_members_can_see_discussions_help: Permite a los miembros del grupo principal ver pero no participar en hilos y encuestas dentro de este grupo
+    parent_group_members_can_see_private_threads: "Los miembros del grupo principal pueden ver los hilos privados"
+    parent_group_members_can_see_private_threads_help: "Permite que los miembros de %{parent} vean los hilos y encuestas de este grupo, pero no participen"
     members_can_announce: Los miembros pueden notificar a cualquiera en el grupo
     members_can_announce_help: Permite a los miembros notificar a cualquiera en el grupo acerca del hilo o sondeo
     members_can_add_members: Los miembros pueden invitar a otros miembros

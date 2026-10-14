@@ -246,6 +246,7 @@ ja:
       open: 議論中
       closed: 議論終了
       private: 非公開
+      parent_members: "親グループに表示"
       secret: 秘密
     selected: 選択中
     today: 今日
@@ -1421,6 +1422,9 @@ ja:
     confirm_change_to_public: 続行すると、このグループのすべてのスレッドが Web 上に公開されます。
     confirm_change_to_private_discussions_only: 続行すると、このグループ内の公開スレッドはすべて非公開になります。
     profile: プロフィール
+    subgroup_name_and_content_are_public: "誰でもこのサブグループを見つけてスレッドを読めます"
+    subgroup_name_is_public_and_threads_are_private: "誰でもこのサブグループを見つけられますが、スレッドは非公開です"
+    subgroup_is_visible_to_parent_members: "%{parent}のメンバーはこのサブグループを見つけられますが、スレッドは非公開です"
     subgroup_privacy_is_open_description: 誰でもこのサブグループを見つけて参加をリクエストできます。グループに誰がいるかを確認できるのはメンバーだけです。すべてのスレッドは公開されています。
     subgroup_privacy_is_closed_description: 誰でもこのサブグループを見つけて参加をリクエストできます。グループに誰がいるかを確認できるのはメンバーのみです。すべてのスレッドは非公開です。
     subgroup_privacy_is_closed_public_threads_description: 誰でもこのサブグループを見つけて参加をリクエストできます。グループに誰がいるかを確認できるのはメンバーだけです。スレッドはパブリックまたはプライベートにすることができます。
@@ -1428,10 +1432,9 @@ ja:
     subgroup_privacy_is_secret_description: 招待されたメンバーのみがこのサブグループを見つけ、誰が参加しているかを確認し、スレッドを表示できます。
     advanced_settings: 高度な設定
     how_do_people_join: 人々はどうやって参加するのでしょうか？
-    membership_granted_upon_request: 誰でもグループに参加できます。
-    membership_granted_upon_approval: 誰でも参加をリクエストできますが、承認が必要です。
-    membership_granted_upon_invitation: 招待制のみ。
-    membership_granted_upon_approval_secret_parent: "<strong>リクエストに応じて、</strong> %{parent} の誰でもグループへの参加をリクエストできます。"
+    join_without_approval: "承認なしで参加できます"
+    request_to_join: "参加を申請します"
+    invitation_only: "招待のみです"
     permissions: 権限
     thread_privacy: スレッドのプライバシー
     public_threads: パブリックスレッドのみ
@@ -1439,8 +1442,8 @@ ja:
     public_or_private_threads: パブリックスレッドとプライベートスレッドを許可する
     private_threads: メンバーのみがディスカッションを閲覧できます
     allow_public_threads: このグループでパブリック スレッドを許可します。
-    parent_members_can_see_discussions: "%{parent} のメンバーはプライベート スレッドを閲覧できます"
-    parent_members_can_see_discussions_help: 親グループのメンバーに、このグループ内のスレッドと投票の表示を許可しますが、参加は許可しません
+    parent_group_members_can_see_private_threads: "親グループのメンバーは非公開スレッドを閲覧できます"
+    parent_group_members_can_see_private_threads_help: "%{parent}のメンバーがこのグループ内のスレッドとアンケートを閲覧できるようにしますが、参加はできません"
     members_can_announce: メンバーはグループ内の全員に通知できます
     members_can_announce_help: メンバーがグループ内の全員にスレッドまたは投票について通知できるようにする
     members_can_add_members: メンバーはメンバーを招待できます

@@ -181,6 +181,7 @@ class RecordCountRepairServiceTest < ActiveSupport::TestCase
   end
 
   test 'repair preserves group and direct access boundaries and anonymous read-receipt privacy' do
+    polls_created = []
     actors = users(:member_normal, :guest_normal, :guest_admin_normal, :alien_loud,
                    :non_guest_loud, :former_guest_loud, :inactive_guest_loud, :admin) + [LoggedOutUser.new]
     [:discussion_topic, :direct_topic].each do |fixture|
@@ -190,6 +191,7 @@ class RecordCountRepairServiceTest < ActiveSupport::TestCase
                   anonymous: true, closing_at: 3.days.from_now, poll_option_names: %w[Agree Disagree] },
         actor: topic.topicable.author
       )
+      polls_created << poll
       reader = topic.topic_readers.find_by!(user_id: users(:guest_normal).id)
       reader.viewed!(1)
       reader_attributes = reader.reload.attributes
@@ -207,6 +209,9 @@ class RecordCountRepairServiceTest < ActiveSupport::TestCase
       assert_empty TopicReaderSerializer.new(reader).read_ranges
       assert topic.reload.has_anonymous_polls?
     end
+  ensure
+    # These polls commit; fixture reloads do not clear their anonymous voter records.
+    polls_created.each(&:destroy!)
   end
 
   private

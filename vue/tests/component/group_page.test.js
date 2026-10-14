@@ -69,13 +69,15 @@ describe('GroupPage', () => {
     expect(mocks.eventBus.$emit).toHaveBeenCalledWith('openAuthModal');
   });
 
-  it('reloads after sign-in', async () => {
-    mountPage();
+  it.each(['signedIn', 'joinedGroup'])('refreshes group actions after %s', async eventName => {
+    const wrapper = mountPage();
     await flushPromises();
-    const reload = mocks.eventBus.$on.mock.calls.find(([event]) => event === 'signedIn')[1];
+    const reload = mocks.eventBus.$on.mock.calls.find(([event]) => event === eventName)[1];
 
     reload();
     await flushPromises();
     expect(mocks.findOrFetch).toHaveBeenCalledTimes(2);
+    wrapper.unmount();
+    expect(mocks.eventBus.$off).toHaveBeenCalledWith(eventName, reload);
   });
 });

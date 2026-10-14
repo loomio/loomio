@@ -1753,6 +1753,7 @@ module Dev::Scenarios::OatmilkCooperative
     group, coordinator = create_manual_oatmilk_cooperative
     subgroup_creator = User.find_by!(email: 'samira@oatmilk.example')
     subgroup = Group.new(
+      key: 'oatmilkpackaging',
       name: 'Packaging Working Group',
       description: 'Coordinate packaging suppliers, bottle returns, and labelling.',
       parent: group,

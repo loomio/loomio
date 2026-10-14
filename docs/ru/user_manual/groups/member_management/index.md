@@ -8,7 +8,7 @@ translated:
 sections:
   introduction: f216b18771a2c2a9
   administering-your-group: 27aed40959adef57
-  managing-subgroups: ee977899fa34caab
+  managing-subgroups: 915e13a928a8f4aa
   removing-members: f40c25fd90ab1ce2
   leaving-group: 11b09b4af23b4e7e
   set-title: 835b25d246477b4a
@@ -16,7 +16,7 @@ sections:
 generated:
   introduction: fd07b29364d5b1d5
   administering-your-group: 61318b26de6c5d84
-  managing-subgroups: 6ffa8623e1fbab05
+  managing-subgroups: c7fa4c75192a3574
   removing-members: 00ab57f23bf6f8a2
   leaving-group: 76a2c1e53dfce5aa
   set-title: acf8143224cf4c71
@@ -51,9 +51,9 @@ title_generated: 3792557669daccda
 <!-- translation-section: managing-subgroups -->
 
 ## Управление подгруппами
-Если вы администратор родительской группы или организации, у вас есть дополнительные права в отношении всех __закрытых__ подгрупп.
+Администраторы родительской группы могут вступать в любую её подгруппу, кроме секретных, а затем делать себя администраторами этих подгрупп.
 
-Вы можете вступить в любую закрытую подгруппу, нажав кнопку «Вступить в группу» слева на странице этой подгруппы, сразу под вкладками.
+Выберите **Вступить в группу** на странице подгруппы.
 
 ![Кнопка вступления в группу на странице закрытой подгруппы Oatmilk Cooperative](member_join_subgroup.png)
 

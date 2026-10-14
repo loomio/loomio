@@ -248,6 +248,7 @@ ca:
       open: Obert
       closed: Tancat
       private: Privat
+      parent_members: "Visible al grup principal"
       secret: Secret
     selected: Seleccionat
     today: avui
@@ -1428,6 +1429,9 @@ ca:
     confirm_change_to_public: Si continueu, tots els fils d'aquest grup es faran públics a internet.
     confirm_change_to_private_discussions_only: Si continueu, tots els fils públics d'aquest grup passaran a ser privats.
     profile: Perfil
+    subgroup_name_and_content_are_public: "Qualsevol pot trobar aquest subgrup i llegir-ne els fils"
+    subgroup_name_is_public_and_threads_are_private: "Qualsevol pot trobar aquest subgrup; els fils són privats"
+    subgroup_is_visible_to_parent_members: "Els membres de %{parent} poden trobar aquest subgrup; els fils són privats"
     subgroup_privacy_is_open_description: Tothom pot trobar aquest subgrup i demanar unir-s'hi. Només els membres poden veure qui pertany al grup. Tots els fils són públics.
     subgroup_privacy_is_closed_description: Tothom pot trobar aquest subgrup i demanar unir-s'hi. Només els membres poden veure qui pertany al grup. Tots els fils són privats.
     subgroup_privacy_is_closed_public_threads_description: Tothom pot trobar aquest subgrup i demanar unir-s'hi. Només els membres poden veure qui pertany al grup. Els fils poden ser públics o privats.
@@ -1435,10 +1439,9 @@ ca:
     subgroup_privacy_is_secret_description: Només els membres convidats poden trobar aquest grup, veure qui hi pertany i veure els fils.
     advanced_settings: Configuració avançada
     how_do_people_join: Com s'uneix la gent?
-    membership_granted_upon_request: Tothom es pot unir al grup.
-    membership_granted_upon_approval: Tothom pot sol·licitar unir-se però és necessària l'aprovació.
-    membership_granted_upon_invitation: Només amb invitació.
-    membership_granted_upon_approval_secret_parent: 'Tothom de  %{parent}  pot demanar d''unir-se al grup<strong>enviant una sol·licitud</strong>  '
+    join_without_approval: "Uneix-te sense aprovació"
+    request_to_join: "Demana unir-te"
+    invitation_only: "Només amb invitació"
     permissions: Permisos
     thread_privacy: Privacitat dels fils
     public_threads: Només fils públics
@@ -1446,8 +1449,8 @@ ca:
     public_or_private_threads: Permet fils públics i privats
     private_threads: Només els membres poden veure els fils
     allow_public_threads: Permet els fils públics en aquest grup.
-    parent_members_can_see_discussions: Els membres de %{parent} poden veure els fils privats
-    parent_members_can_see_discussions_help: Permet als membres del grup principal veure, però no participar-hi, fils i enquestes dins d'aquest grup
+    parent_group_members_can_see_private_threads: "Els membres del grup principal poden veure els fils privats"
+    parent_group_members_can_see_private_threads_help: "Permet als membres de %{parent} veure els fils i les enquestes d'aquest grup, però no participar-hi"
     members_can_announce: Els membres poden notificar a tots els membres del grup
     members_can_announce_help: Permet als membres notificar a tots els membres del grup sobre un fil o una enquesta
     members_can_add_members: Els membres poden convidar membres

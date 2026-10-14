@@ -22,10 +22,12 @@ export default
   created() {
     this.init();
     EventBus.$on('signedIn', this.init);
+    EventBus.$on('joinedGroup', this.init);
   },
 
-  beforeDestroy() {
+  beforeUnmount() {
     EventBus.$off('signedIn', this.init);
+    EventBus.$off('joinedGroup', this.init);
   },
 
   watch: {

@@ -101,3 +101,49 @@ describe('AbilityService.canMoveTopicItems', () => {
     expect(topic.adminsInclude).not.toHaveBeenCalled();
   });
 });
+
+describe('AbilityService.canJoinGroup', () => {
+  it.each([
+    ['parent member', true, false, false, true, false, true],
+    ['outsider', false, false, false, true, false, false],
+    ['outsider in public subgroup', false, false, false, true, true, true],
+    ['parent administrator', true, true, false, true, false, true],
+    ['existing subgroup member', true, false, true, true, false, false],
+    ['discarded subgroup', true, false, false, false, false, false]
+  ])('checks immediate joining for a %s', (_role, parentMember, parentAdmin, member, enabled, publicVisibility, allowed) => {
+    const parent = {membersInclude: () => parentMember, adminsInclude: () => parentAdmin};
+    const group = {
+      parentId: 10,
+      parent: () => parent,
+      parentOrSelf: () => parent,
+      isEnabled: () => enabled,
+      isDiscarded: () => !enabled,
+      isVisibleToPublic: publicVisibility,
+      isVisibleToParentMembers: true,
+      privacyIsSecret: () => false,
+      membersInclude: () => member,
+      membershipGrantedUpon: 'request'
+    };
+
+    expect(AbilityService.canJoinGroup(group)).toBe(allowed);
+    expect(AbilityService.canRequestMembership(group)).toBe(false);
+  });
+
+  it('does not allow ordinary parent members to self join a secret subgroup', () => {
+    const parent = {membersInclude: () => true, adminsInclude: () => false};
+    const group = {
+      parentId: 10,
+      parent: () => parent,
+      parentOrSelf: () => parent,
+      isEnabled: () => true,
+      isDiscarded: () => false,
+      isVisibleToPublic: false,
+      isVisibleToParentMembers: false,
+      privacyIsSecret: () => true,
+      membersInclude: () => false,
+      membershipGrantedUpon: 'invitation'
+    };
+
+    expect(AbilityService.canJoinGroup(group)).toBe(false);
+  });
+});

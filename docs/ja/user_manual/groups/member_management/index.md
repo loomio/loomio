@@ -8,7 +8,7 @@ translated:
 sections:
   introduction: f216b18771a2c2a9
   administering-your-group: 27aed40959adef57
-  managing-subgroups: ee977899fa34caab
+  managing-subgroups: 915e13a928a8f4aa
   removing-members: f40c25fd90ab1ce2
   leaving-group: 11b09b4af23b4e7e
   set-title: 835b25d246477b4a
@@ -16,7 +16,7 @@ sections:
 generated:
   introduction: f6c3ad3153d80f8e
   administering-your-group: 81c2b74ba0dc6405
-  managing-subgroups: 2fcf3bc486880cae
+  managing-subgroups: de52489dbb151769
   removing-members: d0649d134bcdcfc4
   leaving-group: 41c21445727f3dcc
   set-title: 67afc41dfc072781
@@ -51,9 +51,9 @@ Loomioのグループには、**メンバー**と**管理者**の2種類のユ�
 <!-- translation-section: managing-subgroups -->
 
 ## サブグループの管理
-親グループまたは組織の管理者には、__非公開__のサブグループに対する追加の権限があります。
+親グループの管理者は、そのグループの秘密ではないどのサブグループにも参加し、自分自身をサブグループの管理者にすることができます。
 
-対象のサブグループページの左側（タブのすぐ下）にある「グループに参加」ボタンをクリックすると、どの非公開サブグループにも参加できます。
+サブグループのページで**グループに参加**を選択します。
 
 ![非公開のOatmilk Cooperativeサブグループにあるグループ参加ボタン](member_join_subgroup.png)
 

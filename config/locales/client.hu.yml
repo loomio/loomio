@@ -250,6 +250,7 @@ hu:
       open: Nyitva
       closed: Zárva
       private: Zártkörű
+      parent_members: "Látható a szülőcsoport számára"
       secret: Titkos
     selected: Kiválasztva
     today: Ma
@@ -1428,6 +1429,9 @@ hu:
     confirm_change_to_public: Ha folytatja, akkor a csoport összes témát közzéteszi az interneten.
     confirm_change_to_private_discussions_only: Ha folytatja, a csoport összes nyilvános témája zártkörű lesz.
     profile: Profil
+    subgroup_name_and_content_are_public: "Bárki megtalálhatja ezt az alcsoportot és olvashatja a szálait"
+    subgroup_name_is_public_and_threads_are_private: "Bárki megtalálhatja ezt az alcsoportot; a szálai privátak"
+    subgroup_is_visible_to_parent_members: "A(z) %{parent} tagjai megtalálhatják ezt az alcsoportot; a szálai privátak"
     subgroup_privacy_is_open_description: Bárki megtalálhatja ezt az alcsoportot, és kérheti a csatlakozást. Csak a tagok láthatják, ki van a csoportban. Az összes téma nyilvános.
     subgroup_privacy_is_closed_description: Bárki megtalálhatja ezt az alcsoportot, és kérheti a csatlakozást. Csak a tagok láthatják, ki van a csoportban. Az összes téma zártkörű.
     subgroup_privacy_is_closed_public_threads_description: Bárki megtalálhatja ezt az alcsoportot, és kérheti a csatlakozást. Csak a tagok láthatják, ki van a csoportban. A témák lehetnek nyilvános vagy magántémák
@@ -1435,10 +1439,9 @@ hu:
     subgroup_privacy_is_secret_description: Csak az meghívott tagok találhatják meg ezt az alcsoportot, megnézhetik, ki van benne, és láthatják a témákat.
     advanced_settings: További beállítások
     how_do_people_join: Hogyan csatlakoznak az emberek?
-    membership_granted_upon_request: Bárki csatlakozhat a csoporthoz.
-    membership_granted_upon_approval: Bárki kérheti a csatlakozást, de jóvá kell hagynia.
-    membership_granted_upon_invitation: Csak meghívás.
-    membership_granted_upon_approval_secret_parent: "<strong> Kérésre </strong>bárki a(z) %{parent} -től, kérheti, hogy csatlakozzon a csoporthoz."
+    join_without_approval: "Csatlakozás jóváhagyás nélkül"
+    request_to_join: "Csatlakozás kérése"
+    invitation_only: "Csak meghívóval"
     permissions: Engedélyek
     thread_privacy: Téma adatvédelme
     public_threads: Csak nyilvános témák
@@ -1446,8 +1449,8 @@ hu:
     public_or_private_threads: Engedélyezd a nyilvános és a zártkörű témákat
     private_threads: Csak a tagok láthatják a beszélgetéseket
     allow_public_threads: Engedélyezd a nyilvános témákat ebben a csoportban.
-    parent_members_can_see_discussions: A(z) %{parent} tagjai láthatják a privát szálakat
-    parent_members_can_see_discussions_help: A szülőcsoport tagjai láthatják a csoporton belüli szálakat és szavazásokat, de nem vehetnek részt azokban
+    parent_group_members_can_see_private_threads: "A szülőcsoport tagjai láthatják a privát szálakat"
+    parent_group_members_can_see_private_threads_help: "Engedd meg a(z) %{parent} tagjainak, hogy lássák a csoport szálait és szavazásait, de ne vehessenek részt bennük"
     members_can_announce: A tagok mindenkit értesíthetnek a csoportban
     members_can_announce_help: Lehetővé teszi a tagok számára, hogy értesítsenek mindenkit a csoportban egy témaszálról vagy szavazásról
     members_can_add_members: A tagok meghívhatnak tagokat

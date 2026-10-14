@@ -161,6 +161,34 @@ class Api::V1::SearchControllerTest < ActionController::TestCase
     refute results.any? { |result| result['discussion_key'] == @discussion.key }
   end
 
+  test "parent members find public subgroup threads without gaining private thread access" do
+    subgroup = groups(:parent_join_subgroup)
+    subgroup.parent.update!(group_privacy: 'closed')
+    subgroup.update!(group_privacy: 'closed', discussion_privacy_options: 'public_or_private')
+    discussions = [false, true].map do |private|
+      discussion = DiscussionService.create(
+        params: {group_id: subgroup.id, title: 'findme subgroup thread', private: private},
+        actor: users(:subgroup_user)
+      )
+      discussion.update_pg_search_document
+      discussion
+    end
+    public_discussion, private_discussion = discussions
+    assert_not subgroup.is_visible_to_parent_members?
+    sign_in users(:member_normal)
+
+    [{}, {group_id: subgroup.id}, {org_id: subgroup.parent_id}].each do |scope|
+      get :index, params: scope.merge(query: 'findme')
+      assert_response :success
+      ids = JSON.parse(response.body).fetch('search_results').filter_map do |result|
+        result['searchable_id'] if result['searchable_type'] == 'Discussion'
+      end
+      assert_includes ids, public_discussion.id, scope.inspect
+      assert_not_includes ids, private_discussion.id, scope.inspect
+    end
+    assert_not users(:member_normal).can?(:show, private_discussion)
+  end
+
   test "respects parent member access to private subgroup discussions" do
     subgroup = groups(:subgroup)
     subgroup.update_columns(

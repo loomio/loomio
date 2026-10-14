@@ -1,4 +1,37 @@
 module Dev::Scenarios::Group
+  def setup_subgroup_privacy_parent_switching
+    public_parent = create_group
+    secret_parent = Group.new(name: 'Secret planning group', handle: 'secret-planning', group_privacy: 'secret')
+    GroupService.create(group: secret_parent, actor: patrick)
+    sign_in patrick
+    redirect_to group_path(public_parent)
+  end
+
+  def setup_subgroup_parent_member_joining
+    parent = create_group
+    parent.update!(group_privacy: 'closed')
+    subgroup = Group.create!(name: 'Volunteer subgroup', parent: parent, group_privacy: 'parent_members', membership_granted_upon: 'request')
+    subgroup.add_admin! patrick
+    sign_in jennifer
+    redirect_to group_path(subgroup)
+  end
+
+  def setup_subgroup_parent_member_joining_as_outsider
+    setup_subgroup_parent_member_joining
+    sign_in max
+  end
+
+  def setup_public_subgroup_immediate_joining_as_outsider
+    setup_subgroup_parent_member_joining_as_outsider
+    Group.find_by!(name: 'Volunteer subgroup').update!(group_privacy: 'closed')
+  end
+
+  def setup_subgroup_parent_member_joining_with_pending_request
+    setup_subgroup_parent_member_joining
+    subgroup = Group.find_by!(name: 'Volunteer subgroup')
+    MembershipRequest.create!(group: subgroup, requestor: jennifer, introduction: 'I would like to volunteer')
+  end
+
   def setup_secret_group_with_access
     sign_in patrick
     group = Group.create!(name: 'Secret Dirty Dancing Shoes', group_privacy: 'secret')

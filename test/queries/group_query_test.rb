@@ -1,6 +1,37 @@
 require 'test_helper'
 
 class GroupQueryTest < ActiveSupport::TestCase
+  test "parent members list public and parent-visible subgroups using the access matrix" do
+    subgroup = groups(:parent_join_subgroup)
+    subgroup.parent.update!(group_privacy: 'closed')
+    parent_roles = %i[admin member_normal reader_normal member_guest_loud]
+    outsider_roles = %i[alien guest_normal non_guest_loud former_member_loud former_member_guest inactive_member_loud]
+
+    %w[open closed parent_members secret].each do |privacy|
+      subgroup.update!(group_privacy: privacy)
+      (parent_roles + outsider_roles).each do |role|
+        expected = parent_roles.include?(role) && privacy != 'secret'
+        assert_equal expected, GroupQuery.visible_to(user: users(role)).exists?(subgroup.id), "#{role}, #{privacy}"
+      end
+      assert_not GroupQuery.visible_to.exists?(subgroup.id)
+      assert_not GroupQuery.visible_to(user: users(:member_normal)).exists?(groups(:public_group).id)
+    end
+  end
+
+  test "thread guests see group context without inheriting subgroup access or changing membership ids" do
+    guest = users(:guest_normal)
+    parent = groups(:group)
+    subgroup = groups(:parent_join_subgroup)
+    membership_ids = guest.group_ids.dup
+
+    2.times do
+      visible = GroupQuery.visible_to(user: guest)
+      assert visible.exists?(parent.id)
+      assert_not visible.exists?(subgroup.id)
+      assert_equal membership_ids, guest.group_ids
+    end
+  end
+
   setup do
     hex = SecureRandom.hex(4)
     @user = User.create!(name: "gquser#{hex}", email: "gquser#{hex}@example.com", username: "gquser#{hex}")

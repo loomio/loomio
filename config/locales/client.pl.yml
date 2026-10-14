@@ -248,6 +248,7 @@ pl:
       open: Otwarta
       closed: Zamknięta
       private: Prywatna
+      parent_members: "Widoczna dla grupy nadrzędnej"
       secret: Tajna
     selected: Wybrane
     today: Dzisiaj
@@ -1428,6 +1429,9 @@ pl:
     confirm_change_to_public: Jeśli przejdziesz dalej, wszystkie wątki w tej grupie zostaną upublicznione w sieci.
     confirm_change_to_private_discussions_only: Jeśli przejdziesz dalej, wszystkie wątki publiczne w tej grupie staną się prywatne.
     profile: Profil
+    subgroup_name_and_content_are_public: "Każdy może znaleźć tę podgrupę i czytać jej wątki"
+    subgroup_name_is_public_and_threads_are_private: "Każdy może znaleźć tę podgrupę; jej wątki są prywatne"
+    subgroup_is_visible_to_parent_members: "Członkowie %{parent} mogą znaleźć tę podgrupę; jej wątki są prywatne"
     subgroup_privacy_is_open_description: Każdy może znaleźć tę podgrupę i poprosić o dołączenie. Tylko osoby do niej należące mogą zobaczyć, kto jest w grupie. Wszystkie wątki są publiczne.
     subgroup_privacy_is_closed_description: Każdy może znaleźć tę podgrupę i poprosić o dołączenie. Tylko osoby z grupy mogą zobaczyć kto w niej jest. Wszystkie wątki są prywatne.
     subgroup_privacy_is_closed_public_threads_description: Każdy może znaleźć tę podgrupę i poprosić o dołączenie. Tylko osoby z grupy mogą zobaczyć kto w niej jest. Wątki mogą być publiczne lub prywatne.
@@ -1435,10 +1439,9 @@ pl:
     subgroup_privacy_is_secret_description: Tylko zaproszone osoby mogą znaleźć tę podgrupę, zobaczyć, kto w niej jest, i zobaczyć wątki.
     advanced_settings: Ustawienia zaawansowane
     how_do_people_join: Kto może dołączyć?
-    membership_granted_upon_request: Każdy może dołączyć do grupy.
-    membership_granted_upon_approval: Każdy może poprosić o dołączenie, ale musi zostać zatwierdzony.
-    membership_granted_upon_invitation: Tylko z zaproszeniem.
-    membership_granted_upon_approval_secret_parent: "<strong>Na życzenie</strong> każdy z %{parent} może poprosić o dołączenie do grupy."
+    join_without_approval: "Dołącz bez zatwierdzenia"
+    request_to_join: "Poproś o dołączenie"
+    invitation_only: "Tylko na zaproszenie"
     permissions: Uprawnienia
     thread_privacy: Prywatność wątków
     public_threads: Tylko wątki publiczne
@@ -1446,8 +1449,8 @@ pl:
     public_or_private_threads: Zezwalaj na wątki publiczne i prywatne
     private_threads: Tylko osoby z tej grupy mogą zobaczyć dyskusje
     allow_public_threads: Zezwalaj na wątki publiczne w tej grupie.
-    parent_members_can_see_discussions: Członkowie %{parent} widzą prywatne wątki
-    parent_members_can_see_discussions_help: Zezwalaj członkom grupy nadrzędnej na przeglądanie wątków i ankiet w tej grupie, ale nie uczestniczenie w nich
+    parent_group_members_can_see_private_threads: "Członkowie grupy nadrzędnej mogą widzieć prywatne wątki"
+    parent_group_members_can_see_private_threads_help: "Pozwól członkom grupy %{parent} przeglądać wątki i ankiety w tej grupie, ale bez możliwości udziału"
     members_can_announce: Członkowie mogą powiadomić wszystkich w grupie
     members_can_announce_help: Zezwalaj członkom na powiadamianie wszystkich członków grupy o wątku lub ankiecie
     members_can_add_members: Członkowie mogą zapraszać członków

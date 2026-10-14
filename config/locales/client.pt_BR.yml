@@ -256,6 +256,7 @@ pt_BR:
       open: Aberto
       closed: Encerrado
       private: Privado
+      parent_members: "Visível para o grupo principal"
       secret: Secreto
     selected: Selecionado
     today: hoje
@@ -1449,6 +1450,9 @@ pt_BR:
     confirm_change_to_public: Se você continuar, as conversas neste grupo serão públicas na web.
     confirm_change_to_private_discussions_only: Se você continuar, qualquer conversa pública deste grupo ficará privada.
     profile: Perfil
+    subgroup_name_and_content_are_public: "Qualquer pessoa pode encontrar este subgrupo e ler suas conversas"
+    subgroup_name_is_public_and_threads_are_private: "Qualquer pessoa pode encontrar este subgrupo; suas conversas são privadas"
+    subgroup_is_visible_to_parent_members: "Membros de %{parent} podem encontrar este subgrupo; suas conversas são privadas"
     subgroup_privacy_is_open_description: Qualquer pessoa pode encontrar este subgrupo e pedir para participar. Somente membros podem ver quem está no grupo. Todas as conversas são públicas.
     subgroup_privacy_is_closed_description: Qualquer pessoa pode encontrar este subgrupo e pedir para participar. Somente membros podem ver quem está no grupo. Todas as conversas são privadas.
     subgroup_privacy_is_closed_public_threads_description: Qualquer pessoa pode encontrar este subgrupo e pedir para participar. Somente membros podem ver quem está no grupo. Conversas podem ser públicas ou privadas.
@@ -1456,10 +1460,9 @@ pt_BR:
     subgroup_privacy_is_secret_description: Somente membros convidados podem encontrar este subgrupo, ver quem faz parte e ver as conversas.
     advanced_settings: Configurações avançadas
     how_do_people_join: Como as pessoas participam?
-    membership_granted_upon_request: Qualquer um pode entrar no grupo
-    membership_granted_upon_approval: Qualquer pessoa pode pedir para participar, mas deve ser aprovada.
-    membership_granted_upon_invitation: Somente para convidados.
-    membership_granted_upon_approval_secret_parent: "<strong>Por solicitação</strong> qualquer um de %{parent} pode pedir para se juntar ao grupo."
+    join_without_approval: "Entrar sem aprovação"
+    request_to_join: "Pedir para entrar"
+    invitation_only: "Somente por convite"
     permissions: Permissões
     thread_privacy: Privacidade da conversa
     public_threads: Somente conversas públicas
@@ -1467,8 +1470,8 @@ pt_BR:
     public_or_private_threads: Permitir conversas públicas e privadas
     private_threads: Apenas os membros podem ver discussões
     allow_public_threads: Permitir conversas públicas neste grupo.
-    parent_members_can_see_discussions: Membros de %{parent} podem ver tópicos privados
-    parent_members_can_see_discussions_help: Permitir que os membros do grupo principal vejam, mas não participem de tópicos e enquetes dentro deste grupo
+    parent_group_members_can_see_private_threads: "Membros do grupo principal podem ver conversas privadas"
+    parent_group_members_can_see_private_threads_help: "Permitir que membros de %{parent} vejam conversas e enquetes deste grupo, sem participar"
     members_can_announce: Os membros podem notificar todos no grupo
     members_can_announce_help: Permitir que os membros notifiquem todos no grupo sobre um tópico ou enquete
     members_can_add_members: Os membros podem convidar membros

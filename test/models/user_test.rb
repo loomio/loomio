@@ -1,6 +1,24 @@
 require 'test_helper'
 
 class UserTest < ActiveSupport::TestCase
+  test "parent members can browse public and parent-visible subgroups without inheriting secret groups" do
+    subgroup = groups(:parent_join_subgroup)
+    subgroup.parent.update!(group_privacy: 'closed')
+    parent_roles = %i[admin member_normal reader_normal member_guest_loud]
+    outsider_roles = %i[alien guest_normal non_guest_loud former_member_loud former_member_guest]
+
+    %w[open closed parent_members secret].each do |privacy|
+      subgroup.update!(group_privacy: privacy)
+      (parent_roles + outsider_roles).each do |role|
+        ids = users(role).browseable_group_ids
+        expected = parent_roles.include?(role) && privacy != 'secret'
+        assert_equal expected, ids.include?(subgroup.id), "#{role}, #{privacy}"
+        assert_not_includes ids, groups(:public_group).id
+      end
+      assert_empty LoggedOutUser.new.browseable_group_ids
+    end
+  end
+
   setup do
     @user = users(:user)
     @admin = users(:admin)

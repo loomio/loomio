@@ -8,7 +8,7 @@ translated:
 sections:
   introduction: f216b18771a2c2a9
   administering-your-group: 27aed40959adef57
-  managing-subgroups: ee977899fa34caab
+  managing-subgroups: 915e13a928a8f4aa
   removing-members: f40c25fd90ab1ce2
   leaving-group: 11b09b4af23b4e7e
   set-title: 835b25d246477b4a
@@ -16,7 +16,7 @@ sections:
 generated:
   introduction: 33fec9bcb8d1d349
   administering-your-group: bdbd97a9d818accd
-  managing-subgroups: 11719e5b48d1dabf
+  managing-subgroups: cd534ba2f839e053
   removing-members: 25d5fbc007da78d6
   leaving-group: c9b500c3b224505f
   set-title: 747e469248b9a197
@@ -51,9 +51,9 @@ Pour nommer un membre **administrateur**, accédez à l’onglet Membres, trouve
 <!-- translation-section: managing-subgroups -->
 
 ## Gérer les sous-groupes
-Si vous êtes administrateur d’un groupe parent ou d’une organisation, vous disposez de permissions supplémentaires pour tous les sous-groupes __fermés__.
+Les administrateurs d’un groupe parent peuvent rejoindre ses sous-groupes non secrets, puis se nommer administrateurs de ces sous-groupes.
 
-Vous pouvez rejoindre n’importe quel sous-groupe fermé en cliquant sur le bouton « Rejoindre le groupe » à gauche de la page du sous-groupe concerné, juste sous les onglets.
+Sélectionnez **Rejoindre le groupe** sur la page du sous-groupe.
 
 ![Bouton Rejoindre le groupe dans un sous-groupe fermé de la coopérative Oatmilk](member_join_subgroup.png)
 

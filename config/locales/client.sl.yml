@@ -248,6 +248,7 @@ sl:
       open: Odprto
       closed: Zaprto
       private: Zasebno
+      parent_members: "Vidna nadrejeni skupini"
       secret: Skrivnost
     selected: Izbrano
     today: danes
@@ -1422,6 +1423,9 @@ sl:
     confirm_change_to_public: Če nadaljujete, bodo vse niti v tej skupini javno objavljene v spletu.
     confirm_change_to_private_discussions_only: Če nadaljujete, bodo vse javne niti v tej skupini postale zasebne.
     profile: Profil
+    subgroup_name_and_content_are_public: "Vsakdo lahko najde to podskupino in bere njene niti"
+    subgroup_name_is_public_and_threads_are_private: "Vsakdo lahko najde to podskupino; njene niti so zasebne"
+    subgroup_is_visible_to_parent_members: "Člani %{parent} lahko najdejo to podskupino; njene niti so zasebne"
     subgroup_privacy_is_open_description: Vsakdo lahko najde to podskupino in zaprosi za pridružitev. Samo člani lahko vidijo, kdo je v skupini. Vse niti so javne.
     subgroup_privacy_is_closed_description: Vsakdo lahko najde to podskupino in zaprosi za pridružitev. Samo člani lahko vidijo, kdo je v skupini. Vse niti so zasebne.
     subgroup_privacy_is_closed_public_threads_description: Vsakdo lahko najde to podskupino in zaprosi za pridružitev. Samo člani lahko vidijo, kdo je v skupini. Niti so lahko javne ali zasebne.
@@ -1429,10 +1433,9 @@ sl:
     subgroup_privacy_is_secret_description: Samo povabljeni člani lahko najdejo to podskupino, vidijo, kdo je v njej in vidijo niti.
     advanced_settings: Napredne nastavitve
     how_do_people_join: Kako se ljudje pridružijo?
-    membership_granted_upon_request: Skupini se lahko pridruži vsak.
-    membership_granted_upon_approval: Vsakdo lahko zaprosi za pridružitev, vendar mora biti odobren.
-    membership_granted_upon_invitation: Samo povabilo.
-    membership_granted_upon_approval_secret_parent: "<strong>Na zahtevo</strong> lahko kdorkoli iz %{parent} zaprosi za pridružitev skupini."
+    join_without_approval: "Pridružitev brez odobritve"
+    request_to_join: "Prošnja za pridružitev"
+    invitation_only: "Samo s povabilom"
     permissions: Dovoljenja
     thread_privacy: Zasebnost niti
     public_threads: Samo javne niti
@@ -1440,8 +1443,8 @@ sl:
     public_or_private_threads: Dovoli javne in zasebne niti
     private_threads: Samo člani lahko vidijo razprave
     allow_public_threads: Dovoli javne niti v tej skupini.
-    parent_members_can_see_discussions: Člani %{parent} lahko vidijo zasebne niti
-    parent_members_can_see_discussions_help: Dovolite članom nadrejene skupine, da vidijo teme in ankete v tej skupini, vendar ne smejo sodelovati v njih
+    parent_group_members_can_see_private_threads: "Člani nadrejene skupine lahko vidijo zasebne niti"
+    parent_group_members_can_see_private_threads_help: "Dovolite članom skupine %{parent}, da vidijo niti in ankete v tej skupini, vendar v njih ne sodelujejo"
     members_can_announce: Člani lahko obvestijo vse v skupini
     members_can_announce_help: Omogočite članom, da vse v skupini obvestijo o niti ali anketi
     members_can_add_members: Člani lahko povabijo člane
