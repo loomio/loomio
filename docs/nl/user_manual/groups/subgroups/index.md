@@ -1,6 +1,6 @@
 ---
 title: Subgroepen
-source_revision: 3dad7e54d7f08f6d83af4b8adb6a408f1652ef7e
+source_revision: e34ed3124daf97b42eef81bc6f6a90075ec93227
 source_file: docs/en/user_manual/groups/subgroups/index.md
 translated:
   provider: codex/gpt-6.1-sol
@@ -10,7 +10,7 @@ sections:
   add-a-subgroup: 0bc0e5f99eb074c3
   subgroup-settings: 737225cc4bebe7e8
   privacy: 58872ebdc8b93967
-  permissions: dcfc042cdb083deb
+  permissions: 485ea3cc98d48900
   find-subgroups: 5e6fc5a5122c1417
   invite-to-a-subgroup: 0af670e1e9b32a5e
   simultaneously-invite-people-to-subgroups-and-parent-group: 1991604900321cd7
@@ -22,7 +22,7 @@ generated:
   add-a-subgroup: 0ceef6cb6b4e97f4
   subgroup-settings: ad0c7b923b9ddc01
   privacy: 8978f404e476009b
-  permissions: bdd37b1230d98df6
+  permissions: 0ea18cffc3f75b8c
   find-subgroups: f3c8f74d99c5b1e1
   invite-to-a-subgroup: f9298311957d4afd
   simultaneously-invite-people-to-subgroups-and-parent-group: 54e5ac5efa9afc0c
@@ -100,9 +100,9 @@ Kies [hoe mensen lid worden](/en/user_manual/groups/settings/privacy#how-people-
 
 ### Toestemmingen
 
-Schakel **Leden van [hoofdgroep] kunnen privéthreads bekijken** in onder **Toestemmingen** om leden van de hoofdgroep threads van de subgroep te laten lezen zonder lid te worden. Deze lezers krijgen geen stemrecht en worden geen lid van de subgroep.
+Schakel **Leden van de hoofdgroep kunnen privéthreads zien** in onder **Toestemmingen** om leden van de hoofdgroep threads van de subgroep te laten lezen zonder lid te worden. Deze lezers krijgen geen stemrecht en worden geen lid van de subgroep.
 
-![Instelling waarmee leden van de hoofdgroep privéthreads van de subgroep kunnen bekijken](subgroups_private_threads_settings.png)
+![Instelling waarmee leden van de hoofdgroep privéthreads van de subgroep kunnen zien](subgroups_private_threads_settings.png)
 
 <!-- translation-section: find-subgroups -->
 

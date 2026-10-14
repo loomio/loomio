@@ -1,6 +1,6 @@
 ---
 title: Sous-groupes
-source_revision: 3dad7e54d7f08f6d83af4b8adb6a408f1652ef7e
+source_revision: e34ed3124daf97b42eef81bc6f6a90075ec93227
 source_file: docs/en/user_manual/groups/subgroups/index.md
 translated:
   provider: codex/gpt-6.1-sol
@@ -10,7 +10,7 @@ sections:
   add-a-subgroup: 0bc0e5f99eb074c3
   subgroup-settings: 737225cc4bebe7e8
   privacy: 58872ebdc8b93967
-  permissions: dcfc042cdb083deb
+  permissions: 485ea3cc98d48900
   find-subgroups: 5e6fc5a5122c1417
   invite-to-a-subgroup: 0af670e1e9b32a5e
   simultaneously-invite-people-to-subgroups-and-parent-group: 1991604900321cd7
@@ -22,7 +22,7 @@ generated:
   add-a-subgroup: e83e38dd9cd34258
   subgroup-settings: bdd0548ab28d965d
   privacy: c99161b3e56307e0
-  permissions: 370fccde84943fb0
+  permissions: 2ae23cefd9ceb983
   find-subgroups: 8bdb0244966a9a56
   invite-to-a-subgroup: f43723d038795ee2
   simultaneously-invite-people-to-subgroups-and-parent-group: f8892fdd5672d75b
@@ -100,7 +100,7 @@ Choisissez [comment les personnes rejoignent le groupe](/en/user_manual/groups/s
 
 ### Permissions
 
-Activez **Les membres de [groupe parent] peuvent voir les fils privés** dans **Permissions** pour permettre aux membres du groupe parent de lire les fils du sous-groupe sans le rejoindre. Ces lecteurs n’obtiennent ni le droit de vote ni le statut de membre du sous-groupe.
+Activez **Les membres du groupe parent peuvent voir les fils privés** dans **Permissions** pour permettre aux membres du groupe parent de lire les fils du sous-groupe sans le rejoindre. Ces lecteurs n’obtiennent ni le droit de vote ni le statut de membre du sous-groupe.
 
 ![Paramètre permettant aux membres du groupe parent de voir les fils privés du sous-groupe](subgroups_private_threads_settings.png)
 

@@ -1459,12 +1459,9 @@ it:
     subgroup_privacy_is_secret_description: Solo i membri invitati possono trovare questo sottogruppo, vedere chi è al suo interno e vedere le discussioni.
     advanced_settings: Impostazioni avanzate
     how_do_people_join: Come si uniscono al gruppo le persone?
-    membership_granted_upon_request: Chiunque si può unire al gruppo.
-    membership_granted_upon_approval: Chiunque può richiedere di essere aggiunto ma dev'essere approvato.
-    membership_granted_upon_invitation: Solo su invito.
-    membership_granted_upon_approval_parent_members: "I membri di %{parent} possono richiedere l’approvazione per unirsi"
-    membership_granted_upon_request_parent_members: "I membri di %{parent} possono unirsi senza approvazione"
-    membership_granted_upon_approval_secret_parent: "<strong>Su richiesta</strong> chiunque da %{parent} può chiedere di unirsi al gruppo."
+    join_without_approval: "Entra senza approvazione"
+    request_to_join: "Chiedi di entrare"
+    invitation_only: "Solo su invito"
     permissions: Permessi
     thread_privacy: Pricacy della discussione
     public_threads: Solo discussioni pubbliche
@@ -1472,8 +1469,8 @@ it:
     public_or_private_threads: Permetti discussioni pubbliche e private
     private_threads: Solo i membri possono vedere le discussioni
     allow_public_threads: Permetti discussioni pubbliche in questo gruppo.
-    parent_members_can_see_discussions: I membri di %{parent} possono visualizzare thread privati
-    parent_members_can_see_discussions_help: Consenti ai membri del gruppo padre di visualizzare, ma non partecipare, thread e sondaggi all'interno di questo gruppo
+    parent_group_members_can_see_private_threads: "I membri del gruppo principale possono vedere le conversazioni private"
+    parent_group_members_can_see_private_threads_help: "Consenti ai membri di %{parent} di vedere le conversazioni e i sondaggi di questo gruppo, senza partecipare"
     members_can_announce: I membri possono avvisare tutti i membri del gruppo
     members_can_announce_help: Consenti ai membri di notificare a tutti i membri del gruppo un thread o un sondaggio
     members_can_add_members: I membri possono invitare i membri

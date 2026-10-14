@@ -1,6 +1,6 @@
 ---
 title: פרטיות
-source_revision: 3dad7e54d7f08f6d83af4b8adb6a408f1652ef7e
+source_revision: e34ed3124daf97b42eef81bc6f6a90075ec93227
 source_file: docs/en/user_manual/groups/settings/privacy.md
 translated:
   provider: codex/gpt-6.1-sol
@@ -11,7 +11,7 @@ sections:
   follow-an-open-group: e4a1b3ce35a974d0
   closed: fe4da2f032768bca
   secret: d0a9ea85448f9798
-  how-people-join: 3840bb3403bb1788
+  how-people-join: 926f4b183250aa9d
   group-directory: a9a41ea389fb10ba
   visible-to-parent-group: 96b8595d3bc6ce4b
 generated:
@@ -20,7 +20,7 @@ generated:
   follow-an-open-group: 9ac48fba319c6f43
   closed: e91ec6a8464d9ecc
   secret: f06cb2c926abfd70
-  how-people-join: 775d9d6fef258270
+  how-people-join: a65321f4faced153
   group-directory: 38a2405a23ceb063
   visible-to-parent-group: bdc99e8bb3511128
 title_source: 54a57c3147c49f33
@@ -79,9 +79,9 @@ title_generated: 7934094d24f8b2e6
 
 | אפשרות הצטרפות | איך זה עובד |
 | --- | --- |
-| ללא אישור | ניתן להצטרף באופן עצמאי |
-| נדרש אישור | יש להגיש בקשת הצטרפות ולהמתין לאישור |
-| בהזמנה בלבד | נדרשת הזמנה כדי להצטרף |
+| **להצטרף ללא אישור** | ניתן להצטרף באופן עצמאי |
+| **לבקש להצטרף** | יש להגיש בקשת הצטרפות ולהמתין לאישור |
+| **בהזמנה בלבד** | נדרשת הזמנה כדי להצטרף |
 
 כאשר נדרש אישור, יש לבחור **הצטרפו לקבוצה**, לענות על שאלת ההצטרפות של הקבוצה ולשלוח בקשת הצטרפות. הוראות להגדרת השאלה, לבדיקת בקשות ולהזמנת אנשים ישירות מופיעות בעמוד [הזמנת אנשים](/en/user_manual/groups/inviting_people#request-to-join-group).
 

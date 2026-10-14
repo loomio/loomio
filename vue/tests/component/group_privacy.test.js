@@ -3,7 +3,7 @@ import {describe, expect, it, vi} from 'vitest';
 vi.mock('@/i18n', () => ({I18n: {global: {t: key => key}}}));
 vi.mock('@/shared/services/records', () => ({default: {}}));
 
-import {groupPrivacy, groupPrivacyOptions, groupPrivacyStatement, groupMembershipGrantedUpon} from '@/shared/helpers/helptext';
+import {groupPrivacy, groupPrivacyOptions, groupPrivacyStatement} from '@/shared/helpers/helptext';
 import GroupModel from '@/shared/models/group_model';
 import NullGroupModel from '@/shared/models/null_group_model';
 
@@ -31,13 +31,6 @@ describe('subgroup privacy explanations', () => {
     const group = {isParent: () => false, groupPrivacy: privacy};
     expect(groupPrivacy(group)).toBe(`group_form.${description}`);
     expect(groupPrivacyStatement(group)).toBe(`group_form.privacy_statement.${statement}`);
-  });
-
-  it('labels immediate joining for the selected visibility without adding a membership mode', () => {
-    const group = {privacyIsParentMembers: () => true};
-    expect(groupMembershipGrantedUpon(group, 'request')).toBe('group_form.membership_granted_upon_request_parent_members');
-    expect(groupMembershipGrantedUpon(group, 'approval')).toBe('group_form.membership_granted_upon_approval_parent_members');
-    expect(groupMembershipGrantedUpon({privacyIsParentMembers: () => false}, 'request')).toBe('group_form.membership_granted_upon_request');
   });
 
   it('exposes parent visibility on real groups and returns false on the null group', () => {

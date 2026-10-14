@@ -1,6 +1,6 @@
 ---
 title: Падгрупы
-source_revision: 3dad7e54d7f08f6d83af4b8adb6a408f1652ef7e
+source_revision: e34ed3124daf97b42eef81bc6f6a90075ec93227
 source_file: docs/en/user_manual/groups/subgroups/index.md
 translated:
   provider: codex/gpt-6.1-sol
@@ -10,7 +10,7 @@ sections:
   add-a-subgroup: 0bc0e5f99eb074c3
   subgroup-settings: 737225cc4bebe7e8
   privacy: 58872ebdc8b93967
-  permissions: dcfc042cdb083deb
+  permissions: 485ea3cc98d48900
   find-subgroups: 5e6fc5a5122c1417
   invite-to-a-subgroup: 0af670e1e9b32a5e
   simultaneously-invite-people-to-subgroups-and-parent-group: 1991604900321cd7
@@ -22,7 +22,7 @@ generated:
   add-a-subgroup: dc0aa7b1d0b5dbf1
   subgroup-settings: 7f07de40f539d0f6
   privacy: 42d17f2a626a3ac2
-  permissions: bbdd73c7883b4fb2
+  permissions: 8c327a236e35959d
   find-subgroups: c90ca166d19dc291
   invite-to-a-subgroup: 160de3a4ad495ecb
   simultaneously-invite-people-to-subgroups-and-parent-group: 2ba96e357a029ccf
@@ -100,7 +100,7 @@ title_generated: 419292afc0b8cfee
 
 ### Дазволы
 
-Уключыце **Удзельнікі [бацькоўскай групы] могуць бачыць прыватныя тэмы** ў раздзеле **Дазволы**, каб удзельнікі бацькоўскай групы маглі чытаць тэмы падгрупы без далучэння да яе. Людзі, якія чытаюць тэмы такім чынам, не атрымліваюць права голасу і не становяцца ўдзельнікамі падгрупы.
+Уключыце **Удзельнікі бацькоўскай групы могуць бачыць прыватныя тэмы** ў раздзеле **Дазволы**, каб удзельнікі бацькоўскай групы маглі чытаць тэмы падгрупы без далучэння да яе. Людзі, якія чытаюць тэмы такім чынам, не атрымліваюць права голасу і не становяцца ўдзельнікамі падгрупы.
 
 ![Налада, якая дазваляе ўдзельнікам бацькоўскай групы бачыць прыватныя тэмы падгрупы](subgroups_private_threads_settings.png)
 

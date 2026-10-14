@@ -1,6 +1,6 @@
 ---
 title: Канфідэнцыяльнасць
-source_revision: 3dad7e54d7f08f6d83af4b8adb6a408f1652ef7e
+source_revision: e34ed3124daf97b42eef81bc6f6a90075ec93227
 source_file: docs/en/user_manual/groups/settings/privacy.md
 translated:
   provider: codex/gpt-6.1-sol
@@ -11,7 +11,7 @@ sections:
   follow-an-open-group: e4a1b3ce35a974d0
   closed: fe4da2f032768bca
   secret: d0a9ea85448f9798
-  how-people-join: 3840bb3403bb1788
+  how-people-join: 926f4b183250aa9d
   group-directory: a9a41ea389fb10ba
   visible-to-parent-group: 96b8595d3bc6ce4b
 generated:
@@ -20,7 +20,7 @@ generated:
   follow-an-open-group: 8f6298ca56bc4b7e
   closed: 8173c12f9b365610
   secret: f3efc0bf6c9a8de2
-  how-people-join: 4988e266183e7483
+  how-people-join: d892f00b08410cb5
   group-directory: b02f9c3a0822f98e
   visible-to-parent-group: 4bebd74ea31c89ef
 title_source: 54a57c3147c49f33
@@ -79,9 +79,9 @@ title_generated: 1ae6e1d40fc80813
 
 | Спосаб далучэння | Як гэта працуе |
 | --- | --- |
-| Без ухвалення | Людзі могуць далучацца самастойна |
-| Патрабуецца ўхваленне | Людзі падаюць запыт на далучэнне і чакаюць ухвалення |
-| Толькі па запрашэнні | Для далучэння людзям патрэбнае запрашэнне |
+| **Далучэнне без ухвалення** | Людзі могуць далучацца самастойна |
+| **Запыт на далучэнне** | Людзі падаюць запыт на далучэнне і чакаюць ухвалення |
+| **Толькі па запрашэнні** | Для далучэння людзям патрэбнае запрашэнне |
 
 Калі патрабуецца ўхваленне, людзі выбіраюць **Далучыцца да групы**, адказваюць на пытанне групы для далучэння і адпраўляюць запыт на далучэнне. Інструкцыі па наладжванні пытання, разглядзе запытаў і непасрэдным запрашэнні людзей глядзіце ў раздзеле [Запрашэнне людзей](/en/user_manual/groups/inviting_people#request-to-join-group).
 

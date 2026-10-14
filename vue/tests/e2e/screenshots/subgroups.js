@@ -46,7 +46,7 @@ module.exports = {
     page.expectValue('.group-form__handle input', 'oatmilk-cooperative-packaging-working-group');
     page.fillIn('.group-form__group-description [contenteditable=true]', 'Coordinate packaging suppliers, bottle returns, and labelling.');
     page.click('.group-form__privacy-parent_members');
-    page.click('.group-form__membership-granted-upon-request');
+    page.click('.group-form__membership-granted-upon-request label');
     page.expectText('.group-form', 'Start subgroup');
     screenshot.captureElement('groups/subgroups/subgroups_new', '.group-form', {height: 1200});
   },
@@ -87,12 +87,16 @@ module.exports = {
     page.waitFor('.group-form');
     page.click('.group-form__privacy-tab');
     page.click('.group-form__privacy-parent_members');
-    page.click('.group-form__membership-granted-upon-request');
-    page.expectText('.group-form__membership-granted-upon-request', 'Members of Oatmilk Cooperative can join without approval');
+    page.click('.group-form__membership-granted-upon-request label');
+    test.assert.selected('.group-form__membership-granted-upon-request input');
+    page.expectText('.group-form__guide-link', 'User guide');
+    page.expectText('.group-form__membership-granted-upon-request', 'Join without approval');
+    page.expectText('.group-form__membership-granted-upon-approval', 'Request to join');
+    page.expectText('.group-form__membership-granted-upon-invitation', 'Invitation only');
     screenshot.captureElement('groups/subgroups/subgroups_privacy_settings', '.group-form', {
       height: 1200,
       spotlight: {
-        selectors: ['.group-form__privacy-parent_members', '.group-form__membership-granted-upon-request'],
+        selector: '.group-form__joining',
         padding: 14,
         radius: 14,
         opacity: 0.4,

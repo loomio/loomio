@@ -1439,12 +1439,9 @@ nl_NL:
     subgroup_privacy_is_secret_description: Alleen uitgenodigde leden kunnen deze subgroep vinden, zien wie er in zit en borden zien.
     advanced_settings: Geavanceerde instellingen
     how_do_people_join: Hoe sluiten mensen aan?
-    membership_granted_upon_request: Iedereen kan zich bij de groep aansluiten.
-    membership_granted_upon_approval: Iedereen kan verzoeken om mee te mogen doen, maar moet goedgekeurd worden.
-    membership_granted_upon_invitation: Alleen op uitnodiging.
-    membership_granted_upon_approval_parent_members: "Leden van %{parent} kunnen goedkeuring vragen om lid te worden"
-    membership_granted_upon_request_parent_members: "Leden van %{parent} kunnen zonder goedkeuring lid worden"
-    membership_granted_upon_approval_secret_parent: "<strong>Op verzoek</strong> kan iedereen van %{parent} vragen om deel te nemen aan de groep."
+    join_without_approval: "Lid worden zonder goedkeuring"
+    request_to_join: "Lidmaatschap aanvragen"
+    invitation_only: "Alleen op uitnodiging"
     permissions: Toestemmingen
     thread_privacy: Bordprivacy
     public_threads: Alleen openbare borden
@@ -1452,8 +1449,8 @@ nl_NL:
     public_or_private_threads: Sta openbare en privéborden toe
     private_threads: Enkel leden kunnen discussies zien
     allow_public_threads: Sta openbare borden toe in deze groep.
-    parent_members_can_see_discussions: Leden van %{parent} kunnen privéthreads zien
-    parent_members_can_see_discussions_help: Leden van de bovenliggende groep toestaan om threads en polls binnen deze groep te zien, maar er niet aan deel te nemen
+    parent_group_members_can_see_private_threads: "Leden van de hoofdgroep kunnen privéthreads zien"
+    parent_group_members_can_see_private_threads_help: "Laat leden van %{parent} threads en peilingen in deze groep zien, maar niet deelnemen"
     members_can_announce: Leden kunnen iedereen in de groep op de hoogte stellen
     members_can_announce_help: Leden toestaan iedereen in de groep op de hoogte te stellen van een gesprek of peiling
     members_can_add_members: Leden kunnen leden uitnodigen

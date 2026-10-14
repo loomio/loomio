@@ -1433,12 +1433,9 @@ ro:
     subgroup_privacy_is_secret_description: Numai membrii invitați pot găsi acest subgrup, pot vedea cine face parte din el și pot vedea firele.
     advanced_settings: Setari avansate
     how_do_people_join: Cum se alătură oamenii?
-    membership_granted_upon_request: Oricine se poate alătura grupului.
-    membership_granted_upon_approval: Oricine poate solicita înscrierea, dar trebuie să fie aprobat.
-    membership_granted_upon_invitation: Doar cu invitație.
-    membership_granted_upon_approval_parent_members: "Membrii %{parent} pot solicita aprobarea pentru a se alătura"
-    membership_granted_upon_request_parent_members: "Membrii grupului %{parent} se pot alătura fără aprobare"
-    membership_granted_upon_approval_secret_parent: "<strong>La cerere,</strong> oricine din %{parent} poate cere să se alăture grupului."
+    join_without_approval: "Alătură-te fără aprobare"
+    request_to_join: "Cere să te alături"
+    invitation_only: "Doar cu invitație"
     permissions: Permisiuni
     thread_privacy: Confidentialitatea discutiei
     public_threads: Doar discutii publice
@@ -1446,8 +1443,8 @@ ro:
     public_or_private_threads: Permite discutii publice si private
     private_threads: Numai membrii pot vedea discuțiile
     allow_public_threads: Permite discutii publice in acest grup
-    parent_members_can_see_discussions: Membrii %{parent} pot vedea firele private
-    parent_members_can_see_discussions_help: Permiteți membrilor grupului părinte să vadă, dar să nu participe la, fire și sondaje din cadrul acestui grup
+    parent_group_members_can_see_private_threads: "Membrii grupului părinte pot vedea firele private"
+    parent_group_members_can_see_private_threads_help: "Permite membrilor din %{parent} să vadă firele și sondajele din acest grup, fără să participe"
     members_can_announce: Membrii pot notifica pe toți membrii grupului
     members_can_announce_help: Permiteți membrilor să notifice pe toți cei din grup despre o discuție sau un sondaj
     members_can_add_members: Membrii pot invita membri

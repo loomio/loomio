@@ -58,11 +58,12 @@ export function groupPrivacyOptions(group) {
   return ['open', 'closed', 'parent_members', 'secret'];
 }
 
-export function groupMembershipGrantedUpon(group, granted) {
-  if (['request', 'approval'].includes(granted) && group.privacyIsParentMembers()) {
-    return 'group_form.membership_granted_upon_' + granted + '_parent_members';
-  }
-  return 'group_form.membership_granted_upon_' + granted;
+export function groupMembershipGrantedUpon(granted) {
+  return {
+    request: 'group_form.join_without_approval',
+    approval: 'group_form.request_to_join',
+    invitation: 'group_form.invitation_only'
+  }[granted];
 }
 
 export var groupPrivacyStatement = function(group) {

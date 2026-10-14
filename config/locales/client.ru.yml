@@ -1433,12 +1433,9 @@ ru:
     subgroup_privacy_is_secret_description: Только приглашенные участники могут найти эту подгруппу, увидеть, кто в ней состоит, и просмотреть темы.
     advanced_settings: Расширенные настройки
     how_do_people_join: Как люди присоединяются?
-    membership_granted_upon_request: К группе может присоединиться любой желающий.
-    membership_granted_upon_approval: Любой может подать заявку на присоединение, но должен быть одобрен.
-    membership_granted_upon_invitation: Только приглашение.
-    membership_granted_upon_approval_parent_members: "Участники %{parent} могут запросить одобрение для вступления"
-    membership_granted_upon_request_parent_members: "Участники %{parent} могут присоединиться без одобрения"
-    membership_granted_upon_approval_secret_parent: "<strong>По запросу</strong> любой из %{parent} может попросить присоединиться к группе."
+    join_without_approval: "Вступление без одобрения"
+    request_to_join: "Вступление по запросу"
+    invitation_only: "Только по приглашению"
     permissions: Разрешения
     thread_privacy: Конфиденциальность темы
     public_threads: Только публичные темы
@@ -1446,8 +1443,8 @@ ru:
     public_or_private_threads: Разрешить публичные и закрытые темы
     private_threads: Только участники могут видеть обсуждения
     allow_public_threads: Разрешить общедоступные темы в этой группе.
-    parent_members_can_see_discussions: Участники %{parent} могут видеть частные обсуждения
-    parent_members_can_see_discussions_help: Разрешить членам родительской группы видеть, но не участвовать в обсуждениях и опросах в этой группе.
+    parent_group_members_can_see_private_threads: "Участники родительской группы могут видеть закрытые ветки"
+    parent_group_members_can_see_private_threads_help: "Разрешить участникам группы %{parent} просматривать ветки и опросы в этой группе, но не участвовать в них"
     members_can_announce: Участники могут уведомлять всех в группе
     members_can_announce_help: Разрешить участникам уведомлять всех в группе о теме или опросе
     members_can_add_members: Участники могут приглашать участников

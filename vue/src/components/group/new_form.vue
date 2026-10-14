@@ -234,7 +234,7 @@ v-card.group-form(:title="group.parentId ? $t('group_form.start_subgroup_heading
         v-radio-group(v-model='group.membershipGrantedUpon')
           v-radio(v-for="granted in ['request', 'approval']" :key="granted" :class="'group-form__membership-granted-upon-' + granted" :value='granted')
             template(v-slot:label)
-              span {{ t(groupMembershipGrantedUpon(group, granted), { parent: group.parentName() }) }}
+              span {{ t(groupMembershipGrantedUpon(granted)) }}
 
     div.pt-2(v-if="!group.parentId")
       span.text-medium-emphasis
@@ -247,6 +247,7 @@ v-card.group-form(:title="group.parentId ? $t('group_form.start_subgroup_heading
         span(v-t="'group_form.secret_by_default'")
 
   v-card-actions.ma-2
+    help-btn.group-form__guide-link(:path="group.parentId ? 'user_manual/groups/subgroups' : 'user_manual/groups/starting_a_group'")
     v-spacer
     v-btn.group-form__submit-button(
       :loading="group.processing"

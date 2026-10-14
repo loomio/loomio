@@ -1460,12 +1460,9 @@ fr:
     subgroup_privacy_is_secret_description: Seuls les membres invités peuvent trouver ce sous-groupe, voir les membres et voir les discussions.
     advanced_settings: Paramètres avancés
     how_do_people_join: Comment les personnes peuvent-elles rejoindre le groupe ?
-    membership_granted_upon_request: N’importe qui peut rejoindre le groupe
-    membership_granted_upon_approval: N’importe qui peut demander à rejoindre le groupe, mais la demande doit être approuvée.
-    membership_granted_upon_invitation: Invitation seulement.
-    membership_granted_upon_approval_parent_members: "Les membres de %{parent} peuvent demander une approbation pour rejoindre le groupe"
-    membership_granted_upon_request_parent_members: "Les membres de %{parent} peuvent rejoindre sans approbation"
-    membership_granted_upon_approval_secret_parent: "<strong>Sur proposition,</strong> n’importe qui de %{parent} peut demander à rejoindre le groupe."
+    join_without_approval: "Rejoindre sans approbation"
+    request_to_join: "Demander à rejoindre"
+    invitation_only: "Sur invitation uniquement"
     permissions: Permissions
     thread_privacy: Confidentialité de la discussion
     public_threads: Discussions publiques seulement
@@ -1473,8 +1470,8 @@ fr:
     public_or_private_threads: Autoriser les discussions privées et publiques
     private_threads: Seuls les membres peuvent voir les discussions
     allow_public_threads: Autoriser les discussions publiques dans ce groupe.
-    parent_members_can_see_discussions: Les membres de %{parent} peuvent voir les discussions privées
-    parent_members_can_see_discussions_help: Autoriser les membres du groupe parent à voir, mais pas à participer, les threads et les sondages au sein de ce groupe
+    parent_group_members_can_see_private_threads: "Les membres du groupe parent peuvent voir les fils privés"
+    parent_group_members_can_see_private_threads_help: "Autoriser les membres de %{parent} à voir les fils et sondages de ce groupe, sans y participer"
     members_can_announce: Les membres peuvent notifier n'importe qui dans le groupe
     members_can_announce_help: Autoriser les membres à notifier tout le monde dans le groupe à propos d'une discussion ou d'un sondage
     members_can_add_members: Les membres peuvent envoyer des invitations à d'autres membres

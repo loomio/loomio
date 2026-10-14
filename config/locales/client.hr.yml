@@ -1435,12 +1435,9 @@ hr:
     subgroup_privacy_is_secret_description: Samo pozvani članovi mogu pronaći ovu podgrupu, vidjeti tko je u njoj i vidjeti teme.
     advanced_settings: Napredne postavke
     how_do_people_join: Kako se ljudi pridružuju?
-    membership_granted_upon_request: Svatko se može pridružiti grupi.
-    membership_granted_upon_approval: Svatko može zatražiti pridruživanje, ali mora biti odobren.
-    membership_granted_upon_invitation: Samo uz pozivnicu.
-    membership_granted_upon_approval_parent_members: "Članovi %{parent} mogu zatražiti odobrenje za pridruživanje"
-    membership_granted_upon_request_parent_members: "Članovi grupe %{parent} mogu se pridružiti bez odobrenja"
-    membership_granted_upon_approval_secret_parent: "<strong>Na zahtjev</strong> bilo tko iz %{parent} može tražiti da se pridruži grupi."
+    join_without_approval: "Pridružite se bez odobrenja"
+    request_to_join: "Zatražite pridruživanje"
+    invitation_only: "Samo uz pozivnicu"
     permissions: Dozvole
     thread_privacy: Privatnost niti
     public_threads: Samo javne niti
@@ -1448,8 +1445,8 @@ hr:
     public_or_private_threads: Dopusti javne i privatne niti
     private_threads: Samo članovi mogu vidjeti rasprave
     allow_public_threads: Dopusti javne niti u ovoj grupi.
-    parent_members_can_see_discussions: Članovi %{parent} mogu vidjeti privatne niti
-    parent_members_can_see_discussions_help: Dopusti članovima nadređene grupe da vide, ali ne i da sudjeluju u temama i anketama unutar ove grupe
+    parent_group_members_can_see_private_threads: "Članovi matične grupe mogu vidjeti privatne niti"
+    parent_group_members_can_see_private_threads_help: "Dopustite članovima grupe %{parent} da vide niti i ankete u ovoj grupi, ali ne i da u njima sudjeluju"
     members_can_announce: Članovi mogu obavijestiti sve u grupi
     members_can_announce_help: Dopustite članovima da obavijeste sve u grupi o niti ili anketi
     members_can_add_members: Članovi mogu pozvati članove

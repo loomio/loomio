@@ -1,6 +1,6 @@
 ---
 title: Sottogruppi
-source_revision: 3dad7e54d7f08f6d83af4b8adb6a408f1652ef7e
+source_revision: e34ed3124daf97b42eef81bc6f6a90075ec93227
 source_file: docs/en/user_manual/groups/subgroups/index.md
 translated:
   provider: codex/gpt-6.1-sol
@@ -10,7 +10,7 @@ sections:
   add-a-subgroup: 0bc0e5f99eb074c3
   subgroup-settings: 737225cc4bebe7e8
   privacy: 58872ebdc8b93967
-  permissions: dcfc042cdb083deb
+  permissions: 485ea3cc98d48900
   find-subgroups: 5e6fc5a5122c1417
   invite-to-a-subgroup: 0af670e1e9b32a5e
   simultaneously-invite-people-to-subgroups-and-parent-group: 1991604900321cd7
@@ -22,7 +22,7 @@ generated:
   add-a-subgroup: 95936e1a60dbdd9f
   subgroup-settings: 2102921a561843bd
   privacy: 4cd1c2801602cdf2
-  permissions: accf9462a704cd51
+  permissions: 60fbbcca015e8f58
   find-subgroups: 77105b0d7b3a1773
   invite-to-a-subgroup: d13d4627eb013177
   simultaneously-invite-people-to-subgroups-and-parent-group: 0fa563a5977885f6
@@ -100,7 +100,7 @@ Scegli [come ci si iscrive](/en/user_manual/groups/settings/privacy#how-people-j
 
 ### Permessi
 
-Attiva **I membri di [gruppo principale] possono vedere le conversazioni private** in **Permessi** per consentire ai membri del gruppo principale di leggere le conversazioni del sottogruppo senza iscriversi. Questi lettori non acquisiscono il diritto di voto né diventano membri del sottogruppo.
+Attiva **I membri del gruppo principale possono vedere le conversazioni private** in **Permessi** per consentire ai membri del gruppo principale di leggere le conversazioni del sottogruppo senza iscriversi. Questi lettori non acquisiscono il diritto di voto né diventano membri del sottogruppo.
 
 ![Impostazione che consente ai membri del gruppo principale di vedere le conversazioni private del sottogruppo](subgroups_private_threads_settings.png)
 

@@ -1,6 +1,6 @@
 ---
 title: Untergruppen
-source_revision: 3dad7e54d7f08f6d83af4b8adb6a408f1652ef7e
+source_revision: e34ed3124daf97b42eef81bc6f6a90075ec93227
 source_file: docs/en/user_manual/groups/subgroups/index.md
 translated:
   provider: codex/gpt-6.1-sol
@@ -10,7 +10,7 @@ sections:
   add-a-subgroup: 0bc0e5f99eb074c3
   subgroup-settings: 737225cc4bebe7e8
   privacy: 58872ebdc8b93967
-  permissions: dcfc042cdb083deb
+  permissions: 485ea3cc98d48900
   find-subgroups: 5e6fc5a5122c1417
   invite-to-a-subgroup: 0af670e1e9b32a5e
   simultaneously-invite-people-to-subgroups-and-parent-group: 1991604900321cd7
@@ -22,7 +22,7 @@ generated:
   add-a-subgroup: '0583e95e8fd8424d'
   subgroup-settings: e79b4c0cb34a6e3c
   privacy: 6aba37ab7abd1c62
-  permissions: 879061a4be8edd30
+  permissions: 1e71998a7fe07864
   find-subgroups: c4956da3eeabc8d5
   invite-to-a-subgroup: 79ef72a3ea7f6750
   simultaneously-invite-people-to-subgroups-and-parent-group: b4dbc6f6abf00a2d
@@ -100,7 +100,7 @@ Wähle beim Erstellen der Untergruppe oder unter **Gruppeneinstellungen bearbeit
 
 ### Berechtigungen
 
-Aktiviere unter **Berechtigungen** die Einstellung **Mitglieder von [Hauptgruppe] können private Threads sehen**, damit Mitglieder der Hauptgruppe Threads der Untergruppe lesen können, ohne ihr beizutreten. Diese Personen erhalten dadurch weder Stimmrechte noch eine Mitgliedschaft in der Untergruppe.
+Aktiviere unter **Berechtigungen** die Einstellung **Mitglieder der Hauptgruppe können private Threads sehen**, damit Mitglieder der Hauptgruppe Threads der Untergruppe lesen können, ohne ihr beizutreten. Diese Personen erhalten dadurch weder Stimmrechte noch eine Mitgliedschaft in der Untergruppe.
 
 ![Einstellung, die Mitgliedern der Hauptgruppe erlaubt, private Threads der Untergruppe zu sehen](subgroups_private_threads_settings.png)
 

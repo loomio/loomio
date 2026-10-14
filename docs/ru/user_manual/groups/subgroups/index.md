@@ -1,6 +1,6 @@
 ---
 title: Подгруппы
-source_revision: 3dad7e54d7f08f6d83af4b8adb6a408f1652ef7e
+source_revision: e34ed3124daf97b42eef81bc6f6a90075ec93227
 source_file: docs/en/user_manual/groups/subgroups/index.md
 translated:
   provider: codex/gpt-6.1-sol
@@ -10,7 +10,7 @@ sections:
   add-a-subgroup: 0bc0e5f99eb074c3
   subgroup-settings: 737225cc4bebe7e8
   privacy: 58872ebdc8b93967
-  permissions: dcfc042cdb083deb
+  permissions: 485ea3cc98d48900
   find-subgroups: 5e6fc5a5122c1417
   invite-to-a-subgroup: 0af670e1e9b32a5e
   simultaneously-invite-people-to-subgroups-and-parent-group: 1991604900321cd7
@@ -22,7 +22,7 @@ generated:
   add-a-subgroup: 6b01ab7da6a9afc6
   subgroup-settings: 1be409cb3865a31e
   privacy: cacd2678a68addcb
-  permissions: 45c0e085abb391bf
+  permissions: ad0db7331204bfac
   find-subgroups: aae945e22a60304b
   invite-to-a-subgroup: 4fd9de2765b2e910
   simultaneously-invite-people-to-subgroups-and-parent-group: 48ab8138ac6a36bc
@@ -100,9 +100,9 @@ title_generated: a3ec35ef95a0fb4a
 
 ### Разрешения
 
-Включите **Участники [родительской группы] могут видеть приватные ветки** в разделе **Разрешения**, чтобы участники родительской группы могли читать ветки подгруппы без вступления в неё. Эти читатели не получают права голосовать и не становятся участниками подгруппы.
+Включите **Участники родительской группы могут видеть закрытые ветки** в разделе **Разрешения**, чтобы участники родительской группы могли читать ветки подгруппы без вступления в неё. Эти читатели не получают права голосовать и не становятся участниками подгруппы.
 
-![Настройка, позволяющая участникам родительской группы видеть приватные ветки подгруппы](subgroups_private_threads_settings.png)
+![Настройка, позволяющая участникам родительской группы видеть закрытые ветки подгруппы](subgroups_private_threads_settings.png)
 
 <!-- translation-section: find-subgroups -->
 

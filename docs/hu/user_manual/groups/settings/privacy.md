@@ -1,6 +1,6 @@
 ---
 title: Adatvédelem
-source_revision: 3dad7e54d7f08f6d83af4b8adb6a408f1652ef7e
+source_revision: e34ed3124daf97b42eef81bc6f6a90075ec93227
 source_file: docs/en/user_manual/groups/settings/privacy.md
 translated:
   provider: codex/gpt-6.1-sol
@@ -11,7 +11,7 @@ sections:
   follow-an-open-group: e4a1b3ce35a974d0
   closed: fe4da2f032768bca
   secret: d0a9ea85448f9798
-  how-people-join: 3840bb3403bb1788
+  how-people-join: 926f4b183250aa9d
   group-directory: a9a41ea389fb10ba
   visible-to-parent-group: 96b8595d3bc6ce4b
 generated:
@@ -20,7 +20,7 @@ generated:
   follow-an-open-group: 1ba28db3a5fc5a87
   closed: f152334a5ced467a
   secret: f5b03dc9759ad3bf
-  how-people-join: 1dfb03f15f76644f
+  how-people-join: 6e678dd97908c1fa
   group-directory: f49d5685cf2bb3eb
   visible-to-parent-group: c306b4bac9127b0f
 title_source: 54a57c3147c49f33
@@ -79,9 +79,9 @@ A **Hogyan csatlakoznak az emberek?** alatt válaszd ki az elérhető csatlakoz�
 
 | Csatlakozási mód | Hogyan működik |
 | --- | --- |
-| Jóváhagyás nélkül | Az emberek maguk is csatlakozhatnak |
-| Jóváhagyás szükséges | Az emberek csatlakozási kérelmet küldenek, és megvárják a jóváhagyást |
-| Csak meghívóval | A csatlakozáshoz meghívó szükséges |
+| **Csatlakozás jóváhagyás nélkül** | Az emberek maguk is csatlakozhatnak |
+| **Csatlakozás kérése** | Az emberek csatlakozási kérelmet küldenek, és megvárják a jóváhagyást |
+| **Csak meghívóval** | A csatlakozáshoz meghívó szükséges |
 
 Ha jóváhagyás szükséges, a csatlakozni kívánók kiválasztják a **Csoporthoz csatlakozás** lehetőséget, válaszolnak a csoport csatlakozási kérdésére, és elküldik a csatlakozási kérelmet. A kérdés beállításáról, a kérelmek áttekintéséről és az emberek közvetlen meghívásáról az [Emberek meghívása](/en/user_manual/groups/inviting_people#request-to-join-group) oldalon olvashatsz.
 

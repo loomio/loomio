@@ -50,9 +50,9 @@ Under **How do people join?**, choose from the available options:
 
 | Joining option | How it works |
 | --- | --- |
-| Without approval | People can join themselves |
-| Approval required | People request to join and wait for approval |
-| Invitation only | People need an invitation to join |
+| **Join without approval** | People can join themselves |
+| **Request to join** | People request to join and wait for approval |
+| **Invitation only** | People need an invitation to join |
 
 When approval is required, people select **Join group**, answer the group's joining prompt, and send a request to join. See [Inviting people](/en/user_manual/groups/inviting_people#request-to-join-group) for instructions on configuring the prompt, reviewing requests, and inviting people directly.
 

@@ -1,6 +1,6 @@
 ---
 title: サブグループ
-source_revision: 3dad7e54d7f08f6d83af4b8adb6a408f1652ef7e
+source_revision: e34ed3124daf97b42eef81bc6f6a90075ec93227
 source_file: docs/en/user_manual/groups/subgroups/index.md
 translated:
   provider: codex/gpt-6.1-sol
@@ -10,7 +10,7 @@ sections:
   add-a-subgroup: 0bc0e5f99eb074c3
   subgroup-settings: 737225cc4bebe7e8
   privacy: 58872ebdc8b93967
-  permissions: dcfc042cdb083deb
+  permissions: 485ea3cc98d48900
   find-subgroups: 5e6fc5a5122c1417
   invite-to-a-subgroup: 0af670e1e9b32a5e
   simultaneously-invite-people-to-subgroups-and-parent-group: 1991604900321cd7
@@ -22,7 +22,7 @@ generated:
   add-a-subgroup: 794946c2c597f16c
   subgroup-settings: 4d1baea010b1b7e1
   privacy: 201c06097802c912
-  permissions: d793cd2413ef5e16
+  permissions: dbb96a53ab720785
   find-subgroups: 5711dcd4a3c90e26
   invite-to-a-subgroup: bd1058971796e58b
   simultaneously-invite-people-to-subgroups-and-parent-group: 3518924ddb8272cc
@@ -100,7 +100,7 @@ title_generated: 70b41aa1386d23c6
 
 ### 権限
 
-親グループのメンバーがサブグループに参加せずにそのスレッドを閲覧できるようにするには、**権限**で**[親グループ]のメンバーは非公開のスレッドを閲覧できます**を有効にします。閲覧できるようになっても、投票権は付与されず、サブグループのメンバーにもなりません。
+親グループのメンバーがサブグループに参加せずにそのスレッドを閲覧できるようにするには、**権限**で**親グループのメンバーは非公開スレッドを閲覧できます**を有効にします。閲覧できるようになっても、投票権は付与されず、サブグループのメンバーにもなりません。
 
 ![親グループのメンバーがサブグループの非公開スレッドを閲覧できるようにする設定](subgroups_private_threads_settings.png)
 

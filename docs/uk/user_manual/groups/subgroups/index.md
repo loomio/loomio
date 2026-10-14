@@ -1,6 +1,6 @@
 ---
 title: Підгрупи
-source_revision: 3dad7e54d7f08f6d83af4b8adb6a408f1652ef7e
+source_revision: e34ed3124daf97b42eef81bc6f6a90075ec93227
 source_file: docs/en/user_manual/groups/subgroups/index.md
 translated:
   provider: codex/gpt-6.1-sol
@@ -10,7 +10,7 @@ sections:
   add-a-subgroup: 0bc0e5f99eb074c3
   subgroup-settings: 737225cc4bebe7e8
   privacy: 58872ebdc8b93967
-  permissions: dcfc042cdb083deb
+  permissions: 485ea3cc98d48900
   find-subgroups: 5e6fc5a5122c1417
   invite-to-a-subgroup: 0af670e1e9b32a5e
   simultaneously-invite-people-to-subgroups-and-parent-group: 1991604900321cd7
@@ -22,7 +22,7 @@ generated:
   add-a-subgroup: 2d565f3ca5c323ad
   subgroup-settings: 149897399d8e1c0c
   privacy: 88175580ab4e1b1a
-  permissions: ba2d59289429afa9
+  permissions: 4a2937647ce7315d
   find-subgroups: 535fcf9501beee05
   invite-to-a-subgroup: 37faeab422d389eb
   simultaneously-invite-people-to-subgroups-and-parent-group: dbf861bd2a86ba24
@@ -100,7 +100,7 @@ title_generated: 962484244de07e5d
 
 ### Дозволи
 
-Увімкніть **Учасники [батьківської групи] можуть бачити приватні теми** в розділі **Дозволи**, щоб учасники батьківської групи могли читати теми підгрупи без приєднання до неї. Ці читачі не отримують права голосувати й не стають учасниками підгрупи.
+Увімкніть **Учасники батьківської групи можуть бачити приватні теми** в розділі **Дозволи**, щоб учасники батьківської групи могли читати теми підгрупи без приєднання до неї. Ці читачі не отримують права голосувати й не стають учасниками підгрупи.
 
 ![Налаштування, яке дозволяє учасникам батьківської групи бачити приватні теми підгрупи](subgroups_private_threads_settings.png)
 

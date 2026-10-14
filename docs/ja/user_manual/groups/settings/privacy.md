@@ -1,6 +1,6 @@
 ---
 title: プライバシー
-source_revision: 3dad7e54d7f08f6d83af4b8adb6a408f1652ef7e
+source_revision: e34ed3124daf97b42eef81bc6f6a90075ec93227
 source_file: docs/en/user_manual/groups/settings/privacy.md
 translated:
   provider: codex/gpt-6.1-sol
@@ -11,7 +11,7 @@ sections:
   follow-an-open-group: e4a1b3ce35a974d0
   closed: fe4da2f032768bca
   secret: d0a9ea85448f9798
-  how-people-join: 3840bb3403bb1788
+  how-people-join: 926f4b183250aa9d
   group-directory: a9a41ea389fb10ba
   visible-to-parent-group: 96b8595d3bc6ce4b
 generated:
@@ -20,7 +20,7 @@ generated:
   follow-an-open-group: 6010c2791b8a374f
   closed: 3f452c3ffa61487e
   secret: 3ec56d716cf14c86
-  how-people-join: f090bdb4f25e460c
+  how-people-join: 75655fd8ed7da112
   group-directory: b2c22fd01043e42f
   visible-to-parent-group: c180db8e7ca4693f
 title_source: 54a57c3147c49f33
@@ -75,13 +75,13 @@ title_generated: fd55785d80315153
 
 ## グループへの参加方法
 
-**人々はどうやって参加するのでしょうか？**で、選択できる参加方法から選びます。
+**人々はどうやって参加するのでしょうか？**で、利用できる参加方法から選びます。
 
 | 参加方法 | 仕組み |
 | --- | --- |
-| 承認なし | 自分で参加できます |
-| 承認が必要 | 参加を申請し、承認を待ちます |
-| 招待のみ | 参加には招待が必要です |
+| **承認なしで参加できます** | 自分で参加できます |
+| **参加を申請します** | 参加を申請し、承認を待ちます |
+| **招待のみです** | 参加には招待が必要です |
 
 承認が必要な場合は、**グループに参加する**を選択し、グループが設定した参加時の質問に回答して、参加申請を送信します。質問の設定、申請の確認、人を直接招待する方法については、[人を招待する](/en/user_manual/groups/inviting_people#request-to-join-group)を参照してください。
 

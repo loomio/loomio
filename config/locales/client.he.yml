@@ -1437,12 +1437,9 @@ he:
     subgroup_privacy_is_secret_description: רק חברים מוזמנים יכולים למצוא את תת הקבוצה, לראות מי בה ולראות את השיחה שבה.
     advanced_settings: הגדרות מתקדמות
     how_do_people_join: איך אנשים מצטרפים?
-    membership_granted_upon_request: כל אחד יכול להצטרף לקבוצה.
-    membership_granted_upon_approval: כל אחד יכול לבקש להצטרף אבל חייב לקבל אישור.
-    membership_granted_upon_invitation: הזמנה בלבד.
-    membership_granted_upon_approval_parent_members: "חברי %{parent} יכולים לבקש אישור להצטרף"
-    membership_granted_upon_request_parent_members: "חברי %{parent} יכולים להצטרף ללא אישור"
-    membership_granted_upon_approval_secret_parent: "<strong>כל אחד מה%{parent} יכול לבקש להצטרף לקבוצה</strong>."
+    join_without_approval: "להצטרף ללא אישור"
+    request_to_join: "לבקש להצטרף"
+    invitation_only: "בהזמנה בלבד"
     permissions: הרשאות
     thread_privacy: פרטיות השיחה
     public_threads: שיחות פומביות בלבד
@@ -1450,8 +1447,8 @@ he:
     public_or_private_threads: אפשר שיחות פומביות ופרטיות
     private_threads: רק חברים יכולים לראות את הדיונים
     allow_public_threads: אפשר שיחות פומביות בקבוצה זו.
-    parent_members_can_see_discussions: חברים ב-%{parent} יכולים לראות שרשורים פרטיים
-    parent_members_can_see_discussions_help: אפשר לחברי קבוצת האם לראות שרשורים וסקרים בתוך קבוצה זו, אך לא להשתתף בהם
+    parent_group_members_can_see_private_threads: "חברי קבוצת האם יכולים לראות שרשורים פרטיים"
+    parent_group_members_can_see_private_threads_help: "לאפשר לחברי %{parent} לראות שרשורים וסקרים בקבוצה זו, אך לא להשתתף בהם"
     members_can_announce: חברים יכולים להודיע לכולם בקבוצה
     members_can_announce_help: אפשר לחברים להודיע לכולם בקבוצה על שרשור או סקר
     members_can_add_members: חברים יכולים להזמין חברים

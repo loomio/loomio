@@ -14,7 +14,7 @@ module.exports = {
     page.expectNoElement('.group-form__privacy-open');
     page.expectNoElement('.group-form__privacy-closed');
     test.assert.selected('.group-form__privacy-parent_members input');
-    page.click('.group-form__membership-granted-upon-request');
+    page.click('.group-form__membership-granted-upon-request label');
     page.fillIn('#group-name', 'Internal work');
     page.expectValue('.group-form__handle input', 'secret-planning-internal-work');
     page.click('.group-form__submit-button');
@@ -30,18 +30,23 @@ module.exports = {
     page.click('.group-form__privacy-secret');
     page.expectNoElement('.group-form__membership-granted-upon-request');
     page.click('.group-form__privacy-parent_members');
-    page.expectText('.group-form__membership-granted-upon-request', 'Members of Closed Dirty Dancing Shoes can join without approval');
-    page.click('.group-form__membership-granted-upon-request');
+    page.expectText('.group-form__membership-granted-upon-request', 'Join without approval');
+    page.click('.group-form__membership-granted-upon-request label');
+    test.assert.selected('.group-form__membership-granted-upon-request input');
     page.click('.group-form__submit-button');
     page.expectFlash('Group started');
 
     page.click('.action-menu');
     page.click('.action-dock__button--edit_group');
+    page.expectText('.group-form__guide-link', 'User guide');
+    test.assert.attributeContains('.group-form__guide-link', 'href', '/user_manual/groups/settings/profile');
     page.click('.group-form__privacy-tab');
+    page.expectText('.group-form__guide-link', 'User guide');
+    test.assert.attributeContains('.group-form__guide-link', 'href', '/user_manual/groups/settings/privacy');
     test.assert.selected('.group-form__privacy-parent_members input');
-    page.expectText('.group-form__membership-granted-upon-request', 'Members of Closed Dirty Dancing Shoes can join without approval');
+    page.expectText('.group-form__membership-granted-upon-request', 'Join without approval');
     test.assert.selected('.group-form__membership-granted-upon-request input');
-    page.click('.group-form__membership-granted-upon-approval');
+    page.click('.group-form__membership-granted-upon-approval label');
     page.click('.group-form__submit-button');
     page.expectFlash('Group updated');
 
@@ -49,8 +54,10 @@ module.exports = {
     page.click('.action-dock__button--edit_group');
     page.click('.group-form__privacy-tab');
     test.assert.selected('.group-form__membership-granted-upon-approval input');
-    page.click('.group-form__membership-granted-upon-request');
+    page.click('.group-form__membership-granted-upon-request label');
     page.click('.group-form__permissions-tab');
+    page.expectText('.group-form__guide-link', 'User guide');
+    test.assert.attributeContains('.group-form__guide-link', 'href', '/user_manual/groups/settings/permissions');
     page.click('.group-form__parent-members-can-see-discussions');
     page.click('.group-form__submit-button');
     page.expectFlash('Group updated');
@@ -74,7 +81,7 @@ module.exports = {
     page.expectNoElement('.group-form__privacy-open');
     page.expectNoElement('.group-form__privacy-closed');
     page.click('.group-form__privacy-parent_members');
-    page.click('.group-form__membership-granted-upon-request');
+    page.click('.group-form__membership-granted-upon-request label');
     page.click('.group-form__submit-button');
     page.expectFlash('Group started');
     page.click('.action-menu');

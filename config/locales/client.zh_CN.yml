@@ -1519,12 +1519,9 @@ zh_CN:
     subgroup_privacy_is_secret_description: 只有受邀成员才能看到此子群组。
     advanced_settings: 高级设置
     how_do_people_join: 如何加入？
-    membership_granted_upon_request: 任何人都可以加入该群组。
-    membership_granted_upon_approval: 任何人都可以应用加入，但必须获得批准。
-    membership_granted_upon_invitation: 仅限受邀者加入。
-    membership_granted_upon_approval_parent_members: "%{parent}的成员可以申请批准加入"
-    membership_granted_upon_request_parent_members: "%{parent}的成员无需批准即可加入"
-    membership_granted_upon_approval_secret_parent: 任何来自 %{parent} 的<strong>成员</strong>都可以应用加入该群组。
+    join_without_approval: "无需审批即可加入"
+    request_to_join: "申请加入"
+    invitation_only: "仅限受邀加入"
     permissions: 权限
     thread_privacy: 帖子隐私
     public_threads: 仅限公开讨论
@@ -1532,8 +1529,8 @@ zh_CN:
     public_or_private_threads: 允许公开和私密帖子
     private_threads: 只有成员才能查看讨论
     allow_public_threads: 允许在本群组中发布公开话题。
-    parent_members_can_see_discussions: "%{parent} 的成员可以看到私有帖子"
-    parent_members_can_see_discussions_help: 允许父群组成员查看但不能参与此群组内的讨论和投票
+    parent_group_members_can_see_private_threads: "上级群组成员可查看私密帖子"
+    parent_group_members_can_see_private_threads_help: "允许 %{parent} 的成员查看本群组内的帖子和投票，但不能参与"
     members_can_announce: 成员可以通知群里的所有人。
     members_can_announce_help: 允许成员通知群组中的所有人有关帖子或投票的信息。
     members_can_add_members: 成员可以邀请其他成员

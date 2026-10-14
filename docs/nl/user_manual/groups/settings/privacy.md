@@ -1,6 +1,6 @@
 ---
 title: Privacy
-source_revision: 3dad7e54d7f08f6d83af4b8adb6a408f1652ef7e
+source_revision: e34ed3124daf97b42eef81bc6f6a90075ec93227
 source_file: docs/en/user_manual/groups/settings/privacy.md
 translated:
   provider: codex/gpt-6.1-sol
@@ -11,7 +11,7 @@ sections:
   follow-an-open-group: e4a1b3ce35a974d0
   closed: fe4da2f032768bca
   secret: d0a9ea85448f9798
-  how-people-join: 3840bb3403bb1788
+  how-people-join: 926f4b183250aa9d
   group-directory: a9a41ea389fb10ba
   visible-to-parent-group: 96b8595d3bc6ce4b
 generated:
@@ -20,7 +20,7 @@ generated:
   follow-an-open-group: ebf398a7b39fec72
   closed: 693b6690f4701630
   secret: 5474d90b45345f08
-  how-people-join: 5bc24a56fcb621f5
+  how-people-join: 191dc136d5ec20d8
   group-directory: c3f262e7b6d7b7e1
   visible-to-parent-group: 556d621d6cbf20e1
 title_source: 54a57c3147c49f33
@@ -79,9 +79,9 @@ Kies onder **Hoe sluiten mensen aan?** uit de beschikbare opties:
 
 | Optie om lid te worden | Hoe het werkt |
 | --- | --- |
-| Zonder goedkeuring | Mensen kunnen zelf lid worden |
-| Goedkeuring vereist | Mensen vragen een lidmaatschap aan en wachten op goedkeuring |
-| Alleen met een uitnodiging | Mensen hebben een uitnodiging nodig om lid te worden |
+| **Lid worden zonder goedkeuring** | Mensen kunnen zelf lid worden |
+| **Lidmaatschap aanvragen** | Mensen vragen een lidmaatschap aan en wachten op goedkeuring |
+| **Alleen op uitnodiging** | Mensen hebben een uitnodiging nodig om lid te worden |
 
 Wanneer goedkeuring vereist is, selecteren mensen **Word lid van de groep**, beantwoorden ze de vraag van de groep voor nieuwe leden en versturen ze een lidmaatschapsaanvraag. Zie [Mensen uitnodigen](/en/user_manual/groups/inviting_people#request-to-join-group) voor instructies om de vraag in te stellen, aanvragen te beoordelen en mensen direct uit te nodigen.
 

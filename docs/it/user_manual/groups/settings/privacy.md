@@ -1,6 +1,6 @@
 ---
 title: Privacy
-source_revision: 3dad7e54d7f08f6d83af4b8adb6a408f1652ef7e
+source_revision: e34ed3124daf97b42eef81bc6f6a90075ec93227
 source_file: docs/en/user_manual/groups/settings/privacy.md
 translated:
   provider: codex/gpt-6.1-sol
@@ -11,7 +11,7 @@ sections:
   follow-an-open-group: e4a1b3ce35a974d0
   closed: fe4da2f032768bca
   secret: d0a9ea85448f9798
-  how-people-join: 3840bb3403bb1788
+  how-people-join: 926f4b183250aa9d
   group-directory: a9a41ea389fb10ba
   visible-to-parent-group: 96b8595d3bc6ce4b
 generated:
@@ -20,7 +20,7 @@ generated:
   follow-an-open-group: e9ff36a97818b1a2
   closed: d4de1d5f5366cc88
   secret: 96db4051dc297243
-  how-people-join: 88e338cd4f564349
+  how-people-join: 74c11f820872deba
   group-directory: 65060d2f3a4e3ec9
   visible-to-parent-group: a16714c7623fafa6
 title_source: 54a57c3147c49f33
@@ -79,9 +79,9 @@ In **Come si uniscono al gruppo le persone?**, scegli tra le opzioni disponibili
 
 | Opzione di iscrizione | Come funziona |
 | --- | --- |
-| Senza approvazione | Le persone possono iscriversi autonomamente |
-| Approvazione richiesta | Le persone richiedono l'iscrizione e attendono l'approvazione |
-| Solo su invito | Le persone hanno bisogno di un invito per iscriversi |
+| **Entra senza approvazione** | Le persone possono iscriversi autonomamente |
+| **Chiedi di entrare** | Le persone richiedono l'iscrizione e attendono l'approvazione |
+| **Solo su invito** | Le persone hanno bisogno di un invito per iscriversi |
 
 Quando è richiesta l'approvazione, le persone selezionano **Iscriviti al gruppo**, rispondono alla domanda di iscrizione del gruppo e inviano una richiesta di iscrizione. Consulta [Invitare persone](/en/user_manual/groups/inviting_people#request-to-join-group) per le istruzioni su come configurare la domanda, esaminare le richieste e invitare direttamente le persone.
 

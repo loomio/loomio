@@ -1,6 +1,6 @@
 ---
 title: Конфіденційність
-source_revision: 3dad7e54d7f08f6d83af4b8adb6a408f1652ef7e
+source_revision: e34ed3124daf97b42eef81bc6f6a90075ec93227
 source_file: docs/en/user_manual/groups/settings/privacy.md
 translated:
   provider: codex/gpt-6.1-sol
@@ -11,7 +11,7 @@ sections:
   follow-an-open-group: e4a1b3ce35a974d0
   closed: fe4da2f032768bca
   secret: d0a9ea85448f9798
-  how-people-join: 3840bb3403bb1788
+  how-people-join: 926f4b183250aa9d
   group-directory: a9a41ea389fb10ba
   visible-to-parent-group: 96b8595d3bc6ce4b
 generated:
@@ -20,7 +20,7 @@ generated:
   follow-an-open-group: 2698aad92726898b
   closed: d1c9c0caa11cc72e
   secret: 6fd0b052a18fe656
-  how-people-join: de723f7b571df233
+  how-people-join: 37a7a4ce1e355123
   group-directory: a2b4c519624b62a6
   visible-to-parent-group: f9150617ef90aaa1
 title_source: 54a57c3147c49f33
@@ -79,11 +79,11 @@ title_generated: dca43e30fc120616
 
 | Спосіб приєднання | Як це працює |
 | --- | --- |
-| Без схвалення | Люди можуть приєднуватися самостійно |
-| Потрібне схвалення | Люди надсилають запит на приєднання та чекають на схвалення |
-| Лише за запрошенням | Для приєднання людям потрібне запрошення |
+| **Вступ без схвалення** | Люди можуть приєднуватися самостійно |
+| **Запит на вступ** | Люди надсилають запит на вступ та чекають на схвалення |
+| **Лише за запрошенням** | Для приєднання людям потрібне запрошення |
 
-Коли потрібне схвалення, люди вибирають **Приєднатися до групи**, відповідають на запитання групи для вступу та надсилають запит на приєднання. Інструкції з налаштування запитання, розгляду запитів і безпосереднього запрошення людей наведено на сторінці [Запрошення людей](/en/user_manual/groups/inviting_people#request-to-join-group).
+Коли потрібне схвалення, люди вибирають **Приєднатися до групи**, відповідають на запитання групи для вступу та надсилають запит на вступ. Інструкції з налаштування запитання, розгляду запитів і безпосереднього запрошення людей наведено на сторінці [Запрошення людей](/en/user_manual/groups/inviting_people#request-to-join-group).
 
 <!-- translation-section: group-directory -->
 

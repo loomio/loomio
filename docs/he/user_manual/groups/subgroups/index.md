@@ -1,6 +1,6 @@
 ---
 title: תת־קבוצות
-source_revision: 3dad7e54d7f08f6d83af4b8adb6a408f1652ef7e
+source_revision: e34ed3124daf97b42eef81bc6f6a90075ec93227
 source_file: docs/en/user_manual/groups/subgroups/index.md
 translated:
   provider: codex/gpt-6.1-sol
@@ -10,7 +10,7 @@ sections:
   add-a-subgroup: 0bc0e5f99eb074c3
   subgroup-settings: 737225cc4bebe7e8
   privacy: 58872ebdc8b93967
-  permissions: dcfc042cdb083deb
+  permissions: 485ea3cc98d48900
   find-subgroups: 5e6fc5a5122c1417
   invite-to-a-subgroup: 0af670e1e9b32a5e
   simultaneously-invite-people-to-subgroups-and-parent-group: 1991604900321cd7
@@ -22,7 +22,7 @@ generated:
   add-a-subgroup: e4d31a63e0bf0fc9
   subgroup-settings: 635934af0becacdc
   privacy: a576417292da22d1
-  permissions: 4a8145f3cd8dcacf
+  permissions: c9b7bb43cb581f68
   find-subgroups: e8e439eb94a9f21e
   invite-to-a-subgroup: a2824c228113cb6c
   simultaneously-invite-people-to-subgroups-and-parent-group: 81667c9c62373bf5
@@ -100,7 +100,7 @@ title_generated: 1a4886ce36d6939b
 
 ### הרשאות
 
-כדי לאפשר לחברי קבוצת האם לקרוא שרשורים בתת־הקבוצה ללא הצטרפות, יש להפעיל את **חברי [קבוצת האם] יכולים לראות שרשורים פרטיים** תחת **הרשאות**. הקריאה אינה מקנה זכות הצבעה או חברות בתת־הקבוצה.
+כדי לאפשר לחברי קבוצת האם לקרוא שרשורים בתת־הקבוצה ללא הצטרפות, יש להפעיל את **חברי קבוצת האם יכולים לראות שרשורים פרטיים** תחת **הרשאות**. הקריאה אינה מקנה זכות הצבעה או חברות בתת־הקבוצה.
 
 ![הגדרה המאפשרת לחברי קבוצת האם לראות שרשורים פרטיים של תת־הקבוצה](subgroups_private_threads_settings.png)
 

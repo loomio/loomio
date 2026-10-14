@@ -1443,12 +1443,9 @@ da:
     subgroup_privacy_is_secret_description: Det er kun inviterede medlemmer der kan finde undergruppen, se hvem der er medlem og se debatter.
     advanced_settings: Avancerede indstillinger
     how_do_people_join: Hvordan bliver man medlem?
-    membership_granted_upon_request: Alle kan blive medlem
-    membership_granted_upon_approval: Alle kan anmode om at blive medlem, men skal godkendes.
-    membership_granted_upon_invitation: Kun invitation.
-    membership_granted_upon_approval_parent_members: "Medlemmer af %{parent} kan anmode om godkendelse til at deltage"
-    membership_granted_upon_request_parent_members: "Medlemmer af %{parent} kan deltage uden godkendelse"
-    membership_granted_upon_approval_secret_parent: "<strong>På anmodning</strong> så kan alle fra %{parent} anmode om at blive medlem af gruppen."
+    join_without_approval: "Deltag uden godkendelse"
+    request_to_join: "Anmod om at deltage"
+    invitation_only: "Kun med invitation"
     permissions: Rettigheder
     thread_privacy: Trådens privatindstillinger
     public_threads: Kun offentlige debatter
@@ -1456,8 +1453,8 @@ da:
     public_or_private_threads: Tillad både offentlige og private debatter
     private_threads: Det er kun medlemmer der kan se debatter
     allow_public_threads: Tillad offentlige debatter i denne gruppe.
-    parent_members_can_see_discussions: Medlemmer af %{parent} kan se private tråde
-    parent_members_can_see_discussions_help: Tillad medlemmer af forældregruppen at se, men ikke deltage i, tråde og afstemninger i denne gruppe
+    parent_group_members_can_see_private_threads: "Hovedgruppens medlemmer kan se private tråde"
+    parent_group_members_can_see_private_threads_help: "Lad medlemmer af %{parent} se tråde og afstemninger i denne gruppe uden at deltage"
     members_can_announce: Medlemmer kan underrette alle i gruppen
     members_can_announce_help: Tillad medlemmer at underrette alle i gruppen om en tråd eller afstemning
     members_can_add_members: Medlemmer kan invitere medlemmer

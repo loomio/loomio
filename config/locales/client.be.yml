@@ -1550,12 +1550,9 @@ be:
     subgroup_privacy_is_secret_description: Толькі запрошаныя ўдзельнікі могуць бачыць гэтую падгрупу.
     advanced_settings: Пашыраныя налады
     how_do_people_join: Як людзі далучаюцца?
-    membership_granted_upon_request: Да групы можа далучыцца кожны.
-    membership_granted_upon_approval: Кожны можа падаць заяўку на далучэнне, але павінен атрымаць адабрэнне.
-    membership_granted_upon_invitation: Толькі па запрашэнні.
-    membership_granted_upon_approval_parent_members: "Удзельнікі %{parent} могуць запытаць дазвол на далучэнне"
-    membership_granted_upon_request_parent_members: "Удзельнікі %{parent} могуць далучыцца без ухвалення"
-    membership_granted_upon_approval_secret_parent: "<strong>Па запыце</strong> любы з %{parent} можа папрасіць далучыцца да групы."
+    join_without_approval: "Далучэнне без ухвалення"
+    request_to_join: "Запыт на далучэнне"
+    invitation_only: "Толькі па запрашэнні"
     permissions: Дазволы
     thread_privacy: Прыватнасць ланцужка паведамленняў
     public_threads: Толькі публічныя тэмы
@@ -1563,8 +1560,8 @@ be:
     public_or_private_threads: Дазволіць публічныя і прыватныя тэмы
     private_threads: Толькі ўдзельнікі могуць бачыць абмеркаванні
     allow_public_threads: Дазволіць публічныя тэмы ў гэтай групе.
-    parent_members_can_see_discussions: Удзельнікі %{parent} могуць праглядаць прыватныя тэмы
-    parent_members_can_see_discussions_help: Дазволіць удзельнікам бацькоўскай групы бачыць, але не ўдзельнічаць у дыскусіях і апытаннях у гэтай групе
+    parent_group_members_can_see_private_threads: "Удзельнікі бацькоўскай групы могуць бачыць прыватныя тэмы"
+    parent_group_members_can_see_private_threads_help: "Дазволіць удзельнікам групы %{parent} бачыць тэмы і апытанні ў гэтай групе, але не ўдзельнічаць у іх"
     members_can_announce: Удзельнікі могуць апавясціць усіх у групе
     members_can_announce_help: Дазволіць удзельнікам апавяшчаць усіх у групе пра тэму або апытанне
     members_can_add_members: Удзельнікі могуць запрашаць удзельнікаў

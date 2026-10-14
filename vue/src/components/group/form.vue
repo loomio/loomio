@@ -152,6 +152,10 @@ export default
   },
 
   computed: {
+    guidePath() {
+      return `user_manual/groups/settings/${this.tab}`;
+    },
+
     cardTitle() {
       return this.group.parentId ? 'group_form.subgroup_settings' : 'group_form.group_settings'
     },
@@ -298,7 +302,7 @@ v-form(ref="form" @submit.prevent="submit")
                 :value='granted'
               )
                 template(v-slot:label)
-                  span {{ t(groupMembershipGrantedUpon(group, granted), { parent: group.parentName() }) }}
+                  span {{ t(groupMembershipGrantedUpon(granted)) }}
           v-text-field(
             v-if="group.groupPrivacy != 'secret' && group.membershipGrantedUpon != 'invitation'"
             read-only
@@ -327,9 +331,9 @@ v-form(ref="form" @submit.prevent="submit")
           v-checkbox.group-form__parent-members-can-see-discussions(hide-details v-model='group.parentMembersCanSeeDiscussions' v-if='group.parentId && (group.privacyIsClosed() || group.privacyIsParentMembers())')
             template(v-slot:label)
               div
-                span(v-t="{path: 'group_form.parent_members_can_see_discussions', args: {parent: group.parent().name}}")
+                span {{ t('group_form.parent_group_members_can_see_private_threads') }}
                 br
-                span.text-body-small(v-t="{path: 'group_form.parent_members_can_see_discussions_help', args: {parent: group.parent().name}}")
+                span.text-body-small {{ t('group_form.parent_group_members_can_see_private_threads_help', {parent: group.parent().name}) }}
           v-checkbox.group-form__members-can-add-members(hide-details v-model='group.membersCanAddMembers')
             template(v-slot:label)
               div
@@ -418,7 +422,7 @@ v-form(ref="form" @submit.prevent="submit")
                 span.text-body-small(v-t="'group_form.admins_can_edit_user_content_help'")
 
     v-card-actions
-      help-btn(path="en/user_manual/groups/settings")
+      help-btn.group-form__guide-link(:path="guidePath")
       v-spacer
       v-btn.group-form__submit-button(color="primary" variant="elevated" type="submit")
         span(v-if='group.isNew() && group.isParent()' v-t="'group_form.submit_start_group'")

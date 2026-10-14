@@ -1433,12 +1433,9 @@ tr:
     subgroup_privacy_is_secret_description: Sadece davet edilen üyeler bu alt grubu bulabilir, kimlerin grupta olduğunu ve müzakereleri görebilir.
     advanced_settings: Gelişmiş ayarlar
     how_do_people_join: Kişiler nasıl katılabilir?
-    membership_granted_upon_request: Herkes gruba katılabilir.
-    membership_granted_upon_approval: Herkes katılım talebinde bulunabilir, ancak onaylanması gerekir.
-    membership_granted_upon_invitation: Yalnızca davetiye.
-    membership_granted_upon_approval_parent_members: "%{parent} üyeleri katılmak için onay isteyebilir"
-    membership_granted_upon_request_parent_members: "%{parent} üyeleri onay almadan katılabilir"
-    membership_granted_upon_approval_secret_parent: "<strong>Talep üzerine</strong> %{parent} ülkesinden herkes gruba katılma isteğinde bulunabilir."
+    join_without_approval: "Onay beklemeden katılın"
+    request_to_join: "Katılma isteği gönderin"
+    invitation_only: "Yalnızca davetle"
     permissions: İzinler
     thread_privacy: İleti dizisi gizliliği
     public_threads: Sadece kamuya açık olan müzakereler
@@ -1446,8 +1443,8 @@ tr:
     public_or_private_threads: Kamuya açık ve gizli müzakerelere izin ver
     private_threads: Sadece üyeler müzakereleri görebilir
     allow_public_threads: Bu grupta kamuya açık müzakerelere izin ver.
-    parent_members_can_see_discussions: "%{parent} üyeleri özel ileti dizilerini görebilir"
-    parent_members_can_see_discussions_help: Ana grup üyelerinin bu gruptaki konuları ve anketleri görmesine izin ver ancak bunlara katılmalarına izin verme
+    parent_group_members_can_see_private_threads: "Ana grup üyeleri özel ileti dizilerini görebilir"
+    parent_group_members_can_see_private_threads_help: "%{parent} üyelerinin bu gruptaki ileti dizilerini ve anketleri görmesine izin verin; katılamazlar"
     members_can_announce: Üyeler gruptaki herkese bildirimde bulunabilir
     members_can_announce_help: Üyelerin gruptaki herkesi bir konu veya anket hakkında bilgilendirmesine izin ver
     members_can_add_members: Üyeler üye davet edebilir

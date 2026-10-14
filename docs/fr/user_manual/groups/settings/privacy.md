@@ -1,6 +1,6 @@
 ---
 title: Confidentialité
-source_revision: 3dad7e54d7f08f6d83af4b8adb6a408f1652ef7e
+source_revision: e34ed3124daf97b42eef81bc6f6a90075ec93227
 source_file: docs/en/user_manual/groups/settings/privacy.md
 translated:
   provider: codex/gpt-6.1-sol
@@ -11,7 +11,7 @@ sections:
   follow-an-open-group: e4a1b3ce35a974d0
   closed: fe4da2f032768bca
   secret: d0a9ea85448f9798
-  how-people-join: 3840bb3403bb1788
+  how-people-join: 926f4b183250aa9d
   group-directory: a9a41ea389fb10ba
   visible-to-parent-group: 96b8595d3bc6ce4b
 generated:
@@ -20,7 +20,7 @@ generated:
   follow-an-open-group: 929a6682b62400f1
   closed: 1dd308772f2889c7
   secret: a8b75acd9144e9ba
-  how-people-join: 2286c6f0ac6fd4ef
+  how-people-join: 0ab2b5991cb31084
   group-directory: 7bf450758a066de4
   visible-to-parent-group: 721cc5ee30ba5582
 title_source: 54a57c3147c49f33
@@ -81,9 +81,9 @@ Sous **Comment les personnes peuvent-elles rejoindre le groupe ?**, choisissez
 
 | Option d’adhésion | Fonctionnement |
 | --- | --- |
-| Sans approbation | Les personnes peuvent rejoindre le groupe elles-mêmes |
-| Approbation requise | Les personnes demandent à rejoindre le groupe et attendent une approbation |
-| Sur invitation uniquement | Les personnes ont besoin d’une invitation pour rejoindre le groupe |
+| **Rejoindre sans approbation** | Les personnes peuvent rejoindre le groupe elles-mêmes |
+| **Demander à rejoindre** | Les personnes demandent à rejoindre le groupe et attendent une approbation |
+| **Sur invitation uniquement** | Les personnes ont besoin d’une invitation pour rejoindre le groupe |
 
 Lorsqu’une approbation est requise, les personnes sélectionnent **Rejoindre le groupe**, répondent à la question posée par le groupe et envoient une demande pour le rejoindre. Consultez [Inviter des personnes](/en/user_manual/groups/inviting_people#request-to-join-group) pour savoir comment configurer cette question, examiner les demandes et inviter directement des personnes.
 

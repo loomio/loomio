@@ -1,6 +1,6 @@
 ---
 title: Privacidade
-source_revision: 3dad7e54d7f08f6d83af4b8adb6a408f1652ef7e
+source_revision: e34ed3124daf97b42eef81bc6f6a90075ec93227
 source_file: docs/en/user_manual/groups/settings/privacy.md
 translated:
   provider: codex/gpt-6.1-sol
@@ -11,7 +11,7 @@ sections:
   follow-an-open-group: e4a1b3ce35a974d0
   closed: fe4da2f032768bca
   secret: d0a9ea85448f9798
-  how-people-join: 3840bb3403bb1788
+  how-people-join: 926f4b183250aa9d
   group-directory: a9a41ea389fb10ba
   visible-to-parent-group: 96b8595d3bc6ce4b
 generated:
@@ -20,7 +20,7 @@ generated:
   follow-an-open-group: 50424edf05d5252e
   closed: 61913f3a5c76f7c4
   secret: ef8cf551bc7825c1
-  how-people-join: e3dc94d84ecf1ef2
+  how-people-join: c1f51a8eacbf6474
   group-directory: 46ef6b3dcdf4a448
   visible-to-parent-group: 5e8923e5b4b17515
 title_source: 54a57c3147c49f33
@@ -79,9 +79,9 @@ Em **Como as pessoas participam?**, escolha uma das opções disponíveis:
 
 | Opção de entrada | Como funciona |
 | --- | --- |
-| Sem aprovação | As pessoas podem entrar por conta própria |
-| Aprovação necessária | As pessoas solicitam a entrada e aguardam aprovação |
-| Apenas por convite | As pessoas precisam de um convite para entrar |
+| **Entrar sem aprovação** | As pessoas podem entrar por conta própria |
+| **Pedir para entrar** | As pessoas solicitam a entrada e aguardam aprovação |
+| **Somente por convite** | As pessoas precisam de um convite para entrar |
 
 Quando a aprovação é necessária, as pessoas selecionam **Entrar no grupo**, respondem à pergunta de entrada do grupo e enviam uma solicitação para entrar. Consulte [Convidar pessoas](/en/user_manual/groups/inviting_people#request-to-join-group) para obter instruções sobre como configurar a pergunta, analisar solicitações e convidar pessoas diretamente.
 

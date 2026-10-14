@@ -1,6 +1,6 @@
 ---
 title: Yksityisyys
-source_revision: 3dad7e54d7f08f6d83af4b8adb6a408f1652ef7e
+source_revision: e34ed3124daf97b42eef81bc6f6a90075ec93227
 source_file: docs/en/user_manual/groups/settings/privacy.md
 translated:
   provider: codex/gpt-6.1-sol
@@ -11,7 +11,7 @@ sections:
   follow-an-open-group: e4a1b3ce35a974d0
   closed: fe4da2f032768bca
   secret: d0a9ea85448f9798
-  how-people-join: 3840bb3403bb1788
+  how-people-join: 926f4b183250aa9d
   group-directory: a9a41ea389fb10ba
   visible-to-parent-group: 96b8595d3bc6ce4b
 generated:
@@ -20,7 +20,7 @@ generated:
   follow-an-open-group: ecc5e7a47e027634
   closed: 975e75ed4f3d923a
   secret: 16fd19c4006fb2e0
-  how-people-join: 8c2fb305d0bc0d2e
+  how-people-join: ed8286b27e591983
   group-directory: 6a1d0da49b42df77
   visible-to-parent-group: c3536b2f0d32a395
 title_source: 54a57c3147c49f33
@@ -79,9 +79,9 @@ Valitse kohdassa **Miten ihmiset liittyvät?** jokin käytettävissä olevista v
 
 | Liittymistapa | Miten se toimii |
 | --- | --- |
-| Ilman hyväksyntää | Ihmiset voivat liittyä itse |
-| Hyväksyntä vaaditaan | Ihmiset pyytävät liittymistä ja odottavat hyväksyntää |
-| Vain kutsusta | Ihmiset tarvitsevat kutsun liittyäkseen |
+| **Liity ilman hyväksyntää** | Ihmiset voivat liittyä itse |
+| **Pyydä jäsenyyttä** | Ihmiset lähettävät liittymispyynnön ja odottavat hyväksyntää |
+| **Vain kutsulla** | Ihmiset tarvitsevat kutsun liittyäkseen |
 
 Kun liittyminen edellyttää hyväksyntää, valitse **Liittyä ryhmään**, vastaa ryhmän liittymiskysymykseen ja lähetä liittymispyyntö. Katso [Ihmisten kutsuminen](/en/user_manual/groups/inviting_people#request-to-join-group), jossa on ohjeet kysymyksen määrittämiseen, pyyntöjen käsittelyyn ja ihmisten kutsumiseen suoraan.
 

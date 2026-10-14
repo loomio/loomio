@@ -1,6 +1,6 @@
 ---
 title: Subgrupos
-source_revision: 3dad7e54d7f08f6d83af4b8adb6a408f1652ef7e
+source_revision: e34ed3124daf97b42eef81bc6f6a90075ec93227
 source_file: docs/en/user_manual/groups/subgroups/index.md
 translated:
   provider: codex/gpt-6.1-sol
@@ -10,7 +10,7 @@ sections:
   add-a-subgroup: 0bc0e5f99eb074c3
   subgroup-settings: 737225cc4bebe7e8
   privacy: 58872ebdc8b93967
-  permissions: dcfc042cdb083deb
+  permissions: 485ea3cc98d48900
   find-subgroups: 5e6fc5a5122c1417
   invite-to-a-subgroup: 0af670e1e9b32a5e
   simultaneously-invite-people-to-subgroups-and-parent-group: 1991604900321cd7
@@ -22,7 +22,7 @@ generated:
   add-a-subgroup: f0b0365a80acc5fe
   subgroup-settings: cfb7850bde221463
   privacy: f43226f5d555885c
-  permissions: d414a9bfe8b2167f
+  permissions: ef00486a0545d0f0
   find-subgroups: 28b3c3488fbdc36d
   invite-to-a-subgroup: cc5655654a8abc56
   simultaneously-invite-people-to-subgroups-and-parent-group: ef5bec1085470e79
@@ -100,7 +100,7 @@ Elige [cómo se unen las personas](/en/user_manual/groups/settings/privacy#how-p
 
 ### Permisos
 
-Activa **Los miembros de [grupo principal] pueden ver los hilos privados** en **Permisos** para permitir que los miembros del grupo principal lean los hilos del subgrupo sin unirse. Estas personas no obtienen el derecho a votar ni pasan a ser miembros del subgrupo.
+Activa **Los miembros del grupo principal pueden ver los hilos privados** en **Permisos** para permitir que los miembros del grupo principal lean los hilos del subgrupo sin unirse. Estas personas no obtienen el derecho a votar ni pasan a ser miembros del subgrupo.
 
 ![Opción que permite a los miembros del grupo principal ver los hilos privados del subgrupo](subgroups_private_threads_settings.png)
 

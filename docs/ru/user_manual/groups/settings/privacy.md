@@ -1,6 +1,6 @@
 ---
 title: Конфиденциальность
-source_revision: 3dad7e54d7f08f6d83af4b8adb6a408f1652ef7e
+source_revision: e34ed3124daf97b42eef81bc6f6a90075ec93227
 source_file: docs/en/user_manual/groups/settings/privacy.md
 translated:
   provider: codex/gpt-6.1-sol
@@ -11,7 +11,7 @@ sections:
   follow-an-open-group: e4a1b3ce35a974d0
   closed: fe4da2f032768bca
   secret: d0a9ea85448f9798
-  how-people-join: 3840bb3403bb1788
+  how-people-join: 926f4b183250aa9d
   group-directory: a9a41ea389fb10ba
   visible-to-parent-group: 96b8595d3bc6ce4b
 generated:
@@ -20,7 +20,7 @@ generated:
   follow-an-open-group: 7693a7ab4cd291bb
   closed: 1b39166bc3266881
   secret: 705411048a9ec381
-  how-people-join: c2eb6f29a8cafc73
+  how-people-join: c894adc22c035ca5
   group-directory: f4d2f46e7f1eba32
   visible-to-parent-group: eea736726154f4a0
 title_source: 54a57c3147c49f33
@@ -79,11 +79,11 @@ title_generated: 6d5c24967752a415
 
 | Способ вступления | Как это работает |
 | --- | --- |
-| Без одобрения | Люди могут вступать самостоятельно |
-| Требуется одобрение | Люди отправляют запрос на вступление и ждут одобрения |
-| Только по приглашению | Для вступления нужно приглашение |
+| **Вступление без одобрения** | Люди могут вступать самостоятельно |
+| **Вступление по запросу** | Люди отправляют запрос на вступление и ждут одобрения |
+| **Только по приглашению** | Для вступления нужно приглашение |
 
-Если требуется одобрение, люди выбирают **Вступить в группу**, отвечают на вопрос для вступающих и отправляют запрос на вступление. Инструкции по настройке вопроса, рассмотрению запросов и приглашению людей напрямую приведены на странице [Приглашение людей](/en/user_manual/groups/inviting_people#request-to-join-group).
+Если требуется одобрение, люди выбирают **Вступить в группу**, отвечают на вопрос для вступающих в группу и отправляют запрос на вступление. Инструкции по настройке вопроса, рассмотрению запросов и приглашению людей напрямую приведены на странице [Приглашение людей](/en/user_manual/groups/inviting_people#request-to-join-group).
 
 <!-- translation-section: group-directory -->
 

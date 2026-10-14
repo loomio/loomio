@@ -65,7 +65,7 @@ Choose [how people join](/en/user_manual/groups/settings/privacy#how-people-join
 
 ### Permissions
 
-Enable **Members of [parent group] can see private threads** in **Permissions** to let parent members read subgroup threads without joining. These readers do not gain voting rights or subgroup membership.
+Enable **Parent group members can see private threads** in **Permissions** to let parent members read subgroup threads without joining. These readers do not gain voting rights or subgroup membership.
 
 ![Setting that lets parent group members see private subgroup threads](subgroups_private_threads_settings.png)
 

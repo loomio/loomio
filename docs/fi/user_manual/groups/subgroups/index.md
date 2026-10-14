@@ -1,6 +1,6 @@
 ---
 title: Alaryhmät
-source_revision: 3dad7e54d7f08f6d83af4b8adb6a408f1652ef7e
+source_revision: e34ed3124daf97b42eef81bc6f6a90075ec93227
 source_file: docs/en/user_manual/groups/subgroups/index.md
 translated:
   provider: codex/gpt-6.1-sol
@@ -10,7 +10,7 @@ sections:
   add-a-subgroup: 0bc0e5f99eb074c3
   subgroup-settings: 737225cc4bebe7e8
   privacy: 58872ebdc8b93967
-  permissions: dcfc042cdb083deb
+  permissions: 485ea3cc98d48900
   find-subgroups: 5e6fc5a5122c1417
   invite-to-a-subgroup: 0af670e1e9b32a5e
   simultaneously-invite-people-to-subgroups-and-parent-group: 1991604900321cd7
@@ -22,7 +22,7 @@ generated:
   add-a-subgroup: 62a6338ca49e4894
   subgroup-settings: eb275d9b7dad3776
   privacy: 0e7d81d92e65635f
-  permissions: 4eab79c6dea223c1
+  permissions: 68d8f01c0878f27e
   find-subgroups: fb8a0662cdff75b5
   invite-to-a-subgroup: aa0041c6a3913691
   simultaneously-invite-people-to-subgroups-and-parent-group: cad30b323bd6e7d9
@@ -100,9 +100,9 @@ Valitse [miten ihmiset liittyvät](/en/user_manual/groups/settings/privacy#how-p
 
 ### Käyttöoikeudet
 
-Ota käyttöön **Ryhmän [pääryhmä] jäsenet voivat nähdä yksityiset ketjut** kohdassa **Käyttöoikeudet**, jotta pääryhmän jäsenet voivat lukea alaryhmän ketjuja liittymättä alaryhmään. Nämä lukijat eivät saa äänioikeutta eivätkä alaryhmän jäsenyyttä.
+Ota käyttöön **Pääryhmän jäsenet näkevät yksityiset ketjut** kohdassa **Käyttöoikeudet**, jotta pääryhmän jäsenet voivat lukea alaryhmän ketjuja liittymättä alaryhmään. Nämä lukijat eivät saa äänioikeutta eivätkä alaryhmän jäsenyyttä.
 
-![Asetus, joka antaa pääryhmän jäsenille oikeuden nähdä alaryhmän yksityiset ketjut](subgroups_private_threads_settings.png)
+![Asetus, jonka avulla pääryhmän jäsenet näkevät alaryhmän yksityiset ketjut](subgroups_private_threads_settings.png)
 
 <!-- translation-section: find-subgroups -->
 

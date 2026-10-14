@@ -1447,12 +1447,9 @@ de:
     subgroup_privacy_is_secret_description: Nur eingeladene Mitglieder können diese Untergruppe finden und die Teilnehmer und Diskussionsbeiträge sehen.
     advanced_settings: Erweiterte Einstellungen
     how_do_people_join: Wie kann man teilnehmen?
-    membership_granted_upon_request: Die Gruppe ist zugänglich für alle.
-    membership_granted_upon_approval: Jeder kann um Beitritt bitten. Dieser wird dann geprüft.
-    membership_granted_upon_invitation: Nur Einladungen.
-    membership_granted_upon_approval_parent_members: "Mitglieder von %{parent} können den Beitritt zur Genehmigung anfragen"
-    membership_granted_upon_request_parent_members: "Mitglieder von %{parent} können ohne Genehmigung beitreten"
-    membership_granted_upon_approval_secret_parent: Jede.r von %{parent} kann<strong>auf Anfrage</strong> um Aufnahme in die Gruppe bitten.
+    join_without_approval: "Ohne Genehmigung beitreten"
+    request_to_join: "Beitritt anfragen"
+    invitation_only: "Nur auf Einladung"
     permissions: Berechtigungen
     thread_privacy: Diskussions-Sichtbarkeit
     public_threads: Nur öffentliche Diskussionen
@@ -1460,8 +1457,8 @@ de:
     public_or_private_threads: Öffentliche und private Diskussionen erlauben
     private_threads: Nur Mitglieder können Diskussionen sehen
     allow_public_threads: Öffentliche Diskussionen in der Gruppe erlauben.
-    parent_members_can_see_discussions: Mitglieder von %{parent} können private Diskussionen sehen
-    parent_members_can_see_discussions_help: Mitgliedern der übergeordneten Gruppe erlauben, Diskussionen und Umfragen innerhalb dieser Gruppe zu sehen, aber nicht daran teilzunehmen
+    parent_group_members_can_see_private_threads: "Mitglieder der Hauptgruppe können private Threads sehen"
+    parent_group_members_can_see_private_threads_help: "Erlaube Mitgliedern von %{parent}, Threads und Abstimmungen in dieser Gruppe zu sehen, ohne daran teilzunehmen"
     members_can_announce: Mitglieder können alle Mitglieder der Gruppe benachrichtigen
     members_can_announce_help: Mitgliedern erlauben, alle in der Gruppe über einen Thread oder eine Abstimmung zu benachrichtigen
     members_can_add_members: Mitglieder können andere Mitglieder einladen

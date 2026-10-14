@@ -1,6 +1,6 @@
 ---
 title: Alcsoportok
-source_revision: 3dad7e54d7f08f6d83af4b8adb6a408f1652ef7e
+source_revision: e34ed3124daf97b42eef81bc6f6a90075ec93227
 source_file: docs/en/user_manual/groups/subgroups/index.md
 translated:
   provider: codex/gpt-6.1-sol
@@ -10,7 +10,7 @@ sections:
   add-a-subgroup: 0bc0e5f99eb074c3
   subgroup-settings: 737225cc4bebe7e8
   privacy: 58872ebdc8b93967
-  permissions: dcfc042cdb083deb
+  permissions: 485ea3cc98d48900
   find-subgroups: 5e6fc5a5122c1417
   invite-to-a-subgroup: 0af670e1e9b32a5e
   simultaneously-invite-people-to-subgroups-and-parent-group: 1991604900321cd7
@@ -22,7 +22,7 @@ generated:
   add-a-subgroup: 403fc6fe9c56ff91
   subgroup-settings: 16d3adb394b9f23e
   privacy: 0a0cd483f00f3789
-  permissions: aab395882cee0f20
+  permissions: 76698e8be0416225
   find-subgroups: 4a9b8588abd2a44d
   invite-to-a-subgroup: 6b62a1bbab58947c
   simultaneously-invite-people-to-subgroups-and-parent-group: 9a32f87b98d4beff
@@ -100,7 +100,7 @@ Válaszd ki, [hogyan csatlakoznak az emberek](/en/user_manual/groups/settings/pr
 
 ### Engedélyek
 
-Kapcsold be az **A(z) [szülőcsoport] tagjai láthatják a privát szálakat** beállítást az **Engedélyek** résznél, hogy a szülőcsoport tagjai csatlakozás nélkül olvashassák az alcsoport szálait. Ezek az olvasók nem kapnak szavazati jogot, és nem válnak az alcsoport tagjaivá.
+Kapcsold be **A szülőcsoport tagjai láthatják a privát szálakat** beállítást az **Engedélyek** résznél, hogy a szülőcsoport tagjai csatlakozás nélkül olvashassák az alcsoport szálait. Ezek az olvasók nem kapnak szavazati jogot, és nem válnak az alcsoport tagjaivá.
 
 ![Beállítás, amely lehetővé teszi, hogy a szülőcsoport tagjai lássák az alcsoport privát szálait](subgroups_private_threads_settings.png)
 

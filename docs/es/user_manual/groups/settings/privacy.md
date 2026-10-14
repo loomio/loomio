@@ -1,6 +1,6 @@
 ---
 title: Privacidad
-source_revision: 3dad7e54d7f08f6d83af4b8adb6a408f1652ef7e
+source_revision: e34ed3124daf97b42eef81bc6f6a90075ec93227
 source_file: docs/en/user_manual/groups/settings/privacy.md
 translated:
   provider: codex/gpt-6.1-sol
@@ -11,7 +11,7 @@ sections:
   follow-an-open-group: e4a1b3ce35a974d0
   closed: fe4da2f032768bca
   secret: d0a9ea85448f9798
-  how-people-join: 3840bb3403bb1788
+  how-people-join: 926f4b183250aa9d
   group-directory: a9a41ea389fb10ba
   visible-to-parent-group: 96b8595d3bc6ce4b
 generated:
@@ -20,7 +20,7 @@ generated:
   follow-an-open-group: 99f35f1d55a7e211
   closed: 92ff0ee8c27a96bb
   secret: 97c3e389dd179cca
-  how-people-join: 54dc068226a9de8a
+  how-people-join: 98fc38bdf4cf0919
   group-directory: 75f0c126c5b58811
   visible-to-parent-group: 3f9ceb87d2306478
 title_source: 54a57c3147c49f33
@@ -79,9 +79,9 @@ En **¿Cómo se unen las personas a este grupo?**, elige entre las opciones disp
 
 | Opción para unirse | Cómo funciona |
 | --- | --- |
-| Sin aprobación | Las personas pueden unirse por su cuenta |
-| Se requiere aprobación | Las personas solicitan unirse y esperan la aprobación |
-| Solo por invitación | Las personas necesitan una invitación para unirse |
+| **Unirse sin aprobación** | Las personas pueden unirse por su cuenta |
+| **Solicitar unirse** | Las personas solicitan unirse y esperan la aprobación |
+| **Solo por invitación** | Las personas necesitan una invitación para unirse |
 
 Cuando se requiere aprobación, las personas seleccionan **Unirse al grupo**, responden a la pregunta del grupo para unirse y envían una solicitud. Consulta [Invitar a personas](/en/user_manual/groups/inviting_people#request-to-join-group) para saber cómo configurar la pregunta, revisar las solicitudes e invitar a personas directamente.
 
