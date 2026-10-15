@@ -1,20 +1,19 @@
 ---
 title: API למשתמש
-source_revision: 79280ee7a1246dbb8bb16686856608069718bc14
+source_revision: 28ecc59f68d407f76f08133bfa0172aadbb53065
 source_file: docs/en/user_manual/integrations/api/user-api.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-09'
+  'on': '2026-10-15'
 sections:
-  introduction: a43c8b800d13fd33
-  authentication-change: 06b5c2cd9d9e72a0
-  response-size-and-related-records: 1ffc59ad606a87e7
-  endpoint-summary: 52c480c59d3669e3
+  introduction: b6e6ec7463276869
+  response-size-and-related-records: 298da635bf97dadd
+  endpoint-summary: 258f7560def524ec
   groups: 0473f1f7fb78f074
-  list-groups: dcbe9217091f8cb2
+  list-groups: 01de10c378eeba37
   get-a-group: dffef659cb92745e
   webhooks: f65fa289f8c1b808
-  list-webhooks: a8b52c1a9bfdb16c
+  list-webhooks: 6093df92815f7156
   create-a-webhook: 007312bcc204853a
   update-a-webhook: 124b07d2c401e319
   test-a-webhook-destination: 8fc3ac4ad10de6f6
@@ -27,61 +26,66 @@ sections:
   participation-report: a1798112a78390fe
   params-2: 464322ffc1ac56e5
   example: 63bed6e82107f992
-  create-discussion: ad202a0bdbfa7c2e
-  params-3: 529f10e32be74c5c
-  example-2: f25daafbba33718c
-  show-discussion: b61aea6bf3d55e16
-  example-3: e095e8e34cd562a0
-  list-discussions: f209b8feb7c795a6
-  params-4: 3ec197245f595be6
-  example-4: 37d59c03fee8a15b
-  list-threads: 34edc6c34552e136
-  params-5: a5f41285afccdc8b
-  example-5: 81c145ad5f6eb232
-  read-thread: 0de1409aaa00b9ac
-  example-6: 7c7553e1a3e94070
-  edit-discussion: 1ab04653354b8036
-  params-6: 4d3f5862a5f948b4
-  example-7: d2a61a34af9e99c3
-  soft-delete-discussion: fdb0d4db8470524c
-  example-8: 423894a70b5ce489
-  create-comment: bf95ee58b610f2fd
-  params-7: 7af2127e1f721b66
-  example-9: 4e7d49ac39938c12
-  edit-comment: 49e722ec6bca25a1
-  params-8: b2be783e4398d866
-  example-10: bf626a7f693182c3
-  soft-delete-comment: afb51bf4074aeab7
-  example-11: e39b758ad0d7aa62
-  create-poll: b2a11ae34ce22151
-  params-9: 3e592c12f9cbb757
-  example-12: f5d6029049637276
-  show-poll: 2e7a14ac23eeffa6
-  example-13: 1a5acf0b8a6f62f2
-  list-polls: 606f27566d6d5f98
-  params-10: 1b1a6f003f91eb9a
-  example-14: 710a82f6b2203f48
-  edit-poll: 42b85770aebd8ef2
-  params-11: 52d278a2f38d6a9f
-  example-15: 8f7d523fc36f5da7
-  soft-delete-poll: 0f1b24e1263dcfbe
-  example-16: ec71cfcd4a0b98ab
-  list-memberships: 82712683aa3a424a
-  params-12: d2fc821e97d53145
-  example-17: 266443e0eb35078c
-  manage-memberships: 3c821029101515ad
-  params-13: 249b307203206387
-  example-18: ffd950cd7ab5aaec
+  create-discussion: 958fc684640462a9
+  params-3: 657d582c89333097
+  example-2: 57681d83fffe9515
+  show-discussion: 40102aeffe4f1286
+  example-3: c0ebd013a1b7fbd2
+  list-discussions: '09ff7f0d3a937b41'
+  params-4: dcebc294fbb9d837
+  example-4: ffda1a4726380e2f
+  list-threads: '09f7bd670e581400'
+  params-5: 79b1cefac558effc
+  example-5: a40ae2317faab46d
+  read-thread: ac36d1b81c1eeed4
+  example-6: 8c582a286e04ca75
+  edit-discussion: 918161e7aa8f4aa6
+  params-6: b819796d34354623
+  example-7: 552295f78d3490af
+  soft-delete-discussion: c8ffe951171e6f07
+  example-8: 965c5761f34f9920
+  create-comment: f95f56b81c8f22b5
+  params-7: 5ad8ede0919c5f47
+  example-9: 70ee3750f1543e9b
+  edit-comment: 80322da74162d58f
+  params-8: 288331c60f3c9b28
+  example-10: ec89de8cc86b6fc8
+  soft-delete-comment: 04baf86923c7e8f1
+  example-11: f3675b780da755cd
+  create-poll: cf62e787784a5e87
+  params-9: df1611a9dedef2d8
+  example-12: fa7410dd3a0a385f
+  show-poll: d759508986aab08c
+  example-13: 2867289a6c2beb9d
+  list-polls: 56e5ed4ae45e5428
+  params-10: e68e8cf62b21488d
+  example-14: 40958a09c058d4cc
+  edit-poll: 65467ad0b431ddbf
+  params-11: 77f118397592bc05
+  example-15: e56befa0f2ae3360
+  soft-delete-poll: 61cf76310e08d7ff
+  example-16: afbf95df96734a4d
+  list-memberships: 5fab06bb8ecf1fd0
+  params-12: decaff0790566fb0
+  example-17: 5d92092b70ce545a
+  manage-memberships: 802d39c06674d395
+  params-13: 771b5338a4ba3d0b
+  example-18: a50b01823a6935a0
+  pagination: 4171ca78df07d4fe
+  comments: ccd37303241bac95
+  discussions: 16ffe7a7b6202d3e
+  memberships: e7cf8846c3179720
+  polls: 821dcd89b5460804
+  threads: 19bc02fc1c26317b
 generated:
-  introduction: 63c62a412472f11b
-  authentication-change: c9947193f95b1d9f
-  response-size-and-related-records: e061a3e9b2df8303
-  endpoint-summary: 7c1b34478c62b9fd
+  introduction: 61da915570c17551
+  response-size-and-related-records: 27c064f744d02ba9
+  endpoint-summary: cb242eb9f03d650d
   groups: 05c42ae402e79755
-  list-groups: e1c5dddb03a20542
+  list-groups: a50183e896be693c
   get-a-group: 8bd2ae664cbaaa38
   webhooks: 14d9495f3dd01876
-  list-webhooks: 860c6cde71d273e9
+  list-webhooks: f5058c3e85e22e4e
   create-a-webhook: 78bc78be024b8420
   update-a-webhook: 9e7f676f89442a2b
   test-a-webhook-destination: 3a697f85b2c57177
@@ -94,51 +98,57 @@ generated:
   participation-report: 435d724bed926ca7
   params-2: c6e14c4bc724415e
   example: a231af52382ab4b4
-  create-discussion: b27b2da7ba33594f
-  params-3: 976b0153d9d9e7a4
-  example-2: a9e2934fac9fe85b
-  show-discussion: 1874a33e910ff43e
-  example-3: 9b68959346737a9f
-  list-discussions: 510aa69fae8b9f33
-  params-4: fbb9f52cf0d962de
-  example-4: 2ab92caa61cc2c64
-  list-threads: b0cac164db186bda
-  params-5: 9779028fe8703e9d
-  example-5: c000286719036d3d
-  read-thread: 7eddb0044a9c410a
-  example-6: e016cc1c675a10a0
-  edit-discussion: 49663ab3bff3ec0d
-  params-6: 33af92f1a6d9ea74
-  example-7: 1452f7cf1715031d
-  soft-delete-discussion: bd61f0aa62a69e29
-  example-8: 87b40795a210d4d4
-  create-comment: c8256c64b9251b3d
-  params-7: 73525752f2e43249
-  example-9: c6989ae0568989cb
-  edit-comment: fe39216f0a9e7832
-  params-8: a6fdfaa616380542
-  example-10: d1825db5ab1b9e8a
-  soft-delete-comment: f378c068b5a52e91
-  example-11: 045335d89a7fb779
-  create-poll: 8dcc29269a9b4db6
-  params-9: 50728ef2987130af
-  example-12: 218c20faadfec3c8
-  show-poll: 07e015bd74e24979
-  example-13: e271e6a44e58378f
-  list-polls: 88b5eae4b2bf31b0
-  params-10: c981ccd8c4c60a34
-  example-14: e1b869ce21cfc46b
-  edit-poll: b6f5af0887a074b6
-  params-11: c5f343e84930d2ba
-  example-15: f9539a1c7e692b04
-  soft-delete-poll: f98c8b17d1d123ea
-  example-16: 06de09d9a51dfb6e
-  list-memberships: e7e5a9d3316d1923
-  params-12: 77b5be776ec822ba
-  example-17: 125d4adb5493a71d
-  manage-memberships: ca4f3ba938ece598
-  params-13: cdeffdf8b21220c7
-  example-18: 9d67fe3f049f5ccd
+  create-discussion: 312ff346dcbefefa
+  params-3: 14b08be2d757109a
+  example-2: 57a5e6806766a598
+  show-discussion: 43ad037e46ec057a
+  example-3: '07390f7ec4c0ac0b'
+  list-discussions: '0451588db76d956e'
+  params-4: fab9d716a09ad713
+  example-4: dcf3db406159f0f2
+  list-threads: f607b813290ecb90
+  params-5: 44b8ceccc73fc51c
+  example-5: df03b4198a819289
+  read-thread: 5ac7e4cd23c52bc2
+  example-6: 6aec10cf3792a7d4
+  edit-discussion: 64af711063115414
+  params-6: d5f5de6310baa465
+  example-7: 1a5b8d50f9c0c332
+  soft-delete-discussion: 0b8f631efdb5dc5a
+  example-8: c42726e4509f6682
+  create-comment: 7c0e09fb0fb238b6
+  params-7: 9b079a5c2e98f4b6
+  example-9: 0f2dc4a0977dd195
+  edit-comment: a9d93e8208ac1550
+  params-8: ab03c047450acd4a
+  example-10: 2ae483709469a674
+  soft-delete-comment: d622ba078ae77d97
+  example-11: 7a749db61fe48bd0
+  create-poll: 977c5a94bfe547b2
+  params-9: d75e2afb739e464f
+  example-12: edcf92d7e907da7d
+  show-poll: 83b1a4d1a953d384
+  example-13: 9165e5b8e0de5e9f
+  list-polls: bb636cb8bc819969
+  params-10: 742166bcb3fef909
+  example-14: f240b608488dec44
+  edit-poll: 29d16748e696444a
+  params-11: 2adb993cca9ed95f
+  example-15: 813370bc918d9d51
+  soft-delete-poll: 1b1b7255113a6139
+  example-16: 3f4003bb9e3025ec
+  list-memberships: 0f6c3b751e151b2b
+  params-12: 914871896bbfe70b
+  example-17: e2135e6cde46f7c8
+  manage-memberships: 5c06eb90945f4ad6
+  params-13: 895be7fd08688cb8
+  example-18: ba71317a1b5d913f
+  pagination: a9da367c7c3771fd
+  comments: 5407ac2a80314b49
+  discussions: 9c1015a433358531
+  memberships: eec7768e67133164
+  polls: 6ecd728f820c96fe
+  threads: 3cebe3ea615d00d3
 title_source: c23fb6526b722360
 title_generated: 2a1c5c279b64d7ea
 ---
@@ -159,21 +169,62 @@ title_generated: 2a1c5c279b64d7ea
 
 יש לשלוח את מפתח ה־API בכותרת `Authorization: Bearer`. מפתחות API במחרוזות שאילתה נדחים, מכיוון שכתובות URL עשויות להירשם בשרתי פרוקסי וביומני גישה.
 
-<!-- translation-section: authentication-change -->
-
-### שינוי באימות
-
-בעבר ניתן היה להעביר את מפתח ה־API כפרמטר `api_key` בכתובת URL. בקשות המשתמשות ב־`?api_key=YOUR_API_KEY` אינן פועלות עוד. יש להשתמש במקום זאת בכותרת HTTP בשם `Authorization`:
-
 ```text
 Authorization: Bearer YOUR_API_KEY
 ```
 
-הדוגמאות משתמשות ב־`YOUR_API_KEY`, במזהה הקבוצה `123` ובכתובת `https://www.loomio.com/`. יש להחליף אותם במפתח ה־API, במזהה הקבוצה ובכתובת התקנת Loomio המתאימים.
+הדוגמאות משתמשות ב־`YOUR_API_KEY`, במזהה הקבוצה `123` ובכתובת `https://www.loomio.com/`. יש להחליף אותם במפתח ה־API, במזהה הקבוצה ובכתובת ההתקנה של Loomio המתאימים.
+
+<!-- translation-section: endpoint-summary -->
+
+## סיכום נקודות הקצה
+
+| שיטה | נקודת קצה | מטרה |
+| --- | --- | --- |
+| `POST` | `/api/b2/comments` | יצירת תגובה או תשובה |
+| `PATCH` | `/api/b2/comments/:id` | עריכת תגובה |
+| `DELETE` | `/api/b2/comments/:id` | מחיקה רכה של תגובה |
+| `POST` | `/api/b2/discussions` | יצירת דיון |
+| `GET` | `/api/b2/discussions/:id` | קבלת דיון |
+| `GET` | `/api/b2/discussions` | הצגת רשימת דיונים בקבוצה |
+| `PATCH` | `/api/b2/discussions/:id` | עריכת דיון |
+| `DELETE` | `/api/b2/discussions/:id` | מחיקה רכה של דיון |
+| `GET` | `/api/b2/groups` | הצגת רשימת הקבוצות של החשבון שמפתח ה־API שייך לו |
+| `GET` | `/api/b2/groups/:id_or_key_or_handle` | קבלת קבוצה שניתן לצפות בה |
+| `GET` | `/api/b2/memberships` | הצגת רשימת החברויות בקבוצה |
+| `POST` | `/api/b2/memberships` | הוספת חברים, ובמידת הצורך הסרת חברים שאינם ברשימה |
+| `GET` | `/api/b2/reports` | הפקת דוח השתתפות |
+| `POST` | `/api/b2/polls` | יצירת סקר |
+| `GET` | `/api/b2/polls/:id` | קבלת סקר |
+| `GET` | `/api/b2/polls` | הצגת רשימת סקרים בקבוצה |
+| `PATCH` | `/api/b2/polls/:id` | עריכת סקר |
+| `DELETE` | `/api/b2/polls/:id` | מחיקה רכה של סקר |
+| `GET` | `/api/b2/search` | חיפוש בדיונים, בתגובות, בסקרים, בהצבעות ובמסקנות שניתן לצפות בהם |
+| `GET` | `/api/b2/threads` | הצגת רשימת שרשורי דיון ושרשורי סקר עצמאיים שניתן לצפות בהם |
+| `GET` | `/api/b2/threads/:topic_id` | קבלת שרשור |
+| `GET` | `/api/b2/threads/:topic_id/items` | קבלת הפריטים בשרשור לפי סדרם |
+| `GET` | `/api/b2/threads/:topic_id/markdown` | קבלת שרשור שלם בפורמט Markdown |
+| `GET` | `/api/b2/chatbots` | הצגת רשימת אינטגרציות הצ'אט וה־webhooks של קבוצה |
+| `POST` | `/api/b2/chatbots` | יצירת אינטגרציית צ'אט או webhook |
+| `PATCH` | `/api/b2/chatbots/:id` | עדכון אינטגרציית צ'אט או webhook |
+| `DELETE` | `/api/b2/chatbots/:id` | מחיקת אינטגרציית צ'אט או webhook |
+| `POST` | `/api/b2/chatbots/check` | שליחת בדיקת חיבור ל־webhook |
+
+<!-- translation-section: pagination -->
+
+## חלוקה לעמודים
+
+דיונים, קבוצות, חברויות, סקרים, שרשורים, פריטי שרשור ו־webhooks מקבלים את הפרמטרים `limit` (ברירת המחדל היא `50`) ו־`offset` (ברירת המחדל היא `0`). בקבוצות, בפריטי שרשור וב־webhooks הערך המרבי של `limit` הוא `500`.
+
+כדי לקבל את העמוד הבא, יש להגדיל את `offset` במספר הרשומות הראשיות שהוחזרו. `meta.total` הוא המספר הכולל של הרשומות התואמות; רשומות קשורות אינן נספרות בגודל העמוד.
+
+דוחות השתתפות מחזירים את מלוא הנתונים המבוקשים, וחיפוש מחזיר עד 20 תוצאות. שניהם אינם תומכים בחלוקה לעמודים.
+
+דיונים, סקרים וחברויות מקבלים גם את הכינויים הישנים `per` עבור `limit` ו־`from` עבור `offset`. באינטגרציות חדשות יש להשתמש ב־`limit` וב־`offset`.
 
 <!-- translation-section: response-size-and-related-records -->
 
-## גודל התשובה ורשומות קשורות
+## רשומות קשורות
 
 תשובות ה־API למשתמש משתמשות במבנה מורכב: לצד הרשומות הראשיות נכללות רשומות קשורות, כגון נושאים, קבוצות, משתמשים, סקרים ותגובות אימוג׳י. כך יישום לקוח יכול למלא מאגר רשומות מקומי באמצעות בקשה אחת, אך התשובה עשויה לכלול יותר נתונים מהנדרש לאינטגרציה פשוטה.
 
@@ -187,40 +238,202 @@ curl -H 'Authorization: Bearer YOUR_API_KEY' 'https://www.loomio.com/api/b2/thre
 
 תשובות של אוספים כוללות `meta.total` כאשר מוגדר גודל מדויק לאוסף. המספר הכולל מחושב לפני החלת `limit` ו־`offset`. נקודות קצה כגון חיפוש, שמחזירות במכוון מספר מוגבל של תוצאות, משמיטות את `meta.total` במקום להחזיר `null`.
 
-<!-- translation-section: endpoint-summary -->
+<!-- translation-section: comments -->
 
-## סיכום נקודות הקצה
+## תגובות
 
-| שיטה | נקודת קצה | מטרה |
-| --- | --- | --- |
-| `GET` | `/api/b2/groups` | הצגת רשימת הקבוצות של החשבון שמפתח ה־API שייך לו |
-| `GET` | `/api/b2/groups/:id_or_key_or_handle` | קבלת קבוצה שניתן לצפות בה |
-| `GET` | `/api/b2/reports` | הפקת דוח השתתפות |
-| `GET` | `/api/b2/search` | חיפוש בדיונים, בתגובות, בסקרים, בהצבעות ובמסקנות שניתן לצפות בהם |
-| `POST` | `/api/b2/discussions` | יצירת דיון |
-| `GET` | `/api/b2/discussions/:id` | קבלת דיון |
-| `GET` | `/api/b2/discussions` | הצגת רשימת דיונים בקבוצה |
-| `PATCH` | `/api/b2/discussions/:id` | עריכת דיון |
-| `DELETE` | `/api/b2/discussions/:id` | מחיקה רכה של דיון |
-| `GET` | `/api/b2/threads` | הצגת רשימת שרשורי דיון ושרשורי סקר עצמאיים שניתן לצפות בהם |
-| `GET` | `/api/b2/threads/:topic_id` | קבלת שרשור |
-| `GET` | `/api/b2/threads/:topic_id/items` | קבלת הפריטים בשרשור לפי סדרם |
-| `GET` | `/api/b2/threads/:topic_id/markdown` | קבלת שרשור שלם בפורמט Markdown |
-| `POST` | `/api/b2/comments` | יצירת תגובה או תשובה |
-| `PATCH` | `/api/b2/comments/:id` | עריכת תגובה |
-| `DELETE` | `/api/b2/comments/:id` | מחיקה רכה של תגובה |
-| `POST` | `/api/b2/polls` | יצירת סקר |
-| `GET` | `/api/b2/polls/:id` | קבלת סקר |
-| `GET` | `/api/b2/polls` | הצגת רשימת סקרים בקבוצה |
-| `PATCH` | `/api/b2/polls/:id` | עריכת סקר |
-| `DELETE` | `/api/b2/polls/:id` | מחיקה רכה של סקר |
-| `GET` | `/api/b2/memberships` | הצגת רשימת החברויות בקבוצה |
-| `POST` | `/api/b2/memberships` | הוספת חברים, ובמידת הצורך הסרת חברים שאינם ברשימה |
-| `GET` | `/api/b2/chatbots` | הצגת רשימת אינטגרציות הצ'אט וה־webhooks של קבוצה |
-| `POST` | `/api/b2/chatbots` | יצירת אינטגרציית צ'אט או webhook |
-| `PATCH` | `/api/b2/chatbots/:id` | עדכון אינטגרציית צ'אט או webhook |
-| `DELETE` | `/api/b2/chatbots/:id` | מחיקת אינטגרציית צ'אט או webhook |
-| `POST` | `/api/b2/chatbots/check` | שליחת בדיקת חיבור ל־webhook |
+<!-- translation-section: create-comment -->
+
+### יצירת תגובה
+
+יצירת תגובה בדיון בשם החשבון שמפתח ה־API שייך אליו.
+
+`POST /api/b2/comments`
+
+<!-- translation-section: params-7 -->
+
+#### פרמטרים
+
+| שם | תיאור |
+| --- | --- |
+| `discussion_id` | מספר שלם, חובה. מזהה הדיון שבו תפורסם התגובה |
+| `body` | גוף התגובה, חובה אלא אם מצורף קובץ |
+| `body_format` | `md` או `html`, רשות, ברירת המחדל היא `md` |
+
+<!-- translation-section: example-9 -->
+
+#### דוגמה
+
+```bash
+curl -H 'Authorization: Bearer YOUR_API_KEY' -X POST -H 'Content-Type: application/json' -d '{"discussion_id": 123, "body":"example comment", "body_format":"md"}' https://www.loomio.com/api/b2/comments
+```
+
+<!-- translation-section: edit-comment -->
+
+### עריכת תגובה
+
+עריכת תגובה בשם החשבון שמפתח ה־API שייך אליו. חלות אותן הרשאות כמו ב־Loomio: נדרשת לחשבון הרשאה לערוך את התגובה.
+
+`PATCH /api/b2/comments/:id`
+
+<!-- translation-section: params-8 -->
+
+#### פרמטרים
+
+| שם | תיאור |
+| --- | --- |
+| `body` | גוף התגובה המעודכן |
+| `body_format` | `md` או `html`, רשות, ברירת המחדל היא `md` |
+
+<!-- translation-section: example-10 -->
+
+#### דוגמה
+
+```bash
+curl -H 'Authorization: Bearer YOUR_API_KEY' -X PATCH -H 'Content-Type: application/json' -d '{"body":"updated comment", "body_format":"md"}' https://www.loomio.com/api/b2/comments/123
+```
+
+<!-- translation-section: soft-delete-comment -->
+
+### מחיקה רכה של תגובה
+
+מחיקה רכה של תגובה בשם החשבון שמפתח ה־API שייך אליו. הפעולה מסירה את התגובה, מסתירה את גוף התגובה ומשאירה את רשומת התגובה במקומה.
+
+`DELETE /api/b2/comments/:id`
+
+<!-- translation-section: example-11 -->
+
+#### דוגמה
+
+```bash
+curl -H 'Authorization: Bearer YOUR_API_KEY' -X DELETE https://www.loomio.com/api/b2/comments/123
+```
+
+<!-- translation-section: discussions -->
+
+## דיונים
+
+<!-- translation-section: create-discussion -->
+
+### יצירת דיון
+
+יצירת דיון בשם החשבון שמפתח ה־API שייך אליו.
+
+`POST /api/b2/discussions`
+
+<!-- translation-section: params-3 -->
+
+#### פרמטרים
+
+| שם | תיאור |
+| --- | --- |
+| `group_id` | הקבוצה שבה יתקיים השרשור |
+| `title` | כותרת השרשור, שדה חובה |
+| `description` | הקשר לשרשור, שדה רשות |
+| `description_format` | `md` או `html`, שדה רשות, ברירת המחדל היא `md` |
+| `recipient_audience` | `group` או null. אם הערך הוא `group`, כל הקבוצה תקבל התראה על השרשור החדש |
+| `recipient_user_ids` | מערך מזהי משתמשים לשליחת התראה או הזמנה לשרשור |
+| `recipient_emails` | מערך כתובות דוא״ל של אנשים להזמנה לשרשור |
+| `recipient_message` | הודעה שתיכלל בהזמנה בדוא״ל |
+
+<!-- translation-section: example-2 -->
+
+#### דוגמה
+
+```bash
+curl -H 'Authorization: Bearer YOUR_API_KEY' -X POST -H 'Content-Type: application/json' -d '{"group_id": 123, "title":"example thread", "recipient_emails":["person@example.com"]}' https://www.loomio.com/api/b2/discussions
+```
+
+<!-- translation-section: show-discussion -->
+
+### הצגת דיון
+
+שליפת דיון באמצעות מזהה הדיון, שהוא מספר שלם, או מפתח, שהוא מחרוזת.
+
+`GET /api/b2/discussions/:id`
+
+<!-- translation-section: example-3 -->
+
+#### דוגמה
+
+```bash
+curl -H 'Authorization: Bearer YOUR_API_KEY' https://www.loomio.com/api/b2/discussions/abc123
+```
+
+<!-- translation-section: list-discussions -->
+
+### רשימת דיונים
+
+הצגת רשימת הדיונים בקבוצה הנגישים לחשבון שמפתח ה־API שייך אליו. בקבוצה הגלויה לציבור, ניתן לקבל את רשימת הדיונים הציבוריים גם ללא חברות בקבוצה; הגישה לדיונים פרטיים נשארת מוגבלת לחשבונות שיש להם הרשאה לקרוא אותם ב־Loomio.
+
+`GET /api/b2/discussions`
+
+<!-- translation-section: params-4 -->
+
+#### פרמטרים
+
+| שם | תיאור |
+| --- | --- |
+| `group_id` | מספר שלם, חובה. מזהה הקבוצה שממנה יש להציג את רשימת הדיונים |
+| `status` | מחרוזת, רשות, ברירת המחדל היא `open`. ערכים: `open`, `closed`, `all` |
+| `limit` | מספר שלם, רשות, ברירת המחדל היא 50. גודל העמוד |
+| `offset` | מספר שלם, רשות, ברירת המחדל היא 0. היסט לצורך חלוקה לעמודים |
+
+תאימות לאחור: `per` ו־`from` מתקבלים כשמות חלופיים ל־`limit` ול־`offset` וימשיכו לפעול.
+
+<!-- translation-section: example-4 -->
+
+#### דוגמה
+
+```bash
+curl -H 'Authorization: Bearer YOUR_API_KEY' 'https://www.loomio.com/api/b2/discussions?group_id=123'
+```
+
+<!-- translation-section: edit-discussion -->
+
+### עריכת דיון
+
+עריכת דיון בשם החשבון שמפתח ה־API שייך אליו. חלות אותן הרשאות כמו ב־Loomio: לחשבון חייבת להיות הרשאה לערוך את הדיון הזה.
+
+`PATCH /api/b2/discussions/:id`
+
+<!-- translation-section: params-6 -->
+
+#### פרמטרים
+
+| שם | תיאור |
+| --- | --- |
+| `title` | כותרת מעודכנת |
+| `description` | הקשר מעודכן |
+| `description_format` | `md` או `html`, רשות, ברירת המחדל היא `md` |
+| `recipient_audience` | `group` או null. אם הערך הוא `group`, תישלח הודעה לכל הקבוצה על העריכה |
+| `recipient_user_ids` | מערך של מזהי משתמשים שיש לשלוח להם הודעה או להזמין לשרשור |
+| `recipient_emails` | מערך של כתובות דוא״ל של אנשים שיש להזמין לשרשור |
+| `recipient_message` | הודעה שיש לכלול בהזמנה בדוא״ל |
+
+<!-- translation-section: example-7 -->
+
+#### דוגמה
+
+```bash
+curl -H 'Authorization: Bearer YOUR_API_KEY' -X PATCH -H 'Content-Type: application/json' -d '{"title":"updated thread title", "description":"updated context", "description_format":"md"}' https://www.loomio.com/api/b2/discussions/123
+```
+
+<!-- translation-section: soft-delete-discussion -->
+
+### מחיקה רכה של דיון
+
+מחיקה רכה של דיון בשם החשבון שמפתח ה־API שייך אליו. הפעולה מסירה את הדיון אך משאירה את רשומת הדיון במקומה.
+
+`DELETE /api/b2/discussions/:id`
+
+<!-- translation-section: example-8 -->
+
+#### דוגמה
+
+```bash
+curl -H 'Authorization: Bearer YOUR_API_KEY' -X DELETE https://www.loomio.com/api/b2/discussions/123
+```
 
 <!-- translation-section: groups -->
 
@@ -236,11 +449,16 @@ curl -H 'Authorization: Bearer YOUR_API_KEY' 'https://www.loomio.com/api/b2/thre
 
 `GET /api/b2/groups`
 
+| שם | תיאור |
+| --- | --- |
+| `limit` | מספר שלם, רשות, ברירת מחדל 50, לכל היותר 500. גודל העמוד |
+| `offset` | מספר שלם, רשות, ברירת מחדל 0. היסט לחלוקה לעמודים |
+
 ```bash
-curl -H 'Authorization: Bearer YOUR_API_KEY' https://www.loomio.com/api/b2/groups
+curl -H 'Authorization: Bearer YOUR_API_KEY' 'https://www.loomio.com/api/b2/groups?limit=50&offset=0'
 ```
 
-התשובה מכילה את כל הרשומות המתאימות במערך `groups` ללא חלוקה לעמודים. היא כוללת קבוצות אם ותת־קבוצות, לרבות קבוצות שהמינוי שלהן אינו פעיל כרגע. יש לבדוק את השדה `enabled` כאשר האינטגרציה אמורה לפעול רק בקבוצות מופעלות.
+התשובה מכילה עמוד של `groups` המסודר לפי מזהה הקבוצה בסדר עולה, עם המספר הכולל של הקבוצות המתאימות ב־`meta.total`. היא כוללת קבוצות אם ותת־קבוצות, לרבות קבוצות שהמינוי שלהן אינו פעיל כרגע. יש לבדוק את השדה `enabled` כאשר האינטגרציה אמורה לפעול רק בקבוצות מופעלות.
 
 שדות מרכזיים של קבוצה כוללים:
 
@@ -261,7 +479,7 @@ curl -H 'Authorization: Bearer YOUR_API_KEY' https://www.loomio.com/api/b2/group
 | `polls_count` | מספר הסקרים הנמצאים ישירות בקבוצה |
 | `subgroups_count` | מספר תת־הקבוצות |
 
-התשובה עשויה לכלול הגדרות נוספות של הקבוצה, רשומות קשורות של קבוצת האם ואת החברויות של החשבון המשתמש ב־API. יישומי לקוח צריכים להתעלם משדות שאינם משתמשים בהם.
+התשובה עשויה לכלול הגדרות נוספות של הקבוצה, רשומות קשורות של קבוצת האם ואת החברויות של החשבון המשתמש ב־API. על יישומי לקוח להתעלם משדות שאינם משתמשים בהם.
 
 <!-- translation-section: get-a-group -->
 
@@ -279,6 +497,362 @@ curl -H 'Authorization: Bearer YOUR_API_KEY' https://www.loomio.com/api/b2/group
 ```
 
 התשובה מכילה את הקבוצה במערך `groups` ומשתמשת באותם שדות כמו נקודת הקצה להצגת הרשימה. בקשה לקבוצה שהחשבון שמפתח ה־API שייך לו אינו יכול לגשת אליה מחזירה שגיאת הרשאה.
+
+<!-- translation-section: memberships -->
+
+## חברויות
+
+<!-- translation-section: list-memberships -->
+
+### רשימת חברויות
+
+הצגת החברויות הגלויות לחשבון המשויך למפתח ה־API. חברי הקבוצה יכולים לקרוא את שמות החברים, המזהים, התארים והתפקידים שלהם. כתובות דוא״ל נכללות רק עבור החשבון המשויך למפתח ה־API עצמו, או כאשר לחשבון זה יש הרשאת ניהול בקבוצה.
+
+`GET /api/b2/memberships`
+
+<!-- translation-section: params-12 -->
+
+#### פרמטרים
+
+| שם | תיאור |
+| --- | --- |
+| `group_id` | מספר שלם, חובה. מזהה הקבוצה שהחברויות בה יוצגו ברשימה |
+| `limit` | מספר שלם, רשות, ברירת מחדל 50. גודל העמוד |
+| `offset` | מספר שלם, רשות, ברירת מחדל 0. היסט לחלוקה לעמודים |
+
+תאימות לאחור: `per` ו־`from` מתקבלים כשמות חלופיים ל־`limit` ול־`offset` וימשיכו לפעול.
+
+התשובה מכילה עמוד של `memberships` ורשומות `users` קשורות. `meta.total` הוא המספר הכולל של החברויות הגלויות בקבוצה לפני החלוקה לעמודים.
+
+<!-- translation-section: example-17 -->
+
+#### דוגמה
+
+```bash
+curl -H 'Authorization: Bearer YOUR_API_KEY' 'https://www.loomio.com/api/b2/memberships?group_id=123&limit=50&offset=0'
+```
+
+<!-- translation-section: manage-memberships -->
+
+### ניהול חברויות
+
+יש לשלוח רשימה של כתובות דוא״ל. לכל הכתובות החדשות תישלח הזמנה לקבוצה. בניגוד להצגת רשימת חברויות, פעולה זו דורשת הרשאת ניהול בקבוצה.
+
+`POST /api/b2/memberships`
+
+<!-- translation-section: params-13 -->
+
+#### פרמטרים
+
+| שם | תיאור |
+| --- | --- |
+| `group_id` | מספר שלם, חובה. מזהה הקבוצה שהחברויות בה ינוהלו |
+| `emails` | מערך של מחרוזות, חובה. כתובות דוא״ל של אנשים שיש להזמין לקבוצה |
+| `remove_absent` | ערך בוליאני. אם הערך הוא true, כל מי שכתובת הדוא״ל שלהם אינה מופיעה ברשימה יוסרו מהקבוצה |
+
+<!-- translation-section: example-18 -->
+
+#### דוגמה
+
+```bash
+curl -H 'Authorization: Bearer YOUR_API_KEY' -X POST -H 'Content-Type: application/json' -d '{"group_id": 123, "emails":["person@example.com"]}' https://www.loomio.com/api/b2/memberships
+```
+
+אם מועבר `remove_absent=1`, כל חברי הקבוצה שלא נכללו ברשימה יוסרו מהקבוצה. יש להיזהר: פעולה זו עלולה להסיר את כל חברי הקבוצה.
+
+```bash
+curl -H 'Authorization: Bearer YOUR_API_KEY' -X POST -H 'Content-Type: application/json' -d '{"group_id": 123, "emails":["person@example.com"], "remove_absent": 1}' https://www.loomio.com/api/b2/memberships
+```
+
+הפעולה מחזירה אובייקט עם `{added_emails: ["person@added.com"], removed_emails: ["person@removed.com"]}`.
+
+<!-- translation-section: participation-report -->
+
+## דוח השתתפות
+
+החזרת אותם נתוני השתתפות מצטברים המשמשים בדוח ההשתתפות של Loomio.
+
+`GET /api/b2/reports`
+
+<!-- translation-section: params-2 -->
+
+### פרמטרים
+
+| שם | תיאור |
+| --- | --- |
+| `section` | חלק בדוח: `base`, `users` או `countries`. יש להשתמש ב־`users` עבור פעילות לפי אדם |
+| `group_scope` | `custom` או `my`. הערך הישן `all` מטופל כמו `my`, משום שמפתחות API למשתמש לעולם אינם מקבלים גישה לכלל המופע |
+| `group_ids` | מזהי קבוצות המופרדים בפסיקים כאשר `group_scope=custom`. המערכת מתעלמת ממזהי קבוצות שהחשבון המשתמש ב־API אינו חבר בהן |
+| `start_month` | החודש הראשון שיש לכלול, בפורמט `YYYY-MM`; ברירת המחדל היא לפני 12 חודשים |
+| `end_month` | החודש האחרון שיש לכלול, בפורמט `YYYY-MM`; ברירת המחדל היא החודש הנוכחי |
+| `interval` | מרווח הזמן בחלק `base`: `day`, `week`, `month` או `year` |
+| `member_type` | יש להגדיר `delegate` יחד עם `section=users` כדי להחזיר רק נציגים מכהנים |
+
+מעמד נציג נקבע לפי חברות פעילה בתפקיד נציג באחת מהקבוצות שנבחרו. הספירות לכל אדם מצטברות מכל הקבוצות שנבחרו. שורות הנציגים מוחזרות גם כאשר כל ספירות הפעילות הן אפס. הספירות כוללות שרשורים, תגובות, סקרים, הצבעות, מסקנות ותגובות אימוג׳י; הן אינן שיעורי השתתפות בהצבעה. שורות המשתמשים כוללות גם מספרי פתקי הצבעה מזוהים שהונפקו, שמולאו ושלא מולאו. סקרים אנונימיים אינם נכללים באף אחת מספירות ההצבעה לפי אדם. הערך של `all_votes_cast` הוא true רק כאשר הונפק לפחות פתק הצבעה אחד וכל פתקי ההצבעה שהונפקו מולאו.
+
+ה־API מחיל את אותם כללי נראות הקבוצות כמו הדוח בממשק המוצר. מפתח API למשתמש אינו יכול לחשוף נתוני דוח מקבוצות שאין לחשבון גישה אליהן.
+
+<!-- translation-section: example -->
+
+### דוגמה
+
+```bash
+curl -H 'Authorization: Bearer YOUR_API_KEY' 'https://www.loomio.com/api/b2/reports?section=users&group_scope=custom&group_ids=123&member_type=delegate&start_month=2026-01&end_month=2026-09'
+```
+
+המערך `users` מכיל שורות פעילות מלאות:
+
+```json
+{
+  "users": [
+    {
+      "id": 456,
+      "name": "Ada Lovelace",
+      "country": "NZ",
+      "delegate": true,
+      "threads": 2,
+      "comments": 8,
+      "polls": 1,
+      "votes": 5,
+      "votes_cast": 5,
+      "votes_issued": 6,
+      "votes_missed": 1,
+      "all_votes_cast": false,
+      "outcomes": 1,
+      "reactions": 4
+    }
+  ]
+}
+```
+
+<!-- translation-section: polls -->
+
+## סקרים
+
+<!-- translation-section: create-poll -->
+
+### יצירת סקר
+
+יצירת סקר בשם החשבון שמפתח ה־API שייך לו.
+
+`POST /api/b2/polls`
+
+<!-- translation-section: params-9 -->
+
+#### פרמטרים
+
+| שם | תיאור |
+| --- | --- |
+| `group_id` | מספר שלם, לא חובה, ברירת המחדל היא null. מזהה הקבוצה של הסקר. אם מועבר `discussion_id`, המערכת מתעלמת מ־`group_id` |
+| `discussion_id` | מספר שלם, לא חובה, ברירת המחדל היא null. מזהה שרשור הדיון שאליו יש להוסיף את הסקר |
+| `title` | מחרוזת, חובה. כותרת הסקר |
+| `poll_type` | מחרוזת, חובה. ערכים: `proposal`, `poll`, `count`, `score`, `ranked_choice`, `meeting`, `dot_vote` |
+| `details` | מחרוזת, לא חובה. טקסט גוף הסקר |
+| `details_format` | מחרוזת, לא חובה, ברירת המחדל היא `md`. ערכים: `md` או `html` |
+| `options` | מערך מחרוזות. אם `poll_type` הוא `proposal`, הערכים התקפים הם `agree`, `disagree`, `abstain`, `block`. אם `poll_type` הוא `meeting`, יש לספק מחרוזות תאריך או תאריך ושעה בפורמט ISO 8601. בכל סוגי הסקרים האחרים, כל מחרוזת תקפה |
+| `closing_at` | מחרוזת בפורמט ISO 8601 או null, ברירת המחדל היא null. דוגמה: `2026-09-01T12:00:00Z`. אם הערך הוא null, ההצבעה מושבתת והסקר נחשב לסקר בהכנה |
+| `specified_voters_only` | ערך בוליאני, לא חובה, ברירת המחדל היא false. אם הערך הוא true, רק אנשים שצוינו יכולים להצביע. אם הערך הוא false, כל חברי הקבוצה יקבלו הזמנה להצביע |
+| `hide_results` | מחרוזת, לא חובה, ברירת המחדל היא `off`. ערכים: `off`, `until_vote`, `until_closed` |
+| `shuffle_options` | ערך בוליאני, ברירת המחדל היא false. הצגת האפשרויות למצביעים בסדר אקראי |
+| `anonymous` | ערך בוליאני, לא חובה, ברירת המחדל היא false. הסתרת זהויות המצביעים |
+| `recipient_audience` | `group` או null, לא חובה, ברירת המחדל היא null. אם הערך הוא `group`, כל הקבוצה תקבל התראה |
+| `notify_on_closing_soon` | מחרוזת, לא חובה, ברירת המחדל היא `nobody`. ערכים: `nobody`, `author`, `undecided_voters`, `voters` |
+| `recipient_user_ids` | מערך מזהי משתמשים לשליחת התראה או הזמנה |
+| `recipient_emails` | מערך כתובות דוא״ל של אנשים שיקבלו הזמנה להצביע |
+| `recipient_message` | הודעה שתיכלל בהזמנה בדוא״ל |
+| `notify_recipients` | ערך בוליאני, ברירת המחדל היא false. אם הערך הוא false, אנשים מתווספים ללא שליחת התראות. אם הערך הוא true, כל מי שקיבלו הזמנה בבקשה זו יקבלו התראה בדוא״ל |
+
+<!-- translation-section: example-12 -->
+
+#### דוגמה
+
+```bash
+curl -H 'Authorization: Bearer YOUR_API_KEY' -X POST -H 'Content-Type: application/json' -d '{"group_id": 123, "title":"example poll", "poll_type": "proposal", "options": ["agree", "disagree"], "closing_at": "2026-09-01T12:00:00Z", "recipient_emails":["person@example.com"]}' https://www.loomio.com/api/b2/polls
+```
+
+<!-- translation-section: show-poll -->
+
+### הצגת סקר
+
+אחזור סקר באמצעות מזהה הסקר, שהוא מספר שלם, או מפתח, שהוא מחרוזת.
+
+`GET /api/b2/polls/:id`
+
+<!-- translation-section: example-13 -->
+
+#### דוגמה
+
+```bash
+curl -H 'Authorization: Bearer YOUR_API_KEY' https://www.loomio.com/api/b2/polls/abc123
+```
+
+<!-- translation-section: list-polls -->
+
+### רשימת סקרים
+
+הצגת רשימת הסקרים בקבוצה הגלויים לחשבון שמפתח ה־API שייך לו. בקבוצה הגלויה לציבור, ניתן לקבל את רשימת הסקרים הציבוריים גם ללא חברות בקבוצה; הגישה לסקרים פרטיים נשארת מוגבלת למשתמשים שיש להם הרשאה לקרוא אותם ב־Loomio. התשובה כוללת את המסקנה הנוכחית של כל סקר גלוי, כך שניתן להשתמש ב־`status=closed` לקבלת רשימת הצעות שהתקבלה לגביהן החלטה.
+
+`GET /api/b2/polls`
+
+<!-- translation-section: params-10 -->
+
+#### פרמטרים
+
+| שם | תיאור |
+| --- | --- |
+| `group_id` | מספר שלם, חובה. מזהה הקבוצה שממנה יש להציג את רשימת הסקרים |
+| `status` | מחרוזת, לא חובה, ברירת המחדל היא `active`. ערכים: `active`, `closed`, `all` |
+| `limit` | מספר שלם, לא חובה, ברירת המחדל היא 50. גודל העמוד |
+| `offset` | מספר שלם, לא חובה, ברירת המחדל היא 0. היסט לחלוקה לעמודים |
+
+תאימות לאחור: `per` ו־`from` מתקבלים כשמות חלופיים ל־`limit` ול־`offset` וימשיכו לפעול.
+
+<!-- translation-section: example-14 -->
+
+#### דוגמה
+
+```bash
+curl -H 'Authorization: Bearer YOUR_API_KEY' 'https://www.loomio.com/api/b2/polls?group_id=123'
+```
+
+<!-- translation-section: edit-poll -->
+
+### עריכת סקר
+
+עריכת סקר בשם החשבון שמפתח ה־API שייך לו. חלות אותן הרשאות כמו ב־Loomio: לחשבון חייבת להיות הרשאה לערוך את הסקר.
+
+`PATCH /api/b2/polls/:id`
+
+<!-- translation-section: params-11 -->
+
+#### פרמטרים
+
+| שם | תיאור |
+| --- | --- |
+| `title` | כותרת מעודכנת |
+| `details` | פרטי הסקר המעודכנים |
+| `details_format` | `md` או `html`, לא חובה, ברירת המחדל היא `md` |
+| `options` | שמות האפשרויות המעודכנים. שינוי האפשרויות עשוי להשפיע על הצבעות קיימות, בהתאם למצב הסקר |
+| `closing_at` | מחרוזת בפורמט ISO 8601 או null |
+| `recipient_audience` | `group` או null. אם הערך הוא `group`, כל הקבוצה תקבל התראה |
+| `recipient_user_ids` | מערך מזהי משתמשים לשליחת התראה או הזמנה |
+| `recipient_emails` | מערך כתובות דוא״ל של אנשים שיקבלו הזמנה להצביע |
+| `recipient_message` | הודעה שתיכלל בהזמנה בדוא״ל |
+
+<!-- translation-section: example-15 -->
+
+#### דוגמה
+
+```bash
+curl -H 'Authorization: Bearer YOUR_API_KEY' -X PATCH -H 'Content-Type: application/json' -d '{"title":"updated poll title", "details":"updated details", "details_format":"md"}' https://www.loomio.com/api/b2/polls/123
+```
+
+<!-- translation-section: soft-delete-poll -->
+
+### מחיקה רכה של סקר
+
+מחיקה רכה של סקר בשם החשבון שמפתח ה־API שייך לו. פעולה זו מסמנת את הסקר כמחוק ומשאירה את רשומת הסקר במקומה.
+
+`DELETE /api/b2/polls/:id`
+
+<!-- translation-section: example-16 -->
+
+#### דוגמה
+
+```bash
+curl -H 'Authorization: Bearer YOUR_API_KEY' -X DELETE https://www.loomio.com/api/b2/polls/123
+```
+
+<!-- translation-section: search -->
+
+## חיפוש
+
+חיפוש דיונים, תגובות, סקרים, הצבעות ומסקנות הגלויים לחשבון שמפתח ה־API שייך אליו. התוצאות כוללות תוכן ציבורי גם ללא חברות בקבוצה שלו; תוכן פרטי עדיין כפוף לכללי הנראות הרגילים של השרשור.
+
+`GET /api/b2/search`
+
+<!-- translation-section: params -->
+
+### פרמטרים
+
+| שם | תיאור |
+| --- | --- |
+| `query` | טקסט לחיפוש. נתמכות התאמות מדויקות ומקורבות |
+| `group_id` | הגבלת התוצאות לקבוצה גלויה אחת |
+| `org_id` | הגבלת התוצאות לקבוצת אם גלויה ולתת־הקבוצות הגלויות שלה. יש להשתמש ב־`0` עבור דיונים ישירים |
+| `type` | הגבלת התוצאות לסוג אחד: `Discussion`, `Comment`, `Poll`, `Stance` או `Outcome` |
+| `types` | רשימת סוגי תוצאות המופרדים בפסיקים |
+| `tag` | הגבלת התוצאות לשרשורים עם תגית זו |
+| `author_id` | הגבלת התוצאות לתוכן שנכתב בחשבון אחד. ללא `query`, מוחזרת הפעילות הגלויה האחרונה של אותו חשבון |
+| `order` | יש להגדיר `authored_at_desc` כדי למיין את התוכן התואם לפי מועד הכתיבה |
+
+```bash
+curl -H 'Authorization: Bearer YOUR_API_KEY' 'https://www.loomio.com/api/b2/search?query=quarterly+planning&type=Discussion'
+```
+
+התשובה מכילה מערך `search_results`. כל תוצאה מזהה את הרשומה התואמת ואת ההקשר הגלוי שלה באמצעות שדות הכוללים את `searchable_type`, `searchable_id`, `highlight`, `group_id`, `group_name`, `discussion_key`, `poll_key`, `author_id`, `author_name`, `authored_at` ו־`tags`. שדות שאינם רלוונטיים לתוצאה מקבלים את הערך `null`.
+
+<!-- translation-section: threads -->
+
+## שרשורים
+
+<!-- translation-section: list-threads -->
+
+### רשימת שרשורים
+
+הצגת רשימת שרשורי הדיון והסקר הנגישים לחשבון שמפתח ה-API שייך אליו, לפי סדר הפעילות האחרונה. מזהה השרשור הוא ה-`topic_id` שלו.
+
+`GET /api/b2/threads`
+
+<!-- translation-section: params-5 -->
+
+#### פרמטרים
+
+| שם | תיאור |
+| --- | --- |
+| `limit` | מספר שלם, רשות, ברירת המחדל היא 50. גודל העמוד |
+| `offset` | מספר שלם, רשות, ברירת המחדל היא 0. היסט לצורך חלוקה לעמודים |
+
+<!-- translation-section: example-5 -->
+
+#### דוגמה
+
+```bash
+curl -H 'Authorization: Bearer YOUR_API_KEY' 'https://www.loomio.com/api/b2/threads?limit=50&offset=0'
+```
+
+<!-- translation-section: read-thread -->
+
+### קריאת שרשור
+
+קריאת שרשור, רצף האירועים המסודר שלו, או מסמך ה-Markdown המלא של התוכן הנגיש בו.
+
+`GET /api/b2/threads/:topic_id`
+
+`GET /api/b2/threads/:topic_id/items`
+
+`GET /api/b2/threads/:topic_id/markdown`
+
+נקודת הקצה `items` מקבלת את הפרמטרים הבאים לחלוקה לעמודים:
+
+| שם | תיאור |
+| --- | --- |
+| `limit` | מספר שלם, רשות, ברירת המחדל היא 50, הערך המרבי הוא 500. גודל העמוד |
+| `offset` | מספר שלם, רשות, ברירת המחדל היא 0. היסט לצורך חלוקה לעמודים |
+
+<!-- translation-section: example-6 -->
+
+#### דוגמה
+
+```text
+GET https://www.loomio.com/api/b2/threads/<topic_id>
+GET https://www.loomio.com/api/b2/threads/<topic_id>/items?limit=50&offset=0
+GET https://www.loomio.com/api/b2/threads/<topic_id>/markdown
+```
+
+נקודת הקצה `items` מחזירה עמוד מתוך רצף האירועים בסדר עולה, כולל תגובות, סקרים, הצבעות ומסקנות הנגישים לחשבון. `meta.total` הוא המספר הכולל של הפריטים בשרשור. כדי לקרוא את הרצף כולו, יש לאחזר את העמודים הבאים. נקודת הקצה `markdown` מחזירה את כל התוכן הנגיש בשרשור כמסמך Markdown אחד. נימוקי ההצבעות נכללים רק כאשר הם נגישים לחשבון שמפתח ה-API שייך אליו.
+
+כל נקודות הקצה של השרשורים אוכפות את אותן הרשאות כמו ממשק Loomio. מפתח ה-API אינו מעניק גישה לשרשור שאין לחשבון הרשאה לפתוח בדרך הרגילה.
 
 <!-- translation-section: webhooks -->
 
@@ -307,11 +881,17 @@ Webhooks מוגדרים לכל קבוצה בנפרד ודורשים הרשאת �
 
 `GET /api/b2/chatbots?group_id=123`
 
+| שם | תיאור |
+| --- | --- |
+| `group_id` | מספר שלם, חובה. מזהה הקבוצה שאת ה־webhooks שלה יש להציג ברשימה |
+| `limit` | מספר שלם, רשות, ברירת המחדל היא 50, הערך המרבי הוא 500. גודל העמוד |
+| `offset` | מספר שלם, רשות, ברירת המחדל היא 0. היסט לצורך חלוקה לעמודים |
+
 ```bash
-curl -H 'Authorization: Bearer YOUR_API_KEY' 'https://www.loomio.com/api/b2/chatbots?group_id=123'
+curl -H 'Authorization: Bearer YOUR_API_KEY' 'https://www.loomio.com/api/b2/chatbots?group_id=123&limit=50&offset=0'
 ```
 
-התשובה מכילה מערך `chatbots` עם השדות הבאים:
+התשובה מכילה עמוד של `chatbots` המסודר לפי מזהה האינטגרציה בסדר עולה, וב־`meta.total` מופיע המספר הכולל של האינטגרציות בקבוצה. לכל אינטגרציה יש השדות הבאים:
 
 | שדה | תיאור |
 | --- | --- |
@@ -456,523 +1036,3 @@ Loomio אינו מוסיף כרגע חתימת webhook, כותרת עם סוד �
 ```
 
 הנוסח המדויק של ההודעה תלוי באירוע, בהגדרות השפה והאזור של הקבוצה, בהגדרה לשליחת כותרת ההתראה בלבד ובגרסת Loomio. בעת עיבוד ההודעות יש להסתמך על השדות המתועדים ברמה העליונה של הפורמט שנבחר, במקום לנתח את ניסוח המשפטים.
-
-<!-- translation-section: search -->
-
-## חיפוש
-
-חיפוש דיונים, תגובות, סקרים, הצבעות ומסקנות הגלויים לחשבון שמפתח ה־API שייך אליו. התוצאות כוללות תוכן ציבורי גם ללא חברות בקבוצה שלו; תוכן פרטי עדיין כפוף לכללי הנראות הרגילים של השרשור.
-
-`GET /api/b2/search`
-
-<!-- translation-section: params -->
-
-### פרמטרים
-
-| שם | תיאור |
-| --- | --- |
-| `query` | טקסט לחיפוש. נתמכות התאמות מדויקות ומקורבות |
-| `group_id` | הגבלת התוצאות לקבוצה גלויה אחת |
-| `org_id` | הגבלת התוצאות לקבוצת אם גלויה ולתת־הקבוצות הגלויות שלה. יש להשתמש ב־`0` עבור דיונים ישירים |
-| `type` | הגבלת התוצאות לסוג אחד: `Discussion`, `Comment`, `Poll`, `Stance` או `Outcome` |
-| `types` | רשימת סוגי תוצאות המופרדים בפסיקים |
-| `tag` | הגבלת התוצאות לשרשורים עם תגית זו |
-| `author_id` | הגבלת התוצאות לתוכן שנכתב בחשבון אחד. ללא `query`, מוחזרת הפעילות הגלויה האחרונה של אותו חשבון |
-| `order` | יש להגדיר `authored_at_desc` כדי למיין את התוכן התואם לפי מועד הכתיבה |
-
-```bash
-curl -H 'Authorization: Bearer YOUR_API_KEY' 'https://www.loomio.com/api/b2/search?query=quarterly+planning&type=Discussion'
-```
-
-התשובה מכילה מערך `search_results`. כל תוצאה מזהה את הרשומה התואמת ואת ההקשר הגלוי שלה באמצעות שדות הכוללים את `searchable_type`, `searchable_id`, `highlight`, `group_id`, `group_name`, `discussion_key`, `poll_key`, `author_id`, `author_name`, `authored_at` ו־`tags`. שדות שאינם רלוונטיים לתוצאה מקבלים את הערך `null`.
-
-<!-- translation-section: participation-report -->
-
-## דוח השתתפות
-
-החזרת אותם נתוני השתתפות מצטברים המשמשים בדוח ההשתתפות של Loomio.
-
-`GET /api/b2/reports`
-
-<!-- translation-section: params-2 -->
-
-### פרמטרים
-
-| שם | תיאור |
-| --- | --- |
-| `section` | חלק בדוח: `base`, `users` או `countries`. יש להשתמש ב־`users` עבור פעילות לפי אדם |
-| `group_scope` | `custom` או `my`. הערך הישן `all` מטופל כמו `my`, משום שמפתחות API למשתמש לעולם אינם מקבלים גישה לכלל המופע |
-| `group_ids` | מזהי קבוצות המופרדים בפסיקים כאשר `group_scope=custom`. המערכת מתעלמת ממזהי קבוצות שהחשבון המשתמש ב־API אינו חבר בהן |
-| `start_month` | החודש הראשון שיש לכלול, בפורמט `YYYY-MM`; ברירת המחדל היא לפני 12 חודשים |
-| `end_month` | החודש האחרון שיש לכלול, בפורמט `YYYY-MM`; ברירת המחדל היא החודש הנוכחי |
-| `interval` | מרווח הזמן בחלק `base`: `day`, `week`, `month` או `year` |
-| `member_type` | יש להגדיר `delegate` יחד עם `section=users` כדי להחזיר רק נציגים מכהנים |
-
-מעמד נציג נקבע לפי חברות פעילה בתפקיד נציג באחת מהקבוצות שנבחרו. הספירות לכל אדם מצטברות מכל הקבוצות שנבחרו. שורות הנציגים מוחזרות גם כאשר כל ספירות הפעילות הן אפס. הספירות כוללות שרשורים, תגובות, סקרים, הצבעות, מסקנות ותגובות אימוג׳י; הן אינן שיעורי השתתפות בהצבעה. שורות המשתמשים כוללות גם מספרי פתקי הצבעה מזוהים שהונפקו, שמולאו ושלא מולאו. סקרים אנונימיים אינם נכללים באף אחת מספירות ההצבעה לפי אדם. הערך של `all_votes_cast` הוא true רק כאשר הונפק לפחות פתק הצבעה אחד וכל פתקי ההצבעה שהונפקו מולאו.
-
-ה־API מחיל את אותם כללי נראות הקבוצות כמו הדוח בממשק המוצר. מפתח API למשתמש אינו יכול לחשוף נתוני דוח מקבוצות שאין לחשבון גישה אליהן.
-
-<!-- translation-section: example -->
-
-### דוגמה
-
-```bash
-curl -H 'Authorization: Bearer YOUR_API_KEY' 'https://www.loomio.com/api/b2/reports?section=users&group_scope=custom&group_ids=123&member_type=delegate&start_month=2026-01&end_month=2026-09'
-```
-
-המערך `users` מכיל שורות פעילות מלאות:
-
-```json
-{
-  "users": [
-    {
-      "id": 456,
-      "name": "Ada Lovelace",
-      "country": "NZ",
-      "delegate": true,
-      "threads": 2,
-      "comments": 8,
-      "polls": 1,
-      "votes": 5,
-      "votes_cast": 5,
-      "votes_issued": 6,
-      "votes_missed": 1,
-      "all_votes_cast": false,
-      "outcomes": 1,
-      "reactions": 4
-    }
-  ]
-}
-```
-
-<!-- translation-section: create-discussion -->
-
-## יצירת דיון
-
-יצירת דיון בשם החשבון שמפתח ה־API שייך אליו.
-
-`POST /api/b2/discussions`
-
-<!-- translation-section: params-3 -->
-
-### פרמטרים
-
-| שם | תיאור |
-| --- | --- |
-| `group_id` | הקבוצה שבה יתקיים השרשור |
-| `title` | כותרת השרשור, שדה חובה |
-| `description` | הקשר לשרשור, שדה רשות |
-| `description_format` | `md` או `html`, שדה רשות, ברירת המחדל היא `md` |
-| `recipient_audience` | `group` או null. אם הערך הוא `group`, כל הקבוצה תקבל התראה על השרשור החדש |
-| `recipient_user_ids` | מערך מזהי משתמשים לשליחת התראה או הזמנה לשרשור |
-| `recipient_emails` | מערך כתובות דוא״ל של אנשים להזמנה לשרשור |
-| `recipient_message` | הודעה שתיכלל בהזמנה בדוא״ל |
-
-<!-- translation-section: example-2 -->
-
-### דוגמה
-
-```bash
-curl -H 'Authorization: Bearer YOUR_API_KEY' -X POST -H 'Content-Type: application/json' -d '{"group_id": 123, "title":"example thread", "recipient_emails":["person@example.com"]}' https://www.loomio.com/api/b2/discussions
-```
-
-<!-- translation-section: show-discussion -->
-
-## הצגת דיון
-
-שליפת דיון באמצעות מזהה הדיון, שהוא מספר שלם, או מפתח, שהוא מחרוזת.
-
-`GET /api/b2/discussions/:id`
-
-<!-- translation-section: example-3 -->
-
-### דוגמה
-
-```bash
-curl -H 'Authorization: Bearer YOUR_API_KEY' https://www.loomio.com/api/b2/discussions/abc123
-```
-
-<!-- translation-section: list-discussions -->
-
-## רשימת דיונים
-
-הצגת רשימת הדיונים בקבוצה הנגישים לחשבון שמפתח ה-API שייך אליו. בקבוצה הגלויה לציבור, ניתן לקבל את רשימת הדיונים הציבוריים גם ללא חברות בקבוצה; הגישה לדיונים פרטיים נשארת מוגבלת לחשבונות שיש להם הרשאה לקרוא אותם ב-Loomio.
-
-`GET /api/b2/discussions`
-
-<!-- translation-section: params-4 -->
-
-### פרמטרים
-
-| שם | תיאור |
-| --- | --- |
-| `group_id` | מספר שלם, חובה. מזהה הקבוצה שממנה יש להציג את רשימת הדיונים |
-| `status` | מחרוזת, רשות, ברירת המחדל היא `open`. ערכים: `open`, `closed`, `all` |
-| `limit` | מספר שלם, רשות, ברירת המחדל היא 50. גודל העמוד |
-| `offset` | מספר שלם, רשות, ברירת המחדל היא 0. היסט לצורך חלוקה לעמודים |
-
-תאימות לאחור: `per` ו-`from` מתקבלים כשמות חלופיים ל-`limit` ול-`offset` וימשיכו לפעול.
-
-<!-- translation-section: example-4 -->
-
-### דוגמה
-
-```bash
-curl -H 'Authorization: Bearer YOUR_API_KEY' 'https://www.loomio.com/api/b2/discussions?group_id=123'
-```
-
-<!-- translation-section: list-threads -->
-
-## רשימת שרשורים
-
-הצגת רשימת שרשורי הדיון והסקר הנגישים לחשבון שמפתח ה-API שייך אליו, לפי סדר הפעילות האחרונה. מזהה השרשור הוא ה-`topic_id` שלו.
-
-`GET /api/b2/threads`
-
-<!-- translation-section: params-5 -->
-
-### פרמטרים
-
-| שם | תיאור |
-| --- | --- |
-| `limit` | מספר שלם, רשות, ברירת המחדל היא 50. גודל העמוד |
-| `offset` | מספר שלם, רשות, ברירת המחדל היא 0. היסט לצורך חלוקה לעמודים |
-
-<!-- translation-section: example-5 -->
-
-### דוגמה
-
-```bash
-curl -H 'Authorization: Bearer YOUR_API_KEY' 'https://www.loomio.com/api/b2/threads?limit=50&offset=0'
-```
-
-<!-- translation-section: read-thread -->
-
-## קריאת שרשור
-
-קריאת שרשור, רצף האירועים המסודר שלו, או מסמך ה-Markdown המלא של התוכן הנגיש בו.
-
-`GET /api/b2/threads/:topic_id`
-
-`GET /api/b2/threads/:topic_id/items`
-
-`GET /api/b2/threads/:topic_id/markdown`
-
-<!-- translation-section: example-6 -->
-
-### דוגמה
-
-```text
-GET https://www.loomio.com/api/b2/threads/<topic_id>
-GET https://www.loomio.com/api/b2/threads/<topic_id>/items
-GET https://www.loomio.com/api/b2/threads/<topic_id>/markdown
-```
-
-נקודת הקצה `items` מחזירה את רצף האירועים המסודר, כולל תגובות, סקרים, הצבעות ומסקנות הנגישים לחשבון. נקודת הקצה `markdown` מחזירה את כל התוכן הנגיש בשרשור כמסמך Markdown אחד. נימוקי ההצבעות נכללים רק כאשר הם נגישים לחשבון שמפתח ה-API שייך אליו.
-
-כל נקודות הקצה של השרשורים אוכפות את אותן הרשאות כמו ממשק Loomio. מפתח ה-API אינו מעניק גישה לשרשור שאין לחשבון הרשאה לפתוח בדרך הרגילה.
-
-<!-- translation-section: edit-discussion -->
-
-## עריכת דיון
-
-עריכת דיון בשם החשבון שמפתח ה-API שייך אליו. חלות אותן הרשאות כמו ב-Loomio: לחשבון חייבת להיות הרשאה לערוך את הדיון הזה.
-
-`PATCH /api/b2/discussions/:id`
-
-<!-- translation-section: params-6 -->
-
-### פרמטרים
-
-| שם | תיאור |
-| --- | --- |
-| `title` | כותרת מעודכנת |
-| `description` | הקשר מעודכן |
-| `description_format` | `md` או `html`, רשות, ברירת המחדל היא `md` |
-| `recipient_audience` | `group` או null. אם הערך הוא `group`, תישלח הודעה לכל הקבוצה על העריכה |
-| `recipient_user_ids` | מערך של מזהי משתמשים שיש לשלוח להם הודעה או להזמין לשרשור |
-| `recipient_emails` | מערך של כתובות דוא״ל של אנשים שיש להזמין לשרשור |
-| `recipient_message` | הודעה שיש לכלול בהזמנה בדוא״ל |
-
-<!-- translation-section: example-7 -->
-
-### דוגמה
-
-```bash
-curl -H 'Authorization: Bearer YOUR_API_KEY' -X PATCH -H 'Content-Type: application/json' -d '{"title":"updated thread title", "description":"updated context", "description_format":"md"}' https://www.loomio.com/api/b2/discussions/123
-```
-
-<!-- translation-section: soft-delete-discussion -->
-
-## מחיקה רכה של דיון
-
-מחיקה רכה של דיון בשם החשבון שמפתח ה-API שייך אליו. הפעולה מסירה את הדיון אך משאירה את רשומת הדיון במקומה.
-
-`DELETE /api/b2/discussions/:id`
-
-<!-- translation-section: example-8 -->
-
-### דוגמה
-
-```bash
-curl -H 'Authorization: Bearer YOUR_API_KEY' -X DELETE https://www.loomio.com/api/b2/discussions/123
-```
-
-<!-- translation-section: create-comment -->
-
-## יצירת תגובה
-
-יצירת תגובה בדיון בשם החשבון שמפתח ה-API שייך אליו.
-
-`POST /api/b2/comments`
-
-<!-- translation-section: params-7 -->
-
-### פרמטרים
-
-| שם | תיאור |
-| --- | --- |
-| `discussion_id` | מספר שלם, חובה. מזהה הדיון שבו תפורסם התגובה |
-| `body` | גוף התגובה, חובה אלא אם מצורף קובץ |
-| `body_format` | `md` או `html`, רשות, ברירת המחדל היא `md` |
-
-<!-- translation-section: example-9 -->
-
-### דוגמה
-
-```bash
-curl -H 'Authorization: Bearer YOUR_API_KEY' -X POST -H 'Content-Type: application/json' -d '{"discussion_id": 123, "body":"example comment", "body_format":"md"}' https://www.loomio.com/api/b2/comments
-```
-
-<!-- translation-section: edit-comment -->
-
-## עריכת תגובה
-
-עריכת תגובה בשם החשבון שמפתח ה-API שייך אליו. חלות אותן הרשאות כמו ב-Loomio: נדרשת לחשבון הרשאה לערוך את התגובה.
-
-`PATCH /api/b2/comments/:id`
-
-<!-- translation-section: params-8 -->
-
-### פרמטרים
-
-| שם | תיאור |
-| --- | --- |
-| `body` | גוף התגובה המעודכן |
-| `body_format` | `md` או `html`, רשות, ברירת המחדל היא `md` |
-
-<!-- translation-section: example-10 -->
-
-### דוגמה
-
-```bash
-curl -H 'Authorization: Bearer YOUR_API_KEY' -X PATCH -H 'Content-Type: application/json' -d '{"body":"updated comment", "body_format":"md"}' https://www.loomio.com/api/b2/comments/123
-```
-
-<!-- translation-section: soft-delete-comment -->
-
-## מחיקה רכה של תגובה
-
-מחיקה רכה של תגובה בשם החשבון שמפתח ה-API שייך אליו. הפעולה מסירה את התגובה, מסתירה את גוף התגובה ומשאירה את רשומת התגובה במקומה.
-
-`DELETE /api/b2/comments/:id`
-
-<!-- translation-section: example-11 -->
-
-### דוגמה
-
-```bash
-curl -H 'Authorization: Bearer YOUR_API_KEY' -X DELETE https://www.loomio.com/api/b2/comments/123
-```
-
-<!-- translation-section: create-poll -->
-
-## יצירת סקר
-
-יצירת סקר בשם החשבון שמפתח ה-API שייך אליו.
-
-`POST /api/b2/polls`
-
-<!-- translation-section: params-9 -->
-
-### פרמטרים
-
-| שם | תיאור |
-| --- | --- |
-| `group_id` | מספר שלם, לא חובה, ברירת המחדל היא null. מזהה הקבוצה של הסקר. אם מועבר `discussion_id`, המערכת מתעלמת מ־`group_id` |
-| `discussion_id` | מספר שלם, לא חובה, ברירת המחדל היא null. מזהה שרשור הדיון שאליו יש להוסיף את הסקר |
-| `title` | מחרוזת, חובה. כותרת הסקר |
-| `poll_type` | מחרוזת, חובה. ערכים: `proposal`, `poll`, `count`, `score`, `ranked_choice`, `meeting`, `dot_vote` |
-| `details` | מחרוזת, לא חובה. טקסט גוף הסקר |
-| `details_format` | מחרוזת, לא חובה, ברירת המחדל היא `md`. ערכים: `md` או `html` |
-| `options` | מערך מחרוזות. אם `poll_type` הוא `proposal`, הערכים התקפים הם `agree`, `disagree`, `abstain`, `block`. אם `poll_type` הוא `meeting`, יש לספק מחרוזות תאריך או תאריך ושעה בפורמט ISO 8601. בכל סוגי הסקרים האחרים, כל מחרוזת תקפה |
-| `closing_at` | מחרוזת בפורמט ISO 8601 או null, ברירת המחדל היא null. דוגמה: `2026-09-01T12:00:00Z`. אם הערך הוא null, ההצבעה מושבתת והסקר נחשב לסקר בהכנה |
-| `specified_voters_only` | ערך בוליאני, לא חובה, ברירת המחדל היא false. אם הערך הוא true, רק אנשים שצוינו יכולים להצביע. אם הערך הוא false, כל חברי הקבוצה יקבלו הזמנה להצביע |
-| `hide_results` | מחרוזת, לא חובה, ברירת המחדל היא `off`. ערכים: `off`, `until_vote`, `until_closed` |
-| `shuffle_options` | ערך בוליאני, ברירת המחדל היא false. הצגת האפשרויות למצביעים בסדר אקראי |
-| `anonymous` | ערך בוליאני, לא חובה, ברירת המחדל היא false. הסתרת זהויות המצביעים |
-| `recipient_audience` | `group` או null, לא חובה, ברירת המחדל היא null. אם הערך הוא `group`, כל הקבוצה תקבל התראה |
-| `notify_on_closing_soon` | מחרוזת, לא חובה, ברירת המחדל היא `nobody`. ערכים: `nobody`, `author`, `undecided_voters`, `voters` |
-| `recipient_user_ids` | מערך מזהי משתמשים לשליחת התראה או הזמנה |
-| `recipient_emails` | מערך כתובות דוא״ל של אנשים שיקבלו הזמנה להצביע |
-| `recipient_message` | הודעה שתיכלל בהזמנה בדוא״ל |
-| `notify_recipients` | ערך בוליאני, ברירת המחדל היא false. אם הערך הוא false, אנשים מתווספים ללא שליחת התראות. אם הערך הוא true, כל מי שקיבלו הזמנה בבקשה זו יקבלו התראה בדוא״ל |
-
-<!-- translation-section: example-12 -->
-
-### דוגמה
-
-```bash
-curl -H 'Authorization: Bearer YOUR_API_KEY' -X POST -H 'Content-Type: application/json' -d '{"group_id": 123, "title":"example poll", "poll_type": "proposal", "options": ["agree", "disagree"], "closing_at": "2026-09-01T12:00:00Z", "recipient_emails":["person@example.com"]}' https://www.loomio.com/api/b2/polls
-```
-
-<!-- translation-section: show-poll -->
-
-## הצגת סקר
-
-אחזור סקר באמצעות מזהה הסקר, שהוא מספר שלם, או מפתח, שהוא מחרוזת.
-
-`GET /api/b2/polls/:id`
-
-<!-- translation-section: example-13 -->
-
-### דוגמה
-
-```bash
-curl -H 'Authorization: Bearer YOUR_API_KEY' https://www.loomio.com/api/b2/polls/abc123
-```
-
-<!-- translation-section: list-polls -->
-
-## רשימת סקרים
-
-הצגת רשימת הסקרים בקבוצה הגלויים לחשבון שמפתח ה־API שייך לו. בקבוצה הגלויה לציבור, ניתן לקבל את רשימת הסקרים הציבוריים גם ללא חברות בקבוצה; הגישה לסקרים פרטיים נשארת מוגבלת למשתמשים שיש להם הרשאה לקרוא אותם ב־Loomio. התשובה כוללת את המסקנה הנוכחית של כל סקר גלוי, כך שניתן להשתמש ב־`status=closed` לקבלת רשימת הצעות שהתקבלה לגביהן החלטה.
-
-`GET /api/b2/polls`
-
-<!-- translation-section: params-10 -->
-
-### פרמטרים
-
-| שם | תיאור |
-| --- | --- |
-| `group_id` | מספר שלם, חובה. מזהה הקבוצה שממנה יש להציג את רשימת הסקרים |
-| `status` | מחרוזת, לא חובה, ברירת המחדל היא `active`. ערכים: `active`, `closed`, `all` |
-| `limit` | מספר שלם, לא חובה, ברירת המחדל היא 50. גודל העמוד |
-| `offset` | מספר שלם, לא חובה, ברירת המחדל היא 0. היסט לחלוקה לעמודים |
-
-תאימות לאחור: `per` ו־`from` מתקבלים כשמות חלופיים ל־`limit` ול־`offset` וימשיכו לפעול.
-
-<!-- translation-section: example-14 -->
-
-### דוגמה
-
-```bash
-curl -H 'Authorization: Bearer YOUR_API_KEY' 'https://www.loomio.com/api/b2/polls?group_id=123'
-```
-
-<!-- translation-section: edit-poll -->
-
-## עריכת סקר
-
-עריכת סקר בשם החשבון שמפתח ה־API שייך לו. חלות אותן הרשאות כמו ב־Loomio: לחשבון חייבת להיות הרשאה לערוך את הסקר.
-
-`PATCH /api/b2/polls/:id`
-
-<!-- translation-section: params-11 -->
-
-### פרמטרים
-
-| שם | תיאור |
-| --- | --- |
-| `title` | כותרת מעודכנת |
-| `details` | פרטי הסקר המעודכנים |
-| `details_format` | `md` או `html`, לא חובה, ברירת המחדל היא `md` |
-| `options` | שמות האפשרויות המעודכנים. שינוי האפשרויות עשוי להשפיע על הצבעות קיימות, בהתאם למצב הסקר |
-| `closing_at` | מחרוזת בפורמט ISO 8601 או null |
-| `recipient_audience` | `group` או null. אם הערך הוא `group`, כל הקבוצה תקבל התראה |
-| `recipient_user_ids` | מערך מזהי משתמשים לשליחת התראה או הזמנה |
-| `recipient_emails` | מערך כתובות דוא״ל של אנשים שיקבלו הזמנה להצביע |
-| `recipient_message` | הודעה שתיכלל בהזמנה בדוא״ל |
-
-<!-- translation-section: example-15 -->
-
-### דוגמה
-
-```bash
-curl -H 'Authorization: Bearer YOUR_API_KEY' -X PATCH -H 'Content-Type: application/json' -d '{"title":"updated poll title", "details":"updated details", "details_format":"md"}' https://www.loomio.com/api/b2/polls/123
-```
-
-<!-- translation-section: soft-delete-poll -->
-
-## מחיקה רכה של סקר
-
-מחיקה רכה של סקר בשם החשבון שמפתח ה־API שייך לו. פעולה זו מסמנת את הסקר כמחוק ומשאירה את רשומת הסקר במקומה.
-
-`DELETE /api/b2/polls/:id`
-
-<!-- translation-section: example-16 -->
-
-### דוגמה
-
-```bash
-curl -H 'Authorization: Bearer YOUR_API_KEY' -X DELETE https://www.loomio.com/api/b2/polls/123
-```
-
-<!-- translation-section: list-memberships -->
-
-## רשימת חברויות
-
-הצגת החברויות הגלויות לחשבון המשויך למפתח ה־API. חברי הקבוצה יכולים לקרוא את שמות החברים, המזהים, התארים והתפקידים שלהם. כתובות דוא״ל נכללות רק עבור החשבון המשויך למפתח ה־API עצמו, או כאשר לחשבון זה יש הרשאת ניהול בקבוצה.
-
-`GET /api/b2/memberships`
-
-<!-- translation-section: params-12 -->
-
-### פרמטרים
-
-| שם | תיאור |
-| --- | --- |
-| `group_id` | מספר שלם, חובה. מזהה הקבוצה שהחברויות בה יוצגו ברשימה |
-
-<!-- translation-section: example-17 -->
-
-### דוגמה
-
-```bash
-curl -H 'Authorization: Bearer YOUR_API_KEY' 'https://www.loomio.com/api/b2/memberships?group_id=123'
-```
-
-<!-- translation-section: manage-memberships -->
-
-## ניהול חברויות
-
-יש לשלוח רשימה של כתובות דוא״ל. לכל הכתובות החדשות תישלח הזמנה לקבוצה. בניגוד להצגת רשימת חברויות, פעולה זו דורשת הרשאת ניהול בקבוצה.
-
-`POST /api/b2/memberships`
-
-<!-- translation-section: params-13 -->
-
-### פרמטרים
-
-| שם | תיאור |
-| --- | --- |
-| `group_id` | מספר שלם, חובה. מזהה הקבוצה שהחברויות בה ינוהלו |
-| `emails` | מערך של מחרוזות, חובה. כתובות דוא״ל של אנשים שיש להזמין לקבוצה |
-| `remove_absent` | ערך בוליאני. אם הערך הוא true, כל מי שכתובת הדוא״ל שלהם אינה מופיעה ברשימה יוסרו מהקבוצה |
-
-<!-- translation-section: example-18 -->
-
-### דוגמה
-
-```bash
-curl -H 'Authorization: Bearer YOUR_API_KEY' -X POST -H 'Content-Type: application/json' -d '{"group_id": 123, "emails":["person@example.com"]}' https://www.loomio.com/api/b2/memberships
-```
-
-אם מועבר `remove_absent=1`, כל חברי הקבוצה שלא נכללו ברשימה יוסרו מהקבוצה. יש להיזהר: פעולה זו עלולה להסיר את כל חברי הקבוצה.
-
-```bash
-curl -H 'Authorization: Bearer YOUR_API_KEY' -X POST -H 'Content-Type: application/json' -d '{"group_id": 123, "emails":["person@example.com"], "remove_absent": 1}' https://www.loomio.com/api/b2/memberships
-```
-
-הפעולה מחזירה אובייקט עם `{added_emails: ["person@added.com"], removed_emails: ["person@removed.com"]}`.

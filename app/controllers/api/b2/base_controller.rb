@@ -5,6 +5,11 @@ class Api::B2::BaseController < Api::V1::SnorlaxBase
 
   private
 
+  # Bulk integrations can request larger pages without changing the default.
+  def page_collection_bounded(collection, limit_max: 500, limit_default: default_page_size)
+    super
+  end
+
   # Group-scoped API indexes must use the same topic visibility rules as the
   # browser and direct record reads. Group visibility permits discovery, while
   # TopicQuery prevents a non-member from seeing private topics in that group.

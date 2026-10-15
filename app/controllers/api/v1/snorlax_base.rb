@@ -215,9 +215,9 @@ class Api::V1::SnorlaxBase < ActionController::Base
   end
 
   # New endpoints page with offset and limit only, and cap the page size.
-  def page_collection_bounded(collection, limit_max: 50)
+  def page_collection_bounded(collection, limit_max: 50, limit_default: limit_max)
     offset = [params[:offset].to_i, 0].max
-    limit  = (params[:limit] || limit_max).to_i.clamp(1, limit_max)
+    limit  = (params[:limit] || limit_default).to_i.clamp(1, limit_max)
     collection.offset(offset).limit(limit)
   end
 

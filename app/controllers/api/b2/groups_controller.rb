@@ -5,8 +5,9 @@ class Api::B2::GroupsController < Api::B2::BaseController
   end
 
   def index
-    self.collection = current_user.groups
+    self.collection = current_user.groups.order(:id)
     self.collection_count = collection.count
+    self.collection = page_collection_bounded(collection)
     respond_with_collection
   end
 end

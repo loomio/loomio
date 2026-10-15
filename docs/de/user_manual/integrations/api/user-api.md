@@ -1,20 +1,19 @@
 ---
 title: Benutzer-API
-source_revision: 79280ee7a1246dbb8bb16686856608069718bc14
+source_revision: 28ecc59f68d407f76f08133bfa0172aadbb53065
 source_file: docs/en/user_manual/integrations/api/user-api.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-09'
+  'on': '2026-10-15'
 sections:
-  introduction: a43c8b800d13fd33
-  authentication-change: 06b5c2cd9d9e72a0
-  response-size-and-related-records: 1ffc59ad606a87e7
-  endpoint-summary: 52c480c59d3669e3
+  introduction: b6e6ec7463276869
+  response-size-and-related-records: 298da635bf97dadd
+  endpoint-summary: 258f7560def524ec
   groups: 0473f1f7fb78f074
-  list-groups: dcbe9217091f8cb2
+  list-groups: 01de10c378eeba37
   get-a-group: dffef659cb92745e
   webhooks: f65fa289f8c1b808
-  list-webhooks: a8b52c1a9bfdb16c
+  list-webhooks: 6093df92815f7156
   create-a-webhook: 007312bcc204853a
   update-a-webhook: 124b07d2c401e319
   test-a-webhook-destination: 8fc3ac4ad10de6f6
@@ -27,61 +26,66 @@ sections:
   participation-report: a1798112a78390fe
   params-2: 464322ffc1ac56e5
   example: 63bed6e82107f992
-  create-discussion: ad202a0bdbfa7c2e
-  params-3: 529f10e32be74c5c
-  example-2: f25daafbba33718c
-  show-discussion: b61aea6bf3d55e16
-  example-3: e095e8e34cd562a0
-  list-discussions: f209b8feb7c795a6
-  params-4: 3ec197245f595be6
-  example-4: 37d59c03fee8a15b
-  list-threads: 34edc6c34552e136
-  params-5: a5f41285afccdc8b
-  example-5: 81c145ad5f6eb232
-  read-thread: 0de1409aaa00b9ac
-  example-6: 7c7553e1a3e94070
-  edit-discussion: 1ab04653354b8036
-  params-6: 4d3f5862a5f948b4
-  example-7: d2a61a34af9e99c3
-  soft-delete-discussion: fdb0d4db8470524c
-  example-8: 423894a70b5ce489
-  create-comment: bf95ee58b610f2fd
-  params-7: 7af2127e1f721b66
-  example-9: 4e7d49ac39938c12
-  edit-comment: 49e722ec6bca25a1
-  params-8: b2be783e4398d866
-  example-10: bf626a7f693182c3
-  soft-delete-comment: afb51bf4074aeab7
-  example-11: e39b758ad0d7aa62
-  create-poll: b2a11ae34ce22151
-  params-9: 3e592c12f9cbb757
-  example-12: f5d6029049637276
-  show-poll: 2e7a14ac23eeffa6
-  example-13: 1a5acf0b8a6f62f2
-  list-polls: 606f27566d6d5f98
-  params-10: 1b1a6f003f91eb9a
-  example-14: 710a82f6b2203f48
-  edit-poll: 42b85770aebd8ef2
-  params-11: 52d278a2f38d6a9f
-  example-15: 8f7d523fc36f5da7
-  soft-delete-poll: 0f1b24e1263dcfbe
-  example-16: ec71cfcd4a0b98ab
-  list-memberships: 82712683aa3a424a
-  params-12: d2fc821e97d53145
-  example-17: 266443e0eb35078c
-  manage-memberships: 3c821029101515ad
-  params-13: 249b307203206387
-  example-18: ffd950cd7ab5aaec
+  create-discussion: 958fc684640462a9
+  params-3: 657d582c89333097
+  example-2: 57681d83fffe9515
+  show-discussion: 40102aeffe4f1286
+  example-3: c0ebd013a1b7fbd2
+  list-discussions: '09ff7f0d3a937b41'
+  params-4: dcebc294fbb9d837
+  example-4: ffda1a4726380e2f
+  list-threads: '09f7bd670e581400'
+  params-5: 79b1cefac558effc
+  example-5: a40ae2317faab46d
+  read-thread: ac36d1b81c1eeed4
+  example-6: 8c582a286e04ca75
+  edit-discussion: 918161e7aa8f4aa6
+  params-6: b819796d34354623
+  example-7: 552295f78d3490af
+  soft-delete-discussion: c8ffe951171e6f07
+  example-8: 965c5761f34f9920
+  create-comment: f95f56b81c8f22b5
+  params-7: 5ad8ede0919c5f47
+  example-9: 70ee3750f1543e9b
+  edit-comment: 80322da74162d58f
+  params-8: 288331c60f3c9b28
+  example-10: ec89de8cc86b6fc8
+  soft-delete-comment: 04baf86923c7e8f1
+  example-11: f3675b780da755cd
+  create-poll: cf62e787784a5e87
+  params-9: df1611a9dedef2d8
+  example-12: fa7410dd3a0a385f
+  show-poll: d759508986aab08c
+  example-13: 2867289a6c2beb9d
+  list-polls: 56e5ed4ae45e5428
+  params-10: e68e8cf62b21488d
+  example-14: 40958a09c058d4cc
+  edit-poll: 65467ad0b431ddbf
+  params-11: 77f118397592bc05
+  example-15: e56befa0f2ae3360
+  soft-delete-poll: 61cf76310e08d7ff
+  example-16: afbf95df96734a4d
+  list-memberships: 5fab06bb8ecf1fd0
+  params-12: decaff0790566fb0
+  example-17: 5d92092b70ce545a
+  manage-memberships: 802d39c06674d395
+  params-13: 771b5338a4ba3d0b
+  example-18: a50b01823a6935a0
+  pagination: 4171ca78df07d4fe
+  comments: ccd37303241bac95
+  discussions: 16ffe7a7b6202d3e
+  memberships: e7cf8846c3179720
+  polls: 821dcd89b5460804
+  threads: 19bc02fc1c26317b
 generated:
-  introduction: 50c21a3619cb8368
-  authentication-change: 9820b8e67c43d240
-  response-size-and-related-records: 7ffa0d8a8c0cf309
-  endpoint-summary: 7b89d9b9c352fa6e
+  introduction: f778fae02fa4331f
+  response-size-and-related-records: 1faa00e782012554
+  endpoint-summary: 4e12def60a852379
   groups: db87cc751307f655
-  list-groups: ba51f7a7cd21ab59
+  list-groups: 9c8f1f3a6717f911
   get-a-group: 1ee0b0e16e7d2e33
   webhooks: ee96993caa26dc11
-  list-webhooks: 5f1083df35d2f2f0
+  list-webhooks: b76d61488a3e2224
   create-a-webhook: 14dc451d5a899385
   update-a-webhook: 6346d42dbfb20995
   test-a-webhook-destination: b176f7209d1029b9
@@ -94,51 +98,57 @@ generated:
   participation-report: 6aa6cd65703b22bd
   params-2: 39afbd7ea62d248b
   example: 283f4ac137796be8
-  create-discussion: 0d9c271699fbed81
-  params-3: 17efc23aca1165ea
-  example-2: bfef3ad949316b73
-  show-discussion: 1cf0451738c21534
-  example-3: 88bb7bbc37d073e0
-  list-discussions: 47737855c482b7e2
-  params-4: 3925005405e7159c
-  example-4: 36bdbf6c4b2980c4
-  list-threads: 4846166f50887c9e
-  params-5: d73ccecb24249ee4
-  example-5: 63dcae5a90f8bced
-  read-thread: 262af93613148ffa
-  example-6: eebdc545a019af0b
-  edit-discussion: d6aab557c638aeef
-  params-6: c3f63561bba27b60
-  example-7: 340710cb7a71029d
-  soft-delete-discussion: 16ee0fbbd4b9c5b1
-  example-8: e5c4f3210fe5b068
-  create-comment: bff653cfac0bc233
-  params-7: d1b920d9f8377b5a
-  example-9: fceb04acf0a9139a
-  edit-comment: 8f7e7878bd612e49
-  params-8: ea962f1cc34fa6c7
-  example-10: 5ec1a5dcecd98f46
-  soft-delete-comment: 3a4d275d9def2074
-  example-11: e408906f906f24e4
-  create-poll: 99fb9381a4ea7f7c
-  params-9: 51a8a51d3148f519
-  example-12: 6d417ca6a02c1116
-  show-poll: 43891ebbba6234c3
-  example-13: 36ba1c6024f34ad3
-  list-polls: 055efc4676b4c427
-  params-10: c5032f6802beb8cc
-  example-14: ffa11a2884c77b66
-  edit-poll: 40530b6aab11a031
-  params-11: 8a68c44ac4dd6ce1
-  example-15: eb7bd24917af90aa
-  soft-delete-poll: c7f67496d0d9da8f
-  example-16: 6ffbc3adebc92c94
-  list-memberships: 6807a5ffc8dc3e45
-  params-12: 051c5900ac55ad7b
-  example-17: f5e92b48a90d58c5
-  manage-memberships: 9c8ce0b74f09647f
-  params-13: 1daadb341a53f596
-  example-18: b4517e40d95a0f21
+  create-discussion: 8c4d11a06e4b6500
+  params-3: 42034bd38d61b10c
+  example-2: 40b4bba0b39c4da2
+  show-discussion: d81c7badd2cfd295
+  example-3: ee3d6fc8a6a763a4
+  list-discussions: 2dc28c7b1363098e
+  params-4: edfe5f2ac0ae52fd
+  example-4: 07c583377dcb7143
+  list-threads: d91fa1f1016bbb4d
+  params-5: 3e73ec224f20d3be
+  example-5: 45356225cb8c868a
+  read-thread: 92e0154afe08d618
+  example-6: d465fc2dc217909c
+  edit-discussion: ab307e85dc546160
+  params-6: 5395f007d6c5c31d
+  example-7: 5ddd7b4a0c7a8021
+  soft-delete-discussion: 1395088b4d0c72bc
+  example-8: e66fd0ef75c44e1d
+  create-comment: 1d85e52ffa11bfac
+  params-7: 1c554ea1fd8e07da
+  example-9: af2cc5126a8b898d
+  edit-comment: e5ebb0524365193c
+  params-8: e6a929f21fda4dd5
+  example-10: 47dabfcaaedc73fc
+  soft-delete-comment: 4a839408c151246d
+  example-11: ac19659a36ed59ff
+  create-poll: beb33dd0fa8d7dee
+  params-9: 4573a6be98a7860a
+  example-12: 9b40f6504100469b
+  show-poll: 0a25a5fa3bf3e57b
+  example-13: 18de5a8970c7fd46
+  list-polls: adf58d3a44dcc080
+  params-10: 3fb1ec0ee2ec56b6
+  example-14: 3eb9fd2941628565
+  edit-poll: a3cd2d0261b007b7
+  params-11: 388a43e6d193b71a
+  example-15: d9e8739876751125
+  soft-delete-poll: a8dea565392fdf20
+  example-16: 47fe424c51ef5da4
+  list-memberships: 5376683ff86ffe2c
+  params-12: 394843efd56209cd
+  example-17: a8ab835936a1affc
+  manage-memberships: 4b0e4aaf9d7860fd
+  params-13: ec38db03fcff899e
+  example-18: 3a8cb60c8bfb0cc0
+  pagination: 37b08f9679e9d664
+  comments: 7c7d401f44657acf
+  discussions: 0d7c8f60574c2577
+  memberships: 792334797baa1f3d
+  polls: 5c9a90865f265253
+  threads: 19bc02fc1c26317b
 title_source: c23fb6526b722360
 title_generated: 69e07cde5ab8d5b0
 needs_review:
@@ -161,25 +171,66 @@ Angemeldete Personen finden ihren API-Schlüssel und ihre Gruppen-IDs auf der [S
 
 Sende den API-Schlüssel in einem `Authorization: Bearer`-Header. API-Schlüssel in Abfrageparametern werden abgelehnt, da URLs von Proxys und in Zugriffsprotokollen aufgezeichnet werden können.
 
-<!-- translation-section: authentication-change -->
-
-### Änderung der Authentifizierung
-
-Der API-Schlüssel wurde bisher als URL-Parameter `api_key` akzeptiert. Anfragen mit `?api_key=YOUR_API_KEY` funktionieren nicht mehr. Verwende stattdessen den HTTP-Header `Authorization`:
-
 ```text
 Authorization: Bearer YOUR_API_KEY
 ```
 
 Die Beispiele verwenden `YOUR_API_KEY`, die Gruppen-ID `123` und `https://www.loomio.com/`. Ersetze diese durch deinen API-Schlüssel, deine Gruppen-ID und die URL deiner Loomio-Installation.
 
+<!-- translation-section: endpoint-summary -->
+
+## Übersicht der Endpunkte
+
+| Methode | Endpunkt | Zweck |
+| --- | --- | --- |
+| `POST` | `/api/b2/comments` | Einen Kommentar oder eine Antwort erstellen |
+| `PATCH` | `/api/b2/comments/:id` | Einen Kommentar bearbeiten |
+| `DELETE` | `/api/b2/comments/:id` | Einen Kommentar als gelöscht markieren |
+| `POST` | `/api/b2/discussions` | Eine Diskussion erstellen |
+| `GET` | `/api/b2/discussions/:id` | Eine Diskussion abrufen |
+| `GET` | `/api/b2/discussions` | Diskussionen in einer Gruppe auflisten |
+| `PATCH` | `/api/b2/discussions/:id` | Eine Diskussion bearbeiten |
+| `DELETE` | `/api/b2/discussions/:id` | Eine Diskussion als gelöscht markieren |
+| `GET` | `/api/b2/groups` | Gruppen des Kontos auflisten, dessen API-Schlüssel verwendet wird |
+| `GET` | `/api/b2/groups/:id_or_key_or_handle` | Eine sichtbare Gruppe abrufen |
+| `GET` | `/api/b2/memberships` | Mitgliedschaften einer Gruppe auflisten |
+| `POST` | `/api/b2/memberships` | Mitglieder hinzufügen und optional nicht aufgeführte Mitglieder entfernen |
+| `GET` | `/api/b2/reports` | Einen Beteiligungsbericht erstellen |
+| `POST` | `/api/b2/polls` | Eine Abstimmung erstellen |
+| `GET` | `/api/b2/polls/:id` | Eine Abstimmung abrufen |
+| `GET` | `/api/b2/polls` | Abstimmungen in einer Gruppe auflisten |
+| `PATCH` | `/api/b2/polls/:id` | Eine Abstimmung bearbeiten |
+| `DELETE` | `/api/b2/polls/:id` | Eine Abstimmung als gelöscht markieren |
+| `GET` | `/api/b2/search` | Sichtbare Diskussionen, Kommentare, Abstimmungen, Stimmen und Fazits durchsuchen |
+| `GET` | `/api/b2/threads` | Sichtbare Diskussions-Threads und Threads eigenständiger Abstimmungen auflisten |
+| `GET` | `/api/b2/threads/:topic_id` | Einen Thread abrufen |
+| `GET` | `/api/b2/threads/:topic_id/items` | Die geordneten Einträge eines Threads abrufen |
+| `GET` | `/api/b2/threads/:topic_id/markdown` | Einen vollständigen Thread als Markdown abrufen |
+| `GET` | `/api/b2/chatbots` | Chat-Integrationen und Webhooks einer Gruppe auflisten |
+| `POST` | `/api/b2/chatbots` | Eine Chat-Integration oder einen Webhook erstellen |
+| `PATCH` | `/api/b2/chatbots/:id` | Eine Chat-Integration oder einen Webhook aktualisieren |
+| `DELETE` | `/api/b2/chatbots/:id` | Eine Chat-Integration oder einen Webhook löschen |
+| `POST` | `/api/b2/chatbots/check` | Einen Verbindungstest für einen Webhook senden |
+
+<!-- translation-section: pagination -->
+
+## Seiteneinteilung
+
+Diskussionen, Gruppen, Mitgliedschaften, Abstimmungen, Threads, Thread-Einträge und Webhooks akzeptieren `limit` (Standardwert `50`) und `offset` (Standardwert `0`). Bei Gruppen, Thread-Einträgen und Webhooks ist `limit` auf `500` begrenzt.
+
+Erhöhe `offset` um die Anzahl der zurückgegebenen primären Datensätze, um die nächste Seite abzurufen. `meta.total` ist die Gesamtanzahl der passenden Datensätze; zugehörige Datensätze zählen nicht zur Seitengröße.
+
+Beteiligungsberichte geben die angeforderten Daten vollständig zurück, die Suche liefert bis zu 20 Ergebnisse. Beide unterstützen keine Seiteneinteilung.
+
+Diskussionen, Abstimmungen und Mitgliedschaften akzeptieren außerdem die älteren Aliasse `per` für `limit` und `from` für `offset`. Verwende für neue Integrationen `limit` und `offset`.
+
 <!-- translation-section: response-size-and-related-records -->
 
-## Antwortgröße und zugehörige Datensätze
+## Zugehörige Datensätze
 
 Antworten der Benutzer-API verwenden ein zusammengesetztes Format: Die primären Datensätze werden durch zugehörige Datensätze wie Topics, Gruppen, Benutzerkonten, Abstimmungen und Reaktionen ergänzt. So kann ein Client mit einer einzigen Anfrage einen lokalen Datenspeicher befüllen. Die Antwort kann jedoch mehr Daten enthalten, als eine einfache Integration benötigt.
 
-Übergebe `compact=1`, um umfangreiche zugehörige Topics, Gruppen, Hauptgruppen, Mitgliedschaften, Reaktionen, Schlagwörter und Übersetzungen wegzulassen. Primäre Datensätze und die zugehörigen Datensätze, die zum Verständnis ihrer Inhalte benötigt werden, bleiben enthalten.
+Übergib `compact=1`, um umfangreiche zugehörige Topics, Gruppen, Hauptgruppen, Mitgliedschaften, Reaktionen, Schlagwörter und Übersetzungen wegzulassen. Primäre Datensätze und die zugehörigen Datensätze, die zum Verständnis ihrer Inhalte benötigt werden, bleiben enthalten.
 
 ```bash
 curl -H 'Authorization: Bearer YOUR_API_KEY' 'https://www.loomio.com/api/b2/threads/123/items?compact=1'
@@ -189,40 +240,202 @@ Für eine gezielte Steuerung übergib `exclude_types` mit durch Leerzeichen getr
 
 Antworten mit Datensatzsammlungen enthalten `meta.total`, wenn eine genaue Gesamtanzahl definiert ist. Die Gesamtanzahl wird berechnet, bevor `limit` und `offset` angewendet werden. Endpunkte wie die Suche, die bewusst eine begrenzte Ergebnismenge zurückgeben, lassen `meta.total` weg, statt `null` zurückzugeben.
 
-<!-- translation-section: endpoint-summary -->
+<!-- translation-section: comments -->
 
-## Übersicht der Endpunkte
+## Kommentare
 
-| Methode | Endpunkt | Zweck |
-| --- | --- | --- |
-| `GET` | `/api/b2/groups` | Gruppen des Kontos auflisten, dessen API-Schlüssel verwendet wird |
-| `GET` | `/api/b2/groups/:id_or_key_or_handle` | Eine sichtbare Gruppe abrufen |
-| `GET` | `/api/b2/reports` | Einen Beteiligungsbericht erstellen |
-| `GET` | `/api/b2/search` | Sichtbare Diskussionen, Kommentare, Abstimmungen, Stimmen und Fazits durchsuchen |
-| `POST` | `/api/b2/discussions` | Eine Diskussion erstellen |
-| `GET` | `/api/b2/discussions/:id` | Eine Diskussion abrufen |
-| `GET` | `/api/b2/discussions` | Diskussionen in einer Gruppe auflisten |
-| `PATCH` | `/api/b2/discussions/:id` | Eine Diskussion bearbeiten |
-| `DELETE` | `/api/b2/discussions/:id` | Eine Diskussion als gelöscht markieren |
-| `GET` | `/api/b2/threads` | Sichtbare Diskussions-Threads und Threads eigenständiger Abstimmungen auflisten |
-| `GET` | `/api/b2/threads/:topic_id` | Einen Thread abrufen |
-| `GET` | `/api/b2/threads/:topic_id/items` | Die geordneten Einträge eines Threads abrufen |
-| `GET` | `/api/b2/threads/:topic_id/markdown` | Einen vollständigen Thread als Markdown abrufen |
-| `POST` | `/api/b2/comments` | Einen Kommentar oder eine Antwort erstellen |
-| `PATCH` | `/api/b2/comments/:id` | Einen Kommentar bearbeiten |
-| `DELETE` | `/api/b2/comments/:id` | Einen Kommentar als gelöscht markieren |
-| `POST` | `/api/b2/polls` | Eine Abstimmung erstellen |
-| `GET` | `/api/b2/polls/:id` | Eine Abstimmung abrufen |
-| `GET` | `/api/b2/polls` | Abstimmungen in einer Gruppe auflisten |
-| `PATCH` | `/api/b2/polls/:id` | Eine Abstimmung bearbeiten |
-| `DELETE` | `/api/b2/polls/:id` | Eine Abstimmung als gelöscht markieren |
-| `GET` | `/api/b2/memberships` | Mitgliedschaften einer Gruppe auflisten |
-| `POST` | `/api/b2/memberships` | Mitglieder hinzufügen und optional nicht aufgeführte Mitglieder entfernen |
-| `GET` | `/api/b2/chatbots` | Chat-Integrationen und Webhooks einer Gruppe auflisten |
-| `POST` | `/api/b2/chatbots` | Eine Chat-Integration oder einen Webhook erstellen |
-| `PATCH` | `/api/b2/chatbots/:id` | Eine Chat-Integration oder einen Webhook aktualisieren |
-| `DELETE` | `/api/b2/chatbots/:id` | Eine Chat-Integration oder einen Webhook löschen |
-| `POST` | `/api/b2/chatbots/check` | Einen Verbindungstest für einen Webhook senden |
+<!-- translation-section: create-comment -->
+
+### Kommentar erstellen
+
+Erstelle einen Kommentar in einer Diskussion im Namen des Kontos, zu dem der API-Schlüssel gehört.
+
+`POST /api/b2/comments`
+
+<!-- translation-section: params-7 -->
+
+#### Parameter
+
+| Name | Beschreibung |
+| --- | --- |
+| `discussion_id` | Ganzzahl, erforderlich. ID der Diskussion, die du kommentieren möchtest |
+| `body` | Kommentartext, erforderlich, sofern kein Anhang mitgesendet wird |
+| `body_format` | Entweder `md` oder `html`, optional, Standardwert `md` |
+
+<!-- translation-section: example-9 -->
+
+#### Beispiel
+
+```bash
+curl -H 'Authorization: Bearer YOUR_API_KEY' -X POST -H 'Content-Type: application/json' -d '{"discussion_id": 123, "body":"example comment", "body_format":"md"}' https://www.loomio.com/api/b2/comments
+```
+
+<!-- translation-section: edit-comment -->
+
+### Kommentar bearbeiten
+
+Bearbeite einen Kommentar im Namen des Kontos, zu dem der API-Schlüssel gehört. Es gelten dieselben Berechtigungen wie in Loomio: Das Konto muss diesen Kommentar bearbeiten dürfen.
+
+`PATCH /api/b2/comments/:id`
+
+<!-- translation-section: params-8 -->
+
+#### Parameter
+
+| Name | Beschreibung |
+| --- | --- |
+| `body` | Aktualisierter Kommentartext |
+| `body_format` | Entweder `md` oder `html`, optional, Standardwert `md` |
+
+<!-- translation-section: example-10 -->
+
+#### Beispiel
+
+```bash
+curl -H 'Authorization: Bearer YOUR_API_KEY' -X PATCH -H 'Content-Type: application/json' -d '{"body":"updated comment", "body_format":"md"}' https://www.loomio.com/api/b2/comments/123
+```
+
+<!-- translation-section: soft-delete-comment -->
+
+### Kommentar als gelöscht markieren
+
+Markiere einen Kommentar im Namen des Kontos, zu dem der API-Schlüssel gehört, als gelöscht. Dadurch wird der Kommentar verworfen und sein Text ausgeblendet, sein Datensatz bleibt jedoch erhalten.
+
+`DELETE /api/b2/comments/:id`
+
+<!-- translation-section: example-11 -->
+
+#### Beispiel
+
+```bash
+curl -H 'Authorization: Bearer YOUR_API_KEY' -X DELETE https://www.loomio.com/api/b2/comments/123
+```
+
+<!-- translation-section: discussions -->
+
+## Diskussionen
+
+<!-- translation-section: create-discussion -->
+
+### Diskussion erstellen
+
+Erstelle eine Diskussion im Namen der Person mit dem API-Schlüssel.
+
+`POST /api/b2/discussions`
+
+<!-- translation-section: params-3 -->
+
+#### Parameter
+
+| Name | Beschreibung |
+| --- | --- |
+| `group_id` | Gruppe, in der der Thread erstellt wird |
+| `title` | Titel des Threads, erforderlich |
+| `description` | Kontext des Threads, optional |
+| `description_format` | Entweder `md` oder `html`, optional, standardmäßig `md` |
+| `recipient_audience` | `group` oder null. Bei `group` wird die gesamte Gruppe über den neuen Thread benachrichtigt |
+| `recipient_user_ids` | Array von Benutzer-IDs der Personen, die benachrichtigt oder zum Thread eingeladen werden sollen |
+| `recipient_emails` | Array von E-Mail-Adressen der Personen, die zum Thread eingeladen werden sollen |
+| `recipient_message` | Nachricht, die in die Einladung per E-Mail aufgenommen wird |
+
+<!-- translation-section: example-2 -->
+
+#### Beispiel
+
+```bash
+curl -H 'Authorization: Bearer YOUR_API_KEY' -X POST -H 'Content-Type: application/json' -d '{"group_id": 123, "title":"example thread", "recipient_emails":["person@example.com"]}' https://www.loomio.com/api/b2/discussions
+```
+
+<!-- translation-section: show-discussion -->
+
+### Diskussion abrufen
+
+Rufe eine Diskussion über ihre ID (eine Ganzzahl) oder ihren Schlüssel (eine Zeichenfolge) ab.
+
+`GET /api/b2/discussions/:id`
+
+<!-- translation-section: example-3 -->
+
+#### Beispiel
+
+```bash
+curl -H 'Authorization: Bearer YOUR_API_KEY' https://www.loomio.com/api/b2/discussions/abc123
+```
+
+<!-- translation-section: list-discussions -->
+
+### Diskussionen auflisten
+
+Liste die Diskussionen in einer Gruppe auf, die für die Person sichtbar sind, deren API-Schlüssel verwendet wird. Bei einer öffentlich sichtbaren Gruppe können auch Personen ohne Mitgliedschaft die öffentlichen Diskussionen auflisten; private Diskussionen bleiben auf Personen beschränkt, die sie in Loomio lesen dürfen.
+
+`GET /api/b2/discussions`
+
+<!-- translation-section: params-4 -->
+
+#### Parameter
+
+| Name | Beschreibung |
+| --- | --- |
+| `group_id` | Ganzzahl, erforderlich. ID der Gruppe, deren Diskussionen aufgelistet werden sollen |
+| `status` | Zeichenfolge, optional, Standardwert `open`. Werte: `open`, `closed`, `all` |
+| `limit` | Ganzzahl, optional, Standardwert 50. Anzahl der Einträge pro Seite |
+| `offset` | Ganzzahl, optional, Standardwert 0. Anzahl der Einträge, die bei der Seiteneinteilung übersprungen werden |
+
+Abwärtskompatibilität: `per` und `from` werden als Aliasse für `limit` und `offset` akzeptiert und funktionieren weiterhin.
+
+<!-- translation-section: example-4 -->
+
+#### Beispiel
+
+```bash
+curl -H 'Authorization: Bearer YOUR_API_KEY' 'https://www.loomio.com/api/b2/discussions?group_id=123'
+```
+
+<!-- translation-section: edit-discussion -->
+
+### Diskussion bearbeiten
+
+Bearbeite eine Diskussion als die Person, deren API-Schlüssel verwendet wird. Es gelten dieselben Berechtigungen wie in Loomio: Die Person muss diese Diskussion bearbeiten dürfen.
+
+`PATCH /api/b2/discussions/:id`
+
+<!-- translation-section: params-6 -->
+
+#### Parameter
+
+| Name | Beschreibung |
+| --- | --- |
+| `title` | Aktualisierter Titel |
+| `description` | Aktualisierter Kontext |
+| `description_format` | Entweder `md` oder `html`, optional, Standardwert `md` |
+| `recipient_audience` | `group` oder null. Bei `group` wird die gesamte Gruppe über die Bearbeitung benachrichtigt |
+| `recipient_user_ids` | Array von Benutzer-IDs der Personen, die benachrichtigt oder zum Thread eingeladen werden sollen |
+| `recipient_emails` | Array von E-Mail-Adressen der Personen, die zum Thread eingeladen werden sollen |
+| `recipient_message` | Nachricht, die in die Einladung per E-Mail aufgenommen werden soll |
+
+<!-- translation-section: example-7 -->
+
+#### Beispiel
+
+```bash
+curl -H 'Authorization: Bearer YOUR_API_KEY' -X PATCH -H 'Content-Type: application/json' -d '{"title":"updated thread title", "description":"updated context", "description_format":"md"}' https://www.loomio.com/api/b2/discussions/123
+```
+
+<!-- translation-section: soft-delete-discussion -->
+
+### Diskussion als gelöscht markieren
+
+Markiere eine Diskussion im Namen des Kontos, zu dem der API-Schlüssel gehört, als gelöscht. Dadurch wird die Diskussion verworfen, ihr Datensatz bleibt jedoch erhalten.
+
+`DELETE /api/b2/discussions/:id`
+
+<!-- translation-section: example-8 -->
+
+#### Beispiel
+
+```bash
+curl -H 'Authorization: Bearer YOUR_API_KEY' -X DELETE https://www.loomio.com/api/b2/discussions/123
+```
 
 <!-- translation-section: groups -->
 
@@ -238,11 +451,16 @@ Gibt die Gruppen zurück, in denen das Konto, dessen API-Schlüssel verwendet wi
 
 `GET /api/b2/groups`
 
+| Name | Beschreibung |
+| --- | --- |
+| `limit` | Ganzzahl, optional, Standard 50, höchstens 500. Seitengröße |
+| `offset` | Ganzzahl, optional, Standard 0. Versatz für die Seiteneinteilung |
+
 ```bash
-curl -H 'Authorization: Bearer YOUR_API_KEY' https://www.loomio.com/api/b2/groups
+curl -H 'Authorization: Bearer YOUR_API_KEY' 'https://www.loomio.com/api/b2/groups?limit=50&offset=0'
 ```
 
-Die Antwort enthält alle passenden Datensätze in einem `groups`-Array ohne Seiteneinteilung. Sie umfasst Hauptgruppen und Untergruppen, einschließlich Gruppen, deren Abonnement derzeit nicht aktiv ist. Prüfe das Feld `enabled`, wenn eine Integration nur mit aktivierten Gruppen arbeiten soll.
+Die Antwort enthält eine Seite mit `groups`, aufsteigend nach Gruppen-ID sortiert, sowie die Gesamtzahl der passenden Gruppen in `meta.total`. Sie umfasst Hauptgruppen und Untergruppen, einschließlich Gruppen, deren Abonnement derzeit nicht aktiv ist. Prüfe das Feld `enabled`, wenn eine Integration nur mit aktivierten Gruppen arbeiten soll.
 
 Wichtige Gruppenfelder sind:
 
@@ -282,6 +500,362 @@ curl -H 'Authorization: Bearer YOUR_API_KEY' https://www.loomio.com/api/b2/group
 
 Die Antwort enthält die Gruppe im `groups`-Array und verwendet dieselben Felder wie der Endpunkt zum Auflisten von Gruppen. Eine Anfrage für eine Gruppe, auf die das Konto keinen Zugriff hat, gibt einen Berechtigungsfehler zurück.
 
+<!-- translation-section: memberships -->
+
+## Mitgliedschaften
+
+<!-- translation-section: list-memberships -->
+
+### Mitgliedschaften auflisten
+
+Liste die Mitgliedschaften auf, die für die Person sichtbar sind, deren API-Schlüssel verwendet wird. Gruppenmitglieder können Namen, IDs, Titel und Rollen der Mitglieder lesen. E-Mail-Adressen werden nur für das eigene Konto dieser Person ausgegeben oder wenn sie die Gruppe administriert.
+
+`GET /api/b2/memberships`
+
+<!-- translation-section: params-12 -->
+
+#### Parameter
+
+| Name | Beschreibung |
+| --- | --- |
+| `group_id` | Ganzzahl, erforderlich. ID der Gruppe, deren Mitgliedschaften aufgelistet werden sollen |
+| `limit` | Ganzzahl, optional, Standard 50. Seitengröße |
+| `offset` | Ganzzahl, optional, Standard 0. Versatz für die Seiteneinteilung |
+
+Abwärtskompatibilität: `per` und `from` werden als Aliase für `limit` und `offset` akzeptiert und funktionieren weiterhin.
+
+Die Antwort enthält eine Seite mit `memberships` und zugehörigen `users`. `meta.total` ist die Gesamtzahl der sichtbaren Mitgliedschaften in der Gruppe vor der Seiteneinteilung.
+
+<!-- translation-section: example-17 -->
+
+#### Beispiel
+
+```bash
+curl -H 'Authorization: Bearer YOUR_API_KEY' 'https://www.loomio.com/api/b2/memberships?group_id=123&limit=50&offset=0'
+```
+
+<!-- translation-section: manage-memberships -->
+
+### Mitgliedschaften verwalten
+
+Sende eine Liste von E-Mail-Adressen. Alle neuen E-Mail-Adressen werden zur Gruppe eingeladen. Anders als beim Auflisten von Mitgliedschaften benötigst du für diesen Vorgang Berechtigungen zur Administration der Gruppe.
+
+`POST /api/b2/memberships`
+
+<!-- translation-section: params-13 -->
+
+#### Parameter
+
+| Name | Beschreibung |
+| --- | --- |
+| `group_id` | Ganzzahl, erforderlich. ID der Gruppe, deren Mitgliedschaften verwaltet werden sollen |
+| `emails` | Array von Zeichenfolgen, erforderlich. E-Mail-Adressen der Personen, die zur Gruppe eingeladen werden sollen |
+| `remove_absent` | Boolescher Wert. Wenn true, werden alle Personen aus der Gruppe entfernt, deren E-Mail-Adresse nicht in der Liste steht |
+
+<!-- translation-section: example-18 -->
+
+#### Beispiel
+
+```bash
+curl -H 'Authorization: Bearer YOUR_API_KEY' -X POST -H 'Content-Type: application/json' -d '{"group_id": 123, "emails":["person@example.com"]}' https://www.loomio.com/api/b2/memberships
+```
+
+Wenn du `remove_absent=1` übergibst, werden alle Mitglieder aus der Gruppe entfernt, die nicht in der Liste enthalten sind. Sei vorsichtig: Du könntest alle Mitglieder deiner Gruppe entfernen.
+
+```bash
+curl -H 'Authorization: Bearer YOUR_API_KEY' -X POST -H 'Content-Type: application/json' -d '{"group_id": 123, "emails":["person@example.com"], "remove_absent": 1}' https://www.loomio.com/api/b2/memberships
+```
+
+Dies gibt ein Objekt mit `{added_emails: ["person@added.com"], removed_emails: ["person@removed.com"]}` zurück.
+
+<!-- translation-section: participation-report -->
+
+## Beteiligungsbericht
+
+Rufe dieselben zusammengefassten Beteiligungsdaten ab, die im Beteiligungsbericht von Loomio verwendet werden.
+
+`GET /api/b2/reports`
+
+<!-- translation-section: params-2 -->
+
+### Parameter
+
+| Name | Beschreibung |
+| --- | --- |
+| `section` | Berichtsabschnitt: `base`, `users` oder `countries`. Verwende `users` für die Aktivität pro Person |
+| `group_scope` | `custom` oder `my`. Der frühere Wert `all` wird wie `my` behandelt, da Schlüssel für die Benutzer-API niemals Zugriff auf die gesamte Instanz erhalten |
+| `group_ids` | Durch Kommas getrennte Gruppen-IDs bei `group_scope=custom`. IDs von Gruppen, in denen die Person mit dem API-Schlüssel kein Mitglied ist, werden ignoriert |
+| `start_month` | Erster einzubeziehender Monat im Format `YYYY-MM`; standardmäßig der Monat vor 12 Monaten |
+| `end_month` | Letzter einzubeziehender Monat im Format `YYYY-MM`; standardmäßig der aktuelle Monat |
+| `interval` | Intervall für den Abschnitt `base`: `day`, `week`, `month` oder `year` |
+| `member_type` | Setze den Wert bei `section=users` auf `delegate`, um nur aktuelle Delegierte zurückzugeben |
+
+Eine Person gilt als delegiert, wenn sie in mindestens einer ausgewählten Gruppe eine aktive Mitgliedschaft als delegierte Person hat. Ihre Anzahlen werden über alle ausgewählten Gruppen hinweg zusammengefasst. Zeilen für Delegierte werden auch dann zurückgegeben, wenn alle Aktivitätszahlen null sind. Die Anzahlen erfassen Threads, Kommentare, Abstimmungen, Stimmen, Fazits und Reaktionen; sie geben keine Beteiligungsquoten an Abstimmungen an. Die Zeilen für Personen enthalten außerdem die Anzahl der ausgegebenen, abgegebenen und nicht abgegebenen Stimmzettel bei nicht anonymen Abstimmungen. Anonyme Abstimmungen sind von allen personenbezogenen Zählungen zur Stimmabgabe ausgeschlossen. `all_votes_cast` ist nur dann wahr, wenn mindestens ein Stimmzettel ausgegeben und jeder ausgegebene Stimmzettel abgegeben wurde.
+
+Die API wendet dieselben Sichtbarkeitsregeln für Gruppen an wie der Bericht in Loomio. Ein Schlüssel für die Benutzer-API kann keine Berichtsdaten aus Gruppen zugänglich machen, auf die die Person mit diesem Schlüssel keinen Zugriff hat.
+
+<!-- translation-section: example -->
+
+### Beispiel
+
+```bash
+curl -H 'Authorization: Bearer YOUR_API_KEY' 'https://www.loomio.com/api/b2/reports?section=users&group_scope=custom&group_ids=123&member_type=delegate&start_month=2026-01&end_month=2026-09'
+```
+
+Das `users`-Array enthält vollständige Aktivitätszeilen:
+
+```json
+{
+  "users": [
+    {
+      "id": 456,
+      "name": "Ada Lovelace",
+      "country": "NZ",
+      "delegate": true,
+      "threads": 2,
+      "comments": 8,
+      "polls": 1,
+      "votes": 5,
+      "votes_cast": 5,
+      "votes_issued": 6,
+      "votes_missed": 1,
+      "all_votes_cast": false,
+      "outcomes": 1,
+      "reactions": 4
+    }
+  ]
+}
+```
+
+<!-- translation-section: polls -->
+
+## Abstimmungen
+
+<!-- translation-section: create-poll -->
+
+### Abstimmung erstellen
+
+Erstelle eine Abstimmung im Namen des Kontos, zu dem der API-Schlüssel gehört.
+
+`POST /api/b2/polls`
+
+<!-- translation-section: params-9 -->
+
+#### Parameter
+
+| Name | Beschreibung |
+| --- | --- |
+| `group_id` | Ganzzahl, optional, Standardwert null. ID der Gruppe für die Abstimmung. Wenn `discussion_id` übergeben wird, wird `group_id` ignoriert |
+| `discussion_id` | Ganzzahl, optional, Standardwert null. ID des Diskussions-Threads, dem diese Abstimmung hinzugefügt werden soll |
+| `title` | Zeichenfolge, erforderlich. Titel der Abstimmung |
+| `poll_type` | Zeichenfolge, erforderlich. Werte: `proposal`, `poll`, `count`, `score`, `ranked_choice`, `meeting`, `dot_vote` |
+| `details` | Zeichenfolge, optional. Text der Abstimmung |
+| `details_format` | Zeichenfolge, optional, Standardwert `md`. Werte: `md` oder `html` |
+| `options` | Array von Zeichenfolgen. Wenn `poll_type` den Wert `proposal` hat, sind die gültigen Werte `agree` (Zustimmung), `disagree` (Widerspruch), `abstain` (Enthaltung), `block` (Veto). Wenn `poll_type` den Wert `meeting` hat, gib Datums- oder Datumszeit-Zeichenfolgen im ISO-8601-Format an. Für alle anderen Abstimmungstypen ist jede Zeichenfolge gültig |
+| `closing_at` | ISO-8601-Zeichenfolge oder null, Standardwert null. Beispiel: `2026-09-01T12:00:00Z`. Bei null ist die Stimmabgabe deaktiviert und die Abstimmung gilt als in Bearbeitung |
+| `specified_voters_only` | Boolescher Wert, optional, Standardwert false. Bei true können nur die angegebenen Personen abstimmen. Bei false werden alle Personen in der Gruppe zur Stimmabgabe eingeladen |
+| `hide_results` | Zeichenfolge, optional, Standardwert `off`. Werte: `off`, `until_vote`, `until_closed` |
+| `shuffle_options` | Boolescher Wert, Standardwert false. Zeigt den Abstimmenden die Optionen in zufälliger Reihenfolge an |
+| `anonymous` | Boolescher Wert, optional, Standardwert false. Verbirgt die Identität der Abstimmenden |
+| `recipient_audience` | `group` oder null, optional, Standardwert null. Bei `group` wird die gesamte Gruppe benachrichtigt |
+| `notify_on_closing_soon` | Zeichenfolge, optional, Standardwert `nobody`. Werte: `nobody`, `author`, `undecided_voters`, `voters` |
+| `recipient_user_ids` | Array von Benutzer-IDs der Personen, die benachrichtigt oder eingeladen werden sollen |
+| `recipient_emails` | Array von E-Mail-Adressen der Personen, die zur Stimmabgabe eingeladen werden sollen |
+| `recipient_message` | Nachricht, die in die Einladung per E-Mail aufgenommen werden soll |
+| `notify_recipients` | Boolescher Wert, Standardwert false. Bei false werden Personen hinzugefügt, ohne Benachrichtigungen zu senden. Bei true erhalten alle mit dieser Anfrage eingeladenen Personen eine Benachrichtigung per E-Mail |
+
+<!-- translation-section: example-12 -->
+
+#### Beispiel
+
+```bash
+curl -H 'Authorization: Bearer YOUR_API_KEY' -X POST -H 'Content-Type: application/json' -d '{"group_id": 123, "title":"example poll", "poll_type": "proposal", "options": ["agree", "disagree"], "closing_at": "2026-09-01T12:00:00Z", "recipient_emails":["person@example.com"]}' https://www.loomio.com/api/b2/polls
+```
+
+<!-- translation-section: show-poll -->
+
+### Abstimmung abrufen
+
+Rufe eine Abstimmung anhand ihrer ID (einer Ganzzahl) oder ihres Schlüssels (einer Zeichenkette) ab.
+
+`GET /api/b2/polls/:id`
+
+<!-- translation-section: example-13 -->
+
+#### Beispiel
+
+```bash
+curl -H 'Authorization: Bearer YOUR_API_KEY' https://www.loomio.com/api/b2/polls/abc123
+```
+
+<!-- translation-section: list-polls -->
+
+### Abstimmungen auflisten
+
+Liste die Abstimmungen einer Gruppe auf, die für die Person sichtbar sind, deren API-Schlüssel verwendet wird. Bei einer öffentlich sichtbaren Gruppe können auch Personen ohne Mitgliedschaft deren öffentliche Abstimmungen auflisten; private Abstimmungen bleiben auf Personen beschränkt, die sie in Loomio lesen können. Die Antwort enthält das aktuelle Fazit jeder sichtbaren Abstimmung. Mit `status=closed` kannst du daher Vorschläge auflisten, über die bereits entschieden wurde.
+
+`GET /api/b2/polls`
+
+<!-- translation-section: params-10 -->
+
+#### Parameter
+
+| Name | Beschreibung |
+| --- | --- |
+| `group_id` | Ganzzahl, erforderlich. ID der Gruppe, deren Abstimmungen aufgelistet werden sollen |
+| `status` | Zeichenkette, optional, Standardwert `active`. Werte: `active`, `closed`, `all` |
+| `limit` | Ganzzahl, optional, Standardwert 50. Anzahl der Einträge pro Seite |
+| `offset` | Ganzzahl, optional, Standardwert 0. Anzahl der Einträge, die bei der Seitennavigation übersprungen werden |
+
+Abwärtskompatibilität: `per` und `from` werden als Aliasse für `limit` und `offset` akzeptiert und funktionieren weiterhin.
+
+<!-- translation-section: example-14 -->
+
+#### Beispiel
+
+```bash
+curl -H 'Authorization: Bearer YOUR_API_KEY' 'https://www.loomio.com/api/b2/polls?group_id=123'
+```
+
+<!-- translation-section: edit-poll -->
+
+### Abstimmung bearbeiten
+
+Bearbeite eine Abstimmung als die Person, deren API-Schlüssel verwendet wird. Es gelten dieselben Berechtigungen wie in Loomio: Diese Person muss die Abstimmung bearbeiten dürfen.
+
+`PATCH /api/b2/polls/:id`
+
+<!-- translation-section: params-11 -->
+
+#### Parameter
+
+| Name | Beschreibung |
+| --- | --- |
+| `title` | Aktualisierter Titel |
+| `details` | Aktualisierte Details der Abstimmung |
+| `details_format` | Entweder `md` oder `html`, optional, Standardwert `md` |
+| `options` | Aktualisierte Optionsnamen. Änderungen an den Optionen können sich je nach Zustand der Abstimmung auf vorhandene Stimmen auswirken |
+| `closing_at` | ISO-8601-Zeichenkette oder null |
+| `recipient_audience` | `group` oder null. Bei `group` wird die gesamte Gruppe benachrichtigt |
+| `recipient_user_ids` | Array von Benutzer-IDs der Personen, die benachrichtigt oder eingeladen werden sollen |
+| `recipient_emails` | Array von E-Mail-Adressen der Personen, die zur Stimmabgabe eingeladen werden sollen |
+| `recipient_message` | Nachricht, die in die Einladung per E-Mail aufgenommen werden soll |
+
+<!-- translation-section: example-15 -->
+
+#### Beispiel
+
+```bash
+curl -H 'Authorization: Bearer YOUR_API_KEY' -X PATCH -H 'Content-Type: application/json' -d '{"title":"updated poll title", "details":"updated details", "details_format":"md"}' https://www.loomio.com/api/b2/polls/123
+```
+
+<!-- translation-section: soft-delete-poll -->
+
+### Abstimmung als gelöscht markieren
+
+Markiere eine Abstimmung als gelöscht, indem du den API-Schlüssel der handelnden Person verwendest. Dadurch wird die Abstimmung verworfen, ihr Datensatz bleibt jedoch erhalten.
+
+`DELETE /api/b2/polls/:id`
+
+<!-- translation-section: example-16 -->
+
+#### Beispiel
+
+```bash
+curl -H 'Authorization: Bearer YOUR_API_KEY' -X DELETE https://www.loomio.com/api/b2/polls/123
+```
+
+<!-- translation-section: search -->
+
+## Suche
+
+Suche nach Diskussionen, Kommentaren, Abstimmungen, Stimmen und Fazits, die für die Person mit dem API-Schlüssel sichtbar sind. Die Ergebnisse enthalten öffentliche Inhalte auch dann, wenn die Person kein Mitglied der jeweiligen Gruppe ist; für private Inhalte gelten weiterhin die üblichen Sichtbarkeitsregeln für Threads.
+
+`GET /api/b2/search`
+
+<!-- translation-section: params -->
+
+### Parameter
+
+| Name | Beschreibung |
+| --- | --- |
+| `query` | Suchtext. Exakte und unscharfe Treffer werden unterstützt |
+| `group_id` | Beschränke die Ergebnisse auf eine sichtbare Gruppe |
+| `org_id` | Beschränke die Ergebnisse auf eine sichtbare Hauptgruppe und ihre sichtbaren Untergruppen. Verwende `0` für direkte Diskussionen |
+| `type` | Beschränke die Ergebnisse auf einen Typ: `Discussion`, `Comment`, `Poll`, `Stance` oder `Outcome` |
+| `types` | Durch Kommas getrennte Liste der Ergebnistypen |
+| `tag` | Beschränke die Ergebnisse auf Threads mit diesem Schlagwort |
+| `author_id` | Beschränke die Ergebnisse auf Inhalte einer verfassenden Person. Ohne `query` wird deren jüngste sichtbare Aktivität zurückgegeben |
+| `order` | Setze den Wert auf `authored_at_desc`, um passende Inhalte nach ihrem Erstellungszeitpunkt zu sortieren |
+
+```bash
+curl -H 'Authorization: Bearer YOUR_API_KEY' 'https://www.loomio.com/api/b2/search?query=quarterly+planning&type=Discussion'
+```
+
+Die Antwort enthält ein `search_results`-Array. Jedes Ergebnis identifiziert den gefundenen Datensatz und seinen sichtbaren Kontext anhand von Feldern wie `searchable_type`, `searchable_id`, `highlight`, `group_id`, `group_name`, `discussion_key`, `poll_key`, `author_id`, `author_name`, `authored_at` und `tags`. Felder, die auf ein Ergebnis nicht zutreffen, haben den Wert `null`.
+
+<!-- translation-section: threads -->
+
+## Threads
+
+<!-- translation-section: list-threads -->
+
+### Threads auflisten
+
+Liste die Diskussions- und Abstimmungs-Threads auf, die für die Person sichtbar sind, deren API-Schlüssel verwendet wird, sortiert nach der neuesten Aktivität. Die ID eines Threads ist seine `topic_id`.
+
+`GET /api/b2/threads`
+
+<!-- translation-section: params-5 -->
+
+#### Parameter
+
+| Name | Beschreibung |
+| --- | --- |
+| `limit` | Ganzzahl, optional, Standardwert 50. Anzahl der Einträge pro Seite |
+| `offset` | Ganzzahl, optional, Standardwert 0. Anzahl der Einträge, die bei der Seiteneinteilung übersprungen werden |
+
+<!-- translation-section: example-5 -->
+
+#### Beispiel
+
+```bash
+curl -H 'Authorization: Bearer YOUR_API_KEY' 'https://www.loomio.com/api/b2/threads?limit=50&offset=0'
+```
+
+<!-- translation-section: read-thread -->
+
+### Thread lesen
+
+Lies einen Thread, seinen geordneten Ereignisstrom oder sein vollständiges sichtbares Markdown-Dokument.
+
+`GET /api/b2/threads/:topic_id`
+
+`GET /api/b2/threads/:topic_id/items`
+
+`GET /api/b2/threads/:topic_id/markdown`
+
+Der Endpunkt `items` akzeptiert diese Parameter zur Seiteneinteilung:
+
+| Name | Beschreibung |
+| --- | --- |
+| `limit` | Ganzzahl, optional, Standardwert 50, höchstens 500. Anzahl der Einträge pro Seite |
+| `offset` | Ganzzahl, optional, Standardwert 0. Anzahl der Einträge, die bei der Seiteneinteilung übersprungen werden |
+
+<!-- translation-section: example-6 -->
+
+#### Beispiel
+
+```text
+GET https://www.loomio.com/api/b2/threads/<topic_id>
+GET https://www.loomio.com/api/b2/threads/<topic_id>/items?limit=50&offset=0
+GET https://www.loomio.com/api/b2/threads/<topic_id>/markdown
+```
+
+Der Endpunkt `items` gibt eine Seite des Ereignisstroms in aufsteigender Reihenfolge zurück, einschließlich sichtbarer Kommentare, Abstimmungen, Stimmen und Fazits. `meta.total` ist die Gesamtzahl der Einträge im Thread. Rufe die folgenden Seiten ab, um den gesamten Ereignisstrom zu lesen. Der Endpunkt `markdown` gibt den vollständigen sichtbaren Thread als ein Markdown-Dokument zurück. Begründungen zu Stimmen werden nur aufgenommen, wenn sie für die Person sichtbar sind, deren API-Schlüssel verwendet wird.
+
+Alle Thread-Endpunkte setzen dieselben Berechtigungen durch wie die Loomio-Oberfläche. Der API-Schlüssel gewährt keinen Zugriff auf einen Thread, den die Person normalerweise nicht öffnen darf.
+
 <!-- translation-section: webhooks -->
 
 ## Webhooks
@@ -309,11 +883,17 @@ Gibt die für eine Gruppe eingerichteten Chat-Integrationen zurück. Das Konto, 
 
 `GET /api/b2/chatbots?group_id=123`
 
+| Name | Beschreibung |
+| --- | --- |
+| `group_id` | Ganzzahl, erforderlich. ID der Gruppe, deren Webhooks aufgelistet werden sollen |
+| `limit` | Ganzzahl, optional, Standardwert 50, höchstens 500. Anzahl der Einträge pro Seite |
+| `offset` | Ganzzahl, optional, Standardwert 0. Anzahl der Einträge, die bei der Seiteneinteilung übersprungen werden |
+
 ```bash
-curl -H 'Authorization: Bearer YOUR_API_KEY' 'https://www.loomio.com/api/b2/chatbots?group_id=123'
+curl -H 'Authorization: Bearer YOUR_API_KEY' 'https://www.loomio.com/api/b2/chatbots?group_id=123&limit=50&offset=0'
 ```
 
-Die Antwort enthält ein `chatbots`-Array mit diesen Feldern:
+Die Antwort enthält eine Seite von `chatbots`, sortiert nach aufsteigender Integrations-ID, mit der Gesamtzahl für die Gruppe in `meta.total`. Jede Integration hat diese Felder:
 
 | Feld | Beschreibung |
 | --- | --- |
@@ -458,523 +1038,3 @@ Das allgemeine Markdown-Format sendet beispielsweise einen Nachrichteninhalt mit
 ```
 
 Der genaue Nachrichtentext hängt vom Ereignis, der Sprache der Gruppe, der Einstellung für reine Benachrichtigungen und der Loomio-Version ab. Empfangende Dienste sollten sich auf die dokumentierten Felder der obersten Ebene des ausgewählten Formats verlassen, statt den Wortlaut der Sätze auszuwerten.
-
-<!-- translation-section: search -->
-
-## Suche
-
-Suche nach Diskussionen, Kommentaren, Abstimmungen, Stimmen und Fazits, die für die Person mit dem API-Schlüssel sichtbar sind. Die Ergebnisse enthalten öffentliche Inhalte auch dann, wenn die Person kein Mitglied der jeweiligen Gruppe ist; für private Inhalte gelten weiterhin die üblichen Sichtbarkeitsregeln für Threads.
-
-`GET /api/b2/search`
-
-<!-- translation-section: params -->
-
-### Parameter
-
-| Name | Beschreibung |
-| --- | --- |
-| `query` | Suchtext. Exakte und unscharfe Treffer werden unterstützt |
-| `group_id` | Beschränke die Ergebnisse auf eine sichtbare Gruppe |
-| `org_id` | Beschränke die Ergebnisse auf eine sichtbare Hauptgruppe und ihre sichtbaren Untergruppen. Verwende `0` für direkte Diskussionen |
-| `type` | Beschränke die Ergebnisse auf einen Typ: `Discussion`, `Comment`, `Poll`, `Stance` oder `Outcome` |
-| `types` | Durch Kommas getrennte Liste der Ergebnistypen |
-| `tag` | Beschränke die Ergebnisse auf Threads mit diesem Schlagwort |
-| `author_id` | Beschränke die Ergebnisse auf Inhalte einer verfassenden Person. Ohne `query` wird deren jüngste sichtbare Aktivität zurückgegeben |
-| `order` | Setze den Wert auf `authored_at_desc`, um passende Inhalte nach ihrem Erstellungszeitpunkt zu sortieren |
-
-```bash
-curl -H 'Authorization: Bearer YOUR_API_KEY' 'https://www.loomio.com/api/b2/search?query=quarterly+planning&type=Discussion'
-```
-
-Die Antwort enthält ein `search_results`-Array. Jedes Ergebnis identifiziert den gefundenen Datensatz und seinen sichtbaren Kontext anhand von Feldern wie `searchable_type`, `searchable_id`, `highlight`, `group_id`, `group_name`, `discussion_key`, `poll_key`, `author_id`, `author_name`, `authored_at` und `tags`. Felder, die auf ein Ergebnis nicht zutreffen, haben den Wert `null`.
-
-<!-- translation-section: participation-report -->
-
-## Beteiligungsbericht
-
-Rufe dieselben zusammengefassten Beteiligungsdaten ab, die im Beteiligungsbericht von Loomio verwendet werden.
-
-`GET /api/b2/reports`
-
-<!-- translation-section: params-2 -->
-
-### Parameter
-
-| Name | Beschreibung |
-| --- | --- |
-| `section` | Berichtsabschnitt: `base`, `users` oder `countries`. Verwende `users` für die Aktivität pro Person |
-| `group_scope` | `custom` oder `my`. Der frühere Wert `all` wird wie `my` behandelt, da Schlüssel für die Benutzer-API niemals Zugriff auf die gesamte Instanz erhalten |
-| `group_ids` | Durch Kommas getrennte Gruppen-IDs bei `group_scope=custom`. IDs von Gruppen, in denen die Person mit dem API-Schlüssel kein Mitglied ist, werden ignoriert |
-| `start_month` | Erster einzubeziehender Monat im Format `YYYY-MM`; standardmäßig der Monat vor 12 Monaten |
-| `end_month` | Letzter einzubeziehender Monat im Format `YYYY-MM`; standardmäßig der aktuelle Monat |
-| `interval` | Intervall für den Abschnitt `base`: `day`, `week`, `month` oder `year` |
-| `member_type` | Setze den Wert bei `section=users` auf `delegate`, um nur aktuelle Delegierte zurückzugeben |
-
-Eine Person gilt als delegiert, wenn sie in mindestens einer ausgewählten Gruppe eine aktive Mitgliedschaft als delegierte Person hat. Ihre Anzahlen werden über alle ausgewählten Gruppen hinweg zusammengefasst. Zeilen für Delegierte werden auch dann zurückgegeben, wenn alle Aktivitätszahlen null sind. Die Anzahlen erfassen Threads, Kommentare, Abstimmungen, Stimmen, Fazits und Reaktionen; sie geben keine Beteiligungsquoten an Abstimmungen an. Die Zeilen für Personen enthalten außerdem die Anzahl der ausgegebenen, abgegebenen und nicht abgegebenen Stimmzettel bei nicht anonymen Abstimmungen. Anonyme Abstimmungen sind von allen personenbezogenen Zählungen zur Stimmabgabe ausgeschlossen. `all_votes_cast` ist nur dann wahr, wenn mindestens ein Stimmzettel ausgegeben und jeder ausgegebene Stimmzettel abgegeben wurde.
-
-Die API wendet dieselben Sichtbarkeitsregeln für Gruppen an wie der Bericht in Loomio. Ein Schlüssel für die Benutzer-API kann keine Berichtsdaten aus Gruppen zugänglich machen, auf die die Person mit diesem Schlüssel keinen Zugriff hat.
-
-<!-- translation-section: example -->
-
-### Beispiel
-
-```bash
-curl -H 'Authorization: Bearer YOUR_API_KEY' 'https://www.loomio.com/api/b2/reports?section=users&group_scope=custom&group_ids=123&member_type=delegate&start_month=2026-01&end_month=2026-09'
-```
-
-Das `users`-Array enthält vollständige Aktivitätszeilen:
-
-```json
-{
-  "users": [
-    {
-      "id": 456,
-      "name": "Ada Lovelace",
-      "country": "NZ",
-      "delegate": true,
-      "threads": 2,
-      "comments": 8,
-      "polls": 1,
-      "votes": 5,
-      "votes_cast": 5,
-      "votes_issued": 6,
-      "votes_missed": 1,
-      "all_votes_cast": false,
-      "outcomes": 1,
-      "reactions": 4
-    }
-  ]
-}
-```
-
-<!-- translation-section: create-discussion -->
-
-## Diskussion erstellen
-
-Erstelle eine Diskussion im Namen der Person mit dem API-Schlüssel.
-
-`POST /api/b2/discussions`
-
-<!-- translation-section: params-3 -->
-
-### Parameter
-
-| Name | Beschreibung |
-| --- | --- |
-| `group_id` | Gruppe, in der der Thread erstellt wird |
-| `title` | Titel des Threads, erforderlich |
-| `description` | Kontext des Threads, optional |
-| `description_format` | Entweder `md` oder `html`, optional, standardmäßig `md` |
-| `recipient_audience` | `group` oder null. Bei `group` wird die gesamte Gruppe über den neuen Thread benachrichtigt |
-| `recipient_user_ids` | Array von Benutzer-IDs der Personen, die benachrichtigt oder zum Thread eingeladen werden sollen |
-| `recipient_emails` | Array von E-Mail-Adressen der Personen, die zum Thread eingeladen werden sollen |
-| `recipient_message` | Nachricht, die in die Einladung per E-Mail aufgenommen wird |
-
-<!-- translation-section: example-2 -->
-
-### Beispiel
-
-```bash
-curl -H 'Authorization: Bearer YOUR_API_KEY' -X POST -H 'Content-Type: application/json' -d '{"group_id": 123, "title":"example thread", "recipient_emails":["person@example.com"]}' https://www.loomio.com/api/b2/discussions
-```
-
-<!-- translation-section: show-discussion -->
-
-## Diskussion abrufen
-
-Rufe eine Diskussion über ihre ID (eine Ganzzahl) oder ihren Schlüssel (eine Zeichenfolge) ab.
-
-`GET /api/b2/discussions/:id`
-
-<!-- translation-section: example-3 -->
-
-### Beispiel
-
-```bash
-curl -H 'Authorization: Bearer YOUR_API_KEY' https://www.loomio.com/api/b2/discussions/abc123
-```
-
-<!-- translation-section: list-discussions -->
-
-## Diskussionen auflisten
-
-Liste die Diskussionen in einer Gruppe auf, die für die Person sichtbar sind, deren API-Schlüssel verwendet wird. Bei einer öffentlich sichtbaren Gruppe können auch Personen ohne Mitgliedschaft die öffentlichen Diskussionen auflisten; private Diskussionen bleiben auf Personen beschränkt, die sie in Loomio lesen dürfen.
-
-`GET /api/b2/discussions`
-
-<!-- translation-section: params-4 -->
-
-### Parameter
-
-| Name | Beschreibung |
-| --- | --- |
-| `group_id` | Ganzzahl, erforderlich. ID der Gruppe, deren Diskussionen aufgelistet werden sollen |
-| `status` | Zeichenfolge, optional, Standardwert `open`. Werte: `open`, `closed`, `all` |
-| `limit` | Ganzzahl, optional, Standardwert 50. Anzahl der Einträge pro Seite |
-| `offset` | Ganzzahl, optional, Standardwert 0. Anzahl der Einträge, die bei der Seiteneinteilung übersprungen werden |
-
-Abwärtskompatibilität: `per` und `from` werden als Aliasse für `limit` und `offset` akzeptiert und funktionieren weiterhin.
-
-<!-- translation-section: example-4 -->
-
-### Beispiel
-
-```bash
-curl -H 'Authorization: Bearer YOUR_API_KEY' 'https://www.loomio.com/api/b2/discussions?group_id=123'
-```
-
-<!-- translation-section: list-threads -->
-
-## Threads auflisten
-
-Liste die Diskussions- und Abstimmungs-Threads auf, die für die Person sichtbar sind, deren API-Schlüssel verwendet wird, sortiert nach der neuesten Aktivität. Die ID eines Threads ist seine `topic_id`.
-
-`GET /api/b2/threads`
-
-<!-- translation-section: params-5 -->
-
-### Parameter
-
-| Name | Beschreibung |
-| --- | --- |
-| `limit` | Ganzzahl, optional, Standardwert 50. Anzahl der Einträge pro Seite |
-| `offset` | Ganzzahl, optional, Standardwert 0. Anzahl der Einträge, die bei der Seiteneinteilung übersprungen werden |
-
-<!-- translation-section: example-5 -->
-
-### Beispiel
-
-```bash
-curl -H 'Authorization: Bearer YOUR_API_KEY' 'https://www.loomio.com/api/b2/threads?limit=50&offset=0'
-```
-
-<!-- translation-section: read-thread -->
-
-## Thread lesen
-
-Lies einen Thread, seinen geordneten Ereignisstrom oder sein vollständiges sichtbares Markdown-Dokument.
-
-`GET /api/b2/threads/:topic_id`
-
-`GET /api/b2/threads/:topic_id/items`
-
-`GET /api/b2/threads/:topic_id/markdown`
-
-<!-- translation-section: example-6 -->
-
-### Beispiel
-
-```text
-GET https://www.loomio.com/api/b2/threads/<topic_id>
-GET https://www.loomio.com/api/b2/threads/<topic_id>/items
-GET https://www.loomio.com/api/b2/threads/<topic_id>/markdown
-```
-
-Der Endpunkt `items` gibt den geordneten Ereignisstrom zurück, einschließlich sichtbarer Kommentare, Abstimmungen, Stimmen und Fazits. Der Endpunkt `markdown` gibt den vollständigen sichtbaren Thread als ein Markdown-Dokument zurück. Begründungen zu Stimmen werden nur aufgenommen, wenn sie für die Person sichtbar sind, deren API-Schlüssel verwendet wird.
-
-Alle Thread-Endpunkte setzen dieselben Berechtigungen durch wie die Loomio-Oberfläche. Der API-Schlüssel gewährt keinen Zugriff auf einen Thread, den die Person normalerweise nicht öffnen darf.
-
-<!-- translation-section: edit-discussion -->
-
-## Diskussion bearbeiten
-
-Bearbeite eine Diskussion als die Person, deren API-Schlüssel verwendet wird. Es gelten dieselben Berechtigungen wie in Loomio: Die Person muss diese Diskussion bearbeiten dürfen.
-
-`PATCH /api/b2/discussions/:id`
-
-<!-- translation-section: params-6 -->
-
-### Parameter
-
-| Name | Beschreibung |
-| --- | --- |
-| `title` | Aktualisierter Titel |
-| `description` | Aktualisierter Kontext |
-| `description_format` | Entweder `md` oder `html`, optional, Standardwert `md` |
-| `recipient_audience` | `group` oder null. Bei `group` wird die gesamte Gruppe über die Bearbeitung benachrichtigt |
-| `recipient_user_ids` | Array von Benutzer-IDs der Personen, die benachrichtigt oder zum Thread eingeladen werden sollen |
-| `recipient_emails` | Array von E-Mail-Adressen der Personen, die zum Thread eingeladen werden sollen |
-| `recipient_message` | Nachricht, die in die Einladung per E-Mail aufgenommen werden soll |
-
-<!-- translation-section: example-7 -->
-
-### Beispiel
-
-```bash
-curl -H 'Authorization: Bearer YOUR_API_KEY' -X PATCH -H 'Content-Type: application/json' -d '{"title":"updated thread title", "description":"updated context", "description_format":"md"}' https://www.loomio.com/api/b2/discussions/123
-```
-
-<!-- translation-section: soft-delete-discussion -->
-
-## Diskussion als gelöscht markieren
-
-Markiere eine Diskussion im Namen des Kontos, zu dem der API-Schlüssel gehört, als gelöscht. Dadurch wird die Diskussion verworfen, ihr Datensatz bleibt jedoch erhalten.
-
-`DELETE /api/b2/discussions/:id`
-
-<!-- translation-section: example-8 -->
-
-### Beispiel
-
-```bash
-curl -H 'Authorization: Bearer YOUR_API_KEY' -X DELETE https://www.loomio.com/api/b2/discussions/123
-```
-
-<!-- translation-section: create-comment -->
-
-## Kommentar erstellen
-
-Erstelle einen Kommentar in einer Diskussion im Namen des Kontos, zu dem der API-Schlüssel gehört.
-
-`POST /api/b2/comments`
-
-<!-- translation-section: params-7 -->
-
-### Parameter
-
-| Name | Beschreibung |
-| --- | --- |
-| `discussion_id` | Ganzzahl, erforderlich. ID der Diskussion, die du kommentieren möchtest |
-| `body` | Kommentartext, erforderlich, sofern kein Anhang mitgesendet wird |
-| `body_format` | Entweder `md` oder `html`, optional, Standardwert `md` |
-
-<!-- translation-section: example-9 -->
-
-### Beispiel
-
-```bash
-curl -H 'Authorization: Bearer YOUR_API_KEY' -X POST -H 'Content-Type: application/json' -d '{"discussion_id": 123, "body":"example comment", "body_format":"md"}' https://www.loomio.com/api/b2/comments
-```
-
-<!-- translation-section: edit-comment -->
-
-## Kommentar bearbeiten
-
-Bearbeite einen Kommentar im Namen des Kontos, zu dem der API-Schlüssel gehört. Es gelten dieselben Berechtigungen wie in Loomio: Das Konto muss diesen Kommentar bearbeiten dürfen.
-
-`PATCH /api/b2/comments/:id`
-
-<!-- translation-section: params-8 -->
-
-### Parameter
-
-| Name | Beschreibung |
-| --- | --- |
-| `body` | Aktualisierter Kommentartext |
-| `body_format` | Entweder `md` oder `html`, optional, Standardwert `md` |
-
-<!-- translation-section: example-10 -->
-
-### Beispiel
-
-```bash
-curl -H 'Authorization: Bearer YOUR_API_KEY' -X PATCH -H 'Content-Type: application/json' -d '{"body":"updated comment", "body_format":"md"}' https://www.loomio.com/api/b2/comments/123
-```
-
-<!-- translation-section: soft-delete-comment -->
-
-## Kommentar als gelöscht markieren
-
-Markiere einen Kommentar im Namen des Kontos, zu dem der API-Schlüssel gehört, als gelöscht. Dadurch wird der Kommentar verworfen und sein Text ausgeblendet, sein Datensatz bleibt jedoch erhalten.
-
-`DELETE /api/b2/comments/:id`
-
-<!-- translation-section: example-11 -->
-
-### Beispiel
-
-```bash
-curl -H 'Authorization: Bearer YOUR_API_KEY' -X DELETE https://www.loomio.com/api/b2/comments/123
-```
-
-<!-- translation-section: create-poll -->
-
-## Abstimmung erstellen
-
-Erstelle eine Abstimmung im Namen des Kontos, zu dem der API-Schlüssel gehört.
-
-`POST /api/b2/polls`
-
-<!-- translation-section: params-9 -->
-
-### Parameter
-
-| Name | Beschreibung |
-| --- | --- |
-| `group_id` | Ganzzahl, optional, Standardwert null. ID der Gruppe für die Abstimmung. Wenn `discussion_id` übergeben wird, wird `group_id` ignoriert |
-| `discussion_id` | Ganzzahl, optional, Standardwert null. ID des Diskussions-Threads, dem diese Abstimmung hinzugefügt werden soll |
-| `title` | Zeichenfolge, erforderlich. Titel der Abstimmung |
-| `poll_type` | Zeichenfolge, erforderlich. Werte: `proposal`, `poll`, `count`, `score`, `ranked_choice`, `meeting`, `dot_vote` |
-| `details` | Zeichenfolge, optional. Text der Abstimmung |
-| `details_format` | Zeichenfolge, optional, Standardwert `md`. Werte: `md` oder `html` |
-| `options` | Array von Zeichenfolgen. Wenn `poll_type` den Wert `proposal` hat, sind die gültigen Werte `agree` (Zustimmung), `disagree` (Widerspruch), `abstain` (Enthaltung), `block` (Veto). Wenn `poll_type` den Wert `meeting` hat, gib Datums- oder Datumszeit-Zeichenfolgen im ISO-8601-Format an. Für alle anderen Abstimmungstypen ist jede Zeichenfolge gültig |
-| `closing_at` | ISO-8601-Zeichenfolge oder null, Standardwert null. Beispiel: `2026-09-01T12:00:00Z`. Bei null ist die Stimmabgabe deaktiviert und die Abstimmung gilt als in Bearbeitung |
-| `specified_voters_only` | Boolescher Wert, optional, Standardwert false. Bei true können nur die angegebenen Personen abstimmen. Bei false werden alle Personen in der Gruppe zur Stimmabgabe eingeladen |
-| `hide_results` | Zeichenfolge, optional, Standardwert `off`. Werte: `off`, `until_vote`, `until_closed` |
-| `shuffle_options` | Boolescher Wert, Standardwert false. Zeigt den Abstimmenden die Optionen in zufälliger Reihenfolge an |
-| `anonymous` | Boolescher Wert, optional, Standardwert false. Verbirgt die Identität der Abstimmenden |
-| `recipient_audience` | `group` oder null, optional, Standardwert null. Bei `group` wird die gesamte Gruppe benachrichtigt |
-| `notify_on_closing_soon` | Zeichenfolge, optional, Standardwert `nobody`. Werte: `nobody`, `author`, `undecided_voters`, `voters` |
-| `recipient_user_ids` | Array von Benutzer-IDs der Personen, die benachrichtigt oder eingeladen werden sollen |
-| `recipient_emails` | Array von E-Mail-Adressen der Personen, die zur Stimmabgabe eingeladen werden sollen |
-| `recipient_message` | Nachricht, die in die Einladung per E-Mail aufgenommen werden soll |
-| `notify_recipients` | Boolescher Wert, Standardwert false. Bei false werden Personen hinzugefügt, ohne Benachrichtigungen zu senden. Bei true erhalten alle mit dieser Anfrage eingeladenen Personen eine Benachrichtigung per E-Mail |
-
-<!-- translation-section: example-12 -->
-
-### Beispiel
-
-```bash
-curl -H 'Authorization: Bearer YOUR_API_KEY' -X POST -H 'Content-Type: application/json' -d '{"group_id": 123, "title":"example poll", "poll_type": "proposal", "options": ["agree", "disagree"], "closing_at": "2026-09-01T12:00:00Z", "recipient_emails":["person@example.com"]}' https://www.loomio.com/api/b2/polls
-```
-
-<!-- translation-section: show-poll -->
-
-## Abstimmung abrufen
-
-Rufe eine Abstimmung anhand ihrer ID (einer Ganzzahl) oder ihres Schlüssels (einer Zeichenkette) ab.
-
-`GET /api/b2/polls/:id`
-
-<!-- translation-section: example-13 -->
-
-### Beispiel
-
-```bash
-curl -H 'Authorization: Bearer YOUR_API_KEY' https://www.loomio.com/api/b2/polls/abc123
-```
-
-<!-- translation-section: list-polls -->
-
-## Abstimmungen auflisten
-
-Liste die Abstimmungen einer Gruppe auf, die für die Person sichtbar sind, deren API-Schlüssel verwendet wird. Bei einer öffentlich sichtbaren Gruppe können auch Personen ohne Mitgliedschaft deren öffentliche Abstimmungen auflisten; private Abstimmungen bleiben auf Personen beschränkt, die sie in Loomio lesen können. Die Antwort enthält das aktuelle Fazit jeder sichtbaren Abstimmung. Mit `status=closed` kannst du daher Vorschläge auflisten, über die bereits entschieden wurde.
-
-`GET /api/b2/polls`
-
-<!-- translation-section: params-10 -->
-
-### Parameter
-
-| Name | Beschreibung |
-| --- | --- |
-| `group_id` | Ganzzahl, erforderlich. ID der Gruppe, deren Abstimmungen aufgelistet werden sollen |
-| `status` | Zeichenkette, optional, Standardwert `active`. Werte: `active`, `closed`, `all` |
-| `limit` | Ganzzahl, optional, Standardwert 50. Anzahl der Einträge pro Seite |
-| `offset` | Ganzzahl, optional, Standardwert 0. Anzahl der Einträge, die bei der Seitennavigation übersprungen werden |
-
-Abwärtskompatibilität: `per` und `from` werden als Aliasse für `limit` und `offset` akzeptiert und funktionieren weiterhin.
-
-<!-- translation-section: example-14 -->
-
-### Beispiel
-
-```bash
-curl -H 'Authorization: Bearer YOUR_API_KEY' 'https://www.loomio.com/api/b2/polls?group_id=123'
-```
-
-<!-- translation-section: edit-poll -->
-
-## Abstimmung bearbeiten
-
-Bearbeite eine Abstimmung als die Person, deren API-Schlüssel verwendet wird. Es gelten dieselben Berechtigungen wie in Loomio: Diese Person muss die Abstimmung bearbeiten dürfen.
-
-`PATCH /api/b2/polls/:id`
-
-<!-- translation-section: params-11 -->
-
-### Parameter
-
-| Name | Beschreibung |
-| --- | --- |
-| `title` | Aktualisierter Titel |
-| `details` | Aktualisierte Details der Abstimmung |
-| `details_format` | Entweder `md` oder `html`, optional, Standardwert `md` |
-| `options` | Aktualisierte Optionsnamen. Änderungen an den Optionen können sich je nach Zustand der Abstimmung auf vorhandene Stimmen auswirken |
-| `closing_at` | ISO-8601-Zeichenkette oder null |
-| `recipient_audience` | `group` oder null. Bei `group` wird die gesamte Gruppe benachrichtigt |
-| `recipient_user_ids` | Array von Benutzer-IDs der Personen, die benachrichtigt oder eingeladen werden sollen |
-| `recipient_emails` | Array von E-Mail-Adressen der Personen, die zur Stimmabgabe eingeladen werden sollen |
-| `recipient_message` | Nachricht, die in die Einladung per E-Mail aufgenommen werden soll |
-
-<!-- translation-section: example-15 -->
-
-### Beispiel
-
-```bash
-curl -H 'Authorization: Bearer YOUR_API_KEY' -X PATCH -H 'Content-Type: application/json' -d '{"title":"updated poll title", "details":"updated details", "details_format":"md"}' https://www.loomio.com/api/b2/polls/123
-```
-
-<!-- translation-section: soft-delete-poll -->
-
-## Abstimmung als gelöscht markieren
-
-Markiere eine Abstimmung als gelöscht, indem du den API-Schlüssel der handelnden Person verwendest. Dadurch wird die Abstimmung verworfen, ihr Datensatz bleibt jedoch erhalten.
-
-`DELETE /api/b2/polls/:id`
-
-<!-- translation-section: example-16 -->
-
-### Beispiel
-
-```bash
-curl -H 'Authorization: Bearer YOUR_API_KEY' -X DELETE https://www.loomio.com/api/b2/polls/123
-```
-
-<!-- translation-section: list-memberships -->
-
-## Mitgliedschaften auflisten
-
-Liste die Mitgliedschaften auf, die für die Person sichtbar sind, deren API-Schlüssel verwendet wird. Gruppenmitglieder können Namen, IDs, Titel und Rollen der Mitglieder lesen. E-Mail-Adressen werden nur für das eigene Konto dieser Person ausgegeben oder wenn sie die Gruppe administriert.
-
-`GET /api/b2/memberships`
-
-<!-- translation-section: params-12 -->
-
-### Parameter
-
-| Name | Beschreibung |
-| --- | --- |
-| `group_id` | Ganzzahl, erforderlich. ID der Gruppe, deren Mitgliedschaften aufgelistet werden sollen |
-
-<!-- translation-section: example-17 -->
-
-### Beispiel
-
-```bash
-curl -H 'Authorization: Bearer YOUR_API_KEY' 'https://www.loomio.com/api/b2/memberships?group_id=123'
-```
-
-<!-- translation-section: manage-memberships -->
-
-## Mitgliedschaften verwalten
-
-Sende eine Liste von E-Mail-Adressen. Alle neuen E-Mail-Adressen werden zur Gruppe eingeladen. Anders als beim Auflisten von Mitgliedschaften benötigst du für diesen Vorgang Berechtigungen zur Administration der Gruppe.
-
-`POST /api/b2/memberships`
-
-<!-- translation-section: params-13 -->
-
-### Parameter
-
-| Name | Beschreibung |
-| --- | --- |
-| `group_id` | Ganzzahl, erforderlich. ID der Gruppe, deren Mitgliedschaften verwaltet werden sollen |
-| `emails` | Array von Zeichenfolgen, erforderlich. E-Mail-Adressen der Personen, die zur Gruppe eingeladen werden sollen |
-| `remove_absent` | Boolescher Wert. Wenn true, werden alle Personen aus der Gruppe entfernt, deren E-Mail-Adresse nicht in der Liste steht |
-
-<!-- translation-section: example-18 -->
-
-### Beispiel
-
-```bash
-curl -H 'Authorization: Bearer YOUR_API_KEY' -X POST -H 'Content-Type: application/json' -d '{"group_id": 123, "emails":["person@example.com"]}' https://www.loomio.com/api/b2/memberships
-```
-
-Wenn du `remove_absent=1` übergibst, werden alle Mitglieder aus der Gruppe entfernt, die nicht in der Liste enthalten sind. Sei vorsichtig: Du könntest alle Mitglieder deiner Gruppe entfernen.
-
-```bash
-curl -H 'Authorization: Bearer YOUR_API_KEY' -X POST -H 'Content-Type: application/json' -d '{"group_id": 123, "emails":["person@example.com"], "remove_absent": 1}' https://www.loomio.com/api/b2/memberships
-```
-
-Dies gibt ein Objekt mit `{added_emails: ["person@added.com"], removed_emails: ["person@removed.com"]}` zurück.

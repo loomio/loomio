@@ -14,8 +14,9 @@ class Api::B2::ThreadsController < Api::B2::BaseController
   end
 
   def items
-    self.collection = thread.items.order(:sequence_id)
+    self.collection = thread.items.order(:sequence_id, :id)
     self.collection_count = collection.count
+    self.collection = page_collection_bounded(collection)
     respond_with_collection serializer: TopicItemSerializer, root: :items
   end
 

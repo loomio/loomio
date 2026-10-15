@@ -32,6 +32,48 @@ class Api::B2::ChatbotsControllerTest < ActionController::TestCase
     assert_equal [ "new_discussion" ], webhook.fetch("event_kinds")
   end
 
+  test "pages only the selected group's webhooks and preserves the full total" do
+    SafeHttpService.stub(:safe_to_fetch?, true) do
+      @group.chatbots.create!(
+        name: "Second API webhook", author: @admin, kind: "webhook",
+        server: "https://hooks.example.test/second"
+      )
+    end
+    expected_ids = @group.chatbots.order(:id).pluck(:id)
+    actual_ids = expected_ids.each_index.flat_map do |offset|
+      get :index, params: { group_id: @group.id, limit: 1, offset: offset }
+
+      assert_response :success
+      assert_equal expected_ids.length, json.dig("meta", "total")
+      assert_equal 1, json.fetch("chatbots").length
+      assert_equal @group.id, json.fetch("chatbots").first.fetch("group_id")
+      assert json.fetch("chatbots").first.fetch("server").present?
+      json.fetch("chatbots").pluck("id")
+    end
+    assert_equal expected_ids, actual_ids
+
+    get :index, params: { group_id: @group.id, limit: 1, offset: expected_ids.length }
+
+    assert_response :success
+    assert_empty json.fetch("chatbots")
+    assert_equal expected_ids.length, json.dig("meta", "total")
+  end
+
+  test "pagination does not reveal webhook destinations or totals to unauthorized roles" do
+    %i[member guest_admin_normal former_member_loud alien server_admin inactive_member_loud].each do |role|
+      user = users(role)
+      user.update_columns(api_key: "webhook-page-key-#{SecureRandom.hex(8)}")
+      @request.headers["Authorization"] = "Bearer #{user.api_key}"
+
+      get :index, params: { group_id: @group.id, limit: 1, offset: 1 }
+
+      assert_response(role == :inactive_member_loud ? :forbidden : :not_found)
+      refute json.key?("chatbots"), role.to_s
+      refute json.key?("meta"), role.to_s
+      refute_includes response.body, @chatbot.server
+    end
+  end
+
   test "group admin can create update and destroy a webhook" do
     SafeHttpService.stub(:safe_to_fetch?, true) do
       post :create, params: {

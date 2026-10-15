@@ -40,6 +40,79 @@ class Api::B2::ThreadsControllerTest < ActionController::TestCase
     assert_equal @discussion.topic.items.count, response.parsed_body.dig('meta', 'total')
   end
 
+  test 'pages thread items in sequence order while preserving the complete total' do
+    @request.headers['Authorization'] = "Bearer #{@user.api_key}"
+    2.times do |index|
+      CommentService.create(comment: Comment.new(parent: @discussion, body: "Page comment #{index}"), actor: @user)
+    end
+    expected_ids = @discussion.topic.items.order(:sequence_id, :id).pluck(:id)
+    actual_ids = expected_ids.each_index.flat_map do |offset|
+      get :items, params: { id: @discussion.topic_id, limit: 1, offset: offset, compact: 1 }
+
+      assert_response :success
+      assert_equal expected_ids.length, response.parsed_body.dig('meta', 'total')
+      response.parsed_body.fetch('items').pluck('id')
+    end
+    assert_equal expected_ids, actual_ids
+
+    get :items, params: { id: @discussion.topic_id, limit: 1, offset: expected_ids.length }
+
+    assert_response :success
+    assert_empty response.parsed_body.fetch('items')
+    assert_equal expected_ids.length, response.parsed_body.dig('meta', 'total')
+  end
+
+  test 'item pages retain group and direct topic access boundaries' do
+    allowed = {
+      discussion_topic: %i[admin member guest_normal guest_admin_normal former_member_guest],
+      direct_topic: %i[guest_normal guest_admin_normal]
+    }
+    denied = {
+      discussion_topic: %i[alien former_member_loud former_guest_loud non_guest_loud server_admin],
+      direct_topic: %i[admin member alien former_guest_loud non_guest_loud server_admin]
+    }
+
+    [allowed, denied].each do |matrix|
+      matrix.each do |topic_name, roles|
+        roles.each do |role|
+          user = users(role)
+          user.update_columns(api_key: "item-page-key-#{SecureRandom.hex(8)}")
+          @request.headers['Authorization'] = "Bearer #{user.api_key}"
+          get :items, params: { id: topics(topic_name).id, limit: 1, offset: 0 }
+
+          if matrix.equal?(allowed)
+            assert_response :success
+            assert_equal topics(topic_name).items.count, response.parsed_body.dig('meta', 'total')
+          else
+            assert_response :not_found
+            refute response.parsed_body.key?('items'), "#{topic_name}: #{role}"
+            refute response.parsed_body.key?('meta'), "#{topic_name}: #{role}"
+          end
+        end
+      end
+    end
+  end
+
+  test 'public item pages remain readable without group membership but require an active API user' do
+    @request.headers['Authorization'] = "Bearer #{@user.api_key}"
+    topic = topics(:public_discussion_topic)
+    expected_ids = topic.items.order(:sequence_id, :id).pluck(:id)
+
+    get :items, params: { id: topic.id, limit: 1, offset: 1 }
+
+    assert_response :success
+    assert_equal expected_ids.drop(1).first(1), response.parsed_body.fetch('items').pluck('id')
+    assert_equal expected_ids.length, response.parsed_body.dig('meta', 'total')
+
+    [nil, "Bearer #{users(:inactive_guest_loud).api_key}"].each do |authorization|
+      @request.headers['Authorization'] = authorization
+      get :items, params: { id: topic.id, limit: 1, offset: 0 }
+
+      assert_response :forbidden
+      refute response.parsed_body.key?('items')
+    end
+  end
+
   test 'returns complete thread markdown' do
     @request.headers['Authorization'] = "Bearer #{@user.api_key}"
     get :markdown, params: {id: @discussion.topic_id}

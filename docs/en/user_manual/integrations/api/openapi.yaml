@@ -32,7 +32,10 @@ paths:
       operationId: listGroups
       tags: [Groups]
       summary: List the API-key user's groups
+      description: Returns groups in ascending ID order, with the full matching count in meta.total. Pages contain at most 500 groups.
       parameters:
+        - $ref: "#/components/parameters/LimitBounded"
+        - $ref: "#/components/parameters/Offset"
         - $ref: "#/components/parameters/Compact"
         - $ref: "#/components/parameters/ExcludeTypes"
       responses:
@@ -192,7 +195,10 @@ paths:
       operationId: listThreadItems
       tags: [Threads]
       summary: List the ordered items in a thread
+      description: Returns a page in ascending sequence order, with the full thread item count in meta.total. Pages contain at most 500 items; fetch subsequent pages to read the entire stream.
       parameters:
+        - $ref: "#/components/parameters/LimitBounded"
+        - $ref: "#/components/parameters/Offset"
         - $ref: "#/components/parameters/Compact"
         - $ref: "#/components/parameters/ExcludeTypes"
       responses:
@@ -532,8 +538,11 @@ paths:
       operationId: listWebhooks
       tags: [Webhooks]
       summary: List a group's chat integrations and webhooks
+      description: Group administrators receive integrations in ascending ID order, with the full group count in meta.total. Pages contain at most 500 integrations.
       parameters:
         - $ref: "#/components/parameters/GroupIdQuery"
+        - $ref: "#/components/parameters/LimitBounded"
+        - $ref: "#/components/parameters/Offset"
       responses:
         "200":
           description: Webhooks and related records
@@ -906,6 +915,15 @@ components:
       schema:
         type: integer
         minimum: 1
+        default: 50
+    LimitBounded:
+      name: limit
+      in: query
+      description: Primary records per page. Values are clamped to 1–500.
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 500
         default: 50
     Offset:
       name: offset
