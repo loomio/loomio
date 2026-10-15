@@ -508,6 +508,65 @@ class Api::V1::SessionsControllerTest < ActionController::TestCase
     assert_equal I18n.t('auth_form.signed_in'), json.dig('flash', 'notice')
   end
 
+  test "email code sign-in accepts mixed-case input for a lowercase stored address" do
+    ENV['TURNSTILE_SECRET_KEY'] = 'test-secret'
+    user = User.create!(email: 'casecode@example.com', name: 'Code User', legal_accepted_at: Time.current, email_verified: true)
+    token = LoginToken.create!(user: user)
+
+    assert_difference 'Session.count', 1 do
+      post :create, params: { user: { email: 'CaseCode@EXAMPLE.COM', code: token.code } }
+    end
+
+    assert_response :success
+    assert_equal user.id, response.parsed_body['current_user_id']
+    assert_equal true, response.parsed_body['signed_in_via_login_code']
+    assert token.reload.used
+    assert_equal 0, token.failed_attempts
+  end
+
+  test "email code sign-in accepts lowercase input for a mixed-case stored address" do
+    ENV['TURNSTILE_SECRET_KEY'] = 'test-secret'
+    user = User.create!(email: 'StoredCase@EXAMPLE.COM', name: 'Code User', legal_accepted_at: Time.current, email_verified: true)
+    token = LoginToken.create!(user: user)
+
+    assert_difference 'Session.count', 1 do
+      post :create, params: { user: { email: 'storedcase@example.com', code: token.code } }
+    end
+
+    assert_response :success
+    assert_equal user.id, response.parsed_body['current_user_id']
+    assert token.reload.used
+    assert_equal 0, token.failed_attempts
+  end
+
+  test "a mixed-case email cannot use another account's code or bypass turnstile" do
+    ENV['TURNSTILE_SECRET_KEY'] = 'test-secret'
+    owner = users(:user)
+    other = users(:member)
+    owner_token = LoginToken.create!(user: owner, code: 123456)
+    other_token = LoginToken.create!(user: other, code: 654321)
+    credentials = { email: other.email.upcase, code: owner_token.code }
+
+    assert_no_difference ['Session.count', 'AccountCompletionProof.count'] do
+      post :create, params: { user: credentials }
+    end
+    assert_response :forbidden
+    assert_equal 0, owner_token.reload.failed_attempts
+    assert_equal 0, other_token.reload.failed_attempts
+
+    WebMock.stub_request(:post, TurnstileService::SITEVERIFY_URL).
+      to_return(status: 200, body: { success: true }.to_json, headers: { 'Content-Type' => 'application/json' })
+
+    assert_no_difference ['Session.count', 'AccountCompletionProof.count'] do
+      post :create, params: { user: credentials.merge(turnstile_token: 'cf-ok') }
+    end
+    assert_response :unauthorized
+    refute owner_token.reload.used
+    assert_equal 0, owner_token.failed_attempts
+    refute other_token.reload.used
+    assert_equal 1, other_token.failed_attempts
+  end
+
   test "valid code stages account completion without signing in an incomplete user" do
     user = User.create!(email: "incomplete-code-user@example.com", email_verified: false)
     token = LoginToken.create!(user: user)

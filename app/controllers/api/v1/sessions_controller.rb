@@ -146,7 +146,7 @@ class Api::V1::SessionsController < ApplicationController
   end
 
   def login_token_matches?(token)
-    resource_params[:email].present? && token&.useable? && token.user.email == resource_params[:email]
+    resource_params[:email].present? && token&.useable? && token.user.email.casecmp?(resource_params[:email])
   end
 
   # Used only to decide whether a fresh turnstile is required. A matching code
