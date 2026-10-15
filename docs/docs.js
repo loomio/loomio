@@ -51,6 +51,52 @@ document.addEventListener("keydown", (event) => {
   if (event.key === "Escape") setNavigationOpen(false);
 });
 
+const tocLinks = Array.from(document.querySelectorAll(".page-toc a"));
+if (tocLinks.length) {
+  const toc = document.querySelector(".page-toc");
+  const headings = tocLinks.map(link => document.getElementById(decodeURIComponent(link.hash.slice(1))));
+  let currentLink;
+  let framePending = false;
+
+  // Follow the section at the top of the article. Keep its link visible by
+  // scrolling only the TOC, so highlighting never moves the article itself.
+  function updateCurrentSection() {
+    framePending = false;
+    let index = 0;
+    for (let i = 0; i < headings.length; i++) {
+      // Allow fractional anchor rounding without selecting a nearby child heading.
+      if (headings[i].getBoundingClientRect().top > 2) break;
+      index = i;
+    }
+    if (window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 1) {
+      index = tocLinks.length - 1;
+    }
+
+    const link = tocLinks[index];
+    if (link === currentLink) return;
+
+    currentLink?.removeAttribute("aria-current");
+    link.setAttribute("aria-current", "location");
+    currentLink = link;
+
+    const bounds = link.getBoundingClientRect();
+    const viewport = toc.getBoundingClientRect();
+    if (bounds.top < viewport.top) toc.scrollTop += bounds.top - viewport.top - 12;
+    else if (bounds.bottom > viewport.bottom) toc.scrollTop += bounds.bottom - viewport.bottom + 12;
+  }
+
+  function scheduleCurrentSection() {
+    if (framePending) return;
+    framePending = true;
+    window.requestAnimationFrame(updateCurrentSection);
+  }
+
+  window.addEventListener("scroll", scheduleCurrentSection, { passive: true });
+  window.addEventListener("resize", scheduleCurrentSection);
+  window.addEventListener("load", scheduleCurrentSection);
+  updateCurrentSection();
+}
+
 function copyText(text) {
   if (navigator.clipboard?.writeText) return navigator.clipboard.writeText(text);
 
