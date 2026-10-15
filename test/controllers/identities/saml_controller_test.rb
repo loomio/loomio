@@ -1,6 +1,8 @@
 require 'test_helper'
 
 class Identities::SamlControllerTest < ActionController::TestCase
+  SamlResponse = Data.define(:nameid, :is_valid?, :attributes)
+
   setup do
     @saved_env = {}
     %w[
@@ -23,7 +25,7 @@ class Identities::SamlControllerTest < ActionController::TestCase
     ENV['SAML_ISSUER'] = 'https://loomio.test/saml/metadata'
 
     # Build mock SAML settings
-    @mock_settings = OpenStruct.new(security: {})
+    @mock_settings = OneLogin::RubySaml::Settings.new
 
     # Stub IdpMetadataParser to return mock settings
     @mock_parser = Minitest::Mock.new
@@ -41,7 +43,7 @@ class Identities::SamlControllerTest < ActionController::TestCase
     mock_auth_request = Minitest::Mock.new
     mock_auth_request.expect(:uuid, '_saml_request')
     mock_auth_request.expect(:create, 'https://saml.provider.com/login?SAMLRequest=...',
-                              [OpenStruct])
+                              [@mock_settings])
 
     OneLogin::RubySaml::IdpMetadataParser.stub(:new, @mock_parser) do
       OneLogin::RubySaml::Authrequest.stub(:new, mock_auth_request) do
@@ -58,7 +60,7 @@ class Identities::SamlControllerTest < ActionController::TestCase
     mock_auth_request = Minitest::Mock.new
     mock_auth_request.expect(:uuid, '_saml_request')
     mock_auth_request.expect(:create, 'https://saml.provider.com/login?SAMLRequest=...',
-                              [OpenStruct])
+                              [@mock_settings])
 
     OneLogin::RubySaml::IdpMetadataParser.stub(:new, @mock_parser) do
       OneLogin::RubySaml::Authrequest.stub(:new, mock_auth_request) do
@@ -74,7 +76,7 @@ class Identities::SamlControllerTest < ActionController::TestCase
     mock_auth_request = Minitest::Mock.new
     mock_auth_request.expect(:uuid, '_saml_request')
     mock_auth_request.expect(:create, 'https://saml.provider.com/login?SAMLRequest=...',
-                              [OpenStruct])
+                              [@mock_settings])
 
     OneLogin::RubySaml::IdpMetadataParser.stub(:new, @mock_parser) do
       OneLogin::RubySaml::Authrequest.stub(:new, mock_auth_request) do
@@ -90,7 +92,7 @@ class Identities::SamlControllerTest < ActionController::TestCase
     [ '//evil.example/phishing', '/\\evil.example/phishing' ].each do |referrer|
       mock_auth_request = Minitest::Mock.new
       mock_auth_request.expect(:uuid, '_saml_request')
-      mock_auth_request.expect(:create, 'https://saml.provider.com/login?SAMLRequest=...', [OpenStruct])
+      mock_auth_request.expect(:create, 'https://saml.provider.com/login?SAMLRequest=...', [@mock_settings])
       parser = Minitest::Mock.new
       parser.expect(:parse_remote, @mock_settings, [String])
 
@@ -109,17 +111,11 @@ class Identities::SamlControllerTest < ActionController::TestCase
   private
 
   def mock_saml_response(valid: true, nameid: 'samltest@example.com', name: 'SAML User', attributes: nil)
-    response = OpenStruct.new(
+    SamlResponse.new(
       nameid: nameid,
-      is_valid?: valid
+      is_valid?: valid,
+      attributes: attributes || { 'displayName' => name }
     )
-    response.define_singleton_method(:attributes) do
-      attributes || { 'displayName' => name }
-    end
-    response.define_singleton_method(:settings=) do |s|
-      # no-op
-    end
-    response
   end
 
   def with_saml_mocks(saml_response: nil, &block)

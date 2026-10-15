@@ -1,6 +1,12 @@
 module Null::Group
   include Null::Object
 
+  Subscription = Struct.new(
+    :max_members, :max_threads, :allow_subgroups, :plan, :state,
+    :is_active?, :renews_at, :expires_at, :members_count,
+    keyword_init: true
+  )
+
   def group
     self
   end
@@ -210,7 +216,7 @@ module Null::Group
 
 
   def subscription
-    OpenStruct.new(
+    Subscription.new(
       max_members:     nil,
       max_threads:     nil,
       allow_subgroups: true,

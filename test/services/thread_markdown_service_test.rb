@@ -1,6 +1,11 @@
 require 'test_helper'
 
 class ThreadMarkdownServiceTest < ActiveSupport::TestCase
+  PollStub = Struct.new(:has_variable_score, keyword_init: true)
+  PollOptionStub = Struct.new(:name, :priority, keyword_init: true)
+  StanceChoiceStub = Struct.new(:poll_option, :score, keyword_init: true)
+  StanceStub = Struct.new(:none_of_the_above?, :poll, :stance_choices, keyword_init: true)
+
   setup do
     @admin = users(:admin)
     @member = users(:member)
@@ -121,12 +126,12 @@ class ThreadMarkdownServiceTest < ActiveSupport::TestCase
   end
 
   test "formats multiple scored vote choices for the heading" do
-    poll = OpenStruct.new(has_variable_score: true)
+    poll = PollStub.new(has_variable_score: true)
     choices = [
-      OpenStruct.new(poll_option: OpenStruct.new(name: "apples", priority: 0), score: 2),
-      OpenStruct.new(poll_option: OpenStruct.new(name: "bananas", priority: 1), score: 3)
+      StanceChoiceStub.new(poll_option: PollOptionStub.new(name: "apples", priority: 0), score: 2),
+      StanceChoiceStub.new(poll_option: PollOptionStub.new(name: "bananas", priority: 1), score: 3)
     ]
-    stance = OpenStruct.new(none_of_the_above?: false, poll: poll, stance_choices: choices)
+    stance = StanceStub.new(none_of_the_above?: false, poll: poll, stance_choices: choices)
     service = ThreadMarkdownService.new(topics(:discussion_topic), @admin)
 
     assert_equal "apples 2, bananas 3", service.send(:stance_response_heading, stance)

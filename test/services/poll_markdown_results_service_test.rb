@@ -1,6 +1,15 @@
 require "test_helper"
 
 class PollMarkdownResultsServiceTest < ActiveSupport::TestCase
+  SimplePoll = Struct.new(:poll_type, :result_columns, :anonymous?, :has_variable_score, :results, keyword_init: true) do
+    def result_heading_key(column)
+      Poll::RESULT_HEADING_KEYS.fetch(column)
+    end
+  end
+  MeetingPoll = Struct.new(:poll_type, :time_zone, :poll_options, :poll_option_name_format, keyword_init: true)
+  StvPoll = Struct.new(:poll_type, :stv_results, :poll_options, keyword_init: true)
+  PollOption = Struct.new(:id, :name, :total_score, keyword_init: true)
+
   SIMPLE_COLUMNS = {
     "proposal" => %w[chart name votes votes_cast_percent voter_percent voters],
     "check" => %w[chart name voter_percent voter_count voters],
@@ -17,7 +26,7 @@ class PollMarkdownResultsServiceTest < ActiveSupport::TestCase
 
   test "renders canonical columns for every simple poll type" do
     SIMPLE_COLUMNS.each do |poll_type, columns|
-      poll = OpenStruct.new(
+      poll = SimplePoll.new(
         poll_type: poll_type,
         result_columns: columns,
         anonymous?: false,
@@ -35,7 +44,6 @@ class PollMarkdownResultsServiceTest < ActiveSupport::TestCase
           voter_count: 0
         }]
       )
-      poll.define_singleton_method(:result_heading_key) { |column| Poll::RESULT_HEADING_KEYS.fetch(column) }
 
       markdown = PollMarkdownResultsService.render(poll: poll, user: @user)
 
@@ -47,8 +55,8 @@ class PollMarkdownResultsServiceTest < ActiveSupport::TestCase
   end
 
   test "renders a time poll availability matrix" do
-    options = [OpenStruct.new(id: 1, name: "2026-10-01T09:00:00Z", total_score: 0)]
-    poll = OpenStruct.new(poll_type: "meeting", time_zone: "UTC", poll_options: options, poll_option_name_format: nil)
+    options = [PollOption.new(id: 1, name: "2026-10-01T09:00:00Z", total_score: 0)]
+    poll = MeetingPoll.new(poll_type: "meeting", time_zone: "UTC", poll_options: options, poll_option_name_format: nil)
     service = PollMarkdownResultsService.new(poll, @user)
 
     service.stub(:voter_stances, []) do
@@ -60,7 +68,7 @@ class PollMarkdownResultsServiceTest < ActiveSupport::TestCase
   end
 
   test "renders STV elected, tied, round, and quota tables" do
-    candidates = [OpenStruct.new(id: 1, name: "A"), OpenStruct.new(id: 2, name: "B")]
+    candidates = [PollOption.new(id: 1, name: "A"), PollOption.new(id: 2, name: "B")]
     results = {
       "elected" => [{"poll_option_id" => 1, "name" => "A", "round_elected" => 1}],
       "tied" => [{"poll_option_id" => 2, "name" => "B"}],
@@ -69,7 +77,7 @@ class PollMarkdownResultsServiceTest < ActiveSupport::TestCase
       "method" => "scottish",
       "quota_type" => "droop"
     }
-    poll = OpenStruct.new(poll_type: "stv", stv_results: results, poll_options: candidates)
+    poll = StvPoll.new(poll_type: "stv", stv_results: results, poll_options: candidates)
 
     markdown = PollMarkdownResultsService.render(poll: poll, user: @user)
 
