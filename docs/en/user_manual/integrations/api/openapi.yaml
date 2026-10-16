@@ -1099,7 +1099,21 @@ components:
           enum: [md, html]
         options:
           type: array
+          description: Simple option names. Use poll_options_attributes instead for detailed options; choose one format per request.
           items: {type: string}
+        poll_options_attributes:
+          type: array
+          description: Detailed option objects, as an alternative to options. On edit, omitted options remain unchanged.
+          items:
+            $ref: "#/components/schemas/PollOptionInput"
+        reason_prompt:
+          type: string
+          description: Shared voting reason prompt for poll types without per-option prompts, such as poll, score, and ranked_choice.
+        stance_reason_required:
+          type: string
+          enum: [disabled, optional, required, required_for_disagree_or_block, required_for_block]
+          default: optional
+          description: Whether voters must give a reason. Conditional requirements apply to disagree/block icons. Anonymous polls disable voting reasons.
         closing_at:
           type: [string, "null"]
           format: date-time
@@ -1123,6 +1137,45 @@ components:
           items: {type: string, format: email}
         recipient_message: {type: string}
         notify_recipients: {type: boolean}
+      additionalProperties: false
+    PollOptionInput:
+      type: object
+      description: A detailed poll option. Name is required for a new option. Existing option IDs must belong to the poll being edited; anonymous polls freeze options after the first ballot.
+      properties:
+        id:
+          type: integer
+          description: Existing option ID when editing or removing; omit when creating an option.
+        name:
+          type: string
+          description: Label shown to voters; required for a new option.
+        meaning:
+          type: string
+          description: Explains what choosing the option means.
+        prompt:
+          type: string
+          description: Per-option voting reason prompt for proposal, count, and check. Other poll types use reason_prompt on the poll.
+        icon:
+          type: string
+          description: Icon for proposal, count, and check; use agree, disagree, abstain, or block.
+        priority:
+          type: integer
+          description: Option order starting at zero. Supply distinct priorities; meeting options are ordered by date instead.
+        test_operator:
+          type: [string, "null"]
+          enum: [gte, lte, null]
+          description: Vote-share requirement; at least (gte) or no more than (lte). Null disables the requirement.
+        test_percent:
+          type: [integer, "null"]
+          minimum: 0
+          maximum: 100
+          description: Percentage for the vote-share requirement.
+        test_against:
+          type: [string, "null"]
+          enum: [score_percent, voter_percent, null]
+          description: Compare the option's share of total score/points cast, or its voters as a share of all eligible voters.
+        _destroy:
+          type: boolean
+          description: Set true with an existing option ID to remove it.
       additionalProperties: false
     WebhookInput:
       type: object

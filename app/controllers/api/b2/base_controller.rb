@@ -1,4 +1,9 @@
 class Api::B2::BaseController < Api::V1::SnorlaxBase
+  # B2 accepts flat or explicitly nested payloads. Rails' inferred JSON wrapper
+  # copies only model columns, dropping virtual fields such as group_id/options
+  # when permitted_params selects the automatically generated resource object.
+  wrap_parameters false
+
   include Api::B2::AuthenticatesApiKey
   include Api::B2::ResponseOptions
   include ::LoadAndAuthorize
@@ -38,6 +43,9 @@ class Api::B2::BaseController < Api::V1::SnorlaxBase
       jarams.delete(:discussion)
       jarams.delete(:poll)
       jarams.delete(:id)
+      # Comments use discussion_id to choose a parent in the controller; it
+      # isn't an assignable Comment attribute.
+      jarams.delete(:discussion_id) if resource_name == 'comment'
       resource_params = jarams
     end
 

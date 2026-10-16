@@ -20,6 +20,16 @@ Authorization: Bearer YOUR_API_KEY
 
 The examples use `YOUR_API_KEY`, group ID `123`, and `https://www.loomio.com/`. Replace these with your API key, group ID, and Loomio installation URL.
 
+<!-- translation-section: request-bodies -->
+
+### Sending request bodies
+
+Send JSON with `Content-Type: application/json`. The cURL examples use `--json`, which sets this header automatically. The create and edit endpoints for discussions, comments, and polls accept either a flat object or an object nested under the resource name, such as `{"poll": {...}}`.
+
+Send arrays as JSON arrays, such as `"options": ["foo", "bar"]`. If you use form encoding instead, arrays need bracketed field names, such as `options[]=foo&options[]=bar`; repeating `options=foo&options=bar` keeps only the last value.
+
+Check the HTTP status and response body after each request. A validation failure returns `422` with an `errors` object; a successful poll creation returns the poll in `polls` and its options in `poll_options`.
+
 <!-- translation-section: endpoint-summary -->
 
 ## Endpoint summary
@@ -76,7 +86,8 @@ User API responses use a compound format: the primary records are accompanied by
 Pass `compact=1` to omit bulky related topics, groups, parent groups, memberships, reactions, tags, and translations. Primary records and the related records needed to interpret their content remain present.
 
 ```bash
-curl -H 'Authorization: Bearer YOUR_API_KEY' 'https://www.loomio.com/api/b2/threads/123/items?compact=1'
+curl 'https://www.loomio.com/api/b2/threads/123/items?compact=1' \
+  -H 'Authorization: Bearer YOUR_API_KEY'
 ```
 
 For direct control, pass `exclude_types` with space-separated singular record types. For example, `exclude_types=group reaction` omits related groups and reactions. Common values are `topic`, `group`, `parent`, `membership`, `reaction`, `tag`, `translation`, `user`, `discussion`, `poll`, `poll_option`, `stance`, `stance_choice`, `outcome`, and `topic_item`. Exclusions apply to related records, not the primary resource requested by the endpoint.
@@ -110,7 +121,13 @@ Create a comment in a discussion as the API-key user.
 #### Example
 
 ```bash
-curl -H 'Authorization: Bearer YOUR_API_KEY' -X POST -H 'Content-Type: application/json' -d '{"discussion_id": 123, "body":"example comment", "body_format":"md"}' https://www.loomio.com/api/b2/comments
+curl https://www.loomio.com/api/b2/comments \
+  -H 'Authorization: Bearer YOUR_API_KEY' \
+  --json '{
+    "discussion_id": 123,
+    "body": "example comment",
+    "body_format": "md"
+  }'
 ```
 
 <!-- translation-section: edit-comment -->
@@ -135,7 +152,13 @@ Edit a comment as the API-key user. The same permissions apply as in Loomio: the
 #### Example
 
 ```bash
-curl -H 'Authorization: Bearer YOUR_API_KEY' -X PATCH -H 'Content-Type: application/json' -d '{"body":"updated comment", "body_format":"md"}' https://www.loomio.com/api/b2/comments/123
+curl https://www.loomio.com/api/b2/comments/123 \
+  -X PATCH \
+  -H 'Authorization: Bearer YOUR_API_KEY' \
+  --json '{
+    "body": "updated comment",
+    "body_format": "md"
+  }'
 ```
 
 <!-- translation-section: soft-delete-comment -->
@@ -151,7 +174,9 @@ Soft delete a comment as the API-key user. This discards the comment, hides its 
 #### Example
 
 ```bash
-curl -H 'Authorization: Bearer YOUR_API_KEY' -X DELETE https://www.loomio.com/api/b2/comments/123
+curl https://www.loomio.com/api/b2/comments/123 \
+  -X DELETE \
+  -H 'Authorization: Bearer YOUR_API_KEY'
 ```
 
 <!-- translation-section: discussions -->
@@ -186,7 +211,15 @@ Create a discussion as the API-key user.
 #### Example
 
 ```bash
-curl -H 'Authorization: Bearer YOUR_API_KEY' -X POST -H 'Content-Type: application/json' -d '{"group_id": 123, "title":"example thread", "recipient_emails":["person@example.com"]}' https://www.loomio.com/api/b2/discussions
+curl https://www.loomio.com/api/b2/discussions \
+  -H 'Authorization: Bearer YOUR_API_KEY' \
+  --json '{
+    "group_id": 123,
+    "title": "example thread",
+    "recipient_emails": [
+      "person@example.com"
+    ]
+  }'
 ```
 
 <!-- translation-section: show-discussion -->
@@ -202,7 +235,8 @@ Fetch a discussion using the discussion ID, an integer, or key, a string.
 #### Example
 
 ```bash
-curl -H 'Authorization: Bearer YOUR_API_KEY' https://www.loomio.com/api/b2/discussions/abc123
+curl https://www.loomio.com/api/b2/discussions/abc123 \
+  -H 'Authorization: Bearer YOUR_API_KEY'
 ```
 
 <!-- translation-section: list-discussions -->
@@ -231,7 +265,8 @@ Legacy: `per` and `from` are accepted as aliases for `limit` and `offset` and wi
 #### Example
 
 ```bash
-curl -H 'Authorization: Bearer YOUR_API_KEY' 'https://www.loomio.com/api/b2/discussions?group_id=123'
+curl 'https://www.loomio.com/api/b2/discussions?group_id=123' \
+  -H 'Authorization: Bearer YOUR_API_KEY'
 ```
 
 <!-- translation-section: edit-discussion -->
@@ -261,7 +296,14 @@ Edit a discussion as the API-key user. The same permissions apply as in Loomio: 
 #### Example
 
 ```bash
-curl -H 'Authorization: Bearer YOUR_API_KEY' -X PATCH -H 'Content-Type: application/json' -d '{"title":"updated thread title", "description":"updated context", "description_format":"md"}' https://www.loomio.com/api/b2/discussions/123
+curl https://www.loomio.com/api/b2/discussions/123 \
+  -X PATCH \
+  -H 'Authorization: Bearer YOUR_API_KEY' \
+  --json '{
+    "title": "updated thread title",
+    "description": "updated context",
+    "description_format": "md"
+  }'
 ```
 
 <!-- translation-section: soft-delete-discussion -->
@@ -277,7 +319,9 @@ Soft delete a discussion as the API-key user. This discards the discussion and k
 #### Example
 
 ```bash
-curl -H 'Authorization: Bearer YOUR_API_KEY' -X DELETE https://www.loomio.com/api/b2/discussions/123
+curl https://www.loomio.com/api/b2/discussions/123 \
+  -X DELETE \
+  -H 'Authorization: Bearer YOUR_API_KEY'
 ```
 
 <!-- translation-section: groups -->
@@ -298,7 +342,8 @@ Return the groups in which the API-key user has an active membership.
 | `offset` | Integer, optional, default 0. Offset for pagination |
 
 ```bash
-curl -H 'Authorization: Bearer YOUR_API_KEY' 'https://www.loomio.com/api/b2/groups?limit=50&offset=0'
+curl 'https://www.loomio.com/api/b2/groups?limit=50&offset=0' \
+  -H 'Authorization: Bearer YOUR_API_KEY'
 ```
 
 The response contains a `groups` page ordered by ascending group ID, with the full matching group count in `meta.total`. It includes parent groups and subgroups, including groups whose subscription is not currently active. Check the `enabled` field when an integration should operate only on enabled groups.
@@ -335,8 +380,11 @@ Return one group visible to the API-key user.
 The identifier can be the group's numeric ID, key or handle.
 
 ```bash
-curl -H 'Authorization: Bearer YOUR_API_KEY' https://www.loomio.com/api/b2/groups/123
-curl -H 'Authorization: Bearer YOUR_API_KEY' https://www.loomio.com/api/b2/groups/example-group
+curl https://www.loomio.com/api/b2/groups/123 \
+  -H 'Authorization: Bearer YOUR_API_KEY'
+
+curl https://www.loomio.com/api/b2/groups/example-group \
+  -H 'Authorization: Bearer YOUR_API_KEY'
 ```
 
 The response contains the group in the `groups` array and uses the same fields as the list endpoint. A request for a group the API-key user cannot access returns a permission error.
@@ -372,7 +420,8 @@ The response contains a page of `memberships` and related `users`. `meta.total` 
 #### Example
 
 ```bash
-curl -H 'Authorization: Bearer YOUR_API_KEY' 'https://www.loomio.com/api/b2/memberships?group_id=123&limit=50&offset=0'
+curl 'https://www.loomio.com/api/b2/memberships?group_id=123&limit=50&offset=0' \
+  -H 'Authorization: Bearer YOUR_API_KEY'
 ```
 
 <!-- translation-section: manage-memberships -->
@@ -398,13 +447,28 @@ Send a list of emails. It will invite all the new email addresses to the group. 
 #### Example
 
 ```bash
-curl -H 'Authorization: Bearer YOUR_API_KEY' -X POST -H 'Content-Type: application/json' -d '{"group_id": 123, "emails":["person@example.com"]}' https://www.loomio.com/api/b2/memberships
+curl https://www.loomio.com/api/b2/memberships \
+  -H 'Authorization: Bearer YOUR_API_KEY' \
+  --json '{
+    "group_id": 123,
+    "emails": [
+      "person@example.com"
+    ]
+  }'
 ```
 
 If you pass `remove_absent=1`, any members of the group who were not included in the list will be removed from the group. Be careful, you could remove everyone in your group.
 
 ```bash
-curl -H 'Authorization: Bearer YOUR_API_KEY' -X POST -H 'Content-Type: application/json' -d '{"group_id": 123, "emails":["person@example.com"], "remove_absent": 1}' https://www.loomio.com/api/b2/memberships
+curl https://www.loomio.com/api/b2/memberships \
+  -H 'Authorization: Bearer YOUR_API_KEY' \
+  --json '{
+    "group_id": 123,
+    "emails": [
+      "person@example.com"
+    ],
+    "remove_absent": 1
+  }'
 ```
 
 This returns an object with `{added_emails: ["person@added.com"], removed_emails: ["person@removed.com"]}`.
@@ -440,7 +504,8 @@ The API applies the same group visibility rules as the in-product report. A user
 ### Example
 
 ```bash
-curl -H 'Authorization: Bearer YOUR_API_KEY' 'https://www.loomio.com/api/b2/reports?section=users&group_scope=custom&group_ids=123&member_type=delegate&start_month=2026-01&end_month=2026-09'
+curl 'https://www.loomio.com/api/b2/reports?section=users&group_scope=custom&group_ids=123&member_type=delegate&start_month=2026-01&end_month=2026-09' \
+  -H 'Authorization: Bearer YOUR_API_KEY'
 ```
 
 The `users` array contains complete activity rows:
@@ -492,7 +557,10 @@ Create a poll as the API-key user.
 | `poll_type` | String, required. Values: `proposal`, `poll`, `count`, `score`, `ranked_choice`, `meeting`, `dot_vote` |
 | `details` | String, optional. The body text of the poll |
 | `details_format` | String, optional, default `md`. Values: `md` or `html` |
-| `options` | Array of strings. If `poll_type` is `proposal`, valid values are `agree`, `disagree`, `abstain`, `block`. If `poll_type` is `meeting`, provide ISO 8601 date or datetime strings. For all other poll types, any string is valid |
+| `options` | Simple option names as an array of strings. For `proposal`, use `agree`, `disagree`, `abstain`, or `block` to get the standard labels, icons, meanings, and prompts. For `meeting`, provide ISO 8601 date or datetime strings. For other poll types, provide option names. For detailed options, use `poll_options_attributes` instead |
+| `poll_options_attributes` | Alternative to `options`: an array of option objects with names, meanings, prompts, icons, and ordering. See [Create a poll with detailed options](#create-a-poll-with-detailed-options) |
+| `reason_prompt` | String, optional. Shared prompt for the voting reason, used by poll types without per-option prompts, such as `poll`, `score`, and `ranked_choice` |
+| `stance_reason_required` | String, default `optional`. Values: `disabled`, `optional`, `required`, `required_for_disagree_or_block`, `required_for_block`. The last two apply to the `disagree` and `block` icons. Anonymous polls disable voting reasons |
 | `closing_at` | ISO 8601 string or null, default null. Example: `2026-09-01T12:00:00Z`. If null, voting is disabled and poll is considered work in progress |
 | `specified_voters_only` | Boolean, optional, default false. If true, only specified people can vote. If false, everyone in the group will be invited to vote |
 | `hide_results` | String, optional, default `off`. Values: `off`, `until_vote`, `until_closed` |
@@ -510,8 +578,123 @@ Create a poll as the API-key user.
 #### Example
 
 ```bash
-curl -H 'Authorization: Bearer YOUR_API_KEY' -X POST -H 'Content-Type: application/json' -d '{"group_id": 123, "title":"example poll", "poll_type": "proposal", "options": ["agree", "disagree"], "closing_at": "2026-09-01T12:00:00Z", "recipient_emails":["person@example.com"]}' https://www.loomio.com/api/b2/polls
+curl https://www.loomio.com/api/b2/polls \
+  -H 'Authorization: Bearer YOUR_API_KEY' \
+  --json '{
+    "group_id": 123,
+    "title": "example poll",
+    "poll_type": "proposal",
+    "options": [
+      "agree",
+      "disagree"
+    ],
+    "closing_at": "2026-09-01T12:00:00Z",
+    "recipient_emails": [
+      "person@example.com"
+    ]
+  }'
 ```
+
+<!-- translation-section: poll-many-options -->
+
+#### Create a draft poll with many options
+
+Send all option names in the `options` array. Omitting `closing_at` creates a work-in-progress poll with voting disabled; it does not hide the poll from people who can read its thread. Add a future `closing_at` when you are ready to open voting.
+
+Add all your option names to the array:
+
+```bash
+curl https://www.loomio.com/api/b2/polls \
+  -H 'Authorization: Bearer YOUR_API_KEY' \
+  --json '{
+    "group_id": 123,
+    "title": "Meeting venue",
+    "poll_type": "poll",
+    "options": [
+      "Town hall",
+      "Library",
+      "Community centre"
+    ]
+  }'
+```
+
+<!-- translation-section: poll-detailed-options -->
+
+#### Create a poll with detailed options
+
+Use `options` for a list of names, or `poll_options_attributes` when each option needs a meaning, a reason prompt, or an icon. Choose one format per request. Both formats work in a flat JSON body or inside a `poll` object.
+
+Each object in `poll_options_attributes` accepts these fields:
+
+| Field | Description |
+| --- | --- |
+| `name` | String, required for a new option. The label shown to voters |
+| `meaning` | String, optional. Explains what choosing this option means |
+| `prompt` | String, optional. Reason prompt shown when this option is selected in a `proposal`, `count`, or `check`. For other poll types, set `reason_prompt` on the poll |
+| `icon` | String, optional. For `proposal`, `count`, and `check`, use `agree`, `disagree`, `abstain`, or `block` |
+| `priority` | Integer. Option order, starting at `0`. Supply a distinct priority for each option; meeting options are ordered by date instead |
+| `test_operator` | String or null, optional. Vote-share requirement: `gte` means at least, `lte` means no more than. Set to null to disable the requirement |
+| `test_percent` | Integer, optional. Percentage for the vote-share requirement, from `0` to `100` |
+| `test_against` | String, optional. `score_percent` compares the option's share of total score or points cast; `voter_percent` compares its voters with all eligible voters |
+| `id` | Integer. Include when editing an existing option; omit for a new option |
+| `_destroy` | Boolean, optional. Set to `true` with an existing option's `id` to remove it |
+
+Create a proposal with custom option labels and prompts:
+
+```bash
+curl https://www.loomio.com/api/b2/polls \
+  -H 'Authorization: Bearer YOUR_API_KEY' \
+  --json '{
+    "group_id": 123,
+    "title": "Should we adopt this proposal?",
+    "poll_type": "proposal",
+    "stance_reason_required": "optional",
+    "poll_options_attributes": [
+      {
+        "name": "Support",
+        "meaning": "I support adopting this proposal",
+        "prompt": "What do you support about it?",
+        "icon": "agree",
+        "priority": 0
+      },
+      {
+        "name": "Oppose",
+        "meaning": "I would prefer another approach",
+        "prompt": "What would you change?",
+        "icon": "disagree",
+        "priority": 1
+      }
+    ]
+  }'
+```
+
+For a regular poll, use the same detailed option format with a shared `reason_prompt` on the poll:
+
+```bash
+curl https://www.loomio.com/api/b2/polls \
+  -H 'Authorization: Bearer YOUR_API_KEY' \
+  --json '{
+    "group_id": 123,
+    "title": "Choose a venue",
+    "poll_type": "poll",
+    "reason_prompt": "Why do you prefer this venue?",
+    "stance_reason_required": "optional",
+    "poll_options_attributes": [
+      {
+        "name": "Town hall",
+        "meaning": "Central, accessible venue",
+        "priority": 0
+      },
+      {
+        "name": "Library",
+        "meaning": "Smaller room with no hire fee",
+        "priority": 1
+      }
+    ]
+  }'
+```
+
+These examples omit `closing_at`, so voting stays disabled until a future closing date is set.
 
 <!-- translation-section: show-poll -->
 
@@ -526,7 +709,8 @@ Fetch a poll using the poll ID, an integer, or key, a string.
 #### Example
 
 ```bash
-curl -H 'Authorization: Bearer YOUR_API_KEY' https://www.loomio.com/api/b2/polls/abc123
+curl https://www.loomio.com/api/b2/polls/abc123 \
+  -H 'Authorization: Bearer YOUR_API_KEY'
 ```
 
 <!-- translation-section: list-polls -->
@@ -555,7 +739,8 @@ Legacy: `per` and `from` are accepted as aliases for `limit` and `offset` and wi
 #### Example
 
 ```bash
-curl -H 'Authorization: Bearer YOUR_API_KEY' 'https://www.loomio.com/api/b2/polls?group_id=123'
+curl 'https://www.loomio.com/api/b2/polls?group_id=123' \
+  -H 'Authorization: Bearer YOUR_API_KEY'
 ```
 
 <!-- translation-section: edit-poll -->
@@ -576,6 +761,9 @@ Edit a poll as the API-key user. The same permissions apply as in Loomio: the us
 | `details` | Updated poll details |
 | `details_format` | Either `md` or `html`, optional, default `md` |
 | `options` | Updated option names. Changing options may affect existing votes depending on poll state |
+| `poll_options_attributes` | Alternative to `options`. Update detailed option objects by `id`, add objects without an `id`, or remove an option with `id` and `_destroy: true`. Omitted options remain unchanged |
+| `reason_prompt` | Updated shared reason prompt for poll types without per-option prompts |
+| `stance_reason_required` | Updated reason requirement; the same values apply as when creating a poll |
 | `closing_at` | ISO 8601 string or null |
 | `recipient_audience` | `group` or null. If `group`, the whole group will be notified |
 | `recipient_user_ids` | Array of user IDs to notify or invite |
@@ -587,8 +775,44 @@ Edit a poll as the API-key user. The same permissions apply as in Loomio: the us
 #### Example
 
 ```bash
-curl -H 'Authorization: Bearer YOUR_API_KEY' -X PATCH -H 'Content-Type: application/json' -d '{"title":"updated poll title", "details":"updated details", "details_format":"md"}' https://www.loomio.com/api/b2/polls/123
+curl https://www.loomio.com/api/b2/polls/123 \
+  -X PATCH \
+  -H 'Authorization: Bearer YOUR_API_KEY' \
+  --json '{
+    "title": "updated poll title",
+    "details": "updated details",
+    "details_format": "md"
+  }'
 ```
+
+<!-- translation-section: edit-poll-detailed-options -->
+
+#### Edit detailed options
+
+Get option IDs from the `poll_options` array in a create or get response. Send only the fields to change, together with each existing option's `id`:
+
+```bash
+curl https://www.loomio.com/api/b2/polls/123 \
+  -X PATCH \
+  -H 'Authorization: Bearer YOUR_API_KEY' \
+  --json '{
+    "poll_options_attributes": [
+      {
+        "id": 456,
+        "meaning": "Updated explanation",
+        "prompt": "What would improve this proposal?"
+      },
+      {
+        "name": "Abstain",
+        "meaning": "I leave the decision to others",
+        "icon": "abstain",
+        "priority": 2
+      }
+    ]
+  }'
+```
+
+Option IDs must belong to the poll being edited. Editing requires permission to edit the poll, and closed polls cannot be edited. Anonymous polls also freeze option configuration after the first ballot is submitted.
 
 <!-- translation-section: soft-delete-poll -->
 
@@ -603,7 +827,9 @@ Soft delete a poll as the API-key user. This discards the poll and keeps the pol
 #### Example
 
 ```bash
-curl -H 'Authorization: Bearer YOUR_API_KEY' -X DELETE https://www.loomio.com/api/b2/polls/123
+curl https://www.loomio.com/api/b2/polls/123 \
+  -X DELETE \
+  -H 'Authorization: Bearer YOUR_API_KEY'
 ```
 
 <!-- translation-section: search -->
@@ -630,7 +856,8 @@ Search discussions, comments, polls, votes, and outcomes visible to the API-key 
 | `order` | Set to `authored_at_desc` to order matching content by authoring time |
 
 ```bash
-curl -H 'Authorization: Bearer YOUR_API_KEY' 'https://www.loomio.com/api/b2/search?query=quarterly+planning&type=Discussion'
+curl 'https://www.loomio.com/api/b2/search?query=quarterly+planning&type=Discussion' \
+  -H 'Authorization: Bearer YOUR_API_KEY'
 ```
 
 The response contains a `search_results` array. Each result identifies the matched record and its visible context with fields including `searchable_type`, `searchable_id`, `highlight`, `group_id`, `group_name`, `discussion_key`, `poll_key`, `author_id`, `author_name`, `authored_at`, and `tags`. Fields that do not apply to a result are `null`.
@@ -661,7 +888,8 @@ List the discussion and poll threads visible to the API-key user, ordered by lat
 #### Example
 
 ```bash
-curl -H 'Authorization: Bearer YOUR_API_KEY' 'https://www.loomio.com/api/b2/threads?limit=50&offset=0'
+curl 'https://www.loomio.com/api/b2/threads?limit=50&offset=0' \
+  -H 'Authorization: Bearer YOUR_API_KEY'
 ```
 
 <!-- translation-section: read-thread -->
@@ -731,7 +959,8 @@ Return the chat integrations configured for a group. The API-key user must be an
 | `offset` | Integer, optional, default 0. Offset for pagination |
 
 ```bash
-curl -H 'Authorization: Bearer YOUR_API_KEY' 'https://www.loomio.com/api/b2/chatbots?group_id=123&limit=50&offset=0'
+curl 'https://www.loomio.com/api/b2/chatbots?group_id=123&limit=50&offset=0' \
+  -H 'Authorization: Bearer YOUR_API_KEY'
 ```
 
 The response contains a `chatbots` page ordered by ascending integration ID, with the full count for the group in `meta.total`. Each integration has these fields:
@@ -754,19 +983,22 @@ The response contains a `chatbots` page ordered by ascending integration ID, wit
 `POST /api/b2/chatbots`
 
 ```bash
-curl -X POST \
+curl https://www.loomio.com/api/b2/chatbots \
   -H 'Authorization: Bearer YOUR_API_KEY' \
-  -H 'Content-Type: application/json' \
-  -d '{
+  --json '{
     "group_id": 123,
     "name": "Planning system",
     "kind": "webhook",
     "webhook_kind": "markdown",
     "server": "https://hooks.example.org/loomio/unguessable-token",
-    "event_kinds": ["new_discussion", "new_comment", "poll_created", "outcome_created"],
+    "event_kinds": [
+      "new_discussion",
+      "new_comment",
+      "poll_created",
+      "outcome_created"
+    ],
     "notification_only": false
-  }' \
-  https://www.loomio.com/api/b2/chatbots
+  }'
 ```
 
 The API-key user must be an administrator of `group_id`. The destination is validated as a public URL before it is saved.
@@ -780,11 +1012,16 @@ The API-key user must be an administrator of `group_id`. The destination is vali
 Send any fields that should change. The webhook cannot be transferred to another group by changing `group_id`.
 
 ```bash
-curl -X PATCH \
+curl https://www.loomio.com/api/b2/chatbots/456 \
+  -X PATCH \
   -H 'Authorization: Bearer YOUR_API_KEY' \
-  -H 'Content-Type: application/json' \
-  -d '{"name":"Planning events","event_kinds":["new_discussion","outcome_created"]}' \
-  https://www.loomio.com/api/b2/chatbots/456
+  --json '{
+    "name": "Planning events",
+    "event_kinds": [
+      "new_discussion",
+      "outcome_created"
+    ]
+  }'
 ```
 
 <!-- translation-section: test-a-webhook-destination -->
@@ -796,11 +1033,12 @@ Send a Markdown-compatible test message to a destination before or after saving 
 `POST /api/b2/chatbots/check`
 
 ```bash
-curl -X POST \
+curl https://www.loomio.com/api/b2/chatbots/check \
   -H 'Authorization: Bearer YOUR_API_KEY' \
-  -H 'Content-Type: application/json' \
-  -d '{"group_id":123,"server":"https://hooks.example.org/loomio/unguessable-token"}' \
-  https://www.loomio.com/api/b2/chatbots/check
+  --json '{
+    "group_id": 123,
+    "server": "https://hooks.example.org/loomio/unguessable-token"
+  }'
 ```
 
 <!-- translation-section: delete-a-webhook -->
@@ -810,7 +1048,9 @@ curl -X POST \
 `DELETE /api/b2/chatbots/:id`
 
 ```bash
-curl -X DELETE -H 'Authorization: Bearer YOUR_API_KEY' https://www.loomio.com/api/b2/chatbots/456
+curl https://www.loomio.com/api/b2/chatbots/456 \
+  -X DELETE \
+  -H 'Authorization: Bearer YOUR_API_KEY'
 ```
 
 Deleting the configuration stops future deliveries. It does not delete any Loomio group content.
