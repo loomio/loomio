@@ -34,12 +34,15 @@ module Docs
     end
 
     def self.generated_text(root, locale, source_path, section, fingerprint)
-      current_path = "docs/#{locale}/#{source_path}"
+      current_path = "docs/help/#{locale}/#{source_path}"
+      previous_path = "docs/#{locale}/#{source_path}"
       legacy_path = "docs/translations/#{locale}/#{source_path.sub(/\.md\z/, '.yml')}"
-      commits, status = Open3.capture2("git", "log", "--format=%H", "--", current_path, legacy_path, chdir: root.parent.to_s)
+      # Search both Markdown locations so moving the help site preserves the
+      # generated baselines used to recognize customer translation corrections.
+      commits, status = Open3.capture2("git", "log", "--format=%H", "--", current_path, previous_path, legacy_path, chdir: root.parent.parent.to_s)
       raise "Cannot read translation history" unless status.success?
       commits.lines.map(&:strip).each do |revision|
-        text = git_file(root, revision, current_path)
+        text = git_file(root, revision, current_path) || git_file(root, revision, previous_path)
         if text
           candidate = Localization.parse(text).by_id[section.id]
           return candidate.text if candidate && candidate.text_hash == fingerprint
@@ -66,7 +69,7 @@ module Docs
     end
 
     def self.git_file(root, revision, path)
-      text, status = Open3.capture2("git", "show", "#{revision}:#{path}", chdir: root.parent.to_s, err: File::NULL)
+      text, status = Open3.capture2("git", "show", "#{revision}:#{path}", chdir: root.to_s, err: File::NULL)
       status.success? ? text : nil
     end
   end

@@ -3,7 +3,7 @@
 require "minitest/autorun"
 require "minitest/mock"
 require "tmpdir"
-require_relative "../../docs/translate"
+require_relative "../../docs/help/translate"
 
 class DocsLocalizationTest < Minitest::Test
   L = Docs::Localization

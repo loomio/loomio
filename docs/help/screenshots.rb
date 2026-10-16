@@ -13,14 +13,14 @@ module Docs
   # The cache has one PNG per language/path and one manifest, never historical
   # copies. Regeneration is selected explicitly; filenames stay stable.
   module Screenshots
-    ROOT = Pathname(__dir__).parent.freeze
+    ROOT = Pathname(__dir__).parent.parent.freeze
     URL_ROOT = "/docs-screenshots"
     HOSTED_ROOT = "https://user-manual-screenshots.loomio.com"
     BUCKET = "user-manual-screenshots"
 
     def self.catalog
       @catalog ||= begin
-        output, status = Open3.capture2("node", ROOT.join("docs/screenshot_catalog.js").to_s)
+        output, status = Open3.capture2("node", ROOT.join("docs/help/screenshot_catalog.js").to_s)
         raise "Cannot discover screenshot recipes" unless status.success?
         JSON.parse(output)
       end

@@ -6,7 +6,7 @@
 # Writes tmp/glossary/docs_<locale>.csv for review and prints a count per
 # language. Informational: it never fails the build, because an English word
 # is not always used in its Loomio sense.
-# Usage: bundle exec ruby docs/check_glossary.rb [LOCALE...]
+# Usage: bundle exec ruby docs/help/check_glossary.rb [LOCALE...]
 
 require "csv"
 require "fileutils"
@@ -38,7 +38,7 @@ module Docs
       end
     end
 
-    def report(output: @root.join("../tmp/glossary"))
+    def report(output: @root.join("../../tmp/glossary"))
       FileUtils.mkdir_p(output)
       @locales.to_h do |locale|
         rows = problems(locale)

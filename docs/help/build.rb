@@ -18,7 +18,7 @@ require_relative "screenshots"
 module Docs
   SOURCE_ROOT = Pathname(__dir__).expand_path.freeze
   ENGLISH_ROOT = SOURCE_ROOT.join("en").freeze
-  OUTPUT_ROOT = Pathname(ENV.fetch("DOCS_OUTPUT", SOURCE_ROOT.join("../public/docs"))).expand_path.freeze
+  OUTPUT_ROOT = Pathname(ENV.fetch("DOCS_OUTPUT", SOURCE_ROOT.join("../../public/docs"))).expand_path.freeze
   BASE_PATH = ENV.fetch("DOCS_BASE_PATH", "/docs").sub(%r{/+\z}, "").freeze
   SITE_ORIGIN = ENV.fetch("DOCS_SITE_ORIGIN", BASE_PATH.empty? ? "https://help.loomio.com" : "https://www.loomio.com").freeze
   REDIRECT_TARGET = ENV["DOCS_REDIRECT_TARGET"]&.sub(%r{/+\z}, "")&.freeze
@@ -212,7 +212,7 @@ module Docs
       build_search_index
       validate_site(all_pages)
 
-      puts "built #{pages.length} pages in #{OUTPUT_ROOT.relative_path_from(SOURCE_ROOT.parent)}"
+      puts "built #{pages.length} pages in #{OUTPUT_ROOT.relative_path_from(SOURCE_ROOT.parent.parent)}"
       translatable = pages.count { |page| Localization.translated?(page.source_path) }
       translations.each { |locale, localized| puts "  #{locale}: #{localized.length} of #{translatable} translatable pages" }
     end
@@ -305,7 +305,7 @@ module Docs
       ])
 
       validate_cloudflare_csv(exact_path, prefix_path)
-      puts "built #{exact_redirects.length} exact redirects and 2 prefix redirects in #{OUTPUT_ROOT.relative_path_from(SOURCE_ROOT.parent)}"
+      puts "built #{exact_redirects.length} exact redirects and 2 prefix redirects in #{OUTPUT_ROOT.relative_path_from(SOURCE_ROOT.parent.parent)}"
     end
 
     def redirect_target_url(path)
@@ -738,8 +738,8 @@ module Docs
     end
 
     def build_search_index
-      binary = ENV.fetch("PAGEFIND_BINARY", SOURCE_ROOT.join("../vue/node_modules/.bin/pagefind").to_s)
-      license = ENV.fetch("PAGEFIND_LICENSE", SOURCE_ROOT.join("../vue/node_modules/pagefind/LICENSE/LICENSE").to_s)
+      binary = ENV.fetch("PAGEFIND_BINARY", SOURCE_ROOT.join("../../vue/node_modules/.bin/pagefind").to_s)
+      license = ENV.fetch("PAGEFIND_LICENSE", SOURCE_ROOT.join("../../vue/node_modules/pagefind/LICENSE/LICENSE").to_s)
       raise "Pagefind binary not found at #{binary}; run npm install in vue/" unless File.executable?(binary)
       raise "Pagefind license not found at #{license}; run npm install in vue/" unless File.file?(license)
 

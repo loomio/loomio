@@ -36,7 +36,7 @@ module Docs
       failures = translate(@locales.flat_map { |locale| pending_paths(locale).map { |path| [locale, path] } })
       raise "Manual translation failed:\n- #{failures.join("\n- ")}" if failures.any?
       validate!
-      before.keys.select { |path| before.fetch(path) != contents(path) }.map { |path| "docs/#{path}" }
+      before.keys.select { |path| before.fetch(path) != contents(path) }.map { |path| "docs/help/#{path}" }
     end
 
     def pending_paths(locale)
@@ -98,7 +98,7 @@ end
 
 if $PROGRAM_NAME == __FILE__
   begin
-    raise "Usage: bundle exec ruby docs/sync_translations.rb [--check | --retranslate]" unless ARGV.empty? || ARGV == %w[--check] || ARGV == %w[--retranslate]
+    raise "Usage: bundle exec ruby docs/help/sync_translations.rb [--check | --retranslate]" unless ARGV.empty? || ARGV == %w[--check] || ARGV == %w[--retranslate]
     sync = Docs::TranslationSync.new(retranslate: ARGV == ["--retranslate"])
     ARGV == ["--check"] ? sync.validate! : sync.update
     puts "Published manual translations are current and structurally valid."

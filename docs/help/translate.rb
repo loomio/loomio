@@ -1,10 +1,10 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
-# Update missing or stale sections in docs/<locale>/<page>.md. Unchanged
+# Update missing or stale sections in docs/help/<locale>/<page>.md. Unchanged
 # sections stay untouched. Customer corrections are detected from generated
 # text hashes and supplied as context. Their correction notes travel with the section.
-# Usage: bundle exec ruby docs/translate.rb LOCALE [PAGE.md...]
+# Usage: bundle exec ruby docs/help/translate.rb LOCALE [PAGE.md...]
 
 require "date"
 require "fileutils"
@@ -12,13 +12,13 @@ require "json"
 require "open3"
 require "tempfile"
 require_relative "corrections"
-require_relative "../lib/codex_translator"
-require_relative "../lib/translation_glossary"
+require_relative "../../lib/codex_translator"
+require_relative "../../lib/translation_glossary"
 
 module Docs
   class PageTranslator
     ROOT = Pathname(__dir__)
-    LOCALE_ROOT = ROOT.join("../config/locales")
+    LOCALE_ROOT = ROOT.join("../../config/locales")
     CHUNK_SECTIONS = 12
 
     # Each translator takes a prompt and returns the model's reply.
@@ -155,7 +155,7 @@ module Docs
         # Page provenance changes only when all sections are current. A partial
         # run retains the old Git revision for outstanding section comparisons.
         if source.sections.all? { |section| metadata["sections"][section.id] == section.text_hash }
-          current_path = "docs/en/#{source_path}"
+          current_path = "docs/help/en/#{source_path}"
           if Corrections.git_file(@root, revision, current_path)
             metadata["source_revision"] = revision
             metadata["source_file"] = current_path
@@ -182,7 +182,7 @@ module Docs
     end
 
     def source_revision
-      revision, status = Open3.capture2("git", "rev-parse", "HEAD", chdir: @root.parent.to_s)
+      revision, status = Open3.capture2("git", "rev-parse", "HEAD", chdir: @root.to_s)
       raise "Cannot read English source revision" unless status.success?
       revision.strip
     end
@@ -212,7 +212,7 @@ module Docs
       return nil unless revision
       unless @previous_sources.key?(source_path)
         file = target.metadata.fetch("source_file", "docs/en/#{source_path}")
-        text, status = Open3.capture2("git", "show", "#{revision}:#{file}", chdir: @root.parent.to_s, err: File::NULL)
+        text, status = Open3.capture2("git", "show", "#{revision}:#{file}", chdir: @root.to_s, err: File::NULL)
         @previous_sources[source_path] = status.success? ? Localization.parse(Localization.annotate(text)).by_id : {}
       end
       section = @previous_sources.fetch(source_path)[id]
@@ -360,6 +360,6 @@ end
 
 if $PROGRAM_NAME == __FILE__
   locale, *source_paths = ARGV
-  abort "Usage: bundle exec ruby docs/translate.rb LOCALE [PAGE.md...]" unless locale
+  abort "Usage: bundle exec ruby docs/help/translate.rb LOCALE [PAGE.md...]" unless locale
   Docs::PageTranslator.new(locale).run(source_paths)
 end

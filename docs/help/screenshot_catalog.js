@@ -5,7 +5,7 @@ const path = require('node:path');
 const vm = require('node:vm');
 const {createRequire} = require('node:module');
 
-const root = path.resolve(__dirname, '..');
+const root = path.resolve(__dirname, '../..');
 const directory = path.join(root, 'vue/tests/e2e/screenshots');
 let chain;
 chain = new Proxy(function() { return chain; }, {get() { return chain; }});
@@ -40,7 +40,7 @@ const images = new Map();
 for (const capture of captures) {
   // Only approved English assets are eligible. Photos, diagrams and manual
   // captures without a recipe remain shared English images.
-  if (!fs.existsSync(path.join(root, 'docs/en', capture.image))) continue;
+  if (!fs.existsSync(path.join(root, 'docs/help/en', capture.image))) continue;
   if (images.has(capture.image)) throw new Error(`Duplicate screenshot recipe: ${capture.image}`);
   images.set(capture.image, capture);
 }

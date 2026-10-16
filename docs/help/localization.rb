@@ -5,10 +5,10 @@ require "digest"
 require "pathname"
 require "yaml"
 require_relative "markdown"
-require_relative "../lib/translation_glossary"
+require_relative "../../lib/translation_glossary"
 
 module Docs
-  # English and translated pages share paths under docs/<locale>/. Stable
+  # English and translated pages share paths under docs/help/<locale>/. Stable
   # section comments survive paragraph splits and heading renames. Source
   # hashes track freshness; generated hashes protect customer corrections
   # without requiring people to edit the frontmatter.

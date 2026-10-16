@@ -5,16 +5,16 @@ Read [writing.md](writing.md) before writing documentation. Paths in these instr
 - Read [user_manual_translations.md](user_manual_translations.md) when translating the manual or changing its translation tooling, and when preparing a feature for merge.
 - Read [user_manual_screenshots.md](user_manual_screenshots.md) when generating, changing, reviewing, or publishing manual screenshots, and when preparing a feature for merge.
 - Follow [release_notes.md](release_notes.md) for release notes and release preparation.
-- These instruction files live under `docs/agents/`; they are repository guidance, not help-site pages. Do not add them to `docs/SUMMARY.md`.
+- These instruction files live under `docs/agents/`; they are repository guidance, not help-site pages. Do not add them to `docs/help/SUMMARY.md`.
 
 ## User manual
 
-- Loomio publishes `docs/en/user_manual/` with its own documentation site builder in `docs/build.rb`. When developing user-visible features or behaviour changes, consider the user manual's audience and update the relevant pages so the documentation stays in sync with the application. Follow `docs/AGENTS.md` when editing documentation.
-- During feature development, update the English manual only. Defer user-manual translations and documentation screenshot generation until the feature is ready for merge, unless the user explicitly requests them earlier. Validate English changes with `DOCS_LOCALES=en bundle exec ruby docs/build.rb`; complete translations, affected documentation screenshots, and the full documentation build when preparing the feature for merge.
+- Loomio publishes `docs/help/en/user_manual/` with its own documentation site builder in `docs/help/build.rb`. When developing user-visible features or behaviour changes, consider the user manual's audience and update the relevant pages so the documentation stays in sync with the application. Follow `docs/AGENTS.md` when editing documentation.
+- During feature development, update the English manual only. Defer user-manual translations and documentation screenshot generation until the feature is ready for merge, unless the user explicitly requests them earlier. Validate English changes with `DOCS_LOCALES=en bundle exec ruby docs/help/build.rb`; complete translations, affected documentation screenshots, and the full documentation build when preparing the feature for merge.
 
 ## Changelog
 
-- Add a new Markdown file under `docs/en/user_manual/changelog/` only for new features, changes to behaviour that users would notice, or fixes for long-standing bugs. Do not add changelog entries for minor or routine bug fixes.
+- Add a new Markdown file under `docs/help/en/user_manual/changelog/` only for new features, changes to behaviour that users would notice, or fixes for long-standing bugs. Do not add changelog entries for minor or routine bug fixes.
 - Name changelog files with the current date and a short feature slug, for example `2026-07-07_tags_improvements.md`. Write for Loomio power users: explain what changed, who can use it, permission effects, and visible workflow or interface changes without describing internal implementation details.
 
 ## API code examples
@@ -47,22 +47,22 @@ curl https://www.loomio.com/api/b2/polls \
 
 ## Help-site source and build
 
-The source and builder for the public help site live under `docs/`. The standalone Ruby builder renders Markdown through a Phlex template without booting Rails. By default it writes the site to `public/docs/` with URLs under `/docs`. Setting `DOCS_REDIRECT_TARGET` with an empty base path generates Cloudflare Bulk Redirect CSV files for moving `help.loomio.com` to the canonical site.
+The source and builder for the public help site live under `docs/help/`. The standalone Ruby builder renders Markdown through a Phlex template without booting Rails. By default it writes the site to `public/docs/` with URLs under `/docs`. Setting `DOCS_REDIRECT_TARGET` with an empty base path generates Cloudflare Bulk Redirect CSV files for moving `help.loomio.com` to the canonical site.
 
-- Keep user-manual source files under `docs/en/user_manual/`. Add every page that should be published to `docs/SUMMARY.md`; the builder does not publish orphaned Markdown files. Dated changelog files are source fragments for the consolidated changelog and are the exception to this rule.
+- Keep user-manual source files under `docs/help/en/user_manual/`. Add every page that should be published to `docs/help/SUMMARY.md`; the builder does not publish orphaned Markdown files. Dated changelog files are source fragments for the consolidated changelog and are the exception to this rule.
 - Write internal help links from the help-site root, beginning with `/en/`, and omit `.html`, `index.html`, and trailing slashes, for example `/en/user_manual/groups/settings`. The builder adds the configured hosting base path and rewrites relative asset paths where necessary.
-- Redirect source keys in `docs/redirects.yml` are relative to the generated `/en/` directory and must not start with `/en/`. Redirect targets should use the complete help-site path beginning with `/en/`.
-- When a public page path changes, retain its old URL in `docs/redirects.yml`. The Cloudflare export includes both current and legacy help URLs, and the `/docs` build includes static redirects for legacy paths.
+- Redirect source keys in `docs/help/redirects.yml` are relative to the generated `/en/` directory and must not start with `/en/`. Redirect targets should use the complete help-site path beginning with `/en/`.
+- When a public page path changes, retain its old URL in `docs/help/redirects.yml`. The Cloudflare export includes both current and legacy help URLs, and the `/docs` build includes static redirects for legacy paths.
 - During feature development, update the English manual and defer translations and documentation screenshot generation until the feature is ready for merge, unless the user explicitly requests them earlier. Validate English links, images, redirects, metadata, and the sitemap after changing manual pages, navigation, assets, or redirects:
 
   ```bash
-  DOCS_LOCALES=en bundle exec ruby docs/build.rb
+  DOCS_LOCALES=en bundle exec ruby docs/help/build.rb
   ```
 
 - When the feature is ready for merge, complete the affected translations and documentation screenshots, then validate the full site:
 
   ```bash
-  bundle exec ruby docs/build.rb
+  bundle exec ruby docs/help/build.rb
   ```
 
 - Generate the two ordered Cloudflare Bulk Redirect lists with:
@@ -71,10 +71,10 @@ The source and builder for the public help site live under `docs/`. The standalo
   DOCS_OUTPUT=/tmp/loomio-help-redirects \
     DOCS_BASE_PATH="" \
     DOCS_REDIRECT_TARGET=https://www.loomio.com/docs \
-    bundle exec ruby docs/build.rb
+    bundle exec ruby docs/help/build.rb
   ```
 
   Import `cloudflare-help-exact.csv` first and `cloudflare-help-prefixes.csv` second. Enable one Bulk Redirect Rule for each list in that order so exact legacy mappings take precedence over prefixes.
 
 - The renderer derives search descriptions from the first substantive paragraph. Add a near-top `<!-- seo-description: ... -->` override when that paragraph is not a useful page summary.
-- The renderer concatenates dated files under `docs/en/user_manual/changelog/` into the static changelog index, newest first. Do not add dated entries to `docs/SUMMARY.md`; they are published only as part of the consolidated changelog page.
+- The renderer concatenates dated files under `docs/help/en/user_manual/changelog/` into the static changelog index, newest first. Do not add dated entries to `docs/help/SUMMARY.md`; they are published only as part of the consolidated changelog page.
