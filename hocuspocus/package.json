@@ -23,7 +23,7 @@
     "test": "node --test *.test.mjs"
   },
   "dependencies": {
-    "@hocuspocus/server": "^4.7.0",
+    "@hocuspocus/server": "^4.7.1",
     "@sentry/node": "^11.6.0"
   }
 }
