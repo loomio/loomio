@@ -24,6 +24,6 @@
   },
   "dependencies": {
     "@hocuspocus/server": "^4.7.0",
-    "@sentry/node": "^11.6.0"
+    "@sentry/node": "^11.7.0"
   }
 }
