@@ -27,7 +27,7 @@
     "test": "nightwatch --retries 3 --headless"
   },
   "dependencies": {
-    "@hocuspocus/provider": "^4.7.0",
+    "@hocuspocus/provider": "^4.7.1",
     "@mdi/js": "^6.9.96",
     "@rails/actioncable": "^8.1.400",
     "@sentry/vue": "^11.6.0",
