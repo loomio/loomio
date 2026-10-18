@@ -1,154 +1,162 @@
 ---
 title: Felhasználói API
-source_revision: 28ecc59f68d407f76f08133bfa0172aadbb53065
-source_file: docs/en/user_manual/integrations/api/user-api.md
+source_revision: aa8cf2cef8336b4d86d7200c0d66c0eb8f973256
+source_file: docs/help/en/user_manual/integrations/api/user-api.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-15'
+  'on': '2026-10-17'
 sections:
   introduction: b6e6ec7463276869
-  response-size-and-related-records: 298da635bf97dadd
+  response-size-and-related-records: 8349c4d8e567a0c1
   endpoint-summary: 258f7560def524ec
   groups: 0473f1f7fb78f074
-  list-groups: 01de10c378eeba37
-  get-a-group: dffef659cb92745e
+  list-groups: e94dbf27dff819ff
+  get-a-group: 80912be614c0ea89
   webhooks: f65fa289f8c1b808
-  list-webhooks: 6093df92815f7156
-  create-a-webhook: 007312bcc204853a
-  update-a-webhook: 124b07d2c401e319
-  test-a-webhook-destination: 8fc3ac4ad10de6f6
-  delete-a-webhook: 34eda1e07d65db80
+  list-webhooks: 6ec5700a0ac5cbc7
+  create-a-webhook: 173ce08be83b4b58
+  update-a-webhook: 2bf0f59f8bff06ec
+  test-a-webhook-destination: 0637a17a98f20f4b
+  delete-a-webhook: 6ba2c6360e4f1d2a
   event-types: 73bfe87c8b790af3
   http-delivery: a32c763b6f816e65
   payload-formats: ca728b0ef542305c
   search: bb5a1cfc7a6179aa
-  params: 7eebe4e259830976
+  params: 1e7478b9883d2a47
   participation-report: a1798112a78390fe
   params-2: 464322ffc1ac56e5
-  example: 63bed6e82107f992
+  example: ba3f68d5b68a955b
   create-discussion: 958fc684640462a9
   params-3: 657d582c89333097
-  example-2: 57681d83fffe9515
+  example-2: bca512c06153265f
   show-discussion: 40102aeffe4f1286
-  example-3: c0ebd013a1b7fbd2
+  example-3: fe0959389ff4f2f6
   list-discussions: '09ff7f0d3a937b41'
   params-4: dcebc294fbb9d837
-  example-4: ffda1a4726380e2f
+  example-4: dd55f55bf83d135f
   list-threads: '09f7bd670e581400'
   params-5: 79b1cefac558effc
-  example-5: a40ae2317faab46d
+  example-5: 1864da3b097f66d6
   read-thread: ac36d1b81c1eeed4
   example-6: 8c582a286e04ca75
   edit-discussion: 918161e7aa8f4aa6
   params-6: b819796d34354623
-  example-7: 552295f78d3490af
+  example-7: 8b591051e20fa1e4
   soft-delete-discussion: c8ffe951171e6f07
-  example-8: 965c5761f34f9920
+  example-8: d0e726a1a20cc469
   create-comment: f95f56b81c8f22b5
   params-7: 5ad8ede0919c5f47
-  example-9: 70ee3750f1543e9b
+  example-9: 61514be87d3a8857
   edit-comment: 80322da74162d58f
   params-8: 288331c60f3c9b28
-  example-10: ec89de8cc86b6fc8
+  example-10: c0aed6ea023ff3d4
   soft-delete-comment: 04baf86923c7e8f1
-  example-11: f3675b780da755cd
+  example-11: 129076a53c6c4b31
   create-poll: cf62e787784a5e87
-  params-9: df1611a9dedef2d8
-  example-12: fa7410dd3a0a385f
+  params-9: 89465a6e2dfa6bdb
+  example-12: 4397219f26129191
   show-poll: d759508986aab08c
-  example-13: 2867289a6c2beb9d
+  example-13: 01f20dba176f4f23
   list-polls: 56e5ed4ae45e5428
   params-10: e68e8cf62b21488d
-  example-14: 40958a09c058d4cc
+  example-14: a1149e09d37d9b0a
   edit-poll: 65467ad0b431ddbf
-  params-11: 77f118397592bc05
-  example-15: e56befa0f2ae3360
+  params-11: 70b594511872194a
+  example-15: 8c4d585a050423ac
   soft-delete-poll: 61cf76310e08d7ff
-  example-16: afbf95df96734a4d
+  example-16: fb15cb7d90550c2f
   list-memberships: 5fab06bb8ecf1fd0
   params-12: decaff0790566fb0
-  example-17: 5d92092b70ce545a
+  example-17: 7714e1b8d2d07999
   manage-memberships: 802d39c06674d395
   params-13: 771b5338a4ba3d0b
-  example-18: a50b01823a6935a0
+  example-18: a06882d9d8de45f0
   pagination: 4171ca78df07d4fe
   comments: ccd37303241bac95
   discussions: 16ffe7a7b6202d3e
   memberships: e7cf8846c3179720
   polls: 821dcd89b5460804
   threads: 19bc02fc1c26317b
+  request-bodies: 0ec99fc25454f511
+  poll-many-options: 05024e64103f7d39
+  poll-detailed-options: a511f74ddaa0b6bf
+  edit-poll-detailed-options: 767b869e6b9efcff
 generated:
   introduction: 93a6b776daaa4726
-  response-size-and-related-records: 835cba65fdd04f59
+  response-size-and-related-records: a51a0206aa37f7f3
   endpoint-summary: 1cee47cfce7ccd5c
   groups: 416e445b12c9f929
-  list-groups: 023eee39c8a9f6c2
-  get-a-group: 2964e7eaa1534ec3
+  list-groups: 82df704f1b7b6075
+  get-a-group: 5d5b26798b2e022d
   webhooks: d8e2bffc0f7d2805
-  list-webhooks: d9050feaf2be0c8c
-  create-a-webhook: d7866d572a7b4495
-  update-a-webhook: d0e0447be3ec506e
-  test-a-webhook-destination: 3057b1d1557500b6
-  delete-a-webhook: 59b80e297da6ffe1
+  list-webhooks: 3cbc9d79ac0a82b9
+  create-a-webhook: b9142d6815b104f9
+  update-a-webhook: 702580bb827b5a7b
+  test-a-webhook-destination: 53007056d106b8f6
+  delete-a-webhook: 79c6e395acded619
   event-types: 2334d732d671806a
   http-delivery: 150134f105a1af59
   payload-formats: a14cda9d4b4b6899
   search: 682fce972f6720e6
-  params: 7e67822160a6553f
+  params: db3d9eda00ba0944
   participation-report: ddc34962dd8e729d
   params-2: f7c0fd9ae9e9b26f
-  example: b789ff16a6b1afcf
+  example: 38e71bcd58ce0d65
   create-discussion: 00ef42b701a883fc
   params-3: a728a0d913e3d0ed
-  example-2: 6f6cb5a4d2cf01c2
+  example-2: 51e3c4ace148bca4
   show-discussion: 1b6a3125a7b3973b
-  example-3: c7c7c4688968bdf5
+  example-3: a54015a08d7c39b9
   list-discussions: dfd7446777ae3862
   params-4: 0de28e1b28293449
-  example-4: cd131f0ab410a7c6
+  example-4: dff053e1bbcdc428
   list-threads: d7cfab210a63492b
   params-5: 5821097a107c8431
-  example-5: d59f9f8a114e3317
+  example-5: 8ab32434a4e5a024
   read-thread: 398b9dbbda5ae417
   example-6: a1251fd84015d57c
   edit-discussion: 5441e4fa28d426e2
   params-6: c6dba6c87f9b480d
-  example-7: 44132172ea8d8c2c
+  example-7: 426aeed30d90e6ab
   soft-delete-discussion: f88e3c44ee73abc3
-  example-8: cc4802935e5586ef
+  example-8: 1bca3f6d16afc1f4
   create-comment: c9585efec06f1f83
   params-7: 412928975b74929b
-  example-9: a239b6372e5931a9
+  example-9: 6e8e9f79c3ceb7da
   edit-comment: f4d72c649ee36e41
   params-8: f817a3441642bf6a
-  example-10: a0b0ea9944a74ea6
+  example-10: d188bd0e18f51129
   soft-delete-comment: e77ca215ef5a56ff
-  example-11: 86f598d6a52156e2
+  example-11: b0f2244add9b2c17
   create-poll: 4835c9282a08bb00
-  params-9: 929f2f9f01ace140
-  example-12: 5e5aeede1c20d23c
+  params-9: 1bf235d9c255eaee
+  example-12: 1f5a2db2b316292a
   show-poll: 4501a8bcfd5d988a
-  example-13: 39f493b67dd3c741
+  example-13: c99bad10b588680c
   list-polls: acabfd1b1b8a3dad
   params-10: 5080adb448889d76
-  example-14: c572af937c4f2398
+  example-14: 72676b1b5cef7482
   edit-poll: 5a08a1aec9905618
-  params-11: 554f07029b221e51
-  example-15: 1f0e16aa6a5ad2f7
+  params-11: ae3c26b4c10fa15f
+  example-15: 64c737a88ecdbb42
   soft-delete-poll: 61b04f233a1c24f5
-  example-16: b1c6c8603a15c91e
+  example-16: 9d30b01384ad1345
   list-memberships: e9f4eec322ca3c8b
   params-12: 7213503e25a56122
-  example-17: 4b7e46a76d411cfb
+  example-17: cdea0cd53d5f6a7d
   manage-memberships: a6b01964a4044c67
   params-13: 34b65aeda03ea3ea
-  example-18: 105951c33117427c
+  example-18: ed9268203fc43fbf
   pagination: d6672ccc98a11761
   comments: 716185150399e684
   discussions: 24f2da9300eb5214
   memberships: 375e2a1ffdd7c895
   polls: 61b505f7ffd30544
   threads: c921d7ea18382db6
+  request-bodies: 7e81246802ca0c44
+  poll-many-options: a40c772aecc8799b
+  poll-detailed-options: f2ab0b9265409ad9
+  edit-poll-detailed-options: 19eaef993c04d715
 title_source: c23fb6526b722360
 title_generated: 788437eb515e46bd
 ---
@@ -174,6 +182,16 @@ Authorization: Bearer YOUR_API_KEY
 ```
 
 A példákban a `YOUR_API_KEY` API-kulcs, a `123` csoportazonosító és a `https://www.loomio.com/` URL szerepel. Cseréld le ezeket a saját API-kulcsodra, csoportazonosítódra és Loomio-telepítésed URL-jére.
+
+<!-- translation-section: request-bodies -->
+
+### Kéréstörzsek küldése
+
+Küldj JSON-t `Content-Type: application/json` fejléccel. A cURL-példák a `--json` kapcsolót használják, amely automatikusan beállítja ezt a fejlécet. A beszélgetések, hozzászólások és szavazások létrehozására és szerkesztésére szolgáló végpontok egyszerű objektumot vagy az erőforrás neve alá ágyazott objektumot is elfogadnak, például: `{"poll": {...}}`.
+
+A tömböket JSON-tömbként küldd el, például: `"options": ["foo", "bar"]`. Ha helyette űrlapkódolást használsz, a tömbökhöz szögletes zárójeles mezőnevek szükségesek, például: `options[]=foo&options[]=bar`; az `options=foo&options=bar` ismétlés csak az utolsó értéket tartja meg.
+
+Minden kérés után ellenőrizd a HTTP-állapotkódot és a válasz törzsét. Sikertelen ellenőrzés esetén a válasz `422` állapotkódot és egy `errors` objektumot tartalmaz; szavazás sikeres létrehozásakor a szavazást a `polls`, a lehetőségeit pedig a `poll_options` tartalmazza.
 
 <!-- translation-section: endpoint-summary -->
 
@@ -231,7 +249,8 @@ A felhasználói API válaszai összetett formátumot használnak: az elsődlege
 Add meg a `compact=1` paramétert a nagy méretű kapcsolódó témák, csoportok, szülőcsoportok, tagságok, reakciók, címkék és fordítások kihagyásához. Az elsődleges rekordok és a tartalmuk értelmezéséhez szükséges kapcsolódó rekordok továbbra is szerepelnek a válaszban.
 
 ```bash
-curl -H 'Authorization: Bearer YOUR_API_KEY' 'https://www.loomio.com/api/b2/threads/123/items?compact=1'
+curl 'https://www.loomio.com/api/b2/threads/123/items?compact=1' \
+  -H 'Authorization: Bearer YOUR_API_KEY'
 ```
 
 A közvetlen szabályozáshoz add meg az `exclude_types` paramétert szóközzel elválasztott, egyes számú rekordtípusokkal. Például az `exclude_types=group reaction` kihagyja a kapcsolódó csoportokat és reakciókat. Gyakori értékek: `topic`, `group`, `parent`, `membership`, `reaction`, `tag`, `translation`, `user`, `discussion`, `poll`, `poll_option`, `stance`, `stance_choice`, `outcome` és `topic_item`. A kizárások a kapcsolódó rekordokra vonatkoznak, nem a végponttól kért elsődleges erőforrásra.
@@ -265,7 +284,13 @@ Hozz létre egy hozzászólást egy beszélgetésben az API-kulcshoz tartozó fe
 #### Példa
 
 ```bash
-curl -H 'Authorization: Bearer YOUR_API_KEY' -X POST -H 'Content-Type: application/json' -d '{"discussion_id": 123, "body":"example comment", "body_format":"md"}' https://www.loomio.com/api/b2/comments
+curl https://www.loomio.com/api/b2/comments \
+  -H 'Authorization: Bearer YOUR_API_KEY' \
+  --json '{
+    "discussion_id": 123,
+    "body": "example comment",
+    "body_format": "md"
+  }'
 ```
 
 <!-- translation-section: edit-comment -->
@@ -290,7 +315,13 @@ Szerkessz egy hozzászólást az API-kulcshoz tartozó felhasználó nevében. U
 #### Példa
 
 ```bash
-curl -H 'Authorization: Bearer YOUR_API_KEY' -X PATCH -H 'Content-Type: application/json' -d '{"body":"updated comment", "body_format":"md"}' https://www.loomio.com/api/b2/comments/123
+curl https://www.loomio.com/api/b2/comments/123 \
+  -X PATCH \
+  -H 'Authorization: Bearer YOUR_API_KEY' \
+  --json '{
+    "body": "updated comment",
+    "body_format": "md"
+  }'
 ```
 
 <!-- translation-section: soft-delete-comment -->
@@ -306,7 +337,9 @@ Törölj logikailag egy hozzászólást az API-kulcshoz tartozó felhasználó n
 #### Példa
 
 ```bash
-curl -H 'Authorization: Bearer YOUR_API_KEY' -X DELETE https://www.loomio.com/api/b2/comments/123
+curl https://www.loomio.com/api/b2/comments/123 \
+  -X DELETE \
+  -H 'Authorization: Bearer YOUR_API_KEY'
 ```
 
 <!-- translation-section: discussions -->
@@ -341,7 +374,15 @@ Hozz létre beszélgetést az API-kulcshoz tartozó felhasználóként.
 #### Példa
 
 ```bash
-curl -H 'Authorization: Bearer YOUR_API_KEY' -X POST -H 'Content-Type: application/json' -d '{"group_id": 123, "title":"example thread", "recipient_emails":["person@example.com"]}' https://www.loomio.com/api/b2/discussions
+curl https://www.loomio.com/api/b2/discussions \
+  -H 'Authorization: Bearer YOUR_API_KEY' \
+  --json '{
+    "group_id": 123,
+    "title": "example thread",
+    "recipient_emails": [
+      "person@example.com"
+    ]
+  }'
 ```
 
 <!-- translation-section: show-discussion -->
@@ -357,7 +398,8 @@ Kérj le egy beszélgetést az egész számként megadott azonosítójával vagy
 #### Példa
 
 ```bash
-curl -H 'Authorization: Bearer YOUR_API_KEY' https://www.loomio.com/api/b2/discussions/abc123
+curl https://www.loomio.com/api/b2/discussions/abc123 \
+  -H 'Authorization: Bearer YOUR_API_KEY'
 ```
 
 <!-- translation-section: list-discussions -->
@@ -386,7 +428,8 @@ Korábbi paraméterek: a `per` és a `from` a `limit` és az `offset` alternatí
 #### Példa
 
 ```bash
-curl -H 'Authorization: Bearer YOUR_API_KEY' 'https://www.loomio.com/api/b2/discussions?group_id=123'
+curl 'https://www.loomio.com/api/b2/discussions?group_id=123' \
+  -H 'Authorization: Bearer YOUR_API_KEY'
 ```
 
 <!-- translation-section: edit-discussion -->
@@ -416,7 +459,14 @@ Szerkessz egy beszélgetést az API-kulcshoz tartozó felhasználó nevében. Ug
 #### Példa
 
 ```bash
-curl -H 'Authorization: Bearer YOUR_API_KEY' -X PATCH -H 'Content-Type: application/json' -d '{"title":"updated thread title", "description":"updated context", "description_format":"md"}' https://www.loomio.com/api/b2/discussions/123
+curl https://www.loomio.com/api/b2/discussions/123 \
+  -X PATCH \
+  -H 'Authorization: Bearer YOUR_API_KEY' \
+  --json '{
+    "title": "updated thread title",
+    "description": "updated context",
+    "description_format": "md"
+  }'
 ```
 
 <!-- translation-section: soft-delete-discussion -->
@@ -432,7 +482,9 @@ Törölj logikailag egy beszélgetést az API-kulcshoz tartozó felhasználó ne
 #### Példa
 
 ```bash
-curl -H 'Authorization: Bearer YOUR_API_KEY' -X DELETE https://www.loomio.com/api/b2/discussions/123
+curl https://www.loomio.com/api/b2/discussions/123 \
+  -X DELETE \
+  -H 'Authorization: Bearer YOUR_API_KEY'
 ```
 
 <!-- translation-section: groups -->
@@ -455,7 +507,8 @@ Visszaadja azokat a csoportokat, amelyekben az API-kulcshoz tartozó felhasznál
 | `offset` | Egész szám, nem kötelező, alapértelmezés szerint 0. Eltolás a lapozáshoz |
 
 ```bash
-curl -H 'Authorization: Bearer YOUR_API_KEY' 'https://www.loomio.com/api/b2/groups?limit=50&offset=0'
+curl 'https://www.loomio.com/api/b2/groups?limit=50&offset=0' \
+  -H 'Authorization: Bearer YOUR_API_KEY'
 ```
 
 A válasz a `groups` rekordok egy oldalát tartalmazza növekvő csoportazonosító szerint rendezve, a megfelelő csoportok teljes számát pedig a `meta.total` mezőben adja vissza. Szülőcsoportokat és alcsoportokat is tartalmaz, köztük olyan csoportokat, amelyek előfizetése jelenleg nem aktív. Ellenőrizd az `enabled` mezőt, ha az integrációnak csak engedélyezett csoportokkal kell működnie.
@@ -492,8 +545,11 @@ Visszaad egy, az API-kulcshoz tartozó felhasználó számára látható csoport
 Az azonosító lehet a csoport numerikus azonosítója, kulcsa vagy ember számára olvasható azonosítója.
 
 ```bash
-curl -H 'Authorization: Bearer YOUR_API_KEY' https://www.loomio.com/api/b2/groups/123
-curl -H 'Authorization: Bearer YOUR_API_KEY' https://www.loomio.com/api/b2/groups/example-group
+curl https://www.loomio.com/api/b2/groups/123 \
+  -H 'Authorization: Bearer YOUR_API_KEY'
+
+curl https://www.loomio.com/api/b2/groups/example-group \
+  -H 'Authorization: Bearer YOUR_API_KEY'
 ```
 
 A válasz a `groups` tömbben tartalmazza a csoportot, és ugyanazokat a mezőket használja, mint a listázási végpont. Ha az API-kulcshoz tartozó felhasználó nem fér hozzá a kért csoporthoz, a kérés jogosultsági hibát ad vissza.
@@ -529,7 +585,8 @@ A válasz a `memberships` rekordok egy oldalát és a kapcsolódó `users` rekor
 #### Példa
 
 ```bash
-curl -H 'Authorization: Bearer YOUR_API_KEY' 'https://www.loomio.com/api/b2/memberships?group_id=123&limit=50&offset=0'
+curl 'https://www.loomio.com/api/b2/memberships?group_id=123&limit=50&offset=0' \
+  -H 'Authorization: Bearer YOUR_API_KEY'
 ```
 
 <!-- translation-section: manage-memberships -->
@@ -555,13 +612,28 @@ Küldj egy listát az e-mail-címekről. A művelet minden új e-mail-címre meg
 #### Példa
 
 ```bash
-curl -H 'Authorization: Bearer YOUR_API_KEY' -X POST -H 'Content-Type: application/json' -d '{"group_id": 123, "emails":["person@example.com"]}' https://www.loomio.com/api/b2/memberships
+curl https://www.loomio.com/api/b2/memberships \
+  -H 'Authorization: Bearer YOUR_API_KEY' \
+  --json '{
+    "group_id": 123,
+    "emails": [
+      "person@example.com"
+    ]
+  }'
 ```
 
 Ha megadod a `remove_absent=1` paramétert, a művelet eltávolítja a csoport minden olyan tagját, aki nem szerepel a listában. Légy óvatos, mert a csoportod összes tagját eltávolíthatod.
 
 ```bash
-curl -H 'Authorization: Bearer YOUR_API_KEY' -X POST -H 'Content-Type: application/json' -d '{"group_id": 123, "emails":["person@example.com"], "remove_absent": 1}' https://www.loomio.com/api/b2/memberships
+curl https://www.loomio.com/api/b2/memberships \
+  -H 'Authorization: Bearer YOUR_API_KEY' \
+  --json '{
+    "group_id": 123,
+    "emails": [
+      "person@example.com"
+    ],
+    "remove_absent": 1
+  }'
 ```
 
 A válasz egy objektum, amely ezt tartalmazza: `{added_emails: ["person@added.com"], removed_emails: ["person@removed.com"]}`.
@@ -597,7 +669,8 @@ Az API ugyanazokat a csoportláthatósági szabályokat alkalmazza, mint az alka
 ### Példa
 
 ```bash
-curl -H 'Authorization: Bearer YOUR_API_KEY' 'https://www.loomio.com/api/b2/reports?section=users&group_scope=custom&group_ids=123&member_type=delegate&start_month=2026-01&end_month=2026-09'
+curl 'https://www.loomio.com/api/b2/reports?section=users&group_scope=custom&group_ids=123&member_type=delegate&start_month=2026-01&end_month=2026-09' \
+  -H 'Authorization: Bearer YOUR_API_KEY'
 ```
 
 A `users` tömb a tevékenységi adatokat tartalmazó teljes sorokat adja vissza:
@@ -649,7 +722,10 @@ Hozz létre egy szavazást az API-kulcshoz tartozó felhasználó nevében.
 | `poll_type` | Karakterlánc, kötelező. Értékek: `proposal`, `poll`, `count`, `score`, `ranked_choice`, `meeting`, `dot_vote` |
 | `details` | Karakterlánc, nem kötelező. A szavazás szövege |
 | `details_format` | Karakterlánc, nem kötelező, alapértelmezés: `md`. Értékek: `md` vagy `html` |
-| `options` | Karakterláncok tömbje. Ha a `poll_type` értéke `proposal`, az érvényes értékek: `agree`, `disagree`, `abstain`, `block`. Ha a `poll_type` értéke `meeting`, adj meg ISO 8601 formátumú dátumot vagy dátumot és időpontot tartalmazó karakterláncokat. Minden más szavazástípusnál bármilyen karakterlánc érvényes |
+| `options` | Egyszerű lehetőségnevek karakterláncok tömbjeként. A `proposal` típusnál használd az `agree`, `disagree`, `abstain` vagy `block` értéket a szokásos címkék, ikonok, jelentések és kérdések megjelenítéséhez. A `meeting` típusnál adj meg ISO 8601 formátumú dátumot vagy dátumot és időpontot tartalmazó karakterláncokat. Más szavazástípusoknál add meg a lehetőségek neveit. Részletes lehetőségekhez használd helyette a `poll_options_attributes` mezőt |
+| `poll_options_attributes` | Az `options` alternatívája: a lehetőségek nevét, jelentését, kérdését, ikonját és sorrendjét tartalmazó objektumok tömbje. Lásd: [Szavazás létrehozása részletes lehetőségekkel](#create-a-poll-with-detailed-options) |
+| `reason_prompt` | Karakterlánc, nem kötelező. A szavazat indoklását kérő közös kérdés azokhoz a szavazástípusokhoz, amelyeknél nincsenek lehetőségenkénti kérdések, például `poll`, `score` és `ranked_choice` |
+| `stance_reason_required` | Karakterlánc, alapértelmezés: `optional`. Értékek: `disabled`, `optional`, `required`, `required_for_disagree_or_block`, `required_for_block`. Az utolsó kettő a `disagree` és `block` ikonokra vonatkozik. Névtelen szavazásoknál a szavazatok indoklása le van tiltva |
 | `closing_at` | ISO 8601 formátumú karakterlánc vagy null, alapértelmezés: null. Példa: `2026-09-01T12:00:00Z`. Ha null, nem lehet szavazni, és a szavazás előkészítés alatt áll |
 | `specified_voters_only` | Logikai érték, nem kötelező, alapértelmezés: false. Ha true, csak a megadott emberek szavazhatnak. Ha false, a csoport minden tagja meghívót kap a szavazásra |
 | `hide_results` | Karakterlánc, nem kötelező, alapértelmezés: `off`. Értékek: `off`, `until_vote`, `until_closed` |
@@ -667,8 +743,123 @@ Hozz létre egy szavazást az API-kulcshoz tartozó felhasználó nevében.
 #### Példa
 
 ```bash
-curl -H 'Authorization: Bearer YOUR_API_KEY' -X POST -H 'Content-Type: application/json' -d '{"group_id": 123, "title":"example poll", "poll_type": "proposal", "options": ["agree", "disagree"], "closing_at": "2026-09-01T12:00:00Z", "recipient_emails":["person@example.com"]}' https://www.loomio.com/api/b2/polls
+curl https://www.loomio.com/api/b2/polls \
+  -H 'Authorization: Bearer YOUR_API_KEY' \
+  --json '{
+    "group_id": 123,
+    "title": "example poll",
+    "poll_type": "proposal",
+    "options": [
+      "agree",
+      "disagree"
+    ],
+    "closing_at": "2026-09-01T12:00:00Z",
+    "recipient_emails": [
+      "person@example.com"
+    ]
+  }'
 ```
+
+<!-- translation-section: poll-many-options -->
+
+#### Szavazástervezet létrehozása sok lehetőséggel
+
+Küldd el az összes lehetőség nevét az `options` tömbben. A `closing_at` elhagyásával előkészítés alatt álló szavazás jön létre, amelyben nem lehet szavazni; ez nem rejti el a szavazást azok elől, akik olvashatják a szálát. Amikor készen állsz a szavazatok fogadására, adj meg egy jövőbeli `closing_at` értéket.
+
+Add hozzá az összes lehetőség nevét a tömbhöz:
+
+```bash
+curl https://www.loomio.com/api/b2/polls \
+  -H 'Authorization: Bearer YOUR_API_KEY' \
+  --json '{
+    "group_id": 123,
+    "title": "Meeting venue",
+    "poll_type": "poll",
+    "options": [
+      "Town hall",
+      "Library",
+      "Community centre"
+    ]
+  }'
+```
+
+<!-- translation-section: poll-detailed-options -->
+
+#### Szavazás létrehozása részletes lehetőségekkel
+
+A nevek listájához használd az `options` mezőt, ha pedig minden lehetőséghez jelentésre, az indoklást kérő kérdésre vagy ikonra van szükség, használd a `poll_options_attributes` mezőt. Kérésenként egy formátumot válassz. Mindkét formátum működik egyszerű JSON-törzsben vagy egy `poll` objektumon belül.
+
+A `poll_options_attributes` minden objektuma a következő mezőket fogadja el:
+
+| Mező | Leírás |
+| --- | --- |
+| `name` | Karakterlánc, új lehetőségnél kötelező. A szavazóknak megjelenő címke |
+| `meaning` | Karakterlánc, nem kötelező. Elmagyarázza, mit jelent ennek a lehetőségnek a kiválasztása |
+| `prompt` | Karakterlánc, nem kötelező. Az indoklást kérő kérdés, amely akkor jelenik meg, amikor ezt a lehetőséget választják ki egy `proposal`, `count` vagy `check` típusú szavazásban. Más szavazástípusoknál állítsd be a szavazás `reason_prompt` mezőjét |
+| `icon` | Karakterlánc, nem kötelező. A `proposal`, `count` és `check` típusnál használd az `agree`, `disagree`, `abstain` vagy `block` értéket |
+| `priority` | Egész szám. A lehetőség sorrendje, `0` értéktől kezdve. Minden lehetőséghez különböző prioritást adj meg; az időpont-egyeztetés lehetőségei ehelyett dátum szerint rendeződnek |
+| `test_operator` | Karakterlánc vagy null, nem kötelező. A szavazati arányra vonatkozó követelmény: a `gte` jelentése legalább, az `lte` jelentése legfeljebb. A követelmény kikapcsolásához állítsd null értékre |
+| `test_percent` | Egész szám, nem kötelező. A szavazati arányra vonatkozó követelmény százalékos értéke, `0` és `100` között |
+| `test_against` | Karakterlánc, nem kötelező. A `score_percent` a lehetőség részesedését vizsgálja az összes leadott pontszámból vagy pontból; a `voter_percent` a lehetőségre szavazókat viszonyítja az összes szavazásra jogosulthoz |
+| `id` | Egész szám. Meglévő lehetőség szerkesztésekor add meg; új lehetőségnél hagyd el |
+| `_destroy` | Logikai érték, nem kötelező. Egy meglévő lehetőség eltávolításához állítsd `true` értékre, és add meg a lehetőség `id` értékét |
+
+Hozz létre javaslatot egyéni lehetőségcímkékkel és kérdésekkel:
+
+```bash
+curl https://www.loomio.com/api/b2/polls \
+  -H 'Authorization: Bearer YOUR_API_KEY' \
+  --json '{
+    "group_id": 123,
+    "title": "Should we adopt this proposal?",
+    "poll_type": "proposal",
+    "stance_reason_required": "optional",
+    "poll_options_attributes": [
+      {
+        "name": "Support",
+        "meaning": "I support adopting this proposal",
+        "prompt": "What do you support about it?",
+        "icon": "agree",
+        "priority": 0
+      },
+      {
+        "name": "Oppose",
+        "meaning": "I would prefer another approach",
+        "prompt": "What would you change?",
+        "icon": "disagree",
+        "priority": 1
+      }
+    ]
+  }'
+```
+
+Egy szokásos szavazásnál használd ugyanezt a részletes lehetőségformátumot, és állíts be közös `reason_prompt` értéket a szavazáshoz:
+
+```bash
+curl https://www.loomio.com/api/b2/polls \
+  -H 'Authorization: Bearer YOUR_API_KEY' \
+  --json '{
+    "group_id": 123,
+    "title": "Choose a venue",
+    "poll_type": "poll",
+    "reason_prompt": "Why do you prefer this venue?",
+    "stance_reason_required": "optional",
+    "poll_options_attributes": [
+      {
+        "name": "Town hall",
+        "meaning": "Central, accessible venue",
+        "priority": 0
+      },
+      {
+        "name": "Library",
+        "meaning": "Smaller room with no hire fee",
+        "priority": 1
+      }
+    ]
+  }'
+```
+
+Ezek a példák nem tartalmaznak `closing_at` értéket, ezért addig nem lehet szavazni, amíg be nem állítasz egy jövőbeli záró dátumot.
 
 <!-- translation-section: show-poll -->
 
@@ -683,7 +874,8 @@ Kérj le egy szavazást az egész számként megadott azonosítójával vagy a k
 #### Példa
 
 ```bash
-curl -H 'Authorization: Bearer YOUR_API_KEY' https://www.loomio.com/api/b2/polls/abc123
+curl https://www.loomio.com/api/b2/polls/abc123 \
+  -H 'Authorization: Bearer YOUR_API_KEY'
 ```
 
 <!-- translation-section: list-polls -->
@@ -712,7 +904,8 @@ Korábbi paraméterek: a `per` és a `from` a `limit` és az `offset` alternatí
 #### Példa
 
 ```bash
-curl -H 'Authorization: Bearer YOUR_API_KEY' 'https://www.loomio.com/api/b2/polls?group_id=123'
+curl 'https://www.loomio.com/api/b2/polls?group_id=123' \
+  -H 'Authorization: Bearer YOUR_API_KEY'
 ```
 
 <!-- translation-section: edit-poll -->
@@ -733,6 +926,9 @@ Szerkessz egy szavazást az API-kulcshoz tartozó felhasználóként. Ugyanazok 
 | `details` | A szavazás módosított részletei |
 | `details_format` | `md` vagy `html`, nem kötelező, alapértelmezés: `md` |
 | `options` | A lehetőségek módosított nevei. A lehetőségek megváltoztatása a szavazás állapotától függően hatással lehet a meglévő szavazatokra |
+| `poll_options_attributes` | Az `options` alternatívája. Módosítsd a részletes lehetőségobjektumokat az `id` alapján, adj hozzá objektumokat `id` nélkül, vagy távolíts el egy lehetőséget az `id` és az `_destroy: true` megadásával. A kihagyott lehetőségek változatlanok maradnak |
+| `reason_prompt` | Az indoklást kérő módosított közös kérdés azokhoz a szavazástípusokhoz, amelyeknél nincsenek lehetőségenkénti kérdések |
+| `stance_reason_required` | Az indoklásra vonatkozó módosított követelmény; ugyanazok az értékek érvényesek, mint a szavazás létrehozásakor |
 | `closing_at` | ISO 8601 formátumú karakterlánc vagy null |
 | `recipient_audience` | `group` vagy null. Ha `group`, az egész csoport értesítést kap |
 | `recipient_user_ids` | Az értesítendő vagy meghívandó felhasználók azonosítóinak tömbje |
@@ -744,8 +940,44 @@ Szerkessz egy szavazást az API-kulcshoz tartozó felhasználóként. Ugyanazok 
 #### Példa
 
 ```bash
-curl -H 'Authorization: Bearer YOUR_API_KEY' -X PATCH -H 'Content-Type: application/json' -d '{"title":"updated poll title", "details":"updated details", "details_format":"md"}' https://www.loomio.com/api/b2/polls/123
+curl https://www.loomio.com/api/b2/polls/123 \
+  -X PATCH \
+  -H 'Authorization: Bearer YOUR_API_KEY' \
+  --json '{
+    "title": "updated poll title",
+    "details": "updated details",
+    "details_format": "md"
+  }'
 ```
+
+<!-- translation-section: edit-poll-detailed-options -->
+
+#### Részletes lehetőségek szerkesztése
+
+Keresd ki a lehetőségek azonosítóit a létrehozásra vagy lekérésre kapott válasz `poll_options` tömbjéből. Csak a módosítandó mezőket küldd el, minden meglévő lehetőség `id` értékével együtt:
+
+```bash
+curl https://www.loomio.com/api/b2/polls/123 \
+  -X PATCH \
+  -H 'Authorization: Bearer YOUR_API_KEY' \
+  --json '{
+    "poll_options_attributes": [
+      {
+        "id": 456,
+        "meaning": "Updated explanation",
+        "prompt": "What would improve this proposal?"
+      },
+      {
+        "name": "Abstain",
+        "meaning": "I leave the decision to others",
+        "icon": "abstain",
+        "priority": 2
+      }
+    ]
+  }'
+```
+
+A lehetőségazonosítóknak a szerkesztett szavazáshoz kell tartozniuk. A szerkesztéshez jogosultság kell a szavazás szerkesztésére, és a lezárt szavazások nem szerkeszthetők. Névtelen szavazásoknál az első szavazat leadása után a lehetőségek beállításai sem módosíthatók.
 
 <!-- translation-section: soft-delete-poll -->
 
@@ -760,7 +992,9 @@ Törölj logikailag egy szavazást az API-kulcshoz tartozó felhasználóként. 
 #### Példa
 
 ```bash
-curl -H 'Authorization: Bearer YOUR_API_KEY' -X DELETE https://www.loomio.com/api/b2/polls/123
+curl https://www.loomio.com/api/b2/polls/123 \
+  -X DELETE \
+  -H 'Authorization: Bearer YOUR_API_KEY'
 ```
 
 <!-- translation-section: search -->
@@ -787,7 +1021,8 @@ Keress az API-kulcshoz tartozó felhasználó számára látható beszélgetése
 | `order` | Állítsd `authored_at_desc` értékre a találatok létrehozási idő szerinti rendezéséhez |
 
 ```bash
-curl -H 'Authorization: Bearer YOUR_API_KEY' 'https://www.loomio.com/api/b2/search?query=quarterly+planning&type=Discussion'
+curl 'https://www.loomio.com/api/b2/search?query=quarterly+planning&type=Discussion' \
+  -H 'Authorization: Bearer YOUR_API_KEY'
 ```
 
 A válasz egy `search_results` tömböt tartalmaz. Minden találat azonosítja az egyező rekordot és annak látható környezetét többek között a következő mezőkkel: `searchable_type`, `searchable_id`, `highlight`, `group_id`, `group_name`, `discussion_key`, `poll_key`, `author_id`, `author_name`, `authored_at` és `tags`. A találatra nem vonatkozó mezők értéke `null`.
@@ -818,7 +1053,8 @@ Listázd az API-kulcshoz tartozó felhasználó számára látható beszélgeté
 #### Példa
 
 ```bash
-curl -H 'Authorization: Bearer YOUR_API_KEY' 'https://www.loomio.com/api/b2/threads?limit=50&offset=0'
+curl 'https://www.loomio.com/api/b2/threads?limit=50&offset=0' \
+  -H 'Authorization: Bearer YOUR_API_KEY'
 ```
 
 <!-- translation-section: read-thread -->
@@ -888,7 +1124,8 @@ Visszaadja a csoporthoz beállított csevegési integrációkat. Az API-kulcshoz
 | `offset` | Egész szám, opcionális, alapértelmezett értéke 0. Eltolás a lapozáshoz |
 
 ```bash
-curl -H 'Authorization: Bearer YOUR_API_KEY' 'https://www.loomio.com/api/b2/chatbots?group_id=123&limit=50&offset=0'
+curl 'https://www.loomio.com/api/b2/chatbots?group_id=123&limit=50&offset=0' \
+  -H 'Authorization: Bearer YOUR_API_KEY'
 ```
 
 A válasz a `chatbots` egy oldalát tartalmazza növekvő integrációazonosító szerint rendezve, a `meta.total` mezőben pedig a csoport összes integrációjának számát. Minden integráció a következő mezőket tartalmazza:
@@ -911,19 +1148,22 @@ A válasz a `chatbots` egy oldalát tartalmazza növekvő integrációazonosít�
 `POST /api/b2/chatbots`
 
 ```bash
-curl -X POST \
+curl https://www.loomio.com/api/b2/chatbots \
   -H 'Authorization: Bearer YOUR_API_KEY' \
-  -H 'Content-Type: application/json' \
-  -d '{
+  --json '{
     "group_id": 123,
     "name": "Planning system",
     "kind": "webhook",
     "webhook_kind": "markdown",
     "server": "https://hooks.example.org/loomio/unguessable-token",
-    "event_kinds": ["new_discussion", "new_comment", "poll_created", "outcome_created"],
+    "event_kinds": [
+      "new_discussion",
+      "new_comment",
+      "poll_created",
+      "outcome_created"
+    ],
     "notification_only": false
-  }' \
-  https://www.loomio.com/api/b2/chatbots
+  }'
 ```
 
 Az API-kulcshoz tartozó felhasználónak a `group_id` által megadott csoport adminisztrátorának kell lennie. Mentés előtt a rendszer ellenőrzi, hogy a cél nyilvános URL-e.
@@ -937,11 +1177,16 @@ Az API-kulcshoz tartozó felhasználónak a `group_id` által megadott csoport a
 Küldd el a módosítani kívánt mezőket. A webhook nem helyezhető át másik csoportba a `group_id` módosításával.
 
 ```bash
-curl -X PATCH \
+curl https://www.loomio.com/api/b2/chatbots/456 \
+  -X PATCH \
   -H 'Authorization: Bearer YOUR_API_KEY' \
-  -H 'Content-Type: application/json' \
-  -d '{"name":"Planning events","event_kinds":["new_discussion","outcome_created"]}' \
-  https://www.loomio.com/api/b2/chatbots/456
+  --json '{
+    "name": "Planning events",
+    "event_kinds": [
+      "new_discussion",
+      "outcome_created"
+    ]
+  }'
 ```
 
 <!-- translation-section: test-a-webhook-destination -->
@@ -953,11 +1198,12 @@ Küldj Markdown-kompatibilis tesztüzenetet a célcímre a beállítások menté
 `POST /api/b2/chatbots/check`
 
 ```bash
-curl -X POST \
+curl https://www.loomio.com/api/b2/chatbots/check \
   -H 'Authorization: Bearer YOUR_API_KEY' \
-  -H 'Content-Type: application/json' \
-  -d '{"group_id":123,"server":"https://hooks.example.org/loomio/unguessable-token"}' \
-  https://www.loomio.com/api/b2/chatbots/check
+  --json '{
+    "group_id": 123,
+    "server": "https://hooks.example.org/loomio/unguessable-token"
+  }'
 ```
 
 <!-- translation-section: delete-a-webhook -->
@@ -967,7 +1213,9 @@ curl -X POST \
 `DELETE /api/b2/chatbots/:id`
 
 ```bash
-curl -X DELETE -H 'Authorization: Bearer YOUR_API_KEY' https://www.loomio.com/api/b2/chatbots/456
+curl https://www.loomio.com/api/b2/chatbots/456 \
+  -X DELETE \
+  -H 'Authorization: Bearer YOUR_API_KEY'
 ```
 
 A konfiguráció törlése leállítja a további kézbesítéseket. A Loomio-csoport tartalmát nem törli.

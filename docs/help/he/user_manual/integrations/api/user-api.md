@@ -1,154 +1,162 @@
 ---
 title: API למשתמש
-source_revision: 28ecc59f68d407f76f08133bfa0172aadbb53065
-source_file: docs/en/user_manual/integrations/api/user-api.md
+source_revision: aa8cf2cef8336b4d86d7200c0d66c0eb8f973256
+source_file: docs/help/en/user_manual/integrations/api/user-api.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-15'
+  'on': '2026-10-17'
 sections:
   introduction: b6e6ec7463276869
-  response-size-and-related-records: 298da635bf97dadd
+  response-size-and-related-records: 8349c4d8e567a0c1
   endpoint-summary: 258f7560def524ec
   groups: 0473f1f7fb78f074
-  list-groups: 01de10c378eeba37
-  get-a-group: dffef659cb92745e
+  list-groups: e94dbf27dff819ff
+  get-a-group: 80912be614c0ea89
   webhooks: f65fa289f8c1b808
-  list-webhooks: 6093df92815f7156
-  create-a-webhook: 007312bcc204853a
-  update-a-webhook: 124b07d2c401e319
-  test-a-webhook-destination: 8fc3ac4ad10de6f6
-  delete-a-webhook: 34eda1e07d65db80
+  list-webhooks: 6ec5700a0ac5cbc7
+  create-a-webhook: 173ce08be83b4b58
+  update-a-webhook: 2bf0f59f8bff06ec
+  test-a-webhook-destination: 0637a17a98f20f4b
+  delete-a-webhook: 6ba2c6360e4f1d2a
   event-types: 73bfe87c8b790af3
   http-delivery: a32c763b6f816e65
   payload-formats: ca728b0ef542305c
   search: bb5a1cfc7a6179aa
-  params: 7eebe4e259830976
+  params: 1e7478b9883d2a47
   participation-report: a1798112a78390fe
   params-2: 464322ffc1ac56e5
-  example: 63bed6e82107f992
+  example: ba3f68d5b68a955b
   create-discussion: 958fc684640462a9
   params-3: 657d582c89333097
-  example-2: 57681d83fffe9515
+  example-2: bca512c06153265f
   show-discussion: 40102aeffe4f1286
-  example-3: c0ebd013a1b7fbd2
+  example-3: fe0959389ff4f2f6
   list-discussions: '09ff7f0d3a937b41'
   params-4: dcebc294fbb9d837
-  example-4: ffda1a4726380e2f
+  example-4: dd55f55bf83d135f
   list-threads: '09f7bd670e581400'
   params-5: 79b1cefac558effc
-  example-5: a40ae2317faab46d
+  example-5: 1864da3b097f66d6
   read-thread: ac36d1b81c1eeed4
   example-6: 8c582a286e04ca75
   edit-discussion: 918161e7aa8f4aa6
   params-6: b819796d34354623
-  example-7: 552295f78d3490af
+  example-7: 8b591051e20fa1e4
   soft-delete-discussion: c8ffe951171e6f07
-  example-8: 965c5761f34f9920
+  example-8: d0e726a1a20cc469
   create-comment: f95f56b81c8f22b5
   params-7: 5ad8ede0919c5f47
-  example-9: 70ee3750f1543e9b
+  example-9: 61514be87d3a8857
   edit-comment: 80322da74162d58f
   params-8: 288331c60f3c9b28
-  example-10: ec89de8cc86b6fc8
+  example-10: c0aed6ea023ff3d4
   soft-delete-comment: 04baf86923c7e8f1
-  example-11: f3675b780da755cd
+  example-11: 129076a53c6c4b31
   create-poll: cf62e787784a5e87
-  params-9: df1611a9dedef2d8
-  example-12: fa7410dd3a0a385f
+  params-9: 89465a6e2dfa6bdb
+  example-12: 4397219f26129191
   show-poll: d759508986aab08c
-  example-13: 2867289a6c2beb9d
+  example-13: 01f20dba176f4f23
   list-polls: 56e5ed4ae45e5428
   params-10: e68e8cf62b21488d
-  example-14: 40958a09c058d4cc
+  example-14: a1149e09d37d9b0a
   edit-poll: 65467ad0b431ddbf
-  params-11: 77f118397592bc05
-  example-15: e56befa0f2ae3360
+  params-11: 70b594511872194a
+  example-15: 8c4d585a050423ac
   soft-delete-poll: 61cf76310e08d7ff
-  example-16: afbf95df96734a4d
+  example-16: fb15cb7d90550c2f
   list-memberships: 5fab06bb8ecf1fd0
   params-12: decaff0790566fb0
-  example-17: 5d92092b70ce545a
+  example-17: 7714e1b8d2d07999
   manage-memberships: 802d39c06674d395
   params-13: 771b5338a4ba3d0b
-  example-18: a50b01823a6935a0
+  example-18: a06882d9d8de45f0
   pagination: 4171ca78df07d4fe
   comments: ccd37303241bac95
   discussions: 16ffe7a7b6202d3e
   memberships: e7cf8846c3179720
   polls: 821dcd89b5460804
   threads: 19bc02fc1c26317b
+  request-bodies: 0ec99fc25454f511
+  poll-many-options: 05024e64103f7d39
+  poll-detailed-options: a511f74ddaa0b6bf
+  edit-poll-detailed-options: 767b869e6b9efcff
 generated:
   introduction: 61da915570c17551
-  response-size-and-related-records: 27c064f744d02ba9
+  response-size-and-related-records: 5af476f16105ae93
   endpoint-summary: cb242eb9f03d650d
   groups: 05c42ae402e79755
-  list-groups: a50183e896be693c
-  get-a-group: 8bd2ae664cbaaa38
+  list-groups: 110bc1f28c48b884
+  get-a-group: 9a31427393316b90
   webhooks: 14d9495f3dd01876
-  list-webhooks: f5058c3e85e22e4e
-  create-a-webhook: 78bc78be024b8420
-  update-a-webhook: 9e7f676f89442a2b
-  test-a-webhook-destination: 3a697f85b2c57177
-  delete-a-webhook: 4622a98c33aa3ad1
+  list-webhooks: 85237958aec962b6
+  create-a-webhook: 70da9c9faf6611f9
+  update-a-webhook: 138089d6dc799c9f
+  test-a-webhook-destination: 60d9e25f4c0d5d2b
+  delete-a-webhook: 6fa35b83db4b2e77
   event-types: '056208c56ab55520'
   http-delivery: '08e26e82a2762362'
   payload-formats: f696dd3d78b73996
   search: af527b3194a4f8eb
-  params: d4bd40bc7b6535f1
+  params: 965e27cdae3ef146
   participation-report: 435d724bed926ca7
   params-2: c6e14c4bc724415e
-  example: a231af52382ab4b4
+  example: 703ca593dc0cd0e1
   create-discussion: 312ff346dcbefefa
   params-3: 14b08be2d757109a
-  example-2: 57a5e6806766a598
+  example-2: 0da46c692e4838ef
   show-discussion: 43ad037e46ec057a
-  example-3: '07390f7ec4c0ac0b'
+  example-3: 112de9763e5e7783
   list-discussions: '0451588db76d956e'
   params-4: fab9d716a09ad713
-  example-4: dcf3db406159f0f2
+  example-4: 7ae439d789eb2c37
   list-threads: f607b813290ecb90
   params-5: 44b8ceccc73fc51c
-  example-5: df03b4198a819289
+  example-5: 922a76993c12830b
   read-thread: 5ac7e4cd23c52bc2
   example-6: 6aec10cf3792a7d4
   edit-discussion: 64af711063115414
   params-6: d5f5de6310baa465
-  example-7: 1a5b8d50f9c0c332
+  example-7: '0483d48b436d787f'
   soft-delete-discussion: 0b8f631efdb5dc5a
-  example-8: c42726e4509f6682
+  example-8: 45569102a5907282
   create-comment: 7c0e09fb0fb238b6
   params-7: 9b079a5c2e98f4b6
-  example-9: 0f2dc4a0977dd195
+  example-9: f6ec842f827574d4
   edit-comment: a9d93e8208ac1550
   params-8: ab03c047450acd4a
-  example-10: 2ae483709469a674
+  example-10: a932483f654cae1f
   soft-delete-comment: d622ba078ae77d97
-  example-11: 7a749db61fe48bd0
+  example-11: 5545f30fc15e79ed
   create-poll: 977c5a94bfe547b2
-  params-9: d75e2afb739e464f
-  example-12: edcf92d7e907da7d
+  params-9: 725c984d1af2cffa
+  example-12: d1d21bae5f0cac95
   show-poll: 83b1a4d1a953d384
-  example-13: 9165e5b8e0de5e9f
+  example-13: c5384151f37c6a11
   list-polls: bb636cb8bc819969
   params-10: 742166bcb3fef909
-  example-14: f240b608488dec44
+  example-14: 0f83d8f57b65bae3
   edit-poll: 29d16748e696444a
-  params-11: 2adb993cca9ed95f
-  example-15: 813370bc918d9d51
+  params-11: d19c9282140f277a
+  example-15: 396fecbcc699fe19
   soft-delete-poll: 1b1b7255113a6139
-  example-16: 3f4003bb9e3025ec
+  example-16: 40d8b7c7677eefd4
   list-memberships: 0f6c3b751e151b2b
   params-12: 914871896bbfe70b
-  example-17: e2135e6cde46f7c8
+  example-17: a840042cebe78a19
   manage-memberships: 5c06eb90945f4ad6
   params-13: 895be7fd08688cb8
-  example-18: ba71317a1b5d913f
+  example-18: 2a15b477bc0f7cfa
   pagination: a9da367c7c3771fd
   comments: 5407ac2a80314b49
   discussions: 9c1015a433358531
   memberships: eec7768e67133164
   polls: 6ecd728f820c96fe
   threads: 3cebe3ea615d00d3
+  request-bodies: a28d9e0b0d5cb005
+  poll-many-options: 3d2b99eb05839334
+  poll-detailed-options: 396ef9e3dac81836
+  edit-poll-detailed-options: a483138ab5cfc5bd
 title_source: c23fb6526b722360
 title_generated: 2a1c5c279b64d7ea
 ---
@@ -174,6 +182,16 @@ Authorization: Bearer YOUR_API_KEY
 ```
 
 הדוגמאות משתמשות ב־`YOUR_API_KEY`, במזהה הקבוצה `123` ובכתובת `https://www.loomio.com/`. יש להחליף אותם במפתח ה־API, במזהה הקבוצה ובכתובת ההתקנה של Loomio המתאימים.
+
+<!-- translation-section: request-bodies -->
+
+### שליחת גופי בקשות
+
+יש לשלוח JSON עם `Content-Type: application/json`. דוגמאות ה־cURL משתמשות ב־`--json`, שמגדיר כותרת זו באופן אוטומטי. נקודות הקצה ליצירה ולעריכה של דיונים, תגובות וסקרים מקבלות אובייקט שטוח או אובייקט המקונן תחת שם המשאב, כגון `{"poll": {...}}`.
+
+יש לשלוח מערכים כמערכי JSON, כגון `"options": ["foo", "bar"]`. אם משתמשים בקידוד טופס במקום זאת, יש להשתמש בשמות שדות עם סוגריים מרובעים עבור מערכים, כגון `options[]=foo&options[]=bar`; חזרה על השדה בצורה `options=foo&options=bar` שומרת רק את הערך האחרון.
+
+יש לבדוק את קוד מצב ה־HTTP ואת גוף התשובה לאחר כל בקשה. כשל באימות הנתונים מחזיר `422` עם אובייקט `errors`; יצירה מוצלחת של סקר מחזירה את הסקר ב־`polls` ואת האפשרויות שלו ב־`poll_options`.
 
 <!-- translation-section: endpoint-summary -->
 
@@ -231,7 +249,8 @@ Authorization: Bearer YOUR_API_KEY
 יש להעביר `compact=1` כדי להשמיט רשומות קשורות עתירות נתונים של נושאים, קבוצות, קבוצות אם, חברויות, תגובות אימוג׳י, תגיות ותרגומים. הרשומות הראשיות והרשומות הקשורות הנחוצות להבנת תוכנן נשארות בתשובה.
 
 ```bash
-curl -H 'Authorization: Bearer YOUR_API_KEY' 'https://www.loomio.com/api/b2/threads/123/items?compact=1'
+curl 'https://www.loomio.com/api/b2/threads/123/items?compact=1' \
+  -H 'Authorization: Bearer YOUR_API_KEY'
 ```
 
 לשליטה ישירה, יש להעביר `exclude_types` עם סוגי רשומות בלשון יחיד, המופרדים ברווחים. לדוגמה, `exclude_types=group reaction` משמיט קבוצות ותגובות אימוג׳י קשורות. ערכים נפוצים הם `topic`, `group`, `parent`, `membership`, `reaction`, `tag`, `translation`, `user`, `discussion`, `poll`, `poll_option`, `stance`, `stance_choice`, `outcome` ו־`topic_item`. ההשמטות חלות על רשומות קשורות, ולא על המשאב הראשי המבוקש בנקודת הקצה.
@@ -265,7 +284,13 @@ curl -H 'Authorization: Bearer YOUR_API_KEY' 'https://www.loomio.com/api/b2/thre
 #### דוגמה
 
 ```bash
-curl -H 'Authorization: Bearer YOUR_API_KEY' -X POST -H 'Content-Type: application/json' -d '{"discussion_id": 123, "body":"example comment", "body_format":"md"}' https://www.loomio.com/api/b2/comments
+curl https://www.loomio.com/api/b2/comments \
+  -H 'Authorization: Bearer YOUR_API_KEY' \
+  --json '{
+    "discussion_id": 123,
+    "body": "example comment",
+    "body_format": "md"
+  }'
 ```
 
 <!-- translation-section: edit-comment -->
@@ -290,7 +315,13 @@ curl -H 'Authorization: Bearer YOUR_API_KEY' -X POST -H 'Content-Type: applicati
 #### דוגמה
 
 ```bash
-curl -H 'Authorization: Bearer YOUR_API_KEY' -X PATCH -H 'Content-Type: application/json' -d '{"body":"updated comment", "body_format":"md"}' https://www.loomio.com/api/b2/comments/123
+curl https://www.loomio.com/api/b2/comments/123 \
+  -X PATCH \
+  -H 'Authorization: Bearer YOUR_API_KEY' \
+  --json '{
+    "body": "updated comment",
+    "body_format": "md"
+  }'
 ```
 
 <!-- translation-section: soft-delete-comment -->
@@ -306,7 +337,9 @@ curl -H 'Authorization: Bearer YOUR_API_KEY' -X PATCH -H 'Content-Type: applicat
 #### דוגמה
 
 ```bash
-curl -H 'Authorization: Bearer YOUR_API_KEY' -X DELETE https://www.loomio.com/api/b2/comments/123
+curl https://www.loomio.com/api/b2/comments/123 \
+  -X DELETE \
+  -H 'Authorization: Bearer YOUR_API_KEY'
 ```
 
 <!-- translation-section: discussions -->
@@ -341,7 +374,15 @@ curl -H 'Authorization: Bearer YOUR_API_KEY' -X DELETE https://www.loomio.com/ap
 #### דוגמה
 
 ```bash
-curl -H 'Authorization: Bearer YOUR_API_KEY' -X POST -H 'Content-Type: application/json' -d '{"group_id": 123, "title":"example thread", "recipient_emails":["person@example.com"]}' https://www.loomio.com/api/b2/discussions
+curl https://www.loomio.com/api/b2/discussions \
+  -H 'Authorization: Bearer YOUR_API_KEY' \
+  --json '{
+    "group_id": 123,
+    "title": "example thread",
+    "recipient_emails": [
+      "person@example.com"
+    ]
+  }'
 ```
 
 <!-- translation-section: show-discussion -->
@@ -357,7 +398,8 @@ curl -H 'Authorization: Bearer YOUR_API_KEY' -X POST -H 'Content-Type: applicati
 #### דוגמה
 
 ```bash
-curl -H 'Authorization: Bearer YOUR_API_KEY' https://www.loomio.com/api/b2/discussions/abc123
+curl https://www.loomio.com/api/b2/discussions/abc123 \
+  -H 'Authorization: Bearer YOUR_API_KEY'
 ```
 
 <!-- translation-section: list-discussions -->
@@ -386,7 +428,8 @@ curl -H 'Authorization: Bearer YOUR_API_KEY' https://www.loomio.com/api/b2/discu
 #### דוגמה
 
 ```bash
-curl -H 'Authorization: Bearer YOUR_API_KEY' 'https://www.loomio.com/api/b2/discussions?group_id=123'
+curl 'https://www.loomio.com/api/b2/discussions?group_id=123' \
+  -H 'Authorization: Bearer YOUR_API_KEY'
 ```
 
 <!-- translation-section: edit-discussion -->
@@ -416,7 +459,14 @@ curl -H 'Authorization: Bearer YOUR_API_KEY' 'https://www.loomio.com/api/b2/disc
 #### דוגמה
 
 ```bash
-curl -H 'Authorization: Bearer YOUR_API_KEY' -X PATCH -H 'Content-Type: application/json' -d '{"title":"updated thread title", "description":"updated context", "description_format":"md"}' https://www.loomio.com/api/b2/discussions/123
+curl https://www.loomio.com/api/b2/discussions/123 \
+  -X PATCH \
+  -H 'Authorization: Bearer YOUR_API_KEY' \
+  --json '{
+    "title": "updated thread title",
+    "description": "updated context",
+    "description_format": "md"
+  }'
 ```
 
 <!-- translation-section: soft-delete-discussion -->
@@ -432,7 +482,9 @@ curl -H 'Authorization: Bearer YOUR_API_KEY' -X PATCH -H 'Content-Type: applicat
 #### דוגמה
 
 ```bash
-curl -H 'Authorization: Bearer YOUR_API_KEY' -X DELETE https://www.loomio.com/api/b2/discussions/123
+curl https://www.loomio.com/api/b2/discussions/123 \
+  -X DELETE \
+  -H 'Authorization: Bearer YOUR_API_KEY'
 ```
 
 <!-- translation-section: groups -->
@@ -455,7 +507,8 @@ curl -H 'Authorization: Bearer YOUR_API_KEY' -X DELETE https://www.loomio.com/ap
 | `offset` | מספר שלם, רשות, ברירת מחדל 0. היסט לחלוקה לעמודים |
 
 ```bash
-curl -H 'Authorization: Bearer YOUR_API_KEY' 'https://www.loomio.com/api/b2/groups?limit=50&offset=0'
+curl 'https://www.loomio.com/api/b2/groups?limit=50&offset=0' \
+  -H 'Authorization: Bearer YOUR_API_KEY'
 ```
 
 התשובה מכילה עמוד של `groups` המסודר לפי מזהה הקבוצה בסדר עולה, עם המספר הכולל של הקבוצות המתאימות ב־`meta.total`. היא כוללת קבוצות אם ותת־קבוצות, לרבות קבוצות שהמינוי שלהן אינו פעיל כרגע. יש לבדוק את השדה `enabled` כאשר האינטגרציה אמורה לפעול רק בקבוצות מופעלות.
@@ -492,8 +545,11 @@ curl -H 'Authorization: Bearer YOUR_API_KEY' 'https://www.loomio.com/api/b2/grou
 המזהה יכול להיות המזהה המספרי, המפתח או הכינוי של הקבוצה.
 
 ```bash
-curl -H 'Authorization: Bearer YOUR_API_KEY' https://www.loomio.com/api/b2/groups/123
-curl -H 'Authorization: Bearer YOUR_API_KEY' https://www.loomio.com/api/b2/groups/example-group
+curl https://www.loomio.com/api/b2/groups/123 \
+  -H 'Authorization: Bearer YOUR_API_KEY'
+
+curl https://www.loomio.com/api/b2/groups/example-group \
+  -H 'Authorization: Bearer YOUR_API_KEY'
 ```
 
 התשובה מכילה את הקבוצה במערך `groups` ומשתמשת באותם שדות כמו נקודת הקצה להצגת הרשימה. בקשה לקבוצה שהחשבון שמפתח ה־API שייך לו אינו יכול לגשת אליה מחזירה שגיאת הרשאה.
@@ -529,7 +585,8 @@ curl -H 'Authorization: Bearer YOUR_API_KEY' https://www.loomio.com/api/b2/group
 #### דוגמה
 
 ```bash
-curl -H 'Authorization: Bearer YOUR_API_KEY' 'https://www.loomio.com/api/b2/memberships?group_id=123&limit=50&offset=0'
+curl 'https://www.loomio.com/api/b2/memberships?group_id=123&limit=50&offset=0' \
+  -H 'Authorization: Bearer YOUR_API_KEY'
 ```
 
 <!-- translation-section: manage-memberships -->
@@ -555,13 +612,28 @@ curl -H 'Authorization: Bearer YOUR_API_KEY' 'https://www.loomio.com/api/b2/memb
 #### דוגמה
 
 ```bash
-curl -H 'Authorization: Bearer YOUR_API_KEY' -X POST -H 'Content-Type: application/json' -d '{"group_id": 123, "emails":["person@example.com"]}' https://www.loomio.com/api/b2/memberships
+curl https://www.loomio.com/api/b2/memberships \
+  -H 'Authorization: Bearer YOUR_API_KEY' \
+  --json '{
+    "group_id": 123,
+    "emails": [
+      "person@example.com"
+    ]
+  }'
 ```
 
 אם מועבר `remove_absent=1`, כל חברי הקבוצה שלא נכללו ברשימה יוסרו מהקבוצה. יש להיזהר: פעולה זו עלולה להסיר את כל חברי הקבוצה.
 
 ```bash
-curl -H 'Authorization: Bearer YOUR_API_KEY' -X POST -H 'Content-Type: application/json' -d '{"group_id": 123, "emails":["person@example.com"], "remove_absent": 1}' https://www.loomio.com/api/b2/memberships
+curl https://www.loomio.com/api/b2/memberships \
+  -H 'Authorization: Bearer YOUR_API_KEY' \
+  --json '{
+    "group_id": 123,
+    "emails": [
+      "person@example.com"
+    ],
+    "remove_absent": 1
+  }'
 ```
 
 הפעולה מחזירה אובייקט עם `{added_emails: ["person@added.com"], removed_emails: ["person@removed.com"]}`.
@@ -597,7 +669,8 @@ curl -H 'Authorization: Bearer YOUR_API_KEY' -X POST -H 'Content-Type: applicati
 ### דוגמה
 
 ```bash
-curl -H 'Authorization: Bearer YOUR_API_KEY' 'https://www.loomio.com/api/b2/reports?section=users&group_scope=custom&group_ids=123&member_type=delegate&start_month=2026-01&end_month=2026-09'
+curl 'https://www.loomio.com/api/b2/reports?section=users&group_scope=custom&group_ids=123&member_type=delegate&start_month=2026-01&end_month=2026-09' \
+  -H 'Authorization: Bearer YOUR_API_KEY'
 ```
 
 המערך `users` מכיל שורות פעילות מלאות:
@@ -649,7 +722,10 @@ curl -H 'Authorization: Bearer YOUR_API_KEY' 'https://www.loomio.com/api/b2/repo
 | `poll_type` | מחרוזת, חובה. ערכים: `proposal`, `poll`, `count`, `score`, `ranked_choice`, `meeting`, `dot_vote` |
 | `details` | מחרוזת, לא חובה. טקסט גוף הסקר |
 | `details_format` | מחרוזת, לא חובה, ברירת המחדל היא `md`. ערכים: `md` או `html` |
-| `options` | מערך מחרוזות. אם `poll_type` הוא `proposal`, הערכים התקפים הם `agree`, `disagree`, `abstain`, `block`. אם `poll_type` הוא `meeting`, יש לספק מחרוזות תאריך או תאריך ושעה בפורמט ISO 8601. בכל סוגי הסקרים האחרים, כל מחרוזת תקפה |
+| `options` | שמות אפשרויות פשוטים כמערך מחרוזות. עבור `proposal`, יש להשתמש ב־`agree`, ב־`disagree`, ב־`abstain` או ב־`block` כדי לקבל את התוויות, הסמלים, המשמעויות וההנחיות המקובלים. עבור `meeting`, יש לספק מחרוזות תאריך או תאריך ושעה בפורמט ISO 8601. עבור סוגי סקרים אחרים, יש לספק שמות אפשרויות. לאפשרויות מפורטות, יש להשתמש במקום זאת ב־`poll_options_attributes` |
+| `poll_options_attributes` | חלופה ל־`options`: מערך של אובייקטי אפשרויות עם שמות, משמעויות, הנחיות, סמלים וסדר הצגה. ראו [יצירת סקר עם אפשרויות מפורטות](#create-a-poll-with-detailed-options) |
+| `reason_prompt` | מחרוזת, לא חובה. הנחיה משותפת לנימוק ההצבעה, המשמשת סוגי סקרים ללא הנחיות לכל אפשרות, כגון `poll`,‏ `score` ו־`ranked_choice` |
+| `stance_reason_required` | מחרוזת, ברירת המחדל היא `optional`. ערכים: `disabled`, `optional`, `required`, `required_for_disagree_or_block`, `required_for_block`. שני הערכים האחרונים חלים על הסמלים `disagree` ו־`block`. בסקרים אנונימיים נימוקי ההצבעה מושבתים |
 | `closing_at` | מחרוזת בפורמט ISO 8601 או null, ברירת המחדל היא null. דוגמה: `2026-09-01T12:00:00Z`. אם הערך הוא null, ההצבעה מושבתת והסקר נחשב לסקר בהכנה |
 | `specified_voters_only` | ערך בוליאני, לא חובה, ברירת המחדל היא false. אם הערך הוא true, רק אנשים שצוינו יכולים להצביע. אם הערך הוא false, כל חברי הקבוצה יקבלו הזמנה להצביע |
 | `hide_results` | מחרוזת, לא חובה, ברירת המחדל היא `off`. ערכים: `off`, `until_vote`, `until_closed` |
@@ -667,8 +743,123 @@ curl -H 'Authorization: Bearer YOUR_API_KEY' 'https://www.loomio.com/api/b2/repo
 #### דוגמה
 
 ```bash
-curl -H 'Authorization: Bearer YOUR_API_KEY' -X POST -H 'Content-Type: application/json' -d '{"group_id": 123, "title":"example poll", "poll_type": "proposal", "options": ["agree", "disagree"], "closing_at": "2026-09-01T12:00:00Z", "recipient_emails":["person@example.com"]}' https://www.loomio.com/api/b2/polls
+curl https://www.loomio.com/api/b2/polls \
+  -H 'Authorization: Bearer YOUR_API_KEY' \
+  --json '{
+    "group_id": 123,
+    "title": "example poll",
+    "poll_type": "proposal",
+    "options": [
+      "agree",
+      "disagree"
+    ],
+    "closing_at": "2026-09-01T12:00:00Z",
+    "recipient_emails": [
+      "person@example.com"
+    ]
+  }'
 ```
+
+<!-- translation-section: poll-many-options -->
+
+#### יצירת טיוטת סקר עם אפשרויות רבות
+
+יש לשלוח את כל שמות האפשרויות במערך `options`. השמטת `closing_at` יוצרת סקר בהכנה שההצבעה בו מושבתת; היא אינה מסתירה את הסקר מאנשים שיכולים לקרוא את השרשור שלו. כדי לפתוח את ההצבעה, יש להוסיף ערך עתידי של `closing_at`.
+
+יש להוסיף את כל שמות האפשרויות למערך:
+
+```bash
+curl https://www.loomio.com/api/b2/polls \
+  -H 'Authorization: Bearer YOUR_API_KEY' \
+  --json '{
+    "group_id": 123,
+    "title": "Meeting venue",
+    "poll_type": "poll",
+    "options": [
+      "Town hall",
+      "Library",
+      "Community centre"
+    ]
+  }'
+```
+
+<!-- translation-section: poll-detailed-options -->
+
+#### יצירת סקר עם אפשרויות מפורטות
+
+יש להשתמש ב־`options` לרשימת שמות, או ב־`poll_options_attributes` כאשר לכל אפשרות נדרשים משמעות, הנחיה לנימוק או סמל. יש להשתמש בתבנית אחת בכל בקשה. שתי התבניות פועלות בגוף JSON שטוח או בתוך אובייקט `poll`.
+
+כל אובייקט ב־`poll_options_attributes` מקבל את השדות הבאים:
+
+| שדה | תיאור |
+| --- | --- |
+| `name` | מחרוזת, חובה לאפשרות חדשה. התווית המוצגת למצביעים |
+| `meaning` | מחרוזת, לא חובה. הסבר על משמעות הבחירה באפשרות זו |
+| `prompt` | מחרוזת, לא חובה. הנחיה לנימוק המוצגת כאשר אפשרות זו נבחרת ב־`proposal`, ב־`count` או ב־`check`. בסוגי סקרים אחרים, יש להגדיר `reason_prompt` בסקר |
+| `icon` | מחרוזת, לא חובה. עבור `proposal`,‏ `count` ו־`check`, יש להשתמש ב־`agree`, ב־`disagree`, ב־`abstain` או ב־`block` |
+| `priority` | מספר שלם. סדר האפשרויות, החל מ־`0`. יש לספק עדיפות שונה לכל אפשרות; אפשרויות של מפגש מסודרות לפי תאריך במקום זאת |
+| `test_operator` | מחרוזת או null, לא חובה. דרישה לשיעור הצבעה: `gte` פירושו לפחות, ו־`lte` פירושו לכל היותר. יש להגדיר null כדי להשבית את הדרישה |
+| `test_percent` | מספר שלם, לא חובה. האחוז הנדרש בדרישה לשיעור ההצבעה, מ־`0` עד `100` |
+| `test_against` | מחרוזת, לא חובה. `score_percent` משווה את חלקה של האפשרות בסך הניקוד או הנקודות שהוקצו; `voter_percent` משווה את מספר המצביעים באפשרות לכלל בעלי זכות ההצבעה |
+| `id` | מספר שלם. יש לכלול בעת עריכת אפשרות קיימת; יש להשמיט עבור אפשרות חדשה |
+| `_destroy` | ערך בוליאני, לא חובה. יש להגדיר `true` יחד עם ה־`id` של אפשרות קיימת כדי להסיר אותה |
+
+ליצירת הצעה עם תוויות והנחיות מותאמות אישית לאפשרויות:
+
+```bash
+curl https://www.loomio.com/api/b2/polls \
+  -H 'Authorization: Bearer YOUR_API_KEY' \
+  --json '{
+    "group_id": 123,
+    "title": "Should we adopt this proposal?",
+    "poll_type": "proposal",
+    "stance_reason_required": "optional",
+    "poll_options_attributes": [
+      {
+        "name": "Support",
+        "meaning": "I support adopting this proposal",
+        "prompt": "What do you support about it?",
+        "icon": "agree",
+        "priority": 0
+      },
+      {
+        "name": "Oppose",
+        "meaning": "I would prefer another approach",
+        "prompt": "What would you change?",
+        "icon": "disagree",
+        "priority": 1
+      }
+    ]
+  }'
+```
+
+בסקר רגיל, יש להשתמש באותה תבנית של אפשרויות מפורטות עם `reason_prompt` משותף המוגדר בסקר:
+
+```bash
+curl https://www.loomio.com/api/b2/polls \
+  -H 'Authorization: Bearer YOUR_API_KEY' \
+  --json '{
+    "group_id": 123,
+    "title": "Choose a venue",
+    "poll_type": "poll",
+    "reason_prompt": "Why do you prefer this venue?",
+    "stance_reason_required": "optional",
+    "poll_options_attributes": [
+      {
+        "name": "Town hall",
+        "meaning": "Central, accessible venue",
+        "priority": 0
+      },
+      {
+        "name": "Library",
+        "meaning": "Smaller room with no hire fee",
+        "priority": 1
+      }
+    ]
+  }'
+```
+
+בדוגמאות אלה `closing_at` מושמט, ולכן ההצבעה נשארת מושבתת עד להגדרת תאריך סגירה עתידי.
 
 <!-- translation-section: show-poll -->
 
@@ -683,7 +874,8 @@ curl -H 'Authorization: Bearer YOUR_API_KEY' -X POST -H 'Content-Type: applicati
 #### דוגמה
 
 ```bash
-curl -H 'Authorization: Bearer YOUR_API_KEY' https://www.loomio.com/api/b2/polls/abc123
+curl https://www.loomio.com/api/b2/polls/abc123 \
+  -H 'Authorization: Bearer YOUR_API_KEY'
 ```
 
 <!-- translation-section: list-polls -->
@@ -712,7 +904,8 @@ curl -H 'Authorization: Bearer YOUR_API_KEY' https://www.loomio.com/api/b2/polls
 #### דוגמה
 
 ```bash
-curl -H 'Authorization: Bearer YOUR_API_KEY' 'https://www.loomio.com/api/b2/polls?group_id=123'
+curl 'https://www.loomio.com/api/b2/polls?group_id=123' \
+  -H 'Authorization: Bearer YOUR_API_KEY'
 ```
 
 <!-- translation-section: edit-poll -->
@@ -733,6 +926,9 @@ curl -H 'Authorization: Bearer YOUR_API_KEY' 'https://www.loomio.com/api/b2/poll
 | `details` | פרטי הסקר המעודכנים |
 | `details_format` | `md` או `html`, לא חובה, ברירת המחדל היא `md` |
 | `options` | שמות האפשרויות המעודכנים. שינוי האפשרויות עשוי להשפיע על הצבעות קיימות, בהתאם למצב הסקר |
+| `poll_options_attributes` | חלופה ל־`options`. ניתן לעדכן אובייקטי אפשרויות מפורטות לפי `id`, להוסיף אובייקטים ללא `id`, או להסיר אפשרות באמצעות `id` ו־`_destroy: true`. אפשרויות שהושמטו נשארות ללא שינוי |
+| `reason_prompt` | הנחיה משותפת מעודכנת לנימוק עבור סוגי סקרים ללא הנחיות לכל אפשרות |
+| `stance_reason_required` | דרישה מעודכנת לנימוק; חלים אותם ערכים כמו ביצירת סקר |
 | `closing_at` | מחרוזת בפורמט ISO 8601 או null |
 | `recipient_audience` | `group` או null. אם הערך הוא `group`, כל הקבוצה תקבל התראה |
 | `recipient_user_ids` | מערך מזהי משתמשים לשליחת התראה או הזמנה |
@@ -744,8 +940,44 @@ curl -H 'Authorization: Bearer YOUR_API_KEY' 'https://www.loomio.com/api/b2/poll
 #### דוגמה
 
 ```bash
-curl -H 'Authorization: Bearer YOUR_API_KEY' -X PATCH -H 'Content-Type: application/json' -d '{"title":"updated poll title", "details":"updated details", "details_format":"md"}' https://www.loomio.com/api/b2/polls/123
+curl https://www.loomio.com/api/b2/polls/123 \
+  -X PATCH \
+  -H 'Authorization: Bearer YOUR_API_KEY' \
+  --json '{
+    "title": "updated poll title",
+    "details": "updated details",
+    "details_format": "md"
+  }'
 ```
+
+<!-- translation-section: edit-poll-detailed-options -->
+
+#### עריכת אפשרויות מפורטות
+
+ניתן לקבל את מזהי האפשרויות מהמערך `poll_options` בתשובה לבקשת יצירה או אחזור. יש לשלוח רק את השדות שיש לשנות, יחד עם ה־`id` של כל אפשרות קיימת:
+
+```bash
+curl https://www.loomio.com/api/b2/polls/123 \
+  -X PATCH \
+  -H 'Authorization: Bearer YOUR_API_KEY' \
+  --json '{
+    "poll_options_attributes": [
+      {
+        "id": 456,
+        "meaning": "Updated explanation",
+        "prompt": "What would improve this proposal?"
+      },
+      {
+        "name": "Abstain",
+        "meaning": "I leave the decision to others",
+        "icon": "abstain",
+        "priority": 2
+      }
+    ]
+  }'
+```
+
+מזהי האפשרויות חייבים להשתייך לסקר שנערך. העריכה דורשת הרשאה לעריכת הסקר, ולא ניתן לערוך סקרים סגורים. בסקרים אנונימיים גם הגדרות האפשרויות ננעלות לאחר הגשת ההצבעה הראשונה.
 
 <!-- translation-section: soft-delete-poll -->
 
@@ -760,7 +992,9 @@ curl -H 'Authorization: Bearer YOUR_API_KEY' -X PATCH -H 'Content-Type: applicat
 #### דוגמה
 
 ```bash
-curl -H 'Authorization: Bearer YOUR_API_KEY' -X DELETE https://www.loomio.com/api/b2/polls/123
+curl https://www.loomio.com/api/b2/polls/123 \
+  -X DELETE \
+  -H 'Authorization: Bearer YOUR_API_KEY'
 ```
 
 <!-- translation-section: search -->
@@ -787,7 +1021,8 @@ curl -H 'Authorization: Bearer YOUR_API_KEY' -X DELETE https://www.loomio.com/ap
 | `order` | יש להגדיר `authored_at_desc` כדי למיין את התוכן התואם לפי מועד הכתיבה |
 
 ```bash
-curl -H 'Authorization: Bearer YOUR_API_KEY' 'https://www.loomio.com/api/b2/search?query=quarterly+planning&type=Discussion'
+curl 'https://www.loomio.com/api/b2/search?query=quarterly+planning&type=Discussion' \
+  -H 'Authorization: Bearer YOUR_API_KEY'
 ```
 
 התשובה מכילה מערך `search_results`. כל תוצאה מזהה את הרשומה התואמת ואת ההקשר הגלוי שלה באמצעות שדות הכוללים את `searchable_type`, `searchable_id`, `highlight`, `group_id`, `group_name`, `discussion_key`, `poll_key`, `author_id`, `author_name`, `authored_at` ו־`tags`. שדות שאינם רלוונטיים לתוצאה מקבלים את הערך `null`.
@@ -818,7 +1053,8 @@ curl -H 'Authorization: Bearer YOUR_API_KEY' 'https://www.loomio.com/api/b2/sear
 #### דוגמה
 
 ```bash
-curl -H 'Authorization: Bearer YOUR_API_KEY' 'https://www.loomio.com/api/b2/threads?limit=50&offset=0'
+curl 'https://www.loomio.com/api/b2/threads?limit=50&offset=0' \
+  -H 'Authorization: Bearer YOUR_API_KEY'
 ```
 
 <!-- translation-section: read-thread -->
@@ -888,7 +1124,8 @@ Webhooks מוגדרים לכל קבוצה בנפרד ודורשים הרשאת �
 | `offset` | מספר שלם, רשות, ברירת המחדל היא 0. היסט לצורך חלוקה לעמודים |
 
 ```bash
-curl -H 'Authorization: Bearer YOUR_API_KEY' 'https://www.loomio.com/api/b2/chatbots?group_id=123&limit=50&offset=0'
+curl 'https://www.loomio.com/api/b2/chatbots?group_id=123&limit=50&offset=0' \
+  -H 'Authorization: Bearer YOUR_API_KEY'
 ```
 
 התשובה מכילה עמוד של `chatbots` המסודר לפי מזהה האינטגרציה בסדר עולה, וב־`meta.total` מופיע המספר הכולל של האינטגרציות בקבוצה. לכל אינטגרציה יש השדות הבאים:
@@ -911,19 +1148,22 @@ curl -H 'Authorization: Bearer YOUR_API_KEY' 'https://www.loomio.com/api/b2/chat
 `POST /api/b2/chatbots`
 
 ```bash
-curl -X POST \
+curl https://www.loomio.com/api/b2/chatbots \
   -H 'Authorization: Bearer YOUR_API_KEY' \
-  -H 'Content-Type: application/json' \
-  -d '{
+  --json '{
     "group_id": 123,
     "name": "Planning system",
     "kind": "webhook",
     "webhook_kind": "markdown",
     "server": "https://hooks.example.org/loomio/unguessable-token",
-    "event_kinds": ["new_discussion", "new_comment", "poll_created", "outcome_created"],
+    "event_kinds": [
+      "new_discussion",
+      "new_comment",
+      "poll_created",
+      "outcome_created"
+    ],
     "notification_only": false
-  }' \
-  https://www.loomio.com/api/b2/chatbots
+  }'
 ```
 
 לחשבון שמפתח ה־API שייך לו חייבת להיות הרשאת ניהול של הקבוצה המזוהה באמצעות `group_id`. לפני השמירה נבדק שכתובת היעד היא כתובת URL ציבורית.
@@ -937,11 +1177,16 @@ curl -X POST \
 יש לשלוח את השדות שיש לשנות. לא ניתן להעביר את ה־webhook לקבוצה אחרת באמצעות שינוי `group_id`.
 
 ```bash
-curl -X PATCH \
+curl https://www.loomio.com/api/b2/chatbots/456 \
+  -X PATCH \
   -H 'Authorization: Bearer YOUR_API_KEY' \
-  -H 'Content-Type: application/json' \
-  -d '{"name":"Planning events","event_kinds":["new_discussion","outcome_created"]}' \
-  https://www.loomio.com/api/b2/chatbots/456
+  --json '{
+    "name": "Planning events",
+    "event_kinds": [
+      "new_discussion",
+      "outcome_created"
+    ]
+  }'
 ```
 
 <!-- translation-section: test-a-webhook-destination -->
@@ -953,11 +1198,12 @@ curl -X PATCH \
 `POST /api/b2/chatbots/check`
 
 ```bash
-curl -X POST \
+curl https://www.loomio.com/api/b2/chatbots/check \
   -H 'Authorization: Bearer YOUR_API_KEY' \
-  -H 'Content-Type: application/json' \
-  -d '{"group_id":123,"server":"https://hooks.example.org/loomio/unguessable-token"}' \
-  https://www.loomio.com/api/b2/chatbots/check
+  --json '{
+    "group_id": 123,
+    "server": "https://hooks.example.org/loomio/unguessable-token"
+  }'
 ```
 
 <!-- translation-section: delete-a-webhook -->
@@ -967,7 +1213,9 @@ curl -X POST \
 `DELETE /api/b2/chatbots/:id`
 
 ```bash
-curl -X DELETE -H 'Authorization: Bearer YOUR_API_KEY' https://www.loomio.com/api/b2/chatbots/456
+curl https://www.loomio.com/api/b2/chatbots/456 \
+  -X DELETE \
+  -H 'Authorization: Bearer YOUR_API_KEY'
 ```
 
 מחיקת ההגדרות מפסיקה שליחות עתידיות. היא אינה מוחקת תוכן כלשהו מקבוצת Loomio.

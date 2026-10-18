@@ -1,154 +1,162 @@
 ---
 title: ユーザーAPI
-source_revision: 28ecc59f68d407f76f08133bfa0172aadbb53065
-source_file: docs/en/user_manual/integrations/api/user-api.md
+source_revision: aa8cf2cef8336b4d86d7200c0d66c0eb8f973256
+source_file: docs/help/en/user_manual/integrations/api/user-api.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-15'
+  'on': '2026-10-17'
 sections:
   introduction: b6e6ec7463276869
-  response-size-and-related-records: 298da635bf97dadd
+  response-size-and-related-records: 8349c4d8e567a0c1
   endpoint-summary: 258f7560def524ec
   groups: 0473f1f7fb78f074
-  list-groups: 01de10c378eeba37
-  get-a-group: dffef659cb92745e
+  list-groups: e94dbf27dff819ff
+  get-a-group: 80912be614c0ea89
   webhooks: f65fa289f8c1b808
-  list-webhooks: 6093df92815f7156
-  create-a-webhook: 007312bcc204853a
-  update-a-webhook: 124b07d2c401e319
-  test-a-webhook-destination: 8fc3ac4ad10de6f6
-  delete-a-webhook: 34eda1e07d65db80
+  list-webhooks: 6ec5700a0ac5cbc7
+  create-a-webhook: 173ce08be83b4b58
+  update-a-webhook: 2bf0f59f8bff06ec
+  test-a-webhook-destination: 0637a17a98f20f4b
+  delete-a-webhook: 6ba2c6360e4f1d2a
   event-types: 73bfe87c8b790af3
   http-delivery: a32c763b6f816e65
   payload-formats: ca728b0ef542305c
   search: bb5a1cfc7a6179aa
-  params: 7eebe4e259830976
+  params: 1e7478b9883d2a47
   participation-report: a1798112a78390fe
   params-2: 464322ffc1ac56e5
-  example: 63bed6e82107f992
+  example: ba3f68d5b68a955b
   create-discussion: 958fc684640462a9
   params-3: 657d582c89333097
-  example-2: 57681d83fffe9515
+  example-2: bca512c06153265f
   show-discussion: 40102aeffe4f1286
-  example-3: c0ebd013a1b7fbd2
+  example-3: fe0959389ff4f2f6
   list-discussions: '09ff7f0d3a937b41'
   params-4: dcebc294fbb9d837
-  example-4: ffda1a4726380e2f
+  example-4: dd55f55bf83d135f
   list-threads: '09f7bd670e581400'
   params-5: 79b1cefac558effc
-  example-5: a40ae2317faab46d
+  example-5: 1864da3b097f66d6
   read-thread: ac36d1b81c1eeed4
   example-6: 8c582a286e04ca75
   edit-discussion: 918161e7aa8f4aa6
   params-6: b819796d34354623
-  example-7: 552295f78d3490af
+  example-7: 8b591051e20fa1e4
   soft-delete-discussion: c8ffe951171e6f07
-  example-8: 965c5761f34f9920
+  example-8: d0e726a1a20cc469
   create-comment: f95f56b81c8f22b5
   params-7: 5ad8ede0919c5f47
-  example-9: 70ee3750f1543e9b
+  example-9: 61514be87d3a8857
   edit-comment: 80322da74162d58f
   params-8: 288331c60f3c9b28
-  example-10: ec89de8cc86b6fc8
+  example-10: c0aed6ea023ff3d4
   soft-delete-comment: 04baf86923c7e8f1
-  example-11: f3675b780da755cd
+  example-11: 129076a53c6c4b31
   create-poll: cf62e787784a5e87
-  params-9: df1611a9dedef2d8
-  example-12: fa7410dd3a0a385f
+  params-9: 89465a6e2dfa6bdb
+  example-12: 4397219f26129191
   show-poll: d759508986aab08c
-  example-13: 2867289a6c2beb9d
+  example-13: 01f20dba176f4f23
   list-polls: 56e5ed4ae45e5428
   params-10: e68e8cf62b21488d
-  example-14: 40958a09c058d4cc
+  example-14: a1149e09d37d9b0a
   edit-poll: 65467ad0b431ddbf
-  params-11: 77f118397592bc05
-  example-15: e56befa0f2ae3360
+  params-11: 70b594511872194a
+  example-15: 8c4d585a050423ac
   soft-delete-poll: 61cf76310e08d7ff
-  example-16: afbf95df96734a4d
+  example-16: fb15cb7d90550c2f
   list-memberships: 5fab06bb8ecf1fd0
   params-12: decaff0790566fb0
-  example-17: 5d92092b70ce545a
+  example-17: 7714e1b8d2d07999
   manage-memberships: 802d39c06674d395
   params-13: 771b5338a4ba3d0b
-  example-18: a50b01823a6935a0
+  example-18: a06882d9d8de45f0
   pagination: 4171ca78df07d4fe
   comments: ccd37303241bac95
   discussions: 16ffe7a7b6202d3e
   memberships: e7cf8846c3179720
   polls: 821dcd89b5460804
   threads: 19bc02fc1c26317b
+  request-bodies: 0ec99fc25454f511
+  poll-many-options: 05024e64103f7d39
+  poll-detailed-options: a511f74ddaa0b6bf
+  edit-poll-detailed-options: 767b869e6b9efcff
 generated:
   introduction: 9da9960a32538ae1
-  response-size-and-related-records: 9a95d0eda8dfb508
+  response-size-and-related-records: d610485d524c3603
   endpoint-summary: b92be0b615dc4c99
   groups: 95e133438e155e03
-  list-groups: 2d0b6168f54f3af9
-  get-a-group: 7830c66e98310029
+  list-groups: 6db9669e4d128084
+  get-a-group: cd0cd63073d64925
   webhooks: a97fdb82fc1bf29e
-  list-webhooks: 1798cef1adf8f7ae
-  create-a-webhook: f1d3af8c65abed95
-  update-a-webhook: c7ca6006b3319fe6
-  test-a-webhook-destination: 6ef63f6f3927f257
-  delete-a-webhook: fa05cd9105fe6559
+  list-webhooks: 550b490892ad2658
+  create-a-webhook: a395027c38dbd4cf
+  update-a-webhook: 9f1ca4fae23c24f5
+  test-a-webhook-destination: e502080141ef4ac0
+  delete-a-webhook: 95d7f56fffaf4ff3
   event-types: 58b300d9c7dff84b
   http-delivery: d426ce00962fbf95
   payload-formats: 7f06ed33b553976f
   search: 76bd16eff39d8e6e
-  params: e825314583844ba8
+  params: 5f054befd9eb4d35
   participation-report: 9451a8c2e0e36f7a
   params-2: 52cec69d241a4f8a
-  example: 69849361e6ddd8a6
+  example: 9e203984e8030f42
   create-discussion: 60ea2a9eef8d86a0
   params-3: 220f2f80da75ae28
-  example-2: 20ac4d891c4c5be5
+  example-2: 9b1d70573639f60e
   show-discussion: a5905cd4d0f00103
-  example-3: 5999591fc3fdc5fe
+  example-3: 9bc3cb04a058ea2b
   list-discussions: 1314660e24d2dcaa
   params-4: 10d24176aa54c5b1
-  example-4: 215961baca984d84
+  example-4: 5aa3c8494798d920
   list-threads: aef85b72536459f0
   params-5: b174e3f7ed633494
-  example-5: b452bd91ddc27e1f
+  example-5: a79a764ca1564115
   read-thread: 01aeb93c94183d02
   example-6: 8b9b96c1954fc695
   edit-discussion: 1bf1646e5788cb13
   params-6: 5b5bafc2621bce4f
-  example-7: d31868a3a07137d3
+  example-7: 83b0b495e8302a99
   soft-delete-discussion: 4e6e3e809585735b
-  example-8: 8668370bfe6c9bcf
+  example-8: f895b902cfa37462
   create-comment: 36862355490530bb
   params-7: f641417d13ce4bb8
-  example-9: 9ba5ea9827a5d056
+  example-9: 9739e01549ca1889
   edit-comment: db1e5e13a126fdcd
   params-8: 016f76a103d930e4
-  example-10: c63bb38414a488cf
+  example-10: 95285c801362c831
   soft-delete-comment: 5878a2556e0bebd8
-  example-11: 2db3578935c73e40
+  example-11: 8e899d76e5701aa4
   create-poll: 5d4d3976844cc546
-  params-9: c770bb7be72d7ba2
-  example-12: cdd05d2c0c52f5af
+  params-9: c3802cd5d0e8a661
+  example-12: c36677e03d30ce26
   show-poll: 0afa4c044d2a5a4e
-  example-13: 3dc7eb8975517c53
+  example-13: d24534026f0619a4
   list-polls: 202be987ea0cf89c
   params-10: d63c307be555d850
-  example-14: 6360b30322cc4cbe
+  example-14: df044cc335270854
   edit-poll: 6174c701515e30be
-  params-11: 00db866433098d9f
-  example-15: 2f06f262cd54794d
+  params-11: 7960d9aba879021c
+  example-15: 7a36d5483568c8b2
   soft-delete-poll: d458ec93f7cc43b0
-  example-16: 957d900d42630f65
+  example-16: f8631423b548f3da
   list-memberships: 349e28939f2855b6
   params-12: 86c22f1ce78077b5
-  example-17: c37f5cf610df7358
+  example-17: 487d1c3cd1d9cca2
   manage-memberships: ad89014e0b273ef8
   params-13: aab3e7cf0b72b2e6
-  example-18: d9a65d79f5ecc0e8
+  example-18: e73d65c9f766eaa9
   pagination: 37d5df239aa8c9b0
   comments: 329bd304204146ee
   discussions: 314a377991d455fd
   memberships: e105d51243cc1ae0
   polls: 53518c90603f9924
   threads: 61f8fceb9c2cc2e3
+  request-bodies: 861faf64e2098ad2
+  poll-many-options: 54a4aa1394294719
+  poll-detailed-options: 85e5a8c92b508c2e
+  edit-poll-detailed-options: 6b0b1cc0f31ca441
 title_source: c23fb6526b722360
 title_generated: 9d80e3857ccdabb2
 ---
@@ -174,6 +182,16 @@ Authorization: Bearer YOUR_API_KEY
 ```
 
 例では、`YOUR_API_KEY`、グループID`123`、`https://www.loomio.com/`を使用しています。使用するAPIキー、グループID、Loomioのインストール先URLに置き換えてください。
+
+<!-- translation-section: request-bodies -->
+
+### リクエスト本文の送信
+
+`Content-Type: application/json`を指定してJSONを送信します。cURLの例では、このヘッダーを自動的に設定する`--json`を使用しています。ディスカッション、コメント、アンケートの作成・編集エンドポイントは、フラットなオブジェクトと、`{"poll": {...}}`のようにリソース名の下にネストされたオブジェクトのどちらも受け付けます。
+
+配列は、`"options": ["foo", "bar"]`のようにJSON配列として送信します。代わりにフォームエンコーディングを使用する場合は、`options[]=foo&options[]=bar`のようにフィールド名に角括弧を付ける必要があります。`options=foo&options=bar`のように繰り返すと、最後の値だけが保持されます。
+
+各リクエストの後に、HTTPステータスとレスポンス本文を確認してください。検証に失敗すると、`errors`オブジェクトとともに`422`が返されます。アンケートの作成に成功すると、`polls`にアンケートが、`poll_options`にその選択肢が返されます。
 
 <!-- translation-section: endpoint-summary -->
 
@@ -231,7 +249,8 @@ Authorization: Bearer YOUR_API_KEY
 `compact=1`を指定すると、データ量の多い関連トピック、グループ、親グループ、メンバー登録、リアクション、タグ、翻訳を省略できます。主要レコードと、その内容を解釈するために必要な関連レコードは引き続き含まれます。
 
 ```bash
-curl -H 'Authorization: Bearer YOUR_API_KEY' 'https://www.loomio.com/api/b2/threads/123/items?compact=1'
+curl 'https://www.loomio.com/api/b2/threads/123/items?compact=1' \
+  -H 'Authorization: Bearer YOUR_API_KEY'
 ```
 
 省略する種類を直接指定するには、単数形のレコード種別をスペースで区切って`exclude_types`に指定します。例えば、`exclude_types=group reaction`は関連するグループとリアクションを省略します。よく使われる値は、`topic`、`group`、`parent`、`membership`、`reaction`、`tag`、`translation`、`user`、`discussion`、`poll`、`poll_option`、`stance`、`stance_choice`、`outcome`（結論）、`topic_item`です。除外は関連レコードに適用され、エンドポイントで要求した主要リソースには適用されません。
@@ -265,7 +284,13 @@ APIキーのユーザーとしてディスカッションにコメントを作�
 #### 例
 
 ```bash
-curl -H 'Authorization: Bearer YOUR_API_KEY' -X POST -H 'Content-Type: application/json' -d '{"discussion_id": 123, "body":"example comment", "body_format":"md"}' https://www.loomio.com/api/b2/comments
+curl https://www.loomio.com/api/b2/comments \
+  -H 'Authorization: Bearer YOUR_API_KEY' \
+  --json '{
+    "discussion_id": 123,
+    "body": "example comment",
+    "body_format": "md"
+  }'
 ```
 
 <!-- translation-section: edit-comment -->
@@ -290,7 +315,13 @@ APIキーのユーザーとしてコメントを編集します。Loomioと同�
 #### 例
 
 ```bash
-curl -H 'Authorization: Bearer YOUR_API_KEY' -X PATCH -H 'Content-Type: application/json' -d '{"body":"updated comment", "body_format":"md"}' https://www.loomio.com/api/b2/comments/123
+curl https://www.loomio.com/api/b2/comments/123 \
+  -X PATCH \
+  -H 'Authorization: Bearer YOUR_API_KEY' \
+  --json '{
+    "body": "updated comment",
+    "body_format": "md"
+  }'
 ```
 
 <!-- translation-section: soft-delete-comment -->
@@ -306,7 +337,9 @@ APIキーのユーザーとしてコメントを論理削除します。コメ�
 #### 例
 
 ```bash
-curl -H 'Authorization: Bearer YOUR_API_KEY' -X DELETE https://www.loomio.com/api/b2/comments/123
+curl https://www.loomio.com/api/b2/comments/123 \
+  -X DELETE \
+  -H 'Authorization: Bearer YOUR_API_KEY'
 ```
 
 <!-- translation-section: discussions -->
@@ -341,7 +374,15 @@ APIキーのユーザーとしてディスカッションを作成します。
 #### 例
 
 ```bash
-curl -H 'Authorization: Bearer YOUR_API_KEY' -X POST -H 'Content-Type: application/json' -d '{"group_id": 123, "title":"example thread", "recipient_emails":["person@example.com"]}' https://www.loomio.com/api/b2/discussions
+curl https://www.loomio.com/api/b2/discussions \
+  -H 'Authorization: Bearer YOUR_API_KEY' \
+  --json '{
+    "group_id": 123,
+    "title": "example thread",
+    "recipient_emails": [
+      "person@example.com"
+    ]
+  }'
 ```
 
 <!-- translation-section: show-discussion -->
@@ -357,7 +398,8 @@ curl -H 'Authorization: Bearer YOUR_API_KEY' -X POST -H 'Content-Type: applicati
 #### 例
 
 ```bash
-curl -H 'Authorization: Bearer YOUR_API_KEY' https://www.loomio.com/api/b2/discussions/abc123
+curl https://www.loomio.com/api/b2/discussions/abc123 \
+  -H 'Authorization: Bearer YOUR_API_KEY'
 ```
 
 <!-- translation-section: list-discussions -->
@@ -386,7 +428,8 @@ curl -H 'Authorization: Bearer YOUR_API_KEY' https://www.loomio.com/api/b2/discu
 #### 例
 
 ```bash
-curl -H 'Authorization: Bearer YOUR_API_KEY' 'https://www.loomio.com/api/b2/discussions?group_id=123'
+curl 'https://www.loomio.com/api/b2/discussions?group_id=123' \
+  -H 'Authorization: Bearer YOUR_API_KEY'
 ```
 
 <!-- translation-section: edit-discussion -->
@@ -416,7 +459,14 @@ APIキーのユーザーとしてディスカッションを編集します。Lo
 #### 例
 
 ```bash
-curl -H 'Authorization: Bearer YOUR_API_KEY' -X PATCH -H 'Content-Type: application/json' -d '{"title":"updated thread title", "description":"updated context", "description_format":"md"}' https://www.loomio.com/api/b2/discussions/123
+curl https://www.loomio.com/api/b2/discussions/123 \
+  -X PATCH \
+  -H 'Authorization: Bearer YOUR_API_KEY' \
+  --json '{
+    "title": "updated thread title",
+    "description": "updated context",
+    "description_format": "md"
+  }'
 ```
 
 <!-- translation-section: soft-delete-discussion -->
@@ -432,7 +482,9 @@ APIキーのユーザーとしてディスカッションを論理削除しま�
 #### 例
 
 ```bash
-curl -H 'Authorization: Bearer YOUR_API_KEY' -X DELETE https://www.loomio.com/api/b2/discussions/123
+curl https://www.loomio.com/api/b2/discussions/123 \
+  -X DELETE \
+  -H 'Authorization: Bearer YOUR_API_KEY'
 ```
 
 <!-- translation-section: groups -->
@@ -455,7 +507,8 @@ APIキーのユーザーが有効なメンバー登録を持つグループを�
 | `offset` | 整数、任意、既定値0。ページ分割のオフセット |
 
 ```bash
-curl -H 'Authorization: Bearer YOUR_API_KEY' 'https://www.loomio.com/api/b2/groups?limit=50&offset=0'
+curl 'https://www.loomio.com/api/b2/groups?limit=50&offset=0' \
+  -H 'Authorization: Bearer YOUR_API_KEY'
 ```
 
 レスポンスには、グループIDの昇順に並んだ`groups`の1ページ分が含まれ、`meta.total`には条件に一致するグループの総数が含まれます。親グループとサブグループが含まれ、現在サブスクリプションが有効でないグループも含まれます。有効なグループだけを連携の対象にする場合は、`enabled`フィールドを確認してください。
@@ -492,8 +545,11 @@ APIキーのユーザーが閲覧できるグループを1件返します。
 識別子には、グループの数値ID、キー、ハンドル名を使用できます。
 
 ```bash
-curl -H 'Authorization: Bearer YOUR_API_KEY' https://www.loomio.com/api/b2/groups/123
-curl -H 'Authorization: Bearer YOUR_API_KEY' https://www.loomio.com/api/b2/groups/example-group
+curl https://www.loomio.com/api/b2/groups/123 \
+  -H 'Authorization: Bearer YOUR_API_KEY'
+
+curl https://www.loomio.com/api/b2/groups/example-group \
+  -H 'Authorization: Bearer YOUR_API_KEY'
 ```
 
 レスポンスには、一覧取得エンドポイントと同じフィールドを持つグループが`groups`配列に含まれます。APIキーのユーザーがアクセスできないグループを要求すると、権限エラーが返されます。
@@ -529,7 +585,8 @@ APIキーのユーザーが閲覧できるメンバー登録を一覧で取得�
 #### 例
 
 ```bash
-curl -H 'Authorization: Bearer YOUR_API_KEY' 'https://www.loomio.com/api/b2/memberships?group_id=123&limit=50&offset=0'
+curl 'https://www.loomio.com/api/b2/memberships?group_id=123&limit=50&offset=0' \
+  -H 'Authorization: Bearer YOUR_API_KEY'
 ```
 
 <!-- translation-section: manage-memberships -->
@@ -555,13 +612,28 @@ curl -H 'Authorization: Bearer YOUR_API_KEY' 'https://www.loomio.com/api/b2/memb
 #### 例
 
 ```bash
-curl -H 'Authorization: Bearer YOUR_API_KEY' -X POST -H 'Content-Type: application/json' -d '{"group_id": 123, "emails":["person@example.com"]}' https://www.loomio.com/api/b2/memberships
+curl https://www.loomio.com/api/b2/memberships \
+  -H 'Authorization: Bearer YOUR_API_KEY' \
+  --json '{
+    "group_id": 123,
+    "emails": [
+      "person@example.com"
+    ]
+  }'
 ```
 
 `remove_absent=1`を指定すると、リストに含まれていないグループのメンバーはすべてグループから削除されます。グループの全メンバーを削除する可能性があるため、注意してください。
 
 ```bash
-curl -H 'Authorization: Bearer YOUR_API_KEY' -X POST -H 'Content-Type: application/json' -d '{"group_id": 123, "emails":["person@example.com"], "remove_absent": 1}' https://www.loomio.com/api/b2/memberships
+curl https://www.loomio.com/api/b2/memberships \
+  -H 'Authorization: Bearer YOUR_API_KEY' \
+  --json '{
+    "group_id": 123,
+    "emails": [
+      "person@example.com"
+    ],
+    "remove_absent": 1
+  }'
 ```
 
 この操作は、`{added_emails: ["person@added.com"], removed_emails: ["person@removed.com"]}`を含むオブジェクトを返します。
@@ -597,7 +669,8 @@ APIには、アプリ内のレポートと同じグループの閲覧権限が�
 ### 例
 
 ```bash
-curl -H 'Authorization: Bearer YOUR_API_KEY' 'https://www.loomio.com/api/b2/reports?section=users&group_scope=custom&group_ids=123&member_type=delegate&start_month=2026-01&end_month=2026-09'
+curl 'https://www.loomio.com/api/b2/reports?section=users&group_scope=custom&group_ids=123&member_type=delegate&start_month=2026-01&end_month=2026-09' \
+  -H 'Authorization: Bearer YOUR_API_KEY'
 ```
 
 `users`配列には、活動データの全項目を含む行が格納されます。
@@ -649,7 +722,10 @@ APIキーのユーザーとしてアンケートを作成します。
 | `poll_type` | 文字列、必須。値：`proposal`、`poll`、`count`、`score`、`ranked_choice`、`meeting`、`dot_vote` |
 | `details` | 文字列、省略可能。アンケートの本文です |
 | `details_format` | 文字列、省略可能、既定値は `md`。値：`md` または `html` |
-| `options` | 文字列の配列。`poll_type` が `proposal` の場合、有効な値は `agree`、`disagree`、`abstain`、`block` です。`poll_type` が `meeting` の場合、ISO 8601形式の日付または日時の文字列を指定します。その他のアンケートの種類では、任意の文字列が有効です |
+| `options` | 選択肢の名前を文字列の配列で指定します。`proposal` では、`agree`、`disagree`、`abstain`、`block` を使うと、標準のラベル、アイコン、意味、入力を促す文が設定されます。`meeting` では、ISO 8601形式の日付または日時の文字列を指定します。その他のアンケートの種類では、選択肢の名前を指定します。選択肢の詳細を設定する場合は、代わりに `poll_options_attributes` を使います |
+| `poll_options_attributes` | `options` の代わりに使います。名前、意味、入力を促す文、アイコン、表示順を持つ選択肢オブジェクトの配列です。[選択肢の詳細を設定してアンケートを作成する](#create-a-poll-with-detailed-options)を参照してください |
+| `reason_prompt` | 文字列、省略可能。投票の理由の入力を促す共通の文です。`poll`、`score`、`ranked_choice` など、選択肢ごとの入力を促す文がない種類のアンケートで使います |
+| `stance_reason_required` | 文字列、既定値は `optional`。値：`disabled`、`optional`、`required`、`required_for_disagree_or_block`、`required_for_block`。最後の2つは `disagree` と `block` のアイコンに適用されます。匿名アンケートでは投票の理由が無効になります |
 | `closing_at` | ISO 8601形式の文字列または null、既定値は null。例：`2026-09-01T12:00:00Z`。null の場合、投票は無効になり、アンケートは作成中として扱われます |
 | `specified_voters_only` | 真偽値、省略可能、既定値は false。true の場合、指定された人だけが投票できます。false の場合、グループの全員が投票に招待されます |
 | `hide_results` | 文字列、省略可能、既定値は `off`。値：`off`、`until_vote`、`until_closed` |
@@ -667,8 +743,123 @@ APIキーのユーザーとしてアンケートを作成します。
 #### 例
 
 ```bash
-curl -H 'Authorization: Bearer YOUR_API_KEY' -X POST -H 'Content-Type: application/json' -d '{"group_id": 123, "title":"example poll", "poll_type": "proposal", "options": ["agree", "disagree"], "closing_at": "2026-09-01T12:00:00Z", "recipient_emails":["person@example.com"]}' https://www.loomio.com/api/b2/polls
+curl https://www.loomio.com/api/b2/polls \
+  -H 'Authorization: Bearer YOUR_API_KEY' \
+  --json '{
+    "group_id": 123,
+    "title": "example poll",
+    "poll_type": "proposal",
+    "options": [
+      "agree",
+      "disagree"
+    ],
+    "closing_at": "2026-09-01T12:00:00Z",
+    "recipient_emails": [
+      "person@example.com"
+    ]
+  }'
 ```
+
+<!-- translation-section: poll-many-options -->
+
+#### 多くの選択肢を持つアンケートの下書きを作成する
+
+すべての選択肢の名前を `options` 配列で送信します。`closing_at` を省略すると、投票が無効になった作成中のアンケートが作成されます。そのスレッドを閲覧できる人に対してアンケートが非表示になるわけではありません。投票を開始する準備ができたら、未来の日時を指定した `closing_at` を追加します。
+
+すべての選択肢の名前を配列に追加します。
+
+```bash
+curl https://www.loomio.com/api/b2/polls \
+  -H 'Authorization: Bearer YOUR_API_KEY' \
+  --json '{
+    "group_id": 123,
+    "title": "Meeting venue",
+    "poll_type": "poll",
+    "options": [
+      "Town hall",
+      "Library",
+      "Community centre"
+    ]
+  }'
+```
+
+<!-- translation-section: poll-detailed-options -->
+
+#### 選択肢の詳細を設定してアンケートを作成する
+
+名前の一覧を指定する場合は `options` を使い、各選択肢に意味、理由の入力を促す文、アイコンが必要な場合は `poll_options_attributes` を使います。リクエストごとにどちらか一方の形式を選択します。どちらの形式も、フラットなJSON本文、または `poll` オブジェクト内で使えます。
+
+`poll_options_attributes` の各オブジェクトでは、次のフィールドを指定できます。
+
+| フィールド | 説明 |
+| --- | --- |
+| `name` | 文字列、新しい選択肢では必須。投票者に表示されるラベルです |
+| `meaning` | 文字列、省略可能。この選択肢を選ぶことの意味を説明します |
+| `prompt` | 文字列、省略可能。`proposal`、`count`、`check` でこの選択肢を選んだときに表示される、理由の入力を促す文です。その他のアンケートの種類では、アンケートに `reason_prompt` を設定します |
+| `icon` | 文字列、省略可能。`proposal`、`count`、`check` では、`agree`、`disagree`、`abstain`、`block` を使います |
+| `priority` | 整数。`0` から始まる選択肢の表示順です。選択肢ごとに異なる値を指定します。ただし、日程調整の選択肢は日付順に並びます |
+| `test_operator` | 文字列または null、省略可能。得票率の条件です。`gte` は以上、`lte` は以下を意味します。null に設定すると条件が無効になります |
+| `test_percent` | 整数、省略可能。得票率の条件に使う割合を `0` から `100` で指定します |
+| `test_against` | 文字列、省略可能。`score_percent` は、投じられたスコアまたはポイントの合計に対する、その選択肢の割合を比較します。`voter_percent` は、投票資格のあるすべての投票者に対する、その選択肢に投票した人の割合を比較します |
+| `id` | 整数。既存の選択肢を編集する場合に指定し、新しい選択肢では省略します |
+| `_destroy` | 真偽値、省略可能。既存の選択肢の `id` とともに `true` を指定すると、その選択肢を削除します |
+
+独自の選択肢ラベルと入力を促す文を使って提案を作成します。
+
+```bash
+curl https://www.loomio.com/api/b2/polls \
+  -H 'Authorization: Bearer YOUR_API_KEY' \
+  --json '{
+    "group_id": 123,
+    "title": "Should we adopt this proposal?",
+    "poll_type": "proposal",
+    "stance_reason_required": "optional",
+    "poll_options_attributes": [
+      {
+        "name": "Support",
+        "meaning": "I support adopting this proposal",
+        "prompt": "What do you support about it?",
+        "icon": "agree",
+        "priority": 0
+      },
+      {
+        "name": "Oppose",
+        "meaning": "I would prefer another approach",
+        "prompt": "What would you change?",
+        "icon": "disagree",
+        "priority": 1
+      }
+    ]
+  }'
+```
+
+通常のアンケートでは、同じ選択肢の詳細形式を使い、アンケートに共通の `reason_prompt` を設定します。
+
+```bash
+curl https://www.loomio.com/api/b2/polls \
+  -H 'Authorization: Bearer YOUR_API_KEY' \
+  --json '{
+    "group_id": 123,
+    "title": "Choose a venue",
+    "poll_type": "poll",
+    "reason_prompt": "Why do you prefer this venue?",
+    "stance_reason_required": "optional",
+    "poll_options_attributes": [
+      {
+        "name": "Town hall",
+        "meaning": "Central, accessible venue",
+        "priority": 0
+      },
+      {
+        "name": "Library",
+        "meaning": "Smaller room with no hire fee",
+        "priority": 1
+      }
+    ]
+  }'
+```
+
+これらの例では `closing_at` を省略しているため、未来の締め切り日時を設定するまで投票は無効のままです。
 
 <!-- translation-section: show-poll -->
 
@@ -683,7 +874,8 @@ curl -H 'Authorization: Bearer YOUR_API_KEY' -X POST -H 'Content-Type: applicati
 #### 例
 
 ```bash
-curl -H 'Authorization: Bearer YOUR_API_KEY' https://www.loomio.com/api/b2/polls/abc123
+curl https://www.loomio.com/api/b2/polls/abc123 \
+  -H 'Authorization: Bearer YOUR_API_KEY'
 ```
 
 <!-- translation-section: list-polls -->
@@ -712,7 +904,8 @@ curl -H 'Authorization: Bearer YOUR_API_KEY' https://www.loomio.com/api/b2/polls
 #### 例
 
 ```bash
-curl -H 'Authorization: Bearer YOUR_API_KEY' 'https://www.loomio.com/api/b2/polls?group_id=123'
+curl 'https://www.loomio.com/api/b2/polls?group_id=123' \
+  -H 'Authorization: Bearer YOUR_API_KEY'
 ```
 
 <!-- translation-section: edit-poll -->
@@ -733,6 +926,9 @@ APIキーのユーザーとしてアンケートを編集します。Loomioと�
 | `details` | 更新後のアンケートの詳細です |
 | `details_format` | `md` または `html`、省略可能、既定値は `md` |
 | `options` | 更新後の選択肢の名前です。選択肢を変更すると、アンケートの状態によっては既存の投票に影響する場合があります |
+| `poll_options_attributes` | `options` の代わりに使います。`id` を指定して選択肢の詳細オブジェクトを更新し、`id` のないオブジェクトを追加し、または `id` と `_destroy: true` を指定して選択肢を削除します。省略した選択肢は変更されません |
+| `reason_prompt` | 選択肢ごとの入力を促す文がない種類のアンケートで使う、理由の入力を促す共通の文の更新内容です |
+| `stance_reason_required` | 更新後の理由の入力条件です。アンケートの作成時と同じ値を使います |
 | `closing_at` | ISO 8601形式の文字列または null |
 | `recipient_audience` | `group` または null。`group` の場合、グループ全体に通知されます |
 | `recipient_user_ids` | 通知または招待するユーザーのIDの配列です |
@@ -744,8 +940,44 @@ APIキーのユーザーとしてアンケートを編集します。Loomioと�
 #### 例
 
 ```bash
-curl -H 'Authorization: Bearer YOUR_API_KEY' -X PATCH -H 'Content-Type: application/json' -d '{"title":"updated poll title", "details":"updated details", "details_format":"md"}' https://www.loomio.com/api/b2/polls/123
+curl https://www.loomio.com/api/b2/polls/123 \
+  -X PATCH \
+  -H 'Authorization: Bearer YOUR_API_KEY' \
+  --json '{
+    "title": "updated poll title",
+    "details": "updated details",
+    "details_format": "md"
+  }'
 ```
+
+<!-- translation-section: edit-poll-detailed-options -->
+
+#### 選択肢の詳細を編集する
+
+作成または取得時のレスポンスに含まれる `poll_options` 配列から、選択肢のIDを取得します。各既存の選択肢の `id` とともに、変更するフィールドだけを送信します。
+
+```bash
+curl https://www.loomio.com/api/b2/polls/123 \
+  -X PATCH \
+  -H 'Authorization: Bearer YOUR_API_KEY' \
+  --json '{
+    "poll_options_attributes": [
+      {
+        "id": 456,
+        "meaning": "Updated explanation",
+        "prompt": "What would improve this proposal?"
+      },
+      {
+        "name": "Abstain",
+        "meaning": "I leave the decision to others",
+        "icon": "abstain",
+        "priority": 2
+      }
+    ]
+  }'
+```
+
+選択肢のIDは、編集中のアンケートに属している必要があります。編集にはアンケートを編集する権限が必要で、締め切り済みのアンケートは編集できません。匿名アンケートでは、最初の投票が送信されると、選択肢の設定も変更できなくなります。
 
 <!-- translation-section: soft-delete-poll -->
 
@@ -760,7 +992,9 @@ APIキーのユーザーとしてアンケートを論理削除します。ア�
 #### 例
 
 ```bash
-curl -H 'Authorization: Bearer YOUR_API_KEY' -X DELETE https://www.loomio.com/api/b2/polls/123
+curl https://www.loomio.com/api/b2/polls/123 \
+  -X DELETE \
+  -H 'Authorization: Bearer YOUR_API_KEY'
 ```
 
 <!-- translation-section: search -->
@@ -787,7 +1021,8 @@ APIキーのユーザーが閲覧できるディスカッション、コメン�
 | `order` | `authored_at_desc`に設定すると、一致するコンテンツを作成日時順に並べます |
 
 ```bash
-curl -H 'Authorization: Bearer YOUR_API_KEY' 'https://www.loomio.com/api/b2/search?query=quarterly+planning&type=Discussion'
+curl 'https://www.loomio.com/api/b2/search?query=quarterly+planning&type=Discussion' \
+  -H 'Authorization: Bearer YOUR_API_KEY'
 ```
 
 レスポンスには`search_results`配列が含まれます。各結果は、`searchable_type`、`searchable_id`、`highlight`、`group_id`、`group_name`、`discussion_key`、`poll_key`、`author_id`、`author_name`、`authored_at`、`tags`などのフィールドで、一致したレコードと、その閲覧可能な関連情報を示します。その結果に該当しないフィールドは`null`になります。
@@ -818,7 +1053,8 @@ APIキーのユーザーが閲覧できるディスカッションのスレッ�
 #### 例
 
 ```bash
-curl -H 'Authorization: Bearer YOUR_API_KEY' 'https://www.loomio.com/api/b2/threads?limit=50&offset=0'
+curl 'https://www.loomio.com/api/b2/threads?limit=50&offset=0' \
+  -H 'Authorization: Bearer YOUR_API_KEY'
 ```
 
 <!-- translation-section: read-thread -->
@@ -883,12 +1119,13 @@ Webhookはグループごとに設定し、設定にはグループ管理者の�
 
 | 名前 | 説明 |
 | --- | --- |
-| `group_id` | 整数、必須。Webhookの一覧を取得するグループのID |
-| `limit` | 整数、省略可能、既定値は50、最大値は500。1ページあたりの件数 |
-| `offset` | 整数、省略可能、既定値は0。ページ分割のオフセット |
+| `group_id` | 整数、必須。Webhookの一覧を取得するグループのIDです |
+| `limit` | 整数、省略可能、既定値は50、最大値は500。1ページあたりの件数です |
+| `offset` | 整数、省略可能、既定値は0。ページ分割のオフセットです |
 
 ```bash
-curl -H 'Authorization: Bearer YOUR_API_KEY' 'https://www.loomio.com/api/b2/chatbots?group_id=123&limit=50&offset=0'
+curl 'https://www.loomio.com/api/b2/chatbots?group_id=123&limit=50&offset=0' \
+  -H 'Authorization: Bearer YOUR_API_KEY'
 ```
 
 レスポンスには、連携IDの昇順で並べられた`chatbots`の1ページ分が含まれ、`meta.total`にはグループ内の連携の総数が入ります。各連携には次のフィールドがあります。
@@ -911,19 +1148,22 @@ curl -H 'Authorization: Bearer YOUR_API_KEY' 'https://www.loomio.com/api/b2/chat
 `POST /api/b2/chatbots`
 
 ```bash
-curl -X POST \
+curl https://www.loomio.com/api/b2/chatbots \
   -H 'Authorization: Bearer YOUR_API_KEY' \
-  -H 'Content-Type: application/json' \
-  -d '{
+  --json '{
     "group_id": 123,
     "name": "Planning system",
     "kind": "webhook",
     "webhook_kind": "markdown",
     "server": "https://hooks.example.org/loomio/unguessable-token",
-    "event_kinds": ["new_discussion", "new_comment", "poll_created", "outcome_created"],
+    "event_kinds": [
+      "new_discussion",
+      "new_comment",
+      "poll_created",
+      "outcome_created"
+    ],
     "notification_only": false
-  }' \
-  https://www.loomio.com/api/b2/chatbots
+  }'
 ```
 
 APIキーのユーザーは、`group_id`で指定したグループの管理者である必要があります。送信先は、保存される前に公開URLであることが検証されます。
@@ -937,11 +1177,16 @@ APIキーのユーザーは、`group_id`で指定したグループの管理者�
 変更するフィールドを送信してください。`group_id`を変更してWebhookを別のグループに移すことはできません。
 
 ```bash
-curl -X PATCH \
+curl https://www.loomio.com/api/b2/chatbots/456 \
+  -X PATCH \
   -H 'Authorization: Bearer YOUR_API_KEY' \
-  -H 'Content-Type: application/json' \
-  -d '{"name":"Planning events","event_kinds":["new_discussion","outcome_created"]}' \
-  https://www.loomio.com/api/b2/chatbots/456
+  --json '{
+    "name": "Planning events",
+    "event_kinds": [
+      "new_discussion",
+      "outcome_created"
+    ]
+  }'
 ```
 
 <!-- translation-section: test-a-webhook-destination -->
@@ -953,11 +1198,12 @@ curl -X PATCH \
 `POST /api/b2/chatbots/check`
 
 ```bash
-curl -X POST \
+curl https://www.loomio.com/api/b2/chatbots/check \
   -H 'Authorization: Bearer YOUR_API_KEY' \
-  -H 'Content-Type: application/json' \
-  -d '{"group_id":123,"server":"https://hooks.example.org/loomio/unguessable-token"}' \
-  https://www.loomio.com/api/b2/chatbots/check
+  --json '{
+    "group_id": 123,
+    "server": "https://hooks.example.org/loomio/unguessable-token"
+  }'
 ```
 
 <!-- translation-section: delete-a-webhook -->
@@ -967,7 +1213,9 @@ curl -X POST \
 `DELETE /api/b2/chatbots/:id`
 
 ```bash
-curl -X DELETE -H 'Authorization: Bearer YOUR_API_KEY' https://www.loomio.com/api/b2/chatbots/456
+curl https://www.loomio.com/api/b2/chatbots/456 \
+  -X DELETE \
+  -H 'Authorization: Bearer YOUR_API_KEY'
 ```
 
 設定を削除すると、以後の配信が停止します。Loomioのグループ内のコンテンツは削除されません。

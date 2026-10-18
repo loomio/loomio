@@ -1,154 +1,162 @@
 ---
 title: API de usuario
-source_revision: 28ecc59f68d407f76f08133bfa0172aadbb53065
-source_file: docs/en/user_manual/integrations/api/user-api.md
+source_revision: aa8cf2cef8336b4d86d7200c0d66c0eb8f973256
+source_file: docs/help/en/user_manual/integrations/api/user-api.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-15'
+  'on': '2026-10-17'
 sections:
   introduction: b6e6ec7463276869
-  response-size-and-related-records: 298da635bf97dadd
+  response-size-and-related-records: 8349c4d8e567a0c1
   endpoint-summary: 258f7560def524ec
   groups: 0473f1f7fb78f074
-  list-groups: 01de10c378eeba37
-  get-a-group: dffef659cb92745e
+  list-groups: e94dbf27dff819ff
+  get-a-group: 80912be614c0ea89
   webhooks: f65fa289f8c1b808
-  list-webhooks: 6093df92815f7156
-  create-a-webhook: 007312bcc204853a
-  update-a-webhook: 124b07d2c401e319
-  test-a-webhook-destination: 8fc3ac4ad10de6f6
-  delete-a-webhook: 34eda1e07d65db80
+  list-webhooks: 6ec5700a0ac5cbc7
+  create-a-webhook: 173ce08be83b4b58
+  update-a-webhook: 2bf0f59f8bff06ec
+  test-a-webhook-destination: 0637a17a98f20f4b
+  delete-a-webhook: 6ba2c6360e4f1d2a
   event-types: 73bfe87c8b790af3
   http-delivery: a32c763b6f816e65
   payload-formats: ca728b0ef542305c
   search: bb5a1cfc7a6179aa
-  params: 7eebe4e259830976
+  params: 1e7478b9883d2a47
   participation-report: a1798112a78390fe
   params-2: 464322ffc1ac56e5
-  example: 63bed6e82107f992
+  example: ba3f68d5b68a955b
   create-discussion: 958fc684640462a9
   params-3: 657d582c89333097
-  example-2: 57681d83fffe9515
+  example-2: bca512c06153265f
   show-discussion: 40102aeffe4f1286
-  example-3: c0ebd013a1b7fbd2
+  example-3: fe0959389ff4f2f6
   list-discussions: '09ff7f0d3a937b41'
   params-4: dcebc294fbb9d837
-  example-4: ffda1a4726380e2f
+  example-4: dd55f55bf83d135f
   list-threads: '09f7bd670e581400'
   params-5: 79b1cefac558effc
-  example-5: a40ae2317faab46d
+  example-5: 1864da3b097f66d6
   read-thread: ac36d1b81c1eeed4
   example-6: 8c582a286e04ca75
   edit-discussion: 918161e7aa8f4aa6
   params-6: b819796d34354623
-  example-7: 552295f78d3490af
+  example-7: 8b591051e20fa1e4
   soft-delete-discussion: c8ffe951171e6f07
-  example-8: 965c5761f34f9920
+  example-8: d0e726a1a20cc469
   create-comment: f95f56b81c8f22b5
   params-7: 5ad8ede0919c5f47
-  example-9: 70ee3750f1543e9b
+  example-9: 61514be87d3a8857
   edit-comment: 80322da74162d58f
   params-8: 288331c60f3c9b28
-  example-10: ec89de8cc86b6fc8
+  example-10: c0aed6ea023ff3d4
   soft-delete-comment: 04baf86923c7e8f1
-  example-11: f3675b780da755cd
+  example-11: 129076a53c6c4b31
   create-poll: cf62e787784a5e87
-  params-9: df1611a9dedef2d8
-  example-12: fa7410dd3a0a385f
+  params-9: 89465a6e2dfa6bdb
+  example-12: 4397219f26129191
   show-poll: d759508986aab08c
-  example-13: 2867289a6c2beb9d
+  example-13: 01f20dba176f4f23
   list-polls: 56e5ed4ae45e5428
   params-10: e68e8cf62b21488d
-  example-14: 40958a09c058d4cc
+  example-14: a1149e09d37d9b0a
   edit-poll: 65467ad0b431ddbf
-  params-11: 77f118397592bc05
-  example-15: e56befa0f2ae3360
+  params-11: 70b594511872194a
+  example-15: 8c4d585a050423ac
   soft-delete-poll: 61cf76310e08d7ff
-  example-16: afbf95df96734a4d
+  example-16: fb15cb7d90550c2f
   list-memberships: 5fab06bb8ecf1fd0
   params-12: decaff0790566fb0
-  example-17: 5d92092b70ce545a
+  example-17: 7714e1b8d2d07999
   manage-memberships: 802d39c06674d395
   params-13: 771b5338a4ba3d0b
-  example-18: a50b01823a6935a0
+  example-18: a06882d9d8de45f0
   pagination: 4171ca78df07d4fe
   comments: ccd37303241bac95
   discussions: 16ffe7a7b6202d3e
   memberships: e7cf8846c3179720
   polls: 821dcd89b5460804
   threads: 19bc02fc1c26317b
+  request-bodies: 0ec99fc25454f511
+  poll-many-options: 05024e64103f7d39
+  poll-detailed-options: a511f74ddaa0b6bf
+  edit-poll-detailed-options: 767b869e6b9efcff
 generated:
   introduction: c25d65ac5f3bcd8c
-  response-size-and-related-records: 8f73409f45f18862
+  response-size-and-related-records: 7be7787482e9b726
   endpoint-summary: 87755d695d751cd9
   groups: '0778b0182dde2603'
-  list-groups: b3185f9a01126118
-  get-a-group: d60b5f566e099c65
+  list-groups: 18ca0ffb85e5f338
+  get-a-group: 2924558a13f0a066
   webhooks: cb286bac9df3da35
-  list-webhooks: 239ab43bc007091a
-  create-a-webhook: 36da58766d8afd9a
-  update-a-webhook: c4a6d9ef4c234914
-  test-a-webhook-destination: 3ea115db0e38eb94
-  delete-a-webhook: edd8d6504944241f
+  list-webhooks: 3435cb8551c76531
+  create-a-webhook: e1dfd7786ae351b9
+  update-a-webhook: 68fc51f558a51a24
+  test-a-webhook-destination: de33b787cb67b74e
+  delete-a-webhook: ede70be5c81d1c9e
   event-types: acbe04f5fb86094c
   http-delivery: 12f6446dfc5e982f
   payload-formats: dbabcbb207e413b8
   search: b4d4029a6c0fa2d2
-  params: 44ddf08e51ea2140
+  params: 20b873027c3ba93f
   participation-report: a796de7538c054b4
   params-2: bf5e00e751a63738
-  example: 0dd6f52b8f4a18fe
+  example: 586da70b7bd36a3d
   create-discussion: f7f2249260e0813e
   params-3: ec9396c3ef70a93e
-  example-2: f2476fcac0a645af
+  example-2: d1491642fa3adb7f
   show-discussion: 6996ce42322bfe33
-  example-3: fc5f32649e61d76c
+  example-3: 366b0a11b5b87f18
   list-discussions: cc73a751695a45da
   params-4: da1d5fb3686fdd0d
-  example-4: 12b265d5e03e34ac
+  example-4: 190a06019cd9df36
   list-threads: 554d771a3a6da59e
   params-5: '06846f9b3540dd90'
-  example-5: fa8a7a00adce0262
+  example-5: a61dcf166fa520e5
   read-thread: ed586b9bdb7b07c5
   example-6: a475aecabb07d1c5
   edit-discussion: 9159db32c6449cf5
   params-6: 076ba72836d49479
-  example-7: c285db057332bdf4
+  example-7: a9843fff1012f1e7
   soft-delete-discussion: a931d01d5e5cd820
-  example-8: a7d3576ff5681da3
+  example-8: 4b558d988a0102ba
   create-comment: cdec6c149e4af1af
   params-7: 4f82ae2fc430e8dd
-  example-9: 84445a326b1b8df2
+  example-9: cf3a29404750952e
   edit-comment: 1cff33a4b12f2962
   params-8: e9135c94ba1e7165
-  example-10: 53a8a9640ea32999
+  example-10: d6c9ed5fc0859702
   soft-delete-comment: 578f5e27863df4b6
-  example-11: b3aeb5d6860d1ada
+  example-11: 8e4f4e59569c14fa
   create-poll: 1358501d5697351a
-  params-9: 350dcee3d61576aa
-  example-12: ce2516727b1667ce
+  params-9: 97d56ce209c9f11c
+  example-12: 2998713e8137f7fa
   show-poll: d1d596296a05b395
-  example-13: 3bf7207f78f2f965
+  example-13: f3f11b01c2c75b30
   list-polls: e323dac0b51b4ad1
   params-10: f87fe79e309333f4
-  example-14: ed97ff8174e9b50c
+  example-14: 196f21b02f725996
   edit-poll: 66b945b2c82e0afe
-  params-11: 0cde5c92611e5ac5
-  example-15: b1e010a397a75229
+  params-11: 61876514e0586f34
+  example-15: ed5cf8116dd464d4
   soft-delete-poll: 4149978e3050d804
-  example-16: bdb61d764cee7c34
+  example-16: 8c7960f20b2dd319
   list-memberships: 1edc60f8ca58f4cc
   params-12: 4c5566d81d6293ed
-  example-17: 6601aa55f8732489
+  example-17: 85f36f5f4aec249a
   manage-memberships: 6e01e22cafb7f7b0
   params-13: 35bdd0b5136ad6eb
-  example-18: ffcbf02601528556
+  example-18: b807c1bbaa507196
   pagination: b6690b645b004394
   comments: 2b7e71a5fa4ad037
   discussions: 3a3abec87d92732d
   memberships: 65a6a636af20437c
   polls: 7a7697d9ed7d7ebc
   threads: d445e2cafcaeba21
+  request-bodies: 60c2fa5cf2f1f2d3
+  poll-many-options: 3adc8ce58c99ba23
+  poll-detailed-options: b26eeb8f5158faf9
+  edit-poll-detailed-options: 203e5e7115e81326
 title_source: c23fb6526b722360
 title_generated: 5bccf15677959a14
 ---
@@ -174,6 +182,16 @@ Authorization: Bearer YOUR_API_KEY
 ```
 
 Los ejemplos utilizan `YOUR_API_KEY`, el ID de grupo `123` y `https://www.loomio.com/`. Sustitúyelos por tu clave de API, el ID de tu grupo y la URL de tu instalación de Loomio.
+
+<!-- translation-section: request-bodies -->
+
+### Enviar cuerpos de solicitud
+
+Envía JSON con `Content-Type: application/json`. Los ejemplos de cURL utilizan `--json`, que establece esta cabecera automáticamente. Los endpoints de creación y edición de discusiones, comentarios y encuestas aceptan tanto un objeto plano como un objeto anidado bajo el nombre del recurso, como `{"poll": {...}}`.
+
+Envía los arrays como arrays JSON, por ejemplo, `"options": ["foo", "bar"]`. Si utilizas codificación de formulario, los arrays necesitan nombres de campo con corchetes, como `options[]=foo&options[]=bar`; repetir `options=foo&options=bar` conserva solo el último valor.
+
+Comprueba el estado HTTP y el cuerpo de la respuesta después de cada solicitud. Un fallo de validación devuelve `422` con un objeto `errors`; la creación correcta de una encuesta devuelve la encuesta en `polls` y las opciones en `poll_options`.
 
 <!-- translation-section: endpoint-summary -->
 
@@ -231,7 +249,8 @@ Las respuestas de la API de usuario utilizan un formato compuesto: los registros
 Pasa `compact=1` para omitir los registros relacionados voluminosos de temas, grupos, grupos principales, membresías, reacciones, etiquetas y traducciones. Los registros principales y los registros relacionados necesarios para interpretar el contenido siguen presentes.
 
 ```bash
-curl -H 'Authorization: Bearer YOUR_API_KEY' 'https://www.loomio.com/api/b2/threads/123/items?compact=1'
+curl 'https://www.loomio.com/api/b2/threads/123/items?compact=1' \
+  -H 'Authorization: Bearer YOUR_API_KEY'
 ```
 
 Para tener un control directo, pasa `exclude_types` con los tipos de registro en singular separados por espacios. Por ejemplo, `exclude_types=group reaction` omite los grupos y las reacciones relacionados. Los valores habituales son `topic`, `group`, `parent`, `membership`, `reaction`, `tag`, `translation`, `user`, `discussion`, `poll`, `poll_option`, `stance`, `stance_choice`, `outcome` y `topic_item`. Las exclusiones se aplican a los registros relacionados, no al recurso principal solicitado al endpoint.
@@ -265,7 +284,13 @@ Crea un comentario en una discusión como el usuario de la clave de API.
 #### Ejemplo
 
 ```bash
-curl -H 'Authorization: Bearer YOUR_API_KEY' -X POST -H 'Content-Type: application/json' -d '{"discussion_id": 123, "body":"example comment", "body_format":"md"}' https://www.loomio.com/api/b2/comments
+curl https://www.loomio.com/api/b2/comments \
+  -H 'Authorization: Bearer YOUR_API_KEY' \
+  --json '{
+    "discussion_id": 123,
+    "body": "example comment",
+    "body_format": "md"
+  }'
 ```
 
 <!-- translation-section: edit-comment -->
@@ -290,7 +315,13 @@ Edita un comentario como el usuario de la clave de API. Se aplican los mismos pe
 #### Ejemplo
 
 ```bash
-curl -H 'Authorization: Bearer YOUR_API_KEY' -X PATCH -H 'Content-Type: application/json' -d '{"body":"updated comment", "body_format":"md"}' https://www.loomio.com/api/b2/comments/123
+curl https://www.loomio.com/api/b2/comments/123 \
+  -X PATCH \
+  -H 'Authorization: Bearer YOUR_API_KEY' \
+  --json '{
+    "body": "updated comment",
+    "body_format": "md"
+  }'
 ```
 
 <!-- translation-section: soft-delete-comment -->
@@ -306,7 +337,9 @@ Elimina un comentario de forma lógica como el usuario de la clave de API. Esto 
 #### Ejemplo
 
 ```bash
-curl -H 'Authorization: Bearer YOUR_API_KEY' -X DELETE https://www.loomio.com/api/b2/comments/123
+curl https://www.loomio.com/api/b2/comments/123 \
+  -X DELETE \
+  -H 'Authorization: Bearer YOUR_API_KEY'
 ```
 
 <!-- translation-section: discussions -->
@@ -341,7 +374,15 @@ Crea una discusión como el usuario de la clave API.
 #### Ejemplo
 
 ```bash
-curl -H 'Authorization: Bearer YOUR_API_KEY' -X POST -H 'Content-Type: application/json' -d '{"group_id": 123, "title":"example thread", "recipient_emails":["person@example.com"]}' https://www.loomio.com/api/b2/discussions
+curl https://www.loomio.com/api/b2/discussions \
+  -H 'Authorization: Bearer YOUR_API_KEY' \
+  --json '{
+    "group_id": 123,
+    "title": "example thread",
+    "recipient_emails": [
+      "person@example.com"
+    ]
+  }'
 ```
 
 <!-- translation-section: show-discussion -->
@@ -357,7 +398,8 @@ Obtén una discusión usando el ID de la discusión, un número entero, o la cla
 #### Ejemplo
 
 ```bash
-curl -H 'Authorization: Bearer YOUR_API_KEY' https://www.loomio.com/api/b2/discussions/abc123
+curl https://www.loomio.com/api/b2/discussions/abc123 \
+  -H 'Authorization: Bearer YOUR_API_KEY'
 ```
 
 <!-- translation-section: list-discussions -->
@@ -386,7 +428,8 @@ Compatibilidad con versiones anteriores: `per` y `from` se aceptan como alias de
 #### Ejemplo
 
 ```bash
-curl -H 'Authorization: Bearer YOUR_API_KEY' 'https://www.loomio.com/api/b2/discussions?group_id=123'
+curl 'https://www.loomio.com/api/b2/discussions?group_id=123' \
+  -H 'Authorization: Bearer YOUR_API_KEY'
 ```
 
 <!-- translation-section: edit-discussion -->
@@ -416,7 +459,14 @@ Edita una discusión como el usuario de la clave API. Se aplican los mismos perm
 #### Ejemplo
 
 ```bash
-curl -H 'Authorization: Bearer YOUR_API_KEY' -X PATCH -H 'Content-Type: application/json' -d '{"title":"updated thread title", "description":"updated context", "description_format":"md"}' https://www.loomio.com/api/b2/discussions/123
+curl https://www.loomio.com/api/b2/discussions/123 \
+  -X PATCH \
+  -H 'Authorization: Bearer YOUR_API_KEY' \
+  --json '{
+    "title": "updated thread title",
+    "description": "updated context",
+    "description_format": "md"
+  }'
 ```
 
 <!-- translation-section: soft-delete-discussion -->
@@ -432,7 +482,9 @@ Elimina una discusión de forma lógica como el usuario de la clave de API. Esto
 #### Ejemplo
 
 ```bash
-curl -H 'Authorization: Bearer YOUR_API_KEY' -X DELETE https://www.loomio.com/api/b2/discussions/123
+curl https://www.loomio.com/api/b2/discussions/123 \
+  -X DELETE \
+  -H 'Authorization: Bearer YOUR_API_KEY'
 ```
 
 <!-- translation-section: groups -->
@@ -455,7 +507,8 @@ Devuelve los grupos en los que el usuario de la clave de API tiene una membresí
 | `offset` | Entero, opcional, valor predeterminado 0. Desplazamiento para la paginación |
 
 ```bash
-curl -H 'Authorization: Bearer YOUR_API_KEY' 'https://www.loomio.com/api/b2/groups?limit=50&offset=0'
+curl 'https://www.loomio.com/api/b2/groups?limit=50&offset=0' \
+  -H 'Authorization: Bearer YOUR_API_KEY'
 ```
 
 La respuesta contiene una página de `groups` ordenada por ID de grupo ascendente, con el número total de grupos coincidentes en `meta.total`. Incluye grupos principales y subgrupos, incluidos los grupos cuya suscripción no está activa actualmente. Comprueba el campo `enabled` cuando una integración deba operar solo en grupos habilitados.
@@ -492,8 +545,11 @@ Devuelve un grupo visible para el usuario de la clave de API.
 El identificador puede ser el ID numérico, la clave o el identificador legible del grupo.
 
 ```bash
-curl -H 'Authorization: Bearer YOUR_API_KEY' https://www.loomio.com/api/b2/groups/123
-curl -H 'Authorization: Bearer YOUR_API_KEY' https://www.loomio.com/api/b2/groups/example-group
+curl https://www.loomio.com/api/b2/groups/123 \
+  -H 'Authorization: Bearer YOUR_API_KEY'
+
+curl https://www.loomio.com/api/b2/groups/example-group \
+  -H 'Authorization: Bearer YOUR_API_KEY'
 ```
 
 La respuesta contiene el grupo en el array `groups` y utiliza los mismos campos que el endpoint de listado. Una solicitud de un grupo al que el usuario de la clave de API no puede acceder devuelve un error de permisos.
@@ -529,7 +585,8 @@ La respuesta contiene una página de `memberships` y los registros de `users` re
 #### Ejemplo
 
 ```bash
-curl -H 'Authorization: Bearer YOUR_API_KEY' 'https://www.loomio.com/api/b2/memberships?group_id=123&limit=50&offset=0'
+curl 'https://www.loomio.com/api/b2/memberships?group_id=123&limit=50&offset=0' \
+  -H 'Authorization: Bearer YOUR_API_KEY'
 ```
 
 <!-- translation-section: manage-memberships -->
@@ -555,13 +612,28 @@ Envía una lista de direcciones de correo electrónico. Se enviará una invitaci
 #### Ejemplo
 
 ```bash
-curl -H 'Authorization: Bearer YOUR_API_KEY' -X POST -H 'Content-Type: application/json' -d '{"group_id": 123, "emails":["person@example.com"]}' https://www.loomio.com/api/b2/memberships
+curl https://www.loomio.com/api/b2/memberships \
+  -H 'Authorization: Bearer YOUR_API_KEY' \
+  --json '{
+    "group_id": 123,
+    "emails": [
+      "person@example.com"
+    ]
+  }'
 ```
 
 Si pasas `remove_absent=1`, se eliminarán del grupo todos los miembros que no estén incluidos en la lista. Ten cuidado, podrías eliminar a todos los miembros de tu grupo.
 
 ```bash
-curl -H 'Authorization: Bearer YOUR_API_KEY' -X POST -H 'Content-Type: application/json' -d '{"group_id": 123, "emails":["person@example.com"], "remove_absent": 1}' https://www.loomio.com/api/b2/memberships
+curl https://www.loomio.com/api/b2/memberships \
+  -H 'Authorization: Bearer YOUR_API_KEY' \
+  --json '{
+    "group_id": 123,
+    "emails": [
+      "person@example.com"
+    ],
+    "remove_absent": 1
+  }'
 ```
 
 Esto devuelve un objeto con `{added_emails: ["person@added.com"], removed_emails: ["person@removed.com"]}`.
@@ -597,7 +669,8 @@ La API aplica las mismas reglas de visibilidad de los grupos que el informe de l
 ### Ejemplo
 
 ```bash
-curl -H 'Authorization: Bearer YOUR_API_KEY' 'https://www.loomio.com/api/b2/reports?section=users&group_scope=custom&group_ids=123&member_type=delegate&start_month=2026-01&end_month=2026-09'
+curl 'https://www.loomio.com/api/b2/reports?section=users&group_scope=custom&group_ids=123&member_type=delegate&start_month=2026-01&end_month=2026-09' \
+  -H 'Authorization: Bearer YOUR_API_KEY'
 ```
 
 El array `users` contiene filas completas de actividad:
@@ -649,7 +722,10 @@ Crea una encuesta como el usuario de la clave de API.
 | `poll_type` | Cadena de texto, obligatoria. Valores: `proposal`, `poll`, `count`, `score`, `ranked_choice`, `meeting`, `dot_vote` |
 | `details` | Cadena de texto, opcional. Texto del cuerpo de la encuesta |
 | `details_format` | Cadena de texto, opcional, `md` por defecto. Valores: `md` o `html` |
-| `options` | Lista de cadenas de texto. Si `poll_type` es `proposal`, los valores válidos son `agree`, `disagree`, `abstain`, `block`. Si `poll_type` es `meeting`, proporciona cadenas de texto con fechas o fechas y horas en formato ISO 8601. Para los demás tipos de encuesta, cualquier cadena de texto es válida |
+| `options` | Nombres simples de opciones como array de cadenas de texto. Para `proposal`, usa `agree`, `disagree`, `abstain` o `block` para obtener las etiquetas, los iconos, los significados y las preguntas estándar. Para `meeting`, proporciona cadenas de texto con fechas o fechas y horas en formato ISO 8601. Para los demás tipos de encuesta, proporciona nombres de opciones. Para opciones detalladas, usa `poll_options_attributes` en su lugar |
+| `poll_options_attributes` | Alternativa a `options`: un array de objetos de opciones con nombres, significados, preguntas, iconos y orden. Consulta [Crear una encuesta con opciones detalladas](#create-a-poll-with-detailed-options) |
+| `reason_prompt` | Cadena de texto, opcional. Pregunta compartida para el motivo del voto, utilizada por los tipos de encuesta sin preguntas por opción, como `poll`, `score` y `ranked_choice` |
+| `stance_reason_required` | Cadena de texto, `optional` por defecto. Valores: `disabled`, `optional`, `required`, `required_for_disagree_or_block`, `required_for_block`. Los dos últimos se aplican a los iconos `disagree` y `block`. Las encuestas anónimas deshabilitan los motivos del voto |
 | `closing_at` | Cadena de texto en formato ISO 8601 o null, null por defecto. Ejemplo: `2026-09-01T12:00:00Z`. Si es null, la votación está deshabilitada y la encuesta se considera en preparación |
 | `specified_voters_only` | Booleano, opcional, false por defecto. Si es true, solo pueden votar las personas especificadas. Si es false, se invitará a votar a todas las personas del grupo |
 | `hide_results` | Cadena de texto, opcional, `off` por defecto. Valores: `off`, `until_vote`, `until_closed` |
@@ -657,8 +733,8 @@ Crea una encuesta como el usuario de la clave de API.
 | `anonymous` | Booleano, opcional, false por defecto. Oculta las identidades de los votantes |
 | `recipient_audience` | `group` o null, opcional, null por defecto. Si es `group`, se notificará a todo el grupo |
 | `notify_on_closing_soon` | Cadena de texto, opcional, `nobody` por defecto. Valores: `nobody`, `author`, `undecided_voters`, `voters` |
-| `recipient_user_ids` | Lista de IDs de usuarios a quienes notificar o invitar |
-| `recipient_emails` | Lista de direcciones de correo electrónico de personas a quienes invitar a votar |
+| `recipient_user_ids` | Array de IDs de usuarios a quienes notificar o invitar |
+| `recipient_emails` | Array de direcciones de correo electrónico de personas a quienes invitar a votar |
 | `recipient_message` | Mensaje que se incluirá en la invitación por correo electrónico |
 | `notify_recipients` | Booleano, false por defecto. Si es false, añade personas sin enviar notificaciones. Si es true, todas las personas invitadas en esta solicitud recibirán una notificación por correo electrónico |
 
@@ -667,8 +743,123 @@ Crea una encuesta como el usuario de la clave de API.
 #### Ejemplo
 
 ```bash
-curl -H 'Authorization: Bearer YOUR_API_KEY' -X POST -H 'Content-Type: application/json' -d '{"group_id": 123, "title":"example poll", "poll_type": "proposal", "options": ["agree", "disagree"], "closing_at": "2026-09-01T12:00:00Z", "recipient_emails":["person@example.com"]}' https://www.loomio.com/api/b2/polls
+curl https://www.loomio.com/api/b2/polls \
+  -H 'Authorization: Bearer YOUR_API_KEY' \
+  --json '{
+    "group_id": 123,
+    "title": "example poll",
+    "poll_type": "proposal",
+    "options": [
+      "agree",
+      "disagree"
+    ],
+    "closing_at": "2026-09-01T12:00:00Z",
+    "recipient_emails": [
+      "person@example.com"
+    ]
+  }'
 ```
+
+<!-- translation-section: poll-many-options -->
+
+#### Crear un borrador de encuesta con muchas opciones
+
+Envía todos los nombres de las opciones en el array `options`. Omitir `closing_at` crea una encuesta en preparación con la votación deshabilitada; no oculta la encuesta a las personas que pueden leer el hilo. Añade un valor futuro de `closing_at` cuando estés listo para abrir la votación.
+
+Añade todos los nombres de tus opciones al array:
+
+```bash
+curl https://www.loomio.com/api/b2/polls \
+  -H 'Authorization: Bearer YOUR_API_KEY' \
+  --json '{
+    "group_id": 123,
+    "title": "Meeting venue",
+    "poll_type": "poll",
+    "options": [
+      "Town hall",
+      "Library",
+      "Community centre"
+    ]
+  }'
+```
+
+<!-- translation-section: poll-detailed-options -->
+
+#### Crear una encuesta con opciones detalladas
+
+Usa `options` para una lista de nombres, o `poll_options_attributes` cuando cada opción necesite un significado, una pregunta para el motivo del voto o un icono. Elige un formato por solicitud. Ambos formatos funcionan en un cuerpo JSON plano o dentro de un objeto `poll`.
+
+Cada objeto de `poll_options_attributes` acepta estos campos:
+
+| Campo | Descripción |
+| --- | --- |
+| `name` | Cadena de texto, obligatoria para una opción nueva. La etiqueta que se muestra a los votantes |
+| `meaning` | Cadena de texto, opcional. Explica qué significa elegir esta opción |
+| `prompt` | Cadena de texto, opcional. Pregunta para el motivo del voto que se muestra al seleccionar esta opción en una encuesta de tipo `proposal`, `count` o `check`. Para los demás tipos de encuesta, establece `reason_prompt` en la encuesta |
+| `icon` | Cadena de texto, opcional. Para `proposal`, `count` y `check`, usa `agree`, `disagree`, `abstain` o `block` |
+| `priority` | Entero. Orden de las opciones, empezando por `0`. Proporciona una prioridad distinta para cada opción; las opciones de reunión se ordenan por fecha |
+| `test_operator` | Cadena de texto o null, opcional. Requisito de proporción de votos: `gte` significa como mínimo y `lte` significa como máximo. Establece null para deshabilitar el requisito |
+| `test_percent` | Entero, opcional. Porcentaje para el requisito de proporción de votos, de `0` a `100` |
+| `test_against` | Cadena de texto, opcional. `score_percent` compara la proporción de la opción respecto a la puntuación total o los puntos asignados; `voter_percent` compara los votantes de la opción con todos los votantes con derecho a voto |
+| `id` | Entero. Inclúyelo al editar una opción existente; omítelo para una opción nueva |
+| `_destroy` | Booleano, opcional. Establece `true` junto con el `id` de una opción existente para eliminarla |
+
+Crea una propuesta con etiquetas y preguntas personalizadas para las opciones:
+
+```bash
+curl https://www.loomio.com/api/b2/polls \
+  -H 'Authorization: Bearer YOUR_API_KEY' \
+  --json '{
+    "group_id": 123,
+    "title": "Should we adopt this proposal?",
+    "poll_type": "proposal",
+    "stance_reason_required": "optional",
+    "poll_options_attributes": [
+      {
+        "name": "Support",
+        "meaning": "I support adopting this proposal",
+        "prompt": "What do you support about it?",
+        "icon": "agree",
+        "priority": 0
+      },
+      {
+        "name": "Oppose",
+        "meaning": "I would prefer another approach",
+        "prompt": "What would you change?",
+        "icon": "disagree",
+        "priority": 1
+      }
+    ]
+  }'
+```
+
+Para una encuesta normal, usa el mismo formato de opciones detalladas con un `reason_prompt` compartido en la encuesta:
+
+```bash
+curl https://www.loomio.com/api/b2/polls \
+  -H 'Authorization: Bearer YOUR_API_KEY' \
+  --json '{
+    "group_id": 123,
+    "title": "Choose a venue",
+    "poll_type": "poll",
+    "reason_prompt": "Why do you prefer this venue?",
+    "stance_reason_required": "optional",
+    "poll_options_attributes": [
+      {
+        "name": "Town hall",
+        "meaning": "Central, accessible venue",
+        "priority": 0
+      },
+      {
+        "name": "Library",
+        "meaning": "Smaller room with no hire fee",
+        "priority": 1
+      }
+    ]
+  }'
+```
+
+Estos ejemplos omiten `closing_at`, por lo que la votación permanece deshabilitada hasta que se establezca una fecha de cierre futura.
 
 <!-- translation-section: show-poll -->
 
@@ -683,7 +874,8 @@ Obtén una encuesta mediante el ID de la encuesta, un entero, o la clave, una ca
 #### Ejemplo
 
 ```bash
-curl -H 'Authorization: Bearer YOUR_API_KEY' https://www.loomio.com/api/b2/polls/abc123
+curl https://www.loomio.com/api/b2/polls/abc123 \
+  -H 'Authorization: Bearer YOUR_API_KEY'
 ```
 
 <!-- translation-section: list-polls -->
@@ -712,7 +904,8 @@ Compatibilidad con versiones anteriores: `per` y `from` se aceptan como alias de
 #### Ejemplo
 
 ```bash
-curl -H 'Authorization: Bearer YOUR_API_KEY' 'https://www.loomio.com/api/b2/polls?group_id=123'
+curl 'https://www.loomio.com/api/b2/polls?group_id=123' \
+  -H 'Authorization: Bearer YOUR_API_KEY'
 ```
 
 <!-- translation-section: edit-poll -->
@@ -733,10 +926,13 @@ Edita una encuesta como el usuario de la clave de API. Se aplican los mismos per
 | `details` | Detalles actualizados de la encuesta |
 | `details_format` | `md` o `html`, opcional, `md` por defecto |
 | `options` | Nombres actualizados de las opciones. Cambiar las opciones puede afectar a los votos existentes según el estado de la encuesta |
+| `poll_options_attributes` | Alternativa a `options`. Actualiza los objetos de opciones detalladas mediante `id`, añade objetos sin `id` o elimina una opción con `id` y `_destroy: true`. Las opciones omitidas permanecen sin cambios |
+| `reason_prompt` | Pregunta compartida actualizada para el motivo del voto en los tipos de encuesta sin preguntas por opción |
+| `stance_reason_required` | Requisito actualizado para el motivo del voto; se aplican los mismos valores que al crear una encuesta |
 | `closing_at` | Cadena de texto en formato ISO 8601 o null |
 | `recipient_audience` | `group` o null. Si es `group`, se notificará a todo el grupo |
-| `recipient_user_ids` | Lista de IDs de usuarios a quienes notificar o invitar |
-| `recipient_emails` | Lista de direcciones de correo electrónico de personas a quienes invitar a votar |
+| `recipient_user_ids` | Array de IDs de usuarios a quienes notificar o invitar |
+| `recipient_emails` | Array de direcciones de correo electrónico de personas a quienes invitar a votar |
 | `recipient_message` | Mensaje que se incluirá en la invitación por correo electrónico |
 
 <!-- translation-section: example-15 -->
@@ -744,8 +940,44 @@ Edita una encuesta como el usuario de la clave de API. Se aplican los mismos per
 #### Ejemplo
 
 ```bash
-curl -H 'Authorization: Bearer YOUR_API_KEY' -X PATCH -H 'Content-Type: application/json' -d '{"title":"updated poll title", "details":"updated details", "details_format":"md"}' https://www.loomio.com/api/b2/polls/123
+curl https://www.loomio.com/api/b2/polls/123 \
+  -X PATCH \
+  -H 'Authorization: Bearer YOUR_API_KEY' \
+  --json '{
+    "title": "updated poll title",
+    "details": "updated details",
+    "details_format": "md"
+  }'
 ```
+
+<!-- translation-section: edit-poll-detailed-options -->
+
+#### Editar opciones detalladas
+
+Obtén los IDs de las opciones del array `poll_options` en una respuesta de creación o consulta. Envía solo los campos que quieras cambiar, junto con el `id` de cada opción existente:
+
+```bash
+curl https://www.loomio.com/api/b2/polls/123 \
+  -X PATCH \
+  -H 'Authorization: Bearer YOUR_API_KEY' \
+  --json '{
+    "poll_options_attributes": [
+      {
+        "id": 456,
+        "meaning": "Updated explanation",
+        "prompt": "What would improve this proposal?"
+      },
+      {
+        "name": "Abstain",
+        "meaning": "I leave the decision to others",
+        "icon": "abstain",
+        "priority": 2
+      }
+    ]
+  }'
+```
+
+Los IDs de las opciones deben pertenecer a la encuesta que se está editando. Para editarla, necesitas permiso para editar la encuesta, y las encuestas cerradas no se pueden editar. Las encuestas anónimas también bloquean los cambios en la configuración de las opciones después de que se emita el primer voto.
 
 <!-- translation-section: soft-delete-poll -->
 
@@ -760,7 +992,9 @@ Elimina una encuesta de forma lógica como el usuario de la clave de API. Esto d
 #### Ejemplo
 
 ```bash
-curl -H 'Authorization: Bearer YOUR_API_KEY' -X DELETE https://www.loomio.com/api/b2/polls/123
+curl https://www.loomio.com/api/b2/polls/123 \
+  -X DELETE \
+  -H 'Authorization: Bearer YOUR_API_KEY'
 ```
 
 <!-- translation-section: search -->
@@ -787,7 +1021,8 @@ Busca discusiones, comentarios, encuestas, votos y conclusiones visibles para el
 | `order` | Establécelo en `authored_at_desc` para ordenar el contenido coincidente por fecha de creación |
 
 ```bash
-curl -H 'Authorization: Bearer YOUR_API_KEY' 'https://www.loomio.com/api/b2/search?query=quarterly+planning&type=Discussion'
+curl 'https://www.loomio.com/api/b2/search?query=quarterly+planning&type=Discussion' \
+  -H 'Authorization: Bearer YOUR_API_KEY'
 ```
 
 La respuesta contiene un array `search_results`. Cada resultado identifica el registro coincidente y el contexto visible de ese registro mediante campos como `searchable_type`, `searchable_id`, `highlight`, `group_id`, `group_name`, `discussion_key`, `poll_key`, `author_id`, `author_name`, `authored_at` y `tags`. Los campos que no se aplican a un resultado tienen el valor `null`.
@@ -818,7 +1053,8 @@ Lista los hilos de discusión y de encuesta visibles para el usuario de la clave
 #### Ejemplo
 
 ```bash
-curl -H 'Authorization: Bearer YOUR_API_KEY' 'https://www.loomio.com/api/b2/threads?limit=50&offset=0'
+curl 'https://www.loomio.com/api/b2/threads?limit=50&offset=0' \
+  -H 'Authorization: Bearer YOUR_API_KEY'
 ```
 
 <!-- translation-section: read-thread -->
@@ -888,7 +1124,8 @@ Devuelve las integraciones de chat configuradas para un grupo. El usuario de la 
 | `offset` | Número entero, opcional, valor predeterminado 0. Desplazamiento para la paginación |
 
 ```bash
-curl -H 'Authorization: Bearer YOUR_API_KEY' 'https://www.loomio.com/api/b2/chatbots?group_id=123&limit=50&offset=0'
+curl 'https://www.loomio.com/api/b2/chatbots?group_id=123&limit=50&offset=0' \
+  -H 'Authorization: Bearer YOUR_API_KEY'
 ```
 
 La respuesta contiene una página de `chatbots` ordenada por ID de integración ascendente, con el número total de integraciones del grupo en `meta.total`. Cada integración tiene estos campos:
@@ -911,19 +1148,22 @@ La respuesta contiene una página de `chatbots` ordenada por ID de integración 
 `POST /api/b2/chatbots`
 
 ```bash
-curl -X POST \
+curl https://www.loomio.com/api/b2/chatbots \
   -H 'Authorization: Bearer YOUR_API_KEY' \
-  -H 'Content-Type: application/json' \
-  -d '{
+  --json '{
     "group_id": 123,
     "name": "Planning system",
     "kind": "webhook",
     "webhook_kind": "markdown",
     "server": "https://hooks.example.org/loomio/unguessable-token",
-    "event_kinds": ["new_discussion", "new_comment", "poll_created", "outcome_created"],
+    "event_kinds": [
+      "new_discussion",
+      "new_comment",
+      "poll_created",
+      "outcome_created"
+    ],
     "notification_only": false
-  }' \
-  https://www.loomio.com/api/b2/chatbots
+  }'
 ```
 
 El usuario de la clave de API debe ser administrador del grupo indicado por `group_id`. Antes de guardar el destino, se comprueba que sea una URL pública.
@@ -937,11 +1177,16 @@ El usuario de la clave de API debe ser administrador del grupo indicado por `gro
 Envía los campos que deban cambiar. No se puede transferir el webhook a otro grupo cambiando `group_id`.
 
 ```bash
-curl -X PATCH \
+curl https://www.loomio.com/api/b2/chatbots/456 \
+  -X PATCH \
   -H 'Authorization: Bearer YOUR_API_KEY' \
-  -H 'Content-Type: application/json' \
-  -d '{"name":"Planning events","event_kinds":["new_discussion","outcome_created"]}' \
-  https://www.loomio.com/api/b2/chatbots/456
+  --json '{
+    "name": "Planning events",
+    "event_kinds": [
+      "new_discussion",
+      "outcome_created"
+    ]
+  }'
 ```
 
 <!-- translation-section: test-a-webhook-destination -->
@@ -953,11 +1198,12 @@ Envía un mensaje de prueba compatible con Markdown a un destino antes o despué
 `POST /api/b2/chatbots/check`
 
 ```bash
-curl -X POST \
+curl https://www.loomio.com/api/b2/chatbots/check \
   -H 'Authorization: Bearer YOUR_API_KEY' \
-  -H 'Content-Type: application/json' \
-  -d '{"group_id":123,"server":"https://hooks.example.org/loomio/unguessable-token"}' \
-  https://www.loomio.com/api/b2/chatbots/check
+  --json '{
+    "group_id": 123,
+    "server": "https://hooks.example.org/loomio/unguessable-token"
+  }'
 ```
 
 <!-- translation-section: delete-a-webhook -->
@@ -967,7 +1213,9 @@ curl -X POST \
 `DELETE /api/b2/chatbots/:id`
 
 ```bash
-curl -X DELETE -H 'Authorization: Bearer YOUR_API_KEY' https://www.loomio.com/api/b2/chatbots/456
+curl https://www.loomio.com/api/b2/chatbots/456 \
+  -X DELETE \
+  -H 'Authorization: Bearer YOUR_API_KEY'
 ```
 
 Eliminar la configuración detiene los envíos futuros. No elimina ningún contenido del grupo de Loomio.

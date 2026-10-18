@@ -1,154 +1,162 @@
 ---
 title: Користувацький API
-source_revision: 28ecc59f68d407f76f08133bfa0172aadbb53065
-source_file: docs/en/user_manual/integrations/api/user-api.md
+source_revision: aa8cf2cef8336b4d86d7200c0d66c0eb8f973256
+source_file: docs/help/en/user_manual/integrations/api/user-api.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-15'
+  'on': '2026-10-17'
 sections:
   introduction: b6e6ec7463276869
-  response-size-and-related-records: 298da635bf97dadd
+  response-size-and-related-records: 8349c4d8e567a0c1
   endpoint-summary: 258f7560def524ec
   groups: 0473f1f7fb78f074
-  list-groups: 01de10c378eeba37
-  get-a-group: dffef659cb92745e
+  list-groups: e94dbf27dff819ff
+  get-a-group: 80912be614c0ea89
   webhooks: f65fa289f8c1b808
-  list-webhooks: 6093df92815f7156
-  create-a-webhook: 007312bcc204853a
-  update-a-webhook: 124b07d2c401e319
-  test-a-webhook-destination: 8fc3ac4ad10de6f6
-  delete-a-webhook: 34eda1e07d65db80
+  list-webhooks: 6ec5700a0ac5cbc7
+  create-a-webhook: 173ce08be83b4b58
+  update-a-webhook: 2bf0f59f8bff06ec
+  test-a-webhook-destination: 0637a17a98f20f4b
+  delete-a-webhook: 6ba2c6360e4f1d2a
   event-types: 73bfe87c8b790af3
   http-delivery: a32c763b6f816e65
   payload-formats: ca728b0ef542305c
   search: bb5a1cfc7a6179aa
-  params: 7eebe4e259830976
+  params: 1e7478b9883d2a47
   participation-report: a1798112a78390fe
   params-2: 464322ffc1ac56e5
-  example: 63bed6e82107f992
+  example: ba3f68d5b68a955b
   create-discussion: 958fc684640462a9
   params-3: 657d582c89333097
-  example-2: 57681d83fffe9515
+  example-2: bca512c06153265f
   show-discussion: 40102aeffe4f1286
-  example-3: c0ebd013a1b7fbd2
+  example-3: fe0959389ff4f2f6
   list-discussions: '09ff7f0d3a937b41'
   params-4: dcebc294fbb9d837
-  example-4: ffda1a4726380e2f
+  example-4: dd55f55bf83d135f
   list-threads: '09f7bd670e581400'
   params-5: 79b1cefac558effc
-  example-5: a40ae2317faab46d
+  example-5: 1864da3b097f66d6
   read-thread: ac36d1b81c1eeed4
   example-6: 8c582a286e04ca75
   edit-discussion: 918161e7aa8f4aa6
   params-6: b819796d34354623
-  example-7: 552295f78d3490af
+  example-7: 8b591051e20fa1e4
   soft-delete-discussion: c8ffe951171e6f07
-  example-8: 965c5761f34f9920
+  example-8: d0e726a1a20cc469
   create-comment: f95f56b81c8f22b5
   params-7: 5ad8ede0919c5f47
-  example-9: 70ee3750f1543e9b
+  example-9: 61514be87d3a8857
   edit-comment: 80322da74162d58f
   params-8: 288331c60f3c9b28
-  example-10: ec89de8cc86b6fc8
+  example-10: c0aed6ea023ff3d4
   soft-delete-comment: 04baf86923c7e8f1
-  example-11: f3675b780da755cd
+  example-11: 129076a53c6c4b31
   create-poll: cf62e787784a5e87
-  params-9: df1611a9dedef2d8
-  example-12: fa7410dd3a0a385f
+  params-9: 89465a6e2dfa6bdb
+  example-12: 4397219f26129191
   show-poll: d759508986aab08c
-  example-13: 2867289a6c2beb9d
+  example-13: 01f20dba176f4f23
   list-polls: 56e5ed4ae45e5428
   params-10: e68e8cf62b21488d
-  example-14: 40958a09c058d4cc
+  example-14: a1149e09d37d9b0a
   edit-poll: 65467ad0b431ddbf
-  params-11: 77f118397592bc05
-  example-15: e56befa0f2ae3360
+  params-11: 70b594511872194a
+  example-15: 8c4d585a050423ac
   soft-delete-poll: 61cf76310e08d7ff
-  example-16: afbf95df96734a4d
+  example-16: fb15cb7d90550c2f
   list-memberships: 5fab06bb8ecf1fd0
   params-12: decaff0790566fb0
-  example-17: 5d92092b70ce545a
+  example-17: 7714e1b8d2d07999
   manage-memberships: 802d39c06674d395
   params-13: 771b5338a4ba3d0b
-  example-18: a50b01823a6935a0
+  example-18: a06882d9d8de45f0
   pagination: 4171ca78df07d4fe
   comments: ccd37303241bac95
   discussions: 16ffe7a7b6202d3e
   memberships: e7cf8846c3179720
   polls: 821dcd89b5460804
   threads: 19bc02fc1c26317b
+  request-bodies: 0ec99fc25454f511
+  poll-many-options: 05024e64103f7d39
+  poll-detailed-options: a511f74ddaa0b6bf
+  edit-poll-detailed-options: 767b869e6b9efcff
 generated:
   introduction: d15d194c8f5c128c
-  response-size-and-related-records: 56ebbbdabbdda002
+  response-size-and-related-records: 0152010a1b56f1f8
   endpoint-summary: b6ff0a0dc0cb1e60
   groups: 29fb3c5431af0d9d
-  list-groups: e559329b42a6893b
-  get-a-group: ecb953185eaa0dde
+  list-groups: 4374e80a1d74d103
+  get-a-group: 14e2a01630164d9f
   webhooks: 1a401a8adc8e85e7
-  list-webhooks: 2fae33c99e770f9b
-  create-a-webhook: 53f31e99aaee8c5e
-  update-a-webhook: ef8767e397664978
-  test-a-webhook-destination: 718dd1c5b0e9c96c
-  delete-a-webhook: f956cb69b7d11aff
+  list-webhooks: 9b922d9ac2cf3bcd
+  create-a-webhook: 8eef1445b047e03d
+  update-a-webhook: 1e416a489ac0cf20
+  test-a-webhook-destination: 05435b69e6327684
+  delete-a-webhook: 3e174232ba1c1099
   event-types: a23a5f1dd1bac7c0
   http-delivery: 4eb9467477b6e5bc
   payload-formats: 8072653ac661a36e
   search: 7e447cf6f87c8469
-  params: d6daf4853505ce9e
+  params: 4952eb63ca177a33
   participation-report: 0ca6f32512a6ad49
   params-2: af841d214bb09ad1
-  example: cc8764dcc83c6241
+  example: 1c4d3dd025cc9417
   create-discussion: e569d9799819477a
   params-3: 3f7b5fb258b5a524
-  example-2: 8bbe817ab3ae28c7
+  example-2: 606e59c5cbe7e2f1
   show-discussion: 48a85f87b06495ef
-  example-3: 5cde6bccf61c6996
+  example-3: d3af42c9f55a69dc
   list-discussions: 51490cae79296b65
   params-4: 8bbccc246d588e37
-  example-4: aa1b389760ac1fc9
+  example-4: fe24ea7e6a02f857
   list-threads: efa63c350c1f4d75
   params-5: 995fecdd05f45d0e
-  example-5: 4cb25fb821bf8eff
+  example-5: 27b5f447492f4719
   read-thread: 98e2dda2328c5121
   example-6: 5df4709834a15409
   edit-discussion: 18bb1868129099ea
   params-6: 5093f58b7e5a6de6
-  example-7: 0d176e630350108f
+  example-7: 07b7f6909886eae7
   soft-delete-discussion: 3ba40c3a246515ea
-  example-8: f446333ebabdd1d3
+  example-8: 85154eb06a19ebe2
   create-comment: 5525c5e9316c13bb
   params-7: 6bfbac35ec10999c
-  example-9: 4f38f9d94e6956ab
+  example-9: 58db0fb453ecceae
   edit-comment: 12ac16842d3c166a
   params-8: 0f83d9d8d42c5ffb
-  example-10: a9835907e651ca6c
+  example-10: c46beae24c820bb9
   soft-delete-comment: 69b7a1855764dba9
-  example-11: c5dec7aebcc8b327
+  example-11: 89d042d1b9370164
   create-poll: c398063f9bba8a9b
-  params-9: 6ff3427c33605773
-  example-12: 31d69d964cec99bd
+  params-9: bca1be7e4d4cd288
+  example-12: 696520b27d6cc359
   show-poll: eaffafa9b9287347
-  example-13: 2d7d7e081aee6fd6
+  example-13: afce1ec4c6487d23
   list-polls: 0d8566aac01da378
   params-10: 0d4e3c7c7b2d1907
-  example-14: 603446485622cc0a
+  example-14: c7617cdfaf19ab41
   edit-poll: c7418191f42aa0d4
-  params-11: b0c296ecbc788303
-  example-15: cbd07fbaebbb84ae
+  params-11: fc5c1a2508872699
+  example-15: 816fe1a318306daf
   soft-delete-poll: f494d14fe318a56b
-  example-16: 3d54e5fc6db91f77
+  example-16: 3e9d800dadb63c0c
   list-memberships: 8bf4efc9d8ac7529
   params-12: 79cad57d774616c6
-  example-17: e30fd1fe5b41a606
+  example-17: 843dc736dff81b42
   manage-memberships: aed953151920da78
   params-13: a4ed0ba979ea50aa
-  example-18: 83e962f702514993
+  example-18: 7db9d40320a2ea3e
   pagination: 95d7d151f23add7d
   comments: f87cc9be2a62fbcd
   discussions: 638b72484868a4fe
   memberships: 1ef60996af7f3d8f
   polls: 49f0febaf5e37fa7
   threads: 16ea8f01f0ae40e1
+  request-bodies: 82ca61ed73c589e4
+  poll-many-options: 2e1dace93221c354
+  poll-detailed-options: 646bb9bb24cc8c8f
+  edit-poll-detailed-options: df83c630752f9857
 title_source: c23fb6526b722360
 title_generated: a8877cdee7d58933
 needs_review:
@@ -176,6 +184,16 @@ Authorization: Bearer YOUR_API_KEY
 ```
 
 У прикладах використовуються `YOUR_API_KEY`, ідентифікатор групи `123` і `https://www.loomio.com/`. Замініть їх на ваш API-ключ, ідентифікатор групи та URL-адресу вашого екземпляра Loomio.
+
+<!-- translation-section: request-bodies -->
+
+### Надсилання тіл запитів
+
+Надсилайте JSON із заголовком `Content-Type: application/json`. У прикладах cURL використовується `--json`, що автоматично встановлює цей заголовок. Кінцеві точки створення та редагування обговорень, коментарів і опитувань приймають як об’єкт без вкладення, так і об’єкт, вкладений під назвою ресурсу, наприклад `{"poll": {...}}`.
+
+Надсилайте масиви як масиви JSON, наприклад `"options": ["foo", "bar"]`. Якщо натомість ви використовуєте кодування форми, назви полів для масивів мають містити квадратні дужки, наприклад `options[]=foo&options[]=bar`; повторення `options=foo&options=bar` зберігає лише останнє значення.
+
+Перевіряйте статус HTTP і тіло відповіді після кожного запиту. У разі помилки перевірки даних повертається `422` з об’єктом `errors`; після успішного створення опитування воно повертається в `polls`, а його варіанти — у `poll_options`.
 
 <!-- translation-section: endpoint-summary -->
 
@@ -233,7 +251,8 @@ Authorization: Bearer YOUR_API_KEY
 Передайте `compact=1`, щоб не включати об’ємні пов’язані записи тем, груп, батьківських груп, участі в групах, реакцій, тегів і перекладів. Основні записи та пов’язані записи, потрібні для тлумачення їхнього вмісту, залишаються у відповіді.
 
 ```bash
-curl -H 'Authorization: Bearer YOUR_API_KEY' 'https://www.loomio.com/api/b2/threads/123/items?compact=1'
+curl 'https://www.loomio.com/api/b2/threads/123/items?compact=1' \
+  -H 'Authorization: Bearer YOUR_API_KEY'
 ```
 
 Для безпосереднього керування передайте `exclude_types` із типами записів в однині, розділеними пробілами. Наприклад, `exclude_types=group reaction` виключає пов’язані групи та реакції. Поширені значення: `topic`, `group`, `parent`, `membership`, `reaction`, `tag`, `translation`, `user`, `discussion`, `poll`, `poll_option`, `stance`, `stance_choice`, `outcome` і `topic_item`. Виключення застосовуються до пов’язаних записів, а не до основного ресурсу, запитаного через кінцеву точку.
@@ -267,7 +286,13 @@ curl -H 'Authorization: Bearer YOUR_API_KEY' 'https://www.loomio.com/api/b2/thre
 #### Приклад
 
 ```bash
-curl -H 'Authorization: Bearer YOUR_API_KEY' -X POST -H 'Content-Type: application/json' -d '{"discussion_id": 123, "body":"example comment", "body_format":"md"}' https://www.loomio.com/api/b2/comments
+curl https://www.loomio.com/api/b2/comments \
+  -H 'Authorization: Bearer YOUR_API_KEY' \
+  --json '{
+    "discussion_id": 123,
+    "body": "example comment",
+    "body_format": "md"
+  }'
 ```
 
 <!-- translation-section: edit-comment -->
@@ -292,7 +317,13 @@ curl -H 'Authorization: Bearer YOUR_API_KEY' -X POST -H 'Content-Type: applicati
 #### Приклад
 
 ```bash
-curl -H 'Authorization: Bearer YOUR_API_KEY' -X PATCH -H 'Content-Type: application/json' -d '{"body":"updated comment", "body_format":"md"}' https://www.loomio.com/api/b2/comments/123
+curl https://www.loomio.com/api/b2/comments/123 \
+  -X PATCH \
+  -H 'Authorization: Bearer YOUR_API_KEY' \
+  --json '{
+    "body": "updated comment",
+    "body_format": "md"
+  }'
 ```
 
 <!-- translation-section: soft-delete-comment -->
@@ -308,7 +339,9 @@ curl -H 'Authorization: Bearer YOUR_API_KEY' -X PATCH -H 'Content-Type: applicat
 #### Приклад
 
 ```bash
-curl -H 'Authorization: Bearer YOUR_API_KEY' -X DELETE https://www.loomio.com/api/b2/comments/123
+curl https://www.loomio.com/api/b2/comments/123 \
+  -X DELETE \
+  -H 'Authorization: Bearer YOUR_API_KEY'
 ```
 
 <!-- translation-section: discussions -->
@@ -343,7 +376,15 @@ curl -H 'Authorization: Bearer YOUR_API_KEY' -X DELETE https://www.loomio.com/ap
 #### Приклад
 
 ```bash
-curl -H 'Authorization: Bearer YOUR_API_KEY' -X POST -H 'Content-Type: application/json' -d '{"group_id": 123, "title":"example thread", "recipient_emails":["person@example.com"]}' https://www.loomio.com/api/b2/discussions
+curl https://www.loomio.com/api/b2/discussions \
+  -H 'Authorization: Bearer YOUR_API_KEY' \
+  --json '{
+    "group_id": 123,
+    "title": "example thread",
+    "recipient_emails": [
+      "person@example.com"
+    ]
+  }'
 ```
 
 <!-- translation-section: show-discussion -->
@@ -359,7 +400,8 @@ curl -H 'Authorization: Bearer YOUR_API_KEY' -X POST -H 'Content-Type: applicati
 #### Приклад
 
 ```bash
-curl -H 'Authorization: Bearer YOUR_API_KEY' https://www.loomio.com/api/b2/discussions/abc123
+curl https://www.loomio.com/api/b2/discussions/abc123 \
+  -H 'Authorization: Bearer YOUR_API_KEY'
 ```
 
 <!-- translation-section: list-discussions -->
@@ -388,7 +430,8 @@ curl -H 'Authorization: Bearer YOUR_API_KEY' https://www.loomio.com/api/b2/discu
 #### Приклад
 
 ```bash
-curl -H 'Authorization: Bearer YOUR_API_KEY' 'https://www.loomio.com/api/b2/discussions?group_id=123'
+curl 'https://www.loomio.com/api/b2/discussions?group_id=123' \
+  -H 'Authorization: Bearer YOUR_API_KEY'
 ```
 
 <!-- translation-section: edit-discussion -->
@@ -418,7 +461,14 @@ curl -H 'Authorization: Bearer YOUR_API_KEY' 'https://www.loomio.com/api/b2/disc
 #### Приклад
 
 ```bash
-curl -H 'Authorization: Bearer YOUR_API_KEY' -X PATCH -H 'Content-Type: application/json' -d '{"title":"updated thread title", "description":"updated context", "description_format":"md"}' https://www.loomio.com/api/b2/discussions/123
+curl https://www.loomio.com/api/b2/discussions/123 \
+  -X PATCH \
+  -H 'Authorization: Bearer YOUR_API_KEY' \
+  --json '{
+    "title": "updated thread title",
+    "description": "updated context",
+    "description_format": "md"
+  }'
 ```
 
 <!-- translation-section: soft-delete-discussion -->
@@ -434,7 +484,9 @@ curl -H 'Authorization: Bearer YOUR_API_KEY' -X PATCH -H 'Content-Type: applicat
 #### Приклад
 
 ```bash
-curl -H 'Authorization: Bearer YOUR_API_KEY' -X DELETE https://www.loomio.com/api/b2/discussions/123
+curl https://www.loomio.com/api/b2/discussions/123 \
+  -X DELETE \
+  -H 'Authorization: Bearer YOUR_API_KEY'
 ```
 
 <!-- translation-section: groups -->
@@ -457,7 +509,8 @@ curl -H 'Authorization: Bearer YOUR_API_KEY' -X DELETE https://www.loomio.com/ap
 | `offset` | Ціле число, необов’язкове, типове значення 0. Зміщення для поділу на сторінки |
 
 ```bash
-curl -H 'Authorization: Bearer YOUR_API_KEY' 'https://www.loomio.com/api/b2/groups?limit=50&offset=0'
+curl 'https://www.loomio.com/api/b2/groups?limit=50&offset=0' \
+  -H 'Authorization: Bearer YOUR_API_KEY'
 ```
 
 Відповідь містить сторінку `groups`, упорядковану за зростанням ідентифікатора групи, із загальною кількістю відповідних груп у `meta.total`. До неї входять батьківські групи та підгрупи, зокрема групи, підписка яких наразі неактивна. Перевіряйте поле `enabled`, якщо інтеграція має працювати лише з увімкненими групами.
@@ -494,8 +547,11 @@ curl -H 'Authorization: Bearer YOUR_API_KEY' 'https://www.loomio.com/api/b2/grou
 Ідентифікатором може бути числовий ідентифікатор, ключ або псевдонім групи.
 
 ```bash
-curl -H 'Authorization: Bearer YOUR_API_KEY' https://www.loomio.com/api/b2/groups/123
-curl -H 'Authorization: Bearer YOUR_API_KEY' https://www.loomio.com/api/b2/groups/example-group
+curl https://www.loomio.com/api/b2/groups/123 \
+  -H 'Authorization: Bearer YOUR_API_KEY'
+
+curl https://www.loomio.com/api/b2/groups/example-group \
+  -H 'Authorization: Bearer YOUR_API_KEY'
 ```
 
 Відповідь містить групу в масиві `groups` і використовує ті самі поля, що й кінцева точка списку груп. Запит групи, до якої користувач із цим API-ключем не має доступу, повертає помилку прав доступу.
@@ -531,7 +587,8 @@ curl -H 'Authorization: Bearer YOUR_API_KEY' https://www.loomio.com/api/b2/group
 #### Приклад
 
 ```bash
-curl -H 'Authorization: Bearer YOUR_API_KEY' 'https://www.loomio.com/api/b2/memberships?group_id=123&limit=50&offset=0'
+curl 'https://www.loomio.com/api/b2/memberships?group_id=123&limit=50&offset=0' \
+  -H 'Authorization: Bearer YOUR_API_KEY'
 ```
 
 <!-- translation-section: manage-memberships -->
@@ -557,13 +614,28 @@ curl -H 'Authorization: Bearer YOUR_API_KEY' 'https://www.loomio.com/api/b2/memb
 #### Приклад
 
 ```bash
-curl -H 'Authorization: Bearer YOUR_API_KEY' -X POST -H 'Content-Type: application/json' -d '{"group_id": 123, "emails":["person@example.com"]}' https://www.loomio.com/api/b2/memberships
+curl https://www.loomio.com/api/b2/memberships \
+  -H 'Authorization: Bearer YOUR_API_KEY' \
+  --json '{
+    "group_id": 123,
+    "emails": [
+      "person@example.com"
+    ]
+  }'
 ```
 
 Якщо ви передасте `remove_absent=1`, усіх учасників групи, яких немає у списку, буде видалено з групи. Будьте обережні: ви можете видалити всіх учасників вашої групи.
 
 ```bash
-curl -H 'Authorization: Bearer YOUR_API_KEY' -X POST -H 'Content-Type: application/json' -d '{"group_id": 123, "emails":["person@example.com"], "remove_absent": 1}' https://www.loomio.com/api/b2/memberships
+curl https://www.loomio.com/api/b2/memberships \
+  -H 'Authorization: Bearer YOUR_API_KEY' \
+  --json '{
+    "group_id": 123,
+    "emails": [
+      "person@example.com"
+    ],
+    "remove_absent": 1
+  }'
 ```
 
 У відповідь повертається об’єкт із `{added_emails: ["person@added.com"], removed_emails: ["person@removed.com"]}`.
@@ -599,7 +671,8 @@ API застосовує ті самі правила видимості гру�
 ### Приклад
 
 ```bash
-curl -H 'Authorization: Bearer YOUR_API_KEY' 'https://www.loomio.com/api/b2/reports?section=users&group_scope=custom&group_ids=123&member_type=delegate&start_month=2026-01&end_month=2026-09'
+curl 'https://www.loomio.com/api/b2/reports?section=users&group_scope=custom&group_ids=123&member_type=delegate&start_month=2026-01&end_month=2026-09' \
+  -H 'Authorization: Bearer YOUR_API_KEY'
 ```
 
 Масив `users` містить рядки з повними даними про активність:
@@ -651,7 +724,10 @@ curl -H 'Authorization: Bearer YOUR_API_KEY' 'https://www.loomio.com/api/b2/repo
 | `poll_type` | Рядок, обов’язковий. Значення: `proposal`, `poll`, `count`, `score`, `ranked_choice`, `meeting`, `dot_vote` |
 | `details` | Рядок, необов’язковий. Основний текст опитування |
 | `details_format` | Рядок, необов’язковий, за замовчуванням `md`. Значення: `md` або `html` |
-| `options` | Масив рядків. Якщо `poll_type` має значення `proposal`, допустимі значення: `agree`, `disagree`, `abstain`, `block`. Якщо `poll_type` має значення `meeting`, передайте рядки з датою або датою й часом у форматі ISO 8601. Для всіх інших типів опитування допустимий будь-який рядок |
+| `options` | Прості назви варіантів у вигляді масиву рядків. Для `proposal` використовуйте `agree`, `disagree`, `abstain` або `block`, щоб отримати стандартні назви, піктограми, значення та підказки. Для `meeting` передайте рядки з датою або датою й часом у форматі ISO 8601. Для інших типів опитування передайте назви варіантів. Для варіантів із докладними налаштуваннями використовуйте натомість `poll_options_attributes` |
+| `poll_options_attributes` | Альтернатива `options`: масив об’єктів варіантів із назвами, значеннями, підказками, піктограмами та порядком. Див. [Створення опитування з докладними налаштуваннями варіантів](#create-a-poll-with-detailed-options) |
+| `reason_prompt` | Рядок, необов’язковий. Спільна підказка для причини голосу, яку використовують типи опитування без окремих підказок для варіантів, як-от `poll`, `score` і `ranked_choice` |
+| `stance_reason_required` | Рядок, за замовчуванням `optional`. Значення: `disabled`, `optional`, `required`, `required_for_disagree_or_block`, `required_for_block`. Останні два застосовуються до піктограм `disagree` і `block`. В анонімних опитуваннях причини голосів вимкнено |
 | `closing_at` | Рядок у форматі ISO 8601 або null, за замовчуванням null. Приклад: `2026-09-01T12:00:00Z`. Якщо значення null, голосування вимкнено, а опитування вважається таким, що ще готується |
 | `specified_voters_only` | Логічне значення, необов’язкове, за замовчуванням false. Якщо true, голосувати можуть лише зазначені люди. Якщо false, усіх у групі буде запрошено голосувати |
 | `hide_results` | Рядок, необов’язковий, за замовчуванням `off`. Значення: `off`, `until_vote`, `until_closed` |
@@ -669,8 +745,123 @@ curl -H 'Authorization: Bearer YOUR_API_KEY' 'https://www.loomio.com/api/b2/repo
 #### Приклад
 
 ```bash
-curl -H 'Authorization: Bearer YOUR_API_KEY' -X POST -H 'Content-Type: application/json' -d '{"group_id": 123, "title":"example poll", "poll_type": "proposal", "options": ["agree", "disagree"], "closing_at": "2026-09-01T12:00:00Z", "recipient_emails":["person@example.com"]}' https://www.loomio.com/api/b2/polls
+curl https://www.loomio.com/api/b2/polls \
+  -H 'Authorization: Bearer YOUR_API_KEY' \
+  --json '{
+    "group_id": 123,
+    "title": "example poll",
+    "poll_type": "proposal",
+    "options": [
+      "agree",
+      "disagree"
+    ],
+    "closing_at": "2026-09-01T12:00:00Z",
+    "recipient_emails": [
+      "person@example.com"
+    ]
+  }'
 ```
+
+<!-- translation-section: poll-many-options -->
+
+#### Створення чернетки опитування з багатьма варіантами
+
+Передайте всі назви варіантів у масиві `options`. Якщо не вказати `closing_at`, буде створено опитування, яке ще готується, з вимкненим голосуванням; це не приховує опитування від людей, які можуть читати його тему. Коли ви будете готові відкрити голосування, додайте `closing_at` із майбутньою датою й часом.
+
+Додайте до масиву всі назви ваших варіантів:
+
+```bash
+curl https://www.loomio.com/api/b2/polls \
+  -H 'Authorization: Bearer YOUR_API_KEY' \
+  --json '{
+    "group_id": 123,
+    "title": "Meeting venue",
+    "poll_type": "poll",
+    "options": [
+      "Town hall",
+      "Library",
+      "Community centre"
+    ]
+  }'
+```
+
+<!-- translation-section: poll-detailed-options -->
+
+#### Створення опитування з докладними варіантами
+
+Використовуйте `options` для списку назв або `poll_options_attributes`, коли кожному варіанту потрібне пояснення значення, запитання про причину або піктограма. Використовуйте один формат у кожному запиті. Обидва формати працюють у плоскому тілі JSON або всередині об’єкта `poll`.
+
+Кожен об’єкт у `poll_options_attributes` приймає такі поля:
+
+| Поле | Опис |
+| --- | --- |
+| `name` | Рядок, обов’язковий для нового варіанта. Назва, яку бачать виборці |
+| `meaning` | Рядок, необов’язковий. Пояснює, що означає вибір цього варіанта |
+| `prompt` | Рядок, необов’язковий. Запитання про причину, яке відображається, коли цей варіант вибрано в `proposal`, `count` або `check`. Для інших типів опитувань задайте `reason_prompt` в опитуванні |
+| `icon` | Рядок, необов’язковий. Для `proposal`, `count` і `check` використовуйте `agree`, `disagree`, `abstain` або `block` |
+| `priority` | Ціле число. Порядок варіантів, починаючи з `0`. Задайте окремий пріоритет для кожного варіанта; варіанти зустрічей натомість упорядковуються за датою |
+| `test_operator` | Рядок або null, необов’язковий. Вимога до частки голосів: `gte` означає щонайменше, `lte` — не більше ніж. Задайте null, щоб вимкнути вимогу |
+| `test_percent` | Ціле число, необов’язкове. Відсоток для вимоги до частки голосів, від `0` до `100` |
+| `test_against` | Рядок, необов’язковий. `score_percent` порівнює частку варіанта в загальній сумі оцінок або відданих балів; `voter_percent` порівнює кількість його виборців із загальною кількістю виборців, які мають право голосувати |
+| `id` | Ціле число. Додайте під час редагування наявного варіанта; пропустіть для нового варіанта |
+| `_destroy` | Логічне значення, необов’язкове. Задайте `true` разом з `id` наявного варіанта, щоб видалити його |
+
+Створіть пропозицію з власними назвами варіантів і запитаннями:
+
+```bash
+curl https://www.loomio.com/api/b2/polls \
+  -H 'Authorization: Bearer YOUR_API_KEY' \
+  --json '{
+    "group_id": 123,
+    "title": "Should we adopt this proposal?",
+    "poll_type": "proposal",
+    "stance_reason_required": "optional",
+    "poll_options_attributes": [
+      {
+        "name": "Support",
+        "meaning": "I support adopting this proposal",
+        "prompt": "What do you support about it?",
+        "icon": "agree",
+        "priority": 0
+      },
+      {
+        "name": "Oppose",
+        "meaning": "I would prefer another approach",
+        "prompt": "What would you change?",
+        "icon": "disagree",
+        "priority": 1
+      }
+    ]
+  }'
+```
+
+Для звичайного опитування використовуйте той самий формат докладних варіантів зі спільним запитанням `reason_prompt` в опитуванні:
+
+```bash
+curl https://www.loomio.com/api/b2/polls \
+  -H 'Authorization: Bearer YOUR_API_KEY' \
+  --json '{
+    "group_id": 123,
+    "title": "Choose a venue",
+    "poll_type": "poll",
+    "reason_prompt": "Why do you prefer this venue?",
+    "stance_reason_required": "optional",
+    "poll_options_attributes": [
+      {
+        "name": "Town hall",
+        "meaning": "Central, accessible venue",
+        "priority": 0
+      },
+      {
+        "name": "Library",
+        "meaning": "Smaller room with no hire fee",
+        "priority": 1
+      }
+    ]
+  }'
+```
+
+У цих прикладах `closing_at` пропущено, тому голосування залишається вимкненим, доки не буде встановлено майбутню дату закриття.
 
 <!-- translation-section: show-poll -->
 
@@ -685,7 +876,8 @@ curl -H 'Authorization: Bearer YOUR_API_KEY' -X POST -H 'Content-Type: applicati
 #### Приклад
 
 ```bash
-curl -H 'Authorization: Bearer YOUR_API_KEY' https://www.loomio.com/api/b2/polls/abc123
+curl https://www.loomio.com/api/b2/polls/abc123 \
+  -H 'Authorization: Bearer YOUR_API_KEY'
 ```
 
 <!-- translation-section: list-polls -->
@@ -714,7 +906,8 @@ curl -H 'Authorization: Bearer YOUR_API_KEY' https://www.loomio.com/api/b2/polls
 #### Приклад
 
 ```bash
-curl -H 'Authorization: Bearer YOUR_API_KEY' 'https://www.loomio.com/api/b2/polls?group_id=123'
+curl 'https://www.loomio.com/api/b2/polls?group_id=123' \
+  -H 'Authorization: Bearer YOUR_API_KEY'
 ```
 
 <!-- translation-section: edit-poll -->
@@ -735,6 +928,9 @@ curl -H 'Authorization: Bearer YOUR_API_KEY' 'https://www.loomio.com/api/b2/poll
 | `details` | Оновлений основний текст опитування |
 | `details_format` | `md` або `html`, необов’язкове, за замовчуванням `md` |
 | `options` | Оновлені назви варіантів. Зміна варіантів може вплинути на наявні голоси залежно від стану опитування |
+| `poll_options_attributes` | Альтернатива `options`. Оновлюйте об’єкти докладних налаштувань варіантів за `id`, додавайте об’єкти без `id` або видаляйте варіант за допомогою `id` і `_destroy: true`. Варіанти, які не передано, залишаються без змін |
+| `reason_prompt` | Оновлена спільна підказка для причини для типів опитування без окремих підказок для варіантів |
+| `stance_reason_required` | Оновлена вимога щодо причини; застосовуються ті самі значення, що й під час створення опитування |
 | `closing_at` | Рядок у форматі ISO 8601 або null |
 | `recipient_audience` | `group` або null. Якщо `group`, сповіщення отримає вся група |
 | `recipient_user_ids` | Масив ID користувачів, яких потрібно сповістити або запросити |
@@ -746,8 +942,44 @@ curl -H 'Authorization: Bearer YOUR_API_KEY' 'https://www.loomio.com/api/b2/poll
 #### Приклад
 
 ```bash
-curl -H 'Authorization: Bearer YOUR_API_KEY' -X PATCH -H 'Content-Type: application/json' -d '{"title":"updated poll title", "details":"updated details", "details_format":"md"}' https://www.loomio.com/api/b2/polls/123
+curl https://www.loomio.com/api/b2/polls/123 \
+  -X PATCH \
+  -H 'Authorization: Bearer YOUR_API_KEY' \
+  --json '{
+    "title": "updated poll title",
+    "details": "updated details",
+    "details_format": "md"
+  }'
 ```
+
+<!-- translation-section: edit-poll-detailed-options -->
+
+#### Редагування докладних налаштувань варіантів
+
+Отримайте ID варіантів із масиву `poll_options` у відповіді на запит створення або отримання опитування. Передайте лише поля, які потрібно змінити, разом з `id` кожного наявного варіанта:
+
+```bash
+curl https://www.loomio.com/api/b2/polls/123 \
+  -X PATCH \
+  -H 'Authorization: Bearer YOUR_API_KEY' \
+  --json '{
+    "poll_options_attributes": [
+      {
+        "id": 456,
+        "meaning": "Updated explanation",
+        "prompt": "What would improve this proposal?"
+      },
+      {
+        "name": "Abstain",
+        "meaning": "I leave the decision to others",
+        "icon": "abstain",
+        "priority": 2
+      }
+    ]
+  }'
+```
+
+ID варіантів мають належати опитуванню, яке редагується. Для редагування потрібен дозвіл на редагування опитування, а закриті опитування редагувати не можна. В анонімних опитуваннях налаштування варіантів також стають незмінними після подання першого бюлетеня.
 
 <!-- translation-section: soft-delete-poll -->
 
@@ -762,7 +994,9 @@ curl -H 'Authorization: Bearer YOUR_API_KEY' -X PATCH -H 'Content-Type: applicat
 #### Приклад
 
 ```bash
-curl -H 'Authorization: Bearer YOUR_API_KEY' -X DELETE https://www.loomio.com/api/b2/polls/123
+curl https://www.loomio.com/api/b2/polls/123 \
+  -X DELETE \
+  -H 'Authorization: Bearer YOUR_API_KEY'
 ```
 
 <!-- translation-section: search -->
@@ -789,7 +1023,8 @@ curl -H 'Authorization: Bearer YOUR_API_KEY' -X DELETE https://www.loomio.com/ap
 | `order` | Установіть `authored_at_desc`, щоб упорядкувати відповідний вміст за часом створення |
 
 ```bash
-curl -H 'Authorization: Bearer YOUR_API_KEY' 'https://www.loomio.com/api/b2/search?query=quarterly+planning&type=Discussion'
+curl 'https://www.loomio.com/api/b2/search?query=quarterly+planning&type=Discussion' \
+  -H 'Authorization: Bearer YOUR_API_KEY'
 ```
 
 Відповідь містить масив `search_results`. Кожен результат визначає знайдений запис і його доступний контекст за допомогою полів, зокрема `searchable_type`, `searchable_id`, `highlight`, `group_id`, `group_name`, `discussion_key`, `poll_key`, `author_id`, `author_name`, `authored_at` і `tags`. Поля, які не стосуються результату, мають значення `null`.
@@ -820,7 +1055,8 @@ curl -H 'Authorization: Bearer YOUR_API_KEY' 'https://www.loomio.com/api/b2/sear
 #### Приклад
 
 ```bash
-curl -H 'Authorization: Bearer YOUR_API_KEY' 'https://www.loomio.com/api/b2/threads?limit=50&offset=0'
+curl 'https://www.loomio.com/api/b2/threads?limit=50&offset=0' \
+  -H 'Authorization: Bearer YOUR_API_KEY'
 ```
 
 <!-- translation-section: read-thread -->
@@ -890,7 +1126,8 @@ GET https://www.loomio.com/api/b2/threads/<topic_id>/markdown
 | `offset` | Ціле число, необов’язкове, типове значення — 0. Зміщення для посторінкового перегляду |
 
 ```bash
-curl -H 'Authorization: Bearer YOUR_API_KEY' 'https://www.loomio.com/api/b2/chatbots?group_id=123&limit=50&offset=0'
+curl 'https://www.loomio.com/api/b2/chatbots?group_id=123&limit=50&offset=0' \
+  -H 'Authorization: Bearer YOUR_API_KEY'
 ```
 
 Відповідь містить сторінку `chatbots`, упорядковану за зростанням ID інтеграції, із загальною кількістю інтеграцій у групі в `meta.total`. Кожна інтеграція має такі поля:
@@ -913,19 +1150,22 @@ curl -H 'Authorization: Bearer YOUR_API_KEY' 'https://www.loomio.com/api/b2/chat
 `POST /api/b2/chatbots`
 
 ```bash
-curl -X POST \
+curl https://www.loomio.com/api/b2/chatbots \
   -H 'Authorization: Bearer YOUR_API_KEY' \
-  -H 'Content-Type: application/json' \
-  -d '{
+  --json '{
     "group_id": 123,
     "name": "Planning system",
     "kind": "webhook",
     "webhook_kind": "markdown",
     "server": "https://hooks.example.org/loomio/unguessable-token",
-    "event_kinds": ["new_discussion", "new_comment", "poll_created", "outcome_created"],
+    "event_kinds": [
+      "new_discussion",
+      "new_comment",
+      "poll_created",
+      "outcome_created"
+    ],
     "notification_only": false
-  }' \
-  https://www.loomio.com/api/b2/chatbots
+  }'
 ```
 
 Користувач, якому належить API-ключ, має бути адміністратором групи `group_id`. Перед збереженням перевіряється, чи є адреса призначення публічною URL-адресою.
@@ -939,11 +1179,16 @@ curl -X POST \
 Надішліть усі поля, які потрібно змінити. Вебхук не можна перенести до іншої групи, змінивши `group_id`.
 
 ```bash
-curl -X PATCH \
+curl https://www.loomio.com/api/b2/chatbots/456 \
+  -X PATCH \
   -H 'Authorization: Bearer YOUR_API_KEY' \
-  -H 'Content-Type: application/json' \
-  -d '{"name":"Planning events","event_kinds":["new_discussion","outcome_created"]}' \
-  https://www.loomio.com/api/b2/chatbots/456
+  --json '{
+    "name": "Planning events",
+    "event_kinds": [
+      "new_discussion",
+      "outcome_created"
+    ]
+  }'
 ```
 
 <!-- translation-section: test-a-webhook-destination -->
@@ -955,11 +1200,12 @@ curl -X PATCH \
 `POST /api/b2/chatbots/check`
 
 ```bash
-curl -X POST \
+curl https://www.loomio.com/api/b2/chatbots/check \
   -H 'Authorization: Bearer YOUR_API_KEY' \
-  -H 'Content-Type: application/json' \
-  -d '{"group_id":123,"server":"https://hooks.example.org/loomio/unguessable-token"}' \
-  https://www.loomio.com/api/b2/chatbots/check
+  --json '{
+    "group_id": 123,
+    "server": "https://hooks.example.org/loomio/unguessable-token"
+  }'
 ```
 
 <!-- translation-section: delete-a-webhook -->
@@ -969,7 +1215,9 @@ curl -X POST \
 `DELETE /api/b2/chatbots/:id`
 
 ```bash
-curl -X DELETE -H 'Authorization: Bearer YOUR_API_KEY' https://www.loomio.com/api/b2/chatbots/456
+curl https://www.loomio.com/api/b2/chatbots/456 \
+  -X DELETE \
+  -H 'Authorization: Bearer YOUR_API_KEY'
 ```
 
 Видалення конфігурації припиняє подальше надсилання повідомлень. Воно не видаляє жодного вмісту групи Loomio.
