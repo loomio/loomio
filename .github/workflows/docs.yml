@@ -40,9 +40,9 @@ jobs:
           bundle exec ruby -Itest -e 'Dir["test/docs/*_test.rb"].sort.each { |file| require_relative file }'
           node --test test/docs/screenshot_fallback_test.cjs
       - name: Check published translations without calling a model
-        run: bundle exec ruby docs/sync_translations.rb --check
+        run: bundle exec ruby docs/help/sync_translations.rb --check
       - name: Build and validate the documentation site
-        run: bundle exec ruby docs/build.rb
+        run: bundle exec ruby docs/help/build.rb
       - name: Save the validated site
         uses: actions/upload-artifact@v4
         with:

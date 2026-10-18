@@ -74,4 +74,4 @@ Mailer rendering tests should cover the content hierarchy, recipient-specific co
 
 ## Validation
 
-Run focused Rails mailer and controller tests first. Parse changed locale files, run diagnostics, and run `git diff --check`. For user-manual email examples, regenerate one screenshot at a time with `bin/e2e-screenshots`, inspect it in light mode, rebuild the documentation with `bundle exec ruby docs/build.rb`, and obtain human approval before continuing to the next screenshot.
+Run focused Rails mailer and controller tests first. Parse changed locale files, run diagnostics, and run `git diff --check`. For user-manual email examples, regenerate one screenshot at a time with `bin/e2e-screenshots`, inspect it in light mode, rebuild the documentation with `bundle exec ruby docs/help/build.rb`, and obtain human approval before continuing to the next screenshot.

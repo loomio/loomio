@@ -3,7 +3,7 @@
 require "minitest/autorun"
 require "minitest/mock"
 require "tmpdir"
-require_relative "../../docs/build"
+require_relative "../../docs/help/build"
 
 class DocsBuildTest < Minitest::Test
   def test_renders_github_style_markdown_alerts_with_material_design_icons

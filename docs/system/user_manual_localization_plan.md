@@ -6,7 +6,7 @@ Publish usable translated documentation with automated checks and occasional cus
 
 ## Source layout
 
-English remains canonical under `docs/en/`. Translations mirror its paths under `docs/<locale>/`, for example `docs/en/user_manual/users/bookmarks/index.md` and `docs/fr/user_manual/users/bookmarks/index.md`. Translate the user manual and guides; keep policy pages and the changelog in English. Keep one shared `docs/SUMMARY.md` with page paths relative to each language directory. Navigation titles come from the summary for English and page frontmatter for other languages. Shared scripts, styles, redirects, internal documentation and release notes remain under `docs/`.
+English remains canonical under `docs/help/en/`. Translations mirror its paths under `docs/help/<locale>/`, for example `docs/help/en/user_manual/users/bookmarks/index.md` and `docs/help/fr/user_manual/users/bookmarks/index.md`. Translate the user manual and guides; keep policy pages and the changelog in English. Keep one shared `docs/help/SUMMARY.md` with page paths relative to each language directory. Navigation titles come from the summary for English and page frontmatter for other languages. Shared scripts, styles, redirects, internal documentation and release notes remain under `docs/`.
 
 Keep public routes unchanged: `/docs/en/...`, `/docs/fr/...`, and corresponding language paths. Translated headings retain English anchor IDs. Links between translated pages use the current language; links to English-only material remain in English.
 
@@ -44,4 +44,4 @@ Validate links, images, metadata, redirects, heading anchors, language attribute
 
 Convert the existing block YAML mechanically, retaining all translated text without model requests. Add stable section markers to English, assemble the corresponding translated sections, and carry forward exceptional notes and available provenance. Compare every rendered page before and after the conversion, including text, code, links, images, anchors, navigation and metadata. Update screenshot output paths and API specification consumers with the English directory move.
 
-The initial implementation translated 85 pages into 13 languages. Keep those languages available for preview; enable publication separately through `docs/locales.yml` when their automated checks and operator rollout are ready.
+The initial implementation translated 85 pages into 13 languages. Keep those languages available for preview; enable publication separately through `docs/help/locales.yml` when their automated checks and operator rollout are ready.

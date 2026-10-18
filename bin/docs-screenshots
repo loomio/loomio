@@ -3,8 +3,8 @@
 
 require "bundler/setup"
 require "optparse"
-require_relative "../docs/localization"
-require_relative "../docs/screenshots"
+require_relative "../docs/help/localization"
+require_relative "../docs/help/screenshots"
 
 options = {output: Docs::Screenshots::ROOT.join("public/docs-screenshots"), refresh: false, status: false, publish: false}
 parser = OptionParser.new do |args|
@@ -22,7 +22,7 @@ locales = selection == "all" ? Docs::Localization.locales.select(&:published) : 
 abort "English screenshots use bin/e2e-screenshots" if locales.any? { |locale| locale.code == "en" }
 recipes = Docs::Screenshots.catalog
 unless ARGV.empty?
-  filters = ARGV.map { |path| path.delete_prefix("docs/en/").delete_prefix("/").delete_suffix("/") }
+  filters = ARGV.map { |path| path.delete_prefix("docs/help/en/").delete_prefix("/").delete_suffix("/") }
   filters.map! { |path| path.start_with?("guides/", "user_manual/") ? path : "user_manual/#{path}" }
   recipes = recipes.select { |recipe| filters.any? { |filter| recipe.fetch("image") == filter || recipe.fetch("image").start_with?("#{filter}/") } }
   abort "No approved screenshot recipes match #{ARGV.join(', ')}" if recipes.empty?

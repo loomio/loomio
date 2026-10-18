@@ -39,12 +39,12 @@ else
 
   # The installed hook is shared by worktrees, including older branches. It only
   # checks; translating is a separate step so a push never generates files.
-  if [ -f docs/sync_translations.rb ]; then
+  if [ -f docs/help/sync_translations.rb ]; then
     echo ""
     echo "==> Checking user_manual translations..."
-    if ! bundle exec ruby docs/sync_translations.rb --check; then
+    if ! bundle exec ruby docs/help/sync_translations.rb --check; then
       echo ""
-      echo "Run 'bundle exec ruby docs/sync_translations.rb', commit the changed translations, then push again."
+      echo "Run 'bundle exec ruby docs/help/sync_translations.rb', commit the changed translations, then push again."
       exit 1
     fi
   fi
