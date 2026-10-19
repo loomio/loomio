@@ -55,7 +55,7 @@
     "@tiptap/extension-text": "3.31.4",
     "@tiptap/extension-text-style": "3.31.4",
     "@tiptap/extension-underline": "3.31.4",
-    "@tiptap/extensions": "3.31.4",
+    "@tiptap/extensions": "3.32.0",
     "@tiptap/markdown": "3.31.4",
     "@tiptap/pm": "3.31.4",
     "@tiptap/suggestion": "3.31.4",
