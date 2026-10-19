@@ -132,7 +132,7 @@ GEM
       thor (~> 1.0)
     byebug (13.0.0)
       reline (>= 0.6.0)
-    cancancan (3.6.1)
+    cancancan (3.7.0)
     cbor (0.5.10.3)
     cld (0.13.0)
       ffi
