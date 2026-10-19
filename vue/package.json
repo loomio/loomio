@@ -60,7 +60,7 @@
     "@tiptap/pm": "3.31.4",
     "@tiptap/suggestion": "3.31.4",
     "@tiptap/vue-3": "3.31.4",
-    "@tiptap/y-tiptap": "3.0.9",
+    "@tiptap/y-tiptap": "3.0.10",
     "activestorage": "^5.2.8",
     "chart.js": "^3.9.1",
     "date-fns": "2.30.0",
