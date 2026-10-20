@@ -41,8 +41,8 @@ describe('tags field', () => {
     vi.unstubAllGlobals();
   });
 
-  function mountField() {
-    wrapper = mount(TagsField, {props: {model}, attachTo: document.body, global: {plugins: [createVuetify()]}});
+  function mountField(props = {}) {
+    wrapper = mount(TagsField, {props: {model, ...props}, attachTo: document.body, global: {plugins: [createVuetify()]}});
     return wrapper;
   }
 
@@ -122,5 +122,18 @@ describe('tags field', () => {
     mountField();
 
     expect(wrapper.findComponent(VCombobox).exists()).toBe(true);
+  });
+
+  it('edits template names freely without organization vocabulary, colors or tag creation permission', async () => {
+    group.tags = vi.fn(group.tags);
+    mountField({template: true});
+    const input = wrapper.find('input');
+    await input.setValue('Independent default');
+    await input.trigger('keydown', {key: 'Enter'});
+    await flushPromises();
+    expect(model.tags).toEqual(['Independent default']);
+    expect(wrapper.findComponent(VCombobox).props('items')).toEqual([]);
+    expect(group.tags).not.toHaveBeenCalled();
+    expect(mocks.watchRecords).not.toHaveBeenCalled();
   });
 });

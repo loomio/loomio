@@ -64,19 +64,22 @@ class TopicService
 
   def self.update(topic:, params:, actor:)
     actor.ability.authorize! :update, topic
-    topic.assign_attributes(params)
+    params = params.to_h.with_indifferent_access
+    topic.assign_attributes(params.except(:tags))
     rearrange = topic.max_depth_changed?
     return topic unless topic.valid?
 
-    topic.save!
+    Topic.transaction do
+      topic.save!
+      update_tags(topic: topic, tags: params[:tags], actor: actor) if params.key?(:tags)
+    end
     RepairTopicWorker.perform_later(topic.id) if rearrange
     topic
   end
 
   def self.update_tags(topic:, tags:, actor:)
-    actor.ability.authorize! :update_tags, topic
-    TagService.authorize_create_tag_names!(topic.group, tags, actor)
-    topic.update!(tags: TagService.clean_tag_names(tags))
+    TopicItemService.update_tags(topic_item: topic.topicable.created_topic_item, tags: tags, actor: actor)
+    topic.reload
   end
 
   def self.lock(topic:, actor:)

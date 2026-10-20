@@ -139,6 +139,8 @@ ro:
     manage_subscription: Gestionați abonamentul
     amount: Cantitate
   loomio_tags:
+    show_tags_from_other_groups: "Arată etichetele din alte grupuri"
+    parent_group_and_subgroups_in_this_organization: "Grupul părinte și subgrupurile acestei organizații"
     all_tags: Toate etichetele
     tags: Etichete
     apply_tags: Aplica etichete
@@ -1081,6 +1083,8 @@ ro:
     topic_notification_history: Istoricul notificărilor firului de discuție
     notification_history: Istoricul notificărilor
   action_dock:
+    add_to_timeline: Adaugă în cronologie
+    remove_from_timeline: Elimină din cronologie
     actions_menu: Meniul Acțiuni
     more_actions: Mai multe actiuni
     react: Reacţiona

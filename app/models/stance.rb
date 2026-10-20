@@ -33,7 +33,7 @@ class Stance < ApplicationRecord
         t.group_id as group_id,
         CASE WHEN t.topicable_type = 'Discussion' THEN t.topicable_id ELSE NULL END AS discussion_id,
         polls.topic_id AS topic_id,
-        t.tags AS tags,
+        ARRAY[]::varchar[] AS tags,
         stances.participant_id AS author_id,
         stances.cast_at AS authored_at,
         #{content_str} AS content,

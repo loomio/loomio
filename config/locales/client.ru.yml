@@ -139,6 +139,8 @@ ru:
     manage_subscription: Управление подпиской
     amount: Количество
   loomio_tags:
+    show_tags_from_other_groups: "Покажите теги из других групп"
+    parent_group_and_subgroups_in_this_organization: "Родительская группа и подгруппы этой организации"
     all_tags: Все теги
     tags: Метки
     apply_tags: Применить метки
@@ -1081,6 +1083,8 @@ ru:
     topic_notification_history: История уведомлений в ветке
     notification_history: История уведомлений
   action_dock:
+    add_to_timeline: Добавьте на временную шкалу
+    remove_from_timeline: Удалите с временной шкалы
     actions_menu: Меню действий
     more_actions: Больше действий
     react: Реагировать

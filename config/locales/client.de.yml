@@ -145,6 +145,8 @@ de:
     manage_subscription: Manage Subscription
     amount: Menge
   loomio_tags:
+    show_tags_from_other_groups: "Schlagwörter anderer Gruppen anzeigen"
+    parent_group_and_subgroups_in_this_organization: "Hauptgruppe und Untergruppen in dieser Organisation"
     all_tags: Alle Schlagwörter
     tags: Schlagwörter
     apply_tags: Schlagwörter übernehmen
@@ -1093,6 +1095,8 @@ de:
     topic_notification_history: Thread-Benachrichtigungsverlauf
     notification_history: Benachrichtigungsverlauf
   action_dock:
+    add_to_timeline: Zur Timeline hinzufügen
+    remove_from_timeline: Aus Timeline entfernen
     actions_menu: Aktions-Menü
     more_actions: Weitere Aktionen
     react: Reagieren

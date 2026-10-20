@@ -139,6 +139,8 @@ nl_NL:
     manage_subscription: Abonnement beheren
     amount: Hoeveelheid
   loomio_tags:
+    show_tags_from_other_groups: "Toon labels uit andere groepen"
+    parent_group_and_subgroups_in_this_organization: "Hoofdgroep en subgroepen binnen deze organisatie"
     all_tags: Alle labels
     tags: Labels
     apply_tags: Labels toekennen
@@ -1087,6 +1089,8 @@ nl_NL:
     topic_notification_history: Geschiedenis van threadmeldingen
     notification_history: Meldingsgeschiedenis
   action_dock:
+    add_to_timeline: Voeg toe aan tijdlijn
+    remove_from_timeline: Verwijder uit tijdlijn
     actions_menu: Actie menu
     more_actions: Meer acties
     react: Reageer

@@ -139,6 +139,8 @@ ca:
     manage_subscription: Gestiona la subscripció
     amount: Import
   loomio_tags:
+    show_tags_from_other_groups: "Mostra etiquetes d'altres grups"
+    parent_group_and_subgroups_in_this_organization: "Grup principal i subgrups d'aquesta organització"
     all_tags: Totes les etiquetes
     tags: Etiquetes
     apply_tags: Aplica etiquetes
@@ -1087,6 +1089,8 @@ ca:
     topic_notification_history: Historial de notificacions de fils
     notification_history: Historial de notificacions
   action_dock:
+    add_to_timeline: Afegeix a la línia de temps
+    remove_from_timeline: Elimina de la línia de temps
     actions_menu: Menú d'accions
     more_actions: Més accions
     react: Reacciona

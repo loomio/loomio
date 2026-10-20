@@ -138,6 +138,8 @@ ja:
     manage_subscription: サブスクリプションの管理
     amount: 額
   loomio_tags:
+    show_tags_from_other_groups: "他のグループのタグを表示"
+    parent_group_and_subgroups_in_this_organization: "この組織の親グループとサブグループ"
     all_tags: 全タグ
     tags: タグ
     apply_tags: タグを適用する
@@ -1080,6 +1082,8 @@ ja:
     topic_notification_history: スレッド通知履歴
     notification_history: 通知履歴
   action_dock:
+    add_to_timeline: タイムラインに追加
+    remove_from_timeline: タイムラインから削除
     actions_menu: "「アクション」メニュー"
     more_actions: さらなるアクション
     react: 反応する

@@ -161,6 +161,8 @@ be:
     manage_subscription: Кіраванне падпіскай
     amount: Сума
   loomio_tags:
+    show_tags_from_other_groups: "Паказаць тэгі з іншых груп"
+    parent_group_and_subgroups_in_this_organization: "Бацькоўская група і падгрупы гэтай арганізацыі"
     all_tags: Усе тэгі
     show_all_tags_in_organization: Паказаць усе тэгі ў арганізацыі
     show_tags_used_in_this_group: Паказаць тэгі, якія выкарыстоўваюцца ў гэтай групе
@@ -1135,6 +1137,8 @@ be:
     flash:
       success: Адпраўлена %{count} апавяшчэнняў
   action_dock:
+    add_to_timeline: Дадаць на храналогію
+    remove_from_timeline: Выдаліць з храналогіі
     copy_markdown: Капіраваць Markdown
     copy_markdown_description: Скапіюйце тэму ў структураваным фармаце Markdown — ідэальна падыходзіць для выкарыстання з агентам штучнага інтэлекту або для стварэння простага дакумента са зместу тэмы.
     thread_markdown_copied: Скапіраваны тэкст Markdown тэмы

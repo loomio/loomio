@@ -49,8 +49,8 @@ subgroup_discussion_topic:
 
 direct_topic:
   topicable: direct_discussion (Discussion)
-  items_count: 0
-  ranges_string: ""
+  items_count: 1
+  ranges_string: "0-0"
   max_depth: 2
   newest_first: false
   private: true

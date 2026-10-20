@@ -456,7 +456,7 @@ class Api::V1::SearchControllerTest < ActionController::TestCase
   end
 
   test "applies tag filters to fuzzy matches" do
-    @discussion.topic.update!(tags: [ 'planning' ])
+    @discussion.created_topic_item.update!(tags: [ 'planning' ])
     [ Discussion, Comment, Poll, Outcome ].each(&:rebuild_pg_search_documents)
 
     sign_in @user

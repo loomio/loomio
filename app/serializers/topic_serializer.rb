@@ -19,7 +19,21 @@ class TopicSerializer < ApplicationSerializer
              :topicable_type,
              :has_anonymous_polls,
              :seen_by_count,
-             :tags
+             :tags,
+             :root_tags,
+             :has_tagged_replies
+
+  def root_tags
+    cache_fetch(:root_tags_by_topic_id, object.id) do
+      TopicItem.tags_visible.where(topic_id: object.id, sequence_id: 0).pick(:tags) || []
+    end
+  end
+
+  def has_tagged_replies
+    cache_fetch(:tagged_replies_by_topic_id, object.id) do
+      TopicItem.tagged_replies.exists?(topic_id: object.id)
+    end
+  end
 
   # Reader attributes
   attributes :topic_reader_id,

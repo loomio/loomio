@@ -139,6 +139,8 @@ sv:
     manage_subscription: Hantera prenumeration
     amount: Belopp
   loomio_tags:
+    show_tags_from_other_groups: "Visa taggar från andra grupper"
+    parent_group_and_subgroups_in_this_organization: "Huvudgrupp och undergrupper i den här organisationen"
     all_tags: Alla taggar
     tags: Taggar
     apply_tags: Använd taggar
@@ -1081,6 +1083,8 @@ sv:
     topic_notification_history: Historik för trådmeddelanden
     notification_history: Aviseringshistorik
   action_dock:
+    add_to_timeline: Lägg till i tidslinjen
+    remove_from_timeline: Ta bort från tidslinjen
     actions_menu: Menyn Åtgärder
     more_actions: Fler åtgärder
     react: Reagera

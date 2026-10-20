@@ -62,7 +62,6 @@ class Api::V1::TopicItemChangeNoteSecurityTest < ActionController::TestCase
   test 'direct topic notes follow its existing guest access boundary' do
     discussion = topics(:direct_topic).topicable
     actor = users(:guest_admin_normal)
-    discussion.create_missing_created_topic_item!
     DiscussionService.update(discussion: discussion, actor: actor, params: { recipient_message: @note })
     sign_in users(:guest_normal)
     get :index, params: { topic_id: discussion.topic_id }

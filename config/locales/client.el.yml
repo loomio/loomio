@@ -139,6 +139,8 @@ el:
     manage_subscription: Διαχείριση συνδρομής
     amount: Ποσό
   loomio_tags:
+    show_tags_from_other_groups: "Εμφανίστε ετικέτες από άλλες ομάδες"
+    parent_group_and_subgroups_in_this_organization: "Γονική ομάδα και υποομάδες αυτού του οργανισμού"
     all_tags: Όλες οι ετικέτες
     tags: Ετικέτες
     apply_tags: Εφαρμογή ετικετών
@@ -1081,6 +1083,8 @@ el:
     topic_notification_history: Ιστορικό ειδοποιήσεων νημάτων
     notification_history: Ιστορικό ειδοποιήσεων
   action_dock:
+    add_to_timeline: Προσθέστε στη γραμμή χρόνου
+    remove_from_timeline: Αφαιρέστε από τη γραμμή χρόνου
     actions_menu: Μενού ενεργειών
     more_actions: Περισσότερες δράσεις
     react: Αντιδρώ

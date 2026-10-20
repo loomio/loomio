@@ -8,8 +8,8 @@ const mocks = vi.hoisted(() => ({
 vi.mock('@/shared/services/app_config', () => ({
   default: {
     templateSettings: {
-      poll_template: ['poll_type', 'agree_target', 'notify_on_open', 'content_locale', 'poll_options'],
-      discussion_template: ['title', 'content_locale', 'allow_reactions']
+      poll_template: ['poll_type', 'agree_target', 'notify_on_open', 'content_locale', 'poll_options', 'tags'],
+      discussion_template: ['title', 'content_locale', 'allow_reactions', 'tags']
     }
   }
 }));
@@ -27,7 +27,7 @@ describe('starting from a template', () => {
     const template = {
       id: 5, key: null, groupId: 8, defaultDurationInDays: 3,
       pollType: 'proposal', agreeTarget: 4, notifyOnOpen: false, contentLocale: 'fr',
-      pollOptions: [{ name: 'Agree' }],
+      pollOptions: [{ name: 'Agree' }], tags: ['Decision'],
       pollOptionsAttributes: () => [{ name: 'Agree' }]
     };
 
@@ -35,16 +35,20 @@ describe('starting from a template', () => {
 
     expect(mocks.built).toMatchObject({
       pollType: 'proposal', agreeTarget: 4, notifyOnOpen: false, contentLocale: 'fr',
-      groupId: 8, pollTemplateId: 5, pollOptionsAttributes: [{ name: 'Agree' }]
+      groupId: 8, pollTemplateId: 5, pollOptionsAttributes: [{ name: 'Agree' }], tags: ['Decision']
     });
     expect(mocks.built).not.toHaveProperty('pollOptions');
+    mocks.built.tags.push('Draft only');
+    expect(template.tags).toEqual(['Decision']);
   });
 
   it('copies every discussion template setting onto the discussion', () => {
-    const template = { id: 6, key: null, title: 'Plan', contentLocale: 'de', allowReactions: false };
+    const template = { id: 6, key: null, title: 'Plan', contentLocale: 'de', allowReactions: false, tags: ['Planning'] };
 
     DiscussionTemplateModel.prototype.buildDiscussion.call(template);
 
-    expect(mocks.built).toMatchObject({ title: 'Plan', contentLocale: 'de', allowReactions: false, discussionTemplateId: 6 });
+    expect(mocks.built).toMatchObject({ title: 'Plan', contentLocale: 'de', allowReactions: false, discussionTemplateId: 6, tags: ['Planning'] });
+    mocks.built.tags.push('Draft only');
+    expect(template.tags).toEqual(['Planning']);
   });
 });

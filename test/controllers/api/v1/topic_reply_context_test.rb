@@ -128,7 +128,6 @@ class Api::V1::TopicReplyContextTest < ActionController::TestCase
   test 'direct topic reply context follows guest access' do
     discussion = topics(:direct_topic).topicable
     @actor = users(:guest_admin_normal)
-    discussion.create_missing_created_topic_item!
     first = create_comment(discussion, 'Direct first comment')
     parent = create_comment(first, 'Direct actual parent')
     reply = create_comment(parent, 'Direct reply')

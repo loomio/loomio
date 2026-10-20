@@ -41,7 +41,7 @@ const breadcrumbs = computed(() => {
   }
   return items;
 });
-const tags = computed(() => topic.value.tags);
+const tags = computed(() => topic.value.rootTags);
 const isPinned = computed(() => !!topic.value.pinnedAt);
 const canEditTags = computed(() => AbilityService.canEditTags(topic.value));
 

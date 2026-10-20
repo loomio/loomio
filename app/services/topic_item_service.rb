@@ -1,4 +1,12 @@
 class TopicItemService
+  def self.update_tags(topic_item:, tags:, actor:)
+    topic_item.topic.with_write_lock do
+      actor.ability.authorize! :update_tags, topic_item
+      topic_item.update!(tags: TagService.permitted_tag_names(topic_item.topic.group, tags, actor))
+    end
+    topic_item
+  end
+
   def self.move_comments(topic:, actor:, params:)
     ids = Array(params[:selected_topic_item_ids]).compact
     source_topic = TopicItem.find(ids.first).topic

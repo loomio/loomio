@@ -92,7 +92,7 @@ module Dev::Scenarios::OatmilkCooperative
       },
       actor: coordinator
     )
-    discussion.topic.update!(tags: ['Packaging'])
+    discussion.created_topic_item.update!(tags: ['Packaging'])
     CommentService.create(
       comment: Comment.new(
         parent: discussion,
@@ -669,8 +669,8 @@ module Dev::Scenarios::OatmilkCooperative
     group.tags.create!(name: 'Cafe partnerships', color: '#6a1b9a')
     group.tags.create!(name: 'Packaging', color: '#1565c0')
     group.tags.create!(name: 'Sustainability', color: '#2e7d32')
-    discussion.topic.update!(tags: ['Cafe partnerships', 'Packaging'])
-    group.discussions.find_by!(title: 'Weekly production schedule').topic.update!(tags: ['Sustainability'])
+    discussion.created_topic_item.update!(tags: ['Cafe partnerships', 'Packaging'])
+    group.discussions.find_by!(title: 'Weekly production schedule').created_topic_item.update!(tags: ['Sustainability'])
 
     sign_in coordinator
     redirect_to group_path(group)

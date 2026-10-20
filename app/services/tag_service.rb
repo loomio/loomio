@@ -42,10 +42,10 @@ class TagService
 
       Tag.where(id: variant_ids).destroy_all
 
-      Topic.where(group_id: group_ids).find_each do |topic|
-        next unless topic.tags.any? { |tag| normalized_tag_name(tag) == normalized_name }
+      TopicItem.where(topic_id: Topic.where(group_id: group_ids).select(:id)).where('cardinality(tags) > 0').find_each do |item|
+        next unless item.tags.any? { |tag| normalized_tag_name(tag) == normalized_name }
 
-        topic.update_column(:tags, clean_tag_names(topic.tags.reject { |tag| normalized_tag_name(tag) == normalized_name }))
+        item.update!(tags: clean_tag_names(item.tags.reject { |tag| normalized_tag_name(tag) == normalized_name }))
       end
     end
 
@@ -94,12 +94,48 @@ class TagService
     clean_tag_names(names).reject { |name| existing_keys.include?(normalized_tag_name(name)) }
   end
 
-  def self.authorize_create_tag_names!(group, names, actor)
-    return if group.blank?
-    return if new_tag_names(group, names).empty?
-    return if can_create_tag?(group, actor)
+  # Template names are defaults, not organization tags. Restricted users can
+  # apply existing vocabulary and names from templates available in the target
+  # group; importing a foreign template never grants authority over that group.
+  def self.permitted_tag_names(group, names, actor)
+    names = clean_tag_names(names)
+    return names if names.empty? || group.blank? || can_create_tag?(group, actor)
 
-    raise CanCan::AccessDenied
+    allowed = group.parent_or_self.tags.pluck(:name).map { |name| normalized_tag_name(name) }.to_set
+    return names if names.all? { |name| allowed.include?(normalized_tag_name(name)) }
+
+    template_tag_names(group, actor).each { |name| allowed.add(normalized_tag_name(name)) }
+    names.select { |name| allowed.include?(normalized_tag_name(name)) }
+  end
+
+  def self.template_tag_names(group, actor)
+    discussions = group.discussion_templates.kept
+    polls = group.poll_templates.kept
+    unless group.members_include?(actor)
+      # Intake guests can use visible discussion defaults; other guests can
+      # only use public defaults, matching access to the templates themselves.
+      guest_intake = actor.email_verified? && group.non_members_can_start_discussions? &&
+        group.group_privacy != 'secret' && actor.can?(:show, group)
+      discussions = guest_intake ? discussions.where('public OR hidden_at IS NULL') : discussions.where(public: true)
+      polls = polls.where(public: true)
+    end
+
+    defaults = PollTemplateService.default_templates + PollTemplateService.public_example_templates
+    defaults.reject! { |template| group.hidden_poll_templates.include?(template.key) }
+    discussions.pluck(:tags).flatten + polls.pluck(:tags).flatten + defaults.flat_map(&:tags)
+  end
+  private_class_method :template_tag_names
+
+  # Create colored metadata alongside visible assignments so responses and live
+  # updates do not depend on the later organization-wide usage reconciliation.
+  def self.ensure_tag_metadata(group, names)
+    return if group.blank? || names.empty?
+
+    missing = new_tag_names(group, names)
+    return if missing.empty?
+
+    Tag.insert_all(missing.map { |name| {group_id: group.parent_or_self.id, name: name, color: Tag::COLORS.sample,
+      used_group_ids: [group.id]} }, unique_by: [:group_id, :name])
   end
 
   def self.update_group_tags(group_id)
@@ -119,13 +155,15 @@ class TagService
       tag_merges_count: 0
     }
 
-    Topic.find_each do |topic|
-      clean_tags = clean_tag_names(topic.tags)
-      next if topic.tags == clean_tags
+    changed_topic_ids = Set.new
+    TopicItem.where('cardinality(tags) > 0').find_each do |item|
+      clean_tags = clean_tag_names(item.tags)
+      next if item.tags == clean_tags
 
-      result[:topic_updates_count] += 1
-      topic.update_column(:tags, clean_tags)
+      changed_topic_ids.add(item.topic_id)
+      item.update!(tags: clean_tags)
     end
+    result[:topic_updates_count] = changed_topic_ids.length
 
     Tag.distinct.pluck(:group_id).each do |group_id|
       tags = Tag.where(group_id: group_id).to_a
@@ -216,8 +254,9 @@ class TagService
           canonical_name = clean_tag_name(canonical.name)
 
           (tags - [canonical]).each do |dupe|
-            Topic.where(group_id: group_id).where("topics.tags @> ARRAY[?]::varchar[]", dupe.name).find_each do |topic|
-              topic.update_column(:tags, clean_tag_names((topic.tags - [dupe.name]) + [canonical_name]))
+            TopicItem.where(topic_id: Topic.where(group_id: Group.find(group_id).id_and_subgroup_ids).select(:id))
+              .where("topic_items.tags @> ARRAY[?]::varchar[]", dupe.name).find_each do |item|
+              item.update!(tags: clean_tag_names((item.tags - [dupe.name]) + [canonical_name]))
             end
 
             dupe.destroy!

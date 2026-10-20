@@ -39,7 +39,7 @@ class Poll < ApplicationRecord
         t.group_id as group_id,
         CASE WHEN t.topicable_type = 'Discussion' THEN t.topicable_id ELSE NULL END AS discussion_id,
         polls.topic_id AS topic_id,
-        t.tags AS tags,
+        #{TopicItem.tags_sql_for("Poll", "polls.id")} AS tags,
         polls.author_id AS author_id,
         polls.created_at AS authored_at,
         #{content_str} AS content,
@@ -179,6 +179,8 @@ class Poll < ApplicationRecord
   belongs_to :author, class_name: "User"
   has_many   :outcomes, dependent: :destroy
   has_one    :current_outcome, -> { where(latest: true) }, class_name: 'Outcome'
+
+  attr_accessor :tags_pending
 
   belongs_to :topic, autosave: true
 

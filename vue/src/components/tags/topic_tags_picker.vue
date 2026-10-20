@@ -4,12 +4,14 @@ import Flash from '@/shared/services/flash';
 import AbilityService from '@/shared/services/ability_service';
 import { useWatchRecords } from '@/composables/useWatchRecords';
 import { ref, computed, onMounted } from 'vue';
+import { useI18n } from 'vue-i18n';
 
-const { topic, watchKey } = defineProps({
+const { topic, topicItem, watchKey } = defineProps({
   topic: {
     type: Object,
     required: true
   },
+  topicItem: Object,
   watchKey: {
     type: String,
     required: true
@@ -17,14 +19,17 @@ const { topic, watchKey } = defineProps({
 });
 
 const { watchRecords } = useWatchRecords();
+const { t } = useI18n();
+const assignedTags = () => topicItem ? topicItem.tags : topic.rootTags;
 
 const selectedTags = ref([]);
 const orgTags = ref([]);
 const tagGroup = ref(null);
 const addingTag = ref(false);
 const newTagName = ref('');
-const showAllTags = ref(false);
+const showOtherGroupTags = ref(false);
 let savePromise = Promise.resolve();
+let saveSequence = 0;
 
 function cleanTagName(name) {
   return String(name || '').trim().split(/\s+/).filter(Boolean).join(' ');
@@ -108,13 +113,13 @@ function loadTags() {
     if (usableGroup(group)) {
       loadGroup(group);
     } else {
-      orgTags.value = sortedTags(tagsFromNames(topic.tags || []));
+      orgTags.value = sortedTags(tagsFromNames(assignedTags()));
     }
   });
 }
 
 function reset() {
-  selectedTags.value = cleanTagNames(topic.tags || []);
+  selectedTags.value = cleanTagNames(assignedTags());
   addingTag.value = false;
   newTagName.value = '';
   loadTags();
@@ -123,7 +128,7 @@ function reset() {
 defineExpose({ reset });
 
 onMounted(() => {
-  selectedTags.value = cleanTagNames(topic.tags || []);
+  selectedTags.value = cleanTagNames(assignedTags());
   loadTags();
   watchRecords({
     key: watchKey,
@@ -133,27 +138,25 @@ onMounted(() => {
 });
 
 const canCreateTags = computed(() => {
+  if (!topic.groupId) { return true; }
+
   if (!usableGroup(tagGroup.value)) { return false; }
 
   return AbilityService.canCreateTags(tagGroup.value);
 });
 
-function tagVisibleInCurrentGroup(tag) {
-  return showAllTags.value ||
-    isSelected(tag) ||
-    (tag.usedGroupIds || []).includes(tagGroup.value.id);
+const hasOtherGroups = computed(() => usableGroup(tagGroup.value) && tagGroup.value.parentOrSelf().subgroupsCount > 0);
+
+// Unused vocabulary stays available locally. Only tags used exclusively in
+// other groups need expanding; an organization with one group has no expansion.
+function tagFromOtherGroup(tag) {
+  return hasOtherGroups.value && tag.usedGroupIds.length > 0 && !tag.usedGroupIds.includes(tagGroup.value.id);
 }
 
-const hasMoreTags = computed(() => {
-  if (!usableGroup(tagGroup.value)) { return false; }
-
-  return orgTags.value.some(tag =>
-    !isSelected(tag) && !(tag.usedGroupIds || []).includes(tagGroup.value.id)
-  );
-});
+const hasOtherGroupTags = computed(() => orgTags.value.some(tag => tagFromOtherGroup(tag) && !isSelected(tag)));
 
 const allTags = computed(() => {
-  const tags = usableGroup(tagGroup.value) ? orgTags.value.filter(tagVisibleInCurrentGroup) : orgTags.value;
+  const tags = orgTags.value.filter(tag => !tagFromOtherGroup(tag) || isSelected(tag) || showOtherGroupTags.value);
   const tagKeys = tags.map(tag => cleanTagName(tag.name).toLowerCase());
   const selectedWithoutMetadata = selectedTags.value.filter(name => !tagKeys.includes(cleanTagName(name).toLowerCase()));
 
@@ -172,11 +175,18 @@ function toggle(tag) {
 }
 
 function saveTags() {
+  const sequence = ++saveSequence;
   const tags = cleanTagNames(selectedTags.value);
   selectedTags.value = tags;
-  topic.tags = tags;
   savePromise = savePromise.catch(() => {}).then(() => {
-    return Records.topics.remote.patchMember(topic.id, 'tags', {tags}).catch(err => Flash.serverError(err));
+    const remote = topicItem ? Records.topicItems.remote : Records.topics.remote;
+    const id = topicItem ? topicItem.id : topic.id;
+    return remote.patchMember(id, 'tags', {tags}).then(() => {
+      if (sequence === saveSequence) { selectedTags.value = cleanTagNames(assignedTags()); }
+    }).catch(err => {
+      if (sequence === saveSequence) { selectedTags.value = cleanTagNames(assignedTags()); }
+      Flash.serverError(err);
+    });
   });
   return savePromise;
 }
@@ -219,17 +229,16 @@ function submitNewTag() {
       .topic-tags-picker__tag-content
         .tag-color-dot(:style="tagDotStyle(tag)")
         span {{ tag.name }}
-    v-list-item.topic-tags-picker__all-tags(v-if="hasMoreTags" density="compact" @click="showAllTags = !showAllTags")
+    v-list-item.topic-tags-picker__all-tags(v-if="hasOtherGroupTags" density="compact" @click="showOtherGroupTags = !showOtherGroupTags")
       template(v-slot:prepend)
-        common-icon.text-medium-emphasis(name="mdi-unfold-more-horizontal")
-      v-list-item-title(v-if="showAllTags" v-t="'common.action.show_fewer'")
-      v-list-item-title(v-else v-t="'common.action.show_more'")
-      v-list-item-subtitle(v-if="showAllTags" v-t="'loomio_tags.only_show_tags_in_this_group'")
-      v-list-item-subtitle(v-else v-t="'loomio_tags.show_all_tags_in_organization'")
+        common-icon.text-medium-emphasis(:name="showOtherGroupTags ? 'mdi-unfold-less-horizontal' : 'mdi-unfold-more-horizontal'")
+      v-list-item-title(v-if="showOtherGroupTags") {{ t('loomio_tags.show_tags_used_in_this_group') }}
+      v-list-item-title(v-else) {{ t('loomio_tags.show_tags_from_other_groups') }}
+      v-list-item-subtitle(v-if="!showOtherGroupTags") {{ t('loomio_tags.parent_group_and_subgroups_in_this_organization') }}
     v-list-item.topic-tags-picker__new-tag(v-if="canCreateTags && !addingTag" density="compact" @click="openNewTagModal")
       template(v-slot:prepend)
         common-icon.text-medium-emphasis(name="mdi-tag-plus-outline")
-      span(v-t="'loomio_tags.new_tag'")
+      span {{ t('loomio_tags.new_tag') }}
     .topic-tags-picker__new-tag-input.px-4.py-2(v-if="addingTag")
       v-text-field(
         v-model="newTagName"

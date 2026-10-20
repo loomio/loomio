@@ -139,6 +139,8 @@ pl:
     manage_subscription: Zarządzaj subskrypcją
     amount: Kwota
   loomio_tags:
+    show_tags_from_other_groups: "Pokaż tagi z innych grup"
+    parent_group_and_subgroups_in_this_organization: "Grupa nadrzędna i podgrupy w tej organizacji"
     all_tags: Wszystkie tagi
     tags: Tagi
     apply_tags: Zastosuj tagi
@@ -1087,6 +1089,8 @@ pl:
     topic_notification_history: Historia powiadomień wątku
     notification_history: Historia powiadomień
   action_dock:
+    add_to_timeline: Dodaj do osi czasu
+    remove_from_timeline: Usuń z osi czasu
     actions_menu: Menu akcji
     more_actions: Więcej działań
     react: Zareaguj

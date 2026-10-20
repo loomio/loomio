@@ -86,6 +86,7 @@ export default class PollTemplateModel extends BaseModel {
     // Options are copied as nested attributes below, not as a plain setting.
     const settings = AppConfig.templateSettings.poll_template.filter(name => name !== 'poll_options');
     const attrs = pick(this, settings.map(camelCase));
+    attrs.tags = this.tags.slice();
     attrs.groupId = this.groupId;
     attrs.pollTemplateId = this.id;
     attrs.pollTemplateKey = this.key;

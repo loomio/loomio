@@ -1,8 +1,15 @@
 <script lang="js">
 import { eventHeadline, eventTitle, eventPollType } from '@/shared/helpers/helptext';
 import LmoUrlService  from '@/shared/services/lmo_url_service';
+import ItemTags from '@/components/tags/item_tags.vue';
+import { useI18n } from 'vue-i18n';
 
 export default {
+  components: { ItemTags },
+  setup() {
+    const { t } = useI18n();
+    return { t };
+  },
   props: {
     topic_item: Object,
     itemable: Object,
@@ -40,17 +47,17 @@ export default {
 
 <template lang="pug">
 h3.topic-item__headline.topic-item__title.text-body-medium.pb-1(tabindex="-1")
-  div.d-flex.align-center
-    span.topic-item__headline.text-medium-emphasis.text-decoration-none(v-html='headline')
-    space(v-if="isDelegate")
-    v-chip(v-if="isDelegate" size="x-small" variant="tonal" label :title="$t('members_panel.delegate_popover')")
-      span(v-t="'members_panel.delegate'")
-    mid-dot.text-medium-emphasis
-    router-link.actor-link(:to='link')
-      time-ago.text-medium-emphasis(:date='datetime')
-    v-badge(v-if="unread" variant="tonal" color="info" inline location="right" :content="$t('thread_item.new')")
-    mid-dot(v-if="topic_item.pinned")
-    common-icon.text--disabled(v-if="topic_item.pinned" name="mdi-pin-outline")
+  .d-flex.flex-wrap.align-center.ga-1
+    .d-flex.flex-wrap.align-center
+      span.topic-item__headline.text-medium-emphasis.text-decoration-none(v-html='headline')
+      space(v-if="isDelegate")
+      v-chip(v-if="isDelegate" size="x-small" variant="tonal" label :title="$t('members_panel.delegate_popover')")
+        span {{ t('members_panel.delegate') }}
+      mid-dot.text-medium-emphasis
+      router-link.actor-link(:to='link')
+        time-ago.text-medium-emphasis(:date='datetime')
+      v-badge(v-if="unread" variant="tonal" color="info" inline location="right" :content="$t('thread_item.new')")
+    item-tags.ml-auto(:topic-item="topic_item")
 
 </template>
 <style>

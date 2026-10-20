@@ -147,6 +147,8 @@ it:
     manage_subscription: Gestisci l'Abbonamento
     amount: Prezzo
   loomio_tags:
+    show_tags_from_other_groups: "Mostra i tag degli altri gruppi"
+    parent_group_and_subgroups_in_this_organization: "Gruppo principale e sottogruppi di questa organizzazione"
     all_tags: Tutte etichette
     tags: Etichette
     apply_tags: Inserisci etichette
@@ -1095,6 +1097,8 @@ it:
     topic_notification_history: Cronologia delle notifiche dei thread
     notification_history: Cronologia delle notifiche
   action_dock:
+    add_to_timeline: Aggiungi alla sequenza temporale
+    remove_from_timeline: Rimuovi dalla sequenza temporale
     actions_menu: Menu Azioni
     more_actions: Altre azioni
     react: Reagire

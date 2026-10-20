@@ -2,21 +2,22 @@ class Api::V1::SearchController < Api::V1::RestfulController
   SEARCHABLE_TYPES = %w[Discussion Comment Poll Stance Outcome].freeze
 
   def index
-    guest_discussion_ids = Topic.where(id: current_user.guest_topic_ids, topicable_type: 'Discussion').pluck(:topicable_id)
+    guest_topic_ids = current_user.guest_topic_ids
 
     if params[:author_id].present? && group_or_org_id.blank?
       rel = PgSearch::Document.all
     elsif group_or_org_id.blank?
-      rel = PgSearch::Document.where("group_id IN (:group_ids) OR discussion_id in (:discussion_ids)", group_ids: group_ids, discussion_ids: guest_discussion_ids)
+      rel = PgSearch::Document.where("group_id IN (:group_ids) OR topic_id in (:topic_ids)", group_ids: group_ids, topic_ids: guest_topic_ids)
     elsif group_or_org_id.to_i == 0
-      rel = PgSearch::Document.where("group_id is null and discussion_id IN (:discussion_ids)", discussion_ids: guest_discussion_ids)
+      rel = PgSearch::Document.where("group_id is null and topic_id IN (:topic_ids)", topic_ids: guest_topic_ids)
     else
       rel = PgSearch::Document.where("group_id IN (:group_ids)", group_ids: group_ids)
     end
 
-    if params[:tag]
-      tag_topic_ids = Topic.where(group_id: group_ids).where("tags @> ARRAY[?]::varchar[]", Array(params[:tag])).pluck(:id)
-      rel = rel.where(topic_id: tag_topic_ids)
+    if params[:tag].present?
+      tagged = TopicItem.tags_visible.where('topic_items.tags @> ARRAY[?]::varchar[]', Array(params[:tag]))
+        .where('topic_items.itemable_type = pg_search_documents.searchable_type AND topic_items.itemable_id = pg_search_documents.searchable_id')
+      rel = rel.where(tagged.arel.exists)
     end
 
     if SEARCHABLE_TYPES.include?(params[:type])
@@ -57,8 +58,8 @@ class Api::V1::SearchController < Api::V1::RestfulController
     )
 
     results = if params[:query].blank?
-      if params[:author_id].present?
-        rel.order(authored_at: :desc, id: :desc).limit(SearchQuery::RESULT_LIMIT)
+      if params[:author_id].present? || params[:tag].present?
+        rel.order(authored_at: params[:order] == 'authored_at_asc' ? :asc : :desc, id: params[:order] == 'authored_at_asc' ? :asc : :desc).limit(SearchQuery::RESULT_LIMIT)
       else
         []
       end
@@ -87,6 +88,10 @@ class Api::V1::SearchController < Api::V1::RestfulController
       :itemable_id
     )
 
+    tags_by_item = TopicItem.tags_visible
+      .where(itemable_type: results.map(&:searchable_type), itemable_id: results.map(&:searchable_id))
+      .pluck(:itemable_type, :itemable_id, :tags, :sequence_id).to_h { |type, id, tags, sequence_id| [[type, id], {tags: tags, sequence_id: sequence_id}] }
+
     self.collection = results.map do |res|
       poll = polls[res.poll_id]
       discussion = discussions[res.discussion_id]
@@ -96,7 +101,9 @@ class Api::V1::SearchController < Api::V1::RestfulController
       when 'Discussion' then discussion&.title
       when 'Poll' then poll&.title
       end
-      sequence_id = if discussion
+      sequence_id = if (discussion || res.searchable_type != 'Poll') && (item = tags_by_item[[res.searchable_type, res.searchable_id]])
+        item[:sequence_id]
+      elsif discussion
         ((res.searchable_type == "Stance" && stance_topic_items[res.searchable_id]) || poll_topic_items[res.poll_id] || nil)&.sequence_id
       end
       SearchResult.new(
@@ -117,7 +124,7 @@ class Api::V1::SearchController < Api::V1::RestfulController
         author_name: author&.name,
         author_id: res.author_id,
         authored_at: res.authored_at,
-        tags: Array(res.tags)
+        tags: tags_by_item.fetch([res.searchable_type, res.searchable_id], {tags: []})[:tags]
       )
     end
 
@@ -127,7 +134,7 @@ class Api::V1::SearchController < Api::V1::RestfulController
 
   private
   def result_highlight(result, title:, author_name:)
-    return result.pg_search_highlight if params[:query].present? || params[:author_id].blank?
+    return result.pg_search_highlight if params[:query].present?
 
     content = result.content.to_s
     content = content.delete_prefix(title.to_s).strip if title.present?

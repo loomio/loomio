@@ -6514,7 +6514,7 @@ terms:
       use: "加權投票"
       stems: ["加權"]
   pin:
-    means: "To keep a thread or comment at the top so people see it first."
+    means: "To keep a thread at the top of the group's thread list so people see it first. Adding an item to a thread's timeline is a separate action."
     be:
       use: "замацаваць"
       stems: ["замацав", "замацоў", "замацаван"]

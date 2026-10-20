@@ -147,6 +147,8 @@ fr:
     manage_subscription: Gérer l’abonnement
     amount: Montant
   loomio_tags:
+    show_tags_from_other_groups: "Afficher les tags des autres groupes"
+    parent_group_and_subgroups_in_this_organization: "Groupe parent et sous-groupes de cette organisation"
     all_tags: Tous les mots-clés
     tags: Mots-clés
     apply_tags: Appliquer les mots-clés
@@ -1095,6 +1097,8 @@ fr:
     topic_notification_history: Historique des notifications du fil de discussion
     notification_history: Historique des notifications
   action_dock:
+    add_to_timeline: Ajouter à la timeline
+    remove_from_timeline: Retirer de la timeline
     actions_menu: Menu d'actions
     more_actions: Plus d'actions
     react: Réagir

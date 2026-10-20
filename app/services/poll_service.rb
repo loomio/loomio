@@ -22,6 +22,7 @@ class PollService
       topic_params[:private] = TopicService.private_default(group_id: gid)
     end
 
+    poll.tags_pending = Array(topic_params.delete(:tags))
     poll.topic ||= Topic.new topic_params.merge(topicable: poll)
 
     if !poll.opened_at &&
@@ -36,7 +37,7 @@ class PollService
   def self.create(params:, actor:, &on_topic_item)
     poll = build(params: params, actor: actor)
     actor.ability.authorize!(:create, poll)
-    TagService.authorize_create_tag_names!(poll.group, poll.topic.tags, actor)
+    poll.tags_pending = TagService.permitted_tag_names(poll.group, poll.tags_pending, actor)
     return poll unless TopicService.validate_topicable(poll)
 
     topic_item = Poll.transaction do
@@ -56,6 +57,7 @@ class PollService
       Sentry.metrics.count("poll.create", attributes: { poll_type: poll.poll_type })
       topic_item = TopicItems::PollCreated.create!(
         itemable: poll,
+        tags: poll.tags_pending,
         pinned: true
       )
       MentionNotificationService.create!(

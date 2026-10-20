@@ -79,7 +79,25 @@ export default new class AbilityService {
   }
 
   canEditTags(topic) {
-    return topic.group().isEnabled() && this.canEdit(topic.topicable());
+    const user = Session.user();
+    return Session.isSignedIn() && topic.group().isEnabled() && !topic.lockedAt && !topic.discardedAt &&
+      topic.membersInclude(user) && (topic.adminsInclude(user) || topic.topicable().authorId === user.id ||
+        (topic.topicableType === 'Discussion' && topic.group().membersCanEditDiscussions));
+  }
+
+  canTagTopicItem(item) {
+    if (!['new_discussion', 'poll_created', 'outcome_created', 'new_comment'].includes(item.kind)) { return false; }
+    const topic = item.topic();
+    const user = Session.user();
+    if (!Session.isSignedIn() || !topic.group().isEnabled() || topic.lockedAt || topic.discardedAt || item.model().discardedAt) { return false; }
+    if (item.kind === 'new_comment') {
+      for (let parent = item.parent(); parent; parent = parent.parent()) {
+        if (parent.itemableType === 'Poll' && (parent.model().discardedAt ||
+          (parent.model().hideResults !== 'off' && !parent.model().closedAt))) { return false; }
+      }
+    }
+    return topic.membersInclude(user) && (topic.adminsInclude(user) || item.model().authorId === user.id ||
+      (item.kind === 'new_discussion' && topic.group().membersCanEditDiscussions));
   }
 
   canAdminTags(topic) {

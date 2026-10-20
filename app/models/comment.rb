@@ -16,6 +16,7 @@ class Comment < ApplicationRecord
       INSERT INTO pg_search_documents (
         searchable_type,
         searchable_id,
+        poll_id,
         group_id,
         discussion_id,
         topic_id,
@@ -28,10 +29,11 @@ class Comment < ApplicationRecord
         updated_at)
       SELECT 'Comment' AS searchable_type,
         comments.id AS searchable_id,
+        CASE WHEN topics.topicable_type = 'Poll' THEN topics.topicable_id ELSE NULL END AS poll_id,
         topics.group_id as group_id,
         CASE WHEN topics.topicable_type = 'Discussion' THEN topics.topicable_id ELSE NULL END AS discussion_id,
         topic_items.topic_id AS topic_id,
-        COALESCE(topics.tags, ARRAY[]::varchar[]) AS tags,
+        #{TopicItem.tags_sql_for("Comment", "comments.id")} AS tags,
         comments.user_id AS author_id,
         comments.created_at AS authored_at,
         #{content_str} AS content,

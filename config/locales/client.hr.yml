@@ -139,6 +139,8 @@ hr:
     manage_subscription: Upravljanje pretplatom
     amount: Iznos
   loomio_tags:
+    show_tags_from_other_groups: "Prikažite oznake iz drugih grupa"
+    parent_group_and_subgroups_in_this_organization: "Matična grupa i podgrupe ove organizacije"
     all_tags: Sve oznake
     tags: Oznake
     apply_tags: Primijeni oznake
@@ -1083,6 +1085,8 @@ hr:
     topic_notification_history: Povijest obavijesti o temama
     notification_history: Povijest obavijesti
   action_dock:
+    add_to_timeline: Dodajte na vremensku traku
+    remove_from_timeline: Uklonite s vremenske trake
     actions_menu: Izbornik radnji
     more_actions: Vise akcije
     react: Reagirati

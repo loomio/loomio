@@ -139,6 +139,8 @@ es:
     manage_subscription: Administrar suscripción
     amount: Cantidad
   loomio_tags:
+    show_tags_from_other_groups: "Muestra etiquetas de otros grupos"
+    parent_group_and_subgroups_in_this_organization: "Grupo principal y subgrupos de esta organización"
     all_tags: Todas las etiquetas
     tags: Etiquetas
     apply_tags: Aplicar etiquetas
@@ -1085,6 +1087,8 @@ es:
     topic_notification_history: Historial de notificaciones de hilos
     notification_history: Historial de notificaciones
   action_dock:
+    add_to_timeline: Añade a la cronología
+    remove_from_timeline: Elimina de la cronología
     actions_menu: Menú de acciones
     more_actions: Más acciones
     react: 'Reaccionar '

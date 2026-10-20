@@ -188,6 +188,8 @@ en:
     manage_subscription: Manage Subscription
     amount: Amount
   loomio_tags:
+    show_tags_from_other_groups: "Show tags from other groups"
+    parent_group_and_subgroups_in_this_organization: "Parent group and subgroups in this organization"
     all_tags: All tags
     show_all_tags_in_organization: Show all tags in organization
     show_tags_used_in_this_group: Show tags used in this group
@@ -1207,6 +1209,8 @@ en:
     flash:
       success: "%{count} notifications sent"
   action_dock:
+    add_to_timeline: Add to timeline
+    remove_from_timeline: Remove from timeline
     copy_markdown: Copy Markdown
     copy_markdown_description: Copy the thread as structured Markdown — ideal for use with an AI agent or for creating a simple document from the thread content.
     download_markdown: Download Markdown

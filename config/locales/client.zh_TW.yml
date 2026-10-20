@@ -140,6 +140,8 @@ zh_TW:
     amount: 數量
     members: 成員
   loomio_tags:
+    show_tags_from_other_groups: "顯示其他群組的標籤"
+    parent_group_and_subgroups_in_this_organization: "此組織的上層群組和子群組"
     all_tags: 所有標籤
     tags: 標籤
     apply_tags: 套用標籤
@@ -1088,6 +1090,8 @@ zh_TW:
     topic_notification_history: 對話串通知歷史記錄
     notification_history: 通知歷史記錄
   action_dock:
+    add_to_timeline: 新增至時間軸
+    remove_from_timeline: 從時間軸移除
     actions_menu: 動作選單
     more_actions: 更多動作
     react: 反應
