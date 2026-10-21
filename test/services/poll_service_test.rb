@@ -686,6 +686,50 @@ class PollServiceTest < ActiveSupport::TestCase
     assert_not topic_item_was_yielded
   end
 
+  test "until-closed polls can be extended while active but cannot reopen after closing" do
+    poll = create_poll(hide_results: 'until_closed')
+    deadline = 7.days.from_now.beginning_of_hour
+    PollService.update(poll: poll, params: {closing_at: deadline}, actor: @user)
+    assert_equal deadline, poll.reload.closing_at
+    assert_nil poll.closed_at
+    PollService.close(poll: poll, actor: @user)
+    closed_at = poll.reload.closed_at
+
+    assert_no_difference ['TopicItem.count', 'Notification.count'] do
+      assert_raises(CanCan::AccessDenied) do
+        PollService.reopen(poll: poll, params: {closing_at: 10.days.from_now}, actor: @user)
+      end
+    end
+    assert_equal closed_at, poll.reload.closed_at
+    poll.closed_at = nil
+    assert_not poll.valid?, 'model writes must also reject reopening'
+    assert_includes poll.errors.attribute_names, :closed_at
+  end
+
+  test "reopening checks stored result settings instead of stale poll attributes" do
+    poll = create_poll
+    PollService.close(poll: poll, actor: @user)
+    stale = Poll.find(poll.id)
+    poll.update!(hide_results: 'until_closed')
+
+    assert_raises(CanCan::AccessDenied) do
+      PollService.reopen(poll: stale, params: {closing_at: 7.days.from_now}, actor: @user)
+    end
+    assert poll.reload.closed?
+  end
+
+  test "failed reopening rolls back the poll when timeline creation fails" do
+    poll = create_poll(hide_results: 'until_vote')
+    PollService.close(poll: poll, actor: @user)
+    closed_at = poll.closed_at
+    TopicItems::PollReopened.stub(:create!, ->(**) { raise 'Timeline failed' }) do
+      assert_raises(RuntimeError) do
+        PollService.reopen(poll: poll, params: {closing_at: 7.days.from_now}, actor: @user)
+      end
+    end
+    assert_equal closed_at, poll.reload.closed_at
+  end
+
   # -- invite to scheduled poll --
 
   test "invite to scheduled poll creates stances but does not send poll_announced" do

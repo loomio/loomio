@@ -82,7 +82,6 @@ class ThreadMarkdownService
     items = topic.items
       .where(kind: %w[new_comment poll_created stance_created stance_updated outcome_created])
       .where.not(position_key: nil)
-      .where.not(itemable_type: 'Comment', itemable_id: Comment.hidden_until_closed.select(:id))
       .includes(:itemable)
       .order(:position_key)
       .to_a

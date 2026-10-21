@@ -68,44 +68,31 @@ class Api::V1::SearchControllerTest < ActionController::TestCase
     assert_empty JSON.parse(response.body).fetch('search_results')
   end
 
-  test 'until-closed conversations leave the index and are indexed after closing' do
-    @poll.update!(closed_at: nil, hide_results: 'off')
+  test 'poll comments stay searchable while until-closed vote reasons wait for closing' do
+    @poll.update!(closed_at: nil, hide_results: 'until_closed')
     stance = @poll.stances.create!(participant: @user, inviter: @user, latest: true)
     stance.choice = @poll.poll_option_names.first
-    stance.reason = 'A vote reason in the timeline'
+    stance.reason = 'confidential vote reason'
     StanceService.create(stance: stance, actor: @user)
-    reply = CommentService.create(comment: Comment.new(parent: stance, body: 'confidential first reply'), actor: @user)
-    nested = CommentService.create(comment: Comment.new(parent: reply, body: 'confidential nested reply'), actor: @user)
-    reply.update_pg_search_document
-    nested.update_pg_search_document
-    assert_enqueued_with(job: ReindexPollWorker, args: [@poll.id]) do
-      @poll.update!(hide_results: 'until_closed')
-    end
-    assert_empty PgSearch::Document.where(searchable_type: 'Comment', searchable_id: [reply.id, nested.id])
-    perform_enqueued_jobs(only: ReindexPollWorker)
-    assert_empty PgSearch::Document.where(searchable_type: 'Comment', searchable_id: [reply.id, nested.id])
-    sign_in @user
+    comment = CommentService.create(comment: Comment.new(parent: @poll, body: 'findme ordinary comment'), actor: @user)
+    nested = CommentService.create(comment: Comment.new(parent: comment, body: 'findme nested comment'), actor: @user)
+    ReindexPollWorker.perform_now(@poll.id)
+    assert_not PgSearch::Document.exists?(searchable: stance)
+    sign_in users(:admin)
 
-    [{query: 'confidential'}, {author_id: @user.id}].each do |params|
+    [{query: 'findme'}, {author_id: @user.id}].each do |params|
       get :index, params: params
       assert_response :success
-      ids = JSON.parse(response.body).fetch('search_results').filter_map { |record| record['searchable_id'] if record['searchable_type'] == 'Comment' }
-      refute_includes ids, reply.id
-      refute_includes ids, nested.id
+      ids = response.parsed_body.fetch('search_results').filter_map { |row| row['searchable_id'] if row['searchable_type'] == 'Comment' }
+      assert_includes ids, comment.id
+      assert_includes ids, nested.id
       refute_includes response.body, 'confidential'
     end
 
-    perform_enqueued_jobs(only: ReindexPollWorker) do
-      PollService.close(poll: @poll, actor: @user)
-    end
+    PollService.close(poll: @poll, actor: @user)
+    ReindexPollWorker.perform_now(@poll.id)
     get :index, params: {query: 'confidential'}
-    ids = JSON.parse(response.body).fetch('search_results').pluck('searchable_id')
-    assert_includes ids, reply.id
-    assert_includes ids, nested.id
-    perform_enqueued_jobs(only: ReindexPollWorker) do
-      PollService.reopen(poll: @poll, actor: @user, params: {closing_at: 2.days.from_now})
-    end
-    assert_empty PgSearch::Document.where(searchable_type: 'Comment', searchable_id: [reply.id, nested.id])
+    assert response.parsed_body.fetch('search_results').any? { |row| row['searchable_type'] == 'Stance' && row['searchable_id'] == stance.id }
   end
 
   test "standalone poll results do not advertise a discussion sequence" do

@@ -52,30 +52,18 @@ class Api::V1::ItemTagSearchControllerTest < ActionController::TestCase
     assert_equal [comment.id], JSON.parse(response.body).fetch('search_results').map { |row| row['searchable_id'] }
   end
 
-  test 'hidden comments immediately leave search while retaining their public tags' do
+  test 'poll comments and their tags stay searchable while results are hidden' do
     poll = PollService.create(params: {topic_id: @topic.id, poll_type: 'proposal', title: 'Budget poll',
-      poll_option_names: ['Agree'], closing_at: 2.days.from_now}, actor: users(:admin))
-    comment = CommentService.create(comment: Comment.new(parent: poll, body: 'Secret insurance'), actor: @author)
-    TopicItemService.update_tags(topic_item: comment.created_topic_item, tags: ['Sensitive'], actor: @author)
-    document = PgSearch::Document.find_by!(searchable: comment).attributes.except('id')
-    poll.update!(hide_results: 'until_closed')
-    assert_not PgSearch::Document.exists?(searchable: comment)
+      poll_option_names: ['Agree'], hide_results: 'until_closed', closing_at: 2.days.from_now}, actor: users(:admin))
+    comment = CommentService.create(comment: Comment.new(parent: poll, body: 'Public insurance'), actor: @author)
+    TopicItemService.update_tags(topic_item: comment.created_topic_item, tags: ['Insurance'], actor: @author)
     SearchService.reindex_by_comment_id(comment.id)
     ReindexPollWorker.perform_now(poll.id)
-    assert_not PgSearch::Document.exists?(searchable: comment)
-    # Simulate an already-running indexing job finishing with an older snapshot.
-    PgSearch::Document.create!(document)
-    assert_equal ['Sensitive'], comment.created_topic_item.tags
-    assert_includes @topic.reload.tags, 'Sensitive'
-    get :index, params: {tag: 'Sensitive'}
-    assert_empty JSON.parse(response.body).fetch('search_results')
-    get :index, params: {query: 'insurance'}
-    rows = JSON.parse(response.body).fetch('search_results')
-    assert_not rows.any? { |row| row['searchable_type'] == 'Comment' && row['searchable_id'] == comment.id }
-    poll.update!(closed_at: Time.current)
-    ReindexPollWorker.perform_now(poll.id)
-    get :index, params: {tag: 'Sensitive'}
+    assert PgSearch::Document.exists?(searchable: comment)
+    get :index, params: {tag: 'Insurance'}
     assert_equal [comment.id], response.parsed_body.fetch('search_results').pluck('searchable_id')
+    get :index, params: {query: 'insurance'}
+    assert response.parsed_body.fetch('search_results').any? { |row| row['searchable_type'] == 'Comment' && row['searchable_id'] == comment.id }
   end
 
   test 'standalone poll comments include a usable poll route' do

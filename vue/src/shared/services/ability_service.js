@@ -395,6 +395,6 @@ export default new class AbilityService {
   }
 
   canReopenPoll(poll) {
-    return poll.group().isEnabled() && !poll.discardedAt && poll.closedAt && !poll.anonymous && poll.adminsInclude(Session.user());
+    return poll.group().isEnabled() && !poll.discardedAt && poll.closedAt && poll.hideResults !== 'until_closed' && !poll.anonymous && poll.adminsInclude(Session.user());
   }
 }

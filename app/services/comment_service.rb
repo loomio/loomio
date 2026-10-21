@@ -11,6 +11,8 @@ class CommentService
     return comment unless comment.valid?
 
     topic_item = comment.topic.with_write_lock do
+      # The poll's result setting may have changed while waiting for this lock.
+      parent.association(:poll).reset if parent.is_a?(Stance)
       actor.ability.authorize! :create, comment
       comment.save!
       Sentry.metrics.count("comment.create", attributes: { parent_type: comment.parent_type })

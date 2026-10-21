@@ -10,6 +10,19 @@ class Api::V1::PollsControllerTest < ActionController::TestCase
     @discussion = discussions(:discussion)
   end
 
+  test "reopen endpoint refuses closed polls whose results were hidden until close" do
+    poll = PollService.create(params: {topic_id: topics(:discussion_topic).id, title: 'No reopening',
+      poll_type: 'proposal', poll_option_names: ['Agree'], closing_at: 2.days.from_now,
+      hide_results: 'until_closed'}, actor: @admin)
+    PollService.close(poll: poll, actor: @admin)
+    sign_in @admin
+    assert_no_difference ['TopicItem.count', 'Notification.count'] do
+      post :reopen, params: {id: poll.key, poll: {closing_at: 5.days.from_now}}
+    end
+    assert_response :forbidden
+    assert poll.reload.closed?
+  end
+
   # Show tests
   test "former group members cannot list or open their authored polls" do
     author = users(:member_normal)

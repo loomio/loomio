@@ -154,7 +154,7 @@ class TopicItemTagsTest < ActiveSupport::TestCase
     end
   end
 
-  test 'existing tags remain shared metadata when results are hidden and hidden comments leave search' do
+  test 'existing comment tags stay shared and searchable regardless of result visibility' do
     %w[off until_vote until_closed].each do |mode|
       poll = make_poll
       comment = CommentService.create(comment: Comment.new(parent: poll, body: 'Insurance confidential'), actor: @author)
@@ -169,11 +169,7 @@ class TopicItemTagsTest < ActiveSupport::TestCase
       assert_equal ['Sensitive'], row['tags'], mode
       comment.update_pg_search_document
       doc = PgSearch::Document.find_by(searchable: comment)
-      if mode == 'until_closed'
-        assert_nil doc
-      else
-        assert_equal ['Sensitive'], doc.tags
-      end
+      assert_equal ['Sensitive'], doc.tags
       poll.update!(closed_at: Time.current)
       assert_includes @topic.reload.tags, 'Sensitive'
       assert_equal ['Sensitive'], item.reload.tags
@@ -208,25 +204,7 @@ class TopicItemTagsTest < ActiveSupport::TestCase
     assert @topic.has_tagged_replies
   end
 
-  test 'hiding poll results rolls search removal back with the poll and leaves tags unchanged' do
-    poll = make_poll
-    comment = CommentService.create(comment: Comment.new(parent: poll, body: 'Initially public'), actor: @author)
-    tag(comment.created_topic_item, ['Shared label'])
-    assert PgSearch::Document.exists?(searchable: comment)
-
-    Poll.transaction(requires_new: true) do
-      poll.update!(hide_results: 'until_closed')
-      assert_not PgSearch::Document.exists?(searchable: comment)
-      assert_equal ['Shared label'], @topic.reload.tags
-      raise ActiveRecord::Rollback
-    end
-
-    assert_equal 'off', poll.reload.hide_results
-    assert PgSearch::Document.exists?(searchable: comment)
-    assert_equal ['Shared label'], comment.created_topic_item.tags
-  end
-
-  test 'hidden comments remain taggable at the display cap while staying out of search' do
+  test 'poll comments stay taggable and searchable at the display cap' do
     @topic.update!(max_depth: 1)
     poll = make_poll
     comment = CommentService.create(comment: Comment.new(parent: poll, body: 'Poll reply'), actor: @author)
@@ -236,25 +214,31 @@ class TopicItemTagsTest < ActiveSupport::TestCase
     poll.update!(hide_results: 'until_closed')
     assert_equal ['Hidden branch'], @topic.reload.tags
     assert @author.can?(:update_tags, reply.created_topic_item)
-    assert_not PgSearch::Document.exists?(searchable: reply)
+    ReindexPollWorker.perform_now(poll.id)
+    assert PgSearch::Document.exists?(searchable: reply)
   end
 
-  test 'reopening a poll hides searches while its outcome conversation remains taggable' do
+  test 'reopening an eligible poll keeps outcome conversations taggable and searchable' do
     poll = make_poll
     PollService.close(poll: poll, actor: @admin)
     outcome = OutcomeService.create(outcome: Outcome.new(poll: poll, statement: 'Proceed'), actor: @admin)
     comment = CommentService.create(comment: Comment.new(parent: outcome, body: 'Outcome reply'), actor: @author)
     tag(comment.created_topic_item, ['Outcome discussion'])
     assert PgSearch::Document.exists?(searchable: comment)
-    poll.update!(hide_results: 'until_closed')
+    poll.update!(hide_results: 'until_vote')
     PollService.reopen(poll: poll, params: {closing_at: 2.days.from_now}, actor: @admin)
 
     assert @author.can?(:update_tags, comment.created_topic_item)
-    assert_not PgSearch::Document.exists?(searchable: comment)
+    assert PgSearch::Document.exists?(searchable: comment)
     assert_equal ['Outcome discussion'], @topic.reload.tags
     assert_equal ['Outcome discussion'], comment.created_topic_item.tags
     poll.discard!
     assert_empty @topic.reload.tags
+    assert_not PgSearch::Document.exists?(searchable: comment)
+    ReindexPollWorker.perform_now(poll.id)
+    assert_not PgSearch::Document.exists?(searchable: comment)
+    SearchService.reindex_by_comment_id(comment.id)
+    assert_not PgSearch::Document.exists?(searchable: comment)
   end
 
   test 'anonymous poll tagging changes no ballots results or quorum settings' do
@@ -275,7 +259,7 @@ class TopicItemTagsTest < ActiveSupport::TestCase
     assert_equal ['Budget', 'Governance'], @topic.reload.tags
   end
 
-  test 'archives retain public tags while markdown omits hidden comment content' do
+  test 'archives and markdown include poll comments and tags while results are hidden' do
     poll = make_poll
     comment = CommentService.create(comment: Comment.new(parent: poll, body: 'Poll reply'), actor: @author)
     item = comment.created_topic_item
@@ -286,7 +270,7 @@ class TopicItemTagsTest < ActiveSupport::TestCase
     assert_equal ['Hidden branch'], GroupExportService.export_record(item, 'topic_items').fetch('tags')
     markdown = ThreadMarkdownService.render(topic: @topic.reload, user: @author)
     assert_includes markdown, 'Hidden branch'
-    refute_includes markdown, 'Poll reply'
+    assert_includes markdown, 'Poll reply'
   end
 
   test 'organization rename merge and delete apply to every item assignment' do

@@ -238,6 +238,7 @@ class Poll < ApplicationRecord
   validate :closes_in_future
   validate :opening_at_before_closing_at
   validate :anonymity_cannot_change
+  validate :cannot_reopen_after_revealing_results
   validate :cannot_reveal_results_early
   validate :anonymous_invariants
   validate :anonymous_configuration_cannot_change_after_ballot
@@ -274,18 +275,13 @@ class Poll < ApplicationRecord
   around_update :with_topics_write_lock_for_counts, if: -> { changes.keys.intersect?(%w[topic_id opened_at closed_at discarded_at]) }, prepend: true
   around_destroy :with_topics_write_lock_for_counts, prepend: true
   after_save_commit -> { ReindexPollWorker.perform_later(id) }
-  after_update :remove_hidden_comment_search_documents, if: -> { saved_changes.keys.intersect?(%w[hide_results closed_at discarded_at]) }
+  after_update :remove_discarded_comment_search_documents, if: -> { saved_change_to_discarded_at? && discarded? }
 
-  # Remove newly hidden conversation content in the poll's transaction. Reindex
-  # jobs can restore it after closing; searches must not wait for those jobs to
-  # stop returning a comment's text or tag-only matches.
-  def remove_hidden_comment_search_documents
-    return unless discarded? || (hide_results == 'until_closed' && closed_at.nil?)
-
+  def remove_discarded_comment_search_documents
     comments = Comment.under_polls(self.class.where(id: id)).select(:id)
     PgSearch::Document.where(searchable_type: 'Comment', searchable_id: comments).delete_all
   end
-  private :remove_hidden_comment_search_documents
+  private :remove_discarded_comment_search_documents
   after_update :synchronize_stance_weights_after_vote_weights_change
 
   # Switching vote weights resets issued stances, including cast votes, so
@@ -771,6 +767,13 @@ class Poll < ApplicationRecord
     return unless persisted? && will_save_change_to_anonymous?
 
     errors.add :anonymous, (anonymous_in_database ? :cannot_deanonymize : :invalid)
+  end
+
+  # Once closing has revealed results, voting cannot resume under this rule.
+  def cannot_reopen_after_revealing_results
+    if closed_at_in_database.present? && closed_at.nil? && hide_results_in_database == 'until_closed'
+      errors.add(:closed_at, :invalid)
+    end
   end
 
   def cannot_reveal_results_early

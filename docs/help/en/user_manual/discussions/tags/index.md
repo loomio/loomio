@@ -96,6 +96,6 @@ The tags beside the discussion title belong to the opening discussion. The group
 
 In global search, selecting a tag finds contributions explicitly carrying that tag. You can browse by tag without entering a search phrase. Combining a tag with a phrase searches the tagged contributions' content, rather than every contribution in their threads.
 
-Authors can tag their comments regardless of the poll's result visibility. Tags are shared metadata and remain available if a poll is reopened or its results become hidden. Comments in polls that hide results until closing are excluded from search while the poll is open. Deleted contributions are omitted from tag filters; restoring a contribution restores its tags. Timeline entries continue to provide named shortcuts to individual contributions and work independently of tags.
+Authors can tag their comments regardless of the poll's result visibility. Tags are shared metadata and remain available if a poll is reopened or its results become hidden. Comments and their tags remain searchable while poll results are hidden. Deleted contributions are omitted from tag filters; restoring a contribution restores its tags. Timeline entries continue to provide named shortcuts to individual contributions and work independently of tags.
 
 Participation reports count threads containing each tag. Participation in one of those threads does not necessarily mean a person authored a contribution with that tag.

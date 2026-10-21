@@ -47,7 +47,7 @@ class Comment < ApplicationRecord
         LEFT JOIN polls ON polls.id = topics.topicable_id AND topics.topicable_type = 'Poll'
         LEFT JOIN users ON users.id = comments.user_id
       WHERE comments.discarded_at IS NULL
-        AND comments.id NOT IN (#{hidden_until_closed.select(:id).to_sql})
+        AND comments.id NOT IN (#{under_polls(Poll.discarded).select(:id).to_sql})
         AND topics.discarded_at IS NULL
         AND (
           (topics.topicable_type = 'Discussion' AND discussions.discarded_at IS NULL) OR
@@ -72,6 +72,7 @@ class Comment < ApplicationRecord
   validates_presence_of :user, unless: :discarded_at
 
   validate :parent_cannot_change, on: :update
+  validate :parent_allows_replies, on: :create
   validate :has_body_or_attachment
   validate :body_within_topic_limit
 
@@ -120,9 +121,8 @@ class Comment < ApplicationRecord
     edited_at.present?
   end
 
-  # Exports and search omit the same poll conversations that the timeline hides.
-  def self.hidden_until_closed
-    under_polls(Poll.where(hide_results: :until_closed, closed_at: nil))
+  def parent_allows_replies?
+    parent_type != 'Stance' || parent.poll.results_available?
   end
 
   # Follow domain parents so conversations remain complete when the display
@@ -147,6 +147,10 @@ class Comment < ApplicationRecord
   end
 
   private
+
+  def parent_allows_replies
+    errors.add(:parent, :invalid) unless parent_allows_replies?
+  end
 
   def has_body_or_attachment
     if !discarded_at && body_blank? && files.empty? && image_files.empty?

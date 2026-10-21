@@ -66,18 +66,16 @@ export default new class StanceService {
         dock: 3,
         canPerform() {
           const poll = stance.poll();
-          const topic = poll ? poll.topic() : null;
+          const topic = poll.topic();
           return stance.castAt &&
           !stance.discardedAt &&
           !stance.revokedAt &&
-          poll && !poll.anonymous &&
-          poll.showResults() &&
-          topic && topic.membersInclude(Session.user()) &&
-          !topic.lockedAt;
+          !poll.anonymous &&
+          (poll.hideResults !== 'until_closed' || poll.closedAt) &&
+          AbilityService.canAddComment(topic);
         },
         perform() {
-          const topic = stance.poll() ? stance.poll().topic() : null;
-          const maxDepth = topic ? topic.maxDepth : 3;
+          const maxDepth = stance.poll().topic().maxDepth;
           if (topic_item.depth === maxDepth) {
             return EventBus.$emit('toggle-reply', stance, topic_item.parentId);
           } else {

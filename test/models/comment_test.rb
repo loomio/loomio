@@ -19,26 +19,19 @@ class CommentTest < ActiveSupport::TestCase
     assert_predicate direct, :persisted?
     nested = CommentService.create(comment: Comment.new(parent: reply, body: 'Nested before voting'), actor: @admin)
     assert_predicate nested, :persisted?
-    refute_includes Comment.hidden_until_closed, nested
+    assert PgSearch::Document.exists?(searchable: nested)
   end
 
-  test "until closed search and export scope includes all poll comments at maximum depth" do
-    stance = cast_vote_in_new_poll(hide_results: 'off')
-    reply = CommentService.create(comment: Comment.new(parent: stance, body: 'First reply'), actor: @user)
-    nested = CommentService.create(comment: Comment.new(parent: reply, body: 'Second reply'), actor: @admin)
-    deep = CommentService.create(comment: Comment.new(parent: nested, body: 'Third reply'), actor: @user)
-    direct = CommentService.create(comment: Comment.new(parent: stance.poll, body: 'Direct poll comment'), actor: @user)
-    ordinary = CommentService.create(comment: Comment.new(parent: @discussion, body: 'Ordinary discussion'), actor: @user)
-    stance.poll.update!(hide_results: 'until_closed')
+  test "vote replies require until-closed results to be available even outside the service" do
+    stance = cast_vote_in_new_poll(hide_results: 'until_closed')
+    comment = Comment.new(parent: stance, body: 'Reply before closing', author: @admin)
+    assert_not comment.valid?
+    assert_includes comment.errors.attribute_names, :parent
+    assert_not @admin.can?(:create, comment)
 
-    [reply, nested, deep, direct].each do |comment|
-      assert_includes Comment.hidden_until_closed, comment
-      assert @user.can?(:show, comment)
-    end
-    refute_includes Comment.hidden_until_closed, ordinary
-    assert Comment.new(parent: deep, body: 'Hidden nested reply', author: @user).valid?
     PollService.close(poll: stance.poll, actor: @admin)
-    assert_empty Comment.hidden_until_closed
+    assert comment.valid?
+    assert @admin.can?(:create, comment)
   end
 
   test "replies to votes are allowed when results are always visible" do

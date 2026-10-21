@@ -361,22 +361,24 @@ class PollService
   def self.reopen(poll:, params:, actor:, &on_topic_item)
     actor.ability.authorize! :reopen, poll
 
-    poll.assign_attributes(closing_at: params[:closing_at], closed_at: nil, opening_at: nil, opened_at: Time.now)
-    poll.stv_results = nil if poll.poll_type == 'stv'
-    unless poll.valid?
-      Sentry.metrics.count("poll.reopen_failed", attributes: { columns: poll.errors.attribute_names.join(',') })
-      return poll
-    end
+    # Recheck the stored poll under the same topic lock used by poll edits.
+    topic_item = poll.with_topic_lock do |current_poll|
+      actor.ability.authorize! :reopen, current_poll
+      poll.reload
+      poll.assign_attributes(closing_at: params[:closing_at], closed_at: nil, opening_at: nil, opened_at: Time.now)
+      poll.stv_results = nil if poll.poll_type == 'stv'
+      if poll.valid?
+        poll.save!
 
-    topic_item = Poll.transaction do
-      poll.save!
-
-      # Reopening remains visible in the timeline but never repeats poll opening notifications.
-      TopicItems::PollReopened.create!(
-        itemable: poll,
-        user: actor
-      )
+        # Reopening remains visible in the timeline but never repeats poll opening notifications.
+        TopicItems::PollReopened.create!(itemable: poll, user: actor)
+      else
+        Sentry.metrics.count("poll.reopen_failed", attributes: { columns: poll.errors.attribute_names.join(',') })
+        nil
+      end
     end
+    return poll unless topic_item
+
     publish_topic_if_active(poll)
     on_topic_item&.call(topic_item)
     poll
