@@ -719,15 +719,17 @@ class PollServiceTest < ActiveSupport::TestCase
   end
 
   test "failed reopening rolls back the poll when timeline creation fails" do
-    poll = create_poll(hide_results: 'until_vote')
-    PollService.close(poll: poll, actor: @user)
-    closed_at = poll.closed_at
-    TopicItems::PollReopened.stub(:create!, ->(**) { raise 'Timeline failed' }) do
-      assert_raises(RuntimeError) do
-        PollService.reopen(poll: poll, params: {closing_at: 7.days.from_now}, actor: @user)
+    travel_to(Time.current.change(nsec: 123_456_789), with_usec: true) do
+      poll = create_poll(hide_results: 'until_vote')
+      PollService.close(poll: poll, actor: @user)
+      closed_at = poll.reload.closed_at
+      TopicItems::PollReopened.stub(:create!, ->(**) { raise 'Timeline failed' }) do
+        assert_raises(RuntimeError) do
+          PollService.reopen(poll: poll, params: {closing_at: 7.days.from_now}, actor: @user)
+        end
       end
+      assert_equal closed_at, poll.reload.closed_at
     end
-    assert_equal closed_at, poll.reload.closed_at
   end
 
   # -- invite to scheduled poll --
