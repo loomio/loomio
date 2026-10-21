@@ -16,10 +16,10 @@ require_relative "../lib/test_database_url"
 # change, including changes made while a mutant run is still in progress.
 class MutationAudit
   ROOT = File.expand_path("..", __dir__)
-  PLAN = File.join(ROOT, "agents/mutation_audit_plan.json")
-  PROGRESS = File.join(ROOT, "agents/mutation_audit_progress.json")
-  REVIEWS = File.join(ROOT, "agents/mutation_audit_reviews.json")
+  PLAN = File.join(ROOT, "script/mutation_audit_plan.json")
   REPORT_ROOT = File.join(ROOT, "tmp/mutation_audit")
+  PROGRESS = File.join(REPORT_ROOT, "progress.json")
+  REVIEWS = File.join(REPORT_ROOT, "reviews.json")
 
   def initialize(options)
     @options = options
@@ -120,7 +120,7 @@ class MutationAudit
       units = @plan.fetch("units").to_h { |unit| [unit.fetch("id"), unit] }
       imported = []
       @options.fetch(:from).each do |checkout|
-        incoming = JSON.parse(File.read(File.join(checkout, "agents/mutation_audit_progress.json")))
+        incoming = JSON.parse(File.read(File.join(checkout, "tmp/mutation_audit/progress.json")))
         incoming.fetch("units").each do |id, record|
           next unless %w[measured unexercised incomplete].include?(record.fetch("measurement"))
 

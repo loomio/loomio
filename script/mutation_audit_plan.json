@@ -733,7 +733,7 @@
       "measurement": "pending",
       "review": "pending",
       "candidate_count": 173,
-      "note": " One full-source matrix includes every original test file from the identical-source contexts listed in mutation_audit_scope_changes.json. Distinct behavioral assertions remain in their original files; source overlap alone does not justify removing them."
+      "note": "One full-source matrix includes all declared test files for this source set. Distinct behavioral assertions remain in their original files; source overlap alone does not justify removing them."
     },
     {
       "id": "controllers/api/v1/profile_controller",
@@ -912,7 +912,7 @@
       "measurement": "pending",
       "review": "pending",
       "candidate_count": 180,
-      "note": " One full-source matrix includes every original test file from the identical-source contexts listed in mutation_audit_scope_changes.json. Distinct behavioral assertions remain in their original files; source overlap alone does not justify removing them."
+      "note": "One full-source matrix includes all declared test files for this source set. Distinct behavioral assertions remain in their original files; source overlap alone does not justify removing them."
     },
     {
       "id": "controllers/api/v1/topic_readers_controller",
@@ -1015,7 +1015,7 @@
       "review": "pending",
       "candidate_count": 61,
       "timeout": 120,
-      "note": " Include existing inherited-action and authentication callers before interpreting narrow test-file coverage."
+      "note": "Include existing inherited-action and authentication callers before interpreting narrow test-file coverage."
     },
     {
       "id": "controllers/contact_messages_controller",
@@ -1562,7 +1562,7 @@
       "review": "pending",
       "candidate_count": 50,
       "timeout": 120,
-      "note": " Include existing inherited-action and authentication callers before interpreting narrow test-file coverage."
+      "note": "Include existing inherited-action and authentication callers before interpreting narrow test-file coverage."
     },
     {
       "id": "integration/sso_login_token",
@@ -1630,7 +1630,7 @@
       "review": "pending",
       "candidate_count": 51,
       "timeout": 120,
-      "note": " Include existing callers and lifecycle regressions before interpreting paired-file gaps. One full-source matrix includes every original test file from the identical-source contexts listed in mutation_audit_scope_changes.json. Distinct behavioral assertions remain in their original files; source overlap alone does not justify removing them."
+      "note": "Include existing callers and lifecycle regressions before interpreting paired-file gaps. One full-source matrix includes all declared test files for this source set. Distinct behavioral assertions remain in their original files; source overlap alone does not justify removing them."
     },
     {
       "id": "mailers/application_mailer",
@@ -1660,7 +1660,7 @@
       "measurement": "pending",
       "review": "pending",
       "candidate_count": 17,
-      "note": " One full-source matrix includes every original test file from the identical-source contexts listed in mutation_audit_scope_changes.json. Distinct behavioral assertions remain in their original files; source overlap alone does not justify removing them."
+      "note": "One full-source matrix includes all declared test files for this source set. Distinct behavioral assertions remain in their original files; source overlap alone does not justify removing them."
     },
     {
       "id": "mailers/group_mailer",
@@ -1676,7 +1676,7 @@
       "measurement": "pending",
       "review": "pending",
       "candidate_count": 9,
-      "note": " One full-source matrix includes every original test file from the identical-source contexts listed in mutation_audit_scope_changes.json. Distinct behavioral assertions remain in their original files; source overlap alone does not justify removing them."
+      "note": "One full-source matrix includes all declared test files for this source set. Distinct behavioral assertions remain in their original files; source overlap alone does not justify removing them."
     },
     {
       "id": "mailers/notification_mailer",
@@ -1697,7 +1697,7 @@
       "measurement": "pending",
       "review": "pending",
       "candidate_count": 126,
-      "note": " One full-source matrix includes every original test file from the identical-source contexts listed in mutation_audit_scope_changes.json. Distinct behavioral assertions remain in their original files; source overlap alone does not justify removing them.",
+      "note": "One full-source matrix includes all declared test files for this source set. Distinct behavioral assertions remain in their original files; source overlap alone does not justify removing them.",
       "timeout": 120
     },
     {
@@ -1719,7 +1719,7 @@
       "review": "pending",
       "candidate_count": 27,
       "timeout": 120,
-      "note": " Include existing integration, storage and lifecycle regressions before treating paired-file survivors as missing coverage."
+      "note": "Include existing integration, storage and lifecycle regressions before treating paired-file survivors as missing coverage."
     },
     {
       "id": "middleware/authentication_throttles",
@@ -2019,7 +2019,7 @@
       "review": "pending",
       "candidate_count": 68,
       "timeout": 120,
-      "note": " Include existing integration, storage and lifecycle regressions before treating paired-file survivors as missing coverage."
+      "note": "Include existing integration, storage and lifecycle regressions before treating paired-file survivors as missing coverage."
     },
     {
       "id": "models/concerns/has_rich_text",
@@ -2053,7 +2053,7 @@
       "review": "pending",
       "candidate_count": 36,
       "timeout": 120,
-      "note": " Include existing integration, storage and lifecycle regressions before treating paired-file survivors as missing coverage."
+      "note": "Include existing integration, storage and lifecycle regressions before treating paired-file survivors as missing coverage."
     },
     {
       "id": "models/discussion_event_integration",
@@ -2161,7 +2161,7 @@
       "review": "pending",
       "candidate_count": 19,
       "timeout": 120,
-      "note": " Include existing callers before treating paired-file no-coverage as a missing test."
+      "note": "Include existing callers before treating paired-file no-coverage as a missing test."
     },
     {
       "id": "models/login_token",
@@ -2194,7 +2194,7 @@
       "review": "pending",
       "candidate_count": 49,
       "timeout": 120,
-      "note": " Include existing integration, storage and lifecycle regressions before treating paired-file survivors as missing coverage."
+      "note": "Include existing integration, storage and lifecycle regressions before treating paired-file survivors as missing coverage."
     },
     {
       "id": "models/membership_reference_integrity",
@@ -2258,7 +2258,7 @@
       "review": "pending",
       "candidate_count": 31,
       "timeout": 120,
-      "note": " Include existing callers before treating paired-file no-coverage as a missing test."
+      "note": "Include existing callers before treating paired-file no-coverage as a missing test."
     },
     {
       "id": "models/poll",
@@ -2293,7 +2293,7 @@
       "review": "pending",
       "candidate_count": 62,
       "timeout": 120,
-      "note": " Include existing callers before treating paired-file no-coverage as a missing test."
+      "note": "Include existing callers before treating paired-file no-coverage as a missing test."
     },
     {
       "id": "models/poll_template",
@@ -2470,7 +2470,7 @@
       "measurement": "pending",
       "review": "pending",
       "candidate_count": 221,
-      "note": " One full-source matrix includes every original test file from the identical-source contexts listed in mutation_audit_scope_changes.json. Distinct behavioral assertions remain in their original files; source overlap alone does not justify removing them.",
+      "note": "One full-source matrix includes all declared test files for this source set. Distinct behavioral assertions remain in their original files; source overlap alone does not justify removing them.",
       "timeout": 90
     },
     {
@@ -2518,7 +2518,7 @@
       "review": "pending",
       "candidate_count": 77,
       "timeout": 120,
-      "note": " Includes existing caller assertions before interpreting paired-file survivors as missing behavior; no new ad hoc fixture state or test removal."
+      "note": "Includes existing caller assertions before interpreting paired-file survivors as missing behavior; no new ad hoc fixture state or test removal."
     },
     {
       "id": "models/user",
@@ -2556,7 +2556,7 @@
       "review": "pending",
       "candidate_count": 13,
       "timeout": 120,
-      "note": " Include existing callers before treating paired-file no-coverage as a missing test."
+      "note": "Include existing callers before treating paired-file no-coverage as a missing test."
     },
     {
       "id": "permissions/attachment",
@@ -2576,7 +2576,7 @@
       "measurement": "pending",
       "review": "pending",
       "candidate_count": 3,
-      "note": "Retain the complete reusable role and privacy matrix; mutation overlap alone cannot justify deleting a permission scenario. One full-source matrix includes every original test file from the identical-source contexts listed in mutation_audit_scope_changes.json. Distinct behavioral assertions remain in their original files; source overlap alone does not justify removing them."
+      "note": "Retain the complete reusable role and privacy matrix; mutation overlap alone cannot justify deleting a permission scenario. One full-source matrix includes all declared test files for this source set. Distinct behavioral assertions remain in their original files; source overlap alone does not justify removing them."
     },
     {
       "id": "permissions/base",
@@ -2616,7 +2616,7 @@
       "measurement": "pending",
       "review": "pending",
       "candidate_count": 6,
-      "note": "Retain the complete reusable role and privacy matrix; mutation overlap alone cannot justify deleting a permission scenario. One full-source matrix includes every original test file from the identical-source contexts listed in mutation_audit_scope_changes.json. Distinct behavioral assertions remain in their original files; source overlap alone does not justify removing them."
+      "note": "Retain the complete reusable role and privacy matrix; mutation overlap alone cannot justify deleting a permission scenario. One full-source matrix includes all declared test files for this source set. Distinct behavioral assertions remain in their original files; source overlap alone does not justify removing them."
     },
     {
       "id": "permissions/chatbot",
@@ -2701,7 +2701,7 @@
       "measurement": "pending",
       "review": "pending",
       "candidate_count": 36,
-      "note": "Retain the complete reusable role and privacy matrix; mutation overlap alone cannot justify deleting a permission scenario. Include existing service and announcement cases before interpreting an apparent permission gap. One full-source matrix includes every original test file from the identical-source contexts listed in mutation_audit_scope_changes.json. Distinct behavioral assertions remain in their original files; source overlap alone does not justify removing them.",
+      "note": "Retain the complete reusable role and privacy matrix; mutation overlap alone cannot justify deleting a permission scenario. Include existing service and announcement cases before interpreting an apparent permission gap. One full-source matrix includes all declared test files for this source set. Distinct behavioral assertions remain in their original files; source overlap alone does not justify removing them.",
       "timeout": 120
     },
     {
@@ -2768,7 +2768,7 @@
       "measurement": "pending",
       "review": "pending",
       "candidate_count": 36,
-      "note": "Retain the complete reusable role and privacy matrix; mutation overlap alone cannot justify deleting a permission scenario. Include existing integration, storage and lifecycle regressions before treating paired-file survivors as missing coverage. One full-source matrix includes every original test file from the identical-source contexts listed in mutation_audit_scope_changes.json. Distinct behavioral assertions remain in their original files; source overlap alone does not justify removing them.",
+      "note": "Retain the complete reusable role and privacy matrix; mutation overlap alone cannot justify deleting a permission scenario. Include existing integration, storage and lifecycle regressions before treating paired-file survivors as missing coverage. One full-source matrix includes all declared test files for this source set. Distinct behavioral assertions remain in their original files; source overlap alone does not justify removing them.",
       "timeout": 120
     },
     {
@@ -2789,7 +2789,7 @@
       "measurement": "pending",
       "review": "pending",
       "candidate_count": 2,
-      "note": "Retain the complete reusable role and privacy matrix; mutation overlap alone cannot justify deleting a permission scenario. Include existing service and announcement cases before interpreting an apparent permission gap. One full-source matrix includes every original test file from the identical-source contexts listed in mutation_audit_scope_changes.json. Distinct behavioral assertions remain in their original files; source overlap alone does not justify removing them.",
+      "note": "Retain the complete reusable role and privacy matrix; mutation overlap alone cannot justify deleting a permission scenario. Include existing service and announcement cases before interpreting an apparent permission gap. One full-source matrix includes all declared test files for this source set. Distinct behavioral assertions remain in their original files; source overlap alone does not justify removing them.",
       "timeout": 120
     },
     {
@@ -2899,7 +2899,7 @@
       "measurement": "pending",
       "review": "pending",
       "candidate_count": 74,
-      "note": "Retain the complete reusable role and privacy matrix; mutation overlap alone cannot justify deleting a permission scenario. Include existing service and announcement cases before interpreting an apparent permission gap. One full-source matrix includes every original test file from the identical-source contexts listed in mutation_audit_scope_changes.json. Distinct behavioral assertions remain in their original files; source overlap alone does not justify removing them.",
+      "note": "Retain the complete reusable role and privacy matrix; mutation overlap alone cannot justify deleting a permission scenario. Include existing service and announcement cases before interpreting an apparent permission gap. One full-source matrix includes all declared test files for this source set. Distinct behavioral assertions remain in their original files; source overlap alone does not justify removing them.",
       "timeout": 120
     },
     {
@@ -2919,7 +2919,7 @@
       "measurement": "pending",
       "review": "pending",
       "candidate_count": 2,
-      "note": "Retain the complete reusable role and privacy matrix; mutation overlap alone cannot justify deleting a permission scenario. One full-source matrix includes every original test file from the identical-source contexts listed in mutation_audit_scope_changes.json. Distinct behavioral assertions remain in their original files; source overlap alone does not justify removing them."
+      "note": "Retain the complete reusable role and privacy matrix; mutation overlap alone cannot justify deleting a permission scenario. One full-source matrix includes all declared test files for this source set. Distinct behavioral assertions remain in their original files; source overlap alone does not justify removing them."
     },
     {
       "id": "permissions/poll_template",
@@ -2961,7 +2961,7 @@
       "measurement": "pending",
       "review": "pending",
       "candidate_count": 6,
-      "note": "Retain the complete reusable role and privacy matrix; mutation overlap alone cannot justify deleting a permission scenario. Include existing service and announcement cases before interpreting an apparent permission gap. One full-source matrix includes every original test file from the identical-source contexts listed in mutation_audit_scope_changes.json. Distinct behavioral assertions remain in their original files; source overlap alone does not justify removing them.",
+      "note": "Retain the complete reusable role and privacy matrix; mutation overlap alone cannot justify deleting a permission scenario. Include existing service and announcement cases before interpreting an apparent permission gap. One full-source matrix includes all declared test files for this source set. Distinct behavioral assertions remain in their original files; source overlap alone does not justify removing them.",
       "timeout": 120
     },
     {
@@ -2983,7 +2983,7 @@
       "measurement": "pending",
       "review": "pending",
       "candidate_count": 2,
-      "note": "Retain the complete reusable role and privacy matrix; mutation overlap alone cannot justify deleting a permission scenario. Include existing service and announcement cases before interpreting an apparent permission gap. One full-source matrix includes every original test file from the identical-source contexts listed in mutation_audit_scope_changes.json. Distinct behavioral assertions remain in their original files; source overlap alone does not justify removing them.",
+      "note": "Retain the complete reusable role and privacy matrix; mutation overlap alone cannot justify deleting a permission scenario. Include existing service and announcement cases before interpreting an apparent permission gap. One full-source matrix includes all declared test files for this source set. Distinct behavioral assertions remain in their original files; source overlap alone does not justify removing them.",
       "timeout": 120
     },
     {
@@ -3048,7 +3048,7 @@
       "measurement": "pending",
       "review": "pending",
       "candidate_count": 3,
-      "note": "Retain the complete reusable role and privacy matrix; mutation overlap alone cannot justify deleting a permission scenario. Include existing service and announcement cases before interpreting an apparent permission gap. One full-source matrix includes every original test file from the identical-source contexts listed in mutation_audit_scope_changes.json. Distinct behavioral assertions remain in their original files; source overlap alone does not justify removing them.",
+      "note": "Retain the complete reusable role and privacy matrix; mutation overlap alone cannot justify deleting a permission scenario. Include existing service and announcement cases before interpreting an apparent permission gap. One full-source matrix includes all declared test files for this source set. Distinct behavioral assertions remain in their original files; source overlap alone does not justify removing them.",
       "timeout": 120
     },
     {
@@ -3174,7 +3174,7 @@
       "review": "pending",
       "candidate_count": 44,
       "timeout": 120,
-      "note": " Include existing callers and lifecycle regressions before interpreting paired-file gaps."
+      "note": "Include existing callers and lifecycle regressions before interpreting paired-file gaps."
     },
     {
       "id": "queries/group_query",
@@ -3252,7 +3252,7 @@
       "review": "pending",
       "candidate_count": 45,
       "timeout": 120,
-      "note": " Include existing callers and lifecycle regressions before interpreting paired-file gaps."
+      "note": "Include existing callers and lifecycle regressions before interpreting paired-file gaps."
     },
     {
       "id": "serializers/group_serializer",
@@ -3419,7 +3419,7 @@
       "measurement": "pending",
       "review": "pending",
       "candidate_count": 64,
-      "note": " One full-source matrix includes every original test file from the identical-source contexts listed in mutation_audit_scope_changes.json. Distinct behavioral assertions remain in their original files; source overlap alone does not justify removing them."
+      "note": "One full-source matrix includes all declared test files for this source set. Distinct behavioral assertions remain in their original files; source overlap alone does not justify removing them."
     },
     {
       "id": "services/demo_email_delivery",
@@ -3555,7 +3555,7 @@
       "review": "pending",
       "candidate_count": 75,
       "timeout": 120,
-      "note": " Includes existing caller assertions before interpreting paired-file survivors as missing behavior; no new ad hoc fixture state or test removal."
+      "note": "Includes existing caller assertions before interpreting paired-file survivors as missing behavior; no new ad hoc fixture state or test removal."
     },
     {
       "id": "services/inline_image_attachment_repair_service",
@@ -3639,7 +3639,7 @@
       "measurement": "pending",
       "review": "pending",
       "candidate_count": 216,
-      "note": " One full-source matrix includes every original test file from the identical-source contexts listed in mutation_audit_scope_changes.json. Distinct behavioral assertions remain in their original files; source overlap alone does not justify removing them."
+      "note": "One full-source matrix includes all declared test files for this source set. Distinct behavioral assertions remain in their original files; source overlap alone does not justify removing them."
     },
     {
       "id": "services/mention_parser",
@@ -4046,7 +4046,7 @@
       "review": "pending",
       "candidate_count": 25,
       "timeout": 120,
-      "note": " Include existing callers before treating paired-file no-coverage as a missing test."
+      "note": "Include existing callers before treating paired-file no-coverage as a missing test."
     },
     {
       "id": "services/stv_count_service_published_counts",
@@ -4210,7 +4210,7 @@
       "measurement": "pending",
       "review": "pending",
       "candidate_count": 5,
-      "note": " One full-source matrix includes every original test file from the identical-source contexts listed in mutation_audit_scope_changes.json. Distinct behavioral assertions remain in their original files; source overlap alone does not justify removing them."
+      "note": "One full-source matrix includes all declared test files for this source set. Distinct behavioral assertions remain in their original files; source overlap alone does not justify removing them."
     },
     {
       "id": "services/topic_service",
@@ -4228,7 +4228,7 @@
       "measurement": "pending",
       "review": "pending",
       "candidate_count": 342,
-      "note": " One full-source matrix includes every original test file from the identical-source contexts listed in mutation_audit_scope_changes.json. Distinct behavioral assertions remain in their original files; source overlap alone does not justify removing them. Include existing poll-edit guest-access callers: parent-group notification permission does not authorize adding outside members to a subgroup topic; this isolates the shared add_readers authorization boundary after audience expansion."
+      "note": "One full-source matrix includes all declared test files for this source set. Distinct behavioral assertions remain in their original files; source overlap alone does not justify removing them. Include existing poll-edit guest-access callers: parent-group notification permission does not authorize adding outside members to a subgroup topic; this isolates the shared add_readers authorization boundary after audience expansion."
     },
     {
       "id": "services/translation_service",
@@ -4449,7 +4449,7 @@
       "review": "pending",
       "candidate_count": 44,
       "timeout": 120,
-      "note": " Include existing integration, storage and lifecycle regressions before treating paired-file survivors as missing coverage. One full-source matrix includes every original test file from the identical-source contexts listed in mutation_audit_scope_changes.json. Distinct behavioral assertions remain in their original files; source overlap alone does not justify removing them."
+      "note": "Include existing integration, storage and lifecycle regressions before treating paired-file survivors as missing coverage. One full-source matrix includes all declared test files for this source set. Distinct behavioral assertions remain in their original files; source overlap alone does not justify removing them."
     },
     {
       "id": "workers/move_comments_worker",
@@ -4496,7 +4496,7 @@
       "review": "pending",
       "candidate_count": 45,
       "timeout": 120,
-      "note": " Include existing callers and lifecycle regressions before interpreting paired-file gaps."
+      "note": "Include existing callers and lifecycle regressions before interpreting paired-file gaps."
     },
     {
       "id": "workers/repair_record_counts_worker",
