@@ -57,8 +57,14 @@ SMTP_PASSWORD=smtppassword
 SMTP_USE_SSL=1
 # to disable SSL, comment out line (rather than changing to 0)
 
+# Optional bounce/complaint feedback: configure your mail provider to forward
+# reports to Loomio. Requires passing DKIM results from a trusted inbound relay
+# (the bundled Haraka relay supplies these). Override sender addresses if needed:
+# BOUNCE_ADDRESS=bounce@email-abuse.amazonses.com
+# COMPLAINTS_ADDRESS=complaints@email-abuse.amazonses.com
+
 # Optional read-only SES account suppression check in the admin interface.
-# Grant the web process ses:GetSuppressedDestination in this region.
+# Set the sending region and give the web process ses:GetSuppressedDestination.
 # Uses the AWS SDK credential chain, not SMTP_USERNAME/SMTP_PASSWORD.
 # SES_SUPPRESSION_REGION=us-east-1
 

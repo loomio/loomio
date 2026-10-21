@@ -15,6 +15,12 @@ Or run [`update.sh`](update.sh) from the deployment directory, which performs th
 ./update.sh
 ```
 
+## Email delivery history and incoming email storage
+
+Drain queued `RouteReceivedEmailsWorker` and `DeleteOldReceivedEmailsWorker` jobs before stopping the old web and job processes. Back up the database and Active Storage before migrating: migrations `20261021000002` and `20261021000003` are irreversible, and rebuilding expired incoming email sources can upload data to storage. Upgrade web and job processes together.
+
+Existing bounce/complaint counters become address blocks, and pending sender approvals keep their IDs. Custom approval clients must change `/api/v1/received_emails` to `/api/v1/pending_emails` and the response root from `received_emails` to `pending_emails`.
+
 ## Retained record count repair
 
 After deploying the replacement for `custom_counter_cache`, enqueue a background repair of historical membership, content, read, reply and version counts:

@@ -103,30 +103,6 @@ Edit the `.env` and look for the vars starting with SMTP_
 
 You might also need to add an SPF DNS record to indicate that the SMTP can send mail for your domain.
 
-#### Email feedback and local blocks
-
-Set `BOUNCE_ADDRESS` and `COMPLAINTS_ADDRESS` when your feedback sender addresses differ from the defaults. The feedback sender must authenticate through the trusted relay as described below.
-
-Loomio records email delivery evidence and enforces its own suppression policy independently of the SMTP provider. Authenticated complaints and permanent bounces block the recipient address; delays, transient bounces, and unclassified bounces do not create a permanent block. Feedback with a matching original Message-ID links to the exact notification delivery. Authenticated feedback without a matching delivery can still block the reported address, without inventing a delivery link. Suppression records retain an address digest rather than the plaintext address and are not included in portable group exports.
-
-A completed local sign-in clears Loomio blocks for the account's current email address, preserving the existing sign-in behavior. Instance administrators can also clear them from the user's admin page. Clearance retains the evidence, actor, time, and method; replaying the same delivery failure does not reinstate a cleared block. An account changing its address does not transfer an old address's block to the new address.
-
-The SMTP provider may enforce a separate suppression list. Clearing a Loomio block does not promise that the provider will send the next email. With the optional SES integration enabled, instance administrators can use **Check SES account suppression** on a user's admin page. This read-only diagnostic needs `ses:GetSuppressedDestination` permission; it is requested only by the administrator and adds no provider calls to sending, history browsing, or sign-in. Provider lookup failures do not affect Loomio's local state. A returned entry identifies a record on the SES account suppression list; whether SES enforces it also depends on the account and configuration-set suppression settings. SES account suppression is regional and requires the exact stored address case; this check does not query Amazon's global suppression list or change any provider settings. Resolve provider blocks through the provider's own administration tools.
-
-Feedback processing failures leave a failed Action Mailbox routing job and an unreleased received-email record. Retry the failed routing job after resolving the error. Retrying resumes the saved authenticated report; completed reports are idempotent. Include failed routing jobs and `Email feedback recipient not identified` warnings in operational monitoring so missing feedback is not overlooked. Reports without an identifiable delivery or an explicit report recipient do not create a guessed block from unrelated addresses in the report.
-
-#### Optional Amazon SES suppression check
-
-Set `SES_SUPPRESSION_REGION` to the sending region and give the web process AWS credentials with `ses:GetSuppressedDestination` permission through the standard AWS SDK credential chain. SMTP credentials alone cannot call the API. Omit the region variable to hide the SES diagnostic. This integration only performs an administrator-requested account suppression lookup; it does not poll message delivery, change SES suppression settings, or require Virtual Deliverability Manager, a configuration set, or a public webhook.
-
-SES assigns its own Message-ID; Loomio saves the ID returned by the SES SMTP endpoint to match forwarded feedback. Only new notification emails have these recorded identifiers. Forwarded feedback can also match the original local Message-ID when a different SMTP transport preserves it. Notification deliveries do not store recipient addresses: a feedback report must name its recipient in `Final-Recipient`, `Original-Recipient`, or `Original-Rcpt-To` to create an address block. A matching Message-ID without a report recipient can update delivery history but cannot create a block. If the account's address has changed, the explicit old address can still be blocked without attaching the report to that account's delivery history. Feedback processing requires a trusted relay's passing DKIM result for the feedback sender's domain. The bundled Haraka relay removes sender-supplied authentication headers before adding its own; relays used in its place must provide the same guarantee. Feedback that cannot be authenticated is not allowed to change delivery history or Loomio email delivery blocks.
-
-#### Verifying feedback before a suppression-policy change
-
-Keep SES account suppression enabled until the deployed feedback path has been verified. Send controlled notification emails through the normal SMTP path to `bounce@simulator.amazonses.com` and `complaint@simulator.amazonses.com`, using the normal sender and feedback return address. Confirm that each report arrives through the trusted relay and Action Mailbox, authenticates, links to its exact notification delivery, creates the expected local block, and prevents a subsequent send. Also verify that failed feedback processing is surfaced and can be retried without duplicate evidence. The simulator does not affect SES bounce or complaint rates; see [Amazon's simulator documentation](https://docs.aws.amazon.com/ses/latest/dg/send-an-email-from-console.html).
-
-Before making Loomio the sole account-level suppression policy, reconcile the SES account suppression list with local blocks so provider-only historical blocks are not lost. Keep email feedback forwarding enabled and confirm that the SMTP feedback return address reaches Loomio; see [SES email feedback routing](https://docs.aws.amazon.com/ses/latest/dg/monitor-sending-activity-using-notifications-email.html). Changing the account-level policy does not disable Amazon's internal global suppression list. Treat the policy change as a separate operator action after verifying the live path and reviewing the reconciled blocks.
-
 ### Initialize the database
 
 This command initializes a new database for your Loomio instance to use.
@@ -191,14 +167,3 @@ docker exec -ti loomio-db su - postgres -c 'psql loomio_production'
 ## Upgrading
 
 See the [upgrade guide](UPGRADING.md) before upgrading Loomio.
-
-### Replacing email failure counters
-
-Migration `20261021000002` replaces `users.bounces_count` and `users.complaints_count` with suppression records. Positive counters become legacy blocks for the account's current address, with unknown event dates and no delivery link. Counter values cannot recover the original address or notification. Stop web and job processes using the old code before migrating, then start the new version: the migration removes those columns and cannot be reversed to counters. Member-list API responses no longer include `bounces_count` or `complaints_count`. Instance administrators can review and clear address blocks on the administration user page. Older portable group archives can still be imported; their retired counters are ignored. It scans users twice and takes a schema lock when dropping the columns; production migration time has not been measured. Back up the database before upgrading if rollback to an older application version is required.
-
-
-### Incoming email storage
-
-Migration `20261021000003` replaces the copied `received_emails` content with Action Mailbox sources and a small `pending_emails` approval queue. It preserves pending approval IDs and notifications, retains blocked messages for reconsideration after an alias is removed, and rebuilds MIME sources from legacy content and attachments when the original inbound record has expired. This can upload message data to the configured Active Storage service. The migration is irreversible; back up the database and storage before upgrading. Drain old `RouteReceivedEmailsWorker` and `DeleteOldReceivedEmailsWorker` jobs and stop the old web and job processes before migrating. Upgrade the application and workers together. The migration also schedules cleanup at the new 60-day deadline for existing processed inbound sources. The approval API moves from `/api/v1/received_emails` to `/api/v1/pending_emails`, and its response root changes from `received_emails` to `pending_emails`. Update any custom clients to use the new route and root.
-
-Loomio configures Action Mailbox to clean up processed sources after 60 days. Sources referenced by the approval queue are protected until the queue record is removed. Once released, sources can be removed by the next scheduled cleanup check. Published attachments remain attached to their threads. Unexpected routing failures are recorded as failed inbound emails and can be retried through Action Mailbox; duplicate relay deliveries use the original stored source.
