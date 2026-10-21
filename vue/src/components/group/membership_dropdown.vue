@@ -162,7 +162,7 @@ export default
         v-list-item-title(v-t="'membership_dropdown.resend'", v-if='!membership.resent')
         v-list-item-title(v-t="'membership_dropdown.invitation_resent'", v-if='membership.resent')
       v-list-item.membership-dropdown__notification-history(v-if='canViewNotificationHistory()' @click='viewNotificationHistory()')
-        v-list-item-title {{ t('announcement.notification_history') }}
+        v-list-item-title {{ t('membership_notification_history.invitation_delivery_history') }}
       v-list-item.membership-dropdown__toggle-admin(v-if='canToggleAdmin()' @click='toggleAdmin()')
         v-list-item-title(v-t="'membership_dropdown.make_coordinator'", v-if='!membership.admin')
         v-list-item-title(v-t="'membership_dropdown.revoke_admin'", v-if='membership.admin')

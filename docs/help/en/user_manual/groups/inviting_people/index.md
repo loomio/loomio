@@ -93,13 +93,15 @@ You can also make people administrators or set their title (e.g. "IT Support") w
 
 <!-- translation-section: invitation-notification-history -->
 
-### Notification history
+### Invitation delivery history
 
-To check an invitation, choose **Notification history** from the three dot menu (**⋮**) beside the person on the Members page. Group coordinators can see each recorded invitation and resend, who sent it, the custom message, and the email send status. This history is also available after the person joins.
+To check an invitation, choose **Invitation delivery history** from the three dot menu (**⋮**) beside the person on the Members page. Group coordinators can see each recorded invitation and resend, who sent it, and a delivery status chip. Expand an invitation to read its custom message and the delivery details. This history is also available after the person joins.
 
 Inviting someone again reuses their membership record, so the original date beside their name does not change. The history shows the separate sends. People who already belong to another group in the same organization can be accepted automatically when invited; they do not need to accept another invitation.
 
-**Submitted to email service** means Loomio completed the send; it does not confirm that the email reached the recipient's inbox. **Accepted by recipient's mail server** confirms server acceptance, which can still be followed by spam filtering. Where delivery tracking is enabled or linked feedback is available, the history also shows reported delays, rejections, bounces, and spam complaints. **No email delivery recorded** means there is no email delivery record for that send; older records do not identify why an email was skipped. An invitation's custom message can be viewed in the history, but **Resend invitation** sends without a custom message.
+The **Delivered** chip means the send completed without a later recorded failure; it does not confirm that the email reached the recipient's inbox. Expand the invitation to distinguish **Submitted to email service** from **Accepted by recipient's mail server**. **Failed** covers reported bounces, spam complaints, rejected emails, and skipped sends; the expanded details show the reason. Pending sends and reported delays have a neutral status. **No email delivery recorded** means there is no email delivery record for that send; older records do not identify why an email was skipped. **Resend invitation** sends without a custom message.
+
+If an email address has a recorded permanent bounce or spam complaint, Loomio stops sending email to that address. Signing in with a password, email code, or email link clears this Loomio block for the person's current address; an instance administrator can also clear it. The email service may have a separate block that its administrator needs to resolve.
 
 <!-- translation-section: re-send-invitations -->
 

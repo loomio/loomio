@@ -1,18 +1,54 @@
 pageHelper = require('../helpers/pageHelper')
 
 module.exports = {
+  'shows_email_delivery_block_for_an_instance_administrator': (test) => {
+    const page = pageHelper(test)
+    page.loadPath('setup_membership_email_blocked')
+    page.click('.group-page-members-tab')
+    page.expectText('.members-panel .v-list-item:first-child', 'Email rejected')
+  },
+
   'shows_notification_history_for_an_accepted_member': (test) => {
     const page = pageHelper(test)
     page.loadPath('setup_membership_notification_history')
-    page.click('.group-page-members-tab')
+    page.waitFor('.members-panel')
     page.click('.members-panel .v-list-item:first-child .membership-dropdown__button')
     page.waitFor('.membership-dropdown__notification-history .v-list-item-title')
+    page.expectText('.membership-dropdown__notification-history', 'Invitation delivery history')
     page.click('.membership-dropdown__notification-history .v-list-item-title')
-    page.expectText('.membership-notification-history', 'Please join the wider group discussion')
-    page.expectText('.membership-notification-history', "Accepted by recipient's mail server")
     page.expectText('.membership-notification-history', 'Invitation resent')
-    page.expectText('.membership-notification-history', 'No custom message')
+    page.expectText('.membership-notification-history .v-card-title', 'Invitation delivery history')
+    page.expectText('.membership-notification-history .v-card-subtitle', 'Emilio Estevez <emilio@example.com>')
+    page.expectCount('.membership-notification-history .v-expansion-panel', 7)
+    page.expectCount('.membership-notification-history [data-result="delivered"]', 1)
+    page.expectCount('.membership-notification-history [data-result="failed"]', 4)
+    page.expectNoElement('.membership-notification-history .v-expansion-panel-title[aria-expanded="true"]')
+    page.expectNoText('.membership-notification-history', 'Invitation history preview')
+    page.expectNoText('.membership-notification-history', '5.1.1 Recipient address does not exist')
+    page.expectText('.membership-notification-history', 'Delivery delay reported')
     test.saveScreenshot('tests/screenshots/membership_notification_history.png')
+
+    const bounced = '.membership-notification-history .v-expansion-panel[data-email-status="bounced"]'
+    page.click(`${bounced} .v-expansion-panel-title`)
+    page.expectText(bounced, '5.1.1 Recipient address does not exist')
+    page.expectText(bounced, 'Invitation history preview: bounced')
+    test.saveScreenshot('tests/screenshots/membership_notification_history_expanded.png')
+    test.sendKeys(`${bounced} .v-expansion-panel-title`, test.Keys.ENTER)
+    test.assert.attributeEquals(`${bounced} .v-expansion-panel-title`, 'aria-expanded', 'false')
+
+    const delivered = '.membership-notification-history .v-expansion-panel[data-email-status="delivered"]'
+    test.sendKeys(`${delivered} .v-expansion-panel-title`, test.Keys.ENTER)
+    page.expectText(delivered, 'Please join the wider group discussion')
+    page.expectText(delivered, "Accepted by recipient's mail server")
+    page.click('.membership-notification-history .v-expansion-panel:first-of-type .v-expansion-panel-title')
+    page.expectText('.membership-notification-history .v-expansion-panel:first-of-type', 'No custom message')
+    test.assert.attributeEquals(`${delivered} .v-expansion-panel-title`, 'aria-expanded', 'false')
+    page.resizeWindow(390, 844)
+    test.execute(function() {
+      const card = document.querySelector('.membership-notification-history')
+      return card.scrollWidth <= card.clientWidth
+    }, [], result => test.assert.ok(result.value, 'History fits a narrow viewport'))
+    test.saveScreenshot('tests/screenshots/membership_notification_history_mobile.png')
     page.click('.membership-notification-history .dismiss-modal-button')
     page.expectNoElement('.membership-notification-history')
   },

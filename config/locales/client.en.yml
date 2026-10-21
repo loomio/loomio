@@ -812,6 +812,10 @@ en:
     invite_to_wip_poll: Invite to give feedback
     invitations: Invitations
   membership_notification_history:
+    invitation_delivery_history: Invitation delivery history
+    delivery_result:
+      delivered: Delivered
+      failed: Failed
     explanation: Invitation dates stay the same when you invite someone again; this history shows each send and any recorded email feedback
     could_not_load_history: Could not load notification history
     no_invitations_recorded: No invitations recorded
