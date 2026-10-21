@@ -162,7 +162,8 @@ module Dev::Scenarios::Group
     create_group.add_member! emilio
     5.times do
       name = Faker::Name.name
-      email = ReceivedEmail.create(
+      create_pending_email(
+        group: create_group,
         body_html: "<html><body>hello everyone.</body></html>",
         headers: {
           from: "\"#{name}\" <#{Faker::Internet.email(name: name)}>",
@@ -171,7 +172,6 @@ module Dev::Scenarios::Group
         }
       )
     end
-    ReceivedEmailService.route_all
     redirect_to group_emails_path(create_group)
   end
 
@@ -187,7 +187,8 @@ module Dev::Scenarios::Group
     create_group.add_member! emilio
     5.times do
       name = Faker::Name.name
-      email = ReceivedEmail.create(
+      create_pending_email(
+        group: create_group,
         body_html: "<html><body>hello everyone.</body></html>",
         headers: {
           from: "\"#{name}\" <#{Faker::Internet.email(name: name)}>",
@@ -196,7 +197,6 @@ module Dev::Scenarios::Group
         }
       )
     end
-    ReceivedEmailService.route_all
     redirect_to group_emails_path(create_group)
   end
 

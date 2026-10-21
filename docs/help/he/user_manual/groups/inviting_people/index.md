@@ -1,10 +1,10 @@
 ---
 title: הזמנת אנשים
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/groups/inviting_people/index.md
+source_revision: 5116fecb738315af3037f660ba51fe2e39f8aad7
+source_file: docs/help/en/user_manual/groups/inviting_people/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-22'
 sections:
   introduction: 55a6bcc670aa6224
   send-invitations-via-email: bbc814cba35c9541
@@ -16,6 +16,7 @@ sections:
   managing-invitations: 25d2b33504493b14
   re-send-invitations: 76c7fc660f7e3d42
   cancelling-invitations: f3df8386eeda62f5
+  invitation-notification-history: 7b4538f731e0cef3
 generated:
   introduction: ff26ac83dc53bb33
   send-invitations-via-email: 97a63f6ec0ac8310
@@ -27,6 +28,7 @@ generated:
   managing-invitations: 4a03013bfa17a719
   re-send-invitations: 628d8fbb06d16308
   cancelling-invitations: de0e90559068982a
+  invitation-notification-history: d13292709bbf7bf4
 title_source: b926eb8921d85971
 title_generated: 1a6369a35ea0bd09
 ---
@@ -123,6 +125,12 @@ title_generated: 1a6369a35ea0bd09
 ![](group_invite_members_filter.png)
 
 ניתן גם להעניק לאנשים הרשאות ניהול או להגדיר את התפקיד שלהם בקבוצה (למשל "תמיכת מחשוב") לפני קבלת ההזמנה.
+
+<!-- translation-section: invitation-notification-history -->
+
+### היסטוריית מסירת הזמנות
+
+אם הודעת האימייל עם ההזמנה אינה מגיעה, רכזי הקבוצה יכולים לפתוח את **היסטוריית מסירת הזמנות** מתפריט שלוש הנקודות (**⋮**) לצד שם האדם בעמוד החברים, כדי לראות מתי נשלחו הזמנות ואילו בעיות מסירה תועדו.
 
 <!-- translation-section: re-send-invitations -->
 

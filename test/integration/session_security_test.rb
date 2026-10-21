@@ -65,6 +65,20 @@ class SessionSecurityTest < ActionDispatch::IntegrationTest
     assert_equal original_name, user.reload.name
   end
 
+  test 'clearing an email block requires a valid administrator session and CSRF token' do
+    administrator = users(:admin)
+    recipient = users(:member_normal)
+    authenticate(administrator)
+    record = EmailSuppressionService.record!(email: recipient.email, reason: 'complaint', source_key: 'test:csrf')
+
+    post clear_email_suppressions_admin_user_path(recipient), headers: { 'Origin' => 'https://untrusted.example' }
+    assert_response :unprocessable_entity
+    assert_nil record.reload.cleared_at
+    post clear_email_suppressions_admin_user_path(recipient), headers: csrf_headers
+    assert_redirected_to admin_user_path(recipient)
+    assert_equal administrator.id, record.reload.cleared_by_id
+  end
+
   private
 
   def authenticate(user)

@@ -1,10 +1,10 @@
 ---
 title: メンバーを招待する
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/groups/inviting_people/index.md
+source_revision: 5116fecb738315af3037f660ba51fe2e39f8aad7
+source_file: docs/help/en/user_manual/groups/inviting_people/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-22'
 sections:
   introduction: 55a6bcc670aa6224
   send-invitations-via-email: bbc814cba35c9541
@@ -16,6 +16,7 @@ sections:
   managing-invitations: 25d2b33504493b14
   re-send-invitations: 76c7fc660f7e3d42
   cancelling-invitations: f3df8386eeda62f5
+  invitation-notification-history: 7b4538f731e0cef3
 generated:
   introduction: d0472b30afa3ea26
   send-invitations-via-email: 060c3642105461e9
@@ -27,6 +28,7 @@ generated:
   managing-invitations: 6fdff47a1de2fe7e
   re-send-invitations: 72c721832ea9504b
   cancelling-invitations: b73b9af2ad261323
+  invitation-notification-history: 249f13a533f0ba1a
 title_source: b926eb8921d85971
 title_generated: 8443acb671cc4a96
 ---
@@ -123,6 +125,12 @@ title_generated: 8443acb671cc4a96
 ![](group_invite_members_filter.png)
 
 招待が承諾される前に、その人を管理者にしたり、グループ内での肩書き（「ITサポート」など）を設定したりすることもできます。
+
+<!-- translation-section: invitation-notification-history -->
+
+### 招待の配信履歴
+
+招待メールが届かない場合、グループの管理者は、メンバーページで対象者の名前の横にある三点メニュー（**⋮**）から**招待の配信履歴**を開き、招待が送信された日時と、記録された配信上の問題を確認できます。
 
 <!-- translation-section: re-send-invitations -->
 

@@ -3248,3 +3248,23 @@ es:
     discussion: discusión
     outcome: conclusión
     stance: voto
+  membership_notification_history:
+    invitation_delivery_history: Historial de entrega de invitaciones
+    email_delivery_blocked: "Loomio ha bloqueado el envío de correos a esta dirección"
+    delivery_result:
+      delivered: Entregada
+      failed: Fallida
+    could_not_load_history: No se pudo cargar el historial de notificaciones
+    no_invitations_recorded: No hay invitaciones registradas
+    membership_created: Invitación
+    membership_resent: Invitación reenviada
+    no_custom_message: Sin mensaje personalizado
+    pending: Correo pendiente
+    not_sent: No hay entregas de correo registradas
+    sent: Enviado al servicio de correo
+    delivered: Aceptado por el servidor de correo del destinatario
+    delayed: Retraso de entrega notificado
+    rejected: Correo rechazado
+    bounced: Rebote notificado
+    complained: Queja por spam notificada
+    skipped: Correo no enviado

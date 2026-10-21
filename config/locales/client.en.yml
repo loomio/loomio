@@ -811,6 +811,26 @@ en:
     invite_to_poll: Invite to vote
     invite_to_wip_poll: Invite to give feedback
     invitations: Invitations
+  membership_notification_history:
+    invitation_delivery_history: Invitation delivery history
+    email_delivery_blocked: Loomio has blocked email delivery to this address
+    delivery_result:
+      delivered: Delivered
+      failed: Failed
+    could_not_load_history: Could not load notification history
+    no_invitations_recorded: No invitations recorded
+    membership_created: Invitation
+    membership_resent: Invitation resent
+    no_custom_message: No custom message
+    pending: Email pending
+    not_sent: No email delivery recorded
+    sent: Submitted to email service
+    delivered: Accepted by recipient's mail server
+    delayed: Delivery delay reported
+    rejected: Email rejected
+    bounced: Bounce reported
+    complained: Spam complaint reported
+    skipped: Email not sent
   membership_dropdown:
     view_profile: View profile
     set_name_and_username: Set name and username

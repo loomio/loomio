@@ -3257,3 +3257,23 @@ pt_BR:
     discussion: discussão
     outcome: conclusão
     stance: voto
+  membership_notification_history:
+    invitation_delivery_history: Histórico de entrega de convites
+    email_delivery_blocked: "O Loomio bloqueou o envio de e-mails para este endereço"
+    delivery_result:
+      delivered: Entregue
+      failed: Falhou
+    could_not_load_history: Não foi possível carregar o histórico de notificações
+    no_invitations_recorded: Nenhum convite registrado
+    membership_created: Convite
+    membership_resent: Convite reenviado
+    no_custom_message: Sem mensagem personalizada
+    pending: E-mail pendente
+    not_sent: Nenhuma entrega de e-mail registrada
+    sent: Enviado ao serviço de e-mail
+    delivered: Aceito pelo servidor de e-mail do destinatário
+    delayed: Atraso na entrega informado
+    rejected: E-mail rejeitado
+    bounced: Devolução informada
+    complained: Denúncia de spam informada
+    skipped: E-mail não enviado

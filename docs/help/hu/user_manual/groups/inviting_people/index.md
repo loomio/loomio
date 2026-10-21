@@ -1,10 +1,10 @@
 ---
 title: Emberek meghívása
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/groups/inviting_people/index.md
+source_revision: 5116fecb738315af3037f660ba51fe2e39f8aad7
+source_file: docs/help/en/user_manual/groups/inviting_people/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-22'
 sections:
   introduction: 55a6bcc670aa6224
   send-invitations-via-email: bbc814cba35c9541
@@ -16,6 +16,7 @@ sections:
   managing-invitations: 25d2b33504493b14
   re-send-invitations: 76c7fc660f7e3d42
   cancelling-invitations: f3df8386eeda62f5
+  invitation-notification-history: 7b4538f731e0cef3
 generated:
   introduction: 14a78fc7073ec3b9
   send-invitations-via-email: 9dc04b9a8646890f
@@ -27,6 +28,7 @@ generated:
   managing-invitations: 59f083a75c1955b1
   re-send-invitations: ca919d118dd7d0ef
   cancelling-invitations: 938ac5db15840964
+  invitation-notification-history: 72bb4e9f3413db96
 title_source: b926eb8921d85971
 title_generated: cf71499adce945c9
 ---
@@ -123,6 +125,12 @@ A meghívók kezeléséhez nyisd meg a szűrő legördülő menüjét a csoporto
 ![](group_invite_members_filter.png)
 
 A meghívottakat adminisztrátorrá is teheted, vagy megadhatod a csoporton belüli megnevezésüket (például „Informatikai támogatás”), még mielőtt elfogadnák a meghívójukat.
+
+<!-- translation-section: invitation-notification-history -->
+
+### Meghívók kézbesítési előzményei
+
+Ha valaki nem kapja meg a meghívót tartalmazó e-mailt, a csoport koordinátorai a Tagok oldalon, a neve melletti hárompontos menüből (**⋮**) megnyithatják a **Meghívók kézbesítési előzményei** lehetőséget, hogy lássák, mikor küldték el a meghívókat, és milyen kézbesítési problémákat rögzítettek.
 
 <!-- translation-section: re-send-invitations -->
 

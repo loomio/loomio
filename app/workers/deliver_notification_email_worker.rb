@@ -9,7 +9,5 @@ class DeliverNotificationEmailWorker < ApplicationJob
     return unless NotificationService.group_enabled?(delivery.notification.subject)
 
     NotificationMailer.notification(delivery.id).deliver_now
-    delivery.update!(delivered_at: Time.current)
   end
-
 end

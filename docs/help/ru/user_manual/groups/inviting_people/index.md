@@ -1,10 +1,10 @@
 ---
 title: Приглашение людей
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/groups/inviting_people/index.md
+source_revision: 5116fecb738315af3037f660ba51fe2e39f8aad7
+source_file: docs/help/en/user_manual/groups/inviting_people/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-22'
 sections:
   introduction: 55a6bcc670aa6224
   send-invitations-via-email: bbc814cba35c9541
@@ -16,6 +16,7 @@ sections:
   managing-invitations: 25d2b33504493b14
   re-send-invitations: 76c7fc660f7e3d42
   cancelling-invitations: f3df8386eeda62f5
+  invitation-notification-history: 7b4538f731e0cef3
 generated:
   introduction: 541029ef1d775679
   send-invitations-via-email: eb2ddce01a036f18
@@ -27,6 +28,7 @@ generated:
   managing-invitations: 72836f65a61402d4
   re-send-invitations: 529d5e60443cc4d8
   cancelling-invitations: b97cbbdd64992533
+  invitation-notification-history: 5343a9ece8e14826
 title_source: b926eb8921d85971
 title_generated: 74f19aba73e43553
 ---
@@ -123,6 +125,12 @@ title_generated: 74f19aba73e43553
 ![](group_invite_members_filter.png)
 
 Вы также можете назначить людей администраторами или указать их должность в группе, например «ИТ-поддержка», ещё до того, как они примут приглашение.
+
+<!-- translation-section: invitation-notification-history -->
+
+### История доставки приглашений
+
+Если человек не получает письмо с приглашением, координаторы группы могут открыть **История доставки приглашений** в меню с тремя точками (**⋮**) рядом с его именем на странице **Участники**, чтобы посмотреть, когда отправлялись приглашения и какие проблемы с доставкой были зарегистрированы.
 
 <!-- translation-section: re-send-invitations -->
 

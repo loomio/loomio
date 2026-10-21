@@ -1,13 +1,18 @@
 <script lang="js">
-import AppConfig from '@/shared/services/app_config';
+import { useI18n } from 'vue-i18n';
 import Records from '@/shared/services/records';
 import EventBus from '@/shared/services/event_bus';
 import Flash from '@/shared/services/flash';
 import { debounce } from 'lodash-es';
 
 export default {
+  setup() {
+    const { t } = useI18n();
+    return { t };
+  },
+
   props: {
-    receivedEmail: Object,
+    pendingEmail: Object,
     group: Object,
     callbackFn: Function
   },
@@ -31,7 +36,7 @@ export default {
   methods: {
     submit(userId) {
       this.loading = true;
-      Records.receivedEmails.remote.postMember(this.receivedEmail.id, 'allow', {user_id: userId}).then(() => {
+      Records.pendingEmails.remote.postMember(this.pendingEmail.id, 'allow', {user_id: userId}).then(() => {
         EventBus.$emit('closeModal');
         Flash.success('email_to_group.email_released');
         this.callbackFn();
@@ -50,7 +55,7 @@ export default {
           exclude_types: 'group'
         }
       }).then((data) => {
-        this.users = Records.users.find(Array(data.memberships).map(membership => membership.user_id))
+        this.users = Records.users.find(data.memberships.map(membership => membership.user_id))
       });
     }, 250)
   }
@@ -66,7 +71,7 @@ v-card(:title="$t('email_to_group.add_alias')")
       p(v-t="'email_to_group.not_available_to_trial_or_demo'")
   template(v-else)
     .pa-4(v-if="!selectedUser")
-      p.text-medium-emphasis(v-t="{path: 'email_to_group.who_is_the_owner_of_email', args:{email: receivedEmail.senderEmail}}")
+      p.text-medium-emphasis {{ t('email_to_group.who_is_the_owner_of_email', {email: pendingEmail.senderEmail}) }}
       v-text-field(
         v-model="q"
         autofocus
@@ -80,8 +85,8 @@ v-card(:title="$t('email_to_group.add_alias')")
         v-list-item(@click="selectedUser = user") {{user.name}}
 
     .pa-4.text-medium-emphasis(v-if="selectedUser")
-      p(v-t="{path: 'email_to_group.is_name_the_owner_of_email', args: {name: selectedUser.name, email: receivedEmail.senderEmail}}")
-      p(v-t="{path: 'email_to_group.all_email_will_belong_to_name', args: {name: selectedUser.name, email: receivedEmail.senderEmail}}")
+      p {{ t('email_to_group.is_name_the_owner_of_email', {name: selectedUser.name, email: pendingEmail.senderEmail}) }}
+      p {{ t('email_to_group.all_email_will_belong_to_name', {name: selectedUser.name, email: pendingEmail.senderEmail}) }}
     v-card-actions(v-if="selectedUser")
       v-btn(@click="selectedUser = null")
         span(v-t="'common.action.cancel'")

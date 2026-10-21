@@ -64,7 +64,7 @@ class NotificationQueryTest < ActiveSupport::TestCase
   end
 
   test "operational notification subjects retain their own authorization" do
-    subject = ReceivedEmail.create!(group: groups(:group), headers: {}, body_text: "Unknown sender")
+    subject = create_pending_email(group: groups(:group), headers: {}, body_text: "Unknown sender")
     notification = Notification.create!(kind: "discussion_edited", actor: users(:admin), subject: subject)
 
     assert_equal [notification.id], accessible_ids(users(:admin), [notification])

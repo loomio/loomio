@@ -698,7 +698,6 @@ da:
       recommendation: Åbn Loomio i din browser og send din besked direkte.
     comment_rejected:
       subject: Dit svar blev ikke postet
-      reason: Dit svar blev ikke postet, fordi det er længere end trådens tegngrænse på %{count}
       recommendation: For at undgå yderligere problemer, åbn tråden og indtast din besked direkte
       open_thread: Åben tråd
   locale_names:

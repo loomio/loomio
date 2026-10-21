@@ -3220,3 +3220,23 @@ sv:
     discussion: diskussion
     outcome: slutsats
     stance: röst
+  membership_notification_history:
+    invitation_delivery_history: Leveranshistorik för inbjudningar
+    email_delivery_blocked: "Loomio har stoppat mejlleverans till den här adressen"
+    delivery_result:
+      delivered: Levererad
+      failed: Misslyckades
+    could_not_load_history: Kunde inte läsa in notishistoriken
+    no_invitations_recorded: Inga inbjudningar registrerade
+    membership_created: Inbjudan
+    membership_resent: Inbjudan skickad igen
+    no_custom_message: Inget eget meddelande
+    pending: Mejl väntar
+    not_sent: Ingen mejlleverans registrerad
+    sent: Överlämnat till mejltjänsten
+    delivered: Godkänt av mottagarens mejlserver
+    delayed: Leveransfördröjning rapporterad
+    rejected: Mejlet avvisat
+    bounced: Mejlstuds rapporterad
+    complained: Skräppostanmälan rapporterad
+    skipped: Mejlet skickades inte

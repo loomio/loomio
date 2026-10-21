@@ -3247,3 +3247,23 @@ de:
     discussion: Diskussion
     outcome: Fazit
     stance: Stimme
+  membership_notification_history:
+    invitation_delivery_history: Zustellverlauf der Einladung
+    email_delivery_blocked: "Loomio hat die E-Mail-Zustellung an diese Adresse gestoppt"
+    delivery_result:
+      delivered: Zugestellt
+      failed: Fehlgeschlagen
+    could_not_load_history: Benachrichtigungsverlauf konnte nicht geladen werden
+    no_invitations_recorded: Keine Einladungen erfasst
+    membership_created: Einladung
+    membership_resent: Einladung erneut gesendet
+    no_custom_message: Keine persönliche Nachricht
+    pending: E-Mail ausstehend
+    not_sent: Keine E-Mail-Zustellung erfasst
+    sent: An E-Mail-Dienst übergeben
+    delivered: Vom empfangenden Mailserver angenommen
+    delayed: Zustellverzögerung gemeldet
+    rejected: E-Mail abgelehnt
+    bounced: Unzustellbarkeit gemeldet
+    complained: Spam-Beschwerde gemeldet
+    skipped: E-Mail nicht gesendet

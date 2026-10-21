@@ -179,7 +179,7 @@ module HasRichText
   def self.strip_empty_paragraphs(text)
     fragment = Nokogiri::HTML::DocumentFragment.parse(text)
     fragment.css('p').each do |node|
-      if node.content.match?(/^[[:space:]]+$/)
+      if node.element_children.empty? && node.content.match?(/^[[:space:]]+$/)
         node.content = node.content.gsub(/^[[:space:]]+$/, '')
       end
     end

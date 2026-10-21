@@ -87,7 +87,6 @@ class CommentService
       )
     end
 
-    EventBus.broadcast('comment_update', comment, actor)
     MessageChannelService.publish_topic_model(comment)
     comment
   end

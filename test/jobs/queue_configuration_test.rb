@@ -24,7 +24,11 @@ class QueueConfigurationTest < ActiveSupport::TestCase
     job_classes += [ActiveStorage::AnalyzeJob, ActiveStorage::PurgeJob,
                     ActiveStorage::MirrorJob, ActiveStorage::TransformJob, ActiveStorage::PreviewImageJob,
                     ActionMailbox::RoutingJob, ActionMailbox::IncinerationJob]
-    queue_names = job_classes.map { |klass| klass.new.queue_name }
+    # Mail delivery jobs, including subclasses, resolve their queue from a mailer argument.
+    queue_names = job_classes.map do |klass|
+      job = klass <= ActionMailer::MailDeliveryJob ? klass.new("ForwardMailer") : klass.new
+      job.queue_name
+    end
     queue_names << ActionMailer::MailDeliveryJob.new("UserMailer").queue_name
     queue_names.uniq.each do |queue_name|
       job = ready_execution(queue_name)

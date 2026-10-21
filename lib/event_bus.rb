@@ -1,3 +1,5 @@
+# Synchronous hooks for optional Rails engines. loomio_subs consumes group_create,
+# group_destroy and loomio_hourly_tick even though core Loomio has no listeners.
 class EventBus
 
   def self.configure

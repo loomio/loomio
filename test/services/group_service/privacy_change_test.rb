@@ -41,7 +41,7 @@ class GroupService::PrivacyChangeTest < ActiveSupport::TestCase
     assert_not users(:alien).can?(:show, public_subgroup)
   end
 
-  test "privacy propagation failure rolls back parent subgroups and topics without broadcasting" do
+  test "privacy propagation failure rolls back parent subgroups and topics" do
     parent = groups(:group)
     parent.update!(group_privacy: 'open')
     subgroup = groups(:parent_join_subgroup)
@@ -59,11 +59,9 @@ class GroupService::PrivacyChangeTest < ActiveSupport::TestCase
       change
     end
 
-    EventBus.stub(:broadcast, ->(*) { flunk 'Rolled back privacy was broadcast' }) do
-      GroupService::PrivacyChange.stub(:new, failing_change) do
-        assert_raises RuntimeError do
-          GroupService.update(group: parent, params: {group_privacy: 'secret'}, actor: users(:admin))
-        end
+    GroupService::PrivacyChange.stub(:new, failing_change) do
+      assert_raises RuntimeError do
+        GroupService.update(group: parent, params: {group_privacy: 'secret'}, actor: users(:admin))
       end
     end
 

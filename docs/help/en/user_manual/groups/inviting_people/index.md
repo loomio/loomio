@@ -91,6 +91,12 @@ To manage invitations, open the filter/ drop down from the Members tab of your G
 
 You can also make people administrators or set their title (e.g. "IT Support") within the group before they accept their invitation.
 
+<!-- translation-section: invitation-notification-history -->
+
+### Invitation delivery history
+
+If someone isn't receiving their invitation email, group coordinators can open **Invitation delivery history** from the three dot menu (**⋮**) beside their name on the Members page to see when invitations were sent and any recorded delivery problems.
+
 <!-- translation-section: re-send-invitations -->
 
 ### Re-send invitations

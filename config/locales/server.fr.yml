@@ -722,7 +722,6 @@ fr:
       recommendation: Ouvrez Loomio dans votre navigateur et postez votre message directement.
     comment_rejected:
       subject: Votre réponse n'a pas été publiée
-      reason: Votre réponse n'a pas été publiée parce qu'elle dépasse la limite de %{count} caractères de la discussion
       recommendation: Pour éviter d'autres problèmes, ouvrez la discussion et saisissez votre message directement
       open_thread: Ouvrir la discussion
   locale_names:

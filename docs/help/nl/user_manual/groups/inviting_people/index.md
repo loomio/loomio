@@ -1,10 +1,10 @@
 ---
 title: Mensen uitnodigen
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/groups/inviting_people/index.md
+source_revision: 5116fecb738315af3037f660ba51fe2e39f8aad7
+source_file: docs/help/en/user_manual/groups/inviting_people/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-22'
 sections:
   introduction: 55a6bcc670aa6224
   send-invitations-via-email: bbc814cba35c9541
@@ -16,6 +16,7 @@ sections:
   managing-invitations: 25d2b33504493b14
   re-send-invitations: 76c7fc660f7e3d42
   cancelling-invitations: f3df8386eeda62f5
+  invitation-notification-history: 7b4538f731e0cef3
 generated:
   introduction: eaa85091715b10f2
   send-invitations-via-email: 39a05a1b8e15b3f4
@@ -27,6 +28,7 @@ generated:
   managing-invitations: 6f432d1cee56f5f5
   re-send-invitations: 75a897d6e1d7ffb1
   cancelling-invitations: c8ff43337206bd28
+  invitation-notification-history: 605e53488eed6c34
 title_source: b926eb8921d85971
 title_generated: 5cf9fd03683405f5
 ---
@@ -123,6 +125,12 @@ Om uitnodigingen te beheren, open je het filtermenu op het tabblad Leden van je 
 ![](group_invite_members_filter.png)
 
 Je kunt mensen ook beheerder maken of hun titel binnen de groep instellen (bijvoorbeeld "IT-ondersteuning") voordat ze hun uitnodiging accepteren.
+
+<!-- translation-section: invitation-notification-history -->
+
+### Bezorggeschiedenis van uitnodigingen
+
+Als iemand de uitnodigingsmail niet ontvangt, kunnen groepscoördinatoren **Bezorggeschiedenis van uitnodigingen** openen via het menu met drie puntjes (**⋮**) naast de naam op de pagina Leden om te zien wanneer uitnodigingen zijn verstuurd en welke bezorgproblemen zijn vastgelegd.
 
 <!-- translation-section: re-send-invitations -->
 

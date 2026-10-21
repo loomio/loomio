@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Views::ReceivedEmailMailer < Views::NotificationMailer::Layout
+class Views::PendingEmailMailer < Views::NotificationMailer::Layout
 
   def initialize(topic_item:, recipient:, event_key:)
     @topic_item = topic_item

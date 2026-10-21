@@ -5,6 +5,7 @@ class NotificationDelivery < ApplicationRecord
 
   belongs_to :notification
   belongs_to :recipient, polymorphic: true
+  has_many :events, class_name: 'NotificationDeliveryEvent', dependent: :delete_all
 
   validates :channel, inclusion: { in: CHANNELS }
   validates :notification_id,
@@ -15,5 +16,9 @@ class NotificationDelivery < ApplicationRecord
 
   def viewed?
     viewed_at.present?
+  end
+
+  def email_status
+    events.max_by { |event| [event.occurred_at, event.id] }&.kind || (delivered_at ? 'sent' : 'pending')
   end
 end

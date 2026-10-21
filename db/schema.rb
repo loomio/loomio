@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_10_09_000000) do
+ActiveRecord::Schema[8.1].define(version: 2026_10_21_000003) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "hstore"
@@ -33,8 +33,10 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_09_000000) do
     t.datetime "created_at", null: false
     t.string "message_checksum", null: false
     t.string "message_id", null: false
+    t.datetime "processing_completed_at"
     t.integer "status", default: 0, null: false
     t.datetime "updated_at", null: false
+    t.index ["message_id", "id"], name: "index_inbound_emails_on_message_id_and_id"
     t.index ["message_id", "message_checksum"], name: "index_action_mailbox_inbound_emails_uniqueness", unique: true
   end
 
@@ -218,6 +220,24 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_09_000000) do
     t.index ["tags"], name: "index_discussions_on_tags", using: :gin
     t.index ["template"], name: "index_discussions_on_template", where: "(template IS TRUE)"
     t.index ["topic_id"], name: "index_discussions_on_topic_id"
+  end
+
+  create_table "email_suppressions", force: :cascade do |t|
+    t.string "clear_method"
+    t.datetime "cleared_at"
+    t.bigint "cleared_by_id"
+    t.datetime "created_at", null: false
+    t.string "email_sha256", null: false
+    t.bigint "notification_delivery_event_id"
+    t.datetime "occurred_at"
+    t.string "reason", null: false
+    t.string "source_key", null: false
+    t.datetime "updated_at", null: false
+    t.index ["cleared_by_id"], name: "index_email_suppressions_on_cleared_by_id"
+    t.index ["email_sha256", "id"], name: "index_email_suppressions_on_email_sha256_and_id"
+    t.index ["email_sha256"], name: "index_email_suppressions_active_address", where: "(cleared_at IS NULL)"
+    t.index ["notification_delivery_event_id"], name: "index_email_suppressions_on_notification_delivery_event_id"
+    t.index ["source_key"], name: "index_email_suppressions_on_source_key", unique: true
   end
 
   create_table "forward_email_rules", force: :cascade do |t|
@@ -488,16 +508,33 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_09_000000) do
     t.string "channel", null: false
     t.datetime "created_at", null: false
     t.datetime "delivered_at"
+    t.string "email_message_id"
     t.bigint "notification_id", null: false
+    t.string "provider_message_id"
     t.bigint "recipient_id", null: false
     t.string "recipient_type", null: false
     t.jsonb "translation_values", default: {}, null: false
     t.datetime "updated_at", null: false
     t.datetime "viewed_at"
+    t.index ["email_message_id"], name: "index_notification_deliveries_on_email_message_id", unique: true
     t.index ["notification_id", "channel", "recipient_type", "recipient_id"], name: "index_notification_deliveries_on_identity", unique: true
     t.index ["notification_id"], name: "index_notification_deliveries_on_notification_id"
+    t.index ["provider_message_id"], name: "index_notification_deliveries_on_provider_message_id"
     t.index ["recipient_type", "recipient_id"], name: "index_notification_deliveries_on_recipient"
     t.check_constraint "channel::text = ANY (ARRAY['in_app'::character varying::text, 'email'::character varying::text, 'push'::character varying::text, 'chatbot'::character varying::text])", name: "notification_deliveries_channel"
+  end
+
+  create_table "notification_delivery_events", force: :cascade do |t|
+    t.string "bounce_type"
+    t.datetime "created_at", null: false
+    t.text "detail"
+    t.string "kind", null: false
+    t.bigint "notification_delivery_id", null: false
+    t.datetime "occurred_at", null: false
+    t.string "source_key", null: false
+    t.datetime "updated_at", null: false
+    t.index ["notification_delivery_id", "source_key"], name: "index_notification_delivery_events_on_source", unique: true
+    t.index ["notification_delivery_id"], name: "index_notification_delivery_events_on_notification_delivery_id"
   end
 
   create_table "notifications", force: :cascade do |t|
@@ -587,6 +624,19 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_09_000000) do
     t.bigint "user_id", null: false
     t.index ["external_id"], name: "index_passkey_credentials_on_external_id", unique: true
     t.index ["user_id"], name: "index_passkey_credentials_on_user_id"
+  end
+
+  create_table "pending_emails", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.bigint "group_id", null: false
+    t.bigint "inbound_email_id", null: false
+    t.string "sender_email"
+    t.string "sender_name"
+    t.integer "status", default: 0, null: false
+    t.string "subject"
+    t.datetime "updated_at", null: false
+    t.index ["group_id"], name: "index_pending_emails_on_group_id"
+    t.index ["inbound_email_id"], name: "index_pending_emails_on_inbound_email_id", unique: true
   end
 
   create_table "pg_search_documents", force: :cascade do |t|
@@ -801,21 +851,6 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_09_000000) do
     t.index ["created_at"], name: "index_reactions_on_created_at"
     t.index ["reactable_id", "reactable_type"], name: "index_reactions_on_reactable_id_and_reactable_type"
     t.index ["user_id"], name: "index_reactions_on_user_id"
-  end
-
-  create_table "received_emails", force: :cascade do |t|
-    t.string "body_html"
-    t.string "body_text"
-    t.datetime "created_at", null: false
-    t.boolean "dkim_valid", default: false, null: false
-    t.integer "group_id"
-    t.hstore "headers", default: {}, null: false
-    t.string "message_id"
-    t.boolean "released", default: false, null: false
-    t.boolean "spf_valid", default: false, null: false
-    t.datetime "updated_at", null: false
-    t.index ["group_id"], name: "index_received_emails_on_group_id"
-    t.index ["message_id"], name: "index_received_emails_on_message_id", unique: true
   end
 
   create_table "sessions", force: :cascade do |t|
@@ -1263,9 +1298,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_09_000000) do
     t.string "avatar_initials", limit: 255
     t.string "avatar_kind", limit: 255, default: "initials", null: false
     t.boolean "bot", default: false, null: false
-    t.integer "bounces_count", default: 0, null: false
     t.string "city"
-    t.integer "complaints_count", default: 0, null: false
     t.string "content_locale"
     t.string "country"
     t.datetime "created_at", precision: nil
@@ -1340,6 +1373,8 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_09_000000) do
   add_foreign_key "anonymous_poll_voters", "users", column: "inviter_id"
   add_foreign_key "anonymous_poll_voters", "users", column: "voter_id"
   add_foreign_key "discussions", "topics", deferrable: :deferred
+  add_foreign_key "email_suppressions", "notification_delivery_events", on_delete: :nullify
+  add_foreign_key "email_suppressions", "users", column: "cleared_by_id", on_delete: :nullify
   add_foreign_key "group_follows", "groups", on_delete: :cascade
   add_foreign_key "group_follows", "users", on_delete: :cascade
   add_foreign_key "group_handle_redirects", "groups"
@@ -1357,15 +1392,17 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_09_000000) do
   add_foreign_key "mobile_relay_authorizations", "mobile_devices", on_delete: :cascade
   add_foreign_key "mobile_web_session_tickets", "mobile_devices", on_delete: :cascade
   add_foreign_key "notification_deliveries", "notifications", on_delete: :cascade
+  add_foreign_key "notification_delivery_events", "notification_deliveries", on_delete: :cascade
   add_foreign_key "notifications", "users", column: "actor_id", on_delete: :nullify
   add_foreign_key "outcomes", "polls"
   add_foreign_key "passkey_challenges", "users", on_delete: :cascade
   add_foreign_key "passkey_credentials", "users"
+  add_foreign_key "pending_emails", "action_mailbox_inbound_emails", column: "inbound_email_id"
+  add_foreign_key "pending_emails", "groups", on_delete: :cascade
   add_foreign_key "poll_options", "polls", on_delete: :cascade
   add_foreign_key "polls", "topics", deferrable: :deferred
   add_foreign_key "push_subscriptions", "sessions", on_delete: :cascade
   add_foreign_key "push_subscriptions", "users", on_delete: :cascade
-  add_foreign_key "received_emails", "groups", on_delete: :cascade
   add_foreign_key "sessions", "users"
   add_foreign_key "solid_queue_batch_executions", "solid_queue_batches", column: "batch_id", on_delete: :cascade
   add_foreign_key "solid_queue_batch_executions", "solid_queue_jobs", column: "job_id", on_delete: :cascade

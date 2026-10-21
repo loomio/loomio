@@ -1,10 +1,4 @@
-class ReceivedEmailService
-  class SentToSelfError < StandardError
-    def initialize(email)
-      super("Email sent to self: #{email.inspect}")
-    end
-  end
-
+class InboundEmailService
   def self.refresh_forward_email_rules
     forward_email_rules = File.readlines(Rails.root.join("db/default_forward_email_rules.txt")).map(&:chomp).map do |handle|
       {handle: handle, email: "#{handle}@#{ENV['REPLY_HOSTNAME']}"}
@@ -16,57 +10,74 @@ class ReceivedEmailService
     end
   end
 
-  def self.route_all
-    ReceivedEmail.unreleased.where(group_id: nil).each do |email|
-      route(email)
-    end
-  end
-
   def self.banned_sender_hosts
     ENV.slice('REPLY_HOSTNAME', 'CANONICAL_HOST').values.compact.map(&:downcase)
   end
 
-  def self.route(email)
-    return nil if email.released # email will be cleaned up by the cron job
+  # Process the first stored source for each Message-ID. Relay retries may have
+  # different checksums; serialize them and commit domain changes with the
+  # completion marker so failures can retry without duplicating a thread.
+  def self.process(inbound_email)
+    ActionMailbox::InboundEmail.transaction do
+      connection = ActionMailbox::InboundEmail.connection
+      key = connection.quote("inbound-email:#{inbound_email.message_id}")
+      connection.execute("SELECT pg_advisory_xact_lock(hashtextextended(#{key}, 0))")
+      source = ActionMailbox::InboundEmail.where(message_id: inbound_email.message_id)
+        .order(Arel.sql('processing_completed_at IS NULL'), :id).first!
+      return source.bounced? ? :bounced : :delivered if source.processing_completed_at
 
-    # Ensure we have a sender for throttling and replies
-    return email.destroy unless email.sender_email
+      message = InboundEmailMessage.new(source)
+      result = if EmailFeedbackService.feedback_sender?(message)
+        EmailFeedbackService.process(source)
+        :delivered
+      else
+        route(message)
+      end
+      attributes = {processing_completed_at: Time.current}
+      # The current mailbox owns its status transition and cleanup job. Only a
+      # retry using another receipt must also finish the original source.
+      attributes[:status] = result == :bounced ? :bounced : :delivered if source.id != inbound_email.id
+      source.update!(attributes)
+      result
+    end
+  end
+
+  def self.retry_pending
+    aliases = MemberEmailAlias.blocked
+      .where('member_email_aliases.group_id = pending_emails.group_id')
+      .where('member_email_aliases.email = pending_emails.sender_email')
+    PendingEmail.blocked.where.not(aliases.arel.exists).find_each { |pending| approve(pending) }
+  end
+
+  def self.approve(pending)
+    pending.with_lock do
+      result = route_to_group(pending.message, pending.group)
+      pending.destroy! unless result == :pending
+    end
+  end
+
+  def self.route(email)
+    return :bounced unless email.sender_email && email.is_addressed_to_loomio? && !email.is_auto_response?
 
     # Replies sent to the notifications "From" address → send a delivery-failure notice (throttled)
     if email.sent_to_notifications_address?
       if ThrottleService.can?(key: 'bounce', id: email.sender_email.downcase, max: 1, per: 'hour')
         Rails.logger.info("email bounced");
-        ForwardMailer.bounce(to: email.sender_name_and_email).deliver_now
+        ForwardMailer.bounce(to: email.sender_name_and_email).deliver_later
       else
         Rails.logger.info("bounce throttled for #{email.sender_email}");
       end
-      return email.destroy
-    end
-
-    # Bounce handling
-    if email.is_bounce? && email.bounced_address.present?
-      Rails.logger.info("bounce email received for #{email.bounced_address}")
-      User.where(email: email.bounced_address).update_all("bounces_count = bounces_count + 1")
-      email.update(released: true)
-      return
-    end
-
-    # Complaints handling
-    if email.is_complaint? && email.complainer_address.present?
-      Rails.logger.info("complaint email received from #{email.complainer_address}")
-      User.where(email: email.complainer_address).update_all("complaints_count = complaints_count + 1")
-      email.update(released: true)
-      return
+      return :bounced
     end
 
     # Block banned sender hostnames early
     if banned_sender_hosts.include? email.sender_hostname.downcase
       Rails.logger.info("banned sender_hostname: #{email.sender_hostname}")
-      return email.destroy
+      return :bounced
     end
 
     # Require a valid Loomio route address from here
-    return email.destroy unless email.route_address
+    return :bounced unless email.route_address
 
     # Handle personal email-to-thread and email-to-group routes first
     case email.route_path
@@ -74,16 +85,16 @@ class ReceivedEmailService
       # personal email-to-thread, eg. d=100&k=asdfghjkl&u=999@mail.loomio.com
       Rails.logger.info("creating comment from email for #{email.sender_email}");
       create_comment_from_email(email)
-      email.update_attribute(:released, true)
-      return
+      return :delivered
     when /[^\s]+\+u=.+&k=.+/
       # personal email-to-group, eg. enspiral+u=99&k=adsfghjl@mail.loomio.com
       if AppConfig.app_features[:thread_from_mail]
-        discussion = DiscussionService.create(params: discussion_params(email), actor: actor_from_email(email))
+        group = group_from_route_path(parse_route_params(email.route_path).fetch('handle'))
+        actor = actor_from_email(email)
+        discussion = DiscussionService.create(params: discussion_params(email, group: group), actor: actor)
         raise ActiveRecord::RecordInvalid, discussion if discussion.invalid?
 
-        email.update_attribute(:released, true)
-        return
+        return :delivered
       end
     end
 
@@ -97,44 +108,19 @@ class ReceivedEmailService
         subject: email.subject,
         body_text: email.body_text,
         body_html: email.body_html
-      ).deliver_now
-      return email.update_attribute(:released, true)
+      ).deliver_later
+      return :delivered
     end
 
-    # Group by handle
     if group = group_from_route_path(email.route_path)
-      unless address_is_blocked(email, group)
-        # This route authenticates the actor solely from the (spoofable) From:
-        # header — so refuse to auto-author when the relay says the sender
-        # domain failed SPF/DKIM/DMARC. Treat as an unrecognised sender.
-        if email.sender_authentication_failed?
-          Rails.logger.info("rejecting unauthenticated sender for route: #{email.sender_email}, #{email.route_path}")
-          assign_group_and_notify_unknown_sender!(email, group)
-          return
-        end
-        if actor = actor_from_email_and_group(email, group)
-          email.update!(group: group)
-          Rails.logger.info("creating discussion from email: #{email.route_path}")
-          discussion = DiscussionService.create(params: discussion_params(email), actor: actor)
-          raise ActiveRecord::RecordInvalid, discussion if discussion.invalid?
-
-          return email.update_attribute(:released, true)
-        else
-          Rails.logger.info("unrecognised sender for route: #{email.sender_email}, #{email.route_path}")
-          assign_group_and_notify_unknown_sender!(email, group)
-          return
-        end
-      else
-        Rails.logger.info("email address blocked: #{email.sender_email}, group_id: #{group.id}")
-        return
-      end
+      return route_to_group(email, group)
     end
 
     # Default: no suitable route
     Rails.logger.info("no suitable route for address: #{email.route_path}")
-    return email.destroy
+    return :bounced
   rescue CanCan::AccessDenied, ActiveRecord::RecordNotFound
-    # TODO handle when user is not allowed to comment or create discussion
+    :bounced
   end
 
   def self.extract_reply_body(text, author_name = nil)
@@ -149,21 +135,41 @@ class ReceivedEmailService
     text.strip
   end
 
-  def self.delete_old_emails
-    ReceivedEmail.where("created_at < ?", 60.days.ago).destroy_all
-  end
-
   private
 
-  def self.assign_group_and_notify_unknown_sender!(email, group)
-    ReceivedEmail.transaction do
-      email.update!(group: group)
-      NotificationService.create!(
-        kind: "unknown_sender",
-        subject: email,
-        actor: nil
-      )
+  # The queued group is the destination of a held message, even if its old
+  # handle is later reassigned. Approval must never reroute to another group.
+  def self.route_to_group(email, group)
+    return :bounced unless Group.enabled.exists?(group.id)
+
+    if address_is_blocked(email, group)
+      hold(email, group, status: :blocked)
+    elsif email.sender_authentication_failed?
+      hold(email, group, status: :pending)
+    elsif actor = actor_from_email_and_group(email, group)
+      discussion = DiscussionService.create(params: discussion_params(email, group: group), actor: actor)
+      raise ActiveRecord::RecordInvalid, discussion if discussion.invalid?
+
+      :delivered
+    else
+      hold(email, group, status: :pending)
     end
+  rescue CanCan::AccessDenied
+    :bounced
+  end
+
+  def self.hold(email, group, status:)
+    pending = PendingEmail.find_or_initialize_by(inbound_email: email.inbound_email)
+    return :pending if pending.persisted? && pending.status == status.to_s
+
+    pending.assign_attributes(group: group, status: status)
+    pending.save!
+    if pending.pending?
+      NotificationService.create!(kind: 'unknown_sender', subject: pending, actor: nil)
+    else
+      pending.notifications.destroy_all
+    end
+    :pending
   end
 
   def self.reply_split_points(author_name = nil)
@@ -228,9 +234,7 @@ class ReceivedEmailService
       GroupHandleRedirect.find_by(handle: route_path)&.group
   end
 
-  def self.discussion_params(email)
-    params = parse_route_params(email.route_path)
-    group = group_from_route_path(params['handle'] || email.route_path)
+  def self.discussion_params(email, group:)
     group || raise(ActiveRecord::RecordNotFound)
     {
       group_id: group.id,
@@ -238,7 +242,7 @@ class ReceivedEmailService
       title: email.subject,
       body: email.full_body,
       body_format: email.body_format,
-      files: email.attachments.map {|a| a.blob },
+      files: email.files,
       max_depth: 3
     }.compact
   end
@@ -271,18 +275,23 @@ class ReceivedEmailService
       parent_type: parent_type,
       body: email.reply_body,
       body_format: 'md',
-      files: email.attachments.map {|a| a.blob }
+      files: email.files
     }.compact
   end
 
   def self.create_comment_from_email(email)
-    comment = CommentService.create(comment: Comment.new(comment_params(email)), actor: actor_from_email(email))
+    actor = actor_from_email(email)
+    comment = Comment.new(comment_params(email))
+    CommentService.create(comment: comment, actor: actor)
     return comment if comment.errors.empty?
 
     Rails.logger.info("email comment invalid: #{comment.errors.full_messages.join(', ')}")
     send_comment_rejected_email(email, comment)
     nil
   rescue ActiveRecord::RecordInvalid => e
+    # Failures in dependent records must roll back and retry, not reject the reply.
+    raise unless e.record.equal?(comment)
+
     Rails.logger.info("email comment invalid: #{e.record.errors.full_messages.join(', ')}")
     send_comment_rejected_email(email, e.record)
     nil
@@ -291,6 +300,8 @@ class ReceivedEmailService
   def self.send_comment_rejected_email(email, comment)
     return unless ThrottleService.can?(key: 'comment_rejected', id: email.sender_email.downcase, max: 1, per: 'hour')
 
-    ForwardMailer.comment_rejected(to: email.sender_name_and_email, comment: comment).deliver_now
+    ForwardMailer.comment_rejected(
+      to: email.sender_name_and_email, topic: comment.topic, validation_messages: comment.errors.full_messages
+    ).deliver_later
   end
 end

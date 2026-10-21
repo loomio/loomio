@@ -3239,3 +3239,23 @@ ca:
     discussion: discussió
     outcome: conclusió
     stance: vot
+  membership_notification_history:
+    invitation_delivery_history: Historial de lliurament d'invitacions
+    email_delivery_blocked: "Loomio ha bloquejat l'enviament de correus a aquesta adreça"
+    delivery_result:
+      delivered: Lliurada
+      failed: Fallida
+    could_not_load_history: No s'ha pogut carregar l'historial de notificacions
+    no_invitations_recorded: No hi ha invitacions registrades
+    membership_created: Invitació
+    membership_resent: Invitació reenviada
+    no_custom_message: Sense missatge personalitzat
+    pending: Correu pendent
+    not_sent: Cap lliurament de correu registrat
+    sent: Enviat al servei de correu
+    delivered: Acceptat pel servidor de correu del destinatari
+    delayed: Retard de lliurament notificat
+    rejected: Correu rebutjat
+    bounced: Retorn notificat
+    complained: Queixa per correu brossa notificada
+    skipped: Correu no enviat

@@ -342,12 +342,14 @@ module Dev::FakeDataHelper
     }.merge(args))
   end
 
-  def fake_received_email(args = {})
-    ReceivedEmail.new({
-      sender_email: Faker::Internet.email,
-      subject: Faker::ChuckNorris.fact,
-      body: "FORWARDED MESSAGE------ TO: Mary <mary@example.com>, beth@example.com, Tim <tim@example.com> SUBJECT: We're having an argument! blahblahblah",
-    })
+  def create_pending_email(group:, headers:, body_text: nil, body_html: nil)
+    mail = Mail.new
+    headers.each { |key, value| mail[key] = value }
+    mail.text_part = Mail::Part.new(content_type: 'text/plain; charset=UTF-8', body: body_text.to_s)
+    mail.html_part = Mail::Part.new(content_type: 'text/html; charset=UTF-8', body: body_html) if body_html
+    source = ActionMailbox::InboundEmail.create_and_extract_message_id!(mail.encoded, status: :delivered)
+    source.update!(processing_completed_at: Time.current)
+    PendingEmail.create!(group: group, inbound_email: source)
   end
 
   def create_group_with_members

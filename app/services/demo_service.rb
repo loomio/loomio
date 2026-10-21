@@ -54,7 +54,6 @@ class DemoService
     end
 
     Sentry.metrics.count("demo.start")
-    EventBus.broadcast("demo_started", actor)
     group
   end
 

@@ -10,6 +10,32 @@ class Api::V1::MembershipsControllerTest < ActionController::TestCase
     sign_in @user
   end
 
+  test "member lists omit email block status without querying suppressions for any role" do
+    blocked = users(:member_normal)
+    unblocked = users(:member_loud)
+    EmailSuppressionService.record!(email: blocked.email, reason: 'complaint', source_key: 'test:member-list')
+    memberships(:user_membership).update!(admin: true)
+    queries = []
+    callback = ->(_name, _start, _finish, _id, payload) { queries << payload[:sql] if payload[:sql].include?('email_suppressions') }
+
+    [users(:member), @user, @admin].each do |viewer|
+      sign_in viewer
+      queries.clear
+      ActiveSupport::Notifications.subscribed(callback, 'sql.active_record') do
+        get :index, params: {group_id: @test_group.id, user_ids: [blocked.id, unblocked.id]}
+      end
+      assert_response :success
+      assert_empty queries
+      payloads = response.parsed_body.fetch('users').index_by { |user| user.fetch('id') }
+      [blocked, unblocked].each do |user|
+        payload = payloads.fetch(user.id)
+        %w[email_delivery_blocked email_suppressions bounces_count complaints_count].each do |key|
+          refute payload.key?(key), "unexpected #{key} for viewer #{viewer.id}"
+        end
+      end
+    end
+  end
+
   test "join group responds with the created membership" do
     group = Group.create!(
       name: "Open group #{SecureRandom.hex(4)}",

@@ -32,7 +32,7 @@ import TagRecordsInterface from '@/shared/interfaces/tag_records_interface';
 import TopicRecordsInterface from '@/shared/interfaces/topic_records_interface';
 import TaskRecordsInterface from '@/shared/interfaces/task_records_interface';
 import WebhookRecordsInterface from '@/shared/interfaces/webhook_records_interface';
-import ReceivedEmailRecordsInterface from '@/shared/interfaces/received_email_records_interface';
+import PendingEmailRecordsInterface from '@/shared/interfaces/pending_email_records_interface';
 
 const db      = new loki('default.db');
 const records = new RecordStore(db);
@@ -67,7 +67,7 @@ records.addRecordsInterface(TagRecordsInterface);
 records.addRecordsInterface(TopicRecordsInterface);
 records.addRecordsInterface(TaskRecordsInterface);
 records.addRecordsInterface(WebhookRecordsInterface);
-records.addRecordsInterface(ReceivedEmailRecordsInterface);
+records.addRecordsInterface(PendingEmailRecordsInterface);
 
 AppConfig.records = records;
 export default records;

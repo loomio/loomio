@@ -692,7 +692,6 @@ sl:
       recommendation: Prosimo, odprite Loomio v brskalniku in objavite svoje sporočilo neposredno.
     comment_rejected:
       subject: Vaš odgovor ni bil objavljen
-      reason: Vaš odgovor ni bil objavljen, ker presega omejitev znakov %{count} v temi.
       recommendation: Da se izognete nadaljnjim težavam, odprite nit in neposredno vnesite svoje sporočilo.
       open_thread: Odpri nit
   locale_names:

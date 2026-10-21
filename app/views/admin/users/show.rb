@@ -8,19 +8,21 @@ class Views::Admin::Users::Show < Views::Admin::Layout
 
   DIAGNOSTIC_ATTRIBUTE_KEYS = %i[
     created_at updated_at sign_in_count current_sign_in_at last_sign_in_at last_seen_at
-    failed_attempts locked_at complaints_count bounces_count legal_accepted_at
+    failed_attempts locked_at legal_accepted_at
     time_zone date_time_pref
   ].freeze
 
-  def initialize(user:)
+  def initialize(user:, provider_status: nil)
     super(title: user.name)
     @user = user
+    @provider_status = provider_status
   end
 
   def view_template
     page_header(@user.name, action_label: "Edit user", action_path: edit_admin_user_path(@user))
     panel("Account") { definition_list(@user, ACCOUNT_ATTRIBUTE_KEYS) }
     panel("Diagnostics") { definition_list(@user, DIAGNOSTIC_ATTRIBUTE_KEYS) }
+    render_email_suppressions
     render_memberships
     render_identities
     render_notifications
@@ -28,6 +30,37 @@ class Views::Admin::Users::Show < Views::Admin::Layout
   end
 
   private
+
+  def render_email_suppressions
+    panel("Loomio email delivery blocks") do
+      records = EmailSuppression.for_address(@user.email).includes(:notification_delivery_event).order(id: :desc).limit(30)
+      p { "Showing up to 30 records for the current email address. Signing in with a password, email code, or email link clears active Loomio blocks for this address." }
+      table(class: "admin-table") do
+        thead { tr { [ "Reason", "Reported", "Delivery", "Cleared", "Cleared by", "Method" ].each { |heading| th { heading } } } }
+        tbody do
+          records.each do |record|
+            tr do
+              td { record.reason.humanize }
+              td { record.occurred_at ? record.occurred_at.to_s : "Unknown (legacy block)" }
+              td { value(record.notification_delivery_event&.notification_delivery_id) }
+              td { record.cleared_at ? record.cleared_at.to_s : "Active" }
+              td { value(record.cleared_by_id) }
+              td { value(record.clear_method) }
+            end
+          end
+        end
+      end
+      p { "Your email provider may apply its own suppression. Clearing a Loomio block does not remove a provider block." }
+      if ENV['SES_SUPPRESSION_REGION'].present? && @user.email.present?
+        button_to "Check SES account suppression", check_email_provider_admin_user_path(@user), method: :post, class: "admin-button admin-button--secondary"
+      end
+      p { @provider_status } if @provider_status
+      if @user.email_delivery_blocked?
+        button_to "Clear Loomio email delivery blocks", clear_email_suppressions_admin_user_path(@user), method: :post,
+          class: "admin-button", form: { data: { confirm: "Clear Loomio blocks for #{@user.email}?" } }
+      end
+    end
+  end
 
   def render_memberships
     memberships = @user.all_memberships.includes(:group).order(:id).to_a

@@ -103,7 +103,6 @@ class UserService
       user.memberships.update_all(membership_attributes)
       user.topic_readers.update_all(membership_attributes)
     end
-    EventBus.broadcast('user_set_volume', user, actor, params)
   end
 
   def self.update(user:, actor:, params:)
@@ -126,7 +125,6 @@ class UserService
       rotate_credentials_after_password_change(user)
       Sentry.metrics.count("user.password_changed")
     end
-    EventBus.broadcast('user_update', user, actor, params)
     ReindexAuthorWorker.perform_later(user.id) if user.name_previously_changed?
     user
   end
@@ -142,7 +140,6 @@ class UserService
     end
 
     user.update_columns(time_zone: time_zone, updated_at: Time.current)
-    EventBus.broadcast('user_update', user, actor, { time_zone: time_zone })
     user
   end
 
@@ -184,6 +181,5 @@ class UserService
     end
     user.experiences[name] = value
     user.save!
-    EventBus.broadcast('user_save_experience', user, actor, params)
   end
 end

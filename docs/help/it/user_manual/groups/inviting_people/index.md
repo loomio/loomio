@@ -1,10 +1,10 @@
 ---
 title: Invitare persone
-source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
-source_file: docs/en/user_manual/groups/inviting_people/index.md
+source_revision: 5116fecb738315af3037f660ba51fe2e39f8aad7
+source_file: docs/help/en/user_manual/groups/inviting_people/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-22'
 sections:
   introduction: 55a6bcc670aa6224
   send-invitations-via-email: bbc814cba35c9541
@@ -16,6 +16,7 @@ sections:
   managing-invitations: 25d2b33504493b14
   re-send-invitations: 76c7fc660f7e3d42
   cancelling-invitations: f3df8386eeda62f5
+  invitation-notification-history: 7b4538f731e0cef3
 generated:
   introduction: b7e5d4c88511ea42
   send-invitations-via-email: a16bf0ed8f846e10
@@ -27,6 +28,7 @@ generated:
   managing-invitations: 4f90b479001a119e
   re-send-invitations: 56f7a31c293789ed
   cancelling-invitations: '08c19412c1f18d01'
+  invitation-notification-history: e0dab99df16e3eaf
 title_source: b926eb8921d85971
 title_generated: 4b6c1590d7342b55
 ---
@@ -123,6 +125,12 @@ Per gestire gli inviti, apri il filtro o menu a discesa nella scheda Membri dell
 ![](group_invite_members_filter.png)
 
 Puoi anche nominare le persone amministratori o impostare il loro titolo nel gruppo (ad esempio "Supporto informatico") prima che accettino l'invito.
+
+<!-- translation-section: invitation-notification-history -->
+
+### Cronologia di consegna degli inviti
+
+Se una persona non riceve l'email di invito, i coordinatori del gruppo possono aprire **Cronologia di consegna degli inviti** dal menu con i tre puntini (**⋮**) accanto al suo nome nella pagina Membri per vedere quando sono stati inviati gli inviti e gli eventuali problemi di consegna registrati.
 
 <!-- translation-section: re-send-invitations -->
 

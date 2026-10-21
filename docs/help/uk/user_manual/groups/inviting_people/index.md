@@ -1,10 +1,10 @@
 ---
 title: Запрошення людей
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/groups/inviting_people/index.md
+source_revision: 5116fecb738315af3037f660ba51fe2e39f8aad7
+source_file: docs/help/en/user_manual/groups/inviting_people/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-22'
 sections:
   introduction: 55a6bcc670aa6224
   send-invitations-via-email: bbc814cba35c9541
@@ -16,6 +16,7 @@ sections:
   managing-invitations: 25d2b33504493b14
   re-send-invitations: 76c7fc660f7e3d42
   cancelling-invitations: f3df8386eeda62f5
+  invitation-notification-history: 7b4538f731e0cef3
 generated:
   introduction: 3e6acdf3c70c8e89
   send-invitations-via-email: 16671dbea9179ec9
@@ -27,6 +28,7 @@ generated:
   managing-invitations: 6226deb5f248bae8
   re-send-invitations: b91726ed51c32eb0
   cancelling-invitations: 962a0fd30bfb8b8c
+  invitation-notification-history: 13a43ee061ed58eb
 title_source: b926eb8921d85971
 title_generated: 596ec23ae41c2feb
 ---
@@ -123,6 +125,12 @@ title_generated: 596ec23ae41c2feb
 ![](group_invite_members_filter.png)
 
 Ви також можете призначити людей адміністраторами або вказати їхню посаду в групі, наприклад «ІТ-підтримка», ще до того, як вони приймуть запрошення.
+
+<!-- translation-section: invitation-notification-history -->
+
+### Історія доставки запрошень
+
+Якщо людина не отримує листа із запрошенням, координатори групи можуть відкрити **Історія доставки запрошень** у меню з трьома крапками (**⋮**) поруч з її іменем на сторінці «Учасники», щоб побачити, коли було надіслано запрошення та які проблеми з доставкою зафіксовано.
 
 <!-- translation-section: re-send-invitations -->
 

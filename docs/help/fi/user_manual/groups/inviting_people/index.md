@@ -1,10 +1,10 @@
 ---
 title: Ihmisten kutsuminen
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/groups/inviting_people/index.md
+source_revision: 5116fecb738315af3037f660ba51fe2e39f8aad7
+source_file: docs/help/en/user_manual/groups/inviting_people/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-22'
 sections:
   introduction: 55a6bcc670aa6224
   send-invitations-via-email: bbc814cba35c9541
@@ -16,6 +16,7 @@ sections:
   managing-invitations: 25d2b33504493b14
   re-send-invitations: 76c7fc660f7e3d42
   cancelling-invitations: f3df8386eeda62f5
+  invitation-notification-history: 7b4538f731e0cef3
 generated:
   introduction: f6b3b044a4ffd922
   send-invitations-via-email: '080dff343020123b'
@@ -27,6 +28,7 @@ generated:
   managing-invitations: 41c5e89def41074b
   re-send-invitations: 3636d946aab90088
   cancelling-invitations: 0535f371aa72116e
+  invitation-notification-history: 9e40bbf3cc0e0ce9
 title_source: b926eb8921d85971
 title_generated: 0f5c8e72764c2a0a
 ---
@@ -123,6 +125,12 @@ Hallitaksesi kutsuja avaa suodatusvalikko ryhmäsi sivun Jäsenet-välilehdellä
 ![](group_invite_members_filter.png)
 
 Voit myös tehdä kutsutuista ylläpitäjiä tai määrittää heidän tehtävänimikkeensä ryhmässä (esimerkiksi ”IT-tuki”) ennen kuin he hyväksyvät kutsunsa.
+
+<!-- translation-section: invitation-notification-history -->
+
+### Kutsujen toimitushistoria
+
+Jos joku ei saa kutsusähköpostiaan, ryhmän koordinaattorit voivat avata **Kutsujen toimitushistoria** henkilön nimen vieressä olevasta kolmen pisteen valikosta (**⋮**) Jäsenet-sivulla ja tarkistaa, milloin kutsut lähetettiin ja onko toimitusongelmia kirjattu.
 
 <!-- translation-section: re-send-invitations -->
 

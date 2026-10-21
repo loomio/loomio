@@ -73,6 +73,8 @@ Rails.application.routes.draw do
         put :reactivate
         delete :delete_spam
         post :delete_identity
+        post :clear_email_suppressions
+        post :check_email_provider
       end
     end
 
@@ -216,6 +218,7 @@ Rails.application.routes.draw do
           post :remove_delegate
           post :save_experience
           post :resend
+          get :notification_history
           patch :set_volume
         end
       end
@@ -301,7 +304,7 @@ Rails.application.routes.draw do
         end
       end
 
-      resources :received_emails, only: [:index] do
+      resources :pending_emails, only: [:index] do
         collection do
           get :aliases
           delete :destroy_alias

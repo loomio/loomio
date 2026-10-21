@@ -704,7 +704,6 @@ hu:
       recommendation: Kérjük, nyissa meg a Loomiót a böngészőjében, és küldje el közvetlenül az üzenetét.
     comment_rejected:
       subject: A válaszod nem lett közzétéve
-      reason: A válaszod nem lett közzétéve, mert hosszabb, mint a téma %{count} karakterkorlátja.
       recommendation: A további problémák elkerülése érdekében nyisd meg a beszélgetést, és írd be közvetlenül az üzenetedet.
       open_thread: Nyitott téma
   locale_names:

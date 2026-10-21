@@ -1,10 +1,10 @@
 ---
 title: Invitar personas
-source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
-source_file: docs/en/user_manual/groups/inviting_people/index.md
+source_revision: 5116fecb738315af3037f660ba51fe2e39f8aad7
+source_file: docs/help/en/user_manual/groups/inviting_people/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-22'
 sections:
   introduction: 55a6bcc670aa6224
   send-invitations-via-email: bbc814cba35c9541
@@ -16,6 +16,7 @@ sections:
   managing-invitations: 25d2b33504493b14
   re-send-invitations: 76c7fc660f7e3d42
   cancelling-invitations: f3df8386eeda62f5
+  invitation-notification-history: 7b4538f731e0cef3
 generated:
   introduction: 81f785a5369d9fe9
   send-invitations-via-email: 1e14777914cd64d4
@@ -27,6 +28,7 @@ generated:
   managing-invitations: 00ce6c713d573345
   re-send-invitations: 93195e33dc807691
   cancelling-invitations: 966f78f5b049a2b0
+  invitation-notification-history: 129d86a3df4861ba
 title_source: b926eb8921d85971
 title_generated: 375e4845e20bc598
 ---
@@ -123,6 +125,12 @@ Para gestionar las invitaciones, abre el filtro o menú desplegable de la pesta�
 ![](group_invite_members_filter.png)
 
 También puedes dar a las personas el rol de administrador o establecer un cargo dentro del grupo (por ejemplo, "Soporte informático") antes de que acepten la invitación.
+
+<!-- translation-section: invitation-notification-history -->
+
+### Historial de entrega de invitaciones
+
+Si alguien no recibe el correo de invitación, los coordinadores del grupo pueden abrir **Historial de entrega de invitaciones** desde el menú de tres puntos (**⋮**) junto a su nombre en la página de Integrantes para ver cuándo se enviaron las invitaciones y los problemas de entrega registrados.
 
 <!-- translation-section: re-send-invitations -->
 

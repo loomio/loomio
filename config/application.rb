@@ -42,7 +42,7 @@ module Loomio
     config.force_ssl = ENV['FORCE_SSL'].present?
     config.assume_ssl = ENV['ASSUME_SSL'].present?
 
-    config.ssl_options = { redirect: { exclude: -> request { request.path =~ /(received_emails|email_processor|up|hocuspocus|inbound_emails)/ } } }
+    config.ssl_options = { redirect: { exclude: -> request { request.path =~ /(email_processor|up|hocuspocus|inbound_emails)/ } } }
 
     config.i18n.enforce_available_locales = false
     config.i18n.fallbacks = [:en]
@@ -58,6 +58,7 @@ module Loomio
     end
 
     config.action_mailbox.ingress = :relay
+    config.action_mailbox.incinerate_after = 60.days
 
     config.action_mailer.raise_delivery_errors = true
     config.action_mailer.perform_deliveries = true

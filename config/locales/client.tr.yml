@@ -3209,3 +3209,23 @@ tr:
     discussion: tartışma
     outcome: vargı
     stance: oy
+  membership_notification_history:
+    invitation_delivery_history: Davet teslim geçmişi
+    email_delivery_blocked: "Loomio bu adrese e-posta gönderimini durdurdu"
+    delivery_result:
+      delivered: Teslim edildi
+      failed: Başarısız
+    could_not_load_history: Bildirim geçmişi yüklenemedi
+    no_invitations_recorded: Kayıtlı davet yok
+    membership_created: Davet
+    membership_resent: Davet yeniden gönderildi
+    no_custom_message: Özel mesaj yok
+    pending: E-posta bekliyor
+    not_sent: E-posta teslim kaydı yok
+    sent: E-posta hizmetine iletildi
+    delivered: Alıcının posta sunucusu kabul etti
+    delayed: Teslim gecikmesi bildirildi
+    rejected: E-posta reddedildi
+    bounced: E-postanın geri döndüğü bildirildi
+    complained: Spam şikayeti bildirildi
+    skipped: E-posta gönderilmedi
