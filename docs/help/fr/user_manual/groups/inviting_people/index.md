@@ -1,6 +1,6 @@
 ---
 title: Inviter des personnes
-source_revision: db48679e7cb55235646f080c69dc1f358861a349
+source_revision: 5116fecb738315af3037f660ba51fe2e39f8aad7
 source_file: docs/help/en/user_manual/groups/inviting_people/index.md
 translated:
   provider: codex/gpt-6.1-sol
@@ -16,7 +16,7 @@ sections:
   managing-invitations: 25d2b33504493b14
   re-send-invitations: 76c7fc660f7e3d42
   cancelling-invitations: f3df8386eeda62f5
-  invitation-notification-history: 22df89436fb592b9
+  invitation-notification-history: 7b4538f731e0cef3
 generated:
   introduction: 07d627bd27159ecf
   send-invitations-via-email: 513054385d01b0ef
@@ -28,7 +28,7 @@ generated:
   managing-invitations: f0cce63a809f9a5c
   re-send-invitations: d06d1a9f06473ded
   cancelling-invitations: 0ed3631657c2f9f2
-  invitation-notification-history: cbf48b03635d2730
+  invitation-notification-history: 2f96d6784b98ee50
 title_source: b926eb8921d85971
 title_generated: 6dcdecac01939914
 ---
@@ -130,13 +130,7 @@ Vous pouvez également attribuer aux personnes le rôle d’administrateur ou d�
 
 ### Historique d’envoi des invitations
 
-Pour vérifier une invitation, choisissez **Historique d’envoi des invitations** dans le menu à trois points (**⋮**) à côté de la personne sur la page Membres. Les coordinateurs du groupe peuvent voir chaque invitation et chaque renvoi enregistrés, la personne à l’origine de l’envoi et une pastille indiquant l’état de l’envoi. Développez une invitation pour lire son message personnalisé et les détails de l’envoi. Cet historique reste accessible après que la personne a rejoint le groupe.
-
-Inviter à nouveau une personne réutilise sa fiche de membre ; la date initiale à côté de son nom ne change donc pas. L’historique présente les différents envois. Les personnes qui appartiennent déjà à un autre groupe de la même organisation peuvent être acceptées automatiquement lorsqu’elles sont invitées ; elles n’ont pas besoin d’accepter une nouvelle invitation.
-
-La pastille **Remis** signifie que l’envoi s’est terminé sans qu’un échec ait été enregistré par la suite ; elle ne confirme pas que le courriel est arrivé dans la boîte de réception du destinataire. Développez l’invitation pour distinguer **Transmis au service d’envoi de courriels** de **Accepté par le serveur de messagerie du destinataire**. L’état **Échec** couvre les retours à l’expéditeur signalés, les signalements de courrier indésirable, les courriels rejetés et les envois non effectués ; les détails affichés indiquent la raison. Les envois en attente et les retards signalés ont un état neutre. **Aucun envoi de courriel enregistré** signifie qu’aucun envoi de courriel n’a été enregistré pour cet envoi d’invitation ; les anciens enregistrements ne précisent pas pourquoi un courriel n’a pas été envoyé. **Renvoyer l'invitation** effectue l’envoi sans message personnalisé.
-
-Si un retour permanent à l’expéditeur ou un signalement de courrier indésirable est enregistré pour une adresse électronique, Loomio cesse d’envoyer des courriels à cette adresse. Un avis en haut de l’historique d’envoi des invitations indique si Loomio bloque actuellement l’adresse de la personne. La connexion avec un mot de passe, un code reçu par courriel ou un lien reçu par courriel lève ce blocage dans Loomio pour l’adresse actuelle de la personne ; un administrateur de l’instance peut également le lever. Le service d’envoi de courriels peut appliquer un blocage distinct que son administrateur doit résoudre.
+Si une personne ne reçoit pas son courriel d’invitation, les coordinateurs du groupe peuvent ouvrir **Historique d’envoi des invitations** dans le menu à trois points (**⋮**) à côté de son nom sur la page Membres pour consulter les dates d’envoi des invitations et les éventuels problèmes de livraison enregistrés.
 
 <!-- translation-section: re-send-invitations -->
 

@@ -7,10 +7,10 @@ translated:
   'on': '2026-10-22'
 sections:
   introduction: bbc0cdb29306b05d
-  preventing-unauthorized-emails: f21e1ba5d395be40
+  preventing-unauthorized-emails: 218f730808482c55
 generated:
   introduction: 0da0771e67749625
-  preventing-unauthorized-emails: 57c1e4e31718b25c
+  preventing-unauthorized-emails: 4ad3a256acf1a35b
 title_source: f2488fd4ef4adbc6
 title_generated: c2f9765ad5cefe3a
 ---
@@ -38,6 +38,6 @@ Wenn du mehrere E-Mail-Adressen verwendest, kannst du einen Alias hinzufügen, d
 
 Wenn die Absenderadresse keinem Mitglied der Gruppe zugeordnet werden kann, erhältst du eine Benachrichtigung mit der Aufforderung, einen Alias hinzuzufügen oder alle weiteren E-Mails von dieser Adresse abzulehnen.
 
-Wenn du zum ersten Mal eine E-Mail von einer unbekannten Adresse sendest, musst du also einen Alias hinzufügen. Danach werden E-Mails sofort angenommen. Nachrichten, die auf eine Prüfung warten, behalten ihren ursprünglichen Inhalt und ihre Anhänge, bis eine koordinierende Person sie bearbeitet. Das gilt auch bei der routinemäßigen E-Mail-Bereinigung.
+Wenn du zum ersten Mal eine E-Mail von einer unbekannten Adresse sendest, musst du also einen Alias hinzufügen. Danach werden E-Mails sofort angenommen.
 
 ![Position der Schaltflächen zum Genehmigen und Ablehnen einer E-Mail von einer unbekannten Adresse](email_unreleased_emails.png)

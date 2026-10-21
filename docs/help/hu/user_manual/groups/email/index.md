@@ -7,10 +7,10 @@ translated:
   'on': '2026-10-22'
 sections:
   introduction: bbc0cdb29306b05d
-  preventing-unauthorized-emails: f21e1ba5d395be40
+  preventing-unauthorized-emails: 218f730808482c55
 generated:
   introduction: 90deb8f9e89aecd9
-  preventing-unauthorized-emails: 20a3f8e2dca251a7
+  preventing-unauthorized-emails: 14d2ff9f6ce9c79b
 title_source: f2488fd4ef4adbc6
 title_generated: '032933089746e946'
 ---
@@ -38,6 +38,6 @@ Ha több e-mail-címet használsz, hozzáadhatsz egy aliast, hogy a Loomio a tö
 
 Ha a feladó címe nem egyezik meg egyik csoporttag e-mail-címével sem, értesítést kapsz, amely arra kér, hogy adj hozzá egy aliast, vagy utasíts el minden további e-mailt erről a címről.
 
-Ez azt jelenti, hogy amikor először küldesz e-mailt egy ismeretlen címről, hozzá kell adnod egy aliast. Ezután a Loomio azonnal elfogadja az e-maileket. Az ellenőrzésre váró üzenetek mindaddig megőrzik eredeti tartalmukat és mellékleteiket, amíg egy koordinátor nem dönt róluk, még az e-mailek rendszeres törlése során is.
+Ez azt jelenti, hogy amikor először küldesz e-mailt egy ismeretlen címről, hozzá kell adnod egy aliast. Ezután a Loomio azonnal elfogadja az e-maileket.
 
 ![Az ismeretlen címről érkező e-mail jóváhagyására és elutasítására szolgáló gombok helye](email_unreleased_emails.png)

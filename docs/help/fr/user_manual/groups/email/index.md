@@ -7,10 +7,10 @@ translated:
   'on': '2026-10-22'
 sections:
   introduction: bbc0cdb29306b05d
-  preventing-unauthorized-emails: f21e1ba5d395be40
+  preventing-unauthorized-emails: 218f730808482c55
 generated:
   introduction: 26505950e102c1b3
-  preventing-unauthorized-emails: 701915de50962335
+  preventing-unauthorized-emails: eb58f225efc7cb0c
 title_source: f2488fd4ef4adbc6
 title_generated: 8f9a920a57efeddf
 ---
@@ -38,6 +38,6 @@ Si vous utilisez plusieurs adresses e-mail, vous pouvez ajouter un alias pour qu
 
 Lorsque l’adresse de l’expéditeur ne correspond à celle d’aucun membre du groupe, vous recevez une notification vous demandant d’ajouter un alias ou de rejeter tous les futurs e-mails provenant de cette adresse.
 
-La première fois que vous envoyez un e-mail depuis une adresse non reconnue, vous devez donc ajouter un alias. Ensuite, les e-mails sont acceptés immédiatement. Les messages en attente de vérification conservent leur contenu et leurs pièces jointes d’origine jusqu’à ce qu’un coordinateur les traite, y compris lors du nettoyage régulier des e-mails.
+La première fois que vous envoyez un e-mail depuis une adresse non reconnue, vous devez donc ajouter un alias. Ensuite, les e-mails sont acceptés immédiatement.
 
 ![Emplacement des boutons d’approbation et de rejet d’un e-mail provenant d’une adresse non reconnue](email_unreleased_emails.png)

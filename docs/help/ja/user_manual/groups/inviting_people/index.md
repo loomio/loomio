@@ -1,6 +1,6 @@
 ---
 title: メンバーを招待する
-source_revision: db48679e7cb55235646f080c69dc1f358861a349
+source_revision: 5116fecb738315af3037f660ba51fe2e39f8aad7
 source_file: docs/help/en/user_manual/groups/inviting_people/index.md
 translated:
   provider: codex/gpt-6.1-sol
@@ -16,7 +16,7 @@ sections:
   managing-invitations: 25d2b33504493b14
   re-send-invitations: 76c7fc660f7e3d42
   cancelling-invitations: f3df8386eeda62f5
-  invitation-notification-history: 22df89436fb592b9
+  invitation-notification-history: 7b4538f731e0cef3
 generated:
   introduction: d0472b30afa3ea26
   send-invitations-via-email: 060c3642105461e9
@@ -28,7 +28,7 @@ generated:
   managing-invitations: 6fdff47a1de2fe7e
   re-send-invitations: 72c721832ea9504b
   cancelling-invitations: b73b9af2ad261323
-  invitation-notification-history: 306ee3d4f2122da9
+  invitation-notification-history: 249f13a533f0ba1a
 title_source: b926eb8921d85971
 title_generated: 8443acb671cc4a96
 ---
@@ -130,13 +130,7 @@ title_generated: 8443acb671cc4a96
 
 ### 招待の配信履歴
 
-招待を確認するには、メンバーページで対象者の横にある三点メニュー（**⋮**）から**招待の配信履歴**を選択します。グループの管理者は、記録された各招待と再送信について、送信者と配信状況を示すチップを確認できます。招待を展開すると、個別のメッセージと配信の詳細を確認できます。この履歴は、対象者が参加した後も確認できます。
-
-同じ人を再度招待すると、既存のメンバー登録情報が再利用されるため、名前の横に表示される元の日付は変わりません。履歴には、各回の送信が個別に表示されます。同じ組織内の別のグループにすでに所属している人は、招待時に自動的に参加が承認される場合があります。その場合、招待を改めて承諾する必要はありません。
-
-**配信済み**のチップは、送信が完了し、その後の配信失敗が記録されていないことを示します。メールが受信者の受信トレイに届いたことを確認するものではありません。招待を展開すると、**メールサービスに送信を依頼しました**と**受信側のメールサーバーが受け付けました**を区別できます。**配信失敗**には、報告されたバウンス、迷惑メールの苦情、受信拒否、送信のスキップが含まれます。展開した詳細に理由が表示されます。送信待ちや遅延が報告された場合は、成功や失敗を示さない中立的なステータスになります。**メール配信の記録はありません**は、その送信のメール配信記録がないことを示します。古い記録では、メールの送信がスキップされた理由は確認できません。**招待状を再送信する**では、個別のメッセージを付けずに送信します。
-
-メールアドレスに恒久的な配信エラーや迷惑メールの苦情が記録されている場合、Loomioはそのアドレスへのメール送信を停止します。Loomioが現在その人のメールアドレスへの送信を制限している場合は、招待の配信履歴の上部に通知が表示されます。パスワード、メールで届くコード、またはメール内のリンクでサインインすると、その人の現在のメールアドレスに対するLoomioの送信制限が解除されます。インスタンス管理者も解除できます。メールサービス側で別途送信が制限されている場合は、そのサービスの管理者による対応が必要です。
+招待メールが届かない場合、グループの管理者は、メンバーページで対象者の名前の横にある三点メニュー（**⋮**）から**招待の配信履歴**を開き、招待が送信された日時と、記録された配信上の問題を確認できます。
 
 <!-- translation-section: re-send-invitations -->
 

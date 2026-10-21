@@ -7,10 +7,10 @@ translated:
   'on': '2026-10-22'
 sections:
   introduction: bbc0cdb29306b05d
-  preventing-unauthorized-emails: f21e1ba5d395be40
+  preventing-unauthorized-emails: 218f730808482c55
 generated:
   introduction: 5fe30031c6714be7
-  preventing-unauthorized-emails: b44d3b12dd1a34e8
+  preventing-unauthorized-emails: 06bd8d3b63cfda73
 title_source: f2488fd4ef4adbc6
 title_generated: 8bd6a0c76042ef57
 ---
@@ -38,6 +38,6 @@ Si utilizas varias direcciones de correo electrónico, puedes añadir un alias p
 
 Cuando la dirección del campo "De" no coincida con la de ningún miembro del grupo, recibirás una notificación que te pedirá que añadas un alias o rechaces todos los correos posteriores de esa dirección.
 
-Esto significa que la primera vez que envíes un correo desde una dirección no reconocida, tendrás que añadir un alias. A partir de entonces, los correos se aceptarán inmediatamente. Los mensajes pendientes de revisión conservan su contenido original y sus archivos adjuntos hasta que un coordinador actúe sobre ellos, incluso cuando se ejecuta la limpieza rutinaria del correo electrónico.
+Esto significa que la primera vez que envíes un correo desde una dirección no reconocida, tendrás que añadir un alias. A partir de entonces, los correos se aceptarán inmediatamente.
 
 ![Ubicación de los botones para aprobar y rechazar un correo de una dirección no reconocida](email_unreleased_emails.png)

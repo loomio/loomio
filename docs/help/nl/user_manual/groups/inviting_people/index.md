@@ -1,6 +1,6 @@
 ---
 title: Mensen uitnodigen
-source_revision: db48679e7cb55235646f080c69dc1f358861a349
+source_revision: 5116fecb738315af3037f660ba51fe2e39f8aad7
 source_file: docs/help/en/user_manual/groups/inviting_people/index.md
 translated:
   provider: codex/gpt-6.1-sol
@@ -16,7 +16,7 @@ sections:
   managing-invitations: 25d2b33504493b14
   re-send-invitations: 76c7fc660f7e3d42
   cancelling-invitations: f3df8386eeda62f5
-  invitation-notification-history: 22df89436fb592b9
+  invitation-notification-history: 7b4538f731e0cef3
 generated:
   introduction: eaa85091715b10f2
   send-invitations-via-email: 39a05a1b8e15b3f4
@@ -28,7 +28,7 @@ generated:
   managing-invitations: 6f432d1cee56f5f5
   re-send-invitations: 75a897d6e1d7ffb1
   cancelling-invitations: c8ff43337206bd28
-  invitation-notification-history: 8d5b6c21dc21f417
+  invitation-notification-history: 605e53488eed6c34
 title_source: b926eb8921d85971
 title_generated: 5cf9fd03683405f5
 ---
@@ -130,13 +130,7 @@ Je kunt mensen ook beheerder maken of hun titel binnen de groep instellen (bijvo
 
 ### Bezorggeschiedenis van uitnodigingen
 
-Om een uitnodiging te controleren, kies je **Bezorggeschiedenis van uitnodigingen** in het menu met drie puntjes (**⋮**) naast de persoon op de pagina Leden. Groepscoördinatoren kunnen elke vastgelegde uitnodiging en herverzending zien, met de afzender en een label voor de bezorgstatus. Klap een uitnodiging uit om het persoonlijke bericht en de bezorggegevens te lezen. Deze geschiedenis blijft ook beschikbaar nadat de persoon lid is geworden.
-
-Als je iemand opnieuw uitnodigt, wordt de bestaande lidmaatschapsregistratie gebruikt. De oorspronkelijke datum naast de naam verandert dus niet. De geschiedenis toont de afzonderlijke verzendingen. Mensen die al lid zijn van een andere groep binnen dezelfde organisatie, kunnen bij een uitnodiging automatisch worden toegelaten; ze hoeven geen nieuwe uitnodiging te accepteren.
-
-Het label **Bezorgd** betekent dat de verzending is voltooid zonder dat er later een fout is vastgelegd; het bevestigt niet dat de e-mail in de inbox van de ontvanger is aangekomen. Klap de uitnodiging uit om het verschil te zien tussen **Aangeboden aan e-maildienst** en **Geaccepteerd door mailserver van ontvanger**. **Mislukt** omvat gemelde onbestelbare e-mails, spamklachten, geweigerde e-mails en overgeslagen verzendingen; de uitgeklapte gegevens tonen de reden. Verzendingen die nog in behandeling zijn en gemelde vertragingen hebben een neutrale status. **Geen e-mailbezorging vastgelegd** betekent dat er voor die verzending geen e-mailbezorging is geregistreerd; oudere registraties geven niet aan waarom een e-mail is overgeslagen. **Uitnodiging opnieuw sturen** verstuurt de uitnodiging zonder persoonlijk bericht.
-
-Als voor een e-mailadres een permanente bezorgfout of spamklacht is vastgelegd, stopt Loomio met het versturen van e-mail naar dat adres. Een melding bovenaan de bezorggeschiedenis van uitnodigingen geeft aan wanneer Loomio het adres van de persoon momenteel blokkeert. Aanmelden met een wachtwoord, e-mailcode of e-maillink heft deze blokkering in Loomio op voor het huidige adres van de persoon; een beheerder van de Loomio-installatie kan de blokkering ook opheffen. De e-maildienst kan een afzonderlijke blokkering hebben die de beheerder van die dienst moet opheffen.
+Als iemand de uitnodigingsmail niet ontvangt, kunnen groepscoördinatoren **Bezorggeschiedenis van uitnodigingen** openen via het menu met drie puntjes (**⋮**) naast de naam op de pagina Leden om te zien wanneer uitnodigingen zijn verstuurd en welke bezorgproblemen zijn vastgelegd.
 
 <!-- translation-section: re-send-invitations -->
 

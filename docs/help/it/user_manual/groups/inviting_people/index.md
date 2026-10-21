@@ -1,6 +1,6 @@
 ---
 title: Invitare persone
-source_revision: db48679e7cb55235646f080c69dc1f358861a349
+source_revision: 5116fecb738315af3037f660ba51fe2e39f8aad7
 source_file: docs/help/en/user_manual/groups/inviting_people/index.md
 translated:
   provider: codex/gpt-6.1-sol
@@ -16,7 +16,7 @@ sections:
   managing-invitations: 25d2b33504493b14
   re-send-invitations: 76c7fc660f7e3d42
   cancelling-invitations: f3df8386eeda62f5
-  invitation-notification-history: 22df89436fb592b9
+  invitation-notification-history: 7b4538f731e0cef3
 generated:
   introduction: b7e5d4c88511ea42
   send-invitations-via-email: a16bf0ed8f846e10
@@ -28,7 +28,7 @@ generated:
   managing-invitations: 4f90b479001a119e
   re-send-invitations: 56f7a31c293789ed
   cancelling-invitations: '08c19412c1f18d01'
-  invitation-notification-history: 0aba8128aec4dfeb
+  invitation-notification-history: e0dab99df16e3eaf
 title_source: b926eb8921d85971
 title_generated: 4b6c1590d7342b55
 ---
@@ -130,13 +130,7 @@ Puoi anche nominare le persone amministratori o impostare il loro titolo nel gru
 
 ### Cronologia di consegna degli inviti
 
-Per controllare un invito, scegli **Cronologia di consegna degli inviti** dal menu con i tre puntini (**⋮**) accanto alla persona nella pagina Membri. I coordinatori del gruppo possono vedere ogni invito e ogni reinvio registrato, chi lo ha inviato e un indicatore dello stato di consegna. Espandi un invito per leggere il messaggio personalizzato e i dettagli di consegna. Questa cronologia è disponibile anche dopo che la persona si è iscritta al gruppo.
-
-Invitare di nuovo una persona riutilizza la sua registrazione come membro, quindi la data originale accanto al suo nome non cambia. La cronologia mostra i singoli invii. Le persone che appartengono già a un altro gruppo della stessa organizzazione possono essere accettate automaticamente quando vengono invitate; non devono accettare un altro invito.
-
-L'indicatore **Consegnato** significa che l'invio è stato completato senza che sia stato registrato un successivo errore; non conferma che l'email sia arrivata nella posta in arrivo del destinatario. Espandi l'invito per distinguere **Inoltrata al servizio email** da **Accettata dal server di posta del destinatario**. **Non riuscito** comprende i mancati recapiti segnalati, le segnalazioni di spam, le email rifiutate e gli invii saltati; i dettagli espansi mostrano il motivo. Gli invii in attesa e i ritardi segnalati hanno uno stato neutro. **Nessuna consegna email registrata** significa che non esiste una registrazione di consegna email per quell'invio; le registrazioni meno recenti non indicano perché un'email sia stata saltata. **Invia di nuovo invito** invia l'invito senza un messaggio personalizzato.
-
-Se per un indirizzo email è stato registrato un mancato recapito permanente o una segnalazione di spam, Loomio smette di inviare email a quell'indirizzo. Un avviso in cima alla cronologia di consegna degli inviti indica quando Loomio blocca attualmente l'indirizzo della persona. Accedere con una password, un codice ricevuto via email o un link ricevuto via email rimuove questo blocco di Loomio per l'indirizzo attuale della persona; anche un amministratore dell'istanza può rimuoverlo. Il servizio email potrebbe avere un blocco separato che il suo amministratore deve risolvere.
+Se una persona non riceve l'email di invito, i coordinatori del gruppo possono aprire **Cronologia di consegna degli inviti** dal menu con i tre puntini (**⋮**) accanto al suo nome nella pagina Membri per vedere quando sono stati inviati gli inviti e gli eventuali problemi di consegna registrati.
 
 <!-- translation-section: re-send-invitations -->
 
