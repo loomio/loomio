@@ -1,5 +1,8 @@
 import assert from "node:assert/strict";
 import crypto from "node:crypto";
+import fs from "node:fs";
+import os from "node:os";
+import path from "node:path";
 import test from "node:test";
 import { loadConfig } from "../src/config.js";
 
@@ -34,4 +37,33 @@ test("rejects invalid encryption and APNs signing keys", () => {
 
   Object.assign(environment, validEnvironment(), { APNS_PRIVATE_KEY: "not a key" });
   assert.throws(() => loadConfig(environment), /valid private key/);
+});
+
+test("loads separate sandbox credentials and rejects incomplete configuration", () => {
+  const environment = validEnvironment();
+  environment.APNS_SANDBOX_KEY_ID = "SANDBOX123";
+  assert.throws(() => loadConfig(environment), /APNS_SANDBOX_PRIVATE_KEY/);
+
+  environment.APNS_SANDBOX_PRIVATE_KEY = validEnvironment().APNS_PRIVATE_KEY;
+  const config = loadConfig(environment);
+  assert.equal(config.apns.sandbox.keyId, "SANDBOX123");
+  assert.notEqual(config.apns.privateKey, config.apns.sandbox.privateKey);
+
+  delete environment.APNS_SANDBOX_KEY_ID;
+  assert.throws(() => loadConfig(environment), /APNS_SANDBOX_KEY_ID/);
+});
+
+test("reads mounted signing keys and rejects ambiguous key sources", () => {
+  const directory = fs.mkdtempSync(path.join(os.tmpdir(), "relay-config-"));
+  try {
+    const environment = validEnvironment();
+    const privateKey = environment.APNS_PRIVATE_KEY;
+    environment.APNS_PRIVATE_KEY_FILE = path.join(directory, "apns.p8");
+    fs.writeFileSync(environment.APNS_PRIVATE_KEY_FILE, privateKey, { mode: 0o600 });
+    assert.throws(() => loadConfig(environment), /Set only one/);
+    delete environment.APNS_PRIVATE_KEY;
+    assert.equal(loadConfig(environment).apns.privateKey, privateKey.trim());
+  } finally {
+    fs.rmSync(directory, { recursive: true, force: true });
+  }
 });
