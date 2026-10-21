@@ -197,9 +197,9 @@ class DiscussionTest < ActiveSupport::TestCase
     assert_equal [@alien.username], discussion.mentioned_usernames
   end
 
-  test "does not extract the authors username" do
+  test "extracts the authors username for self mentions" do
     discussion = Discussion.new(description: "Hello @#{@admin.username}!", description_format: 'md', author: @admin)
-    assert_not_includes discussion.mentioned_usernames, @admin.username
+    assert_includes discussion.mentioned_usernames, @admin.username
   end
 
   private
