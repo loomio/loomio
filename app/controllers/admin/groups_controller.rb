@@ -99,7 +99,7 @@ class Admin::GroupsController < Admin::BaseController
 
     case export_format
     when "json"
-      GroupExportWorker.perform_later(@group.all_groups.pluck(:id), @group.name, current_user.id, recipient_email)
+      GroupExportWorker.perform_later(@group.id, current_user.id, recipient_email)
     when "csv"
       GroupExportCsvWorker.perform_later(@group.id, current_user.id, recipient_email)
     else

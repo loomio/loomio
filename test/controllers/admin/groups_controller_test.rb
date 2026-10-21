@@ -126,7 +126,7 @@ class Admin::GroupsControllerTest < ActionController::TestCase
       post :import_json, params: { url: "https://example.com/group.json" }
     end
 
-    assert_enqueued_with(job: GroupExportWorker, args: [@group.all_groups.pluck(:id), @group.name, @admin.id, recipient_email]) do
+    assert_enqueued_with(job: GroupExportWorker, args: [@group.id, @admin.id, recipient_email]) do
       post :export_group, params: { id: @group.id, email: recipient_email, export_format: "json" }
     end
     assert_equal "JSON group export will be sent to #{recipient_email}", flash[:notice]
