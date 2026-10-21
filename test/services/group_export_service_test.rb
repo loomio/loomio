@@ -6,7 +6,7 @@ class GroupExportServiceTest < ActiveSupport::TestCase
     notification = Notification.create!(kind: 'membership_created', subject: group, actor: admin,
       recipient_user_ids: [member.id])
     delivery = NotificationDelivery.create!(notification: notification, recipient: member, channel: 'email',
-      email_address: member.email, email_subject: 'Join our group', email_message_id: 'unique-local-message@loomio.test',
+      email_subject: 'Join our group', email_message_id: 'unique-local-message@loomio.test',
       provider_message_id: 'ses-transport-identity', delivered_at: Time.current)
     event = delivery.events.create!(kind: 'complained', source_key: 'test:complaint', occurred_at: Time.current)
     EmailSuppressionService.record!(email: member.email, reason: 'complaint', source_key: 'test:export', event: event)
@@ -14,7 +14,7 @@ class GroupExportServiceTest < ActiveSupport::TestCase
     archive = File.readlines(filename, chomp: true).map { |line| JSON.parse(line) }
     refute archive.any? { |item| %w[email_suppressions notification_delivery_events].include?(item['table']) }
     record = archive.find { |item| item['table'] == 'notification_deliveries' && item.dig('record', 'id') == delivery.id }.fetch('record')
-    %w[email_address email_subject email_message_id provider_message_id].each do |column|
+    %w[email_subject email_message_id provider_message_id].each do |column|
       refute record.key?(column), column
     end
     assert record.fetch('delivered_at')

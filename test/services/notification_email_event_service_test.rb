@@ -4,7 +4,8 @@ class NotificationEmailEventServiceTest < ActiveSupport::TestCase
   setup do
     @user = users(:member_normal)
     notification = Notification.create!(kind: 'membership_created', subject: groups(:group), actor: users(:admin))
-    @delivery = NotificationDelivery.create!(notification: notification, recipient: @user, channel: 'email', email_address: @user.email)
+    @delivery = NotificationDelivery.create!(notification: notification, recipient: @user, channel: 'email',
+      email_message_id: 'tracked-message@loomio.test')
   end
 
   test 'only permanent bounces and complaints suppress and their evidence survives clearance' do
@@ -29,9 +30,18 @@ class NotificationEmailEventServiceTest < ActiveSupport::TestCase
   test 'late feedback for an old address does not block the new address' do
     old_address = @user.email
     @user.update!(email: 'new-address@example.com')
-    record('complained')
+    record('complained', address: old_address)
     refute @user.email_delivery_blocked?
     assert EmailSuppression.for_address(old_address).active.exists?
+  end
+
+  test 'feedback without an explicit recipient records evidence without blocking the current address' do
+    assert_difference 'NotificationDeliveryEvent.count', 1 do
+      assert_no_difference 'EmailSuppression.count' do
+        record('complained', address: nil)
+      end
+    end
+    refute @user.email_delivery_blocked?
   end
 
   test 'a failed suppression write rolls back the delivery event' do
@@ -44,8 +54,8 @@ class NotificationEmailEventServiceTest < ActiveSupport::TestCase
 
   private
 
-  def record(kind, bounce_type = nil)
+  def record(kind, bounce_type = nil, address: @user.email)
     NotificationEmailEventService.record!(delivery: @delivery, kind: kind, bounce_type: bounce_type,
-      source_key: SecureRandom.uuid, occurred_at: Time.current)
+      source_key: SecureRandom.uuid, occurred_at: Time.current, recipient_address: address)
   end
 end

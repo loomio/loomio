@@ -74,7 +74,7 @@ class ProductionEmailFeedbackTest < ActionMailbox::TestCase
   def delivery_for(name)
     notification = Notification.create!(kind: 'membership_created', subject: groups(:group), actor: users(:admin))
     NotificationDelivery.create!(notification: notification, recipient: @recipient, channel: 'email',
-      email_address: @recipient.email, email_message_id: "local-#{name}@loomio.test", provider_message_id: "#{name}-original")
+      email_message_id: "local-#{name}@loomio.test", provider_message_id: "#{name}-original")
   end
 
   def fixture_mail(name)

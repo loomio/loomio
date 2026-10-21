@@ -37,6 +37,7 @@ class EmailFeedbackService
     source_digest = Digest::SHA256.hexdigest(source_message)
     deliveries = NotificationDelivery.where(channel: 'email').where(email_message_id: message_ids)
       .or(NotificationDelivery.where(channel: 'email', provider_message_id: message_ids.map { |id| id.split('@').first }))
+      .includes(:recipient)
     # A DSN can contain a different result for each recipient. Classify each
     # recipient block separately so one permanent bounce cannot block others.
     reports = status_reports.flat_map { |report| report.split(/\r?\n\r?\n/) }.filter_map do |report|
@@ -67,16 +68,20 @@ class EmailFeedbackService
 
       reports.each do |report|
         addresses = report.fetch(:addresses)
-        matched = deliveries.select do |delivery|
-          addresses.empty? || addresses.any? { |address| address.casecmp?(delivery.email_address) }
+        # With no saved destination, explicit recipients link only while the
+        # account still uses that address. Old addresses can be blocked below.
+        matched = deliveries.filter_map do |delivery|
+          address = addresses.find { |recipient| recipient.casecmp?(delivery.recipient.email.to_s) }
+          [delivery, address] if addresses.empty? || address
         end
-        matched.each do |delivery|
+        matched.each do |delivery, address|
           NotificationEmailEventService.record!(delivery: delivery, kind: report.fetch(:kind),
             source_key: "email:#{@email.message_id || @email.id}:#{report.fetch(:kind)}",
-            occurred_at: @email.created_at, detail: report[:detail], bounce_type: report[:bounce_type])
+            occurred_at: @email.created_at, detail: report[:detail], bounce_type: report[:bounce_type],
+            recipient_address: address)
         end
 
-        if matched.empty? && addresses.empty?
+        if addresses.empty?
           Rails.logger.warn("Email feedback recipient not identified: received_email_id=#{@email.id} kind=#{report.fetch(:kind)}")
         end
 
@@ -85,7 +90,7 @@ class EmailFeedbackService
         reason = EmailSuppressionService.reason_for(kind: report.fetch(:kind), bounce_type: report[:bounce_type])
         next unless reason
 
-        addresses = addresses.reject { |address| matched.any? { |delivery| address.casecmp?(delivery.email_address) } }
+        addresses -= matched.filter_map(&:last)
         addresses.each do |address|
           EmailSuppressionService.record!(email: address, reason: reason,
             source_key: "feedback:#{source_digest}:#{reason}:#{EmailSuppression.address_digest(address)}",

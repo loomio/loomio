@@ -8,14 +8,14 @@ class DeliverNotificationEmailWorkerTest < ActiveSupport::TestCase
     @delivery = NotificationDelivery.create!(notification: notification, recipient: @recipient, channel: 'email')
   end
 
-  test 'sending stores exact recipient subject and message ID and records submission once' do
+  test 'sending stores the subject and message ID without a recipient address snapshot' do
     assert_difference 'ActionMailer::Base.deliveries.count', 1 do
       2.times { DeliverNotificationEmailWorker.perform_now(@delivery.id) }
     end
     mail = ActionMailer::Base.deliveries.last
     @delivery.reload
     assert_equal mail.message_id, @delivery.email_message_id
-    assert_equal @recipient.email, @delivery.email_address
+    refute @delivery.has_attribute?(:email_address)
     assert_equal mail.subject, @delivery.email_subject
     assert_equal 'sent', @delivery.events.sole.kind
     assert @delivery.delivered_at.present?

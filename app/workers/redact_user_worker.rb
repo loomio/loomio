@@ -43,7 +43,7 @@ class RedactUserWorker < ApplicationJob
       PaperTrail::Version.where(item_type: 'User', item_id: user_id).delete_all
       deliveries = NotificationDelivery.where(recipient_type: 'User', recipient_id: user_id)
       NotificationDeliveryEvent.where(notification_delivery_id: deliveries.select(:id)).update_all(detail: nil)
-      deliveries.update_all(email_address: nil, email_subject: nil, email_message_id: nil,
+      deliveries.update_all(email_subject: nil, email_message_id: nil,
         provider_message_id: nil)
       Identity.where(user_id: user_id).delete_all
       Session.where(user_id: user_id).destroy_all

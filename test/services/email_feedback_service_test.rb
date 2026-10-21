@@ -6,7 +6,7 @@ class EmailFeedbackServiceTest < ActiveSupport::TestCase
     @notification = Notification.create!(kind: 'membership_created', subject: groups(:group), actor: users(:admin),
       recipient_user_ids: [@recipient.id])
     @delivery = NotificationDelivery.create!(notification: @notification, recipient: @recipient, channel: 'email',
-      email_address: @recipient.email, email_message_id: 'local-message@loomio.test', provider_message_id: 'ses-message')
+      email_message_id: 'local-message@loomio.test', provider_message_id: 'ses-message')
   end
 
   test 'an authenticated regional SES bounce to notifications links to the exact delivery' do
@@ -53,12 +53,26 @@ class EmailFeedbackServiceTest < ActiveSupport::TestCase
     assert_equal 'bounced', @delivery.events.sole.kind
   end
 
-  test 'a complaint with a redacted recipient can be linked by SES message ID' do
+  test 'a complaint without a report recipient records the status without blocking the current address' do
     email, mail = feedback(complaint: true)
-    assert_difference -> { EmailSuppression.for_address(@recipient.email).count }, 1 do
+    report = mail.parts.find { |part| part.mime_type == 'message/feedback-report' }
+    report.body = "Feedback-Type: abuse\r\n"
+    assert_no_difference 'EmailSuppression.count' do
       ReceivedEmailService.route(email, mail: mail)
     end
     assert_equal 'complained', @delivery.events.sole.kind
+    refute @recipient.email_delivery_blocked?
+  end
+
+  test 'feedback for a previous address blocks only the explicit address without guessing its delivery recipient' do
+    old_address = @recipient.email
+    @recipient.update!(email: 'replacement@example.test')
+    email, mail = feedback(address: old_address)
+    ReceivedEmailService.route(email, mail: mail)
+    refute @recipient.email_delivery_blocked?
+    assert EmailSuppression.for_address(old_address).active.exists?
+    assert_nil EmailSuppression.for_address(old_address).sole.notification_delivery_event_id
+    assert_empty @delivery.events
   end
 
   test 'an explicit ARF recipient can block an address without a tracked message' do
@@ -87,7 +101,7 @@ class EmailFeedbackServiceTest < ActiveSupport::TestCase
     other_recipient = users(:alien)
     notification = Notification.create!(kind: 'membership_created', subject: groups(:group), actor: users(:admin))
     other = NotificationDelivery.create!(notification: notification, recipient: other_recipient, channel: 'email',
-      email_address: other_recipient.email, provider_message_id: 'other-message')
+      provider_message_id: 'other-message')
     email, mail = feedback(complaint: true)
     attachment = Mail::Part.new(content_type: 'multipart/mixed')
     attachment.add_part(Mail::Part.new(content_type: 'text/rfc822-headers',
@@ -139,7 +153,7 @@ class EmailFeedbackServiceTest < ActiveSupport::TestCase
   test 'another email to the same recipient never inherits this bounce' do
     other = Notification.create!(kind: 'membership_created', subject: groups(:group), actor: users(:admin))
     other_delivery = NotificationDelivery.create!(notification: other, recipient: @recipient, channel: 'email',
-      email_address: @recipient.email, provider_message_id: 'other-message')
+      provider_message_id: 'other-message')
     email, mail = feedback
     ReceivedEmailService.route(email, mail: mail)
     assert_equal 1, @delivery.events.count
@@ -190,7 +204,7 @@ class EmailFeedbackServiceTest < ActiveSupport::TestCase
     mail.content_type = 'multipart/report'
     report = Mail::Part.new
     report.content_type = complaint ? 'message/feedback-report' : 'message/delivery-status'
-    report.body = complaint ? "Feedback-Type: abuse\r\n" :
+    report.body = complaint ? "Feedback-Type: abuse\r\nOriginal-Rcpt-To: #{address}\r\n" :
       "Reporting-MTA: dns; amazonses.com\r\n\r\nFinal-Recipient: rfc822; #{address}\r\nAction: #{action}\r\nStatus: #{status}\r\nDiagnostic-Code: smtp; 550 unknown mailbox\r\n"
     mail.add_part(report)
     original = Mail::Part.new

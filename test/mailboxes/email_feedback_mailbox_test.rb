@@ -5,7 +5,7 @@ class EmailFeedbackMailboxTest < ActionMailbox::TestCase
     @recipient = users(:member_normal)
     notification = Notification.create!(kind: 'membership_created', subject: groups(:group), actor: users(:admin))
     @delivery = NotificationDelivery.create!(notification: notification, recipient: @recipient, channel: 'email',
-      email_address: @recipient.email, provider_message_id: 'ses-mailbox-message')
+      provider_message_id: 'ses-mailbox-message')
   end
 
   test 'multipart bounce parts without filenames survive the full mailbox path and stop subsequent email' do
@@ -20,11 +20,15 @@ class EmailFeedbackMailboxTest < ActionMailbox::TestCase
     end
   end
 
-  test 'complaint feedback with a redacted recipient matches the provider message and blocks the address' do
-    receive_inbound_email_from_source(feedback(complaint: true).to_s)
+  test 'complaint feedback without a report recipient records its status without guessing an address block' do
+    mail = feedback(complaint: true)
+    report = mail.parts.find { |part| part.mime_type == 'message/feedback-report' }
+    report.body = "Feedback-Type: abuse\r\n"
+    assert_no_difference 'EmailSuppression.count' do
+      receive_inbound_email_from_source(mail.to_s)
+    end
     assert_equal 'complained', @delivery.events.sole.kind
-    assert @recipient.email_delivery_blocked?
-    assert_equal @delivery.events.sole.id, EmailSuppression.for_address(@recipient.email).sole.notification_delivery_event_id
+    refute @recipient.email_delivery_blocked?
     assert ReceivedEmail.last.released?
   end
 
@@ -109,7 +113,7 @@ class EmailFeedbackMailboxTest < ActionMailbox::TestCase
     mail.content_type = complaint ? 'multipart/report; report-type=feedback-report' : 'multipart/report; report-type=delivery-status'
     mail.add_part(Mail::Part.new(content_type: 'text/plain', body: 'Email feedback'))
     if complaint
-      mail.add_part(Mail::Part.new(content_type: 'message/feedback-report', body: "Feedback-Type: abuse\r\n"))
+      mail.add_part(Mail::Part.new(content_type: 'message/feedback-report', body: "Feedback-Type: abuse\r\nOriginal-Rcpt-To: #{@recipient.email}\r\n"))
     else
       mail.add_part(Mail::Part.new(content_type: 'message/delivery-status', body:
         "Final-Recipient: rfc822; #{@recipient.email}\r\nAction: failed\r\nStatus: #{status}\r\n"))

@@ -2,7 +2,6 @@ class AddNotificationEmailHistory < ActiveRecord::Migration[7.2]
   disable_ddl_transaction!
 
   def change
-    add_column :notification_deliveries, :email_address, :string
     add_column :notification_deliveries, :email_subject, :text
     add_column :notification_deliveries, :email_message_id, :string
     add_column :notification_deliveries, :provider_message_id, :string

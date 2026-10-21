@@ -32,7 +32,7 @@ module Dev::Scenarios::Membership
         recipient_message: "Invitation history preview: #{kind}", created_at: sent_at, deliveries_generated_at: sent_at)
       email = NotificationDelivery.create!(notification: notification, recipient: emilio, channel: 'email',
         delivered_at: (%i[delayed bounced complained].include?(kind) ? sent_at : nil),
-        email_address: emilio.email, email_subject: 'Join the group discussion')
+        email_subject: 'Join the group discussion')
       if email.delivered_at
         email.events.create!(kind: 'sent', source_key: "scenario:#{kind}:send", occurred_at: sent_at)
       end

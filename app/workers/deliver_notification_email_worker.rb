@@ -22,7 +22,7 @@ class DeliverNotificationEmailWorker < ApplicationJob
     recipient = delivery.recipient
     recipient.with_lock do
       return if recipient.email.nil?
-      delivery.update!(email_message_id: message.message_id, email_address: message.to.fetch(0), email_subject: message.subject)
+      delivery.update!(email_message_id: message.message_id, email_subject: message.subject)
     end
     if message.delivery_method.is_a?(Mail::SMTP)
       message.delivery_method(NotificationSmtpDelivery, message.delivery_method.settings)
