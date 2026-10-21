@@ -3214,6 +3214,7 @@ ru:
     stance: голос
   membership_notification_history:
     invitation_delivery_history: История доставки приглашений
+    email_delivery_blocked: "Loomio заблокировал отправку писем на этот адрес"
     delivery_result:
       delivered: Доставлено
       failed: Не доставлено

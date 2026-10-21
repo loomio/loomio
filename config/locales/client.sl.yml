@@ -3214,6 +3214,7 @@ sl:
     stance: glas
   membership_notification_history:
     invitation_delivery_history: Zgodovina dostave povabil
+    email_delivery_blocked: "Loomio je onemogočil dostavo e-pošte na ta naslov"
     delivery_result:
       delivered: Dostavljeno
       failed: Neuspešno

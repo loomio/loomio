@@ -3259,6 +3259,7 @@ pt_BR:
     stance: voto
   membership_notification_history:
     invitation_delivery_history: Histórico de entrega de convites
+    email_delivery_blocked: "O Loomio bloqueou o envio de e-mails para este endereço"
     delivery_result:
       delivered: Entregue
       failed: Falhou

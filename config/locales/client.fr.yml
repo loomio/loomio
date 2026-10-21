@@ -3259,6 +3259,7 @@ fr:
     stance: vote
   membership_notification_history:
     invitation_delivery_history: Historique d’envoi des invitations
+    email_delivery_blocked: "Loomio a bloqué l’envoi de courriels à cette adresse"
     delivery_result:
       delivered: Remis
       failed: Échec

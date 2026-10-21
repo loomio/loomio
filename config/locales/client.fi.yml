@@ -3214,6 +3214,7 @@ fi:
     stance: ääni
   membership_notification_history:
     invitation_delivery_history: Kutsujen toimitushistoria
+    email_delivery_blocked: "Loomio on estänyt sähköpostien lähettämisen tähän osoitteeseen"
     delivery_result:
       delivered: Toimitettu
       failed: Epäonnistui

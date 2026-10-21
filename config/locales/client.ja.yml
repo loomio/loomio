@@ -3213,6 +3213,7 @@ ja:
     stance: 投票
   membership_notification_history:
     invitation_delivery_history: 招待の配信履歴
+    email_delivery_blocked: "Loomioがこのアドレスへのメール配信を停止しています"
     delivery_result:
       delivered: 配信済み
       failed: 配信失敗

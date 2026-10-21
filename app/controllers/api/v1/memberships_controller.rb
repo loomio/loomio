@@ -73,7 +73,7 @@ class Api::V1::MembershipsController < Api::V1::RestfulController
         } : []
       }
     end
-    render json: { history: rows }
+    render json: { history: rows, email_delivery_blocked: membership.user.email_delivery_blocked? }
   end
 
   def make_admin
@@ -173,15 +173,10 @@ class Api::V1::MembershipsController < Api::V1::RestfulController
   end
 
   def index_scope
-    scope = default_scope.merge({
+    default_scope.merge({
       membership_email_group_ids: current_user.adminable_group_ids,
       include_inviter: true
     })
-    if current_user.is_admin?
-      users = scope.fetch(:cache).scope.fetch(:users_by_id, {}).values
-      scope[:email_delivery_blocked_user_ids] = EmailSuppression.blocked_user_ids(users)
-    end
-    scope
   end
 
   def model

@@ -3250,6 +3250,7 @@ es:
     stance: voto
   membership_notification_history:
     invitation_delivery_history: Historial de entrega de invitaciones
+    email_delivery_blocked: "Loomio ha bloqueado el envío de correos a esta dirección"
     delivery_result:
       delivered: Entregada
       failed: Fallida

@@ -3214,6 +3214,7 @@ el:
     stance: ψήφος
   membership_notification_history:
     invitation_delivery_history: Ιστορικό παράδοσης προσκλήσεων
+    email_delivery_blocked: "Το Loomio έχει σταματήσει την αποστολή email σε αυτή τη διεύθυνση"
     delivery_result:
       delivered: Παραδόθηκε
       failed: Απέτυχε

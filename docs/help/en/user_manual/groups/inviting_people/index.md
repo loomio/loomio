@@ -101,7 +101,7 @@ Inviting someone again reuses their membership record, so the original date besi
 
 The **Delivered** chip means the send completed without a later recorded failure; it does not confirm that the email reached the recipient's inbox. Expand the invitation to distinguish **Submitted to email service** from **Accepted by recipient's mail server**. **Failed** covers reported bounces, spam complaints, rejected emails, and skipped sends; the expanded details show the reason. Pending sends and reported delays have a neutral status. **No email delivery recorded** means there is no email delivery record for that send; older records do not identify why an email was skipped. **Resend invitation** sends without a custom message.
 
-If an email address has a recorded permanent bounce or spam complaint, Loomio stops sending email to that address. Signing in with a password, email code, or email link clears this Loomio block for the person's current address; an instance administrator can also clear it. The email service may have a separate block that its administrator needs to resolve.
+If an email address has a recorded permanent bounce or spam complaint, Loomio stops sending email to that address. A notice at the top of the invitation delivery history shows when Loomio currently blocks the person's address. Signing in with a password, email code, or email link clears this Loomio block for the person's current address; an instance administrator can also clear it. The email service may have a separate block that its administrator needs to resolve.
 
 <!-- translation-section: re-send-invitations -->
 

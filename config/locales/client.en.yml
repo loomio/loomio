@@ -813,6 +813,7 @@ en:
     invitations: Invitations
   membership_notification_history:
     invitation_delivery_history: Invitation delivery history
+    email_delivery_blocked: Loomio has blocked email delivery to this address
     delivery_result:
       delivered: Delivered
       failed: Failed

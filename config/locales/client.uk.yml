@@ -3244,6 +3244,7 @@ uk:
     stance: голос
   membership_notification_history:
     invitation_delivery_history: Історія доставки запрошень
+    email_delivery_blocked: "Loomio заблокував доставку листів на цю адресу"
     delivery_result:
       delivered: Доставлено
       failed: Не вдалося доставити

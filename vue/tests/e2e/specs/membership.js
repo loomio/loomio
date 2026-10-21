@@ -1,13 +1,6 @@
 pageHelper = require('../helpers/pageHelper')
 
 module.exports = {
-  'shows_email_delivery_block_for_an_instance_administrator': (test) => {
-    const page = pageHelper(test)
-    page.loadPath('setup_membership_email_blocked')
-    page.click('.group-page-members-tab')
-    page.expectText('.members-panel .v-list-item:first-child', 'Email rejected')
-  },
-
   'shows_notification_history_for_an_accepted_member': (test) => {
     const page = pageHelper(test)
     page.loadPath('setup_membership_notification_history')
@@ -18,6 +11,7 @@ module.exports = {
     page.click('.membership-dropdown__notification-history .v-list-item-title')
     page.expectText('.membership-notification-history', 'Invitation resent')
     page.expectText('.membership-notification-history .v-card-title', 'Invitation delivery history')
+    page.expectText('.membership-notification-history__blocked', 'Loomio has blocked email delivery to this address')
     page.expectText('.membership-notification-history .v-card-subtitle', 'Emilio Estevez <emilio@example.com>')
     page.expectCount('.membership-notification-history .v-expansion-panel', 7)
     page.expectCount('.membership-notification-history [data-result="delivered"]', 1)

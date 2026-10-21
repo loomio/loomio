@@ -43,7 +43,7 @@ describe('membership notification history', () => {
       {id: 9, kind: 'bounced', occurred_at: '2026-10-21T01:01:00Z', detail: '550 Unknown mailbox'}
     ];
     const resend = {...entry(2), kind: 'membership_resent', message: null, email_status: 'pending', email_sent_at: null};
-    mocks.getMember.mockResolvedValue({history: [resend, invitation]});
+    mocks.getMember.mockResolvedValue({email_delivery_blocked: false, history: [resend, invitation]});
     const wrapper = mountHistory();
     await flushPromises();
 
@@ -56,6 +56,7 @@ describe('membership notification history', () => {
     expect(row.find('.membership-notification-history__message').exists()).toBe(false);
     expect(title.text()).not.toContain(invitation.email_subject);
     expect(title.text()).not.toContain('550 Unknown mailbox');
+    expect(wrapper.find('.membership-notification-history__blocked').exists()).toBe(false);
 
     await title.trigger('click');
     await flushPromises();
@@ -71,7 +72,7 @@ describe('membership notification history', () => {
     const delivered = {...entry(2), email_status: 'delivered', email_events: [
       {id: 3, kind: 'delivered', occurred_at: '2026-10-21T01:02:00Z'}
     ]};
-    mocks.getMember.mockResolvedValue({history: [sent, delivered]});
+    mocks.getMember.mockResolvedValue({email_delivery_blocked: false, history: [sent, delivered]});
     const wrapper = mountHistory();
     await flushPromises();
 
@@ -92,7 +93,7 @@ describe('membership notification history', () => {
       {id: 1, kind: 'delivered', occurred_at: '2026-10-21T01:02:00Z'},
       {id: 2, kind: 'complained', occurred_at: '2026-10-21T01:03:00Z', detail: 'Reported as spam'}
     ]};
-    mocks.getMember.mockResolvedValue({history: [invitation]});
+    mocks.getMember.mockResolvedValue({email_delivery_blocked: false, history: [invitation]});
     const wrapper = mountHistory();
     await flushPromises();
 
@@ -105,7 +106,7 @@ describe('membership notification history', () => {
   });
 
   it('does not label pending, delayed or unknown historical sends as failures', async () => {
-    mocks.getMember.mockResolvedValue({history: ['pending', 'delayed', 'not_sent'].map((status, id) => ({
+    mocks.getMember.mockResolvedValue({email_delivery_blocked: false, history: ['pending', 'delayed', 'not_sent'].map((status, id) => ({
       ...entry(id), email_status: status
     }))});
     const wrapper = mountHistory();
@@ -121,7 +122,7 @@ describe('membership notification history', () => {
   it('renders message and provider diagnostic content as text', async () => {
     const invitation = {...entry(1), email_status: 'bounced', message: '<img src=x onerror=alert(1)>'};
     invitation.email_events = [{id: 1, kind: 'bounced', occurred_at: invitation.created_at, detail: '<script>alert(1)</script>'}];
-    mocks.getMember.mockResolvedValue({history: [invitation]});
+    mocks.getMember.mockResolvedValue({email_delivery_blocked: false, history: [invitation]});
     const wrapper = mountHistory();
     await flushPromises();
     await wrapper.get('.v-expansion-panel-title').trigger('click');
@@ -133,8 +134,8 @@ describe('membership notification history', () => {
   });
 
   it('loads more history using offset and retries failures without losing existing rows', async () => {
-    mocks.getMember.mockResolvedValueOnce({history: Array.from({length: 20}, (_, i) => entry(i))})
-      .mockRejectedValueOnce(new Error('unavailable')).mockResolvedValueOnce({history: [entry(20)]});
+    mocks.getMember.mockResolvedValueOnce({email_delivery_blocked: true, history: Array.from({length: 20}, (_, i) => entry(i))})
+      .mockRejectedValueOnce(new Error('unavailable')).mockResolvedValueOnce({email_delivery_blocked: false, history: [entry(20)]});
     const wrapper = mountHistory();
     await flushPromises();
     await wrapper.get('.membership-notification-history__more').trigger('click');
@@ -145,10 +146,21 @@ describe('membership notification history', () => {
     await flushPromises();
     expect(mocks.getMember).toHaveBeenLastCalledWith(14, 'notification_history', {limit: 20, offset: 20});
     expect(wrapper.findAll('.v-expansion-panel')).toHaveLength(21);
+    expect(wrapper.find('.membership-notification-history__blocked').exists()).toBe(false);
+  });
+
+  it('shows the current address block above the history even when there are no invitations', async () => {
+    mocks.getMember.mockResolvedValue({email_delivery_blocked: true, history: []});
+    const wrapper = mountHistory();
+    await flushPromises();
+
+    const warning = wrapper.get('.membership-notification-history__blocked');
+    expect(warning.text()).toContain('membership_notification_history.email_delivery_blocked');
+    expect(wrapper.text().indexOf(warning.text())).toBeLessThan(wrapper.text().indexOf('membership_notification_history.no_invitations_recorded'));
   });
 
   it('explains an empty history after loading', async () => {
-    mocks.getMember.mockResolvedValue({history: []});
+    mocks.getMember.mockResolvedValue({email_delivery_blocked: false, history: []});
     const wrapper = mountHistory();
     await flushPromises();
     expect(wrapper.text()).toContain('membership_notification_history.no_invitations_recorded');

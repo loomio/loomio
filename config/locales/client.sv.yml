@@ -3222,6 +3222,7 @@ sv:
     stance: röst
   membership_notification_history:
     invitation_delivery_history: Leveranshistorik för inbjudningar
+    email_delivery_blocked: "Loomio har stoppat mejlleverans till den här adressen"
     delivery_result:
       delivered: Levererad
       failed: Misslyckades

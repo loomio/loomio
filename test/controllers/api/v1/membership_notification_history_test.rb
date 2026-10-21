@@ -41,6 +41,43 @@ class Api::V1::MembershipNotificationHistoryTest < ActionController::TestCase
     refute_includes response.body, 'Other group secret'
   end
 
+  test 'current address block status is independent of invitation outcomes and cleared evidence' do
+    get :notification_history, params: {id: @membership.id}
+    assert_equal false, response.parsed_body.fetch('email_delivery_blocked')
+
+    block = EmailSuppressionService.record!(email: @recipient.email.upcase, reason: 'complaint',
+      source_key: 'private-status-source')
+    sign_in users(:user)
+    memberships(:user_membership).update!(admin: true)
+    get :notification_history, params: {id: @membership.id}
+    assert_response :success
+    assert_equal true, response.parsed_body.fetch('email_delivery_blocked')
+    refute_includes response.body, block.email_sha256
+    refute_includes response.body, block.source_key
+
+    EmailSuppressionService.clear!(user: @recipient, actor: @admin, method: 'administrator')
+    get :notification_history, params: {id: @membership.id}
+    assert_equal false, response.parsed_body.fetch('email_delivery_blocked')
+    assert_equal 'bounced', response.parsed_body.fetch('history').first.fetch('email_status')
+  end
+
+  test 'blocks for previous addresses and other recipients do not block the current address' do
+    EmailSuppressionService.record!(email: @recipient.email, reason: 'permanent_bounce', source_key: 'old-address')
+    EmailSuppressionService.record!(email: users(:member_loud).email, reason: 'complaint', source_key: 'other-recipient')
+    @recipient.update!(email: 'new-address@example.com')
+    get :notification_history, params: {id: @membership.id}
+    assert_equal false, response.parsed_body.fetch('email_delivery_blocked')
+  end
+
+  test 'blocked status remains available when there are no recorded invitations' do
+    EmailSuppressionService.record!(email: @recipient.email, reason: 'legacy_bounce', source_key: 'legacy-block')
+    @invitation.destroy!
+    get :notification_history, params: {id: @membership.id}
+    assert_response :success
+    assert_equal true, response.parsed_body.fetch('email_delivery_blocked')
+    assert_empty response.parsed_body.fetch('history')
+  end
+
   test 'history uses bounded limit and offset with a unique ordering tiebreak' do
     @invitation.update_columns(created_at: Time.current)
     resend = Notification.create!(kind: 'membership_resent', subject: @membership, actor: @admin,
@@ -59,6 +96,7 @@ class Api::V1::MembershipNotificationHistoryTest < ActionController::TestCase
         get :notification_history, params: {id: @membership.id}
         assert_includes [401, 403], response.status, role.to_s
         refute_includes response.body, 'Please join our forum', role.to_s
+        refute response.parsed_body.key?('email_delivery_blocked'), role.to_s
       end
     end
   end
@@ -81,6 +119,7 @@ class Api::V1::MembershipNotificationHistoryTest < ActionController::TestCase
     sign_out @admin
     get :notification_history, params: {id: @membership.id}
     assert_response :unauthorized
+    refute response.parsed_body.key?('email_delivery_blocked')
   end
 
   test 'missing historical email deliveries are not described as sent' do

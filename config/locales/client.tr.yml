@@ -3211,6 +3211,7 @@ tr:
     stance: oy
   membership_notification_history:
     invitation_delivery_history: Davet teslim geçmişi
+    email_delivery_blocked: "Loomio bu adrese e-posta gönderimini durdurdu"
     delivery_result:
       delivered: Teslim edildi
       failed: Başarısız

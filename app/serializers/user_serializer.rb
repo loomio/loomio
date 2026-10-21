@@ -8,7 +8,6 @@ class UserSerializer < AuthorSerializer
              :avatar_url,
              :attachments,
              :date_time_pref,
-             :email_delivery_blocked,
              :sign_in_count
 
 
@@ -22,13 +21,5 @@ class UserSerializer < AuthorSerializer
 
   def include_sign_in_count?
     scope[:current_user_id] == object.id
-  end
-
-  def email_delivery_blocked
-    scope.fetch(:email_delivery_blocked_user_ids).include?(object.id)
-  end
-
-  def include_email_delivery_blocked?
-    scope.key?(:email_delivery_blocked_user_ids)
   end
 end

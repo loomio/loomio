@@ -1,15 +1,8 @@
 module Dev::Scenarios::Membership
-  def setup_membership_email_blocked
-    group = create_group
-    patrick.update!(is_admin: true)
-    EmailSuppressionService.record!(email: emilio.email, reason: 'complaint', source_key: 'scenario:complaint')
-    sign_in patrick
-    redirect_to group_path(group)
-  end
-
   def setup_membership_notification_history
     group = create_group
     membership = group.memberships.find_by!(user: emilio)
+    EmailSuppressionService.record!(email: emilio.email, reason: 'complaint', source_key: 'scenario:history-block')
     invitation = Notification.create!(kind: 'membership_created', subject: group, actor: patrick,
       recipient_user_ids: [emilio.id], recipient_message: 'Please join the wider group discussion',
       created_at: 1.day.ago, deliveries_generated_at: 1.day.ago)

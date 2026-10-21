@@ -3241,6 +3241,7 @@ ca:
     stance: vot
   membership_notification_history:
     invitation_delivery_history: Historial de lliurament d'invitacions
+    email_delivery_blocked: "Loomio ha bloquejat l'enviament de correus a aquesta adreça"
     delivery_result:
       delivered: Lliurada
       failed: Fallida

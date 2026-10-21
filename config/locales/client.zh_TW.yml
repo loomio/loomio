@@ -3242,6 +3242,7 @@ zh_TW:
     stance: 投票
   membership_notification_history:
     invitation_delivery_history: 邀請寄送紀錄
+    email_delivery_blocked: "Loomio 已停止寄送電子郵件至此地址"
     delivery_result:
       delivered: 已送達
       failed: 失敗

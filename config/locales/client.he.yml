@@ -3233,6 +3233,7 @@ he:
     stance: הצבעה
   membership_notification_history:
     invitation_delivery_history: היסטוריית מסירת הזמנות
+    email_delivery_blocked: "Loomio חסמה שליחת אימייל לכתובת זו"
     delivery_result:
       delivered: נמסרה
       failed: נכשלה

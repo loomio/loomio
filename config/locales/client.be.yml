@@ -3116,6 +3116,7 @@ be:
     stance: голас
   membership_notification_history:
     invitation_delivery_history: Гісторыя дастаўкі запрашэнняў
+    email_delivery_blocked: "Loomio блакуе дастаўку лістоў на гэты адрас"
     delivery_result:
       delivered: Дастаўлена
       failed: Не ўдалося даставіць

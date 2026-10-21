@@ -130,9 +130,7 @@ module RecordCache::Loaders
   end
 
   class User < RecordCache::Loader
-    def load
-      cache.add_users(records)
-    end
+    def load; end
   end
 
   class Reader < RecordCache::Loader

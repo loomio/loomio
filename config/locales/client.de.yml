@@ -3249,6 +3249,7 @@ de:
     stance: Stimme
   membership_notification_history:
     invitation_delivery_history: Zustellverlauf der Einladung
+    email_delivery_blocked: "Loomio hat die E-Mail-Zustellung an diese Adresse gestoppt"
     delivery_result:
       delivered: Zugestellt
       failed: Fehlgeschlagen

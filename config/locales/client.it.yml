@@ -3242,6 +3242,7 @@ it:
     stance: voto
   membership_notification_history:
     invitation_delivery_history: Cronologia di consegna degli inviti
+    email_delivery_blocked: "Loomio ha bloccato l’invio di email a questo indirizzo"
     delivery_result:
       delivered: Consegnato
       failed: Non riuscito

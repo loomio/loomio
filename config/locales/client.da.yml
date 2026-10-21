@@ -3226,6 +3226,7 @@ da:
     stance: stemme
   membership_notification_history:
     invitation_delivery_history: Invitationens leveringshistorik
+    email_delivery_blocked: "Loomio har blokeret e-maillevering til denne adresse"
     delivery_result:
       delivered: Leveret
       failed: Mislykket

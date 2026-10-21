@@ -10,44 +10,28 @@ class Api::V1::MembershipsControllerTest < ActionController::TestCase
     sign_in @user
   end
 
-  test "only instance administrators receive email block status in member lists" do
-    recipient = users(:member_normal)
-    EmailSuppressionService.record!(email: recipient.email, reason: 'complaint', source_key: 'test:member-list')
-    memberships(:user_membership).update!(admin: true)
-    [@user, users(:member)].each do |actor|
-      sign_in actor
-      get :index, params: {group_id: @test_group.id, user_ids: [recipient.id]}
-      assert_response :success
-      payload = response.parsed_body.fetch('users').find { |record| record['id'] == recipient.id }
-      assert payload
-      refute payload.key?('email_delivery_blocked')
-    end
-    sign_in @admin
-    get :index, params: {group_id: @test_group.id, user_ids: [recipient.id]}
-    assert_response :success
-    payload = response.parsed_body.fetch('users').find { |record| record['id'] == recipient.id }
-    assert_equal true, payload.fetch('email_delivery_blocked')
-  end
-
-  test "member lists batch email blocks only for instance administrators" do
+  test "member lists omit email block status without querying suppressions for any role" do
     blocked = users(:member_normal)
     unblocked = users(:member_loud)
-    EmailSuppressionService.record!(email: blocked.email.upcase, reason: 'complaint', source_key: 'test:batch')
+    EmailSuppressionService.record!(email: blocked.email, reason: 'complaint', source_key: 'test:member-list')
+    memberships(:user_membership).update!(admin: true)
     queries = []
     callback = ->(_name, _start, _finish, _id, payload) { queries << payload[:sql] if payload[:sql].include?('email_suppressions') }
 
-    [@user, @admin].each do |viewer|
+    [users(:member), @user, @admin].each do |viewer|
       sign_in viewer
       queries.clear
       ActiveSupport::Notifications.subscribed(callback, 'sql.active_record') do
         get :index, params: {group_id: @test_group.id, user_ids: [blocked.id, unblocked.id]}
       end
       assert_response :success
-      assert_equal viewer.is_admin? ? 1 : 0, queries.size, queries.join("\n")
-      if viewer.is_admin?
-        payloads = response.parsed_body.fetch('users').index_by { |user| user.fetch('id') }
-        assert_equal true, payloads.fetch(blocked.id).fetch('email_delivery_blocked')
-        assert_equal false, payloads.fetch(unblocked.id).fetch('email_delivery_blocked')
+      assert_empty queries
+      payloads = response.parsed_body.fetch('users').index_by { |user| user.fetch('id') }
+      [blocked, unblocked].each do |user|
+        payload = payloads.fetch(user.id)
+        %w[email_delivery_blocked email_suppressions bounces_count complaints_count].each do |key|
+          refute payload.key?(key), "unexpected #{key} for viewer #{viewer.id}"
+        end
       end
     end
   end

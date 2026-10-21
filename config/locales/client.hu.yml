@@ -3225,6 +3225,7 @@ hu:
     stance: szavazat
   membership_notification_history:
     invitation_delivery_history: Meghívók kézbesítési előzményei
+    email_delivery_blocked: "A Loomio letiltotta az e-mailek kézbesítését erre a címre"
     delivery_result:
       delivered: Kézbesítve
       failed: Sikertelen

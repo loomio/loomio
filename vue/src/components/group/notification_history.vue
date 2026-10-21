@@ -10,6 +10,7 @@ const recipientSubtitle = computed(() => {
   return name ? `${name} <${membership.userEmail}>` : membership.userEmail;
 });
 const history = ref([]);
+const emailDeliveryBlocked = ref(false);
 const loading = ref(false);
 const failed = ref(false);
 const hasMore = ref(false);
@@ -32,6 +33,7 @@ async function load() {
     const data = await Records.memberships.remote.getMember(membership.id, 'notification_history', {
       limit, offset: history.value.length
     });
+    emailDeliveryBlocked.value = data.email_delivery_blocked;
     history.value.push(...data.history);
     hasMore.value = data.history.length === limit;
   } catch {
@@ -49,6 +51,7 @@ v-card.membership-notification-history(:title="t('membership_notification_histor
   template(v-slot:append)
     dismiss-modal-button
   v-card-text.px-0
+    v-alert.membership-notification-history__blocked.mx-6.mb-4(v-if="emailDeliveryBlocked" type="warning" variant="tonal") {{ t('membership_notification_history.email_delivery_blocked') }}
     p.px-6(v-if="failed" role="alert") {{ t('membership_notification_history.could_not_load_history') }}
     p.px-6(v-else-if="!loading && !history.length") {{ t('membership_notification_history.no_invitations_recorded') }}
     v-expansion-panels(variant="accordion" flat)

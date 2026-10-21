@@ -3214,6 +3214,7 @@ ro:
     stance: vot
   membership_notification_history:
     invitation_delivery_history: Istoricul livrării invitațiilor
+    email_delivery_blocked: "Loomio a blocat trimiterea e-mailurilor către această adresă"
     delivery_result:
       delivered: Livrat
       failed: Eșuat
