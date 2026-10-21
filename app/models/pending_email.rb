@@ -1,5 +1,5 @@
 # A message awaiting a group coordinator's sender approval. Message content and
-# attachments stay in Action Mailbox until approval or rejection completes.
+# attachments stay in Action Mailbox while this queue record exists.
 class PendingEmail < ApplicationRecord
   include HasNotifications
 
@@ -7,7 +7,6 @@ class PendingEmail < ApplicationRecord
   belongs_to :inbound_email, class_name: 'ActionMailbox::InboundEmail'
   enum :status, {pending: 0, blocked: 1}
   before_validation :record_envelope, on: :create
-  after_destroy_commit :schedule_source_cleanup
   attr_readonly :inbound_email_id, :group_id, :sender_email, :sender_name, :subject
 
   def message
@@ -36,9 +35,5 @@ class PendingEmail < ApplicationRecord
     self.sender_email = message.sender_email
     self.sender_name = message.sender_name
     self.subject = message.subject
-  end
-
-  def schedule_source_cleanup
-    inbound_email.incinerate_later if ActionMailbox.incinerate
   end
 end

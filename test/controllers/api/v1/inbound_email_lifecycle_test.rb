@@ -33,19 +33,52 @@ class Api::V1::InboundEmailLifecycleTest < ActionController::TestCase
     assert_includes discussion.files.find { |file| file.filename.to_s == 'notes.txt' }.download, 'Some notes'
   end
 
-  test 'pending approval retains its original message when Action Mailbox cleanup runs' do
-    inbound = receive(build_mail)
-    pending = PendingEmail.find_by!(inbound_email: inbound)
-    inbound.update_columns(updated_at: 61.days.ago)
+  test 'scheduled cleanup holds pending messages and removes them after approval without another retention period' do
     previous = ActionMailbox.incinerate
     ActionMailbox.incinerate = true
-    assert_enqueued_with(job: ActionMailbox::IncinerationJob, args: [inbound]) do
-      inbound.incinerate
-    end
-    ActionMailbox.incinerate = previous
+    inbound = receive(build_mail)
+    pending = PendingEmail.find_by!(inbound_email: inbound)
+
+    travel 61.days
+    perform_enqueued_jobs(only: ActionMailbox::IncinerationJob, at: Time.current)
     assert ActionMailbox::InboundEmail.exists?(inbound.id)
-    assert_equal 'Please discuss this', ActionMailbox::InboundEmail.find(inbound.id).mail.body.decoded
-    assert_equal @group, pending.reload.group
+    assert_equal 'Please discuss this', inbound.reload.mail.body.decoded
+    assert_enqueued_with(job: ActionMailbox::IncinerationJob, args: [inbound])
+
+    travel 59.days
+    sign_in @coordinator
+    assert_no_enqueued_jobs only: ActionMailbox::IncinerationJob do
+      post :allow, params: {id: pending.id, user_id: @coordinator.id}
+      assert_response :success
+    end
+    refute PendingEmail.exists?(pending.id)
+
+    travel 2.days
+    perform_enqueued_jobs(only: ActionMailbox::IncinerationJob, at: Time.current)
+    refute ActionMailbox::InboundEmail.exists?(inbound.id)
+  ensure
+    ActionMailbox.incinerate = previous
+  end
+
+  test 'scheduled cleanup holds blocked messages and handles queue deletion by a cascading foreign key' do
+    previous = ActionMailbox.incinerate
+    ActionMailbox.incinerate = true
+    @group = Group.create!(name: 'Retained mail', handle: "retained-#{SecureRandom.hex(4)}")
+    inbound = receive(build_mail)
+    pending = PendingEmail.find_by!(inbound_email: inbound)
+    pending.blocked!
+
+    travel 61.days
+    perform_enqueued_jobs(only: ActionMailbox::IncinerationJob, at: Time.current)
+    assert ActionMailbox::InboundEmail.exists?(inbound.id)
+    assert pending.reload.blocked?
+    assert_enqueued_with(job: ActionMailbox::IncinerationJob, args: [inbound])
+
+    Group.where(id: @group.id).delete_all
+    refute PendingEmail.exists?(pending.id)
+    travel 61.days
+    perform_enqueued_jobs(only: ActionMailbox::IncinerationJob, at: Time.current)
+    refute ActionMailbox::InboundEmail.exists?(inbound.id)
   ensure
     ActionMailbox.incinerate = previous
   end

@@ -9,8 +9,8 @@ module InboundEmailRetention
 
   def incinerate
     if pending_email
-      # A group can remove the queue row through a cascading foreign key, which
-      # bypasses its callbacks. Keep a future cleanup check in that case too.
+      # Keep a future check so releasing the hold allows cleanup, including
+      # when a group deletion removes the queue row through a cascading FK.
       incinerate_later if ActionMailbox.incinerate
     else
       super
